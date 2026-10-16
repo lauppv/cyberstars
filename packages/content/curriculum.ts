@@ -7,39 +7,50 @@ export const courses = [
   {
     key: 'python',
     title: 'Python',
-    description: 'New to programming? We highly recommend Python',
+    description:
+      "The best place to start if you've never coded. From print and variables to functions, lists and dictionaries, then searching, sorting and recursion, ending with three small projects.",
     sortOrder: 1,
   },
   {
     key: 'c',
     title: 'C',
-    description: 'Low-level programming, pointers, memory, and OS concepts',
+    description:
+      'How a program really works underneath: pointers, memory you manage by hand, structs and files, then processes, pipes, threads and semaphores, ending with a mini shell of your own.',
     sortOrder: 2,
   },
-  { key: 'java', title: 'Java', description: 'Object Oriented Programming', sortOrder: 3 },
+  {
+    key: 'java',
+    title: 'Java',
+    description:
+      'Object-oriented programming from the ground up. After the basics, you build programs from classes and objects, inheritance, polymorphism and interfaces, then collections, ending with three larger projects.',
+    sortOrder: 3,
+  },
   {
     key: 'linux',
     title: 'Linux',
-    description: 'Master the terminal: files, navigation, and shell commands',
+    description:
+      'A real terminal, right in your browser. Manage files, search with grep and find, chain commands with pipes, edit text with sed and awk, then permissions and processes.',
     sortOrder: 4,
   },
   {
     key: 'algo-python',
     title: 'Python Algorithms',
-    description: 'Classic algorithms with strings, lists, loops, and dictionaries',
+    description:
+      'Python problems from easy to hard: strings, lists and dictionaries put to work in palindromes, a Caesar cipher, Two Sum, sorting and a matrix spiral.',
     sortOrder: 5,
   },
   {
     key: 'algo-java',
     title: 'Java Algorithms',
-    description: 'OOP-focused challenges: classes, objects, inheritance, and collections',
+    description:
+      'Java problems where you design the classes yourself: a bank account, a shape hierarchy, your own stack, queue and linked list, generics and iterators, plus searching and sorting.',
     sortOrder: 6,
   },
   {
     key: 'algo-c',
     title: 'C Algorithms',
     description:
-      'Low-level challenges with arrays, pointers, memory, and concurrency (fork, threads, semaphores)',
+      'C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.',
     sortOrder: 7,
   },
   {

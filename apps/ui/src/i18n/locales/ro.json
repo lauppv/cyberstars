@@ -331,21 +331,21 @@
     "viewSyllabus": "Vezi programa →",
     "chapters": "Capitole",
     "descriptions": {
-      "python": "Începător în programare? Îți recomandăm cu căldură Python",
-      "c": "Programare de nivel jos: pointeri, memorie și concepte de sistem de operare",
-      "java": "Programare orientată pe obiecte",
-      "linux": "Stăpânește terminalul: fișiere, navigare și comenzi shell",
-      "algo-python": "Algoritmi clasici cu șiruri, liste, bucle și dicționare",
-      "algo-java": "Provocări axate pe OOP: clase, obiecte, moștenire și colecții",
-      "algo-c": "Provocări de nivel jos cu tablouri, pointeri, memorie și concurență (fork, threads, semafoare)",
+      "python": "Cel mai bun început dacă n-ai mai programat. De la print și variabile la funcții, liste și dicționare, apoi căutare, sortare și recursivitate, cu trei proiecte mici la final.",
+      "c": "Cum funcționează un program pe dedesubt: pointeri, memorie gestionată de mână, structuri și fișiere, apoi procese, pipe-uri, thread-uri și semafoare, cu un mini shell construit de tine la final.",
+      "java": "Programare orientată pe obiecte de la zero. După bazele limbajului, construiești programe din clase și obiecte, moștenire, polimorfism și interfețe, apoi colecții, cu trei proiecte mai mari la final.",
+      "linux": "Un terminal adevărat, direct în browser. Lucrezi cu fișiere, cauți cu grep și find, legi comenzi cu pipe-uri, editezi text cu sed și awk, apoi permisiuni și procese.",
+      "algo-python": "Probleme de Python de la ușor la greu: șiruri, liste și dicționare puse la treabă în palindroame, cifrul lui Cezar, Two Sum, sortare și o matrice parcursă în spirală.",
+      "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, generice și iteratori, plus căutare și sortare.",
+      "algo-c": "Probleme de C aproape de mașină: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
       "kotlin": "Limbaj JVM modern: concis, sigur și interoperabil"
     }
   },
   "algorithms": {
     "desc": {
-      "algo-python": "Algoritmi clasici cu șiruri, liste, bucle și dicționare. Ideal pentru a-ți dezvolta gândirea de rezolvare a problemelor.",
-      "algo-java": "Provocări axate pe OOP: clase, obiecte, moștenire și colecții. Exersează proiectarea cu obiecte.",
-      "algo-c": "Provocări de nivel jos cu tablouri, pointeri, memorie și concurență (fork, threads, semafoare). Gândește aproape de hardware."
+      "algo-python": "Probleme de Python de la ușor la greu: șiruri, liste și dicționare puse la treabă în palindroame, cifrul lui Cezar, Two Sum, sortare și o matrice parcursă în spirală.",
+      "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, generice și iteratori, plus căutare și sortare.",
+      "algo-c": "Probleme de C aproape de mașină: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare."
     }
   },
   "algoList": {
