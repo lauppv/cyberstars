@@ -13,7 +13,13 @@ import { ApiClientError } from '../../services/apiClient';
 
 const h = vi.hoisted(() => ({
   auth: {
-    user: null as null | { id: number; role: string; name?: string; placementLevel?: string },
+    user: null as null | {
+      id: number;
+      role: string;
+      name?: string;
+      placementLevel?: string;
+      interests?: string[];
+    },
   },
   canAccess: vi.fn((..._a: unknown[]) => true),
   listConversations: vi.fn(),
@@ -21,6 +27,7 @@ const h = vi.hoisted(() => ({
   deleteConversation: vi.fn(),
   streamChat: vi.fn(),
   usage: { summary: null as null | { tutorMessage: UsageState }, refresh: vi.fn() },
+  progress: {} as Record<string, unknown>,
   courses: [
     {
       key: 'python',
@@ -36,6 +43,9 @@ const h = vi.hoisted(() => ({
 
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
 vi.mock('../../context/UsageContext', () => ({ useUsage: () => h.usage }));
+vi.mock('../../context/ProgressContext', () => ({
+  useAllProgress: () => ({ progressMap: h.progress }),
+}));
 vi.mock('../../context/CurriculumContext', () => ({
   useCurriculum: () => ({ courses: h.courses }),
 }));
@@ -203,6 +213,7 @@ beforeEach(() => {
   h.deleteConversation.mockResolvedValue(undefined);
   work.current = { code: 'for i in x:', runOutput: '', submissionId: 3 };
   h.usage.summary = null;
+  h.progress = {};
   localStorage.clear();
   vi.stubGlobal(
     'matchMedia',
@@ -332,6 +343,35 @@ describe('TutorPanel', () => {
       'How can I tell how fast my code is?',
       'How do pointers work in C?',
     ]);
+  });
+
+  it('starts from what the student wants to learn and the lesson they left unfinished', async () => {
+    h.auth = { user: { ...USER, interests: ['python'] } };
+    h.progress = {
+      python: {
+        courseKey: 'python',
+        lessons: [
+          {
+            slug: 'for',
+            title: 'For loops',
+            completed: false,
+            completedAt: null,
+            lastAccessedAt: TODAY,
+          },
+          {
+            slug: 'while',
+            title: 'While loops',
+            completed: false,
+            completedAt: null,
+            lastAccessedAt: null,
+          },
+        ],
+      },
+    };
+    renderTutor('/forum');
+    await openPanel();
+    fireEvent.click(await screen.findByRole('button', { name: 'Help me finish For loops' }));
+    expect(h.streamChat.mock.calls[0][0]).toMatchObject({ message: 'Help me finish For loops' });
   });
 
   it('starts with a question about the challenges on their page', async () => {
