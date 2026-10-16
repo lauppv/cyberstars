@@ -155,7 +155,18 @@ export function compareOutputs(
   if (comparator === 'masked') return maskInts(normalize(expected)) === maskInts(normalize(actual));
   if (comparator === 'unordered')
     return sortLines(normalize(expected)) === sortLines(normalize(actual));
+  if (comparator === 'template') return templateRegex(normalize(expected)).test(normalize(actual));
   return normalize(expected) === normalize(actual);
+}
+
+// A template's text has to match as written, while each `<word>` blank takes
+// any text on its line with at least one visible character.
+function templateRegex(template: string): RegExp {
+  const pattern = template
+    .split(/<\w+>/)
+    .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    .join('[^\\n]*?\\S[^\\n]*?');
+  return new RegExp(`^${pattern}$`);
 }
 
 // Collapse every run of digits to a single token so nondeterministic values
@@ -255,6 +266,9 @@ function judgeCase(
     expected = c.solution.stdout;
     if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
   }
+  // The student fills the template's blanks their own way, so the template is
+  // what they're held to and shown, not our solution's output.
+  if (spec.comparator === 'template' && spec.template !== undefined) expected = spec.template;
   if (c.user.ms !== undefined) base.userMs = roundMs(c.user.ms);
   if (c.user.timedOut) return { ...base, error: 'timeout' };
   const passed = compareOutputs(expected, c.user.stdout, spec.comparator ?? 'trimmed');

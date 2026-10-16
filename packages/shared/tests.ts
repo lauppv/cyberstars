@@ -4,8 +4,10 @@
 // static-content generator does not copy it into public/).
 
 // 'masked' ignores integer runs (nondeterministic PIDs); 'unordered' compares
-// the set of lines (thread/process output whose line order is nondeterministic).
-export type TestComparator = 'exact' | 'trimmed' | 'masked' | 'unordered';
+// the set of lines (thread/process output whose line order is nondeterministic);
+// 'template' checks the output against the spec's `template`, whose blanks the
+// student fills with anything (their own name and age).
+export type TestComparator = 'exact' | 'trimmed' | 'masked' | 'unordered' | 'template';
 
 // Which language knows which kind lives in STRUCTURE_KINDS (validate-tests);
 // a runner treats a kind it doesn't know as present, so a spec must not use one.
@@ -126,6 +128,12 @@ interface LessonTestCase {
 
 export interface LessonTestsSpec {
   comparator?: TestComparator;
+  /**
+   * template: the expected output, where each `<word>` is a blank that any
+   * text of at least one character on that line fills. It is what the student
+   * sees as the expected output, in place of our solution's.
+   */
+  template?: string;
   structure?: {
     requires?: StructureRule[];
     forbids?: StructureRule[];

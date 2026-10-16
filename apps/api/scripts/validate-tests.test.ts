@@ -137,6 +137,19 @@ describe('auditCases', () => {
     };
     expect(auditCases('c', spec)).toEqual([expect.stringMatching(/not deterministic/)]);
   });
+
+  it('flags a template comparator without its template, and a template without the comparator', () => {
+    const cases = [{ visible: true }];
+    expect(auditCases('python', { comparator: 'template', template: 'Hi <name>', cases })).toEqual(
+      [],
+    );
+    expect(auditCases('python', { comparator: 'template', cases })).toEqual([
+      expect.stringMatching(/template comparator and a template/),
+    ]);
+    expect(auditCases('python', { template: 'Hi <name>', cases })).toEqual([
+      expect.stringMatching(/template comparator and a template/),
+    ]);
+  });
   it('accepts one hidden load test at the end', () => {
     const spec: LessonTestsSpec = {
       cases: [stdinCase({ visible: true }), stdinCase({ load: true })],
