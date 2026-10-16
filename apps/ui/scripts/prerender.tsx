@@ -83,5 +83,4 @@ for (const page of pages) {
 }
 writeFileSync(path.join(dist, 'sitemap.xml'), sitemap(pages));
 
-const indexed = pages.filter((p) => !p.noindex).length;
-console.log(`prerender: ${pages.length} pages written, ${indexed} in the sitemap`);
+console.log(`prerender: ${pages.length} pages written and listed in the sitemap`);

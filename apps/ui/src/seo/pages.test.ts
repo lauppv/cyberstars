@@ -28,11 +28,10 @@ const article: AlmanacArticle = {
   year: '1843',
 };
 
-// Python has two lessons, "loops" only in English; Java one challenge; Kotlin is still to come
+// Python has two lessons, "loops" only in English; Java one challenge
 const source: ContentSource = {
   courses: [
     course('python', 'Python', ['print', 'loops']),
-    course('kotlin', 'Kotlin', ['hello']),
     course('algo-java', 'Java Algorithms', ['gpa']),
   ],
   lesson(courseKey, slug, lang) {
@@ -99,12 +98,6 @@ describe('the pre-rendered pages', () => {
     });
     expect(python.lastmod).toBe('2026-10-02');
     expect(python.jsonLd).toMatchObject({ '@type': 'Course', name: 'Python', inLanguage: 'en' });
-  });
-
-  it('keeps a course still to come out of the index and off the course list', () => {
-    expect(page('/courses/kotlin').noindex).toBe(true);
-    expect(page('/lesson/kotlin/hello').noindex).toBe(true);
-    expect(page('/courses').view).toMatchObject({ courses: [{ path: '/courses/python' }] });
   });
 
   it('writes the landing page and the lists in both languages', () => {

@@ -51,8 +51,6 @@ export interface Page {
   alternates: Partial<Record<Lang, string>>;
   breadcrumb: Link[];
   view: View;
-  // Kept out of search results and out of the sitemap (a course still to come)
-  noindex?: boolean;
   // YYYY-MM-DD, when the content behind the page last changed
   lastmod?: string;
   jsonLd?: object;
@@ -65,8 +63,6 @@ interface Entry {
 }
 
 const LANGS: Lang[] = ['en', 'ro'];
-// Courses badged "Coming Soon" get pages for whoever follows a link, nothing more
-const COMING_SOON = new Set(['kotlin']);
 
 // The first lines of a lesson or a challenge as plain text, short enough for
 // a search result
@@ -167,7 +163,6 @@ export function buildPages(source: ContentSource): Page[] {
           previous: lessons[i - 1]?.link,
           next: lessons[i + 1]?.link,
         },
-        noindex: COMING_SOON.has(courseKey),
         lastmod: content.modified,
         jsonLd: breadcrumbLd(breadcrumb),
       };
@@ -207,7 +202,6 @@ export function buildPages(source: ContentSource): Page[] {
         alternates: everywhere(`/courses/${key}`),
         breadcrumb: [coursesLink, link],
         view: { kind: 'course', name, description, lessons: lessons.map((l) => l.link) },
-        noindex: COMING_SOON.has(key),
         lastmod: latest(lessons.map((l) => l.page.lastmod)),
         jsonLd: {
           '@context': 'https://schema.org',
@@ -222,7 +216,6 @@ export function buildPages(source: ContentSource): Page[] {
       };
       return { page, link, lessons };
     });
-    const listed = courses.filter((c) => !c.page.noindex);
     pages.push({
       path: coursesLink.path,
       lang,
@@ -232,13 +225,13 @@ export function buildPages(source: ContentSource): Page[] {
       breadcrumb: [coursesLink],
       view: {
         kind: 'courses',
-        courses: listed.map((c) => ({ ...c.link, description: c.page.description })),
+        courses: courses.map((c) => ({ ...c.link, description: c.page.description })),
       },
-      lastmod: latest(listed.map((c) => c.page.lastmod)),
+      lastmod: latest(courses.map((c) => c.page.lastmod)),
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        itemListElement: listed.map((c, i) => ({
+        itemListElement: courses.map((c, i) => ({
           '@type': 'ListItem',
           position: i + 1,
           url: `${ORIGIN}${c.link.path}`,
