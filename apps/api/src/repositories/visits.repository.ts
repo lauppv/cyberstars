@@ -147,6 +147,20 @@ export function topClicksSince(from: Date, limit: number): Promise<VisitCount[]>
   `);
 }
 
+// The placement test's steps since `from`, each by how many visits took it.
+// Its page counts once per visit as `opened`, in English or Romanian.
+export function placementStepsSince(from: Date): Promise<{ key: string; visitors: number }[]> {
+  return prisma.$queryRaw<{ key: string; visitors: number }[]>(Prisma.sql`
+    SELECT CASE WHEN s.kind = 'page' THEN 'opened' ELSE s.target END AS key,
+      COUNT(DISTINCT s.visit_id)::int AS visitors
+    FROM visit_steps s JOIN guest_visits v ON v.id = s.visit_id
+    WHERE v.day >= ${from}
+      AND ((s.kind = 'page' AND s.target IN ('/placement', '/ro/placement'))
+        OR (s.kind = 'click' AND s.target LIKE 'placement-%'))
+    GROUP BY 1
+  `);
+}
+
 // Guest visits since `from`, newest first, each with its steps in order.
 // before is the id the page starts under; source keeps only visits from there.
 export function guestVisitsSince(

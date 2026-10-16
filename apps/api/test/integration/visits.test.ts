@@ -152,6 +152,30 @@ describe('Visitor counts', () => {
     expect(totals.body.clicks).toEqual([{ key: 'start-learning', visitors: 1, views: 1 }]);
   });
 
+  it('lines up how far guests got in the placement test', async () => {
+    const steps = (...targets: string[]) => targets.map((target) => ({ kind: 'click', target }));
+    const quitter = agent();
+    await visit(quitter, { path: '/' });
+    await visit(quitter, { path: '/placement', steps: steps('test-me') });
+    await visit(quitter, { path: '/', steps: steps('placement-start', 'placement-q1') });
+    const finisher = agent();
+    await visit(finisher, { path: '/ro/placement' });
+    const answers = Array.from({ length: 11 }, (_, i) => `placement-q${i + 1}`);
+    await visit(finisher, {
+      path: '/ro/getstarted',
+      steps: steps('placement-start', ...answers, 'placement-submit', 'placement-get-started'),
+    });
+    await visit(finisher, { path: '/ro/placement' });
+
+    const res = await (await admin()).get('/api/admin/visits').expect(200);
+    expect(res.body.placement).toEqual({
+      opened: 2,
+      started: 2,
+      answered: [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      getStarted: 1,
+    });
+  });
+
   it('gives a student no visit, but keeps what a guest pressed on the way to an account', async () => {
     const { agent: student } = await createAuthenticatedAgent();
     await visit(student, { path: '/lesson/python/print' }, 'Student browser');

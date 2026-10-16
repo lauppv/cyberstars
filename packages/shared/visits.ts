@@ -40,6 +40,16 @@ export interface VisitDay {
   newAccounts: number;
 }
 
+// How far guests got in the placement test over the range (CYB-68), in visits:
+// opened its page, pressed Start, got past each question, pressed Get started.
+export interface PlacementFunnel {
+  opened: number;
+  started: number;
+  // answered[i]: visits that got past question i + 1; the last one is Submit
+  answered: number[];
+  getStarted: number;
+}
+
 export interface AdminVisitsDTO {
   range: VisitRange;
   days: VisitDay[];
@@ -52,6 +62,7 @@ export interface AdminVisitsDTO {
   lang: VisitCount[]; // en, ro
   // The buttons guests pressed most: visitors is how many visits pressed it.
   clicks: VisitCount[];
+  placement: PlacementFunnel;
 }
 
 // One guest's day, newest first on the admin page. source is null when the
