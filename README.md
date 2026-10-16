@@ -17,10 +17,11 @@ Live at [cyberstars.app](https://cyberstars.app).
 - **Progress tracking**: per-course progress bars, XP/levels, and unlockable badges (First Steps + Bronze/Silver/Gold tiers per course)
 - **Code persistence**: saved per lesson, restored on revisit
 - **Tutor chat**: an AI tutor (Google Gemini) in a panel beside the page for signed-in students, where each visit starts a new conversation and the earlier ones stay in a history beside it, also about a lesson or algorithm challenge from its ⋯ menu, where it sees the student's code and last results; it guides them toward the answer a nudge at a time without handing over the solution, recommends a course by what it teaches on CyberStars, says what it is looking up while it thinks, suggests first questions from where the student stands on the lesson, cheers when the tests pass, streams its replies, keeps the newest 50 conversations, and works in 5-hour sessions of 15 to 30 messages
+- **Placement test**: 12 multiple-choice questions on Python, C, Java and Linux, taken from the landing page before signing up; the score sets a beginner, intermediate or advanced level the tutor fits its answers and first questions to
 - **Community forum**: threaded discussions with reactions and solution marking
 - **In-app notifications**: live bell for forum replies/solutions and support activity, pushed over a per-user WebSocket (currently behind an admins-only preview gate)
 - **Linux terminal**: interactive sandboxed shell for learning Linux commands
-- **Admin dashboard**: admin-only `/admin` view with platform statistics (users, lesson progress, forum/support, live code-execution metrics) and visitor counts kept without cookies or IPs (visitors a day, top pages, where they come from, and each guest's visit step by step for 90 days); access is server-authoritative, the role is read from the DB, never trusted from the client
+- **Admin dashboard**: admin-only `/admin` view with platform statistics (users, lesson progress, forum/support, live code-execution metrics) and visitor counts kept without cookies or IPs (visitors a day, top pages, where they come from, each guest's visit step by step for 90 days, and how far guests get in the placement test); access is server-authoritative, the role is read from the DB, never trusted from the client
 
 ## Quick start
 
