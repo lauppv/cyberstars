@@ -1196,6 +1196,13 @@ export const lessons = [
     sortOrder: 6,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'graphs',
+    title: 'Graphs and How to Store Them',
+    sortOrder: 7,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',
