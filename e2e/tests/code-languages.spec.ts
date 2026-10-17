@@ -36,6 +36,7 @@ test('a multi-language lesson passed in Java is ticked once, whatever language i
   // and the course counts the lesson once.
   await page.reload();
   await expect(editor).toContainText('# my python', { timeout: 10_000 });
-  await page.goto('/courses');
-  await expect(page.getByText('100% complete')).toBeVisible({ timeout: 10_000 });
+  const progress = await page.request.get('/api/progress/trees-graphs');
+  expect(progress.ok()).toBe(true);
+  expect(await progress.json()).toMatchObject({ completed: 1, earnedXp: 10 });
 });
