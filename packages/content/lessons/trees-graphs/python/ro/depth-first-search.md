@@ -4,14 +4,8 @@ Parcurgerea în lățime se întinde ca o undă, câte un inel pe rând. Există
 
 Ai parcurs deja un arbore așa: parcurgerea în preordine coboară până jos pe partea stângă înainte să se întoarcă după cea dreaptă. Pe un graf e aceeași parcurgere, cu semnele de **văzut** de care a avut nevoie și parcurgerea în lățime, pentru că un graf te poate duce înapoi la un nod pe care l-ai vizitat deja
 
-```text
-    0 ----- 1       5
-    |       |       |
-    |       |       |
-    2       3       6
-     \     /
-      \   /         7
-        4
+```visual
+{"use": "dfs-back"}
 ```
 
 Iată cele **8** noduri și **6** muchii ale lui, în intrarea obișnuită
@@ -64,16 +58,8 @@ vizitez 2
 
 Fiecare apel rămâne deschis până se termină tot ce se poate atinge din nodul lui. Iată cât de adânc merg apelurile
 
-```text
-dfs(0)                 vecini 1, 2
-  dfs(1)               vecini 0, 3
-    dfs(3)             vecini 1, 4
-      dfs(4)           vecini 2, 3
-        dfs(2)         vecini 0, 4: amandoi vazuti, inapoi
-      inapoi in dfs(4) 3 e vazut, inapoi
-    inapoi in dfs(3)   nu mai e nimic, inapoi
-  inapoi in dfs(1)     nu mai e nimic, inapoi
-inapoi in dfs(0)       2 e vazut acum, gata
+```visual
+{"use": "dfs-calls"}
 ```
 
 **2** e vecin cu **0**, dar e vizitat ultimul: parcurgerea a ajuns la el pe drumul lung, prin **1**, **3** și **4**, înainte ca **0** să ajungă la el. Parcurgerea în lățime ar vizita **0 1 2 3 4**. Amândouă ating aceleași noduri, doar ordinea diferă
@@ -137,15 +123,8 @@ vizitez 4
 vizitez 2
 ```
 
-```text
-iau    stiva dupa
-       [0]
-0      [2, 1]
-1      [2, 3]
-3      [2, 4]
-4      [2, 2]
-2      [2]
-2      []        deja vazut, sarit
+```visual
+{"use": "dfs-stack"}
 ```
 
 Aici un nod e marcat când e luat de pe stivă, nu când e pus, așa că **2** poate sta de două ori pe stivă: o dată de la **0**, o dată de la **4**. A doua oară când iese, e deja văzut și e sărit. Dacă l-ai marca atunci când e pus, ca la parcurgerea în lățime, pe unele grafuri ordinea n-ar mai fi cea pe care o dă parcurgerea recursivă
@@ -189,6 +168,12 @@ Rezultat
 ```text
 bucati: 3
 [1, 1, 1, 1, 1, 2, 2, 3]
+```
+
+Iată cele trei parcurgeri, câte o bucată fiecare
+
+```visual
+{"use": "dfs-pieces"}
 ```
 
 În loc de **True** și **False**, **bucata** ține numărul bucății în care e fiecare nod, cu **0** pentru „încă nevizitat”. Bucățile sunt numerotate de la **1**, în ordinea celui mai mic nod al lor, pentru că bucla trece prin noduri în ordine

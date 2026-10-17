@@ -4,14 +4,8 @@ Breadth-first search spreads out like a ripple, one ring at a time. There's anot
 
 You've walked a tree this way already: the pre-order walk goes down the left side all the way before it comes back for the right. On a graph it's the same walk, with the **seen** marks breadth-first search needed, since a graph can lead you back to a vertex you've already visited
 
-```text
-    0 ----- 1       5
-    |       |       |
-    |       |       |
-    2       3       6
-     \     /
-      \   /         7
-        4
+```visual
+{"use": "dfs-back"}
 ```
 
 Here are its **8** vertices and **6** edges in the usual input
@@ -64,16 +58,8 @@ visit 2
 
 Each call stays open until everything reachable from its vertex is done. Here is how deep the calls go
 
-```text
-dfs(0)                 neighbours 1, 2
-  dfs(1)               neighbours 0, 3
-    dfs(3)             neighbours 1, 4
-      dfs(4)           neighbours 2, 3
-        dfs(2)         neighbours 0, 4: both seen, go back
-      back in dfs(4)   3 is seen, go back
-    back in dfs(3)     nothing left, go back
-  back in dfs(1)       nothing left, go back
-back in dfs(0)         2 is seen now, done
+```visual
+{"use": "dfs-calls"}
 ```
 
 **2** is a neighbour of **0**, but it's visited last: the walk reached it the long way round, through **1**, **3** and **4**, before **0** got to it. Breadth-first search would visit **0 1 2 3 4**. Both reach the same vertices, only the order differs
@@ -137,15 +123,8 @@ visit 4
 visit 2
 ```
 
-```text
-take   stack after
-       [0]
-0      [2, 1]
-1      [2, 3]
-3      [2, 4]
-4      [2, 2]
-2      [2]
-2      []        seen already, skipped
+```visual
+{"use": "dfs-stack"}
 ```
 
 Here a vertex is marked when it's taken off, not when it's put on, so **2** can sit on the stack twice: once from **0**, once from **4**. The second time it comes off, it's seen already and skipped. Mark it when it's put on, like breadth-first search does, and on some graphs the order would no longer be the one the recursive walk gives
@@ -189,6 +168,12 @@ Output
 ```text
 pieces: 3
 [1, 1, 1, 1, 1, 2, 2, 3]
+```
+
+Here are the three walks, one piece each
+
+```visual
+{"use": "dfs-pieces"}
 ```
 
 Instead of **True** and **False**, **piece** holds the number of the piece each vertex is in, with **0** meaning "not visited yet". The pieces are numbered from **1**, in the order of their smallest vertex, since the loop goes through the vertices in order

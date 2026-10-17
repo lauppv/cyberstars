@@ -1,0 +1,138 @@
+{
+  "type": "graph",
+  "caption": "Ultimul nod pus pe stivă e primul luat, așa că parcurgerea merge tot mai adânc",
+  "vertices": [
+    [0, 0],
+    [1, 0],
+    [0, 1],
+    [1, 1],
+    [0.5, 2],
+    [2, 0],
+    [2, 1],
+    [2, 2]
+  ],
+  "edges": [
+    [0, 1],
+    [0, 2],
+    [1, 3],
+    [2, 4],
+    [3, 4],
+    [5, 6]
+  ],
+  "steps": [
+    {
+      "seen": [0],
+      "rows": [
+        {
+          "label": "stiva",
+          "values": [0]
+        },
+        {
+          "label": "vizitate",
+          "values": []
+        }
+      ],
+      "caption": "Începe cu 0 pe stivă"
+    },
+    {
+      "focus": [0],
+      "used": [
+        [0, 2],
+        [0, 1]
+      ],
+      "seen": [1, 2],
+      "rows": [
+        {
+          "label": "stiva",
+          "values": [2, 1]
+        },
+        {
+          "label": "vizitate",
+          "values": [0]
+        }
+      ],
+      "caption": "Ia 0 de deasupra și vizitează-l. Vecinii lui intră în ordine inversă, 2 apoi 1, așa că 1 e deasupra"
+    },
+    {
+      "focus": [1],
+      "used": [[1, 3]],
+      "seen": [2, 3],
+      "done": [0],
+      "rows": [
+        {
+          "label": "stiva",
+          "values": [2, 3]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1]
+        }
+      ],
+      "caption": "Ia 1 de deasupra și vizitează-l. 3 intră pe stivă"
+    },
+    {
+      "focus": [3],
+      "used": [[3, 4]],
+      "seen": [2, 4],
+      "done": [0, 1],
+      "rows": [
+        {
+          "label": "stiva",
+          "values": [2, 4]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3]
+        }
+      ],
+      "caption": "Ia 3 de deasupra și vizitează-l. 4 intră pe stivă"
+    },
+    {
+      "focus": [4],
+      "used": [[4, 2]],
+      "seen": [2],
+      "done": [0, 1, 3],
+      "rows": [
+        {
+          "label": "stiva",
+          "values": [2, 2]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3, 4]
+        }
+      ],
+      "caption": "Ia 4 de deasupra și vizitează-l. 2 intră pe stivă: e deja pe stivă, dar nu e văzut încă"
+    },
+    {
+      "focus": [2],
+      "done": [0, 1, 3, 4],
+      "rows": [
+        {
+          "label": "stiva",
+          "values": [2]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3, 4, 2]
+        }
+      ],
+      "caption": "Ia 2 de deasupra și vizitează-l. Nu e nimic nou de pus"
+    },
+    {
+      "focus": [2],
+      "done": [0, 1, 3, 4],
+      "rows": [
+        {
+          "label": "stiva",
+          "values": []
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3, 4, 2]
+        }
+      ],
+      "caption": "Ia 2 de deasupra: e văzut deja, așa că sari peste el. Stiva e goală: ordinea e 0 1 3 4 2"
+    }
+  ]
+}
