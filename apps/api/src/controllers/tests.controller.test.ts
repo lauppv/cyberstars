@@ -140,7 +140,7 @@ describe('runTests submission history', () => {
 
     await ctrl.runTests(req, res, next);
 
-    expect(mockRecord).toHaveBeenCalledWith(7, 'python', 'booleans', 'ro', 'print(2)', {
+    expect(mockRecord).toHaveBeenCalledWith(7, 'python', 'booleans', 'ro', 'python', 'print(2)', {
       ...verdict,
       submission: summary,
     });
@@ -155,7 +155,72 @@ describe('runTests submission history', () => {
     await ctrl.runTests(req, mockRes(), next);
 
     expect(mockMarkComplete).toHaveBeenCalled();
-    expect(mockRecord).toHaveBeenCalledWith(7, 'python', 'booleans', 'en', 'x', expect.anything());
+    expect(mockRecord).toHaveBeenCalledWith(
+      7,
+      'python',
+      'booleans',
+      'en',
+      'python',
+      'x',
+      expect.anything(),
+    );
+  });
+
+  it('runs and records a multi-language lesson in the language picked, and ticks it as one', async () => {
+    mockRunLessonTests.mockResolvedValue({ ...verdict, status: 'passed' });
+    mockRecord.mockResolvedValue({ ...summary, status: 'passed' });
+    const req = mockReq({
+      user: { id: 7 } as Request['user'],
+      params: { courseKey: 'trees-graphs', lessonSlug: 'trees' },
+      body: { code: 'int x;', lang: 'en', language: 'c' },
+    });
+
+    await ctrl.runTests(req, mockRes(), next);
+
+    expect(mockRunLessonTests).toHaveBeenCalledWith(
+      'user:7',
+      'trees-graphs',
+      'trees',
+      'int x;',
+      'en',
+      'c',
+    );
+    expect(mockMarkComplete).toHaveBeenCalledWith(7, 'trees-graphs', 'trees');
+    expect(mockRecord).toHaveBeenCalledWith(
+      7,
+      'trees-graphs',
+      'trees',
+      'en',
+      'c',
+      'int x;',
+      expect.anything(),
+    );
+  });
+
+  it('records a multi-language attempt as Python when no language came', async () => {
+    mockRunLessonTests.mockResolvedValue({ ...verdict });
+    mockRecord.mockResolvedValue(summary);
+    const req = mockReq({
+      user: { id: 7 } as Request['user'],
+      params: { courseKey: 'trees-graphs', lessonSlug: 'trees' },
+    });
+
+    await ctrl.runTests(req, mockRes(), next);
+
+    expect(mockRecord.mock.calls[0][4]).toBe('python');
+  });
+
+  it('records an algorithm challenge in the language its key names', async () => {
+    mockRunLessonTests.mockResolvedValue({ ...verdict });
+    mockRecord.mockResolvedValue(summary);
+    const req = mockReq({
+      user: { id: 7 } as Request['user'],
+      params: { courseKey: 'algo-java', lessonSlug: 'bubble-sort' },
+    });
+
+    await ctrl.runTests(req, mockRes(), next);
+
+    expect(mockRecord.mock.calls[0][4]).toBe('java');
   });
 
   it('keeps no history for a guest', async () => {

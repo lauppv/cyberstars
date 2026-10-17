@@ -318,6 +318,25 @@ describe('chat', () => {
     });
   });
 
+  it('passes on the language on screen of a multi-language lesson', async () => {
+    mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'blocked' }));
+    const lesson = { courseKey: 'trees-graphs', lessonSlug: 'trees' };
+
+    await chat(
+      mockReq({ lesson, work: { code: 'int x;', runOutput: '', language: 'c' } }),
+      mockRes() as unknown as Response,
+      vi.fn(),
+    );
+
+    expect(mockTutor.askTutor.mock.calls[0][0].lesson).toEqual({
+      ...lesson,
+      code: 'int x;',
+      runOutput: '',
+      verdict: null,
+      language: 'c',
+    });
+  });
+
   it('sends no lesson work in the general conversation', async () => {
     mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'blocked' }));
 

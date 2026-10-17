@@ -4,14 +4,21 @@ import type {
   SubmissionDetail,
   SubmissionSummary,
 } from '@cyberstars/shared/tests';
+import type { CodeLanguage } from '@cyberstars/shared/constants';
 
+// `language` is the one on screen on a multi-language course.
 export function runTests(
   courseKey: string,
   lessonSlug: string,
   code: string,
   lang: string,
+  language?: CodeLanguage,
 ): Promise<RunTestsResponse> {
-  return api.post<RunTestsResponse>(`/api/tests/${courseKey}/${lessonSlug}/run`, { code, lang });
+  return api.post<RunTestsResponse>(`/api/tests/${courseKey}/${lessonSlug}/run`, {
+    code,
+    lang,
+    ...(language && { language }),
+  });
 }
 
 /** The signed-in student's judge attempts on a lesson, newest first. */

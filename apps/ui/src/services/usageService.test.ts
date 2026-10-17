@@ -19,4 +19,13 @@ describe('usageService', () => {
     await revealSolution('python', 'loops', 'ro');
     expect(mockApi.post).toHaveBeenCalledWith('/api/usage/solution/python/loops', { lang: 'ro' });
   });
+
+  it("names the language on screen to reveal a multi-language lesson's solution", async () => {
+    mockApi.post.mockResolvedValue({});
+    await revealSolution('trees-graphs', 'trees', 'en', 'java');
+    expect(mockApi.post).toHaveBeenCalledWith('/api/usage/solution/trees-graphs/trees', {
+      lang: 'en',
+      language: 'java',
+    });
+  });
 });

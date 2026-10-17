@@ -91,6 +91,16 @@ describe('saveInterests', () => {
   });
 });
 
+describe('saveCodeLanguage', () => {
+  it('stores the language picked last', async () => {
+    await repo.saveCodeLanguage(1, 'c');
+    expect(mockPrisma.user.update).toHaveBeenCalledWith({
+      where: { id: 1 },
+      data: { codeLanguage: 'c' },
+    });
+  });
+});
+
 describe('create', () => {
   it('bootstraps the first account as ADMIN', async () => {
     const tx = {

@@ -45,14 +45,15 @@ describe('useLesson', () => {
     expect(result.current.content).toBe('# Hello');
     expect(result.current.starterCode).toBe('print(1)');
     expect(result.current.error).toBeNull();
-    expect(mockFetchLesson).toHaveBeenCalledWith('python', 'py-1', 'en');
+    expect(mockFetchLesson).toHaveBeenCalledWith('python', 'py-1', 'en', undefined);
+    expect(result.current.language).toBeUndefined();
   });
 
   it('passes ro when the language is Romanian', async () => {
     mockLang = 'ro';
     const { result } = renderHook(() => useLesson('python', 'py-1'));
     await waitFor(() => expect(result.current.isLoading).toBe(false));
-    expect(mockFetchLesson).toHaveBeenCalledWith('python', 'py-1', 'ro');
+    expect(mockFetchLesson).toHaveBeenCalledWith('python', 'py-1', 'ro', undefined);
   });
 
   it('sets an error when the lesson fetch fails', async () => {
@@ -82,7 +83,7 @@ describe('useLesson', () => {
     mockLoggedIn = true;
     const { result } = renderHook(() => useLesson('python', 'py-1'));
     await waitFor(() => expect(result.current.isLoading).toBe(false));
-    expect(mockGetSaved).toHaveBeenCalledWith('python', 'py-1');
+    expect(mockGetSaved).toHaveBeenCalledWith('python', 'py-1', undefined);
     expect(result.current.savedCode).toBe('my saved code');
   });
 
@@ -99,6 +100,40 @@ describe('useLesson', () => {
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(mockGetSaved).not.toHaveBeenCalled();
     expect(result.current.savedCode).toBeNull();
+  });
+
+  it('loads a multi-language lesson, its starter and saved code in the language given', async () => {
+    mockLoggedIn = true;
+    const { result } = renderHook(() => useLesson('trees-graphs', 'trees', 'java'));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(mockFetchLesson).toHaveBeenCalledWith('trees-graphs', 'trees', 'en', 'java');
+    expect(mockFetchCode).toHaveBeenCalledWith('trees-graphs', 'trees', 'en', 'java');
+    expect(mockGetSaved).toHaveBeenCalledWith('trees-graphs', 'trees', 'java');
+    expect(result.current.language).toBe('java');
+  });
+
+  it("falls back to the language's own starter when a multi-language starter is missing", async () => {
+    mockFetchCode.mockRejectedValue(new Error('no code'));
+    const { result } = renderHook(() => useLesson('trees-graphs', 'trees', 'c'));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.starterCode).toContain('int main(void)');
+  });
+
+  it('keeps the lesson on screen while another language loads, then shows it', async () => {
+    const { result, rerender } = renderHook(
+      ({ language }) => useLesson('trees-graphs', 'trees', language),
+      { initialProps: { language: 'python' as 'python' | 'c' } },
+    );
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    mockFetchLesson.mockResolvedValue({ title: 'Trees', content: '# In C' } as Awaited<
+      ReturnType<typeof lessonService.fetchLesson>
+    >);
+    rerender({ language: 'c' });
+    expect(result.current.isLoading).toBe(false);
+    expect(result.current.language).toBe('python');
+    await waitFor(() => expect(result.current.language).toBe('c'));
+    expect(result.current.content).toBe('# In C');
+    expect(result.current.isLoading).toBe(false);
   });
 
   it('flips back to loading synchronously when the lesson changes', async () => {

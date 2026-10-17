@@ -141,6 +141,22 @@ describe('getUser', () => {
     expect((await getUser(1)).placementLevel).toBeNull();
   });
 
+  it('gives the code language picked last, and none for anything else', async () => {
+    const ada = {
+      id: 1,
+      name: 'Ada',
+      email: 'ada@test.com',
+      role: 'USER',
+      createdAt: new Date('2024-01-01T00:00:00Z'),
+    };
+    mockUserRepo.findById.mockResolvedValueOnce({ ...ada, codeLanguage: 'java' });
+    mockUserRepo.findById.mockResolvedValueOnce({ ...ada, codeLanguage: null });
+    mockUserRepo.findById.mockResolvedValueOnce({ ...ada, codeLanguage: 'cobol' });
+    expect((await getUser(1)).codeLanguage).toBe('java');
+    expect((await getUser(1)).codeLanguage).toBeNull();
+    expect((await getUser(1)).codeLanguage).toBeNull();
+  });
+
   it('nullifies expired status', async () => {
     const past = new Date(Date.now() - 60_000);
     mockUserRepo.findById.mockResolvedValue({

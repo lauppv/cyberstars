@@ -1,6 +1,10 @@
 import fs from 'fs';
 import path from 'path';
-import { ALL_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '@cyberstars/shared/constants';
+import {
+  ALL_COURSE_KEYS,
+  TERMINAL_COURSE_KEYS,
+  isCodeLanguage,
+} from '@cyberstars/shared/constants';
 import { courseDir } from '@cyberstars/content/paths';
 import { AppError } from '../middleware/errorHandler.js';
 
@@ -14,14 +18,20 @@ export function assertValidCourse(courseKey: string): void {
   }
 }
 
-export function contentDir(courseKey: string): string {
+// `language` picks the folder of a multi-language course (Python without one);
+// other courses have one folder and ignore it.
+export function contentDir(courseKey: string, language?: string): string {
   assertValidCourse(courseKey);
-  return courseDir(courseKey);
+  if (language !== undefined && !isCodeLanguage(language)) {
+    throw new AppError(400, 'Invalid language');
+  }
+  return courseDir(courseKey, language);
 }
 
 // A lesson is judge-completable iff it ships an EN <slug>-tests.json, the same
 // definition the static-content generator uses to emit `hasTests` into
-// curriculum.json. Untested lessons are false.
+// curriculum.json (on a multi-language course, the Python one, which the
+// generator makes sure every language has). Untested lessons are false.
 export function hasTestsFile(courseKey: string, slug: string): boolean {
   return fs.existsSync(path.join(contentDir(courseKey), `${slug}-tests.json`));
 }

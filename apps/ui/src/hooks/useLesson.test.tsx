@@ -76,7 +76,7 @@ describe('useLesson', () => {
     i18nState.language = 'ro';
     const { result } = renderHook(() => useLesson('python', 'print'));
     await waitFor(() => expect(result.current.isLoading).toBe(false));
-    expect(mockFetchLesson).toHaveBeenCalledWith('python', 'print', 'ro');
+    expect(mockFetchLesson).toHaveBeenCalledWith('python', 'print', 'ro', undefined);
   });
 
   it('surfaces a not-found error when the lesson fetch fails', async () => {

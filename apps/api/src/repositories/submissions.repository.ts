@@ -12,6 +12,7 @@ export interface CreateSubmissionInput {
   runtimeMs: number | null;
   referenceMs: number | null;
   lang: string;
+  language: string;
   code: string;
   syntaxError: string | null;
   structureFailures: Prisma.InputJsonValue;
@@ -28,6 +29,7 @@ const summarySelect = {
   runtimeMs: true,
   referenceMs: true,
   lang: true,
+  language: true,
   createdAt: true,
 } satisfies Prisma.LessonSubmissionSelect;
 

@@ -1,7 +1,11 @@
 import type { UserRole } from '@cyberstars/shared/auth';
 import type { Interest } from '@cyberstars/shared/interests';
 import type { PlacementLevel } from '@cyberstars/shared/placement';
-import { TERMINAL_COURSE_KEYS } from '@cyberstars/shared/constants';
+import {
+  TERMINAL_COURSE_KEYS,
+  codeLanguageOf,
+  type CodeLanguage,
+} from '@cyberstars/shared/constants';
 import type { TutorFinish, TutorStreamEvent, TutorTerminalCheck } from '@cyberstars/shared/tutor';
 import type { StructureFailure, SubmissionDetail, TestCaseResult } from '@cyberstars/shared/tests';
 import { AppError } from '../middleware/errorHandler.js';
@@ -359,6 +363,8 @@ export interface LessonWork {
   verdict: SubmissionDetail | null;
   // On a Linux lesson, the checks of the last Run Tests on screen.
   checks?: TutorTerminalCheck[];
+  // On a course taught in Python, Java and C, the language on screen.
+  language?: CodeLanguage;
 }
 
 // What the student wrote or a program printed can be long; the model gets the
@@ -494,7 +500,7 @@ function workTurn(work: LessonWork, lang: Lang): string {
       ...describeChecks(work.checks, l),
     ].join('\n');
   }
-  const language = work.courseKey.replace('algo-', '');
+  const language = codeLanguageOf(work.courseKey, work.language);
   const lines = [l.intro];
   if (work.code.trim()) lines.push(l.code, fenced(work.code, language));
   else lines.push(l.noCode);
@@ -608,8 +614,8 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
   const lang = detectLanguage(opts.message, conversationLanguage(opts.history, opts.uiLang));
   let chatLesson: PromptLesson | undefined;
   if (opts.lesson) {
-    const { courseKey, lessonSlug } = opts.lesson;
-    const read = lessonStatement(courseKey, lessonSlug, lang);
+    const { courseKey, lessonSlug, language } = opts.lesson;
+    const read = lessonStatement(courseKey, lessonSlug, lang, language);
     if (!read) throw new AppError(404, 'No such lesson');
     chatLesson = {
       ...read,

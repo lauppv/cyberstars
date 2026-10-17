@@ -6,7 +6,9 @@
 //   <public>/curriculum.json      : same shape/order as the old GET /api/curriculum
 //   <public>/lessons/<courseKey>/ : lesson bodies (<slug>.md) and starter code
 //                                   (<slug>-code.md), copied from the source tree
-//                                   (solutions are not: they stay server-side)
+//                                   (solutions are not: they stay server-side);
+//                                   a multi-language course has one folder per
+//                                   language, <courseKey>/<language>/
 //
 // The app names its static files folder; the UI runs it before dev and build:
 //
@@ -15,6 +17,7 @@
 // The output is generated, not committed.
 import fs from 'fs';
 import path from 'path';
+import { CODE_LANGUAGES, isMultiLanguage } from '@cyberstars/shared/constants';
 import { courses, lessons } from '../curriculum.js';
 import { courseDir } from '../paths.js';
 
@@ -25,6 +28,27 @@ if (!outDir) {
 }
 const PUBLIC_DIR = path.resolve(outDir);
 const LESSONS_OUT = path.join(PUBLIC_DIR, 'lessons');
+
+// A multi-language course teaches every lesson in each language, so the
+// build stops on a lesson missing one, or missing the starter, tests or
+// solution its Python twin has (`hasTests` and `hasSolution` are read from
+// Python).
+const missing: string[] = [];
+for (const lesson of lessons.filter((l) => isMultiLanguage(l.courseKey))) {
+  const has = (language: string, suffix: string) =>
+    fs.existsSync(path.join(courseDir(lesson.courseKey, language), `${lesson.slug}${suffix}`));
+  for (const language of CODE_LANGUAGES) {
+    for (const suffix of ['.md', '-code.md', '-tests.json', '-solution.md']) {
+      if ((suffix === '.md' || has('python', suffix)) && !has(language, suffix)) {
+        missing.push(`${lesson.courseKey}/${language}/${lesson.slug}${suffix}`);
+      }
+    }
+  }
+}
+if (missing.length) {
+  console.error(`A multi-language lesson is missing a language:\n  ${missing.join('\n  ')}`);
+  process.exit(1);
+}
 
 // curriculum.json: courses by sortOrder, lessons by sortOrder within a course,
 // identical to what curriculum.repository + lesson.service used to return.
@@ -85,11 +109,17 @@ function copyMarkdown(srcDir: string, destDir: string): number {
 fs.rmSync(LESSONS_OUT, { recursive: true, force: true });
 let copied = 0;
 for (const course of curriculum) {
-  const src = courseDir(course.key);
-  const dest = path.join(LESSONS_OUT, course.key);
-  copied += copyMarkdown(src, dest);
-  for (const locale of LOCALE_DIRS) {
-    copied += copyMarkdown(path.join(src, locale), path.join(dest, locale));
+  const folders = isMultiLanguage(course.key)
+    ? CODE_LANGUAGES.map((language) => ({
+        src: courseDir(course.key, language),
+        dest: path.join(LESSONS_OUT, course.key, language),
+      }))
+    : [{ src: courseDir(course.key), dest: path.join(LESSONS_OUT, course.key) }];
+  for (const { src, dest } of folders) {
+    copied += copyMarkdown(src, dest);
+    for (const locale of LOCALE_DIRS) {
+      copied += copyMarkdown(path.join(src, locale), path.join(dest, locale));
+    }
   }
 }
 

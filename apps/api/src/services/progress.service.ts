@@ -5,7 +5,14 @@ import * as userRepo from '../repositories/user.repository.js';
 import * as dailyService from './daily.service.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { assertValidCourse } from './paths.js';
-import { xpForLesson, dailyBonusXp, TOUR_LESSON } from '@cyberstars/shared/constants';
+import {
+  xpForLesson,
+  dailyBonusXp,
+  TOUR_LESSON,
+  codeLanguageOf,
+  isCodeLanguage,
+  isMultiLanguage,
+} from '@cyberstars/shared/constants';
 import type { CourseProgress } from '@cyberstars/shared/progress';
 
 // Guards lesson-level writes/reads: reject unknown courses and slugs so the
@@ -77,23 +84,37 @@ export async function markComplete(
   }
 }
 
+// On a multi-language course the code is kept per language (Python when none
+// is named), so switching languages keeps each one's; any other course keeps
+// one, under ''.
+function savedCodeLanguage(courseKey: string, language?: string): string {
+  if (language !== undefined && !isCodeLanguage(language)) {
+    throw new AppError(400, 'Invalid language');
+  }
+  return isMultiLanguage(courseKey) ? codeLanguageOf(courseKey, language) : '';
+}
+
 export async function saveCode(
   userId: number,
   courseKey: string,
   lessonSlug: string,
   code: string,
+  language?: string,
 ): Promise<void> {
+  const saved = savedCodeLanguage(courseKey, language);
   await assertLesson(courseKey, lessonSlug);
-  await progressRepo.upsertCode(userId, courseKey, lessonSlug, code);
+  await progressRepo.upsertCode(userId, courseKey, lessonSlug, saved, code);
 }
 
 export async function getSavedCode(
   userId: number,
   courseKey: string,
   lessonSlug: string,
+  language?: string,
 ): Promise<string | null> {
+  const saved = savedCodeLanguage(courseKey, language);
   await assertLesson(courseKey, lessonSlug);
-  return progressRepo.getSavedCode(userId, courseKey, lessonSlug);
+  return progressRepo.getSavedCode(userId, courseKey, lessonSlug, saved);
 }
 
 export async function trackAccess(

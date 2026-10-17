@@ -11,6 +11,12 @@ import {
   xpForLevel,
   levelTitleKey,
   MAX_TITLED_LEVEL,
+  CODE_LANGUAGES,
+  MULTI_LANGUAGE_COURSE_KEYS,
+  isMultiLanguage,
+  isCodeLanguage,
+  codeLanguageOf,
+  isBeta,
 } from './constants.js';
 
 describe('progressPct', () => {
@@ -108,5 +114,40 @@ describe('course key lists', () => {
     for (const key of ALGO_COURSE_KEYS) {
       expect(MAIN_COURSE_KEYS).toContain(baseLanguage(key));
     }
+  });
+});
+
+describe('multi-language courses', () => {
+  it('teach every lesson in Python, Java and C, and are main courses', () => {
+    expect(CODE_LANGUAGES).toEqual(['python', 'java', 'c']);
+    for (const key of MULTI_LANGUAGE_COURSE_KEYS) {
+      expect(isMultiLanguage(key)).toBe(true);
+      expect(MAIN_COURSE_KEYS).toContain(key);
+    }
+    expect(isMultiLanguage('python')).toBe(false);
+    expect(isMultiLanguage('algo-c')).toBe(false);
+  });
+
+  it('knows a code language from anything else', () => {
+    expect(isCodeLanguage('java')).toBe(true);
+    expect(isCodeLanguage('algo-java')).toBe(false);
+    expect(isCodeLanguage('linux')).toBe(false);
+    expect(isCodeLanguage(null)).toBe(false);
+  });
+
+  it('names the language a lesson runs in: the one picked, else Python', () => {
+    expect(codeLanguageOf('trees-graphs', 'c')).toBe('c');
+    expect(codeLanguageOf('trees-graphs')).toBe('python');
+    expect(codeLanguageOf('trees-graphs', 'ruby')).toBe('python');
+  });
+
+  it("names a one-language course's own language, whatever was picked", () => {
+    expect(codeLanguageOf('algo-java', 'c')).toBe('java');
+    expect(codeLanguageOf('python')).toBe('python');
+  });
+
+  it('are Beta while they are being built', () => {
+    expect(isBeta('trees-graphs')).toBe(true);
+    expect(isBeta('python')).toBe(false);
   });
 });

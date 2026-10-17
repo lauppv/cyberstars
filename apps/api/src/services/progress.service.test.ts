@@ -138,10 +138,42 @@ describe('saveCode / getSavedCode', () => {
       1,
       'python',
       'booleans',
+      '',
       "print('hi')",
     );
     const code = await getSavedCode(1, 'python', 'booleans');
     expect(code).toBe("print('hi')");
+    expect(mockProgressRepo.getSavedCode).toHaveBeenCalledWith(1, 'python', 'booleans', '');
+  });
+
+  it('keeps one code per lesson on a course with one language, whatever is named', async () => {
+    await saveCode(1, 'python', 'booleans', 'x = 1', 'java');
+    expect(mockProgressRepo.upsertCode).toHaveBeenCalledWith(1, 'python', 'booleans', '', 'x = 1');
+  });
+
+  it("keeps a multi-language lesson's code per language, Python when none is named", async () => {
+    await saveCode(1, 'trees-graphs', 'trees', 'int x;', 'c');
+    expect(mockProgressRepo.upsertCode).toHaveBeenCalledWith(
+      1,
+      'trees-graphs',
+      'trees',
+      'c',
+      'int x;',
+    );
+    await getSavedCode(1, 'trees-graphs', 'trees');
+    expect(mockProgressRepo.getSavedCode).toHaveBeenCalledWith(
+      1,
+      'trees-graphs',
+      'trees',
+      'python',
+    );
+  });
+
+  it('rejects a language that is not one of the code languages', async () => {
+    await expect(getSavedCode(1, 'trees-graphs', 'trees', 'ruby')).rejects.toMatchObject({
+      statusCode: 400,
+    });
+    expect(mockProgressRepo.getSavedCode).not.toHaveBeenCalled();
   });
 });
 

@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { Eye, RotateCcw, Save, Share2 } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router';
 import { useLesson } from '../hooks/useLesson';
+import { useCodeLanguage } from '../hooks/useCodeLanguage';
 import { useCodeExecution } from '../hooks/useCodeExecution';
 import { useTerminalSession } from '../hooks/useTerminalSession';
 import { useProgress } from '../hooks/useProgress';
@@ -36,6 +37,7 @@ import { LessonTour } from '../components/tour/LessonTour';
 import { TourNotice } from '../components/tour/TourNotice';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
+import { Segmented } from '../components/ui/Segmented';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ResizeHandle } from '../components/ui/ResizeHandle';
 import { useResizeSplit } from '../hooks/useResizeSplit';
@@ -53,7 +55,12 @@ import {
   ALGO_COURSE_KEYS,
   MAIN_COURSE_KEYS,
   TOUR_LESSON,
+  CODE_LANGUAGES,
+  isBeta,
+  isMultiLanguage,
+  type CodeLanguage,
 } from '@cyberstars/shared/constants';
+import { BetaBadge } from '../components/ui/BetaBadge';
 import { switchLanguage } from '../i18n';
 
 const TOUR_LANGUAGE_KEY = 'cyberstars.tourLanguage';
@@ -93,7 +100,21 @@ export function LessonPage() {
     category === TOUR_LESSON.courseKey &&
     lesson === TOUR_LESSON.slug;
 
-  const { title, content, starterCode, savedCode, isLoading } = useLesson(category, lesson);
+  // A multi-language course's lessons come in each of CODE_LANGUAGES, and the
+  // student switches between them here; every other course has one language.
+  const multiLanguage = isMultiLanguage(category);
+  const [pickedLanguage, pickLanguage] = useCodeLanguage();
+  const {
+    title,
+    content,
+    starterCode,
+    savedCode,
+    isLoading,
+    language: shownLanguage,
+  } = useLesson(category, lesson, multiLanguage ? pickedLanguage : undefined);
+  // What the editor, a run and the forum go by: the course key on a course
+  // with one language, the language on screen on a multi-language one.
+  const editorLanguage = shownLanguage ?? category;
   const { notifyRunComplete } = useGuestSignupPrompt();
   const notifyGuestRun = useCallback(() => notifyRunComplete(0), [notifyRunComplete]);
   const { output, isRunning, execute, sendInput, clearOutput } =
@@ -180,6 +201,9 @@ export function LessonPage() {
   const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
   const loadedLessonRef = useRef('');
   const loadedStarterRef = useRef('');
+  // On a multi-language lesson, the code each language had when the student
+  // switched away from it, so switching back finds it as it was.
+  const draftsRef = useRef(new Map<string, string>());
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -205,14 +229,16 @@ export function LessonPage() {
   // Populate the editor once a lesson's code is loaded. Opening a lesson loads
   // the user's saved code (or the starter). A language switch within the same
   // lesson re-translates the editor only while it still holds the untouched
-  // starter; code the user has written or saved is preserved.
+  // starter; code the user has written or saved is preserved. Switching the
+  // code's language on a multi-language lesson opens that language's code: the
+  // draft it was left with, else the saved code, else the starter.
   useEffect(() => {
     if (isLoading) return;
-    const lessonKey = `${category}/${lesson}`;
+    const lessonKey = `${category}/${lesson}/${shownLanguage ?? ''}`;
     if (loadedLessonRef.current !== lessonKey) {
       loadedLessonRef.current = lessonKey;
       loadedStarterRef.current = starterCode;
-      setUserCode(savedCode ?? starterCode);
+      setUserCode(draftsRef.current.get(shownLanguage ?? '') ?? savedCode ?? starterCode);
       return;
     }
     if (starterCode !== loadedStarterRef.current) {
@@ -220,11 +246,12 @@ export function LessonPage() {
       loadedStarterRef.current = starterCode;
       setUserCode((prev) => (prev === prevStarter ? starterCode : prev));
     }
-  }, [isLoading, category, lesson, starterCode, savedCode]);
+  }, [isLoading, category, lesson, shownLanguage, starterCode, savedCode]);
 
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
     justMarkedRef.current = false;
+    draftsRef.current.clear();
     clearOutput();
     setTimeout(() => {
       setShowToast(false);
@@ -273,8 +300,18 @@ export function LessonPage() {
       code: userCode,
       runOutput: output.slice(-TUTOR_RUN_OUTPUT_MAX_LENGTH),
       ...(testResults?.submission && { submissionId: testResults.submission.id }),
+      ...(shownLanguage && { language: shownLanguage }),
     };
-  }, [isTerminal, terminal.lines, terminalTestResult, t, userCode, output, testResults]);
+  }, [
+    isTerminal,
+    terminal.lines,
+    terminalTestResult,
+    t,
+    userCode,
+    output,
+    testResults,
+    shownLanguage,
+  ]);
 
   // Where the student stands, for the tutor's first suggestions in this
   // lesson's chat: the verdict on screen, else whether they wrote anything yet.
@@ -350,8 +387,38 @@ export function LessonPage() {
     if (isRunning) return;
     setTestsError(null);
     setEditorRuns((n) => n + 1);
-    execute(userCode, category);
-  }, [isRunning, execute, userCode, category]);
+    execute(userCode, editorLanguage);
+  }, [isRunning, execute, userCode, editorLanguage]);
+
+  // The language's code stays as it was, here and, for a signed-in student,
+  // saved, so it is there after a reload too. A run's output and verdict were
+  // the other language's, so they go.
+  const switchCodeLanguage = useCallback(
+    (next: CodeLanguage) => {
+      if (!shownLanguage || next === shownLanguage || isRunning || isTesting) return;
+      draftsRef.current.set(shownLanguage, userCode);
+      if (userCode !== starterCode && userCode !== savedCode) {
+        saveCode(lesson, userCode, shownLanguage).catch(() => {});
+      }
+      clearOutput();
+      setTestResults(null);
+      setTestsError(null);
+      setFailedRuns(0);
+      pickLanguage(next);
+    },
+    [
+      shownLanguage,
+      isRunning,
+      isTesting,
+      userCode,
+      starterCode,
+      savedCode,
+      saveCode,
+      lesson,
+      clearOutput,
+      pickLanguage,
+    ],
+  );
 
   // Judge run: all test cases pass → the lesson marks itself complete (lessons
   // with tests have no manual Mark Complete). Guests see the verdict but have
@@ -362,7 +429,7 @@ export function LessonPage() {
     setTestsError(null);
     try {
       const lang = i18n.language === 'ro' ? 'ro' : 'en';
-      const results = await testsService.runTests(category, lesson, userCode, lang);
+      const results = await testsService.runTests(category, lesson, userCode, lang, shownLanguage);
       setTestResults(results);
       setFailedRuns((n) => (results.status === 'passed' ? 0 : n + 1));
       if (results.submission) addSubmission(results.submission);
@@ -375,7 +442,7 @@ export function LessonPage() {
         // Persist the passing code so reopening the lesson (e.g. "Review")
         // shows the solved state instead of an empty editor. Stays until the
         // student resets or saves again manually.
-        saveCode(lesson, userCode).catch(() => {});
+        saveCode(lesson, userCode, shownLanguage).catch(() => {});
         if (!lessonCompleted) {
           justMarkedRef.current = true;
           setOptimisticCompleted(true);
@@ -394,6 +461,7 @@ export function LessonPage() {
     category,
     lesson,
     userCode,
+    shownLanguage,
     i18n,
     isLoggedIn,
     lessonCompleted,
@@ -465,9 +533,17 @@ export function LessonPage() {
   }, []);
 
   // Loading an old attempt asks first when it would throw away code the
-  // student has written since the lesson opened.
+  // student has written since the lesson opened. On a multi-language lesson an
+  // attempt in another language opens in that language, the code on screen
+  // kept as its own language's draft.
   const loadSubmissionCode = useCallback(
-    (code: string) => {
+    (code: string, language: CodeLanguage) => {
+      if (shownLanguage && language !== shownLanguage) {
+        switchCodeLanguage(language);
+        draftsRef.current.set(language, code);
+        setActiveTab('workspace');
+        return;
+      }
       const untouched =
         userCode === code ||
         userCode.trim() === '' ||
@@ -477,17 +553,17 @@ export function LessonPage() {
       setUserCode(code);
       setActiveTab('workspace');
     },
-    [userCode, starterCode, savedCode, t],
+    [shownLanguage, switchCodeLanguage, userCode, starterCode, savedCode, t],
   );
 
   const handleSave = useCallback(async () => {
     if (isLoggedIn) {
-      await saveCode(lesson, userCode);
+      await saveCode(lesson, userCode, shownLanguage);
       setShowSaveToast(true);
       if (saveToastTimer.current) clearTimeout(saveToastTimer.current);
       saveToastTimer.current = setTimeout(() => setShowSaveToast(false), 2000);
     }
-  }, [isLoggedIn, saveCode, lesson, userCode]);
+  }, [isLoggedIn, saveCode, lesson, userCode, shownLanguage]);
 
   useEffect(() => {
     return () => {
@@ -569,6 +645,17 @@ export function LessonPage() {
               className={`${view === 'lesson' ? 'block' : 'hidden'} flex-1 min-h-0 overflow-y-auto`}
             >
               <div className="px-9 py-8">
+                {multiLanguage && (
+                  <div className="mb-5">
+                    <Segmented
+                      value={pickedLanguage}
+                      options={CODE_LANGUAGES}
+                      onChange={switchCodeLanguage}
+                      optionLabel={(language) => courseMeta(language).label}
+                      ariaLabel={t('lesson.codeLanguage')}
+                    />
+                  </div>
+                )}
                 {(() => {
                   const { rest } = parseDifficulty(title);
                   const { difficulty } = parseDifficulty(lessonList[currentIndex]?.title ?? '');
@@ -581,6 +668,7 @@ export function LessonPage() {
                             total: lessonList.length,
                           })}
                         </span>
+                        {isBeta(category) && <BetaBadge />}
                         {lessonCompleted && (
                           <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
                             {t('lesson.completed')}
@@ -660,7 +748,6 @@ export function LessonPage() {
             {view === 'submissions' && (
               <div data-tour="submissions" className="flex-1 min-h-0 overflow-y-auto">
                 <SubmissionsPanel
-                  language={category}
                   showRuntime={isAlgo}
                   list={submissions.list}
                   failed={submissions.failed}
@@ -719,9 +806,9 @@ export function LessonPage() {
                 <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
                   <span
                     className="inline-block w-2 h-2 rounded-full"
-                    style={{ background: courseMeta(category).color }}
+                    style={{ background: courseMeta(editorLanguage).color }}
                   />
-                  {courseMeta(category).langLabel}
+                  {courseMeta(editorLanguage).langLabel}
                 </div>
                 <div className="flex items-center gap-2">
                   {showSaveToast && (
@@ -854,7 +941,7 @@ export function LessonPage() {
                   <CodeEditor
                     value={userCode}
                     onChange={setUserCode}
-                    language={category}
+                    language={editorLanguage}
                     fontSize="16px"
                     onRun={handleRun}
                   />
@@ -950,6 +1037,7 @@ export function LessonPage() {
           courseKey={category}
           lessonSlug={lesson}
           lang={i18n.language === 'ro' ? 'ro' : 'en'}
+          language={shownLanguage}
           onClose={() => setConfirmSolution(false)}
           onConfirmed={(revealed) => {
             setConfirmSolution(false);
@@ -961,7 +1049,7 @@ export function LessonPage() {
         <SolutionModal
           solution={solution}
           currentCode={isTerminal ? undefined : userCode}
-          language={category}
+          language={editorLanguage}
           onClose={() => setSolution(null)}
         />
       )}
@@ -983,7 +1071,7 @@ export function LessonPage() {
       {showShareModal && (
         <ShareToForumModal
           code={userCode}
-          language={category}
+          language={editorLanguage}
           lessonTitle={title}
           onClose={() => setShowShareModal(false)}
         />

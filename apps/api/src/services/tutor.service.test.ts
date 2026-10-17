@@ -714,6 +714,7 @@ describe('askTutor: a lesson chat', () => {
     runtimeMs: null,
     referenceMs: null,
     lang: 'en' as const,
+    language: 'python' as const,
     createdAt: '2026-10-15T08:00:00.000Z',
     code,
     syntaxError: null,
@@ -754,7 +755,7 @@ describe('askTutor: a lesson chat', () => {
   it('puts the statement in the prompt and keeps the conversation on the challenge', async () => {
     const { system } = await lastTurn({ ...ask, lesson });
 
-    expect(tools.lessonStatement).toHaveBeenCalledWith('algo-python', 'sort-desc', 'en');
+    expect(tools.lessonStatement).toHaveBeenCalledWith('algo-python', 'sort-desc', 'en', undefined);
     expect(system).toContain(
       'This conversation is about the challenge "Sort descending" (algo-python/sort-desc)',
     );
@@ -784,6 +785,23 @@ describe('askTutor: a lesson chat', () => {
     expect(work).toContain("The student's work right now:");
     expect(work).toContain('```python\nnums = [3, 1]\nprint(sorted(nums))\n```');
     expect(work).toContain("The end of their last Run's output:\n```\n[1, 3]\n\n```");
+  });
+
+  it('reads a multi-language lesson and shows the code in the language on screen', async () => {
+    const { turn } = await lastTurn({
+      ...ask,
+      page: '/lesson/trees-graphs/trees',
+      lesson: {
+        ...lesson,
+        courseKey: 'trees-graphs',
+        lessonSlug: 'trees',
+        code: 'class Node {}',
+        language: 'java',
+      },
+    });
+
+    expect(tools.lessonStatement).toHaveBeenCalledWith('trees-graphs', 'trees', 'en', 'java');
+    expect(turn.parts[0].text).toContain('```java\nclass Node {}\n```');
   });
 
   it("describes the failed test by its number, input, expected and the student's output", async () => {
@@ -866,7 +884,7 @@ describe('askTutor: a lesson chat', () => {
       lesson: { ...lesson, courseKey: 'python', lessonSlug: 'for' },
     });
 
-    expect(tools.lessonStatement).toHaveBeenCalledWith('python', 'for', 'ro');
+    expect(tools.lessonStatement).toHaveBeenCalledWith('python', 'for', 'ro', undefined);
     expect(system).toContain(
       'Conversația aceasta este despre lecția „Sort descending” (python/for)',
     );

@@ -42,8 +42,26 @@ describe('SolutionConfirmModal', () => {
     fireEvent.click(screen.getByText('Reveal solution'));
 
     await waitFor(() => expect(onConfirmed).toHaveBeenCalledWith('```py\nprint(1)\n```'));
-    expect(h.service.revealSolution).toHaveBeenCalledWith('python', 'loops', 'en');
+    expect(h.service.revealSolution).toHaveBeenCalledWith('python', 'loops', 'en', undefined);
     expect(h.usage.applySummary).toHaveBeenCalledWith(next);
+  });
+
+  it('asks for the solution in the language on screen of a multi-language lesson', async () => {
+    h.service.revealSolution.mockResolvedValue({ solution: 'x', usage: fullSummary() });
+    render(
+      <SolutionConfirmModal
+        courseKey="trees-graphs"
+        lessonSlug="trees"
+        lang="ro"
+        language="c"
+        onConfirmed={vi.fn()}
+        onClose={vi.fn()}
+      />,
+    );
+    fireEvent.click(screen.getByText('Reveal solution'));
+    await waitFor(() =>
+      expect(h.service.revealSolution).toHaveBeenCalledWith('trees-graphs', 'trees', 'ro', 'c'),
+    );
   });
 
   it('disables reveal and warns when the daily cap is hit', () => {

@@ -31,6 +31,16 @@ describe('Profile flow', () => {
     expect(me.body.status).toBeNull();
   });
 
+  it('saves the code language picked last → reflected in /auth/me', async () => {
+    const { agent: a } = await createAuthenticatedAgent();
+
+    expect((await a.get('/auth/me').expect(200)).body.codeLanguage).toBeNull();
+    await a.put('/api/profile/code-language').send({ language: 'java' }).expect(204);
+    expect((await a.get('/auth/me').expect(200)).body.codeLanguage).toBe('java');
+    await a.put('/api/profile/code-language').send({ language: 'ruby' }).expect(400);
+    expect((await a.get('/auth/me').expect(200)).body.codeLanguage).toBe('java');
+  });
+
   it('unauthenticated user cannot update profile', async () => {
     await agent().patch('/api/profile').send({ bio: 'Nope' }).expect(401);
   });

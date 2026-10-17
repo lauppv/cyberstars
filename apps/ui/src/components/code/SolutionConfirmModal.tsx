@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useUsage } from '../../context/UsageContext';
 import * as usageService from '../../services/usageService';
 import { UsageMeter } from '../usage/UsageMeter';
+import type { CodeLanguage } from '@cyberstars/shared/constants';
 
 // Gate shown before the solution is revealed: confirms intent, spends one of the
 // daily Show Solution reveals and hands back the solution, which only the server
@@ -11,12 +12,15 @@ export function SolutionConfirmModal({
   courseKey,
   lessonSlug,
   lang,
+  language,
   onConfirmed,
   onClose,
 }: {
   courseKey: string;
   lessonSlug: string;
   lang: 'en' | 'ro';
+  // The language on screen, on a multi-language course.
+  language?: CodeLanguage;
   onConfirmed: (solution: string) => void;
   onClose: () => void;
 }) {
@@ -40,7 +44,12 @@ export function SolutionConfirmModal({
     setBusy(true);
     setError(null);
     try {
-      const { solution, usage } = await usageService.revealSolution(courseKey, lessonSlug, lang);
+      const { solution, usage } = await usageService.revealSolution(
+        courseKey,
+        lessonSlug,
+        lang,
+        language,
+      );
       applySummary(usage);
       onConfirmed(solution);
     } catch (err) {

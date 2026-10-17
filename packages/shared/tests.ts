@@ -2,6 +2,7 @@
 // (lesson-tests.service) and the client results panel. A lesson opts in by
 // shipping a <slug>-tests.json next to its markdown (server-side only; the
 // static-content generator does not copy it into public/).
+import type { CodeLanguage } from './constants.js';
 
 // 'masked' ignores integer runs (nondeterministic PIDs); 'unordered' compares
 // the set of lines (thread/process output whose line order is nondeterministic);
@@ -223,6 +224,8 @@ export interface SubmissionSummary {
   runtimeMs: number | null;
   referenceMs: number | null;
   lang: 'en' | 'ro';
+  /** The language the code ran in. */
+  language: CodeLanguage;
   /** ISO timestamp. */
   createdAt: string;
 }

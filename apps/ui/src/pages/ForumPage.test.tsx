@@ -77,6 +77,7 @@ function makeUser(role: UserRole, id = 99): AuthenticatedUser {
     onboardedAt: '2024-01-01T00:00:00Z',
     placementLevel: null,
     interests: ['python'],
+    codeLanguage: null,
   };
 }
 

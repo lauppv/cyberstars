@@ -26,6 +26,7 @@ const summaryRow = {
   runtimeMs: 12.5,
   referenceMs: 10.25,
   lang: 'ro',
+  language: 'python',
   createdAt,
 };
 
@@ -37,6 +38,7 @@ const summary = {
   runtimeMs: 12.5,
   referenceMs: 10.25,
   lang: 'ro',
+  language: 'python',
   createdAt: '2026-10-09T12:00:00.000Z',
 };
 
@@ -57,7 +59,9 @@ describe('record', () => {
       referenceMs: 10.25,
     };
 
-    expect(await service.record(7, 'python', 'print', 'ro', 'print(3)', result)).toEqual(summary);
+    expect(await service.record(7, 'python', 'print', 'ro', 'python', 'print(3)', result)).toEqual(
+      summary,
+    );
 
     expect(mockRepo.createAndPrune).toHaveBeenCalledWith(
       {
@@ -70,6 +74,7 @@ describe('record', () => {
         runtimeMs: 12.5,
         referenceMs: 10.25,
         lang: 'ro',
+        language: 'python',
         code: 'print(3)',
         syntaxError: null,
         structureFailures: [],
@@ -91,7 +96,7 @@ describe('record', () => {
       passedCount: 0,
     };
 
-    const out = await service.record(7, 'python', 'print', 'en', 'print(', result);
+    const out = await service.record(7, 'python', 'print', 'en', 'python', 'print(', result);
 
     expect(out.runtimeMs).toBeNull();
     expect(mockRepo.createAndPrune).toHaveBeenCalledWith(
@@ -146,7 +151,7 @@ describe('getForUser', () => {
       comparator: 'trimmed',
     });
     expect(mockRepo.findOwned).toHaveBeenCalledWith(7, 9);
-    expect(mockLoadTestsSpec).toHaveBeenCalledWith('python', 'print', 'ro');
+    expect(mockLoadTestsSpec).toHaveBeenCalledWith('python', 'print', 'ro', 'python');
   });
 
   it('reads the comparator from the lesson, and leaves it out once the lesson has no tests', async () => {

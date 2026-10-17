@@ -137,8 +137,13 @@ export function readLesson(courseKey: string, slug: string, lang: Lang): LessonS
   return { ...hit(entry), statement: readStatement(courseKey, slug, lang) };
 }
 
-function readStatement(courseKey: string, slug: string, lang: Lang): string {
-  return readLocalized(contentDir(courseKey), `${slug}.md`, lang).slice(0, STATEMENT_MAX_CHARS);
+// A multi-language course's lesson is read in the language given, Python
+// without one.
+function readStatement(courseKey: string, slug: string, lang: Lang, language?: string): string {
+  return readLocalized(contentDir(courseKey, language), `${slug}.md`, lang).slice(
+    0,
+    STATEMENT_MAX_CHARS,
+  );
 }
 
 // The lesson a lesson chat is about. Only one the curriculum lists, so a
@@ -147,10 +152,11 @@ export function lessonStatement(
   courseKey: string,
   slug: string,
   lang: Lang,
+  language?: string,
 ): { title: string; statement: string } | null {
   const lesson = lessons.find((l) => l.courseKey === courseKey && l.slug === slug);
   if (!lesson) return null;
-  return { title: lesson.title, statement: readStatement(courseKey, slug, lang) };
+  return { title: lesson.title, statement: readStatement(courseKey, slug, lang, language) };
 }
 
 interface PageInfo {

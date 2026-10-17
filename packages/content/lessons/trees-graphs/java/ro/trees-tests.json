@@ -1,0 +1,151 @@
+{
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "a"
+      },
+      {
+        "kind": "variable",
+        "name": "b"
+      },
+      {
+        "kind": "variable",
+        "name": "c"
+      },
+      {
+        "kind": "variable",
+        "name": "d"
+      },
+      {
+        "kind": "variable",
+        "name": "e"
+      },
+      {
+        "kind": "class",
+        "name": "Nod"
+      },
+      {
+        "kind": "object"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "a": 8,
+        "b": 3,
+        "c": 10,
+        "d": 1,
+        "e": 6
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "a": 50,
+        "b": 30,
+        "c": 70,
+        "d": 20,
+        "e": 40
+      }
+    },
+    {
+      "inject": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "inject": {
+        "a": -5,
+        "b": -10,
+        "c": 7,
+        "d": -20,
+        "e": 3
+      }
+    },
+    {
+      "inject": {
+        "a": 1000,
+        "b": -1000,
+        "c": 999,
+        "d": -999,
+        "e": 0
+      }
+    },
+    {
+      "inject": {
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": 4,
+        "e": 5
+      }
+    },
+    {
+      "inject": {
+        "a": 5,
+        "b": 4,
+        "c": 3,
+        "d": 2,
+        "e": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "a": -1,
+        "b": -1,
+        "c": -1,
+        "d": -1,
+        "e": -1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "a": -1000,
+        "b": -1000,
+        "c": -1000,
+        "d": -1000,
+        "e": -1000
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "a": 1000,
+        "b": 1000,
+        "c": 1000,
+        "d": 1000,
+        "e": 1000
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "a": 7,
+        "b": 7,
+        "c": 3,
+        "d": 7,
+        "e": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "a": 42,
+        "b": 17,
+        "c": 99,
+        "d": 17,
+        "e": 42
+      },
+      "generated": true
+    }
+  ]
+}

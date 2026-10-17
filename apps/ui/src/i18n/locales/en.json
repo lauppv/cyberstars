@@ -270,6 +270,8 @@
     "cancel": "Cancel",
     "comingSoon": "Coming soon",
     "comingSoonHint": "We're still building this. It'll unlock for everyone soon.",
+    "beta": "Beta",
+    "betaHint": "Still being built: more lessons are on the way",
     "xpTotal": "{{xp}} XP",
     "xpReward": "+{{xp}} XP"
   },
@@ -334,7 +336,8 @@
       "linux": "A real terminal, right in your browser. Manage files, search with grep and find, chain commands with pipes, edit text with sed and awk, then permissions and processes.",
       "algo-python": "Python problems from easy to hard: strings, lists and dictionaries put to work in palindromes, a Caesar cipher, Two Sum, sorting and a matrix spiral.",
       "algo-java": "Java problems where you design the classes yourself: a bank account, a shape hierarchy, your own stack, queue and linked list, generics and iterators, plus searching and sorting.",
-      "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores."
+      "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.",
+      "trees-graphs": "The structures behind folders, maps and networks, taught in Python, Java or C: every lesson comes in all three, and you can switch language on any of them."
     }
   },
   "algorithms": {
@@ -853,6 +856,7 @@
     "tabResult": "Result",
     "tabSubmissions": "Submissions",
     "panelTabs": "Lesson panel",
+    "codeLanguage": "Programming language",
     "lessonNofM": "Lesson {{n}} of {{total}}",
     "algoNofM": "Algorithm {{n}} of {{total}}",
     "completed": "✓ Completed",

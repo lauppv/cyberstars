@@ -11,7 +11,27 @@ export function dateKey(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
-export const MAIN_COURSE_KEYS = ['python', 'java', 'c'] as const;
+// The languages a lesson's code can be written in.
+export const CODE_LANGUAGES = ['python', 'java', 'c'] as const;
+export type CodeLanguage = (typeof CODE_LANGUAGES)[number];
+
+// Courses taught in every one of CODE_LANGUAGES: each lesson exists in all
+// three, and the student switches between them on the lesson. Progress stays
+// one tick per lesson, whichever language passed it.
+export const MULTI_LANGUAGE_COURSE_KEYS = ['trees-graphs'] as const;
+
+// Courses still being built: open to everyone, labelled Beta, and left out of
+// what the landing page counts until they are whole.
+const BETA_COURSE_KEYS = [...MULTI_LANGUAGE_COURSE_KEYS] as const;
+
+export function isBeta(courseKey: string): boolean {
+  return (BETA_COURSE_KEYS as readonly string[]).includes(courseKey);
+}
+
+// What a multi-language lesson opens in before the student picks a language.
+export const DEFAULT_CODE_LANGUAGE: CodeLanguage = 'python';
+
+export const MAIN_COURSE_KEYS = ['python', 'java', 'c', ...MULTI_LANGUAGE_COURSE_KEYS] as const;
 export const ALGO_COURSE_KEYS = ['algo-python', 'algo-java', 'algo-c'] as const;
 export const ALL_COURSE_KEYS = [...MAIN_COURSE_KEYS, ...ALGO_COURSE_KEYS] as const;
 
@@ -27,6 +47,21 @@ export const RESTRICTED_FORUM_CATEGORIES = new Set(['announcements']);
 
 export function baseLanguage(key: string): string {
   return key.startsWith('algo-') ? key.slice(5) : key;
+}
+
+export function isMultiLanguage(courseKey: string): boolean {
+  return (MULTI_LANGUAGE_COURSE_KEYS as readonly string[]).includes(courseKey);
+}
+
+export function isCodeLanguage(value: unknown): value is CodeLanguage {
+  return (CODE_LANGUAGES as readonly unknown[]).includes(value);
+}
+
+// The language a lesson's code is in: on a multi-language course the one
+// picked (Python until one is), on any other the course's own.
+export function codeLanguageOf(courseKey: string, picked?: string | null): string {
+  if (!isMultiLanguage(courseKey)) return baseLanguage(courseKey);
+  return isCodeLanguage(picked) ? picked : DEFAULT_CODE_LANGUAGE;
 }
 
 // ── XP & levels ──────────────────────────────────────────────────────────────

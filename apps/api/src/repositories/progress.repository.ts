@@ -38,9 +38,12 @@ export async function getSavedCode(
   userId: number,
   courseKey: string,
   lessonSlug: string,
+  language: string,
 ): Promise<string | null> {
   const row = await prisma.userSavedCode.findUnique({
-    where: { userId_courseKey_lessonSlug: { userId, courseKey, lessonSlug } },
+    where: {
+      userId_courseKey_lessonSlug_language: { userId, courseKey, lessonSlug, language },
+    },
     select: { code: true },
   });
   return row?.code ?? null;
@@ -50,11 +53,14 @@ export async function upsertCode(
   userId: number,
   courseKey: string,
   lessonSlug: string,
+  language: string,
   code: string,
 ): Promise<void> {
   await prisma.userSavedCode.upsert({
-    where: { userId_courseKey_lessonSlug: { userId, courseKey, lessonSlug } },
-    create: { userId, courseKey, lessonSlug, code },
+    where: {
+      userId_courseKey_lessonSlug_language: { userId, courseKey, lessonSlug, language },
+    },
+    create: { userId, courseKey, lessonSlug, language, code },
     update: { code, updatedAt: new Date() },
   });
 }

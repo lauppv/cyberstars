@@ -32,6 +32,7 @@ const ctrl = await import('./progress.controller.js');
 function mockReq(overrides: Partial<Request> = {}): Request {
   return {
     params: {},
+    query: {},
     body: {},
     user: { id: 1 } as Request['user'],
     ...overrides,
@@ -63,8 +64,18 @@ describe('getSavedCode', () => {
     const req = mockReq({ params: { courseKey: 'python', lessonSlug: 'booleans' } });
     const res = mockRes();
     await ctrl.getSavedCode(req, res);
-    expect(mockGetSavedCode).toHaveBeenCalledWith(1, 'python', 'booleans');
+    expect(mockGetSavedCode).toHaveBeenCalledWith(1, 'python', 'booleans', undefined);
     expect(res.json).toHaveBeenCalledWith({ code: "print('hi')" });
+  });
+
+  it("passes on the language a multi-language lesson's code is asked in", async () => {
+    mockGetSavedCode.mockResolvedValue('int x;');
+    const req = mockReq({
+      params: { courseKey: 'trees-graphs', lessonSlug: 'trees' },
+      query: { language: 'c' },
+    });
+    await ctrl.getSavedCode(req, mockRes());
+    expect(mockGetSavedCode).toHaveBeenCalledWith(1, 'trees-graphs', 'trees', 'c');
   });
 });
 
@@ -77,8 +88,18 @@ describe('saveCode', () => {
     });
     const res = mockRes();
     await ctrl.saveCode(req, res);
-    expect(mockSaveCode).toHaveBeenCalledWith(1, 'python', 'booleans', 'x=1');
+    expect(mockSaveCode).toHaveBeenCalledWith(1, 'python', 'booleans', 'x=1', undefined);
     expect(res.json).toHaveBeenCalledWith({ message: 'Code saved' });
+  });
+
+  it('passes on the language of the code', async () => {
+    mockSaveCode.mockResolvedValue(undefined);
+    const req = mockReq({
+      params: { courseKey: 'trees-graphs', lessonSlug: 'trees' },
+      body: { code: 'int x;', language: 'c' },
+    });
+    await ctrl.saveCode(req, mockRes());
+    expect(mockSaveCode).toHaveBeenCalledWith(1, 'trees-graphs', 'trees', 'int x;', 'c');
   });
 });
 

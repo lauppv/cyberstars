@@ -14,12 +14,18 @@
 // concept the lesson teaches, not the reference's exact shape. English only:
 // a RO spec differs from its EN twin only in the identifiers.
 //
+// A multi-language course is graded in each language, its target naming one
+// the way its folders do: trees-graphs/java/trees. Without a language, all
+// three; its variants sit in variants/<course>/<language>/<slug>/.
+//
 //   npx tsx apps/api/scripts/check-tests.ts python                      # a whole course
 //   npx tsx apps/api/scripts/check-tests.ts algo-c/binary-search-c      # one lesson
 //   npx tsx apps/api/scripts/check-tests.ts java --lang=ro              # only the RO specs
 //   npx tsx apps/api/scripts/check-tests.ts c:en python/string-reverse  # a language per target
+//   npx tsx apps/api/scripts/check-tests.ts trees-graphs/c/trees        # one lesson, in C
 import fs from 'fs';
 import path from 'path';
+import { CODE_LANGUAGES, isMultiLanguage } from '@cyberstars/shared/constants';
 import { VARIANTS_DIR } from '@cyberstars/content/paths';
 import { contentDir } from '../src/services/paths.js';
 import { runLessonTests } from '../src/services/lesson-tests.service.js';
@@ -43,8 +49,27 @@ function slugsIn(dir: string): string[] {
     .sort();
 }
 
-function variantsOf(courseKey: string, slug: string): string[] {
-  const dir = path.join(VARIANTS_DIR, courseKey, slug);
+interface Target {
+  courseKey: string;
+  // On a multi-language course, the language graded.
+  language?: string;
+  onlySlug?: string;
+}
+
+// <course>[/<slug>], or <course>[/<language>[/<slug>]] on a multi-language course.
+function expand(target: string): Target[] {
+  const [courseKey, ...rest] = target.split('/');
+  if (!isMultiLanguage(courseKey)) return [{ courseKey, onlySlug: rest[0] }];
+  const [language, onlySlug] = rest;
+  return (language ? [language] : [...CODE_LANGUAGES]).map((l) => ({
+    courseKey,
+    language: l,
+    onlySlug,
+  }));
+}
+
+function variantsOf({ courseKey, language }: Target, slug: string): string[] {
+  const dir = path.join(VARIANTS_DIR, courseKey, language ?? '', slug);
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
@@ -54,9 +79,10 @@ function variantsOf(courseKey: string, slug: string): string[] {
 }
 
 // Grades each variant and returns how many came out the wrong way.
-async function checkVariants(courseKey: string, slug: string): Promise<number> {
+async function checkVariants(target: Target, slug: string): Promise<number> {
+  const { courseKey, language } = target;
   let wrong = 0;
-  for (const file of variantsOf(courseKey, slug)) {
+  for (const file of variantsOf(target, slug)) {
     const name = path.basename(file);
     const shouldPass = name.startsWith('accept-');
     let result: Awaited<ReturnType<typeof runLessonTests>>;
@@ -67,6 +93,7 @@ async function checkVariants(courseKey: string, slug: string): Promise<number> {
         slug,
         fs.readFileSync(file, 'utf8'),
         'en',
+        language,
       );
     } catch (err) {
       // A run that never finished proves nothing either way, and the
@@ -115,16 +142,19 @@ async function main() {
   }
 
   let failures = 0;
-  for (const arg of targets) {
-    const [target, targetLang] = arg.split(':');
-    const [courseKey, onlySlug] = target.split('/');
-    const base = contentDir(courseKey);
+  for (const target of targets.flatMap((arg) => {
+    const [name, targetLang] = arg.split(':');
+    return expand(name).map((t) => ({ ...t, targetLang }));
+  })) {
+    const { courseKey, language, onlySlug, targetLang } = target;
+    const base = contentDir(courseKey, language);
     const onlyLang = targetLang ?? langArg;
     for (const lang of onlyLang ? [onlyLang] : ['en', 'ro']) {
       const dir = lang === 'ro' ? path.join(base, 'ro') : base;
       const slugs = onlySlug ? [onlySlug].filter((s) => slugsIn(dir).includes(s)) : slugsIn(dir);
       for (const slug of slugs) {
-        const label = `${courseKey}/${lang === 'ro' ? 'ro/' : ''}${slug}`;
+        const where = language ? `${courseKey}/${language}` : courseKey;
+        const label = `${where}/${lang === 'ro' ? 'ro/' : ''}${slug}`;
         const started = Date.now();
         try {
           const result = await runLessonTests(
@@ -133,6 +163,7 @@ async function main() {
             slug,
             solutionCode(dir, slug),
             lang,
+            language,
           );
           const secs = ((Date.now() - started) / 1000).toFixed(1);
           if (result.status === 'passed' && result.passedCount === result.total) {
@@ -141,7 +172,7 @@ async function main() {
                 ? `  (programs: ${result.runtimeMs} ms, reference ${result.referenceMs} ms)`
                 : '';
             console.log(`ok    ${label}  ${result.total} cases  ${secs}s${timing}`);
-            if (lang === 'en') failures += await checkVariants(courseKey, slug);
+            if (lang === 'en') failures += await checkVariants(target, slug);
             continue;
           }
           failures++;

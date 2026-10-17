@@ -250,6 +250,19 @@ export async function saveInterests(
   }
 }
 
+export async function saveCodeLanguage(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    await userRepo.saveCodeLanguage(req.user!.id, req.body.language);
+    res.status(204).end();
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function cancelEmailChange(
   req: Request,
   res: Response,

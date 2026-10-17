@@ -64,6 +64,7 @@ async function lessonWork(
     runOutput: work?.runOutput ?? '',
     verdict,
     ...(work?.checks && { checks: work.checks }),
+    ...(work?.language && { language: work.language }),
   };
 }
 

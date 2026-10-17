@@ -42,6 +42,32 @@ describe('Progress flow', () => {
     expect(saved.body.code).toBe('print("hello")');
   });
 
+  it("keeps a multi-language lesson's code per language", async () => {
+    const { agent: a } = await createAuthenticatedAgent();
+    const code = '/api/progress/trees-graphs/trees/code';
+
+    await a.put(code).send({ code: 'root = None' }).expect(200);
+    await a.put(code).send({ code: 'int x;', language: 'c' }).expect(200);
+
+    expect((await a.get(code).expect(200)).body.code).toBe('root = None');
+    expect((await a.get(`${code}?language=python`).expect(200)).body.code).toBe('root = None');
+    expect((await a.get(`${code}?language=c`).expect(200)).body.code).toBe('int x;');
+    expect((await a.get(`${code}?language=java`).expect(200)).body.code).toBeNull();
+    await a.get(`${code}?language=ruby`).expect(400);
+    await a.put(code).send({ code: 'x', language: 'ruby' }).expect(400);
+  });
+
+  it('ticks a multi-language lesson once, whichever language passed it', async () => {
+    const { agent: a, email } = await createAuthenticatedAgent();
+    const userId = await userIdFor(email);
+
+    await markComplete(userId, 'trees-graphs', 'trees');
+    await markComplete(userId, 'trees-graphs', 'trees');
+
+    const progress = await a.get('/api/progress/trees-graphs').expect(200);
+    expect(progress.body).toMatchObject({ completed: 1, total: 1, earnedXp: 10 });
+  });
+
   it('progress is per-user', async () => {
     const { email: emailA } = await createAuthenticatedAgent();
     const { agent: userB } = await createAuthenticatedAgent();

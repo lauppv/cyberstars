@@ -18,6 +18,7 @@ const summary = (id: number): SubmissionSummary => ({
   runtimeMs: null,
   referenceMs: null,
   lang: 'en',
+  language: 'python',
   createdAt: '2026-10-09T10:00:00.000Z',
 });
 

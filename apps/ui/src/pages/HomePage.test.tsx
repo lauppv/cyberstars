@@ -99,6 +99,7 @@ const loggedInAuth = {
     onboardedAt: '2024-01-01T00:00:00Z',
     placementLevel: null,
     interests: ['python'],
+    codeLanguage: null,
   },
   login: vi.fn(),
   signup: vi.fn(),

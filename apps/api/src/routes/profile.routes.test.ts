@@ -41,6 +41,7 @@ const mockUserRepo = {
   create: vi.fn().mockResolvedValue(null),
   updateProfile: vi.fn().mockResolvedValue(null),
   saveInterests: vi.fn().mockResolvedValue(undefined),
+  saveCodeLanguage: vi.fn().mockResolvedValue(undefined),
   getRole: vi.fn().mockResolvedValue('USER'),
   updateRole: vi.fn().mockResolvedValue(undefined),
 };
@@ -171,6 +172,34 @@ describe('PUT /api/profile/interests', () => {
       expect((await put({ interests })).status).toBe(400);
     }
     expect(mockUserRepo.saveInterests).not.toHaveBeenCalled();
+  });
+});
+
+describe('PUT /api/profile/code-language', () => {
+  const put = (body: object) =>
+    request(app).put('/api/profile/code-language').set('Cookie', `token=${token}`).send(body);
+
+  it('returns 401 without token', async () => {
+    const res = await request(app).put('/api/profile/code-language').send({ language: 'c' });
+    expect(res.status).toBe(401);
+  });
+
+  it('saves the language picked', async () => {
+    const res = await put({ language: 'java' });
+    expect(res.status).toBe(204);
+    expect(mockUserRepo.saveCodeLanguage).toHaveBeenCalledWith(1, 'java');
+  });
+
+  it('refuses a language the lessons are not taught in', async () => {
+    for (const language of ['ruby', 'algo-c', undefined]) {
+      expect((await put({ language })).status).toBe(400);
+    }
+    expect(mockUserRepo.saveCodeLanguage).not.toHaveBeenCalled();
+  });
+
+  it('passes a storage failure on as an error', async () => {
+    mockUserRepo.saveCodeLanguage.mockRejectedValueOnce(new Error('db down'));
+    expect((await put({ language: 'c' })).status).toBe(500);
   });
 });
 

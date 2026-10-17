@@ -280,6 +280,8 @@
     "cancel": "Anulează",
     "comingSoon": "În curând",
     "comingSoonHint": "Încă lucrăm la asta. Se va debloca pentru toți în curând.",
+    "beta": "Beta",
+    "betaHint": "Încă în lucru: urmează mai multe lecții",
     "xpTotal": "{{xp}} XP",
     "xpReward": "+{{xp}} XP"
   },
@@ -346,7 +348,8 @@
       "linux": "Un terminal adevărat, direct în browser. Lucrezi cu fișiere, cauți cu grep și find, legi comenzi cu pipe-uri, editezi text cu sed și awk, apoi permisiuni și procese.",
       "algo-python": "Probleme de Python de la ușor la greu: șiruri, liste și dicționare puse la treabă în palindroame, cifrul lui Cezar, Two Sum, sortare și o matrice parcursă în spirală.",
       "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, generice și iteratori, plus căutare și sortare.",
-      "algo-c": "Probleme de C aproape de mașină: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare."
+      "algo-c": "Probleme de C aproape de mașină: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
+      "trees-graphs": "Structurile din spatele folderelor, hărților și rețelelor, predate în Python, Java sau C: fiecare lecție există în toate trei și poți schimba limbajul la oricare dintre ele."
     }
   },
   "algorithms": {
@@ -865,6 +868,7 @@
     "tabResult": "Rezultat",
     "tabSubmissions": "Trimiteri",
     "panelTabs": "Panoul lecției",
+    "codeLanguage": "Limbaj de programare",
     "lessonNofM": "Lecția {{n}} din {{total}}",
     "algoNofM": "Algoritmul {{n}} din {{total}}",
     "completed": "✓ Finalizat",

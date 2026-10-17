@@ -38,6 +38,21 @@ describe('planChecks', () => {
     ]);
   });
 
+  it("grades a multi-language lesson's changed spec, solution or variant in that language", () => {
+    expect(
+      planChecks([
+        'packages/content/lessons/trees-graphs/c/ro/trees-tests.json',
+        'packages/content/lessons/trees-graphs/java/trees-solution.md',
+        'packages/content/variants/trees-graphs/python/trees/reject-no-class.py',
+        'packages/content/lessons/trees-graphs/python/trees.md',
+      ]),
+    ).toEqual([
+      { name: 'python', image: 'python:3.10-slim', targets: 'trees-graphs/python/trees' },
+      { name: 'c', image: 'gcc:latest', targets: 'trees-graphs/c/trees' },
+      { name: 'java', image: 'eclipse-temurin:21-jdk-alpine', targets: 'trees-graphs/java/trees' },
+    ]);
+  });
+
   it('grades every lesson of a language, EN only, when its runner changed', () => {
     const shards = planChecks([
       'apps/api/src/services/lesson-tests.runner.java',
@@ -47,6 +62,7 @@ describe('planChecks', () => {
     const targets = targetsOf(shards);
     expect(targets).toContain('java/arraylist:en');
     expect(targets).toContain('algo-java/binary-search:en');
+    expect(targets).toContain('trees-graphs/java/trees:en');
     // A lesson the PR also changed keeps its RO spec.
     expect(targets).toContain('java/hashmap');
     expect(targets).not.toContain('java/hashmap:en');

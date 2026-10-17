@@ -62,22 +62,48 @@ describe('touchAccess', () => {
 describe('getSavedCode', () => {
   it('returns the saved code when present', async () => {
     mockPrisma.userSavedCode.findUnique.mockResolvedValue({ code: 'print(1)' });
-    expect(await repo.getSavedCode(1, 'python', 'intro')).toBe('print(1)');
+    expect(await repo.getSavedCode(1, 'python', 'intro', '')).toBe('print(1)');
   });
 
   it('returns null when no saved code exists', async () => {
     mockPrisma.userSavedCode.findUnique.mockResolvedValue(null);
-    expect(await repo.getSavedCode(1, 'python', 'intro')).toBeNull();
+    expect(await repo.getSavedCode(1, 'python', 'intro', 'c')).toBeNull();
+    expect(mockPrisma.userSavedCode.findUnique.mock.calls[0][0].where).toEqual({
+      userId_courseKey_lessonSlug_language: {
+        userId: 1,
+        courseKey: 'python',
+        lessonSlug: 'intro',
+        language: 'c',
+      },
+    });
   });
 });
 
 describe('upsertCode', () => {
   it('upserts the saved code', async () => {
     mockPrisma.userSavedCode.upsert.mockResolvedValue({});
-    await repo.upsertCode(1, 'python', 'intro', 'print(2)');
+    await repo.upsertCode(1, 'python', 'intro', '', 'print(2)');
     const arg = mockPrisma.userSavedCode.upsert.mock.calls[0][0];
-    expect(arg.create).toMatchObject({ userId: 1, courseKey: 'python', code: 'print(2)' });
+    expect(arg.create).toMatchObject({
+      userId: 1,
+      courseKey: 'python',
+      language: '',
+      code: 'print(2)',
+    });
     expect(arg.update.code).toBe('print(2)');
+  });
+
+  it("keys a multi-language lesson's code by its language", async () => {
+    mockPrisma.userSavedCode.upsert.mockResolvedValue({});
+    await repo.upsertCode(1, 'trees-graphs', 'trees', 'java', 'class A {}');
+    expect(mockPrisma.userSavedCode.upsert.mock.calls[0][0].where).toEqual({
+      userId_courseKey_lessonSlug_language: {
+        userId: 1,
+        courseKey: 'trees-graphs',
+        lessonSlug: 'trees',
+        language: 'java',
+      },
+    });
   });
 });
 

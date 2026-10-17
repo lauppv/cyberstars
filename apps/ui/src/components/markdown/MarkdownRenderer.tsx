@@ -5,13 +5,13 @@ import { CodeCell } from '../code/CodeCell';
 import { StringIndexTable } from './StringIndexTable';
 import { remarkGreen } from './remarkGreen';
 import type { Components } from 'react-markdown';
-import { MAIN_COURSE_KEYS } from '@cyberstars/shared/constants';
+import { CODE_LANGUAGES } from '@cyberstars/shared/constants';
 
 interface MarkdownRendererProps {
   content: string;
 }
 
-const EDITABLE_LANGS = [...MAIN_COURSE_KEYS, 'py'];
+const EDITABLE_LANGS = [...CODE_LANGUAGES, 'py'];
 
 const components: Components = {
   strong({ children }) {

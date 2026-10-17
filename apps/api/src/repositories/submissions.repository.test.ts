@@ -31,6 +31,7 @@ const input: Parameters<typeof repo.createAndPrune>[0] = {
   runtimeMs: 12.5,
   referenceMs: 10.25,
   lang: 'en',
+  language: 'python',
   code: 'print(1)',
   syntaxError: null,
   structureFailures: [],
