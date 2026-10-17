@@ -1,0 +1,40 @@
+{
+  "type": "tree",
+  "caption": "Searching for 12: at each node, compare 12 with its value.",
+  "null": {
+    "python": "None",
+    "java": "null",
+    "c": "NULL"
+  },
+  "nodes": {
+    "0": 8,
+    "1": 3,
+    "2": 10,
+    "3": 1,
+    "4": 6,
+    "6": 14
+  },
+  "steps": [
+    {
+      "path": [0],
+      "caption": "12 > 8, go right"
+    },
+    {
+      "path": [0, 2],
+      "caption": "12 > 10, go right"
+    },
+    {
+      "path": [0, 2, 6],
+      "caption": "12 < 14, go left"
+    },
+    {
+      "path": [0, 2, 6],
+      "nulls": [6],
+      "caption": {
+        "python": "14's left child is None: 12 is not in the tree",
+        "java": "14's left child is null: 12 is not in the tree",
+        "c": "14's left child is NULL: 12 is not in the tree"
+      }
+    }
+  ]
+}

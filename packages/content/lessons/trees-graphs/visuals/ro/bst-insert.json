@@ -1,0 +1,55 @@
+{
+  "type": "tree",
+  "caption": "Inserăm 8, 3, 10, 1, 6 și 14, în ordinea asta. Fiecare valoare merge pe drumul unei căutări și se așază unde drumul se termină.",
+  "nodes": {},
+  "steps": [
+    {
+      "title": "inserează 8",
+      "add": {
+        "0": 8
+      },
+      "focus": [0],
+      "caption": "Arborele e gol: 8 devine rădăcina"
+    },
+    {
+      "title": "inserează 3",
+      "add": {
+        "1": 3
+      },
+      "path": [0, 1],
+      "caption": "3 < 8, mergi la stânga. 8 nu are copil stâng, deci 3 se așază acolo"
+    },
+    {
+      "title": "inserează 10",
+      "add": {
+        "2": 10
+      },
+      "path": [0, 2],
+      "caption": "10 > 8, mergi la dreapta. 8 nu are copil drept, deci 10 se așază acolo"
+    },
+    {
+      "title": "inserează 1",
+      "add": {
+        "3": 1
+      },
+      "path": [0, 1, 3],
+      "caption": "1 < 8, mergi la stânga. 1 < 3, mergi la stânga. Loc gol, deci 1 se așază acolo"
+    },
+    {
+      "title": "inserează 6",
+      "add": {
+        "4": 6
+      },
+      "path": [0, 1, 4],
+      "caption": "6 < 8, mergi la stânga. 6 > 3, mergi la dreapta. Loc gol, deci 6 se așază acolo"
+    },
+    {
+      "title": "inserează 14",
+      "add": {
+        "6": 14
+      },
+      "path": [0, 2, 6],
+      "caption": "14 > 8, mergi la dreapta. 14 > 10, mergi la dreapta. Loc gol, deci 14 se așază acolo"
+    }
+  ]
+}
