@@ -919,6 +919,9 @@
     "visualTop": "vârf",
     "visualFront": "față",
     "visualBack": "spate",
+    "visualSkip": "Sari peste",
+    "visualRight": "Corect!",
+    "visualWrong": "Nu chiar: răspunsul este {{answer}}.",
     "visualSpeed": "Viteză",
     "visualSpeeds": {
       "slow": "Lent",

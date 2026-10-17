@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronLeft, ChevronRight, Maximize2, RotateCcw, X } from 'lucide-react';
 import { Segmented } from '../ui/Segmented';
 import type { Visual } from './parseVisual';
+import type { Question } from './checks';
 import { arrayFrames } from './arrayFrames';
 import { boxFrames } from './boxFrames';
 import { treeFrames } from './treeFrames';
@@ -17,7 +18,7 @@ import { GraphView } from './GraphView';
 import { GridView } from './GridView';
 import { StackView } from './StackView';
 import { VisualSteps } from './VisualSteps';
-import { Words } from './Words';
+import { Words, type Reply } from './Words';
 
 // Loaded lazily by MarkdownRenderer, so a lesson without a visual never downloads it
 
@@ -57,18 +58,38 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
   const [step, setStep] = useState(() =>
     Math.min(frames.length - 1, (visual.id && steps?.get(visual.id)) || 0),
   );
+  // What the student replied to each question with choices, kept while going back and forth
+  const [replies, setReplies] = useState<Map<Question, Reply>>(() => new Map());
   const [speed, setSpeed] = useState<Speed>('normal');
   const [expanded, setExpanded] = useState(false);
   const expandRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
+  const dialogNextRef = useRef<HTMLButtonElement>(null);
   const last = frames.length - 1;
   const frame = frames[step];
   const moveMs = MOVE_MS[speed];
+  const reply = frame.question ? replies.get(frame.question) : undefined;
+  // A question with choices holds the player until the student answers or skips it
+  const waiting = !!frame.question && reply === undefined;
 
   const go = (to: number) => {
     const next = Math.max(0, Math.min(last, to));
+    if (waiting && next > step) return;
     setStep(next);
     if (visual.id) steps?.set(visual.id, next);
+  };
+
+  const restart = () => {
+    setReplies(new Map());
+    setStep(0);
+    if (visual.id) steps?.set(visual.id, 0);
+  };
+
+  // The choice buttons go once answered, so the focus moves to Next, where Skip stood
+  const answer = (given: Reply) => {
+    setReplies(new Map(replies).set(frame.question!, given));
+    (expanded ? dialogNextRef : nextRef).current?.focus();
   };
 
   const stepKeys = (e: KeyboardEvent) => {
@@ -89,13 +110,13 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
   }, [expanded]);
 
   // aria-disabled rather than disabled, so the focus stays on a button that runs out of steps
-  // and the arrow keys keep working
-  const controls = (
+  // and the arrow keys keep working. While a question waits for an answer, Next is Skip
+  const controls = (ref: typeof nextRef) => (
     <div className="flex flex-wrap items-center gap-2">
       <button
         type="button"
-        onClick={() => go(0)}
-        aria-disabled={step === 0}
+        onClick={restart}
+        aria-disabled={step === 0 && replies.size === 0}
         aria-label={t('lesson.visualRestart')}
         title={t('lesson.visualRestart')}
         className={BUTTON}
@@ -112,12 +133,13 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
         {t('lesson.visualPrevious')}
       </button>
       <button
+        ref={ref}
         type="button"
-        onClick={() => go(step + 1)}
-        aria-disabled={step === last}
+        onClick={() => (waiting ? answer('skip') : go(step + 1))}
+        aria-disabled={!waiting && step === last}
         className={BUTTON}
       >
-        {t('lesson.visualNext')}
+        {waiting ? t('lesson.visualSkip') : t('lesson.visualNext')}
         <ChevronRight size={14} aria-hidden="true" />
       </button>
       <span className="ml-auto text-[13px] text-[var(--text3)]">
@@ -181,6 +203,16 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
       />
     );
 
+  const choices = frame.question && waiting && (
+    <div role="group" aria-label={frame.ask ?? undefined} className="flex flex-wrap gap-2 mt-2">
+      {frame.question.choices.map((choice, i) => (
+        <button key={choice} type="button" onClick={() => answer(i)} className={BUTTON}>
+          {choice}
+        </button>
+      ))}
+    </div>
+  );
+
   const title = (
     <span className="text-[13px] font-semibold text-[var(--text3)]">{frame.title ?? ''}</span>
   );
@@ -209,9 +241,10 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
       </div>
       {picture(48)}
       <div className="mb-3">
-        <Words frame={frame} live={!expanded} big={false} />
+        <Words frame={frame} live={!expanded} big={false} reply={reply} />
+        {choices}
       </div>
-      {controls}
+      {controls(nextRef)}
       <div className="mt-3">{speedControl}</div>
 
       {expanded &&
@@ -250,9 +283,10 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
               </div>
               {picture(80)}
               <div className="mb-6">
-                <Words frame={frame} live big />
+                <Words frame={frame} live big reply={reply} />
+                {choices}
               </div>
-              {controls}
+              {controls(dialogNextRef)}
               <div className="mt-4">{speedControl}</div>
             </div>
           </div>,
