@@ -1231,6 +1231,13 @@ export const lessons = [
     sortOrder: 11,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'recap-graphs',
+    title: 'Recap: Graphs',
+    sortOrder: 12,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',
