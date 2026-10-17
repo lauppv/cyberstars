@@ -135,7 +135,7 @@ export function StaticPage({ page }: { page: Page }) {
       </header>
       <main>
         {page.breadcrumb.length > 1 && (
-          <nav aria-label="Breadcrumb">
+          <nav aria-label={t('common.breadcrumb')}>
             <ol>
               {page.breadcrumb.slice(0, -1).map((link) => (
                 <li key={link.path}>

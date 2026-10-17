@@ -335,7 +335,9 @@
     "betaHint": "Still being built: more lessons are on the way",
     "xpTotal": "{{xp}} XP",
     "xpReward": "+{{xp}} XP",
-    "somethingWrong": "Something went wrong. Please try again."
+    "somethingWrong": "Something went wrong. Please try again.",
+    "back": "Back",
+    "breadcrumb": "Breadcrumb"
   },
   "leaderboard": {
     "you": "You",
@@ -503,7 +505,8 @@
     },
     "successForgot": "If that email exists, a reset code was sent. Check your inbox.",
     "successReset": "Password reset! You can now log in.",
-    "serverError": "Server error, try again later"
+    "serverError": "Server error, try again later",
+    "emailPlaceholder": "you@example.com"
   },
   "rules": {
     "items": [
@@ -785,7 +788,10 @@
     "funFact": "Fun Fact",
     "quotes": "Quotes",
     "articles_one": "article",
-    "articles_other": "articles"
+    "articles_other": "articles",
+    "pages": "Pages",
+    "previousPage": "Previous page",
+    "nextPage": "Next page"
   },
   "lesson": {
     "difficulty": {

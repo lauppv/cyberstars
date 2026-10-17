@@ -226,6 +226,7 @@ export function CoursesPage() {
               </div>
               <button
                 onClick={closeCourse}
+                aria-label={t('common.close')}
                 className="w-8 h-8 rounded-full border border-[var(--border)] bg-transparent text-[var(--text3)] text-base flex items-center justify-center cursor-pointer hover:text-[var(--text)] hover:border-[var(--text3)] transition flex-shrink-0"
               >
                 ×

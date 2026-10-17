@@ -301,6 +301,7 @@ function TicketConversation({
       <div className="flex items-center gap-3">
         <button
           onClick={onBack}
+          aria-label={t('common.back')}
           className="text-[var(--text3)] hover:text-[var(--text)] bg-transparent border-none cursor-pointer text-[18px]"
         >
           ←

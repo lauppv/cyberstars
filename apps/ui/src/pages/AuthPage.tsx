@@ -225,7 +225,7 @@ export function AuthPage() {
                   </label>
                   <input
                     type="email"
-                    placeholder="you@example.com"
+                    placeholder={t('auth.emailPlaceholder')}
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

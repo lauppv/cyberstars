@@ -356,7 +356,9 @@
     "betaHint": "Încă în lucru: urmează mai multe lecții",
     "xpTotal": "{{xp}} XP",
     "xpReward": "+{{xp}} XP",
-    "somethingWrong": "Ceva n-a mers. Încearcă din nou."
+    "somethingWrong": "Ceva n-a mers. Încearcă din nou.",
+    "back": "Înapoi",
+    "breadcrumb": "Unde te afli"
   },
   "leaderboard": {
     "you": "Tu",
@@ -528,7 +530,8 @@
     },
     "successForgot": "Dacă adresa există, ți-am trimis un cod de resetare. Verifică-ți emailul.",
     "successReset": "Parolă resetată! Acum te poți autentifica.",
-    "serverError": "Eroare de server, încearcă mai târziu"
+    "serverError": "Eroare de server, încearcă mai târziu",
+    "emailPlaceholder": "tu@exemplu.ro"
   },
   "rules": {
     "items": [
@@ -822,7 +825,10 @@
     "quotes": "Citate",
     "articles_one": "articol",
     "articles_few": "articole",
-    "articles_other": "de articole"
+    "articles_other": "de articole",
+    "pages": "Pagini",
+    "previousPage": "Pagina anterioară",
+    "nextPage": "Pagina următoare"
   },
   "lesson": {
     "difficulty": {
