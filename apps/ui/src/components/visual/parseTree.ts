@@ -1,4 +1,11 @@
-import { isCaption, isRecord, parseRows, type ValueRow } from './checks';
+import {
+  isCaption,
+  isRecord,
+  parseQuestion,
+  parseRows,
+  type Question,
+  type ValueRow,
+} from './checks';
 import type { BoxValue } from './parseBoxes';
 
 // A ```visual fence of type "tree" draws a binary tree. A node is named by its place, numbered
@@ -22,6 +29,7 @@ export type TreeRow = ValueRow;
 interface TreeStep {
   title?: string;
   ask?: string;
+  question?: Question;
   remove?: number[];
   set?: Record<number, BoxValue>;
   move?: [number, number];
@@ -80,6 +88,9 @@ function parseStep(raw: unknown): TreeStep | null {
     if (!isCaption(value)) return null;
     step[key] = value;
   }
+  const question = parseQuestion(raw, step.ask);
+  if (question === null) return null;
+  if (question) step.question = question;
   for (const key of ['remove', 'focus', 'done', 'path', 'nulls'] as const) {
     if (raw[key] === undefined) continue;
     const list = places(raw[key]);

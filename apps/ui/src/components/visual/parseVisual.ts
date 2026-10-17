@@ -11,9 +11,11 @@
 // draws boxes and arrows instead, see parseBoxes, one of type "tree" a binary tree, see parseTree,
 // one of type "graph" a graph, see parseGraph, one of type "grid" a grid of cells, see parseGrid,
 // and one of type "stack" a pile of cards, see parseStack. Any of them can carry an id, which keeps
-// the step the student is on when the lesson's text comes back in another programming language.
+// the step the student is on when the lesson's text comes back in another programming language, and
+// any step that asks a question can give it choices with the right one (see parseQuestion), so the
+// student answers before the answer shows.
 
-import { isCaption, isRecord } from './checks';
+import { isCaption, isRecord, parseQuestion, type Question } from './checks';
 import { parseBoxes, type BoxesVisual } from './parseBoxes';
 import { parseTree, type TreeVisual } from './parseTree';
 import { parseGraph, type GraphVisual } from './parseGraph';
@@ -27,6 +29,7 @@ interface ArrayStep {
   title?: string;
   compare?: [number] | [number, number];
   ask?: string;
+  question?: Question;
   swap?: boolean;
   sorted?: number;
   at?: MarkerPlaces;
@@ -99,6 +102,9 @@ function parseStep(raw: unknown, length: number, markers: number): ArrayStep | n
     if (!isCaption(raw.ask) || !step.compare) return null;
     step.ask = raw.ask;
   }
+  const question = parseQuestion(raw, step.ask);
+  if (question === null) return null;
+  if (question) step.question = question;
   if (raw.swap !== undefined) {
     // A swap moves the two boxes the step compares, so it needs them
     if (raw.swap !== true || step.compare?.length !== 2) return null;

@@ -1,3 +1,4 @@
+import type { Question } from './checks';
 import type { StackCard, StackVisual } from './parseStack';
 
 // What the stack looks like at one step: its cards from the bottom up (a queue's from the front), each with its line as it
@@ -11,6 +12,7 @@ export interface StackFrame {
   tags: Record<string, string>;
   title: string | null;
   ask: string | null;
+  question: Question | null;
   caption: string;
 }
 
@@ -18,7 +20,16 @@ export function stackFrames(visual: StackVisual): StackFrame[] {
   let cards = visual.cards;
   let title: string | null = null;
   const frames: StackFrame[] = [
-    { cards, focus: [], done: [], tags: {}, title, ask: null, caption: visual.caption },
+    {
+      cards,
+      focus: [],
+      done: [],
+      tags: {},
+      title,
+      ask: null,
+      question: null,
+      caption: visual.caption,
+    },
   ];
   for (const step of visual.steps) {
     if (step.title !== undefined) title = step.title;
@@ -28,6 +39,7 @@ export function stackFrames(visual: StackVisual): StackFrame[] {
       tags: step.tags ?? {},
       title,
       ask: step.ask ?? null,
+      question: step.question ?? null,
       caption: step.caption,
     };
     if (step.ask) frames.push({ cards, ...shown });

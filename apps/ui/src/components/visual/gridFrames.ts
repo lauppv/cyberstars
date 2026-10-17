@@ -1,4 +1,4 @@
-import type { ValueRow } from './checks';
+import type { Question, ValueRow } from './checks';
 import { spotKey, type GridVisual, type Spot } from './parseGrid';
 
 // What the grid looks like at one step: the value written in each cell, by "r,c", and what the
@@ -13,6 +13,7 @@ export interface GridFrame {
   code: string | null;
   title: string | null;
   ask: string | null;
+  question: Question | null;
   caption: string;
 }
 
@@ -29,6 +30,7 @@ export function gridFrames(visual: GridVisual): GridFrame[] {
       code: null,
       title,
       ask: null,
+      question: null,
       caption: visual.caption,
     },
   ];
@@ -42,6 +44,7 @@ export function gridFrames(visual: GridVisual): GridFrame[] {
       code: step.code ?? null,
       title,
       ask: step.ask ?? null,
+      question: step.question ?? null,
       caption: step.caption,
     };
     if (step.ask) frames.push({ values, ...shown });

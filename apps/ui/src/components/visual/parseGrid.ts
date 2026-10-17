@@ -1,4 +1,11 @@
-import { isCaption, isRecord, parseRows, type ValueRow } from './checks';
+import {
+  isCaption,
+  isRecord,
+  parseQuestion,
+  parseRows,
+  type Question,
+  type ValueRow,
+} from './checks';
 
 // A ```visual fence of type "grid" draws a grid of cells, such as a maze: `cells` gives it row by
 // row as text, "." for a free cell and "#" for a wall, the way a lesson's input does. A cell is
@@ -17,6 +24,7 @@ export type Spot = [number, number];
 interface GridStep {
   title?: string;
   ask?: string;
+  question?: Question;
   set?: [number, number, number | string][];
   focus?: Spot[];
   seen?: Spot[];
@@ -53,6 +61,9 @@ function parseStep(raw: unknown, cells: string[]): GridStep | null {
     if (!isCaption(value)) return null;
     step[key] = value;
   }
+  const question = parseQuestion(raw, step.ask);
+  if (question === null) return null;
+  if (question) step.question = question;
   for (const key of ['focus', 'seen', 'done'] as const) {
     const list = raw[key];
     if (list === undefined) continue;
