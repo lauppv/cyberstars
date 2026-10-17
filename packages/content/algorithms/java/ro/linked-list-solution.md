@@ -23,11 +23,11 @@ class ListaInlantuita {
         }
 
         // Mergem pana la ultimul nod si legam noul nod dupa el.
-        Nod cur = cap;
-        while (cur.urmator != null) {
-            cur = cur.urmator;
+        Nod curent = cap;
+        while (curent.urmator != null) {
+            curent = curent.urmator;
         }
-        cur.urmator = nod;
+        curent.urmator = nod;
     }
 
     boolean elimina(int valoare) {
@@ -42,14 +42,14 @@ class ListaInlantuita {
         }
 
         // Cautam nodul care are ca urmator un nod cu valoarea data.
-        // Cand il gasim, il ocolim: cur.urmator = cur.urmator.urmator.
-        Nod cur = cap;
-        while (cur.urmator != null) {
-            if (cur.urmator.valoare == valoare) {
-                cur.urmator = cur.urmator.urmator;
+        // Cand il gasim, il ocolim: curent.urmator = curent.urmator.urmator.
+        Nod curent = cap;
+        while (curent.urmator != null) {
+            if (curent.urmator.valoare == valoare) {
+                curent.urmator = curent.urmator.urmator;
                 return true;
             }
-            cur = cur.urmator;
+            curent = curent.urmator;
         }
 
         return false;
@@ -61,13 +61,13 @@ class ListaInlantuita {
         }
 
         String rezultat = "";
-        Nod cur = cap;
-        while (cur != null) {
+        Nod curent = cap;
+        while (curent != null) {
             if (rezultat.length() > 0) {
                 rezultat = rezultat + " -> ";
             }
-            rezultat = rezultat + cur.valoare;
-            cur = cur.urmator;
+            rezultat = rezultat + curent.valoare;
+            curent = curent.urmator;
         }
         return rezultat;
     }
