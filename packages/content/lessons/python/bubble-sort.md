@@ -28,6 +28,29 @@ After pass 1, the **biggest number (8)** has "bubbled up" to the end. That's why
 
 **Done!** The list is sorted
 
+```visual
+{
+  "type": "array",
+  "values": [5, 3, 8, 1, 2],
+  "caption": "We start at position 0 (j = 0) and compare that number with its right neighbour (j + 1). If the left one is bigger, they swap. Then j moves one step right. Each pass pushes the biggest number to the end.",
+  "pointers": ["j = {i}", "j + 1"],
+  "steps": [
+    {"title": "Pass 1", "compare": [0, 1], "ask": "Is 5 > 3?", "swap": true, "caption": "Yes, so they swap"},
+    {"compare": [1, 2], "ask": "Is 5 > 8?", "caption": "No, so they stay"},
+    {"compare": [2, 3], "ask": "Is 8 > 1?", "swap": true, "caption": "Yes, so they swap"},
+    {"compare": [3, 4], "ask": "Is 8 > 2?", "swap": true, "caption": "Yes, so they swap"},
+    {"sorted": 4, "caption": "8 is at the end, in its place"},
+    {"title": "Pass 2", "compare": [0, 1], "ask": "Is 3 > 5?", "caption": "No, so they stay"},
+    {"compare": [1, 2], "ask": "Is 5 > 1?", "swap": true, "caption": "Yes, so they swap"},
+    {"compare": [2, 3], "ask": "Is 5 > 2?", "swap": true, "caption": "Yes, so they swap"},
+    {"sorted": 3, "caption": "5 is in its place too"},
+    {"title": "Pass 3", "compare": [0, 1], "ask": "Is 3 > 1?", "swap": true, "caption": "Yes, so they swap"},
+    {"compare": [1, 2], "ask": "Is 3 > 2?", "swap": true, "caption": "Yes, so they swap"},
+    {"sorted": 0, "caption": "Done! The list is sorted"}
+  ]
+}
+```
+
 ---
 
 In code
