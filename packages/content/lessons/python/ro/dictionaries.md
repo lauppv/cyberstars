@@ -121,7 +121,7 @@ jucator = {
     "nume": "Tommy Vercetti",
     "viata": 100,
     "este_viu": True,
-    "arme": ["bat", "pistol", "shotgun"]
+    "arme": ["bata", "pistol", "pusca"]
 }
 
 print(jucator["nume"])

@@ -66,7 +66,7 @@ redus = [pret * 0.9 for pret in preturi if pret > 20]
 print(redus)
 ```
 
-Rezultat **[22.5, 36.0, 13.5, 27.0]**. Am luat doar prețurile peste 20, apoi am aplicat o reducere de 10%
+Rezultat **[22.5, 36.0, 27.0]**. Am luat doar prețurile peste 20, apoi am aplicat o reducere de 10%
 
 ---
 

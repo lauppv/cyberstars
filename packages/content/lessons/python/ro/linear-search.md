@@ -1,4 +1,4 @@
-Căutarea este unul dintre cele mai fundamentale lucruri pe care le face un calculator. „Este acest utilizator în baza de date?" „Conține această listă numărul 42?" „Unde este cuvântul 'error' în acest jurnal?"
+Căutarea este unul dintre cele mai fundamentale lucruri pe care le face un calculator. „Este acest utilizator în baza de date?" „Conține această listă numărul 42?" „Unde este cuvântul 'eroare' în acest jurnal?"
 
 Cel mai simplu mod de a căuta este **căutarea liniară**: parcurgem lista **element cu element**, de la început la sfârșit, și verificăm fiecare element
 
