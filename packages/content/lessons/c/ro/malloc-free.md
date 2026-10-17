@@ -58,10 +58,10 @@ Folosim **scoruri[i]** exact ca pe un array normal, pentru că numele unui array
 #include <stdlib.h>
 
 int main(void) {
-    int *arr = calloc(5, sizeof(int));
-    // arr[0] pana la arr[4] sunt toti 0
-    printf("%d\n", arr[0]);
-    free(arr);
+    int *tablou = calloc(5, sizeof(int));
+    // tablou[0] pana la tablou[4] sunt toti 0
+    printf("%d\n", tablou[0]);
+    free(tablou);
     return 0;
 }
 ```

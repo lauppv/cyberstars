@@ -83,9 +83,9 @@ int main(void) {
 ```c
 #include <stdio.h>
 
-void afiseaza_tot(int arr[], int n) {
+void afiseaza_tot(int tablou[], int n) {
     for (int i = 0; i < n; i++) {
-        printf("%d\n", arr[i]);
+        printf("%d\n", tablou[i]);
     }
 }
 

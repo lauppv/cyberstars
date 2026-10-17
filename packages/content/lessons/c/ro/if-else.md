@@ -45,7 +45,7 @@ Operatorii de comparație
 int main(void) {
     int x = 4;
     if (x = 4) {
-        printf("Boo\n");
+        printf("Bau\n");
     }
     return 0;
 }
