@@ -47,6 +47,7 @@ describe('boxFrames', () => {
       focus: [],
       title: null,
       ask: null,
+      question: null,
       caption: 'A list',
     });
     expect(frames[1]).toMatchObject({

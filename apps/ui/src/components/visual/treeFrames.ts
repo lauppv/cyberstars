@@ -1,3 +1,4 @@
+import type { Question } from './checks';
 import type { BoxValue } from './parseBoxes';
 import type { TreeRow, TreeVisual } from './parseTree';
 
@@ -22,6 +23,7 @@ export interface TreeFrame {
   code: string | null;
   title: string | null;
   ask: string | null;
+  question: Question | null;
   caption: string;
 }
 
@@ -43,6 +45,7 @@ export function treeFrames(visual: TreeVisual): TreeFrame[] {
       code: null,
       title,
       ask: null,
+      question: null,
       caption: visual.caption,
     },
   ];
@@ -58,6 +61,7 @@ export function treeFrames(visual: TreeVisual): TreeFrame[] {
       code: step.code ?? null,
       title,
       ask: step.ask ?? null,
+      question: step.question ?? null,
       caption: step.caption,
     };
     if (step.ask) frames.push({ nodes, ...shown });

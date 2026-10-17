@@ -1,4 +1,4 @@
-import { isCaption, isRecord } from './checks';
+import { isCaption, isRecord, parseQuestion, type Question } from './checks';
 import type { BoxValue } from './parseBoxes';
 
 // A ```visual fence of type "stack" draws a pile of cards, the newest on top, such as the calls
@@ -26,6 +26,7 @@ export interface StackCard {
 interface StackStep {
   title?: string;
   ask?: string;
+  question?: Question;
   pop?: number;
   set?: Record<string, string>;
   push?: StackCard[];
@@ -89,6 +90,9 @@ function parseStep(
     if (!isCaption(value)) return null;
     step[key] = value;
   }
+  const question = parseQuestion(raw, step.ask);
+  if (question === null) return null;
+  if (question) step.question = question;
   const before = new Set(pile);
   if (raw.pop !== undefined) {
     const { pop } = raw;

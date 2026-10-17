@@ -1,3 +1,4 @@
+import type { Question } from './checks';
 import type { ArrayVisual, MarkerPlaces } from './parseVisual';
 
 // What the array looks like at one step: which box stands at each position (a box keeps the
@@ -16,6 +17,7 @@ export interface ArrayFrame {
   range: [number, number] | null;
   title: string | null;
   ask: string | null;
+  question: Question | null;
   caption: string;
 }
 
@@ -36,6 +38,7 @@ export function arrayFrames(visual: ArrayVisual): ArrayFrame[] {
       range,
       title,
       ask: null,
+      question: null,
       caption: visual.caption,
     },
   ];
@@ -44,8 +47,20 @@ export function arrayFrames(visual: ArrayVisual): ArrayFrame[] {
     if (step.at) at = step.at;
     const compared = step.compare ?? null;
     const ask = step.ask ?? null;
+    const question = step.question ?? null;
     const caption = step.caption;
-    const frame = () => ({ order, compared, sortedFrom, done, at, range, title, ask, caption });
+    const frame = () => ({
+      order,
+      compared,
+      sortedFrom,
+      done,
+      at,
+      range,
+      title,
+      ask,
+      question,
+      caption,
+    });
     if (ask) frames.push(frame());
     const moves =
       step.swap ||

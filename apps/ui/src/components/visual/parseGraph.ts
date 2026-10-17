@@ -1,4 +1,11 @@
-import { isCaption, isRecord, parseRows, type ValueRow } from './checks';
+import {
+  isCaption,
+  isRecord,
+  parseQuestion,
+  parseRows,
+  type Question,
+  type ValueRow,
+} from './checks';
 
 // A ```visual fence of type "graph" draws a graph whose vertices stand where the fence puts them,
 // so a graph looks the same every time. Vertex i is named i, as the lessons number them, and stands
@@ -25,6 +32,7 @@ export type Edge = [number, number] | [number, number, number];
 interface GraphStep {
   title?: string;
   ask?: string;
+  question?: Question;
   add?: Edge[];
   focus?: number[];
   seen?: number[];
@@ -100,6 +108,9 @@ function parseStep(raw: unknown, n: number): GraphStep | null {
     if (!isCaption(value)) return null;
     step[key] = value;
   }
+  const question = parseQuestion(raw, step.ask);
+  if (question === null) return null;
+  if (question) step.question = question;
   for (const key of ['focus', 'seen', 'done'] as const) {
     if (raw[key] === undefined) continue;
     const list = vertexList(raw[key], n);

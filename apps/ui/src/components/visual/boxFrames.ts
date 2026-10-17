@@ -1,3 +1,4 @@
+import type { Question } from './checks';
 import { findCell, type BoxValue, type BoxesVisual, type Cell } from './parseBoxes';
 
 // What the boxes look like at one step: where each box is (not there yet, on screen, or removed),
@@ -12,6 +13,7 @@ export interface BoxesFrame {
   focus: string[];
   title: string | null;
   ask: string | null;
+  question: Question | null;
   caption: string;
 }
 
@@ -24,14 +26,15 @@ export function boxFrames(visual: BoxesVisual): BoxesFrame[] {
   let cells = boxes.map((box) => box.cells);
   let title: string | null = null;
   const frames: BoxesFrame[] = [
-    { places, cells, focus: [], title, ask: null, caption: visual.caption },
+    { places, cells, focus: [], title, ask: null, question: null, caption: visual.caption },
   ];
   for (const step of visual.steps) {
     if (step.title !== undefined) title = step.title;
     const focus = step.focus ?? [];
     const ask = step.ask ?? null;
+    const question = step.question ?? null;
     const { caption } = step;
-    if (ask) frames.push({ places, cells, focus, title, ask, caption });
+    if (ask) frames.push({ places, cells, focus, title, ask, question, caption });
     const writes = [
       ...Object.entries(step.set ?? {}).map(([a, value]): [string, Write] => [a, { value }]),
       ...Object.entries(step.point ?? {}).map(([a, to]): [string, Write] => [a, { to }]),
@@ -51,7 +54,7 @@ export function boxFrames(visual: BoxesVisual): BoxesFrame[] {
       for (const id of step.remove ?? []) places[index(id)] = 'removed';
     }
     if (!ask || writes.length > 0 || step.show || step.remove) {
-      frames.push({ places, cells, focus, title, ask, caption });
+      frames.push({ places, cells, focus, title, ask, question, caption });
     }
   }
   return frames;

@@ -73,9 +73,9 @@ Hai să urmărim pas cu pas **cautare_binara([1,3,5,7,9,11,13,15,17,19], 13)**
   "markers": ["stanga = {i}", "mijloc = {i}", "dreapta = {i}"],
   "steps": [
     {"title": "Pasul 1", "at": [0, 4, 9], "compare": [4], "ask": "mijloc = (0 + 9) // 2 = 4, iar numere[4] este 9. Este 9 < 13?", "caption": "Da, deci 13 e în dreapta lui mijloc: stanga = mijloc + 1 = 5", "move": [5, null, 9], "range": [5, 9]},
-    {"title": "Pasul 2", "at": [5, 7, 9], "compare": [7], "ask": "mijloc = (5 + 9) // 2 = 7, iar numere[7] este 15. Este 15 < 13?", "caption": "Nu, 15 > 13, deci 13 e în stânga lui mijloc: dreapta = mijloc - 1 = 6", "move": [5, null, 6], "range": [5, 6]},
-    {"title": "Pasul 3", "at": [5, 5, 6], "compare": [5], "ask": "mijloc = (5 + 6) // 2 = 5, iar numere[5] este 11. Este 11 < 13?", "caption": "Da, deci 13 e în dreapta lui mijloc: stanga = mijloc + 1 = 6", "move": [6, null, 6], "range": [6, 6]},
-    {"title": "Pasul 4", "at": [6, 6, 6], "compare": [6], "ask": "mijloc = (6 + 6) // 2 = 6, iar numere[6] este 13. Este 13 egal cu 13?", "caption": "Da! Găsit la indexul 6, după ce am verificat 4 numere în loc de 10", "done": [6]}
+    {"title": "Pasul 2", "at": [5, 7, 9], "compare": [7], "ask": "mijloc = (5 + 9) // 2 = 7, iar numere[7] este 15. Unde poate fi 13?", "choices": ["În stânga lui mijloc", "În dreapta lui mijloc", "Chiar la mijloc"], "answer": 0, "caption": "15 > 13, deci 13 e în stânga lui mijloc: dreapta = mijloc - 1 = 6", "move": [5, null, 6], "range": [5, 6]},
+    {"title": "Pasul 3", "at": [5, 5, 6], "compare": [5], "ask": "mijloc = (5 + 6) // 2 = 5, iar numere[5] este 11. Unde poate fi 13?", "choices": ["În stânga lui mijloc", "În dreapta lui mijloc", "Chiar la mijloc"], "answer": 1, "caption": "11 < 13, deci 13 e în dreapta lui mijloc: stanga = mijloc + 1 = 6", "move": [6, null, 6], "range": [6, 6]},
+    {"title": "Pasul 4", "at": [6, 6, 6], "compare": [6], "ask": "mijloc = (6 + 6) // 2 = 6, iar numere[6] este 13. Unde poate fi 13?", "choices": ["În stânga lui mijloc", "În dreapta lui mijloc", "Chiar la mijloc"], "answer": 2, "caption": "Găsit la indexul 6, după ce am verificat 4 numere în loc de 10", "done": [6]}
   ]
 }
 ```

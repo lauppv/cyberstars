@@ -907,6 +907,9 @@
     "visualTop": "top",
     "visualFront": "front",
     "visualBack": "back",
+    "visualSkip": "Skip",
+    "visualRight": "Right!",
+    "visualWrong": "Not quite: the answer is {{answer}}.",
     "visualSpeed": "Speed",
     "visualSpeeds": {
       "slow": "Slow",

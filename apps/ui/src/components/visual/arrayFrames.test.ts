@@ -14,7 +14,7 @@ describe('arrayFrames', () => {
         { compare: [0, 1], swap: true, sorted: 0, caption: 'Done' },
       ],
     });
-    const idle = { title: null, ask: null, done: [], at: [], range: null };
+    const idle = { title: null, ask: null, question: null, done: [], at: [], range: null };
     expect(frames).toEqual([
       { ...idle, order: [0, 1, 2], compared: null, sortedFrom: 3, caption: 'How it works' },
       { ...idle, order: [1, 0, 2], compared: [0, 1], sortedFrom: 3, caption: 'Swap 5 and 3' },
@@ -36,7 +36,7 @@ describe('arrayFrames', () => {
         { sorted: 0, caption: 'Done' },
       ],
     });
-    const pass = { title: 'Pass 1', done: [], at: [], range: null };
+    const pass = { title: 'Pass 1', question: null, done: [], at: [], range: null };
     expect(frames.slice(1)).toEqual([
       {
         ...pass,
@@ -126,5 +126,17 @@ describe('arrayFrames', () => {
       steps: [{ at: [0], move: [1], caption: 'Straight to 1' }],
     });
     expect(frames.map((f) => f.at)).toEqual([[null], [1]]);
+  });
+
+  it("carries a question's choices on its frames, the same ones before and after the swap", () => {
+    const question = { choices: ['Yes', 'No'], answer: 0 };
+    const frames = arrayFrames({
+      type: 'array',
+      values: [5, 3],
+      caption: 'Start',
+      steps: [{ compare: [0, 1], ask: 'Swap?', question, swap: true, caption: 'Yes' }],
+    });
+    expect(frames.map((f) => f.question)).toEqual([null, question, question]);
+    expect(frames[1].question).toBe(frames[2].question);
   });
 });

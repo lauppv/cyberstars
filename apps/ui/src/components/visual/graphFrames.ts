@@ -1,4 +1,4 @@
-import type { ValueRow } from './checks';
+import type { Question, ValueRow } from './checks';
 import type { Edge, GraphVisual } from './parseGraph';
 
 // What the graph looks like at one step: the edges on screen, in the order they came, and what the
@@ -15,6 +15,7 @@ export interface GraphFrame {
   code: string | null;
   title: string | null;
   ask: string | null;
+  question: Question | null;
   caption: string;
 }
 
@@ -33,6 +34,7 @@ export function graphFrames(visual: GraphVisual): GraphFrame[] {
       code: null,
       title,
       ask: null,
+      question: null,
       caption: visual.caption,
     },
   ];
@@ -48,6 +50,7 @@ export function graphFrames(visual: GraphVisual): GraphFrame[] {
       code: step.code ?? null,
       title,
       ask: step.ask ?? null,
+      question: step.question ?? null,
       caption: step.caption,
     };
     if (step.ask) frames.push({ edges, ...shown });

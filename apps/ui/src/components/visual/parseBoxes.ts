@@ -1,4 +1,4 @@
-import { isCaption, isRecord } from './checks';
+import { isCaption, isRecord, parseQuestion, type Question } from './checks';
 
 // A ```visual fence of type "boxes" draws named boxes in a row with arrows between them: a
 // variable holding a value, a pointer holding an arrow to another box (or the null word, "NULL"
@@ -25,6 +25,7 @@ interface BoxesStep {
   title?: string;
   focus?: string[];
   ask?: string;
+  question?: Question;
   show?: string[];
   set?: Record<string, BoxValue>;
   point?: Record<string, string | null>;
@@ -114,6 +115,9 @@ function parseStep(raw: unknown, boxes: Box[]): BoxesStep | null {
     if (!isCaption(value)) return null;
     step[key] = value;
   }
+  const question = parseQuestion(raw, step.ask);
+  if (question === null) return null;
+  if (question) step.question = question;
   for (const key of ['focus', 'show', 'remove'] as const) {
     if (raw[key] === undefined) continue;
     const list = idList(raw[key], ids);

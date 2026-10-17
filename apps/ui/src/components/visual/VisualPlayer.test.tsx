@@ -1132,3 +1132,114 @@ describe('VisualPlayer, a queue and the ends', () => {
     expect(card('b')!.querySelector('[data-tag]')).toBeNull();
   });
 });
+
+describe('VisualPlayer, a question with choices', () => {
+  const quiz: ArrayVisual = {
+    ...visual,
+    steps: [
+      { ...visual.steps[0], question: { choices: ['Yes', 'No'], answer: 0 } },
+      visual.steps[1],
+    ],
+  };
+  const choice = (name: string, root = player()) => within(root).getByRole('button', { name });
+  const skip = (root = player()) => within(root).getByRole('button', { name: /skip/i });
+
+  it('holds the answer back and shows the choices, with Skip in place of Next', () => {
+    render(<VisualPlayer visual={quiz} />);
+    next();
+    expect(screen.getByText('Is 5 > 3?')).toBeInTheDocument();
+    expect(screen.queryByText('Yes, so they swap')).toBeNull();
+    const group = screen.getByRole('group', { name: 'Is 5 > 3?' });
+    expect(
+      within(group)
+        .getAllByRole('button')
+        .map((b) => b.textContent),
+    ).toEqual(['Yes', 'No']);
+    expect(within(player()).queryByRole('button', { name: /next/i })).toBeNull();
+    expect(skip()).not.toHaveAttribute('aria-disabled', 'true');
+  });
+
+  it('stays on the question until it is answered, by button or arrow key', () => {
+    render(<VisualPlayer visual={quiz} />);
+    next();
+    fireEvent.keyDown(player(), { key: 'ArrowRight' });
+    expect(screen.getByText('Step 2 of 4')).toBeInTheDocument();
+    fireEvent.keyDown(player(), { key: 'ArrowLeft' });
+    expect(screen.getByText('Step 1 of 4')).toBeInTheDocument();
+  });
+
+  it('says a right pick is right, shows the answer, gives the focus to Next and swaps on it', () => {
+    render(<VisualPlayer visual={quiz} />);
+    next();
+    fireEvent.click(choice('Yes'));
+    expect(screen.getByText('Right!')).toBeInTheDocument();
+    expect(screen.getByText('Yes, so they swap')).toBeInTheDocument();
+    expect(screen.queryByRole('group', { name: 'Is 5 > 3?' })).toBeNull();
+    const nextButton = within(player()).getByRole('button', { name: /next/i });
+    expect(nextButton).toHaveFocus();
+    // The answer comes with the question still in place; the swap comes on Next
+    expect(box(document, 0).style.transform).toBe(
+      'translateX(calc(0 * (100% + var(--gap)))) translateY(0)',
+    );
+    next();
+    expect(screen.getByText('Right!')).toBeInTheDocument();
+    expect(box(document, 0).style.transform).toBe(
+      'translateX(calc(1 * (100% + var(--gap)))) translateY(0)',
+    );
+  });
+
+  it('gives the right choice after a wrong pick, in the live region', () => {
+    render(<VisualPlayer visual={quiz} />);
+    next();
+    fireEvent.click(choice('No'));
+    const wrong = screen.getByText('Not quite: the answer is Yes.');
+    expect(wrong.parentElement).toHaveAttribute('aria-live', 'polite');
+    expect(screen.getByText('Yes, so they swap')).toBeInTheDocument();
+  });
+
+  it('shows the answer on Skip, without saying right or wrong, and keeps the focus there', () => {
+    render(<VisualPlayer visual={quiz} />);
+    next();
+    const button = skip();
+    button.focus();
+    fireEvent.click(button);
+    expect(screen.getByText('Yes, so they swap')).toBeInTheDocument();
+    expect(document.querySelector('[data-result]')).toBeNull();
+    expect(within(player()).getByRole('button', { name: /next/i })).toHaveFocus();
+  });
+
+  it('keeps an answer when going back, and Start over forgets every answer', () => {
+    render(<VisualPlayer visual={quiz} />);
+    next();
+    fireEvent.click(choice('No'));
+    next();
+    next();
+    fireEvent.click(within(player()).getByRole('button', { name: /previous/i }));
+    fireEvent.click(within(player()).getByRole('button', { name: /previous/i }));
+    expect(screen.getByText('Step 2 of 4')).toBeInTheDocument();
+    expect(screen.getByText('Not quite: the answer is Yes.')).toBeInTheDocument();
+    fireEvent.click(within(player()).getByRole('button', { name: /previous/i }));
+    // Back on the first step, Start over still has answers to forget
+    const restart = screen.getByRole('button', { name: 'Start over' });
+    expect(restart).not.toHaveAttribute('aria-disabled', 'true');
+    fireEvent.click(restart);
+    expect(restart).toHaveAttribute('aria-disabled', 'true');
+    next();
+    expect(screen.getByRole('group', { name: 'Is 5 > 3?' })).toBeInTheDocument();
+    expect(screen.queryByText('Not quite: the answer is Yes.')).toBeNull();
+  });
+
+  it('answers in the enlarged dialog too, giving the focus to its own Next', () => {
+    render(<VisualPlayer visual={quiz} />);
+    next();
+    fireEvent.click(screen.getByRole('button', { name: 'Enlarge' }));
+    const dialog = screen.getByRole('dialog', { name: 'Step by step' });
+    fireEvent.keyDown(dialog, { key: 'ArrowRight' });
+    expect(within(dialog).getByText('Step 2 of 4')).toBeInTheDocument();
+    fireEvent.click(choice('Yes', dialog));
+    expect(within(dialog).getByText('Right!')).toBeInTheDocument();
+    expect(within(dialog).getByRole('button', { name: /next/i })).toHaveFocus();
+    // The player under the dialog shows the same answer
+    expect(within(player()).getByText('Right!')).toBeInTheDocument();
+  });
+});

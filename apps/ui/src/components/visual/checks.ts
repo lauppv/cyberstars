@@ -27,3 +27,34 @@ export function parseRows(raw: unknown): ValueRow[] | null {
   }
   return rows;
 }
+
+// The choices a step gives its question, so the student answers before seeing the answer, and the
+// right one by its place among them
+export interface Question {
+  choices: string[];
+  answer: number;
+}
+
+// Undefined when the step gives no choices, null when they don't fit: two to four different ones,
+// a right one among them, and a question they answer
+export function parseQuestion(
+  raw: Record<string, unknown>,
+  ask: string | undefined,
+): Question | null | undefined {
+  const { choices, answer } = raw;
+  if (choices === undefined && answer === undefined) return undefined;
+  if (
+    !ask ||
+    !Array.isArray(choices) ||
+    choices.length < 2 ||
+    choices.length > 4 ||
+    !choices.every(isCaption) ||
+    new Set(choices).size !== choices.length
+  ) {
+    return null;
+  }
+  if (!Number.isInteger(answer) || (answer as number) < 0 || (answer as number) >= choices.length) {
+    return null;
+  }
+  return { choices: [...choices], answer: answer as number };
+}
