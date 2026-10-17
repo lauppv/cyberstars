@@ -66,6 +66,14 @@ describe('lessonStatement', () => {
     expect(ro!.statement).toEqual(readLesson('algo-python', 'caesar-cipher', 'ro')!.statement);
   });
 
+  it('reads a multi-language lesson in the language asked, Python without one', () => {
+    const java = lessonStatement('trees-graphs', 'trees', 'en', 'java')!.statement;
+    const python = lessonStatement('trees-graphs', 'trees', 'en')!.statement;
+    expect(java).toContain('public class Main');
+    expect(python).toContain('def __init__');
+    expect(python).not.toContain('public class Main');
+  });
+
   it('refuses a slug the curriculum does not list before reading any file', () => {
     expect(lessonStatement('python', '../../../package', 'en')).toBeNull();
     expect(lessonStatement('python', 'for-solution', 'en')).toBeNull();

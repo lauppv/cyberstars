@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { lessons } from '@cyberstars/content/curriculum';
 import { TUTOR_MESSAGE_MAX_LENGTH, TUTOR_RUN_OUTPUT_MAX_LENGTH } from '@cyberstars/shared/tutor';
+import { CODE_LANGUAGES } from '@cyberstars/shared/constants';
 
 // A lesson or algorithm challenge the curriculum lists, so a conversation can
 // only be about one that exists.
@@ -23,6 +24,7 @@ const tutorWorkSchema = z.object({
     .array(z.object({ passed: z.boolean(), text: z.string().max(300) }))
     .max(30)
     .optional(),
+  language: z.enum(CODE_LANGUAGES).optional(),
 });
 
 export const tutorChatSchema = z

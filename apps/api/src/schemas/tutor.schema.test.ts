@@ -73,6 +73,15 @@ describe('tutorChatSchema: the work on a lesson', () => {
     expect(() => tutorChatSchema.parse({ ...valid, lesson: linux, work: long })).toThrow();
   });
 
+  it('takes the language on screen, only one the lessons are taught in', () => {
+    const trees = { courseKey: 'trees-graphs', lessonSlug: 'trees' };
+    const java = { ...work, language: 'java' };
+    expect(tutorChatSchema.parse({ ...valid, lesson: trees, work: java }).work).toEqual(java);
+    expect(() =>
+      tutorChatSchema.parse({ ...valid, lesson: trees, work: { ...work, language: 'ruby' } }),
+    ).toThrow();
+  });
+
   it('refuses work without a lesson', () => {
     expect(() => tutorChatSchema.parse({ ...valid, work })).toThrow('Work needs a lesson');
   });
