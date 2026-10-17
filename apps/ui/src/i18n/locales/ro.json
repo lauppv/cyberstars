@@ -424,7 +424,18 @@
       "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele.",
       "trees-graphs": "Structurile din spatele folderelor, hărților și rețelelor, predate în Python, Java sau C: fiecare lecție există în toate trei și poți schimba limbajul la oricare dintre ele."
     },
-    "lessons_few": "lecții"
+    "lessons_few": "lecții",
+    "names": {
+      "python": "Python",
+      "c": "C",
+      "java": "Java",
+      "linux": "Linux",
+      "trees-graphs": "Arbori și grafuri",
+      "algo-python": "Algoritmi Python",
+      "algo-java": "Algoritmi Java",
+      "algo-c": "Algoritmi C",
+      "algo-trees-graphs": "Algoritmi pe arbori și grafuri"
+    }
   },
   "algorithms": {
     "desc": {
@@ -436,7 +447,6 @@
   },
   "algoList": {
     "courseNotFound": "Cursul nu a fost găsit.",
-    "title": "Algoritmi {{lang}}",
     "challenges_one": "{{count}} provocare",
     "challenges_other": "{{count}} de provocări",
     "filters": {

@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
-import { courseMeta } from '../constants/courses';
+import { courseTitle } from '../constants/courses';
 import { isBeta, xpForLesson } from '@cyberstars/shared/constants';
 import { BetaBadge } from '../components/ui/BetaBadge';
 
@@ -37,7 +37,6 @@ export function AlgorithmListPage() {
   const courseKey = `algo-${lang}`;
   const course = courses.find((c) => c.key === courseKey) ?? null;
   const progress = progressMap[courseKey] ?? null;
-  const meta = courseMeta(lang);
 
   const completedSlugs = useMemo(
     () => new Set((progress?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug)),
@@ -95,7 +94,7 @@ export function AlgorithmListPage() {
             <div className="flex items-center gap-3 mb-4">
               <div>
                 <h1 className="text-xl font-bold flex items-center gap-2">
-                  {t('algoList.title', { lang: meta.label })}
+                  {courseTitle(courseKey, t)}
                   {isBeta(courseKey) && <BetaBadge />}
                 </h1>
                 <p className="text-[var(--text3)] text-xs">

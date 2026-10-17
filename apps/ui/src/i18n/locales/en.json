@@ -400,6 +400,17 @@
       "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.",
       "algo-trees-graphs": "Tree problems from easy to hard, in Python, Java or C: depth, mirror images, binary search trees, levels and paths. Every challenge comes in all three, and you can switch language on any of them.",
       "trees-graphs": "The structures behind folders, maps and networks, taught in Python, Java or C: every lesson comes in all three, and you can switch language on any of them."
+    },
+    "names": {
+      "python": "Python",
+      "c": "C",
+      "java": "Java",
+      "linux": "Linux",
+      "trees-graphs": "Trees and Graphs",
+      "algo-python": "Python Algorithms",
+      "algo-java": "Java Algorithms",
+      "algo-c": "C Algorithms",
+      "algo-trees-graphs": "Trees and Graphs Algorithms"
     }
   },
   "algorithms": {
@@ -412,7 +423,6 @@
   },
   "algoList": {
     "courseNotFound": "Course not found.",
-    "title": "{{lang}} Algorithms",
     "challenges_one": "{{count}} challenge",
     "challenges_other": "{{count}} challenges",
     "filters": {
