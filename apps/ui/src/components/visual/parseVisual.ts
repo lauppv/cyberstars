@@ -4,10 +4,13 @@
 // pass, stays up until another step changes it. Two optional pointer labels sit under the two
 // boxes a step compares, such as "j = {i}" and "j + 1" for the loop's index ({i} is the box's
 // position). Anything that doesn't fit comes back null, and the fence shows as plain text. A
-// fence of type "boxes" draws boxes and arrows instead, see parseBoxes.
+// fence of type "boxes" draws boxes and arrows instead, see parseBoxes, and one of type "tree" a
+// binary tree, see parseTree. Any of them can carry an id, which keeps the step the student is on
+// when the lesson's text comes back in another programming language.
 
 import { isCaption, isRecord } from './checks';
 import { parseBoxes, type BoxesVisual } from './parseBoxes';
+import { parseTree, type TreeVisual } from './parseTree';
 
 interface ArrayStep {
   title?: string;
@@ -26,7 +29,7 @@ export interface ArrayVisual {
   steps: ArrayStep[];
 }
 
-export type Visual = ArrayVisual | BoxesVisual;
+export type Visual = (ArrayVisual | BoxesVisual | TreeVisual) & { id?: string };
 
 function isIndex(value: unknown, length: number): value is number {
   return Number.isInteger(value) && (value as number) >= 0 && (value as number) < length;
@@ -82,7 +85,13 @@ export function parseVisual(source: string): Visual | null {
     return null;
   }
   if (!isRecord(raw)) return null;
-  if (raw.type === 'boxes') return parseBoxes(raw);
+  const visual =
+    raw.type === 'boxes' ? parseBoxes(raw) : raw.type === 'tree' ? parseTree(raw) : parseArray(raw);
+  if (!visual || raw.id === undefined) return visual;
+  return isCaption(raw.id) ? { ...visual, id: raw.id } : null;
+}
+
+function parseArray(raw: Record<string, unknown>): ArrayVisual | null {
   if (raw.type !== 'array' || !isCaption(raw.caption)) return null;
   const { values, steps } = raw;
   if (

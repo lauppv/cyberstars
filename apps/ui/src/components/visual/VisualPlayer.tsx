@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { ChevronLeft, ChevronRight, Maximize2, RotateCcw, X } from 'lucide-react';
@@ -6,8 +6,11 @@ import { Segmented } from '../ui/Segmented';
 import type { Visual } from './parseVisual';
 import { arrayFrames } from './arrayFrames';
 import { boxFrames } from './boxFrames';
+import { treeFrames } from './treeFrames';
 import { ArrayView } from './ArrayView';
 import { BoxesView } from './BoxesView';
+import { TreeView } from './TreeView';
+import { VisualSteps } from './VisualSteps';
 import { Words } from './Words';
 
 // Loaded lazily by MarkdownRenderer, so a lesson without a visual never downloads it
@@ -29,11 +32,18 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
     () =>
       visual.type === 'array'
         ? { type: 'array' as const, visual, frames: arrayFrames(visual) }
-        : { type: 'boxes' as const, visual, frames: boxFrames(visual) },
+        : visual.type === 'boxes'
+          ? { type: 'boxes' as const, visual, frames: boxFrames(visual) }
+          : { type: 'tree' as const, visual, frames: treeFrames(visual) },
     [visual],
   );
   const { frames } = drawn;
-  const [step, setStep] = useState(0);
+  // A visual with an id opens on the step the student left it on, when the lesson's text comes back
+  // in another programming language
+  const steps = useContext(VisualSteps);
+  const [step, setStep] = useState(() =>
+    Math.min(frames.length - 1, (visual.id && steps?.get(visual.id)) || 0),
+  );
   const [speed, setSpeed] = useState<Speed>('normal');
   const [expanded, setExpanded] = useState(false);
   const expandRef = useRef<HTMLButtonElement>(null);
@@ -42,7 +52,11 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
   const frame = frames[step];
   const moveMs = MOVE_MS[speed];
 
-  const go = (to: number) => setStep(Math.max(0, Math.min(last, to)));
+  const go = (to: number) => {
+    const next = Math.max(0, Math.min(last, to));
+    setStep(next);
+    if (visual.id) steps?.set(visual.id, next);
+  };
 
   const stepKeys = (e: KeyboardEvent) => {
     if (e.key === 'ArrowRight') go(step + 1);
@@ -121,7 +135,7 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
         box={box}
         swapMs={moveMs}
       />
-    ) : (
+    ) : drawn.type === 'boxes' ? (
       <BoxesView
         visual={drawn.visual}
         frames={drawn.frames}
@@ -129,6 +143,8 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
         box={box}
         moveMs={moveMs}
       />
+    ) : (
+      <TreeView visual={drawn.visual} frames={drawn.frames} step={step} box={box} moveMs={moveMs} />
     );
 
   const title = (

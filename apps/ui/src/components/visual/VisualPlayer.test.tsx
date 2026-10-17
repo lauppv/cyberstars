@@ -3,6 +3,8 @@ import { render, screen, fireEvent, within, act } from '@testing-library/react';
 import { VisualPlayer } from './VisualPlayer';
 import type { ArrayVisual } from './parseVisual';
 import type { BoxesVisual } from './parseBoxes';
+import type { TreeVisual } from './parseTree';
+import { VisualSteps } from './VisualSteps';
 
 const visual: ArrayVisual = {
   type: 'array',
@@ -439,6 +441,140 @@ describe('VisualPlayer', () => {
       fireEvent.click(screen.getByRole('button', { name: 'Start over' }));
       expect(queued).toHaveLength(0);
       expect(boxEl('a')).toBeNull();
+    });
+  });
+
+  describe('a tree', () => {
+    const tree: TreeVisual = {
+      type: 'tree',
+      caption: 'A tree',
+      null: 'None',
+      nodes: { 0: 8, 1: 3, 2: 10 },
+      steps: [
+        { add: { 4: 6 }, focus: [4], code: 'root.left.right = Node(6)', caption: '6 goes in' },
+        { path: [0, 1, 4], tags: { 4: 'leaf', 0: 'root' }, nulls: [4], caption: 'The path' },
+        { swap: [0, 4], caption: 'Swap 8 and 6' },
+        { remove: [4], caption: '8 goes' },
+      ],
+    };
+
+    const node = (place: number) => document.querySelector(`[data-node="${place}"]`);
+    const value = (place: number) => document.querySelector(`[data-value="${place}"]`);
+
+    let queued: FrameRequestCallback[] = [];
+    const playAt = (ms: number) =>
+      act(() => {
+        const now = queued;
+        queued = [];
+        for (const tick of now) tick(ms);
+      });
+
+    afterEach(() => {
+      vi.unstubAllGlobals();
+      queued = [];
+    });
+
+    const reduceMotion = () =>
+      vi.stubGlobal('matchMedia', (query: string) => ({ matches: query.includes('reduce') }));
+
+    it('stands each node at its place, a level per depth, and shows the line of code', () => {
+      reduceMotion();
+      render(<VisualPlayer visual={tree} />);
+      // Four levels (the empty children of 6 are on the fourth): the bottom row is 8 slots wide
+      expect(node(0)).toHaveAttribute('cx', '160');
+      expect(node(0)).toHaveAttribute('cy', '35');
+      expect(node(2)).toHaveAttribute('cx', '240');
+      expect(node(4)).toBeNull();
+      expect(document.querySelector('[data-code]')).toBeNull();
+      next();
+      expect(node(4)).toHaveAttribute('cx', '120');
+      expect(node(4)).toHaveAttribute('cy', '139');
+      expect(node(4)).toHaveAttribute('data-state', 'focused');
+      expect(value(4)).toHaveTextContent('6');
+      expect(document.querySelector('[data-code]')).toHaveTextContent('root.left.right = Node(6)');
+    });
+
+    it("lights a path, puts tags beside nodes and shows a node's empty children", () => {
+      reduceMotion();
+      render(<VisualPlayer visual={tree} />);
+      next();
+      next();
+      expect(document.querySelector('[data-code]')).toBeNull();
+      const lit = [...document.querySelectorAll('[data-edge][data-lit]')].map((e) =>
+        e.getAttribute('data-edge'),
+      );
+      expect(lit).toEqual(['1', '4']);
+      expect(document.querySelector('[data-edge="2"]')).not.toHaveAttribute('data-lit');
+      expect([...document.querySelectorAll('[data-null]')].map((n) => n.textContent)).toEqual([
+        'None',
+        'None',
+      ]);
+      // Above a node with children, or with its empty children shown
+      const tag = (text: string) =>
+        document.querySelector(`[data-tag="${text}"] rect`)!.getAttribute('y');
+      expect(tag('root')).toBe('1');
+      expect(tag('leaf')).toBe('105');
+    });
+
+    it('puts a tag below a node with nothing under it', () => {
+      reduceMotion();
+      render(
+        <VisualPlayer visual={{ ...tree, steps: [{ tags: { 2: 'leaf' }, caption: 'A leaf' }] }} />,
+      );
+      next();
+      // Two levels this time: 10 stands at 87, and the tag 11 below its edge
+      expect(document.querySelector('[data-tag="leaf"] rect')).toHaveAttribute('y', '105');
+    });
+
+    it('carries a swapped value along to its new node, and fades a removed node out', () => {
+      vi.stubGlobal('matchMedia', () => ({ matches: false }));
+      vi.stubGlobal('requestAnimationFrame', (tick: FrameRequestCallback) => queued.push(tick));
+      vi.stubGlobal('cancelAnimationFrame', () => {});
+      render(<VisualPlayer visual={tree} />);
+      next();
+      playAt(0);
+      playAt(300);
+      // Only something comes, so the one beat takes the whole move
+      expect(node(4)).toHaveAttribute('opacity', '0.25');
+      playAt(5000);
+      next();
+      playAt(0);
+      playAt(5000);
+      next();
+      playAt(0);
+      playAt(600);
+      const eight = [...document.querySelectorAll('text')].find((t) => t.textContent === '8')!;
+      expect(eight).toHaveAttribute('x', '140');
+      playAt(5000);
+      expect(value(4)).toHaveTextContent('8');
+      expect(value(0)).toHaveTextContent('6');
+      next();
+      playAt(0);
+      playAt(600);
+      expect(node(4)).toHaveAttribute('opacity', '0.5');
+      playAt(5000);
+      expect(node(4)).toBeNull();
+    });
+
+    it('opens on the step it was left on when it comes back with the same id', () => {
+      reduceMotion();
+      const steps = new Map<string, number>();
+      const withId = { ...tree, id: 'grow' };
+      const { unmount } = render(
+        <VisualSteps.Provider value={steps}>
+          <VisualPlayer visual={withId} />
+        </VisualSteps.Provider>,
+      );
+      next();
+      next();
+      unmount();
+      render(
+        <VisualSteps.Provider value={steps}>
+          <VisualPlayer visual={withId} />
+        </VisualSteps.Provider>,
+      );
+      expect(screen.getByText('Step 3 of 5')).toBeInTheDocument();
+      expect(screen.getByText('The path')).toBeInTheDocument();
     });
   });
 });
