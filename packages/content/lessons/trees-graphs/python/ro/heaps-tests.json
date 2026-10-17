@@ -1,0 +1,217 @@
+{
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "valori"
+      },
+      {
+        "kind": "variable",
+        "name": "extrageri"
+      },
+      {
+        "kind": "function"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "call",
+        "name": "heappush"
+      },
+      {
+        "kind": "call",
+        "name": "heappop"
+      },
+      {
+        "kind": "call",
+        "name": "heapify"
+      },
+      {
+        "kind": "call",
+        "name": "sorted"
+      },
+      {
+        "kind": "call",
+        "name": "sort"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "valori": {
+          "$list": [5, 3, 8, 1, 9, 6]
+        },
+        "extrageri": 2
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "valori": {
+          "$list": [40, 30, 20, 10]
+        },
+        "extrageri": 1
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [2, 1]
+        },
+        "extrageri": 1
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [1, 2]
+        },
+        "extrageri": 1
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [7, 6, 5, 4, 3, 2, 1]
+        },
+        "extrageri": 3
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [1, 2, 3, 4, 5, 6, 7]
+        },
+        "extrageri": 6
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [-5, 10, -20, 15, 0]
+        },
+        "extrageri": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [1000, -1000]
+        },
+        "extrageri": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [-1000, 1000, 0, -1, 1, 999, -999]
+        },
+        "extrageri": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [9, 4, 7, 1, 8, 2, 6]
+        },
+        "extrageri": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [3, 1, 2]
+        },
+        "extrageri": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [10, 20, 15, 30, 40]
+        },
+        "extrageri": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [50, 40, 45, 30, 20, 35, 10]
+        },
+        "extrageri": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [0, -1, -2]
+        },
+        "extrageri": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [100, 1, 50]
+        },
+        "extrageri": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [4, 8, 2, 6]
+        },
+        "extrageri": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [6, 5, 4, 3, 2, 1]
+        },
+        "extrageri": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [11, 22, 33, 44, 55, 66, 77]
+        },
+        "extrageri": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [-7, 7, -3, 3]
+        },
+        "extrageri": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [25, 5, 15, 35, 45, 10, 30]
+        },
+        "extrageri": 6
+      },
+      "generated": true
+    }
+  ]
+}

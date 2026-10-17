@@ -1,0 +1,97 @@
+{
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "scanf"
+      },
+      {
+        "kind": "function"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "call",
+        "name": "qsort"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "6\n5 3 8 1 9 6\n2\n"
+    },
+    {
+      "visible": true,
+      "stdin": "4\n40 30 20 10\n1\n"
+    },
+    {
+      "stdin": "2\n2 1\n1\n"
+    },
+    {
+      "stdin": "2\n1 2\n1\n"
+    },
+    {
+      "stdin": "7\n7 6 5 4 3 2 1\n3\n"
+    },
+    {
+      "stdin": "7\n1 2 3 4 5 6 7\n6\n"
+    },
+    {
+      "stdin": "5\n-5 10 -20 15 0\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\n1000 -1000\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\n-1000 1000 0 -1 1 999 -999\n4\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\n9 4 7 1 8 2 6\n5\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\n3 1 2\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\n10 20 15 30 40\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\n50 40 45 30 20 35 10\n3\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\n0 -1 -2\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\n100 1 50\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\n4 8 2 6\n3\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\n6 5 4 3 2 1\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\n11 22 33 44 55 66 77\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\n-7 7 -3 3\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\n25 5 15 35 45 10 30\n6\n",
+      "generated": true
+    }
+  ]
+}
