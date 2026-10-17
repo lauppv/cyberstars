@@ -189,6 +189,16 @@
         "streak_other": "{{count}}-day streak"
       }
     },
+    "loops": {
+      "title": "Watch an algorithm, step by step",
+      "text": "Lessons show you how an algorithm works, one move at a time.",
+      "sorting": "Sorting",
+      "lists": "Lists",
+      "trees": "Trees",
+      "graphs": "Graphs",
+      "pause": "Pause",
+      "play": "Play"
+    },
     "lists": {
       "picture": "A linked list growing from head: 10, 20 and 30 join at the end, each pointed at by the next of the node before it. Then 20 leaves: 10's next skips it and points at 30.",
       "intro": "A linked list is a chain of nodes: each holds its value and a next arrow to the node after it. head points at the first node. Now the list is empty: head is null.",
@@ -225,8 +235,6 @@
       "all": "Every vertex is reached, each in the fewest steps from {{v}}"
     },
     "sorting": {
-      "title": "Watch an algorithm, step by step",
-      "text": "Lessons show you how an algorithm works, one move at a time.",
       "picture": "Bubble sort putting 5, 3, 8, 1, 2 in order: it compares neighbours, swaps them when the left one is bigger, and repeats pass after pass until the list reads 1, 2, 3, 5, 8.",
       "intro": "We start at position 0 (j = 0) and compare that number with its right neighbour (j + 1). If the left one is bigger, they swap. Then j moves one step right. Each pass pushes the biggest number to the end.",
       "pass": "Pass {{n}}",
@@ -235,9 +243,7 @@
       "no": "No, so they stay",
       "inPlace": "{{n}} is in its place",
       "done": "Done! The list is sorted",
-      "doneNoSwaps": "No swaps in this pass, so the list is sorted",
-      "pause": "Pause",
-      "play": "Play"
+      "doneNoSwaps": "No swaps in this pass, so the list is sorted"
     },
     "features": {
       "title": "What's inside",

@@ -199,6 +199,16 @@
         "streak_other": "{{count}} de zile la rând"
       }
     },
+    "loops": {
+      "title": "Urmărește un algoritm, pas cu pas",
+      "text": "Lecțiile îți arată cum lucrează un algoritm, mutare cu mutare.",
+      "sorting": "Sortare",
+      "lists": "Liste",
+      "trees": "Arbori",
+      "graphs": "Grafuri",
+      "pause": "Pauză",
+      "play": "Pornește"
+    },
     "lists": {
       "picture": "O listă înlănțuită care crește de la cap: 10, 20 și 30 se adaugă la final, fiecare arătat de urmator al nodului dinaintea lui. Apoi 20 pleacă: urmator lui 10 sare peste el și arată spre 30.",
       "intro": "O listă înlănțuită e un lanț de noduri: fiecare ține valoarea lui și o săgeată urmator spre nodul de după el. cap arată spre primul nod. Acum lista e goală: cap e null.",
@@ -236,8 +246,6 @@
       "all": "Am ajuns la toate nodurile, la fiecare în cât mai puțini pași din {{v}}"
     },
     "sorting": {
-      "title": "Urmărește un algoritm, pas cu pas",
-      "text": "Lecțiile îți arată cum lucrează un algoritm, mutare cu mutare.",
       "picture": "Bubble sort pune în ordine 5, 3, 8, 1, 2: compară vecinii, îi interschimbă când cel din stânga e mai mare și o ia de la capăt, trecere după trecere, până când lista devine 1, 2, 3, 5, 8.",
       "intro": "Pornim de la poziția 0 (j = 0) și comparăm numărul de acolo cu vecinul din dreapta (j + 1). Dacă cel din stânga e mai mare, își schimbă locurile. Apoi j se mută un pas la dreapta. Fiecare trecere duce cel mai mare număr la capăt.",
       "pass": "Trecerea {{n}}",
@@ -246,9 +254,7 @@
       "no": "Nu, deci rămân pe loc",
       "inPlace": "{{n}} e la locul lui",
       "done": "Gata! Lista este sortată",
-      "doneNoSwaps": "Nicio interschimbare în trecerea asta, deci lista e sortată",
-      "pause": "Pauză",
-      "play": "Pornește"
+      "doneNoSwaps": "Nicio interschimbare în trecerea asta, deci lista e sortată"
     },
     "features": {
       "title": "Ce găsești înăuntru",
