@@ -1,0 +1,73 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "3 4\nxoo.\n.oo.\n..ox\n"
+    },
+    {
+      "visible": true,
+      "stdin": "1 4\nxo.o\n"
+    },
+    {
+      "visible": true,
+      "stdin": "2 2\n..\n.x\n"
+    },
+    {
+      "stdin": "1 1\n.\n"
+    },
+    {
+      "stdin": "1 1\no\n"
+    },
+    {
+      "stdin": "1 1\nx\n"
+    },
+    {
+      "stdin": "1 3\noxo\n"
+    },
+    {
+      "stdin": "1 5\nxoooo\n"
+    },
+    {
+      "stdin": "1 5\noooox\n"
+    },
+    {
+      "stdin": "4 1\nx\no\no\no\n"
+    },
+    {
+      "stdin": "3 3\no.x\n.o.\nx.o\n"
+    },
+    {
+      "stdin": "4 4\nxooo\noooo\noooo\nooox\n"
+    },
+    {
+      "stdin": "25 25\nxoooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\n"
+    },
+    {
+      "stdin": "25 25\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nxxxxxxxxxxxxxxxxxxxxxxxxx\n"
+    },
+    {
+      "stdin": "2 4\n....\n....\n"
+    },
+    {
+      "stdin": "16 5\n.xooo\n.oooo\noo.oo\nooooo\noxooo\noox.o\n.oo.o\nooooo\nooo..\noooxo\noooo.\noooox\no.ooo\nxoooo\nxoxx.\n.ooxx\n",
+      "generated": true
+    },
+    {
+      "stdin": "17 22\n.ooooooxooooooooooo.o.\nooooooooooooooooooooox\noooo.ooooooooooooooxoo\noooooooooooooxoooooooo\nooooxoxoxoooo.oooooooo\nooooooooooooooooo.ooox\n.ooooo.oooooo.ooooxooo\noooooooooooooooooooooo\nooxooooooo.ooooooooooo\noxoooxoooooooooooooooo\nxoooo.ooxoxooooooooooo\noooooooooooooooo.xoooo\nooooooooooooooxooooooo\nooooooooooooxoooxoxooo\noxoooooooooooooooooo.o\noooooooooooooooooooooo\nooo.ooooooooooooooooo.\n",
+      "generated": true
+    },
+    {
+      "stdin": "20 17\nxooo..oo..ooo.x..\n.oxoo.oo..ooxoooo\no....ooo....o.ooo\noooooooo..xo..oo.\noo.x..o..ooo.o.oo\no.o.oo..o..oo...o\n.o.oo.xoo..oo..oo\n....ooxooo.oo..oo\n.o.o.ooooxo..ooo.\n.o.oooo..ooooo.o.\noo.oooo..o..o.oo.\nooooo..oooo..o.oo\nx.o..oo..o.oo..oo\noooooooo.oo.o..o.\n.o..ooo.oo.oooo.o\noo..o.x.o..oo..x.\nooooxo.ooooo...oo\n.o.o..o..oo..ooo.\no...o.ooooo.ooxo.\no.oo.oo..o.o..o.o\n",
+      "generated": true
+    },
+    {
+      "stdin": "19 22\noooooooooooooooo.ooooo\noooooooooooooooooooooo\nooooooooo..oooooooooo.\nooooooooooo.oooooooo.o\nooooooooooooo.oooooooo\nooooooooooooooo.oooooo\noooo.oooooooo.ooo.oooo\nooooooooooooo.oooooooo\noooooooooooooooooooooo\noooooooooooooooooooooo\nooooooooooo.oooooooooo\nooooooooooooooooooo.oo\noooooooooooooo.ooooo.o\noooooooooooooooooooooo\noooooooooooooooooo.oox\nooooooooo..ooooo.ooooo\noooooooooooooooooooooo\noooooooooooooooooxoooo\noooooooo.ooo..oo.ooooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "9 22\noooooo.oooooo..oo.o.oo\nxox.xx.o.o.ooooo.xoooo\noxoo.ooo.oxo.ooooxo.oo\no.oooo.oooooooo.x.o.o.\no...ooxooooxoooxo..xox\no..oooooxxoo.o.oo.oo.o\nooooo.ooooooxoo.ooooox\n..oo..xooox.oxo.oooooo\noxoo.oooxoooxxooo.x.oo\n",
+      "generated": true
+    }
+  ]
+}

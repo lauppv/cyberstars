@@ -1844,4 +1844,11 @@ export const lessons = [
     sortOrder: 13,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'rotting-fruit',
+    title: 'Medium · Minutes Until Every Fruit Rots',
+    sortOrder: 14,
+    hasCodeFile: true,
+  },
 ];

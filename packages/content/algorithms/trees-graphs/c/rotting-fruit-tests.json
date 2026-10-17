@@ -1,0 +1,173 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "3 4\nxoo.\n.oo.\n..ox\n"
+    },
+    {
+      "visible": true,
+      "stdin": "1 4\nxo.o\n"
+    },
+    {
+      "visible": true,
+      "stdin": "2 2\n..\n.x\n"
+    },
+    {
+      "stdin": "1 1\n.\n"
+    },
+    {
+      "stdin": "1 1\no\n"
+    },
+    {
+      "stdin": "1 1\nx\n"
+    },
+    {
+      "stdin": "1 3\noxo\n"
+    },
+    {
+      "stdin": "1 5\nxoooo\n"
+    },
+    {
+      "stdin": "1 5\noooox\n"
+    },
+    {
+      "stdin": "4 1\nx\no\no\no\n"
+    },
+    {
+      "stdin": "3 3\no.x\n.o.\nx.o\n"
+    },
+    {
+      "stdin": "4 4\nxooo\noooo\noooo\nooox\n"
+    },
+    {
+      "stdin": "25 25\nxoooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\nooooooooooooooooooooooooo\n"
+    },
+    {
+      "stdin": "25 25\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nooooooooooooooooooooooooo\n........................o\nooooooooooooooooooooooooo\no........................\nxxxxxxxxxxxxxxxxxxxxxxxxx\n"
+    },
+    {
+      "stdin": "2 4\n....\n....\n"
+    },
+    {
+      "stdin": "16 5\n.xooo\n.oooo\noo.oo\nooooo\noxooo\noox.o\n.oo.o\nooooo\nooo..\noooxo\noooo.\noooox\no.ooo\nxoooo\nxoxx.\n.ooxx\n",
+      "generated": true
+    },
+    {
+      "stdin": "6 3\nooo\nxoo\nooo\nooo\no.o\nooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 6\nox.ooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "20 8\n.oo..ooo\no.oooooo\no..oxooo\noo..oooo\nxooo.oo.\noooooo.o\noo.oooo.\noooox.o.\n.oo.x.oo\nooooooo.\noo..oooo\n..o.oooo\no.o.o.oo\noooooxoo\noooo.ooo\nooooooxx\nooooooox\noxoo.ooo\no.oooxoo\noooooooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "17 22\n.ooooooxooooooooooo.o.\nooooooooooooooooooooox\noooo.ooooooooooooooxoo\noooooooooooooxoooooooo\nooooxoxoxoooo.oooooooo\nooooooooooooooooo.ooox\n.ooooo.oooooo.ooooxooo\noooooooooooooooooooooo\nooxooooooo.ooooooooooo\noxoooxoooooooooooooooo\nxoooo.ooxoxooooooooooo\noooooooooooooooo.xoooo\nooooooooooooooxooooooo\nooooooooooooxoooxoxooo\noxoooooooooooooooooo.o\noooooooooooooooooooooo\nooo.ooooooooooooooooo.\n",
+      "generated": true
+    },
+    {
+      "stdin": "16 14\n.o.oooo..oo.oo\nooooooooooooo.\noo.o.ooooooo.o\noooo.oooooo.oo\noo.o.ooo...ooo\n.o.ooooo..o..o\nooooooooooo.oo\n.ooooo.oo..ooo\n.o.ooooooo.ooo\nooo.oo.oooooo.\noooooooo.ooo.o\nooooooooooooo.\noo..ooo.ooooo.\n..oo.oooooo..o\nooooooooo.o.oo\nooo.ooo...oooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "23 4\nx.o.\noxx.\nxoo.\no.oo\nxoxo\no.oo\noooo\noooo\noox.\nooo.\nooo.\n.o.o\nooo.\noxxo\nx.xo\noox.\n.xoo\n.xo.\no.o.\noox.\noo.o\noooo\n.oxx\n",
+      "generated": true
+    },
+    {
+      "stdin": "6 15\nooooooooooooooo\noo..oo.oooo.oo.\nooo.ooooxooooo.\n.oooo.ooooo..ox\nooooooo.xooo.oo\noooooo.oo.o.ooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "5 6\noo.xxx\no.oooo\nx.xooo\nxoooox\noxooo.\n",
+      "generated": true
+    },
+    {
+      "stdin": "20 17\nxooo..oo..ooo.x..\n.oxoo.oo..ooxoooo\no....ooo....o.ooo\noooooooo..xo..oo.\noo.x..o..ooo.o.oo\no.o.oo..o..oo...o\n.o.oo.xoo..oo..oo\n....ooxooo.oo..oo\n.o.o.ooooxo..ooo.\n.o.oooo..ooooo.o.\noo.oooo..o..o.oo.\nooooo..oooo..o.oo\nx.o..oo..o.oo..oo\noooooooo.oo.o..o.\n.o..ooo.oo.oooo.o\noo..o.x.o..oo..x.\nooooxo.ooooo...oo\n.o.o..o..oo..ooo.\no...o.ooooo.ooxo.\no.oo.oo..o.o..o.o\n",
+      "generated": true
+    },
+    {
+      "stdin": "16 2\noo\noo\noo\noo\nox\noo\noo\noo\noo\noo\noo\noo\noo\noo\noo\noo\n",
+      "generated": true
+    },
+    {
+      "stdin": "22 8\noooooooo\n.o..ooxo\noo.ooooo\noooooo.o\noooooooo\noooooooo\n.o.ooo.o\noo.ooo.o\nooooooo.\n.oo..o..\noooooooo\noo.oo.oo\noooo..oo\nooo..ooo\n.oo..o.o\nooooo.oo\noo..ooo.\noooooo.o\no..ooooo\n.ooooo.o\noooooooo\n..o.oooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "10 19\nxxxoooooooooooox.oo\noooooooxo.oooxooooo\noooooooxoooooxooooo\noooooooo..ooooooooo\noo.ooooxooooooooox.\nooooooooooooooooxoo\noooooooooooo.oooooo\nxoooooooooo.ooooooo\nooooooooo.oxooxoo.o\n.oooooooooooooooooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "19 22\noooooooooooooooo.ooooo\noooooooooooooooooooooo\nooooooooo..oooooooooo.\nooooooooooo.oooooooo.o\nooooooooooooo.oooooooo\nooooooooooooooo.oooooo\noooo.oooooooo.ooo.oooo\nooooooooooooo.oooooooo\noooooooooooooooooooooo\noooooooooooooooooooooo\nooooooooooo.oooooooooo\nooooooooooooooooooo.oo\noooooooooooooo.ooooo.o\noooooooooooooooooooooo\noooooooooooooooooo.oox\nooooooooo..ooooo.ooooo\noooooooooooooooooooooo\noooooooooooooooooxoooo\noooooooo.ooo..oo.ooooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "10 5\n.oooo\noooo.\n.o.o.\nooooo\nooo.o\no.oxo\n.oo.o\nooo.o\noo..o\n.oo.o\n",
+      "generated": true
+    },
+    {
+      "stdin": "5 6\noo.ooo\n..oooo\no.oooo\noo.ooo\no.oooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "9 22\noooooo.oooooo..oo.o.oo\nxox.xx.o.o.ooooo.xoooo\noxoo.ooo.oxo.ooooxo.oo\no.oooo.oooooooo.x.o.o.\no...ooxooooxoooxo..xox\no..oooooxxoo.o.oo.oo.o\nooooo.ooooooxoo.ooooox\n..oo..xooox.oxo.oooooo\noxoo.oooxoooxxooo.x.oo\n",
+      "generated": true
+    },
+    {
+      "stdin": "5 5\noooox\nooooo\nooooo\nooo.o\nooooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "20 3\n..o\no.o\no.o\nx..\noo.\no..\n..o\noo.\no.o\noo.\noo.\noo.\noo.\n.o.\noo.\n..o\nooo\noo.\n.o.\nooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "4 6\nooo..x\noooooo\nooooo.\nooooo.\n",
+      "generated": true
+    },
+    {
+      "stdin": "21 6\n.o.oo.\n.oo.oo\noooo.o\no.oo..\noo.o..\nooo.oo\no.o.o.\noooooo\n.oooo.\nooo..o\noooooo\n.o..o.\n..oooo\noooooo\no.oooo\n.oo.o.\no.oooo\no.oooo\noooooo\n.o.ooo\no..o..\n",
+      "generated": true
+    },
+    {
+      "stdin": "2 4\n.xoo\noooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "4 18\noooooxoooxooxoxooo\nooo.oooooooooooooo\nooooooo.ooo.xo.ooo\noooo.o.oooo.oooooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "2 24\n..o..ooooo.oooooo..ooo..\n.o.xo.oo.oo..oo.oo.o.o..\n",
+      "generated": true
+    },
+    {
+      "stdin": "6 9\nooooooooo\nooooooooo\noxooooxoo\nooooxoooo\noooooooox\nooxoooooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "2 24\no.o.ooooooooooooooooo.oo\nooooo.ooooo.ooo.oo.ooo.o\n",
+      "generated": true
+    },
+    {
+      "stdin": "5 6\noooooo\noo..oo\noooooo\nx.....\no.oooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "16 10\noooooooooo\n.o.o.o.ooo\noo...o...o\no.oo.ooooo\nooo.oxx.oo\n.o..oo..oo\noooooxoooo\no.oo.ooooo\no..ooooo..\noo.oxo.o..\n...oo.xo.o\noo..o..o.o\noo.oxooo.o\noo.....ooo\nooooo.o..o\noooooo.o.o\n",
+      "generated": true
+    },
+    {
+      "stdin": "7 4\nxooo\noooo\noooo\noooo\noooo\noooo\noooo\n",
+      "generated": true
+    },
+    {
+      "stdin": "13 1\n.\no\no\no\no\n.\no\no\no\nx\n.\no\no\n",
+      "generated": true
+    }
+  ]
+}
