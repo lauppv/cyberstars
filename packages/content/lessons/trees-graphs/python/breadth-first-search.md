@@ -4,21 +4,8 @@ How many handshakes away is a stranger? How many stops between two metro station
 
 The level-order walk took the root, then everything one step below it, then everything two steps below. In a graph there's no root, but you can pick any vertex to start from, and walk outwards from it the same way: first its neighbours, then their neighbours, and so on. That's a **breadth-first search**, or **BFS**
 
-```text
-    0 ----- 1 ----- 4
-    |       |       |
-    |       |       |
-    2 ----- 3       5 ----- 6
-```
-
-Starting from **0**, the vertices come in rings around it
-
-```text
-0 steps    0
-1 step     1 2
-2 steps    3 4
-3 steps    5
-4 steps    6
+```visual
+{"use": "bfs-rings"}
 ```
 
 The ring a vertex is in is its **distance** from the start: the fewest edges you have to cross to reach it. **3** is two steps from **0**, through **1** or through **2**, whichever way you go
@@ -84,16 +71,8 @@ visit 6 at distance 4
 
 Here is the queue after each vertex is taken out and its new neighbours put in
 
-```text
-take   new neighbours   queue after
-                        [0]
-0      1 2              [1, 2]
-1      3 4              [2, 3, 4]
-2                       [3, 4]
-3                       [4]
-4      5                [5]
-5      6                [6]
-6                       []
+```visual
+{"use": "bfs-queue"}
 ```
 
 When **2** is taken, its neighbours **0** and **3** are both seen already, so nothing joins. The queue holds at most two distances at a time, the ring being taken and the next one, so the vertices leave it ring by ring
@@ -108,8 +87,8 @@ And the distance is right the first time it's written. Every vertex in a ring le
 
 The fewest steps from the start to any vertex **t** is now **dist[t]**. A vertex the walk never reached keeps its **-1**: there's no way to get there at all, which can happen when the graph comes in separate pieces
 
-```text
-    0 ----- 1       2 ----- 3
+```visual
+{"use": "bfs-pieces"}
 ```
 
 From **0**, the distances are **0 1 -1 -1**
@@ -167,6 +146,12 @@ For the maze above, the output is
  2 3 4 # 8
  # 4 5 6 7
 steps to the exit: 7
+```
+
+Here is how the distances fill in, from the start at the top left
+
+```visual
+{"use": "bfs-maze"}
 ```
 
 **f"{x:2}"** writes **x** in two places, so the columns line up. The walk is the same as on the edge list: only how a vertex finds its neighbours has changed
