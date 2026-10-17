@@ -507,7 +507,7 @@
     "resetCodePlaceholder": "Cod din 6 cifre",
     "newPassword": "Parolă nouă",
     "password": "Parolă",
-    "passwordPlaceholderSignup": "Min. 8 caractere",
+    "passwordPlaceholderSignup": "Min. 6 caractere",
     "passwordPlaceholderReset": "Min. 6 caractere",
     "passwordPlaceholderLogin": "Introdu parola",
     "rememberMe": "Ține-mă minte",

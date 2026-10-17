@@ -482,7 +482,7 @@
     "resetCodePlaceholder": "6-digit code",
     "newPassword": "New Password",
     "password": "Password",
-    "passwordPlaceholderSignup": "Min. 8 characters",
+    "passwordPlaceholderSignup": "Min. 6 characters",
     "passwordPlaceholderReset": "Min. 6 characters",
     "passwordPlaceholderLogin": "Enter your password",
     "rememberMe": "Remember me",
