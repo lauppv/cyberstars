@@ -34,6 +34,27 @@ Output:
 10 20 30
 ```
 
+```visual
+{
+  "type": "boxes",
+  "caption": "A linked list is a chain of nodes: each holds its data and a next pointer to the node after it. head points at the first node, and the last node's next is NULL. Now the list is empty: head is NULL.",
+  "boxes": [
+    {"id": "head", "name": "head", "to": null, "shown": true},
+    {"id": "n10", "fields": [{"name": "data", "value": 10}, {"name": "next", "to": null}]},
+    {"id": "n20", "fields": [{"name": "data", "value": 20}, {"name": "next", "to": null}]},
+    {"id": "n30", "fields": [{"name": "data", "value": 30}, {"name": "next", "to": null}]},
+    {"id": "n40", "fields": [{"name": "data", "value": 40}, {"name": "next", "to": null}]}
+  ],
+  "steps": [
+    {"title": "insert 10", "focus": ["head"], "ask": "Is the list empty?", "show": ["n10"], "point": {"head": "n10"}, "caption": "Yes, head is NULL, so head now points at the new node 10, whose next is NULL"},
+    {"title": "insert 20", "focus": ["n10"], "ask": "Where does 20 go?", "show": ["n20"], "point": {"n10.next": "n20"}, "caption": "At the end: 10's next now points at the new node 20, and 20's next is NULL"},
+    {"title": "insert 30", "focus": ["n20"], "ask": "Where does 30 go?", "show": ["n30"], "point": {"n20.next": "n30"}, "caption": "At the end: 20's next now points at the new node 30, and 30's next is NULL"},
+    {"title": "print", "focus": ["n10", "n20", "n30"], "caption": "print follows the arrows from head: 10, 20, 30, and NULL ends the list. It prints 10 20 30"},
+    {"title": "insert 40", "focus": ["n30"], "ask": "Where does 40 go?", "show": ["n40"], "point": {"n30.next": "n40"}, "caption": "At the end: 30's next now points at the new node 40. The print came before it, so the output stays 10 20 30"}
+  ]
+}
+```
+
 ```
 Input:
 3
