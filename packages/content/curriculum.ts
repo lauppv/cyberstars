@@ -53,6 +53,13 @@ export const courses = [
       'C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.',
     sortOrder: 7,
   },
+  {
+    key: 'trees-graphs',
+    title: 'Trees and Graphs',
+    description:
+      'The structures behind folders, maps and networks, taught in Python, Java or C: every lesson comes in all three, and you can switch language on any of them.',
+    sortOrder: 8,
+  },
 ];
 
 export const lessons = [
@@ -1158,6 +1165,8 @@ export const lessons = [
     sortOrder: 55,
     hasCodeFile: false,
   },
+
+  { courseKey: 'trees-graphs', slug: 'trees', title: 'Trees', sortOrder: 1, hasCodeFile: true },
 
   {
     courseKey: 'algo-python',
