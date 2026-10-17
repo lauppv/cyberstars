@@ -41,6 +41,22 @@ Output:
 Empty
 ```
 
+```visual
+{
+  "type": "stack",
+  "ends": true,
+  "caption": "A stack: the last value pushed is the first to come off, like plates on a pile. pop and peek both work on the top.",
+  "steps": [
+    {"push": [{"id": "v1", "text": 10}], "focus": ["v1"], "caption": "push 10: 10 goes on the empty stack"},
+    {"push": [{"id": "v2", "text": 20}], "focus": ["v2"], "caption": "push 20: 20 goes on top of 10"},
+    {"ask": "What does peek print?", "focus": ["v2"], "caption": "20: peek shows the top and leaves it there"},
+    {"ask": "What does pop print?", "pop": 1, "focus": ["v2"], "caption": "20: pop takes the top off. 10 is the top now"},
+    {"ask": "What does pop print?", "pop": 1, "focus": ["v1"], "caption": "10: pop takes the top off. The stack is empty now"},
+    {"ask": "What does pop print?", "caption": "Empty: the stack is empty, so there is nothing to take off"}
+  ]
+}
+```
+
 ```
 Input:
 3
