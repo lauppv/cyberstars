@@ -199,6 +199,21 @@
         "streak_other": "{{count}} de zile la rând"
       }
     },
+    "sorting": {
+      "title": "Urmărește un algoritm, pas cu pas",
+      "text": "Lecțiile îți arată cum lucrează un algoritm, mutare cu mutare.",
+      "picture": "Bubble sort pune în ordine 5, 3, 8, 1, 2: compară vecinii, îi interschimbă când cel din stânga e mai mare și o ia de la capăt, trecere după trecere, până când lista devine 1, 2, 3, 5, 8.",
+      "intro": "Pornim de la poziția 0 (j = 0) și comparăm numărul de acolo cu vecinul din dreapta (j + 1). Dacă cel din stânga e mai mare, își schimbă locurile. Apoi j se mută un pas la dreapta. Fiecare trecere duce cel mai mare număr la capăt.",
+      "pass": "Trecerea {{n}}",
+      "ask": "Este {{a}} > {{b}}?",
+      "yes": "Da, deci își schimbă locurile",
+      "no": "Nu, deci rămân pe loc",
+      "inPlace": "{{n}} e la locul lui",
+      "done": "Gata! Lista este sortată",
+      "doneNoSwaps": "Nicio interschimbare în trecerea asta, deci lista e sortată",
+      "pause": "Pauză",
+      "play": "Pornește"
+    },
     "features": {
       "title": "Ce găsești înăuntru",
       "courses": {

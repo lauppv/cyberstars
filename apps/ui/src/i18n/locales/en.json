@@ -189,6 +189,21 @@
         "streak_other": "{{count}}-day streak"
       }
     },
+    "sorting": {
+      "title": "Watch an algorithm, step by step",
+      "text": "Lessons show you how an algorithm works, one move at a time.",
+      "picture": "Bubble sort putting 5, 3, 8, 1, 2 in order: it compares neighbours, swaps them when the left one is bigger, and repeats pass after pass until the list reads 1, 2, 3, 5, 8.",
+      "intro": "We start at position 0 (j = 0) and compare that number with its right neighbour (j + 1). If the left one is bigger, they swap. Then j moves one step right. Each pass pushes the biggest number to the end.",
+      "pass": "Pass {{n}}",
+      "ask": "Is {{a}} > {{b}}?",
+      "yes": "Yes, so they swap",
+      "no": "No, so they stay",
+      "inPlace": "{{n}} is in its place",
+      "done": "Done! The list is sorted",
+      "doneNoSwaps": "No swaps in this pass, so the list is sorted",
+      "pause": "Pause",
+      "play": "Play"
+    },
     "features": {
       "title": "What's inside",
       "courses": {
