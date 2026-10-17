@@ -4,9 +4,9 @@
 // Primim adrese, nu valori. Dereferentiem cu * ca sa citim/scriem
 // valorile aflate la acele adrese.
 void interschimba(int *a, int *b) {
-    int temp = *a;
+    int aux = *a;
     *a = *b;
-    *b = temp;
+    *b = aux;
 }
 
 int main(void) {

@@ -11,9 +11,9 @@ int main(void) {
     int x = a;
     int y = b;
     while (y != 0) {
-        int temp = y;
+        int aux = y;
         y = x % y;
-        x = temp;
+        x = aux;
     }
     int cmmdc = x;
 
