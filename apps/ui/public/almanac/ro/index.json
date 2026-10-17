@@ -7,7 +7,7 @@
     "year": "1991",
     "title": "Cum un tânăr de 21 de ani din Helsinki a schimbat din întâmplare lumea",
     "excerpt": "În august 1991, un student finlandez a postat un mesaj modest pe un grup de discuții Usenet: „Fac un sistem de operare (gratuit), doar un hobby, nu va fi mare și profesional ca gnu.” Trei decenii mai târziu, Linux rulează pe 90% din cloud, pe fiecare telefon Android și pe laptopul pe care citești asta.",
-    "author": "Editorial Team",
+    "author": "Echipa editorială",
     "authorEmoji": "✨",
     "readTime": "8 min",
     "date": "14 mai 2026",
@@ -17,7 +17,7 @@
   {
     "slug": "the-night-the-internet-said-its-first-word",
     "cat": "history",
-    "tag": "HISTORY",
+    "tag": "ISTORIE",
     "year": "1969",
     "emoji": "📞",
     "grad": "linear-gradient(135deg,#1a1a40,#3a1f70)",
@@ -30,13 +30,13 @@
   {
     "slug": "ada-lovelace-wrote-code-before-computers-existed",
     "cat": "legends",
-    "tag": "LEGENDS",
+    "tag": "LEGENDE",
     "year": "1843",
     "emoji": "👑",
     "grad": "linear-gradient(135deg,#3a1f4f,#8b1a5c)",
     "title": "Ada Lovelace a scris cod înainte să existe computerele",
     "excerpt": "În 1843, cu un secol înainte de primul computer electronic, Ada Lovelace a publicat un algoritm pentru calcularea numerelor Bernoulli pe o mașină care nu a fost niciodată construită. Ea este prima programatoare din istorie.",
-    "author": "Ms. Diana",
+    "author": "Dna Diana",
     "authorEm": "🦄",
     "readTime": "6 min"
   },
@@ -49,14 +49,14 @@
     "grad": "linear-gradient(135deg,#1f3a1f,#2d6b3d)",
     "title": "De ce a părăsit Richard Stallman MIT pentru a porni o revoluție",
     "excerpt": "După ce s-a luptat cu un driver de imprimantă pe care nu i s-a permis să-l repare, Stallman a renunțat la MIT și a pornit Proiectul GNU. A scris o licență care folosește dreptul de autor pentru a face exact opusul: a garanta libertatea.",
-    "author": "Editorial",
+    "author": "Redacția",
     "authorEm": "✨",
     "readTime": "7 min"
   },
   {
     "slug": "the-mother-of-all-demos-a-90-minute-glimpse-of-the-future",
     "cat": "history",
-    "tag": "HISTORY",
+    "tag": "ISTORIE",
     "year": "1968",
     "emoji": "🎤",
     "grad": "linear-gradient(135deg,#0f1c3a,#2a4a8b)",
@@ -108,7 +108,7 @@
   {
     "slug": "margaret-hamilton-wrote-the-code-that-landed-apollo-11",
     "cat": "legends",
-    "tag": "LEGENDS",
+    "tag": "LEGENDE",
     "year": "1969",
     "emoji": "🚀",
     "grad": "linear-gradient(135deg,#1a1a2e,#16213e)",
@@ -121,13 +121,13 @@
   {
     "slug": "turing-asked-one-question-that-were-still-trying-to-answer",
     "cat": "ai",
-    "tag": "AI & FUTURE",
+    "tag": "AI ȘI VIITOR",
     "year": "1950",
     "emoji": "🧠",
     "grad": "linear-gradient(135deg,#1a2a40,#4a3a7a)",
     "title": "Turing a pus o întrebare la care încă încercăm să răspundem",
     "excerpt": "„Pot mașinile să gândească?” Lucrarea din 1950 a lui Alan Turing a propus un test: dacă nu poți deosebi un computer de un om într-o conversație, mai contează diferența? Șaptezeci și șase de ani mai târziu, încă ne certăm.",
-    "author": "Editorial",
+    "author": "Redacția",
     "authorEm": "✨",
     "readTime": "9 min"
   },
@@ -140,7 +140,7 @@
     "grad": "linear-gradient(135deg,#3a1a1a,#7a2f2f)",
     "title": "Catedrala și Bazarul: de ce open source chiar funcționează",
     "excerpt": "Eseul din 1999 al lui Eric S. Raymond a explicat de ce o mulțime haotică de voluntari poate depăși echipe corporative șlefuite. „Cu destui ochi, toate erorile sunt superficiale.” A devenit manifestul unei industrii întregi.",
-    "author": "Ms. Diana",
+    "author": "Dna Diana",
     "authorEm": "🦄",
     "readTime": "10 min"
   },
@@ -166,14 +166,14 @@
     "grad": "linear-gradient(135deg,#1a2a3a,#2f4f7a)",
     "title": "Cum funcționează DNS: cartea de telefon a internetului la care nimeni nu se gândește",
     "excerpt": "De fiecare dată când tastezi un URL, un sistem ascuns îl traduce în numere. DNS este coloana vertebrală a internetului, controlat de doar 13 servere rădăcină gestionate de organizații despre care majoritatea oamenilor n-au auzit niciodată.",
-    "author": "Mr. Radu",
+    "author": "Dl. Radu",
     "authorEm": "🌐",
     "readTime": "8 min"
   },
   {
     "slug": "dennis-ritchie-the-man-who-created-c-and-unix-but-got-no-fame",
     "cat": "legends",
-    "tag": "LEGENDS",
+    "tag": "LEGENDE",
     "year": "1972",
     "emoji": "👤",
     "grad": "linear-gradient(135deg,#2a1a3a,#5f2f7a)",
@@ -186,7 +186,7 @@
   {
     "slug": "the-ai-winter-when-everyone-gave-up-on-artificial-intelligence",
     "cat": "ai",
-    "tag": "AI & FUTURE",
+    "tag": "AI ȘI VIITOR",
     "year": "1974",
     "emoji": "❄️",
     "grad": "linear-gradient(135deg,#1a2a3a,#3a5a7a)",
@@ -199,13 +199,13 @@
   {
     "slug": "y2k-the-millennium-bug-that-was-actually-real",
     "cat": "history",
-    "tag": "HISTORY",
+    "tag": "ISTORIE",
     "year": "1999",
     "emoji": "🐛",
     "grad": "linear-gradient(135deg,#3a2a1a,#7a5f2f)",
     "title": "Y2K: bug-ul mileniului care chiar a fost real",
     "excerpt": "Oamenii au ridiculizat Y2K ca pe o farsă. Dar bug-ul era real: programatorii economisiseră memorie folosind ani din două cifre. Motivul pentru care nimic nu s-a prăbușit? Mii de ingineri au muncit peste program ca să-l repare înainte de miezul nopții.",
-    "author": "Mr. Radu",
+    "author": "Dl. Radu",
     "authorEm": "🔧",
     "readTime": "9 min"
   },
@@ -218,7 +218,7 @@
     "grad": "linear-gradient(135deg,#1a3a3a,#2f6a6a)",
     "title": "Cum a devenit Wikipedia cea mai mare enciclopedie scrisă vreodată",
     "excerpt": "Experții spuneau că nu va funcționa niciodată. O enciclopedie pe care o poate edita oricine? Va fi plină de prostii. Două decenii mai târziu, Wikipedia are 60 de milioane de articole în 300 de limbi și este unul dintre cele mai vizitate site-uri de pe Pământ.",
-    "author": "Ms. Diana",
+    "author": "Dna Diana",
     "authorEm": "📖",
     "readTime": "8 min"
   },
@@ -244,40 +244,40 @@
     "grad": "linear-gradient(135deg,#1a1a2a,#3a2f5a)",
     "title": "Silk Road: când dark web-ul a devenit o piață",
     "excerpt": "Ross Ulbricht a construit o piață anonimă folosind Tor și Bitcoin. Timp de doi ani, puteai cumpăra orice. Apoi FBI-ul l-a prins într-o bibliotecă publică, cu laptopul deschis.",
-    "author": "Mr. Radu",
+    "author": "Dl. Radu",
     "authorEm": "🕵️",
     "readTime": "9 min"
   },
   {
     "slug": "aaron-swartz-the-internets-own-boy",
     "cat": "legends",
-    "tag": "LEGENDS",
+    "tag": "LEGENDE",
     "year": "2013",
     "emoji": "💔",
     "grad": "linear-gradient(135deg,#2a1a2a,#5a2f4a)",
     "title": "Aaron Swartz: copilul internetului",
     "excerpt": "Co-creator al RSS la 14 ani, co-fondator al Reddit, arhitect al Creative Commons. Aaron Swartz a luptat pentru a face cunoașterea liberă pentru toată lumea. Guvernul SUA l-a acuzat de fapte care puteau aduce 35 de ani de închisoare pentru descărcarea unor lucrări academice.",
-    "author": "Ms. Diana",
+    "author": "Dna Diana",
     "authorEm": "🕊️",
     "readTime": "10 min"
   },
   {
     "slug": "the-dot-com-bubble-when-pizza-delivery-apps-were-worth-billions",
     "cat": "history",
-    "tag": "HISTORY",
+    "tag": "ISTORIE",
     "year": "2000",
     "emoji": "💸",
     "grad": "linear-gradient(135deg,#3a1a2a,#7a2f4a)",
     "title": "Bula dot-com: când aplicațiile de livrare de pizza valorau miliarde",
     "excerpt": "În 1999, orice companie cu „.com” în nume putea strânge milioane. Pets.com a cheltuit 300 de milioane de dolari în 2 ani și s-a prăbușit. NASDAQ a pierdut 78% din valoare. Sună familiar?",
-    "author": "Mr. Radu",
+    "author": "Dl. Radu",
     "authorEm": "📈",
     "readTime": "8 min"
   },
   {
     "slug": "deep-blue-vs-kasparov-when-a-machine-beat-the-world-chess-champion",
     "cat": "ai",
-    "tag": "AI & FUTURE",
+    "tag": "AI ȘI VIITOR",
     "year": "1997",
     "emoji": "♟️",
     "grad": "linear-gradient(135deg,#1a1a3a,#2f2f7a)",
@@ -309,7 +309,7 @@
     "grad": "linear-gradient(135deg,#1a3a1a,#2f7a3a)",
     "title": "Revoluția Raspberry Pi: un computer de 35$ care a schimbat educația",
     "excerpt": "Un grup de profesori de la Cambridge era îngrijorat că tinerii nu mai știau să programeze. Soluția lor: un computer de mărimea unui card bancar, la 35$. Se așteptau să vândă 10.000 de unități. Au vândut peste 60 de milioane.",
-    "author": "Ms. Diana",
+    "author": "Dna Diana",
     "authorEm": "🌱",
     "readTime": "9 min"
   },
@@ -322,14 +322,14 @@
     "grad": "linear-gradient(135deg,#1a2a2a,#2f5a6a)",
     "title": "Cum conectează cablurile submarine continentele: coloana vertebrală ascunsă a internetului",
     "excerpt": "97% din datele intercontinentale circulă prin cabluri de pe fundul oceanului. Sunt peste 500 dintre ele, însumând 1,3 milioane km. Și sunt groase doar cât un furtun de grădină.",
-    "author": "Mr. Radu",
+    "author": "Dl. Radu",
     "authorEm": "⚓",
     "readTime": "8 min"
   },
   {
     "slug": "ken-thompsons-compiler-backdoor-the-hack-that-can-never-be-fixed",
     "cat": "legends",
-    "tag": "LEGENDS",
+    "tag": "LEGENDE",
     "year": "1984",
     "emoji": "🚪",
     "grad": "linear-gradient(135deg,#2a2a1a,#5a5a3a)",
@@ -342,7 +342,7 @@
   {
     "slug": "enigma-and-the-birth-of-modern-computing",
     "cat": "history",
-    "tag": "HISTORY",
+    "tag": "ISTORIE",
     "year": "1943",
     "emoji": "🔐",
     "grad": "linear-gradient(135deg,#2a2a2a,#4a4a5a)",
@@ -355,7 +355,7 @@
   {
     "slug": "alphagos-move-37-the-move-no-human-would-play",
     "cat": "ai",
-    "tag": "AI & FUTURE",
+    "tag": "AI ȘI VIITOR",
     "year": "2016",
     "emoji": "⚫",
     "grad": "linear-gradient(135deg,#1a2a1a,#2f5a3f)",
@@ -374,53 +374,53 @@
     "grad": "linear-gradient(135deg,#3a2a1a,#7a5a2f)",
     "title": "Stack Overflow a schimbat modul în care învățăm să programăm",
     "excerpt": "Înainte de 2008, a obține ajutor la programare însemna să postezi pe forumuri și să aștepți zile întregi pentru un răspuns (dacă aveai noroc). Modelul gamificat de întrebări și răspunsuri al Stack Overflow a creat cea mai mare bază de cunoștințe de programare adunată vreodată.",
-    "author": "Ms. Diana",
+    "author": "Dna Diana",
     "authorEm": "🌟",
     "readTime": "9 min"
   },
   {
     "slug": "stuxnet-the-virus-that-destroyed-centrifuges-with-code",
     "cat": "security",
-    "tag": "SECURITY",
+    "tag": "SECURITATE",
     "year": "2010",
     "emoji": "🪱",
     "grad": "linear-gradient(135deg,#1a2a1a,#3a5a2a)",
     "title": "Stuxnet: virusul care a distrus centrifuge cu cod",
     "excerpt": "Cineva a lăsat stick-uri USB infectate lângă o instalație nucleară iraniană. Unul dintre ele a ajuns într-un computer. Viermele dinăuntru a reprogramat în liniște centrifuge industriale ca să se autodistrugă, în timp ce afișa valori normale.",
-    "author": "Mr. Radu",
+    "author": "Dl. Radu",
     "authorEm": "🕵️",
     "readTime": "10 min"
   },
   {
     "slug": "the-robin-hood-hacker-stole-millions-and-gave-them-to-the-poor",
     "cat": "security",
-    "tag": "SECURITY",
+    "tag": "SECURITATE",
     "year": "2008",
     "emoji": "🏦",
     "grad": "linear-gradient(135deg,#2a1a2a,#5a2f5a)",
     "title": "Hackerul Robin Hood: a furat milioane și le-a dat săracilor",
     "excerpt": "Vahagn Vardanyan din Armenia a pătruns în sistemele bancare, a furat milioane de dolari și a distribuit banii oamenilor săraci din satul său. Când a fost prins, localnicii au protestat cerând eliberarea lui.",
-    "author": "Editorial",
+    "author": "Redacția",
     "authorEm": "✨",
     "readTime": "7 min"
   },
   {
     "slug": "edward-snowden-the-man-who-exposed-global-surveillance",
     "cat": "security",
-    "tag": "SECURITY",
+    "tag": "SECURITATE",
     "year": "2013",
     "emoji": "📡",
     "grad": "linear-gradient(135deg,#1a1a3a,#3a3a6a)",
     "title": "Edward Snowden: omul care a expus supravegherea globală",
     "excerpt": "Un contractor al NSA a copiat 1,5 milioane de documente clasificate și a dezvăluit că guvernele spionau apelurile, e-mailurile și mesajele tuturor. De atunci trăiește în exil.",
-    "author": "Mr. Radu",
+    "author": "Dl. Radu",
     "authorEm": "🕵️",
     "readTime": "10 min"
   },
   {
     "slug": "wannacry-the-ransomware-that-paralyzed-200000-computers-in-a-day",
     "cat": "security",
-    "tag": "SECURITY",
+    "tag": "SECURITATE",
     "year": "2017",
     "emoji": "😢",
     "grad": "linear-gradient(135deg,#3a1a1a,#6a2f2f)",
@@ -433,7 +433,7 @@
   {
     "slug": "laniakea-the-supercluster-we-all-float-in",
     "cat": "space",
-    "tag": "SPACE",
+    "tag": "SPAȚIU",
     "year": "2014",
     "emoji": "🌌",
     "grad": "linear-gradient(135deg,#0a0a2a,#1a1a5a)",
@@ -446,7 +446,7 @@
   {
     "slug": "ton-618-the-monster-that-weighs-66-billion-suns",
     "cat": "space",
-    "tag": "SPACE",
+    "tag": "SPAȚIU",
     "year": "1970",
     "emoji": "⚫",
     "grad": "linear-gradient(135deg,#0a0a1a,#1a1a3a)",
@@ -459,20 +459,20 @@
   {
     "slug": "what-happens-inside-a-black-hole-the-final-7-minutes",
     "cat": "space",
-    "tag": "SPACE",
+    "tag": "SPAȚIU",
     "year": "2019",
     "emoji": "🕳️",
     "grad": "linear-gradient(135deg,#1a0a0a,#3a1a1a)",
     "title": "Ce se întâmplă în interiorul unei găuri negre: ultimele 7 minute",
     "excerpt": "Dacă ai cădea într-o gaură neagră, ți-ar mai rămâne doar câteva minute de existență. Timpul se distorsionează, spațiul se întinde, iar fizica așa cum o cunoaștem se prăbușește complet.",
-    "author": "Editorial",
+    "author": "Redacția",
     "authorEm": "✨",
     "readTime": "9 min"
   },
   {
     "slug": "pale-blue-dot-the-photograph-that-changed-humanitys-perspective",
     "cat": "space",
-    "tag": "SPACE",
+    "tag": "SPAȚIU",
     "year": "1990",
     "emoji": "🔵",
     "grad": "linear-gradient(135deg,#0a1a2a,#1a3a5a)",
@@ -485,20 +485,20 @@
   {
     "slug": "james-webb-the-telescope-that-sees-to-the-beginning-of-time",
     "cat": "space",
-    "tag": "SPACE",
+    "tag": "SPAȚIU",
     "year": "2022",
     "emoji": "🔭",
     "grad": "linear-gradient(135deg,#0a0a2a,#2a1a4a)",
     "title": "James Webb: telescopul care vede până la începutul timpului",
     "excerpt": "Lansat în 2021 după 25 de ani de construcție și 10 miliarde de dolari, telescopul James Webb a fotografiat galaxii formate la doar 300 de milioane de ani după Big Bang. Vedem lumină care a călătorit 13,5 miliarde de ani.",
-    "author": "Editorial",
+    "author": "Redacția",
     "authorEm": "✨",
     "readTime": "9 min"
   },
   {
     "slug": "how-c-conquered-the-world-the-language-that-refuses-to-die",
     "cat": "history",
-    "tag": "HISTORY",
+    "tag": "ISTORIE",
     "year": "1972",
     "emoji": "🎯",
     "grad": "linear-gradient(135deg,#2a2a1a,#5a4a2f)",
@@ -511,7 +511,7 @@
   {
     "slug": "java-the-language-everyone-mocks-but-nobody-can-replace",
     "cat": "history",
-    "tag": "HISTORY",
+    "tag": "ISTORIE",
     "year": "1995",
     "emoji": "☕",
     "grad": "linear-gradient(135deg,#2a1a0a,#5a3a1a)",
@@ -524,33 +524,33 @@
   {
     "slug": "solarwinds-the-hack-that-infiltrated-18000-organizations-through-a-sof",
     "cat": "security",
-    "tag": "SECURITY",
+    "tag": "SECURITATE",
     "year": "2020",
     "emoji": "🌐",
     "grad": "linear-gradient(135deg,#1a2a2a,#2f4a4a)",
     "title": "SolarWinds: atacul care a infiltrat 18.000 de organizații printr-o actualizare de software",
     "excerpt": "Hackeri ruși au compromis o actualizare de software de rutină de la SolarWinds, introducând o portiță secretă care le-a dat acces la Trezoreria SUA, la Pentagon și la mii de corporații. Nimeni nu a observat timp de 9 luni.",
-    "author": "Mr. Radu",
+    "author": "Dl. Radu",
     "authorEm": "🕵️",
     "readTime": "10 min"
   },
   {
     "slug": "tim-berners-lee-gave-the-web-away-for-free",
     "cat": "history",
-    "tag": "HISTORY",
+    "tag": "ISTORIE",
     "year": "1991",
     "emoji": "🌐",
     "grad": "linear-gradient(135deg,#0a2a4a,#1a5a8a)",
     "title": "Tim Berners-Lee a dăruit web-ul gratuit",
     "excerpt": "În 1989, un fizician de la CERN a propus un sistem de hipertext pentru a partaja lucrări de cercetare. Până în 1991, primul site web era activ. Ar fi putut să-l breveteze și să devină cel mai bogat om în viață. În schimb, l-a făcut gratuit.",
-    "author": "Editorial",
+    "author": "Redacția",
     "authorEm": "✨",
     "readTime": "7 min"
   },
   {
     "slug": "javascript-was-created-in-10-days-and-it-won",
     "cat": "history",
-    "tag": "HISTORY",
+    "tag": "ISTORIE",
     "year": "1995",
     "emoji": "⚡",
     "grad": "linear-gradient(135deg,#3a3a0a,#8a8a1a)",
@@ -563,20 +563,20 @@
   {
     "slug": "python-the-language-named-after-monty-python",
     "cat": "legends",
-    "tag": "LEGENDS",
+    "tag": "LEGENDE",
     "year": "1991",
     "emoji": "🐍",
     "grad": "linear-gradient(135deg,#1a3a2a,#2a7a4a)",
     "title": "Python: limbajul numit după Monty Python",
     "excerpt": "Guido van Rossum a început Python în timpul unei vacanțe de Crăciun pentru că se plictisea. L-a numit după emisiunea sa de comedie preferată. Trei decenii mai târziu, este cel mai popular limbaj de programare din lume.",
-    "author": "Ms. Diana",
+    "author": "Dna Diana",
     "authorEm": "🦄",
     "readTime": "8 min"
   },
   {
     "slug": "the-database-revolution-how-sql-changed-everything",
     "cat": "history",
-    "tag": "HISTORY",
+    "tag": "ISTORIE",
     "year": "1970",
     "emoji": "🗄️",
     "grad": "linear-gradient(135deg,#2a1a3a,#5a3a7a)",
@@ -602,13 +602,13 @@
   {
     "slug": "the-sign-how-ray-tomlinson-invented-email",
     "cat": "legends",
-    "tag": "LEGENDS",
+    "tag": "LEGENDE",
     "year": "1971",
     "emoji": "📧",
     "grad": "linear-gradient(135deg,#2a2a1a,#6a5a2a)",
     "title": "Semnul @: cum a inventat Ray Tomlinson emailul",
     "excerpt": "În 1971, Ray Tomlinson căuta o modalitate de a trimite mesaje între computere. A ales semnul @ pentru că nu era folosit în numele nimănui. Primul email era ceva de genul „QWERTYUIOP”, nu și-a putut aminti.",
-    "author": "Ms. Diana",
+    "author": "Dna Diana",
     "authorEm": "🌟",
     "readTime": "6 min"
   },
@@ -621,7 +621,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Claude 3 Opus: modelul care a surprins pe toată lumea",
     "excerpt": "Când Anthropic a lansat Claude 3 Opus în martie 2024, benchmark-urile arătau că egala sau depășea GPT-4 la sarcinile de raționament. Comunitatea AI a luat aminte.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -633,7 +633,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Claude învață să programeze: 100K context și dincolo de el",
     "excerpt": "Fereastra de context de 200K a lui Claude însemna că putea citi baze de cod întregi dintr-o dată. Dezvoltatorii au început să-l folosească nu doar ca să scrie cod, ci ca să înțeleagă sisteme vechi.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -645,7 +645,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Constitutional AI: cum învățăm modelele să se autoperfecționeze",
     "excerpt": "Inovația cheie a Anthropic nu a fost doar un model mai mare, ci o metodă de antrenament. Constitutional AI permite modelelor să își critice și să își revizuiască propriile rezultate folosind un set de principii.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "6 min"
   },
   {
@@ -657,7 +657,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Claude Code: când AI-ul devine partenerul tău de programare",
     "excerpt": "Anthropic a lansat Claude Code, un instrument CLI care îi permite lui Claude să scrie, să testeze și să depaneze cod direct în terminalul tău. A părut că viitorul a sosit în liniște.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -669,7 +669,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Anthropic strânge 7,3 miliarde de dolari: AI-ul axat pe siguranță atrage capital serios",
     "excerpt": "Investitorii au pariat masiv pe viziunea Anthropic conform căreia siguranța și capabilitatea pot merge mână în mână. Runda de 7,3 miliarde de dolari a evaluat compania la peste 60 de miliarde de dolari.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -681,7 +681,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Era modelelor gânditoare: Claude învață să raționeze pas cu pas",
     "excerpt": "Gândirea extinsă i-a dat lui Claude capacitatea de a parcurge intern probleme complexe înainte de a răspunde. Calitatea în matematică, logică și programare a sărit dramatic.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -693,7 +693,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Responsible Scaling Policy de la Anthropic: un model pentru întreaga industrie",
     "excerpt": "În loc de „mișcă-te repede și sparge lucruri”, Anthropic a propus un cadru în care creșterile de capabilitate declanșează măsuri de siguranță corespunzătoare.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "6 min"
   },
   {
@@ -705,7 +705,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Claude 4: modelul care spune sincer „nu știu”",
     "excerpt": "Claude 4 a adus incertitudinea calibrată: nu doar dădea răspunsuri, ci îți spunea cât de încrezător era. O schimbare mică, cu implicații enorme.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -717,7 +717,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Cum abordează Claude scrierea creativă în mod diferit",
     "excerpt": "Spre deosebire de modelele care produc proză generică și șablonată, Claude a fost antrenat să respecte vocea autorului. Scriitorii au observat imediat diferența.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -729,7 +729,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Claude în educație: meditații personalizate la scară largă",
     "excerpt": "Elevi din peste 40 de țări folosesc Claude ca meditator. Le explică noțiunile exact la nivelul lor, nu îi judecă niciodată și are o răbdare infinită.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -741,7 +741,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "MCP: cum se conectează Claude la lumea reală",
     "excerpt": "Model Context Protocol îi permite lui Claude să vorbească direct cu baze de date, API-uri și instrumente. A trecut peste noapte de la „chatbot inteligent” la „agent inteligent”.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -753,7 +753,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Viziunea lui Dario Amodei: „mașini ale grației iubitoare”",
     "excerpt": "Într-un eseu de referință, CEO-ul Anthropic a schițat cum AI-ul puternic ar putea vindeca boli, rezolva schimbările climatice și reduce inegalitatea, dacă este construit responsabil.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "6 min"
   },
   {
@@ -765,7 +765,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Claude Sonnet: modelul de bază pe care dezvoltatorii îl adoră",
     "excerpt": "Nu orice sarcină are nevoie de cel mai mare model. Claude Sonnet atinge echilibrul perfect între viteză, cost și capabilitate, ceea ce îl face alegerea implicită pentru producție.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -777,7 +777,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Cum gestionează Claude conversațiile multilingve",
     "excerpt": "Claude vorbește fluent peste 50 de limbi, dar ceea ce este impresionant este cum trece între ele natural și menține contextul cultural.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -789,7 +789,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Sistemul de artefacte: Claude generează conținut interactiv",
     "excerpt": "Claude poate crea componente React, vizualizări SVG și instrumente interactive pe loc. A transformat conversațiile în aplicații.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -801,7 +801,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "De ce Claude nu te lingușește (și de ce contează asta)",
     "excerpt": "Spre deosebire de modelele antrenate să maximizeze satisfacția utilizatorului, Claude a fost antrenat să fie onest, chiar și atunci când adevărul nu este ceea ce vrei să auzi.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -813,7 +813,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Utilizarea computerului de către Claude: AI-ul învață să apese butoane",
     "excerpt": "Învățarea AI-ului să folosească un computer ca un om (mișcând mouse-ul, apăsând butoane, citind ecrane) a deschis posibilități de automatizare pe care API-urile nu le puteau atinge.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -825,7 +825,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Predicția Anthropic: AGI la îndemână până în 2027",
     "excerpt": "Dario Amodei a afirmat că „AI-ul puternic” (sisteme care depășesc oamenii la majoritatea sarcinilor cognitive) ar putea apărea până în 2026-2027. Calendarul a părut deopotrivă incitant și sobru.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -837,7 +837,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Claude pentru știință: accelerarea cercetării în toate disciplinele",
     "excerpt": "De la plierea proteinelor la știința materialelor, cercetătorii folosesc Claude pentru a citi lucrări mai repede, a genera ipoteze și a proiecta experimente.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "6 min"
   },
   {
@@ -849,7 +849,7 @@
     "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
     "title": "Planul Claude Max: utilizare nelimitată pentru utilizatorii avansați",
     "excerpt": "Anthropic a lansat Claude Max la 100 $/lună, cu de 20 de ori mai multă utilizare și acces prioritar. Utilizatorii profesioniști au spus că s-a amortizat în câteva ore.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -861,7 +861,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Gemini Ultra: cel mai ambițios model AI al Google",
     "excerpt": "Când Google a lansat Gemini Ultra, acesta a fost primul lor model care a depășit GPT-4 la mai multe benchmarkuri. Cursa AI a devenit o competiție în trei.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -873,7 +873,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Contextul de 1 milion de tokeni al Gemini: citirea unor biblioteci întregi",
     "excerpt": "În timp ce alții măsurau contextul în mii, Google a împins limita la 1 milion de tokeni. Puteai să-i dai lui Gemini o bază de cod întreagă de 30.000 de fișiere.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -885,7 +885,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Gemini în Google Search: AI transformă modul în care găsim informații",
     "excerpt": "Google a integrat Gemini direct în Search, generând rezumate AI pentru interogări complexe. Un miliard de utilizatori au primit răspunsuri AI fără să știe.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -897,7 +897,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Project Astra: Gemini vede lumea prin telefonul tău",
     "excerpt": "Google a demonstrat cum Gemini înțelege video live de la camera unui telefon, recunoscând obiecte, citind text, navigând prin spații în timp real.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -909,7 +909,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "DeepMind + Google Brain: fuziunea care a creat Gemini",
     "excerpt": "Două laboratoare AI legendare au devenit unul singur. Genialitatea cercetării DeepMind, combinată cu scara ingineriei Google Brain, a produs ceva ce niciunul nu ar fi putut realiza singur.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -921,7 +921,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Gemini Flash: cel mai rapid model de frontieră din lume",
     "excerpt": "Google a optimizat Gemini pentru viteză fără a sacrifica prea mult din calitate. Flash procesează cererile de 5 ori mai repede decât Ultra, perfect pentru aplicații în timp real.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -933,7 +933,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "AlphaCode 2: programare competitivă alimentată de Gemini",
     "excerpt": "AI-ul de programare de la DeepMind a ajuns la percentila 85 în concursurile de programare, performând la nivelul unui student talentat.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -945,7 +945,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Gemini în Android: telefonul tău devine cu adevărat inteligent",
     "excerpt": "Cu Gemini integrat la nivelul sistemului de operare, telefoanele Android pot înțelege contextul între aplicații, pot rezuma notificările și îți pot anticipa nevoile.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -957,7 +957,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Predicția Gemini: Demis Hassabis vede AGI rezolvând știința",
     "excerpt": "CEO-ul DeepMind a prezis că, în 5-10 ani, AI-ul va face descoperiri științifice de nivel Premiu Nobel în mod autonom.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -969,7 +969,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "NotebookLM: Gemini îți transformă documentele într-un podcast",
     "excerpt": "Încarcă lucrări de cercetare, notițe de la ședințe sau manuale, iar Gemini generează o discuție de podcast cu sunet natural despre conținut.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -981,7 +981,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "AlphaFold 3: prezicerea modului în care interacționează toate moleculele vieții",
     "excerpt": "Cel mai recent AlphaFold de la DeepMind nu doar prezice structurile proteinelor, ci prezice cum interacționează între ele proteinele, ADN-ul, ARN-ul și medicamentele.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -993,7 +993,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Veo 2: AI-ul de la Google generează video de calitate Hollywood",
     "excerpt": "Veo 2 creează videoclipuri fotorealiste până la rezoluția 4K, cu fizică coerentă și narațiuni coerente. Cineaștii au luat aminte.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1005,7 +1005,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "TPU v5 de la Google: cipurile personalizate care alimentează Gemini",
     "excerpt": "În timp ce alții cumpără GPU-uri NVIDIA, Google își proiectează propriile cipuri AI. TPU v5 i-a oferit lui Gemini un avantaj hardware pe care niciun competitor nu îl putea cumpăra.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1017,7 +1017,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Gemini în Workspace: AI-ul rescrie modul în care colaborează echipele",
     "excerpt": "Gemini în Google Docs, Sheets și Slides nu doar îi ajută pe indivizi, ci transformă modul în care echipele lucrează împreună la documente partajate.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1029,7 +1029,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Abordarea Google privind siguranța AI: responsabil prin design",
     "excerpt": "Google a publicat fișe de model detaliate, rezultate de red-team și evaluări de siguranță pentru fiecare lansare Gemini. Transparența ca avantaj competitiv.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1041,7 +1041,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Raționamentul multimodal al Gemini: înțelegerea graficelor, diagramelor și scrisului de mână",
     "excerpt": "Oferă-i lui Gemini o fotografie cu o tablă și citește scrisul de mână, înțelege diagrama și explică conceptul. Vederea nu înseamnă doar a vedea, ci înseamnă a înțelege.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -1053,7 +1053,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Predicția Gemini: Jeff Dean despre AI care rezolvă schimbările climatice",
     "excerpt": "Cercetătorul-șef de la Google a explicat cum modelele de tipul Gemini ar putea optimiza sistemele energetice, accelera cercetarea materialelor și modela intervențiile climatice.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1065,7 +1065,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Gemini Live: AI conversațional care chiar se simte ca o discuție",
     "excerpt": "Gemini Live a introdus conversația vocală în timp real, cu întreruperi naturale, conștientizare emoțională și context care persistă între sesiuni.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1077,7 +1077,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Campusul AI al Google: unde 5.000 de cercetători modelează viitorul",
     "excerpt": "Campusurile Google DeepMind din Londra, Mountain View și Zürich găzduiesc cea mai mare concentrare de talent AI din lume.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1089,7 +1089,7 @@
     "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
     "title": "Imagen 3 și Gemini: generarea de imagini din text atinge fotorealismul",
     "excerpt": "Generarea de imagini a Google, alimentată de înțelegerea lui Gemini, creează imagini pe care fotografi profesioniști le confundă cu fotografii reale.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -1101,7 +1101,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "ChatGPT este lansat: ziua în care AI a devenit mainstream",
     "excerpt": "Pe 30 noiembrie 2022, OpenAI a lansat ChatGPT. În 5 zile avea 1 milion de utilizatori. În 2 luni, 100 de milioane. Nimic în tehnologie nu mai crescuse vreodată atât de repede.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1113,7 +1113,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "GPT-4: modelul care putea trece examenul de barou",
     "excerpt": "Când GPT-4 a obținut un scor în percentila 90 la examenul de barou, profesia juridică a luat aminte. AI-ul nu mai era doar o jucărie, ci era competent profesional.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1125,7 +1125,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "OpenAI atinge 2 miliarde de dolari în venituri: cea mai rapid crescândă companie de tehnologie din istorie",
     "excerpt": "De la 0 la 2 miliarde de dolari în venituri anuale în mai puțin de 2 ani. ChatGPT a demonstrat că consumatorii vor plăti pentru AI și vor plăti mult.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1137,7 +1137,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "GPT-4o: AI multimodal care vede, aude și vorbește",
     "excerpt": "GPT-4o (omni) putea procesa text, imagini și audio simultan și putea răspunde prin voce în timp real, cu emoție și personalitate.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1149,7 +1149,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "GPT-uri personalizate: oricine devine dezvoltator de AI",
     "excerpt": "GPT Store de la OpenAI a permis oricui să creeze asistenți AI personalizați fără să programeze. În câteva luni, existau milioane de GPT-uri specializate pentru fiecare nișă imaginabilă.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1161,7 +1161,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "DALL-E 3: artă AI integrată direct în ChatGPT",
     "excerpt": "Când generarea de imagini s-a mutat în interiorul ChatGPT, oricine putea crea vizualuri profesionale descriind în conversație ceea ce dorea.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -1173,7 +1173,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "Modelul o1 de la OpenAI: AI care gândește înainte să vorbească",
     "excerpt": "Modelul o1 a introdus raționamentul de tip „lanț de gândire”, petrecând mai mult timp gândind problemele înainte de a răspunde. Performanță la nivel de doctorat în știință și matematică.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1185,7 +1185,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "ChatGPT ajunge la 400 de milioane de utilizatori săptămânali",
     "excerpt": "La începutul lui 2025, ChatGPT avea mai mulți utilizatori activi săptămânali decât Twitter. Folosirea asistentului AI a devenit la fel de obișnuită ca emailul.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "4 min"
   },
   {
@@ -1197,7 +1197,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "Sora: modelul video al OpenAI care a șocat Hollywood-ul",
     "excerpt": "Sora a generat clipuri video de un minut cu personaje consistente, fizică coerentă și calitate cinematografică. Industria filmului a realizat că AI-ul nu mai era o jucărie.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1209,7 +1209,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "Parteneriatul cu Microsoft: 13 miliarde de dolari și distribuție globală",
     "excerpt": "Investiția Microsoft i-a oferit OpenAI resurse masive de calcul și distribuție prin Windows, Office și Azure. 1,5 miliarde de oameni au primit acces la AI peste noapte.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1221,7 +1221,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "GitHub Copilot: AI-ul scrie 46% din tot codul nou",
     "excerpt": "Până în 2024, aproape jumătate din tot codul comis pe GitHub era asistat de AI. Programarea nu a murit, ci a evoluat într-o colaborare între oameni și mașini.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1233,7 +1233,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "Predicția lui Sam Altman: „Superinteligență în câteva mii de zile”",
     "excerpt": "CEO-ul OpenAI a publicat o postare pe blog în care prezicea apariția unui AI superinteligent în viitorul apropiat și a schițat ce ar trebui să facă umanitatea pentru a se pregăti.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "6 min"
   },
   {
@@ -1245,7 +1245,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "Ecosistemul de plugin-uri ChatGPT: AI-ul se conectează la lumea reală",
     "excerpt": "Plugin-urile au permis lui ChatGPT să navigheze pe web, să acceseze baze de date, să rezerve zboruri și să comande mâncare. AI-ul a trecut de la „a vorbi” la „a face”.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1257,7 +1257,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "Echipa de siguranță a OpenAI și controversa plecărilor",
     "excerpt": "Când cercetători seniori în siguranță au plecat de la OpenAI în 2024, s-a iscat o dezbatere despre dacă compania prioritiza viteza în detrimentul siguranței. Industria a urmărit cu atenție.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1269,7 +1269,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "ChatGPT în educație: 70% dintre studenți îl folosesc constant",
     "excerpt": "Sondajele au arătat că 70% dintre studenți foloseau ChatGPT pentru cursuri. În loc să lupte împotriva lui, cele mai bune școli au regândit modul în care predau.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1281,7 +1281,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "Zvonuri despre GPT-5: ce ar putea aduce următorul model de frontieră",
     "excerpt": "Persoane din interiorul industriei sugerează capabilități care ar face GPT-4 să pară primitiv. Comunitatea AI își ține respirația pentru următorul model OpenAI.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1293,7 +1293,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "Strategia enterprise a OpenAI: companiile Fortune 500 mizează totul pe AI",
     "excerpt": "92% dintre companiile Fortune 500 folosesc produse OpenAI. De la relații cu clienții la cercetare și dezvoltare, AI-ul este acum încorporat în infrastructura corporativă.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1305,7 +1305,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "ChatGPT Voice: AI-ul conversațional cu care milioane de oameni vorbesc zilnic",
     "excerpt": "Modul Advanced Voice a făcut ca ChatGPT să pară mai puțin un motor de căutare și mai mult un prieten genial pe care îl poți suna oricând.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1317,7 +1317,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "Dezbaterea privind reglementarea AI: OpenAI pledează pentru guvernanță",
     "excerpt": "OpenAI a cerut public reglementarea AI, inclusiv licențierea modelelor de frontieră. „Am prefera reguli rezonabile decât o anarhie totală”, a spus Altman.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "5 min"
   },
   {
@@ -1329,7 +1329,7 @@
     "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
     "title": "Predicția OpenAI: „AI-ul va fi cel mai mare creator de avuție din istorie”",
     "excerpt": "Sam Altman prezice că AI-ul va genera mai multă valoare economică decât orice tehnologie anterioară și pledează pentru distribuirea largă a acestei avuții.",
-    "author": "AI Desk",
+    "author": "Redacția AI",
     "readTime": "6 min"
   }
 ]

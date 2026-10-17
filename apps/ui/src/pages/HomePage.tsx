@@ -39,19 +39,16 @@ function extractActivityCounts(
 
 const TODAY_SEED = Math.floor(Date.now() / 86400000);
 
-const TAG_COLORS: Record<string, string> = {
-  'OPEN SOURCE': '#00D68F',
-  LEGENDS: '#a855f7',
-  HARDWARE: '#FFAA00',
-  HISTORY: '#3b82f6',
-  INTERNET: '#06b6d4',
-  SECURITY: '#ef4444',
-  'AI & FUTURE': '#8b5cf6',
-  SPACE: '#6366f1',
-  TOOLS: '#f59e0b',
-  LANGUAGES: '#10b981',
-  PLATFORMS: '#ec4899',
-  PROTOCOLS: '#14b8a6',
+// By an article's category, the same in both languages; its tag is translated
+const CAT_COLORS: Record<string, string> = {
+  oss: '#00D68F',
+  legends: '#a855f7',
+  hardware: '#FFAA00',
+  history: '#3b82f6',
+  internet: '#06b6d4',
+  security: '#ef4444',
+  ai: '#8b5cf6',
+  space: '#6366f1',
 };
 
 function seededPick<T>(items: T[], count: number, seed: number): T[] {
@@ -328,7 +325,7 @@ export function HomePage() {
                         />
                       );
                     }
-                    const color = TAG_COLORS[a.tag ?? ''] ?? '#6C5CE7';
+                    const color = CAT_COLORS[a.cat] ?? '#6C5CE7';
                     return (
                       <button
                         key={i}

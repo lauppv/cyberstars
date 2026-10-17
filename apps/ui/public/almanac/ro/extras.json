@@ -38,7 +38,7 @@
     {
       "em": "💾",
       "text": "Pictograma de salvare (o dischetă) este acum mai veche decât majoritatea oamenilor care o folosesc. Copiii de azi nu au atins niciodată una.",
-      "src": "Universal truth"
+      "src": "Adevăr universal"
     },
     {
       "em": "🔑",
@@ -123,7 +123,7 @@
     {
       "em": "🌙",
       "text": "Este nevoie de mai multă putere de calcul pentru a rula o singură dată un model AI modern decât a fost nevoie pentru a trimite oameni pe Lună.",
-      "src": "OpenAI estimates"
+      "src": "Estimări OpenAI"
     },
     {
       "em": "📦",
@@ -263,7 +263,7 @@
     {
       "em": "0️⃣",
       "text": "Tablourile încep la indexul 0 din cauza matematicii memoriei: address = start + index × element_size. Cu indexarea de la 0, primul element nu are nevoie de niciun offset: în anii 1950, asta economisea o scădere la fiecare accesare a unui tablou.",
-      "src": "BCPL & C convention"
+      "src": "Convenția din BCPL și C"
     },
     {
       "em": "📧",
@@ -304,8 +304,8 @@
     },
     {
       "text": "Nu e o eroare, e o funcționalitate nedocumentată.",
-      "author": "Anonymous",
-      "context": "Programmer folklore"
+      "author": "Anonim",
+      "context": "Folclor de programator"
     },
     {
       "text": "Cea mai periculoasă frază din limbaj este 'Așa am făcut întotdeauna'.",
@@ -355,7 +355,7 @@
     {
       "text": "Dă-i unui om un program și îl frustrezi o zi. Învață-l pe om să programeze și îl frustrezi pentru toată viața.",
       "author": "Muhammad Waseem",
-      "context": "Internet wisdom"
+      "context": "Înțelepciune de pe internet"
     },
     {
       "text": "Un limbaj care nu îți afectează modul în care gândești despre programare nu merită cunoscut.",
@@ -384,8 +384,8 @@
     },
     {
       "text": "Pe calculatorul meu funcționează.",
-      "author": "Every developer",
-      "context": "Since the dawn of time"
+      "author": "Orice programator",
+      "context": "Dintotdeauna"
     },
     {
       "text": "Dacă depanarea este procesul de eliminare a erorilor, atunci programarea trebuie să fie procesul de introducere a lor.",
@@ -514,8 +514,8 @@
     },
     {
       "text": "Săptămâni de programare îți pot economisi ore de planificare.",
-      "author": "Anonymous",
-      "context": "Developer proverb"
+      "author": "Anonim",
+      "context": "Proverb de programator"
     },
     {
       "text": "Fă-l să funcționeze, fă-l corect, fă-l rapid.",
@@ -534,7 +534,7 @@
     {
       "year": "1983",
       "emoji": "🌐",
-      "tag": "PROTOCOLS",
+      "tag": "PROTOCOALE",
       "title": "Internetul se naște într-o marți",
       "text": "1 ianuarie 1983: ARPANET trece de la NCP la TCP/IP. Rețelele de rețele devin posibile. Vint Cerf o numește \"Flag Day\"."
     },
@@ -548,21 +548,21 @@
     {
       "year": "1995",
       "emoji": "☕",
-      "tag": "LANGUAGES",
+      "tag": "LIMBAJE",
       "title": "Java este lansat: \"Write Once, Run Anywhere\"",
       "text": "Sun Microsystems lansează Java 1.0. Conceptul de JVM revoluționează modul în care livrăm software. JavaScript este creat în același an de Brendan Eich, în 10 zile."
     },
     {
       "year": "2005",
       "emoji": "🌳",
-      "tag": "TOOLS",
+      "tag": "UNELTE",
       "title": "Linus scrie Git în două săptămâni",
       "text": "După ce BitKeeper a revocat licența gratuită a kernelului Linux, Linus a construit de la zero un sistem de control al versiunilor distribuit. L-a numit după el însuși: \"I'm an egotistical bastard.\""
     },
     {
       "year": "2007",
       "emoji": "📱",
-      "tag": "PLATFORMS",
+      "tag": "PLATFORME",
       "title": "iPhone-ul redefinește un calculator",
       "text": "Un calculator în buzunarul tău, fără tastatură, rulând un UNIX personalizat. În mai puțin de un deceniu, mai mult cod rulează pe telefoane decât pe toate calculatoarele desktop construite vreodată."
     }
