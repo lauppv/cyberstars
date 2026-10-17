@@ -1760,4 +1760,11 @@ export const lessons = [
     sortOrder: 1,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'same-tree',
+    title: 'Easy · Are Two Trees the Same',
+    sortOrder: 2,
+    hasCodeFile: true,
+  },
 ];
