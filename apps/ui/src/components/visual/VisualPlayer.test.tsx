@@ -938,6 +938,8 @@ describe('VisualPlayer, a stack', () => {
   const calls: StackVisual = {
     type: 'stack',
     caption: 'Calls wait',
+    queue: false,
+    ends: false,
     cards: [{ id: 'main', text: 'main()' }],
     steps: [
       {
@@ -1039,5 +1041,94 @@ describe('VisualPlayer, a stack', () => {
     playAt(5000);
     expect(card('f1')).toBeNull();
     expect(lines('f2')).toEqual([['2 * 1 = 2', 1]]);
+  });
+});
+
+describe('VisualPlayer, a queue and the ends', () => {
+  const line: StackVisual = {
+    type: 'stack',
+    caption: 'A line',
+    queue: true,
+    ends: true,
+    cards: [],
+    steps: [
+      { push: [{ id: 'a', text: 10 }], caption: '10 joins' },
+      { push: [{ id: 'b', text: 20 }], caption: '20 joins' },
+      { ask: 'What leaves?', pop: 1, focus: ['a'], caption: '10' },
+    ],
+  };
+
+  const card = (id: string) => document.querySelector<HTMLElement>(`[data-card="${id}"]`);
+  const end = (id: string) => document.querySelector(`[data-end="${id}"]`)?.textContent ?? null;
+
+  let queued: FrameRequestCallback[] = [];
+  const playAt = (ms: number) =>
+    act(() => {
+      const now = queued;
+      queued = [];
+      for (const tick of now) tick(ms);
+    });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    queued = [];
+  });
+
+  it('stands the cards in a row from the front, with the front and back named', () => {
+    vi.stubGlobal('matchMedia', (query: string) => ({ matches: query.includes('reduce') }));
+    render(<VisualPlayer visual={line} />);
+    next();
+    expect(end('a')).toBe('front, back');
+    next();
+    expect(card('a')!.style.left).toBe('0%');
+    expect(card('b')!.style.left).toBe('50%');
+    expect(end('a')).toBe('front');
+    expect(end('b')).toBe('back');
+    next();
+    expect(card('a')).toHaveAttribute('data-state', 'focused');
+    next();
+    expect(card('a')).toBeNull();
+    expect(card('b')!.style.left).toBe('0%');
+    expect(end('b')).toBe('front, back');
+  });
+
+  it('takes the front out to the left, then slides the rest forward', () => {
+    vi.stubGlobal('matchMedia', () => ({ matches: false }));
+    vi.stubGlobal('requestAnimationFrame', (tick: FrameRequestCallback) => queued.push(tick));
+    vi.stubGlobal('cancelAnimationFrame', () => {});
+    render(<VisualPlayer visual={line} />);
+    next();
+    playAt(0);
+    expect(card('a')!.style.transform).toBe('translateX(60%)');
+    playAt(5000);
+    next();
+    playAt(0);
+    playAt(5000);
+    next();
+    next();
+    playAt(0);
+    // Two beats, out and forward. A quarter of the way: halfway out, nothing has slid yet
+    playAt(300);
+    expect(card('a')!.style.transform).toBe('translateX(-30%)');
+    expect(card('b')!.style.left).toBe('50%');
+    // Three quarters of the way: out, and halfway forward
+    playAt(900);
+    expect(card('a')).toBeNull();
+    expect(card('b')!.style.left).toBe('25%');
+  });
+
+  it("names a stack's top card, and only when the visual asks for it", () => {
+    vi.stubGlobal('matchMedia', (query: string) => ({ matches: query.includes('reduce') }));
+    const pile: StackVisual = { ...line, queue: false };
+    const { unmount } = render(<VisualPlayer visual={pile} />);
+    next();
+    next();
+    expect(card('b')!.querySelector('[data-tag]')).toHaveTextContent('top');
+    expect(card('a')!.querySelector('[data-tag]')).toBeNull();
+    unmount();
+    render(<VisualPlayer visual={{ ...pile, ends: false }} />);
+    next();
+    next();
+    expect(card('b')!.querySelector('[data-tag]')).toBeNull();
   });
 });

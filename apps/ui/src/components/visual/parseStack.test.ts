@@ -43,6 +43,8 @@ describe('parseVisual, stack', () => {
     ).toEqual({
       type: 'stack',
       caption: 'Calls wait',
+      queue: false,
+      ends: false,
       cards: [{ id: 'v10', text: 10 }],
       steps: [
         {
@@ -145,5 +147,34 @@ describe('parseVisual, stack', () => {
     expect(parseVisual(visual({ steps: ['x'] }))).toBeNull();
     expect(after({ title: '' })).toBeNull();
     expect(after({ ask: 3 })).toBeNull();
+  });
+
+  it('reads a queue, which pops from the front, and asks for the ends by name', () => {
+    const queue = parseVisual(
+      visual({
+        queue: true,
+        ends: true,
+        cards: [card('a'), card('b')],
+        steps: [
+          { pop: 1, caption: 'a leaves' },
+          { set: { b: 'still here' }, caption: 'b stays' },
+        ],
+      }),
+    );
+    expect(queue).toMatchObject({ queue: true, ends: true });
+    expect(
+      parseVisual(
+        visual({
+          queue: true,
+          cards: [card('a'), card('b')],
+          steps: [
+            { pop: 1, caption: 'a leaves' },
+            { set: { a: 'gone' }, caption: 'x' },
+          ],
+        }),
+      ),
+    ).toBeNull();
+    expect(parseVisual(visual({ queue: 'yes' }))).toBeNull();
+    expect(parseVisual(visual({ ends: 1 }))).toBeNull();
   });
 });
