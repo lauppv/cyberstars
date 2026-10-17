@@ -63,6 +63,23 @@ Hai să urmărim ce se întâmplă:
 
 Nu am atins **x** direct. Am trecut prin **p**, am urmat adresa, și am schimbat valoarea de acolo. Aceasta este puterea pointerilor
 
+```visual
+{
+  "type": "boxes",
+  "caption": "Fiecare variabilă e o cutie undeva în memorie. Cutia unui pointer ține adresa altei cutii, numărul ei de cameră, desenată aici ca o săgeată spre ea.",
+  "boxes": [
+    {"id": "p", "name": "p", "to": "x"},
+    {"id": "x", "name": "x", "value": 10}
+  ],
+  "steps": [
+    {"show": ["x"], "caption": "int x = 10; x e creat cu valoarea 10, undeva în memorie"},
+    {"show": ["p"], "caption": "int *p = &x; p primește adresa lui x, deci săgeata lui p arată spre x"},
+    {"focus": ["p", "x"], "ask": "*p = 42: unde ajunge 42?", "set": {"x": 42}, "caption": "Urmăm săgeata lui p: ajunge la x, deci 42 se scrie în x"},
+    {"focus": ["x"], "caption": "printf afișează x: 42. x s-a schimbat, deși n-am scris niciodată x = 42"}
+  ]
+}
+```
+
 ---
 
 Pe primele sisteme UNIX de la Bell Labs, programatorii lucrau cu memoria exact la acest nivel: fiecare octet avea o adresă, iar un pointer greșit putea scrie peste memoria altui program. Din acest motiv, C te lasă foarte aproape de mașină, și de aceea trebuie să fii atent la ce pointer citești și ce pointer scrii

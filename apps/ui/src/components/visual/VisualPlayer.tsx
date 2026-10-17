@@ -3,15 +3,19 @@ import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { ChevronLeft, ChevronRight, Maximize2, RotateCcw, X } from 'lucide-react';
 import { Segmented } from '../ui/Segmented';
-import type { ArrayVisual } from './parseVisual';
+import type { Visual } from './parseVisual';
 import { arrayFrames } from './arrayFrames';
-import { ArrayView, Words } from './ArrayView';
+import { boxFrames } from './boxFrames';
+import { ArrayView } from './ArrayView';
+import { BoxesView } from './BoxesView';
+import { Words } from './Words';
 
 // Loaded lazily by MarkdownRenderer, so a lesson without a visual never downloads it
 
 const SPEEDS = ['slow', 'normal', 'fast'] as const;
 type Speed = (typeof SPEEDS)[number];
-const SWAP_MS: Record<Speed, number> = { slow: 2000, normal: 1200, fast: 600 };
+// How long a swap, or any other move of the boxes, takes
+const MOVE_MS: Record<Speed, number> = { slow: 2000, normal: 1200, fast: 600 };
 
 const BUTTON =
   'flex items-center gap-1 px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] aria-disabled:opacity-30 aria-disabled:cursor-not-allowed aria-disabled:hover:border-[var(--border)] aria-disabled:hover:text-[var(--text)] transition cursor-pointer';
@@ -19,9 +23,16 @@ const BUTTON =
 const ICON_BUTTON =
   'w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text3)] hover:text-[var(--text)] hover:border-[var(--text3)] transition cursor-pointer';
 
-export function VisualPlayer({ visual }: { visual: ArrayVisual }) {
+export function VisualPlayer({ visual }: { visual: Visual }) {
   const { t } = useTranslation();
-  const frames = useMemo(() => arrayFrames(visual), [visual]);
+  const drawn = useMemo(
+    () =>
+      visual.type === 'array'
+        ? { type: 'array' as const, visual, frames: arrayFrames(visual) }
+        : { type: 'boxes' as const, visual, frames: boxFrames(visual) },
+    [visual],
+  );
+  const { frames } = drawn;
   const [step, setStep] = useState(0);
   const [speed, setSpeed] = useState<Speed>('normal');
   const [expanded, setExpanded] = useState(false);
@@ -29,7 +40,7 @@ export function VisualPlayer({ visual }: { visual: ArrayVisual }) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const last = frames.length - 1;
   const frame = frames[step];
-  const swapMs = SWAP_MS[speed];
+  const moveMs = MOVE_MS[speed];
 
   const go = (to: number) => setStep(Math.max(0, Math.min(last, to)));
 
@@ -101,6 +112,25 @@ export function VisualPlayer({ visual }: { visual: ArrayVisual }) {
     </div>
   );
 
+  const picture = (box: number) =>
+    drawn.type === 'array' ? (
+      <ArrayView
+        values={drawn.visual.values}
+        pointers={drawn.visual.pointers}
+        frame={drawn.frames[step]}
+        box={box}
+        swapMs={moveMs}
+      />
+    ) : (
+      <BoxesView
+        visual={drawn.visual}
+        frames={drawn.frames}
+        step={step}
+        box={box}
+        moveMs={moveMs}
+      />
+    );
+
   const title = (
     <span className="text-[13px] font-semibold text-[var(--text3)]">{frame.title ?? ''}</span>
   );
@@ -127,13 +157,7 @@ export function VisualPlayer({ visual }: { visual: ArrayVisual }) {
           <Maximize2 size={14} aria-hidden="true" />
         </button>
       </div>
-      <ArrayView
-        values={visual.values}
-        pointers={visual.pointers}
-        frame={frame}
-        box={48}
-        swapMs={swapMs}
-      />
+      {picture(48)}
       <div className="mb-3">
         <Words frame={frame} live={!expanded} big={false} />
       </div>
@@ -174,13 +198,7 @@ export function VisualPlayer({ visual }: { visual: ArrayVisual }) {
                   <X size={16} aria-hidden="true" />
                 </button>
               </div>
-              <ArrayView
-                values={visual.values}
-                pointers={visual.pointers}
-                frame={frame}
-                box={80}
-                swapMs={swapMs}
-              />
+              {picture(80)}
               <div className="mb-6">
                 <Words frame={frame} live big />
               </div>
