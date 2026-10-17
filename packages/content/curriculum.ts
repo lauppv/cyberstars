@@ -1830,4 +1830,11 @@ export const lessons = [
     sortOrder: 11,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'friend-groups',
+    title: 'Easy · Groups of Friends',
+    sortOrder: 12,
+    hasCodeFile: true,
+  },
 ];
