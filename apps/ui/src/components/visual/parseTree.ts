@@ -1,4 +1,4 @@
-import { isCaption, isRecord } from './checks';
+import { isCaption, isRecord, parseRows, type ValueRow } from './checks';
 import type { BoxValue } from './parseBoxes';
 
 // A ```visual fence of type "tree" draws a binary tree. A node is named by its place, numbered
@@ -17,11 +17,7 @@ import type { BoxValue } from './parseBoxes';
 // Four levels below the root at most, so the bottom row still fits a phone
 const MAX_PLACE = 30;
 
-// A row of values under the tree, with its name
-export interface TreeRow {
-  label: string;
-  values: BoxValue[];
-}
+export type TreeRow = ValueRow;
 
 interface TreeStep {
   title?: string;
@@ -108,15 +104,9 @@ function parseStep(raw: unknown): TreeStep | null {
     step[key] = [pair[0], pair[1]];
   }
   if (raw.rows !== undefined) {
-    const { rows } = raw;
-    if (!Array.isArray(rows) || rows.length === 0) return null;
-    const parsed: TreeRow[] = [];
-    for (const row of rows) {
-      if (!isRecord(row) || !isCaption(row.label) || !Array.isArray(row.values)) return null;
-      if (!row.values.every(isValue)) return null;
-      parsed.push({ label: row.label, values: [...row.values] });
-    }
-    step.rows = parsed;
+    const rows = parseRows(raw.rows);
+    if (!rows) return null;
+    step.rows = rows;
   }
   // A path goes down the tree, each node a child of the one before it
   if (step.path?.some((place, k) => k > 0 && parentOf(place) !== step.path![k - 1])) return null;

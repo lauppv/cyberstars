@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 import { parentOf, type TreeVisual } from './parseTree';
 import type { TreeFrame } from './treeFrames';
 import { beats, lerp, useTween } from './tween';
+import { CodeLine, Rows, Tag } from './parts';
+import { EDGE, LIT, LOOK, R } from './look';
 
 // The tree drawing: an SVG whose units scale with its width. Each level halves the room of the one
 // above, so a node's place fixes where it stands and the bottom row decides the width; four levels
@@ -9,7 +11,6 @@ import { beats, lerp, useTween } from './tween';
 
 const SLOT = 40;
 const LEVEL = 52;
-const R = 15;
 // Room above the root and below the bottom row for a tag
 const TOP = 20;
 const BOTTOM = 20;
@@ -18,38 +19,8 @@ const CELL = 28;
 const CELL_GAP = 2;
 const INDEX = 16;
 
-const EDGE = 'var(--border)';
-const LIT = 'var(--accent)';
-
 const depthOf = (place: number) => Math.floor(Math.log2(place + 1));
 const childrenOf = (place: number) => [2 * place + 1, 2 * place + 2];
-
-function Tag({ x, y, text }: { x: number; y: number; text: string }) {
-  const width = text.length * 6.2 + 10;
-  return (
-    <g data-tag={text}>
-      <rect
-        x={x - width / 2}
-        y={y - 8}
-        width={width}
-        height={16}
-        rx={8}
-        style={{ fill: 'var(--bg2)', stroke: LIT }}
-        strokeWidth={1}
-      />
-      <text
-        x={x}
-        y={y}
-        textAnchor="middle"
-        dominantBaseline="central"
-        fontSize={10}
-        style={{ fill: '#cdc6ff' }}
-      >
-        {text}
-      </text>
-    </g>
-  );
-}
 
 export function TreeView({
   visual,
@@ -135,11 +106,6 @@ export function TreeView({
       : to.done.includes(place)
         ? 'done'
         : 'idle';
-  const look = {
-    focused: { fill: 'rgba(108,92,231,0.25)', stroke: LIT, text: '#cdc6ff', width: 2 },
-    done: { fill: 'rgba(59,167,118,0.25)', stroke: 'var(--success)', text: '#c4f0da', width: 2 },
-    idle: { fill: 'var(--glass)', stroke: 'var(--border)', text: 'var(--text)', width: 1 },
-  };
 
   const edges = allPlaces
     .filter((place) => place > 0)
@@ -212,9 +178,9 @@ export function TreeView({
         cx={x}
         cy={y}
         r={R}
-        strokeWidth={look[state].width}
+        strokeWidth={LOOK[state].width}
         opacity={shown(place)}
-        style={{ fill: look[state].fill, stroke: look[state].stroke }}
+        style={{ fill: LOOK[state].fill, stroke: LOOK[state].stroke }}
       />
     );
   });
@@ -241,8 +207,8 @@ export function TreeView({
               width={CELL}
               height={CELL}
               rx={4}
-              strokeWidth={look[state].width}
-              style={{ fill: look[state].fill, stroke: look[state].stroke }}
+              strokeWidth={LOOK[state].width}
+              style={{ fill: LOOK[state].fill, stroke: LOOK[state].stroke }}
             />
           </g>
         );
@@ -271,7 +237,7 @@ export function TreeView({
           dominantBaseline="central"
           fontSize={view === 'tree' ? 14 : 13}
           opacity={opacity}
-          style={{ fill: look[state].text }}
+          style={{ fill: LOOK[state].text }}
         >
           {(inTo ? toIds : fromIds).get(id)!.value}
         </text>
@@ -303,41 +269,8 @@ export function TreeView({
         {list}
         {visual.array && valuesIn('list', inList)}
       </svg>
-      {rowCount > 0 && (
-        <div
-          className="mt-3 grid grid-cols-[auto_1fr] items-center gap-x-2 gap-y-1.5 content-start font-mono text-[13px]"
-          style={{ minHeight: `${rowCount * 1.9}em` }}
-        >
-          {to.rows.map((row) => (
-            <div key={row.label} data-row={row.label} className="contents">
-              <span className="text-[var(--text3)]">{row.label}</span>
-              <span className="flex flex-wrap gap-1">
-                {row.values.length === 0 && <span className="text-[var(--text3)]">[ ]</span>}
-                {row.values.map((value, i) => (
-                  <span
-                    key={i}
-                    className="min-w-[1.9em] px-1.5 py-0.5 text-center rounded-[var(--radius-sm)] bg-[var(--glass)] border border-[var(--border)] text-[var(--text)]"
-                  >
-                    {value}
-                  </span>
-                ))}
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
-      {hasCode && (
-        <div className="mt-3 min-h-[2.25em] flex justify-center">
-          {to.code !== null && (
-            <code
-              data-code
-              className="px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--glass)] border border-[var(--border)] font-mono text-[13px] text-[var(--text)] whitespace-pre-wrap break-words max-w-full"
-            >
-              {to.code}
-            </code>
-          )}
-        </div>
-      )}
+      {rowCount > 0 && <Rows rows={to.rows} count={rowCount} />}
+      {hasCode && <CodeLine code={to.code} />}
     </div>
   );
 }
