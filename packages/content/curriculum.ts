@@ -1181,6 +1181,13 @@ export const lessons = [
     sortOrder: 3,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'binary-search-trees',
+    title: 'Binary Search Trees',
+    sortOrder: 4,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',
