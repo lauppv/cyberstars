@@ -129,7 +129,7 @@ class Inamic {
 public class Main {
     public static void main(String[] args) {
         // Inamic e = new Inamic();  // nu compileaza, nu mai exista constructor fara argumente
-        Inamic e = new Inamic("Goon");  // asta merge
+        Inamic e = new Inamic("Bataus");  // asta merge
         System.out.println(e.tip);
         System.out.println(e.viata);
     }
@@ -139,7 +139,7 @@ public class Main {
 Ieșire
 
 ```text
-Goon
+Bataus
 50
 ```
 
@@ -168,7 +168,7 @@ class Arma {
 public class Main {
     public static void main(String[] args) {
         Arma a1 = new Arma("Katana", 75);
-        Arma a2 = new Arma("Fists");
+        Arma a2 = new Arma("Pumni");
         System.out.println(a1.nume + " provoaca " + a1.dauna + " daune");
         System.out.println(a2.nume + " provoaca " + a2.dauna + " daune");
     }
@@ -179,7 +179,7 @@ Ieșire
 
 ```text
 Katana provoaca 75 daune
-Fists provoaca 10 daune
+Pumni provoaca 10 daune
 ```
 
 ---

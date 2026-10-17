@@ -6,9 +6,9 @@ Mai întâi, hai să vedem problema. Această funcție încearcă să interschim
 #include <stdio.h>
 
 void interschimba(int a, int b) {
-    int temp = a;
+    int aux = a;
     a = b;
-    b = temp;
+    b = aux;
 }
 
 int main(void) {
@@ -35,9 +35,9 @@ Soluția: **transmite pointeri** în loc de valori
 #include <stdio.h>
 
 void interschimba(int *a, int *b) {
-    int temp = *a;
+    int aux = *a;
     *a = *b;
-    *b = temp;
+    *b = aux;
 }
 
 int main(void) {
@@ -91,9 +91,9 @@ void min_max(int tablou[], int n, int *min, int *max) {
 
 int main(void) {
     int numere[] = {3, 7, 1, 9, 4};
-    int lo, hi;
-    min_max(numere, 5, &lo, &hi);
-    printf("Min: %d, Max: %d\n", lo, hi);
+    int minim, maxim;
+    min_max(numere, 5, &minim, &maxim);
+    printf("Min: %d, Max: %d\n", minim, maxim);
     return 0;
 }
 ```

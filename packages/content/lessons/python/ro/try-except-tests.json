@@ -9,13 +9,13 @@
     ]
   },
   "cases": [
-    { "visible": true, "inject": { "citiri": { "$list": ["42", "x9", "100", "7", "bad", "13"] } } },
+    { "visible": true, "inject": { "citiri": { "$list": ["42", "x9", "100", "7", "rau", "13"] } } },
     { "visible": true, "inject": { "citiri": { "$list": ["1", "2", "3"] } } },
     { "inject": { "citiri": { "$list": ["a", "b", "c"] } } },
     { "inject": { "citiri": { "$list": ["50", "zz", "50", "0"] } } },
     { "inject": { "citiri": { "$list": ["999"] } } },
     { "inject": { "citiri": { "$list": ["0"] } }, "generated": true },
-    { "inject": { "citiri": { "$list": ["bad"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["rau"] } }, "generated": true },
     { "inject": { "citiri": { "$list": ["-5", "5"] } }, "generated": true },
     { "inject": { "citiri": { "$list": ["-1", "-2", "x"] } }, "generated": true },
     { "inject": { "citiri": { "$list": ["007", "10"] } }, "generated": true },
@@ -25,7 +25,7 @@
     { "inject": { "citiri": { "$list": ["99999", "1"] } }, "generated": true },
     {
       "inject": {
-        "citiri": { "$list": ["nan!", "a12", "N/A", "a12", "one", "bad", "abc", "nan!"] }
+        "citiri": { "$list": ["nan!", "a12", "N/A", "a12", "unu", "rau", "abc", "nan!"] }
       },
       "generated": true
     },
@@ -53,7 +53,7 @@
     { "inject": { "citiri": { "$list": ["a12", "#5", "--"] } }, "generated": true },
     {
       "inject": {
-        "citiri": { "$list": ["--", "0", "--", "9", "-34", "85", "N/A", "?", "12a", "one", "one"] }
+        "citiri": { "$list": ["--", "0", "--", "9", "-34", "85", "N/A", "?", "12a", "unu", "unu"] }
       },
       "generated": true
     },
@@ -61,12 +61,12 @@
     {
       "inject": {
         "citiri": {
-          "$list": ["9", "a12", "-5", "one", "a12", "#5", "2", "N/A", "bad", "12a", "x9"]
+          "$list": ["9", "a12", "-5", "unu", "a12", "#5", "2", "N/A", "rau", "12a", "x9"]
         }
       },
       "generated": true
     },
-    { "inject": { "citiri": { "$list": ["one", "-42", "8"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["unu", "-42", "8"] } }, "generated": true },
     { "inject": { "citiri": { "$list": ["4"] } }, "generated": true },
     {
       "inject": { "citiri": { "$list": ["10864", "931", "90803", "6", "6", "-24", "9", "8"] } },
@@ -81,7 +81,7 @@
     {
       "inject": {
         "citiri": {
-          "$list": ["9", "one", "#5", "?", "nan!", "2", "4", "-44", "214", "557", "nan!"]
+          "$list": ["9", "unu", "#5", "?", "nan!", "2", "4", "-44", "214", "557", "nan!"]
         }
       },
       "generated": true
@@ -96,7 +96,7 @@
     },
     {
       "inject": {
-        "citiri": { "$list": ["bad", "12a", "err", "a12", "a12", "a12", "seven", "zz"] }
+        "citiri": { "$list": ["rau", "12a", "eroare", "a12", "a12", "a12", "sapte", "zz"] }
       },
       "generated": true
     },
@@ -112,39 +112,41 @@
     {
       "inject": {
         "citiri": {
-          "$list": ["?", "12a", "#5", "648", "83969", "173", "636", "-39", "3", "N/A", "bad"]
+          "$list": ["?", "12a", "#5", "648", "83969", "173", "636", "-39", "3", "N/A", "rau"]
         }
       },
       "generated": true
     },
     {
-      "inject": { "citiri": { "$list": ["zz", "818", "seven", "bad", "seven"] } },
+      "inject": { "citiri": { "$list": ["zz", "818", "sapte", "rau", "sapte"] } },
       "generated": true
     },
     {
       "inject": { "citiri": { "$list": ["a12", "5", "x9", "a12", "502", "abc"] } },
       "generated": true
     },
-    { "inject": { "citiri": { "$list": ["18622", "bad", "12a"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["18622", "rau", "12a"] } }, "generated": true },
     {
-      "inject": { "citiri": { "$list": ["N/A", "x9", "x9", "abc", "?", "--", "one"] } },
+      "inject": { "citiri": { "$list": ["N/A", "x9", "x9", "abc", "?", "--", "unu"] } },
       "generated": true
     },
     { "inject": { "citiri": { "$list": ["93362", "-13", "21976"] } }, "generated": true },
     { "inject": { "citiri": { "$list": ["24796", "abc", "?"] } }, "generated": true },
-    { "inject": { "citiri": { "$list": ["?", "-36", "seven", "abc", "--"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["?", "-36", "sapte", "abc", "--"] } }, "generated": true },
     {
       "inject": {
-        "citiri": { "$list": ["#5", "--", "127", "--", "nan!", "--", "err", "?", "a12"] }
+        "citiri": { "$list": ["#5", "--", "127", "--", "nan!", "--", "eroare", "?", "a12"] }
       },
       "generated": true
     },
     {
-      "inject": { "citiri": { "$list": ["bad", "nan!", "a12", "nan!", "--", "abc", "abc"] } },
+      "inject": { "citiri": { "$list": ["rau", "nan!", "a12", "nan!", "--", "abc", "abc"] } },
       "generated": true
     },
     {
-      "inject": { "citiri": { "$list": ["x9", "12a", "a12", "err", "err", "err", "err", "#5"] } },
+      "inject": {
+        "citiri": { "$list": ["x9", "12a", "a12", "eroare", "eroare", "eroare", "eroare", "#5"] }
+      },
       "generated": true
     },
     {
@@ -154,14 +156,16 @@
     {
       "inject": {
         "citiri": {
-          "$list": ["N/A", "-41", "seven", "one", "one", "?", "a12", "985", "bad", "err"]
+          "$list": ["N/A", "-41", "sapte", "unu", "unu", "?", "a12", "985", "rau", "eroare"]
         }
       },
       "generated": true
     },
     {
       "inject": {
-        "citiri": { "$list": ["err", "seven", "#5", "seven", "N/A", "N/A", "seven", "seven", "x9"] }
+        "citiri": {
+          "$list": ["eroare", "sapte", "#5", "sapte", "N/A", "N/A", "sapte", "sapte", "x9"]
+        }
       },
       "generated": true
     },
@@ -178,12 +182,12 @@
         "citiri": {
           "$list": [
             "abc",
-            "seven",
+            "sapte",
             "43263",
             "40946",
             "--",
             "-45",
-            "seven",
+            "sapte",
             "--",
             "387",
             "12762",
@@ -199,13 +203,13 @@
     {
       "inject": {
         "citiri": {
-          "$list": ["N/A", "a12", "12a", "?", "65705", "#5", "one", "6", "1", "#5", "bad"]
+          "$list": ["N/A", "a12", "12a", "?", "65705", "#5", "unu", "6", "1", "#5", "rau"]
         }
       },
       "generated": true
     },
     {
-      "inject": { "citiri": { "$list": ["84254", "?", "--", "err", "0", "abc", "abc"] } },
+      "inject": { "citiri": { "$list": ["84254", "?", "--", "eroare", "0", "abc", "abc"] } },
       "generated": true
     }
   ]

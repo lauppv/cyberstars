@@ -33,10 +33,10 @@ public class Main {
         // Unitatea vine ca sir de 1 caracter; luam primul caracter.
         char unitate = sc.nextLine().charAt(0);
 
-        Temperatura temp = new Temperatura(valoare, unitate);
+        Temperatura temperatura = new Temperatura(valoare, unitate);
 
-        System.out.printf("Celsius: %.1f%n", temp.laCelsius());
-        System.out.printf("Fahrenheit: %.1f%n", temp.laFahrenheit());
+        System.out.printf("Celsius: %.1f%n", temperatura.laCelsius());
+        System.out.printf("Fahrenheit: %.1f%n", temperatura.laFahrenheit());
     }
 }
 ```

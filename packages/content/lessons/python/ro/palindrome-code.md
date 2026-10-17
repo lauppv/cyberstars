@@ -1,1 +1,1 @@
-coduri = ["racecar", "signal", "level", "orbit", "radar"]
+coduri = ["rotitor", "semnal", "capac", "orbita", "radar"]

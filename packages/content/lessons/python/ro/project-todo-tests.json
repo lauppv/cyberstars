@@ -9,114 +9,120 @@
     ]
   },
   "cases": [
-    { "visible": true, "stdin": "3\nScan sector\nCharge shields\nPlot course\n0 2" },
-    { "visible": true, "stdin": "1\nRun diagnostics\n0" },
-    { "stdin": "3\nOne\nTwo\nThree\n0 1 2" },
-    { "stdin": "1\nSleep\n0\n", "generated": true },
+    {
+      "visible": true,
+      "stdin": "3\nRuleaza diagnoza\nRealimenteaza reactorul\nTraseaza traseul\n0 2"
+    },
+    { "visible": true, "stdin": "1\nRuleaza diagnoza\n0" },
+    { "stdin": "3\nUnu\nDoi\nTrei\n0 1 2" },
+    { "stdin": "1\nDormi\n0\n", "generated": true },
     { "stdin": "2\nA\nB\n1\n", "generated": true },
     { "stdin": "2\nA\nB\n1 0\n", "generated": true },
-    { "stdin": "3\nFix airlock\nLog data\nTest comms\n2\n", "generated": true },
-    { "stdin": "3\nFix airlock\nLog data\nTest comms\n1 1\n", "generated": true },
+    { "stdin": "3\nRepara ecluza\nNoteaza datele\nTesteaza radioul\n2\n", "generated": true },
+    { "stdin": "3\nRepara ecluza\nNoteaza datele\nTesteaza radioul\n1 1\n", "generated": true },
     { "stdin": "3\nx\nx\nx\n0 1 2\n", "generated": true },
-    { "stdin": "4\nTask one\nTask two\nTask three\nTask four\n3 0\n", "generated": true },
     {
-      "stdin": "8\nSleep\nPolish lenses\nRepair hull\nClean filters\nTest comms\nCheck oxygen\nRun diagnostics\nPlot course\n2 0 3 7 1 6 4 5\n",
+      "stdin": "4\nSarcina unu\nSarcina doi\nSarcina trei\nSarcina patru\n3 0\n",
       "generated": true
     },
     {
-      "stdin": "8\nChart course\nScan sector\nPlot course\nRepair hull\nPolish lenses\nRun diagnostics\nWater plants\nCheck oxygen\n7\n",
+      "stdin": "8\nDormi\nLustruieste lentilele\nRepara coca\nCurata filtrele\nTesteaza radioul\nVerifica oxigenul\nRuleaza diagnoza\nTraseaza traseul\n2 0 3 7 1 6 4 5\n",
       "generated": true
     },
     {
-      "stdin": "6\nPolish lenses\nFeed the crew\nFix airlock\nCalibrate radar\nRefuel reactor\nUpdate map\n5\n",
-      "generated": true
-    },
-    { "stdin": "2\nPolish lenses\nClean filters\n0 1\n", "generated": true },
-    {
-      "stdin": "6\nFix airlock\nRepair hull\nCheck oxygen\nScan sector\nCharge shields\nUpdate map\n3\n",
-      "generated": true
-    },
-    { "stdin": "2\nCheck oxygen\nWater plants\n0\n", "generated": true },
-    { "stdin": "1\nFeed the crew\n0\n", "generated": true },
-    {
-      "stdin": "8\nWater plants\nSleep\nTest comms\nCharge shields\nCheck oxygen\nCalibrate radar\nRun diagnostics\nRepair hull\n5 0 2 7 6\n",
+      "stdin": "8\nCartografiaza ruta\nScaneaza sectorul\nTraseaza traseul\nRepara coca\nLustruieste lentilele\nRuleaza diagnoza\nUda plantele\nVerifica oxigenul\n7\n",
       "generated": true
     },
     {
-      "stdin": "7\nRun diagnostics\nRefuel reactor\nFix airlock\nLog data\nCharge shields\nScan sector\nWater plants\n6 3 1 4\n",
+      "stdin": "6\nLustruieste lentilele\nHraneste echipajul\nRepara ecluza\nCalibreaza radarul\nRealimenteaza reactorul\nActualizeaza harta\n5\n",
+      "generated": true
+    },
+    { "stdin": "2\nLustruieste lentilele\nCurata filtrele\n0 1\n", "generated": true },
+    {
+      "stdin": "6\nRepara ecluza\nRepara coca\nVerifica oxigenul\nScaneaza sectorul\nIncarca scuturile\nActualizeaza harta\n3\n",
+      "generated": true
+    },
+    { "stdin": "2\nVerifica oxigenul\nUda plantele\n0\n", "generated": true },
+    { "stdin": "1\nHraneste echipajul\n0\n", "generated": true },
+    {
+      "stdin": "8\nUda plantele\nDormi\nTesteaza radioul\nIncarca scuturile\nVerifica oxigenul\nCalibreaza radarul\nRuleaza diagnoza\nRepara coca\n5 0 2 7 6\n",
       "generated": true
     },
     {
-      "stdin": "8\nRepair hull\nFeed the crew\nRefuel reactor\nSleep\nCalibrate radar\nPolish lenses\nCharge shields\nWater plants\n3 0 2 4 5 6 7\n",
-      "generated": true
-    },
-    { "stdin": "3\nWater plants\nRun diagnostics\nCharge shields\n0\n", "generated": true },
-    {
-      "stdin": "8\nClean filters\nScan sector\nCalibrate radar\nTest comms\nRefuel reactor\nFeed the crew\nCharge shields\nLog data\n3 4\n",
+      "stdin": "7\nRuleaza diagnoza\nRealimenteaza reactorul\nRepara ecluza\nNoteaza datele\nIncarca scuturile\nScaneaza sectorul\nUda plantele\n6 3 1 4\n",
       "generated": true
     },
     {
-      "stdin": "4\nScan sector\nLog data\nRepair hull\nCheck oxygen\n1 2 3 0\n",
+      "stdin": "8\nRepara coca\nHraneste echipajul\nRealimenteaza reactorul\nDormi\nCalibreaza radarul\nLustruieste lentilele\nIncarca scuturile\nUda plantele\n3 0 2 4 5 6 7\n",
+      "generated": true
+    },
+    { "stdin": "3\nUda plantele\nRuleaza diagnoza\nIncarca scuturile\n0\n", "generated": true },
+    {
+      "stdin": "8\nCurata filtrele\nScaneaza sectorul\nCalibreaza radarul\nTesteaza radioul\nRealimenteaza reactorul\nHraneste echipajul\nIncarca scuturile\nNoteaza datele\n3 4\n",
       "generated": true
     },
     {
-      "stdin": "7\nChart course\nRefuel reactor\nCheck oxygen\nPolish lenses\nRun diagnostics\nUpdate map\nTest comms\n1 6 4 5 2 3\n",
+      "stdin": "4\nScaneaza sectorul\nNoteaza datele\nRepara coca\nVerifica oxigenul\n1 2 3 0\n",
       "generated": true
     },
     {
-      "stdin": "8\nPlot course\nTest comms\nCharge shields\nUpdate map\nPolish lenses\nScan sector\nClean filters\nRefuel reactor\n6 2 3 4\n",
+      "stdin": "7\nCartografiaza ruta\nRealimenteaza reactorul\nVerifica oxigenul\nLustruieste lentilele\nRuleaza diagnoza\nActualizeaza harta\nTesteaza radioul\n1 6 4 5 2 3\n",
       "generated": true
     },
     {
-      "stdin": "8\nCheck oxygen\nRepair hull\nChart course\nPolish lenses\nLog data\nCharge shields\nPlot course\nRun diagnostics\n1 2 7 5 0 3 4 6\n",
+      "stdin": "8\nTraseaza traseul\nTesteaza radioul\nIncarca scuturile\nActualizeaza harta\nLustruieste lentilele\nScaneaza sectorul\nCurata filtrele\nRealimenteaza reactorul\n6 2 3 4\n",
       "generated": true
     },
     {
-      "stdin": "8\nFix airlock\nCharge shields\nRepair hull\nPlot course\nRefuel reactor\nChart course\nClean filters\nCheck oxygen\n1 2 7\n",
+      "stdin": "8\nVerifica oxigenul\nRepara coca\nCartografiaza ruta\nLustruieste lentilele\nNoteaza datele\nIncarca scuturile\nTraseaza traseul\nRuleaza diagnoza\n1 2 7 5 0 3 4 6\n",
       "generated": true
     },
     {
-      "stdin": "8\nCalibrate radar\nRepair hull\nRefuel reactor\nCheck oxygen\nScan sector\nTest comms\nFix airlock\nChart course\n0 7 4 6 3\n",
-      "generated": true
-    },
-    { "stdin": "2\nCheck oxygen\nCalibrate radar\n0\n", "generated": true },
-    { "stdin": "2\nPolish lenses\nLog data\n0\n", "generated": true },
-    {
-      "stdin": "6\nLog data\nPlot course\nUpdate map\nPolish lenses\nCharge shields\nFeed the crew\n3\n",
-      "generated": true
-    },
-    { "stdin": "1\nWater plants\n0\n", "generated": true },
-    { "stdin": "2\nPlot course\nSleep\n1\n", "generated": true },
-    {
-      "stdin": "7\nCalibrate radar\nWater plants\nPolish lenses\nFix airlock\nUpdate map\nClean filters\nCharge shields\n6 4 0 2 3\n",
-      "generated": true
-    },
-    { "stdin": "2\nUpdate map\nScan sector\n0\n", "generated": true },
-    {
-      "stdin": "8\nUpdate map\nClean filters\nScan sector\nChart course\nRefuel reactor\nPlot course\nCalibrate radar\nCheck oxygen\n2 6 7 3\n",
+      "stdin": "8\nRepara ecluza\nIncarca scuturile\nRepara coca\nTraseaza traseul\nRealimenteaza reactorul\nCartografiaza ruta\nCurata filtrele\nVerifica oxigenul\n1 2 7\n",
       "generated": true
     },
     {
-      "stdin": "8\nFix airlock\nCalibrate radar\nWater plants\nRepair hull\nRefuel reactor\nRun diagnostics\nPolish lenses\nFeed the crew\n3 7 1 4\n",
+      "stdin": "8\nCalibreaza radarul\nRepara coca\nRealimenteaza reactorul\nVerifica oxigenul\nScaneaza sectorul\nTesteaza radioul\nRepara ecluza\nCartografiaza ruta\n0 7 4 6 3\n",
+      "generated": true
+    },
+    { "stdin": "2\nVerifica oxigenul\nCalibreaza radarul\n0\n", "generated": true },
+    { "stdin": "2\nLustruieste lentilele\nNoteaza datele\n0\n", "generated": true },
+    {
+      "stdin": "6\nNoteaza datele\nTraseaza traseul\nActualizeaza harta\nLustruieste lentilele\nIncarca scuturile\nHraneste echipajul\n3\n",
+      "generated": true
+    },
+    { "stdin": "1\nUda plantele\n0\n", "generated": true },
+    { "stdin": "2\nTraseaza traseul\nDormi\n1\n", "generated": true },
+    {
+      "stdin": "7\nCalibreaza radarul\nUda plantele\nLustruieste lentilele\nRepara ecluza\nActualizeaza harta\nCurata filtrele\nIncarca scuturile\n6 4 0 2 3\n",
+      "generated": true
+    },
+    { "stdin": "2\nActualizeaza harta\nScaneaza sectorul\n0\n", "generated": true },
+    {
+      "stdin": "8\nActualizeaza harta\nCurata filtrele\nScaneaza sectorul\nCartografiaza ruta\nRealimenteaza reactorul\nTraseaza traseul\nCalibreaza radarul\nVerifica oxigenul\n2 6 7 3\n",
       "generated": true
     },
     {
-      "stdin": "6\nFeed the crew\nRefuel reactor\nRepair hull\nFix airlock\nChart course\nScan sector\n0 2 1 5 3 4\n",
+      "stdin": "8\nRepara ecluza\nCalibreaza radarul\nUda plantele\nRepara coca\nRealimenteaza reactorul\nRuleaza diagnoza\nLustruieste lentilele\nHraneste echipajul\n3 7 1 4\n",
       "generated": true
     },
     {
-      "stdin": "5\nFeed the crew\nTest comms\nWater plants\nCalibrate radar\nClean filters\n2 3 1 0\n",
-      "generated": true
-    },
-    { "stdin": "1\nClean filters\n0\n", "generated": true },
-    {
-      "stdin": "6\nCheck oxygen\nScan sector\nRefuel reactor\nFeed the crew\nFix airlock\nRun diagnostics\n2\n",
+      "stdin": "6\nHraneste echipajul\nRealimenteaza reactorul\nRepara coca\nRepara ecluza\nCartografiaza ruta\nScaneaza sectorul\n0 2 1 5 3 4\n",
       "generated": true
     },
     {
-      "stdin": "4\nRefuel reactor\nCharge shields\nRun diagnostics\nFix airlock\n2\n",
+      "stdin": "5\nHraneste echipajul\nTesteaza radioul\nUda plantele\nCalibreaza radarul\nCurata filtrele\n2 3 1 0\n",
       "generated": true
     },
-    { "stdin": "2\nFeed the crew\nSleep\n1 0\n", "generated": true }
+    { "stdin": "1\nCurata filtrele\n0\n", "generated": true },
+    {
+      "stdin": "6\nVerifica oxigenul\nScaneaza sectorul\nRealimenteaza reactorul\nHraneste echipajul\nRepara ecluza\nRuleaza diagnoza\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nRealimenteaza reactorul\nIncarca scuturile\nRuleaza diagnoza\nRepara ecluza\n2\n",
+      "generated": true
+    },
+    { "stdin": "2\nHraneste echipajul\nDormi\n1 0\n", "generated": true }
   ]
 }

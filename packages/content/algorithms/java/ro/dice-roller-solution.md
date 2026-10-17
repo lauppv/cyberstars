@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 class Zar {
     private final int fete;
-    private final Random random;
+    private final Random generator;
 
-    Zar(int fete, long seed) {
+    Zar(int fete, long samanta) {
         this.fete = fete;
-        this.random = new Random(seed);
+        this.generator = new Random(samanta);
     }
 
     int arunca() {
-        return random.nextInt(fete) + 1;
+        return generator.nextInt(fete) + 1;
     }
 }
 
@@ -21,10 +21,10 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int fete = Integer.parseInt(sc.nextLine());
-        long seed = Long.parseLong(sc.nextLine());
+        long samanta = Long.parseLong(sc.nextLine());
         int aruncari = Integer.parseInt(sc.nextLine());
 
-        Zar zar = new Zar(fete, seed);
+        Zar zar = new Zar(fete, samanta);
 
         for (int i = 0; i < aruncari; i++) {
             System.out.println(zar.arunca());

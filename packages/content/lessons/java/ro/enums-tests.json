@@ -20,7 +20,9 @@
     },
     {
       "inject": {
-        "nume": { "$list": ["Ice Cream Factory", "Film Studio", "Taxi Firm", "Vercetti Estate"] }
+        "nume": {
+          "$list": ["Fabrica de inghetata", "Studio de film", "Firma de taxi", "Vercetti Estate"]
+        }
       }
     },
     {
@@ -69,7 +71,7 @@
       "generated": true
     },
     {
-      "inject": { "nume": { "$list": ["Rafael's", "Tool Shop", "Gash", "Jocksport"] } },
+      "inject": { "nume": { "$list": ["Rafael's", "Magazin de unelte", "Gash", "Jocksport"] } },
       "generated": true
     }
   ]

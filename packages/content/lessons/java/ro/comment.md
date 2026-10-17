@@ -75,6 +75,6 @@ Cu valorile implicite, programul tău ar trebui să afișeze
 
 ```text
 Voyager
-Deep Space Exploration
+Explorarea spatiului adanc
 9001
 ```

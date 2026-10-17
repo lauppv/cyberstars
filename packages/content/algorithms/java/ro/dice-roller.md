@@ -1,13 +1,13 @@
-Creează o clasă **Zar** care simulează aruncarea unui zar. Constructorul primește numărul de fețe și un **seed**. Adaugă o metodă `arunca()` care returnează următorul rezultat folosind `java.util.Random`.
+Creează o clasă **Zar** care simulează aruncarea unui zar. Constructorul primește numărul de fețe și o **sămânță** (seed). Adaugă o metodă `arunca()` care returnează următorul rezultat folosind `java.util.Random`.
 
-**Important:** Creează obiectul `Random` cu `new Random(seed)` și folosește `nextInt(fete) + 1` astfel încât rezultatele să fie reproductibile pentru un anumit seed.
+**Important:** Creează obiectul `Random` cu `new Random(samanta)` și folosește `nextInt(fete) + 1` astfel încât rezultatele să fie reproductibile pentru o anumită sămânță.
 
-Citește numărul de fețe, seed-ul și numărul de aruncări de la stdin. Creează un obiect `Zar` și afișează rezultatul fiecărei aruncări pe o linie separată.
+Citește numărul de fețe, sămânța și numărul de aruncări de la stdin. Creează un obiect `Zar` și afișează rezultatul fiecărei aruncări pe o linie separată.
 
 ### Date de intrare
 
 - Linia 1: numărul de fețe (număr întreg, cel puțin 1; orice valoare pozitivă de tip `int`)
-- Linia 2: seed (număr întreg, orice valoare de tip `int`)
+- Linia 2: sămânța (număr întreg, orice valoare de tip `int`)
 - Linia 3: numărul de aruncări (număr întreg, 0 <= aruncări <= 2·10^4)
 
 ### Rezultat
@@ -62,5 +62,5 @@ Ieșire:
 2
 ```
 
-Seed-uri diferite (și `fete` diferit) produc secvențe complet diferite, dar
-același seed reproduce mereu aceeași secvență.
+Semințe diferite (și `fete` diferit) produc secvențe complet diferite, dar
+aceeași sămânță reproduce mereu aceeași secvență.

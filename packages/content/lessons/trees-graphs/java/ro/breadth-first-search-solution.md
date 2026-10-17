@@ -23,28 +23,28 @@ public class Main {
         int s = scanner.nextInt();
         int t = scanner.nextInt();
 
-        int[] dist = new int[n];
-        Arrays.fill(dist, -1);
-        dist[s] = 0;
+        int[] distanta = new int[n];
+        Arrays.fill(distanta, -1);
+        distanta[s] = 0;
         Queue<Integer> coada = new ArrayDeque<>();
         coada.add(s);
         while (!coada.isEmpty()) {
             int u = coada.poll();
             for (int v : vecini.get(u)) {
-                if (dist[v] == -1) {
-                    dist[v] = dist[u] + 1;
+                if (distanta[v] == -1) {
+                    distanta[v] = distanta[u] + 1;
                     coada.add(v);
                 }
             }
         }
 
         for (int v = 0; v < n; v++) {
-            System.out.println(v + ": " + dist[v]);
+            System.out.println(v + ": " + distanta[v]);
         }
-        if (dist[t] == -1) {
+        if (distanta[t] == -1) {
             System.out.println("Niciun drum de la " + s + " la " + t);
         } else {
-            System.out.println("Cei mai putini pasi de la " + s + " la " + t + ": " + dist[t]);
+            System.out.println("Cei mai putini pasi de la " + s + " la " + t + ": " + distanta[t]);
         }
     }
 }

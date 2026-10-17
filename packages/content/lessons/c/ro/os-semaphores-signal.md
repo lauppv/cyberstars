@@ -21,14 +21,14 @@ void *calculeaza(void *arg) {
 int main(void) {
     sem_init(&gata, 0, 0);   // init cu 0: sem_wait blocheaza imediat
 
-    pthread_t worker;
-    pthread_create(&worker, NULL, calculeaza, NULL);
+    pthread_t lucrator;
+    pthread_create(&lucrator, NULL, calculeaza, NULL);
 
-    // Asteptam semnalul de la worker.
+    // Asteptam semnalul de la lucrator.
     sem_wait(&gata);
     printf("Rezultat: %d\n", rezultat);
 
-    pthread_join(worker, NULL);
+    pthread_join(lucrator, NULL);
     sem_destroy(&gata);
     return 0;
 }
@@ -51,12 +51,12 @@ Pattern-ul e fundamentul multor cozi de mesaje și pipeline-uri.
 
 ## Misiune: Așteaptă rezultatul
 
-Un fir "worker" trebuie să calculeze suma numerelor **1 până la 10** și să o pună într-o variabilă globală. Firul principal așteaptă semnalul, apoi tipărește rezultatul.
+Un fir "lucrător" trebuie să calculeze suma numerelor **1 până la 10** și să o pună într-o variabilă globală. Firul principal așteaptă semnalul, apoi tipărește rezultatul.
 
 1. Declară un semafor `gata` inițializat cu **0**.
-2. Firul worker calculează `1 + 2 + ... + 10` și îl scrie în variabila globală `suma`. Apoi face `sem_post(&gata)`.
+2. Firul lucrător calculează `1 + 2 + ... + 10` și îl scrie în variabila globală `suma`. Apoi face `sem_post(&gata)`.
 3. Firul principal face `sem_wait(&gata)`, apoi tipărește `Suma: 55`.
-4. La sfârșit, `pthread_join` pe worker și `sem_destroy` pe semafor.
+4. La sfârșit, `pthread_join` pe firul lucrător și `sem_destroy` pe semafor.
 
 **Exemplu**
 
@@ -64,6 +64,6 @@ Un fir "worker" trebuie să calculeze suma numerelor **1 până la 10** și să 
 Suma: 55
 ```
 
-Rezultatul e deterministic: firul principal nu poate tipări valoarea până când worker-ul nu a scris-o și nu a semnalat.
+Rezultatul e deterministic: firul principal nu poate tipări valoarea până când lucrătorul nu a scris-o și nu a semnalat.
 
 Folosește `sem_t`, `sem_init`, `sem_wait`, `sem_post`, `sem_destroy` din **<semaphore.h>**, și `pthread_create`, `pthread_join` din **<pthread.h>**.

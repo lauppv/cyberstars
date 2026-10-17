@@ -3,9 +3,9 @@ import java.util.ArrayList;
 
 public class Main {
     static void schimba(ArrayList<Integer> heap, int i, int j) {
-        int temp = heap.get(i);
+        int aux = heap.get(i);
         heap.set(i, heap.get(j));
-        heap.set(j, temp);
+        heap.set(j, aux);
     }
 
     static void adaugaInHeap(ArrayList<Integer> heap, int valoare) {

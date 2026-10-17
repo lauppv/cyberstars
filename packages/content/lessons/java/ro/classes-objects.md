@@ -149,7 +149,7 @@ public class Main {
         a1.greutate = 3.5;
 
         Arma a2 = new Arma();
-        a2.nume = "Rocket Launcher";
+        a2.nume = "Lansator rachete";
         a2.dauna = 200;
         a2.greutate = 15.0;
 
@@ -163,7 +163,7 @@ public class Main {
 }
 ```
 
-Output **Rocket Launcher provoaca mai multe daune**
+Output **Lansator rachete provoaca mai multe daune**
 
 Fără clase, ai avea nevoie de variabile separate pentru fiecare câmp în parte: **a1Nume, a1Dauna, a1Greutate, a2Nume, a2Dauna, a2Greutate**... Devine repede dezordonat. Clasele îți permit să grupezi date înrudite într-un singur pachet curat
 

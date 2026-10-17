@@ -51,15 +51,15 @@ int main(void) {
 
 int main(void) {
     char sursa[] = "Salut";
-    char dest[20];
+    char destinatie[20];
 
-    strcpy(dest, sursa);
-    printf("%s\n", dest);   // Salut
+    strcpy(destinatie, sursa);
+    printf("%s\n", destinatie);   // Salut
     return 0;
 }
 ```
 
-**strcpy(dest, sursa)** copiază totul din **sursa** în **dest**, inclusiv **'\0'**. Asigură-te că **dest** este suficient de mare! Dacă este prea mic, obții un **buffer overflow**, unul dintre cele mai periculoase bug-uri din programare. Așa apar vulnerabilitățile reale de securitate
+**strcpy(destinatie, sursa)** copiază totul din **sursa** în **destinatie**, inclusiv **'\0'**. Asigură-te că **destinatie** este suficient de mare! Dacă este prea mic, obții un **buffer overflow**, unul dintre cele mai periculoase bug-uri din programare. Așa apar vulnerabilitățile reale de securitate
 
 ---
 

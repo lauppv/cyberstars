@@ -1,9 +1,9 @@
-Un **palindrom** este un cuvânt care se citește la fel de la stânga la dreapta și invers. **racecar**, **madam**, **level**: întoarce-le și sunt la fel
+Un **palindrom** este un cuvânt care se citește la fel de la stânga la dreapta și invers. **rotitor**, **cojoc**, **capac**: întoarce-le și sunt la fel
 
 Cum verificăm dacă un cuvânt este palindrom? Cea mai simplă abordare: **inversează-l și compară**
 
 ```py
-cuvant = "racecar"
+cuvant = "rotitor"
 if cuvant == cuvant[::-1]:
     print("Palindrom!")
 else:
@@ -27,9 +27,9 @@ def este_palindrom(cuvant):
             return False
     return True
 
-print(este_palindrom("racecar"))
-print(este_palindrom("hello"))
-print(este_palindrom("madam"))
+print(este_palindrom("rotitor"))
+print(este_palindrom("salut"))
+print(este_palindrom("cojoc"))
 ```
 
 Ieșire
@@ -42,11 +42,11 @@ True
 
 Trebuie să verificăm doar **jumătate** din șir. De ce? Pentru că dacă prima jumătate se potrivește cu a doua jumătate (în oglindă), am terminat. Verificarea celeilalte jumătăți ar fi redundantă
 
-**len(cuvant) // 2** ne dă jumătate din lungime (împărțire întreagă). Pentru „racecar" (7 litere), verificăm pozițiile 0, 1, 2 (comparând cu 6, 5, 4)
+**len(cuvant) // 2** ne dă jumătate din lungime (împărțire întreagă). Pentru „rotitor" (7 litere), verificăm pozițiile 0, 1, 2 (comparând cu 6, 5, 4)
 
 ---
 
-Dar propozițiile? „A man a plan a canal Panama" este un palindrom dacă ignorăm spațiile și majusculele
+Dar propozițiile? „Ele fac cafele" este un palindrom dacă ignorăm spațiile și majusculele
 
 ```py
 def este_palindrom_propozitie(text):
@@ -56,9 +56,9 @@ def este_palindrom_propozitie(text):
             curatat += caracter.lower()
     return curatat == curatat[::-1]
 
-print(este_palindrom_propozitie("A man a plan a canal Panama"))
-print(este_palindrom_propozitie("racecar"))
-print(este_palindrom_propozitie("hello world"))
+print(este_palindrom_propozitie("Ele fac cafele"))
+print(este_palindrom_propozitie("rotitor"))
+print(este_palindrom_propozitie("salut lume"))
 ```
 
 Ieșire
@@ -84,10 +84,10 @@ Un cod de semnal este de încredere doar dacă se citește la fel de la stânga 
 **Ieșire**
 
 ```text
-racecar: True
-signal: False
-level: True
-orbit: False
+rotitor: True
+semnal: False
+capac: True
+orbita: False
 radar: True
 Semnale valide: 3
 ```

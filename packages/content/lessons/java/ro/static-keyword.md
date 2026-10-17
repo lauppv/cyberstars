@@ -148,10 +148,10 @@ class Inamic {
 
 public class Main {
     public static void main(String[] args) {
-        Inamic e1 = new Inamic("Goon");
-        Inamic e2 = new Inamic("Boss");
-        Inamic e3 = new Inamic("Sniper");
-        Inamic e4 = new Inamic("Goon");
+        Inamic e1 = new Inamic("Bataus");
+        Inamic e2 = new Inamic("Sef");
+        Inamic e3 = new Inamic("Lunetist");
+        Inamic e4 = new Inamic("Bataus");
         System.out.println("Inamici aparuti: " + Inamic.numarInamici);
     }
 }

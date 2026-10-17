@@ -5,7 +5,7 @@
 int numere[20000];
 int tinta;
 int index_gasit = -1;
-pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t lacat = PTHREAD_MUTEX_INITIALIZER;
 
 typedef struct {
     int inceput;
@@ -17,11 +17,11 @@ void *cauta(void *arg) {
     for (int i = it->inceput; i < it->sfarsit; i++) {
         if (numere[i] == tinta) {
             // Actualizam index_gasit doar daca noul index e mai mic (sau primul).
-            pthread_mutex_lock(&lock);
+            pthread_mutex_lock(&lacat);
             if (index_gasit == -1 || i < index_gasit) {
                 index_gasit = i;
             }
-            pthread_mutex_unlock(&lock);
+            pthread_mutex_unlock(&lacat);
         }
     }
     return NULL;

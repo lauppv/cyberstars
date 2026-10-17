@@ -1,1 +1,1 @@
-log = "scan probe scan analyze probe scan boot"
+jurnal = "citire sonda citire analiza sonda citire start"

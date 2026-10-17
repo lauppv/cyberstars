@@ -8,89 +8,89 @@
     { "visible": true, "stdin": "status\nsalut\noprire\n" },
     { "visible": true, "stdin": "oprire\n" },
     { "stdin": "status\nstatus\noprire\n" },
-    { "stdin": "foo\nbar\nstatus\noprire\n" },
+    { "stdin": "ceva\naltceva\nstatus\noprire\n" },
     { "stdin": "status\noprire\n", "generated": true },
     { "stdin": "salut\noprire\n", "generated": true },
     { "stdin": "status\nstatus\nstatus\nstatus\noprire\n", "generated": true },
     { "stdin": "ping\npong\noprire\n", "generated": true },
     { "stdin": "opri\noprir\noprire\n", "generated": true },
-    { "stdin": "stat\nstatus\nstatuses\noprire\n", "generated": true },
+    { "stdin": "stat\nstatus\nstatusuri\noprire\n", "generated": true },
     { "stdin": "stat\noprire\n", "generated": true },
     { "stdin": "scanare\noprire\n", "generated": true },
-    { "stdin": "statuses\nscanare\noprire\n", "generated": true },
+    { "stdin": "statusuri\nscanare\noprire\n", "generated": true },
     { "stdin": "x\nstinge\noprire\n", "generated": true },
-    { "stdin": "stat\nstat\nstatuses\noprire\n", "generated": true },
+    { "stdin": "stat\nstat\nstatusuri\noprire\n", "generated": true },
     { "stdin": "scanare\nopri\nsalut\noprire\n", "generated": true },
-    { "stdin": "status\nstinge\nstatuses\nstat\noprire\n", "generated": true },
+    { "stdin": "status\nstinge\nstatusuri\nstat\noprire\n", "generated": true },
     { "stdin": "oprir\nopri\nstinge\nstatus\noprire\n", "generated": true },
     { "stdin": "status\nstat\nping\nstatus\nstatus\noprire\n", "generated": true },
-    { "stdin": "statuses\nstinge\nx\nlansare\noprir\noprire\n", "generated": true },
-    { "stdin": "status\nopri\nreboot\nstat\noprir\nlansare\noprire\n", "generated": true },
+    { "stdin": "statusuri\nstinge\nx\nlansare\noprir\noprire\n", "generated": true },
+    { "stdin": "status\nopri\nrepornire\nstat\noprir\nlansare\noprire\n", "generated": true },
     { "stdin": "opri\noprir\nstatus\nopri\nstatus\nscanare\noprire\n", "generated": true },
-    { "stdin": "statuses\nstatus\nstatus\nstatus\nsalut\nx\nsalut\noprire\n", "generated": true },
+    { "stdin": "statusuri\nstatus\nstatus\nstatus\nsalut\nx\nsalut\noprire\n", "generated": true },
     {
       "stdin": "opri\nstatus\nstinge\nstat\najutor\nstat\nopri\nscanare\noprire\n",
       "generated": true
     },
     {
-      "stdin": "salut\nstatuses\nsalut\noprir\nping\nstat\nstatus\noprir\nstatus\noprire\n",
+      "stdin": "salut\nstatusuri\nsalut\noprir\nping\nstat\nstatus\noprir\nstatus\noprire\n",
       "generated": true
     },
     {
-      "stdin": "stat\noprir\nping\nreboot\nstatuses\nx\nscanare\nstatus\nlansare\nping\noprire\n",
+      "stdin": "stat\noprir\nping\nrepornire\nstatusuri\nx\nscanare\nstatus\nlansare\nping\noprire\n",
       "generated": true
     },
     {
-      "stdin": "ajutor\nstinge\nsalut\nstatuses\nping\nstatus\nstatus\nopri\nstinge\nstatus\nreboot\noprire\n",
+      "stdin": "ajutor\nstinge\nsalut\nstatusuri\nping\nstatus\nstatus\nopri\nstinge\nstatus\nrepornire\noprire\n",
       "generated": true
     },
     {
-      "stdin": "status\nscanare\nping\nreboot\nstatus\nstatus\nscanare\noprir\nstatus\nsalut\nsalut\nx\noprire\n",
+      "stdin": "status\nscanare\nping\nrepornire\nstatus\nstatus\nscanare\noprir\nstatus\nsalut\nsalut\nx\noprire\n",
       "generated": true
     },
     {
-      "stdin": "x\nstatus\nstat\nreboot\nlansare\nreboot\nreboot\nstatus\nopri\noprir\nsalut\nstinge\noprir\noprire\n",
+      "stdin": "x\nstatus\nstat\nrepornire\nlansare\nrepornire\nrepornire\nstatus\nopri\noprir\nsalut\nstinge\noprir\noprire\n",
       "generated": true
     },
     {
-      "stdin": "ping\najutor\nstatus\nping\najutor\nstatus\nreboot\nstinge\nx\nstatus\nstatus\nsalut\nlansare\nstatus\nstatus\noprire\n",
+      "stdin": "ping\najutor\nstatus\nping\najutor\nstatus\nrepornire\nstinge\nx\nstatus\nstatus\nsalut\nlansare\nstatus\nstatus\noprire\n",
       "generated": true
     },
     {
-      "stdin": "status\nstat\nstinge\nstat\nstatus\noprir\nstatuses\nsalut\nstat\nstatuses\nsalut\nlansare\nstinge\nstatus\nreboot\noprir\nreboot\nstatus\noprire\n",
+      "stdin": "status\nstat\nstinge\nstat\nstatus\noprir\nstatusuri\nsalut\nstat\nstatusuri\nsalut\nlansare\nstinge\nstatus\nrepornire\noprir\nrepornire\nstatus\noprire\n",
       "generated": true
     },
     {
-      "stdin": "reboot\nreboot\nsalut\nstatus\nping\nscanare\nstinge\nopri\nping\nx\nstatus\nsalut\nstatus\nreboot\nscanare\nopri\noprir\nopri\nstatus\nstatus\noprire\n",
+      "stdin": "repornire\nrepornire\nsalut\nstatus\nping\nscanare\nstinge\nopri\nping\nx\nstatus\nsalut\nstatus\nrepornire\nscanare\nopri\noprir\nopri\nstatus\nstatus\noprire\n",
       "generated": true
     },
     {
-      "stdin": "status\nsalut\nstat\nping\nstatus\nstinge\nopri\najutor\nscanare\nping\nreboot\nstatus\nstatus\nstatus\nsalut\nopri\noprir\nsalut\nstatus\nopri\najutor\najutor\nopri\nstat\nstatus\noprire\n",
+      "stdin": "status\nsalut\nstat\nping\nstatus\nstinge\nopri\najutor\nscanare\nping\nrepornire\nstatus\nstatus\nstatus\nsalut\nopri\noprir\nsalut\nstatus\nopri\najutor\najutor\nopri\nstat\nstatus\noprire\n",
       "generated": true
     },
     {
-      "stdin": "opri\nstat\nscanare\nopri\nstatus\nscanare\nreboot\nstatus\noprir\nstatus\nping\nx\nsalut\nscanare\nopri\nsalut\nlansare\nsalut\nstatus\nlansare\noprir\nstatuses\nsalut\noprir\nreboot\nx\nstat\nopri\nstatus\nreboot\noprire\n",
+      "stdin": "opri\nstat\nscanare\nopri\nstatus\nscanare\nrepornire\nstatus\noprir\nstatus\nping\nx\nsalut\nscanare\nopri\nsalut\nlansare\nsalut\nstatus\nlansare\noprir\nstatusuri\nsalut\noprir\nrepornire\nx\nstat\nopri\nstatus\nrepornire\noprire\n",
       "generated": true
     },
     {
-      "stdin": "status\nstatus\nstatus\nstatus\nstatuses\nping\nsalut\nlansare\nlansare\nreboot\nping\nreboot\nscanare\nx\nopri\nstat\nping\nstatuses\nstatus\nx\nlansare\nstatus\nstatus\nsalut\nstat\nstatuses\noprir\nscanare\nopri\nopri\nstatus\nping\nsalut\nx\nx\noprire\n",
+      "stdin": "status\nstatus\nstatus\nstatus\nstatusuri\nping\nsalut\nlansare\nlansare\nrepornire\nping\nrepornire\nscanare\nx\nopri\nstat\nping\nstatusuri\nstatus\nx\nlansare\nstatus\nstatus\nsalut\nstat\nstatusuri\noprir\nscanare\nopri\nopri\nstatus\nping\nsalut\nx\nx\noprire\n",
       "generated": true
     },
     {
-      "stdin": "salut\nlansare\nstatus\nstatus\nping\nreboot\nstat\nsalut\nstatus\nstatus\nstatus\nping\najutor\nstatuses\nopri\nstatus\nstatus\najutor\nstatus\nx\nstat\najutor\noprir\nlansare\nlansare\nstatuses\nopri\nstatus\nopri\nstatus\nx\nstatus\nstat\nx\najutor\nlansare\nping\nstatus\nstatus\nopri\noprire\n",
+      "stdin": "salut\nlansare\nstatus\nstatus\nping\nrepornire\nstat\nsalut\nstatus\nstatus\nstatus\nping\najutor\nstatusuri\nopri\nstatus\nstatus\najutor\nstatus\nx\nstat\najutor\noprir\nlansare\nlansare\nstatusuri\nopri\nstatus\nopri\nstatus\nx\nstatus\nstat\nx\najutor\nlansare\nping\nstatus\nstatus\nopri\noprire\n",
       "generated": true
     },
     {
-      "stdin": "oprir\nstatus\nstat\nstatus\nlansare\nping\najutor\nstatus\nstatus\nstatus\nstat\nstatuses\najutor\nlansare\nstatus\nx\nx\nlansare\nlansare\nlansare\nstatus\nstinge\nx\najutor\najutor\nstatus\noprir\nstat\nx\nstatus\nscanare\nscanare\nreboot\nstinge\nstatus\nscanare\nstat\nopri\nstatus\nopri\noprir\nreboot\nreboot\nopri\nstatus\nopri\nstatus\nstatus\nstatus\noprir\noprire\n",
+      "stdin": "oprir\nstatus\nstat\nstatus\nlansare\nping\najutor\nstatus\nstatus\nstatus\nstat\nstatusuri\najutor\nlansare\nstatus\nx\nx\nlansare\nlansare\nlansare\nstatus\nstinge\nx\najutor\najutor\nstatus\noprir\nstat\nx\nstatus\nscanare\nscanare\nrepornire\nstinge\nstatus\nscanare\nstat\nopri\nstatus\nopri\noprir\nrepornire\nrepornire\nopri\nstatus\nopri\nstatus\nstatus\nstatus\noprir\noprire\n",
       "generated": true
     },
     {
-      "stdin": "status\nping\nx\nreboot\nlansare\najutor\nreboot\nx\nlansare\nlansare\nopri\nstat\nstat\nstat\nscanare\nstatuses\nstatus\nstatuses\nstinge\nstatuses\nstatus\nping\nopri\nstatus\nstat\nstatus\nsalut\nlansare\nstatus\nstat\nstinge\nopri\noprir\nx\nstat\nping\nx\nstatus\najutor\nping\nstatus\noprir\nopri\nsalut\nstatuses\nstatus\nstinge\nx\najutor\noprir\nx\nstat\nstat\nx\nsalut\najutor\nreboot\noprir\nping\nsalut\noprire\n",
+      "stdin": "status\nping\nx\nrepornire\nlansare\najutor\nrepornire\nx\nlansare\nlansare\nopri\nstat\nstat\nstat\nscanare\nstatusuri\nstatus\nstatusuri\nstinge\nstatusuri\nstatus\nping\nopri\nstatus\nstat\nstatus\nsalut\nlansare\nstatus\nstat\nstinge\nopri\noprir\nx\nstat\nping\nx\nstatus\najutor\nping\nstatus\noprir\nopri\nsalut\nstatusuri\nstatus\nstinge\nx\najutor\noprir\nx\nstat\nstat\nx\nsalut\najutor\nrepornire\noprir\nping\nsalut\noprire\n",
       "generated": true
     },
-    { "stdin": "oprir\nreboot\nstinge\noprire\n", "generated": true },
+    { "stdin": "oprir\nrepornire\nstinge\noprire\n", "generated": true },
     { "stdin": "stinge\nstinge\nx\nsalut\noprire\n", "generated": true },
-    { "stdin": "x\nsalut\nreboot\nsalut\nopri\noprire\n", "generated": true },
+    { "stdin": "x\nsalut\nrepornire\nsalut\nopri\noprire\n", "generated": true },
     { "stdin": "x\najutor\nsalut\nstatus\nstatus\nstat\noprire\n", "generated": true },
     {
       "stdin": "ajutor\nscanare\nx\nscanare\nstatus\nlansare\nstatus\noprire\n",
@@ -98,7 +98,7 @@
     },
     { "stdin": "ping\nscanare\nstatus\nstatus\nstat\nstat\nping\nx\noprire\n", "generated": true },
     {
-      "stdin": "salut\nscanare\nreboot\nreboot\noprir\nstatuses\nstat\noprir\najutor\noprire\n",
+      "stdin": "salut\nscanare\nrepornire\nrepornire\noprir\nstatusuri\nstat\noprir\najutor\noprire\n",
       "generated": true
     },
     {
@@ -110,15 +110,15 @@
       "generated": true
     },
     {
-      "stdin": "status\noprir\nstatus\nreboot\nstat\nsalut\nstatus\nstinge\nscanare\nping\nsalut\nstinge\nstatus\nstinge\noprire\n",
+      "stdin": "status\noprir\nstatus\nrepornire\nstat\nsalut\nstatus\nstinge\nscanare\nping\nsalut\nstinge\nstatus\nstinge\noprire\n",
       "generated": true
     },
     {
-      "stdin": "status\noprir\nstatus\nstat\nstatus\noprir\nstatuses\noprir\noprir\nstinge\najutor\nstatus\noprir\nsalut\nsalut\nscanare\noprire\n",
+      "stdin": "status\noprir\nstatus\nstat\nstatus\noprir\nstatusuri\noprir\noprir\nstinge\najutor\nstatus\noprir\nsalut\nsalut\nscanare\noprire\n",
       "generated": true
     },
     {
-      "stdin": "stat\nping\nstatus\nlansare\nstatus\nstinge\nstat\nstatuses\nlansare\nstatus\nstatus\nsalut\nping\nstinge\najutor\nstatuses\nlansare\nstatuses\nstatuses\nopri\nstinge\nstatus\noprire\n",
+      "stdin": "stat\nping\nstatus\nlansare\nstatus\nstinge\nstat\nstatusuri\nlansare\nstatus\nstatus\nsalut\nping\nstinge\najutor\nstatusuri\nlansare\nstatusuri\nstatusuri\nopri\nstinge\nstatus\noprire\n",
       "generated": true
     }
   ]

@@ -14,10 +14,10 @@
     { "visible": true, "stdin": "1\nZeta 100 5.00\n" },
     { "stdin": "3\nA 10 1.10\nB 20 2.20\nC 30 3.30\n" },
     { "stdin": "0\n", "generated": true },
-    { "stdin": "1\nsolo 0 0.00\n", "generated": true },
-    { "stdin": "1\nmax 100 10.00\n", "generated": true },
+    { "stdin": "1\nunic 0 0.00\n", "generated": true },
+    { "stdin": "1\nmaxim 100 10.00\n", "generated": true },
     { "stdin": "3\na 1 1.05\nb 2 2.50\nc 3 9.99\n", "generated": true },
-    { "stdin": "2\nsame 5 5.55\nsame 5 5.55\n", "generated": true },
+    { "stdin": "2\nacelasi 5 5.55\nacelasi 5 5.55\n", "generated": true },
     {
       "stdin": "40\nop1 1 1.07\nop2 2 2.14\nop3 3 3.21\nop4 4 4.28\nop5 5 5.35\nop6 6 6.42\nop7 7 7.49\nop8 8 8.56\nop9 9 9.63\nop10 10 0.70\nop11 11 1.77\nop12 12 2.84\nop13 13 3.91\nop14 14 4.98\nop15 15 5.05\nop16 16 6.12\nop17 17 7.19\nop18 18 8.26\nop19 19 9.33\nop20 20 0.40\nop21 21 1.47\nop22 22 2.54\nop23 23 3.61\nop24 24 4.68\nop25 25 5.75\nop26 26 6.82\nop27 27 7.89\nop28 28 8.96\nop29 29 9.03\nop30 30 0.10\nop31 31 1.17\nop32 32 2.24\nop33 33 3.31\nop34 34 4.38\nop35 35 5.45\nop36 36 6.52\nop37 37 7.59\nop38 38 8.66\nop39 39 9.73\nop40 40 0.80\n",
       "generated": true

@@ -1,5 +1,5 @@
 ```py
-ids = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+coduri = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
 interogari = [23, 50, 8, 91, 100]
 
 def cautare_binara(numere, tinta):
@@ -17,7 +17,7 @@ def cautare_binara(numere, tinta):
 
 gasite = 0
 for interogare in interogari:
-    index = cautare_binara(ids, interogare)
+    index = cautare_binara(coduri, interogare)
     if index == -1:
         print(f"{interogare} -> negasit")
     else:

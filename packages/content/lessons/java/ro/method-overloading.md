@@ -19,7 +19,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        arma("Shotgun");
+        arma("Pusca");
         arma("Pistol", 3);
     }
 }
@@ -28,7 +28,7 @@ public class Main {
 Ieșire
 
 ```text
-Arma: Shotgun
+Arma: Pusca
 Arma: Pistol (x3)
 ```
 
@@ -36,7 +36,7 @@ Java se uită la **câte argumente** treci și **ce tipuri** au, apoi alege vers
 
 Hai să urmărim cele două apeluri:
 
-- `arma("Shotgun")` are un singur argument String, deci Java alege prima versiune și afișează `Arma: Shotgun`
+- `arma("Pusca")` are un singur argument String, deci Java alege prima versiune și afișează `Arma: Pusca`
 - `arma("Pistol", 3)` are un String și un int, deci Java alege a doua versiune și afișează `Arma: Pistol (x3)`
 
 ---

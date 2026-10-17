@@ -17,11 +17,11 @@ Transmisiile primite sunt pline de zgomot și amestecate. Construiește o mică 
 Testează cu:
 
 ```py
-text_palindrom = "A man, a plan, a canal: Panama"
-anagrama_a = "Listen!"
-anagrama_b = "Silent"
-propozitie = "navigation system is online"
-text_murdar = "S3ct0r 7 cl34r!"
+text_palindrom = "Ele, fac cafele!"
+anagrama_a = "Roma!"
+anagrama_b = "Amor"
+propozitie = "sistemul de navigatie este pornit"
+text_murdar = "S3ct0r 7 l1b3r!"
 print(este_palindrom(curata_text(text_palindrom)))
 print(sunt_anagrame(anagrama_a, anagrama_b))
 print(inverseaza_cuvinte(propozitie))
@@ -33,6 +33,6 @@ print(curata_text(text_murdar))
 ```text
 True
 True
-online is system navigation
-sctrclr
+pornit este navigatie de sistemul
+sctrlbr
 ```

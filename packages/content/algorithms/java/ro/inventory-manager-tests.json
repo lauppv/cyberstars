@@ -39,7 +39,7 @@
       "generated": true
     },
     {
-      "stdin": "6\nadauga\nitem1\n100000\nadauga\nitem2\n1\nelimina\nitem1\n99999\nverifica\nitem1\nverifica\nitem2\nverifica\nitem3\n",
+      "stdin": "6\nadauga\narticol1\n100000\nadauga\narticol2\n1\nelimina\narticol1\n99999\nverifica\narticol1\nverifica\narticol2\nverifica\narticol3\n",
       "generated": true
     },
     {

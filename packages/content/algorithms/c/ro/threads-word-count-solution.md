@@ -3,7 +3,7 @@
 #include <pthread.h>
 
 int total = 0;
-pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t lacat = PTHREAD_MUTEX_INITIALIZER;
 
 void *numara(void *arg) {
     char *sir = (char *)arg;
@@ -23,9 +23,9 @@ void *numara(void *arg) {
     }
 
     // Adaugam contributia locala la contorul global, protejat de mutex.
-    pthread_mutex_lock(&lock);
+    pthread_mutex_lock(&lacat);
     total += local;
-    pthread_mutex_unlock(&lock);
+    pthread_mutex_unlock(&lacat);
     return NULL;
 }
 

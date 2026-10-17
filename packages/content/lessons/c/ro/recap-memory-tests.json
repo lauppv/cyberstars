@@ -17,103 +17,106 @@
   "cases": [
     { "stdin": "3\nVerifica_banda 2\nRepara_teletip 1\nRecalibreaza_cititor 0\n", "visible": true },
     { "stdin": "2\nInlocuieste_siguranta 2\nCurata_ventilatoare 0\n", "visible": true },
-    { "visible": true, "stdin": "2\nDeploy 0\nReview 2\n" },
-    { "visible": true, "stdin": "1\nBuild 1\n" },
+    { "visible": true, "stdin": "2\nLanseaza 0\nRevizuieste 2\n" },
+    { "visible": true, "stdin": "1\nCompileaza 1\n" },
     { "stdin": "3\nAlpha 2\nBravo 0\nCharlie 1\n" },
     { "stdin": "0\n", "generated": true },
-    { "stdin": "1\nOnly 0\n", "generated": true },
-    { "stdin": "1\nOnly 1\n", "generated": true },
-    { "stdin": "1\nOnly 2\n", "generated": true },
+    { "stdin": "1\nUnica 0\n", "generated": true },
+    { "stdin": "1\nUnica 1\n", "generated": true },
+    { "stdin": "1\nUnica 2\n", "generated": true },
     { "stdin": "3\nT1 0\nT2 0\nT3 0\n", "generated": true },
     { "stdin": "3\nT1 2\nT2 2\nT3 2\n", "generated": true },
-    { "stdin": "2\nSame 1\nSame 1\n", "generated": true },
+    { "stdin": "2\nAceeasi 1\nAceeasi 1\n", "generated": true },
     {
-      "stdin": "14\nBackup 0\nRewind_tape 1\nOil_fan 2\nPatch_kernel 0\nSwap_disk 1\nLog 2\nX 0\nCheck_power 1\nReboot 2\nClean_heads 0\nLabel_reels 1\nTest_modem 2\nSort_cards 0\nA_very_long_task_title_with_many_words_joined_by_underscores_to_test_the_buffer 1\n",
+      "stdin": "14\nSalvare 0\nDeruleaza_banda 1\nUnge_ventilator 2\nPeticeste_nucleu 0\nSchimba_disc 1\nJurnal 2\nX 0\nVerifica_curent 1\nReporneste 2\nCurata_capete 0\nEticheteaza_role 1\nTesteaza_modem 2\nSorteaza_cartele 0\nUn_titlu_foarte_lung_de_sarcina_cu_multe_cuvinte_unite_prin_liniute_pt_buffer 1\n",
       "generated": true
     },
     {
-      "stdin": "8\nClean_heads48 1\nOil_fan24 2\nBackup44 2\nCheck_power78 0\nLog71 2\nTest_modem6 2\nX22 2\nCheck_power93 1\n",
+      "stdin": "8\nCurata_capete48 1\nUnge_ventilator24 2\nSalvare44 2\nVerifica_curent78 0\nJurnal71 2\nTesteaza_modem6 2\nX22 2\nVerifica_curent93 1\n",
       "generated": true
     },
     {
-      "stdin": "3\nOil_fan31 0\nRewind_tape17 2\nA_very_long_task_title_with_many_words_joined_by_underscores_to_test_the_buffer76 0\n",
+      "stdin": "3\nUnge_ventilator31 0\nDeruleaza_banda17 2\nUn_titlu_foarte_lung_de_sarcina_cu_multe_cuvinte_unite_prin_liniute_pt_buffer76 0\n",
       "generated": true
     },
     {
-      "stdin": "12\nX96 0\nSwap_disk27 2\nPatch_kernel93 1\nRewind_tape99 1\nPatch_kernel51 1\nLog6 0\nTest_modem1 1\nBackup49 1\nOil_fan4 0\nX95 0\nClean_heads1 0\nSort_cards75 0\n",
-      "generated": true
-    },
-    { "stdin": "4\nLog2 0\nOil_fan70 0\nReboot11 2\nCheck_power69 0\n", "generated": true },
-    {
-      "stdin": "7\nRewind_tape51 0\nLabel_reels98 0\nTest_modem75 0\nOil_fan78 2\nBackup7 1\nReboot88 2\nA_very_long_task_title_with_many_words_joined_by_underscores_to_test_the_buffer20 2\n",
+      "stdin": "12\nX96 0\nSchimba_disc27 2\nPeticeste_nucleu93 1\nDeruleaza_banda99 1\nPeticeste_nucleu51 1\nJurnal6 0\nTesteaza_modem1 1\nSalvare49 1\nUnge_ventilator4 0\nX95 0\nCurata_capete1 0\nSorteaza_cartele75 0\n",
       "generated": true
     },
     {
-      "stdin": "5\nTest_modem74 0\nRewind_tape91 1\nPatch_kernel21 2\nReboot6 2\nLog87 2\n",
+      "stdin": "4\nJurnal2 0\nUnge_ventilator70 0\nReporneste11 2\nVerifica_curent69 0\n",
       "generated": true
     },
     {
-      "stdin": "10\nClean_heads89 0\nA_very_long_task_title_with_many_words_joined_by_underscores_to_test_the_buffer45 0\nA_very_long_task_title_with_many_words_joined_by_underscores_to_test_the_buffer75 1\nCheck_power27 1\nPatch_kernel74 2\nBackup49 2\nLog1 1\nRewind_tape28 0\nCheck_power35 1\nA_very_long_task_title_with_many_words_joined_by_underscores_to_test_the_buffer12 1\n",
+      "stdin": "7\nDeruleaza_banda51 0\nEticheteaza_role98 0\nTesteaza_modem75 0\nUnge_ventilator78 2\nSalvare7 1\nReporneste88 2\nUn_titlu_foarte_lung_de_sarcina_cu_multe_cuvinte_unite_prin_liniute_pt_buffer20 2\n",
       "generated": true
     },
     {
-      "stdin": "11\nSwap_disk14 2\nSort_cards8 0\nX72 1\nCheck_power45 2\nSort_cards32 2\nTest_modem9 1\nLabel_reels30 0\nSort_cards52 2\nLog72 1\nOil_fan86 1\nOil_fan89 1\n",
-      "generated": true
-    },
-    { "stdin": "1\nBackup23 1\n", "generated": true },
-    { "stdin": "3\nRewind_tape78 0\nBackup7 0\nCheck_power27 1\n", "generated": true },
-    {
-      "stdin": "5\nClean_heads2 1\nSwap_disk19 1\nReboot36 0\nRewind_tape96 2\nSwap_disk90 0\n",
-      "generated": true
-    },
-    { "stdin": "2\nX58 0\nTest_modem72 1\n", "generated": true },
-    {
-      "stdin": "10\nSort_cards22 2\nTest_modem36 2\nClean_heads64 1\nRewind_tape7 1\nReboot17 0\nSort_cards81 0\nOil_fan29 0\nPatch_kernel23 1\nCheck_power76 2\nReboot50 0\n",
-      "generated": true
-    },
-    { "stdin": "3\nReboot62 2\nSwap_disk69 0\nLabel_reels4 2\n", "generated": true },
-    {
-      "stdin": "10\nX70 1\nReboot68 2\nLabel_reels9 2\nClean_heads70 1\nRewind_tape93 0\nTest_modem18 0\nRewind_tape90 1\nCheck_power8 1\nLabel_reels94 0\nLabel_reels78 0\n",
+      "stdin": "5\nTesteaza_modem74 0\nDeruleaza_banda91 1\nPeticeste_nucleu21 2\nReporneste6 2\nJurnal87 2\n",
       "generated": true
     },
     {
-      "stdin": "6\nPatch_kernel59 0\nLog94 2\nClean_heads64 0\nBackup80 2\nRewind_tape79 0\nLabel_reels53 1\n",
+      "stdin": "10\nCurata_capete89 0\nUn_titlu_foarte_lung_de_sarcina_cu_multe_cuvinte_unite_prin_liniute_pt_buffer45 0\nUn_titlu_foarte_lung_de_sarcina_cu_multe_cuvinte_unite_prin_liniute_pt_buffer75 1\nVerifica_curent27 1\nPeticeste_nucleu74 2\nSalvare49 2\nJurnal1 1\nDeruleaza_banda28 0\nVerifica_curent35 1\nUn_titlu_foarte_lung_de_sarcina_cu_multe_cuvinte_unite_prin_liniute_pt_buffer12 1\n",
       "generated": true
     },
     {
-      "stdin": "10\nRewind_tape11 0\nBackup78 0\nRewind_tape9 0\nLog80 1\nReboot69 1\nBackup91 0\nLog11 1\nBackup60 1\nClean_heads20 1\nCheck_power18 0\n",
+      "stdin": "11\nSchimba_disc14 2\nSorteaza_cartele8 0\nX72 1\nVerifica_curent45 2\nSorteaza_cartele32 2\nTesteaza_modem9 1\nEticheteaza_role30 0\nSorteaza_cartele52 2\nJurnal72 1\nUnge_ventilator86 1\nUnge_ventilator89 1\n",
+      "generated": true
+    },
+    { "stdin": "1\nSalvare23 1\n", "generated": true },
+    { "stdin": "3\nDeruleaza_banda78 0\nSalvare7 0\nVerifica_curent27 1\n", "generated": true },
+    {
+      "stdin": "5\nCurata_capete2 1\nSchimba_disc19 1\nReporneste36 0\nDeruleaza_banda96 2\nSchimba_disc90 0\n",
+      "generated": true
+    },
+    { "stdin": "2\nX58 0\nTesteaza_modem72 1\n", "generated": true },
+    {
+      "stdin": "10\nSorteaza_cartele22 2\nTesteaza_modem36 2\nCurata_capete64 1\nDeruleaza_banda7 1\nReporneste17 0\nSorteaza_cartele81 0\nUnge_ventilator29 0\nPeticeste_nucleu23 1\nVerifica_curent76 2\nReporneste50 0\n",
+      "generated": true
+    },
+    { "stdin": "3\nReporneste62 2\nSchimba_disc69 0\nEticheteaza_role4 2\n", "generated": true },
+    {
+      "stdin": "10\nX70 1\nReporneste68 2\nEticheteaza_role9 2\nCurata_capete70 1\nDeruleaza_banda93 0\nTesteaza_modem18 0\nDeruleaza_banda90 1\nVerifica_curent8 1\nEticheteaza_role94 0\nEticheteaza_role78 0\n",
       "generated": true
     },
     {
-      "stdin": "6\nLabel_reels30 1\nSort_cards17 0\nPatch_kernel14 0\nBackup16 0\nLabel_reels11 1\nRewind_tape95 0\n",
+      "stdin": "6\nPeticeste_nucleu59 0\nJurnal94 2\nCurata_capete64 0\nSalvare80 2\nDeruleaza_banda79 0\nEticheteaza_role53 1\n",
       "generated": true
     },
     {
-      "stdin": "8\nLabel_reels67 0\nLog82 0\nPatch_kernel1 1\nSort_cards67 2\nPatch_kernel2 1\nSwap_disk79 0\nRewind_tape67 1\nBackup33 1\n",
+      "stdin": "10\nDeruleaza_banda11 0\nSalvare78 0\nDeruleaza_banda9 0\nJurnal80 1\nReporneste69 1\nSalvare91 0\nJurnal11 1\nSalvare60 1\nCurata_capete20 1\nVerifica_curent18 0\n",
       "generated": true
     },
     {
-      "stdin": "6\nClean_heads29 2\nBackup88 1\nOil_fan39 0\nSort_cards24 1\nSort_cards52 0\nSwap_disk13 0\n",
+      "stdin": "6\nEticheteaza_role30 1\nSorteaza_cartele17 0\nPeticeste_nucleu14 0\nSalvare16 0\nEticheteaza_role11 1\nDeruleaza_banda95 0\n",
       "generated": true
     },
     {
-      "stdin": "6\nCheck_power32 1\nClean_heads42 1\nClean_heads45 1\nX27 0\nSwap_disk39 1\nCheck_power79 2\n",
+      "stdin": "8\nEticheteaza_role67 0\nJurnal82 0\nPeticeste_nucleu1 1\nSorteaza_cartele67 2\nPeticeste_nucleu2 1\nSchimba_disc79 0\nDeruleaza_banda67 1\nSalvare33 1\n",
       "generated": true
     },
     {
-      "stdin": "8\nCheck_power50 0\nLog52 0\nLog12 0\nLog70 0\nPatch_kernel28 2\nLog85 0\nLabel_reels11 1\nCheck_power78 2\n",
+      "stdin": "6\nCurata_capete29 2\nSalvare88 1\nUnge_ventilator39 0\nSorteaza_cartele24 1\nSorteaza_cartele52 0\nSchimba_disc13 0\n",
       "generated": true
     },
     {
-      "stdin": "11\nTest_modem50 0\nTest_modem70 1\nRewind_tape3 2\nReboot54 1\nPatch_kernel94 1\nSort_cards66 2\nRewind_tape60 2\nBackup37 2\nPatch_kernel10 0\nBackup41 0\nRewind_tape20 1\n",
+      "stdin": "6\nVerifica_curent32 1\nCurata_capete42 1\nCurata_capete45 1\nX27 0\nSchimba_disc39 1\nVerifica_curent79 2\n",
       "generated": true
     },
     {
-      "stdin": "3\nTest_modem13 2\nA_very_long_task_title_with_many_words_joined_by_underscores_to_test_the_buffer52 2\nA_very_long_task_title_with_many_words_joined_by_underscores_to_test_the_buffer51 1\n",
+      "stdin": "8\nVerifica_curent50 0\nJurnal52 0\nJurnal12 0\nJurnal70 0\nPeticeste_nucleu28 2\nJurnal85 0\nEticheteaza_role11 1\nVerifica_curent78 2\n",
       "generated": true
     },
     {
-      "stdin": "60\njob0 0\njob1 1\njob2 2\njob3 0\njob4 1\njob5 2\njob6 0\njob7 1\njob8 2\njob9 0\njob10 1\njob11 2\njob12 0\njob13 1\njob14 2\njob15 0\njob16 1\njob17 2\njob18 0\njob19 1\njob20 2\njob21 0\njob22 1\njob23 2\njob24 0\njob25 1\njob26 2\njob27 0\njob28 1\njob29 2\njob30 0\njob31 1\njob32 2\njob33 0\njob34 1\njob35 2\njob36 0\njob37 1\njob38 2\njob39 0\njob40 1\njob41 2\njob42 0\njob43 1\njob44 2\njob45 0\njob46 1\njob47 2\njob48 0\njob49 1\njob50 2\njob51 0\njob52 1\njob53 2\njob54 0\njob55 1\njob56 2\njob57 0\njob58 1\njob59 2\n",
+      "stdin": "11\nTesteaza_modem50 0\nTesteaza_modem70 1\nDeruleaza_banda3 2\nReporneste54 1\nPeticeste_nucleu94 1\nSorteaza_cartele66 2\nDeruleaza_banda60 2\nSalvare37 2\nPeticeste_nucleu10 0\nSalvare41 0\nDeruleaza_banda20 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\nTesteaza_modem13 2\nUn_titlu_foarte_lung_de_sarcina_cu_multe_cuvinte_unite_prin_liniute_pt_buffer52 2\nUn_titlu_foarte_lung_de_sarcina_cu_multe_cuvinte_unite_prin_liniute_pt_buffer51 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "60\nsarcina0 0\nsarcina1 1\nsarcina2 2\nsarcina3 0\nsarcina4 1\nsarcina5 2\nsarcina6 0\nsarcina7 1\nsarcina8 2\nsarcina9 0\nsarcina10 1\nsarcina11 2\nsarcina12 0\nsarcina13 1\nsarcina14 2\nsarcina15 0\nsarcina16 1\nsarcina17 2\nsarcina18 0\nsarcina19 1\nsarcina20 2\nsarcina21 0\nsarcina22 1\nsarcina23 2\nsarcina24 0\nsarcina25 1\nsarcina26 2\nsarcina27 0\nsarcina28 1\nsarcina29 2\nsarcina30 0\nsarcina31 1\nsarcina32 2\nsarcina33 0\nsarcina34 1\nsarcina35 2\nsarcina36 0\nsarcina37 1\nsarcina38 2\nsarcina39 0\nsarcina40 1\nsarcina41 2\nsarcina42 0\nsarcina43 1\nsarcina44 2\nsarcina45 0\nsarcina46 1\nsarcina47 2\nsarcina48 0\nsarcina49 1\nsarcina50 2\nsarcina51 0\nsarcina52 1\nsarcina53 2\nsarcina54 0\nsarcina55 1\nsarcina56 2\nsarcina57 0\nsarcina58 1\nsarcina59 2\n",
       "generated": true
     }
   ]

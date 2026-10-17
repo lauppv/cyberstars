@@ -3,16 +3,16 @@ Cunoști lanțurile de if-else. Funcționează grozav pentru 2-3 opțiuni. Dar c
 ```java
 public class Main {
     public static void main(String[] args) {
-        String arma = "shotgun";
+        String arma = "pusca";
 
         switch (arma) {
             case "pistol":
                 System.out.println("De baza dar de incredere");
                 break;
-            case "shotgun":
+            case "pusca":
                 System.out.println("Devastator la distanta apropiata");
                 break;
-            case "rocket":
+            case "racheta":
                 System.out.println("Exagerare totala");
                 break;
             default:
@@ -29,7 +29,7 @@ Ieșire
 Devastator la distanta apropiata
 ```
 
-**switch** verifică valoarea lui `arma` și sare la **case**-ul care se potrivește. Când găsește `"shotgun"`, rulează acel bloc, apoi **break** îi spune să se oprească și să iasă din switch
+**switch** verifică valoarea lui `arma` și sare la **case**-ul care se potrivește. Când găsește `"pusca"`, rulează acel bloc, apoi **break** îi spune să se oprească și să iasă din switch
 
 ---
 

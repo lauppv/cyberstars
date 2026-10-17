@@ -48,7 +48,10 @@
       },
       "generated": true
     },
-    { "inject": { "sisteme": { "$list": [{ "$list": ["Big", 99999, 50] }] } }, "generated": true },
+    {
+      "inject": { "sisteme": { "$list": [{ "$list": ["Urias", 99999, 50] }] } },
+      "generated": true
+    },
     {
       "inject": {
         "sisteme": {

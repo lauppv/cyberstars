@@ -66,7 +66,7 @@ discounted = [price * 0.9 for price in prices if price > 20]
 print(discounted)
 ```
 
-Output **[22.5, 36.0, 13.5, 27.0]**. We took only prices above 20, then applied a 10% discount
+Output **[22.5, 36.0, 27.0]**. We took only prices above 20, then applied a 10% discount
 
 ---
 

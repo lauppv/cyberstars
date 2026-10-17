@@ -3,8 +3,8 @@
 #include <string.h>
 #include <pthread.h>
 
-int hist[26] = {0};
-pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+int histograma[26] = {0};
+pthread_mutex_t lacat = PTHREAD_MUTEX_INITIALIZER;
 
 typedef struct {
     char *sir;
@@ -15,11 +15,11 @@ typedef struct {
 void *acumuleaza(void *arg) {
     Interval *it = (Interval *)arg;
     for (int i = it->inceput; i < it->sfarsit; i++) {
-        int idx = it->sir[i] - 'a';
+        int poz = it->sir[i] - 'a';
         // Protejam incrementarea: doua fire pot atinge acelasi slot in acelasi moment.
-        pthread_mutex_lock(&lock);
-        hist[idx]++;
-        pthread_mutex_unlock(&lock);
+        pthread_mutex_lock(&lacat);
+        histograma[poz]++;
+        pthread_mutex_unlock(&lacat);
     }
     return NULL;
 }
@@ -41,8 +41,8 @@ int main(void) {
 
     // Afisam in ordine alfabetica doar literele care apar.
     for (int i = 0; i < 26; i++) {
-        if (hist[i] > 0) {
-            printf("%c: %d\n", 'a' + i, hist[i]);
+        if (histograma[i] > 0) {
+            printf("%c: %d\n", 'a' + i, histograma[i]);
         }
     }
     return 0;

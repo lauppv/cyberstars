@@ -44,14 +44,14 @@ Rezultatul **ymmoT**
 Dar inversarea **cuvintelor** dintr-o propoziție, nu a caracterelor individuale?
 
 ```py
-propozitie = "I love Vice City"
+propozitie = "Imi place Vice City"
 cuvinte = propozitie.split(" ")
 cuvinte_inversate = cuvinte[::-1]
 rezultat = " ".join(cuvinte_inversate)
 print(rezultat)
 ```
 
-Rezultatul **City Vice love I**
+Rezultatul **City Vice place Imi**
 
 **.join()** este opusul lui **.split()**. **" ".join(["a", "b", "c"])** ne dă **"a b c"**. Am despărțit după spațiu, am inversat lista și am lipit-o înapoi cu spații
 
@@ -76,12 +76,12 @@ Tocmai a sosit o transmisiune bruiată. Echipajul bănuiește că a fost trimis�
 Dacă utilizatorul tastează
 
 ```text
-navigation system online
+sistemul de navigatie pornit
 ```
 
 programul ar trebui să afișeze
 
 ```text
-Inversat: enilno metsys noitagivan
-Ordine cuvinte: online system navigation
+Inversat: tinrop eitagivan ed lumetsis
+Ordine cuvinte: pornit navigatie de sistemul
 ```

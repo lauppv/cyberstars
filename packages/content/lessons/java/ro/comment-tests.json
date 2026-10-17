@@ -13,32 +13,32 @@
       "visible": true,
       "inject": {
         "numeNava": "Voyager",
-        "numeMisiune": "Deep Space Exploration",
-        "incarcaturaSecreta": "TopSecret-Alpha-7",
+        "numeMisiune": "Explorarea spatiului adanc",
+        "incarcaturaSecreta": "StrictSecret-Alfa-7",
         "putereMax": 9001
       }
     },
     {
       "inject": {
         "numeNava": "Nebula",
-        "numeMisiune": "Asteroid Survey",
-        "incarcaturaSecreta": "Crate-X-99",
+        "numeMisiune": "Cartografiere asteroizi",
+        "incarcaturaSecreta": "Lada-X-99",
         "putereMax": 450
       }
     },
     {
       "inject": {
         "numeNava": "Aurora",
-        "numeMisiune": "Rescue Run",
-        "incarcaturaSecreta": "Omega-Files",
+        "numeMisiune": "Misiune de salvare",
+        "incarcaturaSecreta": "Dosarele-Omega",
         "putereMax": 0
       }
     },
     {
       "inject": {
         "numeNava": "Star Hopper",
-        "numeMisiune": "Supply Loop",
-        "incarcaturaSecreta": "Blue-Box-3",
+        "numeMisiune": "Tura de aprovizionare",
+        "incarcaturaSecreta": "Cutia-Albastra-3",
         "putereMax": 12000
       }
     },
@@ -58,8 +58,8 @@
     {
       "inject": {
         "numeNava": "Endurance",
-        "numeMisiune": "Deep Space Exploration",
-        "incarcaturaSecreta": "TopSecret-Alpha-7",
+        "numeMisiune": "Explorarea spatiului adanc",
+        "incarcaturaSecreta": "StrictSecret-Alfa-7",
         "putereMax": 9002
       },
       "generated": true
@@ -68,7 +68,7 @@
       "inject": {
         "numeNava": "Millennium Hawk",
         "numeMisiune": "Kessel Sprint",
-        "incarcaturaSecreta": "Spice Crates x 12",
+        "incarcaturaSecreta": "Lazi cu condimente x 12",
         "putereMax": 75
       },
       "generated": true
@@ -76,8 +76,8 @@
     {
       "inject": {
         "numeNava": "Ark",
-        "numeMisiune": "Seed Vault Transfer",
-        "incarcaturaSecreta": "Seeds",
+        "numeMisiune": "Transferul bancii de seminte",
+        "incarcaturaSecreta": "Seminte",
         "putereMax": 100000
       },
       "generated": true
@@ -85,8 +85,8 @@
     {
       "inject": {
         "numeNava": "Odyssey",
-        "numeMisiune": "First Contact",
-        "incarcaturaSecreta": "Alien Artifact #4",
+        "numeMisiune": "Primul contact",
+        "incarcaturaSecreta": "Artefact extraterestru #4",
         "putereMax": 3
       },
       "generated": true

@@ -68,9 +68,9 @@ Verifică primul caracter. Dacă se potrivește, numără 1. Apoi numără recur
 **Aplatizează o listă imbricată**. Aici strălucește cu adevărat recursivitatea: când datele sunt **imbricate** și nu știm cât de adânc
 
 ```py
-def aplatizeaza(lst):
+def aplatizeaza(lista):
     rezultat = []
-    for element in lst:
+    for element in lista:
         if type(element) == list:
             rezultat = rezultat + aplatizeaza(element)
         else:

@@ -4,19 +4,19 @@
     "requires": [{ "kind": "call", "name": "pthread_create" }]
   },
   "cases": [
-    { "visible": true, "stdin": "hello world\nthe code is clean\n" },
-    { "visible": true, "stdin": "one two three four\nfive six\n" },
-    { "stdin": "single\nword\n" },
-    { "stdin": "the quick brown\nfox jumps over\n" },
+    { "visible": true, "stdin": "salut lume\ncodul e curat\n" },
+    { "visible": true, "stdin": "unu doi trei patru\ncinci sase\n" },
+    { "stdin": "singur\ncuvant\n" },
+    { "stdin": "vulpea bruna sare\npeste cainele lenes\n" },
     { "stdin": "a\nb\n", "generated": true },
     { "stdin": "a\na b c d e f\n", "generated": true },
     {
       "stdin": "x\nyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n",
       "generated": true
     },
-    { "stdin": "  leading spaces\ntrailing spaces   \n", "generated": true },
-    { "stdin": "many     spaces   between\none\n", "generated": true },
-    { "stdin": "   padded   \n  a  b  \n", "generated": true },
+    { "stdin": "  spatii initiale\nspatii finale   \n", "generated": true },
+    { "stdin": "multe     spatii   intre\nunu\n", "generated": true },
+    { "stdin": "   umplut   \n  a  b  \n", "generated": true },
     {
       "stdin": "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a\nb b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b\n",
       "generated": true
@@ -25,10 +25,10 @@
       "stdin": "a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a\nz\n",
       "generated": true
     },
-    { "stdin": "hello, world!\nC is fun; threads are too.\n", "generated": true },
-    { "stdin": "one-word-with-dashes\nx = y + z ;\n", "generated": true },
+    { "stdin": "salut, lume!\nC e distractiv; firele la fel.\n", "generated": true },
+    { "stdin": "un-cuvant-cu-liniute\nx = y + z ;\n", "generated": true },
     { "stdin": "42 7 3.14 -1\n! ? . ,\n", "generated": true },
-    { "stdin": "word\n                                   word\n", "generated": true },
+    { "stdin": "cuvant\n                                   cuvant\n", "generated": true },
     {
       "stdin": "Cvoz   Aop ?janAc bA.00hv10   5yj,!Az3 i!ed5wByvcBo c 05b,v .ji3dcwgCu q3 wBr4 t6A?d0 5v  c9t 2 prp  h  rmwu1,\nli g8vb?w!7  p2?6f!c  858 A649wum\n",
       "generated": true
@@ -69,12 +69,12 @@
       "stdin": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab cd\n x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x\n",
       "generated": true
     },
-    { "stdin": "the quick brown fox\njumps over the lazy dog\n", "generated": true },
-    { "stdin": "mutex\nlock unlock\n", "generated": true },
-    { "stdin": "Total words\nshould be four\n", "generated": true },
-    { "stdin": "I\nam\n", "generated": true },
+    { "stdin": "vulpea bruna sare repede\npeste cainele lenes din curte\n", "generated": true },
+    { "stdin": "mutex\nblocheaza deblocheaza\n", "generated": true },
+    { "stdin": "Total cuvinte\nar fi patru\n", "generated": true },
+    { "stdin": "Eu\nsunt\n", "generated": true },
     { "stdin": "a b\nc\n", "generated": true },
-    { "stdin": "end.\n start\n", "generated": true },
+    { "stdin": "sfarsit.\n start\n", "generated": true },
     {
       "stdin": "x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x\ntab-free text with single spaces only and nothing else here\n",
       "generated": true

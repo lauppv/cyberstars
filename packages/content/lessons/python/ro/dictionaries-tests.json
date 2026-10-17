@@ -19,7 +19,7 @@
     },
     { "inject": { "nume": "Zed", "rol": "Medic", "varsta": 0, "statie": "Baza" } },
     { "inject": { "nume": "Kai", "rol": "Capitan", "varsta": 99, "statie": "Adanc" } },
-    { "inject": { "nume": "Mo", "rol": "Bucatar", "varsta": 17, "statie": "Hub" } },
+    { "inject": { "nume": "Mo", "rol": "Bucatar", "varsta": 17, "statie": "Nod" } },
     {
       "inject": { "nume": "Rex", "rol": "Botanist", "varsta": 1, "statie": "Orion" },
       "generated": true
@@ -29,11 +29,11 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Ana", "rol": "Scientist", "varsta": 19, "statie": "Deep" },
+      "inject": { "nume": "Ana", "rol": "Cercetator", "varsta": 19, "statie": "Adanc" },
       "generated": true
     },
     {
-      "inject": { "nume": "Mira", "rol": "Engineer", "varsta": 20, "statie": "Deep" },
+      "inject": { "nume": "Mira", "rol": "Inginer", "varsta": 20, "statie": "Adanc" },
       "generated": true
     },
     {
@@ -41,7 +41,7 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Vlad", "rol": "Cook", "varsta": 30, "statie": "Deep" },
+      "inject": { "nume": "Vlad", "rol": "Bucatar", "varsta": 30, "statie": "Adanc" },
       "generated": true
     },
     {
@@ -49,11 +49,11 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Ioana", "rol": "Engineer", "varsta": 40, "statie": "Europa" },
+      "inject": { "nume": "Ioana", "rol": "Inginer", "varsta": 40, "statie": "Europa" },
       "generated": true
     },
     {
-      "inject": { "nume": "Elena", "rol": "Scientist", "varsta": 41, "statie": "Titan" },
+      "inject": { "nume": "Elena", "rol": "Cercetator", "varsta": 41, "statie": "Titan" },
       "generated": true
     },
     {
@@ -65,11 +65,11 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Mary-Jane", "rol": "Commander", "varsta": 55, "statie": "ISS" },
+      "inject": { "nume": "Mary-Jane", "rol": "Comandant", "varsta": 55, "statie": "ISS" },
       "generated": true
     },
     {
-      "inject": { "nume": "Diaz", "rol": "Commander", "varsta": 60, "statie": "Titan" },
+      "inject": { "nume": "Diaz", "rol": "Comandant", "varsta": 60, "statie": "Titan" },
       "generated": true
     },
     {
@@ -77,15 +77,15 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Rex", "rol": "Commander", "varsta": 70, "statie": "Mars Gate" },
+      "inject": { "nume": "Rex", "rol": "Comandant", "varsta": 70, "statie": "Poarta Marte" },
       "generated": true
     },
     {
-      "inject": { "nume": "Bob", "rol": "Botanist", "varsta": 80, "statie": "Hub" },
+      "inject": { "nume": "Bob", "rol": "Botanist", "varsta": 80, "statie": "Nod" },
       "generated": true
     },
     {
-      "inject": { "nume": "Ana", "rol": "Scientist", "varsta": 98, "statie": "Mars Gate" },
+      "inject": { "nume": "Ana", "rol": "Cercetator", "varsta": 98, "statie": "Poarta Marte" },
       "generated": true
     },
     {
@@ -93,11 +93,11 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Vlad", "rol": "Pilot", "varsta": 22, "statie": "Hub" },
+      "inject": { "nume": "Vlad", "rol": "Pilot", "varsta": 22, "statie": "Nod" },
       "generated": true
     },
     {
-      "inject": { "nume": "Vlad", "rol": "Navigator", "varsta": 45, "statie": "Hub" },
+      "inject": { "nume": "Vlad", "rol": "Navigator", "varsta": 45, "statie": "Nod" },
       "generated": true
     },
     {
@@ -109,15 +109,15 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Vlad", "rol": "Captain", "varsta": 58, "statie": "Deep" },
+      "inject": { "nume": "Vlad", "rol": "Capitan", "varsta": 58, "statie": "Adanc" },
       "generated": true
     },
     {
-      "inject": { "nume": "Cara", "rol": "Captain", "varsta": 75, "statie": "Luna-1" },
+      "inject": { "nume": "Cara", "rol": "Capitan", "varsta": 75, "statie": "Luna-1" },
       "generated": true
     },
     {
-      "inject": { "nume": "Nova", "rol": "Pilot", "varsta": 12, "statie": "Deep" },
+      "inject": { "nume": "Nova", "rol": "Pilot", "varsta": 12, "statie": "Adanc" },
       "generated": true
     }
   ]

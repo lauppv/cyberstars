@@ -3,10 +3,10 @@ public class Main {
     public static String[] filtreaza(String[] semnale) {
         int valide = 0;
         for (int i = 0; i < semnale.length; i++) {
-            if (semnale[i].equals("out")) {
+            if (semnale[i].equals("gata")) {
                 break;
             }
-            if (semnale[i].equals("static")) {
+            if (semnale[i].equals("parazit")) {
                 continue;
             }
             valide++;
@@ -15,10 +15,10 @@ public class Main {
         String[] rezultat = new String[valide];
         int pozitie = 0;
         for (int i = 0; i < semnale.length; i++) {
-            if (semnale[i].equals("out")) {
+            if (semnale[i].equals("gata")) {
                 break;
             }
-            if (semnale[i].equals("static")) {
+            if (semnale[i].equals("parazit")) {
                 continue;
             }
             rezultat[pozitie] = semnale[i].toUpperCase();
@@ -28,7 +28,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String[] semnale = { "tommy", "static", "lance", "static", "cortez", "static", "diaz", "out", "mercedes" };
+        String[] semnale = { "tommy", "parazit", "lance", "parazit", "cortez", "parazit", "diaz", "gata", "mercedes" };
 
         String[] curatate = filtreaza(semnale);
         for (String s : curatate) {

@@ -46,7 +46,7 @@ Rezultat **Litere majuscule: 2** (T și V)
 Putem număra mai multe lucruri deodată
 
 ```py
-text = "Hello World 123"
+text = "Salut Lume 123"
 litere = 0
 cifre = 0
 spatii = 0
@@ -62,7 +62,7 @@ for caracter in text:
 print(f"Litere: {litere}, Cifre: {cifre}, Spatii: {spatii}")
 ```
 
-Rezultat **Litere: 10, Cifre: 3, Spații: 2**
+Rezultat **Litere: 9, Cifre: 3, Spații: 2**
 
 ---
 

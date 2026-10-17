@@ -72,7 +72,7 @@
         "nume2": "Comet",
         "valoare2": 175000,
         "viteza2": 245,
-        "nume3": "Ice Cream Factory",
+        "nume3": "Fabrica de inghetata",
         "valoare3": 55000,
         "nume4": "Hotring Racer",
         "valoare4": 300000,
@@ -116,7 +116,7 @@
         "nume2": "Hunter",
         "valoare2": 2000000,
         "viteza2": 300,
-        "nume3": "Film Studio",
+        "nume3": "Studio de film",
         "valoare3": 450000,
         "nume4": "Sparrow",
         "valoare4": 800000,
@@ -126,12 +126,12 @@
     },
     {
       "inject": {
-        "nume1": "Ice Cream Factory",
+        "nume1": "Fabrica de inghetata",
         "valoare1": 1,
         "nume2": "Faggio",
         "valoare2": 2,
         "viteza2": 60,
-        "nume3": "Taxi Firm",
+        "nume3": "Firma de taxi",
         "valoare3": 3,
         "nume4": "Caddy",
         "valoare4": 4,
@@ -156,7 +156,7 @@
     },
     {
       "inject": {
-        "nume1": "Car Showroom",
+        "nume1": "Salon auto",
         "valoare1": 50000,
         "nume2": "Stinger",
         "valoare2": 130000,
@@ -248,12 +248,12 @@
       "inject": {
         "nume1": "Club",
         "valoare1": 123456,
-        "nume2": "Car",
+        "nume2": "Masina",
         "valoare2": 654321,
         "viteza2": 199,
-        "nume3": "Shop",
+        "nume3": "Magazin",
         "valoare3": 111111,
-        "nume4": "Bike",
+        "nume4": "Moto",
         "valoare4": 222222,
         "viteza4": 201
       },
@@ -276,7 +276,7 @@
     },
     {
       "inject": {
-        "nume1": "Junkyard",
+        "nume1": "Fier vechi",
         "valoare1": 15000,
         "nume2": "Bloodring Banger",
         "valoare2": 26000,
@@ -296,7 +296,7 @@
         "nume2": "Infernus",
         "valoare2": 2147483,
         "viteza2": 999,
-        "nume3": "Works",
+        "nume3": "Atelier",
         "valoare3": 7,
         "nume4": "Cheetah",
         "valoare4": 8,

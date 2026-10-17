@@ -6,7 +6,7 @@
 sem_t gata;
 int suma = 0;
 
-void *worker(void *arg) {
+void *lucrator(void *arg) {
     for (int i = 1; i <= 10; i++) {
         suma += i;
     }
@@ -16,11 +16,11 @@ void *worker(void *arg) {
 }
 
 int main(void) {
-    // Init cu 0: sem_wait blocheaza pana cand worker face sem_post.
+    // Init cu 0: sem_wait blocheaza pana cand lucrator face sem_post.
     sem_init(&gata, 0, 0);
 
     pthread_t t;
-    pthread_create(&t, NULL, worker, NULL);
+    pthread_create(&t, NULL, lucrator, NULL);
 
     sem_wait(&gata);
     printf("Suma: %d\n", suma);

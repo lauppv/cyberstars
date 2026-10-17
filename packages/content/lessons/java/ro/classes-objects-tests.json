@@ -25,7 +25,7 @@
     },
     { "inject": { "nume1": "K", "varsta1": 15, "nume2": "Z", "varsta2": 1 }, "generated": true },
     {
-      "inject": { "nume1": "Sir Barks A Lot", "varsta1": 11, "nume2": "Lady", "varsta2": 6 },
+      "inject": { "nume1": "Domnul Latra-Mult", "varsta1": 11, "nume2": "Lady", "varsta2": 6 },
       "generated": true
     },
     {

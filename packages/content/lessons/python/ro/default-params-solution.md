@@ -1,6 +1,6 @@
 ```py
-def andocheaza(nava, bay="A1", prioritate="normal"):
-    print(f"{nava} andocat la {bay} ({prioritate})")
+def andocheaza(nava, doc="A1", prioritate="normal"):
+    print(f"{nava} andocat la {doc} ({prioritate})")
 
 nava1 = "Voyager"
 nava2 = "Odyssey"

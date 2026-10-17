@@ -78,13 +78,13 @@ Soluția: un **mutex** (mutual exclusion lock). Doar un singur thread poate țin
 #include <pthread.h>
 
 int contor = 0;
-pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t lacat = PTHREAD_MUTEX_INITIALIZER;
 
 void *incrementeaza(void *arg) {
     for (int i = 0; i < 100000; i++) {
-        pthread_mutex_lock(&lock);
+        pthread_mutex_lock(&lacat);
         contor++;
-        pthread_mutex_unlock(&lock);
+        pthread_mutex_unlock(&lacat);
     }
     return NULL;
 }

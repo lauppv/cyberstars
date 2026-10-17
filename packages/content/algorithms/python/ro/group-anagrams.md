@@ -1,4 +1,4 @@
-Având o listă de cuvinte, grupează împreună toate **anagramele**. Două cuvinte sunt anagrame dacă conțin aceleași litere într-o ordine diferită (de exemplu, "listen" și "silent").
+Având o listă de cuvinte, grupează împreună toate **anagramele**. Două cuvinte sunt anagrame dacă conțin aceleași litere într-o ordine diferită (de exemplu, "roma" și "amor").
 
 Afișează fiecare grup pe o linie separată, cu cuvintele sortate alfabetic în cadrul grupului. Sortează grupurile după primul lor cuvânt (alfabetic).
 

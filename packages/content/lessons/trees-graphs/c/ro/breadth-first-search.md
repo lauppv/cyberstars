@@ -14,7 +14,7 @@ Inelul în care e un nod este **distanța** lui de la start: cele mai puține mu
 
 Parcurgerea din arbori mai are nevoie de un lucru ca să meargă pe un graf. Un arbore nu are cicluri, așa că fiecare nod e atins o singură dată. Într-un graf, **3** e vecin și cu **1**, și cu **2**, iar **0** e vecin cu **1**, propriul lui vecin. Pune fiecare vecin în coadă și parcurgerea vizitează nodurile iar și iar, iar într-un ciclu nu se mai oprește
 
-Așa că ține un array **dist**, câte un număr pentru fiecare nod, toate **-1** la început, adică „încă nevăzut”. Când un nod e văzut prima dată, scrie acolo distanța lui și pune-l în coadă. Un nod a cărui distanță nu mai e **-1** nu mai intră niciodată în coadă
+Așa că ține un array **distanta**, câte un număr pentru fiecare nod, toate **-1** la început, adică „încă nevăzut”. Când un nod e văzut prima dată, scrie acolo distanța lui și pune-l în coadă. Un nod a cărui distanță nu mai e **-1** nu mai intră niciodată în coadă
 
 ---
 
@@ -51,11 +51,11 @@ int main(void) {
     }
 
     int start = 0;
-    int dist[8];
+    int distanta[8];
     for (int v = 0; v < n; v++) {
-        dist[v] = -1;
+        distanta[v] = -1;
     }
-    dist[start] = 0;
+    distanta[start] = 0;
     int coada[8];
     int inceput = 0;
     int sfarsit = 0;
@@ -64,11 +64,11 @@ int main(void) {
     while (inceput < sfarsit) {
         int u = coada[inceput];
         inceput++;
-        printf("vizitez %d la distanta %d\n", u, dist[u]);
+        printf("vizitez %d la distanta %d\n", u, distanta[u]);
         for (int i = 0; i < numar[u]; i++) {
             int v = vecini[u][i];
-            if (dist[v] == -1) {
-                dist[v] = dist[u] + 1;
+            if (distanta[v] == -1) {
+                distanta[v] = distanta[u] + 1;
                 coada[sfarsit] = v;
                 sfarsit++;
             }
@@ -106,7 +106,7 @@ Iar distanța e corectă de prima dată când e scrisă. Fiecare nod dintr-un in
 
 ---
 
-Cei mai puțini pași de la start până la orice nod **t** sunt acum **dist[t]**. Un nod la care parcurgerea n-a ajuns niciodată își păstrează **-1**: nu există niciun drum până la el, lucru care se poate întâmpla când graful vine în bucăți separate
+Cei mai puțini pași de la start până la orice nod **t** sunt acum **distanta[t]**. Un nod la care parcurgerea n-a ajuns niciodată își păstrează **-1**: nu există niciun drum până la el, lucru care se poate întâmpla când graful vine în bucăți separate
 
 ```visual
 {"use": "bfs-pieces"}
@@ -139,10 +139,10 @@ int main(void) {
         scanf("%s", grila[r]);
     }
 
-    int dist[10][10];
+    int distanta[10][10];
     for (int r = 0; r < randuri; r++) {
         for (int c = 0; c < coloane; c++) {
-            dist[r][c] = -1;
+            distanta[r][c] = -1;
         }
     }
     int dr[4] = {-1, 1, 0, 0};
@@ -150,7 +150,7 @@ int main(void) {
     int coada[100];
     int inceput = 0;
     int sfarsit = 0;
-    dist[0][0] = 0;
+    distanta[0][0] = 0;
     coada[sfarsit] = 0;
     sfarsit++;
     while (inceput < sfarsit) {
@@ -161,8 +161,8 @@ int main(void) {
             int nr = r + dr[k];
             int nc = c + dc[k];
             if (nr >= 0 && nr < randuri && nc >= 0 && nc < coloane) {
-                if (grila[nr][nc] == '.' && dist[nr][nc] == -1) {
-                    dist[nr][nc] = dist[r][c] + 1;
+                if (grila[nr][nc] == '.' && distanta[nr][nc] == -1) {
+                    distanta[nr][nc] = distanta[r][c] + 1;
                     coada[sfarsit] = nr * coloane + nc;
                     sfarsit++;
                 }
@@ -175,12 +175,12 @@ int main(void) {
             if (grila[r][c] == '#') {
                 printf(" #");
             } else {
-                printf("%2d", dist[r][c]);
+                printf("%2d", distanta[r][c]);
             }
         }
         printf("\n");
     }
-    printf("pasi pana la iesire: %d\n", dist[randuri - 1][coloane - 1]);
+    printf("pasi pana la iesire: %d\n", distanta[randuri - 1][coloane - 1]);
     return 0;
 }
 ```

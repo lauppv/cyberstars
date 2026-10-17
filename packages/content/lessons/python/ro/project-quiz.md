@@ -98,12 +98,12 @@ Echipajul nou trebuie să treacă un quiz de certificare. Întrebările (o list�
 1. Scrie o funcție **noteaza_test(intrebari, raspunsuri)** care returnează câte dintre răspunsurile candidatului se potrivesc cu câmpul `"raspuns"` al întrebării corespunzătoare.
 2. Afișează `Scor: ` urmat de numărul de răspunsuri corecte, un `/`, și numărul total de întrebări.
 3. Afișează `Procentaj: ` urmat de scor ca procentaj cu număr întreg (folosește `round(scor / total * 100)`), apoi un `%`.
-4. Afișează `PASS` dacă procentajul este `50` sau mai mare, altfel `FAIL`.
+4. Afișează `ADMIS` dacă procentajul este `50` sau mai mare, altfel `RESPINS`.
 
 **Ieșire**
 
 ```text
 Scor: 3/4
 Procentaj: 75%
-PASS
+ADMIS
 ```
