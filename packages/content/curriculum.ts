@@ -1196,6 +1196,48 @@ export const lessons = [
     sortOrder: 6,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'graphs',
+    title: 'Graphs and How to Store Them',
+    sortOrder: 7,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'breadth-first-search',
+    title: 'Breadth-First Search',
+    sortOrder: 8,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'depth-first-search',
+    title: 'Depth-First Search',
+    sortOrder: 9,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'topological-order',
+    title: 'Topological Order',
+    sortOrder: 10,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'shortest-paths',
+    title: 'Shortest Paths with Weights',
+    sortOrder: 11,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'recap-graphs',
+    title: 'Recap: Graphs',
+    sortOrder: 12,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',
