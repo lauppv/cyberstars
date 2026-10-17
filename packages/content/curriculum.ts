@@ -1809,4 +1809,11 @@ export const lessons = [
     sortOrder: 8,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'path-exists',
+    title: 'Easy · Is There a Path',
+    sortOrder: 9,
+    hasCodeFile: true,
+  },
 ];
