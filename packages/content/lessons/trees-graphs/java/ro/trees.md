@@ -4,12 +4,8 @@ Listele țin lucrurile în șir: un prim element, un al doilea, un al treilea. M
 
 Iată un arbore mic de numere
 
-```text
-        8
-       / \
-      3   10
-     / \    \
-    1   6    14
+```visual
+{"use": "trees-terms"}
 ```
 
 Fiecare număr este un **nod**, iar fiecare linie dintre două noduri este o **muchie**. În programare arborii cresc cu capul în jos: încep de sus
@@ -74,56 +70,16 @@ null
 
 Singur, un nod nou este o valoare cu doi copii goi
 
-```text
-      8
-     / \
-  null null
+```visual
+{"use": "trees-new-node"}
 ```
 
 ---
 
 Un copil e doar un alt nod, pus în **stanga** sau în **dreapta**. Iată cum crește arborele de la începutul lecției, câte o linie de cod
 
-```text
-Nod radacina = new Nod(8);
-
-        8
-
-radacina.stanga = new Nod(3);
-
-        8
-       /
-      3
-
-radacina.dreapta = new Nod(10);
-
-        8
-       / \
-      3   10
-
-radacina.stanga.stanga = new Nod(1);
-
-        8
-       / \
-      3   10
-     /
-    1
-
-radacina.stanga.dreapta = new Nod(6);
-
-        8
-       / \
-      3   10
-     / \
-    1   6
-
-radacina.dreapta.dreapta = new Nod(14);
-
-        8
-       / \
-      3   10
-     / \    \
-    1   6    14
+```visual
+{"use": "trees-grow"}
 ```
 
 Toate la un loc, cu trei dintre noduri citite înapoi
@@ -167,26 +123,18 @@ Citește **radacina.stanga.dreapta** câte un pas: pornești de la rădăcină, 
 
 Adică drumul acesta prin arbore
 
-```text
-        8          radacina
-       /
-      3            radacina.stanga
-       \
-        6          radacina.stanga.dreapta
+```visual
+{"use": "trees-path"}
 ```
 
 ---
 
 O frunză este un nod ai cărui doi copii sunt amândoi **null**
 
-În arborele de la început, frunzele sunt cele trei noduri din paranteze
+În arborele de la început, frunzele sunt 1, 6 și 14
 
-```text
-        8
-       / \
-      3   10
-     / \    \
-   (1) (6)  (14)
+```visual
+{"use": "trees-leaves"}
 ```
 
 ```java

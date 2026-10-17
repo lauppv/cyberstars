@@ -4,12 +4,8 @@ Lists keep things in a line: a first item, a second, a third. A lot of what you 
 
 Here is a small tree of numbers
 
-```text
-        8
-       / \
-      3   10
-     / \    \
-    1   6    14
+```visual
+{"use": "trees-terms"}
 ```
 
 Every number is a **node**, and every line between two nodes is an **edge**. Trees in programming grow upside down: they start at the top
@@ -83,56 +79,16 @@ no left child
 
 On its own, a new node is a value with two empty children
 
-```text
-      8
-     / \
-  NULL NULL
+```visual
+{"use": "trees-new-node"}
 ```
 
 ---
 
 A child is just another node, whose address goes in **left** or **right**. Here is the tree from the start of the lesson growing, one line at a time
 
-```text
-struct Node *root = new_node(8);
-
-        8
-
-root->left = new_node(3);
-
-        8
-       /
-      3
-
-root->right = new_node(10);
-
-        8
-       / \
-      3   10
-
-root->left->left = new_node(1);
-
-        8
-       / \
-      3   10
-     /
-    1
-
-root->left->right = new_node(6);
-
-        8
-       / \
-      3   10
-     / \
-    1   6
-
-root->right->right = new_node(14);
-
-        8
-       / \
-      3   10
-     / \    \
-    1   6    14
+```visual
+{"use": "trees-grow"}
 ```
 
 All of it together, with three of the nodes read back
@@ -189,12 +145,8 @@ Output
 
 That is this path down the tree
 
-```text
-        8          root
-       /
-      3            root->left
-       \
-        6          root->left->right
+```visual
+{"use": "trees-path"}
 ```
 
 Every **malloc** gets its **free**, the children before their parent: once a parent is freed, its pointers to them can't be read any more
@@ -203,14 +155,10 @@ Every **malloc** gets its **free**, the children before their parent: once a par
 
 A leaf is a node whose two children are both **NULL**
 
-In the tree from the start, the leaves are the three nodes in brackets
+In the tree from the start, the leaves are 1, 6 and 14
 
-```text
-        8
-       / \
-      3   10
-     / \    \
-   (1) (6)  (14)
+```visual
+{"use": "trees-leaves"}
 ```
 
 ```c

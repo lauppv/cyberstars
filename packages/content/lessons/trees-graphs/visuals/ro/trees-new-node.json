@@ -1,0 +1,38 @@
+{
+  "type": "tree",
+  "caption": "Un nod ține trei lucruri: valoarea lui, copilul stâng și copilul drept.",
+  "null": {
+    "python": "None",
+    "java": "null",
+    "c": "NULL"
+  },
+  "nodes": {},
+  "steps": [
+    {
+      "add": {
+        "0": 8
+      },
+      "focus": [0],
+      "code": {
+        "python": "radacina = Nod(8)",
+        "java": "Nod radacina = new Nod(8);",
+        "c": "struct Nod *radacina = nod_nou(8);"
+      },
+      "caption": "Un nod nou care ține 8"
+    },
+    {
+      "focus": [0],
+      "nulls": [0],
+      "code": {
+        "python": "radacina = Nod(8)",
+        "java": "Nod radacina = new Nod(8);",
+        "c": "struct Nod *radacina = nod_nou(8);"
+      },
+      "caption": {
+        "python": "Copilul stâng și cel drept sunt None: încă niciun copil",
+        "java": "Copilul stâng și cel drept sunt null: încă niciun copil",
+        "c": "Copilul stâng și cel drept sunt NULL: încă niciun copil"
+      }
+    }
+  ]
+}

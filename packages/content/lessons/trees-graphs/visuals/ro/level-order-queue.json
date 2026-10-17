@@ -1,0 +1,117 @@
+{
+  "type": "tree",
+  "caption": "O coadă scoate nodurile în ordinea în care au intrat: primul intrat, primul ieșit.",
+  "nodes": {
+    "0": 8,
+    "1": 3,
+    "2": 10,
+    "3": 1,
+    "4": 6,
+    "6": 14
+  },
+  "steps": [
+    {
+      "focus": [0],
+      "rows": [
+        {
+          "label": "coadă",
+          "values": [8]
+        },
+        {
+          "label": "afișate",
+          "values": []
+        }
+      ],
+      "caption": "Pune rădăcina în coadă"
+    },
+    {
+      "focus": [0],
+      "rows": [
+        {
+          "label": "coadă",
+          "values": [3, 10]
+        },
+        {
+          "label": "afișate",
+          "values": [8]
+        }
+      ],
+      "caption": "Scoate 8 din față și afișează-l. Copiii lui, 3 și 10, intră la coadă"
+    },
+    {
+      "focus": [1],
+      "rows": [
+        {
+          "label": "coadă",
+          "values": [10, 1, 6]
+        },
+        {
+          "label": "afișate",
+          "values": [8, 3]
+        }
+      ],
+      "caption": "Scoate 3 și afișează-l. Copiii lui, 1 și 6, intră după 10",
+      "done": [0]
+    },
+    {
+      "focus": [2],
+      "rows": [
+        {
+          "label": "coadă",
+          "values": [1, 6, 14]
+        },
+        {
+          "label": "afișate",
+          "values": [8, 3, 10]
+        }
+      ],
+      "caption": "Scoate 10 și afișează-l. Singurul lui copil, 14, intră la coadă",
+      "done": [0, 1]
+    },
+    {
+      "focus": [3],
+      "rows": [
+        {
+          "label": "coadă",
+          "values": [6, 14]
+        },
+        {
+          "label": "afișate",
+          "values": [8, 3, 10, 1]
+        }
+      ],
+      "caption": "Scoate 1 și afișează-l. Nu are copii, deci nu intră nimic",
+      "done": [0, 1, 2]
+    },
+    {
+      "focus": [4],
+      "rows": [
+        {
+          "label": "coadă",
+          "values": [14]
+        },
+        {
+          "label": "afișate",
+          "values": [8, 3, 10, 1, 6]
+        }
+      ],
+      "caption": "Scoate 6 și afișează-l. Nici el nu are copii",
+      "done": [0, 1, 2, 3]
+    },
+    {
+      "focus": [6],
+      "rows": [
+        {
+          "label": "coadă",
+          "values": []
+        },
+        {
+          "label": "afișate",
+          "values": [8, 3, 10, 1, 6, 14]
+        }
+      ],
+      "caption": "Scoate 14 și afișează-l. Coada e goală, deci parcurgerea e gata",
+      "done": [0, 1, 2, 3, 4]
+    }
+  ]
+}

@@ -46,24 +46,8 @@ The array has a fixed length, so the heap keeps its own **size**, the number of 
 
 Pushing **2** into the heap above
 
-```text
-put 2 at index 6, the right child of 6
-
-          1                 1  3  6  5  9  8  2
-        /   \
-       3     6
-      / \   / \
-     5   9 8   2
-
-2 is smaller than its parent 6: swap them
-
-          1                 1  3  2  5  9  8  6
-        /   \
-       3     2
-      / \   / \
-     5   9 8   6
-
-2 is larger than its parent 1: stop
+```visual
+{"use": "heap-push"}
 ```
 
 It climbs one level per swap, so it never takes more steps than the tree is high
@@ -115,24 +99,8 @@ That's the heap from the start of the lesson, built from values that came in mix
 
 Popping from **1 3 2 5 9 8 6**
 
-```text
-take out 1, move the last value, 6, to the root
-
-          6                 6  3  2  5  9  8
-        /   \
-       3     2
-      / \   /
-     5   9 8
-
-6 has the children 3 and 2; the smaller is 2, and it's smaller than 6: swap
-
-          2                 2  3  6  5  9  8
-        /   \
-       3     6
-      / \   /
-     5   9 8
-
-6 has the child 8, larger than 6: stop
+```visual
+{"use": "heap-pop"}
 ```
 
 ```c

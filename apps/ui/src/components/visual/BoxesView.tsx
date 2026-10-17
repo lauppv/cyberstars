@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import type { BoxesVisual, Cell } from './parseBoxes';
 import type { BoxesFrame } from './boxFrames';
+import { beats, lerp, useTween } from './tween';
 
 // The boxes-and-arrows drawing: an SVG whose units scale with its width, so the row shrinks to fit
 // a narrow screen. Every box is one cell wide (a node stacks its two fields), so a head and four
@@ -21,7 +22,6 @@ const CORNER = 8;
 const ARROW = 'var(--text2)';
 
 const slotX = (slot: number) => 1 + slot * (CELL + GAP);
-const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 // Each box's place in the row: a box not shown yet keeps its place, a removed one gives it up
 function slotsOf(frame: BoxesFrame): number[] {
@@ -34,55 +34,19 @@ function dipOf(from: number, to: number): number {
   return to === from + 1 ? 0 : DIP;
 }
 
-function prefersReducedMotion(): boolean {
-  return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-}
-
-// The step on screen and the one it comes from, with how far along the move between them is. A
-// move of one step plays over the speed picked; a jump (Start over) or reduced motion puts
-// everything in place at once
-function useTween(step: number, ms: number) {
-  const [tween, setTween] = useState({ from: step, to: step, t: 1 });
-  if (tween.to !== step) {
-    const plays =
-      Math.abs(step - tween.to) === 1 &&
-      typeof requestAnimationFrame === 'function' &&
-      !prefersReducedMotion();
-    setTween({ from: plays ? tween.to : step, to: step, t: plays ? 0 : 1 });
-  }
-  const { from, to } = tween;
-  useEffect(() => {
-    if (from === to) return;
-    let id = 0;
-    let start: number | null = null;
-    const tick = (now: number) => {
-      start ??= now;
-      const t = Math.min(1, (now - start) / ms);
-      setTween((tw) =>
-        tw.from !== from || tw.to !== to ? tw : t < 1 ? { ...tw, t } : { from: to, to, t: 1 },
-      );
-      if (t < 1) id = requestAnimationFrame(tick);
-    };
-    id = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(id);
-  }, [from, to, ms]);
-  return tween;
-}
-
 const sameContent = (a: Cell, b: Cell) =>
   'value' in a
     ? 'value' in b && a.value === b.value
     : 'to' in b && (a.to === null) === (b.to === null);
 
-// A move plays in up to three beats, each only when there is something to it: what goes fades
-// out, then the boxes slide to their new places, then what comes fades in and new arrows draw
-function beats(
+// What a move between two frames has to it: boxes that go, boxes that slide, boxes that come, and
+// cells whose content or arrow changes (its old one goes, its new one comes)
+function needs(
   from: BoxesFrame,
   to: BoxesFrame,
   fromSlots: number[],
   toSlots: number[],
-  t: number,
-) {
+): [boolean, boolean, boolean] {
   let out = false;
   let move = false;
   let come = false;
@@ -99,15 +63,7 @@ function beats(
       if (!sameContent(cell, next) || retargeted) out = come = true;
     });
   });
-  const needed = [out, move, come];
-  const count = needed.filter(Boolean).length;
-  let start = 0;
-  return needed.map((n) => {
-    if (!n) return 1;
-    const p = Math.min(1, Math.max(0, (t - start) * count));
-    start += 1 / count;
-    return p;
-  });
+  return [out, move, come];
 }
 
 interface ArrowShape {
@@ -205,7 +161,7 @@ export function BoxesView({
   const slots = useMemo(() => frames.map(slotsOf), [frames]);
   const fromSlots = slots[fromStep];
   const toSlots = slots[step];
-  const [pOut, pMove, pIn] = beats(from, to, fromSlots, toSlots, t);
+  const [pOut, pMove, pIn] = beats(needs(from, to, fromSlots, toSlots), t);
 
   const cellY = (cells: number, c: number) => TOP + (rows - cells + c) * CELL;
   const pointerY = TOP + (rows - 1) * CELL + CELL / 2;

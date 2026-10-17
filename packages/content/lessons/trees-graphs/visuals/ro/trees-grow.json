@@ -1,0 +1,79 @@
+{
+  "type": "tree",
+  "caption": "Arborele de la începutul lecției, construit câte o linie de cod.",
+  "nodes": {},
+  "steps": [
+    {
+      "add": {
+        "0": 8
+      },
+      "focus": [0],
+      "code": {
+        "python": "radacina = Nod(8)",
+        "java": "Nod radacina = new Nod(8);",
+        "c": "struct Nod *radacina = nod_nou(8);"
+      },
+      "caption": "8 devine rădăcina"
+    },
+    {
+      "add": {
+        "1": 3
+      },
+      "focus": [1],
+      "code": {
+        "python": "radacina.stanga = Nod(3)",
+        "java": "radacina.stanga = new Nod(3);",
+        "c": "radacina->stanga = nod_nou(3);"
+      },
+      "caption": "3 devine copilul stâng al lui 8"
+    },
+    {
+      "add": {
+        "2": 10
+      },
+      "focus": [2],
+      "code": {
+        "python": "radacina.dreapta = Nod(10)",
+        "java": "radacina.dreapta = new Nod(10);",
+        "c": "radacina->dreapta = nod_nou(10);"
+      },
+      "caption": "10 devine copilul drept al lui 8"
+    },
+    {
+      "add": {
+        "3": 1
+      },
+      "focus": [3],
+      "code": {
+        "python": "radacina.stanga.stanga = Nod(1)",
+        "java": "radacina.stanga.stanga = new Nod(1);",
+        "c": "radacina->stanga->stanga = nod_nou(1);"
+      },
+      "caption": "1 devine copilul stâng al lui 3"
+    },
+    {
+      "add": {
+        "4": 6
+      },
+      "focus": [4],
+      "code": {
+        "python": "radacina.stanga.dreapta = Nod(6)",
+        "java": "radacina.stanga.dreapta = new Nod(6);",
+        "c": "radacina->stanga->dreapta = nod_nou(6);"
+      },
+      "caption": "6 devine copilul drept al lui 3"
+    },
+    {
+      "add": {
+        "6": 14
+      },
+      "focus": [6],
+      "code": {
+        "python": "radacina.dreapta.dreapta = Nod(14)",
+        "java": "radacina.dreapta.dreapta = new Nod(14);",
+        "c": "radacina->dreapta->dreapta = nod_nou(14);"
+      },
+      "caption": "14 devine copilul drept al lui 10"
+    }
+  ]
+}

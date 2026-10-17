@@ -1,0 +1,59 @@
+{
+  "type": "tree",
+  "caption": {
+    "python": "A leaf is a node whose two children are both None.",
+    "java": "A leaf is a node whose two children are both null.",
+    "c": "A leaf is a node whose two children are both NULL."
+  },
+  "null": {
+    "python": "None",
+    "java": "null",
+    "c": "NULL"
+  },
+  "nodes": {
+    "0": 8,
+    "1": 3,
+    "2": 10,
+    "3": 1,
+    "4": 6,
+    "6": 14
+  },
+  "steps": [
+    {
+      "focus": [3],
+      "nulls": [3],
+      "caption": {
+        "python": "1: both its children are None, so it's a leaf",
+        "java": "1: both its children are null, so it's a leaf",
+        "c": "1: both its children are NULL, so it's a leaf"
+      }
+    },
+    {
+      "focus": [3, 4],
+      "nulls": [3, 4],
+      "caption": {
+        "python": "6: both None, a leaf too",
+        "java": "6: both null, a leaf too",
+        "c": "6: both NULL, a leaf too"
+      }
+    },
+    {
+      "focus": [3, 4, 6],
+      "nulls": [3, 4, 6],
+      "caption": {
+        "python": "14: both None, the third leaf",
+        "java": "14: both null, the third leaf",
+        "c": "14: both NULL, the third leaf"
+      }
+    },
+    {
+      "focus": [2],
+      "nulls": [2],
+      "caption": {
+        "python": "10 is no leaf: its left child is None, but its right one is 14",
+        "java": "10 is no leaf: its left child is null, but its right one is 14",
+        "c": "10 is no leaf: its left child is NULL, but its right one is 14"
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "type": "tree",
+  "caption": "The program keeps only the root in a variable. Every other node is reached from it, one step down at a time.",
+  "nodes": {
+    "0": 8,
+    "1": 3,
+    "2": 10,
+    "3": 1,
+    "4": 6,
+    "6": 14
+  },
+  "steps": [
+    {
+      "path": [0],
+      "code": {
+        "python": "root",
+        "java": "root",
+        "c": "root"
+      },
+      "caption": "Start at the root: 8"
+    },
+    {
+      "path": [0, 1],
+      "code": {
+        "python": "root.left",
+        "java": "root.left",
+        "c": "root->left"
+      },
+      "caption": "Go to its left child: 3"
+    },
+    {
+      "path": [0, 1, 4],
+      "code": {
+        "python": "root.left.right",
+        "java": "root.left.right",
+        "c": "root->left->right"
+      },
+      "caption": "Then to that node's right child: 6"
+    }
+  ]
+}

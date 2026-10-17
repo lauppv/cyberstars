@@ -8,7 +8,9 @@
 //                                   (<slug>-code.md), copied from the source tree
 //                                   (solutions are not: they stay server-side);
 //                                   a multi-language course has one folder per
-//                                   language, <courseKey>/<language>/
+//                                   language, <courseKey>/<language>/, each with
+//                                   the course's visuals put into its lessons
+//                                   (see visuals.ts)
 //
 // The app names its static files folder; the UI runs it before dev and build:
 //
@@ -20,6 +22,7 @@ import path from 'path';
 import { CODE_LANGUAGES, isMultiLanguage } from '@cyberstars/shared/constants';
 import { courses, lessons } from '../curriculum.js';
 import { courseDir } from '../paths.js';
+import { inlineVisuals } from '../visuals.js';
 
 const [outDir] = process.argv.slice(2);
 if (!outDir) {
@@ -93,17 +96,42 @@ const LOCALE_DIRS = ['ro'];
 // create), and locale subdirectories are handled separately below. -solution.md
 // stays server-side too: guests must not read solutions, and signed-in students
 // get them through the metered reveal endpoint.
-function copyMarkdown(srcDir: string, destDir: string): number {
+// Lessons whose visuals couldn't be put in; the build stops on them once every file is through
+const broken: string[] = [];
+
+// `fill` rewrites a file's text on the way, as a multi-language course does to put its visuals in.
+function copyMarkdown(srcDir: string, destDir: string, fill?: (text: string) => string): number {
   if (!fs.existsSync(srcDir)) return 0;
   fs.mkdirSync(destDir, { recursive: true });
   let n = 0;
   for (const file of fs.readdirSync(srcDir)) {
     if (!file.endsWith('.md')) continue; // skips locale subdirs (they're not *.md)
     if (file.endsWith('-solution.md')) continue;
-    fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));
+    const src = path.join(srcDir, file);
+    if (fill) {
+      try {
+        fs.writeFileSync(path.join(destDir, file), fill(fs.readFileSync(src, 'utf8')));
+      } catch (err) {
+        broken.push(
+          `${path.relative(path.dirname(import.meta.dirname), src)}: ${(err as Error).message}`,
+        );
+      }
+    } else {
+      fs.copyFileSync(src, path.join(destDir, file));
+    }
     n++;
   }
   return n;
+}
+
+// A multi-language course's visuals sit beside its language folders, the Romanian ones in ro/
+function visualFiller(courseKey: string, language: string, locale?: string) {
+  const dir = path.join(path.dirname(courseDir(courseKey, language)), 'visuals', locale ?? '');
+  return (text: string) =>
+    inlineVisuals(text, language, (name) => {
+      const file = path.join(dir, `${name}.json`);
+      return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
+    });
 }
 
 fs.rmSync(LESSONS_OUT, { recursive: true, force: true });
@@ -113,14 +141,23 @@ for (const course of curriculum) {
     ? CODE_LANGUAGES.map((language) => ({
         src: courseDir(course.key, language),
         dest: path.join(LESSONS_OUT, course.key, language),
+        language,
       }))
-    : [{ src: courseDir(course.key), dest: path.join(LESSONS_OUT, course.key) }];
-  for (const { src, dest } of folders) {
-    copied += copyMarkdown(src, dest);
+    : [{ src: courseDir(course.key), dest: path.join(LESSONS_OUT, course.key), language: null }];
+  for (const { src, dest, language } of folders) {
+    copied += copyMarkdown(src, dest, language ? visualFiller(course.key, language) : undefined);
     for (const locale of LOCALE_DIRS) {
-      copied += copyMarkdown(path.join(src, locale), path.join(dest, locale));
+      copied += copyMarkdown(
+        path.join(src, locale),
+        path.join(dest, locale),
+        language ? visualFiller(course.key, language, locale) : undefined,
+      );
     }
   }
+}
+if (broken.length) {
+  console.error(`A lesson names a visual that can't be put in:\n  ${broken.join('\n  ')}`);
+  process.exit(1);
 }
 
 console.log(

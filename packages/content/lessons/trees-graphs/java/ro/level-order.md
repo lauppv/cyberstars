@@ -118,15 +118,8 @@ Rezultat **8 3 10 1 6 14**
 
 Iată coada după ce fiecare nod e scos și copiii lui puși în ea. Copiii se așază mereu în spatele tuturor celor care așteaptă deja, așa că un nivel întreg iese din coadă înainte să înceapă următorul
 
-```text
-scos   afisat  coada dupa
-               [8]
-8      8       [3, 10]
-3      3       [10, 1, 6]
-10     10      [1, 6, 14]
-1      1       [6, 14]
-6      6       [14]
-14     14      []
+```visual
+{"use": "level-order-queue"}
 ```
 
 Cele două linii cu **if** țin copiii lipsă departe de coadă: nu există niciun nod de scos mai târziu când copilul e **null**. Oricum, un **ArrayDeque** n-ar primi un null: **add(null)** oprește programul cu un **NullPointerException**

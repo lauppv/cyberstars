@@ -4,6 +4,7 @@ import {
   useLayoutEffect,
   useCallback,
   useRef,
+  useMemo,
   type CSSProperties,
 } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -37,6 +38,7 @@ import { LessonTour } from '../components/tour/LessonTour';
 import { TourNotice } from '../components/tour/TourNotice';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
+import { VisualSteps } from '../components/visual/VisualSteps';
 import { Segmented } from '../components/ui/Segmented';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ResizeHandle } from '../components/ui/ResizeHandle';
@@ -88,6 +90,9 @@ export function LessonPage() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { category = '', lesson = '' } = useParams<{ category: string; lesson: string }>();
+  // Where each visual of this lesson is, kept across a switch of programming language
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- a new lesson starts every visual over
+  const visualSteps = useMemo(() => new Map<string, number>(), [category, lesson]);
   const { isLoggedIn, user, refreshUser } = useAuth();
   const tutor = useTutor();
 
@@ -709,7 +714,9 @@ export function LessonPage() {
                 })()}
 
                 <div className="lesson-body">
-                  <MarkdownRenderer content={content} />
+                  <VisualSteps.Provider value={visualSteps}>
+                    <MarkdownRenderer content={content} />
+                  </VisualSteps.Provider>
                 </div>
 
                 <div

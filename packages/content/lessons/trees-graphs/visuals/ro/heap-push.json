@@ -1,0 +1,34 @@
+{
+  "type": "tree",
+  "array": true,
+  "caption": "Adăugăm 2 în heap. Sub arbore, același heap ca listă: valoarea de la indexul i are copiii la 2i + 1 și 2i + 2.",
+  "nodes": {
+    "0": 1,
+    "1": 3,
+    "2": 6,
+    "3": 5,
+    "4": 9,
+    "5": 8
+  },
+  "steps": [
+    {
+      "title": "adaugă 2",
+      "add": {
+        "6": 2
+      },
+      "focus": [6],
+      "caption": "2 intră pe următorul loc liber, indexul 6: copilul drept al lui 6"
+    },
+    {
+      "ask": "E 2 mai mic decât părintele lui, 6?",
+      "focus": [2, 6],
+      "swap": [2, 6],
+      "caption": "Da: le schimbăm"
+    },
+    {
+      "ask": "E 2 mai mic decât părintele lui, 1?",
+      "focus": [0, 2],
+      "caption": "Nu: ne oprim. Fiecare nod e iar mai mic decât copiii lui"
+    }
+  ]
+}

@@ -4,12 +4,8 @@ Listele țin lucrurile în șir: un prim element, un al doilea, un al treilea. M
 
 Iată un arbore mic de numere
 
-```text
-        8
-       / \
-      3   10
-     / \    \
-    1   6    14
+```visual
+{"use": "trees-terms"}
 ```
 
 Fiecare număr este un **nod**, iar fiecare linie dintre două noduri este o **muchie**. În programare arborii cresc cu capul în jos: încep de sus
@@ -83,56 +79,16 @@ niciun copil stang
 
 Singur, un nod nou este o valoare cu doi copii goi
 
-```text
-      8
-     / \
-  NULL NULL
+```visual
+{"use": "trees-new-node"}
 ```
 
 ---
 
 Un copil e doar un alt nod, a cărui adresă intră în **stanga** sau în **dreapta**. Iată cum crește arborele de la începutul lecției, câte o linie de cod
 
-```text
-struct Nod *radacina = nod_nou(8);
-
-        8
-
-radacina->stanga = nod_nou(3);
-
-        8
-       /
-      3
-
-radacina->dreapta = nod_nou(10);
-
-        8
-       / \
-      3   10
-
-radacina->stanga->stanga = nod_nou(1);
-
-        8
-       / \
-      3   10
-     /
-    1
-
-radacina->stanga->dreapta = nod_nou(6);
-
-        8
-       / \
-      3   10
-     / \
-    1   6
-
-radacina->dreapta->dreapta = nod_nou(14);
-
-        8
-       / \
-      3   10
-     / \    \
-    1   6    14
+```visual
+{"use": "trees-grow"}
 ```
 
 Toate la un loc, cu trei dintre noduri citite înapoi
@@ -189,12 +145,8 @@ Rezultat
 
 Adică drumul acesta prin arbore
 
-```text
-        8          radacina
-       /
-      3            radacina->stanga
-       \
-        6          radacina->stanga->dreapta
+```visual
+{"use": "trees-path"}
 ```
 
 Fiecare **malloc** își are **free**-ul lui, copiii înaintea părintelui: după ce părintele e eliberat, pointerii lui către ei nu mai pot fi citiți
@@ -203,14 +155,10 @@ Fiecare **malloc** își are **free**-ul lui, copiii înaintea părintelui: dup�
 
 O frunză este un nod ai cărui doi copii sunt amândoi **NULL**
 
-În arborele de la început, frunzele sunt cele trei noduri din paranteze
+În arborele de la început, frunzele sunt 1, 6 și 14
 
-```text
-        8
-       / \
-      3   10
-     / \    \
-   (1) (6)  (14)
+```visual
+{"use": "trees-leaves"}
 ```
 
 ```c

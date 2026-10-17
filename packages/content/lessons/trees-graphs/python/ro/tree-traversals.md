@@ -109,17 +109,10 @@ def preordine(nod):
     preordine(nod.dreapta)
 ```
 
-Asta e parcurgerea pe care a făcut-o **arata**. Numerele din paranteze arată ordinea în care e afișat fiecare nod
+Asta e parcurgerea pe care a făcut-o **arata**
 
-```text
-          8 (1)
-         / \
-    (2) 3   10 (5)
-       / \    \
-  (3) 1   6    14 (6)
-         (4)
-
-Preordine: 8 3 1 6 10 14
+```visual
+{"use": "traversals-preorder"}
 ```
 
 **Inordine:** întâi partea stângă, apoi nodul, apoi partea dreaptă
@@ -133,18 +126,11 @@ def inordine(nod):
     inordine(nod.dreapta)
 ```
 
-```text
-          8 (4)
-         / \
-    (2) 3   10 (5)
-       / \    \
-  (1) 1   6    14 (6)
-         (3)
-
-Inordine: 1 3 6 8 10 14
+```visual
+{"use": "traversals-inorder"}
 ```
 
-Uită-te la linia asta: numerele au ieșit sortate. Aici nu e o întâmplare, iar lecția despre arbori binari de căutare îți va arăta de ce
+Uită-te la ordine: numerele au ieșit sortate. Aici nu e o întâmplare, iar lecția despre arbori binari de căutare îți va arăta de ce
 
 **Postordine:** partea stângă, apoi partea dreaptă, iar nodul la final
 
@@ -157,15 +143,8 @@ def postordine(nod):
     print(nod.valoare, end=" ")
 ```
 
-```text
-          8 (6)
-         / \
-    (3) 3   10 (5)
-       / \    \
-  (1) 1   6    14 (4)
-         (2)
-
-Postordine: 1 6 3 14 10 8
+```visual
+{"use": "traversals-postorder"}
 ```
 
 Un nod e afișat abia după tot ce se află sub el. E ordinea de folosit când copiii trebuie tratați înaintea părintelui, ca la ștergerea unui folder: întâi pleacă fișierele lui

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, memo, Suspense } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkDirective from 'remark-directive';
@@ -112,7 +112,9 @@ const components: Components = {
   },
 };
 
-export function MarkdownRenderer({ content }: MarkdownRendererProps) {
+// Memoized: the lesson page renders on every key typed in the editor, and the text, with its code
+// cells and visuals, only changes with the lesson
+export const MarkdownRenderer = memo(function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
     <div className="prose text-[#d0d4de] break-words [&_pre]:whitespace-pre-wrap [&_pre]:break-words">
       <ReactMarkdown
@@ -123,4 +125,4 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
       </ReactMarkdown>
     </div>
   );
-}
+});

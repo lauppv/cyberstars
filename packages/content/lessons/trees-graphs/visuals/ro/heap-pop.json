@@ -1,0 +1,37 @@
+{
+  "type": "tree",
+  "array": true,
+  "caption": "Scoatem din heap: iese cea mai mică valoare, iar heap-ul se repară.",
+  "nodes": {
+    "0": 1,
+    "1": 3,
+    "2": 2,
+    "3": 5,
+    "4": 9,
+    "5": 8,
+    "6": 6
+  },
+  "steps": [
+    {
+      "title": "scoate",
+      "focus": [0],
+      "caption": "Cea mai mică valoare e mereu rădăcina: 1"
+    },
+    {
+      "move": [6, 0],
+      "focus": [0],
+      "caption": "Scoatem 1 și mutăm ultima valoare, 6, în locul lui"
+    },
+    {
+      "ask": "Copiii lui 6 sunt 3 și 2. E cel mai mic, 2, mai mic decât 6?",
+      "focus": [0, 1, 2],
+      "swap": [0, 2],
+      "caption": "Da: le schimbăm"
+    },
+    {
+      "ask": "Singurul copil al lui 6 este 8. E mai mic decât 6?",
+      "focus": [2, 5],
+      "caption": "Nu: ne oprim. 1 a ieșit, iar heap-ul își respectă iar regula"
+    }
+  ]
+}

@@ -4,12 +4,8 @@ Lists keep things in a line: a first item, a second, a third. A lot of what you 
 
 Here is a small tree of numbers
 
-```text
-        8
-       / \
-      3   10
-     / \    \
-    1   6    14
+```visual
+{"use": "trees-terms"}
 ```
 
 Every number is a **node**, and every line between two nodes is an **edge**. Trees in programming grow upside down: they start at the top
@@ -74,56 +70,16 @@ null
 
 On its own, a new node is a value with two empty children
 
-```text
-      8
-     / \
-  null null
+```visual
+{"use": "trees-new-node"}
 ```
 
 ---
 
 A child is just another node, put in **left** or **right**. Here is the tree from the start of the lesson growing, one line at a time
 
-```text
-Node root = new Node(8);
-
-        8
-
-root.left = new Node(3);
-
-        8
-       /
-      3
-
-root.right = new Node(10);
-
-        8
-       / \
-      3   10
-
-root.left.left = new Node(1);
-
-        8
-       / \
-      3   10
-     /
-    1
-
-root.left.right = new Node(6);
-
-        8
-       / \
-      3   10
-     / \
-    1   6
-
-root.right.right = new Node(14);
-
-        8
-       / \
-      3   10
-     / \    \
-    1   6    14
+```visual
+{"use": "trees-grow"}
 ```
 
 All of it together, with three of the nodes read back
@@ -167,26 +123,18 @@ Read **root.left.right** one step at a time: start at the root, go to its left c
 
 That is this path down the tree
 
-```text
-        8          root
-       /
-      3            root.left
-       \
-        6          root.left.right
+```visual
+{"use": "trees-path"}
 ```
 
 ---
 
 A leaf is a node whose two children are both **null**
 
-In the tree from the start, the leaves are the three nodes in brackets
+In the tree from the start, the leaves are 1, 6 and 14
 
-```text
-        8
-       / \
-      3   10
-     / \    \
-   (1) (6)  (14)
+```visual
+{"use": "trees-leaves"}
 ```
 
 ```java

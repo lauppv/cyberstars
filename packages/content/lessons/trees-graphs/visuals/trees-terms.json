@@ -1,0 +1,47 @@
+{
+  "type": "tree",
+  "caption": "Every number is a node, and every line between two nodes is an edge. The tree starts at the top.",
+  "nodes": {
+    "0": 8,
+    "1": 3,
+    "2": 10,
+    "3": 1,
+    "4": 6,
+    "6": 14
+  },
+  "steps": [
+    {
+      "focus": [0],
+      "tags": {
+        "0": "root"
+      },
+      "caption": "The root is the node at the top, where the tree starts: 8"
+    },
+    {
+      "focus": [1, 2],
+      "tags": {
+        "0": "parent",
+        "1": "child",
+        "2": "child"
+      },
+      "caption": "3 and 10 are right below 8: they are its children, and 8 is their parent"
+    },
+    {
+      "focus": [3, 4, 6],
+      "tags": {
+        "3": "leaf",
+        "4": "leaf",
+        "6": "leaf"
+      },
+      "caption": "1, 6 and 14 have no children: they are leaves"
+    },
+    {
+      "path": [0, 1, 3],
+      "caption": "The height is the number of edges on the longest way down: 8 → 3 → 1 is two edges"
+    },
+    {
+      "path": [0, 2, 6],
+      "caption": "8 → 10 → 14 is two edges too, and no way down is longer, so the height is 2"
+    }
+  ]
+}

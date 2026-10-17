@@ -1,0 +1,81 @@
+{
+  "type": "tree",
+  "caption": "Postorder: the left side, then the right side, and the node last.",
+  "nodes": {
+    "0": 8,
+    "1": 3,
+    "2": 10,
+    "3": 1,
+    "4": 6,
+    "6": 14
+  },
+  "steps": [
+    {
+      "focus": [3],
+      "rows": [
+        {
+          "label": "Postorder",
+          "values": [1]
+        }
+      ],
+      "caption": "Down the left: 8, 3, then 1, a leaf with no sides. Print 1",
+      "path": [0, 1, 3]
+    },
+    {
+      "focus": [4],
+      "rows": [
+        {
+          "label": "Postorder",
+          "values": [1, 6]
+        }
+      ],
+      "caption": "3's right side is 6, a leaf: print 6",
+      "done": [3]
+    },
+    {
+      "focus": [1],
+      "rows": [
+        {
+          "label": "Postorder",
+          "values": [1, 6, 3]
+        }
+      ],
+      "caption": "Both of 3's sides are done: print 3",
+      "done": [3, 4]
+    },
+    {
+      "focus": [6],
+      "rows": [
+        {
+          "label": "Postorder",
+          "values": [1, 6, 3, 14]
+        }
+      ],
+      "caption": "8's right side: 10 has no left side, and its right is 14, a leaf. Print 14",
+      "done": [3, 4, 1],
+      "path": [0, 2, 6]
+    },
+    {
+      "focus": [2],
+      "rows": [
+        {
+          "label": "Postorder",
+          "values": [1, 6, 3, 14, 10]
+        }
+      ],
+      "caption": "Both of 10's sides are done: print 10",
+      "done": [3, 4, 1, 6]
+    },
+    {
+      "focus": [0],
+      "rows": [
+        {
+          "label": "Postorder",
+          "values": [1, 6, 3, 14, 10, 8]
+        }
+      ],
+      "caption": "Both of 8's sides are done: print 8, last of all",
+      "done": [3, 4, 1, 6, 2]
+    }
+  ]
+}

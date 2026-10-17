@@ -109,17 +109,10 @@ def preorder(node):
     preorder(node.right)
 ```
 
-That's the walk **show** did. The numbers in brackets give the order each node is printed in
+That's the walk **show** did
 
-```text
-          8 (1)
-         / \
-    (2) 3   10 (5)
-       / \    \
-  (3) 1   6    14 (6)
-         (4)
-
-Preorder: 8 3 1 6 10 14
+```visual
+{"use": "traversals-preorder"}
 ```
 
 **Inorder:** the left side first, then the node, then the right side
@@ -133,18 +126,11 @@ def inorder(node):
     inorder(node.right)
 ```
 
-```text
-          8 (4)
-         / \
-    (2) 3   10 (5)
-       / \    \
-  (1) 1   6    14 (6)
-         (3)
-
-Inorder: 1 3 6 8 10 14
+```visual
+{"use": "traversals-inorder"}
 ```
 
-Look at that line: the numbers came out sorted. That's no accident here, and the lesson on binary search trees will show why
+Look at the order: the numbers came out sorted. That's no accident here, and the lesson on binary search trees will show why
 
 **Postorder:** the left side, then the right side, and the node last
 
@@ -157,15 +143,8 @@ def postorder(node):
     print(node.value, end=" ")
 ```
 
-```text
-          8 (6)
-         / \
-    (3) 3   10 (5)
-       / \    \
-  (1) 1   6    14 (4)
-         (2)
-
-Postorder: 1 6 3 14 10 8
+```visual
+{"use": "traversals-postorder"}
 ```
 
 A node is printed only after everything below it. That's the order to use when the children have to be dealt with before their parent, like deleting a folder: its files go first

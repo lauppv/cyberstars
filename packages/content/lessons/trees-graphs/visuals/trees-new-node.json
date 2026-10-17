@@ -1,0 +1,38 @@
+{
+  "type": "tree",
+  "caption": "A node holds three things: its value, its left child and its right child.",
+  "null": {
+    "python": "None",
+    "java": "null",
+    "c": "NULL"
+  },
+  "nodes": {},
+  "steps": [
+    {
+      "add": {
+        "0": 8
+      },
+      "focus": [0],
+      "code": {
+        "python": "root = Node(8)",
+        "java": "Node root = new Node(8);",
+        "c": "struct Node *root = new_node(8);"
+      },
+      "caption": "A new node holding 8"
+    },
+    {
+      "focus": [0],
+      "nulls": [0],
+      "code": {
+        "python": "root = Node(8)",
+        "java": "Node root = new Node(8);",
+        "c": "struct Node *root = new_node(8);"
+      },
+      "caption": {
+        "python": "Its left and right are None: no children yet",
+        "java": "Its left and right are null: no children yet",
+        "c": "Its left and right are NULL: no children yet"
+      }
+    }
+  ]
+}

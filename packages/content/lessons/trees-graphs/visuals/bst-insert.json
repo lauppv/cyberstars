@@ -1,0 +1,55 @@
+{
+  "type": "tree",
+  "caption": "Inserting 8, 3, 10, 1, 6 and 14 in that order. Each value walks the path a search would, and goes where it runs out.",
+  "nodes": {},
+  "steps": [
+    {
+      "title": "insert 8",
+      "add": {
+        "0": 8
+      },
+      "focus": [0],
+      "caption": "The tree is empty: 8 becomes the root"
+    },
+    {
+      "title": "insert 3",
+      "add": {
+        "1": 3
+      },
+      "path": [0, 1],
+      "caption": "3 < 8, go left. 8 has no left child, so 3 goes there"
+    },
+    {
+      "title": "insert 10",
+      "add": {
+        "2": 10
+      },
+      "path": [0, 2],
+      "caption": "10 > 8, go right. 8 has no right child, so 10 goes there"
+    },
+    {
+      "title": "insert 1",
+      "add": {
+        "3": 1
+      },
+      "path": [0, 1, 3],
+      "caption": "1 < 8, go left. 1 < 3, go left. Empty, so 1 goes there"
+    },
+    {
+      "title": "insert 6",
+      "add": {
+        "4": 6
+      },
+      "path": [0, 1, 4],
+      "caption": "6 < 8, go left. 6 > 3, go right. Empty, so 6 goes there"
+    },
+    {
+      "title": "insert 14",
+      "add": {
+        "6": 14
+      },
+      "path": [0, 2, 6],
+      "caption": "14 > 8, go right. 14 > 10, go right. Empty, so 14 goes there"
+    }
+  ]
+}

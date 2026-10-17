@@ -28,24 +28,14 @@ De aceea parcurgerea în inordine l-a afișat sortat: inordinea afișează tot c
 
 Căutarea lui **6**
 
-```text
-        8          6 e mai mic decat 8: mergi la stanga
-       /
-      3            6 e mai mare decat 3: mergi la dreapta
-       \
-        6          gasit
+```visual
+{"use": "bst-search-6"}
 ```
 
 Căutarea lui **12**
 
-```text
-        8          12 e mai mare decat 8: mergi la dreapta
-         \
-          10       12 e mai mare decat 10: mergi la dreapta
-            \
-             14    12 e mai mic decat 14: mergi la stanga
-            /
-        None       nu e in arbore
+```visual
+{"use": "bst-search-12"}
 ```
 
 Trei noduri verificate, din șase. Fiecare pas în jos lasă în urmă o parte întreagă a arborelui
@@ -107,46 +97,8 @@ def insereaza(nod, valoare):
 
 Un arbore gol este **None**, iar inserarea în el face rădăcina. Iată arborele din lecție crescând din valorile 8, 3, 10, 1, 6 și 14, inserate în ordinea asta
 
-```text
-insereaza 8: arborele e gol, 8 devine radacina
-
-        8
-
-insereaza 3: mai mic decat 8, in stanga lui
-
-        8
-       /
-      3
-
-insereaza 10: mai mare decat 8, in dreapta lui
-
-        8
-       / \
-      3   10
-
-insereaza 1: mai mic decat 8, mai mic decat 3
-
-        8
-       / \
-      3   10
-     /
-    1
-
-insereaza 6: mai mic decat 8, mai mare decat 3
-
-        8
-       / \
-      3   10
-     / \
-    1   6
-
-insereaza 14: mai mare decat 8, mai mare decat 10
-
-        8
-       / \
-      3   10
-     / \    \
-    1   6    14
+```visual
+{"use": "bst-insert"}
 ```
 
 Totul la un loc, cu o parcurgere în inordine ca să-l citim înapoi

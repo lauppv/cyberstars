@@ -28,24 +28,14 @@ In this lesson the values in a tree are all different, so the rule never has to 
 
 Searching for **6**
 
-```text
-        8          6 is smaller than 8: go left
-       /
-      3            6 is larger than 3: go right
-       \
-        6          found
+```visual
+{"use": "bst-search-6"}
 ```
 
 Searching for **12**
 
-```text
-        8          12 is larger than 8: go right
-         \
-          10       12 is larger than 10: go right
-            \
-             14    12 is smaller than 14: go left
-            /
-        None       not in the tree
+```visual
+{"use": "bst-search-12"}
 ```
 
 Three nodes looked at, out of six. Each step down leaves a whole side of the tree behind
@@ -107,46 +97,8 @@ def insert(node, value):
 
 An empty tree is **None**, and inserting into it makes the root. Here is the tree from the lesson growing out of the values 8, 3, 10, 1, 6 and 14, inserted in that order
 
-```text
-insert 8: the tree is empty, 8 becomes the root
-
-        8
-
-insert 3: smaller than 8, left of it
-
-        8
-       /
-      3
-
-insert 10: larger than 8, right of it
-
-        8
-       / \
-      3   10
-
-insert 1: smaller than 8, smaller than 3
-
-        8
-       / \
-      3   10
-     /
-    1
-
-insert 6: smaller than 8, larger than 3
-
-        8
-       / \
-      3   10
-     / \
-    1   6
-
-insert 14: larger than 8, larger than 10
-
-        8
-       / \
-      3   10
-     / \    \
-    1   6    14
+```visual
+{"use": "bst-insert"}
 ```
 
 Put together, with an inorder walk to read it back

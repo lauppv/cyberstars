@@ -163,17 +163,10 @@ static void preordine(Nod nod) {
 }
 ```
 
-Asta e parcurgerea făcută de **arata**. Numerele din paranteze arată în ce ordine e afișat fiecare nod
+Asta e parcurgerea făcută de **arata**
 
-```text
-          8 (1)
-         / \
-    (2) 3   10 (5)
-       / \    \
-  (3) 1   6    14 (6)
-         (4)
-
-Preordine: 8 3 1 6 10 14
+```visual
+{"use": "traversals-preorder"}
 ```
 
 **Inordine:** întâi partea stângă, apoi nodul, apoi partea dreaptă
@@ -189,18 +182,11 @@ static void inordine(Nod nod) {
 }
 ```
 
-```text
-          8 (4)
-         / \
-    (2) 3   10 (5)
-       / \    \
-  (1) 1   6    14 (6)
-         (3)
-
-Inordine: 1 3 6 8 10 14
+```visual
+{"use": "traversals-inorder"}
 ```
 
-Uită-te la linia asta: numerele au ieșit sortate. Aici nu e o întâmplare, iar lecția despre arborii binari de căutare îți va arăta de ce
+Uită-te la ordine: numerele au ieșit sortate. Aici nu e o întâmplare, iar lecția despre arborii binari de căutare îți va arăta de ce
 
 **Postordine:** partea stângă, apoi partea dreaptă, iar nodul la final
 
@@ -215,15 +201,8 @@ static void postordine(Nod nod) {
 }
 ```
 
-```text
-          8 (6)
-         / \
-    (3) 3   10 (5)
-       / \    \
-  (1) 1   6    14 (4)
-         (2)
-
-Postordine: 1 6 3 14 10 8
+```visual
+{"use": "traversals-postorder"}
 ```
 
 Un nod e afișat abia după tot ce e sub el. E ordinea potrivită când copiii trebuie rezolvați înaintea părintelui, ca la ștergerea unui folder: întâi pleacă fișierele din el
