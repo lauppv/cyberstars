@@ -41,6 +41,23 @@ Output:
 Empty
 ```
 
+```visual
+{
+  "type": "stack",
+  "queue": true,
+  "ends": true,
+  "caption": "A queue: values leave in the order they came, like people in a line. They join at the back, and dequeue and peek work on the front.",
+  "steps": [
+    {"push": [{"id": "v1", "text": 10}], "focus": ["v1"], "caption": "enqueue 10: 10 joins the empty queue"},
+    {"push": [{"id": "v2", "text": 20}], "focus": ["v2"], "caption": "enqueue 20: 20 joins at the back, behind 10"},
+    {"ask": "What does peek print?", "focus": ["v1"], "caption": "10: peek shows the front and leaves it there"},
+    {"ask": "What does dequeue print?", "pop": 1, "focus": ["v1"], "caption": "10: dequeue takes the front out. 20 is at the front now"},
+    {"ask": "What does dequeue print?", "pop": 1, "focus": ["v2"], "caption": "20: dequeue takes the front out. The queue is empty now"},
+    {"ask": "What does dequeue print?", "caption": "Empty: the queue is empty, so there is nothing to take out"}
+  ]
+}
+```
+
 ```
 Input:
 4

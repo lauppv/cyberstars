@@ -41,6 +41,23 @@ Ieșire:
 Goala
 ```
 
+```visual
+{
+  "type": "stack",
+  "queue": true,
+  "ends": true,
+  "caption": "O coadă: valorile ies în ordinea în care au venit, ca oamenii la un rând. Intră în spate, iar scoate și varf lucrează cu fața.",
+  "steps": [
+    {"push": [{"id": "v1", "text": 10}], "focus": ["v1"], "caption": "adauga 10: 10 intră în coada goală"},
+    {"push": [{"id": "v2", "text": 20}], "focus": ["v2"], "caption": "adauga 20: 20 intră în spate, după 10"},
+    {"ask": "Ce afișează varf?", "focus": ["v1"], "caption": "10: varf arată fața și o lasă pe loc"},
+    {"ask": "Ce afișează scoate?", "pop": 1, "focus": ["v1"], "caption": "10: scoate scoate fața din coadă. Acum 20 e în față"},
+    {"ask": "Ce afișează scoate?", "pop": 1, "focus": ["v2"], "caption": "20: scoate scoate fața din coadă. Acum coada e goală"},
+    {"ask": "Ce afișează scoate?", "caption": "Goala: coada e goală, deci nu e nimic de scos"}
+  ]
+}
+```
+
 ```
 Intrare:
 4

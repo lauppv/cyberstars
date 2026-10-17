@@ -904,6 +904,9 @@
     "visualRestart": "Start over",
     "visualExpand": "Enlarge",
     "visualClose": "Close",
+    "visualTop": "top",
+    "visualFront": "front",
+    "visualBack": "back",
     "visualSpeed": "Speed",
     "visualSpeeds": {
       "slow": "Slow",
