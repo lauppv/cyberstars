@@ -5,6 +5,8 @@ import type { StackVisual } from './parseStack';
 const calls: StackVisual = {
   type: 'stack',
   caption: 'Calls wait',
+  queue: false,
+  ends: false,
   cards: [{ id: 'main', text: 'main()' }],
   steps: [
     {
@@ -65,5 +67,20 @@ describe('stackFrames', () => {
       steps: [{ set: {}, caption: 'x' }],
     });
     expect(frames[1].cards[0].line).toBe('kept');
+  });
+
+  it("takes a queue's cards from the front", () => {
+    const frames = stackFrames({
+      type: 'stack',
+      caption: 'A line',
+      queue: true,
+      ends: true,
+      cards: [
+        { id: 'a', text: 10 },
+        { id: 'b', text: 20 },
+      ],
+      steps: [{ pop: 1, push: [{ id: 'c', text: 30 }], caption: '10 leaves, 30 joins' }],
+    });
+    expect(ids(frames[1])).toEqual(['b', 'c']);
   });
 });

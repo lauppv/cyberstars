@@ -171,7 +171,14 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
     ) : drawn.type === 'grid' ? (
       <GridView visual={drawn.visual} frames={drawn.frames} step={step} box={box} />
     ) : (
-      <StackView frames={drawn.frames} step={step} box={box} moveMs={moveMs} />
+      <StackView
+        frames={drawn.frames}
+        step={step}
+        box={box}
+        moveMs={moveMs}
+        queue={drawn.visual.queue}
+        ends={drawn.visual.ends}
+      />
     );
 
   const title = (

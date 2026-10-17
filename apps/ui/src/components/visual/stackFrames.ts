@@ -1,6 +1,6 @@
 import type { StackCard, StackVisual } from './parseStack';
 
-// What the stack looks like at one step: its cards from the bottom up, each with its line as it
+// What the stack looks like at one step: its cards from the bottom up (a queue's from the front), each with its line as it
 // stands, and what the step highlights. Like the other frames, a step that asks a question shows it
 // with its answer before anything changes; its pops, lines and pushes come on the next frame, with
 // the same highlights
@@ -34,8 +34,9 @@ export function stackFrames(visual: StackVisual): StackFrame[] {
     const changes = step.pop !== undefined || step.set !== undefined || step.push !== undefined;
     if (changes) {
       const { set = {} } = step;
-      cards = cards
-        .slice(0, cards.length - (step.pop ?? 0))
+      const pop = step.pop ?? 0;
+      // A stack's cards leave from the top, the end of the list; a queue's from the front
+      cards = (visual.queue ? cards.slice(pop) : cards.slice(0, cards.length - pop))
         .map((card) => (Object.hasOwn(set, card.id) ? { ...card, line: set[card.id] } : card))
         .concat(step.push ?? []);
     }

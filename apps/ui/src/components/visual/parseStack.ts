@@ -8,10 +8,13 @@ import type { BoxValue } from './parseBoxes';
 // and, for that step only, highlight cards (focus), mark cards done, which have their answer, and
 // put a short word by a card (tags), such as "base case". Like the other visuals it can name its
 // pass (title) and ask a question first. A card is named by an id, given when it is pushed and
-// never given again. The stack can start with cards. Anything that doesn't fit, such as a pop of
-// more cards than there are or a step naming a card that isn't on the stack, comes back null.
+// never given again. The stack can start with cards. With `queue: true` it is a queue instead: the
+// cards stand in a row, a push puts them at the back and a pop takes them from the front. With
+// `ends: true` the player names the ends, the top of a stack or the front and back of a queue.
+// Anything that doesn't fit, such as a pop of more cards than there are or a step naming a card
+// that isn't on the stack, comes back null.
 
-// Seven cards at most, so the pile still fits a phone's screen
+// Seven cards at most, so the pile, or the row, still fits a phone's screen
 const MAX_CARDS = 7;
 
 export interface StackCard {
@@ -35,6 +38,8 @@ interface StackStep {
 export interface StackVisual {
   type: 'stack';
   caption: string;
+  queue: boolean;
+  ends: boolean;
   cards: StackCard[];
   steps: StackStep[];
 }
@@ -70,7 +75,12 @@ function parseCards(raw: unknown, used: Set<string>): StackCard[] | null {
 
 // The cards on the stack before or after the step: a highlight or a tag can be on a card the step
 // pops, as it leaves
-function parseStep(raw: unknown, pile: string[], used: Set<string>): StackStep | null {
+function parseStep(
+  raw: unknown,
+  pile: string[],
+  used: Set<string>,
+  queue: boolean,
+): StackStep | null {
   if (!isRecord(raw) || !isCaption(raw.caption)) return null;
   const step: StackStep = { caption: raw.caption };
   for (const key of ['title', 'ask'] as const) {
@@ -84,7 +94,8 @@ function parseStep(raw: unknown, pile: string[], used: Set<string>): StackStep |
     const { pop } = raw;
     if (!Number.isInteger(pop) || (pop as number) < 1 || (pop as number) > pile.length) return null;
     step.pop = pop as number;
-    pile.splice(pile.length - step.pop);
+    if (queue) pile.splice(0, step.pop);
+    else pile.splice(pile.length - step.pop);
   }
   if (raw.set !== undefined) {
     const { set } = raw;
@@ -124,6 +135,11 @@ function parseStep(raw: unknown, pile: string[], used: Set<string>): StackStep |
 
 export function parseStack(raw: Record<string, unknown>): StackVisual | null {
   if (!isCaption(raw.caption)) return null;
+  for (const key of ['queue', 'ends'] as const) {
+    if (raw[key] !== undefined && typeof raw[key] !== 'boolean') return null;
+  }
+  const queue = raw.queue === true;
+  const ends = raw.ends === true;
   const used = new Set<string>();
   // The stack can start empty, with no cards or an empty list
   let cards: StackCard[] = [];
@@ -136,9 +152,9 @@ export function parseStack(raw: Record<string, unknown>): StackVisual | null {
   const pile = cards.map((card) => card.id);
   const steps: StackStep[] = [];
   for (const rawStep of raw.steps) {
-    const step = parseStep(rawStep, pile, used);
+    const step = parseStep(rawStep, pile, used, queue);
     if (!step) return null;
     steps.push(step);
   }
-  return { type: 'stack', caption: raw.caption, cards, steps };
+  return { type: 'stack', caption: raw.caption, queue, ends, cards, steps };
 }

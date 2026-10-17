@@ -916,6 +916,9 @@
     "visualRestart": "De la început",
     "visualExpand": "Mărește",
     "visualClose": "Închide",
+    "visualTop": "vârf",
+    "visualFront": "față",
+    "visualBack": "spate",
     "visualSpeed": "Viteză",
     "visualSpeeds": {
       "slow": "Lent",
