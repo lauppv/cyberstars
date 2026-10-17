@@ -17,8 +17,9 @@ export type CodeLanguage = (typeof CODE_LANGUAGES)[number];
 
 // Courses taught in every one of CODE_LANGUAGES: each lesson exists in all
 // three, and the student switches between them on the lesson. Progress stays
-// one tick per lesson, whichever language passed it.
-export const MULTI_LANGUAGE_COURSE_KEYS = ['trees-graphs'] as const;
+// one tick per lesson, whichever language passed it. The Trees and Graphs
+// course, and its challenge set in Algorithms.
+export const MULTI_LANGUAGE_COURSE_KEYS = ['trees-graphs', 'algo-trees-graphs'] as const;
 
 // Courses still being built: open to everyone, labelled Beta, and left out of
 // what the landing page counts until they are whole.
@@ -31,8 +32,13 @@ export function isBeta(courseKey: string): boolean {
 // What a multi-language lesson opens in before the student picks a language.
 export const DEFAULT_CODE_LANGUAGE: CodeLanguage = 'python';
 
-export const MAIN_COURSE_KEYS = ['python', 'java', 'c', ...MULTI_LANGUAGE_COURSE_KEYS] as const;
-export const ALGO_COURSE_KEYS = ['algo-python', 'algo-java', 'algo-c'] as const;
+export const MAIN_COURSE_KEYS = ['python', 'java', 'c', 'trees-graphs'] as const;
+export const ALGO_COURSE_KEYS = [
+  'algo-python',
+  'algo-java',
+  'algo-c',
+  'algo-trees-graphs',
+] as const;
 export const ALL_COURSE_KEYS = [...MAIN_COURSE_KEYS, ...ALGO_COURSE_KEYS] as const;
 
 // Terminal courses run in a Linux sandbox, not the /api/code editor pipeline.

@@ -118,12 +118,15 @@ describe('course key lists', () => {
 });
 
 describe('multi-language courses', () => {
-  it('teach every lesson in Python, Java and C, and are main courses', () => {
+  it('teach every lesson in Python, Java and C, as a course or a challenge set', () => {
     expect(CODE_LANGUAGES).toEqual(['python', 'java', 'c']);
+    expect(MULTI_LANGUAGE_COURSE_KEYS).toEqual(['trees-graphs', 'algo-trees-graphs']);
     for (const key of MULTI_LANGUAGE_COURSE_KEYS) {
       expect(isMultiLanguage(key)).toBe(true);
-      expect(MAIN_COURSE_KEYS).toContain(key);
+      expect(ALL_COURSE_KEYS).toContain(key);
     }
+    expect(MAIN_COURSE_KEYS).toContain('trees-graphs');
+    expect(ALGO_COURSE_KEYS).toContain('algo-trees-graphs');
     expect(isMultiLanguage('python')).toBe(false);
     expect(isMultiLanguage('algo-c')).toBe(false);
   });
@@ -139,6 +142,7 @@ describe('multi-language courses', () => {
     expect(codeLanguageOf('trees-graphs', 'c')).toBe('c');
     expect(codeLanguageOf('trees-graphs')).toBe('python');
     expect(codeLanguageOf('trees-graphs', 'ruby')).toBe('python');
+    expect(codeLanguageOf('algo-trees-graphs', 'java')).toBe('java');
   });
 
   it("names a one-language course's own language, whatever was picked", () => {
@@ -148,6 +152,7 @@ describe('multi-language courses', () => {
 
   it('are Beta while they are being built', () => {
     expect(isBeta('trees-graphs')).toBe(true);
+    expect(isBeta('algo-trees-graphs')).toBe(true);
     expect(isBeta('python')).toBe(false);
   });
 });

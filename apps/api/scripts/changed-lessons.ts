@@ -72,12 +72,13 @@ export const SELF_FILES = [
 // packages/content/variants/python/string-reverse/reject-slice-in-helper.py -> python/string-reverse,
 // and on a multi-language course, with the language after the course:
 // packages/content/lessons/trees-graphs/c/trees-tests.json -> trees-graphs/c/trees,
+// packages/content/algorithms/trees-graphs/c/max-depth-tests.json -> algo-trees-graphs/c/max-depth,
 // packages/content/variants/trees-graphs/c/trees/reject-no-struct.c -> trees-graphs/c/trees.
 const LESSON_FILE =
   /^packages\/content\/(lessons|algorithms)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md)$/;
 const VARIANT_FILE = /^packages\/content\/variants\/([^/]+)\/([^/]+)\/[^/]+$/;
 const MULTI_LESSON_FILE =
-  /^packages\/content\/lessons\/([^/]+)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md)$/;
+  /^packages\/content\/(lessons|algorithms)\/([^/]+)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md)$/;
 const MULTI_VARIANT_FILE =
   /^packages\/content\/variants\/([^/]+)\/(python|c|java)\/([^/]+)\/[^/]+$/;
 
@@ -88,8 +89,14 @@ export interface Shard {
 }
 
 function changedLesson(file: string): string | null {
-  const multiLesson = MULTI_LESSON_FILE.exec(file) ?? MULTI_VARIANT_FILE.exec(file);
-  if (multiLesson && isMultiLanguage(multiLesson[1])) return multiLesson.slice(1).join('/');
+  const multiLesson = MULTI_LESSON_FILE.exec(file);
+  if (multiLesson) {
+    const [, root, name, language, slug] = multiLesson;
+    const courseKey = root === 'algorithms' ? `algo-${name}` : name;
+    if (isMultiLanguage(courseKey)) return `${courseKey}/${language}/${slug}`;
+  }
+  const multiVariant = MULTI_VARIANT_FILE.exec(file);
+  if (multiVariant && isMultiLanguage(multiVariant[1])) return multiVariant.slice(1).join('/');
   const lesson = LESSON_FILE.exec(file);
   if (lesson) {
     const [, root, lang, slug] = lesson;

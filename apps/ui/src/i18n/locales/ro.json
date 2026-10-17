@@ -349,6 +349,7 @@
       "algo-python": "Probleme de Python de la ușor la greu: șiruri, liste și dicționare puse la treabă în palindroame, cifrul lui Cezar, Two Sum, sortare și o matrice parcursă în spirală.",
       "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, generice și iteratori, plus căutare și sortare.",
       "algo-c": "Probleme de C aproape de mașină: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
+      "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele.",
       "trees-graphs": "Structurile din spatele folderelor, hărților și rețelelor, predate în Python, Java sau C: fiecare lecție există în toate trei și poți schimba limbajul la oricare dintre ele."
     }
   },
@@ -356,7 +357,8 @@
     "desc": {
       "algo-python": "Probleme de Python de la ușor la greu: șiruri, liste și dicționare puse la treabă în palindroame, cifrul lui Cezar, Two Sum, sortare și o matrice parcursă în spirală.",
       "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, generice și iteratori, plus căutare și sortare.",
-      "algo-c": "Probleme de C aproape de mașină: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare."
+      "algo-c": "Probleme de C aproape de mașină: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
+      "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele."
     }
   },
   "algoList": {

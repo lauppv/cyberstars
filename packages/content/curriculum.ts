@@ -60,6 +60,13 @@ export const courses = [
       'The structures behind folders, maps and networks, taught in Python, Java or C: every lesson comes in all three, and you can switch language on any of them.',
     sortOrder: 8,
   },
+  {
+    key: 'algo-trees-graphs',
+    title: 'Trees and Graphs Algorithms',
+    description:
+      'Tree problems from easy to hard, in Python, Java or C: depth, mirror images, binary search trees, levels and paths. Every challenge comes in all three, and you can switch language on any of them.',
+    sortOrder: 9,
+  },
 ];
 
 export const lessons = [
@@ -1743,6 +1750,14 @@ export const lessons = [
     slug: 'sem-producer-consumer',
     title: 'Hard · Producer-Consumer with Semaphores',
     sortOrder: 32,
+    hasCodeFile: true,
+  },
+
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'max-depth',
+    title: 'Easy · Maximum Depth of a Tree',
+    sortOrder: 1,
     hasCodeFile: true,
   },
 ];
