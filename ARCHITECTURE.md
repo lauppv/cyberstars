@@ -85,6 +85,7 @@ never touch the API server or the DB.
 | `/lessons/:courseKey/:slug.md`      | Lesson Markdown content (English, source of truth)     |
 | `/lessons/:courseKey/:slug-code.md` | Starter code template                                  |
 | `/lessons/:courseKey/ro/:slug.md`   | Romanian translation (optional)                        |
+| `/lessons/:courseKey/:language/...` | The same files per language on a multi-language course |
 | `/almanac/{index,extras}.json`      | Almanac cards + sidebar data (English) and `ro/` peers |
 | `/almanac/articles/:slug.json`      | Almanac article body (English) and `ro/` peer          |
 
@@ -108,23 +109,23 @@ not localized per-language.
 
 ### Progress (all authenticated)
 
-| Method | Endpoint                                      | Auth | Description               |
-| ------ | --------------------------------------------- | ---- | ------------------------- |
-| GET    | `/api/progress/:courseKey`                    | Yes  | Get progress for a course |
-| GET    | `/api/progress/:courseKey/:lessonSlug/code`   | Yes  | Get saved code            |
-| PUT    | `/api/progress/:courseKey/:lessonSlug/code`   | Yes  | Save code                 |
-| POST   | `/api/progress/:courseKey/:lessonSlug/access` | Yes  | Track last access time    |
+| Method | Endpoint                                      | Auth | Description                                              |
+| ------ | --------------------------------------------- | ---- | -------------------------------------------------------- |
+| GET    | `/api/progress/:courseKey`                    | Yes  | Get progress for a course                                |
+| GET    | `/api/progress/:courseKey/:lessonSlug/code`   | Yes  | Get saved code (`?language=` on a multi-language course) |
+| PUT    | `/api/progress/:courseKey/:lessonSlug/code`   | Yes  | Save code (`{ code, language? }`)                        |
+| POST   | `/api/progress/:courseKey/:lessonSlug/access` | Yes  | Track last access time                                   |
 
 There is **no client-writable completion endpoint**; completion is server-authoritative
 and only ever set by the judge (see below) when tests pass for a logged-in user.
 
 ### Judge (lesson tests)
 
-| Method | Endpoint                                        | Auth  | Description                                                                                                                                         |
-| ------ | ----------------------------------------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| POST   | `/api/tests/:courseKey/:lessonSlug/run`         | Owner | Run the lesson's test suite; marks complete on a `passed` verdict (logged-in only). Works for guests (they can run but not save). 10 runs/min/owner |
-| GET    | `/api/tests/:courseKey/:lessonSlug/submissions` | Yes   | The signed-in student's last 20 attempts on the lesson, newest first. 60/min/user                                                                   |
-| GET    | `/api/tests/submissions/:id`                    | Yes   | One attempt with its code and the test it stopped on; someone else's attempt is a 404. 60/min/user                                                  |
+| Method | Endpoint                                        | Auth  | Description                                                                                                                                                                                                                                    |
+| ------ | ----------------------------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| POST   | `/api/tests/:courseKey/:lessonSlug/run`         | Owner | Run the lesson's test suite (`{ code, lang?, language? }`, `language` picking the language on a multi-language course); marks complete on a `passed` verdict (logged-in only). Works for guests (they can run but not save). 10 runs/min/owner |
+| GET    | `/api/tests/:courseKey/:lessonSlug/submissions` | Yes   | The signed-in student's last 20 attempts on the lesson, newest first. 60/min/user                                                                                                                                                              |
+| GET    | `/api/tests/submissions/:id`                    | Yes   | One attempt with its code and the test it stopped on; someone else's attempt is a 404. 60/min/user                                                                                                                                             |
 
 "Owner" means a logged-in user or a guest keyed by the per-browser `guestId` cookie.
 The judge runs the student's code (and the reference solution) in the owner's warm
@@ -299,10 +300,10 @@ Every signed-in student, behind the `tutorChat` feature key; no guests.
 
 ### Usage
 
-| Method | Endpoint                                     | Auth | Description                                                                                                                                              |
-| ------ | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GET    | `/api/usage`                                 | Yes  | The student's `UsageSummary`: used, limit, remaining and refill time of Show Solution and the tutor session; admins are unlimited                        |
-| POST   | `/api/usage/solution/:courseKey/:lessonSlug` | Yes  | Reveals the lesson's reference solution (`{ lang? }`) and takes one Show Solution; `{ solution, usage }`, 404 when the lesson has none, 429 at the limit |
+| Method | Endpoint                                     | Auth | Description                                                                                                                                                         |
+| ------ | -------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/api/usage`                                 | Yes  | The student's `UsageSummary`: used, limit, remaining and refill time of Show Solution and the tutor session; admins are unlimited                                   |
+| POST   | `/api/usage/solution/:courseKey/:lessonSlug` | Yes  | Reveals the lesson's reference solution (`{ lang?, language? }`) and takes one Show Solution; `{ solution, usage }`, 404 when the lesson has none, 429 at the limit |
 
 ## Database schema
 
@@ -310,11 +311,11 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma). Fie
 
 ### Models
 
-- **User**: account data (name, email, hashed password)
+- **User**: account data (name, email, hashed password), and the code language picked last on a multi-language course
 - **Curriculum**: course definitions (key, title, description, sortOrder)
 - **Lesson**: lesson metadata (courseKey, slug, title, sortOrder)
 - **UserLessonProgress**: per-user completion tracking
-- **UserSavedCode**: per-user saved code per lesson
+- **UserSavedCode**: per-user saved code per lesson, and per language on a multi-language course (`''` on any other)
 - **ForumCategory / ForumThread / ForumPost / ForumReaction**: community forum
 - **SupportTicket / SupportMessage**: support system
 - **Notification**: per-user in-app notifications (actor via `SetNull` relation, source entity snapshotted in `data`)
@@ -378,6 +379,8 @@ fail. `npm run check:tests` grades them next to the reference solution, and the
 `lesson-tests` CI workflow runs it on the lessons a pull request changes.
 
 A lesson may have an optional Romanian translation at `packages/content/lessons/:lang/ro/<slug>.md` (same slug); when absent, the reader sees the English source. See [Curriculum & Lessons](#curriculum--lessons) for the fallback behavior.
+
+A **multi-language course** (`MULTI_LANGUAGE_COURSE_KEYS`, today `trees-graphs`) teaches every lesson in Python, Java and C, each in its own folder, `packages/content/lessons/<course>/<language>/`, with all the files above and its own `ro/`; its variants sit in `variants/<course>/<language>/<slug>/`. The student switches language on the lesson, and the lesson is ticked once whichever language passed it. The static-content generator stops the build when a lesson lacks a language, or the starter, tests or solution its Python twin has.
 
 ## Environment variables
 
