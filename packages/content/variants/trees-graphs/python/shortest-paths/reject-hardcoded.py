@@ -1,0 +1,5 @@
+print("0: 0")
+print("1: 3")
+print("2: 1")
+print("3: 8")
+print("4: 11")

@@ -1224,6 +1224,13 @@ export const lessons = [
     sortOrder: 10,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'shortest-paths',
+    title: 'Shortest Paths with Weights',
+    sortOrder: 11,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',
