@@ -1517,7 +1517,7 @@ export function LaniakeaExplorerPage() {
           const dot = _dirToBody.dot(_camFwd);
           if (dot > 0 && d < bestD) {
             bestD = d;
-            best = { name: 'Black Hole', type: 'bh', radius: 200 };
+            best = { name: i18next.t('laniakea.objects.blackHole'), type: 'bh', radius: 200 };
           }
         }
 
@@ -1528,7 +1528,7 @@ export function LaniakeaExplorerPage() {
           const dot = _dirToBody.dot(_camFwd);
           if (dot > 0 && d < bestD) {
             bestD = d;
-            best = { name: 'Quasar', type: 'quasar', radius: 280 };
+            best = { name: i18next.t('laniakea.objects.quasar'), type: 'quasar', radius: 280 };
           }
         }
 
@@ -1539,7 +1539,7 @@ export function LaniakeaExplorerPage() {
           const dot = _dirToBody.dot(_camFwd);
           if (dot > 0 && d < bestD) {
             bestD = d;
-            best = { name: 'Dyson Sphere', type: 'dyson', radius: 280 };
+            best = { name: i18next.t('laniakea.objects.dyson'), type: 'dyson', radius: 280 };
           }
         }
 

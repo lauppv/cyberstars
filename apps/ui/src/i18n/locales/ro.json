@@ -940,7 +940,12 @@
     "pausedSubPost": "pentru a continua deriva.",
     "resume": "Continuă",
     "accelerate": "Accelerează",
-    "decelerate": "Decelerează"
+    "decelerate": "Decelerează",
+    "objects": {
+      "blackHole": "Gaură neagră",
+      "quasar": "Quasar",
+      "dyson": "Sferă Dyson"
+    }
   },
   "code": {
     "run": "▶ Rulează",

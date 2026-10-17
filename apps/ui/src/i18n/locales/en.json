@@ -903,7 +903,12 @@
     "pausedSubPost": "to keep drifting.",
     "resume": "Resume",
     "accelerate": "Accelerate",
-    "decelerate": "Decelerate"
+    "decelerate": "Decelerate",
+    "objects": {
+      "blackHole": "Black Hole",
+      "quasar": "Quasar",
+      "dyson": "Dyson Sphere"
+    }
   },
   "code": {
     "run": "▶ Run",
