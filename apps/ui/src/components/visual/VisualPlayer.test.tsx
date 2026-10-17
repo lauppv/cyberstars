@@ -38,7 +38,7 @@ describe('VisualPlayer', () => {
     expect(screen.getByText('Step 1 of 4')).toBeInTheDocument();
     expect(box(document, 0)).toHaveTextContent('5');
     expect(box(document, 0).style.transform).toBe(
-      'translateX(calc(0 * (100% + 8px))) translateY(0)',
+      'translateX(calc(0 * (100% + var(--gap)))) translateY(0)',
     );
     expect(box(document, 0)).toHaveAttribute('data-state', 'idle');
     expect(screen.queryByText('0')).toBeNull();
@@ -52,16 +52,16 @@ describe('VisualPlayer', () => {
     expect(screen.getByText('Yes, so they swap')).toBeInTheDocument();
     expect(box(document, 0)).toHaveAttribute('data-state', 'compared');
     expect(box(document, 0).style.transform).toBe(
-      'translateX(calc(0 * (100% + 8px))) translateY(0)',
+      'translateX(calc(0 * (100% + var(--gap)))) translateY(0)',
     );
     next();
     expect(screen.getByText('Is 5 > 3?')).toBeInTheDocument();
     expect(screen.getByText('Yes, so they swap')).toBeInTheDocument();
     expect(box(document, 0).style.transform).toBe(
-      'translateX(calc(1 * (100% + 8px))) translateY(0)',
+      'translateX(calc(1 * (100% + var(--gap)))) translateY(0)',
     );
     expect(box(document, 1).style.transform).toBe(
-      'translateX(calc(0 * (100% + 8px))) translateY(0)',
+      'translateX(calc(0 * (100% + var(--gap)))) translateY(0)',
     );
     next();
     expect(screen.getByText('8 is in place')).toBeInTheDocument();
@@ -77,9 +77,9 @@ describe('VisualPlayer', () => {
     next();
     const [left, right] = container.querySelectorAll<HTMLElement>('[data-pointer]');
     expect(left).toHaveTextContent('j = 0');
-    expect(left.style.transform).toBe('translateX(calc(0 * (100% + 8px))) translateY(0)');
+    expect(left.style.transform).toBe('translateX(calc(0 * (100% + var(--gap)))) translateY(0)');
     expect(right).toHaveTextContent('j + 1');
-    expect(right.style.transform).toBe('translateX(calc(1 * (100% + 8px))) translateY(0)');
+    expect(right.style.transform).toBe('translateX(calc(1 * (100% + var(--gap)))) translateY(0)');
     expect(left).toHaveClass('transition-transform', 'motion-reduce:transition-none');
     next();
     next();
@@ -90,6 +90,76 @@ describe('VisualPlayer', () => {
     const { container } = render(<VisualPlayer visual={visual} />);
     next();
     expect(container.querySelector('[data-pointer]')).toBeNull();
+  });
+
+  describe('markers', () => {
+    const search: ArrayVisual = {
+      type: 'array',
+      values: [1, 3, 5, 7],
+      caption: 'Find 5',
+      markers: ['left = {i}', 'mid = {i}', 'right = {i}'],
+      steps: [
+        {
+          at: [0, 1, 3],
+          compare: [1],
+          ask: 'Is 3 < 5?',
+          move: [2, null, 3],
+          range: [2, 3],
+          caption: 'Yes',
+        },
+        { at: [2, 2, 3], compare: [2], ask: 'Is 5 == 5?', done: [2], caption: 'Found' },
+      ],
+    };
+    const marker = (i: number) => document.querySelector<HTMLElement>(`[data-marker="${i}"]`);
+
+    it('draws each marker on its own row, named with its position, its name on the roomier side', () => {
+      render(<VisualPlayer visual={search} />);
+      expect(marker(0)).toBeNull();
+      next();
+      expect(marker(0)).toHaveTextContent('left = 0');
+      expect(marker(0)!.style.transform).toBe(
+        'translateX(calc(0 * (100% + var(--gap)))) translateY(0)',
+      );
+      expect(marker(0)!.querySelector('.left-full')).toHaveTextContent('left = 0');
+      expect(marker(2)).toHaveTextContent('right = 3');
+      expect(marker(2)!.querySelector('.right-full')).toHaveTextContent('right = 3');
+      // Each marker has a row of its own, empty while it is hidden
+      const rows = marker(0)!.parentElement!.parentElement!.children;
+      expect(rows).toHaveLength(3);
+      expect(box(document, 1)).toHaveAttribute('data-state', 'compared');
+      next();
+      expect(marker(0)).toHaveTextContent('left = 2');
+      expect(marker(1)).toBeNull();
+      expect(rows).toHaveLength(3);
+    });
+
+    it('fades the boxes out of range and colours the done ones green', () => {
+      render(<VisualPlayer visual={search} />);
+      next();
+      expect(box(document, 0)).not.toHaveAttribute('data-out');
+      next();
+      expect(box(document, 0)).toHaveAttribute('data-out', 'true');
+      expect(box(document, 0)).toHaveClass('opacity-30');
+      expect(box(document, 2)).not.toHaveAttribute('data-out');
+      next();
+      expect(box(document, 2)).toHaveAttribute('data-state', 'compared');
+      next();
+      expect(box(document, 2)).toHaveAttribute('data-state', 'sorted');
+      expect(box(document, 3)).toHaveAttribute('data-state', 'idle');
+    });
+
+    it('keeps no room above the boxes for a swap when nothing swaps', () => {
+      const { container, unmount } = render(<VisualPlayer visual={search} />);
+      const drawing = () =>
+        container.querySelector<HTMLElement>('[data-box]')!.parentElement!.parentElement!;
+      expect(drawing().style.marginTop).toBe('0px');
+      unmount();
+      const swapping = render(<VisualPlayer visual={visual} />);
+      expect(
+        swapping.container.querySelector<HTMLElement>('[data-box]')!.parentElement!.parentElement!
+          .style.marginTop,
+      ).toBe('61px');
+    });
   });
 
   it('stops at both ends, with the buttons marked disabled but still focusable', () => {

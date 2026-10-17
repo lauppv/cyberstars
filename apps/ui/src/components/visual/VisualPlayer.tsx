@@ -140,9 +140,11 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
       <ArrayView
         values={drawn.visual.values}
         pointers={drawn.visual.pointers}
+        markers={drawn.visual.markers}
         frame={drawn.frames[step]}
         box={box}
         swapMs={moveMs}
+        lift={drawn.visual.steps.some((s) => s.swap)}
       />
     ) : drawn.type === 'boxes' ? (
       <BoxesView
