@@ -3,6 +3,11 @@ import { lessons } from './curriculum.js';
 import { lessonTitlesRo } from './curriculum-ro.js';
 
 describe('lessonTitlesRo', () => {
+  it('titles every lesson, so a new one needs its Romanian title here', () => {
+    const untitled = lessons.filter((l) => !lessonTitlesRo[l.courseKey]?.[l.slug]);
+    expect(untitled.map((l) => `${l.courseKey}/${l.slug}`)).toEqual([]);
+  });
+
   it('titles only lessons the curriculum has', () => {
     const known = new Set(lessons.map((l) => `${l.courseKey}/${l.slug}`));
     const unknown = Object.entries(lessonTitlesRo).flatMap(([course, titles]) =>
