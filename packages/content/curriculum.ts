@@ -1823,4 +1823,11 @@ export const lessons = [
     sortOrder: 10,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'flood-fill',
+    title: 'Easy · Fill a Region',
+    sortOrder: 11,
+    hasCodeFile: true,
+  },
 ];
