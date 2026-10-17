@@ -1802,4 +1802,11 @@ export const lessons = [
     sortOrder: 7,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'valid-bst',
+    title: 'Medium · Is It a Binary Search Tree',
+    sortOrder: 8,
+    hasCodeFile: true,
+  },
 ];
