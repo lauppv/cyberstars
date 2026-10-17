@@ -25,5 +25,5 @@ for pas in range(n):
 if len(ordine) == n:
     print("Ordine:", *ordine)
 else:
-    print("No ordine, there is a cycle")
+    print("Nicio ordine, exista un ciclu")
 ```
