@@ -1,0 +1,79 @@
+{
+  "type": "tree",
+  "caption": "The tree from the start of the lesson, built one line of code at a time.",
+  "nodes": {},
+  "steps": [
+    {
+      "add": {
+        "0": 8
+      },
+      "focus": [0],
+      "code": {
+        "python": "root = Node(8)",
+        "java": "Node root = new Node(8);",
+        "c": "struct Node *root = new_node(8);"
+      },
+      "caption": "8 becomes the root"
+    },
+    {
+      "add": {
+        "1": 3
+      },
+      "focus": [1],
+      "code": {
+        "python": "root.left = Node(3)",
+        "java": "root.left = new Node(3);",
+        "c": "root->left = new_node(3);"
+      },
+      "caption": "3 becomes the left child of 8"
+    },
+    {
+      "add": {
+        "2": 10
+      },
+      "focus": [2],
+      "code": {
+        "python": "root.right = Node(10)",
+        "java": "root.right = new Node(10);",
+        "c": "root->right = new_node(10);"
+      },
+      "caption": "10 becomes the right child of 8"
+    },
+    {
+      "add": {
+        "3": 1
+      },
+      "focus": [3],
+      "code": {
+        "python": "root.left.left = Node(1)",
+        "java": "root.left.left = new Node(1);",
+        "c": "root->left->left = new_node(1);"
+      },
+      "caption": "1 becomes the left child of 3"
+    },
+    {
+      "add": {
+        "4": 6
+      },
+      "focus": [4],
+      "code": {
+        "python": "root.left.right = Node(6)",
+        "java": "root.left.right = new Node(6);",
+        "c": "root->left->right = new_node(6);"
+      },
+      "caption": "6 becomes the right child of 3"
+    },
+    {
+      "add": {
+        "6": 14
+      },
+      "focus": [6],
+      "code": {
+        "python": "root.right.right = Node(14)",
+        "java": "root.right.right = new Node(14);",
+        "c": "root->right->right = new_node(14);"
+      },
+      "caption": "14 becomes the right child of 10"
+    }
+  ]
+}
