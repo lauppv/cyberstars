@@ -55,23 +55,29 @@ const DIFFICULTY = {
   hard: { bg: 'rgba(255,107,107,0.12)', text: 'var(--error)' },
 };
 
-const CHALLENGES: [string, keyof typeof DIFFICULTY, boolean][] = [
-  ['Reverse a String', 'easy', true],
-  ['Palindrome Check', 'easy', true],
-  ['Caesar Cipher', 'medium', true],
-  ['Two Sum', 'medium', false],
-  ['Group Anagrams', 'hard', false],
+// slug, English title (until the curriculum is in), difficulty, solved
+const CHALLENGES: [string, string, keyof typeof DIFFICULTY, boolean][] = [
+  ['reverse-string', 'Reverse a String', 'easy', true],
+  ['palindrome', 'Palindrome Check', 'easy', true],
+  ['caesar-cipher', 'Caesar Cipher', 'medium', true],
+  ['two-sum', 'Two Sum', 'medium', false],
+  ['group-anagrams', 'Group Anagrams', 'hard', false],
 ];
 
 export function AlgorithmsPicture() {
   const { t } = useTranslation();
+  const { courses } = useCurriculum();
+  const lessons = courses.find((c) => c.key === 'algo-python')?.lessons ?? [];
+  // the title in the page's language, without the difficulty the pill shows
+  const titleOf = (slug: string, english: string) =>
+    lessons.find((l) => l.slug === slug)?.title.replace(/^(Easy|Medium|Hard) · /, '') ?? english;
   return (
     <Box label={t('landing.features.algorithms.picture')}>
       <ul className="m-0 p-0 list-none flex flex-col gap-1.5">
-        {CHALLENGES.map(([title, diff, solved], i) => {
+        {CHALLENGES.map(([slug, english, diff, solved], i) => {
           const d = DIFFICULTY[diff];
           return (
-            <li key={title} className="flex items-center gap-3 h-[32px]">
+            <li key={slug} className="flex items-center gap-3 h-[32px]">
               <span
                 className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0"
                 style={{
@@ -81,7 +87,7 @@ export function AlgorithmsPicture() {
               >
                 {solved ? '✓' : i + 1}
               </span>
-              <span className="text-[13px] font-medium flex-1">{title}</span>
+              <span className="text-[13px] font-medium flex-1">{titleOf(slug, english)}</span>
               <span
                 className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
                 style={{ background: d.bg, color: d.text }}
@@ -97,19 +103,26 @@ export function AlgorithmsPicture() {
 }
 
 // The first steps of the Linux course (pwd, ls), in the lesson terminal's
-// prompt and colours
-const SESSION: [string, string][] = [
-  ['pwd', '/home/student'],
-  ['ls', 'mission.txt  reports  tools'],
-  ['ls reports', 'january.log  february.log'],
-];
+// prompt and colours, with the Romanian lesson's own file names on a Romanian page
+const SESSION: Record<'en' | 'ro', [string, string][]> = {
+  en: [
+    ['pwd', '/home/student'],
+    ['ls', 'mission.txt  reports  tools'],
+    ['ls reports', 'january.log  february.log'],
+  ],
+  ro: [
+    ['pwd', '/home/student'],
+    ['ls', 'misiune.txt  rapoarte  unelte'],
+    ['ls rapoarte', 'ianuarie.log  februarie.log'],
+  ],
+};
 
 export function LinuxPicture() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <Box label={t('landing.features.linux.picture')}>
       <div className="h-[220px] -m-4 p-4 font-mono text-[12px] leading-[1.7] bg-[rgba(13,17,23,0.3)]">
-        {SESSION.map(([command, output]) => (
+        {SESSION[i18n.language === 'ro' ? 'ro' : 'en'].map(([command, output]) => (
           <div key={command}>
             <div>
               <span className="text-[#7EE787]">student@sandbox:~$ </span>
