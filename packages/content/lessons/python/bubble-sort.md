@@ -32,17 +32,21 @@ After pass 1, the **biggest number (8)** has "bubbled up" to the end. That's why
 {
   "type": "array",
   "values": [5, 3, 8, 1, 2],
-  "caption": "The list before sorting: [5, 3, 8, 1, 2]",
+  "caption": "We start at position 0 (j = 0) and compare that number with its right neighbour (j + 1). If the left one is bigger, they swap. Then j moves one step right. Each pass pushes the biggest number to the end.",
+  "pointers": ["j = {i}", "j + 1"],
   "steps": [
-    {"compare": [0, 1], "swap": true, "caption": "Pass 1: compare 5 and 3 → 5 > 3, swap → [3, 5, 8, 1, 2]"},
-    {"compare": [1, 2], "caption": "Pass 1: compare 5 and 8 → 5 < 8, ok → [3, 5, 8, 1, 2]"},
-    {"compare": [2, 3], "swap": true, "caption": "Pass 1: compare 8 and 1 → 8 > 1, swap → [3, 5, 1, 8, 2]"},
-    {"compare": [3, 4], "swap": true, "sorted": 4, "caption": "Pass 1: compare 8 and 2 → 8 > 2, swap → [3, 5, 1, 2, 8]. The biggest number, 8, has bubbled up to the end"},
-    {"compare": [0, 1], "caption": "Pass 2: compare 3 and 5 → 3 < 5, ok"},
-    {"compare": [1, 2], "swap": true, "caption": "Pass 2: compare 5 and 1 → 5 > 1, swap → [3, 1, 5, 2, 8]"},
-    {"compare": [2, 3], "swap": true, "sorted": 3, "caption": "Pass 2: compare 5 and 2 → 5 > 2, swap → [3, 1, 2, 5, 8]. 5 is in its place too"},
-    {"compare": [0, 1], "swap": true, "caption": "Pass 3: compare 3 and 1 → 3 > 1, swap → [1, 3, 2, 5, 8]"},
-    {"compare": [1, 2], "swap": true, "sorted": 0, "caption": "Pass 3: compare 3 and 2 → 3 > 2, swap → [1, 2, 3, 5, 8]. Done! The list is sorted"}
+    {"title": "Pass 1", "compare": [0, 1], "ask": "Is 5 > 3?", "swap": true, "caption": "Yes, so they swap"},
+    {"compare": [1, 2], "ask": "Is 5 > 8?", "caption": "No, so they stay"},
+    {"compare": [2, 3], "ask": "Is 8 > 1?", "swap": true, "caption": "Yes, so they swap"},
+    {"compare": [3, 4], "ask": "Is 8 > 2?", "swap": true, "caption": "Yes, so they swap"},
+    {"sorted": 4, "caption": "8 is at the end, in its place"},
+    {"title": "Pass 2", "compare": [0, 1], "ask": "Is 3 > 5?", "caption": "No, so they stay"},
+    {"compare": [1, 2], "ask": "Is 5 > 1?", "swap": true, "caption": "Yes, so they swap"},
+    {"compare": [2, 3], "ask": "Is 5 > 2?", "swap": true, "caption": "Yes, so they swap"},
+    {"sorted": 3, "caption": "5 is in its place too"},
+    {"title": "Pass 3", "compare": [0, 1], "ask": "Is 3 > 1?", "swap": true, "caption": "Yes, so they swap"},
+    {"compare": [1, 2], "ask": "Is 3 > 2?", "swap": true, "caption": "Yes, so they swap"},
+    {"sorted": 0, "caption": "Done! The list is sorted"}
   ]
 }
 ```

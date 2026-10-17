@@ -32,17 +32,21 @@ După trecerea 1, **cel mai mare număr (8)** a „urcat ca o bulă" la sfârși
 {
   "type": "array",
   "values": [5, 3, 8, 1, 2],
-  "caption": "Lista înainte de sortare: [5, 3, 8, 1, 2]",
+  "caption": "Pornim de la poziția 0 (j = 0) și comparăm numărul de acolo cu vecinul din dreapta (j + 1). Dacă cel din stânga e mai mare, își schimbă locurile. Apoi j se mută un pas la dreapta. Fiecare trecere duce cel mai mare număr la capăt.",
+  "pointers": ["j = {i}", "j + 1"],
   "steps": [
-    {"compare": [0, 1], "swap": true, "caption": "Trecerea 1: compară 5 și 3 → 5 > 3, interschimbă → [3, 5, 8, 1, 2]"},
-    {"compare": [1, 2], "caption": "Trecerea 1: compară 5 și 8 → 5 < 8, ok → [3, 5, 8, 1, 2]"},
-    {"compare": [2, 3], "swap": true, "caption": "Trecerea 1: compară 8 și 1 → 8 > 1, interschimbă → [3, 5, 1, 8, 2]"},
-    {"compare": [3, 4], "swap": true, "sorted": 4, "caption": "Trecerea 1: compară 8 și 2 → 8 > 2, interschimbă → [3, 5, 1, 2, 8]. Cel mai mare număr, 8, a urcat ca o bulă la sfârșit"},
-    {"compare": [0, 1], "caption": "Trecerea 2: compară 3 și 5 → 3 < 5, ok"},
-    {"compare": [1, 2], "swap": true, "caption": "Trecerea 2: compară 5 și 1 → 5 > 1, interschimbă → [3, 1, 5, 2, 8]"},
-    {"compare": [2, 3], "swap": true, "sorted": 3, "caption": "Trecerea 2: compară 5 și 2 → 5 > 2, interschimbă → [3, 1, 2, 5, 8]. Și 5 e la locul lui"},
-    {"compare": [0, 1], "swap": true, "caption": "Trecerea 3: compară 3 și 1 → 3 > 1, interschimbă → [1, 3, 2, 5, 8]"},
-    {"compare": [1, 2], "swap": true, "sorted": 0, "caption": "Trecerea 3: compară 3 și 2 → 3 > 2, interschimbă → [1, 2, 3, 5, 8]. Gata! Lista este sortată"}
+    {"title": "Trecerea 1", "compare": [0, 1], "ask": "Este 5 > 3?", "swap": true, "caption": "Da, deci își schimbă locurile"},
+    {"compare": [1, 2], "ask": "Este 5 > 8?", "caption": "Nu, deci rămân pe loc"},
+    {"compare": [2, 3], "ask": "Este 8 > 1?", "swap": true, "caption": "Da, deci își schimbă locurile"},
+    {"compare": [3, 4], "ask": "Este 8 > 2?", "swap": true, "caption": "Da, deci își schimbă locurile"},
+    {"sorted": 4, "caption": "8 a ajuns la capăt, la locul lui"},
+    {"title": "Trecerea 2", "compare": [0, 1], "ask": "Este 3 > 5?", "caption": "Nu, deci rămân pe loc"},
+    {"compare": [1, 2], "ask": "Este 5 > 1?", "swap": true, "caption": "Da, deci își schimbă locurile"},
+    {"compare": [2, 3], "ask": "Este 5 > 2?", "swap": true, "caption": "Da, deci își schimbă locurile"},
+    {"sorted": 3, "caption": "Și 5 e la locul lui"},
+    {"title": "Trecerea 3", "compare": [0, 1], "ask": "Este 3 > 1?", "swap": true, "caption": "Da, deci își schimbă locurile"},
+    {"compare": [1, 2], "ask": "Este 3 > 2?", "swap": true, "caption": "Da, deci își schimbă locurile"},
+    {"sorted": 0, "caption": "Gata! Lista este sortată"}
   ]
 }
 ```
