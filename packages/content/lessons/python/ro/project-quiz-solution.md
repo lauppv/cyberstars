@@ -20,7 +20,7 @@ procent = round(scor / total * 100)
 print(f"Scor: {scor}/{total}")
 print(f"Procentaj: {procent}%")
 if procent >= 50:
-    print("PASS")
+    print("ADMIS")
 else:
-    print("FAIL")
+    print("RESPINS")
 ```
