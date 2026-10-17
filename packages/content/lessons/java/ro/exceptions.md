@@ -80,7 +80,7 @@ Poți avea **mai multe blocuri catch**
 public class Main {
     public static void main(String[] args) {
         try {
-            String text = "hello";
+            String text = "salut";
             int numar = Integer.parseInt(text);
         } catch (NumberFormatException e) {
             System.out.println("Nu e un numar: " + e.getMessage());

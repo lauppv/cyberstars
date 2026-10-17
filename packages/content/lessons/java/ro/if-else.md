@@ -40,7 +40,7 @@ public class Main {
     public static void main(String[] args) {
         int x = 4;
         if (x = 4) {       // eroare
-            System.out.println("Boo");
+            System.out.println("Bau");
         }
     }
 }
@@ -53,7 +53,7 @@ public class Main {
     public static void main(String[] args) {
         int x = 4;
         if (x == 4) {
-            System.out.println("Boo");
+            System.out.println("Bau");
         }
     }
 }

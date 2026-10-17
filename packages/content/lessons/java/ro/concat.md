@@ -157,12 +157,12 @@ Folosește ce preferi. `String.format()` e bună când vrei să stochezi textul 
 
 Sala de jocuri a stației tocmai a terminat un turneu. Afișează statisticile câștigătorului pe o singură linie.
 
-Creează trei variabile: `nume` (String) pentru numele jucătorului, `scor` (int) pentru scorul total și `rating` (double) pentru ratingul de performanță. Apoi afișează o linie de forma `Jucator: <nume> | Scor: <scor> | Rating: <rating>`. Poți folosi **+** sau **String.format()**, cum preferi.
+Creează trei variabile: `nume` (String) pentru numele jucătorului, `scor` (int) pentru scorul total și `nota` (double) pentru nota de performanță. Apoi afișează o linie de forma `Jucator: <nume> | Scor: <scor> | Nota: <nota>`. Poți folosi **+** sau **String.format()**, cum preferi.
 
 **Exemplu**
 
-Cu numele `Tommy Vercetti`, scorul `1500` și ratingul `4.75`, programul tău ar trebui să afișeze
+Cu numele `Tommy Vercetti`, scorul `1500` și nota `4.75`, programul tău ar trebui să afișeze
 
 ```text
-Jucator: Tommy Vercetti | Scor: 1500 | Rating: 4.75
+Jucator: Tommy Vercetti | Scor: 1500 | Nota: 4.75
 ```
