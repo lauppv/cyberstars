@@ -86,7 +86,7 @@ export function ActivityHeatmap({
         <span className="text-xs text-[var(--text2)]">
           <Trans
             i18nKey="home.activeDays"
-            values={{ count: totalActive, weeks }}
+            values={{ count: totalActive, period: t('home.lastWeeks', { count: weeks }) }}
             components={[<strong className="text-[var(--text)] font-semibold" />]}
           />
         </span>

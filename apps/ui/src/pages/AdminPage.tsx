@@ -158,8 +158,8 @@ export function AdminPage() {
                           <li key={c.courseKey} className="flex justify-between gap-2">
                             <span className="text-[var(--text2)]">{courseTitle(c.courseKey)}</span>
                             <span className="text-[var(--text3)] tabular-nums">
-                              {c.completions} {t('admin.completions')} · {c.learners}{' '}
-                              {t('admin.learners')}
+                              {c.completions} {t('admin.completions', { count: c.completions })} ·{' '}
+                              {c.learners} {t('admin.learners', { count: c.learners })}
                             </span>
                           </li>
                         ))}

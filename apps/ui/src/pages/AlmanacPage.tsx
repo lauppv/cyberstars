@@ -227,7 +227,9 @@ export function AlmanacPage() {
               <h2>{t('almanac.latestReads')}</h2>
               <div className="meta">
                 {filtered.length}{' '}
-                {filter === 'all' ? t('almanac.articles') : t('almanac.inThisTopic')}
+                {filter === 'all'
+                  ? t('almanac.articles', { count: filtered.length })
+                  : t('almanac.inThisTopic')}
                 {totalPages > 1 && (
                   <>
                     {' '}

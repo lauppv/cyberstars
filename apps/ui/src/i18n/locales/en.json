@@ -37,8 +37,6 @@
     "progress": "Lesson progress",
     "totalCompletions": "Total completions",
     "byCourse": "By course",
-    "learners": "learners",
-    "completions": "completions",
     "topLessons": "Most completed lessons",
     "forum": "Forum & Support",
     "threads": "Threads",
@@ -95,7 +93,11 @@
     "placementQuestion": "Got past question {{n}}",
     "placementSubmitted": "Submitted",
     "placementGetStarted": "Pressed Get started",
-    "placementProgress": "placement test {{n}}/{{total}}"
+    "placementProgress": "placement test {{n}}/{{total}}",
+    "completions_one": "completion",
+    "completions_other": "completions",
+    "learners_one": "learner",
+    "learners_other": "learners"
   },
   "lang": {
     "switch": "Switch language",
@@ -110,7 +112,6 @@
     "readTime": "{{time}} read",
     "readMore": "Read →",
     "activity": "Activity",
-    "activeDays": "<0>{{count}}</0> active days in the last {{weeks}} weeks",
     "dayTue": "Tue",
     "dayThu": "Thu",
     "daySat": "Sat",
@@ -146,7 +147,11 @@
       "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> and <7>Linux</7>, right in your browser.",
       "startLearning": "Start learning",
       "signIn": "Sign in"
-    }
+    },
+    "activeDays_one": "<0>{{count}}</0> active day in {{period}}",
+    "activeDays_other": "<0>{{count}}</0> active days in {{period}}",
+    "lastWeeks_one": "the last week",
+    "lastWeeks_other": "the last {{count}} weeks"
   },
   "landing": {
     "hero": {
@@ -682,8 +687,6 @@
       "posts": "Posts",
       "categories": "Categories"
     },
-    "threadsLower": "threads",
-    "postsCount": "{{count}} posts",
     "by": "by",
     "loadThreadsError": "Failed to load threads.",
     "loadThreadError": "Failed to load thread.",
@@ -693,7 +696,6 @@
     "breadcrumbLabel": "Forum navigation",
     "backTo": "Back to {{name}}",
     "categoryNotFound": "Category not found.",
-    "bannerThreads": "threads",
     "restrictedThreads": "Only moderators and admins can start threads in this category.",
     "threadTitlePlaceholder": "Thread title...",
     "composerPlaceholder": "Write your post... Markdown supported.",
@@ -702,13 +704,9 @@
     "createThread": "Create Thread",
     "noThreads": "No threads yet. Be the first to post!",
     "solved": "✓ Solved",
-    "replies": "replies",
-    "views": "views",
     "loadingThread": "Loading thread...",
     "threadNotFound": "Thread not found.",
     "startedBy": "started by",
-    "postsLower": "posts",
-    "viewsLower": "views",
     "postReply": "Post a reply",
     "replyPlaceholder": "Type your reply...",
     "markdownSupported": "Markdown supported",
@@ -730,7 +728,21 @@
     "lockedBadge": "Locked",
     "deleteThread": "Delete thread",
     "delete": "Delete",
-    "actionError": "Something went wrong. Please try again."
+    "actionError": "Something went wrong. Please try again.",
+    "threadsLower_one": "thread",
+    "threadsLower_other": "threads",
+    "bannerThreads_one": "thread",
+    "bannerThreads_other": "threads",
+    "replies_one": "reply",
+    "replies_other": "replies",
+    "views_one": "view",
+    "views_other": "views",
+    "postsLower_one": "post",
+    "postsLower_other": "posts",
+    "viewsLower_one": "view",
+    "viewsLower_other": "views",
+    "postsCount_one": "{{count}} post",
+    "postsCount_other": "{{count}} posts"
   },
   "almanac": {
     "categories": {
@@ -753,7 +765,6 @@
     "showAll": "Show all",
     "featured": "Read of the day",
     "latestReads": "Latest reads",
-    "articles": "articles",
     "inThisTopic": "in this topic",
     "page": "page",
     "prevFact": "Previous fun fact",
@@ -761,7 +772,9 @@
     "prevQuote": "Previous quote",
     "nextQuote": "Next quote",
     "funFact": "Fun Fact",
-    "quotes": "Quotes"
+    "quotes": "Quotes",
+    "articles_one": "article",
+    "articles_other": "articles"
   },
   "lesson": {
     "difficulty": {

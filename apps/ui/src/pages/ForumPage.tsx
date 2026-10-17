@@ -229,7 +229,7 @@ function ForumIndex({
                     </div>
                     <div className="cat-counts">
                       <strong>{c.threadCount.toLocaleString()}</strong>
-                      <span>{t('forum.threadsLower')}</span>
+                      <span>{t('forum.threadsLower', { count: c.threadCount })}</span>
                       <span>{t('forum.postsCount', { count: c.postCount })}</span>
                     </div>
                     <div className="cat-lastpost">
@@ -412,7 +412,8 @@ function CategoryView({
           </div>
           <div className="cat-banner-stats">
             <span>
-              <strong>{threads.length}</strong> {t('forum.bannerThreads')}
+              <strong>{threads.length}</strong>{' '}
+              {t('forum.bannerThreads', { count: threads.length })}
             </span>
           </div>
         </div>
@@ -489,11 +490,11 @@ function CategoryView({
               </div>
               <div className="thread-count">
                 {th.replyCount}
-                <small>{t('forum.replies')}</small>
+                <small>{t('forum.replies', { count: th.replyCount })}</small>
               </div>
               <div className="thread-count">
                 {th.views >= 1000 ? (th.views / 1000).toFixed(1) + 'k' : th.views}
-                <small>{t('forum.views')}</small>
+                <small>{t('forum.views', { count: th.views })}</small>
               </div>
               {th.lastPostAuthor && (
                 <div className="thread-lastpost">
@@ -689,11 +690,11 @@ function ThreadView({ threadId, user }: { threadId: number; user: AuthenticatedU
             <RoleBadge role={thread.authorRole} />
             <span className="dot" />
             <span>
-              {thread.posts.length} {t('forum.postsLower')}
+              {thread.posts.length} {t('forum.postsLower', { count: thread.posts.length })}
             </span>
             <span className="dot" />
             <span>
-              {thread.views} {t('forum.viewsLower')}
+              {thread.views} {t('forum.viewsLower', { count: thread.views })}
             </span>
             {thread.solved && (
               <>

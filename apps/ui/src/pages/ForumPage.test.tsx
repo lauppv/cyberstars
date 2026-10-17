@@ -548,7 +548,7 @@ describe('ThreadView', () => {
     renderAt('/forum/t/5');
 
     await screen.findByRole('heading', { name: 'Loops confuse me', level: 1 });
-    expect(screen.getByText('1 posts')).toBeInTheDocument();
+    expect(screen.getByText('1 post')).toBeInTheDocument();
     expect(screen.getByText('42 views')).toBeInTheDocument();
     expect(screen.getByText('✓ Solved')).toBeInTheDocument();
   });
