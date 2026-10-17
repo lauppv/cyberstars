@@ -881,11 +881,8 @@ export function LessonPage() {
                         devModeChoice.toggle();
                       }}
                       aria-pressed={devMode}
-                      className={`flex h-8 px-3 items-center rounded-[var(--radius-sm)] text-[12px] font-semibold transition cursor-pointer border ${
-                        devMode
-                          ? 'bg-[var(--accent)] border-[var(--accent)] text-white hover:brightness-110'
-                          : 'bg-transparent border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)]'
-                      }`}
+                      // One look on and off: only its words tell which it is
+                      className="flex h-8 px-3 items-center rounded-[var(--radius-sm)] text-[12px] font-semibold transition cursor-pointer border border-[var(--border)] bg-[var(--surface)] text-[var(--accent)] hover:border-[var(--accent)]"
                     >
                       {t(devMode ? 'lesson.devModeOn' : 'lesson.devModeOff')}
                     </button>
