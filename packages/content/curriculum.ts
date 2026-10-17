@@ -1189,6 +1189,13 @@ export const lessons = [
     hasCodeFile: true,
   },
   { courseKey: 'trees-graphs', slug: 'heaps', title: 'Heaps', sortOrder: 5, hasCodeFile: true },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'recap-trees',
+    title: 'Recap: Trees',
+    sortOrder: 6,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',
