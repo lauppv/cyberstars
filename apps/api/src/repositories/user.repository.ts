@@ -29,6 +29,7 @@ export async function findById(id: number) {
       placementScore: true,
       interests: true,
       interestsAt: true,
+      codeLanguage: true,
     },
   });
 }
@@ -105,6 +106,10 @@ export async function create(
 
 export async function saveInterests(id: number, interests: string[]): Promise<void> {
   await prisma.user.update({ where: { id }, data: { interests, interestsAt: new Date() } });
+}
+
+export async function saveCodeLanguage(id: number, codeLanguage: string): Promise<void> {
+  await prisma.user.update({ where: { id }, data: { codeLanguage } });
 }
 
 // Only the first passing run stamps the date; later passes leave it alone.

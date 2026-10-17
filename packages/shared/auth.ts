@@ -1,3 +1,4 @@
+import type { CodeLanguage } from './constants.js';
 import type { Interest } from './interests.js';
 import type { PlacementLevel } from './placement.js';
 
@@ -32,6 +33,9 @@ export interface AuthenticatedUser {
   placementLevel: PlacementLevel | null;
   // What they want to learn, from the screen after the tour; null until asked.
   interests: Interest[] | null;
+  // The language picked last on a course taught in Python, Java and C, which
+  // its lessons open in; null until one is picked.
+  codeLanguage: CodeLanguage | null;
 }
 
 export interface LoginPayload {

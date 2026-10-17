@@ -6,6 +6,7 @@ import { validateBody } from '../middleware/validate.js';
 import {
   updateProfileSchema,
   saveInterestsSchema,
+  saveCodeLanguageSchema,
   changePasswordSchema,
   requestEmailChangeSchema,
   confirmEmailChangeSchema,
@@ -40,6 +41,12 @@ router.put(
   authenticateToken,
   validateBody(saveInterestsSchema),
   profileController.saveInterests,
+);
+router.put(
+  '/code-language',
+  authenticateToken,
+  validateBody(saveCodeLanguageSchema),
+  profileController.saveCodeLanguage,
 );
 router.post('/avatar', authenticateToken, upload.single('avatar'), profileController.uploadAvatar);
 router.delete('/avatar', authenticateToken, profileController.deleteAvatar);

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { INTERESTS } from '@cyberstars/shared/interests';
+import { CODE_LANGUAGES } from '@cyberstars/shared/constants';
 
 export const updateProfileSchema = z.object({
   bio: z.string().nullable().optional(),
@@ -17,6 +18,10 @@ export const saveInterestsSchema = z.object({
     .array(z.enum(INTERESTS))
     .min(1)
     .refine((list) => new Set(list).size === list.length, 'Each interest only once'),
+});
+
+export const saveCodeLanguageSchema = z.object({
+  language: z.enum(CODE_LANGUAGES),
 });
 
 export const changePasswordSchema = z.object({
