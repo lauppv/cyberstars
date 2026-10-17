@@ -70,7 +70,24 @@ const javaCourse = {
   lessons: [{ slug: 'intro', title: 'Intro', sortOrder: 1 }],
 };
 
+const treesCourse = {
+  key: 'trees-graphs',
+  title: 'Trees and Graphs',
+  description: 'Trees and graphs in any language',
+  lessons: [{ slug: 'trees', title: 'Trees', sortOrder: 1 }],
+};
+
 describe('CoursesPage', () => {
+  it("shows a multi-language course's languages on its card", () => {
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse, treesCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    expect(screen.getByText('Python · Java · C')).toBeInTheDocument();
+  });
+
   it('shows loading state when curriculum is loading', () => {
     mockUseCurriculum.mockReturnValue({ courses: [], isLoading: true, refresh: vi.fn() });
     renderPage();

@@ -12,12 +12,16 @@ import {
   xpForLesson,
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
+  CODE_LANGUAGES,
+  isMultiLanguage,
 } from '@cyberstars/shared/constants';
 
 interface CourseData {
   key: string;
   icon: string;
   name: string;
+  // The languages a multi-language course is taught in, as the card shows them.
+  languages: string | null;
   color: string;
   lessonCount: number;
   totalXp: number;
@@ -69,6 +73,9 @@ export function CoursesPage() {
           key: course.key,
           icon: courseMeta(course.key).icon,
           name: course.title,
+          languages: isMultiLanguage(course.key)
+            ? CODE_LANGUAGES.map((language) => courseMeta(language).label).join(' · ')
+            : null,
           color: courseMeta(course.key).color,
           lessonCount: course.lessons.length,
           totalXp: xpForCourse(course.lessons.length),
@@ -124,6 +131,9 @@ export function CoursesPage() {
                     >
                       {c.name}
                     </div>
+                    {c.languages && (
+                      <div className="text-[12px] text-[var(--text3)]">{c.languages}</div>
+                    )}
                   </div>
                   <span
                     className="flex-shrink-0 self-start text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)]"
