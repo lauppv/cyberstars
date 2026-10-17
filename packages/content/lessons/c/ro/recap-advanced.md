@@ -23,7 +23,7 @@ Intrare
 ```text
 admin 7
 editor 3
-viewer 1
+cititor 1
 ```
 
 Ieșire
@@ -31,7 +31,7 @@ Ieșire
 ```text
 admin: READ WRITE EXECUTE
 editor: READ WRITE
-viewer: READ
+cititor: READ
 ```
 
 **Exemplu**

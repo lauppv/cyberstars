@@ -1,12 +1,12 @@
 {
   "structure": {
     "requires": [
-      { "kind": "call", "name": "AREA_RECT" },
-      { "kind": "call", "name": "AREA_CIRCLE" },
+      { "kind": "call", "name": "ARIE_DREPTUNGHI" },
+      { "kind": "call", "name": "ARIE_CERC" },
       { "kind": "define", "name": "PI" },
-      { "kind": "define", "name": "AREA_RECT" },
-      { "kind": "define", "name": "AREA_CIRCLE" },
-      { "kind": "define", "name": "MAX_SIZE" }
+      { "kind": "define", "name": "ARIE_DREPTUNGHI" },
+      { "kind": "define", "name": "ARIE_CERC" },
+      { "kind": "define", "name": "LIMITA_MAX" }
     ]
   },
   "cases": [{ "visible": true }]

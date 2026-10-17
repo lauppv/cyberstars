@@ -13,14 +13,14 @@
   "cases": [
     { "visible": true, "stdin": "4\nRitchie 95\nThompson 82\nKernighan 98\nMcIlroy 76\n" },
     { "visible": true, "stdin": "2\nAna 88\nMihai 91\n" },
-    { "stdin": "1\nSolo 100\n" },
+    { "stdin": "1\nUnic 100\n" },
     { "stdin": "5\nZeta 10\nEta 90\nTeta 20\nIota 89\nKappa 30\n" },
-    { "stdin": "1\nSolo 0\n", "generated": true },
-    { "stdin": "2\nTop 100\nLow 0\n", "generated": true },
-    { "stdin": "2\nLow 0\nTop 100\n", "generated": true },
+    { "stdin": "1\nUnic 0\n", "generated": true },
+    { "stdin": "2\nPrimul 100\nUltimul 0\n", "generated": true },
+    { "stdin": "2\nUltimul 0\nPrimul 100\n", "generated": true },
     { "stdin": "4\nA 10\nB 20\nC 30\nD 40\n", "generated": true },
     { "stdin": "4\nD 40\nC 30\nB 20\nA 10\n", "generated": true },
-    { "stdin": "3\nMid 50\nPeak 99\nMid2 50\n", "generated": true },
+    { "stdin": "3\nMijloc 50\nVarf 99\nMijloc2 50\n", "generated": true },
     {
       "stdin": "40\nStudent0 0\nStudent1 37\nStudent2 74\nStudent3 14\nStudent4 51\nStudent5 88\nStudent6 28\nStudent7 65\nStudent8 5\nStudent9 42\nStudent10 79\nStudent11 19\nStudent12 56\nStudent13 93\nStudent14 33\nStudent15 70\nStudent16 10\nStudent17 47\nStudent18 84\nStudent19 24\nStudent20 61\nStudent21 1\nStudent22 38\nStudent23 75\nStudent24 15\nStudent25 52\nStudent26 89\nStudent27 29\nStudent28 66\nStudent29 6\nStudent30 43\nStudent31 80\nStudent32 20\nStudent33 57\nStudent34 94\nStudent35 34\nStudent36 71\nStudent37 11\nStudent38 48\nStudent39 85\n",
       "generated": true

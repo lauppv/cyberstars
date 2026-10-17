@@ -20,8 +20,8 @@ Diferența: **< >** pentru header-ele de sistem, **" "** pentru fișierele tale.
 #define PI 3.14159
 
 int main(void) {
-    int baud = VITEZA_MAX;
-    printf("Viteza: %d\n", baud);
+    int viteza = VITEZA_MAX;
+    printf("Viteza: %d\n", viteza);
     printf("PI: %f\n", PI);
     return 0;
 }
@@ -80,15 +80,15 @@ Ești tehnician la centrul de calcul. Înainte de a preda noul rack de servere �
 Deasupra lui **main**, definește:
 
 - **PI**: `3.14159`
-- **AREA_RECT(w, h)**: returnează `((w) * (h))` (suprafața sălii de echipamente)
-- **AREA_CIRCLE(r)**: returnează `((PI) * (r) * (r))` (suprafața antenei)
-- **MAX_SIZE**: `100` (limita de temperatură a sălii, în grade)
+- **ARIE_DREPTUNGHI(lung, lat)**: returnează `((lung) * (lat))` (suprafața sălii de echipamente)
+- **ARIE_CERC(r)**: returnează `((PI) * (r) * (r))` (suprafața antenei)
+- **LIMITA_MAX**: `100` (limita de temperatură a sălii, în grade)
 
 În **main**, folosește macro-urile ca să afișezi:
 
-1. `AREA_RECT(5, 3)` pe formatul **"Sala: %d"**
-2. `AREA_CIRCLE(4.0)` pe formatul **"Antena: %.2f"**
-3. `MAX_SIZE` pe formatul **"Limita: %d"**
+1. `ARIE_DREPTUNGHI(5, 3)` pe formatul **"Sala: %d"**
+2. `ARIE_CERC(4.0)` pe formatul **"Antena: %.2f"**
+3. `LIMITA_MAX` pe formatul **"Limita: %d"**
 
 **Exemplu**
 
