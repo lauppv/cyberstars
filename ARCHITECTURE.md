@@ -380,7 +380,7 @@ fail. `npm run check:tests` grades them next to the reference solution, and the
 
 A lesson may have an optional Romanian translation at `packages/content/lessons/:lang/ro/<slug>.md` (same slug); when absent, the reader sees the English source. See [Curriculum & Lessons](#curriculum--lessons) for the fallback behavior.
 
-A **multi-language course** (`MULTI_LANGUAGE_COURSE_KEYS`, today `trees-graphs`) teaches every lesson in Python, Java and C, each in its own folder, `packages/content/lessons/<course>/<language>/`, with all the files above and its own `ro/`; its variants sit in `variants/<course>/<language>/<slug>/`. The student switches language on the lesson, and the lesson is ticked once whichever language passed it. The static-content generator stops the build when a lesson lacks a language, or the starter, tests or solution its Python twin has.
+A **multi-language course** (`MULTI_LANGUAGE_COURSE_KEYS`, today the `trees-graphs` course and its challenge set `algo-trees-graphs`) teaches every lesson in Python, Java and C, each in its own folder, `packages/content/lessons/<course>/<language>/` (`packages/content/algorithms/trees-graphs/<language>/` for the challenge set), with all the files above and its own `ro/`; its variants sit in `variants/<course>/<language>/<slug>/`. The student switches language on the lesson, and the lesson is ticked once whichever language passed it. The static-content generator stops the build when a lesson lacks a language, or the starter, tests or solution its Python twin has.
 
 ## Environment variables
 
