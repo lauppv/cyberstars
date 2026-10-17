@@ -46,24 +46,8 @@ Heap-ul crește și scade, așa că un `ArrayList<Integer>` i se potrivește mai
 
 Adăugăm **2** în heap-ul de mai sus
 
-```text
-pune 2 la indexul 6, copilul drept al lui 6
-
-          1                 1  3  6  5  9  8  2
-        /   \
-       3     6
-      / \   / \
-     5   9 8   2
-
-2 e mai mic decat parintele lui, 6: schimba-le
-
-          1                 1  3  2  5  9  8  6
-        /   \
-       3     2
-      / \   / \
-     5   9 8   6
-
-2 e mai mare decat parintele lui, 1: stop
+```visual
+{"use": "heap-push"}
 ```
 
 Urcă un nivel la fiecare schimbare, deci nu face niciodată mai mulți pași decât e de înalt arborele. O mică metodă **schimba** ține schimbările scurte
@@ -113,24 +97,8 @@ Este heap-ul de la începutul lecției, construit din valori care au venit amest
 
 Scoatem din **1 3 2 5 9 8 6**
 
-```text
-scoate 1, muta ultima valoare, 6, in radacina
-
-          6                 6  3  2  5  9  8
-        /   \
-       3     2
-      / \   /
-     5   9 8
-
-6 are copiii 3 si 2; cel mai mic e 2, si e mai mic decat 6: schimba
-
-          2                 2  3  6  5  9  8
-        /   \
-       3     6
-      / \   /
-     5   9 8
-
-6 are copilul 8, mai mare decat 6: stop
+```visual
+{"use": "heap-pop"}
 ```
 
 ```java

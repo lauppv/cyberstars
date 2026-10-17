@@ -1,0 +1,34 @@
+{
+  "type": "tree",
+  "array": true,
+  "caption": "Pushing 2 into the heap. Under the tree, the same heap as a list: the value at index i has its children at 2i + 1 and 2i + 2.",
+  "nodes": {
+    "0": 1,
+    "1": 3,
+    "2": 6,
+    "3": 5,
+    "4": 9,
+    "5": 8
+  },
+  "steps": [
+    {
+      "title": "push 2",
+      "add": {
+        "6": 2
+      },
+      "focus": [6],
+      "caption": "2 goes in the next free spot, index 6: the right child of 6"
+    },
+    {
+      "ask": "Is 2 smaller than its parent, 6?",
+      "focus": [2, 6],
+      "swap": [2, 6],
+      "caption": "Yes: swap them"
+    },
+    {
+      "ask": "Is 2 smaller than its parent, 1?",
+      "focus": [0, 2],
+      "caption": "No: stop. Every node is smaller than its children again"
+    }
+  ]
+}
