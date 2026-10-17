@@ -10,42 +10,42 @@
   "cases": [
     {
       "visible": true,
-      "inject": { "puncte_tari": { "$list": [30, 65, 20, 90, 50] }, "cod": "ORBIT" }
+      "inject": { "puncte_tari": { "$list": [30, 65, 20, 90, 50] }, "cod": "ORBITA" }
     },
     { "visible": true, "inject": { "puncte_tari": { "$list": [51, 50, 100] }, "cod": "AB" } },
     { "inject": { "puncte_tari": { "$list": [10] }, "cod": "X" } },
-    { "inject": { "puncte_tari": { "$list": [60, 70, 80] }, "cod": "HELLO" } },
-    { "inject": { "puncte_tari": { "$list": [1, 2, 3] }, "cod": "SIGNAL" } },
+    { "inject": { "puncte_tari": { "$list": [60, 70, 80] }, "cod": "SALUT" } },
+    { "inject": { "puncte_tari": { "$list": [1, 2, 3] }, "cod": "SEMNAL" } },
     { "inject": { "puncte_tari": { "$list": [] }, "cod": "Z" }, "generated": true },
     { "inject": { "puncte_tari": { "$list": [50] }, "cod": "AA" }, "generated": true },
     { "inject": { "puncte_tari": { "$list": [51] }, "cod": "AB" }, "generated": true },
     { "inject": { "puncte_tari": { "$list": [50, 50, 50] }, "cod": "ABC" }, "generated": true },
     { "inject": { "puncte_tari": { "$list": [100, 99, 51] }, "cod": "ZYX" }, "generated": true },
-    { "inject": { "puncte_tari": { "$list": [0, 0, 0] }, "cod": "LEVEL" }, "generated": true },
+    { "inject": { "puncte_tari": { "$list": [0, 0, 0] }, "cod": "ROTOR" }, "generated": true },
     {
-      "inject": { "puncte_tari": { "$list": [49, 50, 51, 52] }, "cod": "PROBE" },
+      "inject": { "puncte_tari": { "$list": [49, 50, 51, 52] }, "cod": "SONDA" },
       "generated": true
     },
     {
-      "inject": { "puncte_tari": { "$list": [90, 10, 90, 10] }, "cod": "COMET" },
+      "inject": { "puncte_tari": { "$list": [90, 10, 90, 10] }, "cod": "COMETA" },
       "generated": true
     },
     {
       "inject": {
         "puncte_tari": { "$list": [5, 15, 25, 35, 45, 55, 65, 75, 85, 95] },
-        "cod": "SATELLITE"
+        "cod": "SATELIT"
       },
       "generated": true
     },
     { "inject": { "puncte_tari": { "$list": [100] }, "cod": "Q" }, "generated": true },
     {
-      "inject": { "puncte_tari": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }, "cod": "NOON" },
+      "inject": { "puncte_tari": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }, "cod": "COJOC" },
       "generated": true
     },
-    { "inject": { "puncte_tari": { "$list": [70, 60, 80] }, "cod": "ROCKET" }, "generated": true },
-    { "inject": { "puncte_tari": { "$list": [33, 77] }, "cod": "MOON" }, "generated": true },
+    { "inject": { "puncte_tari": { "$list": [70, 60, 80] }, "cod": "RACHETA" }, "generated": true },
+    { "inject": { "puncte_tari": { "$list": [33, 77] }, "cod": "LUNA" }, "generated": true },
     {
-      "inject": { "puncte_tari": { "$list": [38, 13, 92, 50] }, "cod": "ANTENNA" },
+      "inject": { "puncte_tari": { "$list": [38, 13, 92, 50] }, "cod": "ANTENA" },
       "generated": true
     },
     { "inject": { "puncte_tari": { "$list": [2, 51] }, "cod": "RADAR" }, "generated": true },
@@ -67,7 +67,7 @@
       "generated": true
     },
     {
-      "inject": { "puncte_tari": { "$list": [33, 5, 10, 5, 59] }, "cod": "NEBULA" },
+      "inject": { "puncte_tari": { "$list": [33, 5, 10, 5, 59] }, "cod": "NEBULOASA" },
       "generated": true
     },
     {
@@ -80,12 +80,12 @@
     {
       "inject": {
         "puncte_tari": { "$list": [80, 56, 35, 23, 45, 55, 95, 75, 41, 81, 71] },
-        "cod": "MARS"
+        "cod": "MARTE"
       },
       "generated": true
     },
     { "inject": { "puncte_tari": { "$list": [7, 90] }, "cod": "LASER" }, "generated": true },
-    { "inject": { "puncte_tari": { "$list": [42, 22] }, "cod": "ORBIT" }, "generated": true },
+    { "inject": { "puncte_tari": { "$list": [42, 22] }, "cod": "ORBITA" }, "generated": true },
     { "inject": { "puncte_tari": { "$list": [45] }, "cod": "RADAR" }, "generated": true },
     {
       "inject": {
@@ -102,7 +102,7 @@
       "inject": { "puncte_tari": { "$list": [37, 73, 12, 56, 26, 54] }, "cod": "AA" },
       "generated": true
     },
-    { "inject": { "puncte_tari": { "$list": [94] }, "cod": "PLANET" }, "generated": true },
+    { "inject": { "puncte_tari": { "$list": [94] }, "cod": "PLANETA" }, "generated": true },
     {
       "inject": {
         "puncte_tari": { "$list": [5, 69, 62, 74, 31, 41, 4, 15, 67, 37] },
@@ -140,7 +140,7 @@
       "generated": true
     },
     {
-      "inject": { "puncte_tari": { "$list": [98, 100, 48, 28, 70, 6, 25] }, "cod": "MARS" },
+      "inject": { "puncte_tari": { "$list": [98, 100, 48, 28, 70, 6, 25] }, "cod": "MARTE" },
       "generated": true
     },
     {
@@ -158,13 +158,13 @@
     {
       "inject": {
         "puncte_tari": { "$list": [99, 56, 8, 80, 25, 81, 38, 61, 54, 15, 71, 21] },
-        "cod": "GALAXY"
+        "cod": "GALAXIE"
       },
       "generated": true
     },
-    { "inject": { "puncte_tari": { "$list": [90, 19, 41] }, "cod": "MARS" }, "generated": true },
+    { "inject": { "puncte_tari": { "$list": [90, 19, 41] }, "cod": "MARTE" }, "generated": true },
     {
-      "inject": { "puncte_tari": { "$list": [69, 0, 90, 21, 0] }, "cod": "SIGNAL" },
+      "inject": { "puncte_tari": { "$list": [69, 0, 90, 21, 0] }, "cod": "SEMNAL" },
       "generated": true
     },
     {
@@ -175,7 +175,7 @@
       "generated": true
     },
     {
-      "inject": { "puncte_tari": { "$list": [29, 98, 23, 80, 0, 86] }, "cod": "MARS" },
+      "inject": { "puncte_tari": { "$list": [29, 98, 23, 80, 0, 86] }, "cod": "MARTE" },
       "generated": true
     }
   ]

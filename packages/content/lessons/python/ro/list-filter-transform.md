@@ -68,7 +68,7 @@ Rezultat **['Tommy', 'Cortez', 'Phil']**
 Am **filtrat** (doar jucătorii online) și am **transformat** (am extras doar numele). Cu list comprehension
 
 ```py
-nume_conectati = [p["nume"] for p in jucatori if p["online"]]
+nume_conectati = [j["nume"] for j in jucatori if j["online"]]
 ```
 
 ---
@@ -98,7 +98,7 @@ Rezultat **[87, 72, 96, 79, 60, 100]**
 Cu comprehension și **min()** pentru plafonare
 
 ```py
-rezultat = [min(g + 5, 100) for g in note if g >= 50]
+rezultat = [min(n + 5, 100) for n in note if n >= 50]
 ```
 
 ---

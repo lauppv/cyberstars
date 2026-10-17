@@ -90,5 +90,5 @@ Ai o listă de intensități de semnal `puncte_tari` și un cuvânt `cod`. Folos
 ```text
 Suma: 255
 Puternice: [65, 90]
-Inversat: TIBRO
+Inversat: ATIBRO
 ```

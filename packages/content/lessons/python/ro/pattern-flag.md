@@ -124,7 +124,7 @@ Un cod de acces al stației este **valid** doar dacă îndeplinește **toate cel
 Dacă utilizatorul tastează
 
 ```text
-Orbit42
+Sonda42
 ```
 
 programul ar trebui să afișeze
@@ -139,7 +139,7 @@ Cod de acces valid
 Dacă utilizatorul tastează
 
 ```text
-orbit
+sonda
 ```
 
 programul ar trebui să afișeze
