@@ -845,7 +845,8 @@
       "slow": "Slow",
       "normal": "Normal",
       "fast": "Fast"
-    }
+    },
+    "notFound": "Lesson not found"
   },
   "usage": {
     "title": "Usage",

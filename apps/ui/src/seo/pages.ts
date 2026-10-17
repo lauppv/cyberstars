@@ -12,6 +12,7 @@ import {
   baseLanguage,
 } from '@cyberstars/shared/constants';
 import { courseLabel, courseTitle } from '../constants/courses';
+import { lessonTitle } from '../services/lessonService';
 import { twinPath, type Lang } from '../i18n';
 
 export const ORIGIN = 'https://cyberstars.app';
@@ -138,7 +139,7 @@ export function buildPages(source: ContentSource): Page[] {
         slug: l.slug,
         link: {
           path: twinPath(`/lesson/${courseKey}/${l.slug}`, lang),
-          label: bareTitle(l.title),
+          label: bareTitle(lessonTitle(l, lang)),
         },
       }));
     return lessons.map(({ slug, link }, i) => {

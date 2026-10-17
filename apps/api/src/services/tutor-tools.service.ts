@@ -1,4 +1,5 @@
 import { courses, lessons } from '@cyberstars/content/curriculum';
+import { lessonTitlesRo } from '@cyberstars/content/curriculum-ro';
 import { isAdmin, type UserRole } from '@cyberstars/shared/auth';
 import { canAccessFeature, type FeatureKey } from '@cyberstars/shared/features';
 import { contentDir, readLocalized } from './paths.js';
@@ -43,6 +44,7 @@ interface CatalogEntry {
   courseKey: string;
   slug: string;
   title: string;
+  titleRo?: string;
   course: string;
   kind: 'lesson' | 'challenge';
   link: string;
@@ -78,14 +80,16 @@ function getCatalog(): CatalogEntry[] {
     const textWords = new Map<string, number>();
     for (const w of words(statement)) textWords.set(w, (textWords.get(w) ?? 0) + 1);
     const course = courseTitles.get(l.courseKey) ?? l.courseKey;
+    const titleRo = lessonTitlesRo[l.courseKey]?.[l.slug];
     return {
       courseKey: l.courseKey,
       slug: l.slug,
       title: l.title,
+      titleRo,
       course,
       kind: l.courseKey.startsWith('algo-') ? 'challenge' : 'lesson',
       link: `/lesson/${l.courseKey}/${l.slug}`,
-      titleWords: words(`${l.title} ${l.slug} ${course}`),
+      titleWords: words(`${l.title} ${titleRo ?? ''} ${l.slug} ${course}`),
       textWords,
     };
   });
@@ -99,13 +103,15 @@ interface LessonHit {
   link: string;
 }
 
-function hit(entry: CatalogEntry): LessonHit {
-  return { title: entry.title, course: entry.course, kind: entry.kind, link: entry.link };
+// The title the student sees on the page, so the tutor names a lesson the same
+function hit(entry: CatalogEntry, lang: Lang): LessonHit {
+  const title = lang === 'ro' ? (entry.titleRo ?? entry.title) : entry.title;
+  return { title, course: entry.course, kind: entry.kind, link: entry.link };
 }
 
 // A word in the title counts far more than one in the text. A query word matches
 // any word it starts, so "loop" finds "loops" and "recurs" finds "recursion".
-export function searchLessons(query: string): LessonHit[] {
+export function searchLessons(query: string, lang: Lang = 'en'): LessonHit[] {
   const terms = [...new Set(words(query).filter((w) => w.length >= 2 && !STOP_WORDS.has(w)))];
   if (terms.length === 0) return [];
   const scored = getCatalog().map((entry) => {
@@ -122,7 +128,7 @@ export function searchLessons(query: string): LessonHit[] {
     .filter((s) => s.score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, SEARCH_RESULTS)
-    .map((s) => hit(s.entry));
+    .map((s) => hit(s.entry, lang));
 }
 
 interface LessonStatement extends LessonHit {
@@ -134,7 +140,7 @@ interface LessonStatement extends LessonHit {
 export function readLesson(courseKey: string, slug: string, lang: Lang): LessonStatement | null {
   const entry = getCatalog().find((e) => e.courseKey === courseKey && e.slug === slug);
   if (!entry) return null;
-  return { ...hit(entry), statement: readStatement(courseKey, slug, lang) };
+  return { ...hit(entry, lang), statement: readStatement(courseKey, slug, lang) };
 }
 
 // A multi-language course's lesson is read in the language given, Python

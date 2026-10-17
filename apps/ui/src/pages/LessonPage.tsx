@@ -111,7 +111,7 @@ export function LessonPage() {
   const multiLanguage = isMultiLanguage(category);
   const [pickedLanguage, pickLanguage] = useCodeLanguage();
   const {
-    title,
+    title: loadedTitle,
     content,
     starterCode,
     savedCode,
@@ -251,6 +251,11 @@ export function LessonPage() {
   }, [menuOpen]);
 
   const course = courses.find((c) => c.key === category) ?? null;
+  // The lesson's title from the curriculum, in the page's language and without
+  // a challenge's difficulty; what the lesson loaded with until it is in
+  const title = parseDifficulty(
+    course?.lessons.find((l) => l.slug === lesson)?.title ?? loadedTitle,
+  ).rest;
 
   const serverCompleted = progress?.lessons.find((l) => l.slug === lesson)?.completed ?? false;
   const lessonCompleted = optimisticCompleted ?? serverCompleted;

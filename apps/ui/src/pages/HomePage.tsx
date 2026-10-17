@@ -145,7 +145,7 @@ export function HomePage() {
         courseKey: pick.courseKey,
         courseTitle: course?.title ?? pick.courseKey,
         slug: pick.slug,
-        title: pick.title,
+        title: lesson?.title ?? pick.title,
         completed,
         xp,
       };

@@ -3,7 +3,10 @@ import { render, screen } from '@testing-library/react';
 import type { Course } from '@cyberstars/shared/lesson';
 
 const fetchCurriculum = vi.fn(() => new Promise<Course[]>(() => {}));
-vi.mock('../services/lessonService', () => ({ fetchCurriculum: () => fetchCurriculum() }));
+vi.mock('../services/lessonService', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../services/lessonService')>()),
+  fetchCurriculum: () => fetchCurriculum(),
+}));
 
 import { CurriculumProvider, useCurriculum } from './CurriculumContext';
 

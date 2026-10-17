@@ -21,6 +21,7 @@ import fs from 'fs';
 import path from 'path';
 import { CODE_LANGUAGES, isMultiLanguage } from '@cyberstars/shared/constants';
 import { courses, lessons } from '../curriculum.js';
+import { lessonTitlesRo } from '../curriculum-ro.js';
 import { courseDir } from '../paths.js';
 import { visualFiller } from '../visuals.js';
 
@@ -67,6 +68,9 @@ const curriculum = [...courses]
       .map((lesson) => ({
         slug: lesson.slug,
         title: lesson.title,
+        ...(lessonTitlesRo[course.key]?.[lesson.slug]
+          ? { titleRo: lessonTitlesRo[course.key][lesson.slug] }
+          : {}),
         sortOrder: lesson.sortOrder,
         // Lessons with a <slug>-tests.json are validated by the server judge;
         // the client uses this flag to show the Run Tests button.

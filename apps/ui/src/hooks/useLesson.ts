@@ -18,7 +18,7 @@ const DEFAULT_CODE: Record<string, string> = {
 // comes in each language; other courses leave it out.
 export function useLesson(courseKey: string, lessonSlug: string, language?: CodeLanguage) {
   const { isLoggedIn } = useAuth();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lang = i18n.language === 'ro' ? 'ro' : 'en';
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -61,8 +61,8 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
         setContent(lesson.content);
       } catch {
         if (cancelled) return;
-        setError('Lesson not found');
-        setTitle('Lesson not found');
+        setError(t('lesson.notFound'));
+        setTitle(t('lesson.notFound'));
         setContent('');
       }
 
@@ -95,7 +95,7 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
     return () => {
       cancelled = true;
     };
-  }, [courseKey, lessonSlug, isLoggedIn, lang, language, paramsKey]);
+  }, [courseKey, lessonSlug, isLoggedIn, lang, language, paramsKey, t]);
 
   return {
     title,

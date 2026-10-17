@@ -46,7 +46,17 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       await Promise.all(
         courses.map(async (c) => {
           try {
-            map[c.key] = await progressService.getCourseProgress(c.key);
+            const progress = await progressService.getCourseProgress(c.key);
+            // The server names lessons in English; the curriculum has them in
+            // the page's language
+            const titles = new Map(c.lessons.map((l) => [l.slug, l.title]));
+            map[c.key] = {
+              ...progress,
+              lessons: progress.lessons.map((l) => ({
+                ...l,
+                title: titles.get(l.slug) ?? l.title,
+              })),
+            };
           } catch {
             failed.add(c.key);
           }

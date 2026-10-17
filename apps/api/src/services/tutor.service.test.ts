@@ -374,7 +374,7 @@ describe('askTutor', () => {
       { type: 'done', finish: 'complete' },
     ]);
 
-    expect(tools.searchLessons).toHaveBeenCalledWith('for loops');
+    expect(tools.searchLessons).toHaveBeenCalledWith('for loops', 'en');
     const contents = stream.mock.calls[1][0].contents;
     expect(contents[1]).toEqual({
       role: 'model',
@@ -450,7 +450,7 @@ describe('askTutor', () => {
       { type: 'status', lookup: 'search' },
     ]);
     expect(tools.listPages).toHaveBeenCalledWith('ADMIN', false);
-    expect(tools.searchLessons).toHaveBeenCalledWith('');
+    expect(tools.searchLessons).toHaveBeenCalledWith('', 'en');
   });
 
   it('makes the model answer in words after three rounds of tools', async () => {

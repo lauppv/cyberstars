@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import type { Course } from '@cyberstars/shared/lesson';
-import { fetchCurriculum } from '../services/lessonService';
+import i18next from 'i18next';
+import { fetchCurriculum, localizeCurriculum } from '../services/lessonService';
 
 interface CurriculumContextType {
   courses: Course[];
@@ -20,7 +21,9 @@ export function CurriculumProvider({
   children: ReactNode;
   initialCourses?: Course[];
 }) {
-  const [courses, setCourses] = useState<Course[]>(initialCourses ?? []);
+  const [courses, setCourses] = useState<Course[]>(() =>
+    localizeCurriculum(initialCourses ?? [], i18next.language),
+  );
   const [isLoading, setIsLoading] = useState(!initialCourses);
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -30,7 +33,7 @@ export function CurriculumProvider({
     let cancelled = false;
     fetchCurriculum()
       .then((data) => {
-        if (!cancelled) setCourses(data);
+        if (!cancelled) setCourses(localizeCurriculum(data, i18next.language));
       })
       .catch(() => {})
       .finally(() => {

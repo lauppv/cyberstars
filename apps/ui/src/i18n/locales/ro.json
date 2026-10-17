@@ -882,7 +882,8 @@
       "slow": "Lent",
       "normal": "Normal",
       "fast": "Rapid"
-    }
+    },
+    "notFound": "Lecția nu a fost găsită"
   },
   "usage": {
     "title": "Utilizare",
