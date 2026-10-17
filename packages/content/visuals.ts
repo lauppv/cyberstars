@@ -1,4 +1,7 @@
+import fs from 'fs';
+import path from 'path';
 import { CODE_LANGUAGES } from '@cyberstars/shared/constants';
+import { courseDir } from './paths.js';
 
 // A lesson of a multi-language course writes each of its visuals once, in the course's
 // visuals/<name>.json (visuals/ro/<name>.json for Romanian), and its text in every language names
@@ -48,4 +51,14 @@ export function inlineVisuals(
     const filled = { id: name, ...(pick(visual, language) as object) };
     return '```visual\n' + JSON.stringify(filled, null, 2) + '\n```';
   });
+}
+
+// A multi-language course's visuals sit beside its language folders, the Romanian ones in ro/
+export function visualFiller(courseKey: string, language: string, locale?: string) {
+  const dir = path.join(path.dirname(courseDir(courseKey, language)), 'visuals', locale ?? '');
+  return (text: string) =>
+    inlineVisuals(text, language, (name) => {
+      const file = path.join(dir, `${name}.json`);
+      return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
+    });
 }

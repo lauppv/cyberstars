@@ -22,7 +22,7 @@ import path from 'path';
 import { CODE_LANGUAGES, isMultiLanguage } from '@cyberstars/shared/constants';
 import { courses, lessons } from '../curriculum.js';
 import { courseDir } from '../paths.js';
-import { inlineVisuals } from '../visuals.js';
+import { visualFiller } from '../visuals.js';
 
 const [outDir] = process.argv.slice(2);
 if (!outDir) {
@@ -122,16 +122,6 @@ function copyMarkdown(srcDir: string, destDir: string, fill?: (text: string) => 
     n++;
   }
   return n;
-}
-
-// A multi-language course's visuals sit beside its language folders, the Romanian ones in ro/
-function visualFiller(courseKey: string, language: string, locale?: string) {
-  const dir = path.join(path.dirname(courseDir(courseKey, language)), 'visuals', locale ?? '');
-  return (text: string) =>
-    inlineVisuals(text, language, (name) => {
-      const file = path.join(dir, `${name}.json`);
-      return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
-    });
 }
 
 fs.rmSync(LESSONS_OUT, { recursive: true, force: true });
