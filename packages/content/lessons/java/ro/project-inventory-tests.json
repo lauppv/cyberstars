@@ -76,13 +76,13 @@
     },
     {
       "inject": {
-        "nume1": "Water",
+        "nume1": "Apa",
         "cantitate1": 1,
         "pret1": 0.5,
-        "nume2": "Bolt",
+        "nume2": "Surub",
         "cantitate2": 100,
         "pret2": 0.25,
-        "nume3": "Panel",
+        "nume3": "Panou",
         "cantitate3": 2,
         "pret3": 1000.0
       },
@@ -90,13 +90,13 @@
     },
     {
       "inject": {
-        "nume1": "Fuse",
+        "nume1": "Siguranta",
         "cantitate1": 3,
         "pret1": 2.75,
-        "nume2": "Cable",
+        "nume2": "Cablu",
         "cantitate2": 8,
         "pret2": 4.5,
-        "nume3": "Drill",
+        "nume3": "Bormasina",
         "cantitate3": 1,
         "pret3": 199.5
       },
@@ -118,13 +118,13 @@
     },
     {
       "inject": {
-        "nume1": "Helmet",
+        "nume1": "Casca",
         "cantitate1": 2,
         "pret1": 120.5,
-        "nume2": "Gloves",
+        "nume2": "Manusi",
         "cantitate2": 4,
         "pret2": 15.25,
-        "nume3": "Boots",
+        "nume3": "Bocanci",
         "cantitate3": 3,
         "pret3": 60.0
       },
@@ -132,13 +132,13 @@
     },
     {
       "inject": {
-        "nume1": "Battery",
+        "nume1": "Baterie",
         "cantitate1": 12,
         "pret1": 7.75,
-        "nume2": "Charger",
+        "nume2": "Incarcator",
         "cantitate2": 6,
         "pret2": 22.5,
-        "nume3": "Lamp",
+        "nume3": "Lampa",
         "cantitate3": 9,
         "pret3": 14.25
       },
@@ -146,13 +146,13 @@
     },
     {
       "inject": {
-        "nume1": "Seeds",
+        "nume1": "Seminte",
         "cantitate1": 50,
         "pret1": 0.75,
-        "nume2": "Soil bag",
+        "nume2": "Sac pamant",
         "cantitate2": 5,
         "pret2": 9.5,
-        "nume3": "Water tank",
+        "nume3": "Rezervor apa",
         "cantitate3": 1,
         "pret3": 350.0
       },
@@ -163,10 +163,10 @@
         "nume1": "Laser",
         "cantitate1": 1,
         "pret1": 2500.0,
-        "nume2": "Lens",
+        "nume2": "Lentila",
         "cantitate2": 10,
         "pret2": 45.5,
-        "nume3": "Mirror",
+        "nume3": "Oglinda",
         "cantitate3": 20,
         "pret3": 12.25
       },
@@ -174,13 +174,13 @@
     },
     {
       "inject": {
-        "nume1": "Tape",
+        "nume1": "Banda",
         "cantitate1": 30,
         "pret1": 1.5,
-        "nume2": "Glue",
+        "nume2": "Adeziv",
         "cantitate2": 15,
         "pret2": 3.25,
-        "nume3": "Rope",
+        "nume3": "Franghie",
         "cantitate3": 7,
         "pret3": 8.0
       },
@@ -188,13 +188,13 @@
     },
     {
       "inject": {
-        "nume1": "Suit",
+        "nume1": "Costum",
         "cantitate1": 2,
         "pret1": 999.5,
-        "nume2": "Visor",
+        "nume2": "Vizor",
         "cantitate2": 2,
         "pret2": 149.75,
-        "nume3": "Tank",
+        "nume3": "Rezervor",
         "cantitate3": 4,
         "pret3": 300.25
       },
@@ -202,13 +202,13 @@
     },
     {
       "inject": {
-        "nume1": "Ration",
+        "nume1": "Ratie",
         "cantitate1": 20,
         "pret1": 3.5,
-        "nume2": "Ration",
+        "nume2": "Ratie",
         "cantitate2": 20,
         "pret2": 3.5,
-        "nume3": "Ration",
+        "nume3": "Ratie",
         "cantitate3": 20,
         "pret3": 3.5
       },

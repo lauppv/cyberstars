@@ -36,6 +36,6 @@ class Inventar {
 
 public class Main {
     public static void main(String[] args) {
-        Inventar inv = new Inventar();
+        Inventar inventar = new Inventar();
     }
 }

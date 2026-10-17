@@ -60,13 +60,13 @@ public class Main {
         int cantitate3 = 3;
         double pret3 = 85.00;
 
-        Inventar inv = new Inventar();
-        inv.adaugaArticol(new Articol(nume1, cantitate1, pret1));
-        inv.adaugaArticol(new Articol(nume2, cantitate2, pret2));
-        inv.adaugaArticol(new Articol(nume3, cantitate3, pret3));
+        Inventar inventar = new Inventar();
+        inventar.adaugaArticol(new Articol(nume1, cantitate1, pret1));
+        inventar.adaugaArticol(new Articol(nume2, cantitate2, pret2));
+        inventar.adaugaArticol(new Articol(nume3, cantitate3, pret3));
 
-        inv.afiseazaTot();
-        System.out.println("Total: $" + String.format("%.2f", inv.valoareTotala()));
+        inventar.afiseazaTot();
+        System.out.println("Total: $" + String.format("%.2f", inventar.valoareTotala()));
     }
 }
 ```

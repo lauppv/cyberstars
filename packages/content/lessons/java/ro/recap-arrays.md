@@ -9,14 +9,14 @@ Tommy ascultă stația radio a poliției din Vice City. Fluxul este plin de para
 Pune semnalele într-un array de `String` numit `semnale`, de exemplu:
 
 ```text
-String[] semnale = { "tommy", "static", "lance", "static", "cortez", "static", "diaz", "out", "mercedes" };
+String[] semnale = { "tommy", "parazit", "lance", "parazit", "cortez", "parazit", "diaz", "gata", "mercedes" };
 ```
 
 Scrie o **metodă** care primește array-ul de semnale și **returnează** un nou array care conține doar numele valide, scrise cu **majuscule**. Metoda trebuie să:
 
 1. Parcurgă array-ul
-2. **Sară** peste orice semnal egal cu `"static"` (folosește `continue` și `.equals()`)
-3. **Se oprească** complet când întâlnește `"out"` (folosește `break`); tot ce vine după este ignorat
+2. **Sară** peste orice semnal egal cu `"parazit"` (folosește `continue` și `.equals()`)
+3. **Se oprească** complet când întâlnește `"gata"` (folosește `break`); tot ce vine după este ignorat
 4. Transforme numele valide cu `.toUpperCase()` și să le strângă în array-ul rezultat
 
 În `main`, apelează metoda, afișează fiecare nume pe linia lui, apoi afișează **câte** nume au rămas.
@@ -25,7 +25,7 @@ Scrie o **metodă** care primește array-ul de semnale și **returnează** un no
 
 **Exemplu**
 
-Pentru `{ "tommy", "static", "lance", "static", "cortez", "static", "diaz", "out", "mercedes" }`
+Pentru `{ "tommy", "parazit", "lance", "parazit", "cortez", "parazit", "diaz", "gata", "mercedes" }`
 
 ```text
 TOMMY
@@ -35,7 +35,7 @@ DIAZ
 Total: 4
 ```
 
-**Exemplu** când semnalul de final vine primul `{ "out", "tommy", "lance" }` (niciun nume valid)
+**Exemplu** când semnalul de final vine primul `{ "gata", "tommy", "lance" }` (niciun nume valid)
 
 ```text
 Total: 0

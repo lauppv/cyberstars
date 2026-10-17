@@ -165,13 +165,13 @@ class Inventar {
 
 public class Main {
     public static void main(String[] args) {
-        Inventar inv = new Inventar();
-        inv.adaugaArticol(new Articol("Trusa medicala", 5, 25.00));
-        inv.adaugaArticol(new Articol("Rezerva oxigen", 2, 75.50));
-        inv.adaugaArticol(new Articol("Baterie solara", 1, 100.00));
+        Inventar inventar = new Inventar();
+        inventar.adaugaArticol(new Articol("Trusa medicala", 5, 25.00));
+        inventar.adaugaArticol(new Articol("Rezerva oxigen", 2, 75.50));
+        inventar.adaugaArticol(new Articol("Baterie solara", 1, 100.00));
 
-        inv.afiseazaTot();
-        System.out.println("Total: $" + String.format("%.2f", inv.valoareTotala()));
+        inventar.afiseazaTot();
+        System.out.println("Total: $" + String.format("%.2f", inventar.valoareTotala()));
     }
 }
 ```

@@ -17,54 +17,59 @@
         "semnale": {
           "$list": [
             "tommy",
-            "static",
+            "parazit",
             "lance",
-            "static",
+            "parazit",
             "cortez",
-            "static",
+            "parazit",
             "diaz",
-            "out",
+            "gata",
             "mercedes"
           ]
         }
       }
     },
-    { "inject": { "semnale": { "$list": ["out", "tommy", "lance"] } } },
+    { "inject": { "semnale": { "$list": ["gata", "tommy", "lance"] } } },
     { "inject": { "semnale": { "$list": ["tommy", "lance"] } } },
-    { "inject": { "semnale": { "$list": ["static", "static"] } } },
-    { "inject": { "semnale": { "$list": ["alpha", "static", "beta", "out", "gamma"] } } },
+    { "inject": { "semnale": { "$list": ["parazit", "parazit"] } } },
+    { "inject": { "semnale": { "$list": ["alfa", "parazit", "beta", "gata", "gamma"] } } },
     { "inject": { "semnale": { "$list": [] } }, "generated": true },
     { "inject": { "semnale": { "$list": ["tommy"] } }, "generated": true },
-    { "inject": { "semnale": { "$list": ["static"] } }, "generated": true },
-    { "inject": { "semnale": { "$list": ["out"] } }, "generated": true },
-    { "inject": { "semnale": { "$list": ["static", "out", "tommy"] } }, "generated": true },
-    { "inject": { "semnale": { "$list": ["tommy", "out"] } }, "generated": true },
+    { "inject": { "semnale": { "$list": ["parazit"] } }, "generated": true },
+    { "inject": { "semnale": { "$list": ["gata"] } }, "generated": true },
+    { "inject": { "semnale": { "$list": ["parazit", "gata", "tommy"] } }, "generated": true },
+    { "inject": { "semnale": { "$list": ["tommy", "gata"] } }, "generated": true },
     {
-      "inject": { "semnale": { "$list": ["tommy", "static", "out", "static", "lance"] } },
+      "inject": { "semnale": { "$list": ["tommy", "parazit", "gata", "parazit", "lance"] } },
       "generated": true
     },
     {
       "inject": { "semnale": { "$list": ["vic", "phil", "kent", "sonny", "ricardo", "ken"] } },
       "generated": true
     },
-    { "inject": { "semnale": { "$list": ["out", "out"] } }, "generated": true },
-    { "inject": { "semnale": { "$list": ["static", "tommy", "static"] } }, "generated": true },
+    { "inject": { "semnale": { "$list": ["gata", "gata"] } }, "generated": true },
+    { "inject": { "semnale": { "$list": ["parazit", "tommy", "parazit"] } }, "generated": true },
     { "inject": { "semnale": { "$list": ["lance", "lance", "lance"] } }, "generated": true },
     {
       "inject": {
-        "semnale": { "$list": ["a", "static", "b", "static", "c", "static", "d", "static", "e"] }
+        "semnale": {
+          "$list": ["a", "parazit", "b", "parazit", "c", "parazit", "d", "parazit", "e"]
+        }
       },
       "generated": true
     },
     {
-      "inject": { "semnale": { "$list": ["mercedes", "static", "static", "static", "diaz"] } },
+      "inject": { "semnale": { "$list": ["mercedes", "parazit", "parazit", "parazit", "diaz"] } },
       "generated": true
     },
-    { "inject": { "semnale": { "$list": ["candy", "out", "static", "out"] } }, "generated": true },
+    {
+      "inject": { "semnale": { "$list": ["candy", "gata", "parazit", "gata"] } },
+      "generated": true
+    },
     {
       "inject": {
         "semnale": {
-          "$list": ["ken", "rosenberg", "static", "avery", "carson", "out", "umberto", "robina"]
+          "$list": ["ken", "rosenberg", "parazit", "avery", "carson", "gata", "umberto", "robina"]
         }
       },
       "generated": true
