@@ -189,6 +189,41 @@
         "streak_other": "{{count}}-day streak"
       }
     },
+    "lists": {
+      "picture": "A linked list growing from head: 10, 20 and 30 join at the end, each pointed at by the next of the node before it. Then 20 leaves: 10's next skips it and points at 30.",
+      "intro": "A linked list is a chain of nodes: each holds its value and a next arrow to the node after it. head points at the first node. Now the list is empty: head is null.",
+      "head": "head",
+      "value": "value",
+      "next": "next",
+      "add": "add {{n}}",
+      "empty": "Is the list empty?",
+      "first": "Yes, head is null, so head now points at the new node {{n}}",
+      "where": "Where does {{n}} go?",
+      "atEnd": "At the end: {{a}}'s next now points at the new node {{n}}",
+      "remove": "remove {{n}}",
+      "which": "Which arrow leads to {{n}}?",
+      "skip": "{{a}}'s next. It now skips {{n}} and points at {{b}}",
+      "gone": "Nothing points at {{n}} any more, so it is out of the list"
+    },
+    "trees": {
+      "picture": "A binary search tree built from 8, 3, 10, 1, 6 and 14: each value walks down from the root, left when it is smaller, right when it is bigger, and goes where the way runs out.",
+      "intro": "A binary search tree keeps smaller values on the left and bigger ones on the right. We insert 8, 3, 10, 1, 6 and 14, in that order.",
+      "insert": "insert {{n}}",
+      "root": "The tree is empty: {{n}} becomes the root",
+      "where": "Where does {{n}} go?",
+      "left": "{{n}} < {{at}}, go left",
+      "right": "{{n}} > {{at}}, go right",
+      "there": "Empty, so {{n}} goes there"
+    },
+    "graphs": {
+      "picture": "Breadth-first search from vertex 0: first its neighbours 1 and 2, then 3 and 4, then 5, then 6, each marked with how many steps away it is.",
+      "intro": "Breadth-first search starts at one vertex and reaches the others in rings around it: first its neighbours, then theirs, and so on.",
+      "title": "From {{v}}",
+      "start": "0 steps: {{v}}, the start",
+      "ring_one": "{{count}} step: {{list}}",
+      "ring_other": "{{count}} steps: {{list}}",
+      "all": "Every vertex is reached, each in the fewest steps from {{v}}"
+    },
     "sorting": {
       "title": "Watch an algorithm, step by step",
       "text": "Lessons show you how an algorithm works, one move at a time.",

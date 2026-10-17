@@ -199,6 +199,42 @@
         "streak_other": "{{count}} de zile la rând"
       }
     },
+    "lists": {
+      "picture": "O listă înlănțuită care crește de la cap: 10, 20 și 30 se adaugă la final, fiecare arătat de urmator al nodului dinaintea lui. Apoi 20 pleacă: urmator lui 10 sare peste el și arată spre 30.",
+      "intro": "O listă înlănțuită e un lanț de noduri: fiecare ține valoarea lui și o săgeată urmator spre nodul de după el. cap arată spre primul nod. Acum lista e goală: cap e null.",
+      "head": "cap",
+      "value": "valoare",
+      "next": "urmator",
+      "add": "adauga {{n}}",
+      "empty": "Lista e goală?",
+      "first": "Da, cap e null, deci cap arată acum spre nodul nou {{n}}",
+      "where": "Unde ajunge {{n}}?",
+      "atEnd": "La final: urmator lui {{a}} arată acum spre nodul nou {{n}}",
+      "remove": "elimina {{n}}",
+      "which": "Ce săgeată duce la {{n}}?",
+      "skip": "urmator lui {{a}}. Acum sare peste {{n}} și arată spre {{b}}",
+      "gone": "Nimic nu mai arată spre {{n}}, deci a ieșit din listă"
+    },
+    "trees": {
+      "picture": "Un arbore binar de căutare construit din 8, 3, 10, 1, 6 și 14: fiecare valoare coboară de la rădăcină, la stânga când e mai mică, la dreapta când e mai mare, și se așază unde drumul se termină.",
+      "intro": "Un arbore binar de căutare ține valorile mai mici la stânga și pe cele mai mari la dreapta. Inserăm 8, 3, 10, 1, 6 și 14, în ordinea asta.",
+      "insert": "inserează {{n}}",
+      "root": "Arborele e gol: {{n}} devine rădăcina",
+      "where": "Unde ajunge {{n}}?",
+      "left": "{{n}} < {{at}}, mergi la stânga",
+      "right": "{{n}} > {{at}}, mergi la dreapta",
+      "there": "Loc gol, deci {{n}} se așază acolo"
+    },
+    "graphs": {
+      "picture": "Căutarea în lățime pornind din nodul 0: întâi vecinii lui, 1 și 2, apoi 3 și 4, apoi 5, apoi 6, fiecare cu numărul de pași până la el.",
+      "intro": "Căutarea în lățime pornește dintr-un nod și ajunge la celelalte în inele în jurul lui: întâi vecinii lui, apoi vecinii lor și tot așa.",
+      "title": "Din {{v}}",
+      "start": "0 pași: {{v}}, startul",
+      "ring_one": "{{count}} pas: {{list}}",
+      "ring_few": "{{count}} pași: {{list}}",
+      "ring_other": "{{count}} de pași: {{list}}",
+      "all": "Am ajuns la toate nodurile, la fiecare în cât mai puțini pași din {{v}}"
+    },
     "sorting": {
       "title": "Urmărește un algoritm, pas cu pas",
       "text": "Lecțiile îți arată cum lucrează un algoritm, mutare cu mutare.",
