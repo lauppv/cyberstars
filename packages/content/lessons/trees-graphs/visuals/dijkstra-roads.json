@@ -1,0 +1,49 @@
+{
+  "type": "graph",
+  "caption": "Every edge has its weight: a length, a time, a price",
+  "vertices": [
+    [0, 1],
+    [1, 0],
+    [1, 2],
+    [2, 1],
+    [3, 1]
+  ],
+  "edges": [
+    [0, 1, 4],
+    [0, 2, 1],
+    [1, 2, 2],
+    [1, 3, 5],
+    [2, 3, 8],
+    [3, 4, 3]
+  ],
+  "steps": [
+    {
+      "focus": [0, 3],
+      "seen": [1],
+      "used": [
+        [0, 1],
+        [1, 3]
+      ],
+      "caption": "0 1 3: two edges, 4 + 5 = 9"
+    },
+    {
+      "focus": [0, 3],
+      "seen": [2],
+      "used": [
+        [0, 2],
+        [2, 3]
+      ],
+      "caption": "0 2 3: two edges too, 1 + 8 = 9"
+    },
+    {
+      "focus": [0, 3],
+      "seen": [1, 2],
+      "used": [
+        [0, 2],
+        [2, 1],
+        [1, 3]
+      ],
+      "caption": "0 2 1 3: one edge more, 1 + 2 + 5 = 8, and shorter"
+    }
+  ]
+}

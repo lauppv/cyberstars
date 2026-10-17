@@ -1,0 +1,49 @@
+{
+  "type": "graph",
+  "caption": "Fiecare muchie are costul ei: o lungime, un timp, un preț",
+  "vertices": [
+    [0, 1],
+    [1, 0],
+    [1, 2],
+    [2, 1],
+    [3, 1]
+  ],
+  "edges": [
+    [0, 1, 4],
+    [0, 2, 1],
+    [1, 2, 2],
+    [1, 3, 5],
+    [2, 3, 8],
+    [3, 4, 3]
+  ],
+  "steps": [
+    {
+      "focus": [0, 3],
+      "seen": [1],
+      "used": [
+        [0, 1],
+        [1, 3]
+      ],
+      "caption": "0 1 3: două muchii, 4 + 5 = 9"
+    },
+    {
+      "focus": [0, 3],
+      "seen": [2],
+      "used": [
+        [0, 2],
+        [2, 3]
+      ],
+      "caption": "0 2 3: tot două muchii, 1 + 8 = 9"
+    },
+    {
+      "focus": [0, 3],
+      "seen": [1, 2],
+      "used": [
+        [0, 2],
+        [2, 1],
+        [1, 3]
+      ],
+      "caption": "0 2 1 3: o muchie în plus, 1 + 2 + 5 = 8, și mai scurt"
+    }
+  ]
+}

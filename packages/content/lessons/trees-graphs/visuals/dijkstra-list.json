@@ -1,0 +1,69 @@
+{
+  "type": "graph",
+  "caption": "Each neighbour comes with the weight of the edge that leads there",
+  "list": true,
+  "vertices": [
+    [0, 1],
+    [1, 0],
+    [1, 2],
+    [2, 1],
+    [3, 1]
+  ],
+  "edges": [],
+  "steps": [
+    {
+      "add": [[0, 1, 4]],
+      "seen": [0, 1],
+      "used": [
+        [0, 1],
+        [1, 0]
+      ],
+      "caption": "Edge 0 1 4: (1, 4) joins the list of 0, and (0, 4) the list of 1"
+    },
+    {
+      "add": [[0, 2, 1]],
+      "seen": [0, 2],
+      "used": [
+        [0, 2],
+        [2, 0]
+      ],
+      "caption": "Edge 0 2 1: (2, 1) joins the list of 0, and (0, 1) the list of 2"
+    },
+    {
+      "add": [[1, 2, 2]],
+      "seen": [1, 2],
+      "used": [
+        [1, 2],
+        [2, 1]
+      ],
+      "caption": "Edge 1 2 2: (2, 2) joins the list of 1, and (1, 2) the list of 2"
+    },
+    {
+      "add": [[1, 3, 5]],
+      "seen": [1, 3],
+      "used": [
+        [1, 3],
+        [3, 1]
+      ],
+      "caption": "Edge 1 3 5: (3, 5) joins the list of 1, and (1, 5) the list of 3"
+    },
+    {
+      "add": [[2, 3, 8]],
+      "seen": [2, 3],
+      "used": [
+        [2, 3],
+        [3, 2]
+      ],
+      "caption": "Edge 2 3 8: (3, 8) joins the list of 2, and (2, 8) the list of 3"
+    },
+    {
+      "add": [[3, 4, 3]],
+      "seen": [3, 4],
+      "used": [
+        [3, 4],
+        [4, 3]
+      ],
+      "caption": "Edge 3 4 3: (4, 3) joins the list of 3, and (3, 3) the list of 4"
+    }
+  ]
+}

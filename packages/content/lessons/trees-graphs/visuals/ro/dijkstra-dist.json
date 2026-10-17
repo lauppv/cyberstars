@@ -1,0 +1,133 @@
+{
+  "type": "graph",
+  "caption": "Ia nodul neterminat cu cel mai mic dist și vezi dacă drumul prin el e mai scurt pentru vecinii lui",
+  "vertices": [
+    [0, 1],
+    [1, 0],
+    [1, 2],
+    [2, 1],
+    [3, 1]
+  ],
+  "edges": [
+    [0, 1, 4],
+    [0, 2, 1],
+    [1, 2, 2],
+    [1, 3, 5],
+    [2, 3, 8],
+    [3, 4, 3]
+  ],
+  "steps": [
+    {
+      "seen": [0],
+      "tags": {
+        "0": "0"
+      },
+      "rows": [
+        {
+          "label": "dist",
+          "values": [0, "-", "-", "-", "-"]
+        }
+      ],
+      "caption": "La început doar startul are un dist: 0"
+    },
+    {
+      "focus": [0],
+      "seen": [1, 2],
+      "used": [
+        [0, 1],
+        [0, 2]
+      ],
+      "tags": {
+        "0": "0",
+        "1": "4",
+        "2": "1"
+      },
+      "rows": [
+        {
+          "label": "dist",
+          "values": [0, 4, 1, "-", "-"]
+        }
+      ],
+      "caption": "Ia 0, cel mai mic neterminat, la 0, și termină-l. 1 primește 0 + 4 = 4; 2 primește 0 + 1 = 1"
+    },
+    {
+      "focus": [2],
+      "done": [0],
+      "seen": [1, 3],
+      "used": [
+        [2, 1],
+        [2, 3]
+      ],
+      "tags": {
+        "0": "0",
+        "1": "3",
+        "2": "1",
+        "3": "9"
+      },
+      "rows": [
+        {
+          "label": "dist",
+          "values": [0, 3, 1, 9, "-"]
+        }
+      ],
+      "caption": "Ia 2, cel mai mic neterminat, la 1, și termină-l. 1 scade de la 4 la 1 + 2 = 3; 3 primește 1 + 8 = 9"
+    },
+    {
+      "focus": [1],
+      "done": [0, 2],
+      "seen": [3],
+      "used": [[1, 3]],
+      "tags": {
+        "0": "0",
+        "1": "3",
+        "2": "1",
+        "3": "8"
+      },
+      "rows": [
+        {
+          "label": "dist",
+          "values": [0, 3, 1, 8, "-"]
+        }
+      ],
+      "caption": "Ia 1, cel mai mic neterminat, la 3, și termină-l. 3 scade de la 9 la 3 + 5 = 8"
+    },
+    {
+      "focus": [3],
+      "done": [0, 2, 1],
+      "seen": [4],
+      "used": [[3, 4]],
+      "tags": {
+        "0": "0",
+        "1": "3",
+        "2": "1",
+        "3": "8",
+        "4": "11"
+      },
+      "rows": [
+        {
+          "label": "dist",
+          "values": [0, 3, 1, 8, 11]
+        }
+      ],
+      "caption": "Ia 3, cel mai mic neterminat, la 8, și termină-l. 4 primește 8 + 3 = 11"
+    },
+    {
+      "focus": [4],
+      "done": [0, 2, 1, 3],
+      "tags": {
+        "0": "0",
+        "1": "3",
+        "2": "1",
+        "3": "8",
+        "4": "11"
+      },
+      "rows": [
+        {
+          "label": "dist",
+          "values": [0, 3, 1, 8, 11]
+        }
+      ],
+      "caption": "Ia 4, cel mai mic neterminat, la 11, și termină-l. Vecinii lui sunt toți terminați. Toate nodurile sunt terminate: 0 3 1 8 11"
+    }
+  ]
+}
