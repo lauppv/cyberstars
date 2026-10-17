@@ -714,6 +714,7 @@ describe('askTutor: a lesson chat', () => {
     runtimeMs: null,
     referenceMs: null,
     lang: 'en' as const,
+    language: 'python' as const,
     createdAt: '2026-10-15T08:00:00.000Z',
     code,
     syntaxError: null,

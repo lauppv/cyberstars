@@ -10,15 +10,16 @@ export async function getCourseProgress(req: Request, res: Response): Promise<vo
 export async function getSavedCode(req: Request, res: Response): Promise<void> {
   const courseKey = req.params.courseKey as string;
   const lessonSlug = req.params.lessonSlug as string;
-  const code = await progressService.getSavedCode(req.user!.id, courseKey, lessonSlug);
+  const language = typeof req.query.language === 'string' ? req.query.language : undefined;
+  const code = await progressService.getSavedCode(req.user!.id, courseKey, lessonSlug, language);
   res.json({ code });
 }
 
 export async function saveCode(req: Request, res: Response): Promise<void> {
   const courseKey = req.params.courseKey as string;
   const lessonSlug = req.params.lessonSlug as string;
-  const { code } = req.body;
-  await progressService.saveCode(req.user!.id, courseKey, lessonSlug, code);
+  const { code, language } = req.body;
+  await progressService.saveCode(req.user!.id, courseKey, lessonSlug, code, language);
   res.json({ message: 'Code saved' });
 }
 

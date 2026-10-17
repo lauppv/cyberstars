@@ -383,7 +383,7 @@ describe('Lesson chat', () => {
     const { agent: a, email } = await createAuthenticatedAgent();
     const userId = await userIdFor(email);
     const code = 'for i in range(n - 1):\n    print(i)';
-    const attempt = await record(userId, 'python', 'for', 'en', code, failedRun);
+    const attempt = await record(userId, 'python', 'for', 'en', 'python', code, failedRun);
 
     await ask(a, {
       message: 'why does test 2 fail?',
@@ -425,6 +425,7 @@ describe('Lesson chat', () => {
       'python',
       'for',
       'en',
+      'python',
       'secret = 1',
       failedRun,
     );

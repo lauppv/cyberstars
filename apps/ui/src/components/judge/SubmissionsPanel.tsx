@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronLeft, CircleCheck, CircleX } from 'lucide-react';
 import type { SubmissionDetail, SubmissionSummary } from '@cyberstars/shared/tests';
+import type { CodeLanguage } from '@cyberstars/shared/constants';
 import * as testsService from '../../services/testsService';
 import { CodeEditor } from '../code/CodeEditor';
 import { LoadingSpinner } from '../ui/LoadingSpinner';
@@ -16,8 +17,6 @@ const columns = (showRuntime: boolean) =>
   `${showRuntime ? 'grid-cols-[1fr_4rem_4.5rem_5.5rem]' : 'grid-cols-[1fr_4rem_5.5rem]'} gap-x-3`;
 
 interface SubmissionsPanelProps {
-  // Language key for the read-only editor (the lesson's course key).
-  language: string;
   // Algorithm lessons show runtimes; course lessons only have to work.
   showRuntime: boolean;
   // Null until the history has been fetched.
@@ -25,13 +24,13 @@ interface SubmissionsPanelProps {
   failed: boolean;
   onLoad: () => void;
   onRetry: () => void;
-  onLoadCode: (code: string) => void;
+  // With the language the code ran in.
+  onLoadCode: (code: string, language: CodeLanguage) => void;
 }
 
 // The signed-in student's attempts on this lesson: a list, newest first, and
 // one attempt opened with the code that was judged.
 export function SubmissionsPanel({
-  language,
   showRuntime,
   list,
   failed,
@@ -52,7 +51,6 @@ export function SubmissionsPanel({
       <SubmissionView
         key={openId}
         id={openId}
-        language={language}
         showRuntime={showRuntime}
         onBack={() => setOpenId(null)}
         onLoadCode={onLoadCode}
@@ -152,16 +150,14 @@ function SubmissionRow({
 
 function SubmissionView({
   id,
-  language,
   showRuntime,
   onBack,
   onLoadCode,
 }: {
   id: number;
-  language: string;
   showRuntime: boolean;
   onBack: () => void;
-  onLoadCode: (code: string) => void;
+  onLoadCode: (code: string, language: CodeLanguage) => void;
 }) {
   const { t } = useTranslation();
   const [detail, setDetail] = useState<SubmissionDetail | null>(null);
@@ -212,14 +208,14 @@ function SubmissionView({
               </h3>
               <button
                 type="button"
-                onClick={() => onLoadCode(detail.code)}
+                onClick={() => onLoadCode(detail.code, detail.language)}
                 className="px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition cursor-pointer"
               >
                 {t('tests.submissions.loadCode')}
               </button>
             </div>
             <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[rgba(13,17,23,0.3)] overflow-auto">
-              <CodeEditor value={detail.code} language={language} fontSize="13px" readOnly />
+              <CodeEditor value={detail.code} language={detail.language} fontSize="13px" readOnly />
             </div>
           </section>
         </>

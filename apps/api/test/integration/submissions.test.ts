@@ -36,9 +36,17 @@ describe('Submission history', () => {
     const { agent: a, email } = await createAuthenticatedAgent();
     const userId = await userIdFor(email);
 
-    const first = await record(userId, 'python', 'print', 'en', 'print("a")', verdict(1));
-    const second = await record(userId, 'python', 'print', 'ro', 'print("b")', verdict(3));
-    await record(userId, 'python', 'variables', 'en', 'x = 1', verdict(0));
+    const first = await record(userId, 'python', 'print', 'en', 'python', 'print("a")', verdict(1));
+    const second = await record(
+      userId,
+      'python',
+      'print',
+      'ro',
+      'python',
+      'print("b")',
+      verdict(3),
+    );
+    await record(userId, 'python', 'variables', 'en', 'python', 'x = 1', verdict(0));
 
     const res = await a.get('/api/tests/python/print/submissions').expect(200);
     expect(res.body.map((s: { id: number }) => s.id)).toEqual([second.id, first.id]);
@@ -50,6 +58,7 @@ describe('Submission history', () => {
       runtimeMs: 1.25,
       referenceMs: 0.75,
       lang: 'ro',
+      language: 'python',
       createdAt: second.createdAt,
     });
     expect(res.body[0]).not.toHaveProperty('code');
@@ -61,10 +70,12 @@ describe('Submission history', () => {
 
     const ids: number[] = [];
     for (let i = 0; i < 22; i++) {
-      ids.push((await record(userId, 'python', 'print', 'en', `print(${i})`, verdict(1))).id);
+      ids.push(
+        (await record(userId, 'python', 'print', 'en', 'python', `print(${i})`, verdict(1))).id,
+      );
     }
     // Another lesson's history is untouched by this lesson's cap.
-    await record(userId, 'python', 'variables', 'en', 'x = 1', verdict(0));
+    await record(userId, 'python', 'variables', 'en', 'python', 'x = 1', verdict(0));
 
     const res = await a.get('/api/tests/python/print/submissions').expect(200);
     expect(res.body.map((s: { id: number }) => s.id)).toEqual(ids.slice(2).reverse());
@@ -79,6 +90,7 @@ describe('Submission history', () => {
       'python',
       'print',
       'en',
+      'python',
       'print("a")',
       verdict(1, { runtimeMs: undefined, referenceMs: undefined }),
     );
@@ -104,6 +116,7 @@ describe('Submission history', () => {
       'python',
       'print',
       'en',
+      'python',
       'print(',
       verdict(0, { syntaxError: 'line 1', cases: [] }),
     );
@@ -116,7 +129,15 @@ describe('Submission history', () => {
   it("hides another student's attempt behind a 404", async () => {
     const { email } = await createAuthenticatedAgent();
     const { agent: other } = await createAuthenticatedAgent();
-    const saved = await record(await userIdFor(email), 'python', 'print', 'en', 'x', verdict(1));
+    const saved = await record(
+      await userIdFor(email),
+      'python',
+      'print',
+      'en',
+      'python',
+      'x',
+      verdict(1),
+    );
 
     await other.get(`/api/tests/submissions/${saved.id}`).expect(404);
     await other.get(`/api/tests/submissions/${saved.id + 1000}`).expect(404);
@@ -139,7 +160,7 @@ describe('Submission history', () => {
   it('goes away with the account', async () => {
     const { email } = await createAuthenticatedAgent();
     const userId = await userIdFor(email);
-    await record(userId, 'python', 'print', 'en', 'x', verdict(1));
+    await record(userId, 'python', 'print', 'en', 'python', 'x', verdict(1));
 
     await prisma.user.delete({ where: { id: userId } });
 
