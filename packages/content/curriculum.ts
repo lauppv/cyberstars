@@ -1858,4 +1858,11 @@ export const lessons = [
     sortOrder: 15,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'signal-time',
+    title: 'Hard · How Long Until the Signal Reaches Everyone',
+    sortOrder: 16,
+    hasCodeFile: true,
+  },
 ];
