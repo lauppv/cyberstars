@@ -12,11 +12,11 @@ import { findCell } from './parseBoxes';
 // gen:content puts them, then the player's own parser. A Romanian lesson tells the same story as
 // its English one, so the two have the same visuals with the same steps, places and values; only
 // the words differ. Prose (captions, questions, titles, row labels, tags) may use diacritics; names
-// from the code (markers, pointer labels, code lines, box and field names, the null word) and the
-// values stay ASCII, like the code in a RO lesson.
+// from the code (markers, pointer labels, code lines, box and field names, the null word, a stack
+// card's text and line) and the values stay ASCII, like the code in a RO lesson.
 
 const PROSE = new Set(['caption', 'ask', 'title', 'label', 'tags']);
-const NAMES = new Set(['markers', 'pointers', 'code', 'name', 'null']);
+const NAMES = new Set(['markers', 'pointers', 'code', 'name', 'null', 'text', 'line']);
 
 // What a phone shows without scrolling the words away from the drawing
 const INTRO_MAX = 280;
@@ -58,8 +58,20 @@ const strings = (value: unknown): string[] =>
       ? Object.values(value).flatMap(strings)
       : [];
 
-// A box's field is named as the code names it, so an address points at it by place instead
+// A box's field is named as the code names it, so an address points at it by place instead; a
+// stack step's new lines are written as code, so each goes under the key a card's line has
 function byPlace(visual: Visual): Visual {
+  if (visual.type === 'stack') {
+    return {
+      ...visual,
+      steps: visual.steps.map((step) => ({
+        ...step,
+        set:
+          step.set &&
+          Object.fromEntries(Object.entries(step.set).map(([id, line]) => [id, { line }])),
+      })),
+    } as Visual;
+  }
   if (visual.type !== 'boxes') return visual;
   const place = (record?: Record<string, unknown>) =>
     record &&

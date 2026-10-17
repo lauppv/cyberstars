@@ -66,6 +66,25 @@ Hai să urmărim **factorial(5)**:
 - factorial(1) = 1 ← cazul de bază!
 - Acum se desfășoară înapoi: 2×1=2, 3×2=6, 4×6=24, 5×24=120
 
+```visual
+{
+  "type": "stack",
+  "caption": "Fiecare apel așteaptă pe stivă apelul pe care l-a făcut, cel mai nou deasupra. Cazul de bază răspunde imediat, apoi fiecare răspuns coboară la apelul care așteaptă sub el.",
+  "steps": [
+    {"title": "Apelăm", "push": [{"id": "f5", "text": "factorial(5)", "line": "5 * factorial(4)"}], "focus": ["f5"], "caption": "Rulează factorial(5). Are nevoie de factorial(4) ca să înmulțească, așa că așteaptă"},
+    {"push": [{"id": "f4", "text": "factorial(4)", "line": "4 * factorial(3)"}], "focus": ["f4"], "caption": "factorial(4) vine deasupra. Are nevoie de factorial(3), deci așteaptă și el, iar factorial(5) așteaptă în continuare sub el"},
+    {"push": [{"id": "f3", "text": "factorial(3)", "line": "3 * factorial(2)"}], "focus": ["f3"], "caption": "factorial(3) are nevoie de factorial(2), așa că așteaptă"},
+    {"push": [{"id": "f2", "text": "factorial(2)", "line": "2 * factorial(1)"}], "focus": ["f2"], "caption": "factorial(2) are nevoie de factorial(1), așa că așteaptă. Acum patru apeluri se așteaptă unul pe altul"},
+    {"push": [{"id": "f1", "text": "factorial(1)", "line": "return 1"}], "done": ["f1"], "tags": {"f1": "cazul de bază"}, "caption": "factorial(1) e cazul de bază: returnează 1 fără să mai apeleze nimic"},
+    {"title": "Ne întoarcem", "ask": "Ce returnează factorial(2)?", "pop": 1, "set": {"f2": "2 * 1 = 2"}, "focus": ["f2"], "done": ["f1"], "caption": "factorial(1) dă 1 mai jos și pleacă, deci factorial(2) poate termina: 2 * 1 = 2"},
+    {"ask": "Ce returnează factorial(3)?", "pop": 1, "set": {"f3": "3 * 2 = 6"}, "focus": ["f3"], "done": ["f2"], "caption": "factorial(2) dă 2 mai jos și pleacă, deci factorial(3) poate termina: 3 * 2 = 6"},
+    {"ask": "Ce returnează factorial(4)?", "pop": 1, "set": {"f4": "4 * 6 = 24"}, "focus": ["f4"], "done": ["f3"], "caption": "factorial(3) dă 6 mai jos și pleacă, deci factorial(4) poate termina: 4 * 6 = 24"},
+    {"ask": "Ce returnează factorial(5)?", "pop": 1, "set": {"f5": "5 * 24 = 120"}, "focus": ["f5"], "done": ["f4"], "caption": "factorial(4) dă 24 mai jos și pleacă, deci factorial(5) poate termina: 5 * 24 = 120"},
+    {"pop": 1, "done": ["f5"], "caption": "factorial(5) dă 120 lui print, care îl afișează. Stiva e din nou goală"}
+  ]
+}
+```
+
 ---
 
 Alt clasic: **suma unei liste**

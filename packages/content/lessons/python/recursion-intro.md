@@ -66,6 +66,25 @@ Let's trace **factorial(5)**:
 - factorial(1) = 1 ← base case!
 - Now it unwinds: 2×1=2, 3×2=6, 4×6=24, 5×24=120
 
+```visual
+{
+  "type": "stack",
+  "caption": "Each call waits on the stack for the call it made, the newest on top. The base case answers right away, then each answer is handed down to the call waiting under it.",
+  "steps": [
+    {"title": "Calling", "push": [{"id": "f5", "text": "factorial(5)", "line": "5 * factorial(4)"}], "focus": ["f5"], "caption": "factorial(5) runs. It needs factorial(4) before it can multiply, so it waits"},
+    {"push": [{"id": "f4", "text": "factorial(4)", "line": "4 * factorial(3)"}], "focus": ["f4"], "caption": "factorial(4) goes on top. It needs factorial(3), so it waits too, and factorial(5) keeps waiting under it"},
+    {"push": [{"id": "f3", "text": "factorial(3)", "line": "3 * factorial(2)"}], "focus": ["f3"], "caption": "factorial(3) needs factorial(2), so it waits"},
+    {"push": [{"id": "f2", "text": "factorial(2)", "line": "2 * factorial(1)"}], "focus": ["f2"], "caption": "factorial(2) needs factorial(1), so it waits. Four calls are now waiting on each other"},
+    {"push": [{"id": "f1", "text": "factorial(1)", "line": "return 1"}], "done": ["f1"], "tags": {"f1": "base case"}, "caption": "factorial(1) is the base case: it returns 1 without calling anything"},
+    {"title": "Returning", "ask": "What does factorial(2) return?", "pop": 1, "set": {"f2": "2 * 1 = 2"}, "focus": ["f2"], "done": ["f1"], "caption": "factorial(1) hands 1 down and leaves, so factorial(2) can finish: 2 * 1 = 2"},
+    {"ask": "What does factorial(3) return?", "pop": 1, "set": {"f3": "3 * 2 = 6"}, "focus": ["f3"], "done": ["f2"], "caption": "factorial(2) hands 2 down and leaves, so factorial(3) can finish: 3 * 2 = 6"},
+    {"ask": "What does factorial(4) return?", "pop": 1, "set": {"f4": "4 * 6 = 24"}, "focus": ["f4"], "done": ["f3"], "caption": "factorial(3) hands 6 down and leaves, so factorial(4) can finish: 4 * 6 = 24"},
+    {"ask": "What does factorial(5) return?", "pop": 1, "set": {"f5": "5 * 24 = 120"}, "focus": ["f5"], "done": ["f4"], "caption": "factorial(4) hands 24 down and leaves, so factorial(5) can finish: 5 * 24 = 120"},
+    {"pop": 1, "done": ["f5"], "caption": "factorial(5) hands 120 to print, which shows it. The stack is empty again"}
+  ]
+}
+```
+
 ---
 
 Another classic: **sum of a list**

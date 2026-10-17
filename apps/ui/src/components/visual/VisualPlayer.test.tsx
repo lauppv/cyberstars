@@ -6,6 +6,7 @@ import type { BoxesVisual } from './parseBoxes';
 import type { TreeVisual } from './parseTree';
 import type { GraphVisual } from './parseGraph';
 import type { GridVisual } from './parseGrid';
+import type { StackVisual } from './parseStack';
 import { VisualSteps } from './VisualSteps';
 
 const visual: ArrayVisual = {
@@ -930,5 +931,113 @@ describe('VisualPlayer, a grid', () => {
     expect(cell('0,0')).toHaveTextContent('0');
     expect(cell('0,1')).toHaveTextContent('1');
     expect(cell('1,1')).toHaveAttribute('data-state', 'idle');
+  });
+});
+
+describe('VisualPlayer, a stack', () => {
+  const calls: StackVisual = {
+    type: 'stack',
+    caption: 'Calls wait',
+    cards: [{ id: 'main', text: 'main()' }],
+    steps: [
+      {
+        push: [{ id: 'f2', text: 'f(2)', line: '2 * f(1)' }],
+        focus: ['f2'],
+        caption: 'f(2) waits',
+      },
+      {
+        push: [{ id: 'f1', text: 'f(1)', line: 'return 1' }],
+        done: ['f1'],
+        tags: { f1: 'base case' },
+        caption: 'The base case',
+      },
+      {
+        ask: 'What does f(2) return?',
+        pop: 1,
+        set: { f2: '2 * 1 = 2' },
+        done: ['f1', 'f2'],
+        caption: '2',
+      },
+      { pop: 1, caption: 'Empty' },
+    ],
+  };
+
+  const card = (id: string) => document.querySelector<HTMLElement>(`[data-card="${id}"]`);
+  const lines = (id: string) =>
+    [...document.querySelectorAll<HTMLElement>(`[data-line="${id}"]`)].map((line) => [
+      line.textContent,
+      Number(line.style.opacity),
+    ]);
+
+  let queued: FrameRequestCallback[] = [];
+  const playAt = (ms: number) =>
+    act(() => {
+      const now = queued;
+      queued = [];
+      for (const tick of now) tick(ms);
+    });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    queued = [];
+  });
+
+  it('piles the cards up from the floor, newest on top, with their state and tag', () => {
+    vi.stubGlobal('matchMedia', (query: string) => ({ matches: query.includes('reduce') }));
+    render(<VisualPlayer visual={calls} />);
+    expect(card('main')).toHaveTextContent('main()');
+    expect(lines('main')).toEqual([]);
+    expect(card('f2')).toBeNull();
+    next();
+    expect(card('f2')).toHaveTextContent('f(2)2 * f(1)');
+    expect(card('f2')).toHaveAttribute('data-state', 'focused');
+    next();
+    expect(Number.parseFloat(card('f1')!.style.bottom)).toBeGreaterThan(
+      Number.parseFloat(card('f2')!.style.bottom),
+    );
+    expect(card('f1')).toHaveAttribute('data-state', 'done');
+    expect(card('f2')).toHaveAttribute('data-state', 'idle');
+    expect(card('f1')!.querySelector('[data-tag]')).toHaveTextContent('base case');
+    next();
+    expect(screen.getByText('What does f(2) return?')).toBeInTheDocument();
+    expect(card('f1')).toBeInTheDocument();
+    expect(lines('f2')).toEqual([['2 * f(1)', 1]]);
+    next();
+    expect(card('f1')).toBeNull();
+    expect(lines('f2')).toEqual([['2 * 1 = 2', 1]]);
+    expect(card('f2')).toHaveAttribute('data-state', 'done');
+    next();
+    expect(card('f2')).toBeNull();
+    expect(card('main')).toBeInTheDocument();
+  });
+
+  it('drops a pushed card in, and lifts a popped one out while the new line fades in', () => {
+    vi.stubGlobal('matchMedia', () => ({ matches: false }));
+    vi.stubGlobal('requestAnimationFrame', (tick: FrameRequestCallback) => queued.push(tick));
+    vi.stubGlobal('cancelAnimationFrame', () => {});
+    render(<VisualPlayer visual={calls} />);
+    next();
+    playAt(0);
+    expect(card('f2')!.style.opacity).toBe('0');
+    expect(card('f2')!.style.transform).toMatch(/translateY\(-/);
+    playAt(5000);
+    expect(card('f2')!.style.opacity).toBe('1');
+    expect(card('f2')!.style.transform).toBe('');
+    next();
+    playAt(0);
+    playAt(5000);
+    next();
+    next();
+    playAt(0);
+    // Halfway through the first beat: f(1) is rising out and the old line fading
+    playAt(300);
+    expect(Number(card('f1')!.style.opacity)).toBeCloseTo(0.5);
+    expect(lines('f2')).toEqual([
+      ['2 * f(1)', 0.5],
+      ['2 * 1 = 2', 0],
+    ]);
+    playAt(5000);
+    expect(card('f1')).toBeNull();
+    expect(lines('f2')).toEqual([['2 * 1 = 2', 1]]);
   });
 });

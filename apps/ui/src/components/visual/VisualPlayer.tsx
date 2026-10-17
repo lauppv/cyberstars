@@ -9,11 +9,13 @@ import { boxFrames } from './boxFrames';
 import { treeFrames } from './treeFrames';
 import { graphFrames } from './graphFrames';
 import { gridFrames } from './gridFrames';
+import { stackFrames } from './stackFrames';
 import { ArrayView } from './ArrayView';
 import { BoxesView } from './BoxesView';
 import { TreeView } from './TreeView';
 import { GraphView } from './GraphView';
 import { GridView } from './GridView';
+import { StackView } from './StackView';
 import { VisualSteps } from './VisualSteps';
 import { Words } from './Words';
 
@@ -44,6 +46,8 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
         return { type: visual.type, visual, frames: graphFrames(visual) };
       case 'grid':
         return { type: visual.type, visual, frames: gridFrames(visual) };
+      case 'stack':
+        return { type: visual.type, visual, frames: stackFrames(visual) };
     }
   }, [visual]);
   const { frames } = drawn;
@@ -164,8 +168,10 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
         box={box}
         moveMs={moveMs}
       />
-    ) : (
+    ) : drawn.type === 'grid' ? (
       <GridView visual={drawn.visual} frames={drawn.frames} step={step} box={box} />
+    ) : (
+      <StackView frames={drawn.frames} step={step} box={box} moveMs={moveMs} />
     );
 
   const title = (
