@@ -36,15 +36,15 @@ After pass 1, the **biggest number (8)** has "bubbled up" to the end. That's why
   "pointers": ["j = {i}", "j + 1"],
   "steps": [
     {"title": "Pass 1", "compare": [0, 1], "ask": "Is 5 > 3?", "swap": true, "caption": "Yes, so they swap"},
-    {"compare": [1, 2], "ask": "Is 5 > 8?", "caption": "No, so they stay"},
+    {"compare": [1, 2], "ask": "Will 5 and 8 swap?", "choices": ["Yes", "No"], "answer": 1, "caption": "No, 5 < 8, so they stay"},
     {"compare": [2, 3], "ask": "Is 8 > 1?", "swap": true, "caption": "Yes, so they swap"},
     {"compare": [3, 4], "ask": "Is 8 > 2?", "swap": true, "caption": "Yes, so they swap"},
     {"sorted": 4, "caption": "8 is at the end, in its place"},
     {"title": "Pass 2", "compare": [0, 1], "ask": "Is 3 > 5?", "caption": "No, so they stay"},
-    {"compare": [1, 2], "ask": "Is 5 > 1?", "swap": true, "caption": "Yes, so they swap"},
+    {"compare": [1, 2], "ask": "Will 5 and 1 swap?", "choices": ["Yes", "No"], "answer": 0, "swap": true, "caption": "Yes, 5 > 1, so they swap"},
     {"compare": [2, 3], "ask": "Is 5 > 2?", "swap": true, "caption": "Yes, so they swap"},
     {"sorted": 3, "caption": "5 is in its place too"},
-    {"title": "Pass 3", "compare": [0, 1], "ask": "Is 3 > 1?", "swap": true, "caption": "Yes, so they swap"},
+    {"title": "Pass 3", "compare": [0, 1], "ask": "Will 3 and 1 swap?", "choices": ["Yes", "No"], "answer": 0, "swap": true, "caption": "Yes, 3 > 1, so they swap"},
     {"compare": [1, 2], "ask": "Is 3 > 2?", "swap": true, "caption": "Yes, so they swap"},
     {"sorted": 0, "caption": "Done! The list is sorted"}
   ]
