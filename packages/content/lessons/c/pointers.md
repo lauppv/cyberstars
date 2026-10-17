@@ -63,6 +63,23 @@ Let's trace what happens:
 
 We didn't touch **x** directly. We went through **p**, followed the address, and changed the value there. This is the power of pointers
 
+```visual
+{
+  "type": "boxes",
+  "caption": "Every variable is a box somewhere in memory. A pointer's box holds the address of another box, its room number, drawn here as an arrow to it.",
+  "boxes": [
+    {"id": "p", "name": "p", "to": "x"},
+    {"id": "x", "name": "x", "value": 10}
+  ],
+  "steps": [
+    {"show": ["x"], "caption": "int x = 10; x is created with the value 10, somewhere in memory"},
+    {"show": ["p"], "caption": "int *p = &x; p gets the address of x, so p's arrow points at x"},
+    {"focus": ["p", "x"], "ask": "*p = 42: where does the 42 go?", "set": {"x": 42}, "caption": "Follow p's arrow: it lands on x, so 42 is written into x"},
+    {"focus": ["x"], "caption": "printf prints x: 42. x changed, though we never wrote x = 42"}
+  ]
+}
+```
+
 ---
 
 On the early UNIX systems at Bell Labs, programmers worked with memory at exactly this level: every byte had an address, and a wrong pointer could write over another program's memory. This is why C keeps you this close to the machine, and why you have to pay attention to which pointer you're reading and which one you're writing
