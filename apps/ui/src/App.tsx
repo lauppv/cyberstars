@@ -59,9 +59,6 @@ const UsagePage = lazy(() => import('./pages/UsagePage').then((m) => ({ default:
 const SupportPage = lazy(() =>
   import('./pages/SupportPage').then((m) => ({ default: m.SupportPage })),
 );
-const WelcomePage = lazy(() =>
-  import('./pages/WelcomePage').then((m) => ({ default: m.WelcomePage })),
-);
 const AdminPage = lazy(() => import('./pages/AdminPage').then((m) => ({ default: m.AdminPage })));
 const LeaderboardPage = lazy(() =>
   import('./pages/LeaderboardPage').then((m) => ({ default: m.LeaderboardPage })),
@@ -83,10 +80,10 @@ const NotFoundPage = lazy(() =>
 );
 
 // The radio chip lives at the app root so playback survives navigation, but the
-// auth/welcome pages carry no chrome.
+// sign-in page carries no chrome.
 function GlobalRadio() {
   const { pathname } = useLocation();
-  if (pathname === '/getstarted' || pathname === '/welcome') return null;
+  if (pathname === '/getstarted') return null;
   return <RadioPlayer />;
 }
 
@@ -152,7 +149,6 @@ function App() {
                                     <Route path="/rules" element={<RulesPage />} />
                                     <Route path="/usage" element={<UsagePage />} />
                                     <Route path="/support" element={<SupportPage />} />
-                                    <Route path="/welcome" element={<WelcomePage />} />
                                     <Route path="/admin" element={<AdminPage />} />
                                     <Route path="/leaderboard" element={<LeaderboardPage />} />
                                     <Route path="/messages" element={<MessagesPage />} />
