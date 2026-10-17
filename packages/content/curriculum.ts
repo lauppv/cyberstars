@@ -1837,4 +1837,11 @@ export const lessons = [
     sortOrder: 12,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'maze-exit',
+    title: 'Medium · Fewest Steps Through a Maze',
+    sortOrder: 13,
+    hasCodeFile: true,
+  },
 ];
