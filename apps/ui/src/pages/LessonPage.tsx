@@ -485,12 +485,13 @@ export function LessonPage() {
         }
       }
     } catch (err) {
-      setTestsError(err instanceof Error ? err.message : 'Something went wrong');
+      setTestsError(err instanceof Error ? err.message : t('common.somethingWrong'));
     } finally {
       setIsTesting(false);
     }
   }, [
     isTesting,
+    t,
     isRunning,
     category,
     lesson,
@@ -529,12 +530,13 @@ export function LessonPage() {
         refreshGamification();
       }
     } catch (err) {
-      setTerminalTestsError(err instanceof Error ? err.message : 'Something went wrong');
+      setTerminalTestsError(err instanceof Error ? err.message : t('common.somethingWrong'));
     } finally {
       setIsChecking(false);
     }
   }, [
     isChecking,
+    t,
     terminal.sessionId,
     category,
     lesson,

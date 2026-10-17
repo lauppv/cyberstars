@@ -177,7 +177,7 @@ function readHistoryOpen(): boolean {
 // A 429 is either the session spent or too many messages in a minute.
 function reasonOf(err: unknown): TutorFailure['reason'] {
   if (!(err instanceof ApiClientError) || err.status !== 429) return 'tutor.errorFailed';
-  return err.message.startsWith(USAGE_LIMIT_ERROR) ? 'tutor.errorLimit' : 'tutor.errorBusy';
+  return err.serverMessage.startsWith(USAGE_LIMIT_ERROR) ? 'tutor.errorLimit' : 'tutor.errorBusy';
 }
 
 function lessonKeyOf(lesson: TutorLessonRef | null): string | null {

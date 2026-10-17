@@ -128,7 +128,10 @@ export function SettingsPage() {
       setNewPassword('');
       setConfirmPassword('');
     } catch (err) {
-      setPwdMessage({ type: 'err', text: err instanceof Error ? err.message : 'Error' });
+      setPwdMessage({
+        type: 'err',
+        text: err instanceof Error ? err.message : t('common.somethingWrong'),
+      });
     } finally {
       setPwdSaving(false);
     }
@@ -147,7 +150,10 @@ export function SettingsPage() {
       setEmailPw('');
       refreshUser();
     } catch (err) {
-      setEmailMessage({ type: 'err', text: err instanceof Error ? err.message : 'Error' });
+      setEmailMessage({
+        type: 'err',
+        text: err instanceof Error ? err.message : t('common.somethingWrong'),
+      });
     } finally {
       setEmailSaving(false);
     }
@@ -164,7 +170,10 @@ export function SettingsPage() {
       setNewEmail('');
       refreshUser();
     } catch (err) {
-      setEmailMessage({ type: 'err', text: err instanceof Error ? err.message : 'Error' });
+      setEmailMessage({
+        type: 'err',
+        text: err instanceof Error ? err.message : t('common.somethingWrong'),
+      });
     } finally {
       setEmailSaving(false);
     }
@@ -178,7 +187,10 @@ export function SettingsPage() {
       setNewEmail('');
       refreshUser();
     } catch (err) {
-      setEmailMessage({ type: 'err', text: err instanceof Error ? err.message : 'Error' });
+      setEmailMessage({
+        type: 'err',
+        text: err instanceof Error ? err.message : t('common.somethingWrong'),
+      });
     }
   };
 

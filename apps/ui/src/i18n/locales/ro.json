@@ -355,7 +355,8 @@
     "beta": "Beta",
     "betaHint": "Încă în lucru: urmează mai multe lecții",
     "xpTotal": "{{xp}} XP",
-    "xpReward": "+{{xp}} XP"
+    "xpReward": "+{{xp}} XP",
+    "somethingWrong": "Ceva n-a mers. Încearcă din nou."
   },
   "leaderboard": {
     "you": "Tu",
@@ -899,7 +900,8 @@
     "unlimited": "Nelimitat",
     "resetsAt": "Se reîncarcă {{when}}",
     "solutionError": "Nu am putut dezvălui soluția acum.",
-    "solutionDepleted": "Ai folosit toate soluțiile pe care le poți vedea azi. Revino după ce se reîncarcă."
+    "solutionDepleted": "Ai folosit toate soluțiile pe care le poți vedea azi. Revino după ce se reîncarcă.",
+    "limitReached": "Ai atins limita. Se reîncarcă {{when}}."
   },
   "laniakea": {
     "introTitle": "Bun venit la bord, căpitane.",
@@ -939,13 +941,16 @@
     "running": "Se rulează...",
     "runTitle": "Ctrl + Enter pentru a rula codul",
     "output": "Rezultat",
-    "runToSee": "Rulează codul pentru a vedea rezultatul..."
+    "runToSee": "Rulează codul pentru a vedea rezultatul...",
+    "outputTruncated": "... (rezultat scurtat) ...",
+    "connectionError": "Conexiunea s-a întrerupt."
   },
   "terminal": {
     "label": "Terminal",
     "starting": "Se pornește sandbox-ul...",
     "resetTitle": "Resetează sandbox-ul",
-    "enterToRun": "Enter pentru a rula"
+    "enterToRun": "Enter pentru a rula",
+    "startFailed": "Terminalul n-a putut porni: {{reason}}"
   },
   "gamification": {
     "firstSteps": "Primii pași în {{course}}",

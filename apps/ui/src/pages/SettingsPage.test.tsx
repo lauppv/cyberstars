@@ -200,7 +200,7 @@ describe('SettingsPage', () => {
     fireEvent.change(emailInput, { target: { value: 'new@example.com' } });
     fireEvent.change(pwInput, { target: { value: 'bad' } });
     fireEvent.submit(emailForm);
-    expect(await screen.findByText('Error')).toBeDefined();
+    expect(await screen.findByText('Something went wrong. Please try again.')).toBeDefined();
   });
 
   it('shows the error message when the password change fails with an Error', async () => {
@@ -222,7 +222,7 @@ describe('SettingsPage', () => {
     fireEvent.change(next, { target: { value: '123456' } });
     fireEvent.change(confirm, { target: { value: '123456' } });
     fireEvent.submit(passwordForm());
-    expect(await screen.findByText('Error')).toBeDefined();
+    expect(await screen.findByText('Something went wrong. Please try again.')).toBeDefined();
   });
 
   it('toggles visibility of every password field', () => {
@@ -286,14 +286,14 @@ describe('SettingsPage', () => {
       const codeInput = form.querySelector('input') as HTMLInputElement;
       fireEvent.change(codeInput, { target: { value: '123456' } });
       fireEvent.submit(form);
-      expect(await screen.findByText('Error')).toBeDefined();
+      expect(await screen.findByText('Something went wrong. Please try again.')).toBeDefined();
     });
 
     it('shows a generic error when cancellation throws a non-Error', async () => {
       mockCancelEmailChange.mockRejectedValue('boom');
       renderPage();
       fireEvent.click(screen.getByText('Cancel'));
-      expect(await screen.findByText('Error')).toBeDefined();
+      expect(await screen.findByText('Something went wrong. Please try again.')).toBeDefined();
     });
 
     it('cancels the pending email change', async () => {

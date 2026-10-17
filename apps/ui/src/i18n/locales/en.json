@@ -334,7 +334,8 @@
     "beta": "Beta",
     "betaHint": "Still being built: more lessons are on the way",
     "xpTotal": "{{xp}} XP",
-    "xpReward": "+{{xp}} XP"
+    "xpReward": "+{{xp}} XP",
+    "somethingWrong": "Something went wrong. Please try again."
   },
   "leaderboard": {
     "you": "You",
@@ -862,7 +863,8 @@
     "unlimited": "Unlimited",
     "resetsAt": "Refills {{when}}",
     "solutionError": "Could not reveal the solution right now.",
-    "solutionDepleted": "You've used all your solution reveals for today. Come back after the reset."
+    "solutionDepleted": "You've used all your solution reveals for today. Come back after the reset.",
+    "limitReached": "Limit reached. It refills on {{when}}."
   },
   "laniakea": {
     "introTitle": "Welcome aboard, captain.",
@@ -902,13 +904,16 @@
     "running": "Running...",
     "runTitle": "Ctrl + Enter to run code",
     "output": "Output",
-    "runToSee": "Run your code to see the output..."
+    "runToSee": "Run your code to see the output...",
+    "outputTruncated": "... (output truncated) ...",
+    "connectionError": "Connection error."
   },
   "terminal": {
     "label": "Terminal",
     "starting": "Starting sandbox...",
     "resetTitle": "Reset sandbox",
-    "enterToRun": "Enter to run"
+    "enterToRun": "Enter to run",
+    "startFailed": "Couldn't start the terminal: {{reason}}"
   },
   "gamification": {
     "firstSteps": "{{course}} First Steps",

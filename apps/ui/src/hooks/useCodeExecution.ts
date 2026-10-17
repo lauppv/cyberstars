@@ -1,4 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
+import i18next from 'i18next';
+import { localizeRunOutput } from '../i18n/serverMessages';
 
 function wsUrl(): string {
   const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -13,7 +15,7 @@ function appendCapped(prev: string, chunk: string): string {
   const kept = next.slice(-OUTPUT_DISPLAY_MAX);
   const nlIdx = kept.indexOf('\n');
   const trimmed = nlIdx >= 0 ? kept.slice(nlIdx + 1) : kept;
-  return '... (output truncated) ...\n' + trimmed;
+  return `${i18next.t('code.outputTruncated')}\n${trimmed}`;
 }
 
 export function useCodeExecution(onExit?: (code: number | undefined) => void) {
@@ -48,8 +50,11 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
         data?: string;
         code?: number;
       };
-      if (msg.type === 'stdout' || msg.type === 'stderr') {
+      if (msg.type === 'stdout') {
         setOutput((prev) => appendCapped(prev, msg.data ?? ''));
+      } else if (msg.type === 'stderr') {
+        // The server's own notes (a time limit, a refused run) come this way too
+        setOutput((prev) => appendCapped(prev, localizeRunOutput(msg.data ?? '')));
       } else if (msg.type === 'exit') {
         setIsRunning(false);
         sendInputRef.current = null;
@@ -60,7 +65,7 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
     };
 
     ws.onerror = () => {
-      setOutput((prev) => prev + '\nConnection error.\n');
+      setOutput((prev) => `${prev}\n${i18next.t('code.connectionError')}\n`);
       setIsRunning(false);
       sendInputRef.current = null;
     };

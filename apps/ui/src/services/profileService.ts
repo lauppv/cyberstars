@@ -1,6 +1,6 @@
 import type { Interest } from '@cyberstars/shared/interests';
 import type { CodeLanguage } from '@cyberstars/shared/constants';
-import { api } from './apiClient';
+import { api, ApiClientError } from './apiClient';
 
 const API_BASE = import.meta.env.VITE_PROD_API_URL || '';
 
@@ -31,8 +31,9 @@ export async function uploadAvatar(file: File): Promise<{ avatarUrl: string }> {
     body: form,
   });
   if (!res.ok) {
-    const data = await res.json().catch(() => ({ error: 'Upload failed' }));
-    throw new Error(data.error || 'Upload failed');
+    // Without the server's reason the page says the upload failed in its own words
+    const data = await res.json().catch(() => ({}));
+    throw new ApiClientError(res.status, data.error ?? '');
   }
   return res.json();
 }
