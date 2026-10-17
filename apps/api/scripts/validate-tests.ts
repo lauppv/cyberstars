@@ -22,12 +22,24 @@ import { fileURLToPath } from 'url';
 import { contentDir } from '../src/services/paths.js';
 import { parseC, collectInjectionSites } from '../src/services/c-analysis.js';
 import type { LessonTestsSpec } from '@cyberstars/shared/tests';
+import { CODE_LANGUAGES, MULTI_LANGUAGE_COURSE_KEYS } from '@cyberstars/shared/constants';
 
-const CODE_JUDGE_COURSES = ['python', 'java', 'c', 'algo-python', 'algo-java', 'algo-c'];
+// A multi-language course is checked once per language, as <course>/<language>.
+const CODE_JUDGE_COURSES = [
+  'python',
+  'java',
+  'c',
+  'algo-python',
+  'algo-java',
+  'algo-c',
+  ...MULTI_LANGUAGE_COURSE_KEYS.flatMap((key) => CODE_LANGUAGES.map((lang) => `${key}/${lang}`)),
+];
 const C_COURSES = new Set(['c', 'algo-c']);
 
 type Lang = 'python' | 'java' | 'c';
 function langOf(courseKey: string): Lang {
+  const [, language] = courseKey.split('/');
+  if (language) return language as Lang;
   if (C_COURSES.has(courseKey)) return 'c';
   return courseKey.endsWith('java') ? 'java' : 'python';
 }
@@ -300,7 +312,8 @@ export async function collectProblems(): Promise<Problem[]> {
   const problems: Problem[] = [];
 
   for (const courseKey of CODE_JUDGE_COURSES) {
-    const baseDir = contentDir(courseKey);
+    const [key, language] = courseKey.split('/');
+    const baseDir = contentDir(key, language);
     const roDir = path.join(baseDir, 'ro');
     const baseSlugs = listTestedSlugs(baseDir);
     const roSlugs = new Set(listTestedSlugs(roDir));

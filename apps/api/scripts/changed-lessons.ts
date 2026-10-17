@@ -17,15 +17,19 @@
 //   npx tsx apps/api/scripts/changed-lessons.ts --all
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import { MULTI_LANGUAGE_COURSE_KEYS, isMultiLanguage } from '@cyberstars/shared/constants';
 import { contentDir } from '../src/services/paths.js';
 import { getRuntime } from '../src/runtimes/registry.js';
 
 type Runtime = 'python' | 'c' | 'java';
 
+// A multi-language course counts once per language, as <course>/<language>.
+const multi = (runtime: Runtime) => MULTI_LANGUAGE_COURSE_KEYS.map((key) => `${key}/${runtime}`);
+
 const COURSES: Record<Runtime, string[]> = {
-  python: ['python', 'algo-python'],
-  c: ['c', 'algo-c'],
-  java: ['java', 'algo-java'],
+  python: ['python', 'algo-python', ...multi('python')],
+  c: ['c', 'algo-c', ...multi('c')],
+  java: ['java', 'algo-java', ...multi('java')],
 };
 
 // For a whole language, sized on the measured judge cost (~70 ms per case for
@@ -65,10 +69,17 @@ export const SELF_FILES = [
 
 // packages/content/lessons/java/ro/hashmap-tests.json -> java/hashmap,
 // packages/content/algorithms/c/binary-search-c-solution.md -> algo-c/binary-search-c,
-// packages/content/variants/python/string-reverse/reject-slice-in-helper.py -> python/string-reverse.
+// packages/content/variants/python/string-reverse/reject-slice-in-helper.py -> python/string-reverse,
+// and on a multi-language course, with the language after the course:
+// packages/content/lessons/trees-graphs/c/trees-tests.json -> trees-graphs/c/trees,
+// packages/content/variants/trees-graphs/c/trees/reject-no-struct.c -> trees-graphs/c/trees.
 const LESSON_FILE =
   /^packages\/content\/(lessons|algorithms)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md)$/;
 const VARIANT_FILE = /^packages\/content\/variants\/([^/]+)\/([^/]+)\/[^/]+$/;
+const MULTI_LESSON_FILE =
+  /^packages\/content\/lessons\/([^/]+)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md)$/;
+const MULTI_VARIANT_FILE =
+  /^packages\/content\/variants\/([^/]+)\/(python|c|java)\/([^/]+)\/[^/]+$/;
 
 export interface Shard {
   name: string;
@@ -77,6 +88,8 @@ export interface Shard {
 }
 
 function changedLesson(file: string): string | null {
+  const multiLesson = MULTI_LESSON_FILE.exec(file) ?? MULTI_VARIANT_FILE.exec(file);
+  if (multiLesson && isMultiLanguage(multiLesson[1])) return multiLesson.slice(1).join('/');
   const lesson = LESSON_FILE.exec(file);
   if (lesson) {
     const [, root, lang, slug] = lesson;
@@ -86,9 +99,16 @@ function changedLesson(file: string): string | null {
   return variant ? `${variant[1]}/${variant[2]}` : null;
 }
 
+// trees-graphs/c/trees -> trees-graphs/c, java/hashmap -> java.
+function courseOf(lesson: string): string {
+  const [courseKey, language] = lesson.split('/');
+  return isMultiLanguage(courseKey) ? `${courseKey}/${language}` : courseKey;
+}
+
 function lessonsOf(courseKey: string): string[] {
+  const [key, language] = courseKey.split('/');
   return fs
-    .readdirSync(contentDir(courseKey))
+    .readdirSync(contentDir(key, language))
     .filter((f) => f.endsWith('-tests.json'))
     .map((f) => `${courseKey}/${f.slice(0, -'-tests.json'.length)}`)
     .sort();
@@ -110,7 +130,7 @@ export function planChecks(changed: string[], all = false): Shard[] {
       targets.set(lessonsOf(courses[0])[0], 'en');
     }
     for (const lesson of changed.map(changedLesson)) {
-      if (lesson && courses.includes(lesson.split('/')[0])) targets.set(lesson, null);
+      if (lesson && courses.includes(courseOf(lesson))) targets.set(lesson, null);
     }
     if (targets.size === 0) continue;
 
