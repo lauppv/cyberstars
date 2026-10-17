@@ -1767,4 +1767,11 @@ export const lessons = [
     sortOrder: 2,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'mirror-tree',
+    title: 'Easy · Mirror a Tree',
+    sortOrder: 3,
+    hasCodeFile: true,
+  },
 ];
