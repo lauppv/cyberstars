@@ -51,6 +51,19 @@ describe('lessonService cache', () => {
     expect(fetchMock).toHaveBeenCalledWith('/lessons/java/arrays-code.md');
   });
 
+  it("reads a multi-language lesson from its language's folder, each language apart", async () => {
+    const fetchMock = vi.fn(() => textResponse('x'));
+    vi.stubGlobal('fetch', fetchMock);
+    await lessonService.fetchLesson('trees-graphs', 'trees', 'en', 'java');
+    await lessonService.fetchLesson('trees-graphs', 'trees', 'en', 'c');
+    await lessonService.fetchLessonCode('trees-graphs', 'trees', 'ro', 'c');
+    expect(fetchMock.mock.calls.map((call) => (call as unknown[])[0])).toEqual([
+      '/lessons/trees-graphs/java/trees.md',
+      '/lessons/trees-graphs/c/trees.md',
+      '/lessons/trees-graphs/c/ro/trees-code.md',
+    ]);
+  });
+
   it('a failed fetch is not cached (retries on next call)', async () => {
     const fetchMock = vi
       .fn()

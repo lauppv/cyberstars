@@ -1,4 +1,5 @@
 import type { LessonContent, Course } from '@cyberstars/shared/lesson';
+import type { CodeLanguage } from '@cyberstars/shared/constants';
 
 // Lesson content, starter code and the curriculum are static for the lifetime of
 // a deploy: generated into public/ at build time (scripts/generate-static-content.ts)
@@ -45,28 +46,36 @@ async function getJson<T>(path: string): Promise<T> {
 // is the source of truth; a missing translation falls back to it, so a course
 // can be translated one lesson at a time.
 async function getLocalizedText(
-  courseKey: string,
+  folder: string,
   slug: string,
   suffix: string,
   lang: string,
 ): Promise<string> {
-  const base = `/lessons/${courseKey}/${slug}${suffix}.md`;
+  const base = `/lessons/${folder}/${slug}${suffix}.md`;
   if (lang === 'en') return getText(base);
   try {
-    return await getText(`/lessons/${courseKey}/${lang}/${slug}${suffix}.md`);
+    return await getText(`/lessons/${folder}/${lang}/${slug}${suffix}.md`);
   } catch {
     return getText(base);
   }
+}
+
+// A multi-language course keeps each language's lessons in a folder of its own
+// (/lessons/trees-graphs/java/), which `language` names.
+function folderOf(courseKey: string, language?: CodeLanguage): string {
+  return language ? `${courseKey}/${language}` : courseKey;
 }
 
 export function fetchLesson(
   courseKey: string,
   lessonSlug: string,
   lang = 'en',
+  language?: CodeLanguage,
 ): Promise<LessonContent> {
-  return cached(`lesson:${lang}:${courseKey}/${lessonSlug}`, async () => ({
+  const folder = folderOf(courseKey, language);
+  return cached(`lesson:${lang}:${folder}/${lessonSlug}`, async () => ({
     title: lessonSlug,
-    content: await getLocalizedText(courseKey, lessonSlug, '', lang),
+    content: await getLocalizedText(folder, lessonSlug, '', lang),
   }));
 }
 
@@ -74,9 +83,11 @@ export function fetchLessonCode(
   courseKey: string,
   lessonSlug: string,
   lang = 'en',
+  language?: CodeLanguage,
 ): Promise<string> {
-  return cached(`code:${lang}:${courseKey}/${lessonSlug}`, () =>
-    getLocalizedText(courseKey, lessonSlug, '-code', lang),
+  const folder = folderOf(courseKey, language);
+  return cached(`code:${lang}:${folder}/${lessonSlug}`, () =>
+    getLocalizedText(folder, lessonSlug, '-code', lang),
   );
 }
 
