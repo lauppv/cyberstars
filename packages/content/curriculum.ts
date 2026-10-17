@@ -1851,4 +1851,11 @@ export const lessons = [
     sortOrder: 14,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'course-order',
+    title: 'Medium · An Order for the Courses',
+    sortOrder: 15,
+    hasCodeFile: true,
+  },
 ];
