@@ -4,27 +4,39 @@ import type { BoxValue } from './parseBoxes';
 // A ```visual fence of type "tree" draws a binary tree. A node is named by its place, numbered
 // level by level from 0 at the root, so the children of place i are 2i + 1 and 2i + 2, as in a
 // heap; a node keeps its place on screen, so nothing moves when the tree grows. `nodes` is the tree
-// it starts with (it can be empty). Each step can remove nodes, set a value, swap two values and
-// add nodes (in that order), and, for that step only, highlight nodes (focus), light a path down
-// from a node to one of its descendants, show a node's empty children with the null word ("null"
-// unless the fence names another), put a short word by a node (tags) and show a line of code under
-// the tree. Like an array's steps it can name its pass (title) and ask a question first. Every
-// node but the root hangs from its parent at every step. Anything that doesn't fit comes back null.
+// it starts with (it can be empty); `array: true` also lays the tree out as a list under it, place
+// by place, as a heap is stored. Each step can remove nodes, set a value, move a value to another
+// node (its own node goes), swap two values and add nodes (in that order), and, for that step only,
+// highlight nodes (focus), mark nodes done, light a path down from a node to one of its
+// descendants, show a node's empty children with the null word ("null" unless the fence names
+// another), put a short word by a node (tags), show rows of values under the tree, such as the
+// visits so far or a queue, and a line of code. Like an array's steps it can name its pass (title)
+// and ask a question first. Every node but the root hangs from its parent at every step. Anything
+// that doesn't fit comes back null.
 
 // Four levels below the root at most, so the bottom row still fits a phone
 const MAX_PLACE = 30;
+
+// A row of values under the tree, with its name
+export interface TreeRow {
+  label: string;
+  values: BoxValue[];
+}
 
 interface TreeStep {
   title?: string;
   ask?: string;
   remove?: number[];
   set?: Record<number, BoxValue>;
+  move?: [number, number];
   swap?: [number, number];
   add?: Record<number, BoxValue>;
   focus?: number[];
+  done?: number[];
   path?: number[];
   nulls?: number[];
   tags?: Record<number, string>;
+  rows?: TreeRow[];
   code?: string;
   caption: string;
 }
@@ -33,6 +45,7 @@ export interface TreeVisual {
   type: 'tree';
   caption: string;
   null: string;
+  array: boolean;
   nodes: Record<number, BoxValue>;
   steps: TreeStep[];
 }
@@ -71,7 +84,7 @@ function parseStep(raw: unknown): TreeStep | null {
     if (!isCaption(value)) return null;
     step[key] = value;
   }
-  for (const key of ['remove', 'focus', 'path', 'nulls'] as const) {
+  for (const key of ['remove', 'focus', 'done', 'path', 'nulls'] as const) {
     if (raw[key] === undefined) continue;
     const list = places(raw[key]);
     if (!list) return null;
@@ -88,10 +101,22 @@ function parseStep(raw: unknown): TreeStep | null {
     if (!tags || Object.keys(tags).length === 0) return null;
     step.tags = tags;
   }
-  if (raw.swap !== undefined) {
-    const pair = places(raw.swap);
+  for (const key of ['move', 'swap'] as const) {
+    if (raw[key] === undefined) continue;
+    const pair = places(raw[key]);
     if (!pair || pair.length !== 2) return null;
-    step.swap = [pair[0], pair[1]];
+    step[key] = [pair[0], pair[1]];
+  }
+  if (raw.rows !== undefined) {
+    const { rows } = raw;
+    if (!Array.isArray(rows) || rows.length === 0) return null;
+    const parsed: TreeRow[] = [];
+    for (const row of rows) {
+      if (!isRecord(row) || !isCaption(row.label) || !Array.isArray(row.values)) return null;
+      if (!row.values.every(isValue)) return null;
+      parsed.push({ label: row.label, values: [...row.values] });
+    }
+    step.rows = parsed;
   }
   // A path goes down the tree, each node a child of the one before it
   if (step.path?.some((place, k) => k > 0 && parentOf(place) !== step.path![k - 1])) return null;
@@ -106,8 +131,13 @@ function holds(start: Record<number, BoxValue>, steps: TreeStep[]): boolean {
   if (!hangs()) return false;
   for (const step of steps) {
     for (const place of step.remove ?? []) if (!there.delete(place)) return false;
-    const changed = [...Object.keys(step.set ?? {}).map(Number), ...(step.swap ?? [])];
+    const changed = [
+      ...Object.keys(step.set ?? {}).map(Number),
+      ...(step.move ?? []),
+      ...(step.swap ?? []),
+    ];
     if (changed.some((place) => !there.has(place))) return false;
+    if (step.move) there.delete(step.move[0]);
     for (const place of Object.keys(step.add ?? {}).map(Number)) {
       if (there.has(place)) return false;
       there.add(place);
@@ -115,6 +145,7 @@ function holds(start: Record<number, BoxValue>, steps: TreeStep[]): boolean {
     if (!hangs()) return false;
     const shown = [
       ...(step.focus ?? []),
+      ...(step.done ?? []),
       ...(step.path ?? []),
       ...(step.nulls ?? []),
       ...Object.keys(step.tags ?? {}).map(Number),
@@ -127,6 +158,7 @@ function holds(start: Record<number, BoxValue>, steps: TreeStep[]): boolean {
 export function parseTree(raw: Record<string, unknown>): TreeVisual | null {
   if (!isCaption(raw.caption)) return null;
   if (raw.null !== undefined && !isCaption(raw.null)) return null;
+  if (raw.array !== undefined && typeof raw.array !== 'boolean') return null;
   const nodes = byPlace(raw.nodes, isValue);
   if (!nodes) return null;
   if (!Array.isArray(raw.steps) || raw.steps.length === 0) return null;
@@ -137,5 +169,12 @@ export function parseTree(raw: Record<string, unknown>): TreeVisual | null {
     steps.push(step);
   }
   if (!holds(nodes, steps)) return null;
-  return { type: 'tree', caption: raw.caption, null: raw.null ?? 'null', nodes, steps };
+  return {
+    type: 'tree',
+    caption: raw.caption,
+    null: raw.null ?? 'null',
+    array: raw.array === true,
+    nodes,
+    steps,
+  };
 }

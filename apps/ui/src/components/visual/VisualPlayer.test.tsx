@@ -449,6 +449,7 @@ describe('VisualPlayer', () => {
       type: 'tree',
       caption: 'A tree',
       null: 'None',
+      array: false,
       nodes: { 0: 8, 1: 3, 2: 10 },
       steps: [
         { add: { 4: 6 }, focus: [4], code: 'root.left.right = Node(6)', caption: '6 goes in' },
@@ -575,6 +576,71 @@ describe('VisualPlayer', () => {
       );
       expect(screen.getByText('Step 3 of 5')).toBeInTheDocument();
       expect(screen.getByText('The path')).toBeInTheDocument();
+    });
+
+    it('marks nodes done in green and shows rows of values under the tree', () => {
+      reduceMotion();
+      render(
+        <VisualPlayer
+          visual={{
+            ...tree,
+            steps: [
+              {
+                focus: [1],
+                done: [0],
+                rows: [
+                  { label: 'queue', values: [10] },
+                  { label: 'printed', values: [] },
+                ],
+                caption: 'Take 3',
+              },
+            ],
+          }}
+        />,
+      );
+      expect(document.querySelector('[data-row]')).toBeNull();
+      next();
+      expect(node(0)).toHaveAttribute('data-state', 'done');
+      expect(node(1)).toHaveAttribute('data-state', 'focused');
+      expect(node(2)).toHaveAttribute('data-state', 'idle');
+      expect(document.querySelector('[data-row="queue"]')).toHaveTextContent('queue10');
+      expect(document.querySelector('[data-row="printed"]')).toHaveTextContent('printed[ ]');
+    });
+
+    it('lays a heap out as a list too, lit like its tree, and carries a moved value in both', () => {
+      vi.stubGlobal('matchMedia', () => ({ matches: false }));
+      vi.stubGlobal('requestAnimationFrame', (tick: FrameRequestCallback) => queued.push(tick));
+      vi.stubGlobal('cancelAnimationFrame', () => {});
+      render(
+        <VisualPlayer
+          visual={{
+            ...tree,
+            array: true,
+            nodes: { 0: 1, 1: 3, 2: 2 },
+            steps: [{ move: [2, 0], focus: [0], caption: '2 to the root' }],
+          }}
+        />,
+      );
+      const cell = (place: number) => document.querySelector(`[data-cell="${place}"]`);
+      const listValue = (place: number) => document.querySelector(`[data-list-value="${place}"]`);
+      // Two levels take 80 units; the list of 3 cells is wider (88), so it sets the width
+      expect(cell(2)).toHaveTextContent('2');
+      expect(listValue(2)).toHaveTextContent('2');
+      expect(listValue(2)).toHaveAttribute('x', '74');
+      expect(node(0)).toHaveAttribute('cx', '44');
+      next();
+      playAt(0);
+      playAt(300);
+      // 1 fades out first, then 2 travels to the root, in the tree and in the list at once
+      expect(listValue(0)).toHaveTextContent('2');
+      expect(listValue(0)).toHaveAttribute('x', '74');
+      playAt(900);
+      expect(listValue(0)).toHaveAttribute('x', '44');
+      playAt(5000);
+      expect(listValue(0)).toHaveAttribute('x', '14');
+      expect(value(0)).toHaveTextContent('2');
+      expect(cell(0)).toHaveAttribute('data-state', 'focused');
+      expect(cell(2)).toBeNull();
     });
   });
 });

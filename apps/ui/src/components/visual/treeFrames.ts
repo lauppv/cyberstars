@@ -1,8 +1,9 @@
 import type { BoxValue } from './parseBoxes';
-import type { TreeVisual } from './parseTree';
+import type { TreeRow, TreeVisual } from './parseTree';
 
 // What the tree looks like at one step: the value at each place, with an id that follows the value
-// when a swap moves it (a value that is set anew gets a new one), and what the step highlights.
+// when a swap or a move carries it (a value that is set anew gets a new one), and what the step
+// highlights.
 // Like an array's frames, a step that asks a question shows it with its answer before the tree
 // changes; the change comes on the next frame, with the same highlights
 interface TreeValue {
@@ -13,9 +14,11 @@ interface TreeValue {
 export interface TreeFrame {
   nodes: Record<number, TreeValue>;
   focus: number[];
+  done: number[];
   path: number[];
   nulls: number[];
   tags: Record<number, string>;
+  rows: TreeRow[];
   code: string | null;
   title: string | null;
   ask: string | null;
@@ -32,9 +35,11 @@ export function treeFrames(visual: TreeVisual): TreeFrame[] {
     {
       nodes,
       focus: [],
+      done: [],
       path: [],
       nulls: [],
       tags: {},
+      rows: [],
       code: null,
       title,
       ask: null,
@@ -45,21 +50,28 @@ export function treeFrames(visual: TreeVisual): TreeFrame[] {
     if (step.title !== undefined) title = step.title;
     const shown = {
       focus: step.focus ?? [],
+      done: step.done ?? [],
       path: step.path ?? [],
       nulls: step.nulls ?? [],
       tags: step.tags ?? {},
+      rows: step.rows ?? [],
       code: step.code ?? null,
       title,
       ask: step.ask ?? null,
       caption: step.caption,
     };
     if (step.ask) frames.push({ nodes, ...shown });
-    const changes = step.remove || step.set || step.swap || step.add;
+    const changes = step.remove || step.set || step.move || step.swap || step.add;
     if (changes) {
       nodes = { ...nodes };
       for (const place of step.remove ?? []) delete nodes[place];
       for (const [place, value] of Object.entries(step.set ?? {})) {
         nodes[Number(place)] = fresh(value);
+      }
+      if (step.move) {
+        const [source, target] = step.move;
+        nodes[target] = nodes[source];
+        delete nodes[source];
       }
       if (step.swap) {
         const [a, b] = step.swap;

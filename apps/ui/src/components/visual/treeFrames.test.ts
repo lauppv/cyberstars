@@ -6,6 +6,7 @@ const tree: TreeVisual = {
   type: 'tree',
   caption: 'A heap',
   null: 'null',
+  array: false,
   nodes: { 0: 1, 1: 3, 2: 6 },
   steps: [
     { title: 'push 2', add: { 3: 2 }, focus: [3], code: 'push(2)', caption: '2 goes last' },
@@ -62,5 +63,23 @@ describe('treeFrames', () => {
       [4, 'Where does 2 go?', [1]],
       [4, 'Is it a leaf?', [3]],
     ]);
+  });
+
+  it('moves a value to another node, which loses its own, and carries done and rows', () => {
+    const [start, moved] = treeFrames({
+      ...tree,
+      steps: [
+        {
+          move: [2, 0],
+          done: [1],
+          rows: [{ label: 'queue', values: [3] }],
+          caption: '6 to the root',
+        },
+      ],
+    });
+    expect(values(moved)).toEqual({ 0: 6, 1: 3 });
+    expect(moved.nodes[0]).toBe(start.nodes[2]);
+    expect(moved).toMatchObject({ done: [1], rows: [{ label: 'queue', values: [3] }] });
+    expect(start).toMatchObject({ done: [], rows: [] });
   });
 });

@@ -38,6 +38,7 @@ describe('parseVisual, tree', () => {
       type: 'tree',
       caption: 'A tree',
       null: 'None',
+      array: false,
       nodes: { 0: 8, 1: 3 },
       steps: [
         {
@@ -59,7 +60,40 @@ describe('parseVisual, tree', () => {
   it('calls an empty child null unless told otherwise, and starts from no nodes at all', () => {
     expect(
       parseVisual(visual({ nodes: {}, steps: [{ add: { 0: 8 }, caption: 'x' }] })),
-    ).toMatchObject({ null: 'null', nodes: {} });
+    ).toMatchObject({ null: 'null', array: false, nodes: {} });
+  });
+
+  it('reads a list under the tree, nodes done, rows and a move', () => {
+    expect(
+      parseVisual(
+        visual({
+          array: true,
+          steps: [
+            {
+              move: [1, 0],
+              done: [0],
+              rows: [
+                { label: 'queue', values: [3, 'x'] },
+                { label: 'printed', values: [] },
+              ],
+              caption: '3 moves up',
+            },
+          ],
+        }),
+      ),
+    ).toMatchObject({
+      array: true,
+      steps: [
+        {
+          move: [1, 0],
+          done: [0],
+          rows: [
+            { label: 'queue', values: [3, 'x'] },
+            { label: 'printed', values: [] },
+          ],
+        },
+      ],
+    });
   });
 
   it('keeps an id', () => {
@@ -100,6 +134,20 @@ describe('parseVisual, tree', () => {
     ['a path that skips a level', step({ path: [0, 3] })],
     ['a path that goes up', step({ path: [1, 0] })],
     ['empty children of no node', step({ nulls: [5] })],
+    ['an array that is no boolean', visual({ array: 'yes' })],
+    ['a node done that is not there', step({ done: [2] })],
+    ['a move of one place', step({ move: [1] })],
+    ['a move from no node', step({ move: [2, 0] })],
+    ['a move that leaves a child hanging', step({ move: [0, 1] })],
+    ['a done node after it moved away', step({ move: [1, 0], done: [1] })],
+    ['no rows', step({ rows: [] })],
+    ['rows that are no list', step({ rows: { queue: [] } })],
+    ['a row without a label', step({ rows: [{ values: [1] }] })],
+    ['a row whose values are no list', step({ rows: [{ label: 'q', values: 1 }] })],
+    [
+      'a row with a value that is no number or string',
+      step({ rows: [{ label: 'q', values: [null] }] }),
+    ],
   ])('refuses %s', (_, source) => {
     expect(parseVisual(source)).toBeNull();
   });
