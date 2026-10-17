@@ -3,7 +3,11 @@
 // about them first), swap them and mark the end sorted from a position on; a title, such as the
 // pass, stays up until another step changes it. Two optional pointer labels sit under the two
 // boxes a step compares, such as "j = {i}" and "j + 1" for the loop's index ({i} is the box's
-// position). Anything that doesn't fit comes back null, and the fence shows as plain text.
+// position). Anything that doesn't fit comes back null, and the fence shows as plain text. A
+// fence of type "boxes" draws boxes and arrows instead, see parseBoxes.
+
+import { isCaption, isRecord } from './checks';
+import { parseBoxes, type BoxesVisual } from './parseBoxes';
 
 interface ArrayStep {
   title?: string;
@@ -22,13 +26,7 @@ export interface ArrayVisual {
   steps: ArrayStep[];
 }
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
-}
-
-function isCaption(value: unknown): value is string {
-  return typeof value === 'string' && value.trim() !== '';
-}
+export type Visual = ArrayVisual | BoxesVisual;
 
 function isIndex(value: unknown, length: number): value is number {
   return Number.isInteger(value) && (value as number) >= 0 && (value as number) < length;
@@ -76,14 +74,16 @@ function parseStep(raw: unknown, length: number): ArrayStep | null {
   return step;
 }
 
-export function parseVisual(source: string): ArrayVisual | null {
+export function parseVisual(source: string): Visual | null {
   let raw: unknown;
   try {
     raw = JSON.parse(source);
   } catch {
     return null;
   }
-  if (!isRecord(raw) || raw.type !== 'array' || !isCaption(raw.caption)) return null;
+  if (!isRecord(raw)) return null;
+  if (raw.type === 'boxes') return parseBoxes(raw);
+  if (raw.type !== 'array' || !isCaption(raw.caption)) return null;
   const { values, steps } = raw;
   if (
     !Array.isArray(values) ||

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { parseVisual } from './parseVisual';
+import { parseVisual, type ArrayVisual } from './parseVisual';
 
 const visual = (overrides: Record<string, unknown> = {}) =>
   JSON.stringify({
@@ -9,6 +9,8 @@ const visual = (overrides: Record<string, unknown> = {}) =>
     steps: [{ compare: [0, 1], swap: true, caption: 'Swap 5 and 3' }],
     ...overrides,
   });
+
+const parseArray = (source: string) => parseVisual(source) as ArrayVisual | null;
 
 describe('parseVisual', () => {
   it('reads an array visual with its steps', () => {
@@ -35,7 +37,7 @@ describe('parseVisual', () => {
   });
 
   it('reads two pointer labels', () => {
-    expect(parseVisual(visual({ pointers: ['j = {i}', 'j + 1'] }))?.pointers).toEqual([
+    expect(parseArray(visual({ pointers: ['j = {i}', 'j + 1'] }))?.pointers).toEqual([
       'j = {i}',
       'j + 1',
     ]);
@@ -43,7 +45,7 @@ describe('parseVisual', () => {
   });
 
   it('takes strings as values', () => {
-    expect(parseVisual(visual({ values: ['a', 'b', 'c'] }))?.values).toEqual(['a', 'b', 'c']);
+    expect(parseArray(visual({ values: ['a', 'b', 'c'] }))?.values).toEqual(['a', 'b', 'c']);
   });
 
   it.each([

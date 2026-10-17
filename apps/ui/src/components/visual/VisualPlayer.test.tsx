@@ -1,7 +1,8 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { render, screen, fireEvent, within } from '@testing-library/react';
+import { render, screen, fireEvent, within, act } from '@testing-library/react';
 import { VisualPlayer } from './VisualPlayer';
 import type { ArrayVisual } from './parseVisual';
+import type { BoxesVisual } from './parseBoxes';
 
 const visual: ArrayVisual = {
   type: 'array',
@@ -234,5 +235,210 @@ describe('VisualPlayer', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Enlarge' }));
     fireEvent.mouseDown(screen.getByRole('dialog').parentElement!);
     expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
+  describe('boxes and arrows', () => {
+    const pointer: BoxesVisual = {
+      type: 'boxes',
+      caption: 'Boxes and arrows',
+      null: 'NULL',
+      boxes: [
+        { id: 'p', name: 'p', shown: false, cells: [{ to: 'x' }] },
+        { id: 'x', name: 'x', shown: false, cells: [{ value: 10 }] },
+      ],
+      steps: [
+        { show: ['x'], caption: 'x is 10' },
+        { show: ['p'], caption: 'p points at x' },
+        { focus: ['p', 'x'], ask: 'Where does 42 go?', set: { x: 42 }, caption: 'Into x' },
+      ],
+    };
+
+    const node = (id: string, value: number) => ({
+      id,
+      shown: false,
+      cells: [
+        { name: 'value', value },
+        { name: 'next', to: null },
+      ],
+    });
+
+    const list: BoxesVisual = {
+      type: 'boxes',
+      caption: 'A list',
+      null: 'null',
+      boxes: [
+        { id: 'head', name: 'head', shown: true, cells: [{ to: null }] },
+        node('a', 10),
+        node('b', 20),
+        node('c', 30),
+      ],
+      steps: [
+        { show: ['a', 'b', 'c'], point: { head: 'a', 'a.next': 'b', 'b.next': 'c' }, caption: 'A' },
+        { point: { 'a.next': 'c' }, caption: '10 skips 20' },
+        { remove: ['b'], caption: '20 goes' },
+      ],
+    };
+
+    const boxEl = (id: string) => document.querySelector<SVGGElement>(`[data-box="${id}"]`);
+    const arrows = () =>
+      [...document.querySelectorAll('[data-arrow]')].map(
+        (a) => `${a.getAttribute('data-arrow')} -> ${a.getAttribute('data-to')}`,
+      );
+
+    // Each animation frame the drawing asks for, played at the time given
+    let queued: FrameRequestCallback[] = [];
+    const playAt = (ms: number) =>
+      act(() => {
+        const now = queued;
+        queued = [];
+        for (const tick of now) tick(ms);
+      });
+
+    afterEach(() => {
+      vi.unstubAllGlobals();
+      queued = [];
+    });
+
+    const reduceMotion = () =>
+      vi.stubGlobal('matchMedia', (query: string) => ({ matches: query.includes('reduce') }));
+
+    const animate = () => {
+      vi.stubGlobal('matchMedia', () => ({ matches: false }));
+      vi.stubGlobal('requestAnimationFrame', (tick: FrameRequestCallback) => queued.push(tick));
+      vi.stubGlobal('cancelAnimationFrame', () => {});
+    };
+
+    it('shows the boxes as they come, the arrow on its target, and the new value after the question', () => {
+      reduceMotion();
+      render(<VisualPlayer visual={pointer} />);
+      expect(screen.getByText('Boxes and arrows')).toBeInTheDocument();
+      expect(boxEl('x')).toBeNull();
+      next();
+      expect(boxEl('x')).toHaveTextContent('x10');
+      expect(boxEl('p')).toBeNull();
+      next();
+      expect(arrows()).toEqual(['p -> x']);
+      next();
+      expect(screen.getByText('Where does 42 go?')).toBeInTheDocument();
+      expect(boxEl('x')).toHaveTextContent('10');
+      expect(boxEl('x')).toHaveAttribute('data-state', 'focused');
+      expect(boxEl('p')).toHaveAttribute('data-state', 'focused');
+      next();
+      expect(boxEl('x')).toHaveTextContent('42');
+      expect(boxEl('x')).not.toHaveTextContent('10');
+    });
+
+    it('names a node by its fields and writes the null word in a pointer that points nowhere', () => {
+      reduceMotion();
+      render(<VisualPlayer visual={list} />);
+      expect(boxEl('head')).toHaveTextContent('head');
+      expect(boxEl('head')).toHaveTextContent('null');
+      next();
+      expect(boxEl('a')).toHaveTextContent('valuenext10');
+      expect(boxEl('c')).toHaveTextContent('null');
+      expect(arrows()).toEqual(['head -> a', 'a.next -> b', 'b.next -> c']);
+    });
+
+    it('sends an arrow that skips a box under it, and straightens it once the box is gone', () => {
+      reduceMotion();
+      render(<VisualPlayer visual={list} />);
+      next();
+      next();
+      expect(arrows()).toEqual(['head -> a', 'a.next -> c', 'b.next -> c']);
+      const skip = () => document.querySelector('[data-arrow="a.next"] path')!.getAttribute('d')!;
+      // Down in the gap after 10, along under 20 (the row's middle is at 76), up before 30
+      expect(skip()).toContain('V 114 Q 113 122 121 122 H 177');
+      expect(boxEl('c')).toHaveAttribute('transform', 'translate(193 0)');
+      next();
+      expect(boxEl('b')).toBeNull();
+      expect(boxEl('c')).toHaveAttribute('transform', 'translate(129 0)');
+      expect(arrows()).toEqual(['head -> a', 'a.next -> c']);
+      expect(skip()).not.toContain('122');
+    });
+
+    it('draws an arrow that points back from below the box', () => {
+      reduceMotion();
+      render(
+        <VisualPlayer
+          visual={{
+            ...pointer,
+            boxes: [
+              { id: 'x', name: 'x', shown: true, cells: [{ value: 10 }] },
+              { id: 'p', name: 'p', shown: true, cells: [{ to: 'x' }] },
+            ],
+            steps: [{ caption: 'p points back at x' }],
+          }}
+        />,
+      );
+      expect(arrows()).toEqual(['p -> x']);
+      expect(document.querySelector('[data-arrow="p"] path')!.getAttribute('d')).toMatch(
+        /^M 85 56 C 85/,
+      );
+    });
+
+    it('fades a removed box out first, then slides the rest into its place, at the speed picked', () => {
+      animate();
+      render(<VisualPlayer visual={list} />);
+      next();
+      playAt(0);
+      playAt(5000);
+      next();
+      playAt(0);
+      playAt(5000);
+      next();
+      playAt(0);
+      playAt(300);
+      expect(boxEl('b')).toHaveAttribute('opacity', '0.5');
+      expect(boxEl('c')).toHaveAttribute('transform', 'translate(193 0)');
+      playAt(900);
+      expect(boxEl('b')).toHaveAttribute('opacity', '0');
+      expect(boxEl('c')).toHaveAttribute('transform', 'translate(161 0)');
+      playAt(1200);
+      expect(boxEl('b')).toBeNull();
+      expect(boxEl('c')).toHaveAttribute('transform', 'translate(129 0)');
+
+      fireEvent.click(screen.getByRole('button', { name: 'Slow' }));
+      fireEvent.click(screen.getByRole('button', { name: /previous/i }));
+      playAt(0);
+      // Back: the place opens first, then 20 fades in
+      playAt(1000);
+      expect(boxEl('c')).toHaveAttribute('transform', 'translate(193 0)');
+      expect(boxEl('b')).toHaveAttribute('opacity', '0');
+      playAt(1500);
+      expect(boxEl('b')).toHaveAttribute('opacity', '0.5');
+    });
+
+    it('fades the old arrow out before the new one draws in', () => {
+      animate();
+      render(<VisualPlayer visual={list} />);
+      next();
+      playAt(0);
+      playAt(5000);
+      next();
+      playAt(0);
+      playAt(300);
+      expect(arrows()).toEqual(['head -> a', 'a.next -> b', 'b.next -> c']);
+      expect(document.querySelector('[data-arrow="a.next"]')).toHaveAttribute('opacity', '0.5');
+      playAt(900);
+      expect(arrows()).toEqual(['head -> a', 'a.next -> c', 'b.next -> c']);
+      expect(document.querySelector('[data-arrow="a.next"] polygon')).toHaveAttribute(
+        'opacity',
+        '0.5',
+      );
+    });
+
+    it('puts everything in place at once on Start over', () => {
+      animate();
+      render(<VisualPlayer visual={list} />);
+      next();
+      playAt(0);
+      playAt(5000);
+      next();
+      playAt(0);
+      playAt(5000);
+      fireEvent.click(screen.getByRole('button', { name: 'Start over' }));
+      expect(queued).toHaveLength(0);
+      expect(boxEl('a')).toBeNull();
+    });
   });
 });

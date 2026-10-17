@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Pause, Play } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { SectionHeading } from './SectionHeading';
-import { ArrayView, Words } from '../visual/ArrayView';
+import { ArrayView } from '../visual/ArrayView';
+import { Words } from '../visual/Words';
 import { arrayFrames } from '../visual/arrayFrames';
 import { bubbleSortVisual } from './bubbleSortVisual';
 
