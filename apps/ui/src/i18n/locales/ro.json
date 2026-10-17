@@ -866,6 +866,7 @@
     "tabResult": "Rezultat",
     "tabSubmissions": "Trimiteri",
     "panelTabs": "Panoul lecției",
+    "codeLanguage": "Limbaj de programare",
     "lessonNofM": "Lecția {{n}} din {{total}}",
     "algoNofM": "Algoritmul {{n}} din {{total}}",
     "completed": "✓ Finalizat",

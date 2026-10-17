@@ -854,6 +854,7 @@
     "tabResult": "Result",
     "tabSubmissions": "Submissions",
     "panelTabs": "Lesson panel",
+    "codeLanguage": "Programming language",
     "lessonNofM": "Lesson {{n}} of {{total}}",
     "algoNofM": "Algorithm {{n}} of {{total}}",
     "completed": "✓ Completed",
