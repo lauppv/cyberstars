@@ -1174,6 +1174,13 @@ export const lessons = [
     sortOrder: 2,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'level-order',
+    title: 'Level-Order Traversal',
+    sortOrder: 3,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',
