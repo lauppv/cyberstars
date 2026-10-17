@@ -1167,6 +1167,13 @@ export const lessons = [
   },
 
   { courseKey: 'trees-graphs', slug: 'trees', title: 'Trees', sortOrder: 1, hasCodeFile: true },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'tree-traversals',
+    title: 'Depth-First Traversals',
+    sortOrder: 2,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',
