@@ -1,0 +1,79 @@
+{
+  "type": "tree",
+  "caption": "Preordine: întâi nodul, apoi partea lui stângă, apoi partea dreaptă.",
+  "nodes": {
+    "0": 8,
+    "1": 3,
+    "2": 10,
+    "3": 1,
+    "4": 6,
+    "6": 14
+  },
+  "steps": [
+    {
+      "focus": [0],
+      "rows": [
+        {
+          "label": "Preordine",
+          "values": [8]
+        }
+      ],
+      "caption": "Pornește de la rădăcină: afișează 8, apoi parcurge partea stângă"
+    },
+    {
+      "focus": [1],
+      "rows": [
+        {
+          "label": "Preordine",
+          "values": [8, 3]
+        }
+      ],
+      "caption": "Partea stângă a lui 8 începe cu 3: afișează 3, apoi parcurge partea lui stângă",
+      "done": [0]
+    },
+    {
+      "focus": [3],
+      "rows": [
+        {
+          "label": "Preordine",
+          "values": [8, 3, 1]
+        }
+      ],
+      "caption": "Partea stângă a lui 3 este 1: afișează 1. Nu are copii, deci partea asta e gata",
+      "done": [0, 1]
+    },
+    {
+      "focus": [4],
+      "rows": [
+        {
+          "label": "Preordine",
+          "values": [8, 3, 1, 6]
+        }
+      ],
+      "caption": "Înapoi la partea dreaptă a lui 3: afișează 6",
+      "done": [0, 1, 3]
+    },
+    {
+      "focus": [2],
+      "rows": [
+        {
+          "label": "Preordine",
+          "values": [8, 3, 1, 6, 10]
+        }
+      ],
+      "caption": "Partea lui 3 e gata. Acum partea dreaptă a lui 8: afișează 10",
+      "done": [0, 1, 3, 4]
+    },
+    {
+      "focus": [6],
+      "rows": [
+        {
+          "label": "Preordine",
+          "values": [8, 3, 1, 6, 10, 14]
+        }
+      ],
+      "caption": "10 nu are copil stâng. Partea lui dreaptă: afișează 14. Parcurgerea e gata",
+      "done": [0, 1, 3, 4, 2]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "type": "tree",
+  "caption": "Inorder: the left side first, then the node, then the right side.",
+  "nodes": {
+    "0": 8,
+    "1": 3,
+    "2": 10,
+    "3": 1,
+    "4": 6,
+    "6": 14
+  },
+  "steps": [
+    {
+      "focus": [3],
+      "rows": [
+        {
+          "label": "Inorder",
+          "values": [1]
+        }
+      ],
+      "caption": "Left first, all the way down: 8, 3, then 1, which has no left side. Print 1",
+      "path": [0, 1, 3]
+    },
+    {
+      "focus": [1],
+      "rows": [
+        {
+          "label": "Inorder",
+          "values": [1, 3]
+        }
+      ],
+      "caption": "3's left side is done: print 3",
+      "done": [3]
+    },
+    {
+      "focus": [4],
+      "rows": [
+        {
+          "label": "Inorder",
+          "values": [1, 3, 6]
+        }
+      ],
+      "caption": "Then 3's right side: 6 has no left side, print 6",
+      "done": [3, 1]
+    },
+    {
+      "focus": [0],
+      "rows": [
+        {
+          "label": "Inorder",
+          "values": [1, 3, 6, 8]
+        }
+      ],
+      "caption": "8's whole left side is done: print 8",
+      "done": [3, 1, 4]
+    },
+    {
+      "focus": [2],
+      "rows": [
+        {
+          "label": "Inorder",
+          "values": [1, 3, 6, 8, 10]
+        }
+      ],
+      "caption": "8's right side: 10 has no left side, print 10",
+      "done": [3, 1, 4, 0]
+    },
+    {
+      "focus": [6],
+      "rows": [
+        {
+          "label": "Inorder",
+          "values": [1, 3, 6, 8, 10, 14]
+        }
+      ],
+      "caption": "Then 10's right side: print 14. The values came out sorted",
+      "done": [3, 1, 4, 0, 2]
+    }
+  ]
+}
