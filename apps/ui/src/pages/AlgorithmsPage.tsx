@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
-import { ALGO_COURSE_KEYS, xpForCourse } from '@cyberstars/shared/constants';
+import { ALGO_COURSE_KEYS, isBeta, xpForCourse } from '@cyberstars/shared/constants';
 import { useCurriculum } from '../context/CurriculumContext';
 import { courseMeta } from '../constants/courses';
+import { BetaBadge } from '../components/ui/BetaBadge';
 
 const LANGS = ALGO_COURSE_KEYS.map((key) => {
   const m = courseMeta(key);
@@ -20,7 +21,7 @@ export function AlgorithmsPage() {
       <Topbar />
 
       <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-8">
-        <div className="grid grid-cols-1 @3xl:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
           {LANGS.map((lang) => {
             const course = courses.find((c) => c.key === lang.key);
             const totalXp = course ? xpForCourse(course.lessons.length) : 0;
@@ -34,6 +35,7 @@ export function AlgorithmsPage() {
                   <h3 className="flex-1 min-w-0 text-lg font-bold group-hover:text-[var(--accent)] transition truncate">
                     {lang.name}
                   </h3>
+                  {isBeta(lang.key) && <BetaBadge />}
                   {totalXp > 0 && (
                     <span
                       className="flex-shrink-0 text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)]"

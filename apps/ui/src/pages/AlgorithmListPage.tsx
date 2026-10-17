@@ -8,7 +8,8 @@ import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseMeta } from '../constants/courses';
-import { xpForLesson } from '@cyberstars/shared/constants';
+import { isBeta, xpForLesson } from '@cyberstars/shared/constants';
+import { BetaBadge } from '../components/ui/BetaBadge';
 
 const DIFF_FILTERS = ['all', 'easy', 'medium', 'hard'] as const;
 
@@ -93,7 +94,10 @@ export function AlgorithmListPage() {
           <div className="px-6 pt-6 pb-4 border-b border-[var(--border)]">
             <div className="flex items-center gap-3 mb-4">
               <div>
-                <h1 className="text-xl font-bold">{t('algoList.title', { lang: meta.label })}</h1>
+                <h1 className="text-xl font-bold flex items-center gap-2">
+                  {t('algoList.title', { lang: meta.label })}
+                  {isBeta(courseKey) && <BetaBadge />}
+                </h1>
                 <p className="text-[var(--text3)] text-xs">
                   {t('algoList.challenges', { count: lessons.length })}
                 </p>

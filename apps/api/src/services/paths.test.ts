@@ -39,6 +39,11 @@ describe('contentDir on a multi-language course', () => {
     expect(contentDir('trees-graphs')).toMatch(/lessons\/trees-graphs\/python$/);
   });
 
+  it('opens a multi-language challenge set under algorithms/', () => {
+    expect(contentDir('algo-trees-graphs', 'c')).toMatch(/algorithms\/trees-graphs\/c$/);
+    expect(contentDir('algo-trees-graphs')).toMatch(/algorithms\/trees-graphs\/python$/);
+  });
+
   it('ignores the language on a course with one', () => {
     expect(contentDir('algo-c', 'java')).toMatch(/algorithms\/c$/);
   });

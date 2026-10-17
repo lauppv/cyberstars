@@ -53,6 +53,24 @@ describe('planChecks', () => {
     ]);
   });
 
+  it("grades a multi-language challenge's changed spec or variant in that language", () => {
+    expect(
+      planChecks([
+        'packages/content/algorithms/trees-graphs/c/max-depth-tests.json',
+        'packages/content/algorithms/trees-graphs/java/ro/max-depth-solution.md',
+        'packages/content/variants/algo-trees-graphs/python/max-depth/reject-counts-edges.py',
+      ]),
+    ).toEqual([
+      { name: 'python', image: 'python:3.10-slim', targets: 'algo-trees-graphs/python/max-depth' },
+      { name: 'c', image: 'gcc:latest', targets: 'algo-trees-graphs/c/max-depth' },
+      {
+        name: 'java',
+        image: 'eclipse-temurin:21-jdk-alpine',
+        targets: 'algo-trees-graphs/java/max-depth',
+      },
+    ]);
+  });
+
   it('grades every lesson of a language, EN only, when its runner changed', () => {
     const shards = planChecks([
       'apps/api/src/services/lesson-tests.runner.java',
@@ -63,6 +81,7 @@ describe('planChecks', () => {
     expect(targets).toContain('java/arraylist:en');
     expect(targets).toContain('algo-java/binary-search:en');
     expect(targets).toContain('trees-graphs/java/trees:en');
+    expect(targets).toContain('algo-trees-graphs/java/max-depth:en');
     // A lesson the PR also changed keeps its RO spec.
     expect(targets).toContain('java/hashmap');
     expect(targets).not.toContain('java/hashmap:en');
