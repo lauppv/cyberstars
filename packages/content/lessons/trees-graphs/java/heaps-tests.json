@@ -1,0 +1,209 @@
+{
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "values"
+      },
+      {
+        "kind": "variable",
+        "name": "pops"
+      },
+      {
+        "kind": "function"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "call",
+        "name": "PriorityQueue"
+      },
+      {
+        "kind": "call",
+        "name": "sort"
+      },
+      {
+        "kind": "call",
+        "name": "sorted"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "values": {
+          "$list": [5, 3, 8, 1, 9, 6]
+        },
+        "pops": 2
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "values": {
+          "$list": [40, 30, 20, 10]
+        },
+        "pops": 1
+      }
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [2, 1]
+        },
+        "pops": 1
+      }
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [1, 2]
+        },
+        "pops": 1
+      }
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [7, 6, 5, 4, 3, 2, 1]
+        },
+        "pops": 3
+      }
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [1, 2, 3, 4, 5, 6, 7]
+        },
+        "pops": 6
+      }
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [-5, 10, -20, 15, 0]
+        },
+        "pops": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [1000, -1000]
+        },
+        "pops": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [-1000, 1000, 0, -1, 1, 999, -999]
+        },
+        "pops": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [9, 4, 7, 1, 8, 2, 6]
+        },
+        "pops": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [3, 1, 2]
+        },
+        "pops": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [10, 20, 15, 30, 40]
+        },
+        "pops": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [50, 40, 45, 30, 20, 35, 10]
+        },
+        "pops": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [0, -1, -2]
+        },
+        "pops": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [100, 1, 50]
+        },
+        "pops": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [4, 8, 2, 6]
+        },
+        "pops": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [6, 5, 4, 3, 2, 1]
+        },
+        "pops": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [11, 22, 33, 44, 55, 66, 77]
+        },
+        "pops": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [-7, 7, -3, 3]
+        },
+        "pops": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "values": {
+          "$list": [25, 5, 15, 35, 45, 10, 30]
+        },
+        "pops": 6
+      },
+      "generated": true
+    }
+  ]
+}

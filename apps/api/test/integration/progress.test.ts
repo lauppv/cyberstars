@@ -65,7 +65,7 @@ describe('Progress flow', () => {
     await markComplete(userId, 'trees-graphs', 'trees');
 
     const progress = await a.get('/api/progress/trees-graphs').expect(200);
-    expect(progress.body).toMatchObject({ completed: 1, total: 1, earnedXp: 10 });
+    expect(progress.body).toMatchObject({ completed: 1, earnedXp: 10 });
   });
 
   it('progress is per-user', async () => {

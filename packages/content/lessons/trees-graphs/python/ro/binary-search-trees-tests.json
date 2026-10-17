@@ -1,0 +1,220 @@
+{
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "valori"
+      },
+      {
+        "kind": "variable",
+        "name": "cautat"
+      },
+      {
+        "kind": "class",
+        "name": "Nod"
+      },
+      {
+        "kind": "object"
+      },
+      {
+        "kind": "recursion"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "call",
+        "name": "sorted"
+      },
+      {
+        "kind": "call",
+        "name": "sort"
+      },
+      {
+        "kind": "operator",
+        "name": "in"
+      },
+      {
+        "kind": "operator",
+        "name": "not in"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "valori": {
+          "$list": [50, 30, 70, 20, 40, 60, 80]
+        },
+        "cautat": 60
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "valori": {
+          "$list": [1, 2, 3, 4, 5]
+        },
+        "cautat": 6
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [7]
+        },
+        "cautat": 7
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [7]
+        },
+        "cautat": -7
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [5, 4, 3, 2, 1]
+        },
+        "cautat": 1
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [4, 2, 6, 1, 3, 5, 7]
+        },
+        "cautat": 8
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [-5, -10, 0]
+        },
+        "cautat": -10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [1000, -1000]
+        },
+        "cautat": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [-1000, 1000, 0, 500, -500, 250, -250]
+        },
+        "cautat": 250
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [10, 5, 15]
+        },
+        "cautat": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [3, 1, 2]
+        },
+        "cautat": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [1, 3, 2]
+        },
+        "cautat": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [100, 50, 25, 75, 60, 70, 65]
+        },
+        "cautat": 65
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [0]
+        },
+        "cautat": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [-1, -2, -3, -4, -5, -6, -7]
+        },
+        "cautat": -8
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [8, 3, 10, 1, 6, 14]
+        },
+        "cautat": 12
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [8, 3, 10, 1, 6, 14]
+        },
+        "cautat": 8
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [2, 1]
+        },
+        "cautat": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [1, 2]
+        },
+        "cautat": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [6, 2, 9, 1, 4, 8, 7]
+        },
+        "cautat": 1000
+      },
+      "generated": true
+    }
+  ]
+}

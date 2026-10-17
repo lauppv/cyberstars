@@ -1167,6 +1167,35 @@ export const lessons = [
   },
 
   { courseKey: 'trees-graphs', slug: 'trees', title: 'Trees', sortOrder: 1, hasCodeFile: true },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'tree-traversals',
+    title: 'Depth-First Traversals',
+    sortOrder: 2,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'level-order',
+    title: 'Level-Order Traversal',
+    sortOrder: 3,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'binary-search-trees',
+    title: 'Binary Search Trees',
+    sortOrder: 4,
+    hasCodeFile: true,
+  },
+  { courseKey: 'trees-graphs', slug: 'heaps', title: 'Heaps', sortOrder: 5, hasCodeFile: true },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'recap-trees',
+    title: 'Recap: Trees',
+    sortOrder: 6,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',

@@ -1,0 +1,207 @@
+{
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "valori"
+      },
+      {
+        "kind": "variable",
+        "name": "cautat"
+      },
+      {
+        "kind": "class",
+        "name": "Nod"
+      },
+      {
+        "kind": "object"
+      },
+      {
+        "kind": "recursion"
+      },
+      {
+        "kind": "call",
+        "name": "popleft"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "valori": {
+          "$list": [50, 30, 70, 20, 40, 80]
+        },
+        "cautat": 40
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "valori": {
+          "$list": [30, 10, 40, 20, 35]
+        },
+        "cautat": 20
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "valori": {
+          "$list": [7]
+        },
+        "cautat": 7
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [1, 2, 3, 4, 5, 6, 7]
+        },
+        "cautat": 7
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [7, 6, 5, 4, 3, 2, 1]
+        },
+        "cautat": 1
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [4, 2, 6, 1, 3, 5, 7]
+        },
+        "cautat": 5
+      }
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [-5, -10, 0, -7]
+        },
+        "cautat": -7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [1000, -1000, 0]
+        },
+        "cautat": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [10, 5, 15, 3, 7, 12, 20]
+        },
+        "cautat": 12
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [3, 1, 2]
+        },
+        "cautat": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [1, 3, 2]
+        },
+        "cautat": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [100, 50, 25, 75, 60, 70, 65]
+        },
+        "cautat": 65
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [0, -1]
+        },
+        "cautat": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [8, 3, 10, 1, 6, 14]
+        },
+        "cautat": 14
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [2, 1, 3]
+        },
+        "cautat": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [-1000, 1000]
+        },
+        "cautat": 1000
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [5, 1, 9, 3, 7]
+        },
+        "cautat": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [20, 10, 30, 5, 15, 25, 35]
+        },
+        "cautat": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [9, 8, 7, 10]
+        },
+        "cautat": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "valori": {
+          "$list": [6, 2, 9, 1, 4, 8, 7]
+        },
+        "cautat": 8
+      },
+      "generated": true
+    }
+  ]
+}
