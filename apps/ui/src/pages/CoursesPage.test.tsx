@@ -78,7 +78,7 @@ const treesCourse = {
 };
 
 describe('CoursesPage', () => {
-  it("shows a multi-language course's languages on its card", () => {
+  it('labels a multi-language course with its languages and as Beta, card and syllabus', () => {
     mockUseCurriculum.mockReturnValue({
       courses: [pythonCourse, treesCourse],
       isLoading: false,
@@ -86,6 +86,14 @@ describe('CoursesPage', () => {
     });
     renderPage();
     expect(screen.getByText('Python · Java · C')).toBeInTheDocument();
+    expect(screen.getAllByText('Beta')).toHaveLength(1);
+    expect(screen.getByText('Beta')).toHaveAttribute(
+      'title',
+      'Still being built: more lessons are on the way',
+    );
+
+    renderPage('/courses/trees-graphs');
+    expect(screen.getAllByText('Beta')).toHaveLength(3);
   });
 
   it('shows loading state when curriculum is loading', () => {

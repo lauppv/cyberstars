@@ -3,6 +3,7 @@ import {
   ALGO_COURSE_KEYS,
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
+  isBeta,
 } from '@cyberstars/shared/constants';
 import { courseMeta } from '../../constants/courses';
 
@@ -15,10 +16,14 @@ export interface CurriculumCounts {
 }
 
 // What the landing page can claim, counted from the curriculum the app already
-// loads, so the numbers move on their own when a lesson is added.
+// loads, so the numbers move on their own when a lesson is added. A Beta course
+// waits until it is whole.
 export function curriculumCounts(all: Course[]): CurriculumCounts {
   const live = (keys: readonly string[]) =>
-    keys.map((key) => all.find((c) => c.key === key)).filter((c): c is Course => !!c);
+    keys
+      .filter((key) => !isBeta(key))
+      .map((key) => all.find((c) => c.key === key))
+      .filter((c): c is Course => !!c);
   const courses = live([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
   const lessons = (list: Course[]) => list.reduce((n, c) => n + c.lessons.length, 0);
   return {

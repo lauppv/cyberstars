@@ -270,6 +270,8 @@
     "cancel": "Cancel",
     "comingSoon": "Coming soon",
     "comingSoonHint": "We're still building this. It'll unlock for everyone soon.",
+    "beta": "Beta",
+    "betaHint": "Still being built: more lessons are on the way",
     "xpTotal": "{{xp}} XP",
     "xpReward": "+{{xp}} XP"
   },

@@ -56,9 +56,11 @@ import {
   MAIN_COURSE_KEYS,
   TOUR_LESSON,
   CODE_LANGUAGES,
+  isBeta,
   isMultiLanguage,
   type CodeLanguage,
 } from '@cyberstars/shared/constants';
+import { BetaBadge } from '../components/ui/BetaBadge';
 import { switchLanguage } from '../i18n';
 
 const TOUR_LANGUAGE_KEY = 'cyberstars.tourLanguage';
@@ -666,6 +668,7 @@ export function LessonPage() {
                             total: lessonList.length,
                           })}
                         </span>
+                        {isBeta(category) && <BetaBadge />}
                         {lessonCompleted && (
                           <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
                             {t('lesson.completed')}

@@ -20,6 +20,14 @@ export type CodeLanguage = (typeof CODE_LANGUAGES)[number];
 // one tick per lesson, whichever language passed it.
 export const MULTI_LANGUAGE_COURSE_KEYS = ['trees-graphs'] as const;
 
+// Courses still being built: open to everyone, labelled Beta, and left out of
+// what the landing page counts until they are whole.
+const BETA_COURSE_KEYS = [...MULTI_LANGUAGE_COURSE_KEYS] as const;
+
+export function isBeta(courseKey: string): boolean {
+  return (BETA_COURSE_KEYS as readonly string[]).includes(courseKey);
+}
+
 // What a multi-language lesson opens in before the student picks a language.
 export const DEFAULT_CODE_LANGUAGE: CodeLanguage = 'python';
 

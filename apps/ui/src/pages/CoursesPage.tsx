@@ -13,8 +13,10 @@ import {
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
   CODE_LANGUAGES,
+  isBeta,
   isMultiLanguage,
 } from '@cyberstars/shared/constants';
+import { BetaBadge } from '../components/ui/BetaBadge';
 
 interface CourseData {
   key: string;
@@ -22,6 +24,7 @@ interface CourseData {
   name: string;
   // The languages a multi-language course is taught in, as the card shows them.
   languages: string | null;
+  beta: boolean;
   color: string;
   lessonCount: number;
   totalXp: number;
@@ -76,6 +79,7 @@ export function CoursesPage() {
           languages: isMultiLanguage(course.key)
             ? CODE_LANGUAGES.map((language) => courseMeta(language).label).join(' · ')
             : null,
+          beta: isBeta(course.key),
           color: courseMeta(course.key).color,
           lessonCount: course.lessons.length,
           totalXp: xpForCourse(course.lessons.length),
@@ -130,6 +134,7 @@ export function CoursesPage() {
                       style={{ letterSpacing: '-0.2px' }}
                     >
                       {c.name}
+                      {c.beta && <BetaBadge />}
                     </div>
                     {c.languages && (
                       <div className="text-[12px] text-[var(--text3)]">{c.languages}</div>
@@ -206,7 +211,10 @@ export function CoursesPage() {
           >
             <div className="flex items-start gap-3.5 p-6 pb-5 border-b border-[var(--border)]">
               <div className="flex-1 min-w-0">
-                <div className="text-xl font-bold mb-1">{syllabus.name}</div>
+                <div className="text-xl font-bold mb-1 flex items-center gap-2">
+                  {syllabus.name}
+                  {syllabus.beta && <BetaBadge />}
+                </div>
                 <div className="flex gap-3 text-xs text-[var(--text3)]">
                   <span>
                     {syllabus.lessonCount} {t('courses.lessons', { count: syllabus.lessonCount })}

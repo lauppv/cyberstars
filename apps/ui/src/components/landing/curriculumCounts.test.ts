@@ -39,6 +39,13 @@ describe('curriculumCounts', () => {
     });
   });
 
+  it('leaves a Beta course out until it is whole', () => {
+    const counts = curriculumCounts([course('python', 60), course('trees-graphs', 1)]);
+    expect(counts.courses).toBe(1);
+    expect(counts.lessons).toBe(60);
+    expect(counts.perCourse.map((c) => c.key)).toEqual(['python']);
+  });
+
   it('claims nothing before the curriculum has loaded', () => {
     expect(curriculumCounts([])).toEqual({
       languages: [],

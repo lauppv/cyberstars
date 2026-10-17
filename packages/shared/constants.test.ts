@@ -16,6 +16,7 @@ import {
   isMultiLanguage,
   isCodeLanguage,
   codeLanguageOf,
+  isBeta,
 } from './constants.js';
 
 describe('progressPct', () => {
@@ -143,5 +144,10 @@ describe('multi-language courses', () => {
   it("names a one-language course's own language, whatever was picked", () => {
     expect(codeLanguageOf('algo-java', 'c')).toBe('java');
     expect(codeLanguageOf('python')).toBe('python');
+  });
+
+  it('are Beta while they are being built', () => {
+    expect(isBeta('trees-graphs')).toBe(true);
+    expect(isBeta('python')).toBe(false);
   });
 });
