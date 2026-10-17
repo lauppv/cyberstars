@@ -35,7 +35,7 @@
     {
       "inject": {
         "comandant": "Juno",
-        "pilot": ["Captain Maximilian Starfield III", "Grace"],
+        "pilot": ["Capitanul Maximilian Starfield III", "Grace"],
         "inginer": "Zed"
       },
       "generated": true
@@ -65,7 +65,7 @@
       "generated": true
     },
     {
-      "inject": { "comandant": "lowercase", "pilot": ["Tess", "Juno"], "inginer": "Grace" },
+      "inject": { "comandant": "minuscule", "pilot": ["Tess", "Juno"], "inginer": "Grace" },
       "generated": true
     },
     {
@@ -87,7 +87,7 @@
     {
       "inject": {
         "comandant": "Kai",
-        "pilot": ["Jess", "Captain Maximilian Starfield III"],
+        "pilot": ["Jess", "Capitanul Maximilian Starfield III"],
         "inginer": "Linus"
       },
       "generated": true

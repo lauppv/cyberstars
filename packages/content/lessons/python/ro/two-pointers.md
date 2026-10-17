@@ -15,8 +15,8 @@ def este_palindrom(cuvant):
 
     return True
 
-print(este_palindrom("racecar"))
-print(este_palindrom("hello"))
+print(este_palindrom("rotitor"))
+print(este_palindrom("salut"))
 ```
 
 Ieșire

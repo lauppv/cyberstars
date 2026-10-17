@@ -126,4 +126,4 @@ Total: 162
 Corupte: 2
 ```
 
-Citirile valide sunt `42`, `100`, `7` și `13` (suma `162`); `x9` și `bad` sunt cele două corupte.
+Citirile valide sunt `42`, `100`, `7` și `13` (suma `162`); `x9` și `rau` sunt cele două corupte.
