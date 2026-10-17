@@ -2,103 +2,135 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
-      { "kind": "variable", "name": "text_palindrom" },
-      { "kind": "variable", "name": "anagrama_a" },
-      { "kind": "variable", "name": "anagrama_b" },
-      { "kind": "variable", "name": "propozitie" },
-      { "kind": "variable", "name": "text_murdar" },
-      { "kind": "function", "name": "curata_text" },
-      { "kind": "function", "name": "este_palindrom" },
-      { "kind": "function", "name": "sunt_anagrame" },
-      { "kind": "function", "name": "inverseaza_cuvinte" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "isalpha" }
+      {
+        "kind": "variable",
+        "name": "text_palindrom"
+      },
+      {
+        "kind": "variable",
+        "name": "anagrama_a"
+      },
+      {
+        "kind": "variable",
+        "name": "anagrama_b"
+      },
+      {
+        "kind": "variable",
+        "name": "propozitie"
+      },
+      {
+        "kind": "variable",
+        "name": "text_murdar"
+      },
+      {
+        "kind": "function",
+        "name": "curata_text"
+      },
+      {
+        "kind": "function",
+        "name": "este_palindrom"
+      },
+      {
+        "kind": "function",
+        "name": "sunt_anagrame"
+      },
+      {
+        "kind": "function",
+        "name": "inverseaza_cuvinte"
+      },
+      {
+        "kind": "loop"
+      },
+      {
+        "kind": "call",
+        "name": "isalpha"
+      }
     ]
   },
   "cases": [
     {
       "visible": true,
       "inject": {
-        "text_palindrom": "A man, a plan, a canal: Panama",
-        "anagrama_a": "Listen!",
-        "anagrama_b": "Silent",
-        "propozitie": "navigation system is online",
-        "text_murdar": "S3ct0r 7 cl34r!"
+        "text_palindrom": "Ele, fac cafele!",
+        "anagrama_a": "Roma!",
+        "anagrama_b": "Amor",
+        "propozitie": "sistemul de navigatie este pornit",
+        "text_murdar": "S3ct0r 7 l1b3r!"
       }
     },
     {
       "visible": true,
       "inject": {
-        "text_palindrom": "Was it a car or a cat I saw?",
-        "anagrama_a": "Dormitory",
-        "anagrama_b": "Dirty room",
+        "text_palindrom": "Sus, Ana, sus!",
+        "anagrama_a": "Marte",
+        "anagrama_b": "Te ram",
         "propozitie": "alpha bravo charlie",
-        "text_murdar": "C0d3 R3d!"
+        "text_murdar": "C0d R0s!"
       }
     },
     {
       "inject": {
-        "text_palindrom": "Hello World",
+        "text_palindrom": "Salut lume",
         "anagrama_a": "abc",
         "anagrama_b": "cab",
-        "propozitie": "one",
+        "propozitie": "unu",
         "text_murdar": "a1b2c3"
       }
     },
     {
       "inject": {
-        "text_palindrom": "No lemon, no melon",
-        "anagrama_a": "listen",
-        "anagrama_b": "silent",
-        "propozitie": "deep space nine",
+        "text_palindrom": "Ele fac cafele",
+        "anagrama_a": "roma",
+        "anagrama_b": "amor",
+        "propozitie": "spatiul adanc noua",
         "text_murdar": "123 !!! 456"
       }
     },
     {
       "inject": {
-        "text_palindrom": "Not a palindrome",
-        "anagrama_a": "hello",
-        "anagrama_b": "world",
-        "propozitie": "warp core online now",
-        "text_murdar": "Sector7"
+        "text_palindrom": "Nu e palindrom",
+        "anagrama_a": "salut",
+        "anagrama_b": "lume",
+        "propozitie": "motorul warp e pornit acum",
+        "text_murdar": "Sectorul7"
       }
     },
     {
       "inject": {
-        "text_palindrom": "Racecar",
-        "anagrama_a": "Astronomer",
-        "anagrama_b": "Moon starer",
-        "propozitie": "hello",
+        "text_palindrom": "Rotitor",
+        "anagrama_a": "Carte",
+        "anagrama_b": "Ce rat",
+        "propozitie": "salut",
         "text_murdar": "!!!a"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Step on no pets!",
-        "anagrama_a": "Thing",
-        "anagrama_b": "Night",
-        "propozitie": "one two three four five six",
-        "text_murdar": "Mars 2030!"
+        "text_palindrom": "Apa la pa!",
+        "anagrama_a": "Sare",
+        "anagrama_b": "Rase",
+        "propozitie": "unu doi trei patru cinci sase",
+        "text_murdar": "Marte 2030!"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Never odd or even",
-        "anagrama_a": "The eyes",
-        "anagrama_b": "They see",
-        "propozitie": "mission control to major tom",
+        "text_palindrom": "Ana, rotor, Ana",
+        "anagrama_a": "Mare",
+        "anagrama_b": "Rame",
+        "propozitie": "centrul de control catre maiorul tom",
         "text_murdar": "123abc"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Madam, I'm Adam",
+        "text_palindrom": "Cojoc, capac, cojoc",
         "anagrama_a": "abd",
         "anagrama_b": "abc",
-        "propozitie": "we have liftoff",
+        "propozitie": "am decolat",
         "text_murdar": "ABC"
       },
       "generated": true
@@ -108,7 +140,7 @@
         "text_palindrom": "abba",
         "anagrama_a": "abc",
         "anagrama_b": "abcc",
-        "propozitie": "launch the rocket now",
+        "propozitie": "lanseaza racheta acum",
         "text_murdar": "..."
       },
       "generated": true
@@ -116,8 +148,8 @@
     {
       "inject": {
         "text_palindrom": "abcba",
-        "anagrama_a": "Bad credit",
-        "anagrama_b": "Debit card",
+        "anagrama_a": "Cal",
+        "anagrama_b": "Lac",
         "propozitie": "x y z",
         "text_murdar": "Z"
       },
@@ -128,7 +160,7 @@
         "text_palindrom": "abca",
         "anagrama_a": "a",
         "anagrama_b": "a",
-        "propozitie": "red alert on deck seven",
+        "propozitie": "alerta rosie pe puntea sapte",
         "text_murdar": "x1y2z3"
       },
       "generated": true
@@ -136,50 +168,50 @@
     {
       "inject": {
         "text_palindrom": "a",
-        "anagrama_a": "socket",
-        "anagrama_b": "rocket",
+        "anagrama_a": "sare",
+        "anagrama_b": "rare",
         "propozitie": "a b",
-        "text_murdar": "lowercase"
+        "text_murdar": "minuscule"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Eva, can I see bees in a cave?",
-        "anagrama_a": "Elbow",
-        "anagrama_b": "Below",
-        "propozitie": "the the end",
-        "text_murdar": "C-3PO says hi"
+        "text_palindrom": "Sas, rotor, sas?",
+        "anagrama_a": "Arde",
+        "anagrama_b": "Dare",
+        "propozitie": "la la sfarsit",
+        "text_murdar": "C-3PO zice salut"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Rocket launch",
-        "anagrama_a": "rats!",
-        "anagrama_b": "star",
-        "propozitie": "green light",
-        "text_murdar": "Hello, World!"
+        "text_palindrom": "Lansare racheta",
+        "anagrama_a": "ton!",
+        "anagrama_b": "not",
+        "propozitie": "lumina verde",
+        "text_murdar": "Salut, lume!"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Top spot",
-        "anagrama_a": "Signal",
-        "anagrama_b": "Aligns",
-        "propozitie": "hello",
-        "text_murdar": "MiXeD CaSe 99"
+        "text_palindrom": "Rotor, rotor",
+        "anagrama_a": "Sarat",
+        "anagrama_b": "Taras",
+        "propozitie": "salut",
+        "text_murdar": "LiTeRe AmEsTeCaTe 99"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Red rum, sir, is murder",
-        "anagrama_a": "orbits",
-        "anagrama_b": "orbit",
-        "propozitie": "one two three four five six",
-        "text_murdar": "orbit #42"
+        "text_palindrom": "Radar, cojoc, radar",
+        "anagrama_a": "orbite",
+        "anagrama_b": "orbita",
+        "propozitie": "unu doi trei patru cinci sase",
+        "text_murdar": "orbita #42"
       },
       "generated": true
     },
@@ -188,7 +220,7 @@
         "text_palindrom": "xy",
         "anagrama_a": "aab",
         "anagrama_b": "abb",
-        "propozitie": "mission control to major tom",
+        "propozitie": "centrul de control catre maiorul tom",
         "text_murdar": "R2-D2"
       },
       "generated": true
@@ -196,48 +228,48 @@
     {
       "inject": {
         "text_palindrom": "xx",
-        "anagrama_a": "Taste",
-        "anagrama_b": "State",
-        "propozitie": "we have liftoff",
+        "anagrama_a": "Nota",
+        "anagrama_b": "Tona",
+        "propozitie": "am decolat",
         "text_murdar": "A-1 B-2 C-3"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Level 42 level",
-        "anagrama_a": "Conversation",
-        "anagrama_b": "Voices rant on",
-        "propozitie": "launch the rocket now",
+        "text_palindrom": "Capac 42 capac",
+        "anagrama_a": "Literatura",
+        "anagrama_b": "Ura, literat",
+        "propozitie": "lanseaza racheta acum",
         "text_murdar": "!!!a"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Space station",
-        "anagrama_a": "Moon starer",
-        "anagrama_b": "Astronomer",
+        "text_palindrom": "Statia spatiala",
+        "anagrama_a": "Ce rat",
+        "anagrama_b": "Carte",
         "propozitie": "x y z",
-        "text_murdar": "Mars 2030!"
+        "text_murdar": "Marte 2030!"
       },
       "generated": true
     },
     {
       "inject": {
         "text_palindrom": "Ab",
-        "anagrama_a": "Night",
-        "anagrama_b": "Thing",
-        "propozitie": "red alert on deck seven",
+        "anagrama_a": "Rase",
+        "anagrama_b": "Sare",
+        "propozitie": "alerta rosie pe puntea sapte",
         "text_murdar": "123abc"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Murder for a jar of red rum",
-        "anagrama_a": "They see",
-        "anagrama_b": "The eyes",
+        "text_palindrom": "Ana, sas, Ana",
+        "anagrama_a": "Rame",
+        "anagrama_b": "Mare",
         "propozitie": "a b",
         "text_murdar": "ABC"
       },
@@ -245,90 +277,90 @@
     },
     {
       "inject": {
-        "text_palindrom": "No x in Nixon",
+        "text_palindrom": "Sus, sus",
         "anagrama_a": "abc",
         "anagrama_b": "abd",
-        "propozitie": "the the end",
+        "propozitie": "la la sfarsit",
         "text_murdar": "..."
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Orbit tibro",
+        "text_palindrom": "Orbita atibro",
         "anagrama_a": "abcc",
         "anagrama_b": "abc",
-        "propozitie": "green light",
+        "propozitie": "lumina verde",
         "text_murdar": "Z"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Racecar",
-        "anagrama_a": "Debit card",
-        "anagrama_b": "Bad credit",
-        "propozitie": "hello",
+        "text_palindrom": "Rotitor",
+        "anagrama_a": "Lac",
+        "anagrama_b": "Cal",
+        "propozitie": "salut",
         "text_murdar": "x1y2z3"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Step on no pets!",
+        "text_palindrom": "Apa la pa!",
         "anagrama_a": "a",
         "anagrama_b": "a",
-        "propozitie": "one two three four five six",
-        "text_murdar": "lowercase"
+        "propozitie": "unu doi trei patru cinci sase",
+        "text_murdar": "minuscule"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Never odd or even",
-        "anagrama_a": "rocket",
-        "anagrama_b": "socket",
-        "propozitie": "mission control to major tom",
-        "text_murdar": "C-3PO says hi"
+        "text_palindrom": "Ana, rotor, Ana",
+        "anagrama_a": "rare",
+        "anagrama_b": "sare",
+        "propozitie": "centrul de control catre maiorul tom",
+        "text_murdar": "C-3PO zice salut"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Madam, I'm Adam",
-        "anagrama_a": "Below",
-        "anagrama_b": "Elbow",
-        "propozitie": "we have liftoff",
-        "text_murdar": "Hello, World!"
+        "text_palindrom": "Cojoc, capac, cojoc",
+        "anagrama_a": "Dare",
+        "anagrama_b": "Arde",
+        "propozitie": "am decolat",
+        "text_murdar": "Salut, lume!"
       },
       "generated": true
     },
     {
       "inject": {
         "text_palindrom": "abba",
-        "anagrama_a": "star",
-        "anagrama_b": "rats!",
-        "propozitie": "launch the rocket now",
-        "text_murdar": "MiXeD CaSe 99"
+        "anagrama_a": "not",
+        "anagrama_b": "ton!",
+        "propozitie": "lanseaza racheta acum",
+        "text_murdar": "LiTeRe AmEsTeCaTe 99"
       },
       "generated": true
     },
     {
       "inject": {
         "text_palindrom": "abcba",
-        "anagrama_a": "Aligns",
-        "anagrama_b": "Signal",
+        "anagrama_a": "Taras",
+        "anagrama_b": "Sarat",
         "propozitie": "x y z",
-        "text_murdar": "orbit #42"
+        "text_murdar": "orbita #42"
       },
       "generated": true
     },
     {
       "inject": {
         "text_palindrom": "abca",
-        "anagrama_a": "orbit",
-        "anagrama_b": "orbits",
-        "propozitie": "red alert on deck seven",
+        "anagrama_a": "orbita",
+        "anagrama_b": "orbite",
+        "propozitie": "alerta rosie pe puntea sapte",
         "text_murdar": "R2-D2"
       },
       "generated": true
@@ -345,40 +377,40 @@
     },
     {
       "inject": {
-        "text_palindrom": "Eva, can I see bees in a cave?",
-        "anagrama_a": "State",
-        "anagrama_b": "Taste",
-        "propozitie": "the the end",
+        "text_palindrom": "Sas, rotor, sas?",
+        "anagrama_a": "Tona",
+        "anagrama_b": "Nota",
+        "propozitie": "la la sfarsit",
         "text_murdar": "!!!a"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Rocket launch",
-        "anagrama_a": "Voices rant on",
-        "anagrama_b": "Conversation",
-        "propozitie": "green light",
-        "text_murdar": "Mars 2030!"
+        "text_palindrom": "Lansare racheta",
+        "anagrama_a": "Ura, literat",
+        "anagrama_b": "Literatura",
+        "propozitie": "lumina verde",
+        "text_murdar": "Marte 2030!"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Top spot",
-        "anagrama_a": "Astronomer",
-        "anagrama_b": "Moon starer",
-        "propozitie": "hello",
+        "text_palindrom": "Rotor, rotor",
+        "anagrama_a": "Carte",
+        "anagrama_b": "Ce rat",
+        "propozitie": "salut",
         "text_murdar": "123abc"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Red rum, sir, is murder",
-        "anagrama_a": "Thing",
-        "anagrama_b": "Night",
-        "propozitie": "one two three four five six",
+        "text_palindrom": "Radar, cojoc, radar",
+        "anagrama_a": "Sare",
+        "anagrama_b": "Rase",
+        "propozitie": "unu doi trei patru cinci sase",
         "text_murdar": "ABC"
       },
       "generated": true
@@ -386,9 +418,9 @@
     {
       "inject": {
         "text_palindrom": "xy",
-        "anagrama_a": "The eyes",
-        "anagrama_b": "They see",
-        "propozitie": "mission control to major tom",
+        "anagrama_a": "Mare",
+        "anagrama_b": "Rame",
+        "propozitie": "centrul de control catre maiorul tom",
         "text_murdar": "..."
       },
       "generated": true
@@ -398,28 +430,28 @@
         "text_palindrom": "xx",
         "anagrama_a": "abd",
         "anagrama_b": "abc",
-        "propozitie": "we have liftoff",
+        "propozitie": "am decolat",
         "text_murdar": "Z"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Level 42 level",
+        "text_palindrom": "Capac 42 capac",
         "anagrama_a": "abc",
         "anagrama_b": "abcc",
-        "propozitie": "launch the rocket now",
+        "propozitie": "lanseaza racheta acum",
         "text_murdar": "x1y2z3"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Space station",
-        "anagrama_a": "Bad credit",
-        "anagrama_b": "Debit card",
+        "text_palindrom": "Statia spatiala",
+        "anagrama_a": "Cal",
+        "anagrama_b": "Lac",
         "propozitie": "x y z",
-        "text_murdar": "lowercase"
+        "text_murdar": "minuscule"
       },
       "generated": true
     },
@@ -428,87 +460,87 @@
         "text_palindrom": "Ab",
         "anagrama_a": "a",
         "anagrama_b": "a",
-        "propozitie": "red alert on deck seven",
-        "text_murdar": "C-3PO says hi"
+        "propozitie": "alerta rosie pe puntea sapte",
+        "text_murdar": "C-3PO zice salut"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Murder for a jar of red rum",
-        "anagrama_a": "socket",
-        "anagrama_b": "rocket",
+        "text_palindrom": "Ana, sas, Ana",
+        "anagrama_a": "sare",
+        "anagrama_b": "rare",
         "propozitie": "a b",
-        "text_murdar": "Hello, World!"
+        "text_murdar": "Salut, lume!"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "No x in Nixon",
-        "anagrama_a": "Elbow",
-        "anagrama_b": "Below",
-        "propozitie": "the the end",
-        "text_murdar": "MiXeD CaSe 99"
+        "text_palindrom": "Sus, sus",
+        "anagrama_a": "Arde",
+        "anagrama_b": "Dare",
+        "propozitie": "la la sfarsit",
+        "text_murdar": "LiTeRe AmEsTeCaTe 99"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Orbit tibro",
-        "anagrama_a": "rats!",
-        "anagrama_b": "star",
-        "propozitie": "green light",
-        "text_murdar": "orbit #42"
+        "text_palindrom": "Orbita atibro",
+        "anagrama_a": "ton!",
+        "anagrama_b": "not",
+        "propozitie": "lumina verde",
+        "text_murdar": "orbita #42"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Racecar",
-        "anagrama_a": "Signal",
-        "anagrama_b": "Aligns",
-        "propozitie": "hello",
+        "text_palindrom": "Rotitor",
+        "anagrama_a": "Sarat",
+        "anagrama_b": "Taras",
+        "propozitie": "salut",
         "text_murdar": "R2-D2"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Step on no pets!",
-        "anagrama_a": "orbits",
-        "anagrama_b": "orbit",
-        "propozitie": "one two three four five six",
+        "text_palindrom": "Apa la pa!",
+        "anagrama_a": "orbite",
+        "anagrama_b": "orbita",
+        "propozitie": "unu doi trei patru cinci sase",
         "text_murdar": "A-1 B-2 C-3"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Never odd or even",
+        "text_palindrom": "Ana, rotor, Ana",
         "anagrama_a": "aab",
         "anagrama_b": "abb",
-        "propozitie": "mission control to major tom",
+        "propozitie": "centrul de control catre maiorul tom",
         "text_murdar": "!!!a"
       },
       "generated": true
     },
     {
       "inject": {
-        "text_palindrom": "Madam, I'm Adam",
-        "anagrama_a": "Taste",
-        "anagrama_b": "State",
-        "propozitie": "we have liftoff",
-        "text_murdar": "Mars 2030!"
+        "text_palindrom": "Cojoc, capac, cojoc",
+        "anagrama_a": "Nota",
+        "anagrama_b": "Tona",
+        "propozitie": "am decolat",
+        "text_murdar": "Marte 2030!"
       },
       "generated": true
     },
     {
       "inject": {
         "text_palindrom": "abba",
-        "anagrama_a": "Conversation",
-        "anagrama_b": "Voices rant on",
-        "propozitie": "launch the rocket now",
+        "anagrama_a": "Literatura",
+        "anagrama_b": "Ura, literat",
+        "propozitie": "lanseaza racheta acum",
         "text_murdar": "123abc"
       },
       "generated": true
