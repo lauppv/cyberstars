@@ -236,6 +236,52 @@ describe('runLessonTests', () => {
     expect(mockDestroy).not.toHaveBeenCalled();
   });
 
+  it("runs a multi-language lesson from its language's folder, in that language's runtime", async () => {
+    stubFiles();
+    stubVerdict({
+      syntaxError: null,
+      cases: [
+        { user: program(), solution: program() },
+        { user: program(), solution: program() },
+      ],
+    });
+    mockPrepareC.mockResolvedValue({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { userSrc: 'U', solutionSrc: 'S' },
+        { userSrc: 'U', solutionSrc: 'S' },
+      ],
+    });
+
+    await runLessonTests('user:1', 'trees-graphs', 'trees', 'int main(void) {}', 'en', 'c');
+
+    const read = mockReadFileSync.mock.calls.map(([file]) => String(file));
+    expect(read[0]).toContain(path.join('trees-graphs', 'c', 'trees-tests.json'));
+    expect(read[1]).toContain(path.join('trees-graphs', 'c', 'trees-solution.md'));
+    // The container is the C one the editor's runs in C use too.
+    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'c');
+    expect(mockPrepareC).toHaveBeenCalled();
+  });
+
+  it('runs a multi-language lesson in Python when no language is given', async () => {
+    stubFiles();
+    stubVerdict({
+      syntaxError: null,
+      cases: [
+        { user: program(), solution: program() },
+        { user: program(), solution: program() },
+      ],
+    });
+
+    await runLessonTests('user:1', 'trees-graphs', 'trees', 'code');
+
+    expect(String(mockReadFileSync.mock.calls[0][0])).toContain(
+      path.join('trees-graphs', 'python', 'trees-tests.json'),
+    );
+    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'python');
+  });
+
   it("tells the page how the lesson compares outputs, 'trimmed' when the spec doesn't say", async () => {
     stubFiles({ comparator: 'unordered', structure: {}, cases: [{ visible: true }] });
     stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { codeLanguageOf, isMultiLanguage } from '@cyberstars/shared/constants';
 import { contentDir } from './paths.js';
 import { dockerExec, dockerConverse } from './docker-exec.js';
 import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
@@ -113,8 +114,14 @@ const RUNNERS: Record<string, JudgeRunner> = {
 // inject keys reference the solution's identifiers), so the locale is decided
 // once by the tests file and the solution must come from the same folder.
 // Mixing locales would make injection a silent no-op and let hardcoding pass.
-function testsDir(courseKey: string, lessonSlug: string, lang?: string): string | null {
-  const base = contentDir(courseKey);
+// A multi-language course keeps each language's lesson in its own folder.
+function testsDir(
+  courseKey: string,
+  lessonSlug: string,
+  lang?: string,
+  language?: string,
+): string | null {
+  const base = contentDir(courseKey, language);
   if (lang === 'ro' && fs.existsSync(path.join(base, 'ro', `${lessonSlug}-tests.json`))) {
     return path.join(base, 'ro');
   }
@@ -125,15 +132,21 @@ export function loadTestsSpec(
   courseKey: string,
   lessonSlug: string,
   lang?: string,
+  language?: string,
 ): LessonTestsSpec | null {
-  const dir = testsDir(courseKey, lessonSlug, lang);
+  const dir = testsDir(courseKey, lessonSlug, lang, language);
   if (!dir) return null;
   const file = path.join(dir, `${lessonSlug}-tests.json`);
   return JSON.parse(fs.readFileSync(file, 'utf8')) as LessonTestsSpec;
 }
 
-function loadSolutionCode(courseKey: string, lessonSlug: string, lang?: string): string {
-  const dir = testsDir(courseKey, lessonSlug, lang);
+function loadSolutionCode(
+  courseKey: string,
+  lessonSlug: string,
+  lang?: string,
+  language?: string,
+): string {
+  const dir = testsDir(courseKey, lessonSlug, lang, language);
   if (!dir) throw new AppError(500, 'Test run failed, please try again');
   const md = fs.readFileSync(path.join(dir, `${lessonSlug}-solution.md`), 'utf8');
   const fenced = md.match(/```[\w-]*\n([\s\S]*?)```/);
@@ -346,22 +359,33 @@ function finalResponse(
   };
 }
 
+// The runtime a run goes to, which also names the owner's container: the
+// course's own, or on a multi-language course the language picked, so a run
+// there shares the container of the editor's runs in that language.
+function runtimeKey(courseKey: string, language?: string): string {
+  return isMultiLanguage(courseKey) ? codeLanguageOf(courseKey, language) : courseKey;
+}
+
 export async function runLessonTests(
   ownerKey: string,
   courseKey: string,
   lessonSlug: string,
   userCode: string,
   lang?: string,
+  language?: string,
 ): Promise<RunTestsResponse> {
-  const spec = loadTestsSpec(courseKey, lessonSlug, lang);
+  const spec = loadTestsSpec(courseKey, lessonSlug, lang, language);
   if (!spec) throw new AppError(404, 'This lesson has no tests');
-  const judge = RUNNERS[getRuntime(courseKey)?.name ?? ''];
+  const runtime = runtimeKey(courseKey, language);
+  const judge = RUNNERS[getRuntime(runtime)?.name ?? ''];
   if (!judge) throw new AppError(404, 'This lesson has no tests');
-  const solutionCode = loadSolutionCode(courseKey, lessonSlug, lang);
+  const solutionCode = loadSolutionCode(courseKey, lessonSlug, lang, language);
 
   // Cases whose reference output is cached skip our solution; the load test
   // always runs it fresh, next to the student's program, for the runtime.
-  const keys = referenceKeys(spec, courseKey, lessonSlug, lang, solutionCode);
+  // A multi-language course's lesson is one per language.
+  const cacheCourse = runtime === courseKey ? courseKey : `${courseKey}/${runtime}`;
+  const keys = referenceKeys(spec, cacheCourse, lessonSlug, lang, solutionCode);
   const cached = keys.map((key) => (key ? getReference(key) : undefined));
   const skipSolution = new Set(cached.flatMap((out, index) => (out === undefined ? [] : [index])));
 
@@ -374,20 +398,11 @@ export async function runLessonTests(
 
   const releaseSlot = await acquireJudgeSlot();
   try {
-    return await runInContainer(
-      ownerKey,
-      courseKey,
-      judge,
-      spec,
-      userCode,
-      solutionCode,
-      prepared,
-      {
-        keys,
-        cached,
-        skipSolution,
-      },
-    );
+    return await runInContainer(ownerKey, runtime, judge, spec, userCode, solutionCode, prepared, {
+      keys,
+      cached,
+      skipSolution,
+    });
   } finally {
     releaseSlot();
   }
@@ -401,7 +416,7 @@ interface ReferenceReuse {
 
 async function runInContainer(
   ownerKey: string,
-  courseKey: string,
+  runtime: string,
   judge: JudgeRunner,
   spec: LessonTestsSpec,
   userCode: string,
@@ -411,7 +426,7 @@ async function runInContainer(
 ): Promise<RunTestsResponse> {
   let containerId: string;
   try {
-    containerId = await acquireForRun(ownerKey, courseKey);
+    containerId = await acquireForRun(ownerKey, runtime);
   } catch (err) {
     if (err instanceof Error && err.message === 'A run is already in progress') {
       throw new AppError(409, 'A run is already in progress');
