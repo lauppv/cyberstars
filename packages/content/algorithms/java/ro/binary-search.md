@@ -41,6 +41,20 @@ Ieșire:
 -1
 ```
 
+```visual
+{
+  "type": "array",
+  "values": [2, 4, 6, 8],
+  "caption": "Tabloul este sortat. jos și sus marchează partea în care încă mai căutăm, iar mijloc este mijlocul ei. Când numărul din mijloc nu e 5, jumătatea în care 5 nu poate fi se estompează și căutăm în cealaltă.",
+  "markers": ["jos = {i}", "mijloc = {i}", "sus = {i}"],
+  "steps": [
+    {"title": "Pasul 1", "at": [0, 1, 3], "compare": [1], "ask": "mijloc = (0 + 3) / 2 = 1, iar numărul de acolo este 4. Este 4 < 5?", "caption": "Da, deci 5 poate fi doar în dreapta lui mijloc: jos = mijloc + 1 = 2", "move": [2, null, 3], "range": [2, 3]},
+    {"title": "Pasul 2", "at": [2, 2, 3], "compare": [2], "ask": "mijloc = (2 + 3) / 2 = 2, iar numărul de acolo este 6. Este 6 < 5?", "caption": "Nu, 6 > 5, deci 5 poate fi doar în stânga lui mijloc: sus = mijloc - 1 = 1", "move": [2, null, 1], "range": [2, 1]},
+    {"title": "Pasul 3", "caption": "jos = 2 a trecut de sus = 1, deci nu mai e nimic de căutat. 5 nu e în tablou: afișăm -1"}
+  ]
+}
+```
+
 ```
 Intrare:
 1

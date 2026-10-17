@@ -37,6 +37,20 @@ Input:
 Output: -1
 ```
 
+```visual
+{
+  "type": "array",
+  "values": [10, 20, 30, 40],
+  "caption": "The array is sorted. left and right mark the part still searched, and mid is its middle. When the middle number isn't 25, the half where 25 can't be fades, and we search the other half.",
+  "markers": ["left = {i}", "mid = {i}", "right = {i}"],
+  "steps": [
+    {"title": "Step 1", "at": [0, 1, 3], "compare": [1], "ask": "mid = (0 + 3) / 2 = 1, and the number there is 20. Is 20 < 25?", "caption": "Yes, so 25 can only be to the right of mid: left = mid + 1 = 2", "move": [2, null, 3], "range": [2, 3]},
+    {"title": "Step 2", "at": [2, 2, 3], "compare": [2], "ask": "mid = (2 + 3) / 2 = 2, and the number there is 30. Is 30 < 25?", "caption": "No, 30 > 25, so 25 can only be to the left of mid: right = mid - 1 = 1", "move": [2, null, 1], "range": [2, 1]},
+    {"title": "Step 3", "caption": "left = 2 has passed right = 1, so nothing is left to search. 25 isn't in the array: print -1"}
+  ]
+}
+```
+
 ```
 Input:
 1

@@ -41,6 +41,20 @@ Output:
 -1
 ```
 
+```visual
+{
+  "type": "array",
+  "values": [2, 4, 6, 8],
+  "caption": "The array is sorted. low and high mark the part still searched, and mid is its middle. When the middle number isn't 5, the half where 5 can't be fades, and we search the other half.",
+  "markers": ["low = {i}", "mid = {i}", "high = {i}"],
+  "steps": [
+    {"title": "Step 1", "at": [0, 1, 3], "compare": [1], "ask": "mid = (0 + 3) / 2 = 1, and the number there is 4. Is 4 < 5?", "caption": "Yes, so 5 can only be to the right of mid: low = mid + 1 = 2", "move": [2, null, 3], "range": [2, 3]},
+    {"title": "Step 2", "at": [2, 2, 3], "compare": [2], "ask": "mid = (2 + 3) / 2 = 2, and the number there is 6. Is 6 < 5?", "caption": "No, 6 > 5, so 5 can only be to the left of mid: high = mid - 1 = 1", "move": [2, null, 1], "range": [2, 1]},
+    {"title": "Step 3", "caption": "low = 2 has passed high = 1, so nothing is left to search. 5 isn't in the array: print -1"}
+  ]
+}
+```
+
 ```
 Input:
 1

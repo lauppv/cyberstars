@@ -20,6 +20,30 @@ Ieșire:
 1 2 3 5 8
 ```
 
+```visual
+{
+  "type": "array",
+  "values": [5, 3, 8, 1, 2],
+  "caption": "Începutul listei este sortat; la început e doar 5. La fiecare pas luăm următorul număr și îl mutăm la stânga peste fiecare număr mai mare, până când cel din stânga lui e mai mic sau nu mai e nimic. Numerele încă nepreluate sunt estompate.",
+  "steps": [
+    {"title": "Pasul 1", "range": [0, 1], "caption": "Luăm 3. În fața lui, 5 e sortat singur"},
+    {"compare": [0, 1], "ask": "Este 5 > 3?", "swap": true, "caption": "Da, deci 5 se mută la dreapta și 3 la stânga → [3, 5, 8, 1, 2]. În stânga lui 3 nu mai e nimic"},
+    {"title": "Pasul 2", "range": [0, 2], "caption": "Luăm 8. În fața lui, [3, 5] e sortat"},
+    {"compare": [1, 2], "ask": "Este 5 > 8?", "caption": "Nu, deci 8 rămâne pe loc. [3, 5, 8] e sortat"},
+    {"title": "Pasul 3", "range": [0, 3], "caption": "Luăm 1"},
+    {"compare": [2, 3], "ask": "Este 8 > 1?", "swap": true, "caption": "Da, deci 8 se mută la dreapta și 1 la stânga → [3, 5, 1, 8, 2]"},
+    {"compare": [1, 2], "ask": "Este 5 > 1?", "swap": true, "caption": "Da, deci 5 se mută la dreapta și 1 la stânga → [3, 1, 5, 8, 2]"},
+    {"compare": [0, 1], "ask": "Este 3 > 1?", "swap": true, "caption": "Da, deci 3 se mută la dreapta și 1 la stânga → [1, 3, 5, 8, 2]. În stânga lui 1 nu mai e nimic"},
+    {"title": "Pasul 4", "range": [0, 4], "caption": "Luăm 2, ultimul număr"},
+    {"compare": [3, 4], "ask": "Este 8 > 2?", "swap": true, "caption": "Da, deci 8 se mută la dreapta și 2 la stânga → [1, 3, 5, 2, 8]"},
+    {"compare": [2, 3], "ask": "Este 5 > 2?", "swap": true, "caption": "Da, deci 5 se mută la dreapta și 2 la stânga → [1, 3, 2, 5, 8]"},
+    {"compare": [1, 2], "ask": "Este 3 > 2?", "swap": true, "caption": "Da, deci 3 se mută la dreapta și 2 la stânga → [1, 2, 3, 5, 8]"},
+    {"compare": [0, 1], "ask": "Este 1 > 2?", "caption": "Nu, deci 2 rămâne pe loc"},
+    {"done": [0, 1, 2, 3, 4], "caption": "Am luat toate numerele și lista e sortată: 1 2 3 5 8"}
+  ]
+}
+```
+
 ```
 Intrare:
 4
