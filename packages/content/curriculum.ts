@@ -1210,6 +1210,13 @@ export const lessons = [
     sortOrder: 8,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'depth-first-search',
+    title: 'Depth-First Search',
+    sortOrder: 9,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',
