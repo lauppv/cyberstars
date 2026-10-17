@@ -31,6 +31,24 @@ describe('sendResetCode', () => {
     expect(call.subject).toContain('Password Reset');
   });
 
+  it('writes both emails in Romanian when asked from a Romanian page', async () => {
+    vi.doMock('../config/index.js', () => ({
+      config: { resend: { apiKey: 're_test', from: 'CyberStars <noreply@cyberstars.app>' } },
+    }));
+    const { sendResetCode, sendEmailChangeCode } = await import('./email.service.js');
+
+    mockSend.mockResolvedValue({ data: { id: 'x' }, error: null });
+    await sendResetCode('user@test.com', '123456', 'ro');
+    await sendEmailChangeCode('new@test.com', '654321', 'ro');
+
+    const [reset, change] = mockSend.mock.calls.map((c) => c[0]);
+    expect(reset.subject).toBe('CyberStars: codul pentru resetarea parolei');
+    expect(reset.html).toContain('Expiră în 15 minute');
+    expect(reset.html).toContain('123456');
+    expect(change.subject).toBe('CyberStars: confirmă noul email');
+    expect(change.html).toContain('654321');
+  });
+
   it('logs to console instead of sending when Resend is unconfigured', async () => {
     vi.doMock('../config/index.js', () => ({
       config: { resend: { apiKey: '', from: 'CyberStars <noreply@cyberstars.app>' } },

@@ -39,7 +39,7 @@ export async function forgotPassword(
   next: NextFunction,
 ): Promise<void> {
   try {
-    await authService.forgotPassword(req.body.email);
+    await authService.forgotPassword(req.body.email, req.body.lang ?? 'en');
     res.json({ message: 'If that email exists, a reset code was sent' });
   } catch (err) {
     next(err);

@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 import type { Interest } from '@cyberstars/shared/interests';
 import type { CodeLanguage } from '@cyberstars/shared/constants';
 import { api, ApiClientError } from './apiClient';
@@ -47,7 +48,10 @@ export function changePassword(data: { currentPassword: string; newPassword: str
 }
 
 export function requestEmailChange(data: { currentPassword: string; newEmail: string }) {
-  return api.post<{ message: string }>('/api/profile/email/request', data);
+  return api.post<{ message: string }>('/api/profile/email/request', {
+    ...data,
+    lang: i18next.language === 'ro' ? 'ro' : 'en',
+  });
 }
 
 export function confirmEmailChange(data: { code: string }) {

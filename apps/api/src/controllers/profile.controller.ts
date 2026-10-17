@@ -173,7 +173,11 @@ export async function requestEmailChange(
 ): Promise<void> {
   try {
     const userId = req.user!.id;
-    const { currentPassword, newEmail } = req.body as { currentPassword: string; newEmail: string };
+    const { currentPassword, newEmail, lang } = req.body as {
+      currentPassword: string;
+      newEmail: string;
+      lang?: 'en' | 'ro';
+    };
     const normalized = newEmail.toLowerCase().trim();
 
     const user = await userRepo.findByIdWithPassword(userId);
@@ -197,7 +201,7 @@ export async function requestEmailChange(
     // Send outside the request path, same pattern as forgot-password: keep
     // response timing insensitive to mail latency and don't 500 the request if
     // the provider is down; the code is already persisted.
-    void emailService.sendEmailChangeCode(normalized, code).catch((err) => {
+    void emailService.sendEmailChangeCode(normalized, code, lang ?? 'en').catch((err) => {
       console.error('[email-change] failed to send confirmation code:', err);
     });
 

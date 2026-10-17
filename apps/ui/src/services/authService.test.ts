@@ -43,6 +43,7 @@ describe('authService', () => {
     await authService.forgotPassword('ada@test.dev');
     expect(mockApi.post).toHaveBeenCalledWith('/auth/forgot-password', {
       email: 'ada@test.dev',
+      lang: 'en',
     });
   });
 

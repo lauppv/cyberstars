@@ -37,6 +37,8 @@ export const requestEmailChangeSchema = z.object({
   newEmail: z
     .email('Please enter a valid email address')
     .max(255, 'Email must be at most 255 characters'),
+  // the page's language, which the email is written in
+  lang: z.enum(['en', 'ro']).optional(),
 });
 
 export const confirmEmailChangeSchema = z.object({

@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 import { api } from './apiClient';
 import type {
   AuthenticatedUser as User,
@@ -22,7 +23,10 @@ export function getMe() {
 }
 
 export function forgotPassword(email: string) {
-  return api.post<{ message: string }>('/auth/forgot-password', { email });
+  return api.post<{ message: string }>('/auth/forgot-password', {
+    email,
+    lang: i18next.language === 'ro' ? 'ro' : 'en',
+  });
 }
 
 export function resetPassword(email: string, code: string, password: string) {

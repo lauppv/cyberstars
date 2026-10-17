@@ -245,7 +245,7 @@ describe('forgotPassword', () => {
       expect.any(String),
       expect.any(Date),
     );
-    expect(mockSendResetCode).toHaveBeenCalledWith('user@test.com', expect.any(String));
+    expect(mockSendResetCode).toHaveBeenCalledWith('user@test.com', expect.any(String), 'en');
   });
 
   it('does not send email when user not found', async () => {
