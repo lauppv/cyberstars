@@ -59,12 +59,12 @@ Aceeași formulă, scrisă de **trei ori**. Dacă greșim ceva la ea, trebuie s-
 Cu o funcție, scriem formula **o singură dată** în corpul ei și apoi o **apelăm** cu argumente diferite
 
 ```py
-def in_fahrenheit(c):
+def fahrenheit(c):
     return c * 9 / 5 + 32
 
-print(in_fahrenheit(20))
-print(in_fahrenheit(37))
-print(in_fahrenheit(100))
+print(fahrenheit(20))
+print(fahrenheit(37))
+print(fahrenheit(100))
 ```
 
 Ieșire

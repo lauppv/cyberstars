@@ -15,7 +15,7 @@
     {
       "visible": true,
       "inject": {
-        "galaxie1": { "$list": ["sun", "aldebaran", "vega", "rigel"] },
+        "galaxie1": { "$list": ["soare", "aldebaran", "vega", "rigel"] },
         "galaxie2": { "$list": ["mira", "capella", "io", "sol"] },
         "galaxie3": { "$list": ["dubhe", "fomalhaut", "atria"] },
         "galaxie4": { "$list": ["hamal", "betelgeuse", "menkar"] },

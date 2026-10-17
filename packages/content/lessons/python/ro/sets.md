@@ -38,11 +38,11 @@ Un **{}** gol creează un dicționar, nu o mulțime. Ca să creezi o mulțime go
 Putem **adăuga** elemente cu **.add()** și **elimina** cu **.remove()**
 
 ```py
-arme = {"bat", "pistol"}
-arme.add("shotgun")
+arme = {"bata", "pistol"}
+arme.add("pusca")
 print(arme)
 
-arme.remove("bat")
+arme.remove("bata")
 print(arme)
 ```
 
@@ -81,11 +81,11 @@ Am convertit lista într-o mulțime (care a eliminat duplicatele), apoi înapoi 
 **len()** funcționează și pe mulțimi
 
 ```py
-culori = {"red", "green", "blue", "red"}
+culori = {"rosu", "verde", "albastru", "rosu"}
 print(len(culori))
 ```
 
-Rezultatul **3**, nu 4, pentru că duplicatul **red** a fost eliminat
+Rezultatul **3**, nu 4, pentru că duplicatul **rosu** a fost eliminat
 
 ---
 

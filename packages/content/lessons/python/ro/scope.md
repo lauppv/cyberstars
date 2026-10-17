@@ -49,11 +49,11 @@ Dar ce se întâmplă dacă încercăm să **schimbăm** o variabilă globală �
 ```py
 viata = 100
 
-def primeste_damage():
+def primeste_lovitura():
     viata = viata - 10
     print(viata)
 
-primeste_damage()
+primeste_lovitura()
 ```
 
 **Rulează**-l. Eroare! Python vede **viata = ...** în interiorul funcției și crede că creăm o **nouă variabilă locală** numită viata. Dar în partea dreaptă folosim și **viata**, iar cea locală nu există încă. Confuz? Da. De asta este important să înțelegi **scope-ul**
@@ -67,11 +67,11 @@ Soluția curată? **Transmite valori ca parametri și returnează rezultate**
 ```py
 viata = 100
 
-def primeste_damage(viata):
+def primeste_lovitura(viata):
     viata = viata - 10
     return viata
 
-viata = primeste_damage(viata)
+viata = primeste_lovitura(viata)
 print(viata)
 ```
 
