@@ -25,11 +25,11 @@ print(f"Total: {total}")
 
 print(f"Medie: {total / len(scoruri)}")
 
-top = ""
+cel_mai_bun = ""
 maxim = 0
 for nume in scoruri:
     if scoruri[nume] > maxim:
         maxim = scoruri[nume]
-        top = nume
-print(f"Top: {top}")
+        cel_mai_bun = nume
+print(f"Top: {cel_mai_bun}")
 ```

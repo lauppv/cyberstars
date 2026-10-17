@@ -112,14 +112,14 @@ Rezultat **6**. Aceeași logică, alt stil
 
 ## Misiune: Căutare în Arhivă
 
-Arhiva stației stochează ID-urile echipajului într-o listă **sortată**. Controlul Misiunii trimite un lot de interogări de căutare și are nevoie ca fiecare să primească răspuns rapid, așa că vei folosi **căutarea binară**, nu o scanare liniară.
+Arhiva stației stochează codurile echipajului (ID-urile) într-o listă **sortată**. Controlul Misiunii trimite un lot de interogări de căutare și are nevoie ca fiecare să primească răspuns rapid, așa că vei folosi **căutarea binară**, nu o scanare liniară.
 
 1. Scrie o funcție **cautare_binara(numere, tinta)** care returnează **indexul** unde se află `tinta` în lista sortată, sau `-1` dacă nu este acolo.
 2. Pentru fiecare interogare, afișează interogarea, apoi `-> index ` și indexul dacă a fost găsit, sau `-> negasit` dacă nu.
 3. Afișează `Gasite: ` urmat de câte interogări au fost localizate.
 
 ```py
-ids = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+coduri = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
 interogari = [23, 50, 8, 91, 100]
 ```
 

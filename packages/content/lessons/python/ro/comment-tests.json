@@ -102,7 +102,7 @@
     {
       "inject": {
         "nume_racheta": "Starship",
-        "misiune": "ORBIT-0",
+        "misiune": "ORBITA-0",
         "putere_maxima": 1234567,
         "viteza_vant": 15.0
       },
@@ -120,7 +120,7 @@
     {
       "inject": {
         "nume_racheta": "Electron",
-        "misiune": "ORBIT-0",
+        "misiune": "ORBITA-0",
         "putere_maxima": 7,
         "viteza_vant": 9.99
       },
@@ -147,7 +147,7 @@
     {
       "inject": {
         "nume_racheta": "Hermes",
-        "misiune": "ORBIT-0",
+        "misiune": "ORBITA-0",
         "putere_maxima": 640,
         "viteza_vant": 4.2
       },

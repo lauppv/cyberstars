@@ -259,16 +259,19 @@
       "generated": true
     },
     { "inject": { "scoruri": { "$dict": { "Zed": 100, "Amy": 99 } } }, "generated": true },
-    { "inject": { "scoruri": { "$dict": { "Lo": 0, "Hi": 100, "Mid": 50 } } }, "generated": true },
     {
-      "inject": { "scoruri": { "$dict": { "First": 90, "B": 10, "C": 20, "D": 30, "E": 40 } } },
+      "inject": { "scoruri": { "$dict": { "Jos": 0, "Sus": 100, "Mijloc": 50 } } },
       "generated": true
     },
     {
-      "inject": { "scoruri": { "$dict": { "A": 10, "B": 20, "C": 30, "D": 40, "Last": 90 } } },
+      "inject": { "scoruri": { "$dict": { "Primul": 90, "B": 10, "C": 20, "D": 30, "E": 40 } } },
       "generated": true
     },
-    { "inject": { "scoruri": { "$dict": { "One": 1, "Two": 2 } } }, "generated": true },
+    {
+      "inject": { "scoruri": { "$dict": { "A": 10, "B": 20, "C": 30, "D": 40, "Ultimul": 90 } } },
+      "generated": true
+    },
+    { "inject": { "scoruri": { "$dict": { "Unu": 1, "Doi": 2 } } }, "generated": true },
     {
       "inject": { "scoruri": { "$dict": { "Ada": 33, "Bea": 33, "Cid": 34 } } },
       "generated": true
