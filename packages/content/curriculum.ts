@@ -1816,4 +1816,11 @@ export const lessons = [
     sortOrder: 9,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'count-islands',
+    title: 'Easy · Count the Islands',
+    sortOrder: 10,
+    hasCodeFile: true,
+  },
 ];
