@@ -18,6 +18,10 @@ const shell = `<!doctype html>
       property="og:description"
       content="Landing description"
     />
+    <meta
+      property="og:image:alt"
+      content="The landing picture"
+    />
   </head>
   <body>
     <div id="root"></div>
@@ -50,6 +54,10 @@ describe('withHead', () => {
       '<meta property="og:url" content="https://cyberstars.app/ro/lesson/python/print" />',
     );
     expect(html).not.toContain('Landing');
+    expect(html).not.toContain('The landing picture');
+    expect(html).toContain('<meta property="og:image:alt" content="CyberStars: învață');
+    expect(html).toContain('<meta property="og:locale" content="ro_RO" />');
+    expect(html).toContain('<meta property="og:locale:alternate" content="en_US" />');
   });
 
   it('points to its twin, with English as the default', () => {

@@ -1,6 +1,9 @@
 // Turns the page shell Vite builds (index.html, written for the landing page)
 // into one page's HTML, and lists every indexable page in the sitemap.
+import i18n from 'i18next';
 import { ORIGIN, type Page } from './pages';
+
+const OG_LOCALE = { en: 'en_US', ro: 'ro_RO' } as const;
 
 function escape(text: string): string {
   return text
@@ -66,7 +69,23 @@ export function withHead(shell: string, page: Page, body: string): string {
     meta('property', 'og:description'),
     `<meta property="og:description" content="${description}" />`,
   );
-  const extra = [...hreflangLinks(page), ...(page.jsonLd ? [jsonLdScript(page.jsonLd)] : [])];
+  html = swap(
+    html,
+    meta('property', 'og:image:alt'),
+    `<meta property="og:image:alt" content="${escape(i18n.getFixedT(page.lang)('seo.imageAlt'))}" />`,
+  );
+  const locales = Object.keys(page.alternates)
+    .filter((lang) => lang !== page.lang)
+    .map(
+      (lang) =>
+        `<meta property="og:locale:alternate" content="${OG_LOCALE[lang as Page['lang']]}" />`,
+    );
+  const extra = [
+    `<meta property="og:locale" content="${OG_LOCALE[page.lang]}" />`,
+    ...locales,
+    ...hreflangLinks(page),
+    ...(page.jsonLd ? [jsonLdScript(page.jsonLd)] : []),
+  ];
   html = swap(html, /<\/head>/, `${extra.join('\n    ')}\n  </head>`);
   return swap(
     html,

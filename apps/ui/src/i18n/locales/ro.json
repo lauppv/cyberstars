@@ -1266,7 +1266,8 @@
     "almanacTitle": "Almanahul: povești din istoria informaticii | CyberStars",
     "almanacDescription": "Lecturi scurte despre oamenii, mașinile și ideile din spatele informaticii: legende, open source, internet, securitate, spațiu și AI.",
     "articleTitle": "{{title}} | Almanahul CyberStars",
-    "home": "Acasă"
+    "home": "Acasă",
+    "imageAlt": "CyberStars: învață să programezi gratis. Python, Java, C și Linux, direct în browser."
   },
   "notFound": {
     "title": "Pagina nu există",
