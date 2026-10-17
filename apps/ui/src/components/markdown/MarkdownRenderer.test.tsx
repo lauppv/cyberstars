@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MarkdownRenderer } from './MarkdownRenderer';
 
 describe('MarkdownRenderer', () => {
@@ -55,6 +55,26 @@ describe('MarkdownRenderer', () => {
     // StringIndexTable renders the characters as its own children.
     expect(container.textContent).toContain('h');
     expect(container.textContent).toContain('l');
+  });
+
+  it('renders a ```visual fence as the step-by-step player, loaded on demand', async () => {
+    const fence = JSON.stringify({
+      type: 'array',
+      values: [2, 1],
+      caption: 'Start',
+      steps: [{ compare: [0, 1], swap: true, caption: 'Swap 2 and 1' }],
+    });
+    render(<MarkdownRenderer content={'```visual\n' + fence + '\n```'} />);
+    expect(await screen.findByRole('group', { name: 'Step by step' })).toBeInTheDocument();
+    expect(screen.getByText('Start')).toBeInTheDocument();
+  });
+
+  it('shows a ```visual fence it cannot read as plain text', () => {
+    const { container } = render(
+      <MarkdownRenderer content={'```visual\n{ "type": "array" }\n```'} />,
+    );
+    expect(container.querySelector('code')!.textContent).toBe('{ "type": "array" }\n');
+    expect(screen.queryByRole('group')).toBeNull();
   });
 
   describe('strindex highlight', () => {
