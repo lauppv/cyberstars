@@ -150,15 +150,8 @@ Rezultat **8 3 10 1 6 14**
 
 Coada are loc pentru 100 de noduri, mult mai mult decât îi trebuie arborelui ăstuia. Iată-o după ce fiecare nod e scos și copiii lui puși înăuntru, partea de la **inceput** la **sfarsit**. Copiii intră mereu în spatele tuturor celor care așteaptă deja, așa că un nivel întreg iese din coadă înainte să înceapă următorul
 
-```text
-scos   afisat  coada dupa
-               [8]
-8      8       [3, 10]
-3      3       [10, 1, 6]
-10     10      [1, 6, 14]
-1      1       [6, 14]
-6      6       [14]
-14     14      []
+```visual
+{"use": "level-order-queue"}
 ```
 
 Cele două linii cu **if** țin copiii lipsă departe de coadă: când copilul e **NULL**, nu există niciun nod de scos mai târziu

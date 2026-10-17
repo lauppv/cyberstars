@@ -103,15 +103,8 @@ Output **8 3 10 1 6 14**
 
 Here is the queue after each node is taken out and its children put in. The children always join behind everything already waiting, so a whole level leaves the queue before the next one starts
 
-```text
-take   print   queue after
-               [8]
-8      8       [3, 10]
-3      3       [10, 1, 6]
-10     10      [1, 6, 14]
-1      1       [6, 14]
-6      6       [14]
-14     14      []
+```visual
+{"use": "level-order-queue"}
 ```
 
 The two **if** lines keep missing children out of the queue: there's no node to take out later when the child is **None**

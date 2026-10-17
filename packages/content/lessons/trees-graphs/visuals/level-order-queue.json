@@ -1,0 +1,117 @@
+{
+  "type": "tree",
+  "caption": "A queue lets the nodes out in the order they joined: first in, first out.",
+  "nodes": {
+    "0": 8,
+    "1": 3,
+    "2": 10,
+    "3": 1,
+    "4": 6,
+    "6": 14
+  },
+  "steps": [
+    {
+      "focus": [0],
+      "rows": [
+        {
+          "label": "queue",
+          "values": [8]
+        },
+        {
+          "label": "printed",
+          "values": []
+        }
+      ],
+      "caption": "Put the root in the queue"
+    },
+    {
+      "focus": [0],
+      "rows": [
+        {
+          "label": "queue",
+          "values": [3, 10]
+        },
+        {
+          "label": "printed",
+          "values": [8]
+        }
+      ],
+      "caption": "Take 8 from the front and print it. Its children, 3 and 10, join the back"
+    },
+    {
+      "focus": [1],
+      "rows": [
+        {
+          "label": "queue",
+          "values": [10, 1, 6]
+        },
+        {
+          "label": "printed",
+          "values": [8, 3]
+        }
+      ],
+      "caption": "Take 3 and print it. Its children, 1 and 6, join behind 10",
+      "done": [0]
+    },
+    {
+      "focus": [2],
+      "rows": [
+        {
+          "label": "queue",
+          "values": [1, 6, 14]
+        },
+        {
+          "label": "printed",
+          "values": [8, 3, 10]
+        }
+      ],
+      "caption": "Take 10 and print it. Its only child, 14, joins the back",
+      "done": [0, 1]
+    },
+    {
+      "focus": [3],
+      "rows": [
+        {
+          "label": "queue",
+          "values": [6, 14]
+        },
+        {
+          "label": "printed",
+          "values": [8, 3, 10, 1]
+        }
+      ],
+      "caption": "Take 1 and print it. It has no children, so nothing joins",
+      "done": [0, 1, 2]
+    },
+    {
+      "focus": [4],
+      "rows": [
+        {
+          "label": "queue",
+          "values": [14]
+        },
+        {
+          "label": "printed",
+          "values": [8, 3, 10, 1, 6]
+        }
+      ],
+      "caption": "Take 6 and print it. No children either",
+      "done": [0, 1, 2, 3]
+    },
+    {
+      "focus": [6],
+      "rows": [
+        {
+          "label": "queue",
+          "values": []
+        },
+        {
+          "label": "printed",
+          "values": [8, 3, 10, 1, 6, 14]
+        }
+      ],
+      "caption": "Take 14 and print it. The queue is empty, so the walk is done",
+      "done": [0, 1, 2, 3, 4]
+    }
+  ]
+}
