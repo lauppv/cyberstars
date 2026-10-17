@@ -1788,4 +1788,11 @@ export const lessons = [
     sortOrder: 5,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'bst-lca',
+    title: 'Medium · Lowest Common Ancestor in a Binary Search Tree',
+    sortOrder: 6,
+    hasCodeFile: true,
+  },
 ];
