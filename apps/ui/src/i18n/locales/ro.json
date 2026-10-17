@@ -27,12 +27,12 @@
   "admin": {
     "refresh": "Reîmprospătează",
     "refreshing": "Se reîmprospătează…",
-    "generatedAt": "Date la {{time}}",
+    "generatedAt": "Actualizat la {{time}}",
     "users": "Utilizatori",
     "totalUsers": "Total utilizatori",
     "active": "Activi (cu progres)",
     "new7": "Noi (7 zile)",
-    "new30": "Noi (30 zile)",
+    "new30": "Noi (30 de zile)",
     "roles": "Roluri",
     "progress": "Progres lecții",
     "totalCompletions": "Total completări",
@@ -92,7 +92,7 @@
     "countBrowser": "Numără-l",
     "stopCounting": "Nu-l mai număra",
     "placementTest": "Testul de nivel",
-    "placementHint": "Vizitele de guest la fiecare pas al testului de pe landing page. Trecut de o întrebare înseamnă că a apăsat Mai departe pe ea; de ultima, Trimite.",
+    "placementHint": "Vizitele fără cont la fiecare pas al testului de pe pagina principală. Trecut de o întrebare înseamnă că a apăsat Mai departe pe ea; de ultima, Trimite.",
     "placementOpened": "A deschis testul",
     "placementStarted": "A apăsat Începe testul",
     "placementQuestion": "A trecut de întrebarea {{n}}",
@@ -136,7 +136,7 @@
     "dailyBonus": "+{{pct}}%",
     "continueJourney": "Continuă-ți călătoria în {{course}} cu această lecție.",
     "algoChallengeToday": "Antrenează-ți mintea cu provocarea de azi.",
-    "completed": "Completată",
+    "completed": "Finalizată",
     "completedLessonToday": "Ai finalizat lecția de azi.",
     "completedAlgoToday": "Ai rezolvat provocarea de azi.",
     "review": "Revizuiește",
@@ -200,13 +200,13 @@
         "picture": "Editorul cu o buclă scurtă în Python și rezultatul ei."
       },
       "test": {
-        "title": "Îl rulezi pe teste",
+        "title": "Îl treci prin teste",
         "text": "Afli imediat dacă merge.",
         "picture": "Toate testele trec: primele șase bifate și încă 29, acceptat cu 35 din 35.",
         "more": "și încă {{count}}"
       },
       "level": {
-        "title": "Avansezi în nivel",
+        "title": "Urci de nivel",
         "text": "XP, niveluri și insigne, cu un cont gratuit.",
         "picture": "O serie de 12 zile pe harta activității, cu lecții făcute în multe zile din ultimele douăsprezece săptămâni.",
         "streak_one": "{{count}} zi la rând",
@@ -230,12 +230,12 @@
       "head": "cap",
       "value": "valoare",
       "next": "urmator",
-      "add": "adauga {{n}}",
+      "add": "adaugă {{n}}",
       "empty": "Lista e goală?",
       "first": "Da, cap e null, deci cap arată acum spre nodul nou {{n}}",
       "where": "Unde ajunge {{n}}?",
       "atEnd": "La final: urmator lui {{a}} arată acum spre nodul nou {{n}}",
-      "remove": "elimina {{n}}",
+      "remove": "elimină {{n}}",
       "which": "Ce săgeată duce la {{n}}?",
       "skip": "urmator lui {{a}}. Acum sare peste {{n}} și arată spre {{b}}",
       "gone": "Nimic nu mai arată spre {{n}}, deci a ieșit din listă"
@@ -304,7 +304,7 @@
     },
     "free": {
       "title": "Gratuit. Open source.",
-      "plan": "Niciun plan plătit",
+      "plan": "Fără plan plătit",
       "card": "Fără card"
     },
     "faq": {
@@ -392,7 +392,7 @@
   "notif": {
     "title": "Notificări",
     "empty": "Ești la zi.",
-    "markAllRead": "Marchează toate citite",
+    "markAllRead": "Marchează toate ca citite",
     "loadMore": "Încarcă mai multe",
     "someone": "Cineva",
     "forumReply_one": "{{name}} a răspuns la „{{title}}”",
@@ -419,8 +419,8 @@
       "java": "Programare orientată pe obiecte de la zero. După bazele limbajului, construiești programe din clase și obiecte, moștenire, polimorfism și interfețe, apoi colecții, cu trei proiecte mai mari la final.",
       "linux": "Un terminal adevărat, direct în browser. Lucrezi cu fișiere, cauți cu grep și find, legi comenzi cu pipe-uri, editezi text cu sed și awk, apoi permisiuni și procese.",
       "algo-python": "Probleme de Python de la ușor la greu: șiruri, liste și dicționare puse la treabă în palindroame, cifrul lui Cezar, Two Sum, sortare și o matrice parcursă în spirală.",
-      "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, generice și iteratori, plus căutare și sortare.",
-      "algo-c": "Probleme de C aproape de mașină: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
+      "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, tipuri generice și iteratori, plus căutare și sortare.",
+      "algo-c": "Probleme de C aproape de hardware: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
       "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele.",
       "trees-graphs": "Structurile din spatele folderelor, hărților și rețelelor, predate în Python, Java sau C: fiecare lecție există în toate trei și poți schimba limbajul la oricare dintre ele."
     },
@@ -440,8 +440,8 @@
   "algorithms": {
     "desc": {
       "algo-python": "Probleme de Python de la ușor la greu: șiruri, liste și dicționare puse la treabă în palindroame, cifrul lui Cezar, Two Sum, sortare și o matrice parcursă în spirală.",
-      "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, generice și iteratori, plus căutare și sortare.",
-      "algo-c": "Probleme de C aproape de mașină: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
+      "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, tipuri generice și iteratori, plus căutare și sortare.",
+      "algo-c": "Probleme de C aproape de hardware: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
       "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele."
     }
   },
@@ -522,10 +522,10 @@
     "logIn": "Autentifică-te",
     "strength": {
       "weak": "Slabă",
-      "medium": "Devine mai bună",
+      "medium": "Medie",
       "strong": "Parolă puternică!"
     },
-    "successForgot": "Dacă acel email există, a fost trimis un cod de resetare. Verifică-ți inboxul.",
+    "successForgot": "Dacă adresa există, ți-am trimis un cod de resetare. Verifică-ți emailul.",
     "successReset": "Parolă resetată! Acum te poți autentifica.",
     "serverError": "Eroare de server, încearcă mai târziu"
   },
@@ -563,7 +563,7 @@
     "bioPlaceholder": "Spune-le altora despre tine...",
     "status": "Status",
     "statusExpires": "(expiră în 24h)",
-    "statusPlaceholder": "Cu ce te ocupi?",
+    "statusPlaceholder": "La ce lucrezi acum?",
     "set": "Setează",
     "addEmoji": "Adaugă emoji",
     "lessonsDone": "Lecții terminate",
@@ -591,7 +591,7 @@
     "emailCode": "Cod de confirmare",
     "emailConfirm": "Confirmă emailul nou",
     "emailCancel": "Anulează",
-    "emailUpdated": "Email actualizat la {{email}}",
+    "emailUpdated": "Emailul a fost schimbat în {{email}}",
     "openSettings": "Setări"
   },
   "support": {
@@ -659,7 +659,7 @@
     "groups": {
       "Community": "Comunitate",
       "Help & Support": "Ajutor și suport",
-      "Show & Tell": "Arată și spune",
+      "Show & Tell": "Proiectele voastre",
       "Off-Topic": "Diverse"
     },
     "categories": {
@@ -673,7 +673,7 @@
       },
       "help-python": {
         "name": "Ajutor Python",
-        "desc": "Blocat la o lecție sau un proiect? Pune întrebări, împărtășește erori și deblochează-te."
+        "desc": "Blocat la o lecție sau un proiect? Pune întrebări, arată erorile și primește ajutor."
       },
       "help-java": {
         "name": "Ajutor Java",
@@ -681,7 +681,7 @@
       },
       "help-c": {
         "name": "Ajutor programare C",
-        "desc": "Pointeri, segfault-uri, malloc: artele întunecate. Adu output-ul gdb, pleacă cu răspunsuri."
+        "desc": "Pointeri, segfault-uri, malloc: artele întunecate. Adu ce afișează gdb și pleacă cu răspunsuri."
       },
       "showcase": {
         "name": "Arată-ți proiectul",
@@ -692,7 +692,7 @@
         "desc": "Puzzle-uri săptămânale, discuții de turneu, clasamente. Compară soluțiile după termenul limită."
       },
       "lounge": {
-        "name": "Lounge-ul",
+        "name": "Off-topic",
         "desc": "Vorbește despre orice: jocuri, școală, visul ciudat pe care l-ai avut. Fii amabil."
       }
     },
@@ -714,7 +714,7 @@
       "iconPlaceholder": "💬",
       "color": "Culoare",
       "group": "Grup",
-      "groupPlaceholder": "ex. Ajutor & Suport",
+      "groupPlaceholder": "ex. Ajutor și suport",
       "cancel": "Anulează",
       "create": "Creează",
       "save": "Salvează",
@@ -742,7 +742,7 @@
     "posting": "Se postează...",
     "createThread": "Creează discuția",
     "noThreads": "Încă nu există discuții. Fii primul care postează!",
-    "solved": "✓ Rezolvat",
+    "solved": "✓ Rezolvată",
     "loadingThread": "Se încarcă discuția...",
     "threadNotFound": "Discuția nu a fost găsită.",
     "startedBy": "începută de",
@@ -763,8 +763,8 @@
     "edit": "✎ Editează",
     "confirmDeleteThread": "Ștergi întreaga discuție?",
     "confirmDeletePost": "Ștergi această postare?",
-    "pinnedBadge": "Fixat",
-    "lockedBadge": "Blocat",
+    "pinnedBadge": "Fixată",
+    "lockedBadge": "Blocată",
     "deleteThread": "Șterge discuția",
     "delete": "Șterge",
     "actionError": "Ceva n-a mers. Încearcă din nou.",
@@ -829,7 +829,7 @@
       "Medium": "Mediu",
       "Hard": "Greu"
     },
-    "courseMilestone": "Etapă de curs!",
+    "courseMilestone": "Curs terminat!",
     "lessonComplete": "Lecție finalizată!",
     "tabLesson": "Lecție",
     "tabTerminal": "Terminal",
@@ -855,8 +855,8 @@
     "devModeOff": "Mod dev: oprit",
     "devModeOn": "Mod dev: pornit",
     "devModeReset": "Pune panourile înapoi la mărimile de la început",
-    "solutionConfirmTitle": "Arăt soluția?",
-    "solutionConfirmBody": "Încearcă întâi să rezolvi singur. Înveți mai mult din efort. Dezvăluirea soluției consumă una dintre dezvăluirile tale zilnice.",
+    "solutionConfirmTitle": "Vezi soluția?",
+    "solutionConfirmBody": "Încearcă întâi să rezolvi singur. Înveți mai mult din efort. Fiecare soluție pe care o vezi se scade din cele pe care le poți vedea într-o zi.",
     "solutionConfirmCta": "Dezvăluie soluția",
     "solutionTitle": "Soluția",
     "compare": "Compară",
@@ -899,7 +899,7 @@
     "unlimited": "Nelimitat",
     "resetsAt": "Se reîncarcă {{when}}",
     "solutionError": "Nu am putut dezvălui soluția acum.",
-    "solutionDepleted": "Ai folosit toate dezvăluirile de soluții pe azi. Revino după reînnoire."
+    "solutionDepleted": "Ai folosit toate soluțiile pe care le poți vedea azi. Revino după ce se reîncarcă."
   },
   "laniakea": {
     "introTitle": "Bun venit la bord, căpitane.",
@@ -924,8 +924,8 @@
     "position": "Poziție",
     "nearest": "Cel mai apropiat",
     "engine": "Motor",
-    "course": "Curs",
-    "courseOpen": "Liber",
+    "course": "Direcție",
+    "courseOpen": "liberă",
     "menu": "Meniu",
     "paused": "Pauză",
     "pausedSubPre": "Ia o pauză. Apasă oriunde sau tasta",
@@ -948,7 +948,7 @@
     "enterToRun": "Enter pentru a rula"
   },
   "gamification": {
-    "firstSteps": "{{course}} Primii pași",
+    "firstSteps": "Primii pași în {{course}}",
     "firstStepsDesc": "Finalizează prima lecție de {{course}}",
     "tier": "{{course}} {{tier}}",
     "bronze": "Bronz",
@@ -961,7 +961,7 @@
   },
   "level": {
     "label": "Nivel {{n}}",
-    "short": "Niv {{n}}",
+    "short": "Niv. {{n}}",
     "levelUp": "Nivel nou! {{title}}",
     "title": {
       "1": "Cadet",
@@ -989,10 +989,10 @@
     "passed": "Trecut",
     "failed": "Picat",
     "timeout": "Programul tău a durat prea mult (limită 10 s)",
-    "runtimeError": "Programul tău a crăpat",
-    "input": "Input",
-    "expected": "Output așteptat",
-    "actual": "Outputul tău",
+    "runtimeError": "Programul s-a oprit cu o eroare",
+    "input": "Date de intrare",
+    "expected": "Rezultat așteptat",
+    "actual": "Rezultatul tău",
     "passedCases": "Teste trecute ({{count}})",
     "close": "Închide",
     "structure": {
@@ -1086,7 +1086,7 @@
       "when": "Când"
     },
     "loadTest": "test de încărcare",
-    "loadTooLarge": "Inputul și output-ul lui sunt prea mari ca să le arătăm aici."
+    "loadTooLarge": "Datele de intrare și rezultatul lui sunt prea mari ca să le arătăm aici."
   },
   "terminalTests": {
     "passedTitle": "Misiune îndeplinită!",
@@ -1130,9 +1130,9 @@
   "publicProfile": {
     "notFound": "Acest explorator nu a putut fi găsit.",
     "error": "Nu am putut încărca acest profil.",
-    "rank": "Loc #{{n}}",
+    "rank": "Locul {{n}}",
     "sendMessage": "Trimite mesaj",
-    "connect": "Conectează-te",
+    "connect": "Adaugă conexiune",
     "requestSent": "Cerere trimisă",
     "respondRequest": "Răspunde la cerere",
     "connected": "Conectat",
@@ -1160,7 +1160,7 @@
     "showBio": "Bio și status",
     "showBioHint": "Textul bio și statusul curent.",
     "showStats": "Statistici",
-    "showStatsHint": "Lecții finalizate, cursuri active și streak.",
+    "showStatsHint": "Lecții finalizate, cursuri active și zile la rând.",
     "showProgress": "Nivel, XP și insigne",
     "showProgressHint": "Nivelul, punctele de experiență și insignele câștigate.",
     "showActivity": "Hartă de activitate",
@@ -1224,9 +1224,9 @@
     },
     "tests": {
       "title": "Verifică-l cu testele",
-      "body": "Când output-ul arată ca în misiune, apasă Rulează testele. Lecția e gata când trec toate testele."
+      "body": "Când rezultatul arată ca în misiune, apasă Rulează testele. Lecția e gata când trec toate testele."
     },
-    "testsFailed": "Încă nu. Compară output-ul tău cu cel așteptat linie cu linie, corectează codul și rulează din nou testele.",
+    "testsFailed": "Încă nu. Compară rezultatul tău cu cel așteptat linie cu linie, corectează codul și rulează din nou testele.",
     "done": {
       "title": "Lecție terminată",
       "body": "Ai terminat prima lecție și ai primit primele XP. Acum toată platforma e deschisă pentru tine."
@@ -1238,7 +1238,7 @@
   },
   "seo": {
     "landingTitle": "CyberStars: învață programare gratis, direct în browser",
-    "landingDescription": "Lecții scurte de Python, Java, C și Linux. Scrii cod în browser, îl rulezi pe teste și afli pe loc dacă merge. Gratuit și open source.",
+    "landingDescription": "Lecții scurte de Python, Java, C și Linux. Scrii cod în browser, îl treci prin teste și afli pe loc dacă merge. Gratuit și open source.",
     "coursesTitle": "Cursuri gratuite de programare în Python, Java, C și Linux | CyberStars",
     "coursesDescription": "Alege un curs și începe să scrii cod în browser: lecții scurte de Python, Java, C și Linux, fiecare cu teste care îți spun când codul tău merge.",
     "courseTitle": "Învață {{course}} gratis, direct în browser | CyberStars",
@@ -1285,7 +1285,7 @@
     },
     "cheer": {
       "done": "Toate testele trec. Bravo!",
-      "alone": "Merge! Ai ajuns singur acolo.",
+      "alone": "Merge! Ai reușit singur.",
       "yours": "Rezolvat! Ideea asta e acum a ta.",
       "course": "Ai terminat tot cursul de {{course}}. Bravo!",
       "back": "Bine ai revenit, {{name}}! Mă bucur să te revăd."
@@ -1319,18 +1319,18 @@
       "threads": "Când are nevoie un program de thread-uri?",
       "finish": "Ajută-mă să termin {{lesson}}",
       "next": "Ce învăț în {{lesson}}?",
-      "quiz": "Verifică-mă din {{lesson}}"
+      "quiz": "Pune-mi întrebări din {{lesson}}"
     },
     "placeholder": "Întreabă tutorul",
     "send": "Trimite",
     "earlier": "Arată mesajele anterioare",
     "loadFailed": "Mesajele anterioare nu s-au putut încărca. Închide panoul și deschide-l din nou ca să reîncerci.",
-    "cut": "Răspunsul a fost tăiat.",
+    "cut": "Răspunsul s-a întrerupt.",
     "blocked": "Tutorul nu te poate ajuta cu asta. Încearcă să întrebi altfel.",
     "blockedMidway": "Tutorul a oprit răspunsul aici. Încearcă să întrebi altfel.",
     "errorFailed": "Tutorul nu a putut răspunde acum.",
     "errorBusy": "Prea multe mesaje într-un timp scurt. Așteaptă un minut, apoi încearcă din nou.",
-    "errorLimit": "Netrimis: ți-ai folosit mesajele deocamdată.",
+    "errorLimit": "Mesajul nu s-a trimis: ți-ai folosit mesajele deocamdată.",
     "tryAgain": "Încearcă din nou",
     "nearlyUsed": "Ai folosit 90% din mesajele către tutore din sesiunea asta. Se reîncarcă la {{time}}.",
     "limitReached": "Ți-ai folosit mesajele deocamdată. Poți vorbi din nou cu tutorele la {{time}}.",
@@ -1426,7 +1426,7 @@
     }
   },
   "interests": {
-    "title": "Ce vrei să învățăm?",
+    "title": "Ce vrei să înveți?",
     "intro": "Alege una sau mai multe. Îți propun lecții și întrebări potrivite, iar orice curs rămâne deschis.",
     "names": {
       "python": "Python",
