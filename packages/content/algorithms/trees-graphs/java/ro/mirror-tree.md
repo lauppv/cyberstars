@@ -34,6 +34,16 @@ Ieșire:
 8 11 4 15 9 null 2
 ```
 
+În oglindă `11` vine înaintea lui `4`, `15` înaintea lui `9`, iar `2` trece în dreapta lui `4`:
+
+```
+        8
+      /   \
+    11     4
+   /  \     \
+  15   9     2
+```
+
 ```
 Intrare:
 5 null 7 null 9
