@@ -55,6 +55,31 @@ Hai să urmărim codul pas cu pas pentru **[5, 3, 8, 1, 2]**
 
 **i = 3**: min_index pornește de la 3 (valoarea 5). Bucla interioară nu găsește nimic mai mic, min_index rămâne 3. Interschimbă cu el însuși → **[1, 2, 3, 5, 8]**
 
+```visual
+{
+  "type": "array",
+  "values": [5, 3, 8, 1, 2],
+  "caption": "i marchează poziția de completat. j parcurge restul listei, iar min_index ține minte unde este cel mai mic număr văzut până acum. Când j termină, acel număr se mută pe poziția i.",
+  "markers": ["i = {i}", "j = {i}", "min_index = {i}"],
+  "steps": [
+    {"title": "Pasul 1", "at": [0, 1, 0], "compare": [1, 0], "ask": "Este 3 < 5?", "caption": "Da, deci min_index = 1", "move": [0, 1, 1]},
+    {"at": [0, 2, 1], "compare": [2, 1], "ask": "Este 8 < 3?", "caption": "Nu, min_index rămâne 1"},
+    {"at": [0, 3, 1], "compare": [3, 1], "ask": "Este 1 < 3?", "caption": "Da, deci min_index = 3", "move": [0, 3, 3]},
+    {"at": [0, 4, 3], "compare": [4, 3], "ask": "Este 2 < 1?", "caption": "Nu, min_index rămâne 3"},
+    {"at": [0, null, 3], "compare": [0, 3], "swap": true, "done": [0], "caption": "Cel mai mic este 1, la indexul 3. Își schimbă locul cu poziția 0 → [1, 3, 8, 5, 2]"},
+    {"title": "Pasul 2", "at": [1, 2, 1], "compare": [2, 1], "ask": "Este 8 < 3?", "caption": "Nu, min_index rămâne 1"},
+    {"at": [1, 3, 1], "compare": [3, 1], "ask": "Este 5 < 3?", "caption": "Nu, min_index rămâne 1"},
+    {"at": [1, 4, 1], "compare": [4, 1], "ask": "Este 2 < 3?", "caption": "Da, deci min_index = 4", "move": [1, 4, 4]},
+    {"at": [1, null, 4], "compare": [1, 4], "swap": true, "done": [0, 1], "caption": "Cel mai mic de la indexul 1 încolo este 2, la indexul 4. Își schimbă locul cu poziția 1 → [1, 2, 8, 5, 3]"},
+    {"title": "Pasul 3", "at": [2, 3, 2], "compare": [3, 2], "ask": "Este 5 < 8?", "caption": "Da, deci min_index = 3", "move": [2, 3, 3]},
+    {"at": [2, 4, 3], "compare": [4, 3], "ask": "Este 3 < 5?", "caption": "Da, deci min_index = 4", "move": [2, 4, 4]},
+    {"at": [2, null, 4], "compare": [2, 4], "swap": true, "done": [0, 1, 2], "caption": "Cel mai mic de la indexul 2 încolo este 3, la indexul 4. Își schimbă locul cu poziția 2 → [1, 2, 3, 5, 8]"},
+    {"title": "Pasul 4", "at": [3, 4, 3], "compare": [4, 3], "ask": "Este 8 < 5?", "caption": "Nu, min_index rămâne 3"},
+    {"at": [3, null, 3], "done": [0, 1, 2, 3, 4], "caption": "5 este deja pe poziția 3, deci se interschimbă cu el însuși și nimic nu se mișcă. Ultimul număr, 8, e și el la locul lui. Gata!"}
+  ]
+}
+```
+
 ---
 
 **Este Selection Sort mai rapid decât Bubble Sort?** Fac cam același număr de **comparații** (n × n). Dar Selection Sort face mai puține **interschimbări**, ceea ce poate conta în practică. Totuși, ambele sunt lente pentru liste mari. **sorted()** din lumea reală este de sute de ori mai rapid

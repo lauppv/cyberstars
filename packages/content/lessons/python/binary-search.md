@@ -65,6 +65,21 @@ Let's trace through **binary_search([1,3,5,7,9,11,13,15,17,19], 13)**
 - left=5, right=6, mid=5 → numbers[5]=11 < 13 → left=6
 - left=6, right=6, mid=6 → numbers[6]=13 == 13 → **found at index 6!**
 
+```visual
+{
+  "type": "array",
+  "values": [1, 3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "caption": "The list is sorted. left and right mark the part still searched, and mid is its middle. When the middle number isn't 13, the half where 13 can't be fades, and we search the other half.",
+  "markers": ["left = {i}", "mid = {i}", "right = {i}"],
+  "steps": [
+    {"title": "Step 1", "at": [0, 4, 9], "compare": [4], "ask": "mid = (0 + 9) // 2 = 4, and numbers[4] is 9. Is 9 < 13?", "caption": "Yes, so 13 is to the right of mid: left = mid + 1 = 5", "move": [5, null, 9], "range": [5, 9]},
+    {"title": "Step 2", "at": [5, 7, 9], "compare": [7], "ask": "mid = (5 + 9) // 2 = 7, and numbers[7] is 15. Is 15 < 13?", "caption": "No, 15 > 13, so 13 is to the left of mid: right = mid - 1 = 6", "move": [5, null, 6], "range": [5, 6]},
+    {"title": "Step 3", "at": [5, 5, 6], "compare": [5], "ask": "mid = (5 + 6) // 2 = 5, and numbers[5] is 11. Is 11 < 13?", "caption": "Yes, so 13 is to the right of mid: left = mid + 1 = 6", "move": [6, null, 6], "range": [6, 6]},
+    {"title": "Step 4", "at": [6, 6, 6], "compare": [6], "ask": "mid = (6 + 6) // 2 = 6, and numbers[6] is 13. Is 13 equal to 13?", "caption": "Yes! Found at index 6, after checking 4 numbers instead of 10", "done": [6]}
+  ]
+}
+```
+
 ---
 
 We can also write it **recursively**

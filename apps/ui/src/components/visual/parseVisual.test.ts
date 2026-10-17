@@ -44,6 +44,26 @@ describe('parseVisual', () => {
     expect(parseVisual(visual())).not.toHaveProperty('pointers');
   });
 
+  it('reads markers, their places, a range, done positions and a compare of one box', () => {
+    const step = {
+      compare: [1],
+      ask: 'Is 3 < 5?',
+      at: [0, 1, 2],
+      move: [2, null, 2],
+      range: [2, 2],
+      done: [2],
+      caption: 'Yes',
+    };
+    expect(parseArray(visual({ markers: ['left', 'mid', 'right'], steps: [step] }))).toEqual({
+      type: 'array',
+      values: [5, 3, 8],
+      caption: 'Start',
+      markers: ['left', 'mid', 'right'],
+      steps: [step],
+    });
+    expect(parseVisual(visual())).not.toHaveProperty('markers');
+  });
+
   it('takes strings as values', () => {
     expect(parseArray(visual({ values: ['a', 'b', 'c'] }))?.values).toEqual(['a', 'b', 'c']);
   });
@@ -63,7 +83,23 @@ describe('parseVisual', () => {
     ['a step without a caption', visual({ steps: [{ compare: [0, 1] }] })],
     ['a compare out of range', visual({ steps: [{ compare: [2, 3], caption: 'x' }] })],
     ['a compare of one box with itself', visual({ steps: [{ compare: [1, 1], caption: 'x' }] })],
-    ['a compare of one box', visual({ steps: [{ compare: [1], caption: 'x' }] })],
+    ['a compare of three boxes', visual({ steps: [{ compare: [0, 1, 2], caption: 'x' }] })],
+    ['a compare of no box', visual({ steps: [{ compare: [], caption: 'x' }] })],
+    ['a swap of one box', visual({ steps: [{ compare: [1], swap: true, caption: 'x' }] })],
+    ['markers that are no list', visual({ markers: 'left' })],
+    ['no markers in the list', visual({ markers: [] })],
+    ['a blank marker', visual({ markers: ['left', ' '] })],
+    ['places without markers', visual({ steps: [{ at: [0], caption: 'x' }] })],
+    [
+      'a place for each marker missing',
+      visual({ markers: ['left', 'right'], steps: [{ at: [0], caption: 'x' }] }),
+    ],
+    ['a marker out of range', visual({ markers: ['left'], steps: [{ move: [3], caption: 'x' }] })],
+    ['places that are no list', visual({ markers: ['left'], steps: [{ at: 0, caption: 'x' }] })],
+    ['a range of one end', visual({ steps: [{ range: [0], caption: 'x' }] })],
+    ['a range out of the array', visual({ steps: [{ range: [0, 3], caption: 'x' }] })],
+    ['done positions that are no list', visual({ steps: [{ done: 1, caption: 'x' }] })],
+    ['a done position out of the array', visual({ steps: [{ done: [3], caption: 'x' }] })],
     ['a compare that is no list', visual({ steps: [{ compare: '0 1', caption: 'x' }] })],
     ['one pointer label', visual({ pointers: ['j'] })],
     ['a blank pointer label', visual({ pointers: ['j', ' '] })],
