@@ -28,6 +28,25 @@ După trecerea 1, **cel mai mare număr (8)** a „urcat ca o bulă" la sfârși
 
 **Gata!** Lista este sortată
 
+```visual
+{
+  "type": "array",
+  "values": [5, 3, 8, 1, 2],
+  "caption": "Lista înainte de sortare: [5, 3, 8, 1, 2]",
+  "steps": [
+    {"compare": [0, 1], "swap": true, "caption": "Trecerea 1: compară 5 și 3 → 5 > 3, interschimbă → [3, 5, 8, 1, 2]"},
+    {"compare": [1, 2], "caption": "Trecerea 1: compară 5 și 8 → 5 < 8, ok → [3, 5, 8, 1, 2]"},
+    {"compare": [2, 3], "swap": true, "caption": "Trecerea 1: compară 8 și 1 → 8 > 1, interschimbă → [3, 5, 1, 8, 2]"},
+    {"compare": [3, 4], "swap": true, "sorted": 4, "caption": "Trecerea 1: compară 8 și 2 → 8 > 2, interschimbă → [3, 5, 1, 2, 8]. Cel mai mare număr, 8, a urcat ca o bulă la sfârșit"},
+    {"compare": [0, 1], "caption": "Trecerea 2: compară 3 și 5 → 3 < 5, ok"},
+    {"compare": [1, 2], "swap": true, "caption": "Trecerea 2: compară 5 și 1 → 5 > 1, interschimbă → [3, 1, 5, 2, 8]"},
+    {"compare": [2, 3], "swap": true, "sorted": 3, "caption": "Trecerea 2: compară 5 și 2 → 5 > 2, interschimbă → [3, 1, 2, 5, 8]. Și 5 e la locul lui"},
+    {"compare": [0, 1], "swap": true, "caption": "Trecerea 3: compară 3 și 1 → 3 > 1, interschimbă → [1, 3, 2, 5, 8]"},
+    {"compare": [1, 2], "swap": true, "sorted": 0, "caption": "Trecerea 3: compară 3 și 2 → 3 > 2, interschimbă → [1, 2, 3, 5, 8]. Gata! Lista este sortată"}
+  ]
+}
+```
+
 ---
 
 În cod
