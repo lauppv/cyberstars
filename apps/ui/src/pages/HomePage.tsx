@@ -10,7 +10,7 @@ import { bucketByLocalDay } from '../components/gamification/heatmap-utils';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import type { Course } from '@cyberstars/shared/lesson';
-import { courseMeta } from '../constants/courses';
+import { courseLabel, courseMeta } from '../constants/courses';
 import {
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
@@ -39,19 +39,16 @@ function extractActivityCounts(
 
 const TODAY_SEED = Math.floor(Date.now() / 86400000);
 
-const TAG_COLORS: Record<string, string> = {
-  'OPEN SOURCE': '#00D68F',
-  LEGENDS: '#a855f7',
-  HARDWARE: '#FFAA00',
-  HISTORY: '#3b82f6',
-  INTERNET: '#06b6d4',
-  SECURITY: '#ef4444',
-  'AI & FUTURE': '#8b5cf6',
-  SPACE: '#6366f1',
-  TOOLS: '#f59e0b',
-  LANGUAGES: '#10b981',
-  PLATFORMS: '#ec4899',
-  PROTOCOLS: '#14b8a6',
+// By an article's category, the same in both languages; its tag is translated
+const CAT_COLORS: Record<string, string> = {
+  oss: '#00D68F',
+  legends: '#a855f7',
+  hardware: '#FFAA00',
+  history: '#3b82f6',
+  internet: '#06b6d4',
+  security: '#ef4444',
+  ai: '#8b5cf6',
+  space: '#6366f1',
 };
 
 function seededPick<T>(items: T[], count: number, seed: number): T[] {
@@ -145,7 +142,7 @@ export function HomePage() {
         courseKey: pick.courseKey,
         courseTitle: course?.title ?? pick.courseKey,
         slug: pick.slug,
-        title: pick.title,
+        title: lesson?.title ?? pick.title,
         completed,
         xp,
       };
@@ -242,7 +239,6 @@ export function HomePage() {
                       </h4>
                       <div className="flex flex-col gap-1.5">
                         {recentLessons.slice(1, 4).map((l, i) => {
-                          const meta = courseMeta(l.courseKey);
                           return (
                             <button
                               key={i}
@@ -252,7 +248,8 @@ export function HomePage() {
                               <div className="flex-1 min-w-0">
                                 <div className="text-[12px] font-semibold truncate">{l.title}</div>
                                 <div className="text-[10px] text-[var(--text3)]">
-                                  {meta.label} · {formatTimeAgo(l.lastAccessedAt, t)}
+                                  {courseLabel(l.courseKey, t)} ·{' '}
+                                  {formatTimeAgo(l.lastAccessedAt, t)}
                                 </div>
                               </div>
                             </button>
@@ -328,7 +325,7 @@ export function HomePage() {
                         />
                       );
                     }
-                    const color = TAG_COLORS[a.tag ?? ''] ?? '#6C5CE7';
+                    const color = CAT_COLORS[a.cat] ?? '#6C5CE7';
                     return (
                       <button
                         key={i}
@@ -514,7 +511,7 @@ function CourseMilestones({
               className="flex items-center gap-3 text-left cursor-pointer hover:opacity-80 transition"
             >
               <div className="flex-1 min-w-0">
-                <div className="text-[13px] font-semibold">{meta.label}</div>
+                <div className="text-[13px] font-semibold">{courseLabel(c.key, t)}</div>
                 <div className="text-[11px] text-[var(--text2)] mb-1.5">
                   <Trans
                     i18nKey="home.lessonsRemaining"
@@ -546,7 +543,6 @@ function CourseMilestones({
           );
         })}
         {notStarted.map((c) => {
-          const meta = courseMeta(c.key);
           return (
             <button
               key={c.key}
@@ -554,7 +550,7 @@ function CourseMilestones({
               className="flex items-center gap-3 opacity-60 text-left cursor-pointer hover:opacity-80 transition"
             >
               <div className="flex-1 min-w-0">
-                <div className="text-[13px] font-semibold">{meta.label}</div>
+                <div className="text-[13px] font-semibold">{courseLabel(c.key, t)}</div>
                 <div className="text-[11px] text-[var(--text2)] mb-1.5">
                   {t('home.notStarted', { count: c.lessons.length })}
                 </div>

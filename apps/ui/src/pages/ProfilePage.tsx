@@ -107,7 +107,7 @@ export function ProfilePage() {
       await profileService.uploadAvatar(file);
       refreshUser();
     } catch (err) {
-      setUploadError(err instanceof Error ? err.message : t('profile.uploadFailed'));
+      setUploadError(err instanceof Error && err.message ? err.message : t('profile.uploadFailed'));
     }
   };
 

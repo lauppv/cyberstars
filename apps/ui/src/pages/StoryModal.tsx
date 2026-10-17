@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { AlmanacArticle } from '@cyberstars/shared/almanac';
 import './AlmanacPage.css';
 
 export function StoryModal({ story, onClose }: { story: AlmanacArticle; onClose: () => void }) {
+  const { t } = useTranslation();
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -18,7 +20,7 @@ export function StoryModal({ story, onClose }: { story: AlmanacArticle; onClose:
   return (
     <div className="story-overlay" onMouseDown={onClose}>
       <div className="story-modal" onMouseDown={(e) => e.stopPropagation()}>
-        <button className="story-close" onClick={onClose}>
+        <button className="story-close" onClick={onClose} aria-label={t('common.close')}>
           ✕
         </button>
         <div className="story-modal-art">

@@ -28,6 +28,8 @@ export const forgotPasswordSchema = z.object({
   email: z
     .email('Please enter a valid email address')
     .max(255, 'Email must be at most 255 characters'),
+  // the page's language, which the email is written in
+  lang: z.enum(['en', 'ro']).optional(),
 });
 
 export const resetPasswordSchema = z.object({

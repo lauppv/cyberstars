@@ -153,3 +153,39 @@ describe('lessonService cache', () => {
     expect(fetchMock).toHaveBeenCalledWith('/curriculum.json');
   });
 });
+
+describe('localizeCurriculum', () => {
+  const courses = [
+    {
+      key: 'algo-python',
+      title: 'Python Algorithms',
+      description: '',
+      lessons: [
+        { slug: 'two-sum', title: 'Medium · Two Sum', titleRo: 'Medium · Two Sum', sortOrder: 1 },
+        {
+          slug: 'caesar-cipher',
+          title: 'Medium · Caesar Cipher',
+          titleRo: 'Medium · Cifrul lui Cezar',
+          sortOrder: 2,
+        },
+        { slug: 'fibonacci', title: 'Medium · Fibonacci', sortOrder: 3 },
+      ],
+    },
+  ];
+
+  it('names courses and lessons in Romanian, English where a title has no translation', () => {
+    const [course] = lessonService.localizeCurriculum(courses, 'ro');
+    expect(course.title).toBe('Algoritmi Python');
+    expect(course.lessons.map((l) => l.title)).toEqual([
+      'Medium · Two Sum',
+      'Medium · Cifrul lui Cezar',
+      'Medium · Fibonacci',
+    ]);
+  });
+
+  it('keeps English titles on an English page', () => {
+    const [course] = lessonService.localizeCurriculum(courses, 'en');
+    expect(course.title).toBe('Python Algorithms');
+    expect(course.lessons[1].title).toBe('Medium · Caesar Cipher');
+  });
+});

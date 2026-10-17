@@ -63,7 +63,7 @@ describe('useTerminalSession', () => {
     const { result } = renderHook(() => useTerminalSession('linux', 'ls-basics'));
     await waitFor(() =>
       expect(result.current.lines).toEqual([
-        { type: 'system', text: 'Failed to start session: docker down' },
+        { type: 'system', text: "Couldn't start the terminal: docker down" },
       ]),
     );
   });
@@ -73,7 +73,10 @@ describe('useTerminalSession', () => {
     const { result } = renderHook(() => useTerminalSession('linux', 'ls-basics'));
     await waitFor(() =>
       expect(result.current.lines).toEqual([
-        { type: 'system', text: 'Failed to start session: unknown error' },
+        {
+          type: 'system',
+          text: "Couldn't start the terminal: Something went wrong. Please try again.",
+        },
       ]),
     );
   });
@@ -123,7 +126,10 @@ describe('useTerminalSession', () => {
     await act(async () => {
       await result.current.execute('bad');
     });
-    expect(result.current.lines).toContainEqual({ type: 'output', text: 'Error' });
+    expect(result.current.lines).toContainEqual({
+      type: 'output',
+      text: 'Something went wrong. Please try again.',
+    });
   });
 
   it('ignores execute while another command is running', async () => {

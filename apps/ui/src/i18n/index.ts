@@ -45,7 +45,15 @@ i18n.use(initReactI18next).init({
   interpolation: { escapeValue: false },
 });
 
+// The page says which language it is in, for screen readers and browsers: an
+// app-only page arrives in the English shell even under /ro
+function markDocument(lng: string): void {
+  if (typeof document !== 'undefined') document.documentElement.lang = lng;
+}
+markDocument(i18n.language);
+
 i18n.on('languageChanged', (lng) => {
+  markDocument(lng);
   try {
     localStorage.setItem(STORAGE_KEY, lng);
   } catch {

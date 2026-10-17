@@ -554,7 +554,7 @@ function runTool(
   const args = call.args ?? {};
   switch (call.name) {
     case 'search_lessons':
-      return { results: searchLessons(String(args.query ?? '')) };
+      return { results: searchLessons(String(args.query ?? ''), lang) };
     case 'read_lesson': {
       const lesson = readLesson(String(args.course ?? ''), String(args.slug ?? ''), lang);
       return lesson ? { ...lesson } : { error: 'No such lesson' };

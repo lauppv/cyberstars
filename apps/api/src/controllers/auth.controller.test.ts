@@ -126,7 +126,7 @@ describe('forgotPassword', () => {
     const res = mockRes();
     const next = mockNext();
     await forgotPassword(req, res, next);
-    expect(mockForgotPassword).toHaveBeenCalledWith('test@test.com');
+    expect(mockForgotPassword).toHaveBeenCalledWith('test@test.com', 'en');
     expect(res.json).toHaveBeenCalledWith({
       message: 'If that email exists, a reset code was sent',
     });

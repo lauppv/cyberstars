@@ -16,7 +16,7 @@ function timeAgo(iso: string): string {
   if (hrs < 24) return i18next.t('forum.time.hourAgo', { count: hrs });
   const days = Math.floor(hrs / 24);
   if (days < 30) return i18next.t('forum.time.dayAgo', { count: days });
-  return new Date(iso).toLocaleDateString();
+  return new Date(iso).toLocaleDateString(i18next.language);
 }
 
 const ICONS: Record<NotificationType, string> = {

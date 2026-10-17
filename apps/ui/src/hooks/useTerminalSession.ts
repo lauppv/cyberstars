@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import {
   createTerminalSession,
   execTerminalCommand,
@@ -47,7 +48,9 @@ export function useTerminalSession(
       setLines([
         {
           type: 'system',
-          text: `Failed to start session: ${e instanceof Error ? e.message : 'unknown error'}`,
+          text: i18next.t('terminal.startFailed', {
+            reason: e instanceof Error ? e.message : i18next.t('common.somethingWrong'),
+          }),
         },
       ]);
     }
@@ -80,7 +83,10 @@ export function useTerminalSession(
       } catch (e: unknown) {
         setLines((prev) => [
           ...prev,
-          { type: 'output', text: e instanceof Error ? e.message : 'Error' },
+          {
+            type: 'output',
+            text: e instanceof Error ? e.message : i18next.t('common.somethingWrong'),
+          },
         ]);
       }
       setIsExecuting(false);

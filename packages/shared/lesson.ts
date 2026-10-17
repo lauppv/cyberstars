@@ -6,6 +6,8 @@ export interface LessonContent {
 export interface LessonMeta {
   slug: string;
   title: string;
+  /** The title in Romanian, when it has one (packages/content/curriculum-ro.ts). */
+  titleRo?: string;
   sortOrder: number;
   /** Present when the lesson ships a <slug>-tests.json validated by the server judge. */
   hasTests?: boolean;

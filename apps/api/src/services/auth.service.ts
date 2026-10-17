@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { config } from '../config/index.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as emailService from './email.service.js';
+import type { EmailLang } from './email.service.js';
 import type { TokenPayload, AuthenticatedUser } from '@cyberstars/shared/auth';
 import type { Interest } from '@cyberstars/shared/interests';
 import { isCodeLanguage } from '@cyberstars/shared/constants';
@@ -91,7 +92,7 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
   };
 }
 
-export async function forgotPassword(email: string): Promise<void> {
+export async function forgotPassword(email: string, lang: EmailLang = 'en'): Promise<void> {
   const code = crypto.randomInt(100_000, 999_999).toString();
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
   const found = await userRepo.setResetCode(email, code, expiresAt);
@@ -99,7 +100,7 @@ export async function forgotPassword(email: string): Promise<void> {
   // Send outside the request path: keeps response timing for known vs unknown
   // emails close (no awaited email round-trip), and a mail-provider failure no
   // longer 500s the request or strands the reset code already stored in the DB.
-  void emailService.sendResetCode(email, code).catch((err) => {
+  void emailService.sendResetCode(email, code, lang).catch((err) => {
     console.error('[forgot-password] failed to send reset code:', err);
   });
 }

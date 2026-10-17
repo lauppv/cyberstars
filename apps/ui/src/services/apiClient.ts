@@ -1,3 +1,5 @@
+import { localizeServerMessage } from '../i18n/serverMessages';
+
 const API_BASE = import.meta.env.VITE_PROD_API_URL || '';
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
@@ -30,12 +32,14 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
   return res.text() as Promise<T>;
 }
 
+// `message` is what the page shows, in its language; `serverMessage` what the
+// server said, for code that tells one failure from another
 export class ApiClientError extends Error {
   constructor(
     public status: number,
-    message: string,
+    public serverMessage: string,
   ) {
-    super(message);
+    super(localizeServerMessage(serverMessage));
     this.name = 'ApiClientError';
   }
 }

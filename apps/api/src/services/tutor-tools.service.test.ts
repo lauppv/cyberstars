@@ -49,6 +49,14 @@ describe('readLesson', () => {
     expect(ro!.statement).not.toEqual(readLesson('algo-python', 'caesar-cipher', 'en')!.statement);
   });
 
+  it('names the lesson as the page does in that language', () => {
+    expect(readLesson('algo-python', 'caesar-cipher', 'ro')!.title).toBe(
+      'Medium · Cifrul lui Cezar',
+    );
+    expect(readLesson('algo-python', 'caesar-cipher', 'en')!.title).toBe('Medium · Caesar Cipher');
+    expect(searchLessons('cezar', 'ro')[0].title).toBe('Medium · Cifrul lui Cezar');
+  });
+
   it('refuses a slug the curriculum does not list before reading any file', () => {
     expect(readLesson('python', '../../../package', 'en')).toBeNull();
     expect(readLesson('python', 'for-solution', 'en')).toBeNull();

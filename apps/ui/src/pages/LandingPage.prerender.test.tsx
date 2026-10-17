@@ -3,7 +3,8 @@ import { renderToString } from 'react-dom/server';
 import { MemoryRouter } from 'react-router';
 import type { Course } from '@cyberstars/shared/lesson';
 
-vi.mock('../services/lessonService', () => ({
+vi.mock('../services/lessonService', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../services/lessonService')>()),
   fetchCurriculum: vi.fn(() => new Promise(() => {})),
 }));
 

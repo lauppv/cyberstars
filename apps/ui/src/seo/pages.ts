@@ -11,7 +11,8 @@ import {
   TERMINAL_COURSE_KEYS,
   baseLanguage,
 } from '@cyberstars/shared/constants';
-import { courseMeta } from '../constants/courses';
+import { courseLabel, courseTitle } from '../constants/courses';
+import { lessonTitle } from '../services/lessonService';
 import { twinPath, type Lang } from '../i18n';
 
 export const ORIGIN = 'https://cyberstars.app';
@@ -130,7 +131,7 @@ export function buildPages(source: ContentSource): Page[] {
   const lessonEntries = (courseKey: string, lang: Lang, trail: Link[]): Entry[] => {
     const t = i18n.getFixedT(lang);
     const challenge = courseKey.startsWith('algo-');
-    const label = courseMeta(courseKey).label;
+    const label = courseLabel(courseKey, t);
     const lessons = byKey
       .get(courseKey)!
       .lessons.filter((l) => source.lesson(courseKey, l.slug, lang))
@@ -138,7 +139,7 @@ export function buildPages(source: ContentSource): Page[] {
         slug: l.slug,
         link: {
           path: twinPath(`/lesson/${courseKey}/${l.slug}`, lang),
-          label: bareTitle(l.title),
+          label: bareTitle(lessonTitle(l, lang)),
         },
       }));
     return lessons.map(({ slug, link }, i) => {
@@ -188,7 +189,7 @@ export function buildPages(source: ContentSource): Page[] {
     });
 
     const courses = courseKeys.map((key) => {
-      const name = courseMeta(key).label;
+      const name = courseLabel(key, t);
       const description = t(`courses.descriptions.${key}`, {
         defaultValue: byKey.get(key)!.description,
       });
@@ -241,7 +242,7 @@ export function buildPages(source: ContentSource): Page[] {
     for (const c of courses) pages.push(c.page, ...c.lessons.map((l) => l.page));
 
     const algorithms = algoKeys.map((key) => {
-      const name = t('algoList.title', { lang: courseMeta(key).label });
+      const name = courseTitle(key, t);
       const description = t(`algorithms.desc.${key}`, {
         defaultValue: byKey.get(key)!.description,
       });
@@ -250,7 +251,7 @@ export function buildPages(source: ContentSource): Page[] {
       const page: Page = {
         path: link.path,
         lang,
-        title: t('seo.algorithmListTitle', { course: courseMeta(key).label }),
+        title: t('seo.algorithmListTitle', { course: courseLabel(key, t) }),
         description,
         alternates: everywhere(`/algorithms/${baseLanguage(key)}`),
         breadcrumb: [algorithmsLink, link],

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { useNavigate } from 'react-router';
 
 export function LaniakeaExplorerPage() {
@@ -1465,7 +1466,7 @@ export function LaniakeaExplorerPage() {
         const d = camera.position.length();
         const posStr = (d >= 0 ? '+' : '') + (d / 1000).toFixed(3);
         posEl.textContent = posStr;
-        velEl.textContent = Math.round(speed * 600).toLocaleString();
+        velEl.textContent = Math.round(speed * 600).toLocaleString(i18next.language);
 
         if (now > nextPressureChange) {
           pressureTarget = 100.8 + Math.random() * 1.4;
@@ -1516,7 +1517,7 @@ export function LaniakeaExplorerPage() {
           const dot = _dirToBody.dot(_camFwd);
           if (dot > 0 && d < bestD) {
             bestD = d;
-            best = { name: 'Black Hole', type: 'bh', radius: 200 };
+            best = { name: i18next.t('laniakea.objects.blackHole'), type: 'bh', radius: 200 };
           }
         }
 
@@ -1527,7 +1528,7 @@ export function LaniakeaExplorerPage() {
           const dot = _dirToBody.dot(_camFwd);
           if (dot > 0 && d < bestD) {
             bestD = d;
-            best = { name: 'Quasar', type: 'quasar', radius: 280 };
+            best = { name: i18next.t('laniakea.objects.quasar'), type: 'quasar', radius: 280 };
           }
         }
 
@@ -1538,7 +1539,7 @@ export function LaniakeaExplorerPage() {
           const dot = _dirToBody.dot(_camFwd);
           if (dot > 0 && d < bestD) {
             bestD = d;
-            best = { name: 'Dyson Sphere', type: 'dyson', radius: 280 };
+            best = { name: i18next.t('laniakea.objects.dyson'), type: 'dyson', radius: 280 };
           }
         }
 

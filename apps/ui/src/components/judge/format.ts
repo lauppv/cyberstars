@@ -1,8 +1,20 @@
-import type { TFunction } from 'i18next';
+import i18next, { type TFunction } from 'i18next';
 import type { InjectValue, StructureFailure, TestCaseResult } from '@cyberstars/shared/tests';
 
+// The most precise text first: a loop of one statement, a function or class
+// the student names, then the kind alone, then a general one for a kind
+// without a text yet, so the student never sees a raw key.
 export function structureMessage(failure: StructureFailure, t: TFunction): string {
-  return t(`tests.structure.${failure.type}.${failure.rule.kind}`, {
+  const { kind, type, name } = failure.rule;
+  const base = `tests.structure.${failure.type}`;
+  const specific =
+    kind === 'loop' && type
+      ? `${base}.loop_${type}`
+      : (kind === 'function' || kind === 'class') && !name
+        ? `${base}.${kind}_any`
+        : null;
+  const keys = [specific, `${base}.${kind}`, `${base}.other`].filter((k) => k !== null);
+  return t(keys, {
     name: failure.rule.name,
     values: failure.rule.values?.join(', '),
     contains: failure.rule.contains,
@@ -70,7 +82,7 @@ export function timeAgo(iso: string, t: TFunction): string {
   if (hrs < 24) return t('forum.time.hourAgo', { count: hrs });
   const days = Math.floor(hrs / 24);
   if (days < 30) return t('forum.time.dayAgo', { count: days });
-  return new Date(iso).toLocaleDateString();
+  return new Date(iso).toLocaleDateString(i18next.language);
 }
 
 // "Test 3", or "Test 3 (hidden)" for a case the student can't see in the lesson.

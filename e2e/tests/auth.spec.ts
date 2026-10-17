@@ -14,7 +14,7 @@ test('signup via UI → lands in the first-lesson tour', async ({ page }) => {
 
   await page.getByPlaceholder('Choose a username').fill('TestUser');
   await page.getByPlaceholder('you@example.com').fill('signup-e2e@test.com');
-  await page.getByPlaceholder('Min. 8 characters').fill('SecurePass123');
+  await page.getByPlaceholder('Min. 6 characters').fill('SecurePass123');
 
   await page.locator('form').getByRole('button', { name: 'Create Account' }).click();
 

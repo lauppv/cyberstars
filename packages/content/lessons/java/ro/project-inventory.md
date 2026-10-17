@@ -195,7 +195,7 @@ Observă și: `Articol` și `Inventar` NU sunt public, doar `Main` este public. 
 
 ## Misiune: Manifestul Compartimentului de Marfă
 
-Compartimentul de marfă al stației are nevoie de un sistem de manifest digital. Fiecare provizii are un nume, o cantitate și un preț unitar. Construiește urmăritorul de inventar ca intendentul să poată lista totul și să calculeze valoarea totală dintr-o privire.
+Compartimentul de marfă al stației are nevoie de un sistem de manifest digital. Fiecare provizie are un nume, o cantitate și un preț unitar. Construiește urmăritorul de inventar ca intendentul să poată lista totul și să calculeze valoarea totală dintr-o privire.
 
 1. Creează o clasă `Articol` cu câmpurile: `nume` (String), `cantitate` (int), `pret` (double) și un constructor
 2. Creează o clasă `Inventar` cu un `ArrayList<Articol>`, și metodele: `adaugaArticol(Articol articol)`, `stergeArticol(String nume)`, `afiseazaTot()`, și `double valoareTotala()`

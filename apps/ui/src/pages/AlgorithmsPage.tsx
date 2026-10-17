@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { ALGO_COURSE_KEYS, isBeta, xpForCourse } from '@cyberstars/shared/constants';
 import { useCurriculum } from '../context/CurriculumContext';
-import { courseMeta } from '../constants/courses';
+import { courseLabel, courseMeta } from '../constants/courses';
 import { BetaBadge } from '../components/ui/BetaBadge';
 
 const LANGS = ALGO_COURSE_KEYS.map((key) => {
   const m = courseMeta(key);
-  return { key, icon: m.icon, name: m.label, color: m.color };
+  return { key, icon: m.icon, color: m.color };
 });
 
 export function AlgorithmsPage() {
@@ -33,7 +33,7 @@ export function AlgorithmsPage() {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <h3 className="flex-1 min-w-0 text-lg font-bold group-hover:text-[var(--accent)] transition truncate">
-                    {lang.name}
+                    {courseLabel(lang.key, t)}
                   </h3>
                   {isBeta(lang.key) && <BetaBadge />}
                   {totalXp > 0 && (

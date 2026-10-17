@@ -1,3 +1,4 @@
+import i18next, { type TFunction } from 'i18next';
 import { baseLanguage } from '@cyberstars/shared/constants';
 
 export interface CourseMeta {
@@ -32,7 +33,17 @@ export function courseMeta(key: string): CourseMeta {
   );
 }
 
-export function courseTitle(key: string): string {
+// What a course or challenge set is about, in the page's language: a
+// language's own name, or a topic such as Trees and Graphs translated.
+export function courseLabel(key: string, t: TFunction = i18next.t): string {
+  return t(`courses.names.${baseLanguage(key)}`, { defaultValue: courseMeta(key).label });
+}
+
+// A course's full name in the page's language, with a challenge set named as
+// one ("Python Algorithms", "Algoritmi Python").
+export function courseTitle(key: string, t: TFunction = i18next.t): string {
   const { label } = courseMeta(key);
-  return key.startsWith('algo-') ? `${label} Algorithms` : label;
+  return t(`courses.names.${key}`, {
+    defaultValue: key.startsWith('algo-') ? `${label} Algorithms` : label,
+  });
 }

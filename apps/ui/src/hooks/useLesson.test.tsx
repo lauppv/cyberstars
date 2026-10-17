@@ -10,9 +10,10 @@ vi.mock('../context/AuthContext', () => ({
 }));
 
 const i18nState = { language: 'en' };
-vi.mock('react-i18next', () => ({
-  useTranslation: () => ({ i18n: i18nState }),
-}));
+vi.mock('react-i18next', () => {
+  const t = (key: string) => key;
+  return { useTranslation: () => ({ t, i18n: i18nState }) };
+});
 
 const { mockFetchLesson, mockFetchLessonCode, mockGetSavedCode } = vi.hoisted(() => ({
   mockFetchLesson: vi.fn(),
@@ -83,8 +84,8 @@ describe('useLesson', () => {
     mockFetchLesson.mockRejectedValue(new Error('404'));
     const { result } = renderHook(() => useLesson('python', 'missing'));
     await waitFor(() => expect(result.current.isLoading).toBe(false));
-    expect(result.current.error).toBe('Lesson not found');
-    expect(result.current.title).toBe('Lesson not found');
+    expect(result.current.error).toBe('lesson.notFound');
+    expect(result.current.title).toBe('lesson.notFound');
     expect(result.current.content).toBe('');
   });
 

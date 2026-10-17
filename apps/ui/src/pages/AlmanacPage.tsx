@@ -48,6 +48,7 @@ function Pagination({
   totalPages: number;
   onPage: (p: number) => void;
 }) {
+  const { t } = useTranslation();
   const pages: (number | '…')[] = [];
   for (let i = 1; i <= totalPages; i++) {
     if (i === 1 || i === totalPages || (i >= page - 1 && i <= page + 1)) {
@@ -57,8 +58,13 @@ function Pagination({
     }
   }
   return (
-    <nav className="almanac-pagination">
-      <button className="pg-btn" disabled={page === 1} onClick={() => onPage(page - 1)}>
+    <nav className="almanac-pagination" aria-label={t('almanac.pages')}>
+      <button
+        className="pg-btn"
+        disabled={page === 1}
+        onClick={() => onPage(page - 1)}
+        aria-label={t('almanac.previousPage')}
+      >
         ‹
       </button>
       {pages.map((p, i) =>
@@ -71,12 +77,18 @@ function Pagination({
             key={p}
             className={'pg-btn' + (p === page ? ' pg-active' : '')}
             onClick={() => onPage(p)}
+            aria-current={p === page ? 'page' : undefined}
           >
             {p}
           </button>
         ),
       )}
-      <button className="pg-btn" disabled={page === totalPages} onClick={() => onPage(page + 1)}>
+      <button
+        className="pg-btn"
+        disabled={page === totalPages}
+        onClick={() => onPage(page + 1)}
+        aria-label={t('almanac.nextPage')}
+      >
         ›
       </button>
     </nav>
@@ -227,7 +239,9 @@ export function AlmanacPage() {
               <h2>{t('almanac.latestReads')}</h2>
               <div className="meta">
                 {filtered.length}{' '}
-                {filter === 'all' ? t('almanac.articles') : t('almanac.inThisTopic')}
+                {filter === 'all'
+                  ? t('almanac.articles', { count: filtered.length })
+                  : t('almanac.inThisTopic')}
                 {totalPages > 1 && (
                   <>
                     {' '}

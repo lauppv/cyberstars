@@ -5,7 +5,7 @@ import type { UsageState } from '@cyberstars/shared/usage';
 // (e.g. "Mon, 14:30") so people know exactly when their quota refills.
 function formatReset(resetAt: string, locale: string): string {
   return new Date(resetAt).toLocaleString(locale, {
-    weekday: 'short',
+    weekday: 'long',
     hour: '2-digit',
     minute: '2-digit',
   });

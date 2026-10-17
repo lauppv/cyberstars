@@ -462,7 +462,7 @@ describe('requestEmailChange', () => {
     expect(email).toBe('new@t.com');
     expect(code).toMatch(/^\d{6}$/);
     expect(expiresAt).toBeInstanceOf(Date);
-    expect(mockSendEmailChangeCode).toHaveBeenCalledWith('new@t.com', code);
+    expect(mockSendEmailChangeCode).toHaveBeenCalledWith('new@t.com', code, 'en');
     expect(res.json).toHaveBeenCalledWith({ message: 'Confirmation code sent' });
   });
 

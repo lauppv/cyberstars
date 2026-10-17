@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -241,7 +242,7 @@ function TicketRow({
       <div className="text-[12px] text-[var(--text2)] line-clamp-2">{ticket.message}</div>
       <div className="text-[10px] text-[var(--text3)] mt-1.5">
         {admin && ticket.authorName ? `${ticket.authorName} · ` : ''}
-        {new Date(ticket.createdAt).toLocaleDateString()}
+        {new Date(ticket.createdAt).toLocaleDateString(i18next.language)}
       </div>
     </div>
   );
@@ -300,6 +301,7 @@ function TicketConversation({
       <div className="flex items-center gap-3">
         <button
           onClick={onBack}
+          aria-label={t('common.back')}
           className="text-[var(--text3)] hover:text-[var(--text)] bg-transparent border-none cursor-pointer text-[18px]"
         >
           ←
@@ -307,7 +309,8 @@ function TicketConversation({
         <div className="flex-1 min-w-0">
           <div className="text-[15px] font-semibold truncate">{ticket.subject}</div>
           <div className="text-[11px] text-[var(--text3)]">
-            {t(`support.types.${ticket.type}`)} · {new Date(ticket.createdAt).toLocaleDateString()}
+            {t(`support.types.${ticket.type}`)} ·{' '}
+            {new Date(ticket.createdAt).toLocaleDateString(i18next.language)}
             {ticket.authorName ? ` · ${ticket.authorName}` : ''}
           </div>
         </div>
@@ -432,7 +435,7 @@ function MessageBubble({
         {message}
       </div>
       <div className="text-[9px] text-[var(--text3)] mt-0.5">
-        {new Date(createdAt).toLocaleString()}
+        {new Date(createdAt).toLocaleString(i18next.language)}
       </div>
     </div>
   );

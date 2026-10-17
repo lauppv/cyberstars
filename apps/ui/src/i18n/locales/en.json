@@ -37,8 +37,6 @@
     "progress": "Lesson progress",
     "totalCompletions": "Total completions",
     "byCourse": "By course",
-    "learners": "learners",
-    "completions": "completions",
     "topLessons": "Most completed lessons",
     "forum": "Forum & Support",
     "threads": "Threads",
@@ -95,7 +93,11 @@
     "placementQuestion": "Got past question {{n}}",
     "placementSubmitted": "Submitted",
     "placementGetStarted": "Pressed Get started",
-    "placementProgress": "placement test {{n}}/{{total}}"
+    "placementProgress": "placement test {{n}}/{{total}}",
+    "completions_one": "completion",
+    "completions_other": "completions",
+    "learners_one": "learner",
+    "learners_other": "learners"
   },
   "lang": {
     "switch": "Switch language",
@@ -110,7 +112,6 @@
     "readTime": "{{time}} read",
     "readMore": "Read →",
     "activity": "Activity",
-    "activeDays": "<0>{{count}}</0> active days in the last {{weeks}} weeks",
     "dayTue": "Tue",
     "dayThu": "Thu",
     "daySat": "Sat",
@@ -146,7 +147,11 @@
       "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> and <7>Linux</7>, right in your browser.",
       "startLearning": "Start learning",
       "signIn": "Sign in"
-    }
+    },
+    "activeDays_one": "<0>{{count}}</0> active day in {{period}}",
+    "activeDays_other": "<0>{{count}}</0> active days in {{period}}",
+    "lastWeeks_one": "the last week",
+    "lastWeeks_other": "the last {{count}} weeks"
   },
   "landing": {
     "hero": {
@@ -329,7 +334,10 @@
     "beta": "Beta",
     "betaHint": "Still being built: more lessons are on the way",
     "xpTotal": "{{xp}} XP",
-    "xpReward": "+{{xp}} XP"
+    "xpReward": "+{{xp}} XP",
+    "somethingWrong": "Something went wrong. Please try again.",
+    "back": "Back",
+    "breadcrumb": "Breadcrumb"
   },
   "leaderboard": {
     "you": "You",
@@ -395,6 +403,17 @@
       "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.",
       "algo-trees-graphs": "Tree problems from easy to hard, in Python, Java or C: depth, mirror images, binary search trees, levels and paths. Every challenge comes in all three, and you can switch language on any of them.",
       "trees-graphs": "The structures behind folders, maps and networks, taught in Python, Java or C: every lesson comes in all three, and you can switch language on any of them."
+    },
+    "names": {
+      "python": "Python",
+      "c": "C",
+      "java": "Java",
+      "linux": "Linux",
+      "trees-graphs": "Trees and Graphs",
+      "algo-python": "Python Algorithms",
+      "algo-java": "Java Algorithms",
+      "algo-c": "C Algorithms",
+      "algo-trees-graphs": "Trees and Graphs Algorithms"
     }
   },
   "algorithms": {
@@ -407,7 +426,6 @@
   },
   "algoList": {
     "courseNotFound": "Course not found.",
-    "title": "{{lang}} Algorithms",
     "challenges_one": "{{count}} challenge",
     "challenges_other": "{{count}} challenges",
     "filters": {
@@ -467,7 +485,7 @@
     "resetCodePlaceholder": "6-digit code",
     "newPassword": "New Password",
     "password": "Password",
-    "passwordPlaceholderSignup": "Min. 8 characters",
+    "passwordPlaceholderSignup": "Min. 6 characters",
     "passwordPlaceholderReset": "Min. 6 characters",
     "passwordPlaceholderLogin": "Enter your password",
     "rememberMe": "Remember me",
@@ -487,7 +505,8 @@
     },
     "successForgot": "If that email exists, a reset code was sent. Check your inbox.",
     "successReset": "Password reset! You can now log in.",
-    "serverError": "Server error, try again later"
+    "serverError": "Server error, try again later",
+    "emailPlaceholder": "you@example.com"
   },
   "rules": {
     "items": [
@@ -682,8 +701,6 @@
       "posts": "Posts",
       "categories": "Categories"
     },
-    "threadsLower": "threads",
-    "postsCount": "{{count}} posts",
     "by": "by",
     "loadThreadsError": "Failed to load threads.",
     "loadThreadError": "Failed to load thread.",
@@ -693,7 +710,6 @@
     "breadcrumbLabel": "Forum navigation",
     "backTo": "Back to {{name}}",
     "categoryNotFound": "Category not found.",
-    "bannerThreads": "threads",
     "restrictedThreads": "Only moderators and admins can start threads in this category.",
     "threadTitlePlaceholder": "Thread title...",
     "composerPlaceholder": "Write your post... Markdown supported.",
@@ -702,13 +718,9 @@
     "createThread": "Create Thread",
     "noThreads": "No threads yet. Be the first to post!",
     "solved": "✓ Solved",
-    "replies": "replies",
-    "views": "views",
     "loadingThread": "Loading thread...",
     "threadNotFound": "Thread not found.",
     "startedBy": "started by",
-    "postsLower": "posts",
-    "viewsLower": "views",
     "postReply": "Post a reply",
     "replyPlaceholder": "Type your reply...",
     "markdownSupported": "Markdown supported",
@@ -730,7 +742,21 @@
     "lockedBadge": "Locked",
     "deleteThread": "Delete thread",
     "delete": "Delete",
-    "actionError": "Something went wrong. Please try again."
+    "actionError": "Something went wrong. Please try again.",
+    "threadsLower_one": "thread",
+    "threadsLower_other": "threads",
+    "bannerThreads_one": "thread",
+    "bannerThreads_other": "threads",
+    "replies_one": "reply",
+    "replies_other": "replies",
+    "views_one": "view",
+    "views_other": "views",
+    "postsLower_one": "post",
+    "postsLower_other": "posts",
+    "viewsLower_one": "view",
+    "viewsLower_other": "views",
+    "postsCount_one": "{{count}} post",
+    "postsCount_other": "{{count}} posts"
   },
   "almanac": {
     "categories": {
@@ -753,7 +779,6 @@
     "showAll": "Show all",
     "featured": "Read of the day",
     "latestReads": "Latest reads",
-    "articles": "articles",
     "inThisTopic": "in this topic",
     "page": "page",
     "prevFact": "Previous fun fact",
@@ -761,7 +786,12 @@
     "prevQuote": "Previous quote",
     "nextQuote": "Next quote",
     "funFact": "Fun Fact",
-    "quotes": "Quotes"
+    "quotes": "Quotes",
+    "articles_one": "article",
+    "articles_other": "articles",
+    "pages": "Pages",
+    "previousPage": "Previous page",
+    "nextPage": "Next page"
   },
   "lesson": {
     "difficulty": {
@@ -822,7 +852,8 @@
       "slow": "Slow",
       "normal": "Normal",
       "fast": "Fast"
-    }
+    },
+    "notFound": "Lesson not found"
   },
   "usage": {
     "title": "Usage",
@@ -838,7 +869,8 @@
     "unlimited": "Unlimited",
     "resetsAt": "Refills {{when}}",
     "solutionError": "Could not reveal the solution right now.",
-    "solutionDepleted": "You've used all your solution reveals for today. Come back after the reset."
+    "solutionDepleted": "You've used all your solution reveals for today. Come back after the reset.",
+    "limitReached": "Limit reached. It refills on {{when}}."
   },
   "laniakea": {
     "introTitle": "Welcome aboard, captain.",
@@ -871,20 +903,28 @@
     "pausedSubPost": "to keep drifting.",
     "resume": "Resume",
     "accelerate": "Accelerate",
-    "decelerate": "Decelerate"
+    "decelerate": "Decelerate",
+    "objects": {
+      "blackHole": "Black Hole",
+      "quasar": "Quasar",
+      "dyson": "Dyson Sphere"
+    }
   },
   "code": {
     "run": "▶ Run",
     "running": "Running...",
     "runTitle": "Ctrl + Enter to run code",
     "output": "Output",
-    "runToSee": "Run your code to see the output..."
+    "runToSee": "Run your code to see the output...",
+    "outputTruncated": "... (output truncated) ...",
+    "connectionError": "Connection error."
   },
   "terminal": {
     "label": "Terminal",
     "starting": "Starting sandbox...",
     "resetTitle": "Reset sandbox",
-    "enterToRun": "Enter to run"
+    "enterToRun": "Enter to run",
+    "startFailed": "Couldn't start the terminal: {{reason}}"
   },
   "gamification": {
     "firstSteps": "{{course}} First Steps",
@@ -939,7 +979,42 @@
         "function": "Your code must define the function {{name}}()",
         "loop": "Use a loop (for or while)",
         "fstring": "Use an f-string (f\"...\")",
-        "comment": "The line with {{contains}} must be inside a real comment"
+        "comment": "The line with {{contains}} must be inside a real comment",
+        "loop_for": "Use a for loop",
+        "loop_while": "Use a while loop",
+        "loop_do_while": "Use a do-while loop",
+        "loop_comprehension": "Use a list comprehension ([x for x in ...])",
+        "function_any": "Write a function of your own",
+        "recursion": "Solve it with recursion: a function that calls itself",
+        "nested_loop": "Use a loop inside another loop",
+        "operator": "Use the {{name}} operator",
+        "if": "Use an if",
+        "switch": "Use a switch",
+        "break": "Use break to leave the loop",
+        "continue": "Use continue to skip to the next step of the loop",
+        "try": "Use try to catch the error",
+        "return": "Give back the result with return",
+        "default_param": "Give a parameter a default value",
+        "slice": "Use a slice ([start:end])",
+        "class": "Define the class {{name}}",
+        "class_any": "Define a class of your own",
+        "object": "Create an object from your class",
+        "extends": "Make a class extend another one (extends)",
+        "implements": "Make a class implement an interface (implements)",
+        "interface": "Define an interface",
+        "enum": "Define an enum",
+        "override": "Override a method of the parent class (@Override)",
+        "overload": "Overload a method: same name, different parameters",
+        "modifier": "Use the {{name}} modifier",
+        "instanceof": "Check the type with instanceof",
+        "cast": "Convert the type with a cast",
+        "struct": "Define a struct",
+        "typedef": "Give a type a new name with typedef",
+        "pointer": "Use a pointer",
+        "deref": "Read or write through a pointer (*p or p->field)",
+        "sizeof": "Use sizeof",
+        "define": "Define {{name}} with #define",
+        "other": "Your code doesn't use what this lesson asks for"
       },
       "forbid": {
         "call": "Don't call {{name}}() here",
@@ -947,7 +1022,11 @@
         "function": "Don't define the function {{name}}()",
         "loop": "Don't use a loop here",
         "int_literal": "Don't hardcode the result, compute it (found {{values}} in your code)",
-        "string_expr": "Wrapping a line in quotes doesn't comment it, that's still a string floating in your code. Use a real comment"
+        "string_expr": "Wrapping a line in quotes doesn't comment it, that's still a string floating in your code. Use a real comment",
+        "operator": "Don't use the {{name}} operator here",
+        "break": "Don't use break here",
+        "slice": "Don't use a slice here",
+        "other": "Your code uses something this lesson asks you to do without"
       }
     },
     "verdict": {
@@ -1148,7 +1227,8 @@
     "almanacTitle": "The Almanac: stories from the history of computing | CyberStars",
     "almanacDescription": "Short reads on the people, machines and ideas behind computing: legends, open source, the internet, security, space and AI.",
     "articleTitle": "{{title}} | CyberStars Almanac",
-    "home": "Home"
+    "home": "Home",
+    "imageAlt": "CyberStars: learn to code for free. Python, Java, C and Linux, right in your browser."
   },
   "notFound": {
     "title": "Page not found",
@@ -1342,5 +1422,18 @@
     },
     "continue": "Continue",
     "error": "Couldn't save that. Try again."
+  },
+  "guestSignup": {
+    "title": "Nice, your code just ran!",
+    "subtitle": "Create a free account to get the most out of CyberStars.",
+    "benefits": {
+      "progress": "Save your progress and pick up where you left off",
+      "runs": "Run code without limits",
+      "people": "Message and connect with other people",
+      "forum": "Post and reply on the forum",
+      "xp": "Earn XP and badges, and climb the leaderboard"
+    },
+    "later": "Maybe later",
+    "signUp": "Create free account"
   }
 }

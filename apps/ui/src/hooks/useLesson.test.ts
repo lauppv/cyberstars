@@ -4,9 +4,10 @@ import { act, renderHook, waitFor } from '@testing-library/react';
 let mockLang = 'en';
 let mockLoggedIn = false;
 
-vi.mock('react-i18next', () => ({
-  useTranslation: () => ({ i18n: { language: mockLang } }),
-}));
+vi.mock('react-i18next', () => {
+  const t = (key: string) => key;
+  return { useTranslation: () => ({ t, i18n: { language: mockLang } }) };
+});
 vi.mock('../context/AuthContext', () => ({
   useAuth: () => ({ isLoggedIn: mockLoggedIn }),
 }));
@@ -60,8 +61,8 @@ describe('useLesson', () => {
     mockFetchLesson.mockRejectedValue(new Error('404'));
     const { result } = renderHook(() => useLesson('python', 'py-1'));
     await waitFor(() => expect(result.current.isLoading).toBe(false));
-    expect(result.current.error).toBe('Lesson not found');
-    expect(result.current.title).toBe('Lesson not found');
+    expect(result.current.error).toBe('lesson.notFound');
+    expect(result.current.title).toBe('lesson.notFound');
     expect(result.current.content).toBe('');
   });
 

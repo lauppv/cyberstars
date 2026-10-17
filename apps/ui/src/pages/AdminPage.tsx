@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { useCurriculum } from '../context/CurriculumContext';
+import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -24,6 +26,10 @@ function Stat({ label, value }: { label: string; value: number | string }) {
 export function AdminPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { courses } = useCurriculum();
+  // A lesson by its title in the page's language, its slug while the curriculum loads
+  const lessonName = (courseKey: string, slug: string) =>
+    courses.find((c) => c.key === courseKey)?.lessons.find((l) => l.slug === slug)?.title ?? slug;
   const { user, isLoading } = useAuth();
   const isAdmin = isAdminRole(user?.role);
 
@@ -101,10 +107,11 @@ export function AdminPage() {
                   <Stat label={t('admin.new30')} value={stats.users.newLast30Days} />
                 </div>
                 <div className="pt-3 border-t border-[var(--border)] flex gap-4 text-[12px] text-[var(--text2)]">
-                  <span>FOUNDER {stats.users.byRole.FOUNDER}</span>
-                  <span>ADMIN {stats.users.byRole.ADMIN}</span>
-                  <span>MODERATOR {stats.users.byRole.MODERATOR}</span>
-                  <span>USER {stats.users.byRole.USER}</span>
+                  {(['FOUNDER', 'ADMIN', 'MODERATOR', 'USER'] as const).map((role) => (
+                    <span key={role}>
+                      {t(`forum.roles.${role}`)} {stats.users.byRole[role]}
+                    </span>
+                  ))}
                 </div>
               </section>
 
@@ -158,8 +165,8 @@ export function AdminPage() {
                           <li key={c.courseKey} className="flex justify-between gap-2">
                             <span className="text-[var(--text2)]">{courseTitle(c.courseKey)}</span>
                             <span className="text-[var(--text3)] tabular-nums">
-                              {c.completions} {t('admin.completions')} · {c.learners}{' '}
-                              {t('admin.learners')}
+                              {c.completions} {t('admin.completions', { count: c.completions })} ·{' '}
+                              {c.learners} {t('admin.learners', { count: c.learners })}
                             </span>
                           </li>
                         ))}
@@ -180,7 +187,7 @@ export function AdminPage() {
                             className="flex justify-between gap-2"
                           >
                             <span className="text-[var(--text2)] truncate">
-                              {courseTitle(l.courseKey)} · {l.lessonSlug}
+                              {courseTitle(l.courseKey)} · {lessonName(l.courseKey, l.lessonSlug)}
                             </span>
                             <span className="text-[var(--text3)] tabular-nums">
                               {l.completions}
@@ -205,7 +212,7 @@ export function AdminPage() {
                 <div className="pt-3 border-t border-[var(--border)] flex flex-wrap gap-4 text-[12px] text-[var(--text2)]">
                   {Object.entries(stats.support.byStatus).map(([status, n]) => (
                     <span key={status}>
-                      {status} {n}
+                      {t(`support.status.${status}`, { defaultValue: status })} {n}
                     </span>
                   ))}
                 </div>
@@ -213,7 +220,7 @@ export function AdminPage() {
 
               <p className="@2xl:col-span-2 text-[11px] text-[var(--text3)] text-center">
                 {t('admin.generatedAt', {
-                  time: new Date(stats.generatedAt).toLocaleTimeString(),
+                  time: new Date(stats.generatedAt).toLocaleTimeString(i18next.language),
                 })}
               </p>
             </div>
