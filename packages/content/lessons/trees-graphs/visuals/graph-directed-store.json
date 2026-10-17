@@ -1,0 +1,43 @@
+{
+  "type": "graph",
+  "caption": "Each edge goes one way, so it fills one cell and joins one list",
+  "directed": true,
+  "list": true,
+  "matrix": true,
+  "vertices": [
+    [0, 0],
+    [1, 0],
+    [1, 1],
+    [0, 1]
+  ],
+  "edges": [],
+  "steps": [
+    {
+      "add": [[0, 1]],
+      "seen": [0, 1],
+      "used": [[0, 1]],
+      "caption": "Edge 0 1: matrix[0][1] becomes 1 and 1 joins the list of 0. Nothing changes for 1"
+    },
+    {
+      "add": [[1, 2]],
+      "seen": [1, 2],
+      "used": [[1, 2]],
+      "caption": "Edge 1 2: matrix[1][2] becomes 1 and 2 joins the list of 1. Nothing changes for 2"
+    },
+    {
+      "add": [[2, 3]],
+      "seen": [2, 3],
+      "used": [[2, 3]],
+      "caption": "Edge 2 3: matrix[2][3] becomes 1 and 3 joins the list of 2. Nothing changes for 3"
+    },
+    {
+      "add": [[3, 0]],
+      "seen": [3, 0],
+      "used": [[3, 0]],
+      "caption": "Edge 3 0: matrix[3][0] becomes 1 and 0 joins the list of 3. Nothing changes for 0"
+    },
+    {
+      "caption": "That's the graph with the arrows from earlier, with its list and its matrix"
+    }
+  ]
+}
