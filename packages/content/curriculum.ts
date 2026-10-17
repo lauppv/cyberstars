@@ -1774,4 +1774,11 @@ export const lessons = [
     sortOrder: 3,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'path-sum',
+    title: 'Easy · Root-to-Leaf Path Sum',
+    sortOrder: 4,
+    hasCodeFile: true,
+  },
 ];
