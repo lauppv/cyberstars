@@ -893,7 +893,12 @@
     "yourCode": "Codul tău",
     "yourCodeEmpty": "Editorul este gol.",
     "badgeEarned": "Insignă obținută: {{label}}",
-    "xpGained": "+{{xp}} XP"
+    "xpGained": "+{{xp}} XP",
+    "visualLabel": "Pas cu pas",
+    "visualStep": "Pasul {{n}} din {{total}}",
+    "visualPrevious": "Înapoi",
+    "visualNext": "Înainte",
+    "visualRestart": "De la început"
   },
   "usage": {
     "title": "Utilizare",

@@ -1,0 +1,88 @@
+// A lesson's ```visual fence holds JSON: the array it starts from, a caption for it, and the
+// hand-written steps. Each step can compare two boxes, swap them and mark the end sorted from a
+// position on. Anything that doesn't fit comes back null, and the fence shows as plain text.
+
+interface ArrayStep {
+  compare?: [number, number];
+  swap?: boolean;
+  sorted?: number;
+  caption: string;
+}
+
+export interface ArrayVisual {
+  type: 'array';
+  values: (number | string)[];
+  caption: string;
+  steps: ArrayStep[];
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function isCaption(value: unknown): value is string {
+  return typeof value === 'string' && value.trim() !== '';
+}
+
+function isIndex(value: unknown, length: number): value is number {
+  return Number.isInteger(value) && (value as number) >= 0 && (value as number) < length;
+}
+
+function parseStep(raw: unknown, length: number): ArrayStep | null {
+  if (!isRecord(raw) || !isCaption(raw.caption)) return null;
+  const step: ArrayStep = { caption: raw.caption };
+  if (raw.compare !== undefined) {
+    const pair = raw.compare;
+    if (
+      !Array.isArray(pair) ||
+      pair.length !== 2 ||
+      !isIndex(pair[0], length) ||
+      !isIndex(pair[1], length) ||
+      pair[0] === pair[1]
+    ) {
+      return null;
+    }
+    step.compare = [pair[0], pair[1]];
+  }
+  if (raw.swap !== undefined) {
+    // A swap moves the two boxes the step compares, so it needs them
+    if (raw.swap !== true || !step.compare) return null;
+    step.swap = true;
+  }
+  if (raw.sorted !== undefined) {
+    if (
+      !Number.isInteger(raw.sorted) ||
+      (raw.sorted as number) < 0 ||
+      (raw.sorted as number) > length
+    )
+      return null;
+    step.sorted = raw.sorted as number;
+  }
+  return step;
+}
+
+export function parseVisual(source: string): ArrayVisual | null {
+  let raw: unknown;
+  try {
+    raw = JSON.parse(source);
+  } catch {
+    return null;
+  }
+  if (!isRecord(raw) || raw.type !== 'array' || !isCaption(raw.caption)) return null;
+  const { values, steps } = raw;
+  if (
+    !Array.isArray(values) ||
+    values.length === 0 ||
+    !values.every((v) => typeof v === 'string' || (typeof v === 'number' && Number.isFinite(v)))
+  ) {
+    return null;
+  }
+  if (!Array.isArray(steps) || steps.length === 0) return null;
+  const parsed: ArrayStep[] = [];
+  for (const step of steps) {
+    const ok = parseStep(step, values.length);
+    if (!ok) return null;
+    parsed.push(ok);
+  }
+  return { type: 'array', values, caption: raw.caption, steps: parsed };
+}

@@ -1,9 +1,11 @@
+import { lazy, Suspense } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkDirective from 'remark-directive';
 import { CodeCell } from '../code/CodeCell';
 import { StringIndexTable } from './StringIndexTable';
 import { remarkGreen } from './remarkGreen';
+import { parseVisual } from '../visual/parseVisual';
 import type { Components } from 'react-markdown';
 import { CODE_LANGUAGES } from '@cyberstars/shared/constants';
 
@@ -12,6 +14,11 @@ interface MarkdownRendererProps {
 }
 
 const EDITABLE_LANGS = [...CODE_LANGUAGES, 'py'];
+
+// The player is its own chunk, fetched only when a lesson has a visual
+const VisualPlayer = lazy(() =>
+  import('../visual/VisualPlayer').then((m) => ({ default: m.VisualPlayer })),
+);
 
 const components: Components = {
   strong({ children }) {
@@ -60,6 +67,16 @@ const components: Components = {
         if (match) (match[2] ? green : highlight).push(Number(match[1]));
       }
       return <StringIndexTable text={text} highlight={highlight} green={green} />;
+    }
+
+    // A visual the parser can't read falls through to a plain code block
+    const visual = !isInline && lang === 'visual' ? parseVisual(String(children)) : null;
+    if (visual) {
+      return (
+        <Suspense fallback={<div className="my-4 panel rounded min-h-[170px]" />}>
+          <VisualPlayer visual={visual} />
+        </Suspense>
+      );
     }
 
     if (!isInline && lang && EDITABLE_LANGS.includes(lang)) {

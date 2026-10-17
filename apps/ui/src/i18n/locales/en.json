@@ -881,7 +881,12 @@
     "yourCode": "Your code",
     "yourCodeEmpty": "The editor is empty.",
     "badgeEarned": "Badge earned: {{label}}",
-    "xpGained": "+{{xp}} XP"
+    "xpGained": "+{{xp}} XP",
+    "visualLabel": "Step by step",
+    "visualStep": "Step {{n}} of {{total}}",
+    "visualPrevious": "Previous",
+    "visualNext": "Next",
+    "visualRestart": "Start over"
   },
   "usage": {
     "title": "Usage",
