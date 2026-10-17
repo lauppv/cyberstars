@@ -898,7 +898,15 @@
     "visualStep": "Pasul {{n}} din {{total}}",
     "visualPrevious": "Înapoi",
     "visualNext": "Înainte",
-    "visualRestart": "De la început"
+    "visualRestart": "De la început",
+    "visualExpand": "Mărește",
+    "visualClose": "Închide",
+    "visualSpeed": "Viteză",
+    "visualSpeeds": {
+      "slow": "Lent",
+      "normal": "Normal",
+      "fast": "Rapid"
+    }
   },
   "usage": {
     "title": "Utilizare",
