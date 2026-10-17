@@ -168,14 +168,14 @@ Banshee - 200 km/h
 
 Comparație rapidă
 
-|          | Array   | ArrayList   |
-| -------- | ------- | ----------- |
-| Mărime   | Fixă    | Dinamică    |
-| Lungime  | .length | .size()     |
-| Acces    | arr[i]  | list.get(i) |
-| For-each | merge   | merge       |
-| Adăugare | nu      | .add()      |
-| Ștergere | nu      | .remove()   |
+|          | Array     | ArrayList    |
+| -------- | --------- | ------------ |
+| Mărime   | Fixă      | Dinamică     |
+| Lungime  | .length   | .size()      |
+| Acces    | tablou[i] | lista.get(i) |
+| For-each | merge     | merge        |
+| Adăugare | nu        | .add()       |
+| Ștergere | nu        | .remove()    |
 
 ---
 

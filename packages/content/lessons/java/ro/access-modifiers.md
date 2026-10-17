@@ -170,8 +170,8 @@ Asta îți menține datele în siguranță. Nimeni nu poate seta `bani` la -999,
 ```text
 public class Main {
     void faceTreaba() {
-        int temp = 42;          // fara public/private - este locala
-        // temp exista doar in interiorul lui faceTreaba()
+        int aux = 42;           // fara public/private - este locala
+        // aux exista doar in interiorul lui faceTreaba()
     }
 }
 ```

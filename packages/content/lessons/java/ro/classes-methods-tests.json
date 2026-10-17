@@ -46,10 +46,10 @@
     },
     {
       "inject": {
-        "nume1": "Ice Cream",
+        "nume1": "Inghetata",
         "vanzare1": 42,
         "vanzare2": 8,
-        "nume2": "Film Studio",
+        "nume2": "Studio de film",
         "vanzare3": 999,
         "vanzare4": 1
       }
@@ -125,7 +125,7 @@
         "nume1": "Vercetti Estate",
         "vanzare1": 1000000,
         "vanzare2": 2500000,
-        "nume2": "Film Studio",
+        "nume2": "Studio de film",
         "vanzare3": 750000,
         "vanzare4": 250000
       },
@@ -136,7 +136,7 @@
         "nume1": "Cafe Robina",
         "vanzare1": 13,
         "vanzare2": 29,
-        "nume2": "Ice Cream Factory",
+        "nume2": "Fabrica de inghetata",
         "vanzare3": 58,
         "vanzare4": 4
       },
@@ -144,10 +144,10 @@
     },
     {
       "inject": {
-        "nume1": "Taxi Firm",
+        "nume1": "Firma de taxi",
         "vanzare1": 1,
         "vanzare2": 1,
-        "nume2": "Car Showroom",
+        "nume2": "Salon auto",
         "vanzare3": 2,
         "vanzare4": 2
       },

@@ -2,8 +2,8 @@
 public class Main {
     public static void main(String[] args) {
         String numeNava = "Voyager";
-        String numeMisiune = "Deep Space Exploration";
-        String incarcaturaSecreta = "TopSecret-Alpha-7";
+        String numeMisiune = "Explorarea spatiului adanc";
+        String incarcaturaSecreta = "StrictSecret-Alfa-7";
         int putereMax = 9001;
 
         System.out.println(numeNava);
