@@ -14,7 +14,7 @@ describe('arrayFrames', () => {
         { compare: [0, 1], swap: true, sorted: 0, caption: 'Done' },
       ],
     });
-    const idle = { title: null, ask: null };
+    const idle = { title: null, ask: null, done: [], at: [], range: null };
     expect(frames).toEqual([
       { ...idle, order: [0, 1, 2], compared: null, sortedFrom: 3, caption: 'How it works' },
       { ...idle, order: [1, 0, 2], compared: [0, 1], sortedFrom: 3, caption: 'Swap 5 and 3' },
@@ -36,7 +36,7 @@ describe('arrayFrames', () => {
         { sorted: 0, caption: 'Done' },
       ],
     });
-    const pass = { title: 'Pass 1' };
+    const pass = { title: 'Pass 1', done: [], at: [], range: null };
     expect(frames.slice(1)).toEqual([
       {
         ...pass,
@@ -82,5 +82,49 @@ describe('arrayFrames', () => {
       // The title stays until a step changes it
       { ...pass, order: [1, 0, 2], compared: null, sortedFrom: 0, ask: null, caption: 'Done' },
     ]);
+  });
+
+  it('puts the markers where a step asks at once, and moves them, the range and the done ones after the answer', () => {
+    const frames = arrayFrames({
+      type: 'array',
+      values: [1, 3, 5, 7],
+      caption: 'Find 5',
+      markers: ['left', 'mid', 'right'],
+      steps: [
+        {
+          at: [0, 1, 3],
+          compare: [1],
+          ask: 'Is 3 < 5?',
+          move: [2, null, 3],
+          range: [2, 3],
+          caption: 'Yes: left = 2',
+        },
+        { at: [2, 2, 3], compare: [2], ask: 'Is 5 == 5?', done: [2], caption: 'Found' },
+        { title: 'After', caption: 'Nothing moves' },
+      ],
+    });
+    const still = { order: [0, 1, 2, 3], sortedFrom: 4 };
+    expect(frames.map(({ at, range, done, compared }) => ({ at, range, done, compared }))).toEqual([
+      { at: [null, null, null], range: null, done: [], compared: null },
+      { at: [0, 1, 3], range: null, done: [], compared: [1] },
+      { at: [2, null, 3], range: [2, 3], done: [], compared: [1] },
+      { at: [2, 2, 3], range: [2, 3], done: [], compared: [2] },
+      { at: [2, 2, 3], range: [2, 3], done: [2], compared: [2] },
+      // Markers, the range and the done ones stay until a step changes them
+      { at: [2, 2, 3], range: [2, 3], done: [2], compared: null },
+    ]);
+    expect(frames.every((f) => f.order.join() === still.order.join())).toBe(true);
+    expect(frames.every((f) => f.sortedFrom === still.sortedFrom)).toBe(true);
+  });
+
+  it('moves markers at once on a step that asks nothing', () => {
+    const frames = arrayFrames({
+      type: 'array',
+      values: [4, 2],
+      caption: 'Start',
+      markers: ['i'],
+      steps: [{ at: [0], move: [1], caption: 'Straight to 1' }],
+    });
+    expect(frames.map((f) => f.at)).toEqual([[null], [1]]);
   });
 });
