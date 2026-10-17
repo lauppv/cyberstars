@@ -85,7 +85,7 @@ describe('AppShell', () => {
   });
 
   it('leaves the bare routes without chrome', () => {
-    for (const path of ['/getstarted', '/welcome', '/laniakea']) {
+    for (const path of ['/getstarted', '/laniakea']) {
       const { unmount } = renderShell(path);
       expect(screen.queryByTestId('sidebar')).toBeNull();
       expect(screen.getByText('no shell')).toBeInTheDocument();

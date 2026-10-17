@@ -12,7 +12,6 @@ export const APP_ONLY_PATHS = [
   '/usage',
   '/rules',
   '/support',
-  '/welcome',
   '/laniakea',
   '/admin',
   '/leaderboard',
