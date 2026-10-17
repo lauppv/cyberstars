@@ -1217,6 +1217,13 @@ export const lessons = [
     sortOrder: 9,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'trees-graphs',
+    slug: 'topological-order',
+    title: 'Topological Order',
+    sortOrder: 10,
+    hasCodeFile: true,
+  },
 
   {
     courseKey: 'algo-python',
