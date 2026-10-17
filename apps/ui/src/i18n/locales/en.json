@@ -1405,5 +1405,18 @@
     },
     "continue": "Continue",
     "error": "Couldn't save that. Try again."
+  },
+  "guestSignup": {
+    "title": "Nice, your code just ran!",
+    "subtitle": "Create a free account to get the most out of CyberStars.",
+    "benefits": {
+      "progress": "Save your progress and pick up where you left off",
+      "runs": "Run code without limits",
+      "people": "Message and connect with other people",
+      "forum": "Post and reply on the forum",
+      "xp": "Earn XP and badges, and climb the leaderboard"
+    },
+    "later": "Maybe later",
+    "signUp": "Create free account"
   }
 }

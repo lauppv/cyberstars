@@ -1444,5 +1444,18 @@
     },
     "continue": "Continuă",
     "error": "Nu s-a putut salva. Încearcă din nou."
+  },
+  "guestSignup": {
+    "title": "Bravo, codul tău a rulat!",
+    "subtitle": "Fă-ți un cont gratuit ca să ai parte de tot ce oferă CyberStars.",
+    "benefits": {
+      "progress": "Îți salvezi progresul și continui de unde ai rămas",
+      "runs": "Rulezi cod fără limite",
+      "people": "Vorbești și te conectezi cu alți oameni",
+      "forum": "Scrii și răspunzi pe forum",
+      "xp": "Câștigi XP și insigne și urci în clasament"
+    },
+    "later": "Poate mai târziu",
+    "signUp": "Creează cont gratuit"
   }
 }

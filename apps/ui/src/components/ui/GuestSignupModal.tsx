@@ -1,18 +1,13 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
-const BENEFITS = [
-  'Save your progress and pick up where you left off',
-  'Run code without limits',
-  'Message and connect with other people',
-  'Post and reply on the forum',
-  'Earn XP and badges, and climb the leaderboard',
-];
+const BENEFITS = ['progress', 'runs', 'people', 'forum', 'xp'];
 
-// Guest-only nudge shown after the first successful run. Intentionally
-// English-only: guests can't change the language (it's English by default).
+// Guest-only nudge shown after the first successful run, in the page's language
 export function GuestSignupModal({ onClose }: { onClose: () => void }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -42,16 +37,14 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
         <div className="flex items-start justify-between px-6 py-4 border-b border-[var(--border)]">
           <div>
             <div id="guest-signup-title" className="text-base font-bold">
-              Nice, your code just ran!
+              {t('guestSignup.title')}
             </div>
-            <div className="text-[13px] text-[var(--text3)] mt-1">
-              Create a free account to get the most out of CyberStars.
-            </div>
+            <div className="text-[13px] text-[var(--text3)] mt-1">{t('guestSignup.subtitle')}</div>
           </div>
           <button
             data-track="signup-prompt-close"
             onClick={onClose}
-            aria-label="Close"
+            aria-label={t('common.close')}
             className="w-8 h-8 shrink-0 rounded-full border border-[var(--border)] bg-transparent text-[var(--text3)] text-base flex items-center justify-center cursor-pointer hover:text-[var(--text)] hover:border-[var(--text3)] transition"
           >
             ×
@@ -63,7 +56,7 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
             {BENEFITS.map((b) => (
               <li key={b} className="flex items-start gap-2.5 text-[14px] text-[var(--text)]">
                 <span className="text-[var(--accent)] mt-0.5">•</span>
-                <span>{b}</span>
+                <span>{t(`guestSignup.benefits.${b}`)}</span>
               </li>
             ))}
           </ul>
@@ -75,14 +68,14 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
             onClick={onClose}
             className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] font-semibold cursor-pointer border border-[var(--border)] bg-transparent text-[var(--text3)] hover:text-[var(--text)] hover:border-[var(--text3)] transition"
           >
-            Maybe later
+            {t('guestSignup.later')}
           </button>
           <button
             data-track="signup-prompt-sign-up"
             onClick={goSignup}
             className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] font-semibold cursor-pointer border border-[var(--border)] bg-[var(--accent)]/20 text-[var(--accent)] hover:bg-[var(--accent)]/30 transition"
           >
-            Create free account
+            {t('guestSignup.signUp')}
           </button>
         </div>
       </div>
