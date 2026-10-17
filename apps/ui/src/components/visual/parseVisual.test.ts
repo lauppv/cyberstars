@@ -16,7 +16,7 @@ describe('parseVisual', () => {
       parseVisual(
         visual({
           steps: [
-            { compare: [0, 1], swap: true, caption: 'Swap' },
+            { title: 'Pass 1', compare: [0, 1], ask: 'Is 5 > 3?', swap: true, caption: 'Swap' },
             { compare: [1, 2], caption: 'Compare' },
             { sorted: 2, caption: 'Sorted end' },
           ],
@@ -27,11 +27,19 @@ describe('parseVisual', () => {
       values: [5, 3, 8],
       caption: 'Start',
       steps: [
-        { compare: [0, 1], swap: true, caption: 'Swap' },
+        { title: 'Pass 1', compare: [0, 1], ask: 'Is 5 > 3?', swap: true, caption: 'Swap' },
         { compare: [1, 2], caption: 'Compare' },
         { sorted: 2, caption: 'Sorted end' },
       ],
     });
+  });
+
+  it('reads two pointer labels', () => {
+    expect(parseVisual(visual({ pointers: ['j = {i}', 'j + 1'] }))?.pointers).toEqual([
+      'j = {i}',
+      'j + 1',
+    ]);
+    expect(parseVisual(visual())).not.toHaveProperty('pointers');
   });
 
   it('takes strings as values', () => {
@@ -55,6 +63,12 @@ describe('parseVisual', () => {
     ['a compare of one box with itself', visual({ steps: [{ compare: [1, 1], caption: 'x' }] })],
     ['a compare of one box', visual({ steps: [{ compare: [1], caption: 'x' }] })],
     ['a compare that is no list', visual({ steps: [{ compare: '0 1', caption: 'x' }] })],
+    ['one pointer label', visual({ pointers: ['j'] })],
+    ['a blank pointer label', visual({ pointers: ['j', ' '] })],
+    ['pointers that are no list', visual({ pointers: 'j' })],
+    ['a blank title', visual({ steps: [{ title: ' ', caption: 'x' }] })],
+    ['a question without a compare', visual({ steps: [{ ask: 'Is 5 > 3?', caption: 'x' }] })],
+    ['a blank question', visual({ steps: [{ compare: [0, 1], ask: '', caption: 'x' }] })],
     ['a swap without a compare', visual({ steps: [{ swap: true, caption: 'x' }] })],
     [
       'a swap that is not true',

@@ -1,9 +1,14 @@
-// A lesson's ```visual fence holds JSON: the array it starts from, a caption for it, and the
-// hand-written steps. Each step can compare two boxes, swap them and mark the end sorted from a
-// position on. Anything that doesn't fit comes back null, and the fence shows as plain text.
+// A lesson's ```visual fence holds JSON: the array it starts from, a short word on how the
+// algorithm works, and the hand-written steps. Each step can compare two boxes (asking a question
+// about them first), swap them and mark the end sorted from a position on; a title, such as the
+// pass, stays up until another step changes it. Two optional pointer labels sit under the two
+// boxes a step compares, such as "j = {i}" and "j + 1" for the loop's index ({i} is the box's
+// position). Anything that doesn't fit comes back null, and the fence shows as plain text.
 
 interface ArrayStep {
+  title?: string;
   compare?: [number, number];
+  ask?: string;
   swap?: boolean;
   sorted?: number;
   caption: string;
@@ -13,6 +18,7 @@ export interface ArrayVisual {
   type: 'array';
   values: (number | string)[];
   caption: string;
+  pointers?: [string, string];
   steps: ArrayStep[];
 }
 
@@ -31,6 +37,10 @@ function isIndex(value: unknown, length: number): value is number {
 function parseStep(raw: unknown, length: number): ArrayStep | null {
   if (!isRecord(raw) || !isCaption(raw.caption)) return null;
   const step: ArrayStep = { caption: raw.caption };
+  if (raw.title !== undefined) {
+    if (!isCaption(raw.title)) return null;
+    step.title = raw.title;
+  }
   if (raw.compare !== undefined) {
     const pair = raw.compare;
     if (
@@ -43,6 +53,11 @@ function parseStep(raw: unknown, length: number): ArrayStep | null {
       return null;
     }
     step.compare = [pair[0], pair[1]];
+  }
+  if (raw.ask !== undefined) {
+    // The question is about the two boxes the step compares
+    if (!isCaption(raw.ask) || !step.compare) return null;
+    step.ask = raw.ask;
   }
   if (raw.swap !== undefined) {
     // A swap moves the two boxes the step compares, so it needs them
@@ -78,11 +93,20 @@ export function parseVisual(source: string): ArrayVisual | null {
     return null;
   }
   if (!Array.isArray(steps) || steps.length === 0) return null;
+  const { pointers } = raw;
+  if (
+    pointers !== undefined &&
+    (!Array.isArray(pointers) || pointers.length !== 2 || !pointers.every(isCaption))
+  ) {
+    return null;
+  }
   const parsed: ArrayStep[] = [];
   for (const step of steps) {
     const ok = parseStep(step, values.length);
     if (!ok) return null;
     parsed.push(ok);
   }
-  return { type: 'array', values, caption: raw.caption, steps: parsed };
+  const visual: ArrayVisual = { type: 'array', values, caption: raw.caption, steps: parsed };
+  if (pointers) visual.pointers = [pointers[0], pointers[1]];
+  return visual;
 }
