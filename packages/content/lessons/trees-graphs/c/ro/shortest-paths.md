@@ -30,9 +30,9 @@ Lista de adiacență ține acum o pereche pentru fiecare vecin: nodul și costul
 
 ---
 
-**Algoritmul lui Dijkstra** găsește cea mai mică distanță de la un nod de start la fiecare alt nod. Ține un **dist** pentru fiecare nod: cel mai scurt drum găsit până acum, sau **-1** cât timp nu există niciunul. La început doar startul are unul, **0**
+**Algoritmul lui Dijkstra** găsește cea mai mică distanță de la un nod de start la fiecare alt nod. Ține o **distanta** pentru fiecare nod: cel mai scurt drum găsit până acum, sau **-1** cât timp nu există niciunul. La început doar startul are una, **0**
 
-Apoi, iar și iar: ia nodul cu cel mai mic **dist** care nu e încă terminat și marchează-l terminat. Pentru fiecare vecin al lui, vezi dacă drumul prin el e mai scurt decât ce are vecinul. Dacă e, acesta e noul **dist** al vecinului
+Apoi, iar și iar: ia nodul cu cea mai mică **distanta** care nu e încă terminat și marchează-l terminat. Pentru fiecare vecin al lui, vezi dacă drumul prin el e mai scurt decât ce are vecinul. Dacă e, acesta e noua **distanta** a vecinului
 
 ```visual
 {"use": "dijkstra-dist"}
@@ -40,11 +40,11 @@ Apoi, iar și iar: ia nodul cu cel mai mic **dist** care nu e încă terminat ș
 
 **1** primește întâi **4**, direct de la **0**. Când e luat **2**, drumul prin el costă **1 + 2 = 3**, așa că **1** scade la **3**. **3** primește **9** prin **2**, apoi **8** prin **1**
 
-Nodul luat nu mai e îmbunătățit niciodată mai târziu. Toate costurile sunt pozitive, așa că orice alt drum până la el ar trece printr-un nod neterminat, al cărui **dist** e cel puțin la fel de mare, și apoi ar mai adăuga ceva. Tot de aceea algoritmul lui Dijkstra are nevoie de costuri de **0** sau mai mari: o muchie cu cost negativ ar putea face până la urmă un nod terminat mai ieftin
+Nodul luat nu mai e îmbunătățit niciodată mai târziu. Toate costurile sunt pozitive, așa că orice alt drum până la el ar trece printr-un nod neterminat, a cărui **distanta** e cel puțin la fel de mare, și apoi ar mai adăuga ceva. Tot de aceea algoritmul lui Dijkstra are nevoie de costuri de **0** sau mai mari: o muchie cu cost negativ ar putea face până la urmă un nod terminat mai ieftin
 
 ---
 
-Să găsești cel mai mic nod neterminat e exact ce face un heap, ca cel pe care l-ai construit în lecția despre heap-uri. Dar cu cel mult **8** noduri nu e nevoie de unul: treci prin toate și păstrează-l pe cel neterminat cu cel mai mic **dist**, cum a găsit ordinea topologică cel mai mic nod gata. Sunt **n** verificări pentru fiecare dintre cei **n** pași, repede pentru un graf mic
+Să găsești cel mai mic nod neterminat e exact ce face un heap, ca cel pe care l-ai construit în lecția despre heap-uri. Dar cu cel mult **8** noduri nu e nevoie de unul: treci prin toate și păstrează-l pe cel neterminat cu cea mai mică **distanta**, cum a găsit ordinea topologică cel mai mic nod gata. Sunt **n** verificări pentru fiecare dintre cei **n** pași, repede pentru un graf mic
 
 ```c
 #include <stdio.h>
@@ -67,16 +67,16 @@ int main(void) {
     }
 
     int start = 0;
-    int dist[8];
+    int distanta[8];
     int facut[8] = {0};
     for (int v = 0; v < n; v++) {
-        dist[v] = -1;
+        distanta[v] = -1;
     }
-    dist[start] = 0;
+    distanta[start] = 0;
     for (int pas = 0; pas < n; pas++) {
         int u = -1;
         for (int v = 0; v < n; v++) {
-            if (!facut[v] && dist[v] != -1 && (u == -1 || dist[v] < dist[u])) {
+            if (!facut[v] && distanta[v] != -1 && (u == -1 || distanta[v] < distanta[u])) {
                 u = v;
             }
         }
@@ -87,14 +87,14 @@ int main(void) {
         for (int i = 0; i < numar[u]; i++) {
             int v = vecini[u][i];
             int cost = costuri[u][i];
-            if (dist[v] == -1 || dist[u] + cost < dist[v]) {
-                dist[v] = dist[u] + cost;
+            if (distanta[v] == -1 || distanta[u] + cost < distanta[v]) {
+                distanta[v] = distanta[u] + cost;
             }
         }
     }
 
     for (int v = 0; v < n; v++) {
-        printf("%d ", dist[v]);
+        printf("%d ", distanta[v]);
     }
     printf("\n");
     return 0;
@@ -107,7 +107,7 @@ Rezultat
 0 3 1 8 11
 ```
 
-Când niciun nod neterminat nu mai are un **dist**, cele rămase la **-1** nu pot fi atinse deloc, așa că parcurgerea se oprește: **u** rămâne **-1**
+Când niciun nod neterminat nu mai are o **distanta**, cele rămase la **-1** nu pot fi atinse deloc, așa că parcurgerea se oprește: **u** rămâne **-1**
 
 ---
 

@@ -9,18 +9,18 @@ for i in range(m):
     vecini[v].append((u, cost))
 s = int(input())
 
-dist = [-1] * n
-dist[s] = 0
+distanta = [-1] * n
+distanta[s] = 0
 heap = [(0, s)]
 while len(heap) > 0:
     d, u = heapq.heappop(heap)
-    if d > dist[u]:
+    if d > distanta[u]:
         continue
     for v, cost in vecini[u]:
-        if dist[v] == -1 or d + cost < dist[v]:
-            dist[v] = d + cost
-            heapq.heappush(heap, (dist[v], v))
+        if distanta[v] == -1 or d + cost < distanta[v]:
+            distanta[v] = d + cost
+            heapq.heappush(heap, (distanta[v], v))
 
 for v in range(n):
-    print(f"{v}: {dist[v]}")
+    print(f"{v}: {distanta[v]}")
 ```

@@ -14,7 +14,7 @@ Inelul în care e un nod este **distanța** lui de la start: cele mai puține mu
 
 Parcurgerea din arbori mai are nevoie de un lucru ca să meargă pe un graf. Un arbore nu are cicluri, așa că fiecare nod e atins o singură dată. Într-un graf, **3** e vecin și cu **1**, și cu **2**, iar **0** e vecin cu **1**, propriul lui vecin. Pune fiecare vecin în coadă și parcurgerea vizitează nodurile iar și iar, iar într-un ciclu nu se mai oprește
 
-Așa că ține o listă **dist**, câte un număr pentru fiecare nod, toate **-1** la început, adică „încă nevăzut”. Când un nod e văzut prima dată, scrie acolo distanța lui și pune-l în coadă. Un nod a cărui distanță nu mai e **-1** nu mai intră niciodată în coadă
+Așa că ține o listă **distanta**, câte un număr pentru fiecare nod, toate **-1** la început, adică „încă nevăzut”. Când un nod e văzut prima dată, scrie acolo distanța lui și pune-l în coadă. Un nod a cărui distanță nu mai e **-1** nu mai intră niciodată în coadă
 
 ---
 
@@ -44,16 +44,16 @@ for i in range(m):
     vecini[v].append(u)
 
 start = 0
-dist = [-1] * n
-dist[start] = 0
+distanta = [-1] * n
+distanta[start] = 0
 coada = deque()
 coada.append(start)
 while len(coada) > 0:
     u = coada.popleft()
-    print("vizitez", u, "la distanta", dist[u])
+    print("vizitez", u, "la distanta", distanta[u])
     for v in vecini[u]:
-        if dist[v] == -1:
-            dist[v] = dist[u] + 1
+        if distanta[v] == -1:
+            distanta[v] = distanta[u] + 1
             coada.append(v)
 ```
 
@@ -85,7 +85,7 @@ Iar distanța e corectă de prima dată când e scrisă. Fiecare nod dintr-un in
 
 ---
 
-Cei mai puțini pași de la start până la orice nod **t** sunt acum **dist[t]**. Un nod la care parcurgerea n-a ajuns niciodată își păstrează **-1**: nu există niciun drum până la el, lucru care se poate întâmpla când graful vine în bucăți separate
+Cei mai puțini pași de la start până la orice nod **t** sunt acum **distanta[t]**. Un nod la care parcurgerea n-a ajuns niciodată își păstrează **-1**: nu există niciun drum până la el, lucru care se poate întâmpla când graful vine în bucăți separate
 
 ```visual
 {"use": "bfs-pieces"}
@@ -113,8 +113,8 @@ from collections import deque
 randuri, coloane = map(int, input().split())
 grila = [input() for r in range(randuri)]
 
-dist = [[-1] * coloane for r in range(randuri)]
-dist[0][0] = 0
+distanta = [[-1] * coloane for r in range(randuri)]
+distanta[0][0] = 0
 coada = deque()
 coada.append((0, 0))
 while len(coada) > 0:
@@ -123,8 +123,8 @@ while len(coada) > 0:
         nr = r + dr
         nc = c + dc
         if 0 <= nr < randuri and 0 <= nc < coloane:
-            if grila[nr][nc] == "." and dist[nr][nc] == -1:
-                dist[nr][nc] = dist[r][c] + 1
+            if grila[nr][nc] == "." and distanta[nr][nc] == -1:
+                distanta[nr][nc] = distanta[r][c] + 1
                 coada.append((nr, nc))
 
 for r in range(randuri):
@@ -133,9 +133,9 @@ for r in range(randuri):
         if grila[r][c] == "#":
             linie += " #"
         else:
-            linie += f"{dist[r][c]:2}"
+            linie += f"{distanta[r][c]:2}"
     print(linie)
-print("pasi pana la iesire:", dist[randuri - 1][coloane - 1])
+print("pasi pana la iesire:", distanta[randuri - 1][coloane - 1])
 ```
 
 Pentru labirintul de mai sus, rezultatul este

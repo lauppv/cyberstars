@@ -64,9 +64,9 @@ void heap_adauga(int heap[], int *marime, int valoare) {
     while (i > 0) {
         int parinte = (i - 1) / 2;
         if (heap[i] < heap[parinte]) {
-            int temp = heap[i];
+            int aux = heap[i];
             heap[i] = heap[parinte];
-            heap[parinte] = temp;
+            heap[parinte] = aux;
             i = parinte;
         } else {
             break;
@@ -124,9 +124,9 @@ int heap_extrage(int heap[], int *marime) {
         if (copil == i) {
             break;
         }
-        int temp = heap[i];
+        int aux = heap[i];
         heap[i] = heap[copil];
-        heap[copil] = temp;
+        heap[copil] = aux;
         i = copil;
     }
     return minim;
@@ -167,9 +167,9 @@ void heap_adauga(int heap[], int *marime, int valoare) {
     while (i > 0) {
         int parinte = (i - 1) / 2;
         if (heap[i] < heap[parinte]) {
-            int temp = heap[i];
+            int aux = heap[i];
             heap[i] = heap[parinte];
-            heap[parinte] = temp;
+            heap[parinte] = aux;
             i = parinte;
         } else {
             break;
@@ -195,9 +195,9 @@ int heap_extrage(int heap[], int *marime) {
         if (copil == i) {
             break;
         }
-        int temp = heap[i];
+        int aux = heap[i];
         heap[i] = heap[copil];
-        heap[copil] = temp;
+        heap[copil] = aux;
         i = copil;
     }
     return minim;

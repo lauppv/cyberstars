@@ -14,7 +14,7 @@ Inelul în care e un nod este **distanța** lui de la start: cele mai puține mu
 
 Parcurgerea din arbori mai are nevoie de un lucru ca să meargă pe un graf. Un arbore nu are cicluri, așa că fiecare nod e atins o singură dată. Într-un graf, **3** e vecin și cu **1**, și cu **2**, iar **0** e vecin cu **1**, propriul lui vecin. Pune fiecare vecin în coadă și parcurgerea vizitează nodurile iar și iar, iar într-un ciclu nu se mai oprește
 
-Așa că ține un array **dist**, câte un număr pentru fiecare nod, toate **-1** la început, adică „încă nevăzut”: **Arrays.fill** pune aceeași valoare în fiecare celulă a unui array. Când un nod e văzut prima dată, scrie acolo distanța lui și pune-l în coadă. Un nod a cărui distanță nu mai e **-1** nu mai intră niciodată în coadă
+Așa că ține un array **distanta**, câte un număr pentru fiecare nod, toate **-1** la început, adică „încă nevăzut”: **Arrays.fill** pune aceeași valoare în fiecare celulă a unui array. Când un nod e văzut prima dată, scrie acolo distanța lui și pune-l în coadă. Un nod a cărui distanță nu mai e **-1** nu mai intră niciodată în coadă
 
 ---
 
@@ -57,17 +57,17 @@ public class Main {
         }
 
         int start = 0;
-        int[] dist = new int[n];
-        Arrays.fill(dist, -1);
-        dist[start] = 0;
+        int[] distanta = new int[n];
+        Arrays.fill(distanta, -1);
+        distanta[start] = 0;
         Queue<Integer> coada = new ArrayDeque<>();
         coada.add(start);
         while (!coada.isEmpty()) {
             int u = coada.poll();
-            System.out.println("vizitez " + u + " la distanta " + dist[u]);
+            System.out.println("vizitez " + u + " la distanta " + distanta[u]);
             for (int v : vecini.get(u)) {
-                if (dist[v] == -1) {
-                    dist[v] = dist[u] + 1;
+                if (distanta[v] == -1) {
+                    distanta[v] = distanta[u] + 1;
                     coada.add(v);
                 }
             }
@@ -104,7 +104,7 @@ Iar distanța e corectă de prima dată când e scrisă. Fiecare nod dintr-un in
 
 ---
 
-Cei mai puțini pași de la start până la orice nod **t** sunt acum **dist[t]**. Un nod la care parcurgerea n-a ajuns niciodată își păstrează **-1**: nu există niciun drum până la el, lucru care se poate întâmpla când graful vine în bucăți separate
+Cei mai puțini pași de la start până la orice nod **t** sunt acum **distanta[t]**. Un nod la care parcurgerea n-a ajuns niciodată își păstrează **-1**: nu există niciun drum până la el, lucru care se poate întâmpla când graful vine în bucăți separate
 
 ```visual
 {"use": "bfs-pieces"}
@@ -142,12 +142,12 @@ public class Main {
             grila[r] = scanner.next();
         }
 
-        int[][] dist = new int[randuri][coloane];
+        int[][] distanta = new int[randuri][coloane];
         for (int r = 0; r < randuri; r++) {
-            Arrays.fill(dist[r], -1);
+            Arrays.fill(distanta[r], -1);
         }
         int[][] mutari = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-        dist[0][0] = 0;
+        distanta[0][0] = 0;
         Queue<int[]> coada = new ArrayDeque<>();
         coada.add(new int[] {0, 0});
         while (!coada.isEmpty()) {
@@ -158,8 +158,8 @@ public class Main {
                 int nr = r + mutare[0];
                 int nc = c + mutare[1];
                 if (nr >= 0 && nr < randuri && nc >= 0 && nc < coloane) {
-                    if (grila[nr].charAt(nc) == '.' && dist[nr][nc] == -1) {
-                        dist[nr][nc] = dist[r][c] + 1;
+                    if (grila[nr].charAt(nc) == '.' && distanta[nr][nc] == -1) {
+                        distanta[nr][nc] = distanta[r][c] + 1;
                         coada.add(new int[] {nr, nc});
                     }
                 }
@@ -172,12 +172,12 @@ public class Main {
                 if (grila[r].charAt(c) == '#') {
                     linie += " #";
                 } else {
-                    linie += String.format("%2d", dist[r][c]);
+                    linie += String.format("%2d", distanta[r][c]);
                 }
             }
             System.out.println(linie);
         }
-        System.out.println("pasi pana la iesire: " + dist[randuri - 1][coloane - 1]);
+        System.out.println("pasi pana la iesire: " + distanta[randuri - 1][coloane - 1]);
     }
 }
 ```

@@ -9,21 +9,21 @@ for i in range(m):
     vecini[v].append(u)
 s, t = map(int, input().split())
 
-dist = [-1] * n
-dist[s] = 0
+distanta = [-1] * n
+distanta[s] = 0
 coada = deque()
 coada.append(s)
 while len(coada) > 0:
     u = coada.popleft()
     for v in vecini[u]:
-        if dist[v] == -1:
-            dist[v] = dist[u] + 1
+        if distanta[v] == -1:
+            distanta[v] = distanta[u] + 1
             coada.append(v)
 
 for v in range(n):
-    print(f"{v}: {dist[v]}")
-if dist[t] == -1:
+    print(f"{v}: {distanta[v]}")
+if distanta[t] == -1:
     print(f"Niciun drum de la {s} la {t}")
 else:
-    print(f"Cei mai putini pasi de la {s} la {t}: {dist[t]}")
+    print(f"Cei mai putini pasi de la {s} la {t}: {distanta[t]}")
 ```

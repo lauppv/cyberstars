@@ -17,11 +17,11 @@ int main(void) {
     int s, t;
     scanf("%d %d", &s, &t);
 
-    int dist[8];
+    int distanta[8];
     for (int v = 0; v < n; v++) {
-        dist[v] = -1;
+        distanta[v] = -1;
     }
-    dist[s] = 0;
+    distanta[s] = 0;
     int coada[8];
     int inceput = 0;
     int sfarsit = 0;
@@ -32,8 +32,8 @@ int main(void) {
         inceput++;
         for (int i = 0; i < numar[u]; i++) {
             int v = vecini[u][i];
-            if (dist[v] == -1) {
-                dist[v] = dist[u] + 1;
+            if (distanta[v] == -1) {
+                distanta[v] = distanta[u] + 1;
                 coada[sfarsit] = v;
                 sfarsit++;
             }
@@ -41,12 +41,12 @@ int main(void) {
     }
 
     for (int v = 0; v < n; v++) {
-        printf("%d: %d\n", v, dist[v]);
+        printf("%d: %d\n", v, distanta[v]);
     }
-    if (dist[t] == -1) {
+    if (distanta[t] == -1) {
         printf("Niciun drum de la %d la %d\n", s, t);
     } else {
-        printf("Cei mai putini pasi de la %d la %d: %d\n", s, t, dist[t]);
+        printf("Cei mai putini pasi de la %d la %d: %d\n", s, t, distanta[t]);
     }
     return 0;
 }

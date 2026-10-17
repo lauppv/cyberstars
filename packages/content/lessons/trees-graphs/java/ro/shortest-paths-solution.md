@@ -22,30 +22,30 @@ public class Main {
         }
         int s = scanner.nextInt();
 
-        int[] dist = new int[n];
-        Arrays.fill(dist, -1);
-        dist[s] = 0;
+        int[] distanta = new int[n];
+        Arrays.fill(distanta, -1);
+        distanta[s] = 0;
         PriorityQueue<int[]> heap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
         heap.add(new int[] {0, s});
         while (!heap.isEmpty()) {
             int[] varf = heap.poll();
             int d = varf[0];
             int u = varf[1];
-            if (d > dist[u]) {
+            if (d > distanta[u]) {
                 continue;
             }
             for (int[] muchie : vecini.get(u)) {
                 int v = muchie[0];
                 int cost = muchie[1];
-                if (dist[v] == -1 || d + cost < dist[v]) {
-                    dist[v] = d + cost;
-                    heap.add(new int[] {dist[v], v});
+                if (distanta[v] == -1 || d + cost < distanta[v]) {
+                    distanta[v] = d + cost;
+                    heap.add(new int[] {distanta[v], v});
                 }
             }
         }
 
         for (int v = 0; v < n; v++) {
-            System.out.println(v + ": " + dist[v]);
+            System.out.println(v + ": " + distanta[v]);
         }
     }
 }

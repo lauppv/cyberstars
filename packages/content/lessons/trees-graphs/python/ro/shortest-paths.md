@@ -30,9 +30,9 @@ Lista de adiacență ține acum o pereche pentru fiecare vecin: nodul și costul
 
 ---
 
-**Algoritmul lui Dijkstra** găsește cea mai mică distanță de la un nod de start la fiecare alt nod. Ține un **dist** pentru fiecare nod: cel mai scurt drum găsit până acum, sau **-1** cât timp nu există niciunul. La început doar startul are unul, **0**
+**Algoritmul lui Dijkstra** găsește cea mai mică distanță de la un nod de start la fiecare alt nod. Ține o **distanta** pentru fiecare nod: cel mai scurt drum găsit până acum, sau **-1** cât timp nu există niciunul. La început doar startul are una, **0**
 
-Apoi, iar și iar: ia nodul cu cel mai mic **dist** care nu e încă terminat și marchează-l terminat. Pentru fiecare vecin al lui, vezi dacă drumul prin el e mai scurt decât ce are vecinul. Dacă e, acesta e noul **dist** al vecinului
+Apoi, iar și iar: ia nodul cu cea mai mică **distanta** care nu e încă terminat și marchează-l terminat. Pentru fiecare vecin al lui, vezi dacă drumul prin el e mai scurt decât ce are vecinul. Dacă e, acesta e noua **distanta** a vecinului
 
 ```visual
 {"use": "dijkstra-dist"}
@@ -40,7 +40,7 @@ Apoi, iar și iar: ia nodul cu cel mai mic **dist** care nu e încă terminat ș
 
 **1** primește întâi **4**, direct de la **0**. Când e luat **2**, drumul prin el costă **1 + 2 = 3**, așa că **1** scade la **3**. **3** primește **9** prin **2**, apoi **8** prin **1**
 
-Nodul luat nu mai e îmbunătățit niciodată mai târziu. Toate costurile sunt pozitive, așa că orice alt drum până la el ar trece printr-un nod neterminat, al cărui **dist** e cel puțin la fel de mare, și apoi ar mai adăuga ceva. Tot de aceea algoritmul lui Dijkstra are nevoie de costuri de **0** sau mai mari: o muchie cu cost negativ ar putea face până la urmă un nod terminat mai ieftin
+Nodul luat nu mai e îmbunătățit niciodată mai târziu. Toate costurile sunt pozitive, așa că orice alt drum până la el ar trece printr-un nod neterminat, a cărui **distanta** e cel puțin la fel de mare, și apoi ar mai adăuga ceva. Tot de aceea algoritmul lui Dijkstra are nevoie de costuri de **0** sau mai mari: o muchie cu cost negativ ar putea face până la urmă un nod terminat mai ieftin
 
 ---
 
@@ -57,19 +57,19 @@ for i in range(m):
     vecini[v].append((u, cost))
 
 start = 0
-dist = [-1] * n
-dist[start] = 0
+distanta = [-1] * n
+distanta[start] = 0
 heap = [(0, start)]
 while len(heap) > 0:
     d, u = heapq.heappop(heap)
-    if d > dist[u]:
+    if d > distanta[u]:
         continue
     for v, cost in vecini[u]:
-        if dist[v] == -1 or d + cost < dist[v]:
-            dist[v] = d + cost
-            heapq.heappush(heap, (dist[v], v))
+        if distanta[v] == -1 or d + cost < distanta[v]:
+            distanta[v] = d + cost
+            heapq.heappush(heap, (distanta[v], v))
 
-print(dist)
+print(distanta)
 ```
 
 Rezultat
@@ -78,7 +78,7 @@ Rezultat
 [0, 3, 1, 8, 11]
 ```
 
-Un heap nu poate schimba o valoare aflată deja în el, așa că atunci când **1** scade de la **4** la **3**, perechea nouă intră, iar cea veche rămâne. Iese mai târziu, după ce **1** e terminat, iar **d > dist[u]** o observă și o sare
+Un heap nu poate schimba o valoare aflată deja în el, așa că atunci când **1** scade de la **4** la **3**, perechea nouă intră, iar cea veche rămâne. Iese mai târziu, după ce **1** e terminat, iar **d > distanta[u]** o observă și o sare
 
 ```text
 iau       heap dupa, cea mai mica prima

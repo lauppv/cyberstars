@@ -1,6 +1,6 @@
 {
   "type": "graph",
-  "caption": "Ia nodul neterminat cu cel mai mic dist și vezi dacă drumul prin el e mai scurt pentru vecinii lui",
+  "caption": "Ia nodul neterminat cu cea mai mică distanță și vezi dacă drumul prin el e mai scurt pentru vecinii lui",
   "vertices": [
     [0, 1],
     [1, 0],
@@ -24,11 +24,11 @@
       },
       "rows": [
         {
-          "label": "dist",
+          "label": "distanta",
           "values": [0, "-", "-", "-", "-"]
         }
       ],
-      "caption": "La început doar startul are un dist: 0"
+      "caption": "La început doar startul are o distanță: 0"
     },
     {
       "focus": [0],
@@ -44,7 +44,7 @@
       },
       "rows": [
         {
-          "label": "dist",
+          "label": "distanta",
           "values": [0, 4, 1, "-", "-"]
         }
       ],
@@ -66,7 +66,7 @@
       },
       "rows": [
         {
-          "label": "dist",
+          "label": "distanta",
           "values": [0, 3, 1, 9, "-"]
         }
       ],
@@ -85,7 +85,7 @@
       },
       "rows": [
         {
-          "label": "dist",
+          "label": "distanta",
           "values": [0, 3, 1, 8, "-"]
         }
       ],
@@ -105,7 +105,7 @@
       },
       "rows": [
         {
-          "label": "dist",
+          "label": "distanta",
           "values": [0, 3, 1, 8, 11]
         }
       ],
@@ -123,7 +123,7 @@
       },
       "rows": [
         {
-          "label": "dist",
+          "label": "distanta",
           "values": [0, 3, 1, 8, 11]
         }
       ],
