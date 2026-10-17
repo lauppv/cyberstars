@@ -37,6 +37,20 @@ Intrare:
 Ieșire: -1
 ```
 
+```visual
+{
+  "type": "array",
+  "values": [10, 20, 30, 40],
+  "caption": "Tabloul este sortat. stanga și dreapta marchează partea în care încă mai căutăm, iar mijloc este mijlocul ei. Când numărul din mijloc nu e 25, jumătatea în care 25 nu poate fi se estompează și căutăm în cealaltă.",
+  "markers": ["stanga = {i}", "mijloc = {i}", "dreapta = {i}"],
+  "steps": [
+    {"title": "Pasul 1", "at": [0, 1, 3], "compare": [1], "ask": "mijloc = (0 + 3) / 2 = 1, iar numărul de acolo este 20. Este 20 < 25?", "caption": "Da, deci 25 poate fi doar în dreapta lui mijloc: stanga = mijloc + 1 = 2", "move": [2, null, 3], "range": [2, 3]},
+    {"title": "Pasul 2", "at": [2, 2, 3], "compare": [2], "ask": "mijloc = (2 + 3) / 2 = 2, iar numărul de acolo este 30. Este 30 < 25?", "caption": "Nu, 30 > 25, deci 25 poate fi doar în stânga lui mijloc: dreapta = mijloc - 1 = 1", "move": [2, null, 1], "range": [2, 1]},
+    {"title": "Pasul 3", "caption": "stanga = 2 a trecut de dreapta = 1, deci nu mai e nimic de căutat. 25 nu e în tablou: afișăm -1"}
+  ]
+}
+```
+
 ```
 Intrare:
 1
