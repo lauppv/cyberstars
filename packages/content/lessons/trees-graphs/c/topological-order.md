@@ -4,14 +4,8 @@ Socks before shoes. The walls before the roof. The first course before the secon
 
 That's a directed graph. Each task is a vertex, and an edge **u v** means "**u** must come before **v**"
 
-```text
-    0 ----> 1 ----> 3
-    |               ^
-    v               |
-    2 ----> 4 ------+
-            |
-            v
-            5
+```visual
+{"use": "topo-tasks"}
 ```
 
 ```text
@@ -32,24 +26,16 @@ An order of all the vertices where every edge points forward, from a vertex to o
 
 How many tasks a vertex waits for is the number of edges coming into it, its **in-degree**. Count it while reading the edges: each edge **u v** adds one to the in-degree of **v**
 
-```text
-vertex      0  1  2  3  4  5
-in-degree   0  1  1  2  1  1
+```visual
+{"use": "topo-indegree"}
 ```
 
 A vertex with in-degree **0** waits for nothing: it's ready. Do it, and every task waiting for it waits for one task less, so take one off the in-degree of each vertex its edges lead to. Some of them reach **0** and become ready in turn. Keep going until every vertex is done
 
 That's **Kahn's algorithm**. When several vertices are ready at once, any of them can go next, and each choice gives another order. To get one answer every time, take the **smallest** ready vertex
 
-```text
-take   in-degrees after (0 1 2 3 4 5)   ready
-       0 1 1 2 1 1                      0
-0      - 0 0 2 1 1                      1 2
-1      - - 0 1 1 1                      2
-2      - - - 1 0 1                      4
-4      - - - 0 - 0                      3 5
-3      - - - - - 0                      5
-5      - - - - - -
+```visual
+{"use": "topo-kahn"}
 ```
 
 The order is **0 1 2 4 3 5**
@@ -115,11 +101,8 @@ Each of the **n** steps takes one vertex, so after **n** steps every vertex is i
 
 Not every graph has an order. Suppose **1** waits for **3**, **3** for **2**, and **2** for **1**
 
-```text
-    0 ----> 1 ----> 2
-            ^       |
-            |       v
-            +------ 3
+```visual
+{"use": "topo-cycle"}
 ```
 
 ```text

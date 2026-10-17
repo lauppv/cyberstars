@@ -1,0 +1,36 @@
+{
+  "type": "graph",
+  "caption": "Fiecare sarcină e un nod, iar o muchie u v înseamnă că u trebuie să vină înainte de v",
+  "directed": true,
+  "vertices": [
+    [0, 0],
+    [1, 0],
+    [0, 1],
+    [2, 0],
+    [1, 1],
+    [1, 2]
+  ],
+  "edges": [
+    [0, 1],
+    [1, 3],
+    [0, 2],
+    [2, 4],
+    [4, 3],
+    [4, 5]
+  ],
+  "steps": [
+    {
+      "focus": [3],
+      "seen": [1, 4],
+      "used": [
+        [1, 3],
+        [4, 3]
+      ],
+      "caption": "3 îi așteaptă și pe 1, și pe 4"
+    },
+    {
+      "focus": [0],
+      "caption": "Nicio muchie nu intră în 0: nu așteaptă pe nimeni, așa că poate fi primul"
+    }
+  ]
+}

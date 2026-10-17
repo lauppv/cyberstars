@@ -4,14 +4,8 @@
 
 Asta e un graf orientat. Fiecare sarcină e un nod, iar o muchie **u v** înseamnă „**u** trebuie să vină înainte de **v**”
 
-```text
-    0 ----> 1 ----> 3
-    |               ^
-    v               |
-    2 ----> 4 ------+
-            |
-            v
-            5
+```visual
+{"use": "topo-tasks"}
 ```
 
 ```text
@@ -32,24 +26,16 @@ O ordine a tuturor nodurilor în care fiecare muchie arată înainte, de la un n
 
 Câte sarcini așteaptă un nod este numărul de muchii care intră în el, **gradul lui de intrare**. Numără-l în timp ce citești muchiile: fiecare muchie **u v** adaugă unu la gradul de intrare al lui **v**
 
-```text
-nod                0  1  2  3  4  5
-grad de intrare    0  1  1  2  1  1
+```visual
+{"use": "topo-indegree"}
 ```
 
 Un nod cu gradul de intrare **0** nu așteaptă pe nimeni: e gata. Fă-l, și fiecare sarcină care îl aștepta mai are de așteptat cu una mai puțin, așa că scade cu unu gradul de intrare al fiecărui nod la care duc muchiile lui. Unele ajung la **0** și devin gata la rândul lor. Continuă până când toate nodurile sunt făcute
 
 Acesta e **algoritmul lui Kahn**. Când mai multe noduri sunt gata deodată, oricare dintre ele poate urma, și fiecare alegere dă altă ordine. Ca să obții de fiecare dată un singur răspuns, ia **cel mai mic** nod gata
 
-```text
-iau    grade dupa (0 1 2 3 4 5)   gata
-       0 1 1 2 1 1                0
-0      - 0 0 2 1 1                1 2
-1      - - 0 1 1 1                2
-2      - - - 1 0 1                4
-4      - - - 0 - 0                3 5
-3      - - - - - 0                5
-5      - - - - - -
+```visual
+{"use": "topo-kahn"}
 ```
 
 Ordinea este **0 1 2 4 3 5**
@@ -115,11 +101,8 @@ Fiecare dintre cei **n** pași ia un nod, așa că după **n** pași fiecare nod
 
 Nu orice graf are o ordine. Să zicem că **1** îl așteaptă pe **3**, **3** pe **2**, iar **2** pe **1**
 
-```text
-    0 ----> 1 ----> 2
-            ^       |
-            |       v
-            +------ 3
+```visual
+{"use": "topo-cycle"}
 ```
 
 ```text
