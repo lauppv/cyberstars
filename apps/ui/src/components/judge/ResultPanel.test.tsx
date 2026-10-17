@@ -185,6 +185,31 @@ describe('ResultPanel', () => {
     expect(screen.getByText(/found 3, 4 in your code/)).toBeInTheDocument();
   });
 
+  it('words every kind of code check, never showing a raw key', () => {
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{
+          ...base,
+          structureFailures: [
+            { type: 'require', rule: { kind: 'recursion' } },
+            { type: 'require', rule: { kind: 'loop', type: 'while' } },
+            { type: 'require', rule: { kind: 'function' } },
+            { type: 'require', rule: { kind: 'class', name: 'Node' } },
+            { type: 'forbid', rule: { kind: 'cast' } },
+          ],
+          cases: [{ index: 0, visible: true, passed: true }],
+        }}
+      />,
+    );
+    expect(screen.getByText(/with recursion/)).toBeInTheDocument();
+    expect(screen.getByText('Use a while loop')).toBeInTheDocument();
+    expect(screen.getByText('Write a function of your own')).toBeInTheDocument();
+    expect(screen.getByText('Define the class Node')).toBeInTheDocument();
+    expect(screen.getByText(/asks you to do without/)).toBeInTheDocument();
+    expect(screen.queryByText(/tests\.structure/)).toBeNull();
+  });
+
   it('names a timeout and a crash', () => {
     const { unmount } = render(
       <ResultPanel
