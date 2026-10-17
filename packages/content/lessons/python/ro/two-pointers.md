@@ -61,6 +61,21 @@ Cum funcționează? Adunăm cel mai mic număr (stanga) și cel mai mare (dreapt
 
 Asta funcționează pentru că lista este **sortată**. Mutarea lui stanga crește suma, mutarea lui dreapta o scade. Restrângem din ambele părți până când găsim răspunsul (sau pointerii se întâlnesc, ceea ce înseamnă că nu există nicio pereche)
 
+```visual
+{
+  "type": "array",
+  "values": [1, 2, 4, 7, 11, 15],
+  "caption": "Lista este sortată. stanga pornește de la cel mai mic număr, iar dreapta de la cel mai mare. Când suma lor e prea mare, dreapta se mută spre stânga, la un număr mai mic; când e prea mică, stanga se mută spre dreapta, la unul mai mare.",
+  "markers": ["stanga = {i}", "dreapta = {i}"],
+  "steps": [
+    {"at": [0, 5], "compare": [0, 5], "ask": "Este 1 + 15 = 16 egal cu 9?", "caption": "Nu, suma 16 e prea mare, deci dreapta se mută un pas spre stânga", "move": [0, 4], "range": [0, 4]},
+    {"at": [0, 4], "compare": [0, 4], "ask": "Este 1 + 11 = 12 egal cu 9?", "caption": "Nu, suma 12 e tot prea mare, deci dreapta se mută iar spre stânga", "move": [0, 3], "range": [0, 3]},
+    {"at": [0, 3], "compare": [0, 3], "ask": "Este 1 + 7 = 8 egal cu 9?", "caption": "Nu, suma 8 e prea mică, deci stanga se mută un pas spre dreapta", "move": [1, 3], "range": [1, 3]},
+    {"at": [1, 3], "compare": [1, 3], "ask": "Este 2 + 7 = 9 egal cu 9?", "caption": "Da! Perechea este (2, 7)", "done": [1, 3]}
+  ]
+}
+```
+
 ---
 
 Un exemplu mai simplu: **elimină duplicatele** dintr-o listă sortată (păstrând doar elementele unice)

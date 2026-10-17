@@ -61,6 +61,21 @@ How does it work? We add the smallest (left) and largest (right) numbers. If the
 
 This works because the list is **sorted**. Moving left increases the sum, moving right decreases it. We narrow down from both sides until we find the answer (or the pointers meet, meaning no pair exists)
 
+```visual
+{
+  "type": "array",
+  "values": [1, 2, 4, 7, 11, 15],
+  "caption": "The list is sorted. left starts at the smallest number and right at the biggest. When their sum is too big, right moves left to a smaller number; when it is too small, left moves right to a bigger one.",
+  "markers": ["left = {i}", "right = {i}"],
+  "steps": [
+    {"at": [0, 5], "compare": [0, 5], "ask": "Is 1 + 15 = 16 equal to 9?", "caption": "No, 16 is too big, so right moves one step left", "move": [0, 4], "range": [0, 4]},
+    {"at": [0, 4], "compare": [0, 4], "ask": "Is 1 + 11 = 12 equal to 9?", "caption": "No, 12 is still too big, so right moves left again", "move": [0, 3], "range": [0, 3]},
+    {"at": [0, 3], "compare": [0, 3], "ask": "Is 1 + 7 = 8 equal to 9?", "caption": "No, 8 is too small, so left moves one step right", "move": [1, 3], "range": [1, 3]},
+    {"at": [1, 3], "compare": [1, 3], "ask": "Is 2 + 7 = 9 equal to 9?", "caption": "Yes! The pair is (2, 7)", "done": [1, 3]}
+  ]
+}
+```
+
 ---
 
 A simpler example: **remove duplicates** from a sorted list (keeping only unique elements)
