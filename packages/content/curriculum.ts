@@ -1795,4 +1795,11 @@ export const lessons = [
     sortOrder: 6,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'kth-smallest',
+    title: 'Medium · k-th Smallest Value in a Binary Search Tree',
+    sortOrder: 7,
+    hasCodeFile: true,
+  },
 ];
