@@ -2,8 +2,8 @@
   "comparator": "trimmed",
   "structure": { "requires": [{ "kind": "function", "name": "sunt_anagrame" }] },
   "cases": [
-    { "visible": true, "stdin": "listen\nsilent" },
-    { "visible": true, "stdin": "hello\nworld" },
+    { "visible": true, "stdin": "roma\namor" },
+    { "visible": true, "stdin": "salut\nlume" },
     { "stdin": "abc\ncba" },
     { "stdin": "aabb\nbbaa" },
     { "stdin": "cat\ncats" },

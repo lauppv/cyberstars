@@ -1,4 +1,4 @@
-Două cuvinte sunt **anagrame** dacă conțin exact **aceleași litere**, doar într-o ordine diferită. **listen** și **silent**. **evil** și **vile**. **astronomer** și **moon starer** (ok, ultimul are un spațiu, dar înțelegi ideea)
+Două cuvinte sunt **anagrame** dacă conțin exact **aceleași litere**, doar într-o ordine diferită. **roma** și **amor**. **mare** și **rame**. **cal** și **lac**
 
 Cum verificăm? Cea mai simplă abordare: **sortăm literele** și le comparăm
 
@@ -6,9 +6,9 @@ Cum verificăm? Cea mai simplă abordare: **sortăm literele** și le comparăm
 def este_anagrama(cuvant1, cuvant2):
     return sorted(cuvant1.lower()) == sorted(cuvant2.lower())
 
-print(este_anagrama("listen", "silent"))
-print(este_anagrama("hello", "world"))
-print(este_anagrama("Evil", "Vile"))
+print(este_anagrama("roma", "amor"))
+print(este_anagrama("salut", "lume"))
+print(este_anagrama("Mare", "Rame"))
 ```
 
 Ieșire
@@ -19,7 +19,7 @@ False
 True
 ```
 
-De ce funcționează? Dacă două cuvinte au aceleași litere, sortarea acelor litere va produce **același rezultat**. „listen" sortat → „eilnst". „silent" sortat → „eilnst". La fel? Da → anagramă
+De ce funcționează? Dacă două cuvinte au aceleași litere, sortarea acelor litere va produce **același rezultat**. „roma" sortat → „amor". „amor" sortat → „amor". La fel? Da → anagramă
 
 Folosim **.lower()** ca să nu conteze majusculele și minusculele
 
@@ -35,24 +35,24 @@ def este_anagrama(cuvant1, cuvant2):
     if len(cuvant1) != len(cuvant2):
         return False
 
-    freq1 = {}
+    frecventa1 = {}
     for caracter in cuvant1:
-        if caracter in freq1:
-            freq1[caracter] += 1
+        if caracter in frecventa1:
+            frecventa1[caracter] += 1
         else:
-            freq1[caracter] = 1
+            frecventa1[caracter] = 1
 
-    freq2 = {}
+    frecventa2 = {}
     for caracter in cuvant2:
-        if caracter in freq2:
-            freq2[caracter] += 1
+        if caracter in frecventa2:
+            frecventa2[caracter] += 1
         else:
-            freq2[caracter] = 1
+            frecventa2[caracter] = 1
 
-    return freq1 == freq2
+    return frecventa1 == frecventa2
 
-print(este_anagrama("listen", "silent"))
-print(este_anagrama("hello", "world"))
+print(este_anagrama("roma", "amor"))
+print(este_anagrama("salut", "lume"))
 ```
 
 Ieșire
@@ -92,8 +92,8 @@ Doi membri ai echipajului transmit fiecare câte o parolă amestecată. Sasul se
 Dacă utilizatorul tastează
 
 ```text
-listen
-silent
+roma
+amor
 ```
 
 programul ar trebui să afișeze
@@ -106,8 +106,8 @@ Acces permis
 Dacă utilizatorul tastează
 
 ```text
-orbit
-robot
+mare
+mere
 ```
 
 programul ar trebui să afișeze

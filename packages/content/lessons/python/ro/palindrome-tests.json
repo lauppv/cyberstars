@@ -11,11 +11,11 @@
   "cases": [
     {
       "visible": true,
-      "inject": { "coduri": { "$list": ["racecar", "signal", "level", "orbit", "radar"] } }
+      "inject": { "coduri": { "$list": ["rotitor", "semnal", "capac", "orbita", "radar"] } }
     },
     { "visible": true, "inject": { "coduri": { "$list": ["abc", "aba"] } } },
     { "inject": { "coduri": { "$list": ["x"] } } },
-    { "inject": { "coduri": { "$list": ["noon", "test", "kayak"] } } },
+    { "inject": { "coduri": { "$list": ["sus", "test", "radar"] } } },
     { "inject": { "coduri": { "$list": ["aa", "ab", "aaa"] } } },
     { "inject": { "coduri": { "$list": [] } }, "generated": true },
     { "inject": { "coduri": { "$list": ["a"] } }, "generated": true },
@@ -23,11 +23,11 @@
     { "inject": { "coduri": { "$list": ["abba", "abca", "abcba", "abcda"] } }, "generated": true },
     { "inject": { "coduri": { "$list": ["xyzzyx", "xyzyx", "xyzzx"] } }, "generated": true },
     {
-      "inject": { "coduri": { "$list": ["madam", "refer", "civic", "rotor"] } },
+      "inject": { "coduri": { "$list": ["cojoc", "capac", "rotor", "sas"] } },
       "generated": true
     },
     {
-      "inject": { "coduri": { "$list": ["signal", "orbit", "probe", "comet"] } },
+      "inject": { "coduri": { "$list": ["semnal", "orbita", "sonda", "cometa"] } },
       "generated": true
     },
     { "inject": { "coduri": { "$list": ["zz", "zzz", "zzzz", "zy"] } }, "generated": true },
@@ -35,11 +35,11 @@
       "inject": { "coduri": { "$list": ["abcdefgfedcba", "abcdefggfedcba", "abcdefgxfedcba"] } },
       "generated": true
     },
-    { "inject": { "coduri": { "$list": ["stats", "stats", "start"] } }, "generated": true },
+    { "inject": { "coduri": { "$list": ["ana", "ana", "anas"] } }, "generated": true },
     { "inject": { "coduri": { "$list": ["ba", "bab", "abab", "baab"] } }, "generated": true },
-    { "inject": { "coduri": { "$list": ["racecar", "racecars", "aracecar"] } }, "generated": true },
+    { "inject": { "coduri": { "$list": ["rotitor", "rotitori", "arotitor"] } }, "generated": true },
     {
-      "inject": { "coduri": { "$list": ["deified", "repaper", "reviver", "redivider"] } },
+      "inject": { "coduri": { "$list": ["ele", "elefaccafele", "aerisirea", "sus"] } },
       "generated": true
     },
     { "inject": { "coduri": { "$list": ["q", "w", "e"] } }, "generated": true },

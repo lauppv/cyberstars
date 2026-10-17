@@ -2,15 +2,15 @@ Am văzut pe scurt în lecția despre dicționare cum să numărăm literele din
 
 ```py
 cuvant = "mississippi"
-freq = {}
+frecventa = {}
 
 for litera in cuvant:
-    if litera in freq:
-        freq[litera] += 1
+    if litera in frecventa:
+        frecventa[litera] += 1
     else:
-        freq[litera] = 1
+        frecventa[litera] = 1
 
-print(freq)
+print(frecventa)
 ```
 
 Rezultat **{'m': 1, 'i': 4, 's': 4, 'p': 2}**
@@ -22,20 +22,20 @@ Hai să înțelegem asta linie cu linie. Pornim cu un dicționar gol. Pentru fie
 Asta funcționează pentru **orice**, nu doar pentru litere. Numărarea cuvintelor dintr-o propoziție
 
 ```py
-propozitie = "I like pizza and I like burgers and I like tacos"
+propozitie = "imi place pizza si imi place supa si imi place tortul"
 cuvinte = propozitie.split(" ")
-freq = {}
+frecventa = {}
 
 for cuvant in cuvinte:
-    if cuvant in freq:
-        freq[cuvant] += 1
+    if cuvant in frecventa:
+        frecventa[cuvant] += 1
     else:
-        freq[cuvant] = 1
+        frecventa[cuvant] = 1
 
-print(freq)
+print(frecventa)
 ```
 
-Rezultat **{'I': 3, 'like': 3, 'pizza': 1, 'and': 2, 'burgers': 1, 'tacos': 1}**
+Rezultat **{'imi': 3, 'place': 3, 'pizza': 1, 'si': 2, 'supa': 1, 'tortul': 1}**
 
 ---
 
@@ -46,7 +46,7 @@ Odată ce avem un dicționar de frecvențe, putem răspunde la întrebări inter
 ```py
 cea_mai_buna_cheie = ""
 cel_mai_bun_numar = 0
-for cheie, contor in freq.items():
+for cheie, contor in frecventa.items():
     if contor > cel_mai_bun_numar:
         cel_mai_bun_numar = contor
         cea_mai_buna_cheie = cheie
@@ -57,7 +57,7 @@ print(f"Cel mai comun: {cea_mai_buna_cheie} ({cel_mai_bun_numar} de ori)")
 
 ```py
 unice = []
-for cheie, contor in freq.items():
+for cheie, contor in frecventa.items():
     if contor == 1:
         unice.append(cheie)
 print(f"Unice: {unice}")
@@ -66,7 +66,7 @@ print(f"Unice: {unice}")
 **Sortăm după frecvență?**
 
 ```py
-elemente_sortate = sorted(freq.items(), key=lambda x: x[1], reverse=True)
+elemente_sortate = sorted(frecventa.items(), key=lambda x: x[1], reverse=True)
 for element, contor in elemente_sortate:
     print(f"{element}: {contor}")
 ```
@@ -79,14 +79,14 @@ Un caz de utilizare din viața reală: construiești un sistem de analiză pentr
 
 ```py
 inscrieri = ["python", "java", "python", "c", "python", "java", "c", "python", "java", "python"]
-freq = {}
+frecventa = {}
 for curs in inscrieri:
-    if curs in freq:
-        freq[curs] += 1
+    if curs in frecventa:
+        frecventa[curs] += 1
     else:
-        freq[curs] = 1
+        frecventa[curs] = 1
 
-for curs, contor in freq.items():
+for curs, contor in frecventa.items():
     print(f"{curs}: {contor} studenti")
 ```
 
@@ -105,7 +105,7 @@ c: 2 studenti
 Antena stației înregistrează fiecare semnal pe care îl primește după litera canalului într-o listă numită semnale. Controlul Misiunii vrea să știe cât de ocupat este fiecare canal și care este cel mai aglomerat.
 
 1. Construiește un **dicționar de frecvențe** care numără de câte ori apare fiecare canal.
-2. Afișează fiecare canal și numărătoarea lui ca `canal: contor`, **sortate alfabetic** (parcurge `sorted(freq)`).
+2. Afișează fiecare canal și numărătoarea lui ca `canal: contor`, **sortate alfabetic** (parcurge `sorted(frecventa)`).
 3. Găsește canalul **cel mai comun** și afișează `Cel mai comun: ` urmat de litera lui.
 
 **Ieșire**

@@ -11,12 +11,12 @@ Dacă încerci să scrii totul dintr-o dată, te vei pierde. În schimb, gânde�
 **Pasul 1**: Cum obțin cuvintele individuale dintr-o propoziție? → folosește **.split()**
 
 ```py
-propozitie = "the cat sat on the mat the cat"
+propozitie = "pisica sta pe pres pisica doarme pe pres pisica"
 cuvinte = propozitie.split(" ")
 print(cuvinte)
 ```
 
-Rezultat **['the', 'cat', 'sat', 'on', 'the', 'mat', 'the', 'cat']**
+Rezultat **['pisica', 'sta', 'pe', 'pres', 'pisica', 'doarme', 'pe', 'pres', 'pisica']**
 
 **Pasul 2**: Cum număr de câte ori apare fiecare cuvânt? → folosește un dicționar
 
@@ -30,7 +30,7 @@ for cuvant in cuvinte:
 print(contor)
 ```
 
-Rezultat **{'the': 3, 'cat': 2, 'sat': 1, 'on': 1, 'mat': 1}**
+Rezultat **{'pisica': 3, 'sta': 1, 'pe': 2, 'pres': 2, 'doarme': 1}**
 
 **Pasul 3**: Cum găsesc care cuvânt are numărul cel mai mare? → parcurge dicționarul
 
@@ -44,7 +44,7 @@ for cuvant, numar in contor.items():
 print(f"Cel mai frecvent: {cel_mai_bun_cuvant} ({cel_mai_bun_numar} ori)")
 ```
 
-Rezultat **Cel mai frecvent: the (3 ori)**
+Rezultat **Cel mai frecvent: pisica (3 ori)**
 
 ---
 

@@ -1,5 +1,5 @@
 ```py
-coduri = ["racecar", "signal", "level", "orbit", "radar"]
+coduri = ["rotitor", "semnal", "capac", "orbita", "radar"]
 
 def este_palindrom(cuvant):
     for i in range(len(cuvant) // 2):
