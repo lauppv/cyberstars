@@ -33,6 +33,21 @@ Ieșire:
 10
 ```
 
+```visual
+{
+  "type": "stack",
+  "ends": true,
+  "caption": "O stivă: ultima valoare pusă e prima care iese, ca farfuriile puse una peste alta. scoate și varf lucrează amândouă cu vârful.",
+  "steps": [
+    {"push": [{"id": "v1", "text": 10}], "focus": ["v1"], "caption": "pune 10: 10 ajunge pe stiva goală"},
+    {"push": [{"id": "v2", "text": 20}], "focus": ["v2"], "caption": "pune 20: 20 ajunge deasupra lui 10"},
+    {"ask": "Ce afișează varf?", "focus": ["v2"], "caption": "20: varf arată vârful și îl lasă pe loc"},
+    {"ask": "Ce afișează scoate?", "pop": 1, "focus": ["v2"], "caption": "20: scoate ia vârful de pe stivă. Acum 10 e în vârf"},
+    {"ask": "Ce afișează scoate?", "pop": 1, "focus": ["v1"], "caption": "10: scoate ia vârful de pe stivă. Acum stiva e goală"}
+  ]
+}
+```
+
 ```
 Intrare:
 3
