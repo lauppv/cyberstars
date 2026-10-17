@@ -33,6 +33,22 @@ describe('contentDir', () => {
   });
 });
 
+describe('contentDir on a multi-language course', () => {
+  it('opens the folder of the language given, Python without one', () => {
+    expect(contentDir('trees-graphs', 'java')).toMatch(/lessons\/trees-graphs\/java$/);
+    expect(contentDir('trees-graphs')).toMatch(/lessons\/trees-graphs\/python$/);
+  });
+
+  it('ignores the language on a course with one', () => {
+    expect(contentDir('algo-c', 'java')).toMatch(/algorithms\/c$/);
+  });
+
+  it('rejects a language that is not a code language', () => {
+    expect(() => contentDir('trees-graphs', '../python')).toThrow(AppError);
+    expect(() => contentDir('python', 'ruby')).toThrow(AppError);
+  });
+});
+
 describe('hasTestsFile', () => {
   it('is true for a lesson shipping a tests file', () => {
     expect(hasTestsFile('python', 'anagram')).toBe(true);
