@@ -135,7 +135,7 @@ export function ActivityHeatmap({
                     background: day.isFuture ? 'transparent' : HEATMAP_COLORS[day.level],
                     border: day.isFuture ? '1px dashed rgba(102,102,128,0.15)' : 'none',
                   }}
-                  title={`${day.date}: ${day.count === 0 ? t('home.noActivity') : t('home.lessonsCompleted', { count: day.count })}`}
+                  title={`${new Date(`${day.date}T00:00`).toLocaleDateString(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' })}: ${day.count === 0 ? t('home.noActivity') : t('home.lessonsCompleted', { count: day.count })}`}
                 />
               ))}
             </div>

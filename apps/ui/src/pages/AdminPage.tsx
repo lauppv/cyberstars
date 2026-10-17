@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -213,7 +214,7 @@ export function AdminPage() {
 
               <p className="@2xl:col-span-2 text-[11px] text-[var(--text3)] text-center">
                 {t('admin.generatedAt', {
-                  time: new Date(stats.generatedAt).toLocaleTimeString(),
+                  time: new Date(stats.generatedAt).toLocaleTimeString(i18next.language),
                 })}
               </p>
             </div>

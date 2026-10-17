@@ -1,4 +1,4 @@
-import type { TFunction } from 'i18next';
+import i18next, { type TFunction } from 'i18next';
 import type { InjectValue, StructureFailure, TestCaseResult } from '@cyberstars/shared/tests';
 
 // The most precise text first: a loop of one statement, a function or class
@@ -82,7 +82,7 @@ export function timeAgo(iso: string, t: TFunction): string {
   if (hrs < 24) return t('forum.time.hourAgo', { count: hrs });
   const days = Math.floor(hrs / 24);
   if (days < 30) return t('forum.time.dayAgo', { count: days });
-  return new Date(iso).toLocaleDateString();
+  return new Date(iso).toLocaleDateString(i18next.language);
 }
 
 // "Test 3", or "Test 3 (hidden)" for a case the student can't see in the lesson.

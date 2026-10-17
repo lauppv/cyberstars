@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { useNavigate } from 'react-router';
 
 export function LaniakeaExplorerPage() {
@@ -1465,7 +1466,7 @@ export function LaniakeaExplorerPage() {
         const d = camera.position.length();
         const posStr = (d >= 0 ? '+' : '') + (d / 1000).toFixed(3);
         posEl.textContent = posStr;
-        velEl.textContent = Math.round(speed * 600).toLocaleString();
+        velEl.textContent = Math.round(speed * 600).toLocaleString(i18next.language);
 
         if (now > nextPressureChange) {
           pressureTarget = 100.8 + Math.random() * 1.4;

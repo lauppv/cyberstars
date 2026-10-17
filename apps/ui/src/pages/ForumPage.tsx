@@ -28,7 +28,7 @@ function timeAgo(iso: string): string {
   if (hrs < 24) return i18next.t('forum.time.hourAgo', { count: hrs });
   const days = Math.floor(hrs / 24);
   if (days < 30) return i18next.t('forum.time.dayAgo', { count: days });
-  return new Date(iso).toLocaleDateString();
+  return new Date(iso).toLocaleDateString(i18next.language);
 }
 
 /** Surfaces the server's error message (e.g. "Thread is locked") when present. */
@@ -228,7 +228,7 @@ function ForumIndex({
                       </div>
                     </div>
                     <div className="cat-counts">
-                      <strong>{c.threadCount.toLocaleString()}</strong>
+                      <strong>{c.threadCount.toLocaleString(i18next.language)}</strong>
                       <span>{t('forum.threadsLower', { count: c.threadCount })}</span>
                       <span>{t('forum.postsCount', { count: c.postCount })}</span>
                     </div>
@@ -271,11 +271,11 @@ function ForumIndex({
 
       <div className="forum-stats">
         <div className="fs-item">
-          <div className="fs-value">{totalThreads.toLocaleString()}</div>
+          <div className="fs-value">{totalThreads.toLocaleString(i18next.language)}</div>
           <div className="fs-label">{t('forum.stats.threads')}</div>
         </div>
         <div className="fs-item">
-          <div className="fs-value">{totalPosts.toLocaleString()}</div>
+          <div className="fs-value">{totalPosts.toLocaleString(i18next.language)}</div>
           <div className="fs-label">{t('forum.stats.posts')}</div>
         </div>
         <div className="fs-item">
