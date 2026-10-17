@@ -44,14 +44,16 @@ export function CodeOutput({
   return (
     <div
       data-testid="code-output"
-      className={`rounded-[var(--radius-sm)] panel overflow-hidden${fillHeight ? ' flex-1 min-h-0 flex flex-col' : ''}`}
+      className={`relative rounded-[var(--radius-sm)] panel overflow-hidden${fillHeight ? ' flex-1 min-h-0 flex flex-col' : ''}`}
     >
-      <div className="px-3 py-1.5 text-[11px] tracking-[1px] text-[var(--text3)] font-semibold border-b border-[var(--border)] bg-[var(--glass)] flex items-center gap-2">
-        <span>{t('code.output')}</span>
-        {isRunning && (
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse" />
-        )}
-      </div>
+      {/* No title: the placeholder says what the box is for, and a running
+          program shows as the dot alone in its corner */}
+      {isRunning && (
+        <span
+          data-testid="output-running"
+          className="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse"
+        />
+      )}
       <div
         ref={containerRef}
         className={`p-4 font-mono text-[13px] overflow-auto whitespace-pre-wrap${fillHeight ? ' flex-1 min-h-0' : ''}`}
