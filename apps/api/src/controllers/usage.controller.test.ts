@@ -88,6 +88,15 @@ describe('revealSolution', () => {
     );
   });
 
+  it("reads a multi-language lesson's solution in the language on screen", async () => {
+    mockPaths.readLocalized.mockReturnValue('x');
+    mockUserRepo.getRole.mockResolvedValue('USER');
+    const req = solutionReq('trees', { lang: 'en', language: 'java' });
+    req.params.courseKey = 'trees-graphs';
+    await revealSolution(req, mockRes(), vi.fn());
+    expect(mockPaths.contentDir).toHaveBeenCalledWith('trees-graphs', 'java');
+  });
+
   it('404s without spending a reveal when the lesson has no solution', async () => {
     mockPaths.readLocalized.mockReturnValue('');
     const next = vi.fn();

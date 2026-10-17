@@ -30,7 +30,7 @@ export async function revealSolution(req: Request, res: Response, next: NextFunc
     const lessonSlug = req.params.lessonSlug as string;
     const lang = req.body.lang === 'ro' ? 'ro' : 'en';
     const solution = LESSON_SLUG.test(lessonSlug)
-      ? readLocalized(contentDir(courseKey), `${lessonSlug}-solution.md`, lang)
+      ? readLocalized(contentDir(courseKey, req.body.language), `${lessonSlug}-solution.md`, lang)
       : '';
     if (!solution) throw new AppError(404, 'Solution not found');
 
