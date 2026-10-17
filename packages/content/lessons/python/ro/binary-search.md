@@ -65,6 +65,21 @@ Hai să urmărim pas cu pas **cautare_binara([1,3,5,7,9,11,13,15,17,19], 13)**
 - stanga=5, dreapta=6, mijloc=5 → numere[5]=11 < 13 → stanga=6
 - stanga=6, dreapta=6, mijloc=6 → numere[6]=13 == 13 → **găsit la indexul 6!**
 
+```visual
+{
+  "type": "array",
+  "values": [1, 3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "caption": "Lista este sortată. stanga și dreapta marchează partea în care încă mai căutăm, iar mijloc este mijlocul ei. Când numărul din mijloc nu e 13, jumătatea în care 13 nu poate fi se estompează și căutăm în cealaltă.",
+  "markers": ["stanga = {i}", "mijloc = {i}", "dreapta = {i}"],
+  "steps": [
+    {"title": "Pasul 1", "at": [0, 4, 9], "compare": [4], "ask": "mijloc = (0 + 9) // 2 = 4, iar numere[4] este 9. Este 9 < 13?", "caption": "Da, deci 13 e în dreapta lui mijloc: stanga = mijloc + 1 = 5", "move": [5, null, 9], "range": [5, 9]},
+    {"title": "Pasul 2", "at": [5, 7, 9], "compare": [7], "ask": "mijloc = (5 + 9) // 2 = 7, iar numere[7] este 15. Este 15 < 13?", "caption": "Nu, 15 > 13, deci 13 e în stânga lui mijloc: dreapta = mijloc - 1 = 6", "move": [5, null, 6], "range": [5, 6]},
+    {"title": "Pasul 3", "at": [5, 5, 6], "compare": [5], "ask": "mijloc = (5 + 6) // 2 = 5, iar numere[5] este 11. Este 11 < 13?", "caption": "Da, deci 13 e în dreapta lui mijloc: stanga = mijloc + 1 = 6", "move": [6, null, 6], "range": [6, 6]},
+    {"title": "Pasul 4", "at": [6, 6, 6], "compare": [6], "ask": "mijloc = (6 + 6) // 2 = 6, iar numere[6] este 13. Este 13 egal cu 13?", "caption": "Da! Găsit la indexul 6, după ce am verificat 4 numere în loc de 10", "done": [6]}
+  ]
+}
+```
+
 ---
 
 O putem scrie și **recursiv**
