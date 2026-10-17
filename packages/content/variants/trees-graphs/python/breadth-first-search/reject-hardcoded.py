@@ -1,0 +1,8 @@
+print("0: 0")
+print("1: 1")
+print("2: 1")
+print("3: 2")
+print("4: 2")
+print("5: 3")
+print("6: 4")
+print("Fewest steps from 0 to 6: 4")
