@@ -4,6 +4,8 @@ import { VisualPlayer } from './VisualPlayer';
 import type { ArrayVisual } from './parseVisual';
 import type { BoxesVisual } from './parseBoxes';
 import type { TreeVisual } from './parseTree';
+import type { GraphVisual } from './parseGraph';
+import type { GridVisual } from './parseGrid';
 import { VisualSteps } from './VisualSteps';
 
 const visual: ArrayVisual = {
@@ -642,5 +644,221 @@ describe('VisualPlayer', () => {
       expect(cell(0)).toHaveAttribute('data-state', 'focused');
       expect(cell(2)).toBeNull();
     });
+  });
+});
+
+describe('VisualPlayer, a graph', () => {
+  const graph: GraphVisual = {
+    type: 'graph',
+    caption: 'A graph',
+    directed: false,
+    list: false,
+    matrix: false,
+    vertices: [
+      [0, 0],
+      [1, 0],
+      [0, 1],
+    ],
+    edges: [[0, 1]],
+    steps: [
+      {
+        add: [[1, 2]],
+        focus: [1],
+        seen: [2],
+        done: [0],
+        used: [[2, 1]],
+        tags: { 1: '1' },
+        rows: [{ label: 'queue', values: [2] }],
+        code: 'queue.append(2)',
+        caption: 'Take 1',
+      },
+      { caption: 'Done' },
+    ],
+  };
+
+  const vertex = (v: number) => document.querySelector(`[data-vertex="${v}"]`);
+  const edge = (key: string) => document.querySelector<SVGGElement>(`[data-edge="${key}"]`);
+
+  let queued: FrameRequestCallback[] = [];
+  const playAt = (ms: number) =>
+    act(() => {
+      const now = queued;
+      queued = [];
+      for (const tick of now) tick(ms);
+    });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    queued = [];
+  });
+
+  const reduceMotion = () =>
+    vi.stubGlobal('matchMedia', (query: string) => ({ matches: query.includes('reduce') }));
+
+  it('stands each vertex where the visual puts it and lights what the step names', () => {
+    reduceMotion();
+    render(<VisualPlayer visual={graph} />);
+    // A tag needs room beside the vertex, so the edges of the drawing are 29.2 units in
+    expect(vertex(0)).toHaveAttribute('cx', '29.2');
+    expect(vertex(0)).toHaveAttribute('cy', '27');
+    expect(vertex(1)).toHaveAttribute('cx', '89.2');
+    expect(vertex(2)).toHaveAttribute('cy', '87');
+    expect(edge('1-2')).toBeNull();
+    expect(document.querySelector('[data-tag]')).toBeNull();
+    expect(document.querySelector('[data-code]')).toBeNull();
+    next();
+    expect(edge('1-2')).toHaveAttribute('data-lit', 'true');
+    expect(edge('0-1')).not.toHaveAttribute('data-lit');
+    expect(vertex(0)).toHaveAttribute('data-state', 'done');
+    expect(vertex(1)).toHaveAttribute('data-state', 'focused');
+    expect(vertex(2)).toHaveAttribute('data-state', 'seen');
+    expect(document.querySelector('[data-tag="1"]')).toBeInTheDocument();
+    expect(document.querySelector('[data-row="queue"]')).toHaveTextContent('queue2');
+    expect(document.querySelector('[data-code]')).toHaveTextContent('queue.append(2)');
+    expect(document.querySelector('[data-arrow]')).toBeNull();
+    next();
+    expect(vertex(1)).toHaveAttribute('data-state', 'idle');
+    expect(document.querySelector('[data-code]')).toBeNull();
+  });
+
+  it("puts a tag in the corner furthest from the vertex's edges", () => {
+    reduceMotion();
+    render(
+      <VisualPlayer
+        visual={{ ...graph, steps: [{ add: [[1, 2]], tags: { 1: '1', 0: '0' }, caption: 'x' }] }}
+      />,
+    );
+    next();
+    const at = (text: string) => {
+      const rect = document.querySelector(`[data-tag="${text}"] rect`)!;
+      return [Number(rect.getAttribute('x')), Number(rect.getAttribute('y'))];
+    };
+    // 1 has edges to its left and down to the left: its tag goes above right
+    expect(at('1')[0]).toBeGreaterThan(89.2);
+    expect(at('1')[1]).toBeLessThan(27);
+    // 0 has edges to its right and below: its tag goes above left
+    expect(at('0')[0]).toBeLessThan(29.2);
+    expect(at('0')[1]).toBeLessThan(27);
+  });
+
+  it('draws arrows on a directed graph and a weight on each edge', () => {
+    reduceMotion();
+    render(
+      <VisualPlayer
+        visual={{ ...graph, directed: true, edges: [[0, 1, 4]], steps: [{ caption: 'x' }] }}
+      />,
+    );
+    expect(document.querySelectorAll('[data-arrow]')).toHaveLength(1);
+    expect(document.querySelector('[data-weight="4"]')).toHaveTextContent('4');
+  });
+
+  it('builds the matrix and the list from the edges, lit only the way the step names', () => {
+    reduceMotion();
+    render(
+      <VisualPlayer
+        visual={{
+          ...graph,
+          list: true,
+          matrix: true,
+          steps: [{ add: [[1, 2]], used: [[1, 2]], caption: '1 2' }],
+        }}
+      />,
+    );
+    const cell = (key: string) => document.querySelector(`[data-matrix="${key}"]`);
+    const row = (v: number) => document.querySelector(`[data-row="${v}:"]`);
+    expect(cell('0-1')).toHaveTextContent('1');
+    expect(cell('1-0')).toHaveTextContent('1');
+    expect(cell('1-2')).toHaveTextContent('0');
+    expect(row(1)).toHaveTextContent('1:0');
+    expect(row(2)).toHaveTextContent('2:[ ]');
+    next();
+    expect(cell('1-2')).toHaveTextContent('1');
+    expect(cell('1-2')).toHaveAttribute('data-lit', 'true');
+    expect(cell('2-1')).not.toHaveAttribute('data-lit');
+    expect(row(1)).toHaveTextContent('1:02');
+    expect(row(1)!.querySelectorAll('[data-lit]')).toHaveLength(1);
+    expect(row(2)!.querySelectorAll('[data-lit]')).toHaveLength(0);
+    // The edge itself lights up either way
+    expect(edge('1-2')).toHaveAttribute('data-lit', 'true');
+  });
+
+  it('writes a weighted list as pairs and the weight in the matrix', () => {
+    reduceMotion();
+    render(
+      <VisualPlayer
+        visual={{
+          ...graph,
+          list: true,
+          matrix: true,
+          directed: true,
+          edges: [[0, 1, 4]],
+          steps: [{ caption: 'x' }],
+        }}
+      />,
+    );
+    expect(document.querySelector('[data-row="0:"]')).toHaveTextContent('0:(1, 4)');
+    expect(document.querySelector('[data-row="1:"]')).toHaveTextContent('1:[ ]');
+    expect(document.querySelector('[data-matrix="0-1"]')).toHaveTextContent('4');
+    expect(document.querySelector('[data-matrix="1-0"]')).toHaveTextContent('0');
+  });
+
+  it('fades a new edge in at the speed picked, and out again on Previous', () => {
+    vi.stubGlobal('matchMedia', () => ({ matches: false }));
+    vi.stubGlobal('requestAnimationFrame', (tick: FrameRequestCallback) => queued.push(tick));
+    vi.stubGlobal('cancelAnimationFrame', () => {});
+    render(<VisualPlayer visual={graph} />);
+    next();
+    playAt(0);
+    playAt(600);
+    expect(Number(edge('1-2')!.getAttribute('opacity'))).toBeCloseTo(0.5);
+    expect(edge('0-1')).toHaveAttribute('opacity', '1');
+    playAt(5000);
+    expect(edge('1-2')).toHaveAttribute('opacity', '1');
+    fireEvent.click(screen.getByRole('button', { name: /previous/i }));
+    playAt(0);
+    playAt(300);
+    expect(Number(edge('1-2')!.getAttribute('opacity'))).toBeCloseTo(0.75);
+    playAt(5000);
+    expect(edge('1-2')).toBeNull();
+  });
+});
+
+describe('VisualPlayer, a grid', () => {
+  const grid: GridVisual = {
+    type: 'grid',
+    caption: 'A maze',
+    cells: ['..#', '...'],
+    steps: [
+      {
+        set: [[0, 0, 0]],
+        focus: [[0, 0]],
+        seen: [[0, 1]],
+        rows: [{ label: 'queue', values: ['(0, 1)'] }],
+        code: 'dist[0][0] = 0',
+        caption: 'The start',
+      },
+      { set: [[0, 1, 1]], done: [[0, 0]], caption: 'Ring 1' },
+    ],
+  };
+
+  const cell = (key: string) => document.querySelector(`[data-cell="${key}"]`);
+
+  it('draws walls and free cells, with the values written and the step lit', () => {
+    render(<VisualPlayer visual={grid} />);
+    expect(document.querySelector('[data-wall="0,2"]')).toBeInTheDocument();
+    expect(cell('0,2')).toBeNull();
+    expect(cell('0,0')).toHaveAttribute('data-state', 'idle');
+    expect(cell('0,0')).toHaveTextContent('');
+    next();
+    expect(cell('0,0')).toHaveAttribute('data-state', 'focused');
+    expect(cell('0,0')).toHaveTextContent('0');
+    expect(cell('0,1')).toHaveAttribute('data-state', 'seen');
+    expect(document.querySelector('[data-row="queue"]')).toHaveTextContent('queue(0, 1)');
+    expect(document.querySelector('[data-code]')).toHaveTextContent('dist[0][0] = 0');
+    next();
+    expect(cell('0,0')).toHaveAttribute('data-state', 'done');
+    expect(cell('0,0')).toHaveTextContent('0');
+    expect(cell('0,1')).toHaveTextContent('1');
+    expect(cell('1,1')).toHaveAttribute('data-state', 'idle');
   });
 });

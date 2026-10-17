@@ -1,0 +1,179 @@
+{
+  "type": "graph",
+  "caption": "Fiecare apel rămâne deschis până se termină tot ce se poate atinge din nodul lui",
+  "vertices": [
+    [0, 0],
+    [1, 0],
+    [0, 1],
+    [1, 1],
+    [0.5, 2],
+    [2, 0],
+    [2, 1],
+    [2, 2]
+  ],
+  "edges": [
+    [0, 1],
+    [0, 2],
+    [1, 3],
+    [2, 4],
+    [3, 4],
+    [5, 6]
+  ],
+  "steps": [
+    {
+      "focus": [0],
+      "rows": [
+        {
+          "label": "apeluri",
+          "values": ["dfs(0)"]
+        },
+        {
+          "label": "vizitate",
+          "values": [0]
+        }
+      ],
+      "caption": "dfs(0): vizitează 0. Vecinii lui sunt 1 și 2; 1 nu e văzut, așa că intră în el"
+    },
+    {
+      "focus": [1],
+      "seen": [0],
+      "used": [[0, 1]],
+      "rows": [
+        {
+          "label": "apeluri",
+          "values": ["dfs(0)", "dfs(1)"]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1]
+        }
+      ],
+      "caption": "dfs(1): vizitează 1. Vecinii lui sunt 0 și 3; 3 nu e văzut, așa că intră în el"
+    },
+    {
+      "focus": [3],
+      "seen": [0, 1],
+      "used": [[1, 3]],
+      "rows": [
+        {
+          "label": "apeluri",
+          "values": ["dfs(0)", "dfs(1)", "dfs(3)"]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3]
+        }
+      ],
+      "caption": "dfs(3): vizitează 3. Vecinii lui sunt 1 și 4; 4 nu e văzut, așa că intră în el"
+    },
+    {
+      "focus": [4],
+      "seen": [0, 1, 3],
+      "used": [[3, 4]],
+      "rows": [
+        {
+          "label": "apeluri",
+          "values": ["dfs(0)", "dfs(1)", "dfs(3)", "dfs(4)"]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3, 4]
+        }
+      ],
+      "caption": "dfs(4): vizitează 4. Vecinii lui sunt 2 și 3; 2 nu e văzut, așa că intră în el"
+    },
+    {
+      "focus": [2],
+      "seen": [0, 1, 3, 4],
+      "used": [[4, 2]],
+      "rows": [
+        {
+          "label": "apeluri",
+          "values": ["dfs(0)", "dfs(1)", "dfs(3)", "dfs(4)", "dfs(2)"]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3, 4, 2]
+        }
+      ],
+      "caption": "dfs(2): vizitează 2. Vecinii lui, 0 și 4, sunt amândoi văzuți: înapoi"
+    },
+    {
+      "focus": [4],
+      "seen": [0, 1, 3],
+      "done": [2],
+      "rows": [
+        {
+          "label": "apeluri",
+          "values": ["dfs(0)", "dfs(1)", "dfs(3)", "dfs(4)"]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3, 4, 2]
+        }
+      ],
+      "caption": "Înapoi în dfs(4): 3 e văzut acum, înapoi"
+    },
+    {
+      "focus": [3],
+      "seen": [0, 1],
+      "done": [2, 4],
+      "rows": [
+        {
+          "label": "apeluri",
+          "values": ["dfs(0)", "dfs(1)", "dfs(3)"]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3, 4, 2]
+        }
+      ],
+      "caption": "Înapoi în dfs(3): nu mai e nimic, înapoi"
+    },
+    {
+      "focus": [1],
+      "seen": [0],
+      "done": [2, 4, 3],
+      "rows": [
+        {
+          "label": "apeluri",
+          "values": ["dfs(0)", "dfs(1)"]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3, 4, 2]
+        }
+      ],
+      "caption": "Înapoi în dfs(1): nu mai e nimic, înapoi"
+    },
+    {
+      "focus": [0],
+      "done": [2, 4, 3, 1],
+      "rows": [
+        {
+          "label": "apeluri",
+          "values": ["dfs(0)"]
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3, 4, 2]
+        }
+      ],
+      "caption": "Înapoi în dfs(0): 2 e văzut acum, gata. Ordinea e 0 1 3 4 2"
+    },
+    {
+      "done": [2, 4, 3, 1, 0],
+      "rows": [
+        {
+          "label": "apeluri",
+          "values": []
+        },
+        {
+          "label": "vizitate",
+          "values": [0, 1, 3, 4, 2]
+        }
+      ],
+      "caption": "Parcurgerea în lățime ar vizita 0 1 2 3 4: aceleași noduri, în altă ordine. La 5, 6 și 7 nu se ajunge de la 0"
+    }
+  ]
+}

@@ -4,13 +4,16 @@
 // pass, stays up until another step changes it. Two optional pointer labels sit under the two
 // boxes a step compares, such as "j = {i}" and "j + 1" for the loop's index ({i} is the box's
 // position). Anything that doesn't fit comes back null, and the fence shows as plain text. A
-// fence of type "boxes" draws boxes and arrows instead, see parseBoxes, and one of type "tree" a
-// binary tree, see parseTree. Any of them can carry an id, which keeps the step the student is on
-// when the lesson's text comes back in another programming language.
+// fence of type "boxes" draws boxes and arrows instead, see parseBoxes, one of type "tree" a binary
+// tree, see parseTree, one of type "graph" a graph, see parseGraph, and one of type "grid" a grid
+// of cells, see parseGrid. Any of them can carry an id, which keeps the step the student is on when
+// the lesson's text comes back in another programming language.
 
 import { isCaption, isRecord } from './checks';
 import { parseBoxes, type BoxesVisual } from './parseBoxes';
 import { parseTree, type TreeVisual } from './parseTree';
+import { parseGraph, type GraphVisual } from './parseGraph';
+import { parseGrid, type GridVisual } from './parseGrid';
 
 interface ArrayStep {
   title?: string;
@@ -29,7 +32,16 @@ export interface ArrayVisual {
   steps: ArrayStep[];
 }
 
-export type Visual = (ArrayVisual | BoxesVisual | TreeVisual) & { id?: string };
+export type Visual = (ArrayVisual | BoxesVisual | TreeVisual | GraphVisual | GridVisual) & {
+  id?: string;
+};
+
+const PARSERS: Record<string, (raw: Record<string, unknown>) => Visual | null> = {
+  boxes: parseBoxes,
+  tree: parseTree,
+  graph: parseGraph,
+  grid: parseGrid,
+};
 
 function isIndex(value: unknown, length: number): value is number {
   return Number.isInteger(value) && (value as number) >= 0 && (value as number) < length;
@@ -85,8 +97,11 @@ export function parseVisual(source: string): Visual | null {
     return null;
   }
   if (!isRecord(raw)) return null;
-  const visual =
-    raw.type === 'boxes' ? parseBoxes(raw) : raw.type === 'tree' ? parseTree(raw) : parseArray(raw);
+  const parse =
+    typeof raw.type === 'string' && Object.hasOwn(PARSERS, raw.type)
+      ? PARSERS[raw.type]
+      : parseArray;
+  const visual = parse(raw);
   if (!visual || raw.id === undefined) return visual;
   return isCaption(raw.id) ? { ...visual, id: raw.id } : null;
 }

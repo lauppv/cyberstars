@@ -4,21 +4,8 @@ La câte strângeri de mână de tine e un necunoscut? Câte stații sunt între
 
 Parcurgerea pe niveluri lua rădăcina, apoi tot ce era cu un pas sub ea, apoi tot ce era cu doi pași sub ea. Într-un graf nu există rădăcină, dar poți alege orice nod de pornire și să mergi în afară de la el la fel: întâi vecinii lui, apoi vecinii lor, și tot așa. Asta este o **parcurgere în lățime**, sau **BFS** (din engleză, breadth-first search)
 
-```text
-    0 ----- 1 ----- 4
-    |       |       |
-    |       |       |
-    2 ----- 3       5 ----- 6
-```
-
-Pornind de la **0**, nodurile vin în inele în jurul lui
-
-```text
-0 pasi    0
-1 pas     1 2
-2 pasi    3 4
-3 pasi    5
-4 pasi    6
+```visual
+{"use": "bfs-rings"}
 ```
 
 Inelul în care e un nod este **distanța** lui de la start: cele mai puține muchii pe care trebuie să le treci ca să ajungi la el. **3** e la doi pași de **0**, prin **1** sau prin **2**, pe oricare drum ai merge
@@ -103,16 +90,8 @@ vizitez 6 la distanta 4
 
 Iată coada după ce fiecare nod e scos și vecinii lui noi sunt puși
 
-```text
-scot   vecini noi   coada dupa
-                    [0]
-0      1 2          [1, 2]
-1      3 4          [2, 3, 4]
-2                   [3, 4]
-3                   [4]
-4      5            [5]
-5      6            [6]
-6                   []
+```visual
+{"use": "bfs-queue"}
 ```
 
 Când e scos **2**, vecinii lui **0** și **3** sunt deja văzuți, așa că nu intră nimeni. Coada ține cel mult două distanțe deodată, inelul care se scoate și următorul, așa că nodurile ies din ea inel cu inel
@@ -127,8 +106,8 @@ Iar distanța e corectă de prima dată când e scrisă. Fiecare nod dintr-un in
 
 Cei mai puțini pași de la start până la orice nod **t** sunt acum **dist[t]**. Un nod la care parcurgerea n-a ajuns niciodată își păstrează **-1**: nu există niciun drum până la el, lucru care se poate întâmpla când graful vine în bucăți separate
 
-```text
-    0 ----- 1       2 ----- 3
+```visual
+{"use": "bfs-pieces"}
 ```
 
 De la **0**, distanțele sunt **0 1 -1 -1**
@@ -211,6 +190,12 @@ Pentru labirintul de mai sus, rezultatul este
  2 3 4 # 8
  # 4 5 6 7
 pasi pana la iesire: 7
+```
+
+Iată cum se completează distanțele, pornind din colțul din stânga sus
+
+```visual
+{"use": "bfs-maze"}
 ```
 
 **String.format("%2d", x)** scrie **x** pe două poziții, ca să se alinieze coloanele. Parcurgerea e aceeași ca pe lista de muchii: s-a schimbat doar felul în care un nod își găsește vecinii

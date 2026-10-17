@@ -1,0 +1,41 @@
+{
+  "type": "graph",
+  "caption": "Un graf orientat: fiecare muchie are o s\u0103geat\u0103 \u0219i merge doar \u00eentr-un sens",
+  "directed": true,
+  "vertices": [
+    [0, 0],
+    [1, 0],
+    [1, 1],
+    [0, 1]
+  ],
+  "edges": [
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [3, 0]
+  ],
+  "steps": [
+    {
+      "focus": [0],
+      "seen": [1],
+      "used": [[0, 1]],
+      "caption": "De la 0 po\u021bi merge la 1, \u00eencotro arat\u0103 s\u0103geata"
+    },
+    {
+      "focus": [1],
+      "seen": [2],
+      "used": [[1, 2]],
+      "ask": "Po\u021bi merge de la 1 direct \u00eenapoi la 0?",
+      "caption": "Nu: singura s\u0103geat\u0103 care pleac\u0103 din 1 merge la 2"
+    },
+    {
+      "used": [
+        [0, 1],
+        [1, 2],
+        [2, 3],
+        [3, 0]
+      ],
+      "caption": "Fiecare muchie se scrie de unde pleac\u0103 p\u00e2n\u0103 unde ajunge: 0-1, 1-2, 2-3, 3-0"
+    }
+  ]
+}

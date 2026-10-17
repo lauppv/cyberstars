@@ -4,14 +4,8 @@ Parcurgerea în lățime găsește drumul cu cele mai puține muchii. Pe o hart�
 
 Dă-i fiecărei muchii un număr, **costul** ei: o lungime în kilometri, un timp în minute, un preț. În intrare, fiecare linie cu o muchie primește un al treilea număr, costul
 
-```text
-    0 ----4---- 1 ----5---- 3 ----3---- 4
-    |           |           |
-    1           2           |
-    |           |           |
-    2 ----------+           |
-    |                       |
-    +-----------8-----------+
+```visual
+{"use": "dijkstra-roads"}
 ```
 
 ```text
@@ -30,12 +24,8 @@ Drumurile merg în ambele sensuri, așa că graful e neorientat. De la **0** la 
 
 Lista de adiacență ține acum o pereche pentru fiecare vecin: nodul și costul muchiei care duce acolo
 
-```text
-0: (1, 4) (2, 1)
-1: (0, 4) (2, 2) (3, 5)
-2: (0, 1) (1, 2) (3, 8)
-3: (1, 5) (2, 8) (4, 3)
-4: (3, 3)
+```visual
+{"use": "dijkstra-list"}
 ```
 
 ---
@@ -44,14 +34,8 @@ Lista de adiacență ține acum o pereche pentru fiecare vecin: nodul și costul
 
 Apoi, iar și iar: ia nodul cu cel mai mic **dist** care nu e încă terminat și marchează-l terminat. Pentru fiecare vecin al lui, vezi dacă drumul prin el e mai scurt decât ce are vecinul. Dacă e, acesta e noul **dist** al vecinului
 
-```text
-iau    dist dupa (0 1 2 3 4)
-       0  -  -  -  -
-0      0  4  1  -  -
-2      0  3  1  9  -
-1      0  3  1  8  -
-3      0  3  1  8  11
-4      0  3  1  8  11
+```visual
+{"use": "dijkstra-dist"}
 ```
 
 **1** primește întâi **4**, direct de la **0**. Când e luat **2**, drumul prin el costă **1 + 2 = 3**, așa că **1** scade la **3**. **3** primește **9** prin **2**, apoi **8** prin **1**

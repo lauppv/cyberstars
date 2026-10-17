@@ -7,9 +7,13 @@ import type { Visual } from './parseVisual';
 import { arrayFrames } from './arrayFrames';
 import { boxFrames } from './boxFrames';
 import { treeFrames } from './treeFrames';
+import { graphFrames } from './graphFrames';
+import { gridFrames } from './gridFrames';
 import { ArrayView } from './ArrayView';
 import { BoxesView } from './BoxesView';
 import { TreeView } from './TreeView';
+import { GraphView } from './GraphView';
+import { GridView } from './GridView';
 import { VisualSteps } from './VisualSteps';
 import { Words } from './Words';
 
@@ -28,15 +32,20 @@ const ICON_BUTTON =
 
 export function VisualPlayer({ visual }: { visual: Visual }) {
   const { t } = useTranslation();
-  const drawn = useMemo(
-    () =>
-      visual.type === 'array'
-        ? { type: 'array' as const, visual, frames: arrayFrames(visual) }
-        : visual.type === 'boxes'
-          ? { type: 'boxes' as const, visual, frames: boxFrames(visual) }
-          : { type: 'tree' as const, visual, frames: treeFrames(visual) },
-    [visual],
-  );
+  const drawn = useMemo(() => {
+    switch (visual.type) {
+      case 'array':
+        return { type: visual.type, visual, frames: arrayFrames(visual) };
+      case 'boxes':
+        return { type: visual.type, visual, frames: boxFrames(visual) };
+      case 'tree':
+        return { type: visual.type, visual, frames: treeFrames(visual) };
+      case 'graph':
+        return { type: visual.type, visual, frames: graphFrames(visual) };
+      case 'grid':
+        return { type: visual.type, visual, frames: gridFrames(visual) };
+    }
+  }, [visual]);
   const { frames } = drawn;
   // A visual with an id opens on the step the student left it on, when the lesson's text comes back
   // in another programming language
@@ -143,8 +152,18 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
         box={box}
         moveMs={moveMs}
       />
-    ) : (
+    ) : drawn.type === 'tree' ? (
       <TreeView visual={drawn.visual} frames={drawn.frames} step={step} box={box} moveMs={moveMs} />
+    ) : drawn.type === 'graph' ? (
+      <GraphView
+        visual={drawn.visual}
+        frames={drawn.frames}
+        step={step}
+        box={box}
+        moveMs={moveMs}
+      />
+    ) : (
+      <GridView visual={drawn.visual} frames={drawn.frames} step={step} box={box} />
     );
 
   const title = (

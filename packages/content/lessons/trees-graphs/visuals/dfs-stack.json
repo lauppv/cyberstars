@@ -1,0 +1,138 @@
+{
+  "type": "graph",
+  "caption": "The last vertex put on the stack is the first taken off, so the walk keeps going deeper",
+  "vertices": [
+    [0, 0],
+    [1, 0],
+    [0, 1],
+    [1, 1],
+    [0.5, 2],
+    [2, 0],
+    [2, 1],
+    [2, 2]
+  ],
+  "edges": [
+    [0, 1],
+    [0, 2],
+    [1, 3],
+    [2, 4],
+    [3, 4],
+    [5, 6]
+  ],
+  "steps": [
+    {
+      "seen": [0],
+      "rows": [
+        {
+          "label": "stack",
+          "values": [0]
+        },
+        {
+          "label": "visited",
+          "values": []
+        }
+      ],
+      "caption": "Start with 0 on the stack"
+    },
+    {
+      "focus": [0],
+      "used": [
+        [0, 2],
+        [0, 1]
+      ],
+      "seen": [1, 2],
+      "rows": [
+        {
+          "label": "stack",
+          "values": [2, 1]
+        },
+        {
+          "label": "visited",
+          "values": [0]
+        }
+      ],
+      "caption": "Take 0 off the top and visit it. Its neighbours go on in reverse, 2 then 1, so 1 is on top"
+    },
+    {
+      "focus": [1],
+      "used": [[1, 3]],
+      "seen": [2, 3],
+      "done": [0],
+      "rows": [
+        {
+          "label": "stack",
+          "values": [2, 3]
+        },
+        {
+          "label": "visited",
+          "values": [0, 1]
+        }
+      ],
+      "caption": "Take 1 off the top and visit it. 3 goes on"
+    },
+    {
+      "focus": [3],
+      "used": [[3, 4]],
+      "seen": [2, 4],
+      "done": [0, 1],
+      "rows": [
+        {
+          "label": "stack",
+          "values": [2, 4]
+        },
+        {
+          "label": "visited",
+          "values": [0, 1, 3]
+        }
+      ],
+      "caption": "Take 3 off the top and visit it. 4 goes on"
+    },
+    {
+      "focus": [4],
+      "used": [[4, 2]],
+      "seen": [2],
+      "done": [0, 1, 3],
+      "rows": [
+        {
+          "label": "stack",
+          "values": [2, 2]
+        },
+        {
+          "label": "visited",
+          "values": [0, 1, 3, 4]
+        }
+      ],
+      "caption": "Take 4 off the top and visit it. 2 goes on: it's on the stack already, but not seen yet"
+    },
+    {
+      "focus": [2],
+      "done": [0, 1, 3, 4],
+      "rows": [
+        {
+          "label": "stack",
+          "values": [2]
+        },
+        {
+          "label": "visited",
+          "values": [0, 1, 3, 4, 2]
+        }
+      ],
+      "caption": "Take 2 off the top and visit it. Nothing new to put on"
+    },
+    {
+      "focus": [2],
+      "done": [0, 1, 3, 4],
+      "rows": [
+        {
+          "label": "stack",
+          "values": []
+        },
+        {
+          "label": "visited",
+          "values": [0, 1, 3, 4, 2]
+        }
+      ],
+      "caption": "Take 2 off the top: it's seen already, so skip it. The stack is empty: the order is 0 1 3 4 2"
+    }
+  ]
+}

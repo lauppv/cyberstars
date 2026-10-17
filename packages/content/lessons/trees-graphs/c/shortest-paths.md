@@ -4,14 +4,8 @@ Breadth-first search finds the way with the fewest edges. On a map, that's not a
 
 Give every edge a number, its **weight**: a length in kilometres, a time in minutes, a price. In the input, each edge line gets a third number, the weight
 
-```text
-    0 ----4---- 1 ----5---- 3 ----3---- 4
-    |           |           |
-    1           2           |
-    |           |           |
-    2 ----------+           |
-    |                       |
-    +-----------8-----------+
+```visual
+{"use": "dijkstra-roads"}
 ```
 
 ```text
@@ -30,12 +24,8 @@ The roads go both ways, so the graph is undirected. From **0** to **3**, the few
 
 The adjacency list now keeps a pair for each neighbour: the vertex and the weight of the edge that leads there. In C that's two arrays side by side, **adj** for the vertex and **weight** for the weight, filled at the same spot
 
-```text
-0: (1, 4) (2, 1)
-1: (0, 4) (2, 2) (3, 5)
-2: (0, 1) (1, 2) (3, 8)
-3: (1, 5) (2, 8) (4, 3)
-4: (3, 3)
+```visual
+{"use": "dijkstra-list"}
 ```
 
 ---
@@ -44,14 +34,8 @@ The adjacency list now keeps a pair for each neighbour: the vertex and the weigh
 
 Then, again and again: take the vertex with the smallest **dist** that isn't finished yet, and mark it finished. For each of its neighbours, see whether going through it is shorter than what the neighbour has. If it is, that's the neighbour's new **dist**
 
-```text
-take   dist after (0 1 2 3 4)
-       0  -  -  -  -
-0      0  4  1  -  -
-2      0  3  1  9  -
-1      0  3  1  8  -
-3      0  3  1  8  11
-4      0  3  1  8  11
+```visual
+{"use": "dijkstra-dist"}
 ```
 
 **1** first gets **4**, straight from **0**. When **2** is taken, the way through it costs **1 + 2 = 3**, so **1** drops to **3**. **3** gets **9** through **2**, then **8** through **1**

@@ -4,12 +4,8 @@ Un arbore are o regulă care îl ține în ordine: de la rădăcină până la f
 
 Un graf e făcut din **noduri**, punctele, și **muchii**, legăturile dintre câte două dintre ele. Două noduri unite de o muchie sunt **vecini**
 
-```text
-    0 ----- 1
-    |     / |
-    |    /  |
-    |   /   |
-    2       3 ----- 4
+```visual
+{"use": "graph-parts"}
 ```
 
 Graful acesta are **5** noduri, numerotate de la **0** la **4**, și **5** muchii: 0-1, 0-2, 1-2, 1-3 și 3-4. Nodul **1** are trei vecini, **0**, **2** și **3**. Nodul **4** are unul singur, **3**
@@ -22,11 +18,8 @@ Muchiile de mai sus merg în ambele sensuri, ca o stradă cu dublu sens: dacă *
 
 Unele legături merg doar într-un sens, ca o stradă cu sens unic, sau ca atunci când urmărești pe cineva online care nu te urmărește înapoi. Atunci muchiile au săgeți, iar graful este **orientat**
 
-```text
-    0 ----> 1
-    ^       |
-    |       v
-    3 <---- 2
+```visual
+{"use": "graph-directed"}
 ```
 
 Aici poți merge de la **0** la **1**, dar nu direct înapoi de la **1** la **0**. Fiecare muchie se scrie de unde pleacă până unde ajunge: 0-1, 1-2, 2-3, 3-0
@@ -85,13 +78,8 @@ Să citești muchiile e un lucru. Ca să lucrezi cu graful, trebuie să le păst
 
 Primul este o **matrice de adiacență**: un tabel cu câte un rând și câte o coloană pentru fiecare nod. Celula de pe rândul **u**, coloana **v**, are **1** dacă **u** și **v** sunt unite și **0** dacă nu sunt
 
-```text
-       0  1  2  3  4
-   0   0  1  1  0  0
-   1   1  0  1  1  0
-   2   1  1  0  0  0
-   3   0  1  0  0  1
-   4   0  0  0  1  0
+```visual
+{"use": "graph-matrix"}
 ```
 
 Într-un graf neorientat fiecare muchie umple două celule, **[u][v]** și **[v][u]**, așa că tabelul arată la fel de o parte și de alta a diagonalei. În Java e un `int[n][n]`, care pornește plin de zerouri
@@ -143,12 +131,8 @@ Matricea răspunde la „sunt unite?” dintr-un pas. Dar ocupă **n × n** celu
 
 Al doilea mod este o **listă de adiacență**: pentru fiecare nod, lista vecinilor lui. În Java, asta e un `ArrayList` de `ArrayList<Integer>`, câte o listă interioară pentru fiecare nod
 
-```text
-0: 1 2
-1: 0 2 3
-2: 0 1
-3: 1 4
-4: 3
+```visual
+{"use": "graph-list"}
 ```
 
 Fiecare muchie **u v** îl adaugă pe **v** în lista lui **u** și, pentru că graful e neorientat, pe **u** în lista lui **v**
@@ -205,13 +189,8 @@ Lista păstrează doar muchiile care există, iar vecinii unui nod sunt chiar ac
 
 Într-un graf orientat, o muchie **u v** merge doar de la **u** la **v**: umple doar **matrice[u][v]** și îl adaugă pe **v** în lista lui **u**, fără să pună nimic în lista lui **v**
 
-```text
-intrare      lista         matrice
-4 4          0: 1          0 1 0 0
-0 1          1: 2          0 0 1 0
-1 2          2: 3          0 0 0 1
-2 3          3: 0          1 0 0 0
-3 0
+```visual
+{"use": "graph-directed-store"}
 ```
 
 Acesta e graful cu săgeți de mai devreme

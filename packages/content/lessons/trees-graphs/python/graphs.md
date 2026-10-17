@@ -4,12 +4,8 @@ A tree has one rule that keeps it tidy: there's exactly one way down from the ro
 
 A graph is made of **vertices**, the points, and **edges**, the links between two of them. Two vertices joined by an edge are **neighbours**
 
-```text
-    0 ----- 1
-    |     / |
-    |    /  |
-    |   /   |
-    2       3 ----- 4
+```visual
+{"use": "graph-parts"}
 ```
 
 This graph has **5** vertices, numbered from **0** to **4**, and **5** edges: 0-1, 0-2, 1-2, 1-3 and 3-4. Vertex **1** has three neighbours, **0**, **2** and **3**. Vertex **4** has only one, **3**
@@ -22,11 +18,8 @@ The edges above work both ways, like a two-way street: if **0** is joined to **1
 
 Some links only go one way, like a one-way street, or following someone online who doesn't follow you back. Then the edges have arrows, and the graph is **directed**
 
-```text
-    0 ----> 1
-    ^       |
-    |       v
-    3 <---- 2
+```visual
+{"use": "graph-directed"}
 ```
 
 Here you can go from **0** to **1**, but not from **1** straight back to **0**. Each edge is written from where it starts to where it ends: 0-1, 1-2, 2-3, 3-0
@@ -75,13 +68,8 @@ Reading the edges is one thing. To work with the graph, you have to keep them, s
 
 The first is an **adjacency matrix**: a table with one row and one column per vertex. The cell at row **u**, column **v** holds **1** if **u** and **v** are joined, and **0** if they aren't
 
-```text
-       0  1  2  3  4
-   0   0  1  1  0  0
-   1   1  0  1  1  0
-   2   1  1  0  0  0
-   3   0  1  0  0  1
-   4   0  0  0  1  0
+```visual
+{"use": "graph-matrix"}
 ```
 
 In an undirected graph each edge fills two cells, **[u][v]** and **[v][u]**, so the table is the same on both sides of the diagonal
@@ -121,12 +109,8 @@ The matrix answers "are they joined?" in one step. But it takes **n × n** cells
 
 The second way is an **adjacency list**: for each vertex, a list of its neighbours. In Python, that's a list of lists, one per vertex
 
-```text
-0: 1 2
-1: 0 2 3
-2: 0 1
-3: 1 4
-4: 3
+```visual
+{"use": "graph-list"}
 ```
 
 Each edge **u v** adds **v** to the list of **u** and, since the graph is undirected, **u** to the list of **v**
@@ -162,13 +146,8 @@ The list keeps only the edges that exist, and a vertex's neighbours are right th
 
 In a directed graph, an edge **u v** only goes from **u** to **v**: it fills just **matrix[u][v]**, and it adds **v** to the list of **u** and nothing to the list of **v**
 
-```text
-input        list          matrix
-4 4          0: 1          0 1 0 0
-0 1          1: 2          0 0 1 0
-1 2          2: 3          0 0 0 1
-2 3          3: 0          1 0 0 0
-3 0
+```visual
+{"use": "graph-directed-store"}
 ```
 
 That's the graph with the arrows from earlier
