@@ -18,6 +18,12 @@ describe('CodeOutput', () => {
     expect(container.querySelector('.animate-pulse')).not.toBeNull();
   });
 
+  it('has no title, the placeholder saying what the box is for', () => {
+    render(<CodeOutput output="" />);
+    expect(screen.queryByText('Output')).toBeNull();
+    expect(screen.getByText('Run your code to see the output...')).toBeInTheDocument();
+  });
+
   it('renders output even when not running, without the placeholder', () => {
     render(<CodeOutput output="hello" />);
     expect(screen.queryByText('Run your code to see the output...')).toBeNull();

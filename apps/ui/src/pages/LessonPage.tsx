@@ -43,6 +43,7 @@ import { Segmented } from '../components/ui/Segmented';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ResizeHandle } from '../components/ui/ResizeHandle';
 import { useResizeSplit } from '../hooks/useResizeSplit';
+import { useDevMode } from '../hooks/useDevMode';
 import { useSubmissions } from '../hooks/useSubmissions';
 import type { LessonMeta } from '@cyberstars/shared/lesson';
 import type { RunTestsResponse } from '@cyberstars/shared/tests';
@@ -203,6 +204,29 @@ export function LessonPage() {
     max: 80,
     containerRef: workspaceRef,
   });
+  // Dev mode has splits of its own, kept on the device: the statement narrow
+  // on the left, the output low under the code
+  const devModeChoice = useDevMode();
+  // Only a lesson with an editor has the button, so only there can it be left
+  const devMode = devModeChoice.on && !isTerminal && !inTour;
+  const devHSplit = useResizeSplit({
+    axis: 'x',
+    initial: 25,
+    min: 15,
+    max: 50,
+    containerRef: bandRef,
+    storageKey: 'cyberstars.devMode.lesson',
+  });
+  const devVSplit = useResizeSplit({
+    axis: 'y',
+    initial: 85,
+    min: 40,
+    max: 92,
+    containerRef: workspaceRef,
+    storageKey: 'cyberstars.devMode.code',
+  });
+  const hSplitShown = devMode ? devHSplit : hSplit;
+  const vSplitShown = devMode ? devVSplit : vSplit;
   const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
   const loadedLessonRef = useRef('');
   const loadedStarterRef = useRef('');
@@ -588,16 +612,20 @@ export function LessonPage() {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-transparent text-[var(--text)] overflow-hidden">
-      <Topbar
-        breadcrumb={{
-          course: course?.title,
-          lesson: title,
-          courseHref: category.startsWith('algo-')
-            ? `/algorithms/${category.replace('algo-', '')}`
-            : '/courses',
-        }}
-      />
+    <div
+      className={`${devMode ? 'fixed inset-0 z-[60] @container bg-[var(--page-bg)]' : 'h-screen bg-transparent'} flex flex-col text-[var(--text)] overflow-hidden`}
+    >
+      {!devMode && (
+        <Topbar
+          breadcrumb={{
+            course: course?.title,
+            lesson: title,
+            courseHref: category.startsWith('algo-')
+              ? `/algorithms/${category.replace('algo-', '')}`
+              : '/courses',
+          }}
+        />
+      )}
 
       {/* The split needs room, so it follows the width the page really has
           (less with the tutor beside it), not the window's; below that the
@@ -625,10 +653,10 @@ export function LessonPage() {
       />
 
       <div className="flex flex-1 overflow-hidden justify-center">
-        <div ref={bandRef} className="flex w-full @5xl:w-4/5 overflow-hidden">
+        <div ref={bandRef} className={`flex w-full ${devMode ? '' : '@5xl:w-4/5'} overflow-hidden`}>
           {/* Lesson panel: the lesson, and the latest test run's result */}
           <div
-            style={{ '--split': `${hSplit.size}%` } as CSSProperties}
+            style={{ '--split': `${hSplitShown.size}%` } as CSSProperties}
             className={`${activeTab === 'lesson' ? 'flex' : 'hidden'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none min-w-0 flex-col bg-[var(--panel-bg)]`}
           >
             {leftTabs.length > 1 && (
@@ -769,8 +797,8 @@ export function LessonPage() {
           <ResizeHandle
             axis="x"
             className="hidden @2xl:block"
-            onPointerDown={hSplit.onPointerDown}
-            dragging={hSplit.dragging}
+            onPointerDown={hSplitShown.onPointerDown}
+            dragging={hSplitShown.dragging}
           />
 
           {/* Right panel: terminal or editor */}
@@ -829,7 +857,37 @@ export function LessonPage() {
                     </span>
                   )}
                   {/* The tour walks the lesson on its own, so it gets no extra actions */}
-                  {!inTour && (
+                  {!inTour && devMode && (
+                    <button
+                      type="button"
+                      data-track="dev-mode-reset"
+                      onClick={() => {
+                        devHSplit.reset();
+                        devVSplit.reset();
+                      }}
+                      aria-label={t('lesson.devModeReset')}
+                      title={t('lesson.devModeReset')}
+                      className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
+                    >
+                      <RotateCcw size={14} aria-hidden="true" />
+                    </button>
+                  )}
+                  {!inTour && devModeChoice.available && (
+                    <button
+                      type="button"
+                      data-track="dev-mode"
+                      onClick={() => {
+                        setMenuOpen(false);
+                        devModeChoice.toggle();
+                      }}
+                      aria-pressed={devMode}
+                      // One look on and off: only its words tell which it is
+                      className="flex h-8 px-3 items-center rounded-[var(--radius-sm)] text-[12px] font-semibold transition cursor-pointer border border-[var(--border)] bg-[var(--surface)] text-[var(--accent)] hover:border-[var(--accent)]"
+                    >
+                      {t(devMode ? 'lesson.devModeOn' : 'lesson.devModeOff')}
+                    </button>
+                  )}
+                  {!inTour && !devMode && (
                     <div className="relative" ref={menuRef}>
                       <button
                         onClick={() => setMenuOpen((v) => !v)}
@@ -943,7 +1001,7 @@ export function LessonPage() {
                 <div
                   data-tour="editor"
                   className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)] max-h-[60%] @2xl:max-h-none @2xl:h-[var(--vsplit)]"
-                  style={{ '--vsplit': `${vSplit.size}%` } as CSSProperties}
+                  style={{ '--vsplit': `${vSplitShown.size}%` } as CSSProperties}
                 >
                   <CodeEditor
                     value={userCode}
@@ -957,12 +1015,18 @@ export function LessonPage() {
                 <ResizeHandle
                   axis="y"
                   className="hidden @2xl:block"
-                  onPointerDown={vSplit.onPointerDown}
-                  dragging={vSplit.dragging}
+                  onPointerDown={vSplitShown.onPointerDown}
+                  dragging={vSplitShown.dragging}
                 />
 
-                <div className="flex-1 min-h-0 p-3 border-t border-[var(--border)] bg-[var(--glass)] flex flex-col">
-                  <div className="flex gap-2 mb-3 items-center flex-wrap">
+                {/* In dev mode the output sits low, so Run and Run Tests stand
+                    one above the other beside it rather than above it */}
+                <div
+                  className={`flex-1 min-h-0 p-3 border-t border-[var(--border)] bg-[var(--glass)] flex ${devMode ? 'flex-row gap-3' : 'flex-col'}`}
+                >
+                  <div
+                    className={`flex gap-2 ${devMode ? 'flex-col items-stretch shrink-0 max-w-[160px]' : 'mb-3 items-center flex-wrap'}`}
+                  >
                     <RunButton onClick={handleRun} isRunning={isRunning} />
                     {hasTests ? (
                       <button
@@ -999,12 +1063,14 @@ export function LessonPage() {
                     )}
                   </div>
 
-                  <CodeOutput
-                    output={output}
-                    isRunning={isRunning}
-                    onInput={sendInput}
-                    fillHeight
-                  />
+                  <div className="flex-1 min-w-0 min-h-0 flex flex-col">
+                    <CodeOutput
+                      output={output}
+                      isRunning={isRunning}
+                      onInput={sendInput}
+                      fillHeight
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -1025,7 +1091,7 @@ export function LessonPage() {
         visible={!!gamification.newBadge}
         onClose={gamification.dismissNewBadge}
       />
-      {tutor?.enabled && !inTour && failedRuns >= 3 && !stuckClosed && (
+      {tutor?.enabled && !inTour && !devMode && failedRuns >= 3 && !stuckClosed && (
         <TutorToast
           text={t('tutor.stuck.title')}
           mood="idle"
