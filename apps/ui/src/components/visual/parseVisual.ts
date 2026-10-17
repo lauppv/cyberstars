@@ -7,17 +7,18 @@
 // each on its own row under the array: a step puts them at positions (null hides one) while it
 // asks, and moves them after the answer; it can also keep a range in play, fading the boxes
 // outside it. Markers, the range and the done positions stay until a step changes them. Anything
-// that doesn't fit comes back null, and the fence shows as plain text. A
-// fence of type "boxes" draws boxes and arrows instead, see parseBoxes, one of type "tree" a binary
-// tree, see parseTree, one of type "graph" a graph, see parseGraph, and one of type "grid" a grid
-// of cells, see parseGrid. Any of them can carry an id, which keeps the step the student is on when
-// the lesson's text comes back in another programming language.
+// that doesn't fit comes back null, and the fence shows as plain text. A fence of type "boxes"
+// draws boxes and arrows instead, see parseBoxes, one of type "tree" a binary tree, see parseTree,
+// one of type "graph" a graph, see parseGraph, one of type "grid" a grid of cells, see parseGrid,
+// and one of type "stack" a pile of cards, see parseStack. Any of them can carry an id, which keeps
+// the step the student is on when the lesson's text comes back in another programming language.
 
 import { isCaption, isRecord } from './checks';
 import { parseBoxes, type BoxesVisual } from './parseBoxes';
 import { parseTree, type TreeVisual } from './parseTree';
 import { parseGraph, type GraphVisual } from './parseGraph';
 import { parseGrid, type GridVisual } from './parseGrid';
+import { parseStack, type StackVisual } from './parseStack';
 
 // Where each marker stands, by its place in the visual's list of markers
 export type MarkerPlaces = (number | null)[];
@@ -44,7 +45,14 @@ export interface ArrayVisual {
   steps: ArrayStep[];
 }
 
-export type Visual = (ArrayVisual | BoxesVisual | TreeVisual | GraphVisual | GridVisual) & {
+export type Visual = (
+  | ArrayVisual
+  | BoxesVisual
+  | TreeVisual
+  | GraphVisual
+  | GridVisual
+  | StackVisual
+) & {
   id?: string;
 };
 
@@ -53,6 +61,7 @@ const PARSERS: Record<string, (raw: Record<string, unknown>) => Visual | null> =
   tree: parseTree,
   graph: parseGraph,
   grid: parseGrid,
+  stack: parseStack,
 };
 
 function isIndex(value: unknown, length: number): value is number {
