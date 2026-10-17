@@ -10,7 +10,11 @@ The repo is one npm workspace with four parts: two apps and two packages they sh
 cyberstars/
 ├── apps/
 │   ├── ui/                        # @cyberstars/ui: the React app
-│   │   ├── src/                   # Pages, components, contexts, hooks, services, i18n, seo, index.css
+│   │   ├── src/                   # Pages, components, contexts, hooks, services, constants, i18n,
+│   │   │                          #   seo, index.css
+│   │   │   └── components/        # One folder per area: judge, tutor, tour, terminal, layout, ...
+│   │   │       ├── visual/        # Step-by-step visuals: parsers, frames, views, VisualPlayer
+│   │   │       └── landing/       # The visitor's page on /, its algorithm films in loopVisuals.ts
 │   │   ├── public/                # Static files; curriculum.json and lessons/ are generated here
 │   │   ├── scripts/               # Pre-renders every public page and the sitemap after the build
 │   │   └── index.html             # Page shell; Vite config sits next to it
@@ -18,13 +22,21 @@ cyberstars/
 │   └── api/                       # @cyberstars/api: the Express server
 │       ├── src/                   # Routes → controllers → services → repositories, runtimes, schemas
 │       ├── prisma/                # Database schema (source of truth), migrations, seed
-│       ├── scripts/               # Judge scripts: validate:tests, check:tests, changed lessons
+│       ├── scripts/               # validate:tests, check:tests, changed lessons, check:tutor
 │       └── test/integration/      # Integration tests against a real PostgreSQL
 │
 ├── packages/
 │   ├── shared/                    # @cyberstars/shared: types and rules both apps import
-│   └── content/                   # @cyberstars/content: lessons, algorithm challenges,
-│                                  #   the curriculum, solution variants, static-content generator
+│   └── content/                   # @cyberstars/content
+│       ├── curriculum.ts          # Every course and its lessons, in order
+│       ├── paths.ts               # courseDir: a course key (and language) to its folder
+│       ├── visuals.ts             # Puts a multi-language course's named visuals into its lessons
+│       ├── lessons/               # Courses: python (60), c (47), java (49), linux (55), and
+│       │                          #   trees-graphs (12, Beta) in python/, java/, c/ plus visuals/
+│       ├── algorithms/            # Challenge sets: python (20), java (20), c (32), and
+│       │                          #   trees-graphs (16, Beta) in python/, java/, c/
+│       ├── variants/              # Accepted and rejected solutions per tested lesson
+│       └── scripts/               # Static-content generator
 │
 ├── e2e/                           # Playwright tests that drive the UI and the API together
 ├── test/                          # Shared Vitest setup (jsdom, jest-dom matchers)
@@ -74,7 +86,8 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 Curriculum structure and lesson content are **static files**, not API routes,
 generated at build time by `packages/content/scripts/generate-static-content.ts`
 (from the curriculum in `packages/content/curriculum.ts` and the markdown under
-`packages/content/lessons` / `packages/content/algorithms`) and served from
+`packages/content/lessons` / `packages/content/algorithms`, with a multi-language
+course's visuals put into its lessons on the way) and served from
 `apps/ui/public/` (Vite's publicDir in dev, `express.static`/nginx in prod). The
 client fetches them directly via `apps/ui/src/services/lessonService.ts`, so they
 never touch the API server or the DB.
@@ -119,6 +132,14 @@ not localized per-language.
 There is **no client-writable completion endpoint**; completion is server-authoritative
 and only ever set by the judge (see below) when tests pass for a logged-in user.
 
+### Daily picks
+
+| Method | Endpoint     | Auth | Description                                                                    |
+| ------ | ------------ | ---- | ------------------------------------------------------------------------------ |
+| GET    | `/api/daily` | Yes  | Today's lesson and algorithm pick, the same for everyone, plus the bonus ratio |
+
+Completing a pick on its day adds a one-time XP bonus.
+
 ### Judge (lesson tests)
 
 | Method | Endpoint                                        | Auth  | Description                                                                                                                                                                                                                                    |
@@ -141,19 +162,25 @@ generated ones, all within the input limits each statement states.
 
 ### Forum
 
-| Method | Endpoint                              | Auth     | Description                 |
-| ------ | ------------------------------------- | -------- | --------------------------- |
-| GET    | `/api/forum/categories`               | No       | List forum categories       |
-| GET    | `/api/forum/categories/:slug/threads` | No       | List threads in category    |
-| GET    | `/api/forum/threads/:id`              | Optional | Get thread with posts       |
-| POST   | `/api/forum/threads`                  | Yes      | Create thread               |
-| POST   | `/api/forum/threads/:id/posts`        | Yes      | Reply to thread             |
-| DELETE | `/api/forum/threads/:id`              | Yes      | Delete thread (owner/admin) |
-| POST   | `/api/forum/posts/:id/reactions`      | Yes      | Toggle reaction             |
-| POST   | `/api/forum/posts/:id/solution`       | Yes      | Mark post as solution       |
-| PUT    | `/api/forum/posts/:id`                | Yes      | Edit post                   |
-| DELETE | `/api/forum/posts/:id`                | Yes      | Soft-delete post            |
-| PUT    | `/api/forum/users/:id/role`           | Admin    | Update user role            |
+| Method | Endpoint                              | Auth  | Description                 |
+| ------ | ------------------------------------- | ----- | --------------------------- |
+| GET    | `/api/forum/categories`               | Yes   | List forum categories       |
+| POST   | `/api/forum/categories`               | Staff | Create category             |
+| PUT    | `/api/forum/categories/:slug`         | Staff | Edit category               |
+| DELETE | `/api/forum/categories/:slug`         | Staff | Delete category             |
+| GET    | `/api/forum/categories/:slug/threads` | Yes   | List threads in category    |
+| GET    | `/api/forum/threads/:id`              | Yes   | Get thread with posts       |
+| POST   | `/api/forum/threads`                  | Yes   | Create thread               |
+| POST   | `/api/forum/threads/:id/posts`        | Yes   | Reply to thread             |
+| DELETE | `/api/forum/threads/:id`              | Yes   | Delete thread (owner/admin) |
+| POST   | `/api/forum/posts/:id/reactions`      | Yes   | Toggle reaction             |
+| POST   | `/api/forum/posts/:id/solution`       | Yes   | Mark post as solution       |
+| PUT    | `/api/forum/posts/:id`                | Yes   | Edit post                   |
+| DELETE | `/api/forum/posts/:id`                | Yes   | Soft-delete post            |
+| PUT    | `/api/forum/users/:id/role`           | Admin | Update user role            |
+
+Reading the forum takes an account, like writing to it. "Staff" is a moderator or
+an admin, with the role read from the DB.
 
 ### Terminal (Linux sandbox)
 
@@ -184,12 +211,12 @@ their completion saved.
 Preview-gated (`requireFeatureAccess('notifications')`): on prod a non-admin gets
 404, so the feature stays hidden until launch. Requires an identity (no guests).
 
-| Method | Endpoint                      | Auth | Description                                                                                                                                         |
-| ------ | ----------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GET    | `/api/notifications`          | Yes  | List notifications (paginated) + unread count                                                                                                       |
-| POST   | `/api/notifications/read`     | Yes  | Mark all read up to a given id                                                                                                                      |
-| POST   | `/api/notifications/:id/read` | Yes  | Mark a single notification read                                                                                                                     |
-| WS     | `/ws/user`                    | Yes  | Shared per-user socket (same preview gate); pushes `notification` frames (`new` / `unread-count`) and `dm` frames (`message` / `read` / `reaction`) |
+| Method | Endpoint                      | Auth | Description                                                                                                                                                                |
+| ------ | ----------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/api/notifications`          | Yes  | List notifications (paginated) + unread count                                                                                                                              |
+| POST   | `/api/notifications/read`     | Yes  | Mark all read up to a given id                                                                                                                                             |
+| POST   | `/api/notifications/:id/read` | Yes  | Mark a single notification read                                                                                                                                            |
+| WS     | `/ws/user`                    | Yes  | Shared per-user socket (same preview gate); pushes `notification` frames (`new` / `unread-count`) and `dm` frames (`message` / `edited` / `deleted` / `read` / `reaction`) |
 
 Notifications are emitted fire-and-forget from the forum (reply, accepted solution,
 reaction), support (new ticket, reply, status change), and connection (request,
@@ -210,6 +237,7 @@ Requires an identity (no guests).
 | GET    | `/api/messages/conversations/:id`      | Yes  | Paginated message history                 |
 | POST   | `/api/messages/conversations/:id`      | Yes  | Send a message                            |
 | POST   | `/api/messages/conversations/:id/read` | Yes  | Mark read up to a message id              |
+| PATCH  | `/api/messages/:messageId`             | Yes  | Edit own message                          |
 | DELETE | `/api/messages/:messageId`             | Yes  | Soft-delete own message                   |
 | POST   | `/api/messages/:messageId/reactions`   | Yes  | Toggle an emoji reaction (60/min/user)    |
 
@@ -241,24 +269,37 @@ connect/pending/connected button from the payload's `connectionRelation`.
 
 ### Profile
 
-| Method | Endpoint              | Auth | Description                                 |
-| ------ | --------------------- | ---- | ------------------------------------------- |
-| PATCH  | `/api/profile`        | Yes  | Update profile (bio, status, privacy flags) |
-| POST   | `/api/profile/avatar` | Yes  | Upload avatar                               |
-| DELETE | `/api/profile/avatar` | Yes  | Remove avatar                               |
+| Method | Endpoint                     | Auth | Description                                                          |
+| ------ | ---------------------------- | ---- | -------------------------------------------------------------------- |
+| PATCH  | `/api/profile`               | Yes  | Update profile (bio, status, privacy flags)                          |
+| PUT    | `/api/profile/interests`     | Yes  | What the student wants to learn (`{ interests }`, at least one)      |
+| PUT    | `/api/profile/code-language` | Yes  | The language picked last on a multi-language course (`{ language }`) |
+| POST   | `/api/profile/avatar`        | Yes  | Upload avatar                                                        |
+| DELETE | `/api/profile/avatar`        | Yes  | Remove avatar                                                        |
+| POST   | `/api/profile/password`      | Yes  | Change password (10/15min)                                           |
+| POST   | `/api/profile/email/request` | Yes  | Send a code to the new email (10/15min)                              |
+| POST   | `/api/profile/email/confirm` | Yes  | Confirm the new email with the code (10/15min)                       |
+| DELETE | `/api/profile/email/pending` | Yes  | Cancel a pending email change                                        |
+| GET    | `/api/profile/activity`      | Yes  | Current streak and last active time                                  |
 
 `PATCH /api/profile` also carries the five per-user privacy flags (`showBio`,
 `showStats`, `showProgress`, `showActivity`, `showConnections`; default on).
 Profile editing and these toggles live on the `/settings` page.
 
-### Public profiles
+### Leaderboard and public profiles
 
 Behind the `leaderboard` preview gate (on prod only ADMINs can view; everyone on
-dev). `optionalAuth` sets `req.user` so the service can tell "self" from "other".
+dev), signed-in users only (no guests), so the service can always tell "self"
+from "other".
+
+| Method | Endpoint              | Auth | Description                                                  |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| GET    | `/api/leaderboard`    | Yes  | Ranked students by XP (`?take=` 1–100, default 50, `?skip=`) |
+| GET    | `/api/leaderboard/me` | Yes  | The signed-in student's own rank                             |
 
 | Method | Endpoint                 | Auth | Description                                        |
 | ------ | ------------------------ | ---- | -------------------------------------------------- |
-| GET    | `/api/users/:id/profile` | No\* | Public profile for `/u/:userId` (from leaderboard) |
+| GET    | `/api/users/:id/profile` | Yes  | Public profile for `/u/:userId` (from leaderboard) |
 
 Name/avatar/member-since are always public. Bio/status, stats (lessons done,
 active courses, streak), progress (level, XP, leaderboard rank, badges), the
@@ -290,13 +331,12 @@ Gated by `requireAdmin` (after `authenticateToken`); the role is read fresh from
 
 Every signed-in student, behind the `tutorChat` feature key; no guests.
 
-| Method | Endpoint                                          | Auth | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| ------ | ------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| POST   | `/api/tutor/chat`                                 | Yes  | One message (`{ message, page, lang?, lesson? }`, at most 2,000 characters) in, the answer out as server-sent events (`TutorStreamEvent`: `text` pieces, then `done` with `complete`/`cut`/`blocked`, or `error` after some words; a failure before any words is a plain JSON error); the model may search and read lessons first, and gets the last 20 messages of the conversation (the general one, or `lesson`'s: `{ courseKey, lessonSlug }` the curriculum lists). The message and the answer are saved together once it ends; nothing is saved when it fails before any words. 10/min/user |
-| GET    | `/api/tutor/conversations/general`                | Yes  | The general conversation, 30 `TutorMessage`s newest first, `{ messages, hasMore }`; `?before=<id>` for older ones. 60/min/user                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| GET    | `/api/tutor/conversations/:courseKey/:lessonSlug` | Yes  | The same for one lesson's or challenge's conversation; 404 for a lesson the curriculum doesn't list                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| DELETE | `/api/tutor/conversations/general`                | Yes  | Deletes the general conversation (204); the student's other conversations stay                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| DELETE | `/api/tutor/conversations/:courseKey/:lessonSlug` | Yes  | Deletes one lesson's or challenge's conversation (204)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Method | Endpoint                       | Auth | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------ | ------------------------------ | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| POST   | `/api/tutor/chat`              | Yes  | One message (`{ message, page, lang?, lesson?, conversationId?, work? }`, at most 2,000 characters) in, the answer out as server-sent events (`TutorStreamEvent`: `status` lookups, `text` pieces, then `done` with `complete`/`cut`/`blocked`, or `error` after some words; a failure before any words is a plain JSON error); the model may search and read lessons first, and gets the last 20 messages of the conversation. No `conversationId` starts a new one (general, or about `lesson`: `{ courseKey, lessonSlug }` the curriculum lists); `work` is the student's code, output and verdict on that lesson. The message and the answer are saved together once it ends, and `done` names the conversation; nothing is saved when it fails before any words. 10/min/user |
+| GET    | `/api/tutor/conversations`     | Yes  | The student's conversations newest first (`TutorConversationSummary`), at most 50. 60/min/user                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| GET    | `/api/tutor/conversations/:id` | Yes  | One conversation, 30 `TutorMessage`s newest first, `{ messages, hasMore }`; `?before=<id>` for older ones; someone else's is a 404                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| DELETE | `/api/tutor/conversations/:id` | Yes  | Deletes one conversation (204); the student's other conversations stay                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ### Usage
 
@@ -316,13 +356,15 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma). Fie
 - **Lesson**: lesson metadata (courseKey, slug, title, sortOrder)
 - **UserLessonProgress**: per-user completion tracking
 - **UserSavedCode**: per-user saved code per lesson, and per language on a multi-language course (`''` on any other)
-- **ForumCategory / ForumThread / ForumPost / ForumReaction**: community forum
+- **DailyPick**: today's lesson or algorithm pick per user, kept so its bonus is granted once
+- **LessonSubmission**: a signed-in student's judge attempts on a lesson with the language the code ran in, the newest 20 per lesson kept
+- **ForumCategory / ForumThread / ForumPost / ForumReaction / ForumThreadView**: community forum (a thread's views count once per viewer)
 - **SupportTicket / SupportMessage**: support system
 - **Notification**: per-user in-app notifications (actor via `SetNull` relation, source entity snapshotted in `data`)
 - **Conversation / DirectMessage / DmReaction**: 1-on-1 messaging (messages soft-delete; reactions unique per message+user+emoji)
 - **Connection**: directed connection request (requester → addressee, `PENDING`/`ACCEPTED`)
 - **PageVisit / VisitSalt / VisitTotal**: today's page views keyed by a salted daily hash, the day's salt, and the daily totals they become once the day is over
-- **TutorMessage**: a student's tutor messages and answers, one conversation per lesson or challenge plus a general one (no lesson), each answer with how it ended; the newest 200 per conversation are kept
+- **TutorConversation / TutorMessage**: a student's tutor conversations, each general or about one lesson or challenge, titled by its first question (the newest 50 kept), and their messages and answers, each answer with how it ended (the newest 200 per conversation kept)
 - **UsageWindow**: what a student has used of each capped feature (Show Solution, the tutor session) in its current window, one row per student and feature
 - **GuestVisit / VisitStep**: a guest's day on the site and what they did in it (pages, named clicks, scroll depth) in order of id; only the visit keeps a time, that of its first page; the hash goes when the day ends, the visit after 90 days
 
@@ -334,7 +376,7 @@ User (1) → (N) UserSavedCode         (ON DELETE CASCADE)
 Curriculum.key ← Lesson.courseKey     (logical, not FK)
 ```
 
-Lesson content is stored as Markdown files on disk, not in the database. The `Lesson` table stores metadata while content is read from `packages/content/lessons/` at request time.
+Lesson content is stored as Markdown files on disk, not in the database. The `Lesson` table stores metadata; the client reads the content from the static files generated out of `packages/content/`, and the server reads `packages/content/` itself only for the judge, Show Solution and the tutor.
 
 ## Code execution
 
@@ -363,7 +405,7 @@ No changes to services, controllers, or routes needed.
 
 ## Lesson format
 
-Each lesson consists of two files in `packages/content/lessons/:lang/`:
+Each lesson consists of two files in `packages/content/lessons/<course>/`:
 
 - `<slug>.md`: educational content with runnable code blocks
 - `<slug>-code.md`: starter code template
@@ -378,9 +420,11 @@ other correct solutions (`accept-*`) that must pass and cheats (`reject-*`) that
 fail. `npm run check:tests` grades them next to the reference solution, and the
 `lesson-tests` CI workflow runs it on the lessons a pull request changes.
 
-A lesson may have an optional Romanian translation at `packages/content/lessons/:lang/ro/<slug>.md` (same slug); when absent, the reader sees the English source. See [Curriculum & Lessons](#curriculum--lessons) for the fallback behavior.
+A lesson may have an optional Romanian translation at `packages/content/lessons/<course>/ro/<slug>.md` (same slug); when absent, the reader sees the English source. See [Curriculum & Lessons](#curriculum--lessons) for the fallback behavior.
 
-A **multi-language course** (`MULTI_LANGUAGE_COURSE_KEYS`, today the `trees-graphs` course and its challenge set `algo-trees-graphs`) teaches every lesson in Python, Java and C, each in its own folder, `packages/content/lessons/<course>/<language>/` (`packages/content/algorithms/trees-graphs/<language>/` for the challenge set), with all the files above and its own `ro/`; its variants sit in `variants/<course>/<language>/<slug>/`. The student switches language on the lesson, and the lesson is ticked once whichever language passed it. The static-content generator stops the build when a lesson lacks a language, or the starter, tests or solution its Python twin has.
+A **multi-language course** (`MULTI_LANGUAGE_COURSE_KEYS`, today the `trees-graphs` course and its challenge set `algo-trees-graphs`) teaches every lesson in Python, Java and C, each in its own folder, `packages/content/lessons/<course>/<language>/` (`packages/content/algorithms/trees-graphs/<language>/` for the challenge set), with all the files above and its own `ro/`; its variants sit in `variants/<course>/<language>/<slug>/`. The student switches language on the lesson, and the lesson is ticked once whichever language passed it. The static-content generator stops the build when a lesson lacks a language, or the starter, tests or solution its Python twin has. The language the student picked is kept in `localStorage` for a guest and in `users.code_language` for a signed-in student (`useCodeLanguage`); saved code and submissions are kept per language. Such a course is marked **Beta** (`isBeta`) and left out of what the landing page counts.
+
+A lesson or challenge may hold **step-by-step visuals**: a ` ```visual ` fence with JSON that `MarkdownRenderer` hands to `parseVisual` (`apps/ui/src/components/visual/`). Its `type` picks the drawing: an array (the default, `ArrayView`, with pointers and markers), `boxes` (boxes and arrows, `BoxesView`), `tree` (`TreeView`), `graph` (`GraphView`), `grid` (`GridView`) or `stack` (`StackView`, a pile of cards, or a queue with `queue: true`). Each kind's frames module turns the steps into frames that `VisualPlayer`, a lazy chunk, plays one click at a time; a step may ask what comes next, with choices to pick from. A multi-language course writes each visual once, in `packages/content/lessons/<course>/visuals/<name>.json` (and `visuals/ro/`), with per-language values inside, and its lessons name it as `{"use": "<name>"}`; `packages/content/visuals.ts` puts the visual for the lesson's language into the fence when the content is generated, and `VisualSteps` keeps the student's step across a language switch. `lessonVisuals.test.ts` reads every visual in the curriculum the way a student gets it and checks that each parses and that the Romanian one tells the same story as the English.
 
 ## Environment variables
 
@@ -407,6 +451,8 @@ A **multi-language course** (`MULTI_LANGUAGE_COURSE_KEYS`, today the `trees-grap
 | `GUEST_RUN_BUDGET`         | No       | `10`                                  | Lifetime code runs a guest gets before a sign-up nudge                           |
 | `GUEST_IP_RUNS_PER_WINDOW` | No       | `60`                                  | Guest code runs per minute shared by one client IP, whatever the guest id        |
 | `GUEST_IP_MAX_ACTIVE_RUNS` | No       | `10`                                  | Concurrent guest code runs per client IP                                         |
+| `JUDGE_MAX_CONCURRENT`     | No       | `2`                                   | Judge runs at once; the rest wait their turn                                     |
+| `JUDGE_QUEUE_TIMEOUT_MS`   | No       | `20000`                               | How long a judge run waits for its turn before a 503                             |
 | `SANDBOX_RUN_AS_USER`      | No       | `true`                                | Run sandboxes as the host's non-root uid; set `false` under rootless Podman      |
 | `TERMINAL_MAX_SESSIONS`    | No       | `50`                                  | Global cap on concurrent Linux terminal sandboxes                                |
 | `LEADERBOARD_CACHE_MS`     | No       | `180000`                              | Leaderboard cache TTL (3 min)                                                    |

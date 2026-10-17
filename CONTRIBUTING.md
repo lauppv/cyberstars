@@ -119,10 +119,12 @@ Open an issue with:
 
 ### Adding lessons
 
-Lesson content lives in `packages/content/lessons/{python,c,java,linux}/`. Python, C and Java lessons need two files:
+Lesson content lives in `packages/content/lessons/{python,c,java,linux,trees-graphs}/`. Python, C and Java lessons need two files:
 
 1. `<slug>.md`: the lesson content (Markdown with runnable code blocks)
 2. `<slug>-code.md`: the starter code template shown in the editor
+
+A multi-language course (today `trees-graphs`, Beta) teaches every lesson in Python, Java and C, so it keeps one folder per language, `lessons/<course>/<language>/` (each with its own `ro/`), and every file of a lesson must exist in all three. Its starter code is bare: the student types the mission's values.
 
 Then register the lesson in `packages/content/curriculum.ts` (the `lessons` array) with the correct `courseKey`, `slug`, `title`, and `sortOrder`. This file is the **single source of truth** for curriculum structure: you edit it in one place, and it both seeds the database and generates the static `curriculum.json` the client reads.
 
@@ -134,7 +136,8 @@ solution) beside the lesson. Passing the judge (the "Run Tests" button) is the o
 to complete a lesson. The server verifies it, so there is no manual "Mark Complete"
 button. Lessons without test files still work; they just aren't completable yet.
 
-Algorithm challenges (`packages/content/algorithms/{python,java,c}/`) state their input limits in
+Algorithm challenges (`packages/content/algorithms/{python,java,c}/`, plus the multi-language
+`algorithms/trees-graphs/<language>/`) state their input limits in
 the statement's Input list, in English and Romanian, written as `<=` with powers
 (`1 <= N <= 200`, `-10^9 <= x <= 10^9`). Their tests mix a few hand-written cases with
 hidden `"generated": true` ones, and every case has to stay within the stated limits.
@@ -144,16 +147,27 @@ whatever its idea and naming. A test only requires an exact name where the judge
 a value or the mission names the function or class to write, plus the construct the
 lesson teaches (the `for` lesson needs a `for`, the class lesson a class of the
 student's own). Next to the tests, a lesson keeps variants in
-`packages/content/variants/<course>/<slug>/`: `accept-*` files are other correct solutions
+`packages/content/variants/<course>/<slug>/` (`variants/<course>/<language>/<slug>/` on a
+multi-language course): `accept-*` files are other correct solutions
 that must pass, `reject-*` files are cheats or near misses that must fail (hardcoded
 output, the wrong loop, the right output without the taught construct). Add a reject for
 every construct a lesson requires.
 
 Before opening a PR, run `npm run validate:tests` and
 `npm run check:tests <course>/<slug>` (for example `python/string-reverse` or
-`algo-c/binary-search-c`), which grades the reference solution and the variants through
+`algo-c/binary-search-c`; a multi-language lesson names its language, `trees-graphs/c/trees`,
+or leaves it out to grade all three), which grades the reference solution and the variants through
 the real Docker judge: the reference must pass every case, and every variant must come
 out as its name says. CI runs the same check on the lessons your PR changes.
+
+A lesson or challenge can show an algorithm step by step in a ` ```visual ` fence holding
+JSON: an `array`, `boxes` (boxes and arrows), a `tree`, a `graph`, a `grid` or a `stack`
+(`"queue": true` for a queue), and a step with an `ask` can offer `choices` with the right
+`answer`. Copy the shape from an existing one. A multi-language course writes each visual
+once in `lessons/<course>/visuals/<name>.json` (`visuals/ro/` for Romanian) and its lessons
+name it with `{"use": "<name>"}`. `lessonVisuals.test.ts` (part of `npm test`) fails on a
+visual the player can't read, words too long for a phone, or a Romanian lesson whose
+visuals differ from its English one's.
 
 Important rules:
 
@@ -170,7 +184,7 @@ Translations are **optional and can be added later**; you never have to translat
 
 To translate content, add the localized file alongside the English source in a per-language subfolder (currently `ro`), reusing the **same slug** (slugs are language-independent):
 
-- Lessons: `packages/content/lessons/<course>/ro/<slug>.md` (and `<slug>-code.md` if the course has one)
+- Lessons: `packages/content/lessons/<course>/ro/<slug>.md` (and `<slug>-code.md` if the course has one); on a multi-language course `lessons/<course>/<language>/ro/`
 - Almanac: `apps/ui/public/almanac/ro/articles/<slug>.json`, plus `ro/index.json` and `ro/extras.json`
 - UI strings: add the matching keys to `apps/ui/src/i18n/locales/ro.json` (keep its structure in sync with `en.json`)
 
