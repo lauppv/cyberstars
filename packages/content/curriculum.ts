@@ -1781,4 +1781,11 @@ export const lessons = [
     sortOrder: 4,
     hasCodeFile: true,
   },
+  {
+    courseKey: 'algo-trees-graphs',
+    slug: 'level-values',
+    title: 'Medium · Values Level by Level',
+    sortOrder: 5,
+    hasCodeFile: true,
+  },
 ];
