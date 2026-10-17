@@ -11,7 +11,7 @@ const COURSE_BADGE_ICONS: Record<string, string> = {
   'algo-c': '🧩',
 };
 
-// Tier names for levels 1..3; beyond that we fall back to "Lv{n}".
+// Tier names for levels 1..3; beyond that the level, as the page's language shortens it.
 const TIER_KEYS = ['bronze', 'silver', 'gold'];
 
 export function badgeIcon(courseKey: string): string {
@@ -22,7 +22,7 @@ export function badgeIcon(courseKey: string): string {
 export function badgeLabel(t: TFunction, courseTitle: string, level: number): string {
   if (level === 0) return t('gamification.firstSteps', { course: courseTitle });
   const tierKey = TIER_KEYS[level - 1];
-  const tier = tierKey ? t(`gamification.${tierKey}`) : `Lv${level}`;
+  const tier = tierKey ? t(`gamification.${tierKey}`) : t('level.short', { n: level });
   return t('gamification.tier', { course: courseTitle, tier });
 }
 
