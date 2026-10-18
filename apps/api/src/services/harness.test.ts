@@ -2,7 +2,14 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
-import { defines, readHarness, studentHarness, studentLines, wrapCode } from './harness.js';
+import {
+  defines,
+  programForRun,
+  readHarness,
+  studentHarness,
+  studentLines,
+  wrapCode,
+} from './harness.js';
 
 const dirs: string[] = [];
 
@@ -120,6 +127,37 @@ describe('studentHarness', () => {
   it('is null for a lesson without one, or a slug that is no slug', () => {
     expect(studentHarness('python', 'print', 'en', undefined, '')).toBeNull();
     expect(studentHarness('algo-trees-graphs', '../max-depth', 'en', 'python', '')).toBeNull();
+  });
+});
+
+describe('programForRun', () => {
+  const lesson = { courseKey: 'algo-trees-graphs', lessonSlug: 'max-depth', lang: 'en' };
+  beforeEach(stubHarnesses);
+
+  it("wraps a challenge's function in its hidden part", () => {
+    const program = programForRun('def max_depth(root):\n    return 0\n', 'python', lesson);
+    expect(program.startsWith('def max_depth(root):\n    return 0\n')).toBe(true);
+    expect(program).toContain('root = build_tree(input())');
+  });
+
+  it('runs the code as it is without a lesson, or with one that has no hidden part', () => {
+    expect(programForRun('print(1)', 'python', undefined)).toBe('print(1)');
+    expect(programForRun('print(1)', 'python', { courseKey: 'python' })).toBe('print(1)');
+    expect(
+      programForRun('print(1)', 'python', { courseKey: 'python', lessonSlug: 'print', lang: 'en' }),
+    ).toBe('print(1)');
+  });
+
+  it("runs the code as it is for a course or language that isn't one", () => {
+    expect(programForRun('x', 'python', { ...lesson, courseKey: '../etc' })).toBe('x');
+    expect(programForRun('x', 'bash', lesson)).toBe('x');
+  });
+
+  it('runs the code as it is and logs when the hidden part is broken', () => {
+    vi.spyOn(fs, 'readFileSync').mockReturnValue('no fence');
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    expect(programForRun('x', 'python', lesson)).toBe('x');
+    expect(log).toHaveBeenCalled();
   });
 });
 

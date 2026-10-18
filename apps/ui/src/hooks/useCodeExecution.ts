@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import i18next from 'i18next';
+import type { RunLesson } from '@cyberstars/shared/lesson';
 import { localizeRunOutput } from '../i18n/serverMessages';
 
 function wsUrl(): string {
@@ -28,7 +29,9 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
     onExitRef.current = onExit;
   }, [onExit]);
 
-  const execute = useCallback((code: string, language: string) => {
+  // `lesson`: the lesson the code belongs to, so a challenge with a hidden part
+  // runs the student's function inside it.
+  const execute = useCallback((code: string, language: string, lesson?: RunLesson) => {
     if (wsRef.current) {
       wsRef.current.close();
       wsRef.current = null;
@@ -41,7 +44,7 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
     wsRef.current = ws;
 
     ws.onopen = () => {
-      ws.send(JSON.stringify({ type: 'run', code, language }));
+      ws.send(JSON.stringify({ type: 'run', code, language, ...(lesson && { lesson }) }));
     };
 
     ws.onmessage = (event) => {

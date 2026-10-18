@@ -1,13 +1,15 @@
 import fs from 'fs';
 import path from 'path';
+import type { RunLesson } from '@cyberstars/shared/lesson';
 import { contentDir } from './paths.js';
+import { AppError } from '../middleware/errorHandler.js';
 
 // A challenge may ship a <slug>-harness.md next to its solution: the part of
 // the program the student doesn't see (reading the input, building the tree,
 // printing the answer), so they write only the function the statement names.
 // Its one fenced block holds a `{{code: <name>}}` placeholder where the
 // student's code goes, <name> being the function the hidden part calls. The
-// judge wraps the student's code in it, and the reference
+// judge and the editor's Run wrap the student's code in it, and the reference
 // solution and the variants are written the same way, without the hidden part.
 //
 // The student's code comes first wherever the language allows, so an error
@@ -71,6 +73,29 @@ export function studentHarness(
     return second;
   }
   return first;
+}
+
+function isRunLesson(lesson: unknown): lesson is RunLesson {
+  if (typeof lesson !== 'object' || lesson === null) return false;
+  const { courseKey, lessonSlug, lang } = lesson as Record<string, unknown>;
+  return (
+    typeof courseKey === 'string' && typeof lessonSlug === 'string' && typeof lang === 'string'
+  );
+}
+
+// What an editor Run executes: the code, wrapped in the hidden part when the
+// Run names a lesson that has one. A lesson that isn't a real one (made up by
+// hand, or a language the course isn't in) runs the code as it is, and so does
+// one whose hidden part can't be read, which is logged.
+export function programForRun(code: string, language: string, lesson: unknown): string {
+  if (!isRunLesson(lesson)) return code;
+  try {
+    const { courseKey, lessonSlug, lang } = lesson;
+    return wrapCode(studentHarness(courseKey, lessonSlug, lang, language, code), code);
+  } catch (err) {
+    if (!(err instanceof AppError)) console.error('[ws/run] hidden part unreadable:', err);
+    return code;
+  }
 }
 
 // A judge message names a line of the program it ran: the student's own line
