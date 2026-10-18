@@ -1,12 +1,5 @@
 ```c
 #include <stdbool.h>
-#include <stdio.h>
-
-#define MAX_LATURA 25
-
-int randuri, coloane;
-// grila[r][c] e celula de pe randul r, coloana c.
-char grila[MAX_LATURA][MAX_LATURA + 1];
 
 int numara_insule(void) {
     static int coada[MAX_LATURA * MAX_LATURA][2];
@@ -45,14 +38,5 @@ int numara_insule(void) {
         }
     }
     return insule;
-}
-
-int main(void) {
-    scanf("%d %d", &randuri, &coloane);
-    for (int r = 0; r < randuri; r++) {
-        scanf("%s", grila[r]);
-    }
-    printf("%d\n", numara_insule());
-    return 0;
 }
 ```

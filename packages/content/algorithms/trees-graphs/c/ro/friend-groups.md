@@ -19,7 +19,7 @@ Graful acesta se scrie:
 
 Nodul `5` nu are nicio muchie, așa că apare doar în numărul `6`.
 
-Codul de început citește deja graful în tablourile globale `vecini` și `numar`, unde `vecini[u][0]` până la `vecini[u][numar[u] - 1]` sunt vecinii lui `u`, apoi afișează ce întoarce `numara_grupuri`. Tu scrii `numara_grupuri`.
+Partea ascunsă a programului citește deja graful în tablourile globale `vecini` și `numar`, unde `vecini[u][0]` până la `vecini[u][numar[u] - 1]` sunt vecinii lui `u`, apoi afișează ce întoarce `numara_grupuri`. Tu scrii `numara_grupuri`.
 
 ### Date de intrare
 

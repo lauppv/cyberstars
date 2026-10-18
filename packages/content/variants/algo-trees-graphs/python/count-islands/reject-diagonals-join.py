@@ -16,8 +16,3 @@ def count_islands(grid):
                 islands += 1
                 sink(grid, r, c)
     return islands
-
-
-rows, cols = map(int, input().split())
-grid = [list(input()) for r in range(rows)]
-print(count_islands(grid))

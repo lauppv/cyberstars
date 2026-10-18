@@ -4,7 +4,7 @@ O imagine e o grilă de cifre, fiecare cifră fiind o culoare. Citește-o, apoi 
 
 Pe prima linie sunt numărul de rânduri și numărul de coloane. Urmează rândurile, de sus în jos, fiecare pe linia lui, fără spații. Rândurile și coloanele sunt numerotate de la `0`. Două celule sunt vecine când au o latură comună: sus, jos, stânga sau dreapta, niciodată pe diagonală.
 
-Codul de început citește deja imaginea în `grila`, unde `grila[r][c]` e celula de pe rândul `r`, coloana `c`, apelează `umple_zona` cu celula și culoarea nouă, apoi afișează imaginea. Tu scrii `umple_zona`, care vopsește celulele direct în grila primită.
+Partea ascunsă a programului citește deja imaginea în `grila`, unde `grila[r][c]` e celula de pe rândul `r`, coloana `c`, apelează `umple_zona` cu celula și culoarea nouă, apoi afișează imaginea. Tu scrii `umple_zona`, care vopsește celulele direct în grila primită.
 
 ### Date de intrare
 
