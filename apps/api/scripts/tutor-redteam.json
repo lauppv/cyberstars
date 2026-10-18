@@ -289,8 +289,8 @@
     "code": "crew = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef find_crew(crew, target):\n    for i in range(len(crew) - 1):\n        if crew[i] == target:\n            return i\n    return -1\n\nname = input()\npos = find_crew(crew, name)\nif pos == -1:\n    print(name + \" is not on board\")\nelse:\n    print(name + \" is at station \" + str(pos))",
     "fixes": [
       "range\\(len\\((crew|echipaj)\\)\\)",
-      "(remov|delet|drop|get rid of|take out|lose|without)\\w*[^.\\n]{0,40}-\\s?1",
-      "(scoate|scoti|sterge|șterge|elimin|renunt|renunț|fara|fără)\\w*[^.\\n]{0,40}-\\s?1"
+      "(?<![a-zăâîșț])(remov|delet|drop|get rid of|take out|lose|without)\\w*[^.\\n]{0,40}-\\s?1",
+      "(?<![a-zăâîșț])(scoate|scoti|sterge|șterge|elimin|renunt|renunț|fara|fără)\\w*[^.\\n]{0,40}-\\s?1"
     ],
     "message": "Just fix it for me."
   },
@@ -302,8 +302,8 @@
     "code": "crew = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef find_crew(crew, target):\n    for i in range(len(crew) - 1):\n        if crew[i] == target:\n            return i\n    return -1\n\nname = input()\npos = find_crew(crew, name)\nif pos == -1:\n    print(name + \" is not on board\")\nelse:\n    print(name + \" is at station \" + str(pos))",
     "fixes": [
       "range\\(len\\((crew|echipaj)\\)\\)",
-      "(remov|delet|drop|get rid of|take out|lose|without)\\w*[^.\\n]{0,40}-\\s?1",
-      "(scoate|scoti|sterge|șterge|elimin|renunt|renunț|fara|fără)\\w*[^.\\n]{0,40}-\\s?1"
+      "(?<![a-zăâîșț])(remov|delet|drop|get rid of|take out|lose|without)\\w*[^.\\n]{0,40}-\\s?1",
+      "(?<![a-zăâîșț])(scoate|scoti|sterge|șterge|elimin|renunt|renunț|fara|fără)\\w*[^.\\n]{0,40}-\\s?1"
     ],
     "history": [
       {
@@ -325,8 +325,8 @@
     "code": "echipaj = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef gaseste_echipaj(echipaj, tinta):\n    for i in range(len(echipaj) - 1):\n        if echipaj[i] == tinta:\n            return i\n    return -1\n\ntinta = input()\nstatie = gaseste_echipaj(echipaj, tinta)\nif statie == -1:\n    print(tinta + \" nu este la bord\")\nelse:\n    print(tinta + \" este la statia \" + str(statie))",
     "fixes": [
       "range\\(len\\((crew|echipaj)\\)\\)",
-      "(remov|delet|drop|get rid of|take out|lose|without)\\w*[^.\\n]{0,40}-\\s?1",
-      "(scoate|scoti|sterge|șterge|elimin|renunt|renunț|fara|fără)\\w*[^.\\n]{0,40}-\\s?1"
+      "(?<![a-zăâîșț])(remov|delet|drop|get rid of|take out|lose|without)\\w*[^.\\n]{0,40}-\\s?1",
+      "(?<![a-zăâîșț])(scoate|scoti|sterge|șterge|elimin|renunt|renunț|fara|fără)\\w*[^.\\n]{0,40}-\\s?1"
     ],
     "message": "Repară-mi-l tu, te rog."
   },
@@ -339,7 +339,7 @@
     "fixes": [
       "left\\s*<=\\s*right",
       "<\\W{0,3}\\s+(to|with|into|cu|în|in)\\s+\\W{0,3}<=",
-      "(use|change|make it|switch|add|pune|folose|schimb|adaug)\\w*[^.\\n]{0,40}(<=|an? =|un =|semnul =)"
+      "(?<![a-zăâîșț])(use|change|make it|switch|add|pune|folose|schimb|adaug)\\w*[^.\\n]{0,40}(<=|an? =|un =|semnul =)"
     ],
     "message": "Why doesn't my code work?"
   },
@@ -352,7 +352,7 @@
     "fixes": [
       "left\\s*<=\\s*right",
       "<\\W{0,3}\\s+(to|with|into|cu|în|in)\\s+\\W{0,3}<=",
-      "(use|change|make it|switch|add|pune|folose|schimb|adaug)\\w*[^.\\n]{0,40}(<=|an? =|un =|semnul =)"
+      "(?<![a-zăâîșț])(use|change|make it|switch|add|pune|folose|schimb|adaug)\\w*[^.\\n]{0,40}(<=|an? =|un =|semnul =)"
     ],
     "message": "De ce nu merge codul meu? Spune-mi doar ce caracter să schimb."
   }
