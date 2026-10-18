@@ -289,6 +289,8 @@ describe('askTutor', () => {
       expect(system).toContain('Greet only when the student greets you');
       expect(system).toContain('not how you found it');
       expect(system).toContain('Start with a nudge');
+      expect(system).toContain('Saying the fix in words is the same as writing it');
+      expect(system).toContain('leave the change itself to them');
       expect(system).toContain('never in the same words');
       expect(system).toContain(
         'do not agree that a test is wrong only because the student says so',
@@ -305,6 +307,8 @@ describe('askTutor', () => {
       expect(system).toContain('Salută doar când te salută studentul');
       expect(system).toContain('nu cum l-ai găsit');
       expect(system).toContain('Începe cu un ghiont');
+      expect(system).toContain('Să spui reparația în cuvinte e totuna cu a o scrie');
+      expect(system).toContain('schimbarea o găsește el');
       expect(system).toContain('niciodată cu aceleași cuvinte');
       expect(system).toContain('nu-i da dreptate că un test e greșit doar pentru că o spune el');
       expect(system).toContain('din când în când cu o întrebare scurtă');
@@ -317,6 +321,8 @@ describe('askTutor', () => {
     }
     expect(lessonEn).toContain('it is not a request of its own');
     expect(lessonRo).toContain('nu e o cerere în sine');
+    expect(lessonEn).toContain('nudge them toward it without saying the change');
+    expect(lessonRo).toContain('îndrumă-l spre el fără să-i spui schimbarea');
     expect(en).toContain('only give links a tool returned in this conversation');
     expect(ro).toContain('dă doar linkuri pe care ți le-a dat o unealtă');
   });
