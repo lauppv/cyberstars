@@ -11,7 +11,7 @@ Pe prima linie sunt numărul de cursuri `n` și numărul de reguli `m`. Urmează
 
 Acestea sunt regulile din primul exemplu de mai jos: `3` vine înainte de `1`, `1` înainte de `0`, `2` înainte de `4` și `4` înainte de `0`.
 
-Codul de început citește deja regulile în tablourile globale `vecini` și `numar`, unde `vecini[u][0]` până la `vecini[u][numar[u] - 1]` sunt cursurile care au nevoie întâi de `u`, apoi afișează cursurile pe care `ordine_cursuri` le scrie în `ordine`, sau `-1` când întoarce 0. Tu scrii `ordine_cursuri`, care completează `ordine` și întoarce câte cursuri a scris, sau 0 când nu există nicio ordine.
+Partea ascunsă a programului citește deja regulile în tablourile globale `vecini` și `numar`, unde `vecini[u][0]` până la `vecini[u][numar[u] - 1]` sunt cursurile care au nevoie întâi de `u`, apoi afișează cursurile pe care `ordine_cursuri` le scrie în `ordine`, sau `-1` când întoarce 0. Tu scrii `ordine_cursuri`, care completează `ordine` și întoarce câte cursuri a scris, sau 0 când nu există nicio ordine.
 
 ### Date de intrare
 

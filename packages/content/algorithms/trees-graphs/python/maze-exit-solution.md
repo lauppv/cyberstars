@@ -1,7 +1,6 @@
 ```py
 from collections import deque
 
-
 # grid[r][c] is the cell in row r, column c.
 def fewest_steps(grid):
     rows = len(grid)
@@ -23,9 +22,4 @@ def fewest_steps(grid):
                     dist[nr][nc] = dist[cr][cc] + 1
                     queue.append((nr, nc))
     return -1
-
-
-rows, cols = map(int, input().split())
-grid = [list(input()) for r in range(rows)]
-print(fewest_steps(grid))
 ```

@@ -21,8 +21,3 @@ def minutes_to_rot(grid):
         if "o" in row:
             return -1
     return minutes
-
-
-rows, cols = map(int, input().split())
-grid = [list(input()) for r in range(rows)]
-print(minutes_to_rot(grid))

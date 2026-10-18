@@ -4,7 +4,7 @@ A maze is a grid where `#` is a wall and `.` a free cell. You start on the cell 
 
 The first line has the number of rows and the number of columns. Then come the rows, from top to bottom, each on its own line with no spaces. Rows and columns are numbered from `0`. Two cells are next to each other when they share a side: up, down, left or right, never diagonally.
 
-The starter code already reads the maze into the globals `rows`, `cols` and `grid`, where `grid[r][c]` is the cell in row `r`, column `c`, then prints what `fewest_steps` returns. You write `fewest_steps`.
+The hidden part of the program already reads the maze into the globals `rows`, `cols` and `grid`, where `grid[r][c]` is the cell in row `r`, column `c`, then prints what `fewest_steps` returns. You write `fewest_steps`.
 
 ### Input
 

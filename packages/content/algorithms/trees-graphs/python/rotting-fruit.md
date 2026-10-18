@@ -4,7 +4,7 @@ A crate of fruit is a grid where `o` is a fresh fruit, `x` a rotten one and `.` 
 
 The first line has the number of rows and the number of columns. Then come the rows, from top to bottom, each on its own line with no spaces. Rows and columns are numbered from `0`. Two cells are next to each other when they share a side: up, down, left or right, never diagonally.
 
-The starter code already reads the crate into `grid`, where `grid[r][c]` is the cell in row `r`, column `c`, then prints what `minutes_to_rot` returns. You write `minutes_to_rot`.
+The hidden part of the program already reads the crate into `grid`, where `grid[r][c]` is the cell in row `r`, column `c`, then prints what `minutes_to_rot` returns. You write `minutes_to_rot`.
 
 ### Input
 

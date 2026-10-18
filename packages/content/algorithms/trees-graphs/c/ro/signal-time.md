@@ -22,7 +22,7 @@ Rețeaua aceasta se scrie:
 2 3 1
 ```
 
-Codul de început citește deja rețeaua în tablourile globale `vecini`, `costuri` și `numar`: cablurile din `u` duc la `vecini[u][i]` și durează `costuri[u][i]` minute, pentru `i` de la `0` la `numar[u] - 1`, apoi afișează ce întoarce `timp_semnal`. Tu scrii `timp_semnal`.
+Partea ascunsă a programului citește deja rețeaua în tablourile globale `vecini`, `costuri` și `numar`: cablurile din `u` duc la `vecini[u][i]` și durează `costuri[u][i]` minute, pentru `i` de la `0` la `numar[u] - 1`, apoi afișează ce întoarce `timp_semnal`. Tu scrii `timp_semnal`.
 
 ### Date de intrare
 

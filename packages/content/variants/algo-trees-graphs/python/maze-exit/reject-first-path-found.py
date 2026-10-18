@@ -19,8 +19,3 @@ def fewest_steps(grid):
                     depth[nr][nc] = depth[cr][cc] + 1
                     stack.append((nr, nc))
     return -1
-
-
-rows, cols = map(int, input().split())
-grid = [list(input()) for r in range(rows)]
-print(fewest_steps(grid))

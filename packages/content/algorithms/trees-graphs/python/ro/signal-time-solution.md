@@ -1,7 +1,6 @@
 ```py
 import heapq
 
-
 # vecini[u] are perechi (v, cost): un cablu intre u si v pe care semnalul merge cost minute.
 def timp_semnal(vecini, s):
     distanta = [-1] * len(vecini)
@@ -18,14 +17,4 @@ def timp_semnal(vecini, s):
     if -1 in distanta:
         return -1
     return max(distanta)
-
-
-n, m = map(int, input().split())
-vecini = [[] for i in range(n)]
-for i in range(m):
-    u, v, cost = map(int, input().split())
-    vecini[u].append((v, cost))
-    vecini[v].append((u, cost))
-s = int(input())
-print(timp_semnal(vecini, s))
 ```

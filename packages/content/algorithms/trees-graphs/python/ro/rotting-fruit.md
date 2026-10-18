@@ -4,7 +4,7 @@ O ladă cu fructe e o grilă în care `o` e un fruct proaspăt, `x` unul stricat
 
 Pe prima linie sunt numărul de rânduri și numărul de coloane. Urmează rândurile, de sus în jos, fiecare pe linia lui, fără spații. Rândurile și coloanele sunt numerotate de la `0`. Două celule sunt vecine când au o latură comună: sus, jos, stânga sau dreapta, niciodată pe diagonală.
 
-Codul de început citește deja lada în `grila`, unde `grila[r][c]` e celula de pe rândul `r`, coloana `c`, apoi afișează ce întoarce `minute_pana_se_strica`. Tu scrii `minute_pana_se_strica`.
+Partea ascunsă a programului citește deja lada în `grila`, unde `grila[r][c]` e celula de pe rândul `r`, coloana `c`, apoi afișează ce întoarce `minute_pana_se_strica`. Tu scrii `minute_pana_se_strica`.
 
 ### Date de intrare
 

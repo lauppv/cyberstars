@@ -11,7 +11,7 @@ The first line has the number of courses `n` and the number of rules `m`. Then c
 
 These are the rules of the first example below: `3` comes before `1`, `1` before `0`, `2` before `4` and `4` before `0`.
 
-The starter code already reads the rules into `adj`, where `adj[u]` lists the courses that need `u` first, then prints the list `course_order` returns, or `-1` when it is empty. You write `course_order`, which returns the order, or an empty list when there is none.
+The hidden part of the program already reads the rules into `adj`, where `adj[u]` lists the courses that need `u` first, then prints the list `course_order` returns, or `-1` when it is empty. You write `course_order`, which returns the order, or an empty list when there is none.
 
 ### Input
 

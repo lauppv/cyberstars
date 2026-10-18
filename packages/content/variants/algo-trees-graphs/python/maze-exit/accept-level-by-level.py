@@ -18,8 +18,3 @@ def fewest_steps(grid):
         frontier = following
         steps += 1
     return -1
-
-
-rows, cols = map(int, input().split())
-grid = [list(input()) for r in range(rows)]
-print(fewest_steps(grid))

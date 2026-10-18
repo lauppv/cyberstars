@@ -22,7 +22,7 @@ This network is written:
 2 3 1
 ```
 
-The starter code already reads the network into the global arrays `adj`, `weight` and `count`: the cables at `u` go to `adj[u][i]` and take `weight[u][i]` minutes, for `i` from `0` to `count[u] - 1`, then prints what `signal_time` returns. You write `signal_time`.
+The hidden part of the program already reads the network into the global arrays `adj`, `weight` and `count`: the cables at `u` go to `adj[u][i]` and take `weight[u][i]` minutes, for `i` from `0` to `count[u] - 1`, then prints what `signal_time` returns. You write `signal_time`.
 
 ### Input
 

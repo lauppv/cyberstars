@@ -22,7 +22,7 @@ Rețeaua aceasta se scrie:
 2 3 1
 ```
 
-Codul de început citește deja rețeaua în `vecini`, unde `vecini.get(u)` are câte o pereche `{v, cost}` pentru fiecare cablu din `u`: duce la `v` și durează `cost` minute, apoi afișează ce întoarce `timpSemnal`. Tu scrii `timpSemnal`.
+Partea ascunsă a programului citește deja rețeaua în `vecini`, unde `vecini.get(u)` are câte o pereche `{v, cost}` pentru fiecare cablu din `u`: duce la `v` și durează `cost` minute, apoi afișează ce întoarce `timpSemnal`. Tu scrii `timpSemnal`.
 
 ### Date de intrare
 
