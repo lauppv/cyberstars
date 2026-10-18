@@ -9,6 +9,7 @@ import { AppError } from '../middleware/errorHandler.js';
 import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
+import { readHarness, studentHarness, studentLines, wrapCode } from './harness.js';
 import {
   templateRegex,
   type LessonTestsSpec,
@@ -151,7 +152,9 @@ function loadSolutionCode(
   const md = fs.readFileSync(path.join(dir, `${lessonSlug}-solution.md`), 'utf8');
   const fenced = md.match(/```[\w-]*\n([\s\S]*?)```/);
   if (!fenced) throw new AppError(500, 'Test run failed, please try again');
-  return fenced[1];
+  // The solution of a challenge with a hidden part is only the function, in
+  // the names of its own folder's hidden part.
+  return wrapCode(readHarness(dir, lessonSlug), fenced[1]);
 }
 
 function normalize(output: string): string {
@@ -380,6 +383,10 @@ export async function runLessonTests(
   const judge = RUNNERS[getRuntime(runtime)?.name ?? ''];
   if (!judge) throw new AppError(404, 'This lesson has no tests');
   const solutionCode = loadSolutionCode(courseKey, lessonSlug, lang, language);
+  // On a challenge with a hidden part the student wrote only the function, so
+  // their program is it wrapped in that part.
+  const harness = studentHarness(courseKey, lessonSlug, lang, language, userCode);
+  const program = wrapCode(harness, userCode);
 
   // Cases whose reference output is cached skip our solution; the load test
   // always runs it fresh, next to the student's program, for the runtime.
@@ -392,17 +399,26 @@ export async function runLessonTests(
   // Server-side prep (C): structure + injection happen here; a syntax error in
   // the pristine user code is caught before any container is touched (gate 1).
   const prepared = judge.prepare
-    ? await judge.prepare(userCode, solutionCode, spec, skipSolution)
+    ? await judge.prepare(program, solutionCode, spec, skipSolution)
     : null;
-  if (prepared?.syntaxError) return syntaxErrorResponse(spec, prepared.syntaxError);
+  if (prepared?.syntaxError) {
+    return syntaxErrorResponse(spec, studentLines(prepared.syntaxError, harness));
+  }
 
   const releaseSlot = await acquireJudgeSlot();
   try {
-    return await runInContainer(ownerKey, runtime, judge, spec, userCode, solutionCode, prepared, {
-      keys,
-      cached,
-      skipSolution,
-    });
+    const result = await runInContainer(
+      ownerKey,
+      runtime,
+      judge,
+      spec,
+      program,
+      solutionCode,
+      prepared,
+      { keys, cached, skipSolution },
+    );
+    if (!result.syntaxError) return result;
+    return { ...result, syntaxError: studentLines(result.syntaxError, harness) };
   } finally {
     releaseSlot();
   }
