@@ -16,7 +16,7 @@ This tree is written `8 4 11 2 null 9 15`: first `8`, then its children `4` and 
 
 In a **binary search tree** every value in a node's left subtree is smaller than the node's own value, every value in its right subtree is larger, and no two values are equal. The tree above is one.
 
-The starter code already reads the input and builds the tree out of `struct Node`s with `value`, `left` and `right`, then prints what `kth_smallest` returns. You write `kth_smallest`, which gets the root and `k`.
+The hidden part of the program already reads the input and builds the tree out of `struct Node`s with `value`, `left` and `right`, then prints what `kth_smallest` returns. You write `kth_smallest`, which gets the root and `k`.
 
 ### Input
 

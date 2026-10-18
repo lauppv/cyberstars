@@ -14,7 +14,7 @@ Un arbore vine pe o singură linie, citit nivel cu nivel, de la stânga la dreap
 
 Arborele acesta se scrie `8 4 11 2 null 9 15`: întâi `8`, apoi copiii lui, `4` și `11`, apoi copiii lui `4` (`2` și niciunul), apoi cei ai lui `11` (`9` și `15`). Copiii lui `2`, `9` și `15` ar fi toți `null` la sfârșit, așa că se lasă deoparte.
 
-Codul de început citește deja datele și construiește arborele din `Nod`-uri cu `valoare`, `stanga` și `dreapta`, apoi apelează `afiseaza_nivelurile`. Tu scrii `afiseaza_nivelurile`, care afișează nivelurile.
+Partea ascunsă a programului citește deja datele și construiește arborele din `Nod`-uri cu `valoare`, `stanga` și `dreapta`, apoi apelează `afiseaza_nivelurile`. Tu scrii `afiseaza_nivelurile`, care afișează nivelurile.
 
 ### Date de intrare
 
