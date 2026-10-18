@@ -45,7 +45,7 @@ import { ResizeHandle } from '../components/ui/ResizeHandle';
 import { useResizeSplit } from '../hooks/useResizeSplit';
 import { useDevMode } from '../hooks/useDevMode';
 import { useSubmissions } from '../hooks/useSubmissions';
-import type { LessonMeta } from '@cyberstars/shared/lesson';
+import type { LessonMeta, RunLesson } from '@cyberstars/shared/lesson';
 import type { RunTestsResponse } from '@cyberstars/shared/tests';
 import type { TerminalTestResult } from '@cyberstars/shared/terminal';
 import { TUTOR_RUN_OUTPUT_MAX_LENGTH, type TutorLessonWork } from '@cyberstars/shared/tutor';
@@ -417,12 +417,18 @@ export function LessonPage() {
   // Solutions are for signed-in students only; each reveal spends a daily allowance.
   const canShowSolution = isLoggedIn && !!lessonMeta?.hasSolution;
 
+  // A Run names the lesson, so a challenge with a hidden part runs whole.
+  const runLesson = useMemo<RunLesson>(
+    () => ({ courseKey: category, lessonSlug: lesson, lang: i18n.language === 'ro' ? 'ro' : 'en' }),
+    [category, lesson, i18n.language],
+  );
+
   const handleRun = useCallback(() => {
     if (isRunning) return;
     setTestsError(null);
     setEditorRuns((n) => n + 1);
-    execute(userCode, editorLanguage);
-  }, [isRunning, execute, userCode, editorLanguage]);
+    execute(userCode, editorLanguage, runLesson);
+  }, [isRunning, execute, userCode, editorLanguage, runLesson]);
 
   // The language's code stays as it was, here and, for a signed-in student,
   // saved, so it is there after a reload too. A run's output and verdict were
@@ -1130,6 +1136,7 @@ export function LessonPage() {
           solution={solution}
           currentCode={isTerminal ? undefined : userCode}
           language={editorLanguage}
+          runLesson={runLesson}
           onClose={() => setSolution(null)}
         />
       )}

@@ -10,8 +10,3 @@ def count_islands(grid):
             if not up and not left:
                 corners += 1
     return corners
-
-
-rows, cols = map(int, input().split())
-grid = [list(input()) for r in range(rows)]
-print(count_islands(grid))

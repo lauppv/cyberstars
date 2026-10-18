@@ -1,7 +1,6 @@
 ```py
 from collections import deque
 
-
 # grila[r][c] e celula de pe randul r, coloana c.
 def numara_insule(grila):
     randuri = len(grila)
@@ -23,9 +22,4 @@ def numara_insule(grila):
                             vazut[nr][nc] = True
                             coada.append((nr, nc))
     return insule
-
-
-randuri, coloane = map(int, input().split())
-grila = [list(input()) for r in range(randuri)]
-print(numara_insule(grila))
 ```

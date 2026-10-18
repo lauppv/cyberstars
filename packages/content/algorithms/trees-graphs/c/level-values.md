@@ -14,7 +14,7 @@ A tree comes on one line, read level by level and left to right. After a node co
 
 This tree is written `8 4 11 2 null 9 15`: first `8`, then its children `4` and `11`, then the children of `4` (`2` and none), then those of `11` (`9` and `15`). The children of `2`, `9` and `15` would all be `null` at the end, so they are left out.
 
-The starter code already reads the input and builds the tree out of `struct Node`s with `value`, `left` and `right`, then calls `print_levels`. You write `print_levels`, which prints the levels.
+The hidden part of the program already reads the input and builds the tree out of `struct Node`s with `value`, `left` and `right`, then calls `print_levels`. You write `print_levels`, which prints the levels.
 
 ### Input
 

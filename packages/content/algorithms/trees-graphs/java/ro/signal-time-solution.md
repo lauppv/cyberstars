@@ -1,10 +1,8 @@
 ```java
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;
-import java.util.Scanner;
 
-public class Main {
+class Solutie {
     // vecini.get(u) are perechi {v, cost}: un cablu intre u si v pe care semnalul merge cost minute.
     static int timpSemnal(ArrayList<ArrayList<int[]>> vecini, int s) {
         int[] distanta = new int[vecini.size()];
@@ -36,25 +34,6 @@ public class Main {
             cel_mai_lent = Math.max(cel_mai_lent, d);
         }
         return cel_mai_lent;
-    }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int m = scanner.nextInt();
-        ArrayList<ArrayList<int[]>> vecini = new ArrayList<>();
-        for (int v = 0; v < n; v++) {
-            vecini.add(new ArrayList<>());
-        }
-        for (int i = 0; i < m; i++) {
-            int u = scanner.nextInt();
-            int v = scanner.nextInt();
-            int cost = scanner.nextInt();
-            vecini.get(u).add(new int[] {v, cost});
-            vecini.get(v).add(new int[] {u, cost});
-        }
-        int s = scanner.nextInt();
-        System.out.println(timpSemnal(vecini, s));
     }
 }
 ```

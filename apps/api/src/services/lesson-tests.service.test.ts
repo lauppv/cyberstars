@@ -55,10 +55,14 @@ const SPEC = {
 const ONE_CASE = { comparator: 'trimmed', structure: {}, cases: [{ visible: true }] };
 const SOLUTION_MD = '```py\nprint("ok")\n```\n';
 
+// Every file is there but a hidden part (<slug>-harness.md), which only the
+// challenges that have one ship.
+const noHarness = (file: string) => !file.endsWith('-harness.md');
+
 // Files the service reads, in order: <slug>-tests.json, <slug>-solution.md,
 // then the runner script.
 function stubFiles(spec: unknown = SPEC) {
-  mockExistsSync.mockReturnValue(true);
+  mockExistsSync.mockImplementation(noHarness);
   mockReadFileSync.mockImplementation((file: string) => {
     if (file.endsWith('-tests.json')) return JSON.stringify(spec);
     if (file.endsWith('-solution.md')) return SOLUTION_MD;
@@ -671,7 +675,9 @@ describe('runLessonTests', () => {
   });
 
   it('loads the ro/ solution together with the ro/ tests spec', async () => {
-    mockExistsSync.mockImplementation((file: string) => file.includes(`${path.sep}ro${path.sep}`));
+    mockExistsSync.mockImplementation(
+      (file: string) => file.includes(`${path.sep}ro${path.sep}`) && noHarness(file),
+    );
     mockReadFileSync.mockImplementation((file: string) => {
       if (file.endsWith('-tests.json')) return JSON.stringify({ cases: [{ visible: true }] });
       if (file.endsWith('-solution.md')) {
@@ -893,7 +899,7 @@ describe('runLessonTests', () => {
   });
 
   it('500s when the solution markdown has no fenced block', async () => {
-    mockExistsSync.mockReturnValue(true);
+    mockExistsSync.mockImplementation(noHarness);
     mockReadFileSync.mockImplementation((file: string) => {
       if (file.endsWith('-tests.json')) return JSON.stringify(SPEC);
       if (file.endsWith('-solution.md')) return 'no fence in here';
@@ -931,5 +937,124 @@ describe('runLessonTests', () => {
     });
     expect(mockDestroy).toHaveBeenCalledWith('user:1');
     expect(mockRelease).not.toHaveBeenCalled();
+  });
+});
+
+describe('runLessonTests on a challenge with a hidden part', () => {
+  const ro = `${path.sep}ro${path.sep}`;
+  const PY_HARNESS = {
+    en: '```py\n{{code: max_depth}}\n\nprint(max_depth(None))\n```\n',
+    ro: '```py\n{{code: adancime_maxima}}\n\nprint(adancime_maxima(None))\n```\n',
+  };
+  const C_HARNESS =
+    '```c\n#include <stdio.h>\nstruct Node { int value; };\n#line 1 "main.c"\n{{code: max_depth}}\n' +
+    'int main(void) { return max_depth(0); }\n```\n';
+
+  // The trees and graphs set: one EN tests file, a solution and a hidden part
+  // in each locale.
+  function stubChallenge(harness: { en: string; ro: string }, solution: string) {
+    mockExistsSync.mockImplementation(
+      (file: string) => !(file.includes(ro) && file.endsWith('-tests.json')),
+    );
+    mockReadFileSync.mockImplementation((file: string) => {
+      if (file.endsWith('-tests.json')) return JSON.stringify(ONE_CASE);
+      if (file.endsWith('-harness.md')) return file.includes(ro) ? harness.ro : harness.en;
+      if (file.endsWith('-solution.md')) return solution;
+      return '# runner';
+    });
+  }
+
+  const passing = () =>
+    stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
+
+  it('runs the student function and the solution inside the hidden part', async () => {
+    stubChallenge(PY_HARNESS, '```py\ndef max_depth(root):\n    return 0\n```\n');
+    passing();
+
+    await runLessonTests(
+      'user:1',
+      'algo-trees-graphs',
+      'max-depth',
+      'def max_depth(root):\n    return 1\n',
+      'en',
+      'python',
+    );
+
+    const payload = JSON.parse(mockDockerExec.mock.calls[1][2] as string);
+    expect(payload.userCode).toBe('def max_depth(root):\n    return 1\n\nprint(max_depth(None))\n');
+    expect(payload.solutionCode).toBe(
+      'def max_depth(root):\n    return 0\n\nprint(max_depth(None))\n',
+    );
+  });
+
+  it("follows the names the student's code is written in, not the page's language", async () => {
+    stubChallenge(PY_HARNESS, '```py\ndef max_depth(root):\n    return 0\n```\n');
+    passing();
+    await runLessonTests(
+      'user:1',
+      'algo-trees-graphs',
+      'max-depth',
+      'def adancime_maxima(radacina):\n    return 1\n',
+      'en',
+      'python',
+    );
+    expect(JSON.parse(mockDockerExec.mock.calls[1][2] as string).userCode).toContain(
+      'print(adancime_maxima(None))',
+    );
+
+    passing();
+    await runLessonTests(
+      'user:1',
+      'algo-trees-graphs',
+      'max-depth',
+      'def max_depth(root):\n    return 1\n',
+      'ro',
+      'python',
+    );
+    expect(JSON.parse(mockDockerExec.mock.calls[3][2] as string).userCode).toContain(
+      'print(max_depth(None))',
+    );
+  });
+
+  it('names the line of a C syntax error in the code the student sees', async () => {
+    stubChallenge(
+      { en: C_HARNESS, ro: C_HARNESS },
+      '```c\nint max_depth(struct Node *r) { return 0; }\n```\n',
+    );
+    mockPrepareC.mockResolvedValue({
+      syntaxError: 'line 5: syntax error near "x"',
+      structureFailures: [],
+      cases: [],
+    });
+
+    const res = await runLessonTests(
+      'user:1',
+      'algo-trees-graphs',
+      'max-depth',
+      'int max_depth(struct Node *r) {\n  x\n}\n',
+      'en',
+      'c',
+    );
+
+    expect(res.syntaxError).toBe('line 2: syntax error near "x"');
+    expect(mockPrepareC.mock.calls[0][0]).toContain('#line 1 "main.c"\nint max_depth(');
+    expect(mockAcquire).not.toHaveBeenCalled();
+  });
+
+  it("names the student's line in an error the runner reports", async () => {
+    stubChallenge(
+      { en: C_HARNESS, ro: C_HARNESS },
+      '```c\nint max_depth(struct Node *r) { return 0; }\n```\n',
+    );
+    mockPrepareC.mockResolvedValue({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [{ userSrc: 'U', solutionSrc: 'S', stdin: '' }],
+    });
+    stubVerdict({ syntaxError: 'line 7: error', cases: [] });
+
+    const res = await runLessonTests('user:1', 'algo-trees-graphs', 'max-depth', 'x', 'en', 'c');
+
+    expect(res.syntaxError).toBe('line 4: error');
   });
 });

@@ -1,7 +1,6 @@
 ```py
 import heapq
 
-
 # vecini[u] are cursurile care au nevoie intai de u.
 def ordine_cursuri(vecini):
     n = len(vecini)
@@ -22,16 +21,4 @@ def ordine_cursuri(vecini):
     if len(ordine) < n:
         return []
     return ordine
-
-
-n, m = map(int, input().split())
-vecini = [[] for i in range(n)]
-for i in range(m):
-    u, v = map(int, input().split())
-    vecini[u].append(v)
-ordine = ordine_cursuri(vecini)
-if ordine:
-    print(*ordine)
-else:
-    print(-1)
 ```

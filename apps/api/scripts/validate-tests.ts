@@ -10,6 +10,12 @@
 //      in the paired solution injects nothing, so the "hidden" cases all run on
 //      the same values and a hardcoded output passes. Every inject key (and
 //      every structure `requires` name) must appear in the paired solution.
+//   3. Hidden parts: a challenge's <slug>-harness.md wraps the student's
+//      function, so structure rules and injection would see the hidden code
+//      too (a required loop found in the input reading): a lesson with one has
+//      neither. Its solution is only the function, so it must define the one
+//      the hidden part calls, and a RO solution, in Romanian names, needs a RO
+//      hidden part.
 //
 // C is checked rigorously via the same tree-sitter analysis the judge uses
 // (an inject key must be a real init_declarator site); Python/Java use
@@ -21,6 +27,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { contentDir } from '../src/services/paths.js';
 import { parseC, collectInjectionSites } from '../src/services/c-analysis.js';
+import { defines, readHarness, type Harness } from '../src/services/harness.js';
 import type { LessonTestsSpec } from '@cyberstars/shared/tests';
 import { CODE_LANGUAGES, MULTI_LANGUAGE_COURSE_KEYS } from '@cyberstars/shared/constants';
 
@@ -283,6 +290,47 @@ export function auditCases(lang: Lang, spec: LessonTestsSpec): string[] {
   return messages;
 }
 
+export function auditHarness(harness: Harness, spec: LessonTestsSpec, solution: string): string[] {
+  const messages: string[] = [];
+  const { requires = [], forbids = [] } = spec.structure ?? {};
+  if (requires.length || forbids.length) {
+    messages.push('structure rules on a lesson with a hidden part would see the hidden code too');
+  }
+  if (injectKeys(spec).size) {
+    messages.push('injection on a lesson with a hidden part could land in the hidden code');
+  }
+  if (!defines(solution, harness.entry)) {
+    messages.push(`the solution doesn't define ${harness.entry}, which the hidden part calls`);
+  }
+  return messages;
+}
+
+// The hidden part of a lesson in one locale's folder, checked against that
+// folder's solution and the spec it is graded by.
+function checkHarness(
+  courseKey: string,
+  dir: string,
+  slug: string,
+  locale: 'en' | 'ro',
+  spec: LessonTestsSpec,
+  problems: Problem[],
+): void {
+  const tag = locale === 'ro' ? `ro/${slug}` : slug;
+  let harness: Harness | null;
+  try {
+    harness = readHarness(dir, slug);
+  } catch (err) {
+    problems.push({ courseKey, slug, message: `${tag}: ${(err as Error).message}` });
+    return;
+  }
+  if (!harness) return;
+  const code = solutionCode(dir, slug);
+  if (code === null) return;
+  for (const message of auditHarness(harness, spec, code)) {
+    problems.push({ courseKey, slug, message: `${tag}: ${message}` });
+  }
+}
+
 async function checkPaired(
   courseKey: string,
   dir: string,
@@ -345,6 +393,22 @@ export async function collectProblems(): Promise<Problem[]> {
         });
       }
       await checkPaired(courseKey, baseDir, slug, 'en', problems);
+      const spec = readSpec(path.join(baseDir, `${slug}${TESTS_SUFFIX}`));
+      checkHarness(courseKey, baseDir, slug, 'en', spec, problems);
+      if (!fs.existsSync(path.join(baseDir, `${slug}-harness.md`))) continue;
+      if (!fs.existsSync(path.join(roDir, `${slug}-solution.md`))) continue;
+      if (!fs.existsSync(path.join(roDir, `${slug}-harness.md`))) {
+        problems.push({
+          courseKey,
+          slug,
+          message: `ro/${slug}: a RO solution has Romanian names, so it needs ro/${slug}-harness.md`,
+        });
+        continue;
+      }
+      const roSpec = roSlugs.has(slug)
+        ? readSpec(path.join(roDir, `${slug}${TESTS_SUFFIX}`))
+        : spec;
+      checkHarness(courseKey, roDir, slug, 'ro', roSpec, problems);
     }
 
     for (const slug of roSlugs) {

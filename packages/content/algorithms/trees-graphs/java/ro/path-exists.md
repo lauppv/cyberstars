@@ -19,7 +19,7 @@ Graful acesta se scrie:
 
 Nodul `5` nu are nicio muchie, așa că apare doar în numărul `6`.
 
-Codul de început citește deja graful în `vecini`, unde `vecini.get(u)` are vecinii lui `u`, apoi afișează `true` sau `false` după ce întoarce `existaDrum`. Tu scrii `existaDrum`.
+Partea ascunsă a programului citește deja graful în `vecini`, unde `vecini.get(u)` are vecinii lui `u`, apoi afișează `true` sau `false` după ce întoarce `existaDrum`. Tu scrii `existaDrum`.
 
 ### Date de intrare
 

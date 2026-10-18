@@ -6,6 +6,7 @@ import { ipKeyGenerator } from 'express-rate-limit';
 import { config } from '../config/index.js';
 import type { TokenPayload } from '@cyberstars/shared/auth';
 import { handleInteractiveRun } from './interactive-execution.service.js';
+import { programForRun } from './harness.js';
 import { openSession, closeSession } from './code-container.service.js';
 import { GUEST_RUN_BUDGET, guestRunsRemaining, recordGuestRun } from './guest-budget.service.js';
 import { registerUserSocket, unregisterUserSocket } from './ws-user.js';
@@ -145,7 +146,7 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
 
   ws.on('message', (raw) => {
     if (started) return;
-    let msg: { type?: string; code?: string; language?: string };
+    let msg: { type?: string; code?: string; language?: string; lesson?: unknown };
     try {
       msg = JSON.parse(typeof raw === 'string' ? raw : raw.toString());
     } catch {
@@ -184,7 +185,8 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
     started = true;
     counted = true;
     if (isGuest) recordGuestRun(rateKey);
-    handleInteractiveRun(ws, msg.code, msg.language, rateKey).catch((err) => {
+    const program = programForRun(msg.code, msg.language, msg.lesson);
+    handleInteractiveRun(ws, program, msg.language, rateKey).catch((err) => {
       console.error('[ws/run] execution error:', err);
       if (ws.readyState === ws.OPEN) {
         ws.send(JSON.stringify({ type: 'stderr', data: 'Internal error.\n' }));

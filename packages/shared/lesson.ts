@@ -21,3 +21,11 @@ export interface Course {
   description: string;
   lessons: LessonMeta[];
 }
+
+// The lesson an editor Run belongs to, sent with the code so that a challenge
+// with a hidden part (<slug>-harness.md) runs the student's function inside it.
+export interface RunLesson {
+  courseKey: string;
+  lessonSlug: string;
+  lang: 'en' | 'ro';
+}

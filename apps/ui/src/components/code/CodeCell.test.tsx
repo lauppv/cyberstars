@@ -11,6 +11,7 @@ vi.mock('../../hooks/useCodeExecution', () => ({
 
 import { CodeCell } from './CodeCell';
 import { CELL_RUN_EVENT } from '../../constants/tour';
+import { RunLessonContext } from './runLesson';
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -39,13 +40,24 @@ describe('CodeCell', () => {
   it('maps aliased languages through LANG_MAP when running', () => {
     render(<CodeCell initialCode="print(1)" language="PY" />);
     fireEvent.click(screen.getByRole('button'));
-    expect(execute).toHaveBeenCalledWith('print(1)', 'python');
+    expect(execute).toHaveBeenCalledWith('print(1)', 'python', undefined);
+  });
+
+  it('runs with the lesson it is shown for, so a hidden part can wrap it', () => {
+    const lesson = { courseKey: 'algo-trees-graphs', lessonSlug: 'max-depth', lang: 'en' as const };
+    render(
+      <RunLessonContext.Provider value={lesson}>
+        <CodeCell initialCode="def max_depth(root): return 0" language="py" />
+      </RunLessonContext.Provider>,
+    );
+    fireEvent.click(screen.getByRole('button'));
+    expect(execute).toHaveBeenCalledWith('def max_depth(root): return 0', 'python', lesson);
   });
 
   it('falls back to the lowercased language when not in LANG_MAP', () => {
     render(<CodeCell initialCode="puts 1" language="Ruby" />);
     fireEvent.click(screen.getByRole('button'));
-    expect(execute).toHaveBeenCalledWith('puts 1', 'ruby');
+    expect(execute).toHaveBeenCalledWith('puts 1', 'ruby', undefined);
   });
 
   it('announces the end of a run, and only the end', () => {

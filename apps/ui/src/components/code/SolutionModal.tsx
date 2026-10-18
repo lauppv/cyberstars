@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import type { RunLesson } from '@cyberstars/shared/lesson';
 import { MarkdownRenderer } from '../markdown/MarkdownRenderer';
 import { CodeEditor } from './CodeEditor';
+import { RunLessonContext } from './runLesson';
 
 function extractCodeFromSolution(solution: string): string {
   const match = solution.match(/```[^\n]*\n([\s\S]*?)\n?```/);
@@ -12,11 +14,14 @@ export function SolutionModal({
   solution,
   currentCode,
   language,
+  runLesson = null,
   onClose,
 }: {
   solution: string;
   currentCode?: string;
   language?: string;
+  /** The lesson the solution's Run belongs to. */
+  runLesson?: RunLesson | null;
   onClose: () => void;
 }) {
   const { t } = useTranslation();
@@ -97,7 +102,9 @@ export function SolutionModal({
           </div>
         ) : (
           <div className="px-6 py-4 lesson-body">
-            <MarkdownRenderer content={solution} />
+            <RunLessonContext.Provider value={runLesson}>
+              <MarkdownRenderer content={solution} />
+            </RunLessonContext.Provider>
           </div>
         )}
       </div>

@@ -1,12 +1,4 @@
 ```c
-#include <stdio.h>
-
-#define MAX_LATURA 25
-
-int randuri, coloane;
-// grila[r][c] e celula de pe randul r, coloana c.
-char grila[MAX_LATURA][MAX_LATURA + 1];
-
 int minute_pana_se_strica(void) {
     static int coada[MAX_LATURA * MAX_LATURA][2];
     int minut[MAX_LATURA][MAX_LATURA];
@@ -51,14 +43,5 @@ int minute_pana_se_strica(void) {
         return -1;
     }
     return ultimul;
-}
-
-int main(void) {
-    scanf("%d %d", &randuri, &coloane);
-    for (int r = 0; r < randuri; r++) {
-        scanf("%s", grila[r]);
-    }
-    printf("%d\n", minute_pana_se_strica());
-    return 0;
 }
 ```

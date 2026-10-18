@@ -5,6 +5,7 @@ import {
   auditSolution,
   auditCases,
   auditKinds,
+  auditHarness,
   MAX_CASES,
 } from './validate-tests.js';
 
@@ -186,5 +187,31 @@ describe('auditKinds', () => {
     expect(auditKinds('python', { ...spec, structure: { requires: [{ kind: 'try' }] } })).toEqual(
       [],
     );
+  });
+});
+
+describe('auditHarness', () => {
+  const harness = { source: '{{code: solve}}\n\nprint(solve())\n', entry: 'solve', lineOffset: 0 };
+
+  it('passes a stdin lesson whose solution defines the function the hidden part calls', () => {
+    const spec: LessonTestsSpec = { cases: [{ stdin: '1\n' }] };
+    expect(auditHarness(harness, spec, 'def solve():\n    return 1\n')).toEqual([]);
+  });
+
+  it('flags structure rules and injection, which would see the hidden code too', () => {
+    const spec: LessonTestsSpec = {
+      structure: { requires: [{ kind: 'loop' }] },
+      cases: [{ inject: { n: 3 } }],
+    };
+    expect(auditHarness(harness, spec, 'def solve():\n    return 1\n')).toEqual([
+      'structure rules on a lesson with a hidden part would see the hidden code too',
+      'injection on a lesson with a hidden part could land in the hidden code',
+    ]);
+  });
+
+  it("flags a solution that doesn't define the function", () => {
+    expect(auditHarness(harness, { cases: [] }, 'def other():\n    return 1\n')).toEqual([
+      "the solution doesn't define solve, which the hidden part calls",
+    ]);
   });
 });

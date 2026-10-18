@@ -6,7 +6,8 @@
 //   <public>/curriculum.json      : same shape/order as the old GET /api/curriculum
 //   <public>/lessons/<courseKey>/ : lesson bodies (<slug>.md) and starter code
 //                                   (<slug>-code.md), copied from the source tree
-//                                   (solutions are not: they stay server-side);
+//                                   (solutions and hidden parts are not: they
+//                                   stay server-side);
 //                                   a multi-language course has one folder per
 //                                   language, <courseKey>/<language>/, each with
 //                                   the course's visuals put into its lessons
@@ -34,15 +35,15 @@ const PUBLIC_DIR = path.resolve(outDir);
 const LESSONS_OUT = path.join(PUBLIC_DIR, 'lessons');
 
 // A multi-language course teaches every lesson in each language, so the
-// build stops on a lesson missing one, or missing the starter, tests or
-// solution its Python twin has (`hasTests` and `hasSolution` are read from
-// Python).
+// build stops on a lesson missing one, or missing the starter, tests,
+// solution or hidden part its Python twin has (`hasTests` and `hasSolution`
+// are read from Python).
 const missing: string[] = [];
 for (const lesson of lessons.filter((l) => isMultiLanguage(l.courseKey))) {
   const has = (language: string, suffix: string) =>
     fs.existsSync(path.join(courseDir(lesson.courseKey, language), `${lesson.slug}${suffix}`));
   for (const language of CODE_LANGUAGES) {
-    for (const suffix of ['.md', '-code.md', '-tests.json', '-solution.md']) {
+    for (const suffix of ['.md', '-code.md', '-tests.json', '-solution.md', '-harness.md']) {
       if ((suffix === '.md' || has('python', suffix)) && !has(language, suffix)) {
         missing.push(`${lesson.courseKey}/${language}/${lesson.slug}${suffix}`);
       }
@@ -99,7 +100,8 @@ const LOCALE_DIRS = ['ro'];
 // -setup.json files stay server-side (the terminal sandbox reads them on session
 // create), and locale subdirectories are handled separately below. -solution.md
 // stays server-side too: guests must not read solutions, and signed-in students
-// get them through the metered reveal endpoint.
+// get them through the metered reveal endpoint. So does -harness.md, the part
+// of a challenge's program the student doesn't see, which only the server runs.
 // Lessons whose visuals couldn't be put in; the build stops on them once every file is through
 const broken: string[] = [];
 
@@ -110,7 +112,7 @@ function copyMarkdown(srcDir: string, destDir: string, fill?: (text: string) => 
   let n = 0;
   for (const file of fs.readdirSync(srcDir)) {
     if (!file.endsWith('.md')) continue; // skips locale subdirs (they're not *.md)
-    if (file.endsWith('-solution.md')) continue;
+    if (file.endsWith('-solution.md') || file.endsWith('-harness.md')) continue;
     const src = path.join(srcDir, file);
     if (fill) {
       try {

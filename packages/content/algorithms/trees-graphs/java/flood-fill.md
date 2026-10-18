@@ -4,7 +4,7 @@ A picture is a grid of digits, each digit a color. Read it, a cell and a new col
 
 The first line has the number of rows and the number of columns. Then come the rows, from top to bottom, each on its own line with no spaces. Rows and columns are numbered from `0`. Two cells are next to each other when they share a side: up, down, left or right, never diagonally.
 
-The starter code already reads the picture into `grid`, where `grid[r][c]` is the cell in row `r`, column `c`, calls `floodFill` with the cell and the new color, then prints the picture. You write `floodFill`, which paints the cells right in the grid it gets.
+The hidden part of the program already reads the picture into `grid`, where `grid[r][c]` is the cell in row `r`, column `c`, calls `floodFill` with the cell and the new color, then prints the picture. You write `floodFill`, which paints the cells right in the grid it gets.
 
 ### Input
 

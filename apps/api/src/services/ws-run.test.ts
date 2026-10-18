@@ -15,6 +15,16 @@ vi.mock('./interactive-execution.service.js', () => ({
   handleInteractiveRun: (...args: unknown[]) => mockRun(...args),
 }));
 
+// A run that names its lesson goes through the hidden part (harness.test.ts
+// covers the wrapping itself).
+const mockProgramForRun = vi.fn((code: string, _language: string, lesson: unknown) =>
+  lesson ? `wrapped: ${code}` : code,
+);
+vi.mock('./harness.js', () => ({
+  programForRun: (code: string, language: string, lesson: unknown) =>
+    mockProgramForRun(code, language, lesson),
+}));
+
 const openSessionMock = vi.fn();
 const closeSessionMock = vi.fn();
 vi.mock('./code-container.service.js', () => ({
@@ -237,6 +247,16 @@ describe('handleConnection', () => {
     handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2001)}`));
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
     expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'user:2001');
+    ws.emit('close');
+  });
+
+  it("runs a challenge's function inside its hidden part when the run names the lesson", () => {
+    const ws = new FakeWs();
+    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2003)}`));
+    const lesson = { courseKey: 'algo-trees-graphs', lessonSlug: 'max-depth', lang: 'en' };
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'f()', language: 'python', lesson }));
+    expect(mockProgramForRun).toHaveBeenCalledWith('f()', 'python', lesson);
+    expect(mockRun).toHaveBeenCalledWith(ws, 'wrapped: f()', 'python', 'user:2003');
     ws.emit('close');
   });
 

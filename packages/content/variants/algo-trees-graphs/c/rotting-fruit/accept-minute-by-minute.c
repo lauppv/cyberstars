@@ -1,11 +1,3 @@
-#include <stdio.h>
-
-#define MAX_SIDE 25
-
-int rows, cols;
-// grid[r][c] is the cell in row r, column c.
-char grid[MAX_SIDE][MAX_SIDE + 1];
-
 int minutes_to_rot(void) {
     static int rotting[MAX_SIDE * MAX_SIDE][2];
     int dr[] = {-1, 1, 0, 0};
@@ -46,13 +38,4 @@ int minutes_to_rot(void) {
         }
     }
     return minutes;
-}
-
-int main(void) {
-    scanf("%d %d", &rows, &cols);
-    for (int r = 0; r < rows; r++) {
-        scanf("%s", grid[r]);
-    }
-    printf("%d\n", minutes_to_rot());
-    return 0;
 }

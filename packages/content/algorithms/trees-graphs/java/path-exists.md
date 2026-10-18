@@ -19,7 +19,7 @@ This graph is written:
 
 Vertex `5` has no edges, so it shows up only in the count `6`.
 
-The starter code already reads the graph into `adj`, where `adj.get(u)` lists the neighbours of `u`, then prints `true` or `false` by what `pathExists` returns. You write `pathExists`.
+The hidden part of the program already reads the graph into `adj`, where `adj.get(u)` lists the neighbours of `u`, then prints `true` or `false` by what `pathExists` returns. You write `pathExists`.
 
 ### Input
 

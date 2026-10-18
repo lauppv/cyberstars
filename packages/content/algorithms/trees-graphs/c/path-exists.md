@@ -19,7 +19,7 @@ This graph is written:
 
 Vertex `5` has no edges, so it shows up only in the count `6`.
 
-The starter code already reads the graph into the global arrays `adj` and `count`, where `adj[u][0]` to `adj[u][count[u] - 1]` are the neighbours of `u`, then prints `true` or `false` by what `path_exists` returns. You write `path_exists`.
+The hidden part of the program already reads the graph into the global arrays `adj` and `count`, where `adj[u][0]` to `adj[u][count[u] - 1]` are the neighbours of `u`, then prints `true` or `false` by what `path_exists` returns. You write `path_exists`.
 
 ### Input
 

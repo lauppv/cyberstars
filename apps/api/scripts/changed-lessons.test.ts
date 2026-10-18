@@ -23,11 +23,11 @@ describe('planChecks', () => {
     ).toEqual([]);
   });
 
-  it("grades a changed lesson's spec, solution or variants in EN and RO", () => {
+  it("grades a changed lesson's spec, solution, hidden part or variants in EN and RO", () => {
     expect(
       planChecks([
         'packages/content/lessons/java/ro/hashmap-tests.json',
-        'packages/content/algorithms/c/binary-search-c-solution.md',
+        'packages/content/algorithms/c/binary-search-c-harness.md',
         'packages/content/variants/python/string-reverse/reject-slice-in-helper.py',
         'packages/content/lessons/linux/ls-tests.json',
       ]),
@@ -53,11 +53,11 @@ describe('planChecks', () => {
     ]);
   });
 
-  it("grades a multi-language challenge's changed spec or variant in that language", () => {
+  it("grades a multi-language challenge's changed spec, hidden part or variant in that language", () => {
     expect(
       planChecks([
         'packages/content/algorithms/trees-graphs/c/max-depth-tests.json',
-        'packages/content/algorithms/trees-graphs/java/ro/max-depth-solution.md',
+        'packages/content/algorithms/trees-graphs/java/ro/max-depth-harness.md',
         'packages/content/variants/algo-trees-graphs/python/max-depth/reject-counts-edges.py',
       ]),
     ).toEqual([

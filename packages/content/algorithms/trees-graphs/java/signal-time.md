@@ -22,7 +22,7 @@ This network is written:
 2 3 1
 ```
 
-The starter code already reads the network into `adj`, where `adj.get(u)` lists one `{v, w}` pair per cable at `u`: it goes to `v` and takes `w` minutes, then prints what `signalTime` returns. You write `signalTime`.
+The hidden part of the program already reads the network into `adj`, where `adj.get(u)` lists one `{v, w}` pair per cable at `u`: it goes to `v` and takes `w` minutes, then prints what `signalTime` returns. You write `signalTime`.
 
 ### Input
 

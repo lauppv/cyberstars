@@ -1,7 +1,6 @@
 ```py
 from collections import deque
 
-
 # grila[r][c] e celula de pe randul r, coloana c.
 def minute_pana_se_strica(grila):
     randuri = len(grila)
@@ -29,9 +28,4 @@ def minute_pana_se_strica(grila):
     if proaspete > 0:
         return -1
     return ultimul
-
-
-randuri, coloane = map(int, input().split())
-grila = [list(input()) for r in range(randuri)]
-print(minute_pana_se_strica(grila))
 ```

@@ -72,6 +72,23 @@ describe('useCodeExecution', () => {
     expect(result.current.isRunning).toBe(false);
   });
 
+  it('sends the lesson the code belongs to when there is one', async () => {
+    const { result } = renderHook(() => useCodeExecution());
+    const lesson = { courseKey: 'algo-trees-graphs', lessonSlug: 'max-depth', lang: 'ro' as const };
+    act(() => {
+      result.current.execute('code', 'c', lesson);
+    });
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10));
+    });
+    expect(JSON.parse(wsInstances[0].sent[0])).toEqual({
+      type: 'run',
+      code: 'code',
+      language: 'c',
+      lesson,
+    });
+  });
+
   it('execute streams stderr', async () => {
     const { result } = renderHook(() => useCodeExecution());
 

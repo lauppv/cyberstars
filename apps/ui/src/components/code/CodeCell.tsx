@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { CodeEditor } from './CodeEditor';
 import { RunButton } from './RunButton';
 import { CodeOutput } from './CodeOutput';
 import { useCodeExecution } from '../../hooks/useCodeExecution';
 import { useGuestSignupPrompt } from '../../context/GuestSignupPromptContext';
 import { CELL_RUN_EVENT } from '../../constants/tour';
+import { RunLessonContext } from './runLesson';
 
 interface CodeCellProps {
   initialCode: string;
@@ -23,6 +24,7 @@ export function CodeCell({ initialCode, language }: CodeCellProps) {
   const [code, setCode] = useState(initialCode);
   const { notifyRunComplete } = useGuestSignupPrompt();
   const { output, isRunning, execute, sendInput } = useCodeExecution(notifyRunComplete);
+  const runLesson = useContext(RunLessonContext);
   const rootRef = useRef<HTMLDivElement>(null);
   const wasRunning = useRef(false);
 
@@ -36,7 +38,11 @@ export function CodeCell({ initialCode, language }: CodeCellProps) {
   return (
     <div ref={rootRef} data-code-cell className="my-4 panel rounded p-3">
       <CodeEditor value={code} onChange={setCode} language={lang} minHeight="60px" />
-      <RunButton onClick={() => execute(code, lang)} isRunning={isRunning} className="mt-2" />
+      <RunButton
+        onClick={() => execute(code, lang, runLesson ?? undefined)}
+        isRunning={isRunning}
+        className="mt-2"
+      />
       {(output || isRunning) && (
         <div className="mt-2">
           <CodeOutput output={output} height="120px" isRunning={isRunning} onInput={sendInput} />

@@ -12,12 +12,4 @@ def flood_fill(grid, r, c, color):
             if 0 <= nr < len(grid) and 0 <= nc < len(grid[0]) and grid[nr][nc] == old:
                 grid[nr][nc] = color
                 stack.append((nr, nc))
-
-
-rows, cols = map(int, input().split())
-grid = [list(input()) for r in range(rows)]
-r, c, color = input().split()
-flood_fill(grid, int(r), int(c), color)
-for row in grid:
-    print("".join(row))
 ```

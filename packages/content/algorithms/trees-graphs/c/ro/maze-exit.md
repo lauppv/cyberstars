@@ -4,7 +4,7 @@ Un labirint e o grilă în care `#` e un perete și `.` o celulă liberă. Porne
 
 Pe prima linie sunt numărul de rânduri și numărul de coloane. Urmează rândurile, de sus în jos, fiecare pe linia lui, fără spații. Rândurile și coloanele sunt numerotate de la `0`. Două celule sunt vecine când au o latură comună: sus, jos, stânga sau dreapta, niciodată pe diagonală.
 
-Codul de început citește deja labirintul în variabilele globale `randuri`, `coloane` și `grila`, unde `grila[r][c]` e celula de pe rândul `r`, coloana `c`, apoi afișează ce întoarce `cei_mai_putini_pasi`. Tu scrii `cei_mai_putini_pasi`.
+Partea ascunsă a programului citește deja labirintul în variabilele globale `randuri`, `coloane` și `grila`, unde `grila[r][c]` e celula de pe rândul `r`, coloana `c`, apoi afișează ce întoarce `cei_mai_putini_pasi`. Tu scrii `cei_mai_putini_pasi`.
 
 ### Date de intrare
 

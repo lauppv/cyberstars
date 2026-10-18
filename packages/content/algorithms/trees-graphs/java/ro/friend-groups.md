@@ -19,7 +19,7 @@ Graful acesta se scrie:
 
 Nodul `5` nu are nicio muchie, așa că apare doar în numărul `6`.
 
-Codul de început citește deja graful în `vecini`, unde `vecini.get(u)` are vecinii lui `u`, apoi afișează ce întoarce `numaraGrupuri`. Tu scrii `numaraGrupuri`.
+Partea ascunsă a programului citește deja graful în `vecini`, unde `vecini.get(u)` are vecinii lui `u`, apoi afișează ce întoarce `numaraGrupuri`. Tu scrii `numaraGrupuri`.
 
 ### Date de intrare
 

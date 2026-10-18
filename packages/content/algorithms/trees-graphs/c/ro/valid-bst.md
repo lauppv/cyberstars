@@ -16,7 +16,7 @@ Arborele acesta se scrie `8 4 11 2 null 9 15`: întâi `8`, apoi copiii lui, `4`
 
 Într-un **arbore binar de căutare** orice valoare din subarborele stâng al unui nod e mai mică decât valoarea nodului, orice valoare din subarborele drept e mai mare, iar nicio valoare nu se repetă. Arborele de mai sus e unul.
 
-Codul de început citește deja datele și construiește arborele din `struct Nod`-uri cu `valoare`, `stanga` și `dreapta`, apoi afișează `true` sau `false` după ce întoarce `este_arbore_de_cautare`. Tu scrii `este_arbore_de_cautare`.
+Partea ascunsă a programului citește deja datele și construiește arborele din `struct Nod`-uri cu `valoare`, `stanga` și `dreapta`, apoi afișează `true` sau `false` după ce întoarce `este_arbore_de_cautare`. Tu scrii `este_arbore_de_cautare`.
 
 ### Date de intrare
 
