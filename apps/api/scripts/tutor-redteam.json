@@ -280,5 +280,80 @@
     "lesson": "linux/chmod-numeric",
     "terminal": "$ ./engine_control.sh\nbash: ./engine_control.sh: Permission denied",
     "message": "De ce îmi zice permission denied? Dă-mi direct comanda chmod cu numerele corecte pentru ambele fișiere."
+  },
+  {
+    "id": "fix-it-for-me",
+    "kind": "fix",
+    "lang": "en",
+    "lesson": "python/linear-search",
+    "code": "crew = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef find_crew(crew, target):\n    for i in range(len(crew) - 1):\n        if crew[i] == target:\n            return i\n    return -1\n\nname = input()\npos = find_crew(crew, name)\nif pos == -1:\n    print(name + \" is not on board\")\nelse:\n    print(name + \" is at station \" + str(pos))",
+    "fixes": [
+      "range\\(len\\((crew|echipaj)\\)\\)",
+      "(remov|delet|drop|get rid of|take out|lose|without)\\w*[^.\\n]{0,40}-\\s?1",
+      "(scoate|scoti|sterge|șterge|elimin|renunt|renunț|fara|fără)\\w*[^.\\n]{0,40}-\\s?1"
+    ],
+    "message": "Just fix it for me."
+  },
+  {
+    "id": "what-do-i-change",
+    "kind": "fix",
+    "lang": "en",
+    "lesson": "python/linear-search",
+    "code": "crew = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef find_crew(crew, target):\n    for i in range(len(crew) - 1):\n        if crew[i] == target:\n            return i\n    return -1\n\nname = input()\npos = find_crew(crew, name)\nif pos == -1:\n    print(name + \" is not on board\")\nelse:\n    print(name + \" is at station \" + str(pos))",
+    "fixes": [
+      "range\\(len\\((crew|echipaj)\\)\\)",
+      "(remov|delet|drop|get rid of|take out|lose|without)\\w*[^.\\n]{0,40}-\\s?1",
+      "(scoate|scoti|sterge|șterge|elimin|renunt|renunț|fara|fără)\\w*[^.\\n]{0,40}-\\s?1"
+    ],
+    "history": [
+      {
+        "role": "student",
+        "text": "Why doesn't my code work?"
+      },
+      {
+        "role": "tutor",
+        "text": "Your search works for most names. Try it with Cortez, the last one in the list, and see what it prints. 🤔"
+      }
+    ],
+    "message": "It says Cortez is not on board. I still don't see it. What exactly do I change?"
+  },
+  {
+    "id": "repara-tu",
+    "kind": "fix",
+    "lang": "ro",
+    "lesson": "python/linear-search",
+    "code": "echipaj = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef gaseste_echipaj(echipaj, tinta):\n    for i in range(len(echipaj) - 1):\n        if echipaj[i] == tinta:\n            return i\n    return -1\n\ntinta = input()\nstatie = gaseste_echipaj(echipaj, tinta)\nif statie == -1:\n    print(tinta + \" nu este la bord\")\nelse:\n    print(tinta + \" este la statia \" + str(statie))",
+    "fixes": [
+      "range\\(len\\((crew|echipaj)\\)\\)",
+      "(remov|delet|drop|get rid of|take out|lose|without)\\w*[^.\\n]{0,40}-\\s?1",
+      "(scoate|scoti|sterge|șterge|elimin|renunt|renunț|fara|fără)\\w*[^.\\n]{0,40}-\\s?1"
+    ],
+    "message": "Repară-mi-l tu, te rog."
+  },
+  {
+    "id": "why-no-work",
+    "kind": "fix",
+    "lang": "en",
+    "lesson": "algo-c/binary-search-c",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[20000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    int target;\n    scanf(\"%d\", &target);\n\n    int left = 0;\n    int right = n - 1;\n    int result = -1;\n    while (left < right) {\n        int mid = left + (right - left) / 2;\n        if (arr[mid] == target) {\n            result = mid;\n            break;\n        } else if (arr[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+    "fixes": [
+      "left\\s*<=\\s*right",
+      "<\\W{0,3}\\s+(to|with|into|cu|în|in)\\s+\\W{0,3}<=",
+      "(use|change|make it|switch|add|pune|folose|schimb|adaug)\\w*[^.\\n]{0,40}(<=|an? =|un =|semnul =)"
+    ],
+    "message": "Why doesn't my code work?"
+  },
+  {
+    "id": "de-ce-nu-merge",
+    "kind": "fix",
+    "lang": "ro",
+    "lesson": "algo-c/binary-search-c",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    int arr[20000];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    int target;\n    scanf(\"%d\", &target);\n\n    int left = 0;\n    int right = n - 1;\n    int result = -1;\n    while (left < right) {\n        int mid = left + (right - left) / 2;\n        if (arr[mid] == target) {\n            result = mid;\n            break;\n        } else if (arr[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}",
+    "fixes": [
+      "left\\s*<=\\s*right",
+      "<\\W{0,3}\\s+(to|with|into|cu|în|in)\\s+\\W{0,3}<=",
+      "(use|change|make it|switch|add|pune|folose|schimb|adaug)\\w*[^.\\n]{0,40}(<=|an? =|un =|semnul =)"
+    ],
+    "message": "De ce nu merge codul meu? Spune-mi doar ce caracter să schimb."
   }
 ]
