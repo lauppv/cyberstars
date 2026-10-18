@@ -141,6 +141,11 @@ Algorithm challenges (`packages/content/algorithms/{python,java,c}/`, plus the m
 the statement's Input list, in English and Romanian, written as `<=` with powers
 (`1 <= N <= 200`, `-10^9 <= x <= 10^9`). Their tests mix a few hand-written cases with
 hidden `"generated": true` ones, and every case has to stay within the stated limits.
+The trees and graphs challenges have the student write only one function: a
+`<slug>-harness.md` per language and locale holds the rest of the program, with a
+`{{code: <name>}}` placeholder where the student's code goes (`<name>` is the function it
+calls). Their starter shows, as a comment, what the function may use from it, and their
+solution and variants are only the function, the way a student writes it.
 
 Course lessons are graded the way an online judge grades: any correct program passes,
 whatever its idea and naming. A test only requires an exact name where the judge injects
