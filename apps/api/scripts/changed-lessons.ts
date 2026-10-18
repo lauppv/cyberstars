@@ -3,8 +3,8 @@
 // one matrix entry (one runner, one judge image pulled); an empty plan skips
 // the job.
 //
-// - A lesson's spec, reference solution or variants changed: that lesson, EN
-//   and RO.
+// - A lesson's spec, reference solution, hidden part or variants changed:
+//   that lesson, EN and RO.
 // - A runtime's runner changed: every lesson of that language, EN only (the
 //   variants are EN, and a RO spec differs from its twin only in names).
 // - The judge engine shared by all three changed: every language.
@@ -50,6 +50,7 @@ export const RUNTIME_FILES: Record<Runtime, string[]> = {
 
 export const ENGINE_FILES = [
   'apps/api/src/services/lesson-tests.service.ts',
+  'apps/api/src/services/harness.ts',
   'apps/api/src/services/code-container.service.ts',
   'apps/api/src/services/docker-exec.ts',
   'apps/api/src/services/judge-queue.ts',
@@ -72,13 +73,14 @@ export const SELF_FILES = [
 // packages/content/variants/python/string-reverse/reject-slice-in-helper.py -> python/string-reverse,
 // and on a multi-language course, with the language after the course:
 // packages/content/lessons/trees-graphs/c/trees-tests.json -> trees-graphs/c/trees,
-// packages/content/algorithms/trees-graphs/c/max-depth-tests.json -> algo-trees-graphs/c/max-depth,
+// packages/content/algorithms/trees-graphs/c/max-depth-tests.json -> algo-trees-graphs/c/max-depth
+// (its -harness.md too),
 // packages/content/variants/trees-graphs/c/trees/reject-no-struct.c -> trees-graphs/c/trees.
 const LESSON_FILE =
-  /^packages\/content\/(lessons|algorithms)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md)$/;
+  /^packages\/content\/(lessons|algorithms)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md|harness\.md)$/;
 const VARIANT_FILE = /^packages\/content\/variants\/([^/]+)\/([^/]+)\/[^/]+$/;
 const MULTI_LESSON_FILE =
-  /^packages\/content\/(lessons|algorithms)\/([^/]+)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md)$/;
+  /^packages\/content\/(lessons|algorithms)\/([^/]+)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md|harness\.md)$/;
 const MULTI_VARIANT_FILE =
   /^packages\/content\/variants\/([^/]+)\/(python|c|java)\/([^/]+)\/[^/]+$/;
 
