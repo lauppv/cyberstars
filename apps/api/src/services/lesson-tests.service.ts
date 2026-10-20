@@ -14,6 +14,7 @@ import { AppError } from '../middleware/errorHandler.js';
 import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
 import { acquireSandboxSlot } from './sandbox-slots.js';
+import { inLine } from './run-waits.js';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
 import { readHarness, studentHarness, studentLines, wrapCode } from './harness.js';
 import {
@@ -384,6 +385,8 @@ export async function runLessonTests(
   language?: string,
   // A guest's network, which a new container counts against (guest-sandboxes.ts)
   guestIp?: string,
+  // Where the run counts as waiting while it's in a line (run-waits.ts)
+  waitKey: string | null = null,
 ): Promise<RunTestsResponse> {
   const spec = loadTestsSpec(courseKey, lessonSlug, lang, language);
   if (!spec) throw new AppError(404, 'This lesson has no tests');
@@ -415,11 +418,11 @@ export async function runLessonTests(
 
   // Refused at once rather than after waiting in line for a slot
   if (isRunning(ownerKey)) throw new AppError(409, 'A run is already in progress');
-  const releaseSlot = await acquireJudgeSlot();
+  const releaseSlot = await inLine(waitKey, (onWait) => acquireJudgeSlot({ onWait }));
   try {
     // A judge run is a busy sandbox too, so it also takes one of the slots
     // editor runs and terminal commands share.
-    const releaseSandbox = await acquireSandboxSlot();
+    const releaseSandbox = await inLine(waitKey, (onWait) => acquireSandboxSlot({ onWait }));
     try {
       const result = await runInContainer(
         ownerKey,

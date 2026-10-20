@@ -8,6 +8,7 @@ import type {
 } from '@cyberstars/shared/terminal';
 import { contentDir } from './paths.js';
 import { acquireSandboxSlot } from './sandbox-slots.js';
+import { inLine } from './run-waits.js';
 import { addGuestSandboxSource, makeRoomForGuest } from './guest-sandboxes.js';
 import { dockerExec, killLeftovers, SANDBOX_KEEPALIVE } from './docker-exec.js';
 
@@ -195,6 +196,8 @@ export async function execCommand(
   sessionId: string,
   command: string,
   ownerKey: string,
+  // Where the command counts as waiting while it's in line (run-waits.ts)
+  waitKey: string | null = null,
 ): Promise<TerminalExecResult> {
   const session = sessions.get(sessionId);
   // A mismatched owner is reported as "not found" so a leaked sessionId reveals
@@ -208,7 +211,7 @@ export async function execCommand(
   try {
     // A command turned away for a busy server never ran, so it stays out of
     // the history the terminal judge reads
-    const releaseSlot = await acquireSandboxSlot();
+    const releaseSlot = await inLine(waitKey, (onWait) => acquireSandboxSlot({ onWait }));
     session.lastActivity = Date.now();
     session.history.push(command);
 

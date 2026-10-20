@@ -39,6 +39,7 @@ function mockReq(overrides: Partial<Request> = {}): Request {
     params: { courseKey: 'python', lessonSlug: 'booleans' },
     body: { code: 'print(1)', lang: 'en' },
     cookies: {},
+    get: () => undefined,
     ...overrides,
   } as unknown as Request;
 }
@@ -185,6 +186,7 @@ describe('runTests submission history', () => {
       'en',
       'c',
       undefined,
+      null,
     );
     expect(mockMarkComplete).toHaveBeenCalledWith(7, 'trees-graphs', 'trees');
     expect(mockRecord).toHaveBeenCalledWith(

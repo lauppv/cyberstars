@@ -61,6 +61,7 @@ vi.mock('./repositories/leaderboard.repository.js', () => ({
 }));
 
 const { app } = await import('./app.js');
+const { inLine } = await import('./services/run-waits.js');
 
 describe('server clock', () => {
   it('GET /api/time returns a numeric now and is not cached', async () => {
@@ -188,6 +189,26 @@ describe('page views', () => {
   it('turns away an address that is not a path', async () => {
     const res = await request(app).post('/api/visits').send({ path: 'https://example.com' });
     expect(res.status).toBe(400);
+  });
+});
+
+describe('a run waiting for a sandbox', () => {
+  it("tells the page whether its own request is waiting, and nobody else's", async () => {
+    let grant: (release: () => void) => void = () => {};
+    const slot = inLine('guest:g-1|run-1', (onWait) => {
+      onWait();
+      return new Promise<() => void>((resolve) => (grant = resolve));
+    });
+
+    const mine = await request(app).get('/api/runs/run-1/waiting').set('Cookie', 'guestId=g-1');
+    expect(mine.body).toEqual({ waiting: true });
+    const theirs = await request(app).get('/api/runs/run-1/waiting').set('Cookie', 'guestId=g-2');
+    expect(theirs.body).toEqual({ waiting: false });
+
+    grant(() => {});
+    await slot;
+    const after = await request(app).get('/api/runs/run-1/waiting').set('Cookie', 'guestId=g-1');
+    expect(after.body).toEqual({ waiting: false });
   });
 });
 
