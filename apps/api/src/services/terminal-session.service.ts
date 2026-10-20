@@ -7,7 +7,7 @@ import type {
   TerminalExecResult,
 } from '@cyberstars/shared/terminal';
 import { contentDir } from './paths.js';
-import { dockerExec } from './docker-exec.js';
+import { dockerExec, SANDBOX_KEEPALIVE } from './docker-exec.js';
 
 const IMAGE = 'cyberstars-linux-sandbox';
 const IDLE_TTL = 15 * 60 * 1000;
@@ -112,6 +112,7 @@ export async function createSession(
     '--tmpfs=/home/student:size=16m,mode=0777',
     '--tmpfs=/tmp:size=4m,mode=0777',
     IMAGE,
+    ...SANDBOX_KEEPALIVE,
   ]);
 
   if (setup) {

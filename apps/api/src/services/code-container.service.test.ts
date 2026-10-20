@@ -53,7 +53,7 @@ describe('acquireForRun', () => {
     const run = dockerCalls().find((a) => a[0] === 'run')!;
     expect(run).toEqual(expect.arrayContaining(['-d', '--network=none', '--cap-drop=ALL']));
     expect(run).toContain('python:3.10-slim');
-    expect(run).toEqual(expect.arrayContaining(['sleep', 'infinity']));
+    expect(run.slice(-3)).toEqual(['sh', '-c', 'while :; do sleep 3600; done']);
   });
 
   it('reuses the same container for the same owner and language', async () => {

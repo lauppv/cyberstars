@@ -1,5 +1,10 @@
 import { execFile, spawn } from 'child_process';
 
+// What a sandbox runs as its first process, while commands arrive via `docker
+// exec`. Unlike `sleep infinity` the shell collects finished processes, so
+// whatever a student leaves behind doesn't pile up against the pids limit
+export const SANDBOX_KEEPALIVE = ['sh', '-c', 'while :; do sleep 3600; done'];
+
 // Shared wrapper around `docker` CLI calls used by the code-runner and terminal
 // sandbox services: buffers stdout (1MB cap), rejects with stderr on failure,
 // and optionally pipes `stdin` into the process.

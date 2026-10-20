@@ -1,5 +1,5 @@
 import { getRuntime } from '../runtimes/registry.js';
-import { dockerExec } from './docker-exec.js';
+import { dockerExec, SANDBOX_KEEPALIVE } from './docker-exec.js';
 
 // One long-lived Docker container per owner (a logged-in user or a guest), on
 // the language they last ran. The container is reused across many runs so the
@@ -56,8 +56,7 @@ function createContainer(image: string, memory?: string): Promise<string> {
       '-w',
       '/work',
       image,
-      'sleep',
-      'infinity',
+      ...SANDBOX_KEEPALIVE,
     ],
     30_000,
   );
