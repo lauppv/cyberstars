@@ -15,12 +15,13 @@ const sandboxes = slotQueue(
 );
 
 // Resolves with a release function once a slot is free; call it exactly once
-// when the sandbox is done, however it ends.
+// when the sandbox is done, however it ends. Aborting `signal` leaves the line.
 export function acquireSandboxSlot(
+  signal?: AbortSignal,
   max = MAX_BUSY,
   timeoutMs = QUEUE_TIMEOUT_MS,
 ): Promise<() => void> {
-  return sandboxes.acquire(max, timeoutMs);
+  return sandboxes.acquire(max, timeoutMs, signal);
 }
 
 // For the admin dashboard: how many slots are taken right now, out of how many

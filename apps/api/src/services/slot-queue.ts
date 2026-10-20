@@ -16,8 +16,9 @@ export function slotQueue(busy: () => AppError) {
   }
 
   // Resolves with a release function once a slot is free; call it exactly once
-  // when the work ends, however it ends.
-  function acquire(max: number, timeoutMs: number): Promise<() => void> {
+  // when the work ends, however it ends. Aborting `signal` takes a waiting one
+  // out of the line, so whoever is behind it moves up.
+  function acquire(max: number, timeoutMs: number, signal?: AbortSignal): Promise<() => void> {
     let released = false;
     const once = () => {
       if (released) return;
@@ -28,15 +29,22 @@ export function slotQueue(busy: () => AppError) {
       active++;
       return Promise.resolve(once);
     }
+    if (signal?.aborted) return Promise.reject(signal.reason);
     return new Promise((resolve, reject) => {
+      const leave = (reason: unknown) => {
+        clearTimeout(timer);
+        signal?.removeEventListener('abort', onAbort);
+        waiting.splice(waiting.indexOf(grant), 1);
+        reject(reason);
+      };
+      const onAbort = () => leave(signal!.reason);
       const grant = () => {
         clearTimeout(timer);
+        signal?.removeEventListener('abort', onAbort);
         resolve(once);
       };
-      const timer = setTimeout(() => {
-        waiting.splice(waiting.indexOf(grant), 1);
-        reject(busy());
-      }, timeoutMs);
+      const timer = setTimeout(() => leave(busy()), timeoutMs);
+      signal?.addEventListener('abort', onAbort);
       waiting.push(grant);
     });
   }

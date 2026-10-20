@@ -79,8 +79,11 @@ export async function handleInteractiveRun(
   let waitingForSlot = true;
   let acquireFailed = false;
   let stopProgram: (() => void) | null = null;
+  // Leaving while in line takes the run out of the line
+  const leaving = new AbortController();
   ws.on('close', () => {
     abandoned = true;
+    leaving.abort();
     // While it waits for a slot the run holds no container yet: the owner's
     // container may be serving another of their runs, so it's left alone.
     if (stopProgram) stopProgram();
@@ -88,9 +91,9 @@ export async function handleInteractiveRun(
   });
 
   try {
-    releaseSlot = await acquireSandboxSlot();
+    releaseSlot = await acquireSandboxSlot(leaving.signal);
   } catch {
-    // No slot freed up in time
+    // No slot freed up in time, or the page left the line
     if (abandoned) return;
     ws.send(
       JSON.stringify({

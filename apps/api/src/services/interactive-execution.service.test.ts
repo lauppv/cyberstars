@@ -269,20 +269,26 @@ describe('handleInteractiveRun', () => {
     ]);
   });
 
-  it("leaves the owner's container alone when the page closes while waiting for a slot", async () => {
-    let grant: ((release: () => void) => void) | undefined;
-    acquireSlotMock.mockReturnValueOnce(new Promise((r) => (grant = r)));
+  it("leaves the line, and the owner's container alone, when the page closes while waiting", async () => {
+    let signal: AbortSignal | undefined;
+    acquireSlotMock.mockImplementationOnce(
+      (s: AbortSignal) =>
+        new Promise((_resolve, reject) => {
+          signal = s;
+          s.addEventListener('abort', () => reject(s.reason));
+        }),
+    );
     const ws = new FakeWs();
 
     const run = handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:w');
+    await vi.waitFor(() => expect(signal).toBeDefined());
     ws.readyState = 3;
     ws.emit('close');
+    await run;
+
+    expect(signal!.aborted).toBe(true);
     // Another run of theirs may be using the container right now
     expect(destroyMock).not.toHaveBeenCalled();
-
-    grant!(releaseSlotMock);
-    await run;
-    expect(releaseSlotMock).toHaveBeenCalled();
     expect(acquireMock).not.toHaveBeenCalled();
     expect(ws.send).not.toHaveBeenCalled();
   });
