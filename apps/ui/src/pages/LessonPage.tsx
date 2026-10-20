@@ -5,6 +5,7 @@ import {
   useCallback,
   useRef,
   useMemo,
+  useId,
   type CSSProperties,
 } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -45,6 +46,7 @@ import { ResizeHandle } from '../components/ui/ResizeHandle';
 import { useResizeSplit } from '../hooks/useResizeSplit';
 import { useDevMode } from '../hooks/useDevMode';
 import { useSubmissions } from '../hooks/useSubmissions';
+import { setRunWait, withRunWait } from '../hooks/useRunWait';
 import type { LessonMeta, RunLesson } from '@cyberstars/shared/lesson';
 import type { RunTestsResponse } from '@cyberstars/shared/tests';
 import type { TerminalTestResult } from '@cyberstars/shared/terminal';
@@ -155,6 +157,10 @@ export function LessonPage() {
   const [failedRuns, setFailedRuns] = useState(0);
   const [stuckClosed, setStuckClosed] = useState(false);
   const [isTesting, setIsTesting] = useState(false);
+  // Run Tests' entry in the notice about a run waiting for a sandbox, and the
+  // run its Try again starts
+  const testsRunner = useId();
+  const runTestsRef = useRef<() => Promise<void>>(async () => {});
   const [testsError, setTestsError] = useState<string | null>(null);
   const [terminalTestResult, setTerminalTestResult] = useState<TerminalTestResult | null>(null);
   const [isChecking, setIsChecking] = useState(false);
@@ -469,7 +475,11 @@ export function LessonPage() {
     setTestsError(null);
     try {
       const lang = i18n.language === 'ro' ? 'ro' : 'en';
-      const results = await testsService.runTests(category, lesson, userCode, lang, shownLanguage);
+      const results = await withRunWait(
+        testsRunner,
+        (runId) => testsService.runTests(category, lesson, userCode, lang, shownLanguage, runId),
+        () => void runTestsRef.current(),
+      );
       setTestResults(results);
       setFailedRuns((n) => (results.status === 'passed' ? 0 : n + 1));
       if (results.submission) addSubmission(results.submission);
@@ -510,7 +520,12 @@ export function LessonPage() {
     refreshGamification,
     saveCode,
     addSubmission,
+    testsRunner,
   ]);
+  useEffect(() => {
+    runTestsRef.current = handleRunTests;
+  }, [handleRunTests]);
+  useEffect(() => () => setRunWait(testsRunner, null), [testsRunner]);
 
   // Terminal (Linux) judge: validates sandbox state against the live session
   // container (no code; the student's typed commands built the state). Same

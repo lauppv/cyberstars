@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useId } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import {
@@ -6,6 +6,7 @@ import {
   execTerminalCommand,
   destroyTerminalSession,
 } from '../services/terminalService';
+import { setRunWait, withRunWait } from './useRunWait';
 
 export interface TerminalLine {
   type: 'input' | 'output' | 'system';
@@ -27,6 +28,10 @@ export function useTerminalSession(
   const [isExecuting, setIsExecuting] = useState(false);
   const sessionRef = useRef<string | null>(null);
   const onCommandRunRef = useRef(onCommandRun);
+  // The terminal's entry in the notice about a command waiting for a sandbox,
+  // and the latest execute, which its Try again calls
+  const runner = useId();
+  const executeRef = useRef<(command: string) => Promise<void>>(async () => {});
   useEffect(() => {
     onCommandRunRef.current = onCommandRun;
   }, [onCommandRun]);
@@ -74,7 +79,12 @@ export function useTerminalSession(
       const snap = `student@sandbox:${cwd.replace('/home/student', '~')}$`;
       setLines((prev) => [...prev, { type: 'input', text: command, prompt: snap }]);
       try {
-        const result = await execTerminalCommand(sessionRef.current, command);
+        const session = sessionRef.current;
+        const result = await withRunWait(
+          runner,
+          (runId) => execTerminalCommand(session, command, runId),
+          () => void executeRef.current(command),
+        );
         if (result.output) {
           setLines((prev) => [...prev, { type: 'output', text: result.output }]);
         }
@@ -91,8 +101,12 @@ export function useTerminalSession(
       }
       setIsExecuting(false);
     },
-    [isExecuting, cwd],
+    [isExecuting, cwd, runner],
   );
+  useEffect(() => {
+    executeRef.current = execute;
+  }, [execute]);
+  useEffect(() => () => setRunWait(runner, null), [runner]);
 
   const reset = useCallback(async () => {
     if (sessionRef.current) {

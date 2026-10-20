@@ -258,7 +258,7 @@ describe('runLessonTests', () => {
     expect(mockDestroy).not.toHaveBeenCalled();
     expect(mockReleaseSandbox).toHaveBeenCalledTimes(1);
     // A judge run is never stopped to make room: it takes its slot without `stop`
-    expect(mockAcquireSandbox).toHaveBeenCalledWith();
+    expect(mockAcquireSandbox).toHaveBeenCalledWith({ onWait: expect.any(Function) });
   });
 
   it("passes on a guest's network and its 429 when the network is full", async () => {

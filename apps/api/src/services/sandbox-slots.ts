@@ -1,6 +1,6 @@
 import os from 'os';
 import { AppError } from '../middleware/errorHandler.js';
-import { slotQueue } from './slot-queue.js';
+import { slotQueue, type SlotOptions } from './slot-queue.js';
 
 // Caps how many sandboxes are busy at once across everyone: editor runs, Run
 // Tests (inside their own cap of two) and terminal commands. Each may take
@@ -8,7 +8,9 @@ import { slotQueue } from './slot-queue.js';
 // the droplet. Four per core by default: most runs are over in a moment or sit
 // waiting for input, so the CPU is shared but not swamped.
 const MAX_BUSY = Number(process.env.SANDBOX_MAX_BUSY ?? os.availableParallelism() * 4);
-const QUEUE_TIMEOUT_MS = Number(process.env.SANDBOX_QUEUE_TIMEOUT_MS ?? 10_000);
+// Long enough that a run held with input gets stopped to make room (below)
+// before the one waiting gives up, so a slot does free up in time
+const QUEUE_TIMEOUT_MS = Number(process.env.SANDBOX_QUEUE_TIMEOUT_MS ?? 30_000);
 // An editor run's 20 s limit starts over with every line of input, so a run
 // fed input never gives its slot back. While someone waits, one that has held
 // its slot this long is stopped to make room. A run without input ends within
@@ -22,10 +24,10 @@ const sandboxes = slotQueue(
 
 // Resolves with a release function once a slot is free; call it exactly once
 // when the sandbox is done, however it ends. Aborting `signal` leaves the line,
-// and `stop` lets the run be stopped to make room once it has held its slot
-// too long (editor runs only).
+// `stop` lets the run be stopped to make room once it has held its slot too
+// long (editor runs only), and `onWait` hears when the run joins the line.
 export function acquireSandboxSlot(
-  options: { signal?: AbortSignal; stop?: () => boolean } = {},
+  options: SlotOptions = {},
   max = MAX_BUSY,
   timeoutMs = QUEUE_TIMEOUT_MS,
 ): Promise<() => void> {

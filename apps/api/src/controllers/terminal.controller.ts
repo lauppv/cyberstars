@@ -6,6 +6,7 @@ import { destroySchema } from '../schemas/terminal.schema.js';
 import * as sessionService from '../services/terminal-session.service.js';
 import { runTerminalTests } from '../services/terminal-tests.service.js';
 import * as progressService from '../services/progress.service.js';
+import { requestWaitKey } from './runs.controller.js';
 
 export function resolveOwnerKey(req: Request): string | null {
   if (req.user?.id) return `user:${req.user.id}`;
@@ -37,7 +38,12 @@ export async function createSession(req: Request, res: Response, next: NextFunct
 export async function exec(req: Request, res: Response, next: NextFunction) {
   try {
     const { sessionId, command } = req.body;
-    const result = await sessionService.execCommand(sessionId, command, resolveOwnerKey(req)!);
+    const result = await sessionService.execCommand(
+      sessionId,
+      command,
+      resolveOwnerKey(req)!,
+      requestWaitKey(req),
+    );
     res.json(result);
   } catch (err) {
     if (err instanceof Error && err.message === 'Session not found') {

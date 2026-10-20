@@ -104,10 +104,17 @@ export async function handleInteractiveRun(
     else if (!waitingForSlot && !acquireFailed) dropContainer();
   });
 
+  // The page tells the student while the run waits in line, and again once
+  // it has its slot
+  let waited = false;
   try {
     releaseSlot = await acquireSandboxSlot({
       signal: leaving.signal,
       stop: () => stopForRoom?.() ?? false,
+      onWait: () => {
+        waited = true;
+        ws.send(JSON.stringify({ type: 'waiting' }));
+      },
     });
   } catch {
     // No slot freed up in time, or the page left the line
@@ -118,10 +125,12 @@ export async function handleInteractiveRun(
         data: 'The server is busy right now, please try again in a moment.\n',
       }),
     );
+    ws.send(JSON.stringify({ type: 'busy' }));
     ws.send(JSON.stringify({ type: 'exit', code: 1 }));
     return;
   }
   waitingForSlot = false;
+  if (waited && !abandoned) ws.send(JSON.stringify({ type: 'slot' }));
   if (abandoned) {
     releaseSlot();
     return;

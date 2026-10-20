@@ -34,6 +34,16 @@ describe('acquireSandboxSlot', () => {
     held();
   });
 
+  it('says when a run joins the line, and only then', async () => {
+    const onWait = vi.fn();
+    const held = await acquireSandboxSlot({ onWait }, 1, 1000);
+    expect(onWait).not.toHaveBeenCalled();
+    const waiting = acquireSandboxSlot({ onWait }, 1, 1000);
+    expect(onWait).toHaveBeenCalledTimes(1);
+    held();
+    (await waiting)();
+  });
+
   it('takes a run out of the line when it leaves, so the next one moves up', async () => {
     const held = await acquireSandboxSlot({}, 1, 1000);
     const leaving = new AbortController();
@@ -50,14 +60,18 @@ describe('acquireSandboxSlot', () => {
     blocker();
   });
 
-  it('allows four busy sandboxes per core by default', async () => {
+  it('allows four busy sandboxes per core by default, the next one waiting up to 30 s', async () => {
     const releases = [];
     for (let i = 0; i < os.availableParallelism() * 4; i++) {
       releases.push(await acquireSandboxSlot());
     }
     vi.useFakeTimers();
-    const over = acquireSandboxSlot();
-    vi.advanceTimersByTime(10_000);
+    let settled = false;
+    const over = acquireSandboxSlot().finally(() => (settled = true));
+    vi.advanceTimersByTime(29_999);
+    await Promise.resolve();
+    expect(settled).toBe(false);
+    vi.advanceTimersByTime(1);
     await expect(over).rejects.toMatchObject({ statusCode: 503 });
     for (const release of releases) release();
   });

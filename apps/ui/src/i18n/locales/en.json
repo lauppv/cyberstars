@@ -920,6 +920,25 @@
     "outputTruncated": "... (output truncated) ...",
     "connectionError": "Connection error."
   },
+  "runWait": {
+    "waiting": "The server has a lot of traffic right now. No need to refresh: the answer comes as soon as a sandbox frees up.",
+    "busy": "Still busy: no sandbox freed up in time.",
+    "tryAgain": "Try again",
+    "lines": [
+      "Meanwhile: a splash of water makes an omelette fluffier.",
+      "Meanwhile: a pinch of salt in coffee takes the edge off the bitterness.",
+      "Meanwhile: there are 10 kinds of people, those who read binary and those who don't.",
+      "Meanwhile: a programmer's favourite place to go out is the Foo Bar.",
+      "Meanwhile: let a steak rest five minutes and it stays juicy.",
+      "Meanwhile: programmers mix up Halloween and Christmas, since Oct 31 is Dec 25.",
+      "Meanwhile: a cold pan and cold butter make the creamiest scrambled eggs.",
+      "Meanwhile: a SQL query walks into a bar, goes up to two tables and asks: may I join you?",
+      "Meanwhile: pasta water should taste like the sea.",
+      "Meanwhile: the nice thing about a boolean is that even when it's wrong, it's only off by a bit.",
+      "Meanwhile: a lemon gives more juice if you roll it on the table first.",
+      "Meanwhile: there's no place like 127.0.0.1."
+    ]
+  },
   "terminal": {
     "label": "Terminal",
     "starting": "Starting sandbox...",

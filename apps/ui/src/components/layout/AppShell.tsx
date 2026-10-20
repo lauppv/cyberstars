@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useTutor } from '../../context/TutorContext';
 import { TutorPanel } from '../tutor/TutorPanel';
 import { TutorWelcomeBack } from '../tutor/TutorWelcomeBack';
+import { RunWaitNotice } from '../code/RunWaitNotice';
 import { Sidebar, type SidebarState } from './Sidebar';
 
 // Above this width the sidebar pushes the page aside. Below it there is no room
@@ -122,6 +123,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       </div>
       {tutorOpen && <TutorPanel />}
       <TutorWelcomeBack />
+      <RunWaitNotice />
     </SidebarContext.Provider>
   );
 }

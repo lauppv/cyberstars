@@ -1,7 +1,8 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useId } from 'react';
 import i18next from 'i18next';
 import type { RunLesson } from '@cyberstars/shared/lesson';
 import { localizeRunOutput } from '../i18n/serverMessages';
+import { setRunWait } from './useRunWait';
 
 function wsUrl(): string {
   const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -28,68 +29,98 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
   useEffect(() => {
     onExitRef.current = onExit;
   }, [onExit]);
+  // This editor's entry in the notice about a run waiting for a sandbox
+  const runner = useId();
 
   // `lesson`: the lesson the code belongs to, so a challenge with a hidden part
   // runs the student's function inside it.
-  const execute = useCallback((code: string, language: string, lesson?: RunLesson) => {
-    if (wsRef.current) {
-      wsRef.current.close();
-      wsRef.current = null;
-    }
+  const execute = useCallback(
+    function execute(code: string, language: string, lesson?: RunLesson) {
+      if (wsRef.current) {
+        wsRef.current.close();
+        wsRef.current = null;
+      }
 
-    setIsRunning(true);
-    setOutput('');
+      setIsRunning(true);
+      setOutput('');
+      setRunWait(runner, null);
 
-    const ws = new WebSocket(wsUrl());
-    wsRef.current = ws;
-
-    ws.onopen = () => {
-      ws.send(JSON.stringify({ type: 'run', code, language, ...(lesson && { lesson }) }));
-    };
-
-    ws.onmessage = (event) => {
-      const msg = JSON.parse(event.data as string) as {
-        type: string;
-        data?: string;
-        code?: number;
+      const ws = new WebSocket(wsUrl());
+      wsRef.current = ws;
+      // The server says when the run joins the line for a sandbox and when it
+      // gets one; the run isn't sent again meanwhile
+      let waiting = false;
+      const stopWaiting = () => {
+        if (!waiting) return;
+        waiting = false;
+        setRunWait(runner, null);
       };
-      if (msg.type === 'stdout') {
-        setOutput((prev) => appendCapped(prev, msg.data ?? ''));
-      } else if (msg.type === 'stderr') {
-        // The server's own notes (a time limit, a refused run) come this way too
-        setOutput((prev) => appendCapped(prev, localizeRunOutput(msg.data ?? '')));
-      } else if (msg.type === 'exit') {
+
+      ws.onopen = () => {
+        ws.send(JSON.stringify({ type: 'run', code, language, ...(lesson && { lesson }) }));
+      };
+
+      ws.onmessage = (event) => {
+        const msg = JSON.parse(event.data as string) as {
+          type: string;
+          data?: string;
+          code?: number;
+        };
+        if (msg.type === 'waiting') {
+          waiting = true;
+          setRunWait(runner, { kind: 'waiting' });
+        } else if (msg.type === 'slot') {
+          stopWaiting();
+        } else if (msg.type === 'busy') {
+          waiting = false;
+          setRunWait(runner, { kind: 'busy', retry: () => execute(code, language, lesson) });
+        } else if (msg.type === 'stdout') {
+          setOutput((prev) => appendCapped(prev, msg.data ?? ''));
+        } else if (msg.type === 'stderr') {
+          // The server's own notes (a time limit, a refused run) come this way too
+          setOutput((prev) => appendCapped(prev, localizeRunOutput(msg.data ?? '')));
+        } else if (msg.type === 'exit') {
+          setIsRunning(false);
+          sendInputRef.current = null;
+          ws.close();
+          wsRef.current = null;
+          onExitRef.current?.(msg.code);
+        }
+      };
+
+      ws.onerror = () => {
+        stopWaiting();
+        setOutput((prev) => `${prev}\n${i18next.t('code.connectionError')}\n`);
         setIsRunning(false);
         sendInputRef.current = null;
-        ws.close();
+      };
+
+      ws.onclose = () => {
+        stopWaiting();
+        setIsRunning(false);
+        sendInputRef.current = null;
         wsRef.current = null;
-        onExitRef.current?.(msg.code);
-      }
-    };
+      };
 
-    ws.onerror = () => {
-      setOutput((prev) => `${prev}\n${i18next.t('code.connectionError')}\n`);
-      setIsRunning(false);
-      sendInputRef.current = null;
-    };
-
-    ws.onclose = () => {
-      setIsRunning(false);
-      sendInputRef.current = null;
-      wsRef.current = null;
-    };
-
-    sendInputRef.current = (data: string) => {
-      if (ws.readyState === WebSocket.OPEN) {
-        setOutput((prev) => appendCapped(prev, data));
-        ws.send(JSON.stringify({ type: 'stdin', data }));
-      }
-    };
-  }, []);
+      sendInputRef.current = (data: string) => {
+        if (ws.readyState === WebSocket.OPEN) {
+          setOutput((prev) => appendCapped(prev, data));
+          ws.send(JSON.stringify({ type: 'stdin', data }));
+        }
+      };
+    },
+    [runner],
+  );
 
   // Leaving the page mid-run ends the run: the server only stops the program,
   // and frees the container for the next run, once this socket closes.
-  useEffect(() => () => wsRef.current?.close(), []);
+  useEffect(
+    () => () => {
+      wsRef.current?.close();
+      setRunWait(runner, null);
+    },
+    [runner],
+  );
 
   const sendInput = useCallback((data: string) => {
     sendInputRef.current?.(data);

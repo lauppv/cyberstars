@@ -42,6 +42,7 @@ function mockReq(overrides: Partial<Request> = {}): Request {
     params: {},
     body: {},
     user: { id: 1 } as Request['user'],
+    get: () => undefined,
     ...overrides,
   } as unknown as Request;
 }
@@ -77,6 +78,21 @@ describe('exec', () => {
     const next = vi.fn();
     await ctrl.exec(req, res, next);
     expect(res.json).toHaveBeenCalledWith(result);
+  });
+
+  it('lets the command count as waiting under the id the page sent', async () => {
+    mockExecCommand.mockResolvedValue({ output: '', cwd: '/home/student' });
+    const req = mockReq({
+      body: { sessionId: '550e8400-e29b-41d4-a716-446655440000', command: 'ls' },
+      get: ((name: string) => (name === 'X-Run-Id' ? 'run-1' : undefined)) as Request['get'],
+    });
+    await ctrl.exec(req, mockRes(), vi.fn());
+    expect(mockExecCommand).toHaveBeenCalledWith(
+      '550e8400-e29b-41d4-a716-446655440000',
+      'ls',
+      'user:1',
+      'user:1|run-1',
+    );
   });
 
   it('returns 404 AppError when session not found', async () => {
