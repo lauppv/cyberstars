@@ -109,6 +109,31 @@ describe('acquireForRun', () => {
     await expect(acquireForRun('user:6b', 'python')).rejects.toThrow('exec format error');
   });
 
+  it('runs as the fixed sandbox user even when the API itself is root', async () => {
+    const getuid = vi.spyOn(process, 'getuid').mockReturnValue(0);
+    try {
+      await acquireForRun('user:root', 'python');
+      const run = dockerCalls().find((a) => a[0] === 'run')!;
+      expect(run).toContain('--user=10001:10001');
+      expect(run).toContain('--tmpfs=/work:exec,size=64m,mode=0700,uid=10001,gid=10001');
+      expect(run).toContain('--tmpfs=/tmp:size=64m,mode=0700,uid=10001,gid=10001');
+    } finally {
+      getuid.mockRestore();
+    }
+  });
+
+  it('takes the sandbox uid from SANDBOX_UID', async () => {
+    process.env.SANDBOX_UID = '20002';
+    try {
+      await acquireForRun('user:uid', 'python');
+      const run = dockerCalls().find((a) => a[0] === 'run')!;
+      expect(run).toContain('--user=20002:20002');
+      expect(run.some((arg) => arg.includes('uid=20002,gid=20002'))).toBe(true);
+    } finally {
+      delete process.env.SANDBOX_UID;
+    }
+  });
+
   it('omits the --user flag and tmpfs owner option when not running as a sandbox user', async () => {
     const prev = process.env.SANDBOX_RUN_AS_USER;
     process.env.SANDBOX_RUN_AS_USER = 'false';
