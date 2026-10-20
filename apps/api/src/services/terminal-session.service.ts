@@ -10,7 +10,7 @@ import { contentDir } from './paths.js';
 import { acquireSandboxSlot } from './sandbox-slots.js';
 import { inLine } from './run-waits.js';
 import { addGuestSandboxSource, makeRoomForGuest } from './guest-sandboxes.js';
-import { dockerExec, killLeftovers, SANDBOX_KEEPALIVE } from './docker-exec.js';
+import { dockerExec, killLeftovers, SANDBOX_KEEPALIVE, SANDBOX_LABEL } from './docker-exec.js';
 
 const IMAGE = 'cyberstars-linux-sandbox';
 const IDLE_TTL = 15 * 60 * 1000;
@@ -141,6 +141,7 @@ export async function createSession(
       'run',
       '-d',
       '--rm',
+      SANDBOX_LABEL,
       '--network=none',
       '--memory=128m',
       '--pids-limit=64',

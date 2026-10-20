@@ -52,7 +52,14 @@ describe('acquireForRun', () => {
     const id = await acquireForRun('user:1', 'python');
     expect(id).toBe('container-1');
     const run = dockerCalls().find((a) => a[0] === 'run')!;
-    expect(run).toEqual(expect.arrayContaining(['-d', '--network=none', '--cap-drop=ALL']));
+    expect(run).toEqual(
+      expect.arrayContaining([
+        '-d',
+        '--label=cyberstars.sandbox',
+        '--network=none',
+        '--cap-drop=ALL',
+      ]),
+    );
     expect(run).toContain('python:3.10-slim');
     expect(run.slice(-3)).toEqual(['sh', '-c', 'while :; do sleep 3600; done']);
   });

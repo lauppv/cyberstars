@@ -5,6 +5,9 @@ import { execFile, spawn } from 'child_process';
 // whatever a student leaves behind doesn't pile up against the pids limit
 export const SANDBOX_KEEPALIVE = ['sh', '-c', 'while :; do sleep 3600; done'];
 
+// Every sandbox carries it, so the server can find the ones it no longer tracks
+export const SANDBOX_LABEL = '--label=cyberstars.sandbox';
+
 // Shared wrapper around `docker` CLI calls used by the code-runner and terminal
 // sandbox services: buffers stdout (1MB cap), rejects with stderr on failure,
 // and optionally pipes `stdin` into the process.
@@ -34,6 +37,18 @@ export function killLeftovers(containerId: string): Promise<void> {
     () => {},
     () => {},
   );
+}
+
+// Removes the sandboxes a previous run of the server left behind. A restart
+// that kills the server before its shutdown is through (pm2 gives it a moment)
+// leaves them running, and nothing tracks them any more: they hold memory and
+// a guest's place forever. Runs once at start, before any sandbox of its own
+export async function removeStraySandboxes(): Promise<number> {
+  const ids = (await dockerExec(['ps', '-aq', '--filter', 'label=cyberstars.sandbox']))
+    .split('\n')
+    .filter(Boolean);
+  if (ids.length) await dockerExec(['rm', '-f', ...ids], 30_000);
+  return ids.length;
 }
 
 // A stdout line longer than this means the process is misbehaving (a judge

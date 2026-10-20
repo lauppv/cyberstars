@@ -16,7 +16,8 @@ vi.mock('child_process', async (importOriginal) => {
   return { ...patched, default: patched };
 });
 
-const { dockerExec, dockerConverse, killLeftovers } = await import('./docker-exec.js');
+const { dockerExec, dockerConverse, killLeftovers, removeStraySandboxes } =
+  await import('./docker-exec.js');
 
 type ExecCallback = (err: Error | null, stdout: string, stderr: string) => void;
 
@@ -50,6 +51,38 @@ describe('dockerExec', () => {
       },
     );
     await expect(dockerExec(['x'])).rejects.toThrow('exit 1');
+  });
+});
+
+describe('removeStraySandboxes', () => {
+  // Answers each docker call with the next stdout, recording the args
+  function answer(...outputs: string[]) {
+    const calls: string[][] = [];
+    for (const out of outputs) {
+      mockExecFile.mockImplementationOnce(
+        (_cmd: string, args: string[], _opts: unknown, cb: ExecCallback) => {
+          calls.push(args);
+          cb(null, out, '');
+          return {};
+        },
+      );
+    }
+    return calls;
+  }
+
+  it('removes every labelled sandbox an earlier run left behind', async () => {
+    const calls = answer('aaa\nbbb\n', '');
+    await expect(removeStraySandboxes()).resolves.toBe(2);
+    expect(calls).toEqual([
+      ['ps', '-aq', '--filter', 'label=cyberstars.sandbox'],
+      ['rm', '-f', 'aaa', 'bbb'],
+    ]);
+  });
+
+  it('removes nothing when there is none', async () => {
+    const calls = answer('');
+    await expect(removeStraySandboxes()).resolves.toBe(0);
+    expect(calls).toHaveLength(1);
   });
 });
 
