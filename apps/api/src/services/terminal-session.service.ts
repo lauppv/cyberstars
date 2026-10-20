@@ -7,6 +7,7 @@ import type {
   TerminalExecResult,
 } from '@cyberstars/shared/terminal';
 import { contentDir } from './paths.js';
+import { acquireSandboxSlot } from './sandbox-slots.js';
 import { dockerExec, killLeftovers, SANDBOX_KEEPALIVE } from './docker-exec.js';
 
 const IMAGE = 'cyberstars-linux-sandbox';
@@ -165,6 +166,9 @@ export async function execCommand(
 
   executing.add(sessionId);
   try {
+    // A command turned away for a busy server never ran, so it stays out of
+    // the history the terminal judge reads
+    const releaseSlot = await acquireSandboxSlot();
     session.lastActivity = Date.now();
     session.history.push(command);
 
@@ -178,9 +182,11 @@ export async function execCommand(
       );
     } catch (e: unknown) {
       output = e instanceof Error ? e.message : 'Command failed';
+    } finally {
+      // The 5s limit stops the command, not what it sent to the background
+      await killLeftovers(session.containerId);
+      releaseSlot();
     }
-    // The 5s limit stops the command, not what it sent to the background
-    await killLeftovers(session.containerId);
 
     let newCwd = session.cwd;
     try {

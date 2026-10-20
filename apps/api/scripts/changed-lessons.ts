@@ -54,6 +54,8 @@ export const ENGINE_FILES = [
   'apps/api/src/services/code-container.service.ts',
   'apps/api/src/services/docker-exec.ts',
   'apps/api/src/services/judge-queue.ts',
+  'apps/api/src/services/slot-queue.ts',
+  'apps/api/src/services/sandbox-slots.ts',
   'apps/api/src/services/reference-cache.ts',
   'apps/api/src/services/paths.ts',
   'packages/content/paths.ts',

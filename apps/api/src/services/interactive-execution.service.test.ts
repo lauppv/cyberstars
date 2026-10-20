@@ -2,12 +2,22 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { EventEmitter } from 'node:events';
 import type { WebSocket } from 'ws';
 
-const { spawnMock, execFileMock, acquireMock, releaseMock, destroyMock } = vi.hoisted(() => ({
+const {
+  spawnMock,
+  execFileMock,
+  acquireMock,
+  releaseMock,
+  destroyMock,
+  acquireSlotMock,
+  releaseSlotMock,
+} = vi.hoisted(() => ({
   spawnMock: vi.fn(),
   execFileMock: vi.fn(),
   acquireMock: vi.fn(),
   releaseMock: vi.fn(),
   destroyMock: vi.fn(),
+  acquireSlotMock: vi.fn(),
+  releaseSlotMock: vi.fn(),
 }));
 
 vi.mock('child_process', () => {
@@ -20,6 +30,10 @@ vi.mock('./code-container.service.js', () => ({
   acquireForRun: (...a: unknown[]) => acquireMock(...a),
   releaseAfterRun: (...a: unknown[]) => releaseMock(...a),
   destroyOwner: (...a: unknown[]) => destroyMock(...a),
+}));
+
+vi.mock('./sandbox-slots.js', () => ({
+  acquireSandboxSlot: (...a: unknown[]) => acquireSlotMock(...a),
 }));
 
 const { handleInteractiveRun } = await import('./interactive-execution.service.js');
@@ -47,6 +61,7 @@ function sent(ws: FakeWs) {
 beforeEach(() => {
   vi.clearAllMocks();
   acquireMock.mockResolvedValue('test-container');
+  acquireSlotMock.mockResolvedValue(releaseSlotMock);
   // Default: every docker exec (write source / compile / rm) succeeds.
   execFileMock.mockImplementation((...args: unknown[]) => {
     const cb = args[args.length - 1];
@@ -110,6 +125,7 @@ describe('handleInteractiveRun', () => {
     proc.emit('close', 0);
 
     await vi.waitFor(() => expect(releaseMock).toHaveBeenCalledWith('user:3'));
+    expect(releaseSlotMock).toHaveBeenCalled();
     expect(destroyMock).not.toHaveBeenCalled();
     expect(sent(ws).some((m) => m.type === 'exit' && m.code === 0)).toBe(true);
   });
@@ -167,6 +183,7 @@ describe('handleInteractiveRun', () => {
 
     expect(proc.kill).toHaveBeenCalledWith('SIGKILL');
     expect(destroyMock).toHaveBeenCalledWith('user:4');
+    expect(releaseSlotMock).toHaveBeenCalled();
     expect(releaseMock).not.toHaveBeenCalled();
   });
 
@@ -204,6 +221,7 @@ describe('handleInteractiveRun', () => {
     const ws = new FakeWs();
 
     const run = handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:9');
+    await vi.waitFor(() => expect(acquireMock).toHaveBeenCalled());
     ws.readyState = 3;
     ws.emit('close');
     expect(destroyMock).toHaveBeenCalledWith('user:9');
@@ -236,6 +254,46 @@ describe('handleInteractiveRun', () => {
     expect(sent(ws).some((m) => m.type === 'exit' && m.code === 1)).toBe(true);
     expect(destroyMock).toHaveBeenCalledWith('user:err');
     expect(releaseMock).not.toHaveBeenCalled();
+  });
+
+  it('tells the student the server is busy when no sandbox slot frees in time', async () => {
+    acquireSlotMock.mockRejectedValueOnce(new Error('busy'));
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:busy');
+
+    expect(acquireMock).not.toHaveBeenCalled();
+    expect(sent(ws)).toEqual([
+      { type: 'stderr', data: 'The server is busy right now, please try again in a moment.\n' },
+      { type: 'exit', code: 1 },
+    ]);
+  });
+
+  it("leaves the owner's container alone when the page closes while waiting for a slot", async () => {
+    let grant: ((release: () => void) => void) | undefined;
+    acquireSlotMock.mockReturnValueOnce(new Promise((r) => (grant = r)));
+    const ws = new FakeWs();
+
+    const run = handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:w');
+    ws.readyState = 3;
+    ws.emit('close');
+    // Another run of theirs may be using the container right now
+    expect(destroyMock).not.toHaveBeenCalled();
+
+    grant!(releaseSlotMock);
+    await run;
+    expect(releaseSlotMock).toHaveBeenCalled();
+    expect(acquireMock).not.toHaveBeenCalled();
+    expect(ws.send).not.toHaveBeenCalled();
+  });
+
+  it('frees the slot when the container could not be had', async () => {
+    acquireMock.mockRejectedValueOnce(new Error('docker daemon down'));
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:nod');
+
+    expect(releaseSlotMock).toHaveBeenCalled();
   });
 
   it('reports a busy message and runs nothing when a run is already in progress', async () => {

@@ -8,6 +8,7 @@ import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
+import { acquireSandboxSlot } from './sandbox-slots.js';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
 import { readHarness, studentHarness, studentLines, wrapCode } from './harness.js';
 import {
@@ -407,18 +408,25 @@ export async function runLessonTests(
 
   const releaseSlot = await acquireJudgeSlot();
   try {
-    const result = await runInContainer(
-      ownerKey,
-      runtime,
-      judge,
-      spec,
-      program,
-      solutionCode,
-      prepared,
-      { keys, cached, skipSolution },
-    );
-    if (!result.syntaxError) return result;
-    return { ...result, syntaxError: studentLines(result.syntaxError, harness) };
+    // A judge run is a busy sandbox too, so it also takes one of the slots
+    // editor runs and terminal commands share.
+    const releaseSandbox = await acquireSandboxSlot();
+    try {
+      const result = await runInContainer(
+        ownerKey,
+        runtime,
+        judge,
+        spec,
+        program,
+        solutionCode,
+        prepared,
+        { keys, cached, skipSolution },
+      );
+      if (!result.syntaxError) return result;
+      return { ...result, syntaxError: studentLines(result.syntaxError, harness) };
+    } finally {
+      releaseSandbox();
+    }
   } finally {
     releaseSlot();
   }

@@ -38,6 +38,14 @@ vi.mock('./code-container.service.js', () => ({
   destroyOwner: (...args: unknown[]) => mockDestroy(...args),
 }));
 
+const { mockAcquireSandbox, mockReleaseSandbox } = vi.hoisted(() => ({
+  mockAcquireSandbox: vi.fn(),
+  mockReleaseSandbox: vi.fn(),
+}));
+vi.mock('./sandbox-slots.js', () => ({
+  acquireSandboxSlot: (...args: unknown[]) => mockAcquireSandbox(...args),
+}));
+
 // C does structure + injection on the server via web-tree-sitter, which can't
 // load its wasm under jsdom, so mock it here so dispatch is testable without a
 // real parser (the parser itself is covered in c-analysis.test.ts, node env).
@@ -107,6 +115,7 @@ function stubVerdict({ syntaxError, structureFailures = [], cases }: StubVerdict
 beforeEach(() => {
   vi.clearAllMocks();
   mockAcquire.mockResolvedValue('cid-1');
+  mockAcquireSandbox.mockResolvedValue(mockReleaseSandbox);
   clearReferences();
 });
 
@@ -245,6 +254,21 @@ describe('runLessonTests', () => {
     );
     expect(mockRelease).toHaveBeenCalledWith('user:1');
     expect(mockDestroy).not.toHaveBeenCalled();
+    expect(mockReleaseSandbox).toHaveBeenCalledTimes(1);
+  });
+
+  it('gives up with the busy server 503 before touching a container', async () => {
+    stubFiles();
+    mockAcquireSandbox.mockRejectedValueOnce(
+      Object.assign(new Error('The server is busy right now, please try again in a moment'), {
+        statusCode: 503,
+      }),
+    );
+
+    await expect(runLessonTests('user:1', 'python', 'print', 'print("ok")')).rejects.toMatchObject({
+      statusCode: 503,
+    });
+    expect(mockAcquire).not.toHaveBeenCalled();
   });
 
   it("runs a multi-language lesson from its language's folder, in that language's runtime", async () => {

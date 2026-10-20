@@ -2,6 +2,7 @@ import { spawn, execFile } from 'child_process';
 import { getRuntime } from '../runtimes/registry.js';
 import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
 import { killLeftovers } from './docker-exec.js';
+import { acquireSandboxSlot } from './sandbox-slots.js';
 import type { WebSocket } from 'ws';
 
 const TIMEOUT_MS = 20_000;
@@ -50,17 +51,20 @@ export async function handleInteractiveRun(
 
   // Once the acquire starts we hold the owner's container reserved. Every exit
   // path below must settle it exactly once: keep it (release for reuse) or drop
-  // it (destroy).
+  // it (destroy). Settling also frees the run's sandbox slot (sandbox-slots.ts).
+  let releaseSlot = () => {};
   let settled = false;
   const keepContainer = () => {
     if (settled) return;
     settled = true;
     releaseAfterRun(ownerKey);
+    releaseSlot();
   };
   const dropContainer = () => {
     if (settled) return;
     settled = true;
     void destroyOwner(ownerKey);
+    releaseSlot();
   };
 
   // The client can leave at any moment (Run pressed again, page left), also
@@ -69,19 +73,43 @@ export async function handleInteractiveRun(
   // the program would start with nobody watching and hold the owner's container
   // until the timeout, refusing their next run as "already in progress".
   let abandoned = false;
+  let waitingForSlot = true;
   let acquireFailed = false;
   let stopProgram: (() => void) | null = null;
   ws.on('close', () => {
     abandoned = true;
+    // While it waits for a slot the run holds no container yet: the owner's
+    // container may be serving another of their runs, so it's left alone.
     if (stopProgram) stopProgram();
-    else if (!acquireFailed) dropContainer();
+    else if (!waitingForSlot && !acquireFailed) dropContainer();
   });
+
+  try {
+    releaseSlot = await acquireSandboxSlot();
+  } catch {
+    // No slot freed up in time
+    if (abandoned) return;
+    ws.send(
+      JSON.stringify({
+        type: 'stderr',
+        data: 'The server is busy right now, please try again in a moment.\n',
+      }),
+    );
+    ws.send(JSON.stringify({ type: 'exit', code: 1 }));
+    return;
+  }
+  waitingForSlot = false;
+  if (abandoned) {
+    releaseSlot();
+    return;
+  }
 
   let containerId: string;
   try {
     containerId = await acquireForRun(ownerKey, language);
   } catch (err) {
     acquireFailed = true;
+    releaseSlot();
     if (abandoned) return;
     const data =
       err instanceof Error && err.message === 'A run is already in progress'
