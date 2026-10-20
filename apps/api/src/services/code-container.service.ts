@@ -37,21 +37,19 @@ addGuestSandboxSource((ip) =>
 let gcTimer: ReturnType<typeof setInterval> | null = null;
 
 // Hardening shared with the editor's one-shot runner: no network, dropped caps,
-// read-only root with writable tmpfs scratch, and (when possible) a non-root uid.
+// read-only root with writable tmpfs scratch, and a fixed non-root uid. The uid
+// is our own, not the API's, since the API runs as root on the VPS. Rootless
+// Podman turns it off: there root inside is the developer on the host
 function hardeningArgs(): string[] {
   const args = ['--cap-drop=ALL', '--security-opt=no-new-privileges', '--read-only'];
-  const uid = process.getuid?.();
-  const gid = process.getgid?.();
-  const sandboxUser = process.env.SANDBOX_RUN_AS_USER ?? 'true';
-  const asUser = uid !== undefined && gid !== undefined && sandboxUser !== 'false';
-  // Podman rejects `uid=0,gid=0` in tmpfs options, and root already has full
-  // access, so skip the owner option when running as root.
-  const ownerOpt = asUser && uid !== 0 ? `,uid=${uid},gid=${gid}` : '';
+  const uid = process.env.SANDBOX_UID ?? '10001';
+  const asUser = process.env.SANDBOX_RUN_AS_USER !== 'false';
+  const ownerOpt = asUser ? `,uid=${uid},gid=${uid}` : '';
   // /work is `exec` so compiled C binaries can run from it (docker tmpfs is
   // noexec by default); /tmp stays noexec, since nothing is executed from there.
   args.push(`--tmpfs=/work:exec,size=64m,mode=0700${ownerOpt}`);
   args.push(`--tmpfs=/tmp:size=64m,mode=0700${ownerOpt}`);
-  if (asUser && uid !== 0) args.push(`--user=${uid}:${gid}`);
+  if (asUser) args.push(`--user=${uid}:${uid}`);
   return args;
 }
 
