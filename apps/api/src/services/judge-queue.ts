@@ -1,5 +1,5 @@
 import { AppError } from '../middleware/errorHandler.js';
-import { slotQueue } from './slot-queue.js';
+import { slotQueue, type SlotOptions } from './slot-queue.js';
 
 // Caps how many judge runs (Run Tests) share the server at once. Each run is
 // capped at half a core, but a few slow load tests together would still take
@@ -13,10 +13,11 @@ const judge = slotQueue(
 );
 
 // Resolves with a release function once a slot is free; call it exactly once
-// when the run ends, however it ends.
+// when the run ends, however it ends. `onWait` hears when it joins the line.
 export function acquireJudgeSlot(
+  { onWait }: Pick<SlotOptions, 'onWait'> = {},
   max = MAX_CONCURRENT,
   timeoutMs = QUEUE_TIMEOUT_MS,
 ): Promise<() => void> {
-  return judge.acquire(max, timeoutMs);
+  return judge.acquire(max, timeoutMs, { onWait });
 }

@@ -7,6 +7,12 @@ interface Holder {
   stop?: () => boolean;
 }
 
+export interface SlotOptions {
+  signal?: AbortSignal;
+  stop?: () => boolean;
+  onWait?: () => void;
+}
+
 interface Waiter {
   holder: Holder;
   grant: () => void;
@@ -71,11 +77,12 @@ export function slotQueue(busy: () => AppError, stopAfterMs = Infinity) {
   // Resolves with a release function once a slot is free; call it exactly once
   // when the work ends, however it ends. Aborting `signal` takes a waiting one
   // out of the line, so whoever is behind it moves up. `stop` makes the work
-  // one that can be stopped to make room.
+  // one that can be stopped to make room. `onWait` hears when it joins the line
+  // rather than getting a slot at once.
   function acquire(
     max: number,
     timeoutMs: number,
-    { signal, stop }: { signal?: AbortSignal; stop?: () => boolean } = {},
+    { signal, stop, onWait }: SlotOptions = {},
   ): Promise<() => void> {
     const holder: Holder = { since: 0, stop };
     let released = false;
@@ -109,6 +116,7 @@ export function slotQueue(busy: () => AppError, stopAfterMs = Infinity) {
       const timer = setTimeout(() => leave(busy()), timeoutMs);
       signal?.addEventListener('abort', onAbort);
       waiting.push(waiter);
+      onWait?.();
       makeRoom();
     });
   }
