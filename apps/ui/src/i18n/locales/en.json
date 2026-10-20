@@ -46,6 +46,7 @@
     "codeExec": "Code execution (live)",
     "activeContainers": "Active containers",
     "runningNow": "Running now",
+    "busySandboxes": "Busy sandboxes",
     "openSessions": "Open sessions",
     "perLanguage": "Per runtime",
     "noData": "No data yet",

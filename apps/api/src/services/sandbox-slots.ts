@@ -22,3 +22,8 @@ export function acquireSandboxSlot(
 ): Promise<() => void> {
   return sandboxes.acquire(max, timeoutMs);
 }
+
+// For the admin dashboard: how many slots are taken right now, out of how many
+export function sandboxSlots(): { busySlots: number; maxBusySlots: number } {
+  return { busySlots: sandboxes.inUse(), maxBusySlots: MAX_BUSY };
+}

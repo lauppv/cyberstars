@@ -1,3 +1,4 @@
+import os from 'os';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 process.env.JWT_SECRET = 'test-secret';
@@ -22,6 +23,7 @@ vi.mock('../repositories/admin.repository.js', () => mockAdminRepo);
 vi.mock('./code-container.service.js', () => mockContainer);
 
 const { getStats, clearCache } = await import('./admin.service.js');
+const { acquireSandboxSlot } = await import('./sandbox-slots.js');
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -59,6 +61,8 @@ describe('admin.service getStats', () => {
     expect(stats.progress.totalCompletions).toBe(5);
     expect(stats.forum.posts).toBe(2);
     expect(stats.codeExec.maxContainers).toBe(50);
+    expect(stats.codeExec.busySlots).toBe(0);
+    expect(stats.codeExec.maxBusySlots).toBe(os.availableParallelism() * 4);
     expect(mockAdminRepo.userStats).toHaveBeenCalledTimes(1);
   });
 
@@ -78,8 +82,11 @@ describe('admin.service getStats', () => {
       openSessions: 3,
       perLanguage: { python: 4 },
     });
+    const release = await acquireSandboxSlot();
     const second = await getStats();
+    release();
     expect(second.codeExec.activeContainers).toBe(4);
+    expect(second.codeExec.busySlots).toBe(1);
     expect(mockContainer.liveMetrics).toHaveBeenCalledTimes(2);
     expect(mockAdminRepo.userStats).toHaveBeenCalledTimes(1);
   });
