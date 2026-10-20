@@ -3,7 +3,12 @@ import path from 'path';
 import { codeLanguageOf, isMultiLanguage } from '@cyberstars/shared/constants';
 import { contentDir } from './paths.js';
 import { dockerExec, dockerConverse, killLeftovers } from './docker-exec.js';
-import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
+import {
+  acquireForRun,
+  releaseAfterRun,
+  destroyOwner,
+  isRunning,
+} from './code-container.service.js';
 import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { prepareC, type PrepareResult } from './c-analysis.js';
@@ -408,6 +413,8 @@ export async function runLessonTests(
     return syntaxErrorResponse(spec, studentLines(prepared.syntaxError, harness));
   }
 
+  // Refused at once rather than after waiting in line for a slot
+  if (isRunning(ownerKey)) throw new AppError(409, 'A run is already in progress');
   const releaseSlot = await acquireJudgeSlot();
   try {
     // A judge run is a busy sandbox too, so it also takes one of the slots

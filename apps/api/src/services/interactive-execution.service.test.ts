@@ -10,6 +10,7 @@ const {
   destroyMock,
   acquireSlotMock,
   releaseSlotMock,
+  isRunningMock,
 } = vi.hoisted(() => ({
   spawnMock: vi.fn(),
   execFileMock: vi.fn(),
@@ -18,6 +19,7 @@ const {
   destroyMock: vi.fn(),
   acquireSlotMock: vi.fn(),
   releaseSlotMock: vi.fn(),
+  isRunningMock: vi.fn(),
 }));
 
 vi.mock('child_process', () => {
@@ -30,6 +32,7 @@ vi.mock('./code-container.service.js', () => ({
   acquireForRun: (...a: unknown[]) => acquireMock(...a),
   releaseAfterRun: (...a: unknown[]) => releaseMock(...a),
   destroyOwner: (...a: unknown[]) => destroyMock(...a),
+  isRunning: (...a: unknown[]) => isRunningMock(...a),
 }));
 
 vi.mock('./sandbox-slots.js', () => ({
@@ -62,6 +65,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   acquireMock.mockResolvedValue('test-container');
   acquireSlotMock.mockResolvedValue(releaseSlotMock);
+  isRunningMock.mockReturnValue(false);
   // Default: every docker exec (write source / compile / rm) succeeds.
   execFileMock.mockImplementation((...args: unknown[]) => {
     const cb = args[args.length - 1];
@@ -291,6 +295,22 @@ describe('handleInteractiveRun', () => {
     expect(destroyMock).not.toHaveBeenCalled();
     expect(acquireMock).not.toHaveBeenCalled();
     expect(ws.send).not.toHaveBeenCalled();
+  });
+
+  it('refuses a second run of the owner at once, without joining the line', async () => {
+    isRunningMock.mockReturnValueOnce(true);
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:two');
+
+    expect(isRunningMock).toHaveBeenCalledWith('user:two');
+    expect(acquireSlotMock).not.toHaveBeenCalled();
+    expect(sent(ws)).toEqual([
+      { type: 'stderr', data: 'A run is already in progress.\n' },
+      { type: 'exit', code: 1 },
+    ]);
+    ws.emit('close');
+    expect(destroyMock).not.toHaveBeenCalled();
   });
 
   it('tells a guest their network holds as many sandboxes as it may', async () => {

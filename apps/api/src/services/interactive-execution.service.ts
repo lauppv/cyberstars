@@ -1,7 +1,12 @@
 import { spawn, execFile } from 'child_process';
 import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
-import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
+import {
+  acquireForRun,
+  releaseAfterRun,
+  destroyOwner,
+  isRunning,
+} from './code-container.service.js';
 import { killLeftovers } from './docker-exec.js';
 import { acquireSandboxSlot } from './sandbox-slots.js';
 import type { WebSocket } from 'ws';
@@ -75,6 +80,12 @@ export async function handleInteractiveRun(
   // abandoned before its program starts drops the container at once; otherwise
   // the program would start with nobody watching and hold the owner's container
   // until the timeout, refusing their next run as "already in progress".
+  if (isRunning(ownerKey)) {
+    ws.send(JSON.stringify({ type: 'stderr', data: 'A run is already in progress.\n' }));
+    ws.send(JSON.stringify({ type: 'exit', code: 1 }));
+    return;
+  }
+
   let abandoned = false;
   let waitingForSlot = true;
   let acquireFailed = false;

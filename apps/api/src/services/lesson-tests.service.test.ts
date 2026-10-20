@@ -27,15 +27,17 @@ vi.mock('./docker-exec.js', () => ({
   killLeftovers: (...args: unknown[]) => mockKillLeftovers(...args),
 }));
 
-const { mockAcquire, mockRelease, mockDestroy } = vi.hoisted(() => ({
+const { mockAcquire, mockRelease, mockDestroy, mockIsRunning } = vi.hoisted(() => ({
   mockAcquire: vi.fn(),
   mockRelease: vi.fn(),
   mockDestroy: vi.fn(),
+  mockIsRunning: vi.fn(),
 }));
 vi.mock('./code-container.service.js', () => ({
   acquireForRun: (...args: unknown[]) => mockAcquire(...args),
   releaseAfterRun: (...args: unknown[]) => mockRelease(...args),
   destroyOwner: (...args: unknown[]) => mockDestroy(...args),
+  isRunning: (...args: unknown[]) => mockIsRunning(...args),
 }));
 
 const { mockAcquireSandbox, mockReleaseSandbox } = vi.hoisted(() => ({
@@ -266,6 +268,18 @@ describe('runLessonTests', () => {
       runLessonTests('guest:g', 'python', 'print', 'print("ok")', 'en', undefined, '1.2.3.4'),
     ).rejects.toMatchObject({ statusCode: 429, message: 'full' });
     expect(mockAcquire).toHaveBeenCalledWith('guest:g', 'python', '1.2.3.4');
+  });
+
+  it("refuses at once, without waiting for a slot, while the owner's container is in use", async () => {
+    stubFiles();
+    mockIsRunning.mockReturnValueOnce(true);
+
+    await expect(runLessonTests('user:1', 'python', 'print', 'print("ok")')).rejects.toMatchObject({
+      statusCode: 409,
+      message: 'A run is already in progress',
+    });
+    expect(mockAcquireSandbox).not.toHaveBeenCalled();
+    expect(mockAcquire).not.toHaveBeenCalled();
   });
 
   it('gives up with the busy server 503 before touching a container', async () => {

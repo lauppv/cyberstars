@@ -174,6 +174,13 @@ export async function acquireForRun(
   return containerId;
 }
 
+// Whether one of the owner's runs is using their container right now. A second
+// run asks first, so it's refused at once instead of waiting in line for a
+// sandbox slot only to hear it then.
+export function isRunning(ownerKey: string): boolean {
+  return containers.get(ownerKey)?.busy ?? false;
+}
+
 export function releaseAfterRun(ownerKey: string): void {
   const c = containers.get(ownerKey);
   if (c) {

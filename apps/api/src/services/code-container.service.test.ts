@@ -19,6 +19,7 @@ const {
   activeCount,
   openSession,
   closeSession,
+  isRunning,
 } = await import('./code-container.service.js');
 
 type DockerCb = (err: Error | null, stdout: string, stderr: string) => void;
@@ -76,6 +77,14 @@ describe('acquireForRun', () => {
   it('rejects a second run while one is already in progress for the owner', async () => {
     await acquireForRun('user:4', 'python'); // not released → still busy
     await expect(acquireForRun('user:4', 'python')).rejects.toThrow('already in progress');
+  });
+
+  it('says whether an owner has a run in progress', async () => {
+    expect(isRunning('user:busy')).toBe(false);
+    await acquireForRun('user:busy', 'python');
+    expect(isRunning('user:busy')).toBe(true);
+    releaseAfterRun('user:busy');
+    expect(isRunning('user:busy')).toBe(false);
   });
 
   it('rejects an unsupported language without touching state', async () => {
