@@ -1,6 +1,7 @@
 import { spawn, execFile } from 'child_process';
 import { getRuntime } from '../runtimes/registry.js';
 import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
+import { killLeftovers } from './docker-exec.js';
 import type { WebSocket } from 'ws';
 
 const TIMEOUT_MS = 20_000;
@@ -210,9 +211,15 @@ export async function handleInteractiveRun(
   proc.stderr.on('data', (chunk: Buffer) => appendOutput('stderr', chunk));
 
   proc.on('close', (exitCode) => {
+    if (exited) return;
+    clearTimeout(timer);
     flushOutput();
-    sendExit(exitCode ?? 0);
-    keepContainer(); // program finished normally, keep the container for reuse
+    // The program finished normally, so the container is kept for reuse, but
+    // only once nothing it started is still running in there
+    void killLeftovers(containerId).then(() => {
+      sendExit(exitCode ?? 0);
+      keepContainer();
+    });
   });
 
   // spawn itself can fail (ENOENT if docker is missing, EMFILE under load). Without

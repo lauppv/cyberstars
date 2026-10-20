@@ -16,13 +16,15 @@ vi.mock('fs', async (importOriginal) => {
   return { ...patched, default: patched };
 });
 
-const { mockDockerExec, mockConverse } = vi.hoisted(() => ({
+const { mockDockerExec, mockConverse, mockKillLeftovers } = vi.hoisted(() => ({
   mockDockerExec: vi.fn(),
   mockConverse: vi.fn(),
+  mockKillLeftovers: vi.fn(),
 }));
 vi.mock('./docker-exec.js', () => ({
   dockerExec: (...args: unknown[]) => mockDockerExec(...args),
   dockerConverse: (...args: unknown[]) => mockConverse(...args),
+  killLeftovers: (...args: unknown[]) => mockKillLeftovers(...args),
 }));
 
 const { mockAcquire, mockRelease, mockDestroy } = vi.hoisted(() => ({
@@ -236,6 +238,11 @@ describe('runLessonTests', () => {
     expect(res.status).toBe('passed');
     expect(res.cases).toHaveLength(2);
     expect(res.cases.every((c) => c.passed)).toBe(true);
+    // What the program left running is stopped before the container is reused
+    expect(mockKillLeftovers).toHaveBeenCalledWith('cid-1');
+    expect(mockKillLeftovers.mock.invocationCallOrder[0]).toBeLessThan(
+      mockRelease.mock.invocationCallOrder[0],
+    );
     expect(mockRelease).toHaveBeenCalledWith('user:1');
     expect(mockDestroy).not.toHaveBeenCalled();
   });

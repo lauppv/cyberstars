@@ -100,6 +100,19 @@ describe('execCommand', () => {
     expect(result.cwd).toBe('/tmp');
   });
 
+  itDocker('stops what a command left running in the background', async () => {
+    mockExistsSync.mockReturnValue(false);
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
+    sessionsToClean.push(sessionId);
+
+    await execCommand(sessionId, 'sleep 299 &', 'user:1');
+    const result = await execCommand(sessionId, 'ps -eo args=', 'user:1');
+    expect(result.output).not.toContain('sleep 299');
+    // Nothing is left behind as a zombie either
+    const zombies = await execCommand(sessionId, 'ps -eo stat= | grep -c Z', 'user:1');
+    expect(zombies.output.trim()).toBe('0');
+  });
+
   itDocker('rejects a command from a different user', async () => {
     mockExistsSync.mockReturnValue(false);
     const { sessionId } = await createSession('linux', 'test', 'user:1');

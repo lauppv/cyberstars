@@ -7,7 +7,7 @@ import type {
   TerminalExecResult,
 } from '@cyberstars/shared/terminal';
 import { contentDir } from './paths.js';
-import { dockerExec, SANDBOX_KEEPALIVE } from './docker-exec.js';
+import { dockerExec, killLeftovers, SANDBOX_KEEPALIVE } from './docker-exec.js';
 
 const IMAGE = 'cyberstars-linux-sandbox';
 const IDLE_TTL = 15 * 60 * 1000;
@@ -179,6 +179,8 @@ export async function execCommand(
     } catch (e: unknown) {
       output = e instanceof Error ? e.message : 'Command failed';
     }
+    // The 5s limit stops the command, not what it sent to the background
+    await killLeftovers(session.containerId);
 
     let newCwd = session.cwd;
     try {

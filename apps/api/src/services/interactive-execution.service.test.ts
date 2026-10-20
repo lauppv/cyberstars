@@ -109,8 +109,30 @@ describe('handleInteractiveRun', () => {
     await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:3');
     proc.emit('close', 0);
 
-    expect(releaseMock).toHaveBeenCalledWith('user:3');
+    await vi.waitFor(() => expect(releaseMock).toHaveBeenCalledWith('user:3'));
     expect(destroyMock).not.toHaveBeenCalled();
+    expect(sent(ws).some((m) => m.type === 'exit' && m.code === 0)).toBe(true);
+  });
+
+  it('stops what the program left running before the exit and the reuse', async () => {
+    const proc = new FakeProc();
+    spawnMock.mockReturnValue(proc);
+    const ws = new FakeWs();
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:bg');
+
+    let finishKill: (() => void) | undefined;
+    execFileMock.mockImplementationOnce((_cmd: string, args: string[], _opts, cb) => {
+      expect(args).toEqual(['exec', 'test-container', 'sh', '-c', 'kill -9 -1']);
+      finishKill = () => (cb as (e: Error | null, o: string, s: string) => void)(null, '', '');
+      return { stdin: { end: vi.fn() } };
+    });
+    proc.emit('close', 0);
+    await vi.waitFor(() => expect(finishKill).toBeDefined());
+    expect(sent(ws).some((m) => m.type === 'exit')).toBe(false);
+    expect(releaseMock).not.toHaveBeenCalled();
+
+    finishKill!();
+    await vi.waitFor(() => expect(releaseMock).toHaveBeenCalledWith('user:bg'));
     expect(sent(ws).some((m) => m.type === 'exit' && m.code === 0)).toBe(true);
   });
 

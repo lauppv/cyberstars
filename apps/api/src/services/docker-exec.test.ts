@@ -16,7 +16,7 @@ vi.mock('child_process', async (importOriginal) => {
   return { ...patched, default: patched };
 });
 
-const { dockerExec, dockerConverse } = await import('./docker-exec.js');
+const { dockerExec, dockerConverse, killLeftovers } = await import('./docker-exec.js');
 
 type ExecCallback = (err: Error | null, stdout: string, stderr: string) => void;
 
@@ -50,6 +50,28 @@ describe('dockerExec', () => {
       },
     );
     await expect(dockerExec(['x'])).rejects.toThrow('exit 1');
+  });
+});
+
+describe('killLeftovers', () => {
+  it('kills every process in the sandbox but its first, and never throws', async () => {
+    mockExecFile.mockImplementationOnce(
+      (_cmd: string, _args: string[], _opts: unknown, cb: ExecCallback) => {
+        cb(null, '', '');
+        return {};
+      },
+    );
+    await killLeftovers('cid');
+    expect(mockExecFile.mock.lastCall?.[1]).toEqual(['exec', 'cid', 'sh', '-c', 'kill -9 -1']);
+
+    // A sandbox already gone has nothing left to stop
+    mockExecFile.mockImplementationOnce(
+      (_cmd: string, _args: string[], _opts: unknown, cb: ExecCallback) => {
+        cb(new Error('exit 1'), '', 'No such container');
+        return {};
+      },
+    );
+    await expect(killLeftovers('gone')).resolves.toBeUndefined();
   });
 });
 

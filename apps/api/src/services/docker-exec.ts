@@ -25,6 +25,17 @@ export function dockerExec(args: string[], timeout = 10_000, stdin?: string): Pr
   });
 }
 
+// Stops everything left running in a sandbox once a run or a command is over,
+// like a program's own `&` children, so they can't keep the CPU busy while
+// the sandbox sits idle. `kill -9 -1` reaches every process but PID 1 and the
+// shell sending it. Best effort: a sandbox already gone has nothing to stop
+export function killLeftovers(containerId: string): Promise<void> {
+  return dockerExec(['exec', containerId, 'sh', '-c', 'kill -9 -1'], 5_000).then(
+    () => {},
+    () => {},
+  );
+}
+
 // A stdout line longer than this means the process is misbehaving (a judge
 // runner's lines are capped program outputs), so it is killed.
 const MAX_LINE = 4 * 1024 * 1024;

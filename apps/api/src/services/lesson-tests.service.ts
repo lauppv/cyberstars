@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { codeLanguageOf, isMultiLanguage } from '@cyberstars/shared/constants';
 import { contentDir } from './paths.js';
-import { dockerExec, dockerConverse } from './docker-exec.js';
+import { dockerExec, dockerConverse, killLeftovers } from './docker-exec.js';
 import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
 import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
@@ -524,7 +524,10 @@ async function runInContainer(
     keep = false;
     throw err instanceof AppError ? err : new AppError(500, 'Test run failed, please try again');
   } finally {
-    if (keep) releaseAfterRun(ownerKey);
-    else void destroyOwner(ownerKey);
+    if (keep) {
+      // Nothing the student's program started outlives the run
+      await killLeftovers(containerId);
+      releaseAfterRun(ownerKey);
+    } else void destroyOwner(ownerKey);
   }
 }
