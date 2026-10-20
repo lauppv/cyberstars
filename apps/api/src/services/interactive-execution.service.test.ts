@@ -269,8 +269,29 @@ describe('handleInteractiveRun', () => {
     expect(acquireMock).not.toHaveBeenCalled();
     expect(sent(ws)).toEqual([
       { type: 'stderr', data: 'The server is busy right now, please try again in a moment.\n' },
+      { type: 'busy' },
       { type: 'exit', code: 1 },
     ]);
+  });
+
+  it('tells the page when the run joins the line and when it gets its slot', async () => {
+    acquireSlotMock.mockImplementationOnce(async (options: { onWait: () => void }) => {
+      options.onWait();
+      return releaseSlotMock;
+    });
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:wait');
+
+    expect(sent(ws).slice(0, 2)).toEqual([{ type: 'waiting' }, { type: 'slot' }]);
+  });
+
+  it('says nothing about a line to a run that got its slot at once', async () => {
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:fast');
+
+    expect(sent(ws).some((m) => m.type === 'waiting' || m.type === 'slot')).toBe(false);
   });
 
   it("leaves the line, and the owner's container alone, when the page closes while waiting", async () => {
