@@ -49,6 +49,14 @@ afterEach(async () => {
   await destroyAllSessions();
 });
 
+describe('a new session', () => {
+  it('labels its sandbox, so a later run of the server can find it', async () => {
+    await newSession('user:label');
+    const run = execFileMock.mock.calls.find(([, args]) => args[0] === 'run')![1];
+    expect(run).toContain('--label=cyberstars.sandbox');
+  });
+});
+
 describe('global session cap', () => {
   it('evicts the least-recently-active idle session at the cap', async () => {
     const a = await newSession('user:a');

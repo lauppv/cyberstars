@@ -4,6 +4,15 @@ import { destroyAllSessions } from './services/terminal-session.service.js';
 import { drainAll } from './services/code-container.service.js';
 import { attachRunWebSocket } from './services/ws-run.js';
 import { scheduleRollUp } from './services/visits.service.js';
+import { removeStraySandboxes } from './services/docker-exec.js';
+
+// Before the first request, so only sandboxes of an earlier run are removed
+try {
+  const removed = await removeStraySandboxes();
+  if (removed) console.log(`Removed ${removed} sandboxes left by an earlier run`);
+} catch (err) {
+  console.error('[sandboxes] could not look for ones left by an earlier run:', err);
+}
 
 const server = app.listen(config.port, () => {
   console.log(`Server running on http://localhost:${config.port}`);
