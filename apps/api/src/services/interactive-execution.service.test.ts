@@ -276,7 +276,7 @@ describe('handleInteractiveRun', () => {
   it("leaves the line, and the owner's container alone, when the page closes while waiting", async () => {
     let signal: AbortSignal | undefined;
     acquireSlotMock.mockImplementationOnce(
-      (s: AbortSignal) =>
+      ({ signal: s }: { signal: AbortSignal }) =>
         new Promise((_resolve, reject) => {
           signal = s;
           s.addEventListener('abort', () => reject(s.reason));

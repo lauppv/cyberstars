@@ -89,6 +89,8 @@ describe('shared sandbox slots', () => {
     const command = calls.findIndex((a) => a.includes('timeout'));
     expect(calls[command + 1]).toEqual(['exec', 'container-1', 'sh', '-c', 'kill -9 -1']);
     expect(releaseSlotMock).toHaveBeenCalledTimes(1);
+    // A terminal command is never stopped to make room: no `stop` with its slot
+    expect(acquireSlotMock).toHaveBeenCalledWith();
   });
 
   it('turns a command away on a busy server and keeps it out of the history', async () => {

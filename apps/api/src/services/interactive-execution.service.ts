@@ -102,7 +102,7 @@ export async function handleInteractiveRun(
   });
 
   try {
-    releaseSlot = await acquireSandboxSlot(leaving.signal);
+    releaseSlot = await acquireSandboxSlot({ signal: leaving.signal });
   } catch {
     // No slot freed up in time, or the page left the line
     if (abandoned) return;
