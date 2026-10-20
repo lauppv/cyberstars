@@ -88,7 +88,7 @@ describe('useTerminalSession', () => {
     await act(async () => {
       await result.current.execute('ls');
     });
-    expect(mockExec).toHaveBeenCalledWith('s1', 'ls');
+    expect(mockExec).toHaveBeenCalledWith('s1', 'ls', expect.any(String));
     expect(result.current.lines).toContainEqual({
       type: 'input',
       text: 'ls',

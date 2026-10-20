@@ -33,6 +33,7 @@ class MockWebSocket {
 vi.stubGlobal('WebSocket', MockWebSocket);
 
 const { useCodeExecution } = await import('./useCodeExecution');
+const { useRunWait } = await import('./useRunWait');
 
 beforeEach(() => {
   wsInstances = [];
@@ -40,6 +41,69 @@ beforeEach(() => {
 });
 
 describe('useCodeExecution', () => {
+  it('shows the wait while the run is in line, hides it with the slot, and sends nothing again', async () => {
+    const { result } = renderHook(() => ({ run: useCodeExecution(), wait: useRunWait() }));
+    act(() => result.current.run.execute('code', 'python'));
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10));
+    });
+    const ws = wsInstances[0];
+    act(() => ws.simulateMessage({ type: 'waiting' }));
+    expect(result.current.wait).toEqual({ kind: 'waiting' });
+    act(() => ws.simulateMessage({ type: 'slot' }));
+    expect(result.current.wait).toBeNull();
+    expect(wsInstances).toHaveLength(1);
+    expect(ws.sent).toHaveLength(1);
+  });
+
+  it('offers Try again when no sandbox freed up, which runs the same code again', async () => {
+    const { result } = renderHook(() => ({ run: useCodeExecution(), wait: useRunWait() }));
+    act(() => result.current.run.execute('print(1)', 'python'));
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10));
+    });
+    const ws = wsInstances[0];
+    act(() => {
+      ws.simulateMessage({ type: 'waiting' });
+      ws.simulateMessage({ type: 'busy' });
+      ws.simulateMessage({ type: 'exit', code: 1 });
+    });
+    const wait = result.current.wait;
+    expect(wait?.kind).toBe('busy');
+    act(() => {
+      if (wait?.kind === 'busy') wait.retry();
+    });
+    expect(result.current.wait).toBeNull();
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10));
+    });
+    expect(JSON.parse(wsInstances[1].sent[0])).toMatchObject({
+      code: 'print(1)',
+      language: 'python',
+    });
+  });
+
+  it('hides the wait when the socket closes while in line, or the page leaves', async () => {
+    const { result, unmount } = renderHook(() => ({ run: useCodeExecution(), wait: useRunWait() }));
+    act(() => result.current.run.execute('code', 'python'));
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10));
+    });
+    act(() => wsInstances[0].simulateMessage({ type: 'waiting' }));
+    act(() => wsInstances[0].close());
+    expect(result.current.wait).toBeNull();
+
+    act(() => result.current.run.execute('code', 'python'));
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10));
+    });
+    act(() => wsInstances[1].simulateMessage({ type: 'busy' }));
+    const watcher = renderHook(() => useRunWait());
+    expect(watcher.result.current?.kind).toBe('busy');
+    unmount();
+    expect(watcher.result.current).toBeNull();
+  });
+
   it('starts with empty output and not running', () => {
     const { result } = renderHook(() => useCodeExecution());
     expect(result.current.output).toBe('');

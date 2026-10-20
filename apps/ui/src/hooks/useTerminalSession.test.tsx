@@ -33,7 +33,7 @@ describe('useTerminalSession', () => {
       await result.current.execute('ls');
     });
 
-    expect(h.exec).toHaveBeenCalledWith('s1', 'ls');
+    expect(h.exec).toHaveBeenCalledWith('s1', 'ls', expect.any(String));
     expect(onCommandRun).toHaveBeenCalledTimes(1);
   });
 

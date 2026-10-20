@@ -6,19 +6,21 @@ import type {
 } from '@cyberstars/shared/tests';
 import type { CodeLanguage } from '@cyberstars/shared/constants';
 
-// `language` is the one on screen on a multi-language course.
+// `language` is the one on screen on a multi-language course. `runId` names
+// the run, so the page can ask whether it's waiting for a sandbox.
 export function runTests(
   courseKey: string,
   lessonSlug: string,
   code: string,
   lang: string,
   language?: CodeLanguage,
+  runId?: string,
 ): Promise<RunTestsResponse> {
-  return api.post<RunTestsResponse>(`/api/tests/${courseKey}/${lessonSlug}/run`, {
-    code,
-    lang,
-    ...(language && { language }),
-  });
+  return api.post<RunTestsResponse>(
+    `/api/tests/${courseKey}/${lessonSlug}/run`,
+    { code, lang, ...(language && { language }) },
+    runId ? { headers: { 'X-Run-Id': runId } } : undefined,
+  );
 }
 
 /** The signed-in student's judge attempts on a lesson, newest first. */

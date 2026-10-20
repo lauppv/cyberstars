@@ -957,6 +957,25 @@
     "outputTruncated": "... (rezultat scurtat) ...",
     "connectionError": "Conexiunea s-a întrerupt."
   },
+  "runWait": {
+    "waiting": "Serverul e foarte aglomerat acum. Nu e nevoie să reîncarci pagina: răspunsul vine imediat ce se eliberează un sandbox.",
+    "busy": "Tot aglomerat: nu s-a eliberat niciun sandbox la timp.",
+    "tryAgain": "Încearcă din nou",
+    "lines": [
+      "Între timp: un strop de apă face omleta mai pufoasă.",
+      "Între timp: un vârf de sare în cafea îi mai taie din amăreală.",
+      "Între timp: există 10 feluri de oameni, cei care citesc binar și cei care nu.",
+      "Între timp: locul preferat de ieșit al programatorilor e Foo Bar.",
+      "Între timp: lasă friptura să se odihnească cinci minute și rămâne suculentă.",
+      "Între timp: programatorii încurcă Halloween cu Crăciunul, pentru că Oct 31 e Dec 25.",
+      "Între timp: tigaia rece și untul rece fac cele mai cremoase ouă jumări.",
+      "Între timp: un query SQL intră într-un bar, se duce la două mese și le întreabă: pot să vă fac join?",
+      "Între timp: apa de paste trebuie să aibă gust de mare.",
+      "Între timp: partea bună la un boolean e că, și când greșește, greșește doar cu un bit.",
+      "Între timp: o lămâie dă mai mult suc dacă o rostogolești întâi pe masă.",
+      "Între timp: nu există loc ca 127.0.0.1."
+    ]
+  },
   "terminal": {
     "label": "Terminal",
     "starting": "Se pornește sandbox-ul...",
