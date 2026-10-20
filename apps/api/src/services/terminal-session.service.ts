@@ -7,7 +7,9 @@ import type {
   TerminalExecResult,
 } from '@cyberstars/shared/terminal';
 import { contentDir } from './paths.js';
-import { dockerExec } from './docker-exec.js';
+import { acquireSandboxSlot } from './sandbox-slots.js';
+import { addGuestSandboxSource, makeRoomForGuest } from './guest-sandboxes.js';
+import { dockerExec, killLeftovers, SANDBOX_KEEPALIVE } from './docker-exec.js';
 
 const IMAGE = 'cyberstars-linux-sandbox';
 const IDLE_TTL = 15 * 60 * 1000;
@@ -15,6 +17,9 @@ const EXEC_TIMEOUT = 5;
 // Each session is a live 128 MB sandbox container, so the total must be bounded
 // or a burst of /session calls OOMs the box. Mirrors code-container's global cap.
 const MAX_SESSIONS = Number(process.env.TERMINAL_MAX_SESSIONS ?? 50);
+// A student or guest has a session per open terminal tab; past a few, a new
+// one closes their oldest, so a script can't pile them up.
+const MAX_SESSIONS_PER_OWNER = 3;
 
 interface Session {
   ownerKey: string;
@@ -23,10 +28,22 @@ interface Session {
   history: string[];
   lastOutput: string;
   lastActivity: number;
+  // The network a guest's session counts against (guest-sandboxes.ts)
+  guestIp?: string;
 }
 
 const sessions = new Map<string, Session>();
 const executing = new Set<string>();
+
+addGuestSandboxSource((ip) =>
+  [...sessions]
+    .filter(([, s]) => s.guestIp === ip)
+    .map(([id, s]) => ({
+      lastActivity: s.lastActivity,
+      busy: executing.has(id),
+      close: () => void destroySession(id),
+    })),
+);
 
 let gcTimer: ReturnType<typeof setInterval> | null = null;
 
@@ -91,58 +108,83 @@ export async function createSession(
   lessonSlug: string,
   ownerKey: string,
   lang?: string,
+  guestIp?: string,
 ): Promise<TerminalSessionInfo> {
   const setup = loadSetup(courseKey, lessonSlug, lang);
   const cwd = setup?.cwd ?? '/home/student';
 
+  const owned = [...sessions].filter(([, s]) => s.ownerKey === ownerKey);
+  if (owned.length >= MAX_SESSIONS_PER_OWNER) void destroySession(owned[0][0]);
+  if (guestIp) makeRoomForGuest(guestIp);
   // Bound total live containers before spinning up another one.
   if (sessions.size >= MAX_SESSIONS) evictLruIdleSession(ownerKey);
 
-  const containerId = await dockerExec([
-    'run',
-    '-d',
-    '--rm',
-    '--network=none',
-    '--memory=128m',
-    '--pids-limit=64',
-    '--cpus=0.5',
-    '--cap-drop=ALL',
-    '--security-opt=no-new-privileges',
-    '--read-only',
-    '--tmpfs=/home/student:size=16m,mode=0777',
-    '--tmpfs=/tmp:size=4m,mode=0777',
-    IMAGE,
-  ]);
-
-  if (setup) {
-    for (const dir of setup.dirs) {
-      await dockerExec(['exec', containerId, 'mkdir', '-p', `/home/student/${dir}`]);
-    }
-    for (const file of setup.files) {
-      const fullPath = file.path.startsWith('/') ? file.path : `/home/student/${file.path}`;
-      const dir2 = fullPath.substring(0, fullPath.lastIndexOf('/'));
-      if (dir2 && dir2 !== '/home/student') {
-        await dockerExec(['exec', containerId, 'mkdir', '-p', dir2]);
-      }
-      await dockerExec(
-        ['exec', '-i', containerId, 'bash', '-c', `cat > '${fullPath.replace(/'/g, "'\\''")}'`],
-        10_000,
-        file.content,
-      );
-    }
-  }
-
-  await dockerExec(['exec', '-i', containerId, 'bash', '-c', 'cat > /tmp/.cwd'], 10_000, cwd);
-
+  // The session is counted from now on, while its container is still starting,
+  // so sessions asked for together can't slip past the caps above. It counts as
+  // executing until it's ready, which keeps the eviction off it.
   const sessionId = crypto.randomUUID();
-  sessions.set(sessionId, {
+  const session: Session = {
     ownerKey,
-    containerId,
+    containerId: '',
     cwd,
     history: [],
     lastOutput: '',
     lastActivity: Date.now(),
-  });
+    guestIp,
+  };
+  sessions.set(sessionId, session);
+  executing.add(sessionId);
+
+  try {
+    session.containerId = await dockerExec([
+      'run',
+      '-d',
+      '--rm',
+      '--network=none',
+      '--memory=128m',
+      '--pids-limit=64',
+      '--cpus=0.5',
+      '--cap-drop=ALL',
+      '--security-opt=no-new-privileges',
+      '--read-only',
+      '--tmpfs=/home/student:size=16m,mode=0777',
+      '--tmpfs=/tmp:size=4m,mode=0777',
+      IMAGE,
+      ...SANDBOX_KEEPALIVE,
+    ]);
+    const { containerId } = session;
+    // Closed while its container was starting (a newer session of the same
+    // owner, say): the container has nobody left to remove it
+    if (sessions.get(sessionId) !== session) {
+      void dockerExec(['rm', '-f', containerId], 5000).catch(() => {});
+      throw new Error('Session not found');
+    }
+
+    if (setup) {
+      for (const dir of setup.dirs) {
+        await dockerExec(['exec', containerId, 'mkdir', '-p', `/home/student/${dir}`]);
+      }
+      for (const file of setup.files) {
+        const fullPath = file.path.startsWith('/') ? file.path : `/home/student/${file.path}`;
+        const dir2 = fullPath.substring(0, fullPath.lastIndexOf('/'));
+        if (dir2 && dir2 !== '/home/student') {
+          await dockerExec(['exec', containerId, 'mkdir', '-p', dir2]);
+        }
+        await dockerExec(
+          ['exec', '-i', containerId, 'bash', '-c', `cat > '${fullPath.replace(/'/g, "'\\''")}'`],
+          10_000,
+          file.content,
+        );
+      }
+    }
+
+    await dockerExec(['exec', '-i', containerId, 'bash', '-c', 'cat > /tmp/.cwd'], 10_000, cwd);
+  } catch (err) {
+    void destroySession(sessionId);
+    throw err;
+  } finally {
+    executing.delete(sessionId);
+  }
 
   startGC();
 
@@ -164,6 +206,9 @@ export async function execCommand(
 
   executing.add(sessionId);
   try {
+    // A command turned away for a busy server never ran, so it stays out of
+    // the history the terminal judge reads
+    const releaseSlot = await acquireSandboxSlot();
     session.lastActivity = Date.now();
     session.history.push(command);
 
@@ -177,6 +222,10 @@ export async function execCommand(
       );
     } catch (e: unknown) {
       output = e instanceof Error ? e.message : 'Command failed';
+    } finally {
+      // The 5s limit stops the command, not what it sent to the background
+      await killLeftovers(session.containerId);
+      releaseSlot();
     }
 
     let newCwd = session.cwd;
@@ -221,7 +270,7 @@ export async function destroySession(sessionId: string, ownerKey?: string): Prom
   try {
     await dockerExec(['rm', '-f', session.containerId], 5000);
   } catch {
-    /* container may already be gone */
+    /* container may already be gone, or still starting (createSession removes it then) */
   }
 }
 

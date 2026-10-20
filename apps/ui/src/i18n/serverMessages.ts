@@ -105,6 +105,8 @@ const RO: Record<string, string> = {
   'Access tracked': 'Vizita a fost înregistrată',
   'The judge is busy right now, please try again in a moment':
     'Evaluatorul e ocupat acum, încearcă din nou peste câteva clipe',
+  'The server is busy right now, please try again in a moment':
+    'Serverul e ocupat acum, încearcă din nou peste câteva clipe',
   'Test run failed, please try again': 'Testele n-au putut rula, încearcă din nou',
   'This lesson has no tests': 'Lecția aceasta nu are teste',
   'A run is already in progress': 'O rulare e deja în curs',
@@ -116,6 +118,8 @@ const RO: Record<string, string> = {
   'Session not found': 'Sesiunea nu există',
   'Command too long': 'Comanda e prea lungă',
   'A command is already running in this session': 'O comandă rulează deja în această sesiune',
+  'Too many guest runs from your network right now. Try again in a minute, or sign in.':
+    'Prea multe rulări fără cont din rețeaua ta acum. Încearcă peste un minut sau conectează-te.',
   'Command failed': 'Comanda a eșuat',
   'Could not check your work, please try again':
     'Nu am putut verifica ce ai făcut, încearcă din nou',
@@ -142,6 +146,8 @@ const RUN_RO: Record<string, string> = {
   'Output limit exceeded, program stopped.': 'Programul a afișat prea mult și a fost oprit.',
   'Too many runs in progress, wait for one to finish.':
     'Prea multe rulări în curs, așteaptă să se termine una.',
+  'The server is busy right now, please try again in a moment.':
+    'Serverul e ocupat acum, încearcă din nou peste câteva clipe.',
   'Too many guest runs from your network right now. Try again in a minute, or sign in.':
     'Prea multe rulări fără cont din rețeaua ta acum. Încearcă peste un minut sau conectează-te.',
 };

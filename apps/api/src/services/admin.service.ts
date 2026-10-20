@@ -1,5 +1,6 @@
 import * as adminRepo from '../repositories/admin.repository.js';
 import * as codeContainer from './code-container.service.js';
+import { sandboxSlots } from './sandbox-slots.js';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 
 const CACHE_TTL_MS = Number(process.env.ADMIN_STATS_CACHE_MS ?? 5 * 60 * 1000);
@@ -8,10 +9,14 @@ let cached: { dto: AdminStatsDTO; expiresAt: number } | null = null;
 
 // The DB-heavy aggregates are cached for a few minutes to spare the small VPS;
 // the code-execution metrics are read live from memory on every call (cheap).
+function codeExec() {
+  return { ...codeContainer.liveMetrics(), ...sandboxSlots() };
+}
+
 export async function getStats(force = false): Promise<AdminStatsDTO> {
   const now = Date.now();
   if (!force && cached && cached.expiresAt > now) {
-    return { ...cached.dto, codeExec: codeContainer.liveMetrics() };
+    return { ...cached.dto, codeExec: codeExec() };
   }
 
   const [users, progress, forum, support] = await Promise.all([
@@ -26,7 +31,7 @@ export async function getStats(force = false): Promise<AdminStatsDTO> {
     progress,
     forum,
     support,
-    codeExec: codeContainer.liveMetrics(),
+    codeExec: codeExec(),
     generatedAt: new Date().toISOString(),
   };
 

@@ -75,6 +75,7 @@ describe('terminal routes: owner resolution (requireOwner)', () => {
       'ls-basics',
       'user:42',
       undefined,
+      undefined,
     );
   });
 
@@ -92,6 +93,8 @@ describe('terminal routes: owner resolution (requireOwner)', () => {
       'ls-basics',
       'guest-abc',
       undefined,
+      // The guest's network, which their sandboxes count against
+      '127.0.0.1',
     );
   });
 

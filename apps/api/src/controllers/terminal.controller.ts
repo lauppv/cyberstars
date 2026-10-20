@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
+import { ipKeyGenerator } from 'express-rate-limit';
 import { AppError } from '../middleware/errorHandler.js';
 import { destroySchema } from '../schemas/terminal.schema.js';
 import * as sessionService from '../services/terminal-session.service.js';
@@ -11,6 +12,12 @@ export function resolveOwnerKey(req: Request): string | null {
   return req.cookies?.guestId ?? null;
 }
 
+// A guest's network, which their sandboxes count against (guest-sandboxes.ts),
+// keyed like the per-IP rate limits: an IPv6 address counts as its /56 block.
+export function guestIpOf(req: Request): string | undefined {
+  return req.user ? undefined : ipKeyGenerator(req.ip ?? '');
+}
+
 export async function createSession(req: Request, res: Response, next: NextFunction) {
   try {
     const { courseKey, lessonSlug, lang } = req.body;
@@ -19,6 +26,7 @@ export async function createSession(req: Request, res: Response, next: NextFunct
       lessonSlug,
       resolveOwnerKey(req)!,
       lang,
+      guestIpOf(req),
     );
     res.json(session);
   } catch (err) {

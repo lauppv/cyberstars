@@ -184,6 +184,7 @@ describe('runTests submission history', () => {
       'int x;',
       'en',
       'c',
+      undefined,
     );
     expect(mockMarkComplete).toHaveBeenCalledWith(7, 'trees-graphs', 'trees');
     expect(mockRecord).toHaveBeenCalledWith(

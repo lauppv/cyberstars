@@ -3,6 +3,7 @@ import { runLessonTests } from '../services/lesson-tests.service.js';
 import * as progressService from '../services/progress.service.js';
 import * as submissionsService from '../services/submissions.service.js';
 import { AppError } from '../middleware/errorHandler.js';
+import { guestIpOf } from './terminal.controller.js';
 import { codeLanguageOf, type CodeLanguage } from '@cyberstars/shared/constants';
 
 // Same owner keyspace as the editor's WebSocket runs (ws-run.ts), so a test run
@@ -24,6 +25,7 @@ export async function runTests(req: Request, res: Response, next: NextFunction) 
       req.body.code,
       req.body.lang,
       req.body.language,
+      guestIpOf(req),
     );
     // Completion is server-authoritative: only a judge-confirmed pass marks the
     // lesson complete, and only for a logged-in user (guests have no progress).

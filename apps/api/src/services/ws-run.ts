@@ -139,7 +139,8 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
   const { ownerKey: rateKey, isGuest } = resolveOwner(req);
   // An IPv6 holder picks any address in their block at will, so the gate keys
   // the block (/56, like the HTTP limiters) rather than the single address.
-  const ipKey = isGuest ? `guest-ip:${ipKeyGenerator(extractIp(req))}` : null;
+  const guestIp = isGuest ? ipKeyGenerator(extractIp(req)) : undefined;
+  const ipKey = guestIp ? `guest-ip:${guestIp}` : null;
 
   let started = false;
   let counted = false;
@@ -186,7 +187,7 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
     counted = true;
     if (isGuest) recordGuestRun(rateKey);
     const program = programForRun(msg.code, msg.language, msg.lesson);
-    handleInteractiveRun(ws, program, msg.language, rateKey).catch((err) => {
+    handleInteractiveRun(ws, program, msg.language, rateKey, guestIp).catch((err) => {
       console.error('[ws/run] execution error:', err);
       if (ws.readyState === ws.OPEN) {
         ws.send(JSON.stringify({ type: 'stderr', data: 'Internal error.\n' }));

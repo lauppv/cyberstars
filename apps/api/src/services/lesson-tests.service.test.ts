@@ -16,24 +16,36 @@ vi.mock('fs', async (importOriginal) => {
   return { ...patched, default: patched };
 });
 
-const { mockDockerExec, mockConverse } = vi.hoisted(() => ({
+const { mockDockerExec, mockConverse, mockKillLeftovers } = vi.hoisted(() => ({
   mockDockerExec: vi.fn(),
   mockConverse: vi.fn(),
+  mockKillLeftovers: vi.fn(),
 }));
 vi.mock('./docker-exec.js', () => ({
   dockerExec: (...args: unknown[]) => mockDockerExec(...args),
   dockerConverse: (...args: unknown[]) => mockConverse(...args),
+  killLeftovers: (...args: unknown[]) => mockKillLeftovers(...args),
 }));
 
-const { mockAcquire, mockRelease, mockDestroy } = vi.hoisted(() => ({
+const { mockAcquire, mockRelease, mockDestroy, mockIsRunning } = vi.hoisted(() => ({
   mockAcquire: vi.fn(),
   mockRelease: vi.fn(),
   mockDestroy: vi.fn(),
+  mockIsRunning: vi.fn(),
 }));
 vi.mock('./code-container.service.js', () => ({
   acquireForRun: (...args: unknown[]) => mockAcquire(...args),
   releaseAfterRun: (...args: unknown[]) => mockRelease(...args),
   destroyOwner: (...args: unknown[]) => mockDestroy(...args),
+  isRunning: (...args: unknown[]) => mockIsRunning(...args),
+}));
+
+const { mockAcquireSandbox, mockReleaseSandbox } = vi.hoisted(() => ({
+  mockAcquireSandbox: vi.fn(),
+  mockReleaseSandbox: vi.fn(),
+}));
+vi.mock('./sandbox-slots.js', () => ({
+  acquireSandboxSlot: (...args: unknown[]) => mockAcquireSandbox(...args),
 }));
 
 // C does structure + injection on the server via web-tree-sitter, which can't
@@ -105,6 +117,7 @@ function stubVerdict({ syntaxError, structureFailures = [], cases }: StubVerdict
 beforeEach(() => {
   vi.clearAllMocks();
   mockAcquire.mockResolvedValue('cid-1');
+  mockAcquireSandbox.mockResolvedValue(mockReleaseSandbox);
   clearReferences();
 });
 
@@ -236,8 +249,51 @@ describe('runLessonTests', () => {
     expect(res.status).toBe('passed');
     expect(res.cases).toHaveLength(2);
     expect(res.cases.every((c) => c.passed)).toBe(true);
+    // What the program left running is stopped before the container is reused
+    expect(mockKillLeftovers).toHaveBeenCalledWith('cid-1');
+    expect(mockKillLeftovers.mock.invocationCallOrder[0]).toBeLessThan(
+      mockRelease.mock.invocationCallOrder[0],
+    );
     expect(mockRelease).toHaveBeenCalledWith('user:1');
     expect(mockDestroy).not.toHaveBeenCalled();
+    expect(mockReleaseSandbox).toHaveBeenCalledTimes(1);
+  });
+
+  it("passes on a guest's network and its 429 when the network is full", async () => {
+    stubFiles();
+    const { AppError } = await import('../middleware/errorHandler.js');
+    mockAcquire.mockRejectedValueOnce(new AppError(429, 'full'));
+
+    await expect(
+      runLessonTests('guest:g', 'python', 'print', 'print("ok")', 'en', undefined, '1.2.3.4'),
+    ).rejects.toMatchObject({ statusCode: 429, message: 'full' });
+    expect(mockAcquire).toHaveBeenCalledWith('guest:g', 'python', '1.2.3.4');
+  });
+
+  it("refuses at once, without waiting for a slot, while the owner's container is in use", async () => {
+    stubFiles();
+    mockIsRunning.mockReturnValueOnce(true);
+
+    await expect(runLessonTests('user:1', 'python', 'print', 'print("ok")')).rejects.toMatchObject({
+      statusCode: 409,
+      message: 'A run is already in progress',
+    });
+    expect(mockAcquireSandbox).not.toHaveBeenCalled();
+    expect(mockAcquire).not.toHaveBeenCalled();
+  });
+
+  it('gives up with the busy server 503 before touching a container', async () => {
+    stubFiles();
+    mockAcquireSandbox.mockRejectedValueOnce(
+      Object.assign(new Error('The server is busy right now, please try again in a moment'), {
+        statusCode: 503,
+      }),
+    );
+
+    await expect(runLessonTests('user:1', 'python', 'print', 'print("ok")')).rejects.toMatchObject({
+      statusCode: 503,
+    });
+    expect(mockAcquire).not.toHaveBeenCalled();
   });
 
   it("runs a multi-language lesson from its language's folder, in that language's runtime", async () => {
@@ -264,7 +320,7 @@ describe('runLessonTests', () => {
     expect(read[0]).toContain(path.join('trees-graphs', 'c', 'trees-tests.json'));
     expect(read[1]).toContain(path.join('trees-graphs', 'c', 'trees-solution.md'));
     // The container is the C one the editor's runs in C use too.
-    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'c');
+    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'c', undefined);
     expect(mockPrepareC).toHaveBeenCalled();
   });
 
@@ -283,7 +339,7 @@ describe('runLessonTests', () => {
     expect(String(mockReadFileSync.mock.calls[0][0])).toContain(
       path.join('trees-graphs', 'python', 'trees-tests.json'),
     );
-    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'python');
+    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'python', undefined);
   });
 
   it("tells the page how the lesson compares outputs, 'trimmed' when the spec doesn't say", async () => {

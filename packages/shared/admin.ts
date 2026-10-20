@@ -43,6 +43,9 @@ interface AdminCodeExecStats {
   maxContainers: number;
   openSessions: number;
   perLanguage: Record<string, number>;
+  /** Sandboxes busy right now (editor runs, Run Tests, terminal commands), out of the server's limit. */
+  busySlots: number;
+  maxBusySlots: number;
 }
 
 export interface AdminStatsDTO {

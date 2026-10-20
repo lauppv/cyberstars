@@ -2,12 +2,24 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { EventEmitter } from 'node:events';
 import type { WebSocket } from 'ws';
 
-const { spawnMock, execFileMock, acquireMock, releaseMock, destroyMock } = vi.hoisted(() => ({
+const {
+  spawnMock,
+  execFileMock,
+  acquireMock,
+  releaseMock,
+  destroyMock,
+  acquireSlotMock,
+  releaseSlotMock,
+  isRunningMock,
+} = vi.hoisted(() => ({
   spawnMock: vi.fn(),
   execFileMock: vi.fn(),
   acquireMock: vi.fn(),
   releaseMock: vi.fn(),
   destroyMock: vi.fn(),
+  acquireSlotMock: vi.fn(),
+  releaseSlotMock: vi.fn(),
+  isRunningMock: vi.fn(),
 }));
 
 vi.mock('child_process', () => {
@@ -20,6 +32,11 @@ vi.mock('./code-container.service.js', () => ({
   acquireForRun: (...a: unknown[]) => acquireMock(...a),
   releaseAfterRun: (...a: unknown[]) => releaseMock(...a),
   destroyOwner: (...a: unknown[]) => destroyMock(...a),
+  isRunning: (...a: unknown[]) => isRunningMock(...a),
+}));
+
+vi.mock('./sandbox-slots.js', () => ({
+  acquireSandboxSlot: (...a: unknown[]) => acquireSlotMock(...a),
 }));
 
 const { handleInteractiveRun } = await import('./interactive-execution.service.js');
@@ -47,6 +64,8 @@ function sent(ws: FakeWs) {
 beforeEach(() => {
   vi.clearAllMocks();
   acquireMock.mockResolvedValue('test-container');
+  acquireSlotMock.mockResolvedValue(releaseSlotMock);
+  isRunningMock.mockReturnValue(false);
   // Default: every docker exec (write source / compile / rm) succeeds.
   execFileMock.mockImplementation((...args: unknown[]) => {
     const cb = args[args.length - 1];
@@ -109,8 +128,31 @@ describe('handleInteractiveRun', () => {
     await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:3');
     proc.emit('close', 0);
 
-    expect(releaseMock).toHaveBeenCalledWith('user:3');
+    await vi.waitFor(() => expect(releaseMock).toHaveBeenCalledWith('user:3'));
+    expect(releaseSlotMock).toHaveBeenCalled();
     expect(destroyMock).not.toHaveBeenCalled();
+    expect(sent(ws).some((m) => m.type === 'exit' && m.code === 0)).toBe(true);
+  });
+
+  it('stops what the program left running before the exit and the reuse', async () => {
+    const proc = new FakeProc();
+    spawnMock.mockReturnValue(proc);
+    const ws = new FakeWs();
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:bg');
+
+    let finishKill: (() => void) | undefined;
+    execFileMock.mockImplementationOnce((_cmd: string, args: string[], _opts, cb) => {
+      expect(args).toEqual(['exec', 'test-container', 'sh', '-c', 'kill -9 -1']);
+      finishKill = () => (cb as (e: Error | null, o: string, s: string) => void)(null, '', '');
+      return { stdin: { end: vi.fn() } };
+    });
+    proc.emit('close', 0);
+    await vi.waitFor(() => expect(finishKill).toBeDefined());
+    expect(sent(ws).some((m) => m.type === 'exit')).toBe(false);
+    expect(releaseMock).not.toHaveBeenCalled();
+
+    finishKill!();
+    await vi.waitFor(() => expect(releaseMock).toHaveBeenCalledWith('user:bg'));
     expect(sent(ws).some((m) => m.type === 'exit' && m.code === 0)).toBe(true);
   });
 
@@ -145,6 +187,7 @@ describe('handleInteractiveRun', () => {
 
     expect(proc.kill).toHaveBeenCalledWith('SIGKILL');
     expect(destroyMock).toHaveBeenCalledWith('user:4');
+    expect(releaseSlotMock).toHaveBeenCalled();
     expect(releaseMock).not.toHaveBeenCalled();
   });
 
@@ -182,6 +225,7 @@ describe('handleInteractiveRun', () => {
     const ws = new FakeWs();
 
     const run = handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:9');
+    await vi.waitFor(() => expect(acquireMock).toHaveBeenCalled());
     ws.readyState = 3;
     ws.emit('close');
     expect(destroyMock).toHaveBeenCalledWith('user:9');
@@ -214,6 +258,96 @@ describe('handleInteractiveRun', () => {
     expect(sent(ws).some((m) => m.type === 'exit' && m.code === 1)).toBe(true);
     expect(destroyMock).toHaveBeenCalledWith('user:err');
     expect(releaseMock).not.toHaveBeenCalled();
+  });
+
+  it('tells the student the server is busy when no sandbox slot frees in time', async () => {
+    acquireSlotMock.mockRejectedValueOnce(new Error('busy'));
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:busy');
+
+    expect(acquireMock).not.toHaveBeenCalled();
+    expect(sent(ws)).toEqual([
+      { type: 'stderr', data: 'The server is busy right now, please try again in a moment.\n' },
+      { type: 'exit', code: 1 },
+    ]);
+  });
+
+  it("leaves the line, and the owner's container alone, when the page closes while waiting", async () => {
+    let signal: AbortSignal | undefined;
+    acquireSlotMock.mockImplementationOnce(
+      (s: AbortSignal) =>
+        new Promise((_resolve, reject) => {
+          signal = s;
+          s.addEventListener('abort', () => reject(s.reason));
+        }),
+    );
+    const ws = new FakeWs();
+
+    const run = handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:w');
+    await vi.waitFor(() => expect(signal).toBeDefined());
+    ws.readyState = 3;
+    ws.emit('close');
+    await run;
+
+    expect(signal!.aborted).toBe(true);
+    // Another run of theirs may be using the container right now
+    expect(destroyMock).not.toHaveBeenCalled();
+    expect(acquireMock).not.toHaveBeenCalled();
+    expect(ws.send).not.toHaveBeenCalled();
+  });
+
+  it('refuses a second run of the owner at once, without joining the line', async () => {
+    isRunningMock.mockReturnValueOnce(true);
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:two');
+
+    expect(isRunningMock).toHaveBeenCalledWith('user:two');
+    expect(acquireSlotMock).not.toHaveBeenCalled();
+    expect(sent(ws)).toEqual([
+      { type: 'stderr', data: 'A run is already in progress.\n' },
+      { type: 'exit', code: 1 },
+    ]);
+    ws.emit('close');
+    expect(destroyMock).not.toHaveBeenCalled();
+  });
+
+  it('tells a guest their network holds as many sandboxes as it may', async () => {
+    const { AppError } = await import('../middleware/errorHandler.js');
+    acquireMock.mockRejectedValueOnce(
+      new AppError(
+        429,
+        'Too many guest runs from your network right now. Try again in a minute, or sign in.',
+      ),
+    );
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(
+      ws as unknown as WebSocket,
+      'print(1)',
+      'python',
+      'guest:g',
+      '1.2.3.4',
+    );
+
+    expect(acquireMock).toHaveBeenCalledWith('guest:g', 'python', '1.2.3.4');
+    expect(sent(ws)).toEqual([
+      {
+        type: 'stderr',
+        data: 'Too many guest runs from your network right now. Try again in a minute, or sign in.\n',
+      },
+      { type: 'exit', code: 1 },
+    ]);
+  });
+
+  it('frees the slot when the container could not be had', async () => {
+    acquireMock.mockRejectedValueOnce(new Error('docker daemon down'));
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:nod');
+
+    expect(releaseSlotMock).toHaveBeenCalled();
   });
 
   it('reports a busy message and runs nothing when a run is already in progress', async () => {

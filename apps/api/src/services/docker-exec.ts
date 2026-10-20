@@ -1,5 +1,10 @@
 import { execFile, spawn } from 'child_process';
 
+// What a sandbox runs as its first process, while commands arrive via `docker
+// exec`. Unlike `sleep infinity` the shell collects finished processes, so
+// whatever a student leaves behind doesn't pile up against the pids limit
+export const SANDBOX_KEEPALIVE = ['sh', '-c', 'while :; do sleep 3600; done'];
+
 // Shared wrapper around `docker` CLI calls used by the code-runner and terminal
 // sandbox services: buffers stdout (1MB cap), rejects with stderr on failure,
 // and optionally pipes `stdin` into the process.
@@ -18,6 +23,17 @@ export function dockerExec(args: string[], timeout = 10_000, stdin?: string): Pr
       proc.stdin?.end(stdin);
     }
   });
+}
+
+// Stops everything left running in a sandbox once a run or a command is over,
+// like a program's own `&` children, so they can't keep the CPU busy while
+// the sandbox sits idle. `kill -9 -1` reaches every process but PID 1 and the
+// shell sending it. Best effort: a sandbox already gone has nothing to stop
+export function killLeftovers(containerId: string): Promise<void> {
+  return dockerExec(['exec', containerId, 'sh', '-c', 'kill -9 -1'], 5_000).then(
+    () => {},
+    () => {},
+  );
 }
 
 // A stdout line longer than this means the process is misbehaving (a judge

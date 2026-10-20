@@ -2,12 +2,18 @@ import fs from 'fs';
 import path from 'path';
 import { codeLanguageOf, isMultiLanguage } from '@cyberstars/shared/constants';
 import { contentDir } from './paths.js';
-import { dockerExec, dockerConverse } from './docker-exec.js';
-import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
+import { dockerExec, dockerConverse, killLeftovers } from './docker-exec.js';
+import {
+  acquireForRun,
+  releaseAfterRun,
+  destroyOwner,
+  isRunning,
+} from './code-container.service.js';
 import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
+import { acquireSandboxSlot } from './sandbox-slots.js';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
 import { readHarness, studentHarness, studentLines, wrapCode } from './harness.js';
 import {
@@ -376,6 +382,8 @@ export async function runLessonTests(
   userCode: string,
   lang?: string,
   language?: string,
+  // A guest's network, which a new container counts against (guest-sandboxes.ts)
+  guestIp?: string,
 ): Promise<RunTestsResponse> {
   const spec = loadTestsSpec(courseKey, lessonSlug, lang, language);
   if (!spec) throw new AppError(404, 'This lesson has no tests');
@@ -405,20 +413,30 @@ export async function runLessonTests(
     return syntaxErrorResponse(spec, studentLines(prepared.syntaxError, harness));
   }
 
+  // Refused at once rather than after waiting in line for a slot
+  if (isRunning(ownerKey)) throw new AppError(409, 'A run is already in progress');
   const releaseSlot = await acquireJudgeSlot();
   try {
-    const result = await runInContainer(
-      ownerKey,
-      runtime,
-      judge,
-      spec,
-      program,
-      solutionCode,
-      prepared,
-      { keys, cached, skipSolution },
-    );
-    if (!result.syntaxError) return result;
-    return { ...result, syntaxError: studentLines(result.syntaxError, harness) };
+    // A judge run is a busy sandbox too, so it also takes one of the slots
+    // editor runs and terminal commands share.
+    const releaseSandbox = await acquireSandboxSlot();
+    try {
+      const result = await runInContainer(
+        ownerKey,
+        guestIp,
+        runtime,
+        judge,
+        spec,
+        program,
+        solutionCode,
+        prepared,
+        { keys, cached, skipSolution },
+      );
+      if (!result.syntaxError) return result;
+      return { ...result, syntaxError: studentLines(result.syntaxError, harness) };
+    } finally {
+      releaseSandbox();
+    }
   } finally {
     releaseSlot();
   }
@@ -432,6 +450,7 @@ interface ReferenceReuse {
 
 async function runInContainer(
   ownerKey: string,
+  guestIp: string | undefined,
   runtime: string,
   judge: JudgeRunner,
   spec: LessonTestsSpec,
@@ -442,8 +461,10 @@ async function runInContainer(
 ): Promise<RunTestsResponse> {
   let containerId: string;
   try {
-    containerId = await acquireForRun(ownerKey, runtime);
+    containerId = await acquireForRun(ownerKey, runtime, guestIp);
   } catch (err) {
+    // The guest's network holds as many sandboxes as it may, all busy
+    if (err instanceof AppError) throw err;
     if (err instanceof Error && err.message === 'A run is already in progress') {
       throw new AppError(409, 'A run is already in progress');
     }
@@ -524,7 +545,10 @@ async function runInContainer(
     keep = false;
     throw err instanceof AppError ? err : new AppError(500, 'Test run failed, please try again');
   } finally {
-    if (keep) releaseAfterRun(ownerKey);
-    else void destroyOwner(ownerKey);
+    if (keep) {
+      // Nothing the student's program started outlives the run
+      await killLeftovers(containerId);
+      releaseAfterRun(ownerKey);
+    } else void destroyOwner(ownerKey);
   }
 }

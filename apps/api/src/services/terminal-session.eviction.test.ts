@@ -12,7 +12,15 @@ vi.mock('child_process', () => {
   return { execFile, default: { execFile } };
 });
 
-const { createSession, execCommand, activeCount, destroyAllSessions } =
+const { acquireSlotMock, releaseSlotMock } = vi.hoisted(() => ({
+  acquireSlotMock: vi.fn(),
+  releaseSlotMock: vi.fn(),
+}));
+vi.mock('./sandbox-slots.js', () => ({
+  acquireSandboxSlot: (...a: unknown[]) => acquireSlotMock(...a),
+}));
+
+const { createSession, execCommand, getSessionView, activeCount, destroyAllSessions } =
   await import('./terminal-session.service.js');
 
 type DockerCb = (err: Error | null, stdout: string, stderr: string) => void;
@@ -34,6 +42,7 @@ async function newSession(owner: string) {
 beforeEach(() => {
   vi.clearAllMocks();
   installDockerMock();
+  acquireSlotMock.mockResolvedValue(releaseSlotMock);
 });
 
 afterEach(async () => {
@@ -68,5 +77,31 @@ describe('global session cap', () => {
     await expect(execCommand(a1.sessionId, 'echo hi', 'user:a')).rejects.toThrow(
       'Session not found',
     );
+  });
+});
+
+describe('shared sandbox slots', () => {
+  it('holds a slot for the command and the cleanup after it, then frees it', async () => {
+    const { sessionId } = await newSession('user:s');
+    await execCommand(sessionId, 'sleep 9 &', 'user:s');
+
+    const calls = execFileMock.mock.calls.map((c) => c[1] as string[]);
+    const command = calls.findIndex((a) => a.includes('timeout'));
+    expect(calls[command + 1]).toEqual(['exec', 'container-1', 'sh', '-c', 'kill -9 -1']);
+    expect(releaseSlotMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('turns a command away on a busy server and keeps it out of the history', async () => {
+    const { sessionId } = await newSession('user:busy');
+    acquireSlotMock.mockRejectedValueOnce(Object.assign(new Error('busy'), { statusCode: 503 }));
+
+    await expect(execCommand(sessionId, 'ls', 'user:busy')).rejects.toMatchObject({
+      statusCode: 503,
+    });
+    expect(getSessionView(sessionId, 'user:busy')!.history).toEqual([]);
+    expect(execFileMock.mock.calls.some((c) => (c[1] as string[]).includes('timeout'))).toBe(false);
+
+    // The session isn't stuck as busy afterwards
+    await expect(execCommand(sessionId, 'ls', 'user:busy')).resolves.toBeDefined();
   });
 });

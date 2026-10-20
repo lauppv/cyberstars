@@ -1,6 +1,14 @@
 import { spawn, execFile } from 'child_process';
 import { getRuntime } from '../runtimes/registry.js';
-import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
+import { AppError } from '../middleware/errorHandler.js';
+import {
+  acquireForRun,
+  releaseAfterRun,
+  destroyOwner,
+  isRunning,
+} from './code-container.service.js';
+import { killLeftovers } from './docker-exec.js';
+import { acquireSandboxSlot } from './sandbox-slots.js';
 import type { WebSocket } from 'ws';
 
 const TIMEOUT_MS = 20_000;
@@ -39,6 +47,8 @@ export async function handleInteractiveRun(
   code: string,
   language: string,
   ownerKey: string,
+  // A guest's network, which a new container counts against (guest-sandboxes.ts)
+  guestIp?: string,
 ) {
   const runtime = getRuntime(language);
   if (!runtime) {
@@ -49,17 +59,20 @@ export async function handleInteractiveRun(
 
   // Once the acquire starts we hold the owner's container reserved. Every exit
   // path below must settle it exactly once: keep it (release for reuse) or drop
-  // it (destroy).
+  // it (destroy). Settling also frees the run's sandbox slot (sandbox-slots.ts).
+  let releaseSlot = () => {};
   let settled = false;
   const keepContainer = () => {
     if (settled) return;
     settled = true;
     releaseAfterRun(ownerKey);
+    releaseSlot();
   };
   const dropContainer = () => {
     if (settled) return;
     settled = true;
     void destroyOwner(ownerKey);
+    releaseSlot();
   };
 
   // The client can leave at any moment (Run pressed again, page left), also
@@ -67,25 +80,60 @@ export async function handleInteractiveRun(
   // abandoned before its program starts drops the container at once; otherwise
   // the program would start with nobody watching and hold the owner's container
   // until the timeout, refusing their next run as "already in progress".
+  if (isRunning(ownerKey)) {
+    ws.send(JSON.stringify({ type: 'stderr', data: 'A run is already in progress.\n' }));
+    ws.send(JSON.stringify({ type: 'exit', code: 1 }));
+    return;
+  }
+
   let abandoned = false;
+  let waitingForSlot = true;
   let acquireFailed = false;
   let stopProgram: (() => void) | null = null;
+  // Leaving while in line takes the run out of the line
+  const leaving = new AbortController();
   ws.on('close', () => {
     abandoned = true;
+    leaving.abort();
+    // While it waits for a slot the run holds no container yet: the owner's
+    // container may be serving another of their runs, so it's left alone.
     if (stopProgram) stopProgram();
-    else if (!acquireFailed) dropContainer();
+    else if (!waitingForSlot && !acquireFailed) dropContainer();
   });
+
+  try {
+    releaseSlot = await acquireSandboxSlot(leaving.signal);
+  } catch {
+    // No slot freed up in time, or the page left the line
+    if (abandoned) return;
+    ws.send(
+      JSON.stringify({
+        type: 'stderr',
+        data: 'The server is busy right now, please try again in a moment.\n',
+      }),
+    );
+    ws.send(JSON.stringify({ type: 'exit', code: 1 }));
+    return;
+  }
+  waitingForSlot = false;
+  if (abandoned) {
+    releaseSlot();
+    return;
+  }
 
   let containerId: string;
   try {
-    containerId = await acquireForRun(ownerKey, language);
+    containerId = await acquireForRun(ownerKey, language, guestIp);
   } catch (err) {
     acquireFailed = true;
+    releaseSlot();
     if (abandoned) return;
     const data =
-      err instanceof Error && err.message === 'A run is already in progress'
-        ? 'A run is already in progress.\n'
-        : 'Could not start the runner. Please try again.\n';
+      err instanceof AppError
+        ? `${err.message}\n`
+        : err instanceof Error && err.message === 'A run is already in progress'
+          ? 'A run is already in progress.\n'
+          : 'Could not start the runner. Please try again.\n';
     ws.send(JSON.stringify({ type: 'stderr', data }));
     ws.send(JSON.stringify({ type: 'exit', code: 1 }));
     return;
@@ -210,9 +258,15 @@ export async function handleInteractiveRun(
   proc.stderr.on('data', (chunk: Buffer) => appendOutput('stderr', chunk));
 
   proc.on('close', (exitCode) => {
+    if (exited) return;
+    clearTimeout(timer);
     flushOutput();
-    sendExit(exitCode ?? 0);
-    keepContainer(); // program finished normally, keep the container for reuse
+    // The program finished normally, so the container is kept for reuse, but
+    // only once nothing it started is still running in there
+    void killLeftovers(containerId).then(() => {
+      sendExit(exitCode ?? 0);
+      keepContainer();
+    });
   });
 
   // spawn itself can fail (ENOENT if docker is missing, EMFILE under load). Without
