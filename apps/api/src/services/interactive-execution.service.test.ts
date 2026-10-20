@@ -297,6 +297,58 @@ describe('handleInteractiveRun', () => {
     expect(ws.send).not.toHaveBeenCalled();
   });
 
+  it('can be stopped to make room only while its program runs', async () => {
+    let stop: (() => boolean) | undefined;
+    acquireSlotMock.mockImplementationOnce(async (options: { stop: () => boolean }) => {
+      stop = options.stop;
+      return releaseSlotMock;
+    });
+    let startContainer: ((id: string) => void) | undefined;
+    acquireMock.mockReturnValueOnce(new Promise((r) => (startContainer = r)));
+    const proc = new FakeProc();
+    spawnMock.mockReturnValue(proc);
+    const ws = new FakeWs();
+
+    const run = handleInteractiveRun(ws as unknown as WebSocket, 'input()', 'python', 'user:room');
+    await vi.waitFor(() => expect(startContainer).toBeDefined());
+    // Still starting: it can't be stopped yet
+    expect(stop!()).toBe(false);
+    startContainer!('test-container');
+    await run;
+
+    expect(stop!()).toBe(true);
+    expect(proc.kill).toHaveBeenCalledWith('SIGKILL');
+    expect(destroyMock).toHaveBeenCalledWith('user:room');
+    expect(releaseSlotMock).toHaveBeenCalled();
+    expect(sent(ws)).toEqual([
+      {
+        type: 'stderr',
+        data: '\nProgram stopped to make room for others: the server is full right now. Run it again in a moment.\n',
+      },
+      { type: 'exit', code: 124 },
+    ]);
+    // Once stopped, there's nothing left to stop
+    expect(stop!()).toBe(false);
+  });
+
+  it("isn't stopped to make room once its program has finished", async () => {
+    let stop: (() => boolean) | undefined;
+    acquireSlotMock.mockImplementationOnce(async (options: { stop: () => boolean }) => {
+      stop = options.stop;
+      return releaseSlotMock;
+    });
+    const proc = new FakeProc();
+    spawnMock.mockReturnValue(proc);
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:done');
+    proc.emit('close', 0);
+    // Its slot frees up once the cleanup after it is done
+    expect(stop!()).toBe(false);
+    await vi.waitFor(() => expect(releaseMock).toHaveBeenCalledWith('user:done'));
+    expect(destroyMock).not.toHaveBeenCalled();
+  });
+
   it('refuses a second run of the owner at once, without joining the line', async () => {
     isRunningMock.mockReturnValueOnce(true);
     const ws = new FakeWs();

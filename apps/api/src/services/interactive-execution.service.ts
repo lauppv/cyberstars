@@ -90,6 +90,9 @@ export async function handleInteractiveRun(
   let waitingForSlot = true;
   let acquireFailed = false;
   let stopProgram: (() => void) | null = null;
+  // Set once the program runs: stops it when the server is full and this run
+  // has held its slot too long (sandbox-slots.ts). Before that it can't be.
+  let stopForRoom: (() => boolean) | null = null;
   // Leaving while in line takes the run out of the line
   const leaving = new AbortController();
   ws.on('close', () => {
@@ -102,7 +105,10 @@ export async function handleInteractiveRun(
   });
 
   try {
-    releaseSlot = await acquireSandboxSlot({ signal: leaving.signal });
+    releaseSlot = await acquireSandboxSlot({
+      signal: leaving.signal,
+      stop: () => stopForRoom?.() ?? false,
+    });
   } catch {
     // No slot freed up in time, or the page left the line
     if (abandoned) return;
@@ -259,6 +265,8 @@ export async function handleInteractiveRun(
 
   proc.on('close', (exitCode) => {
     if (exited) return;
+    // Finished: its slot frees up in a moment anyway
+    stopForRoom = null;
     clearTimeout(timer);
     flushOutput();
     // The program finished normally, so the container is kept for reuse, but
@@ -295,6 +303,16 @@ export async function handleInteractiveRun(
   };
 
   ws.on('message', onMessage);
+
+  stopForRoom = () => {
+    if (exited) return false;
+    killAll();
+    stderrBuf +=
+      '\nProgram stopped to make room for others: the server is full right now. Run it again in a moment.\n';
+    flushOutput();
+    sendExit(124);
+    return true;
+  };
 
   stopProgram = () => {
     clearTimeout(timer);
