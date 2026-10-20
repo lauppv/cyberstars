@@ -1,5 +1,6 @@
 import { spawn, execFile } from 'child_process';
 import { getRuntime } from '../runtimes/registry.js';
+import { AppError } from '../middleware/errorHandler.js';
 import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
 import { killLeftovers } from './docker-exec.js';
 import { acquireSandboxSlot } from './sandbox-slots.js';
@@ -41,6 +42,8 @@ export async function handleInteractiveRun(
   code: string,
   language: string,
   ownerKey: string,
+  // A guest's network, which a new container counts against (guest-sandboxes.ts)
+  guestIp?: string,
 ) {
   const runtime = getRuntime(language);
   if (!runtime) {
@@ -106,15 +109,17 @@ export async function handleInteractiveRun(
 
   let containerId: string;
   try {
-    containerId = await acquireForRun(ownerKey, language);
+    containerId = await acquireForRun(ownerKey, language, guestIp);
   } catch (err) {
     acquireFailed = true;
     releaseSlot();
     if (abandoned) return;
     const data =
-      err instanceof Error && err.message === 'A run is already in progress'
-        ? 'A run is already in progress.\n'
-        : 'Could not start the runner. Please try again.\n';
+      err instanceof AppError
+        ? `${err.message}\n`
+        : err instanceof Error && err.message === 'A run is already in progress'
+          ? 'A run is already in progress.\n'
+          : 'Could not start the runner. Please try again.\n';
     ws.send(JSON.stringify({ type: 'stderr', data }));
     ws.send(JSON.stringify({ type: 'exit', code: 1 }));
     return;

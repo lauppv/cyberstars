@@ -238,7 +238,8 @@ describe('handleConnection', () => {
     handleConnection(ws as unknown as WebSocket, fakeReq(undefined, '10.0.0.50'));
     expect(ws.close).not.toHaveBeenCalled();
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
-    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'ip:10.0.0.50');
+    // A guest's network goes along, for the sandboxes it may hold
+    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'ip:10.0.0.50', '10.0.0.50');
     ws.emit('close');
   });
 
@@ -246,7 +247,7 @@ describe('handleConnection', () => {
     const ws = new FakeWs();
     handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2001)}`));
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
-    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'user:2001');
+    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'user:2001', undefined);
     ws.emit('close');
   });
 
@@ -256,7 +257,7 @@ describe('handleConnection', () => {
     const lesson = { courseKey: 'algo-trees-graphs', lessonSlug: 'max-depth', lang: 'en' };
     ws.emit('message', JSON.stringify({ type: 'run', code: 'f()', language: 'python', lesson }));
     expect(mockProgramForRun).toHaveBeenCalledWith('f()', 'python', lesson);
-    expect(mockRun).toHaveBeenCalledWith(ws, 'wrapped: f()', 'python', 'user:2003');
+    expect(mockRun).toHaveBeenCalledWith(ws, 'wrapped: f()', 'python', 'user:2003', undefined);
     ws.emit('close');
   });
 
@@ -276,7 +277,7 @@ describe('handleConnection', () => {
       'message',
       Buffer.from(JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' })),
     );
-    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'user:2050');
+    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'user:2050', undefined);
     ws.emit('close');
   });
 
@@ -307,7 +308,7 @@ describe('handleConnection', () => {
     const ws = new FakeWs();
     handleConnection(ws as unknown as WebSocket, fakeReq('guestId=budget-ok'));
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
-    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'guest:budget-ok');
+    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'guest:budget-ok', '127.0.0.1');
     ws.emit('close');
   });
 

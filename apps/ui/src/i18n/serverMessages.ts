@@ -118,6 +118,8 @@ const RO: Record<string, string> = {
   'Session not found': 'Sesiunea nu există',
   'Command too long': 'Comanda e prea lungă',
   'A command is already running in this session': 'O comandă rulează deja în această sesiune',
+  'Too many guest runs from your network right now. Try again in a minute, or sign in.':
+    'Prea multe rulări fără cont din rețeaua ta acum. Încearcă peste un minut sau conectează-te.',
   'Command failed': 'Comanda a eșuat',
   'Could not check your work, please try again':
     'Nu am putut verifica ce ai făcut, încearcă din nou',

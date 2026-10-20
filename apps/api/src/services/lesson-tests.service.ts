@@ -377,6 +377,8 @@ export async function runLessonTests(
   userCode: string,
   lang?: string,
   language?: string,
+  // A guest's network, which a new container counts against (guest-sandboxes.ts)
+  guestIp?: string,
 ): Promise<RunTestsResponse> {
   const spec = loadTestsSpec(courseKey, lessonSlug, lang, language);
   if (!spec) throw new AppError(404, 'This lesson has no tests');
@@ -414,6 +416,7 @@ export async function runLessonTests(
     try {
       const result = await runInContainer(
         ownerKey,
+        guestIp,
         runtime,
         judge,
         spec,
@@ -440,6 +443,7 @@ interface ReferenceReuse {
 
 async function runInContainer(
   ownerKey: string,
+  guestIp: string | undefined,
   runtime: string,
   judge: JudgeRunner,
   spec: LessonTestsSpec,
@@ -450,8 +454,10 @@ async function runInContainer(
 ): Promise<RunTestsResponse> {
   let containerId: string;
   try {
-    containerId = await acquireForRun(ownerKey, runtime);
+    containerId = await acquireForRun(ownerKey, runtime, guestIp);
   } catch (err) {
+    // The guest's network holds as many sandboxes as it may, all busy
+    if (err instanceof AppError) throw err;
     if (err instanceof Error && err.message === 'A run is already in progress') {
       throw new AppError(409, 'A run is already in progress');
     }

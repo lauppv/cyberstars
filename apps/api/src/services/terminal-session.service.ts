@@ -8,6 +8,7 @@ import type {
 } from '@cyberstars/shared/terminal';
 import { contentDir } from './paths.js';
 import { acquireSandboxSlot } from './sandbox-slots.js';
+import { addGuestSandboxSource, makeRoomForGuest } from './guest-sandboxes.js';
 import { dockerExec, killLeftovers, SANDBOX_KEEPALIVE } from './docker-exec.js';
 
 const IMAGE = 'cyberstars-linux-sandbox';
@@ -27,10 +28,22 @@ interface Session {
   history: string[];
   lastOutput: string;
   lastActivity: number;
+  // The network a guest's session counts against (guest-sandboxes.ts)
+  guestIp?: string;
 }
 
 const sessions = new Map<string, Session>();
 const executing = new Set<string>();
+
+addGuestSandboxSource((ip) =>
+  [...sessions]
+    .filter(([, s]) => s.guestIp === ip)
+    .map(([id, s]) => ({
+      lastActivity: s.lastActivity,
+      busy: executing.has(id),
+      close: () => void destroySession(id),
+    })),
+);
 
 let gcTimer: ReturnType<typeof setInterval> | null = null;
 
@@ -95,12 +108,14 @@ export async function createSession(
   lessonSlug: string,
   ownerKey: string,
   lang?: string,
+  guestIp?: string,
 ): Promise<TerminalSessionInfo> {
   const setup = loadSetup(courseKey, lessonSlug, lang);
   const cwd = setup?.cwd ?? '/home/student';
 
   const owned = [...sessions].filter(([, s]) => s.ownerKey === ownerKey);
   if (owned.length >= MAX_SESSIONS_PER_OWNER) void destroySession(owned[0][0]);
+  if (guestIp) makeRoomForGuest(guestIp);
   // Bound total live containers before spinning up another one.
   if (sessions.size >= MAX_SESSIONS) evictLruIdleSession(ownerKey);
 
@@ -115,6 +130,7 @@ export async function createSession(
     history: [],
     lastOutput: '',
     lastActivity: Date.now(),
+    guestIp,
   };
   sessions.set(sessionId, session);
   executing.add(sessionId);

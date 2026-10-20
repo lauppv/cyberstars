@@ -257,6 +257,17 @@ describe('runLessonTests', () => {
     expect(mockReleaseSandbox).toHaveBeenCalledTimes(1);
   });
 
+  it("passes on a guest's network and its 429 when the network is full", async () => {
+    stubFiles();
+    const { AppError } = await import('../middleware/errorHandler.js');
+    mockAcquire.mockRejectedValueOnce(new AppError(429, 'full'));
+
+    await expect(
+      runLessonTests('guest:g', 'python', 'print', 'print("ok")', 'en', undefined, '1.2.3.4'),
+    ).rejects.toMatchObject({ statusCode: 429, message: 'full' });
+    expect(mockAcquire).toHaveBeenCalledWith('guest:g', 'python', '1.2.3.4');
+  });
+
   it('gives up with the busy server 503 before touching a container', async () => {
     stubFiles();
     mockAcquireSandbox.mockRejectedValueOnce(
@@ -295,7 +306,7 @@ describe('runLessonTests', () => {
     expect(read[0]).toContain(path.join('trees-graphs', 'c', 'trees-tests.json'));
     expect(read[1]).toContain(path.join('trees-graphs', 'c', 'trees-solution.md'));
     // The container is the C one the editor's runs in C use too.
-    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'c');
+    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'c', undefined);
     expect(mockPrepareC).toHaveBeenCalled();
   });
 
@@ -314,7 +325,7 @@ describe('runLessonTests', () => {
     expect(String(mockReadFileSync.mock.calls[0][0])).toContain(
       path.join('trees-graphs', 'python', 'trees-tests.json'),
     );
-    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'python');
+    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'python', undefined);
   });
 
   it("tells the page how the lesson compares outputs, 'trimmed' when the spec doesn't say", async () => {

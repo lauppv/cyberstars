@@ -287,6 +287,34 @@ describe('handleInteractiveRun', () => {
     expect(ws.send).not.toHaveBeenCalled();
   });
 
+  it('tells a guest their network holds as many sandboxes as it may', async () => {
+    const { AppError } = await import('../middleware/errorHandler.js');
+    acquireMock.mockRejectedValueOnce(
+      new AppError(
+        429,
+        'Too many guest runs from your network right now. Try again in a minute, or sign in.',
+      ),
+    );
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(
+      ws as unknown as WebSocket,
+      'print(1)',
+      'python',
+      'guest:g',
+      '1.2.3.4',
+    );
+
+    expect(acquireMock).toHaveBeenCalledWith('guest:g', 'python', '1.2.3.4');
+    expect(sent(ws)).toEqual([
+      {
+        type: 'stderr',
+        data: 'Too many guest runs from your network right now. Try again in a minute, or sign in.\n',
+      },
+      { type: 'exit', code: 1 },
+    ]);
+  });
+
   it('frees the slot when the container could not be had', async () => {
     acquireMock.mockRejectedValueOnce(new Error('docker daemon down'));
     const ws = new FakeWs();

@@ -1,5 +1,6 @@
 import { getRuntime } from '../runtimes/registry.js';
 import { dockerExec, SANDBOX_KEEPALIVE } from './docker-exec.js';
+import { addGuestSandboxSource, makeRoomForGuest } from './guest-sandboxes.js';
 
 // One long-lived Docker container per owner (a logged-in user or a guest), on
 // the language they last ran. The container is reused across many runs so the
@@ -18,9 +19,21 @@ interface OwnerContainer {
   containerId: string;
   lastActivity: number;
   busy: boolean;
+  // The network a guest's container counts against (guest-sandboxes.ts)
+  guestIp?: string;
 }
 
 const containers = new Map<string, OwnerContainer>();
+
+addGuestSandboxSource((ip) =>
+  [...containers]
+    .filter(([, c]) => c.guestIp === ip)
+    .map(([key, c]) => ({
+      lastActivity: c.lastActivity,
+      busy: c.busy,
+      close: () => void destroyOwner(key),
+    })),
+);
 let gcTimer: ReturnType<typeof setInterval> | null = null;
 
 // Hardening shared with the editor's one-shot runner: no network, dropped caps,
@@ -103,8 +116,13 @@ function startGC(): void {
 // Ensure a container exists for this owner on this language and reserve it for a
 // single run. Reuses the owner's container when the language matches, swaps it
 // when the language changes, and throws if a run is already in progress for the
-// owner (one container can only serve one run at a time).
-export async function acquireForRun(ownerKey: string, language: string): Promise<string> {
+// owner (one container can only serve one run at a time). A guest passes their
+// network, which a new container counts against.
+export async function acquireForRun(
+  ownerKey: string,
+  language: string,
+  guestIp?: string,
+): Promise<string> {
   const runtime = getRuntime(language);
   if (!runtime) throw new Error('Language not supported');
 
@@ -119,6 +137,8 @@ export async function acquireForRun(ownerKey: string, language: string): Promise
     // Language switched, so tear the old container down and build a fresh one.
     containers.delete(ownerKey);
     void removeContainer(existing.containerId);
+  } else if (guestIp) {
+    makeRoomForGuest(guestIp);
   }
 
   if (containers.size >= MAX_CONTAINERS) evictLruIdle();
@@ -130,6 +150,7 @@ export async function acquireForRun(ownerKey: string, language: string): Promise
     containerId: '',
     lastActivity: Date.now(),
     busy: true,
+    guestIp,
   };
   containers.set(ownerKey, reserved);
 
