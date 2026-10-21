@@ -1,11 +1,7 @@
-import { describe, it, expect, vi, beforeAll } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { LessonTour } from './LessonTour';
 import { CELL_RUN_EVENT } from '../../constants/tour';
-
-beforeAll(() => {
-  Element.prototype.scrollBy = vi.fn();
-});
 
 function Lesson() {
   return (

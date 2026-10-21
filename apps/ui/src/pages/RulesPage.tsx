@@ -23,12 +23,6 @@ export function RulesPage() {
             ))}
           </div>
           <div className="panel mt-6 p-4">
-            <div className="text-[14px] font-semibold mb-1">{t('rules.radioPrivacyTitle')}</div>
-            <div className="text-[12px] text-[var(--text2)] leading-relaxed">
-              {t('rules.radioPrivacyDesc')}
-            </div>
-          </div>
-          <div className="panel mt-4 p-4">
             <div className="text-[14px] font-semibold mb-1">{t('rules.tutorPrivacyTitle')}</div>
             <div className="text-[12px] text-[var(--text2)] leading-relaxed">
               {t('rules.tutorPrivacyDesc')}

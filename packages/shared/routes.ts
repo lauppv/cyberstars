@@ -10,6 +10,7 @@ export const APP_ONLY_PATHS = [
   '/profile',
   '/settings',
   '/usage',
+  '/progress',
   '/rules',
   '/support',
   '/laniakea',

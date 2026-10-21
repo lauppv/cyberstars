@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
 import { useAuth, wasSignedIn } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
@@ -264,44 +264,41 @@ export function HomePage() {
               <ActivityHeatmap activityCounts={activityCounts} />
             </div>
 
-            {/* ── Lesson + Algo of the Day (stacked) + Course Milestones ── */}
-            <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
-              {(lessonOfTheDay || algoOfTheDay) && (
-                <div className="flex flex-col gap-5">
-                  {lessonOfTheDay && (
-                    <OfTheDayCard
-                      heading={t('home.lessonOfTheDay')}
-                      courseKey={lessonOfTheDay.courseKey}
-                      courseTitle={lessonOfTheDay.courseTitle}
-                      slug={lessonOfTheDay.slug}
-                      title={lessonOfTheDay.title}
-                      completed={lessonOfTheDay.completed}
-                      xp={lessonOfTheDay.xp}
-                      bonusRatio={daily?.bonusRatio ?? 0}
-                      subtitle={t('home.continueJourney', { course: lessonOfTheDay.courseTitle })}
-                      completedText={t('home.completedLessonToday')}
-                      cta={t('home.startLesson')}
-                    />
-                  )}
-                  {algoOfTheDay && (
-                    <OfTheDayCard
-                      heading={t('home.algoOfTheDay')}
-                      courseKey={algoOfTheDay.courseKey}
-                      courseTitle={algoOfTheDay.courseTitle}
-                      slug={algoOfTheDay.slug}
-                      title={algoOfTheDay.title}
-                      completed={algoOfTheDay.completed}
-                      xp={algoOfTheDay.xp}
-                      bonusRatio={daily?.bonusRatio ?? 0}
-                      subtitle={t('home.algoChallengeToday')}
-                      completedText={t('home.completedAlgoToday')}
-                      cta={t('home.solveChallenge')}
-                    />
-                  )}
-                </div>
-              )}
-              <CourseMilestones courses={allNonAlgoCourses} progressMap={progressMap} />
-            </div>
+            {/* ── Lesson + Algo of the Day ── */}
+            {(lessonOfTheDay || algoOfTheDay) && (
+              <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
+                {lessonOfTheDay && (
+                  <OfTheDayCard
+                    heading={t('home.lessonOfTheDay')}
+                    courseKey={lessonOfTheDay.courseKey}
+                    courseTitle={lessonOfTheDay.courseTitle}
+                    slug={lessonOfTheDay.slug}
+                    title={lessonOfTheDay.title}
+                    completed={lessonOfTheDay.completed}
+                    xp={lessonOfTheDay.xp}
+                    bonusRatio={daily?.bonusRatio ?? 0}
+                    subtitle={t('home.continueJourney', { course: lessonOfTheDay.courseTitle })}
+                    completedText={t('home.completedLessonToday')}
+                    cta={t('home.startLesson')}
+                  />
+                )}
+                {algoOfTheDay && (
+                  <OfTheDayCard
+                    heading={t('home.algoOfTheDay')}
+                    courseKey={algoOfTheDay.courseKey}
+                    courseTitle={algoOfTheDay.courseTitle}
+                    slug={algoOfTheDay.slug}
+                    title={algoOfTheDay.title}
+                    completed={algoOfTheDay.completed}
+                    xp={algoOfTheDay.xp}
+                    bonusRatio={daily?.bonusRatio ?? 0}
+                    subtitle={t('home.algoChallengeToday')}
+                    completedText={t('home.completedAlgoToday')}
+                    cta={t('home.solveChallenge')}
+                  />
+                )}
+              </div>
+            )}
 
             {/* ── Almanac Highlights ── */}
             {almanacHighlights?.length !== 0 && (
@@ -469,99 +466,6 @@ function OfTheDayCard({
       >
         {completed ? t('home.review') : cta}
       </button>
-    </div>
-  );
-}
-
-/* ── Course Milestones ── */
-
-function CourseMilestones({
-  courses,
-  progressMap,
-}: {
-  courses: Course[];
-  progressMap: Record<string, import('@cyberstars/shared/progress').CourseProgress>;
-}) {
-  const navigate = useNavigate();
-  const { t } = useTranslation();
-  const active = courses.filter((c) => progressMap[c.key]?.completed);
-  const notStarted = courses.filter((c) => !progressMap[c.key]?.completed);
-
-  return (
-    <div className="p-5 panel rounded-[var(--radius)] flex flex-col">
-      <div className="mb-4">
-        <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
-          {t('home.courseMilestones')}
-        </h3>
-      </div>
-      <div className="flex flex-col gap-3.5 flex-1">
-        {active.map((c) => {
-          const p = progressMap[c.key]!;
-          const pct = progressPct(p.completed, p.total);
-          const remaining = p.total - p.completed;
-          const meta = courseMeta(c.key);
-          const nextLesson = c.lessons.find((l) => {
-            const lp = p.lessons.find((pl) => pl.slug === l.slug);
-            return !lp?.completed;
-          });
-          return (
-            <button
-              key={c.key}
-              onClick={() => navigate(`/courses/${c.key}`)}
-              className="flex items-center gap-3 text-left cursor-pointer hover:opacity-80 transition"
-            >
-              <div className="flex-1 min-w-0">
-                <div className="text-[13px] font-semibold">{courseLabel(c.key, t)}</div>
-                <div className="text-[11px] text-[var(--text2)] mb-1.5">
-                  <Trans
-                    i18nKey="home.lessonsRemaining"
-                    count={remaining}
-                    values={{ count: remaining }}
-                    components={[<strong className="text-[var(--text)] font-semibold" />]}
-                  />
-                  {nextLesson && (
-                    <>
-                      {' '}
-                      · {t('home.next')}{' '}
-                      <strong className="text-[var(--text)] font-semibold">
-                        {nextLesson.title}
-                      </strong>
-                    </>
-                  )}
-                </div>
-                <div className="h-1 bg-[var(--bg3)] rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-[width] duration-600"
-                    style={{ width: `${pct}%`, background: meta.color }}
-                  />
-                </div>
-              </div>
-              <span className="text-xs font-bold text-[var(--text2)] shrink-0 min-w-[32px] text-right">
-                {pct}%
-              </span>
-            </button>
-          );
-        })}
-        {notStarted.map((c) => {
-          return (
-            <button
-              key={c.key}
-              onClick={() => navigate(`/courses/${c.key}`)}
-              className="flex items-center gap-3 opacity-60 text-left cursor-pointer hover:opacity-80 transition"
-            >
-              <div className="flex-1 min-w-0">
-                <div className="text-[13px] font-semibold">{courseLabel(c.key, t)}</div>
-                <div className="text-[11px] text-[var(--text2)] mb-1.5">
-                  {t('home.notStarted', { count: c.lessons.length })}
-                </div>
-                <div className="h-1 bg-[var(--bg3)] rounded-full overflow-hidden">
-                  <div className="h-full rounded-full" style={{ width: '0%' }} />
-                </div>
-              </div>
-            </button>
-          );
-        })}
-      </div>
     </div>
   );
 }
