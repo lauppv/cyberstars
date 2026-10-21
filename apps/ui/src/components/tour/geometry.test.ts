@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import { holeFor, mergeHoles, placeCard, roundedRect } from './geometry';
+import { holeFor, mergeHoles, placeCard, roundedRect, tweenHoles } from './geometry';
 
 const VW = 1200;
 const VH = 800;
@@ -90,5 +90,19 @@ describe('roundedRect', () => {
     const d = roundedRect({ x: 10, y: 20, w: 100, h: 50 });
     expect(d.startsWith('M18 20H102')).toBe(true);
     expect(d.endsWith('Z')).toBe(true);
+  });
+
+  it('moves the holes part of the way to the next step', () => {
+    const from = [{ x: 0, y: 0, w: 100, h: 100 }];
+    const to = [
+      { x: 100, y: 200, w: 300, h: 100 },
+      { x: 500, y: 0, w: 100, h: 100 },
+    ];
+    expect(tweenHoles(from, to, 0.5)).toEqual([
+      { x: 50, y: 100, w: 200, h: 100 },
+      { x: 250, y: 0, w: 100, h: 100 },
+    ]);
+    expect(tweenHoles(from, to, 1)).toEqual(to);
+    expect(tweenHoles([], to, 0.5)).toBe(to);
   });
 });

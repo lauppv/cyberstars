@@ -1,8 +1,16 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { CELL_RUN_EVENT } from '../../constants/tour';
-import { holeFor, mergeHoles, placeCard, RADIUS, roundedRect, type Rect } from './geometry';
+import {
+  holeFor,
+  mergeHoles,
+  placeCard,
+  RADIUS,
+  roundedRect,
+  tweenHoles,
+  type Rect,
+} from './geometry';
 
 type Panel = 'lesson' | 'workspace';
 
@@ -18,8 +26,16 @@ interface Step {
   // every frame, so a re-render or a scroll never leaves a stale hole behind.
   targets: () => Element[][];
   gate: Gate;
-  enter?: () => void;
+  // What the lesson scrolls to when the step opens
+  reveal?: () => Element[];
 }
+
+// How long the spotlight takes to move from one step's targets to the next
+const MOVE_MS = 300;
+
+const easeOut = (t: number) => 1 - (1 - t) ** 3;
+
+const SVG_NS = 'http://www.w3.org/2000/svg';
 
 const byTour = (name: string) => document.querySelector(`[data-tour="${name}"]`);
 
@@ -47,20 +63,17 @@ function groups(...items: (Element | Element[] | null | undefined)[]): Element[]
     .filter((group) => group.length > 0);
 }
 
-// Scrolls the lesson so the elements sit in the middle of it, or at its top
-// when they are taller than the lesson panel.
-function reveal(els: Element[]) {
-  const panel = byTour('lesson');
-  if (!panel || els.length === 0) return;
+// How far the lesson scrolls so the elements sit in the middle of it, or at
+// its top when they are taller than the lesson panel.
+function revealDelta(panel: Element, els: Element[]): number {
+  if (els.length === 0) return 0;
   const box = panel.getBoundingClientRect();
   const rects = els.map((el) => el.getBoundingClientRect());
   const top = Math.min(...rects.map((r) => r.top));
   const bottom = Math.max(...rects.map((r) => r.bottom));
-  const delta =
-    bottom - top > box.height - 32
-      ? top - box.top - 16
-      : (top + bottom) / 2 - (box.top + box.bottom) / 2;
-  panel.scrollBy({ top: delta, behavior: 'smooth' });
+  return bottom - top > box.height - 32
+    ? top - box.top - 16
+    : (top + bottom) / 2 - (box.top + box.bottom) / 2;
 }
 
 interface Part {
@@ -113,7 +126,7 @@ function buildPlan(): Step[] {
         panel: 'lesson',
         targets: () => groups(els()),
         gate: 'next',
-        enter: () => reveal(els()),
+        reveal: els,
       });
     } else {
       const n = cellSeen++;
@@ -124,7 +137,7 @@ function buildPlan(): Step[] {
         panel: 'lesson',
         targets: () => groups(cell()),
         gate: 'cellRun',
-        enter: () => reveal(groups(cell()).flat()),
+        reveal: () => groups(cell()).flat(),
       });
     }
   }
@@ -134,7 +147,7 @@ function buildPlan(): Step[] {
       panel: 'lesson',
       targets: () => groups(mission()),
       gate: 'next',
-      enter: () => reveal(mission()),
+      reveal: mission,
     });
   }
   // While coding, the mission stays lit beside the editor. On a phone the
@@ -205,6 +218,10 @@ export function LessonTour({
     cardH: 0,
   });
   const cardRef = useRef<HTMLDivElement>(null);
+  const dimRef = useRef<SVGPathElement>(null);
+  const ringsRef = useRef<SVGGElement>(null);
+  // The holes on screen right now, where the next step's move starts from
+  const shownRef = useRef<Rect[]>([]);
 
   // Passing the tests ends the tour from whatever step the student is on.
   const done = plan !== null && completed;
@@ -216,8 +233,6 @@ export function LessonTour({
       setIndex(i);
       setRunsAtStep(editorRuns);
       if (next.panel) onPanel(next.panel);
-      // Let a panel switch paint before scrolling inside it.
-      requestAnimationFrame(() => next.enter?.());
     },
     [editorRuns, onPanel],
   );
@@ -240,12 +255,21 @@ export function LessonTour({
   }, [step, index]);
 
   // Follow the targets frame by frame: the lesson scrolls, the editor grows,
-  // output appears, the window resizes. State only changes when they move.
-  useEffect(() => {
+  // output appears, the window resizes. The spotlight is drawn straight into
+  // the SVG in the same frame it is measured, so it never trails a scrolling
+  // block by a render. A new step scrolls the lesson to its targets and slides
+  // the spotlight from where it was to where they land, on the same curve, so
+  // a target still below the fold never shows cut off on the way. The card
+  // goes through state, which only changes when the targets move.
+  useLayoutEffect(() => {
     let frame = 0;
     let last = '';
-    const tick = () => {
-      const holes = step
+    const from = shownRef.current;
+    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const duration = reduced ? 0 : MOVE_MS;
+    const startAt = performance.now();
+    const measure = () =>
+      step
         ? mergeHoles(
             step
               .targets()
@@ -253,8 +277,32 @@ export function LessonTour({
               .filter((r): r is Rect => r !== null),
           )
         : [];
+    // Where the targets land once the lesson has scrolled: scroll there and
+    // back before anything paints. The browser keeps the scroll in range.
+    const panel = step?.reveal ? (byTour('lesson') as HTMLElement | null) : null;
+    const scrollFrom = panel?.scrollTop ?? 0;
+    let scrollTo = scrollFrom;
+    let landing: Rect[] | null = null;
+    if (panel && step?.reveal) {
+      panel.scrollTop = scrollFrom + revealDelta(panel, step.reveal());
+      scrollTo = panel.scrollTop;
+      landing = measure();
+      panel.scrollTop = scrollFrom;
+    }
+    let moving = true;
+    const tick = (now: number) => {
+      const p = duration ? Math.min(Math.max((now - startAt) / duration, 0), 1) : 1;
+      if (moving && panel) panel.scrollTop = scrollFrom + (scrollTo - scrollFrom) * easeOut(p);
+      // Once in place the student may scroll the lesson as they like
+      if (p === 1) moving = false;
+      const target = measure();
+      const holes =
+        p < 1 && from.length > 0 ? tweenHoles(from, landing ?? target, easeOut(p)) : target;
+      shownRef.current = holes;
+      draw(holes);
       const next = {
-        holes,
+        // The card waits beside where the targets land, not where they pass
+        holes: moving && landing ? landing : target,
         vw: window.innerWidth,
         vh: window.innerHeight,
         cardW: cardRef.current?.offsetWidth ?? 0,
@@ -267,7 +315,30 @@ export function LessonTour({
       }
       frame = requestAnimationFrame(tick);
     };
-    frame = requestAnimationFrame(tick);
+    const draw = (holes: Rect[]) => {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      dimRef.current?.setAttribute('d', `M0 0H${vw}V${vh}H0Z${holes.map(roundedRect).join('')}`);
+      const rings = ringsRef.current;
+      if (!rings) return;
+      while (rings.children.length > holes.length) rings.lastChild!.remove();
+      while (rings.children.length < holes.length) {
+        const ring = document.createElementNS(SVG_NS, 'rect');
+        ring.setAttribute('fill', 'none');
+        ring.setAttribute('stroke', 'var(--accent)');
+        ring.setAttribute('stroke-width', '2');
+        rings.appendChild(ring);
+      }
+      holes.forEach((r, i) => {
+        const ring = rings.children[i];
+        ring.setAttribute('x', String(r.x));
+        ring.setAttribute('y', String(r.y));
+        ring.setAttribute('width', String(r.w));
+        ring.setAttribute('height', String(r.h));
+        ring.setAttribute('rx', String(Math.min(RADIUS, r.w / 2, r.h / 2)));
+      });
+    };
+    tick(startAt);
     return () => cancelAnimationFrame(frame);
   }, [step]);
 
@@ -292,31 +363,19 @@ export function LessonTour({
         aria-hidden="true"
       >
         <path
-          d={`M0 0H${vw}V${vh}H0Z${holes.map(roundedRect).join('')}`}
+          ref={dimRef}
           fillRule="evenodd"
           fill="rgba(0, 0, 0, 0.6)"
           className="pointer-events-auto"
           onClick={done ? undefined : onBlocked}
         />
-        {holes.map((r, i) => (
-          <rect
-            key={i}
-            x={r.x}
-            y={r.y}
-            width={r.w}
-            height={r.h}
-            rx={Math.min(RADIUS, r.w / 2, r.h / 2)}
-            fill="none"
-            stroke="var(--accent)"
-            strokeWidth={2}
-          />
-        ))}
+        <g ref={ringsRef} />
       </svg>
       <div
         ref={cardRef}
         role="dialog"
         aria-labelledby="lesson-tour-title"
-        className="fixed z-[91] w-[min(340px,calc(100vw-32px))] p-5 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--popover)] shadow-[0_8px_32px_#0008]"
+        className="fixed z-[91] w-[min(340px,calc(100vw-32px))] p-5 rounded-[var(--radius)] transition-[left,top] duration-300 ease-out motion-reduce:transition-none border border-[var(--border)] bg-[var(--popover)] shadow-[0_8px_32px_#0008]"
         style={{ left: pos.x, top: pos.y, visibility: cardH ? 'visible' : 'hidden' }}
       >
         <h2 id="lesson-tour-title" className="text-[15px] font-semibold text-[var(--text)] mb-2">

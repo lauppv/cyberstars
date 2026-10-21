@@ -110,6 +110,21 @@ export function placeCard(
   return { x: clampX((vw - w) / 2), y: vh - h - EDGE };
 }
 
+// The holes part of the way from where they were to where they go. A hole
+// with no earlier one to come from starts from the last of them
+export function tweenHoles(from: Rect[], to: Rect[], t: number): Rect[] {
+  if (from.length === 0) return to;
+  return to.map((r, i) => {
+    const a = from[Math.min(i, from.length - 1)];
+    return {
+      x: a.x + (r.x - a.x) * t,
+      y: a.y + (r.y - a.y) * t,
+      w: a.w + (r.w - a.w) * t,
+      h: a.h + (r.h - a.h) * t,
+    };
+  });
+}
+
 export function roundedRect({ x, y, w, h }: Rect): string {
   const r = Math.min(RADIUS, w / 2, h / 2);
   return (
