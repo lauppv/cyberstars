@@ -2,50 +2,68 @@ import { useMemo } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import { localDateStr } from './heatmap-utils';
 
-// GitHub-style green scale. It reads far better over the dark cosmos than purple,
-// which blended into the accent-tinted panels. Index 0 is the empty/no-activity
-// cell; 1–3 are increasing activity.
-const HEATMAP_COLORS = ['rgba(120,120,140,0.25)', '#0e6b3a', '#1f9d54', '#39d353'];
+// Six purple steps, from an empty day to the brightest. Index 0 is a day
+// without activity, 1–5 are increasing activity.
+const HEATMAP_COLORS = [
+  'rgba(120,120,140,0.25)',
+  '#3b2a6e',
+  '#553aa3',
+  '#7451d6',
+  '#9d7cf4',
+  '#cbb6ff',
+];
 
 interface HeatmapDay {
   date: string;
   level: number;
   count: number;
+  // Before the period or after today: drawn as an empty slot, not a day
+  outside: boolean;
   isFuture: boolean;
 }
 
-function countToLevel(count: number): number {
+// Like GitHub, the steps follow the student's own busiest day in the period
+// rather than fixed counts: the brightest purple is that day, whether it had
+// 6 lessons or 100, and every other day gets its share of it
+function countToLevel(count: number, max: number): number {
   if (count === 0) return 0;
-  if (count === 1) return 1;
-  if (count <= 3) return 2;
-  return 3;
+  return Math.ceil((count / max) * (HEATMAP_COLORS.length - 1));
 }
 
-function buildHeatmapData(activityCounts: Record<string, number>, weeks: number): HeatmapDay[][] {
+// The weeks from the one holding the day `months` ago to the current one,
+// Monday to Sunday
+function buildHeatmapData(activityCounts: Record<string, number>, months: number): HeatmapDay[][] {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const todayStr = localDateStr(today);
 
+  const first = new Date(today);
+  first.setMonth(first.getMonth() - months);
+  first.setDate(first.getDate() + 1);
+  const firstStr = localDateStr(first);
+
+  const start = new Date(first);
+  start.setDate(start.getDate() - ((start.getDay() + 6) % 7));
+
   const todayDow = today.getDay();
   const endSunday = new Date(today);
   endSunday.setDate(endSunday.getDate() + (todayDow === 0 ? 0 : 7 - todayDow));
+  const endStr = localDateStr(endSunday);
 
-  const start = new Date(endSunday);
-  start.setDate(start.getDate() - weeks * 7 + 1);
+  const days: Omit<HeatmapDay, 'level'>[] = [];
+  for (const current = new Date(start); localDateStr(current) <= endStr; ) {
+    const dateStr = localDateStr(current);
+    const isFuture = dateStr > todayStr;
+    const outside = isFuture || dateStr < firstStr;
+    const count = outside ? 0 : (activityCounts[dateStr] ?? 0);
+    days.push({ date: dateStr, count, outside, isFuture });
+    current.setDate(current.getDate() + 1);
+  }
 
+  const max = Math.max(0, ...days.map((d) => d.count));
   const data: HeatmapDay[][] = [];
-  const current = new Date(start);
-  for (let w = 0; w < weeks; w++) {
-    const week: HeatmapDay[] = [];
-    for (let d = 0; d < 7; d++) {
-      const dateStr = localDateStr(current);
-      const isFuture = dateStr > todayStr;
-      const count = isFuture ? 0 : (activityCounts[dateStr] ?? 0);
-      const level = countToLevel(count);
-      week.push({ date: dateStr, level, count, isFuture });
-      current.setDate(current.getDate() + 1);
-    }
-    data.push(week);
+  for (let i = 0; i < days.length; i += 7) {
+    data.push(days.slice(i, i + 7).map((d) => ({ ...d, level: countToLevel(d.count, max) })));
   }
   return data;
 }
@@ -66,13 +84,14 @@ function getMonthLabels(data: HeatmapDay[][], locale: string): { month: string; 
 
 export function ActivityHeatmap({
   activityCounts,
-  weeks = 20,
+  months = 3,
 }: {
   activityCounts: Record<string, number>;
-  weeks?: number;
+  months?: number;
 }) {
   const { t, i18n } = useTranslation();
-  const data = useMemo(() => buildHeatmapData(activityCounts, weeks), [activityCounts, weeks]);
+  const data = useMemo(() => buildHeatmapData(activityCounts, months), [activityCounts, months]);
+  const weeks = data.length;
   const monthLabels = useMemo(() => getMonthLabels(data, i18n.language), [data, i18n.language]);
   const totalActive = data.flat().filter((d) => d.level > 0).length;
   const colWidth = 19;
@@ -86,7 +105,7 @@ export function ActivityHeatmap({
         <span className="text-xs text-[var(--text2)]">
           <Trans
             i18nKey="home.activeDays"
-            values={{ count: totalActive, period: t('home.lastWeeks', { count: weeks }) }}
+            values={{ count: totalActive, period: t('home.lastMonths', { count: months }) }}
             components={[<strong className="text-[var(--text)] font-semibold" />]}
           />
         </span>
@@ -132,8 +151,9 @@ export function ActivityHeatmap({
                   key={di}
                   className="w-4 h-4 rounded-[3px] transition-all hover:outline hover:outline-2 hover:outline-[var(--accent)] hover:outline-offset-1"
                   style={{
-                    background: day.isFuture ? 'transparent' : HEATMAP_COLORS[day.level],
+                    background: day.outside ? 'transparent' : HEATMAP_COLORS[day.level],
                     border: day.isFuture ? '1px dashed rgba(102,102,128,0.15)' : 'none',
+                    visibility: day.outside && !day.isFuture ? 'hidden' : undefined,
                   }}
                   title={`${new Date(`${day.date}T00:00`).toLocaleDateString(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' })}: ${day.count === 0 ? t('home.noActivity') : t('home.lessonsCompleted', { count: day.count })}`}
                 />

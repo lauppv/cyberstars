@@ -146,8 +146,8 @@
     },
     "activeDays_one": "<0>{{count}}</0> active day in {{period}}",
     "activeDays_other": "<0>{{count}}</0> active days in {{period}}",
-    "lastWeeks_one": "the last week",
-    "lastWeeks_other": "the last {{count}} weeks"
+    "lastMonths_one": "the last month",
+    "lastMonths_other": "the last {{count}} months"
   },
   "landing": {
     "hero": {

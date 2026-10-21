@@ -138,12 +138,13 @@ export function TestPicture() {
 // A student on a 12-day streak with a few weeks of lessons behind it, drawn
 // on the dashboard's own heatmap, counted back from today so it never ages
 const STREAK = 12;
-const WEEKS = 12;
+// Three months, what the heatmap shows
+const DAYS = 92;
 
 function activity(): Record<string, number> {
   const counts: Record<string, number> = {};
   const day = new Date();
-  for (let i = 0; i < WEEKS * 7; i++) {
+  for (let i = 0; i < DAYS; i++) {
     const n = i < STREAK ? 1 + (i % 3) : (i * 7) % 5 < 2 ? 1 + (i % 4) : 0;
     if (n) counts[localDateStr(day)] = n;
     day.setDate(day.getDate() - 1);
@@ -164,7 +165,7 @@ export function LevelPicture() {
         <Flame size={18} strokeWidth={2} aria-hidden="true" className="text-[var(--warning)]" />
         {t('landing.how.level.streak', { count: STREAK })}
       </div>
-      <ActivityHeatmap activityCounts={counts} weeks={WEEKS} />
+      <ActivityHeatmap activityCounts={counts} />
     </div>
   );
 }
