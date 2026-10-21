@@ -185,7 +185,7 @@
       "level": {
         "title": "Level up",
         "text": "XP, levels and badges, with a free account.",
-        "picture": "A 12-day streak on the activity heatmap, with lessons done on many days of the last twelve weeks.",
+        "picture": "A 12-day streak on the activity heatmap, with lessons done on many days of the last three months.",
         "streak_one": "{{count}}-day streak",
         "streak_other": "{{count}}-day streak"
       }

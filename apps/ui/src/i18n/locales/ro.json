@@ -202,7 +202,7 @@
       "level": {
         "title": "Urci de nivel",
         "text": "XP, niveluri și insigne, cu un cont gratuit.",
-        "picture": "O serie de 12 zile pe harta activității, cu lecții făcute în multe zile din ultimele douăsprezece săptămâni.",
+        "picture": "O serie de 12 zile pe harta activității, cu lecții făcute în multe zile din ultimele trei luni.",
         "streak_one": "{{count}} zi la rând",
         "streak_few": "{{count}} zile la rând",
         "streak_other": "{{count}} de zile la rând"
