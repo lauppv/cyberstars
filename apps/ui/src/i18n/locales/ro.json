@@ -1,6 +1,7 @@
 {
   "nav": {
     "dashboard": "Panou",
+    "progress": "Progres",
     "courses": "Cursuri",
     "algorithms": "Algoritmi",
     "forum": "Forum",
@@ -448,6 +449,16 @@
       "algo-c": "Probleme de C aproape de hardware: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
       "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele."
     }
+  },
+  "progress": {
+    "courses": "Cursuri",
+    "algorithms": "Algoritmi",
+    "lessons": "Lecții: {{done}} din {{total}}",
+    "solved": "Rezolvate: {{done}} din {{total}}",
+    "xp": "{{earned}} / {{total}} XP",
+    "next": "Urmează: <0>{{title}}</0>",
+    "notStarted": "Încă neînceput",
+    "completed": "Terminat"
   },
   "algoList": {
     "courseNotFound": "Cursul nu a fost găsit.",

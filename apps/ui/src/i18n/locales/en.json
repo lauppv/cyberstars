@@ -1,6 +1,7 @@
 {
   "nav": {
     "dashboard": "Dashboard",
+    "progress": "Progress",
     "courses": "Courses",
     "algorithms": "Algorithms",
     "forum": "Forum",
@@ -424,6 +425,16 @@
       "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.",
       "algo-trees-graphs": "Tree problems from easy to hard, in Python, Java or C: depth, mirror images, binary search trees, levels and paths. Every challenge comes in all three, and you can switch language on any of them."
     }
+  },
+  "progress": {
+    "courses": "Courses",
+    "algorithms": "Algorithms",
+    "lessons": "Lessons: {{done}} of {{total}}",
+    "solved": "Solved: {{done}} of {{total}}",
+    "xp": "{{earned}} / {{total}} XP",
+    "next": "Next: <0>{{title}}</0>",
+    "notStarted": "Not started yet",
+    "completed": "Completed"
   },
   "algoList": {
     "courseNotFound": "Course not found.",

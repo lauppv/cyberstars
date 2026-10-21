@@ -56,6 +56,9 @@ const LaniakeaExplorerPage = lazy(() =>
 );
 const RulesPage = lazy(() => import('./pages/RulesPage').then((m) => ({ default: m.RulesPage })));
 const UsagePage = lazy(() => import('./pages/UsagePage').then((m) => ({ default: m.UsagePage })));
+const ProgressPage = lazy(() =>
+  import('./pages/ProgressPage').then((m) => ({ default: m.ProgressPage })),
+);
 const SupportPage = lazy(() =>
   import('./pages/SupportPage').then((m) => ({ default: m.SupportPage })),
 );
@@ -148,6 +151,7 @@ function App() {
                                     <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
                                     <Route path="/rules" element={<RulesPage />} />
                                     <Route path="/usage" element={<UsagePage />} />
+                                    <Route path="/progress" element={<ProgressPage />} />
                                     <Route path="/support" element={<SupportPage />} />
                                     <Route path="/admin" element={<AdminPage />} />
                                     <Route path="/leaderboard" element={<LeaderboardPage />} />

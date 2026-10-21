@@ -14,6 +14,7 @@ interface TopbarProps {
 
 // What the header names when a page passes no breadcrumb, matched by prefix
 const TITLES: [string, string][] = [
+  ['/progress', 'nav.progress'],
   ['/courses', 'nav.courses'],
   ['/algorithms', 'nav.algorithms'],
   ['/forum', 'nav.forum'],

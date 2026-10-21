@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import {
   BookOpen,
   Braces,
+  ChartNoAxesColumnIncreasing,
   ChevronsUpDown,
   Gauge,
   House,
@@ -271,7 +272,15 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
       <nav className="flex-1 overflow-y-auto px-2 py-2">
         <Section>
           {user && (
-            <NavItem to="/" icon={House} label={t('nav.dashboard')} onNavigate={onNavigate} />
+            <>
+              <NavItem to="/" icon={House} label={t('nav.dashboard')} onNavigate={onNavigate} />
+              <NavItem
+                to="/progress"
+                icon={ChartNoAxesColumnIncreasing}
+                label={t('nav.progress')}
+                onNavigate={onNavigate}
+              />
+            </>
           )}
           <NavItem to="/courses" icon={BookOpen} label={t('nav.courses')} onNavigate={onNavigate} />
           <NavItem
