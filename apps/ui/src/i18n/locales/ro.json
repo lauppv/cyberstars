@@ -556,8 +556,6 @@
         "desc": "Nu distribui informații personale (email, număr de telefon, adresă de acasă, locul de muncă), ale tale sau ale altora, în forum sau în orice parte publică a platformei."
       }
     ],
-    "radioPrivacyTitle": "Radio Focus și confidențialitate",
-    "radioPrivacyDesc": "Radioul Focus (opțional) redă o singură piesă instrumentală royalty-free găzduită de noi: fără terți, fără cookie-uri, fără reclame. E o transmisie live unică, deci toți cei conectați aud același moment. Nimic nu se încarcă până nu apeși Redă. Preferi liniștea? Lasă-l pe pauză.",
     "tutorPrivacyTitle": "Tutorul și datele tale",
     "tutorPrivacyDesc": "Când vorbești cu tutorul, mesajele tale și conversația de până acum, plus pagina pe care ești, sunt trimise către un furnizor AI terț (Google Gemini) pentru a scrie răspunsul. Într-o conversație despre o lecție sau o provocare se trimit și enunțul, codul tău, finalul ultimei rulări și ultimul rezultat al testelor. Nu introduce informații personale sau sensibile în chat sau în editor. Ultimele tale 50 de conversații se păstrează, fiecare cu ultimele 200 de mesaje, până le ștergi. Tutorul funcționează în sesiuni de 5 ore, cu între 15 și 30 de mesaje. E un ajutor opțional: poți termina orice lecție și fără el."
   },
