@@ -19,6 +19,18 @@ const authLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+// Keyed by the email, not the IP: three reset codes an hour per address from
+// all IPs together, counted whether or not an account uses it so the answer
+// never tells. Runs after validation, so the email is always there
+const resetCodeLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 3,
+  keyGenerator: (req) => req.body.email,
+  message: { error: 'Too many codes asked for this email, try again later' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 const router = Router();
 
 router.post('/signup', authLimiter, validateBody(signupSchema), authController.signup);
@@ -27,6 +39,7 @@ router.post(
   '/forgot-password',
   authLimiter,
   validateBody(forgotPasswordSchema),
+  resetCodeLimiter,
   authController.forgotPassword,
 );
 router.post(
