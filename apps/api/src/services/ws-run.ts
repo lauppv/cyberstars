@@ -1,10 +1,8 @@
 import type { IncomingMessage, Server as HttpServer } from 'http';
 import type { Duplex } from 'stream';
 import { WebSocketServer, type WebSocket } from 'ws';
-import jwt from 'jsonwebtoken';
 import { ipKeyGenerator } from 'express-rate-limit';
 import { config } from '../config/index.js';
-import type { TokenPayload } from '@cyberstars/shared/auth';
 import { handleInteractiveRun } from './interactive-execution.service.js';
 import { programForRun } from './harness.js';
 import { openSession, closeSession } from './code-container.service.js';
@@ -12,6 +10,7 @@ import { GUEST_RUN_BUDGET, guestRunsRemaining, recordGuestRun } from './guest-bu
 import { registerUserSocket, unregisterUserSocket } from './ws-user.js';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as userRepo from '../repositories/user.repository.js';
+import { sessionUserId } from './auth.service.js';
 
 // Reject oversized frames before they are buffered/parsed.
 const MAX_PAYLOAD_BYTES = 128 * 1024;
@@ -44,15 +43,6 @@ function parseCookie(cookieHeader: string | undefined, name: string): string | n
 
 export function parseTokenCookie(cookieHeader: string | undefined): string | null {
   return parseCookie(cookieHeader, 'token');
-}
-
-export function verifyToken(token: string | null): number | null {
-  if (!token) return null;
-  try {
-    return (jwt.verify(token, config.jwt.secret) as TokenPayload).id;
-  } catch {
-    return null;
-  }
 }
 
 // The client's address, as seen by the one proxy (nginx) in front of the app in
@@ -128,15 +118,18 @@ function undoStartRun(key: string): void {
 // Resolve who a connection belongs to. Logged-in users key by id; guests key by
 // a per-browser `guestId` cookie (so guests behind a shared IP don't collide on
 // the same container), falling back to IP only when no cookie is present yet.
-export function resolveOwner(req: IncomingMessage): { ownerKey: string; isGuest: boolean } {
-  const userId = verifyToken(parseTokenCookie(req.headers.cookie));
+// `userId` is the session the upgrade checked, null for a guest.
+export function resolveOwner(
+  req: IncomingMessage,
+  userId: number | null,
+): { ownerKey: string; isGuest: boolean } {
   if (userId !== null) return { ownerKey: `user:${userId}`, isGuest: false };
   const guestId = parseCookie(req.headers.cookie, 'guestId');
   return { ownerKey: guestId ? `guest:${guestId}` : `ip:${extractIp(req)}`, isGuest: true };
 }
 
-export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
-  const { ownerKey: rateKey, isGuest } = resolveOwner(req);
+export function handleConnection(ws: WebSocket, req: IncomingMessage, userId: number | null): void {
+  const { ownerKey: rateKey, isGuest } = resolveOwner(req, userId);
   // An IPv6 holder picks any address in their block at will, so the gate keys
   // the block (/56, like the HTTP limiters) rather than the single address.
   const guestIp = isGuest ? ipKeyGenerator(extractIp(req)) : undefined;
@@ -208,8 +201,12 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
 // A presence connection carries no messages; its lifetime is the signal that the
 // owner is on a lesson page. When their last presence socket closes (tab closed),
 // closeSession tears down their idle run container promptly.
-export function handlePresenceConnection(ws: WebSocket, req: IncomingMessage): void {
-  const { ownerKey } = resolveOwner(req);
+export function handlePresenceConnection(
+  ws: WebSocket,
+  req: IncomingMessage,
+  userId: number | null,
+): void {
+  const { ownerKey } = resolveOwner(req, userId);
   openSession(ownerKey);
   ws.on('close', () => closeSession(ownerKey));
 }
@@ -218,8 +215,11 @@ export function handlePresenceConnection(ws: WebSocket, req: IncomingMessage): v
 // preview gate (on prod, admins only), same rule as the REST endpoints. The
 // gate check is async, so it runs after the upgrade and closes the socket if the
 // user isn't allowed. No messages are read from the client; the server pushes.
-async function handleUserConnection(ws: WebSocket, req: IncomingMessage): Promise<void> {
-  const userId = verifyToken(parseTokenCookie(req.headers.cookie));
+async function handleUserConnection(
+  ws: WebSocket,
+  _req: IncomingMessage,
+  userId: number | null,
+): Promise<void> {
   if (userId === null) {
     ws.close(4401, 'Unauthorized');
     return;
@@ -251,7 +251,7 @@ export function attachRunWebSocket(server: HttpServer): { close: () => void } {
   presenceWss.on('connection', handlePresenceConnection);
   userWss.on('connection', handleUserConnection);
 
-  const onUpgrade = (req: IncomingMessage, socket: Duplex, head: Buffer) => {
+  const onUpgrade = async (req: IncomingMessage, socket: Duplex, head: Buffer) => {
     // A browser always says which website opened the socket. Refuse any site not
     // on the list before the upgrade, or a page elsewhere could run code or read
     // a student's feed from its visitors' browsers. A client with no Origin isn't
@@ -263,15 +263,29 @@ export function attachRunWebSocket(server: HttpServer): { close: () => void } {
       return;
     }
     const pathname = new URL(req.url ?? '/', 'http://localhost').pathname;
-    if (pathname === '/ws/run') {
-      runWss.handleUpgrade(req, socket, head, (ws) => runWss.emit('connection', ws, req));
-    } else if (pathname === '/ws/presence') {
-      presenceWss.handleUpgrade(req, socket, head, (ws) => presenceWss.emit('connection', ws, req));
-    } else if (pathname === '/ws/user') {
-      userWss.handleUpgrade(req, socket, head, (ws) => userWss.emit('connection', ws, req));
-    } else {
+    const wss =
+      pathname === '/ws/run'
+        ? runWss
+        : pathname === '/ws/presence'
+          ? presenceWss
+          : pathname === '/ws/user'
+            ? userWss
+            : null;
+    if (!wss) {
       socket.destroy();
+      return;
     }
+    // The session is checked once, before the upgrade, so a handler has it
+    // before the first message: an ended or expired one is a guest
+    let userId: number | null;
+    try {
+      userId = await sessionUserId(parseTokenCookie(req.headers.cookie));
+    } catch (err) {
+      console.error('[ws] session check failed:', err);
+      socket.destroy();
+      return;
+    }
+    wss.handleUpgrade(req, socket, head, (ws) => wss.emit('connection', ws, req, userId));
   };
   server.on('upgrade', onUpgrade);
 

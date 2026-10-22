@@ -241,13 +241,35 @@ describe('findByResetCode', () => {
 });
 
 describe('updatePassword', () => {
-  it('sets the password and clears the reset code', async () => {
-    mockPrisma.user.update.mockResolvedValue({});
-    await repo.updatePassword(4, 'newhash');
+  it('sets the password, clears the reset code and raises the session version', async () => {
+    mockPrisma.user.update.mockResolvedValue({ sessionVersion: 3 });
+    expect(await repo.updatePassword(4, 'newhash')).toBe(3);
     expect(mockPrisma.user.update).toHaveBeenCalledWith({
       where: { id: 4 },
-      data: { password: 'newhash', resetCode: null, resetCodeExpiresAt: null },
+      data: {
+        password: 'newhash',
+        resetCode: null,
+        resetCodeExpiresAt: null,
+        sessionVersion: { increment: 1 },
+      },
+      select: { sessionVersion: true },
     });
+  });
+});
+
+describe('getSessionVersion', () => {
+  it("reads the account's session version", async () => {
+    mockPrisma.user.findUnique.mockResolvedValue({ sessionVersion: 2 });
+    expect(await repo.getSessionVersion(4)).toBe(2);
+    expect(mockPrisma.user.findUnique).toHaveBeenCalledWith({
+      where: { id: 4 },
+      select: { sessionVersion: true },
+    });
+  });
+
+  it('returns null for an account that is gone', async () => {
+    mockPrisma.user.findUnique.mockResolvedValue(null);
+    expect(await repo.getSessionVersion(4)).toBeNull();
   });
 });
 

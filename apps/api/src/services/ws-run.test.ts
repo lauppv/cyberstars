@@ -44,6 +44,12 @@ vi.mock('../repositories/user.repository.js', () => ({
   getRole: (...args: unknown[]) => getRoleMock(...args),
 }));
 
+// The upgrade's session check; by default a token signs in whoever it names
+const sessionUserIdMock = vi.fn();
+vi.mock('./auth.service.js', () => ({
+  sessionUserId: (...args: unknown[]) => sessionUserIdMock(...args),
+}));
+
 // A stand-in WebSocketServer that hands the upgrade straight to the connection
 // handler, so the upgrade router can be driven without real sockets.
 vi.mock('ws', async (importOriginal) => {
@@ -68,7 +74,6 @@ let upgradedSocket: { close: ReturnType<typeof vi.fn>; emit: (event: string) => 
 
 const {
   parseTokenCookie,
-  verifyToken,
   tryStartRun,
   endRun,
   handleConnection,
@@ -100,7 +105,13 @@ const token = (id: number) => jwt.sign({ id }, 'test-secret');
 beforeEach(() => {
   vi.clearAllMocks();
   mockRun.mockResolvedValue(undefined);
+  sessionUserIdMock.mockImplementation(async (t: string | null) =>
+    t ? (jwt.verify(t, 'test-secret') as { id: number }).id : null,
+  );
 });
+
+// lets the upgrade's async session check finish
+const settle = () => new Promise((r) => setImmediate(r));
 
 describe('parseTokenCookie', () => {
   it('returns null when no header', () => {
@@ -114,16 +125,6 @@ describe('parseTokenCookie', () => {
   });
   it('skips malformed cookie parts that have no = separator', () => {
     expect(parseTokenCookie('flag; token=abc123')).toBe('abc123');
-  });
-});
-
-describe('verifyToken', () => {
-  it('returns null for null/invalid tokens', () => {
-    expect(verifyToken(null)).toBeNull();
-    expect(verifyToken('garbage')).toBeNull();
-  });
-  it('returns the user id for a valid token', () => {
-    expect(verifyToken(token(7))).toBe(7);
   });
 });
 
@@ -159,21 +160,21 @@ describe('extractIp', () => {
 
 describe('resolveOwner', () => {
   it('keys logged-in users by id', () => {
-    expect(resolveOwner(fakeReq(`token=${token(42)}`))).toEqual({
+    expect(resolveOwner(fakeReq(), 42)).toEqual({
       ownerKey: 'user:42',
       isGuest: false,
     });
   });
 
   it('keys guests by their per-browser guestId cookie', () => {
-    expect(resolveOwner(fakeReq('guestId=abc-123'))).toEqual({
+    expect(resolveOwner(fakeReq('guestId=abc-123'), null)).toEqual({
       ownerKey: 'guest:abc-123',
       isGuest: true,
     });
   });
 
   it('falls back to IP when a guest has no guestId cookie yet', () => {
-    expect(resolveOwner(fakeReq(undefined, '9.9.9.9'))).toEqual({
+    expect(resolveOwner(fakeReq(undefined, '9.9.9.9'), null)).toEqual({
       ownerKey: 'ip:9.9.9.9',
       isGuest: true,
     });
@@ -235,7 +236,7 @@ describe('tryStartRun / endRun', () => {
 describe('handleConnection', () => {
   it('allows guest connections (no token) and runs code', () => {
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(undefined, '10.0.0.50'));
+    handleConnection(ws as unknown as WebSocket, fakeReq(undefined, '10.0.0.50'), null);
     expect(ws.close).not.toHaveBeenCalled();
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
     // A guest's network goes along, for the sandboxes it may hold
@@ -245,7 +246,7 @@ describe('handleConnection', () => {
 
   it('runs code on a valid run message (authenticated)', () => {
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2001)}`));
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 2001);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
     expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'user:2001', undefined);
     ws.emit('close');
@@ -253,7 +254,7 @@ describe('handleConnection', () => {
 
   it("runs a challenge's function inside its hidden part when the run names the lesson", () => {
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2003)}`));
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 2003);
     const lesson = { courseKey: 'algo-trees-graphs', lessonSlug: 'max-depth', lang: 'en' };
     ws.emit('message', JSON.stringify({ type: 'run', code: 'f()', language: 'python', lesson }));
     expect(mockProgramForRun).toHaveBeenCalledWith('f()', 'python', lesson);
@@ -263,7 +264,7 @@ describe('handleConnection', () => {
 
   it('ignores malformed and non-run messages', () => {
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2002)}`));
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 2002);
     ws.emit('message', 'not json');
     ws.emit('message', JSON.stringify({ type: 'stdin', data: 'x' }));
     expect(mockRun).not.toHaveBeenCalled();
@@ -272,7 +273,7 @@ describe('handleConnection', () => {
 
   it('parses a Buffer frame the same as a string frame', () => {
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2050)}`));
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 2050);
     ws.emit(
       'message',
       Buffer.from(JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' })),
@@ -283,7 +284,7 @@ describe('handleConnection', () => {
 
   it('ignores further messages once a run has started', () => {
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2051)}`));
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 2051);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(2)', language: 'python' }));
     expect(mockRun).toHaveBeenCalledTimes(1);
@@ -295,7 +296,7 @@ describe('handleConnection', () => {
     mockRun.mockRejectedValueOnce(new Error('boom'));
     const ws = new FakeWs();
     ws.readyState = 3; // CLOSED
-    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(3050)}`));
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 3050);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
     await Promise.resolve();
     await Promise.resolve();
@@ -306,7 +307,7 @@ describe('handleConnection', () => {
 
   it('lets a guest run within budget and records the run under their guestId', () => {
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq('guestId=budget-ok'));
+    handleConnection(ws as unknown as WebSocket, fakeReq('guestId=budget-ok'), null);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
     expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'guest:budget-ok', '127.0.0.1');
     ws.emit('close');
@@ -316,7 +317,7 @@ describe('handleConnection', () => {
     const key = 'guest:budget-spent';
     for (let i = 0; i < GUEST_RUN_BUDGET; i++) recordGuestRun(key);
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq('guestId=budget-spent'));
+    handleConnection(ws as unknown as WebSocket, fakeReq('guestId=budget-spent'), null);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
     expect(mockRun).not.toHaveBeenCalled();
     const messages = ws.send.mock.calls.map((c) => JSON.parse(c[0] as string));
@@ -328,7 +329,7 @@ describe('handleConnection', () => {
     const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     mockRun.mockRejectedValueOnce(new Error('boom'));
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(3001)}`));
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 3001);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
     await Promise.resolve();
     await Promise.resolve();
@@ -345,7 +346,7 @@ describe('handleConnection', () => {
       endRun(key);
     }
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2003)}`));
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 2003);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
     expect(mockRun).not.toHaveBeenCalled();
     expect(ws.close).toHaveBeenCalledWith(4429, 'Rate limit');
@@ -357,7 +358,7 @@ describe('handleConnection', () => {
     const key = 'user:2004';
     for (let i = 0; i < 5; i++) tryStartRun(key); // saturate concurrent runs
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2004)}`));
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 2004);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
     expect(mockRun).not.toHaveBeenCalled();
     expect(ws.close).toHaveBeenCalledWith(4429, 'Rate limit');
@@ -373,7 +374,7 @@ describe('handleConnection', () => {
       endRun(key);
     }
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(undefined, guestIp));
+    handleConnection(ws as unknown as WebSocket, fakeReq(undefined, guestIp), null);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
     expect(mockRun).not.toHaveBeenCalled();
     expect(ws.close).toHaveBeenCalledWith(4429, 'Rate limit');
@@ -383,7 +384,7 @@ describe('handleConnection', () => {
 describe('guest runs per IP', () => {
   const runAs = (guestId: string, ip: string) => {
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`guestId=${guestId}`, ip));
+    handleConnection(ws as unknown as WebSocket, fakeReq(`guestId=${guestId}`, ip), null);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
     return ws;
   };
@@ -437,7 +438,7 @@ describe('guest runs per IP', () => {
     const ip = '10.50.0.3';
     for (let i = 0; i < 10; i++) runAs(`crowd-${i}`, ip);
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(3001)}`, ip));
+    handleConnection(ws as unknown as WebSocket, fakeReq(undefined, ip), 3001);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
     expect(mockRun).toHaveBeenCalledTimes(11);
   });
@@ -446,7 +447,7 @@ describe('guest runs per IP', () => {
 describe('handlePresenceConnection', () => {
   it('opens a session on connect and closes it on disconnect (authenticated)', () => {
     const ws = new FakeWs();
-    handlePresenceConnection(ws as unknown as WebSocket, fakeReq(`token=${token(7)}`));
+    handlePresenceConnection(ws as unknown as WebSocket, fakeReq(), 7);
     expect(openSessionMock).toHaveBeenCalledWith('user:7');
     expect(closeSessionMock).not.toHaveBeenCalled();
     ws.emit('close');
@@ -455,7 +456,7 @@ describe('handlePresenceConnection', () => {
 
   it('keys guests by IP', () => {
     const ws = new FakeWs();
-    handlePresenceConnection(ws as unknown as WebSocket, fakeReq(undefined, '8.8.8.8'));
+    handlePresenceConnection(ws as unknown as WebSocket, fakeReq(undefined, '8.8.8.8'), null);
     expect(openSessionMock).toHaveBeenCalledWith('ip:8.8.8.8');
     ws.emit('close');
     expect(closeSessionMock).toHaveBeenCalledWith('ip:8.8.8.8');
@@ -484,7 +485,7 @@ describe('attachRunWebSocket', () => {
 
 describe('upgrade origin check', () => {
   /** Sends one /ws/run upgrade with the given Origin header through the router. */
-  function upgradeFrom(origin?: string) {
+  async function upgradeFrom(origin?: string) {
     const server = new EventEmitter();
     attachRunWebSocket(server as unknown as Parameters<typeof attachRunWebSocket>[0]);
     const ws = new FakeWs();
@@ -500,37 +501,38 @@ describe('upgrade origin check', () => {
       socket,
       Buffer.alloc(0),
     );
+    await settle();
     ws.emit('message', JSON.stringify({ type: 'run', language: 'python', code: 'print(1)' }));
     return socket;
   }
 
-  it('refuses a socket opened by a website not on the list', () => {
-    const socket = upgradeFrom('https://evil.example');
+  it('refuses a socket opened by a website not on the list', async () => {
+    const socket = await upgradeFrom('https://evil.example');
     expect(socket.write).toHaveBeenCalledWith(expect.stringMatching(/^HTTP\/1\.1 403 /));
     expect(socket.destroy).toHaveBeenCalled();
     expect(mockRun).not.toHaveBeenCalled();
   });
 
-  it('refuses the opaque origin of a sandboxed page', () => {
-    upgradeFrom('null');
+  it('refuses the opaque origin of a sandboxed page', async () => {
+    await upgradeFrom('null');
     expect(mockRun).not.toHaveBeenCalled();
   });
 
-  it('accepts a socket opened by a listed website', () => {
-    const socket = upgradeFrom(config.allowedOrigins[0]);
+  it('accepts a socket opened by a listed website', async () => {
+    const socket = await upgradeFrom(config.allowedOrigins[0]);
     expect(socket.destroy).not.toHaveBeenCalled();
     expect(mockRun).toHaveBeenCalled();
   });
 
-  it('accepts a client that sends no origin', () => {
-    upgradeFrom(undefined);
+  it('accepts a client that sends no origin', async () => {
+    await upgradeFrom(undefined);
     expect(mockRun).toHaveBeenCalled();
   });
 });
 
 describe('upgrade routing', () => {
   /** Drives one upgrade through the real path router with a faked socket. */
-  function upgrade(url: string, cookie?: string) {
+  async function upgrade(url: string, cookie?: string, socket = { destroy: vi.fn() }) {
     const server = new EventEmitter();
     attachRunWebSocket(server as unknown as Parameters<typeof attachRunWebSocket>[0]);
     const ws = new FakeWs();
@@ -538,31 +540,56 @@ describe('upgrade routing', () => {
     server.emit(
       'upgrade',
       { url, headers: cookie ? { cookie } : {}, socket: { remoteAddress: '127.0.0.1' } },
-      { destroy: vi.fn() },
+      socket,
       Buffer.alloc(0),
     );
+    await settle();
     return ws;
   }
 
-  it('routes /ws/run to the run handler', () => {
-    const ws = upgrade('/ws/run');
+  it('routes /ws/run to the run handler', async () => {
+    const ws = await upgrade('/ws/run');
     ws.emit('message', JSON.stringify({ type: 'run', language: 'python', code: 'print(1)' }));
     expect(mockRun).toHaveBeenCalled();
   });
 
-  it('routes /ws/presence to the presence handler', () => {
-    upgrade('/ws/presence', `token=${token(7)}`);
+  it('routes /ws/presence to the presence handler', async () => {
+    await upgrade('/ws/presence', `token=${token(7)}`);
+    expect(sessionUserIdMock).toHaveBeenCalledWith(token(7));
     expect(openSessionMock).toHaveBeenCalledWith('user:7');
   });
 
+  it('treats a session ended by a password change as a guest', async () => {
+    sessionUserIdMock.mockResolvedValue(null);
+    await upgrade('/ws/presence', `token=${token(7)}`);
+    expect(openSessionMock).toHaveBeenCalledWith('ip:127.0.0.1');
+  });
+
+  it('drops the upgrade when the session check fails', async () => {
+    sessionUserIdMock.mockRejectedValue(new Error('db down'));
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const socket = { destroy: vi.fn() };
+    await upgrade('/ws/user', `token=${token(7)}`, socket);
+    expect(socket.destroy).toHaveBeenCalled();
+    expect(registerUserSocketMock).not.toHaveBeenCalled();
+    errSpy.mockRestore();
+  });
+
+  it('rejects a /ws/user upgrade from an ended session', async () => {
+    sessionUserIdMock.mockResolvedValue(null);
+    const ws = await upgrade('/ws/user', `token=${token(7)}`);
+    await vi.waitFor(() => expect(ws.close).toHaveBeenCalledWith(4401, 'Unauthorized'));
+    expect(registerUserSocketMock).not.toHaveBeenCalled();
+  });
+
   it('rejects a /ws/user upgrade with no session', async () => {
-    const ws = upgrade('/ws/user');
+    const ws = await upgrade('/ws/user');
     await vi.waitFor(() => expect(ws.close).toHaveBeenCalledWith(4401, 'Unauthorized'));
     expect(registerUserSocketMock).not.toHaveBeenCalled();
   });
 
   it('registers a /ws/user socket and unregisters it on close', async () => {
-    const ws = upgrade('/ws/user', `token=${token(7)}`);
+    const ws = await upgrade('/ws/user', `token=${token(7)}`);
     await vi.waitFor(() => expect(registerUserSocketMock).toHaveBeenCalledWith(7, ws));
 
     ws.emit('close');
@@ -579,7 +606,7 @@ describe('upgrade routing', () => {
 
     it('closes the socket for a user outside the preview gate', async () => {
       getRoleMock.mockResolvedValue('USER');
-      const ws = upgrade('/ws/user', `token=${token(7)}`);
+      const ws = await upgrade('/ws/user', `token=${token(7)}`);
 
       await vi.waitFor(() => expect(ws.close).toHaveBeenCalledWith(4404, 'Not found'));
       expect(getRoleMock).toHaveBeenCalledWith(7);
@@ -588,7 +615,7 @@ describe('upgrade routing', () => {
 
     it('lets an admin through the preview gate', async () => {
       getRoleMock.mockResolvedValue('ADMIN');
-      const ws = upgrade('/ws/user', `token=${token(7)}`);
+      const ws = await upgrade('/ws/user', `token=${token(7)}`);
 
       await vi.waitFor(() => expect(registerUserSocketMock).toHaveBeenCalledWith(7, ws));
     });

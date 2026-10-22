@@ -55,6 +55,7 @@ vi.mock('./repositories/user.repository.js', () => ({
   findById: vi.fn().mockResolvedValue(null),
   create: vi.fn().mockResolvedValue(null),
   updateProfile: vi.fn().mockResolvedValue(null),
+  getSessionVersion: vi.fn().mockResolvedValue(0),
 }));
 vi.mock('./repositories/leaderboard.repository.js', () => ({
   getRanked: vi.fn().mockResolvedValue([]),

@@ -9,8 +9,10 @@ process.env.DB_NAME = 'test';
 process.env.DB_PASSWORD = 'test';
 
 const getRole = vi.fn();
+const getSessionVersion = vi.fn();
 vi.mock('../repositories/user.repository.js', () => ({
   getRole: (...args: unknown[]) => getRole(...args),
+  getSessionVersion: (...args: unknown[]) => getSessionVersion(...args),
 }));
 
 const { authenticateToken, optionalAuth, requireAdmin, requireFeatureAccess } =
@@ -31,28 +33,46 @@ const validToken = jwt.sign({ id: 42 }, 'test-secret');
 
 beforeEach(() => {
   vi.clearAllMocks();
+  getSessionVersion.mockResolvedValue(0);
 });
 
 describe('authenticateToken', () => {
-  it('sets req.user and calls next for valid token', () => {
+  it('sets req.user and calls next for valid token', async () => {
     const { req, res, next } = makeReqRes(validToken);
-    authenticateToken(req, res, next);
-    expect(req.user).toEqual(expect.objectContaining({ id: 42 }));
-    expect(next).toHaveBeenCalled();
+    await authenticateToken(req, res, next);
+    expect(req.user).toEqual({ id: 42 });
+    expect(next).toHaveBeenCalledWith();
   });
 
-  it('returns 401 when no token', () => {
+  it('returns 401 when no token', async () => {
     const { req, res, next } = makeReqRes();
-    authenticateToken(req, res, next);
+    await authenticateToken(req, res, next);
     expect(res.status).toHaveBeenCalledWith(401);
     expect(next).not.toHaveBeenCalled();
   });
 
-  it('returns 403 for invalid token', () => {
+  it('returns 403 for invalid token', async () => {
     const { req, res, next } = makeReqRes('garbage');
-    authenticateToken(req, res, next);
+    await authenticateToken(req, res, next);
     expect(res.status).toHaveBeenCalledWith(403);
     expect(next).not.toHaveBeenCalled();
+  });
+
+  it('answers a session ended by a password change like an expired one', async () => {
+    getSessionVersion.mockResolvedValue(1);
+    const { req, res, next } = makeReqRes(validToken);
+    await authenticateToken(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(403);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Invalid token' });
+    expect(next).not.toHaveBeenCalled();
+  });
+
+  it('forwards a failed session check to next', async () => {
+    const boom = new Error('db down');
+    getSessionVersion.mockRejectedValue(boom);
+    const { req, res, next } = makeReqRes(validToken);
+    await authenticateToken(req, res, next);
+    expect(next).toHaveBeenCalledWith(boom);
   });
 });
 
@@ -175,24 +195,40 @@ describe('requireFeatureAccess (preview gate)', () => {
 });
 
 describe('optionalAuth', () => {
-  it('sets req.user for valid token', () => {
+  it('sets req.user for valid token', async () => {
     const { req, res, next } = makeReqRes(validToken);
-    optionalAuth(req, res, next);
-    expect(req.user).toEqual(expect.objectContaining({ id: 42 }));
-    expect(next).toHaveBeenCalled();
+    await optionalAuth(req, res, next);
+    expect(req.user).toEqual({ id: 42 });
+    expect(next).toHaveBeenCalledWith();
   });
 
-  it('calls next without user when no token', () => {
+  it('calls next without user when no token', async () => {
     const { req, res, next } = makeReqRes();
-    optionalAuth(req, res, next);
+    await optionalAuth(req, res, next);
     expect(req.user).toBeUndefined();
-    expect(next).toHaveBeenCalled();
+    expect(next).toHaveBeenCalledWith();
   });
 
-  it('calls next without user for invalid token', () => {
+  it('calls next without user for invalid token', async () => {
     const { req, res, next } = makeReqRes('garbage');
-    optionalAuth(req, res, next);
+    await optionalAuth(req, res, next);
     expect(req.user).toBeUndefined();
-    expect(next).toHaveBeenCalled();
+    expect(next).toHaveBeenCalledWith();
+  });
+
+  it('treats a session ended by a password change as a guest', async () => {
+    getSessionVersion.mockResolvedValue(1);
+    const { req, res, next } = makeReqRes(validToken);
+    await optionalAuth(req, res, next);
+    expect(req.user).toBeUndefined();
+    expect(next).toHaveBeenCalledWith();
+  });
+
+  it('forwards a failed session check to next', async () => {
+    const boom = new Error('db down');
+    getSessionVersion.mockRejectedValue(boom);
+    const { req, res, next } = makeReqRes(validToken);
+    await optionalAuth(req, res, next);
+    expect(next).toHaveBeenCalledWith(boom);
   });
 });

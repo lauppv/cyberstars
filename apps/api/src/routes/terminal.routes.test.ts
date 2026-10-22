@@ -35,6 +35,10 @@ vi.mock('@prisma/client', () => ({
   },
 }));
 vi.mock('../config/db.js', () => ({ prisma: makePrismaProxy() }));
+vi.mock('../repositories/user.repository.js', async (importOriginal) => ({
+  ...(await importOriginal<object>()),
+  getSessionVersion: async () => 0,
+}));
 
 const mockSessionService = vi.hoisted(() => ({
   createSession: vi.fn(),

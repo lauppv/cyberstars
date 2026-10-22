@@ -168,11 +168,25 @@ export async function findByResetCode(email: string, code: string): Promise<User
   });
 }
 
-export async function updatePassword(id: number, hashedPassword: string): Promise<void> {
-  await prisma.user.update({
+// Also raises the session version, which ends every token made before; returns
+// the new one
+export async function updatePassword(id: number, hashedPassword: string): Promise<number> {
+  const { sessionVersion } = await prisma.user.update({
     where: { id },
-    data: { password: hashedPassword, resetCode: null, resetCodeExpiresAt: null },
+    data: {
+      password: hashedPassword,
+      resetCode: null,
+      resetCodeExpiresAt: null,
+      sessionVersion: { increment: 1 },
+    },
+    select: { sessionVersion: true },
   });
+  return sessionVersion;
+}
+
+export async function getSessionVersion(id: number): Promise<number | null> {
+  const user = await prisma.user.findUnique({ where: { id }, select: { sessionVersion: true } });
+  return user?.sessionVersion ?? null;
 }
 
 export async function setPendingEmailChange(

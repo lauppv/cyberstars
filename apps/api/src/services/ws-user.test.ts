@@ -5,11 +5,18 @@ import {
   unregisterUserSocket,
   pushToUser,
   clearUserSockets,
+  closeUserSockets,
 } from './ws-user.js';
 
 function fakeSocket(open = true) {
-  return { OPEN: 1, readyState: open ? 1 : 3, send: vi.fn() } as unknown as WebSocket & {
+  return {
+    OPEN: 1,
+    readyState: open ? 1 : 3,
+    send: vi.fn(),
+    close: vi.fn(),
+  } as unknown as WebSocket & {
     send: ReturnType<typeof vi.fn>;
+    close: ReturnType<typeof vi.fn>;
   };
 }
 
@@ -53,5 +60,22 @@ describe('ws-user registry', () => {
 
   it('unregister is a no-op for an unknown user', () => {
     expect(() => unregisterUserSocket(42, fakeSocket())).not.toThrow();
+  });
+
+  it('closes every socket of a user whose sessions ended, so tabs try again', () => {
+    const a = fakeSocket();
+    const b = fakeSocket();
+    const other = fakeSocket();
+    registerUserSocket(1, a);
+    registerUserSocket(1, b);
+    registerUserSocket(2, other);
+    closeUserSockets(1);
+    expect(a.close).toHaveBeenCalledWith(4000, 'Session ended');
+    expect(b.close).toHaveBeenCalledWith(4000, 'Session ended');
+    expect(other.close).not.toHaveBeenCalled();
+  });
+
+  it('closing a user with no sockets is a no-op', () => {
+    expect(() => closeUserSockets(999)).not.toThrow();
   });
 });

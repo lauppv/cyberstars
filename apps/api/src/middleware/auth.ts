@@ -1,11 +1,15 @@
 import type { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
-import { config } from '../config/index.js';
-import { isAdmin, type TokenPayload } from '@cyberstars/shared/auth';
+import { isAdmin } from '@cyberstars/shared/auth';
 import { canAccessFeature, type FeatureKey } from '@cyberstars/shared/features';
 import * as userRepo from '../repositories/user.repository.js';
+import { sessionUserId } from '../services/auth.service.js';
 
-export function authenticateToken(req: Request, res: Response, next: NextFunction): void {
+// A session ended by a password change gets the same answer as an expired one
+export async function authenticateToken(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
   const token = req.cookies?.token;
 
   if (!token) {
@@ -14,11 +18,15 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
   }
 
   try {
-    const payload = jwt.verify(token, config.jwt.secret) as TokenPayload;
-    req.user = payload;
+    const id = await sessionUserId(token);
+    if (id === null) {
+      res.status(403).json({ error: 'Invalid token' });
+      return;
+    }
+    req.user = { id };
     next();
-  } catch {
-    res.status(403).json({ error: 'Invalid token' });
+  } catch (err) {
+    next(err);
   }
 }
 
@@ -60,17 +68,17 @@ export function requireFeatureAccess(key: FeatureKey) {
   };
 }
 
-export function optionalAuth(req: Request, _res: Response, next: NextFunction): void {
-  const token = req.cookies?.token;
-
-  if (token) {
-    try {
-      const payload = jwt.verify(token, config.jwt.secret) as TokenPayload;
-      req.user = payload;
-    } catch {
-      // Invalid token - continue without auth
-    }
+// An invalid, expired or ended session continues as a guest
+export async function optionalAuth(
+  req: Request,
+  _res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    const id = await sessionUserId(req.cookies?.token);
+    if (id !== null) req.user = { id };
+    next();
+  } catch (err) {
+    next(err);
   }
-
-  next();
 }
