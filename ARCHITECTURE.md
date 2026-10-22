@@ -72,14 +72,14 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 
 ### Auth
 
-| Method | Endpoint                | Auth | Description                              |
-| ------ | ----------------------- | ---- | ---------------------------------------- |
-| POST   | `/auth/signup`          | No   | Register user, set JWT cookie            |
-| POST   | `/auth/login`           | No   | Login, set JWT cookie                    |
-| POST   | `/auth/logout`          | No   | Clear JWT cookie                         |
-| GET    | `/auth/me`              | Yes  | Get current user                         |
-| POST   | `/auth/forgot-password` | No   | Send reset code via email (15min expiry) |
-| POST   | `/auth/reset-password`  | No   | Reset password with code                 |
+| Method | Endpoint                | Auth | Description                                                   |
+| ------ | ----------------------- | ---- | ------------------------------------------------------------- |
+| POST   | `/auth/signup`          | No   | Register user, set JWT cookie                                 |
+| POST   | `/auth/login`           | No   | Login, set JWT cookie                                         |
+| POST   | `/auth/logout`          | No   | Clear JWT cookie                                              |
+| GET    | `/auth/me`              | Yes  | Get current user                                              |
+| POST   | `/auth/forgot-password` | No   | Send reset code via email (15min expiry, 3 an hour per email) |
+| POST   | `/auth/reset-password`  | No   | Reset password with code (5 tries per code)                   |
 
 ### Curriculum & Lessons
 

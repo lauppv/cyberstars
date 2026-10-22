@@ -203,8 +203,29 @@ describe('setResetCode', () => {
     expect(await repo.setResetCode('a@b.com', '123456', expires)).toBe(true);
     expect(mockPrisma.user.update).toHaveBeenCalledWith({
       where: { email: 'a@b.com' },
-      data: { resetCode: '123456', resetCodeExpiresAt: expires },
+      data: { resetCode: '123456', resetCodeExpiresAt: expires, resetCodeAttempts: 0 },
     });
+  });
+});
+
+describe('takeResetAttempt', () => {
+  it('takes a try of a live code with tries left in one update', async () => {
+    mockPrisma.user.updateMany.mockResolvedValue({ count: 1 });
+    expect(await repo.takeResetAttempt('a@b.com', 5)).toBe(true);
+    expect(mockPrisma.user.updateMany).toHaveBeenCalledWith({
+      where: {
+        email: 'a@b.com',
+        resetCode: { not: null },
+        resetCodeExpiresAt: { gte: expect.any(Date) },
+        resetCodeAttempts: { lt: 5 },
+      },
+      data: { resetCodeAttempts: { increment: 1 } },
+    });
+  });
+
+  it('returns false when no code matched', async () => {
+    mockPrisma.user.updateMany.mockResolvedValue({ count: 0 });
+    expect(await repo.takeResetAttempt('a@b.com', 5)).toBe(false);
   });
 });
 

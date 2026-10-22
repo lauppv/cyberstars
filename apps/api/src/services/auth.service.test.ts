@@ -14,6 +14,7 @@ const mockUserRepo = {
   findById: vi.fn(),
   setResetCode: vi.fn(),
   findByResetCode: vi.fn(),
+  takeResetAttempt: vi.fn(),
   updatePassword: vi.fn(),
 };
 
@@ -267,6 +268,8 @@ describe('forgotPassword', () => {
 });
 
 describe('resetPassword', () => {
+  beforeEach(() => mockUserRepo.takeResetAttempt.mockResolvedValue(true));
+
   it('resets password with valid code', async () => {
     mockUserRepo.findByResetCode.mockResolvedValue({ id: 5 });
     mockUserRepo.updatePassword.mockResolvedValue(undefined);
@@ -276,6 +279,25 @@ describe('resetPassword', () => {
 
   it('throws 400 for invalid or expired code', async () => {
     mockUserRepo.findByResetCode.mockResolvedValue(null);
-    await expect(resetPassword('user@test.com', '000000', 'newpass')).rejects.toThrow(AppError);
+    await expect(resetPassword('user@test.com', '000000', 'newpass')).rejects.toThrow(
+      'Invalid or expired code',
+    );
+  });
+
+  it('takes one of five tries before checking the code', async () => {
+    mockUserRepo.findByResetCode.mockResolvedValue(null);
+    await resetPassword('user@test.com', '000000', 'newpass').catch(() => {});
+    expect(mockUserRepo.takeResetAttempt).toHaveBeenCalledWith('user@test.com', 5);
+  });
+
+  it('refuses even the right code once the tries are used up or the code expired', async () => {
+    mockUserRepo.takeResetAttempt.mockResolvedValue(false);
+    mockUserRepo.findByResetCode.mockResolvedValue({ id: 5 });
+    const err = await resetPassword('user@test.com', '123456', 'newpass').catch((e) => e);
+    expect(err).toBeInstanceOf(AppError);
+    expect(err.statusCode).toBe(400);
+    expect(err.message).toBe('This code has expired or used up its attempts, ask for a new one');
+    expect(mockUserRepo.findByResetCode).not.toHaveBeenCalled();
+    expect(mockUserRepo.updatePassword).not.toHaveBeenCalled();
   });
 });

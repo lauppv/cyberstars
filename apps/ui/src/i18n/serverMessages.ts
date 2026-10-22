@@ -15,6 +15,10 @@ const RO: Record<string, string> = {
   'User already exists': 'Există deja un cont cu acest email',
   'Invalid email or password': 'Email sau parolă greșită',
   'Too many attempts, try again later': 'Prea multe încercări, încearcă mai târziu',
+  'This code has expired or used up its attempts, ask for a new one':
+    'Codul a expirat sau și-a epuizat încercările, cere unul nou',
+  'Too many codes asked for this email, try again later':
+    'Ai cerut prea multe coduri pentru acest email, încearcă mai târziu',
   'No token provided': 'Nu ești conectat',
   'Invalid token': 'Sesiunea a expirat. Conectează-te din nou.',
   'Admin access required': 'E nevoie de acces de admin',
