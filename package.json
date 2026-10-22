@@ -5,7 +5,8 @@
   "type": "module",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "framework/*"
   ],
   "engines": {
     "node": "^24"
@@ -29,7 +30,8 @@
     "test:coverage": "vitest run --coverage",
     "test:integration": "npm run test:integration -w @cyberstars/api",
     "typecheck": "tsc --noEmit && npm run typecheck -w @cyberstars/api && tsc -p e2e/tsconfig.json --noEmit",
-    "dead-code": "knip",
+    "dead-code": "knip && npm run dead-code:framework",
+    "dead-code:framework": "if ls framework/*/package.json > /dev/null 2>&1; then knip --strict --workspace './framework/*'; fi",
     "preview": "npm run preview -w @cyberstars/ui",
     "db:generate": "npm run db:generate -w @cyberstars/api",
     "db:migrate": "npm run db:migrate -w @cyberstars/api",
