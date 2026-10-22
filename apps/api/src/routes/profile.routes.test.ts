@@ -44,6 +44,7 @@ const mockUserRepo = {
   saveCodeLanguage: vi.fn().mockResolvedValue(undefined),
   getRole: vi.fn().mockResolvedValue('USER'),
   updateRole: vi.fn().mockResolvedValue(undefined),
+  getSessionVersion: vi.fn().mockResolvedValue(0),
 };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('../repositories/curriculum.repository.js', () => ({
