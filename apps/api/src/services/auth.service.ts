@@ -105,11 +105,20 @@ export async function forgotPassword(email: string, lang: EmailLang = 'en'): Pro
   });
 }
 
+// Tries one reset code gets, from all IPs together; with three codes an hour
+// per email (auth.routes.ts) an account faces at most 15 guesses an hour
+const MAX_RESET_ATTEMPTS = 5;
+
 export async function resetPassword(
   email: string,
   code: string,
   newPassword: string,
 ): Promise<void> {
+  // Every try takes one, the right one too, so the right code after five
+  // wrong ones is refused as well
+  if (!(await userRepo.takeResetAttempt(email, MAX_RESET_ATTEMPTS))) {
+    throw new AppError(400, 'This code has expired or used up its attempts, ask for a new one');
+  }
   const user = await userRepo.findByResetCode(email, code);
   if (!user) {
     throw new AppError(400, 'Invalid or expired code');

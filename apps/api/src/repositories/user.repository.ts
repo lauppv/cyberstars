@@ -141,9 +141,25 @@ export async function setResetCode(email: string, code: string, expiresAt: Date)
   if (!user) return false;
   await prisma.user.update({
     where: { email },
-    data: { resetCode: code, resetCodeExpiresAt: expiresAt },
+    data: { resetCode: code, resetCodeExpiresAt: expiresAt, resetCodeAttempts: 0 },
   });
   return true;
+}
+
+// Takes one of the live reset code's tries in a single UPDATE, so guesses sent
+// at once from many IPs can't all read the same count; false when the code
+// expired, has no tries left, or the email has none
+export async function takeResetAttempt(email: string, maxAttempts: number): Promise<boolean> {
+  const { count } = await prisma.user.updateMany({
+    where: {
+      email,
+      resetCode: { not: null },
+      resetCodeExpiresAt: { gte: new Date() },
+      resetCodeAttempts: { lt: maxAttempts },
+    },
+    data: { resetCodeAttempts: { increment: 1 } },
+  });
+  return count > 0;
 }
 
 export async function findByResetCode(email: string, code: string): Promise<User | null> {

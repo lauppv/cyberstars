@@ -86,6 +86,7 @@ model User {
   statusExpiresAt          DateTime? @map("status_expires_at")
   resetCode                String?   @map("reset_code") @db.VarChar(6)
   resetCodeExpiresAt       DateTime? @map("reset_code_expires_at")
+  resetCodeAttempts        Int       @default(0) @map("reset_code_attempts")
   pendingEmail             String?   @map("pending_email") @db.VarChar(255)
   emailChangeCode          String?   @map("email_change_code") @db.VarChar(6)
   emailChangeCodeExpiresAt DateTime? @map("email_change_code_expires_at")
