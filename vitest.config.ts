@@ -13,6 +13,7 @@ export default defineConfig({
         },
       },
       'apps/api',
+      { test: { name: 'framework', environment: 'node', include: ['framework/**/*.test.ts'] } },
     ],
     coverage: {
       provider: 'v8',

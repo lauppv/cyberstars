@@ -19,6 +19,7 @@
     "apps/ui/scripts",
     "apps/ui/vite.config.ts",
     "packages/shared",
+    "framework",
     "test",
     "vitest.config.ts",
     "knip.config.ts"
