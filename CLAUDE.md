@@ -29,7 +29,7 @@ npm run typecheck         # tsc on the UI, the server (+ scripts, integration te
 npm run lint              # ESLint
 npm run format            # Prettier write
 npm run format:check      # Prettier check (CI-equivalent)
-npm run dead-code         # knip: find unused files, exports, and dependencies
+npm run dead-code         # knip: find unused files, exports, and dependencies (+ --strict on framework/* once a package exists)
 npm run db:prepare        # Prisma generate + migrate + seed
 npm run db:migrate        # Run pending migrations (prompts for name)
 npm run db:deploy         # Apply migrations without prompts (CI/prod)
@@ -110,6 +110,10 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Social models: `Conversation`, `DirectMessage` (soft-delete), `DmReaction`, `Connection` (directed request, `ConnectionStatus` enum), `Notification`
 - Visit models: `PageVisit` (today's page views, no IP), `VisitSalt` (the day's salt, gone with its day), `VisitTotal` (what's left of a day once it ends), `GuestVisit` + `VisitStep` (a guest's day and its steps, unhashed once the day ends, kept 90 days); see Visitor counts
 - Seed script populates courses and lessons from `packages/content/curriculum.ts` (the single source of truth for curriculum structure, shared with the static-content generator)
+
+### Framework (`framework/`)
+
+- The App Framework's packages (CYB-20), one per folder, named `@cyberstars-framework/<name>`, which CyberStars consumes like any other app. None exists yet. Each declares its entry points in `exports`, imports only from its own folder (never `@cyberstars/*`, no `../` out of it) and lists every library it imports in its own `package.json`. CI enforces it: `framework/packages.test.ts` (the `framework` Vitest project, Node) checks the scope and `exports`, ESLint's `no-restricted-imports` and the local `framework/stay-inside` rule (`eslint.config.js`) the imports, and `npm run dead-code:framework` (knip `--strict --workspace './framework/*'`, skipped while the folder has no package, since knip errors on a pattern that matches none) the libraries. See `framework/README.md`
 
 ### Shared (`packages/shared/`)
 
