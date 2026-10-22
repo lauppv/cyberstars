@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { config } from '../config/index.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as emailService from './email.service.js';
+import { closeUserSockets } from './ws-user.js';
 import type { EmailLang } from './email.service.js';
 import type { TokenPayload, AuthenticatedUser } from '@cyberstars/shared/auth';
 import type { Interest } from '@cyberstars/shared/interests';
@@ -24,7 +25,7 @@ export async function signup(
   const hashedPassword = bcrypt.hashSync(password, BCRYPT_COST);
   try {
     const userId = await userRepo.create(name, email, hashedPassword, placementScore);
-    return createToken(userId);
+    return createToken(userId, 0);
   } catch (err: unknown) {
     if (
       err &&
@@ -53,7 +54,30 @@ export async function login(email: string, password: string): Promise<string> {
     throw new AppError(401, 'Invalid email or password');
   }
 
-  return createToken(user.id);
+  return createToken(user.id, user.sessionVersion);
+}
+
+// The user a session token signs in, or null when it is missing, invalid,
+// expired or ended by a password change since it was made
+export async function sessionUserId(token: string | null | undefined): Promise<number | null> {
+  if (!token) return null;
+  let payload: TokenPayload;
+  try {
+    payload = jwt.verify(token, config.jwt.secret) as TokenPayload;
+  } catch {
+    return null;
+  }
+  const version = await userRepo.getSessionVersion(payload.id);
+  return version !== null && version === (payload.v ?? 0) ? payload.id : null;
+}
+
+// Sets a new password and ends every session of the account: their tokens are
+// behind the new version and their notification sockets close. Returns a token
+// at the new version, for the session that made a change to stay signed in
+export async function setPassword(userId: number, newPassword: string): Promise<string> {
+  const version = await userRepo.updatePassword(userId, bcrypt.hashSync(newPassword, BCRYPT_COST));
+  closeUserSockets(userId);
+  return createToken(userId, version);
 }
 
 export async function getUser(userId: number): Promise<AuthenticatedUser> {
@@ -123,12 +147,11 @@ export async function resetPassword(
   if (!user) {
     throw new AppError(400, 'Invalid or expired code');
   }
-  const hashed = bcrypt.hashSync(newPassword, BCRYPT_COST);
-  await userRepo.updatePassword(user.id, hashed);
+  await setPassword(user.id, newPassword);
 }
 
-function createToken(userId: number): string {
-  return jwt.sign({ id: userId } satisfies TokenPayload, config.jwt.secret, {
+function createToken(userId: number, version: number): string {
+  return jwt.sign({ id: userId, v: version } satisfies TokenPayload, config.jwt.secret, {
     expiresIn: config.jwt.expiresIn,
   });
 }

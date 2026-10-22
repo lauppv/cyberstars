@@ -52,4 +52,7 @@ export interface SignupPayload {
 
 export interface TokenPayload {
   id: number;
+  // the account's session version when the token was made; a password change
+  // raises it and ends the token. Tokens from before it was kept have none (0)
+  v?: number;
 }

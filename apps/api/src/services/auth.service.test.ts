@@ -15,6 +15,7 @@ const mockUserRepo = {
   setResetCode: vi.fn(),
   findByResetCode: vi.fn(),
   takeResetAttempt: vi.fn(),
+  getSessionVersion: vi.fn(),
   updatePassword: vi.fn(),
 };
 
@@ -25,7 +26,13 @@ vi.mock('./email.service.js', () => ({
   sendResetCode: (...args: unknown[]) => mockSendResetCode(...args),
 }));
 
-const { signup, login, getUser, forgotPassword, resetPassword } = await import('./auth.service.js');
+const mockCloseUserSockets = vi.fn();
+vi.mock('./ws-user.js', () => ({
+  closeUserSockets: (...args: unknown[]) => mockCloseUserSockets(...args),
+}));
+
+const { signup, login, getUser, forgotPassword, resetPassword, sessionUserId, setPassword } =
+  await import('./auth.service.js');
 
 beforeEach(() => vi.clearAllMocks());
 
@@ -74,6 +81,17 @@ describe('login', () => {
     const token = await login('bob@test.com', 'correct');
     const payload = jwt.verify(token, 'test-secret') as { id: number };
     expect(payload.id).toBe(7);
+  });
+
+  it("makes the token at the account's session version", async () => {
+    const bcrypt = await import('bcryptjs');
+    mockUserRepo.findByEmail.mockResolvedValue({
+      id: 7,
+      password: bcrypt.hashSync('correct', 8),
+      sessionVersion: 3,
+    });
+    const token = await login('bob@test.com', 'correct');
+    expect((jwt.verify(token, 'test-secret') as { v: number }).v).toBe(3);
   });
 
   it('throws a generic 401 for unknown email (no enumeration)', async () => {
@@ -267,14 +285,60 @@ describe('forgotPassword', () => {
   });
 });
 
+describe('sessionUserId', () => {
+  it("signs in a token at the account's session version", async () => {
+    mockUserRepo.getSessionVersion.mockResolvedValue(2);
+    const token = jwt.sign({ id: 7, v: 2 }, 'test-secret');
+    expect(await sessionUserId(token)).toBe(7);
+    expect(mockUserRepo.getSessionVersion).toHaveBeenCalledWith(7);
+  });
+
+  it('ends a token made before a password change', async () => {
+    mockUserRepo.getSessionVersion.mockResolvedValue(3);
+    expect(await sessionUserId(jwt.sign({ id: 7, v: 2 }, 'test-secret'))).toBeNull();
+  });
+
+  it('counts a token from before versions were kept as version 0', async () => {
+    mockUserRepo.getSessionVersion.mockResolvedValue(0);
+    expect(await sessionUserId(jwt.sign({ id: 7 }, 'test-secret'))).toBe(7);
+    mockUserRepo.getSessionVersion.mockResolvedValue(1);
+    expect(await sessionUserId(jwt.sign({ id: 7 }, 'test-secret'))).toBeNull();
+  });
+
+  it('refuses a token whose account is gone', async () => {
+    mockUserRepo.getSessionVersion.mockResolvedValue(null);
+    expect(await sessionUserId(jwt.sign({ id: 7, v: 0 }, 'test-secret'))).toBeNull();
+  });
+
+  it('refuses no token or an invalid one without asking the database', async () => {
+    expect(await sessionUserId(undefined)).toBeNull();
+    expect(await sessionUserId('garbage')).toBeNull();
+    expect(mockUserRepo.getSessionVersion).not.toHaveBeenCalled();
+  });
+});
+
+describe('setPassword', () => {
+  it('hashes the password, closes the sockets and makes a token at the new version', async () => {
+    const bcrypt = await import('bcryptjs');
+    mockUserRepo.updatePassword.mockResolvedValue(4);
+    const token = await setPassword(5, 'freshpass');
+    const [id, hash] = mockUserRepo.updatePassword.mock.calls[0] as [number, string];
+    expect(id).toBe(5);
+    expect(bcrypt.compareSync('freshpass', hash)).toBe(true);
+    expect(mockCloseUserSockets).toHaveBeenCalledWith(5);
+    expect(jwt.verify(token, 'test-secret')).toEqual(expect.objectContaining({ id: 5, v: 4 }));
+  });
+});
+
 describe('resetPassword', () => {
   beforeEach(() => mockUserRepo.takeResetAttempt.mockResolvedValue(true));
 
-  it('resets password with valid code', async () => {
+  it('resets password with valid code and ends every session', async () => {
     mockUserRepo.findByResetCode.mockResolvedValue({ id: 5 });
-    mockUserRepo.updatePassword.mockResolvedValue(undefined);
+    mockUserRepo.updatePassword.mockResolvedValue(1);
     await resetPassword('user@test.com', '123456', 'newpass');
     expect(mockUserRepo.updatePassword).toHaveBeenCalledWith(5, expect.any(String));
+    expect(mockCloseUserSockets).toHaveBeenCalledWith(5);
   });
 
   it('throws 400 for invalid or expired code', async () => {

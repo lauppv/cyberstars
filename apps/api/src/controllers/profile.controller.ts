@@ -7,9 +7,11 @@ import { fileTypeFromBuffer } from 'file-type';
 import * as userRepo from '../repositories/user.repository.js';
 import * as progressRepo from '../repositories/progress.repository.js';
 import * as emailService from '../services/email.service.js';
+import * as authService from '../services/auth.service.js';
 import { computeStreak } from '../services/activity.service.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { UPLOADS_DIR } from '../config/paths.js';
+import { config } from '../config/index.js';
 
 const UPLOAD_DIR = path.join(UPLOADS_DIR, 'avatars');
 
@@ -158,8 +160,8 @@ export async function changePassword(
     const valid = bcrypt.compareSync(currentPassword, user.password);
     if (!valid) throw new AppError(401, 'Current password is incorrect');
 
-    const hashed = bcrypt.hashSync(newPassword, 10);
-    await userRepo.updatePassword(userId, hashed);
+    // Every other session ends; this one stays signed in on a new token
+    res.cookie('token', await authService.setPassword(userId, newPassword), config.cookie);
     res.json({ message: 'Password updated' });
   } catch (err) {
     next(err);
