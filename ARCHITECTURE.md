@@ -4,7 +4,7 @@ CyberStars is a split-screen coding education platform with a React frontend, Ex
 
 ## Project structure
 
-The repo is one npm workspace with four parts: two apps and two packages they share.
+The repo is one npm workspace: two apps, two packages they share, and the App Framework's packages.
 
 ```
 cyberstars/
@@ -38,6 +38,9 @@ cyberstars/
 │       ├── variants/              # Accepted and rejected solutions per tested lesson
 │       └── scripts/               # Static-content generator
 │
+├── framework/                     # @cyberstars-framework/*: the reusable parts, one package each
+│   └── server-kit/                # Settings loader, AppError and its handler, validateBody, limiters
+│
 ├── e2e/                           # Playwright tests that drive the UI and the API together
 ├── test/                          # Shared Vitest setup (jsdom, jest-dom matchers)
 ├── deploy/                        # Deploy script, IndexNow ping and nginx maintenance page
@@ -64,7 +67,7 @@ The backend follows **Controller → Service → Repository** separation:
 - **Services** contain business logic (password hashing, token creation, progress aggregation)
 - **Repositories** are the only place Prisma is used
 
-Every write endpoint is wrapped in `validateBody(schema)` middleware that parses the body through a Zod schema. Invalid input never reaches a controller.
+Every write endpoint is wrapped in `validateBody(schema)` middleware (from `@cyberstars-framework/server-kit`) that parses the body through a Zod schema. Invalid input never reaches a controller.
 
 ## API endpoints
 
