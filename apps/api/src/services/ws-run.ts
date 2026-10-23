@@ -51,7 +51,7 @@ export function parseTokenCookie(cookieHeader: string | undefined): string | nul
 // rule as Express's `trust proxy` setting, which is only on in production.
 export function extractIp(req: IncomingMessage): string {
   const forwarded = req.headers['x-forwarded-for'];
-  if (process.env.NODE_ENV === 'production' && typeof forwarded === 'string') {
+  if (config.isProduction && typeof forwarded === 'string') {
     const hops = forwarded.split(',');
     return hops[hops.length - 1].trim();
   }
@@ -224,7 +224,7 @@ async function handleUserConnection(
     ws.close(4401, 'Unauthorized');
     return;
   }
-  const isProd = process.env.NODE_ENV === 'production';
+  const isProd = config.isProduction;
   const role = isProd ? await userRepo.getRole(userId) : undefined;
   // The socket carries both notifications and messaging; open it if the user can
   // reach either feature. NOTE: pushed frames are NOT gated per channel. If the

@@ -31,6 +31,7 @@ vi.mock('../services/submissions.service.js', () => mockSubmissions);
 
 const { chat, getConversation, deleteConversation, listConversations } =
   await import('./tutor.controller.js');
+const { config } = await import('../config/index.js');
 
 // The id a new conversation gets when its first exchange is saved.
 const NEW_ID = 21;
@@ -354,13 +355,13 @@ describe('chat', () => {
   });
 
   it('tells the tutor it runs on prod when it does', async () => {
-    vi.stubEnv('NODE_ENV', 'production');
+    Object.assign(config, { isProduction: true });
     mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'blocked' }));
 
     await chat(mockReq(), mockRes() as unknown as Response, vi.fn());
 
     expect(mockTutor.askTutor).toHaveBeenCalledWith(expect.objectContaining({ isProd: true }));
-    vi.unstubAllEnvs();
+    Object.assign(config, { isProduction: false });
   });
 
   it('passes an error before any words on to the error handler', async () => {

@@ -3,6 +3,7 @@ import { isAdmin } from '@cyberstars/shared/auth';
 import { canAccessFeature, type FeatureKey } from '@cyberstars/shared/features';
 import * as userRepo from '../repositories/user.repository.js';
 import { sessionUserId } from '../services/auth.service.js';
+import { config } from '../config/index.js';
 
 // A session ended by a password change gets the same answer as an expired one
 export async function authenticateToken(
@@ -53,7 +54,7 @@ export async function requireAdmin(req: Request, res: Response, next: NextFuncti
 export function requireFeatureAccess(key: FeatureKey) {
   return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const isProd = process.env.NODE_ENV === 'production';
+      const isProd = config.isProduction;
       // Only the prod gate needs the DB-authoritative role; on dev everyone
       // passes, so skip the query entirely.
       const role = isProd && req.user ? await userRepo.getRole(req.user.id) : undefined;

@@ -13,6 +13,7 @@ import * as userRepo from '../repositories/user.repository.js';
 import * as usage from '../services/usage.service.js';
 import { isAdmin } from '@cyberstars/shared/auth';
 import { readStudent } from '../services/tutor-student.service.js';
+import { config } from '../config/index.js';
 import { tutorConversationParamsSchema, tutorPageQuerySchema } from '../schemas/tutor.schema.js';
 
 // Each event goes out as soon as it is written. The headers wait for the first
@@ -138,7 +139,7 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
       uiLang: req.body.lang === 'ro' ? 'ro' : 'en',
       about,
       role,
-      isProd: process.env.NODE_ENV === 'production',
+      isProd: config.isProduction,
       signal: leave.signal,
       written,
     });

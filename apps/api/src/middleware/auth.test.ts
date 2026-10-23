@@ -18,6 +18,7 @@ vi.mock('../repositories/user.repository.js', () => ({
 const { authenticateToken, optionalAuth, requireAdmin, requireFeatureAccess } =
   await import('./auth.js');
 const { PREVIEW_FEATURES } = await import('@cyberstars/shared/features');
+const { config } = await import('../config/index.js');
 
 function makeReqRes(token?: string) {
   const req = { cookies: token ? { token } : {} } as unknown as Request;
@@ -134,7 +135,7 @@ describe('requireFeatureAccess (preview gate)', () => {
     return { req, res, next };
   }
 
-  const originalEnv = process.env.NODE_ENV;
+  const wasProduction = config.isProduction;
   const originalFlag = PREVIEW_FEATURES.messaging;
   beforeEach(() => {
     // Force the sample feature into preview so the admin-only assertions are
@@ -142,13 +143,13 @@ describe('requireFeatureAccess (preview gate)', () => {
     PREVIEW_FEATURES.messaging = true;
   });
   afterEach(() => {
-    process.env.NODE_ENV = originalEnv;
+    Object.assign(config, { isProduction: wasProduction });
     PREVIEW_FEATURES.messaging = originalFlag;
     vi.clearAllMocks();
   });
 
   it('lets anyone through on dev, without touching the DB', async () => {
-    process.env.NODE_ENV = 'development';
+    Object.assign(config, { isProduction: false });
     const { req, res, next } = makeReq();
     await requireFeatureAccess('messaging')(req, res, next);
     expect(next).toHaveBeenCalledWith();
@@ -157,7 +158,7 @@ describe('requireFeatureAccess (preview gate)', () => {
   });
 
   it('404s a guest on prod (feature is hidden, no role lookup)', async () => {
-    process.env.NODE_ENV = 'production';
+    Object.assign(config, { isProduction: true });
     const { req, res, next } = makeReq();
     await requireFeatureAccess('messaging')(req, res, next);
     expect(res.status).toHaveBeenCalledWith(404);
@@ -166,7 +167,7 @@ describe('requireFeatureAccess (preview gate)', () => {
   });
 
   it('404s a non-admin USER on prod', async () => {
-    process.env.NODE_ENV = 'production';
+    Object.assign(config, { isProduction: true });
     getRole.mockResolvedValueOnce('USER');
     const { req, res, next } = makeReq({ id: 7 });
     await requireFeatureAccess('messaging')(req, res, next);
@@ -176,7 +177,7 @@ describe('requireFeatureAccess (preview gate)', () => {
   });
 
   it('lets an ADMIN through on prod', async () => {
-    process.env.NODE_ENV = 'production';
+    Object.assign(config, { isProduction: true });
     getRole.mockResolvedValueOnce('ADMIN');
     const { req, res, next } = makeReq({ id: 1 });
     await requireFeatureAccess('messaging')(req, res, next);
@@ -185,7 +186,7 @@ describe('requireFeatureAccess (preview gate)', () => {
   });
 
   it('forwards errors to next', async () => {
-    process.env.NODE_ENV = 'production';
+    Object.assign(config, { isProduction: true });
     const boom = new Error('db down');
     getRole.mockRejectedValueOnce(boom);
     const { req, res, next } = makeReq({ id: 7 });

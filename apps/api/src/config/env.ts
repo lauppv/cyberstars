@@ -36,7 +36,11 @@ export const env = {
     database: required('DB_NAME'),
     password: required('DB_PASSWORD'),
     port: number('DB_PORT', 5432),
+    // A full address wins over the parts above
+    url: optional('DATABASE_URL', ''),
   },
+  // The account that always signs up as the founder
+  founderEmail: optional('FOUNDER_EMAIL', ''),
   cookie: {
     httpOnly: true,
     secure: isProduction,
