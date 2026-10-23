@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import type { Request } from 'express';
-import rateLimit from 'express-rate-limit';
+import { limiter } from '../middleware/rateLimit.js';
 import { authenticateToken, requireFeatureAccess } from '../middleware/auth.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import {
@@ -18,29 +18,26 @@ const perUser = (req: Request) => String(req.user!.id);
 
 // Cap message sends per user; abuse is otherwise held in check by this + (later)
 // the block feature. Reads are cheap and unlimited.
-const sendLimiter = rateLimit({
+const sendLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 10_000 : 20,
+  limit: 20,
   keyGenerator: perUser,
 });
 
 // Opening a conversation creates a row, so cap it too, otherwise a caller could
 // spam new conversations against every user id. Higher than sends since it's an
 // idempotent find-or-create.
-const openLimiter = rateLimit({
+const openLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 10_000 : 30,
+  limit: 30,
   keyGenerator: perUser,
 });
 
 // Reactions are toggles on existing rows (cheap, bounded by the unique index),
 // so the cap is looser than sends but still shields the DB from click-spam.
-const reactLimiter = rateLimit({
+const reactLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 10_000 : 60,
+  limit: 60,
   keyGenerator: perUser,
 });
 

@@ -18,6 +18,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 export const env = {
   isProduction,
+  isTest: process.env.NODE_ENV === 'test',
   port: isProduction ? number('PORT', 8080) : number('EXPRESS_PORT', 5000),
   // The websites allowed to call the API (CORS) and open its WebSockets.
   allowedOrigins: originList(

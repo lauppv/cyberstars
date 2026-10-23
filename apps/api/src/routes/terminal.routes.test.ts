@@ -35,6 +35,20 @@ vi.mock('@prisma/client', () => ({
   },
 }));
 vi.mock('../config/db.js', () => ({ prisma: makePrismaProxy() }));
+
+// Tests go through every limiter; one that has to count turns this off while it's built
+const testing = vi.hoisted(() => ({ on: true }));
+vi.mock('../config/index.js', async (importOriginal) => {
+  const { config } = await importOriginal<typeof import('../config/index.js')>();
+  return {
+    config: {
+      ...config,
+      get isTest() {
+        return testing.on;
+      },
+    },
+  };
+});
 vi.mock('../repositories/user.repository.js', async (importOriginal) => ({
   ...(await importOriginal<object>()),
   getSessionVersion: async () => 0,
@@ -150,9 +164,9 @@ describe('execRateLimitHandler', () => {
 });
 
 describe('guestIpLimiter', () => {
-  // A bare app outside the test env's 10_000 override, so the limit of 2 holds.
+  // A bare app with a limiter that counts, so the limit of 2 holds
   async function makeApp() {
-    vi.stubEnv('NODE_ENV', 'development');
+    testing.on = false;
     const express = (await import('express')).default;
     const cookieParser = (await import('cookie-parser')).default;
     const { optionalAuth } = await import('../middleware/auth.js');
@@ -161,7 +175,7 @@ describe('guestIpLimiter', () => {
     limited.post('/', optionalAuth, guestIpLimiter(2), (_req, res) => {
       res.sendStatus(204);
     });
-    vi.unstubAllEnvs();
+    testing.on = true;
     return limited;
   }
 
