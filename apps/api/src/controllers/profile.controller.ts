@@ -9,7 +9,7 @@ import * as progressRepo from '../repositories/progress.repository.js';
 import * as emailService from '../services/email.service.js';
 import * as authService from '../services/auth.service.js';
 import { computeStreak } from '../services/activity.service.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { UPLOADS_DIR } from '../config/paths.js';
 import { config } from '../config/index.js';
 

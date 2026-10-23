@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import rateLimit from 'express-rate-limit';
+import { limiter } from '../middleware/rateLimit.js';
 import { authenticateToken } from '../middleware/auth.js';
-import { validateBody } from '../middleware/validate.js';
+import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import {
   createThreadSchema,
   createPostSchema,
@@ -12,18 +12,16 @@ import {
 } from '../schemas/forum.schema.js';
 import * as forumController from '../controllers/forum.controller.js';
 
-const forumWriteLimiter = rateLimit({
+const forumWriteLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 10_000 : 10,
+  limit: 10,
 });
 
 // getThread increments the view counter on every GET; cap it per-IP so the
 // counter can't be inflated by hammering the endpoint (audit H7).
-const forumReadLimiter = rateLimit({
+const forumReadLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 100_000 : 120,
+  limit: 120,
 });
 
 const router = Router();

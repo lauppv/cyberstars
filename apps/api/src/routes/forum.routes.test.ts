@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { Request, Response } from 'express';
 
 type Limiter = (req: Request, res: Response, next: () => void) => void;
-type RateLimitOpts = { limit?: number; max?: number };
+type RateLimitOpts = { limit?: number; skip?: () => boolean };
 
 const captured: { opts: RateLimitOpts[] } = { opts: [] };
 
@@ -17,7 +17,7 @@ vi.mock('../middleware/auth.js', () => ({
   authenticateToken: (_req: Request, _res: Response, next: () => void) => next(),
 }));
 
-vi.mock('../middleware/validate.js', () => ({
+vi.mock('@cyberstars-framework/server-kit/validate', () => ({
   validateBody: () => (_req: Request, _res: Response, next: () => void) => next(),
 }));
 
@@ -44,17 +44,9 @@ beforeEach(() => {
 });
 
 describe('forum.routes rate limiter', () => {
-  it('relaxes both write and read limiters under NODE_ENV=test', async () => {
-    vi.stubEnv('NODE_ENV', 'test');
-    await import('./forum.routes.js');
-    expect(captured.opts.map((o) => o.limit)).toEqual([10_000, 100_000]);
-    vi.unstubAllEnvs();
-  });
-
-  it('uses production limits outside test', async () => {
-    vi.stubEnv('NODE_ENV', 'production');
+  it('allows 10 writes and 120 reads a minute, and lets tests through', async () => {
     await import('./forum.routes.js');
     expect(captured.opts.map((o) => o.limit)).toEqual([10, 120]);
-    vi.unstubAllEnvs();
+    expect(captured.opts.map((o) => o.skip?.())).toEqual([true, true]);
   });
 });

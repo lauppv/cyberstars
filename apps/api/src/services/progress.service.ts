@@ -3,7 +3,7 @@ import * as curriculumRepo from '../repositories/curriculum.repository.js';
 import * as dailyRepo from '../repositories/daily.repository.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as dailyService from './daily.service.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { assertValidCourse } from './paths.js';
 import {
   xpForLesson,

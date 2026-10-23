@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import path from 'path';
 import type { Request, Response } from 'express';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 // changePassword sets the session cookie from config, which needs these; CI has no .env
 process.env.JWT_SECRET = 'test-secret';

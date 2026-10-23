@@ -1,7 +1,7 @@
 import { Router, type Request, type Response, type NextFunction } from 'express';
-import rateLimit from 'express-rate-limit';
+import { limiter } from '../middleware/rateLimit.js';
 import { optionalAuth } from '../middleware/auth.js';
-import { validateBody } from '../middleware/validate.js';
+import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import { createSessionSchema, execSchema, checkSchema } from '../schemas/terminal.schema.js';
 import {
   resolveOwnerKey,
@@ -39,23 +39,18 @@ function keyGenerator(req: Request): string {
 // enough for a classroom of guests behind one NAT; logged-in users skip it.
 // Keyed by `req.ip`, which `trust proxy` resolves to the address nginx saw.
 export function guestIpLimiter(limit: number) {
-  return rateLimit({
+  return limiter({
     windowMs: 60_000,
-    limit: process.env.NODE_ENV === 'test' ? 10_000 : limit,
-    standardHeaders: true,
-    legacyHeaders: false,
+    limit: limit,
     skip: (req: Request) => req.user != null,
     handler: execRateLimitHandler,
   });
 }
 
 // Each exec is a real docker exec fork; cap per user or guest.
-const terminalExecLimiter = rateLimit({
+const terminalExecLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 10_000 : 30,
-  standardHeaders: true,
-  legacyHeaders: false,
+  limit: 30,
   keyGenerator,
   handler: execRateLimitHandler,
 });
@@ -63,24 +58,18 @@ const terminalExecLimiter = rateLimit({
 // Each session spins up a fresh 128 MB sandbox container (the most expensive
 // terminal operation), so cap it tightly per owner to keep a burst of creates
 // from OOMing the box (the global cap in the service is the last line of defence).
-const sessionLimiter = rateLimit({
+const sessionLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 10_000 : 5,
-  standardHeaders: true,
-  legacyHeaders: false,
+  limit: 5,
   keyGenerator,
   handler: execRateLimitHandler,
 });
 
 // A check is one docker exec (all state probes batched), so cap like the code
 // judge's Run Tests (10/min/owner) rather than the looser per-command exec cap.
-const checkLimiter = rateLimit({
+const checkLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 10_000 : 10,
-  standardHeaders: true,
-  legacyHeaders: false,
+  limit: 10,
   keyGenerator,
   handler: execRateLimitHandler,
 });

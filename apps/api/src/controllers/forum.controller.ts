@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import type { Role } from '@prisma/client';
 import { prisma } from '../config/db.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import * as userRepo from '../repositories/user.repository.js';
 import * as notificationsService from '../services/notifications.service.js';
 import { RESTRICTED_FORUM_CATEGORIES } from '@cyberstars/shared/constants';

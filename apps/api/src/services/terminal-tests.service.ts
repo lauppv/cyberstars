@@ -4,7 +4,7 @@ import { contentDir } from './paths.js';
 import { dockerExec } from './docker-exec.js';
 import { getSessionView } from './terminal-session.service.js';
 import { compareOutputs } from './lesson-tests.service.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import type {
   TerminalCheck,
   TerminalCheckResult,

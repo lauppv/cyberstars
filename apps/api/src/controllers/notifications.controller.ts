@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import * as notificationsService from '../services/notifications.service.js';
 import { notificationsQuerySchema } from '../schemas/notifications.schema.js';
 

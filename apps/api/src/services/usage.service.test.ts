@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { USAGE_LIMITS, USAGE_WINDOWS_MS } from '@cyberstars/shared/usage';
 
 const DAY = USAGE_WINDOWS_MS.showSolution;

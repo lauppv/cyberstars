@@ -1,4 +1,4 @@
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { slotQueue, type SlotOptions } from './slot-queue.js';
 
 // Caps how many judge runs (Run Tests) share the server at once. Each run is

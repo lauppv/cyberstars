@@ -1,4 +1,4 @@
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 // Guests from one network share a limit on the sandboxes they hold, editor
 // containers and terminal sessions together, busy or idle. A guest id is only

@@ -7,7 +7,11 @@ The reusable parts of CyberStars, one package per folder (`framework/<name>/`), 
 - **Imports only from its own folder**: never the app, `@cyberstars/shared` or `@cyberstars/content`, and no `../` out of the package.
 - **Lists every library it imports** in its own `package.json`, even one the repo root already has.
 
-CI enforces all four:
+Packages so far:
+
+- **`server-kit`**: the server basics every later package builds on. A settings loader (`required`, `optional`, `number`), `AppError` and its Express handler, `validateBody` for zod schemas, and `makeLimiter` for rate limits with shared defaults.
+
+CI enforces all four rules:
 
 | Rule                                       | Check                                                                        |
 | ------------------------------------------ | ---------------------------------------------------------------------------- |

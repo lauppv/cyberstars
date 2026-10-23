@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import multer from 'multer';
-import rateLimit from 'express-rate-limit';
+import { limiter } from '../middleware/rateLimit.js';
 import { authenticateToken } from '../middleware/auth.js';
-import { validateBody } from '../middleware/validate.js';
+import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import {
   updateProfileSchema,
   saveInterestsSchema,
@@ -19,13 +19,10 @@ const upload = multer({
 });
 
 // Same shape as authLimiter: caps password guessing on the change endpoint.
-const passwordLimiter = rateLimit({
+const passwordLimiter = limiter({
   windowMs: 15 * 60 * 1000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  max: process.env.NODE_ENV === 'test' ? 10_000 : 10,
+  limit: 10,
   message: { error: 'Too many attempts, try again later' },
-  standardHeaders: true,
-  legacyHeaders: false,
 });
 
 const router = Router();

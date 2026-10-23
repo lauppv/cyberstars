@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import type { RunLesson } from '@cyberstars/shared/lesson';
 import { contentDir } from './paths.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 // A challenge may ship a <slug>-harness.md next to its solution: the part of
 // the program the student doesn't see (reading the input, building the tree,

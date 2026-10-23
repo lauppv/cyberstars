@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import type { Request } from 'express';
-import rateLimit from 'express-rate-limit';
+import { limiter } from '../middleware/rateLimit.js';
 import { authenticateToken, requireFeatureAccess } from '../middleware/auth.js';
-import { validateBody } from '../middleware/validate.js';
+import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import { sendRequestSchema } from '../schemas/connections.schema.js';
 import * as connectionsController from '../controllers/connections.controller.js';
 
@@ -13,10 +13,9 @@ const perUser = (req: Request) => String(req.user!.id);
 
 // Sending a request creates a row and fires a notification, so cap it; this is
 // the only endpoint that lets a caller reach arbitrary user ids.
-const sendLimiter = rateLimit({
+const sendLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 10_000 : 30,
+  limit: 30,
   keyGenerator: perUser,
 });
 

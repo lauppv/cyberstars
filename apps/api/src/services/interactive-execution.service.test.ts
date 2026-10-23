@@ -387,7 +387,7 @@ describe('handleInteractiveRun', () => {
   });
 
   it('tells a guest their network holds as many sandboxes as it may', async () => {
-    const { AppError } = await import('../middleware/errorHandler.js');
+    const { AppError } = await import('@cyberstars-framework/server-kit/errors');
     acquireMock.mockRejectedValueOnce(
       new AppError(
         429,

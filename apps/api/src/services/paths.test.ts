@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 import { contentDir, hasTestsFile, readLocalized } from './paths.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 describe('contentDir', () => {
   it('returns lessons dir for main courses', () => {

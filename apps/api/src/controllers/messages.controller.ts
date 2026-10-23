@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import * as messagesService from '../services/messages.service.js';
 import { historyQuerySchema } from '../schemas/messages.schema.js';
 

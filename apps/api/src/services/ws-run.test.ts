@@ -135,11 +135,11 @@ describe('extractIp', () => {
   } as unknown as IncomingMessage;
 
   it('on production, takes the hop nginx appended, not one the client wrote', () => {
-    vi.stubEnv('NODE_ENV', 'production');
+    Object.assign(config, { isProduction: true });
     try {
       expect(extractIp(forwardedReq)).toBe('5.6.7.8');
     } finally {
-      vi.unstubAllEnvs();
+      Object.assign(config, { isProduction: false });
     }
   });
   it('ignores x-forwarded-for outside production, where no proxy vouches for it', () => {
@@ -598,10 +598,10 @@ describe('upgrade routing', () => {
 
   describe('on production', () => {
     beforeEach(() => {
-      vi.stubEnv('NODE_ENV', 'production');
+      Object.assign(config, { isProduction: true });
     });
     afterEach(() => {
-      vi.unstubAllEnvs();
+      Object.assign(config, { isProduction: false });
     });
 
     it('closes the socket for a user outside the preview gate', async () => {

@@ -10,7 +10,7 @@ import {
   isRunning,
 } from './code-container.service.js';
 import { getRuntime } from '../runtimes/registry.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
 import { acquireSandboxSlot } from './sandbox-slots.js';

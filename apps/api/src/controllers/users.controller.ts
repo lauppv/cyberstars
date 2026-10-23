@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 import * as publicProfileService from '../services/public-profile.service.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 export async function getPublicProfile(
   req: Request,

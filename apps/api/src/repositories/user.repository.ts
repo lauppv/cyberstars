@@ -1,4 +1,5 @@
 import { prisma } from '../config/db.js';
+import { config } from '../config/index.js';
 import type { User, Role } from '@prisma/client';
 
 export async function findByEmail(email: string): Promise<User | null> {
@@ -86,7 +87,7 @@ export async function create(
   // owner). Otherwise the very first account to register bootstraps as ADMIN.
   // Serialize the count+create with an advisory lock so two concurrent first
   // signups against an empty DB cannot both see count === 0 and both become ADMIN.
-  const founderEmail = process.env.FOUNDER_EMAIL?.toLowerCase();
+  const founderEmail = config.founderEmail.toLowerCase();
   return prisma.$transaction(async (tx) => {
     await tx.$executeRaw`SELECT pg_advisory_xact_lock(4242)`;
     const existing = await tx.user.count();

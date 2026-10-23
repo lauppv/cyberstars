@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { env } from './env.js';
 
 function buildDatabaseUrl(): string {
-  if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
+  if (env.db.url) return env.db.url;
   const { user, password, host, port, database } = env.db;
   return `postgresql://${encodeURIComponent(user)}:${encodeURIComponent(password)}@${host}:${port}/${database}`;
 }

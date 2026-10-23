@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 import type { SupportTicket, User } from '@prisma/client';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import * as userRepo from '../repositories/user.repository.js';
 import * as supportService from '../services/support.service.js';
 import * as notificationsService from '../services/notifications.service.js';

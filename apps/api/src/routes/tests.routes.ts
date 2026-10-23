@@ -1,7 +1,7 @@
 import { Router, type Request, type Response, type NextFunction } from 'express';
-import rateLimit from 'express-rate-limit';
+import { limiter } from '../middleware/rateLimit.js';
 import { authenticateToken, optionalAuth } from '../middleware/auth.js';
-import { validateBody } from '../middleware/validate.js';
+import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import { runTestsSchema } from '../schemas/tests.schema.js';
 import { execRateLimitHandler, guestIpLimiter } from './terminal.routes.js';
 import {
@@ -21,24 +21,18 @@ function requireOwner(req: Request, res: Response, next: NextFunction): void {
 
 // Each test run is several docker execs (structure check + user & solution
 // programs per case), so cap tighter than single editor runs.
-const runTestsLimiter = rateLimit({
+const runTestsLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 10_000 : 10,
-  standardHeaders: true,
-  legacyHeaders: false,
+  limit: 10,
   keyGenerator: (req: Request) => resolveOwnerKey(req) ?? 'unknown',
   handler: execRateLimitHandler,
 });
 
 // History reads are plain DB lookups, so cap looser than runs, per user.
 // authenticateToken runs first, so req.user is always set here.
-const historyLimiter = rateLimit({
+const historyLimiter = limiter({
   windowMs: 60_000,
-  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
-  limit: process.env.NODE_ENV === 'test' ? 10_000 : 60,
-  standardHeaders: true,
-  legacyHeaders: false,
+  limit: 60,
   keyGenerator: (req: Request) => String(req.user!.id),
 });
 

@@ -16,6 +16,7 @@ const mockPrisma = {
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
 
 const repo = await import('./user.repository.js');
+const { config } = await import('../config/index.js');
 
 beforeEach(() => vi.clearAllMocks());
 
@@ -131,7 +132,7 @@ describe('create', () => {
   });
 
   it('pins the FOUNDER_EMAIL account as FOUNDER regardless of order', async () => {
-    vi.stubEnv('FOUNDER_EMAIL', 'boss@b.com');
+    Object.assign(config, { founderEmail: 'boss@b.com' });
     const tx = {
       $executeRaw: vi.fn(),
       user: { count: vi.fn().mockResolvedValue(5), create: vi.fn().mockResolvedValue({ id: 7 }) },
@@ -142,7 +143,7 @@ describe('create', () => {
     expect(tx.user.create).toHaveBeenCalledWith(
       expect.objectContaining({ data: expect.objectContaining({ role: 'FOUNDER' }) }),
     );
-    vi.unstubAllEnvs();
+    Object.assign(config, { founderEmail: '' });
   });
 });
 

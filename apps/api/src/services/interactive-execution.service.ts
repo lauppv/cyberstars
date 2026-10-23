@@ -1,6 +1,6 @@
 import { spawn, execFile } from 'child_process';
 import { getRuntime } from '../runtimes/registry.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import {
   acquireForRun,
   releaseAfterRun,

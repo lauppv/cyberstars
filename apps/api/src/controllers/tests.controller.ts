@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from 'express';
 import { runLessonTests } from '../services/lesson-tests.service.js';
 import * as progressService from '../services/progress.service.js';
 import * as submissionsService from '../services/submissions.service.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { guestIpOf } from './terminal.controller.js';
 import { requestWaitKey } from './runs.controller.js';
 import { codeLanguageOf, type CodeLanguage } from '@cyberstars/shared/constants';

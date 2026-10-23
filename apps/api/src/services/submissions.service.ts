@@ -2,7 +2,7 @@ import type { LessonSubmission, Prisma } from '@prisma/client';
 import * as repo from '../repositories/submissions.repository.js';
 import { assertValidCourse } from './paths.js';
 import { loadTestsSpec } from './lesson-tests.service.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import type { CodeLanguage } from '@cyberstars/shared/constants';
 import type {
   RunTestsResponse,
