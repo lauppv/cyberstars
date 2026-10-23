@@ -1,15 +1,10 @@
 import dotenv from 'dotenv';
+import { settings } from '@cyberstars-framework/server-kit/settings';
 import { ENV_FILE } from './paths.js';
 
 dotenv.config({ path: ENV_FILE });
 
-function required(name: string): string {
-  const value = process.env[name];
-  if (!value) {
-    throw new Error(`Missing required environment variable: ${name}`);
-  }
-  return value;
-}
+const { required, optional, number } = settings();
 
 // A comma-separated list of origins, e.g. "https://a.app, https://b.app".
 function originList(value: string): string[] {
@@ -23,12 +18,12 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 export const env = {
   isProduction,
-  port: isProduction ? Number(process.env.PORT) || 8080 : Number(process.env.EXPRESS_PORT) || 5000,
+  port: isProduction ? number('PORT', 8080) : number('EXPRESS_PORT', 5000),
   // The websites allowed to call the API (CORS) and open its WebSockets.
   allowedOrigins: originList(
     isProduction
-      ? process.env.CORS_ORIGIN || 'https://cyberstars.app'
-      : process.env.CORS_DEV_ORIGIN || 'http://localhost:5173',
+      ? optional('CORS_ORIGIN', 'https://cyberstars.app')
+      : optional('CORS_DEV_ORIGIN', 'http://localhost:5173'),
   ),
   jwt: {
     secret: required('JWT_SECRET'),
@@ -39,7 +34,7 @@ export const env = {
     host: required('DB_HOST'),
     database: required('DB_NAME'),
     password: required('DB_PASSWORD'),
-    port: Number(process.env.DB_PORT) || 5432,
+    port: number('DB_PORT', 5432),
   },
   cookie: {
     httpOnly: true,
@@ -48,11 +43,11 @@ export const env = {
     maxAge: 24 * 60 * 60 * 1000,
   },
   resend: {
-    apiKey: process.env.RESEND_API_KEY ?? '',
-    from: process.env.RESEND_FROM ?? 'CyberStars <noreply@cyberstars.app>',
+    apiKey: optional('RESEND_API_KEY', ''),
+    from: optional('RESEND_FROM', 'CyberStars <noreply@cyberstars.app>'),
   },
   gemini: {
-    apiKey: process.env.GEMINI_API_KEY ?? '',
-    model: process.env.GEMINI_MODEL ?? 'gemini-flash-lite-latest',
+    apiKey: optional('GEMINI_API_KEY', ''),
+    model: optional('GEMINI_MODEL', 'gemini-flash-lite-latest'),
   },
 } as const;

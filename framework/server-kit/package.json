@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     "./errors": "./src/errors.ts",
+    "./settings": "./src/settings.ts",
     "./validate": "./src/validate.ts"
   },
   "peerDependencies": {
