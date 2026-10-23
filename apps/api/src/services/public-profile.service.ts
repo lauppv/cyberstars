@@ -10,7 +10,7 @@ import {
   TERMINAL_COURSE_KEYS,
 } from '@cyberstars/shared/constants';
 import type { PublicProfile, PublicProfileBadge } from '@cyberstars/shared/profile';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 const ACTIVE_COURSE_KEYS = new Set<string>([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
 

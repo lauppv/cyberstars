@@ -10,7 +10,7 @@ import type { TokenPayload, AuthenticatedUser } from '@cyberstars/shared/auth';
 import type { Interest } from '@cyberstars/shared/interests';
 import { isCodeLanguage } from '@cyberstars/shared/constants';
 import { placementLevel } from '@cyberstars/shared/placement';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 // Kept in one place because the dummy-hash timing defense below only works if
 // every hash (real and throwaway) uses the same cost.

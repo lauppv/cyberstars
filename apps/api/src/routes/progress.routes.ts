@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { authenticateToken } from '../middleware/auth.js';
-import { validateBody } from '../middleware/validate.js';
+import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import { saveCodeSchema } from '../schemas/progress.schema.js';
 import * as progressController from '../controllers/progress.controller.js';
 

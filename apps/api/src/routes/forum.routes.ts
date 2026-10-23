@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import rateLimit from 'express-rate-limit';
 import { authenticateToken } from '../middleware/auth.js';
-import { validateBody } from '../middleware/validate.js';
+import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import {
   createThreadSchema,
   createPostSchema,

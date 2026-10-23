@@ -1,4 +1,4 @@
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import * as usageRepo from '../repositories/usage.repository.js';
 import {
   USAGE_ACTIONS,

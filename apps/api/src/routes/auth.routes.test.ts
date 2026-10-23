@@ -23,7 +23,7 @@ vi.mock('../middleware/auth.js', () => ({
   authenticateToken: (_req: Request, _res: Response, next: () => void) => next(),
 }));
 
-vi.mock('../middleware/validate.js', () => ({
+vi.mock('@cyberstars-framework/server-kit/validate', () => ({
   validateBody: () => (_req: Request, _res: Response, next: () => void) => next(),
 }));
 

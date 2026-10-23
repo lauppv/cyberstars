@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
 import { ipKeyGenerator } from 'express-rate-limit';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { destroySchema } from '../schemas/terminal.schema.js';
 import * as sessionService from '../services/terminal-session.service.js';
 import { runTerminalTests } from '../services/terminal-tests.service.js';

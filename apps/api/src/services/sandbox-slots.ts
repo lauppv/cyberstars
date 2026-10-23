@@ -1,5 +1,5 @@
 import os from 'os';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { slotQueue, type SlotOptions } from './slot-queue.js';
 
 // Caps how many sandboxes are busy at once across everyone: editor runs, Run

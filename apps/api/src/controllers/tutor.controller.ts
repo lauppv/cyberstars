@@ -5,7 +5,7 @@ import type {
   TutorLessonWork,
   TutorStreamEvent,
 } from '@cyberstars/shared/tutor';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { askTutor, type LessonWork } from '../services/tutor.service.js';
 import * as submissions from '../services/submissions.service.js';
 import * as conversations from '../services/tutor-conversations.service.js';

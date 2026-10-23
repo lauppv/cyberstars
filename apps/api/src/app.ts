@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import { config } from './config/index.js';
 import { RADIO_DIR, UI_BUILD_DIR, UPLOADS_DIR } from './config/paths.js';
-import { errorHandler } from './middleware/errorHandler.js';
+import { errorHandler } from '@cyberstars-framework/server-kit/errors';
 import { servePages } from './middleware/pages.js';
 import authRoutes from './routes/auth.routes.js';
 import progressRoutes from './routes/progress.routes.js';

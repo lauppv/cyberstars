@@ -1,7 +1,7 @@
 import { Router, type Request, type Response, type NextFunction } from 'express';
 import rateLimit from 'express-rate-limit';
 import { authenticateToken, optionalAuth } from '../middleware/auth.js';
-import { validateBody } from '../middleware/validate.js';
+import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import { runTestsSchema } from '../schemas/tests.schema.js';
 import { execRateLimitHandler, guestIpLimiter } from './terminal.routes.js';
 import {

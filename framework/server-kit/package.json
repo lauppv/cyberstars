@@ -1,0 +1,16 @@
+{
+  "name": "@cyberstars-framework/server-kit",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./errors": "./src/errors.ts",
+    "./validate": "./src/validate.ts"
+  },
+  "peerDependencies": {
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6"
+  }
+}

@@ -8,7 +8,7 @@ import {
 } from '@cyberstars/shared/constants';
 import type { TutorFinish, TutorStreamEvent, TutorTerminalCheck } from '@cyberstars/shared/tutor';
 import type { StructureFailure, SubmissionDetail, TestCaseResult } from '@cyberstars/shared/tests';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import {
   converseStream,
   isGeminiConfigured,

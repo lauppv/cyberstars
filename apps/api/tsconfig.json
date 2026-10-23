@@ -13,6 +13,11 @@
     "declaration": true,
     "sourceMap": true
   },
-  "include": ["./**/*.ts", "../../packages/shared/**/*.ts", "../../packages/content/**/*.ts"],
+  "include": [
+    "./**/*.ts",
+    "../../packages/shared/**/*.ts",
+    "../../packages/content/**/*.ts",
+    "../../framework/**/*.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,4 +1,4 @@
-import type { AppError } from '../middleware/errorHandler.js';
+import type { AppError } from '@cyberstars-framework/server-kit/errors';
 
 interface Holder {
   since: number;

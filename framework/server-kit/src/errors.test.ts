@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { AppError, errorHandler } from './errorHandler.js';
+import { AppError, errorHandler } from './errors.js';
 import type { Request, Response, NextFunction } from 'express';
 
 function mockRes() {

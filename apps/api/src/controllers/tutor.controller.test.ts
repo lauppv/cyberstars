@@ -2,7 +2,7 @@ import { EventEmitter } from 'node:events';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { Request, Response } from 'express';
 import type { TutorStreamEvent } from '@cyberstars/shared/tutor';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 const mockTutor = { askTutor: vi.fn() };
 vi.mock('../services/tutor.service.js', () => mockTutor);

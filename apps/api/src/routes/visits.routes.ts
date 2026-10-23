@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import rateLimit from 'express-rate-limit';
 import { optionalAuth } from '../middleware/auth.js';
-import { validateBody } from '../middleware/validate.js';
+import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import { pageViewSchema, stepsReportSchema } from '../schemas/visits.schema.js';
 import { recordPageView, recordSteps } from '../controllers/visits.controller.js';
 

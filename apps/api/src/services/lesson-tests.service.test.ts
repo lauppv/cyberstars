@@ -263,7 +263,7 @@ describe('runLessonTests', () => {
 
   it("passes on a guest's network and its 429 when the network is full", async () => {
     stubFiles();
-    const { AppError } = await import('../middleware/errorHandler.js');
+    const { AppError } = await import('@cyberstars-framework/server-kit/errors');
     mockAcquire.mockRejectedValueOnce(new AppError(429, 'full'));
 
     await expect(

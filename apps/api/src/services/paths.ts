@@ -6,7 +6,7 @@ import {
   isCodeLanguage,
 } from '@cyberstars/shared/constants';
 import { courseDir } from '@cyberstars/content/paths';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 const VALID_COURSE_KEYS = new Set<string>([...ALL_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
 

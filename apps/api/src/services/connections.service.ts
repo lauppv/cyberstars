@@ -1,7 +1,7 @@
 import * as repo from '../repositories/connections.repository.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as notificationsService from './notifications.service.js';
-import { AppError } from '../middleware/errorHandler.js';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import type {
   AcceptedConnection,
   ConnectionRelation,
