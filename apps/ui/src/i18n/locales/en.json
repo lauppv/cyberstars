@@ -835,6 +835,8 @@
     "completed": "✓ Completed",
     "previous": "← Previous",
     "next": "Next →",
+    "nextLesson": "Next lesson →",
+    "nextChallenge": "Next challenge →",
     "actions": "Actions",
     "resetTitle": "Reset code",
     "reset": "Reset",

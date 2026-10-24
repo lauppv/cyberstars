@@ -381,4 +381,18 @@ describe('ResultPanel', () => {
     expect(screen.getByRole('heading', { name: 'Failed' })).toBeInTheDocument();
     expect(screen.getByText('0 / 0')).toBeInTheDocument();
   });
+
+  it('leads on to the next lesson under a pass only', () => {
+    const next = <button>Next lesson</button>;
+    const { rerender } = render(
+      <ResultPanel
+        showRuntime={false}
+        results={{ ...base, status: 'passed', passedCount: 5 }}
+        next={next}
+      />,
+    );
+    expect(screen.getByRole('button', { name: 'Next lesson' })).toBeInTheDocument();
+    rerender(<ResultPanel showRuntime={false} results={{ ...base, passedCount: 4 }} next={next} />);
+    expect(screen.queryByRole('button', { name: 'Next lesson' })).toBeNull();
+  });
 });

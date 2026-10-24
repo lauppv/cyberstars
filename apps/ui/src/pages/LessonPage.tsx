@@ -437,6 +437,24 @@ export function LessonPage() {
   const prevLesson = currentIndex > 0 ? lessonList[currentIndex - 1] : null;
   const nextLesson =
     currentIndex >= 0 && currentIndex < lessonList.length - 1 ? lessonList[currentIndex + 1] : null;
+  const goNext = () => {
+    if (!nextLesson) return;
+    // The tour holds a new account here until the tests pass.
+    if (inTour) showTourNotice();
+    else navigate(`/lesson/${category}/${nextLesson.slug}`);
+  };
+  // Under a passing Run Tests: a student who just passed most likely wants to
+  // move on, without going back to the lesson tab and scrolling to its end.
+  const nextAfterPass = nextLesson && (
+    <button
+      type="button"
+      data-track="next-lesson-after-pass"
+      onClick={goNext}
+      className="self-start px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer"
+    >
+      {isAlgo ? t('lesson.nextChallenge') : t('lesson.nextLesson')}
+    </button>
+  );
 
   const lessonMeta = lessonList.find((l) => l.slug === lesson);
   const hasTests = lessonMeta?.hasTests ?? false;
@@ -806,12 +824,7 @@ export function LessonPage() {
                   </button>
                   <button
                     data-track="next-lesson"
-                    onClick={() => {
-                      if (!nextLesson) return;
-                      // The tour holds a new account here until the tests pass.
-                      if (inTour) showTourNotice();
-                      else navigate(`/lesson/${category}/${nextLesson.slug}`);
-                    }}
+                    onClick={goNext}
                     disabled={!nextLesson}
                     className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
                   >
@@ -822,7 +835,7 @@ export function LessonPage() {
             </div>
             {view === 'result' && testResults && (
               <div data-tour="result" className="flex-1 min-h-0 overflow-y-auto">
-                <ResultPanel results={testResults} showRuntime={isAlgo} />
+                <ResultPanel results={testResults} showRuntime={isAlgo} next={nextAfterPass} />
               </div>
             )}
             {view === 'submissions' && (
@@ -870,6 +883,7 @@ export function LessonPage() {
                 onRunTests={handleRunTerminalChecks}
                 testResult={terminalTestResult}
                 onCloseTests={() => setTerminalTestResult(null)}
+                nextAfterPass={nextAfterPass}
                 testsError={terminalTestsError}
                 onAskTutor={
                   tutor?.enabled

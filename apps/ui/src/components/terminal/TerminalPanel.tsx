@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Eye, RotateCcw } from 'lucide-react';
 import type { TerminalLine } from '../../hooks/useTerminalSession';
@@ -21,6 +21,7 @@ interface Props {
   onRunTests?: () => void;
   testResult?: TerminalTestResult | null;
   onCloseTests?: () => void;
+  nextAfterPass?: ReactNode;
   testsError?: string | null;
   onAskTutor?: () => void;
 }
@@ -40,6 +41,7 @@ export function TerminalPanel({
   onRunTests,
   testResult,
   onCloseTests,
+  nextAfterPass,
   testsError,
   onAskTutor,
 }: Props) {
@@ -247,7 +249,7 @@ export function TerminalPanel({
       </div>
 
       {testResult && onCloseTests && (
-        <TerminalTestResults results={testResult} onClose={onCloseTests} />
+        <TerminalTestResults results={testResult} onClose={onCloseTests} next={nextAfterPass} />
       )}
     </div>
   );

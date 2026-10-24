@@ -875,6 +875,8 @@
     "completed": "✓ Finalizat",
     "previous": "← Anterioara",
     "next": "Următoarea →",
+    "nextLesson": "Lecția următoare →",
+    "nextChallenge": "Algoritmul următor →",
     "actions": "Acțiuni",
     "resetTitle": "Resetează codul",
     "reset": "Resetează",
