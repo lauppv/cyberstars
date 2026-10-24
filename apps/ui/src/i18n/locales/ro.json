@@ -219,7 +219,7 @@
       },
       "level": {
         "title": "Urci de nivel",
-        "text": "XP, niveluri și insigne, cu un cont gratuit.",
+        "text": "XP, niveluri și insigne, odată ce ai cont.",
         "picture": "O serie de 12 zile pe harta activității, cu lecții făcute în multe zile din ultimele trei luni.",
         "streak_one": "{{count}} zi la rând",
         "streak_few": "{{count}} zile la rând",
@@ -308,7 +308,6 @@
         "solved": "Rezolvat",
         "picture": "Maria21 întreabă cum își afișează numele de trei ori, iar Marco Hoeger îi răspunde cu o buclă for."
       },
-      "accountNote": "Cu un cont gratuit",
       "tutor": {
         "title": "Un tutore AI",
         "text": "Îți arată ideea și te lasă să găsești singur rezolvarea, fără să-ți dea răspunsul.",
@@ -337,11 +336,11 @@
       "title": "Întrebări",
       "account": {
         "q": "Am nevoie de cont?",
-        "a": "Nu. Citești, scrii și rulezi cod fără cont. Un cont gratuit ridică limita de zece rulări, îți salvează progresul și îți deschide forumul și tutorele AI."
+        "a": "Nu. Citești, scrii și rulezi cod fără cont. Un cont ridică limita de zece rulări, îți salvează progresul și îți deschide forumul și tutorele AI."
       },
       "free": {
-        "q": "Chiar e gratuit?",
-        "a": "Da. Fără plan plătit, fără card, iar codul e public pe GitHub."
+        "q": "E gratuit?",
+        "a": "Da. Nu există plan plătit și nu ai nevoie de card, iar codul CyberStars e public pe GitHub, deci oricine îl poate verifica."
       },
       "start": {
         "q": "Cu ce limbaj să încep?",
