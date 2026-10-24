@@ -74,6 +74,9 @@ interface QuizQuestion {
   text: string;
   // A snippet the question is about, shown as code.
   code: string | null;
+  // What a program prints, shown under the code: the output the student has to
+  // get with a line, a value or a whole program.
+  output: string | null;
   // In the order shown, which is shuffled for each test.
   options: string[];
 }

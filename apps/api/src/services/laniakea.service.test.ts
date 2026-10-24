@@ -16,13 +16,15 @@ const { DAY_MS, QUIZ_IDLE_MS, QUIZ_RETRY_MS } = await import('@cyberstars/shared
 const NOW = new Date('2026-10-24T12:00:00Z');
 const ago = (ms: number) => new Date(NOW.getTime() - ms);
 
-// Twelve questions; the first option is always the right one.
+// Twelve questions, the first with code and the second with an output; the
+// first option is always the right one.
 function spec(word: string, n = 12) {
   return {
     questions: Array.from({ length: n }, (_, i) => ({
       id: `q${i + 1}`,
       text: `${word} ${i + 1}?`,
       code: i === 0 ? 'print(1)' : null,
+      output: i === 1 ? '1' : null,
       options: ['right', 'w1', 'w2', 'w3'].map((o) => `${o}-${i + 1}`),
       answer: 0,
     })),
@@ -251,6 +253,8 @@ describe('startQuiz', () => {
     quiz.ids.forEach((id, i) => {
       const n = Number(id.slice(1));
       expect(view.questions[i].text).toBe(`Intrebarea ${n}?`);
+      expect(view.questions[i].code).toBe(RO.questions[n - 1].code);
+      expect(view.questions[i].output).toBe(RO.questions[n - 1].output);
       expect(view.questions[i].options).toEqual(
         quiz.orders[i].map((k) => EN.questions[n - 1].options[k]),
       );

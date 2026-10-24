@@ -128,7 +128,12 @@ function quizView(
     mode,
     questions: quiz.ids.map((id, i) => {
       const q = questionOf(shown, id) ?? questionOf(spec, id)!;
-      return { text: q.text, code: q.code, options: quiz.orders[i].map((k) => q.options[k]) };
+      return {
+        text: q.text,
+        code: q.code,
+        output: q.output,
+        options: quiz.orders[i].map((k) => q.options[k]),
+      };
     }),
     answers: quiz.answers.map((choice, i) => answerOf(quiz, i, choice, spec)),
   };
