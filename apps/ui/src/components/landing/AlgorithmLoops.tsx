@@ -124,7 +124,7 @@ export function AlgorithmLoops() {
   const go = playing && onScreen;
   const { sorting, lists, trees, graphs } = drawn;
   return (
-    <section className="max-w-[1120px] mx-auto px-4 sm:px-6 pt-20 sm:pt-24">
+    <section id="loops" className="scroll-mt-14 max-w-[1120px] mx-auto px-4 sm:px-6 pt-20 sm:pt-24">
       <Reveal>
         <SectionHeading title={t('landing.loops.title')}>{t('landing.loops.text')}</SectionHeading>
       </Reveal>

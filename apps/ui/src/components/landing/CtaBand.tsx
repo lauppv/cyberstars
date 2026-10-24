@@ -10,7 +10,7 @@ export function CtaBand() {
   const navigate = useNavigate();
 
   return (
-    <section className="landing-wash-strong">
+    <section id="start" className="landing-wash-strong scroll-mt-14">
       <Reveal className="max-w-[1120px] mx-auto px-4 sm:px-6 py-24 sm:py-32 text-center">
         <h2 className="text-[34px] sm:text-[48px] font-bold tracking-[-1px] leading-[1.05] m-0 mb-8 text-balance">
           {t('landing.cta.final.title')}

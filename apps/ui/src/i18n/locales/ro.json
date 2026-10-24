@@ -370,6 +370,9 @@
       "label": "Linkuri",
       "source": "Codul sursă",
       "license": "Licență"
+    },
+    "rail": {
+      "label": "Capitolele paginii"
     }
   },
   "common": {

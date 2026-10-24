@@ -20,7 +20,7 @@ export function FreeSection() {
     </a>,
   ];
   return (
-    <section className="landing-wash">
+    <section id="free" className="landing-wash scroll-mt-14">
       <Reveal className="max-w-[1120px] mx-auto px-4 sm:px-6 py-24 sm:py-28 text-center">
         <h2 className="text-[34px] sm:text-[48px] font-bold tracking-[-1px] leading-[1.05] m-0 mb-8 landing-gradient-text">
           {t('landing.free.title')}

@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { BrandMark } from '../ui/BrandMark';
 import { LICENSE_URL, SOURCE_URL } from './links';
+import { scrollToSection } from './scrollToSection';
 
 const footLink =
   'p-0 bg-transparent border-none cursor-pointer text-[13px] text-[var(--text2)] hover:text-[var(--text)] no-underline transition';
@@ -12,13 +13,6 @@ const SECTIONS = [
   ['features', 'landing.features.title'],
   ['faq', 'landing.faq.title'],
 ] as const;
-
-// Scrolled to by hand, so the scroll is smooth unless reduced motion is on and
-// the address stays the page's own
-function scrollToSection(id: string) {
-  const smooth = !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  document.getElementById(id)?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
-}
 
 export function LandingFooter() {
   const { t } = useTranslation();

@@ -346,6 +346,9 @@
       "label": "Site links",
       "source": "Source code",
       "license": "License"
+    },
+    "rail": {
+      "label": "Chapters of the page"
     }
   },
   "common": {

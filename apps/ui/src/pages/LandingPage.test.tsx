@@ -46,6 +46,11 @@ afterEach(async () => {
 });
 
 describe('LandingPage', () => {
+  it('shows the chapters of the page at its side', () => {
+    renderPage();
+    expect(screen.getByRole('navigation', { name: 'Chapters of the page' })).toBeDefined();
+  });
+
   it('shows the hero, the proof strip and the sections between its navbar and footer', () => {
     renderPage();
     expect(
