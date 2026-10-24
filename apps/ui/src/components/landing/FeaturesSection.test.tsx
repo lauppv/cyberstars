@@ -35,10 +35,22 @@ describe('FeaturesSection', () => {
       'Algorithm challenges',
       'Linux terminal',
       'The forum',
+      'Laniakea, a space gameBeta',
       'An AI tutor',
     ]);
     for (const b of tiles) expect(within(b).getAllByRole('img')).toHaveLength(1);
     expect(screen.queryByRole('link')).toBeNull();
+  });
+
+  it('marks Laniakea Beta and says it opens after the first Python lessons', () => {
+    renderSection();
+    const card = screen.getByRole('heading', { name: /Laniakea, a space game/ }).parentElement!;
+    expect(card).toHaveTextContent('After 3 Python lessons');
+    expect(card).toHaveTextContent('Beta');
+    expect(screen.getByText(/Every Python lesson you finish becomes a planet\./)).toHaveTextContent(
+      /up to 64 days to keep it for good/,
+    );
+    expect(screen.getByRole('img', { name: /ringed in blue/ })).toHaveTextContent('5 + 3');
   });
 
   it('draws the courses from the curriculum, with their real lesson counts', () => {
