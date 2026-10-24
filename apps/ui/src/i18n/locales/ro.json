@@ -511,31 +511,16 @@
       "login": "Autentificare",
       "signup": "Înregistrare"
     },
-    "brand": {
-      "tagline": "Învață să programezi prin lecții interactive. Scrie cod real și colecționează insigne pe parcurs."
-    },
-    "features": [
-      {
-        "bold": "Editor de cod live",
-        "rest": ": scrie și rulează cod instant"
+    "heading": {
+      "login": {
+        "title": "Bine ai revenit",
+        "subtitle": "Continuă lecțiile de unde ai rămas."
       },
-      {
-        "bold": "Python, C, Java și Linux",
-        "rest": ": programă structurată"
-      },
-      {
-        "bold": "XP & niveluri",
-        "rest": ": câștigă XP și urcă în ranguri cosmice cu fiecare lecție"
-      },
-      {
-        "bold": "Forum comunitar",
-        "rest": ": întreabă, împărtășește și ajută-i pe alții"
-      },
-      {
-        "bold": "Almanahul",
-        "rest": ": istorie tech, curiozități și legende"
+      "signup": {
+        "title": "Creează-ți contul",
+        "subtitle": "Contul îți salvează progresul și îți deschide forumul și tutorele AI."
       }
-    ],
+    },
     "backToLogin": "← Înapoi la autentificare",
     "forgotTitle": "Ai uitat parola",
     "resetTitle": "Resetează parola",

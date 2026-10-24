@@ -483,31 +483,16 @@
       "login": "Log In",
       "signup": "Sign Up"
     },
-    "brand": {
-      "tagline": "Learn to code through interactive lessons. Write real code and collect badges as you go."
-    },
-    "features": [
-      {
-        "bold": "Live code editor",
-        "rest": ": write & run code instantly"
+    "heading": {
+      "login": {
+        "title": "Welcome back",
+        "subtitle": "Pick up your lessons where you left them."
       },
-      {
-        "bold": "Python, C, Java & Linux",
-        "rest": ": structured curriculum"
-      },
-      {
-        "bold": "XP & levels",
-        "rest": ": earn XP and climb cosmic ranks with every lesson"
-      },
-      {
-        "bold": "Community forum",
-        "rest": ": ask, share, and help others"
-      },
-      {
-        "bold": "The Almanac",
-        "rest": ": tech history, facts & legends"
+      "signup": {
+        "title": "Create your account",
+        "subtitle": "An account saves your progress and opens the forum and the AI tutor."
       }
-    ],
+    },
     "backToLogin": "← Back to login",
     "forgotTitle": "Forgot Password",
     "resetTitle": "Reset Password",
