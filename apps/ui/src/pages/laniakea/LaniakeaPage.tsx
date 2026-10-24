@@ -24,7 +24,7 @@ import { StarMap } from './StarMap';
 import { TargetReadout } from './TargetReadout';
 import { ShipStats, SpeedPanel } from './ShipStats';
 import { QuizDialog } from './QuizDialog';
-import { IntroScreen, LoadingScreen, LockedScreen, PauseScreen } from './Screens';
+import { IntroScreen, LeaveScreen, LoadingScreen, LockedScreen, PauseScreen } from './Screens';
 import './laniakea.css';
 
 // A phone or a tablet, whose main pointer is a finger: it flies with the stick
@@ -71,6 +71,7 @@ export function LaniakeaPage() {
   const now = useNow(offset);
   const [started, setStarted] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [leaving, setLeaving] = useState(false);
   const [quizSlug, setQuizSlug] = useState<string | null>(null);
   const [boardOpen, setBoardOpen] = useState(() => !isTouch && window.innerWidth > 900);
   const [target, setTarget] = useState<string | null>(null);
@@ -151,7 +152,7 @@ export function LaniakeaPage() {
 
   useEffect(() => engine.current?.setMarks(marks), [marks, engineReady]);
   useEffect(() => engine.current?.setTarget(target), [target, engineReady]);
-  const flying = started && !paused && !quizSlug;
+  const flying = started && !paused && !leaving && !quizSlug;
   useEffect(() => engine.current?.setActive(flying), [flying, engineReady]);
 
   const quit = useCallback(() => navigate('/'), [navigate]);
@@ -175,12 +176,18 @@ export function LaniakeaPage() {
         }
         return;
       }
+      // Q asks first; a second Q leaves, Esc stays
+      if (leaving) {
+        if (e.code === 'KeyQ') quit();
+        if (e.code === 'Escape') setLeaving(false);
+        return;
+      }
       if (e.code === 'Escape') {
         setPaused((p) => !p);
         return;
       }
       if (e.code === 'KeyQ') {
-        quit();
+        setLeaving(true);
         return;
       }
       if (paused) return;
@@ -192,7 +199,7 @@ export function LaniakeaPage() {
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [unlocked, started, paused, quizSlug, quit, land, feeds]);
+  }, [unlocked, started, paused, leaving, quizSlug, quit, land, feeds]);
 
   useEffect(() => {
     if (!achievement) return;
@@ -266,7 +273,7 @@ export function LaniakeaPage() {
         <button
           type="button"
           className="lnk-btn"
-          onClick={quit}
+          onClick={() => setLeaving(true)}
           aria-label={t('laniakea.hud.quit')}
         >
           <LogOut size={14} />
@@ -330,9 +337,10 @@ export function LaniakeaPage() {
       )}
 
       {!started && <IntroScreen isTouch={isTouch} onBegin={() => setStarted(true)} />}
-      {started && paused && !quizSlug && (
+      {started && paused && !leaving && !quizSlug && (
         <PauseScreen onResume={() => setPaused(false)} onQuit={quit} />
       )}
+      {leaving && !quizSlug && <LeaveScreen onStay={() => setLeaving(false)} onLeave={quit} />}
       {quizSlug && (
         <QuizDialog
           slug={quizSlug}

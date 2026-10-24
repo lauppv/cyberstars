@@ -951,6 +951,12 @@
       "paused": "Paused",
       "resume": "Resume"
     },
+    "leave": {
+      "title": "Leave Laniakea?",
+      "text": "Your planets stay yours. Press Q again to leave or Esc to keep flying.",
+      "stay": "Keep flying",
+      "leave": "Back to the dashboard"
+    },
     "aim": {
       "land": "Land",
       "landKey": "E to land",

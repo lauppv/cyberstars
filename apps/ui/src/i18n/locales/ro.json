@@ -992,6 +992,12 @@
       "paused": "Pauză",
       "resume": "Continuă"
     },
+    "leave": {
+      "title": "Ieși din Laniakea?",
+      "text": "Planetele tale rămân ale tale. Apasă din nou Q ca să ieși sau Esc ca să zbori mai departe.",
+      "stay": "Zbori mai departe",
+      "leave": "Înapoi la panou"
+    },
     "aim": {
       "land": "Aterizează",
       "landKey": "E ca să aterizezi",
