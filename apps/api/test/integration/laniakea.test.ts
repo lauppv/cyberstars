@@ -1,19 +1,13 @@
 import { describe, it, expect } from 'vitest';
-import fs from 'fs';
-import path from 'path';
 import { createAuthenticatedAgent, userIdFor } from './helpers.js';
 import { prisma } from '../../src/config/db.js';
-import { contentDir } from '../../src/services/paths.js';
+import { loadQuiz } from '../../src/services/laniakea-quiz.js';
 import type { StoredQuiz } from '../../src/repositories/laniakea.repository.js';
 
 type Agent = Awaited<ReturnType<typeof createAuthenticatedAgent>>['agent'];
 
-// The right answers of the print lesson's questions, by id
-const answers = new Map<string, number>(
-  JSON.parse(
-    fs.readFileSync(path.join(contentDir('python'), 'print-quiz.json'), 'utf8'),
-  ).questions.map((q: { id: string; answer: number }) => [q.id, q.answer]),
-);
+// The right answers of the print lesson's questions, the made ones too, by id
+const answers = new Map(loadQuiz('print', 'en')!.questions.map((q) => [q.id, q.answer]));
 
 async function student(lessons = ['print', 'variables-str', 'variables-int']) {
   const s = await createAuthenticatedAgent();
