@@ -9,11 +9,13 @@ import {
   Gauge,
   House,
   Library,
+  Lock,
   LifeBuoy,
   LogIn,
   LogOut,
   Mail,
   MessagesSquare,
+  Orbit,
   ScrollText,
   Settings,
   ShieldCheck,
@@ -23,12 +25,15 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { Avatar } from '../ui/Avatar';
+import { BetaBadge } from '../ui/BetaBadge';
 import { BrandMark } from '../ui/BrandMark';
 import { TutorFace } from '../tutor/TutorFace';
 import { useAuth } from '../../context/AuthContext';
 import { useMessages } from '../../context/MessagesContext';
 import { useTutor } from '../../context/TutorContext';
 import { useGamification } from '../../hooks/useGamification';
+import { useAllProgress } from '../../context/ProgressContext';
+import { LANIAKEA_COURSE, LANIAKEA_UNLOCK_LESSONS } from '@cyberstars/shared/laniakea';
 import { isAdmin } from '@cyberstars/shared/auth';
 import { canAccessFeature } from '@cyberstars/shared/features';
 
@@ -68,12 +73,18 @@ function NavItem({
   icon: Icon,
   label,
   badge,
+  note,
+  tag,
   onNavigate,
 }: {
   to: string;
   icon: LucideIcon;
   label: string;
+  // A small mark right after the label, such as Beta
+  tag?: ReactNode;
   badge?: number;
+  // A few words at the end of the row, such as what still opens it
+  note?: string;
   onNavigate: () => void;
 }) {
   const { pathname } = useLocation();
@@ -91,9 +102,16 @@ function NavItem({
     >
       <Icon size={ICON_SIZE} strokeWidth={1.75} className="flex-shrink-0 opacity-80" />
       <span className="truncate">{label}</span>
+      {tag}
       {badge != null && badge > 0 && (
         <span className="ml-auto min-w-[18px] h-[18px] px-1 rounded-full bg-[var(--accent)] text-white text-[10px] font-semibold leading-[18px] text-center tabular-nums">
           {badge > 9 ? '9+' : badge}
+        </span>
+      )}
+      {note && (
+        <span className="ml-auto flex items-center gap-1 text-[10px] text-[var(--text3)] whitespace-nowrap">
+          <Lock size={10} strokeWidth={2} />
+          {note}
         </span>
       )}
     </Link>
@@ -122,6 +140,25 @@ function TutorItem({ onNavigate }: { onNavigate: () => void }) {
       <TutorFace size={ICON_SIZE} strokeWidth={1.75} className="flex-shrink-0 opacity-80" />
       <span className="truncate">{t('tutor.title')}</span>
     </button>
+  );
+}
+
+// Laniakea opens after the first Python lessons; until then its row says how
+// many are left, and the page itself says what the game is.
+function LaniakeaItem({ onNavigate }: { onNavigate: () => void }) {
+  const { t } = useTranslation();
+  const { progressMap, isLoading } = useAllProgress();
+  const done = progressMap[LANIAKEA_COURSE]?.lessons.filter((l) => l.completed).length ?? 0;
+  const left = Math.max(0, LANIAKEA_UNLOCK_LESSONS - done);
+  return (
+    <NavItem
+      to="/laniakea"
+      icon={Orbit}
+      label={t('nav.laniakea')}
+      tag={<BetaBadge hint={t('laniakea.betaHint')} />}
+      note={!isLoading && left > 0 ? t('sidebar.laniakeaLeft', { count: left }) : undefined}
+      onNavigate={onNavigate}
+    />
   );
 }
 
@@ -290,6 +327,7 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
             onNavigate={onNavigate}
           />
           <NavItem to="/almanac" icon={Library} label={t('nav.almanac')} onNavigate={onNavigate} />
+          {user && <LaniakeaItem onNavigate={onNavigate} />}
         </Section>
 
         {user && (
