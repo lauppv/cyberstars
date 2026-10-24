@@ -198,18 +198,18 @@ const TUTOR_TURNS: ['student' | 'tutor', string][] = [
 
 // A student stuck on a loop talking it through with the tutor, laid out like
 // the tutor panel: each answer points at the idea and leaves the fix to them.
-// A phone has room for the first question and answer only.
+// A picture narrower than 576px has room for the first question and answer only.
 export function TutorPicture() {
   const { t } = useTranslation();
   return (
     <Box label={t('landing.features.tutor.picture')}>
-      <div className="max-w-[640px] mx-auto flex flex-col gap-3">
+      <div className="@container max-w-[640px] mx-auto flex flex-col gap-3">
         {TUTOR_TURNS.map(([who, key], i) =>
           who === 'student' ? (
             <div
               key={key}
               className={`self-end max-w-[85%] px-3 py-2 rounded-[var(--radius)] bg-[var(--accent)]/15 text-[13px] ${
-                i >= 2 ? 'hidden md:block' : ''
+                i >= 2 ? 'hidden @xl:block' : ''
               }`}
             >
               {t(`landing.features.tutor.${key}`)}
@@ -217,7 +217,7 @@ export function TutorPicture() {
           ) : (
             <div
               key={key}
-              className={`max-w-[85%] items-start gap-2.5 ${i >= 2 ? 'hidden md:flex' : 'flex'}`}
+              className={`max-w-[85%] items-start gap-2.5 ${i >= 2 ? 'hidden @xl:flex' : 'flex'}`}
             >
               <TutorMark size="sm" />
               <p className="pt-0.5 text-[13px] leading-relaxed">

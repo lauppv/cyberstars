@@ -287,18 +287,22 @@
       "title": "Ce găsești înăuntru",
       "courses": {
         "title": "Cursuri",
+        "text": "Python, Java, C și Linux, de la primul print la procese și fire de execuție, câte o lecție scurtă pe rând.",
         "picture": "Python, Java, C și Linux, cu numărul de lecții din fiecare."
       },
       "algorithms": {
         "title": "Provocări de algoritmi",
+        "text": "Provocări de la ușor la greu, verificate pe teste ascunse, cu timpul tău lângă cel al soluției de referință.",
         "picture": "Cinci provocări de Python, de la ușor la greu, primele trei rezolvate."
       },
       "linux": {
         "title": "Terminalul Linux",
+        "text": "Un terminal adevărat chiar în pagină, cu misiuni de rezolvat pe o mașină doar a ta.",
         "picture": "Un terminal Linux: pwd, ls și ls rapoarte, fiecare cu rezultatul lui."
       },
       "forum": {
         "title": "Forumul",
+        "text": "Întreabă când te-ai blocat și ajută când nu; răspunsul care a mers e marcat drept soluție.",
         "question": "Cum îmi afișez numele de 3 ori?",
         "answer": "Cu o buclă for:",
         "solved": "Rezolvat",
@@ -307,6 +311,7 @@
       "accountNote": "Cu un cont gratuit",
       "tutor": {
         "title": "Un tutore AI",
+        "text": "Îți arată ideea și te lasă să găsești singur rezolvarea, fără să-ți dea răspunsul.",
         "question": "De ce bucla mea afișează 0, 1, 2 și nu 1, 2, 3?",
         "answer": "range(3) începe să numere de la 0, așa că primești trei numere care se termină la 2. range poate primi și un număr de la care să înceapă: care ți-ar da 1, 2, 3?",
         "followUp": "Deci range(1, 3)?",
@@ -315,7 +320,7 @@
       },
       "laniakea": {
         "title": "Laniakea, un joc în spațiu",
-        "body": "Fiecare lecție de Python pe care o termini devine o planetă. Zbori până la ea și treci un test de 10 întrebări despre lecție ca s-o cucerești, apoi treci-l din nou după 1, 2, 4 și până la 64 de zile ca să rămână a ta pentru totdeauna, așa că ce înveți nu se uită.",
+        "text": "Fiecare lecție de Python pe care o termini devine o planetă. Zbori până la ea și treci un test de 10 întrebări despre lecție ca s-o cucerești.",
         "note_one": "După {{count}} lecție de Python",
         "note_few": "După {{count}} lecții de Python",
         "note_other": "După {{count}} de lecții de Python",

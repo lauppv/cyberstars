@@ -264,18 +264,22 @@
       "title": "What's inside",
       "courses": {
         "title": "Courses",
+        "text": "Python, Java, C and Linux, from your first print to processes and threads, one short lesson at a time.",
         "picture": "Python, Java, C and Linux, with the number of lessons in each."
       },
       "algorithms": {
         "title": "Algorithm challenges",
+        "text": "Challenges from easy to hard, graded against hidden tests, with your runtime next to the reference.",
         "picture": "Five Python challenges from easy to hard, the first three solved."
       },
       "linux": {
         "title": "Linux terminal",
+        "text": "A real terminal right in the page, with missions to solve on a machine of your own.",
         "picture": "A Linux terminal: pwd, ls and ls reports, each with its output."
       },
       "forum": {
         "title": "The forum",
+        "text": "Ask when you are stuck and help when you are not; the answer that worked gets marked as the solution.",
         "question": "How do I print my name 3 times?",
         "answer": "With a for loop:",
         "solved": "Solved",
@@ -284,6 +288,7 @@
       "accountNote": "With a free account",
       "tutor": {
         "title": "An AI tutor",
+        "text": "It points you at the idea and lets you find the fix yourself, without handing you the answer.",
         "question": "Why does my loop print 0, 1, 2 and not 1, 2, 3?",
         "answer": "range(3) starts counting at 0, so you get three numbers ending at 2. range can also take a number to start from: which one would give you 1, 2, 3?",
         "followUp": "So range(1, 3)?",
@@ -292,7 +297,7 @@
       },
       "laniakea": {
         "title": "Laniakea, a space game",
-        "body": "Every Python lesson you finish becomes a planet. Fly to it and pass a 10-question test on the lesson to conquer it, then pass it again after 1, 2, 4 and up to 64 days to keep it for good, so what you learn sticks.",
+        "text": "Every Python lesson you finish becomes a planet. Fly to it and pass a 10-question test on the lesson to conquer it.",
         "note_one": "After {{count}} Python lesson",
         "note_other": "After {{count}} Python lessons",
         "question": "What does this print?",
