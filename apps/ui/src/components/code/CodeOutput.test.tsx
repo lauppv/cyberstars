@@ -116,4 +116,12 @@ describe('CodeOutput', () => {
     stdin.textContent = 'abc';
     expect(() => fireEvent.focus(stdin)).not.toThrow();
   });
+
+  it('grows with the output from its height up to the room it is given', () => {
+    render(<CodeOutput output="a" height="120px" growTo={480} />);
+    const box = screen.getByText('a').parentElement as HTMLElement;
+    expect(box.style.minHeight).toBe('120px');
+    expect(box.style.maxHeight).toBe('480px');
+    expect(box.style.height).toBe('');
+  });
 });

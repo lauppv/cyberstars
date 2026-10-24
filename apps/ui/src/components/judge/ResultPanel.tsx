@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { RunTestsResponse } from '@cyberstars/shared/tests';
 import { Verdict } from './Verdict';
 import { FailedCase } from './FailedCase';
@@ -7,13 +8,16 @@ import { Runtime } from './Runtime';
 // The latest Run Tests verdict, shown in the lesson panel's Result tab. The
 // judge stops at the first failing test, so that test is the one to show.
 // `showRuntime`: only algorithm lessons are about speed; a course lesson only
-// has to work, so it gets no timings.
+// has to work, so it gets no timings. `next` leads on to the next lesson, shown
+// under a pass only: a student who just passed most likely wants to move on.
 export function ResultPanel({
   results,
   showRuntime,
+  next,
 }: {
   results: RunTestsResponse;
   showRuntime: boolean;
+  next?: ReactNode;
 }) {
   const failedCase = results.cases.find((c) => !c.passed) ?? null;
 
@@ -27,6 +31,7 @@ export function ResultPanel({
         passedCount={results.passedCount}
         total={results.total}
       />
+      {results.status === 'passed' && next}
       {failedCase && <FailedCase result={failedCase} comparator={results.comparator} />}
       <PassedCases cases={results.cases} />
       {showRuntime && <Runtime runtimeMs={results.runtimeMs} referenceMs={results.referenceMs} />}

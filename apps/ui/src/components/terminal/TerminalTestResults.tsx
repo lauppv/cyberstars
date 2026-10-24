@@ -1,12 +1,15 @@
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TerminalTestResult } from '@cyberstars/shared/terminal';
 
 interface Props {
   results: TerminalTestResult;
   onClose: () => void;
+  // Leads on to the next lesson, shown under a pass only.
+  next?: ReactNode;
 }
 
-export function TerminalTestResults({ results, onClose }: Props) {
+export function TerminalTestResults({ results, onClose, next }: Props) {
   const { t } = useTranslation();
   const passed = results.status === 'passed';
 
@@ -41,6 +44,7 @@ export function TerminalTestResults({ results, onClose }: Props) {
           </li>
         ))}
       </ul>
+      {passed && next && <div className="mt-3">{next}</div>}
     </div>
   );
 }

@@ -36,4 +36,16 @@ describe('AchievementToast', () => {
     expect(corner).toContainElement(badge as HTMLElement);
     expect(xp).not.toBe(badge);
   });
+
+  it('keeps its timer when the page renders again with a new onClose', () => {
+    vi.useFakeTimers();
+    const onClose = vi.fn();
+    const { rerender } = render(
+      <AchievementToast title="+10 XP" visible onClose={() => onClose()} />,
+    );
+    act(() => vi.advanceTimersByTime(3000));
+    rerender(<AchievementToast title="+10 XP" visible onClose={() => onClose()} />);
+    act(() => vi.advanceTimersByTime(2000));
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
 });

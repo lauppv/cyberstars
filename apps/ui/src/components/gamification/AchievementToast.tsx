@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Corner } from '../layout/Corner';
 
@@ -12,11 +12,17 @@ interface AchievementToastProps {
 // badge it earns, which come together, stack instead of covering each other.
 export function AchievementToast({ title, visible, onClose }: AchievementToastProps) {
   const { t } = useTranslation();
+  // The page renders again while the toast is up (the student keeps typing),
+  // often with a new onClose, so the timer reads the latest without starting over.
+  const close = useRef(onClose);
+  useEffect(() => {
+    close.current = onClose;
+  });
   useEffect(() => {
     if (!visible) return;
-    const t = setTimeout(onClose, 5000);
-    return () => clearTimeout(t);
-  }, [visible, onClose]);
+    const timer = setTimeout(() => close.current(), 5000);
+    return () => clearTimeout(timer);
+  }, [visible]);
 
   if (!visible) return null;
 
