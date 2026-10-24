@@ -30,6 +30,31 @@ const STATUS_COLOR: Record<TicketStatus, string> = {
   CLOSED: 'var(--text3)',
 };
 
+/** The server's reason in the page's language, else a general one. */
+function errMsg(err: unknown): string {
+  return err instanceof Error && err.message ? err.message : i18next.t('common.somethingWrong');
+}
+
+// What a list or a conversation that didn't load says in its place
+function LoadError({ text, onRetry }: { text: string; onRetry: () => void }) {
+  const { t } = useTranslation();
+  return (
+    <div
+      role="alert"
+      className="panel p-4 flex items-center justify-between gap-3 text-[12px] text-[var(--error)]"
+    >
+      <span className="min-w-0">{text}</span>
+      <button
+        type="button"
+        onClick={onRetry}
+        className="shrink-0 px-3 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] font-semibold cursor-pointer hover:bg-[var(--surface)] transition"
+      >
+        {t('support.retry')}
+      </button>
+    </div>
+  );
+}
+
 export function SupportPage() {
   const { t } = useTranslation();
   const { user, isLoggedIn, isLoading } = useAuth();
@@ -40,20 +65,30 @@ export function SupportPage() {
   const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
-  const [myTickets, setMyTickets] = useState<SupportTicketDTO[]>([]);
-  const [allTickets, setAllTickets] = useState<SupportTicketDTO[]>([]);
+  const [submitError, setSubmitError] = useState('');
+  // null until the list has loaded, so an empty list is only ever a real one
+  const [myTickets, setMyTickets] = useState<SupportTicketDTO[] | null>(null);
+  const [myTicketsError, setMyTicketsError] = useState('');
+  const [allTickets, setAllTickets] = useState<SupportTicketDTO[] | null>(null);
+  const [allTicketsError, setAllTicketsError] = useState('');
   const [openTicket, setOpenTicket] = useState<SupportTicketDTO | null>(null);
 
   const refresh = useCallback(() => {
     supportService
       .getMyTickets()
-      .then(setMyTickets)
-      .catch(() => {});
+      .then((tickets) => {
+        setMyTickets(tickets);
+        setMyTicketsError('');
+      })
+      .catch((err) => setMyTicketsError(errMsg(err)));
     if (isAdmin)
       supportService
         .getAllTickets()
-        .then(setAllTickets)
-        .catch(() => {});
+        .then((tickets) => {
+          setAllTickets(tickets);
+          setAllTicketsError('');
+        })
+        .catch((err) => setAllTicketsError(errMsg(err)));
   }, [isAdmin]);
 
   useEffect(() => {
@@ -63,6 +98,7 @@ export function SupportPage() {
   const submit = async () => {
     if (!subject.trim() || !message.trim()) return;
     setSubmitting(true);
+    setSubmitError('');
     try {
       await supportService.createTicket({ type, subject: subject.trim(), message: message.trim() });
       setSubject('');
@@ -71,13 +107,18 @@ export function SupportPage() {
       setSent(true);
       setTimeout(() => setSent(false), 3000);
       refresh();
+    } catch (err) {
+      setSubmitError(errMsg(err));
     } finally {
       setSubmitting(false);
     }
   };
 
+  // The open ticket shows the new status at once; a failure throws for the
+  // ticket to say why.
   const changeStatus = async (id: number, status: TicketStatus) => {
     await supportService.updateTicketStatus(id, status);
+    setOpenTicket((tk) => (tk?.id === id ? { ...tk, status } : tk));
     refresh();
   };
 
@@ -165,6 +206,11 @@ export function SupportPage() {
                     {t('support.submitted')}
                   </span>
                 )}
+                {submitError && (
+                  <span role="alert" className="text-[var(--error)] text-[12px] font-semibold">
+                    {submitError}
+                  </span>
+                )}
               </div>
             </form>
           </div>
@@ -174,7 +220,9 @@ export function SupportPage() {
             <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3">
               {t('support.yourTickets')}
             </h2>
-            {myTickets.length === 0 ? (
+            {myTicketsError ? (
+              <LoadError text={myTicketsError} onRetry={refresh} />
+            ) : myTickets === null ? null : myTickets.length === 0 ? (
               <p className="panel p-4 text-[12px] text-[var(--text3)]">{t('support.noTickets')}</p>
             ) : (
               <div className="flex flex-col gap-2.5">
@@ -191,7 +239,9 @@ export function SupportPage() {
               <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--accent)] mb-3">
                 {t('support.allTickets')}
               </h2>
-              {allTickets.length === 0 ? (
+              {allTicketsError ? (
+                <LoadError text={allTicketsError} onRetry={refresh} />
+              ) : allTickets === null ? null : allTickets.length === 0 ? (
                 <p className="panel p-4 text-[12px] text-[var(--text3)]">
                   {t('support.noTicketsAdmin')}
                 </p>
@@ -259,20 +309,26 @@ function TicketConversation({
   isAdmin: boolean;
   currentUserId: number;
   onBack: () => void;
-  onStatusChange: (s: TicketStatus) => void;
+  onStatusChange: (s: TicketStatus) => Promise<void>;
 }) {
   const { t } = useTranslation();
   const [messages, setMessages] = useState<SupportMessageDTO[]>([]);
+  const [messagesError, setMessagesError] = useState('');
   const [reply, setReply] = useState('');
   const [sending, setSending] = useState(false);
+  const [replyError, setReplyError] = useState('');
+  const [statusError, setStatusError] = useState('');
   const bottomRef = useRef<HTMLDivElement>(null);
   const statusColor = STATUS_COLOR[ticket.status];
 
   const loadMessages = useCallback(() => {
     supportService
       .getTicketMessages(ticket.id)
-      .then(setMessages)
-      .catch(() => {});
+      .then((list) => {
+        setMessages(list);
+        setMessagesError('');
+      })
+      .catch((err) => setMessagesError(errMsg(err)));
   }, [ticket.id]);
 
   useEffect(() => {
@@ -286,12 +342,24 @@ function TicketConversation({
   const sendReply = async () => {
     if (!reply.trim()) return;
     setSending(true);
+    setReplyError('');
     try {
       await supportService.addTicketMessage(ticket.id, reply.trim());
       setReply('');
       loadMessages();
+    } catch (err) {
+      setReplyError(errMsg(err));
     } finally {
       setSending(false);
+    }
+  };
+
+  const changeStatus = async (status: TicketStatus) => {
+    setStatusError('');
+    try {
+      await onStatusChange(status);
+    } catch (err) {
+      setStatusError(errMsg(err));
     }
   };
 
@@ -317,7 +385,7 @@ function TicketConversation({
         {isAdmin ? (
           <select
             value={ticket.status}
-            onChange={(e) => onStatusChange(e.target.value as TicketStatus)}
+            onChange={(e) => void changeStatus(e.target.value as TicketStatus)}
             className="text-[11px] font-semibold bg-[var(--bg2)] border border-[var(--border)] rounded px-2 py-1 outline-none cursor-pointer"
             style={{ color: statusColor }}
           >
@@ -340,7 +408,7 @@ function TicketConversation({
             </span>
             {ticket.status !== 'CLOSED' && ticket.status !== 'RESOLVED' && (
               <button
-                onClick={() => onStatusChange('CLOSED')}
+                onClick={() => void changeStatus('CLOSED')}
                 className="text-[10px] font-semibold px-2 py-1 rounded bg-[#1a7a3a] text-white border-none cursor-pointer hover:brightness-110 transition"
               >
                 {t('support.markSolved')}
@@ -349,6 +417,11 @@ function TicketConversation({
           </div>
         )}
       </div>
+      {statusError && (
+        <p role="alert" className="-mt-2 text-right text-[12px] text-[var(--error)]">
+          {statusError}
+        </p>
+      )}
 
       {/* Messages */}
       <div
@@ -364,6 +437,7 @@ function TicketConversation({
           isAdmin={false}
         />
 
+        {messagesError && <LoadError text={messagesError} onRetry={loadMessages} />}
         {messages.map((m) => (
           <MessageBubble
             key={m.id}
@@ -400,6 +474,11 @@ function TicketConversation({
             {sending ? '...' : t('support.send')}
           </button>
         </form>
+      )}
+      {replyError && (
+        <p role="alert" className="-mt-2 text-[12px] text-[var(--error)]">
+          {replyError}
+        </p>
       )}
     </div>
   );

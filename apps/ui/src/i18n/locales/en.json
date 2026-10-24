@@ -606,7 +606,8 @@
     "replyPlaceholder": "Type a reply...",
     "send": "Send",
     "you": "You",
-    "admin": "admin"
+    "admin": "admin",
+    "retry": "Try again"
   },
   "forum": {
     "time": {

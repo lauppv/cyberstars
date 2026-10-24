@@ -629,7 +629,8 @@
     "replyPlaceholder": "Scrie un răspuns...",
     "send": "Trimite",
     "you": "Tu",
-    "admin": "admin"
+    "admin": "admin",
+    "retry": "Încearcă din nou"
   },
   "forum": {
     "time": {
