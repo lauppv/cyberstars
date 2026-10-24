@@ -348,6 +348,16 @@ Every signed-in student, behind the `tutorChat` feature key; no guests.
 | GET    | `/api/usage`                                 | Yes  | The student's `UsageSummary`: used, limit, remaining and refill time of Show Solution and the tutor session; admins are unlimited                                   |
 | POST   | `/api/usage/solution/:courseKey/:lessonSlug` | Yes  | Reveals the lesson's reference solution (`{ lang?, language? }`) and takes one Show Solution; `{ solution, usage }`, 404 when the lesson has none, 429 at the limit |
 
+### Laniakea
+
+All authenticated, 120 requests a minute per student.
+
+| Method | Endpoint                          | Auth | Description                                                                                                                                                            |
+| ------ | --------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/api/laniakea`                   | Yes  | `LaniakeaState`: whether the game is open, and every Python lesson as a planet with its level, last pass, next recap and retry time                                    |
+| POST   | `/api/laniakea/:slug/quiz`        | Yes  | Opens a 10-question test on the planet (`{ lang }`) or picks up the one going on; 403 locked or lesson not done, 404 no questions, 409 while a failed test's wait runs |
+| POST   | `/api/laniakea/:slug/quiz/answer` | Yes  | Answers the next question (`{ index, choice }`) and gets the right option back; once over, the planet as it now stands and whether it moved up                         |
+
 ## Database schema
 
 Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma). Field names use camelCase in TypeScript, mapped to snake_case columns via Prisma's `@map`.
@@ -368,6 +378,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma). Fie
 - **Connection**: directed connection request (requester → addressee, `PENDING`/`ACCEPTED`)
 - **PageVisit / VisitSalt / VisitTotal**: today's page views keyed by a salted daily hash, the day's salt, and the daily totals they become once the day is over
 - **TutorConversation / TutorMessage**: a student's tutor conversations, each general or about one lesson or challenge, titled by its first question (the newest 50 kept), and their messages and answers, each answer with how it ended (the newest 200 per conversation kept)
+- **LaniakeaPlanet**: a student's planet in Laniakea, one per Python lesson: its level, last pass, retry time, the questions seen in the current round, and the test going on
 - **UsageWindow**: what a student has used of each capped feature (Show Solution, the tutor session) in its current window, one row per student and feature
 - **GuestVisit / VisitStep**: a guest's day on the site and what they did in it (pages, named clicks, scroll depth) in order of id; only the visit keeps a time, that of its first page; the hash goes when the day ends, the visit after 90 days
 
