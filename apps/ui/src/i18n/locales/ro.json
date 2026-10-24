@@ -1147,23 +1147,6 @@
       "command": "Nu folosi {{name}} aici"
     }
   },
-  "radio": {
-    "title": "Radio Focus",
-    "play": "Redă",
-    "pause": "Pauză",
-    "expand": "Mai mult",
-    "collapse": "Mai puțin",
-    "hide": "Ascunde",
-    "show": "Arată radioul",
-    "live": "Live",
-    "loading": "Se încarcă",
-    "offline": "Offline",
-    "volume": "Volum",
-    "liveNote": "O singură transmisie live: toți aud același moment. La reluare te reconectezi la live.",
-    "track": {
-      "neonSkylines": "Neon Skylines"
-    }
-  },
   "publicProfile": {
     "notFound": "Acest explorator nu a putut fi găsit.",
     "error": "Nu am putut încărca acest profil.",

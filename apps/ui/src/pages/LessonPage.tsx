@@ -775,10 +775,7 @@ export function LessonPage() {
                   </VisualSteps.Provider>
                 </div>
 
-                <div
-                  className="flex gap-3 mt-10"
-                  style={{ paddingBottom: 'calc(1rem + var(--radio-clearance, 0px))' }}
-                >
+                <div className="flex gap-3 mt-10 pb-4">
                   <button
                     data-track="previous-lesson"
                     onClick={() => prevLesson && navigate(`/lesson/${category}/${prevLesson.slug}`)}

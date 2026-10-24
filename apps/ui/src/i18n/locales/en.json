@@ -1110,23 +1110,6 @@
       "command": "Don't use {{name}} here"
     }
   },
-  "radio": {
-    "title": "Focus Radio",
-    "play": "Play",
-    "pause": "Pause",
-    "expand": "More",
-    "collapse": "Less",
-    "hide": "Hide",
-    "show": "Show radio",
-    "live": "Live",
-    "loading": "Loading",
-    "offline": "Offline",
-    "volume": "Volume",
-    "liveNote": "One live broadcast: everyone hears the same moment. Resuming re-joins live.",
-    "track": {
-      "neonSkylines": "Neon Skylines"
-    }
-  },
   "publicProfile": {
     "notFound": "This explorer could not be found.",
     "error": "Could not load this profile.",
