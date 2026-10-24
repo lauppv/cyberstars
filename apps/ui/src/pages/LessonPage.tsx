@@ -30,6 +30,7 @@ import { TutorToast } from '../components/tutor/TutorToast';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
+import { CodeDrafts } from '../components/code/codeDrafts';
 import { PanelTabs, type PanelTab } from '../components/judge/PanelTabs';
 import { ResultPanel } from '../components/judge/ResultPanel';
 import { SubmissionsPanel } from '../components/judge/SubmissionsPanel';
@@ -250,7 +251,7 @@ export function LessonPage() {
   const loadedStarterRef = useRef('');
   // On a multi-language lesson, the code each language had when the student
   // switched away from it, so switching back finds it as it was.
-  const draftsRef = useRef(new Map<string, string>());
+  const draftsRef = useRef(new CodeDrafts());
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -290,7 +291,14 @@ export function LessonPage() {
     if (loadedLessonRef.current !== lessonKey) {
       loadedLessonRef.current = lessonKey;
       loadedStarterRef.current = starterCode;
-      setUserCode(draftsRef.current.get(shownLanguage ?? '') ?? savedCode ?? starterCode);
+      setUserCode(
+        draftsRef.current.open(
+          shownLanguage ?? '',
+          { code: savedCode, failed: savedCodeFailed },
+          starterCode,
+          () => window.confirm(t('lesson.confirmLoadSaved')),
+        ),
+      );
       return;
     }
     if (starterCode !== loadedStarterRef.current) {
@@ -298,7 +306,7 @@ export function LessonPage() {
       loadedStarterRef.current = starterCode;
       setUserCode((prev) => (prev === prevStarter ? starterCode : prev));
     }
-  }, [isLoading, category, lesson, shownLanguage, starterCode, savedCode]);
+  }, [isLoading, category, lesson, shownLanguage, starterCode, savedCode, savedCodeFailed, t]);
 
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
@@ -454,11 +462,7 @@ export function LessonPage() {
   const switchCodeLanguage = useCallback(
     (next: CodeLanguage) => {
       if (!shownLanguage || next === shownLanguage || isRunning || isTesting) return;
-      // Untouched starter code over saved code that failed to load would hide
-      // that code on the way back, when it may load.
-      if (!savedCodeUnknown || userCode !== starterCode) {
-        draftsRef.current.set(shownLanguage, userCode);
-      }
+      draftsRef.current.leave(shownLanguage, userCode, starterCode, savedCodeUnknown);
       if (userCode !== starterCode && userCode !== savedCode) autoSave(userCode);
       clearOutput();
       setTestResults(null);
