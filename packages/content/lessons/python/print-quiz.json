@@ -181,5 +181,126 @@
       "options": ["Hello\nBye", "Bye\nHello", "Hello Bye", "Only Bye"],
       "answer": 0
     }
+  ],
+  "templates": [
+    {
+      "id": "say",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "print(\"{{text}}\")",
+      "values": [
+        {
+          "text": "Good morning"
+        },
+        {
+          "text": "I have 3 cats"
+        },
+        {
+          "text": "10 + 5"
+        },
+        {
+          "text": "Python is fun"
+        },
+        {
+          "text": "See you tomorrow"
+        }
+      ],
+      "mistakes": [
+        ["\"{{text}}\"", "'\"{{text}}\"'"],
+        ["\"{{text}}\"", "\"print {{text}}\""],
+        ["\"{{text}}\"", "{{text}}"],
+        ["\"{{text}}\"", "\"({{text}})\""]
+      ]
+    },
+    {
+      "id": "two-lines",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")",
+      "values": [
+        {
+          "a": "Ready",
+          "b": "Go"
+        },
+        {
+          "a": "Hello",
+          "b": "Bye"
+        },
+        {
+          "a": "I am 12",
+          "b": "I like pizza"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{a}}\")\nprint(\"{{b}}\")", "print(\"{{b}}\")\nprint(\"{{a}}\")"],
+        ["\")\nprint(\"", " "],
+        ["print(\"{{b}}\")", "print({{b}})"]
+      ]
+    },
+    {
+      "id": "gap-line",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "print(\"{{a}}\")\n___\nprint(\"{{c}}\")",
+      "values": [
+        {
+          "a": "Ready",
+          "b": "Set",
+          "c": "Go"
+        },
+        {
+          "a": "One",
+          "b": "Two",
+          "c": "Three"
+        },
+        {
+          "a": "Red",
+          "b": "Green",
+          "c": "Blue"
+        }
+      ],
+      "answer": "print(\"{{b}}\")",
+      "wrong": ["print({{b}})", "print(\"{{c}}\")", "\"{{b}}\"", "Print(\"{{b}}\")"]
+    },
+    {
+      "id": "gap-value",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "print(___)",
+      "values": [
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "Pizza"
+        },
+        {
+          "text": "CyberStars"
+        }
+      ],
+      "answer": "\"{{text}}\"",
+      "wrong": ["{{text}}", "'\"{{text}}\"'", "\"print {{text}}\""]
+    },
+    {
+      "id": "bad-line",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "My name is Ana",
+          "b": "I am 12 years old",
+          "c": "I like pizza",
+          "d": "CyberStars is the coolest"
+        },
+        {
+          "a": "Ready",
+          "b": "Set",
+          "c": "Go",
+          "d": "Done"
+        }
+      ],
+      "bug": ["print(\"{{c}}\")", "print({{c}})"]
+    }
   ]
 }
