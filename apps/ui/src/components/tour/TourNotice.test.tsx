@@ -27,4 +27,9 @@ describe('TourNotice', () => {
     act(() => vi.advanceTimersByTime(6000));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
+
+  it("stacks with the lesson's other toasts in the corner", () => {
+    render(<TourNotice visible onClose={vi.fn()} />);
+    expect(document.getElementById('corner')).toContainElement(screen.getByRole('alert'));
+  });
 });
