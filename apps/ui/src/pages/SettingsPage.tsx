@@ -18,18 +18,25 @@ function Toggle({
   onChange,
   label,
   hint,
+  error,
 }: {
   checked: boolean;
   disabled?: boolean;
   onChange: (next: boolean) => void;
   label: string;
   hint: string;
+  error?: string;
 }) {
   return (
     <div className="flex items-center justify-between gap-4 py-2.5">
       <div className="min-w-0">
         <div className="text-[13px] font-semibold text-[var(--text)]">{label}</div>
         <div className="text-[11px] text-[var(--text3)] mt-0.5">{hint}</div>
+        {error && (
+          <div role="alert" className="text-[11px] text-[var(--error)] mt-1">
+            {error}
+          </div>
+        )}
       </div>
       <button
         role="switch"
@@ -63,6 +70,8 @@ export function SettingsPage() {
     showConnections: true,
   });
   const [savingFlag, setSavingFlag] = useState<PrivacyFlag | null>(null);
+  // Why the last switch the student flipped didn't save
+  const [flagError, setFlagError] = useState<{ key: PrivacyFlag; text: string } | null>(null);
 
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -97,11 +106,16 @@ export function SettingsPage() {
   const toggleFlag = async (key: PrivacyFlag, value: boolean) => {
     setPrivacy((p) => ({ ...p, [key]: value }));
     setSavingFlag(key);
+    setFlagError(null);
     try {
       await profileService.updateProfile({ [key]: value });
       refreshUser();
-    } catch {
+    } catch (err) {
       setPrivacy((p) => ({ ...p, [key]: !value })); // revert on failure
+      setFlagError({
+        key,
+        text: err instanceof Error ? err.message : t('common.somethingWrong'),
+      });
     } finally {
       setSavingFlag(null);
     }
@@ -238,6 +252,7 @@ export function SettingsPage() {
                 onChange={(v) => toggleFlag('showBio', v)}
                 label={t('settings.showBio')}
                 hint={t('settings.showBioHint')}
+                error={flagError?.key === 'showBio' ? flagError.text : undefined}
               />
               <Toggle
                 checked={privacy.showStats}
@@ -245,6 +260,7 @@ export function SettingsPage() {
                 onChange={(v) => toggleFlag('showStats', v)}
                 label={t('settings.showStats')}
                 hint={t('settings.showStatsHint')}
+                error={flagError?.key === 'showStats' ? flagError.text : undefined}
               />
               <Toggle
                 checked={privacy.showProgress}
@@ -252,6 +268,7 @@ export function SettingsPage() {
                 onChange={(v) => toggleFlag('showProgress', v)}
                 label={t('settings.showProgress')}
                 hint={t('settings.showProgressHint')}
+                error={flagError?.key === 'showProgress' ? flagError.text : undefined}
               />
               <Toggle
                 checked={privacy.showConnections}
@@ -259,6 +276,7 @@ export function SettingsPage() {
                 onChange={(v) => toggleFlag('showConnections', v)}
                 label={t('settings.showConnections')}
                 hint={t('settings.showConnectionsHint')}
+                error={flagError?.key === 'showConnections' ? flagError.text : undefined}
               />
             </div>
           </section>
