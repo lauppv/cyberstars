@@ -595,7 +595,12 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     if (!current) return;
     if (current.id !== null) {
       const { id } = current;
-      await tutorService.deleteConversation(id);
+      try {
+        await tutorService.deleteConversation(id);
+      } catch (err) {
+        // A 404 is one already gone, deleted from another tab.
+        if (!(err instanceof ApiClientError && err.status === 404)) throw err;
+      }
       setHistory((list) => list && list.filter((c) => c.id !== id));
     }
     choice.current++;

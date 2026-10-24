@@ -131,6 +131,13 @@ export function TutorPanel() {
   const firstName = useAuth().user?.name?.trim().split(/\s+/)[0];
   const [draft, setDraft] = useState('');
   const [noticeClosedFor, setNoticeClosedFor] = useState(closedNotice);
+  // A delete or an earlier page that failed, kept with the conversation it
+  // failed in, so another one doesn't show it.
+  const [failed, setFailed] = useState<{
+    key: string | null;
+    action: 'delete' | 'earlier';
+    text: string;
+  } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLTextAreaElement>(null);
   const following = useRef(true);
@@ -195,6 +202,7 @@ export function TutorPanel() {
   function ask(text: string): boolean {
     if (!text.trim() || busy || limited) return false;
     following.current = true;
+    setFailed(null);
     tutor.send(text);
     return true;
   }
@@ -203,18 +211,30 @@ export function TutorPanel() {
     if (ask(draft)) setDraft('');
   }
 
+  function failedIn(key: string | null, action: 'delete' | 'earlier', err: unknown) {
+    const text = err instanceof Error && err.message ? err.message : t('common.somethingWrong');
+    setFailed({ key, action, text });
+  }
+
   function loadEarlier() {
     const el = scrollRef.current;
     if (el) prepend.current = { height: el.scrollHeight, top: el.scrollTop };
-    tutor.loadEarlier().catch(() => {
+    const key = tutor.conversationKey;
+    setFailed(null);
+    tutor.loadEarlier().catch((err: unknown) => {
       prepend.current = null;
+      failedIn(key, 'earlier', err);
     });
   }
 
   async function clear() {
     if (!window.confirm(t('tutor.confirmDelete'))) return;
-    await tutor.clear().catch(() => {});
+    const key = tutor.conversationKey;
+    setFailed(null);
+    await tutor.clear().catch((err: unknown) => failedIn(key, 'delete', err));
   }
+
+  const shownFailed = failed?.key === tutor.conversationKey ? failed : null;
 
   const empty = messages.length === 0 && !pending && !failure;
   // Its title cheers while the lesson's tests have just passed, else greets.
@@ -302,6 +322,12 @@ export function TutorPanel() {
         </div>
       )}
 
+      {shownFailed?.action === 'delete' && (
+        <p role="alert" className="mx-4 mt-3 text-[12px] text-[var(--error)] flex-shrink-0">
+          {shownFailed.text}
+        </p>
+      )}
+
       <div
         ref={scrollRef}
         onScroll={(e) => {
@@ -318,6 +344,11 @@ export function TutorPanel() {
           >
             {t('tutor.earlier')}
           </button>
+        )}
+        {shownFailed?.action === 'earlier' && (
+          <p role="alert" className="self-center text-[12px] text-[var(--error)]">
+            {shownFailed.text}
+          </p>
         )}
         {tutor.loadFailed && <Note>{t('tutor.loadFailed')}</Note>}
         {empty && !tutor.loading && !tutor.loadFailed && (
