@@ -340,6 +340,165 @@
         }
       ],
       "bug": ["print(\"{{c}}\")", "print({{c}})"]
+    },
+    {
+      "id": "three-lines",
+      "kind": "prints",
+      "text": "Ce afișează programul?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")",
+      "values": [
+        {
+          "a": "Trezirea",
+          "b": "Spalatul pe dinti",
+          "c": "Micul dejun"
+        },
+        {
+          "a": "3",
+          "b": "2",
+          "c": "1"
+        },
+        {
+          "a": "Rosu",
+          "b": "Galben",
+          "c": "Verde"
+        },
+        {
+          "a": "Ana",
+          "b": "Ben",
+          "c": "Cris"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{a}}\")\nprint(\"{{b}}\")", "print(\"{{b}}\")\nprint(\"{{a}}\")"],
+        ["print(\"{{b}}\")\nprint(\"{{c}}\")", "print(\"{{c}}\")\nprint(\"{{b}}\")"],
+        ["print(\"{{a}}\")\n", ""],
+        ["print(\"{{c}}\")", "print(\"{{a}}\")"]
+      ]
+    },
+    {
+      "id": "one-line",
+      "kind": "which-program",
+      "text": "Care linie afișează asta?",
+      "code": "print(\"{{text}}\")",
+      "values": [
+        {
+          "text": "Salutare"
+        },
+        {
+          "text": "Am 10 ani"
+        },
+        {
+          "text": "Hai sa mergem"
+        },
+        {
+          "text": "Spatiul e mare"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{text}}\")", "print({{text}})"],
+        ["print", "Print"],
+        ["(\"{{text}}\")", " \"{{text}}\""],
+        ["\"{{text}}\"", "\"{{text}}"]
+      ]
+    },
+    {
+      "id": "sum-text",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "values": [
+        {
+          "a": 5,
+          "b": 3
+        },
+        {
+          "a": 10,
+          "b": 2
+        },
+        {
+          "a": 7,
+          "b": 7
+        },
+        {
+          "a": 4,
+          "b": 1
+        }
+      ],
+      "answer": "\"{{a}} + {{b}}\"",
+      "wrong": ["{{a}} + {{b}}", "\"{{a}}+{{b}}\"", "\"{{a}}{{b}}\""]
+    },
+    {
+      "id": "gap-last",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\n___",
+      "values": [
+        {
+          "a": "Cioc cioc",
+          "b": "Cine e?",
+          "c": "Python"
+        },
+        {
+          "a": "Luni",
+          "b": "Marti",
+          "c": "Miercuri"
+        },
+        {
+          "a": "Inceput",
+          "b": "Mijloc",
+          "c": "Sfarsit"
+        }
+      ],
+      "answer": "print(\"{{c}}\")",
+      "wrong": ["print({{c}})", "print \"{{c}}\"", "print(\"{{b}}\")", "Print(\"{{c}}\")"]
+    },
+    {
+      "id": "bad-quote",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "Salut",
+          "b": "Ma numesc Ben",
+          "c": "Am 11 ani",
+          "d": "Pa"
+        },
+        {
+          "a": "Planeta unu",
+          "b": "Planeta doi",
+          "c": "Planeta trei",
+          "d": "Acasa"
+        },
+        {
+          "a": "Pasul 1",
+          "b": "Pasul 2",
+          "c": "Pasul 3",
+          "d": "Gata"
+        }
+      ],
+      "bug": ["print(\"{{b}}\")", "print(\"{{b}})"]
+    },
+    {
+      "id": "bad-case",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "Imi place pizza",
+          "b": "Imi plac pastele",
+          "c": "Imi place supa",
+          "d": "Imi place tortul"
+        },
+        {
+          "a": "Unu",
+          "b": "Doi",
+          "c": "Trei",
+          "d": "Patru"
+        }
+      ],
+      "bug": ["print(\"{{d}}\")", "Print(\"{{d}}\")"]
     }
   ]
 }
