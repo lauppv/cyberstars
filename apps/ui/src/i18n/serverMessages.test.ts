@@ -37,6 +37,8 @@ const INTERNAL = new Set([
   'Eroare:',
   'C parse failed',
   'C injection does not support $list/$dict values',
+  // a broken Laniakea quiz file, caught by its content test before it ships
+  'no questions list',
 ]);
 
 describe('localizeServerMessage', () => {
