@@ -1,0 +1,185 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce face print()?",
+      "options": [
+        "Afișează ceva pe ecran",
+        "Trimite codul la imprimantă",
+        "Salvează codul într-un fișier",
+        "Șterge ultima linie de cod"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează?",
+      "code": "print(\"salut, imi place pizza\")",
+      "options": [
+        "salut, imi place pizza",
+        "\"salut, imi place pizza\"",
+        "print salut, imi place pizza",
+        "Nimic"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "Care linie afișează Salut pe ecran?",
+      "options": ["print(Salut)", "print(\"Salut\")", "print \"Salut\"", "Print(\"Salut\")"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "print(salut, imi place pizza)",
+      "options": [
+        "Afișează salut, imi place pizza",
+        "Afișează \"salut, imi place pizza\"",
+        "Se oprește cu o eroare",
+        "Afișează o linie goală"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "print(\"5\")",
+      "options": ["\"5\"", "cinci", "5", "O eroare"],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "Ce trebuie pus în jurul textului dat lui print()?",
+      "options": ["Ghilimele", "Paranteze pătrate", "Două puncte", "Nimic"],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "print(\"Salut\")",
+      "options": ["Salut", "\"Salut\"", "(Salut)", "print(Salut)"],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "print(\"Am 2 caini\")\nprint(\"si o pisica\")",
+      "options": [
+        "Am 2 caini\nsi o pisica",
+        "Am 2 caini si o pisica",
+        "si o pisica\nAm 2 caini",
+        "Am 2 caini"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "print(\"5 + 3\")",
+      "options": ["8", "5 + 3", "53", "O eroare"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "print(\"C\")\nprint(\"B\")\nprint(\"A\")",
+      "options": ["A\nB\nC", "C\nB\nA", "CBA", "C B A"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Câte linii afișează programul?",
+      "code": "print(\"Pe locuri\")\nprint(\"Fiti gata\")\nprint(\"Start\")",
+      "options": ["1", "2", "3", "4"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "Căreia dintre linii îi lipsește ceva, așa că se oprește cu o eroare?",
+      "options": [
+        "print(\"Salut)",
+        "print(\"Salut\")",
+        "print(\"Salut lume\")",
+        "print(\"Salut, lume\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "Care program afișează Numele meu este Ana pe o linie și Am 12 ani pe următoarea?",
+      "options": [
+        "print(\"Numele meu este Ana\")\nprint(\"Am 12 ani\")",
+        "print(\"Numele meu este Ana Am 12 ani\")",
+        "print(Numele meu este Ana)\nprint(Am 12 ani)",
+        "print(\"Am 12 ani\")\nprint(\"Numele meu este Ana\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "print(\"Pizza\")",
+      "options": ["pizza", "Pizza", "\"Pizza\"", "P"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Cum numește lecția print()?",
+      "options": [
+        "O funcție, o instrucțiune care îi spune calculatorului să afișeze ceva",
+        "O variabilă care ține un text",
+        "Un fișier în care se salvează programul",
+        "Un comentariu pe care calculatorul îl sare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "print(\"CyberStars e cel mai tare\")",
+      "options": [
+        "CyberStars e cel mai tare",
+        "cyberstars e cel mai tare",
+        "\"CyberStars e cel mai tare\"",
+        "CyberStars"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "Care dintre linii funcționează?",
+      "options": [
+        "print(Am 12 ani)",
+        "print(\"Am 12 ani\")",
+        "print(\"Am 12 ani)",
+        "print(Am \"12\" ani)"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Care e cel mai bun mod de a afla ce face o bucată de cod?",
+      "options": [
+        "O rulezi și vezi ce se întâmplă",
+        "Nu o schimbi niciodată",
+        "Ghicești și treci mai departe",
+        "O ștergi și o scrii din nou"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "print(\"2 + 2 = 4\")",
+      "options": ["4", "2 + 2 = 4", "True", "2 + 2"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "Un program are print(\"Salut\") pe prima linie și print(\"Pa\") pe a doua. Ce afișează?",
+      "options": ["Salut\nPa", "Pa\nSalut", "Salut Pa", "Doar Pa"],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does print() do?",
+      "options": [
+        "It shows something on the screen",
+        "It sends the code to a printer",
+        "It saves the code in a file",
+        "It deletes the last line of code"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "print(\"hey, I like pizza\")",
+      "options": [
+        "hey, I like pizza",
+        "\"hey, I like pizza\"",
+        "print hey, I like pizza",
+        "Nothing"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "Which line shows Hello on the screen?",
+      "options": ["print(Hello)", "print(\"Hello\")", "print \"Hello\"", "Print(\"Hello\")"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "What happens when this runs?",
+      "code": "print(hey, I like pizza)",
+      "options": [
+        "It shows hey, I like pizza",
+        "It shows \"hey, I like pizza\"",
+        "It stops with an error",
+        "It shows an empty line"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "print(\"5\")",
+      "options": ["\"5\"", "five", "5", "An error"],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "What must go around the text we give to print()?",
+      "options": ["Quotes", "Square brackets", "A colon", "Nothing at all"],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "print(\"Hi\")",
+      "options": ["Hi", "\"Hi\"", "(Hi)", "print(Hi)"],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "print(\"I have 2 dogs\")\nprint(\"and 1 cat\")",
+      "options": [
+        "I have 2 dogs\nand 1 cat",
+        "I have 2 dogs and 1 cat",
+        "and 1 cat\nI have 2 dogs",
+        "I have 2 dogs"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "print(\"5 + 3\")",
+      "options": ["8", "5 + 3", "53", "An error"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "print(\"C\")\nprint(\"B\")\nprint(\"A\")",
+      "options": ["A\nB\nC", "C\nB\nA", "CBA", "C B A"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "How many lines does this program show?",
+      "code": "print(\"Ready\")\nprint(\"Set\")\nprint(\"Go\")",
+      "options": ["1", "2", "3", "4"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "Which line is missing something and stops with an error?",
+      "options": [
+        "print(\"Hello)",
+        "print(\"Hello\")",
+        "print(\"Hello world\")",
+        "print(\"Hello, world\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "Which program shows My name is Ana on one line and I am 12 years old on the next?",
+      "options": [
+        "print(\"My name is Ana\")\nprint(\"I am 12 years old\")",
+        "print(\"My name is Ana I am 12 years old\")",
+        "print(My name is Ana)\nprint(I am 12 years old)",
+        "print(\"I am 12 years old\")\nprint(\"My name is Ana\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "print(\"Pizza\")",
+      "options": ["pizza", "Pizza", "\"Pizza\"", "P"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does the lesson call print()?",
+      "options": [
+        "A function, an instruction that tells the computer to show something",
+        "A variable that holds text",
+        "A file where the program is saved",
+        "A comment the computer skips"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "print(\"CyberStars is the coolest\")",
+      "options": [
+        "CyberStars is the coolest",
+        "cyberstars is the coolest",
+        "\"CyberStars is the coolest\"",
+        "CyberStars"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "Which of these lines works?",
+      "options": [
+        "print(I am 12 years old)",
+        "print(\"I am 12 years old\")",
+        "print(\"I am 12 years old)",
+        "print(I am \"12\" years old)"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "What is the best way to find out what a piece of code does?",
+      "options": [
+        "Run it and see what happens",
+        "Never change it",
+        "Guess and move on",
+        "Delete it and write it again"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "print(\"2 + 2 = 4\")",
+      "options": ["4", "2 + 2 = 4", "True", "2 + 2"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "A program has print(\"Hello\") on its first line and print(\"Bye\") on its second. What does it show?",
+      "options": ["Hello\nBye", "Bye\nHello", "Hello Bye", "Only Bye"],
+      "answer": 0
+    }
+  ]
+}
