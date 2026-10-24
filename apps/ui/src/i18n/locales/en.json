@@ -154,6 +154,7 @@
     "laniakea": {
       "locked_one": "Finish {{count}} Python lesson to open the explorer game, where every lesson you finish is a planet to conquer.",
       "locked_other": "Finish {{count}} Python lessons to open the explorer game, where every lesson you finish is a planet to conquer.",
+      "new": "New",
       "open": "Every Python lesson you finish is a planet to conquer.",
       "owned": "Planets conquered: {{owned}}/{{total}}",
       "recaps_one": "{{count}} recap open",
@@ -952,6 +953,12 @@
       "paused": "Paused",
       "resume": "Resume"
     },
+    "leave": {
+      "title": "Leave Laniakea?",
+      "text": "Your planets stay yours. Press Q again to leave or Esc to keep flying.",
+      "stay": "Keep flying",
+      "leave": "Back to the dashboard"
+    },
     "aim": {
       "land": "Land",
       "landKey": "E to land",
@@ -979,6 +986,7 @@
       "order": "Lesson order",
       "level": "Furthest along",
       "empty": "Finish a Python lesson and its planet shows up here.",
+      "pick": "Pick a planet to fly to",
       "waiting_one": "{{count}} more planet waits for its lesson",
       "waiting_other": "{{count}} more planets wait for their lessons",
       "fly": "Fly here",

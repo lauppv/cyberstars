@@ -87,6 +87,11 @@ export function ShipBoard({
           </button>
         </div>
       </div>
+      {listed.length > 0 && !target && (
+        <p className="m-0 px-3 pt-2.5 text-[12px] font-semibold lnk-purple">
+          {t('laniakea.board.pick')}
+        </p>
+      )}
       {listed.length === 0 ? (
         <p className="m-0 p-4 text-[12px] lnk-dim">{t('laniakea.board.empty')}</p>
       ) : (

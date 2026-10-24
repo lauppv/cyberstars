@@ -131,6 +131,25 @@ export function IntroScreen({ isTouch, onBegin }: { isTouch: boolean; onBegin: (
   );
 }
 
+// Before Q or the exit button takes the student back to the dashboard.
+export function LeaveScreen({ onStay, onLeave }: { onStay: () => void; onLeave: () => void }) {
+  const { t } = useTranslation();
+  return (
+    <div className="lnk-screen lnk-see-through" role="alertdialog" aria-labelledby="lnk-leave">
+      <h1 id="lnk-leave">{t('laniakea.leave.title')}</h1>
+      <p>{t('laniakea.leave.text')}</p>
+      <div className="flex gap-2">
+        <button type="button" className="lnk-btn lnk-btn-primary" onClick={onStay} autoFocus>
+          {t('laniakea.leave.stay')}
+        </button>
+        <button type="button" className="lnk-btn" onClick={onLeave}>
+          {t('laniakea.leave.leave')}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function PauseScreen({ onResume, onQuit }: { onResume: () => void; onQuit: () => void }) {
   const { t } = useTranslation();
   return (

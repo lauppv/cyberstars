@@ -170,6 +170,7 @@
       "locked_one": "Termină {{count}} lecție de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
       "locked_few": "Termină {{count}} lecții de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
       "locked_other": "Termină {{count}} de lecții de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
+      "new": "Nou",
       "open": "Fiecare lecție de Python pe care o termini e o planetă de cucerit.",
       "owned": "Planete cucerite: {{owned}}/{{total}}",
       "recaps_one": "{{count}} recapitulare deschisă",
@@ -993,6 +994,12 @@
       "paused": "Pauză",
       "resume": "Continuă"
     },
+    "leave": {
+      "title": "Ieși din Laniakea?",
+      "text": "Planetele tale rămân ale tale. Apasă din nou Q ca să ieși sau Esc ca să zbori mai departe.",
+      "stay": "Zbori mai departe",
+      "leave": "Înapoi la panou"
+    },
     "aim": {
       "land": "Aterizează",
       "landKey": "E ca să aterizezi",
@@ -1020,6 +1027,7 @@
       "order": "Ordinea lecțiilor",
       "level": "Cele mai avansate",
       "empty": "Termină o lecție de Python și planeta ei apare aici.",
+      "pick": "Alege o planetă spre care să zbori",
       "waiting_one": "Încă {{count}} planetă își așteaptă lecția",
       "waiting_few": "Încă {{count}} planete își așteaptă lecțiile",
       "waiting_other": "Încă {{count}} de planete își așteaptă lecțiile",

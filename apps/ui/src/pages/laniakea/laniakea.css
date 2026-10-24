@@ -61,6 +61,9 @@
 .lnk-teal {
   color: rgba(0, 214, 143, 0.9);
 }
+.lnk-purple {
+  color: #b8a6ff;
+}
 
 .lnk-btn {
   display: inline-flex;
@@ -240,17 +243,21 @@ kbd.lnk-kbd {
   bottom: 16px;
   right: 16px;
 }
+/* A set width for the two readouts in the middle: a distance or a countdown
+   ticking, or another planet's name, changes the words, not the panel. */
 .lnk-bottom-center {
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
+  width: 360px;
   max-width: calc(100vw - 2 * 230px);
 }
 .lnk-aim {
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  max-width: min(420px, calc(100vw - 32px));
+  width: 340px;
+  max-width: calc(100vw - 32px);
   text-align: center;
 }
 .lnk-stats {
@@ -573,6 +580,7 @@ kbd.lnk-kbd {
   right: 16px;
   bottom: 168px;
   transform: none;
+  width: auto;
   max-width: none;
   text-align: center;
 }

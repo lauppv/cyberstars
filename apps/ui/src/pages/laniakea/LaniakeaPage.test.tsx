@@ -226,10 +226,25 @@ describe('LaniakeaPage', () => {
     expect(screen.getByText('Velocity').nextSibling).toHaveTextContent('1,200');
   });
 
-  it('goes back to the dashboard with Q', async () => {
+  it('asks before Q goes back to the dashboard, and a second Q leaves', async () => {
     await flying();
     key('KeyQ');
+    expect(screen.getByRole('alertdialog', { name: 'Leave Laniakea?' })).toBeInTheDocument();
+    expect(h.engine.setActive).toHaveBeenLastCalledWith(false);
+    key('KeyQ');
     expect(screen.getByText('Dashboard')).toBeInTheDocument();
+  });
+
+  it('keeps flying when the student stays', async () => {
+    await flying();
+    key('KeyQ');
+    key('Escape');
+    expect(screen.queryByRole('alertdialog')).toBeNull();
+    expect(screen.queryByText('Paused')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Exit' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Keep flying' }));
+    expect(screen.queryByRole('alertdialog')).toBeNull();
+    expect(screen.queryByText('Dashboard')).toBeNull();
   });
 
   it('says so when the 3D engine cannot load', async () => {
@@ -243,6 +258,7 @@ describe('LaniakeaPage', () => {
     fireEvent.click(await screen.findByRole('button', { name: /Take the helm/ }));
     await waitFor(() => expect(h.createExplorer).toHaveBeenCalled());
     fireEvent.click(screen.getByRole('button', { name: 'Exit' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Back to the dashboard' }));
     expect(screen.getByText('Dashboard')).toBeInTheDocument();
     expect(h.engine.dispose).toHaveBeenCalled();
   });
