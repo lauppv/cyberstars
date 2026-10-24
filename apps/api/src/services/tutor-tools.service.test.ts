@@ -106,7 +106,7 @@ describe('listPages', () => {
     expect(links(map)).toContain('/settings');
     expect(links(map)).not.toContain('/leaderboard');
     expect(links(map)).not.toContain('/admin');
-    expect(links(map)).not.toContain('/laniakea');
+    expect(links(map)).toContain('/laniakea');
   });
 
   it('lists preview pages on dev, still without Admin for a student', () => {
