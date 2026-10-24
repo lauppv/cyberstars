@@ -1,10 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import {
-  canAccessFeature,
-  DISABLED_FEATURES,
-  PREVIEW_FEATURES,
-  type FeatureKey,
-} from './features.js';
+import { canAccessFeature, PREVIEW_FEATURES, type FeatureKey } from './features.js';
 
 // These assertions describe the gate's behavior for a preview vs. a launched
 // feature. They force the sample flag to the state under test (in try/finally)
@@ -42,13 +37,5 @@ describe('canAccessFeature', () => {
     withFlag(false, () => {
       expect(canAccessFeature(SAMPLE, undefined, true)).toBe(true);
     });
-  });
-
-  it('a disabled feature is closed to everyone, founder and dev included', () => {
-    for (const key of DISABLED_FEATURES) {
-      expect(canAccessFeature(key, 'FOUNDER', true)).toBe(false);
-      expect(canAccessFeature(key, 'ADMIN', false)).toBe(false);
-      expect(canAccessFeature(key, undefined, false)).toBe(false);
-    }
   });
 });

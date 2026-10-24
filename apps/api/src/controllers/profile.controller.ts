@@ -52,8 +52,7 @@ export async function updateProfile(
 ): Promise<void> {
   try {
     const userId = req.user!.id;
-    const { bio, status, showBio, showStats, showProgress, showActivity, showConnections } =
-      req.body;
+    const { bio, status, showBio, showStats, showProgress, showConnections } = req.body;
 
     const data: {
       bio?: string | null;
@@ -62,7 +61,6 @@ export async function updateProfile(
       showBio?: boolean;
       showStats?: boolean;
       showProgress?: boolean;
-      showActivity?: boolean;
       showConnections?: boolean;
     } = {};
 
@@ -83,7 +81,6 @@ export async function updateProfile(
     if (showBio !== undefined) data.showBio = showBio;
     if (showStats !== undefined) data.showStats = showStats;
     if (showProgress !== undefined) data.showProgress = showProgress;
-    if (showActivity !== undefined) data.showActivity = showActivity;
     if (showConnections !== undefined) data.showConnections = showConnections;
 
     await userRepo.updateProfile(userId, data);

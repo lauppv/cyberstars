@@ -5,7 +5,6 @@ export type FeatureKey =
   | 'messaging'
   | 'notifications'
   | 'connections'
-  | 'radio'
   | 'tutorChat';
 
 // Features that are "preview": live in the code, but on production only ADMINs
@@ -14,19 +13,12 @@ export type FeatureKey =
 // team can build and test them. To launch a feature publicly, flip its value to
 // `false` (or drop the key), a single edit, no refactor.
 export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
-  leaderboard: true,
-  messaging: true,
-  notifications: true,
-  connections: true,
-  radio: false,
+  leaderboard: false,
+  messaging: false,
+  notifications: false,
+  connections: false,
   tutorChat: false,
 };
-
-// Features switched off for everyone, admins and dev included. Temporary: drop
-// the key to turn the feature back on.
-// - radio: its mp3 was lost with the old VPS and no licensed replacement is
-//   picked yet (see apps/ui/src/constants/radioTrack.ts)
-export const DISABLED_FEATURES: ReadonlySet<FeatureKey> = new Set<FeatureKey>(['radio']);
 
 // Shared access rule, used identically by the server (isProd = NODE_ENV ===
 // 'production') and the client (isProd = import.meta.env.PROD) so UI gating and
@@ -36,7 +28,6 @@ export function canAccessFeature(
   role: UserRole | undefined,
   isProd: boolean,
 ): boolean {
-  if (DISABLED_FEATURES.has(key)) return false; // switched off for everyone
   if (!PREVIEW_FEATURES[key]) return true; // fully launched
   if (!isProd) return true; // dev: open to everyone
   return isAdmin(role); // prod preview: admins (and founder) only

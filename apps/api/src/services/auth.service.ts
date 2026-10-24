@@ -107,7 +107,6 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
     showBio: user.showBio,
     showStats: user.showStats,
     showProgress: user.showProgress,
-    showActivity: user.showActivity,
     showConnections: user.showConnections,
     onboardedAt: user.onboardedAt?.toISOString() ?? null,
     placementLevel: user.placementScore === null ? null : placementLevel(user.placementScore),

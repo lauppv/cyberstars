@@ -62,7 +62,9 @@ export async function getPublicProfile(
 
   const needStats = isSelf || user.showStats;
   const needProgress = isSelf || user.showProgress;
-  const needActivity = isSelf || user.showActivity;
+  // The heatmap tells on which day each lesson was done, so only its owner
+  // sees it; there is no setting to show it to others.
+  const needActivity = isSelf;
   const needConnections = isSelf || user.showConnections;
 
   if (needConnections) {

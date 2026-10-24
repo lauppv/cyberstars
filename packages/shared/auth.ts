@@ -25,7 +25,6 @@ export interface AuthenticatedUser {
   showBio: boolean;
   showStats: boolean;
   showProgress: boolean;
-  showActivity: boolean;
   showConnections: boolean;
   // When the first-lesson tour was finished; null holds the account on it.
   onboardedAt: string | null;

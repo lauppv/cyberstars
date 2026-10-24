@@ -10,7 +10,7 @@ import * as profileService from '../services/profileService';
 import { INPUT_CLS } from '../constants/styles';
 import { EyeIcon } from '../components/ui/EyeIcon';
 
-type PrivacyFlag = 'showBio' | 'showStats' | 'showProgress' | 'showActivity' | 'showConnections';
+type PrivacyFlag = 'showBio' | 'showStats' | 'showProgress' | 'showConnections';
 
 function Toggle({
   checked,
@@ -60,7 +60,6 @@ export function SettingsPage() {
     showBio: true,
     showStats: true,
     showProgress: true,
-    showActivity: true,
     showConnections: true,
   });
   const [savingFlag, setSavingFlag] = useState<PrivacyFlag | null>(null);
@@ -90,7 +89,6 @@ export function SettingsPage() {
         showBio: user.showBio,
         showStats: user.showStats,
         showProgress: user.showProgress,
-        showActivity: user.showActivity,
         showConnections: user.showConnections,
       });
     }
@@ -254,13 +252,6 @@ export function SettingsPage() {
                 onChange={(v) => toggleFlag('showProgress', v)}
                 label={t('settings.showProgress')}
                 hint={t('settings.showProgressHint')}
-              />
-              <Toggle
-                checked={privacy.showActivity}
-                disabled={savingFlag === 'showActivity'}
-                onChange={(v) => toggleFlag('showActivity', v)}
-                label={t('settings.showActivity')}
-                hint={t('settings.showActivityHint')}
               />
               <Toggle
                 checked={privacy.showConnections}

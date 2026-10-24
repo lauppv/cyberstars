@@ -211,15 +211,15 @@ their completion saved.
 
 ### Notifications
 
-Preview-gated (`requireFeatureAccess('notifications')`): on prod a non-admin gets
-404, so the feature stays hidden until launch. Requires an identity (no guests).
+Gated by `requireFeatureAccess('notifications')`, launched for everyone. Requires
+an identity (no guests).
 
-| Method | Endpoint                      | Auth | Description                                                                                                                                                                |
-| ------ | ----------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GET    | `/api/notifications`          | Yes  | List notifications (paginated) + unread count                                                                                                                              |
-| POST   | `/api/notifications/read`     | Yes  | Mark all read up to a given id                                                                                                                                             |
-| POST   | `/api/notifications/:id/read` | Yes  | Mark a single notification read                                                                                                                                            |
-| WS     | `/ws/user`                    | Yes  | Shared per-user socket (same preview gate); pushes `notification` frames (`new` / `unread-count`) and `dm` frames (`message` / `edited` / `deleted` / `read` / `reaction`) |
+| Method | Endpoint                      | Auth | Description                                                                                                                                                        |
+| ------ | ----------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| GET    | `/api/notifications`          | Yes  | List notifications (paginated) + unread count                                                                                                                      |
+| POST   | `/api/notifications/read`     | Yes  | Mark all read up to a given id                                                                                                                                     |
+| POST   | `/api/notifications/:id/read` | Yes  | Mark a single notification read                                                                                                                                    |
+| WS     | `/ws/user`                    | Yes  | Shared per-user socket (same gate); pushes `notification` frames (`new` / `unread-count`) and `dm` frames (`message` / `edited` / `deleted` / `read` / `reaction`) |
 
 Notifications are emitted fire-and-forget from the forum (reply, accepted solution,
 reaction), support (new ticket, reply, status change), and connection (request,
@@ -230,8 +230,8 @@ messages (`DM_MESSAGE` was removed from the enum with a data migration).
 
 ### Messages (DMs)
 
-Preview-gated (`requireFeatureAccess('messaging')`): on prod a non-admin gets 404.
-Requires an identity (no guests).
+Gated by `requireFeatureAccess('messaging')`, launched for everyone. Requires an
+identity (no guests).
 
 | Method | Endpoint                               | Auth | Description                               |
 | ------ | -------------------------------------- | ---- | ----------------------------------------- |
@@ -252,7 +252,7 @@ returns raw rows and the client groups them by emoji.
 
 ### Connections
 
-Preview-gated (`requireFeatureAccess('connections')`). A connection is a directed
+Gated by `requireFeatureAccess('connections')`, launched for everyone. A connection is a directed
 request (requester → addressee) that becomes mutual once accepted.
 
 | Method | Endpoint                       | Auth | Description                                                  |
@@ -285,15 +285,14 @@ connect/pending/connected button from the payload's `connectionRelation`.
 | DELETE | `/api/profile/email/pending` | Yes  | Cancel a pending email change                                        |
 | GET    | `/api/profile/activity`      | Yes  | Current streak and last active time                                  |
 
-`PATCH /api/profile` also carries the five per-user privacy flags (`showBio`,
-`showStats`, `showProgress`, `showActivity`, `showConnections`; default on).
+`PATCH /api/profile` also carries the four per-user privacy flags (`showBio`,
+`showStats`, `showProgress`, `showConnections`; default on).
 Profile editing and these toggles live on the `/settings` page.
 
 ### Leaderboard and public profiles
 
-Behind the `leaderboard` preview gate (on prod only ADMINs can view; everyone on
-dev), signed-in users only (no guests), so the service can always tell "self"
-from "other".
+Behind the `leaderboard` gate, launched for everyone, signed-in users only (no
+guests), so the service can always tell "self" from "other".
 
 | Method | Endpoint              | Auth | Description                                                  |
 | ------ | --------------------- | ---- | ------------------------------------------------------------ |
@@ -305,10 +304,11 @@ from "other".
 | GET    | `/api/users/:id/profile` | Yes  | Public profile for `/u/:userId` (from leaderboard) |
 
 Name/avatar/member-since are always public. Bio/status, stats (lessons done,
-active courses, streak), progress (level, XP, leaderboard rank, badges), the
-activity heatmap, and the connections list each appear only when the target's
-matching privacy flag is on; the owner viewing their own profile always sees
-everything. The payload also carries `connectionRelation`
+active courses, streak), progress (level, XP, leaderboard rank, badges) and the
+connections list each appear only when the target's matching privacy flag is on;
+the owner viewing their own profile always sees everything. The activity heatmap
+is the owner's alone: it tells on which day each lesson was done, so no one else
+ever gets it and no flag shows it. The payload also carries `connectionRelation`
 (`self`/`none`/`pending_outgoing`/`pending_incoming`/`connected`) for the
 profile's connect button. Streak is computed by the shared
 `activity.service.computeStreak` (also used by `GET /api/profile/activity`).

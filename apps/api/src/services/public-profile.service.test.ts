@@ -34,7 +34,6 @@ function makeUser(overrides: Record<string, unknown> = {}) {
     showBio: true,
     showStats: true,
     showProgress: true,
-    showActivity: true,
     showConnections: true,
     ...overrides,
   };
@@ -71,7 +70,6 @@ describe('getPublicProfile', () => {
         showBio: false,
         showStats: false,
         showProgress: false,
-        showActivity: false,
         showConnections: false,
       }),
     );
@@ -180,7 +178,7 @@ describe('getPublicProfile', () => {
   });
 
   it('skips the activity query and drops empty-slug courses from badges when only progress is shown', async () => {
-    mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false, showActivity: false }));
+    mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false }));
     mockProgressRepo.getCompletedByCourse.mockResolvedValue([
       { courseKey: 'python', slugs: slugs('python', 2) },
       { courseKey: 'java', slugs: [] }, // no completions -> earns no badge
@@ -193,8 +191,7 @@ describe('getPublicProfile', () => {
     expect(p.progress?.badgeList).toEqual([{ courseKey: 'python', level: 0 }]);
   });
 
-  it('returns recent completed-lesson timestamps for the heatmap, filtered to the window', async () => {
-    // Only showActivity is on; stats/progress stay hidden and their queries skip.
+  it('returns the owner their recent completed-lesson timestamps, filtered to the window', async () => {
     mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false, showProgress: false }));
     const recent = new Date();
     const old = new Date(Date.now() - 200 * 86_400_000); // outside the ~150-day window
@@ -204,17 +201,19 @@ describe('getPublicProfile', () => {
       { completedAt: null, lastAccessedAt: recent }, // accessed but never completed
     ]);
 
-    const p = await getPublicProfile(7, 42);
+    const p = await getPublicProfile(7, 7);
     expect(p.activity).toEqual([recent.toISOString()]);
-    expect(p.stats).toBeNull();
-    expect(p.progress).toBeNull();
-    expect(mockProgressRepo.getCompletedByCourse).not.toHaveBeenCalled();
   });
 
-  it('hides the heatmap when showActivity is off', async () => {
-    mockUserRepo.findById.mockResolvedValue(makeUser({ showActivity: false }));
-    const p = await getPublicProfile(7, 42);
-    expect(p.activity).toBeNull();
+  it('never shows the heatmap to another viewer or a visitor', async () => {
+    mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false, showProgress: false }));
+    mockProgressRepo.getActivityDates.mockResolvedValue([
+      { completedAt: new Date(), lastAccessedAt: new Date() },
+    ]);
+
+    expect((await getPublicProfile(7, 42)).activity).toBeNull();
+    expect((await getPublicProfile(7, null)).activity).toBeNull();
+    expect(mockProgressRepo.getActivityDates).not.toHaveBeenCalled();
   });
 
   it('reports rank as null and falls back to computed level for an unranked user', async () => {

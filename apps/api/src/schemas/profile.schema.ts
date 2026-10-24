@@ -8,7 +8,6 @@ export const updateProfileSchema = z.object({
   showBio: z.boolean().optional(),
   showStats: z.boolean().optional(),
   showProgress: z.boolean().optional(),
-  showActivity: z.boolean().optional(),
   showConnections: z.boolean().optional(),
 });
 

@@ -4,7 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import { config } from './config/index.js';
-import { RADIO_DIR, UI_BUILD_DIR, UPLOADS_DIR } from './config/paths.js';
+import { UI_BUILD_DIR, UPLOADS_DIR } from './config/paths.js';
 import { errorHandler } from '@cyberstars-framework/server-kit/errors';
 import { servePages } from './middleware/pages.js';
 import authRoutes from './routes/auth.routes.js';
@@ -95,9 +95,8 @@ app.use('/api/usage', usageRoutes);
 app.use('/api/visits', visitsRoutes);
 app.use('/api/runs', runsRoutes);
 
-// Authoritative server clock for the focus-radio "live" sync. Clients seek to
-// (serverNow % trackDuration) so everyone hears the same second regardless of
-// local clock skew. No auth, no DB, cache-busting headers.
+// The server's clock, which deploy.sh also asks to know the new backend is up.
+// No auth, no DB, cache-busting headers.
 app.get('/api/time', (_req, res) => {
   res.set('Cache-Control', 'no-store');
   res.json({ now: Date.now() });
@@ -105,11 +104,6 @@ app.get('/api/time', (_req, res) => {
 
 // Serve uploaded files
 app.use('/uploads', express.static(UPLOADS_DIR));
-
-// Radio audio lives OUTSIDE public/ so the 163MB mp3 isn't copied into dist/
-// on every build. In production nginx serves /radio/ straight from disk and
-// requests never reach here; this static mount is the dev path (and fallback).
-app.use('/radio', express.static(RADIO_DIR));
 
 // Pages: only extensionless paths (lessons, courses, profile, forum, etc.), each
 // its pre-rendered page, the app, or a 404. Paths with a file extension (e.g.
