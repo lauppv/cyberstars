@@ -21,7 +21,7 @@ export function TargetReadout({
 
   if (!spot || !ship) {
     return (
-      <div className="lnk-hud lnk-panel lnk-bottom-center text-[12px] lnk-dim">
+      <div className="lnk-hud lnk-panel lnk-bottom-center text-[12px] lnk-dim text-center">
         {t('laniakea.hud.noTarget')}
       </div>
     );
@@ -41,28 +41,35 @@ export function TargetReadout({
       {surface < REACH ? (
         <div className="text-[12px] lnk-teal mt-1">{t('laniakea.hud.arrived')}</div>
       ) : (
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] mt-1">
+        // three fixed slots, so the numbers change without the panel moving
+        <div className="grid grid-cols-3 items-center gap-x-3 text-[12px] mt-1 tabular-nums">
           <span className="lnk-value !text-[12px] lnk-teal">
             {t('laniakea.hud.distance', { km: km(surface) })}
           </span>
           {ahead ? (
-            <span>{t('laniakea.hud.ahead')}</span>
+            <span className="col-span-2 font-semibold lnk-purple">{t('laniakea.hud.ahead')}</span>
           ) : (
             <>
-              {Math.abs(turn) > 3 && (
-                <span className="inline-flex items-center gap-1">
-                  {turn > 0 ? <ArrowRight size={13} /> : <ArrowLeft size={13} />}
-                  {t(turn > 0 ? 'laniakea.hud.right' : 'laniakea.hud.left', {
-                    deg: Math.abs(turn),
-                  })}
-                </span>
-              )}
-              {Math.abs(climb) > 3 && (
-                <span className="inline-flex items-center gap-1">
-                  {climb > 0 ? <ArrowUp size={13} /> : <ArrowDown size={13} />}
-                  {t(climb > 0 ? 'laniakea.hud.up' : 'laniakea.hud.down', { deg: Math.abs(climb) })}
-                </span>
-              )}
+              <span className="inline-flex items-center gap-1 font-semibold lnk-purple">
+                {Math.abs(turn) > 3 && (
+                  <>
+                    {turn > 0 ? <ArrowRight size={13} /> : <ArrowLeft size={13} />}
+                    {t(turn > 0 ? 'laniakea.hud.right' : 'laniakea.hud.left', {
+                      deg: Math.abs(turn),
+                    })}
+                  </>
+                )}
+              </span>
+              <span className="inline-flex items-center gap-1 font-semibold lnk-purple">
+                {Math.abs(climb) > 3 && (
+                  <>
+                    {climb > 0 ? <ArrowUp size={13} /> : <ArrowDown size={13} />}
+                    {t(climb > 0 ? 'laniakea.hud.up' : 'laniakea.hud.down', {
+                      deg: Math.abs(climb),
+                    })}
+                  </>
+                )}
+              </span>
             </>
           )}
         </div>
