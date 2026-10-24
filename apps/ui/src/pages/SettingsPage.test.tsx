@@ -116,6 +116,27 @@ describe('SettingsPage', () => {
     const toggle = screen.getByRole('switch', { name: 'Bio & status' });
     fireEvent.click(toggle);
     await waitFor(() => expect(toggle).toHaveAttribute('aria-checked', 'true'));
+    expect(screen.getByRole('alert')).toHaveTextContent('boom');
+  });
+
+  it('says a toggle failed in general words when the failure says nothing', async () => {
+    mockUpdateProfile.mockRejectedValue('nope');
+    renderPage();
+    fireEvent.click(screen.getByRole('switch', { name: 'Level, XP & badges' }));
+    expect(await screen.findByRole('alert')).toHaveTextContent(
+      'Something went wrong. Please try again.',
+    );
+  });
+
+  it("clears a toggle's message when the next one saves", async () => {
+    mockUpdateProfile.mockRejectedValueOnce(new Error('boom'));
+    renderPage();
+    fireEvent.click(screen.getByRole('switch', { name: 'Bio & status' }));
+    await screen.findByRole('alert');
+    mockUpdateProfile.mockResolvedValue({ message: 'ok' });
+    fireEvent.click(screen.getByRole('switch', { name: 'Level, XP & badges' }));
+    await waitFor(() => expect(refreshUser).toHaveBeenCalled());
+    expect(screen.queryByRole('alert')).toBeNull();
   });
 
   it('rejects a too-short new password without calling the API', () => {
