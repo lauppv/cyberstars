@@ -62,8 +62,18 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { items, unreadCount, loading, hasMore, loadMore, markAllRead, markOneRead } =
-    useNotifications();
+  const {
+    items,
+    unreadCount,
+    loading,
+    hasMore,
+    loadFailed,
+    reload,
+    moreError,
+    loadMore,
+    markAllRead,
+    markOneRead,
+  } = useNotifications();
 
   const targetFor = (n: NotificationDTO): string => {
     switch (n.type) {
@@ -107,33 +117,52 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
       </div>
 
       <div className="max-h-[60vh] overflow-y-auto">
-        {items.length === 0 ? (
-          <div className="px-4 py-8 text-center text-[13px] text-[var(--text3)]">
-            {loading ? '…' : t('notif.empty')}
-          </div>
-        ) : (
-          items.map((n) => (
+        {loadFailed && (
+          <div
+            role="alert"
+            className="px-4 py-3 flex items-center justify-between gap-3 border-b border-[var(--border)] text-[12px] text-[var(--error)]"
+          >
+            <span className="min-w-0">{t('notif.loadFailed')}</span>
             <button
-              key={n.id}
-              role="menuitem"
-              onClick={() => onItemClick(n)}
-              className={`w-full text-left px-4 py-3 flex items-start gap-3 border-b border-[var(--border)] last:border-b-0 hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-x-0 border-t-0 ${
-                n.readAt ? 'opacity-60' : ''
-              }`}
+              onClick={reload}
+              className="shrink-0 text-[12px] font-medium text-[var(--accent)] bg-transparent border-none cursor-pointer hover:brightness-125 transition"
             >
-              <span className="min-w-0 flex-1">
-                <span className="block text-[12.5px] text-[var(--text)] leading-snug">
-                  {describe(n)}
-                </span>
-                <span className="block text-[11px] text-[var(--text3)] mt-0.5">
-                  {timeAgo(n.createdAt)}
-                </span>
-              </span>
-              {!n.readAt && (
-                <span className="w-2 h-2 rounded-full bg-[var(--accent)] flex-shrink-0 mt-1.5" />
-              )}
+              {t('notif.retry')}
             </button>
-          ))
+          </div>
+        )}
+        {items.length === 0
+          ? !loadFailed && (
+              <div className="px-4 py-8 text-center text-[13px] text-[var(--text3)]">
+                {loading ? '…' : t('notif.empty')}
+              </div>
+            )
+          : items.map((n) => (
+              <button
+                key={n.id}
+                role="menuitem"
+                onClick={() => onItemClick(n)}
+                className={`w-full text-left px-4 py-3 flex items-start gap-3 border-b border-[var(--border)] last:border-b-0 hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-x-0 border-t-0 ${
+                  n.readAt ? 'opacity-60' : ''
+                }`}
+              >
+                <span className="min-w-0 flex-1">
+                  <span className="block text-[12.5px] text-[var(--text)] leading-snug">
+                    {describe(n)}
+                  </span>
+                  <span className="block text-[11px] text-[var(--text3)] mt-0.5">
+                    {timeAgo(n.createdAt)}
+                  </span>
+                </span>
+                {!n.readAt && (
+                  <span className="w-2 h-2 rounded-full bg-[var(--accent)] flex-shrink-0 mt-1.5" />
+                )}
+              </button>
+            ))}
+        {moreError && (
+          <p role="alert" className="px-4 pt-2.5 text-[12px] text-[var(--error)] text-center">
+            {moreError}
+          </p>
         )}
         {hasMore && (
           <button

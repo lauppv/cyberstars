@@ -684,6 +684,78 @@ describe('TutorPanel', () => {
     fireEvent.click(await screen.findByRole('button', { name: 'Show earlier messages' }));
     await waitFor(() => expect(h.getConversation).toHaveBeenCalledTimes(2));
     expect(screen.getByText('Newer')).toBeInTheDocument();
+    expect(await screen.findByRole('alert')).toHaveTextContent('down');
+  });
+
+  it('says so with the generic words when earlier messages fail without a reason', async () => {
+    saved([summary(1, 'Paged')]);
+    h.getConversation
+      .mockResolvedValueOnce({ messages: [message(40, 'student', 'Newer')], hasMore: true })
+      .mockRejectedValueOnce('nope')
+      .mockResolvedValueOnce({ messages: [message(39, 'tutor', 'Older')], hasMore: false });
+    renderTutor();
+    await openPanel();
+    await openSaved('Paged');
+    const earlier = await screen.findByRole('button', { name: 'Show earlier messages' });
+    fireEvent.click(earlier);
+    expect(await screen.findByRole('alert')).toHaveTextContent(
+      'Something went wrong. Please try again.',
+    );
+
+    fireEvent.click(earlier);
+    expect(await screen.findByText('Older')).toBeInTheDocument();
+    expect(screen.queryByRole('alert')).toBeNull();
+  });
+
+  it('keeps a conversation that failed to delete and says why, only while it is shown', async () => {
+    saved([summary(1, 'Keep me?'), summary(2, 'Other')], {
+      1: [message(1, 'student', 'Keep me?')],
+      2: [message(2, 'student', 'Other one')],
+    });
+    h.deleteConversation.mockRejectedValue(new ApiClientError(500, 'Something went wrong'));
+    vi.stubGlobal(
+      'confirm',
+      vi.fn(() => true),
+    );
+    renderTutor();
+    await openPanel();
+    await openSaved('Keep me');
+    await inPanel('Keep me?');
+
+    fireEvent.click(screen.getByRole('button', { name: 'Delete conversation' }));
+    expect(await screen.findByRole('alert')).toHaveTextContent('Something went wrong');
+    await inPanel('Keep me?');
+    expect(within(historyList()).getByRole('button', { name: /Keep me/ })).toBeInTheDocument();
+
+    await openSaved('Other');
+    await inPanel('Other one');
+    expect(screen.queryByRole('alert')).toBeNull();
+
+    // Back on it, the reason stays until the student goes on talking.
+    await openSaved('Keep me');
+    await inPanel('Keep me?');
+    expect(screen.getByRole('alert')).toHaveTextContent('Something went wrong');
+    answer();
+    type('Never mind');
+    await waitFor(() => expect(screen.queryByRole('alert')).toBeNull());
+  });
+
+  it('takes a conversation already deleted elsewhere as deleted', async () => {
+    saved([summary(1, 'Gone')], { 1: [message(1, 'student', 'Gone already')] });
+    h.deleteConversation.mockRejectedValue(new ApiClientError(404, 'No such conversation'));
+    vi.stubGlobal(
+      'confirm',
+      vi.fn(() => true),
+    );
+    renderTutor();
+    await openPanel();
+    await openSaved('Gone');
+    await inPanel('Gone already');
+
+    fireEvent.click(screen.getByRole('button', { name: 'Delete conversation' }));
+    await waitFor(() => expect(screen.getByText(/Ask about a lesson/)).toBeInTheDocument());
+    expect(within(historyList()).queryByRole('button', { name: /Gone/ })).toBeNull();
+    expect(screen.queryByRole('alert')).toBeNull();
   });
 
   it('deletes the conversation only once confirmed, then starts a new one', async () => {

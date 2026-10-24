@@ -13,6 +13,9 @@ const ctx = {
   unreadCount: 0,
   loading: false,
   hasMore: false,
+  loadFailed: false,
+  reload: vi.fn(),
+  moreError: null as string | null,
   loadMore: vi.fn(),
   markAllRead: vi.fn(),
   markOneRead: vi.fn(),
@@ -40,6 +43,9 @@ function renderWith(items: NotificationDTO[], extra: Partial<typeof ctx> = {}) {
     unreadCount: 0,
     loading: false,
     hasMore: false,
+    loadFailed: false,
+    reload: vi.fn(),
+    moreError: null,
     loadMore: vi.fn(),
     markAllRead: vi.fn(),
     markOneRead: vi.fn(),
@@ -132,6 +138,27 @@ describe('NotificationDropdown pagination', () => {
   it('shows a loading placeholder before items arrive', () => {
     renderWith([], { loading: true });
     expect(screen.getByText('…')).toBeInTheDocument();
+  });
+
+  it('says the list failed to load instead of showing it empty, with a retry', () => {
+    const reload = vi.fn();
+    renderWith([], { loadFailed: true, reload });
+    expect(screen.getByRole('alert')).toHaveTextContent("Your notifications couldn't be loaded.");
+    expect(screen.queryByText("You're all caught up.")).toBeNull();
+    fireEvent.click(screen.getByText('Try again'));
+    expect(reload).toHaveBeenCalled();
+  });
+
+  it('keeps the failed load in view above live rows', () => {
+    renderWith([n()], { loadFailed: true });
+    expect(screen.getByRole('alert')).toHaveTextContent("Your notifications couldn't be loaded.");
+    expect(screen.getByText('Ada replied to "Thread"')).toBeInTheDocument();
+  });
+
+  it('says why loading more failed and keeps the button', () => {
+    renderWith([n()], { hasMore: true, moreError: 'Too many requests' });
+    expect(screen.getByRole('alert')).toHaveTextContent('Too many requests');
+    expect(screen.getByText('Load more')).toBeInTheDocument();
   });
 });
 

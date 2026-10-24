@@ -121,6 +121,36 @@ describe('LeaderboardPage', () => {
     await waitFor(() => expect(screen.queryByText('Load more')).toBeNull());
   });
 
+  it('says why more entries did not load and keeps the button', async () => {
+    mockGetLeaderboard.mockReset();
+    mockGetLeaderboard
+      .mockResolvedValueOnce({ entries: [ada], total: 2 })
+      .mockRejectedValueOnce(new Error('Too many requests'))
+      .mockResolvedValueOnce({ entries: [bo], total: 2 });
+    renderPage();
+    fireEvent.click(await screen.findByText('Load more'));
+
+    expect(await screen.findByRole('alert')).toHaveTextContent('Too many requests');
+    expect(screen.getByText('Load more')).toBeEnabled();
+    expect(screen.queryByText('Bo')).toBeNull();
+
+    fireEvent.click(screen.getByText('Load more'));
+    expect(await screen.findByText('Bo')).toBeDefined();
+    expect(screen.queryByRole('alert')).toBeNull();
+  });
+
+  it('falls back to the generic words when loading more fails without a reason', async () => {
+    mockGetLeaderboard.mockReset();
+    mockGetLeaderboard
+      .mockResolvedValueOnce({ entries: [ada], total: 2 })
+      .mockRejectedValueOnce('nope');
+    renderPage();
+    fireEvent.click(await screen.findByText('Load more'));
+    expect(await screen.findByRole('alert')).toHaveTextContent(
+      'Something went wrong. Please try again.',
+    );
+  });
+
   it('shows an empty state when nobody has XP', async () => {
     mockGetLeaderboard.mockResolvedValue({ entries: [], total: 0 });
     renderPage();

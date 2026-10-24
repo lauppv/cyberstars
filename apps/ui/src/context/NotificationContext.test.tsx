@@ -41,9 +41,22 @@ function notif(over: Partial<NotificationDTO> = {}): NotificationDTO {
 }
 
 function Probe() {
-  const { items, unreadCount, hasMore, loadMore, markAllRead, markOneRead } = useNotifications();
+  const {
+    items,
+    unreadCount,
+    hasMore,
+    loadFailed,
+    reload,
+    moreError,
+    loadMore,
+    markAllRead,
+    markOneRead,
+  } = useNotifications();
   return (
     <div>
+      <span data-testid="loadFailed">{String(loadFailed)}</span>
+      <span data-testid="moreError">{moreError ?? ''}</span>
+      <button onClick={() => reload()}>reload</button>
       <span data-testid="unread">{unreadCount}</span>
       <span data-testid="count">{items.length}</span>
       <span data-testid="ids">{items.map((n) => n.id).join(',')}</span>
@@ -208,6 +221,90 @@ describe('NotificationContext', () => {
     await screen.findByTestId('count');
     fireEvent.click(screen.getByText('one'));
     expect(h.service.markOneRead).not.toHaveBeenCalled();
+  });
+
+  it('keeps the failed first page until a reload brings it', async () => {
+    h.service.getNotifications.mockRejectedValueOnce(new Error('Too many requests'));
+    renderProvider();
+    await waitFor(() => expect(screen.getByTestId('loadFailed')).toHaveTextContent('true'));
+    expect(screen.getByTestId('count')).toHaveTextContent('0');
+
+    // A live row doesn't make the list whole.
+    dispatch({ channel: 'notification', type: 'new', payload: notif({ id: 120 }) });
+    expect(screen.getByTestId('loadFailed')).toHaveTextContent('true');
+
+    fireEvent.click(screen.getByText('reload'));
+    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('100'));
+    expect(screen.getByTestId('loadFailed')).toHaveTextContent('false');
+  });
+
+  it('lets only the latest first-page load land', async () => {
+    let first: (v: unknown) => void = () => {};
+    h.service.getNotifications
+      .mockImplementationOnce(() => new Promise((resolve) => (first = resolve)))
+      .mockResolvedValueOnce({ items: [notif({ id: 101 })], unreadCount: 3 });
+    renderProvider();
+    fireEvent.click(screen.getByText('reload'));
+    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('101'));
+    await act(async () => first({ items: [notif({ id: 1 })], unreadCount: 9 }));
+    expect(screen.getByTestId('ids')).toHaveTextContent('101');
+    expect(screen.getByTestId('unread')).toHaveTextContent('3');
+  });
+
+  it('says why loading more failed and clears it once more loads', async () => {
+    renderProvider();
+    await screen.findByText('100');
+    h.service.getNotifications.mockRejectedValueOnce(new Error('Too many requests'));
+    fireEvent.click(screen.getByText('more'));
+    await waitFor(() =>
+      expect(screen.getByTestId('moreError')).toHaveTextContent('Too many requests'),
+    );
+    expect(screen.getByTestId('ids')).toHaveTextContent('100');
+
+    h.service.getNotifications.mockResolvedValueOnce({
+      items: [notif({ id: 90 })],
+      unreadCount: 1,
+    });
+    fireEvent.click(screen.getByText('more'));
+    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('100,90'));
+    expect(screen.getByTestId('moreError')).toHaveTextContent('');
+  });
+
+  it('drops a retry still on its way when the feature turns off', async () => {
+    h.service.getNotifications.mockRejectedValueOnce(new Error('Too many requests'));
+    const { rerender } = renderProvider();
+    await waitFor(() => expect(screen.getByTestId('loadFailed')).toHaveTextContent('true'));
+    let retry: (v: unknown) => void = () => {};
+    h.service.getNotifications.mockImplementationOnce(
+      () => new Promise((resolve) => (retry = resolve)),
+    );
+    fireEvent.click(screen.getByText('reload'));
+    h.auth = { isLoggedIn: false, user: null };
+    rerender(
+      <UserSocketProvider>
+        <NotificationProvider>
+          <Probe />
+        </NotificationProvider>
+      </UserSocketProvider>,
+    );
+    await act(async () => retry({ items: [notif({ id: 100 })], unreadCount: 1 }));
+    expect(screen.getByTestId('count')).toHaveTextContent('0');
+    expect(screen.getByTestId('unread')).toHaveTextContent('0');
+  });
+
+  it('forgets both errors when the feature turns off', async () => {
+    h.service.getNotifications.mockRejectedValueOnce(new Error('Too many requests'));
+    const { rerender } = renderProvider();
+    await waitFor(() => expect(screen.getByTestId('loadFailed')).toHaveTextContent('true'));
+    h.auth = { isLoggedIn: false, user: null };
+    rerender(
+      <UserSocketProvider>
+        <NotificationProvider>
+          <Probe />
+        </NotificationProvider>
+      </UserSocketProvider>,
+    );
+    await waitFor(() => expect(screen.getByTestId('loadFailed')).toHaveTextContent('false'));
   });
 
   it('loadMore is a no-op when there are no items yet', async () => {

@@ -400,6 +400,8 @@
     "empty": "You're all caught up.",
     "markAllRead": "Mark all read",
     "loadMore": "Load more",
+    "retry": "Try again",
+    "loadFailed": "Your notifications couldn't be loaded.",
     "someone": "Someone",
     "forumReply_one": "{{name}} replied to \"{{title}}\"",
     "forumReply_other": "{{count}} new replies on \"{{title}}\"",

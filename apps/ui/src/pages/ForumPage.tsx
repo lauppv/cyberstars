@@ -335,6 +335,7 @@ function CategoryView({
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
   const [posting, setPosting] = useState(false);
+  const [createError, setCreateError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -361,6 +362,7 @@ function CategoryView({
   const handleCreateThread = async () => {
     if (!newTitle.trim() || !newContent.trim()) return;
     setPosting(true);
+    setCreateError(null);
     try {
       const { threadId } = await forumService.createThread({
         categorySlug,
@@ -371,9 +373,16 @@ function CategoryView({
       setNewTitle('');
       setNewContent('');
       onOpenThread(threadId);
+    } catch (err) {
+      setCreateError(errMsg(err));
     } finally {
       setPosting(false);
     }
+  };
+
+  const toggleComposer = (show: boolean) => {
+    setShowComposer(show);
+    setCreateError(null);
   };
 
   if (loading || (!category && !error)) {
@@ -420,7 +429,7 @@ function CategoryView({
         {canPost && (
           <button
             className="forum-btn forum-btn-primary"
-            onClick={() => setShowComposer(!showComposer)}
+            onClick={() => toggleComposer(!showComposer)}
           >
             {t('forum.newThread')}
           </button>
@@ -429,6 +438,12 @@ function CategoryView({
 
       {restricted && !canPost && (
         <div className="forum-restricted-note">{t('forum.restrictedThreads')}</div>
+      )}
+
+      {showComposer && createError && (
+        <div className="forum-restricted-note forum-action-error" role="alert">
+          {createError}
+        </div>
       )}
 
       {showComposer && (
@@ -446,7 +461,7 @@ function CategoryView({
             onChange={(e) => setNewContent(e.target.value)}
           />
           <div className="forum-composer-footer">
-            <button className="forum-btn forum-btn-ghost" onClick={() => setShowComposer(false)}>
+            <button className="forum-btn forum-btn-ghost" onClick={() => toggleComposer(false)}>
               {t('forum.cancel')}
             </button>
             <button
