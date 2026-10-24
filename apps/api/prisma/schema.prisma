@@ -128,6 +128,7 @@ model User {
   submissions        LessonSubmission[]
   tutorConversations TutorConversation[]
   usageWindows       UsageWindow[]
+  laniakeaPlanets    LaniakeaPlanet[]
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
   notificationsSent     Notification[] @relation("NotificationsSent")
@@ -303,6 +304,30 @@ model UsageWindow {
 
   @@id([userId, action])
   @@map("usage_windows")
+}
+
+// A student's planet in Laniakea, one per lesson of the game's course, made
+// the first time they open a test on it. `level` counts the tests that moved it
+// (0 not conquered, 1 conquered, 8 kept for good) and `passedAt` is the last of
+// them. `seen` holds the questions asked in the current round of the lesson's
+// pool, so none comes back before the others have. `quiz` is the test going on
+// (its questions, their shuffled options and the answers so far), touched last
+// at `quizAt`; a failed test sets `retryAt`, when the next one can start.
+model LaniakeaPlanet {
+  userId     Int       @map("user_id")
+  courseKey  String    @map("course_key") @db.VarChar(50)
+  lessonSlug String    @map("lesson_slug") @db.VarChar(100)
+  level      Int       @default(0)
+  passedAt   DateTime? @map("passed_at")
+  retryAt    DateTime? @map("retry_at")
+  seen       String[]  @default([])
+  quiz       Json?
+  quizAt     DateTime? @map("quiz_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, courseKey, lessonSlug])
+  @@map("laniakea_planets")
 }
 
 model SupportTicket {

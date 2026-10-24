@@ -176,6 +176,12 @@ const PAGES: (PageInfo & { feature?: FeatureKey; adminOnly?: boolean })[] = [
   { link: '/courses', name: 'Courses', about: 'every course and its lessons' },
   { link: '/algorithms', name: 'Algorithms', about: 'algorithm challenges in Python, Java and C' },
   { link: '/almanac', name: 'Almanac', about: 'short reads on the history of computing' },
+  {
+    link: '/laniakea',
+    name: 'Laniakea',
+    about:
+      'a space game: each Python lesson finished is a planet, conquered with a 10-question test on it and kept with recaps after 1 to 64 days; opens after 3 Python lessons',
+  },
   { link: '/forum', name: 'Forum', about: 'ask and answer questions with other students' },
   {
     link: '/messages',

@@ -45,6 +45,9 @@ vi.mock('./LandingPage', () => ({
 vi.mock('../components/ui/LoadingSpinner', () => ({
   LoadingSpinner: () => <div>Loading...</div>,
 }));
+vi.mock('../components/laniakea/LaniakeaCard', () => ({
+  LaniakeaCard: () => <div>Laniakea card</div>,
+}));
 vi.mock('../services/dailyService', () => ({
   fetchDaily: vi.fn(() => Promise.resolve(null)),
 }));
@@ -308,6 +311,12 @@ describe('HomePage', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     renderPage();
     expect(screen.getByText('Activity')).toBeDefined();
+  });
+
+  it('shows a student the Laniakea card', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    renderPage();
+    expect(screen.getByText('Laniakea card')).toBeDefined();
   });
 
   it('shows almanac highlights when logged in', () => {

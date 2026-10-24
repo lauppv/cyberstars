@@ -23,6 +23,7 @@ import connectionsRoutes from './routes/connections.routes.js';
 import usersRoutes from './routes/users.routes.js';
 import tutorRoutes from './routes/tutor.routes.js';
 import usageRoutes from './routes/usage.routes.js';
+import laniakeaRoutes from './routes/laniakea.routes.js';
 import visitsRoutes from './routes/visits.routes.js';
 import runsRoutes from './routes/runs.routes.js';
 
@@ -92,6 +93,7 @@ app.use('/api/connections', connectionsRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/tutor', tutorRoutes);
 app.use('/api/usage', usageRoutes);
+app.use('/api/laniakea', laniakeaRoutes);
 app.use('/api/visits', visitsRoutes);
 app.use('/api/runs', runsRoutes);
 

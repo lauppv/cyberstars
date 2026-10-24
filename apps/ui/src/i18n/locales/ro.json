@@ -7,13 +7,17 @@
     "forum": "Forum",
     "leaderboard": "Clasament",
     "messages": "Mesaje",
-    "almanac": "Almanah"
+    "almanac": "Almanah",
+    "laniakea": "Laniakea"
   },
   "sidebar": {
     "label": "Navigare principală",
     "community": "Comunitate",
     "show": "Arată bara laterală",
-    "hide": "Ascunde bara laterală"
+    "hide": "Ascunde bara laterală",
+    "laniakeaLeft_one": "încă {{count}} lecție",
+    "laniakeaLeft_few": "încă {{count}} lecții",
+    "laniakeaLeft_other": "încă {{count}} de lecții"
   },
   "topbar": {
     "toggleSidebar": "Comută bara laterală",
@@ -161,7 +165,21 @@
     "hourAgo_other": "acum {{count}} de ore",
     "dayAgo_one": "acum o zi",
     "dayAgo_few": "acum {{count}} zile",
-    "dayAgo_other": "acum {{count}} de zile"
+    "dayAgo_other": "acum {{count}} de zile",
+    "laniakea": {
+      "locked_one": "Termină {{count}} lecție de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
+      "locked_few": "Termină {{count}} lecții de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
+      "locked_other": "Termină {{count}} de lecții de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
+      "open": "Fiecare lecție de Python pe care o termini e o planetă de cucerit.",
+      "owned": "Planete cucerite: {{owned}}/{{total}}",
+      "recaps_one": "{{count}} recapitulare deschisă",
+      "recaps_few": "{{count}} recapitulări deschise",
+      "recaps_other": "{{count}} de recapitulări deschise",
+      "ready_one": "{{count}} planetă gata de cucerit",
+      "ready_few": "{{count}} planete gata de cucerit",
+      "ready_other": "{{count}} de planete gata de cucerit",
+      "fly": "Zbori în Laniakea"
+    }
   },
   "landing": {
     "hero": {
@@ -201,7 +219,7 @@
       },
       "level": {
         "title": "Urci de nivel",
-        "text": "XP, niveluri și insigne, cu un cont gratuit.",
+        "text": "XP, niveluri și insigne, odată ce ai cont.",
         "picture": "O serie de 12 zile pe harta activității, cu lecții făcute în multe zile din ultimele trei luni.",
         "streak_one": "{{count}} zi la rând",
         "streak_few": "{{count}} zile la rând",
@@ -269,31 +287,44 @@
       "title": "Ce găsești înăuntru",
       "courses": {
         "title": "Cursuri",
+        "text": "Python, Java, C și Linux, de la primul print la procese și fire de execuție, câte o lecție scurtă pe rând.",
         "picture": "Python, Java, C și Linux, cu numărul de lecții din fiecare."
       },
       "algorithms": {
         "title": "Provocări de algoritmi",
+        "text": "Provocări de la ușor la greu, verificate pe teste ascunse, cu timpul tău lângă cel al soluției de referință.",
         "picture": "Cinci provocări de Python, de la ușor la greu, primele trei rezolvate."
       },
       "linux": {
         "title": "Terminalul Linux",
+        "text": "Un terminal adevărat chiar în pagină, cu misiuni de rezolvat pe o mașină doar a ta.",
         "picture": "Un terminal Linux: pwd, ls și ls rapoarte, fiecare cu rezultatul lui."
       },
       "forum": {
         "title": "Forumul",
+        "text": "Întreabă când te-ai blocat și ajută când nu; răspunsul care a mers e marcat drept soluție.",
         "question": "Cum îmi afișez numele de 3 ori?",
         "answer": "Cu o buclă for:",
         "solved": "Rezolvat",
         "picture": "Maria21 întreabă cum își afișează numele de trei ori, iar Marco Hoeger îi răspunde cu o buclă for."
       },
-      "accountNote": "Cu un cont gratuit",
       "tutor": {
         "title": "Un tutore AI",
+        "text": "Îți arată ideea și te lasă să găsești singur rezolvarea, fără să-ți dea răspunsul.",
         "question": "De ce bucla mea afișează 0, 1, 2 și nu 1, 2, 3?",
         "answer": "range(3) începe să numere de la 0, așa că primești trei numere care se termină la 2. range poate primi și un număr de la care să înceapă: care ți-ar da 1, 2, 3?",
         "followUp": "Deci range(1, 3)?",
         "followUpAnswer": "Aproape. range se oprește chiar înainte de al doilea număr, așa că range(1, 3) îți dă 1 și 2. Cât ar trebui să fie oprirea ca să intre și 3?",
         "picture": "Un student întreabă de ce bucla lui afișează 0, 1, 2 în loc de 1, 2, 3. Tutorele explică că range începe de la 0, iar când studentul încearcă range(1, 3), că range se oprește chiar înainte de al doilea număr, lăsându-i lui ultimul pas."
+      },
+      "laniakea": {
+        "title": "Laniakea, un joc în spațiu",
+        "text": "Fiecare lecție de Python pe care o termini devine o planetă. Zbori până la ea și treci un test de 10 întrebări despre lecție ca s-o cucerești.",
+        "note_one": "După {{count}} lecție de Python",
+        "note_few": "După {{count}} lecții de Python",
+        "note_other": "După {{count}} de lecții de Python",
+        "question": "Ce afișează?",
+        "picture": "Planete în spațiu, două cu inel albastru, ale elevului, și una cu inel alb, încă de cucerit, lângă o întrebare de test despre ce afișează print(\"5 + 3\"), cu 5 + 3 marcat corect."
       }
     },
     "free": {
@@ -305,11 +336,11 @@
       "title": "Întrebări",
       "account": {
         "q": "Am nevoie de cont?",
-        "a": "Nu. Citești, scrii și rulezi cod fără cont. Un cont gratuit ridică limita de zece rulări, îți salvează progresul și îți deschide forumul și tutorele AI."
+        "a": "Nu. Citești, scrii și rulezi cod fără cont. Un cont ridică limita de zece rulări, îți salvează progresul și îți deschide forumul și tutorele AI."
       },
       "free": {
-        "q": "Chiar e gratuit?",
-        "a": "Da. Fără plan plătit, fără card, iar codul e public pe GitHub."
+        "q": "E gratuit?",
+        "a": "Da. Nu există plan plătit și nu ai nevoie de card, iar codul CyberStars e public pe GitHub, deci oricine îl poate verifica."
       },
       "start": {
         "q": "Cu ce limbaj să încep?",
@@ -338,6 +369,9 @@
       "label": "Linkuri",
       "source": "Codul sursă",
       "license": "Licență"
+    },
+    "rail": {
+      "label": "Capitolele paginii"
     }
   },
   "common": {
@@ -917,42 +951,124 @@
     "limitReached": "Ai atins limita. Se reîncarcă {{when}}."
   },
   "laniakea": {
-    "introTitle": "Bun venit la bord, căpitane.",
-    "introSub": "O navă de derivă pentru explorare fără grabă. Preia cârma și alunecă prin peste 100 de lumi, pe lângă nebuloase și găuri negre. Fără obiective. Fără cronometru. Doar cosmosul prin vizorul tău.",
-    "moveFwd": "Zbor înainte / înapoi",
-    "turnLeftRight": "Rotire stânga / dreapta",
-    "pitchUpDown": "Înclinare sus / jos",
-    "pause": "Pauză",
-    "exitToDashboard": "Ieșire la panou",
-    "touchSteer": "Joystick dreapta · direcție (rotire și înclinare)",
-    "touchThrottle": "Săgeți stânga · ține apăsat pentru a accelera / decelera",
-    "beginDrift": "Pornește deriva",
-    "escToPause": "ESC pentru pauză",
-    "qToQuit": "Q pentru ieșire",
-    "quit": "Ieșire",
-    "mode": "Mod",
-    "modeDrift": "Derivă",
-    "heart": "Puls",
-    "velocity": "Viteză",
-    "o2level": "Nivel O₂",
-    "cabinPsi": "Presiune cabină",
-    "position": "Poziție",
-    "nearest": "Cel mai apropiat",
-    "engine": "Motor",
-    "course": "Direcție",
-    "courseOpen": "liberă",
-    "menu": "Meniu",
-    "paused": "Pauză",
-    "pausedSubPre": "Ia o pauză. Apasă oriunde sau tasta",
-    "pausedSubPost": "pentru a continua deriva.",
-    "resume": "Continuă",
-    "accelerate": "Accelerează",
-    "decelerate": "Decelerează",
-    "objects": {
-      "blackHole": "Gaură neagră",
-      "quasar": "Quasar",
-      "dyson": "Sferă Dyson"
-    }
+    "title": "Laniakea",
+    "loading": "Pornim motoarele…",
+    "loadFailed": "Nava n-a putut porni. Verifică conexiunea și încearcă din nou.",
+    "tryAgain": "Încearcă din nou",
+    "locked": {
+      "title_one": "Laniakea se deschide după {{count}} lecție de Python",
+      "title_few": "Laniakea se deschide după {{count}} lecții de Python",
+      "title_other": "Laniakea se deschide după {{count}} de lecții de Python",
+      "body": "Fiecare lecție de Python pe care o termini devine o planetă. O cucerești răspunzând la întrebări despre lecția ei, apoi o păstrezi revenind după pauze tot mai lungi.",
+      "progress": "{{done}} din {{total}} gata",
+      "next": "Continuă cu Python",
+      "back": "Înapoi la panou"
+    },
+    "intro": {
+      "title": "Bun venit la bord, căpitane.",
+      "body": "Fiecare lecție de Python pe care o termini e o planetă acolo, în spațiu. Zbori până la ea, aterizezi și răspunzi la 10 întrebări despre lecția ei: dacă ai 6 corecte, e a ta. Treci testul din nou după 1, 2, 4 și până la 64 de zile, și rămâne a ta pentru totdeauna.",
+      "begin": "Preia cârma",
+      "fly": "Zbor înainte / înapoi",
+      "turn": "Rotire stânga / dreapta",
+      "pitch": "Botul în sus / în jos",
+      "boost": "Accelerare puternică",
+      "land": "Aterizează pe planeta din față",
+      "board": "Arată sau ascunde bordul",
+      "pause": "Pauză",
+      "quit": "Înapoi la panou",
+      "touchSteer": "Joystickul din dreapta: direcția",
+      "touchThrottle": "Săgețile din stânga: ține apăsat ca să zbori înainte sau înapoi",
+      "touchLand": "Aterizare: butonul de sub numele planetei",
+      "pcTitle": "Făcut pentru PC și laptop",
+      "pcBody": "Laniakea merge cel mai bine pe PC sau laptop, cu tastatură. Poți zbura și de aici, cu comenzile tactile."
+    },
+    "hud": {
+      "ship": "Nava CyberStars",
+      "planets": "Planete",
+      "forever": "Pentru totdeauna",
+      "recaps": "Recapitulări deschise",
+      "velocity": "Viteză",
+      "board": "Bord",
+      "pause": "Pauză",
+      "quit": "Ieșire",
+      "map": "Harta stelelor",
+      "target": "Țintă",
+      "noTarget": "Alege o planetă din bord ca să zbori spre ea",
+      "right": "{{deg}}° la dreapta",
+      "left": "{{deg}}° la stânga",
+      "up": "{{deg}}° în sus",
+      "down": "{{deg}}° în jos",
+      "ahead": "Drept înainte",
+      "arrived": "Ai ajuns",
+      "distance": "{{km}} km",
+      "forward": "Zbor înainte",
+      "back": "Zbor înapoi",
+      "paused": "Pauză",
+      "resume": "Continuă"
+    },
+    "aim": {
+      "land": "Aterizează",
+      "landKey": "E ca să aterizezi",
+      "closer": "Apropie-te ca să aterizezi"
+    },
+    "status": {
+      "locked": "Termină lecția ei ca să ajungi la ea",
+      "soon": "Întrebările ei sunt pe drum",
+      "conquerable": "Gata de cucerit",
+      "retry": "Următoarea încercare în {{wait}}",
+      "recap": "Recapitulare deschisă",
+      "owned": "Următoarea recapitulare în {{wait}}",
+      "forever": "A ta pentru totdeauna"
+    },
+    "wait": {
+      "dh": "{{a}}z {{b}}h",
+      "hm": "{{a}}h {{b}}m",
+      "ms": "{{a}}:{{b}}"
+    },
+    "step": "Treapta {{level}} din {{total}}",
+    "board": {
+      "title": "Bord",
+      "sort": "Ordonează planetele",
+      "next": "Ce urmează",
+      "order": "Ordinea lecțiilor",
+      "level": "Cele mai avansate",
+      "empty": "Termină o lecție de Python și planeta ei apare aici.",
+      "waiting_one": "Încă {{count}} planetă își așteaptă lecția",
+      "waiting_few": "Încă {{count}} planete își așteaptă lecțiile",
+      "waiting_other": "Încă {{count}} de planete își așteaptă lecțiile",
+      "fly": "Zbori aici",
+      "targeted": "Ținta ta",
+      "close": "Închide bordul"
+    },
+    "quiz": {
+      "conquer": "Cucerire",
+      "recap": "Recapitulare",
+      "practice": "Exercițiu",
+      "question": "Întrebarea {{n}} din {{total}}",
+      "right": "Corect",
+      "wrong": "Greșit",
+      "next": "Următoarea întrebare",
+      "result": "Vezi rezultatul",
+      "close": "Înapoi la navă",
+      "leave": "Ieși din test",
+      "leaveNote": "Testul te așteaptă aici 30 de minute.",
+      "score": "{{right}} corecte, {{wrong}} greșite",
+      "loading": "Deschidem testul…",
+      "failed": "Testul n-a putut fi deschis.",
+      "outTitle": "Nu de data asta",
+      "outBody": "Cinci răspunsuri au fost greșite, așa că testul s-a încheiat. Planeta se deschide pentru o nouă încercare peste 5 minute.",
+      "conqueredTitle": "Planetă cucerită",
+      "conqueredBody": "E a ta acum. Prima recapitulare se deschide în {{wait}}.",
+      "recapTitle": "Recapitulare trecută",
+      "recapBody": "Planeta urcă la treapta {{level}} din {{total}}. Următoarea recapitulare se deschide în {{wait}}.",
+      "foreverTitle": "A ta pentru totdeauna",
+      "foreverBody": "Ai trecut toate recapitulările, așa că {{planet}} e a ta pentru totdeauna. Realizare deblocată: păzitorul planetei {{planet}}.",
+      "practiceTitle": "Exercițiu încheiat",
+      "practiceBody": "Bravo. Exercițiul nu mută planeta: următoarea recapitulare se deschide în {{wait}}.",
+      "practiceForeverBody": "Bravo. Planeta e deja a ta pentru totdeauna."
+    },
+    "achievement": "Realizare: {{planet}} e a ta pentru totdeauna",
+    "betaHint": "Încă în lucru: urmează întrebări pentru fiecare lecție și mai multe cursuri"
   },
   "code": {
     "run": "▶ Rulează",

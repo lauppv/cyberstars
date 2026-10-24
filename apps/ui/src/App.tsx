@@ -49,8 +49,8 @@ const ForumPage = lazy(() => import('./pages/ForumPage').then((m) => ({ default:
 const AlmanacPage = lazy(() =>
   import('./pages/AlmanacPage').then((m) => ({ default: m.AlmanacPage })),
 );
-const LaniakeaExplorerPage = lazy(() =>
-  import('./pages/LaniakeaExplorerPage').then((m) => ({ default: m.LaniakeaExplorerPage })),
+const LaniakeaPage = lazy(() =>
+  import('./pages/laniakea/LaniakeaPage').then((m) => ({ default: m.LaniakeaPage })),
 );
 const RulesPage = lazy(() => import('./pages/RulesPage').then((m) => ({ default: m.RulesPage })));
 const UsagePage = lazy(() => import('./pages/UsagePage').then((m) => ({ default: m.UsagePage })));
@@ -133,7 +133,7 @@ function App() {
                                   <Route path="/forum/t/:threadId" element={<ForumPage />} />
                                   <Route path="/almanac" element={<AlmanacPage />} />
                                   <Route path="/almanac/:slug" element={<AlmanacPage />} />
-                                  <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
+                                  <Route path="/laniakea" element={<LaniakeaPage />} />
                                   <Route path="/rules" element={<RulesPage />} />
                                   <Route path="/usage" element={<UsagePage />} />
                                   <Route path="/progress" element={<ProgressPage />} />

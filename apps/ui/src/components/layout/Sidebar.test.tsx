@@ -11,6 +11,7 @@ const h = vi.hoisted(() => ({
   },
   messages: { enabled: true, totalUnread: 0 },
   tutor: { open: false, toggle: vi.fn() },
+  progress: { progressMap: {} as Record<string, unknown>, isLoading: false },
 }));
 
 vi.mock('react-router', async (importOriginal) => {
@@ -22,6 +23,7 @@ vi.mock('../../context/AuthContext', () => ({
 }));
 vi.mock('../../context/MessagesContext', () => ({ useMessages: () => h.messages }));
 vi.mock('../../context/TutorContext', () => ({ useTutor: () => h.tutor }));
+vi.mock('../../context/ProgressContext', () => ({ useAllProgress: () => h.progress }));
 vi.mock('../../hooks/useGamification', () => ({
   useGamification: () => ({
     xp: { level: 3, xpIntoLevel: 40, xpForLevelSpan: 500, titleKey: 'level.title.3' },
@@ -50,6 +52,7 @@ beforeEach(() => {
   h.auth = { user: null };
   h.messages = { enabled: true, totalUnread: 0 };
   h.tutor = { open: false, toggle: vi.fn() };
+  h.progress = { progressMap: {}, isLoading: false };
   h.logout.mockResolvedValue(undefined);
 });
 
@@ -61,8 +64,40 @@ describe('Sidebar', () => {
     expect(screen.queryByText('Community')).toBeNull();
   });
 
-  it('never links to the Laniakea explorer', () => {
+  it('leads a student to Laniakea, saying how many Python lessons still open it', () => {
     h.auth = { user: USER };
+    h.progress = {
+      progressMap: { python: { lessons: [{ completed: true }, { completed: false }] } },
+      isLoading: false,
+    };
+    renderSidebar();
+    const row = screen.getByRole('link', { name: /Laniakea/ });
+    expect(row).toHaveAttribute('href', '/laniakea');
+    expect(within(row).getByText('Beta')).toHaveAttribute(
+      'title',
+      expect.stringMatching(/^Still being built/),
+    );
+    expect(row).toHaveTextContent('2 lessons to go');
+  });
+
+  it('drops the note once the game is open', () => {
+    h.auth = { user: USER };
+    h.progress = {
+      progressMap: { python: { lessons: [1, 2, 3].map(() => ({ completed: true })) } },
+      isLoading: false,
+    };
+    renderSidebar();
+    expect(screen.getByRole('link', { name: /Laniakea/ })).toHaveTextContent(/^LaniakeaBeta$/);
+  });
+
+  it('says nothing about lessons left before progress has loaded', () => {
+    h.auth = { user: USER };
+    h.progress = { progressMap: {}, isLoading: true };
+    renderSidebar();
+    expect(screen.getByRole('link', { name: /Laniakea/ })).toHaveTextContent(/^LaniakeaBeta$/);
+  });
+
+  it('keeps Laniakea from guests', () => {
     renderSidebar();
     expect(screen.queryByText(/Laniakea/)).toBeNull();
   });

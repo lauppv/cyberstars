@@ -11,6 +11,7 @@ import { FeaturesSection } from '../components/landing/FeaturesSection';
 import { CtaBand } from '../components/landing/CtaBand';
 import { FreeSection } from '../components/landing/FreeSection';
 import { Faq } from '../components/landing/Faq';
+import { ChapterRail } from '../components/landing/ChapterRail';
 
 // What a visitor sees on the home address. A signed-in student gets the
 // dashboard there instead (HomePage decides).
@@ -18,6 +19,7 @@ export function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <LandingNav />
+      <ChapterRail />
 
       <main className="flex-1">
         <div className="landing-glow">

@@ -60,7 +60,7 @@ describe('HowItWorks', () => {
 
   it('says plainly that progress needs an account', () => {
     render(<HowItWorks />);
-    expect(steps().getByText(/with a free account/)).toBeDefined();
+    expect(steps().getByText(/once you have an account/)).toBeDefined();
   });
 
   it("uses the Romanian lessons' own text and output", async () => {

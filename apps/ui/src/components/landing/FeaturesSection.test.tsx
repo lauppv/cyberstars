@@ -18,6 +18,10 @@ vi.mock('../../context/CurriculumContext', () => ({
 
 import { FeaturesSection } from './FeaturesSection';
 
+// On a wide screen the pinned layout shows the parts, below 1024px the
+// stacked list does; jsdom applies no media query, so both render. Read the list.
+const parts = () => within(document.querySelector('ol')!);
+
 function renderSection() {
   render(
     <MemoryRouter>
@@ -27,23 +31,59 @@ function renderSection() {
 }
 
 describe('FeaturesSection', () => {
-  it('gives each part a card with its name and a picture, and no links', () => {
+  it('tells each part with its name, a sentence and a picture, and no links', () => {
     renderSection();
-    const tiles = Array.from(screen.getAllByRole('list')[0].children) as HTMLElement[];
-    expect(tiles.map((b) => within(b).getByRole('heading', { level: 3 }).textContent)).toEqual([
+    const items = Array.from(document.querySelector('ol')!.children) as HTMLElement[];
+    expect(items.map((r) => within(r).getByRole('heading', { level: 3 }).textContent)).toEqual([
       'Courses',
       'Algorithm challenges',
       'Linux terminal',
       'The forum',
+      'Laniakea, a space game',
       'An AI tutor',
     ]);
-    for (const b of tiles) expect(within(b).getAllByRole('img')).toHaveLength(1);
+    for (const r of items) {
+      expect(within(r).getAllByRole('img')).toHaveLength(1);
+      expect(r.querySelector('p')?.textContent).toMatch(/\w+/);
+    }
     expect(screen.queryByRole('link')).toBeNull();
+  });
+
+  it("pins the first part's picture on a wide screen, each part's words where the chapters scroll to", () => {
+    renderSection();
+    const pinned = Array.from(document.querySelectorAll('[data-picture]'));
+    expect(pinned.map((p) => p.getAttribute('aria-hidden'))).toEqual([
+      'false',
+      'true',
+      'true',
+      'true',
+      'true',
+      'true',
+    ]);
+    expect(document.getElementById('feature-forum')).toHaveTextContent('The forum');
+  });
+
+  it('marks Laniakea Beta and says in a line what it is and that it opens after the first Python lessons', () => {
+    renderSection();
+    const row = parts().getByRole('heading', { name: 'Laniakea, a space game' }).closest('li')!;
+    expect(row).toHaveTextContent('After 3 Python lessons');
+    expect(within(row).getByText('Beta')).toBeDefined();
+    expect(
+      within(row).getByText(
+        'Every Python lesson you finish becomes a planet. Fly to it and pass a 10-question test on the lesson to conquer it.',
+      ),
+    ).toBeDefined();
+    expect(within(row).getByRole('img', { name: /ringed in blue/ })).toHaveTextContent('5 + 3');
+  });
+
+  it('never says free: only the hero and the free band do', () => {
+    renderSection();
+    expect(document.body.textContent).not.toMatch(/free/i);
   });
 
   it('draws the courses from the curriculum, with their real lesson counts', () => {
     renderSection();
-    const picture = screen.getByRole('img', { name: /Python, Java, C and Linux/ });
+    const picture = parts().getByRole('img', { name: /Python, Java, C and Linux/ });
     expect(picture).toHaveTextContent('Python60 lessons');
     expect(picture).toHaveTextContent('Linux55 lessons');
     expect(picture).not.toHaveTextContent('C Algorithms');
@@ -51,33 +91,29 @@ describe('FeaturesSection', () => {
 
   it('lists real challenges from easy to hard, the first ones solved', () => {
     renderSection();
-    const picture = screen.getByRole('img', { name: /Five Python challenges/ });
+    const picture = parts().getByRole('img', { name: /Five Python challenges/ });
     expect(picture).toHaveTextContent('✓Reverse a Stringeasy');
     expect(picture).toHaveTextContent('5Group Anagramshard');
   });
 
   it('shows a Linux session in the lesson terminal prompt', () => {
     renderSection();
-    const picture = screen.getByRole('img', { name: /A Linux terminal/ });
+    const picture = parts().getByRole('img', { name: /A Linux terminal/ });
     expect(picture).toHaveTextContent('student@sandbox:~$ pwd/home/student');
     expect(picture).toHaveTextContent('mission.txt reports tools');
   });
 
-  it("answers Maria21's question in the forum and says it needs an account", () => {
+  it("answers Maria21's question in the forum", () => {
     renderSection();
-    const forum = screen.getByRole('heading', { name: 'The forum' }).parentElement!;
-    expect(within(forum).getByText('With a free account')).toBeDefined();
-    const picture = screen.getByRole('img', { name: /Maria21/ });
+    const picture = parts().getByRole('img', { name: /Maria21/ });
     expect(picture).toHaveTextContent('Maria21How do I print my name 3 times?');
     expect(picture).toHaveTextContent('Marco Hoeger');
     expect(picture).toHaveTextContent('print("Maria")');
   });
 
-  it('shows the tutor pointing at the idea without the fix, behind an account', () => {
+  it('shows the tutor pointing at the idea without the fix', () => {
     renderSection();
-    const tutor = screen.getByRole('heading', { name: 'An AI tutor' }).parentElement!;
-    expect(within(tutor).getByText('With a free account')).toBeDefined();
-    const picture = screen.getByRole('img', { name: /tutor explains that range starts at 0/ });
+    const picture = parts().getByRole('img', { name: /tutor explains that range starts at 0/ });
     expect(picture).toHaveTextContent('Why does my loop print 0, 1, 2 and not 1, 2, 3?');
     expect(picture).toHaveTextContent('which one would give you 1, 2, 3?');
     expect(picture).toHaveTextContent('So range(1, 3)?');

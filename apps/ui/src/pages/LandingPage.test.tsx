@@ -46,6 +46,19 @@ afterEach(async () => {
 });
 
 describe('LandingPage', () => {
+  it('says free only in the hero, the free band and the question about it', () => {
+    renderPage();
+    expect(main().textContent?.match(/free/gi)).toHaveLength(3);
+    expect(within(main()).getByRole('heading', { level: 1 })).toHaveTextContent('for free');
+    expect(within(main()).getByRole('heading', { name: 'Free. Open source.' })).toBeDefined();
+    expect(within(main()).getByRole('button', { name: 'Is it free?' })).toBeDefined();
+  });
+
+  it('shows the chapters of the page at its side', () => {
+    renderPage();
+    expect(screen.getByRole('navigation', { name: 'Chapters of the page' })).toBeDefined();
+  });
+
   it('shows the hero, the proof strip and the sections between its navbar and footer', () => {
     renderPage();
     expect(

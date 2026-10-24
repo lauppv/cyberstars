@@ -14,6 +14,7 @@ beforeEach(async () => {
       "tutor_messages",
       "tutor_conversations",
       "usage_windows",
+      "laniakea_planets",
       "dm_reactions",
       "direct_messages",
       "conversations",

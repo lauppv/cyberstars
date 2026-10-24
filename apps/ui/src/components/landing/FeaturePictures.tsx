@@ -198,18 +198,18 @@ const TUTOR_TURNS: ['student' | 'tutor', string][] = [
 
 // A student stuck on a loop talking it through with the tutor, laid out like
 // the tutor panel: each answer points at the idea and leaves the fix to them.
-// A phone has room for the first question and answer only.
+// A picture narrower than 576px has room for the first question and answer only.
 export function TutorPicture() {
   const { t } = useTranslation();
   return (
     <Box label={t('landing.features.tutor.picture')}>
-      <div className="max-w-[640px] mx-auto flex flex-col gap-3">
+      <div className="@container max-w-[640px] mx-auto flex flex-col gap-3">
         {TUTOR_TURNS.map(([who, key], i) =>
           who === 'student' ? (
             <div
               key={key}
               className={`self-end max-w-[85%] px-3 py-2 rounded-[var(--radius)] bg-[var(--accent)]/15 text-[13px] ${
-                i >= 2 ? 'hidden md:block' : ''
+                i >= 2 ? 'hidden @xl:block' : ''
               }`}
             >
               {t(`landing.features.tutor.${key}`)}
@@ -217,7 +217,7 @@ export function TutorPicture() {
           ) : (
             <div
               key={key}
-              className={`max-w-[85%] items-start gap-2.5 ${i >= 2 ? 'hidden md:flex' : 'flex'}`}
+              className={`max-w-[85%] items-start gap-2.5 ${i >= 2 ? 'hidden @xl:flex' : 'flex'}`}
             >
               <TutorMark size="sm" />
               <p className="pt-0.5 text-[13px] leading-relaxed">
@@ -226,6 +226,74 @@ export function TutorPicture() {
             </div>
           ),
         )}
+      </div>
+    </Box>
+  );
+}
+
+// Laniakea: planets in the dark, the student's own ringed in blue, one still
+// to conquer ringed in white, the rest grey, next to a question from a test.
+const GAME_PLANETS: { x: number; y: number; r: number; fill: string; ring?: string }[] = [
+  { x: 52, y: 120, r: 22, fill: '#6a5040', ring: '#4da3ff' },
+  { x: 120, y: 64, r: 14, fill: '#2a78c4', ring: '#4da3ff' },
+  { x: 168, y: 140, r: 18, fill: '#8a5fd0', ring: '#e6ebff' },
+  { x: 214, y: 70, r: 10, fill: '#55607a' },
+  { x: 236, y: 160, r: 8, fill: '#55607a' },
+];
+
+export function GamePicture() {
+  const { t } = useTranslation();
+  return (
+    <Box label={t('landing.features.laniakea.picture')}>
+      <div className="flex gap-4 h-full">
+        <svg
+          viewBox="0 0 260 190"
+          className="flex-1 min-w-0 h-full rounded-[var(--radius-sm)] bg-[#05050d]"
+          aria-hidden="true"
+        >
+          {[...Array(40)].map((_, i) => (
+            <circle
+              key={i}
+              cx={(i * 53) % 260}
+              cy={(i * 37) % 190}
+              r={i % 3 === 0 ? 0.9 : 0.5}
+              fill="#cfd9ff"
+              opacity={0.6}
+            />
+          ))}
+          {GAME_PLANETS.map((p) => (
+            <g key={`${p.x}-${p.y}`}>
+              {p.ring === '#4da3ff' && (
+                <circle cx={p.x} cy={p.y} r={p.r * 2.2} fill="#4da3ff" opacity={0.12} />
+              )}
+              <circle cx={p.x} cy={p.y} r={p.r} fill={p.fill} />
+              {p.ring && (
+                <ellipse
+                  cx={p.x}
+                  cy={p.y}
+                  rx={p.r * 1.8}
+                  ry={p.r * 0.55}
+                  fill="none"
+                  stroke={p.ring}
+                  strokeWidth={1.6}
+                  opacity={p.ring === '#4da3ff' ? 0.9 : 0.45}
+                />
+              )}
+            </g>
+          ))}
+        </svg>
+        <div className="hidden sm:flex flex-col gap-2 w-[180px] flex-shrink-0 text-[12px]">
+          <div className="text-[var(--text3)]">{t('landing.features.laniakea.question')}</div>
+          <div className="rounded-[var(--radius-sm)] border border-[var(--border)]">
+            <CodeStill code={'print("5 + 3")'} />
+          </div>
+          <div className="px-2 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] font-mono">
+            8
+          </div>
+          <div className="px-2 py-1.5 rounded-[var(--radius-sm)] border border-[var(--success)] text-[var(--success)] font-mono">
+            5 + 3
+          </div>
+        </div>
       </div>
     </Box>
   );

@@ -21,6 +21,7 @@ Live at [cyberstars.app](https://cyberstars.app).
 - **Landing page**: what a visitor sees on `/`, with four wordless algorithm films (bubble sort, a linked list, a binary search tree, a breadth-first search) playing in a grid
 - **Placement test**: 12 multiple-choice questions on Python, C, Java and Linux, taken from the landing page before signing up; the score sets a beginner, intermediate or advanced level the tutor fits its answers and first questions to
 - **What you want to learn**: right after the first-lesson tour the tutor asks which of Python, C, Java, Linux and algorithms the student wants; its first questions then follow those picks and the student's progress (the lesson left unfinished, the next one, a quiz on a lesson from a week ago), it offers help after three failed test runs in a row, and it cheers a finished course or a return after a week away
+- **Laniakea**: a space game that opens after 3 Python lessons; every lesson finished is a planet to fly to, conquered with a 10-question test on it and kept with recaps after 1, 2, 4 and up to 64 days, after which it is the student's for good
 - **Community forum**: threaded discussions with reactions and solution marking
 - **In-app notifications**: live bell for forum replies/solutions and support activity, pushed over a per-user WebSocket
 - **Linux terminal**: interactive sandboxed shell for learning Linux commands
