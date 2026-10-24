@@ -83,7 +83,8 @@ function NavItem({
   // A small mark right after the label, such as Beta
   tag?: ReactNode;
   badge?: number;
-  // A few words at the end of the row, such as what still opens it
+  // A few words under the label, such as what still opens it: at the end of
+  // the row they left the label no room next to a tag
   note?: string;
   onNavigate: () => void;
 }) {
@@ -94,24 +95,33 @@ function NavItem({
       to={to}
       onClick={onNavigate}
       aria-current={active ? 'page' : undefined}
-      className={`${rowClass} no-underline ${
+      className={`${rowClass} no-underline ${note ? 'h-auto py-1.5' : ''} ${
         active
           ? 'bg-[var(--surface2)] text-[var(--text)]'
           : 'text-[var(--text2)] hover:bg-[var(--surface)] hover:text-[var(--text)]'
       }`}
     >
       <Icon size={ICON_SIZE} strokeWidth={1.75} className="flex-shrink-0 opacity-80" />
-      <span className="truncate">{label}</span>
-      {tag}
+      {note ? (
+        <span className="flex flex-col min-w-0">
+          <span className="flex items-center gap-2.5 min-w-0">
+            <span className="truncate">{label}</span>
+            {tag}
+          </span>
+          <span className="flex items-center gap-1 text-[10px] text-[var(--text3)] whitespace-nowrap">
+            <Lock size={10} strokeWidth={2} />
+            {note}
+          </span>
+        </span>
+      ) : (
+        <>
+          <span className="truncate">{label}</span>
+          {tag}
+        </>
+      )}
       {badge != null && badge > 0 && (
         <span className="ml-auto min-w-[18px] h-[18px] px-1 rounded-full bg-[var(--accent)] text-white text-[10px] font-semibold leading-[18px] text-center tabular-nums">
           {badge > 9 ? '9+' : badge}
-        </span>
-      )}
-      {note && (
-        <span className="ml-auto flex items-center gap-1 text-[10px] text-[var(--text3)] whitespace-nowrap">
-          <Lock size={10} strokeWidth={2} />
-          {note}
         </span>
       )}
     </Link>
