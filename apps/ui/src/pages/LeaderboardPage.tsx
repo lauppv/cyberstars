@@ -74,6 +74,7 @@ export function LeaderboardPage() {
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState(false);
+  const [moreError, setMoreError] = useState<string | null>(null);
 
   // Client-side guard is UX only; /api/leaderboard is server-authoritative.
   useEffect(() => {
@@ -111,15 +112,20 @@ export function LeaderboardPage() {
 
   const loadMore = useCallback(() => {
     setLoadingMore(true);
+    setMoreError(null);
     leaderboardService
       .getLeaderboard(PAGE_SIZE, entries.length)
       .then((page) => {
         setEntries((prev) => [...prev, ...page.entries]);
         setTotal(page.total);
       })
-      .catch(() => {})
+      .catch((err: unknown) =>
+        setMoreError(
+          err instanceof Error && err.message ? err.message : t('common.somethingWrong'),
+        ),
+      )
       .finally(() => setLoadingMore(false));
-  }, [entries.length]);
+  }, [entries.length, t]);
 
   const meVisible = me != null && entries.some((e) => e.userId === me.userId);
   const hasMore = entries.length < total;
@@ -145,7 +151,12 @@ export function LeaderboardPage() {
             </div>
 
             {hasMore && (
-              <div className="flex justify-center mt-5">
+              <div className="flex flex-col items-center gap-2 mt-5">
+                {moreError && (
+                  <p role="alert" className="text-[12px] text-[var(--error)]">
+                    {moreError}
+                  </p>
+                )}
                 <button
                   onClick={loadMore}
                   disabled={loadingMore}
