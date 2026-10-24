@@ -98,7 +98,6 @@ model User {
   showBio         Boolean   @default(true) @map("show_bio")
   showStats       Boolean   @default(true) @map("show_stats")
   showProgress    Boolean   @default(true) @map("show_progress")
-  showActivity    Boolean   @default(true) @map("show_activity")
   // Whether other viewers see this user's connections list on their public
   // profile (own view ignores it). The connections themselves stay functional
   // when off; only the public listing is hidden.

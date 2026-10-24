@@ -24,7 +24,6 @@ export async function findById(id: number) {
       showBio: true,
       showStats: true,
       showProgress: true,
-      showActivity: true,
       showConnections: true,
       onboardedAt: true,
       placementScore: true,
@@ -54,7 +53,6 @@ export async function updateProfile(
     showBio?: boolean;
     showStats?: boolean;
     showProgress?: boolean;
-    showActivity?: boolean;
     showConnections?: boolean;
   },
 ) {

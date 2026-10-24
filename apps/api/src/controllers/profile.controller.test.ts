@@ -223,7 +223,6 @@ describe('updateProfile', () => {
         showBio: false,
         showStats: true,
         showProgress: false,
-        showActivity: true,
         showConnections: false,
       }),
       mkRes(),
@@ -233,7 +232,6 @@ describe('updateProfile', () => {
       showBio: false,
       showStats: true,
       showProgress: false,
-      showActivity: true,
       showConnections: false,
     });
   });
