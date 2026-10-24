@@ -10,7 +10,8 @@ import { QuizDialog } from './QuizDialog';
 
 const NOW = Date.parse('2026-10-24T12:00:00Z');
 
-// Ten questions; the right option is always the second shown.
+// Ten questions, the first with code and the second with an output; the right
+// option is always the second shown.
 function quiz(over: Partial<QuizView> = {}): QuizView {
   return {
     slug: 'print',
@@ -18,6 +19,7 @@ function quiz(over: Partial<QuizView> = {}): QuizView {
     questions: Array.from({ length: 10 }, (_, i) => ({
       text: `Question ${i + 1}: what does \`print\` do?`,
       code: i === 0 ? 'print("5")' : null,
+      output: i === 1 ? 'Ready\nGo' : null,
       options: ['a', 'b', 'c', 'd'].map((o) => `${o}${i + 1}`),
     })),
     answers: [],
@@ -70,6 +72,17 @@ describe('QuizDialog', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Next question' }));
     expect(screen.getByText('Question 2 of 10')).toBeInTheDocument();
+  });
+
+  it('shows the output a question asks for under its label, the options as code', async () => {
+    service.startQuiz.mockResolvedValue(
+      quiz({ answers: [{ choice: 1, correct: true, correctChoice: 1 }] }),
+    );
+    open();
+    expect(await screen.findByText('Question 2 of 10')).toBeInTheDocument();
+    expect(screen.getByText('It prints')).toBeInTheDocument();
+    expect(screen.getByText(/Ready\s+Go/).tagName).toBe('PRE');
+    expect(screen.getByRole('button', { name: /a2/ })).toHaveClass('lnk-is-code');
   });
 
   it('answers and moves on from the keyboard', async () => {

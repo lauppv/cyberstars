@@ -998,6 +998,7 @@
       "recap": "Recap",
       "practice": "Practice",
       "question": "Question {{n}} of {{total}}",
+      "output": "It prints",
       "right": "Right",
       "wrong": "Wrong",
       "next": "Next question",
