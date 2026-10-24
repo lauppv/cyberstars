@@ -408,4 +408,31 @@ describe('useCodeExecution', () => {
     vi.unstubAllGlobals();
     vi.stubGlobal('WebSocket', MockWebSocket);
   });
+
+  it('stops a run at once: closes the socket, drops the wait and says it stopped', async () => {
+    const { result } = renderHook(() => ({ run: useCodeExecution(), wait: useRunWait() }));
+    act(() => result.current.run.execute('input()', 'python'));
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10));
+    });
+    const ws = wsInstances[0];
+    const close = vi.spyOn(ws, 'close');
+    act(() => {
+      ws.simulateMessage({ type: 'waiting' });
+      ws.simulateMessage({ type: 'stdout', data: 'Name? ' });
+    });
+    act(() => result.current.run.stop());
+    expect(close).toHaveBeenCalledTimes(1);
+    expect(result.current.run.isRunning).toBe(false);
+    expect(result.current.wait).toBeNull();
+    expect(result.current.run.output).toBe('Name? \nStopped.\n');
+    act(() => result.current.run.sendInput('Ana\n'));
+    expect(ws.sent).toHaveLength(1);
+  });
+
+  it('does nothing on stop when no run is going', () => {
+    const { result } = renderHook(() => useCodeExecution());
+    act(() => result.current.stop());
+    expect(result.current.output).toBe('');
+  });
 });

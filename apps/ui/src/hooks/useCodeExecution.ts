@@ -126,6 +126,25 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
     sendInputRef.current?.(data);
   }, []);
 
+  // The student's Ctrl+C: closing the socket makes the server kill the program
+  // at once, as when the page is left mid-run, wherever it is (waiting for a
+  // sandbox, compiling, waiting for input).
+  const stop = useCallback(() => {
+    const ws = wsRef.current;
+    if (!ws) return;
+    wsRef.current = null;
+    ws.close();
+    sendInputRef.current = null;
+    setRunWait(runner, null);
+    setIsRunning(false);
+    setOutput((prev) =>
+      appendCapped(
+        prev,
+        `${prev && !prev.endsWith('\n') ? '\n' : ''}${i18next.t('code.stopped')}\n`,
+      ),
+    );
+  }, [runner]);
+
   const clearOutput = useCallback(() => {
     setOutput('');
     if (wsRef.current) {
@@ -135,5 +154,5 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
     sendInputRef.current = null;
   }, []);
 
-  return { output, isRunning, execute, sendInput, clearOutput };
+  return { output, isRunning, execute, stop, sendInput, clearOutput };
 }

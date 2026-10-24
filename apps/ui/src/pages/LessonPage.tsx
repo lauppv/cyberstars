@@ -129,8 +129,14 @@ export function LessonPage() {
   const editorLanguage = shownLanguage ?? category;
   const { notifyRunComplete } = useGuestSignupPrompt();
   const notifyGuestRun = useCallback(() => notifyRunComplete(0), [notifyRunComplete]);
-  const { output, isRunning, execute, sendInput, clearOutput } =
-    useCodeExecution(notifyRunComplete);
+  const {
+    output,
+    isRunning,
+    execute,
+    stop: stopRun,
+    sendInput,
+    clearOutput,
+  } = useCodeExecution(notifyRunComplete);
   const terminal = useTerminalSession(
     isTerminal ? category : '',
     isTerminal ? lesson : '',
@@ -1107,7 +1113,7 @@ export function LessonPage() {
                   <div
                     className={`flex gap-2 ${devMode ? 'flex-col items-stretch shrink-0 max-w-[160px]' : 'mb-3 items-center flex-wrap'}`}
                   >
-                    <RunButton onClick={handleRun} isRunning={isRunning} />
+                    <RunButton onClick={handleRun} isRunning={isRunning} onStop={stopRun} />
                     {hasTests ? (
                       <button
                         data-track="run-tests"

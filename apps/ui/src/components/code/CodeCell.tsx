@@ -23,7 +23,7 @@ export function CodeCell({ initialCode, language }: CodeCellProps) {
   const lang = LANG_MAP[language.toLowerCase()] || language.toLowerCase();
   const [code, setCode] = useState(initialCode);
   const { notifyRunComplete } = useGuestSignupPrompt();
-  const { output, isRunning, execute, sendInput } = useCodeExecution(notifyRunComplete);
+  const { output, isRunning, execute, stop, sendInput } = useCodeExecution(notifyRunComplete);
   const runLesson = useContext(RunLessonContext);
   const rootRef = useRef<HTMLDivElement>(null);
   const wasRunning = useRef(false);
@@ -41,6 +41,7 @@ export function CodeCell({ initialCode, language }: CodeCellProps) {
       <RunButton
         onClick={() => execute(code, lang, runLesson ?? undefined)}
         isRunning={isRunning}
+        onStop={stop}
         className="mt-2"
       />
       {(output || isRunning) && (
