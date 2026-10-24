@@ -85,6 +85,7 @@ const {
 
 const { GUEST_RUN_BUDGET, recordGuestRun } = await import('./guest-budget.service.js');
 const { config } = await import('../config/index.js');
+const { PREVIEW_FEATURES } = await import('@cyberstars/shared/features');
 
 class FakeWs extends EventEmitter {
   OPEN = 1;
@@ -597,11 +598,16 @@ describe('upgrade routing', () => {
   });
 
   describe('on production', () => {
+    // The socket opens for either feature, so both go back to preview here,
+    // whichever are launched
+    const launched = { ...PREVIEW_FEATURES };
     beforeEach(() => {
       Object.assign(config, { isProduction: true });
+      Object.assign(PREVIEW_FEATURES, { notifications: true, messaging: true });
     });
     afterEach(() => {
       Object.assign(config, { isProduction: false });
+      Object.assign(PREVIEW_FEATURES, launched);
     });
 
     it('closes the socket for a user outside the preview gate', async () => {

@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { courses } from '@cyberstars/content/curriculum';
+import { PREVIEW_FEATURES } from '@cyberstars/shared/features';
 import {
   lessonStatement,
   listCourses,
@@ -90,6 +91,15 @@ describe('lessonStatement', () => {
 
 describe('listPages', () => {
   const links = (map: ReturnType<typeof listPages>) => map.pages.map((p) => p.link);
+
+  // The leaderboard stands in for a preview page, whichever features are launched
+  const launched = PREVIEW_FEATURES.leaderboard;
+  beforeEach(() => {
+    PREVIEW_FEATURES.leaderboard = true;
+  });
+  afterEach(() => {
+    PREVIEW_FEATURES.leaderboard = launched;
+  });
 
   it('leaves preview pages and the Admin page out for a student on prod', () => {
     const map = listPages('USER', true);
