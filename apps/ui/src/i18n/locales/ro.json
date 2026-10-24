@@ -425,6 +425,8 @@
     "empty": "Ești la zi.",
     "markAllRead": "Marchează toate ca citite",
     "loadMore": "Încarcă mai multe",
+    "retry": "Încearcă din nou",
+    "loadFailed": "Notificările nu s-au putut încărca.",
     "someone": "Cineva",
     "forumReply_one": "{{name}} a răspuns la „{{title}}”",
     "forumReply_few": "{{count}} răspunsuri noi la „{{title}}”",

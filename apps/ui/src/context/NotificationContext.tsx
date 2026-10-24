@@ -1,5 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
+import i18next from 'i18next';
 import { useAuth } from './AuthContext';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import { useUserSocketFrames } from './UserSocketContext';
@@ -9,12 +10,22 @@ import type { NotificationDTO, UserSocketFrame } from '@cyberstars/shared/notifi
 
 const PAGE_SIZE = 20;
 
+/** The server's reason in the page's language, else a general one. */
+function errMsg(err: unknown): string {
+  return err instanceof Error && err.message ? err.message : i18next.t('common.somethingWrong');
+}
+
 interface NotificationContextValue {
   enabled: boolean;
   items: NotificationDTO[];
   unreadCount: number;
   loading: boolean;
   hasMore: boolean;
+  // The list didn't load; kept until a load works, live rows or not.
+  loadFailed: boolean;
+  reload: () => void;
+  // Why the last "load more" didn't.
+  moreError: string | null;
   loadMore: () => void;
   markAllRead: () => void;
   markOneRead: (id: number) => void;
@@ -30,6 +41,41 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(false);
+  const [loadFailed, setLoadFailed] = useState(false);
+  const [moreError, setMoreError] = useState<string | null>(null);
+  // Bumped by each first-page load and by its cancel, so only the latest
+  // load's answer lands.
+  const loads = useRef(0);
+
+  // Loads the first page; the function it returns drops the answer of any
+  // load still on its way, this one or a retry after it.
+  const loadFirstPage = useCallback(() => {
+    const load = ++loads.current;
+    setLoading(true);
+    setLoadFailed(false);
+    notificationsService
+      .getNotifications(PAGE_SIZE)
+      .then((page) => {
+        if (load !== loads.current) return;
+        setItems(page.items);
+        setUnreadCount(page.unreadCount);
+        setHasMore(page.items.length === PAGE_SIZE);
+        setMoreError(null);
+      })
+      .catch(() => {
+        if (load === loads.current) setLoadFailed(true);
+      })
+      .finally(() => {
+        if (load === loads.current) setLoading(false);
+      });
+    return () => {
+      loads.current++;
+    };
+  }, []);
+
+  const reload = useCallback(() => {
+    loadFirstPage();
+  }, [loadFirstPage]);
 
   // Initial load (and reset when the feature turns off, e.g. logout).
   useEffect(() => {
@@ -37,26 +83,12 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
       setItems([]); // eslint-disable-line react-hooks/set-state-in-effect
       setUnreadCount(0);
       setHasMore(false);
+      setLoadFailed(false);
+      setMoreError(null);
       return;
     }
-    let cancelled = false;
-    setLoading(true);
-    notificationsService
-      .getNotifications(PAGE_SIZE)
-      .then((page) => {
-        if (cancelled) return;
-        setItems(page.items);
-        setUnreadCount(page.unreadCount);
-        setHasMore(page.items.length === PAGE_SIZE);
-      })
-      .catch(() => {})
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [enabled]);
+    return loadFirstPage();
+  }, [enabled, loadFirstPage]);
 
   // Live updates over the shared /ws/user socket.
   const onFrame = useCallback((frame: UserSocketFrame) => {
@@ -88,6 +120,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
   const loadMore = useCallback(() => {
     const before = items[items.length - 1]?.id;
     if (before == null) return;
+    setMoreError(null);
     notificationsService
       .getNotifications(PAGE_SIZE, before)
       .then((page) => {
@@ -99,7 +132,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
         ]);
         setHasMore(page.items.length === PAGE_SIZE);
       })
-      .catch(() => {});
+      .catch((err: unknown) => setMoreError(errMsg(err)));
   }, [items]);
 
   const markAllRead = useCallback(() => {
@@ -127,7 +160,19 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
 
   return (
     <NotificationContext
-      value={{ enabled, items, unreadCount, loading, hasMore, loadMore, markAllRead, markOneRead }}
+      value={{
+        enabled,
+        items,
+        unreadCount,
+        loading,
+        hasMore,
+        loadFailed,
+        reload,
+        moreError,
+        loadMore,
+        markAllRead,
+        markOneRead,
+      }}
     >
       {children}
     </NotificationContext>
