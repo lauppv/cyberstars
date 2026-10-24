@@ -88,12 +88,68 @@ describe('useLesson', () => {
     expect(result.current.savedCode).toBe('my saved code');
   });
 
-  it('leaves saved code null when the saved-code fetch fails', async () => {
+  it('leaves saved code null and says it failed when the saved-code fetch fails', async () => {
     mockLoggedIn = true;
     mockGetSaved.mockRejectedValue(new Error('nope'));
     const { result } = renderHook(() => useLesson('python', 'py-1'));
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(result.current.savedCode).toBeNull();
+    expect(result.current.savedCodeFailed).toBe(true);
+  });
+
+  it('tells nothing saved from a failed fetch', async () => {
+    mockLoggedIn = true;
+    mockGetSaved.mockResolvedValue({ code: null });
+    const { result } = renderHook(() => useLesson('python', 'py-1'));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.savedCode).toBeNull();
+    expect(result.current.savedCodeFailed).toBe(false);
+  });
+
+  it('brings the saved code back when a reload works', async () => {
+    mockLoggedIn = true;
+    mockGetSaved.mockRejectedValueOnce(new Error('nope'));
+    const { result } = renderHook(() => useLesson('python', 'py-1'));
+    await waitFor(() => expect(result.current.savedCodeFailed).toBe(true));
+    let code: string | null = null;
+    await act(async () => {
+      code = await result.current.reloadSavedCode();
+    });
+    expect(code).toBe('my saved code');
+    expect(result.current.savedCode).toBe('my saved code');
+    expect(result.current.savedCodeFailed).toBe(false);
+  });
+
+  it('keeps the saved code unknown when a reload fails too', async () => {
+    mockLoggedIn = true;
+    mockGetSaved.mockRejectedValue(new Error('nope'));
+    const { result } = renderHook(() => useLesson('python', 'py-1'));
+    await waitFor(() => expect(result.current.savedCodeFailed).toBe(true));
+    await act(() => expect(result.current.reloadSavedCode()).rejects.toThrow('nope'));
+    expect(result.current.savedCodeFailed).toBe(true);
+  });
+
+  it('drops a reload that answers after the lesson changed', async () => {
+    mockLoggedIn = true;
+    mockGetSaved.mockRejectedValueOnce(new Error('nope'));
+    const { result, rerender } = renderHook(({ slug }) => useLesson('python', slug), {
+      initialProps: { slug: 'py-1' },
+    });
+    await waitFor(() => expect(result.current.savedCodeFailed).toBe(true));
+    let answer: (v: { code: string | null }) => void = () => {};
+    mockGetSaved.mockReturnValueOnce(new Promise((resolve) => (answer = resolve)));
+    let reload: Promise<string | null> = Promise.resolve(null);
+    act(() => {
+      reload = result.current.reloadSavedCode();
+    });
+    mockGetSaved.mockResolvedValue({ code: 'py-2 code' });
+    rerender({ slug: 'py-2' });
+    await waitFor(() => expect(result.current.savedCode).toBe('py-2 code'));
+    await act(async () => {
+      answer({ code: 'py-1 code' });
+      expect(await reload).toBeNull();
+    });
+    expect(result.current.savedCode).toBe('py-2 code');
   });
 
   it('does not fetch saved code when logged out', async () => {
