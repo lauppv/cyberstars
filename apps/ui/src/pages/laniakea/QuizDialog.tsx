@@ -108,10 +108,14 @@ export function QuizDialog({
   };
 
   const question = view?.questions[shown];
-  // A question about code, or whose options are programs, shows every option
-  // in the code font, so they all read alike
+  // A question about code, one asking for code that prints an output, or one
+  // whose options are programs shows every option in the code font, so they all
+  // read alike
   const codeOptions =
-    !!question && (question.code !== null || question.options.some((o) => o.includes('\n')));
+    !!question &&
+    (question.code !== null ||
+      question.output !== null ||
+      question.options.some((o) => o.includes('\n')));
   const mode = view ? t(`laniakea.quiz.${view.mode}`) : '';
 
   return (
@@ -196,6 +200,12 @@ export function QuizDialog({
             </div>
             <p className="lnk-question">{withCode(question.text)}</p>
             {question.code && <pre className="lnk-code">{question.code}</pre>}
+            {question.output && (
+              <>
+                <div className="lnk-label mb-1">{t('laniakea.quiz.output')}</div>
+                <pre className="lnk-code">{question.output}</pre>
+              </>
+            )}
             <ul className="lnk-options">
               {question.options.map((option, i) => {
                 const state = !answered

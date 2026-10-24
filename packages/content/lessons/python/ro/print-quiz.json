@@ -181,5 +181,126 @@
       "options": ["Salut\nPa", "Pa\nSalut", "Salut Pa", "Doar Pa"],
       "answer": 0
     }
+  ],
+  "templates": [
+    {
+      "id": "say",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "print(\"{{text}}\")",
+      "values": [
+        {
+          "text": "Buna dimineata"
+        },
+        {
+          "text": "Am 3 pisici"
+        },
+        {
+          "text": "10 + 5"
+        },
+        {
+          "text": "Python e distractiv"
+        },
+        {
+          "text": "Ne vedem maine"
+        }
+      ],
+      "mistakes": [
+        ["\"{{text}}\"", "'\"{{text}}\"'"],
+        ["\"{{text}}\"", "\"print {{text}}\""],
+        ["\"{{text}}\"", "{{text}}"],
+        ["\"{{text}}\"", "\"({{text}})\""]
+      ]
+    },
+    {
+      "id": "two-lines",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")",
+      "values": [
+        {
+          "a": "Pe locuri",
+          "b": "Start"
+        },
+        {
+          "a": "Salut",
+          "b": "Pa"
+        },
+        {
+          "a": "Am 12 ani",
+          "b": "Imi place pizza"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{a}}\")\nprint(\"{{b}}\")", "print(\"{{b}}\")\nprint(\"{{a}}\")"],
+        ["\")\nprint(\"", " "],
+        ["print(\"{{b}}\")", "print({{b}})"]
+      ]
+    },
+    {
+      "id": "gap-line",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"{{a}}\")\n___\nprint(\"{{c}}\")",
+      "values": [
+        {
+          "a": "Pe locuri",
+          "b": "Fiti gata",
+          "c": "Start"
+        },
+        {
+          "a": "Unu",
+          "b": "Doi",
+          "c": "Trei"
+        },
+        {
+          "a": "Rosu",
+          "b": "Verde",
+          "c": "Albastru"
+        }
+      ],
+      "answer": "print(\"{{b}}\")",
+      "wrong": ["print({{b}})", "print(\"{{c}}\")", "\"{{b}}\"", "Print(\"{{b}}\")"]
+    },
+    {
+      "id": "gap-value",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "values": [
+        {
+          "text": "Salut"
+        },
+        {
+          "text": "Pizza"
+        },
+        {
+          "text": "CyberStars"
+        }
+      ],
+      "answer": "\"{{text}}\"",
+      "wrong": ["{{text}}", "'\"{{text}}\"'", "\"print {{text}}\""]
+    },
+    {
+      "id": "bad-line",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "Numele meu este Ana",
+          "b": "Am 12 ani",
+          "c": "Imi place pizza",
+          "d": "CyberStars e cel mai tare"
+        },
+        {
+          "a": "Pe locuri",
+          "b": "Fiti gata",
+          "c": "Start",
+          "d": "Gata"
+        }
+      ],
+      "bug": ["print(\"{{c}}\")", "print({{c}})"]
+    }
   ]
 }

@@ -1,0 +1,165 @@
+{
+  "note": "Made by npm run make:quiz from the templates in print-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "say-30a990",
+      "text": "Ce afișează?",
+      "code": "print(\"Buna dimineata\")",
+      "options": [
+        "Buna dimineata",
+        "\"Buna dimineata\"",
+        "print Buna dimineata",
+        "(Buna dimineata)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "say-3d860e",
+      "text": "Ce afișează?",
+      "code": "print(\"Am 3 pisici\")",
+      "options": ["Am 3 pisici", "\"Am 3 pisici\"", "print Am 3 pisici", "(Am 3 pisici)"],
+      "answer": 0
+    },
+    {
+      "id": "say-138eb1",
+      "text": "Ce afișează?",
+      "code": "print(\"10 + 5\")",
+      "options": ["10 + 5", "\"10 + 5\"", "print 10 + 5", "15"],
+      "answer": 0
+    },
+    {
+      "id": "say-5fe966",
+      "text": "Ce afișează?",
+      "code": "print(\"Python e distractiv\")",
+      "options": [
+        "Python e distractiv",
+        "\"Python e distractiv\"",
+        "print Python e distractiv",
+        "(Python e distractiv)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "say-0c9176",
+      "text": "Ce afișează?",
+      "code": "print(\"Ne vedem maine\")",
+      "options": [
+        "Ne vedem maine",
+        "\"Ne vedem maine\"",
+        "print Ne vedem maine",
+        "(Ne vedem maine)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "two-lines-65dd40",
+      "text": "Care program afișează asta?",
+      "output": "Pe locuri\nStart",
+      "options": [
+        "print(\"Pe locuri\")\nprint(\"Start\")",
+        "print(\"Start\")\nprint(\"Pe locuri\")",
+        "print(\"Pe locuri Start\")",
+        "print(\"Pe locuri\")\nprint(Start)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "two-lines-b641be",
+      "text": "Care program afișează asta?",
+      "output": "Salut\nPa",
+      "options": [
+        "print(\"Salut\")\nprint(\"Pa\")",
+        "print(\"Pa\")\nprint(\"Salut\")",
+        "print(\"Salut Pa\")",
+        "print(\"Salut\")\nprint(Pa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "two-lines-54c371",
+      "text": "Care program afișează asta?",
+      "output": "Am 12 ani\nImi place pizza",
+      "options": [
+        "print(\"Am 12 ani\")\nprint(\"Imi place pizza\")",
+        "print(\"Imi place pizza\")\nprint(\"Am 12 ani\")",
+        "print(\"Am 12 ani Imi place pizza\")",
+        "print(\"Am 12 ani\")\nprint(Imi place pizza)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gap-line-90f8ea",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"Pe locuri\")\n___\nprint(\"Start\")",
+      "output": "Pe locuri\nFiti gata\nStart",
+      "options": ["print(\"Fiti gata\")", "print(Fiti gata)", "print(\"Start\")", "\"Fiti gata\""],
+      "answer": 0
+    },
+    {
+      "id": "gap-line-62a0d5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"Unu\")\n___\nprint(\"Trei\")",
+      "output": "Unu\nDoi\nTrei",
+      "options": ["print(\"Doi\")", "print(Doi)", "print(\"Trei\")", "\"Doi\""],
+      "answer": 0
+    },
+    {
+      "id": "gap-line-cb16db",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"Rosu\")\n___\nprint(\"Albastru\")",
+      "output": "Rosu\nVerde\nAlbastru",
+      "options": ["print(\"Verde\")", "print(Verde)", "print(\"Albastru\")", "\"Verde\""],
+      "answer": 0
+    },
+    {
+      "id": "gap-value-ce9eed",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "Salut",
+      "options": ["\"Salut\"", "Salut", "'\"Salut\"'", "\"print Salut\""],
+      "answer": 0
+    },
+    {
+      "id": "gap-value-530496",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "Pizza",
+      "options": ["\"Pizza\"", "Pizza", "'\"Pizza\"'", "\"print Pizza\""],
+      "answer": 0
+    },
+    {
+      "id": "gap-value-f5d350",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "CyberStars",
+      "options": ["\"CyberStars\"", "CyberStars", "'\"CyberStars\"'", "\"print CyberStars\""],
+      "answer": 0
+    },
+    {
+      "id": "bad-line-8365eb",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "print(\"Numele meu este Ana\")\nprint(\"Am 12 ani\")\nprint(Imi place pizza)\nprint(\"CyberStars e cel mai tare\")",
+      "output": "Numele meu este Ana\nAm 12 ani\nImi place pizza\nCyberStars e cel mai tare",
+      "options": [
+        "print(Imi place pizza)",
+        "print(\"Numele meu este Ana\")",
+        "print(\"Am 12 ani\")",
+        "print(\"CyberStars e cel mai tare\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-line-fd890b",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "print(\"Pe locuri\")\nprint(\"Fiti gata\")\nprint(Start)\nprint(\"Gata\")",
+      "output": "Pe locuri\nFiti gata\nStart\nGata",
+      "options": [
+        "print(Start)",
+        "print(\"Pe locuri\")",
+        "print(\"Fiti gata\")",
+        "print(\"Gata\")"
+      ],
+      "answer": 0
+    }
+  ]
+}

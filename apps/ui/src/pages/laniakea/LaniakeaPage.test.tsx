@@ -191,6 +191,7 @@ describe('LaniakeaPage', () => {
       questions: Array.from({ length: 10 }, () => ({
         text: 'Q?',
         code: null,
+        output: null,
         options: ['a', 'b', 'c', 'd'],
       })),
       answers: Array(9).fill({ choice: 0, correct: true, correctChoice: 0 }),

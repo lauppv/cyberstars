@@ -17,6 +17,8 @@
     "validate:tests": "npm run validate:tests -w @cyberstars/api",
     "check:tests": "npm run check:tests -w @cyberstars/api --",
     "check:tutor": "npm run check:tutor -w @cyberstars/api --",
+    "make:quiz": "npm run make:quiz -w @cyberstars/api --",
+    "check:quiz": "npm run check:quiz -w @cyberstars/api",
     "dev": "npm run db:prepare && concurrently -n client,server -c cyan,magenta \"npm run dev:client\" \"npm run dev:server\"",
     "predev:client": "npm run gen:content",
     "dev:client": "npm run dev -w @cyberstars/ui",

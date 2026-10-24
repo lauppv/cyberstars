@@ -1040,6 +1040,7 @@
       "recap": "Recapitulare",
       "practice": "Exercițiu",
       "question": "Întrebarea {{n}} din {{total}}",
+      "output": "Afișează",
       "right": "Corect",
       "wrong": "Greșit",
       "next": "Următoarea întrebare",

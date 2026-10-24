@@ -8,16 +8,24 @@ import { contentDir } from './paths.js';
 // static-content generator copies only markdown), so a student can't read the
 // answers before a test.
 //
-//   { "questions": [{ "id": "q1", "text": "...", "code": "...", "options": [4], "answer": 0 }] }
+//   { "questions": [{ "id": "q1", "text": "...", "code": "...", "output": "...", "options": [4], "answer": 0 }],
+//     "templates": [...] }
 //
-// `code` is optional and `answer` is the right option's place. An id names one
-// question for good, since the server remembers which ones a student has seen:
-// a question that changes its meaning gets a new id. The Romanian file has the
-// same questions, in the same order, with the same ids and right answers.
-interface QuizQuestionSpec {
+// `code` and `output` are optional and `answer` is the right option's place. An
+// id names one question for good, since the server remembers which ones a
+// student has seen: a question that changes its meaning gets a new id. The
+// Romanian file has the same questions, in the same order, with the same ids and
+// right answers.
+//
+// `templates` make more questions from code (laniakea-templates.ts): `npm run
+// make:quiz` runs them with Python and writes what they make to
+// <slug>-quiz-made.json beside the quiz file, in the same shape. A lesson's pool
+// is both files' questions, so a lesson may have only templates.
+export interface QuizQuestionSpec {
   id: string;
   text: string;
   code: string | null;
+  output: string | null;
   options: string[];
   answer: number;
 }
@@ -27,24 +35,34 @@ export interface QuizSpec {
 }
 
 const QUIZ_SUFFIX = '-quiz.json';
-const ID = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const MADE_SUFFIX = '-quiz-made.json';
+export const QUIZ_ID = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 function text(value: unknown, where: string): string {
   if (typeof value !== 'string' || value.trim() === '') throw new Error(`${where} has no text`);
   return value;
 }
 
-// Reads a quiz file's contents, or throws saying what is wrong with it.
-export function parseQuiz(raw: unknown): QuizSpec {
-  const list = (raw as { questions?: unknown } | null)?.questions;
+// The questions a quiz file holds: none when it has only templates.
+function questionsIn(raw: unknown): Record<string, unknown>[] {
+  if (typeof raw !== 'object' || raw === null) throw new Error('no questions list');
+  const list = (raw as { questions?: unknown }).questions;
+  if (list === undefined) return [];
   if (!Array.isArray(list)) throw new Error('no questions list');
+  return list as Record<string, unknown>[];
+}
+
+// Reads a lesson's pool from its files' contents (the quiz file, then the made
+// questions), or throws saying what is wrong with it.
+export function parseQuiz(...files: unknown[]): QuizSpec {
+  const list = files.flatMap(questionsIn);
   if (list.length < QUIZ_LENGTH) {
     throw new Error(`${list.length} questions, a test needs ${QUIZ_LENGTH}`);
   }
   const ids = new Set<string>();
   const questions = list.map((q: Record<string, unknown>, i): QuizQuestionSpec => {
     const where = `question ${i + 1}`;
-    if (typeof q?.id !== 'string' || !ID.test(q.id)) throw new Error(`${where} has a bad id`);
+    if (typeof q?.id !== 'string' || !QUIZ_ID.test(q.id)) throw new Error(`${where} has a bad id`);
     if (ids.has(q.id)) throw new Error(`${where} repeats the id ${q.id}`);
     ids.add(q.id);
     const options = q.options;
@@ -63,10 +81,12 @@ export function parseQuiz(raw: unknown): QuizSpec {
     if (q.code !== undefined && typeof q.code !== 'string') {
       throw new Error(`${q.id} has code that isn't text`);
     }
+    if (q.output !== undefined) text(q.output, `${q.id} output`);
     return {
       id: q.id,
       text: text(q.text, q.id),
       code: (q.code as string | undefined) ?? null,
+      output: (q.output as string | undefined) ?? null,
       options: options as string[],
       answer: q.answer as number,
     };
@@ -90,25 +110,35 @@ export function pairProblems(en: QuizSpec, ro: QuizSpec): string[] {
     else if (r.answer !== q.answer) problems.push(`${q.id} has another right option in Romanian`);
     else if ((r.code === null) !== (q.code === null)) {
       problems.push(`${q.id} has code in one language only`);
+    } else if ((r.output === null) !== (q.output === null)) {
+      problems.push(`${q.id} has an output in one language only`);
     }
   });
   return problems;
 }
 
-function quizPath(slug: string, lang: 'en' | 'ro'): string {
+function quizPath(slug: string, lang: 'en' | 'ro', suffix = QUIZ_SUFFIX): string {
   const dir = contentDir(LANIAKEA_COURSE);
-  return lang === 'ro'
-    ? path.join(dir, 'ro', slug + QUIZ_SUFFIX)
-    : path.join(dir, slug + QUIZ_SUFFIX);
+  return lang === 'ro' ? path.join(dir, 'ro', slug + suffix) : path.join(dir, slug + suffix);
+}
+
+// Where a lesson's questions are in one language: the quiz file (questions and
+// templates) and the made questions beside it.
+export function quizFiles(slug: string, lang: 'en' | 'ro'): { quiz: string; made: string } {
+  return { quiz: quizPath(slug, lang), made: quizPath(slug, lang, MADE_SUFFIX) };
+}
+
+function readJson(file: string): unknown {
+  return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : {};
 }
 
 // The lesson's questions in the page's language, the English ones when it has
 // no Romanian, or null when the lesson has none.
 export function loadQuiz(slug: string, lang: 'en' | 'ro'): QuizSpec | null {
-  for (const file of lang === 'ro'
-    ? [quizPath(slug, 'ro'), quizPath(slug, 'en')]
-    : [quizPath(slug, 'en')]) {
-    if (fs.existsSync(file)) return parseQuiz(JSON.parse(fs.readFileSync(file, 'utf8')));
+  for (const files of lang === 'ro'
+    ? [quizFiles(slug, 'ro'), quizFiles(slug, 'en')]
+    : [quizFiles(slug, 'en')]) {
+    if (fs.existsSync(files.quiz)) return parseQuiz(readJson(files.quiz), readJson(files.made));
   }
   return null;
 }
