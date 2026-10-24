@@ -508,36 +508,21 @@
     "showPassword": "Arată parola",
     "hidePassword": "Ascunde parola",
     "tabs": {
-      "login": "Autentificare",
+      "login": "Conectare",
       "signup": "Înregistrare"
     },
-    "brand": {
-      "tagline": "Învață să programezi prin lecții interactive. Scrie cod real și colecționează insigne pe parcurs."
-    },
-    "features": [
-      {
-        "bold": "Editor de cod live",
-        "rest": ": scrie și rulează cod instant"
+    "heading": {
+      "login": {
+        "title": "Bine ai revenit",
+        "subtitle": "Continuă lecțiile de unde ai rămas."
       },
-      {
-        "bold": "Python, C, Java și Linux",
-        "rest": ": programă structurată"
-      },
-      {
-        "bold": "XP & niveluri",
-        "rest": ": câștigă XP și urcă în ranguri cosmice cu fiecare lecție"
-      },
-      {
-        "bold": "Forum comunitar",
-        "rest": ": întreabă, împărtășește și ajută-i pe alții"
-      },
-      {
-        "bold": "Almanahul",
-        "rest": ": istorie tech, curiozități și legende"
+      "signup": {
+        "title": "Creează-ți contul",
+        "subtitle": "Contul îți salvează progresul și îți deschide forumul și tutorele AI."
       }
-    ],
-    "backToLogin": "← Înapoi la autentificare",
-    "forgotTitle": "Ai uitat parola",
+    },
+    "backToLogin": "← Înapoi la conectare",
+    "forgotTitle": "Ai uitat parola?",
     "resetTitle": "Resetează parola",
     "forgotSubtitle": "Introdu adresa de email și îți trimitem un cod din 6 cifre.",
     "resetSubtitle": "Introdu codul din email și noua parolă.",
@@ -553,21 +538,21 @@
     "passwordPlaceholderLogin": "Introdu parola",
     "rememberMe": "Ține-mă minte",
     "forgotPassword": "Ai uitat parola?",
-    "submitLogin": "Autentificare",
+    "submitLogin": "Conectează-te",
     "submitSignup": "Creează cont",
     "submitForgot": "Trimite codul de resetare",
     "submitReset": "Resetează parola",
     "noAccount": "Nu ai cont?",
     "signUpFree": "Înregistrează-te gratuit",
     "haveAccount": "Ai deja cont?",
-    "logIn": "Autentifică-te",
+    "logIn": "Conectează-te",
     "strength": {
       "weak": "Slabă",
       "medium": "Medie",
       "strong": "Parolă puternică!"
     },
     "successForgot": "Dacă adresa există, ți-am trimis un cod de resetare. Verifică-ți emailul.",
-    "successReset": "Parolă resetată! Acum te poți autentifica.",
+    "successReset": "Parolă resetată! Acum te poți conecta.",
     "serverError": "Eroare de server, încearcă mai târziu",
     "emailPlaceholder": "tu@exemplu.ro"
   },

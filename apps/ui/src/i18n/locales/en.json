@@ -480,66 +480,51 @@
     "showPassword": "Show password",
     "hidePassword": "Hide password",
     "tabs": {
-      "login": "Log In",
-      "signup": "Sign Up"
+      "login": "Sign in",
+      "signup": "Sign up"
     },
-    "brand": {
-      "tagline": "Learn to code through interactive lessons. Write real code and collect badges as you go."
-    },
-    "features": [
-      {
-        "bold": "Live code editor",
-        "rest": ": write & run code instantly"
+    "heading": {
+      "login": {
+        "title": "Welcome back",
+        "subtitle": "Pick up your lessons where you left them."
       },
-      {
-        "bold": "Python, C, Java & Linux",
-        "rest": ": structured curriculum"
-      },
-      {
-        "bold": "XP & levels",
-        "rest": ": earn XP and climb cosmic ranks with every lesson"
-      },
-      {
-        "bold": "Community forum",
-        "rest": ": ask, share, and help others"
-      },
-      {
-        "bold": "The Almanac",
-        "rest": ": tech history, facts & legends"
+      "signup": {
+        "title": "Create your account",
+        "subtitle": "An account saves your progress and opens the forum and the AI tutor."
       }
-    ],
-    "backToLogin": "← Back to login",
-    "forgotTitle": "Forgot Password",
-    "resetTitle": "Reset Password",
+    },
+    "backToLogin": "← Back to sign in",
+    "forgotTitle": "Forgot your password?",
+    "resetTitle": "Reset your password",
     "forgotSubtitle": "Enter your email and we'll send you a 6-digit code.",
     "resetSubtitle": "Enter the code from your email and your new password.",
-    "displayName": "Display Name",
+    "displayName": "Display name",
     "displayNamePlaceholder": "Choose a username",
     "email": "Email",
-    "resetCode": "Reset Code",
+    "resetCode": "Reset code",
     "resetCodePlaceholder": "6-digit code",
-    "newPassword": "New Password",
+    "newPassword": "New password",
     "password": "Password",
     "passwordPlaceholderSignup": "Min. 6 characters",
     "passwordPlaceholderReset": "Min. 6 characters",
     "passwordPlaceholderLogin": "Enter your password",
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot password?",
-    "submitLogin": "Log In",
-    "submitSignup": "Create Account",
-    "submitForgot": "Send Reset Code",
-    "submitReset": "Reset Password",
+    "submitLogin": "Sign in",
+    "submitSignup": "Create account",
+    "submitForgot": "Send reset code",
+    "submitReset": "Reset password",
     "noAccount": "Don't have an account?",
     "signUpFree": "Sign up free",
     "haveAccount": "Already have an account?",
-    "logIn": "Log in",
+    "logIn": "Sign in",
     "strength": {
       "weak": "Weak",
       "medium": "Getting better",
       "strong": "Strong password!"
     },
     "successForgot": "If that email exists, a reset code was sent. Check your inbox.",
-    "successReset": "Password reset! You can now log in.",
+    "successReset": "Password reset! You can now sign in.",
     "serverError": "Server error, try again later",
     "emailPlaceholder": "you@example.com"
   },

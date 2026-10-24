@@ -10,13 +10,13 @@ test.beforeEach(async () => {
 test('signup via UI → lands in the first-lesson tour', async ({ page }) => {
   await page.goto('/getstarted');
 
-  await page.getByRole('button', { name: 'Sign Up', exact: true }).click();
+  await page.getByRole('button', { name: 'Sign up', exact: true }).click();
 
   await page.getByPlaceholder('Choose a username').fill('TestUser');
   await page.getByPlaceholder('you@example.com').fill('signup-e2e@test.com');
   await page.getByPlaceholder('Min. 6 characters').fill('SecurePass123');
 
-  await page.locator('form').getByRole('button', { name: 'Create Account' }).click();
+  await page.locator('form').getByRole('button', { name: 'Create account' }).click();
 
   await expect(page).toHaveURL(/\/lesson\/python\/print$/, { timeout: 10_000 });
   await expect(page.getByText('Select language · Selectează limba')).toBeVisible();
@@ -37,7 +37,7 @@ test('login via UI → redirects to home', async ({ page, context }) => {
   await page.getByPlaceholder('you@example.com').fill(email);
   await page.getByPlaceholder('Enter your password').fill(password);
 
-  await page.locator('form').getByRole('button', { name: 'Log In' }).click();
+  await page.locator('form').getByRole('button', { name: 'Sign in' }).click();
 
   await expect(page).toHaveURL(/\/$/, { timeout: 10_000 });
 });
@@ -58,7 +58,7 @@ test('a guest sent away from the forum returns there after logging in', async ({
 
   await page.getByPlaceholder('you@example.com').fill(email);
   await page.getByPlaceholder('Enter your password').fill(password);
-  await page.locator('form').getByRole('button', { name: 'Log In' }).click();
+  await page.locator('form').getByRole('button', { name: 'Sign in' }).click();
 
   await expect(page).toHaveURL(/\/forum$/, { timeout: 10_000 });
 });

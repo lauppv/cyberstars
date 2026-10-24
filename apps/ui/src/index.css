@@ -80,11 +80,6 @@ body {
   font-family: var(--font);
 }
 
-/* The sign-in page paints its own full-screen background. */
-.auth-bg {
-  background: var(--page-bg);
-}
-
 /* Landing page colour, the way a band of colour fades in and out on
    vio-fotografie and kenvo-site: from the page into a purple wash and back,
    so a section stands out without a hard edge. */
