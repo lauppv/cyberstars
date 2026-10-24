@@ -180,6 +180,45 @@
       "text": "A program has print(\"Hello\") on its first line and print(\"Bye\") on its second. What does it show?",
       "options": ["Hello\nBye", "Bye\nHello", "Hello Bye", "Only Bye"],
       "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "Why does `print(hey, I like pizza)` stop with an error?",
+      "options": [
+        "The text has no quotes around it",
+        "print() can't show commas",
+        "The line is too long",
+        "The word pizza isn't allowed"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What do the quotes in `print(\"Hi\")` tell Python?",
+      "options": [
+        "Where the text to show starts and ends",
+        "To show the text with quotes around it",
+        "That the line should be skipped",
+        "That Hi is a number"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Which of these lines does Python understand?",
+      "options": ["Print(\"Hi\")", "pritn(\"Hi\")", "print(\"Hi\")", "print[\"Hi\"]"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "In what order does Python run the lines of a program?",
+      "options": [
+        "From the top down, one after another",
+        "From the bottom up",
+        "All at the same time",
+        "The shortest line first"
+      ],
+      "answer": 0
     }
   ],
   "templates": [
@@ -301,6 +340,165 @@
         }
       ],
       "bug": ["print(\"{{c}}\")", "print({{c}})"]
+    },
+    {
+      "id": "three-lines",
+      "kind": "prints",
+      "text": "What does this program show?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")",
+      "values": [
+        {
+          "a": "Wake up",
+          "b": "Brush teeth",
+          "c": "Eat breakfast"
+        },
+        {
+          "a": "3",
+          "b": "2",
+          "c": "1"
+        },
+        {
+          "a": "Red",
+          "b": "Yellow",
+          "c": "Green"
+        },
+        {
+          "a": "Ana",
+          "b": "Ben",
+          "c": "Cris"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{a}}\")\nprint(\"{{b}}\")", "print(\"{{b}}\")\nprint(\"{{a}}\")"],
+        ["print(\"{{b}}\")\nprint(\"{{c}}\")", "print(\"{{c}}\")\nprint(\"{{b}}\")"],
+        ["print(\"{{a}}\")\n", ""],
+        ["print(\"{{c}}\")", "print(\"{{a}}\")"]
+      ]
+    },
+    {
+      "id": "one-line",
+      "kind": "which-program",
+      "text": "Which line shows this?",
+      "code": "print(\"{{text}}\")",
+      "values": [
+        {
+          "text": "Hi there"
+        },
+        {
+          "text": "I am 10"
+        },
+        {
+          "text": "Let's go"
+        },
+        {
+          "text": "Space is big"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{text}}\")", "print({{text}})"],
+        ["print", "Print"],
+        ["(\"{{text}}\")", " \"{{text}}\""],
+        ["\"{{text}}\"", "\"{{text}}"]
+      ]
+    },
+    {
+      "id": "sum-text",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "print(___)",
+      "values": [
+        {
+          "a": 5,
+          "b": 3
+        },
+        {
+          "a": 10,
+          "b": 2
+        },
+        {
+          "a": 7,
+          "b": 7
+        },
+        {
+          "a": 4,
+          "b": 1
+        }
+      ],
+      "answer": "\"{{a}} + {{b}}\"",
+      "wrong": ["{{a}} + {{b}}", "\"{{a}}+{{b}}\"", "\"{{a}}{{b}}\""]
+    },
+    {
+      "id": "gap-last",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\n___",
+      "values": [
+        {
+          "a": "Knock knock",
+          "b": "Who's there?",
+          "c": "Python"
+        },
+        {
+          "a": "Monday",
+          "b": "Tuesday",
+          "c": "Wednesday"
+        },
+        {
+          "a": "Start",
+          "b": "Middle",
+          "c": "End"
+        }
+      ],
+      "answer": "print(\"{{c}}\")",
+      "wrong": ["print({{c}})", "print \"{{c}}\"", "print(\"{{b}}\")", "Print(\"{{c}}\")"]
+    },
+    {
+      "id": "bad-quote",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "Hello",
+          "b": "My name is Ben",
+          "c": "I am 11",
+          "d": "Bye"
+        },
+        {
+          "a": "Planet one",
+          "b": "Planet two",
+          "c": "Planet three",
+          "d": "Home"
+        },
+        {
+          "a": "Step 1",
+          "b": "Step 2",
+          "c": "Step 3",
+          "d": "Done"
+        }
+      ],
+      "bug": ["print(\"{{b}}\")", "print(\"{{b}})"]
+    },
+    {
+      "id": "bad-case",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "I like pizza",
+          "b": "I like pasta",
+          "c": "I like soup",
+          "d": "I like cake"
+        },
+        {
+          "a": "One",
+          "b": "Two",
+          "c": "Three",
+          "d": "Four"
+        }
+      ],
+      "bug": ["print(\"{{d}}\")", "Print(\"{{d}}\")"]
     }
   ]
 }

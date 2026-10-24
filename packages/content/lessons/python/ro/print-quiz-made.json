@@ -160,6 +160,213 @@
         "print(\"Gata\")"
       ],
       "answer": 0
+    },
+    {
+      "id": "three-lines-a236c7",
+      "text": "Ce afișează programul?",
+      "code": "print(\"Trezirea\")\nprint(\"Spalatul pe dinti\")\nprint(\"Micul dejun\")",
+      "options": [
+        "Trezirea\nSpalatul pe dinti\nMicul dejun",
+        "Spalatul pe dinti\nTrezirea\nMicul dejun",
+        "Trezirea\nMicul dejun\nSpalatul pe dinti",
+        "Spalatul pe dinti\nMicul dejun"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "three-lines-5dc3b6",
+      "text": "Ce afișează programul?",
+      "code": "print(\"3\")\nprint(\"2\")\nprint(\"1\")",
+      "options": ["3\n2\n1", "2\n3\n1", "3\n1\n2", "2\n1"],
+      "answer": 0
+    },
+    {
+      "id": "three-lines-1fea6d",
+      "text": "Ce afișează programul?",
+      "code": "print(\"Rosu\")\nprint(\"Galben\")\nprint(\"Verde\")",
+      "options": [
+        "Rosu\nGalben\nVerde",
+        "Galben\nRosu\nVerde",
+        "Rosu\nVerde\nGalben",
+        "Galben\nVerde"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "three-lines-a0aba9",
+      "text": "Ce afișează programul?",
+      "code": "print(\"Ana\")\nprint(\"Ben\")\nprint(\"Cris\")",
+      "options": ["Ana\nBen\nCris", "Ben\nAna\nCris", "Ana\nCris\nBen", "Ben\nCris"],
+      "answer": 0
+    },
+    {
+      "id": "one-line-5d104e",
+      "text": "Care linie afișează asta?",
+      "output": "Salutare",
+      "options": [
+        "print(\"Salutare\")",
+        "print(Salutare)",
+        "Print(\"Salutare\")",
+        "print \"Salutare\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "one-line-8e774f",
+      "text": "Care linie afișează asta?",
+      "output": "Am 10 ani",
+      "options": [
+        "print(\"Am 10 ani\")",
+        "print(Am 10 ani)",
+        "Print(\"Am 10 ani\")",
+        "print \"Am 10 ani\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "one-line-a82956",
+      "text": "Care linie afișează asta?",
+      "output": "Hai sa mergem",
+      "options": [
+        "print(\"Hai sa mergem\")",
+        "print(Hai sa mergem)",
+        "Print(\"Hai sa mergem\")",
+        "print \"Hai sa mergem\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "one-line-ec23a1",
+      "text": "Care linie afișează asta?",
+      "output": "Spatiul e mare",
+      "options": [
+        "print(\"Spatiul e mare\")",
+        "print(Spatiul e mare)",
+        "Print(\"Spatiul e mare\")",
+        "print \"Spatiul e mare\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-ef0fbb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "5 + 3",
+      "options": ["\"5 + 3\"", "5 + 3", "\"5+3\"", "\"53\""],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-f63720",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "10 + 2",
+      "options": ["\"10 + 2\"", "10 + 2", "\"10+2\"", "\"102\""],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-6860fe",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "7 + 7",
+      "options": ["\"7 + 7\"", "7 + 7", "\"7+7\"", "\"77\""],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-cbc2b3",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "4 + 1",
+      "options": ["\"4 + 1\"", "4 + 1", "\"4+1\"", "\"41\""],
+      "answer": 0
+    },
+    {
+      "id": "gap-last-8d2ada",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"Cioc cioc\")\nprint(\"Cine e?\")\n___",
+      "output": "Cioc cioc\nCine e?\nPython",
+      "options": ["print(\"Python\")", "print(Python)", "print \"Python\"", "print(\"Cine e?\")"],
+      "answer": 0
+    },
+    {
+      "id": "gap-last-fee320",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"Luni\")\nprint(\"Marti\")\n___",
+      "output": "Luni\nMarti\nMiercuri",
+      "options": [
+        "print(\"Miercuri\")",
+        "print(Miercuri)",
+        "print \"Miercuri\"",
+        "print(\"Marti\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gap-last-742254",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"Inceput\")\nprint(\"Mijloc\")\n___",
+      "output": "Inceput\nMijloc\nSfarsit",
+      "options": ["print(\"Sfarsit\")", "print(Sfarsit)", "print \"Sfarsit\"", "print(\"Mijloc\")"],
+      "answer": 0
+    },
+    {
+      "id": "bad-quote-78eb33",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "print(\"Salut\")\nprint(\"Ma numesc Ben)\nprint(\"Am 11 ani\")\nprint(\"Pa\")",
+      "output": "Salut\nMa numesc Ben\nAm 11 ani\nPa",
+      "options": [
+        "print(\"Ma numesc Ben)",
+        "print(\"Salut\")",
+        "print(\"Am 11 ani\")",
+        "print(\"Pa\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-quote-8c5eef",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "print(\"Planeta unu\")\nprint(\"Planeta doi)\nprint(\"Planeta trei\")\nprint(\"Acasa\")",
+      "output": "Planeta unu\nPlaneta doi\nPlaneta trei\nAcasa",
+      "options": [
+        "print(\"Planeta doi)",
+        "print(\"Planeta unu\")",
+        "print(\"Planeta trei\")",
+        "print(\"Acasa\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-quote-3bc095",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "print(\"Pasul 1\")\nprint(\"Pasul 2)\nprint(\"Pasul 3\")\nprint(\"Gata\")",
+      "output": "Pasul 1\nPasul 2\nPasul 3\nGata",
+      "options": [
+        "print(\"Pasul 2)",
+        "print(\"Pasul 1\")",
+        "print(\"Pasul 3\")",
+        "print(\"Gata\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-case-5ddae1",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "print(\"Imi place pizza\")\nprint(\"Imi plac pastele\")\nprint(\"Imi place supa\")\nPrint(\"Imi place tortul\")",
+      "output": "Imi place pizza\nImi plac pastele\nImi place supa\nImi place tortul",
+      "options": [
+        "Print(\"Imi place tortul\")",
+        "print(\"Imi place pizza\")",
+        "print(\"Imi plac pastele\")",
+        "print(\"Imi place supa\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-case-ff7c22",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "print(\"Unu\")\nprint(\"Doi\")\nprint(\"Trei\")\nPrint(\"Patru\")",
+      "output": "Unu\nDoi\nTrei\nPatru",
+      "options": ["Print(\"Patru\")", "print(\"Unu\")", "print(\"Doi\")", "print(\"Trei\")"],
+      "answer": 0
     }
   ]
 }
