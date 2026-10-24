@@ -170,6 +170,7 @@
       "locked_one": "Termină {{count}} lecție de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
       "locked_few": "Termină {{count}} lecții de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
       "locked_other": "Termină {{count}} de lecții de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
+      "new": "Nou",
       "open": "Fiecare lecție de Python pe care o termini e o planetă de cucerit.",
       "owned": "Planete cucerite: {{owned}}/{{total}}",
       "recaps_one": "{{count}} recapitulare deschisă",

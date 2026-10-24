@@ -154,6 +154,7 @@
     "laniakea": {
       "locked_one": "Finish {{count}} Python lesson to open the explorer game, where every lesson you finish is a planet to conquer.",
       "locked_other": "Finish {{count}} Python lessons to open the explorer game, where every lesson you finish is a planet to conquer.",
+      "new": "New",
       "open": "Every Python lesson you finish is a planet to conquer.",
       "owned": "Planets conquered: {{owned}}/{{total}}",
       "recaps_one": "{{count}} recap open",

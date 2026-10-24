@@ -50,6 +50,9 @@ export function LaniakeaCard() {
       </div>
       <div className="flex-1 min-w-0">
         <h3 className="m-0 text-[14px] font-semibold flex items-center gap-2">
+          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#facc15] text-[11px] font-bold text-[#1a1a1a]">
+            {t('home.laniakea.new')}
+          </span>
           {t('nav.laniakea')} <BetaBadge hint={t('laniakea.betaHint')} />
         </h3>
         <p className="m-0 mt-1 text-[13px] text-[var(--text2)]">
