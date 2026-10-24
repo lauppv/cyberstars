@@ -46,6 +46,16 @@ describe('ShipBoard', () => {
   const rows = () =>
     screen.getAllByRole('listitem').map((li) => within(li).getByRole('button').textContent);
 
+  it('asks for a target in purple until one is picked', () => {
+    board();
+    expect(screen.getByText('Pick a planet to fly to')).toHaveClass('lnk-purple');
+  });
+
+  it('stops asking once a planet is the target', () => {
+    board({ target: 'print' });
+    expect(screen.queryByText('Pick a planet to fly to')).toBeNull();
+  });
+
   it('lists the reachable planets, what is open now first, with their countdowns', () => {
     board();
     expect(rows()).toEqual([

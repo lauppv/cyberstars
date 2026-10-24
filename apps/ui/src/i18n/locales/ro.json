@@ -1019,6 +1019,7 @@
       "order": "Ordinea lecțiilor",
       "level": "Cele mai avansate",
       "empty": "Termină o lecție de Python și planeta ei apare aici.",
+      "pick": "Alege o planetă spre care să zbori",
       "waiting_one": "Încă {{count}} planetă își așteaptă lecția",
       "waiting_few": "Încă {{count}} planete își așteaptă lecțiile",
       "waiting_other": "Încă {{count}} de planete își așteaptă lecțiile",

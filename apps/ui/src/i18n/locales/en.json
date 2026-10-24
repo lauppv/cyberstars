@@ -978,6 +978,7 @@
       "order": "Lesson order",
       "level": "Furthest along",
       "empty": "Finish a Python lesson and its planet shows up here.",
+      "pick": "Pick a planet to fly to",
       "waiting_one": "{{count}} more planet waits for its lesson",
       "waiting_other": "{{count}} more planets wait for their lessons",
       "fly": "Fly here",

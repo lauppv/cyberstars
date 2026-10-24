@@ -302,11 +302,14 @@ export function LaniakeaPage() {
           onClose={() => setBoardOpen(false)}
         />
       )}
-      <TargetReadout
-        pose={feeds.pose}
-        spot={targetSpot}
-        title={target ? (titles.get(target) ?? target) : null}
-      />
+      {/* with the board open, the board itself asks for a target */}
+      {(target || !boardOpen) && (
+        <TargetReadout
+          pose={feeds.pose}
+          spot={targetSpot}
+          title={target ? (titles.get(target) ?? target) : null}
+        />
+      )}
       <StarMap pose={feeds.pose} spots={spots} marks={marks} target={target} />
       {!isTouch && <SpeedPanel speed={feeds.speed} />}
 
