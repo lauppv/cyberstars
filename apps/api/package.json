@@ -11,6 +11,8 @@
     "validate:tests": "tsx scripts/validate-tests.ts",
     "check:tests": "tsx scripts/check-tests.ts",
     "check:tutor": "tsx scripts/tutor-redteam.ts",
+    "make:quiz": "tsx scripts/make-quiz.ts",
+    "check:quiz": "tsx scripts/make-quiz.ts --check",
     "db:prepare": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
