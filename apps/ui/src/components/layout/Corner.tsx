@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
-// The bottom-right corner, shared by the tutor's toasts and the notice about a
-// waiting run, so they stack one above the other instead of covering each
-// other. `first` puts a piece on top of the stack.
+// The bottom-right corner, shared by every toast (the tutor's, a lesson's XP and
+// badge, the tour's notice) and the notice about a waiting run, so they stack
+// one above the other instead of covering each other. `first` puts a piece on
+// top of the stack.
 function host(): HTMLElement {
   let el = document.getElementById('corner');
   if (!el) {
