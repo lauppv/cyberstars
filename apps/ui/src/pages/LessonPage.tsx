@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { Eye, RotateCcw, Save, Share2 } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router';
 import { useLesson } from '../hooks/useLesson';
+import { useCodeSave } from '../hooks/useCodeSave';
 import { useCodeLanguage } from '../hooks/useCodeLanguage';
 import { useCodeExecution } from '../hooks/useCodeExecution';
 import { useTerminalSession } from '../hooks/useTerminalSession';
@@ -117,6 +118,8 @@ export function LessonPage() {
     content,
     starterCode,
     savedCode,
+    savedCodeFailed,
+    reloadSavedCode,
     isLoading,
     language: shownLanguage,
   } = useLesson(category, lesson, multiLanguage ? pickedLanguage : undefined);
@@ -133,6 +136,17 @@ export function LessonPage() {
     notifyGuestRun,
   );
   const { saveCode, progress, loadProgress } = useProgress(category);
+  const saveShownCode = useCallback(
+    (code: string) => saveCode(lesson, code, shownLanguage),
+    [saveCode, lesson, shownLanguage],
+  );
+  const codeSave = useCodeSave(
+    saveShownCode,
+    savedCodeFailed,
+    `${category}/${lesson}/${shownLanguage ?? ''}`,
+  );
+  const { autoSave, savedCodeUnknown } = codeSave;
+  const [retryingSavedCode, setRetryingSavedCode] = useState(false);
   const submissions = useSubmissions(category, lesson);
   const { add: addSubmission } = submissions;
   const gamification = useGamification();
@@ -145,7 +159,6 @@ export function LessonPage() {
   const [showToast, setShowToast] = useState(false);
   // `tutor` when the lesson finished the whole course: the tutor cheers it.
   const [toastData, setToastData] = useState({ title: '', tutor: false });
-  const [showSaveToast, setShowSaveToast] = useState(false);
   const [solution, setSolution] = useState<string | null>(null);
   const [confirmSolution, setConfirmSolution] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
@@ -233,7 +246,6 @@ export function LessonPage() {
   });
   const hSplitShown = devMode ? devHSplit : hSplit;
   const vSplitShown = devMode ? devVSplit : vSplit;
-  const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
   const loadedLessonRef = useRef('');
   const loadedStarterRef = useRef('');
   // On a multi-language lesson, the code each language had when the student
@@ -442,10 +454,12 @@ export function LessonPage() {
   const switchCodeLanguage = useCallback(
     (next: CodeLanguage) => {
       if (!shownLanguage || next === shownLanguage || isRunning || isTesting) return;
-      draftsRef.current.set(shownLanguage, userCode);
-      if (userCode !== starterCode && userCode !== savedCode) {
-        saveCode(lesson, userCode, shownLanguage).catch(() => {});
+      // Untouched starter code over saved code that failed to load would hide
+      // that code on the way back, when it may load.
+      if (!savedCodeUnknown || userCode !== starterCode) {
+        draftsRef.current.set(shownLanguage, userCode);
       }
+      if (userCode !== starterCode && userCode !== savedCode) autoSave(userCode);
       clearOutput();
       setTestResults(null);
       setTestsError(null);
@@ -459,8 +473,8 @@ export function LessonPage() {
       userCode,
       starterCode,
       savedCode,
-      saveCode,
-      lesson,
+      savedCodeUnknown,
+      autoSave,
       clearOutput,
       pickLanguage,
     ],
@@ -492,7 +506,7 @@ export function LessonPage() {
         // Persist the passing code so reopening the lesson (e.g. "Review")
         // shows the solved state instead of an empty editor. Stays until the
         // student resets or saves again manually.
-        saveCode(lesson, userCode, shownLanguage).catch(() => {});
+        autoSave(userCode);
         if (!lessonCompleted) {
           justMarkedRef.current = true;
           setOptimisticCompleted(true);
@@ -518,7 +532,7 @@ export function LessonPage() {
     lessonCompleted,
     loadProgress,
     refreshGamification,
-    saveCode,
+    autoSave,
     addSubmission,
     testsRunner,
   ]);
@@ -613,20 +627,22 @@ export function LessonPage() {
     [shownLanguage, switchCodeLanguage, userCode, starterCode, savedCode, t],
   );
 
-  const handleSave = useCallback(async () => {
-    if (isLoggedIn) {
-      await saveCode(lesson, userCode, shownLanguage);
-      setShowSaveToast(true);
-      if (saveToastTimer.current) clearTimeout(saveToastTimer.current);
-      saveToastTimer.current = setTimeout(() => setShowSaveToast(false), 2000);
+  // Saved code that failed to load, once it comes: into the editor, unless the
+  // student has written something there since and would rather keep it.
+  const retrySavedCode = useCallback(async () => {
+    setRetryingSavedCode(true);
+    try {
+      const code = await reloadSavedCode();
+      const untouched = userCode === starterCode || userCode.trim() === '';
+      if (code !== null && (untouched || window.confirm(t('lesson.confirmLoadSaved')))) {
+        setUserCode(code);
+      }
+    } catch {
+      // still unknown: the notice stays up with its Try again
+    } finally {
+      setRetryingSavedCode(false);
     }
-  }, [isLoggedIn, saveCode, lesson, userCode, shownLanguage]);
-
-  useEffect(() => {
-    return () => {
-      if (saveToastTimer.current) clearTimeout(saveToastTimer.current);
-    };
-  }, []);
+  }, [reloadSavedCode, userCode, starterCode, t]);
 
   if (isLoading) {
     return (
@@ -871,9 +887,14 @@ export function LessonPage() {
                   {courseMeta(editorLanguage).langLabel}
                 </div>
                 <div className="flex items-center gap-2">
-                  {showSaveToast && (
+                  {codeSave.saved && (
                     <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
                       {t('lesson.codeSaved')}
+                    </span>
+                  )}
+                  {codeSave.error && (
+                    <span role="alert" className="text-[var(--error)] text-[12px] font-semibold">
+                      {codeSave.error}
                     </span>
                   )}
                   {lessonCompleted && (
@@ -969,7 +990,7 @@ export function LessonPage() {
                               role="menuitem"
                               onClick={() => {
                                 setMenuOpen(false);
-                                handleSave();
+                                codeSave.save(userCode);
                               }}
                               className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                             >
@@ -1023,6 +1044,22 @@ export function LessonPage() {
                 data-tour="workspace"
                 className="flex-1 min-h-0 flex flex-col"
               >
+                {savedCodeUnknown && (
+                  <div
+                    role="alert"
+                    className="shrink-0 flex items-center gap-3 px-4 py-2 border-b border-[var(--border)] bg-[var(--glass)] text-[12px] text-[var(--error)]"
+                  >
+                    <span className="flex-1 min-w-0">{t('lesson.savedCodeLoadFailed')}</span>
+                    <button
+                      type="button"
+                      onClick={retrySavedCode}
+                      disabled={retryingSavedCode}
+                      className="shrink-0 px-3 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] font-semibold hover:bg-[var(--surface)] disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+                    >
+                      {t('lesson.savedCodeRetry')}
+                    </button>
+                  </div>
+                )}
                 <div
                   data-tour="editor"
                   className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)] max-h-[60%] @2xl:max-h-none @2xl:h-[var(--vsplit)]"
