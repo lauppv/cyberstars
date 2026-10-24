@@ -46,18 +46,25 @@ export function ProfilePage() {
     return keys.includes(c.key) && progressMap[c.key]?.completed > 0;
   }).length;
 
-  const [bio, setBio] = useState('');
-  const [status, setStatus] = useState('');
+  const [bio, setBio] = useState(user?.bio ?? '');
+  const [status, setStatus] = useState(user?.status ?? '');
   const [saving, setSaving] = useState(false);
-  const [uploadError, setUploadError] = useState('');
+  const [avatarError, setAvatarError] = useState('');
+  const [bioError, setBioError] = useState('');
+  const [statusError, setStatusError] = useState('');
   const [streak, setStreak] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (user) {
-      setBio(user.bio ?? ''); // eslint-disable-line react-hooks/set-state-in-effect
-      setStatus(user.status ?? '');
-    }
-  }, [user]);
+  // Each field follows what is saved for it alone, so saving one doesn't wipe
+  // text the other failed to save.
+  const [shownSaved, setShownSaved] = useState({ bio: user?.bio, status: user?.status });
+  if (shownSaved.bio !== user?.bio || shownSaved.status !== user?.status) {
+    setShownSaved({ bio: user?.bio, status: user?.status });
+    if (shownSaved.bio !== user?.bio) setBio(user?.bio ?? '');
+    if (shownSaved.status !== user?.status) setStatus(user?.status ?? '');
+  }
+
+  const errMsg = (err: unknown) =>
+    err instanceof Error && err.message ? err.message : t('common.somethingWrong');
 
   useEffect(() => {
     if (!isLoggedIn) return;
@@ -77,9 +84,12 @@ export function ProfilePage() {
 
   const saveBio = async () => {
     setSaving(true);
+    setBioError('');
     try {
       await profileService.updateProfile({ bio: bio || null });
       refreshUser();
+    } catch (err) {
+      setBioError(errMsg(err));
     } finally {
       setSaving(false);
     }
@@ -87,9 +97,12 @@ export function ProfilePage() {
 
   const saveStatus = async () => {
     setSaving(true);
+    setStatusError('');
     try {
       await profileService.updateProfile({ status: status || null });
       refreshUser();
+    } catch (err) {
+      setStatusError(errMsg(err));
     } finally {
       setSaving(false);
     }
@@ -98,22 +111,27 @@ export function ProfilePage() {
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    setUploadError('');
+    setAvatarError('');
     if (file.size > 2 * 1024 * 1024) {
-      setUploadError(t('profile.fileTooLarge'));
+      setAvatarError(t('profile.fileTooLarge'));
       return;
     }
     try {
       await profileService.uploadAvatar(file);
       refreshUser();
     } catch (err) {
-      setUploadError(err instanceof Error && err.message ? err.message : t('profile.uploadFailed'));
+      setAvatarError(err instanceof Error && err.message ? err.message : t('profile.uploadFailed'));
     }
   };
 
   const removeAvatar = async () => {
-    await profileService.removeAvatar();
-    refreshUser();
+    setAvatarError('');
+    try {
+      await profileService.removeAvatar();
+      refreshUser();
+    } catch (err) {
+      setAvatarError(errMsg(err));
+    }
   };
 
   if (isLoading || !user) {
@@ -175,7 +193,11 @@ export function ProfilePage() {
               )}
             </div>
           </div>
-          {uploadError && <p className="text-[11px] text-[var(--error)] mt-2">{uploadError}</p>}
+          {avatarError && (
+            <p role="alert" className="text-[11px] text-[var(--error)] mt-2">
+              {avatarError}
+            </p>
+          )}
           {user.avatarUrl && (
             <button
               onClick={removeAvatar}
@@ -200,8 +222,13 @@ export function ProfilePage() {
                 className={INPUT_CLS + ' resize-none'}
                 onBlur={saveBio}
               />
-              <div className="text-[10px] text-[var(--text3)] text-right mt-0.5">
-                {bio.length}/200
+              <div className="flex gap-3 mt-0.5">
+                {bioError && (
+                  <p role="alert" className="flex-1 min-w-0 text-[11px] text-[var(--error)]">
+                    {bioError}
+                  </p>
+                )}
+                <div className="ml-auto text-[10px] text-[var(--text3)]">{bio.length}/200</div>
               </div>
             </div>
             <div>
@@ -227,6 +254,11 @@ export function ProfilePage() {
                   {t('profile.set')}
                 </button>
               </div>
+              {statusError && (
+                <p role="alert" className="text-[11px] text-[var(--error)] mt-1">
+                  {statusError}
+                </p>
+              )}
             </div>
           </div>
 
