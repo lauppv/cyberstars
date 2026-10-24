@@ -134,6 +134,21 @@ jobs:
           key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
       - run: npm run validate:tests
 
+  # Runs every Laniakea question template in the lessons' Python image and fails
+  # when one doesn't make its questions or a made file is out of date.
+  check-quiz:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-and-deps
+      - uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
+      - run: docker pull python:3.10-slim
+      - run: npm run check:quiz
+
   test-integration:
     runs-on: ubuntu-latest
     needs: setup
