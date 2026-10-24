@@ -180,6 +180,45 @@
       "text": "Un program are print(\"Salut\") pe prima linie și print(\"Pa\") pe a doua. Ce afișează?",
       "options": ["Salut\nPa", "Pa\nSalut", "Salut Pa", "Doar Pa"],
       "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "De ce se oprește cu o eroare `print(salut, imi place pizza)`?",
+      "options": [
+        "Textul nu are ghilimele în jur",
+        "print() nu poate afișa virgule",
+        "Linia e prea lungă",
+        "Cuvântul pizza nu e permis"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce îi spun lui Python ghilimelele din `print(\"Salut\")`?",
+      "options": [
+        "Unde începe și unde se termină textul de afișat",
+        "Să afișeze textul cu ghilimele în jur",
+        "Că linia trebuie sărită",
+        "Că Salut e un număr"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Pe care dintre linii o înțelege Python?",
+      "options": ["Print(\"Salut\")", "pritn(\"Salut\")", "print(\"Salut\")", "print[\"Salut\"]"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "În ce ordine rulează Python liniile unui program?",
+      "options": [
+        "De sus în jos, una după alta",
+        "De jos în sus",
+        "Toate deodată",
+        "Întâi linia cea mai scurtă"
+      ],
+      "answer": 0
     }
   ],
   "templates": [

@@ -180,6 +180,45 @@
       "text": "A program has print(\"Hello\") on its first line and print(\"Bye\") on its second. What does it show?",
       "options": ["Hello\nBye", "Bye\nHello", "Hello Bye", "Only Bye"],
       "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "Why does `print(hey, I like pizza)` stop with an error?",
+      "options": [
+        "The text has no quotes around it",
+        "print() can't show commas",
+        "The line is too long",
+        "The word pizza isn't allowed"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What do the quotes in `print(\"Hi\")` tell Python?",
+      "options": [
+        "Where the text to show starts and ends",
+        "To show the text with quotes around it",
+        "That the line should be skipped",
+        "That Hi is a number"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Which of these lines does Python understand?",
+      "options": ["Print(\"Hi\")", "pritn(\"Hi\")", "print(\"Hi\")", "print[\"Hi\"]"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "In what order does Python run the lines of a program?",
+      "options": [
+        "From the top down, one after another",
+        "From the bottom up",
+        "All at the same time",
+        "The shortest line first"
+      ],
+      "answer": 0
     }
   ],
   "templates": [
