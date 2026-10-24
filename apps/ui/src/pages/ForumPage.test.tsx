@@ -469,6 +469,53 @@ describe('CategoryView', () => {
     await waitFor(() => expect(mocked.getThread).toHaveBeenCalledWith(5));
   });
 
+  it('says why a new thread was not posted and keeps its title and text', async () => {
+    authUser = makeUser('USER');
+    mocked.createThread.mockRejectedValue(new Error('Category not found'));
+    renderAt('/forum/c/python-help');
+    await screen.findByText('Loops confuse me');
+
+    fireEvent.click(screen.getByText('+ New Thread'));
+    fireEvent.change(screen.getByPlaceholderText('Thread title...'), {
+      target: { value: 'How do ranges work?' },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/Write your post/), {
+      target: { value: 'I keep getting an off-by-one.' },
+    });
+    fireEvent.click(screen.getByText('Create Thread'));
+
+    expect(await screen.findByRole('alert')).toHaveTextContent('Category not found');
+    expect(screen.getByPlaceholderText('Thread title...')).toHaveValue('How do ranges work?');
+    expect(screen.getByPlaceholderText(/Write your post/)).toHaveValue(
+      'I keep getting an off-by-one.',
+    );
+    expect(screen.getByText('Create Thread')).toBeEnabled();
+    expect(mocked.getThread).not.toHaveBeenCalled();
+  });
+
+  it('falls back to a generic message and clears it when the composer closes', async () => {
+    authUser = makeUser('USER');
+    mocked.createThread.mockRejectedValue('nope');
+    renderAt('/forum/c/python-help');
+    await screen.findByText('Loops confuse me');
+
+    fireEvent.click(screen.getByText('+ New Thread'));
+    fireEvent.change(screen.getByPlaceholderText('Thread title...'), {
+      target: { value: 'Title' },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/Write your post/), {
+      target: { value: 'Text' },
+    });
+    fireEvent.click(screen.getByText('Create Thread'));
+
+    expect(await screen.findByRole('alert')).toHaveTextContent(
+      'Something went wrong. Please try again.',
+    );
+    fireEvent.click(screen.getByText('Cancel'));
+    fireEvent.click(screen.getByText('+ New Thread'));
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+  });
+
   it('keeps the create button disabled until both fields are filled', async () => {
     authUser = makeUser('USER');
     renderAt('/forum/c/python-help');
