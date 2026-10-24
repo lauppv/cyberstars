@@ -7,13 +7,16 @@
     "forum": "Forum",
     "leaderboard": "Leaderboard",
     "messages": "Messages",
-    "almanac": "Almanac"
+    "almanac": "Almanac",
+    "laniakea": "Laniakea"
   },
   "sidebar": {
     "label": "Main navigation",
     "community": "Community",
     "show": "Show sidebar",
-    "hide": "Hide sidebar"
+    "hide": "Hide sidebar",
+    "laniakeaLeft_one": "{{count}} lesson to go",
+    "laniakeaLeft_other": "{{count}} lessons to go"
   },
   "topbar": {
     "toggleSidebar": "Toggle sidebar",
@@ -147,7 +150,18 @@
     "activeDays_one": "<0>{{count}}</0> active day in {{period}}",
     "activeDays_other": "<0>{{count}}</0> active days in {{period}}",
     "lastMonths_one": "the last month",
-    "lastMonths_other": "the last {{count}} months"
+    "lastMonths_other": "the last {{count}} months",
+    "laniakea": {
+      "locked_one": "Finish {{count}} Python lesson to open the explorer game, where every lesson you finish is a planet to conquer.",
+      "locked_other": "Finish {{count}} Python lessons to open the explorer game, where every lesson you finish is a planet to conquer.",
+      "open": "Every Python lesson you finish is a planet to conquer.",
+      "owned": "Planets conquered: {{owned}}/{{total}}",
+      "recaps_one": "{{count}} recap open",
+      "recaps_other": "{{count}} recaps open",
+      "ready_one": "{{count}} planet ready to conquer",
+      "ready_other": "{{count}} planets ready to conquer",
+      "fly": "Fly to Laniakea"
+    }
   },
   "landing": {
     "hero": {
@@ -275,6 +289,14 @@
         "followUp": "So range(1, 3)?",
         "followUpAnswer": "Close. range stops just before its second number, so range(1, 3) gives 1 and 2. What would the stop need to be for 3 to make it in?",
         "picture": "A student asks why their loop prints 0, 1, 2 instead of 1, 2, 3. The tutor explains that range starts at 0, and when the student tries range(1, 3), that range stops just before its second number, leaving the last step to them."
+      },
+      "laniakea": {
+        "title": "Laniakea, a space game",
+        "body": "Every Python lesson you finish becomes a planet. Fly to it and pass a 10-question test on the lesson to conquer it, then pass it again after 1, 2, 4 and up to 64 days to keep it for good, so what you learn sticks.",
+        "note_one": "After {{count}} Python lesson",
+        "note_other": "After {{count}} Python lessons",
+        "question": "What does this print?",
+        "picture": "Planets in space, two of them ringed in blue as the student’s own and one ringed in white still to conquer, next to a test question asking what print(\"5 + 3\") shows, with 5 + 3 marked right."
       }
     },
     "free": {
@@ -882,42 +904,122 @@
     "limitReached": "Limit reached. It refills on {{when}}."
   },
   "laniakea": {
-    "introTitle": "Welcome aboard, captain.",
-    "introSub": "A drift vessel for unhurried exploration. Take the helm and glide through 100+ worlds, past nebulae and black holes. No goals. No timer. Just the cosmos through your viewport.",
-    "moveFwd": "Fly forward / back",
-    "turnLeftRight": "Turn left / right",
-    "pitchUpDown": "Pitch up / down",
-    "pause": "Pause",
-    "exitToDashboard": "Exit to dashboard",
-    "touchSteer": "Right stick · steer (turn & pitch)",
-    "touchThrottle": "Left arrows · hold to accelerate / decelerate",
-    "beginDrift": "Begin Drift",
-    "escToPause": "ESC to pause",
-    "qToQuit": "Q to quit",
-    "quit": "Quit",
-    "mode": "Mode",
-    "modeDrift": "Drift",
-    "heart": "Heart",
-    "velocity": "Velocity",
-    "o2level": "O₂ Level",
-    "cabinPsi": "Cabin PSI",
-    "position": "Position",
-    "nearest": "Nearest",
-    "engine": "Engine",
-    "course": "Course",
-    "courseOpen": "Open",
-    "menu": "Menu",
-    "paused": "Paused",
-    "pausedSubPre": "Take a moment. Click anywhere or press",
-    "pausedSubPost": "to keep drifting.",
-    "resume": "Resume",
-    "accelerate": "Accelerate",
-    "decelerate": "Decelerate",
-    "objects": {
-      "blackHole": "Black Hole",
-      "quasar": "Quasar",
-      "dyson": "Dyson Sphere"
-    }
+    "title": "Laniakea",
+    "loading": "Starting the engines…",
+    "loadFailed": "The ship couldn't start. Check your connection and try again.",
+    "tryAgain": "Try again",
+    "locked": {
+      "title_one": "Laniakea opens after {{count}} Python lesson",
+      "title_other": "Laniakea opens after {{count}} Python lessons",
+      "body": "Every Python lesson you finish becomes a planet. Conquer it by answering questions about its lesson, then keep it by coming back after longer and longer breaks.",
+      "progress": "{{done}} of {{total}} done",
+      "next": "Continue with Python",
+      "back": "Back to the dashboard"
+    },
+    "intro": {
+      "title": "Welcome aboard, captain.",
+      "body": "Every Python lesson you finish is a planet out there. Fly to one, land and answer 10 questions about its lesson: get 6 right and it's yours. Pass it again after 1, 2, 4 and up to 64 days, and it stays yours for good.",
+      "begin": "Take the helm",
+      "fly": "Fly forward / back",
+      "turn": "Turn left / right",
+      "pitch": "Nose up / down",
+      "boost": "Boost",
+      "land": "Land on the planet ahead",
+      "board": "Show or hide the board",
+      "pause": "Pause",
+      "quit": "Back to the dashboard",
+      "touchSteer": "Right stick: steer",
+      "touchThrottle": "Left arrows: hold to fly forward or back",
+      "touchLand": "Land: the button under the planet's name",
+      "pcTitle": "Built for PC and laptop",
+      "pcBody": "Laniakea plays best on a PC or a laptop, with a keyboard. You can still fly here with the touch controls."
+    },
+    "hud": {
+      "ship": "CyberStars ship",
+      "planets": "Planets",
+      "forever": "For good",
+      "recaps": "Recaps open",
+      "velocity": "Velocity",
+      "board": "Board",
+      "pause": "Pause",
+      "quit": "Exit",
+      "map": "Star map",
+      "target": "Target",
+      "noTarget": "Pick a planet on the board to fly to",
+      "right": "{{deg}}° right",
+      "left": "{{deg}}° left",
+      "up": "{{deg}}° up",
+      "down": "{{deg}}° down",
+      "ahead": "Straight ahead",
+      "arrived": "You're there",
+      "distance": "{{km}} km",
+      "forward": "Fly forward",
+      "back": "Fly back",
+      "paused": "Paused",
+      "resume": "Resume"
+    },
+    "aim": {
+      "land": "Land",
+      "landKey": "E to land",
+      "closer": "Fly closer to land"
+    },
+    "status": {
+      "locked": "Finish its lesson to reach it",
+      "soon": "Its questions are on the way",
+      "conquerable": "Ready to conquer",
+      "retry": "Next try in {{wait}}",
+      "recap": "Recap open",
+      "owned": "Next recap in {{wait}}",
+      "forever": "Yours for good"
+    },
+    "wait": {
+      "dh": "{{a}}d {{b}}h",
+      "hm": "{{a}}h {{b}}m",
+      "ms": "{{a}}:{{b}}"
+    },
+    "step": "Step {{level}} of {{total}}",
+    "board": {
+      "title": "Board",
+      "sort": "Sort the planets",
+      "next": "What's next",
+      "order": "Lesson order",
+      "level": "Furthest along",
+      "empty": "Finish a Python lesson and its planet shows up here.",
+      "waiting_one": "{{count}} more planet waits for its lesson",
+      "waiting_other": "{{count}} more planets wait for their lessons",
+      "fly": "Fly here",
+      "targeted": "Your target",
+      "close": "Close the board"
+    },
+    "quiz": {
+      "conquer": "Conquest",
+      "recap": "Recap",
+      "practice": "Practice",
+      "question": "Question {{n}} of {{total}}",
+      "right": "Right",
+      "wrong": "Wrong",
+      "next": "Next question",
+      "result": "See the result",
+      "close": "Back to the ship",
+      "leave": "Leave the test",
+      "leaveNote": "The test waits for you here for 30 minutes.",
+      "score": "{{right}} right, {{wrong}} wrong",
+      "loading": "Opening the test…",
+      "failed": "The test couldn't open.",
+      "outTitle": "Not this time",
+      "outBody": "Five answers were wrong, so this test is over. The planet opens for another try in 5 minutes.",
+      "conqueredTitle": "Planet conquered",
+      "conqueredBody": "It's yours now. Its first recap opens in {{wait}}.",
+      "recapTitle": "Recap passed",
+      "recapBody": "The planet climbs to step {{level}} of {{total}}. Its next recap opens in {{wait}}.",
+      "foreverTitle": "Yours for good",
+      "foreverBody": "You passed every recap, so {{planet}} is yours forever. Achievement unlocked: keeper of {{planet}}.",
+      "practiceTitle": "Practice done",
+      "practiceBody": "Well done. Practice doesn't move the planet: its next recap opens in {{wait}}.",
+      "practiceForeverBody": "Well done. This planet is already yours for good."
+    },
+    "achievement": "Achievement: {{planet}} is yours for good",
+    "betaHint": "Still being built: questions for every lesson and more courses are on the way"
   },
   "code": {
     "run": "▶ Run",

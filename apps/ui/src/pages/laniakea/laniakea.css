@@ -1,0 +1,615 @@
+/* Laniakea's cockpit. The game is a page of its own over the whole window, so
+   it keeps its own look: glass panels with a violet edge over the dark sky.
+   Every class starts with lnk- because this file is global once loaded. */
+
+.lnk-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  color: #e8e8f0;
+  font-family: var(--font);
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.lnk-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+.lnk-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 65% at 50% 50%, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.lnk-panel {
+  background: rgba(6, 8, 18, 0.62);
+  border: 1px solid rgba(108, 92, 231, 0.28);
+  border-radius: 14px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  padding: 12px 14px;
+}
+.lnk-label {
+  font-size: 10px;
+  letter-spacing: 0.6px;
+  color: rgba(200, 170, 255, 0.75);
+  font-weight: 600;
+}
+.lnk-value {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.lnk-dim {
+  color: rgba(190, 196, 225, 0.6);
+}
+.lnk-blue {
+  color: #6fb4ff;
+}
+.lnk-gold {
+  color: #ffcc55;
+}
+.lnk-teal {
+  color: rgba(0, 214, 143, 0.9);
+}
+
+.lnk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(108, 92, 231, 0.45);
+  background: rgba(6, 8, 18, 0.62);
+  color: #e8e8f0;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  touch-action: manipulation;
+}
+.lnk-btn:hover {
+  background: rgba(108, 92, 231, 0.28);
+}
+.lnk-btn:focus-visible,
+.lnk-option:focus-visible,
+.lnk-row:focus-visible {
+  outline: 2px solid #a79bff;
+  outline-offset: 2px;
+}
+.lnk-btn-primary {
+  background: rgba(108, 92, 231, 0.85);
+  border-color: rgba(167, 155, 255, 0.9);
+}
+.lnk-btn-primary:hover {
+  background: #6c5ce7;
+}
+.lnk-btn[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+kbd.lnk-kbd {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+/* the screens laid over the game: loading, locked, intro, pause */
+.lnk-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
+  padding: 24px;
+  background: radial-gradient(ellipse at center, rgba(10, 8, 24, 0.92) 0%, #000 80%);
+  overflow-y: auto;
+}
+/* auto margins centre what fits and let what doesn't scroll from its top */
+.lnk-screen > :first-child {
+  margin-top: auto;
+}
+.lnk-screen > :last-child {
+  margin-bottom: auto;
+}
+.lnk-screen.lnk-see-through {
+  background: rgba(5, 5, 15, 0.55);
+  backdrop-filter: blur(6px);
+}
+.lnk-screen h1 {
+  font-size: clamp(22px, min(5vw, 7vh), 40px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0 0 12px;
+  max-width: 640px;
+  line-height: 1.15;
+}
+.lnk-screen p {
+  font-size: 14px;
+  color: rgba(190, 190, 215, 0.8);
+  max-width: 540px;
+  line-height: 1.6;
+  margin: 0 0 22px;
+}
+.lnk-keys {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 24px;
+  font-size: 12px;
+  color: rgba(205, 205, 225, 0.85);
+  text-align: left;
+  margin: 0 auto 24px;
+  padding: 16px 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  max-width: 560px;
+}
+.lnk-keys > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 560px) {
+  .lnk-keys {
+    grid-template-columns: 1fr;
+  }
+}
+.lnk-meter {
+  width: 240px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin: 0 auto 8px;
+}
+.lnk-meter > span {
+  display: block;
+  height: 100%;
+  background: #6c5ce7;
+}
+
+/* a phone turned sideways has little height for the intro */
+@media (max-height: 500px) {
+  .lnk-rocket {
+    display: none;
+  }
+  .lnk-screen p {
+    margin-bottom: 14px;
+  }
+  .lnk-keys {
+    margin-bottom: 14px;
+    padding: 10px 18px;
+  }
+  .lnk-pc {
+    margin-bottom: 14px !important;
+  }
+}
+
+/* on a phone or a tablet, before the game starts */
+.lnk-pc {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 460px;
+  border-color: rgba(77, 163, 255, 0.55);
+  padding: 16px 18px;
+}
+
+/* the HUD */
+.lnk-hud {
+  position: fixed;
+  z-index: 15;
+}
+.lnk-top-left {
+  top: 16px;
+  left: 16px;
+}
+.lnk-top-right {
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+.lnk-bottom-left {
+  bottom: 16px;
+  left: 16px;
+}
+.lnk-bottom-right {
+  bottom: 16px;
+  right: 16px;
+}
+.lnk-bottom-center {
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100vw - 2 * 230px);
+}
+.lnk-aim {
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(420px, calc(100vw - 32px));
+  text-align: center;
+}
+.lnk-stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+.lnk-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lnk-board {
+  top: 64px;
+  right: 16px;
+  bottom: 232px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.lnk-board-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(108, 92, 231, 0.2);
+}
+.lnk-board-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px;
+  margin: 0;
+  list-style: none;
+}
+.lnk-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font);
+  cursor: pointer;
+}
+.lnk-row:hover {
+  background: rgba(108, 92, 231, 0.14);
+}
+.lnk-row[aria-pressed='true'] {
+  border-color: rgba(167, 155, 255, 0.6);
+  background: rgba(108, 92, 231, 0.18);
+}
+.lnk-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.lnk-steps {
+  display: flex;
+  gap: 3px;
+  margin-top: 4px;
+}
+.lnk-steps > span {
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.14);
+}
+.lnk-steps > span.lnk-on {
+  background: #4da3ff;
+}
+.lnk-steps.lnk-forever > span {
+  background: #ffcc55;
+}
+.lnk-select {
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(108, 92, 231, 0.4);
+  background: rgba(6, 8, 18, 0.8);
+  color: #e8e8f0;
+  font-size: 11px;
+  padding: 0 6px;
+}
+@media (max-width: 900px) {
+  .lnk-board {
+    left: 16px;
+    width: auto;
+    bottom: 16px;
+    z-index: 30;
+  }
+}
+
+.lnk-map canvas {
+  display: block;
+  width: 180px;
+  height: 180px;
+}
+@media (max-width: 640px) {
+  .lnk-map canvas {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* the test */
+.lnk-quiz {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(3, 3, 10, 0.6);
+  backdrop-filter: blur(4px);
+}
+.lnk-quiz-card {
+  width: min(620px, 100%);
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  padding: 20px;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.lnk-progress {
+  display: flex;
+  gap: 4px;
+  margin: 10px 0 16px;
+}
+.lnk-progress > span {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.12);
+}
+.lnk-progress > span.lnk-right {
+  background: rgba(0, 214, 143, 0.85);
+}
+.lnk-progress > span.lnk-wrong {
+  background: #ff6b8a;
+}
+.lnk-progress > span.lnk-now {
+  background: #a79bff;
+}
+.lnk-question {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+.lnk-question code,
+.lnk-option code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+.lnk-code {
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.55;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 0 0 14px;
+  white-space: pre;
+  overflow-x: auto;
+}
+.lnk-options {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+.lnk-option {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.45;
+  cursor: pointer;
+}
+.lnk-option:hover:not([disabled]) {
+  border-color: rgba(167, 155, 255, 0.7);
+  background: rgba(108, 92, 231, 0.14);
+}
+.lnk-option[disabled] {
+  cursor: default;
+}
+.lnk-option .lnk-text {
+  white-space: pre-wrap;
+  flex: 1;
+}
+.lnk-option.lnk-is-code .lnk-text {
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.lnk-option.lnk-right {
+  border-color: rgba(0, 214, 143, 0.8);
+  background: rgba(0, 214, 143, 0.12);
+}
+.lnk-option.lnk-wrong {
+  border-color: rgba(255, 107, 138, 0.85);
+  background: rgba(255, 107, 138, 0.12);
+}
+.lnk-letter {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.lnk-verdict {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* touch */
+.lnk-throttle {
+  position: fixed;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 20;
+}
+.lnk-throttle button {
+  width: 60px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(6, 8, 18, 0.55);
+  border: 1px solid rgba(108, 92, 231, 0.4);
+  color: #cfd2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+}
+.lnk-throttle button.active {
+  background: rgba(108, 92, 231, 0.4);
+  border-color: #6c5ce7;
+}
+.lnk-stick {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 8, 18, 0.5), rgba(6, 8, 18, 0.32));
+  border: 1px solid rgba(108, 92, 231, 0.4);
+  touch-action: none;
+  z-index: 20;
+}
+.lnk-stick > span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(108, 92, 231, 0.85), rgba(108, 92, 231, 0.45));
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+.lnk-touch .lnk-bottom-left,
+.lnk-touch .lnk-top-left {
+  display: none;
+}
+
+/* On a touch screen the controls take the bottom corners, so the map moves up
+   to the top left and the target's readout sits above the controls; turned
+   sideways, the readout fits between them and the aim card at the top. */
+.lnk-touch .lnk-map {
+  top: 16px;
+  left: 16px;
+  right: auto;
+  bottom: auto;
+}
+.lnk-touch .lnk-map canvas {
+  width: 96px;
+  height: 96px;
+}
+.lnk-touch .lnk-aim {
+  top: 136px;
+}
+.lnk-touch .lnk-bottom-center {
+  left: 16px;
+  right: 16px;
+  bottom: 168px;
+  transform: none;
+  max-width: none;
+  text-align: center;
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .lnk-touch .lnk-aim {
+    top: 16px;
+    max-width: 38vw;
+  }
+  .lnk-touch .lnk-bottom-center {
+    left: 50%;
+    right: auto;
+    bottom: 16px;
+    transform: translateX(-50%);
+    max-width: calc(100vw - 2 * 180px);
+  }
+  .lnk-touch .lnk-board {
+    top: 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lnk-root * {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* under the buttons at the top, which it would cover */
+  .lnk-aim {
+    top: 64px;
+  }
+  .lnk-bottom-center {
+    left: 16px;
+    transform: none;
+    max-width: calc(100vw - 32px - 136px);
+  }
+  .lnk-top-left {
+    display: none;
+  }
+}
