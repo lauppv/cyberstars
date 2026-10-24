@@ -45,7 +45,3 @@ indexnow-sent.xml
 .runs
 .direnv/
 
-# Self-hosted focus-radio audio (large binary, deployed manually to the server).
-# Lives outside public/ so Vite doesn't copy it into dist/ on every build;
-# served by nginx in prod and by Express (media/radio static mount) in dev.
-media/
