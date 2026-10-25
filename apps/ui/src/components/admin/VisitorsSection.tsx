@@ -114,10 +114,20 @@ export function VisitorsSection({ className, reload }: { className: string; relo
   }
 
   useEffect(() => {
+    // A slower answer for the range picked before mustn't land over this one.
+    let current = true;
     getVisits(range)
-      .then(setData)
+      .then((dto) => {
+        if (current) setData(dto);
+      })
       .catch(() => {});
+    return () => {
+      current = false;
+    };
   }, [range, reload]);
+
+  // Until the new range comes, the old one's numbers stay up, dimmed.
+  const loading = data !== null && data.range !== range;
 
   // Past 3 months a point a day is too many to read, so the charts go by week.
   const weekly = data !== null && data.range > 90;
@@ -151,7 +161,7 @@ export function VisitorsSection({ className, reload }: { className: string; relo
       {!data ? (
         <span className="text-[12px] text-[var(--text3)]">{t('admin.noData')}</span>
       ) : (
-        <>
+        <div aria-busy={loading} className={`transition-opacity ${loading ? 'opacity-50' : ''}`}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
             <DailyChart
               days={points}
@@ -237,7 +247,7 @@ export function VisitorsSection({ className, reload }: { className: string; relo
             sourceName={sourceName}
             reload={reload}
           />
-        </>
+        </div>
       )}
 
       <p className="mt-4 mb-0 text-[11px] text-[var(--text3)]">

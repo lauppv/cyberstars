@@ -135,6 +135,30 @@ describe('VisitorsSection', () => {
     expect(getVisits).toHaveBeenCalledTimes(3);
   });
 
+  it('dims the old range until the new one comes, and drops a late answer for it', async () => {
+    let answer30!: (dto: AdminVisitsDTO) => void;
+    let answer90!: (dto: AdminVisitsDTO) => void;
+    getVisits
+      .mockReturnValueOnce(Promise.resolve(dto))
+      .mockReturnValueOnce(new Promise((resolve) => (answer90 = resolve)))
+      .mockReturnValueOnce(new Promise((resolve) => (answer30 = resolve)));
+    render(<VisitorsSection className="" reload={0} />);
+    const page = await screen.findByText('/lesson/python/print');
+    const range = within(screen.getByRole('group', { name: 'Time range' }));
+
+    fireEvent.click(range.getByRole('button', { name: '3 months' }));
+    expect(page.closest('[aria-busy]')).toHaveAttribute('aria-busy', 'true');
+    fireEvent.click(range.getByRole('button', { name: '1 month' }));
+    expect(page.closest('[aria-busy]')).toHaveAttribute('aria-busy', 'false');
+
+    answer30({ ...dto, pages: [{ key: '/courses', visitors: 1, views: 1 }] });
+    expect(await screen.findByText('/courses')).toBeInTheDocument();
+    answer90({ ...dto, range: 90, pages: [{ key: '/almanac', visitors: 1, views: 1 }] });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(screen.queryByText('/almanac')).not.toBeInTheDocument();
+    expect(screen.getByText('/courses')).toBeInTheDocument();
+  });
+
   it('says there is nothing yet when the numbers could not be loaded or are empty', async () => {
     getVisits.mockRejectedValueOnce(new Error('403'));
     const { unmount } = render(<VisitorsSection className="" reload={0} />);
