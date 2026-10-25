@@ -130,7 +130,7 @@
       "options": [
         "Pentru că e mai rapid decât sorted()",
         "Pentru că Python are nevoie de el ca să ruleze",
-        "Ne învață comparații și schimbări, pe care se sprijină multe algoritme",
+        "Ne învață comparații și schimbări, pe care se sprijină mulți algoritmi",
         "E singura sortare care merge"
       ],
       "answer": 2

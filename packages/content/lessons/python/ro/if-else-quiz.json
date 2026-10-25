@@ -19,7 +19,7 @@
     },
     {
       "id": "q3",
-      "text": "De ce sunt mutate mai la dreapta liniile de sub if?",
+      "text": "De ce sunt indentate liniile de sub if?",
       "options": [
         "Doar ca să arate mai frumos",
         "Ca să ruleze mai repede",
@@ -114,7 +114,7 @@
       "code": "temperatura = 14\nif temperatura < 15:\nprint(\"Ia o bluza\")\nelse:\nprint(\"Un tricou e suficient\")",
       "options": [
         "Afișează Ia o bluza",
-        "Se oprește cu o eroare: liniile cu print nu sunt mutate la dreapta",
+        "Se oprește cu o eroare: liniile cu print nu sunt indentate",
         "Afișează amândouă liniile",
         "Nu afișează nimic"
       ],
@@ -155,7 +155,7 @@
     },
     {
       "id": "q17",
-      "text": "Cum se numesc liniile mutate la dreapta de sub un if?",
+      "text": "Cum se numesc liniile indentate de sub un if?",
       "options": ["Condiția if-ului", "Blocul if-ului", "Un comentariu", "Else-ul"],
       "answer": 1
     },
@@ -221,7 +221,7 @@
       "options": [
         "Nu, doar una",
         "Doar la else",
-        "Da, orice linie mutată la dreapta sub if ține de el",
+        "Da, orice linie indentată sub if ține de el",
         "Doar două linii"
       ],
       "answer": 2
@@ -230,8 +230,8 @@
       "id": "q25",
       "text": "Unde se pune else?",
       "options": [
-        "Imediat după blocul if-ului, la fel de în stânga ca if-ul lui",
-        "În blocul if-ului, mutat la dreapta",
+        "Imediat după blocul if-ului, aliniat cu if-ul lui",
+        "În blocul if-ului, indentat",
         "Înainte de if",
         "Oriunde în program"
       ],
