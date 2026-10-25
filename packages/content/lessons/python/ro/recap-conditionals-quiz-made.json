@@ -1,0 +1,666 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-conditionals-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rc-booth-67eac9",
+      "text": "Ce afișează?",
+      "code": "varsta = 8\neste_3d = True\npret = 10\n\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelif varsta <= 64:\n    reducere = 0\nelse:\n    reducere = 4\n\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 7 EUR", "Total: 5 EUR", "Total: 17 EUR", "Total: 2 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-0a8d7d",
+      "text": "Ce afișează?",
+      "code": "varsta = 30\neste_3d = False\npret = 10\n\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelif varsta <= 64:\n    reducere = 0\nelse:\n    reducere = 4\n\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 10 EUR", "Total: 12 EUR", "Total: 0 EUR", "Total: 6 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-c818dd",
+      "text": "Ce afișează?",
+      "code": "varsta = 70\neste_3d = True\npret = 10\n\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelif varsta <= 64:\n    reducere = 0\nelse:\n    reducere = 4\n\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 8 EUR", "Total: 6 EUR", "Total: 16 EUR", "Total: 2 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-d3f936",
+      "text": "Ce afișează?",
+      "code": "varsta = 4\neste_3d = False\npret = 10\n\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelif varsta <= 64:\n    reducere = 0\nelse:\n    reducere = 4\n\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 0 EUR", "Total: 2 EUR", "Total: 20 EUR", "Total: 10 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-7a2725",
+      "text": "Ce afișează?",
+      "code": "varsta = 13\neste_3d = True\npret = 10\n\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelif varsta <= 64:\n    reducere = 0\nelse:\n    reducere = 4\n\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 9 EUR", "Total: 7 EUR", "Total: 15 EUR", "Total: 5 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-04952a",
+      "text": "Ce afișează?",
+      "code": "varsta = 65\neste_3d = False\npret = 10\n\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelif varsta <= 64:\n    reducere = 0\nelse:\n    reducere = 4\n\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 6 EUR", "Total: 8 EUR", "Total: 14 EUR", "Total: 4 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-06f460",
+      "text": "Ce afișează?",
+      "code": "varsta = 17\neste_3d = False\npret = 10\n\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelif varsta <= 64:\n    reducere = 0\nelse:\n    reducere = 4\n\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 7 EUR", "Total: 9 EUR", "Total: 13 EUR", "Total: 3 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-255132",
+      "text": "Ce afișează?",
+      "code": "varsta = 6\neste_3d = True\npret = 10\n\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelif varsta <= 64:\n    reducere = 0\nelse:\n    reducere = 4\n\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 7 EUR", "Total: 5 EUR", "Total: 17 EUR", "Total: 2 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-order-8fa2b6",
+      "text": "Ce afișează?",
+      "code": "scor = 95\nif scor >= 50:\n    print(\"Trecut\")\nelif scor >= 90:\n    print(\"Excelent\")\nelse:\n    print(\"Picat\")",
+      "options": ["Trecut", "Trecut\nExcelent", "Excelent", "Trecut\nPicat"],
+      "answer": 0
+    },
+    {
+      "id": "rc-order-2f78e2",
+      "text": "Ce afișează?",
+      "code": "temperatura = 35\nif temperatura >= 20:\n    print(\"Cald\")\nelif temperatura >= 30:\n    print(\"Canicula\")\nelse:\n    print(\"Frig\")",
+      "options": ["Cald", "Cald\nCanicula", "Canicula", "Cald\nFrig"],
+      "answer": 0
+    },
+    {
+      "id": "rc-order-03fef9",
+      "text": "Ce afișează?",
+      "code": "combustibil = 900\nif combustibil >= 100:\n    print(\"Combustibil suficient\")\nelif combustibil >= 800:\n    print(\"Rezervor plin\")\nelse:\n    print(\"Alimenteaza\")",
+      "options": [
+        "Combustibil suficient",
+        "Combustibil suficient\nRezervor plin",
+        "Rezervor plin",
+        "Combustibil suficient\nAlimenteaza"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-order-b1e633",
+      "text": "Ce afișează?",
+      "code": "stele = 5\nif stele >= 1:\n    print(\"Bine\")\nelif stele >= 5:\n    print(\"Perfect\")\nelse:\n    print(\"Nicio stea\")",
+      "options": ["Bine", "Bine\nPerfect", "Perfect", "Bine\nNicio stea"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bags-5cd461",
+      "text": "Ce afișează?",
+      "code": "bagaje = 1\npret = 120\nif bagaje == 0:\n    taxa = 0\nelif bagaje == 1:\n    taxa = 15\nelse:\n    taxa = 40\ntotal = pret + taxa\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 135 EUR", "Total: 105 EUR", "Total: 15 EUR", "Total: 120 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bags-21e211",
+      "text": "Ce afișează?",
+      "code": "bagaje = 2\npret = 120\nif bagaje == 0:\n    taxa = 0\nelif bagaje == 1:\n    taxa = 15\nelse:\n    taxa = 40\ntotal = pret + taxa\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 160 EUR", "Total: 80 EUR", "Total: 40 EUR", "Total: 120 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bags-e8584e",
+      "text": "Ce afișează?",
+      "code": "bagaje = 3\npret = 80\nif bagaje == 0:\n    taxa = 0\nelif bagaje == 1:\n    taxa = 20\nelse:\n    taxa = 50\ntotal = pret + taxa\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 130 EUR", "Total: 30 EUR", "Total: 50 EUR", "Total: 80 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bags-731712",
+      "text": "Ce afișează?",
+      "code": "bagaje = 1\npret = 60\nif bagaje == 0:\n    taxa = 0\nelif bagaje == 1:\n    taxa = 20\nelse:\n    taxa = 50\ntotal = pret + taxa\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 80 EUR", "Total: 40 EUR", "Total: 20 EUR", "Total: 60 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-b2c707",
+      "text": "Ce afișează?",
+      "code": "locuri = 5\nvip = True\nif locuri == 0:\n    print(\"Bilete epuizate\")\nelif locuri < 10:\n    if vip == True:\n        print(\"Locul tau VIP e rezervat\")\n    else:\n        print(\"Au mai ramas putine locuri\")\nelse:\n    print(\"Sunt locuri destule\")",
+      "options": [
+        "Locul tau VIP e rezervat",
+        "Au mai ramas putine locuri",
+        "Sunt locuri destule",
+        "Locul tau VIP e rezervat\nSunt locuri destule"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-88a3fd",
+      "text": "Ce afișează?",
+      "code": "locuri = 8\nvip = False\nif locuri == 0:\n    print(\"Bilete epuizate\")\nelif locuri < 10:\n    if vip == True:\n        print(\"Locul tau VIP e rezervat\")\n    else:\n        print(\"Au mai ramas putine locuri\")\nelse:\n    print(\"Sunt locuri destule\")",
+      "options": [
+        "Au mai ramas putine locuri",
+        "Locul tau VIP e rezervat",
+        "Sunt locuri destule",
+        "Au mai ramas putine locuri\nSunt locuri destule"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-d6e997",
+      "text": "Ce afișează?",
+      "code": "locuri = 0\nvip = True\nif locuri == 0:\n    print(\"Bilete epuizate\")\nelif locuri < 10:\n    if vip == True:\n        print(\"Locul tau VIP e rezervat\")\n    else:\n        print(\"Au mai ramas putine locuri\")\nelse:\n    print(\"Sunt locuri destule\")",
+      "options": [
+        "Bilete epuizate",
+        "Bilete epuizate\nSunt locuri destule",
+        "Locul tau VIP e rezervat",
+        "Bilete epuizate\nLocul tau VIP e rezervat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-3cc1e0",
+      "text": "Ce afișează?",
+      "code": "locuri = 3\nvip = True\nif locuri == 0:\n    print(\"Bilete epuizate\")\nelif locuri < 10:\n    if vip == True:\n        print(\"Locul tau VIP e rezervat\")\n    else:\n        print(\"Au mai ramas putine locuri\")\nelse:\n    print(\"Sunt locuri destule\")",
+      "options": [
+        "Locul tau VIP e rezervat",
+        "Au mai ramas putine locuri",
+        "Sunt locuri destule",
+        "Locul tau VIP e rezervat\nSunt locuri destule"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-9ae760",
+      "text": "Ce afișează?",
+      "code": "locuri = 0\nvip = False\nif locuri == 0:\n    print(\"Bilete epuizate\")\nelif locuri < 10:\n    if vip == True:\n        print(\"Locul tau VIP e rezervat\")\n    else:\n        print(\"Au mai ramas putine locuri\")\nelse:\n    print(\"Sunt locuri destule\")",
+      "options": [
+        "Bilete epuizate",
+        "Bilete epuizate\nSunt locuri destule",
+        "Au mai ramas putine locuri",
+        "Bilete epuizate\nAu mai ramas putine locuri"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-321d72",
+      "text": "Ce afișează?",
+      "code": "locuri = 9\nvip = False\nif locuri == 0:\n    print(\"Bilete epuizate\")\nelif locuri < 10:\n    if vip == True:\n        print(\"Locul tau VIP e rezervat\")\n    else:\n        print(\"Au mai ramas putine locuri\")\nelse:\n    print(\"Sunt locuri destule\")",
+      "options": [
+        "Au mai ramas putine locuri",
+        "Locul tau VIP e rezervat",
+        "Sunt locuri destule",
+        "Au mai ramas putine locuri\nSunt locuri destule"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-lines-cb7a9a",
+      "text": "Ce afișează?",
+      "code": "reducere = 5\neste_3d = True\npret = 10\ntotal = pret - reducere\nprint(f\"Reducere: {reducere} EUR\")\nif este_3d == True:\n    total = total + 2\n    print(\"Taxa 3D: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "options": [
+        "Reducere: 5 EUR\nTaxa 3D: 2 EUR\nTotal: 7 EUR",
+        "Reducere: 5 EUR\nTotal: 5 EUR",
+        "Reducere: 5 EUR\nTaxa 3D: 2 EUR\nTotal: 17 EUR",
+        "Reducere: {reducere} EUR\nTaxa 3D: 2 EUR\nTotal: 7 EUR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-lines-38fe20",
+      "text": "Ce afișează?",
+      "code": "reducere = 0\neste_3d = False\npret = 10\ntotal = pret - reducere\nprint(f\"Reducere: {reducere} EUR\")\nif este_3d == True:\n    total = total + 2\n    print(\"Taxa 3D: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "options": [
+        "Reducere: 0 EUR\nTotal: 10 EUR",
+        "Reducere: 0 EUR\nTaxa 3D: 2 EUR\nTotal: 12 EUR",
+        "Reducere: 0 EUR",
+        "Reducere: {reducere} EUR\nTotal: 10 EUR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-lines-710a73",
+      "text": "Ce afișează?",
+      "code": "reducere = 3\neste_3d = False\npret = 10\ntotal = pret - reducere\nprint(f\"Reducere: {reducere} EUR\")\nif este_3d == True:\n    total = total + 2\n    print(\"Taxa 3D: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "options": [
+        "Reducere: 3 EUR\nTotal: 7 EUR",
+        "Reducere: 3 EUR\nTaxa 3D: 2 EUR\nTotal: 9 EUR",
+        "Reducere: 3 EUR",
+        "Reducere: 3 EUR\nTotal: 13 EUR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-lines-3710a1",
+      "text": "Ce afișează?",
+      "code": "reducere = 4\neste_3d = True\npret = 10\ntotal = pret - reducere\nprint(f\"Reducere: {reducere} EUR\")\nif este_3d == True:\n    total = total + 2\n    print(\"Taxa 3D: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "options": [
+        "Reducere: 4 EUR\nTaxa 3D: 2 EUR\nTotal: 8 EUR",
+        "Reducere: 4 EUR\nTotal: 6 EUR",
+        "Reducere: 4 EUR\nTaxa 3D: 2 EUR\nTotal: 16 EUR",
+        "Reducere: {reducere} EUR\nTaxa 3D: 2 EUR\nTotal: 8 EUR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-chain-ca7fe8",
+      "text": "Care program afișează asta?",
+      "output": "Prea rapid",
+      "options": [
+        "viteza = 130\nif viteza >= 120:\n    print(\"Prea rapid\")\nelif viteza >= 90:\n    print(\"Rapid\")\nelse:\n    print(\"Normal\")",
+        "viteza = 130\nif viteza >= 90:\n    print(\"Rapid\")\nelif viteza >= 120:\n    print(\"Prea rapid\")\nelse:\n    print(\"Normal\")",
+        "viteza = 130\nif viteza >= 120:\n    print(\"Prea rapid\")\nif viteza >= 90:\n    print(\"Rapid\")\nelse:\n    print(\"Normal\")",
+        "viteza = 130\nif viteza >= 120:\n    print(\"Prea rapid\")\nelif viteza >= 90:\n    print(\"Rapid\")\nprint(\"Normal\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-chain-d609f4",
+      "text": "Care program afișează asta?",
+      "output": "Baterie plina",
+      "options": [
+        "baterie = 95\nif baterie >= 90:\n    print(\"Baterie plina\")\nelif baterie >= 20:\n    print(\"Baterie OK\")\nelse:\n    print(\"Pune-ma la incarcat\")",
+        "baterie = 95\nif baterie >= 20:\n    print(\"Baterie OK\")\nelif baterie >= 90:\n    print(\"Baterie plina\")\nelse:\n    print(\"Pune-ma la incarcat\")",
+        "baterie = 95\nif baterie >= 90:\n    print(\"Baterie plina\")\nif baterie >= 20:\n    print(\"Baterie OK\")\nelse:\n    print(\"Pune-ma la incarcat\")",
+        "baterie = 95\nif baterie >= 90:\n    print(\"Baterie plina\")\nelif baterie >= 20:\n    print(\"Baterie OK\")\nprint(\"Pune-ma la incarcat\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-chain-6a6d6a",
+      "text": "Care program afișează asta?",
+      "output": "Aur",
+      "options": [
+        "puncte = 1500\nif puncte >= 1000:\n    print(\"Aur\")\nelif puncte >= 500:\n    print(\"Argint\")\nelse:\n    print(\"Bronz\")",
+        "puncte = 1500\nif puncte >= 500:\n    print(\"Argint\")\nelif puncte >= 1000:\n    print(\"Aur\")\nelse:\n    print(\"Bronz\")",
+        "puncte = 1500\nif puncte >= 1000:\n    print(\"Aur\")\nif puncte >= 500:\n    print(\"Argint\")\nelse:\n    print(\"Bronz\")",
+        "puncte = 1500\nif puncte >= 1000:\n    print(\"Aur\")\nelif puncte >= 500:\n    print(\"Argint\")\nprint(\"Bronz\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-chain-76b22c",
+      "text": "Care program afișează asta?",
+      "output": "Nivelul boss-ului",
+      "options": [
+        "nivel = 50\nif nivel >= 40:\n    print(\"Nivelul boss-ului\")\nelif nivel >= 10:\n    print(\"Greu\")\nelse:\n    print(\"Usor\")",
+        "nivel = 50\nif nivel >= 10:\n    print(\"Greu\")\nelif nivel >= 40:\n    print(\"Nivelul boss-ului\")\nelse:\n    print(\"Usor\")",
+        "nivel = 50\nif nivel >= 40:\n    print(\"Nivelul boss-ului\")\nif nivel >= 10:\n    print(\"Greu\")\nelse:\n    print(\"Usor\")",
+        "nivel = 50\nif nivel >= 40:\n    print(\"Nivelul boss-ului\")\nelif nivel >= 10:\n    print(\"Greu\")\nprint(\"Usor\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-fee-66b3b1",
+      "text": "Care program afișează asta?",
+      "output": "Total: 9 EUR",
+      "options": [
+        "pret = 10\nreducere = 3\neste_3d = True\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 3\neste_3d = True\ntotal = pret - reducere\nif este_3d == False:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 3\neste_3d = True\ntotal = pret + reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 3\neste_3d = True\ntotal = pret - reducere\nif este_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-fee-7e329e",
+      "text": "Care program afișează asta?",
+      "output": "Total: 7 EUR",
+      "options": [
+        "pret = 10\nreducere = 5\neste_3d = True\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 5\neste_3d = True\ntotal = pret - reducere\nif este_3d == False:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 5\neste_3d = True\ntotal = pret + reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 5\neste_3d = True\ntotal = pret - reducere\nif este_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-fee-48781e",
+      "text": "Care program afișează asta?",
+      "output": "Total: 8 EUR",
+      "options": [
+        "pret = 10\nreducere = 4\neste_3d = True\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 4\neste_3d = True\ntotal = pret - reducere\nif este_3d == False:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 4\neste_3d = True\ntotal = pret + reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 4\neste_3d = True\ntotal = pret - reducere\nif este_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-fee-db872a",
+      "text": "Care program afișează asta?",
+      "output": "Total: 2 EUR",
+      "options": [
+        "pret = 10\nreducere = 10\neste_3d = True\ntotal = pret - reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 10\neste_3d = True\ntotal = pret - reducere\nif este_3d == False:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 10\neste_3d = True\ntotal = pret + reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "pret = 10\nreducere = 10\neste_3d = True\ntotal = reducere\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-op-3835c6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 12\nif varsta < 6:\n    reducere = 10\nelif varsta ___ 12:\n    reducere = 5\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 5 EUR",
+      "options": ["<=", "<", ">", "="],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-op-9e5dce",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 8\nif varsta < 6:\n    reducere = 10\nelif varsta ___ 12:\n    reducere = 5\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 5 EUR",
+      "options": ["<=", ">", "=", ">="],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-op-ea8ca5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 30\nif varsta < 6:\n    reducere = 10\nelif varsta ___ 12:\n    reducere = 5\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 0 EUR",
+      "options": ["<=", ">", "=", ">="],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-op-a5ad32",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 17\nif varsta < 6:\n    reducere = 10\nelif varsta ___ 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 3 EUR",
+      "options": ["<=", "<", ">", "="],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-op-91dd81",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 13\nif varsta < 6:\n    reducere = 10\nelif varsta ___ 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 3 EUR",
+      "options": ["<=", ">", "=", ">="],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-var-4a3d51",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\nreducere = 5\ntaxa = 2\ntotal = pret - reducere + taxa\nprint(f\"Total: {___} EUR\")",
+      "output": "Total: 7 EUR",
+      "options": ["total", "pret", "reducere", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-var-201e33",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\nreducere = 3\ntaxa = 2\ntotal = pret - reducere + taxa\nprint(f\"Total: {___} EUR\")",
+      "output": "Total: 9 EUR",
+      "options": ["total", "pret", "reducere", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-var-c61c6c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\nreducere = 4\ntaxa = 2\ntotal = pret - reducere + taxa\nprint(f\"Total: {___} EUR\")",
+      "output": "Total: 8 EUR",
+      "options": ["total", "pret", "reducere", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-var-fb9466",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\nreducere = 10\ntaxa = 2\ntotal = pret - reducere + taxa\nprint(f\"Total: {___} EUR\")",
+      "output": "Total: 2 EUR",
+      "options": ["total", "pret", "reducere", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-var-d897fb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\nreducere = 0\ntaxa = 2\ntotal = pret - reducere + taxa\nprint(f\"Total: {___} EUR\")",
+      "output": "Total: 12 EUR",
+      "options": ["total", "pret", "reducere", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-bool-4a3d51",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\neste_3d = ___\ntotal = pret - 5\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 7 EUR",
+      "options": ["True", "False", "\"True\"", "true"],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-bool-201e33",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\neste_3d = ___\ntotal = pret - 3\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 9 EUR",
+      "options": ["True", "False", "\"True\"", "true"],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-bool-d897fb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\neste_3d = ___\ntotal = pret - 0\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 12 EUR",
+      "options": ["True", "False", "\"True\"", "true"],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-total-be35fa",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\nreducere = 5\neste_3d = True\n___\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 7 EUR",
+      "options": [
+        "total = pret - reducere",
+        "total = pret + reducere",
+        "total = reducere - pret",
+        "total = pret"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-total-82d244",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\nreducere = 3\neste_3d = False\n___\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 7 EUR",
+      "options": [
+        "total = pret - reducere",
+        "total = pret + reducere",
+        "total = reducere - pret",
+        "total = reducere"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-total-1747fa",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\nreducere = 0\neste_3d = True\n___\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 12 EUR",
+      "options": [
+        "total = pret - reducere",
+        "total = reducere - pret",
+        "total = reducere",
+        "pret = pret - reducere"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-total-61c57d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = 10\nreducere = 10\neste_3d = False\n___\nif este_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 0 EUR",
+      "options": [
+        "total = pret - reducere",
+        "total = pret + reducere",
+        "total = reducere",
+        "total = pret"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-elif-47501b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 12\nif varsta < 6:\n    reducere = 10\n___\n    reducere = 5\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 5 EUR",
+      "options": [
+        "elif varsta <= 12:",
+        "elif varsta < 12:",
+        "elif varsta <= 6:",
+        "elif varsta < 6:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-elif-158576",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 9\nif varsta < 6:\n    reducere = 10\n___\n    reducere = 5\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 5 EUR",
+      "options": [
+        "elif varsta <= 12:",
+        "elif varsta <= 6:",
+        "elif varsta >= 12:",
+        "elif varsta < 6:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-elif-ca754b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 6\nif varsta < 6:\n    reducere = 10\n___\n    reducere = 5\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 5 EUR",
+      "options": [
+        "elif varsta <= 12:",
+        "elif varsta >= 12:",
+        "elif varsta < 6:",
+        "else varsta <= 12:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-elif-b442c1",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 30\nif varsta < 6:\n    reducere = 10\n___\n    reducere = 5\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 0 EUR",
+      "options": [
+        "elif varsta <= 12:",
+        "elif varsta >= 12:",
+        "elif varsta >= 6:",
+        "else varsta <= 12:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-colon-7d586c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = 10\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 5 EUR",
+      "options": ["elif varsta <= 12", "varsta = 10", "if varsta < 6:", "reducere = 10"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-colon-395436",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = 15\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 3 EUR",
+      "options": ["elif varsta <= 12", "varsta = 15", "if varsta < 6:", "reducere = 10"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-colon-289860",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = 40\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 0 EUR",
+      "options": ["elif varsta <= 12", "varsta = 40", "if varsta < 6:", "reducere = 10"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-bound-a2379f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = 17\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta < 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 3 EUR",
+      "options": ["elif varsta < 17:", "varsta = 17", "if varsta < 6:", "reducere = 10"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-bound-child-c2af92",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = 12\nif varsta < 6:\n    reducere = 10\nelif varsta < 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 5 EUR",
+      "options": ["elif varsta < 12:", "varsta = 12", "if varsta < 6:", "reducere = 10"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-bound-free-dfe8bf",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = 6\nif varsta <= 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 5 EUR",
+      "options": ["if varsta <= 6:", "varsta = 6", "reducere = 10", "elif varsta <= 12:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-else-b6ee9e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = 30\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse varsta > 17:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 0 EUR",
+      "options": ["else varsta > 17:", "varsta = 30", "if varsta < 6:", "reducere = 10"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-else-9901d5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = 20\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse varsta > 17:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 0 EUR",
+      "options": ["else varsta > 17:", "varsta = 20", "if varsta < 6:", "reducere = 10"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-else-418790",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = 5\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse varsta > 17:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
+      "output": "Reducere: 10 EUR",
+      "options": ["else varsta > 17:", "varsta = 5", "if varsta < 6:", "reducere = 10"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-fee-28377c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 5\neste_3d = True\nif este_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 7 EUR",
+      "options": ["total = 2", "total = 5", "este_3d = True", "if este_3d == True:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-fee-fdfc7b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 7\neste_3d = True\nif este_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 9 EUR",
+      "options": ["total = 2", "total = 7", "este_3d = True", "if este_3d == True:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-fee-3210ad",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 10\neste_3d = True\nif este_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 12 EUR",
+      "options": ["total = 2", "total = 10", "este_3d = True", "if este_3d == True:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-equal-28377c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "este_3d = True\ntotal = 5\nif este_3d = True:\n    total = total + 2\n    print(\"Taxa 3D: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "output": "Taxa 3D: 2 EUR\nTotal: 7 EUR",
+      "options": ["if este_3d = True:", "este_3d = True", "total = 5", "total = total + 2"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-equal-3210ad",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "este_3d = True\ntotal = 10\nif este_3d = True:\n    total = total + 2\n    print(\"Taxa 3D: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "output": "Taxa 3D: 2 EUR\nTotal: 12 EUR",
+      "options": ["if este_3d = True:", "este_3d = True", "total = 10", "total = total + 2"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-equal-d26dbd",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "este_3d = True\ntotal = 6\nif este_3d = True:\n    total = total + 2\n    print(\"Taxa 3D: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "output": "Taxa 3D: 2 EUR\nTotal: 8 EUR",
+      "options": ["if este_3d = True:", "este_3d = True", "total = 6", "total = total + 2"],
+      "answer": 0
+    }
+  ]
+}

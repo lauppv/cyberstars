@@ -1,0 +1,864 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce face input()?",
+      "options": [
+        "Oprește programul și așteaptă ca utilizatorul să tasteze ceva și să apese Enter",
+        "Afișează un mesaj pe ecran și merge mai departe",
+        "Citește următoarea linie din program",
+        "Inventează o valoare pentru variabilă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce returnează input() când utilizatorul tastează un număr?",
+      "options": [
+        "Un întreg",
+        "Un șir de caractere (string), text ca \"18\"",
+        "Un număr cu zecimale",
+        "True sau False"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Utilizatorul tastează 18 la `varsta = input()`. Ce ține varsta?",
+      "options": ["18, numărul", "18.0", "\"18\", un text", "Nimic până nu apelăm int()"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Ce se întâmplă când rulează și utilizatorul tastează 18?",
+      "code": "varsta = input(\"Varsta ta: \")\nanul_urmator = varsta + 1\nprint(anul_urmator)",
+      "options": [
+        "Afișează 19",
+        "Afișează 181",
+        "Afișează 18 + 1",
+        "Se oprește cu o eroare: \"18\" e text, iar 1 e număr"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Care linie citește de la utilizator un număr întreg?",
+      "options": [
+        "varsta = int(input(\"Varsta ta: \"))",
+        "varsta = input(int(\"Varsta ta: \"))",
+        "varsta = int(\"Varsta ta: \")",
+        "varsta = input(\"Varsta ta: \")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Care e promptul în `nume = input(\"Cum te cheama? \")`?",
+      "options": [
+        "Numele pe care îl tastează utilizatorul",
+        "Mesajul Cum te cheama?, afișat înainte ca programul să aștepte",
+        "Variabila nume",
+        "Ce afișează programul la final"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Când vede utilizatorul promptul?",
+      "options": [
+        "După ce apasă Enter",
+        "Doar când apare o eroare",
+        "Înainte ca programul să aștepte să tasteze",
+        "La finalul programului"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Ce face int() cu textul \"42\"?",
+      "options": [
+        "Pune ghilimele în jurul lui",
+        "Îl transformă în 42.0",
+        "Îl afișează",
+        "Îl transformă în întregul 42"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce funcție transformă un text ca \"1.75\" într-un număr cu zecimale?",
+      "options": ["float()", "int()", "input()", "print()"],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "De ce folosește lecția float() și nu int() pentru o înălțime ca 1.75?",
+      "options": [
+        "float() e mai rapid",
+        "int() e pentru numere întregi, iar 1.75 are zecimale",
+        "int() merge doar cu input()",
+        "Nu e nicio diferență"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Când merge programul mai departe după un input()?",
+      "options": [
+        "Imediat",
+        "După câteva secunde",
+        "După ce utilizatorul apasă Enter",
+        "După următorul print()"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "Utilizatorul tastează Lance. Ce afișează?",
+      "code": "nume = input()\nprint(f\"Salut, {nume}!\")",
+      "options": ["Salut, {nume}!", "Salut, nume!", "Lance", "Salut, Lance!"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "În `nume = input()`, unde ajunge ce a tastat utilizatorul?",
+      "options": [
+        "În variabila nume",
+        "Direct pe ecran",
+        "În input()",
+        "Nicăieri, se pierde după Enter"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "De ce folosim input() în loc să scriem `nume = \"Tommy\"` în cod?",
+      "options": [
+        "Face programul mai rapid",
+        "Ca utilizatorul să aleagă valoarea de fiecare dată când rulează programul",
+        "Python are nevoie de input() pentru orice string",
+        "Ca valoarea să nu se schimbe niciodată"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Care linie afișează Nume: și apoi așteaptă ca utilizatorul să tasteze?",
+      "options": [
+        "nume = print(\"Nume: \")",
+        "input = nume(\"Nume: \")",
+        "nume = input(\"Nume: \")",
+        "nume = input(Nume: )"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "În `varsta = int(input(\"Varsta ta: \"))`, ce se întâmplă întâi?",
+      "options": [
+        "Rulează întâi int(), apoi input()",
+        "Rulează amândouă în același timp",
+        "Rulează doar int()",
+        "input() așteaptă textul, apoi int() îl transformă în număr"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Utilizatorul tastează 5, apoi 3. Ce afișează?",
+      "code": "a = int(input())\nb = int(input())\nprint(a + b)",
+      "options": ["8", "53", "5 + 3", "Se oprește cu o eroare"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Face promptul parte din ce returnează input()?",
+      "options": [
+        "Da, întâi promptul, apoi textul tastat",
+        "Nu, input() returnează doar ce a tastat utilizatorul",
+        "Da, input() returnează doar promptul",
+        "Doar când promptul se termină cu un spațiu"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "În misiunea Înregistrarea Echipajului, de ce trebuie să treacă vârsta prin int()?",
+      "options": [
+        "Ca să poată fi afișată",
+        "Ca numele să rămână text",
+        "Ca să-i putem aduna 1",
+        "Pentru că un f-string poate afișa doar numere"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "În misiunea Înregistrarea Echipajului utilizatorul tastează Cortez, apoi 60. Ce ar trebui să afișeze programul?",
+      "options": [
+        "Bun venit la bord, nume! Ai 60. Anul viitor vei avea 61.",
+        "Bun venit la bord, Cortez! Ai 60. Anul viitor vei avea 601.",
+        "Bun venit la bord, Cortez! Ai 61. Anul viitor vei avea 62.",
+        "Bun venit la bord, Cortez! Ai 60. Anul viitor vei avea 61."
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "De câte ori așteaptă programul după utilizator?",
+      "code": "nume = input()\nvarsta = int(input())\nprint(f\"Bun venit la bord, {nume}!\")",
+      "options": ["2", "1", "3", "0"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce vede utilizatorul înainte să tasteze, când rulează linia asta?",
+      "code": "varsta = input(\"Varsta ta: \")",
+      "options": [
+        "Nimic",
+        "Varsta ta: ",
+        "\"Varsta ta: \" cu tot cu ghilimele",
+        "input(\"Varsta ta: \")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Care două linii fac același lucru ca `varsta = int(input())`?",
+      "options": [
+        "varsta = input()\nint(varsta)",
+        "varsta = int()\nvarsta = input(varsta)",
+        "varsta = input()\nvarsta = int(varsta)",
+        "varsta = input(int())"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Utilizatorul tastează 18. De ce se oprește cu o eroare?",
+      "code": "varsta = input()\nint(varsta)\nprint(varsta + 1)",
+      "options": [
+        "int() nu poate citi textul din varsta",
+        "print() are nevoie de un f",
+        "input() are nevoie de un prompt",
+        "int(varsta) face un număr, dar nu-l păstrează, așa că varsta e tot text"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Care linie citește de la utilizator o înălțime ca 1.75, ca număr?",
+      "options": [
+        "inaltime = float(input(\"Inaltimea ta: \"))",
+        "inaltime = int(input(\"Inaltimea ta: \"))",
+        "inaltime = input(float(\"Inaltimea ta: \"))",
+        "inaltime = \"1.75\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Care program se oprește cu o eroare când utilizatorul tastează 18?",
+      "options": [
+        "varsta = int(input())\nprint(varsta + 1)",
+        "varsta = input()\nprint(varsta + 1)",
+        "varsta = input()\nprint(varsta)",
+        "varsta = input()\nprint(f\"Ai {varsta}\")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Utilizatorul tastează Tommy Vercetti la `nume = input()`. Ce ține nume?",
+      "options": [
+        "Doar \"Tommy\"",
+        "Nimic: un nume cu spațiu oprește programul cu o eroare",
+        "\"Tommy Vercetti\", toată linia, cu tot cu spațiu",
+        "O variabilă numită Tommy Vercetti"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Poate Python să facă \"18\" + 1?",
+      "options": [
+        "Da, dă 19",
+        "Da, dă 181",
+        "Doar într-un f-string",
+        "Nu: unul e text, celălalt număr, așa că se oprește cu o eroare"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Utilizatorul tastează 3. De câte ori afișează Salut?",
+      "code": "n = int(input())\nfor i in range(n):\n    print(\"Salut\")",
+      "options": ["3", "2", "4", "O dată"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Utilizatorul tastează 18. Ce afișează?",
+      "code": "varsta = int(input())\nif varsta >= 18:\n    print(\"Major\")\nelse:\n    print(\"Minor\")",
+      "options": ["Minor", "Major", "Se oprește cu o eroare: varsta e text", "Major\nMinor"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "in-plus",
+      "kind": "prints",
+      "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Ce afișează?",
+      "code": "{{v}} = \"{{x}}\"\n{{w}} = int({{v}}) + {{d}}\nprint({{w}})",
+      "values": [
+        {
+          "v": "varsta",
+          "w": "anul_urmator",
+          "x": 14,
+          "d": 1
+        },
+        {
+          "v": "varsta",
+          "w": "anul_urmator",
+          "x": 60,
+          "d": 1
+        },
+        {
+          "v": "scor",
+          "w": "total",
+          "x": 7,
+          "d": 3
+        },
+        {
+          "v": "nivel",
+          "w": "nivel_urmator",
+          "x": 9,
+          "d": 1
+        },
+        {
+          "v": "combustibil",
+          "w": "total",
+          "x": 40,
+          "d": 10
+        }
+      ],
+      "mistakes": [
+        ["int({{v}}) + {{d}}", "{{v}} + \"{{d}}\""],
+        ["int({{v}}) + {{d}}", "int({{v}})"],
+        ["print({{w}})", "print(\"{{w}}\")"],
+        ["int({{v}}) + {{d}}", "int({{v}}) - {{d}}"]
+      ]
+    },
+    {
+      "id": "in-two",
+      "kind": "prints",
+      "text": "Utilizatorul a tastat {{a}}, apoi {{b}}, iar `a` și `b` țin ce a returnat input(). Ce afișează?",
+      "code": "a = \"{{a}}\"\nb = \"{{b}}\"\nprint(int(a) + int(b))",
+      "values": [
+        {
+          "a": 6,
+          "b": 4
+        },
+        {
+          "a": 12,
+          "b": 30
+        },
+        {
+          "a": 7,
+          "b": 7
+        },
+        {
+          "a": 100,
+          "b": 1
+        }
+      ],
+      "mistakes": [
+        ["print(int(a) + int(b))", "print(a + b)"],
+        ["print(int(a) + int(b))", "print(\"a + b\")"],
+        ["print(int(a) + int(b))", "print(f\"{a} + {b}\")"],
+        ["int(a) + int(b)", "int(a) - int(b)"]
+      ]
+    },
+    {
+      "id": "in-sum",
+      "kind": "prints",
+      "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Ce afișează?",
+      "code": "{{v}} = \"{{x}}\"\ntotal = 0\nfor i in range(1, int({{v}}) + 1):\n    total = total + i\nprint(total)",
+      "values": [
+        {
+          "v": "n",
+          "x": 3
+        },
+        {
+          "v": "n",
+          "x": 4
+        },
+        {
+          "v": "zile",
+          "x": 5
+        },
+        {
+          "v": "ture",
+          "x": 10
+        }
+      ],
+      "mistakes": [
+        ["int({{v}}) + 1", "int({{v}})"],
+        ["    total = total + i\nprint(total)", "    total = total + i\n    print(total)"],
+        ["total = total + i", "total = i"],
+        ["total = 0", "total = 1"]
+      ]
+    },
+    {
+      "id": "in-crew",
+      "kind": "prints",
+      "text": "Utilizatorul a tastat {{n}}, apoi {{a}}, iar `nume` și `varsta` țin ce a returnat input(). Ce afișează?",
+      "code": "nume = \"{{n}}\"\nvarsta = \"{{a}}\"\nvarsta = int(varsta)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "values": [
+        {
+          "n": "Cortez",
+          "a": 60
+        },
+        {
+          "n": "Zoe",
+          "a": 12
+        },
+        {
+          "n": "Lance",
+          "a": 35
+        },
+        {
+          "n": "Ada",
+          "a": 17
+        },
+        {
+          "n": "Kai",
+          "a": 99
+        }
+      ],
+      "mistakes": [
+        ["{varsta + 1}", "{varsta}"],
+        ["{varsta + 1}", "{varsta} + 1"],
+        ["print(f\"Bun", "print(\"Bun"],
+        ["{nume}!", "nume!"]
+      ]
+    },
+    {
+      "id": "in-if",
+      "kind": "prints",
+      "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Ce afișează?",
+      "code": "{{v}} = \"{{x}}\"\n{{v}} = int({{v}})\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "varsta",
+          "yes": "Poti vota",
+          "no": "Inca nu",
+          "x": 18,
+          "limit": 18
+        },
+        {
+          "v": "varsta",
+          "yes": "Poti vota",
+          "no": "Inca nu",
+          "x": 12,
+          "limit": 18
+        },
+        {
+          "v": "scor",
+          "yes": "Trecut",
+          "no": "Picat",
+          "x": 50,
+          "limit": 50
+        },
+        {
+          "v": "scor",
+          "yes": "Trecut",
+          "no": "Picat",
+          "x": 49,
+          "limit": 50
+        },
+        {
+          "v": "combustibil",
+          "yes": "Gata de lansare",
+          "no": "Alimenteaza intai",
+          "x": 300,
+          "limit": 200
+        }
+      ],
+      "mistakes": [
+        ["{{v}} >= {{limit}}", "{{v}} < {{limit}}"],
+        [
+          "if {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{v}} >= {{limit}})"
+        ],
+        [
+          "if {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{v}})"
+        ],
+        [
+          "if {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "in-count",
+      "kind": "prints",
+      "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Ce afișează?",
+      "code": "{{v}} = \"{{x}}\"\nfor i in range(1, int({{v}}) + 1):\n    print(i)",
+      "values": [
+        {
+          "v": "ture",
+          "x": 3
+        },
+        {
+          "v": "stele",
+          "x": 4
+        },
+        {
+          "v": "n",
+          "x": 5
+        },
+        {
+          "v": "n",
+          "x": 2
+        }
+      ],
+      "mistakes": [
+        ["int({{v}}) + 1", "int({{v}})"],
+        ["range(1, ", "range(0, "],
+        ["print(i)", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "in-ticket",
+      "kind": "prints",
+      "text": "Utilizatorul a tastat {{x}}, deci `varsta` ține ce a returnat input(). Ce afișează?",
+      "code": "varsta = \"{{x}}\"\nvarsta = int(varsta)\nif varsta < 6:\n    print(\"{{free}}\")\nelif varsta < 18:\n    print(\"{{child}}\")\nelse:\n    print(\"{{full}}\")",
+      "values": [
+        {
+          "free": "Gratuit",
+          "child": "Bilet de copil",
+          "full": "Pret intreg",
+          "x": 4
+        },
+        {
+          "free": "Gratuit",
+          "child": "Bilet de copil",
+          "full": "Pret intreg",
+          "x": 12
+        },
+        {
+          "free": "Gratuit",
+          "child": "Bilet de copil",
+          "full": "Pret intreg",
+          "x": 17
+        },
+        {
+          "free": "Gratuit",
+          "child": "Bilet de copil",
+          "full": "Pret intreg",
+          "x": 30
+        }
+      ],
+      "mistakes": [
+        ["varsta < 6", "varsta > 6"],
+        [
+          "if varsta < 6:\n    print(\"{{free}}\")\nelif varsta < 18:\n    print(\"{{child}}\")\nelse:\n    print(\"{{full}}\")",
+          "print(\"{{free}}\")\nprint(\"{{child}}\")\nprint(\"{{full}}\")"
+        ],
+        [
+          "if varsta < 6:\n    print(\"{{free}}\")\nelif varsta < 18:\n    print(\"{{child}}\")\nelse:\n    print(\"{{full}}\")",
+          "print(varsta)"
+        ],
+        ["varsta < 18", "varsta > 18"]
+      ]
+    },
+    {
+      "id": "in-gap-int",
+      "kind": "missing-value",
+      "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{x}}\"\n{{w}} = ___({{v}}) + {{d}}\nprint({{w}})",
+      "values": [
+        {
+          "v": "varsta",
+          "w": "anul_urmator",
+          "x": 14,
+          "d": 1
+        },
+        {
+          "v": "varsta",
+          "w": "anul_urmator",
+          "x": 33,
+          "d": 1
+        },
+        {
+          "v": "scor",
+          "w": "total",
+          "x": 8,
+          "d": 2
+        },
+        {
+          "v": "bilete",
+          "w": "total",
+          "x": 3,
+          "d": 4
+        },
+        {
+          "v": "nivel",
+          "w": "nivel_urmator",
+          "x": 41,
+          "d": 1
+        }
+      ],
+      "answer": "int",
+      "wrong": ["float", "input", "print"]
+    },
+    {
+      "id": "in-gap-float",
+      "kind": "missing-value",
+      "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{x}}\"\nprint(___({{v}}) + {{d}})",
+      "values": [
+        {
+          "v": "inaltime",
+          "x": 1.5,
+          "d": 0.25
+        },
+        {
+          "v": "pret",
+          "x": 2.5,
+          "d": 1
+        },
+        {
+          "v": "greutate",
+          "x": 60.5,
+          "d": 2
+        },
+        {
+          "v": "viteza",
+          "x": 7.5,
+          "d": 0.5
+        }
+      ],
+      "answer": "float",
+      "wrong": ["int", "input", "print"]
+    },
+    {
+      "id": "in-gap-store",
+      "kind": "missing-line",
+      "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{x}}\"\n___\nprint({{v}} + {{d}})",
+      "values": [
+        {
+          "v": "varsta",
+          "x": 14,
+          "d": 1
+        },
+        {
+          "v": "varsta",
+          "x": 59,
+          "d": 1
+        },
+        {
+          "v": "scor",
+          "x": 20,
+          "d": 5
+        },
+        {
+          "v": "combustibil",
+          "x": 90,
+          "d": 10
+        },
+        {
+          "v": "vieti",
+          "x": 2,
+          "d": 1
+        }
+      ],
+      "answer": "{{v}} = int({{v}})",
+      "wrong": ["int({{v}})", "{{v}} = float({{v}})", "{{v}} = input({{v}})"]
+    },
+    {
+      "id": "in-gap-crew",
+      "kind": "missing-line",
+      "text": "Utilizatorul a tastat {{n}}, apoi {{a}}, iar `nume` și `varsta` țin ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"{{n}}\"\nvarsta = \"{{a}}\"\n___\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "values": [
+        {
+          "n": "Cortez",
+          "a": 60
+        },
+        {
+          "n": "Sonny",
+          "a": 11
+        },
+        {
+          "n": "Elena",
+          "a": 25
+        },
+        {
+          "n": "Rex",
+          "a": 40
+        }
+      ],
+      "answer": "varsta = int(varsta)",
+      "wrong": ["int(varsta)", "varsta = float(varsta)", "varsta = int(nume)"]
+    },
+    {
+      "id": "in-bad-store",
+      "kind": "wrong-line",
+      "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = \"{{x}}\"\n{{v}} = int({{v}})\n{{w}} = {{v}} + {{d}}\nprint({{w}})",
+      "values": [
+        {
+          "v": "varsta",
+          "w": "anul_urmator",
+          "x": 14,
+          "d": 1
+        },
+        {
+          "v": "varsta",
+          "w": "anul_urmator",
+          "x": 70,
+          "d": 1
+        },
+        {
+          "v": "scor",
+          "w": "total",
+          "x": 6,
+          "d": 4
+        },
+        {
+          "v": "combustibil",
+          "w": "total",
+          "x": 150,
+          "d": 50
+        },
+        {
+          "v": "nivel",
+          "w": "nivel_urmator",
+          "x": 4,
+          "d": 1
+        }
+      ],
+      "bug": ["{{v}} = int({{v}})", "int({{v}})"]
+    },
+    {
+      "id": "in-bad-float",
+      "kind": "wrong-line",
+      "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = \"{{x}}\"\n{{v}} = float({{v}})\nprint({{v}})\nprint({{v}} + {{d}})",
+      "values": [
+        {
+          "v": "inaltime",
+          "x": 1.5,
+          "d": 0.25
+        },
+        {
+          "v": "pret",
+          "x": 9.5,
+          "d": 0.5
+        },
+        {
+          "v": "viteza",
+          "x": 7.5,
+          "d": 1
+        },
+        {
+          "v": "greutate",
+          "x": 72.5,
+          "d": 2
+        }
+      ],
+      "bug": ["float(", "int("]
+    },
+    {
+      "id": "in-bad-crew",
+      "kind": "wrong-line",
+      "text": "Utilizatorul a tastat {{n}}, apoi {{a}}, iar `nume` și `varsta` țin ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"{{n}}\"\nvarsta = \"{{a}}\"\nvarsta = int(varsta)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "values": [
+        {
+          "n": "Cortez",
+          "a": 60
+        },
+        {
+          "n": "Nova",
+          "a": 20
+        },
+        {
+          "n": "Kenji",
+          "a": 18
+        },
+        {
+          "n": "Mary Jane",
+          "a": 19
+        }
+      ],
+      "bug": ["varsta = int(varsta)", "varsta = int(nume)"]
+    },
+    {
+      "id": "in-which-int",
+      "kind": "which-program",
+      "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Care program afișează asta?",
+      "code": "{{v}} = \"{{x}}\"\nprint(int({{v}}) + {{d}})",
+      "values": [
+        {
+          "v": "varsta",
+          "x": 14,
+          "d": 1
+        },
+        {
+          "v": "scor",
+          "x": 9,
+          "d": 1
+        },
+        {
+          "v": "bilete",
+          "x": 5,
+          "d": 2
+        },
+        {
+          "v": "combustibil",
+          "x": 80,
+          "d": 20
+        }
+      ],
+      "mistakes": [
+        ["int({{v}}) + {{d}}", "{{v}} + {{d}}"],
+        ["int({{v}}) + {{d}}", "int({{v}} + {{d}})"],
+        ["int({{v}}) + {{d}}", "{{v}} + \"{{d}}\""]
+      ]
+    },
+    {
+      "id": "in-which-two",
+      "kind": "which-program",
+      "text": "Utilizatorul a tastat {{a}}, apoi {{b}}, iar `a` și `b` țin ce a returnat input(). Care program afișează asta?",
+      "code": "a = \"{{a}}\"\nb = \"{{b}}\"\nprint(int(a) + int(b))",
+      "values": [
+        {
+          "a": 4,
+          "b": 4
+        },
+        {
+          "a": 10,
+          "b": 25
+        },
+        {
+          "a": 6,
+          "b": 1
+        },
+        {
+          "a": 50,
+          "b": 50
+        }
+      ],
+      "mistakes": [
+        ["print(int(a) + int(b))", "print(a + b)"],
+        ["int(a) + int(b)", "int(a + b)"],
+        ["int(a) + int(b)", "int(a) + b"]
+      ]
+    }
+  ]
+}

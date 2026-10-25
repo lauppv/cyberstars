@@ -1,0 +1,681 @@
+{
+  "note": "Made by npm run make:quiz from the templates in input-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "in-plus-113c24",
+      "text": "Utilizatorul a tastat 14, deci `varsta` ține ce a returnat input(). Ce afișează?",
+      "code": "varsta = \"14\"\nanul_urmator = int(varsta) + 1\nprint(anul_urmator)",
+      "options": ["15", "141", "14", "anul_urmator"],
+      "answer": 0
+    },
+    {
+      "id": "in-plus-b42f3d",
+      "text": "Utilizatorul a tastat 60, deci `varsta` ține ce a returnat input(). Ce afișează?",
+      "code": "varsta = \"60\"\nanul_urmator = int(varsta) + 1\nprint(anul_urmator)",
+      "options": ["61", "601", "60", "anul_urmator"],
+      "answer": 0
+    },
+    {
+      "id": "in-plus-cd101b",
+      "text": "Utilizatorul a tastat 7, deci `scor` ține ce a returnat input(). Ce afișează?",
+      "code": "scor = \"7\"\ntotal = int(scor) + 3\nprint(total)",
+      "options": ["10", "73", "7", "total"],
+      "answer": 0
+    },
+    {
+      "id": "in-plus-a1838b",
+      "text": "Utilizatorul a tastat 9, deci `nivel` ține ce a returnat input(). Ce afișează?",
+      "code": "nivel = \"9\"\nnivel_urmator = int(nivel) + 1\nprint(nivel_urmator)",
+      "options": ["10", "91", "9", "nivel_urmator"],
+      "answer": 0
+    },
+    {
+      "id": "in-plus-529343",
+      "text": "Utilizatorul a tastat 40, deci `combustibil` ține ce a returnat input(). Ce afișează?",
+      "code": "combustibil = \"40\"\ntotal = int(combustibil) + 10\nprint(total)",
+      "options": ["50", "4010", "40", "total"],
+      "answer": 0
+    },
+    {
+      "id": "in-two-0b8700",
+      "text": "Utilizatorul a tastat 6, apoi 4, iar `a` și `b` țin ce a returnat input(). Ce afișează?",
+      "code": "a = \"6\"\nb = \"4\"\nprint(int(a) + int(b))",
+      "options": ["10", "64", "a + b", "6 + 4"],
+      "answer": 0
+    },
+    {
+      "id": "in-two-a1debc",
+      "text": "Utilizatorul a tastat 12, apoi 30, iar `a` și `b` țin ce a returnat input(). Ce afișează?",
+      "code": "a = \"12\"\nb = \"30\"\nprint(int(a) + int(b))",
+      "options": ["42", "1230", "a + b", "12 + 30"],
+      "answer": 0
+    },
+    {
+      "id": "in-two-4afef0",
+      "text": "Utilizatorul a tastat 7, apoi 7, iar `a` și `b` țin ce a returnat input(). Ce afișează?",
+      "code": "a = \"7\"\nb = \"7\"\nprint(int(a) + int(b))",
+      "options": ["14", "77", "a + b", "7 + 7"],
+      "answer": 0
+    },
+    {
+      "id": "in-two-d3f1ed",
+      "text": "Utilizatorul a tastat 100, apoi 1, iar `a` și `b` țin ce a returnat input(). Ce afișează?",
+      "code": "a = \"100\"\nb = \"1\"\nprint(int(a) + int(b))",
+      "options": ["101", "1001", "a + b", "100 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "in-sum-7be478",
+      "text": "Utilizatorul a tastat 3, deci `n` ține ce a returnat input(). Ce afișează?",
+      "code": "n = \"3\"\ntotal = 0\nfor i in range(1, int(n) + 1):\n    total = total + i\nprint(total)",
+      "options": ["6", "3", "1\n3\n6", "7"],
+      "answer": 0
+    },
+    {
+      "id": "in-sum-ceeaaf",
+      "text": "Utilizatorul a tastat 4, deci `n` ține ce a returnat input(). Ce afișează?",
+      "code": "n = \"4\"\ntotal = 0\nfor i in range(1, int(n) + 1):\n    total = total + i\nprint(total)",
+      "options": ["10", "6", "1\n3\n6\n10", "4"],
+      "answer": 0
+    },
+    {
+      "id": "in-sum-cb9462",
+      "text": "Utilizatorul a tastat 5, deci `zile` ține ce a returnat input(). Ce afișează?",
+      "code": "zile = \"5\"\ntotal = 0\nfor i in range(1, int(zile) + 1):\n    total = total + i\nprint(total)",
+      "options": ["15", "10", "1\n3\n6\n10\n15", "5"],
+      "answer": 0
+    },
+    {
+      "id": "in-sum-549a10",
+      "text": "Utilizatorul a tastat 10, deci `ture` ține ce a returnat input(). Ce afișează?",
+      "code": "ture = \"10\"\ntotal = 0\nfor i in range(1, int(ture) + 1):\n    total = total + i\nprint(total)",
+      "options": ["55", "45", "1\n3\n6\n10\n15\n21\n28\n36\n45\n55", "10"],
+      "answer": 0
+    },
+    {
+      "id": "in-crew-1f8630",
+      "text": "Utilizatorul a tastat Cortez, apoi 60, iar `nume` și `varsta` țin ce a returnat input(). Ce afișează?",
+      "code": "nume = \"Cortez\"\nvarsta = \"60\"\nvarsta = int(varsta)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "options": [
+        "Bun venit la bord, Cortez! Ai 60. Anul viitor vei avea 61.",
+        "Bun venit la bord, Cortez! Ai 60. Anul viitor vei avea 60.",
+        "Bun venit la bord, Cortez! Ai 60. Anul viitor vei avea 60 + 1.",
+        "Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-crew-08abee",
+      "text": "Utilizatorul a tastat Zoe, apoi 12, iar `nume` și `varsta` țin ce a returnat input(). Ce afișează?",
+      "code": "nume = \"Zoe\"\nvarsta = \"12\"\nvarsta = int(varsta)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "options": [
+        "Bun venit la bord, Zoe! Ai 12. Anul viitor vei avea 13.",
+        "Bun venit la bord, Zoe! Ai 12. Anul viitor vei avea 12.",
+        "Bun venit la bord, Zoe! Ai 12. Anul viitor vei avea 12 + 1.",
+        "Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-crew-73b75e",
+      "text": "Utilizatorul a tastat Lance, apoi 35, iar `nume` și `varsta` țin ce a returnat input(). Ce afișează?",
+      "code": "nume = \"Lance\"\nvarsta = \"35\"\nvarsta = int(varsta)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "options": [
+        "Bun venit la bord, Lance! Ai 35. Anul viitor vei avea 36.",
+        "Bun venit la bord, Lance! Ai 35. Anul viitor vei avea 35.",
+        "Bun venit la bord, Lance! Ai 35. Anul viitor vei avea 35 + 1.",
+        "Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-crew-ac9daa",
+      "text": "Utilizatorul a tastat Ada, apoi 17, iar `nume` și `varsta` țin ce a returnat input(). Ce afișează?",
+      "code": "nume = \"Ada\"\nvarsta = \"17\"\nvarsta = int(varsta)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "options": [
+        "Bun venit la bord, Ada! Ai 17. Anul viitor vei avea 18.",
+        "Bun venit la bord, Ada! Ai 17. Anul viitor vei avea 17.",
+        "Bun venit la bord, Ada! Ai 17. Anul viitor vei avea 17 + 1.",
+        "Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-crew-99e209",
+      "text": "Utilizatorul a tastat Kai, apoi 99, iar `nume` și `varsta` țin ce a returnat input(). Ce afișează?",
+      "code": "nume = \"Kai\"\nvarsta = \"99\"\nvarsta = int(varsta)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "options": [
+        "Bun venit la bord, Kai! Ai 99. Anul viitor vei avea 100.",
+        "Bun venit la bord, Kai! Ai 99. Anul viitor vei avea 99.",
+        "Bun venit la bord, Kai! Ai 99. Anul viitor vei avea 99 + 1.",
+        "Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-if-fba150",
+      "text": "Utilizatorul a tastat 18, deci `varsta` ține ce a returnat input(). Ce afișează?",
+      "code": "varsta = \"18\"\nvarsta = int(varsta)\nif varsta >= 18:\n    print(\"Poti vota\")\nelse:\n    print(\"Inca nu\")",
+      "options": ["Poti vota", "Inca nu", "True", "18"],
+      "answer": 0
+    },
+    {
+      "id": "in-if-44530c",
+      "text": "Utilizatorul a tastat 12, deci `varsta` ține ce a returnat input(). Ce afișează?",
+      "code": "varsta = \"12\"\nvarsta = int(varsta)\nif varsta >= 18:\n    print(\"Poti vota\")\nelse:\n    print(\"Inca nu\")",
+      "options": ["Inca nu", "Poti vota", "False", "12"],
+      "answer": 0
+    },
+    {
+      "id": "in-if-39220c",
+      "text": "Utilizatorul a tastat 50, deci `scor` ține ce a returnat input(). Ce afișează?",
+      "code": "scor = \"50\"\nscor = int(scor)\nif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "options": ["Trecut", "Picat", "True", "50"],
+      "answer": 0
+    },
+    {
+      "id": "in-if-8b3f5b",
+      "text": "Utilizatorul a tastat 49, deci `scor` ține ce a returnat input(). Ce afișează?",
+      "code": "scor = \"49\"\nscor = int(scor)\nif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "options": ["Picat", "Trecut", "False", "49"],
+      "answer": 0
+    },
+    {
+      "id": "in-if-9927e0",
+      "text": "Utilizatorul a tastat 300, deci `combustibil` ține ce a returnat input(). Ce afișează?",
+      "code": "combustibil = \"300\"\ncombustibil = int(combustibil)\nif combustibil >= 200:\n    print(\"Gata de lansare\")\nelse:\n    print(\"Alimenteaza intai\")",
+      "options": ["Gata de lansare", "Alimenteaza intai", "True", "300"],
+      "answer": 0
+    },
+    {
+      "id": "in-count-dc07d8",
+      "text": "Utilizatorul a tastat 3, deci `ture` ține ce a returnat input(). Ce afișează?",
+      "code": "ture = \"3\"\nfor i in range(1, int(ture) + 1):\n    print(i)",
+      "options": ["1\n2\n3", "1\n2", "0\n1\n2\n3", "3\n3\n3"],
+      "answer": 0
+    },
+    {
+      "id": "in-count-36452b",
+      "text": "Utilizatorul a tastat 4, deci `stele` ține ce a returnat input(). Ce afișează?",
+      "code": "stele = \"4\"\nfor i in range(1, int(stele) + 1):\n    print(i)",
+      "options": ["1\n2\n3\n4", "1\n2\n3", "0\n1\n2\n3\n4", "4\n4\n4\n4"],
+      "answer": 0
+    },
+    {
+      "id": "in-count-0c37b5",
+      "text": "Utilizatorul a tastat 5, deci `n` ține ce a returnat input(). Ce afișează?",
+      "code": "n = \"5\"\nfor i in range(1, int(n) + 1):\n    print(i)",
+      "options": ["1\n2\n3\n4\n5", "1\n2\n3\n4", "0\n1\n2\n3\n4\n5", "5\n5\n5\n5\n5"],
+      "answer": 0
+    },
+    {
+      "id": "in-count-4e0edc",
+      "text": "Utilizatorul a tastat 2, deci `n` ține ce a returnat input(). Ce afișează?",
+      "code": "n = \"2\"\nfor i in range(1, int(n) + 1):\n    print(i)",
+      "options": ["1\n2", "1", "0\n1\n2", "2\n2"],
+      "answer": 0
+    },
+    {
+      "id": "in-ticket-95ca97",
+      "text": "Utilizatorul a tastat 4, deci `varsta` ține ce a returnat input(). Ce afișează?",
+      "code": "varsta = \"4\"\nvarsta = int(varsta)\nif varsta < 6:\n    print(\"Gratuit\")\nelif varsta < 18:\n    print(\"Bilet de copil\")\nelse:\n    print(\"Pret intreg\")",
+      "options": ["Gratuit", "Bilet de copil", "Gratuit\nBilet de copil\nPret intreg", "4"],
+      "answer": 0
+    },
+    {
+      "id": "in-ticket-d42e50",
+      "text": "Utilizatorul a tastat 12, deci `varsta` ține ce a returnat input(). Ce afișează?",
+      "code": "varsta = \"12\"\nvarsta = int(varsta)\nif varsta < 6:\n    print(\"Gratuit\")\nelif varsta < 18:\n    print(\"Bilet de copil\")\nelse:\n    print(\"Pret intreg\")",
+      "options": ["Bilet de copil", "Gratuit", "Gratuit\nBilet de copil\nPret intreg", "12"],
+      "answer": 0
+    },
+    {
+      "id": "in-ticket-b936ba",
+      "text": "Utilizatorul a tastat 17, deci `varsta` ține ce a returnat input(). Ce afișează?",
+      "code": "varsta = \"17\"\nvarsta = int(varsta)\nif varsta < 6:\n    print(\"Gratuit\")\nelif varsta < 18:\n    print(\"Bilet de copil\")\nelse:\n    print(\"Pret intreg\")",
+      "options": ["Bilet de copil", "Gratuit", "Gratuit\nBilet de copil\nPret intreg", "17"],
+      "answer": 0
+    },
+    {
+      "id": "in-ticket-b904b9",
+      "text": "Utilizatorul a tastat 30, deci `varsta` ține ce a returnat input(). Ce afișează?",
+      "code": "varsta = \"30\"\nvarsta = int(varsta)\nif varsta < 6:\n    print(\"Gratuit\")\nelif varsta < 18:\n    print(\"Bilet de copil\")\nelse:\n    print(\"Pret intreg\")",
+      "options": ["Pret intreg", "Gratuit", "Gratuit\nBilet de copil\nPret intreg", "30"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-int-91265d",
+      "text": "Utilizatorul a tastat 14, deci `varsta` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = \"14\"\nanul_urmator = ___(varsta) + 1\nprint(anul_urmator)",
+      "output": "15",
+      "options": ["int", "float", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-int-2ff2e3",
+      "text": "Utilizatorul a tastat 33, deci `varsta` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = \"33\"\nanul_urmator = ___(varsta) + 1\nprint(anul_urmator)",
+      "output": "34",
+      "options": ["int", "float", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-int-9a9325",
+      "text": "Utilizatorul a tastat 8, deci `scor` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = \"8\"\ntotal = ___(scor) + 2\nprint(total)",
+      "output": "10",
+      "options": ["int", "float", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-int-dca080",
+      "text": "Utilizatorul a tastat 3, deci `bilete` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "bilete = \"3\"\ntotal = ___(bilete) + 4\nprint(total)",
+      "output": "7",
+      "options": ["int", "float", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-int-60fd4f",
+      "text": "Utilizatorul a tastat 41, deci `nivel` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nivel = \"41\"\nnivel_urmator = ___(nivel) + 1\nprint(nivel_urmator)",
+      "output": "42",
+      "options": ["int", "float", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-float-db39d1",
+      "text": "Utilizatorul a tastat 1.5, deci `inaltime` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "inaltime = \"1.5\"\nprint(___(inaltime) + 0.25)",
+      "output": "1.75",
+      "options": ["float", "int", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-float-42059c",
+      "text": "Utilizatorul a tastat 2.5, deci `pret` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pret = \"2.5\"\nprint(___(pret) + 1)",
+      "output": "3.5",
+      "options": ["float", "int", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-float-8ab2e3",
+      "text": "Utilizatorul a tastat 60.5, deci `greutate` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "greutate = \"60.5\"\nprint(___(greutate) + 2)",
+      "output": "62.5",
+      "options": ["float", "int", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-float-f91253",
+      "text": "Utilizatorul a tastat 7.5, deci `viteza` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "viteza = \"7.5\"\nprint(___(viteza) + 0.5)",
+      "output": "8.0",
+      "options": ["float", "int", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-store-f98947",
+      "text": "Utilizatorul a tastat 14, deci `varsta` ține ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = \"14\"\n___\nprint(varsta + 1)",
+      "output": "15",
+      "options": [
+        "varsta = int(varsta)",
+        "int(varsta)",
+        "varsta = float(varsta)",
+        "varsta = input(varsta)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-store-2402a1",
+      "text": "Utilizatorul a tastat 59, deci `varsta` ține ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = \"59\"\n___\nprint(varsta + 1)",
+      "output": "60",
+      "options": [
+        "varsta = int(varsta)",
+        "int(varsta)",
+        "varsta = float(varsta)",
+        "varsta = input(varsta)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-store-653997",
+      "text": "Utilizatorul a tastat 20, deci `scor` ține ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = \"20\"\n___\nprint(scor + 5)",
+      "output": "25",
+      "options": ["scor = int(scor)", "int(scor)", "scor = float(scor)", "scor = input(scor)"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-store-4c4553",
+      "text": "Utilizatorul a tastat 90, deci `combustibil` ține ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = \"90\"\n___\nprint(combustibil + 10)",
+      "output": "100",
+      "options": [
+        "combustibil = int(combustibil)",
+        "int(combustibil)",
+        "combustibil = float(combustibil)",
+        "combustibil = input(combustibil)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-store-f97c4a",
+      "text": "Utilizatorul a tastat 2, deci `vieti` ține ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "vieti = \"2\"\n___\nprint(vieti + 1)",
+      "output": "3",
+      "options": [
+        "vieti = int(vieti)",
+        "int(vieti)",
+        "vieti = float(vieti)",
+        "vieti = input(vieti)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-crew-443df3",
+      "text": "Utilizatorul a tastat Cortez, apoi 60, iar `nume` și `varsta` țin ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Cortez\"\nvarsta = \"60\"\n___\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "output": "Bun venit la bord, Cortez! Ai 60. Anul viitor vei avea 61.",
+      "options": [
+        "varsta = int(varsta)",
+        "int(varsta)",
+        "varsta = float(varsta)",
+        "varsta = int(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-crew-05ba63",
+      "text": "Utilizatorul a tastat Sonny, apoi 11, iar `nume` și `varsta` țin ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Sonny\"\nvarsta = \"11\"\n___\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "output": "Bun venit la bord, Sonny! Ai 11. Anul viitor vei avea 12.",
+      "options": [
+        "varsta = int(varsta)",
+        "int(varsta)",
+        "varsta = float(varsta)",
+        "varsta = int(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-crew-21a802",
+      "text": "Utilizatorul a tastat Elena, apoi 25, iar `nume` și `varsta` țin ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Elena\"\nvarsta = \"25\"\n___\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "output": "Bun venit la bord, Elena! Ai 25. Anul viitor vei avea 26.",
+      "options": [
+        "varsta = int(varsta)",
+        "int(varsta)",
+        "varsta = float(varsta)",
+        "varsta = int(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-crew-788d0b",
+      "text": "Utilizatorul a tastat Rex, apoi 40, iar `nume` și `varsta` țin ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Rex\"\nvarsta = \"40\"\n___\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "output": "Bun venit la bord, Rex! Ai 40. Anul viitor vei avea 41.",
+      "options": [
+        "varsta = int(varsta)",
+        "int(varsta)",
+        "varsta = float(varsta)",
+        "varsta = int(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-store-250f8b",
+      "text": "Utilizatorul a tastat 14, deci `varsta` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = \"14\"\nint(varsta)\nanul_urmator = varsta + 1\nprint(anul_urmator)",
+      "output": "15",
+      "options": [
+        "int(varsta)",
+        "varsta = \"14\"",
+        "anul_urmator = varsta + 1",
+        "print(anul_urmator)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-store-8ac15a",
+      "text": "Utilizatorul a tastat 70, deci `varsta` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = \"70\"\nint(varsta)\nanul_urmator = varsta + 1\nprint(anul_urmator)",
+      "output": "71",
+      "options": [
+        "int(varsta)",
+        "varsta = \"70\"",
+        "anul_urmator = varsta + 1",
+        "print(anul_urmator)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-store-c72c4e",
+      "text": "Utilizatorul a tastat 6, deci `scor` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "scor = \"6\"\nint(scor)\ntotal = scor + 4\nprint(total)",
+      "output": "10",
+      "options": ["int(scor)", "scor = \"6\"", "total = scor + 4", "print(total)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-store-f2abe1",
+      "text": "Utilizatorul a tastat 150, deci `combustibil` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "combustibil = \"150\"\nint(combustibil)\ntotal = combustibil + 50\nprint(total)",
+      "output": "200",
+      "options": [
+        "int(combustibil)",
+        "combustibil = \"150\"",
+        "total = combustibil + 50",
+        "print(total)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-store-2c77fc",
+      "text": "Utilizatorul a tastat 4, deci `nivel` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "nivel = \"4\"\nint(nivel)\nnivel_urmator = nivel + 1\nprint(nivel_urmator)",
+      "output": "5",
+      "options": [
+        "int(nivel)",
+        "nivel = \"4\"",
+        "nivel_urmator = nivel + 1",
+        "print(nivel_urmator)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-float-0c0e5e",
+      "text": "Utilizatorul a tastat 1.5, deci `inaltime` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "inaltime = \"1.5\"\ninaltime = int(inaltime)\nprint(inaltime)\nprint(inaltime + 0.25)",
+      "output": "1.5\n1.75",
+      "options": [
+        "inaltime = int(inaltime)",
+        "inaltime = \"1.5\"",
+        "print(inaltime)",
+        "print(inaltime + 0.25)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-float-638f53",
+      "text": "Utilizatorul a tastat 9.5, deci `pret` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "pret = \"9.5\"\npret = int(pret)\nprint(pret)\nprint(pret + 0.5)",
+      "output": "9.5\n10.0",
+      "options": ["pret = int(pret)", "pret = \"9.5\"", "print(pret)", "print(pret + 0.5)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-float-cf1198",
+      "text": "Utilizatorul a tastat 7.5, deci `viteza` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "viteza = \"7.5\"\nviteza = int(viteza)\nprint(viteza)\nprint(viteza + 1)",
+      "output": "7.5\n8.5",
+      "options": ["viteza = int(viteza)", "viteza = \"7.5\"", "print(viteza)", "print(viteza + 1)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-float-83980d",
+      "text": "Utilizatorul a tastat 72.5, deci `greutate` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "greutate = \"72.5\"\ngreutate = int(greutate)\nprint(greutate)\nprint(greutate + 2)",
+      "output": "72.5\n74.5",
+      "options": [
+        "greutate = int(greutate)",
+        "greutate = \"72.5\"",
+        "print(greutate)",
+        "print(greutate + 2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-crew-961949",
+      "text": "Utilizatorul a tastat Cortez, apoi 60, iar `nume` și `varsta` țin ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Cortez\"\nvarsta = \"60\"\nvarsta = int(nume)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "output": "Bun venit la bord, Cortez! Ai 60. Anul viitor vei avea 61.",
+      "options": [
+        "varsta = int(nume)",
+        "nume = \"Cortez\"",
+        "varsta = \"60\"",
+        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-crew-1dd175",
+      "text": "Utilizatorul a tastat Nova, apoi 20, iar `nume` și `varsta` țin ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Nova\"\nvarsta = \"20\"\nvarsta = int(nume)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "output": "Bun venit la bord, Nova! Ai 20. Anul viitor vei avea 21.",
+      "options": [
+        "varsta = int(nume)",
+        "nume = \"Nova\"",
+        "varsta = \"20\"",
+        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-crew-5b47bf",
+      "text": "Utilizatorul a tastat Kenji, apoi 18, iar `nume` și `varsta` țin ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Kenji\"\nvarsta = \"18\"\nvarsta = int(nume)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "output": "Bun venit la bord, Kenji! Ai 18. Anul viitor vei avea 19.",
+      "options": [
+        "varsta = int(nume)",
+        "nume = \"Kenji\"",
+        "varsta = \"18\"",
+        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-crew-d652d1",
+      "text": "Utilizatorul a tastat Mary Jane, apoi 19, iar `nume` și `varsta` țin ce a returnat input(). Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Mary Jane\"\nvarsta = \"19\"\nvarsta = int(nume)\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "output": "Bun venit la bord, Mary Jane! Ai 19. Anul viitor vei avea 20.",
+      "options": [
+        "varsta = int(nume)",
+        "nume = \"Mary Jane\"",
+        "varsta = \"19\"",
+        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-int-44a791",
+      "text": "Utilizatorul a tastat 14, deci `varsta` ține ce a returnat input(). Care program afișează asta?",
+      "output": "15",
+      "options": [
+        "varsta = \"14\"\nprint(int(varsta) + 1)",
+        "varsta = \"14\"\nprint(varsta + 1)",
+        "varsta = \"14\"\nprint(int(varsta + 1))",
+        "varsta = \"14\"\nprint(varsta + \"1\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-int-da2b21",
+      "text": "Utilizatorul a tastat 9, deci `scor` ține ce a returnat input(). Care program afișează asta?",
+      "output": "10",
+      "options": [
+        "scor = \"9\"\nprint(int(scor) + 1)",
+        "scor = \"9\"\nprint(scor + 1)",
+        "scor = \"9\"\nprint(int(scor + 1))",
+        "scor = \"9\"\nprint(scor + \"1\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-int-fb7fc9",
+      "text": "Utilizatorul a tastat 5, deci `bilete` ține ce a returnat input(). Care program afișează asta?",
+      "output": "7",
+      "options": [
+        "bilete = \"5\"\nprint(int(bilete) + 2)",
+        "bilete = \"5\"\nprint(bilete + 2)",
+        "bilete = \"5\"\nprint(int(bilete + 2))",
+        "bilete = \"5\"\nprint(bilete + \"2\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-int-2ee0fb",
+      "text": "Utilizatorul a tastat 80, deci `combustibil` ține ce a returnat input(). Care program afișează asta?",
+      "output": "100",
+      "options": [
+        "combustibil = \"80\"\nprint(int(combustibil) + 20)",
+        "combustibil = \"80\"\nprint(combustibil + 20)",
+        "combustibil = \"80\"\nprint(int(combustibil + 20))",
+        "combustibil = \"80\"\nprint(combustibil + \"20\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-two-4b7344",
+      "text": "Utilizatorul a tastat 4, apoi 4, iar `a` și `b` țin ce a returnat input(). Care program afișează asta?",
+      "output": "8",
+      "options": [
+        "a = \"4\"\nb = \"4\"\nprint(int(a) + int(b))",
+        "a = \"4\"\nb = \"4\"\nprint(a + b)",
+        "a = \"4\"\nb = \"4\"\nprint(int(a + b))",
+        "a = \"4\"\nb = \"4\"\nprint(int(a) + b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-two-cac8a3",
+      "text": "Utilizatorul a tastat 10, apoi 25, iar `a` și `b` țin ce a returnat input(). Care program afișează asta?",
+      "output": "35",
+      "options": [
+        "a = \"10\"\nb = \"25\"\nprint(int(a) + int(b))",
+        "a = \"10\"\nb = \"25\"\nprint(a + b)",
+        "a = \"10\"\nb = \"25\"\nprint(int(a + b))",
+        "a = \"10\"\nb = \"25\"\nprint(int(a) + b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-two-82d9dd",
+      "text": "Utilizatorul a tastat 6, apoi 1, iar `a` și `b` țin ce a returnat input(). Care program afișează asta?",
+      "output": "7",
+      "options": [
+        "a = \"6\"\nb = \"1\"\nprint(int(a) + int(b))",
+        "a = \"6\"\nb = \"1\"\nprint(a + b)",
+        "a = \"6\"\nb = \"1\"\nprint(int(a + b))",
+        "a = \"6\"\nb = \"1\"\nprint(int(a) + b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-two-897626",
+      "text": "Utilizatorul a tastat 50, apoi 50, iar `a` și `b` țin ce a returnat input(). Care program afișează asta?",
+      "output": "100",
+      "options": [
+        "a = \"50\"\nb = \"50\"\nprint(int(a) + int(b))",
+        "a = \"50\"\nb = \"50\"\nprint(a + b)",
+        "a = \"50\"\nb = \"50\"\nprint(int(a + b))",
+        "a = \"50\"\nb = \"50\"\nprint(int(a) + b)"
+      ],
+      "answer": 0
+    }
+  ]
+}

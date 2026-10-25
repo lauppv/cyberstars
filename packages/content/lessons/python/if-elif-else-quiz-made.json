@@ -1,0 +1,682 @@
+{
+  "note": "Made by npm run make:quiz from the templates in if-elif-else-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "iee-chain-446b8b",
+      "text": "What does this print?",
+      "code": "oxygen = 85\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen >= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+      "options": [
+        "Oxygen nominal",
+        "Oxygen low",
+        "Oxygen nominal\nOxygen low",
+        "Oxygen nominal\nOxygen critical"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-c15f1f",
+      "text": "What does this print?",
+      "code": "oxygen = 50\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen >= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+      "options": ["Oxygen low", "Oxygen nominal", "Oxygen low\nOxygen critical", "Oxygen critical"],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-7a3db4",
+      "text": "What does this print?",
+      "code": "oxygen = 30\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen >= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+      "options": [
+        "Oxygen critical",
+        "Oxygen nominal",
+        "Oxygen low",
+        "Oxygen nominal\nOxygen low\nOxygen critical"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-650216",
+      "text": "What does this print?",
+      "code": "score = 90\nif score >= 90:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Excellent", "Pass", "Excellent\nPass", "Excellent\nFail"],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-0a81e1",
+      "text": "What does this print?",
+      "code": "score = 75\nif score >= 90:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Pass", "Excellent", "Pass\nFail", "Fail"],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-8cfe34",
+      "text": "What does this print?",
+      "code": "score = 20\nif score >= 90:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Fail", "Excellent", "Pass", "Excellent\nPass\nFail"],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-5bc5b4",
+      "text": "What does this print?",
+      "code": "battery = 100\nif battery >= 60:\n    print(\"Battery good\")\nelif battery >= 20:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
+      "options": [
+        "Battery good",
+        "Battery low",
+        "Battery good\nBattery low",
+        "Battery good\nCharge now"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-00a578",
+      "text": "What does this print?",
+      "code": "battery = 20\nif battery >= 60:\n    print(\"Battery good\")\nelif battery >= 20:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
+      "options": ["Battery low", "Battery good", "Battery low\nCharge now", "Charge now"],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-e42546",
+      "text": "What does this print?",
+      "code": "fuel = 10\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel >= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
+      "options": ["Refuel now", "Full tank", "Half tank", "Full tank\nHalf tank\nRefuel now"],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-b6a32c",
+      "text": "What does this print?",
+      "code": "fuel = 69\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel >= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
+      "options": ["Half tank", "Full tank", "Half tank\nRefuel now", "Refuel now"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-d35991",
+      "text": "What does this print?",
+      "code": "speed = 120\nif speed > 50:\n    print(\"Fast\")\nelif speed > 100:\n    print(\"Too fast\")\nelse:\n    print(\"Slow\")",
+      "options": ["Fast", "Too fast", "Fast\nToo fast", "Fast\nToo fast\nSlow"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-a2d1d1",
+      "text": "What does this print?",
+      "code": "speed = 70\nif speed > 50:\n    print(\"Fast\")\nelif speed > 100:\n    print(\"Too fast\")\nelse:\n    print(\"Slow\")",
+      "options": ["Fast", "Too fast", "Fast\nSlow", "Fast\nToo fast\nSlow"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-ac5d97",
+      "text": "What does this print?",
+      "code": "temperature = 35\nif temperature > 10:\n    print(\"Warm\")\nelif temperature > 30:\n    print(\"Hot\")\nelse:\n    print(\"Cold\")",
+      "options": ["Warm", "Hot", "Warm\nHot", "Warm\nHot\nCold"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-4b6feb",
+      "text": "What does this print?",
+      "code": "temperature = 20\nif temperature > 10:\n    print(\"Warm\")\nelif temperature > 30:\n    print(\"Hot\")\nelse:\n    print(\"Cold\")",
+      "options": ["Warm", "Hot", "Warm\nCold", "Warm\nHot\nCold"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-34f410",
+      "text": "What does this print?",
+      "code": "points = 800\nif points > 100:\n    print(\"Good\")\nelif points > 500:\n    print(\"New record\")\nelse:\n    print(\"Try again\")",
+      "options": ["Good", "New record", "Good\nNew record", "Good\nNew record\nTry again"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-1d2490",
+      "text": "What does this print?",
+      "code": "points = 300\nif points > 100:\n    print(\"Good\")\nelif points > 500:\n    print(\"New record\")\nelse:\n    print(\"Try again\")",
+      "options": ["Good", "New record", "Good\nTry again", "Good\nNew record\nTry again"],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-a558e1",
+      "text": "What does this print?",
+      "code": "seconds = 100\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")",
+      "options": [
+        "Starting the computers",
+        "Starting the computers\nNothing to do yet",
+        "Checking the tower",
+        "Starting the engines"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-21bfe2",
+      "text": "What does this print?",
+      "code": "seconds = 60\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")",
+      "options": [
+        "Checking the tower",
+        "Checking the tower\nNothing to do yet",
+        "Starting the engines",
+        "Starting the computers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-5803c3",
+      "text": "What does this print?",
+      "code": "seconds = 20\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")",
+      "options": [
+        "Starting the engines",
+        "Starting the engines\nNothing to do yet",
+        "Starting the computers",
+        "Checking the tower"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-7a7110",
+      "text": "What does this print?",
+      "code": "seconds = 45\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")",
+      "options": [
+        "Nothing to do yet",
+        "Checking the tower",
+        "Starting the computers",
+        "Starting the computers\nChecking the tower\nStarting the engines\nNothing to do yet"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-ad7d15",
+      "text": "What does this print?",
+      "code": "seconds = 10\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")",
+      "options": [
+        "Nothing to do yet",
+        "Starting the engines",
+        "Checking the tower",
+        "Starting the computers\nChecking the tower\nStarting the engines\nNothing to do yet"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-892f38",
+      "text": "What does this print?",
+      "code": "day = 7\nif day == 1:\n    print(\"The week starts\")\nelif day == 6:\n    print(\"Saturday\")\nelif day == 7:\n    print(\"Sunday\")\nelse:\n    print(\"A work day\")",
+      "options": ["Sunday", "Sunday\nA work day", "The week starts", "Saturday"],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-59f88e",
+      "text": "What does this print?",
+      "code": "day = 3\nif day == 1:\n    print(\"The week starts\")\nelif day == 6:\n    print(\"Saturday\")\nelif day == 7:\n    print(\"Sunday\")\nelse:\n    print(\"A work day\")",
+      "options": [
+        "A work day",
+        "Saturday",
+        "Sunday",
+        "The week starts\nSaturday\nSunday\nA work day"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-7e48fd",
+      "text": "What does this print?",
+      "code": "level = 5\nif level == 1:\n    print(\"Tutorial\")\nelif level == 5:\n    print(\"Mini boss\")\nelif level == 10:\n    print(\"Final boss\")\nelse:\n    print(\"Normal level\")",
+      "options": ["Mini boss", "Mini boss\nNormal level", "Final boss", "Tutorial"],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-7d0e37",
+      "text": "What does this print?",
+      "code": "oxygen = 12\ncrew_aboard = True\nif oxygen >= 50:\n    print(\"Oxygen nominal\")\nelif oxygen >= 20:\n    print(\"Oxygen critical\")\nelse:\n    if crew_aboard == True:\n        print(\"Evacuate now\")\n    else:\n        print(\"Vent the bay\")",
+      "options": ["Evacuate now", "Oxygen nominal", "Oxygen critical", "Vent the bay"],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-1f5162",
+      "text": "What does this print?",
+      "code": "oxygen = 12\ncrew_aboard = False\nif oxygen >= 50:\n    print(\"Oxygen nominal\")\nelif oxygen >= 20:\n    print(\"Oxygen critical\")\nelse:\n    if crew_aboard == True:\n        print(\"Evacuate now\")\n    else:\n        print(\"Vent the bay\")",
+      "options": ["Vent the bay", "Oxygen nominal", "Oxygen critical", "Evacuate now"],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-3a41a7",
+      "text": "What does this print?",
+      "code": "oxygen = 65\ncrew_aboard = True\nif oxygen >= 50:\n    print(\"Oxygen nominal\")\nelif oxygen >= 20:\n    print(\"Oxygen critical\")\nelse:\n    if crew_aboard == True:\n        print(\"Evacuate now\")\n    else:\n        print(\"Vent the bay\")",
+      "options": [
+        "Oxygen nominal",
+        "Oxygen critical",
+        "Evacuate now",
+        "Oxygen nominal\nOxygen critical\nEvacuate now\nVent the bay"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-9edef3",
+      "text": "What does this print?",
+      "code": "battery = 10\ncharger = True\nif battery >= 50:\n    print(\"Ready to fly\")\nelif battery >= 20:\n    print(\"Short flights only\")\nelse:\n    if charger == True:\n        print(\"Charging\")\n    else:\n        print(\"Find a charger\")",
+      "options": ["Charging", "Ready to fly", "Short flights only", "Find a charger"],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-09319c",
+      "text": "What does this print?",
+      "code": "battery = 10\ncharger = False\nif battery >= 50:\n    print(\"Ready to fly\")\nelif battery >= 20:\n    print(\"Short flights only\")\nelse:\n    if charger == True:\n        print(\"Charging\")\n    else:\n        print(\"Find a charger\")",
+      "options": ["Find a charger", "Ready to fly", "Short flights only", "Charging"],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-05dec8",
+      "text": "What does this print?",
+      "code": "battery = 35\ncharger = False\nif battery >= 50:\n    print(\"Ready to fly\")\nelif battery >= 20:\n    print(\"Short flights only\")\nelse:\n    if charger == True:\n        print(\"Charging\")\n    else:\n        print(\"Find a charger\")",
+      "options": [
+        "Short flights only",
+        "Ready to fly",
+        "Find a charger",
+        "Ready to fly\nShort flights only\nCharging\nFind a charger"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-two-ifs-2ceeba",
+      "text": "What does this print?",
+      "code": "seconds = 100\nif seconds == 100:\n    print(\"Starting the computers\")\nif seconds == 60:\n    print(\"Checking the tower\")\nelse:\n    print(\"No effect\")",
+      "options": [
+        "Starting the computers\nNo effect",
+        "Starting the computers",
+        "Checking the tower",
+        "No effect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-two-ifs-849c23",
+      "text": "What does this print?",
+      "code": "seconds = 60\nif seconds == 100:\n    print(\"Starting the computers\")\nif seconds == 60:\n    print(\"Checking the tower\")\nelse:\n    print(\"No effect\")",
+      "options": [
+        "Checking the tower",
+        "Starting the computers\nNo effect",
+        "No effect",
+        "Starting the computers\nChecking the tower\nNo effect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-two-ifs-01d128",
+      "text": "What does this print?",
+      "code": "seconds = 30\nif seconds == 100:\n    print(\"Starting the computers\")\nif seconds == 60:\n    print(\"Checking the tower\")\nelse:\n    print(\"No effect\")",
+      "options": [
+        "No effect",
+        "Starting the computers\nNo effect",
+        "Checking the tower",
+        "Starting the computers\nChecking the tower\nNo effect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-two-ifs-94fbeb",
+      "text": "What does this print?",
+      "code": "lives = 3\nif lives == 3:\n    print(\"Full health\")\nif lives == 0:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
+      "options": ["Full health\nKeep playing", "Full health", "Game over", "Keep playing"],
+      "answer": 0
+    },
+    {
+      "id": "iee-two-ifs-a636ca",
+      "text": "What does this print?",
+      "code": "lives = 0\nif lives == 3:\n    print(\"Full health\")\nif lives == 0:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
+      "options": [
+        "Game over",
+        "Full health\nKeep playing",
+        "Keep playing",
+        "Full health\nGame over\nKeep playing"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-chain-9142d2",
+      "text": "Which program shows this?",
+      "output": "Oxygen low",
+      "options": [
+        "oxygen = 65\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen >= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+        "oxygen = 65\nif oxygen < 80:\n    print(\"Oxygen nominal\")\nelif oxygen >= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+        "oxygen = 65\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen < 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+        "oxygen = 65\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen >= 50:\n    print(\"Oxygen low\")\nprint(\"Oxygen critical\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-chain-87f164",
+      "text": "Which program shows this?",
+      "output": "Excellent",
+      "options": [
+        "score = 95\nif score >= 90:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 95\nif score < 90:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 95\nif score >= 90:\n    print(\"Excellent\")\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 95\nif score >= 90:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Pass\")\nprint(\"Fail\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-chain-467579",
+      "text": "Which program shows this?",
+      "output": "Battery low",
+      "options": [
+        "battery = 40\nif battery >= 60:\n    print(\"Battery good\")\nelif battery >= 20:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
+        "battery = 40\nif battery < 60:\n    print(\"Battery good\")\nelif battery >= 20:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
+        "battery = 40\nif battery >= 60:\n    print(\"Battery good\")\nelif battery < 20:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
+        "battery = 40\nif battery >= 60:\n    print(\"Battery good\")\nelif battery >= 20:\n    print(\"Battery low\")\nprint(\"Charge now\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-chain-48c5d4",
+      "text": "Which program shows this?",
+      "output": "Full tank",
+      "options": [
+        "fuel = 75\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel >= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
+        "fuel = 75\nif fuel < 70:\n    print(\"Full tank\")\nelif fuel >= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
+        "fuel = 75\nif fuel >= 70:\n    print(\"Full tank\")\nif fuel >= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
+        "fuel = 75\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel >= 30:\n    print(\"Half tank\")\nprint(\"Refuel now\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-chain-36ccda",
+      "text": "Which program shows this?",
+      "output": "Pass",
+      "options": [
+        "score = 50\nif score >= 90:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 50\nif score < 90:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 50\nif score >= 90:\n    print(\"Excellent\")\nelif score < 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 50\nif score >= 90:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Pass\")\nprint(\"Fail\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-countdown-55481f",
+      "text": "Which program shows this?",
+      "output": "Starting the computers",
+      "options": [
+        "seconds = 100\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")",
+        "seconds = 100\nif seconds == 100:\n    print(\"Starting the computers\")\nif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")",
+        "seconds = 100\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nprint(\"Nothing to do yet\")",
+        "seconds = 100\nif seconds == 100:\n    print(\"Checking the tower\")\nelif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-countdown-653244",
+      "text": "Which program shows this?",
+      "output": "Checking the tower",
+      "options": [
+        "seconds = 60\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")",
+        "seconds = 60\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 60:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nprint(\"Nothing to do yet\")",
+        "seconds = 60\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 100:\n    print(\"Checking the tower\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")",
+        "seconds = 60\nif seconds == 100:\n    print(\"Starting the computers\")\nelif seconds == 60:\n    print(\"Starting the engines\")\nelif seconds == 20:\n    print(\"Starting the engines\")\nelse:\n    print(\"Nothing to do yet\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-countdown-bf9387",
+      "text": "Which program shows this?",
+      "output": "Saturday",
+      "options": [
+        "day = 6\nif day == 1:\n    print(\"The week starts\")\nelif day == 6:\n    print(\"Saturday\")\nelif day == 7:\n    print(\"Sunday\")\nelse:\n    print(\"A work day\")",
+        "day = 6\nif day == 1:\n    print(\"The week starts\")\nelif day == 6:\n    print(\"Saturday\")\nelif day == 7:\n    print(\"Sunday\")\nprint(\"A work day\")",
+        "day = 6\nif day == 1:\n    print(\"The week starts\")\nelif day == 1:\n    print(\"Saturday\")\nelif day == 7:\n    print(\"Sunday\")\nelse:\n    print(\"A work day\")",
+        "day = 6\nif day == 1:\n    print(\"The week starts\")\nelif day == 6:\n    print(\"Sunday\")\nelif day == 7:\n    print(\"Sunday\")\nelse:\n    print(\"A work day\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-elif-0c23f6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "oxygen = 90\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\n___ oxygen >= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+      "output": "Oxygen nominal",
+      "options": ["elif", "if", "else", "else if"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-elif-426890",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "score = 92\nif score >= 90:\n    print(\"Excellent\")\n___ score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "output": "Excellent",
+      "options": ["elif", "if", "else", "else if"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-elif-2d0956",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "battery = 61\nif battery >= 60:\n    print(\"Battery good\")\n___ battery >= 20:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
+      "output": "Battery good",
+      "options": ["elif", "if", "else", "else if"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-elif-e0f397",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "fuel = 50\nif fuel >= 70:\n    print(\"Full tank\")\n___ fuel >= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
+      "output": "Half tank",
+      "options": ["elif", "else", "else if", "elseif"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-elif-c46319",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "oxygen = 55\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\n___ oxygen >= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+      "output": "Oxygen low",
+      "options": ["elif", "else", "else if", "elseif"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-limit-b69c80",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "oxygen = 65\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen >= ___:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+      "output": "Oxygen low",
+      "options": ["50", "70", "80", "66"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-limit-eb0faf",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "score = 75\nif score >= 90:\n    print(\"Excellent\")\nelif score >= ___:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "output": "Pass",
+      "options": ["50", "80", "90", "76"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-limit-6b2f79",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "battery = 30\nif battery >= 60:\n    print(\"Battery good\")\nelif battery >= ___:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
+      "output": "Battery low",
+      "options": ["20", "40", "31", "60"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-limit-c7cd52",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "fuel = 45\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel >= ___:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
+      "output": "Half tank",
+      "options": ["30", "50", "46", "70"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-line-c0771a",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "oxygen = 65\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\n___\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+      "output": "Oxygen low",
+      "options": ["elif oxygen >= 50:", "elif oxygen < 50:", "else:", "elif oxygen >= 50"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-line-f66b21",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "score = 95\nif score >= 90:\n    print(\"Excellent\")\n___\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "output": "Excellent",
+      "options": ["elif score >= 50:", "if score >= 50:", "else:", "elif score >= 50"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-line-bc5a49",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "battery = 10\nif battery >= 60:\n    print(\"Battery good\")\n___\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
+      "output": "Charge now",
+      "options": ["elif battery >= 20:", "elif battery < 20:", "else:", "elif battery >= 20"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-line-a81070",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fuel = 40\nif fuel >= 70:\n    print(\"Full tank\")\n___\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
+      "output": "Half tank",
+      "options": ["elif fuel >= 30:", "elif fuel < 30:", "else:", "elif fuel >= 30"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-line-8de602",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "score = 30\nif score >= 90:\n    print(\"Excellent\")\n___\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "output": "Fail",
+      "options": ["elif score >= 50:", "elif score < 50:", "else:", "elif score >= 50"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-nested-69c69c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "oxygen = 12\ncrew_aboard = True\nif oxygen >= 20:\n    print(\"Oxygen critical\")\nelse:\n    ___\n        print(\"Evacuate now\")\n    else:\n        print(\"Vent the bay\")",
+      "output": "Evacuate now",
+      "options": [
+        "if crew_aboard == True:",
+        "elif crew_aboard == True:",
+        "if crew_aboard = True:",
+        "if crew_aboard == False:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-nested-b09ace",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "oxygen = 12\ncrew_aboard = False\nif oxygen >= 20:\n    print(\"Oxygen critical\")\nelse:\n    ___\n        print(\"Evacuate now\")\n    else:\n        print(\"Vent the bay\")",
+      "output": "Vent the bay",
+      "options": [
+        "if crew_aboard == True:",
+        "elif crew_aboard == True:",
+        "if crew_aboard = True:",
+        "if crew_aboard == False:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-nested-f12256",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "battery = 5\ncharger = True\nif battery >= 20:\n    print(\"Short flights only\")\nelse:\n    ___\n        print(\"Charging\")\n    else:\n        print(\"Find a charger\")",
+      "output": "Charging",
+      "options": [
+        "if charger == True:",
+        "elif charger == True:",
+        "if charger = True:",
+        "if charger == False:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-nested-64e472",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "battery = 15\ncharger = False\nif battery >= 20:\n    print(\"Short flights only\")\nelse:\n    ___\n        print(\"Charging\")\n    else:\n        print(\"Find a charger\")",
+      "output": "Find a charger",
+      "options": [
+        "if charger == True:",
+        "elif charger == True:",
+        "if charger = True:",
+        "if charger == False:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-colon-941a86",
+      "text": "Which line stops this program from printing this?",
+      "code": "oxygen = 60\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen >= 50\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+      "output": "Oxygen low",
+      "options": [
+        "elif oxygen >= 50",
+        "oxygen = 60",
+        "if oxygen >= 80:",
+        "print(\"Oxygen nominal\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-colon-372ecb",
+      "text": "Which line stops this program from printing this?",
+      "code": "fuel = 40\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel >= 30\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
+      "output": "Half tank",
+      "options": ["elif fuel >= 30", "fuel = 40", "if fuel >= 70:", "print(\"Full tank\")"],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-elif-if-72174a",
+      "text": "Which line stops this program from printing this?",
+      "code": "oxygen = 95\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nif oxygen >= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+      "output": "Oxygen nominal",
+      "options": [
+        "if oxygen >= 50:",
+        "oxygen = 95",
+        "if oxygen >= 80:",
+        "print(\"Oxygen nominal\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-elif-if-23bbff",
+      "text": "Which line stops this program from printing this?",
+      "code": "score = 100\nif score >= 90:\n    print(\"Excellent\")\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "output": "Excellent",
+      "options": ["if score >= 50:", "score = 100", "if score >= 90:", "print(\"Excellent\")"],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-elif-if-517032",
+      "text": "Which line stops this program from printing this?",
+      "code": "battery = 80\nif battery >= 60:\n    print(\"Battery good\")\nif battery >= 20:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
+      "output": "Battery good",
+      "options": [
+        "if battery >= 20:",
+        "battery = 80",
+        "if battery >= 60:",
+        "print(\"Battery good\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-else-b8da50",
+      "text": "Which line stops this program from printing this?",
+      "code": "score = 35\nif score >= 90:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Pass\")\nelse score < 50:\n    print(\"Fail\")",
+      "output": "Fail",
+      "options": ["else score < 50:", "score = 35", "if score >= 90:", "print(\"Excellent\")"],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-else-d281f4",
+      "text": "Which line stops this program from printing this?",
+      "code": "battery = 5\nif battery >= 60:\n    print(\"Battery good\")\nelif battery >= 20:\n    print(\"Battery low\")\nelse battery < 20:\n    print(\"Charge now\")",
+      "output": "Charge now",
+      "options": [
+        "else battery < 20:",
+        "battery = 5",
+        "if battery >= 60:",
+        "print(\"Battery good\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-flip-329aa4",
+      "text": "Which line stops this program from printing this?",
+      "code": "oxygen = 70\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen <= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
+      "output": "Oxygen low",
+      "options": [
+        "elif oxygen <= 50:",
+        "oxygen = 70",
+        "if oxygen >= 80:",
+        "print(\"Oxygen nominal\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-flip-1a1ac5",
+      "text": "Which line stops this program from printing this?",
+      "code": "fuel = 55\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel <= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
+      "output": "Half tank",
+      "options": ["elif fuel <= 30:", "fuel = 55", "if fuel >= 70:", "print(\"Full tank\")"],
+      "answer": 0
+    }
+  ]
+}
