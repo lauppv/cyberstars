@@ -567,24 +567,24 @@
     {
       "id": "col-bad-break-b4fbdd",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "elemente = [\"lapte\", \"paine\", \"unt\", \"gem\"]\ncurate = []\nfor element in elemente:\n    curate.append(element)\n    if element == \"unt\":\n        continue\nprint(len(curate))",
-      "output": "3",
-      "options": ["continue", "curate.append(element)", "curate = []", "print(len(curate))"],
+      "code": "elemente = [\"lapte\", \"paine\", \"unt\", \"gem\"]\ncurate = []\nfor element in elemente:\n    curate.append(element)\n    if element == \"unt\":\n        continue\nprint(curate)",
+      "output": "['lapte', 'paine', 'unt']",
+      "options": ["continue", "curate.append(element)", "curate = []", "print(curate)"],
       "answer": 0
     },
     {
       "id": "col-bad-break-e0632c",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\", \"Saturn\", \"Pluto\"]\nvazute = []\nfor p in planete:\n    vazute.append(p)\n    if p == \"Pamant\":\n        continue\nprint(len(vazute))",
-      "output": "3",
-      "options": ["continue", "vazute.append(p)", "vazute = []", "print(len(vazute))"],
+      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\", \"Saturn\", \"Pluto\"]\nvazute = []\nfor p in planete:\n    vazute.append(p)\n    if p == \"Pamant\":\n        continue\nprint(vazute)",
+      "output": "['Marte', 'Venus', 'Pamant']",
+      "options": ["continue", "vazute.append(p)", "vazute = []", "print(vazute)"],
       "answer": 0
     },
     {
       "id": "col-bad-break-6259d1",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "melodii = [\"Intro\", \"Val\", \"Ploaie\"]\ncantate = []\nfor m in melodii:\n    cantate.append(m)\n    if m == \"Intro\":\n        continue\nprint(len(cantate))",
-      "output": "1",
+      "code": "melodii = [\"Intro\", \"Val\", \"Ploaie\"]\ncantate = []\nfor m in melodii:\n    cantate.append(m)\n    if m == \"Intro\":\n        continue\nprint(cantate)",
+      "output": "['Intro']",
       "options": [
         "continue",
         "cantate.append(m)",

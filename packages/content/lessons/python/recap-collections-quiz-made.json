@@ -557,24 +557,24 @@
     {
       "id": "col-bad-break-b4fbdd",
       "text": "Which line stops this program from printing this?",
-      "code": "items = [\"milk\", \"bread\", \"butter\", \"jam\"]\nclean = []\nfor item in items:\n    clean.append(item)\n    if item == \"butter\":\n        continue\nprint(len(clean))",
-      "output": "3",
-      "options": ["continue", "clean.append(item)", "clean = []", "print(len(clean))"],
+      "code": "items = [\"milk\", \"bread\", \"butter\", \"jam\"]\nclean = []\nfor item in items:\n    clean.append(item)\n    if item == \"butter\":\n        continue\nprint(clean)",
+      "output": "['milk', 'bread', 'butter']",
+      "options": ["continue", "clean.append(item)", "clean = []", "print(clean)"],
       "answer": 0
     },
     {
       "id": "col-bad-break-e0632c",
       "text": "Which line stops this program from printing this?",
-      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Saturn\", \"Pluto\"]\nseen = []\nfor p in planets:\n    seen.append(p)\n    if p == \"Earth\":\n        continue\nprint(len(seen))",
-      "output": "3",
-      "options": ["continue", "seen.append(p)", "seen = []", "print(len(seen))"],
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Saturn\", \"Pluto\"]\nseen = []\nfor p in planets:\n    seen.append(p)\n    if p == \"Earth\":\n        continue\nprint(seen)",
+      "output": "['Mars', 'Venus', 'Earth']",
+      "options": ["continue", "seen.append(p)", "seen = []", "print(seen)"],
       "answer": 0
     },
     {
       "id": "col-bad-break-6259d1",
       "text": "Which line stops this program from printing this?",
-      "code": "songs = [\"Intro\", \"Wave\", \"Rain\"]\nplayed = []\nfor s in songs:\n    played.append(s)\n    if s == \"Intro\":\n        continue\nprint(len(played))",
-      "output": "1",
+      "code": "songs = [\"Intro\", \"Wave\", \"Rain\"]\nplayed = []\nfor s in songs:\n    played.append(s)\n    if s == \"Intro\":\n        continue\nprint(played)",
+      "output": "['Intro']",
       "options": [
         "continue",
         "played.append(s)",

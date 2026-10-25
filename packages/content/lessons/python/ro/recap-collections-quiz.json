@@ -900,7 +900,7 @@
       "id": "col-bad-break",
       "kind": "wrong-line",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break\nprint(len({{w}}))",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break\nprint({{w}})",
       "values": [
         {
           "v": "elemente",
