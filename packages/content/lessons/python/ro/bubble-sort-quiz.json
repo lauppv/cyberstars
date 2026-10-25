@@ -347,6 +347,41 @@
       ]
     },
     {
+      "id": "bs-full",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        },
+        {
+          "list": "42, 17, 88, 9, 23"
+        },
+        {
+          "list": "5, 4, 3, 2, 1"
+        },
+        {
+          "list": "10, 30, 20"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] > numere[j + 1]", "numere[j] < numere[j + 1]"],
+        ["for i in range(len(numere)):", "for i in range(1):"],
+        ["print(numere)", "print(numere[0])"],
+        ["numere[j], numere[j + 1] = numere[j + 1], numere[j]", "numere[j] = numere[j + 1]"]
+      ]
+    },
+    {
       "id": "bs-gap-swap",
       "kind": "missing-line",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
@@ -371,6 +406,106 @@
         "numere[j + 1] = numere[j]",
         "numere[j], numere[j + 1] = numere[j], numere[j + 1]",
         "numere[j] == numere[j + 1]"
+      ]
+    },
+    {
+      "id": "bs-bad-range",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        }
+      ],
+      "bug": ["for j in range(len(numere) - 1):", "for j in range(len(numere)):"]
+    },
+    {
+      "id": "bs-passes",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{list}}]\nfor i in range({{k}}):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2",
+          "k": 1,
+          "k2": 2
+        },
+        {
+          "list": "5, 3, 8, 1, 2",
+          "k": 2,
+          "k2": 1
+        },
+        {
+          "list": "4, 3, 2, 1",
+          "k": 1,
+          "k2": 2
+        },
+        {
+          "list": "4, 3, 2, 1",
+          "k": 2,
+          "k2": 1
+        },
+        {
+          "list": "6, 1, 5, 2, 4",
+          "k": 1,
+          "k2": 2
+        },
+        {
+          "list": "6, 5, 4, 1, 2, 3",
+          "k": 2,
+          "k2": 1
+        },
+        {
+          "list": "9, 8, 7, 6, 5",
+          "k": 3,
+          "k2": 2
+        },
+        {
+          "list": "7, 3, 9, 1",
+          "k": 2,
+          "k2": 1
+        }
+      ],
+      "mistakes": [
+        ["numere[j] > numere[j + 1]", "numere[j] < numere[j + 1]"],
+        ["range({{k}})", "range(len(numere))"],
+        ["range({{k}})", "range({{k2}})"],
+        ["print(numere)", "print(sorted(numere, reverse=True))"]
+      ]
+    },
+    {
+      "id": "bs-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 8, 7"
+        },
+        {
+          "list": "6, 4, 2"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] > numere[j + 1]", "numere[j] < numere[j + 1]"],
+        ["for i in range(len(numere)):", "for i in range(1):"],
+        ["numere[j], numere[j + 1] = numere[j + 1], numere[j]", "numere[j] = numere[j + 1]"]
       ]
     },
     {

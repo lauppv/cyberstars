@@ -342,6 +342,41 @@
       ]
     },
     {
+      "id": "bs-full",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{list}}]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        },
+        {
+          "list": "42, 17, 88, 9, 23"
+        },
+        {
+          "list": "5, 4, 3, 2, 1"
+        },
+        {
+          "list": "10, 30, 20"
+        }
+      ],
+      "mistakes": [
+        ["numbers[j] > numbers[j + 1]", "numbers[j] < numbers[j + 1]"],
+        ["for i in range(len(numbers)):", "for i in range(1):"],
+        ["print(numbers)", "print(numbers[0])"],
+        ["numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]", "numbers[j] = numbers[j + 1]"]
+      ]
+    },
+    {
       "id": "bs-gap-swap",
       "kind": "missing-line",
       "text": "Which line goes in the gap so the program prints this?",
@@ -366,6 +401,106 @@
         "numbers[j + 1] = numbers[j]",
         "numbers[j], numbers[j + 1] = numbers[j], numbers[j + 1]",
         "numbers[j] == numbers[j + 1]"
+      ]
+    },
+    {
+      "id": "bs-bad-range",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [{{list}}]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        }
+      ],
+      "bug": ["for j in range(len(numbers) - 1):", "for j in range(len(numbers)):"]
+    },
+    {
+      "id": "bs-passes",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{list}}]\nfor i in range({{k}}):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2",
+          "k": 1,
+          "k2": 2
+        },
+        {
+          "list": "5, 3, 8, 1, 2",
+          "k": 2,
+          "k2": 1
+        },
+        {
+          "list": "4, 3, 2, 1",
+          "k": 1,
+          "k2": 2
+        },
+        {
+          "list": "4, 3, 2, 1",
+          "k": 2,
+          "k2": 1
+        },
+        {
+          "list": "6, 1, 5, 2, 4",
+          "k": 1,
+          "k2": 2
+        },
+        {
+          "list": "6, 5, 4, 1, 2, 3",
+          "k": 2,
+          "k2": 1
+        },
+        {
+          "list": "9, 8, 7, 6, 5",
+          "k": 3,
+          "k2": 2
+        },
+        {
+          "list": "7, 3, 9, 1",
+          "k": 2,
+          "k2": 1
+        }
+      ],
+      "mistakes": [
+        ["numbers[j] > numbers[j + 1]", "numbers[j] < numbers[j + 1]"],
+        ["range({{k}})", "range(len(numbers))"],
+        ["range({{k}})", "range({{k2}})"],
+        ["print(numbers)", "print(sorted(numbers, reverse=True))"]
+      ]
+    },
+    {
+      "id": "bs-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "numbers = [{{list}}]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 8, 7"
+        },
+        {
+          "list": "6, 4, 2"
+        }
+      ],
+      "mistakes": [
+        ["numbers[j] > numbers[j + 1]", "numbers[j] < numbers[j + 1]"],
+        ["for i in range(len(numbers)):", "for i in range(1):"],
+        ["numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]", "numbers[j] = numbers[j + 1]"]
       ]
     },
     {
