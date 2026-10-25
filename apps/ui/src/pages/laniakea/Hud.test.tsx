@@ -34,6 +34,7 @@ describe('ShipBoard', () => {
     const props = {
       planets,
       titles: TITLES,
+      covers: new Map<string, string>(),
       now: NOW,
       target: null as string | null,
       onTarget: vi.fn(),
@@ -96,6 +97,11 @@ describe('ShipBoard', () => {
     expect(props.onClose).toHaveBeenCalled();
   });
 
+  it('says which lessons a planet covers beside its name', () => {
+    board({ covers: new Map([['print', 'Lessons 1–6']]) });
+    expect(rows()).toContain('Print · Lessons 1–6Next recap in 1h 0m');
+  });
+
   it('says how to fill an empty board', () => {
     board({ planets: [testPlanet({ lessonDone: false })] });
     expect(screen.getByText(/Finish a Python lesson/)).toBeInTheDocument();
@@ -107,7 +113,7 @@ describe('AimCard', () => {
     ['print', testPlanet()],
     ['lists', testPlanet({ slug: 'lists', lessonDone: false })],
   ]);
-  const card = (aim: Aim | null, isTouch = false) => {
+  const card = (aim: Aim | null, isTouch = false, covers = new Map<string, string>()) => {
     const feed = createFeed<Aim | null>(aim);
     const onLand = vi.fn();
     render(
@@ -115,6 +121,7 @@ describe('AimCard', () => {
         aim={feed}
         planets={planets}
         titles={TITLES}
+        covers={covers}
         now={NOW}
         isTouch={isTouch}
         onLand={onLand}
@@ -129,6 +136,7 @@ describe('AimCard', () => {
         aim={createFeed<Aim | null>(null)}
         planets={planets}
         titles={TITLES}
+        covers={new Map()}
         now={NOW}
         isTouch={false}
         onLand={vi.fn()}
@@ -144,6 +152,15 @@ describe('AimCard', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Land' }));
     expect(onLand).toHaveBeenCalledWith('print');
     expect(screen.getByText('E to land')).toBeInTheDocument();
+  });
+
+  it('says which lessons the planet ahead covers', () => {
+    card(
+      { slug: 'print', distance: 300, inReach: true },
+      false,
+      new Map([['print', 'Lessons 1–6']]),
+    );
+    expect(screen.getByText('Lessons 1–6')).toBeInTheDocument();
   });
 
   it('leaves the key out on a touch screen', () => {

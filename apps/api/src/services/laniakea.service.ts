@@ -3,12 +3,12 @@ import {
   DAY_MS,
   FOREVER_LEVEL,
   LANIAKEA_COURSE,
-  LANIAKEA_UNLOCK_LESSONS,
   QUIZ_IDLE_MS,
   QUIZ_LENGTH,
   QUIZ_OUT,
   QUIZ_RETRY_MS,
   nextRecapAt,
+  planetLessons,
   type LaniakeaPlanet,
   type LaniakeaState,
   type QuizAnswer,
@@ -23,12 +23,16 @@ import type { PlanetRow, StoredQuiz } from '../repositories/laniakea.repository.
 import { config } from '../config/index.js';
 import { loadQuiz, quizSlugs, type QuizSpec } from './laniakea-quiz.js';
 
-// The game's lessons, in their order: one planet each.
-const PLANET_SLUGS = lessons
-  .filter((l) => l.courseKey === LANIAKEA_COURSE)
-  .sort((a, b) => a.sortOrder - b.sortOrder)
-  .map((l) => l.slug);
-const PLANETS = new Set(PLANET_SLUGS);
+// The game's planets in their lessons' order, each with the lessons it covers:
+// First steps, whose lessons open the game, then one for each lesson.
+const PLANET_LIST = planetLessons(
+  lessons
+    .filter((l) => l.courseKey === LANIAKEA_COURSE)
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map((l) => l.slug),
+);
+const PLANETS = new Map(PLANET_LIST.map((p) => [p.slug, p.lessons]));
+const FIRST_STEPS = PLANET_LIST[0].lessons;
 
 // A shorter day lets a recap be tried out on dev without waiting for it; prod
 // always counts real days.
@@ -152,8 +156,13 @@ async function completedLessons(userId: number): Promise<Set<string>> {
   return new Set(rows.filter((r) => r.completed).map((r) => r.lessonSlug));
 }
 
+// The planet's lessons are all completed, so it can be conquered.
+function lessonsDone(slug: string, done: Set<string>): boolean {
+  return PLANETS.get(slug)!.every((lesson) => done.has(lesson));
+}
+
 function unlocked(done: Set<string>): boolean {
-  return [...done].filter((slug) => PLANETS.has(slug)).length >= LANIAKEA_UNLOCK_LESSONS;
+  return FIRST_STEPS.every((lesson) => done.has(lesson));
 }
 
 export async function getState(userId: number, now = new Date()): Promise<LaniakeaState> {
@@ -167,11 +176,12 @@ export async function getState(userId: number, now = new Date()): Promise<Laniak
   return {
     courseKey: LANIAKEA_COURSE,
     unlocked: unlocked(done),
-    lessonsDone: PLANET_SLUGS.filter((slug) => done.has(slug)).length,
-    unlockAt: LANIAKEA_UNLOCK_LESSONS,
+    lessonsDone: FIRST_STEPS.filter((lesson) => done.has(lesson)).length,
+    unlockAt: FIRST_STEPS.length,
+    nextLesson: FIRST_STEPS.find((lesson) => !done.has(lesson)) ?? null,
     serverNow: now.toISOString(),
-    planets: PLANET_SLUGS.map((slug) =>
-      planetView(slug, bySlug.get(slug), done.has(slug), quizzes.has(slug), now, day),
+    planets: PLANET_LIST.map(({ slug }) =>
+      planetView(slug, bySlug.get(slug), lessonsDone(slug, done), quizzes.has(slug), now, day),
     ),
   };
 }
@@ -186,7 +196,7 @@ function questionsFor(slug: string): QuizSpec {
 
 // Opens a test on a planet, or the one already going on there, which picks up
 // where it was. The planet must be the student's to reach: the game unlocked and
-// the lesson completed.
+// its lessons completed.
 export async function startQuiz(
   userId: number,
   slug: string,
@@ -196,7 +206,7 @@ export async function startQuiz(
   if (!PLANETS.has(slug)) throw new AppError(404, 'Planet not found');
   const done = await completedLessons(userId);
   if (!unlocked(done)) throw new AppError(403, 'Laniakea is still locked');
-  if (!done.has(slug)) throw new AppError(403, 'Finish this lesson to reach its planet');
+  if (!lessonsDone(slug, done)) throw new AppError(403, 'Finish this lesson to reach its planet');
   const spec = questionsFor(slug);
   const shown = loadQuiz(slug, lang) ?? spec;
   const day = dayMs();

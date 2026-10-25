@@ -35,6 +35,11 @@ vi.mock('../../context/CurriculumContext', () => ({
         title: 'Python',
         lessons: [
           { slug: 'print', title: 'Print' },
+          { slug: 'variables-str', title: 'Variables (Strings)' },
+          { slug: 'variables-int', title: 'Variables (Integers)' },
+          { slug: 'print-f', title: 'Print F-strings' },
+          { slug: 'recap-variables', title: 'Recap: Player Card' },
+          { slug: 'comment', title: 'Comments' },
           { slug: 'lists', title: 'Lists' },
           { slug: 'for', title: 'For Loops' },
         ],
@@ -51,8 +56,9 @@ function state(over: Partial<LaniakeaState> = {}): LaniakeaState {
   return {
     courseKey: 'python',
     unlocked: true,
-    lessonsDone: 3,
-    unlockAt: 3,
+    lessonsDone: 6,
+    unlockAt: 6,
+    nextLesson: null,
     serverNow: NOW,
     planets: [
       testPlanet({ slug: 'print' }),
@@ -96,19 +102,27 @@ beforeEach(() => {
 });
 
 describe('LaniakeaPage', () => {
-  it('says what opens the game before the first lessons, and leads to the next one', async () => {
+  it('says what opens the game before First steps, and leads to the lesson left', async () => {
     h.getLaniakea.mockResolvedValue(
       state({
         unlocked: false,
-        lessonsDone: 1,
-        planets: [testPlanet(), testPlanet({ slug: 'lists', lessonDone: false })],
+        lessonsDone: 5,
+        nextLesson: 'variables-int',
+        planets: [testPlanet({ lessonDone: false }), testPlanet({ slug: 'lists' })],
       }),
     );
     renderPage();
-    expect(await screen.findByText('Laniakea opens after 3 Python lessons')).toBeInTheDocument();
-    expect(screen.getByText('1 of 3 done')).toBeInTheDocument();
+    expect(
+      await screen.findByText('Laniakea opens after the first 6 Python lessons'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/^The first 6 lessons make one planet, First steps/),
+    ).toBeInTheDocument();
+    expect(screen.getByText('5 of 6 done')).toBeInTheDocument();
     expect(screen.getByText('Beta')).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('link', { name: 'Continue with Python' }));
+    const next = screen.getByRole('link', { name: 'Continue with Python' });
+    expect(next).toHaveAttribute('href', '/lesson/python/variables-int');
+    fireEvent.click(next);
     expect(screen.getByText('A lesson')).toBeInTheDocument();
     expect(h.loadThree).not.toHaveBeenCalled();
   });
@@ -158,7 +172,7 @@ describe('LaniakeaPage', () => {
     key('KeyB');
     expect(screen.queryByRole('region', { name: 'Board' })).toBeNull();
     key('KeyB');
-    fireEvent.click(screen.getByRole('button', { name: /^Print/ }));
+    fireEvent.click(screen.getByRole('button', { name: /^First steps · Lessons 1–6/ }));
     expect(h.engine.setTarget).toHaveBeenLastCalledWith('print');
     act(() => h.events!.onPose({ position: [0, 0, 0], quaternion: [0, 0, 0, 1] }, 0));
     expect(screen.getByText('Target')).toBeInTheDocument();
@@ -172,7 +186,7 @@ describe('LaniakeaPage', () => {
     expect(h.startQuiz).not.toHaveBeenCalled();
     act(() => h.events!.onAim({ slug: 'print', distance: 300, inReach: true }));
     key('KeyE');
-    expect(await screen.findByRole('dialog', { name: 'Print' })).toBeInTheDocument();
+    expect(await screen.findByRole('dialog', { name: 'First steps' })).toBeInTheDocument();
     expect(h.startQuiz).toHaveBeenCalledWith('print', 'en');
     expect(h.engine.setActive).toHaveBeenLastCalledWith(false);
   });
@@ -279,7 +293,7 @@ describe('LaniakeaPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /^Board/ }));
     const innerWidth = window.innerWidth;
     window.innerWidth = 400;
-    fireEvent.click(screen.getByRole('button', { name: /^Print/ }));
+    fireEvent.click(screen.getByRole('button', { name: /^First steps/ }));
     window.innerWidth = innerWidth;
     expect(screen.queryByRole('region', { name: 'Board' })).toBeNull();
     expect(h.engine.setTarget).toHaveBeenLastCalledWith('print');

@@ -34,6 +34,7 @@ function Steps({ level }: { level: number }) {
 export function ShipBoard({
   planets,
   titles,
+  covers,
   now,
   target,
   onTarget,
@@ -41,6 +42,7 @@ export function ShipBoard({
 }: {
   planets: LaniakeaPlanet[];
   titles: Map<string, string>;
+  covers: Map<string, string>;
   now: number;
   target: string | null;
   onTarget: (slug: string | null) => void;
@@ -112,6 +114,12 @@ export function ShipBoard({
                   <span className="flex-1 min-w-0">
                     <span className="block text-[13px] font-semibold truncate">
                       {titles.get(p.slug) ?? p.slug}
+                      {covers.has(p.slug) && (
+                        <>
+                          {' '}
+                          <span className="font-normal lnk-dim">· {covers.get(p.slug)}</span>
+                        </>
+                      )}
                     </span>
                     <span className="block text-[11px] lnk-dim truncate">
                       {statusText(t, p, status, now)}

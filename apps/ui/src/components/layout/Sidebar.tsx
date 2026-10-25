@@ -33,7 +33,8 @@ import { useMessages } from '../../context/MessagesContext';
 import { useTutor } from '../../context/TutorContext';
 import { useGamification } from '../../hooks/useGamification';
 import { useAllProgress } from '../../context/ProgressContext';
-import { LANIAKEA_COURSE, LANIAKEA_UNLOCK_LESSONS } from '@cyberstars/shared/laniakea';
+import { FIRST_STEPS_LESSONS, LANIAKEA_COURSE } from '@cyberstars/shared/laniakea';
+import { firstSteps } from '../laniakea/firstSteps';
 import { isAdmin } from '@cyberstars/shared/auth';
 import { canAccessFeature } from '@cyberstars/shared/features';
 
@@ -153,13 +154,13 @@ function TutorItem({ onNavigate }: { onNavigate: () => void }) {
   );
 }
 
-// Laniakea opens after the first Python lessons; until then its row says how
-// many are left, and the page itself says what the game is.
+// Laniakea opens after the first Python lessons, First steps; until then its row
+// says how many are left, and the page itself says what the game is.
 function LaniakeaItem({ onNavigate }: { onNavigate: () => void }) {
   const { t } = useTranslation();
   const { progressMap, isLoading } = useAllProgress();
-  const done = progressMap[LANIAKEA_COURSE]?.lessons.filter((l) => l.completed).length ?? 0;
-  const left = Math.max(0, LANIAKEA_UNLOCK_LESSONS - done);
+  const { done } = firstSteps(progressMap[LANIAKEA_COURSE]?.lessons ?? []);
+  const left = FIRST_STEPS_LESSONS - done;
   return (
     <NavItem
       to="/laniakea"

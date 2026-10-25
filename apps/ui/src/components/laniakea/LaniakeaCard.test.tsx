@@ -9,21 +9,25 @@ const h = vi.hoisted(() => ({
 }));
 vi.mock('../../services/laniakeaService', () => ({ getLaniakea: h.getLaniakea }));
 vi.mock('../../context/ProgressContext', () => ({ useAllProgress: () => h.progress }));
-vi.mock('../../context/CurriculumContext', () => ({
-  useCurriculum: () => ({
-    courses: [
-      {
-        key: 'python',
-        lessons: ['print', 'variables-str', 'variables-int', 'print-f'].map((slug) => ({ slug })),
-      },
-    ],
-  }),
-}));
 
 import { LaniakeaCard } from './LaniakeaCard';
 
+// The six lessons of First steps, then the next ones
+const FIRST_STEPS = [
+  'print',
+  'variables-str',
+  'variables-int',
+  'print-f',
+  'recap-variables',
+  'comment',
+];
+const PYTHON = [...FIRST_STEPS, 'if-else', 'if-elif-else'];
+
+// Progress lists every lesson of the course in its order
 const done = (...slugs: string[]) => ({
-  progressMap: { python: { lessons: slugs.map((slug) => ({ slug, completed: true })) } },
+  progressMap: {
+    python: { lessons: PYTHON.map((slug) => ({ slug, completed: slugs.includes(slug) })) },
+  },
   isLoading: false,
 });
 
@@ -41,13 +45,13 @@ beforeEach(() => {
 });
 
 describe('LaniakeaCard', () => {
-  it('says what opens the game and leads to the next Python lesson', () => {
-    h.progress = done('print');
+  it('says what opens the game and leads to the first of its lessons left', () => {
+    h.progress = done('print', 'variables-int', 'if-else', 'if-elif-else');
     renderCard();
     expect(
-      screen.getByText(/Finish 3 Python lessons to open the explorer game/),
+      screen.getByText(/Finish the first 6 Python lessons to open the explorer game/),
     ).toBeInTheDocument();
-    expect(screen.getByText('1 of 3 done')).toBeInTheDocument();
+    expect(screen.getByText('2 of 6 done')).toBeInTheDocument();
     expect(screen.getByText('Beta')).toBeInTheDocument();
     expect(screen.getByText('New')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Continue with Python' })).toHaveAttribute(
@@ -64,7 +68,7 @@ describe('LaniakeaCard', () => {
   });
 
   it('once open, says how many planets are the student’s and what waits', async () => {
-    h.progress = done('print', 'variables-str', 'variables-int');
+    h.progress = done(...FIRST_STEPS);
     h.getLaniakea.mockResolvedValue({
       serverNow: '2026-10-24T12:00:00.000Z',
       planets: [
@@ -87,7 +91,7 @@ describe('LaniakeaCard', () => {
   });
 
   it('still leads to the game when its state cannot be read', async () => {
-    h.progress = done('print', 'variables-str', 'variables-int');
+    h.progress = done(...FIRST_STEPS);
     h.getLaniakea.mockRejectedValue(new Error('down'));
     renderCard();
     expect(await screen.findByRole('link', { name: 'Fly to Laniakea' })).toBeInTheDocument();

@@ -9,7 +9,17 @@ type Agent = Awaited<ReturnType<typeof createAuthenticatedAgent>>['agent'];
 // The right answers of the print lesson's questions, the made ones too, by id
 const answers = new Map(loadQuiz('print', 'en')!.questions.map((q) => [q.id, q.answer]));
 
-async function student(lessons = ['print', 'variables-str', 'variables-int']) {
+// The six lessons of First steps, the planet that keeps Print's slug
+const FIRST_STEPS = [
+  'print',
+  'variables-str',
+  'variables-int',
+  'print-f',
+  'recap-variables',
+  'comment',
+];
+
+async function student(lessons = FIRST_STEPS) {
   const s = await createAuthenticatedAgent();
   const userId = await userIdFor(s.email);
   await prisma.userLessonProgress.createMany({
@@ -37,12 +47,27 @@ const answer = (a: Agent, index: number, choice: number) =>
   a.post('/api/laniakea/print/quiz/answer').send({ index, choice });
 
 describe('Laniakea', () => {
-  it('stays closed until three Python lessons are done', async () => {
-    const { agent } = await student(['print']);
+  it('stays closed until the six lessons of First steps are done', async () => {
+    const { agent } = await student([...FIRST_STEPS.slice(0, 5), 'if-else']);
     const state = await agent.get('/api/laniakea').expect(200);
-    expect(state.body).toMatchObject({ unlocked: false, lessonsDone: 1, unlockAt: 3 });
-    expect(state.body.planets).toHaveLength(60);
+    expect(state.body).toMatchObject({
+      unlocked: false,
+      lessonsDone: 5,
+      unlockAt: 6,
+      nextLesson: 'comment',
+    });
+    expect(state.body.planets).toHaveLength(55);
     await agent.post('/api/laniakea/print/quiz').send({ lang: 'en' }).expect(403);
+  });
+
+  it('keeps a planet conquered as Print at its level as First steps', async () => {
+    const { agent, userId } = await student();
+    await prisma.laniakeaPlanet.create({
+      data: { userId, courseKey: 'python', lessonSlug: 'print', level: 3, passedAt: new Date() },
+    });
+    const state = await agent.get('/api/laniakea').expect(200);
+    expect(state.body.unlocked).toBe(true);
+    expect(state.body.planets[0]).toMatchObject({ slug: 'print', lessonDone: true, level: 3 });
   });
 
   it('conquers a planet with a passed test, then keeps it waiting for its first recap', async () => {
@@ -92,9 +117,9 @@ describe('Laniakea', () => {
   });
 
   it("refuses a planet whose lesson isn't done and one without questions", async () => {
-    const { agent } = await student(['print', 'variables-str', 'variables-int', 'print-f']);
+    const { agent } = await student([...FIRST_STEPS, 'if-else']);
     await agent.post('/api/laniakea/for/quiz').send({ lang: 'en' }).expect(403);
-    const none = await agent.post('/api/laniakea/print-f/quiz').send({ lang: 'en' }).expect(404);
+    const none = await agent.post('/api/laniakea/if-else/quiz').send({ lang: 'en' }).expect(404);
     expect(none.body.error).toBe('This planet has no questions yet');
   });
 });

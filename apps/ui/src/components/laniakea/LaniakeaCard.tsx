@@ -3,26 +3,24 @@ import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Lock, Orbit } from 'lucide-react';
 import {
+  FIRST_STEPS_LESSONS,
   LANIAKEA_COURSE,
-  LANIAKEA_UNLOCK_LESSONS,
   type LaniakeaState,
 } from '@cyberstars/shared/laniakea';
 import { useAllProgress } from '../../context/ProgressContext';
-import { useCurriculum } from '../../context/CurriculumContext';
 import { getLaniakea } from '../../services/laniakeaService';
 import { statusOf } from '../../pages/laniakea/planetStatus';
 import { BetaBadge } from '../ui/BetaBadge';
+import { firstSteps } from './firstSteps';
 
-// Laniakea on the dashboard: before the first Python lessons, what opens it and
+// Laniakea on the dashboard: before First steps' lessons, what opens it and
 // how far there is to go; after, how many planets are the student's and what
 // is waiting for them.
 export function LaniakeaCard() {
   const { t } = useTranslation();
   const { progressMap, isLoading } = useAllProgress();
-  const { courses } = useCurriculum();
-  const lessons = progressMap[LANIAKEA_COURSE]?.lessons ?? [];
-  const done = lessons.filter((l) => l.completed).length;
-  const open = done >= LANIAKEA_UNLOCK_LESSONS;
+  const { done, next } = firstSteps(progressMap[LANIAKEA_COURSE]?.lessons ?? []);
+  const open = done >= FIRST_STEPS_LESSONS;
   const [state, setState] = useState<LaniakeaState | null>(null);
 
   useEffect(() => {
@@ -40,9 +38,6 @@ export function LaniakeaCard() {
 
   if (isLoading) return null;
 
-  const python = courses.find((c) => c.key === LANIAKEA_COURSE);
-  const next = python?.lessons.find((l) => !lessons.some((p) => p.slug === l.slug && p.completed));
-
   return (
     <section className="p-5 panel rounded-[var(--radius)] flex flex-col @xl:flex-row @xl:items-center gap-4">
       <div className="w-10 h-10 rounded-full bg-[var(--accent)]/15 text-[var(--accent)] flex items-center justify-center flex-shrink-0">
@@ -56,11 +51,11 @@ export function LaniakeaCard() {
           {t('nav.laniakea')} <BetaBadge hint={t('laniakea.betaHint')} />
         </h3>
         <p className="m-0 mt-1 text-[13px] text-[var(--text2)]">
-          {open ? summary(t, state) : t('home.laniakea.locked', { count: LANIAKEA_UNLOCK_LESSONS })}
+          {open ? summary(t, state) : t('home.laniakea.locked', { count: FIRST_STEPS_LESSONS })}
         </p>
         {!open && (
           <p className="m-0 mt-1 text-[12px] text-[var(--text3)]">
-            {t('laniakea.locked.progress', { done, total: LANIAKEA_UNLOCK_LESSONS })}
+            {t('laniakea.locked.progress', { done, total: FIRST_STEPS_LESSONS })}
           </p>
         )}
       </div>
@@ -74,7 +69,7 @@ export function LaniakeaCard() {
       ) : (
         next && (
           <Link
-            to={`/lesson/${LANIAKEA_COURSE}/${next.slug}`}
+            to={`/lesson/${LANIAKEA_COURSE}/${next}`}
             className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] text-[var(--text)] text-[13px] font-semibold no-underline text-center hover:bg-[var(--surface)]"
           >
             {t('laniakea.locked.next')}

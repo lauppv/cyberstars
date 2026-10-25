@@ -5,12 +5,13 @@ import type { Aim } from './scene/explorer';
 import { canFly, statusOf } from './planetStatus';
 import { km, statusText } from './waitText';
 
-// The planet ahead: its lesson, where it stands, and, once the ship is close
-// enough, the way to land on it.
+// The planet ahead: its lesson, or the lessons it covers, where it stands, and,
+// once the ship is close enough, the way to land on it.
 export function AimCard({
   aim,
   planets,
   titles,
+  covers,
   now,
   isTouch,
   onLand,
@@ -18,6 +19,7 @@ export function AimCard({
   aim: Feed<Aim | null>;
   planets: Map<string, LaniakeaPlanet>;
   titles: Map<string, string>;
+  covers: Map<string, string>;
   now: number;
   isTouch: boolean;
   onLand: (slug: string) => void;
@@ -32,6 +34,9 @@ export function AimCard({
   return (
     <div className="lnk-hud lnk-panel lnk-aim" role="status">
       <div className="text-[15px] font-semibold truncate">{titles.get(planet.slug)}</div>
+      {covers.has(planet.slug) && (
+        <div className="text-[11px] lnk-dim">{covers.get(planet.slug)}</div>
+      )}
       <div className="text-[12px] lnk-dim mt-0.5">{statusText(t, planet, status, now)}</div>
       {flyable &&
         (current.inReach ? (

@@ -64,10 +64,14 @@ describe('Sidebar', () => {
     expect(screen.queryByText('Community')).toBeNull();
   });
 
-  it('leads a student to Laniakea, saying how many Python lessons still open it', () => {
+  it('leads a student to Laniakea, saying how many of the first Python lessons still open it', () => {
     h.auth = { user: USER };
+    // Four of the first six done; the seventh and eighth count for nothing
+    const completed = [true, false, true, true, false, true, true, true];
     h.progress = {
-      progressMap: { python: { lessons: [{ completed: true }, { completed: false }] } },
+      progressMap: {
+        python: { lessons: completed.map((c, i) => ({ slug: `l${i}`, completed: c })) },
+      },
       isLoading: false,
     };
     renderSidebar();
@@ -86,7 +90,11 @@ describe('Sidebar', () => {
   it('drops the note once the game is open', () => {
     h.auth = { user: USER };
     h.progress = {
-      progressMap: { python: { lessons: [1, 2, 3].map(() => ({ completed: true })) } },
+      progressMap: {
+        python: {
+          lessons: [1, 2, 3, 4, 5, 6].map((i) => ({ slug: `l${i}`, completed: true })),
+        },
+      },
       isLoading: false,
     };
     renderSidebar();
