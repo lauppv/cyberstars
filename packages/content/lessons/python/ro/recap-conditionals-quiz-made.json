@@ -585,8 +585,8 @@
     {
       "id": "rc-bad-bound-free-dfe8bf",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "varsta = 6\nif varsta <= 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
-      "output": "Reducere: 5 EUR",
+      "code": "varsta = 6\nif varsta <= 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Varsta {varsta}, reducere: {reducere} EUR\")",
+      "output": "Varsta 6, reducere: 5 EUR",
       "options": ["if varsta <= 6:", "varsta = 6", "elif varsta <= 12:", "elif varsta <= 17:"],
       "answer": 0
     },

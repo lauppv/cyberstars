@@ -560,8 +560,8 @@
     {
       "id": "rc-bad-bound-free-dfe8bf",
       "text": "Which line stops this program from printing this?",
-      "code": "age = 6\nif age <= 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
-      "output": "Discount: 5 EUR",
+      "code": "age = 6\nif age <= 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Age {age}, discount: {discount} EUR\")",
+      "output": "Age 6, discount: 5 EUR",
       "options": ["if age <= 6:", "age = 6", "elif age <= 12:", "elif age <= 17:"],
       "answer": 0
     },
