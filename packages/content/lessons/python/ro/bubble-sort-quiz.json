@@ -488,7 +488,7 @@
       ]
     },
     {
-      "id": "bs-bad-range",
+      "id": "bs-bad-colon",
       "kind": "wrong-line",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
@@ -506,7 +506,7 @@
           "list": "2, 6, 1, 5"
         }
       ],
-      "bug": ["for j in range(len(numere) - 1):", "for j in range(len(numere)):"]
+      "bug": ["for j in range(len(numere) - 1):", "for j in range(len(numere) - 1)"]
     },
     {
       "id": "bs-passes",

@@ -302,12 +302,12 @@
       "answer": 0
     },
     {
-      "id": "bs-bad-range-ac29fc",
+      "id": "bs-bad-colon-ac29fc",
       "text": "Which line stops this program from printing this?",
-      "code": "numbers = [5, 3, 8, 1, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "code": "numbers = [5, 3, 8, 1, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1)\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
       "output": "[1, 2, 3, 5, 8]",
       "options": [
-        "for j in range(len(numbers)):",
+        "for j in range(len(numbers) - 1)",
         "numbers = [5, 3, 8, 1, 2]",
         "for i in range(len(numbers)):",
         "if numbers[j] > numbers[j + 1]:"
@@ -315,12 +315,12 @@
       "answer": 0
     },
     {
-      "id": "bs-bad-range-be5eb5",
+      "id": "bs-bad-colon-be5eb5",
       "text": "Which line stops this program from printing this?",
-      "code": "numbers = [4, 1, 3, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "code": "numbers = [4, 1, 3, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1)\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
       "output": "[1, 2, 3, 4]",
       "options": [
-        "for j in range(len(numbers)):",
+        "for j in range(len(numbers) - 1)",
         "numbers = [4, 1, 3, 2]",
         "for i in range(len(numbers)):",
         "if numbers[j] > numbers[j + 1]:"
@@ -328,12 +328,12 @@
       "answer": 0
     },
     {
-      "id": "bs-bad-range-bcc53b",
+      "id": "bs-bad-colon-bcc53b",
       "text": "Which line stops this program from printing this?",
-      "code": "numbers = [9, 7, 8]\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "code": "numbers = [9, 7, 8]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1)\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
       "output": "[7, 8, 9]",
       "options": [
-        "for j in range(len(numbers)):",
+        "for j in range(len(numbers) - 1)",
         "numbers = [9, 7, 8]",
         "for i in range(len(numbers)):",
         "if numbers[j] > numbers[j + 1]:"
@@ -341,12 +341,12 @@
       "answer": 0
     },
     {
-      "id": "bs-bad-range-5412e8",
+      "id": "bs-bad-colon-5412e8",
       "text": "Which line stops this program from printing this?",
-      "code": "numbers = [2, 6, 1, 5]\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "code": "numbers = [2, 6, 1, 5]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1)\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
       "output": "[1, 2, 5, 6]",
       "options": [
-        "for j in range(len(numbers)):",
+        "for j in range(len(numbers) - 1)",
         "numbers = [2, 6, 1, 5]",
         "for i in range(len(numbers)):",
         "if numbers[j] > numbers[j + 1]:"
