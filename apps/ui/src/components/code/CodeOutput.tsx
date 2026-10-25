@@ -4,6 +4,9 @@ import { useTranslation } from 'react-i18next';
 interface CodeOutputProps {
   output: string;
   height?: string;
+  // Grow with the output from `height` up to this many pixels (no less than
+  // `height`), then scroll.
+  growTo?: number;
   fillHeight?: boolean;
   isRunning?: boolean;
   onInput?: (data: string) => void;
@@ -12,6 +15,7 @@ interface CodeOutputProps {
 export function CodeOutput({
   output,
   height = '200px',
+  growTo,
   fillHeight,
   isRunning,
   onInput,
@@ -60,7 +64,13 @@ export function CodeOutput({
         style={
           fillHeight
             ? { fontFamily: 'var(--mono)' }
-            : { height, minHeight: height, maxHeight: height, fontFamily: 'var(--mono)' }
+            : growTo !== undefined
+              ? {
+                  minHeight: height,
+                  maxHeight: `${growTo}px`,
+                  fontFamily: 'var(--mono)',
+                }
+              : { height, minHeight: height, maxHeight: height, fontFamily: 'var(--mono)' }
         }
         onClick={() => isRunning && inputRef.current?.focus()}
       >

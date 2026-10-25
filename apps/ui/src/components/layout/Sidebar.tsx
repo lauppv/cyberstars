@@ -33,7 +33,8 @@ import { useMessages } from '../../context/MessagesContext';
 import { useTutor } from '../../context/TutorContext';
 import { useGamification } from '../../hooks/useGamification';
 import { useAllProgress } from '../../context/ProgressContext';
-import { LANIAKEA_COURSE, LANIAKEA_UNLOCK_LESSONS } from '@cyberstars/shared/laniakea';
+import { FIRST_STEPS_LESSONS, LANIAKEA_COURSE } from '@cyberstars/shared/laniakea';
+import { firstSteps } from '../laniakea/firstSteps';
 import { isAdmin } from '@cyberstars/shared/auth';
 import { canAccessFeature } from '@cyberstars/shared/features';
 
@@ -83,7 +84,8 @@ function NavItem({
   // A small mark right after the label, such as Beta
   tag?: ReactNode;
   badge?: number;
-  // A few words at the end of the row, such as what still opens it
+  // A few words under the label, such as what still opens it: at the end of
+  // the row they left the label no room next to a tag
   note?: string;
   onNavigate: () => void;
 }) {
@@ -94,24 +96,33 @@ function NavItem({
       to={to}
       onClick={onNavigate}
       aria-current={active ? 'page' : undefined}
-      className={`${rowClass} no-underline ${
+      className={`${rowClass} no-underline ${note ? 'h-auto py-1.5' : ''} ${
         active
           ? 'bg-[var(--surface2)] text-[var(--text)]'
           : 'text-[var(--text2)] hover:bg-[var(--surface)] hover:text-[var(--text)]'
       }`}
     >
       <Icon size={ICON_SIZE} strokeWidth={1.75} className="flex-shrink-0 opacity-80" />
-      <span className="truncate">{label}</span>
-      {tag}
+      {note ? (
+        <span className="flex flex-col min-w-0">
+          <span className="flex items-center gap-2.5 min-w-0">
+            <span className="truncate">{label}</span>
+            {tag}
+          </span>
+          <span className="flex items-center gap-1 text-[10px] text-[var(--text3)] whitespace-nowrap">
+            <Lock size={10} strokeWidth={2} />
+            {note}
+          </span>
+        </span>
+      ) : (
+        <>
+          <span className="truncate">{label}</span>
+          {tag}
+        </>
+      )}
       {badge != null && badge > 0 && (
         <span className="ml-auto min-w-[18px] h-[18px] px-1 rounded-full bg-[var(--accent)] text-white text-[10px] font-semibold leading-[18px] text-center tabular-nums">
           {badge > 9 ? '9+' : badge}
-        </span>
-      )}
-      {note && (
-        <span className="ml-auto flex items-center gap-1 text-[10px] text-[var(--text3)] whitespace-nowrap">
-          <Lock size={10} strokeWidth={2} />
-          {note}
         </span>
       )}
     </Link>
@@ -143,13 +154,13 @@ function TutorItem({ onNavigate }: { onNavigate: () => void }) {
   );
 }
 
-// Laniakea opens after the first Python lessons; until then its row says how
-// many are left, and the page itself says what the game is.
+// Laniakea opens after the first Python lessons, First steps; until then its row
+// says how many are left, and the page itself says what the game is.
 function LaniakeaItem({ onNavigate }: { onNavigate: () => void }) {
   const { t } = useTranslation();
   const { progressMap, isLoading } = useAllProgress();
-  const done = progressMap[LANIAKEA_COURSE]?.lessons.filter((l) => l.completed).length ?? 0;
-  const left = Math.max(0, LANIAKEA_UNLOCK_LESSONS - done);
+  const { done } = firstSteps(progressMap[LANIAKEA_COURSE]?.lessons ?? []);
+  const left = FIRST_STEPS_LESSONS - done;
   return (
     <NavItem
       to="/laniakea"

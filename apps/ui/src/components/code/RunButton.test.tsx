@@ -31,4 +31,15 @@ describe('RunButton', () => {
     fireEvent.click(screen.getByRole('button'));
     expect(handler).not.toHaveBeenCalled();
   });
+
+  it('turns into Stop while running when it can stop, and stops on a click', () => {
+    const run = vi.fn();
+    const stop = vi.fn();
+    render(<RunButton onClick={run} isRunning onStop={stop} />);
+    const button = screen.getByRole('button', { name: /Stop/ });
+    expect(button).toBeEnabled();
+    fireEvent.click(button);
+    expect(stop).toHaveBeenCalledOnce();
+    expect(run).not.toHaveBeenCalled();
+  });
 });

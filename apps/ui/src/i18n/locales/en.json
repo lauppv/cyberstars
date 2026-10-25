@@ -152,8 +152,8 @@
     "lastMonths_one": "the last month",
     "lastMonths_other": "the last {{count}} months",
     "laniakea": {
-      "locked_one": "Finish {{count}} Python lesson to open the explorer game, where every lesson you finish is a planet to conquer.",
-      "locked_other": "Finish {{count}} Python lessons to open the explorer game, where every lesson you finish is a planet to conquer.",
+      "locked_one": "Finish the first Python lesson to open the explorer game, where the lessons you finish are planets to conquer.",
+      "locked_other": "Finish the first {{count}} Python lessons to open the explorer game, where the lessons you finish are planets to conquer.",
       "new": "New",
       "open": "Every Python lesson you finish is a planet to conquer.",
       "owned": "Planets conquered: {{owned}}/{{total}}",
@@ -298,8 +298,8 @@
       "laniakea": {
         "title": "Laniakea, a space game",
         "text": "Every Python lesson you finish becomes a planet. Fly to it and pass a 10-question test on the lesson to conquer it.",
-        "note_one": "After {{count}} Python lesson",
-        "note_other": "After {{count}} Python lessons",
+        "note_one": "After the first Python lesson",
+        "note_other": "After the first {{count}} Python lessons",
         "question": "What does this print?",
         "picture": "Planets in space, two of them ringed in blue as the student’s own and one ringed in white still to conquer, next to a test question asking what print(\"5 + 3\") shows, with 5 + 3 marked right."
       }
@@ -835,6 +835,8 @@
     "completed": "✓ Completed",
     "previous": "← Previous",
     "next": "Next →",
+    "nextLesson": "Next lesson →",
+    "nextChallenge": "Next challenge →",
     "actions": "Actions",
     "resetTitle": "Reset code",
     "reset": "Reset",
@@ -904,9 +906,9 @@
     "loadFailed": "The ship couldn't start. Check your connection and try again.",
     "tryAgain": "Try again",
     "locked": {
-      "title_one": "Laniakea opens after {{count}} Python lesson",
-      "title_other": "Laniakea opens after {{count}} Python lessons",
-      "body": "Every Python lesson you finish becomes a planet. Conquer it by answering questions about its lesson, then keep it by coming back after longer and longer breaks.",
+      "title_one": "Laniakea opens after the first Python lesson",
+      "title_other": "Laniakea opens after the first {{count}} Python lessons",
+      "body": "The first {{lessons}} lessons make one planet, First steps, and every Python lesson after them is a planet of its own. Conquer a planet by answering questions about its lessons, then keep it by coming back after longer and longer breaks.",
       "progress": "{{done}} of {{total}} done",
       "next": "Continue with Python",
       "back": "Back to the dashboard"
@@ -1022,12 +1024,20 @@
       "practiceForeverBody": "Well done. This planet is already yours for good."
     },
     "achievement": "Achievement: {{planet}} is yours for good",
+    "firstSteps": {
+      "name": "First steps",
+      "covers_one": "Lesson 1",
+      "covers_other": "Lessons 1–{{count}}"
+    },
     "betaHint": "Still being built: questions for every lesson and more courses are on the way"
   },
   "code": {
     "run": "▶ Run",
     "running": "Running...",
     "runTitle": "Ctrl + Enter to run code",
+    "stop": "■ Stop",
+    "stopTitle": "Stop the program, like Ctrl + C",
+    "stopped": "Stopped.",
     "output": "Output",
     "runToSee": "Run your code to see the output...",
     "outputTruncated": "... (output truncated) ...",

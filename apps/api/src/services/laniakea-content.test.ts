@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import { lessons } from '@cyberstars/content/curriculum';
-import { LANIAKEA_COURSE } from '@cyberstars/shared/laniakea';
+import { LANIAKEA_COURSE, planetLessons } from '@cyberstars/shared/laniakea';
 import { contentDir } from './paths.js';
 import { loadQuiz, pairProblems, quizFiles, quizSlugs } from './laniakea-quiz.js';
 import { parseTemplates, planLesson } from './laniakea-templates.js';
@@ -15,7 +15,15 @@ const read = (file: string): unknown =>
   fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : {};
 const madeIds = (file: string) =>
   ((read(file) as { questions?: { id: string }[] }).questions ?? []).map((q) => q.id);
-const planets = new Set(lessons.filter((l) => l.courseKey === LANIAKEA_COURSE).map((l) => l.slug));
+// The planets' slugs: a lesson inside First steps asks nothing of its own
+const planets = new Set(
+  planetLessons(
+    lessons
+      .filter((l) => l.courseKey === LANIAKEA_COURSE)
+      .sort((a, b) => a.sortOrder - b.sortOrder)
+      .map((l) => l.slug),
+  ).map((p) => p.slug),
+);
 
 describe('Laniakea questions', () => {
   const slugs = quizSlugs();
@@ -24,7 +32,7 @@ describe('Laniakea questions', () => {
     expect(slugs.length).toBeGreaterThan(0);
   });
 
-  it.each(slugs)('%s belongs to a lesson and reads in both languages', (slug) => {
+  it.each(slugs)('%s belongs to a planet and reads in both languages', (slug) => {
     expect(planets.has(slug)).toBe(true);
     expect(fs.existsSync(quizFiles(slug, 'ro').quiz)).toBe(true);
     const en = loadQuiz(slug, 'en')!;

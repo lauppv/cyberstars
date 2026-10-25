@@ -33,6 +33,16 @@ function spec(word: string, n = 12) {
 const EN = spec('Question');
 const RO = spec('Intrebarea');
 
+// The six lessons of First steps, whose planet keeps Print's slug
+const FIRST_STEPS = [
+  'print',
+  'variables-str',
+  'variables-int',
+  'print-f',
+  'recap-variables',
+  'comment',
+];
+
 function done(...slugs: string[]) {
   return slugs.map((lessonSlug) => ({ lessonSlug, completed: true }));
 }
@@ -58,9 +68,9 @@ beforeEach(() => {
   vi.clearAllMocks();
   row = planet();
   written = null;
-  mockProgress.getByCourse.mockResolvedValue(done('print', 'variables-str', 'variables-int'));
+  mockProgress.getByCourse.mockResolvedValue(done(...FIRST_STEPS));
   mockQuiz.loadQuiz.mockImplementation((_slug: string, lang: string) => (lang === 'ro' ? RO : EN));
-  mockQuiz.quizSlugs.mockReturnValue(['print', 'variables-str']);
+  mockQuiz.quizSlugs.mockReturnValue(['print', 'if-else']);
   mockRepo.listPlanets.mockResolvedValue([]);
   mockRepo.withPlanet.mockImplementation(
     async (
@@ -163,27 +173,33 @@ describe('planetView', () => {
 });
 
 describe('getState', () => {
-  it('opens the game after three lessons of the course', async () => {
+  it('opens the game once the six lessons of First steps are done, those and no others', async () => {
     mockProgress.getByCourse.mockResolvedValue([
-      ...done('print', 'variables-str'),
-      { lessonSlug: 'variables-int', completed: false },
+      ...done(...FIRST_STEPS.slice(0, 5), 'if-else', 'for', 'input'),
+      { lessonSlug: 'comment', completed: false },
     ]);
     const locked = await service.getState(4, NOW);
     expect(locked.unlocked).toBe(false);
-    expect(locked.lessonsDone).toBe(2);
-    expect(locked.unlockAt).toBe(3);
+    expect(locked.lessonsDone).toBe(5);
+    expect(locked.unlockAt).toBe(6);
+    expect(locked.nextLesson).toBe('comment');
+    expect(locked.planets[0]).toMatchObject({ slug: 'print', lessonDone: false });
+    expect(locked.planets[1]).toMatchObject({ slug: 'if-else', lessonDone: true });
 
-    mockProgress.getByCourse.mockResolvedValue(done('print', 'variables-str', 'variables-int'));
-    expect((await service.getState(4, NOW)).unlocked).toBe(true);
+    mockProgress.getByCourse.mockResolvedValue(done(...FIRST_STEPS));
+    const open = await service.getState(4, NOW);
+    expect(open.unlocked).toBe(true);
+    expect(open.nextLesson).toBeNull();
+    expect(open.planets[0].lessonDone).toBe(true);
     expect(mockProgress.getByCourse).toHaveBeenCalledWith(4, 'python');
   });
 
-  it('lists every lesson of the course as a planet, in order', async () => {
+  it('lists First steps, then every lesson after it as a planet, in order', async () => {
     mockRepo.listPlanets.mockResolvedValue([planet({ level: 2, passedAt: ago(DAY_MS) })]);
 
     const state = await service.getState(4, NOW);
 
-    expect(state.planets).toHaveLength(60);
+    expect(state.planets).toHaveLength(55);
     expect(state.planets[0]).toEqual({
       slug: 'print',
       lessonDone: true,
@@ -193,7 +209,9 @@ describe('getState', () => {
       nextRecapAt: new Date(NOW.getTime() + DAY_MS).toISOString(),
       retryAt: null,
     });
-    expect(state.planets[3]).toMatchObject({ slug: 'print-f', lessonDone: false, hasQuiz: false });
+    expect(state.planets[1]).toMatchObject({ slug: 'if-else', lessonDone: false, hasQuiz: true });
+    expect(state.planets[2]).toMatchObject({ slug: 'if-elif-else', hasQuiz: false });
+    expect(state.planets.map((p) => p.slug)).not.toContain('comment');
     expect(state.serverNow).toBe(NOW.toISOString());
   });
 
@@ -218,8 +236,8 @@ describe('startQuiz', () => {
     });
   });
 
-  it('keeps the game closed before three lessons', async () => {
-    mockProgress.getByCourse.mockResolvedValue(done('print'));
+  it('keeps the game closed before the lessons of First steps', async () => {
+    mockProgress.getByCourse.mockResolvedValue(done(...FIRST_STEPS.slice(1), 'if-else'));
     await expect(service.startQuiz(4, 'print', 'en', NOW)).rejects.toMatchObject({
       statusCode: 403,
       message: 'Laniakea is still locked',

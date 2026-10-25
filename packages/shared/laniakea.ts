@@ -4,10 +4,24 @@
 // until it is theirs for good. Shared by client and server so the rules shown
 // and the rules enforced can never disagree.
 
-// The course whose lessons are the planets, and how many of its lessons open
-// the game.
+// The course whose lessons are the planets.
 export const LANIAKEA_COURSE = 'python';
-export const LANIAKEA_UNLOCK_LESSONS = 3;
+
+// The course's first lessons are too short for a pool of questions each, so
+// they make one planet, First steps, and completing them, those and not any
+// others, opens the game. It keeps the first lesson's slug, so a student's
+// planet and its questions stay where that lesson's were.
+export const FIRST_STEPS_LESSONS = 6;
+
+// The planets of a course's lessons, given in their order: First steps, then
+// one for each lesson after it.
+export function planetLessons(slugs: string[]): { slug: string; lessons: string[] }[] {
+  const first = slugs.slice(0, FIRST_STEPS_LESSONS);
+  return [
+    ...(first.length ? [{ slug: first[0], lessons: first }] : []),
+    ...slugs.slice(FIRST_STEPS_LESSONS).map((slug) => ({ slug, lessons: [slug] })),
+  ];
+}
 
 // A test: QUIZ_LENGTH questions drawn from the lesson's pool, four options
 // each. It ends as soon as QUIZ_OUT answers are wrong, since it can no longer
@@ -42,7 +56,7 @@ export function nextRecapAt(level: number, passedAt: Date | null, dayMs = DAY_MS
 
 export interface LaniakeaPlanet {
   slug: string;
-  // The lesson is completed, so the planet can be conquered.
+  // Its lessons are completed, so the planet can be conquered.
   lessonDone: boolean;
   // The lesson has questions; without them the planet waits.
   hasQuiz: boolean;
@@ -57,12 +71,15 @@ export interface LaniakeaPlanet {
 export interface LaniakeaState {
   courseKey: string;
   unlocked: boolean;
-  // Lessons of the course completed, against the number that opens the game.
+  // First steps' lessons completed, against the number that opens the game.
   lessonsDone: number;
   unlockAt: number;
+  // The first of those lessons still to do, where the locked game leads, or
+  // null once they are all done.
+  nextLesson: string | null;
   // The server's clock, so countdowns don't follow a wrong one on the device.
   serverNow: string;
-  // Every lesson of the course, in its order.
+  // Every planet of the course, in its lessons' order.
   planets: LaniakeaPlanet[];
 }
 

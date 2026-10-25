@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { LANIAKEA_UNLOCK_LESSONS } from '@cyberstars/shared/laniakea';
+import { FIRST_STEPS_LESSONS } from '@cyberstars/shared/laniakea';
 import { Reveal } from './Reveal';
 import { SectionHeading } from './SectionHeading';
 import { PinnedStory } from './PinnedStory';
@@ -17,7 +17,7 @@ function Words({ part }: { part: string }) {
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <BetaBadge hint={t('laniakea.betaHint')} />
           <span className={chip}>
-            {t('landing.features.laniakea.note', { count: LANIAKEA_UNLOCK_LESSONS })}
+            {t('landing.features.laniakea.note', { count: FIRST_STEPS_LESSONS })}
           </span>
         </div>
       )}

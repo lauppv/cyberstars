@@ -66,7 +66,7 @@ describe('FeaturesSection', () => {
   it('marks Laniakea Beta and says in a line what it is and that it opens after the first Python lessons', () => {
     renderSection();
     const row = parts().getByRole('heading', { name: 'Laniakea, a space game' }).closest('li')!;
-    expect(row).toHaveTextContent('After 3 Python lessons');
+    expect(row).toHaveTextContent('After the first 6 Python lessons');
     expect(within(row).getByText('Beta')).toBeDefined();
     expect(
       within(row).getByText(

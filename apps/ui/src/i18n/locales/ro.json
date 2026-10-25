@@ -167,9 +167,9 @@
     "dayAgo_few": "acum {{count}} zile",
     "dayAgo_other": "acum {{count}} de zile",
     "laniakea": {
-      "locked_one": "Termină {{count}} lecție de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
-      "locked_few": "Termină {{count}} lecții de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
-      "locked_other": "Termină {{count}} de lecții de Python ca să deschizi jocul de explorare, unde fiecare lecție terminată e o planetă de cucerit.",
+      "locked_one": "Termină prima lecție de Python ca să deschizi jocul de explorare, unde lecțiile terminate sunt planete de cucerit.",
+      "locked_few": "Termină primele {{count}} lecții de Python ca să deschizi jocul de explorare, unde lecțiile terminate sunt planete de cucerit.",
+      "locked_other": "Termină primele {{count}} de lecții de Python ca să deschizi jocul de explorare, unde lecțiile terminate sunt planete de cucerit.",
       "new": "Nou",
       "open": "Fiecare lecție de Python pe care o termini e o planetă de cucerit.",
       "owned": "Planete cucerite: {{owned}}/{{total}}",
@@ -321,9 +321,9 @@
       "laniakea": {
         "title": "Laniakea, un joc în spațiu",
         "text": "Fiecare lecție de Python pe care o termini devine o planetă. Zbori până la ea și treci un test de 10 întrebări despre lecție ca s-o cucerești.",
-        "note_one": "După {{count}} lecție de Python",
-        "note_few": "După {{count}} lecții de Python",
-        "note_other": "După {{count}} de lecții de Python",
+        "note_one": "După prima lecție de Python",
+        "note_few": "După primele {{count}} lecții de Python",
+        "note_other": "După primele {{count}} de lecții de Python",
         "question": "Ce afișează?",
         "picture": "Planete în spațiu, două cu inel albastru, ale elevului, și una cu inel alb, încă de cucerit, lângă o întrebare de test despre ce afișează print(\"5 + 3\"), cu 5 + 3 marcat corect."
       }
@@ -875,6 +875,8 @@
     "completed": "✓ Finalizat",
     "previous": "← Anterioara",
     "next": "Următoarea →",
+    "nextLesson": "Lecția următoare →",
+    "nextChallenge": "Algoritmul următor →",
     "actions": "Acțiuni",
     "resetTitle": "Resetează codul",
     "reset": "Resetează",
@@ -944,10 +946,10 @@
     "loadFailed": "Nava n-a putut porni. Verifică conexiunea și încearcă din nou.",
     "tryAgain": "Încearcă din nou",
     "locked": {
-      "title_one": "Laniakea se deschide după {{count}} lecție de Python",
-      "title_few": "Laniakea se deschide după {{count}} lecții de Python",
-      "title_other": "Laniakea se deschide după {{count}} de lecții de Python",
-      "body": "Fiecare lecție de Python pe care o termini devine o planetă. O cucerești răspunzând la întrebări despre lecția ei, apoi o păstrezi revenind după pauze tot mai lungi.",
+      "title_one": "Laniakea se deschide după prima lecție de Python",
+      "title_few": "Laniakea se deschide după primele {{count}} lecții de Python",
+      "title_other": "Laniakea se deschide după primele {{count}} de lecții de Python",
+      "body": "Primele {{lessons}} lecții formează o singură planetă, Primii pași, iar fiecare lecție de Python de după ele e o planetă separată. Cucerești o planetă răspunzând la întrebări despre lecțiile ei, apoi o păstrezi revenind după pauze tot mai lungi.",
       "progress": "{{done}} din {{total}} gata",
       "next": "Continuă cu Python",
       "back": "Înapoi la panou"
@@ -1058,18 +1060,27 @@
       "recapTitle": "Recapitulare trecută",
       "recapBody": "Planeta urcă la treapta {{level}} din {{total}}. Următoarea recapitulare se deschide în {{wait}}.",
       "foreverTitle": "A ta pentru totdeauna",
-      "foreverBody": "Ai trecut toate recapitulările, așa că {{planet}} e a ta pentru totdeauna. Realizare deblocată: păzitorul planetei {{planet}}.",
+      "foreverBody": "Ai trecut toate recapitulările, așa că planeta {{planet}} e a ta pentru totdeauna. Realizare deblocată: păzitorul planetei {{planet}}.",
       "practiceTitle": "Exercițiu încheiat",
       "practiceBody": "Bravo. Exercițiul nu mută planeta: următoarea recapitulare se deschide în {{wait}}.",
       "practiceForeverBody": "Bravo. Planeta e deja a ta pentru totdeauna."
     },
-    "achievement": "Realizare: {{planet}} e a ta pentru totdeauna",
+    "achievement": "Realizare: planeta {{planet}} e a ta pentru totdeauna",
+    "firstSteps": {
+      "name": "Primii pași",
+      "covers_one": "Lecția 1",
+      "covers_few": "Lecțiile 1–{{count}}",
+      "covers_other": "Lecțiile 1–{{count}}"
+    },
     "betaHint": "Încă în lucru: urmează întrebări pentru fiecare lecție și mai multe cursuri"
   },
   "code": {
     "run": "▶ Rulează",
     "running": "Se rulează...",
     "runTitle": "Ctrl + Enter pentru a rula codul",
+    "stop": "■ Oprește",
+    "stopTitle": "Oprește programul, ca un Ctrl + C",
+    "stopped": "Oprit.",
     "output": "Rezultat",
     "runToSee": "Rulează codul pentru a vedea rezultatul...",
     "outputTruncated": "... (rezultat scurtat) ...",

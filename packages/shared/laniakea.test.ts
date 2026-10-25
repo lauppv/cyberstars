@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { DAY_MS, FOREVER_LEVEL, QUIZ_OUT, RECAP_DAYS, nextRecapAt } from './laniakea.js';
+import {
+  DAY_MS,
+  FOREVER_LEVEL,
+  QUIZ_OUT,
+  RECAP_DAYS,
+  nextRecapAt,
+  planetLessons,
+} from './laniakea.js';
 
 describe('the rules', () => {
   it('ends a test once it can no longer be passed', () => {
@@ -30,5 +37,22 @@ describe('nextRecapAt', () => {
 
   it('takes a shorter day for trying it out', () => {
     expect(nextRecapAt(3, passedAt, 1000)?.getTime()).toBe(passedAt.getTime() + 4000);
+  });
+});
+
+describe('planetLessons', () => {
+  const slugs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+
+  it('makes the first six lessons one planet under the first slug, then one each', () => {
+    expect(planetLessons(slugs)).toEqual([
+      { slug: 'a', lessons: ['a', 'b', 'c', 'd', 'e', 'f'] },
+      { slug: 'g', lessons: ['g'] },
+      { slug: 'h', lessons: ['h'] },
+    ]);
+  });
+
+  it('keeps a shorter course as one planet, and none without lessons', () => {
+    expect(planetLessons(['a', 'b'])).toEqual([{ slug: 'a', lessons: ['a', 'b'] }]);
+    expect(planetLessons([])).toEqual([]);
   });
 });

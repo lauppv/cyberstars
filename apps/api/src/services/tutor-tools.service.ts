@@ -180,7 +180,7 @@ const PAGES: (PageInfo & { feature?: FeatureKey; adminOnly?: boolean })[] = [
     link: '/laniakea',
     name: 'Laniakea',
     about:
-      'a space game: each Python lesson finished is a planet, conquered with a 10-question test on it and kept with recaps after 1 to 64 days; opens after 3 Python lessons',
+      'a space game: each Python lesson finished is a planet, conquered with a 10-question test on it and kept with recaps after 1 to 64 days; opens once the first six Python lessons are done, which make one planet, First steps',
   },
   { link: '/forum', name: 'Forum', about: 'ask and answer questions with other students' },
   {
