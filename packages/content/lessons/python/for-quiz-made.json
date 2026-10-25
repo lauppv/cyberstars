@@ -550,25 +550,25 @@
     {
       "id": "for-bad-stop-348cc9",
       "text": "Which line stops this program from printing this?",
-      "code": "energy = 0\nfor i in range(1, 5):\n    energy = energy + i\nprint(energy)",
-      "output": "15",
-      "options": ["for i in range(1, 5):", "energy = 0", "energy = energy + i", "print(energy)"],
+      "code": "energy = 0\nfor i in range(1, 5):\n    print(i)\n    energy = energy + i\nprint(energy)",
+      "output": "1\n2\n3\n4\n5\n15",
+      "options": ["for i in range(1, 5):", "energy = 0", "print(i)", "energy = energy + i"],
       "answer": 0
     },
     {
       "id": "for-bad-stop-f8431c",
       "text": "Which line stops this program from printing this?",
-      "code": "score = 0\nfor i in range(3, 7):\n    score = score + i\nprint(score)",
-      "output": "25",
-      "options": ["for i in range(3, 7):", "score = 0", "score = score + i", "print(score)"],
+      "code": "score = 0\nfor i in range(3, 7):\n    print(i)\n    score = score + i\nprint(score)",
+      "output": "3\n4\n5\n6\n7\n25",
+      "options": ["for i in range(3, 7):", "score = 0", "print(i)", "score = score + i"],
       "answer": 0
     },
     {
       "id": "for-bad-stop-16b7df",
       "text": "Which line stops this program from printing this?",
-      "code": "fuel = 0\nfor i in range(0, 3):\n    fuel = fuel + i\nprint(fuel)",
-      "output": "6",
-      "options": ["for i in range(0, 3):", "fuel = 0", "fuel = fuel + i", "print(fuel)"],
+      "code": "fuel = 0\nfor i in range(0, 3):\n    print(i)\n    fuel = fuel + i\nprint(fuel)",
+      "output": "0\n1\n2\n3\n6",
+      "options": ["for i in range(0, 3):", "fuel = 0", "print(i)", "fuel = fuel + i"],
       "answer": 0
     },
     {

@@ -834,7 +834,7 @@
       "id": "for-bad-stop",
       "kind": "wrong-line",
       "text": "Which line stops this program from printing this?",
-      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    {{t}} = {{t}} + i\nprint({{t}})",
+      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    print(i)\n    {{t}} = {{t}} + i\nprint({{t}})",
       "values": [
         {
           "t": "energy",

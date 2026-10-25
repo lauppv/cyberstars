@@ -555,34 +555,29 @@
     {
       "id": "for-bad-stop-348cc9",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "energie = 0\nfor i in range(1, 5):\n    energie = energie + i\nprint(energie)",
-      "output": "15",
-      "options": [
-        "for i in range(1, 5):",
-        "energie = 0",
-        "energie = energie + i",
-        "print(energie)"
-      ],
+      "code": "energie = 0\nfor i in range(1, 5):\n    print(i)\n    energie = energie + i\nprint(energie)",
+      "output": "1\n2\n3\n4\n5\n15",
+      "options": ["for i in range(1, 5):", "energie = 0", "print(i)", "energie = energie + i"],
       "answer": 0
     },
     {
       "id": "for-bad-stop-f8431c",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "scor = 0\nfor i in range(3, 7):\n    scor = scor + i\nprint(scor)",
-      "output": "25",
-      "options": ["for i in range(3, 7):", "scor = 0", "scor = scor + i", "print(scor)"],
+      "code": "scor = 0\nfor i in range(3, 7):\n    print(i)\n    scor = scor + i\nprint(scor)",
+      "output": "3\n4\n5\n6\n7\n25",
+      "options": ["for i in range(3, 7):", "scor = 0", "print(i)", "scor = scor + i"],
       "answer": 0
     },
     {
       "id": "for-bad-stop-16b7df",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "combustibil = 0\nfor i in range(0, 3):\n    combustibil = combustibil + i\nprint(combustibil)",
-      "output": "6",
+      "code": "combustibil = 0\nfor i in range(0, 3):\n    print(i)\n    combustibil = combustibil + i\nprint(combustibil)",
+      "output": "0\n1\n2\n3\n6",
       "options": [
         "for i in range(0, 3):",
         "combustibil = 0",
-        "combustibil = combustibil + i",
-        "print(combustibil)"
+        "print(i)",
+        "combustibil = combustibil + i"
       ],
       "answer": 0
     },
