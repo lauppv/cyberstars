@@ -23,6 +23,9 @@ const SOURCE_NAMES: Record<string, string> = {
   github: 'GitHub',
 };
 
+// Each range by the months the buttons call it.
+const MONTHS: Record<VisitRange, number> = { 30: 1, 90: 3, 182: 6, 364: 12, 728: 24 };
+
 function count(rows: VisitCount[], key: string) {
   return rows.find((r) => r.key === key)?.visitors ?? 0;
 }
@@ -97,7 +100,7 @@ function PlacementFunnelTable({ funnel }: { funnel: PlacementFunnel }) {
 }
 
 // Who visits and where they come from, counted by our own API (CYB-65). It
-// loads on its own so the 30/90 day switch doesn't redo the rest of the page.
+// loads on its own so the range switch doesn't redo the rest of the page.
 export function VisitorsSection({ className, reload }: { className: string; reload: number }) {
   const { t } = useTranslation();
   const [range, setRange] = useState<VisitRange>(VISIT_RANGES[0]);
@@ -134,7 +137,7 @@ export function VisitorsSection({ className, reload }: { className: string; relo
                   : 'border-[var(--border)] text-[var(--text3)] hover:text-[var(--text2)]'
               }`}
             >
-              {t('admin.lastDays', { count: r })}
+              {t('admin.lastMonths', { count: MONTHS[r] })}
             </button>
           ))}
         </div>

@@ -99,13 +99,21 @@ describe('VisitorsSection', () => {
     expect(localStorage.getItem('cyberstars.counted')).toBe('no');
   });
 
-  it('switches to 90 days and loads again on a refresh', async () => {
+  it('offers 1 to 24 months and loads again on a refresh', async () => {
     const { rerender } = render(<VisitorsSection className="" reload={0} />);
     await screen.findByText('/lesson/python/print');
+    const range = within(screen.getByRole('group', { name: 'Time range' }));
+    expect(range.getAllByRole('button').map((b) => b.textContent)).toEqual([
+      '1 month',
+      '3 months',
+      '6 months',
+      '12 months',
+      '24 months',
+    ]);
 
-    fireEvent.click(screen.getByRole('button', { name: '90 days' }));
+    fireEvent.click(range.getByRole('button', { name: '3 months' }));
     expect(getVisits).toHaveBeenLastCalledWith(90);
-    expect(screen.getByRole('button', { name: '90 days' })).toHaveAttribute('aria-pressed', 'true');
+    expect(range.getByRole('button', { name: '3 months' })).toHaveAttribute('aria-pressed', 'true');
 
     rerender(<VisitorsSection className="" reload={1} />);
     expect(getVisits).toHaveBeenCalledTimes(3);

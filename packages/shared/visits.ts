@@ -23,8 +23,9 @@ export interface StepsReport {
 
 export const SCROLL_DEPTHS = [25, 50, 75, 100] as const;
 
-// How far back the admin page looks, in days.
-export const VISIT_RANGES = [30, 90] as const;
+// How far back the admin page looks, in days: 1, 3, 6, 12 and 24 months. The
+// longer three are whole weeks, so the admin page can chart them a week a point.
+export const VISIT_RANGES = [30, 90, 182, 364, 728] as const;
 export type VisitRange = (typeof VISIT_RANGES)[number];
 
 export interface VisitCount {

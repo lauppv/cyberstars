@@ -97,7 +97,7 @@ async function visitorFor(day: string, ip: string, userAgent: string | undefined
 }
 
 // A visit holds this many steps at most, so a script posting steps in a loop
-// can't fill the table for three months. A real guest stays far below it.
+// can't fill the table for two years. A real guest stays far below it.
 const MAX_STEPS = 500;
 
 async function addSteps(visitId: number | null, steps: VisitStep[]): Promise<void> {
