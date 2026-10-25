@@ -7,7 +7,6 @@ For exactly these two situations, **Python** gives us **break** and **continue**
 **break** **stops** the loop completely. Once we hit it, the program exits the loop, no matter how many iterations were left
 
 ```py
-i = 0
 for i in range(0, 100):
     if i == 5:
         break
@@ -55,7 +54,6 @@ The loop never checked sectors **8** through **99**, because we already found wh
 **continue** is different. It doesn't stop the loop. It just **skips** the rest of the current iteration and **jumps to the next one**
 
 ```py
-i = 0
 for i in range(0, 10):
     if i == 5:
         continue

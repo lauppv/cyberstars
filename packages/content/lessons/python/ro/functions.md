@@ -4,7 +4,6 @@ Așa cum am menționat într-o lecție anterioară, nu este o idee bună să **r
 nume = "Cortez"
 varsta = 60
 
-i = 0
 for i in range(0, 11):
     print(f"Ma numesc {nume} si am varsta {varsta}")
 ```
@@ -30,7 +29,6 @@ Ce se întâmplă dacă vrem să afișăm același lucru, dar cu _Tommy Vercetti
 nume = "Tommy Vercetti"
 varsta = 42
 
-i = 0
 for i in range(0, 11):
     print(f"Ma numesc {nume} si am varsta {varsta}")
 ```
@@ -58,7 +56,6 @@ Se dovedește că cel mai bun mod, și cel care face codul cel mai **lizibil**, 
 
 ```py
 def functia_mea(nume, varsta):
-    i = 0
     for i in range(0, 11):
         print(f"Ma numesc {nume} si am varsta {varsta}")
 
@@ -81,7 +78,6 @@ La fel ca **print()**, folosim paranteze **()**
 
 ```py
 def functia_mea(n, a):
-    i = 0
     for i in range(0, 11):
         print(f"Ma numesc {n} si am varsta {a}")
 
