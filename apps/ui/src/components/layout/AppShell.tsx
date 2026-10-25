@@ -111,12 +111,19 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <SidebarContext.Provider value={{ state, toggle }}>
+      {/* A finger lifted beside the drawer closes it, after a swipe too, which
+          never ends in a click. Its click is cancelled, so it can't land on
+          the page once the backdrop is gone */}
       {state === 'open' && (
         <button
           type="button"
           tabIndex={-1}
           aria-hidden="true"
           onClick={() => setToggled(false)}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            setToggled(false);
+          }}
           className="md:hidden fixed inset-0 z-40 bg-black/50 border-none cursor-default"
         />
       )}
