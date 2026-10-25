@@ -146,6 +146,26 @@ describe('GuestVisits', () => {
     expect(screen.queryByText('/courses')).not.toBeInTheDocument();
   });
 
+  it('asks for the next page once at a time, and drops it when the source changed meanwhile', async () => {
+    let answerMore!: (page: { visits: GuestVisitDTO[]; next: number | null }) => void;
+    getGuestVisits
+      .mockResolvedValueOnce({ visits: [visit(30, [page('/')])], next: 30 })
+      .mockReturnValueOnce(new Promise((resolve) => (answerMore = resolve)))
+      .mockResolvedValueOnce({ visits: [visit(5, [page('/almanac')])], next: null });
+    show();
+    const button = await screen.findByRole('button', { name: 'Show more' });
+    fireEvent.click(button);
+    expect(button).toBeDisabled();
+    fireEvent.click(button);
+    expect(getGuestVisits).toHaveBeenCalledTimes(2);
+
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'reddit' } });
+    expect(await screen.findByText('/almanac')).toBeInTheDocument();
+    answerMore({ visits: [visit(12, [page('/courses')])], next: null });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(screen.queryByText('/courses')).not.toBeInTheDocument();
+  });
+
   it('keeps showing the picked source once it leaves the list', async () => {
     getGuestVisits.mockResolvedValue({ visits: [], next: null });
     const { rerender } = show();
