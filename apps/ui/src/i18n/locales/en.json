@@ -626,6 +626,14 @@
     "admin": "admin",
     "retry": "Try again"
   },
+  "feedback": {
+    "lesson": "Think we should change something in this lesson? Tell us and help the community grow",
+    "question": "Something off with this question? Tell us",
+    "placeholder": "What would you change?",
+    "sent": "Thanks! The admins will read it, and their reply shows up in Support",
+    "lessonSubject": "Lesson feedback: {{title}} ({{path}})",
+    "questionSubject": "Laniakea question: {{planet}} ({{path}})"
+  },
   "forum": {
     "time": {
       "justNow": "just now",
