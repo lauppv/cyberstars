@@ -54,6 +54,7 @@
     "busySandboxes": "Sandboxuri ocupate",
     "openSessions": "Sesiuni deschise",
     "perLanguage": "Pe runtime",
+    "loadError": "Nu am putut încărca cifrele. Apasă Reîmprospătează.",
     "noData": "Încă nu sunt date",
     "visits": "Vizitatori",
     "range": "Interval",

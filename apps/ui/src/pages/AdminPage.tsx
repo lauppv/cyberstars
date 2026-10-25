@@ -36,6 +36,7 @@ export function AdminPage() {
   const [stats, setStats] = useState<AdminStatsDTO | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [reloads, setReloads] = useState(0);
 
   // Client-side guard is UX only; the /api/admin routes are server-authoritative.
@@ -47,8 +48,11 @@ export function AdminPage() {
   const load = useCallback((force = false) => {
     adminService
       .getStats(force)
-      .then(setStats)
-      .catch(() => {})
+      .then((dto) => {
+        setStats(dto);
+        setFailed(false);
+      })
+      .catch(() => setFailed(true))
       .finally(() => {
         setLoading(false);
         setRefreshing(false);
@@ -90,6 +94,12 @@ export function AdminPage() {
               {refreshing ? t('admin.refreshing') : t('admin.refresh')}
             </button>
           </div>
+
+          {failed && (
+            <p role="alert" className="mt-0 mb-5 text-[13px] text-[var(--error)]">
+              {t('admin.loadError')}
+            </p>
+          )}
 
           {loading && !stats ? (
             <div className="flex justify-center py-20">

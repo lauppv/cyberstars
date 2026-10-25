@@ -53,6 +53,7 @@
     "busySandboxes": "Busy sandboxes",
     "openSessions": "Open sessions",
     "perLanguage": "Per runtime",
+    "loadError": "Couldn't load these numbers. Press Refresh.",
     "noData": "No data yet",
     "visits": "Visitors",
     "range": "Time range",

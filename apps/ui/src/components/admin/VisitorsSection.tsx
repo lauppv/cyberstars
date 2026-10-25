@@ -106,6 +106,7 @@ export function VisitorsSection({ className, reload }: { className: string; relo
   const { t } = useTranslation();
   const [range, setRange] = useState<VisitRange>(VISIT_RANGES[0]);
   const [data, setData] = useState<AdminVisitsDTO | null>(null);
+  const [failed, setFailed] = useState(false);
   const [counted, setCountedHere] = useState(isCounted);
 
   function toggleCounted() {
@@ -118,9 +119,13 @@ export function VisitorsSection({ className, reload }: { className: string; relo
     let current = true;
     getVisits(range)
       .then((dto) => {
-        if (current) setData(dto);
+        if (!current) return;
+        setData(dto);
+        setFailed(false);
       })
-      .catch(() => {});
+      .catch(() => {
+        if (current) setFailed(true);
+      });
     return () => {
       current = false;
     };
@@ -158,8 +163,14 @@ export function VisitorsSection({ className, reload }: { className: string; relo
         </div>
       </div>
 
+      {failed && (
+        <p role="alert" className="mt-0 mb-4 text-[12px] text-[var(--error)]">
+          {t('admin.loadError')}
+        </p>
+      )}
+
       {!data ? (
-        <span className="text-[12px] text-[var(--text3)]">{t('admin.noData')}</span>
+        !failed && <span className="text-[12px] text-[var(--text3)]">{t('admin.noData')}</span>
       ) : (
         <div aria-busy={loading} className={`transition-opacity ${loading ? 'opacity-50' : ''}`}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">

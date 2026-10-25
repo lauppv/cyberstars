@@ -159,10 +159,11 @@ describe('VisitorsSection', () => {
     expect(screen.getByText('/courses')).toBeInTheDocument();
   });
 
-  it('says there is nothing yet when the numbers could not be loaded or are empty', async () => {
+  it('says the numbers could not be loaded, and there is nothing yet when they are empty', async () => {
     getVisits.mockRejectedValueOnce(new Error('403'));
     const { unmount } = render(<VisitorsSection className="" reload={0} />);
-    expect(screen.getByText('No data yet')).toBeInTheDocument();
+    expect(await screen.findByRole('alert')).toHaveTextContent("Couldn't load these numbers.");
+    expect(screen.queryByText('No data yet')).not.toBeInTheDocument();
     unmount();
 
     getVisits.mockResolvedValueOnce({ ...dto, pages: [], sources: [], clicks: [] });
