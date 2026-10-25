@@ -390,6 +390,87 @@
       "answer": 0
     },
     {
+      "id": "ie-two-ifs-f18980",
+      "text": "Ce afișează?",
+      "code": "x = 20\nif x > 10:\n    print(\"Cald\")\nif x > 15:\n    print(\"Foarte cald\")",
+      "options": ["Cald\nFoarte cald", "Cald", "Foarte cald", "Cald\nCald"],
+      "answer": 0
+    },
+    {
+      "id": "ie-two-ifs-cf4377",
+      "text": "Ce afișează?",
+      "code": "x = 16\nif x > 10:\n    print(\"Cald\")\nif x > 15:\n    print(\"Foarte cald\")",
+      "options": ["Cald\nFoarte cald", "Cald", "Foarte cald", "Cald\nCald"],
+      "answer": 0
+    },
+    {
+      "id": "ie-two-ifs-33eb45",
+      "text": "Ce afișează?",
+      "code": "x = 101\nif x > 50:\n    print(\"Rapid\")\nif x > 100:\n    print(\"Prea rapid\")",
+      "options": ["Rapid\nPrea rapid", "Rapid", "Prea rapid", "Rapid\nRapid"],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-e47eba",
+      "text": "Ce afișează?",
+      "code": "temperatura = 1200\nif temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+      "options": [
+        "Pericol: reactor la 1200 grade - oprire",
+        "Pericol: reactor la {temperatura} grade - oprire",
+        "Pericol: reactor la 1200 grade - oprire\nReactor stabil la 1200 grade",
+        "Reactor stabil la 1200 grade"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-516098",
+      "text": "Ce afișează?",
+      "code": "temperatura = 800\nif temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+      "options": [
+        "Reactor stabil la 800 grade",
+        "Reactor stabil la {temperatura} grade",
+        "Pericol: reactor la 800 grade - oprire\nReactor stabil la 800 grade",
+        "Pericol: reactor la 800 grade - oprire"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-1439e3",
+      "text": "Ce afișează?",
+      "code": "temperatura = 1000\nif temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+      "options": [
+        "Reactor stabil la 1000 grade",
+        "Pericol: reactor la 1000 grade - oprire",
+        "Reactor stabil la {temperatura} grade",
+        "Pericol: reactor la 1000 grade - oprire\nReactor stabil la 1000 grade"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-7cd450",
+      "text": "Ce afișează?",
+      "code": "temperatura = 1001\nif temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+      "options": [
+        "Pericol: reactor la 1001 grade - oprire",
+        "Pericol: reactor la {temperatura} grade - oprire",
+        "Pericol: reactor la 1001 grade - oprire\nReactor stabil la 1001 grade",
+        "Reactor stabil la 1001 grade"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-aadb24",
+      "text": "Ce afișează?",
+      "code": "temperatura = 999\nif temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+      "options": [
+        "Reactor stabil la 999 grade",
+        "Reactor stabil la {temperatura} grade",
+        "Pericol: reactor la 999 grade - oprire\nReactor stabil la 999 grade",
+        "Pericol: reactor la 999 grade - oprire"
+      ],
+      "answer": 0
+    },
+    {
       "id": "ie-condition-91e030",
       "text": "Ce afișează?",
       "code": "temperatura = 14\nprint(temperatura < 15)",
@@ -429,6 +510,75 @@
       "text": "Ce afișează?",
       "code": "puncte = 75\nprint(puncte == 75)",
       "options": ["True", "puncte == 75", "False", "75"],
+      "answer": 0
+    },
+    {
+      "id": "ie-update-7876e3",
+      "text": "Ce afișează?",
+      "code": "temperatura = 990\ntemperatura = temperatura + 20\nif temperatura > 1000:\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
+      "options": ["Pericol", "Stabil", "1010", "Pericol\nStabil"],
+      "answer": 0
+    },
+    {
+      "id": "ie-update-9d9df1",
+      "text": "Ce afișează?",
+      "code": "scor = 45\nscor = scor + 10\nif scor > 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "options": ["Trecut", "Picat", "55", "Trecut\nPicat"],
+      "answer": 0
+    },
+    {
+      "id": "ie-update-fb6c86",
+      "text": "Ce afișează?",
+      "code": "puncte = 95\npuncte = puncte + 10\nif puncte > 100:\n    print(\"Record nou\")\nelse:\n    print(\"Mai incearca\")",
+      "options": ["Record nou", "Mai incearca", "105", "Record nou\nMai incearca"],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-ef55a3",
+      "text": "Ce afișează?",
+      "code": "viteza = 130\nif viteza > 100:\n    print(\"Incetineste\")\nprint(\"Mergi mai departe\")",
+      "options": [
+        "Incetineste\nMergi mai departe",
+        "Mergi mai departe",
+        "Incetineste\nIncetineste",
+        "Incetineste\nMergi mai departe\nIncetineste"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-65e1e5",
+      "text": "Ce afișează?",
+      "code": "viteza = 80\nif viteza > 100:\n    print(\"Incetineste\")\nprint(\"Mergi mai departe\")",
+      "options": [
+        "Mergi mai departe",
+        "Incetineste\nMergi mai departe",
+        "Incetineste",
+        "Mergi mai departe\nIncetineste"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-257792",
+      "text": "Ce afișează?",
+      "code": "puncte = 120\nif puncte > 100:\n    print(\"Record nou\")\nprint(\"Joc terminat\")",
+      "options": [
+        "Record nou\nJoc terminat",
+        "Joc terminat",
+        "Record nou\nRecord nou",
+        "Record nou\nJoc terminat\nRecord nou"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-a4f099",
+      "text": "Ce afișează?",
+      "code": "puncte = 40\nif puncte > 100:\n    print(\"Record nou\")\nprint(\"Joc terminat\")",
+      "options": [
+        "Joc terminat",
+        "Record nou\nJoc terminat",
+        "Record nou",
+        "Joc terminat\nRecord nou"
+      ],
       "answer": 0
     },
     {

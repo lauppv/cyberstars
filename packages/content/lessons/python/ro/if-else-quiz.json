@@ -765,6 +765,77 @@
       "wrong": ["else", "if:", "else {{v}} < {{limit}}:", "if {{v}} > {{limit}}:"]
     },
     {
+      "id": "ie-two-ifs",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "x = {{x}}\nif x > {{a}}:\n    print(\"{{p}}\")\nif x > {{b}}:\n    print(\"{{q}}\")",
+      "values": [
+        {
+          "x": 20,
+          "a": 10,
+          "b": 15,
+          "p": "Cald",
+          "q": "Foarte cald"
+        },
+        {
+          "x": 16,
+          "a": 10,
+          "b": 15,
+          "p": "Cald",
+          "q": "Foarte cald"
+        },
+        {
+          "x": 101,
+          "a": 50,
+          "b": 100,
+          "p": "Rapid",
+          "q": "Prea rapid"
+        }
+      ],
+      "mistakes": [
+        ["if x > {{b}}:\n    print(\"{{q}}\")", "else:\n    print(\"{{q}}\")"],
+        ["if x > {{a}}:", "if x < {{a}}:"],
+        ["if x > {{b}}:", "if x < {{b}}:"],
+        ["print(\"{{q}}\")", "print(\"{{p}}\")"]
+      ]
+    },
+    {
+      "id": "ie-reactor",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "temperatura = {{t}}\nif temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+      "values": [
+        {
+          "t": 1200
+        },
+        {
+          "t": 800
+        },
+        {
+          "t": 1000
+        },
+        {
+          "t": 1001
+        },
+        {
+          "t": 999
+        }
+      ],
+      "mistakes": [
+        ["temperatura > 1000", "temperatura >= 1000"],
+        ["f\"Reactor", "\"Reactor"],
+        ["f\"Pericol", "\"Pericol"],
+        [
+          "if temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+          "print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nprint(f\"Reactor stabil la {temperatura} grade\")"
+        ],
+        [
+          "print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+          "print(f\"Reactor stabil la {temperatura} grade\")\nelse:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")"
+        ]
+      ]
+    },
+    {
       "id": "ie-condition",
       "kind": "prints",
       "text": "Ce afișează?",
@@ -829,6 +900,92 @@
         ["print({{v}} {{op}} {{limit}})", "print(\"{{v}} {{op}} {{limit}}\")"],
         ["{{op}}", "{{flip}}"],
         ["print({{v}} {{op}} {{limit}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "ie-update",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\n{{v}} = {{v}} + {{d}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 990,
+          "d": 20,
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil"
+        },
+        {
+          "v": "scor",
+          "x": 45,
+          "d": 10,
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat"
+        },
+        {
+          "v": "puncte",
+          "x": 95,
+          "d": 10,
+          "limit": 100,
+          "yes": "Record nou",
+          "no": "Mai incearca"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{v}} + {{d}}\n", ""],
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        ["print(\"{{yes}}\")", "print({{v}})"],
+        [
+          "if {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "ie-no-else",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nprint(\"{{after}}\")",
+      "values": [
+        {
+          "v": "viteza",
+          "x": 130,
+          "limit": 100,
+          "yes": "Incetineste",
+          "after": "Mergi mai departe"
+        },
+        {
+          "v": "viteza",
+          "x": 80,
+          "limit": 100,
+          "yes": "Incetineste",
+          "after": "Mergi mai departe"
+        },
+        {
+          "v": "puncte",
+          "x": 120,
+          "limit": 100,
+          "yes": "Record nou",
+          "after": "Joc terminat"
+        },
+        {
+          "v": "puncte",
+          "x": 40,
+          "limit": 100,
+          "yes": "Record nou",
+          "after": "Joc terminat"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} > {{limit}}", "{{v}} < {{limit}}"],
+        ["if {{v}} > {{limit}}:\n    print(\"{{yes}}\")", "print(\"{{yes}}\")"],
+        ["print(\"{{after}}\")", "print(\"{{yes}}\")"],
+        ["print(\"{{after}}\")", "print(\"{{after}}\")\nprint(\"{{yes}}\")"]
       ]
     },
     {

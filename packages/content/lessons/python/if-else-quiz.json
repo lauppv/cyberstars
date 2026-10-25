@@ -775,6 +775,77 @@
       "wrong": ["else", "if:", "else {{v}} < {{limit}}:", "if {{v}} > {{limit}}:"]
     },
     {
+      "id": "ie-two-ifs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "x = {{x}}\nif x > {{a}}:\n    print(\"{{p}}\")\nif x > {{b}}:\n    print(\"{{q}}\")",
+      "values": [
+        {
+          "x": 20,
+          "a": 10,
+          "b": 15,
+          "p": "Warm",
+          "q": "Hot"
+        },
+        {
+          "x": 16,
+          "a": 10,
+          "b": 15,
+          "p": "Warm",
+          "q": "Hot"
+        },
+        {
+          "x": 101,
+          "a": 50,
+          "b": 100,
+          "p": "Fast",
+          "q": "Too fast"
+        }
+      ],
+      "mistakes": [
+        ["if x > {{b}}:\n    print(\"{{q}}\")", "else:\n    print(\"{{q}}\")"],
+        ["if x > {{a}}:", "if x < {{a}}:"],
+        ["if x > {{b}}:", "if x < {{b}}:"],
+        ["print(\"{{q}}\")", "print(\"{{p}}\")"]
+      ]
+    },
+    {
+      "id": "ie-reactor",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "temperature = {{t}}\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "values": [
+        {
+          "t": 1200
+        },
+        {
+          "t": 800
+        },
+        {
+          "t": 1000
+        },
+        {
+          "t": 1001
+        },
+        {
+          "t": 999
+        }
+      ],
+      "mistakes": [
+        ["temperature > 1000", "temperature >= 1000"],
+        ["f\"Reactor", "\"Reactor"],
+        ["f\"Danger", "\"Danger"],
+        [
+          "if temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+          "print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nprint(f\"Reactor stable at {temperature} degrees\")"
+        ],
+        [
+          "print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+          "print(f\"Reactor stable at {temperature} degrees\")\nelse:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")"
+        ]
+      ]
+    },
+    {
       "id": "ie-condition",
       "kind": "prints",
       "text": "What does this print?",
@@ -839,6 +910,92 @@
         ["print({{v}} {{op}} {{limit}})", "print(\"{{v}} {{op}} {{limit}}\")"],
         ["{{op}}", "{{flip}}"],
         ["print({{v}} {{op}} {{limit}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "ie-update",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\n{{v}} = {{v}} + {{d}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 990,
+          "d": 20,
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable"
+        },
+        {
+          "v": "score",
+          "x": 45,
+          "d": 10,
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail"
+        },
+        {
+          "v": "points",
+          "x": 95,
+          "d": 10,
+          "limit": 100,
+          "yes": "New record",
+          "no": "Try again"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{v}} + {{d}}\n", ""],
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        ["print(\"{{yes}}\")", "print({{v}})"],
+        [
+          "if {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "ie-no-else",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nprint(\"{{after}}\")",
+      "values": [
+        {
+          "v": "speed",
+          "x": 130,
+          "limit": 100,
+          "yes": "Slow down",
+          "after": "Drive on"
+        },
+        {
+          "v": "speed",
+          "x": 80,
+          "limit": 100,
+          "yes": "Slow down",
+          "after": "Drive on"
+        },
+        {
+          "v": "points",
+          "x": 120,
+          "limit": 100,
+          "yes": "New record",
+          "after": "Game over"
+        },
+        {
+          "v": "points",
+          "x": 40,
+          "limit": 100,
+          "yes": "New record",
+          "after": "Game over"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} > {{limit}}", "{{v}} < {{limit}}"],
+        ["if {{v}} > {{limit}}:\n    print(\"{{yes}}\")", "print(\"{{yes}}\")"],
+        ["print(\"{{after}}\")", "print(\"{{yes}}\")"],
+        ["print(\"{{after}}\")", "print(\"{{after}}\")\nprint(\"{{yes}}\")"]
       ]
     },
     {

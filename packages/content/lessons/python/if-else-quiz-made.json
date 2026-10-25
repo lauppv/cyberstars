@@ -395,6 +395,87 @@
       "answer": 0
     },
     {
+      "id": "ie-two-ifs-f18980",
+      "text": "What does this print?",
+      "code": "x = 20\nif x > 10:\n    print(\"Warm\")\nif x > 15:\n    print(\"Hot\")",
+      "options": ["Warm\nHot", "Warm", "Hot", "Warm\nWarm"],
+      "answer": 0
+    },
+    {
+      "id": "ie-two-ifs-cf4377",
+      "text": "What does this print?",
+      "code": "x = 16\nif x > 10:\n    print(\"Warm\")\nif x > 15:\n    print(\"Hot\")",
+      "options": ["Warm\nHot", "Warm", "Hot", "Warm\nWarm"],
+      "answer": 0
+    },
+    {
+      "id": "ie-two-ifs-33eb45",
+      "text": "What does this print?",
+      "code": "x = 101\nif x > 50:\n    print(\"Fast\")\nif x > 100:\n    print(\"Too fast\")",
+      "options": ["Fast\nToo fast", "Fast", "Too fast", "Fast\nFast"],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-e47eba",
+      "text": "What does this print?",
+      "code": "temperature = 1200\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "options": [
+        "Danger: reactor at 1200 degrees - shutting down",
+        "Danger: reactor at {temperature} degrees - shutting down",
+        "Danger: reactor at 1200 degrees - shutting down\nReactor stable at 1200 degrees",
+        "Reactor stable at 1200 degrees"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-516098",
+      "text": "What does this print?",
+      "code": "temperature = 800\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "options": [
+        "Reactor stable at 800 degrees",
+        "Reactor stable at {temperature} degrees",
+        "Danger: reactor at 800 degrees - shutting down\nReactor stable at 800 degrees",
+        "Danger: reactor at 800 degrees - shutting down"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-1439e3",
+      "text": "What does this print?",
+      "code": "temperature = 1000\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "options": [
+        "Reactor stable at 1000 degrees",
+        "Danger: reactor at 1000 degrees - shutting down",
+        "Reactor stable at {temperature} degrees",
+        "Danger: reactor at 1000 degrees - shutting down\nReactor stable at 1000 degrees"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-7cd450",
+      "text": "What does this print?",
+      "code": "temperature = 1001\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "options": [
+        "Danger: reactor at 1001 degrees - shutting down",
+        "Danger: reactor at {temperature} degrees - shutting down",
+        "Danger: reactor at 1001 degrees - shutting down\nReactor stable at 1001 degrees",
+        "Reactor stable at 1001 degrees"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-aadb24",
+      "text": "What does this print?",
+      "code": "temperature = 999\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "options": [
+        "Reactor stable at 999 degrees",
+        "Reactor stable at {temperature} degrees",
+        "Danger: reactor at 999 degrees - shutting down\nReactor stable at 999 degrees",
+        "Danger: reactor at 999 degrees - shutting down"
+      ],
+      "answer": 0
+    },
+    {
       "id": "ie-condition-91e030",
       "text": "What does this print?",
       "code": "temperature = 14\nprint(temperature < 15)",
@@ -434,6 +515,65 @@
       "text": "What does this print?",
       "code": "points = 75\nprint(points == 75)",
       "options": ["True", "points == 75", "False", "75"],
+      "answer": 0
+    },
+    {
+      "id": "ie-update-7876e3",
+      "text": "What does this print?",
+      "code": "temperature = 990\ntemperature = temperature + 20\nif temperature > 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+      "options": ["Danger", "Stable", "1010", "Danger\nStable"],
+      "answer": 0
+    },
+    {
+      "id": "ie-update-9d9df1",
+      "text": "What does this print?",
+      "code": "score = 45\nscore = score + 10\nif score > 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Pass", "Fail", "55", "Pass\nFail"],
+      "answer": 0
+    },
+    {
+      "id": "ie-update-fb6c86",
+      "text": "What does this print?",
+      "code": "points = 95\npoints = points + 10\nif points > 100:\n    print(\"New record\")\nelse:\n    print(\"Try again\")",
+      "options": ["New record", "Try again", "105", "New record\nTry again"],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-ef55a3",
+      "text": "What does this print?",
+      "code": "speed = 130\nif speed > 100:\n    print(\"Slow down\")\nprint(\"Drive on\")",
+      "options": [
+        "Slow down\nDrive on",
+        "Drive on",
+        "Slow down\nSlow down",
+        "Slow down\nDrive on\nSlow down"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-65e1e5",
+      "text": "What does this print?",
+      "code": "speed = 80\nif speed > 100:\n    print(\"Slow down\")\nprint(\"Drive on\")",
+      "options": ["Drive on", "Slow down\nDrive on", "Slow down", "Drive on\nSlow down"],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-257792",
+      "text": "What does this print?",
+      "code": "points = 120\nif points > 100:\n    print(\"New record\")\nprint(\"Game over\")",
+      "options": [
+        "New record\nGame over",
+        "Game over",
+        "New record\nNew record",
+        "New record\nGame over\nNew record"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-a4f099",
+      "text": "What does this print?",
+      "code": "points = 40\nif points > 100:\n    print(\"New record\")\nprint(\"Game over\")",
+      "options": ["Game over", "New record\nGame over", "New record", "Game over\nNew record"],
       "answer": 0
     },
     {
