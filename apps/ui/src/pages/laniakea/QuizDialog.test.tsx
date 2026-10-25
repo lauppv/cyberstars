@@ -5,6 +5,8 @@ import { testPlanet } from './testPlanets';
 
 const service = vi.hoisted(() => ({ startQuiz: vi.fn(), answerQuiz: vi.fn() }));
 vi.mock('../../services/laniakeaService', () => service);
+const support = vi.hoisted(() => ({ createTicket: vi.fn() }));
+vi.mock('../../services/supportService', () => support);
 
 import { QuizDialog } from './QuizDialog';
 
@@ -201,5 +203,50 @@ describe('QuizDialog', () => {
     expect(onClose).toHaveBeenCalledWith(null);
     fireEvent.keyDown(screen.getByRole('dialog').firstChild!, { key: 'Escape' });
     expect(onClose).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('QuizDialog feedback', () => {
+  it('reports an answered question as the student saw it', async () => {
+    service.startQuiz.mockResolvedValue(quiz());
+    service.answerQuiz.mockResolvedValue(reply({ choice: 0, correct: false, correctChoice: 1 }));
+    support.createTicket.mockResolvedValue({ ticketId: 4 });
+    open();
+    await screen.findByText('Question 1 of 10');
+    expect(screen.queryByRole('button', { name: /Something off/ })).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /a1/ }));
+
+    fireEvent.click(await screen.findByRole('button', { name: /Something off/ }));
+    const field = screen.getByRole('textbox');
+    // Typing a letter or Enter here doesn't answer or move on
+    fireEvent.keyDown(field, { key: 'Enter' });
+    expect(screen.getByText('Question 1 of 10')).toBeInTheDocument();
+    fireEvent.change(field, { target: { value: 'B looks wrong' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Send' }));
+
+    await waitFor(() =>
+      expect(support.createTicket).toHaveBeenCalledWith({
+        type: 'FEEDBACK',
+        subject: 'Laniakea question: Print (print)',
+        message:
+          'B looks wrong\n\nQuestion 1: what does `print` do?\nprint("5")\nA. a1 (picked)\nB. b1 (right)\nC. c1\nD. d1',
+      }),
+    );
+  });
+
+  it('starts over on the next question', async () => {
+    service.startQuiz.mockResolvedValue(quiz());
+    service.answerQuiz.mockResolvedValue(reply());
+    support.createTicket.mockResolvedValue({ ticketId: 4 });
+    open();
+    fireEvent.click(await screen.findByRole('button', { name: /b1/ }));
+    fireEvent.click(await screen.findByRole('button', { name: /Something off/ }));
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'Typo' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Send' }));
+    await screen.findByText(/Thanks!/);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Next question' }));
+    fireEvent.click(await screen.findByRole('button', { name: /b2/ }));
+    expect(await screen.findByRole('button', { name: /Something off/ })).toBeInTheDocument();
   });
 });

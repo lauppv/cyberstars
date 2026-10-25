@@ -12,10 +12,26 @@ import {
 import * as laniakeaService from '../../services/laniakeaService';
 import { formatWait } from './waitText';
 import { withCode } from './codeText';
+import { SendFeedback } from '../../components/support/SendFeedback';
 
 const LETTERS = ['A', 'B', 'C', 'D'];
 
 type Phase = 'loading' | 'failed' | 'asking' | 'done';
+
+// The question as the student saw it, for a report about it
+function asShown(question: QuizView['questions'][number], answer: QuizAnswer): string {
+  return [
+    question.text,
+    question.code,
+    question.output && `Output:\n${question.output}`,
+    ...question.options.map(
+      (o, i) =>
+        `${LETTERS[i]}. ${o}${i === answer.correctChoice ? ' (right)' : ''}${i === answer.choice && !answer.correct ? ' (picked)' : ''}`,
+    ),
+  ]
+    .filter(Boolean)
+    .join('\n');
+}
 
 // A test on a planet: one question at a time, the right answer shown as soon
 // as one is picked, over after the last question or the fifth wrong answer.
@@ -249,6 +265,17 @@ export function QuizDialog({
                 <button type="button" className="lnk-btn lnk-btn-primary" onClick={next}>
                   {t(over ? 'laniakea.quiz.result' : 'laniakea.quiz.next')}
                 </button>
+              </div>
+            )}
+            {answered && (
+              <div className="mt-4">
+                <SendFeedback
+                  key={shown}
+                  look="laniakea"
+                  prompt={t('feedback.question')}
+                  subject={t('feedback.questionSubject', { planet: title, path: slug })}
+                  context={asShown(question, answered)}
+                />
               </div>
             )}
             {!answered && <p className="m-0 text-[11px] lnk-dim">{t('laniakea.quiz.leaveNote')}</p>}

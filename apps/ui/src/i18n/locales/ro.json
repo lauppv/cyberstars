@@ -661,6 +661,14 @@
     "admin": "admin",
     "retry": "Încearcă din nou"
   },
+  "feedback": {
+    "lesson": "Crezi că ar trebui să schimbăm ceva la lecția asta? Spune-ne și ajută comunitatea să crească",
+    "question": "Ceva nu e în regulă cu întrebarea asta? Spune-ne",
+    "placeholder": "Ce ai schimba?",
+    "sent": "Mulțumim! Adminii o vor citi, iar răspunsul lor apare în Suport",
+    "lessonSubject": "Feedback lecție: {{title}} ({{path}})",
+    "questionSubject": "Întrebare Laniakea: {{planet}} ({{path}})"
+  },
   "forum": {
     "time": {
       "justNow": "chiar acum",

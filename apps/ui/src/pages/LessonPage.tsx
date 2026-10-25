@@ -37,6 +37,7 @@ import { SubmissionsPanel } from '../components/judge/SubmissionsPanel';
 import { SolutionModal } from '../components/code/SolutionModal';
 import { SolutionConfirmModal } from '../components/code/SolutionConfirmModal';
 import { ShareToForumModal } from '../components/forum/ShareToForumModal';
+import { SendFeedback } from '../components/support/SendFeedback';
 import { LessonTour } from '../components/tour/LessonTour';
 import { TourNotice } from '../components/tour/TourNotice';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
@@ -837,6 +838,18 @@ export function LessonPage() {
                     {t('lesson.next')}
                   </button>
                 </div>
+                {isLoggedIn && (
+                  <div className="pb-4">
+                    <SendFeedback
+                      key={`${category}/${lesson}`}
+                      prompt={t('feedback.lesson')}
+                      subject={t('feedback.lessonSubject', {
+                        title,
+                        path: `${category}/${lesson}`,
+                      })}
+                    />
+                  </div>
+                )}
               </div>
             </div>
             {view === 'result' && testResults && (
