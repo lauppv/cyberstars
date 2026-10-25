@@ -143,7 +143,7 @@
       "options": [
         "Nu se schimbă nimic, Python îl face singur număr",
         "Fiecare citire e socotită critică",
-        "nivel ține textul \"90\", așa că, comparat cu 0, oprește programul cu o eroare",
+        "nivel ține textul \"90\", așa că `nivel < 0` oprește programul cu o eroare",
         "Bucla nu se mai oprește"
       ],
       "answer": 2

@@ -143,7 +143,7 @@
       "options": [
         "Nothing changes, Python turns it into a number by itself",
         "Every reading counts as critical",
-        "level holds the text \"90\", so comparing it with 0 stops the program with an error",
+        "level holds the text \"90\", so `level < 0` stops the program with an error",
         "The loop never ends"
       ],
       "answer": 2
