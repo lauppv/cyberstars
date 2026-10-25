@@ -279,5 +279,230 @@
       "answer": 1
     }
   ],
-  "templates": []
+  "templates": [
+    {
+      "id": "list-print",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}})",
+      "values": [
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "varste",
+          "items": "42, 35, 60, 29"
+        },
+        {
+          "v": "preturi",
+          "items": "3.14, 9.99, 12.5"
+        },
+        {
+          "v": "fanioane",
+          "items": "True, False, True"
+        },
+        {
+          "v": "incarcatura",
+          "items": "\"oxigen\", \"apa\", \"mancare\", \"combustibil\""
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\""
+        }
+      ],
+      "mistakes": [
+        ["print({{v}})", "print(\"{{v}}\")"],
+        ["print({{v}})", "print({{v}}[0])"],
+        ["print({{v}})", "print(len({{v}}))"]
+      ]
+    },
+    {
+      "id": "list-index",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}}[{{i}}])",
+      "values": [
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "v": "varste",
+          "items": "42, 35, 60, 29",
+          "i": 2,
+          "j": 3
+        },
+        {
+          "v": "varste",
+          "items": "42, 35, 60, 29",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "v": "incarcatura",
+          "items": "\"oxigen\", \"apa\", \"mancare\", \"combustibil\"",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Shadow\", \"Jess\", \"Quincy\"",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "v": "fructe",
+          "items": "\"mar\", \"para\", \"pruna\", \"kiwi\"",
+          "i": 2,
+          "j": 3
+        },
+        {
+          "v": "preturi",
+          "items": "3.14, 9.99, 12.5",
+          "i": 0,
+          "j": 1
+        }
+      ],
+      "mistakes": [
+        ["[{{i}}]", "[{{j}}]"],
+        ["print({{v}}[{{i}}])", "print({{v}})"],
+        ["print({{v}}[{{i}}])", "print(\"{{v}}[{{i}}]\")"]
+      ]
+    },
+    {
+      "id": "list-len",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "varste",
+          "items": "42, 35, 60, 29"
+        },
+        {
+          "v": "incarcatura",
+          "items": "\"oxigen\", \"apa\", \"mancare\", \"combustibil\""
+        },
+        {
+          "v": "scoruri",
+          "items": "7, 3"
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\", \"Mercur\", \"Jupiter\""
+        },
+        {
+          "v": "preturi",
+          "items": "3.14, 9.99, 12.5"
+        }
+      ],
+      "mistakes": [
+        ["print(len({{v}}))", "print({{v}})"],
+        ["print(len({{v}}))", "print(len({{v}}) - 1)"],
+        ["len({{v}})", "len(\"{{v}}\")"],
+        ["print(len({{v}}))", "print({{v}}[0])"]
+      ]
+    },
+    {
+      "id": "list-gap-index",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}}[___])",
+      "values": [
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "i": 1,
+          "j": 2,
+          "k": 0,
+          "n": 3
+        },
+        {
+          "v": "varste",
+          "items": "42, 35, 60, 29",
+          "i": 0,
+          "j": 1,
+          "k": 2,
+          "n": 4
+        },
+        {
+          "v": "incarcatura",
+          "items": "\"oxigen\", \"apa\", \"mancare\", \"combustibil\"",
+          "i": 3,
+          "j": 2,
+          "k": 1,
+          "n": 4
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Shadow\", \"Jess\", \"Quincy\"",
+          "i": 2,
+          "j": 1,
+          "k": 0,
+          "n": 3
+        },
+        {
+          "v": "fructe",
+          "items": "\"mar\", \"para\", \"pruna\", \"kiwi\"",
+          "i": 1,
+          "j": 2,
+          "k": 0,
+          "n": 4
+        },
+        {
+          "v": "preturi",
+          "items": "3.14, 9.99, 12.5",
+          "i": 2,
+          "j": 1,
+          "k": 0,
+          "n": 3
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["{{n}}", "{{j}}", "{{k}}"]
+    },
+    {
+      "id": "list-gap-len",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nprint(___)",
+      "values": [
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "varste",
+          "items": "42, 35, 60, 29"
+        },
+        {
+          "v": "incarcatura",
+          "items": "\"oxigen\", \"apa\", \"mancare\", \"combustibil\""
+        },
+        {
+          "v": "scoruri",
+          "items": "7, 3"
+        },
+        {
+          "v": "preturi",
+          "items": "3.14, 9.99, 12.5"
+        }
+      ],
+      "answer": "len({{v}})",
+      "wrong": ["{{v}}", "len(\"{{v}}\")", "len({{v}}) - 1", "{{v}}[0]"]
+    }
+  ]
 }

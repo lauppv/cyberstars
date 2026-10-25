@@ -1,0 +1,233 @@
+{
+  "note": "Made by npm run make:quiz from the templates in lists-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "list-print-a3512d",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(names)",
+      "options": ["['Tommy', 'Lance', 'Cortez']", "names", "Tommy", "3"],
+      "answer": 0
+    },
+    {
+      "id": "list-print-770742",
+      "text": "What does this print?",
+      "code": "ages = [42, 35, 60, 29]\nprint(ages)",
+      "options": ["[42, 35, 60, 29]", "ages", "42", "4"],
+      "answer": 0
+    },
+    {
+      "id": "list-print-691941",
+      "text": "What does this print?",
+      "code": "prices = [3.14, 9.99, 12.5]\nprint(prices)",
+      "options": ["[3.14, 9.99, 12.5]", "prices", "3.14", "3"],
+      "answer": 0
+    },
+    {
+      "id": "list-print-06897a",
+      "text": "What does this print?",
+      "code": "flags = [True, False, True]\nprint(flags)",
+      "options": ["[True, False, True]", "flags", "True", "3"],
+      "answer": 0
+    },
+    {
+      "id": "list-print-4c60ec",
+      "text": "What does this print?",
+      "code": "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]\nprint(cargo)",
+      "options": ["['oxygen', 'water', 'food', 'fuel']", "cargo", "oxygen", "4"],
+      "answer": 0
+    },
+    {
+      "id": "list-print-2953b8",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\"]\nprint(planets)",
+      "options": ["['Mars', 'Venus', 'Earth']", "planets", "Mars", "3"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-f84b18",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(names[0])",
+      "options": ["Tommy", "Lance", "['Tommy', 'Lance', 'Cortez']", "names[0]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-ccaec8",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(names[1])",
+      "options": ["Lance", "Cortez", "['Tommy', 'Lance', 'Cortez']", "names[1]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-9bcf8a",
+      "text": "What does this print?",
+      "code": "ages = [42, 35, 60, 29]\nprint(ages[2])",
+      "options": ["60", "29", "[42, 35, 60, 29]", "ages[2]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-9532d3",
+      "text": "What does this print?",
+      "code": "ages = [42, 35, 60, 29]\nprint(ages[0])",
+      "options": ["42", "35", "[42, 35, 60, 29]", "ages[0]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-948fe5",
+      "text": "What does this print?",
+      "code": "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]\nprint(cargo[1])",
+      "options": ["water", "food", "['oxygen', 'water', 'food', 'fuel']", "cargo[1]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-15141a",
+      "text": "What does this print?",
+      "code": "crew = [\"Shadow\", \"Jess\", \"Quincy\"]\nprint(crew[1])",
+      "options": ["Jess", "Quincy", "['Shadow', 'Jess', 'Quincy']", "crew[1]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-e9ef59",
+      "text": "What does this print?",
+      "code": "fruit = [\"apple\", \"pear\", \"plum\", \"kiwi\"]\nprint(fruit[2])",
+      "options": ["plum", "kiwi", "['apple', 'pear', 'plum', 'kiwi']", "fruit[2]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-e12752",
+      "text": "What does this print?",
+      "code": "prices = [3.14, 9.99, 12.5]\nprint(prices[0])",
+      "options": ["3.14", "9.99", "[3.14, 9.99, 12.5]", "prices[0]"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-a3512d",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(len(names))",
+      "options": ["3", "['Tommy', 'Lance', 'Cortez']", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-770742",
+      "text": "What does this print?",
+      "code": "ages = [42, 35, 60, 29]\nprint(len(ages))",
+      "options": ["4", "[42, 35, 60, 29]", "3", "42"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-4c60ec",
+      "text": "What does this print?",
+      "code": "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]\nprint(len(cargo))",
+      "options": ["4", "['oxygen', 'water', 'food', 'fuel']", "3", "5"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-cf0bb4",
+      "text": "What does this print?",
+      "code": "scores = [7, 3]\nprint(len(scores))",
+      "options": ["2", "[7, 3]", "1", "6"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-3b6c59",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Mercury\", \"Jupiter\"]\nprint(len(planets))",
+      "options": ["5", "['Mars', 'Venus', 'Earth', 'Mercury', 'Jupiter']", "4", "7"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-691941",
+      "text": "What does this print?",
+      "code": "prices = [3.14, 9.99, 12.5]\nprint(len(prices))",
+      "options": ["3", "[3.14, 9.99, 12.5]", "2", "6"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-b23122",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(names[___])",
+      "output": "Lance",
+      "options": ["1", "3", "2", "0"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-de17a8",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "ages = [42, 35, 60, 29]\nprint(ages[___])",
+      "output": "42",
+      "options": ["0", "4", "1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-c48f6c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]\nprint(cargo[___])",
+      "output": "fuel",
+      "options": ["3", "4", "2", "1"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-cafc87",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "crew = [\"Shadow\", \"Jess\", \"Quincy\"]\nprint(crew[___])",
+      "output": "Quincy",
+      "options": ["2", "3", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-b45a7e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "fruit = [\"apple\", \"pear\", \"plum\", \"kiwi\"]\nprint(fruit[___])",
+      "output": "pear",
+      "options": ["1", "4", "2", "0"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-72c08c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "prices = [3.14, 9.99, 12.5]\nprint(prices[___])",
+      "output": "12.5",
+      "options": ["2", "3", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-len-7b4d65",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(___)",
+      "output": "3",
+      "options": ["len(names)", "names", "len(\"names\")", "len(names) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-len-19af66",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "ages = [42, 35, 60, 29]\nprint(___)",
+      "output": "4",
+      "options": ["len(ages)", "ages", "len(ages) - 1", "ages[0]"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-len-76b8f7",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]\nprint(___)",
+      "output": "4",
+      "options": ["len(cargo)", "cargo", "len(\"cargo\")", "len(cargo) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-len-c8f1d8",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "scores = [7, 3]\nprint(___)",
+      "output": "2",
+      "options": ["len(scores)", "scores", "len(\"scores\")", "len(scores) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-len-d41f06",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "prices = [3.14, 9.99, 12.5]\nprint(___)",
+      "output": "3",
+      "options": ["len(prices)", "prices", "len(\"prices\")", "len(prices) - 1"],
+      "answer": 0
+    }
+  ]
+}

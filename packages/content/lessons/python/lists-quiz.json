@@ -274,5 +274,230 @@
       "answer": 1
     }
   ],
-  "templates": []
+  "templates": [
+    {
+      "id": "list-print",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}})",
+      "values": [
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "ages",
+          "items": "42, 35, 60, 29"
+        },
+        {
+          "v": "prices",
+          "items": "3.14, 9.99, 12.5"
+        },
+        {
+          "v": "flags",
+          "items": "True, False, True"
+        },
+        {
+          "v": "cargo",
+          "items": "\"oxygen\", \"water\", \"food\", \"fuel\""
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\""
+        }
+      ],
+      "mistakes": [
+        ["print({{v}})", "print(\"{{v}}\")"],
+        ["print({{v}})", "print({{v}}[0])"],
+        ["print({{v}})", "print(len({{v}}))"]
+      ]
+    },
+    {
+      "id": "list-index",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}}[{{i}}])",
+      "values": [
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "v": "ages",
+          "items": "42, 35, 60, 29",
+          "i": 2,
+          "j": 3
+        },
+        {
+          "v": "ages",
+          "items": "42, 35, 60, 29",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "v": "cargo",
+          "items": "\"oxygen\", \"water\", \"food\", \"fuel\"",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "v": "crew",
+          "items": "\"Shadow\", \"Jess\", \"Quincy\"",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "v": "fruit",
+          "items": "\"apple\", \"pear\", \"plum\", \"kiwi\"",
+          "i": 2,
+          "j": 3
+        },
+        {
+          "v": "prices",
+          "items": "3.14, 9.99, 12.5",
+          "i": 0,
+          "j": 1
+        }
+      ],
+      "mistakes": [
+        ["[{{i}}]", "[{{j}}]"],
+        ["print({{v}}[{{i}}])", "print({{v}})"],
+        ["print({{v}}[{{i}}])", "print(\"{{v}}[{{i}}]\")"]
+      ]
+    },
+    {
+      "id": "list-len",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "ages",
+          "items": "42, 35, 60, 29"
+        },
+        {
+          "v": "cargo",
+          "items": "\"oxygen\", \"water\", \"food\", \"fuel\""
+        },
+        {
+          "v": "scores",
+          "items": "7, 3"
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\", \"Mercury\", \"Jupiter\""
+        },
+        {
+          "v": "prices",
+          "items": "3.14, 9.99, 12.5"
+        }
+      ],
+      "mistakes": [
+        ["print(len({{v}}))", "print({{v}})"],
+        ["print(len({{v}}))", "print(len({{v}}) - 1)"],
+        ["len({{v}})", "len(\"{{v}}\")"],
+        ["print(len({{v}}))", "print({{v}}[0])"]
+      ]
+    },
+    {
+      "id": "list-gap-index",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}}[___])",
+      "values": [
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "i": 1,
+          "j": 2,
+          "k": 0,
+          "n": 3
+        },
+        {
+          "v": "ages",
+          "items": "42, 35, 60, 29",
+          "i": 0,
+          "j": 1,
+          "k": 2,
+          "n": 4
+        },
+        {
+          "v": "cargo",
+          "items": "\"oxygen\", \"water\", \"food\", \"fuel\"",
+          "i": 3,
+          "j": 2,
+          "k": 1,
+          "n": 4
+        },
+        {
+          "v": "crew",
+          "items": "\"Shadow\", \"Jess\", \"Quincy\"",
+          "i": 2,
+          "j": 1,
+          "k": 0,
+          "n": 3
+        },
+        {
+          "v": "fruit",
+          "items": "\"apple\", \"pear\", \"plum\", \"kiwi\"",
+          "i": 1,
+          "j": 2,
+          "k": 0,
+          "n": 4
+        },
+        {
+          "v": "prices",
+          "items": "3.14, 9.99, 12.5",
+          "i": 2,
+          "j": 1,
+          "k": 0,
+          "n": 3
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["{{n}}", "{{j}}", "{{k}}"]
+    },
+    {
+      "id": "list-gap-len",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\nprint(___)",
+      "values": [
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "ages",
+          "items": "42, 35, 60, 29"
+        },
+        {
+          "v": "cargo",
+          "items": "\"oxygen\", \"water\", \"food\", \"fuel\""
+        },
+        {
+          "v": "scores",
+          "items": "7, 3"
+        },
+        {
+          "v": "prices",
+          "items": "3.14, 9.99, 12.5"
+        }
+      ],
+      "answer": "len({{v}})",
+      "wrong": ["{{v}}", "len(\"{{v}}\")", "len({{v}}) - 1", "{{v}}[0]"]
+    }
+  ]
 }
