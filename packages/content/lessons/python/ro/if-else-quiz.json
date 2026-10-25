@@ -378,11 +378,11 @@
       "code": "{{v}} = {{x}}\nif {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
       "values": [
         {
-          "v": "x",
-          "x": 4,
-          "y": 4,
-          "yes": "Bau",
-          "no": "Fara bau"
+          "v": "stele",
+          "x": 3,
+          "y": 3,
+          "yes": "Punctaj maxim",
+          "no": "Inca nu"
         },
         {
           "v": "vieti",
@@ -602,11 +602,11 @@
       "code": "{{v}} = {{x}}\nif {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
       "values": [
         {
-          "v": "x",
-          "x": 4,
-          "y": 4,
-          "yes": "Bau",
-          "no": "Fara bau"
+          "v": "stele",
+          "x": 5,
+          "y": 5,
+          "yes": "Punctaj maxim",
+          "no": "Inca nu"
         },
         {
           "v": "vieti",

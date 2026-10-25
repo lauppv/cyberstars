@@ -68,10 +68,10 @@
       "answer": 0
     },
     {
-      "id": "ie-equal-6a2dc8",
+      "id": "ie-equal-86192f",
       "text": "Ce afișează?",
-      "code": "x = 4\nif x == 4:\n    print(\"Bau\")\nelse:\n    print(\"Fara bau\")",
-      "options": ["Bau", "Fara bau", "Bau\nFara bau", "True"],
+      "code": "stele = 3\nif stele == 3:\n    print(\"Punctaj maxim\")\nelse:\n    print(\"Inca nu\")",
+      "options": ["Punctaj maxim", "Inca nu", "Punctaj maxim\nInca nu", "True"],
       "answer": 0
     },
     {
@@ -258,11 +258,11 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-equal-53c798",
+      "id": "ie-bad-equal-3170e0",
       "text": "Care linie oprește programul să afișeze asta?",
-      "code": "x = 4\nif x = 4:\n    print(\"Bau\")\nelse:\n    print(\"Fara bau\")",
-      "output": "Bau",
-      "options": ["if x = 4:", "x = 4", "print(\"Bau\")", "else:"],
+      "code": "stele = 5\nif stele = 5:\n    print(\"Punctaj maxim\")\nelse:\n    print(\"Inca nu\")",
+      "output": "Punctaj maxim",
+      "options": ["if stele = 5:", "stele = 5", "print(\"Punctaj maxim\")", "else:"],
       "answer": 0
     },
     {

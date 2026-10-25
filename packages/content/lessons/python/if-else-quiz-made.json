@@ -68,10 +68,10 @@
       "answer": 0
     },
     {
-      "id": "ie-equal-6a2dc8",
+      "id": "ie-equal-86192f",
       "text": "What does this print?",
-      "code": "x = 4\nif x == 4:\n    print(\"Boo\")\nelse:\n    print(\"No boo\")",
-      "options": ["Boo", "No boo", "Boo\nNo boo", "True"],
+      "code": "stars = 3\nif stars == 3:\n    print(\"Full score\")\nelse:\n    print(\"Not yet\")",
+      "options": ["Full score", "Not yet", "Full score\nNot yet", "True"],
       "answer": 0
     },
     {
@@ -263,11 +263,11 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-equal-53c798",
+      "id": "ie-bad-equal-3170e0",
       "text": "Which line stops this program from printing this?",
-      "code": "x = 4\nif x = 4:\n    print(\"Boo\")\nelse:\n    print(\"No boo\")",
-      "output": "Boo",
-      "options": ["if x = 4:", "x = 4", "print(\"Boo\")", "else:"],
+      "code": "stars = 5\nif stars = 5:\n    print(\"Full score\")\nelse:\n    print(\"Not yet\")",
+      "output": "Full score",
+      "options": ["if stars = 5:", "stars = 5", "print(\"Full score\")", "else:"],
       "answer": 0
     },
     {
