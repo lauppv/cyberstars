@@ -271,5 +271,140 @@
       "answer": 1
     }
   ],
-  "templates": []
+  "templates": [
+    {
+      "id": "bs-one-compare",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{a}}, {{b}}]\nif numbers[0] > numbers[1]:\n    numbers[0], numbers[1] = numbers[1], numbers[0]\nprint(numbers)",
+      "values": [
+        {
+          "a": 5,
+          "b": 3
+        },
+        {
+          "a": 3,
+          "b": 5
+        },
+        {
+          "a": 8,
+          "b": 1
+        },
+        {
+          "a": 2,
+          "b": 9
+        },
+        {
+          "a": 7,
+          "b": 4
+        }
+      ],
+      "mistakes": [
+        ["numbers[0] > numbers[1]", "numbers[0] < numbers[1]"],
+        ["numbers[0], numbers[1] = numbers[1], numbers[0]", "numbers[0] = numbers[1]"],
+        ["print(numbers)", "print(numbers[0])"],
+        ["print(numbers)", "print(numbers[1])"]
+      ]
+    },
+    {
+      "id": "bs-one-pass",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{list}}]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        },
+        {
+          "list": "3, 1, 2, 4"
+        },
+        {
+          "list": "6, 5, 4, 3"
+        },
+        {
+          "list": "1, 9, 2, 8"
+        }
+      ],
+      "mistakes": [
+        ["numbers[j] > numbers[j + 1]", "numbers[j] < numbers[j + 1]"],
+        ["numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]", "numbers[j] = numbers[j + 1]"],
+        ["range(len(numbers) - 1)", "range(1)"],
+        ["print(numbers)", "print(sorted(numbers))"]
+      ]
+    },
+    {
+      "id": "bs-gap-swap",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "numbers = [{{list}}]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            ___\nprint(numbers)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        }
+      ],
+      "answer": "numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]",
+      "wrong": [
+        "numbers[j] = numbers[j + 1]",
+        "numbers[j + 1] = numbers[j]",
+        "numbers[j], numbers[j + 1] = numbers[j], numbers[j + 1]",
+        "numbers[j] == numbers[j + 1]"
+      ]
+    },
+    {
+      "id": "bs-swap-vars",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "a = {{a}}\nb = {{b}}\na, b = b, a\nprint(a, b)",
+      "values": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        {
+          "a": 5,
+          "b": 9
+        },
+        {
+          "a": 42,
+          "b": 17
+        },
+        {
+          "a": 3,
+          "b": 8
+        },
+        {
+          "a": 10,
+          "b": 4
+        },
+        {
+          "a": 7,
+          "b": 70
+        }
+      ],
+      "mistakes": [
+        ["a, b = b, a", "a = b\nb = a"],
+        ["a, b = b, a\n", ""],
+        ["print(a, b)", "print(\"a\", \"b\")"],
+        ["a, b = b, a", "b = a\na = b"]
+      ]
+    }
+  ]
 }

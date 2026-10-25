@@ -1,0 +1,183 @@
+{
+  "note": "Made by npm run make:quiz from the templates in bubble-sort-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "bs-one-compare-50b4f7",
+      "text": "What does this print?",
+      "code": "numbers = [5, 3]\nif numbers[0] > numbers[1]:\n    numbers[0], numbers[1] = numbers[1], numbers[0]\nprint(numbers)",
+      "options": ["[3, 5]", "[5, 3]", "[3, 3]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-compare-8c7306",
+      "text": "What does this print?",
+      "code": "numbers = [3, 5]\nif numbers[0] > numbers[1]:\n    numbers[0], numbers[1] = numbers[1], numbers[0]\nprint(numbers)",
+      "options": ["[3, 5]", "[5, 3]", "3", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-compare-530d0a",
+      "text": "What does this print?",
+      "code": "numbers = [8, 1]\nif numbers[0] > numbers[1]:\n    numbers[0], numbers[1] = numbers[1], numbers[0]\nprint(numbers)",
+      "options": ["[1, 8]", "[8, 1]", "[1, 1]", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-compare-439990",
+      "text": "What does this print?",
+      "code": "numbers = [2, 9]\nif numbers[0] > numbers[1]:\n    numbers[0], numbers[1] = numbers[1], numbers[0]\nprint(numbers)",
+      "options": ["[2, 9]", "[9, 2]", "2", "9"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-compare-e42333",
+      "text": "What does this print?",
+      "code": "numbers = [7, 4]\nif numbers[0] > numbers[1]:\n    numbers[0], numbers[1] = numbers[1], numbers[0]\nprint(numbers)",
+      "options": ["[4, 7]", "[7, 4]", "[4, 4]", "4"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-f49fc8",
+      "text": "What does this print?",
+      "code": "numbers = [5, 3, 8, 1, 2]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["[3, 5, 1, 2, 8]", "[5, 8, 3, 2, 1]", "[3, 3, 1, 1, 2]", "[3, 5, 8, 1, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-7e1566",
+      "text": "What does this print?",
+      "code": "numbers = [4, 1, 3, 2]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["[1, 3, 2, 4]", "[4, 3, 2, 1]", "[1, 1, 2, 2]", "[1, 4, 3, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-295bae",
+      "text": "What does this print?",
+      "code": "numbers = [9, 7, 8]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["[7, 8, 9]", "[9, 8, 7]", "[7, 7, 8]", "[7, 9, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-b8a3c8",
+      "text": "What does this print?",
+      "code": "numbers = [2, 6, 1, 5]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["[2, 1, 5, 6]", "[6, 2, 5, 1]", "[2, 1, 1, 5]", "[2, 6, 1, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-a6493f",
+      "text": "What does this print?",
+      "code": "numbers = [3, 1, 2, 4]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["[1, 2, 3, 4]", "[3, 2, 4, 1]", "[1, 1, 2, 4]", "[1, 3, 2, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-ad86ca",
+      "text": "What does this print?",
+      "code": "numbers = [6, 5, 4, 3]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["[5, 4, 3, 6]", "[6, 5, 4, 3]", "[5, 4, 3, 3]", "[5, 6, 4, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-767c42",
+      "text": "What does this print?",
+      "code": "numbers = [1, 9, 2, 8]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["[1, 2, 8, 9]", "[9, 2, 8, 1]", "[1, 2, 2, 8]", "[1, 9, 2, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-swap-b3f62d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "numbers = [5, 3, 8, 1, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            ___\nprint(numbers)",
+      "output": "[1, 2, 3, 5, 8]",
+      "options": [
+        "numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]",
+        "numbers[j] = numbers[j + 1]",
+        "numbers[j + 1] = numbers[j]",
+        "numbers[j], numbers[j + 1] = numbers[j], numbers[j + 1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-swap-b24c7c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "numbers = [4, 1, 3, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            ___\nprint(numbers)",
+      "output": "[1, 2, 3, 4]",
+      "options": [
+        "numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]",
+        "numbers[j] = numbers[j + 1]",
+        "numbers[j + 1] = numbers[j]",
+        "numbers[j], numbers[j + 1] = numbers[j], numbers[j + 1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-swap-e48f83",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "numbers = [9, 7, 8]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            ___\nprint(numbers)",
+      "output": "[7, 8, 9]",
+      "options": [
+        "numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]",
+        "numbers[j] = numbers[j + 1]",
+        "numbers[j + 1] = numbers[j]",
+        "numbers[j], numbers[j + 1] = numbers[j], numbers[j + 1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-swap-b79b95",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "numbers = [2, 6, 1, 5]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            ___\nprint(numbers)",
+      "output": "[1, 2, 5, 6]",
+      "options": [
+        "numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]",
+        "numbers[j] = numbers[j + 1]",
+        "numbers[j + 1] = numbers[j]",
+        "numbers[j], numbers[j + 1] = numbers[j], numbers[j + 1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-2122d4",
+      "text": "What does this print?",
+      "code": "a = 1\nb = 2\na, b = b, a\nprint(a, b)",
+      "options": ["2 1", "2 2", "1 2", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-fce826",
+      "text": "What does this print?",
+      "code": "a = 5\nb = 9\na, b = b, a\nprint(a, b)",
+      "options": ["9 5", "9 9", "5 9", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-25b7c4",
+      "text": "What does this print?",
+      "code": "a = 42\nb = 17\na, b = b, a\nprint(a, b)",
+      "options": ["17 42", "17 17", "42 17", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-c10bad",
+      "text": "What does this print?",
+      "code": "a = 3\nb = 8\na, b = b, a\nprint(a, b)",
+      "options": ["8 3", "8 8", "3 8", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-ccac34",
+      "text": "What does this print?",
+      "code": "a = 10\nb = 4\na, b = b, a\nprint(a, b)",
+      "options": ["4 10", "4 4", "10 4", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-fc9567",
+      "text": "What does this print?",
+      "code": "a = 7\nb = 70\na, b = b, a\nprint(a, b)",
+      "options": ["70 7", "70 70", "7 70", "a b"],
+      "answer": 0
+    }
+  ]
+}
