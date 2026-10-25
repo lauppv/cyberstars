@@ -80,6 +80,14 @@ body {
   font-family: var(--font);
 }
 
+/* Below md the sidebar lies over the page as a drawer (AppShell), and the
+   page holds still under it instead of scrolling away behind. */
+@media (width < 48rem) {
+  html[data-drawer] {
+    overflow: hidden;
+  }
+}
+
 /* Landing page colour, the way a band of colour fades in and out on
    vio-fotografie and kenvo-site: from the page into a purple wash and back,
    so a section stands out without a hard edge. */

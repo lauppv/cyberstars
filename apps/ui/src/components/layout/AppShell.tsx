@@ -86,13 +86,20 @@ export function AppShell({ children }: { children: ReactNode }) {
     if (!isWide()) setToggled(false);
   }
 
+  // The page under an open drawer holds still (the stylesheet does that only
+  // where it is a drawer, so turning the phone keeps it right), and Escape closes it
   useEffect(() => {
     if (state !== 'open') return;
+    const root = document.documentElement;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && !isWide()) setToggled(false);
     };
+    root.dataset.drawer = 'open';
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    return () => {
+      delete root.dataset.drawer;
+      document.removeEventListener('keydown', onKey);
+    };
   }, [state]);
 
   // Home is the welcome page for a visitor and the dashboard for a student, so
@@ -104,12 +111,19 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <SidebarContext.Provider value={{ state, toggle }}>
+      {/* A finger lifted beside the drawer closes it, after a swipe too, which
+          never ends in a click. Its click is cancelled, so it can't land on
+          the page once the backdrop is gone */}
       {state === 'open' && (
         <button
           type="button"
           tabIndex={-1}
           aria-hidden="true"
           onClick={() => setToggled(false)}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            setToggled(false);
+          }}
           className="md:hidden fixed inset-0 z-40 bg-black/50 border-none cursor-default"
         />
       )}

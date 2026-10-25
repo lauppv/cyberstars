@@ -166,6 +166,19 @@ describe('AppShell', () => {
     expect(state()).toBe('closed');
   });
 
+  it('holds the page still under the drawer and closes when a finger lifts beside it', () => {
+    wide = false;
+    const { container } = renderShell();
+    expect(document.documentElement.dataset.drawer).toBeUndefined();
+    fireEvent.click(screen.getByText(/toggle/));
+    expect(document.documentElement.dataset.drawer).toBe('open');
+
+    const lifted = fireEvent.touchEnd(container.querySelector('button[aria-hidden="true"]')!);
+    expect(lifted).toBe(false);
+    expect(state()).toBe('closed');
+    expect(document.documentElement.dataset.drawer).toBeUndefined();
+  });
+
   it('keeps working when storage is blocked', () => {
     vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
       throw new Error('blocked');
