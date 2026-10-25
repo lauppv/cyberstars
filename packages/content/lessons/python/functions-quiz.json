@@ -172,7 +172,7 @@
     },
     {
       "id": "q20",
-      "text": "In the Onboard Calculator mission, why go a and b through int() but the operator doesn't?",
+      "text": "In the Onboard Calculator mission, why do a and b go through int() but the operator doesn't?",
       "options": [
         "We compute with a and b, while the operator is a sign like + that we compare as text",
         "int() only works twice in a program",
