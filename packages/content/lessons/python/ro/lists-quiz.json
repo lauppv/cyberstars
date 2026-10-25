@@ -417,6 +417,49 @@
       ]
     },
     {
+      "id": "list-append",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{v}}.append({{new}})\nprint({{v}})",
+      "values": [
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\"",
+          "new": "\"Cortez\""
+        },
+        {
+          "v": "varste",
+          "items": "42, 35",
+          "new": 60
+        },
+        {
+          "v": "incarcatura",
+          "items": "\"oxigen\", \"apa\"",
+          "new": "\"mancare\""
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Shadow\"",
+          "new": "\"Jess\""
+        },
+        {
+          "v": "preturi",
+          "items": "3.14, 9.99",
+          "new": 12.5
+        },
+        {
+          "v": "fanioane",
+          "items": "True",
+          "new": "False"
+        }
+      ],
+      "mistakes": [
+        ["{{v}}.append({{new}})\n", ""],
+        ["{{v}}.append({{new}})", "{{v}}.insert(0, {{new}})"],
+        ["{{v}}.append({{new}})", "{{v}} = [{{new}}]"]
+      ]
+    },
+    {
       "id": "list-gap-index",
       "kind": "missing-value",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
@@ -473,6 +516,146 @@
       ],
       "answer": "{{i}}",
       "wrong": ["{{n}}", "{{j}}", "{{k}}"]
+    },
+    {
+      "id": "list-gap-append",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n___\nprint({{v}})",
+      "values": [
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\"",
+          "new": "\"Cortez\""
+        },
+        {
+          "v": "incarcatura",
+          "items": "\"oxigen\", \"apa\"",
+          "new": "\"mancare\""
+        },
+        {
+          "v": "varste",
+          "items": "42, 35",
+          "new": 60
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Shadow\", \"Jess\"",
+          "new": "\"Quincy\""
+        },
+        {
+          "v": "preturi",
+          "items": "3.14, 9.99",
+          "new": 12.5
+        }
+      ],
+      "answer": "{{v}}.append({{new}})",
+      "wrong": ["{{v}} = [{{new}}]", "{{v}}.add({{new}})", "{{v}}[1] = {{new}}", "append({{new}})"]
+    },
+    {
+      "id": "list-two-appends",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = []\n{{v}}.append({{a}})\n{{v}}.append({{b}})\nprint({{v}})",
+      "values": [
+        {
+          "v": "incarcatura",
+          "a": "\"oxigen\"",
+          "b": "\"apa\""
+        },
+        {
+          "v": "nume",
+          "a": "\"Tommy\"",
+          "b": "\"Lance\""
+        },
+        {
+          "v": "varste",
+          "a": 42,
+          "b": 35
+        },
+        {
+          "v": "echipaj",
+          "a": "\"Shadow\"",
+          "b": "\"Jess\""
+        },
+        {
+          "v": "fanioane",
+          "a": "True",
+          "b": "False"
+        }
+      ],
+      "mistakes": [
+        ["{{v}}.append({{a}})\n{{v}}.append({{b}})", "{{v}}.append({{b}})\n{{v}}.append({{a}})"],
+        ["print({{v}})", "print(len({{v}}))"],
+        ["{{v}}.append({{b}})", "{{v}} = [{{b}}]"]
+      ]
+    },
+    {
+      "id": "list-bad-append",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "{{v}} = []\n{{v}}.append({{a}})\n{{v}}.append({{b}})\nprint({{v}})",
+      "values": [
+        {
+          "v": "incarcatura",
+          "a": "\"oxigen\"",
+          "b": "\"apa\""
+        },
+        {
+          "v": "nume",
+          "a": "\"Tommy\"",
+          "b": "\"Lance\""
+        },
+        {
+          "v": "varste",
+          "a": 42,
+          "b": 35
+        },
+        {
+          "v": "echipaj",
+          "a": "\"Shadow\"",
+          "b": "\"Jess\""
+        }
+      ],
+      "bug": ["{{v}}.append({{b}})", "{{v}}.append[{{b}}]"]
+    },
+    {
+      "id": "list-len-append",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{v}}.append({{new}})\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "new": "\"Ken\""
+        },
+        {
+          "v": "varste",
+          "items": "42, 35",
+          "new": 60
+        },
+        {
+          "v": "incarcatura",
+          "items": "\"oxigen\", \"apa\", \"mancare\", \"combustibil\"",
+          "new": "\"gheata\""
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Shadow\"",
+          "new": "\"Jess\""
+        },
+        {
+          "v": "preturi",
+          "items": "3.14, 9.99, 12.5, 1.5",
+          "new": 2.0
+        }
+      ],
+      "mistakes": [
+        ["{{v}}.append({{new}})\n", ""],
+        ["print(len({{v}}))", "print({{v}})"],
+        ["print(len({{v}}))", "print(len({{v}}) + 1)"]
+      ]
     },
     {
       "id": "list-gap-len",

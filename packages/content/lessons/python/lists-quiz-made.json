@@ -142,6 +142,58 @@
       "answer": 0
     },
     {
+      "id": "list-append-edabb4",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\"]\nnames.append(\"Cortez\")\nprint(names)",
+      "options": [
+        "['Tommy', 'Lance', 'Cortez']",
+        "['Tommy', 'Lance']",
+        "['Cortez', 'Tommy', 'Lance']",
+        "['Cortez']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-append-bf0ac5",
+      "text": "What does this print?",
+      "code": "ages = [42, 35]\nages.append(60)\nprint(ages)",
+      "options": ["[42, 35, 60]", "[42, 35]", "[60, 42, 35]", "[60]"],
+      "answer": 0
+    },
+    {
+      "id": "list-append-0d578f",
+      "text": "What does this print?",
+      "code": "cargo = [\"oxygen\", \"water\"]\ncargo.append(\"food\")\nprint(cargo)",
+      "options": [
+        "['oxygen', 'water', 'food']",
+        "['oxygen', 'water']",
+        "['food', 'oxygen', 'water']",
+        "['food']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-append-fb7e2b",
+      "text": "What does this print?",
+      "code": "crew = [\"Shadow\"]\ncrew.append(\"Jess\")\nprint(crew)",
+      "options": ["['Shadow', 'Jess']", "['Shadow']", "['Jess', 'Shadow']", "['Jess']"],
+      "answer": 0
+    },
+    {
+      "id": "list-append-c412b7",
+      "text": "What does this print?",
+      "code": "prices = [3.14, 9.99]\nprices.append(12.5)\nprint(prices)",
+      "options": ["[3.14, 9.99, 12.5]", "[3.14, 9.99]", "[12.5, 3.14, 9.99]", "[12.5]"],
+      "answer": 0
+    },
+    {
+      "id": "list-append-213203",
+      "text": "What does this print?",
+      "code": "flags = [True]\nflags.append(False)\nprint(flags)",
+      "options": ["[True, False]", "[True]", "[False, True]", "[False]"],
+      "answer": 0
+    },
+    {
       "id": "list-gap-index-b23122",
       "text": "What goes in the gap so the program prints this?",
       "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(names[___])",
@@ -187,6 +239,173 @@
       "code": "prices = [3.14, 9.99, 12.5]\nprint(prices[___])",
       "output": "12.5",
       "options": ["2", "3", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-append-22c9fd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "names = [\"Tommy\", \"Lance\"]\n___\nprint(names)",
+      "output": "['Tommy', 'Lance', 'Cortez']",
+      "options": [
+        "names.append(\"Cortez\")",
+        "names = [\"Cortez\"]",
+        "names.add(\"Cortez\")",
+        "names[1] = \"Cortez\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-append-151c51",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "cargo = [\"oxygen\", \"water\"]\n___\nprint(cargo)",
+      "output": "['oxygen', 'water', 'food']",
+      "options": [
+        "cargo.append(\"food\")",
+        "cargo = [\"food\"]",
+        "cargo.add(\"food\")",
+        "cargo[1] = \"food\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-append-00f3fc",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "ages = [42, 35]\n___\nprint(ages)",
+      "output": "[42, 35, 60]",
+      "options": ["ages.append(60)", "ages = [60]", "ages.add(60)", "ages[1] = 60"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-append-0d0c22",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "crew = [\"Shadow\", \"Jess\"]\n___\nprint(crew)",
+      "output": "['Shadow', 'Jess', 'Quincy']",
+      "options": [
+        "crew.append(\"Quincy\")",
+        "crew = [\"Quincy\"]",
+        "crew.add(\"Quincy\")",
+        "crew[1] = \"Quincy\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-append-bcb128",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "prices = [3.14, 9.99]\n___\nprint(prices)",
+      "output": "[3.14, 9.99, 12.5]",
+      "options": ["prices.append(12.5)", "prices = [12.5]", "prices.add(12.5)", "prices[1] = 12.5"],
+      "answer": 0
+    },
+    {
+      "id": "list-two-appends-42ee2b",
+      "text": "What does this print?",
+      "code": "cargo = []\ncargo.append(\"oxygen\")\ncargo.append(\"water\")\nprint(cargo)",
+      "options": ["['oxygen', 'water']", "['water', 'oxygen']", "2", "['water']"],
+      "answer": 0
+    },
+    {
+      "id": "list-two-appends-89dc8d",
+      "text": "What does this print?",
+      "code": "names = []\nnames.append(\"Tommy\")\nnames.append(\"Lance\")\nprint(names)",
+      "options": ["['Tommy', 'Lance']", "['Lance', 'Tommy']", "2", "['Lance']"],
+      "answer": 0
+    },
+    {
+      "id": "list-two-appends-b026b8",
+      "text": "What does this print?",
+      "code": "ages = []\nages.append(42)\nages.append(35)\nprint(ages)",
+      "options": ["[42, 35]", "[35, 42]", "2", "[35]"],
+      "answer": 0
+    },
+    {
+      "id": "list-two-appends-00e5b5",
+      "text": "What does this print?",
+      "code": "crew = []\ncrew.append(\"Shadow\")\ncrew.append(\"Jess\")\nprint(crew)",
+      "options": ["['Shadow', 'Jess']", "['Jess', 'Shadow']", "2", "['Jess']"],
+      "answer": 0
+    },
+    {
+      "id": "list-two-appends-cb00f8",
+      "text": "What does this print?",
+      "code": "flags = []\nflags.append(True)\nflags.append(False)\nprint(flags)",
+      "options": ["[True, False]", "[False, True]", "2", "[False]"],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-append-ccf421",
+      "text": "Which line stops this program from printing this?",
+      "code": "cargo = []\ncargo.append(\"oxygen\")\ncargo.append[\"water\"]\nprint(cargo)",
+      "output": "['oxygen', 'water']",
+      "options": [
+        "cargo.append[\"water\"]",
+        "cargo = []",
+        "cargo.append(\"oxygen\")",
+        "print(cargo)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-append-f23f8d",
+      "text": "Which line stops this program from printing this?",
+      "code": "names = []\nnames.append(\"Tommy\")\nnames.append[\"Lance\"]\nprint(names)",
+      "output": "['Tommy', 'Lance']",
+      "options": [
+        "names.append[\"Lance\"]",
+        "names = []",
+        "names.append(\"Tommy\")",
+        "print(names)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-append-335b05",
+      "text": "Which line stops this program from printing this?",
+      "code": "ages = []\nages.append(42)\nages.append[35]\nprint(ages)",
+      "output": "[42, 35]",
+      "options": ["ages.append[35]", "ages = []", "ages.append(42)", "print(ages)"],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-append-22b2b7",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = []\ncrew.append(\"Shadow\")\ncrew.append[\"Jess\"]\nprint(crew)",
+      "output": "['Shadow', 'Jess']",
+      "options": ["crew.append[\"Jess\"]", "crew = []", "crew.append(\"Shadow\")", "print(crew)"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-append-ae919e",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nnames.append(\"Ken\")\nprint(len(names))",
+      "options": ["4", "3", "['Tommy', 'Lance', 'Cortez', 'Ken']", "5"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-append-bf0ac5",
+      "text": "What does this print?",
+      "code": "ages = [42, 35]\nages.append(60)\nprint(len(ages))",
+      "options": ["3", "2", "[42, 35, 60]", "4"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-append-d3aa57",
+      "text": "What does this print?",
+      "code": "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]\ncargo.append(\"ice\")\nprint(len(cargo))",
+      "options": ["5", "4", "['oxygen', 'water', 'food', 'fuel', 'ice']", "6"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-append-fb7e2b",
+      "text": "What does this print?",
+      "code": "crew = [\"Shadow\"]\ncrew.append(\"Jess\")\nprint(len(crew))",
+      "options": ["2", "1", "['Shadow', 'Jess']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-append-b886ad",
+      "text": "What does this print?",
+      "code": "prices = [3.14, 9.99, 12.5, 1.5]\nprices.append(2)\nprint(len(prices))",
+      "options": ["5", "4", "[3.14, 9.99, 12.5, 1.5, 2]", "6"],
       "answer": 0
     },
     {
