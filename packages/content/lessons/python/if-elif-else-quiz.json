@@ -1,0 +1,1276 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does elif add after an if?",
+      "options": [
+        "Another condition, checked only when the ones above it are false",
+        "A block that always runs after the if",
+        "A second program that runs at the same time",
+        "A condition that is checked before the if"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "In an if / elif / else chain that ends with an else, how many blocks run?",
+      "options": [
+        "Every block whose condition is true",
+        "All of them, from top to bottom",
+        "Exactly one: the first block whose condition is true, or the else when none is",
+        "The last block whose condition is true"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Several conditions of a chain are true. Which block runs?",
+      "options": [
+        "The last true one",
+        "The first true one, from the top",
+        "Every true one, one after another",
+        "None: Python stops with an error"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Once a block of the chain has run, what does the program do?",
+      "options": [
+        "It checks the next elif too",
+        "It runs the else as well",
+        "It starts the chain again from the top",
+        "It leaves the chain and goes on with the line after it"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "When does the else at the end of a chain run?",
+      "options": [
+        "When no if or elif above it is true",
+        "Every time, after the other blocks",
+        "Only when the if is false, whatever the elifs say",
+        "When the last elif is false, even if the if was true"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "When does the lesson say to chain if / elif / else?",
+      "options": [
+        "Whenever a program has more than two conditions",
+        "When we want every condition to be checked",
+        "When we test the same variable for several cases",
+        "Only when the conditions use =="
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Which of these lines is right?",
+      "options": [
+        "else if seconds == 60:",
+        "elif seconds == 60:",
+        "elif seconds == 60",
+        "elif: seconds == 60"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Where can an elif go?",
+      "options": [
+        "Anywhere in the program, on its own",
+        "After the else",
+        "Before the if",
+        "Right after the block of an if or of another elif"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Does a chain need an else at the end?",
+      "options": [
+        "No, but without it nothing runs when no condition is true",
+        "Yes, Python stops with an error without it",
+        "Yes, otherwise the elif lines are skipped",
+        "No, and without it every elif block runs"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "How many elif can a chain have?",
+      "options": [
+        "Only one",
+        "At most three",
+        "As many as we need",
+        "As many as the variables we check"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "Why does this print two lines?",
+      "code": "seconds = 60\nif seconds == 100:\n    print(\"Starting the computers\")\nif seconds == 60:\n    print(\"Checking the tower\")\nif seconds < 10:\n    print(\"Taking off\")\nelse:\n    print(\"No effect\")",
+      "options": [
+        "An else always runs at the end of a program",
+        "The else belongs only to the last if, and seconds < 10 is false",
+        "seconds == 60 is checked twice",
+        "Every if runs its block, true or not"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "What is wrong with this chain?",
+      "code": "score = 95\nif score >= 50:\n    print(\"Pass\")\nelif score >= 90:\n    print(\"Excellent\")",
+      "options": [
+        "Nothing, it prints Excellent for 95",
+        "An elif needs an else after it",
+        "It prints both Pass and Excellent for 95",
+        "Excellent never prints: a score of 90 or more already passes the first check"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "A score of 90 or more is Excellent, 50 or more is Pass. In which order do we check?",
+      "options": [
+        "score >= 90 in the if, then score >= 50 in the elif",
+        "score >= 50 in the if, then score >= 90 in the elif",
+        "score >= 50 in the if, then score >= 90 in the else",
+        "Any order, the chain prints the same"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "What is the difference between three ifs one after another and an if / elif / elif chain?",
+      "options": [
+        "None, they always print the same",
+        "Separate ifs are all checked; a chain stops at its first true condition",
+        "In a chain the elifs are checked before the if",
+        "Separate ifs stop at their first true condition"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "In the lesson's rocket, with seconds = 60, which conditions does Python check?",
+      "options": [
+        "Only seconds == 60",
+        "All of them, then it picks seconds == 60",
+        "seconds == 100, then seconds == 60, then it leaves the chain",
+        "seconds == 60, then all the ones below it"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "In the lesson's rocket, what is printed with seconds = 45?",
+      "options": [
+        "Starting secondary engines",
+        "Checking connection with the control tower",
+        "Nothing: 45 matches no condition",
+        "45 seconds has no effect"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "In the lesson's rocket, with seconds = 9, what decides the line that is printed?",
+      "options": [
+        "The if inside elif seconds < 10, which checks error_detected",
+        "Only the else at the end of the chain",
+        "seconds == 10, since 9 is close to 10",
+        "Nothing: 9 matches no condition"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "What do we call an if written inside the block of another if, elif or else?",
+      "options": ["An elif", "A chained if", "A nested if", "A double condition"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "How far is the block of a nested if indented?",
+      "options": [
+        "As far left as the outer if",
+        "One step more than the nested if line itself",
+        "As far as the nested if line itself",
+        "Not at all, it is already inside a block"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "In the Oxygen Level Monitor mission, what does the station print with oxygen = 79?",
+      "options": [
+        "Oxygen low - conserve power",
+        "Oxygen nominal",
+        "Oxygen critical - seal the bay",
+        "Oxygen nominal and Oxygen low - conserve power"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "In the Oxygen Level Monitor mission, what does the station print with oxygen = 12 and crew_aboard = False?",
+      "options": [
+        "Emergency - evacuate now",
+        "Oxygen critical - seal the bay",
+        "Nothing, since the crew is not aboard",
+        "We have no crew aboard, so venting the bay is safe"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q22",
+      "text": "The mission's chain starts with `if oxygen >= 80:`. Which line checks for 50 to 79?",
+      "options": [
+        "if oxygen >= 50:",
+        "elif oxygen <= 79:",
+        "elif oxygen >= 50:",
+        "elif oxygen > 50:"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "Why doesn't `elif oxygen >= 50:` also need to check that oxygen is below 80?",
+      "options": [
+        "Python checks the 80 by itself at the end",
+        "The elif is checked only when oxygen >= 80 was false, so oxygen is already below 80",
+        "Because 50 is less than 80, Python skips the check",
+        "It does need to: 90 would print Oxygen low too"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Is the else reached when x is 5?",
+      "code": "x = 5\nif x > 10:\n    print(\"Big\")\nelif x > 0:\n    print(\"Small\")\nelse:\n    print(\"Zero or less\")",
+      "options": [
+        "Yes, the else always runs at the end",
+        "Yes, because x > 10 is false",
+        "No: x > 0 is true, so the chain stops there",
+        "No, Python stops with an error first"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "What happens when this runs?",
+      "code": "x = 3\nelif x > 0:\n    print(\"Positive\")",
+      "options": [
+        "It stops with an error: an elif needs an if before it",
+        "It prints Positive",
+        "It prints nothing",
+        "It prints 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What happens when this runs?",
+      "code": "x = 3\nif x > 5:\n    print(\"Big\")\nelse:\n    print(\"Small\")\nelif x > 0:\n    print(\"Positive\")",
+      "options": [
+        "It prints Small",
+        "It prints Small, then Positive",
+        "It prints Positive",
+        "It stops with an error: an elif can't come after the else"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "Which program prints exactly one line, whatever number temperature holds?",
+      "options": [
+        "if temperature < 0:\n    print(\"Ice\")\nif temperature < 20:\n    print(\"Cool\")\nelse:\n    print(\"Warm\")",
+        "if temperature < 0:\n    print(\"Ice\")\nelif temperature < 20:\n    print(\"Cool\")\nelse:\n    print(\"Warm\")",
+        "if temperature < 0:\n    print(\"Ice\")\nelif temperature < 20:\n    print(\"Cool\")",
+        "if temperature < 0:\n    print(\"Ice\")\nelif temperature < 20:\n    print(\"Cool\")\nprint(\"Warm\")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "In `elif seconds < 10:  # the last 10 seconds`, what does the comment do?",
+      "options": [
+        "Nothing for Python, it only explains the line to whoever reads it",
+        "It makes the elif check the last 10 seconds",
+        "It is printed when the elif runs",
+        "It waits 10 seconds before the elif"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "Which value of seconds makes the lesson's rocket start the main engines?",
+      "options": ["9", "20", "10", "11"],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "A chain checks `if lives == 0:`, then `elif lives == 3:`, and has no else. What runs when lives is 2?",
+      "options": [
+        "The block of lives == 0",
+        "Nothing: no condition is true and there is no else",
+        "The block of lives == 3",
+        "Python stops with an error, since a chain needs an else"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "iee-chain",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxygen",
+          "x": 85,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical"
+        },
+        {
+          "v": "oxygen",
+          "x": 50,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical"
+        },
+        {
+          "v": "oxygen",
+          "x": 30,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical"
+        },
+        {
+          "v": "score",
+          "x": 90,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail"
+        },
+        {
+          "v": "score",
+          "x": 75,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail"
+        },
+        {
+          "v": "score",
+          "x": 20,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail"
+        },
+        {
+          "v": "battery",
+          "x": 100,
+          "a": 60,
+          "b": 20,
+          "ta": "Battery good",
+          "tb": "Battery low",
+          "tc": "Charge now"
+        },
+        {
+          "v": "battery",
+          "x": 20,
+          "a": 60,
+          "b": 20,
+          "ta": "Battery good",
+          "tb": "Battery low",
+          "tc": "Charge now"
+        },
+        {
+          "v": "fuel",
+          "x": 10,
+          "a": 70,
+          "b": 30,
+          "ta": "Full tank",
+          "tb": "Half tank",
+          "tc": "Refuel now"
+        },
+        {
+          "v": "fuel",
+          "x": 69,
+          "a": 70,
+          "b": 30,
+          "ta": "Full tank",
+          "tb": "Half tank",
+          "tc": "Refuel now"
+        }
+      ],
+      "mistakes": [
+        ["if {{v}} >= {{a}}:", "if {{v}} < {{a}}:"],
+        ["elif {{v}} >= {{b}}:", "if {{v}} >= {{b}}:"],
+        ["else:\n    print(\"{{tc}}\")", "print(\"{{tc}}\")"],
+        ["elif {{v}} >= {{b}}:", "elif {{v}} < {{b}}:"],
+        [
+          "if {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+          "print(\"{{ta}}\")\nprint(\"{{tb}}\")\nprint(\"{{tc}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "iee-first-wins",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} > {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "speed",
+          "x": 120,
+          "a": 50,
+          "b": 100,
+          "ta": "Fast",
+          "tb": "Too fast",
+          "tc": "Slow"
+        },
+        {
+          "v": "speed",
+          "x": 70,
+          "a": 50,
+          "b": 100,
+          "ta": "Fast",
+          "tb": "Too fast",
+          "tc": "Slow"
+        },
+        {
+          "v": "temperature",
+          "x": 35,
+          "a": 10,
+          "b": 30,
+          "ta": "Warm",
+          "tb": "Hot",
+          "tc": "Cold"
+        },
+        {
+          "v": "temperature",
+          "x": 20,
+          "a": 10,
+          "b": 30,
+          "ta": "Warm",
+          "tb": "Hot",
+          "tc": "Cold"
+        },
+        {
+          "v": "points",
+          "x": 800,
+          "a": 100,
+          "b": 500,
+          "ta": "Good",
+          "tb": "New record",
+          "tc": "Try again"
+        },
+        {
+          "v": "points",
+          "x": 300,
+          "a": 100,
+          "b": 500,
+          "ta": "Good",
+          "tb": "New record",
+          "tc": "Try again"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{ta}}\")", "print(\"{{tb}}\")"],
+        ["elif {{v}} > {{b}}:", "if {{v}} > {{b}}:"],
+        [
+          "if {{v}} > {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} > {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+          "print(\"{{ta}}\")\nprint(\"{{tb}}\")\nprint(\"{{tc}}\")"
+        ],
+        ["print(\"{{ta}}\")", "print(\"{{tc}}\")"]
+      ]
+    },
+    {
+      "id": "iee-countdown",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} == {{b}}:\n    print(\"{{tb}}\")\nelif {{v}} == {{c}}:\n    print(\"{{tc}}\")\nelse:\n    print(\"{{td}}\")",
+      "values": [
+        {
+          "v": "seconds",
+          "x": 100,
+          "y": 60,
+          "z": 20,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Starting the computers",
+          "tb": "Checking the tower",
+          "tc": "Starting the engines",
+          "td": "Nothing to do yet"
+        },
+        {
+          "v": "seconds",
+          "x": 60,
+          "y": 20,
+          "z": 100,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Starting the computers",
+          "tb": "Checking the tower",
+          "tc": "Starting the engines",
+          "td": "Nothing to do yet"
+        },
+        {
+          "v": "seconds",
+          "x": 20,
+          "y": 100,
+          "z": 60,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Starting the computers",
+          "tb": "Checking the tower",
+          "tc": "Starting the engines",
+          "td": "Nothing to do yet"
+        },
+        {
+          "v": "seconds",
+          "x": 45,
+          "y": 60,
+          "z": 100,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Starting the computers",
+          "tb": "Checking the tower",
+          "tc": "Starting the engines",
+          "td": "Nothing to do yet"
+        },
+        {
+          "v": "seconds",
+          "x": 10,
+          "y": 20,
+          "z": 60,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Starting the computers",
+          "tb": "Checking the tower",
+          "tc": "Starting the engines",
+          "td": "Nothing to do yet"
+        },
+        {
+          "v": "day",
+          "x": 7,
+          "y": 1,
+          "z": 6,
+          "a": 1,
+          "b": 6,
+          "c": 7,
+          "ta": "The week starts",
+          "tb": "Saturday",
+          "tc": "Sunday",
+          "td": "A work day"
+        },
+        {
+          "v": "day",
+          "x": 3,
+          "y": 6,
+          "z": 7,
+          "a": 1,
+          "b": 6,
+          "c": 7,
+          "ta": "The week starts",
+          "tb": "Saturday",
+          "tc": "Sunday",
+          "td": "A work day"
+        },
+        {
+          "v": "level",
+          "x": 5,
+          "y": 10,
+          "z": 1,
+          "a": 1,
+          "b": 5,
+          "c": 10,
+          "ta": "Tutorial",
+          "tb": "Mini boss",
+          "tc": "Final boss",
+          "td": "Normal level"
+        }
+      ],
+      "mistakes": [
+        ["elif {{v}} == {{b}}:", "if {{v}} == {{b}}:"],
+        ["else:\n    print(\"{{td}}\")", "print(\"{{td}}\")"],
+        ["{{v}} = {{x}}", "{{v}} = {{y}}"],
+        ["{{v}} = {{x}}", "{{v}} = {{z}}"],
+        [
+          "if {{v}} == {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} == {{b}}:\n    print(\"{{tb}}\")\nelif {{v}} == {{c}}:\n    print(\"{{tc}}\")\nelse:\n    print(\"{{td}}\")",
+          "print(\"{{ta}}\")\nprint(\"{{tb}}\")\nprint(\"{{tc}}\")\nprint(\"{{td}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "iee-nested",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\n{{w}} = {{b}}\nif {{v}} >= {{h}}:\n    print(\"{{th}}\")\nelif {{v}} >= {{m}}:\n    print(\"{{tm}}\")\nelse:\n    if {{w}} == True:\n        print(\"{{ty}}\")\n    else:\n        print(\"{{tn}}\")",
+      "values": [
+        {
+          "v": "oxygen",
+          "w": "crew_aboard",
+          "x": 12,
+          "b": "True",
+          "nb": "False",
+          "h": 50,
+          "m": 20,
+          "th": "Oxygen nominal",
+          "tm": "Oxygen critical",
+          "ty": "Evacuate now",
+          "tn": "Vent the bay",
+          "y1": 70,
+          "y2": 30
+        },
+        {
+          "v": "oxygen",
+          "w": "crew_aboard",
+          "x": 12,
+          "b": "False",
+          "nb": "True",
+          "h": 50,
+          "m": 20,
+          "th": "Oxygen nominal",
+          "tm": "Oxygen critical",
+          "ty": "Evacuate now",
+          "tn": "Vent the bay",
+          "y1": 70,
+          "y2": 30
+        },
+        {
+          "v": "oxygen",
+          "w": "crew_aboard",
+          "x": 65,
+          "b": "True",
+          "nb": "False",
+          "h": 50,
+          "m": 20,
+          "th": "Oxygen nominal",
+          "tm": "Oxygen critical",
+          "ty": "Evacuate now",
+          "tn": "Vent the bay",
+          "y1": 30,
+          "y2": 10
+        },
+        {
+          "v": "battery",
+          "w": "charger",
+          "x": 10,
+          "b": "True",
+          "nb": "False",
+          "h": 50,
+          "m": 20,
+          "th": "Ready to fly",
+          "tm": "Short flights only",
+          "ty": "Charging",
+          "tn": "Find a charger",
+          "y1": 80,
+          "y2": 35
+        },
+        {
+          "v": "battery",
+          "w": "charger",
+          "x": 10,
+          "b": "False",
+          "nb": "True",
+          "h": 50,
+          "m": 20,
+          "th": "Ready to fly",
+          "tm": "Short flights only",
+          "ty": "Charging",
+          "tn": "Find a charger",
+          "y1": 80,
+          "y2": 35
+        },
+        {
+          "v": "battery",
+          "w": "charger",
+          "x": 35,
+          "b": "False",
+          "nb": "True",
+          "h": 50,
+          "m": 20,
+          "th": "Ready to fly",
+          "tm": "Short flights only",
+          "ty": "Charging",
+          "tn": "Find a charger",
+          "y1": 80,
+          "y2": 5
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{x}}", "{{v}} = {{y1}}"],
+        ["{{v}} = {{x}}", "{{v}} = {{y2}}"],
+        ["{{w}} = {{b}}", "{{w}} = {{nb}}"],
+        [
+          "if {{v}} >= {{h}}:\n    print(\"{{th}}\")\nelif {{v}} >= {{m}}:\n    print(\"{{tm}}\")\nelse:\n    if {{w}} == True:\n        print(\"{{ty}}\")\n    else:\n        print(\"{{tn}}\")",
+          "print(\"{{th}}\")\nprint(\"{{tm}}\")\nprint(\"{{ty}}\")\nprint(\"{{tn}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "iee-two-ifs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{a}}:\n    print(\"{{ta}}\")\nif {{v}} == {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "seconds",
+          "x": 100,
+          "y": 60,
+          "z": 30,
+          "a": 100,
+          "b": 60,
+          "ta": "Starting the computers",
+          "tb": "Checking the tower",
+          "tc": "No effect"
+        },
+        {
+          "v": "seconds",
+          "x": 60,
+          "y": 100,
+          "z": 30,
+          "a": 100,
+          "b": 60,
+          "ta": "Starting the computers",
+          "tb": "Checking the tower",
+          "tc": "No effect"
+        },
+        {
+          "v": "seconds",
+          "x": 30,
+          "y": 100,
+          "z": 60,
+          "a": 100,
+          "b": 60,
+          "ta": "Starting the computers",
+          "tb": "Checking the tower",
+          "tc": "No effect"
+        },
+        {
+          "v": "lives",
+          "x": 3,
+          "y": 0,
+          "z": 1,
+          "a": 3,
+          "b": 0,
+          "ta": "Full health",
+          "tb": "Game over",
+          "tc": "Keep playing"
+        },
+        {
+          "v": "lives",
+          "x": 0,
+          "y": 3,
+          "z": 2,
+          "a": 3,
+          "b": 0,
+          "ta": "Full health",
+          "tb": "Game over",
+          "tc": "Keep playing"
+        }
+      ],
+      "mistakes": [
+        ["if {{v}} == {{b}}:", "elif {{v}} == {{b}}:"],
+        ["{{v}} = {{x}}", "{{v}} = {{y}}"],
+        ["{{v}} = {{x}}", "{{v}} = {{z}}"],
+        [
+          "if {{v}} == {{a}}:\n    print(\"{{ta}}\")\nif {{v}} == {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+          "print(\"{{ta}}\")\nprint(\"{{tb}}\")\nprint(\"{{tc}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "iee-which-chain",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxygen",
+          "x": 65,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical"
+        },
+        {
+          "v": "score",
+          "x": 95,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail"
+        },
+        {
+          "v": "battery",
+          "x": 40,
+          "a": 60,
+          "b": 20,
+          "ta": "Battery good",
+          "tb": "Battery low",
+          "tc": "Charge now"
+        },
+        {
+          "v": "fuel",
+          "x": 75,
+          "a": 70,
+          "b": 30,
+          "ta": "Full tank",
+          "tb": "Half tank",
+          "tc": "Refuel now"
+        },
+        {
+          "v": "score",
+          "x": 50,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail"
+        }
+      ],
+      "mistakes": [
+        ["if {{v}} >= {{a}}:", "if {{v}} < {{a}}:"],
+        ["elif {{v}} >= {{b}}:", "elif {{v}} < {{b}}:"],
+        ["elif {{v}} >= {{b}}:", "if {{v}} >= {{b}}:"],
+        ["else:\n    print(\"{{tc}}\")", "print(\"{{tc}}\")"]
+      ]
+    },
+    {
+      "id": "iee-which-countdown",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} == {{b}}:\n    print(\"{{tb}}\")\nelif {{v}} == {{c}}:\n    print(\"{{tc}}\")\nelse:\n    print(\"{{td}}\")",
+      "values": [
+        {
+          "v": "seconds",
+          "x": 100,
+          "y": 60,
+          "z": 20,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Starting the computers",
+          "tb": "Checking the tower",
+          "tc": "Starting the engines",
+          "td": "Nothing to do yet"
+        },
+        {
+          "v": "seconds",
+          "x": 60,
+          "y": 20,
+          "z": 100,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Starting the computers",
+          "tb": "Checking the tower",
+          "tc": "Starting the engines",
+          "td": "Nothing to do yet"
+        },
+        {
+          "v": "day",
+          "x": 6,
+          "y": 1,
+          "z": 7,
+          "a": 1,
+          "b": 6,
+          "c": 7,
+          "ta": "The week starts",
+          "tb": "Saturday",
+          "tc": "Sunday",
+          "td": "A work day"
+        }
+      ],
+      "mistakes": [
+        ["elif {{v}} == {{b}}:", "if {{v}} == {{b}}:"],
+        ["else:\n    print(\"{{td}}\")", "print(\"{{td}}\")"],
+        ["print(\"{{ta}}\")", "print(\"{{tb}}\")"],
+        ["elif {{v}} == {{b}}:", "elif {{v}} == {{a}}:"],
+        ["print(\"{{tb}}\")", "print(\"{{tc}}\")"]
+      ]
+    },
+    {
+      "id": "iee-gap-elif",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\n___ {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxygen",
+          "x": 90,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical"
+        },
+        {
+          "v": "score",
+          "x": 92,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail"
+        },
+        {
+          "v": "battery",
+          "x": 61,
+          "a": 60,
+          "b": 20,
+          "ta": "Battery good",
+          "tb": "Battery low",
+          "tc": "Charge now"
+        },
+        {
+          "v": "fuel",
+          "x": 50,
+          "a": 70,
+          "b": 30,
+          "ta": "Full tank",
+          "tb": "Half tank",
+          "tc": "Refuel now"
+        },
+        {
+          "v": "oxygen",
+          "x": 55,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical"
+        }
+      ],
+      "answer": "elif",
+      "wrong": ["if", "else", "else if", "elseif"]
+    },
+    {
+      "id": "iee-gap-limit",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= ___:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxygen",
+          "x": 65,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical",
+          "w1": 70,
+          "w2": 80,
+          "w3": 66
+        },
+        {
+          "v": "score",
+          "x": 75,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail",
+          "w1": 80,
+          "w2": 90,
+          "w3": 76
+        },
+        {
+          "v": "battery",
+          "x": 30,
+          "a": 60,
+          "b": 20,
+          "ta": "Battery good",
+          "tb": "Battery low",
+          "tc": "Charge now",
+          "w1": 40,
+          "w2": 31,
+          "w3": 60
+        },
+        {
+          "v": "fuel",
+          "x": 45,
+          "a": 70,
+          "b": 30,
+          "ta": "Full tank",
+          "tb": "Half tank",
+          "tc": "Refuel now",
+          "w1": 50,
+          "w2": 46,
+          "w3": 70
+        }
+      ],
+      "answer": "{{b}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "iee-gap-line",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\n___\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxygen",
+          "x": 65,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical"
+        },
+        {
+          "v": "score",
+          "x": 95,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail"
+        },
+        {
+          "v": "battery",
+          "x": 10,
+          "a": 60,
+          "b": 20,
+          "ta": "Battery good",
+          "tb": "Battery low",
+          "tc": "Charge now"
+        },
+        {
+          "v": "fuel",
+          "x": 40,
+          "a": 70,
+          "b": 30,
+          "ta": "Full tank",
+          "tb": "Half tank",
+          "tc": "Refuel now"
+        },
+        {
+          "v": "score",
+          "x": 30,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail"
+        }
+      ],
+      "answer": "elif {{v}} >= {{b}}:",
+      "wrong": ["if {{v}} >= {{b}}:", "elif {{v}} < {{b}}:", "else:", "elif {{v}} >= {{b}}"]
+    },
+    {
+      "id": "iee-gap-nested",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{x}}\n{{w}} = {{b}}\nif {{v}} >= {{m}}:\n    print(\"{{tm}}\")\nelse:\n    ___\n        print(\"{{ty}}\")\n    else:\n        print(\"{{tn}}\")",
+      "values": [
+        {
+          "v": "oxygen",
+          "w": "crew_aboard",
+          "x": 12,
+          "b": "True",
+          "nb": "False",
+          "h": 50,
+          "m": 20,
+          "th": "Oxygen nominal",
+          "tm": "Oxygen critical",
+          "ty": "Evacuate now",
+          "tn": "Vent the bay"
+        },
+        {
+          "v": "oxygen",
+          "w": "crew_aboard",
+          "x": 12,
+          "b": "False",
+          "nb": "True",
+          "h": 50,
+          "m": 20,
+          "th": "Oxygen nominal",
+          "tm": "Oxygen critical",
+          "ty": "Evacuate now",
+          "tn": "Vent the bay"
+        },
+        {
+          "v": "battery",
+          "w": "charger",
+          "x": 5,
+          "b": "True",
+          "nb": "False",
+          "h": 50,
+          "m": 20,
+          "th": "Ready to fly",
+          "tm": "Short flights only",
+          "ty": "Charging",
+          "tn": "Find a charger"
+        },
+        {
+          "v": "battery",
+          "w": "charger",
+          "x": 15,
+          "b": "False",
+          "nb": "True",
+          "h": 50,
+          "m": 20,
+          "th": "Ready to fly",
+          "tm": "Short flights only",
+          "ty": "Charging",
+          "tn": "Find a charger"
+        }
+      ],
+      "answer": "if {{w}} == True:",
+      "wrong": [
+        "elif {{w}} == True:",
+        "if {{w}} = True:",
+        "if {{w}} == False:",
+        "else {{w}} == True:"
+      ]
+    },
+    {
+      "id": "iee-bad-colon",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxygen",
+          "x": 60,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical"
+        },
+        {
+          "v": "fuel",
+          "x": 40,
+          "a": 70,
+          "b": 30,
+          "ta": "Full tank",
+          "tb": "Half tank",
+          "tc": "Refuel now"
+        }
+      ],
+      "bug": ["elif {{v}} >= {{b}}:", "elif {{v}} >= {{b}}"]
+    },
+    {
+      "id": "iee-bad-elif-if",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxygen",
+          "x": 95,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical"
+        },
+        {
+          "v": "score",
+          "x": 100,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail"
+        },
+        {
+          "v": "battery",
+          "x": 80,
+          "a": 60,
+          "b": 20,
+          "ta": "Battery good",
+          "tb": "Battery low",
+          "tc": "Charge now"
+        }
+      ],
+      "bug": ["elif {{v}} >= {{b}}:", "if {{v}} >= {{b}}:"]
+    },
+    {
+      "id": "iee-bad-else",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "score",
+          "x": 35,
+          "a": 90,
+          "b": 50,
+          "ta": "Excellent",
+          "tb": "Pass",
+          "tc": "Fail"
+        },
+        {
+          "v": "battery",
+          "x": 5,
+          "a": 60,
+          "b": 20,
+          "ta": "Battery good",
+          "tb": "Battery low",
+          "tc": "Charge now"
+        }
+      ],
+      "bug": ["else:", "else {{v}} < {{b}}:"]
+    },
+    {
+      "id": "iee-bad-flip",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxygen",
+          "x": 70,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxygen nominal",
+          "tb": "Oxygen low",
+          "tc": "Oxygen critical"
+        },
+        {
+          "v": "fuel",
+          "x": 55,
+          "a": 70,
+          "b": 30,
+          "ta": "Full tank",
+          "tb": "Half tank",
+          "tc": "Refuel now"
+        }
+      ],
+      "bug": ["elif {{v}} >= {{b}}:", "elif {{v}} <= {{b}}:"]
+    }
+  ]
+}

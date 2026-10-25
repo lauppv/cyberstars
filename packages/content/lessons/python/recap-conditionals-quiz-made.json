@@ -1,0 +1,656 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-conditionals-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rc-booth-67eac9",
+      "text": "What does this print?",
+      "code": "age = 8\nis_3d = True\nprice = 10\n\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelif age <= 64:\n    discount = 0\nelse:\n    discount = 4\n\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 7 EUR", "Total: 5 EUR", "Total: 17 EUR", "Total: 2 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-0a8d7d",
+      "text": "What does this print?",
+      "code": "age = 30\nis_3d = False\nprice = 10\n\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelif age <= 64:\n    discount = 0\nelse:\n    discount = 4\n\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 10 EUR", "Total: 12 EUR", "Total: 0 EUR", "Total: 6 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-c818dd",
+      "text": "What does this print?",
+      "code": "age = 70\nis_3d = True\nprice = 10\n\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelif age <= 64:\n    discount = 0\nelse:\n    discount = 4\n\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 8 EUR", "Total: 6 EUR", "Total: 16 EUR", "Total: 2 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-d3f936",
+      "text": "What does this print?",
+      "code": "age = 4\nis_3d = False\nprice = 10\n\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelif age <= 64:\n    discount = 0\nelse:\n    discount = 4\n\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 0 EUR", "Total: 2 EUR", "Total: 20 EUR", "Total: 10 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-7a2725",
+      "text": "What does this print?",
+      "code": "age = 13\nis_3d = True\nprice = 10\n\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelif age <= 64:\n    discount = 0\nelse:\n    discount = 4\n\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 9 EUR", "Total: 7 EUR", "Total: 15 EUR", "Total: 5 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-04952a",
+      "text": "What does this print?",
+      "code": "age = 65\nis_3d = False\nprice = 10\n\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelif age <= 64:\n    discount = 0\nelse:\n    discount = 4\n\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 6 EUR", "Total: 8 EUR", "Total: 14 EUR", "Total: 4 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-06f460",
+      "text": "What does this print?",
+      "code": "age = 17\nis_3d = False\nprice = 10\n\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelif age <= 64:\n    discount = 0\nelse:\n    discount = 4\n\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 7 EUR", "Total: 9 EUR", "Total: 13 EUR", "Total: 3 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-booth-255132",
+      "text": "What does this print?",
+      "code": "age = 6\nis_3d = True\nprice = 10\n\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelif age <= 64:\n    discount = 0\nelse:\n    discount = 4\n\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 7 EUR", "Total: 5 EUR", "Total: 17 EUR", "Total: 2 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-order-8fa2b6",
+      "text": "What does this print?",
+      "code": "score = 95\nif score >= 50:\n    print(\"Pass\")\nelif score >= 90:\n    print(\"Excellent\")\nelse:\n    print(\"Fail\")",
+      "options": ["Pass", "Pass\nExcellent", "Excellent", "Pass\nFail"],
+      "answer": 0
+    },
+    {
+      "id": "rc-order-2f78e2",
+      "text": "What does this print?",
+      "code": "temperature = 35\nif temperature >= 20:\n    print(\"Warm\")\nelif temperature >= 30:\n    print(\"Hot\")\nelse:\n    print(\"Cold\")",
+      "options": ["Warm", "Warm\nHot", "Hot", "Warm\nCold"],
+      "answer": 0
+    },
+    {
+      "id": "rc-order-03fef9",
+      "text": "What does this print?",
+      "code": "fuel = 900\nif fuel >= 100:\n    print(\"Enough fuel\")\nelif fuel >= 800:\n    print(\"Full tank\")\nelse:\n    print(\"Refuel\")",
+      "options": ["Enough fuel", "Enough fuel\nFull tank", "Full tank", "Enough fuel\nRefuel"],
+      "answer": 0
+    },
+    {
+      "id": "rc-order-b1e633",
+      "text": "What does this print?",
+      "code": "stars = 5\nif stars >= 1:\n    print(\"Good\")\nelif stars >= 5:\n    print(\"Perfect\")\nelse:\n    print(\"No stars\")",
+      "options": ["Good", "Good\nPerfect", "Perfect", "Good\nNo stars"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bags-5cd461",
+      "text": "What does this print?",
+      "code": "bags = 1\nprice = 120\nif bags == 0:\n    fee = 0\nelif bags == 1:\n    fee = 15\nelse:\n    fee = 40\ntotal = price + fee\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 135 EUR", "Total: 105 EUR", "Total: 15 EUR", "Total: 120 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bags-21e211",
+      "text": "What does this print?",
+      "code": "bags = 2\nprice = 120\nif bags == 0:\n    fee = 0\nelif bags == 1:\n    fee = 15\nelse:\n    fee = 40\ntotal = price + fee\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 160 EUR", "Total: 80 EUR", "Total: 40 EUR", "Total: 120 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bags-e8584e",
+      "text": "What does this print?",
+      "code": "bags = 3\nprice = 80\nif bags == 0:\n    fee = 0\nelif bags == 1:\n    fee = 20\nelse:\n    fee = 50\ntotal = price + fee\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 130 EUR", "Total: 30 EUR", "Total: 50 EUR", "Total: 80 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bags-731712",
+      "text": "What does this print?",
+      "code": "bags = 1\nprice = 60\nif bags == 0:\n    fee = 0\nelif bags == 1:\n    fee = 20\nelse:\n    fee = 50\ntotal = price + fee\nprint(f\"Total: {total} EUR\")",
+      "options": ["Total: 80 EUR", "Total: 40 EUR", "Total: 20 EUR", "Total: 60 EUR"],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-b2c707",
+      "text": "What does this print?",
+      "code": "seats = 5\nvip = True\nif seats == 0:\n    print(\"Sold out\")\nelif seats < 10:\n    if vip == True:\n        print(\"Your VIP seat is saved\")\n    else:\n        print(\"Only a few seats left\")\nelse:\n    print(\"Plenty of seats\")",
+      "options": [
+        "Your VIP seat is saved",
+        "Only a few seats left",
+        "Plenty of seats",
+        "Your VIP seat is saved\nPlenty of seats"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-88a3fd",
+      "text": "What does this print?",
+      "code": "seats = 8\nvip = False\nif seats == 0:\n    print(\"Sold out\")\nelif seats < 10:\n    if vip == True:\n        print(\"Your VIP seat is saved\")\n    else:\n        print(\"Only a few seats left\")\nelse:\n    print(\"Plenty of seats\")",
+      "options": [
+        "Only a few seats left",
+        "Your VIP seat is saved",
+        "Plenty of seats",
+        "Only a few seats left\nPlenty of seats"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-d6e997",
+      "text": "What does this print?",
+      "code": "seats = 0\nvip = True\nif seats == 0:\n    print(\"Sold out\")\nelif seats < 10:\n    if vip == True:\n        print(\"Your VIP seat is saved\")\n    else:\n        print(\"Only a few seats left\")\nelse:\n    print(\"Plenty of seats\")",
+      "options": [
+        "Sold out",
+        "Sold out\nPlenty of seats",
+        "Your VIP seat is saved",
+        "Sold out\nYour VIP seat is saved"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-3cc1e0",
+      "text": "What does this print?",
+      "code": "seats = 3\nvip = True\nif seats == 0:\n    print(\"Sold out\")\nelif seats < 10:\n    if vip == True:\n        print(\"Your VIP seat is saved\")\n    else:\n        print(\"Only a few seats left\")\nelse:\n    print(\"Plenty of seats\")",
+      "options": [
+        "Your VIP seat is saved",
+        "Only a few seats left",
+        "Plenty of seats",
+        "Your VIP seat is saved\nPlenty of seats"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-9ae760",
+      "text": "What does this print?",
+      "code": "seats = 0\nvip = False\nif seats == 0:\n    print(\"Sold out\")\nelif seats < 10:\n    if vip == True:\n        print(\"Your VIP seat is saved\")\n    else:\n        print(\"Only a few seats left\")\nelse:\n    print(\"Plenty of seats\")",
+      "options": [
+        "Sold out",
+        "Sold out\nPlenty of seats",
+        "Only a few seats left",
+        "Sold out\nOnly a few seats left"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-seats-321d72",
+      "text": "What does this print?",
+      "code": "seats = 9\nvip = False\nif seats == 0:\n    print(\"Sold out\")\nelif seats < 10:\n    if vip == True:\n        print(\"Your VIP seat is saved\")\n    else:\n        print(\"Only a few seats left\")\nelse:\n    print(\"Plenty of seats\")",
+      "options": [
+        "Only a few seats left",
+        "Your VIP seat is saved",
+        "Plenty of seats",
+        "Only a few seats left\nPlenty of seats"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-lines-cb7a9a",
+      "text": "What does this print?",
+      "code": "discount = 5\nis_3d = True\nprice = 10\ntotal = price - discount\nprint(f\"Discount: {discount} EUR\")\nif is_3d == True:\n    total = total + 2\n    print(\"3D fee: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "options": [
+        "Discount: 5 EUR\n3D fee: 2 EUR\nTotal: 7 EUR",
+        "Discount: 5 EUR\nTotal: 5 EUR",
+        "Discount: 5 EUR\n3D fee: 2 EUR\nTotal: 17 EUR",
+        "Discount: {discount} EUR\n3D fee: 2 EUR\nTotal: 7 EUR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-lines-38fe20",
+      "text": "What does this print?",
+      "code": "discount = 0\nis_3d = False\nprice = 10\ntotal = price - discount\nprint(f\"Discount: {discount} EUR\")\nif is_3d == True:\n    total = total + 2\n    print(\"3D fee: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "options": [
+        "Discount: 0 EUR\nTotal: 10 EUR",
+        "Discount: 0 EUR\n3D fee: 2 EUR\nTotal: 12 EUR",
+        "Discount: 0 EUR",
+        "Discount: {discount} EUR\nTotal: 10 EUR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-lines-710a73",
+      "text": "What does this print?",
+      "code": "discount = 3\nis_3d = False\nprice = 10\ntotal = price - discount\nprint(f\"Discount: {discount} EUR\")\nif is_3d == True:\n    total = total + 2\n    print(\"3D fee: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "options": [
+        "Discount: 3 EUR\nTotal: 7 EUR",
+        "Discount: 3 EUR\n3D fee: 2 EUR\nTotal: 9 EUR",
+        "Discount: 3 EUR",
+        "Discount: 3 EUR\nTotal: 13 EUR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-lines-3710a1",
+      "text": "What does this print?",
+      "code": "discount = 4\nis_3d = True\nprice = 10\ntotal = price - discount\nprint(f\"Discount: {discount} EUR\")\nif is_3d == True:\n    total = total + 2\n    print(\"3D fee: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "options": [
+        "Discount: 4 EUR\n3D fee: 2 EUR\nTotal: 8 EUR",
+        "Discount: 4 EUR\nTotal: 6 EUR",
+        "Discount: 4 EUR\n3D fee: 2 EUR\nTotal: 16 EUR",
+        "Discount: {discount} EUR\n3D fee: 2 EUR\nTotal: 8 EUR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-chain-ca7fe8",
+      "text": "Which program shows this?",
+      "output": "Too fast",
+      "options": [
+        "speed = 130\nif speed >= 120:\n    print(\"Too fast\")\nelif speed >= 90:\n    print(\"Fast\")\nelse:\n    print(\"Normal\")",
+        "speed = 130\nif speed >= 90:\n    print(\"Fast\")\nelif speed >= 120:\n    print(\"Too fast\")\nelse:\n    print(\"Normal\")",
+        "speed = 130\nif speed >= 120:\n    print(\"Too fast\")\nif speed >= 90:\n    print(\"Fast\")\nelse:\n    print(\"Normal\")",
+        "speed = 130\nif speed >= 120:\n    print(\"Too fast\")\nelif speed >= 90:\n    print(\"Fast\")\nprint(\"Normal\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-chain-d609f4",
+      "text": "Which program shows this?",
+      "output": "Battery full",
+      "options": [
+        "battery = 95\nif battery >= 90:\n    print(\"Battery full\")\nelif battery >= 20:\n    print(\"Battery OK\")\nelse:\n    print(\"Charge me\")",
+        "battery = 95\nif battery >= 20:\n    print(\"Battery OK\")\nelif battery >= 90:\n    print(\"Battery full\")\nelse:\n    print(\"Charge me\")",
+        "battery = 95\nif battery >= 90:\n    print(\"Battery full\")\nif battery >= 20:\n    print(\"Battery OK\")\nelse:\n    print(\"Charge me\")",
+        "battery = 95\nif battery >= 90:\n    print(\"Battery full\")\nelif battery >= 20:\n    print(\"Battery OK\")\nprint(\"Charge me\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-chain-6a6d6a",
+      "text": "Which program shows this?",
+      "output": "Gold",
+      "options": [
+        "points = 1500\nif points >= 1000:\n    print(\"Gold\")\nelif points >= 500:\n    print(\"Silver\")\nelse:\n    print(\"Bronze\")",
+        "points = 1500\nif points >= 500:\n    print(\"Silver\")\nelif points >= 1000:\n    print(\"Gold\")\nelse:\n    print(\"Bronze\")",
+        "points = 1500\nif points >= 1000:\n    print(\"Gold\")\nif points >= 500:\n    print(\"Silver\")\nelse:\n    print(\"Bronze\")",
+        "points = 1500\nif points >= 1000:\n    print(\"Gold\")\nelif points >= 500:\n    print(\"Silver\")\nprint(\"Bronze\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-chain-76b22c",
+      "text": "Which program shows this?",
+      "output": "Boss level",
+      "options": [
+        "level = 50\nif level >= 40:\n    print(\"Boss level\")\nelif level >= 10:\n    print(\"Hard\")\nelse:\n    print(\"Easy\")",
+        "level = 50\nif level >= 10:\n    print(\"Hard\")\nelif level >= 40:\n    print(\"Boss level\")\nelse:\n    print(\"Easy\")",
+        "level = 50\nif level >= 40:\n    print(\"Boss level\")\nif level >= 10:\n    print(\"Hard\")\nelse:\n    print(\"Easy\")",
+        "level = 50\nif level >= 40:\n    print(\"Boss level\")\nelif level >= 10:\n    print(\"Hard\")\nprint(\"Easy\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-fee-66b3b1",
+      "text": "Which program shows this?",
+      "output": "Total: 9 EUR",
+      "options": [
+        "price = 10\ndiscount = 3\nis_3d = True\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 3\nis_3d = True\ntotal = price - discount\nif is_3d == False:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 3\nis_3d = True\ntotal = price + discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 3\nis_3d = True\ntotal = price - discount\nif is_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-fee-7e329e",
+      "text": "Which program shows this?",
+      "output": "Total: 7 EUR",
+      "options": [
+        "price = 10\ndiscount = 5\nis_3d = True\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 5\nis_3d = True\ntotal = price - discount\nif is_3d == False:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 5\nis_3d = True\ntotal = price + discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 5\nis_3d = True\ntotal = price - discount\nif is_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-fee-48781e",
+      "text": "Which program shows this?",
+      "output": "Total: 8 EUR",
+      "options": [
+        "price = 10\ndiscount = 4\nis_3d = True\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 4\nis_3d = True\ntotal = price - discount\nif is_3d == False:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 4\nis_3d = True\ntotal = price + discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 4\nis_3d = True\ntotal = price - discount\nif is_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-which-fee-db872a",
+      "text": "Which program shows this?",
+      "output": "Total: 2 EUR",
+      "options": [
+        "price = 10\ndiscount = 10\nis_3d = True\ntotal = price - discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 10\nis_3d = True\ntotal = price - discount\nif is_3d == False:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 10\nis_3d = True\ntotal = price + discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+        "price = 10\ndiscount = 10\nis_3d = True\ntotal = discount\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-op-3835c6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "age = 12\nif age < 6:\n    discount = 10\nelif age ___ 12:\n    discount = 5\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 5 EUR",
+      "options": ["<=", "<", ">", "="],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-op-9e5dce",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "age = 8\nif age < 6:\n    discount = 10\nelif age ___ 12:\n    discount = 5\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 5 EUR",
+      "options": ["<=", ">", "=", ">="],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-op-ea8ca5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "age = 30\nif age < 6:\n    discount = 10\nelif age ___ 12:\n    discount = 5\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 0 EUR",
+      "options": ["<=", ">", "=", ">="],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-op-a5ad32",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "age = 17\nif age < 6:\n    discount = 10\nelif age ___ 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 3 EUR",
+      "options": ["<=", "<", ">", "="],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-op-91dd81",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "age = 13\nif age < 6:\n    discount = 10\nelif age ___ 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 3 EUR",
+      "options": ["<=", ">", "=", ">="],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-var-4a3d51",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "price = 10\ndiscount = 5\nfee = 2\ntotal = price - discount + fee\nprint(f\"Total: {___} EUR\")",
+      "output": "Total: 7 EUR",
+      "options": ["total", "price", "discount", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-var-201e33",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "price = 10\ndiscount = 3\nfee = 2\ntotal = price - discount + fee\nprint(f\"Total: {___} EUR\")",
+      "output": "Total: 9 EUR",
+      "options": ["total", "price", "discount", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-var-c61c6c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "price = 10\ndiscount = 4\nfee = 2\ntotal = price - discount + fee\nprint(f\"Total: {___} EUR\")",
+      "output": "Total: 8 EUR",
+      "options": ["total", "price", "discount", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-var-fb9466",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "price = 10\ndiscount = 10\nfee = 2\ntotal = price - discount + fee\nprint(f\"Total: {___} EUR\")",
+      "output": "Total: 2 EUR",
+      "options": ["total", "price", "discount", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-var-d897fb",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "price = 10\ndiscount = 0\nfee = 2\ntotal = price - discount + fee\nprint(f\"Total: {___} EUR\")",
+      "output": "Total: 12 EUR",
+      "options": ["total", "price", "discount", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-bool-4a3d51",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "price = 10\nis_3d = ___\ntotal = price - 5\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 7 EUR",
+      "options": ["True", "False", "\"True\"", "true"],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-bool-201e33",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "price = 10\nis_3d = ___\ntotal = price - 3\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 9 EUR",
+      "options": ["True", "False", "\"True\"", "true"],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-bool-d897fb",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "price = 10\nis_3d = ___\ntotal = price - 0\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 12 EUR",
+      "options": ["True", "False", "\"True\"", "true"],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-total-be35fa",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "price = 10\ndiscount = 5\nis_3d = True\n___\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 7 EUR",
+      "options": [
+        "total = price - discount",
+        "total = price + discount",
+        "total = discount - price",
+        "total = price"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-total-82d244",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "price = 10\ndiscount = 3\nis_3d = False\n___\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 7 EUR",
+      "options": [
+        "total = price - discount",
+        "total = price + discount",
+        "total = discount - price",
+        "total = discount"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-total-1747fa",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "price = 10\ndiscount = 0\nis_3d = True\n___\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 12 EUR",
+      "options": [
+        "total = price - discount",
+        "total = discount - price",
+        "total = discount",
+        "price = price - discount"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-total-61c57d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "price = 10\ndiscount = 10\nis_3d = False\n___\nif is_3d == True:\n    total = total + 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 0 EUR",
+      "options": [
+        "total = price - discount",
+        "total = price + discount",
+        "total = discount",
+        "total = price"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-elif-47501b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "age = 12\nif age < 6:\n    discount = 10\n___\n    discount = 5\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 5 EUR",
+      "options": ["elif age <= 12:", "elif age < 12:", "elif age <= 6:", "elif age < 6:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-elif-158576",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "age = 9\nif age < 6:\n    discount = 10\n___\n    discount = 5\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 5 EUR",
+      "options": ["elif age <= 12:", "elif age <= 6:", "elif age >= 12:", "elif age < 6:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-elif-ca754b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "age = 6\nif age < 6:\n    discount = 10\n___\n    discount = 5\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 5 EUR",
+      "options": ["elif age <= 12:", "elif age >= 12:", "elif age < 6:", "else age <= 12:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-gap-elif-b442c1",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "age = 30\nif age < 6:\n    discount = 10\n___\n    discount = 5\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 0 EUR",
+      "options": ["elif age <= 12:", "elif age >= 12:", "elif age >= 6:", "else age <= 12:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-colon-7d586c",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 10\nif age < 6:\n    discount = 10\nelif age <= 12\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 5 EUR",
+      "options": ["elif age <= 12", "if age < 6:", "discount = 10", "age = 10"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-colon-395436",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 15\nif age < 6:\n    discount = 10\nelif age <= 12\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 3 EUR",
+      "options": ["elif age <= 12", "elif age <= 17:", "else:", "discount = 5"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-colon-289860",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 40\nif age < 6:\n    discount = 10\nelif age <= 12\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 0 EUR",
+      "options": ["elif age <= 12", "if age < 6:", "discount = 10", "elif age <= 17:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-bound-a2379f",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 17\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age < 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 3 EUR",
+      "options": ["elif age < 17:", "elif age <= 12:", "if age < 6:", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-bound-child-c2af92",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 12\nif age < 6:\n    discount = 10\nelif age < 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 5 EUR",
+      "options": ["elif age < 12:", "if age < 6:", "discount = 10", "elif age <= 17:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-bound-free-dfe8bf",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 6\nif age <= 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 5 EUR",
+      "options": ["if age <= 6:", "age = 6", "elif age <= 12:", "elif age <= 17:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-else-b6ee9e",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 30\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse age > 17:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 0 EUR",
+      "options": ["else age > 17:", "elif age <= 17:", "elif age <= 12:", "discount = 0"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-else-9901d5",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 20\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse age > 17:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 0 EUR",
+      "options": [
+        "else age > 17:",
+        "elif age <= 17:",
+        "discount = 0",
+        "print(f\"Discount: {discount} EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-else-418790",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 5\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse age > 17:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "output": "Discount: 10 EUR",
+      "options": ["else age > 17:", "elif age <= 17:", "elif age <= 12:", "if age < 6:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-fee-28377c",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 5\nis_3d = True\nif is_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 7 EUR",
+      "options": ["total = 2", "is_3d = True", "total = 5", "if is_3d == True:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-fee-fdfc7b",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 7\nis_3d = True\nif is_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 9 EUR",
+      "options": ["total = 2", "is_3d = True", "total = 7", "if is_3d == True:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-fee-3210ad",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 10\nis_3d = True\nif is_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
+      "output": "Total: 12 EUR",
+      "options": ["total = 2", "is_3d = True", "total = 10", "if is_3d == True:"],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-equal-28377c",
+      "text": "Which line stops this program from printing this?",
+      "code": "is_3d = True\ntotal = 5\nif is_3d = True:\n    total = total + 2\n    print(\"3D fee: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "output": "3D fee: 2 EUR\nTotal: 7 EUR",
+      "options": [
+        "if is_3d = True:",
+        "total = total + 2",
+        "print(\"3D fee: 2 EUR\")",
+        "print(f\"Total: {total} EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-equal-3210ad",
+      "text": "Which line stops this program from printing this?",
+      "code": "is_3d = True\ntotal = 10\nif is_3d = True:\n    total = total + 2\n    print(\"3D fee: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "output": "3D fee: 2 EUR\nTotal: 12 EUR",
+      "options": [
+        "if is_3d = True:",
+        "total = 10",
+        "total = total + 2",
+        "print(\"3D fee: 2 EUR\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rc-bad-equal-d26dbd",
+      "text": "Which line stops this program from printing this?",
+      "code": "is_3d = True\ntotal = 6\nif is_3d = True:\n    total = total + 2\n    print(\"3D fee: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
+      "output": "3D fee: 2 EUR\nTotal: 8 EUR",
+      "options": ["if is_3d = True:", "total = 6", "is_3d = True", "total = total + 2"],
+      "answer": 0
+    }
+  ]
+}

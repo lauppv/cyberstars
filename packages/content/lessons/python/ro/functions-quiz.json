@@ -1,0 +1,978 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce face `def`?",
+      "options": [
+        "Definește o funcție: o bucată de cod cu nume pe care o putem rula din nou și din nou",
+        "Rulează o funcție imediat",
+        "Afișează o dată liniile de sub el",
+        "Face o variabilă numită def"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează acest program?",
+      "code": "def saluta():\n    print(\"Salut\")",
+      "options": [
+        "Salut",
+        "saluta",
+        "Nimic: funcția e definită, dar nu e apelată niciodată",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Care linie rulează o funcție numită `saluta` care nu primește nimic?",
+      "options": ["def saluta()", "saluta()", "saluta", "print(saluta)"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Ce trebuie pus la sfârșitul unei linii cu `def`?",
+      "options": [";", ".", ",", ":"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "În `def functia_mea(nume, varsta):`, ce sunt `nume` și `varsta`?",
+      "options": [
+        "Două variabile care trebuie să existe înainte de funcție",
+        "Numele funcției, din două bucăți",
+        "Parametrii funcției: țin valorile cu care e apelată",
+        "Două texte pe care funcția le afișează așa cum sunt"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "Cu `def functia_mea(nume, varsta):`, apelul e `functia_mea(\"Cortez\", 60)`. Ce ține `varsta`?",
+      "options": ["60", "\"Cortez\"", "\"Cortez\" și 60", "Nimic, trebuie setată întâi"],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "Putem numi parametrii unei funcții cum vrem?",
+      "options": [
+        "Nu: trebuie să fie nume și varsta",
+        "Da: funcția folosește acele nume în interiorul ei, oricare ar fi ele",
+        "Nu: trebuie să fie la fel ca variabilele din afara funcției",
+        "Doar dintr-o literă, ca n și a"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "def arata(nume, varsta):\n    print(f\"{nume} are {varsta}\")\n\narata(42, \"Tommy\")",
+      "options": ["Tommy are 42", "nume are varsta", "Se oprește cu o eroare", "42 are Tommy"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "De ce pune lecția bucla for într-o funcție în loc s-o copieze?",
+      "options": [
+        "O funcție rulează mai repede decât o buclă for",
+        "O buclă for poate rula doar într-o funcție",
+        "O scriem o dată și o apelăm de câte ori vrem, cu alte valori",
+        "Ca bucla să ruleze o singură dată"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "De câte ori afișează Salut?",
+      "code": "def salut():\n    print(\"Salut\")\n\nsalut()\nsalut()\nsalut()",
+      "options": ["3", "1", "4", "0"],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "saluta()\n\ndef saluta():\n    print(\"Salut\")",
+      "options": [
+        "Afișează Salut",
+        "Se oprește cu o eroare: saluta nu există încă atunci când e apelată",
+        "Nu afișează nimic",
+        "Afișează Salut de două ori"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def aduna(a, b):\n    print(a + b)\n\naduna(5)",
+      "options": [
+        "Afișează 5",
+        "Afișează 5 + b",
+        "Nu afișează nimic",
+        "Se oprește cu o eroare: b nu primește nicio valoare"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce linii țin de o funcție?",
+      "options": [
+        "Toate liniile de după def, până la sfârșitul programului",
+        "Doar prima linie de sub def",
+        "Liniile indentate de sub linia ei cu def",
+        "Liniile unde e apelată"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "În lecție, ce afișează `f(\"Admin\", False)`?",
+      "code": "def f(nume, stare):\n    if(stare == True):\n        print(f\"{nume} este online\")\n    else:\n        print(f\"{nume} este offline\")",
+      "options": [
+        "Admin este online",
+        "Admin este offline",
+        "nume este offline",
+        "Nimic: funcția are nevoie de este_online"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "În lecție, `f(nume, este_online)` apelează `def f(nume, stare):`. În f, ce ține valoarea lui `este_online`?",
+      "options": ["este_online", "nume", "f", "stare"],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "În `def functia_mea(nume, varsta):`, ce este `functia_mea`?",
+      "options": [
+        "Numele funcției, pe care îl folosim ca s-o apelăm",
+        "Primul ei parametru",
+        "Un text pe care îl afișează funcția",
+        "Un cuvânt cheie din Python, ca def"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "În misiunea Calculatorul de la Bord, ce afișează `calculator(14, 12, \"+\")`?",
+      "options": ["26", "14 + 12", "14 + 12 = 26", "Operator invalid"],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "În misiunea Calculatorul de la Bord, ce afișează `calculator(20, 4, \"/\")`?",
+      "options": ["20 / 4 = 5", "20 / 4 = 5.0", "5.0", "Operator invalid"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "În misiunea Calculatorul de la Bord, ce afișează `calculator(5, 2, \"%\")`?",
+      "options": ["5 % 2 = 1", "1", "Nimic", "Operator invalid"],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "În misiunea Calculatorul de la Bord, de ce trec a și b prin int(), dar operatorul nu?",
+      "options": [
+        "Cu a și b calculăm, iar operatorul e un semn ca + pe care îl comparăm ca text",
+        "int() merge doar de două ori într-un program",
+        "Operatorul e deja un număr",
+        "O funcție poate primi un singur text"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "În misiunea Calculatorul de la Bord, ce afișează `calculator(\"+\", 14, 12)`?",
+      "options": [
+        "14 + 12 = 26",
+        "+ 14 12",
+        "Operator invalid: valorile intră în ordine, deci operator primește 12",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "def dublu(x):\n    print(x * 2)\n\ndublu(4)\ndublu(10)",
+      "options": ["8", "8\n20", "20", "4\n10"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "O funcție are un print() în ea. Când rulează acel print()?",
+      "options": [
+        "O dată, când Python citește linia cu def",
+        "Doar la sfârșitul programului",
+        "Niciodată: o funcție nu poate afișa",
+        "De fiecare dată când e apelată funcția"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "def linie():\n    print(\"---\")\n\nprint(\"Start\")\nlinie()\nprint(\"Stop\")",
+      "options": ["---\nStart\nStop", "Start\nStop", "Start\n---\nStop", "Start\nStop\n---"],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "Care apel merge pentru `def saluta(nume):`?",
+      "options": ["saluta(\"Ana\")", "saluta()", "saluta \"Ana\"", "def saluta(\"Ana\")"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Care linie definește o funcție cu doi parametri?",
+      "options": ["def arie(l h):", "def arie(l, h):", "arie(l, h):", "def arie:(l, h)"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def arata():\nprint(\"Salut\")\n\narata()",
+      "options": [
+        "Afișează Salut",
+        "Nu afișează nimic",
+        "Se oprește cu o eroare: linia de sub def nu e indentată",
+        "Afișează Salut de două ori"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Câți parametri poate avea o funcție?",
+      "options": ["Exact doi", "Măcar unul", "Cel mult trei", "Câți îi trebuie, chiar niciunul"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "def verifica(nivel):\n    if nivel >= 50:\n        print(\"OK\")\n    else:\n        print(\"Scazut\")\n\nverifica(50)\nverifica(49)",
+      "options": ["OK\nScazut", "Scazut\nOK", "OK", "OK\nOK"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "def numaratoare(n):\n    while n > 0:\n        print(n)\n        n = n - 1\n\nnumaratoare(3)",
+      "options": ["1\n2\n3", "3\n2\n1\n0", "3\n2\n1", "3"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "fn-greet",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")",
+      "values": [
+        {
+          "f": "saluta",
+          "p": "nume",
+          "word": "Salut",
+          "a": "Ana",
+          "b": "Ben"
+        },
+        {
+          "f": "bun_venit",
+          "p": "membru",
+          "word": "Bun venit la bord",
+          "a": "Cortez",
+          "b": "Lance"
+        },
+        {
+          "f": "bravo",
+          "p": "jucator",
+          "word": "Bravo",
+          "a": "Zoe",
+          "b": "Kai"
+        },
+        {
+          "f": "hei",
+          "p": "prieten",
+          "word": "Hei",
+          "a": "Tommy",
+          "b": "Mia"
+        },
+        {
+          "f": "noroc",
+          "p": "pilot",
+          "word": "Succes",
+          "a": "Nova",
+          "b": "Rex"
+        }
+      ],
+      "mistakes": [
+        ["print(f\"", "print(\""],
+        ["{{{p}}}", "{{p}}"],
+        ["{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")", "{{f}}(\"{{b}}\")\n{{f}}(\"{{a}}\")"],
+        ["\n{{f}}(\"{{b}}\")", ""]
+      ]
+    },
+    {
+      "id": "fn-two",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{p}}, {{q}}):\n    print(f\"{{{p}}} {{mid}} {{{q}}} {{end}}\")\n\n{{f}}(\"{{a}}\", {{n}})",
+      "values": [
+        {
+          "f": "arata_varsta",
+          "p": "nume",
+          "q": "varsta",
+          "mid": "are",
+          "end": "de ani",
+          "a": "Tommy",
+          "n": 42
+        },
+        {
+          "f": "raport",
+          "p": "nava",
+          "q": "combustibil",
+          "mid": "are",
+          "end": "de litri de combustibil",
+          "a": "Nova",
+          "n": 80
+        },
+        {
+          "f": "scor_jucator",
+          "p": "jucator",
+          "q": "scor",
+          "mid": "a facut",
+          "end": "puncte",
+          "a": "Zoe",
+          "n": 15
+        },
+        {
+          "f": "nota",
+          "p": "hotel",
+          "q": "stele",
+          "mid": "are",
+          "end": "stele",
+          "a": "Orion",
+          "n": 4
+        },
+        {
+          "f": "varsta_echipaj",
+          "p": "pilot",
+          "q": "varsta",
+          "mid": "are",
+          "end": "de ani",
+          "a": "Lance",
+          "n": 35
+        }
+      ],
+      "mistakes": [
+        ["{{f}}(\"{{a}}\", {{n}})", "{{f}}({{n}}, \"{{a}}\")"],
+        ["print(f\"", "print(\""],
+        ["{{{q}}}", "{{q}}"]
+      ]
+    },
+    {
+      "id": "fn-calls",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}():\n    print(\"{{msg}}\")\n\n{{f}}()\n{{f}}()\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "f": "bip",
+          "msg": "Bip",
+          "end": "Gata"
+        },
+        {
+          "f": "ura",
+          "msg": "Hai echipa",
+          "end": "Meci terminat"
+        },
+        {
+          "f": "alarma",
+          "msg": "Trezeste-te",
+          "end": "Buna dimineata"
+        },
+        {
+          "f": "cioc",
+          "msg": "Cioc cioc",
+          "end": "Cine e acolo?"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}()\n{{f}}()\n", "{{f}}()\n"],
+        ["    print(\"{{msg}}\")", "    print(\"{{msg}}\")\n    print(\"{{end}}\")"],
+        ["{{f}}()\n{{f}}()\nprint(\"{{end}}\")", "print(\"{{end}}\")\n{{f}}()\n{{f}}()"]
+      ]
+    },
+    {
+      "id": "fn-loop",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{p}}):\n    for i in range(1, {{p}} + 1):\n        print(f\"{{word}} {i}\")\n\n{{f}}({{n}})",
+      "values": [
+        {
+          "f": "numara_ture",
+          "p": "ture",
+          "word": "Tura",
+          "n": 3
+        },
+        {
+          "f": "arata_niveluri",
+          "p": "niveluri",
+          "word": "Nivelul",
+          "n": 4
+        },
+        {
+          "f": "suna",
+          "p": "ori",
+          "word": "Suna",
+          "n": 2
+        },
+        {
+          "f": "lanseaza_valuri",
+          "p": "valuri",
+          "word": "Valul",
+          "n": 3
+        },
+        {
+          "f": "verifica_usi",
+          "p": "usi",
+          "word": "Usa",
+          "n": 5
+        }
+      ],
+      "mistakes": [
+        ["range(1, {{p}} + 1)", "range(1, {{p}})"],
+        ["range(1, {{p}} + 1)", "range({{p}})"],
+        ["print(f\"{{word}} {i}\")", "print(\"{{word}} {i}\")"]
+      ]
+    },
+    {
+      "id": "fn-status",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{p}}, {{s}}):\n    if {{s}} == True:\n        print(f\"{{{p}}} {{on}}\")\n    else:\n        print(f\"{{{p}}} {{off}}\")\n\n{{f}}(\"{{who}}\", {{b}})",
+      "values": [
+        {
+          "f": "f",
+          "p": "nume",
+          "s": "stare",
+          "on": "este online",
+          "off": "este offline",
+          "who": "Admin",
+          "b": "True"
+        },
+        {
+          "f": "f",
+          "p": "nume",
+          "s": "stare",
+          "on": "este online",
+          "off": "este offline",
+          "who": "Admin",
+          "b": "False"
+        },
+        {
+          "f": "usa",
+          "p": "camera",
+          "s": "incuiata",
+          "on": "e incuiata",
+          "off": "e deschisa",
+          "who": "Laboratorul",
+          "b": "True"
+        },
+        {
+          "f": "usa",
+          "p": "camera",
+          "s": "incuiata",
+          "on": "e incuiata",
+          "off": "e deschisa",
+          "who": "Puntea",
+          "b": "False"
+        },
+        {
+          "f": "motor",
+          "p": "nava",
+          "s": "gata",
+          "on": "e gata",
+          "off": "trebuie reparata",
+          "who": "Nova",
+          "b": "True"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(f\"{{{p}}} {{on}}\")\n    else:\n        print(f\"{{{p}}} {{off}}\")",
+          "print(f\"{{{p}}} {{off}}\")\n    else:\n        print(f\"{{{p}}} {{on}}\")"
+        ],
+        ["{{f}}(\"{{who}}\", {{b}})", "{{f}}({{b}}, \"{{who}}\")"],
+        ["print(f\"{{{p}}} {{on}}\")", "print(f\"{{p}} {{on}}\")"],
+        ["print(f\"{{{p}}} {{off}}\")", "print(f\"{{p}} {{off}}\")"]
+      ]
+    },
+    {
+      "id": "fn-math",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{x}}):\n    print({{x}} {{op}} {{k}})\n\n{{f}}({{a}})\n{{f}}({{b}})",
+      "values": [
+        {
+          "f": "triplu",
+          "x": "x",
+          "op": "*",
+          "k": 3,
+          "a": 2,
+          "b": 7
+        },
+        {
+          "f": "jumatate",
+          "x": "n",
+          "op": "/",
+          "k": 2,
+          "a": 9,
+          "b": 4
+        },
+        {
+          "f": "plus_zece",
+          "x": "scor",
+          "op": "+",
+          "k": 10,
+          "a": 5,
+          "b": 30
+        },
+        {
+          "f": "patrat",
+          "x": "latura",
+          "op": "**",
+          "k": 2,
+          "a": 3,
+          "b": 5
+        },
+        {
+          "f": "pierde_viata",
+          "x": "vieti",
+          "op": "-",
+          "k": 1,
+          "a": 3,
+          "b": 1
+        }
+      ],
+      "mistakes": [
+        ["print({{x}} {{op}} {{k}})", "print(\"{{x}} {{op}} {{k}}\")"],
+        ["print({{x}} {{op}} {{k}})", "print({{a}} {{op}} {{k}})"],
+        ["\n{{f}}({{b}})", ""]
+      ]
+    },
+    {
+      "id": "fn-which-call",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")",
+      "values": [
+        {
+          "f": "saluta",
+          "p": "nume",
+          "word": "Salut",
+          "a": "Cortez"
+        },
+        {
+          "f": "bun_venit",
+          "p": "membru",
+          "word": "Bun venit la bord",
+          "a": "Zoe"
+        },
+        {
+          "f": "bravo",
+          "p": "jucator",
+          "word": "Bravo",
+          "a": "Tommy"
+        },
+        {
+          "f": "hei",
+          "p": "prieten",
+          "word": "Hei",
+          "a": "Nova"
+        },
+        {
+          "f": "noroc",
+          "p": "pilot",
+          "word": "Succes",
+          "a": "Ana"
+        }
+      ],
+      "mistakes": [
+        ["\n\n{{f}}(\"{{a}}\")", ""],
+        ["print(f\"", "print(\""],
+        ["{{{p}}}", "{{p}}"],
+        ["(\"{{a}}\")", "({{a}})"]
+      ]
+    },
+    {
+      "id": "fn-which-order",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def {{f}}({{p}}, {{q}}):\n    print(f\"{{{p}}} {{mid}} {{{q}}} {{end}}\")\n\n{{f}}(\"{{a}}\", {{n}})",
+      "values": [
+        {
+          "f": "raport",
+          "p": "nava",
+          "q": "combustibil",
+          "mid": "are",
+          "end": "de litri de combustibil",
+          "a": "Nova",
+          "n": 80
+        },
+        {
+          "f": "scor_jucator",
+          "p": "jucator",
+          "q": "scor",
+          "mid": "a facut",
+          "end": "puncte",
+          "a": "Zoe",
+          "n": 15
+        },
+        {
+          "f": "nota",
+          "p": "hotel",
+          "q": "stele",
+          "mid": "are",
+          "end": "stele",
+          "a": "Orion",
+          "n": 4
+        },
+        {
+          "f": "varsta_echipaj",
+          "p": "pilot",
+          "q": "varsta",
+          "mid": "are",
+          "end": "de ani",
+          "a": "Lance",
+          "n": 35
+        }
+      ],
+      "mistakes": [
+        ["{{f}}(\"{{a}}\", {{n}})", "{{f}}({{n}}, \"{{a}}\")"],
+        ["def {{f}}({{p}}, {{q}}):", "def {{f}}({{q}}, {{p}}):"],
+        ["{{{p}}} {{mid}}", "{{p}} {{mid}}"]
+      ]
+    },
+    {
+      "id": "fn-gap-call",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n___",
+      "values": [
+        {
+          "f": "saluta",
+          "p": "nume",
+          "word": "Salut",
+          "a": "Ben"
+        },
+        {
+          "f": "bun_venit",
+          "p": "membru",
+          "word": "Bun venit la bord",
+          "a": "Lance"
+        },
+        {
+          "f": "bravo",
+          "p": "jucator",
+          "word": "Bravo",
+          "a": "Kai"
+        },
+        {
+          "f": "hei",
+          "p": "prieten",
+          "word": "Hei",
+          "a": "Mia"
+        },
+        {
+          "f": "noroc",
+          "p": "pilot",
+          "word": "Succes",
+          "a": "Rex"
+        }
+      ],
+      "answer": "{{f}}(\"{{a}}\")",
+      "wrong": ["{{f}}(\"{{p}}\")", "{{f}}", "def {{f}}(\"{{a}}\"):", "{{f}}({{a}})"]
+    },
+    {
+      "id": "fn-gap-def",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")",
+      "values": [
+        {
+          "f": "saluta",
+          "p": "nume",
+          "word": "Salut",
+          "a": "Lance"
+        },
+        {
+          "f": "bun_venit",
+          "p": "membru",
+          "word": "Bun venit la bord",
+          "a": "Ana"
+        },
+        {
+          "f": "bravo",
+          "p": "jucator",
+          "word": "Bravo",
+          "a": "Kai"
+        },
+        {
+          "f": "hei",
+          "p": "prieten",
+          "word": "Hei",
+          "a": "Rex"
+        },
+        {
+          "f": "noroc",
+          "p": "pilot",
+          "word": "Succes",
+          "a": "Mia"
+        }
+      ],
+      "answer": "def {{f}}({{p}}):",
+      "wrong": ["def {{f}}({{p}})", "{{f}}({{p}}):", "def {{f}}():", "def {{f}}(\"{{a}}\"):"]
+    },
+    {
+      "id": "fn-gap-arg",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}, {{q}}):\n    print(f\"{{{p}}} {{mid}} {{{q}}} {{end}}\")\n\n{{f}}(\"{{a}}\", ___)",
+      "values": [
+        {
+          "f": "arata_varsta",
+          "p": "nume",
+          "q": "varsta",
+          "mid": "are",
+          "end": "de ani",
+          "a": "Tommy",
+          "n": 42
+        },
+        {
+          "f": "raport",
+          "p": "nava",
+          "q": "combustibil",
+          "mid": "are",
+          "end": "de litri de combustibil",
+          "a": "Nova",
+          "n": 80
+        },
+        {
+          "f": "scor_jucator",
+          "p": "jucator",
+          "q": "scor",
+          "mid": "a facut",
+          "end": "puncte",
+          "a": "Zoe",
+          "n": 15
+        },
+        {
+          "f": "nota",
+          "p": "hotel",
+          "q": "stele",
+          "mid": "are",
+          "end": "stele",
+          "a": "Orion",
+          "n": 4
+        },
+        {
+          "f": "varsta_echipaj",
+          "p": "pilot",
+          "q": "varsta",
+          "mid": "are",
+          "end": "de ani",
+          "a": "Lance",
+          "n": 35
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["\"{{a}}\"", "{{q}}", "{{n}} + 1", "{{p}}"]
+    },
+    {
+      "id": "fn-gap-times",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    for i in range(1, {{p}} + 1):\n        print(f\"{{word}} {i}\")\n\n{{f}}(___)",
+      "values": [
+        {
+          "f": "numara_ture",
+          "p": "ture",
+          "word": "Tura",
+          "n": 3,
+          "lo": 2,
+          "hi": 4
+        },
+        {
+          "f": "arata_niveluri",
+          "p": "niveluri",
+          "word": "Nivelul",
+          "n": 4,
+          "lo": 3,
+          "hi": 5
+        },
+        {
+          "f": "suna",
+          "p": "ori",
+          "word": "Suna",
+          "n": 2,
+          "lo": 1,
+          "hi": 3
+        },
+        {
+          "f": "lanseaza_valuri",
+          "p": "valuri",
+          "word": "Valul",
+          "n": 5,
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "f": "verifica_usi",
+          "p": "usi",
+          "word": "Usa",
+          "n": 6,
+          "lo": 5,
+          "hi": 7
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{lo}}", "{{hi}}", "0"]
+    },
+    {
+      "id": "fn-bad-colon",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")",
+      "values": [
+        {
+          "f": "saluta",
+          "p": "nume",
+          "word": "Salut",
+          "a": "Zoe",
+          "b": "Kai"
+        },
+        {
+          "f": "bun_venit",
+          "p": "membru",
+          "word": "Bun venit la bord",
+          "a": "Tommy",
+          "b": "Mia"
+        },
+        {
+          "f": "bravo",
+          "p": "jucator",
+          "word": "Bravo",
+          "a": "Nova",
+          "b": "Rex"
+        }
+      ],
+      "bug": ["def {{f}}({{p}}):", "def {{f}}({{p}})"]
+    },
+    {
+      "id": "fn-bad-f",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")",
+      "values": [
+        {
+          "f": "bravo",
+          "p": "jucator",
+          "word": "Bravo",
+          "a": "Ana",
+          "b": "Ben"
+        },
+        {
+          "f": "hei",
+          "p": "prieten",
+          "word": "Hei",
+          "a": "Cortez",
+          "b": "Lance"
+        },
+        {
+          "f": "noroc",
+          "p": "pilot",
+          "word": "Succes",
+          "a": "Zoe",
+          "b": "Kai"
+        }
+      ],
+      "bug": ["def {{f}}({{p}}):", "def {{f}}():"]
+    },
+    {
+      "id": "fn-bad-name",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")",
+      "values": [
+        {
+          "f": "saluta",
+          "p": "nume",
+          "word": "Salut",
+          "a": "Ana",
+          "b": "Ben",
+          "g": "Saluta"
+        },
+        {
+          "f": "bun_venit",
+          "p": "membru",
+          "word": "Bun venit la bord",
+          "a": "Zoe",
+          "b": "Kai",
+          "g": "Bun_venit"
+        },
+        {
+          "f": "bravo",
+          "p": "jucator",
+          "word": "Bravo",
+          "a": "Tommy",
+          "b": "Mia",
+          "g": "bravoo"
+        }
+      ],
+      "bug": ["{{f}}(\"{{b}}\")", "{{g}}(\"{{b}}\")"]
+    },
+    {
+      "id": "fn-bad-missing",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}({{p}}, {{q}}):\n    print(f\"{{{p}}} {{mid}} {{{q}}} {{end}}\")\n\n{{f}}(\"{{a}}\", {{n}})\n{{f}}(\"{{c}}\", {{m}})",
+      "values": [
+        {
+          "f": "arata_varsta",
+          "p": "nume",
+          "q": "varsta",
+          "mid": "are",
+          "end": "de ani",
+          "a": "Tommy",
+          "n": 42,
+          "c": "Lance",
+          "m": 35
+        },
+        {
+          "f": "scor_jucator",
+          "p": "jucator",
+          "q": "scor",
+          "mid": "a facut",
+          "end": "puncte",
+          "a": "Zoe",
+          "n": 15,
+          "c": "Kai",
+          "m": 9
+        },
+        {
+          "f": "nota",
+          "p": "hotel",
+          "q": "stele",
+          "mid": "are",
+          "end": "stele",
+          "a": "Orion",
+          "n": 4,
+          "c": "Vega",
+          "m": 5
+        }
+      ],
+      "bug": ["{{f}}(\"{{c}}\", {{m}})", "{{f}}(\"{{c}}\")"]
+    }
+  ]
+}

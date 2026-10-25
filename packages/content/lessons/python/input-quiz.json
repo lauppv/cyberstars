@@ -1,0 +1,869 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does input() do?",
+      "options": [
+        "It stops the program and waits for the user to type something and press Enter",
+        "It prints a message on the screen and goes on",
+        "It reads the next line of the program",
+        "It makes up a value for the variable"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does input() give back when the user types a number?",
+      "options": [
+        "An integer",
+        "A string, text like \"18\"",
+        "A number with decimals",
+        "True or False"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "The user types 18 at `age = input()`. What does age hold?",
+      "options": [
+        "18, the number",
+        "18.0",
+        "\"18\", a piece of text",
+        "Nothing until int() is called"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What happens when this runs and the user types 18?",
+      "code": "age = input(\"Your age: \")\nnext_year = age + 1\nprint(next_year)",
+      "options": [
+        "It prints 19",
+        "It prints 181",
+        "It prints 18 + 1",
+        "It stops with an error: \"18\" is text and 1 is a number"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Which line reads a whole number from the user?",
+      "options": [
+        "age = int(input(\"Your age: \"))",
+        "age = input(int(\"Your age: \"))",
+        "age = int(\"Your age: \")",
+        "age = input(\"Your age: \")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What is the prompt in `name = input(\"What's your name? \")`?",
+      "options": [
+        "The name the user types",
+        "The message What's your name?, shown before the program waits",
+        "The variable name",
+        "What the program prints at the end"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "When does the user see the prompt?",
+      "options": [
+        "After pressing Enter",
+        "Only when there is an error",
+        "Before the program waits for them to type",
+        "At the end of the program"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What does int() do with the text \"42\"?",
+      "options": [
+        "It puts quotes around it",
+        "It turns it into 42.0",
+        "It prints it",
+        "It turns it into the integer 42"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Which function turns text like \"1.75\" into a number with decimals?",
+      "options": ["float()", "int()", "input()", "print()"],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Why does the lesson use float() and not int() for a height like 1.75?",
+      "options": [
+        "float() is faster",
+        "int() is for whole numbers, and 1.75 has decimals",
+        "int() only works with input()",
+        "There is no difference"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "When does the program go on after an input()?",
+      "options": [
+        "Right away",
+        "After a few seconds",
+        "Once the user presses Enter",
+        "After the next print()"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "The user types Lance. What does this print?",
+      "code": "name = input()\nprint(f\"Hello, {name}!\")",
+      "options": ["Hello, {name}!", "Hello, name!", "Lance", "Hello, Lance!"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "In `name = input()`, where does what the user typed go?",
+      "options": [
+        "Into the variable name",
+        "Straight onto the screen",
+        "Into input()",
+        "Nowhere, it's lost after Enter"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Why use input() instead of writing `name = \"Tommy\"` in the code?",
+      "options": [
+        "It makes the program faster",
+        "So the user picks the value each time the program runs",
+        "Python needs input() for every string",
+        "So the value never changes"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Which line shows Name: and then waits for the user to type?",
+      "options": [
+        "name = print(\"Name: \")",
+        "input = name(\"Name: \")",
+        "name = input(\"Name: \")",
+        "name = input(Name: )"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "In `age = int(input(\"Your age: \"))`, what happens first?",
+      "options": [
+        "int() runs first, then input()",
+        "Both run at the same time",
+        "Only int() runs",
+        "input() waits for the text, then int() turns it into a number"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "The user types 5, then 3. What does this print?",
+      "code": "a = int(input())\nb = int(input())\nprint(a + b)",
+      "options": ["8", "53", "5 + 3", "It stops with an error"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Is the prompt part of what input() gives back?",
+      "options": [
+        "Yes, the prompt comes first, then the typed text",
+        "No, input() gives back only what the user typed",
+        "Yes, input() gives back only the prompt",
+        "Only when the prompt ends with a space"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "In the Crew Check-In mission, why must the age go through int()?",
+      "options": [
+        "So it can be printed",
+        "So the name stays text",
+        "So 1 can be added to it",
+        "Because an f-string can only show numbers"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "In the Crew Check-In mission the user types Cortez, then 60. What should the program print?",
+      "options": [
+        "Welcome aboard, name! You are 60. Next year you will be 61.",
+        "Welcome aboard, Cortez! You are 60. Next year you will be 601.",
+        "Welcome aboard, Cortez! You are 61. Next year you will be 62.",
+        "Welcome aboard, Cortez! You are 60. Next year you will be 61."
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "How many times does this program wait for the user?",
+      "code": "name = input()\nage = int(input())\nprint(f\"Welcome aboard, {name}!\")",
+      "options": ["2", "1", "3", "0"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What does the user see before typing, when this line runs?",
+      "code": "age = input(\"Your age: \")",
+      "options": [
+        "Nothing",
+        "Your age: ",
+        "\"Your age: \" with the quotes",
+        "input(\"Your age: \")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Which two lines do the same as `age = int(input())`?",
+      "options": [
+        "age = input()\nint(age)",
+        "age = int()\nage = input(age)",
+        "age = input()\nage = int(age)",
+        "age = input(int())"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "The user types 18. Why does this stop with an error?",
+      "code": "age = input()\nint(age)\nprint(age + 1)",
+      "options": [
+        "int() can't read the text in age",
+        "print() needs an f",
+        "input() needs a prompt",
+        "int(age) makes a number but doesn't store it, so age is still text"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Which line reads a height like 1.75 from the user as a number?",
+      "options": [
+        "height = float(input(\"Your height: \"))",
+        "height = int(input(\"Your height: \"))",
+        "height = input(float(\"Your height: \"))",
+        "height = \"1.75\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Which program stops with an error when the user types 18?",
+      "options": [
+        "age = int(input())\nprint(age + 1)",
+        "age = input()\nprint(age + 1)",
+        "age = input()\nprint(age)",
+        "age = input()\nprint(f\"You are {age}\")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "The user types Tommy Vercetti at `name = input()`. What does name hold?",
+      "options": [
+        "Only \"Tommy\"",
+        "Nothing: a name with a space stops it with an error",
+        "\"Tommy Vercetti\", the whole line with its space",
+        "A variable called Tommy Vercetti"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Can Python do \"18\" + 1?",
+      "options": [
+        "Yes, it gives 19",
+        "Yes, it gives 181",
+        "Only inside an f-string",
+        "No: one is text and the other a number, so it stops with an error"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "The user types 3. How many times does this print Hi?",
+      "code": "n = int(input())\nfor i in range(n):\n    print(\"Hi\")",
+      "options": ["3", "2", "4", "Once"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "The user types 18. What does this print?",
+      "code": "age = int(input())\nif age >= 18:\n    print(\"Adult\")\nelse:\n    print(\"Minor\")",
+      "options": ["Minor", "Adult", "It stops with an error: age is text", "Adult\nMinor"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "in-plus",
+      "kind": "prints",
+      "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. What does this print?",
+      "code": "{{v}} = \"{{x}}\"\n{{w}} = int({{v}}) + {{d}}\nprint({{w}})",
+      "values": [
+        {
+          "v": "age",
+          "w": "next_year",
+          "x": 14,
+          "d": 1
+        },
+        {
+          "v": "age",
+          "w": "next_year",
+          "x": 60,
+          "d": 1
+        },
+        {
+          "v": "score",
+          "w": "total",
+          "x": 7,
+          "d": 3
+        },
+        {
+          "v": "level",
+          "w": "next_level",
+          "x": 9,
+          "d": 1
+        },
+        {
+          "v": "fuel",
+          "w": "total",
+          "x": 40,
+          "d": 10
+        }
+      ],
+      "mistakes": [
+        ["int({{v}}) + {{d}}", "{{v}} + \"{{d}}\""],
+        ["int({{v}}) + {{d}}", "int({{v}})"],
+        ["print({{w}})", "print(\"{{w}}\")"],
+        ["int({{v}}) + {{d}}", "int({{v}}) - {{d}}"]
+      ]
+    },
+    {
+      "id": "in-two",
+      "kind": "prints",
+      "text": "The user typed {{a}}, then {{b}}, and `a` and `b` hold what input() gave back. What does this print?",
+      "code": "a = \"{{a}}\"\nb = \"{{b}}\"\nprint(int(a) + int(b))",
+      "values": [
+        {
+          "a": 6,
+          "b": 4
+        },
+        {
+          "a": 12,
+          "b": 30
+        },
+        {
+          "a": 7,
+          "b": 7
+        },
+        {
+          "a": 100,
+          "b": 1
+        }
+      ],
+      "mistakes": [
+        ["print(int(a) + int(b))", "print(a + b)"],
+        ["print(int(a) + int(b))", "print(\"a + b\")"],
+        ["print(int(a) + int(b))", "print(f\"{a} + {b}\")"],
+        ["int(a) + int(b)", "int(a) - int(b)"]
+      ]
+    },
+    {
+      "id": "in-sum",
+      "kind": "prints",
+      "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. What does this print?",
+      "code": "{{v}} = \"{{x}}\"\ntotal = 0\nfor i in range(1, int({{v}}) + 1):\n    total = total + i\nprint(total)",
+      "values": [
+        {
+          "v": "n",
+          "x": 3
+        },
+        {
+          "v": "n",
+          "x": 4
+        },
+        {
+          "v": "days",
+          "x": 5
+        },
+        {
+          "v": "laps",
+          "x": 10
+        }
+      ],
+      "mistakes": [
+        ["int({{v}}) + 1", "int({{v}})"],
+        ["    total = total + i\nprint(total)", "    total = total + i\n    print(total)"],
+        ["total = total + i", "total = i"],
+        ["total = 0", "total = 1"]
+      ]
+    },
+    {
+      "id": "in-crew",
+      "kind": "prints",
+      "text": "The user typed {{n}}, then {{a}}, and `name` and `age` hold what input() gave back. What does this print?",
+      "code": "name = \"{{n}}\"\nage = \"{{a}}\"\nage = int(age)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "values": [
+        {
+          "n": "Cortez",
+          "a": 60
+        },
+        {
+          "n": "Zoe",
+          "a": 12
+        },
+        {
+          "n": "Lance",
+          "a": 35
+        },
+        {
+          "n": "Ada",
+          "a": 17
+        },
+        {
+          "n": "Kai",
+          "a": 99
+        }
+      ],
+      "mistakes": [
+        ["{age + 1}", "{age}"],
+        ["{age + 1}", "{age} + 1"],
+        ["print(f\"Welcome", "print(\"Welcome"],
+        ["{name}!", "name!"]
+      ]
+    },
+    {
+      "id": "in-if",
+      "kind": "prints",
+      "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. What does this print?",
+      "code": "{{v}} = \"{{x}}\"\n{{v}} = int({{v}})\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "age",
+          "yes": "You can vote",
+          "no": "Not yet",
+          "x": 18,
+          "limit": 18
+        },
+        {
+          "v": "age",
+          "yes": "You can vote",
+          "no": "Not yet",
+          "x": 12,
+          "limit": 18
+        },
+        {
+          "v": "score",
+          "yes": "Pass",
+          "no": "Fail",
+          "x": 50,
+          "limit": 50
+        },
+        {
+          "v": "score",
+          "yes": "Pass",
+          "no": "Fail",
+          "x": 49,
+          "limit": 50
+        },
+        {
+          "v": "fuel",
+          "yes": "Ready to launch",
+          "no": "Refuel first",
+          "x": 300,
+          "limit": 200
+        }
+      ],
+      "mistakes": [
+        ["{{v}} >= {{limit}}", "{{v}} < {{limit}}"],
+        [
+          "if {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{v}} >= {{limit}})"
+        ],
+        [
+          "if {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{v}})"
+        ],
+        [
+          "if {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "in-count",
+      "kind": "prints",
+      "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. What does this print?",
+      "code": "{{v}} = \"{{x}}\"\nfor i in range(1, int({{v}}) + 1):\n    print(i)",
+      "values": [
+        {
+          "v": "laps",
+          "x": 3
+        },
+        {
+          "v": "stars",
+          "x": 4
+        },
+        {
+          "v": "n",
+          "x": 5
+        },
+        {
+          "v": "n",
+          "x": 2
+        }
+      ],
+      "mistakes": [
+        ["int({{v}}) + 1", "int({{v}})"],
+        ["range(1, ", "range(0, "],
+        ["print(i)", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "in-ticket",
+      "kind": "prints",
+      "text": "The user typed {{x}}, so `age` holds what input() gave back. What does this print?",
+      "code": "age = \"{{x}}\"\nage = int(age)\nif age < 6:\n    print(\"{{free}}\")\nelif age < 18:\n    print(\"{{child}}\")\nelse:\n    print(\"{{full}}\")",
+      "values": [
+        {
+          "free": "Free",
+          "child": "Child ticket",
+          "full": "Full price",
+          "x": 4
+        },
+        {
+          "free": "Free",
+          "child": "Child ticket",
+          "full": "Full price",
+          "x": 12
+        },
+        {
+          "free": "Free",
+          "child": "Child ticket",
+          "full": "Full price",
+          "x": 17
+        },
+        {
+          "free": "Free",
+          "child": "Child ticket",
+          "full": "Full price",
+          "x": 30
+        }
+      ],
+      "mistakes": [
+        ["age < 6", "age > 6"],
+        [
+          "if age < 6:\n    print(\"{{free}}\")\nelif age < 18:\n    print(\"{{child}}\")\nelse:\n    print(\"{{full}}\")",
+          "print(\"{{free}}\")\nprint(\"{{child}}\")\nprint(\"{{full}}\")"
+        ],
+        [
+          "if age < 6:\n    print(\"{{free}}\")\nelif age < 18:\n    print(\"{{child}}\")\nelse:\n    print(\"{{full}}\")",
+          "print(age)"
+        ],
+        ["age < 18", "age > 18"]
+      ]
+    },
+    {
+      "id": "in-gap-int",
+      "kind": "missing-value",
+      "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{x}}\"\n{{w}} = ___({{v}}) + {{d}}\nprint({{w}})",
+      "values": [
+        {
+          "v": "age",
+          "w": "next_year",
+          "x": 14,
+          "d": 1
+        },
+        {
+          "v": "age",
+          "w": "next_year",
+          "x": 33,
+          "d": 1
+        },
+        {
+          "v": "score",
+          "w": "total",
+          "x": 8,
+          "d": 2
+        },
+        {
+          "v": "tickets",
+          "w": "total",
+          "x": 3,
+          "d": 4
+        },
+        {
+          "v": "level",
+          "w": "next_level",
+          "x": 41,
+          "d": 1
+        }
+      ],
+      "answer": "int",
+      "wrong": ["float", "input", "print"]
+    },
+    {
+      "id": "in-gap-float",
+      "kind": "missing-value",
+      "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{x}}\"\nprint(___({{v}}) + {{d}})",
+      "values": [
+        {
+          "v": "height",
+          "x": 1.5,
+          "d": 0.25
+        },
+        {
+          "v": "price",
+          "x": 2.5,
+          "d": 1
+        },
+        {
+          "v": "weight",
+          "x": 60.5,
+          "d": 2
+        },
+        {
+          "v": "speed",
+          "x": 7.5,
+          "d": 0.5
+        }
+      ],
+      "answer": "float",
+      "wrong": ["int", "input", "print"]
+    },
+    {
+      "id": "in-gap-store",
+      "kind": "missing-line",
+      "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{x}}\"\n___\nprint({{v}} + {{d}})",
+      "values": [
+        {
+          "v": "age",
+          "x": 14,
+          "d": 1
+        },
+        {
+          "v": "age",
+          "x": 59,
+          "d": 1
+        },
+        {
+          "v": "score",
+          "x": 20,
+          "d": 5
+        },
+        {
+          "v": "fuel",
+          "x": 90,
+          "d": 10
+        },
+        {
+          "v": "lives",
+          "x": 2,
+          "d": 1
+        }
+      ],
+      "answer": "{{v}} = int({{v}})",
+      "wrong": ["int({{v}})", "{{v}} = float({{v}})", "{{v}} = input({{v}})"]
+    },
+    {
+      "id": "in-gap-crew",
+      "kind": "missing-line",
+      "text": "The user typed {{n}}, then {{a}}, and `name` and `age` hold what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "name = \"{{n}}\"\nage = \"{{a}}\"\n___\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "values": [
+        {
+          "n": "Cortez",
+          "a": 60
+        },
+        {
+          "n": "Sonny",
+          "a": 11
+        },
+        {
+          "n": "Elena",
+          "a": 25
+        },
+        {
+          "n": "Rex",
+          "a": 40
+        }
+      ],
+      "answer": "age = int(age)",
+      "wrong": ["int(age)", "age = float(age)", "age = int(name)"]
+    },
+    {
+      "id": "in-bad-store",
+      "kind": "wrong-line",
+      "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "{{v}} = \"{{x}}\"\n{{v}} = int({{v}})\n{{w}} = {{v}} + {{d}}\nprint({{w}})",
+      "values": [
+        {
+          "v": "age",
+          "w": "next_year",
+          "x": 14,
+          "d": 1
+        },
+        {
+          "v": "age",
+          "w": "next_year",
+          "x": 70,
+          "d": 1
+        },
+        {
+          "v": "score",
+          "w": "total",
+          "x": 6,
+          "d": 4
+        },
+        {
+          "v": "fuel",
+          "w": "total",
+          "x": 150,
+          "d": 50
+        },
+        {
+          "v": "level",
+          "w": "next_level",
+          "x": 4,
+          "d": 1
+        }
+      ],
+      "bug": ["{{v}} = int({{v}})", "int({{v}})"]
+    },
+    {
+      "id": "in-bad-float",
+      "kind": "wrong-line",
+      "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "{{v}} = \"{{x}}\"\n{{v}} = float({{v}})\nprint({{v}})\nprint({{v}} + {{d}})",
+      "values": [
+        {
+          "v": "height",
+          "x": 1.5,
+          "d": 0.25
+        },
+        {
+          "v": "price",
+          "x": 9.5,
+          "d": 0.5
+        },
+        {
+          "v": "speed",
+          "x": 7.5,
+          "d": 1
+        },
+        {
+          "v": "weight",
+          "x": 72.5,
+          "d": 2
+        }
+      ],
+      "bug": ["float(", "int("]
+    },
+    {
+      "id": "in-bad-crew",
+      "kind": "wrong-line",
+      "text": "The user typed {{n}}, then {{a}}, and `name` and `age` hold what input() gave back. Which line stops this program from printing this?",
+      "code": "name = \"{{n}}\"\nage = \"{{a}}\"\nage = int(age)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "values": [
+        {
+          "n": "Cortez",
+          "a": 60
+        },
+        {
+          "n": "Nova",
+          "a": 20
+        },
+        {
+          "n": "Kenji",
+          "a": 18
+        },
+        {
+          "n": "Mary Jane",
+          "a": 19
+        }
+      ],
+      "bug": ["age = int(age)", "age = int(name)"]
+    },
+    {
+      "id": "in-which-int",
+      "kind": "which-program",
+      "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. Which program shows this?",
+      "code": "{{v}} = \"{{x}}\"\nprint(int({{v}}) + {{d}})",
+      "values": [
+        {
+          "v": "age",
+          "x": 14,
+          "d": 1
+        },
+        {
+          "v": "score",
+          "x": 9,
+          "d": 1
+        },
+        {
+          "v": "tickets",
+          "x": 5,
+          "d": 2
+        },
+        {
+          "v": "fuel",
+          "x": 80,
+          "d": 20
+        }
+      ],
+      "mistakes": [
+        ["int({{v}}) + {{d}}", "{{v}} + {{d}}"],
+        ["int({{v}}) + {{d}}", "int({{v}} + {{d}})"],
+        ["int({{v}}) + {{d}}", "{{v}} + \"{{d}}\""]
+      ]
+    },
+    {
+      "id": "in-which-two",
+      "kind": "which-program",
+      "text": "The user typed {{a}}, then {{b}}, and `a` and `b` hold what input() gave back. Which program shows this?",
+      "code": "a = \"{{a}}\"\nb = \"{{b}}\"\nprint(int(a) + int(b))",
+      "values": [
+        {
+          "a": 4,
+          "b": 4
+        },
+        {
+          "a": 10,
+          "b": 25
+        },
+        {
+          "a": 6,
+          "b": 1
+        },
+        {
+          "a": 50,
+          "b": 50
+        }
+      ],
+      "mistakes": [
+        ["print(int(a) + int(b))", "print(a + b)"],
+        ["int(a) + int(b)", "int(a + b)"],
+        ["int(a) + int(b)", "int(a) + b"]
+      ]
+    }
+  ]
+}

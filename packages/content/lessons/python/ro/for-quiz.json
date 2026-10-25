@@ -1,0 +1,894 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce poți face cu o buclă for?",
+      "options": [
+        "Să repeți linii fără să le scrii din nou",
+        "Să scrii un text pe ecran",
+        "Să verifici o condiție o singură dată",
+        "Să ții o valoare într-o variabilă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce numere dă `range(1, 5)`?",
+      "options": ["1, 2, 3, 4, 5", "1, 2, 3, 4", "0, 1, 2, 3, 4", "2, 3, 4, 5"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "De câte ori rulează liniile de sub `for i in range(10):`?",
+      "options": ["De 9 ori", "De 11 ori", "De 10 ori", "O singură dată"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "De unde începe `range(5)`?",
+      "options": ["De la 1", "De la 5", "De la -1", "De la 0"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce spune al treilea număr din `range(0, 11, 2)`?",
+      "options": [
+        "Cu cât sare i de la o valoare la alta",
+        "De câte ori rulează bucla",
+        "Ultimul număr pe care îl dă bucla",
+        "Numărul de la care pornește bucla"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce trebuie pus la sfârșitul unei linii cu for?",
+      "options": [";", ":", ".", ","],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Ce linii țin de o buclă for?",
+      "options": [
+        "Toate liniile de după ea, până la sfârșitul programului",
+        "Doar prima linie de sub ea",
+        "Liniile indentate de sub ea",
+        "Liniile de deasupra ei"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Când rulează ultima linie?",
+      "code": "total = 0\nfor i in range(1, 6):\n    total = total + i\nprint(total)",
+      "options": [
+        "La fiecare iterație",
+        "Înainte să înceapă bucla",
+        "Doar când total e 0",
+        "O singură dată, după ce se termină bucla"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "De ce scriem `total = 0` înainte de buclă?",
+      "options": [
+        "Ca totalul să pornească de la 0 și bucla să adune mereu la el",
+        "Pentru că orice buclă are nevoie de o variabilă egală cu 0",
+        "Ca bucla să ruleze de 0 ori",
+        "Ca total să revină la 0 la fiecare iterație"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 4):\n    total = 0\n    total = total + i\nprint(total)",
+      "options": ["6", "3", "0", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Ce range dă numerele de la 1 la 10, inclusiv amândouă?",
+      "options": ["range(1, 10)", "range(0, 10)", "range(1, 11)", "range(10)"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "Ce range dă numerele pare de la 2 la 10?",
+      "options": ["range(2, 10, 2)", "range(2, 11)", "range(0, 10, 2)", "range(2, 11, 2)"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce este `in` din `for i in range(5):`?",
+      "options": [
+        "Un cuvânt cheie: îi dă lui i valorile din range() pe rând",
+        "O variabilă pe care trebuie s-o facem înainte",
+        "O funcție, ca print()",
+        "Numele buclei"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Ce este `range()`?",
+      "options": [
+        "O variabilă pe care o facem înainte de buclă",
+        "O funcție care există deja în Python",
+        "Un cuvânt cheie, ca if",
+        "Un comentariu pentru buclă"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Cum se numește o trecere prin liniile unei bucle?",
+      "options": ["Un range", "Un pas", "O iterație", "O condiție"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Câte numere dă `range(3, 8)`?",
+      "options": ["4", "8", "6", "5"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "De câte ori afișează Salut?",
+      "code": "for i in range(1, 4):\n    print(\"Salut\")",
+      "options": ["De 3 ori", "De 4 ori", "O singură dată", "De 2 ori"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "De ce scriem o buclă for în loc de câte un print() pentru fiecare număr?",
+      "options": [
+        "for afișează mai repede decât print()",
+        "Nu mai repetăm codul: bucla face repetiția pentru noi",
+        "Un program nu poate avea mai mult de 100 de linii cu print()",
+        "O buclă for nu are nevoie de indentare"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Un if stă în interiorul unui for. De câte ori e indentat print()-ul din acel if?",
+      "options": ["O dată", "Deloc", "De două ori", "De trei ori"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 11):\n    if i % 2 == 0:\n        print(i)",
+      "options": ["1, 3, 5, 7, 9", "Toate numerele de la 1 la 10", "2, 4, 6, 8", "2, 4, 6, 8, 10"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce verifică `i % 2 == 0`?",
+      "options": ["Că i e par: împărțit la 2 nu dă rest", "Că i e 2", "Că i e 0", "Că i e impar"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "În misiunea Colectorul de Energie, ce celule intră în total când sunt 6?",
+      "options": ["1, 2, 3, 4, 5, 6", "1, 3, 5", "2, 4, 6", "1, 3, 5, 7"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "În misiunea Colectorul de Energie, de ce folosește bucla `range(1, celule + 1)`?",
+      "options": [
+        "Ca să pornească de la celula 2",
+        "Ca să sară peste prima celulă",
+        "Ca să fie numărată și ultima celulă",
+        "Pentru că range() nu poate primi o variabilă"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "În misiunea Colectorul de Energie, ce afișează programul cu 4 celule?",
+      "options": ["10", "6", "9", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Ce linie pornește o buclă care afișează 0, 1 și 2?",
+      "options": [
+        "for i in range(3):",
+        "for i in range(1, 3):",
+        "for i in range(2):",
+        "for i in range(0, 3, 2):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "În `for i in range(1, 6):`, cât e i la prima iterație?",
+      "options": ["0", "1", "6", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "În `for i in range(1, 6):`, cât e i la ultima iterație?",
+      "options": ["6", "4", "5", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce face `total = total + i` la fiecare iterație?",
+      "options": [
+        "Pune i în total, în locul a ce era acolo",
+        "Adună total și i, apoi aruncă rezultatul",
+        "Dublează total",
+        "Adaugă i la ce ținea total înainte"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "De câte ori afișează Gata?",
+      "code": "for i in range(3):\n    print(\"Hei\")\nprint(\"Gata\")",
+      "options": ["O singură dată", "De 3 ori", "De 4 ori", "Niciodată"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce range numără 5, 10, 15, 20?",
+      "options": ["range(5, 20, 5)", "range(5, 21, 5)", "range(0, 20, 5)", "range(5, 21)"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "for-range",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for i in range({{a}}, {{b}}):\n    print(i)",
+      "values": [
+        {
+          "a": 1,
+          "b": 4
+        },
+        {
+          "a": 2,
+          "b": 6
+        },
+        {
+          "a": 4,
+          "b": 7
+        },
+        {
+          "a": 3,
+          "b": 7
+        },
+        {
+          "a": 5,
+          "b": 9
+        }
+      ],
+      "mistakes": [
+        ["range({{a}}, {{b}})", "range({{a}}, {{b}} + 1)"],
+        ["range({{a}}, {{b}})", "range({{a}} + 1, {{b}} + 1)"],
+        ["range({{a}}, {{b}})", "range({{a}}, {{b}} - 1)"]
+      ]
+    },
+    {
+      "id": "for-range-one",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for i in range({{n}}):\n    print(i)",
+      "values": [
+        {
+          "n": 3
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 2
+        },
+        {
+          "n": 5
+        }
+      ],
+      "mistakes": [
+        ["range({{n}})", "range(1, {{n}} + 1)"],
+        ["range({{n}})", "range({{n}} + 1)"],
+        ["range({{n}})", "range(1, {{n}})"]
+      ]
+    },
+    {
+      "id": "for-step",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for i in range({{a}}, {{b}}, {{s}}):\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 10,
+          "s": 2
+        },
+        {
+          "a": 1,
+          "b": 10,
+          "s": 3
+        },
+        {
+          "a": 5,
+          "b": 25,
+          "s": 5
+        },
+        {
+          "a": 2,
+          "b": 12,
+          "s": 4
+        }
+      ],
+      "mistakes": [
+        ["range({{a}}, {{b}}, {{s}})", "range({{a}}, {{b}} + 1, {{s}})"],
+        ["range({{a}}, {{b}}, {{s}})", "range({{a}} + {{s}}, {{b}}, {{s}})"],
+        ["range({{a}}, {{b}}, {{s}})", "range({{a}} + 1, {{b}} + 1, {{s}})"],
+        ["range({{a}}, {{b}}, {{s}})", "range({{a}}, {{b}} + {{s}}, {{s}})"]
+      ]
+    },
+    {
+      "id": "for-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    {{t}} = {{t}} + i\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "a": 1,
+          "b": 5
+        },
+        {
+          "t": "energie",
+          "a": 2,
+          "b": 6
+        },
+        {
+          "t": "puncte",
+          "a": 3,
+          "b": 7
+        },
+        {
+          "t": "scor",
+          "a": 0,
+          "b": 5
+        },
+        {
+          "t": "combustibil",
+          "a": 10,
+          "b": 13
+        }
+      ],
+      "mistakes": [
+        ["\nprint({{t}})", "\n    print({{t}})"],
+        ["range({{a}}, {{b}})", "range({{a}}, {{b}} + 1)"],
+        [
+          "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n",
+          "for i in range({{a}}, {{b}}):\n    {{t}} = 0\n"
+        ],
+        ["{{t}} + i", "{{t}} + 1"]
+      ]
+    },
+    {
+      "id": "for-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{c}} = 0\nfor i in range({{a}}, {{b}}):\n    {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "contor",
+          "a": 1,
+          "b": 5
+        },
+        {
+          "c": "ture",
+          "a": 3,
+          "b": 9
+        },
+        {
+          "c": "contor",
+          "a": 10,
+          "b": 14
+        }
+      ],
+      "mistakes": [
+        ["range({{a}}, {{b}})", "range({{a}}, {{b}} + 1)"],
+        ["{{c}} + 1", "{{c}} + i"],
+        ["\nprint({{c}})", "\n    print({{c}})"],
+        ["range({{a}}, {{b}})", "range({{b}})"]
+      ]
+    },
+    {
+      "id": "for-even",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i % 2 == {{r}}:\n        print(i)",
+      "values": [
+        {
+          "a": 1,
+          "b": 8,
+          "r": 1,
+          "flip": 0
+        },
+        {
+          "a": 2,
+          "b": 9,
+          "r": 0,
+          "flip": 1
+        },
+        {
+          "a": 1,
+          "b": 6,
+          "r": 0,
+          "flip": 1
+        },
+        {
+          "a": 3,
+          "b": 10,
+          "r": 1,
+          "flip": 0
+        }
+      ],
+      "mistakes": [
+        ["== {{r}}", "== {{flip}}"],
+        ["range({{a}}, {{b}})", "range({{a}}, {{b}} + 1)"],
+        ["if i % 2 == {{r}}:\n        print(i)", "print(i)"],
+        ["range({{a}}, {{b}})", "range({{a}} + 1, {{b}})"]
+      ]
+    },
+    {
+      "id": "for-fstring",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, {{n}}):\n    print(f\"{{w}} {i}\")",
+      "values": [
+        {
+          "w": "Celula",
+          "n": 4
+        },
+        {
+          "w": "Nivelul",
+          "n": 3
+        },
+        {
+          "w": "Valul",
+          "n": 5
+        }
+      ],
+      "mistakes": [
+        ["f\"", "\""],
+        ["range(1, {{n}})", "range(1, {{n}} + 1)"],
+        ["range(1, {{n}})", "range({{n}})"]
+      ]
+    },
+    {
+      "id": "for-which-range",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "for i in range({{a}}, {{b}}):\n    print(i)",
+      "values": [
+        {
+          "a": 1,
+          "b": 6,
+          "bm": 5,
+          "bp": 7,
+          "ap": 2
+        },
+        {
+          "a": 3,
+          "b": 7,
+          "bm": 6,
+          "bp": 8,
+          "ap": 4
+        },
+        {
+          "a": 0,
+          "b": 4,
+          "bm": 3,
+          "bp": 5,
+          "ap": 1
+        },
+        {
+          "a": 5,
+          "b": 9,
+          "bm": 8,
+          "bp": 10,
+          "ap": 6
+        }
+      ],
+      "mistakes": [
+        [", {{b}})", ", {{bm}})"],
+        [", {{b}})", ", {{bp}})"],
+        ["range({{a}}, ", "range({{ap}}, "]
+      ]
+    },
+    {
+      "id": "for-which-step",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "for i in range({{a}}, {{b}}, {{s}}):\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 11,
+          "s": 2,
+          "bm": 9,
+          "s1": 3
+        },
+        {
+          "a": 1,
+          "b": 10,
+          "s": 3,
+          "bm": 7,
+          "s1": 4
+        },
+        {
+          "a": 5,
+          "b": 21,
+          "s": 5,
+          "bm": 16,
+          "s1": 6
+        }
+      ],
+      "mistakes": [
+        [", {{s}})", ")"],
+        [", {{b}}, ", ", {{bm}}, "],
+        [", {{s}})", ", {{s1}})"]
+      ]
+    },
+    {
+      "id": "for-which-sum",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    {{t}} = {{t}} + i\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "a": 1,
+          "b": 6,
+          "bm": 5
+        },
+        {
+          "t": "puncte",
+          "a": 2,
+          "b": 5,
+          "bm": 4
+        },
+        {
+          "t": "energie",
+          "a": 1,
+          "b": 4,
+          "bm": 3
+        }
+      ],
+      "mistakes": [
+        ["\nprint({{t}})", "\n    print({{t}})"],
+        ["range({{a}}, {{b}})", "range({{a}}, {{bm}})"],
+        [
+          "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n",
+          "for i in range({{a}}, {{b}}):\n    {{t}} = 0\n"
+        ]
+      ]
+    },
+    {
+      "id": "for-gap-stop",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range({{a}}, ___):\n    print(i)",
+      "values": [
+        {
+          "a": 1,
+          "b": 6,
+          "w1": 5,
+          "w2": 7,
+          "w3": 4
+        },
+        {
+          "a": 0,
+          "b": 4,
+          "w1": 3,
+          "w2": 5,
+          "w3": 6
+        },
+        {
+          "a": 3,
+          "b": 8,
+          "w1": 7,
+          "w2": 9,
+          "w3": 6
+        },
+        {
+          "a": 10,
+          "b": 13,
+          "w1": 12,
+          "w2": 14,
+          "w3": 3
+        }
+      ],
+      "answer": "{{b}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "for-gap-step",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range({{a}}, {{b}}, ___):\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 11,
+          "s": 2,
+          "w1": 1,
+          "w2": 3,
+          "w3": 4
+        },
+        {
+          "a": 1,
+          "b": 14,
+          "s": 4,
+          "w1": 3,
+          "w2": 5,
+          "w3": 2
+        },
+        {
+          "a": 0,
+          "b": 31,
+          "s": 10,
+          "w1": 5,
+          "w2": 15,
+          "w3": 20
+        }
+      ],
+      "answer": "{{s}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "for-gap-start",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(___, {{b}}):\n    print(i)",
+      "values": [
+        {
+          "a": 2,
+          "b": 6,
+          "w1": 1,
+          "w2": 3,
+          "w3": 6
+        },
+        {
+          "a": 4,
+          "b": 8,
+          "w1": 3,
+          "w2": 5,
+          "w3": 0
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "for-gap-even",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i % 2 == ___:\n        print(i)",
+      "values": [
+        {
+          "a": 1,
+          "b": 8,
+          "r": 1,
+          "flip": 0
+        },
+        {
+          "a": 2,
+          "b": 9,
+          "r": 0,
+          "flip": 1
+        },
+        {
+          "a": 4,
+          "b": 10,
+          "r": 1,
+          "flip": 0
+        }
+      ],
+      "answer": "{{r}}",
+      "wrong": ["{{flip}}", "2", "i"]
+    },
+    {
+      "id": "for-gap-add",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    ___\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "a": 1,
+          "b": 5
+        },
+        {
+          "t": "energie",
+          "a": 2,
+          "b": 6
+        },
+        {
+          "t": "scor",
+          "a": 3,
+          "b": 6
+        },
+        {
+          "t": "combustibil",
+          "a": 1,
+          "b": 8
+        }
+      ],
+      "answer": "{{t}} = {{t}} + i",
+      "wrong": ["{{t}} = i", "{{t}} = {{t}} + 1", "{{t}} + i", "{{t}} = 0"]
+    },
+    {
+      "id": "for-gap-print",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range({{a}}, {{b}}):\n    ___",
+      "values": [
+        {
+          "a": 1,
+          "b": 4,
+          "bm": 3
+        },
+        {
+          "a": 5,
+          "b": 8,
+          "bm": 7
+        }
+      ],
+      "answer": "print(i)",
+      "wrong": ["print({{bm}})", "print(\"i\")", "print(i + 1)"]
+    },
+    {
+      "id": "for-gap-loop",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(i)",
+      "values": [
+        {
+          "a": 1,
+          "b": 5,
+          "bm": 4,
+          "bp": 6
+        },
+        {
+          "a": 2,
+          "b": 7,
+          "bm": 6,
+          "bp": 8
+        },
+        {
+          "a": 0,
+          "b": 3,
+          "bm": 2,
+          "bp": 4
+        }
+      ],
+      "answer": "for i in range({{a}}, {{b}}):",
+      "wrong": [
+        "for i in range({{a}}, {{bm}}):",
+        "for i in range({{b}}):",
+        "for i in range({{a}}, {{b}}, 2):",
+        "for i in range({{a}}, {{bp}}):"
+      ]
+    },
+    {
+      "id": "for-gap-if",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range({{a}}, {{b}}):\n    ___\n        print(i)",
+      "values": [
+        {
+          "a": 1,
+          "b": 9,
+          "r": 0,
+          "flip": 1
+        },
+        {
+          "a": 2,
+          "b": 10,
+          "r": 1,
+          "flip": 0
+        }
+      ],
+      "answer": "if i % 2 == {{r}}:",
+      "wrong": ["if i % 2 == {{flip}}:", "if i == 2:", "if i > {{a}}:"]
+    },
+    {
+      "id": "for-bad-colon",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    {{t}} = {{t}} + i\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "a": 1,
+          "b": 4
+        },
+        {
+          "t": "puncte",
+          "a": 2,
+          "b": 6
+        }
+      ],
+      "bug": ["range({{a}}, {{b}}):", "range({{a}}, {{b}})"]
+    },
+    {
+      "id": "for-bad-stop",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    print(i)\n    {{t}} = {{t}} + i\nprint({{t}})",
+      "values": [
+        {
+          "t": "energie",
+          "a": 1,
+          "b": 6,
+          "bm": 5
+        },
+        {
+          "t": "scor",
+          "a": 3,
+          "b": 8,
+          "bm": 7
+        },
+        {
+          "t": "combustibil",
+          "a": 0,
+          "b": 4,
+          "bm": 3
+        }
+      ],
+      "bug": ["range({{a}}, {{b}})", "range({{a}}, {{bm}})"]
+    },
+    {
+      "id": "for-bad-inside",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    {{t}} = {{t}} + i\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "a": 2,
+          "b": 5
+        },
+        {
+          "t": "energie",
+          "a": 1,
+          "b": 4
+        }
+      ],
+      "bug": ["print({{t}})", "    print({{t}})"]
+    },
+    {
+      "id": "for-bad-add",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    {{t}} = {{t}} + i\nprint({{t}})",
+      "values": [
+        {
+          "t": "puncte",
+          "a": 1,
+          "b": 5
+        },
+        {
+          "t": "scor",
+          "a": 4,
+          "b": 7
+        }
+      ],
+      "bug": ["{{t}} = {{t}} + i", "{{t}} = i"]
+    }
+  ]
+}

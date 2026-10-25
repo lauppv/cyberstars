@@ -1,0 +1,607 @@
+{
+  "note": "Made by npm run make:quiz from the templates in for-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "for-range-0f721f",
+      "text": "What does this print?",
+      "code": "for i in range(1, 4):\n    print(i)",
+      "options": ["1\n2\n3", "1\n2\n3\n4", "2\n3\n4", "1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-97a50f",
+      "text": "What does this print?",
+      "code": "for i in range(2, 6):\n    print(i)",
+      "options": ["2\n3\n4\n5", "2\n3\n4\n5\n6", "3\n4\n5\n6", "2\n3\n4"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-802328",
+      "text": "What does this print?",
+      "code": "for i in range(4, 7):\n    print(i)",
+      "options": ["4\n5\n6", "4\n5\n6\n7", "5\n6\n7", "4\n5"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-0dd16a",
+      "text": "What does this print?",
+      "code": "for i in range(3, 7):\n    print(i)",
+      "options": ["3\n4\n5\n6", "3\n4\n5\n6\n7", "4\n5\n6\n7", "3\n4\n5"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-fce826",
+      "text": "What does this print?",
+      "code": "for i in range(5, 9):\n    print(i)",
+      "options": ["5\n6\n7\n8", "5\n6\n7\n8\n9", "6\n7\n8\n9", "5\n6\n7"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-one-67f157",
+      "text": "What does this print?",
+      "code": "for i in range(3):\n    print(i)",
+      "options": ["0\n1\n2", "1\n2\n3", "0\n1\n2\n3", "1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-one-1951a8",
+      "text": "What does this print?",
+      "code": "for i in range(4):\n    print(i)",
+      "options": ["0\n1\n2\n3", "1\n2\n3\n4", "0\n1\n2\n3\n4", "1\n2\n3"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-one-e3797b",
+      "text": "What does this print?",
+      "code": "for i in range(2):\n    print(i)",
+      "options": ["0\n1", "1\n2", "0\n1\n2", "1"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-one-f63f4d",
+      "text": "What does this print?",
+      "code": "for i in range(5):\n    print(i)",
+      "options": ["0\n1\n2\n3\n4", "1\n2\n3\n4\n5", "0\n1\n2\n3\n4\n5", "1\n2\n3\n4"],
+      "answer": 0
+    },
+    {
+      "id": "for-step-760b7b",
+      "text": "What does this print?",
+      "code": "for i in range(0, 10, 2):\n    print(i)",
+      "options": ["0\n2\n4\n6\n8", "0\n2\n4\n6\n8\n10", "2\n4\n6\n8", "1\n3\n5\n7\n9"],
+      "answer": 0
+    },
+    {
+      "id": "for-step-700dd4",
+      "text": "What does this print?",
+      "code": "for i in range(1, 10, 3):\n    print(i)",
+      "options": ["1\n4\n7", "1\n4\n7\n10", "4\n7", "2\n5\n8"],
+      "answer": 0
+    },
+    {
+      "id": "for-step-cc963f",
+      "text": "What does this print?",
+      "code": "for i in range(5, 25, 5):\n    print(i)",
+      "options": ["5\n10\n15\n20", "5\n10\n15\n20\n25", "10\n15\n20", "6\n11\n16\n21"],
+      "answer": 0
+    },
+    {
+      "id": "for-step-1eb8c5",
+      "text": "What does this print?",
+      "code": "for i in range(2, 12, 4):\n    print(i)",
+      "options": ["2\n6\n10", "6\n10", "3\n7\n11", "2\n6\n10\n14"],
+      "answer": 0
+    },
+    {
+      "id": "for-sum-3d17f9",
+      "text": "What does this print?",
+      "code": "total = 0\nfor i in range(1, 5):\n    total = total + i\nprint(total)",
+      "options": ["10", "1\n3\n6\n10", "15", "4"],
+      "answer": 0
+    },
+    {
+      "id": "for-sum-d92992",
+      "text": "What does this print?",
+      "code": "energy = 0\nfor i in range(2, 6):\n    energy = energy + i\nprint(energy)",
+      "options": ["14", "2\n5\n9\n14", "20", "5"],
+      "answer": 0
+    },
+    {
+      "id": "for-sum-ba01b4",
+      "text": "What does this print?",
+      "code": "points = 0\nfor i in range(3, 7):\n    points = points + i\nprint(points)",
+      "options": ["18", "3\n7\n12\n18", "25", "6"],
+      "answer": 0
+    },
+    {
+      "id": "for-sum-24b403",
+      "text": "What does this print?",
+      "code": "score = 0\nfor i in range(0, 5):\n    score = score + i\nprint(score)",
+      "options": ["10", "0\n1\n3\n6\n10", "15", "4"],
+      "answer": 0
+    },
+    {
+      "id": "for-sum-32b56d",
+      "text": "What does this print?",
+      "code": "fuel = 0\nfor i in range(10, 13):\n    fuel = fuel + i\nprint(fuel)",
+      "options": ["33", "10\n21\n33", "46", "12"],
+      "answer": 0
+    },
+    {
+      "id": "for-count-75078e",
+      "text": "What does this print?",
+      "code": "count = 0\nfor i in range(1, 5):\n    count = count + 1\nprint(count)",
+      "options": ["4", "5", "10", "1\n2\n3\n4"],
+      "answer": 0
+    },
+    {
+      "id": "for-count-821337",
+      "text": "What does this print?",
+      "code": "laps = 0\nfor i in range(3, 9):\n    laps = laps + 1\nprint(laps)",
+      "options": ["6", "7", "33", "1\n2\n3\n4\n5\n6"],
+      "answer": 0
+    },
+    {
+      "id": "for-count-22d6d2",
+      "text": "What does this print?",
+      "code": "count = 0\nfor i in range(10, 14):\n    count = count + 1\nprint(count)",
+      "options": ["4", "5", "46", "1\n2\n3\n4"],
+      "answer": 0
+    },
+    {
+      "id": "for-even-3725fc",
+      "text": "What does this print?",
+      "code": "for i in range(1, 8):\n    if i % 2 == 1:\n        print(i)",
+      "options": ["1\n3\n5\n7", "2\n4\n6", "1\n2\n3\n4\n5\n6\n7", "3\n5\n7"],
+      "answer": 0
+    },
+    {
+      "id": "for-even-9b33ae",
+      "text": "What does this print?",
+      "code": "for i in range(2, 9):\n    if i % 2 == 0:\n        print(i)",
+      "options": ["2\n4\n6\n8", "3\n5\n7", "2\n3\n4\n5\n6\n7\n8", "4\n6\n8"],
+      "answer": 0
+    },
+    {
+      "id": "for-even-9a8829",
+      "text": "What does this print?",
+      "code": "for i in range(1, 6):\n    if i % 2 == 0:\n        print(i)",
+      "options": ["2\n4", "1\n3\n5", "2\n4\n6", "1\n2\n3\n4\n5"],
+      "answer": 0
+    },
+    {
+      "id": "for-even-1829f8",
+      "text": "What does this print?",
+      "code": "for i in range(3, 10):\n    if i % 2 == 1:\n        print(i)",
+      "options": ["3\n5\n7\n9", "4\n6\n8", "3\n4\n5\n6\n7\n8\n9", "5\n7\n9"],
+      "answer": 0
+    },
+    {
+      "id": "for-fstring-786a03",
+      "text": "What does this print?",
+      "code": "for i in range(1, 4):\n    print(f\"Cell {i}\")",
+      "options": [
+        "Cell 1\nCell 2\nCell 3",
+        "Cell {i}\nCell {i}\nCell {i}",
+        "Cell 1\nCell 2\nCell 3\nCell 4",
+        "Cell 0\nCell 1\nCell 2\nCell 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-fstring-0da87e",
+      "text": "What does this print?",
+      "code": "for i in range(1, 3):\n    print(f\"Level {i}\")",
+      "options": [
+        "Level 1\nLevel 2",
+        "Level {i}\nLevel {i}",
+        "Level 1\nLevel 2\nLevel 3",
+        "Level 0\nLevel 1\nLevel 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-fstring-64651b",
+      "text": "What does this print?",
+      "code": "for i in range(1, 5):\n    print(f\"Wave {i}\")",
+      "options": [
+        "Wave 1\nWave 2\nWave 3\nWave 4",
+        "Wave {i}\nWave {i}\nWave {i}\nWave {i}",
+        "Wave 1\nWave 2\nWave 3\nWave 4\nWave 5",
+        "Wave 0\nWave 1\nWave 2\nWave 3\nWave 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-range-682b90",
+      "text": "Which program shows this?",
+      "output": "1\n2\n3\n4\n5",
+      "options": [
+        "for i in range(1, 6):\n    print(i)",
+        "for i in range(1, 5):\n    print(i)",
+        "for i in range(1, 7):\n    print(i)",
+        "for i in range(2, 6):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-range-2a73c2",
+      "text": "Which program shows this?",
+      "output": "3\n4\n5\n6",
+      "options": [
+        "for i in range(3, 7):\n    print(i)",
+        "for i in range(3, 6):\n    print(i)",
+        "for i in range(3, 8):\n    print(i)",
+        "for i in range(4, 7):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-range-64f83e",
+      "text": "Which program shows this?",
+      "output": "0\n1\n2\n3",
+      "options": [
+        "for i in range(0, 4):\n    print(i)",
+        "for i in range(0, 3):\n    print(i)",
+        "for i in range(0, 5):\n    print(i)",
+        "for i in range(1, 4):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-range-4218e6",
+      "text": "Which program shows this?",
+      "output": "5\n6\n7\n8",
+      "options": [
+        "for i in range(5, 9):\n    print(i)",
+        "for i in range(5, 8):\n    print(i)",
+        "for i in range(5, 10):\n    print(i)",
+        "for i in range(6, 9):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-step-6e8c2e",
+      "text": "Which program shows this?",
+      "output": "0\n2\n4\n6\n8\n10",
+      "options": [
+        "for i in range(0, 11, 2):\n    print(i)",
+        "for i in range(0, 11):\n    print(i)",
+        "for i in range(0, 9, 2):\n    print(i)",
+        "for i in range(0, 11, 3):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-step-355060",
+      "text": "Which program shows this?",
+      "output": "1\n4\n7",
+      "options": [
+        "for i in range(1, 10, 3):\n    print(i)",
+        "for i in range(1, 10):\n    print(i)",
+        "for i in range(1, 7, 3):\n    print(i)",
+        "for i in range(1, 10, 4):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-step-9ac7f6",
+      "text": "Which program shows this?",
+      "output": "5\n10\n15\n20",
+      "options": [
+        "for i in range(5, 21, 5):\n    print(i)",
+        "for i in range(5, 21):\n    print(i)",
+        "for i in range(5, 16, 5):\n    print(i)",
+        "for i in range(5, 21, 6):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-sum-d20e10",
+      "text": "Which program shows this?",
+      "output": "15",
+      "options": [
+        "total = 0\nfor i in range(1, 6):\n    total = total + i\nprint(total)",
+        "total = 0\nfor i in range(1, 6):\n    total = total + i\n    print(total)",
+        "total = 0\nfor i in range(1, 5):\n    total = total + i\nprint(total)",
+        "for i in range(1, 6):\n    total = 0\n    total = total + i\nprint(total)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-sum-6b4db9",
+      "text": "Which program shows this?",
+      "output": "9",
+      "options": [
+        "points = 0\nfor i in range(2, 5):\n    points = points + i\nprint(points)",
+        "points = 0\nfor i in range(2, 5):\n    points = points + i\n    print(points)",
+        "points = 0\nfor i in range(2, 4):\n    points = points + i\nprint(points)",
+        "for i in range(2, 5):\n    points = 0\n    points = points + i\nprint(points)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-sum-e5120f",
+      "text": "Which program shows this?",
+      "output": "6",
+      "options": [
+        "energy = 0\nfor i in range(1, 4):\n    energy = energy + i\nprint(energy)",
+        "energy = 0\nfor i in range(1, 4):\n    energy = energy + i\n    print(energy)",
+        "energy = 0\nfor i in range(1, 3):\n    energy = energy + i\nprint(energy)",
+        "for i in range(1, 4):\n    energy = 0\n    energy = energy + i\nprint(energy)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-stop-1e5a45",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, ___):\n    print(i)",
+      "output": "1\n2\n3\n4\n5",
+      "options": ["6", "5", "7", "4"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-stop-190d7d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(0, ___):\n    print(i)",
+      "output": "0\n1\n2\n3",
+      "options": ["4", "3", "5", "6"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-stop-599225",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(3, ___):\n    print(i)",
+      "output": "3\n4\n5\n6\n7",
+      "options": ["8", "7", "9", "6"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-stop-0b5aae",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(10, ___):\n    print(i)",
+      "output": "10\n11\n12",
+      "options": ["13", "12", "14", "3"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-step-cbbb21",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(0, 11, ___):\n    print(i)",
+      "output": "0\n2\n4\n6\n8\n10",
+      "options": ["2", "1", "3", "4"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-step-2b6b14",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 14, ___):\n    print(i)",
+      "output": "1\n5\n9\n13",
+      "options": ["4", "3", "5", "2"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-step-bc58bf",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(0, 31, ___):\n    print(i)",
+      "output": "0\n10\n20\n30",
+      "options": ["10", "5", "15", "20"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-start-b4b083",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(___, 6):\n    print(i)",
+      "output": "2\n3\n4\n5",
+      "options": ["2", "1", "3", "6"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-start-8b8868",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(___, 8):\n    print(i)",
+      "output": "4\n5\n6\n7",
+      "options": ["4", "3", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-even-2d9c65",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 8):\n    if i % 2 == ___:\n        print(i)",
+      "output": "1\n3\n5\n7",
+      "options": ["1", "0", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-even-f5a56a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(2, 9):\n    if i % 2 == ___:\n        print(i)",
+      "output": "2\n4\n6\n8",
+      "options": ["0", "1", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-even-74ead0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(4, 10):\n    if i % 2 == ___:\n        print(i)",
+      "output": "5\n7\n9",
+      "options": ["1", "0", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-add-b62b9d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "total = 0\nfor i in range(1, 5):\n    ___\nprint(total)",
+      "output": "10",
+      "options": ["total = total + i", "total = i", "total = total + 1", "total + i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-add-ee9a93",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "energy = 0\nfor i in range(2, 6):\n    ___\nprint(energy)",
+      "output": "14",
+      "options": ["energy = energy + i", "energy = i", "energy = energy + 1", "energy + i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-add-1d27e2",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "score = 0\nfor i in range(3, 6):\n    ___\nprint(score)",
+      "output": "12",
+      "options": ["score = score + i", "score = i", "score = score + 1", "score + i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-add-1b00f3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fuel = 0\nfor i in range(1, 8):\n    ___\nprint(fuel)",
+      "output": "28",
+      "options": ["fuel = fuel + i", "fuel = i", "fuel = fuel + 1", "fuel + i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-print-ac680a",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(1, 4):\n    ___",
+      "output": "1\n2\n3",
+      "options": ["print(i)", "print(3)", "print(\"i\")", "print(i + 1)"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-print-6d4fed",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(5, 8):\n    ___",
+      "output": "5\n6\n7",
+      "options": ["print(i)", "print(7)", "print(\"i\")", "print(i + 1)"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-loop-a83235",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(i)",
+      "output": "1\n2\n3\n4",
+      "options": [
+        "for i in range(1, 5):",
+        "for i in range(1, 4):",
+        "for i in range(5):",
+        "for i in range(1, 5, 2):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-loop-6f4ca5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(i)",
+      "output": "2\n3\n4\n5\n6",
+      "options": [
+        "for i in range(2, 7):",
+        "for i in range(2, 6):",
+        "for i in range(7):",
+        "for i in range(2, 7, 2):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-loop-2b88d9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(i)",
+      "output": "0\n1\n2",
+      "options": [
+        "for i in range(0, 3):",
+        "for i in range(0, 2):",
+        "for i in range(0, 3, 2):",
+        "for i in range(0, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-if-00ac43",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(1, 9):\n    ___\n        print(i)",
+      "output": "2\n4\n6\n8",
+      "options": ["if i % 2 == 0:", "if i % 2 == 1:", "if i == 2:", "if i > 1:"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-if-bcdb88",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(2, 10):\n    ___\n        print(i)",
+      "output": "3\n5\n7\n9",
+      "options": ["if i % 2 == 1:", "if i % 2 == 0:", "if i == 2:", "if i > 2:"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-colon-da42bf",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor i in range(1, 4)\n    total = total + i\nprint(total)",
+      "output": "6",
+      "options": ["for i in range(1, 4)", "total = 0", "total = total + i", "print(total)"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-colon-1adb52",
+      "text": "Which line stops this program from printing this?",
+      "code": "points = 0\nfor i in range(2, 6)\n    points = points + i\nprint(points)",
+      "output": "14",
+      "options": ["for i in range(2, 6)", "points = 0", "points = points + i", "print(points)"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-stop-348cc9",
+      "text": "Which line stops this program from printing this?",
+      "code": "energy = 0\nfor i in range(1, 5):\n    print(i)\n    energy = energy + i\nprint(energy)",
+      "output": "1\n2\n3\n4\n5\n15",
+      "options": ["for i in range(1, 5):", "print(i)", "energy = energy + i", "print(energy)"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-stop-f8431c",
+      "text": "Which line stops this program from printing this?",
+      "code": "score = 0\nfor i in range(3, 7):\n    print(i)\n    score = score + i\nprint(score)",
+      "output": "3\n4\n5\n6\n7\n25",
+      "options": ["for i in range(3, 7):", "score = 0", "print(i)", "score = score + i"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-stop-16b7df",
+      "text": "Which line stops this program from printing this?",
+      "code": "fuel = 0\nfor i in range(0, 3):\n    print(i)\n    fuel = fuel + i\nprint(fuel)",
+      "output": "0\n1\n2\n3\n6",
+      "options": ["for i in range(0, 3):", "print(i)", "fuel = fuel + i", "print(fuel)"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-inside-edd404",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor i in range(2, 5):\n    total = total + i\n    print(total)",
+      "output": "9",
+      "options": ["print(total)", "total = total + i", "total = 0", "for i in range(2, 5):"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-inside-068e6c",
+      "text": "Which line stops this program from printing this?",
+      "code": "energy = 0\nfor i in range(1, 4):\n    energy = energy + i\n    print(energy)",
+      "output": "6",
+      "options": ["print(energy)", "energy = energy + i", "energy = 0", "for i in range(1, 4):"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-add-ae75ad",
+      "text": "Which line stops this program from printing this?",
+      "code": "points = 0\nfor i in range(1, 5):\n    points = i\nprint(points)",
+      "output": "10",
+      "options": ["points = i", "points = 0", "for i in range(1, 5):", "print(points)"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-add-076eeb",
+      "text": "Which line stops this program from printing this?",
+      "code": "score = 0\nfor i in range(4, 7):\n    score = i\nprint(score)",
+      "output": "15",
+      "options": ["score = i", "score = 0", "for i in range(4, 7):", "print(score)"],
+      "answer": 0
+    }
+  ]
+}

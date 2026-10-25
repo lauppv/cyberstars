@@ -308,9 +308,9 @@
       "output": "[1, 2, 3, 5, 8]",
       "options": [
         "for j in range(len(numbers) - 1)",
-        "numbers = [5, 3, 8, 1, 2]",
-        "for i in range(len(numbers)):",
-        "if numbers[j] > numbers[j + 1]:"
+        "if numbers[j] > numbers[j + 1]:",
+        "numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]",
+        "print(numbers)"
       ],
       "answer": 0
     },
@@ -321,9 +321,9 @@
       "output": "[1, 2, 3, 4]",
       "options": [
         "for j in range(len(numbers) - 1)",
-        "numbers = [4, 1, 3, 2]",
-        "for i in range(len(numbers)):",
-        "if numbers[j] > numbers[j + 1]:"
+        "if numbers[j] > numbers[j + 1]:",
+        "numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]",
+        "print(numbers)"
       ],
       "answer": 0
     },
@@ -334,8 +334,8 @@
       "output": "[7, 8, 9]",
       "options": [
         "for j in range(len(numbers) - 1)",
-        "numbers = [9, 7, 8]",
         "for i in range(len(numbers)):",
+        "numbers = [9, 7, 8]",
         "if numbers[j] > numbers[j + 1]:"
       ],
       "answer": 0
@@ -347,8 +347,8 @@
       "output": "[1, 2, 5, 6]",
       "options": [
         "for j in range(len(numbers) - 1)",
-        "numbers = [2, 6, 1, 5]",
         "for i in range(len(numbers)):",
+        "numbers = [2, 6, 1, 5]",
         "if numbers[j] > numbers[j + 1]:"
       ],
       "answer": 0

@@ -1,0 +1,675 @@
+{
+  "note": "Made by npm run make:quiz from the templates in booleans-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "bo-print-cmp-2ab7f0",
+      "text": "What does this print?",
+      "code": "age = 15\nprint(age < 18)",
+      "options": ["True", "False", "age < 18", "15"],
+      "answer": 0
+    },
+    {
+      "id": "bo-print-cmp-4d5578",
+      "text": "What does this print?",
+      "code": "age = 20\nprint(age >= 18)",
+      "options": ["True", "False", "age >= 18", "20"],
+      "answer": 0
+    },
+    {
+      "id": "bo-print-cmp-e88441",
+      "text": "What does this print?",
+      "code": "score = 50\nprint(score == 50)",
+      "options": ["True", "False", "score == 50", "50"],
+      "answer": 0
+    },
+    {
+      "id": "bo-print-cmp-2e2f05",
+      "text": "What does this print?",
+      "code": "fuel = 30\nprint(fuel > 40)",
+      "options": ["False", "True", "fuel > 40", "30"],
+      "answer": 0
+    },
+    {
+      "id": "bo-print-cmp-93dc0a",
+      "text": "What does this print?",
+      "code": "lives = 0\nprint(lives != 0)",
+      "options": ["False", "True", "lives != 0", "0"],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-ffb584",
+      "text": "What does this print?",
+      "code": "age = 20\nhas_license = True\nif age >= 18 and has_license:\n    print(\"You can drive\")\nelse:\n    print(\"No driving yet\")",
+      "options": ["You can drive", "No driving yet", "You can drive\nNo driving yet", "True"],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-d9c4aa",
+      "text": "What does this print?",
+      "code": "age = 16\nhas_license = True\nif age >= 18 and has_license:\n    print(\"You can drive\")\nelse:\n    print(\"No driving yet\")",
+      "options": ["No driving yet", "You can drive", "You can drive\nNo driving yet", "False"],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-a02724",
+      "text": "What does this print?",
+      "code": "age = 20\nhas_license = False\nif age >= 18 and has_license:\n    print(\"You can drive\")\nelse:\n    print(\"No driving yet\")",
+      "options": ["No driving yet", "You can drive", "You can drive\nNo driving yet", "False"],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-be9b4a",
+      "text": "What does this print?",
+      "code": "level = 7\nhas_key = True\nif level >= 5 and has_key:\n    print(\"The door opens\")\nelse:\n    print(\"The door stays shut\")",
+      "options": [
+        "The door opens",
+        "The door stays shut",
+        "The door opens\nThe door stays shut",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-0503fd",
+      "text": "What does this print?",
+      "code": "level = 3\nhas_key = True\nif level >= 5 and has_key:\n    print(\"The door opens\")\nelse:\n    print(\"The door stays shut\")",
+      "options": [
+        "The door stays shut",
+        "The door opens",
+        "The door opens\nThe door stays shut",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-4db432",
+      "text": "What does this print?",
+      "code": "level = 5\nhas_key = False\nif level >= 5 and has_key:\n    print(\"The door opens\")\nelse:\n    print(\"The door stays shut\")",
+      "options": [
+        "The door stays shut",
+        "The door opens",
+        "The door opens\nThe door stays shut",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-2177ea",
+      "text": "What does this print?",
+      "code": "fuel = 80\nengine_ok = True\nif fuel >= 50 and engine_ok:\n    print(\"Ready to launch\")\nelse:\n    print(\"Launch on hold\")",
+      "options": ["Ready to launch", "Launch on hold", "Ready to launch\nLaunch on hold", "True"],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-32e8f5",
+      "text": "What does this print?",
+      "code": "fuel = 30\nengine_ok = False\nif fuel >= 50 and engine_ok:\n    print(\"Ready to launch\")\nelse:\n    print(\"Launch on hold\")",
+      "options": ["Launch on hold", "Ready to launch", "Ready to launch\nLaunch on hold", "False"],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-470edf",
+      "text": "What does this print?",
+      "code": "is_vip = False\nhas_invitation = True\nif is_vip or has_invitation:\n    print(\"Welcome to the club\")\nelse:\n    print(\"Access denied\")",
+      "options": [
+        "Welcome to the club",
+        "Access denied",
+        "Welcome to the club\nAccess denied",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-2d406d",
+      "text": "What does this print?",
+      "code": "is_vip = False\nhas_invitation = False\nif is_vip or has_invitation:\n    print(\"Welcome to the club\")\nelse:\n    print(\"Access denied\")",
+      "options": [
+        "Access denied",
+        "Welcome to the club",
+        "Welcome to the club\nAccess denied",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-2a9f8c",
+      "text": "What does this print?",
+      "code": "is_vip = True\nhas_invitation = False\nif is_vip or has_invitation:\n    print(\"Welcome to the club\")\nelse:\n    print(\"Access denied\")",
+      "options": [
+        "Welcome to the club",
+        "Access denied",
+        "Welcome to the club\nAccess denied",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-9d3af9",
+      "text": "What does this print?",
+      "code": "is_admin = False\nis_owner = False\nif is_admin or is_owner:\n    print(\"You can edit\")\nelse:\n    print(\"Read only\")",
+      "options": ["Read only", "You can edit", "You can edit\nRead only", "False"],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-f9fc59",
+      "text": "What does this print?",
+      "code": "is_admin = False\nis_owner = True\nif is_admin or is_owner:\n    print(\"You can edit\")\nelse:\n    print(\"Read only\")",
+      "options": ["You can edit", "Read only", "You can edit\nRead only", "True"],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-22da04",
+      "text": "What does this print?",
+      "code": "has_map = True\nhas_guide = True\nif has_map or has_guide:\n    print(\"You find the way\")\nelse:\n    print(\"You are lost\")",
+      "options": ["You find the way", "You are lost", "You find the way\nYou are lost", "True"],
+      "answer": 0
+    },
+    {
+      "id": "bo-not-436bea",
+      "text": "What does this print?",
+      "code": "is_logged_in = False\nif not is_logged_in:\n    print(\"Please log in first\")\nelse:\n    print(\"Welcome back\")",
+      "options": [
+        "Please log in first",
+        "Welcome back",
+        "Please log in first\nWelcome back",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-not-576396",
+      "text": "What does this print?",
+      "code": "is_logged_in = True\nif not is_logged_in:\n    print(\"Please log in first\")\nelse:\n    print(\"Welcome back\")",
+      "options": [
+        "Welcome back",
+        "Please log in first",
+        "Please log in first\nWelcome back",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-not-cdc008",
+      "text": "What does this print?",
+      "code": "door_locked = True\nif not door_locked:\n    print(\"Come in\")\nelse:\n    print(\"Find the key\")",
+      "options": ["Find the key", "Come in", "Come in\nFind the key", "False"],
+      "answer": 0
+    },
+    {
+      "id": "bo-not-970249",
+      "text": "What does this print?",
+      "code": "door_locked = False\nif not door_locked:\n    print(\"Come in\")\nelse:\n    print(\"Find the key\")",
+      "options": ["Come in", "Find the key", "Come in\nFind the key", "True"],
+      "answer": 0
+    },
+    {
+      "id": "bo-flag-dbf6f4",
+      "text": "What does this print?",
+      "code": "running = True\nnumber = 0\nwhile running:\n    print(number)\n    number = number + 1\n    if number == 4:\n        running = False\nprint(\"Done\")",
+      "options": ["0\n1\n2\n3\nDone", "1\n2\n3\n4\nDone", "1\n2\n3\nDone", "Done"],
+      "answer": 0
+    },
+    {
+      "id": "bo-flag-9ebaa8",
+      "text": "What does this print?",
+      "code": "active = True\nstep = 0\nwhile active:\n    print(step)\n    step = step + 1\n    if step == 2:\n        active = False\nprint(\"Stopped\")",
+      "options": ["0\n1\nStopped", "1\n2\nStopped", "1\nStopped", "Stopped"],
+      "answer": 0
+    },
+    {
+      "id": "bo-flag-d07b3c",
+      "text": "What does this print?",
+      "code": "on = True\ncount = 0\nwhile on:\n    print(count)\n    count = count + 1\n    if count == 4:\n        on = False\nprint(\"Finished\")",
+      "options": ["0\n1\n2\n3\nFinished", "1\n2\n3\n4\nFinished", "1\n2\n3\nFinished", "Finished"],
+      "answer": 0
+    },
+    {
+      "id": "bo-flag-9a9c8e",
+      "text": "What does this print?",
+      "code": "scanning = True\nsector = 0\nwhile scanning:\n    print(sector)\n    sector = sector + 1\n    if sector == 3:\n        scanning = False\nprint(\"Scan complete\")",
+      "options": [
+        "0\n1\n2\nScan complete",
+        "1\n2\n3\nScan complete",
+        "1\n2\nScan complete",
+        "Scan complete"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-321762",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "has_ticket = True\nhas_id = False\nif has_ticket ___ has_id:\n    print(\"Board the ship\")\nelse:\n    print(\"Stay at the gate\")",
+      "output": "Stay at the gate",
+      "options": ["and", "or", "AND", "&&"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-070571",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "has_ticket = False\nhas_id = True\nif has_ticket ___ has_id:\n    print(\"Board the ship\")\nelse:\n    print(\"Stay at the gate\")",
+      "output": "Stay at the gate",
+      "options": ["and", "or", "AND", "&&"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-02f754",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "is_vip = False\nhas_invitation = True\nif is_vip ___ has_invitation:\n    print(\"Welcome to the club\")\nelse:\n    print(\"Access denied\")",
+      "output": "Welcome to the club",
+      "options": ["or", "and", "OR", "||"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-12f245",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "is_weekend = True\nis_holiday = False\nif is_weekend ___ is_holiday:\n    print(\"No school today\")\nelse:\n    print(\"School day\")",
+      "output": "No school today",
+      "options": ["or", "and", "OR", "||"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-ed4fa7",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "has_fuel = True\nhas_pilot = False\nif has_fuel ___ has_pilot:\n    print(\"Take off\")\nelse:\n    print(\"Stay on the ground\")",
+      "output": "Stay on the ground",
+      "options": ["and", "or", "AND", "&&"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-b01de6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "is_cold = False\nis_windy = True\nif is_cold ___ is_windy:\n    print(\"Wear a jacket\")\nelse:\n    print(\"A t-shirt is fine\")",
+      "output": "Wear a jacket",
+      "options": ["or", "and", "OR", "||"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-bool-cc902e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "is_online = ___\nif is_online:\n    print(\"Online\")\nelse:\n    print(\"Offline\")",
+      "output": "Online",
+      "options": ["True", "False", "true", "false"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-bool-55fe2c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "has_key = ___\nif has_key:\n    print(\"Door open\")\nelse:\n    print(\"Door locked\")",
+      "output": "Door locked",
+      "options": ["False", "True", "false", "\"False\""],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-bool-aa34c0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "game_over = ___\nif game_over:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
+      "output": "Keep playing",
+      "options": ["False", "True", "false", "\"False\""],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-bool-d6507f",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "shield_on = ___\nif shield_on:\n    print(\"Shield up\")\nelse:\n    print(\"Shield down\")",
+      "output": "Shield up",
+      "options": ["True", "False", "true", "false"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-780df0",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "age = 12\n___",
+      "output": "True",
+      "options": ["print(age < 18)", "print(age >= 18)", "print(\"age < 18\")", "print(age)"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-649715",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "score = 75\n___",
+      "output": "True",
+      "options": [
+        "print(score >= 50)",
+        "print(score < 50)",
+        "print(\"score >= 50\")",
+        "print(score)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-070a10",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fuel = 90\n___",
+      "output": "False",
+      "options": ["print(fuel <= 40)", "print(fuel > 40)", "print(\"fuel <= 40\")", "print(fuel)"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-942e09",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "speed = 120\n___",
+      "output": "True",
+      "options": [
+        "print(speed != 100)",
+        "print(speed == 100)",
+        "print(\"speed != 100\")",
+        "print(speed)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-ab0cfe",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "lives = 0\n___",
+      "output": "True",
+      "options": [
+        "print(lives == 0)",
+        "print(lives != 0)",
+        "print(\"lives == 0\")",
+        "print(lives)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-fe736a",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "stars = 2\n___",
+      "output": "False",
+      "options": ["print(stars > 3)", "print(stars <= 3)", "print(\"stars > 3\")", "print(stars)"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-if-717211",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "age = 20\nhas_license = True\n___\n    print(\"You can drive\")\nelse:\n    print(\"No driving yet\")",
+      "output": "You can drive",
+      "options": [
+        "if age >= 18 and has_license:",
+        "if age < 18 and has_license:",
+        "if age >= 18 and not has_license:",
+        "if age >= 18 and has_license"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-if-2d9831",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "age = 20\nhas_license = False\n___\n    print(\"You can drive\")\nelse:\n    print(\"No driving yet\")",
+      "output": "No driving yet",
+      "options": [
+        "if age >= 18 and has_license:",
+        "if age >= 18 or has_license:",
+        "if age >= 18 and not has_license:",
+        "if age >= 18 and has_license"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-if-196677",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "level = 3\nhas_key = True\n___\n    print(\"The door opens\")\nelse:\n    print(\"The door stays shut\")",
+      "output": "The door stays shut",
+      "options": [
+        "if level >= 5 and has_key:",
+        "if level >= 5 or has_key:",
+        "if level < 5 and has_key:",
+        "if level >= 5 and has_key"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-if-84ea0c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fuel = 60\nengine_ok = True\n___\n    print(\"Ready to launch\")\nelse:\n    print(\"Launch on hold\")",
+      "output": "Ready to launch",
+      "options": [
+        "if fuel >= 50 and engine_ok:",
+        "if fuel < 50 and engine_ok:",
+        "if fuel >= 50 and not engine_ok:",
+        "if fuel >= 50 and engine_ok"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-4c5822",
+      "text": "Which program shows this?",
+      "output": "Stay at the gate",
+      "options": [
+        "has_ticket = True\nhas_id = False\nif has_ticket and has_id:\n    print(\"Board the ship\")\nelse:\n    print(\"Stay at the gate\")",
+        "has_ticket = True\nhas_id = False\nif has_ticket or has_id:\n    print(\"Board the ship\")\nelse:\n    print(\"Stay at the gate\")",
+        "has_ticket = True\nhas_id = True\nif has_ticket and has_id:\n    print(\"Board the ship\")\nelse:\n    print(\"Stay at the gate\")",
+        "has_ticket = True\nhas_id = False\nif has_ticket and has_id:\n    print(\"Stay at the gate\")\nelse:\n    print(\"Board the ship\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-f95482",
+      "text": "Which program shows this?",
+      "output": "Welcome to the club",
+      "options": [
+        "is_vip = False\nhas_invitation = True\nif is_vip or has_invitation:\n    print(\"Welcome to the club\")\nelse:\n    print(\"Access denied\")",
+        "is_vip = False\nhas_invitation = True\nif is_vip and has_invitation:\n    print(\"Welcome to the club\")\nelse:\n    print(\"Access denied\")",
+        "is_vip = False\nhas_invitation = False\nif is_vip or has_invitation:\n    print(\"Welcome to the club\")\nelse:\n    print(\"Access denied\")",
+        "is_vip = False\nhas_invitation = True\nif is_vip or has_invitation:\n    print(\"Access denied\")\nelse:\n    print(\"Welcome to the club\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-301811",
+      "text": "Which program shows this?",
+      "output": "Stay on the ground",
+      "options": [
+        "has_fuel = False\nhas_pilot = True\nif has_fuel and has_pilot:\n    print(\"Take off\")\nelse:\n    print(\"Stay on the ground\")",
+        "has_fuel = False\nhas_pilot = True\nif has_fuel or has_pilot:\n    print(\"Take off\")\nelse:\n    print(\"Stay on the ground\")",
+        "has_fuel = True\nhas_pilot = True\nif has_fuel and has_pilot:\n    print(\"Take off\")\nelse:\n    print(\"Stay on the ground\")",
+        "has_fuel = False\nhas_pilot = True\nif has_fuel and has_pilot:\n    print(\"Stay on the ground\")\nelse:\n    print(\"Take off\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-203f11",
+      "text": "Which program shows this?",
+      "output": "No school today",
+      "options": [
+        "is_weekend = False\nis_holiday = True\nif is_weekend or is_holiday:\n    print(\"No school today\")\nelse:\n    print(\"School day\")",
+        "is_weekend = False\nis_holiday = True\nif is_weekend and is_holiday:\n    print(\"No school today\")\nelse:\n    print(\"School day\")",
+        "is_weekend = False\nis_holiday = False\nif is_weekend or is_holiday:\n    print(\"No school today\")\nelse:\n    print(\"School day\")",
+        "is_weekend = False\nis_holiday = True\nif is_weekend or is_holiday:\n    print(\"School day\")\nelse:\n    print(\"No school today\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-3cec62",
+      "text": "Which program shows this?",
+      "output": "You can edit",
+      "options": [
+        "is_admin = True\nis_owner = False\nif is_admin or is_owner:\n    print(\"You can edit\")\nelse:\n    print(\"Read only\")",
+        "is_admin = True\nis_owner = False\nif is_admin and is_owner:\n    print(\"You can edit\")\nelse:\n    print(\"Read only\")",
+        "is_admin = False\nis_owner = False\nif is_admin or is_owner:\n    print(\"You can edit\")\nelse:\n    print(\"Read only\")",
+        "is_admin = True\nis_owner = False\nif is_admin or is_owner:\n    print(\"Read only\")\nelse:\n    print(\"You can edit\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-4a61a7",
+      "text": "Which program shows this?",
+      "output": "A t-shirt is fine",
+      "options": [
+        "is_cold = True\nis_windy = False\nif is_cold and is_windy:\n    print(\"Wear a jacket\")\nelse:\n    print(\"A t-shirt is fine\")",
+        "is_cold = True\nis_windy = False\nif is_cold or is_windy:\n    print(\"Wear a jacket\")\nelse:\n    print(\"A t-shirt is fine\")",
+        "is_cold = True\nis_windy = True\nif is_cold and is_windy:\n    print(\"Wear a jacket\")\nelse:\n    print(\"A t-shirt is fine\")",
+        "is_cold = True\nis_windy = False\nif is_cold and is_windy:\n    print(\"A t-shirt is fine\")\nelse:\n    print(\"Wear a jacket\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-print-da7b7b",
+      "text": "Which program shows this?",
+      "output": "False",
+      "options": [
+        "age = 17\nprint(age >= 18)",
+        "age = 17\nprint(age < 18)",
+        "age = 17\nprint(\"age >= 18\")",
+        "age = 17\nprint(age)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-print-95739f",
+      "text": "Which program shows this?",
+      "output": "True",
+      "options": [
+        "stars = 3\nprint(stars == 3)",
+        "stars = 3\nprint(stars != 3)",
+        "stars = 3\nprint(\"stars == 3\")",
+        "stars = 3\nprint(stars)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-case-62583a",
+      "text": "Which line stops this program from printing this?",
+      "code": "is_online = true\nif is_online:\n    print(\"Online\")\nelse:\n    print(\"Offline\")",
+      "output": "Online",
+      "options": ["is_online = true", "print(\"Online\")", "print(\"Offline\")", "if is_online:"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-case-f770c4",
+      "text": "Which line stops this program from printing this?",
+      "code": "has_key = false\nif has_key:\n    print(\"Door open\")\nelse:\n    print(\"Door locked\")",
+      "output": "Door locked",
+      "options": [
+        "has_key = false",
+        "print(\"Door open\")",
+        "print(\"Door locked\")",
+        "if has_key:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-case-c980c4",
+      "text": "Which line stops this program from printing this?",
+      "code": "game_over = true\nif game_over:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
+      "output": "Game over",
+      "options": [
+        "game_over = true",
+        "print(\"Game over\")",
+        "print(\"Keep playing\")",
+        "if game_over:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-case-a8f58a",
+      "text": "Which line stops this program from printing this?",
+      "code": "shield_on = false\nif shield_on:\n    print(\"Shield up\")\nelse:\n    print(\"Shield down\")",
+      "output": "Shield down",
+      "options": [
+        "shield_on = false",
+        "print(\"Shield up\")",
+        "print(\"Shield down\")",
+        "if shield_on:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-and-241202",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 19\nhas_license = True\nif age >= 18 AND has_license:\n    print(\"You can drive\")\nelse:\n    print(\"No driving yet\")",
+      "output": "You can drive",
+      "options": [
+        "if age >= 18 AND has_license:",
+        "has_license = True",
+        "else:",
+        "print(\"You can drive\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-and-64a714",
+      "text": "Which line stops this program from printing this?",
+      "code": "level = 4\nhas_key = True\nif level >= 5 AND has_key:\n    print(\"The door opens\")\nelse:\n    print(\"The door stays shut\")",
+      "output": "The door stays shut",
+      "options": ["if level >= 5 AND has_key:", "has_key = True", "level = 4", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-and-a5f084",
+      "text": "Which line stops this program from printing this?",
+      "code": "fuel = 70\nengine_ok = False\nif fuel >= 50 AND engine_ok:\n    print(\"Ready to launch\")\nelse:\n    print(\"Launch on hold\")",
+      "output": "Launch on hold",
+      "options": [
+        "if fuel >= 50 AND engine_ok:",
+        "engine_ok = False",
+        "else:",
+        "print(\"Ready to launch\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-and-861d64",
+      "text": "Which line stops this program from printing this?",
+      "code": "fuel = 55\nengine_ok = True\nif fuel >= 50 AND engine_ok:\n    print(\"Ready to launch\")\nelse:\n    print(\"Launch on hold\")",
+      "output": "Ready to launch",
+      "options": ["if fuel >= 50 AND engine_ok:", "engine_ok = True", "fuel = 55", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-equal-c755a6",
+      "text": "Which line stops this program from printing this?",
+      "code": "is_online = True\nif is_online = True:\n    print(\"Online\")\nelse:\n    print(\"Offline\")",
+      "output": "Online",
+      "options": ["if is_online = True:", "else:", "print(\"Online\")", "print(\"Offline\")"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-equal-027630",
+      "text": "Which line stops this program from printing this?",
+      "code": "has_key = False\nif has_key = True:\n    print(\"Door open\")\nelse:\n    print(\"Door locked\")",
+      "output": "Door locked",
+      "options": ["if has_key = True:", "has_key = False", "else:", "print(\"Door open\")"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-equal-5d4d6e",
+      "text": "Which line stops this program from printing this?",
+      "code": "shield_on = True\nif shield_on = True:\n    print(\"Shield up\")\nelse:\n    print(\"Shield down\")",
+      "output": "Shield up",
+      "options": ["if shield_on = True:", "shield_on = True", "else:", "print(\"Shield up\")"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-stop-4fd5d7",
+      "text": "Which line stops this program from printing this?",
+      "code": "running = True\nnumber = 0\nwhile running:\n    print(number)\n    number = number + 1\n    if number == 2:\n        running = False\nprint(\"Done\")",
+      "output": "0\n1\n2\nDone",
+      "options": ["if number == 2:", "while running:", "number = number + 1", "print(number)"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-stop-c8d3b7",
+      "text": "Which line stops this program from printing this?",
+      "code": "active = True\nstep = 0\nwhile active:\n    print(step)\n    step = step + 1\n    if step == 5:\n        active = False\nprint(\"Stopped\")",
+      "output": "0\n1\n2\n3\nStopped",
+      "options": ["if step == 5:", "while active:", "step = step + 1", "print(step)"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-stop-362331",
+      "text": "Which line stops this program from printing this?",
+      "code": "on = True\ncount = 0\nwhile on:\n    print(count)\n    count = count + 1\n    if count == 1:\n        on = False\nprint(\"Finished\")",
+      "output": "0\n1\nFinished",
+      "options": ["if count == 1:", "while on:", "on = False", "print(\"Finished\")"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-stop-4c7bfc",
+      "text": "Which line stops this program from printing this?",
+      "code": "scanning = True\nsector = 0\nwhile scanning:\n    print(sector)\n    sector = sector + 1\n    if sector == 4:\n        scanning = False\nprint(\"Scan complete\")",
+      "output": "0\n1\n2\n3\n4\nScan complete",
+      "options": ["if sector == 4:", "while scanning:", "sector = sector + 1", "print(sector)"],
+      "answer": 0
+    }
+  ]
+}

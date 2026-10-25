@@ -1,0 +1,622 @@
+{
+  "note": "Made by npm run make:quiz from the templates in for-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "for-range-0f721f",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 4):\n    print(i)",
+      "options": ["1\n2\n3", "1\n2\n3\n4", "2\n3\n4", "1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-97a50f",
+      "text": "Ce afișează?",
+      "code": "for i in range(2, 6):\n    print(i)",
+      "options": ["2\n3\n4\n5", "2\n3\n4\n5\n6", "3\n4\n5\n6", "2\n3\n4"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-802328",
+      "text": "Ce afișează?",
+      "code": "for i in range(4, 7):\n    print(i)",
+      "options": ["4\n5\n6", "4\n5\n6\n7", "5\n6\n7", "4\n5"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-0dd16a",
+      "text": "Ce afișează?",
+      "code": "for i in range(3, 7):\n    print(i)",
+      "options": ["3\n4\n5\n6", "3\n4\n5\n6\n7", "4\n5\n6\n7", "3\n4\n5"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-fce826",
+      "text": "Ce afișează?",
+      "code": "for i in range(5, 9):\n    print(i)",
+      "options": ["5\n6\n7\n8", "5\n6\n7\n8\n9", "6\n7\n8\n9", "5\n6\n7"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-one-67f157",
+      "text": "Ce afișează?",
+      "code": "for i in range(3):\n    print(i)",
+      "options": ["0\n1\n2", "1\n2\n3", "0\n1\n2\n3", "1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-one-1951a8",
+      "text": "Ce afișează?",
+      "code": "for i in range(4):\n    print(i)",
+      "options": ["0\n1\n2\n3", "1\n2\n3\n4", "0\n1\n2\n3\n4", "1\n2\n3"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-one-e3797b",
+      "text": "Ce afișează?",
+      "code": "for i in range(2):\n    print(i)",
+      "options": ["0\n1", "1\n2", "0\n1\n2", "1"],
+      "answer": 0
+    },
+    {
+      "id": "for-range-one-f63f4d",
+      "text": "Ce afișează?",
+      "code": "for i in range(5):\n    print(i)",
+      "options": ["0\n1\n2\n3\n4", "1\n2\n3\n4\n5", "0\n1\n2\n3\n4\n5", "1\n2\n3\n4"],
+      "answer": 0
+    },
+    {
+      "id": "for-step-760b7b",
+      "text": "Ce afișează?",
+      "code": "for i in range(0, 10, 2):\n    print(i)",
+      "options": ["0\n2\n4\n6\n8", "0\n2\n4\n6\n8\n10", "2\n4\n6\n8", "1\n3\n5\n7\n9"],
+      "answer": 0
+    },
+    {
+      "id": "for-step-700dd4",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 10, 3):\n    print(i)",
+      "options": ["1\n4\n7", "1\n4\n7\n10", "4\n7", "2\n5\n8"],
+      "answer": 0
+    },
+    {
+      "id": "for-step-cc963f",
+      "text": "Ce afișează?",
+      "code": "for i in range(5, 25, 5):\n    print(i)",
+      "options": ["5\n10\n15\n20", "5\n10\n15\n20\n25", "10\n15\n20", "6\n11\n16\n21"],
+      "answer": 0
+    },
+    {
+      "id": "for-step-1eb8c5",
+      "text": "Ce afișează?",
+      "code": "for i in range(2, 12, 4):\n    print(i)",
+      "options": ["2\n6\n10", "6\n10", "3\n7\n11", "2\n6\n10\n14"],
+      "answer": 0
+    },
+    {
+      "id": "for-sum-3d17f9",
+      "text": "Ce afișează?",
+      "code": "total = 0\nfor i in range(1, 5):\n    total = total + i\nprint(total)",
+      "options": ["10", "1\n3\n6\n10", "15", "4"],
+      "answer": 0
+    },
+    {
+      "id": "for-sum-d92992",
+      "text": "Ce afișează?",
+      "code": "energie = 0\nfor i in range(2, 6):\n    energie = energie + i\nprint(energie)",
+      "options": ["14", "2\n5\n9\n14", "20", "5"],
+      "answer": 0
+    },
+    {
+      "id": "for-sum-ba01b4",
+      "text": "Ce afișează?",
+      "code": "puncte = 0\nfor i in range(3, 7):\n    puncte = puncte + i\nprint(puncte)",
+      "options": ["18", "3\n7\n12\n18", "25", "6"],
+      "answer": 0
+    },
+    {
+      "id": "for-sum-24b403",
+      "text": "Ce afișează?",
+      "code": "scor = 0\nfor i in range(0, 5):\n    scor = scor + i\nprint(scor)",
+      "options": ["10", "0\n1\n3\n6\n10", "15", "4"],
+      "answer": 0
+    },
+    {
+      "id": "for-sum-32b56d",
+      "text": "Ce afișează?",
+      "code": "combustibil = 0\nfor i in range(10, 13):\n    combustibil = combustibil + i\nprint(combustibil)",
+      "options": ["33", "10\n21\n33", "46", "12"],
+      "answer": 0
+    },
+    {
+      "id": "for-count-75078e",
+      "text": "Ce afișează?",
+      "code": "contor = 0\nfor i in range(1, 5):\n    contor = contor + 1\nprint(contor)",
+      "options": ["4", "5", "10", "1\n2\n3\n4"],
+      "answer": 0
+    },
+    {
+      "id": "for-count-821337",
+      "text": "Ce afișează?",
+      "code": "ture = 0\nfor i in range(3, 9):\n    ture = ture + 1\nprint(ture)",
+      "options": ["6", "7", "33", "1\n2\n3\n4\n5\n6"],
+      "answer": 0
+    },
+    {
+      "id": "for-count-22d6d2",
+      "text": "Ce afișează?",
+      "code": "contor = 0\nfor i in range(10, 14):\n    contor = contor + 1\nprint(contor)",
+      "options": ["4", "5", "46", "1\n2\n3\n4"],
+      "answer": 0
+    },
+    {
+      "id": "for-even-3725fc",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 8):\n    if i % 2 == 1:\n        print(i)",
+      "options": ["1\n3\n5\n7", "2\n4\n6", "1\n2\n3\n4\n5\n6\n7", "3\n5\n7"],
+      "answer": 0
+    },
+    {
+      "id": "for-even-9b33ae",
+      "text": "Ce afișează?",
+      "code": "for i in range(2, 9):\n    if i % 2 == 0:\n        print(i)",
+      "options": ["2\n4\n6\n8", "3\n5\n7", "2\n3\n4\n5\n6\n7\n8", "4\n6\n8"],
+      "answer": 0
+    },
+    {
+      "id": "for-even-9a8829",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 6):\n    if i % 2 == 0:\n        print(i)",
+      "options": ["2\n4", "1\n3\n5", "2\n4\n6", "1\n2\n3\n4\n5"],
+      "answer": 0
+    },
+    {
+      "id": "for-even-1829f8",
+      "text": "Ce afișează?",
+      "code": "for i in range(3, 10):\n    if i % 2 == 1:\n        print(i)",
+      "options": ["3\n5\n7\n9", "4\n6\n8", "3\n4\n5\n6\n7\n8\n9", "5\n7\n9"],
+      "answer": 0
+    },
+    {
+      "id": "for-fstring-786a03",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 4):\n    print(f\"Celula {i}\")",
+      "options": [
+        "Celula 1\nCelula 2\nCelula 3",
+        "Celula {i}\nCelula {i}\nCelula {i}",
+        "Celula 1\nCelula 2\nCelula 3\nCelula 4",
+        "Celula 0\nCelula 1\nCelula 2\nCelula 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-fstring-0da87e",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 3):\n    print(f\"Nivelul {i}\")",
+      "options": [
+        "Nivelul 1\nNivelul 2",
+        "Nivelul {i}\nNivelul {i}",
+        "Nivelul 1\nNivelul 2\nNivelul 3",
+        "Nivelul 0\nNivelul 1\nNivelul 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-fstring-64651b",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 5):\n    print(f\"Valul {i}\")",
+      "options": [
+        "Valul 1\nValul 2\nValul 3\nValul 4",
+        "Valul {i}\nValul {i}\nValul {i}\nValul {i}",
+        "Valul 1\nValul 2\nValul 3\nValul 4\nValul 5",
+        "Valul 0\nValul 1\nValul 2\nValul 3\nValul 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-range-682b90",
+      "text": "Care program afișează asta?",
+      "output": "1\n2\n3\n4\n5",
+      "options": [
+        "for i in range(1, 6):\n    print(i)",
+        "for i in range(1, 5):\n    print(i)",
+        "for i in range(1, 7):\n    print(i)",
+        "for i in range(2, 6):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-range-2a73c2",
+      "text": "Care program afișează asta?",
+      "output": "3\n4\n5\n6",
+      "options": [
+        "for i in range(3, 7):\n    print(i)",
+        "for i in range(3, 6):\n    print(i)",
+        "for i in range(3, 8):\n    print(i)",
+        "for i in range(4, 7):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-range-64f83e",
+      "text": "Care program afișează asta?",
+      "output": "0\n1\n2\n3",
+      "options": [
+        "for i in range(0, 4):\n    print(i)",
+        "for i in range(0, 3):\n    print(i)",
+        "for i in range(0, 5):\n    print(i)",
+        "for i in range(1, 4):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-range-4218e6",
+      "text": "Care program afișează asta?",
+      "output": "5\n6\n7\n8",
+      "options": [
+        "for i in range(5, 9):\n    print(i)",
+        "for i in range(5, 8):\n    print(i)",
+        "for i in range(5, 10):\n    print(i)",
+        "for i in range(6, 9):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-step-6e8c2e",
+      "text": "Care program afișează asta?",
+      "output": "0\n2\n4\n6\n8\n10",
+      "options": [
+        "for i in range(0, 11, 2):\n    print(i)",
+        "for i in range(0, 11):\n    print(i)",
+        "for i in range(0, 9, 2):\n    print(i)",
+        "for i in range(0, 11, 3):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-step-355060",
+      "text": "Care program afișează asta?",
+      "output": "1\n4\n7",
+      "options": [
+        "for i in range(1, 10, 3):\n    print(i)",
+        "for i in range(1, 10):\n    print(i)",
+        "for i in range(1, 7, 3):\n    print(i)",
+        "for i in range(1, 10, 4):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-step-9ac7f6",
+      "text": "Care program afișează asta?",
+      "output": "5\n10\n15\n20",
+      "options": [
+        "for i in range(5, 21, 5):\n    print(i)",
+        "for i in range(5, 21):\n    print(i)",
+        "for i in range(5, 16, 5):\n    print(i)",
+        "for i in range(5, 21, 6):\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-sum-d20e10",
+      "text": "Care program afișează asta?",
+      "output": "15",
+      "options": [
+        "total = 0\nfor i in range(1, 6):\n    total = total + i\nprint(total)",
+        "total = 0\nfor i in range(1, 6):\n    total = total + i\n    print(total)",
+        "total = 0\nfor i in range(1, 5):\n    total = total + i\nprint(total)",
+        "for i in range(1, 6):\n    total = 0\n    total = total + i\nprint(total)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-sum-6b4db9",
+      "text": "Care program afișează asta?",
+      "output": "9",
+      "options": [
+        "puncte = 0\nfor i in range(2, 5):\n    puncte = puncte + i\nprint(puncte)",
+        "puncte = 0\nfor i in range(2, 5):\n    puncte = puncte + i\n    print(puncte)",
+        "puncte = 0\nfor i in range(2, 4):\n    puncte = puncte + i\nprint(puncte)",
+        "for i in range(2, 5):\n    puncte = 0\n    puncte = puncte + i\nprint(puncte)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-which-sum-e5120f",
+      "text": "Care program afișează asta?",
+      "output": "6",
+      "options": [
+        "energie = 0\nfor i in range(1, 4):\n    energie = energie + i\nprint(energie)",
+        "energie = 0\nfor i in range(1, 4):\n    energie = energie + i\n    print(energie)",
+        "energie = 0\nfor i in range(1, 3):\n    energie = energie + i\nprint(energie)",
+        "for i in range(1, 4):\n    energie = 0\n    energie = energie + i\nprint(energie)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-stop-1e5a45",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, ___):\n    print(i)",
+      "output": "1\n2\n3\n4\n5",
+      "options": ["6", "5", "7", "4"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-stop-190d7d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(0, ___):\n    print(i)",
+      "output": "0\n1\n2\n3",
+      "options": ["4", "3", "5", "6"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-stop-599225",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(3, ___):\n    print(i)",
+      "output": "3\n4\n5\n6\n7",
+      "options": ["8", "7", "9", "6"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-stop-0b5aae",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(10, ___):\n    print(i)",
+      "output": "10\n11\n12",
+      "options": ["13", "12", "14", "3"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-step-cbbb21",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(0, 11, ___):\n    print(i)",
+      "output": "0\n2\n4\n6\n8\n10",
+      "options": ["2", "1", "3", "4"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-step-2b6b14",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 14, ___):\n    print(i)",
+      "output": "1\n5\n9\n13",
+      "options": ["4", "3", "5", "2"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-step-bc58bf",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(0, 31, ___):\n    print(i)",
+      "output": "0\n10\n20\n30",
+      "options": ["10", "5", "15", "20"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-start-b4b083",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(___, 6):\n    print(i)",
+      "output": "2\n3\n4\n5",
+      "options": ["2", "1", "3", "6"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-start-8b8868",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(___, 8):\n    print(i)",
+      "output": "4\n5\n6\n7",
+      "options": ["4", "3", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-even-2d9c65",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 8):\n    if i % 2 == ___:\n        print(i)",
+      "output": "1\n3\n5\n7",
+      "options": ["1", "0", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-even-f5a56a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(2, 9):\n    if i % 2 == ___:\n        print(i)",
+      "output": "2\n4\n6\n8",
+      "options": ["0", "1", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-even-74ead0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(4, 10):\n    if i % 2 == ___:\n        print(i)",
+      "output": "5\n7\n9",
+      "options": ["1", "0", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-add-b62b9d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "total = 0\nfor i in range(1, 5):\n    ___\nprint(total)",
+      "output": "10",
+      "options": ["total = total + i", "total = i", "total = total + 1", "total + i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-add-ee9a93",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "energie = 0\nfor i in range(2, 6):\n    ___\nprint(energie)",
+      "output": "14",
+      "options": ["energie = energie + i", "energie = i", "energie = energie + 1", "energie + i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-add-1d27e2",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 0\nfor i in range(3, 6):\n    ___\nprint(scor)",
+      "output": "12",
+      "options": ["scor = scor + i", "scor = i", "scor = scor + 1", "scor + i"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-add-1b00f3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = 0\nfor i in range(1, 8):\n    ___\nprint(combustibil)",
+      "output": "28",
+      "options": [
+        "combustibil = combustibil + i",
+        "combustibil = i",
+        "combustibil = combustibil + 1",
+        "combustibil + i"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-print-ac680a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 4):\n    ___",
+      "output": "1\n2\n3",
+      "options": ["print(i)", "print(3)", "print(\"i\")", "print(i + 1)"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-print-6d4fed",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(5, 8):\n    ___",
+      "output": "5\n6\n7",
+      "options": ["print(i)", "print(7)", "print(\"i\")", "print(i + 1)"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-loop-a83235",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(i)",
+      "output": "1\n2\n3\n4",
+      "options": [
+        "for i in range(1, 5):",
+        "for i in range(1, 4):",
+        "for i in range(5):",
+        "for i in range(1, 5, 2):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-loop-6f4ca5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(i)",
+      "output": "2\n3\n4\n5\n6",
+      "options": [
+        "for i in range(2, 7):",
+        "for i in range(2, 6):",
+        "for i in range(7):",
+        "for i in range(2, 7, 2):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-loop-2b88d9",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(i)",
+      "output": "0\n1\n2",
+      "options": [
+        "for i in range(0, 3):",
+        "for i in range(0, 2):",
+        "for i in range(0, 3, 2):",
+        "for i in range(0, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-if-00ac43",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 9):\n    ___\n        print(i)",
+      "output": "2\n4\n6\n8",
+      "options": ["if i % 2 == 0:", "if i % 2 == 1:", "if i == 2:", "if i > 1:"],
+      "answer": 0
+    },
+    {
+      "id": "for-gap-if-bcdb88",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(2, 10):\n    ___\n        print(i)",
+      "output": "3\n5\n7\n9",
+      "options": ["if i % 2 == 1:", "if i % 2 == 0:", "if i == 2:", "if i > 2:"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-colon-da42bf",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor i in range(1, 4)\n    total = total + i\nprint(total)",
+      "output": "6",
+      "options": ["for i in range(1, 4)", "total = 0", "total = total + i", "print(total)"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-colon-1adb52",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "puncte = 0\nfor i in range(2, 6)\n    puncte = puncte + i\nprint(puncte)",
+      "output": "14",
+      "options": ["for i in range(2, 6)", "puncte = 0", "puncte = puncte + i", "print(puncte)"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-stop-348cc9",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "energie = 0\nfor i in range(1, 5):\n    print(i)\n    energie = energie + i\nprint(energie)",
+      "output": "1\n2\n3\n4\n5\n15",
+      "options": ["for i in range(1, 5):", "print(i)", "energie = energie + i", "print(energie)"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-stop-f8431c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scor = 0\nfor i in range(3, 7):\n    print(i)\n    scor = scor + i\nprint(scor)",
+      "output": "3\n4\n5\n6\n7\n25",
+      "options": ["for i in range(3, 7):", "scor = 0", "print(i)", "scor = scor + i"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-stop-16b7df",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "combustibil = 0\nfor i in range(0, 3):\n    print(i)\n    combustibil = combustibil + i\nprint(combustibil)",
+      "output": "0\n1\n2\n3\n6",
+      "options": [
+        "for i in range(0, 3):",
+        "print(i)",
+        "combustibil = combustibil + i",
+        "print(combustibil)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-inside-edd404",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor i in range(2, 5):\n    total = total + i\n    print(total)",
+      "output": "9",
+      "options": ["print(total)", "total = total + i", "total = 0", "for i in range(2, 5):"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-inside-068e6c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "energie = 0\nfor i in range(1, 4):\n    energie = energie + i\n    print(energie)",
+      "output": "6",
+      "options": [
+        "print(energie)",
+        "energie = energie + i",
+        "energie = 0",
+        "for i in range(1, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-add-ae75ad",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "puncte = 0\nfor i in range(1, 5):\n    puncte = i\nprint(puncte)",
+      "output": "10",
+      "options": ["puncte = i", "puncte = 0", "for i in range(1, 5):", "print(puncte)"],
+      "answer": 0
+    },
+    {
+      "id": "for-bad-add-076eeb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scor = 0\nfor i in range(4, 7):\n    scor = i\nprint(scor)",
+      "output": "15",
+      "options": ["scor = i", "scor = 0", "for i in range(4, 7):", "print(scor)"],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,1271 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce adaugă elif după un if?",
+      "options": [
+        "Încă o condiție, verificată doar când cele de deasupra ei sunt false",
+        "Un bloc care rulează mereu după if",
+        "Un al doilea program care rulează în același timp",
+        "O condiție verificată înaintea if-ului"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Într-un lanț if / elif / else care se termină cu else, câte blocuri rulează?",
+      "options": [
+        "Fiecare bloc a cărui condiție e adevărată",
+        "Toate, de sus în jos",
+        "Exact unul: primul bloc a cărui condiție e adevărată sau else-ul, când niciuna nu e",
+        "Ultimul bloc a cărui condiție e adevărată"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Mai multe condiții dintr-un lanț sunt adevărate. Ce bloc rulează?",
+      "options": [
+        "Ultimul adevărat",
+        "Primul adevărat, de sus",
+        "Toate cele adevărate, unul după altul",
+        "Niciunul: Python se oprește cu o eroare"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "După ce a rulat un bloc din lanț, ce face programul?",
+      "options": [
+        "Verifică și următorul elif",
+        "Rulează și else-ul",
+        "Reia lanțul de la început",
+        "Iese din lanț și merge mai departe cu linia de după el"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Când rulează else-ul de la sfârșitul unui lanț?",
+      "options": [
+        "Când niciun if sau elif de deasupra lui nu e adevărat",
+        "De fiecare dată, după celelalte blocuri",
+        "Doar când if-ul e fals, orice ar spune elif-urile",
+        "Când ultimul elif e fals, chiar dacă if-ul a fost adevărat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Când spune lecția să înlănțuim if / elif / else?",
+      "options": [
+        "Oricând un program are mai mult de două condiții",
+        "Când vrem ca fiecare condiție să fie verificată",
+        "Când testăm aceeași variabilă pentru mai multe cazuri",
+        "Doar când condițiile folosesc =="
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Care dintre aceste linii e corectă?",
+      "options": [
+        "else if secunde == 60:",
+        "elif secunde == 60:",
+        "elif secunde == 60",
+        "elif: secunde == 60"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Unde se poate pune un elif?",
+      "options": [
+        "Oriunde în program, singur",
+        "După else",
+        "Înainte de if",
+        "Imediat după blocul unui if sau al altui elif"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Un lanț are nevoie de un else la sfârșit?",
+      "options": [
+        "Nu, dar fără el nu rulează nimic când nicio condiție nu e adevărată",
+        "Da, fără el Python se oprește cu o eroare",
+        "Da, altfel liniile cu elif sunt sărite",
+        "Nu, iar fără el rulează blocul fiecărui elif"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Câte elif poate avea un lanț?",
+      "options": ["Doar unul", "Cel mult trei", "Câte avem nevoie", "Câte variabile verificăm"],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "De ce afișează două linii?",
+      "code": "secunde = 60\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nif secunde == 60:\n    print(\"Verific turnul\")\nif secunde < 10:\n    print(\"Decolez\")\nelse:\n    print(\"Fara efect\")",
+      "options": [
+        "Un else rulează mereu la sfârșitul programului",
+        "Else-ul ține doar de ultimul if, iar secunde < 10 e fals",
+        "secunde == 60 e verificat de două ori",
+        "Fiecare if își rulează blocul, adevărat sau nu"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "Ce e greșit în acest lanț?",
+      "code": "scor = 95\nif scor >= 50:\n    print(\"Trecut\")\nelif scor >= 90:\n    print(\"Excelent\")",
+      "options": [
+        "Nimic, afișează Excelent pentru 95",
+        "Un elif are nevoie de un else după el",
+        "Afișează și Trecut, și Excelent pentru 95",
+        "Excelent nu se afișează niciodată: un scor de 90 sau mai mult trece deja de prima verificare"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Un scor de cel puțin 90 e Excelent, de cel puțin 50 e Trecut. În ce ordine verificăm?",
+      "options": [
+        "scor >= 90 în if, apoi scor >= 50 în elif",
+        "scor >= 50 în if, apoi scor >= 90 în elif",
+        "scor >= 50 în if, apoi scor >= 90 în else",
+        "Orice ordine, lanțul afișează la fel"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Care e diferența dintre trei if-uri unul după altul și un lanț if / elif / elif?",
+      "options": [
+        "Niciuna, afișează mereu la fel",
+        "If-urile separate sunt verificate toate; un lanț se oprește la prima condiție adevărată",
+        "Într-un lanț, elif-urile sunt verificate înaintea if-ului",
+        "If-urile separate se opresc la prima condiție adevărată"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "În racheta din lecție, cu secunde = 60, ce condiții verifică Python?",
+      "options": [
+        "Doar secunde == 60",
+        "Toate, apoi îl alege pe secunde == 60",
+        "secunde == 100, apoi secunde == 60, apoi iese din lanț",
+        "secunde == 60, apoi toate cele de sub el"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "În racheta din lecție, ce se afișează cu secunde = 45?",
+      "options": [
+        "Pornesc motoarele secundare",
+        "Verific conexiunea cu turnul de control",
+        "Nimic: 45 nu se potrivește cu nicio condiție",
+        "45 secunde nu au niciun efect"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "În racheta din lecție, cu secunde = 9, ce decide linia afișată?",
+      "options": [
+        "If-ul din elif secunde < 10, care verifică eroare_detectata",
+        "Doar else-ul de la sfârșitul lanțului",
+        "secunde == 10, pentru că 9 e aproape de 10",
+        "Nimic: 9 nu se potrivește cu nicio condiție"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Cum se numește un if scris în blocul altui if, elif sau else?",
+      "options": ["Un elif", "Un if înlănțuit", "Un if imbricat", "O condiție dublă"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "Cât de indentat e blocul unui if imbricat?",
+      "options": [
+        "La fel de la stânga ca if-ul din afară",
+        "Cu un nivel mai mult decât linia if-ului imbricat",
+        "La fel ca linia if-ului imbricat",
+        "Deloc, e deja în interiorul unui bloc"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "În misiunea cu monitorul de oxigen, ce afișează stația cu oxigen = 79?",
+      "options": [
+        "Oxigen scazut - conservati energia",
+        "Oxigen nominal",
+        "Oxigen critic - sigilati compartimentul",
+        "Oxigen nominal și Oxigen scazut - conservati energia"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "În misiunea cu monitorul de oxigen, ce afișează stația cu oxigen = 12 și echipaj_la_bord = False?",
+      "options": [
+        "Urgenta - evacuati acum",
+        "Oxigen critic - sigilati compartimentul",
+        "Nimic, pentru că echipajul nu e la bord",
+        "Nu avem echipaj la bord, deci aerisirea compartimentului este sigura"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q22",
+      "text": "Lanțul din misiune începe cu `if oxigen >= 80:`. Ce linie verifică oxigenul între 50 și 79?",
+      "options": [
+        "if oxigen >= 50:",
+        "elif oxigen <= 79:",
+        "elif oxigen >= 50:",
+        "elif oxigen > 50:"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "De ce `elif oxigen >= 50:` nu trebuie să verifice și că oxigenul e sub 80?",
+      "options": [
+        "Python verifică singur 80-ul la sfârșit",
+        "Elif-ul e verificat doar când oxigen >= 80 a fost fals, deci oxigenul e deja sub 80",
+        "Pentru că 50 e mai mic decât 80, Python sare peste verificare",
+        "Trebuie: și 90 ar afișa Oxigen scazut"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Se ajunge la else când x e 5?",
+      "code": "x = 5\nif x > 10:\n    print(\"Mare\")\nelif x > 0:\n    print(\"Mic\")\nelse:\n    print(\"Zero sau mai putin\")",
+      "options": [
+        "Da, else-ul rulează mereu la sfârșit",
+        "Da, pentru că x > 10 e fals",
+        "Nu: x > 0 e adevărat, deci lanțul se oprește acolo",
+        "Nu, Python se oprește înainte cu o eroare"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "x = 3\nelif x > 0:\n    print(\"Pozitiv\")",
+      "options": [
+        "Se oprește cu o eroare: un elif are nevoie de un if înaintea lui",
+        "Afișează Pozitiv",
+        "Nu afișează nimic",
+        "Afișează 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "x = 3\nif x > 5:\n    print(\"Mare\")\nelse:\n    print(\"Mic\")\nelif x > 0:\n    print(\"Pozitiv\")",
+      "options": [
+        "Afișează Mic",
+        "Afișează Mic, apoi Pozitiv",
+        "Afișează Pozitiv",
+        "Se oprește cu o eroare: un elif nu poate veni după else"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "Care program afișează exact o linie, orice număr ar ține temperatura?",
+      "options": [
+        "if temperatura < 0:\n    print(\"Gheata\")\nif temperatura < 20:\n    print(\"Racoare\")\nelse:\n    print(\"Cald\")",
+        "if temperatura < 0:\n    print(\"Gheata\")\nelif temperatura < 20:\n    print(\"Racoare\")\nelse:\n    print(\"Cald\")",
+        "if temperatura < 0:\n    print(\"Gheata\")\nelif temperatura < 20:\n    print(\"Racoare\")",
+        "if temperatura < 0:\n    print(\"Gheata\")\nelif temperatura < 20:\n    print(\"Racoare\")\nprint(\"Cald\")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "În `elif secunde < 10:  # ultimele 10 secunde`, ce face comentariul?",
+      "options": [
+        "Nimic pentru Python, doar explică linia celui care o citește",
+        "Face elif-ul să verifice ultimele 10 secunde",
+        "Se afișează când rulează elif-ul",
+        "Așteaptă 10 secunde înainte de elif"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "Ce valoare a lui secunde face racheta din lecție să pornească motoarele principale?",
+      "options": ["9", "20", "10", "11"],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "Un lanț verifică `if vieti == 0:`, apoi `elif vieti == 3:` și nu are else. Ce rulează când vieti e 2?",
+      "options": [
+        "Blocul lui vieti == 0",
+        "Nimic: nicio condiție nu e adevărată și nu există else",
+        "Blocul lui vieti == 3",
+        "Python se oprește cu o eroare, pentru că un lanț are nevoie de else"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "iee-chain",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxigen",
+          "x": 85,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic"
+        },
+        {
+          "v": "oxigen",
+          "x": 50,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic"
+        },
+        {
+          "v": "oxigen",
+          "x": 30,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic"
+        },
+        {
+          "v": "scor",
+          "x": 90,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat"
+        },
+        {
+          "v": "scor",
+          "x": 75,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat"
+        },
+        {
+          "v": "scor",
+          "x": 20,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat"
+        },
+        {
+          "v": "baterie",
+          "x": 100,
+          "a": 60,
+          "b": 20,
+          "ta": "Baterie buna",
+          "tb": "Baterie slaba",
+          "tc": "Incarca acum"
+        },
+        {
+          "v": "baterie",
+          "x": 20,
+          "a": 60,
+          "b": 20,
+          "ta": "Baterie buna",
+          "tb": "Baterie slaba",
+          "tc": "Incarca acum"
+        },
+        {
+          "v": "combustibil",
+          "x": 10,
+          "a": 70,
+          "b": 30,
+          "ta": "Rezervor plin",
+          "tb": "Rezervor pe jumatate",
+          "tc": "Alimenteaza acum"
+        },
+        {
+          "v": "combustibil",
+          "x": 69,
+          "a": 70,
+          "b": 30,
+          "ta": "Rezervor plin",
+          "tb": "Rezervor pe jumatate",
+          "tc": "Alimenteaza acum"
+        }
+      ],
+      "mistakes": [
+        ["if {{v}} >= {{a}}:", "if {{v}} < {{a}}:"],
+        ["elif {{v}} >= {{b}}:", "if {{v}} >= {{b}}:"],
+        ["else:\n    print(\"{{tc}}\")", "print(\"{{tc}}\")"],
+        ["elif {{v}} >= {{b}}:", "elif {{v}} < {{b}}:"],
+        [
+          "if {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+          "print(\"{{ta}}\")\nprint(\"{{tb}}\")\nprint(\"{{tc}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "iee-first-wins",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} > {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "viteza",
+          "x": 120,
+          "a": 50,
+          "b": 100,
+          "ta": "Rapid",
+          "tb": "Prea rapid",
+          "tc": "Incet"
+        },
+        {
+          "v": "viteza",
+          "x": 70,
+          "a": 50,
+          "b": 100,
+          "ta": "Rapid",
+          "tb": "Prea rapid",
+          "tc": "Incet"
+        },
+        {
+          "v": "temperatura",
+          "x": 35,
+          "a": 10,
+          "b": 30,
+          "ta": "Cald",
+          "tb": "Foarte cald",
+          "tc": "Frig"
+        },
+        {
+          "v": "temperatura",
+          "x": 20,
+          "a": 10,
+          "b": 30,
+          "ta": "Cald",
+          "tb": "Foarte cald",
+          "tc": "Frig"
+        },
+        {
+          "v": "puncte",
+          "x": 800,
+          "a": 100,
+          "b": 500,
+          "ta": "Bine",
+          "tb": "Record nou",
+          "tc": "Mai incearca"
+        },
+        {
+          "v": "puncte",
+          "x": 300,
+          "a": 100,
+          "b": 500,
+          "ta": "Bine",
+          "tb": "Record nou",
+          "tc": "Mai incearca"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{ta}}\")", "print(\"{{tb}}\")"],
+        ["elif {{v}} > {{b}}:", "if {{v}} > {{b}}:"],
+        [
+          "if {{v}} > {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} > {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+          "print(\"{{ta}}\")\nprint(\"{{tb}}\")\nprint(\"{{tc}}\")"
+        ],
+        ["print(\"{{ta}}\")", "print(\"{{tc}}\")"]
+      ]
+    },
+    {
+      "id": "iee-countdown",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} == {{b}}:\n    print(\"{{tb}}\")\nelif {{v}} == {{c}}:\n    print(\"{{tc}}\")\nelse:\n    print(\"{{td}}\")",
+      "values": [
+        {
+          "v": "secunde",
+          "x": 100,
+          "y": 60,
+          "z": 20,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Pornesc calculatoarele",
+          "tb": "Verific turnul",
+          "tc": "Pornesc motoarele",
+          "td": "Nimic de facut inca"
+        },
+        {
+          "v": "secunde",
+          "x": 60,
+          "y": 20,
+          "z": 100,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Pornesc calculatoarele",
+          "tb": "Verific turnul",
+          "tc": "Pornesc motoarele",
+          "td": "Nimic de facut inca"
+        },
+        {
+          "v": "secunde",
+          "x": 20,
+          "y": 100,
+          "z": 60,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Pornesc calculatoarele",
+          "tb": "Verific turnul",
+          "tc": "Pornesc motoarele",
+          "td": "Nimic de facut inca"
+        },
+        {
+          "v": "secunde",
+          "x": 45,
+          "y": 60,
+          "z": 100,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Pornesc calculatoarele",
+          "tb": "Verific turnul",
+          "tc": "Pornesc motoarele",
+          "td": "Nimic de facut inca"
+        },
+        {
+          "v": "secunde",
+          "x": 10,
+          "y": 20,
+          "z": 60,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Pornesc calculatoarele",
+          "tb": "Verific turnul",
+          "tc": "Pornesc motoarele",
+          "td": "Nimic de facut inca"
+        },
+        {
+          "v": "zi",
+          "x": 7,
+          "y": 1,
+          "z": 6,
+          "a": 1,
+          "b": 6,
+          "c": 7,
+          "ta": "Incepe saptamana",
+          "tb": "Sambata",
+          "tc": "Duminica",
+          "td": "O zi de lucru"
+        },
+        {
+          "v": "zi",
+          "x": 3,
+          "y": 6,
+          "z": 7,
+          "a": 1,
+          "b": 6,
+          "c": 7,
+          "ta": "Incepe saptamana",
+          "tb": "Sambata",
+          "tc": "Duminica",
+          "td": "O zi de lucru"
+        },
+        {
+          "v": "nivel",
+          "x": 5,
+          "y": 10,
+          "z": 1,
+          "a": 1,
+          "b": 5,
+          "c": 10,
+          "ta": "Tutorial",
+          "tb": "Mini boss",
+          "tc": "Boss final",
+          "td": "Nivel normal"
+        }
+      ],
+      "mistakes": [
+        ["elif {{v}} == {{b}}:", "if {{v}} == {{b}}:"],
+        ["else:\n    print(\"{{td}}\")", "print(\"{{td}}\")"],
+        ["{{v}} = {{x}}", "{{v}} = {{y}}"],
+        ["{{v}} = {{x}}", "{{v}} = {{z}}"],
+        [
+          "if {{v}} == {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} == {{b}}:\n    print(\"{{tb}}\")\nelif {{v}} == {{c}}:\n    print(\"{{tc}}\")\nelse:\n    print(\"{{td}}\")",
+          "print(\"{{ta}}\")\nprint(\"{{tb}}\")\nprint(\"{{tc}}\")\nprint(\"{{td}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "iee-nested",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\n{{w}} = {{b}}\nif {{v}} >= {{h}}:\n    print(\"{{th}}\")\nelif {{v}} >= {{m}}:\n    print(\"{{tm}}\")\nelse:\n    if {{w}} == True:\n        print(\"{{ty}}\")\n    else:\n        print(\"{{tn}}\")",
+      "values": [
+        {
+          "v": "oxigen",
+          "w": "echipaj_la_bord",
+          "x": 12,
+          "b": "True",
+          "nb": "False",
+          "h": 50,
+          "m": 20,
+          "th": "Oxigen nominal",
+          "tm": "Oxigen critic",
+          "ty": "Evacuati acum",
+          "tn": "Aerisiti compartimentul",
+          "y1": 70,
+          "y2": 30
+        },
+        {
+          "v": "oxigen",
+          "w": "echipaj_la_bord",
+          "x": 12,
+          "b": "False",
+          "nb": "True",
+          "h": 50,
+          "m": 20,
+          "th": "Oxigen nominal",
+          "tm": "Oxigen critic",
+          "ty": "Evacuati acum",
+          "tn": "Aerisiti compartimentul",
+          "y1": 70,
+          "y2": 30
+        },
+        {
+          "v": "oxigen",
+          "w": "echipaj_la_bord",
+          "x": 65,
+          "b": "True",
+          "nb": "False",
+          "h": 50,
+          "m": 20,
+          "th": "Oxigen nominal",
+          "tm": "Oxigen critic",
+          "ty": "Evacuati acum",
+          "tn": "Aerisiti compartimentul",
+          "y1": 30,
+          "y2": 10
+        },
+        {
+          "v": "baterie",
+          "w": "incarcator",
+          "x": 10,
+          "b": "True",
+          "nb": "False",
+          "h": 50,
+          "m": 20,
+          "th": "Gata de zbor",
+          "tm": "Doar zboruri scurte",
+          "ty": "Se incarca",
+          "tn": "Cauta un incarcator",
+          "y1": 80,
+          "y2": 35
+        },
+        {
+          "v": "baterie",
+          "w": "incarcator",
+          "x": 10,
+          "b": "False",
+          "nb": "True",
+          "h": 50,
+          "m": 20,
+          "th": "Gata de zbor",
+          "tm": "Doar zboruri scurte",
+          "ty": "Se incarca",
+          "tn": "Cauta un incarcator",
+          "y1": 80,
+          "y2": 35
+        },
+        {
+          "v": "baterie",
+          "w": "incarcator",
+          "x": 35,
+          "b": "False",
+          "nb": "True",
+          "h": 50,
+          "m": 20,
+          "th": "Gata de zbor",
+          "tm": "Doar zboruri scurte",
+          "ty": "Se incarca",
+          "tn": "Cauta un incarcator",
+          "y1": 80,
+          "y2": 5
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{x}}", "{{v}} = {{y1}}"],
+        ["{{v}} = {{x}}", "{{v}} = {{y2}}"],
+        ["{{w}} = {{b}}", "{{w}} = {{nb}}"],
+        [
+          "if {{v}} >= {{h}}:\n    print(\"{{th}}\")\nelif {{v}} >= {{m}}:\n    print(\"{{tm}}\")\nelse:\n    if {{w}} == True:\n        print(\"{{ty}}\")\n    else:\n        print(\"{{tn}}\")",
+          "print(\"{{th}}\")\nprint(\"{{tm}}\")\nprint(\"{{ty}}\")\nprint(\"{{tn}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "iee-two-ifs",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{a}}:\n    print(\"{{ta}}\")\nif {{v}} == {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "secunde",
+          "x": 100,
+          "y": 60,
+          "z": 30,
+          "a": 100,
+          "b": 60,
+          "ta": "Pornesc calculatoarele",
+          "tb": "Verific turnul",
+          "tc": "Fara efect"
+        },
+        {
+          "v": "secunde",
+          "x": 60,
+          "y": 100,
+          "z": 30,
+          "a": 100,
+          "b": 60,
+          "ta": "Pornesc calculatoarele",
+          "tb": "Verific turnul",
+          "tc": "Fara efect"
+        },
+        {
+          "v": "secunde",
+          "x": 30,
+          "y": 100,
+          "z": 60,
+          "a": 100,
+          "b": 60,
+          "ta": "Pornesc calculatoarele",
+          "tb": "Verific turnul",
+          "tc": "Fara efect"
+        },
+        {
+          "v": "vieti",
+          "x": 3,
+          "y": 0,
+          "z": 1,
+          "a": 3,
+          "b": 0,
+          "ta": "Viata plina",
+          "tb": "Joc terminat",
+          "tc": "Joaca mai departe"
+        },
+        {
+          "v": "vieti",
+          "x": 0,
+          "y": 3,
+          "z": 2,
+          "a": 3,
+          "b": 0,
+          "ta": "Viata plina",
+          "tb": "Joc terminat",
+          "tc": "Joaca mai departe"
+        }
+      ],
+      "mistakes": [
+        ["if {{v}} == {{b}}:", "elif {{v}} == {{b}}:"],
+        ["{{v}} = {{x}}", "{{v}} = {{y}}"],
+        ["{{v}} = {{x}}", "{{v}} = {{z}}"],
+        [
+          "if {{v}} == {{a}}:\n    print(\"{{ta}}\")\nif {{v}} == {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+          "print(\"{{ta}}\")\nprint(\"{{tb}}\")\nprint(\"{{tc}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "iee-which-chain",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxigen",
+          "x": 65,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic"
+        },
+        {
+          "v": "scor",
+          "x": 95,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat"
+        },
+        {
+          "v": "baterie",
+          "x": 40,
+          "a": 60,
+          "b": 20,
+          "ta": "Baterie buna",
+          "tb": "Baterie slaba",
+          "tc": "Incarca acum"
+        },
+        {
+          "v": "combustibil",
+          "x": 75,
+          "a": 70,
+          "b": 30,
+          "ta": "Rezervor plin",
+          "tb": "Rezervor pe jumatate",
+          "tc": "Alimenteaza acum"
+        },
+        {
+          "v": "scor",
+          "x": 50,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat"
+        }
+      ],
+      "mistakes": [
+        ["if {{v}} >= {{a}}:", "if {{v}} < {{a}}:"],
+        ["elif {{v}} >= {{b}}:", "elif {{v}} < {{b}}:"],
+        ["elif {{v}} >= {{b}}:", "if {{v}} >= {{b}}:"],
+        ["else:\n    print(\"{{tc}}\")", "print(\"{{tc}}\")"]
+      ]
+    },
+    {
+      "id": "iee-which-countdown",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} == {{b}}:\n    print(\"{{tb}}\")\nelif {{v}} == {{c}}:\n    print(\"{{tc}}\")\nelse:\n    print(\"{{td}}\")",
+      "values": [
+        {
+          "v": "secunde",
+          "x": 100,
+          "y": 60,
+          "z": 20,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Pornesc calculatoarele",
+          "tb": "Verific turnul",
+          "tc": "Pornesc motoarele",
+          "td": "Nimic de facut inca"
+        },
+        {
+          "v": "secunde",
+          "x": 60,
+          "y": 20,
+          "z": 100,
+          "a": 100,
+          "b": 60,
+          "c": 20,
+          "ta": "Pornesc calculatoarele",
+          "tb": "Verific turnul",
+          "tc": "Pornesc motoarele",
+          "td": "Nimic de facut inca"
+        },
+        {
+          "v": "zi",
+          "x": 6,
+          "y": 1,
+          "z": 7,
+          "a": 1,
+          "b": 6,
+          "c": 7,
+          "ta": "Incepe saptamana",
+          "tb": "Sambata",
+          "tc": "Duminica",
+          "td": "O zi de lucru"
+        }
+      ],
+      "mistakes": [
+        ["elif {{v}} == {{b}}:", "if {{v}} == {{b}}:"],
+        ["else:\n    print(\"{{td}}\")", "print(\"{{td}}\")"],
+        ["print(\"{{ta}}\")", "print(\"{{tb}}\")"],
+        ["elif {{v}} == {{b}}:", "elif {{v}} == {{a}}:"],
+        ["print(\"{{tb}}\")", "print(\"{{tc}}\")"]
+      ]
+    },
+    {
+      "id": "iee-gap-elif",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\n___ {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxigen",
+          "x": 90,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic"
+        },
+        {
+          "v": "scor",
+          "x": 92,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat"
+        },
+        {
+          "v": "baterie",
+          "x": 61,
+          "a": 60,
+          "b": 20,
+          "ta": "Baterie buna",
+          "tb": "Baterie slaba",
+          "tc": "Incarca acum"
+        },
+        {
+          "v": "combustibil",
+          "x": 50,
+          "a": 70,
+          "b": 30,
+          "ta": "Rezervor plin",
+          "tb": "Rezervor pe jumatate",
+          "tc": "Alimenteaza acum"
+        },
+        {
+          "v": "oxigen",
+          "x": 55,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic"
+        }
+      ],
+      "answer": "elif",
+      "wrong": ["if", "else", "else if", "elseif"]
+    },
+    {
+      "id": "iee-gap-limit",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= ___:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxigen",
+          "x": 65,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic",
+          "w1": 70,
+          "w2": 80,
+          "w3": 66
+        },
+        {
+          "v": "scor",
+          "x": 75,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat",
+          "w1": 80,
+          "w2": 90,
+          "w3": 76
+        },
+        {
+          "v": "baterie",
+          "x": 30,
+          "a": 60,
+          "b": 20,
+          "ta": "Baterie buna",
+          "tb": "Baterie slaba",
+          "tc": "Incarca acum",
+          "w1": 40,
+          "w2": 31,
+          "w3": 60
+        },
+        {
+          "v": "combustibil",
+          "x": 45,
+          "a": 70,
+          "b": 30,
+          "ta": "Rezervor plin",
+          "tb": "Rezervor pe jumatate",
+          "tc": "Alimenteaza acum",
+          "w1": 50,
+          "w2": 46,
+          "w3": 70
+        }
+      ],
+      "answer": "{{b}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "iee-gap-line",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\n___\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxigen",
+          "x": 65,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic"
+        },
+        {
+          "v": "scor",
+          "x": 95,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat"
+        },
+        {
+          "v": "baterie",
+          "x": 10,
+          "a": 60,
+          "b": 20,
+          "ta": "Baterie buna",
+          "tb": "Baterie slaba",
+          "tc": "Incarca acum"
+        },
+        {
+          "v": "combustibil",
+          "x": 40,
+          "a": 70,
+          "b": 30,
+          "ta": "Rezervor plin",
+          "tb": "Rezervor pe jumatate",
+          "tc": "Alimenteaza acum"
+        },
+        {
+          "v": "scor",
+          "x": 30,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat"
+        }
+      ],
+      "answer": "elif {{v}} >= {{b}}:",
+      "wrong": ["if {{v}} >= {{b}}:", "elif {{v}} < {{b}}:", "else:", "elif {{v}} >= {{b}}"]
+    },
+    {
+      "id": "iee-gap-nested",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\n{{w}} = {{b}}\nif {{v}} >= {{m}}:\n    print(\"{{tm}}\")\nelse:\n    ___\n        print(\"{{ty}}\")\n    else:\n        print(\"{{tn}}\")",
+      "values": [
+        {
+          "v": "oxigen",
+          "w": "echipaj_la_bord",
+          "x": 12,
+          "b": "True",
+          "nb": "False",
+          "h": 50,
+          "m": 20,
+          "th": "Oxigen nominal",
+          "tm": "Oxigen critic",
+          "ty": "Evacuati acum",
+          "tn": "Aerisiti compartimentul"
+        },
+        {
+          "v": "oxigen",
+          "w": "echipaj_la_bord",
+          "x": 12,
+          "b": "False",
+          "nb": "True",
+          "h": 50,
+          "m": 20,
+          "th": "Oxigen nominal",
+          "tm": "Oxigen critic",
+          "ty": "Evacuati acum",
+          "tn": "Aerisiti compartimentul"
+        },
+        {
+          "v": "baterie",
+          "w": "incarcator",
+          "x": 5,
+          "b": "True",
+          "nb": "False",
+          "h": 50,
+          "m": 20,
+          "th": "Gata de zbor",
+          "tm": "Doar zboruri scurte",
+          "ty": "Se incarca",
+          "tn": "Cauta un incarcator"
+        },
+        {
+          "v": "baterie",
+          "w": "incarcator",
+          "x": 15,
+          "b": "False",
+          "nb": "True",
+          "h": 50,
+          "m": 20,
+          "th": "Gata de zbor",
+          "tm": "Doar zboruri scurte",
+          "ty": "Se incarca",
+          "tn": "Cauta un incarcator"
+        }
+      ],
+      "answer": "if {{w}} == True:",
+      "wrong": [
+        "elif {{w}} == True:",
+        "if {{w}} = True:",
+        "if {{w}} == False:",
+        "else {{w}} == True:"
+      ]
+    },
+    {
+      "id": "iee-bad-colon",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxigen",
+          "x": 60,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic"
+        },
+        {
+          "v": "combustibil",
+          "x": 40,
+          "a": 70,
+          "b": 30,
+          "ta": "Rezervor plin",
+          "tb": "Rezervor pe jumatate",
+          "tc": "Alimenteaza acum"
+        }
+      ],
+      "bug": ["elif {{v}} >= {{b}}:", "elif {{v}} >= {{b}}"]
+    },
+    {
+      "id": "iee-bad-elif-if",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxigen",
+          "x": 95,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic"
+        },
+        {
+          "v": "scor",
+          "x": 100,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat"
+        },
+        {
+          "v": "baterie",
+          "x": 80,
+          "a": 60,
+          "b": 20,
+          "ta": "Baterie buna",
+          "tb": "Baterie slaba",
+          "tc": "Incarca acum"
+        }
+      ],
+      "bug": ["elif {{v}} >= {{b}}:", "if {{v}} >= {{b}}:"]
+    },
+    {
+      "id": "iee-bad-else",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "scor",
+          "x": 35,
+          "a": 90,
+          "b": 50,
+          "ta": "Excelent",
+          "tb": "Trecut",
+          "tc": "Picat"
+        },
+        {
+          "v": "baterie",
+          "x": 5,
+          "a": 60,
+          "b": 20,
+          "ta": "Baterie buna",
+          "tb": "Baterie slaba",
+          "tc": "Incarca acum"
+        }
+      ],
+      "bug": ["else:", "else {{v}} < {{b}}:"]
+    },
+    {
+      "id": "iee-bad-flip",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    print(\"{{ta}}\")\nelif {{v}} >= {{b}}:\n    print(\"{{tb}}\")\nelse:\n    print(\"{{tc}}\")",
+      "values": [
+        {
+          "v": "oxigen",
+          "x": 70,
+          "a": 80,
+          "b": 50,
+          "ta": "Oxigen nominal",
+          "tb": "Oxigen scazut",
+          "tc": "Oxigen critic"
+        },
+        {
+          "v": "combustibil",
+          "x": 55,
+          "a": 70,
+          "b": 30,
+          "ta": "Rezervor plin",
+          "tb": "Rezervor pe jumatate",
+          "tc": "Alimenteaza acum"
+        }
+      ],
+      "bug": ["elif {{v}} >= {{b}}:", "elif {{v}} <= {{b}}:"]
+    }
+  ]
+}

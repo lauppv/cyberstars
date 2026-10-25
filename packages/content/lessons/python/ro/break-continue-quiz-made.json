@@ -1,0 +1,620 @@
+{
+  "note": "Made by npm run make:quiz from the templates in break-continue-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "bc-break-9e72d9",
+      "text": "Ce afișează?",
+      "code": "for i in range(0, 10):\n    if i == 4:\n        break\n    print(i)",
+      "options": [
+        "0\n1\n2\n3",
+        "0\n1\n2\n3\n5\n6\n7\n8\n9",
+        "0\n1\n2\n3\n4",
+        "0\n1\n2\n3\n4\n5\n6\n7\n8\n9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-break-38bb7a",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 8):\n    if i == 5:\n        break\n    print(i)",
+      "options": ["1\n2\n3\n4", "1\n2\n3\n4\n6\n7", "1\n2\n3\n4\n5", "1\n2\n3\n4\n5\n6\n7"],
+      "answer": 0
+    },
+    {
+      "id": "bc-break-84108a",
+      "text": "Ce afișează?",
+      "code": "for i in range(3, 12):\n    if i == 6:\n        break\n    print(i)",
+      "options": [
+        "3\n4\n5",
+        "3\n4\n5\n7\n8\n9\n10\n11",
+        "3\n4\n5\n6",
+        "3\n4\n5\n6\n7\n8\n9\n10\n11"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-break-0ae17e",
+      "text": "Ce afișează?",
+      "code": "for i in range(2, 9):\n    if i == 7:\n        break\n    print(i)",
+      "options": ["2\n3\n4\n5\n6", "2\n3\n4\n5\n6\n8", "2\n3\n4\n5\n6\n7", "2\n3\n4\n5\n6\n7\n8"],
+      "answer": 0
+    },
+    {
+      "id": "bc-continue-78bfc7",
+      "text": "Ce afișează?",
+      "code": "for i in range(0, 6):\n    if i == 3:\n        continue\n    print(i)",
+      "options": ["0\n1\n2\n4\n5", "0\n1\n2", "0\n1\n2\n3\n4\n5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bc-continue-3d1480",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 7):\n    if i == 2:\n        continue\n    print(i)",
+      "options": ["1\n3\n4\n5\n6", "1", "1\n2\n3\n4\n5\n6", "2"],
+      "answer": 0
+    },
+    {
+      "id": "bc-continue-f6ff85",
+      "text": "Ce afișează?",
+      "code": "for i in range(4, 9):\n    if i == 6:\n        continue\n    print(i)",
+      "options": ["4\n5\n7\n8", "4\n5", "4\n5\n6\n7\n8", "6"],
+      "answer": 0
+    },
+    {
+      "id": "bc-continue-07bc92",
+      "text": "Ce afișează?",
+      "code": "for i in range(2, 8):\n    if i == 5:\n        continue\n    print(i)",
+      "options": ["2\n3\n4\n6\n7", "2\n3\n4", "2\n3\n4\n5\n6\n7", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bc-even-82c218",
+      "text": "Ce afișează?",
+      "code": "for i in range(0, 9):\n    if i % 2 != 0:\n        continue\n    print(i)",
+      "options": ["0\n2\n4\n6\n8", "1\n3\n5\n7", "0", "0\n1\n2\n3\n4\n5\n6\n7\n8"],
+      "answer": 0
+    },
+    {
+      "id": "bc-even-3f1b36",
+      "text": "Ce afișează?",
+      "code": "for i in range(2, 11):\n    if i % 2 != 0:\n        continue\n    print(i)",
+      "options": ["2\n4\n6\n8\n10", "3\n5\n7\n9", "2", "2\n3\n4\n5\n6\n7\n8\n9\n10"],
+      "answer": 0
+    },
+    {
+      "id": "bc-even-7c086a",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 10):\n    if i % 2 == 0:\n        continue\n    print(i)",
+      "options": ["1\n3\n5\n7\n9", "2\n4\n6\n8", "1", "1\n2\n3\n4\n5\n6\n7\n8\n9"],
+      "answer": 0
+    },
+    {
+      "id": "bc-even-14aa21",
+      "text": "Ce afișează?",
+      "code": "for i in range(3, 12):\n    if i % 2 == 0:\n        continue\n    print(i)",
+      "options": ["3\n5\n7\n9\n11", "4\n6\n8\n10", "3", "3\n4\n5\n6\n7\n8\n9\n10\n11"],
+      "answer": 0
+    },
+    {
+      "id": "bc-scan-b012ea",
+      "text": "Ce afișează?",
+      "code": "for sector in range(1, 7):\n    if sector == 3:\n        print(f\"Semnal gasit in sectorul {sector}!\")\n        break\n    print(f\"Scanez sectorul {sector}...\")",
+      "options": [
+        "Scanez sectorul 1...\nScanez sectorul 2...\nSemnal gasit in sectorul 3!",
+        "Scanez sectorul 1...\nScanez sectorul 2...\nSemnal gasit in sectorul 3!\nScanez sectorul 3...\nScanez sectorul 4...\nScanez sectorul 5...\nScanez sectorul 6...",
+        "Scanez sectorul 1...\nScanez sectorul 2...\nSemnal gasit in sectorul 3!\nScanez sectorul 4...\nScanez sectorul 5...\nScanez sectorul 6...",
+        "Semnal gasit in sectorul 1!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-scan-06ed37",
+      "text": "Ce afișează?",
+      "code": "for planeta in range(1, 6):\n    if planeta == 4:\n        print(f\"Baza gasita pe planeta {planeta}!\")\n        break\n    print(f\"Verific planeta {planeta}...\")",
+      "options": [
+        "Verific planeta 1...\nVerific planeta 2...\nVerific planeta 3...\nBaza gasita pe planeta 4!",
+        "Verific planeta 1...\nVerific planeta 2...\nVerific planeta 3...\nBaza gasita pe planeta 4!\nVerific planeta 4...\nVerific planeta 5...",
+        "Verific planeta 1...\nVerific planeta 2...\nVerific planeta 3...\nBaza gasita pe planeta 4!\nVerific planeta 5...",
+        "Baza gasita pe planeta 1!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-scan-457740",
+      "text": "Ce afișează?",
+      "code": "for camera in range(1, 8):\n    if camera == 2:\n        print(f\"Cheie gasita in camera {camera}!\")\n        break\n    print(f\"Caut in camera {camera}...\")",
+      "options": [
+        "Caut in camera 1...\nCheie gasita in camera 2!",
+        "Caut in camera 1...\nCheie gasita in camera 2!\nCaut in camera 2...\nCaut in camera 3...\nCaut in camera 4...\nCaut in camera 5...\nCaut in camera 6...\nCaut in camera 7...",
+        "Caut in camera 1...\nCheie gasita in camera 2!\nCaut in camera 3...\nCaut in camera 4...\nCaut in camera 5...\nCaut in camera 6...\nCaut in camera 7...",
+        "Cheie gasita in camera 1!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-true-63d805",
+      "text": "Ce afișează?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == 4:\n        break\n    print(n)\nprint(\"Gata\")",
+      "options": ["1\n2\n3\nGata", "1\n2\n3\n4\nGata", "1\nGata\n2\nGata\n3\nGata", "2\n3\nGata"],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-true-0a92e4",
+      "text": "Ce afișează?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == 3:\n        break\n    print(n)\nprint(\"Bucla s-a terminat\")",
+      "options": [
+        "1\n2\nBucla s-a terminat",
+        "1\n2\n3\nBucla s-a terminat",
+        "1\nBucla s-a terminat\n2\nBucla s-a terminat",
+        "2\nBucla s-a terminat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-true-b9fded",
+      "text": "Ce afișează?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == 5:\n        break\n    print(n)\nprint(\"Oprit\")",
+      "options": [
+        "1\n2\n3\n4\nOprit",
+        "1\n2\n3\n4\n5\nOprit",
+        "1\nOprit\n2\nOprit\n3\nOprit\n4\nOprit",
+        "2\n3\n4\nOprit"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-continue-93790c",
+      "text": "Ce afișează?",
+      "code": "n = 0\nwhile n < 5:\n    n = n + 1\n    if n == 3:\n        continue\n    print(n)",
+      "options": ["1\n2\n4\n5", "1\n2", "1\n2\n3\n4\n5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-continue-8d82f2",
+      "text": "Ce afișează?",
+      "code": "n = 0\nwhile n < 6:\n    n = n + 1\n    if n == 2:\n        continue\n    print(n)",
+      "options": ["1\n3\n4\n5\n6", "1", "1\n2\n3\n4\n5\n6", "2"],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-continue-ecdb39",
+      "text": "Ce afișează?",
+      "code": "n = 0\nwhile n < 7:\n    n = n + 1\n    if n == 5:\n        continue\n    print(n)",
+      "options": ["1\n2\n3\n4\n6\n7", "1\n2\n3\n4", "1\n2\n3\n4\n5\n6\n7", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bc-sum-9d8793",
+      "text": "Ce afișează?",
+      "code": "total = 0\nfor i in range(1, 10):\n    if i == 4:\n        break\n    total = total + i\nprint(total)",
+      "options": ["6", "41", "45", "1\n3\n6"],
+      "answer": 0
+    },
+    {
+      "id": "bc-sum-3c6cd5",
+      "text": "Ce afișează?",
+      "code": "puncte = 0\nfor i in range(1, 8):\n    if i == 5:\n        break\n    puncte = puncte + i\nprint(puncte)",
+      "options": ["10", "23", "28", "1\n3\n6\n10"],
+      "answer": 0
+    },
+    {
+      "id": "bc-sum-9fcbb6",
+      "text": "Ce afișează?",
+      "code": "energie = 0\nfor i in range(1, 7):\n    if i == 3:\n        break\n    energie = energie + i\nprint(energie)",
+      "options": ["3", "18", "21", "1\n3"],
+      "answer": 0
+    },
+    {
+      "id": "bc-sum-634337",
+      "text": "Ce afișează?",
+      "code": "scor = 0\nfor i in range(1, 12):\n    if i == 6:\n        break\n    scor = scor + i\nprint(scor)",
+      "options": ["15", "60", "66", "1\n3\n6\n10\n15"],
+      "answer": 0
+    },
+    {
+      "id": "bc-count-5b4e04",
+      "text": "Ce afișează?",
+      "code": "contor = 0\nfor i in range(2, 10):\n    if i == 4:\n        continue\n    contor = contor + 1\nprint(contor)",
+      "options": ["7", "2", "8", "9"],
+      "answer": 0
+    },
+    {
+      "id": "bc-count-020d02",
+      "text": "Ce afișează?",
+      "code": "contor = 0\nfor i in range(5, 12):\n    if i == 7:\n        continue\n    contor = contor + 1\nprint(contor)",
+      "options": ["6", "2", "7", "11"],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-break-e0fdc8",
+      "text": "Care program afișează asta?",
+      "output": "1\n2\n3",
+      "options": [
+        "for i in range(1, 8):\n    if i == 4:\n        break\n    print(i)",
+        "for i in range(1, 8):\n    if i == 4:\n        continue\n    print(i)",
+        "for i in range(1, 8):\n    if i == 5:\n        break\n    print(i)",
+        "for i in range(0, 8):\n    if i == 4:\n        break\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-break-c5220f",
+      "text": "Care program afișează asta?",
+      "output": "1\n2",
+      "options": [
+        "for i in range(1, 6):\n    if i == 3:\n        break\n    print(i)",
+        "for i in range(1, 6):\n    if i == 3:\n        continue\n    print(i)",
+        "for i in range(1, 6):\n    if i == 4:\n        break\n    print(i)",
+        "for i in range(0, 6):\n    if i == 3:\n        break\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-break-ec9f9f",
+      "text": "Care program afișează asta?",
+      "output": "1\n2\n3\n4",
+      "options": [
+        "for i in range(1, 9):\n    if i == 5:\n        break\n    print(i)",
+        "for i in range(1, 9):\n    if i == 5:\n        continue\n    print(i)",
+        "for i in range(1, 9):\n    if i == 6:\n        break\n    print(i)",
+        "for i in range(0, 9):\n    if i == 5:\n        break\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-break-3500fa",
+      "text": "Care program afișează asta?",
+      "output": "1",
+      "options": [
+        "for i in range(1, 7):\n    if i == 2:\n        break\n    print(i)",
+        "for i in range(1, 7):\n    if i == 2:\n        continue\n    print(i)",
+        "for i in range(1, 7):\n    if i == 3:\n        break\n    print(i)",
+        "for i in range(0, 7):\n    if i == 2:\n        break\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-continue-2adfb7",
+      "text": "Care program afișează asta?",
+      "output": "1\n2\n4\n5",
+      "options": [
+        "for i in range(1, 6):\n    if i == 3:\n        continue\n    print(i)",
+        "for i in range(1, 6):\n    if i == 3:\n        break\n    print(i)",
+        "for i in range(1, 6):\n    if i != 3:\n        continue\n    print(i)",
+        "for i in range(1, 5):\n    if i == 3:\n        continue\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-continue-fac11b",
+      "text": "Care program afișează asta?",
+      "output": "1\n2\n3\n5\n6",
+      "options": [
+        "for i in range(1, 7):\n    if i == 4:\n        continue\n    print(i)",
+        "for i in range(1, 7):\n    if i == 4:\n        break\n    print(i)",
+        "for i in range(1, 7):\n    if i != 4:\n        continue\n    print(i)",
+        "for i in range(1, 6):\n    if i == 4:\n        continue\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-continue-72f687",
+      "text": "Care program afișează asta?",
+      "output": "1\n3\n4",
+      "options": [
+        "for i in range(1, 5):\n    if i == 2:\n        continue\n    print(i)",
+        "for i in range(1, 5):\n    if i == 2:\n        break\n    print(i)",
+        "for i in range(1, 5):\n    if i != 2:\n        continue\n    print(i)",
+        "for i in range(1, 4):\n    if i == 2:\n        continue\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-continue-1dcf57",
+      "text": "Care program afișează asta?",
+      "output": "1\n2\n3\n4\n5\n7",
+      "options": [
+        "for i in range(1, 8):\n    if i == 6:\n        continue\n    print(i)",
+        "for i in range(1, 8):\n    if i == 6:\n        break\n    print(i)",
+        "for i in range(1, 8):\n    if i != 6:\n        continue\n    print(i)",
+        "for i in range(1, 7):\n    if i == 6:\n        continue\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-kw-89fb96",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(0, 8):\n    if i == 4:\n        ___\n    print(i)",
+      "output": "0\n1\n2\n3",
+      "options": ["break", "continue", "stop", "skip"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-kw-9e61c9",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 7):\n    if i == 3:\n        ___\n    print(i)",
+      "output": "1\n2\n4\n5\n6",
+      "options": ["continue", "break", "stop", "skip"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-kw-3381ed",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(2, 9):\n    if i == 6:\n        ___\n    print(i)",
+      "output": "2\n3\n4\n5",
+      "options": ["break", "continue", "stop", "skip"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-kw-34e738",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(0, 6):\n    if i == 2:\n        ___\n    print(i)",
+      "output": "0\n1\n3\n4\n5",
+      "options": ["continue", "break", "stop", "skip"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-kw-29315e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(3, 9):\n    if i == 5:\n        ___\n    print(i)",
+      "output": "3\n4\n6\n7\n8",
+      "options": ["continue", "break", "stop", "skip"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-scan-f1b39e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for sector in range(1, 6):\n    if sector == 4:\n        print(f\"Semnal gasit in sectorul {sector}!\")\n        ___\n    print(f\"Scanez sectorul {sector}...\")",
+      "output": "Scanez sectorul 1...\nScanez sectorul 2...\nScanez sectorul 3...\nSemnal gasit in sectorul 4!",
+      "options": ["break", "continue", "sector = 6", "sector = 0"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-scan-b5d4f7",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for planeta in range(1, 7):\n    if planeta == 2:\n        print(f\"Baza gasita pe planeta {planeta}!\")\n        ___\n    print(f\"Verific planeta {planeta}...\")",
+      "output": "Verific planeta 1...\nBaza gasita pe planeta 2!",
+      "options": ["break", "continue", "planeta = 7", "planeta = 0"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-scan-847d6e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for camera in range(1, 5):\n    if camera == 3:\n        print(f\"Cheie gasita in camera {camera}!\")\n        ___\n    print(f\"Caut in camera {camera}...\")",
+      "output": "Caut in camera 1...\nCaut in camera 2...\nCheie gasita in camera 3!",
+      "options": ["break", "continue", "camera = 5", "camera = 0"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-while-25bb81",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "n = 1\nwhile True:\n    ___\n        break\n    print(n)\n    n = n + 1\nprint(\"Gata\")",
+      "output": "1\n2\n3\nGata",
+      "options": ["if n == 4:", "if n != 4:", "if n > 4:", "if n == 4"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-while-e2e8f2",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "n = 3\nwhile True:\n    ___\n        break\n    print(n)\n    n = n + 1\nprint(\"Scanare terminata\")",
+      "output": "3\n4\n5\nScanare terminata",
+      "options": ["if n == 6:", "if n != 6:", "if n > 6:", "if n == 6"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-while-aac56c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "n = 0\nwhile True:\n    ___\n        break\n    print(n)\n    n = n + 1\nprint(\"Oprit\")",
+      "output": "0\n1\n2\nOprit",
+      "options": ["if n == 3:", "if n != 3:", "if n > 3:", "if n == 3"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-stop-3282c7",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 10):\n    if i == ___:\n        break\n    print(i)",
+      "output": "1\n2\n3",
+      "options": ["4", "3", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-stop-7e8ed4",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 10):\n    if i == ___:\n        break\n    print(i)",
+      "output": "1\n2\n3\n4\n5",
+      "options": ["6", "5", "7", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-stop-6b857c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 10):\n    if i == ___:\n        break\n    print(i)",
+      "output": "1\n2",
+      "options": ["3", "2", "4", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-stop-2520fb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 10):\n    if i == ___:\n        break\n    print(i)",
+      "output": "1\n2\n3\n4\n5\n6",
+      "options": ["7", "6", "8", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-skip-3e5102",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(0, 6):\n    if i == ___:\n        continue\n    print(i)",
+      "output": "0\n1\n3\n4\n5",
+      "options": ["2", "1", "3", "6"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-skip-b767ae",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 7):\n    if i == ___:\n        continue\n    print(i)",
+      "output": "1\n2\n3\n4\n6",
+      "options": ["5", "4", "6", "7"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-skip-c3e89d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(3, 8):\n    if i == ___:\n        continue\n    print(i)",
+      "output": "3\n5\n6\n7",
+      "options": ["4", "3", "5", "8"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-op-e72f0d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(0, 9):\n    if i % 2 ___ 0:\n        continue\n    print(i)",
+      "output": "0\n2\n4\n6\n8",
+      "options": ["!=", "==", "<", "="],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-op-9854ef",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 10):\n    if i % 2 ___ 0:\n        continue\n    print(i)",
+      "output": "1\n3\n5\n7\n9",
+      "options": ["==", "!=", "<", "="],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-op-850449",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(2, 9):\n    if i % 2 ___ 0:\n        continue\n    print(i)",
+      "output": "2\n4\n6\n8",
+      "options": ["!=", "==", "<", "="],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-break-271aab",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(0, 8):\n    if i == 3:\n        continue\n    print(i)\nprint(\"Gata\")",
+      "output": "0\n1\n2\nGata",
+      "options": ["continue", "if i == 3:", "print(i)", "print(\"Gata\")"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-break-370f42",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(2, 9):\n    if i == 5:\n        continue\n    print(i)\nprint(\"Sfarsit\")",
+      "output": "2\n3\n4\nSfarsit",
+      "options": ["continue", "if i == 5:", "for i in range(2, 9):", "print(i)"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-break-51fbdf",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(1, 7):\n    if i == 4:\n        continue\n    print(i)\nprint(\"Oprit\")",
+      "output": "1\n2\n3\nOprit",
+      "options": ["continue", "if i == 4:", "print(i)", "print(\"Oprit\")"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-continue-7b9754",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(0, 6):\n    if i == 2:\n        break\n    print(i)\nprint(\"Gata\")",
+      "output": "0\n1\n3\n4\n5\nGata",
+      "options": ["break", "if i == 2:", "for i in range(0, 6):", "print(i)"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-continue-00c335",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(3, 9):\n    if i == 5:\n        break\n    print(i)\nprint(\"Sfarsit\")",
+      "output": "3\n4\n6\n7\n8\nSfarsit",
+      "options": ["break", "if i == 5:", "for i in range(3, 9):", "print(i)"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-continue-b64099",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(1, 6):\n    if i == 4:\n        break\n    print(i)\nprint(\"Oprit\")",
+      "output": "1\n2\n3\n5\nOprit",
+      "options": ["break", "if i == 4:", "print(i)", "print(\"Oprit\")"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-scan-e062c1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for sector in range(1, 6):\n    if sector != 3:\n        print(f\"Semnal gasit in sectorul {sector}!\")\n        break\n    print(f\"Scanez sectorul {sector}...\")",
+      "output": "Scanez sectorul 1...\nScanez sectorul 2...\nSemnal gasit in sectorul 3!",
+      "options": [
+        "if sector != 3:",
+        "print(f\"Semnal gasit in sectorul {sector}!\")",
+        "break",
+        "print(f\"Scanez sectorul {sector}...\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-scan-2f3896",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for planeta in range(1, 8):\n    if planeta != 5:\n        print(f\"Baza gasita pe planeta {planeta}!\")\n        break\n    print(f\"Verific planeta {planeta}...\")",
+      "output": "Verific planeta 1...\nVerific planeta 2...\nVerific planeta 3...\nVerific planeta 4...\nBaza gasita pe planeta 5!",
+      "options": [
+        "if planeta != 5:",
+        "for planeta in range(1, 8):",
+        "print(f\"Baza gasita pe planeta {planeta}!\")",
+        "break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-scan-907749",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for camera in range(1, 7):\n    if camera != 4:\n        print(f\"Cheie gasita in camera {camera}!\")\n        break\n    print(f\"Caut in camera {camera}...\")",
+      "output": "Caut in camera 1...\nCaut in camera 2...\nCaut in camera 3...\nCheie gasita in camera 4!",
+      "options": [
+        "if camera != 4:",
+        "print(f\"Cheie gasita in camera {camera}!\")",
+        "break",
+        "print(f\"Caut in camera {camera}...\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-colon-16e73e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "n = 0\nwhile True\n    n = n + 1\n    if n == 3:\n        break\n    print(n)",
+      "output": "1\n2",
+      "options": ["while True", "n = 0", "if n == 3:", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-colon-118db5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "n = 0\nwhile True\n    n = n + 1\n    if n == 4:\n        break\n    print(n)",
+      "output": "1\n2\n3",
+      "options": ["while True", "n = 0", "if n == 4:", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-colon-480d3d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "n = 0\nwhile True\n    n = n + 1\n    if n == 5:\n        break\n    print(n)",
+      "output": "1\n2\n3\n4",
+      "options": ["while True", "n = 0", "if n == 5:", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-true-6fb202",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "n = 0\nwhile true:\n    n = n + 1\n    if n == 2:\n        break\n    print(n)",
+      "output": "1",
+      "options": ["while true:", "if n == 2:", "n = n + 1", "break"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-true-b8e0e7",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "n = 0\nwhile true:\n    n = n + 1\n    if n == 6:\n        break\n    print(n)",
+      "output": "1\n2\n3\n4\n5",
+      "options": ["while true:", "n = 0", "if n == 6:", "n = n + 1"],
+      "answer": 0
+    }
+  ]
+}

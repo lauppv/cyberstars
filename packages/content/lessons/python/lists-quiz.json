@@ -700,7 +700,7 @@
           "b": "\"Jess\""
         }
       ],
-      "bug": ["{{v}}.append({{b}})", "{{v}}.append[{{b}}]"]
+      "bug": ["{{v}} = []", "{{v}} = ()"]
     },
     {
       "id": "list-len-append",

@@ -1,0 +1,865 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does len() give for a string?",
+      "options": [
+        "How many words it has",
+        "How many characters it has, spaces and signs included",
+        "How many letters it has, without the spaces",
+        "The position of its last character"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "name = \"Tommy Vercetti\"\nprint(len(name))",
+      "options": ["14", "13", "2", "12"],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "Where does counting the positions of a string start?",
+      "options": ["At 1", "At the last character", "At the first space", "At 0"],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "`name` holds \"Tommy\". What is `name[1]`?",
+      "options": ["T", "m", "o", "Tommy"],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "What does `name.upper()` do to `name`?",
+      "options": [
+        "It turns name into capitals for good",
+        "Nothing: it gives back a new string in capitals, and name stays as it was",
+        "It prints name in capitals",
+        "It stops with an error unless name is already in capitals"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "name = \"tommy\"\nname.upper()\nprint(name)",
+      "options": ["tommy", "TOMMY", "Tommy", "Nothing"],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "Which line keeps `name` in capitals for good?",
+      "options": ["name.upper()", "upper(name)", "name == name.upper()", "name = name.upper()"],
+      "answer": 3
+    },
+    {
+      "id": "q8",
+      "text": "What is a method, like `upper()` in `name.upper()`?",
+      "options": [
+        "A variable kept inside a string",
+        "A keyword, like if",
+        "A function that belongs to something, called after a dot",
+        "A comment written after a line"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "What does `+` do between two strings?",
+      "options": [
+        "It adds up their lengths",
+        "It glues them into one string",
+        "It puts a space between them and prints them",
+        "It stops with an error: + is only for numbers"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "first = \"Star\"\nsecond = \"Ship\"\nprint(first + second)",
+      "options": ["StarShip", "Star Ship", "Star+Ship", "first + second"],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "Which line prints Tommy Vercetti, when `first_name` is \"Tommy\" and `last_name` is \"Vercetti\"?",
+      "options": [
+        "print(first_name + last_name)",
+        "print(\"first_name last_name\")",
+        "print(first_name + \"\" + last_name)",
+        "print(first_name + \" \" + last_name)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "What do we call gluing strings together with +?",
+      "options": ["Indexing", "An iteration", "Concatenation", "A method"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "Which positions does `name[0:5]` take?",
+      "options": ["0, 1, 2, 3, 4 and 5", "0, 1, 2, 3 and 4", "1, 2, 3, 4 and 5", "Only 0 and 5"],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Why doesn't `name[0:5]` take the character at position 5?",
+      "options": [
+        "The end is left out, as with range()",
+        "Python always skips the last letter of a word",
+        "Position 5 is always a space",
+        "It does take it: name[0:5] has 6 characters"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "`name` holds \"Tommy Vercetti\". What is `name[6:]`?",
+      "options": ["Tommy", "V", "ercetti", "Vercetti"],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "`name` holds \"Tommy Vercetti\". What is `name[:5]`?",
+      "options": ["Tomm", "Vercetti", "Tommy", "y"],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "How many characters does `word[2:7]` take?",
+      "options": ["7", "5", "6", "2"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "`name` holds \"Tommy Vercetti\". Which character is `name[9]`?",
+      "options": ["c", "e", "t", "r"],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "Does a space count in `len()`?",
+      "options": [
+        "No: len(\"a b\") is 2",
+        "Only a space at the end",
+        "Only inside an f-string",
+        "Yes: len(\"a b\") is 3"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "Which line prints the first character of `word`?",
+      "options": ["print(word[1])", "print(word(0))", "print(word[0])", "print(word[0:0])"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "In the Position Decoder mission the user types Andromeda. Which character is `word[3]`?",
+      "options": ["d", "r", "o", "n"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "In the Position Decoder mission the user types Andromeda. What is `word[4:]`?",
+      "options": ["omeda", "romeda", "meda", "Andr"],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "In the Position Decoder mission the user types Orion. What does the program print?",
+      "options": ["O\ni\nOri\non", "O\no\nOrion\nn", "r\no\nOrio\nn", "O\no\nOrio\nn"],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "word = \"planet\"\nprint(word[0:3] + word[3:])",
+      "options": ["pla", "net", "planet", "plannet"],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "name = \"Ada\"\nprint(name.lower())",
+      "options": ["ADA", "ada", "Ada", "a"],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "`name` holds \"Tommy\". What is the position of its last character?",
+      "options": ["4", "5", "6", "0"],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "Which one gives the same as `name[0:3]`?",
+      "options": ["name[3:]", "name[1:3]", "name[0:2]", "name[:3]"],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "code = \"ab\"\nprint(code + code)",
+      "options": ["ab ab", "ab", "abab", "codecode"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "Which line stops with an error?",
+      "options": [
+        "print(\"Level \" + \"5\")",
+        "print(\"Level \" + 5)",
+        "print(f\"Level {5}\")",
+        "print(\"Level 5\")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "`name` holds \"tommy\". Which line prints Tommy, with only the first letter in capitals?",
+      "options": [
+        "print(name[0].upper() + name[1:])",
+        "print(name.upper())",
+        "print(name[0] + name[1:].upper())",
+        "print(name[0].upper())"
+      ],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "sm-len",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{s}}\"\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "ship",
+          "s": "Star Runner"
+        },
+        {
+          "v": "planet",
+          "s": "Mars"
+        },
+        {
+          "v": "code",
+          "s": "A-17!"
+        },
+        {
+          "v": "city",
+          "s": "Vice City"
+        },
+        {
+          "v": "crew",
+          "s": "Ana and Ben"
+        }
+      ],
+      "mistakes": [
+        ["len({{v}})", "{{v}}"],
+        ["len({{v}})", "len(\"{{v}}\")"],
+        ["len({{v}})", "len({{v}}) - 1"],
+        ["len({{v}})", "len({{v}}) + 1"]
+      ]
+    },
+    {
+      "id": "sm-upper-lost",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{s}}\"\n{{v}}.upper()\nprint({{v}})",
+      "values": [
+        {
+          "v": "name",
+          "s": "lance vance"
+        },
+        {
+          "v": "pilot",
+          "s": "sonny"
+        },
+        {
+          "v": "captain",
+          "s": "mercedes"
+        },
+        {
+          "v": "guest",
+          "s": "ken rosenberg"
+        }
+      ],
+      "mistakes": [
+        ["{{v}}.upper()\nprint", "{{v}} = {{v}}.upper()\nprint"],
+        ["print({{v}})", "print(\"{{v}}\")"],
+        ["print({{v}})", "print({{v}}[0].upper() + {{v}}[1:])"]
+      ]
+    },
+    {
+      "id": "sm-upper-kept",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{s}}\"\n{{v}} = {{v}}.{{m}}()\nprint({{v}})",
+      "values": [
+        {
+          "v": "call",
+          "s": "Mayday",
+          "m": "upper",
+          "o": "lower"
+        },
+        {
+          "v": "tag",
+          "s": "VIP Guest",
+          "m": "lower",
+          "o": "upper"
+        },
+        {
+          "v": "signal",
+          "s": "Code Red",
+          "m": "upper",
+          "o": "lower"
+        },
+        {
+          "v": "alert",
+          "s": "HULL Breach",
+          "m": "lower",
+          "o": "upper"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{v}}.{{m}}()", "{{v}}.{{m}}()"],
+        [".{{m}}()", ".{{o}}()"],
+        ["print({{v}})", "print(\"{{v}}\")"]
+      ]
+    },
+    {
+      "id": "sm-index",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}[{{i}}])",
+      "values": [
+        {
+          "v": "word",
+          "s": "Galaxy",
+          "i": 2,
+          "im": 1,
+          "ip": 3
+        },
+        {
+          "v": "word",
+          "s": "Nebula",
+          "i": 4,
+          "im": 3,
+          "ip": 5
+        },
+        {
+          "v": "planet",
+          "s": "Saturn",
+          "i": 1,
+          "im": 0,
+          "ip": 2
+        },
+        {
+          "v": "name",
+          "s": "Comet",
+          "i": 3,
+          "im": 2,
+          "ip": 4
+        },
+        {
+          "v": "code",
+          "s": "Orbiter",
+          "i": 5,
+          "im": 4,
+          "ip": 6
+        }
+      ],
+      "mistakes": [
+        ["[{{i}}]", "[{{im}}]"],
+        ["[{{i}}]", "[{{ip}}]"],
+        ["[{{i}}]", "[0:{{i}}]"],
+        ["print({{v}}[{{i}}])", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "sm-slice",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}[{{a}}:{{b}}])",
+      "values": [
+        {
+          "v": "word",
+          "s": "Starlight",
+          "a": 0,
+          "b": 4,
+          "bp": 5
+        },
+        {
+          "v": "word",
+          "s": "Moonbases",
+          "a": 4,
+          "b": 8,
+          "bp": 9
+        },
+        {
+          "v": "ship",
+          "s": "Voyager",
+          "a": 2,
+          "b": 5,
+          "bp": 6
+        },
+        {
+          "v": "city",
+          "s": "Vicetown",
+          "a": 0,
+          "b": 4,
+          "bp": 5
+        },
+        {
+          "v": "code",
+          "s": "ZX81Alpha",
+          "a": 2,
+          "b": 4,
+          "bp": 5
+        }
+      ],
+      "mistakes": [
+        ["{{a}}:{{b}}", "{{a}}:{{bp}}"],
+        ["[{{a}}:{{b}}]", "[{{b}}:]"],
+        ["[{{a}}:{{b}}]", "[{{a}}]"],
+        ["[{{a}}:{{b}}]", "[:{{a}}]"]
+      ]
+    },
+    {
+      "id": "sm-concat",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{a}} = \"{{x}}\"\n{{b}} = \"{{y}}\"\nprint({{a}} + \" \" + {{b}})",
+      "values": [
+        {
+          "a": "first_name",
+          "b": "last_name",
+          "x": "Lance",
+          "y": "Vance"
+        },
+        {
+          "a": "first_name",
+          "b": "last_name",
+          "x": "Ken",
+          "y": "Rosenberg"
+        },
+        {
+          "a": "first_name",
+          "b": "last_name",
+          "x": "Kent",
+          "y": "Paul"
+        },
+        {
+          "a": "ship",
+          "b": "port",
+          "x": "Nova",
+          "y": "Prime"
+        },
+        {
+          "a": "city",
+          "b": "zone",
+          "x": "Vice",
+          "y": "Beach"
+        }
+      ],
+      "mistakes": [
+        ["{{a}} + \" \" + {{b}}", "{{a}} + {{b}}"],
+        ["{{a}} + \" \" + {{b}}", "\"{{a}} {{b}}\""],
+        ["{{a}} + \" \" + {{b}}", "{{b}} + \" \" + {{a}}"]
+      ]
+    },
+    {
+      "id": "sm-which-slice",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}[{{a}}:{{b}}])",
+      "values": [
+        {
+          "v": "word",
+          "s": "Andromeda",
+          "a": 0,
+          "b": 3,
+          "bp": 4,
+          "bm": 2,
+          "ap": 1
+        },
+        {
+          "v": "word",
+          "s": "Spaceport",
+          "a": 0,
+          "b": 5,
+          "bp": 6,
+          "bm": 4,
+          "ap": 1
+        },
+        {
+          "v": "name",
+          "s": "Rosenberg",
+          "a": 0,
+          "b": 4,
+          "bp": 5,
+          "bm": 3,
+          "ap": 1
+        },
+        {
+          "v": "ship",
+          "s": "Thunderbolt",
+          "a": 2,
+          "b": 6,
+          "bp": 7,
+          "bm": 5,
+          "ap": 3
+        }
+      ],
+      "mistakes": [
+        ["{{a}}:{{b}}", "{{a}}:{{bp}}"],
+        ["{{a}}:{{b}}", "{{a}}:{{bm}}"],
+        ["{{a}}:{{b}}", "{{ap}}:{{bp}}"]
+      ]
+    },
+    {
+      "id": "sm-which-upper",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = \"{{s}}\"\n{{v}} = {{v}}.upper()\nprint({{v}})",
+      "values": [
+        {
+          "v": "name",
+          "s": "sonny"
+        },
+        {
+          "v": "call",
+          "s": "mayday"
+        },
+        {
+          "v": "planet",
+          "s": "neptune"
+        },
+        {
+          "v": "team",
+          "s": "red five"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{v}}.upper()", "{{v}}.upper()"],
+        ["{{v}} = {{v}}.upper()", "{{v}} = {{v}}.lower()"],
+        ["print({{v}})", "print(\"{{v}}\")"]
+      ]
+    },
+    {
+      "id": "sm-gap-index",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}[___])",
+      "values": [
+        {
+          "v": "word",
+          "s": "Pluto",
+          "i": 3,
+          "im": 2,
+          "ip": 4,
+          "n": 5
+        },
+        {
+          "v": "word",
+          "s": "Jupiter",
+          "i": 2,
+          "im": 1,
+          "ip": 3,
+          "n": 7
+        },
+        {
+          "v": "code",
+          "s": "QZ7RX",
+          "i": 1,
+          "im": 0,
+          "ip": 2,
+          "n": 5
+        },
+        {
+          "v": "name",
+          "s": "Rosenberg",
+          "i": 4,
+          "im": 3,
+          "ip": 5,
+          "n": 9
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["{{ip}}", "{{im}}", "{{n}}"]
+    },
+    {
+      "id": "sm-gap-end",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}[0:___])",
+      "values": [
+        {
+          "v": "word",
+          "s": "Spaceship",
+          "b": 5,
+          "bm": 4,
+          "bp": 6
+        },
+        {
+          "v": "word",
+          "s": "Moonlight",
+          "b": 4,
+          "bm": 3,
+          "bp": 5
+        },
+        {
+          "v": "name",
+          "s": "Mercedes",
+          "b": 3,
+          "bm": 2,
+          "bp": 4
+        },
+        {
+          "v": "ship",
+          "s": "Starfire",
+          "b": 4,
+          "bm": 3,
+          "bp": 5
+        }
+      ],
+      "answer": "{{b}}",
+      "wrong": ["{{bm}}", "{{bp}}", "1"]
+    },
+    {
+      "id": "sm-gap-method",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}.___())",
+      "values": [
+        {
+          "v": "call",
+          "s": "Mayday",
+          "m": "upper",
+          "o": "lower",
+          "w": "UPPER"
+        },
+        {
+          "v": "tag",
+          "s": "Guest List",
+          "m": "lower",
+          "o": "upper",
+          "w": "LOWER"
+        },
+        {
+          "v": "signal",
+          "s": "all clear",
+          "m": "upper",
+          "o": "lower",
+          "w": "UPPER"
+        },
+        {
+          "v": "alert",
+          "s": "LOW Fuel",
+          "m": "lower",
+          "o": "upper",
+          "w": "LOWER"
+        }
+      ],
+      "answer": "{{m}}",
+      "wrong": ["{{o}}", "len", "{{w}}"]
+    },
+    {
+      "id": "sm-gap-keep",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{s}}\"\n___\nprint({{v}})",
+      "values": [
+        {
+          "v": "name",
+          "s": "tommy",
+          "m": "upper"
+        },
+        {
+          "v": "call",
+          "s": "MAYDAY",
+          "m": "lower"
+        },
+        {
+          "v": "pilot",
+          "s": "kent paul",
+          "m": "upper"
+        },
+        {
+          "v": "tag",
+          "s": "VIP",
+          "m": "lower"
+        },
+        {
+          "v": "planet",
+          "s": "venus",
+          "m": "upper"
+        }
+      ],
+      "answer": "{{v}} = {{v}}.{{m}}()",
+      "wrong": ["{{v}}.{{m}}()", "{{v}} == {{v}}.{{m}}()", "{{v}} = {{m}}({{v}})"]
+    },
+    {
+      "id": "sm-gap-concat",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{a}} = \"{{x}}\"\n{{b}} = \"{{y}}\"\n___\nprint({{c}})",
+      "values": [
+        {
+          "a": "first_name",
+          "b": "last_name",
+          "c": "full_name",
+          "x": "Tommy",
+          "y": "Vercetti"
+        },
+        {
+          "a": "first_name",
+          "b": "last_name",
+          "c": "full_name",
+          "x": "Sonny",
+          "y": "Forelli"
+        },
+        {
+          "a": "first_name",
+          "b": "last_name",
+          "c": "full_name",
+          "x": "Ada",
+          "y": "Lovelace"
+        },
+        {
+          "a": "ship",
+          "b": "model",
+          "c": "label",
+          "x": "Falcon",
+          "y": "Nine"
+        },
+        {
+          "a": "city",
+          "b": "zone",
+          "c": "place",
+          "x": "Vice",
+          "y": "Port"
+        }
+      ],
+      "answer": "{{c}} = {{a}} + \" \" + {{b}}",
+      "wrong": ["{{c}} = {{a}} + {{b}}", "{{c}} = \"{{a}} {{b}}\"", "{{c}} = {{b}} + \" \" + {{a}}"]
+    },
+    {
+      "id": "sm-bad-method",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = \"{{s}}\"\n{{w}} = {{v}}.{{m}}()\nprint({{v}})\nprint({{w}})",
+      "values": [
+        {
+          "v": "name",
+          "w": "loud",
+          "s": "Sonny",
+          "m": "upper",
+          "o": "lower"
+        },
+        {
+          "v": "call",
+          "w": "quiet",
+          "s": "MayDay",
+          "m": "lower",
+          "o": "upper"
+        },
+        {
+          "v": "planet",
+          "w": "big",
+          "s": "Neptune",
+          "m": "upper",
+          "o": "lower"
+        },
+        {
+          "v": "tag",
+          "w": "small",
+          "s": "VIP Guest",
+          "m": "lower",
+          "o": "upper"
+        }
+      ],
+      "bug": [".{{m}}()", ".{{o}}()"]
+    },
+    {
+      "id": "sm-bad-index",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}})\nprint({{v}}[0:{{b}}])\nprint({{v}}[{{i}}])",
+      "values": [
+        {
+          "v": "word",
+          "s": "Nebula",
+          "i": 2,
+          "ip": 3,
+          "b": 3
+        },
+        {
+          "v": "word",
+          "s": "Galaxy",
+          "i": 4,
+          "ip": 5,
+          "b": 2
+        },
+        {
+          "v": "name",
+          "s": "Mercedes",
+          "i": 1,
+          "ip": 2,
+          "b": 4
+        },
+        {
+          "v": "code",
+          "s": "QZ7RX",
+          "i": 3,
+          "ip": 4,
+          "b": 2
+        }
+      ],
+      "bug": ["[{{i}}]", "[{{ip}}]"]
+    },
+    {
+      "id": "sm-bad-slice",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}})\nprint({{v}}[0])\nprint({{v}}[{{a}}:{{b}}])",
+      "values": [
+        {
+          "v": "word",
+          "s": "Starlight",
+          "a": 4,
+          "b": 9,
+          "bm": 8
+        },
+        {
+          "v": "word",
+          "s": "Moonbase",
+          "a": 0,
+          "b": 4,
+          "bm": 3
+        },
+        {
+          "v": "ship",
+          "s": "Voyager",
+          "a": 2,
+          "b": 5,
+          "bm": 4
+        },
+        {
+          "v": "name",
+          "s": "Rosenberg",
+          "a": 4,
+          "b": 9,
+          "bm": 8
+        }
+      ],
+      "bug": ["{{a}}:{{b}}", "{{a}}:{{bm}}"]
+    }
+  ]
+}

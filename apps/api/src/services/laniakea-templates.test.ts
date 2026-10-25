@@ -230,7 +230,7 @@ describe('planTemplate', () => {
     bug: ['print(a)', 'print(c)'],
   };
 
-  it('wrong-line: shows the broken program, its broken line and three others as options', () => {
+  it('wrong-line: shows the broken program, its broken line and the three lines nearest it', () => {
     const [plan] = plans(wrongLine);
     expect(plan.programs).toEqual([
       'a = 1\nb = 2\n\nprint(a)\nprint(b)',
@@ -241,9 +241,74 @@ describe('planTemplate', () => {
       text: 'Which line is wrong?',
       code: 'a = 1\nb = 2\n\nprint(c)\nprint(b)',
       output: '1\n2',
-      options: ['print(c)', 'a = 1', 'b = 2', 'print(b)'],
+      options: expect.any(Array),
       answer: 0,
     });
+    const { options } = plan.build([ok('1\n2\n'), fails()]);
+    expect(options[0]).toBe('print(c)');
+    expect(options.slice(1).sort()).toEqual(['a = 1', 'b = 2', 'print(b)']);
+  });
+
+  it('wrong-line: leaves out the lines far from the broken one', () => {
+    const [plan] = plans({
+      ...wrongLine,
+      code: 'a = 1\nb = 2\nc = 3\nprint(a)\nprint(b)\nprint(c)',
+      bug: ['print(b)', 'print(d)'],
+    });
+    const { options } = plan.build([ok('1\n2\n3\n'), fails()]);
+    expect(options[0]).toBe('print(d)');
+    expect(options).toContain('print(a)');
+    expect(options).not.toContain('a = 1');
+  });
+
+  it('wrong-line: puts the broken line at every place among the four in the code', () => {
+    const lines = [
+      'a = {{a}}',
+      'b = 2',
+      'c = 3',
+      'print(a)',
+      'print(b)',
+      'print(c)',
+      'print(a + b)',
+      'print(a + c)',
+    ];
+    const [...made] = plans({
+      ...wrongLine,
+      code: lines.join('\n'),
+      values: Array.from({ length: 40 }, (_, a) => ({ a })),
+      bug: ['print(b)', 'print(d)'],
+    });
+    const places = new Set(
+      made.map((plan, a) => {
+        const { options } = plan.build([ok('1'), fails()]);
+        const filled = lines.map((line) => line.replace('{{a}}', String(a)));
+        return options.slice(1).filter((option) => filled.indexOf(option) < 4).length;
+      }),
+    );
+    expect([...places].sort()).toEqual([0, 1, 2, 3]);
+  });
+
+  it('wrong-line: puts the lines of the broken line kind first', () => {
+    const [plan] = plans({
+      ...wrongLine,
+      code: 'x = 1\ny = 2\nif x > 0:\n    print(x)\nelse:\n    print(y)',
+      bug: ['if x > 0:', 'if x > 0'],
+    });
+    const { options } = plan.build([ok('1\n'), fails()]);
+    expect(options[0]).toBe('if x > 0');
+    expect(options.find((o) => ['print(x)', 'else:', 'print(y)'].includes(o))).toBe('else:');
+  });
+
+  it('wrong-line: counts a block line with a comment as one', () => {
+    const [plan] = plans({
+      ...wrongLine,
+      code: 'x = 1\ny = 2\nif x > 0:\n    print(x)\nelse:  # the other way\n    print(y)',
+      bug: ['if x > 0:', 'if x > 0'],
+    });
+    const { options } = plan.build([ok('1\n'), fails()]);
+    expect(options.find((o) => o.startsWith('print') || o.startsWith('else'))).toBe(
+      'else:  # the other way',
+    );
   });
 
   it('wrong-line: refuses a broken program that still prints the output, or too few lines', () => {

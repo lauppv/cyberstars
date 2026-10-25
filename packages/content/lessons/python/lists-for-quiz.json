@@ -1,0 +1,924 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "In `for i in names:`, what is i on each pass?",
+      "options": [
+        "One element of names, the next one each time",
+        "The position of an element, 0, 1, 2 and so on",
+        "The whole list names",
+        "How many elements names has"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What is i on the first pass?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i in names:\n    print(f\"Hello, {i}!\")",
+      "options": ["0", "\"Lance\"", "\"Tommy\"", "[\"Tommy\", \"Lance\", \"Cortez\"]"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "A list has 4 elements. How many times do the lines under `for x in the_list:` run?",
+      "options": ["3", "5", "Once", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "names has 3 elements. Which numbers does `range(0, len(names))` give?",
+      "options": ["1, 2, 3", "3", "0, 1, 2, 3", "0, 1, 2"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "In `for i in range(len(names)):`, what is i?",
+      "options": [
+        "An index, a position in the list",
+        "A name from the list",
+        "The length of the list",
+        "The list itself"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Why does the lesson print `i + 1` next to each hero?",
+      "options": [
+        "Because range() starts from 1",
+        "So the loop skips the first hero",
+        "We count from 0 in code, but people count from 1",
+        "Because i + 1 is the next hero's name"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "When do you need `for i in range(len(names)):` and not `for n in names:`?",
+      "options": [
+        "When you need the position of each element too",
+        "Always, the second one doesn't work on lists",
+        "When the list holds numbers",
+        "When the list is empty"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\"]\nfor n in names:\n    print(n[0])",
+      "options": ["Tommy\nLance", "T\nL", "T", "It stops with an error"],
+      "answer": 1
+    },
+    {
+      "id": "q9",
+      "text": "What happens when this runs?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i in range(len(names)):\n    print(names[i + 1])",
+      "options": [
+        "It prints Lance, then Cortez, then stops with an error",
+        "It prints Tommy, Lance and Cortez",
+        "It prints Lance and Cortez, with no error",
+        "It stops with an error before printing anything"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "In the lesson's sum, why is `total = 0` written before the loop?",
+      "options": [
+        "So the loop runs 0 times",
+        "So total goes back to 0 for every price",
+        "Because every list starts with 0",
+        "So the total starts from 0 and each price is added to it"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "prices = [10, 20, 30]\nfor p in prices:\n    total = 0\n    total = total + p\nprint(total)",
+      "options": ["60", "30", "0", "10\n20\n30"],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "prices = [10, 20, 30]\ntotal = 0\nfor p in prices:\n    total = total + p\n    print(total)",
+      "options": ["60", "10\n20\n30", "10\n30\n60", "60\n60\n60"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "In the lesson, what does the sum of `prices = [10, 20, 30, 40]` print?",
+      "options": ["40", "100", "10\n30\n60\n100", "4"],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "names = []\nfor n in names:\n    print(\"Done\")",
+      "options": [
+        "Nothing: the list is empty, so the loop's lines never run",
+        "Done",
+        "[]",
+        "It stops with an error"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "numbers = [1, 2, 3]\nfor n in numbers:\n    n = n * 2\nprint(numbers)",
+      "options": ["[2, 4, 6]", "[1, 2, 3]", "6", "[1, 2, 3, 2, 4, 6]"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Which loop doubles every number inside the list numbers itself?",
+      "options": [
+        "for n in numbers:\n    n = n * 2",
+        "for i in range(len(numbers)):\n    i = i * 2",
+        "for i in range(len(numbers)):\n    numbers[i] = numbers[i] * 2",
+        "for n in numbers:\n    numbers = n * 2"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "numbers = [5, 12, 8, 20]\nbig = []\nfor n in numbers:\n    if n > 10:\n        big.append(n)\nprint(big)",
+      "options": ["[5, 8]", "[12, 20]", "[20]", "[5, 12, 8, 20]"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "ages = [12, 18, 30, 15]\ncount = 0\nfor a in ages:\n    if a >= 18:\n        count = count + 1\nprint(count)",
+      "options": ["4", "48", "1", "2"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "scores = [7, 15, 9]\nbest = scores[0]\nfor s in scores:\n    if s > best:\n        best = s\nprint(best)",
+      "options": ["15", "7", "9", "31"],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "Looking for the biggest number, why start with `best = scores[0]` and not `best = 0`?",
+      "options": [
+        "Because a list can't be compared with 0",
+        "So the loop skips the first score",
+        "It's the same, 0 always works",
+        "If every score were below 0, best = 0 would win without being in the list"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "In The Ship's Crew mission, which member is printed sixth, with `6.` in front?",
+      "options": [
+        "The one at index 6",
+        "The one at index 5",
+        "The one at index 7",
+        "The sixth one selected for EVA"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "In The Ship's Crew mission, the member at index 10 is selected. With which number is it printed?",
+      "options": ["11", "10", "9", "12"],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Why does The Ship's Crew mission go through the list with `range(len(crew))`?",
+      "options": [
+        "Because a for loop can't go through a list of 20 names",
+        "So it prints only the selected members",
+        "It needs each member's index, to number it and to spot 5, 10 and 12",
+        "Because len() sorts the list first"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "In The Ship's Crew mission, how many lines does the program print?",
+      "options": ["3", "17", "21", "20"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Which line goes through the positions of names, from the first to the last?",
+      "options": [
+        "for i in names:",
+        "for i in range(len(names)):",
+        "for i in range(names):",
+        "for i in len(names):"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "What happens when this runs?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i in range(names):\n    print(i)",
+      "options": [
+        "It prints 0, 1 and 2",
+        "It prints Tommy, Lance and Cortez",
+        "It stops with an error: range() takes a number, not a list",
+        "It prints 3"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "In the lesson's hero example, what is the line printed for Cortez?",
+      "options": [
+        "Hero number 2: Cortez",
+        "Hero number 3: Cortez",
+        "Hero number 4: Cortez",
+        "Hero number 3: names[2]"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "The lesson says a while loop could go through a list too. Why does it pick for?",
+      "options": [
+        "A while loop can't read a list",
+        "A for loop gives us each element by itself, with no counter to keep",
+        "A for loop is the only loop with a condition",
+        "A while loop would skip the first element"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "Does it matter whether we write `for i in names:` or `for n in names:`?",
+      "options": [
+        "Yes, only i works in a for loop",
+        "Yes, n gives the positions and i the names",
+        "No, the name is our choice: either way it holds each element",
+        "Yes, n works only on lists of numbers"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "words = [\"sun\", \"moon\"]\nfor w in words:\n    print(w.upper())",
+      "options": ["sun\nmoon", "SUN MOON", "SUN\nMOON", "['SUN', 'MOON']"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "lf-each",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    print(f\"{{greet}}, {{{x}}}!\")",
+      "values": [
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Jupiter\"",
+          "x": "planet",
+          "greet": "Next stop"
+        },
+        {
+          "v": "crew",
+          "items": "\"Lance\", \"Cortez\"",
+          "x": "member",
+          "greet": "Welcome"
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Phil\", \"Sonny\", \"Ken\"",
+          "x": "n",
+          "greet": "Hello"
+        },
+        {
+          "v": "players",
+          "items": "\"Ana\", \"Rex\"",
+          "x": "i",
+          "greet": "Good luck"
+        }
+      ],
+      "mistakes": [
+        ["{{{x}}}", "{{{v}}}"],
+        ["print(f\"", "print(\""],
+        ["in {{v}}:", "in range(len({{v}})):"],
+        ["{{{x}}}", "{{{v}}[0]}"]
+      ]
+    },
+    {
+      "id": "lf-index",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    print(f\"{{label}} {i + 1}: {{{v}}[i]}\")",
+      "values": [
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\"",
+          "label": "Planet"
+        },
+        {
+          "v": "tasks",
+          "items": "\"Refuel\", \"Check engines\", \"Launch\"",
+          "label": "Step"
+        },
+        {
+          "v": "players",
+          "items": "\"Ana\", \"Rex\", \"Kai\", \"Zoe\"",
+          "label": "Player"
+        }
+      ],
+      "mistakes": [
+        ["{i + 1}", "{i}"],
+        ["range(len({{v}}))", "range(1, len({{v}}))"],
+        ["{{{v}}[i]}", "{i}"],
+        ["{{{v}}[i]}", "{{{v}}}"]
+      ]
+    },
+    {
+      "id": "lf-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\n{{t}} = 0\nfor {{x}} in {{v}}:\n    {{t}} = {{t}} + {{x}}\nprint({{t}})",
+      "values": [
+        {
+          "v": "prices",
+          "items": "5, 15, 25",
+          "t": "total",
+          "x": "price"
+        },
+        {
+          "v": "scores",
+          "items": "7, 3, 9, 1",
+          "t": "points",
+          "x": "s"
+        },
+        {
+          "v": "tanks",
+          "items": "40, 60",
+          "t": "fuel",
+          "x": "tank"
+        },
+        {
+          "v": "ages",
+          "items": "12, 30, 8",
+          "t": "total",
+          "x": "age"
+        },
+        {
+          "v": "steps",
+          "items": "100, 250, 150, 500",
+          "t": "walked",
+          "x": "s"
+        },
+        {
+          "v": "coins",
+          "items": "2, 2, 2, 2, 2",
+          "t": "total",
+          "x": "c"
+        }
+      ],
+      "mistakes": [
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"],
+        ["{{t}} + {{x}}", "{{t}} + 1"],
+        ["\nprint({{t}})", "\n    print({{t}})"]
+      ]
+    },
+    {
+      "id": "lf-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\n{{c}} = 0\nfor n in {{v}}:\n    if n {{op}} {{lim}}:\n        {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "v": "ages",
+          "items": "12, 18, 30, 15",
+          "c": "count",
+          "op": ">=",
+          "lim": 18,
+          "flip": ">"
+        },
+        {
+          "v": "temperatures",
+          "items": "21, 35, 30, 28",
+          "c": "hot_days",
+          "op": ">",
+          "lim": 30,
+          "flip": ">="
+        },
+        {
+          "v": "grades",
+          "items": "4, 10, 5, 9, 5",
+          "c": "low",
+          "op": "<",
+          "lim": 5,
+          "flip": "<="
+        },
+        {
+          "v": "speeds",
+          "items": "90, 120, 130, 100",
+          "c": "safe",
+          "op": "<=",
+          "lim": 100,
+          "flip": "<"
+        }
+      ],
+      "mistakes": [
+        ["{{c}} + 1", "{{c}} + n"],
+        ["n {{op}} {{lim}}", "n {{flip}} {{lim}}"],
+        ["\nprint({{c}})", "\n    print({{c}})"]
+      ]
+    },
+    {
+      "id": "lf-max",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\n{{b}} = {{v}}[0]\nfor n in {{v}}:\n    if n > {{b}}:\n        {{b}} = n\nprint({{b}})",
+      "values": [
+        {
+          "v": "scores",
+          "items": "7, 15, 9",
+          "b": "best"
+        },
+        {
+          "v": "heights",
+          "items": "120, 95, 150, 130",
+          "b": "tallest"
+        },
+        {
+          "v": "levels",
+          "items": "3, 8, 2, 5",
+          "b": "top"
+        },
+        {
+          "v": "fuel",
+          "items": "40, 70, 20, 55",
+          "b": "most"
+        }
+      ],
+      "mistakes": [
+        ["n > {{b}}", "n < {{b}}"],
+        ["print({{b}})", "print(n)"],
+        ["\nprint({{b}})", "\n    print({{b}})"]
+      ]
+    },
+    {
+      "id": "lf-build",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor n in {{v}}:\n    if n {{op}} {{lim}}:\n        {{w}}.append(n)\nprint({{w}})",
+      "values": [
+        {
+          "v": "numbers",
+          "items": "6, 14, 3, 25",
+          "w": "big",
+          "op": ">",
+          "lim": 10,
+          "neg": "<="
+        },
+        {
+          "v": "temperatures",
+          "items": "30, 18, 25, 10",
+          "w": "cold",
+          "op": "<",
+          "lim": 20,
+          "neg": ">="
+        },
+        {
+          "v": "scores",
+          "items": "50, 75, 90, 40",
+          "w": "passed",
+          "op": ">=",
+          "lim": 50,
+          "neg": "<"
+        },
+        {
+          "v": "prices",
+          "items": "3, 15, 7, 22",
+          "w": "cheap",
+          "op": "<=",
+          "lim": 7,
+          "neg": ">"
+        }
+      ],
+      "mistakes": [
+        ["n {{op}} {{lim}}", "n {{neg}} {{lim}}"],
+        ["{{w}}.append(n)", "{{w}} = [n]"],
+        ["\nprint({{w}})", "\n    print({{w}})"]
+      ]
+    },
+    {
+      "id": "lf-upper",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}}.upper())\nprint({{w}})",
+      "values": [
+        {
+          "v": "words",
+          "items": "\"Mars\", \"Moon\"",
+          "w": "loud",
+          "x": "word"
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Ken\"",
+          "w": "shout",
+          "x": "n"
+        },
+        {
+          "v": "cities",
+          "items": "\"Rome\", \"Oslo\"",
+          "w": "signs",
+          "x": "c"
+        }
+      ],
+      "mistakes": [
+        ["{{x}}.upper()", "{{x}}"],
+        ["{{x}}.upper()", "{{x}}.lower()"],
+        ["\nprint({{w}})", "\n    print({{w}})"]
+      ]
+    },
+    {
+      "id": "lf-double",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    {{v}}[i] = {{v}}[i] * {{k}}\nprint({{v}})",
+      "values": [
+        {
+          "v": "prices",
+          "items": "10, 20, 30",
+          "k": 2
+        },
+        {
+          "v": "points",
+          "items": "1, 5, 3, 4",
+          "k": 3
+        },
+        {
+          "v": "speeds",
+          "items": "4, 8",
+          "k": 10
+        }
+      ],
+      "mistakes": [
+        ["* {{k}}", "+ {{k}}"],
+        ["range(len({{v}}))", "range(1, len({{v}}))"],
+        ["\nprint({{v}})", "\n    print({{v}})"]
+      ]
+    },
+    {
+      "id": "lf-which-sum",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{items}}]\n{{t}} = 0\nfor {{x}} in {{v}}:\n    {{t}} = {{t}} + {{x}}\nprint({{t}})",
+      "values": [
+        {
+          "v": "prices",
+          "items": "4, 6, 10",
+          "t": "total",
+          "x": "p"
+        },
+        {
+          "v": "scores",
+          "items": "15, 9, 1",
+          "t": "points",
+          "x": "s"
+        },
+        {
+          "v": "ages",
+          "items": "7, 8, 9",
+          "t": "total",
+          "x": "a"
+        },
+        {
+          "v": "tanks",
+          "items": "100, 50, 25",
+          "t": "fuel",
+          "x": "tank"
+        }
+      ],
+      "mistakes": [
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"],
+        ["{{t}} + {{x}}", "{{t}} + 1"],
+        ["\nprint({{t}})", "\n    print({{t}})"]
+      ]
+    },
+    {
+      "id": "lf-which-each",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    print({{x}})",
+      "values": [
+        {
+          "v": "colors",
+          "items": "\"red\", \"green\", \"blue\"",
+          "x": "c"
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\"",
+          "x": "name"
+        },
+        {
+          "v": "numbers",
+          "items": "7, 3, 9",
+          "x": "n"
+        }
+      ],
+      "mistakes": [
+        ["print({{x}})", "print({{v}})"],
+        ["in {{v}}:", "in range(len({{v}})):"],
+        ["print({{x}})", "print({{v}}[0])"]
+      ]
+    },
+    {
+      "id": "lf-gap-add",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\n{{t}} = 0\nfor {{x}} in {{v}}:\n    ___\nprint({{t}})",
+      "values": [
+        {
+          "v": "prices",
+          "items": "3, 9, 12",
+          "t": "total",
+          "x": "p"
+        },
+        {
+          "v": "scores",
+          "items": "20, 5",
+          "t": "points",
+          "x": "s"
+        },
+        {
+          "v": "weights",
+          "items": "6, 6, 1",
+          "t": "load",
+          "x": "w"
+        },
+        {
+          "v": "steps",
+          "items": "11, 22, 33",
+          "t": "walked",
+          "x": "s"
+        },
+        {
+          "v": "coins",
+          "items": "8, 2, 5, 1",
+          "t": "money",
+          "x": "c"
+        }
+      ],
+      "answer": "{{t}} = {{t}} + {{x}}",
+      "wrong": ["{{t}} = {{x}}", "{{t}} = {{t}} + 1", "{{t}} + {{x}}"]
+    },
+    {
+      "id": "lf-gap-loop",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\n___\n    print(f\"{i + 1}. {{{v}}[i]}\")",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Mary\", \"Andrew\", \"Helen\""
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\", \"Saturn\""
+        },
+        {
+          "v": "tasks",
+          "items": "\"Refuel\", \"Launch\""
+        }
+      ],
+      "answer": "for i in range(len({{v}})):",
+      "wrong": [
+        "for i in {{v}}:",
+        "for i in range(1, len({{v}})):",
+        "for i in range(len({{v}}) - 1):"
+      ]
+    },
+    {
+      "id": "lf-gap-append",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor n in {{v}}:\n    if n {{op}} {{lim}}:\n        ___\nprint({{w}})",
+      "values": [
+        {
+          "v": "numbers",
+          "items": "3, 14, 9, 30",
+          "w": "big",
+          "op": ">",
+          "lim": 10
+        },
+        {
+          "v": "levels",
+          "items": "16, 4, 2, 7",
+          "w": "low",
+          "op": "<",
+          "lim": 5
+        },
+        {
+          "v": "scores",
+          "items": "60, 45, 80",
+          "w": "passed",
+          "op": ">=",
+          "lim": 50
+        }
+      ],
+      "answer": "{{w}}.append(n)",
+      "wrong": ["{{w}} = [n]", "{{w}}.append({{lim}})", "print(n)"]
+    },
+    {
+      "id": "lf-gap-plus",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    print(f\"{i + ___}. {{{v}}[i]}\")",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Mary\", \"Andrew\""
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\""
+        },
+        {
+          "v": "players",
+          "items": "\"Ana\", \"Rex\", \"Kai\""
+        }
+      ],
+      "answer": "1",
+      "wrong": ["0", "2", "i"]
+    },
+    {
+      "id": "lf-gap-idx",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    print({{v}}[___])",
+      "values": [
+        {
+          "v": "colors",
+          "items": "\"red\", \"green\", \"blue\""
+        },
+        {
+          "v": "numbers",
+          "items": "5, 10, 15, 20"
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Ken\""
+        }
+      ],
+      "answer": "i",
+      "wrong": ["i + 1", "0", "len({{v}})"]
+    },
+    {
+      "id": "lf-gap-op",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\n{{c}} = 0\nfor n in {{v}}:\n    if n ___ {{lim}}:\n        {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "v": "ages",
+          "items": "12, 18, 30, 15",
+          "c": "adults",
+          "op": ">=",
+          "lim": 18
+        },
+        {
+          "v": "temperatures",
+          "items": "21, 35, 30, 28",
+          "c": "hot_days",
+          "op": ">",
+          "lim": 30
+        },
+        {
+          "v": "speeds",
+          "items": "90, 120, 130, 100",
+          "c": "safe",
+          "op": "<=",
+          "lim": 100
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": [">", ">=", "<", "<=", "=="]
+    },
+    {
+      "id": "lf-bad-index",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{items}}]\nprint(\"{{title}}\")\nfor i in range(len({{v}})):\n    print(f\"{i + 1}. {{{v}}[i]}\")\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Mary\", \"Andrew\", \"Helen\"",
+          "title": "Crew:",
+          "end": "End of list"
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\", \"Saturn\"",
+          "title": "Route:",
+          "end": "Route ready"
+        },
+        {
+          "v": "tasks",
+          "items": "\"Refuel\", \"Check engines\", \"Launch\"",
+          "title": "Checklist:",
+          "end": "All set"
+        }
+      ],
+      "bug": ["{{{v}}[i]}", "{{{v}}[i + 1]}"]
+    },
+    {
+      "id": "lf-bad-range",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{items}}]\nprint(\"{{title}}\")\nfor i in range(len({{v}})):\n    print(f\"{i + 1}. {{{v}}[i]}\")\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Lance\", \"Cortez\", \"Phil\"",
+          "title": "Crew:",
+          "end": "Ready"
+        },
+        {
+          "v": "planets",
+          "items": "\"Mercury\", \"Venus\"",
+          "title": "Route:",
+          "end": "Done"
+        },
+        {
+          "v": "players",
+          "items": "\"Ana\", \"Rex\", \"Kai\", \"Zoe\"",
+          "title": "Players:",
+          "end": "Let's play"
+        }
+      ],
+      "bug": ["range(len({{v}}))", "range(1, len({{v}}))"]
+    },
+    {
+      "id": "lf-bad-sum",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{items}}]\n{{t}} = 0\nfor {{x}} in {{v}}:\n    {{t}} = {{t}} + {{x}}\nprint(f\"{{label}} {{{v}}}: {{{t}}}\")",
+      "values": [
+        {
+          "v": "prices",
+          "items": "8, 12, 30",
+          "t": "total",
+          "x": "p",
+          "label": "Total of"
+        },
+        {
+          "v": "scores",
+          "items": "4, 4, 1, 6",
+          "t": "points",
+          "x": "s",
+          "label": "Points from"
+        },
+        {
+          "v": "coins",
+          "items": "25, 75",
+          "t": "money",
+          "x": "c",
+          "label": "Money in"
+        }
+      ],
+      "bug": ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"]
+    },
+    {
+      "id": "lf-bad-max",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{items}}]\n{{b}} = {{v}}[0]\nfor n in {{v}}:\n    if n > {{b}}:\n        {{b}} = n\nprint(f\"{{label}} {{{v}}}: {{{b}}}\")",
+      "values": [
+        {
+          "v": "scores",
+          "items": "12, 31, 18",
+          "b": "best",
+          "label": "Highest of"
+        },
+        {
+          "v": "heights",
+          "items": "60, 85, 70, 40",
+          "b": "tallest",
+          "label": "Tallest of"
+        },
+        {
+          "v": "levels",
+          "items": "2, 9, 4",
+          "b": "top",
+          "label": "Top level of"
+        }
+      ],
+      "bug": ["n > {{b}}", "n < {{b}}"]
+    }
+  ]
+}

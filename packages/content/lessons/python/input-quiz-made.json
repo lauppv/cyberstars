@@ -1,0 +1,631 @@
+{
+  "note": "Made by npm run make:quiz from the templates in input-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "in-plus-113c24",
+      "text": "The user typed 14, so `age` holds what input() gave back. What does this print?",
+      "code": "age = \"14\"\nnext_year = int(age) + 1\nprint(next_year)",
+      "options": ["15", "141", "14", "next_year"],
+      "answer": 0
+    },
+    {
+      "id": "in-plus-b42f3d",
+      "text": "The user typed 60, so `age` holds what input() gave back. What does this print?",
+      "code": "age = \"60\"\nnext_year = int(age) + 1\nprint(next_year)",
+      "options": ["61", "601", "60", "next_year"],
+      "answer": 0
+    },
+    {
+      "id": "in-plus-cd101b",
+      "text": "The user typed 7, so `score` holds what input() gave back. What does this print?",
+      "code": "score = \"7\"\ntotal = int(score) + 3\nprint(total)",
+      "options": ["10", "73", "7", "total"],
+      "answer": 0
+    },
+    {
+      "id": "in-plus-a1838b",
+      "text": "The user typed 9, so `level` holds what input() gave back. What does this print?",
+      "code": "level = \"9\"\nnext_level = int(level) + 1\nprint(next_level)",
+      "options": ["10", "91", "9", "next_level"],
+      "answer": 0
+    },
+    {
+      "id": "in-plus-529343",
+      "text": "The user typed 40, so `fuel` holds what input() gave back. What does this print?",
+      "code": "fuel = \"40\"\ntotal = int(fuel) + 10\nprint(total)",
+      "options": ["50", "4010", "40", "total"],
+      "answer": 0
+    },
+    {
+      "id": "in-two-0b8700",
+      "text": "The user typed 6, then 4, and `a` and `b` hold what input() gave back. What does this print?",
+      "code": "a = \"6\"\nb = \"4\"\nprint(int(a) + int(b))",
+      "options": ["10", "64", "a + b", "6 + 4"],
+      "answer": 0
+    },
+    {
+      "id": "in-two-a1debc",
+      "text": "The user typed 12, then 30, and `a` and `b` hold what input() gave back. What does this print?",
+      "code": "a = \"12\"\nb = \"30\"\nprint(int(a) + int(b))",
+      "options": ["42", "1230", "a + b", "12 + 30"],
+      "answer": 0
+    },
+    {
+      "id": "in-two-4afef0",
+      "text": "The user typed 7, then 7, and `a` and `b` hold what input() gave back. What does this print?",
+      "code": "a = \"7\"\nb = \"7\"\nprint(int(a) + int(b))",
+      "options": ["14", "77", "a + b", "7 + 7"],
+      "answer": 0
+    },
+    {
+      "id": "in-two-d3f1ed",
+      "text": "The user typed 100, then 1, and `a` and `b` hold what input() gave back. What does this print?",
+      "code": "a = \"100\"\nb = \"1\"\nprint(int(a) + int(b))",
+      "options": ["101", "1001", "a + b", "100 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "in-sum-7be478",
+      "text": "The user typed 3, so `n` holds what input() gave back. What does this print?",
+      "code": "n = \"3\"\ntotal = 0\nfor i in range(1, int(n) + 1):\n    total = total + i\nprint(total)",
+      "options": ["6", "3", "1\n3\n6", "7"],
+      "answer": 0
+    },
+    {
+      "id": "in-sum-ceeaaf",
+      "text": "The user typed 4, so `n` holds what input() gave back. What does this print?",
+      "code": "n = \"4\"\ntotal = 0\nfor i in range(1, int(n) + 1):\n    total = total + i\nprint(total)",
+      "options": ["10", "6", "1\n3\n6\n10", "4"],
+      "answer": 0
+    },
+    {
+      "id": "in-sum-cb9462",
+      "text": "The user typed 5, so `days` holds what input() gave back. What does this print?",
+      "code": "days = \"5\"\ntotal = 0\nfor i in range(1, int(days) + 1):\n    total = total + i\nprint(total)",
+      "options": ["15", "10", "1\n3\n6\n10\n15", "5"],
+      "answer": 0
+    },
+    {
+      "id": "in-sum-549a10",
+      "text": "The user typed 10, so `laps` holds what input() gave back. What does this print?",
+      "code": "laps = \"10\"\ntotal = 0\nfor i in range(1, int(laps) + 1):\n    total = total + i\nprint(total)",
+      "options": ["55", "45", "1\n3\n6\n10\n15\n21\n28\n36\n45\n55", "10"],
+      "answer": 0
+    },
+    {
+      "id": "in-crew-1f8630",
+      "text": "The user typed Cortez, then 60, and `name` and `age` hold what input() gave back. What does this print?",
+      "code": "name = \"Cortez\"\nage = \"60\"\nage = int(age)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "options": [
+        "Welcome aboard, Cortez! You are 60. Next year you will be 61.",
+        "Welcome aboard, Cortez! You are 60. Next year you will be 60.",
+        "Welcome aboard, Cortez! You are 60. Next year you will be 60 + 1.",
+        "Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-crew-08abee",
+      "text": "The user typed Zoe, then 12, and `name` and `age` hold what input() gave back. What does this print?",
+      "code": "name = \"Zoe\"\nage = \"12\"\nage = int(age)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "options": [
+        "Welcome aboard, Zoe! You are 12. Next year you will be 13.",
+        "Welcome aboard, Zoe! You are 12. Next year you will be 12.",
+        "Welcome aboard, Zoe! You are 12. Next year you will be 12 + 1.",
+        "Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-crew-73b75e",
+      "text": "The user typed Lance, then 35, and `name` and `age` hold what input() gave back. What does this print?",
+      "code": "name = \"Lance\"\nage = \"35\"\nage = int(age)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "options": [
+        "Welcome aboard, Lance! You are 35. Next year you will be 36.",
+        "Welcome aboard, Lance! You are 35. Next year you will be 35.",
+        "Welcome aboard, Lance! You are 35. Next year you will be 35 + 1.",
+        "Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-crew-ac9daa",
+      "text": "The user typed Ada, then 17, and `name` and `age` hold what input() gave back. What does this print?",
+      "code": "name = \"Ada\"\nage = \"17\"\nage = int(age)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "options": [
+        "Welcome aboard, Ada! You are 17. Next year you will be 18.",
+        "Welcome aboard, Ada! You are 17. Next year you will be 17.",
+        "Welcome aboard, Ada! You are 17. Next year you will be 17 + 1.",
+        "Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-crew-99e209",
+      "text": "The user typed Kai, then 99, and `name` and `age` hold what input() gave back. What does this print?",
+      "code": "name = \"Kai\"\nage = \"99\"\nage = int(age)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "options": [
+        "Welcome aboard, Kai! You are 99. Next year you will be 100.",
+        "Welcome aboard, Kai! You are 99. Next year you will be 99.",
+        "Welcome aboard, Kai! You are 99. Next year you will be 99 + 1.",
+        "Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-if-fba150",
+      "text": "The user typed 18, so `age` holds what input() gave back. What does this print?",
+      "code": "age = \"18\"\nage = int(age)\nif age >= 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+      "options": ["You can vote", "Not yet", "True", "18"],
+      "answer": 0
+    },
+    {
+      "id": "in-if-44530c",
+      "text": "The user typed 12, so `age` holds what input() gave back. What does this print?",
+      "code": "age = \"12\"\nage = int(age)\nif age >= 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+      "options": ["Not yet", "You can vote", "False", "12"],
+      "answer": 0
+    },
+    {
+      "id": "in-if-39220c",
+      "text": "The user typed 50, so `score` holds what input() gave back. What does this print?",
+      "code": "score = \"50\"\nscore = int(score)\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Pass", "Fail", "True", "50"],
+      "answer": 0
+    },
+    {
+      "id": "in-if-8b3f5b",
+      "text": "The user typed 49, so `score` holds what input() gave back. What does this print?",
+      "code": "score = \"49\"\nscore = int(score)\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Fail", "Pass", "False", "49"],
+      "answer": 0
+    },
+    {
+      "id": "in-if-9927e0",
+      "text": "The user typed 300, so `fuel` holds what input() gave back. What does this print?",
+      "code": "fuel = \"300\"\nfuel = int(fuel)\nif fuel >= 200:\n    print(\"Ready to launch\")\nelse:\n    print(\"Refuel first\")",
+      "options": ["Ready to launch", "Refuel first", "True", "300"],
+      "answer": 0
+    },
+    {
+      "id": "in-count-dc07d8",
+      "text": "The user typed 3, so `laps` holds what input() gave back. What does this print?",
+      "code": "laps = \"3\"\nfor i in range(1, int(laps) + 1):\n    print(i)",
+      "options": ["1\n2\n3", "1\n2", "0\n1\n2\n3", "3\n3\n3"],
+      "answer": 0
+    },
+    {
+      "id": "in-count-36452b",
+      "text": "The user typed 4, so `stars` holds what input() gave back. What does this print?",
+      "code": "stars = \"4\"\nfor i in range(1, int(stars) + 1):\n    print(i)",
+      "options": ["1\n2\n3\n4", "1\n2\n3", "0\n1\n2\n3\n4", "4\n4\n4\n4"],
+      "answer": 0
+    },
+    {
+      "id": "in-count-0c37b5",
+      "text": "The user typed 5, so `n` holds what input() gave back. What does this print?",
+      "code": "n = \"5\"\nfor i in range(1, int(n) + 1):\n    print(i)",
+      "options": ["1\n2\n3\n4\n5", "1\n2\n3\n4", "0\n1\n2\n3\n4\n5", "5\n5\n5\n5\n5"],
+      "answer": 0
+    },
+    {
+      "id": "in-count-4e0edc",
+      "text": "The user typed 2, so `n` holds what input() gave back. What does this print?",
+      "code": "n = \"2\"\nfor i in range(1, int(n) + 1):\n    print(i)",
+      "options": ["1\n2", "1", "0\n1\n2", "2\n2"],
+      "answer": 0
+    },
+    {
+      "id": "in-ticket-95ca97",
+      "text": "The user typed 4, so `age` holds what input() gave back. What does this print?",
+      "code": "age = \"4\"\nage = int(age)\nif age < 6:\n    print(\"Free\")\nelif age < 18:\n    print(\"Child ticket\")\nelse:\n    print(\"Full price\")",
+      "options": ["Free", "Child ticket", "Free\nChild ticket\nFull price", "4"],
+      "answer": 0
+    },
+    {
+      "id": "in-ticket-d42e50",
+      "text": "The user typed 12, so `age` holds what input() gave back. What does this print?",
+      "code": "age = \"12\"\nage = int(age)\nif age < 6:\n    print(\"Free\")\nelif age < 18:\n    print(\"Child ticket\")\nelse:\n    print(\"Full price\")",
+      "options": ["Child ticket", "Free", "Free\nChild ticket\nFull price", "12"],
+      "answer": 0
+    },
+    {
+      "id": "in-ticket-b936ba",
+      "text": "The user typed 17, so `age` holds what input() gave back. What does this print?",
+      "code": "age = \"17\"\nage = int(age)\nif age < 6:\n    print(\"Free\")\nelif age < 18:\n    print(\"Child ticket\")\nelse:\n    print(\"Full price\")",
+      "options": ["Child ticket", "Free", "Free\nChild ticket\nFull price", "17"],
+      "answer": 0
+    },
+    {
+      "id": "in-ticket-b904b9",
+      "text": "The user typed 30, so `age` holds what input() gave back. What does this print?",
+      "code": "age = \"30\"\nage = int(age)\nif age < 6:\n    print(\"Free\")\nelif age < 18:\n    print(\"Child ticket\")\nelse:\n    print(\"Full price\")",
+      "options": ["Full price", "Free", "Free\nChild ticket\nFull price", "30"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-int-91265d",
+      "text": "The user typed 14, so `age` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "age = \"14\"\nnext_year = ___(age) + 1\nprint(next_year)",
+      "output": "15",
+      "options": ["int", "float", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-int-2ff2e3",
+      "text": "The user typed 33, so `age` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "age = \"33\"\nnext_year = ___(age) + 1\nprint(next_year)",
+      "output": "34",
+      "options": ["int", "float", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-int-9a9325",
+      "text": "The user typed 8, so `score` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "score = \"8\"\ntotal = ___(score) + 2\nprint(total)",
+      "output": "10",
+      "options": ["int", "float", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-int-dca080",
+      "text": "The user typed 3, so `tickets` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "tickets = \"3\"\ntotal = ___(tickets) + 4\nprint(total)",
+      "output": "7",
+      "options": ["int", "float", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-int-60fd4f",
+      "text": "The user typed 41, so `level` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "level = \"41\"\nnext_level = ___(level) + 1\nprint(next_level)",
+      "output": "42",
+      "options": ["int", "float", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-float-db39d1",
+      "text": "The user typed 1.5, so `height` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "height = \"1.5\"\nprint(___(height) + 0.25)",
+      "output": "1.75",
+      "options": ["float", "int", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-float-42059c",
+      "text": "The user typed 2.5, so `price` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "price = \"2.5\"\nprint(___(price) + 1)",
+      "output": "3.5",
+      "options": ["float", "int", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-float-8ab2e3",
+      "text": "The user typed 60.5, so `weight` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "weight = \"60.5\"\nprint(___(weight) + 2)",
+      "output": "62.5",
+      "options": ["float", "int", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-float-f91253",
+      "text": "The user typed 7.5, so `speed` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "speed = \"7.5\"\nprint(___(speed) + 0.5)",
+      "output": "8.0",
+      "options": ["float", "int", "input", "print"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-store-f98947",
+      "text": "The user typed 14, so `age` holds what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "age = \"14\"\n___\nprint(age + 1)",
+      "output": "15",
+      "options": ["age = int(age)", "int(age)", "age = float(age)", "age = input(age)"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-store-2402a1",
+      "text": "The user typed 59, so `age` holds what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "age = \"59\"\n___\nprint(age + 1)",
+      "output": "60",
+      "options": ["age = int(age)", "int(age)", "age = float(age)", "age = input(age)"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-store-653997",
+      "text": "The user typed 20, so `score` holds what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "score = \"20\"\n___\nprint(score + 5)",
+      "output": "25",
+      "options": [
+        "score = int(score)",
+        "int(score)",
+        "score = float(score)",
+        "score = input(score)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-store-4c4553",
+      "text": "The user typed 90, so `fuel` holds what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "fuel = \"90\"\n___\nprint(fuel + 10)",
+      "output": "100",
+      "options": ["fuel = int(fuel)", "int(fuel)", "fuel = float(fuel)", "fuel = input(fuel)"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-store-f97c4a",
+      "text": "The user typed 2, so `lives` holds what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "lives = \"2\"\n___\nprint(lives + 1)",
+      "output": "3",
+      "options": [
+        "lives = int(lives)",
+        "int(lives)",
+        "lives = float(lives)",
+        "lives = input(lives)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-crew-443df3",
+      "text": "The user typed Cortez, then 60, and `name` and `age` hold what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "name = \"Cortez\"\nage = \"60\"\n___\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "output": "Welcome aboard, Cortez! You are 60. Next year you will be 61.",
+      "options": ["age = int(age)", "int(age)", "age = float(age)", "age = int(name)"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-crew-05ba63",
+      "text": "The user typed Sonny, then 11, and `name` and `age` hold what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "name = \"Sonny\"\nage = \"11\"\n___\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "output": "Welcome aboard, Sonny! You are 11. Next year you will be 12.",
+      "options": ["age = int(age)", "int(age)", "age = float(age)", "age = int(name)"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-crew-21a802",
+      "text": "The user typed Elena, then 25, and `name` and `age` hold what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "name = \"Elena\"\nage = \"25\"\n___\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "output": "Welcome aboard, Elena! You are 25. Next year you will be 26.",
+      "options": ["age = int(age)", "int(age)", "age = float(age)", "age = int(name)"],
+      "answer": 0
+    },
+    {
+      "id": "in-gap-crew-788d0b",
+      "text": "The user typed Rex, then 40, and `name` and `age` hold what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "name = \"Rex\"\nage = \"40\"\n___\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "output": "Welcome aboard, Rex! You are 40. Next year you will be 41.",
+      "options": ["age = int(age)", "int(age)", "age = float(age)", "age = int(name)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-store-250f8b",
+      "text": "The user typed 14, so `age` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "age = \"14\"\nint(age)\nnext_year = age + 1\nprint(next_year)",
+      "output": "15",
+      "options": ["int(age)", "age = \"14\"", "next_year = age + 1", "print(next_year)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-store-8ac15a",
+      "text": "The user typed 70, so `age` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "age = \"70\"\nint(age)\nnext_year = age + 1\nprint(next_year)",
+      "output": "71",
+      "options": ["int(age)", "age = \"70\"", "next_year = age + 1", "print(next_year)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-store-c72c4e",
+      "text": "The user typed 6, so `score` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "score = \"6\"\nint(score)\ntotal = score + 4\nprint(total)",
+      "output": "10",
+      "options": ["int(score)", "score = \"6\"", "total = score + 4", "print(total)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-store-f2abe1",
+      "text": "The user typed 150, so `fuel` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "fuel = \"150\"\nint(fuel)\ntotal = fuel + 50\nprint(total)",
+      "output": "200",
+      "options": ["int(fuel)", "fuel = \"150\"", "total = fuel + 50", "print(total)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-store-2c77fc",
+      "text": "The user typed 4, so `level` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "level = \"4\"\nint(level)\nnext_level = level + 1\nprint(next_level)",
+      "output": "5",
+      "options": ["int(level)", "level = \"4\"", "next_level = level + 1", "print(next_level)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-float-0c0e5e",
+      "text": "The user typed 1.5, so `height` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "height = \"1.5\"\nheight = int(height)\nprint(height)\nprint(height + 0.25)",
+      "output": "1.5\n1.75",
+      "options": [
+        "height = int(height)",
+        "height = \"1.5\"",
+        "print(height)",
+        "print(height + 0.25)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-float-638f53",
+      "text": "The user typed 9.5, so `price` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "price = \"9.5\"\nprice = int(price)\nprint(price)\nprint(price + 0.5)",
+      "output": "9.5\n10.0",
+      "options": ["price = int(price)", "price = \"9.5\"", "print(price)", "print(price + 0.5)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-float-cf1198",
+      "text": "The user typed 7.5, so `speed` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "speed = \"7.5\"\nspeed = int(speed)\nprint(speed)\nprint(speed + 1)",
+      "output": "7.5\n8.5",
+      "options": ["speed = int(speed)", "speed = \"7.5\"", "print(speed)", "print(speed + 1)"],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-float-83980d",
+      "text": "The user typed 72.5, so `weight` holds what input() gave back. Which line stops this program from printing this?",
+      "code": "weight = \"72.5\"\nweight = int(weight)\nprint(weight)\nprint(weight + 2)",
+      "output": "72.5\n74.5",
+      "options": [
+        "weight = int(weight)",
+        "weight = \"72.5\"",
+        "print(weight)",
+        "print(weight + 2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-crew-961949",
+      "text": "The user typed Cortez, then 60, and `name` and `age` hold what input() gave back. Which line stops this program from printing this?",
+      "code": "name = \"Cortez\"\nage = \"60\"\nage = int(name)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "output": "Welcome aboard, Cortez! You are 60. Next year you will be 61.",
+      "options": [
+        "age = int(name)",
+        "age = \"60\"",
+        "name = \"Cortez\"",
+        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-crew-1dd175",
+      "text": "The user typed Nova, then 20, and `name` and `age` hold what input() gave back. Which line stops this program from printing this?",
+      "code": "name = \"Nova\"\nage = \"20\"\nage = int(name)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "output": "Welcome aboard, Nova! You are 20. Next year you will be 21.",
+      "options": [
+        "age = int(name)",
+        "age = \"20\"",
+        "name = \"Nova\"",
+        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-crew-5b47bf",
+      "text": "The user typed Kenji, then 18, and `name` and `age` hold what input() gave back. Which line stops this program from printing this?",
+      "code": "name = \"Kenji\"\nage = \"18\"\nage = int(name)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "output": "Welcome aboard, Kenji! You are 18. Next year you will be 19.",
+      "options": [
+        "age = int(name)",
+        "age = \"18\"",
+        "name = \"Kenji\"",
+        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-bad-crew-d652d1",
+      "text": "The user typed Mary Jane, then 19, and `name` and `age` hold what input() gave back. Which line stops this program from printing this?",
+      "code": "name = \"Mary Jane\"\nage = \"19\"\nage = int(name)\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "output": "Welcome aboard, Mary Jane! You are 19. Next year you will be 20.",
+      "options": [
+        "age = int(name)",
+        "age = \"19\"",
+        "name = \"Mary Jane\"",
+        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-int-44a791",
+      "text": "The user typed 14, so `age` holds what input() gave back. Which program shows this?",
+      "output": "15",
+      "options": [
+        "age = \"14\"\nprint(int(age) + 1)",
+        "age = \"14\"\nprint(age + 1)",
+        "age = \"14\"\nprint(int(age + 1))",
+        "age = \"14\"\nprint(age + \"1\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-int-da2b21",
+      "text": "The user typed 9, so `score` holds what input() gave back. Which program shows this?",
+      "output": "10",
+      "options": [
+        "score = \"9\"\nprint(int(score) + 1)",
+        "score = \"9\"\nprint(score + 1)",
+        "score = \"9\"\nprint(int(score + 1))",
+        "score = \"9\"\nprint(score + \"1\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-int-fb7fc9",
+      "text": "The user typed 5, so `tickets` holds what input() gave back. Which program shows this?",
+      "output": "7",
+      "options": [
+        "tickets = \"5\"\nprint(int(tickets) + 2)",
+        "tickets = \"5\"\nprint(tickets + 2)",
+        "tickets = \"5\"\nprint(int(tickets + 2))",
+        "tickets = \"5\"\nprint(tickets + \"2\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-int-2ee0fb",
+      "text": "The user typed 80, so `fuel` holds what input() gave back. Which program shows this?",
+      "output": "100",
+      "options": [
+        "fuel = \"80\"\nprint(int(fuel) + 20)",
+        "fuel = \"80\"\nprint(fuel + 20)",
+        "fuel = \"80\"\nprint(int(fuel + 20))",
+        "fuel = \"80\"\nprint(fuel + \"20\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-two-4b7344",
+      "text": "The user typed 4, then 4, and `a` and `b` hold what input() gave back. Which program shows this?",
+      "output": "8",
+      "options": [
+        "a = \"4\"\nb = \"4\"\nprint(int(a) + int(b))",
+        "a = \"4\"\nb = \"4\"\nprint(a + b)",
+        "a = \"4\"\nb = \"4\"\nprint(int(a + b))",
+        "a = \"4\"\nb = \"4\"\nprint(int(a) + b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-two-cac8a3",
+      "text": "The user typed 10, then 25, and `a` and `b` hold what input() gave back. Which program shows this?",
+      "output": "35",
+      "options": [
+        "a = \"10\"\nb = \"25\"\nprint(int(a) + int(b))",
+        "a = \"10\"\nb = \"25\"\nprint(a + b)",
+        "a = \"10\"\nb = \"25\"\nprint(int(a + b))",
+        "a = \"10\"\nb = \"25\"\nprint(int(a) + b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-two-82d9dd",
+      "text": "The user typed 6, then 1, and `a` and `b` hold what input() gave back. Which program shows this?",
+      "output": "7",
+      "options": [
+        "a = \"6\"\nb = \"1\"\nprint(int(a) + int(b))",
+        "a = \"6\"\nb = \"1\"\nprint(a + b)",
+        "a = \"6\"\nb = \"1\"\nprint(int(a + b))",
+        "a = \"6\"\nb = \"1\"\nprint(int(a) + b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "in-which-two-897626",
+      "text": "The user typed 50, then 50, and `a` and `b` hold what input() gave back. Which program shows this?",
+      "output": "100",
+      "options": [
+        "a = \"50\"\nb = \"50\"\nprint(int(a) + int(b))",
+        "a = \"50\"\nb = \"50\"\nprint(a + b)",
+        "a = \"50\"\nb = \"50\"\nprint(int(a + b))",
+        "a = \"50\"\nb = \"50\"\nprint(int(a) + b)"
+      ],
+      "answer": 0
+    }
+  ]
+}

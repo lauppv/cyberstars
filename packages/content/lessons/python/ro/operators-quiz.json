@@ -1,0 +1,770 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Cât dă `17 / 5`?",
+      "options": ["3.4", "3", "2", "3.5"],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Cât dă `17 // 5`?",
+      "options": ["3.4", "3", "2", "4"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Cât dă `17 % 5`?",
+      "options": ["3", "3.4", "2", "0.4"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Cum numește lecția operatorul `//`?",
+      "options": ["Modulo", "Putere", "Împărțire dublă", "Împărțire întreagă"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Cum numește lecția operatorul `%`?",
+      "options": ["Modulo", "Procent", "Împărțire întreagă", "Putere"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "print(6 / 2)",
+      "options": ["3", "3.0", "6 / 2", "3.5"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "print(2 ** 3)",
+      "options": ["6", "5", "8", "23"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Ce înseamnă `a ** b`?",
+      "options": [
+        "a ori b",
+        "a împărțit la b, fără rest",
+        "Restul împărțirii lui a la b",
+        "a la puterea b: a înmulțit cu el însuși de b ori"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "print(2 + 3 * 4)",
+      "options": ["14", "20", "24", "9"],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "print((2 + 3) * 4)",
+      "options": ["14", "20", "24", "9"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Care condiție e True când n e par?",
+      "options": ["n // 2 == 0", "n / 2 == 0", "n % 2 == 0", "n % 2 == 1"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "n e 7. Cât dă `n % 2`?",
+      "options": ["0", "3", "3.5", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "De ce spune lecția că `%` e extrem de util?",
+      "options": [
+        "Ne spune dacă un număr se împarte la altul fără rest, ca un număr par la 2",
+        "Afișează un număr ca procent",
+        "Rotunjește un număr la cel mai apropiat întreg",
+        "Face o împărțire mai rapidă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Cât dă `10 % 5`?",
+      "options": ["2", "0", "5", "2.0"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Cât dă `3 % 5`?",
+      "options": ["0", "2", "3", "0.6"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Care e diferența dintre `17 / 5` și `17 // 5`?",
+      "options": [
+        "Niciuna, amândouă dau 3.4",
+        "/ dă restul, // dă partea întreagă",
+        "// dă 3.4, / dă 3",
+        "/ păstrează zecimalele și dă 3.4; // păstrează doar partea întreagă și dă 3"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "`a` e 17 și `b` e 5. Ce linie afișează 85?",
+      "options": ["print(a * b)", "print(a ** b)", "print(a + b)", "print(a // b)"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "print(5 ** 2)",
+      "options": ["10", "25", "7", "52"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Ce linie afișează 81?",
+      "options": ["print(3 * 4)", "print(4 ** 3)", "print(3 ** 4)", "print(3 ** 3)"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Nu ești sigur ce operație face Python mai întâi. Ce spune lecția să faci?",
+      "options": [
+        "Să scrii mereu adunarea prima",
+        "Să folosești // în loc de /",
+        "Să pui un spațiu în jurul fiecărui operator",
+        "Să adaugi paranteze"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "În `10 - 2 * 3`, ce face Python mai întâi?",
+      "options": [
+        "2 * 3, apoi 10 - 6",
+        "10 - 2, apoi 8 * 3",
+        "Ce vine primul din stânga",
+        "Se oprește cu o eroare: are nevoie de paranteze"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "print(8 / 2 + 2)",
+      "options": ["2.0", "6.0", "6", "2"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "În misiunea Panoul de calcul utilizatorul tastează 17, apoi 5. Care e a patra linie pe care o afișează programul?",
+      "options": ["3", "2", "3.4", "85"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "În misiunea Panoul de calcul utilizatorul tastează 7, apoi 2. Ce afișează programul pentru `a ** b`?",
+      "options": ["14", "128", "9", "49"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "În misiunea Panoul de calcul utilizatorul tastează 9, apoi 3. Ce afișează programul pentru `a / b`?",
+      "options": ["3.0", "3", "0", "27"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "În misiunea Panoul de calcul utilizatorul tastează 9, apoi 4. Ce afișează programul pentru rest?",
+      "options": ["2", "1", "2.25", "0"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "De ce poate presupune misiunea Panoul de calcul că `b` nu e 0?",
+      "options": [
+        "0 nu e un număr întreg",
+        "input() nu poate citi un 0",
+        "Împărțirea la 0 oprește programul cu o eroare",
+        "Orice operație cu 0 dă 0"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "x = 15\nif x % 5 == 0:\n    print(\"Se imparte la 5\")\nelse:\n    print(\"Are rest\")",
+      "options": ["Are rest", "0", "3", "Se imparte la 5"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "print(20 // 6)\nprint(20 % 6)",
+      "options": ["3\n2", "3.33\n2", "2\n3", "3\n0"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "25 de bomboane se împart în mod egal la 4 copii. Ce linie afișează câte rămân?",
+      "options": ["print(25 // 4)", "print(25 % 4)", "print(25 / 4)", "print(25 - 4)"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "op-div",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a / b)",
+      "values": [
+        {
+          "a": 7,
+          "b": 2
+        },
+        {
+          "a": 9,
+          "b": 4
+        },
+        {
+          "a": 12,
+          "b": 4
+        },
+        {
+          "a": 10,
+          "b": 4
+        }
+      ],
+      "mistakes": [
+        ["a / b", "a // b"],
+        ["a / b", "a % b"],
+        ["a / b", "a * b"],
+        ["a / b", "a - b"]
+      ]
+    },
+    {
+      "id": "op-intdiv",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a // b)",
+      "values": [
+        {
+          "a": 13,
+          "b": 4
+        },
+        {
+          "a": 9,
+          "b": 2
+        },
+        {
+          "a": 22,
+          "b": 5
+        },
+        {
+          "a": 11,
+          "b": 4
+        }
+      ],
+      "mistakes": [
+        ["a // b", "a / b"],
+        ["a // b", "a % b"],
+        ["a // b", "a * b"],
+        ["a // b", "a - b"]
+      ]
+    },
+    {
+      "id": "op-mod",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a % b)",
+      "values": [
+        {
+          "a": 14,
+          "b": 4
+        },
+        {
+          "a": 23,
+          "b": 5
+        },
+        {
+          "a": 19,
+          "b": 4
+        },
+        {
+          "a": 30,
+          "b": 6
+        }
+      ],
+      "mistakes": [
+        ["a % b", "a // b"],
+        ["a % b", "a / b"],
+        ["a % b", "a - b"],
+        ["a % b", "a * b"]
+      ]
+    },
+    {
+      "id": "op-pow",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a ** b)",
+      "values": [
+        {
+          "a": 3,
+          "b": 2
+        },
+        {
+          "a": 2,
+          "b": 5
+        },
+        {
+          "a": 4,
+          "b": 3
+        },
+        {
+          "a": 5,
+          "b": 3
+        },
+        {
+          "a": 10,
+          "b": 2
+        }
+      ],
+      "mistakes": [
+        ["a ** b", "a * b"],
+        ["a ** b", "b ** a"],
+        ["a ** b", "a + b"]
+      ]
+    },
+    {
+      "id": "op-order",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "print({{a}} + {{b}} * {{c}})",
+      "values": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 5
+        },
+        {
+          "a": 4,
+          "b": 2,
+          "c": 3
+        },
+        {
+          "a": 5,
+          "b": 5,
+          "c": 2
+        },
+        {
+          "a": 3,
+          "b": 4,
+          "c": 10
+        }
+      ],
+      "mistakes": [
+        ["{{a}} + {{b}} * {{c}}", "({{a}} + {{b}}) * {{c}}"],
+        ["{{a}} + {{b}} * {{c}}", "{{a}} + {{b}} + {{c}}"],
+        ["{{a}} + {{b}} * {{c}}", "{{a}} * {{b}} * {{c}}"]
+      ]
+    },
+    {
+      "id": "op-paren",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "print(({{a}} + {{b}}) * {{c}})",
+      "values": [
+        {
+          "a": 3,
+          "b": 1,
+          "c": 4
+        },
+        {
+          "a": 2,
+          "b": 6,
+          "c": 3
+        },
+        {
+          "a": 10,
+          "b": 5,
+          "c": 2
+        }
+      ],
+      "mistakes": [
+        ["({{a}} + {{b}}) * {{c}}", "{{a}} + {{b}} * {{c}}"],
+        ["({{a}} + {{b}}) * {{c}}", "{{a}} + {{b}} + {{c}}"],
+        ["({{a}} + {{b}}) * {{c}}", "{{a}} * {{b}} * {{c}}"]
+      ]
+    },
+    {
+      "id": "op-even",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "n = {{n}}\nif n % 2 == 0:\n    print(\"par\")\nelse:\n    print(\"impar\")",
+      "values": [
+        {
+          "n": 14
+        },
+        {
+          "n": 9
+        },
+        {
+          "n": 30
+        },
+        {
+          "n": 21
+        }
+      ],
+      "mistakes": [
+        ["n % 2 == 0", "n % 2 == 1"],
+        ["if n % 2 == 0:\n    print(\"par\")\nelse:\n    print(\"impar\")", "print(n % 2)"],
+        ["if n % 2 == 0:\n    print(\"par\")\nelse:\n    print(\"impar\")", "print(n // 2)"]
+      ]
+    },
+    {
+      "id": "op-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a {{op}} b)",
+      "values": [
+        {
+          "a": 11,
+          "b": 3,
+          "op": "//",
+          "m1": "%",
+          "m2": "/",
+          "m3": "*"
+        },
+        {
+          "a": 11,
+          "b": 3,
+          "op": "%",
+          "m1": "//",
+          "m2": "-",
+          "m3": "/"
+        },
+        {
+          "a": 8,
+          "b": 3,
+          "op": "**",
+          "m1": "*",
+          "m2": "//",
+          "m3": "+"
+        },
+        {
+          "a": 9,
+          "b": 2,
+          "op": "/",
+          "m1": "//",
+          "m2": "%",
+          "m3": "*"
+        },
+        {
+          "a": 16,
+          "b": 4,
+          "op": "//",
+          "m1": "/",
+          "m2": "%",
+          "m3": "-"
+        }
+      ],
+      "mistakes": [
+        ["a {{op}} b", "a {{m1}} b"],
+        ["a {{op}} b", "a {{m2}} b"],
+        ["a {{op}} b", "a {{m3}} b"]
+      ]
+    },
+    {
+      "id": "op-which-paren",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "print(({{a}} + {{b}}) * {{c}})",
+      "values": [
+        {
+          "a": 1,
+          "b": 4,
+          "c": 3
+        },
+        {
+          "a": 6,
+          "b": 2,
+          "c": 5
+        },
+        {
+          "a": 3,
+          "b": 3,
+          "c": 10
+        }
+      ],
+      "mistakes": [
+        ["({{a}} + {{b}}) * {{c}}", "{{a}} + {{b}} * {{c}}"],
+        ["({{a}} + {{b}}) * {{c}}", "({{a}} * {{b}}) + {{c}}"],
+        ["({{a}} + {{b}}) * {{c}}", "{{a}} + {{b}} + {{c}}"]
+      ]
+    },
+    {
+      "id": "op-gap-op",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a ___ b)",
+      "values": [
+        {
+          "a": 14,
+          "b": 4,
+          "op": "//",
+          "w1": "/",
+          "w2": "%",
+          "w3": "*"
+        },
+        {
+          "a": 14,
+          "b": 4,
+          "op": "%",
+          "w1": "//",
+          "w2": "/",
+          "w3": "-"
+        },
+        {
+          "a": 6,
+          "b": 4,
+          "op": "/",
+          "w1": "//",
+          "w2": "%",
+          "w3": "*"
+        },
+        {
+          "a": 3,
+          "b": 4,
+          "op": "**",
+          "w1": "*",
+          "w2": "//",
+          "w3": "%"
+        },
+        {
+          "a": 20,
+          "b": 5,
+          "op": "//",
+          "w1": "/",
+          "w2": "%",
+          "w3": "-"
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "op-gap-pow",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print({{a}} ** ___)",
+      "values": [
+        {
+          "a": 2,
+          "e": 4,
+          "w1": 8,
+          "w2": 2,
+          "w3": 3
+        },
+        {
+          "a": 3,
+          "e": 3,
+          "w1": 9,
+          "w2": 2,
+          "w3": 4
+        },
+        {
+          "a": 5,
+          "e": 2,
+          "w1": 5,
+          "w2": 10,
+          "w3": 3
+        },
+        {
+          "a": 10,
+          "e": 3,
+          "w1": 100,
+          "w2": 2,
+          "w3": 4
+        }
+      ],
+      "answer": "{{e}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "op-gap-line",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = {{a}}\nb = {{b}}\n___",
+      "values": [
+        {
+          "a": 13,
+          "b": 5,
+          "op": "%",
+          "w1": "//",
+          "w2": "/"
+        },
+        {
+          "a": 13,
+          "b": 5,
+          "op": "//",
+          "w1": "%",
+          "w2": "/"
+        },
+        {
+          "a": 9,
+          "b": 2,
+          "op": "/",
+          "w1": "//",
+          "w2": "%"
+        },
+        {
+          "a": 4,
+          "b": 3,
+          "op": "**",
+          "w1": "*",
+          "w2": "+"
+        },
+        {
+          "a": 7,
+          "b": 2,
+          "op": "*",
+          "w1": "**",
+          "w2": "+"
+        }
+      ],
+      "answer": "print(a {{op}} b)",
+      "wrong": ["print(a {{w1}} b)", "print(a {{w2}} b)", "print(\"a {{op}} b\")"]
+    },
+    {
+      "id": "op-gap-panel",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a + b)\nprint(a - b)\n___\nprint(a / b)",
+      "values": [
+        {
+          "a": 6,
+          "b": 3
+        },
+        {
+          "a": 8,
+          "b": 2
+        },
+        {
+          "a": 10,
+          "b": 4
+        },
+        {
+          "a": 9,
+          "b": 3
+        }
+      ],
+      "answer": "print(a * b)",
+      "wrong": ["print(a ** b)", "print(a // b)", "print(a * a)"]
+    },
+    {
+      "id": "op-bad-div",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a % b)\nprint(a // b)",
+      "values": [
+        {
+          "a": 9,
+          "b": 2
+        },
+        {
+          "a": 13,
+          "b": 4
+        },
+        {
+          "a": 22,
+          "b": 5
+        },
+        {
+          "a": 11,
+          "b": 3
+        },
+        {
+          "a": 17,
+          "b": 4
+        }
+      ],
+      "bug": ["a // b", "a / b"]
+    },
+    {
+      "id": "op-bad-paren",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = {{a}}\nb = {{b}}\nc = {{c}}\ntotal = (a + b) * c\nprint(f\"({a} + {b}) * {c} = {total}\")",
+      "values": [
+        {
+          "a": 1,
+          "b": 4,
+          "c": 3
+        },
+        {
+          "a": 5,
+          "b": 1,
+          "c": 2
+        },
+        {
+          "a": 3,
+          "b": 2,
+          "c": 6
+        },
+        {
+          "a": 4,
+          "b": 4,
+          "c": 2
+        }
+      ],
+      "bug": ["(a + b) * c", "a + b * c"]
+    },
+    {
+      "id": "op-bad-rest",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "minute = {{m}}\nore = minute // 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")",
+      "values": [
+        {
+          "m": 135
+        },
+        {
+          "m": 75
+        },
+        {
+          "m": 200
+        },
+        {
+          "m": 90
+        }
+      ],
+      "bug": ["rest = minute % 60", "rest = minute // 60"]
+    },
+    {
+      "id": "op-bad-hours",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "minute = {{m}}\nore = minute // 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")",
+      "values": [
+        {
+          "m": 150
+        },
+        {
+          "m": 65
+        },
+        {
+          "m": 230
+        }
+      ],
+      "bug": ["ore = minute // 60", "ore = minute / 60"]
+    }
+  ]
+}

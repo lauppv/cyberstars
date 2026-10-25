@@ -4,8 +4,7 @@ As we mentioned in a previous lesson, it’s not a good idea to **repeat** code.
 name = "Cortez"
 age = 60
 
-i = 0
-for i in range(0, 11):
+for i in range(0, 10):
     print(f"My name is {name} and my age is {age}")
 ```
 
@@ -30,8 +29,7 @@ What happens if we want to display the same thing but with _Tommy Vercetti_ and 
 name = "Tommy Vercetti"
 age = 42
 
-i = 0
-for i in range(0, 11):
+for i in range(0, 10):
     print(f"My name is {name} and my age is {age}")
 ```
 
@@ -58,8 +56,7 @@ It turns out that the best way, and the one that makes the code most **readable*
 
 ```py
 def my_function(name, age):
-    i = 0
-    for i in range(0, 11):
+    for i in range(0, 10):
         print(f"My name is {name} and my age is {age}")
 
 my_function("Cortez", 60)
@@ -81,8 +78,7 @@ Remember that the **parameter names can be anything**. The code below works as w
 
 ```py
 def my_function(n, a):
-    i = 0
-    for i in range(0, 11):
+    for i in range(0, 10):
         print(f"My name is {n} and my age is {a}")
 
 my_function("Cortez", 60)
@@ -106,7 +102,7 @@ is_online = True
 f(name, is_online) # prints Admin is online
 
 is_online = False
-f(name, is_online) # prints admin is offline
+f(name, is_online) # prints Admin is offline
 ```
 
 ---

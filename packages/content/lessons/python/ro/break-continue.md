@@ -7,7 +7,6 @@ Exact pentru aceste două situații, **Python** ne oferă **break** și **contin
 **break** **oprește** bucla complet. Odată ce dăm de el, programul iese din buclă, indiferent câte iterații mai rămăseseră
 
 ```py
-i = 0
 for i in range(0, 100):
     if i == 5:
         break
@@ -55,7 +54,6 @@ Bucla nu a mai verificat sectoarele de la **8** la **99**, pentru că am găsit 
 **continue** este diferit. Nu oprește bucla. Doar **sare peste** restul iterației curente și **trece la următoarea**
 
 ```py
-i = 0
 for i in range(0, 10):
     if i == 5:
         continue

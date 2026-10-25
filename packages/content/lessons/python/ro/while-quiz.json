@@ -1,0 +1,933 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce face o buclă while?",
+      "options": [
+        "Repetă liniile ei cât timp condiția e adevărată",
+        "Rulează liniile ei de un număr de ori dat de la început",
+        "Verifică o dată condiția, apoi rulează liniile până la capăt",
+        "Repetă liniile ei până se termină programul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Când verifică o buclă while condiția?",
+      "options": [
+        "O singură dată, înainte de prima trecere",
+        "Înainte de fiecare trecere, și de prima",
+        "După fiecare trecere, deci liniile ei rulează măcar o dată",
+        "Doar când se schimbă variabila din condiție"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Care e ultimul număr pe care îl afișează?",
+      "code": "i = 0\nwhile i < 10:\n    print(i)\n    i = i + 1",
+      "options": ["10", "11", "9", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "De ce nu afișează `while i < 10:` și 10, când i crește cu 1 de la 0?",
+      "options": [
+        "Python sare mereu peste ultimul număr dintr-o buclă",
+        "10 se afișează și el, dar după buclă",
+        "Bucla se oprește cu o trecere mai devreme, ca să fie mai rapidă",
+        "Când i e 10, i < 10 e fals, deci bucla se oprește"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "i pornește de la 0 și crește cu 1. Ce linie afișează toate numerele de la 0 la 10, inclusiv amândouă?",
+      "options": ["while i <= 10:", "while i < 10:", "while i == 10:", "while i > 10:"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "i = 0\nwhile i <= 100:\n    print(i)",
+      "options": [
+        "Afișează toate numerele de la 0 la 100",
+        "Afișează 0 la nesfârșit, pentru că i nu se schimbă niciodată",
+        "Afișează 0 o dată, apoi se oprește",
+        "Se oprește cu o eroare: bucla nu are i = i + 1"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Cum se numește o buclă a cărei condiție nu devine niciodată falsă?",
+      "options": ["O buclă for", "O buclă goală", "O buclă infinită", "O buclă imbricată"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Ce linie împiedică `while i < 5:` să ruleze la nesfârșit, când i pornește de la 0?",
+      "options": [
+        "i = 0, înainte de buclă",
+        "print(i), în interiorul buclei",
+        "i = i + 1, după buclă",
+        "i = i + 1, în interiorul buclei"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "De câte ori afișează Salut?",
+      "code": "i = 10\nwhile i < 5:\n    print(\"Salut\")\n    i = i + 1",
+      "options": [
+        "Niciodată: 10 < 5 e fals de la început",
+        "O dată: liniile rulează înainte de verificare",
+        "De 5 ori",
+        "La nesfârșit"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Când se potrivește mai bine o buclă while decât una for?",
+      "options": [
+        "Când numărăm de la 1 la 10",
+        "Când nu știm de la început de câte ori repetăm",
+        "Când bucla are un print() în ea",
+        "Niciodată: un for poate face mereu mai simplu același lucru"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "De ce scrie lecția `parola = \"\"` înainte de buclă?",
+      "options": [
+        "Ca parola să fie goală la final",
+        "Pentru că input() are nevoie de o variabilă goală",
+        "Ca condiția să aibă ce verifica la prima trecere",
+        "Ca bucla să ruleze o singură dată"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "`parola` nu a fost făcută niciodată. Ce se întâmplă când Python ajunge la `while parola != \"steluta\":`?",
+      "options": [
+        "Python sare peste buclă",
+        "Bucla rulează la nesfârșit",
+        "parola devine \"\" de la sine",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce înseamnă `!=` în `while parola != \"steluta\":`?",
+      "options": [
+        "Nu este egal cu",
+        "Este egal cu",
+        "Primește o valoare nouă",
+        "Este mai mic sau egal cu"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "În exemplul cu parola din lecție, utilizatorul tastează luna, apoi steluta. De câte ori cere programul parola?",
+      "options": ["O dată", "De două ori", "De trei ori", "Până oprește utilizatorul programul"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "În exemplul cu parola din lecție, când se oprește bucla?",
+      "options": [
+        "Imediat ce utilizatorul tastează ceva",
+        "După trei încercări greșite",
+        "Când parola e steluta, deci parola != \"steluta\" e fals",
+        "Când parola e goală"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "În misiunea Cod de acces, utilizatorul tastează 1111, apoi 2222, apoi 1234. Ce afișează programul?",
+      "options": [
+        "Cod gresit\nAcces permis",
+        "Acces permis",
+        "Cod gresit\nCod gresit\nCod gresit\nAcces permis",
+        "Cod gresit\nCod gresit\nAcces permis"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "În misiunea Cod de acces, de ce e comparat codul cu \"1234\", între ghilimele?",
+      "options": [
+        "input() returnează text, iar textul \"1234\" nu e numărul 1234",
+        "Ghilimelele fac comparația mai rapidă",
+        "O linie cu while are nevoie de ghilimele în condiție",
+        "Ca 1234 să fie afișat la final"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "În misiunea Cod de acces, utilizatorul tastează 1234 din prima. Ce afișează programul?",
+      "options": [
+        "Cod gresit, apoi Acces permis",
+        "Doar Acces permis",
+        "Nimic",
+        "Cod gresit, din nou și din nou"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Ce trebuie pus la sfârșitul unei linii cu while?",
+      "options": [";", ".", ":", ","],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "i = 0\nwhile i < 3:\n    print(i)\ni = i + 1",
+      "options": [
+        "Afișează 0, 1 și 2",
+        "Afișează 0, 1, 2 și 3",
+        "Se oprește cu o eroare",
+        "Afișează 0 la nesfârșit: i = i + 1 e după buclă"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Care e ultimul număr pe care îl afișează?",
+      "code": "i = 3\nwhile i > 0:\n    print(i)\n    i = i - 1",
+      "options": ["1", "0", "3", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "De câte ori rulează liniile buclei?",
+      "code": "n = 0\nwhile n < 10:\n    n = n + 2",
+      "options": ["De 10 ori", "De 5 ori", "De 4 ori", "De 6 ori"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Care program afișează la fel ca `for i in range(5):` cu `print(i)` în el?",
+      "options": [
+        "i = 0\nwhile i <= 5:\n    print(i)\n    i = i + 1",
+        "i = 1\nwhile i < 5:\n    print(i)\n    i = i + 1",
+        "i = 0\nwhile i < 5:\n    print(i)\n    i = i + 1",
+        "i = 0\nwhile i < 5:\n    i = i + 1\n    print(i)"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "În `while i < 10:`, ce este `i < 10`?",
+      "options": [
+        "De câte ori rulează bucla",
+        "Valoarea de la care pornește i",
+        "Un comentariu pentru buclă",
+        "Condiția: bucla rulează cât timp e adevărată"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Care dintre aceste linii e corectă?",
+      "options": ["while i < 10:", "while i < 10", "while: i < 10", "while i < 10 do:"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 1\nprint(total)",
+      "options": ["4", "10", "6", "15"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "i = 5\nwhile i < 5:\n    print(i)\n    i = i + 1\nprint(\"Gata\")",
+      "options": ["5\nGata", "Nimic", "Gata", "5"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "O buclă while și una for afișează aceleași numere. De ce are nevoie cea cu while de mai multe linii?",
+      "options": [
+        "O buclă while e mai lentă, deci are nevoie de mai multe linii",
+        "Un for nu poate afișa numere singur",
+        "Nu e nicio diferență: au mereu la fel de multe linii",
+        "Facem noi variabila înainte și o schimbăm în buclă; for le face pe amândouă singur"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ca o buclă while să se oprească, ce variabilă trebuie să se schimbe în ea?",
+      "options": [
+        "Cea afișată în buclă",
+        "Una pe care o verifică condiția ei",
+        "Orice variabilă din program",
+        "Niciuna: o buclă while se oprește singură după un timp"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "Ce face Python după ce condiția unei bucle while e falsă?",
+      "options": [
+        "Sare peste liniile buclei și merge mai departe cu linia de după buclă",
+        "Reia bucla de sus",
+        "Oprește programul cu o eroare",
+        "Mai rulează o dată liniile buclei"
+      ],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "wh-up",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} {{op}} {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + {{step}}",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "op": "<",
+          "stop": 4,
+          "step": 1,
+          "alt": "<="
+        },
+        {
+          "v": "i",
+          "start": 2,
+          "op": "<=",
+          "stop": 5,
+          "step": 1,
+          "alt": "<"
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "op": "<",
+          "stop": 10,
+          "step": 3,
+          "alt": "<="
+        },
+        {
+          "v": "k",
+          "start": 0,
+          "op": "<=",
+          "stop": 8,
+          "step": 2,
+          "alt": "<"
+        },
+        {
+          "v": "x",
+          "start": 5,
+          "op": "<",
+          "stop": 8,
+          "step": 1,
+          "alt": "<="
+        }
+      ],
+      "mistakes": [
+        ["{{op}} {{stop}}", "{{alt}} {{stop}}"],
+        [
+          "print({{v}})\n    {{v}} = {{v}} + {{step}}",
+          "{{v}} = {{v}} + {{step}}\n    print({{v}})"
+        ],
+        [
+          "    print({{v}})\n    {{v}} = {{v}} + {{step}}",
+          "    {{v}} = {{v}} + {{step}}\nprint({{v}})"
+        ]
+      ]
+    },
+    {
+      "id": "wh-down",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} {{op}} {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} - {{step}}",
+      "values": [
+        {
+          "v": "i",
+          "start": 3,
+          "op": ">",
+          "stop": 0,
+          "step": 1,
+          "alt": ">="
+        },
+        {
+          "v": "secunde",
+          "start": 5,
+          "op": ">",
+          "stop": 2,
+          "step": 1,
+          "alt": ">="
+        },
+        {
+          "v": "n",
+          "start": 10,
+          "op": ">=",
+          "stop": 2,
+          "step": 4,
+          "alt": ">"
+        },
+        {
+          "v": "vieti",
+          "start": 3,
+          "op": ">=",
+          "stop": 1,
+          "step": 1,
+          "alt": ">"
+        }
+      ],
+      "mistakes": [
+        ["{{op}} {{stop}}", "{{alt}} {{stop}}"],
+        [
+          "print({{v}})\n    {{v}} = {{v}} - {{step}}",
+          "{{v}} = {{v}} - {{step}}\n    print({{v}})"
+        ],
+        [
+          "    print({{v}})\n    {{v}} = {{v}} - {{step}}",
+          "    {{v}} = {{v}} - {{step}}\nprint({{v}})"
+        ]
+      ]
+    },
+    {
+      "id": "wh-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{t}} = 0\ni = 1\nwhile i <= {{n}}:\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "n": 3
+        },
+        {
+          "t": "puncte",
+          "n": 4
+        },
+        {
+          "t": "energie",
+          "n": 5
+        },
+        {
+          "t": "combustibil",
+          "n": 6
+        },
+        {
+          "t": "total",
+          "n": 10
+        }
+      ],
+      "mistakes": [
+        ["i <= {{n}}", "i < {{n}}"],
+        ["\nprint({{t}})", "\n    print({{t}})"],
+        ["{{t}} = {{t}} + i", "{{t}} = {{t}} + 1"],
+        ["{{t}} = 0", "{{t}} = 1"]
+      ]
+    },
+    {
+      "id": "wh-after",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    {{v}} = {{v}} + {{step}}\nprint({{v}})",
+      "values": [
+        {
+          "v": "x",
+          "start": 0,
+          "stop": 10,
+          "step": 3
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "stop": 10,
+          "step": 4
+        },
+        {
+          "v": "inaltime",
+          "start": 0,
+          "stop": 7,
+          "step": 2
+        },
+        {
+          "v": "nivel",
+          "start": 1,
+          "stop": 6,
+          "step": 2
+        },
+        {
+          "v": "puncte",
+          "start": 2,
+          "stop": 20,
+          "step": 5
+        }
+      ],
+      "mistakes": [
+        [
+          "    {{v}} = {{v}} + {{step}}\nprint({{v}})",
+          "    {{v}} = {{v}} + {{step}}\n    print({{v}})"
+        ],
+        ["{{v}} + {{step}}", "{{v}} + 1"],
+        ["print({{v}})", "print({{stop}})"],
+        ["print({{v}})", "print(\"{{v}}\")"]
+      ]
+    },
+    {
+      "id": "wh-then",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + 1\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "v": "i",
+          "start": 2,
+          "stop": 4,
+          "end": "Gata"
+        },
+        {
+          "v": "n",
+          "start": 0,
+          "stop": 3,
+          "end": "Decolare"
+        },
+        {
+          "v": "k",
+          "start": 5,
+          "stop": 7,
+          "end": "Pregatit"
+        },
+        {
+          "v": "secunde",
+          "start": 1,
+          "stop": 3,
+          "end": "Joc terminat"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} < {{stop}}", "{{v}} <= {{stop}}"],
+        ["{{v}} = {{start}}", "{{v}} = 0"],
+        ["\nprint(\"{{end}}\")", "\n    print(\"{{end}}\")"],
+        ["    print({{v}})\n", ""]
+      ]
+    },
+    {
+      "id": "wh-passes",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{c}} = 0\n{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    {{v}} = {{v}} + {{step}}\n    {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "contor",
+          "v": "x",
+          "start": 0,
+          "stop": 10,
+          "step": 2
+        },
+        {
+          "c": "ture",
+          "v": "i",
+          "start": 0,
+          "stop": 9,
+          "step": 3
+        },
+        {
+          "c": "contor",
+          "v": "n",
+          "start": 1,
+          "stop": 6,
+          "step": 2
+        },
+        {
+          "c": "pasi",
+          "v": "inaltime",
+          "start": 0,
+          "stop": 10,
+          "step": 4
+        }
+      ],
+      "mistakes": [
+        ["{{v}} < {{stop}}", "{{v}} <= {{stop}}"],
+        ["{{c}} = 0", "{{c}} = 1"],
+        ["\nprint({{c}})", "\n    print({{c}})"],
+        ["print({{c}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "wh-which-up",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + 1",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 4,
+          "other": 1
+        },
+        {
+          "v": "n",
+          "start": 3,
+          "stop": 6,
+          "other": 4
+        },
+        {
+          "v": "i",
+          "start": 1,
+          "stop": 5,
+          "other": 0
+        },
+        {
+          "v": "k",
+          "start": 5,
+          "stop": 9,
+          "other": 6
+        }
+      ],
+      "mistakes": [
+        ["{{v}} < {{stop}}", "{{v}} <= {{stop}}"],
+        ["{{v}} = {{start}}", "{{v}} = {{other}}"],
+        ["print({{v}})\n    {{v}} = {{v}} + 1", "{{v}} = {{v}} + 1\n    print({{v}})"]
+      ]
+    },
+    {
+      "id": "wh-which-sum",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{t}} = 0\ni = 1\nwhile i <= {{n}}:\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "n": 4
+        },
+        {
+          "t": "energie",
+          "n": 3
+        },
+        {
+          "t": "puncte",
+          "n": 5
+        },
+        {
+          "t": "combustibil",
+          "n": 7
+        }
+      ],
+      "mistakes": [
+        ["i <= {{n}}", "i < {{n}}"],
+        ["\nprint({{t}})", "\n    print({{t}})"],
+        ["{{t}} = {{t}} + i", "{{t}} = {{t}} + 1"]
+      ]
+    },
+    {
+      "id": "wh-gap-op",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} ___ {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + 1",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 3,
+          "a": "<",
+          "w1": "<=",
+          "w2": ">",
+          "w3": "=="
+        },
+        {
+          "v": "i",
+          "start": 1,
+          "stop": 3,
+          "a": "<=",
+          "w1": "<",
+          "w2": ">=",
+          "w3": "=="
+        },
+        {
+          "v": "n",
+          "start": 2,
+          "stop": 5,
+          "a": "<",
+          "w1": "<=",
+          "w2": ">",
+          "w3": ">="
+        },
+        {
+          "v": "k",
+          "start": 1,
+          "stop": 4,
+          "a": "<=",
+          "w1": "<",
+          "w2": ">",
+          "w3": "=="
+        },
+        {
+          "v": "x",
+          "start": 4,
+          "stop": 6,
+          "a": "<",
+          "w1": "<=",
+          "w2": ">=",
+          "w3": "=="
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "wh-gap-stop",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < ___:\n    print({{v}})\n    {{v}} = {{v}} + 1",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 5,
+          "w1": 4,
+          "w2": 6,
+          "w3": 3
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "stop": 4,
+          "w1": 3,
+          "w2": 5,
+          "w3": 2
+        },
+        {
+          "v": "i",
+          "start": 3,
+          "stop": 7,
+          "w1": 6,
+          "w2": 8,
+          "w3": 4
+        },
+        {
+          "v": "k",
+          "start": 10,
+          "stop": 13,
+          "w1": 12,
+          "w2": 14,
+          "w3": 3
+        }
+      ],
+      "answer": "{{stop}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "wh-gap-step",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + ___",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 7,
+          "step": 2,
+          "w1": 1,
+          "w2": 3,
+          "w3": 4
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "stop": 11,
+          "step": 3,
+          "w1": 2,
+          "w2": 4,
+          "w3": 1
+        },
+        {
+          "v": "x",
+          "start": 0,
+          "stop": 20,
+          "step": 5,
+          "w1": 4,
+          "w2": 10,
+          "w3": 1
+        }
+      ],
+      "answer": "{{step}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "wh-gap-head",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{t}} = 0\ni = 1\n___\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "n": 4
+        },
+        {
+          "t": "puncte",
+          "n": 3
+        },
+        {
+          "t": "energie",
+          "n": 6
+        },
+        {
+          "t": "combustibil",
+          "n": 5
+        }
+      ],
+      "answer": "while i <= {{n}}:",
+      "wrong": ["while i < {{n}}:", "while i > {{n}}:", "while i <= {{n}}", "while i == {{n}}:"]
+    },
+    {
+      "id": "wh-gap-start",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{t}} = 0\n___\nwhile i <= {{n}}:\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "n": 4,
+          "s2": 2
+        },
+        {
+          "t": "puncte",
+          "n": 5,
+          "s2": 3
+        },
+        {
+          "t": "energie",
+          "n": 3,
+          "s2": 2
+        },
+        {
+          "t": "combustibil",
+          "n": 6,
+          "s2": 2
+        }
+      ],
+      "answer": "i = 1",
+      "wrong": ["i = 0", "i = {{s2}}", "i = {{n}}", "{{t}} = 1"]
+    },
+    {
+      "id": "wh-gap-print",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    {{v}} = {{v}} + {{step}}\n___",
+      "values": [
+        {
+          "v": "x",
+          "start": 0,
+          "stop": 10,
+          "step": 4
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "stop": 8,
+          "step": 3
+        },
+        {
+          "v": "nivel",
+          "start": 0,
+          "stop": 5,
+          "step": 2
+        }
+      ],
+      "answer": "print({{v}})",
+      "wrong": ["print(\"{{v}}\")", "print({{stop}})", "print({{step}})"]
+    },
+    {
+      "id": "wh-bad-colon",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + 1",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 3
+        },
+        {
+          "v": "n",
+          "start": 2,
+          "stop": 5
+        },
+        {
+          "v": "k",
+          "start": 1,
+          "stop": 3
+        }
+      ],
+      "bug": ["{{v}} < {{stop}}:", "{{v}} < {{stop}}"]
+    },
+    {
+      "id": "wh-bad-op",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} <= {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + 1",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 3
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "stop": 4
+        },
+        {
+          "v": "x",
+          "start": 5,
+          "stop": 7
+        },
+        {
+          "v": "k",
+          "start": 2,
+          "stop": 4
+        },
+        {
+          "v": "secunde",
+          "start": 1,
+          "stop": 3
+        },
+        {
+          "v": "nivel",
+          "start": 3,
+          "stop": 6
+        }
+      ],
+      "bug": ["{{v}} <= {{stop}}", "{{v}} < {{stop}}"]
+    },
+    {
+      "id": "wh-bad-step",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{t}} = 0\ni = 1\nwhile i <= {{n}}:\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "n": 4
+        },
+        {
+          "t": "puncte",
+          "n": 5
+        },
+        {
+          "t": "energie",
+          "n": 6
+        }
+      ],
+      "bug": ["i = i + 1", "i = i + 2"]
+    }
+  ]
+}

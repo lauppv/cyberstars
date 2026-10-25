@@ -27,7 +27,8 @@ import { QUIZ_ID, type QuizQuestionSpec } from './laniakea-quiz.js';
 // - missing-value: the same with ___ inside a line, filled with a value.
 // - wrong-line: `bug`, [what, instead] on one line, breaks `code`. The question
 //   shows the broken program and what `code` prints, and the options are the
-//   broken line and three other lines of it.
+//   broken line and three others, those of its kind (opening a block with
+//   `:` or not) first, each nearest first.
 //
 // A wrong option that gives the right output (or for prints, one that fails or
 // prints nothing) or repeats another option is passed over, so a template may
@@ -284,7 +285,8 @@ export function planTemplate(
     } else if (t.kind === 'wrong-line') {
       const broken = f(swapped(t.code, t.bug!));
       const lines = broken.split('\n');
-      const at = code.split('\n').findIndex((line, i) => line !== lines[i]);
+      const codeLines = code.split('\n');
+      const at = codeLines.findIndex((line, i) => line !== lines[i]);
       plan = {
         programs: [code, broken],
         build: ([run, brokenRun]) => {
@@ -293,7 +295,33 @@ export function planTemplate(
           if (gives(brokenRun, out))
             throw new Error(`${where}: the broken program still prints it`);
           const bad = lines[at].trim();
-          const others = lines.map((line, i) => (i === at || !line.trim() ? null : line.trim()));
+          // The lines a student hunting the bug would suspect, not the
+          // program's first lines, which are often a plain `x = 5`: on each
+          // side of the bug first the ones of the kind the line had before it
+          // (one that starts a block, like an if, elif, else, for, while or
+          // def, or a plain one), then the rest, each nearest first. How many
+          // come from above, of the counts the program allows, is the question
+          // id's, so the broken line isn't always the middle one of the four.
+          const opens = (line: string) => /^(if|elif|else|for|while|def)\b/.test(line.trim());
+          const kind = opens(codeLines[at]);
+          const kept = lines
+            .map((line, i) => ({ line: line.trim(), i, other: opens(line) !== kind }))
+            .filter(({ line, i }) => line !== '' && i !== at)
+            .sort(
+              (a, b) =>
+                Number(a.other) - Number(b.other) || Math.abs(a.i - at) - Math.abs(b.i - at),
+            )
+            .map(({ line, i }) => ({ line, up: i < at }));
+          const up = kept.filter((l) => l.up).map(({ line }) => line);
+          const down = kept.filter((l) => !l.up).map(({ line }) => line);
+          const fewest = Math.max(0, WRONG - down.length);
+          const most = Math.min(WRONG, up.length);
+          const seed = parseInt(
+            crypto.createHash('sha1').update(ids[k]).digest('hex').slice(0, 8),
+            16,
+          );
+          const above = fewest + (seed % Math.max(1, most - fewest + 1));
+          const others = [...up.slice(0, above), ...down, ...up.slice(above)];
           return question({ code: broken, output: out }, bad, pick(bad, others));
         },
       };

@@ -22,7 +22,6 @@ It's clear that we **repeated** the code, and that is completely **forbidden**. 
 This is where the power of the **for** loop comes in
 
 ```py
-i = 1
 for i in range(1, 1000):
     print(i)
 ```
@@ -30,7 +29,6 @@ for i in range(1, 1000):
 This will print all the numbers from **1 to 999**. Why doesn't it include **1000**? **range()** is a **function** that already exists in **Python** and tells us where we want to **start** and where we want to **stop - 1**. That is, **range(1, 1000)** means from **1 to 999**. If we want from **1 to 1000**, we can say **range(1, 1001)**
 
 ```py
-i = 1
 for i in range(1, 1001):
     print(i)
 ```
@@ -39,19 +37,17 @@ Now we see all the numbers from **1 to 1000**
 
 Let's explain this code
 
-**i = 1**
+**for** makes the variable **i** itself, so we don't write it before the loop. It looks at **range(1, 1001)** and knows this means **all numbers from 1 to 1000 (1001 - 1)**. On each iteration it gives **i** the next number of **range()**, starting with the first one, **1**
 
-**for** looks at **i** and checks the variable i from before. It knows **i = 1**, so it starts from there. Then **for** looks further and sees **range(1, 1001)**. It knows this means **all numbers from 1 to 1000 (1001 - 1)**, so it takes **i** and on each iteration increases it by **1**, like **i = i + 1**
+First, **i = 1**, then it enters the block and prints it, after which **for** gives **i** the next number of **range()**
 
-First, **i = 1**, then it enters the block and prints it, after which it **automatically does i = i + 1**
+Now **i = 2**, it prints it, then **i** gets the next number again
 
-Now **i = 2**, it prints it, then again does **i = i + 1**
-
-Now **i = 3**, it prints it, then does **i = i + 1** again
+Now **i = 3**, it prints it, then **i** gets the next number once more
 
 ... and so on **:)**. Isn't it fascinating? We basically make the computer do this **repetition** for us
 
-**in** is a keyword. It tells **Python** to take the variable **i** and check it against **range()**
+**in** is a keyword. It tells **Python** where **i** takes its values from: **range()**, one number at a time
 
 ---
 
@@ -75,7 +71,7 @@ for i in range(0, 11, 2):
     print(i)
 ```
 
-This prints **0, 2, 4, 6, 8, 10**. Instead of **i = i + 1**, now **for** does **i = i + 2** on each step
+This prints **0, 2, 4, 6, 8, 10**. Each number **i** gets is now **2** more than the one before
 
 ---
 

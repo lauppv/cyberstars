@@ -1,0 +1,717 @@
+{
+  "note": "Made by npm run make:quiz from the templates in functions-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "fn-greet-35e230",
+      "text": "What does this print?",
+      "code": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Ana\")\ngreet(\"Ben\")",
+      "options": [
+        "Hello, Ana!\nHello, Ben!",
+        "Hello, {name}!\nHello, {name}!",
+        "Hello, name!\nHello, name!",
+        "Hello, Ben!\nHello, Ana!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-greet-fb4656",
+      "text": "What does this print?",
+      "code": "def welcome(crew):\n    print(f\"Welcome aboard, {crew}!\")\n\nwelcome(\"Cortez\")\nwelcome(\"Lance\")",
+      "options": [
+        "Welcome aboard, Cortez!\nWelcome aboard, Lance!",
+        "Welcome aboard, {crew}!\nWelcome aboard, {crew}!",
+        "Welcome aboard, crew!\nWelcome aboard, crew!",
+        "Welcome aboard, Lance!\nWelcome aboard, Cortez!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-greet-2bdcc8",
+      "text": "What does this print?",
+      "code": "def cheer(player):\n    print(f\"Well done, {player}!\")\n\ncheer(\"Zoe\")\ncheer(\"Kai\")",
+      "options": [
+        "Well done, Zoe!\nWell done, Kai!",
+        "Well done, {player}!\nWell done, {player}!",
+        "Well done, player!\nWell done, player!",
+        "Well done, Kai!\nWell done, Zoe!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-greet-4a54c2",
+      "text": "What does this print?",
+      "code": "def hi(friend):\n    print(f\"Hi, {friend}!\")\n\nhi(\"Tommy\")\nhi(\"Mia\")",
+      "options": [
+        "Hi, Tommy!\nHi, Mia!",
+        "Hi, {friend}!\nHi, {friend}!",
+        "Hi, friend!\nHi, friend!",
+        "Hi, Mia!\nHi, Tommy!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-greet-2a4633",
+      "text": "What does this print?",
+      "code": "def wave(pilot):\n    print(f\"Good luck, {pilot}!\")\n\nwave(\"Nova\")\nwave(\"Rex\")",
+      "options": [
+        "Good luck, Nova!\nGood luck, Rex!",
+        "Good luck, {pilot}!\nGood luck, {pilot}!",
+        "Good luck, pilot!\nGood luck, pilot!",
+        "Good luck, Rex!\nGood luck, Nova!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-two-9d1533",
+      "text": "What does this print?",
+      "code": "def show_age(name, age):\n    print(f\"{name} is {age} years old\")\n\nshow_age(\"Tommy\", 42)",
+      "options": [
+        "Tommy is 42 years old",
+        "42 is Tommy years old",
+        "{name} is {age} years old",
+        "Tommy is age years old"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-two-835759",
+      "text": "What does this print?",
+      "code": "def fuel_report(ship, fuel):\n    print(f\"{ship} has {fuel} liters of fuel\")\n\nfuel_report(\"Nova\", 80)",
+      "options": [
+        "Nova has 80 liters of fuel",
+        "80 has Nova liters of fuel",
+        "{ship} has {fuel} liters of fuel",
+        "Nova has fuel liters of fuel"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-two-a9a312",
+      "text": "What does this print?",
+      "code": "def score_line(player, score):\n    print(f\"{player} scored {score} points\")\n\nscore_line(\"Zoe\", 15)",
+      "options": [
+        "Zoe scored 15 points",
+        "15 scored Zoe points",
+        "{player} scored {score} points",
+        "Zoe scored score points"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-two-82d3b2",
+      "text": "What does this print?",
+      "code": "def rating(hotel, stars):\n    print(f\"{hotel} has {stars} stars\")\n\nrating(\"Orion\", 4)",
+      "options": [
+        "Orion has 4 stars",
+        "4 has Orion stars",
+        "{hotel} has {stars} stars",
+        "Orion has stars stars"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-two-ef6efb",
+      "text": "What does this print?",
+      "code": "def crew_age(pilot, age):\n    print(f\"{pilot} is {age} years old\")\n\ncrew_age(\"Lance\", 35)",
+      "options": [
+        "Lance is 35 years old",
+        "35 is Lance years old",
+        "{pilot} is {age} years old",
+        "Lance is age years old"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-calls-e39780",
+      "text": "What does this print?",
+      "code": "def beep():\n    print(\"Beep\")\n\nbeep()\nbeep()\nprint(\"Done\")",
+      "options": [
+        "Beep\nBeep\nDone",
+        "Beep\nDone",
+        "Beep\nDone\nBeep\nDone\nDone",
+        "Done\nBeep\nBeep"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-calls-f39847",
+      "text": "What does this print?",
+      "code": "def cheer():\n    print(\"Go team\")\n\ncheer()\ncheer()\nprint(\"Match over\")",
+      "options": [
+        "Go team\nGo team\nMatch over",
+        "Go team\nMatch over",
+        "Go team\nMatch over\nGo team\nMatch over\nMatch over",
+        "Match over\nGo team\nGo team"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-calls-9b5c8e",
+      "text": "What does this print?",
+      "code": "def alarm():\n    print(\"Wake up\")\n\nalarm()\nalarm()\nprint(\"Good morning\")",
+      "options": [
+        "Wake up\nWake up\nGood morning",
+        "Wake up\nGood morning",
+        "Wake up\nGood morning\nWake up\nGood morning\nGood morning",
+        "Good morning\nWake up\nWake up"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-calls-764ec0",
+      "text": "What does this print?",
+      "code": "def knock():\n    print(\"Knock knock\")\n\nknock()\nknock()\nprint(\"Who is there?\")",
+      "options": [
+        "Knock knock\nKnock knock\nWho is there?",
+        "Knock knock\nWho is there?",
+        "Knock knock\nWho is there?\nKnock knock\nWho is there?\nWho is there?",
+        "Who is there?\nKnock knock\nKnock knock"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-loop-94f3f8",
+      "text": "What does this print?",
+      "code": "def count_laps(laps):\n    for i in range(1, laps + 1):\n        print(f\"Lap {i}\")\n\ncount_laps(3)",
+      "options": [
+        "Lap 1\nLap 2\nLap 3",
+        "Lap 1\nLap 2",
+        "Lap 0\nLap 1\nLap 2",
+        "Lap {i}\nLap {i}\nLap {i}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-loop-61848c",
+      "text": "What does this print?",
+      "code": "def show_levels(levels):\n    for i in range(1, levels + 1):\n        print(f\"Level {i}\")\n\nshow_levels(4)",
+      "options": [
+        "Level 1\nLevel 2\nLevel 3\nLevel 4",
+        "Level 1\nLevel 2\nLevel 3",
+        "Level 0\nLevel 1\nLevel 2\nLevel 3",
+        "Level {i}\nLevel {i}\nLevel {i}\nLevel {i}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-loop-c7358a",
+      "text": "What does this print?",
+      "code": "def ring(times):\n    for i in range(1, times + 1):\n        print(f\"Ring {i}\")\n\nring(2)",
+      "options": ["Ring 1\nRing 2", "Ring 1", "Ring 0\nRing 1", "Ring {i}\nRing {i}"],
+      "answer": 0
+    },
+    {
+      "id": "fn-loop-1b3e85",
+      "text": "What does this print?",
+      "code": "def launch_waves(waves):\n    for i in range(1, waves + 1):\n        print(f\"Wave {i}\")\n\nlaunch_waves(3)",
+      "options": [
+        "Wave 1\nWave 2\nWave 3",
+        "Wave 1\nWave 2",
+        "Wave 0\nWave 1\nWave 2",
+        "Wave {i}\nWave {i}\nWave {i}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-loop-7aabe6",
+      "text": "What does this print?",
+      "code": "def check_doors(doors):\n    for i in range(1, doors + 1):\n        print(f\"Door {i}\")\n\ncheck_doors(5)",
+      "options": [
+        "Door 1\nDoor 2\nDoor 3\nDoor 4\nDoor 5",
+        "Door 1\nDoor 2\nDoor 3\nDoor 4",
+        "Door 0\nDoor 1\nDoor 2\nDoor 3\nDoor 4",
+        "Door {i}\nDoor {i}\nDoor {i}\nDoor {i}\nDoor {i}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-status-61a784",
+      "text": "What does this print?",
+      "code": "def f(name, status):\n    if status == True:\n        print(f\"{name} is online\")\n    else:\n        print(f\"{name} is offline\")\n\nf(\"Admin\", True)",
+      "options": ["Admin is online", "Admin is offline", "True is offline", "name is online"],
+      "answer": 0
+    },
+    {
+      "id": "fn-status-61c228",
+      "text": "What does this print?",
+      "code": "def f(name, status):\n    if status == True:\n        print(f\"{name} is online\")\n    else:\n        print(f\"{name} is offline\")\n\nf(\"Admin\", False)",
+      "options": ["Admin is offline", "Admin is online", "False is offline", "name is offline"],
+      "answer": 0
+    },
+    {
+      "id": "fn-status-b3a58f",
+      "text": "What does this print?",
+      "code": "def door(room, locked):\n    if locked == True:\n        print(f\"{room} is locked\")\n    else:\n        print(f\"{room} is open\")\n\ndoor(\"Lab\", True)",
+      "options": ["Lab is locked", "Lab is open", "True is open", "room is locked"],
+      "answer": 0
+    },
+    {
+      "id": "fn-status-f90f27",
+      "text": "What does this print?",
+      "code": "def door(room, locked):\n    if locked == True:\n        print(f\"{room} is locked\")\n    else:\n        print(f\"{room} is open\")\n\ndoor(\"Bridge\", False)",
+      "options": ["Bridge is open", "Bridge is locked", "False is open", "room is open"],
+      "answer": 0
+    },
+    {
+      "id": "fn-status-e971ec",
+      "text": "What does this print?",
+      "code": "def engine(ship, ready):\n    if ready == True:\n        print(f\"{ship} is ready\")\n    else:\n        print(f\"{ship} needs repairs\")\n\nengine(\"Nova\", True)",
+      "options": ["Nova is ready", "Nova needs repairs", "True needs repairs", "ship is ready"],
+      "answer": 0
+    },
+    {
+      "id": "fn-math-96397d",
+      "text": "What does this print?",
+      "code": "def triple(x):\n    print(x * 3)\n\ntriple(2)\ntriple(7)",
+      "options": ["6\n21", "x * 3\nx * 3", "6\n6", "6"],
+      "answer": 0
+    },
+    {
+      "id": "fn-math-2af7ca",
+      "text": "What does this print?",
+      "code": "def half(n):\n    print(n / 2)\n\nhalf(9)\nhalf(4)",
+      "options": ["4.5\n2.0", "n / 2\nn / 2", "4.5\n4.5", "4.5"],
+      "answer": 0
+    },
+    {
+      "id": "fn-math-4b4b2a",
+      "text": "What does this print?",
+      "code": "def add_ten(score):\n    print(score + 10)\n\nadd_ten(5)\nadd_ten(30)",
+      "options": ["15\n40", "score + 10\nscore + 10", "15\n15", "15"],
+      "answer": 0
+    },
+    {
+      "id": "fn-math-c0e24c",
+      "text": "What does this print?",
+      "code": "def square(side):\n    print(side ** 2)\n\nsquare(3)\nsquare(5)",
+      "options": ["9\n25", "side ** 2\nside ** 2", "9\n9", "9"],
+      "answer": 0
+    },
+    {
+      "id": "fn-math-beac18",
+      "text": "What does this print?",
+      "code": "def lose_life(lives):\n    print(lives - 1)\n\nlose_life(3)\nlose_life(1)",
+      "options": ["2\n0", "lives - 1\nlives - 1", "2\n2", "2"],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-call-8e885e",
+      "text": "Which program shows this?",
+      "output": "Hello, Cortez!",
+      "options": [
+        "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Cortez\")",
+        "def greet(name):\n    print(f\"Hello, {name}!\")",
+        "def greet(name):\n    print(\"Hello, {name}!\")\n\ngreet(\"Cortez\")",
+        "def greet(name):\n    print(f\"Hello, name!\")\n\ngreet(\"Cortez\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-call-2c233b",
+      "text": "Which program shows this?",
+      "output": "Welcome aboard, Zoe!",
+      "options": [
+        "def welcome(crew):\n    print(f\"Welcome aboard, {crew}!\")\n\nwelcome(\"Zoe\")",
+        "def welcome(crew):\n    print(f\"Welcome aboard, {crew}!\")",
+        "def welcome(crew):\n    print(\"Welcome aboard, {crew}!\")\n\nwelcome(\"Zoe\")",
+        "def welcome(crew):\n    print(f\"Welcome aboard, crew!\")\n\nwelcome(\"Zoe\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-call-8f331e",
+      "text": "Which program shows this?",
+      "output": "Well done, Tommy!",
+      "options": [
+        "def cheer(player):\n    print(f\"Well done, {player}!\")\n\ncheer(\"Tommy\")",
+        "def cheer(player):\n    print(f\"Well done, {player}!\")",
+        "def cheer(player):\n    print(\"Well done, {player}!\")\n\ncheer(\"Tommy\")",
+        "def cheer(player):\n    print(f\"Well done, player!\")\n\ncheer(\"Tommy\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-call-e9f7db",
+      "text": "Which program shows this?",
+      "output": "Hi, Nova!",
+      "options": [
+        "def hi(friend):\n    print(f\"Hi, {friend}!\")\n\nhi(\"Nova\")",
+        "def hi(friend):\n    print(f\"Hi, {friend}!\")",
+        "def hi(friend):\n    print(\"Hi, {friend}!\")\n\nhi(\"Nova\")",
+        "def hi(friend):\n    print(f\"Hi, friend!\")\n\nhi(\"Nova\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-call-cad945",
+      "text": "Which program shows this?",
+      "output": "Good luck, Ana!",
+      "options": [
+        "def wave(pilot):\n    print(f\"Good luck, {pilot}!\")\n\nwave(\"Ana\")",
+        "def wave(pilot):\n    print(f\"Good luck, {pilot}!\")",
+        "def wave(pilot):\n    print(\"Good luck, {pilot}!\")\n\nwave(\"Ana\")",
+        "def wave(pilot):\n    print(f\"Good luck, pilot!\")\n\nwave(\"Ana\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-order-b78990",
+      "text": "Which program shows this?",
+      "output": "Nova has 80 liters of fuel",
+      "options": [
+        "def fuel_report(ship, fuel):\n    print(f\"{ship} has {fuel} liters of fuel\")\n\nfuel_report(\"Nova\", 80)",
+        "def fuel_report(ship, fuel):\n    print(f\"{ship} has {fuel} liters of fuel\")\n\nfuel_report(80, \"Nova\")",
+        "def fuel_report(fuel, ship):\n    print(f\"{ship} has {fuel} liters of fuel\")\n\nfuel_report(\"Nova\", 80)",
+        "def fuel_report(ship, fuel):\n    print(f\"ship has {fuel} liters of fuel\")\n\nfuel_report(\"Nova\", 80)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-order-9c0af2",
+      "text": "Which program shows this?",
+      "output": "Zoe scored 15 points",
+      "options": [
+        "def score_line(player, score):\n    print(f\"{player} scored {score} points\")\n\nscore_line(\"Zoe\", 15)",
+        "def score_line(player, score):\n    print(f\"{player} scored {score} points\")\n\nscore_line(15, \"Zoe\")",
+        "def score_line(score, player):\n    print(f\"{player} scored {score} points\")\n\nscore_line(\"Zoe\", 15)",
+        "def score_line(player, score):\n    print(f\"player scored {score} points\")\n\nscore_line(\"Zoe\", 15)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-order-8731e5",
+      "text": "Which program shows this?",
+      "output": "Orion has 4 stars",
+      "options": [
+        "def rating(hotel, stars):\n    print(f\"{hotel} has {stars} stars\")\n\nrating(\"Orion\", 4)",
+        "def rating(hotel, stars):\n    print(f\"{hotel} has {stars} stars\")\n\nrating(4, \"Orion\")",
+        "def rating(stars, hotel):\n    print(f\"{hotel} has {stars} stars\")\n\nrating(\"Orion\", 4)",
+        "def rating(hotel, stars):\n    print(f\"hotel has {stars} stars\")\n\nrating(\"Orion\", 4)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-order-c6f6f7",
+      "text": "Which program shows this?",
+      "output": "Lance is 35 years old",
+      "options": [
+        "def crew_age(pilot, age):\n    print(f\"{pilot} is {age} years old\")\n\ncrew_age(\"Lance\", 35)",
+        "def crew_age(pilot, age):\n    print(f\"{pilot} is {age} years old\")\n\ncrew_age(35, \"Lance\")",
+        "def crew_age(age, pilot):\n    print(f\"{pilot} is {age} years old\")\n\ncrew_age(\"Lance\", 35)",
+        "def crew_age(pilot, age):\n    print(f\"pilot is {age} years old\")\n\ncrew_age(\"Lance\", 35)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-call-02b790",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def greet(name):\n    print(f\"Hello, {name}!\")\n\n___",
+      "output": "Hello, Ben!",
+      "options": ["greet(\"Ben\")", "greet(\"name\")", "greet", "def greet(\"Ben\"):"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-call-9ed66e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def welcome(crew):\n    print(f\"Welcome aboard, {crew}!\")\n\n___",
+      "output": "Welcome aboard, Lance!",
+      "options": ["welcome(\"Lance\")", "welcome(\"crew\")", "welcome", "def welcome(\"Lance\"):"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-call-c7a040",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def cheer(player):\n    print(f\"Well done, {player}!\")\n\n___",
+      "output": "Well done, Kai!",
+      "options": ["cheer(\"Kai\")", "cheer(\"player\")", "cheer", "def cheer(\"Kai\"):"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-call-f169c1",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def hi(friend):\n    print(f\"Hi, {friend}!\")\n\n___",
+      "output": "Hi, Mia!",
+      "options": ["hi(\"Mia\")", "hi(\"friend\")", "hi", "def hi(\"Mia\"):"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-call-d94c67",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def wave(pilot):\n    print(f\"Good luck, {pilot}!\")\n\n___",
+      "output": "Good luck, Rex!",
+      "options": ["wave(\"Rex\")", "wave(\"pilot\")", "wave", "def wave(\"Rex\"):"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-def-c61c0d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"Hello, {name}!\")\n\ngreet(\"Lance\")",
+      "output": "Hello, Lance!",
+      "options": ["def greet(name):", "def greet(name)", "greet(name):", "def greet():"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-def-abeb64",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"Welcome aboard, {crew}!\")\n\nwelcome(\"Ana\")",
+      "output": "Welcome aboard, Ana!",
+      "options": ["def welcome(crew):", "def welcome(crew)", "welcome(crew):", "def welcome():"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-def-c7a040",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"Well done, {player}!\")\n\ncheer(\"Kai\")",
+      "output": "Well done, Kai!",
+      "options": ["def cheer(player):", "def cheer(player)", "cheer(player):", "def cheer():"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-def-cf2ee7",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"Hi, {friend}!\")\n\nhi(\"Rex\")",
+      "output": "Hi, Rex!",
+      "options": ["def hi(friend):", "def hi(friend)", "hi(friend):", "def hi():"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-def-ccac41",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"Good luck, {pilot}!\")\n\nwave(\"Mia\")",
+      "output": "Good luck, Mia!",
+      "options": ["def wave(pilot):", "def wave(pilot)", "wave(pilot):", "def wave():"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-arg-5056fa",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def show_age(name, age):\n    print(f\"{name} is {age} years old\")\n\nshow_age(\"Tommy\", ___)",
+      "output": "Tommy is 42 years old",
+      "options": ["42", "\"Tommy\"", "age", "42 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-arg-755d6c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def fuel_report(ship, fuel):\n    print(f\"{ship} has {fuel} liters of fuel\")\n\nfuel_report(\"Nova\", ___)",
+      "output": "Nova has 80 liters of fuel",
+      "options": ["80", "\"Nova\"", "fuel", "80 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-arg-46e751",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def score_line(player, score):\n    print(f\"{player} scored {score} points\")\n\nscore_line(\"Zoe\", ___)",
+      "output": "Zoe scored 15 points",
+      "options": ["15", "\"Zoe\"", "score", "15 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-arg-e6f6f6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def rating(hotel, stars):\n    print(f\"{hotel} has {stars} stars\")\n\nrating(\"Orion\", ___)",
+      "output": "Orion has 4 stars",
+      "options": ["4", "\"Orion\"", "stars", "4 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-arg-539b8d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def crew_age(pilot, age):\n    print(f\"{pilot} is {age} years old\")\n\ncrew_age(\"Lance\", ___)",
+      "output": "Lance is 35 years old",
+      "options": ["35", "\"Lance\"", "age", "35 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-times-44c69a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def count_laps(laps):\n    for i in range(1, laps + 1):\n        print(f\"Lap {i}\")\n\ncount_laps(___)",
+      "output": "Lap 1\nLap 2\nLap 3",
+      "options": ["3", "2", "4", "0"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-times-8d1b54",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def show_levels(levels):\n    for i in range(1, levels + 1):\n        print(f\"Level {i}\")\n\nshow_levels(___)",
+      "output": "Level 1\nLevel 2\nLevel 3\nLevel 4",
+      "options": ["4", "3", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-times-609416",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def ring(times):\n    for i in range(1, times + 1):\n        print(f\"Ring {i}\")\n\nring(___)",
+      "output": "Ring 1\nRing 2",
+      "options": ["2", "1", "3", "0"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-times-6f727a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def launch_waves(waves):\n    for i in range(1, waves + 1):\n        print(f\"Wave {i}\")\n\nlaunch_waves(___)",
+      "output": "Wave 1\nWave 2\nWave 3\nWave 4\nWave 5",
+      "options": ["5", "4", "6", "0"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-times-3e7a3d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def check_doors(doors):\n    for i in range(1, doors + 1):\n        print(f\"Door {i}\")\n\ncheck_doors(___)",
+      "output": "Door 1\nDoor 2\nDoor 3\nDoor 4\nDoor 5\nDoor 6",
+      "options": ["6", "5", "7", "0"],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-colon-13494f",
+      "text": "Which line stops this program from printing this?",
+      "code": "def greet(name)\n    print(f\"Hello, {name}!\")\n\ngreet(\"Zoe\")\ngreet(\"Kai\")",
+      "output": "Hello, Zoe!\nHello, Kai!",
+      "options": [
+        "def greet(name)",
+        "print(f\"Hello, {name}!\")",
+        "greet(\"Zoe\")",
+        "greet(\"Kai\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-colon-6c215f",
+      "text": "Which line stops this program from printing this?",
+      "code": "def welcome(crew)\n    print(f\"Welcome aboard, {crew}!\")\n\nwelcome(\"Tommy\")\nwelcome(\"Mia\")",
+      "output": "Welcome aboard, Tommy!\nWelcome aboard, Mia!",
+      "options": [
+        "def welcome(crew)",
+        "print(f\"Welcome aboard, {crew}!\")",
+        "welcome(\"Tommy\")",
+        "welcome(\"Mia\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-colon-926691",
+      "text": "Which line stops this program from printing this?",
+      "code": "def cheer(player)\n    print(f\"Well done, {player}!\")\n\ncheer(\"Nova\")\ncheer(\"Rex\")",
+      "output": "Well done, Nova!\nWell done, Rex!",
+      "options": [
+        "def cheer(player)",
+        "print(f\"Well done, {player}!\")",
+        "cheer(\"Nova\")",
+        "cheer(\"Rex\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-f-cc5860",
+      "text": "Which line stops this program from printing this?",
+      "code": "def cheer():\n    print(f\"Well done, {player}!\")\n\ncheer(\"Ana\")\ncheer(\"Ben\")",
+      "output": "Well done, Ana!\nWell done, Ben!",
+      "options": [
+        "def cheer():",
+        "print(f\"Well done, {player}!\")",
+        "cheer(\"Ana\")",
+        "cheer(\"Ben\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-f-d1a836",
+      "text": "Which line stops this program from printing this?",
+      "code": "def hi():\n    print(f\"Hi, {friend}!\")\n\nhi(\"Cortez\")\nhi(\"Lance\")",
+      "output": "Hi, Cortez!\nHi, Lance!",
+      "options": ["def hi():", "print(f\"Hi, {friend}!\")", "hi(\"Cortez\")", "hi(\"Lance\")"],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-f-09f3ea",
+      "text": "Which line stops this program from printing this?",
+      "code": "def wave():\n    print(f\"Good luck, {pilot}!\")\n\nwave(\"Zoe\")\nwave(\"Kai\")",
+      "output": "Good luck, Zoe!\nGood luck, Kai!",
+      "options": [
+        "def wave():",
+        "print(f\"Good luck, {pilot}!\")",
+        "wave(\"Zoe\")",
+        "wave(\"Kai\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-name-442437",
+      "text": "Which line stops this program from printing this?",
+      "code": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Ana\")\nGreet(\"Ben\")",
+      "output": "Hello, Ana!\nHello, Ben!",
+      "options": [
+        "Greet(\"Ben\")",
+        "greet(\"Ana\")",
+        "print(f\"Hello, {name}!\")",
+        "def greet(name):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-name-e1ee52",
+      "text": "Which line stops this program from printing this?",
+      "code": "def welcome(crew):\n    print(f\"Welcome aboard, {crew}!\")\n\nwelcome(\"Zoe\")\nWelcome(\"Kai\")",
+      "output": "Welcome aboard, Zoe!\nWelcome aboard, Kai!",
+      "options": [
+        "Welcome(\"Kai\")",
+        "welcome(\"Zoe\")",
+        "print(f\"Welcome aboard, {crew}!\")",
+        "def welcome(crew):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-name-a634e2",
+      "text": "Which line stops this program from printing this?",
+      "code": "def cheer(player):\n    print(f\"Well done, {player}!\")\n\ncheer(\"Tommy\")\ncheers(\"Mia\")",
+      "output": "Well done, Tommy!\nWell done, Mia!",
+      "options": [
+        "cheers(\"Mia\")",
+        "cheer(\"Tommy\")",
+        "print(f\"Well done, {player}!\")",
+        "def cheer(player):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-missing-455055",
+      "text": "Which line stops this program from printing this?",
+      "code": "def show_age(name, age):\n    print(f\"{name} is {age} years old\")\n\nshow_age(\"Tommy\", 42)\nshow_age(\"Lance\")",
+      "output": "Tommy is 42 years old\nLance is 35 years old",
+      "options": [
+        "show_age(\"Lance\")",
+        "show_age(\"Tommy\", 42)",
+        "print(f\"{name} is {age} years old\")",
+        "def show_age(name, age):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-missing-56bd28",
+      "text": "Which line stops this program from printing this?",
+      "code": "def score_line(player, score):\n    print(f\"{player} scored {score} points\")\n\nscore_line(\"Zoe\", 15)\nscore_line(\"Kai\")",
+      "output": "Zoe scored 15 points\nKai scored 9 points",
+      "options": [
+        "score_line(\"Kai\")",
+        "score_line(\"Zoe\", 15)",
+        "print(f\"{player} scored {score} points\")",
+        "def score_line(player, score):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-missing-06fd5a",
+      "text": "Which line stops this program from printing this?",
+      "code": "def rating(hotel, stars):\n    print(f\"{hotel} has {stars} stars\")\n\nrating(\"Orion\", 4)\nrating(\"Vega\")",
+      "output": "Orion has 4 stars\nVega has 5 stars",
+      "options": [
+        "rating(\"Vega\")",
+        "rating(\"Orion\", 4)",
+        "print(f\"{hotel} has {stars} stars\")",
+        "def rating(hotel, stars):"
+      ],
+      "answer": 0
+    }
+  ]
+}

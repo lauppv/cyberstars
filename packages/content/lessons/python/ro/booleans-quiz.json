@@ -1,0 +1,1075 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce poate ține un boolean?",
+      "options": [
+        "Doar True sau False",
+        "True sau False, dar și orice text",
+        "Orice număr de la 0 la 1",
+        "Orice text între ghilimele"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Care linie face o variabilă boolean?",
+      "options": [
+        "este_online = true",
+        "este_online = \"True\"",
+        "este_online = True",
+        "este_online == True"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "are_cheie = false\nprint(are_cheie)",
+      "options": [
+        "Se oprește cu o eroare: trebuie scris False",
+        "Afișează false",
+        "Afișează False",
+        "Nu afișează nimic"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "Ce afișează?",
+      "code": "varsta = 20\nprint(varsta < 18)",
+      "options": ["True", "False", "varsta < 18", "20"],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "Ce este de fapt o condiție ca `x == 5`?",
+      "options": [
+        "Un număr",
+        "Un text",
+        "O linie care pune 5 în x",
+        "Un boolean: e True sau False"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "Când e True `stanga and dreapta`?",
+      "options": [
+        "Când măcar una dintre ele e True",
+        "Doar când amândouă sunt True",
+        "Când amândouă sunt False",
+        "Când stanga e True, oricum ar fi dreapta"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Când e True `stanga or dreapta`?",
+      "options": [
+        "Doar când amândouă sunt True",
+        "Doar când exact una dintre ele e True",
+        "Când măcar una dintre ele e True",
+        "Doar când stanga e True"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Cât face `not True`?",
+      "options": ["False", "True", "O eroare: not are nevoie de o variabilă", "Nimic"],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "Cât face `True and False`?",
+      "options": ["True", "True and False", "O eroare", "False"],
+      "answer": 3
+    },
+    {
+      "id": "q10",
+      "text": "Cât face `False or True`?",
+      "options": ["False", "True", "False or True", "O eroare"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Cât face `False and False`?",
+      "options": ["True: doi de False fac un True", "O eroare", "False", "Nimic"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "În lecție, `varsta = 20` și `are_permis = False`. Ce rulează la `if varsta >= 18 and are_permis == True:`?",
+      "options": [
+        "Else-ul: True and False dă False",
+        "If-ul: varsta >= 18 e True",
+        "Și if-ul, și else-ul",
+        "Nimic: Python se oprește cu o eroare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "Înseamnă `if are_permis:` același lucru cu `if are_permis == True:`?",
+      "options": [
+        "Nu: primul e mereu True",
+        "Nu: primul se oprește cu o eroare",
+        "Doar într-un while",
+        "Da: are_permis e deja un boolean"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q14",
+      "text": "În clubul din lecție, `este_vip = False` și `are_invitatie = True`. La ce duce `if este_vip or are_invitatie:`?",
+      "options": [
+        "Acces refuzat",
+        "Bun venit in club",
+        "Bun venit in club, apoi Acces refuzat",
+        "O eroare, pentru că este_vip e False"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Ce face `not` cu un boolean?",
+      "options": [
+        "Îl inversează: True devine False, iar False devine True",
+        "Îl face False, orice ar fi fost",
+        "Șterge variabila",
+        "Verifică dacă variabila există"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "`este_autentificat` e False. Rulează `if not este_autentificat:` blocul lui?",
+      "options": [
+        "Nu: este_autentificat e False",
+        "Nu: not merge doar cu True",
+        "Da: not False dă True",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "Cum se numește o variabilă boolean care ține o buclă pornită, ca `ruleaza`?",
+      "options": ["Un contor", "Un range", "Un comentariu", "Un steag (flag)"],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "`ruleaza` devine False la mijlocul unei bucle `while ruleaza:`. Când se oprește bucla?",
+      "options": [
+        "La următoarea verificare: restul iterației tot rulează",
+        "Imediat, la mijlocul iterației",
+        "După încă o iterație întreagă",
+        "Niciodată: o buclă while are nevoie de break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează bucla cu steag din lecție?",
+      "code": "ruleaza = True\nnumar = 0\nwhile ruleaza:\n    print(numar)\n    numar = numar + 1\n    if numar == 3:\n        ruleaza = False\nprint(\"Gata\")",
+      "options": ["0\n1\n2\n3\nGata", "0\n1\n2\nGata", "1\n2\n3\nGata", "0\n1\n2"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "De ce spune lecția că un steag e o alternativă curată la break?",
+      "options": [
+        "Un steag face bucla să ruleze mai repede",
+        "break nu merge într-o buclă while",
+        "Condiția buclei o închide singură, în loc să sărim brusc afară",
+        "Un steag oprește bucla la mijlocul iterației"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează `print(5 == 5)`?",
+      "options": ["5 == 5", "5", "10", "True"],
+      "answer": 3
+    },
+    {
+      "id": "q22",
+      "text": "Care e diferența dintre `=` și `==`?",
+      "options": [
+        "= pune o valoare într-o variabilă; == compară două valori și dă True sau False",
+        "Niciuna, înseamnă același lucru",
+        "== pune o valoare într-o variabilă; = compară",
+        "= e pentru numere, == e pentru text"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "x = 7\nprint(x != 7)",
+      "options": ["True", "False", "7", "x != 7"],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "În misiunea Consola de comenzi, utilizatorul tastează status, apoi salut, apoi oprire. Ce afișează programul?",
+      "options": [
+        "Sistem activ\nComanda necunoscuta",
+        "Sistem activ\nComanda necunoscuta\nComanda necunoscuta\nSe inchide consola...",
+        "Sistem activ\nComanda necunoscuta\nSe inchide consola...",
+        "Se inchide consola..."
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "În misiunea Consola de comenzi, ce se întâmplă după ce utilizatorul tastează oprire?",
+      "options": [
+        "Programul se oprește imediat, fără să afișeze Se inchide consola...",
+        "Afișează Comanda necunoscuta și cere din nou",
+        "pornit devine False, dar bucla tot cere comenzi",
+        "pornit devine False, bucla se oprește la următoarea verificare și se afișează Se inchide consola..."
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q26",
+      "text": "În misiunea Consola de comenzi, de ce pornește `pornit` cu True?",
+      "options": [
+        "Ca bucla while să ruleze și să ceară prima comandă",
+        "Ca programul să afișeze întâi True",
+        "Orice variabilă trebuie să pornească cu True",
+        "Ca oprire să fie tastat singur"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "După `varsta = 15` și `este_major = varsta >= 18`, ce ține `este_major`?",
+      "options": ["True", "False", "15", "Textul varsta >= 18"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Ce condiție e True când varsta e 20 și are_permis e True, și False de îndată ce una dintre ele nu e îndeplinită?",
+      "options": [
+        "varsta >= 18 or are_permis",
+        "varsta >= 18 and not are_permis",
+        "varsta >= 18 and are_permis",
+        "not are_permis"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "De ce nu se oprește niciodată o buclă `while True:` fără break?",
+      "options": [
+        "True înseamnă că bucla trebuie să se oprească, dar Python ignoră asta",
+        "Se oprește după prima iterație",
+        "Se oprește după ce afișează True",
+        "Condiția ei e mereu True"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q30",
+      "text": "Cât face `not False`?",
+      "options": ["False", "True", "O eroare: not are nevoie de o variabilă", "Nimic"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "bo-print-cmp",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nprint({{v}} {{op}} {{y}})",
+      "values": [
+        {
+          "v": "varsta",
+          "x": 15,
+          "op": "<",
+          "y": 18,
+          "flip": ">="
+        },
+        {
+          "v": "varsta",
+          "x": 20,
+          "op": ">=",
+          "y": 18,
+          "flip": "<"
+        },
+        {
+          "v": "scor",
+          "x": 50,
+          "op": "==",
+          "y": 50,
+          "flip": "!="
+        },
+        {
+          "v": "combustibil",
+          "x": 30,
+          "op": ">",
+          "y": 40,
+          "flip": "<="
+        },
+        {
+          "v": "vieti",
+          "x": 0,
+          "op": "!=",
+          "y": 0,
+          "flip": "=="
+        }
+      ],
+      "mistakes": [
+        ["{{op}}", "{{flip}}"],
+        ["print({{v}} {{op}} {{y}})", "print(\"{{v}} {{op}} {{y}}\")"],
+        ["print({{v}} {{op}} {{y}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "bo-and",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{a}} = {{x}}\n{{b}} = {{bv}}\nif {{a}} >= {{lim}} and {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "varsta",
+          "b": "are_permis",
+          "lim": 18,
+          "yes": "Poti conduce",
+          "no": "Inca nu poti conduce",
+          "x": 20,
+          "bv": "True"
+        },
+        {
+          "a": "varsta",
+          "b": "are_permis",
+          "lim": 18,
+          "yes": "Poti conduce",
+          "no": "Inca nu poti conduce",
+          "x": 16,
+          "bv": "True"
+        },
+        {
+          "a": "varsta",
+          "b": "are_permis",
+          "lim": 18,
+          "yes": "Poti conduce",
+          "no": "Inca nu poti conduce",
+          "x": 20,
+          "bv": "False"
+        },
+        {
+          "a": "nivel",
+          "b": "are_cheie",
+          "lim": 5,
+          "yes": "Usa se deschide",
+          "no": "Usa ramane inchisa",
+          "x": 7,
+          "bv": "True"
+        },
+        {
+          "a": "nivel",
+          "b": "are_cheie",
+          "lim": 5,
+          "yes": "Usa se deschide",
+          "no": "Usa ramane inchisa",
+          "x": 3,
+          "bv": "True"
+        },
+        {
+          "a": "nivel",
+          "b": "are_cheie",
+          "lim": 5,
+          "yes": "Usa se deschide",
+          "no": "Usa ramane inchisa",
+          "x": 5,
+          "bv": "False"
+        },
+        {
+          "a": "combustibil",
+          "b": "motor_ok",
+          "lim": 50,
+          "yes": "Gata de lansare",
+          "no": "Lansarea asteapta",
+          "x": 80,
+          "bv": "True"
+        },
+        {
+          "a": "combustibil",
+          "b": "motor_ok",
+          "lim": 50,
+          "yes": "Gata de lansare",
+          "no": "Lansarea asteapta",
+          "x": 30,
+          "bv": "False"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        [
+          "if {{a}} >= {{lim}} and {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        [
+          "if {{a}} >= {{lim}} and {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{a}} >= {{lim}} and {{b}})"
+        ],
+        [" and ", " or "]
+      ]
+    },
+    {
+      "id": "bo-or",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{a}} = {{av}}\n{{b}} = {{bv}}\nif {{a}} or {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "este_vip",
+          "b": "are_invitatie",
+          "yes": "Bun venit in club",
+          "no": "Acces refuzat",
+          "av": "False",
+          "bv": "True"
+        },
+        {
+          "a": "este_vip",
+          "b": "are_invitatie",
+          "yes": "Bun venit in club",
+          "no": "Acces refuzat",
+          "av": "False",
+          "bv": "False"
+        },
+        {
+          "a": "este_vip",
+          "b": "are_invitatie",
+          "yes": "Bun venit in club",
+          "no": "Acces refuzat",
+          "av": "True",
+          "bv": "False"
+        },
+        {
+          "a": "este_admin",
+          "b": "este_proprietar",
+          "yes": "Poti edita",
+          "no": "Doar citire",
+          "av": "False",
+          "bv": "False"
+        },
+        {
+          "a": "este_admin",
+          "b": "este_proprietar",
+          "yes": "Poti edita",
+          "no": "Doar citire",
+          "av": "False",
+          "bv": "True"
+        },
+        {
+          "a": "are_harta",
+          "b": "are_ghid",
+          "yes": "Gasesti drumul",
+          "no": "Te-ai ratacit",
+          "av": "True",
+          "bv": "True"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        [
+          "if {{a}} or {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        [
+          "if {{a}} or {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{a}} or {{b}})"
+        ],
+        [" or ", " and "]
+      ]
+    },
+    {
+      "id": "bo-not",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{b}}\nif not {{v}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "este_autentificat",
+          "yes": "Te rog autentifica-te mai intai",
+          "no": "Bine ai revenit",
+          "b": "False"
+        },
+        {
+          "v": "este_autentificat",
+          "yes": "Te rog autentifica-te mai intai",
+          "no": "Bine ai revenit",
+          "b": "True"
+        },
+        {
+          "v": "usa_incuiata",
+          "yes": "Intra",
+          "no": "Cauta cheia",
+          "b": "True"
+        },
+        {
+          "v": "usa_incuiata",
+          "yes": "Intra",
+          "no": "Cauta cheia",
+          "b": "False"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        [
+          "if not {{v}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        ["if not {{v}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")", "print(not {{v}})"],
+        ["if not {{v}}:", "if {{v}}:"]
+      ]
+    },
+    {
+      "id": "bo-flag",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{f}} = True\n{{n}} = 0\nwhile {{f}}:\n    print({{n}})\n    {{n}} = {{n}} + 1\n    if {{n}} == {{stop}}:\n        {{f}} = False\nprint(\"{{done}}\")",
+      "values": [
+        {
+          "f": "ruleaza",
+          "n": "numar",
+          "stop": 4,
+          "done": "Gata"
+        },
+        {
+          "f": "activ",
+          "n": "pas",
+          "stop": 2,
+          "done": "Oprit"
+        },
+        {
+          "f": "pornit",
+          "n": "contor",
+          "stop": 4,
+          "done": "Terminat"
+        },
+        {
+          "f": "scanez",
+          "n": "sector",
+          "stop": 3,
+          "done": "Scanare completa"
+        }
+      ],
+      "mistakes": [
+        ["    print({{n}})\n    {{n}} = {{n}} + 1", "    {{n}} = {{n}} + 1\n    print({{n}})"],
+        ["{{n}} = 0", "{{n}} = 1"],
+        ["{{f}} = True", "{{f}} = False"],
+        ["print(\"{{done}}\")", "    print(\"{{done}}\")"]
+      ]
+    },
+    {
+      "id": "bo-gap-op",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{a}} = {{av}}\n{{b}} = {{bv}}\nif {{a}} ___ {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "are_bilet",
+          "b": "are_buletin",
+          "yes": "Urca in nava",
+          "no": "Ramai la poarta",
+          "av": "True",
+          "bv": "False",
+          "ans": "and",
+          "other": "or",
+          "caps": "AND",
+          "sym": "&&"
+        },
+        {
+          "a": "are_bilet",
+          "b": "are_buletin",
+          "yes": "Urca in nava",
+          "no": "Ramai la poarta",
+          "av": "False",
+          "bv": "True",
+          "ans": "and",
+          "other": "or",
+          "caps": "AND",
+          "sym": "&&"
+        },
+        {
+          "a": "este_vip",
+          "b": "are_invitatie",
+          "yes": "Bun venit in club",
+          "no": "Acces refuzat",
+          "av": "False",
+          "bv": "True",
+          "ans": "or",
+          "other": "and",
+          "caps": "OR",
+          "sym": "||"
+        },
+        {
+          "a": "este_weekend",
+          "b": "este_vacanta",
+          "yes": "Azi nu e scoala",
+          "no": "Zi de scoala",
+          "av": "True",
+          "bv": "False",
+          "ans": "or",
+          "other": "and",
+          "caps": "OR",
+          "sym": "||"
+        },
+        {
+          "a": "are_combustibil",
+          "b": "are_pilot",
+          "yes": "Decoleaza",
+          "no": "Ramai la sol",
+          "av": "True",
+          "bv": "False",
+          "ans": "and",
+          "other": "or",
+          "caps": "AND",
+          "sym": "&&"
+        },
+        {
+          "a": "e_frig",
+          "b": "bate_vantul",
+          "yes": "Ia o geaca",
+          "no": "Un tricou e de ajuns",
+          "av": "False",
+          "bv": "True",
+          "ans": "or",
+          "other": "and",
+          "caps": "OR",
+          "sym": "||"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{other}}", "{{caps}}", "{{sym}}"]
+    },
+    {
+      "id": "bo-gap-bool",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = ___\nif {{v}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "este_online",
+          "yes": "Conectat",
+          "no": "Deconectat",
+          "ans": "True",
+          "other": "False",
+          "low": "true",
+          "low_other": "false"
+        },
+        {
+          "v": "are_cheie",
+          "yes": "Usa deschisa",
+          "no": "Usa incuiata",
+          "ans": "False",
+          "other": "True",
+          "low": "false",
+          "low_other": "true"
+        },
+        {
+          "v": "joc_terminat",
+          "yes": "Joc terminat",
+          "no": "Joaca mai departe",
+          "ans": "False",
+          "other": "True",
+          "low": "false",
+          "low_other": "true"
+        },
+        {
+          "v": "scut_activ",
+          "yes": "Scut activ",
+          "no": "Scut oprit",
+          "ans": "True",
+          "other": "False",
+          "low": "true",
+          "low_other": "false"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{other}}", "{{low}}", "\"{{ans}}\"", "{{low_other}}"]
+    },
+    {
+      "id": "bo-gap-print",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\n___",
+      "values": [
+        {
+          "v": "varsta",
+          "x": 12,
+          "op": "<",
+          "y": 18,
+          "flip": ">="
+        },
+        {
+          "v": "scor",
+          "x": 75,
+          "op": ">=",
+          "y": 50,
+          "flip": "<"
+        },
+        {
+          "v": "combustibil",
+          "x": 90,
+          "op": "<=",
+          "y": 40,
+          "flip": ">"
+        },
+        {
+          "v": "viteza",
+          "x": 120,
+          "op": "!=",
+          "y": 100,
+          "flip": "=="
+        },
+        {
+          "v": "vieti",
+          "x": 0,
+          "op": "==",
+          "y": 0,
+          "flip": "!="
+        },
+        {
+          "v": "stele",
+          "x": 2,
+          "op": ">",
+          "y": 3,
+          "flip": "<="
+        }
+      ],
+      "answer": "print({{v}} {{op}} {{y}})",
+      "wrong": ["print({{v}} {{flip}} {{y}})", "print(\"{{v}} {{op}} {{y}}\")", "print({{v}})"]
+    },
+    {
+      "id": "bo-gap-if",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{a}} = {{x}}\n{{b}} = {{bv}}\n___\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "varsta",
+          "b": "are_permis",
+          "lim": 18,
+          "yes": "Poti conduce",
+          "no": "Inca nu poti conduce",
+          "x": 20,
+          "bv": "True"
+        },
+        {
+          "a": "varsta",
+          "b": "are_permis",
+          "lim": 18,
+          "yes": "Poti conduce",
+          "no": "Inca nu poti conduce",
+          "x": 20,
+          "bv": "False"
+        },
+        {
+          "a": "nivel",
+          "b": "are_cheie",
+          "lim": 5,
+          "yes": "Usa se deschide",
+          "no": "Usa ramane inchisa",
+          "x": 3,
+          "bv": "True"
+        },
+        {
+          "a": "combustibil",
+          "b": "motor_ok",
+          "lim": 50,
+          "yes": "Gata de lansare",
+          "no": "Lansarea asteapta",
+          "x": 60,
+          "bv": "True"
+        }
+      ],
+      "answer": "if {{a}} >= {{lim}} and {{b}}:",
+      "wrong": [
+        "if {{a}} >= {{lim}} or {{b}}:",
+        "if {{a}} < {{lim}} and {{b}}:",
+        "if {{a}} >= {{lim}} and not {{b}}:",
+        "if {{a}} >= {{lim}} and {{b}}",
+        "if {{a}} >= {{lim}} AND {{b}}:"
+      ]
+    },
+    {
+      "id": "bo-which-op",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{a}} = {{av}}\n{{b}} = {{bv}}\nif {{a}} {{op}} {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "are_bilet",
+          "b": "are_buletin",
+          "yes": "Urca in nava",
+          "no": "Ramai la poarta",
+          "av": "True",
+          "bv": "False",
+          "avn": "False",
+          "bvn": "True",
+          "op": "and",
+          "other": "or"
+        },
+        {
+          "a": "este_vip",
+          "b": "are_invitatie",
+          "yes": "Bun venit in club",
+          "no": "Acces refuzat",
+          "av": "False",
+          "bv": "True",
+          "avn": "True",
+          "bvn": "False",
+          "op": "or",
+          "other": "and"
+        },
+        {
+          "a": "are_combustibil",
+          "b": "are_pilot",
+          "yes": "Decoleaza",
+          "no": "Ramai la sol",
+          "av": "False",
+          "bv": "True",
+          "avn": "True",
+          "bvn": "False",
+          "op": "and",
+          "other": "or"
+        },
+        {
+          "a": "este_weekend",
+          "b": "este_vacanta",
+          "yes": "Azi nu e scoala",
+          "no": "Zi de scoala",
+          "av": "False",
+          "bv": "True",
+          "avn": "True",
+          "bvn": "False",
+          "op": "or",
+          "other": "and"
+        },
+        {
+          "a": "este_admin",
+          "b": "este_proprietar",
+          "yes": "Poti edita",
+          "no": "Doar citire",
+          "av": "True",
+          "bv": "False",
+          "avn": "False",
+          "bvn": "True",
+          "op": "or",
+          "other": "and"
+        },
+        {
+          "a": "e_frig",
+          "b": "bate_vantul",
+          "yes": "Ia o geaca",
+          "no": "Un tricou e de ajuns",
+          "av": "True",
+          "bv": "False",
+          "avn": "False",
+          "bvn": "True",
+          "op": "and",
+          "other": "or"
+        }
+      ],
+      "mistakes": [
+        [" {{op}} ", " {{other}} "],
+        ["{{a}} = {{av}}", "{{a}} = {{avn}}"],
+        ["{{b}} = {{bv}}", "{{b}} = {{bvn}}"],
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "bo-which-print",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = {{x}}\nprint({{v}} {{op}} {{y}})",
+      "values": [
+        {
+          "v": "varsta",
+          "x": 17,
+          "op": ">=",
+          "y": 18,
+          "flip": "<"
+        },
+        {
+          "v": "stele",
+          "x": 3,
+          "op": "==",
+          "y": 3,
+          "flip": "!="
+        }
+      ],
+      "mistakes": [
+        ["{{op}}", "{{flip}}"],
+        ["print({{v}} {{op}} {{y}})", "print(\"{{v}} {{op}} {{y}}\")"],
+        ["print({{v}} {{op}} {{y}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "bo-bad-case",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{b}}\nif {{v}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "este_online",
+          "yes": "Conectat",
+          "no": "Deconectat",
+          "b": "True",
+          "low": "true"
+        },
+        {
+          "v": "are_cheie",
+          "yes": "Usa deschisa",
+          "no": "Usa incuiata",
+          "b": "False",
+          "low": "false"
+        },
+        {
+          "v": "joc_terminat",
+          "yes": "Joc terminat",
+          "no": "Joaca mai departe",
+          "b": "True",
+          "low": "true"
+        },
+        {
+          "v": "scut_activ",
+          "yes": "Scut activ",
+          "no": "Scut oprit",
+          "b": "False",
+          "low": "false"
+        }
+      ],
+      "bug": ["{{v}} = {{b}}", "{{v}} = {{low}}"]
+    },
+    {
+      "id": "bo-bad-and",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{a}} = {{x}}\n{{b}} = {{bv}}\nif {{a}} >= {{lim}} and {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "varsta",
+          "b": "are_permis",
+          "lim": 18,
+          "yes": "Poti conduce",
+          "no": "Inca nu poti conduce",
+          "x": 19,
+          "bv": "True"
+        },
+        {
+          "a": "nivel",
+          "b": "are_cheie",
+          "lim": 5,
+          "yes": "Usa se deschide",
+          "no": "Usa ramane inchisa",
+          "x": 4,
+          "bv": "True"
+        },
+        {
+          "a": "combustibil",
+          "b": "motor_ok",
+          "lim": 50,
+          "yes": "Gata de lansare",
+          "no": "Lansarea asteapta",
+          "x": 70,
+          "bv": "False"
+        },
+        {
+          "a": "combustibil",
+          "b": "motor_ok",
+          "lim": 50,
+          "yes": "Gata de lansare",
+          "no": "Lansarea asteapta",
+          "x": 55,
+          "bv": "True"
+        }
+      ],
+      "bug": [" and ", " AND "]
+    },
+    {
+      "id": "bo-bad-equal",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{b}}\nif {{v}} == True:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "este_online",
+          "yes": "Conectat",
+          "no": "Deconectat",
+          "b": "True"
+        },
+        {
+          "v": "are_cheie",
+          "yes": "Usa deschisa",
+          "no": "Usa incuiata",
+          "b": "False"
+        },
+        {
+          "v": "scut_activ",
+          "yes": "Scut activ",
+          "no": "Scut oprit",
+          "b": "True"
+        }
+      ],
+      "bug": ["{{v}} == True", "{{v}} = True"]
+    },
+    {
+      "id": "bo-bad-stop",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{f}} = True\n{{n}} = 0\nwhile {{f}}:\n    print({{n}})\n    {{n}} = {{n}} + 1\n    if {{n}} == {{stop}}:\n        {{f}} = False\nprint(\"{{done}}\")",
+      "values": [
+        {
+          "f": "ruleaza",
+          "n": "numar",
+          "stop": 3,
+          "wrong": 2,
+          "done": "Gata"
+        },
+        {
+          "f": "activ",
+          "n": "pas",
+          "stop": 4,
+          "wrong": 5,
+          "done": "Oprit"
+        },
+        {
+          "f": "pornit",
+          "n": "contor",
+          "stop": 2,
+          "wrong": 1,
+          "done": "Terminat"
+        },
+        {
+          "f": "scanez",
+          "n": "sector",
+          "stop": 5,
+          "wrong": 4,
+          "done": "Scanare completa"
+        }
+      ],
+      "bug": ["{{n}} == {{stop}}", "{{n}} == {{wrong}}"]
+    }
+  ]
+}

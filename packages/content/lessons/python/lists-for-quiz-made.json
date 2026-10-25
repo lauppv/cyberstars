@@ -1,0 +1,677 @@
+{
+  "note": "Made by npm run make:quiz from the templates in lists-for-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "lf-each-100f84",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Jupiter\"]\nfor planet in planets:\n    print(f\"Next stop, {planet}!\")",
+      "options": [
+        "Next stop, Mars!\nNext stop, Venus!\nNext stop, Jupiter!",
+        "Next stop, ['Mars', 'Venus', 'Jupiter']!\nNext stop, ['Mars', 'Venus', 'Jupiter']!\nNext stop, ['Mars', 'Venus', 'Jupiter']!",
+        "Next stop, {planet}!\nNext stop, {planet}!\nNext stop, {planet}!",
+        "Next stop, 0!\nNext stop, 1!\nNext stop, 2!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-each-247d05",
+      "text": "What does this print?",
+      "code": "crew = [\"Lance\", \"Cortez\"]\nfor member in crew:\n    print(f\"Welcome, {member}!\")",
+      "options": [
+        "Welcome, Lance!\nWelcome, Cortez!",
+        "Welcome, ['Lance', 'Cortez']!\nWelcome, ['Lance', 'Cortez']!",
+        "Welcome, {member}!\nWelcome, {member}!",
+        "Welcome, 0!\nWelcome, 1!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-each-b951e2",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Phil\", \"Sonny\", \"Ken\"]\nfor n in names:\n    print(f\"Hello, {n}!\")",
+      "options": [
+        "Hello, Tommy!\nHello, Phil!\nHello, Sonny!\nHello, Ken!",
+        "Hello, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nHello, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nHello, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nHello, ['Tommy', 'Phil', 'Sonny', 'Ken']!",
+        "Hello, {n}!\nHello, {n}!\nHello, {n}!\nHello, {n}!",
+        "Hello, 0!\nHello, 1!\nHello, 2!\nHello, 3!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-each-8bd748",
+      "text": "What does this print?",
+      "code": "players = [\"Ana\", \"Rex\"]\nfor i in players:\n    print(f\"Good luck, {i}!\")",
+      "options": [
+        "Good luck, Ana!\nGood luck, Rex!",
+        "Good luck, ['Ana', 'Rex']!\nGood luck, ['Ana', 'Rex']!",
+        "Good luck, {i}!\nGood luck, {i}!",
+        "Good luck, 0!\nGood luck, 1!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-index-edff32",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\"]\nfor i in range(len(planets)):\n    print(f\"Planet {i + 1}: {planets[i]}\")",
+      "options": [
+        "Planet 1: Mars\nPlanet 2: Venus\nPlanet 3: Earth",
+        "Planet 0: Mars\nPlanet 1: Venus\nPlanet 2: Earth",
+        "Planet 2: Venus\nPlanet 3: Earth",
+        "Planet 1: 0\nPlanet 2: 1\nPlanet 3: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-index-b9c481",
+      "text": "What does this print?",
+      "code": "tasks = [\"Refuel\", \"Check engines\", \"Launch\"]\nfor i in range(len(tasks)):\n    print(f\"Step {i + 1}: {tasks[i]}\")",
+      "options": [
+        "Step 1: Refuel\nStep 2: Check engines\nStep 3: Launch",
+        "Step 0: Refuel\nStep 1: Check engines\nStep 2: Launch",
+        "Step 2: Check engines\nStep 3: Launch",
+        "Step 1: 0\nStep 2: 1\nStep 3: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-index-6a1ced",
+      "text": "What does this print?",
+      "code": "players = [\"Ana\", \"Rex\", \"Kai\", \"Zoe\"]\nfor i in range(len(players)):\n    print(f\"Player {i + 1}: {players[i]}\")",
+      "options": [
+        "Player 1: Ana\nPlayer 2: Rex\nPlayer 3: Kai\nPlayer 4: Zoe",
+        "Player 0: Ana\nPlayer 1: Rex\nPlayer 2: Kai\nPlayer 3: Zoe",
+        "Player 2: Rex\nPlayer 3: Kai\nPlayer 4: Zoe",
+        "Player 1: 0\nPlayer 2: 1\nPlayer 3: 2\nPlayer 4: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-9d0c99",
+      "text": "What does this print?",
+      "code": "prices = [5, 15, 25]\ntotal = 0\nfor price in prices:\n    total = total + price\nprint(total)",
+      "options": ["45", "25", "3", "5\n20\n45"],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-dc56f6",
+      "text": "What does this print?",
+      "code": "scores = [7, 3, 9, 1]\npoints = 0\nfor s in scores:\n    points = points + s\nprint(points)",
+      "options": ["20", "1", "4", "7\n10\n19\n20"],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-bab618",
+      "text": "What does this print?",
+      "code": "tanks = [40, 60]\nfuel = 0\nfor tank in tanks:\n    fuel = fuel + tank\nprint(fuel)",
+      "options": ["100", "60", "2", "40\n100"],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-24598e",
+      "text": "What does this print?",
+      "code": "ages = [12, 30, 8]\ntotal = 0\nfor age in ages:\n    total = total + age\nprint(total)",
+      "options": ["50", "8", "3", "12\n42\n50"],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-b37b23",
+      "text": "What does this print?",
+      "code": "steps = [100, 250, 150, 500]\nwalked = 0\nfor s in steps:\n    walked = walked + s\nprint(walked)",
+      "options": ["1000", "500", "4", "100\n350\n500\n1000"],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-94c2d8",
+      "text": "What does this print?",
+      "code": "coins = [2, 2, 2, 2, 2]\ntotal = 0\nfor c in coins:\n    total = total + c\nprint(total)",
+      "options": ["10", "2", "5", "2\n4\n6\n8\n10"],
+      "answer": 0
+    },
+    {
+      "id": "lf-count-a31631",
+      "text": "What does this print?",
+      "code": "ages = [12, 18, 30, 15]\ncount = 0\nfor n in ages:\n    if n >= 18:\n        count = count + 1\nprint(count)",
+      "options": ["2", "48", "1", "0\n1\n2\n2"],
+      "answer": 0
+    },
+    {
+      "id": "lf-count-c1d264",
+      "text": "What does this print?",
+      "code": "temperatures = [21, 35, 30, 28]\nhot_days = 0\nfor n in temperatures:\n    if n > 30:\n        hot_days = hot_days + 1\nprint(hot_days)",
+      "options": ["1", "35", "2", "0\n1\n1\n1"],
+      "answer": 0
+    },
+    {
+      "id": "lf-count-fa3277",
+      "text": "What does this print?",
+      "code": "grades = [4, 10, 5, 9, 5]\nlow = 0\nfor n in grades:\n    if n < 5:\n        low = low + 1\nprint(low)",
+      "options": ["1", "4", "3", "1\n1\n1\n1\n1"],
+      "answer": 0
+    },
+    {
+      "id": "lf-count-515285",
+      "text": "What does this print?",
+      "code": "speeds = [90, 120, 130, 100]\nsafe = 0\nfor n in speeds:\n    if n <= 100:\n        safe = safe + 1\nprint(safe)",
+      "options": ["2", "190", "1", "1\n1\n1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "lf-max-2cf89a",
+      "text": "What does this print?",
+      "code": "scores = [7, 15, 9]\nbest = scores[0]\nfor n in scores:\n    if n > best:\n        best = n\nprint(best)",
+      "options": ["15", "7", "9", "7\n15\n15"],
+      "answer": 0
+    },
+    {
+      "id": "lf-max-7f4c22",
+      "text": "What does this print?",
+      "code": "heights = [120, 95, 150, 130]\ntallest = heights[0]\nfor n in heights:\n    if n > tallest:\n        tallest = n\nprint(tallest)",
+      "options": ["150", "95", "130", "120\n120\n150\n150"],
+      "answer": 0
+    },
+    {
+      "id": "lf-max-2806e3",
+      "text": "What does this print?",
+      "code": "levels = [3, 8, 2, 5]\ntop = levels[0]\nfor n in levels:\n    if n > top:\n        top = n\nprint(top)",
+      "options": ["8", "2", "5", "3\n8\n8\n8"],
+      "answer": 0
+    },
+    {
+      "id": "lf-max-3147fd",
+      "text": "What does this print?",
+      "code": "fuel = [40, 70, 20, 55]\nmost = fuel[0]\nfor n in fuel:\n    if n > most:\n        most = n\nprint(most)",
+      "options": ["70", "20", "55", "40\n70\n70\n70"],
+      "answer": 0
+    },
+    {
+      "id": "lf-build-02efbc",
+      "text": "What does this print?",
+      "code": "numbers = [6, 14, 3, 25]\nbig = []\nfor n in numbers:\n    if n > 10:\n        big.append(n)\nprint(big)",
+      "options": ["[14, 25]", "[6, 3]", "[25]", "[]\n[14]\n[14]\n[14, 25]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-build-c974cc",
+      "text": "What does this print?",
+      "code": "temperatures = [30, 18, 25, 10]\ncold = []\nfor n in temperatures:\n    if n < 20:\n        cold.append(n)\nprint(cold)",
+      "options": ["[18, 10]", "[30, 25]", "[10]", "[]\n[18]\n[18]\n[18, 10]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-build-b69d0a",
+      "text": "What does this print?",
+      "code": "scores = [50, 75, 90, 40]\npassed = []\nfor n in scores:\n    if n >= 50:\n        passed.append(n)\nprint(passed)",
+      "options": ["[50, 75, 90]", "[40]", "[90]", "[50]\n[50, 75]\n[50, 75, 90]\n[50, 75, 90]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-build-d8e95c",
+      "text": "What does this print?",
+      "code": "prices = [3, 15, 7, 22]\ncheap = []\nfor n in prices:\n    if n <= 7:\n        cheap.append(n)\nprint(cheap)",
+      "options": ["[3, 7]", "[15, 22]", "[7]", "[3]\n[3]\n[3, 7]\n[3, 7]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-upper-c0c660",
+      "text": "What does this print?",
+      "code": "words = [\"Mars\", \"Moon\"]\nloud = []\nfor word in words:\n    loud.append(word.upper())\nprint(loud)",
+      "options": [
+        "['MARS', 'MOON']",
+        "['Mars', 'Moon']",
+        "['mars', 'moon']",
+        "['MARS']\n['MARS', 'MOON']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-upper-69f0eb",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Ken\"]\nshout = []\nfor n in names:\n    shout.append(n.upper())\nprint(shout)",
+      "options": [
+        "['TOMMY', 'LANCE', 'KEN']",
+        "['Tommy', 'Lance', 'Ken']",
+        "['tommy', 'lance', 'ken']",
+        "['TOMMY']\n['TOMMY', 'LANCE']\n['TOMMY', 'LANCE', 'KEN']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-upper-d7de3d",
+      "text": "What does this print?",
+      "code": "cities = [\"Rome\", \"Oslo\"]\nsigns = []\nfor c in cities:\n    signs.append(c.upper())\nprint(signs)",
+      "options": [
+        "['ROME', 'OSLO']",
+        "['Rome', 'Oslo']",
+        "['rome', 'oslo']",
+        "['ROME']\n['ROME', 'OSLO']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-double-05b0e5",
+      "text": "What does this print?",
+      "code": "prices = [10, 20, 30]\nfor i in range(len(prices)):\n    prices[i] = prices[i] * 2\nprint(prices)",
+      "options": [
+        "[20, 40, 60]",
+        "[12, 22, 32]",
+        "[10, 40, 60]",
+        "[20, 20, 30]\n[20, 40, 30]\n[20, 40, 60]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-double-a48016",
+      "text": "What does this print?",
+      "code": "points = [1, 5, 3, 4]\nfor i in range(len(points)):\n    points[i] = points[i] * 3\nprint(points)",
+      "options": [
+        "[3, 15, 9, 12]",
+        "[4, 8, 6, 7]",
+        "[1, 15, 9, 12]",
+        "[3, 5, 3, 4]\n[3, 15, 3, 4]\n[3, 15, 9, 4]\n[3, 15, 9, 12]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-double-a3e7ca",
+      "text": "What does this print?",
+      "code": "speeds = [4, 8]\nfor i in range(len(speeds)):\n    speeds[i] = speeds[i] * 10\nprint(speeds)",
+      "options": ["[40, 80]", "[14, 18]", "[4, 80]", "[40, 8]\n[40, 80]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-sum-da8df9",
+      "text": "Which program shows this?",
+      "output": "20",
+      "options": [
+        "prices = [4, 6, 10]\ntotal = 0\nfor p in prices:\n    total = total + p\nprint(total)",
+        "prices = [4, 6, 10]\ntotal = 0\nfor p in prices:\n    total = p\nprint(total)",
+        "prices = [4, 6, 10]\ntotal = 0\nfor p in prices:\n    total = total + 1\nprint(total)",
+        "prices = [4, 6, 10]\ntotal = 0\nfor p in prices:\n    total = total + p\n    print(total)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-sum-b5e3c4",
+      "text": "Which program shows this?",
+      "output": "25",
+      "options": [
+        "scores = [15, 9, 1]\npoints = 0\nfor s in scores:\n    points = points + s\nprint(points)",
+        "scores = [15, 9, 1]\npoints = 0\nfor s in scores:\n    points = s\nprint(points)",
+        "scores = [15, 9, 1]\npoints = 0\nfor s in scores:\n    points = points + 1\nprint(points)",
+        "scores = [15, 9, 1]\npoints = 0\nfor s in scores:\n    points = points + s\n    print(points)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-sum-588e4a",
+      "text": "Which program shows this?",
+      "output": "24",
+      "options": [
+        "ages = [7, 8, 9]\ntotal = 0\nfor a in ages:\n    total = total + a\nprint(total)",
+        "ages = [7, 8, 9]\ntotal = 0\nfor a in ages:\n    total = a\nprint(total)",
+        "ages = [7, 8, 9]\ntotal = 0\nfor a in ages:\n    total = total + 1\nprint(total)",
+        "ages = [7, 8, 9]\ntotal = 0\nfor a in ages:\n    total = total + a\n    print(total)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-sum-e41dec",
+      "text": "Which program shows this?",
+      "output": "175",
+      "options": [
+        "tanks = [100, 50, 25]\nfuel = 0\nfor tank in tanks:\n    fuel = fuel + tank\nprint(fuel)",
+        "tanks = [100, 50, 25]\nfuel = 0\nfor tank in tanks:\n    fuel = tank\nprint(fuel)",
+        "tanks = [100, 50, 25]\nfuel = 0\nfor tank in tanks:\n    fuel = fuel + 1\nprint(fuel)",
+        "tanks = [100, 50, 25]\nfuel = 0\nfor tank in tanks:\n    fuel = fuel + tank\n    print(fuel)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-each-355d25",
+      "text": "Which program shows this?",
+      "output": "red\ngreen\nblue",
+      "options": [
+        "colors = [\"red\", \"green\", \"blue\"]\nfor c in colors:\n    print(c)",
+        "colors = [\"red\", \"green\", \"blue\"]\nfor c in colors:\n    print(colors)",
+        "colors = [\"red\", \"green\", \"blue\"]\nfor c in range(len(colors)):\n    print(c)",
+        "colors = [\"red\", \"green\", \"blue\"]\nfor c in colors:\n    print(colors[0])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-each-98558c",
+      "text": "Which program shows this?",
+      "output": "Tommy\nLance",
+      "options": [
+        "names = [\"Tommy\", \"Lance\"]\nfor name in names:\n    print(name)",
+        "names = [\"Tommy\", \"Lance\"]\nfor name in names:\n    print(names)",
+        "names = [\"Tommy\", \"Lance\"]\nfor name in range(len(names)):\n    print(name)",
+        "names = [\"Tommy\", \"Lance\"]\nfor name in names:\n    print(names[0])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-each-327eac",
+      "text": "Which program shows this?",
+      "output": "7\n3\n9",
+      "options": [
+        "numbers = [7, 3, 9]\nfor n in numbers:\n    print(n)",
+        "numbers = [7, 3, 9]\nfor n in numbers:\n    print(numbers)",
+        "numbers = [7, 3, 9]\nfor n in range(len(numbers)):\n    print(n)",
+        "numbers = [7, 3, 9]\nfor n in numbers:\n    print(numbers[0])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-add-c7a046",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "prices = [3, 9, 12]\ntotal = 0\nfor p in prices:\n    ___\nprint(total)",
+      "output": "24",
+      "options": ["total = total + p", "total = p", "total = total + 1", "total + p"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-add-8c0faf",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "scores = [20, 5]\npoints = 0\nfor s in scores:\n    ___\nprint(points)",
+      "output": "25",
+      "options": ["points = points + s", "points = s", "points = points + 1", "points + s"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-add-7216f3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "weights = [6, 6, 1]\nload = 0\nfor w in weights:\n    ___\nprint(load)",
+      "output": "13",
+      "options": ["load = load + w", "load = w", "load = load + 1", "load + w"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-add-6d83ea",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "steps = [11, 22, 33]\nwalked = 0\nfor s in steps:\n    ___\nprint(walked)",
+      "output": "66",
+      "options": ["walked = walked + s", "walked = s", "walked = walked + 1", "walked + s"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-add-3993a5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "coins = [8, 2, 5, 1]\nmoney = 0\nfor c in coins:\n    ___\nprint(money)",
+      "output": "16",
+      "options": ["money = money + c", "money = c", "money = money + 1", "money + c"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-loop-0e6459",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "crew = [\"Mary\", \"Andrew\", \"Helen\"]\n___\n    print(f\"{i + 1}. {crew[i]}\")",
+      "output": "1. Mary\n2. Andrew\n3. Helen",
+      "options": [
+        "for i in range(len(crew)):",
+        "for i in crew:",
+        "for i in range(1, len(crew)):",
+        "for i in range(len(crew) - 1):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-loop-e5601d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Saturn\"]\n___\n    print(f\"{i + 1}. {planets[i]}\")",
+      "output": "1. Mars\n2. Venus\n3. Earth\n4. Saturn",
+      "options": [
+        "for i in range(len(planets)):",
+        "for i in planets:",
+        "for i in range(1, len(planets)):",
+        "for i in range(len(planets) - 1):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-loop-9e103a",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "tasks = [\"Refuel\", \"Launch\"]\n___\n    print(f\"{i + 1}. {tasks[i]}\")",
+      "output": "1. Refuel\n2. Launch",
+      "options": [
+        "for i in range(len(tasks)):",
+        "for i in tasks:",
+        "for i in range(1, len(tasks)):",
+        "for i in range(len(tasks) - 1):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-append-968a21",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "numbers = [3, 14, 9, 30]\nbig = []\nfor n in numbers:\n    if n > 10:\n        ___\nprint(big)",
+      "output": "[14, 30]",
+      "options": ["big.append(n)", "big = [n]", "big.append(10)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-append-14a7f5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "levels = [16, 4, 2, 7]\nlow = []\nfor n in levels:\n    if n < 5:\n        ___\nprint(low)",
+      "output": "[4, 2]",
+      "options": ["low.append(n)", "low = [n]", "low.append(5)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-append-4cb556",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "scores = [60, 45, 80]\npassed = []\nfor n in scores:\n    if n >= 50:\n        ___\nprint(passed)",
+      "output": "[60, 80]",
+      "options": ["passed.append(n)", "passed = [n]", "passed.append(50)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-plus-a2547b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "crew = [\"Mary\", \"Andrew\"]\nfor i in range(len(crew)):\n    print(f\"{i + ___}. {crew[i]}\")",
+      "output": "1. Mary\n2. Andrew",
+      "options": ["1", "0", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-plus-2440df",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\"]\nfor i in range(len(planets)):\n    print(f\"{i + ___}. {planets[i]}\")",
+      "output": "1. Mars\n2. Venus\n3. Earth",
+      "options": ["1", "0", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-plus-933c44",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "players = [\"Ana\", \"Rex\", \"Kai\"]\nfor i in range(len(players)):\n    print(f\"{i + ___}. {players[i]}\")",
+      "output": "1. Ana\n2. Rex\n3. Kai",
+      "options": ["1", "0", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-idx-b2d98a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "colors = [\"red\", \"green\", \"blue\"]\nfor i in range(len(colors)):\n    print(colors[___])",
+      "output": "red\ngreen\nblue",
+      "options": ["i", "i + 1", "0", "len(colors)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-idx-619e77",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [5, 10, 15, 20]\nfor i in range(len(numbers)):\n    print(numbers[___])",
+      "output": "5\n10\n15\n20",
+      "options": ["i", "i + 1", "0", "len(numbers)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-idx-b06c60",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "names = [\"Tommy\", \"Ken\"]\nfor i in range(len(names)):\n    print(names[___])",
+      "output": "Tommy\nKen",
+      "options": ["i", "i + 1", "0", "len(names)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-op-eb5723",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "ages = [12, 18, 30, 15]\nadults = 0\nfor n in ages:\n    if n ___ 18:\n        adults = adults + 1\nprint(adults)",
+      "output": "2",
+      "options": [">=", ">", "<=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-op-58d1ed",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "temperatures = [21, 35, 30, 28]\nhot_days = 0\nfor n in temperatures:\n    if n ___ 30:\n        hot_days = hot_days + 1\nprint(hot_days)",
+      "output": "1",
+      "options": [">", ">=", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-op-6062f2",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "speeds = [90, 120, 130, 100]\nsafe = 0\nfor n in speeds:\n    if n ___ 100:\n        safe = safe + 1\nprint(safe)",
+      "output": "2",
+      "options": ["<=", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-index-e3fa74",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = [\"Mary\", \"Andrew\", \"Helen\"]\nprint(\"Crew:\")\nfor i in range(len(crew)):\n    print(f\"{i + 1}. {crew[i + 1]}\")\nprint(\"End of list\")",
+      "output": "Crew:\n1. Mary\n2. Andrew\n3. Helen\nEnd of list",
+      "options": [
+        "print(f\"{i + 1}. {crew[i + 1]}\")",
+        "print(\"Crew:\")",
+        "crew = [\"Mary\", \"Andrew\", \"Helen\"]",
+        "for i in range(len(crew)):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-index-fb8601",
+      "text": "Which line stops this program from printing this?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Saturn\"]\nprint(\"Route:\")\nfor i in range(len(planets)):\n    print(f\"{i + 1}. {planets[i + 1]}\")\nprint(\"Route ready\")",
+      "output": "Route:\n1. Mars\n2. Venus\n3. Earth\n4. Saturn\nRoute ready",
+      "options": [
+        "print(f\"{i + 1}. {planets[i + 1]}\")",
+        "print(\"Route:\")",
+        "planets = [\"Mars\", \"Venus\", \"Earth\", \"Saturn\"]",
+        "print(\"Route ready\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-index-cc0681",
+      "text": "Which line stops this program from printing this?",
+      "code": "tasks = [\"Refuel\", \"Check engines\", \"Launch\"]\nprint(\"Checklist:\")\nfor i in range(len(tasks)):\n    print(f\"{i + 1}. {tasks[i + 1]}\")\nprint(\"All set\")",
+      "output": "Checklist:\n1. Refuel\n2. Check engines\n3. Launch\nAll set",
+      "options": [
+        "print(f\"{i + 1}. {tasks[i + 1]}\")",
+        "print(\"Checklist:\")",
+        "tasks = [\"Refuel\", \"Check engines\", \"Launch\"]",
+        "print(\"All set\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-range-0bea83",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = [\"Lance\", \"Cortez\", \"Phil\"]\nprint(\"Crew:\")\nfor i in range(1, len(crew)):\n    print(f\"{i + 1}. {crew[i]}\")\nprint(\"Ready\")",
+      "output": "Crew:\n1. Lance\n2. Cortez\n3. Phil\nReady",
+      "options": [
+        "for i in range(1, len(crew)):",
+        "print(\"Crew:\")",
+        "print(f\"{i + 1}. {crew[i]}\")",
+        "print(\"Ready\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-range-c78806",
+      "text": "Which line stops this program from printing this?",
+      "code": "planets = [\"Mercury\", \"Venus\"]\nprint(\"Route:\")\nfor i in range(1, len(planets)):\n    print(f\"{i + 1}. {planets[i]}\")\nprint(\"Done\")",
+      "output": "Route:\n1. Mercury\n2. Venus\nDone",
+      "options": [
+        "for i in range(1, len(planets)):",
+        "print(\"Route:\")",
+        "print(f\"{i + 1}. {planets[i]}\")",
+        "print(\"Done\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-range-6d5b78",
+      "text": "Which line stops this program from printing this?",
+      "code": "players = [\"Ana\", \"Rex\", \"Kai\", \"Zoe\"]\nprint(\"Players:\")\nfor i in range(1, len(players)):\n    print(f\"{i + 1}. {players[i]}\")\nprint(\"Let's play\")",
+      "output": "Players:\n1. Ana\n2. Rex\n3. Kai\n4. Zoe\nLet's play",
+      "options": [
+        "for i in range(1, len(players)):",
+        "print(\"Players:\")",
+        "print(f\"{i + 1}. {players[i]}\")",
+        "print(\"Let's play\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-sum-e6ba5a",
+      "text": "Which line stops this program from printing this?",
+      "code": "prices = [8, 12, 30]\ntotal = 0\nfor p in prices:\n    total = p\nprint(f\"Total of {prices}: {total}\")",
+      "output": "Total of [8, 12, 30]: 50",
+      "options": ["total = p", "total = 0", "prices = [8, 12, 30]", "for p in prices:"],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-sum-be8c1d",
+      "text": "Which line stops this program from printing this?",
+      "code": "scores = [4, 4, 1, 6]\npoints = 0\nfor s in scores:\n    points = s\nprint(f\"Points from {scores}: {points}\")",
+      "output": "Points from [4, 4, 1, 6]: 15",
+      "options": [
+        "points = s",
+        "points = 0",
+        "scores = [4, 4, 1, 6]",
+        "print(f\"Points from {scores}: {points}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-sum-7fedd9",
+      "text": "Which line stops this program from printing this?",
+      "code": "coins = [25, 75]\nmoney = 0\nfor c in coins:\n    money = c\nprint(f\"Money in {coins}: {money}\")",
+      "output": "Money in [25, 75]: 100",
+      "options": [
+        "money = c",
+        "money = 0",
+        "coins = [25, 75]",
+        "print(f\"Money in {coins}: {money}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-max-71510e",
+      "text": "Which line stops this program from printing this?",
+      "code": "scores = [12, 31, 18]\nbest = scores[0]\nfor n in scores:\n    if n < best:\n        best = n\nprint(f\"Highest of {scores}: {best}\")",
+      "output": "Highest of [12, 31, 18]: 31",
+      "options": ["if n < best:", "for n in scores:", "best = scores[0]", "best = n"],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-max-4157e3",
+      "text": "Which line stops this program from printing this?",
+      "code": "heights = [60, 85, 70, 40]\ntallest = heights[0]\nfor n in heights:\n    if n < tallest:\n        tallest = n\nprint(f\"Tallest of {heights}: {tallest}\")",
+      "output": "Tallest of [60, 85, 70, 40]: 85",
+      "options": ["if n < tallest:", "for n in heights:", "tallest = heights[0]", "tallest = n"],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-max-d3f8fb",
+      "text": "Which line stops this program from printing this?",
+      "code": "levels = [2, 9, 4]\ntop = levels[0]\nfor n in levels:\n    if n < top:\n        top = n\nprint(f\"Top level of {levels}: {top}\")",
+      "output": "Top level of [2, 9, 4]: 9",
+      "options": ["if n < top:", "for n in levels:", "top = levels[0]", "top = n"],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,614 @@
+{
+  "note": "Made by npm run make:quiz from the templates in strings-methods-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "sm-len-f86af5",
+      "text": "What does this print?",
+      "code": "ship = \"Star Runner\"\nprint(len(ship))",
+      "options": ["11", "Star Runner", "4", "10"],
+      "answer": 0
+    },
+    {
+      "id": "sm-len-73f01a",
+      "text": "What does this print?",
+      "code": "planet = \"Mars\"\nprint(len(planet))",
+      "options": ["4", "Mars", "6", "3"],
+      "answer": 0
+    },
+    {
+      "id": "sm-len-01cc62",
+      "text": "What does this print?",
+      "code": "code = \"A-17!\"\nprint(len(code))",
+      "options": ["5", "A-17!", "4", "6"],
+      "answer": 0
+    },
+    {
+      "id": "sm-len-8a2afa",
+      "text": "What does this print?",
+      "code": "city = \"Vice City\"\nprint(len(city))",
+      "options": ["9", "Vice City", "4", "8"],
+      "answer": 0
+    },
+    {
+      "id": "sm-len-a949fe",
+      "text": "What does this print?",
+      "code": "crew = \"Ana and Ben\"\nprint(len(crew))",
+      "options": ["11", "Ana and Ben", "4", "10"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-lost-1ebc3b",
+      "text": "What does this print?",
+      "code": "name = \"lance vance\"\nname.upper()\nprint(name)",
+      "options": ["lance vance", "LANCE VANCE", "name", "Lance vance"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-lost-33fce7",
+      "text": "What does this print?",
+      "code": "pilot = \"sonny\"\npilot.upper()\nprint(pilot)",
+      "options": ["sonny", "SONNY", "pilot", "Sonny"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-lost-6ef19d",
+      "text": "What does this print?",
+      "code": "captain = \"mercedes\"\ncaptain.upper()\nprint(captain)",
+      "options": ["mercedes", "MERCEDES", "captain", "Mercedes"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-lost-01b982",
+      "text": "What does this print?",
+      "code": "guest = \"ken rosenberg\"\nguest.upper()\nprint(guest)",
+      "options": ["ken rosenberg", "KEN ROSENBERG", "guest", "Ken rosenberg"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-kept-6c2cb4",
+      "text": "What does this print?",
+      "code": "call = \"Mayday\"\ncall = call.upper()\nprint(call)",
+      "options": ["MAYDAY", "Mayday", "mayday", "call"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-kept-690943",
+      "text": "What does this print?",
+      "code": "tag = \"VIP Guest\"\ntag = tag.lower()\nprint(tag)",
+      "options": ["vip guest", "VIP Guest", "VIP GUEST", "tag"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-kept-52211b",
+      "text": "What does this print?",
+      "code": "signal = \"Code Red\"\nsignal = signal.upper()\nprint(signal)",
+      "options": ["CODE RED", "Code Red", "code red", "signal"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-kept-b0e825",
+      "text": "What does this print?",
+      "code": "alert = \"HULL Breach\"\nalert = alert.lower()\nprint(alert)",
+      "options": ["hull breach", "HULL Breach", "HULL BREACH", "alert"],
+      "answer": 0
+    },
+    {
+      "id": "sm-index-00f82d",
+      "text": "What does this print?",
+      "code": "word = \"Galaxy\"\nprint(word[2])",
+      "options": ["l", "a", "Ga", "Galaxy"],
+      "answer": 0
+    },
+    {
+      "id": "sm-index-907219",
+      "text": "What does this print?",
+      "code": "word = \"Nebula\"\nprint(word[4])",
+      "options": ["l", "u", "a", "Nebu"],
+      "answer": 0
+    },
+    {
+      "id": "sm-index-3f0ba1",
+      "text": "What does this print?",
+      "code": "planet = \"Saturn\"\nprint(planet[1])",
+      "options": ["a", "S", "t", "Saturn"],
+      "answer": 0
+    },
+    {
+      "id": "sm-index-dceba1",
+      "text": "What does this print?",
+      "code": "name = \"Comet\"\nprint(name[3])",
+      "options": ["e", "m", "t", "Com"],
+      "answer": 0
+    },
+    {
+      "id": "sm-index-aea7c5",
+      "text": "What does this print?",
+      "code": "code = \"Orbiter\"\nprint(code[5])",
+      "options": ["e", "t", "r", "Orbit"],
+      "answer": 0
+    },
+    {
+      "id": "sm-slice-cc932f",
+      "text": "What does this print?",
+      "code": "word = \"Starlight\"\nprint(word[0:4])",
+      "options": ["Star", "Starl", "light", "S"],
+      "answer": 0
+    },
+    {
+      "id": "sm-slice-a085ca",
+      "text": "What does this print?",
+      "code": "word = \"Moonbases\"\nprint(word[4:8])",
+      "options": ["base", "bases", "s", "b"],
+      "answer": 0
+    },
+    {
+      "id": "sm-slice-08b421",
+      "text": "What does this print?",
+      "code": "ship = \"Voyager\"\nprint(ship[2:5])",
+      "options": ["yag", "yage", "er", "y"],
+      "answer": 0
+    },
+    {
+      "id": "sm-slice-fb20f6",
+      "text": "What does this print?",
+      "code": "city = \"Vicetown\"\nprint(city[0:4])",
+      "options": ["Vice", "Vicet", "town", "V"],
+      "answer": 0
+    },
+    {
+      "id": "sm-slice-3799b4",
+      "text": "What does this print?",
+      "code": "code = \"ZX81Alpha\"\nprint(code[2:4])",
+      "options": ["81", "81A", "Alpha", "8"],
+      "answer": 0
+    },
+    {
+      "id": "sm-concat-fb2bde",
+      "text": "What does this print?",
+      "code": "first_name = \"Lance\"\nlast_name = \"Vance\"\nprint(first_name + \" \" + last_name)",
+      "options": ["Lance Vance", "LanceVance", "first_name last_name", "Vance Lance"],
+      "answer": 0
+    },
+    {
+      "id": "sm-concat-8f48b1",
+      "text": "What does this print?",
+      "code": "first_name = \"Ken\"\nlast_name = \"Rosenberg\"\nprint(first_name + \" \" + last_name)",
+      "options": ["Ken Rosenberg", "KenRosenberg", "first_name last_name", "Rosenberg Ken"],
+      "answer": 0
+    },
+    {
+      "id": "sm-concat-ec383f",
+      "text": "What does this print?",
+      "code": "first_name = \"Kent\"\nlast_name = \"Paul\"\nprint(first_name + \" \" + last_name)",
+      "options": ["Kent Paul", "KentPaul", "first_name last_name", "Paul Kent"],
+      "answer": 0
+    },
+    {
+      "id": "sm-concat-acc6d5",
+      "text": "What does this print?",
+      "code": "ship = \"Nova\"\nport = \"Prime\"\nprint(ship + \" \" + port)",
+      "options": ["Nova Prime", "NovaPrime", "ship port", "Prime Nova"],
+      "answer": 0
+    },
+    {
+      "id": "sm-concat-2618a6",
+      "text": "What does this print?",
+      "code": "city = \"Vice\"\nzone = \"Beach\"\nprint(city + \" \" + zone)",
+      "options": ["Vice Beach", "ViceBeach", "city zone", "Beach Vice"],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-slice-8d0405",
+      "text": "Which program shows this?",
+      "output": "And",
+      "options": [
+        "word = \"Andromeda\"\nprint(word[0:3])",
+        "word = \"Andromeda\"\nprint(word[0:4])",
+        "word = \"Andromeda\"\nprint(word[0:2])",
+        "word = \"Andromeda\"\nprint(word[1:4])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-slice-0891d4",
+      "text": "Which program shows this?",
+      "output": "Space",
+      "options": [
+        "word = \"Spaceport\"\nprint(word[0:5])",
+        "word = \"Spaceport\"\nprint(word[0:6])",
+        "word = \"Spaceport\"\nprint(word[0:4])",
+        "word = \"Spaceport\"\nprint(word[1:6])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-slice-01bc4c",
+      "text": "Which program shows this?",
+      "output": "Rose",
+      "options": [
+        "name = \"Rosenberg\"\nprint(name[0:4])",
+        "name = \"Rosenberg\"\nprint(name[0:5])",
+        "name = \"Rosenberg\"\nprint(name[0:3])",
+        "name = \"Rosenberg\"\nprint(name[1:5])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-slice-9408e7",
+      "text": "Which program shows this?",
+      "output": "unde",
+      "options": [
+        "ship = \"Thunderbolt\"\nprint(ship[2:6])",
+        "ship = \"Thunderbolt\"\nprint(ship[2:7])",
+        "ship = \"Thunderbolt\"\nprint(ship[2:5])",
+        "ship = \"Thunderbolt\"\nprint(ship[3:7])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-upper-17a4df",
+      "text": "Which program shows this?",
+      "output": "SONNY",
+      "options": [
+        "name = \"sonny\"\nname = name.upper()\nprint(name)",
+        "name = \"sonny\"\nname.upper()\nprint(name)",
+        "name = \"sonny\"\nname = name.lower()\nprint(name)",
+        "name = \"sonny\"\nname = name.upper()\nprint(\"name\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-upper-b3b7ae",
+      "text": "Which program shows this?",
+      "output": "MAYDAY",
+      "options": [
+        "call = \"mayday\"\ncall = call.upper()\nprint(call)",
+        "call = \"mayday\"\ncall.upper()\nprint(call)",
+        "call = \"mayday\"\ncall = call.lower()\nprint(call)",
+        "call = \"mayday\"\ncall = call.upper()\nprint(\"call\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-upper-b1fa3c",
+      "text": "Which program shows this?",
+      "output": "NEPTUNE",
+      "options": [
+        "planet = \"neptune\"\nplanet = planet.upper()\nprint(planet)",
+        "planet = \"neptune\"\nplanet.upper()\nprint(planet)",
+        "planet = \"neptune\"\nplanet = planet.lower()\nprint(planet)",
+        "planet = \"neptune\"\nplanet = planet.upper()\nprint(\"planet\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-upper-2685a7",
+      "text": "Which program shows this?",
+      "output": "RED FIVE",
+      "options": [
+        "team = \"red five\"\nteam = team.upper()\nprint(team)",
+        "team = \"red five\"\nteam.upper()\nprint(team)",
+        "team = \"red five\"\nteam = team.lower()\nprint(team)",
+        "team = \"red five\"\nteam = team.upper()\nprint(\"team\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-index-5b9532",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"Pluto\"\nprint(word[___])",
+      "output": "t",
+      "options": ["3", "4", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-index-2b691d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"Jupiter\"\nprint(word[___])",
+      "output": "p",
+      "options": ["2", "3", "1", "7"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-index-d56197",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "code = \"QZ7RX\"\nprint(code[___])",
+      "output": "Z",
+      "options": ["1", "2", "0", "5"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-index-1ddbe0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Rosenberg\"\nprint(name[___])",
+      "output": "n",
+      "options": ["4", "5", "3", "9"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-end-ca4e44",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"Spaceship\"\nprint(word[0:___])",
+      "output": "Space",
+      "options": ["5", "4", "6", "1"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-end-c015eb",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"Moonlight\"\nprint(word[0:___])",
+      "output": "Moon",
+      "options": ["4", "3", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-end-1c7161",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Mercedes\"\nprint(name[0:___])",
+      "output": "Mer",
+      "options": ["3", "2", "4", "1"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-end-98ae03",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "ship = \"Starfire\"\nprint(ship[0:___])",
+      "output": "Star",
+      "options": ["4", "3", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-method-3b6e9a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "call = \"Mayday\"\nprint(call.___())",
+      "output": "MAYDAY",
+      "options": ["upper", "lower", "len", "UPPER"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-method-ccc2bd",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "tag = \"Guest List\"\nprint(tag.___())",
+      "output": "guest list",
+      "options": ["lower", "upper", "len", "LOWER"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-method-eea636",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "signal = \"all clear\"\nprint(signal.___())",
+      "output": "ALL CLEAR",
+      "options": ["upper", "lower", "len", "UPPER"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-method-8c60ad",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "alert = \"LOW Fuel\"\nprint(alert.___())",
+      "output": "low fuel",
+      "options": ["lower", "upper", "len", "LOWER"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-keep-ce714f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"tommy\"\n___\nprint(name)",
+      "output": "TOMMY",
+      "options": [
+        "name = name.upper()",
+        "name.upper()",
+        "name == name.upper()",
+        "name = upper(name)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-keep-09c4db",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "call = \"MAYDAY\"\n___\nprint(call)",
+      "output": "mayday",
+      "options": [
+        "call = call.lower()",
+        "call.lower()",
+        "call == call.lower()",
+        "call = lower(call)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-keep-4ed618",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "pilot = \"kent paul\"\n___\nprint(pilot)",
+      "output": "KENT PAUL",
+      "options": [
+        "pilot = pilot.upper()",
+        "pilot.upper()",
+        "pilot == pilot.upper()",
+        "pilot = upper(pilot)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-keep-7903ce",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "tag = \"VIP\"\n___\nprint(tag)",
+      "output": "vip",
+      "options": ["tag = tag.lower()", "tag.lower()", "tag == tag.lower()", "tag = lower(tag)"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-keep-2570cc",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "planet = \"venus\"\n___\nprint(planet)",
+      "output": "VENUS",
+      "options": [
+        "planet = planet.upper()",
+        "planet.upper()",
+        "planet == planet.upper()",
+        "planet = upper(planet)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-concat-addea2",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "first_name = \"Tommy\"\nlast_name = \"Vercetti\"\n___\nprint(full_name)",
+      "output": "Tommy Vercetti",
+      "options": [
+        "full_name = first_name + \" \" + last_name",
+        "full_name = first_name + last_name",
+        "full_name = \"first_name last_name\"",
+        "full_name = last_name + \" \" + first_name"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-concat-106516",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "first_name = \"Sonny\"\nlast_name = \"Forelli\"\n___\nprint(full_name)",
+      "output": "Sonny Forelli",
+      "options": [
+        "full_name = first_name + \" \" + last_name",
+        "full_name = first_name + last_name",
+        "full_name = \"first_name last_name\"",
+        "full_name = last_name + \" \" + first_name"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-concat-8f8b7c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "first_name = \"Ada\"\nlast_name = \"Lovelace\"\n___\nprint(full_name)",
+      "output": "Ada Lovelace",
+      "options": [
+        "full_name = first_name + \" \" + last_name",
+        "full_name = first_name + last_name",
+        "full_name = \"first_name last_name\"",
+        "full_name = last_name + \" \" + first_name"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-concat-bac74c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "ship = \"Falcon\"\nmodel = \"Nine\"\n___\nprint(label)",
+      "output": "Falcon Nine",
+      "options": [
+        "label = ship + \" \" + model",
+        "label = ship + model",
+        "label = \"ship model\"",
+        "label = model + \" \" + ship"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-concat-1878d1",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "city = \"Vice\"\nzone = \"Port\"\n___\nprint(place)",
+      "output": "Vice Port",
+      "options": [
+        "place = city + \" \" + zone",
+        "place = city + zone",
+        "place = \"city zone\"",
+        "place = zone + \" \" + city"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-method-cae8dc",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"Sonny\"\nloud = name.lower()\nprint(name)\nprint(loud)",
+      "output": "Sonny\nSONNY",
+      "options": ["loud = name.lower()", "name = \"Sonny\"", "print(name)", "print(loud)"],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-method-695fae",
+      "text": "Which line stops this program from printing this?",
+      "code": "call = \"MayDay\"\nquiet = call.upper()\nprint(call)\nprint(quiet)",
+      "output": "MayDay\nmayday",
+      "options": ["quiet = call.upper()", "call = \"MayDay\"", "print(call)", "print(quiet)"],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-method-ad089c",
+      "text": "Which line stops this program from printing this?",
+      "code": "planet = \"Neptune\"\nbig = planet.lower()\nprint(planet)\nprint(big)",
+      "output": "Neptune\nNEPTUNE",
+      "options": ["big = planet.lower()", "planet = \"Neptune\"", "print(planet)", "print(big)"],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-method-a37b23",
+      "text": "Which line stops this program from printing this?",
+      "code": "tag = \"VIP Guest\"\nsmall = tag.upper()\nprint(tag)\nprint(small)",
+      "output": "VIP Guest\nvip guest",
+      "options": ["small = tag.upper()", "tag = \"VIP Guest\"", "print(tag)", "print(small)"],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-index-08803f",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"Nebula\"\nprint(word)\nprint(word[0:3])\nprint(word[3])",
+      "output": "Nebula\nNeb\nb",
+      "options": ["print(word[3])", "print(word[0:3])", "print(word)", "word = \"Nebula\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-index-976dc7",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"Galaxy\"\nprint(word)\nprint(word[0:2])\nprint(word[5])",
+      "output": "Galaxy\nGa\nx",
+      "options": ["print(word[5])", "print(word[0:2])", "print(word)", "word = \"Galaxy\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-index-fc7c22",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"Mercedes\"\nprint(name)\nprint(name[0:4])\nprint(name[2])",
+      "output": "Mercedes\nMerc\ne",
+      "options": ["print(name[2])", "print(name[0:4])", "print(name)", "name = \"Mercedes\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-index-5d69f5",
+      "text": "Which line stops this program from printing this?",
+      "code": "code = \"QZ7RX\"\nprint(code)\nprint(code[0:2])\nprint(code[4])",
+      "output": "QZ7RX\nQZ\nR",
+      "options": ["print(code[4])", "print(code[0:2])", "print(code)", "code = \"QZ7RX\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-slice-a6582b",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"Starlight\"\nprint(word)\nprint(word[0])\nprint(word[4:8])",
+      "output": "Starlight\nS\nlight",
+      "options": ["print(word[4:8])", "print(word[0])", "print(word)", "word = \"Starlight\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-slice-cbffec",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"Moonbase\"\nprint(word)\nprint(word[0])\nprint(word[0:3])",
+      "output": "Moonbase\nM\nMoon",
+      "options": ["print(word[0:3])", "print(word[0])", "print(word)", "word = \"Moonbase\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-slice-7986f8",
+      "text": "Which line stops this program from printing this?",
+      "code": "ship = \"Voyager\"\nprint(ship)\nprint(ship[0])\nprint(ship[2:4])",
+      "output": "Voyager\nV\nyag",
+      "options": ["print(ship[2:4])", "print(ship[0])", "print(ship)", "ship = \"Voyager\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-slice-79dd3b",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"Rosenberg\"\nprint(name)\nprint(name[0])\nprint(name[4:8])",
+      "output": "Rosenberg\nR\nnberg",
+      "options": ["print(name[4:8])", "print(name[0])", "print(name)", "name = \"Rosenberg\""],
+      "answer": 0
+    }
+  ]
+}

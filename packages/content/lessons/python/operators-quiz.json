@@ -1,0 +1,770 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does `17 / 5` give?",
+      "options": ["3.4", "3", "2", "3.5"],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does `17 // 5` give?",
+      "options": ["3.4", "3", "2", "4"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "What does `17 % 5` give?",
+      "options": ["3", "3.4", "2", "0.4"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What does the lesson call the `//` operator?",
+      "options": ["Modulo", "Power", "Double division", "Integer division"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "What does the lesson call the `%` operator?",
+      "options": ["Modulo", "Percent", "Integer division", "Power"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "print(6 / 2)",
+      "options": ["3", "3.0", "6 / 2", "3.5"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "print(2 ** 3)",
+      "options": ["6", "5", "8", "23"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What does `a ** b` mean?",
+      "options": [
+        "a times b",
+        "a divided by b, without the remainder",
+        "The remainder of a divided by b",
+        "a to the power of b: a multiplied by itself b times"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "print(2 + 3 * 4)",
+      "options": ["14", "20", "24", "9"],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "print((2 + 3) * 4)",
+      "options": ["14", "20", "24", "9"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Which condition is True when n is even?",
+      "options": ["n // 2 == 0", "n / 2 == 0", "n % 2 == 0", "n % 2 == 1"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "n is 7. What does `n % 2` give?",
+      "options": ["0", "3", "3.5", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Why does the lesson call `%` extremely useful?",
+      "options": [
+        "It tells whether a number divides by another with no remainder, like an even number by 2",
+        "It prints a number as a percent",
+        "It rounds a number to the nearest whole one",
+        "It makes a division faster"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "What does `10 % 5` give?",
+      "options": ["2", "0", "5", "2.0"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does `3 % 5` give?",
+      "options": ["0", "2", "3", "0.6"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "What is the difference between `17 / 5` and `17 // 5`?",
+      "options": [
+        "None, both give 3.4",
+        "/ gives the remainder, // gives the whole part",
+        "// gives 3.4, / gives 3",
+        "/ keeps the decimals and gives 3.4; // keeps only the whole part and gives 3"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "`a` is 17 and `b` is 5. Which line prints 85?",
+      "options": ["print(a * b)", "print(a ** b)", "print(a + b)", "print(a // b)"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "print(5 ** 2)",
+      "options": ["10", "25", "7", "52"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Which line prints 81?",
+      "options": ["print(3 * 4)", "print(4 ** 3)", "print(3 ** 4)", "print(3 ** 3)"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "You are not sure which operation Python does first. What does the lesson say to do?",
+      "options": [
+        "Always write the addition first",
+        "Use // instead of /",
+        "Put a space around every operator",
+        "Add parentheses"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "In `10 - 2 * 3`, what does Python do first?",
+      "options": [
+        "2 * 3, then 10 - 6",
+        "10 - 2, then 8 * 3",
+        "Whatever comes first from the left",
+        "It stops with an error: it needs parentheses"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "print(8 / 2 + 2)",
+      "options": ["2.0", "6.0", "6", "2"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "In the Calculation Panel mission the user types 17, then 5. What is the fourth line the program prints?",
+      "options": ["3", "2", "3.4", "85"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "In the Calculation Panel mission the user types 7, then 2. What does the program print for `a ** b`?",
+      "options": ["14", "128", "9", "49"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "In the Calculation Panel mission the user types 9, then 3. What does the program print for `a / b`?",
+      "options": ["3.0", "3", "0", "27"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "In the Calculation Panel mission the user types 9, then 4. What does the program print for the remainder?",
+      "options": ["2", "1", "2.25", "0"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Why may the Calculation Panel mission assume that `b` is not 0?",
+      "options": [
+        "0 is not a whole number",
+        "input() can't read a 0",
+        "Dividing by 0 stops the program with an error",
+        "Every operation with 0 gives 0"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "x = 15\nif x % 5 == 0:\n    print(\"Divides by 5\")\nelse:\n    print(\"Has a remainder\")",
+      "options": ["Has a remainder", "0", "3", "Divides by 5"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "print(20 // 6)\nprint(20 % 6)",
+      "options": ["3\n2", "3.33\n2", "2\n3", "3\n0"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "25 candies are shared equally among 4 children. Which line prints how many are left over?",
+      "options": ["print(25 // 4)", "print(25 % 4)", "print(25 / 4)", "print(25 - 4)"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "op-div",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a / b)",
+      "values": [
+        {
+          "a": 7,
+          "b": 2
+        },
+        {
+          "a": 9,
+          "b": 4
+        },
+        {
+          "a": 12,
+          "b": 4
+        },
+        {
+          "a": 10,
+          "b": 4
+        }
+      ],
+      "mistakes": [
+        ["a / b", "a // b"],
+        ["a / b", "a % b"],
+        ["a / b", "a * b"],
+        ["a / b", "a - b"]
+      ]
+    },
+    {
+      "id": "op-intdiv",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a // b)",
+      "values": [
+        {
+          "a": 13,
+          "b": 4
+        },
+        {
+          "a": 9,
+          "b": 2
+        },
+        {
+          "a": 22,
+          "b": 5
+        },
+        {
+          "a": 11,
+          "b": 4
+        }
+      ],
+      "mistakes": [
+        ["a // b", "a / b"],
+        ["a // b", "a % b"],
+        ["a // b", "a * b"],
+        ["a // b", "a - b"]
+      ]
+    },
+    {
+      "id": "op-mod",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a % b)",
+      "values": [
+        {
+          "a": 14,
+          "b": 4
+        },
+        {
+          "a": 23,
+          "b": 5
+        },
+        {
+          "a": 19,
+          "b": 4
+        },
+        {
+          "a": 30,
+          "b": 6
+        }
+      ],
+      "mistakes": [
+        ["a % b", "a // b"],
+        ["a % b", "a / b"],
+        ["a % b", "a - b"],
+        ["a % b", "a * b"]
+      ]
+    },
+    {
+      "id": "op-pow",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a ** b)",
+      "values": [
+        {
+          "a": 3,
+          "b": 2
+        },
+        {
+          "a": 2,
+          "b": 5
+        },
+        {
+          "a": 4,
+          "b": 3
+        },
+        {
+          "a": 5,
+          "b": 3
+        },
+        {
+          "a": 10,
+          "b": 2
+        }
+      ],
+      "mistakes": [
+        ["a ** b", "a * b"],
+        ["a ** b", "b ** a"],
+        ["a ** b", "a + b"]
+      ]
+    },
+    {
+      "id": "op-order",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "print({{a}} + {{b}} * {{c}})",
+      "values": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 5
+        },
+        {
+          "a": 4,
+          "b": 2,
+          "c": 3
+        },
+        {
+          "a": 5,
+          "b": 5,
+          "c": 2
+        },
+        {
+          "a": 3,
+          "b": 4,
+          "c": 10
+        }
+      ],
+      "mistakes": [
+        ["{{a}} + {{b}} * {{c}}", "({{a}} + {{b}}) * {{c}}"],
+        ["{{a}} + {{b}} * {{c}}", "{{a}} + {{b}} + {{c}}"],
+        ["{{a}} + {{b}} * {{c}}", "{{a}} * {{b}} * {{c}}"]
+      ]
+    },
+    {
+      "id": "op-paren",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "print(({{a}} + {{b}}) * {{c}})",
+      "values": [
+        {
+          "a": 3,
+          "b": 1,
+          "c": 4
+        },
+        {
+          "a": 2,
+          "b": 6,
+          "c": 3
+        },
+        {
+          "a": 10,
+          "b": 5,
+          "c": 2
+        }
+      ],
+      "mistakes": [
+        ["({{a}} + {{b}}) * {{c}}", "{{a}} + {{b}} * {{c}}"],
+        ["({{a}} + {{b}}) * {{c}}", "{{a}} + {{b}} + {{c}}"],
+        ["({{a}} + {{b}}) * {{c}}", "{{a}} * {{b}} * {{c}}"]
+      ]
+    },
+    {
+      "id": "op-even",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "n = {{n}}\nif n % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")",
+      "values": [
+        {
+          "n": 14
+        },
+        {
+          "n": 9
+        },
+        {
+          "n": 30
+        },
+        {
+          "n": 21
+        }
+      ],
+      "mistakes": [
+        ["n % 2 == 0", "n % 2 == 1"],
+        ["if n % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")", "print(n % 2)"],
+        ["if n % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")", "print(n // 2)"]
+      ]
+    },
+    {
+      "id": "op-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a {{op}} b)",
+      "values": [
+        {
+          "a": 11,
+          "b": 3,
+          "op": "//",
+          "m1": "%",
+          "m2": "/",
+          "m3": "*"
+        },
+        {
+          "a": 11,
+          "b": 3,
+          "op": "%",
+          "m1": "//",
+          "m2": "-",
+          "m3": "/"
+        },
+        {
+          "a": 8,
+          "b": 3,
+          "op": "**",
+          "m1": "*",
+          "m2": "//",
+          "m3": "+"
+        },
+        {
+          "a": 9,
+          "b": 2,
+          "op": "/",
+          "m1": "//",
+          "m2": "%",
+          "m3": "*"
+        },
+        {
+          "a": 16,
+          "b": 4,
+          "op": "//",
+          "m1": "/",
+          "m2": "%",
+          "m3": "-"
+        }
+      ],
+      "mistakes": [
+        ["a {{op}} b", "a {{m1}} b"],
+        ["a {{op}} b", "a {{m2}} b"],
+        ["a {{op}} b", "a {{m3}} b"]
+      ]
+    },
+    {
+      "id": "op-which-paren",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "print(({{a}} + {{b}}) * {{c}})",
+      "values": [
+        {
+          "a": 1,
+          "b": 4,
+          "c": 3
+        },
+        {
+          "a": 6,
+          "b": 2,
+          "c": 5
+        },
+        {
+          "a": 3,
+          "b": 3,
+          "c": 10
+        }
+      ],
+      "mistakes": [
+        ["({{a}} + {{b}}) * {{c}}", "{{a}} + {{b}} * {{c}}"],
+        ["({{a}} + {{b}}) * {{c}}", "({{a}} * {{b}}) + {{c}}"],
+        ["({{a}} + {{b}}) * {{c}}", "{{a}} + {{b}} + {{c}}"]
+      ]
+    },
+    {
+      "id": "op-gap-op",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a ___ b)",
+      "values": [
+        {
+          "a": 14,
+          "b": 4,
+          "op": "//",
+          "w1": "/",
+          "w2": "%",
+          "w3": "*"
+        },
+        {
+          "a": 14,
+          "b": 4,
+          "op": "%",
+          "w1": "//",
+          "w2": "/",
+          "w3": "-"
+        },
+        {
+          "a": 6,
+          "b": 4,
+          "op": "/",
+          "w1": "//",
+          "w2": "%",
+          "w3": "*"
+        },
+        {
+          "a": 3,
+          "b": 4,
+          "op": "**",
+          "w1": "*",
+          "w2": "//",
+          "w3": "%"
+        },
+        {
+          "a": 20,
+          "b": 5,
+          "op": "//",
+          "w1": "/",
+          "w2": "%",
+          "w3": "-"
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "op-gap-pow",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "print({{a}} ** ___)",
+      "values": [
+        {
+          "a": 2,
+          "e": 4,
+          "w1": 8,
+          "w2": 2,
+          "w3": 3
+        },
+        {
+          "a": 3,
+          "e": 3,
+          "w1": 9,
+          "w2": 2,
+          "w3": 4
+        },
+        {
+          "a": 5,
+          "e": 2,
+          "w1": 5,
+          "w2": 10,
+          "w3": 3
+        },
+        {
+          "a": 10,
+          "e": 3,
+          "w1": 100,
+          "w2": 2,
+          "w3": 4
+        }
+      ],
+      "answer": "{{e}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "op-gap-line",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "a = {{a}}\nb = {{b}}\n___",
+      "values": [
+        {
+          "a": 13,
+          "b": 5,
+          "op": "%",
+          "w1": "//",
+          "w2": "/"
+        },
+        {
+          "a": 13,
+          "b": 5,
+          "op": "//",
+          "w1": "%",
+          "w2": "/"
+        },
+        {
+          "a": 9,
+          "b": 2,
+          "op": "/",
+          "w1": "//",
+          "w2": "%"
+        },
+        {
+          "a": 4,
+          "b": 3,
+          "op": "**",
+          "w1": "*",
+          "w2": "+"
+        },
+        {
+          "a": 7,
+          "b": 2,
+          "op": "*",
+          "w1": "**",
+          "w2": "+"
+        }
+      ],
+      "answer": "print(a {{op}} b)",
+      "wrong": ["print(a {{w1}} b)", "print(a {{w2}} b)", "print(\"a {{op}} b\")"]
+    },
+    {
+      "id": "op-gap-panel",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a + b)\nprint(a - b)\n___\nprint(a / b)",
+      "values": [
+        {
+          "a": 6,
+          "b": 3
+        },
+        {
+          "a": 8,
+          "b": 2
+        },
+        {
+          "a": 10,
+          "b": 4
+        },
+        {
+          "a": 9,
+          "b": 3
+        }
+      ],
+      "answer": "print(a * b)",
+      "wrong": ["print(a ** b)", "print(a // b)", "print(a * a)"]
+    },
+    {
+      "id": "op-bad-div",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a % b)\nprint(a // b)",
+      "values": [
+        {
+          "a": 9,
+          "b": 2
+        },
+        {
+          "a": 13,
+          "b": 4
+        },
+        {
+          "a": 22,
+          "b": 5
+        },
+        {
+          "a": 11,
+          "b": 3
+        },
+        {
+          "a": 17,
+          "b": 4
+        }
+      ],
+      "bug": ["a // b", "a / b"]
+    },
+    {
+      "id": "op-bad-paren",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "a = {{a}}\nb = {{b}}\nc = {{c}}\ntotal = (a + b) * c\nprint(f\"({a} + {b}) * {c} = {total}\")",
+      "values": [
+        {
+          "a": 1,
+          "b": 4,
+          "c": 3
+        },
+        {
+          "a": 5,
+          "b": 1,
+          "c": 2
+        },
+        {
+          "a": 3,
+          "b": 2,
+          "c": 6
+        },
+        {
+          "a": 4,
+          "b": 4,
+          "c": 2
+        }
+      ],
+      "bug": ["(a + b) * c", "a + b * c"]
+    },
+    {
+      "id": "op-bad-rest",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "minutes = {{m}}\nhours = minutes // 60\nrest = minutes % 60\nprint(f\"{hours} h {rest} min\")",
+      "values": [
+        {
+          "m": 135
+        },
+        {
+          "m": 75
+        },
+        {
+          "m": 200
+        },
+        {
+          "m": 90
+        }
+      ],
+      "bug": ["rest = minutes % 60", "rest = minutes // 60"]
+    },
+    {
+      "id": "op-bad-hours",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "minutes = {{m}}\nhours = minutes // 60\nrest = minutes % 60\nprint(f\"{hours} h {rest} min\")",
+      "values": [
+        {
+          "m": 150
+        },
+        {
+          "m": 65
+        },
+        {
+          "m": 230
+        }
+      ],
+      "bug": ["hours = minutes // 60", "hours = minutes / 60"]
+    }
+  ]
+}

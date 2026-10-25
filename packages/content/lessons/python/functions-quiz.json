@@ -1,0 +1,978 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does `def` do?",
+      "options": [
+        "It defines a function: a named block of code we can run again and again",
+        "It runs a function right away",
+        "It prints the lines under it once",
+        "It makes a variable called def"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does this program print?",
+      "code": "def greet():\n    print(\"Hi\")",
+      "options": [
+        "Hi",
+        "greet",
+        "Nothing: the function is defined but never called",
+        "It stops with an error"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Which line runs a function called `greet` that takes nothing?",
+      "options": ["def greet()", "greet()", "greet", "print(greet)"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "What has to come at the end of a `def` line?",
+      "options": [";", ".", ",", ":"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "In `def my_function(name, age):`, what are `name` and `age`?",
+      "options": [
+        "Two variables that have to exist before the function",
+        "The function's name, in two parts",
+        "The function's parameters: they hold the values it is called with",
+        "Two texts the function prints as they are"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "With `def my_function(name, age):`, the call is `my_function(\"Cortez\", 60)`. What does `age` hold?",
+      "options": ["60", "\"Cortez\"", "\"Cortez\" and 60", "Nothing, it has to be set first"],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "Can we name a function's parameters as we like?",
+      "options": [
+        "No: they have to be name and age",
+        "Yes: the function uses those names inside it, whatever they are",
+        "No: they have to match variables outside the function",
+        "Only with one letter, like n and a"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "def show(name, age):\n    print(f\"{name} is {age}\")\n\nshow(42, \"Tommy\")",
+      "options": ["Tommy is 42", "name is age", "It stops with an error", "42 is Tommy"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Why does the lesson put the for loop in a function instead of copying it?",
+      "options": [
+        "A function runs faster than a for loop",
+        "A for loop can only run inside a function",
+        "We write it once and call it as often as we like, with other values",
+        "So the loop runs only once"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "How many times does this print Hi?",
+      "code": "def hi():\n    print(\"Hi\")\n\nhi()\nhi()\nhi()",
+      "options": ["3", "1", "4", "0"],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "What happens when this runs?",
+      "code": "greet()\n\ndef greet():\n    print(\"Hello\")",
+      "options": [
+        "It prints Hello",
+        "It stops with an error: greet doesn't exist yet when it is called",
+        "It prints nothing",
+        "It prints Hello twice"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "What happens when this runs?",
+      "code": "def add(a, b):\n    print(a + b)\n\nadd(5)",
+      "options": [
+        "It prints 5",
+        "It prints 5 + b",
+        "It prints nothing",
+        "It stops with an error: b gets no value"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Which lines belong to a function?",
+      "options": [
+        "Every line after def, to the end of the program",
+        "Only the first line under def",
+        "The indented lines under its def line",
+        "The lines where it is called"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "In the lesson, what does `f(\"Admin\", False)` print?",
+      "code": "def f(name, status):\n    if(status == True):\n        print(f\"{name} is online\")\n    else:\n        print(f\"{name} is offline\")",
+      "options": [
+        "Admin is online",
+        "Admin is offline",
+        "name is offline",
+        "Nothing: the function needs is_online"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "In the lesson, `f(name, is_online)` calls `def f(name, status):`. Inside f, what holds the value of `is_online`?",
+      "options": ["is_online", "name", "f", "status"],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "In `def my_function(name, age):`, what is `my_function`?",
+      "options": [
+        "The function's name, which we use to call it",
+        "Its first parameter",
+        "A text the function prints",
+        "A keyword of Python, like def"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "In the Onboard Calculator mission, what does `calculator(14, 12, \"+\")` print?",
+      "options": ["26", "14 + 12", "14 + 12 = 26", "Invalid operator"],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "In the Onboard Calculator mission, what does `calculator(20, 4, \"/\")` print?",
+      "options": ["20 / 4 = 5", "20 / 4 = 5.0", "5.0", "Invalid operator"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "In the Onboard Calculator mission, what does `calculator(5, 2, \"%\")` print?",
+      "options": ["5 % 2 = 1", "1", "Nothing", "Invalid operator"],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "In the Onboard Calculator mission, why do a and b go through int() but the operator doesn't?",
+      "options": [
+        "We compute with a and b, while the operator is a sign like + that we compare as text",
+        "int() only works twice in a program",
+        "The operator is a number already",
+        "A function can take only one text"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "In the Onboard Calculator mission, what does `calculator(\"+\", 14, 12)` print?",
+      "options": [
+        "14 + 12 = 26",
+        "+ 14 12",
+        "Invalid operator: the values go in by position, so operator gets 12",
+        "It stops with an error"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "def double(x):\n    print(x * 2)\n\ndouble(4)\ndouble(10)",
+      "options": ["8", "8\n20", "20", "4\n10"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "A function has a print() inside it. When does that print() run?",
+      "options": [
+        "Once, when Python reads the def line",
+        "Only at the end of the program",
+        "Never: a function can't print",
+        "Every time the function is called"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "def line():\n    print(\"---\")\n\nprint(\"Start\")\nline()\nprint(\"End\")",
+      "options": ["---\nStart\nEnd", "Start\nEnd", "Start\n---\nEnd", "Start\nEnd\n---"],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "Which call works for `def greet(name):`?",
+      "options": ["greet(\"Ana\")", "greet()", "greet \"Ana\"", "def greet(\"Ana\")"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Which line defines a function with two parameters?",
+      "options": ["def area(w h):", "def area(w, h):", "area(w, h):", "def area:(w, h)"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "What happens when this runs?",
+      "code": "def show():\nprint(\"Hi\")\n\nshow()",
+      "options": [
+        "It prints Hi",
+        "It prints nothing",
+        "It stops with an error: the line under def isn't indented",
+        "It prints Hi twice"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "How many parameters can a function have?",
+      "options": ["Exactly two", "At least one", "At most three", "As many as it needs, even none"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "def check(level):\n    if level >= 50:\n        print(\"OK\")\n    else:\n        print(\"Low\")\n\ncheck(50)\ncheck(49)",
+      "options": ["OK\nLow", "Low\nOK", "OK", "OK\nOK"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "def countdown(n):\n    while n > 0:\n        print(n)\n        n = n - 1\n\ncountdown(3)",
+      "options": ["1\n2\n3", "3\n2\n1\n0", "3\n2\n1", "3"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "fn-greet",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")",
+      "values": [
+        {
+          "f": "greet",
+          "p": "name",
+          "word": "Hello",
+          "a": "Ana",
+          "b": "Ben"
+        },
+        {
+          "f": "welcome",
+          "p": "crew",
+          "word": "Welcome aboard",
+          "a": "Cortez",
+          "b": "Lance"
+        },
+        {
+          "f": "cheer",
+          "p": "player",
+          "word": "Well done",
+          "a": "Zoe",
+          "b": "Kai"
+        },
+        {
+          "f": "hi",
+          "p": "friend",
+          "word": "Hi",
+          "a": "Tommy",
+          "b": "Mia"
+        },
+        {
+          "f": "wave",
+          "p": "pilot",
+          "word": "Good luck",
+          "a": "Nova",
+          "b": "Rex"
+        }
+      ],
+      "mistakes": [
+        ["print(f\"", "print(\""],
+        ["{{{p}}}", "{{p}}"],
+        ["{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")", "{{f}}(\"{{b}}\")\n{{f}}(\"{{a}}\")"],
+        ["\n{{f}}(\"{{b}}\")", ""]
+      ]
+    },
+    {
+      "id": "fn-two",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}, {{q}}):\n    print(f\"{{{p}}} {{mid}} {{{q}}} {{end}}\")\n\n{{f}}(\"{{a}}\", {{n}})",
+      "values": [
+        {
+          "f": "show_age",
+          "p": "name",
+          "q": "age",
+          "mid": "is",
+          "end": "years old",
+          "a": "Tommy",
+          "n": 42
+        },
+        {
+          "f": "fuel_report",
+          "p": "ship",
+          "q": "fuel",
+          "mid": "has",
+          "end": "liters of fuel",
+          "a": "Nova",
+          "n": 80
+        },
+        {
+          "f": "score_line",
+          "p": "player",
+          "q": "score",
+          "mid": "scored",
+          "end": "points",
+          "a": "Zoe",
+          "n": 15
+        },
+        {
+          "f": "rating",
+          "p": "hotel",
+          "q": "stars",
+          "mid": "has",
+          "end": "stars",
+          "a": "Orion",
+          "n": 4
+        },
+        {
+          "f": "crew_age",
+          "p": "pilot",
+          "q": "age",
+          "mid": "is",
+          "end": "years old",
+          "a": "Lance",
+          "n": 35
+        }
+      ],
+      "mistakes": [
+        ["{{f}}(\"{{a}}\", {{n}})", "{{f}}({{n}}, \"{{a}}\")"],
+        ["print(f\"", "print(\""],
+        ["{{{q}}}", "{{q}}"]
+      ]
+    },
+    {
+      "id": "fn-calls",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}():\n    print(\"{{msg}}\")\n\n{{f}}()\n{{f}}()\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "f": "beep",
+          "msg": "Beep",
+          "end": "Done"
+        },
+        {
+          "f": "cheer",
+          "msg": "Go team",
+          "end": "Match over"
+        },
+        {
+          "f": "alarm",
+          "msg": "Wake up",
+          "end": "Good morning"
+        },
+        {
+          "f": "knock",
+          "msg": "Knock knock",
+          "end": "Who is there?"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}()\n{{f}}()\n", "{{f}}()\n"],
+        ["    print(\"{{msg}}\")", "    print(\"{{msg}}\")\n    print(\"{{end}}\")"],
+        ["{{f}}()\n{{f}}()\nprint(\"{{end}}\")", "print(\"{{end}}\")\n{{f}}()\n{{f}}()"]
+      ]
+    },
+    {
+      "id": "fn-loop",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}):\n    for i in range(1, {{p}} + 1):\n        print(f\"{{word}} {i}\")\n\n{{f}}({{n}})",
+      "values": [
+        {
+          "f": "count_laps",
+          "p": "laps",
+          "word": "Lap",
+          "n": 3
+        },
+        {
+          "f": "show_levels",
+          "p": "levels",
+          "word": "Level",
+          "n": 4
+        },
+        {
+          "f": "ring",
+          "p": "times",
+          "word": "Ring",
+          "n": 2
+        },
+        {
+          "f": "launch_waves",
+          "p": "waves",
+          "word": "Wave",
+          "n": 3
+        },
+        {
+          "f": "check_doors",
+          "p": "doors",
+          "word": "Door",
+          "n": 5
+        }
+      ],
+      "mistakes": [
+        ["range(1, {{p}} + 1)", "range(1, {{p}})"],
+        ["range(1, {{p}} + 1)", "range({{p}})"],
+        ["print(f\"{{word}} {i}\")", "print(\"{{word}} {i}\")"]
+      ]
+    },
+    {
+      "id": "fn-status",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}, {{s}}):\n    if {{s}} == True:\n        print(f\"{{{p}}} {{on}}\")\n    else:\n        print(f\"{{{p}}} {{off}}\")\n\n{{f}}(\"{{who}}\", {{b}})",
+      "values": [
+        {
+          "f": "f",
+          "p": "name",
+          "s": "status",
+          "on": "is online",
+          "off": "is offline",
+          "who": "Admin",
+          "b": "True"
+        },
+        {
+          "f": "f",
+          "p": "name",
+          "s": "status",
+          "on": "is online",
+          "off": "is offline",
+          "who": "Admin",
+          "b": "False"
+        },
+        {
+          "f": "door",
+          "p": "room",
+          "s": "locked",
+          "on": "is locked",
+          "off": "is open",
+          "who": "Lab",
+          "b": "True"
+        },
+        {
+          "f": "door",
+          "p": "room",
+          "s": "locked",
+          "on": "is locked",
+          "off": "is open",
+          "who": "Bridge",
+          "b": "False"
+        },
+        {
+          "f": "engine",
+          "p": "ship",
+          "s": "ready",
+          "on": "is ready",
+          "off": "needs repairs",
+          "who": "Nova",
+          "b": "True"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(f\"{{{p}}} {{on}}\")\n    else:\n        print(f\"{{{p}}} {{off}}\")",
+          "print(f\"{{{p}}} {{off}}\")\n    else:\n        print(f\"{{{p}}} {{on}}\")"
+        ],
+        ["{{f}}(\"{{who}}\", {{b}})", "{{f}}({{b}}, \"{{who}}\")"],
+        ["print(f\"{{{p}}} {{on}}\")", "print(f\"{{p}} {{on}}\")"],
+        ["print(f\"{{{p}}} {{off}}\")", "print(f\"{{p}} {{off}}\")"]
+      ]
+    },
+    {
+      "id": "fn-math",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{x}}):\n    print({{x}} {{op}} {{k}})\n\n{{f}}({{a}})\n{{f}}({{b}})",
+      "values": [
+        {
+          "f": "triple",
+          "x": "x",
+          "op": "*",
+          "k": 3,
+          "a": 2,
+          "b": 7
+        },
+        {
+          "f": "half",
+          "x": "n",
+          "op": "/",
+          "k": 2,
+          "a": 9,
+          "b": 4
+        },
+        {
+          "f": "add_ten",
+          "x": "score",
+          "op": "+",
+          "k": 10,
+          "a": 5,
+          "b": 30
+        },
+        {
+          "f": "square",
+          "x": "side",
+          "op": "**",
+          "k": 2,
+          "a": 3,
+          "b": 5
+        },
+        {
+          "f": "lose_life",
+          "x": "lives",
+          "op": "-",
+          "k": 1,
+          "a": 3,
+          "b": 1
+        }
+      ],
+      "mistakes": [
+        ["print({{x}} {{op}} {{k}})", "print(\"{{x}} {{op}} {{k}}\")"],
+        ["print({{x}} {{op}} {{k}})", "print({{a}} {{op}} {{k}})"],
+        ["\n{{f}}({{b}})", ""]
+      ]
+    },
+    {
+      "id": "fn-which-call",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")",
+      "values": [
+        {
+          "f": "greet",
+          "p": "name",
+          "word": "Hello",
+          "a": "Cortez"
+        },
+        {
+          "f": "welcome",
+          "p": "crew",
+          "word": "Welcome aboard",
+          "a": "Zoe"
+        },
+        {
+          "f": "cheer",
+          "p": "player",
+          "word": "Well done",
+          "a": "Tommy"
+        },
+        {
+          "f": "hi",
+          "p": "friend",
+          "word": "Hi",
+          "a": "Nova"
+        },
+        {
+          "f": "wave",
+          "p": "pilot",
+          "word": "Good luck",
+          "a": "Ana"
+        }
+      ],
+      "mistakes": [
+        ["\n\n{{f}}(\"{{a}}\")", ""],
+        ["print(f\"", "print(\""],
+        ["{{{p}}}", "{{p}}"],
+        ["(\"{{a}}\")", "({{a}})"]
+      ]
+    },
+    {
+      "id": "fn-which-order",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def {{f}}({{p}}, {{q}}):\n    print(f\"{{{p}}} {{mid}} {{{q}}} {{end}}\")\n\n{{f}}(\"{{a}}\", {{n}})",
+      "values": [
+        {
+          "f": "fuel_report",
+          "p": "ship",
+          "q": "fuel",
+          "mid": "has",
+          "end": "liters of fuel",
+          "a": "Nova",
+          "n": 80
+        },
+        {
+          "f": "score_line",
+          "p": "player",
+          "q": "score",
+          "mid": "scored",
+          "end": "points",
+          "a": "Zoe",
+          "n": 15
+        },
+        {
+          "f": "rating",
+          "p": "hotel",
+          "q": "stars",
+          "mid": "has",
+          "end": "stars",
+          "a": "Orion",
+          "n": 4
+        },
+        {
+          "f": "crew_age",
+          "p": "pilot",
+          "q": "age",
+          "mid": "is",
+          "end": "years old",
+          "a": "Lance",
+          "n": 35
+        }
+      ],
+      "mistakes": [
+        ["{{f}}(\"{{a}}\", {{n}})", "{{f}}({{n}}, \"{{a}}\")"],
+        ["def {{f}}({{p}}, {{q}}):", "def {{f}}({{q}}, {{p}}):"],
+        ["{{{p}}} {{mid}}", "{{p}} {{mid}}"]
+      ]
+    },
+    {
+      "id": "fn-gap-call",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n___",
+      "values": [
+        {
+          "f": "greet",
+          "p": "name",
+          "word": "Hello",
+          "a": "Ben"
+        },
+        {
+          "f": "welcome",
+          "p": "crew",
+          "word": "Welcome aboard",
+          "a": "Lance"
+        },
+        {
+          "f": "cheer",
+          "p": "player",
+          "word": "Well done",
+          "a": "Kai"
+        },
+        {
+          "f": "hi",
+          "p": "friend",
+          "word": "Hi",
+          "a": "Mia"
+        },
+        {
+          "f": "wave",
+          "p": "pilot",
+          "word": "Good luck",
+          "a": "Rex"
+        }
+      ],
+      "answer": "{{f}}(\"{{a}}\")",
+      "wrong": ["{{f}}(\"{{p}}\")", "{{f}}", "def {{f}}(\"{{a}}\"):", "{{f}}({{a}})"]
+    },
+    {
+      "id": "fn-gap-def",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")",
+      "values": [
+        {
+          "f": "greet",
+          "p": "name",
+          "word": "Hello",
+          "a": "Lance"
+        },
+        {
+          "f": "welcome",
+          "p": "crew",
+          "word": "Welcome aboard",
+          "a": "Ana"
+        },
+        {
+          "f": "cheer",
+          "p": "player",
+          "word": "Well done",
+          "a": "Kai"
+        },
+        {
+          "f": "hi",
+          "p": "friend",
+          "word": "Hi",
+          "a": "Rex"
+        },
+        {
+          "f": "wave",
+          "p": "pilot",
+          "word": "Good luck",
+          "a": "Mia"
+        }
+      ],
+      "answer": "def {{f}}({{p}}):",
+      "wrong": ["def {{f}}({{p}})", "{{f}}({{p}}):", "def {{f}}():", "def {{f}}(\"{{a}}\"):"]
+    },
+    {
+      "id": "fn-gap-arg",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}, {{q}}):\n    print(f\"{{{p}}} {{mid}} {{{q}}} {{end}}\")\n\n{{f}}(\"{{a}}\", ___)",
+      "values": [
+        {
+          "f": "show_age",
+          "p": "name",
+          "q": "age",
+          "mid": "is",
+          "end": "years old",
+          "a": "Tommy",
+          "n": 42
+        },
+        {
+          "f": "fuel_report",
+          "p": "ship",
+          "q": "fuel",
+          "mid": "has",
+          "end": "liters of fuel",
+          "a": "Nova",
+          "n": 80
+        },
+        {
+          "f": "score_line",
+          "p": "player",
+          "q": "score",
+          "mid": "scored",
+          "end": "points",
+          "a": "Zoe",
+          "n": 15
+        },
+        {
+          "f": "rating",
+          "p": "hotel",
+          "q": "stars",
+          "mid": "has",
+          "end": "stars",
+          "a": "Orion",
+          "n": 4
+        },
+        {
+          "f": "crew_age",
+          "p": "pilot",
+          "q": "age",
+          "mid": "is",
+          "end": "years old",
+          "a": "Lance",
+          "n": 35
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["\"{{a}}\"", "{{q}}", "{{n}} + 1", "{{p}}"]
+    },
+    {
+      "id": "fn-gap-times",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}):\n    for i in range(1, {{p}} + 1):\n        print(f\"{{word}} {i}\")\n\n{{f}}(___)",
+      "values": [
+        {
+          "f": "count_laps",
+          "p": "laps",
+          "word": "Lap",
+          "n": 3,
+          "lo": 2,
+          "hi": 4
+        },
+        {
+          "f": "show_levels",
+          "p": "levels",
+          "word": "Level",
+          "n": 4,
+          "lo": 3,
+          "hi": 5
+        },
+        {
+          "f": "ring",
+          "p": "times",
+          "word": "Ring",
+          "n": 2,
+          "lo": 1,
+          "hi": 3
+        },
+        {
+          "f": "launch_waves",
+          "p": "waves",
+          "word": "Wave",
+          "n": 5,
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "f": "check_doors",
+          "p": "doors",
+          "word": "Door",
+          "n": 6,
+          "lo": 5,
+          "hi": 7
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{lo}}", "{{hi}}", "0"]
+    },
+    {
+      "id": "fn-bad-colon",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")",
+      "values": [
+        {
+          "f": "greet",
+          "p": "name",
+          "word": "Hello",
+          "a": "Zoe",
+          "b": "Kai"
+        },
+        {
+          "f": "welcome",
+          "p": "crew",
+          "word": "Welcome aboard",
+          "a": "Tommy",
+          "b": "Mia"
+        },
+        {
+          "f": "cheer",
+          "p": "player",
+          "word": "Well done",
+          "a": "Nova",
+          "b": "Rex"
+        }
+      ],
+      "bug": ["def {{f}}({{p}}):", "def {{f}}({{p}})"]
+    },
+    {
+      "id": "fn-bad-f",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")",
+      "values": [
+        {
+          "f": "cheer",
+          "p": "player",
+          "word": "Well done",
+          "a": "Ana",
+          "b": "Ben"
+        },
+        {
+          "f": "hi",
+          "p": "friend",
+          "word": "Hi",
+          "a": "Cortez",
+          "b": "Lance"
+        },
+        {
+          "f": "wave",
+          "p": "pilot",
+          "word": "Good luck",
+          "a": "Zoe",
+          "b": "Kai"
+        }
+      ],
+      "bug": ["def {{f}}({{p}}):", "def {{f}}():"]
+    },
+    {
+      "id": "fn-bad-name",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")",
+      "values": [
+        {
+          "f": "greet",
+          "p": "name",
+          "word": "Hello",
+          "a": "Ana",
+          "b": "Ben",
+          "g": "Greet"
+        },
+        {
+          "f": "welcome",
+          "p": "crew",
+          "word": "Welcome aboard",
+          "a": "Zoe",
+          "b": "Kai",
+          "g": "Welcome"
+        },
+        {
+          "f": "cheer",
+          "p": "player",
+          "word": "Well done",
+          "a": "Tommy",
+          "b": "Mia",
+          "g": "cheers"
+        }
+      ],
+      "bug": ["{{f}}(\"{{b}}\")", "{{g}}(\"{{b}}\")"]
+    },
+    {
+      "id": "fn-bad-missing",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}, {{q}}):\n    print(f\"{{{p}}} {{mid}} {{{q}}} {{end}}\")\n\n{{f}}(\"{{a}}\", {{n}})\n{{f}}(\"{{c}}\", {{m}})",
+      "values": [
+        {
+          "f": "show_age",
+          "p": "name",
+          "q": "age",
+          "mid": "is",
+          "end": "years old",
+          "a": "Tommy",
+          "n": 42,
+          "c": "Lance",
+          "m": 35
+        },
+        {
+          "f": "score_line",
+          "p": "player",
+          "q": "score",
+          "mid": "scored",
+          "end": "points",
+          "a": "Zoe",
+          "n": 15,
+          "c": "Kai",
+          "m": 9
+        },
+        {
+          "f": "rating",
+          "p": "hotel",
+          "q": "stars",
+          "mid": "has",
+          "end": "stars",
+          "a": "Orion",
+          "n": 4,
+          "c": "Vega",
+          "m": 5
+        }
+      ],
+      "bug": ["{{f}}(\"{{c}}\", {{m}})", "{{f}}(\"{{c}}\")"]
+    }
+  ]
+}

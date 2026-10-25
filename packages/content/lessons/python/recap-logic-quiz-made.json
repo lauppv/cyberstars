@@ -1,0 +1,702 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-logic-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rl-reading-0f9b83",
+      "text": "The operator typed 75, so `level` holds what input() gave back. What does this print?",
+      "code": "level = \"75\"\nlevel = int(level)\nif level == 0:\n    print(\"Input over\")\nelif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "options": ["System OK", "Critical system", "Input over", "Noise"],
+      "answer": 0
+    },
+    {
+      "id": "rl-reading-af3f23",
+      "text": "The operator typed 50, so `level` holds what input() gave back. What does this print?",
+      "code": "level = \"50\"\nlevel = int(level)\nif level == 0:\n    print(\"Input over\")\nelif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "options": ["System OK", "Input over", "Noise", "Critical system"],
+      "answer": 0
+    },
+    {
+      "id": "rl-reading-2e32a7",
+      "text": "The operator typed 49, so `level` holds what input() gave back. What does this print?",
+      "code": "level = \"49\"\nlevel = int(level)\nif level == 0:\n    print(\"Input over\")\nelif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "options": ["Critical system", "System OK", "Input over", "Noise"],
+      "answer": 0
+    },
+    {
+      "id": "rl-reading-0913f4",
+      "text": "The operator typed -5, so `level` holds what input() gave back. What does this print?",
+      "code": "level = \"-5\"\nlevel = int(level)\nif level == 0:\n    print(\"Input over\")\nelif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "options": ["Noise", "Input over", "Critical system", "Noise\nCritical system"],
+      "answer": 0
+    },
+    {
+      "id": "rl-reading-9921c9",
+      "text": "The operator typed 30, so `level` holds what input() gave back. What does this print?",
+      "code": "level = \"30\"\nlevel = int(level)\nif level == 0:\n    print(\"Input over\")\nelif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "options": ["Critical system", "System OK", "Input over", "Noise"],
+      "answer": 0
+    },
+    {
+      "id": "rl-reading-f2714d",
+      "text": "The operator typed -40, so `level` holds what input() gave back. What does this print?",
+      "code": "level = \"-40\"\nlevel = int(level)\nif level == 0:\n    print(\"Input over\")\nelif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "options": ["Noise", "Input over", "Critical system", "Noise\nCritical system"],
+      "answer": 0
+    },
+    {
+      "id": "rl-flag-ff1a5f",
+      "text": "What does this print?",
+      "code": "launch_ok = True\nfuel = 80\nengines = 90\nif fuel < 50:\n    print(\"Fuel critical\")\n    launch_ok = False\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "options": [
+        "Launch authorized",
+        "Launch aborted",
+        "Engines critical\nLaunch aborted",
+        "Fuel critical\nLaunch aborted"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-flag-5107c5",
+      "text": "What does this print?",
+      "code": "launch_ok = True\nfuel = 30\nengines = 90\nif fuel < 50:\n    print(\"Fuel critical\")\n    launch_ok = False\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "options": [
+        "Fuel critical\nLaunch aborted",
+        "Fuel critical\nLaunch authorized",
+        "Fuel critical\nEngines critical\nLaunch aborted",
+        "Launch authorized"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-flag-55285b",
+      "text": "What does this print?",
+      "code": "launch_ok = True\nfuel = 80\nengines = 20\nif fuel < 50:\n    print(\"Fuel critical\")\n    launch_ok = False\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "options": [
+        "Engines critical\nLaunch aborted",
+        "Engines critical\nLaunch authorized",
+        "Launch authorized",
+        "Fuel critical\nEngines critical\nLaunch aborted"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-flag-1a3b54",
+      "text": "What does this print?",
+      "code": "launch_ok = True\nfuel = 50\nengines = 50\nif fuel < 50:\n    print(\"Fuel critical\")\n    launch_ok = False\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "options": [
+        "Launch authorized",
+        "Launch aborted",
+        "Fuel critical\nLaunch aborted",
+        "Engines critical\nLaunch aborted"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-flag-ecba98",
+      "text": "What does this print?",
+      "code": "launch_ok = True\nfuel = 10\nengines = 40\nif fuel < 50:\n    print(\"Fuel critical\")\n    launch_ok = False\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "options": [
+        "Fuel critical\nEngines critical\nLaunch aborted",
+        "Fuel critical\nEngines critical\nLaunch authorized",
+        "Fuel critical\nLaunch aborted",
+        "Engines critical\nLaunch aborted"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-scan-7de76b",
+      "text": "What does this print?",
+      "code": "for sector in range(1, 8):\n    if sector == 2:\n        continue\n    if sector == 4:\n        print(f\"Signal in sector {sector}\")\n        break\n    print(f\"Sector {sector} clear\")",
+      "options": [
+        "Sector 1 clear\nSector 3 clear\nSignal in sector 4",
+        "Sector 1 clear",
+        "Sector 1 clear\nSector 3 clear\nSignal in sector 4\nSector 5 clear\nSector 6 clear\nSector 7 clear",
+        "Sector 1 clear\nSector 3 clear\nSignal in sector 4\nSector 4 clear\nSector 5 clear\nSector 6 clear\nSector 7 clear"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-scan-1efabd",
+      "text": "What does this print?",
+      "code": "for sector in range(1, 8):\n    if sector == 3:\n        continue\n    if sector == 5:\n        print(f\"Signal in sector {sector}\")\n        break\n    print(f\"Sector {sector} clear\")",
+      "options": [
+        "Sector 1 clear\nSector 2 clear\nSector 4 clear\nSignal in sector 5",
+        "Sector 1 clear\nSector 2 clear",
+        "Sector 1 clear\nSector 2 clear\nSector 4 clear\nSignal in sector 5\nSector 6 clear\nSector 7 clear",
+        "Sector 1 clear\nSector 2 clear\nSector 4 clear\nSignal in sector 5\nSector 5 clear\nSector 6 clear\nSector 7 clear"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-scan-e071ab",
+      "text": "What does this print?",
+      "code": "for sector in range(1, 6):\n    if sector == 5:\n        continue\n    if sector == 3:\n        print(f\"Signal in sector {sector}\")\n        break\n    print(f\"Sector {sector} clear\")",
+      "options": [
+        "Sector 1 clear\nSector 2 clear\nSignal in sector 3",
+        "Sector 1 clear\nSector 2 clear\nSignal in sector 3\nSector 4 clear",
+        "Sector 1 clear\nSector 2 clear\nSignal in sector 3\nSector 3 clear\nSector 4 clear",
+        "Sector 5 clear"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-scan-cd6e6a",
+      "text": "What does this print?",
+      "code": "for sector in range(1, 5):\n    if sector == 2:\n        continue\n    if sector == 9:\n        print(f\"Signal in sector {sector}\")\n        break\n    print(f\"Sector {sector} clear\")",
+      "options": [
+        "Sector 1 clear\nSector 3 clear\nSector 4 clear",
+        "Sector 1 clear",
+        "Sector 1 clear\nSector 3 clear\nSector 4 clear\nSector 5 clear",
+        "Sector 2 clear"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-scan-afaf6e",
+      "text": "What does this print?",
+      "code": "for sector in range(1, 7):\n    if sector == 1:\n        continue\n    if sector == 3:\n        print(f\"Signal in sector {sector}\")\n        break\n    print(f\"Sector {sector} clear\")",
+      "options": [
+        "Sector 2 clear\nSignal in sector 3",
+        "Sector 2 clear\nSignal in sector 3\nSector 4 clear\nSector 5 clear\nSector 6 clear",
+        "Sector 2 clear\nSignal in sector 3\nSector 3 clear\nSector 4 clear\nSector 5 clear\nSector 6 clear",
+        "Sector 1 clear"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-countdown-d82d2f",
+      "text": "What does this print?",
+      "code": "seconds = 3\naborted = False\nwhile seconds > 0:\n    if seconds == 7:\n        aborted = True\n        break\n    print(seconds)\n    seconds = seconds - 1\nif aborted:\n    print(\"Launch aborted\")\nelse:\n    print(\"Liftoff\")",
+      "options": [
+        "3\n2\n1\nLiftoff",
+        "3\n2\n1\n0\nLiftoff",
+        "2\n1\n0\nLiftoff",
+        "3\n2\n1\nLaunch aborted"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-countdown-f7e51c",
+      "text": "What does this print?",
+      "code": "seconds = 5\naborted = False\nwhile seconds > 0:\n    if seconds == 3:\n        aborted = True\n        break\n    print(seconds)\n    seconds = seconds - 1\nif aborted:\n    print(\"Launch aborted\")\nelse:\n    print(\"Liftoff\")",
+      "options": [
+        "5\n4\nLaunch aborted",
+        "5\n4\n3\n2\n1\nLaunch aborted",
+        "4\n3\nLaunch aborted",
+        "5\n4\nLiftoff"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-countdown-df08c1",
+      "text": "What does this print?",
+      "code": "seconds = 4\naborted = False\nwhile seconds > 0:\n    if seconds == 2:\n        aborted = True\n        break\n    print(seconds)\n    seconds = seconds - 1\nif aborted:\n    print(\"Launch aborted\")\nelse:\n    print(\"Liftoff\")",
+      "options": [
+        "4\n3\nLaunch aborted",
+        "4\n3\n2\n1\nLaunch aborted",
+        "3\n2\nLaunch aborted",
+        "4\n3\nLiftoff"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-countdown-f40029",
+      "text": "What does this print?",
+      "code": "seconds = 3\naborted = False\nwhile seconds > 0:\n    if seconds == 1:\n        aborted = True\n        break\n    print(seconds)\n    seconds = seconds - 1\nif aborted:\n    print(\"Launch aborted\")\nelse:\n    print(\"Liftoff\")",
+      "options": [
+        "3\n2\nLaunch aborted",
+        "3\n2\n1\nLaunch aborted",
+        "2\n1\nLaunch aborted",
+        "3\n2\nLiftoff"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-countdown-85d848",
+      "text": "What does this print?",
+      "code": "seconds = 2\naborted = False\nwhile seconds > 0:\n    if seconds == 5:\n        aborted = True\n        break\n    print(seconds)\n    seconds = seconds - 1\nif aborted:\n    print(\"Launch aborted\")\nelse:\n    print(\"Liftoff\")",
+      "options": ["2\n1\nLiftoff", "2\n1\n0\nLiftoff", "1\n0\nLiftoff", "2\n1\nLaunch aborted"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gonogo-98ae90",
+      "text": "What does this print?",
+      "code": "fuel = 80\nweather_ok = True\ncrew_ready = True\nif fuel >= 50 and weather_ok:\n    print(\"Fuel and weather OK\")\nif not crew_ready:\n    print(\"Crew not ready\")\nif fuel >= 50 and weather_ok and crew_ready:\n    print(\"Go for launch\")\nelse:\n    print(\"Hold\")",
+      "options": [
+        "Fuel and weather OK\nGo for launch",
+        "Fuel and weather OK\nCrew not ready\nGo for launch",
+        "Go for launch",
+        "Fuel and weather OK\nGo for launch\nHold"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-gonogo-b803ea",
+      "text": "What does this print?",
+      "code": "fuel = 80\nweather_ok = True\ncrew_ready = False\nif fuel >= 50 and weather_ok:\n    print(\"Fuel and weather OK\")\nif not crew_ready:\n    print(\"Crew not ready\")\nif fuel >= 50 and weather_ok and crew_ready:\n    print(\"Go for launch\")\nelse:\n    print(\"Hold\")",
+      "options": [
+        "Fuel and weather OK\nCrew not ready\nHold",
+        "Fuel and weather OK\nHold",
+        "Fuel and weather OK\nCrew not ready\nGo for launch",
+        "Crew not ready\nHold"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-gonogo-f1a7f7",
+      "text": "What does this print?",
+      "code": "fuel = 30\nweather_ok = True\ncrew_ready = True\nif fuel >= 50 and weather_ok:\n    print(\"Fuel and weather OK\")\nif not crew_ready:\n    print(\"Crew not ready\")\nif fuel >= 50 and weather_ok and crew_ready:\n    print(\"Go for launch\")\nelse:\n    print(\"Hold\")",
+      "options": ["Hold", "Fuel and weather OK\nHold", "Crew not ready\nHold", "Go for launch"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gonogo-c3f66b",
+      "text": "What does this print?",
+      "code": "fuel = 80\nweather_ok = False\ncrew_ready = True\nif fuel >= 50 and weather_ok:\n    print(\"Fuel and weather OK\")\nif not crew_ready:\n    print(\"Crew not ready\")\nif fuel >= 50 and weather_ok and crew_ready:\n    print(\"Go for launch\")\nelse:\n    print(\"Hold\")",
+      "options": ["Hold", "Fuel and weather OK\nHold", "Crew not ready\nHold", "Go for launch"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gonogo-0ea95d",
+      "text": "What does this print?",
+      "code": "fuel = 50\nweather_ok = True\ncrew_ready = True\nif fuel >= 50 and weather_ok:\n    print(\"Fuel and weather OK\")\nif not crew_ready:\n    print(\"Crew not ready\")\nif fuel >= 50 and weather_ok and crew_ready:\n    print(\"Go for launch\")\nelse:\n    print(\"Hold\")",
+      "options": [
+        "Fuel and weather OK\nGo for launch",
+        "Fuel and weather OK\nCrew not ready\nGo for launch",
+        "Fuel and weather OK\nHold",
+        "Go for launch"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-sum-731b87",
+      "text": "What does this print?",
+      "code": "total = 0\nfor level in range(30, 80, 10):\n    if level < 50:\n        continue\n    total = total + level\nprint(total)",
+      "options": ["180", "0", "130", "50\n110\n180"],
+      "answer": 0
+    },
+    {
+      "id": "rl-sum-731795",
+      "text": "What does this print?",
+      "code": "total = 0\nfor level in range(40, 101, 10):\n    if level < 50:\n        continue\n    total = total + level\nprint(total)",
+      "options": ["450", "0", "400", "50\n110\n180\n260\n350\n450"],
+      "answer": 0
+    },
+    {
+      "id": "rl-sum-75eaab",
+      "text": "What does this print?",
+      "code": "total = 0\nfor level in range(20, 61, 10):\n    if level < 50:\n        continue\n    total = total + level\nprint(total)",
+      "options": ["110", "0", "60", "50\n110"],
+      "answer": 0
+    },
+    {
+      "id": "rl-sum-795e59",
+      "text": "What does this print?",
+      "code": "total = 0\nfor level in range(50, 91, 10):\n    if level < 50:\n        continue\n    total = total + level\nprint(total)",
+      "options": ["350", "300", "50\n110\n180\n260\n350", "90"],
+      "answer": 0
+    },
+    {
+      "id": "rl-sum-d06f59",
+      "text": "What does this print?",
+      "code": "total = 0\nfor level in range(10, 71, 10):\n    if level < 50:\n        continue\n    total = total + level\nprint(total)",
+      "options": ["180", "0", "130", "50\n110\n180"],
+      "answer": 0
+    },
+    {
+      "id": "rl-sum-8125ac",
+      "text": "What does this print?",
+      "code": "total = 0\nfor level in range(30, 111, 10):\n    if level < 50:\n        continue\n    total = total + level\nprint(total)",
+      "options": ["560", "0", "510", "50\n110\n180\n260\n350\n450\n560"],
+      "answer": 0
+    },
+    {
+      "id": "rl-sum-554345",
+      "text": "What does this print?",
+      "code": "total = 0\nfor level in range(20, 91, 10):\n    if level < 50:\n        continue\n    total = total + level\nprint(total)",
+      "options": ["350", "0", "300", "50\n110\n180\n260\n350"],
+      "answer": 0
+    },
+    {
+      "id": "rl-which-reading-25853e",
+      "text": "The operator typed 30, so `level` holds what input() gave back. Which program shows this?",
+      "output": "Critical system",
+      "options": [
+        "level = \"30\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"30\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level > 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"30\"\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"30\"\nlevel = int(level)\nif level > 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-which-reading-054ff4",
+      "text": "The operator typed 75, so `level` holds what input() gave back. Which program shows this?",
+      "output": "System OK",
+      "options": [
+        "level = \"75\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"75\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level > 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"75\"\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"75\"\nlevel = int(level)\nif level > 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-which-reading-c49786",
+      "text": "The operator typed -5, so `level` holds what input() gave back. Which program shows this?",
+      "output": "Noise",
+      "options": [
+        "level = \"-5\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"-5\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"-5\"\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"-5\"\nlevel = int(level)\nif level > 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-which-reading-960592",
+      "text": "The operator typed 49, so `level` holds what input() gave back. Which program shows this?",
+      "output": "Critical system",
+      "options": [
+        "level = \"49\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"49\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level > 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"49\"\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"49\"\nlevel = int(level)\nif level > 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-which-reading-c63840",
+      "text": "The operator typed 50, so `level` holds what input() gave back. Which program shows this?",
+      "output": "System OK",
+      "options": [
+        "level = \"50\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"50\"\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"50\"\nlevel = int(level)\nif level > 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+        "level = \"50\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level <= 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-which-loop-807678",
+      "text": "Which program shows this?",
+      "output": "3\n2\n1\nLiftoff",
+      "options": [
+        "seconds = 3\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+        "seconds = 3\nwhile True:\n    if seconds == 1:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+        "seconds = 3\nwhile True:\n    if seconds == 0:\n        break\n    seconds = seconds - 1\n    print(seconds)\nprint(\"Liftoff\")",
+        "seconds = 3\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\n    print(\"Liftoff\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-which-loop-0a607e",
+      "text": "Which program shows this?",
+      "output": "4\n3\n2\n1\nLiftoff",
+      "options": [
+        "seconds = 4\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+        "seconds = 4\nwhile True:\n    if seconds == 1:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+        "seconds = 4\nwhile True:\n    if seconds == 0:\n        break\n    seconds = seconds - 1\n    print(seconds)\nprint(\"Liftoff\")",
+        "seconds = 4\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\n    print(\"Liftoff\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-which-loop-4a44cd",
+      "text": "Which program shows this?",
+      "output": "2\n1\nLiftoff",
+      "options": [
+        "seconds = 2\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+        "seconds = 2\nwhile True:\n    if seconds == 1:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+        "seconds = 2\nwhile True:\n    if seconds == 0:\n        break\n    seconds = seconds - 1\n    print(seconds)\nprint(\"Liftoff\")",
+        "seconds = 2\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\n    print(\"Liftoff\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-which-loop-33194e",
+      "text": "Which program shows this?",
+      "output": "5\n4\n3\n2\n1\nLiftoff",
+      "options": [
+        "seconds = 5\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+        "seconds = 5\nwhile True:\n    if seconds == 1:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+        "seconds = 5\nwhile True:\n    if seconds == 0:\n        break\n    seconds = seconds - 1\n    print(seconds)\nprint(\"Liftoff\")",
+        "seconds = 5\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\n    print(\"Liftoff\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-which-loop-6e1d35",
+      "text": "Which program shows this?",
+      "output": "1\nLiftoff",
+      "options": [
+        "seconds = 1\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+        "seconds = 1\nwhile True:\n    if seconds == 1:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+        "seconds = 1\nwhile True:\n    if seconds == 0:\n        break\n    seconds = seconds - 1\n    print(seconds)\nprint(\"Liftoff\")",
+        "seconds = 1\nwhile True:\n    if seconds < 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-break-6c3851",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for sector in range(1, 10):\n    if sector == 3:\n        print(f\"Signal in sector {sector}\")\n        ___\n    print(f\"Sector {sector} clear\")",
+      "output": "Sector 1 clear\nSector 2 clear\nSignal in sector 3",
+      "options": ["break", "continue", "sector = 10", "print(f\"Sector {sector} clear\")"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-break-bc03f3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for sector in range(1, 10):\n    if sector == 5:\n        print(f\"Signal in sector {sector}\")\n        ___\n    print(f\"Sector {sector} clear\")",
+      "output": "Sector 1 clear\nSector 2 clear\nSector 3 clear\nSector 4 clear\nSignal in sector 5",
+      "options": ["break", "continue", "sector = 10", "print(f\"Sector {sector} clear\")"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-break-3dd7ee",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for sector in range(1, 10):\n    if sector == 2:\n        print(f\"Signal in sector {sector}\")\n        ___\n    print(f\"Sector {sector} clear\")",
+      "output": "Sector 1 clear\nSignal in sector 2",
+      "options": ["break", "continue", "sector = 10", "print(f\"Sector {sector} clear\")"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-break-127bb5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for sector in range(1, 10):\n    if sector == 7:\n        print(f\"Signal in sector {sector}\")\n        ___\n    print(f\"Sector {sector} clear\")",
+      "output": "Sector 1 clear\nSector 2 clear\nSector 3 clear\nSector 4 clear\nSector 5 clear\nSector 6 clear\nSignal in sector 7",
+      "options": ["break", "continue", "sector = 10", "print(f\"Sector {sector} clear\")"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-break-2e77dc",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for sector in range(1, 10):\n    if sector == 4:\n        print(f\"Signal in sector {sector}\")\n        ___\n    print(f\"Sector {sector} clear\")",
+      "output": "Sector 1 clear\nSector 2 clear\nSector 3 clear\nSignal in sector 4",
+      "options": ["break", "continue", "sector = 10", "print(f\"Sector {sector} clear\")"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-flag-385ddf",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "launch_ok = True\nfuel = 30\nengines = 90\nif fuel < 50:\n    print(\"Fuel critical\")\n    ___\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "output": "Fuel critical\nLaunch aborted",
+      "options": [
+        "launch_ok = False",
+        "launch_ok == False",
+        "launch_ok = True",
+        "print(\"Launch aborted\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-flag-3552d3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "launch_ok = True\nfuel = 10\nengines = 60\nif fuel < 50:\n    print(\"Fuel critical\")\n    ___\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "output": "Fuel critical\nLaunch aborted",
+      "options": [
+        "launch_ok = False",
+        "launch_ok == False",
+        "launch_ok = True",
+        "print(\"Launch aborted\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-flag-4766e1",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "launch_ok = True\nfuel = 49\nengines = 50\nif fuel < 50:\n    print(\"Fuel critical\")\n    ___\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "output": "Fuel critical\nLaunch aborted",
+      "options": [
+        "launch_ok = False",
+        "launch_ok == False",
+        "launch_ok = True",
+        "print(\"Launch aborted\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-flag-48e428",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "launch_ok = True\nfuel = 20\nengines = 75\nif fuel < 50:\n    print(\"Fuel critical\")\n    ___\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "output": "Fuel critical\nLaunch aborted",
+      "options": [
+        "launch_ok = False",
+        "launch_ok == False",
+        "launch_ok = True",
+        "print(\"Launch aborted\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-flag-c74502",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "launch_ok = True\nfuel = 45\nengines = 80\nif fuel < 50:\n    print(\"Fuel critical\")\n    ___\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "output": "Fuel critical\nLaunch aborted",
+      "options": [
+        "launch_ok = False",
+        "launch_ok == False",
+        "launch_ok = True",
+        "print(\"Launch aborted\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-op-9cdc8f",
+      "text": "The operator typed 49, so `level` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "level = \"49\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level ___ 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "output": "Critical system",
+      "options": ["<", ">", ">=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-op-107613",
+      "text": "The operator typed 50, so `level` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "level = \"50\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level ___ 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "output": "System OK",
+      "options": ["<", "<=", ">=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-op-89c0eb",
+      "text": "The operator typed 30, so `level` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "level = \"30\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level ___ 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "output": "Critical system",
+      "options": ["<", ">", ">=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-op-48258e",
+      "text": "The operator typed 80, so `level` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "level = \"80\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level ___ 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "output": "System OK",
+      "options": ["<", ">", ">=", "!="],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-op-39a825",
+      "text": "The operator typed 51, so `level` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "level = \"51\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level ___ 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "output": "System OK",
+      "options": ["<", ">", ">=", "!="],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-bool-768d7b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "running = ___\nchecks = 0\nwhile running:\n    checks = checks + 1\n    print(f\"Check {checks}\")\n    if checks == 2:\n        running = False\nprint(\"Console closed\")",
+      "output": "Check 1\nCheck 2\nConsole closed",
+      "options": ["True", "False", "true", "not True"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-bool-28b284",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "running = ___\nchecks = 0\nwhile running:\n    checks = checks + 1\n    print(f\"Check {checks}\")\n    if checks == 3:\n        running = False\nprint(\"Console closed\")",
+      "output": "Check 1\nCheck 2\nCheck 3\nConsole closed",
+      "options": ["True", "False", "true", "not True"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-bool-13015d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "running = ___\nchecks = 0\nwhile running:\n    checks = checks + 1\n    print(f\"Check {checks}\")\n    if checks == 1:\n        running = False\nprint(\"Console closed\")",
+      "output": "Check 1\nConsole closed",
+      "options": ["True", "False", "true", "not True"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-bool-98be9b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "running = ___\nchecks = 0\nwhile running:\n    checks = checks + 1\n    print(f\"Check {checks}\")\n    if checks == 4:\n        running = False\nprint(\"Console closed\")",
+      "output": "Check 1\nCheck 2\nCheck 3\nCheck 4\nConsole closed",
+      "options": ["True", "False", "true", "not True"],
+      "answer": 0
+    },
+    {
+      "id": "rl-gap-bool-a5b099",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "running = ___\nchecks = 0\nwhile running:\n    checks = checks + 1\n    print(f\"Check {checks}\")\n    if checks == 5:\n        running = False\nprint(\"Console closed\")",
+      "output": "Check 1\nCheck 2\nCheck 3\nCheck 4\nCheck 5\nConsole closed",
+      "options": ["True", "False", "true", "not True"],
+      "answer": 0
+    },
+    {
+      "id": "rl-bad-true-8baf48",
+      "text": "Which line stops this program from printing this?",
+      "code": "seconds = 3\nwhile true:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+      "output": "3\n2\n1\nLiftoff",
+      "options": ["while true:", "if seconds == 0:", "break", "print(seconds)"],
+      "answer": 0
+    },
+    {
+      "id": "rl-bad-true-4be3e2",
+      "text": "Which line stops this program from printing this?",
+      "code": "seconds = 2\nwhile true:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+      "output": "2\n1\nLiftoff",
+      "options": ["while true:", "if seconds == 0:", "break", "print(seconds)"],
+      "answer": 0
+    },
+    {
+      "id": "rl-bad-true-04b40d",
+      "text": "Which line stops this program from printing this?",
+      "code": "seconds = 4\nwhile true:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+      "output": "4\n3\n2\n1\nLiftoff",
+      "options": ["while true:", "if seconds == 0:", "break", "print(seconds)"],
+      "answer": 0
+    },
+    {
+      "id": "rl-bad-skip-902e5a",
+      "text": "Which line stops this program from printing this?",
+      "code": "for sector in range(1, 6):\n    if sector == 3:\n        break\n    print(f\"Sector {sector} checked\")\nprint(\"Scan complete\")",
+      "output": "Sector 1 checked\nSector 2 checked\nSector 4 checked\nSector 5 checked\nScan complete",
+      "options": [
+        "break",
+        "if sector == 3:",
+        "for sector in range(1, 6):",
+        "print(f\"Sector {sector} checked\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-bad-skip-876a77",
+      "text": "Which line stops this program from printing this?",
+      "code": "for sector in range(1, 5):\n    if sector == 2:\n        break\n    print(f\"Sector {sector} checked\")\nprint(\"Scan complete\")",
+      "output": "Sector 1 checked\nSector 3 checked\nSector 4 checked\nScan complete",
+      "options": [
+        "break",
+        "if sector == 2:",
+        "print(f\"Sector {sector} checked\")",
+        "print(\"Scan complete\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-bad-skip-d6f30d",
+      "text": "Which line stops this program from printing this?",
+      "code": "for sector in range(1, 7):\n    if sector == 4:\n        break\n    print(f\"Sector {sector} checked\")\nprint(\"Scan complete\")",
+      "output": "Sector 1 checked\nSector 2 checked\nSector 3 checked\nSector 5 checked\nSector 6 checked\nScan complete",
+      "options": [
+        "break",
+        "if sector == 4:",
+        "for sector in range(1, 7):",
+        "print(f\"Sector {sector} checked\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rl-bad-skip-452c40",
+      "text": "Which line stops this program from printing this?",
+      "code": "for sector in range(1, 4):\n    if sector == 1:\n        break\n    print(f\"Sector {sector} checked\")\nprint(\"Scan complete\")",
+      "output": "Sector 2 checked\nSector 3 checked\nScan complete",
+      "options": [
+        "break",
+        "if sector == 1:",
+        "print(f\"Sector {sector} checked\")",
+        "print(\"Scan complete\")"
+      ],
+      "answer": 0
+    }
+  ]
+}

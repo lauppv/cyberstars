@@ -1,0 +1,923 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does break do inside a loop?",
+      "options": [
+        "It stops the loop completely, however many iterations were left",
+        "It skips the rest of this iteration and goes to the next one",
+        "It stops the whole program",
+        "It pauses the loop until the user presses Enter"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does continue do inside a loop?",
+      "options": [
+        "It stops the loop completely",
+        "It skips the rest of the current iteration and jumps to the next one",
+        "It runs the current iteration again from the top",
+        "It goes on with the line after the loop"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Once break runs, which line runs next?",
+      "options": [
+        "The first line of the loop, for the next iteration",
+        "The line right under break, in the same block",
+        "The first line after the loop",
+        "None, the program ends there"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "In the lesson's first example, `for i in range(0, 100):` stops with break when i is 5. What is the last number it prints?",
+      "options": ["5", "99", "6", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "for i in range(1, 6):\n    if i == 3:\n        break\n    print(i)\nprint(\"End\")",
+      "options": ["1\n2\nEnd", "1\n2\n4\n5\nEnd", "1\n2\n3\nEnd", "1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "In the lesson's continue example, `for i in range(0, 10):` with `continue` when i is 5, what does the output miss?",
+      "options": [
+        "Every number from 5 on",
+        "Only 5",
+        "Only 9",
+        "Nothing, all of 0 to 9 are printed"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "In the lesson's sector scan, the signal is in sector 7. How many Scanning sector lines does it print?",
+      "options": ["7", "99", "6", "8"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Why does the sector scan use break once the signal is found?",
+      "options": [
+        "So the signal is printed twice",
+        "Because a for loop can't end by itself",
+        "So it scans the remaining sectors faster",
+        "There is nothing left to look for, so checking the other sectors would only waste time"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What happens to an odd i here?",
+      "code": "for i in range(0, 11):\n    if i % 2 != 0:\n        continue\n    print(i)",
+      "options": [
+        "continue skips its print(i), and the loop goes on with the next i",
+        "continue stops the loop at the first odd number",
+        "It is printed, since continue means go on",
+        "Python stops with an error"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Do break and continue work in a while loop too?",
+      "options": [
+        "Only break, continue is only for for",
+        "Yes, the same way as in a for loop",
+        "Only continue, break is only for for",
+        "No, a while loop stops only through its condition"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "What would `while True:` do without a break inside it?",
+      "options": [
+        "Run its block once",
+        "Never run its block",
+        "Repeat forever: it is an infinite loop",
+        "Stop with an error, since True isn't a condition"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "In the lesson's command loop, the user types Stop. What happens?",
+      "code": "while True:\n    command = input(\"Command: \")\n    if command == \"stop\":\n        break\n    print(f\"Running: {command}\")\nprint(\"System stopped\")",
+      "options": [
+        "The loop stops and System stopped is printed",
+        "Python stops with an error",
+        "Nothing is printed and it asks again",
+        "It prints Running: Stop and asks again, since \"Stop\" is not \"stop\""
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "When is `command == \"stop\"` true?",
+      "options": [
+        "Only when command holds exactly the word stop",
+        "When command holds stop, Stop or STOP",
+        "When command starts with stop",
+        "Never, == works only with numbers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "In the Manual Sector Scanner mission, the operator types 4, then -2, then 7, then 0. What does the program print?",
+      "options": [
+        "Sector 4 checked\nSector -2 checked\nSector 7 checked\nScan complete",
+        "Sector 4 checked\nSector 7 checked\nScan complete",
+        "Sector 4 checked\nScan complete",
+        "Sector 4 checked\nSector 7 checked\nSector 0 checked\nScan complete"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "In the Manual Sector Scanner mission, why is a negative number handled with continue and not break?",
+      "options": [
+        "Because break doesn't work in a while True loop",
+        "Because continue prints the number as noise",
+        "It is only noise: we skip it and keep reading, while break would end the scan",
+        "There is no difference between them here"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "In the Manual Sector Scanner mission, the operator types 0 first. What does the program print?",
+      "options": [
+        "Sector 0 checked\nScan complete",
+        "Nothing at all",
+        "Sector 0 checked",
+        "Scan complete"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "What does this program do?",
+      "code": "n = 0\nwhile n < 5:\n    if n == 2:\n        continue\n    print(n)\n    n = n + 1",
+      "options": [
+        "It prints 0 and 1, then never ends: continue jumps over n = n + 1, so n stays 2",
+        "It prints 0, 1, 3 and 4",
+        "It prints 0 and 1, then stops",
+        "It prints 0, 1, 2, 3 and 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "A break sits inside an if, inside a for. What does it leave?",
+      "options": [
+        "Only the if: the loop goes on with the next iteration",
+        "The whole for loop",
+        "The whole program",
+        "Only the current iteration"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "After continue in a for loop, what is i on the next iteration?",
+      "options": [
+        "The same value, the iteration runs again",
+        "The first value of range() again",
+        "The next value of range(), as usual",
+        "Nothing: the loop ends"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "for i in range(1, 4):\n    if i == 2:\n        break\n        print(\"Found\")\n    print(i)",
+      "options": ["1\nFound", "1\n2\nFound", "1\n3", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Which keyword skips a value that is only noise and keeps the loop going?",
+      "options": ["continue", "break", "else", "while"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "A loop searches for something. Which keyword ends it once it is found?",
+      "options": ["continue", "break", "elif", "range"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "A for loop has a break whose if is never true. What happens?",
+      "options": [
+        "The loop stops at its first iteration",
+        "Python stops with an error",
+        "The loop runs to the end as if the break weren't there",
+        "The loop never ends"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "In the lesson's command loop, the user types scan, then stop. What does the program print?",
+      "options": [
+        "Running: scan\nRunning: stop\nSystem stopped",
+        "Running: scan",
+        "System stopped",
+        "Running: scan\nSystem stopped"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "In the lesson's command loop, the user types a, then b, then stop. How many times does the program ask for a command?",
+      "options": ["3", "2", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "A continue is the last line of a loop's block. What does it change?",
+      "options": [
+        "The loop stops after this iteration",
+        "Nothing: there is nothing left in the iteration to skip",
+        "The next iteration is skipped",
+        "The iteration runs twice"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Why does the command loop use `while True` with a break, not a condition on the while line?",
+      "options": [
+        "Because a while line can't compare text",
+        "Because while True runs faster",
+        "We know whether to stop only after the user types, which happens inside the loop",
+        "Because break works only in while True"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "for i in range(0, 5):\n    if i == 2:\n        continue\n    if i == 4:\n        break\n    print(i)",
+      "options": ["0\n1", "0\n1\n3\n4", "0\n1\n2\n3", "0\n1\n3"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Where does continue jump to?",
+      "options": [
+        "Back to the top of the loop, for the next iteration",
+        "To the first line after the loop",
+        "To the start of the program",
+        "To the line right under it"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == 3:\n        break\nprint(n)",
+      "options": ["2", "3", "4", "Nothing: while True never ends"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "bc-break",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        break\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 10,
+          "s": 4
+        },
+        {
+          "a": 1,
+          "b": 8,
+          "s": 5
+        },
+        {
+          "a": 3,
+          "b": 12,
+          "s": 6
+        },
+        {
+          "a": 2,
+          "b": 9,
+          "s": 7
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        [
+          "    if i == {{s}}:\n        break\n    print(i)",
+          "    print(i)\n    if i == {{s}}:\n        break"
+        ],
+        ["    if i == {{s}}:\n        break\n", ""]
+      ]
+    },
+    {
+      "id": "bc-continue",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        continue\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 6,
+          "s": 3
+        },
+        {
+          "a": 1,
+          "b": 7,
+          "s": 2
+        },
+        {
+          "a": 4,
+          "b": 9,
+          "s": 6
+        },
+        {
+          "a": 2,
+          "b": 8,
+          "s": 5
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["    if i == {{s}}:\n        continue\n", ""],
+        ["i == {{s}}", "i != {{s}}"]
+      ]
+    },
+    {
+      "id": "bc-even",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i % 2 {{op}} 0:\n        continue\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 9,
+          "op": "!=",
+          "flip": "=="
+        },
+        {
+          "a": 2,
+          "b": 11,
+          "op": "!=",
+          "flip": "=="
+        },
+        {
+          "a": 1,
+          "b": 10,
+          "op": "==",
+          "flip": "!="
+        },
+        {
+          "a": 3,
+          "b": 12,
+          "op": "==",
+          "flip": "!="
+        }
+      ],
+      "mistakes": [
+        ["{{op}}", "{{flip}}"],
+        ["continue", "break"],
+        ["    if i % 2 {{op}} 0:\n        continue\n", ""]
+      ]
+    },
+    {
+      "id": "bc-scan",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "for {{v}} in range(1, {{b}}):\n    if {{v}} == {{s}}:\n        print(f\"{{found}} {{{v}}}!\")\n        break\n    print(f\"{{scan}} {{{v}}}...\")",
+      "values": [
+        {
+          "b": 7,
+          "s": 3,
+          "v": "sector",
+          "found": "Signal found in sector",
+          "scan": "Scanning sector"
+        },
+        {
+          "b": 6,
+          "s": 4,
+          "v": "planet",
+          "found": "Base found on planet",
+          "scan": "Checking planet"
+        },
+        {
+          "b": 8,
+          "s": 2,
+          "v": "room",
+          "found": "Key found in room",
+          "scan": "Searching room"
+        }
+      ],
+      "mistakes": [
+        ["        break\n", ""],
+        ["        break", "        continue"],
+        ["{{v}} == {{s}}", "{{v}} != {{s}}"]
+      ]
+    },
+    {
+      "id": "bc-while-true",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == {{s}}:\n        break\n    print(n)\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "s": 4,
+          "end": "Done"
+        },
+        {
+          "s": 3,
+          "end": "Loop over"
+        },
+        {
+          "s": 5,
+          "end": "Stopped"
+        }
+      ],
+      "mistakes": [
+        [
+          "    if n == {{s}}:\n        break\n    print(n)",
+          "    print(n)\n    if n == {{s}}:\n        break"
+        ],
+        ["print(\"{{end}}\")", "    print(\"{{end}}\")"],
+        ["n = 0", "n = 1"]
+      ]
+    },
+    {
+      "id": "bc-while-continue",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "n = 0\nwhile n < {{b}}:\n    n = n + 1\n    if n == {{s}}:\n        continue\n    print(n)",
+      "values": [
+        {
+          "b": 5,
+          "s": 3
+        },
+        {
+          "b": 6,
+          "s": 2
+        },
+        {
+          "b": 7,
+          "s": 5
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["    if n == {{s}}:\n        continue\n", ""],
+        ["n == {{s}}", "n != {{s}}"]
+      ]
+    },
+    {
+      "id": "bc-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = 0\nfor i in range(1, {{b}}):\n    if i == {{s}}:\n        break\n    {{v}} = {{v}} + i\nprint({{v}})",
+      "values": [
+        {
+          "b": 10,
+          "s": 4,
+          "v": "total"
+        },
+        {
+          "b": 8,
+          "s": 5,
+          "v": "points"
+        },
+        {
+          "b": 7,
+          "s": 3,
+          "v": "energy"
+        },
+        {
+          "b": 12,
+          "s": 6,
+          "v": "score"
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["    if i == {{s}}:\n        break\n", ""],
+        ["    {{v}} = {{v}} + i\nprint({{v}})", "    {{v}} = {{v}} + i\n    print({{v}})"]
+      ]
+    },
+    {
+      "id": "bc-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{c}} = 0\nfor i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        continue\n    {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "a": 2,
+          "b": 10,
+          "s": 4,
+          "c": "count"
+        },
+        {
+          "a": 5,
+          "b": 12,
+          "s": 7,
+          "c": "count"
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["    if i == {{s}}:\n        continue\n", ""],
+        ["{{c}} = {{c}} + 1", "{{c}} = i"],
+        ["{{c}} = 0", "{{c}} = 1"]
+      ]
+    },
+    {
+      "id": "bc-which-break",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "for i in range(1, {{b}}):\n    if i == {{s}}:\n        break\n    print(i)",
+      "values": [
+        {
+          "b": 8,
+          "s": 4,
+          "s1": 5
+        },
+        {
+          "b": 6,
+          "s": 3,
+          "s1": 4
+        },
+        {
+          "b": 9,
+          "s": 5,
+          "s1": 6
+        },
+        {
+          "b": 7,
+          "s": 2,
+          "s1": 3
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["i == {{s}}", "i == {{s1}}"],
+        ["range(1, {{b}})", "range(0, {{b}})"]
+      ]
+    },
+    {
+      "id": "bc-which-continue",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "for i in range(1, {{b}}):\n    if i == {{s}}:\n        continue\n    print(i)",
+      "values": [
+        {
+          "b": 6,
+          "s": 3,
+          "b1": 5
+        },
+        {
+          "b": 7,
+          "s": 4,
+          "b1": 6
+        },
+        {
+          "b": 5,
+          "s": 2,
+          "b1": 4
+        },
+        {
+          "b": 8,
+          "s": 6,
+          "b1": 7
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["i == {{s}}", "i != {{s}}"],
+        ["range(1, {{b}})", "range(1, {{b1}})"]
+      ]
+    },
+    {
+      "id": "bc-gap-kw",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        ___\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 8,
+          "s": 4,
+          "kw": "break",
+          "other": "continue"
+        },
+        {
+          "a": 1,
+          "b": 7,
+          "s": 3,
+          "kw": "continue",
+          "other": "break"
+        },
+        {
+          "a": 2,
+          "b": 9,
+          "s": 6,
+          "kw": "break",
+          "other": "continue"
+        },
+        {
+          "a": 0,
+          "b": 6,
+          "s": 2,
+          "kw": "continue",
+          "other": "break"
+        },
+        {
+          "a": 3,
+          "b": 9,
+          "s": 5,
+          "kw": "continue",
+          "other": "break"
+        }
+      ],
+      "answer": "{{kw}}",
+      "wrong": ["{{other}}", "stop", "skip"]
+    },
+    {
+      "id": "bc-gap-scan",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for {{v}} in range(1, {{b}}):\n    if {{v}} == {{s}}:\n        print(f\"{{found}} {{{v}}}!\")\n        ___\n    print(f\"{{scan}} {{{v}}}...\")",
+      "values": [
+        {
+          "b": 6,
+          "s": 4,
+          "v": "sector",
+          "found": "Signal found in sector",
+          "scan": "Scanning sector"
+        },
+        {
+          "b": 7,
+          "s": 2,
+          "v": "planet",
+          "found": "Base found on planet",
+          "scan": "Checking planet"
+        },
+        {
+          "b": 5,
+          "s": 3,
+          "v": "room",
+          "found": "Key found in room",
+          "scan": "Searching room"
+        }
+      ],
+      "answer": "break",
+      "wrong": ["continue", "{{v}} = {{b}}", "{{v}} = 0"]
+    },
+    {
+      "id": "bc-gap-while",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "n = {{start}}\nwhile True:\n    ___\n        break\n    print(n)\n    n = n + 1\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "start": 1,
+          "s": 4,
+          "end": "Done"
+        },
+        {
+          "start": 3,
+          "s": 6,
+          "end": "Scan complete"
+        },
+        {
+          "start": 0,
+          "s": 3,
+          "end": "Stopped"
+        }
+      ],
+      "answer": "if n == {{s}}:",
+      "wrong": ["if n != {{s}}:", "if n > {{s}}:", "if n == {{s}}", "if n < {{s}}:"]
+    },
+    {
+      "id": "bc-gap-stop",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 10):\n    if i == ___:\n        break\n    print(i)",
+      "values": [
+        {
+          "s": 4,
+          "lo": 3,
+          "hi": 5
+        },
+        {
+          "s": 6,
+          "lo": 5,
+          "hi": 7
+        },
+        {
+          "s": 3,
+          "lo": 2,
+          "hi": 4
+        },
+        {
+          "s": 7,
+          "lo": 6,
+          "hi": 8
+        }
+      ],
+      "answer": "{{s}}",
+      "wrong": ["{{lo}}", "{{hi}}", "1"]
+    },
+    {
+      "id": "bc-gap-skip",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == ___:\n        continue\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 6,
+          "s": 2,
+          "lo": 1,
+          "hi": 3
+        },
+        {
+          "a": 1,
+          "b": 7,
+          "s": 5,
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "a": 3,
+          "b": 8,
+          "s": 4,
+          "lo": 3,
+          "hi": 5
+        }
+      ],
+      "answer": "{{s}}",
+      "wrong": ["{{lo}}", "{{hi}}", "{{b}}"]
+    },
+    {
+      "id": "bc-gap-op",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i % 2 ___ 0:\n        continue\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 9,
+          "op": "!=",
+          "flip": "=="
+        },
+        {
+          "a": 1,
+          "b": 10,
+          "op": "==",
+          "flip": "!="
+        },
+        {
+          "a": 2,
+          "b": 9,
+          "op": "!=",
+          "flip": "=="
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": ["{{flip}}", "<", "="]
+    },
+    {
+      "id": "bc-bad-break",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        break\n    print(i)\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "a": 0,
+          "b": 8,
+          "s": 3,
+          "end": "Done"
+        },
+        {
+          "a": 2,
+          "b": 9,
+          "s": 5,
+          "end": "End"
+        },
+        {
+          "a": 1,
+          "b": 7,
+          "s": 4,
+          "end": "Stopped"
+        }
+      ],
+      "bug": ["break", "continue"]
+    },
+    {
+      "id": "bc-bad-continue",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        continue\n    print(i)\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "a": 0,
+          "b": 6,
+          "s": 2,
+          "end": "Done"
+        },
+        {
+          "a": 3,
+          "b": 9,
+          "s": 5,
+          "end": "End"
+        },
+        {
+          "a": 1,
+          "b": 6,
+          "s": 4,
+          "end": "Stopped"
+        }
+      ],
+      "bug": ["continue", "break"]
+    },
+    {
+      "id": "bc-bad-scan",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "for {{v}} in range(1, {{b}}):\n    if {{v}} == {{s}}:\n        print(f\"{{found}} {{{v}}}!\")\n        break\n    print(f\"{{scan}} {{{v}}}...\")",
+      "values": [
+        {
+          "b": 6,
+          "s": 3,
+          "v": "sector",
+          "found": "Signal found in sector",
+          "scan": "Scanning sector"
+        },
+        {
+          "b": 8,
+          "s": 5,
+          "v": "planet",
+          "found": "Base found on planet",
+          "scan": "Checking planet"
+        },
+        {
+          "b": 7,
+          "s": 4,
+          "v": "room",
+          "found": "Key found in room",
+          "scan": "Searching room"
+        }
+      ],
+      "bug": ["{{v}} == {{s}}", "{{v}} != {{s}}"]
+    },
+    {
+      "id": "bc-bad-colon",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == {{s}}:\n        break\n    print(n)",
+      "values": [
+        {
+          "s": 3
+        },
+        {
+          "s": 4
+        },
+        {
+          "s": 5
+        }
+      ],
+      "bug": ["while True:", "while True"]
+    },
+    {
+      "id": "bc-bad-true",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == {{s}}:\n        break\n    print(n)",
+      "values": [
+        {
+          "s": 2
+        },
+        {
+          "s": 6
+        }
+      ],
+      "bug": ["while True:", "while true:"]
+    }
+  ]
+}

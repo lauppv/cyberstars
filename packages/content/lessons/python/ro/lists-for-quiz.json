@@ -1,0 +1,924 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "În `for i in nume:`, ce este i la fiecare trecere?",
+      "options": [
+        "Un element din nume, de fiecare dată următorul",
+        "Poziția unui element, 0, 1, 2 și tot așa",
+        "Toată lista nume",
+        "Câte elemente are nume"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce este i la prima trecere?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i in nume:\n    print(f\"Salut, {i}!\")",
+      "options": ["0", "\"Lance\"", "\"Tommy\"", "[\"Tommy\", \"Lance\", \"Cortez\"]"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "O listă are 4 elemente. De câte ori rulează liniile de sub `for x in lista:`?",
+      "options": ["De 3 ori", "De 5 ori", "O singură dată", "De 4 ori"],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "nume are 3 elemente. Ce numere dă `range(0, len(nume))`?",
+      "options": ["1, 2, 3", "3", "0, 1, 2, 3", "0, 1, 2"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "În `for i in range(len(nume)):`, ce este i?",
+      "options": [
+        "Un index, o poziție din listă",
+        "Un nume din listă",
+        "Lungimea listei",
+        "Lista însăși"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "De ce afișează lecția `i + 1` lângă fiecare erou?",
+      "options": [
+        "Pentru că range() pornește de la 1",
+        "Ca bucla să sară peste primul erou",
+        "În cod numărăm de la 0, dar oamenii numără de la 1",
+        "Pentru că i + 1 e numele eroului următor"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Când ai nevoie de `for i in range(len(nume)):` și nu de `for n in nume:`?",
+      "options": [
+        "Când ai nevoie și de poziția fiecărui element",
+        "Mereu, al doilea nu merge pe liste",
+        "Când lista ține numere",
+        "Când lista e goală"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\"]\nfor n in nume:\n    print(n[0])",
+      "options": ["Tommy\nLance", "T\nL", "T", "Se oprește cu o eroare"],
+      "answer": 1
+    },
+    {
+      "id": "q9",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i in range(len(nume)):\n    print(nume[i + 1])",
+      "options": [
+        "Afișează Lance, apoi Cortez, apoi se oprește cu o eroare",
+        "Afișează Tommy, Lance și Cortez",
+        "Afișează Lance și Cortez, fără eroare",
+        "Se oprește cu o eroare înainte să afișeze ceva"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "La suma din lecție, de ce e scris `total = 0` înainte de buclă?",
+      "options": [
+        "Ca bucla să ruleze de 0 ori",
+        "Ca total să revină la 0 la fiecare preț",
+        "Pentru că orice listă începe cu 0",
+        "Ca totalul să pornească de la 0 și fiecare preț să se adune la el"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "Ce afișează?",
+      "code": "preturi = [10, 20, 30]\nfor p in preturi:\n    total = 0\n    total = total + p\nprint(total)",
+      "options": ["60", "30", "0", "10\n20\n30"],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "preturi = [10, 20, 30]\ntotal = 0\nfor p in preturi:\n    total = total + p\n    print(total)",
+      "options": ["60", "10\n20\n30", "10\n30\n60", "60\n60\n60"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "În lecție, ce afișează suma pentru `preturi = [10, 20, 30, 40]`?",
+      "options": ["40", "100", "10\n30\n60\n100", "4"],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "nume = []\nfor n in nume:\n    print(\"Gata\")",
+      "options": [
+        "Nimic: lista e goală, deci liniile buclei nu rulează niciodată",
+        "Gata",
+        "[]",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3]\nfor n in numere:\n    n = n * 2\nprint(numere)",
+      "options": ["[2, 4, 6]", "[1, 2, 3]", "6", "[1, 2, 3, 2, 4, 6]"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Ce buclă dublează fiecare număr chiar în lista numere?",
+      "options": [
+        "for n in numere:\n    n = n * 2",
+        "for i in range(len(numere)):\n    i = i * 2",
+        "for i in range(len(numere)):\n    numere[i] = numere[i] * 2",
+        "for n in numere:\n    numere = n * 2"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "numere = [5, 12, 8, 20]\nmari = []\nfor n in numere:\n    if n > 10:\n        mari.append(n)\nprint(mari)",
+      "options": ["[5, 8]", "[12, 20]", "[20]", "[5, 12, 8, 20]"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "varste = [12, 18, 30, 15]\ncontor = 0\nfor v in varste:\n    if v >= 18:\n        contor = contor + 1\nprint(contor)",
+      "options": ["4", "48", "1", "2"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "scoruri = [7, 15, 9]\nmaxim = scoruri[0]\nfor s in scoruri:\n    if s > maxim:\n        maxim = s\nprint(maxim)",
+      "options": ["15", "7", "9", "31"],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "Când cauți cel mai mare număr, de ce pornești cu `maxim = scoruri[0]` și nu cu `maxim = 0`?",
+      "options": [
+        "Pentru că o listă nu se poate compara cu 0",
+        "Ca bucla să sară peste primul scor",
+        "E același lucru, 0 merge mereu",
+        "Dacă toate scorurile ar fi sub 0, maxim = 0 ar câștiga fără să fie în listă"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "În misiunea Echipajul navei, ce membru e afișat al șaselea, cu `6.` în față?",
+      "options": [
+        "Cel de la indexul 6",
+        "Cel de la indexul 5",
+        "Cel de la indexul 7",
+        "Al șaselea selectat pentru EVA"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "În misiunea Echipajul navei, membrul de la indexul 10 e selectat. Cu ce număr e afișat?",
+      "options": ["11", "10", "9", "12"],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "De ce parcurge misiunea Echipajul navei lista cu `range(len(echipaj))`?",
+      "options": [
+        "Pentru că o buclă for nu poate parcurge o listă de 20 de nume",
+        "Ca să afișeze doar membrii selectați",
+        "Are nevoie de indexul fiecărui membru, ca să-l numeroteze și să-i găsească pe 5, 10 și 12",
+        "Pentru că len() sortează întâi lista"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "În misiunea Echipajul navei, câte linii afișează programul?",
+      "options": ["3", "17", "21", "20"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Ce linie parcurge pozițiile din nume, de la prima la ultima?",
+      "options": [
+        "for i in nume:",
+        "for i in range(len(nume)):",
+        "for i in range(nume):",
+        "for i in len(nume):"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i in range(nume):\n    print(i)",
+      "options": [
+        "Afișează 0, 1 și 2",
+        "Afișează Tommy, Lance și Cortez",
+        "Se oprește cu o eroare: range() primește un număr, nu o listă",
+        "Afișează 3"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "În exemplul cu eroii din lecție, ce linie se afișează pentru Cortez?",
+      "options": [
+        "Erou numarul 2: Cortez",
+        "Erou numarul 3: Cortez",
+        "Erou numarul 4: Cortez",
+        "Erou numarul 3: nume[2]"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Lecția spune că și o buclă while ar putea parcurge o listă. De ce alege for?",
+      "options": [
+        "O buclă while nu poate citi o listă",
+        "O buclă for ne dă singură fiecare element, fără un contor de ținut",
+        "O buclă for e singura buclă cu o condiție",
+        "O buclă while ar sări peste primul element"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "Contează dacă scriem `for i in nume:` sau `for n in nume:`?",
+      "options": [
+        "Da, doar i merge într-o buclă for",
+        "Da, n dă pozițiile, iar i numele",
+        "Nu, numele îl alegem noi: în ambele cazuri ține fiecare element",
+        "Da, n merge doar pe liste de numere"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"soare\", \"luna\"]\nfor c in cuvinte:\n    print(c.upper())",
+      "options": ["soare\nluna", "SOARE LUNA", "SOARE\nLUNA", "['SOARE', 'LUNA']"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "lf-each",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    print(f\"{{greet}}, {{{x}}}!\")",
+      "values": [
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Jupiter\"",
+          "x": "planeta",
+          "greet": "Urmatoarea oprire"
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Lance\", \"Cortez\"",
+          "x": "membru",
+          "greet": "Bun venit"
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Phil\", \"Sonny\", \"Ken\"",
+          "x": "n",
+          "greet": "Salut"
+        },
+        {
+          "v": "jucatori",
+          "items": "\"Ana\", \"Rex\"",
+          "x": "i",
+          "greet": "Succes"
+        }
+      ],
+      "mistakes": [
+        ["{{{x}}}", "{{{v}}}"],
+        ["print(f\"", "print(\""],
+        ["in {{v}}:", "in range(len({{v}})):"],
+        ["{{{x}}}", "{{{v}}[0]}"]
+      ]
+    },
+    {
+      "id": "lf-index",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    print(f\"{{label}} {i + 1}: {{{v}}[i]}\")",
+      "values": [
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\"",
+          "label": "Planeta"
+        },
+        {
+          "v": "sarcini",
+          "items": "\"Alimentare\", \"Verificare motoare\", \"Lansare\"",
+          "label": "Pasul"
+        },
+        {
+          "v": "jucatori",
+          "items": "\"Ana\", \"Rex\", \"Kai\", \"Zoe\"",
+          "label": "Jucatorul"
+        }
+      ],
+      "mistakes": [
+        ["{i + 1}", "{i}"],
+        ["range(len({{v}}))", "range(1, len({{v}}))"],
+        ["{{{v}}[i]}", "{i}"],
+        ["{{{v}}[i]}", "{{{v}}}"]
+      ]
+    },
+    {
+      "id": "lf-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{t}} = 0\nfor {{x}} in {{v}}:\n    {{t}} = {{t}} + {{x}}\nprint({{t}})",
+      "values": [
+        {
+          "v": "preturi",
+          "items": "5, 15, 25",
+          "t": "total",
+          "x": "pret"
+        },
+        {
+          "v": "scoruri",
+          "items": "7, 3, 9, 1",
+          "t": "puncte",
+          "x": "s"
+        },
+        {
+          "v": "rezervoare",
+          "items": "40, 60",
+          "t": "combustibil",
+          "x": "rezervor"
+        },
+        {
+          "v": "varste",
+          "items": "12, 30, 8",
+          "t": "total",
+          "x": "varsta"
+        },
+        {
+          "v": "pasi",
+          "items": "100, 250, 150, 500",
+          "t": "parcurs",
+          "x": "p"
+        },
+        {
+          "v": "monede",
+          "items": "2, 2, 2, 2, 2",
+          "t": "total",
+          "x": "m"
+        }
+      ],
+      "mistakes": [
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"],
+        ["{{t}} + {{x}}", "{{t}} + 1"],
+        ["\nprint({{t}})", "\n    print({{t}})"]
+      ]
+    },
+    {
+      "id": "lf-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{c}} = 0\nfor n in {{v}}:\n    if n {{op}} {{lim}}:\n        {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "v": "varste",
+          "items": "12, 18, 30, 15",
+          "c": "contor",
+          "op": ">=",
+          "lim": 18,
+          "flip": ">"
+        },
+        {
+          "v": "temperaturi",
+          "items": "21, 35, 30, 28",
+          "c": "zile_calde",
+          "op": ">",
+          "lim": 30,
+          "flip": ">="
+        },
+        {
+          "v": "note",
+          "items": "4, 10, 5, 9, 5",
+          "c": "mici",
+          "op": "<",
+          "lim": 5,
+          "flip": "<="
+        },
+        {
+          "v": "viteze",
+          "items": "90, 120, 130, 100",
+          "c": "sigure",
+          "op": "<=",
+          "lim": 100,
+          "flip": "<"
+        }
+      ],
+      "mistakes": [
+        ["{{c}} + 1", "{{c}} + n"],
+        ["n {{op}} {{lim}}", "n {{flip}} {{lim}}"],
+        ["\nprint({{c}})", "\n    print({{c}})"]
+      ]
+    },
+    {
+      "id": "lf-max",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{b}} = {{v}}[0]\nfor n in {{v}}:\n    if n > {{b}}:\n        {{b}} = n\nprint({{b}})",
+      "values": [
+        {
+          "v": "scoruri",
+          "items": "7, 15, 9",
+          "b": "maxim"
+        },
+        {
+          "v": "inaltimi",
+          "items": "120, 95, 150, 130",
+          "b": "cel_mai_inalt"
+        },
+        {
+          "v": "niveluri",
+          "items": "3, 8, 2, 5",
+          "b": "maxim"
+        },
+        {
+          "v": "combustibil",
+          "items": "40, 70, 20, 55",
+          "b": "cel_mai_mult"
+        }
+      ],
+      "mistakes": [
+        ["n > {{b}}", "n < {{b}}"],
+        ["print({{b}})", "print(n)"],
+        ["\nprint({{b}})", "\n    print({{b}})"]
+      ]
+    },
+    {
+      "id": "lf-build",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor n in {{v}}:\n    if n {{op}} {{lim}}:\n        {{w}}.append(n)\nprint({{w}})",
+      "values": [
+        {
+          "v": "numere",
+          "items": "6, 14, 3, 25",
+          "w": "mari",
+          "op": ">",
+          "lim": 10,
+          "neg": "<="
+        },
+        {
+          "v": "temperaturi",
+          "items": "30, 18, 25, 10",
+          "w": "reci",
+          "op": "<",
+          "lim": 20,
+          "neg": ">="
+        },
+        {
+          "v": "scoruri",
+          "items": "50, 75, 90, 40",
+          "w": "trecute",
+          "op": ">=",
+          "lim": 50,
+          "neg": "<"
+        },
+        {
+          "v": "preturi",
+          "items": "3, 15, 7, 22",
+          "w": "ieftine",
+          "op": "<=",
+          "lim": 7,
+          "neg": ">"
+        }
+      ],
+      "mistakes": [
+        ["n {{op}} {{lim}}", "n {{neg}} {{lim}}"],
+        ["{{w}}.append(n)", "{{w}} = [n]"],
+        ["\nprint({{w}})", "\n    print({{w}})"]
+      ]
+    },
+    {
+      "id": "lf-upper",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}}.upper())\nprint({{w}})",
+      "values": [
+        {
+          "v": "cuvinte",
+          "items": "\"Marte\", \"Luna\"",
+          "w": "tare",
+          "x": "cuvant"
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Ken\"",
+          "w": "strigate",
+          "x": "n"
+        },
+        {
+          "v": "orase",
+          "items": "\"Roma\", \"Oslo\"",
+          "w": "panouri",
+          "x": "o"
+        }
+      ],
+      "mistakes": [
+        ["{{x}}.upper()", "{{x}}"],
+        ["{{x}}.upper()", "{{x}}.lower()"],
+        ["\nprint({{w}})", "\n    print({{w}})"]
+      ]
+    },
+    {
+      "id": "lf-double",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    {{v}}[i] = {{v}}[i] * {{k}}\nprint({{v}})",
+      "values": [
+        {
+          "v": "preturi",
+          "items": "10, 20, 30",
+          "k": 2
+        },
+        {
+          "v": "puncte",
+          "items": "1, 5, 3, 4",
+          "k": 3
+        },
+        {
+          "v": "viteze",
+          "items": "4, 8",
+          "k": 10
+        }
+      ],
+      "mistakes": [
+        ["* {{k}}", "+ {{k}}"],
+        ["range(len({{v}}))", "range(1, len({{v}}))"],
+        ["\nprint({{v}})", "\n    print({{v}})"]
+      ]
+    },
+    {
+      "id": "lf-which-sum",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{items}}]\n{{t}} = 0\nfor {{x}} in {{v}}:\n    {{t}} = {{t}} + {{x}}\nprint({{t}})",
+      "values": [
+        {
+          "v": "preturi",
+          "items": "4, 6, 10",
+          "t": "total",
+          "x": "p"
+        },
+        {
+          "v": "scoruri",
+          "items": "15, 9, 1",
+          "t": "puncte",
+          "x": "s"
+        },
+        {
+          "v": "varste",
+          "items": "7, 8, 9",
+          "t": "total",
+          "x": "v"
+        },
+        {
+          "v": "rezervoare",
+          "items": "100, 50, 25",
+          "t": "combustibil",
+          "x": "rezervor"
+        }
+      ],
+      "mistakes": [
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"],
+        ["{{t}} + {{x}}", "{{t}} + 1"],
+        ["\nprint({{t}})", "\n    print({{t}})"]
+      ]
+    },
+    {
+      "id": "lf-which-each",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    print({{x}})",
+      "values": [
+        {
+          "v": "culori",
+          "items": "\"rosu\", \"verde\", \"albastru\"",
+          "x": "c"
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\"",
+          "x": "n"
+        },
+        {
+          "v": "numere",
+          "items": "7, 3, 9",
+          "x": "n"
+        }
+      ],
+      "mistakes": [
+        ["print({{x}})", "print({{v}})"],
+        ["in {{v}}:", "in range(len({{v}})):"],
+        ["print({{x}})", "print({{v}}[0])"]
+      ]
+    },
+    {
+      "id": "lf-gap-add",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n{{t}} = 0\nfor {{x}} in {{v}}:\n    ___\nprint({{t}})",
+      "values": [
+        {
+          "v": "preturi",
+          "items": "3, 9, 12",
+          "t": "total",
+          "x": "p"
+        },
+        {
+          "v": "scoruri",
+          "items": "20, 5",
+          "t": "puncte",
+          "x": "s"
+        },
+        {
+          "v": "greutati",
+          "items": "6, 6, 1",
+          "t": "incarcatura",
+          "x": "g"
+        },
+        {
+          "v": "pasi",
+          "items": "11, 22, 33",
+          "t": "parcurs",
+          "x": "p"
+        },
+        {
+          "v": "monede",
+          "items": "8, 2, 5, 1",
+          "t": "bani",
+          "x": "m"
+        }
+      ],
+      "answer": "{{t}} = {{t}} + {{x}}",
+      "wrong": ["{{t}} = {{x}}", "{{t}} = {{t}} + 1", "{{t}} + {{x}}"]
+    },
+    {
+      "id": "lf-gap-loop",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n___\n    print(f\"{i + 1}. {{{v}}[i]}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Maria\", \"Andrei\", \"Elena\""
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\", \"Saturn\""
+        },
+        {
+          "v": "sarcini",
+          "items": "\"Alimentare\", \"Lansare\""
+        }
+      ],
+      "answer": "for i in range(len({{v}})):",
+      "wrong": [
+        "for i in {{v}}:",
+        "for i in range(1, len({{v}})):",
+        "for i in range(len({{v}}) - 1):"
+      ]
+    },
+    {
+      "id": "lf-gap-append",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor n in {{v}}:\n    if n {{op}} {{lim}}:\n        ___\nprint({{w}})",
+      "values": [
+        {
+          "v": "numere",
+          "items": "3, 14, 9, 30",
+          "w": "mari",
+          "op": ">",
+          "lim": 10
+        },
+        {
+          "v": "niveluri",
+          "items": "16, 4, 2, 7",
+          "w": "mici",
+          "op": "<",
+          "lim": 5
+        },
+        {
+          "v": "scoruri",
+          "items": "60, 45, 80",
+          "w": "trecute",
+          "op": ">=",
+          "lim": 50
+        }
+      ],
+      "answer": "{{w}}.append(n)",
+      "wrong": ["{{w}} = [n]", "{{w}}.append({{lim}})", "print(n)"]
+    },
+    {
+      "id": "lf-gap-plus",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    print(f\"{i + ___}. {{{v}}[i]}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Maria\", \"Andrei\""
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\""
+        },
+        {
+          "v": "jucatori",
+          "items": "\"Ana\", \"Rex\", \"Kai\""
+        }
+      ],
+      "answer": "1",
+      "wrong": ["0", "2", "i"]
+    },
+    {
+      "id": "lf-gap-idx",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    print({{v}}[___])",
+      "values": [
+        {
+          "v": "culori",
+          "items": "\"rosu\", \"verde\", \"albastru\""
+        },
+        {
+          "v": "numere",
+          "items": "5, 10, 15, 20"
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Ken\""
+        }
+      ],
+      "answer": "i",
+      "wrong": ["i + 1", "0", "len({{v}})"]
+    },
+    {
+      "id": "lf-gap-op",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n{{c}} = 0\nfor n in {{v}}:\n    if n ___ {{lim}}:\n        {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "v": "varste",
+          "items": "12, 18, 30, 15",
+          "c": "majori",
+          "op": ">=",
+          "lim": 18
+        },
+        {
+          "v": "temperaturi",
+          "items": "21, 35, 30, 28",
+          "c": "zile_calde",
+          "op": ">",
+          "lim": 30
+        },
+        {
+          "v": "viteze",
+          "items": "90, 120, 130, 100",
+          "c": "sigure",
+          "op": "<=",
+          "lim": 100
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": [">", ">=", "<", "<=", "=="]
+    },
+    {
+      "id": "lf-bad-index",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nprint(\"{{title}}\")\nfor i in range(len({{v}})):\n    print(f\"{i + 1}. {{{v}}[i]}\")\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Maria\", \"Andrei\", \"Elena\"",
+          "title": "Echipaj:",
+          "end": "Sfarsitul listei"
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\", \"Saturn\"",
+          "title": "Traseu:",
+          "end": "Traseu gata"
+        },
+        {
+          "v": "sarcini",
+          "items": "\"Alimentare\", \"Verificare motoare\", \"Lansare\"",
+          "title": "Lista de verificare:",
+          "end": "Totul e gata"
+        }
+      ],
+      "bug": ["{{{v}}[i]}", "{{{v}}[i + 1]}"]
+    },
+    {
+      "id": "lf-bad-range",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nprint(\"{{title}}\")\nfor i in range(len({{v}})):\n    print(f\"{i + 1}. {{{v}}[i]}\")\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Lance\", \"Cortez\", \"Phil\"",
+          "title": "Echipaj:",
+          "end": "Gata"
+        },
+        {
+          "v": "planete",
+          "items": "\"Mercur\", \"Venus\"",
+          "title": "Traseu:",
+          "end": "Terminat"
+        },
+        {
+          "v": "jucatori",
+          "items": "\"Ana\", \"Rex\", \"Kai\", \"Zoe\"",
+          "title": "Jucatori:",
+          "end": "Hai sa jucam"
+        }
+      ],
+      "bug": ["range(len({{v}}))", "range(1, len({{v}}))"]
+    },
+    {
+      "id": "lf-bad-sum",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n{{t}} = 0\nfor {{x}} in {{v}}:\n    {{t}} = {{t}} + {{x}}\nprint(f\"{{label}} {{{v}}}: {{{t}}}\")",
+      "values": [
+        {
+          "v": "preturi",
+          "items": "8, 12, 30",
+          "t": "total",
+          "x": "p",
+          "label": "Totalul pentru"
+        },
+        {
+          "v": "scoruri",
+          "items": "4, 4, 1, 6",
+          "t": "puncte",
+          "x": "s",
+          "label": "Punctele din"
+        },
+        {
+          "v": "monede",
+          "items": "25, 75",
+          "t": "bani",
+          "x": "m",
+          "label": "Banii din"
+        }
+      ],
+      "bug": ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"]
+    },
+    {
+      "id": "lf-bad-max",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n{{b}} = {{v}}[0]\nfor n in {{v}}:\n    if n > {{b}}:\n        {{b}} = n\nprint(f\"{{label}} {{{v}}}: {{{b}}}\")",
+      "values": [
+        {
+          "v": "scoruri",
+          "items": "12, 31, 18",
+          "b": "maxim",
+          "label": "Cel mai mare din"
+        },
+        {
+          "v": "inaltimi",
+          "items": "60, 85, 70, 40",
+          "b": "cel_mai_inalt",
+          "label": "Cel mai inalt din"
+        },
+        {
+          "v": "niveluri",
+          "items": "2, 9, 4",
+          "b": "maxim",
+          "label": "Nivelul maxim din"
+        }
+      ],
+      "bug": ["n > {{b}}", "n < {{b}}"]
+    }
+  ]
+}

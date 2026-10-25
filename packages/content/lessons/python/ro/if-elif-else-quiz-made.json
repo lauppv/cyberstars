@@ -1,0 +1,712 @@
+{
+  "note": "Made by npm run make:quiz from the templates in if-elif-else-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "iee-chain-446b8b",
+      "text": "Ce afișează?",
+      "code": "oxigen = 85\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen >= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+      "options": [
+        "Oxigen nominal",
+        "Oxigen scazut",
+        "Oxigen nominal\nOxigen scazut",
+        "Oxigen nominal\nOxigen critic"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-c15f1f",
+      "text": "Ce afișează?",
+      "code": "oxigen = 50\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen >= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+      "options": [
+        "Oxigen scazut",
+        "Oxigen nominal",
+        "Oxigen scazut\nOxigen critic",
+        "Oxigen critic"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-7a3db4",
+      "text": "Ce afișează?",
+      "code": "oxigen = 30\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen >= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+      "options": [
+        "Oxigen critic",
+        "Oxigen nominal",
+        "Oxigen scazut",
+        "Oxigen nominal\nOxigen scazut\nOxigen critic"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-650216",
+      "text": "Ce afișează?",
+      "code": "scor = 90\nif scor >= 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "options": ["Excelent", "Trecut", "Excelent\nTrecut", "Excelent\nPicat"],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-0a81e1",
+      "text": "Ce afișează?",
+      "code": "scor = 75\nif scor >= 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "options": ["Trecut", "Excelent", "Trecut\nPicat", "Picat"],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-8cfe34",
+      "text": "Ce afișează?",
+      "code": "scor = 20\nif scor >= 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "options": ["Picat", "Excelent", "Trecut", "Excelent\nTrecut\nPicat"],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-5bc5b4",
+      "text": "Ce afișează?",
+      "code": "baterie = 100\nif baterie >= 60:\n    print(\"Baterie buna\")\nelif baterie >= 20:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
+      "options": [
+        "Baterie buna",
+        "Baterie slaba",
+        "Baterie buna\nBaterie slaba",
+        "Baterie buna\nIncarca acum"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-00a578",
+      "text": "Ce afișează?",
+      "code": "baterie = 20\nif baterie >= 60:\n    print(\"Baterie buna\")\nelif baterie >= 20:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
+      "options": ["Baterie slaba", "Baterie buna", "Baterie slaba\nIncarca acum", "Incarca acum"],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-e42546",
+      "text": "Ce afișează?",
+      "code": "combustibil = 10\nif combustibil >= 70:\n    print(\"Rezervor plin\")\nelif combustibil >= 30:\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
+      "options": [
+        "Alimenteaza acum",
+        "Rezervor plin",
+        "Rezervor pe jumatate",
+        "Rezervor plin\nRezervor pe jumatate\nAlimenteaza acum"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-chain-b6a32c",
+      "text": "Ce afișează?",
+      "code": "combustibil = 69\nif combustibil >= 70:\n    print(\"Rezervor plin\")\nelif combustibil >= 30:\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
+      "options": [
+        "Rezervor pe jumatate",
+        "Rezervor plin",
+        "Rezervor pe jumatate\nAlimenteaza acum",
+        "Alimenteaza acum"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-d35991",
+      "text": "Ce afișează?",
+      "code": "viteza = 120\nif viteza > 50:\n    print(\"Rapid\")\nelif viteza > 100:\n    print(\"Prea rapid\")\nelse:\n    print(\"Incet\")",
+      "options": ["Rapid", "Prea rapid", "Rapid\nPrea rapid", "Rapid\nPrea rapid\nIncet"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-a2d1d1",
+      "text": "Ce afișează?",
+      "code": "viteza = 70\nif viteza > 50:\n    print(\"Rapid\")\nelif viteza > 100:\n    print(\"Prea rapid\")\nelse:\n    print(\"Incet\")",
+      "options": ["Rapid", "Prea rapid", "Rapid\nIncet", "Rapid\nPrea rapid\nIncet"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-ac5d97",
+      "text": "Ce afișează?",
+      "code": "temperatura = 35\nif temperatura > 10:\n    print(\"Cald\")\nelif temperatura > 30:\n    print(\"Foarte cald\")\nelse:\n    print(\"Frig\")",
+      "options": ["Cald", "Foarte cald", "Cald\nFoarte cald", "Cald\nFoarte cald\nFrig"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-4b6feb",
+      "text": "Ce afișează?",
+      "code": "temperatura = 20\nif temperatura > 10:\n    print(\"Cald\")\nelif temperatura > 30:\n    print(\"Foarte cald\")\nelse:\n    print(\"Frig\")",
+      "options": ["Cald", "Foarte cald", "Cald\nFrig", "Cald\nFoarte cald\nFrig"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-34f410",
+      "text": "Ce afișează?",
+      "code": "puncte = 800\nif puncte > 100:\n    print(\"Bine\")\nelif puncte > 500:\n    print(\"Record nou\")\nelse:\n    print(\"Mai incearca\")",
+      "options": ["Bine", "Record nou", "Bine\nRecord nou", "Bine\nRecord nou\nMai incearca"],
+      "answer": 0
+    },
+    {
+      "id": "iee-first-wins-1d2490",
+      "text": "Ce afișează?",
+      "code": "puncte = 300\nif puncte > 100:\n    print(\"Bine\")\nelif puncte > 500:\n    print(\"Record nou\")\nelse:\n    print(\"Mai incearca\")",
+      "options": ["Bine", "Record nou", "Bine\nMai incearca", "Bine\nRecord nou\nMai incearca"],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-a558e1",
+      "text": "Ce afișează?",
+      "code": "secunde = 100\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")",
+      "options": [
+        "Pornesc calculatoarele",
+        "Pornesc calculatoarele\nNimic de facut inca",
+        "Verific turnul",
+        "Pornesc motoarele"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-21bfe2",
+      "text": "Ce afișează?",
+      "code": "secunde = 60\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")",
+      "options": [
+        "Verific turnul",
+        "Verific turnul\nNimic de facut inca",
+        "Pornesc motoarele",
+        "Pornesc calculatoarele"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-5803c3",
+      "text": "Ce afișează?",
+      "code": "secunde = 20\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")",
+      "options": [
+        "Pornesc motoarele",
+        "Pornesc motoarele\nNimic de facut inca",
+        "Pornesc calculatoarele",
+        "Verific turnul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-7a7110",
+      "text": "Ce afișează?",
+      "code": "secunde = 45\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")",
+      "options": [
+        "Nimic de facut inca",
+        "Verific turnul",
+        "Pornesc calculatoarele",
+        "Pornesc calculatoarele\nVerific turnul\nPornesc motoarele\nNimic de facut inca"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-ad7d15",
+      "text": "Ce afișează?",
+      "code": "secunde = 10\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")",
+      "options": [
+        "Nimic de facut inca",
+        "Pornesc motoarele",
+        "Verific turnul",
+        "Pornesc calculatoarele\nVerific turnul\nPornesc motoarele\nNimic de facut inca"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-892f38",
+      "text": "Ce afișează?",
+      "code": "zi = 7\nif zi == 1:\n    print(\"Incepe saptamana\")\nelif zi == 6:\n    print(\"Sambata\")\nelif zi == 7:\n    print(\"Duminica\")\nelse:\n    print(\"O zi de lucru\")",
+      "options": ["Duminica", "Duminica\nO zi de lucru", "Incepe saptamana", "Sambata"],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-59f88e",
+      "text": "Ce afișează?",
+      "code": "zi = 3\nif zi == 1:\n    print(\"Incepe saptamana\")\nelif zi == 6:\n    print(\"Sambata\")\nelif zi == 7:\n    print(\"Duminica\")\nelse:\n    print(\"O zi de lucru\")",
+      "options": [
+        "O zi de lucru",
+        "Sambata",
+        "Duminica",
+        "Incepe saptamana\nSambata\nDuminica\nO zi de lucru"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-countdown-7e48fd",
+      "text": "Ce afișează?",
+      "code": "nivel = 5\nif nivel == 1:\n    print(\"Tutorial\")\nelif nivel == 5:\n    print(\"Mini boss\")\nelif nivel == 10:\n    print(\"Boss final\")\nelse:\n    print(\"Nivel normal\")",
+      "options": ["Mini boss", "Mini boss\nNivel normal", "Boss final", "Tutorial"],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-7d0e37",
+      "text": "Ce afișează?",
+      "code": "oxigen = 12\nechipaj_la_bord = True\nif oxigen >= 50:\n    print(\"Oxigen nominal\")\nelif oxigen >= 20:\n    print(\"Oxigen critic\")\nelse:\n    if echipaj_la_bord == True:\n        print(\"Evacuati acum\")\n    else:\n        print(\"Aerisiti compartimentul\")",
+      "options": ["Evacuati acum", "Oxigen nominal", "Oxigen critic", "Aerisiti compartimentul"],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-1f5162",
+      "text": "Ce afișează?",
+      "code": "oxigen = 12\nechipaj_la_bord = False\nif oxigen >= 50:\n    print(\"Oxigen nominal\")\nelif oxigen >= 20:\n    print(\"Oxigen critic\")\nelse:\n    if echipaj_la_bord == True:\n        print(\"Evacuati acum\")\n    else:\n        print(\"Aerisiti compartimentul\")",
+      "options": ["Aerisiti compartimentul", "Oxigen nominal", "Oxigen critic", "Evacuati acum"],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-3a41a7",
+      "text": "Ce afișează?",
+      "code": "oxigen = 65\nechipaj_la_bord = True\nif oxigen >= 50:\n    print(\"Oxigen nominal\")\nelif oxigen >= 20:\n    print(\"Oxigen critic\")\nelse:\n    if echipaj_la_bord == True:\n        print(\"Evacuati acum\")\n    else:\n        print(\"Aerisiti compartimentul\")",
+      "options": [
+        "Oxigen nominal",
+        "Oxigen critic",
+        "Evacuati acum",
+        "Oxigen nominal\nOxigen critic\nEvacuati acum\nAerisiti compartimentul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-9edef3",
+      "text": "Ce afișează?",
+      "code": "baterie = 10\nincarcator = True\nif baterie >= 50:\n    print(\"Gata de zbor\")\nelif baterie >= 20:\n    print(\"Doar zboruri scurte\")\nelse:\n    if incarcator == True:\n        print(\"Se incarca\")\n    else:\n        print(\"Cauta un incarcator\")",
+      "options": ["Se incarca", "Gata de zbor", "Doar zboruri scurte", "Cauta un incarcator"],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-09319c",
+      "text": "Ce afișează?",
+      "code": "baterie = 10\nincarcator = False\nif baterie >= 50:\n    print(\"Gata de zbor\")\nelif baterie >= 20:\n    print(\"Doar zboruri scurte\")\nelse:\n    if incarcator == True:\n        print(\"Se incarca\")\n    else:\n        print(\"Cauta un incarcator\")",
+      "options": ["Cauta un incarcator", "Gata de zbor", "Doar zboruri scurte", "Se incarca"],
+      "answer": 0
+    },
+    {
+      "id": "iee-nested-05dec8",
+      "text": "Ce afișează?",
+      "code": "baterie = 35\nincarcator = False\nif baterie >= 50:\n    print(\"Gata de zbor\")\nelif baterie >= 20:\n    print(\"Doar zboruri scurte\")\nelse:\n    if incarcator == True:\n        print(\"Se incarca\")\n    else:\n        print(\"Cauta un incarcator\")",
+      "options": [
+        "Doar zboruri scurte",
+        "Gata de zbor",
+        "Cauta un incarcator",
+        "Gata de zbor\nDoar zboruri scurte\nSe incarca\nCauta un incarcator"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-two-ifs-2ceeba",
+      "text": "Ce afișează?",
+      "code": "secunde = 100\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nif secunde == 60:\n    print(\"Verific turnul\")\nelse:\n    print(\"Fara efect\")",
+      "options": [
+        "Pornesc calculatoarele\nFara efect",
+        "Pornesc calculatoarele",
+        "Verific turnul",
+        "Fara efect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-two-ifs-849c23",
+      "text": "Ce afișează?",
+      "code": "secunde = 60\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nif secunde == 60:\n    print(\"Verific turnul\")\nelse:\n    print(\"Fara efect\")",
+      "options": [
+        "Verific turnul",
+        "Pornesc calculatoarele\nFara efect",
+        "Fara efect",
+        "Pornesc calculatoarele\nVerific turnul\nFara efect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-two-ifs-01d128",
+      "text": "Ce afișează?",
+      "code": "secunde = 30\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nif secunde == 60:\n    print(\"Verific turnul\")\nelse:\n    print(\"Fara efect\")",
+      "options": [
+        "Fara efect",
+        "Pornesc calculatoarele\nFara efect",
+        "Verific turnul",
+        "Pornesc calculatoarele\nVerific turnul\nFara efect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-two-ifs-94fbeb",
+      "text": "Ce afișează?",
+      "code": "vieti = 3\nif vieti == 3:\n    print(\"Viata plina\")\nif vieti == 0:\n    print(\"Joc terminat\")\nelse:\n    print(\"Joaca mai departe\")",
+      "options": [
+        "Viata plina\nJoaca mai departe",
+        "Viata plina",
+        "Joc terminat",
+        "Joaca mai departe"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-two-ifs-a636ca",
+      "text": "Ce afișează?",
+      "code": "vieti = 0\nif vieti == 3:\n    print(\"Viata plina\")\nif vieti == 0:\n    print(\"Joc terminat\")\nelse:\n    print(\"Joaca mai departe\")",
+      "options": [
+        "Joc terminat",
+        "Viata plina\nJoaca mai departe",
+        "Joaca mai departe",
+        "Viata plina\nJoc terminat\nJoaca mai departe"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-chain-9142d2",
+      "text": "Care program afișează asta?",
+      "output": "Oxigen scazut",
+      "options": [
+        "oxigen = 65\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen >= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+        "oxigen = 65\nif oxigen < 80:\n    print(\"Oxigen nominal\")\nelif oxigen >= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+        "oxigen = 65\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen < 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+        "oxigen = 65\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen >= 50:\n    print(\"Oxigen scazut\")\nprint(\"Oxigen critic\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-chain-87f164",
+      "text": "Care program afișează asta?",
+      "output": "Excelent",
+      "options": [
+        "scor = 95\nif scor >= 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "scor = 95\nif scor < 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "scor = 95\nif scor >= 90:\n    print(\"Excelent\")\nif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "scor = 95\nif scor >= 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nprint(\"Picat\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-chain-467579",
+      "text": "Care program afișează asta?",
+      "output": "Baterie slaba",
+      "options": [
+        "baterie = 40\nif baterie >= 60:\n    print(\"Baterie buna\")\nelif baterie >= 20:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
+        "baterie = 40\nif baterie < 60:\n    print(\"Baterie buna\")\nelif baterie >= 20:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
+        "baterie = 40\nif baterie >= 60:\n    print(\"Baterie buna\")\nelif baterie < 20:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
+        "baterie = 40\nif baterie >= 60:\n    print(\"Baterie buna\")\nelif baterie >= 20:\n    print(\"Baterie slaba\")\nprint(\"Incarca acum\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-chain-48c5d4",
+      "text": "Care program afișează asta?",
+      "output": "Rezervor plin",
+      "options": [
+        "combustibil = 75\nif combustibil >= 70:\n    print(\"Rezervor plin\")\nelif combustibil >= 30:\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
+        "combustibil = 75\nif combustibil < 70:\n    print(\"Rezervor plin\")\nelif combustibil >= 30:\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
+        "combustibil = 75\nif combustibil >= 70:\n    print(\"Rezervor plin\")\nif combustibil >= 30:\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
+        "combustibil = 75\nif combustibil >= 70:\n    print(\"Rezervor plin\")\nelif combustibil >= 30:\n    print(\"Rezervor pe jumatate\")\nprint(\"Alimenteaza acum\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-chain-36ccda",
+      "text": "Care program afișează asta?",
+      "output": "Trecut",
+      "options": [
+        "scor = 50\nif scor >= 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "scor = 50\nif scor < 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "scor = 50\nif scor >= 90:\n    print(\"Excelent\")\nelif scor < 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "scor = 50\nif scor >= 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nprint(\"Picat\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-countdown-55481f",
+      "text": "Care program afișează asta?",
+      "output": "Pornesc calculatoarele",
+      "options": [
+        "secunde = 100\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")",
+        "secunde = 100\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")",
+        "secunde = 100\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nprint(\"Nimic de facut inca\")",
+        "secunde = 100\nif secunde == 100:\n    print(\"Verific turnul\")\nelif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-countdown-653244",
+      "text": "Care program afișează asta?",
+      "output": "Verific turnul",
+      "options": [
+        "secunde = 60\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")",
+        "secunde = 60\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 60:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nprint(\"Nimic de facut inca\")",
+        "secunde = 60\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 100:\n    print(\"Verific turnul\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")",
+        "secunde = 60\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nelif secunde == 60:\n    print(\"Pornesc motoarele\")\nelif secunde == 20:\n    print(\"Pornesc motoarele\")\nelse:\n    print(\"Nimic de facut inca\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-which-countdown-bf9387",
+      "text": "Care program afișează asta?",
+      "output": "Sambata",
+      "options": [
+        "zi = 6\nif zi == 1:\n    print(\"Incepe saptamana\")\nelif zi == 6:\n    print(\"Sambata\")\nelif zi == 7:\n    print(\"Duminica\")\nelse:\n    print(\"O zi de lucru\")",
+        "zi = 6\nif zi == 1:\n    print(\"Incepe saptamana\")\nelif zi == 6:\n    print(\"Sambata\")\nelif zi == 7:\n    print(\"Duminica\")\nprint(\"O zi de lucru\")",
+        "zi = 6\nif zi == 1:\n    print(\"Incepe saptamana\")\nelif zi == 1:\n    print(\"Sambata\")\nelif zi == 7:\n    print(\"Duminica\")\nelse:\n    print(\"O zi de lucru\")",
+        "zi = 6\nif zi == 1:\n    print(\"Incepe saptamana\")\nelif zi == 6:\n    print(\"Duminica\")\nelif zi == 7:\n    print(\"Duminica\")\nelse:\n    print(\"O zi de lucru\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-elif-0c23f6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "oxigen = 90\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\n___ oxigen >= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+      "output": "Oxigen nominal",
+      "options": ["elif", "if", "else", "else if"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-elif-426890",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 92\nif scor >= 90:\n    print(\"Excelent\")\n___ scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "output": "Excelent",
+      "options": ["elif", "if", "else", "else if"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-elif-2d0956",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "baterie = 61\nif baterie >= 60:\n    print(\"Baterie buna\")\n___ baterie >= 20:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
+      "output": "Baterie buna",
+      "options": ["elif", "if", "else", "else if"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-elif-e0f397",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = 50\nif combustibil >= 70:\n    print(\"Rezervor plin\")\n___ combustibil >= 30:\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
+      "output": "Rezervor pe jumatate",
+      "options": ["elif", "else", "else if", "elseif"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-elif-c46319",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "oxigen = 55\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\n___ oxigen >= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+      "output": "Oxigen scazut",
+      "options": ["elif", "else", "else if", "elseif"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-limit-b69c80",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "oxigen = 65\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen >= ___:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+      "output": "Oxigen scazut",
+      "options": ["50", "70", "80", "66"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-limit-eb0faf",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 75\nif scor >= 90:\n    print(\"Excelent\")\nelif scor >= ___:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "output": "Trecut",
+      "options": ["50", "80", "90", "76"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-limit-6b2f79",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "baterie = 30\nif baterie >= 60:\n    print(\"Baterie buna\")\nelif baterie >= ___:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
+      "output": "Baterie slaba",
+      "options": ["20", "40", "31", "60"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-limit-c7cd52",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = 45\nif combustibil >= 70:\n    print(\"Rezervor plin\")\nelif combustibil >= ___:\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
+      "output": "Rezervor pe jumatate",
+      "options": ["30", "50", "46", "70"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-line-c0771a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "oxigen = 65\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\n___\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+      "output": "Oxigen scazut",
+      "options": ["elif oxigen >= 50:", "elif oxigen < 50:", "else:", "elif oxigen >= 50"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-line-f66b21",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 95\nif scor >= 90:\n    print(\"Excelent\")\n___\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "output": "Excelent",
+      "options": ["elif scor >= 50:", "if scor >= 50:", "else:", "elif scor >= 50"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-line-bc5a49",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "baterie = 10\nif baterie >= 60:\n    print(\"Baterie buna\")\n___\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
+      "output": "Incarca acum",
+      "options": ["elif baterie >= 20:", "elif baterie < 20:", "else:", "elif baterie >= 20"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-line-a81070",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = 40\nif combustibil >= 70:\n    print(\"Rezervor plin\")\n___\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
+      "output": "Rezervor pe jumatate",
+      "options": [
+        "elif combustibil >= 30:",
+        "elif combustibil < 30:",
+        "else:",
+        "elif combustibil >= 30"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-line-8de602",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 30\nif scor >= 90:\n    print(\"Excelent\")\n___\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "output": "Picat",
+      "options": ["elif scor >= 50:", "elif scor < 50:", "else:", "elif scor >= 50"],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-nested-69c69c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "oxigen = 12\nechipaj_la_bord = True\nif oxigen >= 20:\n    print(\"Oxigen critic\")\nelse:\n    ___\n        print(\"Evacuati acum\")\n    else:\n        print(\"Aerisiti compartimentul\")",
+      "output": "Evacuati acum",
+      "options": [
+        "if echipaj_la_bord == True:",
+        "elif echipaj_la_bord == True:",
+        "if echipaj_la_bord = True:",
+        "if echipaj_la_bord == False:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-nested-b09ace",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "oxigen = 12\nechipaj_la_bord = False\nif oxigen >= 20:\n    print(\"Oxigen critic\")\nelse:\n    ___\n        print(\"Evacuati acum\")\n    else:\n        print(\"Aerisiti compartimentul\")",
+      "output": "Aerisiti compartimentul",
+      "options": [
+        "if echipaj_la_bord == True:",
+        "elif echipaj_la_bord == True:",
+        "if echipaj_la_bord = True:",
+        "if echipaj_la_bord == False:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-nested-f12256",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "baterie = 5\nincarcator = True\nif baterie >= 20:\n    print(\"Doar zboruri scurte\")\nelse:\n    ___\n        print(\"Se incarca\")\n    else:\n        print(\"Cauta un incarcator\")",
+      "output": "Se incarca",
+      "options": [
+        "if incarcator == True:",
+        "elif incarcator == True:",
+        "if incarcator = True:",
+        "if incarcator == False:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-gap-nested-64e472",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "baterie = 15\nincarcator = False\nif baterie >= 20:\n    print(\"Doar zboruri scurte\")\nelse:\n    ___\n        print(\"Se incarca\")\n    else:\n        print(\"Cauta un incarcator\")",
+      "output": "Cauta un incarcator",
+      "options": [
+        "if incarcator == True:",
+        "elif incarcator == True:",
+        "if incarcator = True:",
+        "if incarcator == False:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-colon-941a86",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "oxigen = 60\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen >= 50\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+      "output": "Oxigen scazut",
+      "options": [
+        "elif oxigen >= 50",
+        "if oxigen >= 80:",
+        "print(\"Oxigen nominal\")",
+        "oxigen = 60"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-colon-372ecb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "combustibil = 40\nif combustibil >= 70:\n    print(\"Rezervor plin\")\nelif combustibil >= 30\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
+      "output": "Rezervor pe jumatate",
+      "options": [
+        "elif combustibil >= 30",
+        "else:",
+        "print(\"Rezervor pe jumatate\")",
+        "print(\"Alimenteaza acum\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-elif-if-72174a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "oxigen = 95\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nif oxigen >= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+      "output": "Oxigen nominal",
+      "options": [
+        "if oxigen >= 50:",
+        "if oxigen >= 80:",
+        "print(\"Oxigen nominal\")",
+        "oxigen = 95"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-elif-if-23bbff",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scor = 100\nif scor >= 90:\n    print(\"Excelent\")\nif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "output": "Excelent",
+      "options": ["if scor >= 50:", "if scor >= 90:", "else:", "print(\"Trecut\")"],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-elif-if-517032",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "baterie = 80\nif baterie >= 60:\n    print(\"Baterie buna\")\nif baterie >= 20:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
+      "output": "Baterie buna",
+      "options": [
+        "if baterie >= 20:",
+        "if baterie >= 60:",
+        "print(\"Baterie buna\")",
+        "baterie = 80"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-else-b8da50",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scor = 35\nif scor >= 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nelse scor < 50:\n    print(\"Picat\")",
+      "output": "Picat",
+      "options": ["else scor < 50:", "elif scor >= 50:", "if scor >= 90:", "print(\"Trecut\")"],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-else-d281f4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "baterie = 5\nif baterie >= 60:\n    print(\"Baterie buna\")\nelif baterie >= 20:\n    print(\"Baterie slaba\")\nelse baterie < 20:\n    print(\"Incarca acum\")",
+      "output": "Incarca acum",
+      "options": [
+        "else baterie < 20:",
+        "elif baterie >= 20:",
+        "if baterie >= 60:",
+        "print(\"Incarca acum\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-flip-329aa4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "oxigen = 70\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen <= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
+      "output": "Oxigen scazut",
+      "options": ["elif oxigen <= 50:", "if oxigen >= 80:", "else:", "print(\"Oxigen scazut\")"],
+      "answer": 0
+    },
+    {
+      "id": "iee-bad-flip-1a1ac5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "combustibil = 55\nif combustibil >= 70:\n    print(\"Rezervor plin\")\nelif combustibil <= 30:\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
+      "output": "Rezervor pe jumatate",
+      "options": [
+        "elif combustibil <= 30:",
+        "if combustibil >= 70:",
+        "else:",
+        "print(\"Rezervor pe jumatate\")"
+      ],
+      "answer": 0
+    }
+  ]
+}
