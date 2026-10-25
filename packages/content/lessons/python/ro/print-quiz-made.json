@@ -418,6 +418,64 @@
       "output": "Lance\nPaul",
       "options": ["nume = \"Paul\"", "nume = Paul", "print(\"Paul\")", "\"Paul\""],
       "answer": 0
+    },
+    {
+      "id": "int-sum-97a50f",
+      "text": "Ce afișează?",
+      "code": "a = 2\nb = 6\nc = a + b\nprint(c)",
+      "options": ["8", "c", "a + b", "26"],
+      "answer": 0
+    },
+    {
+      "id": "int-sum-ad12ed",
+      "text": "Ce afișează?",
+      "code": "a = 10\nb = 5\nc = a + b\nprint(c)",
+      "options": ["15", "c", "a + b", "105"],
+      "answer": 0
+    },
+    {
+      "id": "int-sum-f36ece",
+      "text": "Ce afișează?",
+      "code": "a = 7\nb = 3\nc = a + b\nprint(c)",
+      "options": ["10", "c", "a + b", "73"],
+      "answer": 0
+    },
+    {
+      "id": "int-plus-one-f56b08",
+      "text": "Ce afișează?",
+      "code": "n = 10\nn = n + 1\nprint(n)",
+      "options": ["11", "10", "n + 1", "n"],
+      "answer": 0
+    },
+    {
+      "id": "int-plus-one-1951a8",
+      "text": "Ce afișează?",
+      "code": "n = 4\nn = n + 1\nprint(n)",
+      "options": ["5", "4", "n + 1", "n"],
+      "answer": 0
+    },
+    {
+      "id": "int-plus-one-2b2bc6",
+      "text": "Ce afișează?",
+      "code": "n = 99\nn = n + 1\nprint(n)",
+      "options": ["100", "99", "n + 1", "n"],
+      "answer": 0
+    },
+    {
+      "id": "int-first-71489c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "x = ___\nprint(x)",
+      "output": "45",
+      "options": ["23 + 22", "\"23 + 22\"", "2322", "23 - 22"],
+      "answer": 0
+    },
+    {
+      "id": "int-first-f57c2d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "x = ___\nprint(x)",
+      "output": "42",
+      "options": ["40 + 2", "\"40 + 2\"", "402", "40 - 2"],
+      "answer": 0
     }
   ]
 }

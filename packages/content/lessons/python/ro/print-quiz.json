@@ -620,6 +620,71 @@
       ],
       "answer": "nume = \"{{b}}\"",
       "wrong": ["nume = {{b}}", "print(\"{{b}}\")", "\"{{b}}\""]
+    },
+    {
+      "id": "int-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "a = {{a}}\nb = {{b}}\nc = a + b\nprint(c)",
+      "values": [
+        {
+          "a": 2,
+          "b": 6
+        },
+        {
+          "a": 10,
+          "b": 5
+        },
+        {
+          "a": 7,
+          "b": 3
+        }
+      ],
+      "mistakes": [
+        ["print(c)", "print(\"c\")"],
+        ["c = a + b", "c = \"a + b\""],
+        ["a = {{a}}\nb = {{b}}", "a = \"{{a}}\"\nb = \"{{b}}\""]
+      ]
+    },
+    {
+      "id": "int-plus-one",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "n = {{n}}\nn = n + 1\nprint(n)",
+      "values": [
+        {
+          "n": 10
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 99
+        }
+      ],
+      "mistakes": [
+        ["n = n + 1", "n + 1"],
+        ["n = n + 1", "n = \"n + 1\""],
+        ["print(n)", "print(\"n\")"]
+      ]
+    },
+    {
+      "id": "int-first",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "x = ___\nprint(x)",
+      "values": [
+        {
+          "a": 23,
+          "b": 22
+        },
+        {
+          "a": 40,
+          "b": 2
+        }
+      ],
+      "answer": "{{a}} + {{b}}",
+      "wrong": ["\"{{a}} + {{b}}\"", "{{a}}{{b}}", "{{a}} - {{b}}"]
     }
   ]
 }
