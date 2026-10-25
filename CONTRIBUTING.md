@@ -111,11 +111,10 @@ send you an invite to the workspace.
 
 ### Reporting bugs
 
-Open an issue with:
-
-- Steps to reproduce
-- Expected vs actual behavior
-- Browser/OS if relevant
+[Open an issue](https://github.com/lauppv/cyberstars/issues/new/choose) and pick the form that fits:
+a bug on the site, a problem in a lesson (a typo, a wrong explanation, a test that fails a correct
+solution), or a feature idea. Security issues go through [SECURITY.md](SECURITY.md), never a public
+issue.
 
 ### Adding lessons
 
@@ -248,4 +247,5 @@ If `format:check` fails, just run `format`, it fixes everything automatically.
 
 ## Code of conduct
 
-Be respectful. We're all here to learn and build something cool.
+Be respectful. We're all here to learn and build something cool. Everyone taking part follows our
+[Code of Conduct](CODE_OF_CONDUCT.md).

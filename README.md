@@ -1,31 +1,31 @@
+<p align="center">
+  <a href="https://cyberstars.app"><img src="apps/ui/public/og-image.png" alt="CyberStars: learn to code for free" width="720"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/lauppv/cyberstars/actions/workflows/ci.yml"><img src="https://github.com/lauppv/cyberstars/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-BSD--3--Clause-blue" alt="License: BSD-3-Clause"></a>
+  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" alt="PRs welcome"></a>
+  <a href="https://cyberstars.app"><img src="https://img.shields.io/badge/live-cyberstars.app-6C5CE7" alt="Live at cyberstars.app"></a>
+</p>
+
 # CyberStars
 
-A free, open-source interactive coding education platform. Learn Python, C, Java, and Linux through structured lessons with a live code editor. Read, write, and run code in the same view.
+A free, open-source platform to learn Python, Java, C and Linux in your browser. Read a lesson, write code next to it, run it, and pass the lesson's tests to finish it.
 
-Live at [cyberstars.app](https://cyberstars.app).
+Live at [cyberstars.app](https://cyberstars.app), in English and Romanian.
 
 ## Features
 
-- **Split-screen lessons**: Markdown content on the left, live CodeMirror editor on the right
-- **Runnable code examples**: click "Run" on any code block inside lesson text to execute it instantly
-- **Judge-graded completion**: pass a lesson's built-in test suite (Run Tests) to complete it; completion is server-verified, with no manual honor-system button
-- **LeetCode-style results**: after Run Tests, a Result tab shows the verdict, how many tests passed, the test the run stopped on, and every passed test with its input and output; algorithm challenges also show the runtime next to the reference solution, and signed-in students keep their last 20 attempts per lesson
-- **Multi-language**: Python (60 lessons), Java (49 lessons), C (47 lessons), Linux terminal (55 lessons), and Trees and Graphs (12 lessons, Beta), where every lesson comes in Python, Java and C with a switch above the text
-- **Bilingual UI (EN/RO)**: English (default) and Romanian with a language toggle; untranslated lessons or articles fall back to English automatically
-- **Algorithm challenges**: 88 challenges in four sets (Python 20, Java 20, C 32, and Trees and Graphs 16 tree and graph challenges in all three languages, Beta) with Easy/Medium/Hard difficulty levels, graded against hidden tests within each statement's stated input limits
-- **Step-by-step visuals**: lessons and challenges show an algorithm one step at a time (an array, boxes and arrows, a tree, a graph, a grid, a stack or a queue), and some steps ask the student to predict the next one from a few choices
-- **Sandboxed execution**: user code runs in Docker containers, never in the browser
-- **Progress tracking**: per-course progress bars, XP/levels, and unlockable badges (First Steps + Bronze/Silver/Gold tiers per course)
-- **Code persistence**: saved per lesson, restored on revisit
-- **Tutor chat**: an AI tutor (Google Gemini) in a panel beside the page for signed-in students, where each visit starts a new conversation and the earlier ones stay in a history beside it, also about a lesson or algorithm challenge from its ⋯ menu, where it sees the student's code and last results; it guides them toward the answer a nudge at a time without handing over the solution, recommends a course by what it teaches on CyberStars, says what it is looking up while it thinks, suggests first questions from where the student stands on the lesson, cheers when the tests pass, streams its replies, keeps the newest 50 conversations, and works in 5-hour sessions of 15 to 30 messages
-- **Landing page**: what a visitor sees on `/`, with four wordless algorithm films (bubble sort, a linked list, a binary search tree, a breadth-first search) playing in a grid
-- **Placement test**: 12 multiple-choice questions on Python, C, Java and Linux, taken from the landing page before signing up; the score sets a beginner, intermediate or advanced level the tutor fits its answers and first questions to
-- **What you want to learn**: right after the first-lesson tour the tutor asks which of Python, C, Java, Linux and algorithms the student wants; its first questions then follow those picks and the student's progress (the lesson left unfinished, the next one, a quiz on a lesson from a week ago), it offers help after three failed test runs in a row, and it cheers a finished course or a return after a week away
-- **Laniakea**: a space game that opens after 3 Python lessons; every lesson finished is a planet to fly to, conquered with a 10-question test on it and kept with recaps after 1, 2, 4 and up to 64 days, after which it is the student's for good
-- **Community forum**: threaded discussions with reactions and solution marking
-- **In-app notifications**: live bell for forum replies/solutions and support activity, pushed over a per-user WebSocket
-- **Linux terminal**: interactive sandboxed shell for learning Linux commands
-- **Admin dashboard**: admin-only `/admin` view with platform statistics (users, lesson progress, forum/support, live code-execution metrics) and visitor counts kept without cookies or IPs (visitors a day, top pages, where they come from, each guest's visit step by step, over up to 24 months, and how far guests get in the placement test); access is server-authoritative, the role is read from the DB, never trusted from the client
+- **Five courses**: Python (60 lessons), Java (49), C (47), Linux in a real terminal (55) and Trees and Graphs (12, Beta, each lesson in all three languages)
+- **88 algorithm challenges** from Easy to Hard, graded against hidden tests, with your runtime next to the reference solution
+- **Split-screen lessons**: the lesson on the left, a live editor on the right, and every example in the text runnable
+- **Graded, not honor-system**: a lesson counts as done only once the server's judge passes it
+- **Step-by-step visuals** of arrays, linked lists, trees, graphs and stacks, some asking you to predict the next step
+- **An AI tutor** that nudges you toward the answer without handing it over
+- **Progress**: XP, levels, badges, a placement test, and Laniakea, a space game that quizzes you on what you've learned
+- **Community**: a forum, messages and notifications
+- **Sandboxed**: your code runs in locked-down Docker containers on the server, never in your browser
 
 ## Quick start
 
@@ -91,18 +91,13 @@ Run every script from the root; it forwards to the right workspace. See [ARCHITE
 
 ## CI
 
-Every push and pull request runs eleven parallel jobs after a shared `setup`: **format-check**, **lint**, **typecheck**, **test** (with coverage + PR comment), **audit** (`npm audit --audit-level=high`), **dead-code** (knip), **validate-tests** (`npm run validate:tests`), **test-integration** (against a Postgres 16 service), **test-e2e-browser** and **test-e2e-docker** (Playwright with sandbox + runtime Docker images), and **build**. The **test** job also reads every lesson's visuals through the player's parser (`lessonVisuals.test.ts`) and checks that a Romanian lesson has the same steps as its English one.
-
-A second workflow, **lesson-tests**, grades lessons again through the real Docker judge (`npm run check:tests`), but only the ones a pull request can have changed: a changed spec, reference solution or variant grades that lesson, a changed runner every lesson of its language, and a change to the judge shared by all languages every lesson. A pull request that touches none of them skips it; a manual run grades everything.
+Every push and pull request runs format, lint, typecheck, the unit suite with coverage, `npm audit`, dead-code, the lesson test specs, the Laniakea questions, integration tests against Postgres, both Playwright suites and the build ([`ci.yml`](.github/workflows/ci.yml)). A second workflow grades the lessons a pull request changed through the real Docker judge ([`lesson-tests.yml`](.github/workflows/lesson-tests.yml)).
 
 ## Contributing
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, adding lessons, code style and the pull request process. Found a mistake in a lesson? [Open an issue](https://github.com/lauppv/cyberstars/issues/new/choose). Have a question? Ask in [Discussions](https://github.com/lauppv/cyberstars/discussions).
 
-- Setup instructions
-- How to add new lessons
-- Code style guide
-- Pull request process
+Please follow our [Code of Conduct](CODE_OF_CONDUCT.md), and report security issues privately as described in [SECURITY.md](SECURITY.md).
 
 Since October 11, 2026, work on CyberStars is planned as tickets in [Linear](https://linear.app/cyberstars).
 That's where references like `CYB-23` in PRs point. The workspace isn't public, so opening them
