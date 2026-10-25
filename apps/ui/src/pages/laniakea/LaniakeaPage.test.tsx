@@ -51,8 +51,9 @@ function state(over: Partial<LaniakeaState> = {}): LaniakeaState {
   return {
     courseKey: 'python',
     unlocked: true,
-    lessonsDone: 3,
-    unlockAt: 3,
+    lessonsDone: 6,
+    unlockAt: 6,
+    nextLesson: null,
     serverNow: NOW,
     planets: [
       testPlanet({ slug: 'print' }),
@@ -96,19 +97,27 @@ beforeEach(() => {
 });
 
 describe('LaniakeaPage', () => {
-  it('says what opens the game before the first lessons, and leads to the next one', async () => {
+  it('says what opens the game before First steps, and leads to the lesson left', async () => {
     h.getLaniakea.mockResolvedValue(
       state({
         unlocked: false,
-        lessonsDone: 1,
-        planets: [testPlanet(), testPlanet({ slug: 'lists', lessonDone: false })],
+        lessonsDone: 5,
+        nextLesson: 'variables-int',
+        planets: [testPlanet({ lessonDone: false }), testPlanet({ slug: 'lists' })],
       }),
     );
     renderPage();
-    expect(await screen.findByText('Laniakea opens after 3 Python lessons')).toBeInTheDocument();
-    expect(screen.getByText('1 of 3 done')).toBeInTheDocument();
+    expect(
+      await screen.findByText('Laniakea opens after the first 6 Python lessons'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/^The first 6 lessons make one planet, First steps/),
+    ).toBeInTheDocument();
+    expect(screen.getByText('5 of 6 done')).toBeInTheDocument();
     expect(screen.getByText('Beta')).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('link', { name: 'Continue with Python' }));
+    const next = screen.getByRole('link', { name: 'Continue with Python' });
+    expect(next).toHaveAttribute('href', '/lesson/python/variables-int');
+    fireEvent.click(next);
     expect(screen.getByText('A lesson')).toBeInTheDocument();
     expect(h.loadThree).not.toHaveBeenCalled();
   });

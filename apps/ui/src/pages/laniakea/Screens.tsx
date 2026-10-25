@@ -28,10 +28,10 @@ export function LoadingScreen({ failed, onRetry }: { failed: boolean; onRetry: (
   );
 }
 
-// Before the first lessons: what the game is and how far there is to go.
+// Before First steps' lessons: what the game is and how far there is to go.
 export function LockedScreen({ state }: { state: LaniakeaState }) {
   const { t } = useTranslation();
-  const next = state.planets.find((p) => !p.lessonDone);
+  const next = state.nextLesson;
   const done = Math.min(state.lessonsDone, state.unlockAt);
   return (
     <div className="lnk-screen">
@@ -40,7 +40,7 @@ export function LockedScreen({ state }: { state: LaniakeaState }) {
         <BetaBadge hint={t('laniakea.betaHint')} />
       </div>
       <h1>{t('laniakea.locked.title', { count: state.unlockAt })}</h1>
-      <p>{t('laniakea.locked.body')}</p>
+      <p>{t('laniakea.locked.body', { lessons: state.unlockAt })}</p>
       <div className="lnk-meter" aria-hidden="true">
         <span style={{ width: `${(done / state.unlockAt) * 100}%` }} />
       </div>
@@ -50,7 +50,7 @@ export function LockedScreen({ state }: { state: LaniakeaState }) {
       <div className="flex flex-wrap justify-center gap-2">
         {next && (
           <Link
-            to={`/lesson/${state.courseKey}/${next.slug}`}
+            to={`/lesson/${state.courseKey}/${next}`}
             className="lnk-btn lnk-btn-primary no-underline"
           >
             {t('laniakea.locked.next')}
