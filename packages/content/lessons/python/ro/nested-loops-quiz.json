@@ -1,0 +1,920 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce este o buclă imbricată?",
+      "options": [
+        "O buclă care merge de două ori mai repede",
+        "O buclă scrisă în corpul altei bucle",
+        "Două bucle scrise una după alta",
+        "O buclă care rulează o singură dată"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "În exemplul cu zarurile, `for zar1 in range(1, 7)` conține `for zar2 in range(1, 7)`. Câte linii afișează?",
+      "options": ["6", "12", "36", "49"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "În exemplul cu zarurile, ce face bucla interioară cât timp zar1 este 1?",
+      "options": [
+        "Rulează complet, cu zar2 de la 1 la 6",
+        "Rulează o dată, cu zar2 = 1",
+        "Așteaptă până când zar1 ajunge la 6",
+        "Rulează doar când zar1 e egal cu zar2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "În comparația cu ceasul din lecție, care buclă e acul minutar?",
+      "options": [
+        "Bucla exterioară, pentru că pornește prima",
+        "Amândouă, pentru că se mișcă împreună",
+        "Niciuna, pentru că un ceas nu are bucle",
+        "Bucla interioară, pentru că face o tură completă înainte ca cea exterioară să facă un pas"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 4):\n        print(f\"{i}{j}\")",
+      "options": [
+        "11\n21\n12\n22\n13\n23",
+        "11\n12\n13\n21\n22\n23",
+        "11\n12\n21\n22",
+        "12\n13\n22\n23"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "În tabla înmulțirii, de ce apare `print(\"---\")` după fiecare rând și nu după fiecare produs?",
+      "options": [
+        "Stă în bucla exterioară, dar în afara celei interioare, așa că rulează o dată pe rând",
+        "E ultima linie din program, așa că rulează ultima",
+        "print() așteaptă mereu să se termine toate buclele",
+        "Python afișează liniile cu liniuțe după numere"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "for i in range(2):\n    for j in range(2):\n        print(\"x\")\n    print(\"-\")",
+      "options": ["x\nx\n-", "x\n-\nx\n-", "x\nx\n-\nx\nx\n-", "x\nx\nx\nx\n-"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "for i in range(2):\n    for j in range(2):\n        print(\"x\")\nprint(\"-\")",
+      "options": ["x\nx\n-\nx\nx\n-", "x\n-\nx\n-\nx\n-\nx\n-", "x\nx\n-", "x\nx\nx\nx\n-"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "În exemplul cu echipele din lecție sunt 2 echipe și 3 jucători. Câte linii afișează?",
+      "options": ["5", "6", "3", "2"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "În exemplul cu echipele, bucla exterioară parcurge echipele. Ce linie afișează prima?",
+      "options": [
+        "Tommy joaca pentru Sharks",
+        "Tommy joaca pentru Bears",
+        "Sharks joaca pentru Tommy",
+        "Lance joaca pentru Sharks"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "`break` rulează în bucla interioară. Unde continuă programul?",
+      "options": [
+        "După ambele bucle, la finalul programului",
+        "La prima linie a buclei interioare, de la început",
+        "După bucla interioară: bucla exterioară continuă cu următoarea valoare",
+        "La următoarea valoare a buclei interioare, ca la continue"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 3):\n        if i == 2:\n            break\n        print(f\"{i} {j}\")",
+      "options": ["1 1\n1 2", "1 1\n1 2\n2 1\n3 1\n3 2", "1 1\n2 1\n3 1", "1 1\n1 2\n3 1\n3 2"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce schimbă `end=\"\"` în `print(\"a\", end=\"\")`?",
+      "options": [
+        "Următorul print continuă pe aceeași linie, nu pe una nouă",
+        "print nu afișează nimic",
+        "print adaugă o linie goală după a",
+        "print oprește programul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "print(\"a\", end=\"\")\nprint(\"b\")\nprint(\"c\")",
+      "options": ["abc", "ab\nc", "a\nb\nc", "a\nbc"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Ce face un `print()` gol după bucla interioară care desenează un rând?",
+      "options": [
+        "Afișează cuvântul None",
+        "Șterge rândul desenat",
+        "Trece pe o linie nouă, ca următorul rând să înceapă pe linia lui",
+        "Oprește bucla exterioară"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "for rand in range(2):\n    for stea in range(3):\n        print(\"*\", end=\"\")",
+      "options": ["***\n***", "*\n*\n*\n*\n*\n*", "***", "******"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "În misiunea Turnul de Semnal, utilizatorul tastează 4. Câte steluțe are ultimul rând?",
+      "options": ["4", "5", "3", "10"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "În misiunea Turnul de Semnal, utilizatorul tastează 4. Câte steluțe are tot turnul?",
+      "options": ["4", "10", "16", "8"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "În soluția de la Turnul de Semnal, de ce folosește bucla exterioară `range(1, randuri + 1)` și nu `range(randuri)`?",
+      "options": [
+        "range(randuri) ar desena un rând în plus",
+        "range nu poate porni de la 0 într-o buclă imbricată",
+        "rand merge atunci de la 1 la randuri, adică numărul de steluțe de care are nevoie fiecare rând",
+        "Ca turnul să iasă cu capul în jos"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "În soluția de la Turnul de Semnal, ce parte decide câte steluțe are un rând?",
+      "options": [
+        "range(1, randuri + 1) din bucla exterioară",
+        "print()-ul de după bucla interioară",
+        "Linia cu input()",
+        "range(rand) din bucla interioară"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "O buclă exterioară rulează de 3 ori, iar de fiecare dată bucla interioară rulează de 5 ori. De câte ori rulează corpul buclei interioare?",
+      "options": ["15", "8", "5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "for i in range(3):\n    print(i, end=\"\")\nprint()\nprint(\"gata\")",
+      "options": ["0\n1\n2\ngata", "012\ngata", "012gata", "123\ngata"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "for rand in range(1, 4):\n    for stea in range(4 - rand):\n        print(\"#\", end=\"\")\n    print()",
+      "options": ["#\n##\n###", "###\n###\n###", "###\n##\n#", "##\n#"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "for cuvant in [\"hi\", \"yo\"]:\n    for litera in cuvant:\n        print(litera, end=\"\")\n    print(\"!\")",
+      "options": ["h\ni\n!\ny\no\n!", "hiyo!", "hi\nyo\n!", "hi!\nyo!"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "O buclă imbricată desenează un dreptunghi de steluțe, rând cu rând. Unde se pune `print()`-ul gol?",
+      "options": [
+        "În bucla exterioară, după bucla interioară",
+        "În bucla interioară, după fiecare steluță",
+        "Înainte de bucla exterioară",
+        "După ambele bucle, la final"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 4):\n        if j == 2:\n            continue\n        print(f\"{i}{j}\")",
+      "options": ["11\n21", "11\n13\n21\n23", "11\n13", "11\n12\n13\n21\n22\n23"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Într-o buclă imbricată, a cui variabilă se schimbă mai des?",
+      "options": [
+        "A buclei exterioare",
+        "Amândouă se schimbă în același ritm",
+        "A buclei interioare",
+        "Niciuna, până nu se termină ambele bucle"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "for i in range(2):\n    for j in range(3):\n        print(j, end=\"\")\n    print()",
+      "options": ["01\n01\n01", "000\n111", "012012", "012\n012"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Poate bucla interioară să folosească variabila buclei exterioare, ca în `for stea in range(rand):`?",
+      "options": [
+        "Da: ia valoarea variabilei de la trecerea aceea, așa că fiecare rând poate fi altfel",
+        "Nu: bucla interioară nu vede variabila buclei exterioare",
+        "Doar când variabila ține o listă",
+        "Da, dar doar într-o funcție"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "for i in range(2):\nfor j in range(2):\n    print(i, j)",
+      "options": [
+        "Afișează 0 0, 0 1, 1 0 și 1 1",
+        "Se oprește cu un IndentationError: for-ul interior trebuie indentat sub cel exterior",
+        "Afișează doar 0 0",
+        "Rulează bucla interioară după ce se termină cea exterioară"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "nl-pairs",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{a}} = [{{xs}}]\n{{b}} = [{{ys}}]\nfor {{x}} in {{a}}:\n    for {{y}} in {{b}}:\n        print(f\"{{{y}}} {{word}} {{{x}}}\")",
+      "values": [
+        {
+          "a": "echipe",
+          "xs": "\"Sharks\", \"Bears\"",
+          "b": "jucatori",
+          "ys": "\"Ana\", \"Rex\"",
+          "x": "echipa",
+          "y": "jucator",
+          "word": "joaca pentru"
+        },
+        {
+          "a": "zile",
+          "xs": "\"luni\", \"marti\"",
+          "b": "piloti",
+          "ys": "\"Kai\", \"Mia\", \"Zoe\"",
+          "x": "zi",
+          "y": "pilot",
+          "word": "zboara"
+        },
+        {
+          "a": "planete",
+          "xs": "\"Marte\", \"Venus\"",
+          "b": "nave",
+          "ys": "\"Nova\", \"Comet\"",
+          "x": "planeta",
+          "y": "nava",
+          "word": "aterizeaza pe"
+        },
+        {
+          "a": "camere",
+          "xs": "\"A1\", \"B2\"",
+          "b": "paznici",
+          "ys": "\"Lance\", \"Phil\"",
+          "x": "camera",
+          "y": "paznic",
+          "word": "verifica"
+        },
+        {
+          "a": "niveluri",
+          "xs": "\"usor\", \"greu\"",
+          "b": "jucatori",
+          "ys": "\"Tommy\", \"Lance\", \"Phil\"",
+          "x": "nivel",
+          "y": "jucator",
+          "word": "joaca pe"
+        }
+      ],
+      "mistakes": [
+        [
+          "for {{x}} in {{a}}:\n    for {{y}} in {{b}}:",
+          "for {{y}} in {{b}}:\n    for {{x}} in {{a}}:"
+        ],
+        ["\n        print(", "\n    print("],
+        ["{{{y}}} {{word}} {{{x}}}", "{{{x}}} {{word}} {{{y}}}"],
+        ["print(f\"", "print(\""]
+      ]
+    },
+    {
+      "id": "nl-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{c}} = 0\nfor i in range({{n}}):\n    for j in range({{m}}):\n        {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "contor",
+          "n": 3,
+          "m": 4
+        },
+        {
+          "c": "runde",
+          "n": 2,
+          "m": 5
+        },
+        {
+          "c": "mutari",
+          "n": 4,
+          "m": 6
+        },
+        {
+          "c": "pasi",
+          "n": 5,
+          "m": 3
+        },
+        {
+          "c": "total",
+          "n": 6,
+          "m": 2
+        }
+      ],
+      "mistakes": [
+        ["{{c}} = {{c}} + 1", "{{c}} = {{c}} + j"],
+        ["\nprint({{c}})", "\n    print({{c}})"],
+        ["range({{n}})", "range(1, {{n}})"],
+        ["{{c}} = 0\n", "{{c}} = 1\n"]
+      ]
+    },
+    {
+      "id": "nl-break",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{m}}):\n        if j == {{k}}:\n            break\n        print(f\"{i} {j}\")",
+      "values": [
+        {
+          "n": 4,
+          "m": 5,
+          "k": 3
+        },
+        {
+          "n": 3,
+          "m": 6,
+          "k": 4
+        },
+        {
+          "n": 3,
+          "m": 5,
+          "k": 2
+        },
+        {
+          "n": 5,
+          "m": 4,
+          "k": 2
+        },
+        {
+          "n": 3,
+          "m": 5,
+          "k": 3
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["j == {{k}}", "i == {{k}}"],
+        ["\n        print(f\"{i} {j}\")", "\n    print(f\"{i} {j}\")"],
+        [
+          "if j == {{k}}:\n            break\n        print(f\"{i} {j}\")",
+          "print(f\"{i} {j}\")\n        if j == {{k}}:\n            break"
+        ]
+      ]
+    },
+    {
+      "id": "nl-rect",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for {{r}} in range({{h}}):\n    for {{s}} in range({{w}}):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 2,
+          "w": 5,
+          "ch": "#"
+        },
+        {
+          "r": "rand",
+          "s": "stea",
+          "h": 3,
+          "w": 4,
+          "ch": "*"
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 4,
+          "w": 2,
+          "ch": "="
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 2,
+          "w": 3,
+          "ch": "o"
+        },
+        {
+          "r": "linie",
+          "s": "col",
+          "h": 3,
+          "w": 6,
+          "ch": "-"
+        }
+      ],
+      "mistakes": [
+        [", end=\"\")", ")"],
+        ["\n    print()", "\n        print()"],
+        ["range({{w}})", "range({{h}})"],
+        ["\n    print()", ""]
+      ]
+    },
+    {
+      "id": "nl-triangle",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for {{r}} in range(1, {{n}}):\n    for {{s}} in range({{r}}):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "r": "rand",
+          "s": "stea",
+          "n": 4,
+          "ch": "*"
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "n": 5,
+          "ch": "#"
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "n": 3,
+          "ch": "o"
+        },
+        {
+          "r": "nivel",
+          "s": "col",
+          "n": 6,
+          "ch": "+"
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "n": 5,
+          "ch": "^"
+        }
+      ],
+      "mistakes": [
+        ["range({{r}})", "range({{n}})"],
+        ["range(1, {{n}})", "range(2, {{n}})"],
+        ["range({{r}})", "range({{r}} + 1)"],
+        [", end=\"\")", ")"]
+      ]
+    },
+    {
+      "id": "nl-match",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{xs}}]\nfor a in {{v}}:\n    for b in {{v}}:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "values": [
+        {
+          "v": "jucatori",
+          "xs": "\"Ana\", \"Rex\", \"Kai\""
+        },
+        {
+          "v": "culori",
+          "xs": "\"rosu\", \"albastru\""
+        },
+        {
+          "v": "echipe",
+          "xs": "\"A\", \"B\", \"C\""
+        },
+        {
+          "v": "echipaj",
+          "xs": "\"Tommy\", \"Lance\""
+        },
+        {
+          "v": "planete",
+          "xs": "\"Marte\", \"Venus\", \"Pamant\""
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["a == b", "a != b"],
+        ["\n        print(f\"{a}-{b}\")", "\n    print(f\"{a}-{b}\")"],
+        ["f\"{a}-{b}\"", "f\"{b}-{a}\""]
+      ]
+    },
+    {
+      "id": "nl-which-sep",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "for {{x}} in [{{xs}}]:\n    for {{y}} in [{{ys}}]:\n        print({{x}} + {{y}})\n    print(\"{{sep}}\")",
+      "values": [
+        {
+          "x": "rand",
+          "xs": "\"A\", \"B\"",
+          "y": "loc",
+          "ys": "\"1\", \"2\"",
+          "sep": "--"
+        },
+        {
+          "x": "marime",
+          "xs": "\"S\", \"M\"",
+          "y": "cod",
+          "ys": "\"1\", \"2\", \"3\"",
+          "sep": "***"
+        },
+        {
+          "x": "etaj",
+          "xs": "\"1\", \"2\", \"3\"",
+          "y": "camera",
+          "ys": "\"A\", \"B\"",
+          "sep": "----"
+        },
+        {
+          "x": "echipa",
+          "xs": "\"Rosu\", \"Albastru\"",
+          "y": "nr",
+          "ys": "\"1\", \"2\"",
+          "sep": "~~"
+        }
+      ],
+      "mistakes": [
+        ["\n    print(\"{{sep}}\")", "\n        print(\"{{sep}}\")"],
+        ["\n    print(\"{{sep}}\")", "\nprint(\"{{sep}}\")"],
+        ["{{x}} + {{y}}", "{{y}} + {{x}}"]
+      ]
+    },
+    {
+      "id": "nl-which-end",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "for {{r}} in range({{h}}):\n    for {{s}} in range({{w}}):\n        print({{s}}, end=\"\")\n    print()",
+      "values": [
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 2,
+          "w": 4
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 3,
+          "w": 3
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 3,
+          "w": 2
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 2,
+          "w": 5
+        }
+      ],
+      "mistakes": [
+        [", end=\"\")", ")"],
+        ["\n    print()", "\n        print()"],
+        ["print({{s}}, end", "print({{r}}, end"]
+      ]
+    },
+    {
+      "id": "nl-gap-inner",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, {{n}}):\n    ___\n        print(f\"{i} {j}\")",
+      "values": [
+        {
+          "n": 3,
+          "m": 4,
+          "w": 3
+        },
+        {
+          "n": 4,
+          "m": 3,
+          "w": 4
+        },
+        {
+          "n": 3,
+          "m": 5,
+          "w": 4
+        },
+        {
+          "n": 4,
+          "m": 4,
+          "w": 3
+        }
+      ],
+      "answer": "for j in range(1, {{m}}):",
+      "wrong": ["for j in range({{m}}):", "for j in range(1, {{w}}):", "for i in range(1, {{m}}):"]
+    },
+    {
+      "id": "nl-gap-newline",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for {{r}} in range({{h}}):\n    for {{s}} in range({{w}}):\n        print(\"{{ch}}\", end=\"\")\n    ___",
+      "values": [
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 3,
+          "w": 2,
+          "ch": "#"
+        },
+        {
+          "r": "rand",
+          "s": "stea",
+          "h": 2,
+          "w": 4,
+          "ch": "*"
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 4,
+          "w": 3,
+          "ch": "o"
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 2,
+          "w": 6,
+          "ch": "="
+        }
+      ],
+      "answer": "print()",
+      "wrong": ["print(\"{{ch}}\")", "print({{r}})", "print(\"{{ch}}\", end=\"\")", "break"]
+    },
+    {
+      "id": "nl-gap-break",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{xs}}]\nfor {{x}} in {{v}}:\n    for {{l}} in {{x}}:\n        if {{l}} == \"{{stop}}\":\n            ___\n        print({{l}}, end=\"\")\n    print()",
+      "values": [
+        {
+          "v": "cuvinte",
+          "xs": "\"racheta\", \"luna\", \"stea\"",
+          "x": "cuvant",
+          "l": "litera",
+          "stop": "a"
+        },
+        {
+          "v": "fructe",
+          "xs": "\"banana\", \"kiwi\"",
+          "x": "fruct",
+          "l": "litera",
+          "stop": "n"
+        },
+        {
+          "v": "cuvinte",
+          "xs": "\"salut\", \"mere\"",
+          "x": "cuvant",
+          "l": "litera",
+          "stop": "l"
+        },
+        {
+          "v": "fructe",
+          "xs": "\"piersica\", \"prune\"",
+          "x": "fruct",
+          "l": "litera",
+          "stop": "r"
+        }
+      ],
+      "answer": "break",
+      "wrong": ["continue", "print()", "print({{l}}, end=\"\")"]
+    },
+    {
+      "id": "nl-val-width",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for {{r}} in range({{h}}):\n    for {{s}} in range(___):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 3,
+          "w": 5,
+          "ch": "*",
+          "a": 6,
+          "b": 4
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 2,
+          "w": 4,
+          "ch": "#",
+          "a": 5,
+          "b": 3
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 4,
+          "w": 2,
+          "ch": "o",
+          "a": 3,
+          "b": 1
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 5,
+          "w": 3,
+          "ch": "=",
+          "a": 4,
+          "b": 2
+        }
+      ],
+      "answer": "{{w}}",
+      "wrong": ["{{h}}", "{{a}}", "{{b}}"]
+    },
+    {
+      "id": "nl-val-break",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{m}}):\n        if j == ___:\n            break\n        print(f\"{i} {j}\")",
+      "values": [
+        {
+          "n": 3,
+          "m": 5,
+          "k": 3,
+          "a": 2,
+          "b": 4,
+          "c": 1
+        },
+        {
+          "n": 4,
+          "m": 5,
+          "k": 2,
+          "a": 3,
+          "b": 1,
+          "c": 4
+        },
+        {
+          "n": 3,
+          "m": 6,
+          "k": 4,
+          "a": 3,
+          "b": 5,
+          "c": 2
+        },
+        {
+          "n": 3,
+          "m": 4,
+          "k": 3,
+          "a": 2,
+          "b": 1,
+          "c": 4
+        }
+      ],
+      "answer": "{{k}}",
+      "wrong": ["{{a}}", "{{b}}", "{{c}}"]
+    },
+    {
+      "id": "nl-bad-start",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{c}} = 0\nfor i in range({{n}}):\n    for j in range({{m}}):\n        {{c}} = {{c}} + 1\nprint(f\"{{label}}: {{{c}}}\")",
+      "values": [
+        {
+          "c": "runde",
+          "n": 3,
+          "m": 4,
+          "label": "Runde"
+        },
+        {
+          "c": "mutari",
+          "n": 2,
+          "m": 5,
+          "label": "Mutari"
+        },
+        {
+          "c": "locuri",
+          "n": 5,
+          "m": 3,
+          "label": "Locuri"
+        }
+      ],
+      "bug": ["{{c}} = 0", "{{c}} = 1"]
+    },
+    {
+      "id": "nl-bad-end",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for {{r}} in range({{h}}):\n    for {{s}} in range({{w}}):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 2,
+          "w": 4,
+          "ch": "#"
+        },
+        {
+          "r": "rand",
+          "s": "stea",
+          "h": 3,
+          "w": 3,
+          "ch": "*"
+        },
+        {
+          "r": "rand",
+          "s": "col",
+          "h": 3,
+          "w": 5,
+          "ch": "o"
+        }
+      ],
+      "bug": ["print(\"{{ch}}\", end=\"\")", "print(\"{{ch}}\")"]
+    },
+    {
+      "id": "nl-bad-sep",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{m}}):\n        print(f\"{i} x {j} = {i * j}\")\n    print(\"{{sep}}\")",
+      "values": [
+        {
+          "n": 3,
+          "m": 3,
+          "sep": "---"
+        },
+        {
+          "n": 4,
+          "m": 3,
+          "sep": "==="
+        },
+        {
+          "n": 3,
+          "m": 4,
+          "sep": "***"
+        }
+      ],
+      "bug": ["    print(\"{{sep}}\")", "        print(\"{{sep}}\")"]
+    },
+    {
+      "id": "nl-bad-cond",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{m}}):\n        if j == {{k}}:\n            break\n        print(f\"{i} {j}\")",
+      "values": [
+        {
+          "n": 4,
+          "m": 5,
+          "k": 2
+        },
+        {
+          "n": 4,
+          "m": 4,
+          "k": 3
+        },
+        {
+          "n": 5,
+          "m": 4,
+          "k": 3
+        }
+      ],
+      "bug": ["j == {{k}}", "i == {{k}}"]
+    }
+  ]
+}

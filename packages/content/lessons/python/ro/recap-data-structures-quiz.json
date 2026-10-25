@@ -1,0 +1,845 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "În misiunea Analiza Echipajului, ce este fiecare membru din `echipa_a`?",
+      "options": [
+        "Un tuple cu un nume și un scor",
+        "Un dicționar cu un nume și un scor",
+        "Un set cu două valori",
+        "O listă care poate crește"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "În misiune, de ce sunt puse numele din echipa B într-un set înainte să fie verificată echipa A?",
+      "options": [
+        "Ca numele să iasă sortate",
+        "Ca setul să țină și scorurile",
+        "Pentru că o buclă for nu poate parcurge o listă de tuple",
+        "Ca `in` să verifice repede un nume, cu fiecare nume păstrat o singură dată"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "În misiune, de ce parcurge programul echipa A ca să afișeze numele din ambele echipe, în loc să afișeze setul?",
+      "options": [
+        "Un set nu poate fi afișat",
+        "Echipa A își păstrează ordinea, pe când ordinea unui set se poate schimba",
+        "Setul ține scorurile, nu numele",
+        "print() arată doar primul element al unui set"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Ce se întâmplă la fiecare trecere prin `for nume, scor in echipa_a:`?",
+      "options": [
+        "nume primește tot tuple-ul, iar scor rămâne gol",
+        "Bucla rulează de două ori, o dată pentru nume și o dată pentru scoruri",
+        "Tuple-ul e despachetat: prima lui valoare ajunge în nume, a doua în scor",
+        "Se oprește cu o eroare, pentru că o buclă for primește o singură variabilă"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "În misiune, ce afișează programul după `Scoruri mari echipa A: `?",
+      "options": ["[91]", "[85, 72, 91, 60]", "['Tommy', 'Cortez']", "[85, 91]"],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "Care dintre acestea face un set gol?",
+      "options": ["{}", "[]", "set()", "()"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "echipaj = {\"Tommy\", \"Lance\", \"Tommy\", \"Cortez\"}\nprint(len(echipaj))",
+      "options": ["4", "3", "2", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "punct = (10, 20)\npunct[0] = 99\nprint(punct)",
+      "options": [
+        "Afișează (99, 20)",
+        "Afișează (10, 20)",
+        "Se oprește cu un TypeError",
+        "Afișează (99, 10, 20)"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "Câte linii afișează?",
+      "code": "for i in range(3):\n    for j in range(4):\n        print(i, j)",
+      "options": ["7", "12", "4", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 4):\n        if j > i:\n            break\n        print(i, j)",
+      "options": [
+        "1 1\n2 2\n3 3",
+        "1 1\n1 2\n1 3",
+        "1 1\n2 1\n3 1",
+        "1 1\n2 1\n2 2\n3 1\n3 2\n3 3"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "Un `break` rulează în bucla interioară a două bucle imbricate. Ce oprește?",
+      "options": [
+        "Ambele bucle",
+        "Doar bucla interioară, iar cea exterioară trece la următoarea valoare",
+        "Doar bucla exterioară",
+        "Tot programul"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "a, b = (3, 7)\nprint(b - a)",
+      "options": ["4", "-4", "37", "(3, 7)"],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "Care e diferența dintre o listă și un tuple?",
+      "options": [
+        "Un tuple nu mai poate fi schimbat după ce e creat, o listă da",
+        "Un tuple poate ține doar numere",
+        "O listă nu poate fi parcursă cu o buclă",
+        "Un tuple păstrează fiecare valoare o singură dată"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Care linie îl adaugă pe \"Mira\" în setul `echipaj`?",
+      "options": [
+        "echipaj.append(\"Mira\")",
+        "echipaj.add(\"Mira\")",
+        "echipaj = echipaj + \"Mira\"",
+        "echipaj[\"Mira\"] = True"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "interzisi = {\"Sonny\", \"Diaz\"}\nfor nume in [\"Tommy\", \"Diaz\", \"Lance\"]:\n    if nume in interzisi:\n        print(nume)",
+      "options": ["Tommy\nLance", "Sonny\nDiaz", "Diaz", "Tommy\nDiaz\nLance"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Ce dă `[n * 2 for n in [1, 2, 3]]`?",
+      "options": ["[1, 2, 3, 1, 2, 3]", "12", "[1, 2, 3, 2, 4, 6]", "[2, 4, 6]"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"soare\", \"luna\", \"noua\"]\nprint([c.upper() for c in cuvinte if len(c) == 4])",
+      "options": ["['LUNA', 'NOUA']", "['luna', 'noua']", "['SOARE']", "['SOARE', 'LUNA', 'NOUA']"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "În `[scor for nume, scor in echipa_a if scor > 80]`, ce face `if scor > 80`?",
+      "options": [
+        "Oprește lista la primul scor de 80 sau mai mic",
+        "Păstrează doar scorurile peste 80",
+        "Face din fiecare scor 80",
+        "Numără scorurile peste 80"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "La pasul Potriviri din misiune, ambele echipe au câte 4 membri. De câte ori rulează `if scor_a == scor_b:`?",
+      "options": ["4", "8", "16", "2"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "În misiune, de ce e afișat „Lance si Quinn au amandoi scorul 72” înainte de „Cortez si Tommy au amandoi scorul 91”?",
+      "options": [
+        "Pentru că 72 e mai mic decât 91",
+        "Pentru că Quinn vine înaintea lui Tommy în echipa B",
+        "Pentru că perechile sunt afișate în ordine alfabetică",
+        "Pentru că Lance vine înaintea lui Cortez în echipa A, bucla exterioară"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "perechi = [(\"a\", 1), (\"b\", 2)]\nfor litera, numar in perechi:\n    print(numar, litera)",
+      "options": ["1 a\n2 b", "a 1\nb 2", "('a', 1)\n('b', 2)", "1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "De ce verificăm cu un set, nu cu o listă, dacă un nume a mai fost văzut?",
+      "options": [
+        "Un set poate ține mai multe nume",
+        "`in` e mult mai rapid pe un set, iar un set păstrează fiecare nume o singură dată",
+        "Doar un set poate fi verificat cu `in`",
+        "O listă își uită elementele la sfârșitul unei bucle"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 4):\n    for j in range(i):\n        print(i, end=\"\")\n    print()",
+      "options": ["1\n12\n123", "123\n123\n123", "111\n22\n3", "1\n22\n333"],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "jucator = (\"Tommy Vercetti\", 100, \"Vice City\")\nprint(len(jucator))",
+      "options": ["3", "14", "1", "Se oprește cu o eroare"],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "scoruri = [70, 85, 70, 90]\nprint(len(set(scoruri)))",
+      "options": ["4", "2", "3", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3, 4, 5, 6]\nprint([n for n in numere if n % 2 == 1])",
+      "options": ["[2, 4, 6]", "[True, False, True, False, True, False]", "[1, 3, 5]", "[1, 2, 3]"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "Care list comprehension face aceeași listă ca bucla asta?",
+      "code": "promovati = []\nfor nume, scor in echipa:\n    if scor >= 50:\n        promovati.append(nume)",
+      "options": [
+        "[scor for nume, scor in echipa if scor >= 50]",
+        "[nume for nume, scor in echipa if scor >= 50]",
+        "[nume for nume, scor in echipa]",
+        "[nume for nume in echipa if nume >= 50]"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "a = [(\"Ana\", 7), (\"Rex\", 5)]\nb = [(\"Kai\", 5), (\"Zoe\", 7)]\nla_fel = 0\nfor x, s1 in a:\n    for y, s2 in b:\n        if s1 == s2:\n            la_fel = la_fel + 1\nprint(la_fel)",
+      "options": ["4", "0", "2", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "De ce scrie soluția `nume_b = set()` și nu `nume_b = {}`?",
+      "options": [
+        "{} face un dicționar gol, nu un set",
+        "{} nu poate fi gol",
+        "set() păstrează numele în ordinea în care au venit",
+        "Amândouă fac un set gol, set() doar se citește mai bine"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "vazute = set()\nfor nume in [\"Tommy\", \"Lance\", \"Tommy\", \"Mira\", \"Lance\"]:\n    if nume in vazute:\n        print(nume)\n    vazute.add(nume)",
+      "options": ["Tommy\nLance\nMira", "Tommy", "Lance\nTommy", "Tommy\nLance"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "rds-both",
+      "kind": "prints",
+      "code": "echipa_a = {{a}}\nechipa_b = {{b}}\nnume_b = set()\nfor nume, scor in echipa_b:\n    nume_b.add(nume)\nfor nume, scor in echipa_a:\n    if nume in nume_b:\n        print(nume)",
+      "values": [
+        {
+          "a": "[(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91)]",
+          "b": "[(\"Mira\", 88), (\"Lance\", 65), (\"Tommy\", 91)]"
+        },
+        {
+          "a": "[(\"Ana\", 60), (\"Rex\", 75), (\"Kai\", 90)]",
+          "b": "[(\"Kai\", 70), (\"Zoe\", 80), (\"Ana\", 55)]"
+        },
+        {
+          "a": "[(\"Phil\", 40), (\"Sonny\", 95), (\"Mia\", 66)]",
+          "b": "[(\"Mia\", 81), (\"Ken\", 77), (\"Nova\", 59)]"
+        },
+        {
+          "a": "[(\"Zoe\", 88), (\"Ben\", 52), (\"Cara\", 73)]",
+          "b": "[(\"Cara\", 91), (\"Ben\", 64), (\"Max\", 70)]"
+        }
+      ],
+      "mistakes": [
+        ["if nume in nume_b", "if nume not in nume_b"],
+        ["        print(nume)", "        print(scor)"],
+        ["for nume, scor in echipa_a:", "for nume, scor in echipa_b:"],
+        ["nume_b.add(nume)", "nume_b.add(scor)"]
+      ],
+      "text": "Ce afișează?"
+    },
+    {
+      "id": "rds-high",
+      "kind": "prints",
+      "code": "echipa = {{t}}\nmari = [scor for nume, scor in echipa if scor > {{lim}}]\nprint(mari)",
+      "values": [
+        {
+          "t": "[(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91), (\"Phil\", 60)]",
+          "lim": 80
+        },
+        {
+          "t": "[(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95), (\"Zoe\", 70)]",
+          "lim": 65
+        },
+        {
+          "t": "[(\"Mia\", 50), (\"Ben\", 99), (\"Cara\", 75), (\"Max\", 81)]",
+          "lim": 75
+        },
+        {
+          "t": "[(\"Nova\", 33), (\"Ken\", 90), (\"Sonny\", 67), (\"Mira\", 88)]",
+          "lim": 60
+        }
+      ],
+      "mistakes": [
+        ["[scor for", "[nume for"],
+        [" if scor > {{lim}}]", "]"],
+        ["scor > {{lim}}", "scor < {{lim}}"],
+        ["scor > {{lim}}", "scor >= {{lim}}"]
+      ],
+      "text": "Ce afișează?"
+    },
+    {
+      "id": "rds-system",
+      "kind": "prints",
+      "code": "sistem = (\"{{n}}\", {{d}}, {{p}})\nnume, distanta, planete = sistem\nprint(f\"{nume}: {distanta} ani lumina, {planete} planete\")",
+      "values": [
+        {
+          "n": "Sol",
+          "d": 0,
+          "p": 8
+        },
+        {
+          "n": "Alpha",
+          "d": 4,
+          "p": 3
+        },
+        {
+          "n": "Vega",
+          "d": 25,
+          "p": 5
+        },
+        {
+          "n": "Sirius",
+          "d": 9,
+          "p": 2
+        }
+      ],
+      "mistakes": [
+        ["nume, distanta, planete =", "nume, planete, distanta ="],
+        ["print(f\"{nume}: {distanta} ani lumina, {planete} planete\")", "print(sistem)"],
+        ["{distanta} ani lumina", "{len(sistem)} ani lumina"],
+        ["{planete} planete", "{sistem[1]} planete"]
+      ],
+      "text": "Ce afișează?"
+    },
+    {
+      "id": "rds-pairs",
+      "kind": "prints",
+      "code": "numar = 0\nfor a in range(1, {{n}}):\n    for b in range(1, {{m}}):\n        if a + b == {{s}}:\n            numar = numar + 1\nprint(numar)",
+      "values": [
+        {
+          "n": 4,
+          "m": 4,
+          "s": 5
+        },
+        {
+          "n": 5,
+          "m": 4,
+          "s": 6
+        },
+        {
+          "n": 4,
+          "m": 6,
+          "s": 7
+        },
+        {
+          "n": 6,
+          "m": 6,
+          "s": 8
+        }
+      ],
+      "mistakes": [
+        ["numar = numar + 1", "numar = 1"],
+        ["if a + b == {{s}}:", "if a + b > {{s}}:"],
+        ["for b in range(1, {{m}}):", "for b in range(a, {{m}}):"],
+        ["if a + b == {{s}}:", "if a == b:"],
+        ["if a + b == {{s}}:", "if a + b != {{s}}:"],
+        ["\nprint(numar)", "\n    print(numar)"]
+      ],
+      "text": "Ce afișează?"
+    },
+    {
+      "id": "rds-rect",
+      "kind": "prints",
+      "code": "for rand in range({{r}}):\n    for coloana in range({{c}}):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "r": 2,
+          "c": 4,
+          "ch": "#"
+        },
+        {
+          "r": 3,
+          "c": 2,
+          "ch": "*"
+        },
+        {
+          "r": 2,
+          "c": 3,
+          "ch": "@"
+        },
+        {
+          "r": 4,
+          "c": 1,
+          "ch": "+"
+        }
+      ],
+      "mistakes": [
+        ["range({{c}})", "range(rand + 1)"],
+        ["    print()", "        print()"],
+        ["print(\"{{ch}}\", end=\"\")", "print(\"{{ch}}\")"],
+        ["range({{r}})", "range({{c}})"]
+      ],
+      "text": "Ce afișează?"
+    },
+    {
+      "id": "rds-set-len",
+      "kind": "prints",
+      "code": "semnale = [{{l}}]\nunice = set(semnale)\nprint(f\"Total: {len(semnale)}\")\nprint(f\"Unice: {len(unice)}\")",
+      "values": [
+        {
+          "l": "\"A1\", \"B2\", \"A1\", \"C3\", \"A1\""
+        },
+        {
+          "l": "\"X\", \"Y\", \"X\", \"Y\""
+        },
+        {
+          "l": "\"D4\", \"D4\", \"E5\", \"F6\", \"G7\", \"E5\""
+        },
+        {
+          "l": "\"K9\", \"L1\", \"K9\""
+        }
+      ],
+      "mistakes": [
+        ["{len(unice)}", "{len(semnale)}"],
+        ["unice = set(semnale)", "unice = semnale"],
+        ["print(f\"Total: {len(semnale)}\")\n", ""],
+        ["{len(semnale)}\")\n", "{len(semnale) - len(unice)}\")\n"]
+      ],
+      "text": "Ce afișează?"
+    },
+    {
+      "id": "rds-remove",
+      "kind": "prints",
+      "code": "echipaj = {\"{{a}}\", \"{{b}}\", \"{{c}}\"}\nechipaj.add(\"{{d}}\")\nechipaj.remove(\"{{a}}\")\nfor nume in [\"{{x}}\", \"{{y}}\", \"{{z}}\"]:\n    print(nume in echipaj)",
+      "values": [
+        {
+          "a": "Tommy",
+          "b": "Lance",
+          "c": "Cortez",
+          "d": "Mira",
+          "x": "Tommy",
+          "y": "Lance",
+          "z": "Mira"
+        },
+        {
+          "a": "Sonny",
+          "b": "Diaz",
+          "c": "Ken",
+          "d": "Phil",
+          "x": "Phil",
+          "y": "Sonny",
+          "z": "Ken"
+        },
+        {
+          "a": "Ana",
+          "b": "Rex",
+          "c": "Kai",
+          "d": "Zoe",
+          "x": "Rex",
+          "y": "Zoe",
+          "z": "Ana"
+        },
+        {
+          "a": "Ben",
+          "b": "Cara",
+          "c": "Max",
+          "d": "Nova",
+          "x": "Max",
+          "y": "Ben",
+          "z": "Nova"
+        }
+      ],
+      "mistakes": [
+        ["echipaj.remove(\"{{a}}\")\n", ""],
+        ["echipaj.add(\"{{d}}\")\n", ""],
+        ["echipaj.remove(\"{{a}}\")", "echipaj.remove(\"{{b}}\")"],
+        ["print(nume in echipaj)", "print(nume not in echipaj)"]
+      ],
+      "text": "Ce afișează?"
+    },
+    {
+      "id": "rds-comp",
+      "kind": "prints",
+      "code": "numere = [{{l}}]\nrezultat = [n {{op}} {{k}} for n in numere if n {{cmp}} {{lim}}]\nprint(rezultat)",
+      "values": [
+        {
+          "l": "3, 8, 12, 5, 20",
+          "op": "*",
+          "k": 2,
+          "cmp": ">",
+          "lim": 6
+        },
+        {
+          "l": "1, 2, 3, 4, 5, 6",
+          "op": "*",
+          "k": 10,
+          "cmp": "<",
+          "lim": 4
+        },
+        {
+          "l": "10, 25, 5, 40, 15",
+          "op": "+",
+          "k": 1,
+          "cmp": ">=",
+          "lim": 15
+        },
+        {
+          "l": "7, 14, 21, 28",
+          "op": "-",
+          "k": 7,
+          "cmp": ">",
+          "lim": 10
+        }
+      ],
+      "mistakes": [
+        [" if n {{cmp}} {{lim}}]", "]"],
+        ["[n {{op}} {{k}} for", "[n for"],
+        ["if n {{cmp}} {{lim}}", "if n == {{lim}}"],
+        ["print(rezultat)", "print(numere)"]
+      ],
+      "text": "Ce afișează?"
+    },
+    {
+      "id": "rds-which-names",
+      "kind": "which-program",
+      "code": "echipa = {{t}}\nnume_alese = [nume for nume, scor in echipa if scor >= {{lim}}]\nprint(nume_alese)",
+      "values": [
+        {
+          "t": "[(\"Tommy\", 85), (\"Lance\", 50), (\"Cortez\", 40)]",
+          "lim": 50
+        },
+        {
+          "t": "[(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]",
+          "lim": 70
+        },
+        {
+          "t": "[(\"Mia\", 60), (\"Ben\", 45), (\"Zoe\", 99)]",
+          "lim": 60
+        }
+      ],
+      "mistakes": [
+        ["scor >= {{lim}}", "scor < {{lim}}"],
+        ["[nume for", "[scor for"],
+        ["scor >= {{lim}}", "scor > {{lim}}"],
+        ["print(nume_alese)", "print(echipa)"]
+      ],
+      "text": "Care program afișează asta?"
+    },
+    {
+      "id": "rds-which-break",
+      "kind": "which-program",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{m}}):\n        if j == {{k}}:\n            break\n        print(i, j)",
+      "values": [
+        {
+          "n": 3,
+          "m": 4,
+          "k": 3
+        },
+        {
+          "n": 4,
+          "m": 3,
+          "k": 2
+        },
+        {
+          "n": 3,
+          "m": 5,
+          "k": 4
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["if j == {{k}}:", "if i == {{k}}:"],
+        ["            break\n        print(i, j)", "            break\n    print(i, j)"],
+        ["for j in range(1, {{m}}):", "for j in range(1, {{n}}):"],
+        ["print(i, j)", "print(j, i)"]
+      ],
+      "text": "Care program afișează asta?"
+    },
+    {
+      "id": "rds-gap-add",
+      "kind": "missing-line",
+      "code": "vazute = set()\nfor nume in [{{l}}]:\n    ___\nprint(len(vazute))",
+      "values": [
+        {
+          "l": "\"Tommy\", \"Lance\", \"Tommy\", \"Mira\""
+        },
+        {
+          "l": "\"A1\", \"B2\", \"A1\", \"B2\", \"C3\""
+        },
+        {
+          "l": "\"Kai\", \"Kai\", \"Zoe\", \"Kai\""
+        },
+        {
+          "l": "\"Rex\", \"Zoe\", \"Ana\", \"Zoe\", \"Rex\", \"Max\""
+        }
+      ],
+      "answer": "vazute.add(nume)",
+      "wrong": ["vazute.append(nume)", "vazute = {nume}", "print(nume)", "vazute.add(len(nume))"],
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?"
+    },
+    {
+      "id": "rds-gap-row",
+      "kind": "missing-line",
+      "code": "for rand in range({{r}}):\n    for coloana in range({{c}}):\n        print(coloana, end=\"\")\n    ___",
+      "values": [
+        {
+          "r": 2,
+          "c": 3
+        },
+        {
+          "r": 3,
+          "c": 2
+        },
+        {
+          "r": 2,
+          "c": 4
+        },
+        {
+          "r": 3,
+          "c": 4
+        }
+      ],
+      "answer": "print()",
+      "wrong": ["print(coloana)", "continue", "print(rand)", "break"],
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?"
+    },
+    {
+      "id": "rds-gap-unpack",
+      "kind": "missing-line",
+      "code": "sistem = (\"{{n}}\", {{d}}, {{p}})\n___\nprint(f\"{nume} are {planete} planete\")",
+      "values": [
+        {
+          "n": "Sol",
+          "d": 0,
+          "p": 8
+        },
+        {
+          "n": "Alpha",
+          "d": 4,
+          "p": 3
+        },
+        {
+          "n": "Vega",
+          "d": 25,
+          "p": 5
+        },
+        {
+          "n": "Rigel",
+          "d": 860,
+          "p": 6
+        }
+      ],
+      "answer": "nume, distanta, planete = sistem",
+      "wrong": [
+        "nume, planete, distanta = sistem",
+        "nume, planete = sistem",
+        "planete = sistem",
+        "sistem = nume, distanta, planete"
+      ],
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?"
+    },
+    {
+      "id": "rds-val-index",
+      "kind": "missing-value",
+      "code": "jucator = (\"{{n}}\", {{h}}, \"{{c}}\")\nprint(jucator[___])",
+      "values": [
+        {
+          "n": "Tommy",
+          "h": 100,
+          "c": "Vice City",
+          "i": 0
+        },
+        {
+          "n": "Lance",
+          "h": 80,
+          "c": "Miami",
+          "i": 2
+        },
+        {
+          "n": "Cortez",
+          "h": 65,
+          "c": "Havana",
+          "i": 1
+        },
+        {
+          "n": "Mira",
+          "h": 90,
+          "c": "Oslo",
+          "i": 2
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["0", "1", "2", "3"],
+      "text": "Ce pui în locul liber ca programul să afișeze asta?"
+    },
+    {
+      "id": "rds-val-range",
+      "kind": "missing-value",
+      "code": "numar = 0\nfor i in range(___):\n    for j in range({{m}}):\n        numar = numar + 1\nprint(numar)",
+      "values": [
+        {
+          "n": 3,
+          "m": 4,
+          "nm": 12,
+          "n1": 4,
+          "nl": 2
+        },
+        {
+          "n": 2,
+          "m": 5,
+          "nm": 10,
+          "n1": 3,
+          "nl": 1
+        },
+        {
+          "n": 4,
+          "m": 3,
+          "nm": 12,
+          "n1": 5,
+          "nl": 3
+        },
+        {
+          "n": 5,
+          "m": 2,
+          "nm": 10,
+          "n1": 6,
+          "nl": 4
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{nm}}", "{{m}}", "{{n1}}", "{{nl}}"],
+      "text": "Ce pui în locul liber ca programul să afișeze asta?"
+    },
+    {
+      "id": "rds-bad-unpack",
+      "kind": "wrong-line",
+      "code": "membru = (\"{{n}}\", {{s}}, \"{{r}}\")\nnume, scor, rang = membru\nprint(f\"Nume: {nume}\")\nprint(f\"Rang: {rang}\")\nprint(f\"Scor: {scor}\")",
+      "values": [
+        {
+          "n": "Tommy",
+          "s": 85,
+          "r": "capitan"
+        },
+        {
+          "n": "Lance",
+          "s": 72,
+          "r": "pilot"
+        },
+        {
+          "n": "Mira",
+          "s": 90,
+          "r": "medic"
+        }
+      ],
+      "bug": ["membru = (\"{{n}}\", {{s}}, \"{{r}}\")", "membru = (\"{{n}}\", {{s}})"],
+      "text": "Care linie împiedică programul să afișeze asta?"
+    },
+    {
+      "id": "rds-bad-add",
+      "kind": "wrong-line",
+      "code": "vazute = set()\nfor nume in [{{l}}]:\n    if nume in vazute:\n        print(f\"Din nou: {nume}\")\n    vazute.add(nume)\nprint(len(vazute))",
+      "values": [
+        {
+          "l": "\"Tommy\", \"Lance\", \"Tommy\""
+        },
+        {
+          "l": "\"A1\", \"B2\", \"B2\", \"C3\""
+        },
+        {
+          "l": "\"Kai\", \"Zoe\", \"Kai\", \"Kai\""
+        }
+      ],
+      "bug": ["vazute.add(nume)", "vazute.append(nume)"],
+      "text": "Care linie împiedică programul să afișeze asta?"
+    },
+    {
+      "id": "rds-bad-table",
+      "kind": "wrong-line",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{n}}):\n        print(i * j, end=\"\")\n    print()",
+      "values": [
+        {
+          "n": 3
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 5
+        }
+      ],
+      "bug": ["    print()", "    print(i)"],
+      "text": "Care linie împiedică programul să afișeze asta?"
+    },
+    {
+      "id": "rds-bad-comp",
+      "kind": "wrong-line",
+      "code": "echipa = {{t}}\nnume_alese = [nume for nume, scor in echipa if scor > {{lim}}]\nprint(len(nume_alese))\nprint(nume_alese)",
+      "values": [
+        {
+          "t": "[(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91)]",
+          "lim": 80
+        },
+        {
+          "t": "[(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95)]",
+          "lim": 65
+        },
+        {
+          "t": "[(\"Mia\", 50), (\"Ben\", 99), (\"Cara\", 75)]",
+          "lim": 60
+        }
+      ],
+      "bug": ["[nume for", "[scor for"],
+      "text": "Care linie împiedică programul să afișeze asta?"
+    }
+  ]
+}

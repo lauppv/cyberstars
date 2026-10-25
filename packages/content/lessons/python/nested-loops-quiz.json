@@ -1,0 +1,920 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is a nested loop?",
+      "options": [
+        "A loop that runs twice as fast",
+        "A loop written inside the body of another loop",
+        "Two loops written one after the other",
+        "A loop that runs only once"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "In the dice example, `for die1 in range(1, 7)` holds `for die2 in range(1, 7)`. How many lines does it print?",
+      "options": ["6", "12", "36", "49"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "In the dice example, what does the inner loop do while die1 is 1?",
+      "options": [
+        "It runs all the way, die2 from 1 to 6",
+        "It runs once, with die2 = 1",
+        "It waits until die1 reaches 6",
+        "It runs only when die1 equals die2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "In the lesson's clock picture, which loop is the minute hand?",
+      "options": [
+        "The outer loop, since it starts first",
+        "Both loops, since they move together",
+        "Neither, since a clock has no loops",
+        "The inner loop, since it goes all the way round before the outer one moves a step"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 4):\n        print(f\"{i}{j}\")",
+      "options": [
+        "11\n21\n12\n22\n13\n23",
+        "11\n12\n13\n21\n22\n23",
+        "11\n12\n21\n22",
+        "12\n13\n22\n23"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "In the multiplication table, why does `print(\"---\")` show up after each row and not after each product?",
+      "options": [
+        "It sits in the outer loop but outside the inner one, so it runs once per row",
+        "It is the last line of the program, so it runs last",
+        "print() always waits for every loop to end",
+        "Python prints lines of dashes after the numbers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "for i in range(2):\n    for j in range(2):\n        print(\"x\")\n    print(\"-\")",
+      "options": ["x\nx\n-", "x\n-\nx\n-", "x\nx\n-\nx\nx\n-", "x\nx\nx\nx\n-"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "for i in range(2):\n    for j in range(2):\n        print(\"x\")\nprint(\"-\")",
+      "options": ["x\nx\n-\nx\nx\n-", "x\n-\nx\n-\nx\n-\nx\n-", "x\nx\n-", "x\nx\nx\nx\n-"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "In the lesson's teams example, there are 2 teams and 3 players. How many lines does it print?",
+      "options": ["5", "6", "3", "2"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "In the teams example, the outer loop goes through teams. Which line does it print first?",
+      "options": [
+        "Tommy plays for Sharks",
+        "Tommy plays for Bears",
+        "Sharks plays for Tommy",
+        "Lance plays for Sharks"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "`break` runs inside the inner loop. Where does the program go on?",
+      "options": [
+        "After both loops, at the end of the program",
+        "At the first line of the inner loop, from the start",
+        "After the inner loop: the outer loop goes on with its next value",
+        "At the inner loop's next value, as with continue"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 3):\n        if i == 2:\n            break\n        print(f\"{i} {j}\")",
+      "options": ["1 1\n1 2", "1 1\n1 2\n2 1\n3 1\n3 2", "1 1\n2 1\n3 1", "1 1\n1 2\n3 1\n3 2"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "What does `end=\"\"` change in `print(\"a\", end=\"\")`?",
+      "options": [
+        "The next print goes on the same line instead of a new one",
+        "print shows nothing",
+        "print adds an empty line after a",
+        "print ends the program"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "print(\"a\", end=\"\")\nprint(\"b\")\nprint(\"c\")",
+      "options": ["abc", "ab\nc", "a\nb\nc", "a\nbc"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does an empty `print()` do after the inner loop that draws a row?",
+      "options": [
+        "It prints the word None",
+        "It erases the row it drew",
+        "It moves to a new line, so the next row starts on its own line",
+        "It stops the outer loop"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "for row in range(2):\n    for star in range(3):\n        print(\"*\", end=\"\")",
+      "options": ["***\n***", "*\n*\n*\n*\n*\n*", "***", "******"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "In the Signal Tower mission, the user types 4. How many stars does the last row have?",
+      "options": ["4", "5", "3", "10"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "In the Signal Tower mission, the user types 4. How many stars does the whole tower have?",
+      "options": ["4", "10", "16", "8"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "In the Signal Tower solution, why does the outer loop use `range(1, rows + 1)` and not `range(rows)`?",
+      "options": [
+        "range(rows) would draw one row too many",
+        "range can't start at 0 in a nested loop",
+        "row then goes from 1 to rows, the number of stars each row needs",
+        "So the tower comes out upside down"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "In the Signal Tower solution, which part decides how many stars a row gets?",
+      "options": [
+        "The outer loop's range(1, rows + 1)",
+        "The print() after the inner loop",
+        "The input() line",
+        "The inner loop's range(row)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "An outer loop runs 3 times, and each time the inner loop runs 5 times. How many times does the inner loop's body run?",
+      "options": ["15", "8", "5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "for i in range(3):\n    print(i, end=\"\")\nprint()\nprint(\"done\")",
+      "options": ["0\n1\n2\ndone", "012\ndone", "012done", "123\ndone"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "for row in range(1, 4):\n    for star in range(4 - row):\n        print(\"#\", end=\"\")\n    print()",
+      "options": ["#\n##\n###", "###\n###\n###", "###\n##\n#", "##\n#"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "for word in [\"hi\", \"yo\"]:\n    for letter in word:\n        print(letter, end=\"\")\n    print(\"!\")",
+      "options": ["h\ni\n!\ny\no\n!", "hiyo!", "hi\nyo\n!", "hi!\nyo!"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "A nested loop draws a rectangle of stars, row by row. Where does the empty `print()` go?",
+      "options": [
+        "In the outer loop, after the inner loop",
+        "In the inner loop, after each star",
+        "Before the outer loop",
+        "After both loops, at the very end"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 4):\n        if j == 2:\n            continue\n        print(f\"{i}{j}\")",
+      "options": ["11\n21", "11\n13\n21\n23", "11\n13", "11\n12\n13\n21\n22\n23"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "In a nested loop, whose variable changes more often?",
+      "options": [
+        "The outer loop's",
+        "Both change at the same pace",
+        "The inner loop's",
+        "Neither, until both loops end"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "for i in range(2):\n    for j in range(3):\n        print(j, end=\"\")\n    print()",
+      "options": ["01\n01\n01", "000\n111", "012012", "012\n012"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Can the inner loop use the outer loop's variable, as in `for star in range(row):`?",
+      "options": [
+        "Yes: it takes the variable's value at that pass, so each row can be different",
+        "No: the inner loop can't see the outer loop's variable",
+        "Only when the variable holds a list",
+        "Yes, but only inside a function"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What happens when this runs?",
+      "code": "for i in range(2):\nfor j in range(2):\n    print(i, j)",
+      "options": [
+        "It prints 0 0, 0 1, 1 0 and 1 1",
+        "It stops with an IndentationError: the inner for has to be indented under the outer one",
+        "It prints only 0 0",
+        "It runs the inner loop once the outer one has ended"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "nl-pairs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{a}} = [{{xs}}]\n{{b}} = [{{ys}}]\nfor {{x}} in {{a}}:\n    for {{y}} in {{b}}:\n        print(f\"{{{y}}} {{word}} {{{x}}}\")",
+      "values": [
+        {
+          "a": "teams",
+          "xs": "\"Sharks\", \"Bears\"",
+          "b": "players",
+          "ys": "\"Ana\", \"Rex\"",
+          "x": "team",
+          "y": "player",
+          "word": "plays for"
+        },
+        {
+          "a": "days",
+          "xs": "\"Mon\", \"Tue\"",
+          "b": "pilots",
+          "ys": "\"Kai\", \"Mia\", \"Zoe\"",
+          "x": "day",
+          "y": "pilot",
+          "word": "flies on"
+        },
+        {
+          "a": "planets",
+          "xs": "\"Mars\", \"Venus\"",
+          "b": "ships",
+          "ys": "\"Nova\", \"Comet\"",
+          "x": "planet",
+          "y": "ship",
+          "word": "lands on"
+        },
+        {
+          "a": "rooms",
+          "xs": "\"A1\", \"B2\"",
+          "b": "guards",
+          "ys": "\"Lance\", \"Phil\"",
+          "x": "room",
+          "y": "guard",
+          "word": "checks"
+        },
+        {
+          "a": "levels",
+          "xs": "\"easy\", \"hard\"",
+          "b": "players",
+          "ys": "\"Tommy\", \"Lance\", \"Phil\"",
+          "x": "level",
+          "y": "player",
+          "word": "plays on"
+        }
+      ],
+      "mistakes": [
+        [
+          "for {{x}} in {{a}}:\n    for {{y}} in {{b}}:",
+          "for {{y}} in {{b}}:\n    for {{x}} in {{a}}:"
+        ],
+        ["\n        print(", "\n    print("],
+        ["{{{y}}} {{word}} {{{x}}}", "{{{x}}} {{word}} {{{y}}}"],
+        ["print(f\"", "print(\""]
+      ]
+    },
+    {
+      "id": "nl-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{c}} = 0\nfor i in range({{n}}):\n    for j in range({{m}}):\n        {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "count",
+          "n": 3,
+          "m": 4
+        },
+        {
+          "c": "rounds",
+          "n": 2,
+          "m": 5
+        },
+        {
+          "c": "moves",
+          "n": 4,
+          "m": 6
+        },
+        {
+          "c": "steps",
+          "n": 5,
+          "m": 3
+        },
+        {
+          "c": "total",
+          "n": 6,
+          "m": 2
+        }
+      ],
+      "mistakes": [
+        ["{{c}} = {{c}} + 1", "{{c}} = {{c}} + j"],
+        ["\nprint({{c}})", "\n    print({{c}})"],
+        ["range({{n}})", "range(1, {{n}})"],
+        ["{{c}} = 0\n", "{{c}} = 1\n"]
+      ]
+    },
+    {
+      "id": "nl-break",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{m}}):\n        if j == {{k}}:\n            break\n        print(f\"{i} {j}\")",
+      "values": [
+        {
+          "n": 4,
+          "m": 5,
+          "k": 3
+        },
+        {
+          "n": 3,
+          "m": 6,
+          "k": 4
+        },
+        {
+          "n": 3,
+          "m": 5,
+          "k": 2
+        },
+        {
+          "n": 5,
+          "m": 4,
+          "k": 2
+        },
+        {
+          "n": 3,
+          "m": 5,
+          "k": 3
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["j == {{k}}", "i == {{k}}"],
+        ["\n        print(f\"{i} {j}\")", "\n    print(f\"{i} {j}\")"],
+        [
+          "if j == {{k}}:\n            break\n        print(f\"{i} {j}\")",
+          "print(f\"{i} {j}\")\n        if j == {{k}}:\n            break"
+        ]
+      ]
+    },
+    {
+      "id": "nl-rect",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "for {{r}} in range({{h}}):\n    for {{s}} in range({{w}}):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "r": "row",
+          "s": "col",
+          "h": 2,
+          "w": 5,
+          "ch": "#"
+        },
+        {
+          "r": "row",
+          "s": "star",
+          "h": 3,
+          "w": 4,
+          "ch": "*"
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 4,
+          "w": 2,
+          "ch": "="
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 2,
+          "w": 3,
+          "ch": "o"
+        },
+        {
+          "r": "line",
+          "s": "col",
+          "h": 3,
+          "w": 6,
+          "ch": "-"
+        }
+      ],
+      "mistakes": [
+        [", end=\"\")", ")"],
+        ["\n    print()", "\n        print()"],
+        ["range({{w}})", "range({{h}})"],
+        ["\n    print()", ""]
+      ]
+    },
+    {
+      "id": "nl-triangle",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "for {{r}} in range(1, {{n}}):\n    for {{s}} in range({{r}}):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "r": "row",
+          "s": "star",
+          "n": 4,
+          "ch": "*"
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "n": 5,
+          "ch": "#"
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "n": 3,
+          "ch": "o"
+        },
+        {
+          "r": "level",
+          "s": "col",
+          "n": 6,
+          "ch": "+"
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "n": 5,
+          "ch": "^"
+        }
+      ],
+      "mistakes": [
+        ["range({{r}})", "range({{n}})"],
+        ["range(1, {{n}})", "range(2, {{n}})"],
+        ["range({{r}})", "range({{r}} + 1)"],
+        [", end=\"\")", ")"]
+      ]
+    },
+    {
+      "id": "nl-match",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{xs}}]\nfor a in {{v}}:\n    for b in {{v}}:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "values": [
+        {
+          "v": "players",
+          "xs": "\"Ana\", \"Rex\", \"Kai\""
+        },
+        {
+          "v": "colors",
+          "xs": "\"red\", \"blue\""
+        },
+        {
+          "v": "teams",
+          "xs": "\"A\", \"B\", \"C\""
+        },
+        {
+          "v": "crew",
+          "xs": "\"Tommy\", \"Lance\""
+        },
+        {
+          "v": "planets",
+          "xs": "\"Mars\", \"Venus\", \"Earth\""
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["a == b", "a != b"],
+        ["\n        print(f\"{a}-{b}\")", "\n    print(f\"{a}-{b}\")"],
+        ["f\"{a}-{b}\"", "f\"{b}-{a}\""]
+      ]
+    },
+    {
+      "id": "nl-which-sep",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "for {{x}} in [{{xs}}]:\n    for {{y}} in [{{ys}}]:\n        print({{x}} + {{y}})\n    print(\"{{sep}}\")",
+      "values": [
+        {
+          "x": "row",
+          "xs": "\"A\", \"B\"",
+          "y": "seat",
+          "ys": "\"1\", \"2\"",
+          "sep": "--"
+        },
+        {
+          "x": "size",
+          "xs": "\"S\", \"M\"",
+          "y": "code",
+          "ys": "\"1\", \"2\", \"3\"",
+          "sep": "***"
+        },
+        {
+          "x": "floor",
+          "xs": "\"1\", \"2\", \"3\"",
+          "y": "room",
+          "ys": "\"A\", \"B\"",
+          "sep": "----"
+        },
+        {
+          "x": "team",
+          "xs": "\"Red\", \"Blue\"",
+          "y": "num",
+          "ys": "\"1\", \"2\"",
+          "sep": "~~"
+        }
+      ],
+      "mistakes": [
+        ["\n    print(\"{{sep}}\")", "\n        print(\"{{sep}}\")"],
+        ["\n    print(\"{{sep}}\")", "\nprint(\"{{sep}}\")"],
+        ["{{x}} + {{y}}", "{{y}} + {{x}}"]
+      ]
+    },
+    {
+      "id": "nl-which-end",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "for {{r}} in range({{h}}):\n    for {{s}} in range({{w}}):\n        print({{s}}, end=\"\")\n    print()",
+      "values": [
+        {
+          "r": "row",
+          "s": "col",
+          "h": 2,
+          "w": 4
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 3,
+          "w": 3
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 3,
+          "w": 2
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 2,
+          "w": 5
+        }
+      ],
+      "mistakes": [
+        [", end=\"\")", ")"],
+        ["\n    print()", "\n        print()"],
+        ["print({{s}}, end", "print({{r}}, end"]
+      ]
+    },
+    {
+      "id": "nl-gap-inner",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(1, {{n}}):\n    ___\n        print(f\"{i} {j}\")",
+      "values": [
+        {
+          "n": 3,
+          "m": 4,
+          "w": 3
+        },
+        {
+          "n": 4,
+          "m": 3,
+          "w": 4
+        },
+        {
+          "n": 3,
+          "m": 5,
+          "w": 4
+        },
+        {
+          "n": 4,
+          "m": 4,
+          "w": 3
+        }
+      ],
+      "answer": "for j in range(1, {{m}}):",
+      "wrong": ["for j in range({{m}}):", "for j in range(1, {{w}}):", "for i in range(1, {{m}}):"]
+    },
+    {
+      "id": "nl-gap-newline",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for {{r}} in range({{h}}):\n    for {{s}} in range({{w}}):\n        print(\"{{ch}}\", end=\"\")\n    ___",
+      "values": [
+        {
+          "r": "row",
+          "s": "col",
+          "h": 3,
+          "w": 2,
+          "ch": "#"
+        },
+        {
+          "r": "row",
+          "s": "star",
+          "h": 2,
+          "w": 4,
+          "ch": "*"
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 4,
+          "w": 3,
+          "ch": "o"
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 2,
+          "w": 6,
+          "ch": "="
+        }
+      ],
+      "answer": "print()",
+      "wrong": ["print(\"{{ch}}\")", "print({{r}})", "print(\"{{ch}}\", end=\"\")", "break"]
+    },
+    {
+      "id": "nl-gap-break",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{xs}}]\nfor {{x}} in {{v}}:\n    for {{l}} in {{x}}:\n        if {{l}} == \"{{stop}}\":\n            ___\n        print({{l}}, end=\"\")\n    print()",
+      "values": [
+        {
+          "v": "words",
+          "xs": "\"rocket\", \"moon\", \"star\"",
+          "x": "word",
+          "l": "letter",
+          "stop": "o"
+        },
+        {
+          "v": "fruits",
+          "xs": "\"banana\", \"kiwi\"",
+          "x": "fruit",
+          "l": "letter",
+          "stop": "n"
+        },
+        {
+          "v": "words",
+          "xs": "\"hello\", \"world\"",
+          "x": "word",
+          "l": "letter",
+          "stop": "l"
+        },
+        {
+          "v": "fruits",
+          "xs": "\"apple\", \"grape\"",
+          "x": "fruit",
+          "l": "letter",
+          "stop": "p"
+        }
+      ],
+      "answer": "break",
+      "wrong": ["continue", "print()", "print({{l}}, end=\"\")"]
+    },
+    {
+      "id": "nl-val-width",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for {{r}} in range({{h}}):\n    for {{s}} in range(___):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "r": "row",
+          "s": "col",
+          "h": 3,
+          "w": 5,
+          "ch": "*",
+          "a": 6,
+          "b": 4
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 2,
+          "w": 4,
+          "ch": "#",
+          "a": 5,
+          "b": 3
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 4,
+          "w": 2,
+          "ch": "o",
+          "a": 3,
+          "b": 1
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 5,
+          "w": 3,
+          "ch": "=",
+          "a": 4,
+          "b": 2
+        }
+      ],
+      "answer": "{{w}}",
+      "wrong": ["{{h}}", "{{a}}", "{{b}}"]
+    },
+    {
+      "id": "nl-val-break",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{m}}):\n        if j == ___:\n            break\n        print(f\"{i} {j}\")",
+      "values": [
+        {
+          "n": 3,
+          "m": 5,
+          "k": 3,
+          "a": 2,
+          "b": 4,
+          "c": 1
+        },
+        {
+          "n": 4,
+          "m": 5,
+          "k": 2,
+          "a": 3,
+          "b": 1,
+          "c": 4
+        },
+        {
+          "n": 3,
+          "m": 6,
+          "k": 4,
+          "a": 3,
+          "b": 5,
+          "c": 2
+        },
+        {
+          "n": 3,
+          "m": 4,
+          "k": 3,
+          "a": 2,
+          "b": 1,
+          "c": 4
+        }
+      ],
+      "answer": "{{k}}",
+      "wrong": ["{{a}}", "{{b}}", "{{c}}"]
+    },
+    {
+      "id": "nl-bad-start",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{c}} = 0\nfor i in range({{n}}):\n    for j in range({{m}}):\n        {{c}} = {{c}} + 1\nprint(f\"{{label}}: {{{c}}}\")",
+      "values": [
+        {
+          "c": "rounds",
+          "n": 3,
+          "m": 4,
+          "label": "Rounds"
+        },
+        {
+          "c": "moves",
+          "n": 2,
+          "m": 5,
+          "label": "Moves"
+        },
+        {
+          "c": "seats",
+          "n": 5,
+          "m": 3,
+          "label": "Seats"
+        }
+      ],
+      "bug": ["{{c}} = 0", "{{c}} = 1"]
+    },
+    {
+      "id": "nl-bad-end",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "for {{r}} in range({{h}}):\n    for {{s}} in range({{w}}):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "r": "row",
+          "s": "col",
+          "h": 2,
+          "w": 4,
+          "ch": "#"
+        },
+        {
+          "r": "row",
+          "s": "star",
+          "h": 3,
+          "w": 3,
+          "ch": "*"
+        },
+        {
+          "r": "row",
+          "s": "col",
+          "h": 3,
+          "w": 5,
+          "ch": "o"
+        }
+      ],
+      "bug": ["print(\"{{ch}}\", end=\"\")", "print(\"{{ch}}\")"]
+    },
+    {
+      "id": "nl-bad-sep",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{m}}):\n        print(f\"{i} x {j} = {i * j}\")\n    print(\"{{sep}}\")",
+      "values": [
+        {
+          "n": 3,
+          "m": 3,
+          "sep": "---"
+        },
+        {
+          "n": 4,
+          "m": 3,
+          "sep": "==="
+        },
+        {
+          "n": 3,
+          "m": 4,
+          "sep": "***"
+        }
+      ],
+      "bug": ["    print(\"{{sep}}\")", "        print(\"{{sep}}\")"]
+    },
+    {
+      "id": "nl-bad-cond",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{m}}):\n        if j == {{k}}:\n            break\n        print(f\"{i} {j}\")",
+      "values": [
+        {
+          "n": 4,
+          "m": 5,
+          "k": 2
+        },
+        {
+          "n": 4,
+          "m": 4,
+          "k": 3
+        },
+        {
+          "n": 5,
+          "m": 4,
+          "k": 3
+        }
+      ],
+      "bug": ["j == {{k}}", "i == {{k}}"]
+    }
+  ]
+}

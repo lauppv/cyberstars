@@ -1,0 +1,721 @@
+{
+  "note": "Made by npm run make:quiz from the templates in list-comprehension-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "lc-double-42e5a8",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 5, 8]\ndublat = [n * 2 for n in numere]\nprint(dublat)",
+      "options": ["[6, 10, 16]", "[5, 7, 10]", "[3, 5, 8, 3, 5, 8]", "[3, 5, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-double-5893b1",
+      "text": "Ce afișează?",
+      "code": "preturi = [4, 10, 7]\ntriplat = [p * 3 for p in preturi]\nprint(triplat)",
+      "options": ["[12, 30, 21]", "[7, 13, 10]", "[4, 10, 7, 4, 10, 7, 4, 10, 7]", "[4, 10, 7]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-double-4d6c88",
+      "text": "Ce afișează?",
+      "code": "scoruri = [6, 9]\npuncte = [s * 3 for s in scoruri]\nprint(puncte)",
+      "options": ["[18, 27]", "[9, 12]", "[6, 9, 6, 9, 6, 9]", "[6, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-double-dee8fb",
+      "text": "Ce afișează?",
+      "code": "niveluri = [2, 7]\ncrescute = [l * 5 for l in niveluri]\nprint(crescute)",
+      "options": ["[10, 35]", "[7, 12]", "[2, 7, 2, 7, 2, 7, 2, 7, 2, 7]", "[2, 7]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-filter-d30fd9",
+      "text": "Ce afișează?",
+      "code": "temperaturi = [18, 30, 33, 25, 31]\ncalde = [t for t in temperaturi if t > 30]\nprint(calde)",
+      "options": ["[33, 31]", "[30, 33, 31]", "[18, 25]", "[False, False, True, False, True]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-filter-77d6fe",
+      "text": "Ce afișează?",
+      "code": "viteze = [120, 90, 100, 140]\nrapide = [s for s in viteze if s > 100]\nprint(rapide)",
+      "options": ["[120, 140]", "[120, 100, 140]", "[90]", "[True, False, False, True]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-filter-eeb7c3",
+      "text": "Ce afișează?",
+      "code": "varste = [12, 18, 25, 17]\nadulti = [a for a in varste if a > 17]\nprint(adulti)",
+      "options": ["[18, 25]", "[18, 25, 17]", "[12]", "[False, True, True, False]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-upper-2e16dc",
+      "text": "Ce afișează?",
+      "code": "nume = [\"tommy\", \"Lance\", \"phil\"]\ntare = [n.upper() for n in nume]\nprint(tare)",
+      "options": [
+        "['TOMMY', 'LANCE', 'PHIL']",
+        "['tommy', 'lance', 'phil']",
+        "['T', 'L', 'P']",
+        "['tommy', 'Lance', 'phil']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-upper-99cd4b",
+      "text": "Ce afișează?",
+      "code": "orase = [\"roma\", \"Oslo\", \"riga\"]\npanouri = [c.upper() for c in orase]\nprint(panouri)",
+      "options": [
+        "['ROMA', 'OSLO', 'RIGA']",
+        "['roma', 'oslo', 'riga']",
+        "['R', 'O', 'R']",
+        "['roma', 'Oslo', 'riga']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-upper-ace990",
+      "text": "Ce afișează?",
+      "code": "planete = [\"marte\", \"Venus\", \"pamant\"]\netichete = [p.upper() for p in planete]\nprint(etichete)",
+      "options": [
+        "['MARTE', 'VENUS', 'PAMANT']",
+        "['marte', 'venus', 'pamant']",
+        "['M', 'V', 'P']",
+        "['marte', 'Venus', 'pamant']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-even-391b2d",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 7, 10, 3, 8]\npare = [n for n in numere if n % 2 == 0]\nprint(pare)",
+      "options": ["[4, 10, 8]", "[7, 3]", "[0, 0, 0]", "[4, 7, 10, 3, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-even-ddc4db",
+      "text": "Ce afișează?",
+      "code": "locuri = [1, 6, 9, 12]\nimpare = [s for s in locuri if s % 2 == 1]\nprint(impare)",
+      "options": ["[1, 9]", "[6, 12]", "[1, 1]", "[1, 6, 9, 12]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-even-54adcf",
+      "text": "Ce afișează?",
+      "code": "ids = [21, 14, 5, 30]\npare = [i for i in ids if i % 2 == 0]\nprint(pare)",
+      "options": ["[14, 30]", "[21, 5]", "[0, 0]", "[21, 14, 5, 30]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-both-bbdd57",
+      "text": "Ce afișează?",
+      "code": "preturi = [10, 25, 5, 40]\ndublat = [p * 2 for p in preturi if p > 20]\nprint(dublat)",
+      "options": ["[50, 80]", "[20, 50, 10, 80]", "[25, 40]", "[20, 10]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-both-a445b3",
+      "text": "Ce afișează?",
+      "code": "scoruri = [3, 8, 6, 9]\npuncte = [s * 10 for s in scoruri if s > 5]\nprint(puncte)",
+      "options": ["[80, 60, 90]", "[30, 80, 60, 90]", "[8, 6, 9]", "[30]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-both-101d79",
+      "text": "Ce afișează?",
+      "code": "cutii = [12, 4, 7]\ntriplat = [b * 3 for b in cutii if b > 6]\nprint(triplat)",
+      "options": ["[36, 21]", "[36, 12, 21]", "[12, 7]", "[12]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-len-1aa4cd",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"soare\", \"luna\", \"planeta\"]\nlungimi = [len(w) for w in cuvinte]\nprint(lungimi)",
+      "options": ["[5, 4, 7]", "['soare', 'luna', 'planeta']", "[3, 3, 3]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "lc-len-a3a957",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Ken\", \"Cortez\", \"Lance\"]\nlungimi = [len(n) for n in nume]\nprint(lungimi)",
+      "options": ["[5, 3, 6, 5]", "['Tommy', 'Ken', 'Cortez', 'Lance']", "[4, 4, 4, 4]", "4"],
+      "answer": 0
+    },
+    {
+      "id": "lc-len-650cb1",
+      "text": "Ce afișează?",
+      "code": "orase = [\"Roma\", \"Oslo\", \"Berlin\"]\nlitere = [len(c) for c in orase]\nprint(litere)",
+      "options": ["[4, 4, 6]", "['Roma', 'Oslo', 'Berlin']", "[3, 3, 3]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "lc-count-3c015b",
+      "text": "Ce afișează?",
+      "code": "scoruri = [85, 42, 50, 67, 38, 91]\ntrecute = [s for s in scoruri if s >= 50]\nprint(len(trecute))",
+      "options": ["4", "3", "[85, 50, 67, 91]", "6"],
+      "answer": 0
+    },
+    {
+      "id": "lc-count-66069f",
+      "text": "Ce afișează?",
+      "code": "temperaturi = [30, 18, 25, 30, 12]\ncalde = [t for t in temperaturi if t >= 25]\nprint(len(calde))",
+      "options": ["3", "2", "[30, 25, 30]", "5"],
+      "answer": 0
+    },
+    {
+      "id": "lc-count-bb928a",
+      "text": "Ce afișează?",
+      "code": "varste = [17, 18, 30, 12, 18, 65]\nadulti = [a for a in varste if a >= 18]\nprint(len(adulti))",
+      "options": ["4", "2", "[18, 30, 18, 65]", "6"],
+      "answer": 0
+    },
+    {
+      "id": "lc-count-81141d",
+      "text": "Ce afișează?",
+      "code": "viteze = [90, 120, 100, 80]\nrapide = [s for s in viteze if s >= 100]\nprint(len(rapide))",
+      "options": ["2", "1", "[120, 100]", "4"],
+      "answer": 0
+    },
+    {
+      "id": "lc-first-7e3535",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Ken\"]\ninitiale = [n[0] for n in nume]\nprint(initiale)",
+      "options": [
+        "['T', 'L', 'K']",
+        "['Tommy', 'Tommy', 'Tommy']",
+        "['o', 'a', 'e']",
+        "['Tommy', 'Lance', 'Ken']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-first-07ccb3",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Pamant\", \"Venus\", \"Saturn\"]\nlitere = [p[0] for p in planete]\nprint(litere)",
+      "options": [
+        "['M', 'P', 'V', 'S']",
+        "['Marte', 'Marte', 'Marte', 'Marte']",
+        "['a', 'a', 'e', 'a']",
+        "['Marte', 'Pamant', 'Venus', 'Saturn']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-first-c39265",
+      "text": "Ce afișează?",
+      "code": "culori = [\"rosu\", \"verde\", \"albastru\"]\ncoduri = [c[0] for c in culori]\nprint(coduri)",
+      "options": [
+        "['r', 'v', 'a']",
+        "['rosu', 'rosu', 'rosu']",
+        "['o', 'e', 'l']",
+        "['rosu', 'verde', 'albastru']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-which-filter-26f2e0",
+      "text": "Care program afișează asta?",
+      "output": "85\n50\n91",
+      "options": [
+        "scoruri = [85, 42, 50, 91]\ntrecute = [s for s in scoruri if s >= 50]\nfor s in trecute:\n    print(s)",
+        "scoruri = [85, 42, 50, 91]\ntrecute = [s for s in scoruri if s > 50]\nfor s in trecute:\n    print(s)",
+        "scoruri = [85, 42, 50, 91]\ntrecute = [s >= 50 for s in scoruri]\nfor s in trecute:\n    print(s)",
+        "scoruri = [85, 42, 50, 91]\ntrecute = [s for s in scoruri if s >= 50]\nfor s in scoruri:\n    print(s)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-which-filter-76d196",
+      "text": "Care program afișează asta?",
+      "output": "95\n88",
+      "options": [
+        "citiri = [75, 30, 95, 88]\nmari = [r for r in citiri if r >= 88]\nfor r in mari:\n    print(r)",
+        "citiri = [75, 30, 95, 88]\nmari = [r for r in citiri if r > 88]\nfor r in mari:\n    print(r)",
+        "citiri = [75, 30, 95, 88]\nmari = [r >= 88 for r in citiri]\nfor r in mari:\n    print(r)",
+        "citiri = [75, 30, 95, 88]\nmari = [r for r in citiri if r >= 88]\nfor r in citiri:\n    print(r)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-which-filter-934dd2",
+      "text": "Care program afișează asta?",
+      "output": "21\n30\n25",
+      "options": [
+        "temperaturi = [21, 30, 18, 25]\ncalde = [t for t in temperaturi if t >= 21]\nfor t in calde:\n    print(t)",
+        "temperaturi = [21, 30, 18, 25]\ncalde = [t for t in temperaturi if t > 21]\nfor t in calde:\n    print(t)",
+        "temperaturi = [21, 30, 18, 25]\ncalde = [t >= 21 for t in temperaturi]\nfor t in calde:\n    print(t)",
+        "temperaturi = [21, 30, 18, 25]\ncalde = [t for t in temperaturi if t >= 21]\nfor t in temperaturi:\n    print(t)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-which-filter-e3c661",
+      "text": "Care program afișează asta?",
+      "output": "18\n40",
+      "options": [
+        "varste = [17, 18, 40]\nadulti = [a for a in varste if a >= 18]\nfor a in adulti:\n    print(a)",
+        "varste = [17, 18, 40]\nadulti = [a for a in varste if a > 18]\nfor a in adulti:\n    print(a)",
+        "varste = [17, 18, 40]\nadulti = [a >= 18 for a in varste]\nfor a in adulti:\n    print(a)",
+        "varste = [17, 18, 40]\nadulti = [a for a in varste if a >= 18]\nfor a in varste:\n    print(a)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-which-suffix-211a19",
+      "text": "Care program afișează asta?",
+      "output": "['soare!', 'luna!']",
+      "options": [
+        "cuvinte = [\"soare\", \"luna\"]\ntare = [w + \"!\" for w in cuvinte]\nprint(tare)",
+        "cuvinte = [\"soare\", \"luna\"]\ntare = [\"!\" + w for w in cuvinte]\nprint(tare)",
+        "cuvinte = [\"soare\", \"luna\"]\ntare = cuvinte + [\"!\"]\nprint(tare)",
+        "cuvinte = [\"soare\", \"luna\"]\ntare = [w for w in cuvinte]\nprint(tare)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-which-suffix-08ceaf",
+      "text": "Care program afișează asta?",
+      "output": "['Ana?', 'Rex?', 'Kai?']",
+      "options": [
+        "nume = [\"Ana\", \"Rex\", \"Kai\"]\nstrigate = [n + \"?\" for n in nume]\nprint(strigate)",
+        "nume = [\"Ana\", \"Rex\", \"Kai\"]\nstrigate = [\"?\" + n for n in nume]\nprint(strigate)",
+        "nume = [\"Ana\", \"Rex\", \"Kai\"]\nstrigate = nume + [\"?\"]\nprint(strigate)",
+        "nume = [\"Ana\", \"Rex\", \"Kai\"]\nstrigate = [n for n in nume]\nprint(strigate)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-which-suffix-ce0810",
+      "text": "Care program afișează asta?",
+      "output": "['note.txt', 'plan.txt']",
+      "options": [
+        "fisiere = [\"note\", \"plan\"]\ncomplete = [f + \".txt\" for f in fisiere]\nprint(complete)",
+        "fisiere = [\"note\", \"plan\"]\ncomplete = [\".txt\" + f for f in fisiere]\nprint(complete)",
+        "fisiere = [\"note\", \"plan\"]\ncomplete = fisiere + [\".txt\"]\nprint(complete)",
+        "fisiere = [\"note\", \"plan\"]\ncomplete = [f for f in fisiere]\nprint(complete)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-which-suffix-e93b2b",
+      "text": "Care program afișează asta?",
+      "output": "['Marte baza', 'Venus baza']",
+      "options": [
+        "planete = [\"Marte\", \"Venus\"]\nbaze = [p + \" baza\" for p in planete]\nprint(baze)",
+        "planete = [\"Marte\", \"Venus\"]\nbaze = [\" baza\" + p for p in planete]\nprint(baze)",
+        "planete = [\"Marte\", \"Venus\"]\nbaze = planete + [\" baza\"]\nprint(baze)",
+        "planete = [\"Marte\", \"Venus\"]\nbaze = [p for p in planete]\nprint(baze)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-filter-fbbb28",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "citiri = [75, 30, 95, 88, 42]\n___\nprint(mari)",
+      "output": "[95, 88]",
+      "options": [
+        "mari = [r for r in citiri if r > 80]",
+        "mari = [r > 80 for r in citiri]",
+        "mari = [r for r in citiri if r < 80]",
+        "mari = [r for r in citiri]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-filter-78c7c5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "temperaturi = [12, 28, 35, 31]\n___\nprint(calde)",
+      "output": "[35, 31]",
+      "options": [
+        "calde = [t for t in temperaturi if t > 30]",
+        "calde = [t > 30 for t in temperaturi]",
+        "calde = [t for t in temperaturi if t < 30]",
+        "calde = [t for t in temperaturi]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-filter-d1fc8e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = [9, 25, 14, 40]\n___\nprint(scumpe)",
+      "output": "[25, 40]",
+      "options": [
+        "scumpe = [p for p in preturi if p > 20]",
+        "scumpe = [p > 20 for p in preturi]",
+        "scumpe = [p for p in preturi if p < 20]",
+        "scumpe = [p for p in preturi]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-filter-47f46b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "niveluri = [3, 8, 5, 10]\n___\nprint(grele)",
+      "output": "[8, 10]",
+      "options": [
+        "grele = [l for l in niveluri if l > 6]",
+        "grele = [l > 6 for l in niveluri]",
+        "grele = [l for l in niveluri if l < 6]",
+        "grele = [l for l in niveluri]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-upper-7d6075",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = [\"tommy\", \"Lance\"]\n___\nprint(tare)",
+      "output": "['TOMMY', 'LANCE']",
+      "options": [
+        "tare = [n.upper() for n in nume]",
+        "tare = [n.lower() for n in nume]",
+        "tare = [nume.upper() for n in nume]",
+        "tare = [n for n in nume]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-upper-926a72",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "orase = [\"roma\", \"Oslo\", \"paris\"]\n___\nprint(panouri)",
+      "output": "['ROMA', 'OSLO', 'PARIS']",
+      "options": [
+        "panouri = [c.upper() for c in orase]",
+        "panouri = [c.lower() for c in orase]",
+        "panouri = [orase.upper() for c in orase]",
+        "panouri = [c for c in orase]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-upper-febdfa",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = [\"ken\", \"Phil\", \"sonny\"]\n___\nprint(strigate)",
+      "output": "['KEN', 'PHIL', 'SONNY']",
+      "options": [
+        "strigate = [m.upper() for m in echipaj]",
+        "strigate = [m.lower() for m in echipaj]",
+        "strigate = [echipaj.upper() for m in echipaj]",
+        "strigate = [m for m in echipaj]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-upper-9df0cd",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "planete = [\"marte\", \"Venus\"]\n___\nprint(etichete)",
+      "output": "['MARTE', 'VENUS']",
+      "options": [
+        "etichete = [p.upper() for p in planete]",
+        "etichete = [p.lower() for p in planete]",
+        "etichete = [planete.upper() for p in planete]",
+        "etichete = [p for p in planete]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-times-86e34d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [3, 5, 8]\n___\nfor n in dublat:\n    print(n)",
+      "output": "6\n10\n16",
+      "options": [
+        "dublat = [n * 2 for n in numere]",
+        "dublat = [n for n in numere]",
+        "dublat = numere * 2",
+        "dublat = [n + 2 for n in numere]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-times-c12b44",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = [4, 7]\n___\nfor p in triplat:\n    print(p)",
+      "output": "12\n21",
+      "options": [
+        "triplat = [p * 3 for p in preturi]",
+        "triplat = [p for p in preturi]",
+        "triplat = preturi * 3",
+        "triplat = [p + 3 for p in preturi]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-times-51b750",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [6, 9, 2]\n___\nfor s in mari:\n    print(s)",
+      "output": "60\n90\n20",
+      "options": [
+        "mari = [s * 10 for s in scoruri]",
+        "mari = [s for s in scoruri]",
+        "mari = scoruri * 10",
+        "mari = [s + 10 for s in scoruri]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-gap-times-0538d3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cutii = [5, 1]\n___\nfor b in stive:\n    print(b)",
+      "output": "20\n4",
+      "options": [
+        "stive = [b * 4 for b in cutii]",
+        "stive = [b for b in cutii]",
+        "stive = cutii * 4",
+        "stive = [b + 4 for b in cutii]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-cond-cbb0db",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [85, 42, 50, 67]\ntrecute = [s for s in scoruri if s ___ 50]\nprint(trecute)",
+      "output": "[85, 50, 67]",
+      "options": [">=", ">", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-cond-1637e1",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "temperaturi = [30, 18, 25, 30]\ncalde = [t for t in temperaturi if t ___ 25]\nprint(calde)",
+      "output": "[30, 30]",
+      "options": [">", ">=", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-cond-bc3b4c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = [17, 18, 30]\ncopii = [a for a in varste if a ___ 18]\nprint(copii)",
+      "output": "[17]",
+      "options": ["<", ">", ">=", "<="],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-cond-c5b397",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = [5, 12, 9, 12]\nieftine = [p for p in preturi if p ___ 9]\nprint(ieftine)",
+      "output": "[5, 9]",
+      "options": ["<=", ">", ">=", "<"],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-expr-91ed24",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [2, 5, 7]\ndublat = [___ for n in numere]\nprint(dublat)",
+      "output": "[4, 10, 14]",
+      "options": ["n * 2", "n + 2", "n", "numere * 2"],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-expr-a7778f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = [4, 10]\ntriplat = [___ for p in preturi]\nprint(triplat)",
+      "output": "[12, 30]",
+      "options": ["p * 3", "p + 3", "p", "preturi * 3"],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-expr-2c4988",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [1, 6, 3]\nmari = [___ for s in scoruri]\nprint(mari)",
+      "output": "[10, 60, 30]",
+      "options": ["s * 10", "s + 10", "s", "scoruri * 10"],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-expr-b8583a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "vieti = [3, 5]\nbonus = [___ for l in vieti]\nprint(bonus)",
+      "output": "[12, 20]",
+      "options": ["l * 4", "l + 4", "l", "vieti * 4"],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-mod-5d7c93",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [1, 4, 7, 10]\npare = [n for n in numere if n % 2 == ___]\nprint(pare)",
+      "output": "[4, 10]",
+      "options": ["0", "1", "2", "n"],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-mod-17e4a6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "locuri = [1, 2, 5, 8]\nimpare = [s for s in locuri if s % 2 == ___]\nprint(impare)",
+      "output": "[1, 5]",
+      "options": ["1", "0", "2", "s"],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-mod-e75843",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "ids = [3, 1, 6]\npare = [i for i in ids if i % 2 == ___]\nprint(pare)",
+      "output": "[6]",
+      "options": ["0", "1", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "lc-val-mod-f85d36",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "etaje = [1, 9, 12, 4]\nimpare = [f for f in etaje if f % 2 == ___]\nprint(impare)",
+      "output": "[1, 9]",
+      "options": ["1", "0", "2", "f"],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-cond-c6829e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "citiri = [75, 30, 95, 88]\nprint(citiri)\nmari = [r for r in citiri if r < 80]\nprint(mari)",
+      "output": "[75, 30, 95, 88]\n[95, 88]",
+      "options": [
+        "mari = [r for r in citiri if r < 80]",
+        "print(citiri)",
+        "citiri = [75, 30, 95, 88]",
+        "print(mari)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-cond-cf982c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "temperaturi = [12, 31, 28, 35]\nprint(temperaturi)\ncalde = [t for t in temperaturi if t < 30]\nprint(calde)",
+      "output": "[12, 31, 28, 35]\n[31, 35]",
+      "options": [
+        "calde = [t for t in temperaturi if t < 30]",
+        "print(temperaturi)",
+        "temperaturi = [12, 31, 28, 35]",
+        "print(calde)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-cond-ad42a2",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "preturi = [9, 25, 40]\nprint(preturi)\nscumpe = [p for p in preturi if p < 20]\nprint(scumpe)",
+      "output": "[9, 25, 40]\n[25, 40]",
+      "options": [
+        "scumpe = [p for p in preturi if p < 20]",
+        "print(preturi)",
+        "preturi = [9, 25, 40]",
+        "print(scumpe)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-print-bd51e5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [3, 5, 8]\ndublat = [n * 2 for n in numere]\nprint(\"Initial:\", numere)\nprint(numere)",
+      "output": "Initial: [3, 5, 8]\n[6, 10, 16]",
+      "options": [
+        "print(numere)",
+        "print(\"Initial:\", numere)",
+        "dublat = [n * 2 for n in numere]",
+        "numere = [3, 5, 8]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-print-0f7590",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "preturi = [4, 10, 7]\ntriplat = [p * 3 for p in preturi]\nprint(\"Initial:\", preturi)\nprint(preturi)",
+      "output": "Initial: [4, 10, 7]\n[12, 30, 21]",
+      "options": [
+        "print(preturi)",
+        "print(\"Initial:\", preturi)",
+        "triplat = [p * 3 for p in preturi]",
+        "preturi = [4, 10, 7]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-print-3f0d50",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = [6, 1]\nmari = [s * 10 for s in scoruri]\nprint(\"Initial:\", scoruri)\nprint(scoruri)",
+      "output": "Initial: [6, 1]\n[60, 10]",
+      "options": [
+        "print(scoruri)",
+        "print(\"Initial:\", scoruri)",
+        "mari = [s * 10 for s in scoruri]",
+        "scoruri = [6, 1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-def-e5eafc",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def pastreaza_mari():\n    print(len(valori))\n    return [n for n in valori if n > 50]\n\nscoruri = [40, 75, 90, 20]\nprint(pastreaza_mari(scoruri))",
+      "output": "4\n[75, 90]",
+      "options": [
+        "def pastreaza_mari():",
+        "print(len(valori))",
+        "return [n for n in valori if n > 50]",
+        "scoruri = [40, 75, 90, 20]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-def-de3188",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def zile_calde():\n    print(len(temperaturi))\n    return [t for t in temperaturi if t > 30]\n\nsaptamana = [28, 33, 31, 25]\nprint(zile_calde(saptamana))",
+      "output": "4\n[33, 31]",
+      "options": [
+        "def zile_calde():",
+        "print(len(temperaturi))",
+        "return [t for t in temperaturi if t > 30]",
+        "saptamana = [28, 33, 31, 25]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-def-0b72fd",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def comenzi_mari():\n    print(len(comenzi))\n    return [o for o in comenzi if o > 100]\n\nazi = [250, 80, 120]\nprint(comenzi_mari(azi))",
+      "output": "3\n[250, 120]",
+      "options": [
+        "def comenzi_mari():",
+        "print(len(comenzi))",
+        "return [o for o in comenzi if o > 100]",
+        "azi = [250, 80, 120]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-var-ee7055",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "citiri = [75, 30, 95, 88]\nmari = [r for r in citiri if r > 80]\ndublat = [r * 2 for r in mari]\nprint(mari)\nprint(dublat)",
+      "output": "[95, 88]\n[150, 60, 190, 176]",
+      "options": [
+        "dublat = [r * 2 for r in mari]",
+        "mari = [r for r in citiri if r > 80]",
+        "citiri = [75, 30, 95, 88]",
+        "print(mari)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-var-116d62",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = [40, 85, 60]\ntrecute = [s for s in scoruri if s > 50]\nduble = [s * 2 for s in trecute]\nprint(trecute)\nprint(duble)",
+      "output": "[85, 60]\n[80, 170, 120]",
+      "options": [
+        "duble = [s * 2 for s in trecute]",
+        "trecute = [s for s in scoruri if s > 50]",
+        "print(trecute)",
+        "print(duble)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-bad-var-f29ca1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "temperaturi = [12, 31, 35]\ncalde = [t for t in temperaturi if t > 30]\ndublu = [t * 2 for t in calde]\nprint(calde)\nprint(dublu)",
+      "output": "[31, 35]\n[24, 62, 70]",
+      "options": [
+        "dublu = [t * 2 for t in calde]",
+        "calde = [t for t in temperaturi if t > 30]",
+        "print(calde)",
+        "print(dublu)"
+      ],
+      "answer": 0
+    }
+  ]
+}

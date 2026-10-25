@@ -1,0 +1,911 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce face o mulțime diferită de o listă?",
+      "options": [
+        "Fiecare valoare e în ea o singură dată: duplicatele dispar",
+        "Își ține valorile sortate",
+        "Valorile ei se citesc după cheie",
+        "Nu se mai poate schimba după ce e făcută"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează?",
+      "code": "oaspeti = {\"Tommy\", \"Lance\", \"Cortez\", \"Tommy\"}\nprint(len(oaspeti))",
+      "options": ["4", "3", "1", "Se oprește cu o eroare: Tommy apare de două ori"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Care dintre acestea face o mulțime goală?",
+      "options": ["{}", "[]", "set()", "()"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Ce face `x = {}`?",
+      "options": [
+        "O mulțime goală",
+        "Un dicționar gol",
+        "O listă goală",
+        "Nimic: se oprește cu o eroare"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "Care linie adaugă \"pusca\" în mulțimea arme?",
+      "options": [
+        "arme.append(\"pusca\")",
+        "arme[\"pusca\"] = 1",
+        "arme + \"pusca\"",
+        "arme.add(\"pusca\")"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "De ce folosește o mulțime `.add()` și nu `.append()`, ca o listă?",
+      "options": [
+        "O mulțime n-are ordine, deci adăugarea la final n-are sens",
+        "append() merge doar cu numere",
+        "add() ține valorile sortate",
+        "O mulțime poate primi o singură valoare nouă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "Care linie scoate \"bata\" din mulțimea arme?",
+      "options": [
+        "del arme[0]",
+        "arme[\"bata\"] = 0",
+        "arme.remove(\"bata\")",
+        "arme = arme - \"bata\""
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "interzisi = {\"Sonny\", \"Diaz\", \"Gonzalez\"}\njucator = \"Diaz\"\nif jucator in interzisi:\n    print(f\"{jucator} este interzis!\")\nelse:\n    print(f\"{jucator} este binevenit\")",
+      "options": ["Diaz este interzis!", "Diaz este binevenit", "Tommy este binevenit", "True"],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "Când e o mulțime o alegere mai bună decât o listă?",
+      "options": [
+        "Când contează ordinea valorilor",
+        "Când fiecare valoare trebuie să fie o singură dată, sau verificăm des dacă o valoare e în ea",
+        "Când citim valorile după poziția lor",
+        "Când ținem perechi cheie: valoare"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "Ce fac `{\"a\": 1, \"b\": 2}` și `{1, 2}`?",
+      "options": [
+        "Două mulțimi: amândouă folosesc acolade",
+        "Două dicționare: amândouă folosesc acolade",
+        "Un dicționar, apoi o mulțime: cele două puncte fac dicționarul",
+        "O mulțime, apoi un dicționar: numerele fac un dicționar"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "Ce afișează?",
+      "code": "culori = {\"rosu\", \"albastru\", \"rosu\", \"rosu\"}\nprint(len(culori))",
+      "options": ["4", "2", "3", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Tommy\", \"Cortez\", \"Lance\"]\nunice = list(set(nume))\nprint(len(unice))",
+      "options": ["5", "2", "3", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "În `list(set(nume))`, la ce folosește mulțimea din mijloc?",
+      "options": [
+        "Elimină duplicatele, apoi list() o face din nou listă",
+        "Sortează numele, apoi list() le păstrează în ordinea asta",
+        "list() nu poate primi o listă, deci are nevoie întâi de o mulțime",
+        "Face o copie a lui nume care nu se mai poate schimba"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "După `nume_unice = list(set(nume))`, sunt numele sigur în ordinea pe care o aveau în nume?",
+      "options": [
+        "Da: o mulțime păstrează ordinea în care au fost adăugate",
+        "Nu: o mulțime nu păstrează ordinea, deci pot ieși în altă ordine",
+        "Nu: ies mereu sortate de la A la Z",
+        "Da, dar doar când numele sunt text"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "vazute = set()\nvazute.add(\"A1\")\nvazute.add(\"B2\")\nvazute.add(\"A1\")\nprint(len(vazute))",
+      "options": ["3", "1", "0", "2"],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "În misiunea Jurnalul de Semnale, câte semnale are `semnale` și câte coduri diferite?",
+      "options": [
+        "8 semnale, 4 coduri diferite",
+        "4 semnale, 8 coduri diferite",
+        "8 semnale, 8 coduri diferite",
+        "4 semnale, 4 coduri diferite"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "În misiunea Jurnalul de Semnale, `\"D4\" in semnale` l-ar găsi și el pe D4. De ce verificăm în mulțime?",
+      "options": [
+        "in nu merge pe o listă",
+        "Lista ar spune D4 lipseste, pentru că D4 e spre final",
+        "Mulțimea îl ține pe D4 primul, deci îl găsește mai repede",
+        "Amândouă dau același răspuns, dar verificarea într-o mulțime e mult mai rapidă"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "În misiunea Jurnalul de Semnale, ce afișează linia Unice dacă scriem `len(semnale)` în loc de `len(unice)`?",
+      "options": ["Unice: 4", "Unice: 1", "Se oprește cu o eroare", "Unice: 8"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "coduri = {\"A1\", \"B2\", \"C3\"}\nprint(\"D4\" in coduri)\nprint(\"B2\" in coduri)",
+      "options": ["False\nTrue", "True\nFalse", "False\nFalse", "D4\nB2"],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "Care expresie e True când Phil e în mulțimea echipaj?",
+      "options": [
+        "echipaj[\"Phil\"]",
+        "echipaj == \"Phil\"",
+        "echipaj.add(\"Phil\")",
+        "\"Phil\" in echipaj"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce face `.add()` cu o valoare care e deja în mulțime?",
+      "options": [
+        "Se oprește cu o eroare",
+        "Nimic: mulțimea rămâne cum era",
+        "Adaugă a doua copie",
+        "Scoate valoarea"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "Care dintre acestea e o mulțime?",
+      "options": ["[\"a\", \"b\"]", "(\"a\", \"b\")", "{\"a\": 1, \"b\": 2}", "{\"a\", \"b\"}"],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 1, 3, 2, 1, 3]\nprint(len(numere))\nprint(len(set(numere)))",
+      "options": ["3\n6", "6\n6", "6\n3", "3\n3"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Scriem `oaspeti = {\"Tommy\", \"Lance\", \"Cortez\"}` și îl afișăm. Ce poate ieși altfel decât l-am scris?",
+      "options": [
+        "Ordinea numelor",
+        "Câte nume arată",
+        "Literele numelor, care ies cu majuscule",
+        "Nimic: o mulțime se afișează exact cum a fost scrisă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "arme = {\"bata\", \"pistol\"}\narme.add(\"pusca\")\narme.add(\"bata\")\narme.remove(\"pistol\")\nprint(len(arme))",
+      "options": ["3", "4", "2", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Care expresie dă o mulțime cu valorile diferite din lista scoruri?",
+      "options": ["list(scoruri)", "set(scoruri)", "[scoruri]", "scoruri.set()"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "vizitate = set()\nfor planeta in [\"Marte\", \"Venus\", \"Marte\", \"Terra\", \"Venus\"]:\n    vizitate.add(planeta)\nprint(len(vizitate))",
+      "options": ["5", "2", "3", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "vizitate = set()\nfor planeta in [\"Marte\", \"Venus\", \"Marte\"]:\n    if planeta in vizitate:\n        print(f\"{planeta} din nou\")\n    else:\n        vizitate.add(planeta)\n        print(f\"{planeta} nou\")",
+      "options": [
+        "Marte nou\nVenus nou\nMarte nou",
+        "Marte din nou\nVenus din nou\nMarte din nou",
+        "Marte nou\nVenus nou",
+        "Marte nou\nVenus nou\nMarte din nou"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "coduri = {}\ncoduri.add(\"A1\")",
+      "options": [
+        "Se oprește cu o eroare: {} a făcut un dicționar, iar un dicționar n-are add()",
+        "coduri îl are pe A1: {} e o mulțime goală",
+        "A1 devine o cheie din coduri, fără valoare",
+        "Nimic: add() așteaptă a doua valoare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "În misiunea Jurnalul de Semnale, A1 apare de trei ori în semnale. De câte ori e în mulțimea unice?",
+      "options": [
+        "De trei ori: mulțimea copiază lista",
+        "O dată: o mulțime ține fiecare valoare o singură dată",
+        "De două ori: doar prima copie dispare",
+        "Deloc: o valoare care se repetă dispare"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "st-dedupe",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nprint(len({{v}}))\nprint(len(set({{v}})))",
+      "values": [
+        {
+          "v": "semnale",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\""
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Phil\""
+        },
+        {
+          "v": "culori",
+          "items": "\"rosu\", \"rosu\", \"albastru\", \"rosu\", \"verde\", \"albastru\", \"rosu\""
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Terra\", \"Marte\", \"Venus\""
+        },
+        {
+          "v": "zaruri",
+          "items": "6, 2, 6, 6, 3, 2, 1, 6"
+        }
+      ],
+      "mistakes": [
+        ["len(set({{v}}))", "len({{v}})"],
+        ["print(len({{v}}))\nprint(len(set({{v}})))", "print(len(set({{v}})))\nprint(len({{v}}))"],
+        ["print(len({{v}}))\n", ""]
+      ]
+    },
+    {
+      "id": "st-add",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{{start}}}\n{{v}}.add(\"{{old}}\")\n{{v}}.add(\"{{new}}\")\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "echipaj",
+          "start": "\"Tommy\", \"Lance\", \"Phil\"",
+          "old": "Lance",
+          "new": "Ken"
+        },
+        {
+          "v": "arme",
+          "start": "\"bata\", \"pistol\", \"cutit\"",
+          "old": "bata",
+          "new": "pusca"
+        },
+        {
+          "v": "stampile",
+          "start": "\"Marte\", \"Venus\", \"Terra\", \"Pluto\"",
+          "old": "Pluto",
+          "new": "Titan"
+        },
+        {
+          "v": "medalii",
+          "start": "\"aur\", \"argint\", \"bronz\"",
+          "old": "argint",
+          "new": "platina"
+        },
+        {
+          "v": "coduri",
+          "start": "\"A1\", \"B2\", \"C3\"",
+          "old": "A1",
+          "new": "D4"
+        }
+      ],
+      "mistakes": [
+        [".add(\"{{old}}\")", ".add(\"{{old}}!\")"],
+        ["{{v}}.add(\"{{new}}\")\n", ""],
+        ["{{{start}}}", "set()"]
+      ]
+    },
+    {
+      "id": "st-remove",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{{items}}}\n{{v}}.remove(\"{{r}}\")\nprint(\"{{r}}\" in {{v}})\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "arme",
+          "items": "\"bata\", \"pistol\", \"cutit\"",
+          "r": "bata"
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Phil\", \"Ken\"",
+          "r": "Phil"
+        },
+        {
+          "v": "oaspeti",
+          "items": "\"Ana\", \"Rex\"",
+          "r": "Rex"
+        },
+        {
+          "v": "tinte",
+          "items": "\"A\", \"B\", \"C\", \"D\", \"E\"",
+          "r": "C"
+        },
+        {
+          "v": "luni",
+          "items": "\"Io\", \"Europa\", \"Titan\"",
+          "r": "Titan"
+        }
+      ],
+      "mistakes": [
+        ["{{v}}.remove(\"{{r}}\")\n", ""],
+        ["print(\"{{r}}\" in {{v}})", "print(\"{{r}}\" not in {{v}})"],
+        [
+          "print(\"{{r}}\" in {{v}})\nprint(len({{v}}))",
+          "print(len({{v}}))\nprint(\"{{r}}\" in {{v}})"
+        ]
+      ]
+    },
+    {
+      "id": "st-check",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{s}} = {{{bad}}}\nfor {{x}} in [{{people}}]:\n    if {{x}} in {{s}}:\n        print(f\"{{{x}}} {{no}}\")\n    else:\n        print(f\"{{{x}}} {{ok}}\")",
+      "values": [
+        {
+          "s": "interzisi",
+          "bad": "\"Sonny\", \"Diaz\"",
+          "x": "p",
+          "people": "\"Tommy\", \"Diaz\", \"Lance\"",
+          "no": "este interzis!",
+          "ok": "este binevenit"
+        },
+        {
+          "s": "stricate",
+          "bad": "\"B2\", \"D4\"",
+          "x": "cod",
+          "people": "\"A1\", \"B2\", \"C3\", \"D4\"",
+          "no": "e stricat",
+          "ok": "merge"
+        },
+        {
+          "s": "pline",
+          "bad": "\"Marte\"",
+          "x": "planeta",
+          "people": "\"Marte\", \"Venus\"",
+          "no": "e plina",
+          "ok": "are loc"
+        },
+        {
+          "s": "vandute",
+          "bad": "\"ceai\", \"tort\", \"gem\"",
+          "x": "produs",
+          "people": "\"tort\", \"lapte\"",
+          "no": "s-a terminat",
+          "ok": "e pe stoc"
+        }
+      ],
+      "mistakes": [
+        ["if {{x}} in {{s}}:", "if {{x}} not in {{s}}:"],
+        ["\n    else:\n        print(f\"{{{x}}} {{ok}}\")", ""],
+        ["print(f\"{{{x}}} {{no}}\")", "print(f\"{{{x}}} {{ok}}\")"]
+      ]
+    },
+    {
+      "id": "st-repeats",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{s}} = set()\n{{r}} = 0\nfor {{x}} in [{{items}}]:\n    if {{x}} in {{s}}:\n        {{r}} = {{r}} + 1\n    else:\n        {{s}}.add({{x}})\nprint(f\"{{label}}: {{{r}}}\")",
+      "values": [
+        {
+          "s": "vazute",
+          "r": "repetari",
+          "x": "c",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\"",
+          "label": "Repetari"
+        },
+        {
+          "s": "intalniti",
+          "r": "iar",
+          "x": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Phil\", \"Lance\"",
+          "label": "Intalniti iar"
+        },
+        {
+          "s": "vizitate",
+          "r": "reveniri",
+          "x": "p",
+          "items": "\"Marte\", \"Venus\", \"Marte\", \"Marte\", \"Terra\", \"Venus\"",
+          "label": "Reveniri"
+        },
+        {
+          "s": "auzite",
+          "r": "ecouri",
+          "x": "c",
+          "items": "\"hei\", \"ho\", \"hei\", \"hei\"",
+          "label": "Ecouri"
+        },
+        {
+          "s": "folosite",
+          "r": "iar",
+          "x": "n",
+          "items": "4, 8, 4, 15, 8, 4",
+          "label": "Folosite iar"
+        }
+      ],
+      "mistakes": [
+        ["        {{s}}.add({{x}})", "        print({{x}})"],
+        ["if {{x}} in {{s}}:", "if {{x}} not in {{s}}:"],
+        ["{{r}} = {{r}} + 1", "{{r}} = 1"],
+        ["{{s}}.add({{x}})", "{{s}}.add({{x}})\n        {{r}} = {{r}} + 1"]
+      ]
+    },
+    {
+      "id": "st-log",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nprint(f\"Total: {len({{v}})}\")\nunice = set({{v}})\nprint(f\"Unice: {len(unice)}\")\nif \"{{c}}\" in unice:\n    print(\"{{c}} detectat\")\nelse:\n    print(\"{{c}} lipseste\")",
+      "values": [
+        {
+          "v": "semnale",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\"",
+          "c": "C3"
+        },
+        {
+          "v": "semnale",
+          "items": "\"X1\", \"X1\", \"Y2\", \"X1\"",
+          "c": "Z3"
+        },
+        {
+          "v": "pinguri",
+          "items": "\"K7\", \"L8\", \"K7\", \"M9\", \"L8\", \"K7\", \"N1\"",
+          "c": "N1"
+        },
+        {
+          "v": "pinguri",
+          "items": "\"Q1\", \"R2\", \"S3\", \"Q1\"",
+          "c": "T4"
+        },
+        {
+          "v": "coduri",
+          "items": "\"D4\", \"D4\", \"D4\"",
+          "c": "D4"
+        }
+      ],
+      "mistakes": [
+        ["Unice: {len(unice)}", "Unice: {len({{v}})}"],
+        ["if \"{{c}}\" in unice:", "if \"{{c}}\" not in unice:"],
+        ["Total: {len({{v}})}", "Total: {len(set({{v}}))}"]
+      ]
+    },
+    {
+      "id": "st-which-check",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{s}} = {{{bad}}}\nfor {{x}} in [{{people}}]:\n    if {{x}} in {{s}}:\n        print(f\"{{{x}}}: {{no}}\")\n    else:\n        print(f\"{{{x}}}: {{ok}}\")",
+      "values": [
+        {
+          "s": "interzisi",
+          "bad": "\"Sonny\", \"Diaz\"",
+          "x": "p",
+          "people": "\"Diaz\", \"Tommy\"",
+          "no": "stop",
+          "ok": "trece"
+        },
+        {
+          "s": "inchise",
+          "bad": "\"B\", \"C\"",
+          "x": "poarta",
+          "people": "\"A\", \"C\"",
+          "no": "inchisa",
+          "ok": "deschisa"
+        },
+        {
+          "s": "facute",
+          "bad": "\"spalat\", \"gatit\"",
+          "x": "treaba",
+          "people": "\"gatit\", \"cumparaturi\", \"spalat\"",
+          "no": "gata",
+          "ok": "de facut"
+        },
+        {
+          "s": "pierdute",
+          "bad": "\"Io\"",
+          "x": "luna",
+          "people": "\"Europa\", \"Io\"",
+          "no": "fara semnal",
+          "ok": "semnal"
+        }
+      ],
+      "mistakes": [
+        ["if {{x}} in {{s}}:", "if {{x}} not in {{s}}:"],
+        ["if {{x}} in {{s}}:", "if {{x}} == {{s}}:"],
+        ["{{{bad}}}", "set()"]
+      ]
+    },
+    {
+      "id": "st-which-add",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = {{{start}}}\n{{v}}.add(\"{{new}}\")\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "echipaj",
+          "start": "\"Tommy\", \"Lance\", \"Phil\"",
+          "new": "Ken",
+          "old": "Lance"
+        },
+        {
+          "v": "arme",
+          "start": "\"bata\", \"pistol\"",
+          "new": "cutit",
+          "old": "bata"
+        },
+        {
+          "v": "stampile",
+          "start": "\"Marte\", \"Venus\", \"Terra\", \"Pluto\"",
+          "new": "Titan",
+          "old": "Terra"
+        },
+        {
+          "v": "coduri",
+          "start": "\"A1\", \"B2\", \"C3\", \"D4\", \"E5\"",
+          "new": "F6",
+          "old": "C3"
+        },
+        {
+          "v": "medalii",
+          "start": "\"aur\"",
+          "new": "bronz",
+          "old": "aur"
+        }
+      ],
+      "mistakes": [
+        [".add(\"{{new}}\")", ".add(\"{{old}}\")"],
+        [".add(\"{{new}}\")", ".append(\"{{new}}\")"],
+        ["{{v}}.add(\"{{new}}\")", "{{v}}.remove(\"{{old}}\")"]
+      ]
+    },
+    {
+      "id": "st-gap-add",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{{start}}}\n___\nprint(\"{{new}}\" in {{v}})\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "echipaj",
+          "start": "\"Tommy\", \"Lance\"",
+          "new": "Phil",
+          "old": "Lance"
+        },
+        {
+          "v": "arme",
+          "start": "\"bata\", \"pistol\", \"cutit\"",
+          "new": "pusca",
+          "old": "bata"
+        },
+        {
+          "v": "stampile",
+          "start": "\"Marte\"",
+          "new": "Venus",
+          "old": "Marte"
+        },
+        {
+          "v": "coduri",
+          "start": "\"A1\", \"B2\", \"C3\", \"D4\"",
+          "new": "E5",
+          "old": "C3"
+        }
+      ],
+      "answer": "{{v}}.add(\"{{new}}\")",
+      "wrong": ["{{v}}.append(\"{{new}}\")", "{{v}}.add(\"{{old}}\")", "{{v}} = {\"{{new}}\"}"]
+    },
+    {
+      "id": "st-gap-unique",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n___\nprint(f\"Unice: {len(unice)}\")",
+      "values": [
+        {
+          "v": "semnale",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\""
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\""
+        },
+        {
+          "v": "culori",
+          "items": "\"rosu\", \"albastru\", \"rosu\", \"verde\", \"albastru\""
+        },
+        {
+          "v": "zaruri",
+          "items": "5, 5, 2, 5, 1, 2, 6, 5"
+        }
+      ],
+      "answer": "unice = set({{v}})",
+      "wrong": ["unice = {{v}}", "unice = [{{v}}]", "unice = set()"]
+    },
+    {
+      "id": "st-gap-remove",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{{items}}}\n___\nprint(\"{{r}}\" in {{v}})\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "arme",
+          "items": "\"bata\", \"pistol\", \"cutit\"",
+          "r": "bata",
+          "other": "pistol"
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Phil\", \"Ken\"",
+          "r": "Ken",
+          "other": "Tommy"
+        },
+        {
+          "v": "oaspeti",
+          "items": "\"Ana\", \"Rex\"",
+          "r": "Ana",
+          "other": "Rex"
+        },
+        {
+          "v": "luni",
+          "items": "\"Io\", \"Europa\", \"Titan\"",
+          "r": "Europa",
+          "other": "Io"
+        }
+      ],
+      "answer": "{{v}}.remove(\"{{r}}\")",
+      "wrong": ["{{v}}.add(\"{{r}}\")", "del {{v}}[0]", "{{v}}.remove(\"{{other}}\")"]
+    },
+    {
+      "id": "st-val-in",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{s}} = {{{bad}}}\n{{x}} = ___\nif {{x}} in {{s}}:\n    print(\"{{no}}\")\nelse:\n    print(\"{{ok}}\")",
+      "values": [
+        {
+          "s": "interzisi",
+          "bad": "\"Sonny\", \"Gonzalez\", \"Mendez\"",
+          "x": "jucator",
+          "no": "Stop",
+          "ok": "Bun venit",
+          "a": "\"Mendez\"",
+          "w1": "\"Tommy\"",
+          "w2": "\"Diaz\"",
+          "w3": "\"interzisi\""
+        },
+        {
+          "s": "stricate",
+          "bad": "\"B2\", \"D4\"",
+          "x": "cod",
+          "no": "De reparat",
+          "ok": "Totul e bine",
+          "a": "\"D4\"",
+          "w1": "\"A1\"",
+          "w2": "\"C3\"",
+          "w3": "\"stricate\""
+        },
+        {
+          "s": "pline",
+          "bad": "\"Marte\", \"Venus\"",
+          "x": "planeta",
+          "no": "Nu e loc",
+          "ok": "Aterizeaza aici",
+          "a": "\"Venus\"",
+          "w1": "\"Terra\"",
+          "w2": "\"Pluto\"",
+          "w3": "\"pline\""
+        },
+        {
+          "s": "vandute",
+          "bad": "\"ceai\", \"tort\"",
+          "x": "produs",
+          "no": "Stoc epuizat",
+          "ok": "Pe stoc",
+          "a": "\"ceai\"",
+          "w1": "\"lapte\"",
+          "w2": "\"gem\"",
+          "w3": "\"vandute\""
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "st-val-add",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{{start}}}\n{{v}}.add(___)\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "echipaj",
+          "start": "\"Tommy\", \"Lance\", \"Phil\"",
+          "a": "\"Ken\"",
+          "w1": "\"Tommy\"",
+          "w2": "\"Lance\"",
+          "w3": "\"Phil\""
+        },
+        {
+          "v": "arme",
+          "start": "\"bata\", \"pistol\", \"cutit\"",
+          "a": "\"pusca\"",
+          "w1": "\"bata\"",
+          "w2": "\"pistol\"",
+          "w3": "\"cutit\""
+        },
+        {
+          "v": "coduri",
+          "start": "\"A1\", \"B2\", \"C3\", \"D4\"",
+          "a": "\"E5\"",
+          "w1": "\"A1\"",
+          "w2": "\"C3\"",
+          "w3": "\"D4\""
+        },
+        {
+          "v": "stampile",
+          "start": "\"Marte\", \"Venus\", \"Terra\"",
+          "a": "\"Titan\"",
+          "w1": "\"Marte\"",
+          "w2": "\"Venus\"",
+          "w3": "\"Terra\""
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "st-bad-append",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{{start}}}\n{{v}}.add(\"{{new}}\")\nprint(len({{v}}))\nprint(\"{{new}}\" in {{v}})",
+      "values": [
+        {
+          "v": "vazute",
+          "start": "\"A1\", \"B2\", \"A1\"",
+          "new": "C3"
+        },
+        {
+          "v": "echipaj",
+          "start": "\"Tommy\", \"Lance\", \"Tommy\", \"Phil\"",
+          "new": "Ken"
+        },
+        {
+          "v": "stampile",
+          "start": "\"Marte\", \"Marte\", \"Venus\"",
+          "new": "Terra"
+        }
+      ],
+      "bug": ["{{v}}.add(\"{{new}}\")", "{{v}}.append(\"{{new}}\")"]
+    },
+    {
+      "id": "st-bad-empty",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = set()\nfor {{x}} in [{{items}}]:\n    {{v}}.add({{x}})\n{{v}}.remove(\"{{r}}\")\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "vazute",
+          "x": "c",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\"",
+          "r": "A1"
+        },
+        {
+          "v": "intalniti",
+          "x": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\"",
+          "r": "Lance"
+        },
+        {
+          "v": "vizitate",
+          "x": "p",
+          "items": "\"Marte\", \"Venus\", \"Marte\", \"Terra\", \"Venus\"",
+          "r": "Terra"
+        }
+      ],
+      "bug": ["{{v}} = set()", "{{v}} = {}"]
+    },
+    {
+      "id": "st-bad-len",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nunice = set({{v}})\nprint(f\"Total: {len({{v}})}\")\nprint(f\"Unice: {len(unice)}\")",
+      "values": [
+        {
+          "v": "semnale",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\""
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Tommy\", \"Phil\""
+        },
+        {
+          "v": "zaruri",
+          "items": "3, 3, 6, 1, 6, 3"
+        }
+      ],
+      "bug": ["Unice: {len(unice)}", "Unice: {len({{v}})}"]
+    },
+    {
+      "id": "st-bad-remove",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{{items}}}\n{{v}}.remove(\"{{r}}\")\n{{v}}.add(\"{{new}}\")\nprint(\"{{r}}\" in {{v}})\nprint(\"{{keep}}\" in {{v}})\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Phil\"",
+          "r": "Lance",
+          "keep": "Phil",
+          "new": "Ken"
+        },
+        {
+          "v": "arme",
+          "items": "\"bata\", \"pistol\", \"cutit\"",
+          "r": "bata",
+          "keep": "cutit",
+          "new": "pusca"
+        },
+        {
+          "v": "luni",
+          "items": "\"Io\", \"Europa\", \"Titan\"",
+          "r": "Titan",
+          "keep": "Io",
+          "new": "Luna"
+        }
+      ],
+      "bug": ["{{v}}.remove(\"{{r}}\")", "{{v}}.remove(\"{{keep}}\")"]
+    }
+  ]
+}

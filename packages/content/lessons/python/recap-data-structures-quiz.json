@@ -1,0 +1,845 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "In the Crew Analysis mission, what is each member of `team_a`?",
+      "options": [
+        "A tuple of a name and a score",
+        "A dictionary with a name and a score",
+        "A set of two values",
+        "A list that can grow"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "In the mission, why are team B's names put into a set before team A is checked?",
+      "options": [
+        "So the names come out sorted",
+        "So the set holds the scores as well",
+        "Because a for loop can't go through a list of tuples",
+        "So `in` checks a name quickly, with each name kept once"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "In the mission, why does the program go through team A to print the names in both teams, instead of printing the set?",
+      "options": [
+        "A set can't be printed",
+        "Team A keeps its order, while a set's order can change",
+        "The set holds the scores, not the names",
+        "print() shows only the first element of a set"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "What happens on each pass of `for name, score in team_a:`?",
+      "options": [
+        "name gets the whole tuple and score stays empty",
+        "The loop runs twice, once for the names and once for the scores",
+        "The tuple is unpacked: its first value goes into name, its second into score",
+        "It stops with an error, since a for loop takes one variable"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "In the mission, what does the program print after `Team A high: `?",
+      "options": ["[91]", "[85, 72, 91, 60]", "['Tommy', 'Cortez']", "[85, 91]"],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "Which of these makes an empty set?",
+      "options": ["{}", "[]", "set()", "()"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "crew = {\"Tommy\", \"Lance\", \"Tommy\", \"Cortez\"}\nprint(len(crew))",
+      "options": ["4", "3", "2", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "What happens when this runs?",
+      "code": "point = (10, 20)\npoint[0] = 99\nprint(point)",
+      "options": [
+        "It prints (99, 20)",
+        "It prints (10, 20)",
+        "It stops with a TypeError",
+        "It prints (99, 10, 20)"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "How many lines does this print?",
+      "code": "for i in range(3):\n    for j in range(4):\n        print(i, j)",
+      "options": ["7", "12", "4", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 4):\n        if j > i:\n            break\n        print(i, j)",
+      "options": [
+        "1 1\n2 2\n3 3",
+        "1 1\n1 2\n1 3",
+        "1 1\n2 1\n3 1",
+        "1 1\n2 1\n2 2\n3 1\n3 2\n3 3"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "A `break` runs in the inner loop of two nested loops. What does it stop?",
+      "options": [
+        "Both loops",
+        "Only the inner loop, and the outer one goes on with its next value",
+        "Only the outer loop",
+        "The whole program"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "a, b = (3, 7)\nprint(b - a)",
+      "options": ["4", "-4", "37", "(3, 7)"],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "What is the difference between a list and a tuple?",
+      "options": [
+        "A tuple can't be changed once it's made, a list can",
+        "A tuple can hold only numbers",
+        "A list can't be looped over",
+        "A tuple keeps each value only once"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Which line adds \"Mira\" to the set `crew`?",
+      "options": [
+        "crew.append(\"Mira\")",
+        "crew.add(\"Mira\")",
+        "crew = crew + \"Mira\"",
+        "crew[\"Mira\"] = True"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "banned = {\"Sonny\", \"Diaz\"}\nfor name in [\"Tommy\", \"Diaz\", \"Lance\"]:\n    if name in banned:\n        print(name)",
+      "options": ["Tommy\nLance", "Sonny\nDiaz", "Diaz", "Tommy\nDiaz\nLance"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "What does `[n * 2 for n in [1, 2, 3]]` give?",
+      "options": ["[1, 2, 3, 1, 2, 3]", "12", "[1, 2, 3, 2, 4, 6]", "[2, 4, 6]"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "words = [\"sun\", \"moon\", \"star\"]\nprint([w.upper() for w in words if len(w) == 4])",
+      "options": ["['MOON', 'STAR']", "['moon', 'star']", "['SUN']", "['SUN', 'MOON', 'STAR']"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "In `[score for name, score in team_a if score > 80]`, what does `if score > 80` do?",
+      "options": [
+        "It stops the list at the first score of 80 or less",
+        "It keeps only the scores above 80",
+        "It turns every score into 80",
+        "It counts the scores above 80"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "In the mission's Matches step, both teams have 4 members. How many times does `if score_a == score_b:` run?",
+      "options": ["4", "8", "16", "2"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "In the mission, why is \"Lance and Quinn both scored 72\" printed before \"Cortez and Tommy both scored 91\"?",
+      "options": [
+        "Because 72 is smaller than 91",
+        "Because Quinn comes before Tommy in team B",
+        "Because pairs are printed in alphabetical order",
+        "Because Lance comes before Cortez in team A, the outer loop"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "pairs = [(\"a\", 1), (\"b\", 2)]\nfor letter, number in pairs:\n    print(number, letter)",
+      "options": ["1 a\n2 b", "a 1\nb 2", "('a', 1)\n('b', 2)", "1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Why check whether a name was already seen with a set, not a list?",
+      "options": [
+        "A set can hold more names",
+        "`in` is much faster on a set, and a set keeps each name once",
+        "Only a set can be checked with `in`",
+        "A list forgets its elements at the end of a loop"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "for i in range(1, 4):\n    for j in range(i):\n        print(i, end=\"\")\n    print()",
+      "options": ["1\n12\n123", "123\n123\n123", "111\n22\n3", "1\n22\n333"],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "player = (\"Tommy Vercetti\", 100, \"Vice City\")\nprint(len(player))",
+      "options": ["3", "14", "1", "It stops with an error"],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "scores = [70, 85, 70, 90]\nprint(len(set(scores)))",
+      "options": ["4", "2", "3", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "nums = [1, 2, 3, 4, 5, 6]\nprint([n for n in nums if n % 2 == 1])",
+      "options": ["[2, 4, 6]", "[True, False, True, False, True, False]", "[1, 3, 5]", "[1, 2, 3]"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "Which list comprehension makes the same list as this loop?",
+      "code": "passing = []\nfor name, score in team:\n    if score >= 50:\n        passing.append(name)",
+      "options": [
+        "[score for name, score in team if score >= 50]",
+        "[name for name, score in team if score >= 50]",
+        "[name for name, score in team]",
+        "[name for name in team if name >= 50]"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "a = [(\"Ana\", 7), (\"Rex\", 5)]\nb = [(\"Kai\", 5), (\"Zoe\", 7)]\nsame = 0\nfor x, s1 in a:\n    for y, s2 in b:\n        if s1 == s2:\n            same = same + 1\nprint(same)",
+      "options": ["4", "0", "2", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "Why does the solution write `team_b_names = set()` and not `team_b_names = {}`?",
+      "options": [
+        "{} makes an empty dictionary, not a set",
+        "{} can't be empty",
+        "set() keeps the names in the order they came",
+        "Both make an empty set, set() just reads better"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "seen = set()\nfor name in [\"Tommy\", \"Lance\", \"Tommy\", \"Mira\", \"Lance\"]:\n    if name in seen:\n        print(name)\n    seen.add(name)",
+      "options": ["Tommy\nLance\nMira", "Tommy", "Lance\nTommy", "Tommy\nLance"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "rds-both",
+      "kind": "prints",
+      "code": "team_a = {{a}}\nteam_b = {{b}}\nnames_b = set()\nfor name, score in team_b:\n    names_b.add(name)\nfor name, score in team_a:\n    if name in names_b:\n        print(name)",
+      "values": [
+        {
+          "a": "[(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91)]",
+          "b": "[(\"Mira\", 88), (\"Lance\", 65), (\"Tommy\", 91)]"
+        },
+        {
+          "a": "[(\"Ana\", 60), (\"Rex\", 75), (\"Kai\", 90)]",
+          "b": "[(\"Kai\", 70), (\"Zoe\", 80), (\"Ana\", 55)]"
+        },
+        {
+          "a": "[(\"Phil\", 40), (\"Sonny\", 95), (\"Mia\", 66)]",
+          "b": "[(\"Mia\", 81), (\"Ken\", 77), (\"Nova\", 59)]"
+        },
+        {
+          "a": "[(\"Zoe\", 88), (\"Ben\", 52), (\"Cara\", 73)]",
+          "b": "[(\"Cara\", 91), (\"Ben\", 64), (\"Max\", 70)]"
+        }
+      ],
+      "mistakes": [
+        ["if name in names_b", "if name not in names_b"],
+        ["        print(name)", "        print(score)"],
+        ["for name, score in team_a:", "for name, score in team_b:"],
+        ["names_b.add(name)", "names_b.add(score)"]
+      ],
+      "text": "What does this print?"
+    },
+    {
+      "id": "rds-high",
+      "kind": "prints",
+      "code": "team = {{t}}\nhigh = [score for name, score in team if score > {{lim}}]\nprint(high)",
+      "values": [
+        {
+          "t": "[(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91), (\"Phil\", 60)]",
+          "lim": 80
+        },
+        {
+          "t": "[(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95), (\"Zoe\", 70)]",
+          "lim": 65
+        },
+        {
+          "t": "[(\"Mia\", 50), (\"Ben\", 99), (\"Cara\", 75), (\"Max\", 81)]",
+          "lim": 75
+        },
+        {
+          "t": "[(\"Nova\", 33), (\"Ken\", 90), (\"Sonny\", 67), (\"Mira\", 88)]",
+          "lim": 60
+        }
+      ],
+      "mistakes": [
+        ["[score for", "[name for"],
+        [" if score > {{lim}}]", "]"],
+        ["score > {{lim}}", "score < {{lim}}"],
+        ["score > {{lim}}", "score >= {{lim}}"]
+      ],
+      "text": "What does this print?"
+    },
+    {
+      "id": "rds-system",
+      "kind": "prints",
+      "code": "system = (\"{{n}}\", {{d}}, {{p}})\nname, distance, planets = system\nprint(f\"{name}: {distance} ly, {planets} planets\")",
+      "values": [
+        {
+          "n": "Sol",
+          "d": 0,
+          "p": 8
+        },
+        {
+          "n": "Alpha",
+          "d": 4,
+          "p": 3
+        },
+        {
+          "n": "Vega",
+          "d": 25,
+          "p": 5
+        },
+        {
+          "n": "Sirius",
+          "d": 9,
+          "p": 2
+        }
+      ],
+      "mistakes": [
+        ["name, distance, planets =", "name, planets, distance ="],
+        ["print(f\"{name}: {distance} ly, {planets} planets\")", "print(system)"],
+        ["{distance} ly", "{len(system)} ly"],
+        ["{planets} planets", "{system[1]} planets"]
+      ],
+      "text": "What does this print?"
+    },
+    {
+      "id": "rds-pairs",
+      "kind": "prints",
+      "code": "count = 0\nfor a in range(1, {{n}}):\n    for b in range(1, {{m}}):\n        if a + b == {{s}}:\n            count = count + 1\nprint(count)",
+      "values": [
+        {
+          "n": 4,
+          "m": 4,
+          "s": 5
+        },
+        {
+          "n": 5,
+          "m": 4,
+          "s": 6
+        },
+        {
+          "n": 4,
+          "m": 6,
+          "s": 7
+        },
+        {
+          "n": 6,
+          "m": 6,
+          "s": 8
+        }
+      ],
+      "mistakes": [
+        ["count = count + 1", "count = 1"],
+        ["if a + b == {{s}}:", "if a + b > {{s}}:"],
+        ["for b in range(1, {{m}}):", "for b in range(a, {{m}}):"],
+        ["if a + b == {{s}}:", "if a == b:"],
+        ["if a + b == {{s}}:", "if a + b != {{s}}:"],
+        ["\nprint(count)", "\n    print(count)"]
+      ],
+      "text": "What does this print?"
+    },
+    {
+      "id": "rds-rect",
+      "kind": "prints",
+      "code": "for row in range({{r}}):\n    for col in range({{c}}):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "r": 2,
+          "c": 4,
+          "ch": "#"
+        },
+        {
+          "r": 3,
+          "c": 2,
+          "ch": "*"
+        },
+        {
+          "r": 2,
+          "c": 3,
+          "ch": "@"
+        },
+        {
+          "r": 4,
+          "c": 1,
+          "ch": "+"
+        }
+      ],
+      "mistakes": [
+        ["range({{c}})", "range(row + 1)"],
+        ["    print()", "        print()"],
+        ["print(\"{{ch}}\", end=\"\")", "print(\"{{ch}}\")"],
+        ["range({{r}})", "range({{c}})"]
+      ],
+      "text": "What does this print?"
+    },
+    {
+      "id": "rds-set-len",
+      "kind": "prints",
+      "code": "signals = [{{l}}]\nunique = set(signals)\nprint(f\"Total: {len(signals)}\")\nprint(f\"Unique: {len(unique)}\")",
+      "values": [
+        {
+          "l": "\"A1\", \"B2\", \"A1\", \"C3\", \"A1\""
+        },
+        {
+          "l": "\"X\", \"Y\", \"X\", \"Y\""
+        },
+        {
+          "l": "\"D4\", \"D4\", \"E5\", \"F6\", \"G7\", \"E5\""
+        },
+        {
+          "l": "\"K9\", \"L1\", \"K9\""
+        }
+      ],
+      "mistakes": [
+        ["{len(unique)}", "{len(signals)}"],
+        ["unique = set(signals)", "unique = signals"],
+        ["print(f\"Total: {len(signals)}\")\n", ""],
+        ["{len(signals)}\")\n", "{len(signals) - len(unique)}\")\n"]
+      ],
+      "text": "What does this print?"
+    },
+    {
+      "id": "rds-remove",
+      "kind": "prints",
+      "code": "crew = {\"{{a}}\", \"{{b}}\", \"{{c}}\"}\ncrew.add(\"{{d}}\")\ncrew.remove(\"{{a}}\")\nfor name in [\"{{x}}\", \"{{y}}\", \"{{z}}\"]:\n    print(name in crew)",
+      "values": [
+        {
+          "a": "Tommy",
+          "b": "Lance",
+          "c": "Cortez",
+          "d": "Mira",
+          "x": "Tommy",
+          "y": "Lance",
+          "z": "Mira"
+        },
+        {
+          "a": "Sonny",
+          "b": "Diaz",
+          "c": "Ken",
+          "d": "Phil",
+          "x": "Phil",
+          "y": "Sonny",
+          "z": "Ken"
+        },
+        {
+          "a": "Ana",
+          "b": "Rex",
+          "c": "Kai",
+          "d": "Zoe",
+          "x": "Rex",
+          "y": "Zoe",
+          "z": "Ana"
+        },
+        {
+          "a": "Ben",
+          "b": "Cara",
+          "c": "Max",
+          "d": "Nova",
+          "x": "Max",
+          "y": "Ben",
+          "z": "Nova"
+        }
+      ],
+      "mistakes": [
+        ["crew.remove(\"{{a}}\")\n", ""],
+        ["crew.add(\"{{d}}\")\n", ""],
+        ["crew.remove(\"{{a}}\")", "crew.remove(\"{{b}}\")"],
+        ["print(name in crew)", "print(name not in crew)"]
+      ],
+      "text": "What does this print?"
+    },
+    {
+      "id": "rds-comp",
+      "kind": "prints",
+      "code": "nums = [{{l}}]\nresult = [n {{op}} {{k}} for n in nums if n {{cmp}} {{lim}}]\nprint(result)",
+      "values": [
+        {
+          "l": "3, 8, 12, 5, 20",
+          "op": "*",
+          "k": 2,
+          "cmp": ">",
+          "lim": 6
+        },
+        {
+          "l": "1, 2, 3, 4, 5, 6",
+          "op": "*",
+          "k": 10,
+          "cmp": "<",
+          "lim": 4
+        },
+        {
+          "l": "10, 25, 5, 40, 15",
+          "op": "+",
+          "k": 1,
+          "cmp": ">=",
+          "lim": 15
+        },
+        {
+          "l": "7, 14, 21, 28",
+          "op": "-",
+          "k": 7,
+          "cmp": ">",
+          "lim": 10
+        }
+      ],
+      "mistakes": [
+        [" if n {{cmp}} {{lim}}]", "]"],
+        ["[n {{op}} {{k}} for", "[n for"],
+        ["if n {{cmp}} {{lim}}", "if n == {{lim}}"],
+        ["print(result)", "print(nums)"]
+      ],
+      "text": "What does this print?"
+    },
+    {
+      "id": "rds-which-names",
+      "kind": "which-program",
+      "code": "team = {{t}}\nnames = [name for name, score in team if score >= {{lim}}]\nprint(names)",
+      "values": [
+        {
+          "t": "[(\"Tommy\", 85), (\"Lance\", 50), (\"Cortez\", 40)]",
+          "lim": 50
+        },
+        {
+          "t": "[(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]",
+          "lim": 70
+        },
+        {
+          "t": "[(\"Mia\", 60), (\"Ben\", 45), (\"Zoe\", 99)]",
+          "lim": 60
+        }
+      ],
+      "mistakes": [
+        ["score >= {{lim}}", "score < {{lim}}"],
+        ["[name for", "[score for"],
+        ["score >= {{lim}}", "score > {{lim}}"],
+        ["print(names)", "print(team)"]
+      ],
+      "text": "Which program shows this?"
+    },
+    {
+      "id": "rds-which-break",
+      "kind": "which-program",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{m}}):\n        if j == {{k}}:\n            break\n        print(i, j)",
+      "values": [
+        {
+          "n": 3,
+          "m": 4,
+          "k": 3
+        },
+        {
+          "n": 4,
+          "m": 3,
+          "k": 2
+        },
+        {
+          "n": 3,
+          "m": 5,
+          "k": 4
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["if j == {{k}}:", "if i == {{k}}:"],
+        ["            break\n        print(i, j)", "            break\n    print(i, j)"],
+        ["for j in range(1, {{m}}):", "for j in range(1, {{n}}):"],
+        ["print(i, j)", "print(j, i)"]
+      ],
+      "text": "Which program shows this?"
+    },
+    {
+      "id": "rds-gap-add",
+      "kind": "missing-line",
+      "code": "seen = set()\nfor name in [{{l}}]:\n    ___\nprint(len(seen))",
+      "values": [
+        {
+          "l": "\"Tommy\", \"Lance\", \"Tommy\", \"Mira\""
+        },
+        {
+          "l": "\"A1\", \"B2\", \"A1\", \"B2\", \"C3\""
+        },
+        {
+          "l": "\"Kai\", \"Kai\", \"Zoe\", \"Kai\""
+        },
+        {
+          "l": "\"Rex\", \"Zoe\", \"Ana\", \"Zoe\", \"Rex\", \"Max\""
+        }
+      ],
+      "answer": "seen.add(name)",
+      "wrong": ["seen.append(name)", "seen = {name}", "print(name)", "seen.add(len(name))"],
+      "text": "Which line goes in the gap so the program prints this?"
+    },
+    {
+      "id": "rds-gap-row",
+      "kind": "missing-line",
+      "code": "for row in range({{r}}):\n    for col in range({{c}}):\n        print(col, end=\"\")\n    ___",
+      "values": [
+        {
+          "r": 2,
+          "c": 3
+        },
+        {
+          "r": 3,
+          "c": 2
+        },
+        {
+          "r": 2,
+          "c": 4
+        },
+        {
+          "r": 3,
+          "c": 4
+        }
+      ],
+      "answer": "print()",
+      "wrong": ["print(col)", "continue", "print(row)", "break"],
+      "text": "Which line goes in the gap so the program prints this?"
+    },
+    {
+      "id": "rds-gap-unpack",
+      "kind": "missing-line",
+      "code": "system = (\"{{n}}\", {{d}}, {{p}})\n___\nprint(f\"{name} has {planets} planets\")",
+      "values": [
+        {
+          "n": "Sol",
+          "d": 0,
+          "p": 8
+        },
+        {
+          "n": "Alpha",
+          "d": 4,
+          "p": 3
+        },
+        {
+          "n": "Vega",
+          "d": 25,
+          "p": 5
+        },
+        {
+          "n": "Rigel",
+          "d": 860,
+          "p": 6
+        }
+      ],
+      "answer": "name, distance, planets = system",
+      "wrong": [
+        "name, planets, distance = system",
+        "name, planets = system",
+        "planets = system",
+        "system = name, distance, planets"
+      ],
+      "text": "Which line goes in the gap so the program prints this?"
+    },
+    {
+      "id": "rds-val-index",
+      "kind": "missing-value",
+      "code": "player = (\"{{n}}\", {{h}}, \"{{c}}\")\nprint(player[___])",
+      "values": [
+        {
+          "n": "Tommy",
+          "h": 100,
+          "c": "Vice City",
+          "i": 0
+        },
+        {
+          "n": "Lance",
+          "h": 80,
+          "c": "Miami",
+          "i": 2
+        },
+        {
+          "n": "Cortez",
+          "h": 65,
+          "c": "Havana",
+          "i": 1
+        },
+        {
+          "n": "Mira",
+          "h": 90,
+          "c": "Oslo",
+          "i": 2
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["0", "1", "2", "3"],
+      "text": "What goes in the gap so the program prints this?"
+    },
+    {
+      "id": "rds-val-range",
+      "kind": "missing-value",
+      "code": "count = 0\nfor i in range(___):\n    for j in range({{m}}):\n        count = count + 1\nprint(count)",
+      "values": [
+        {
+          "n": 3,
+          "m": 4,
+          "nm": 12,
+          "n1": 4,
+          "nl": 2
+        },
+        {
+          "n": 2,
+          "m": 5,
+          "nm": 10,
+          "n1": 3,
+          "nl": 1
+        },
+        {
+          "n": 4,
+          "m": 3,
+          "nm": 12,
+          "n1": 5,
+          "nl": 3
+        },
+        {
+          "n": 5,
+          "m": 2,
+          "nm": 10,
+          "n1": 6,
+          "nl": 4
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{nm}}", "{{m}}", "{{n1}}", "{{nl}}"],
+      "text": "What goes in the gap so the program prints this?"
+    },
+    {
+      "id": "rds-bad-unpack",
+      "kind": "wrong-line",
+      "code": "member = (\"{{n}}\", {{s}}, \"{{r}}\")\nname, score, rank = member\nprint(f\"Name: {name}\")\nprint(f\"Rank: {rank}\")\nprint(f\"Score: {score}\")",
+      "values": [
+        {
+          "n": "Tommy",
+          "s": 85,
+          "r": "captain"
+        },
+        {
+          "n": "Lance",
+          "s": 72,
+          "r": "pilot"
+        },
+        {
+          "n": "Mira",
+          "s": 90,
+          "r": "medic"
+        }
+      ],
+      "bug": ["member = (\"{{n}}\", {{s}}, \"{{r}}\")", "member = (\"{{n}}\", {{s}})"],
+      "text": "Which line stops this program from printing this?"
+    },
+    {
+      "id": "rds-bad-add",
+      "kind": "wrong-line",
+      "code": "seen = set()\nfor name in [{{l}}]:\n    if name in seen:\n        print(f\"Again: {name}\")\n    seen.add(name)\nprint(len(seen))",
+      "values": [
+        {
+          "l": "\"Tommy\", \"Lance\", \"Tommy\""
+        },
+        {
+          "l": "\"A1\", \"B2\", \"B2\", \"C3\""
+        },
+        {
+          "l": "\"Kai\", \"Zoe\", \"Kai\", \"Kai\""
+        }
+      ],
+      "bug": ["seen.add(name)", "seen.append(name)"],
+      "text": "Which line stops this program from printing this?"
+    },
+    {
+      "id": "rds-bad-table",
+      "kind": "wrong-line",
+      "code": "for i in range(1, {{n}}):\n    for j in range(1, {{n}}):\n        print(i * j, end=\"\")\n    print()",
+      "values": [
+        {
+          "n": 3
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 5
+        }
+      ],
+      "bug": ["    print()", "    print(i)"],
+      "text": "Which line stops this program from printing this?"
+    },
+    {
+      "id": "rds-bad-comp",
+      "kind": "wrong-line",
+      "code": "team = {{t}}\nnames = [name for name, score in team if score > {{lim}}]\nprint(len(names))\nprint(names)",
+      "values": [
+        {
+          "t": "[(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91)]",
+          "lim": 80
+        },
+        {
+          "t": "[(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95)]",
+          "lim": 65
+        },
+        {
+          "t": "[(\"Mia\", 50), (\"Ben\", 99), (\"Cara\", 75)]",
+          "lim": 60
+        }
+      ],
+      "bug": ["[name for", "[score for"],
+      "text": "Which line stops this program from printing this?"
+    }
+  ]
+}

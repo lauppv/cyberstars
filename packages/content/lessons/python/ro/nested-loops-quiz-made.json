@@ -1,0 +1,722 @@
+{
+  "note": "Made by npm run make:quiz from the templates in nested-loops-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "nl-pairs-cd7672",
+      "text": "Ce afișează?",
+      "code": "echipe = [\"Sharks\", \"Bears\"]\njucatori = [\"Ana\", \"Rex\"]\nfor echipa in echipe:\n    for jucator in jucatori:\n        print(f\"{jucator} joaca pentru {echipa}\")",
+      "options": [
+        "Ana joaca pentru Sharks\nRex joaca pentru Sharks\nAna joaca pentru Bears\nRex joaca pentru Bears",
+        "Ana joaca pentru Sharks\nAna joaca pentru Bears\nRex joaca pentru Sharks\nRex joaca pentru Bears",
+        "Sharks joaca pentru Ana\nSharks joaca pentru Rex\nBears joaca pentru Ana\nBears joaca pentru Rex",
+        "{jucator} joaca pentru {echipa}\n{jucator} joaca pentru {echipa}\n{jucator} joaca pentru {echipa}\n{jucator} joaca pentru {echipa}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-pairs-9fbbe9",
+      "text": "Ce afișează?",
+      "code": "zile = [\"luni\", \"marti\"]\npiloti = [\"Kai\", \"Mia\", \"Zoe\"]\nfor zi in zile:\n    for pilot in piloti:\n        print(f\"{pilot} zboara {zi}\")",
+      "options": [
+        "Kai zboara luni\nMia zboara luni\nZoe zboara luni\nKai zboara marti\nMia zboara marti\nZoe zboara marti",
+        "Kai zboara luni\nKai zboara marti\nMia zboara luni\nMia zboara marti\nZoe zboara luni\nZoe zboara marti",
+        "luni zboara Kai\nluni zboara Mia\nluni zboara Zoe\nmarti zboara Kai\nmarti zboara Mia\nmarti zboara Zoe",
+        "{pilot} zboara {zi}\n{pilot} zboara {zi}\n{pilot} zboara {zi}\n{pilot} zboara {zi}\n{pilot} zboara {zi}\n{pilot} zboara {zi}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-pairs-2e47ca",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Venus\"]\nnave = [\"Nova\", \"Comet\"]\nfor planeta in planete:\n    for nava in nave:\n        print(f\"{nava} aterizeaza pe {planeta}\")",
+      "options": [
+        "Nova aterizeaza pe Marte\nComet aterizeaza pe Marte\nNova aterizeaza pe Venus\nComet aterizeaza pe Venus",
+        "Nova aterizeaza pe Marte\nNova aterizeaza pe Venus\nComet aterizeaza pe Marte\nComet aterizeaza pe Venus",
+        "Marte aterizeaza pe Nova\nMarte aterizeaza pe Comet\nVenus aterizeaza pe Nova\nVenus aterizeaza pe Comet",
+        "{nava} aterizeaza pe {planeta}\n{nava} aterizeaza pe {planeta}\n{nava} aterizeaza pe {planeta}\n{nava} aterizeaza pe {planeta}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-pairs-219ee4",
+      "text": "Ce afișează?",
+      "code": "camere = [\"A1\", \"B2\"]\npaznici = [\"Lance\", \"Phil\"]\nfor camera in camere:\n    for paznic in paznici:\n        print(f\"{paznic} verifica {camera}\")",
+      "options": [
+        "Lance verifica A1\nPhil verifica A1\nLance verifica B2\nPhil verifica B2",
+        "Lance verifica A1\nLance verifica B2\nPhil verifica A1\nPhil verifica B2",
+        "A1 verifica Lance\nA1 verifica Phil\nB2 verifica Lance\nB2 verifica Phil",
+        "{paznic} verifica {camera}\n{paznic} verifica {camera}\n{paznic} verifica {camera}\n{paznic} verifica {camera}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-pairs-1d792e",
+      "text": "Ce afișează?",
+      "code": "niveluri = [\"usor\", \"greu\"]\njucatori = [\"Tommy\", \"Lance\", \"Phil\"]\nfor nivel in niveluri:\n    for jucator in jucatori:\n        print(f\"{jucator} joaca pe {nivel}\")",
+      "options": [
+        "Tommy joaca pe usor\nLance joaca pe usor\nPhil joaca pe usor\nTommy joaca pe greu\nLance joaca pe greu\nPhil joaca pe greu",
+        "Tommy joaca pe usor\nTommy joaca pe greu\nLance joaca pe usor\nLance joaca pe greu\nPhil joaca pe usor\nPhil joaca pe greu",
+        "usor joaca pe Tommy\nusor joaca pe Lance\nusor joaca pe Phil\ngreu joaca pe Tommy\ngreu joaca pe Lance\ngreu joaca pe Phil",
+        "{jucator} joaca pe {nivel}\n{jucator} joaca pe {nivel}\n{jucator} joaca pe {nivel}\n{jucator} joaca pe {nivel}\n{jucator} joaca pe {nivel}\n{jucator} joaca pe {nivel}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-count-09dc32",
+      "text": "Ce afișează?",
+      "code": "contor = 0\nfor i in range(3):\n    for j in range(4):\n        contor = contor + 1\nprint(contor)",
+      "options": ["12", "18", "4\n8\n12", "8"],
+      "answer": 0
+    },
+    {
+      "id": "nl-count-7d4ab2",
+      "text": "Ce afișează?",
+      "code": "runde = 0\nfor i in range(2):\n    for j in range(5):\n        runde = runde + 1\nprint(runde)",
+      "options": ["10", "20", "5\n10", "5"],
+      "answer": 0
+    },
+    {
+      "id": "nl-count-05ec4e",
+      "text": "Ce afișează?",
+      "code": "mutari = 0\nfor i in range(4):\n    for j in range(6):\n        mutari = mutari + 1\nprint(mutari)",
+      "options": ["24", "60", "6\n12\n18\n24", "18"],
+      "answer": 0
+    },
+    {
+      "id": "nl-count-988b60",
+      "text": "Ce afișează?",
+      "code": "pasi = 0\nfor i in range(5):\n    for j in range(3):\n        pasi = pasi + 1\nprint(pasi)",
+      "options": ["15", "3\n6\n9\n12\n15", "12", "16"],
+      "answer": 0
+    },
+    {
+      "id": "nl-count-81cdea",
+      "text": "Ce afișează?",
+      "code": "total = 0\nfor i in range(6):\n    for j in range(2):\n        total = total + 1\nprint(total)",
+      "options": ["12", "6", "2\n4\n6\n8\n10\n12", "10"],
+      "answer": 0
+    },
+    {
+      "id": "nl-break-e58abf",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 5):\n        if j == 3:\n            break\n        print(f\"{i} {j}\")",
+      "options": [
+        "1 1\n1 2\n2 1\n2 2\n3 1\n3 2",
+        "1 1\n1 2\n1 4\n2 1\n2 2\n2 4\n3 1\n3 2\n3 4",
+        "1 1\n1 2\n1 3\n1 4\n2 1\n2 2\n2 3\n2 4",
+        "1 3\n2 3\n3 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-break-4bb619",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 6):\n        if j == 4:\n            break\n        print(f\"{i} {j}\")",
+      "options": [
+        "1 1\n1 2\n1 3\n2 1\n2 2\n2 3",
+        "1 1\n1 2\n1 3\n1 5\n2 1\n2 2\n2 3\n2 5",
+        "1 1\n1 2\n1 3\n1 4\n1 5\n2 1\n2 2\n2 3\n2 4\n2 5",
+        "1 4\n2 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-break-d4652a",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 5):\n        if j == 2:\n            break\n        print(f\"{i} {j}\")",
+      "options": ["1 1\n2 1", "1 1\n1 3\n1 4\n2 1\n2 3\n2 4", "1 1\n1 2\n1 3\n1 4", "1 2\n2 2"],
+      "answer": 0
+    },
+    {
+      "id": "nl-break-4a2cc4",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 5):\n    for j in range(1, 4):\n        if j == 2:\n            break\n        print(f\"{i} {j}\")",
+      "options": [
+        "1 1\n2 1\n3 1\n4 1",
+        "1 1\n1 3\n2 1\n2 3\n3 1\n3 3\n4 1\n4 3",
+        "1 1\n1 2\n1 3\n3 1\n3 2\n3 3\n4 1\n4 2\n4 3",
+        "1 2\n2 2\n3 2\n4 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-break-b99830",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 5):\n        if j == 3:\n            break\n        print(f\"{i} {j}\")",
+      "options": [
+        "1 1\n1 2\n2 1\n2 2",
+        "1 1\n1 2\n1 4\n2 1\n2 2\n2 4",
+        "1 1\n1 2\n1 3\n1 4\n2 1\n2 2\n2 3\n2 4",
+        "1 3\n2 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-rect-5cf130",
+      "text": "Ce afișează?",
+      "code": "for rand in range(2):\n    for col in range(5):\n        print(\"#\", end=\"\")\n    print()",
+      "options": [
+        "#####\n#####",
+        "#\n#\n#\n#\n#\n\n#\n#\n#\n#\n#",
+        "#\n#\n#\n#\n#\n#\n#\n#\n#\n#",
+        "##\n##"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-rect-62626c",
+      "text": "Ce afișează?",
+      "code": "for rand in range(3):\n    for stea in range(4):\n        print(\"*\", end=\"\")\n    print()",
+      "options": [
+        "****\n****\n****",
+        "*\n*\n*\n*\n\n*\n*\n*\n*\n\n*\n*\n*\n*",
+        "*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*",
+        "***\n***\n***"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-rect-368809",
+      "text": "Ce afișează?",
+      "code": "for rand in range(4):\n    for col in range(2):\n        print(\"=\", end=\"\")\n    print()",
+      "options": [
+        "==\n==\n==\n==",
+        "=\n=\n\n=\n=\n\n=\n=\n\n=\n=",
+        "=\n=\n=\n=\n=\n=\n=\n=",
+        "====\n====\n====\n===="
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-rect-d8ac62",
+      "text": "Ce afișează?",
+      "code": "for rand in range(2):\n    for col in range(3):\n        print(\"o\", end=\"\")\n    print()",
+      "options": ["ooo\nooo", "o\no\no\n\no\no\no", "o\no\no\no\no\no", "oo\noo"],
+      "answer": 0
+    },
+    {
+      "id": "nl-rect-b5167d",
+      "text": "Ce afișează?",
+      "code": "for linie in range(3):\n    for col in range(6):\n        print(\"-\", end=\"\")\n    print()",
+      "options": [
+        "------\n------\n------",
+        "-\n-\n-\n-\n-\n-\n\n-\n-\n-\n-\n-\n-\n\n-\n-\n-\n-\n-\n-",
+        "-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-",
+        "---\n---\n---"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-triangle-9e7b70",
+      "text": "Ce afișează?",
+      "code": "for rand in range(1, 4):\n    for stea in range(rand):\n        print(\"*\", end=\"\")\n    print()",
+      "options": ["*\n**\n***", "****\n****\n****", "**\n***", "**\n***\n****"],
+      "answer": 0
+    },
+    {
+      "id": "nl-triangle-0de9a8",
+      "text": "Ce afișează?",
+      "code": "for rand in range(1, 5):\n    for col in range(rand):\n        print(\"#\", end=\"\")\n    print()",
+      "options": [
+        "#\n##\n###\n####",
+        "#####\n#####\n#####\n#####",
+        "##\n###\n####",
+        "##\n###\n####\n#####"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-triangle-a97435",
+      "text": "Ce afișează?",
+      "code": "for rand in range(1, 3):\n    for col in range(rand):\n        print(\"o\", end=\"\")\n    print()",
+      "options": ["o\noo", "ooo\nooo", "oo", "oo\nooo"],
+      "answer": 0
+    },
+    {
+      "id": "nl-triangle-895796",
+      "text": "Ce afișează?",
+      "code": "for nivel in range(1, 6):\n    for col in range(nivel):\n        print(\"+\", end=\"\")\n    print()",
+      "options": [
+        "+\n++\n+++\n++++\n+++++",
+        "++++++\n++++++\n++++++\n++++++\n++++++",
+        "++\n+++\n++++\n+++++",
+        "++\n+++\n++++\n+++++\n++++++"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-triangle-59eef0",
+      "text": "Ce afișează?",
+      "code": "for rand in range(1, 5):\n    for col in range(rand):\n        print(\"^\", end=\"\")\n    print()",
+      "options": [
+        "^\n^^\n^^^\n^^^^",
+        "^^^^^\n^^^^^\n^^^^^\n^^^^^",
+        "^^\n^^^\n^^^^",
+        "^^\n^^^\n^^^^\n^^^^^"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-match-1fb22c",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\"Ana\", \"Rex\", \"Kai\"]\nfor a in jucatori:\n    for b in jucatori:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "options": [
+        "Ana-Rex\nAna-Kai\nRex-Ana\nRex-Kai\nKai-Ana\nKai-Rex",
+        "Rex-Ana\nKai-Ana\nKai-Rex",
+        "Ana-Ana\nRex-Rex\nKai-Kai",
+        "Ana-Kai\nRex-Kai\nKai-Kai"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-match-0b45c1",
+      "text": "Ce afișează?",
+      "code": "culori = [\"rosu\", \"albastru\"]\nfor a in culori:\n    for b in culori:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "options": [
+        "rosu-albastru\nalbastru-rosu",
+        "albastru-rosu",
+        "rosu-rosu\nalbastru-albastru",
+        "rosu-albastru\nalbastru-albastru"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-match-ee05b8",
+      "text": "Ce afișează?",
+      "code": "echipe = [\"A\", \"B\", \"C\"]\nfor a in echipe:\n    for b in echipe:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "options": [
+        "A-B\nA-C\nB-A\nB-C\nC-A\nC-B",
+        "B-A\nC-A\nC-B",
+        "A-A\nB-B\nC-C",
+        "A-C\nB-C\nC-C"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-match-c8d098",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Lance\"]\nfor a in echipaj:\n    for b in echipaj:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "options": [
+        "Tommy-Lance\nLance-Tommy",
+        "Lance-Tommy",
+        "Tommy-Tommy\nLance-Lance",
+        "Tommy-Lance\nLance-Lance"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-match-671834",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\"]\nfor a in planete:\n    for b in planete:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "options": [
+        "Marte-Venus\nMarte-Pamant\nVenus-Marte\nVenus-Pamant\nPamant-Marte\nPamant-Venus",
+        "Venus-Marte\nPamant-Marte\nPamant-Venus",
+        "Marte-Marte\nVenus-Venus\nPamant-Pamant",
+        "Marte-Pamant\nVenus-Pamant\nPamant-Pamant"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-sep-dfc879",
+      "text": "Care program afișează asta?",
+      "output": "A1\nA2\n--\nB1\nB2\n--",
+      "options": [
+        "for rand in [\"A\", \"B\"]:\n    for loc in [\"1\", \"2\"]:\n        print(rand + loc)\n    print(\"--\")",
+        "for rand in [\"A\", \"B\"]:\n    for loc in [\"1\", \"2\"]:\n        print(rand + loc)\n        print(\"--\")",
+        "for rand in [\"A\", \"B\"]:\n    for loc in [\"1\", \"2\"]:\n        print(rand + loc)\nprint(\"--\")",
+        "for rand in [\"A\", \"B\"]:\n    for loc in [\"1\", \"2\"]:\n        print(loc + rand)\n    print(\"--\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-sep-5b9165",
+      "text": "Care program afișează asta?",
+      "output": "S1\nS2\nS3\n***\nM1\nM2\nM3\n***",
+      "options": [
+        "for marime in [\"S\", \"M\"]:\n    for cod in [\"1\", \"2\", \"3\"]:\n        print(marime + cod)\n    print(\"***\")",
+        "for marime in [\"S\", \"M\"]:\n    for cod in [\"1\", \"2\", \"3\"]:\n        print(marime + cod)\n        print(\"***\")",
+        "for marime in [\"S\", \"M\"]:\n    for cod in [\"1\", \"2\", \"3\"]:\n        print(marime + cod)\nprint(\"***\")",
+        "for marime in [\"S\", \"M\"]:\n    for cod in [\"1\", \"2\", \"3\"]:\n        print(cod + marime)\n    print(\"***\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-sep-fabec6",
+      "text": "Care program afișează asta?",
+      "output": "1A\n1B\n----\n2A\n2B\n----\n3A\n3B\n----",
+      "options": [
+        "for etaj in [\"1\", \"2\", \"3\"]:\n    for camera in [\"A\", \"B\"]:\n        print(etaj + camera)\n    print(\"----\")",
+        "for etaj in [\"1\", \"2\", \"3\"]:\n    for camera in [\"A\", \"B\"]:\n        print(etaj + camera)\n        print(\"----\")",
+        "for etaj in [\"1\", \"2\", \"3\"]:\n    for camera in [\"A\", \"B\"]:\n        print(etaj + camera)\nprint(\"----\")",
+        "for etaj in [\"1\", \"2\", \"3\"]:\n    for camera in [\"A\", \"B\"]:\n        print(camera + etaj)\n    print(\"----\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-sep-aa89ce",
+      "text": "Care program afișează asta?",
+      "output": "Rosu1\nRosu2\n~~\nAlbastru1\nAlbastru2\n~~",
+      "options": [
+        "for echipa in [\"Rosu\", \"Albastru\"]:\n    for nr in [\"1\", \"2\"]:\n        print(echipa + nr)\n    print(\"~~\")",
+        "for echipa in [\"Rosu\", \"Albastru\"]:\n    for nr in [\"1\", \"2\"]:\n        print(echipa + nr)\n        print(\"~~\")",
+        "for echipa in [\"Rosu\", \"Albastru\"]:\n    for nr in [\"1\", \"2\"]:\n        print(echipa + nr)\nprint(\"~~\")",
+        "for echipa in [\"Rosu\", \"Albastru\"]:\n    for nr in [\"1\", \"2\"]:\n        print(nr + echipa)\n    print(\"~~\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-end-8c71ef",
+      "text": "Care program afișează asta?",
+      "output": "0123\n0123",
+      "options": [
+        "for rand in range(2):\n    for col in range(4):\n        print(col, end=\"\")\n    print()",
+        "for rand in range(2):\n    for col in range(4):\n        print(col)\n    print()",
+        "for rand in range(2):\n    for col in range(4):\n        print(col, end=\"\")\n        print()",
+        "for rand in range(2):\n    for col in range(4):\n        print(rand, end=\"\")\n    print()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-end-9bc094",
+      "text": "Care program afișează asta?",
+      "output": "012\n012\n012",
+      "options": [
+        "for rand in range(3):\n    for col in range(3):\n        print(col, end=\"\")\n    print()",
+        "for rand in range(3):\n    for col in range(3):\n        print(col)\n    print()",
+        "for rand in range(3):\n    for col in range(3):\n        print(col, end=\"\")\n        print()",
+        "for rand in range(3):\n    for col in range(3):\n        print(rand, end=\"\")\n    print()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-end-222b38",
+      "text": "Care program afișează asta?",
+      "output": "01\n01\n01",
+      "options": [
+        "for rand in range(3):\n    for col in range(2):\n        print(col, end=\"\")\n    print()",
+        "for rand in range(3):\n    for col in range(2):\n        print(col)\n    print()",
+        "for rand in range(3):\n    for col in range(2):\n        print(col, end=\"\")\n        print()",
+        "for rand in range(3):\n    for col in range(2):\n        print(rand, end=\"\")\n    print()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-end-0aef20",
+      "text": "Care program afișează asta?",
+      "output": "01234\n01234",
+      "options": [
+        "for rand in range(2):\n    for col in range(5):\n        print(col, end=\"\")\n    print()",
+        "for rand in range(2):\n    for col in range(5):\n        print(col)\n    print()",
+        "for rand in range(2):\n    for col in range(5):\n        print(col, end=\"\")\n        print()",
+        "for rand in range(2):\n    for col in range(5):\n        print(rand, end=\"\")\n    print()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-inner-aae54f",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 3):\n    ___\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n1 3\n2 1\n2 2\n2 3",
+      "options": [
+        "for j in range(1, 4):",
+        "for j in range(4):",
+        "for j in range(1, 3):",
+        "for i in range(1, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-inner-5d71ac",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 4):\n    ___\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n2 1\n2 2\n3 1\n3 2",
+      "options": [
+        "for j in range(1, 3):",
+        "for j in range(3):",
+        "for j in range(1, 4):",
+        "for i in range(1, 3):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-inner-8d57e0",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 3):\n    ___\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n1 3\n1 4\n2 1\n2 2\n2 3\n2 4",
+      "options": [
+        "for j in range(1, 5):",
+        "for j in range(5):",
+        "for j in range(1, 4):",
+        "for i in range(1, 5):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-inner-9a172d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 4):\n    ___\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n1 3\n2 1\n2 2\n2 3\n3 1\n3 2\n3 3",
+      "options": [
+        "for j in range(1, 4):",
+        "for j in range(4):",
+        "for j in range(1, 3):",
+        "for i in range(1, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-newline-4e11fd",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for rand in range(3):\n    for col in range(2):\n        print(\"#\", end=\"\")\n    ___",
+      "output": "##\n##\n##",
+      "options": ["print()", "print(\"#\")", "print(rand)", "print(\"#\", end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-newline-0e84eb",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for rand in range(2):\n    for stea in range(4):\n        print(\"*\", end=\"\")\n    ___",
+      "output": "****\n****",
+      "options": ["print()", "print(\"*\")", "print(rand)", "print(\"*\", end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-newline-feb728",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for rand in range(4):\n    for col in range(3):\n        print(\"o\", end=\"\")\n    ___",
+      "output": "ooo\nooo\nooo\nooo",
+      "options": ["print()", "print(\"o\")", "print(rand)", "print(\"o\", end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-newline-244a6a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for rand in range(2):\n    for col in range(6):\n        print(\"=\", end=\"\")\n    ___",
+      "output": "======\n======",
+      "options": ["print()", "print(\"=\")", "print(rand)", "print(\"=\", end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-break-a09879",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvinte = [\"racheta\", \"luna\", \"stea\"]\nfor cuvant in cuvinte:\n    for litera in cuvant:\n        if litera == \"a\":\n            ___\n        print(litera, end=\"\")\n    print()",
+      "output": "r\nlun\nste",
+      "options": ["break", "continue", "print()", "print(litera, end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-break-61930d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "fructe = [\"banana\", \"kiwi\"]\nfor fruct in fructe:\n    for litera in fruct:\n        if litera == \"n\":\n            ___\n        print(litera, end=\"\")\n    print()",
+      "output": "ba\nkiwi",
+      "options": ["break", "continue", "print()", "print(litera, end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-break-519200",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvinte = [\"salut\", \"mere\"]\nfor cuvant in cuvinte:\n    for litera in cuvant:\n        if litera == \"l\":\n            ___\n        print(litera, end=\"\")\n    print()",
+      "output": "sa\nmere",
+      "options": ["break", "continue", "print()", "print(litera, end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-break-b04898",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "fructe = [\"piersica\", \"prune\"]\nfor fruct in fructe:\n    for litera in fruct:\n        if litera == \"r\":\n            ___\n        print(litera, end=\"\")\n    print()",
+      "output": "pie\np",
+      "options": ["break", "continue", "print()", "print(litera, end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-width-de6bc0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for rand in range(3):\n    for col in range(___):\n        print(\"*\", end=\"\")\n    print()",
+      "output": "*****\n*****\n*****",
+      "options": ["5", "3", "6", "4"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-width-34d7bc",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for rand in range(2):\n    for col in range(___):\n        print(\"#\", end=\"\")\n    print()",
+      "output": "####\n####",
+      "options": ["4", "2", "5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-width-a8063e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for rand in range(4):\n    for col in range(___):\n        print(\"o\", end=\"\")\n    print()",
+      "output": "oo\noo\noo\noo",
+      "options": ["2", "4", "3", "1"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-width-2e4555",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for rand in range(5):\n    for col in range(___):\n        print(\"=\", end=\"\")\n    print()",
+      "output": "===\n===\n===\n===\n===",
+      "options": ["3", "5", "4", "2"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-break-a2c07a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 5):\n        if j == ___:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n2 1\n2 2",
+      "options": ["3", "2", "4", "1"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-break-7ffe2f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 5):\n        if j == ___:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n2 1\n3 1",
+      "options": ["2", "3", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-break-969363",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 6):\n        if j == ___:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n1 3\n2 1\n2 2\n2 3",
+      "options": ["4", "3", "5", "2"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-break-0b7a82",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 4):\n        if j == ___:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n2 1\n2 2",
+      "options": ["3", "2", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-start-520ce1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "runde = 1\nfor i in range(3):\n    for j in range(4):\n        runde = runde + 1\nprint(f\"Runde: {runde}\")",
+      "output": "Runde: 12",
+      "options": [
+        "runde = 1",
+        "runde = runde + 1",
+        "print(f\"Runde: {runde}\")",
+        "for i in range(3):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-start-f11196",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "mutari = 1\nfor i in range(2):\n    for j in range(5):\n        mutari = mutari + 1\nprint(f\"Mutari: {mutari}\")",
+      "output": "Mutari: 10",
+      "options": [
+        "mutari = 1",
+        "mutari = mutari + 1",
+        "print(f\"Mutari: {mutari}\")",
+        "for i in range(2):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-start-18f340",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "locuri = 1\nfor i in range(5):\n    for j in range(3):\n        locuri = locuri + 1\nprint(f\"Locuri: {locuri}\")",
+      "output": "Locuri: 15",
+      "options": [
+        "locuri = 1",
+        "locuri = locuri + 1",
+        "print(f\"Locuri: {locuri}\")",
+        "for i in range(5):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-end-cd3532",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for rand in range(2):\n    for col in range(4):\n        print(\"#\")\n    print()",
+      "output": "####\n####",
+      "options": ["print(\"#\")", "for col in range(4):", "for rand in range(2):", "print()"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-end-78a52e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for rand in range(3):\n    for stea in range(3):\n        print(\"*\")\n    print()",
+      "output": "***\n***\n***",
+      "options": ["print(\"*\")", "for stea in range(3):", "for rand in range(3):", "print()"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-end-49b867",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for rand in range(3):\n    for col in range(5):\n        print(\"o\")\n    print()",
+      "output": "ooooo\nooooo\nooooo",
+      "options": ["print(\"o\")", "for col in range(5):", "for rand in range(3):", "print()"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-sep-f2d0d1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 3):\n        print(f\"{i} x {j} = {i * j}\")\n        print(\"---\")",
+      "output": "1 x 1 = 1\n1 x 2 = 2\n---\n2 x 1 = 2\n2 x 2 = 4\n---",
+      "options": [
+        "print(\"---\")",
+        "print(f\"{i} x {j} = {i * j}\")",
+        "for j in range(1, 3):",
+        "for i in range(1, 3):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-sep-f57d93",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 3):\n        print(f\"{i} x {j} = {i * j}\")\n        print(\"===\")",
+      "output": "1 x 1 = 1\n1 x 2 = 2\n===\n2 x 1 = 2\n2 x 2 = 4\n===\n3 x 1 = 3\n3 x 2 = 6\n===",
+      "options": [
+        "print(\"===\")",
+        "print(f\"{i} x {j} = {i * j}\")",
+        "for j in range(1, 3):",
+        "for i in range(1, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-sep-858141",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 4):\n        print(f\"{i} x {j} = {i * j}\")\n        print(\"***\")",
+      "output": "1 x 1 = 1\n1 x 2 = 2\n1 x 3 = 3\n***\n2 x 1 = 2\n2 x 2 = 4\n2 x 3 = 6\n***",
+      "options": [
+        "print(\"***\")",
+        "print(f\"{i} x {j} = {i * j}\")",
+        "for j in range(1, 4):",
+        "for i in range(1, 3):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-cond-b9df6b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 5):\n        if i == 2:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n2 1\n3 1",
+      "options": ["if i == 2:", "for j in range(1, 5):", "break", "print(f\"{i} {j}\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-cond-3df5ab",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 4):\n        if i == 3:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n2 1\n2 2\n3 1\n3 2",
+      "options": ["if i == 3:", "for j in range(1, 4):", "break", "print(f\"{i} {j}\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-cond-e4b9b7",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range(1, 5):\n    for j in range(1, 4):\n        if i == 3:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n2 1\n2 2\n3 1\n3 2\n4 1\n4 2",
+      "options": ["if i == 3:", "for j in range(1, 4):", "for i in range(1, 5):", "break"],
+      "answer": 0
+    }
+  ]
+}

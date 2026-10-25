@@ -1,0 +1,717 @@
+{
+  "note": "Made by npm run make:quiz from the templates in nested-loops-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "nl-pairs-cd7672",
+      "text": "What does this print?",
+      "code": "teams = [\"Sharks\", \"Bears\"]\nplayers = [\"Ana\", \"Rex\"]\nfor team in teams:\n    for player in players:\n        print(f\"{player} plays for {team}\")",
+      "options": [
+        "Ana plays for Sharks\nRex plays for Sharks\nAna plays for Bears\nRex plays for Bears",
+        "Ana plays for Sharks\nAna plays for Bears\nRex plays for Sharks\nRex plays for Bears",
+        "Sharks plays for Ana\nSharks plays for Rex\nBears plays for Ana\nBears plays for Rex",
+        "{player} plays for {team}\n{player} plays for {team}\n{player} plays for {team}\n{player} plays for {team}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-pairs-9fbbe9",
+      "text": "What does this print?",
+      "code": "days = [\"Mon\", \"Tue\"]\npilots = [\"Kai\", \"Mia\", \"Zoe\"]\nfor day in days:\n    for pilot in pilots:\n        print(f\"{pilot} flies on {day}\")",
+      "options": [
+        "Kai flies on Mon\nMia flies on Mon\nZoe flies on Mon\nKai flies on Tue\nMia flies on Tue\nZoe flies on Tue",
+        "Kai flies on Mon\nKai flies on Tue\nMia flies on Mon\nMia flies on Tue\nZoe flies on Mon\nZoe flies on Tue",
+        "Mon flies on Kai\nMon flies on Mia\nMon flies on Zoe\nTue flies on Kai\nTue flies on Mia\nTue flies on Zoe",
+        "{pilot} flies on {day}\n{pilot} flies on {day}\n{pilot} flies on {day}\n{pilot} flies on {day}\n{pilot} flies on {day}\n{pilot} flies on {day}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-pairs-2e47ca",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\"]\nships = [\"Nova\", \"Comet\"]\nfor planet in planets:\n    for ship in ships:\n        print(f\"{ship} lands on {planet}\")",
+      "options": [
+        "Nova lands on Mars\nComet lands on Mars\nNova lands on Venus\nComet lands on Venus",
+        "Nova lands on Mars\nNova lands on Venus\nComet lands on Mars\nComet lands on Venus",
+        "Mars lands on Nova\nMars lands on Comet\nVenus lands on Nova\nVenus lands on Comet",
+        "{ship} lands on {planet}\n{ship} lands on {planet}\n{ship} lands on {planet}\n{ship} lands on {planet}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-pairs-219ee4",
+      "text": "What does this print?",
+      "code": "rooms = [\"A1\", \"B2\"]\nguards = [\"Lance\", \"Phil\"]\nfor room in rooms:\n    for guard in guards:\n        print(f\"{guard} checks {room}\")",
+      "options": [
+        "Lance checks A1\nPhil checks A1\nLance checks B2\nPhil checks B2",
+        "Lance checks A1\nLance checks B2\nPhil checks A1\nPhil checks B2",
+        "A1 checks Lance\nA1 checks Phil\nB2 checks Lance\nB2 checks Phil",
+        "{guard} checks {room}\n{guard} checks {room}\n{guard} checks {room}\n{guard} checks {room}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-pairs-1d792e",
+      "text": "What does this print?",
+      "code": "levels = [\"easy\", \"hard\"]\nplayers = [\"Tommy\", \"Lance\", \"Phil\"]\nfor level in levels:\n    for player in players:\n        print(f\"{player} plays on {level}\")",
+      "options": [
+        "Tommy plays on easy\nLance plays on easy\nPhil plays on easy\nTommy plays on hard\nLance plays on hard\nPhil plays on hard",
+        "Tommy plays on easy\nTommy plays on hard\nLance plays on easy\nLance plays on hard\nPhil plays on easy\nPhil plays on hard",
+        "easy plays on Tommy\neasy plays on Lance\neasy plays on Phil\nhard plays on Tommy\nhard plays on Lance\nhard plays on Phil",
+        "{player} plays on {level}\n{player} plays on {level}\n{player} plays on {level}\n{player} plays on {level}\n{player} plays on {level}\n{player} plays on {level}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-count-09dc32",
+      "text": "What does this print?",
+      "code": "count = 0\nfor i in range(3):\n    for j in range(4):\n        count = count + 1\nprint(count)",
+      "options": ["12", "18", "4\n8\n12", "8"],
+      "answer": 0
+    },
+    {
+      "id": "nl-count-7d4ab2",
+      "text": "What does this print?",
+      "code": "rounds = 0\nfor i in range(2):\n    for j in range(5):\n        rounds = rounds + 1\nprint(rounds)",
+      "options": ["10", "20", "5\n10", "5"],
+      "answer": 0
+    },
+    {
+      "id": "nl-count-05ec4e",
+      "text": "What does this print?",
+      "code": "moves = 0\nfor i in range(4):\n    for j in range(6):\n        moves = moves + 1\nprint(moves)",
+      "options": ["24", "60", "6\n12\n18\n24", "18"],
+      "answer": 0
+    },
+    {
+      "id": "nl-count-988b60",
+      "text": "What does this print?",
+      "code": "steps = 0\nfor i in range(5):\n    for j in range(3):\n        steps = steps + 1\nprint(steps)",
+      "options": ["15", "3\n6\n9\n12\n15", "12", "16"],
+      "answer": 0
+    },
+    {
+      "id": "nl-count-81cdea",
+      "text": "What does this print?",
+      "code": "total = 0\nfor i in range(6):\n    for j in range(2):\n        total = total + 1\nprint(total)",
+      "options": ["12", "6", "2\n4\n6\n8\n10\n12", "10"],
+      "answer": 0
+    },
+    {
+      "id": "nl-break-e58abf",
+      "text": "What does this print?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 5):\n        if j == 3:\n            break\n        print(f\"{i} {j}\")",
+      "options": [
+        "1 1\n1 2\n2 1\n2 2\n3 1\n3 2",
+        "1 1\n1 2\n1 4\n2 1\n2 2\n2 4\n3 1\n3 2\n3 4",
+        "1 1\n1 2\n1 3\n1 4\n2 1\n2 2\n2 3\n2 4",
+        "1 3\n2 3\n3 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-break-4bb619",
+      "text": "What does this print?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 6):\n        if j == 4:\n            break\n        print(f\"{i} {j}\")",
+      "options": [
+        "1 1\n1 2\n1 3\n2 1\n2 2\n2 3",
+        "1 1\n1 2\n1 3\n1 5\n2 1\n2 2\n2 3\n2 5",
+        "1 1\n1 2\n1 3\n1 4\n1 5\n2 1\n2 2\n2 3\n2 4\n2 5",
+        "1 4\n2 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-break-d4652a",
+      "text": "What does this print?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 5):\n        if j == 2:\n            break\n        print(f\"{i} {j}\")",
+      "options": ["1 1\n2 1", "1 1\n1 3\n1 4\n2 1\n2 3\n2 4", "1 1\n1 2\n1 3\n1 4", "1 2\n2 2"],
+      "answer": 0
+    },
+    {
+      "id": "nl-break-4a2cc4",
+      "text": "What does this print?",
+      "code": "for i in range(1, 5):\n    for j in range(1, 4):\n        if j == 2:\n            break\n        print(f\"{i} {j}\")",
+      "options": [
+        "1 1\n2 1\n3 1\n4 1",
+        "1 1\n1 3\n2 1\n2 3\n3 1\n3 3\n4 1\n4 3",
+        "1 1\n1 2\n1 3\n3 1\n3 2\n3 3\n4 1\n4 2\n4 3",
+        "1 2\n2 2\n3 2\n4 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-break-b99830",
+      "text": "What does this print?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 5):\n        if j == 3:\n            break\n        print(f\"{i} {j}\")",
+      "options": [
+        "1 1\n1 2\n2 1\n2 2",
+        "1 1\n1 2\n1 4\n2 1\n2 2\n2 4",
+        "1 1\n1 2\n1 3\n1 4\n2 1\n2 2\n2 3\n2 4",
+        "1 3\n2 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-rect-5cf130",
+      "text": "What does this print?",
+      "code": "for row in range(2):\n    for col in range(5):\n        print(\"#\", end=\"\")\n    print()",
+      "options": [
+        "#####\n#####",
+        "#\n#\n#\n#\n#\n\n#\n#\n#\n#\n#",
+        "#\n#\n#\n#\n#\n#\n#\n#\n#\n#",
+        "##\n##"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-rect-62626c",
+      "text": "What does this print?",
+      "code": "for row in range(3):\n    for star in range(4):\n        print(\"*\", end=\"\")\n    print()",
+      "options": [
+        "****\n****\n****",
+        "*\n*\n*\n*\n\n*\n*\n*\n*\n\n*\n*\n*\n*",
+        "*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*",
+        "***\n***\n***"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-rect-368809",
+      "text": "What does this print?",
+      "code": "for row in range(4):\n    for col in range(2):\n        print(\"=\", end=\"\")\n    print()",
+      "options": [
+        "==\n==\n==\n==",
+        "=\n=\n\n=\n=\n\n=\n=\n\n=\n=",
+        "=\n=\n=\n=\n=\n=\n=\n=",
+        "====\n====\n====\n===="
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-rect-d8ac62",
+      "text": "What does this print?",
+      "code": "for row in range(2):\n    for col in range(3):\n        print(\"o\", end=\"\")\n    print()",
+      "options": ["ooo\nooo", "o\no\no\n\no\no\no", "o\no\no\no\no\no", "oo\noo"],
+      "answer": 0
+    },
+    {
+      "id": "nl-rect-b5167d",
+      "text": "What does this print?",
+      "code": "for line in range(3):\n    for col in range(6):\n        print(\"-\", end=\"\")\n    print()",
+      "options": [
+        "------\n------\n------",
+        "-\n-\n-\n-\n-\n-\n\n-\n-\n-\n-\n-\n-\n\n-\n-\n-\n-\n-\n-",
+        "-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-",
+        "---\n---\n---"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-triangle-9e7b70",
+      "text": "What does this print?",
+      "code": "for row in range(1, 4):\n    for star in range(row):\n        print(\"*\", end=\"\")\n    print()",
+      "options": ["*\n**\n***", "****\n****\n****", "**\n***", "**\n***\n****"],
+      "answer": 0
+    },
+    {
+      "id": "nl-triangle-0de9a8",
+      "text": "What does this print?",
+      "code": "for row in range(1, 5):\n    for col in range(row):\n        print(\"#\", end=\"\")\n    print()",
+      "options": [
+        "#\n##\n###\n####",
+        "#####\n#####\n#####\n#####",
+        "##\n###\n####",
+        "##\n###\n####\n#####"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-triangle-a97435",
+      "text": "What does this print?",
+      "code": "for row in range(1, 3):\n    for col in range(row):\n        print(\"o\", end=\"\")\n    print()",
+      "options": ["o\noo", "ooo\nooo", "oo", "oo\nooo"],
+      "answer": 0
+    },
+    {
+      "id": "nl-triangle-895796",
+      "text": "What does this print?",
+      "code": "for level in range(1, 6):\n    for col in range(level):\n        print(\"+\", end=\"\")\n    print()",
+      "options": [
+        "+\n++\n+++\n++++\n+++++",
+        "++++++\n++++++\n++++++\n++++++\n++++++",
+        "++\n+++\n++++\n+++++",
+        "++\n+++\n++++\n+++++\n++++++"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-triangle-59eef0",
+      "text": "What does this print?",
+      "code": "for row in range(1, 5):\n    for col in range(row):\n        print(\"^\", end=\"\")\n    print()",
+      "options": [
+        "^\n^^\n^^^\n^^^^",
+        "^^^^^\n^^^^^\n^^^^^\n^^^^^",
+        "^^\n^^^\n^^^^",
+        "^^\n^^^\n^^^^\n^^^^^"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-match-1fb22c",
+      "text": "What does this print?",
+      "code": "players = [\"Ana\", \"Rex\", \"Kai\"]\nfor a in players:\n    for b in players:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "options": [
+        "Ana-Rex\nAna-Kai\nRex-Ana\nRex-Kai\nKai-Ana\nKai-Rex",
+        "Rex-Ana\nKai-Ana\nKai-Rex",
+        "Ana-Ana\nRex-Rex\nKai-Kai",
+        "Ana-Kai\nRex-Kai\nKai-Kai"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-match-0b45c1",
+      "text": "What does this print?",
+      "code": "colors = [\"red\", \"blue\"]\nfor a in colors:\n    for b in colors:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "options": ["red-blue\nblue-red", "blue-red", "red-red\nblue-blue", "red-blue\nblue-blue"],
+      "answer": 0
+    },
+    {
+      "id": "nl-match-ee05b8",
+      "text": "What does this print?",
+      "code": "teams = [\"A\", \"B\", \"C\"]\nfor a in teams:\n    for b in teams:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "options": [
+        "A-B\nA-C\nB-A\nB-C\nC-A\nC-B",
+        "B-A\nC-A\nC-B",
+        "A-A\nB-B\nC-C",
+        "A-C\nB-C\nC-C"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-match-c8d098",
+      "text": "What does this print?",
+      "code": "crew = [\"Tommy\", \"Lance\"]\nfor a in crew:\n    for b in crew:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "options": [
+        "Tommy-Lance\nLance-Tommy",
+        "Lance-Tommy",
+        "Tommy-Tommy\nLance-Lance",
+        "Tommy-Lance\nLance-Lance"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-match-671834",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\"]\nfor a in planets:\n    for b in planets:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "options": [
+        "Mars-Venus\nMars-Earth\nVenus-Mars\nVenus-Earth\nEarth-Mars\nEarth-Venus",
+        "Venus-Mars\nEarth-Mars\nEarth-Venus",
+        "Mars-Mars\nVenus-Venus\nEarth-Earth",
+        "Mars-Earth\nVenus-Earth\nEarth-Earth"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-sep-dfc879",
+      "text": "Which program shows this?",
+      "output": "A1\nA2\n--\nB1\nB2\n--",
+      "options": [
+        "for row in [\"A\", \"B\"]:\n    for seat in [\"1\", \"2\"]:\n        print(row + seat)\n    print(\"--\")",
+        "for row in [\"A\", \"B\"]:\n    for seat in [\"1\", \"2\"]:\n        print(row + seat)\n        print(\"--\")",
+        "for row in [\"A\", \"B\"]:\n    for seat in [\"1\", \"2\"]:\n        print(row + seat)\nprint(\"--\")",
+        "for row in [\"A\", \"B\"]:\n    for seat in [\"1\", \"2\"]:\n        print(seat + row)\n    print(\"--\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-sep-5b9165",
+      "text": "Which program shows this?",
+      "output": "S1\nS2\nS3\n***\nM1\nM2\nM3\n***",
+      "options": [
+        "for size in [\"S\", \"M\"]:\n    for code in [\"1\", \"2\", \"3\"]:\n        print(size + code)\n    print(\"***\")",
+        "for size in [\"S\", \"M\"]:\n    for code in [\"1\", \"2\", \"3\"]:\n        print(size + code)\n        print(\"***\")",
+        "for size in [\"S\", \"M\"]:\n    for code in [\"1\", \"2\", \"3\"]:\n        print(size + code)\nprint(\"***\")",
+        "for size in [\"S\", \"M\"]:\n    for code in [\"1\", \"2\", \"3\"]:\n        print(code + size)\n    print(\"***\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-sep-fabec6",
+      "text": "Which program shows this?",
+      "output": "1A\n1B\n----\n2A\n2B\n----\n3A\n3B\n----",
+      "options": [
+        "for floor in [\"1\", \"2\", \"3\"]:\n    for room in [\"A\", \"B\"]:\n        print(floor + room)\n    print(\"----\")",
+        "for floor in [\"1\", \"2\", \"3\"]:\n    for room in [\"A\", \"B\"]:\n        print(floor + room)\n        print(\"----\")",
+        "for floor in [\"1\", \"2\", \"3\"]:\n    for room in [\"A\", \"B\"]:\n        print(floor + room)\nprint(\"----\")",
+        "for floor in [\"1\", \"2\", \"3\"]:\n    for room in [\"A\", \"B\"]:\n        print(room + floor)\n    print(\"----\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-sep-aa89ce",
+      "text": "Which program shows this?",
+      "output": "Red1\nRed2\n~~\nBlue1\nBlue2\n~~",
+      "options": [
+        "for team in [\"Red\", \"Blue\"]:\n    for num in [\"1\", \"2\"]:\n        print(team + num)\n    print(\"~~\")",
+        "for team in [\"Red\", \"Blue\"]:\n    for num in [\"1\", \"2\"]:\n        print(team + num)\n        print(\"~~\")",
+        "for team in [\"Red\", \"Blue\"]:\n    for num in [\"1\", \"2\"]:\n        print(team + num)\nprint(\"~~\")",
+        "for team in [\"Red\", \"Blue\"]:\n    for num in [\"1\", \"2\"]:\n        print(num + team)\n    print(\"~~\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-end-8c71ef",
+      "text": "Which program shows this?",
+      "output": "0123\n0123",
+      "options": [
+        "for row in range(2):\n    for col in range(4):\n        print(col, end=\"\")\n    print()",
+        "for row in range(2):\n    for col in range(4):\n        print(col)\n    print()",
+        "for row in range(2):\n    for col in range(4):\n        print(col, end=\"\")\n        print()",
+        "for row in range(2):\n    for col in range(4):\n        print(row, end=\"\")\n    print()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-end-9bc094",
+      "text": "Which program shows this?",
+      "output": "012\n012\n012",
+      "options": [
+        "for row in range(3):\n    for col in range(3):\n        print(col, end=\"\")\n    print()",
+        "for row in range(3):\n    for col in range(3):\n        print(col)\n    print()",
+        "for row in range(3):\n    for col in range(3):\n        print(col, end=\"\")\n        print()",
+        "for row in range(3):\n    for col in range(3):\n        print(row, end=\"\")\n    print()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-end-222b38",
+      "text": "Which program shows this?",
+      "output": "01\n01\n01",
+      "options": [
+        "for row in range(3):\n    for col in range(2):\n        print(col, end=\"\")\n    print()",
+        "for row in range(3):\n    for col in range(2):\n        print(col)\n    print()",
+        "for row in range(3):\n    for col in range(2):\n        print(col, end=\"\")\n        print()",
+        "for row in range(3):\n    for col in range(2):\n        print(row, end=\"\")\n    print()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-which-end-0aef20",
+      "text": "Which program shows this?",
+      "output": "01234\n01234",
+      "options": [
+        "for row in range(2):\n    for col in range(5):\n        print(col, end=\"\")\n    print()",
+        "for row in range(2):\n    for col in range(5):\n        print(col)\n    print()",
+        "for row in range(2):\n    for col in range(5):\n        print(col, end=\"\")\n        print()",
+        "for row in range(2):\n    for col in range(5):\n        print(row, end=\"\")\n    print()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-inner-aae54f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(1, 3):\n    ___\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n1 3\n2 1\n2 2\n2 3",
+      "options": [
+        "for j in range(1, 4):",
+        "for j in range(4):",
+        "for j in range(1, 3):",
+        "for i in range(1, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-inner-5d71ac",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(1, 4):\n    ___\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n2 1\n2 2\n3 1\n3 2",
+      "options": [
+        "for j in range(1, 3):",
+        "for j in range(3):",
+        "for j in range(1, 4):",
+        "for i in range(1, 3):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-inner-8d57e0",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(1, 3):\n    ___\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n1 3\n1 4\n2 1\n2 2\n2 3\n2 4",
+      "options": [
+        "for j in range(1, 5):",
+        "for j in range(5):",
+        "for j in range(1, 4):",
+        "for i in range(1, 5):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-inner-9a172d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(1, 4):\n    ___\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n1 3\n2 1\n2 2\n2 3\n3 1\n3 2\n3 3",
+      "options": [
+        "for j in range(1, 4):",
+        "for j in range(4):",
+        "for j in range(1, 3):",
+        "for i in range(1, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-newline-4e11fd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for row in range(3):\n    for col in range(2):\n        print(\"#\", end=\"\")\n    ___",
+      "output": "##\n##\n##",
+      "options": ["print()", "print(\"#\")", "print(row)", "print(\"#\", end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-newline-0e84eb",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for row in range(2):\n    for star in range(4):\n        print(\"*\", end=\"\")\n    ___",
+      "output": "****\n****",
+      "options": ["print()", "print(\"*\")", "print(row)", "print(\"*\", end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-newline-feb728",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for row in range(4):\n    for col in range(3):\n        print(\"o\", end=\"\")\n    ___",
+      "output": "ooo\nooo\nooo\nooo",
+      "options": ["print()", "print(\"o\")", "print(row)", "print(\"o\", end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-newline-244a6a",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for row in range(2):\n    for col in range(6):\n        print(\"=\", end=\"\")\n    ___",
+      "output": "======\n======",
+      "options": ["print()", "print(\"=\")", "print(row)", "print(\"=\", end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-break-a09879",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "words = [\"rocket\", \"moon\", \"star\"]\nfor word in words:\n    for letter in word:\n        if letter == \"o\":\n            ___\n        print(letter, end=\"\")\n    print()",
+      "output": "r\nm\nstar",
+      "options": ["break", "continue", "print()", "print(letter, end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-break-61930d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fruits = [\"banana\", \"kiwi\"]\nfor fruit in fruits:\n    for letter in fruit:\n        if letter == \"n\":\n            ___\n        print(letter, end=\"\")\n    print()",
+      "output": "ba\nkiwi",
+      "options": ["break", "continue", "print()", "print(letter, end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-break-519200",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "words = [\"hello\", \"world\"]\nfor word in words:\n    for letter in word:\n        if letter == \"l\":\n            ___\n        print(letter, end=\"\")\n    print()",
+      "output": "he\nwor",
+      "options": ["break", "continue", "print()", "print(letter, end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-gap-break-b04898",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fruits = [\"apple\", \"grape\"]\nfor fruit in fruits:\n    for letter in fruit:\n        if letter == \"p\":\n            ___\n        print(letter, end=\"\")\n    print()",
+      "output": "a\ngra",
+      "options": ["break", "continue", "print()", "print(letter, end=\"\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-width-de6bc0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for row in range(3):\n    for col in range(___):\n        print(\"*\", end=\"\")\n    print()",
+      "output": "*****\n*****\n*****",
+      "options": ["5", "3", "6", "4"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-width-34d7bc",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for row in range(2):\n    for col in range(___):\n        print(\"#\", end=\"\")\n    print()",
+      "output": "####\n####",
+      "options": ["4", "2", "5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-width-a8063e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for row in range(4):\n    for col in range(___):\n        print(\"o\", end=\"\")\n    print()",
+      "output": "oo\noo\noo\noo",
+      "options": ["2", "4", "3", "1"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-width-2e4555",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for row in range(5):\n    for col in range(___):\n        print(\"=\", end=\"\")\n    print()",
+      "output": "===\n===\n===\n===\n===",
+      "options": ["3", "5", "4", "2"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-break-a2c07a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 5):\n        if j == ___:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n2 1\n2 2",
+      "options": ["3", "2", "4", "1"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-break-7ffe2f",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 5):\n        if j == ___:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n2 1\n3 1",
+      "options": ["2", "3", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-break-969363",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 6):\n        if j == ___:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n1 3\n2 1\n2 2\n2 3",
+      "options": ["4", "3", "5", "2"],
+      "answer": 0
+    },
+    {
+      "id": "nl-val-break-0b7a82",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 4):\n        if j == ___:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n2 1\n2 2",
+      "options": ["3", "2", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-start-520ce1",
+      "text": "Which line stops this program from printing this?",
+      "code": "rounds = 1\nfor i in range(3):\n    for j in range(4):\n        rounds = rounds + 1\nprint(f\"Rounds: {rounds}\")",
+      "output": "Rounds: 12",
+      "options": [
+        "rounds = 1",
+        "rounds = rounds + 1",
+        "print(f\"Rounds: {rounds}\")",
+        "for i in range(3):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-start-f11196",
+      "text": "Which line stops this program from printing this?",
+      "code": "moves = 1\nfor i in range(2):\n    for j in range(5):\n        moves = moves + 1\nprint(f\"Moves: {moves}\")",
+      "output": "Moves: 10",
+      "options": [
+        "moves = 1",
+        "moves = moves + 1",
+        "print(f\"Moves: {moves}\")",
+        "for i in range(2):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-start-18f340",
+      "text": "Which line stops this program from printing this?",
+      "code": "seats = 1\nfor i in range(5):\n    for j in range(3):\n        seats = seats + 1\nprint(f\"Seats: {seats}\")",
+      "output": "Seats: 15",
+      "options": [
+        "seats = 1",
+        "seats = seats + 1",
+        "print(f\"Seats: {seats}\")",
+        "for i in range(5):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-end-cd3532",
+      "text": "Which line stops this program from printing this?",
+      "code": "for row in range(2):\n    for col in range(4):\n        print(\"#\")\n    print()",
+      "output": "####\n####",
+      "options": ["print(\"#\")", "for col in range(4):", "for row in range(2):", "print()"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-end-78a52e",
+      "text": "Which line stops this program from printing this?",
+      "code": "for row in range(3):\n    for star in range(3):\n        print(\"*\")\n    print()",
+      "output": "***\n***\n***",
+      "options": ["print(\"*\")", "for star in range(3):", "for row in range(3):", "print()"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-end-49b867",
+      "text": "Which line stops this program from printing this?",
+      "code": "for row in range(3):\n    for col in range(5):\n        print(\"o\")\n    print()",
+      "output": "ooooo\nooooo\nooooo",
+      "options": ["print(\"o\")", "for col in range(5):", "for row in range(3):", "print()"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-sep-f2d0d1",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 3):\n        print(f\"{i} x {j} = {i * j}\")\n        print(\"---\")",
+      "output": "1 x 1 = 1\n1 x 2 = 2\n---\n2 x 1 = 2\n2 x 2 = 4\n---",
+      "options": [
+        "print(\"---\")",
+        "print(f\"{i} x {j} = {i * j}\")",
+        "for j in range(1, 3):",
+        "for i in range(1, 3):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-sep-f57d93",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 3):\n        print(f\"{i} x {j} = {i * j}\")\n        print(\"===\")",
+      "output": "1 x 1 = 1\n1 x 2 = 2\n===\n2 x 1 = 2\n2 x 2 = 4\n===\n3 x 1 = 3\n3 x 2 = 6\n===",
+      "options": [
+        "print(\"===\")",
+        "print(f\"{i} x {j} = {i * j}\")",
+        "for j in range(1, 3):",
+        "for i in range(1, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-sep-858141",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 4):\n        print(f\"{i} x {j} = {i * j}\")\n        print(\"***\")",
+      "output": "1 x 1 = 1\n1 x 2 = 2\n1 x 3 = 3\n***\n2 x 1 = 2\n2 x 2 = 4\n2 x 3 = 6\n***",
+      "options": [
+        "print(\"***\")",
+        "print(f\"{i} x {j} = {i * j}\")",
+        "for j in range(1, 4):",
+        "for i in range(1, 3):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-cond-b9df6b",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 5):\n        if i == 2:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n2 1\n3 1",
+      "options": ["if i == 2:", "for j in range(1, 5):", "break", "print(f\"{i} {j}\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-cond-3df5ab",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 4):\n        if i == 3:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n2 1\n2 2\n3 1\n3 2",
+      "options": ["if i == 3:", "for j in range(1, 4):", "break", "print(f\"{i} {j}\")"],
+      "answer": 0
+    },
+    {
+      "id": "nl-bad-cond-e4b9b7",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 5):\n    for j in range(1, 4):\n        if i == 3:\n            break\n        print(f\"{i} {j}\")",
+      "output": "1 1\n1 2\n2 1\n2 2\n3 1\n3 2\n4 1\n4 2",
+      "options": ["if i == 3:", "for j in range(1, 4):", "for i in range(1, 5):", "break"],
+      "answer": 0
+    }
+  ]
+}

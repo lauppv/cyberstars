@@ -1,0 +1,906 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What makes a set different from a list?",
+      "options": [
+        "Each value is in it only once: duplicates are dropped",
+        "It keeps its values sorted",
+        "Its values are read by key",
+        "It can't change after it's made"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "guests = {\"Tommy\", \"Lance\", \"Cortez\", \"Tommy\"}\nprint(len(guests))",
+      "options": ["4", "3", "1", "It stops with an error: Tommy is there twice"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Which of these makes an empty set?",
+      "options": ["{}", "[]", "set()", "()"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What does `x = {}` make?",
+      "options": [
+        "An empty set",
+        "An empty dictionary",
+        "An empty list",
+        "Nothing: it stops with an error"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "Which line adds \"shotgun\" to the set weapons?",
+      "options": [
+        "weapons.append(\"shotgun\")",
+        "weapons[\"shotgun\"] = 1",
+        "weapons + \"shotgun\"",
+        "weapons.add(\"shotgun\")"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "Why does a set use `.add()` and not `.append()`, as a list does?",
+      "options": [
+        "A set has no order, so adding at the end means nothing",
+        "append() works only on numbers",
+        "add() keeps the values sorted",
+        "A set can take only one new value"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "Which line takes \"bat\" out of the set weapons?",
+      "options": [
+        "del weapons[0]",
+        "weapons[\"bat\"] = 0",
+        "weapons.remove(\"bat\")",
+        "weapons = weapons - \"bat\""
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "banned = {\"Sonny\", \"Diaz\", \"Gonzalez\"}\nplayer = \"Diaz\"\nif player in banned:\n    print(f\"{player} is banned!\")\nelse:\n    print(f\"{player} is welcome\")",
+      "options": ["Diaz is banned!", "Diaz is welcome", "Tommy is welcome", "True"],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "When is a set a better choice than a list?",
+      "options": [
+        "When the order of the values matters",
+        "When each value must be there only once, or we often check whether a value is in it",
+        "When we read the values by their position",
+        "When we store key: value pairs"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "What do `{\"a\": 1, \"b\": 2}` and `{1, 2}` make?",
+      "options": [
+        "Two sets: both use curly braces",
+        "Two dictionaries: both use curly braces",
+        "A dictionary, then a set: the colons make the dictionary",
+        "A set, then a dictionary: numbers make a dictionary"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "colors = {\"red\", \"blue\", \"red\", \"red\"}\nprint(len(colors))",
+      "options": ["4", "2", "3", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Tommy\", \"Cortez\", \"Lance\"]\nunique = list(set(names))\nprint(len(unique))",
+      "options": ["5", "2", "3", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "In `list(set(names))`, what is the set in the middle for?",
+      "options": [
+        "It drops the duplicates, then list() turns it back into a list",
+        "It sorts the names, then list() keeps them in that order",
+        "list() can't take a list, so it needs a set first",
+        "It makes a copy of names that can't change"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "After `unique_names = list(set(names))`, are the names surely in the order they had in names?",
+      "options": [
+        "Yes: a set keeps the order they were added in",
+        "No: a set doesn't keep order, so they may come out in another order",
+        "No: they always come out sorted from A to Z",
+        "Yes, but only when the names are text"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "seen = set()\nseen.add(\"A1\")\nseen.add(\"B2\")\nseen.add(\"A1\")\nprint(len(seen))",
+      "options": ["3", "1", "0", "2"],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "In the Signal Log mission, how many signals does `signals` hold, and how many different codes?",
+      "options": [
+        "8 signals, 4 different codes",
+        "4 signals, 8 different codes",
+        "8 signals, 8 different codes",
+        "4 signals, 4 different codes"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "In the Signal Log mission, `\"D4\" in signals` would also find D4. Why check in the set?",
+      "options": [
+        "in doesn't work on a list",
+        "The list would say D4 missing, since D4 is near the end",
+        "The set keeps D4 first, so it is found sooner",
+        "Both give the same answer, but checking in a set is much faster"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "In the Signal Log mission, what does the Unique line print if we write `len(signals)` instead of `len(unique)`?",
+      "options": ["Unique: 4", "Unique: 1", "It stops with an error", "Unique: 8"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "codes = {\"A1\", \"B2\", \"C3\"}\nprint(\"D4\" in codes)\nprint(\"B2\" in codes)",
+      "options": ["False\nTrue", "True\nFalse", "False\nFalse", "D4\nB2"],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "Which expression is True when Phil is in the set crew?",
+      "options": ["crew[\"Phil\"]", "crew == \"Phil\"", "crew.add(\"Phil\")", "\"Phil\" in crew"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What does `.add()` do with a value that is already in the set?",
+      "options": [
+        "It stops with an error",
+        "Nothing: the set stays as it was",
+        "It adds a second copy",
+        "It takes the value out"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "Which of these is a set?",
+      "options": ["[\"a\", \"b\"]", "(\"a\", \"b\")", "{\"a\": 1, \"b\": 2}", "{\"a\", \"b\"}"],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "nums = [3, 1, 3, 2, 1, 3]\nprint(len(nums))\nprint(len(set(nums)))",
+      "options": ["3\n6", "6\n6", "6\n3", "3\n3"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "We write `guests = {\"Tommy\", \"Lance\", \"Cortez\"}` and print it. What may come out different from how we wrote it?",
+      "options": [
+        "The order of the names",
+        "How many names it shows",
+        "The names' letters, which come out in capitals",
+        "Nothing: a set prints exactly as written"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "weapons = {\"bat\", \"pistol\"}\nweapons.add(\"shotgun\")\nweapons.add(\"bat\")\nweapons.remove(\"pistol\")\nprint(len(weapons))",
+      "options": ["3", "4", "2", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Which expression gives a set of the different values in the list scores?",
+      "options": ["list(scores)", "set(scores)", "[scores]", "scores.set()"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "visited = set()\nfor planet in [\"Mars\", \"Venus\", \"Mars\", \"Earth\", \"Venus\"]:\n    visited.add(planet)\nprint(len(visited))",
+      "options": ["5", "2", "3", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "visited = set()\nfor planet in [\"Mars\", \"Venus\", \"Mars\"]:\n    if planet in visited:\n        print(f\"{planet} again\")\n    else:\n        visited.add(planet)\n        print(f\"{planet} new\")",
+      "options": [
+        "Mars new\nVenus new\nMars new",
+        "Mars again\nVenus again\nMars again",
+        "Mars new\nVenus new",
+        "Mars new\nVenus new\nMars again"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What happens when this runs?",
+      "code": "codes = {}\ncodes.add(\"A1\")",
+      "options": [
+        "It stops with an error: {} made a dictionary, and a dictionary has no add()",
+        "codes holds A1: {} is an empty set",
+        "A1 becomes a key of codes, with no value",
+        "Nothing: add() waits for a second value"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "In the Signal Log mission, A1 is three times in signals. How many times is it in the set unique?",
+      "options": [
+        "Three times: the set copies the list",
+        "Once: a set keeps each value only once",
+        "Twice: only the first copy is dropped",
+        "Not at all: a value that repeats is dropped"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "st-dedupe",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nprint(len({{v}}))\nprint(len(set({{v}})))",
+      "values": [
+        {
+          "v": "signals",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\""
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Phil\""
+        },
+        {
+          "v": "colors",
+          "items": "\"red\", \"red\", \"blue\", \"red\", \"green\", \"blue\", \"red\""
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\", \"Mars\", \"Venus\""
+        },
+        {
+          "v": "rolls",
+          "items": "6, 2, 6, 6, 3, 2, 1, 6"
+        }
+      ],
+      "mistakes": [
+        ["len(set({{v}}))", "len({{v}})"],
+        ["print(len({{v}}))\nprint(len(set({{v}})))", "print(len(set({{v}})))\nprint(len({{v}}))"],
+        ["print(len({{v}}))\n", ""]
+      ]
+    },
+    {
+      "id": "st-add",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{{start}}}\n{{v}}.add(\"{{old}}\")\n{{v}}.add(\"{{new}}\")\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "crew",
+          "start": "\"Tommy\", \"Lance\", \"Phil\"",
+          "old": "Lance",
+          "new": "Ken"
+        },
+        {
+          "v": "weapons",
+          "start": "\"bat\", \"pistol\", \"knife\"",
+          "old": "bat",
+          "new": "shotgun"
+        },
+        {
+          "v": "stamps",
+          "start": "\"Mars\", \"Venus\", \"Earth\", \"Pluto\"",
+          "old": "Pluto",
+          "new": "Titan"
+        },
+        {
+          "v": "badges",
+          "start": "\"gold\", \"silver\", \"bronze\"",
+          "old": "silver",
+          "new": "platinum"
+        },
+        {
+          "v": "codes",
+          "start": "\"A1\", \"B2\", \"C3\"",
+          "old": "A1",
+          "new": "D4"
+        }
+      ],
+      "mistakes": [
+        [".add(\"{{old}}\")", ".add(\"{{old}}!\")"],
+        ["{{v}}.add(\"{{new}}\")\n", ""],
+        ["{{{start}}}", "set()"]
+      ]
+    },
+    {
+      "id": "st-remove",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{{items}}}\n{{v}}.remove(\"{{r}}\")\nprint(\"{{r}}\" in {{v}})\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "weapons",
+          "items": "\"bat\", \"pistol\", \"knife\"",
+          "r": "bat"
+        },
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Phil\", \"Ken\"",
+          "r": "Phil"
+        },
+        {
+          "v": "guests",
+          "items": "\"Ana\", \"Rex\"",
+          "r": "Rex"
+        },
+        {
+          "v": "targets",
+          "items": "\"A\", \"B\", \"C\", \"D\", \"E\"",
+          "r": "C"
+        },
+        {
+          "v": "moons",
+          "items": "\"Io\", \"Europa\", \"Titan\"",
+          "r": "Titan"
+        }
+      ],
+      "mistakes": [
+        ["{{v}}.remove(\"{{r}}\")\n", ""],
+        ["print(\"{{r}}\" in {{v}})", "print(\"{{r}}\" not in {{v}})"],
+        [
+          "print(\"{{r}}\" in {{v}})\nprint(len({{v}}))",
+          "print(len({{v}}))\nprint(\"{{r}}\" in {{v}})"
+        ]
+      ]
+    },
+    {
+      "id": "st-check",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{s}} = {{{bad}}}\nfor {{x}} in [{{people}}]:\n    if {{x}} in {{s}}:\n        print(f\"{{{x}}} {{no}}\")\n    else:\n        print(f\"{{{x}}} {{ok}}\")",
+      "values": [
+        {
+          "s": "banned",
+          "bad": "\"Sonny\", \"Diaz\"",
+          "x": "p",
+          "people": "\"Tommy\", \"Diaz\", \"Lance\"",
+          "no": "is banned!",
+          "ok": "is welcome"
+        },
+        {
+          "s": "broken",
+          "bad": "\"B2\", \"D4\"",
+          "x": "code",
+          "people": "\"A1\", \"B2\", \"C3\", \"D4\"",
+          "no": "is broken",
+          "ok": "works"
+        },
+        {
+          "s": "full",
+          "bad": "\"Mars\"",
+          "x": "planet",
+          "people": "\"Mars\", \"Venus\"",
+          "no": "is full",
+          "ok": "has room"
+        },
+        {
+          "s": "sold",
+          "bad": "\"tea\", \"cake\", \"jam\"",
+          "x": "item",
+          "people": "\"cake\", \"milk\"",
+          "no": "is sold out",
+          "ok": "is in stock"
+        }
+      ],
+      "mistakes": [
+        ["if {{x}} in {{s}}:", "if {{x}} not in {{s}}:"],
+        ["\n    else:\n        print(f\"{{{x}}} {{ok}}\")", ""],
+        ["print(f\"{{{x}}} {{no}}\")", "print(f\"{{{x}}} {{ok}}\")"]
+      ]
+    },
+    {
+      "id": "st-repeats",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{s}} = set()\n{{r}} = 0\nfor {{x}} in [{{items}}]:\n    if {{x}} in {{s}}:\n        {{r}} = {{r}} + 1\n    else:\n        {{s}}.add({{x}})\nprint(f\"{{label}}: {{{r}}}\")",
+      "values": [
+        {
+          "s": "seen",
+          "r": "repeats",
+          "x": "c",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\"",
+          "label": "Repeats"
+        },
+        {
+          "s": "met",
+          "r": "again",
+          "x": "name",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Phil\", \"Lance\"",
+          "label": "Met again"
+        },
+        {
+          "s": "visited",
+          "r": "returns",
+          "x": "p",
+          "items": "\"Mars\", \"Venus\", \"Mars\", \"Mars\", \"Earth\", \"Venus\"",
+          "label": "Returns"
+        },
+        {
+          "s": "heard",
+          "r": "echoes",
+          "x": "w",
+          "items": "\"hey\", \"ho\", \"hey\", \"hey\"",
+          "label": "Echoes"
+        },
+        {
+          "s": "used",
+          "r": "again",
+          "x": "n",
+          "items": "4, 8, 4, 15, 8, 4",
+          "label": "Used again"
+        }
+      ],
+      "mistakes": [
+        ["        {{s}}.add({{x}})", "        print({{x}})"],
+        ["if {{x}} in {{s}}:", "if {{x}} not in {{s}}:"],
+        ["{{r}} = {{r}} + 1", "{{r}} = 1"],
+        ["{{s}}.add({{x}})", "{{s}}.add({{x}})\n        {{r}} = {{r}} + 1"]
+      ]
+    },
+    {
+      "id": "st-log",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nprint(f\"Total: {len({{v}})}\")\nunique = set({{v}})\nprint(f\"Unique: {len(unique)}\")\nif \"{{c}}\" in unique:\n    print(\"{{c}} detected\")\nelse:\n    print(\"{{c}} missing\")",
+      "values": [
+        {
+          "v": "signals",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\"",
+          "c": "C3"
+        },
+        {
+          "v": "signals",
+          "items": "\"X1\", \"X1\", \"Y2\", \"X1\"",
+          "c": "Z3"
+        },
+        {
+          "v": "pings",
+          "items": "\"K7\", \"L8\", \"K7\", \"M9\", \"L8\", \"K7\", \"N1\"",
+          "c": "N1"
+        },
+        {
+          "v": "pings",
+          "items": "\"Q1\", \"R2\", \"S3\", \"Q1\"",
+          "c": "T4"
+        },
+        {
+          "v": "codes",
+          "items": "\"D4\", \"D4\", \"D4\"",
+          "c": "D4"
+        }
+      ],
+      "mistakes": [
+        ["Unique: {len(unique)}", "Unique: {len({{v}})}"],
+        ["if \"{{c}}\" in unique:", "if \"{{c}}\" not in unique:"],
+        ["Total: {len({{v}})}", "Total: {len(set({{v}}))}"]
+      ]
+    },
+    {
+      "id": "st-which-check",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{s}} = {{{bad}}}\nfor {{x}} in [{{people}}]:\n    if {{x}} in {{s}}:\n        print(f\"{{{x}}}: {{no}}\")\n    else:\n        print(f\"{{{x}}}: {{ok}}\")",
+      "values": [
+        {
+          "s": "banned",
+          "bad": "\"Sonny\", \"Diaz\"",
+          "x": "p",
+          "people": "\"Diaz\", \"Tommy\"",
+          "no": "stop",
+          "ok": "go"
+        },
+        {
+          "s": "closed",
+          "bad": "\"B\", \"C\"",
+          "x": "gate",
+          "people": "\"A\", \"C\"",
+          "no": "closed",
+          "ok": "open"
+        },
+        {
+          "s": "done",
+          "bad": "\"wash\", \"cook\"",
+          "x": "job",
+          "people": "\"cook\", \"shop\", \"wash\"",
+          "no": "done",
+          "ok": "to do"
+        },
+        {
+          "s": "lost",
+          "bad": "\"Io\"",
+          "x": "moon",
+          "people": "\"Europa\", \"Io\"",
+          "no": "no signal",
+          "ok": "signal"
+        }
+      ],
+      "mistakes": [
+        ["if {{x}} in {{s}}:", "if {{x}} not in {{s}}:"],
+        ["if {{x}} in {{s}}:", "if {{x}} == {{s}}:"],
+        ["{{{bad}}}", "set()"]
+      ]
+    },
+    {
+      "id": "st-which-add",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{{start}}}\n{{v}}.add(\"{{new}}\")\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "crew",
+          "start": "\"Tommy\", \"Lance\", \"Phil\"",
+          "new": "Ken",
+          "old": "Lance"
+        },
+        {
+          "v": "weapons",
+          "start": "\"bat\", \"pistol\"",
+          "new": "knife",
+          "old": "bat"
+        },
+        {
+          "v": "stamps",
+          "start": "\"Mars\", \"Venus\", \"Earth\", \"Pluto\"",
+          "new": "Titan",
+          "old": "Earth"
+        },
+        {
+          "v": "codes",
+          "start": "\"A1\", \"B2\", \"C3\", \"D4\", \"E5\"",
+          "new": "F6",
+          "old": "C3"
+        },
+        {
+          "v": "badges",
+          "start": "\"gold\"",
+          "new": "bronze",
+          "old": "gold"
+        }
+      ],
+      "mistakes": [
+        [".add(\"{{new}}\")", ".add(\"{{old}}\")"],
+        [".add(\"{{new}}\")", ".append(\"{{new}}\")"],
+        ["{{v}}.add(\"{{new}}\")", "{{v}}.remove(\"{{old}}\")"]
+      ]
+    },
+    {
+      "id": "st-gap-add",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{{start}}}\n___\nprint(\"{{new}}\" in {{v}})\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "crew",
+          "start": "\"Tommy\", \"Lance\"",
+          "new": "Phil",
+          "old": "Lance"
+        },
+        {
+          "v": "weapons",
+          "start": "\"bat\", \"pistol\", \"knife\"",
+          "new": "shotgun",
+          "old": "bat"
+        },
+        {
+          "v": "stamps",
+          "start": "\"Mars\"",
+          "new": "Venus",
+          "old": "Mars"
+        },
+        {
+          "v": "codes",
+          "start": "\"A1\", \"B2\", \"C3\", \"D4\"",
+          "new": "E5",
+          "old": "C3"
+        }
+      ],
+      "answer": "{{v}}.add(\"{{new}}\")",
+      "wrong": ["{{v}}.append(\"{{new}}\")", "{{v}}.add(\"{{old}}\")", "{{v}} = {\"{{new}}\"}"]
+    },
+    {
+      "id": "st-gap-unique",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\n___\nprint(f\"Unique: {len(unique)}\")",
+      "values": [
+        {
+          "v": "signals",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\""
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\""
+        },
+        {
+          "v": "colors",
+          "items": "\"red\", \"blue\", \"red\", \"green\", \"blue\""
+        },
+        {
+          "v": "rolls",
+          "items": "5, 5, 2, 5, 1, 2, 6, 5"
+        }
+      ],
+      "answer": "unique = set({{v}})",
+      "wrong": ["unique = {{v}}", "unique = [{{v}}]", "unique = set()"]
+    },
+    {
+      "id": "st-gap-remove",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{{items}}}\n___\nprint(\"{{r}}\" in {{v}})\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "weapons",
+          "items": "\"bat\", \"pistol\", \"knife\"",
+          "r": "bat",
+          "other": "pistol"
+        },
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Phil\", \"Ken\"",
+          "r": "Ken",
+          "other": "Tommy"
+        },
+        {
+          "v": "guests",
+          "items": "\"Ana\", \"Rex\"",
+          "r": "Ana",
+          "other": "Rex"
+        },
+        {
+          "v": "moons",
+          "items": "\"Io\", \"Europa\", \"Titan\"",
+          "r": "Europa",
+          "other": "Io"
+        }
+      ],
+      "answer": "{{v}}.remove(\"{{r}}\")",
+      "wrong": ["{{v}}.add(\"{{r}}\")", "del {{v}}[0]", "{{v}}.remove(\"{{other}}\")"]
+    },
+    {
+      "id": "st-val-in",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{s}} = {{{bad}}}\n{{x}} = ___\nif {{x}} in {{s}}:\n    print(\"{{no}}\")\nelse:\n    print(\"{{ok}}\")",
+      "values": [
+        {
+          "s": "banned",
+          "bad": "\"Sonny\", \"Gonzalez\", \"Mendez\"",
+          "x": "player",
+          "no": "Stop",
+          "ok": "Welcome",
+          "a": "\"Mendez\"",
+          "w1": "\"Tommy\"",
+          "w2": "\"Diaz\"",
+          "w3": "\"banned\""
+        },
+        {
+          "s": "broken",
+          "bad": "\"B2\", \"D4\"",
+          "x": "code",
+          "no": "Repair",
+          "ok": "All good",
+          "a": "\"D4\"",
+          "w1": "\"A1\"",
+          "w2": "\"C3\"",
+          "w3": "\"broken\""
+        },
+        {
+          "s": "full",
+          "bad": "\"Mars\", \"Venus\"",
+          "x": "planet",
+          "no": "No room",
+          "ok": "Land here",
+          "a": "\"Venus\"",
+          "w1": "\"Earth\"",
+          "w2": "\"Pluto\"",
+          "w3": "\"full\""
+        },
+        {
+          "s": "sold",
+          "bad": "\"tea\", \"cake\"",
+          "x": "item",
+          "no": "Sold out",
+          "ok": "In stock",
+          "a": "\"tea\"",
+          "w1": "\"milk\"",
+          "w2": "\"jam\"",
+          "w3": "\"sold\""
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "st-val-add",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{{start}}}\n{{v}}.add(___)\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "crew",
+          "start": "\"Tommy\", \"Lance\", \"Phil\"",
+          "a": "\"Ken\"",
+          "w1": "\"Tommy\"",
+          "w2": "\"Lance\"",
+          "w3": "\"Phil\""
+        },
+        {
+          "v": "weapons",
+          "start": "\"bat\", \"pistol\", \"knife\"",
+          "a": "\"shotgun\"",
+          "w1": "\"bat\"",
+          "w2": "\"pistol\"",
+          "w3": "\"knife\""
+        },
+        {
+          "v": "codes",
+          "start": "\"A1\", \"B2\", \"C3\", \"D4\"",
+          "a": "\"E5\"",
+          "w1": "\"A1\"",
+          "w2": "\"C3\"",
+          "w3": "\"D4\""
+        },
+        {
+          "v": "stamps",
+          "start": "\"Mars\", \"Venus\", \"Earth\"",
+          "a": "\"Titan\"",
+          "w1": "\"Mars\"",
+          "w2": "\"Venus\"",
+          "w3": "\"Earth\""
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "st-bad-append",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{{start}}}\n{{v}}.add(\"{{new}}\")\nprint(len({{v}}))\nprint(\"{{new}}\" in {{v}})",
+      "values": [
+        {
+          "v": "seen",
+          "start": "\"A1\", \"B2\", \"A1\"",
+          "new": "C3"
+        },
+        {
+          "v": "crew",
+          "start": "\"Tommy\", \"Lance\", \"Tommy\", \"Phil\"",
+          "new": "Ken"
+        },
+        {
+          "v": "stamps",
+          "start": "\"Mars\", \"Mars\", \"Venus\"",
+          "new": "Earth"
+        }
+      ],
+      "bug": ["{{v}}.add(\"{{new}}\")", "{{v}}.append(\"{{new}}\")"]
+    },
+    {
+      "id": "st-bad-empty",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = set()\nfor {{x}} in [{{items}}]:\n    {{v}}.add({{x}})\n{{v}}.remove(\"{{r}}\")\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "seen",
+          "x": "c",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\"",
+          "r": "A1"
+        },
+        {
+          "v": "met",
+          "x": "name",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\"",
+          "r": "Lance"
+        },
+        {
+          "v": "visited",
+          "x": "p",
+          "items": "\"Mars\", \"Venus\", \"Mars\", \"Earth\", \"Venus\"",
+          "r": "Earth"
+        }
+      ],
+      "bug": ["{{v}} = set()", "{{v}} = {}"]
+    },
+    {
+      "id": "st-bad-len",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{items}}]\nunique = set({{v}})\nprint(f\"Total: {len({{v}})}\")\nprint(f\"Unique: {len(unique)}\")",
+      "values": [
+        {
+          "v": "signals",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\""
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Tommy\", \"Phil\""
+        },
+        {
+          "v": "rolls",
+          "items": "3, 3, 6, 1, 6, 3"
+        }
+      ],
+      "bug": ["Unique: {len(unique)}", "Unique: {len({{v}})}"]
+    },
+    {
+      "id": "st-bad-remove",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{{items}}}\n{{v}}.remove(\"{{r}}\")\n{{v}}.add(\"{{new}}\")\nprint(\"{{r}}\" in {{v}})\nprint(\"{{keep}}\" in {{v}})\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Phil\"",
+          "r": "Lance",
+          "keep": "Phil",
+          "new": "Ken"
+        },
+        {
+          "v": "weapons",
+          "items": "\"bat\", \"pistol\", \"knife\"",
+          "r": "bat",
+          "keep": "knife",
+          "new": "shotgun"
+        },
+        {
+          "v": "moons",
+          "items": "\"Io\", \"Europa\", \"Titan\"",
+          "r": "Titan",
+          "keep": "Io",
+          "new": "Luna"
+        }
+      ],
+      "bug": ["{{v}}.remove(\"{{r}}\")", "{{v}}.remove(\"{{keep}}\")"]
+    }
+  ]
+}

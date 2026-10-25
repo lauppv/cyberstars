@@ -1,0 +1,953 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Care e marea diferență dintre un tuple și o listă?",
+      "options": [
+        "Un tuple poate ține doar numere",
+        "Un tuple nu mai poate fi schimbat după ce e creat",
+        "Un tuple nu are indecși",
+        "Un tuple poate ține cel mult două valori"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Ce paranteze fac un tuple?",
+      "options": ["[ ]", "{ }", "( )", "< >"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "coordonate = (10, 20)\ncoordonate[0] = 99\nprint(coordonate)",
+      "options": [
+        "coordonate devine (99, 20)",
+        "coordonate devine (99, 10, 20)",
+        "Se oprește cu un TypeError: un tuple nu poate fi schimbat",
+        "Nimic: Python sare peste linia aceea"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Ce afișează?",
+      "code": "jucator = (\"Tommy Vercetti\", 100, \"Vice City\")\nprint(jucator[1])",
+      "options": ["100", "Tommy Vercetti", "Vice City", "('Tommy Vercetti', 100)"],
+      "answer": 0
+    },
+    {
+      "id": "q5",
+      "text": "`jucator = (\"Tommy Vercetti\", 100, \"Vice City\")`. Ce dă `len(jucator)`?",
+      "options": ["14", "2", "1", "3"],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "jucator = (\"Tommy Vercetti\", 100, \"Vice City\")\nnume, viata, oras = jucator\nprint(oras)",
+      "options": ["Tommy Vercetti", "100", "oras", "Vice City"],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "De ce am ține o dată de naștere într-un tuple și nu într-o listă?",
+      "options": [
+        "Nu ar trebui să se schimbe niciodată, iar Python oprește orice cod care încearcă din greșeală s-o schimbe",
+        "Un tuple poate ține mai multe numere decât o listă, iar o dată are nevoie de trei",
+        "Un tuple își ține numerele sortate, așa că anul vine mereu primul",
+        "O listă poate ține doar text, iar o dată e făcută din numere"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "a, b = (10, 20)\nprint(b, a)",
+      "options": ["10 20", "20", "(10, 20)", "20 10"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "a, b = (1, 2, 3)\nprint(a)\nprint(b)",
+      "options": [
+        "a e 1 și b e 2; 3 rămâne pe dinafară",
+        "a e 1 și b e (2, 3)",
+        "Se oprește cu o eroare: 2 variabile în stânga, 3 valori în tuple",
+        "a e 1 și b e 3"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "echipaj = (\"Tommy\", \"Lance\", \"Cortez\")\nfor nume in echipaj:\n    print(nume[0])",
+      "options": ["T\nL\nC", "Tommy\nLance\nCortez", "TLC", "('T', 'L', 'C')"],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "Care linie face un tuple cu numele lui Tommy și viața lui?",
+      "options": [
+        "jucator = [\"Tommy\", 100]",
+        "jucator = (\"Tommy\" 100)",
+        "jucator = {\"Tommy\": 100}",
+        "jucator = (\"Tommy\", 100)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "În misiunea Harta Stelară, ce face `nume, distanta, planete = sistem` când sistem e `(\"Vega\", 25, 5)`?",
+      "options": [
+        "Pune \"Vega\" în nume, 25 în distanta și 5 în planete",
+        "Pune tot tuple-ul în nume",
+        "Pune 5 în nume, 25 în distanta și \"Vega\" în planete",
+        "Schimbă tuple-ul în (\"nume\", \"distanta\", \"planete\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "În misiunea Harta Stelară, cât adună programul la total pentru Alpha, `(\"Alpha\", 4, 3)`?",
+      "options": ["4", "7", "3", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "În misiunea Harta Stelară, de ce e scris `total_planete = 0` înainte de buclă și nu în ea?",
+      "options": [
+        "În buclă, totalul s-ar întoarce la 0 la fiecare sistem și ar rămâne doar ultimul",
+        "Un tuple poate fi despachetat doar după o variabilă pusă pe 0",
+        "Ca bucla să ruleze o dată pentru fiecare planetă",
+        "Python permite = 0 doar în afara unei bucle"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "În misiunea Harta Stelară, `sisteme = [(\"Sol\", 0, 8), (\"Alpha\", 4, 3), (\"Vega\", 25, 5)]`. Ce este `sisteme[1]`?",
+      "options": ["(\"Sol\", 0, 8)", "0", "(\"Alpha\", 4, 3)", "\"Alpha\""],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "sisteme = [(\"Sol\", 0, 8), (\"Alpha\", 4, 3), (\"Vega\", 25, 5)]\nprint(sisteme[2][0])",
+      "options": ["Sol", "Vega", "25", "('Vega', 25, 5)"],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "punct = (3, 4)\npunct.append(5)\nprint(punct)",
+      "options": [
+        "Se oprește cu o eroare: un tuple nu poate crește",
+        "Afișează (3, 4)",
+        "Afișează (3, 4, 5)",
+        "Afișează (5, 3, 4)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Care dintre acestea merge la un tuple la fel ca la o listă?",
+      "options": [
+        "append(), ca să adaugi un element",
+        "Schimbarea unui element, ca t[0] = 5",
+        "Ștergerea unui element",
+        "Citirea unui element după index, ca t[0]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "zi_de_nastere = (1951, 7, 15)\nan, luna, zi = zi_de_nastere\nprint(luna)",
+      "options": ["1951", "7", "15", "(1951, 7, 15)"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "În `for nume, scor in scoruri.items():`, ce despachetează bucla la fiecare trecere?",
+      "options": [
+        "Un tuple cu o cheie și valoarea ei",
+        "Tot dicționarul",
+        "Doar scorul",
+        "O listă cu toate numele"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "punct = (3, 4)\nx, y = punct\nprint(x + y)",
+      "options": ["34", "7", "(3, 4)", "12"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "niveluri = (5, 10, 15)\nprint(niveluri[len(niveluri) - 1])",
+      "options": ["5", "3", "10", "15"],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "culori = (\"rosu\", \"albastru\")\nprint(culori)",
+      "options": ["['rosu', 'albastru']", "('rosu', 'albastru')", "rosu albastru", "rosualbastru"],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Lecția ține coordonatele GPS ale Vice City într-un tuple. De ce i se potrivește un tuple?",
+      "options": [
+        "Orașul e într-un loc fix, deci cele două numere nu ar trebui să se schimbe niciodată",
+        "Doar un tuple poate ține numere cu zecimale, ca 25.7617",
+        "Un tuple își ține numerele sortate, așa că cel mai mic vine primul",
+        "O listă poate ține doar numere întregi, iar acestea au zecimale"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "preturi = (4, 6, 5)\ntotal = 0\nfor p in preturi:\n    total = total + p\nprint(total)",
+      "options": ["465", "15", "(4, 6, 5)", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "animale = [(\"Rex\", 3), (\"Mia\", 5)]\nfor animal in animale:\n    nume, varsta = animal\n    print(nume, varsta)",
+      "options": ["('Rex', 3)\n('Mia', 5)", "Rex 3\nMia 5", "3 Rex\n5 Mia", "Rex\nMia"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "`jucator = (\"Tommy\", 100)`. Viața lui Tommy scade la 80. Care linie merge?",
+      "options": [
+        "jucator[1] = 80",
+        "jucator.append(80)",
+        "jucator = (\"Tommy\", 80)",
+        "jucator(1) = 80"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "culori = (\"rosu\", \"verde\", \"albastru\")\nprint(culori[3])",
+      "options": [
+        "Afișează albastru",
+        "Afișează ('rosu', 'verde', 'albastru')",
+        "Nu afișează nimic",
+        "Se oprește cu un IndexError: ultimul index e 2"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "În `nume, viata, oras = jucator`, ce element din jucator ajunge în viata?",
+      "options": ["Primul", "Ultimul", "Tot tuple-ul", "Al doilea"],
+      "answer": 3
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "scoruri = (7, 3, 9)\nmaxim = 0\nfor s in scoruri:\n    if s > maxim:\n        maxim = s\nprint(maxim)",
+      "options": ["7", "3", "9", "19"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "tp-index",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{d}}\nprint({{v}}[{{i}}])",
+      "values": [
+        {
+          "v": "jucator",
+          "d": "(\"Tommy\", 100, \"Vice City\")",
+          "i": 2
+        },
+        {
+          "v": "data",
+          "d": "(1986, 5, 30)",
+          "i": 1
+        },
+        {
+          "v": "nava",
+          "d": "(\"Nova\", \"rosu\", 4, 90)",
+          "i": 0
+        },
+        {
+          "v": "culori",
+          "d": "(\"roz\", \"turcoaz\", \"auriu\")",
+          "i": 1
+        }
+      ],
+      "mistakes": [
+        ["print({{v}}[{{i}}])", "print({{v}})"],
+        ["[{{i}}]", "[{{i}} + 1]"],
+        ["print({{v}}[{{i}}])", "print(len({{v}}))"],
+        ["[{{i}}]", "[0]"],
+        ["[{{i}}]", "[1]"]
+      ]
+    },
+    {
+      "id": "tp-unpack",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{d}}\n{{x}}, {{y}}, {{z}} = {{v}}\nprint({{y}})",
+      "values": [
+        {
+          "v": "jucator",
+          "d": "(\"Tommy\", 100, \"Vice City\")",
+          "x": "nume",
+          "y": "viata",
+          "z": "oras"
+        },
+        {
+          "v": "lansare",
+          "d": "(2002, 10, 29)",
+          "x": "an",
+          "y": "luna",
+          "z": "zi"
+        },
+        {
+          "v": "masina",
+          "d": "(\"Infernus\", \"alba\", 240)",
+          "x": "model",
+          "y": "culoare",
+          "z": "viteza"
+        },
+        {
+          "v": "stea",
+          "d": "(\"Vega\", 25, 5)",
+          "x": "nume",
+          "y": "distanta",
+          "z": "planete"
+        },
+        {
+          "v": "punct",
+          "d": "(3, 8, 1)",
+          "x": "x",
+          "y": "y",
+          "z": "z"
+        }
+      ],
+      "mistakes": [
+        ["print({{y}})", "print({{x}})"],
+        ["print({{y}})", "print({{v}})"],
+        ["{{x}}, {{y}}, {{z}} =", "{{y}}, {{x}}, {{z}} ="],
+        ["print({{y}})", "print({{z}})"]
+      ]
+    },
+    {
+      "id": "tp-loop",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{d}}\nfor {{x}} in {{v}}:\n    print({{x}})",
+      "values": [
+        {
+          "v": "eroi",
+          "d": "(\"Shrek\", \"Fiona\", \"Donkey\")",
+          "x": "erou"
+        },
+        {
+          "v": "zile",
+          "d": "(\"Lu\", \"Ma\", \"Mi\", \"Jo\")",
+          "x": "zi"
+        },
+        {
+          "v": "niveluri",
+          "d": "(5, 10, 15)",
+          "x": "nivel"
+        },
+        {
+          "v": "echipaj",
+          "d": "(\"Tommy\", \"Lance\")",
+          "x": "nume"
+        }
+      ],
+      "mistakes": [
+        ["print({{x}})", "print({{v}})"],
+        ["\n    print({{x}})", "\nprint({{x}})"],
+        ["print({{x}})", "print(len({{v}}))"],
+        ["print({{x}})", "print({{v}}[0])"]
+      ]
+    },
+    {
+      "id": "tp-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{x}} in {{v}}:\n    {{t}} = {{t}} + {{x}}\nprint({{t}})",
+      "values": [
+        {
+          "v": "preturi",
+          "d": "(4, 6, 5)",
+          "t": "plata",
+          "x": "p"
+        },
+        {
+          "v": "scoruri",
+          "d": "(7, 3, 9, 1)",
+          "t": "total",
+          "x": "s"
+        },
+        {
+          "v": "pasi",
+          "d": "(1200, 800)",
+          "t": "parcurs",
+          "x": "p"
+        },
+        {
+          "v": "vieti",
+          "d": "(3, 3, 2)",
+          "t": "total",
+          "x": "n"
+        }
+      ],
+      "mistakes": [
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"],
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{t}} + 1"],
+        ["\nprint({{t}})", "\n    print({{t}})"],
+        ["print({{t}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "tp-chart",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{d}}\nfor {{s}} in {{v}}:\n    {{a}}, {{b}} = {{s}}\n    print(f\"{{{a}}}{{sep}}{{{b}}}{{unit}}\")",
+      "values": [
+        {
+          "v": "sisteme",
+          "s": "sistem",
+          "a": "nume",
+          "b": "planete",
+          "sep": ": ",
+          "unit": " planete",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]"
+        },
+        {
+          "v": "echipaj",
+          "s": "membru",
+          "a": "nume",
+          "b": "varsta",
+          "sep": " are ",
+          "unit": " de ani",
+          "d": "[(\"Tommy\", 35), (\"Lance\", 30)]"
+        },
+        {
+          "v": "masini",
+          "s": "masina",
+          "a": "model",
+          "b": "viteza",
+          "sep": " - ",
+          "unit": " km/h",
+          "d": "[(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]"
+        },
+        {
+          "v": "animale",
+          "s": "animal",
+          "a": "nume",
+          "b": "picioare",
+          "sep": " are ",
+          "unit": " picioare",
+          "d": "[(\"Rex\", 4), (\"Polly\", 2)]"
+        }
+      ],
+      "mistakes": [
+        ["{{a}}, {{b}} = {{s}}", "{{b}}, {{a}} = {{s}}"],
+        ["print(f\"", "print(\""],
+        ["\n    print(", "\nprint("],
+        ["{{{b}}}{{unit}}\")", "{{{s}}}{{unit}}\")"]
+      ]
+    },
+    {
+      "id": "tp-total",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{s}} in {{v}}:\n    {{a}}, {{b}} = {{s}}\n    {{t}} = {{t}} + {{b}}\nprint(f\"{{label}}: {{{t}}}\")",
+      "values": [
+        {
+          "v": "sisteme",
+          "s": "sistem",
+          "a": "nume",
+          "b": "planete",
+          "t": "total",
+          "label": "Total planete",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]"
+        },
+        {
+          "v": "cos",
+          "s": "produs",
+          "a": "nume",
+          "b": "pret",
+          "t": "plata",
+          "label": "De plata",
+          "d": "[(\"paine\", 3), (\"lapte\", 2), (\"branza\", 10)]"
+        },
+        {
+          "v": "alergari",
+          "s": "alergare",
+          "a": "zi",
+          "b": "km",
+          "t": "distanta",
+          "label": "Km",
+          "d": "[(\"luni\", 5), (\"miercuri\", 7)]"
+        },
+        {
+          "v": "echipaj",
+          "s": "membru",
+          "a": "nume",
+          "b": "scor",
+          "t": "puncte",
+          "label": "Puncte",
+          "d": "[(\"Tommy\", 40), (\"Lance\", 25), (\"Mia\", 30), (\"Ken\", 5)]"
+        }
+      ],
+      "mistakes": [
+        ["{{t}} = {{t}} + {{b}}", "{{t}} = {{b}}"],
+        ["{{t}} = {{t}} + {{b}}", "{{t}} = {{t}} + 1"],
+        ["\nprint(f\"", "\n    print(f\""],
+        ["{{t}} = 0\n", ""]
+      ]
+    },
+    {
+      "id": "tp-nested",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{d}}\nprint({{v}}[{{i}}][{{j}}])",
+      "values": [
+        {
+          "v": "sisteme",
+          "d": "[(\"Sol\", 0, 8), (\"Alpha\", 4, 3), (\"Vega\", 25, 5)]",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "v": "echipaj",
+          "d": "[(\"Tommy\", 35), (\"Lance\", 30), (\"Mia\", 22)]",
+          "i": 2,
+          "j": 0
+        },
+        {
+          "v": "masini",
+          "d": "[(\"Cheetah\", 230), (\"Sabre\", 180)]",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "v": "puncte",
+          "d": "[(3, 8), (6, 1), (9, 4)]",
+          "i": 2,
+          "j": 1
+        },
+        {
+          "v": "zboruri",
+          "d": "[(\"Roma\", \"Oslo\", 3), (\"Paris\", \"Riga\", 4)]",
+          "i": 1,
+          "j": 1
+        }
+      ],
+      "mistakes": [
+        ["[{{i}}][{{j}}]", "[{{i}}]"],
+        ["[{{i}}][{{j}}]", "[{{j}}][{{i}}]"],
+        ["[{{i}}][{{j}}]", "[{{i}}][0]"],
+        ["[{{i}}][{{j}}]", "[0][{{j}}]"],
+        ["[{{i}}][{{j}}]", "[{{i}}][1]"]
+      ]
+    },
+    {
+      "id": "tp-which-unpack",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = {{d}}\n{{x}}, {{y}}, {{z}} = {{v}}\nprint({{x}})\nprint({{y}})",
+      "values": [
+        {
+          "v": "jucator",
+          "d": "(\"Tommy\", 100, \"Vice City\")",
+          "x": "nume",
+          "y": "viata",
+          "z": "oras"
+        },
+        {
+          "v": "zi_de_nastere",
+          "d": "(1951, 7, 15)",
+          "x": "an",
+          "y": "luna",
+          "z": "zi"
+        },
+        {
+          "v": "stea",
+          "d": "(\"Vega\", 25, 5)",
+          "x": "nume",
+          "y": "distanta",
+          "z": "planete"
+        },
+        {
+          "v": "masina",
+          "d": "(\"Infernus\", \"alba\", 240)",
+          "x": "model",
+          "y": "culoare",
+          "z": "viteza"
+        }
+      ],
+      "mistakes": [
+        ["{{x}}, {{y}}, {{z}} =", "{{y}}, {{x}}, {{z}} ="],
+        ["print({{y}})", "print({{z}})"],
+        ["print({{x}})\nprint({{y}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "tp-which-loop",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = {{d}}\nfor {{s}} in {{v}}:\n    {{a}}, {{b}} = {{s}}\n    print({{a}})",
+      "values": [
+        {
+          "v": "sisteme",
+          "s": "sistem",
+          "a": "nume",
+          "b": "planete",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]"
+        },
+        {
+          "v": "echipaj",
+          "s": "membru",
+          "a": "nume",
+          "b": "varsta",
+          "d": "[(\"Tommy\", 35), (\"Lance\", 30)]"
+        },
+        {
+          "v": "masini",
+          "s": "masina",
+          "a": "model",
+          "b": "viteza",
+          "d": "[(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]"
+        },
+        {
+          "v": "animale",
+          "s": "animal",
+          "a": "nume",
+          "b": "picioare",
+          "d": "[(\"Rex\", 4), (\"Polly\", 2)]"
+        }
+      ],
+      "mistakes": [
+        ["print({{a}})", "print({{b}})"],
+        ["print({{a}})", "print({{s}})"],
+        ["\n    print({{a}})", "\nprint({{a}})"]
+      ]
+    },
+    {
+      "id": "tp-gap-unpack",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{d}}\n___\nprint({{x}})\nprint({{y}})",
+      "values": [
+        {
+          "v": "punct",
+          "d": "(3, 8)",
+          "x": "x",
+          "y": "y"
+        },
+        {
+          "v": "jucator",
+          "d": "(\"Tommy\", 100)",
+          "x": "nume",
+          "y": "viata"
+        },
+        {
+          "v": "drum",
+          "d": "(\"Roma\", \"Oslo\")",
+          "x": "plecare",
+          "y": "sosire"
+        },
+        {
+          "v": "scor",
+          "d": "(\"Lance\", 95)",
+          "x": "nume",
+          "y": "puncte"
+        }
+      ],
+      "answer": "{{x}}, {{y}} = {{v}}",
+      "wrong": [
+        "{{y}}, {{x}} = {{v}}",
+        "{{x}} = {{v}}",
+        "{{v}} = {{x}}, {{y}}",
+        "{{x}}, {{y}} = {{v}}[0]"
+      ]
+    },
+    {
+      "id": "tp-gap-add",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{x}} in {{v}}:\n    ___\nprint({{t}})",
+      "values": [
+        {
+          "v": "preturi",
+          "d": "(4, 6, 5)",
+          "t": "plata",
+          "x": "p"
+        },
+        {
+          "v": "scoruri",
+          "d": "(7, 3, 9, 1)",
+          "t": "total",
+          "x": "s"
+        },
+        {
+          "v": "ture",
+          "d": "(12, 15)",
+          "t": "timp",
+          "x": "tura"
+        },
+        {
+          "v": "lazi",
+          "d": "(2, 5, 8)",
+          "t": "greutate",
+          "x": "l"
+        }
+      ],
+      "answer": "{{t}} = {{t}} + {{x}}",
+      "wrong": ["{{t}} = {{x}}", "{{t}} = {{t}} + 1", "{{x}} = {{t}} + {{x}}", "print({{x}})"]
+    },
+    {
+      "id": "tp-gap-loop",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{d}}\nfor {{s}} in {{v}}:\n    ___\n    print(f\"{{{a}}}{{sep}}{{{b}}}{{unit}}\")",
+      "values": [
+        {
+          "v": "sisteme",
+          "s": "sistem",
+          "a": "nume",
+          "b": "planete",
+          "sep": ": ",
+          "unit": " planete",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]"
+        },
+        {
+          "v": "echipaj",
+          "s": "membru",
+          "a": "nume",
+          "b": "varsta",
+          "sep": " are ",
+          "unit": " de ani",
+          "d": "[(\"Tommy\", 35), (\"Lance\", 30)]"
+        },
+        {
+          "v": "masini",
+          "s": "masina",
+          "a": "model",
+          "b": "viteza",
+          "sep": " - ",
+          "unit": " km/h",
+          "d": "[(\"Cheetah\", 230), (\"Sabre\", 180)]"
+        },
+        {
+          "v": "animale",
+          "s": "animal",
+          "a": "nume",
+          "b": "picioare",
+          "sep": " are ",
+          "unit": " picioare",
+          "d": "[(\"Rex\", 4), (\"Polly\", 2), (\"Nemo\", 0)]"
+        }
+      ],
+      "answer": "{{a}}, {{b}} = {{s}}",
+      "wrong": [
+        "{{b}}, {{a}} = {{s}}",
+        "{{a}} = {{s}}",
+        "{{s}} = {{a}}, {{b}}",
+        "{{a}}, {{b}} = {{v}}"
+      ]
+    },
+    {
+      "id": "tp-gap-index",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{d}}\nprint({{v}}[___])",
+      "values": [
+        {
+          "v": "jucator",
+          "i": 2,
+          "d": "(\"Tommy\", 100, \"Vice City\")"
+        },
+        {
+          "v": "zi_de_nastere",
+          "i": 1,
+          "d": "(1951, 7, 15)"
+        },
+        {
+          "v": "culori",
+          "i": 3,
+          "d": "(\"roz\", \"turcoaz\", \"auriu\", \"bleumarin\")"
+        },
+        {
+          "v": "eroi",
+          "i": 0,
+          "d": "(\"Shrek\", \"Fiona\", \"Donkey\")"
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["0", "1", "2", "3"]
+    },
+    {
+      "id": "tp-gap-range",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{d}}\nfor i in range(___):\n    print({{v}}[i])",
+      "values": [
+        {
+          "v": "eroi",
+          "d": "(\"Shrek\", \"Fiona\", \"Donkey\")"
+        },
+        {
+          "v": "niveluri",
+          "d": "(5, 10, 15, 20)"
+        },
+        {
+          "v": "echipaj",
+          "d": "(\"Tommy\", \"Lance\")"
+        },
+        {
+          "v": "zile",
+          "d": "(\"Lu\", \"Ma\", \"Mi\", \"Jo\", \"Vi\")"
+        }
+      ],
+      "answer": "len({{v}})",
+      "wrong": ["len({{v}}) - 1", "len({{v}}) + 1", "{{v}}", "1"]
+    },
+    {
+      "id": "tp-bad-unpack",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{d}}\n{{x}}, {{y}}, {{z}} = {{v}}\nprint({{x}})\nprint({{y}})\nprint({{z}})",
+      "values": [
+        {
+          "v": "jucator",
+          "d": "(\"Tommy\", 100, \"Vice City\")",
+          "x": "nume",
+          "y": "viata",
+          "z": "oras"
+        },
+        {
+          "v": "zi_de_nastere",
+          "d": "(1951, 7, 15)",
+          "x": "an",
+          "y": "luna",
+          "z": "zi"
+        },
+        {
+          "v": "stea",
+          "d": "(\"Vega\", 25, 5)",
+          "x": "nume",
+          "y": "distanta",
+          "z": "planete"
+        }
+      ],
+      "bug": ["{{x}}, {{y}}, {{z}} = {{v}}", "{{x}}, {{y}} = {{v}}"]
+    },
+    {
+      "id": "tp-bad-indent",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{d}}\nfor {{s}} in {{v}}:\n    {{a}}, {{b}} = {{s}}\n    print(f\"{{{a}}}{{sep}}{{{b}}}{{unit}}\")",
+      "values": [
+        {
+          "v": "sisteme",
+          "s": "sistem",
+          "a": "nume",
+          "b": "planete",
+          "sep": ": ",
+          "unit": " planete",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]"
+        },
+        {
+          "v": "echipaj",
+          "s": "membru",
+          "a": "nume",
+          "b": "varsta",
+          "sep": " are ",
+          "unit": " de ani",
+          "d": "[(\"Tommy\", 35), (\"Lance\", 30)]"
+        },
+        {
+          "v": "masini",
+          "s": "masina",
+          "a": "model",
+          "b": "viteza",
+          "sep": " - ",
+          "unit": " km/h",
+          "d": "[(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]"
+        }
+      ],
+      "bug": ["    print(f\"", "print(f\""]
+    },
+    {
+      "id": "tp-bad-start",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{t}} = 0\n{{v}} = {{d}}\nfor {{x}} in {{v}}:\n    print({{x}})\n    {{t}} = {{t}} + {{x}}\nprint(f\"{{label}}: {{{t}}}\")",
+      "values": [
+        {
+          "v": "preturi",
+          "d": "(4, 6, 5)",
+          "t": "plata",
+          "x": "p",
+          "label": "De plata"
+        },
+        {
+          "v": "scoruri",
+          "d": "(7, 3, 9)",
+          "t": "total",
+          "x": "s",
+          "label": "Total"
+        },
+        {
+          "v": "ture",
+          "d": "(12, 15)",
+          "t": "timp",
+          "x": "tura",
+          "label": "Timp"
+        }
+      ],
+      "bug": ["{{t}} = 0", "{{t}} = 1"]
+    },
+    {
+      "id": "tp-bad-index",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{d}}\nprint({{v}})\nprint({{v}}[{{i}}])\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "jucator",
+          "d": "(\"Tommy\", 100, \"Vice City\")",
+          "i": 1,
+          "bad": 2
+        },
+        {
+          "v": "zi_de_nastere",
+          "d": "(1951, 7, 15)",
+          "i": 0,
+          "bad": 1
+        },
+        {
+          "v": "eroi",
+          "d": "(\"Shrek\", \"Fiona\", \"Donkey\")",
+          "i": 2,
+          "bad": 3
+        }
+      ],
+      "bug": ["print({{v}}[{{i}}])", "print({{v}}[{{bad}}])"]
+    }
+  ]
+}

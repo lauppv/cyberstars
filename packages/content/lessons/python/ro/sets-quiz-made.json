@@ -1,0 +1,732 @@
+{
+  "note": "Made by npm run make:quiz from the templates in sets-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "st-dedupe-5d440a",
+      "text": "Ce afișează?",
+      "code": "semnale = [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\"]\nprint(len(semnale))\nprint(len(set(semnale)))",
+      "options": ["6\n3", "6\n6", "3\n6", "3"],
+      "answer": 0
+    },
+    {
+      "id": "st-dedupe-b6c306",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Tommy\", \"Phil\"]\nprint(len(nume))\nprint(len(set(nume)))",
+      "options": ["4\n3", "4\n4", "3\n4", "3"],
+      "answer": 0
+    },
+    {
+      "id": "st-dedupe-e7daf1",
+      "text": "Ce afișează?",
+      "code": "culori = [\"rosu\", \"rosu\", \"albastru\", \"rosu\", \"verde\", \"albastru\", \"rosu\"]\nprint(len(culori))\nprint(len(set(culori)))",
+      "options": ["7\n3", "7\n7", "3\n7", "3"],
+      "answer": 0
+    },
+    {
+      "id": "st-dedupe-3bf71e",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Terra\", \"Marte\", \"Venus\"]\nprint(len(planete))\nprint(len(set(planete)))",
+      "options": ["5\n3", "5\n5", "3\n5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "st-dedupe-eb25bd",
+      "text": "Ce afișează?",
+      "code": "zaruri = [6, 2, 6, 6, 3, 2, 1, 6]\nprint(len(zaruri))\nprint(len(set(zaruri)))",
+      "options": ["8\n4", "8\n8", "4\n8", "4"],
+      "answer": 0
+    },
+    {
+      "id": "st-add-3420ef",
+      "text": "Ce afișează?",
+      "code": "echipaj = {\"Tommy\", \"Lance\", \"Phil\"}\nechipaj.add(\"Lance\")\nechipaj.add(\"Ken\")\nprint(len(echipaj))",
+      "options": ["4", "5", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "st-add-b6380b",
+      "text": "Ce afișează?",
+      "code": "arme = {\"bata\", \"pistol\", \"cutit\"}\narme.add(\"bata\")\narme.add(\"pusca\")\nprint(len(arme))",
+      "options": ["4", "5", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "st-add-a739ea",
+      "text": "Ce afișează?",
+      "code": "stampile = {\"Marte\", \"Venus\", \"Terra\", \"Pluto\"}\nstampile.add(\"Pluto\")\nstampile.add(\"Titan\")\nprint(len(stampile))",
+      "options": ["5", "6", "4", "2"],
+      "answer": 0
+    },
+    {
+      "id": "st-add-f80ba5",
+      "text": "Ce afișează?",
+      "code": "medalii = {\"aur\", \"argint\", \"bronz\"}\nmedalii.add(\"argint\")\nmedalii.add(\"platina\")\nprint(len(medalii))",
+      "options": ["4", "5", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "st-add-b106db",
+      "text": "Ce afișează?",
+      "code": "coduri = {\"A1\", \"B2\", \"C3\"}\ncoduri.add(\"A1\")\ncoduri.add(\"D4\")\nprint(len(coduri))",
+      "options": ["4", "5", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "st-remove-838964",
+      "text": "Ce afișează?",
+      "code": "arme = {\"bata\", \"pistol\", \"cutit\"}\narme.remove(\"bata\")\nprint(\"bata\" in arme)\nprint(len(arme))",
+      "options": ["False\n2", "True\n3", "True\n2", "2\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "st-remove-6048a9",
+      "text": "Ce afișează?",
+      "code": "echipaj = {\"Tommy\", \"Lance\", \"Phil\", \"Ken\"}\nechipaj.remove(\"Phil\")\nprint(\"Phil\" in echipaj)\nprint(len(echipaj))",
+      "options": ["False\n3", "True\n4", "True\n3", "3\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "st-remove-f2a62e",
+      "text": "Ce afișează?",
+      "code": "oaspeti = {\"Ana\", \"Rex\"}\noaspeti.remove(\"Rex\")\nprint(\"Rex\" in oaspeti)\nprint(len(oaspeti))",
+      "options": ["False\n1", "True\n2", "True\n1", "1\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "st-remove-084c97",
+      "text": "Ce afișează?",
+      "code": "tinte = {\"A\", \"B\", \"C\", \"D\", \"E\"}\ntinte.remove(\"C\")\nprint(\"C\" in tinte)\nprint(len(tinte))",
+      "options": ["False\n4", "True\n5", "True\n4", "4\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "st-remove-4203a1",
+      "text": "Ce afișează?",
+      "code": "luni = {\"Io\", \"Europa\", \"Titan\"}\nluni.remove(\"Titan\")\nprint(\"Titan\" in luni)\nprint(len(luni))",
+      "options": ["False\n2", "True\n3", "True\n2", "2\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "st-check-c2cecb",
+      "text": "Ce afișează?",
+      "code": "interzisi = {\"Sonny\", \"Diaz\"}\nfor p in [\"Tommy\", \"Diaz\", \"Lance\"]:\n    if p in interzisi:\n        print(f\"{p} este interzis!\")\n    else:\n        print(f\"{p} este binevenit\")",
+      "options": [
+        "Tommy este binevenit\nDiaz este interzis!\nLance este binevenit",
+        "Tommy este interzis!\nDiaz este binevenit\nLance este interzis!",
+        "Diaz este interzis!",
+        "Tommy este binevenit\nDiaz este binevenit\nLance este binevenit"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-check-2208b5",
+      "text": "Ce afișează?",
+      "code": "stricate = {\"B2\", \"D4\"}\nfor cod in [\"A1\", \"B2\", \"C3\", \"D4\"]:\n    if cod in stricate:\n        print(f\"{cod} e stricat\")\n    else:\n        print(f\"{cod} merge\")",
+      "options": [
+        "A1 merge\nB2 e stricat\nC3 merge\nD4 e stricat",
+        "A1 e stricat\nB2 merge\nC3 e stricat\nD4 merge",
+        "B2 e stricat\nD4 e stricat",
+        "A1 merge\nB2 merge\nC3 merge\nD4 merge"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-check-a07245",
+      "text": "Ce afișează?",
+      "code": "pline = {\"Marte\"}\nfor planeta in [\"Marte\", \"Venus\"]:\n    if planeta in pline:\n        print(f\"{planeta} e plina\")\n    else:\n        print(f\"{planeta} are loc\")",
+      "options": [
+        "Marte e plina\nVenus are loc",
+        "Marte are loc\nVenus e plina",
+        "Marte e plina",
+        "Marte are loc\nVenus are loc"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-check-2b29b0",
+      "text": "Ce afișează?",
+      "code": "vandute = {\"ceai\", \"tort\", \"gem\"}\nfor produs in [\"tort\", \"lapte\"]:\n    if produs in vandute:\n        print(f\"{produs} s-a terminat\")\n    else:\n        print(f\"{produs} e pe stoc\")",
+      "options": [
+        "tort s-a terminat\nlapte e pe stoc",
+        "tort e pe stoc\nlapte s-a terminat",
+        "tort s-a terminat",
+        "tort e pe stoc\nlapte e pe stoc"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-repeats-a2dd78",
+      "text": "Ce afișează?",
+      "code": "vazute = set()\nrepetari = 0\nfor c in [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\"]:\n    if c in vazute:\n        repetari = repetari + 1\n    else:\n        vazute.add(c)\nprint(f\"Repetari: {repetari}\")",
+      "options": [
+        "Repetari: 3",
+        "A1\nB2\nA1\nC3\nB2\nA1\nRepetari: 0",
+        "Repetari: 6",
+        "Repetari: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-repeats-4dc0e2",
+      "text": "Ce afișează?",
+      "code": "intalniti = set()\niar = 0\nfor nume in [\"Tommy\", \"Lance\", \"Tommy\", \"Phil\", \"Lance\"]:\n    if nume in intalniti:\n        iar = iar + 1\n    else:\n        intalniti.add(nume)\nprint(f\"Intalniti iar: {iar}\")",
+      "options": [
+        "Intalniti iar: 2",
+        "Tommy\nLance\nTommy\nPhil\nLance\nIntalniti iar: 0",
+        "Intalniti iar: 5",
+        "Intalniti iar: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-repeats-2adb62",
+      "text": "Ce afișează?",
+      "code": "vizitate = set()\nreveniri = 0\nfor p in [\"Marte\", \"Venus\", \"Marte\", \"Marte\", \"Terra\", \"Venus\"]:\n    if p in vizitate:\n        reveniri = reveniri + 1\n    else:\n        vizitate.add(p)\nprint(f\"Reveniri: {reveniri}\")",
+      "options": [
+        "Reveniri: 3",
+        "Marte\nVenus\nMarte\nMarte\nTerra\nVenus\nReveniri: 0",
+        "Reveniri: 6",
+        "Reveniri: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-repeats-532152",
+      "text": "Ce afișează?",
+      "code": "auzite = set()\necouri = 0\nfor c in [\"hei\", \"ho\", \"hei\", \"hei\"]:\n    if c in auzite:\n        ecouri = ecouri + 1\n    else:\n        auzite.add(c)\nprint(f\"Ecouri: {ecouri}\")",
+      "options": ["Ecouri: 2", "hei\nho\nhei\nhei\nEcouri: 0", "Ecouri: 4", "Ecouri: 1"],
+      "answer": 0
+    },
+    {
+      "id": "st-repeats-08bcbe",
+      "text": "Ce afișează?",
+      "code": "folosite = set()\niar = 0\nfor n in [4, 8, 4, 15, 8, 4]:\n    if n in folosite:\n        iar = iar + 1\n    else:\n        folosite.add(n)\nprint(f\"Folosite iar: {iar}\")",
+      "options": [
+        "Folosite iar: 3",
+        "4\n8\n4\n15\n8\n4\nFolosite iar: 0",
+        "Folosite iar: 6",
+        "Folosite iar: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-log-fc0e6a",
+      "text": "Ce afișează?",
+      "code": "semnale = [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\"]\nprint(f\"Total: {len(semnale)}\")\nunice = set(semnale)\nprint(f\"Unice: {len(unice)}\")\nif \"C3\" in unice:\n    print(\"C3 detectat\")\nelse:\n    print(\"C3 lipseste\")",
+      "options": [
+        "Total: 5\nUnice: 3\nC3 detectat",
+        "Total: 5\nUnice: 5\nC3 detectat",
+        "Total: 5\nUnice: 3\nC3 lipseste",
+        "Total: 3\nUnice: 3\nC3 detectat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-log-66a8c8",
+      "text": "Ce afișează?",
+      "code": "semnale = [\"X1\", \"X1\", \"Y2\", \"X1\"]\nprint(f\"Total: {len(semnale)}\")\nunice = set(semnale)\nprint(f\"Unice: {len(unice)}\")\nif \"Z3\" in unice:\n    print(\"Z3 detectat\")\nelse:\n    print(\"Z3 lipseste\")",
+      "options": [
+        "Total: 4\nUnice: 2\nZ3 lipseste",
+        "Total: 4\nUnice: 4\nZ3 lipseste",
+        "Total: 4\nUnice: 2\nZ3 detectat",
+        "Total: 2\nUnice: 2\nZ3 lipseste"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-log-197a08",
+      "text": "Ce afișează?",
+      "code": "pinguri = [\"K7\", \"L8\", \"K7\", \"M9\", \"L8\", \"K7\", \"N1\"]\nprint(f\"Total: {len(pinguri)}\")\nunice = set(pinguri)\nprint(f\"Unice: {len(unice)}\")\nif \"N1\" in unice:\n    print(\"N1 detectat\")\nelse:\n    print(\"N1 lipseste\")",
+      "options": [
+        "Total: 7\nUnice: 4\nN1 detectat",
+        "Total: 7\nUnice: 7\nN1 detectat",
+        "Total: 7\nUnice: 4\nN1 lipseste",
+        "Total: 4\nUnice: 4\nN1 detectat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-log-c7be6f",
+      "text": "Ce afișează?",
+      "code": "pinguri = [\"Q1\", \"R2\", \"S3\", \"Q1\"]\nprint(f\"Total: {len(pinguri)}\")\nunice = set(pinguri)\nprint(f\"Unice: {len(unice)}\")\nif \"T4\" in unice:\n    print(\"T4 detectat\")\nelse:\n    print(\"T4 lipseste\")",
+      "options": [
+        "Total: 4\nUnice: 3\nT4 lipseste",
+        "Total: 4\nUnice: 4\nT4 lipseste",
+        "Total: 4\nUnice: 3\nT4 detectat",
+        "Total: 3\nUnice: 3\nT4 lipseste"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-log-0b5d70",
+      "text": "Ce afișează?",
+      "code": "coduri = [\"D4\", \"D4\", \"D4\"]\nprint(f\"Total: {len(coduri)}\")\nunice = set(coduri)\nprint(f\"Unice: {len(unice)}\")\nif \"D4\" in unice:\n    print(\"D4 detectat\")\nelse:\n    print(\"D4 lipseste\")",
+      "options": [
+        "Total: 3\nUnice: 1\nD4 detectat",
+        "Total: 3\nUnice: 3\nD4 detectat",
+        "Total: 3\nUnice: 1\nD4 lipseste",
+        "Total: 1\nUnice: 1\nD4 detectat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-check-6e607b",
+      "text": "Care program afișează asta?",
+      "output": "Diaz: stop\nTommy: trece",
+      "options": [
+        "interzisi = {\"Sonny\", \"Diaz\"}\nfor p in [\"Diaz\", \"Tommy\"]:\n    if p in interzisi:\n        print(f\"{p}: stop\")\n    else:\n        print(f\"{p}: trece\")",
+        "interzisi = {\"Sonny\", \"Diaz\"}\nfor p in [\"Diaz\", \"Tommy\"]:\n    if p not in interzisi:\n        print(f\"{p}: stop\")\n    else:\n        print(f\"{p}: trece\")",
+        "interzisi = {\"Sonny\", \"Diaz\"}\nfor p in [\"Diaz\", \"Tommy\"]:\n    if p == interzisi:\n        print(f\"{p}: stop\")\n    else:\n        print(f\"{p}: trece\")",
+        "interzisi = set()\nfor p in [\"Diaz\", \"Tommy\"]:\n    if p in interzisi:\n        print(f\"{p}: stop\")\n    else:\n        print(f\"{p}: trece\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-check-ee802c",
+      "text": "Care program afișează asta?",
+      "output": "A: deschisa\nC: inchisa",
+      "options": [
+        "inchise = {\"B\", \"C\"}\nfor poarta in [\"A\", \"C\"]:\n    if poarta in inchise:\n        print(f\"{poarta}: inchisa\")\n    else:\n        print(f\"{poarta}: deschisa\")",
+        "inchise = {\"B\", \"C\"}\nfor poarta in [\"A\", \"C\"]:\n    if poarta not in inchise:\n        print(f\"{poarta}: inchisa\")\n    else:\n        print(f\"{poarta}: deschisa\")",
+        "inchise = {\"B\", \"C\"}\nfor poarta in [\"A\", \"C\"]:\n    if poarta == inchise:\n        print(f\"{poarta}: inchisa\")\n    else:\n        print(f\"{poarta}: deschisa\")",
+        "inchise = set()\nfor poarta in [\"A\", \"C\"]:\n    if poarta in inchise:\n        print(f\"{poarta}: inchisa\")\n    else:\n        print(f\"{poarta}: deschisa\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-check-79fe97",
+      "text": "Care program afișează asta?",
+      "output": "gatit: gata\ncumparaturi: de facut\nspalat: gata",
+      "options": [
+        "facute = {\"spalat\", \"gatit\"}\nfor treaba in [\"gatit\", \"cumparaturi\", \"spalat\"]:\n    if treaba in facute:\n        print(f\"{treaba}: gata\")\n    else:\n        print(f\"{treaba}: de facut\")",
+        "facute = {\"spalat\", \"gatit\"}\nfor treaba in [\"gatit\", \"cumparaturi\", \"spalat\"]:\n    if treaba not in facute:\n        print(f\"{treaba}: gata\")\n    else:\n        print(f\"{treaba}: de facut\")",
+        "facute = {\"spalat\", \"gatit\"}\nfor treaba in [\"gatit\", \"cumparaturi\", \"spalat\"]:\n    if treaba == facute:\n        print(f\"{treaba}: gata\")\n    else:\n        print(f\"{treaba}: de facut\")",
+        "facute = set()\nfor treaba in [\"gatit\", \"cumparaturi\", \"spalat\"]:\n    if treaba in facute:\n        print(f\"{treaba}: gata\")\n    else:\n        print(f\"{treaba}: de facut\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-check-e2c99d",
+      "text": "Care program afișează asta?",
+      "output": "Europa: semnal\nIo: fara semnal",
+      "options": [
+        "pierdute = {\"Io\"}\nfor luna in [\"Europa\", \"Io\"]:\n    if luna in pierdute:\n        print(f\"{luna}: fara semnal\")\n    else:\n        print(f\"{luna}: semnal\")",
+        "pierdute = {\"Io\"}\nfor luna in [\"Europa\", \"Io\"]:\n    if luna not in pierdute:\n        print(f\"{luna}: fara semnal\")\n    else:\n        print(f\"{luna}: semnal\")",
+        "pierdute = {\"Io\"}\nfor luna in [\"Europa\", \"Io\"]:\n    if luna == pierdute:\n        print(f\"{luna}: fara semnal\")\n    else:\n        print(f\"{luna}: semnal\")",
+        "pierdute = set()\nfor luna in [\"Europa\", \"Io\"]:\n    if luna in pierdute:\n        print(f\"{luna}: fara semnal\")\n    else:\n        print(f\"{luna}: semnal\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-add-543cb8",
+      "text": "Care program afișează asta?",
+      "output": "4",
+      "options": [
+        "echipaj = {\"Tommy\", \"Lance\", \"Phil\"}\nechipaj.add(\"Ken\")\nprint(len(echipaj))",
+        "echipaj = {\"Tommy\", \"Lance\", \"Phil\"}\nechipaj.add(\"Lance\")\nprint(len(echipaj))",
+        "echipaj = {\"Tommy\", \"Lance\", \"Phil\"}\nechipaj.append(\"Ken\")\nprint(len(echipaj))",
+        "echipaj = {\"Tommy\", \"Lance\", \"Phil\"}\nechipaj.remove(\"Lance\")\nprint(len(echipaj))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-add-96beee",
+      "text": "Care program afișează asta?",
+      "output": "3",
+      "options": [
+        "arme = {\"bata\", \"pistol\"}\narme.add(\"cutit\")\nprint(len(arme))",
+        "arme = {\"bata\", \"pistol\"}\narme.add(\"bata\")\nprint(len(arme))",
+        "arme = {\"bata\", \"pistol\"}\narme.append(\"cutit\")\nprint(len(arme))",
+        "arme = {\"bata\", \"pistol\"}\narme.remove(\"bata\")\nprint(len(arme))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-add-63abea",
+      "text": "Care program afișează asta?",
+      "output": "5",
+      "options": [
+        "stampile = {\"Marte\", \"Venus\", \"Terra\", \"Pluto\"}\nstampile.add(\"Titan\")\nprint(len(stampile))",
+        "stampile = {\"Marte\", \"Venus\", \"Terra\", \"Pluto\"}\nstampile.add(\"Terra\")\nprint(len(stampile))",
+        "stampile = {\"Marte\", \"Venus\", \"Terra\", \"Pluto\"}\nstampile.append(\"Titan\")\nprint(len(stampile))",
+        "stampile = {\"Marte\", \"Venus\", \"Terra\", \"Pluto\"}\nstampile.remove(\"Terra\")\nprint(len(stampile))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-add-ee7eb1",
+      "text": "Care program afișează asta?",
+      "output": "6",
+      "options": [
+        "coduri = {\"A1\", \"B2\", \"C3\", \"D4\", \"E5\"}\ncoduri.add(\"F6\")\nprint(len(coduri))",
+        "coduri = {\"A1\", \"B2\", \"C3\", \"D4\", \"E5\"}\ncoduri.add(\"C3\")\nprint(len(coduri))",
+        "coduri = {\"A1\", \"B2\", \"C3\", \"D4\", \"E5\"}\ncoduri.append(\"F6\")\nprint(len(coduri))",
+        "coduri = {\"A1\", \"B2\", \"C3\", \"D4\", \"E5\"}\ncoduri.remove(\"C3\")\nprint(len(coduri))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-add-7ebf10",
+      "text": "Care program afișează asta?",
+      "output": "2",
+      "options": [
+        "medalii = {\"aur\"}\nmedalii.add(\"bronz\")\nprint(len(medalii))",
+        "medalii = {\"aur\"}\nmedalii.add(\"aur\")\nprint(len(medalii))",
+        "medalii = {\"aur\"}\nmedalii.append(\"bronz\")\nprint(len(medalii))",
+        "medalii = {\"aur\"}\nmedalii.remove(\"aur\")\nprint(len(medalii))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-add-066693",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"Tommy\", \"Lance\"}\n___\nprint(\"Phil\" in echipaj)\nprint(len(echipaj))",
+      "output": "True\n3",
+      "options": [
+        "echipaj.add(\"Phil\")",
+        "echipaj.append(\"Phil\")",
+        "echipaj.add(\"Lance\")",
+        "echipaj = {\"Phil\"}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-add-45b7f3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "arme = {\"bata\", \"pistol\", \"cutit\"}\n___\nprint(\"pusca\" in arme)\nprint(len(arme))",
+      "output": "True\n4",
+      "options": [
+        "arme.add(\"pusca\")",
+        "arme.append(\"pusca\")",
+        "arme.add(\"bata\")",
+        "arme = {\"pusca\"}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-add-5c6749",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "stampile = {\"Marte\"}\n___\nprint(\"Venus\" in stampile)\nprint(len(stampile))",
+      "output": "True\n2",
+      "options": [
+        "stampile.add(\"Venus\")",
+        "stampile.append(\"Venus\")",
+        "stampile.add(\"Marte\")",
+        "stampile = {\"Venus\"}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-add-992173",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "coduri = {\"A1\", \"B2\", \"C3\", \"D4\"}\n___\nprint(\"E5\" in coduri)\nprint(len(coduri))",
+      "output": "True\n5",
+      "options": [
+        "coduri.add(\"E5\")",
+        "coduri.append(\"E5\")",
+        "coduri.add(\"C3\")",
+        "coduri = {\"E5\"}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-unique-e0a0fb",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "semnale = [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\"]\n___\nprint(f\"Unice: {len(unice)}\")",
+      "output": "Unice: 3",
+      "options": ["unice = set(semnale)", "unice = semnale", "unice = [semnale]", "unice = set()"],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-unique-2fb76d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Tommy\"]\n___\nprint(f\"Unice: {len(unice)}\")",
+      "output": "Unice: 2",
+      "options": ["unice = set(nume)", "unice = nume", "unice = [nume]", "unice = set()"],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-unique-d1fe44",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "culori = [\"rosu\", \"albastru\", \"rosu\", \"verde\", \"albastru\"]\n___\nprint(f\"Unice: {len(unice)}\")",
+      "output": "Unice: 3",
+      "options": ["unice = set(culori)", "unice = culori", "unice = [culori]", "unice = set()"],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-unique-7aada2",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "zaruri = [5, 5, 2, 5, 1, 2, 6, 5]\n___\nprint(f\"Unice: {len(unice)}\")",
+      "output": "Unice: 4",
+      "options": ["unice = set(zaruri)", "unice = zaruri", "unice = [zaruri]", "unice = set()"],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-remove-bbd85f",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "arme = {\"bata\", \"pistol\", \"cutit\"}\n___\nprint(\"bata\" in arme)\nprint(len(arme))",
+      "output": "False\n2",
+      "options": [
+        "arme.remove(\"bata\")",
+        "arme.add(\"bata\")",
+        "del arme[0]",
+        "arme.remove(\"pistol\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-remove-b57571",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"Tommy\", \"Lance\", \"Phil\", \"Ken\"}\n___\nprint(\"Ken\" in echipaj)\nprint(len(echipaj))",
+      "output": "False\n3",
+      "options": [
+        "echipaj.remove(\"Ken\")",
+        "echipaj.add(\"Ken\")",
+        "del echipaj[0]",
+        "echipaj.remove(\"Tommy\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-remove-197741",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "oaspeti = {\"Ana\", \"Rex\"}\n___\nprint(\"Ana\" in oaspeti)\nprint(len(oaspeti))",
+      "output": "False\n1",
+      "options": [
+        "oaspeti.remove(\"Ana\")",
+        "oaspeti.add(\"Ana\")",
+        "del oaspeti[0]",
+        "oaspeti.remove(\"Rex\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-remove-cacdca",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "luni = {\"Io\", \"Europa\", \"Titan\"}\n___\nprint(\"Europa\" in luni)\nprint(len(luni))",
+      "output": "False\n2",
+      "options": [
+        "luni.remove(\"Europa\")",
+        "luni.add(\"Europa\")",
+        "del luni[0]",
+        "luni.remove(\"Io\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-val-in-51928b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "interzisi = {\"Sonny\", \"Gonzalez\", \"Mendez\"}\njucator = ___\nif jucator in interzisi:\n    print(\"Stop\")\nelse:\n    print(\"Bun venit\")",
+      "output": "Stop",
+      "options": ["\"Mendez\"", "\"Tommy\"", "\"Diaz\"", "\"interzisi\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-in-64866e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "stricate = {\"B2\", \"D4\"}\ncod = ___\nif cod in stricate:\n    print(\"De reparat\")\nelse:\n    print(\"Totul e bine\")",
+      "output": "De reparat",
+      "options": ["\"D4\"", "\"A1\"", "\"C3\"", "\"stricate\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-in-cbf613",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pline = {\"Marte\", \"Venus\"}\nplaneta = ___\nif planeta in pline:\n    print(\"Nu e loc\")\nelse:\n    print(\"Aterizeaza aici\")",
+      "output": "Nu e loc",
+      "options": ["\"Venus\"", "\"Terra\"", "\"Pluto\"", "\"pline\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-in-d24003",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "vandute = {\"ceai\", \"tort\"}\nprodus = ___\nif produs in vandute:\n    print(\"Stoc epuizat\")\nelse:\n    print(\"Pe stoc\")",
+      "output": "Stoc epuizat",
+      "options": ["\"ceai\"", "\"lapte\"", "\"gem\"", "\"vandute\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-add-870e7a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"Tommy\", \"Lance\", \"Phil\"}\nechipaj.add(___)\nprint(len(echipaj))",
+      "output": "4",
+      "options": ["\"Ken\"", "\"Tommy\"", "\"Lance\"", "\"Phil\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-add-584ad3",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "arme = {\"bata\", \"pistol\", \"cutit\"}\narme.add(___)\nprint(len(arme))",
+      "output": "4",
+      "options": ["\"pusca\"", "\"bata\"", "\"pistol\"", "\"cutit\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-add-354f5d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "coduri = {\"A1\", \"B2\", \"C3\", \"D4\"}\ncoduri.add(___)\nprint(len(coduri))",
+      "output": "5",
+      "options": ["\"E5\"", "\"A1\"", "\"C3\"", "\"D4\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-add-5ca0ad",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "stampile = {\"Marte\", \"Venus\", \"Terra\"}\nstampile.add(___)\nprint(len(stampile))",
+      "output": "4",
+      "options": ["\"Titan\"", "\"Marte\"", "\"Venus\"", "\"Terra\""],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-append-26492e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "vazute = {\"A1\", \"B2\", \"A1\"}\nvazute.append(\"C3\")\nprint(len(vazute))\nprint(\"C3\" in vazute)",
+      "output": "3\nTrue",
+      "options": [
+        "vazute.append(\"C3\")",
+        "vazute = {\"A1\", \"B2\", \"A1\"}",
+        "print(len(vazute))",
+        "print(\"C3\" in vazute)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-append-adc245",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = {\"Tommy\", \"Lance\", \"Tommy\", \"Phil\"}\nechipaj.append(\"Ken\")\nprint(len(echipaj))\nprint(\"Ken\" in echipaj)",
+      "output": "4\nTrue",
+      "options": [
+        "echipaj.append(\"Ken\")",
+        "echipaj = {\"Tommy\", \"Lance\", \"Tommy\", \"Phil\"}",
+        "print(len(echipaj))",
+        "print(\"Ken\" in echipaj)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-append-bca458",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "stampile = {\"Marte\", \"Marte\", \"Venus\"}\nstampile.append(\"Terra\")\nprint(len(stampile))\nprint(\"Terra\" in stampile)",
+      "output": "3\nTrue",
+      "options": [
+        "stampile.append(\"Terra\")",
+        "stampile = {\"Marte\", \"Marte\", \"Venus\"}",
+        "print(len(stampile))",
+        "print(\"Terra\" in stampile)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-empty-6c1d78",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "vazute = {}\nfor c in [\"A1\", \"B2\", \"A1\", \"C3\"]:\n    vazute.add(c)\nvazute.remove(\"A1\")\nprint(len(vazute))",
+      "output": "2",
+      "options": ["vazute = {}", "vazute.add(c)", "vazute.remove(\"A1\")", "print(len(vazute))"],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-empty-19173d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "intalniti = {}\nfor nume in [\"Tommy\", \"Lance\", \"Tommy\"]:\n    intalniti.add(nume)\nintalniti.remove(\"Lance\")\nprint(len(intalniti))",
+      "output": "1",
+      "options": [
+        "intalniti = {}",
+        "intalniti.add(nume)",
+        "intalniti.remove(\"Lance\")",
+        "print(len(intalniti))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-empty-5252d2",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "vizitate = {}\nfor p in [\"Marte\", \"Venus\", \"Marte\", \"Terra\", \"Venus\"]:\n    vizitate.add(p)\nvizitate.remove(\"Terra\")\nprint(len(vizitate))",
+      "output": "2",
+      "options": [
+        "vizitate = {}",
+        "vizitate.add(p)",
+        "vizitate.remove(\"Terra\")",
+        "print(len(vizitate))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-len-430a34",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "semnale = [\"A1\", \"B2\", \"A1\", \"C3\"]\nunice = set(semnale)\nprint(f\"Total: {len(semnale)}\")\nprint(f\"Unice: {len(semnale)}\")",
+      "output": "Total: 4\nUnice: 3",
+      "options": [
+        "print(f\"Unice: {len(semnale)}\")",
+        "print(f\"Total: {len(semnale)}\")",
+        "unice = set(semnale)",
+        "semnale = [\"A1\", \"B2\", \"A1\", \"C3\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-len-e7bada",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Tommy\", \"Tommy\", \"Phil\"]\nunice = set(nume)\nprint(f\"Total: {len(nume)}\")\nprint(f\"Unice: {len(nume)}\")",
+      "output": "Total: 5\nUnice: 3",
+      "options": [
+        "print(f\"Unice: {len(nume)}\")",
+        "print(f\"Total: {len(nume)}\")",
+        "unice = set(nume)",
+        "nume = [\"Tommy\", \"Lance\", \"Tommy\", \"Tommy\", \"Phil\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-len-68e15a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "zaruri = [3, 3, 6, 1, 6, 3]\nunice = set(zaruri)\nprint(f\"Total: {len(zaruri)}\")\nprint(f\"Unice: {len(zaruri)}\")",
+      "output": "Total: 6\nUnice: 3",
+      "options": [
+        "print(f\"Unice: {len(zaruri)}\")",
+        "print(f\"Total: {len(zaruri)}\")",
+        "unice = set(zaruri)",
+        "zaruri = [3, 3, 6, 1, 6, 3]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-remove-3ebaf2",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = {\"Tommy\", \"Lance\", \"Phil\"}\nechipaj.remove(\"Phil\")\nechipaj.add(\"Ken\")\nprint(\"Lance\" in echipaj)\nprint(\"Phil\" in echipaj)\nprint(len(echipaj))",
+      "output": "False\nTrue\n3",
+      "options": [
+        "echipaj.remove(\"Phil\")",
+        "echipaj.add(\"Ken\")",
+        "print(\"Lance\" in echipaj)",
+        "print(\"Phil\" in echipaj)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-remove-801833",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "arme = {\"bata\", \"pistol\", \"cutit\"}\narme.remove(\"cutit\")\narme.add(\"pusca\")\nprint(\"bata\" in arme)\nprint(\"cutit\" in arme)\nprint(len(arme))",
+      "output": "False\nTrue\n3",
+      "options": [
+        "arme.remove(\"cutit\")",
+        "arme = {\"bata\", \"pistol\", \"cutit\"}",
+        "arme.add(\"pusca\")",
+        "print(\"bata\" in arme)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-remove-b52ce6",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "luni = {\"Io\", \"Europa\", \"Titan\"}\nluni.remove(\"Io\")\nluni.add(\"Luna\")\nprint(\"Titan\" in luni)\nprint(\"Io\" in luni)\nprint(len(luni))",
+      "output": "False\nTrue\n3",
+      "options": [
+        "luni.remove(\"Io\")",
+        "luni = {\"Io\", \"Europa\", \"Titan\"}",
+        "luni.add(\"Luna\")",
+        "print(\"Titan\" in luni)"
+      ],
+      "answer": 0
+    }
+  ]
+}
