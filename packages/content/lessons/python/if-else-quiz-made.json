@@ -198,7 +198,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "temperature = 1200\nif temperature > 1000\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
       "output": "Danger",
-      "options": ["if temperature > 1000", "else:", "temperature = 1200", "print(\"Danger\")"],
+      "options": ["if temperature > 1000", "else:", "print(\"Danger\")", "print(\"Stable\")"],
       "answer": 0
     },
     {
@@ -206,7 +206,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "score = 30\nif score > 50\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
       "output": "Fail",
-      "options": ["if score > 50", "else:", "score = 30", "print(\"Pass\")"],
+      "options": ["if score > 50", "else:", "print(\"Pass\")", "print(\"Fail\")"],
       "answer": 0
     },
     {
@@ -214,7 +214,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "speed = 130\nif speed > 100\n    print(\"Slow down\")\nelse:\n    print(\"Good speed\")",
       "output": "Slow down",
-      "options": ["if speed > 100", "else:", "speed = 130", "print(\"Slow down\")"],
+      "options": ["if speed > 100", "else:", "print(\"Slow down\")", "print(\"Good speed\")"],
       "answer": 0
     },
     {
@@ -222,7 +222,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "points = 90\nif points > 100\n    print(\"New record\")\nelse:\n    print(\"Try again\")",
       "output": "Try again",
-      "options": ["if points > 100", "else:", "points = 90", "print(\"New record\")"],
+      "options": ["if points > 100", "points = 90", "else:", "print(\"New record\")"],
       "answer": 0
     },
     {
@@ -267,7 +267,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "stars = 5\nif stars = 5:\n    print(\"Full score\")\nelse:\n    print(\"Not yet\")",
       "output": "Full score",
-      "options": ["if stars = 5:", "else:", "stars = 5", "print(\"Full score\")"],
+      "options": ["if stars = 5:", "stars = 5", "else:", "print(\"Full score\")"],
       "answer": 0
     },
     {
@@ -275,7 +275,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "lives = 0\nif lives = 0:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
       "output": "Game over",
-      "options": ["if lives = 0:", "else:", "lives = 0", "print(\"Game over\")"],
+      "options": ["if lives = 0:", "lives = 0", "else:", "print(\"Game over\")"],
       "answer": 0
     },
     {
@@ -283,7 +283,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "code = 1234\nif code = 1234:\n    print(\"Door open\")\nelse:\n    print(\"Door locked\")",
       "output": "Door open",
-      "options": ["if code = 1234:", "else:", "code = 1234", "print(\"Door open\")"],
+      "options": ["if code = 1234:", "code = 1234", "else:", "print(\"Door open\")"],
       "answer": 0
     },
     {
@@ -291,7 +291,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "level = 5\nif level = 10:\n    print(\"Boss fight\")\nelse:\n    print(\"Keep going\")",
       "output": "Keep going",
-      "options": ["if level = 10:", "else:", "level = 5", "print(\"Boss fight\")"],
+      "options": ["if level = 10:", "level = 5", "else:", "print(\"Boss fight\")"],
       "answer": 0
     },
     {
@@ -315,7 +315,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "fuel = 500\nif fuel >= 1000:\n    print(\"Danger\")\nelse\n    print(\"Stable\")",
       "output": "Stable",
-      "options": ["else", "if fuel >= 1000:", "print(\"Danger\")", "print(\"Stable\")"],
+      "options": ["else", "if fuel >= 1000:", "print(\"Danger\")", "fuel = 500"],
       "answer": 0
     },
     {
@@ -583,9 +583,9 @@
       "output": "Tommy is playing",
       "options": [
         "online = true",
-        "user = \"Tommy\"",
         "print(f\"{user} is playing\")",
-        "print(f\"{user} is offline\")"
+        "print(f\"{user} is offline\")",
+        "if online == True:"
       ],
       "answer": 0
     },
@@ -596,9 +596,9 @@
       "output": "Lance is offline",
       "options": [
         "online = false",
-        "user = \"Lance\"",
         "print(f\"{user} is playing\")",
-        "print(f\"{user} is offline\")"
+        "print(f\"{user} is offline\")",
+        "if online == True:"
       ],
       "answer": 0
     },

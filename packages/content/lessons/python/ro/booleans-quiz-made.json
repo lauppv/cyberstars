@@ -605,8 +605,8 @@
       "output": "Poti conduce",
       "options": [
         "if varsta >= 18 AND are_permis:",
-        "else:",
         "are_permis = True",
+        "else:",
         "print(\"Poti conduce\")"
       ],
       "answer": 0
@@ -616,12 +616,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nivel = 4\nare_cheie = True\nif nivel >= 5 AND are_cheie:\n    print(\"Usa se deschide\")\nelse:\n    print(\"Usa ramane inchisa\")",
       "output": "Usa ramane inchisa",
-      "options": [
-        "if nivel >= 5 AND are_cheie:",
-        "else:",
-        "are_cheie = True",
-        "print(\"Usa se deschide\")"
-      ],
+      "options": ["if nivel >= 5 AND are_cheie:", "are_cheie = True", "nivel = 4", "else:"],
       "answer": 0
     },
     {
@@ -631,8 +626,8 @@
       "output": "Lansarea asteapta",
       "options": [
         "if combustibil >= 50 AND motor_ok:",
-        "else:",
         "motor_ok = False",
+        "else:",
         "print(\"Gata de lansare\")"
       ],
       "answer": 0
@@ -644,9 +639,9 @@
       "output": "Gata de lansare",
       "options": [
         "if combustibil >= 50 AND motor_ok:",
-        "else:",
         "motor_ok = True",
-        "print(\"Gata de lansare\")"
+        "combustibil = 55",
+        "else:"
       ],
       "answer": 0
     },
@@ -655,7 +650,12 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "este_online = True\nif este_online = True:\n    print(\"Conectat\")\nelse:\n    print(\"Deconectat\")",
       "output": "Conectat",
-      "options": ["if este_online = True:", "else:", "este_online = True", "print(\"Conectat\")"],
+      "options": [
+        "if este_online = True:",
+        "else:",
+        "print(\"Conectat\")",
+        "print(\"Deconectat\")"
+      ],
       "answer": 0
     },
     {
@@ -663,7 +663,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "are_cheie = False\nif are_cheie = True:\n    print(\"Usa deschisa\")\nelse:\n    print(\"Usa incuiata\")",
       "output": "Usa incuiata",
-      "options": ["if are_cheie = True:", "else:", "are_cheie = False", "print(\"Usa deschisa\")"],
+      "options": ["if are_cheie = True:", "are_cheie = False", "else:", "print(\"Usa deschisa\")"],
       "answer": 0
     },
     {
@@ -671,7 +671,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "scut_activ = True\nif scut_activ = True:\n    print(\"Scut activ\")\nelse:\n    print(\"Scut oprit\")",
       "output": "Scut activ",
-      "options": ["if scut_activ = True:", "else:", "scut_activ = True", "print(\"Scut activ\")"],
+      "options": ["if scut_activ = True:", "scut_activ = True", "else:", "print(\"Scut activ\")"],
       "answer": 0
     },
     {
@@ -679,7 +679,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "ruleaza = True\nnumar = 0\nwhile ruleaza:\n    print(numar)\n    numar = numar + 1\n    if numar == 2:\n        ruleaza = False\nprint(\"Gata\")",
       "output": "0\n1\n2\nGata",
-      "options": ["if numar == 2:", "while ruleaza:", "numar = numar + 1", "ruleaza = False"],
+      "options": ["if numar == 2:", "while ruleaza:", "numar = numar + 1", "print(numar)"],
       "answer": 0
     },
     {
@@ -687,7 +687,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "activ = True\npas = 0\nwhile activ:\n    print(pas)\n    pas = pas + 1\n    if pas == 5:\n        activ = False\nprint(\"Oprit\")",
       "output": "0\n1\n2\n3\nOprit",
-      "options": ["if pas == 5:", "while activ:", "pas = pas + 1", "activ = False"],
+      "options": ["if pas == 5:", "while activ:", "pas = pas + 1", "print(pas)"],
       "answer": 0
     },
     {
@@ -695,7 +695,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "pornit = True\ncontor = 0\nwhile pornit:\n    print(contor)\n    contor = contor + 1\n    if contor == 1:\n        pornit = False\nprint(\"Terminat\")",
       "output": "0\n1\nTerminat",
-      "options": ["if contor == 1:", "while pornit:", "contor = contor + 1", "pornit = False"],
+      "options": ["if contor == 1:", "while pornit:", "pornit = False", "print(\"Terminat\")"],
       "answer": 0
     },
     {
@@ -703,7 +703,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "scanez = True\nsector = 0\nwhile scanez:\n    print(sector)\n    sector = sector + 1\n    if sector == 4:\n        scanez = False\nprint(\"Scanare completa\")",
       "output": "0\n1\n2\n3\n4\nScanare completa",
-      "options": ["if sector == 4:", "while scanez:", "sector = sector + 1", "scanez = False"],
+      "options": ["if sector == 4:", "while scanez:", "sector = sector + 1", "print(sector)"],
       "answer": 0
     }
   ]

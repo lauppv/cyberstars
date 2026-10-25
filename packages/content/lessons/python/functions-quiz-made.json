@@ -608,9 +608,9 @@
       "output": "Well done, Ana!\nWell done, Ben!",
       "options": [
         "print(\"Well done, {player}!\")",
+        "def cheer(player):",
         "cheer(\"Ana\")",
-        "cheer(\"Ben\")",
-        "def cheer(player):"
+        "cheer(\"Ben\")"
       ],
       "answer": 0
     },
@@ -619,7 +619,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "def hi(friend):\n    print(\"Hi, {friend}!\")\n\nhi(\"Cortez\")\nhi(\"Lance\")",
       "output": "Hi, Cortez!\nHi, Lance!",
-      "options": ["print(\"Hi, {friend}!\")", "hi(\"Cortez\")", "hi(\"Lance\")", "def hi(friend):"],
+      "options": ["print(\"Hi, {friend}!\")", "def hi(friend):", "hi(\"Cortez\")", "hi(\"Lance\")"],
       "answer": 0
     },
     {
@@ -629,9 +629,9 @@
       "output": "Good luck, Zoe!\nGood luck, Kai!",
       "options": [
         "print(\"Good luck, {pilot}!\")",
+        "def wave(pilot):",
         "wave(\"Zoe\")",
-        "wave(\"Kai\")",
-        "def wave(pilot):"
+        "wave(\"Kai\")"
       ],
       "answer": 0
     },

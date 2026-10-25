@@ -637,7 +637,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "secunde = 3\nwhile true:\n    if secunde == 0:\n        break\n    print(secunde)\n    secunde = secunde - 1\nprint(\"Decolare\")",
       "output": "3\n2\n1\nDecolare",
-      "options": ["while true:", "if secunde == 0:", "secunde = 3", "break"],
+      "options": ["while true:", "if secunde == 0:", "break", "print(secunde)"],
       "answer": 0
     },
     {
@@ -645,7 +645,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "secunde = 2\nwhile true:\n    if secunde == 0:\n        break\n    print(secunde)\n    secunde = secunde - 1\nprint(\"Decolare\")",
       "output": "2\n1\nDecolare",
-      "options": ["while true:", "if secunde == 0:", "secunde = 2", "break"],
+      "options": ["while true:", "if secunde == 0:", "break", "print(secunde)"],
       "answer": 0
     },
     {
@@ -653,7 +653,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "secunde = 4\nwhile true:\n    if secunde == 0:\n        break\n    print(secunde)\n    secunde = secunde - 1\nprint(\"Decolare\")",
       "output": "4\n3\n2\n1\nDecolare",
-      "options": ["while true:", "if secunde == 0:", "secunde = 4", "break"],
+      "options": ["while true:", "if secunde == 0:", "break", "print(secunde)"],
       "answer": 0
     },
     {
@@ -663,9 +663,9 @@
       "output": "Sectorul 1 verificat\nSectorul 2 verificat\nSectorul 4 verificat\nSectorul 5 verificat\nScanare terminata",
       "options": [
         "break",
-        "print(f\"Sectorul {sector} verificat\")",
-        "print(\"Scanare terminata\")",
-        "if sector == 3:"
+        "if sector == 3:",
+        "for sector in range(1, 6):",
+        "print(f\"Sectorul {sector} verificat\")"
       ],
       "answer": 0
     },
@@ -676,9 +676,9 @@
       "output": "Sectorul 1 verificat\nSectorul 3 verificat\nSectorul 4 verificat\nScanare terminata",
       "options": [
         "break",
+        "if sector == 2:",
         "print(f\"Sectorul {sector} verificat\")",
-        "print(\"Scanare terminata\")",
-        "if sector == 2:"
+        "print(\"Scanare terminata\")"
       ],
       "answer": 0
     },
@@ -689,9 +689,9 @@
       "output": "Sectorul 1 verificat\nSectorul 2 verificat\nSectorul 3 verificat\nSectorul 5 verificat\nSectorul 6 verificat\nScanare terminata",
       "options": [
         "break",
-        "print(f\"Sectorul {sector} verificat\")",
-        "print(\"Scanare terminata\")",
-        "if sector == 4:"
+        "if sector == 4:",
+        "for sector in range(1, 7):",
+        "print(f\"Sectorul {sector} verificat\")"
       ],
       "answer": 0
     },
@@ -702,9 +702,9 @@
       "output": "Sectorul 2 verificat\nSectorul 3 verificat\nScanare terminata",
       "options": [
         "break",
+        "if sector == 1:",
         "print(f\"Sectorul {sector} verificat\")",
-        "print(\"Scanare terminata\")",
-        "if sector == 1:"
+        "print(\"Scanare terminata\")"
       ],
       "answer": 0
     }

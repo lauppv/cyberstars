@@ -551,7 +551,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "word = \"Nebula\"\nprint(word)\nprint(word[3])\nprint(word[0:3])",
       "output": "Nebula\nb\nNeb",
-      "options": ["print(word[3])", "print(word)", "print(word[0:3])", "word = \"Nebula\""],
+      "options": ["print(word[3])", "print(word)", "word = \"Nebula\"", "print(word[0:3])"],
       "answer": 0
     },
     {
@@ -559,7 +559,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "word = \"Galaxy\"\nprint(word)\nprint(word[5])\nprint(word[0:2])",
       "output": "Galaxy\nx\nGa",
-      "options": ["print(word[5])", "print(word)", "print(word[0:2])", "word = \"Galaxy\""],
+      "options": ["print(word[5])", "print(word)", "word = \"Galaxy\"", "print(word[0:2])"],
       "answer": 0
     },
     {
@@ -567,7 +567,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "name = \"Mercedes\"\nprint(name)\nprint(name[2])\nprint(name[0:4])",
       "output": "Mercedes\ne\nMerc",
-      "options": ["print(name[2])", "print(name)", "print(name[0:4])", "name = \"Mercedes\""],
+      "options": ["print(name[2])", "print(name)", "name = \"Mercedes\"", "print(name[0:4])"],
       "answer": 0
     },
     {
@@ -575,7 +575,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "code = \"QZ7RX\"\nprint(code)\nprint(code[4])\nprint(code[0:2])",
       "output": "QZ7RX\nR\nQZ",
-      "options": ["print(code[4])", "print(code)", "print(code[0:2])", "code = \"QZ7RX\""],
+      "options": ["print(code[4])", "print(code)", "code = \"QZ7RX\"", "print(code[0:2])"],
       "answer": 0
     },
     {

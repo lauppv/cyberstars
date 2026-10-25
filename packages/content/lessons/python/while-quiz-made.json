@@ -562,7 +562,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 2\nprint(total)",
       "output": "10",
-      "options": ["i = i + 2", "total = total + i", "print(total)", "i = 1"],
+      "options": ["i = i + 2", "total = total + i", "i = 1", "print(total)"],
       "answer": 0
     },
     {
@@ -570,7 +570,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "points = 0\ni = 1\nwhile i <= 5:\n    points = points + i\n    i = i + 2\nprint(points)",
       "output": "15",
-      "options": ["i = i + 2", "points = points + i", "print(points)", "i = 1"],
+      "options": ["i = i + 2", "points = points + i", "i = 1", "print(points)"],
       "answer": 0
     },
     {
@@ -578,7 +578,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "energy = 0\ni = 1\nwhile i <= 6:\n    energy = energy + i\n    i = i + 2\nprint(energy)",
       "output": "21",
-      "options": ["i = i + 2", "energy = energy + i", "print(energy)", "i = 1"],
+      "options": ["i = i + 2", "energy = energy + i", "i = 1", "energy = 0"],
       "answer": 0
     }
   ]

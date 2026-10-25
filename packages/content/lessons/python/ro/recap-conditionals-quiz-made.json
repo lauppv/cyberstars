@@ -547,7 +547,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varsta = 10\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
       "output": "Reducere: 5 EUR",
-      "options": ["elif varsta <= 12", "if varsta < 6:", "elif varsta <= 17:", "else:"],
+      "options": ["elif varsta <= 12", "if varsta < 6:", "reducere = 10", "varsta = 10"],
       "answer": 0
     },
     {
@@ -555,7 +555,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varsta = 15\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
       "output": "Reducere: 3 EUR",
-      "options": ["elif varsta <= 12", "if varsta < 6:", "elif varsta <= 17:", "else:"],
+      "options": ["elif varsta <= 12", "elif varsta <= 17:", "else:", "reducere = 5"],
       "answer": 0
     },
     {
@@ -563,7 +563,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varsta = 40\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
       "output": "Reducere: 0 EUR",
-      "options": ["elif varsta <= 12", "if varsta < 6:", "elif varsta <= 17:", "else:"],
+      "options": ["elif varsta <= 12", "if varsta < 6:", "reducere = 10", "elif varsta <= 17:"],
       "answer": 0
     },
     {
@@ -571,7 +571,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varsta = 17\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta < 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
       "output": "Reducere: 3 EUR",
-      "options": ["elif varsta < 17:", "elif varsta <= 12:", "else:", "if varsta < 6:"],
+      "options": ["elif varsta < 17:", "elif varsta <= 12:", "if varsta < 6:", "else:"],
       "answer": 0
     },
     {
@@ -579,7 +579,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varsta = 12\nif varsta < 6:\n    reducere = 10\nelif varsta < 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
       "output": "Reducere: 5 EUR",
-      "options": ["elif varsta < 12:", "if varsta < 6:", "elif varsta <= 17:", "else:"],
+      "options": ["elif varsta < 12:", "if varsta < 6:", "reducere = 10", "elif varsta <= 17:"],
       "answer": 0
     },
     {
@@ -587,7 +587,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varsta = 6\nif varsta <= 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
       "output": "Reducere: 5 EUR",
-      "options": ["if varsta <= 6:", "elif varsta <= 12:", "elif varsta <= 17:", "else:"],
+      "options": ["if varsta <= 6:", "varsta = 6", "elif varsta <= 12:", "elif varsta <= 17:"],
       "answer": 0
     },
     {
@@ -595,12 +595,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varsta = 30\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5\nelif varsta <= 17:\n    reducere = 3\nelse varsta > 17:\n    reducere = 0\nprint(f\"Reducere: {reducere} EUR\")",
       "output": "Reducere: 0 EUR",
-      "options": [
-        "else varsta > 17:",
-        "elif varsta <= 17:",
-        "elif varsta <= 12:",
-        "if varsta < 6:"
-      ],
+      "options": ["else varsta > 17:", "elif varsta <= 17:", "elif varsta <= 12:", "reducere = 0"],
       "answer": 0
     },
     {
@@ -611,8 +606,8 @@
       "options": [
         "else varsta > 17:",
         "elif varsta <= 17:",
-        "elif varsta <= 12:",
-        "if varsta < 6:"
+        "reducere = 0",
+        "print(f\"Reducere: {reducere} EUR\")"
       ],
       "answer": 0
     },
@@ -634,7 +629,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "total = 5\neste_3d = True\nif este_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
       "output": "Total: 7 EUR",
-      "options": ["total = 2", "print(f\"Total: {total} EUR\")", "este_3d = True", "total = 5"],
+      "options": ["total = 2", "este_3d = True", "total = 5", "if este_3d == True:"],
       "answer": 0
     },
     {
@@ -642,7 +637,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "total = 7\neste_3d = True\nif este_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
       "output": "Total: 9 EUR",
-      "options": ["total = 2", "print(f\"Total: {total} EUR\")", "este_3d = True", "total = 7"],
+      "options": ["total = 2", "este_3d = True", "total = 7", "if este_3d == True:"],
       "answer": 0
     },
     {
@@ -650,7 +645,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "total = 10\neste_3d = True\nif este_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
       "output": "Total: 12 EUR",
-      "options": ["total = 2", "print(f\"Total: {total} EUR\")", "este_3d = True", "total = 10"],
+      "options": ["total = 2", "este_3d = True", "total = 10", "if este_3d == True:"],
       "answer": 0
     },
     {
@@ -658,7 +653,12 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "este_3d = True\ntotal = 5\nif este_3d = True:\n    total = total + 2\n    print(\"Taxa 3D: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
       "output": "Taxa 3D: 2 EUR\nTotal: 7 EUR",
-      "options": ["if este_3d = True:", "total = 5", "total = total + 2", "este_3d = True"],
+      "options": [
+        "if este_3d = True:",
+        "total = total + 2",
+        "print(\"Taxa 3D: 2 EUR\")",
+        "print(f\"Total: {total} EUR\")"
+      ],
       "answer": 0
     },
     {
@@ -666,7 +666,12 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "este_3d = True\ntotal = 10\nif este_3d = True:\n    total = total + 2\n    print(\"Taxa 3D: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
       "output": "Taxa 3D: 2 EUR\nTotal: 12 EUR",
-      "options": ["if este_3d = True:", "total = 10", "total = total + 2", "este_3d = True"],
+      "options": [
+        "if este_3d = True:",
+        "total = 10",
+        "total = total + 2",
+        "print(\"Taxa 3D: 2 EUR\")"
+      ],
       "answer": 0
     },
     {
@@ -674,7 +679,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "este_3d = True\ntotal = 6\nif este_3d = True:\n    total = total + 2\n    print(\"Taxa 3D: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
       "output": "Taxa 3D: 2 EUR\nTotal: 8 EUR",
-      "options": ["if este_3d = True:", "total = 6", "total = total + 2", "este_3d = True"],
+      "options": ["if este_3d = True:", "total = 6", "este_3d = True", "total = total + 2"],
       "answer": 0
     }
   ]

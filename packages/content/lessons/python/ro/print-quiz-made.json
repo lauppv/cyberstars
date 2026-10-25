@@ -143,8 +143,8 @@
       "options": [
         "print(Imi place pizza)",
         "print(\"Am 12 ani\")",
-        "print(\"CyberStars e cel mai tare\")",
-        "print(\"Numele meu este Ana\")"
+        "print(\"Numele meu este Ana\")",
+        "print(\"CyberStars e cel mai tare\")"
       ],
       "answer": 0
     },
@@ -156,8 +156,8 @@
       "options": [
         "print(Start)",
         "print(\"Fiti gata\")",
-        "print(\"Gata\")",
-        "print(\"Pe locuri\")"
+        "print(\"Pe locuri\")",
+        "print(\"Gata\")"
       ],
       "answer": 0
     },

@@ -627,7 +627,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "seconds = 3\nwhile true:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
       "output": "3\n2\n1\nLiftoff",
-      "options": ["while true:", "if seconds == 0:", "seconds = 3", "break"],
+      "options": ["while true:", "if seconds == 0:", "break", "print(seconds)"],
       "answer": 0
     },
     {
@@ -635,7 +635,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "seconds = 2\nwhile true:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
       "output": "2\n1\nLiftoff",
-      "options": ["while true:", "if seconds == 0:", "seconds = 2", "break"],
+      "options": ["while true:", "if seconds == 0:", "break", "print(seconds)"],
       "answer": 0
     },
     {
@@ -643,7 +643,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "seconds = 4\nwhile true:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
       "output": "4\n3\n2\n1\nLiftoff",
-      "options": ["while true:", "if seconds == 0:", "seconds = 4", "break"],
+      "options": ["while true:", "if seconds == 0:", "break", "print(seconds)"],
       "answer": 0
     },
     {
@@ -653,9 +653,9 @@
       "output": "Sector 1 checked\nSector 2 checked\nSector 4 checked\nSector 5 checked\nScan complete",
       "options": [
         "break",
-        "print(f\"Sector {sector} checked\")",
-        "print(\"Scan complete\")",
-        "if sector == 3:"
+        "if sector == 3:",
+        "for sector in range(1, 6):",
+        "print(f\"Sector {sector} checked\")"
       ],
       "answer": 0
     },
@@ -666,9 +666,9 @@
       "output": "Sector 1 checked\nSector 3 checked\nSector 4 checked\nScan complete",
       "options": [
         "break",
+        "if sector == 2:",
         "print(f\"Sector {sector} checked\")",
-        "print(\"Scan complete\")",
-        "if sector == 2:"
+        "print(\"Scan complete\")"
       ],
       "answer": 0
     },
@@ -679,9 +679,9 @@
       "output": "Sector 1 checked\nSector 2 checked\nSector 3 checked\nSector 5 checked\nSector 6 checked\nScan complete",
       "options": [
         "break",
-        "print(f\"Sector {sector} checked\")",
-        "print(\"Scan complete\")",
-        "if sector == 4:"
+        "if sector == 4:",
+        "for sector in range(1, 7):",
+        "print(f\"Sector {sector} checked\")"
       ],
       "answer": 0
     },
@@ -692,9 +692,9 @@
       "output": "Sector 2 checked\nSector 3 checked\nScan complete",
       "options": [
         "break",
+        "if sector == 1:",
         "print(f\"Sector {sector} checked\")",
-        "print(\"Scan complete\")",
-        "if sector == 1:"
+        "print(\"Scan complete\")"
       ],
       "answer": 0
     }

@@ -633,9 +633,9 @@
       "output": "Bravo, Ana!\nBravo, Ben!",
       "options": [
         "print(\"Bravo, {jucator}!\")",
+        "def bravo(jucator):",
         "bravo(\"Ana\")",
-        "bravo(\"Ben\")",
-        "def bravo(jucator):"
+        "bravo(\"Ben\")"
       ],
       "answer": 0
     },
@@ -646,9 +646,9 @@
       "output": "Hei, Cortez!\nHei, Lance!",
       "options": [
         "print(\"Hei, {prieten}!\")",
+        "def hei(prieten):",
         "hei(\"Cortez\")",
-        "hei(\"Lance\")",
-        "def hei(prieten):"
+        "hei(\"Lance\")"
       ],
       "answer": 0
     },
@@ -659,9 +659,9 @@
       "output": "Succes, Zoe!\nSucces, Kai!",
       "options": [
         "print(\"Succes, {pilot}!\")",
+        "def noroc(pilot):",
         "noroc(\"Zoe\")",
-        "noroc(\"Kai\")",
-        "def noroc(pilot):"
+        "noroc(\"Kai\")"
       ],
       "answer": 0
     },

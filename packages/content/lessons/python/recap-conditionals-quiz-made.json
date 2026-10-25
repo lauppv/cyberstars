@@ -522,7 +522,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "age = 10\nif age < 6:\n    discount = 10\nelif age <= 12\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
       "output": "Discount: 5 EUR",
-      "options": ["elif age <= 12", "if age < 6:", "elif age <= 17:", "else:"],
+      "options": ["elif age <= 12", "if age < 6:", "discount = 10", "age = 10"],
       "answer": 0
     },
     {
@@ -530,7 +530,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "age = 15\nif age < 6:\n    discount = 10\nelif age <= 12\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
       "output": "Discount: 3 EUR",
-      "options": ["elif age <= 12", "if age < 6:", "elif age <= 17:", "else:"],
+      "options": ["elif age <= 12", "elif age <= 17:", "else:", "discount = 5"],
       "answer": 0
     },
     {
@@ -538,7 +538,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "age = 40\nif age < 6:\n    discount = 10\nelif age <= 12\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
       "output": "Discount: 0 EUR",
-      "options": ["elif age <= 12", "if age < 6:", "elif age <= 17:", "else:"],
+      "options": ["elif age <= 12", "if age < 6:", "discount = 10", "elif age <= 17:"],
       "answer": 0
     },
     {
@@ -546,7 +546,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "age = 17\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age < 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
       "output": "Discount: 3 EUR",
-      "options": ["elif age < 17:", "elif age <= 12:", "else:", "if age < 6:"],
+      "options": ["elif age < 17:", "elif age <= 12:", "if age < 6:", "else:"],
       "answer": 0
     },
     {
@@ -554,7 +554,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "age = 12\nif age < 6:\n    discount = 10\nelif age < 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
       "output": "Discount: 5 EUR",
-      "options": ["elif age < 12:", "if age < 6:", "elif age <= 17:", "else:"],
+      "options": ["elif age < 12:", "if age < 6:", "discount = 10", "elif age <= 17:"],
       "answer": 0
     },
     {
@@ -562,7 +562,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "age = 6\nif age <= 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
       "output": "Discount: 5 EUR",
-      "options": ["if age <= 6:", "elif age <= 12:", "elif age <= 17:", "else:"],
+      "options": ["if age <= 6:", "age = 6", "elif age <= 12:", "elif age <= 17:"],
       "answer": 0
     },
     {
@@ -570,7 +570,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "age = 30\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse age > 17:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
       "output": "Discount: 0 EUR",
-      "options": ["else age > 17:", "elif age <= 17:", "elif age <= 12:", "if age < 6:"],
+      "options": ["else age > 17:", "elif age <= 17:", "elif age <= 12:", "discount = 0"],
       "answer": 0
     },
     {
@@ -578,7 +578,12 @@
       "text": "Which line stops this program from printing this?",
       "code": "age = 20\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse age > 17:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
       "output": "Discount: 0 EUR",
-      "options": ["else age > 17:", "elif age <= 17:", "elif age <= 12:", "if age < 6:"],
+      "options": [
+        "else age > 17:",
+        "elif age <= 17:",
+        "discount = 0",
+        "print(f\"Discount: {discount} EUR\")"
+      ],
       "answer": 0
     },
     {
@@ -594,7 +599,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "total = 5\nis_3d = True\nif is_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
       "output": "Total: 7 EUR",
-      "options": ["total = 2", "print(f\"Total: {total} EUR\")", "is_3d = True", "total = 5"],
+      "options": ["total = 2", "is_3d = True", "total = 5", "if is_3d == True:"],
       "answer": 0
     },
     {
@@ -602,7 +607,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "total = 7\nis_3d = True\nif is_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
       "output": "Total: 9 EUR",
-      "options": ["total = 2", "print(f\"Total: {total} EUR\")", "is_3d = True", "total = 7"],
+      "options": ["total = 2", "is_3d = True", "total = 7", "if is_3d == True:"],
       "answer": 0
     },
     {
@@ -610,7 +615,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "total = 10\nis_3d = True\nif is_3d == True:\n    total = 2\nprint(f\"Total: {total} EUR\")",
       "output": "Total: 12 EUR",
-      "options": ["total = 2", "print(f\"Total: {total} EUR\")", "is_3d = True", "total = 10"],
+      "options": ["total = 2", "is_3d = True", "total = 10", "if is_3d == True:"],
       "answer": 0
     },
     {
@@ -618,7 +623,12 @@
       "text": "Which line stops this program from printing this?",
       "code": "is_3d = True\ntotal = 5\nif is_3d = True:\n    total = total + 2\n    print(\"3D fee: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
       "output": "3D fee: 2 EUR\nTotal: 7 EUR",
-      "options": ["if is_3d = True:", "total = 5", "total = total + 2", "is_3d = True"],
+      "options": [
+        "if is_3d = True:",
+        "total = total + 2",
+        "print(\"3D fee: 2 EUR\")",
+        "print(f\"Total: {total} EUR\")"
+      ],
       "answer": 0
     },
     {
@@ -626,7 +636,12 @@
       "text": "Which line stops this program from printing this?",
       "code": "is_3d = True\ntotal = 10\nif is_3d = True:\n    total = total + 2\n    print(\"3D fee: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
       "output": "3D fee: 2 EUR\nTotal: 12 EUR",
-      "options": ["if is_3d = True:", "total = 10", "total = total + 2", "is_3d = True"],
+      "options": [
+        "if is_3d = True:",
+        "total = 10",
+        "total = total + 2",
+        "print(\"3D fee: 2 EUR\")"
+      ],
       "answer": 0
     },
     {
@@ -634,7 +649,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "is_3d = True\ntotal = 6\nif is_3d = True:\n    total = total + 2\n    print(\"3D fee: 2 EUR\")\nprint(f\"Total: {total} EUR\")",
       "output": "3D fee: 2 EUR\nTotal: 8 EUR",
-      "options": ["if is_3d = True:", "total = 6", "total = total + 2", "is_3d = True"],
+      "options": ["if is_3d = True:", "total = 6", "is_3d = True", "total = total + 2"],
       "answer": 0
     }
   ]

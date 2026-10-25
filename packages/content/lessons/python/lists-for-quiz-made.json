@@ -544,9 +544,9 @@
       "output": "Crew:\n1. Mary\n2. Andrew\n3. Helen\nEnd of list",
       "options": [
         "print(f\"{i + 1}. {crew[i + 1]}\")",
-        "print(\"End of list\")",
         "print(\"Crew:\")",
-        "crew = [\"Mary\", \"Andrew\", \"Helen\"]"
+        "crew = [\"Mary\", \"Andrew\", \"Helen\"]",
+        "for i in range(len(crew)):"
       ],
       "answer": 0
     },
@@ -557,9 +557,9 @@
       "output": "Route:\n1. Mars\n2. Venus\n3. Earth\n4. Saturn\nRoute ready",
       "options": [
         "print(f\"{i + 1}. {planets[i + 1]}\")",
-        "print(\"Route ready\")",
         "print(\"Route:\")",
-        "planets = [\"Mars\", \"Venus\", \"Earth\", \"Saturn\"]"
+        "planets = [\"Mars\", \"Venus\", \"Earth\", \"Saturn\"]",
+        "print(\"Route ready\")"
       ],
       "answer": 0
     },
@@ -570,9 +570,9 @@
       "output": "Checklist:\n1. Refuel\n2. Check engines\n3. Launch\nAll set",
       "options": [
         "print(f\"{i + 1}. {tasks[i + 1]}\")",
-        "print(\"All set\")",
         "print(\"Checklist:\")",
-        "tasks = [\"Refuel\", \"Check engines\", \"Launch\"]"
+        "tasks = [\"Refuel\", \"Check engines\", \"Launch\"]",
+        "print(\"All set\")"
       ],
       "answer": 0
     },
@@ -585,7 +585,7 @@
         "for i in range(1, len(crew)):",
         "print(\"Crew:\")",
         "print(f\"{i + 1}. {crew[i]}\")",
-        "crew = [\"Lance\", \"Cortez\", \"Phil\"]"
+        "print(\"Ready\")"
       ],
       "answer": 0
     },
@@ -598,7 +598,7 @@
         "for i in range(1, len(planets)):",
         "print(\"Route:\")",
         "print(f\"{i + 1}. {planets[i]}\")",
-        "planets = [\"Mercury\", \"Venus\"]"
+        "print(\"Done\")"
       ],
       "answer": 0
     },
@@ -611,7 +611,7 @@
         "for i in range(1, len(players)):",
         "print(\"Players:\")",
         "print(f\"{i + 1}. {players[i]}\")",
-        "players = [\"Ana\", \"Rex\", \"Kai\", \"Zoe\"]"
+        "print(\"Let's play\")"
       ],
       "answer": 0
     },
@@ -620,12 +620,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "prices = [8, 12, 30]\ntotal = 0\nfor p in prices:\n    total = p\nprint(f\"Total of {prices}: {total}\")",
       "output": "Total of [8, 12, 30]: 50",
-      "options": [
-        "total = p",
-        "print(f\"Total of {prices}: {total}\")",
-        "total = 0",
-        "prices = [8, 12, 30]"
-      ],
+      "options": ["total = p", "total = 0", "prices = [8, 12, 30]", "for p in prices:"],
       "answer": 0
     },
     {
@@ -635,9 +630,9 @@
       "output": "Points from [4, 4, 1, 6]: 15",
       "options": [
         "points = s",
-        "print(f\"Points from {scores}: {points}\")",
         "points = 0",
-        "scores = [4, 4, 1, 6]"
+        "scores = [4, 4, 1, 6]",
+        "print(f\"Points from {scores}: {points}\")"
       ],
       "answer": 0
     },
@@ -648,9 +643,9 @@
       "output": "Money in [25, 75]: 100",
       "options": [
         "money = c",
-        "print(f\"Money in {coins}: {money}\")",
         "money = 0",
-        "coins = [25, 75]"
+        "coins = [25, 75]",
+        "print(f\"Money in {coins}: {money}\")"
       ],
       "answer": 0
     },
@@ -659,7 +654,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "scores = [12, 31, 18]\nbest = scores[0]\nfor n in scores:\n    if n < best:\n        best = n\nprint(f\"Highest of {scores}: {best}\")",
       "output": "Highest of [12, 31, 18]: 31",
-      "options": ["if n < best:", "for n in scores:", "best = n", "best = scores[0]"],
+      "options": ["if n < best:", "for n in scores:", "best = scores[0]", "best = n"],
       "answer": 0
     },
     {
@@ -667,7 +662,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "heights = [60, 85, 70, 40]\ntallest = heights[0]\nfor n in heights:\n    if n < tallest:\n        tallest = n\nprint(f\"Tallest of {heights}: {tallest}\")",
       "output": "Tallest of [60, 85, 70, 40]: 85",
-      "options": ["if n < tallest:", "for n in heights:", "tallest = n", "tallest = heights[0]"],
+      "options": ["if n < tallest:", "for n in heights:", "tallest = heights[0]", "tallest = n"],
       "answer": 0
     },
     {
@@ -675,7 +670,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "levels = [2, 9, 4]\ntop = levels[0]\nfor n in levels:\n    if n < top:\n        top = n\nprint(f\"Top level of {levels}: {top}\")",
       "output": "Top level of [2, 9, 4]: 9",
-      "options": ["if n < top:", "for n in levels:", "top = n", "top = levels[0]"],
+      "options": ["if n < top:", "for n in levels:", "top = levels[0]", "top = n"],
       "answer": 0
     }
   ]

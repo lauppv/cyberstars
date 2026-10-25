@@ -580,8 +580,8 @@
       "output": "You can drive",
       "options": [
         "if age >= 18 AND has_license:",
-        "else:",
         "has_license = True",
+        "else:",
         "print(\"You can drive\")"
       ],
       "answer": 0
@@ -591,12 +591,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "level = 4\nhas_key = True\nif level >= 5 AND has_key:\n    print(\"The door opens\")\nelse:\n    print(\"The door stays shut\")",
       "output": "The door stays shut",
-      "options": [
-        "if level >= 5 AND has_key:",
-        "else:",
-        "has_key = True",
-        "print(\"The door opens\")"
-      ],
+      "options": ["if level >= 5 AND has_key:", "has_key = True", "level = 4", "else:"],
       "answer": 0
     },
     {
@@ -606,8 +601,8 @@
       "output": "Launch on hold",
       "options": [
         "if fuel >= 50 AND engine_ok:",
-        "else:",
         "engine_ok = False",
+        "else:",
         "print(\"Ready to launch\")"
       ],
       "answer": 0
@@ -617,12 +612,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "fuel = 55\nengine_ok = True\nif fuel >= 50 AND engine_ok:\n    print(\"Ready to launch\")\nelse:\n    print(\"Launch on hold\")",
       "output": "Ready to launch",
-      "options": [
-        "if fuel >= 50 AND engine_ok:",
-        "else:",
-        "engine_ok = True",
-        "print(\"Ready to launch\")"
-      ],
+      "options": ["if fuel >= 50 AND engine_ok:", "engine_ok = True", "fuel = 55", "else:"],
       "answer": 0
     },
     {
@@ -630,7 +620,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "is_online = True\nif is_online = True:\n    print(\"Online\")\nelse:\n    print(\"Offline\")",
       "output": "Online",
-      "options": ["if is_online = True:", "else:", "is_online = True", "print(\"Online\")"],
+      "options": ["if is_online = True:", "else:", "print(\"Online\")", "print(\"Offline\")"],
       "answer": 0
     },
     {
@@ -638,7 +628,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "has_key = False\nif has_key = True:\n    print(\"Door open\")\nelse:\n    print(\"Door locked\")",
       "output": "Door locked",
-      "options": ["if has_key = True:", "else:", "has_key = False", "print(\"Door open\")"],
+      "options": ["if has_key = True:", "has_key = False", "else:", "print(\"Door open\")"],
       "answer": 0
     },
     {
@@ -646,7 +636,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "shield_on = True\nif shield_on = True:\n    print(\"Shield up\")\nelse:\n    print(\"Shield down\")",
       "output": "Shield up",
-      "options": ["if shield_on = True:", "else:", "shield_on = True", "print(\"Shield up\")"],
+      "options": ["if shield_on = True:", "shield_on = True", "else:", "print(\"Shield up\")"],
       "answer": 0
     },
     {
@@ -654,7 +644,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "running = True\nnumber = 0\nwhile running:\n    print(number)\n    number = number + 1\n    if number == 2:\n        running = False\nprint(\"Done\")",
       "output": "0\n1\n2\nDone",
-      "options": ["if number == 2:", "while running:", "number = number + 1", "running = False"],
+      "options": ["if number == 2:", "while running:", "number = number + 1", "print(number)"],
       "answer": 0
     },
     {
@@ -662,7 +652,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "active = True\nstep = 0\nwhile active:\n    print(step)\n    step = step + 1\n    if step == 5:\n        active = False\nprint(\"Stopped\")",
       "output": "0\n1\n2\n3\nStopped",
-      "options": ["if step == 5:", "while active:", "step = step + 1", "active = False"],
+      "options": ["if step == 5:", "while active:", "step = step + 1", "print(step)"],
       "answer": 0
     },
     {
@@ -670,7 +660,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "on = True\ncount = 0\nwhile on:\n    print(count)\n    count = count + 1\n    if count == 1:\n        on = False\nprint(\"Finished\")",
       "output": "0\n1\nFinished",
-      "options": ["if count == 1:", "while on:", "count = count + 1", "on = False"],
+      "options": ["if count == 1:", "while on:", "on = False", "print(\"Finished\")"],
       "answer": 0
     },
     {
@@ -678,7 +668,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "scanning = True\nsector = 0\nwhile scanning:\n    print(sector)\n    sector = sector + 1\n    if sector == 4:\n        scanning = False\nprint(\"Scan complete\")",
       "output": "0\n1\n2\n3\n4\nScan complete",
-      "options": ["if sector == 4:", "while scanning:", "sector = sector + 1", "scanning = False"],
+      "options": ["if sector == 4:", "while scanning:", "sector = sector + 1", "print(sector)"],
       "answer": 0
     }
   ]

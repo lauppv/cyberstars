@@ -188,7 +188,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "temperatura = 1200\nif temperatura > 1000\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
       "output": "Pericol",
-      "options": ["if temperatura > 1000", "else:", "temperatura = 1200", "print(\"Pericol\")"],
+      "options": ["if temperatura > 1000", "else:", "print(\"Pericol\")", "print(\"Stabil\")"],
       "answer": 0
     },
     {
@@ -196,7 +196,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "scor = 30\nif scor > 50\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
       "output": "Picat",
-      "options": ["if scor > 50", "else:", "scor = 30", "print(\"Trecut\")"],
+      "options": ["if scor > 50", "else:", "print(\"Trecut\")", "print(\"Picat\")"],
       "answer": 0
     },
     {
@@ -204,7 +204,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "viteza = 130\nif viteza > 100\n    print(\"Incetineste\")\nelse:\n    print(\"Viteza buna\")",
       "output": "Incetineste",
-      "options": ["if viteza > 100", "else:", "viteza = 130", "print(\"Incetineste\")"],
+      "options": ["if viteza > 100", "else:", "print(\"Incetineste\")", "print(\"Viteza buna\")"],
       "answer": 0
     },
     {
@@ -212,7 +212,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "puncte = 90\nif puncte > 100\n    print(\"Record nou\")\nelse:\n    print(\"Mai incearca\")",
       "output": "Mai incearca",
-      "options": ["if puncte > 100", "else:", "puncte = 90", "print(\"Record nou\")"],
+      "options": ["if puncte > 100", "puncte = 90", "else:", "print(\"Record nou\")"],
       "answer": 0
     },
     {
@@ -257,7 +257,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "stele = 5\nif stele = 5:\n    print(\"Punctaj maxim\")\nelse:\n    print(\"Inca nu\")",
       "output": "Punctaj maxim",
-      "options": ["if stele = 5:", "else:", "stele = 5", "print(\"Punctaj maxim\")"],
+      "options": ["if stele = 5:", "stele = 5", "else:", "print(\"Punctaj maxim\")"],
       "answer": 0
     },
     {
@@ -265,7 +265,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "vieti = 0\nif vieti = 0:\n    print(\"Joc terminat\")\nelse:\n    print(\"Joaca mai departe\")",
       "output": "Joc terminat",
-      "options": ["if vieti = 0:", "else:", "vieti = 0", "print(\"Joc terminat\")"],
+      "options": ["if vieti = 0:", "vieti = 0", "else:", "print(\"Joc terminat\")"],
       "answer": 0
     },
     {
@@ -273,7 +273,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "cod = 1234\nif cod = 1234:\n    print(\"Usa deschisa\")\nelse:\n    print(\"Usa incuiata\")",
       "output": "Usa deschisa",
-      "options": ["if cod = 1234:", "else:", "cod = 1234", "print(\"Usa deschisa\")"],
+      "options": ["if cod = 1234:", "cod = 1234", "else:", "print(\"Usa deschisa\")"],
       "answer": 0
     },
     {
@@ -281,7 +281,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nivel = 5\nif nivel = 10:\n    print(\"Lupta finala\")\nelse:\n    print(\"Mergi mai departe\")",
       "output": "Mergi mai departe",
-      "options": ["if nivel = 10:", "else:", "nivel = 5", "print(\"Lupta finala\")"],
+      "options": ["if nivel = 10:", "nivel = 5", "else:", "print(\"Lupta finala\")"],
       "answer": 0
     },
     {
@@ -305,7 +305,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "combustibil = 500\nif combustibil >= 1000:\n    print(\"Pericol\")\nelse\n    print(\"Stabil\")",
       "output": "Stabil",
-      "options": ["else", "if combustibil >= 1000:", "print(\"Pericol\")", "print(\"Stabil\")"],
+      "options": ["else", "if combustibil >= 1000:", "print(\"Pericol\")", "combustibil = 500"],
       "answer": 0
     },
     {
@@ -583,9 +583,9 @@
       "output": "Tommy joaca",
       "options": [
         "online = true",
-        "jucator = \"Tommy\"",
         "print(f\"{jucator} joaca\")",
-        "print(f\"{jucator} este offline\")"
+        "print(f\"{jucator} este offline\")",
+        "if online == True:"
       ],
       "answer": 0
     },
@@ -596,9 +596,9 @@
       "output": "Lance este offline",
       "options": [
         "online = false",
-        "jucator = \"Lance\"",
         "print(f\"{jucator} joaca\")",
-        "print(f\"{jucator} este offline\")"
+        "print(f\"{jucator} este offline\")",
+        "if online == True:"
       ],
       "answer": 0
     },

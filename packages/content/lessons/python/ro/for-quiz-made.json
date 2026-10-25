@@ -557,7 +557,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "energie = 0\nfor i in range(1, 5):\n    print(i)\n    energie = energie + i\nprint(energie)",
       "output": "1\n2\n3\n4\n5\n15",
-      "options": ["for i in range(1, 5):", "energie = 0", "print(i)", "energie = energie + i"],
+      "options": ["for i in range(1, 5):", "print(i)", "energie = energie + i", "print(energie)"],
       "answer": 0
     },
     {
@@ -575,9 +575,9 @@
       "output": "0\n1\n2\n3\n6",
       "options": [
         "for i in range(0, 3):",
-        "combustibil = 0",
         "print(i)",
-        "combustibil = combustibil + i"
+        "combustibil = combustibil + i",
+        "print(combustibil)"
       ],
       "answer": 0
     },
@@ -607,7 +607,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "puncte = 0\nfor i in range(1, 5):\n    puncte = i\nprint(puncte)",
       "output": "10",
-      "options": ["puncte = i", "print(puncte)", "puncte = 0", "for i in range(1, 5):"],
+      "options": ["puncte = i", "puncte = 0", "for i in range(1, 5):", "print(puncte)"],
       "answer": 0
     },
     {
@@ -615,7 +615,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "scor = 0\nfor i in range(4, 7):\n    scor = i\nprint(scor)",
       "output": "15",
-      "options": ["scor = i", "print(scor)", "scor = 0", "for i in range(4, 7):"],
+      "options": ["scor = i", "scor = 0", "for i in range(4, 7):", "print(scor)"],
       "answer": 0
     }
   ]

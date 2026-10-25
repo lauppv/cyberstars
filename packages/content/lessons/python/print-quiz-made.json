@@ -133,8 +133,8 @@
       "options": [
         "print(I like pizza)",
         "print(\"I am 12 years old\")",
-        "print(\"CyberStars is the coolest\")",
-        "print(\"My name is Ana\")"
+        "print(\"My name is Ana\")",
+        "print(\"CyberStars is the coolest\")"
       ],
       "answer": 0
     },
@@ -143,7 +143,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "print(\"Ready\")\nprint(\"Set\")\nprint(Go)\nprint(\"Done\")",
       "output": "Ready\nSet\nGo\nDone",
-      "options": ["print(Go)", "print(\"Set\")", "print(\"Done\")", "print(\"Ready\")"],
+      "options": ["print(Go)", "print(\"Set\")", "print(\"Ready\")", "print(\"Done\")"],
       "answer": 0
     },
     {

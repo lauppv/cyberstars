@@ -549,9 +549,9 @@
       "output": "Echipaj:\n1. Maria\n2. Andrei\n3. Elena\nSfarsitul listei",
       "options": [
         "print(f\"{i + 1}. {echipaj[i + 1]}\")",
-        "print(\"Sfarsitul listei\")",
         "print(\"Echipaj:\")",
-        "echipaj = [\"Maria\", \"Andrei\", \"Elena\"]"
+        "echipaj = [\"Maria\", \"Andrei\", \"Elena\"]",
+        "for i in range(len(echipaj)):"
       ],
       "answer": 0
     },
@@ -562,9 +562,9 @@
       "output": "Traseu:\n1. Marte\n2. Venus\n3. Pamant\n4. Saturn\nTraseu gata",
       "options": [
         "print(f\"{i + 1}. {planete[i + 1]}\")",
-        "print(\"Traseu gata\")",
         "print(\"Traseu:\")",
-        "planete = [\"Marte\", \"Venus\", \"Pamant\", \"Saturn\"]"
+        "planete = [\"Marte\", \"Venus\", \"Pamant\", \"Saturn\"]",
+        "print(\"Traseu gata\")"
       ],
       "answer": 0
     },
@@ -575,9 +575,9 @@
       "output": "Lista de verificare:\n1. Alimentare\n2. Verificare motoare\n3. Lansare\nTotul e gata",
       "options": [
         "print(f\"{i + 1}. {sarcini[i + 1]}\")",
-        "print(\"Totul e gata\")",
         "print(\"Lista de verificare:\")",
-        "sarcini = [\"Alimentare\", \"Verificare motoare\", \"Lansare\"]"
+        "sarcini = [\"Alimentare\", \"Verificare motoare\", \"Lansare\"]",
+        "print(\"Totul e gata\")"
       ],
       "answer": 0
     },
@@ -590,7 +590,7 @@
         "for i in range(1, len(echipaj)):",
         "print(\"Echipaj:\")",
         "print(f\"{i + 1}. {echipaj[i]}\")",
-        "echipaj = [\"Lance\", \"Cortez\", \"Phil\"]"
+        "print(\"Gata\")"
       ],
       "answer": 0
     },
@@ -603,7 +603,7 @@
         "for i in range(1, len(planete)):",
         "print(\"Traseu:\")",
         "print(f\"{i + 1}. {planete[i]}\")",
-        "planete = [\"Mercur\", \"Venus\"]"
+        "print(\"Terminat\")"
       ],
       "answer": 0
     },
@@ -616,7 +616,7 @@
         "for i in range(1, len(jucatori)):",
         "print(\"Jucatori:\")",
         "print(f\"{i + 1}. {jucatori[i]}\")",
-        "jucatori = [\"Ana\", \"Rex\", \"Kai\", \"Zoe\"]"
+        "print(\"Hai sa jucam\")"
       ],
       "answer": 0
     },
@@ -625,12 +625,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "preturi = [8, 12, 30]\ntotal = 0\nfor p in preturi:\n    total = p\nprint(f\"Totalul pentru {preturi}: {total}\")",
       "output": "Totalul pentru [8, 12, 30]: 50",
-      "options": [
-        "total = p",
-        "print(f\"Totalul pentru {preturi}: {total}\")",
-        "total = 0",
-        "preturi = [8, 12, 30]"
-      ],
+      "options": ["total = p", "total = 0", "preturi = [8, 12, 30]", "for p in preturi:"],
       "answer": 0
     },
     {
@@ -640,9 +635,9 @@
       "output": "Punctele din [4, 4, 1, 6]: 15",
       "options": [
         "puncte = s",
-        "print(f\"Punctele din {scoruri}: {puncte}\")",
         "puncte = 0",
-        "scoruri = [4, 4, 1, 6]"
+        "scoruri = [4, 4, 1, 6]",
+        "print(f\"Punctele din {scoruri}: {puncte}\")"
       ],
       "answer": 0
     },
@@ -653,9 +648,9 @@
       "output": "Banii din [25, 75]: 100",
       "options": [
         "bani = m",
-        "print(f\"Banii din {monede}: {bani}\")",
         "bani = 0",
-        "monede = [25, 75]"
+        "monede = [25, 75]",
+        "print(f\"Banii din {monede}: {bani}\")"
       ],
       "answer": 0
     },
@@ -664,7 +659,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "scoruri = [12, 31, 18]\nmaxim = scoruri[0]\nfor n in scoruri:\n    if n < maxim:\n        maxim = n\nprint(f\"Cel mai mare din {scoruri}: {maxim}\")",
       "output": "Cel mai mare din [12, 31, 18]: 31",
-      "options": ["if n < maxim:", "for n in scoruri:", "maxim = n", "maxim = scoruri[0]"],
+      "options": ["if n < maxim:", "for n in scoruri:", "maxim = scoruri[0]", "maxim = n"],
       "answer": 0
     },
     {
@@ -675,8 +670,8 @@
       "options": [
         "if n < cel_mai_inalt:",
         "for n in inaltimi:",
-        "cel_mai_inalt = n",
-        "cel_mai_inalt = inaltimi[0]"
+        "cel_mai_inalt = inaltimi[0]",
+        "cel_mai_inalt = n"
       ],
       "answer": 0
     },
@@ -685,7 +680,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "niveluri = [2, 9, 4]\nmaxim = niveluri[0]\nfor n in niveluri:\n    if n < maxim:\n        maxim = n\nprint(f\"Nivelul maxim din {niveluri}: {maxim}\")",
       "output": "Nivelul maxim din [2, 9, 4]: 9",
-      "options": ["if n < maxim:", "for n in niveluri:", "maxim = n", "maxim = niveluri[0]"],
+      "options": ["if n < maxim:", "for n in niveluri:", "maxim = niveluri[0]", "maxim = n"],
       "answer": 0
     }
   ]

@@ -494,7 +494,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "for i in range(0, 8):\n    if i == 3:\n        continue\n    print(i)\nprint(\"Gata\")",
       "output": "0\n1\n2\nGata",
-      "options": ["continue", "print(i)", "print(\"Gata\")", "if i == 3:"],
+      "options": ["continue", "if i == 3:", "print(i)", "print(\"Gata\")"],
       "answer": 0
     },
     {
@@ -502,7 +502,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "for i in range(2, 9):\n    if i == 5:\n        continue\n    print(i)\nprint(\"Sfarsit\")",
       "output": "2\n3\n4\nSfarsit",
-      "options": ["continue", "print(i)", "print(\"Sfarsit\")", "if i == 5:"],
+      "options": ["continue", "if i == 5:", "for i in range(2, 9):", "print(i)"],
       "answer": 0
     },
     {
@@ -510,7 +510,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "for i in range(1, 7):\n    if i == 4:\n        continue\n    print(i)\nprint(\"Oprit\")",
       "output": "1\n2\n3\nOprit",
-      "options": ["continue", "print(i)", "print(\"Oprit\")", "if i == 4:"],
+      "options": ["continue", "if i == 4:", "print(i)", "print(\"Oprit\")"],
       "answer": 0
     },
     {
@@ -518,7 +518,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "for i in range(0, 6):\n    if i == 2:\n        break\n    print(i)\nprint(\"Gata\")",
       "output": "0\n1\n3\n4\n5\nGata",
-      "options": ["break", "print(i)", "print(\"Gata\")", "if i == 2:"],
+      "options": ["break", "if i == 2:", "for i in range(0, 6):", "print(i)"],
       "answer": 0
     },
     {
@@ -526,7 +526,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "for i in range(3, 9):\n    if i == 5:\n        break\n    print(i)\nprint(\"Sfarsit\")",
       "output": "3\n4\n6\n7\n8\nSfarsit",
-      "options": ["break", "print(i)", "print(\"Sfarsit\")", "if i == 5:"],
+      "options": ["break", "if i == 5:", "for i in range(3, 9):", "print(i)"],
       "answer": 0
     },
     {
@@ -534,7 +534,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "for i in range(1, 6):\n    if i == 4:\n        break\n    print(i)\nprint(\"Oprit\")",
       "output": "1\n2\n3\n5\nOprit",
-      "options": ["break", "print(i)", "print(\"Oprit\")", "if i == 4:"],
+      "options": ["break", "if i == 4:", "print(i)", "print(\"Oprit\")"],
       "answer": 0
     },
     {
@@ -544,9 +544,9 @@
       "output": "Scanez sectorul 1...\nScanez sectorul 2...\nSemnal gasit in sectorul 3!",
       "options": [
         "if sector != 3:",
-        "for sector in range(1, 6):",
         "print(f\"Semnal gasit in sectorul {sector}!\")",
-        "break"
+        "break",
+        "print(f\"Scanez sectorul {sector}...\")"
       ],
       "answer": 0
     },
@@ -570,9 +570,9 @@
       "output": "Caut in camera 1...\nCaut in camera 2...\nCaut in camera 3...\nCheie gasita in camera 4!",
       "options": [
         "if camera != 4:",
-        "for camera in range(1, 7):",
         "print(f\"Cheie gasita in camera {camera}!\")",
-        "break"
+        "break",
+        "print(f\"Caut in camera {camera}...\")"
       ],
       "answer": 0
     },
@@ -581,7 +581,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "n = 0\nwhile True\n    n = n + 1\n    if n == 3:\n        break\n    print(n)",
       "output": "1\n2",
-      "options": ["while True", "if n == 3:", "n = 0", "n = n + 1"],
+      "options": ["while True", "n = 0", "if n == 3:", "n = n + 1"],
       "answer": 0
     },
     {
@@ -589,7 +589,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "n = 0\nwhile True\n    n = n + 1\n    if n == 4:\n        break\n    print(n)",
       "output": "1\n2\n3",
-      "options": ["while True", "if n == 4:", "n = 0", "n = n + 1"],
+      "options": ["while True", "n = 0", "if n == 4:", "n = n + 1"],
       "answer": 0
     },
     {
@@ -597,7 +597,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "n = 0\nwhile True\n    n = n + 1\n    if n == 5:\n        break\n    print(n)",
       "output": "1\n2\n3\n4",
-      "options": ["while True", "if n == 5:", "n = 0", "n = n + 1"],
+      "options": ["while True", "n = 0", "if n == 5:", "n = n + 1"],
       "answer": 0
     },
     {
@@ -605,7 +605,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "n = 0\nwhile true:\n    n = n + 1\n    if n == 2:\n        break\n    print(n)",
       "output": "1",
-      "options": ["while true:", "if n == 2:", "n = 0", "n = n + 1"],
+      "options": ["while true:", "if n == 2:", "n = n + 1", "break"],
       "answer": 0
     },
     {
@@ -613,7 +613,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "n = 0\nwhile true:\n    n = n + 1\n    if n == 6:\n        break\n    print(n)",
       "output": "1\n2\n3\n4\n5",
-      "options": ["while true:", "if n == 6:", "n = 0", "n = n + 1"],
+      "options": ["while true:", "n = 0", "if n == 6:", "n = n + 1"],
       "answer": 0
     }
   ]

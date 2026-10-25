@@ -586,7 +586,12 @@
       "text": "Which line stops this program from printing this?",
       "code": "oxygen = 60\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen >= 50\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
       "output": "Oxygen low",
-      "options": ["elif oxygen >= 50", "if oxygen >= 80:", "else:", "print(\"Oxygen nominal\")"],
+      "options": [
+        "elif oxygen >= 50",
+        "if oxygen >= 80:",
+        "print(\"Oxygen nominal\")",
+        "oxygen = 60"
+      ],
       "answer": 0
     },
     {
@@ -594,7 +599,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "fuel = 40\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel >= 30\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
       "output": "Half tank",
-      "options": ["elif fuel >= 30", "if fuel >= 70:", "else:", "print(\"Full tank\")"],
+      "options": ["elif fuel >= 30", "else:", "print(\"Half tank\")", "print(\"Refuel now\")"],
       "answer": 0
     },
     {
@@ -602,7 +607,12 @@
       "text": "Which line stops this program from printing this?",
       "code": "oxygen = 95\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nif oxygen >= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
       "output": "Oxygen nominal",
-      "options": ["if oxygen >= 50:", "if oxygen >= 80:", "else:", "print(\"Oxygen nominal\")"],
+      "options": [
+        "if oxygen >= 50:",
+        "if oxygen >= 80:",
+        "print(\"Oxygen nominal\")",
+        "oxygen = 95"
+      ],
       "answer": 0
     },
     {
@@ -610,7 +620,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "score = 100\nif score >= 90:\n    print(\"Excellent\")\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
       "output": "Excellent",
-      "options": ["if score >= 50:", "if score >= 90:", "else:", "print(\"Excellent\")"],
+      "options": ["if score >= 50:", "if score >= 90:", "else:", "print(\"Pass\")"],
       "answer": 0
     },
     {
@@ -618,7 +628,12 @@
       "text": "Which line stops this program from printing this?",
       "code": "battery = 80\nif battery >= 60:\n    print(\"Battery good\")\nif battery >= 20:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
       "output": "Battery good",
-      "options": ["if battery >= 20:", "if battery >= 60:", "else:", "print(\"Battery good\")"],
+      "options": [
+        "if battery >= 20:",
+        "if battery >= 60:",
+        "print(\"Battery good\")",
+        "battery = 80"
+      ],
       "answer": 0
     },
     {
@@ -638,7 +653,7 @@
         "else battery < 20:",
         "elif battery >= 20:",
         "if battery >= 60:",
-        "print(\"Battery low\")"
+        "print(\"Charge now\")"
       ],
       "answer": 0
     },
@@ -647,7 +662,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "oxygen = 70\nif oxygen >= 80:\n    print(\"Oxygen nominal\")\nelif oxygen <= 50:\n    print(\"Oxygen low\")\nelse:\n    print(\"Oxygen critical\")",
       "output": "Oxygen low",
-      "options": ["elif oxygen <= 50:", "if oxygen >= 80:", "else:", "print(\"Oxygen nominal\")"],
+      "options": ["elif oxygen <= 50:", "if oxygen >= 80:", "else:", "print(\"Oxygen low\")"],
       "answer": 0
     },
     {
@@ -655,7 +670,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "fuel = 55\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel <= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
       "output": "Half tank",
-      "options": ["elif fuel <= 30:", "if fuel >= 70:", "else:", "print(\"Full tank\")"],
+      "options": ["elif fuel <= 30:", "if fuel >= 70:", "else:", "print(\"Half tank\")"],
       "answer": 0
     }
   ]

@@ -562,7 +562,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 2\nprint(total)",
       "output": "10",
-      "options": ["i = i + 2", "total = total + i", "print(total)", "i = 1"],
+      "options": ["i = i + 2", "total = total + i", "i = 1", "print(total)"],
       "answer": 0
     },
     {
@@ -570,7 +570,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "puncte = 0\ni = 1\nwhile i <= 5:\n    puncte = puncte + i\n    i = i + 2\nprint(puncte)",
       "output": "15",
-      "options": ["i = i + 2", "puncte = puncte + i", "print(puncte)", "i = 1"],
+      "options": ["i = i + 2", "puncte = puncte + i", "i = 1", "print(puncte)"],
       "answer": 0
     },
     {
@@ -578,7 +578,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "energie = 0\ni = 1\nwhile i <= 6:\n    energie = energie + i\n    i = i + 2\nprint(energie)",
       "output": "21",
-      "options": ["i = i + 2", "energie = energie + i", "print(energie)", "i = 1"],
+      "options": ["i = i + 2", "energie = energie + i", "i = 1", "energie = 0"],
       "answer": 0
     }
   ]

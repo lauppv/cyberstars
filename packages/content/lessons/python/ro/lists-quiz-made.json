@@ -468,8 +468,8 @@
       "options": [
         "incarcatura.append[\"apa\"]",
         "incarcatura.append(\"oxigen\")",
-        "print(incarcatura)",
-        "incarcatura = []"
+        "incarcatura = []",
+        "print(incarcatura)"
       ],
       "answer": 0
     },
@@ -478,7 +478,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nume = []\nnume.append(\"Tommy\")\nnume.append[\"Lance\"]\nprint(nume)",
       "output": "['Tommy', 'Lance']",
-      "options": ["nume.append[\"Lance\"]", "nume.append(\"Tommy\")", "print(nume)", "nume = []"],
+      "options": ["nume.append[\"Lance\"]", "nume.append(\"Tommy\")", "nume = []", "print(nume)"],
       "answer": 0
     },
     {
@@ -486,7 +486,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varste = []\nvarste.append(42)\nvarste.append[35]\nprint(varste)",
       "output": "[42, 35]",
-      "options": ["varste.append[35]", "varste.append(42)", "print(varste)", "varste = []"],
+      "options": ["varste.append[35]", "varste.append(42)", "varste = []", "print(varste)"],
       "answer": 0
     },
     {
@@ -497,8 +497,8 @@
       "options": [
         "echipaj.append[\"Jess\"]",
         "echipaj.append(\"Shadow\")",
-        "print(echipaj)",
-        "echipaj = []"
+        "echipaj = []",
+        "print(echipaj)"
       ],
       "answer": 0
     },

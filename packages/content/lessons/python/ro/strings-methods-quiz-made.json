@@ -569,8 +569,8 @@
       "options": [
         "print(cuvant[3])",
         "print(cuvant)",
-        "print(cuvant[0:3])",
-        "cuvant = \"Nebuloasa\""
+        "cuvant = \"Nebuloasa\"",
+        "print(cuvant[0:3])"
       ],
       "answer": 0
     },
@@ -582,8 +582,8 @@
       "options": [
         "print(cuvant[5])",
         "print(cuvant)",
-        "print(cuvant[0:2])",
-        "cuvant = \"Galaxie\""
+        "cuvant = \"Galaxie\"",
+        "print(cuvant[0:2])"
       ],
       "answer": 0
     },
@@ -592,7 +592,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nume = \"Mercedes\"\nprint(nume)\nprint(nume[2])\nprint(nume[0:4])",
       "output": "Mercedes\ne\nMerc",
-      "options": ["print(nume[2])", "print(nume)", "print(nume[0:4])", "nume = \"Mercedes\""],
+      "options": ["print(nume[2])", "print(nume)", "nume = \"Mercedes\"", "print(nume[0:4])"],
       "answer": 0
     },
     {
@@ -600,7 +600,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "cod = \"QZ7RX\"\nprint(cod)\nprint(cod[4])\nprint(cod[0:2])",
       "output": "QZ7RX\nR\nQZ",
-      "options": ["print(cod[4])", "print(cod)", "print(cod[0:2])", "cod = \"QZ7RX\""],
+      "options": ["print(cod[4])", "print(cod)", "cod = \"QZ7RX\"", "print(cod[0:2])"],
       "answer": 0
     },
     {
