@@ -568,10 +568,10 @@
       "answer": 0
     },
     {
-      "id": "bs-count-compares-f742db",
+      "id": "bs-count-compares-b1c5e8",
       "text": "What does this print?",
-      "code": "numbers = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\ncomparisons = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        comparisons = comparisons + 1\nprint(comparisons)",
-      "options": ["90", "100", "1", "10"],
+      "code": "numbers = [6, 5, 4, 3, 2, 1]\ncomparisons = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        comparisons = comparisons + 1\nprint(comparisons)",
+      "options": ["30", "36", "1", "6"],
       "answer": 0
     }
   ]

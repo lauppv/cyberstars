@@ -568,10 +568,10 @@
       "answer": 0
     },
     {
-      "id": "bs-count-compares-f742db",
+      "id": "bs-count-compares-b1c5e8",
       "text": "Ce afișează?",
-      "code": "numere = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\ncomparatii = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        comparatii = comparatii + 1\nprint(comparatii)",
-      "options": ["90", "100", "1", "10"],
+      "code": "numere = [6, 5, 4, 3, 2, 1]\ncomparatii = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        comparatii = comparatii + 1\nprint(comparatii)",
+      "options": ["30", "36", "1", "6"],
       "answer": 0
     }
   ]
