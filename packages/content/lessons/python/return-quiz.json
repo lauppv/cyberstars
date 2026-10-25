@@ -1,0 +1,1036 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does `return` do in a function?",
+      "options": [
+        "It gives a value back to the place where the function was called",
+        "It prints the value on the screen",
+        "It runs the function again from the top",
+        "It saves the value in a variable called return"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does this program print?",
+      "code": "def add(a, b):\n    return a + b\n\nadd(2, 3)",
+      "options": [
+        "5",
+        "Nothing: the value comes back, but nothing prints it",
+        "add(2, 3)",
+        "It stops with an error"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "What does this print?",
+      "code": "def add(a, b):\n    return a + b\n\nresult = add(2, 3) * 10\nprint(result)",
+      "options": ["5", "15", "50", "add(2, 3) * 10"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What is the difference between a function that prints its result and one that returns it?",
+      "options": [
+        "None: they do the same thing",
+        "A returned value can be kept and used further, a printed one only shows on the screen",
+        "A printed value can go into a calculation, a returned one can't",
+        "Only a function that prints can take parameters"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "def f():\n    return 1\n    print(\"never printed\")\n\nprint(f())",
+      "options": ["1\nnever printed", "never printed\n1", "never printed", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "What happens to the lines written after `return` in the same block?",
+      "options": [
+        "They run after the value is given back",
+        "They run only the second time the function is called",
+        "Python stops with an error",
+        "They never run: the function ends as soon as it reaches return"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "What does a function without `return` give back?",
+      "options": [
+        "0",
+        "An empty text",
+        "None, Python's way of saying \"nothing\"",
+        "The last value it printed"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "def f():\n    print(\"hello\")\n\nresult = f()\nprint(result)",
+      "options": ["hello\nNone", "hello\nhello", "None", "hello"],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "def divide(a, b):\n    if b == 0:\n        return \"cannot divide by zero\"\n    return a / b\n\nprint(divide(10, 0))",
+      "options": ["0.0", "It stops with an error: 10 / 0", "cannot divide by zero", "Nothing"],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "def divide(a, b):\n    if b == 0:\n        return \"cannot divide by zero\"\n    return a / b\n\nprint(divide(10, 2))",
+      "options": ["5.0", "5", "cannot divide by zero", "cannot divide by zero\n5.0"],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "What can a function give back with `return`?",
+      "options": [
+        "Only numbers",
+        "Only numbers and texts",
+        "Any value: a number, a text, a boolean, a list",
+        "Only True or False, for use in an if"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "The lesson's `is_adult(age)` returns `age >= 18`. What does `print(is_adult(15))` show?",
+      "options": ["True", "15", "None", "False"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Where can we use a call like `is_adult(20)`, a function that returns a value?",
+      "options": [
+        "Only on a line of its own",
+        "Anywhere a value fits: inside print(), in an if, in a calculation",
+        "Only after we store it in a variable",
+        "Only inside another function"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Why does the lesson put the Fahrenheit formula in a function instead of writing it for each sensor?",
+      "options": [
+        "We write it once and reuse it with other arguments, and a fix goes in one place",
+        "A function computes it faster",
+        "Python can't compute 9 / 5 outside a function",
+        "So the result comes out as an int"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "The lesson's `in_fahrenheit(c)` returns `c * 9 / 5 + 32`. What does `in_fahrenheit(100)` give back?",
+      "options": ["212", "212.0", "100", "180.0"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "def greet(name):\n    return f\"Hello, {name}!\"\n\nmessage = greet(\"Cortez\")\nprint(message)",
+      "options": ["Hello, {name}!", "message", "None", "Hello, Cortez!"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "In the Atlas of Galaxies mission, what does `longest_star` return?",
+      "options": [
+        "The name of the star with the most letters in the galaxy it gets",
+        "How many letters the longest star has",
+        "The last star in the list",
+        "The galaxy with the most stars"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "In the Atlas of Galaxies mission, why one function called five times instead of five copies of the loop?",
+      "options": [
+        "Five loops would print the stars in the wrong order",
+        "A list can be looped over only inside a function",
+        "The logic is written once and reused for every galaxy, without repeating the body",
+        "The function goes through all five galaxies in one call"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "In the Atlas of Galaxies mission, what does `longest_star([\"rigel\", \"vega\", \"betelgeuse\", \"spica\"])` return?",
+      "options": ["rigel", "spica", "10", "betelgeuse"],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "In the Atlas of Galaxies mission, `longest_star` goes through the galaxy with a for loop. Where does its `return longest` go?",
+      "options": [
+        "Inside the loop, under the if",
+        "After the loop, lined up with the for line, so it runs once every star was checked",
+        "Before the loop",
+        "Outside the function, after the five calls"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "def double(x):\n    return x * 2\n\nprint(double(double(3)))",
+      "options": ["6", "36", "It stops with an error", "12"],
+      "answer": 3
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "def add(a, b):\n    return a + b\n\nprint(add(1, 2) + add(3, 4))",
+      "options": ["10", "37", "3\n7", "1234"],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "In `result = add(2, 3)`, where does the value `add` returns end up?",
+      "options": [
+        "In a, the first parameter",
+        "On the screen",
+        "In the variable result",
+        "Nowhere: return only ends the function"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "def check(n):\n    if n > 0:\n        return \"positive\"\n    return \"not positive\"\n\nprint(check(5))\nprint(check(0))",
+      "options": [
+        "positive\nnot positive",
+        "positive",
+        "positive\npositive",
+        "positive\nnot positive\nnot positive"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "A function has two `return` lines. How many values does one call give back?",
+      "options": [
+        "Two, one from each return",
+        "One: the first return Python reaches ends the call",
+        "None: two returns cancel each other out",
+        "It stops with an error: a function can have only one return"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "What happens when this runs?",
+      "code": "def add_and_print(a, b):\n    print(a + b)\n\nresult = add_and_print(2, 3)\nprint(result * 10)",
+      "options": [
+        "It prints 50",
+        "It prints 5, then 50",
+        "It prints 5, then stops with an error: result is None",
+        "It prints nothing"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "Which line, as the body of `def square(n):`, makes `area = square(4)` put 16 in area?",
+      "options": ["print(n * n)", "return n * n", "square = n * n", "return"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "def f(x):\n    return x + 1\n    return x + 2\n\nprint(f(5))",
+      "options": ["6\n7", "7", "8", "6"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "def is_even(n):\n    return n % 2 == 0\n\nif is_even(7):\n    print(\"even\")\nelse:\n    print(\"odd\")",
+      "options": ["odd", "even", "True", "False"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "def total(prices):\n    t = 0\n    for p in prices:\n        t = t + p\n    return t\n\nprint(total([3, 4, 5]))",
+      "options": ["3", "345", "[3, 4, 5]", "12"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "rv-add",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}(a, b):\n    return a {{op}} b\n\n{{r}} = {{f}}({{x}}, {{y}})\nprint({{r}})",
+      "values": [
+        {
+          "f": "add",
+          "op": "+",
+          "x": 2,
+          "y": 3,
+          "r": "result"
+        },
+        {
+          "f": "subtract",
+          "op": "-",
+          "x": 10,
+          "y": 4,
+          "r": "diff"
+        },
+        {
+          "f": "multiply",
+          "op": "*",
+          "x": 6,
+          "y": 7,
+          "r": "product"
+        },
+        {
+          "f": "divide",
+          "op": "/",
+          "x": 9,
+          "y": 3,
+          "r": "share"
+        },
+        {
+          "f": "power",
+          "op": "**",
+          "x": 2,
+          "y": 5,
+          "r": "big"
+        }
+      ],
+      "mistakes": [
+        ["    return a {{op}} b", "    print(a {{op}} b)"],
+        ["print({{r}})", "print(\"{{r}}\")"],
+        ["return a {{op}} b", "return a {{op}} a"],
+        ["{{f}}({{x}}, {{y}})", "{{f}}({{y}}, {{x}})"]
+      ]
+    },
+    {
+      "id": "rv-chain",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} {{op}} {{k}}\n\nprint({{f}}({{a}}) * {{m}})",
+      "values": [
+        {
+          "f": "add_five",
+          "p": "x",
+          "op": "+",
+          "k": 5,
+          "a": 3,
+          "m": 10
+        },
+        {
+          "f": "double",
+          "p": "n",
+          "op": "*",
+          "k": 2,
+          "a": 4,
+          "m": 3
+        },
+        {
+          "f": "lose_life",
+          "p": "lives",
+          "op": "-",
+          "k": 1,
+          "a": 5,
+          "m": 2
+        },
+        {
+          "f": "half",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 10,
+          "m": 3
+        },
+        {
+          "f": "square",
+          "p": "side",
+          "op": "**",
+          "k": 2,
+          "a": 3,
+          "m": 2
+        }
+      ],
+      "mistakes": [
+        ["print({{f}}({{a}}) * {{m}})", "print({{f}}({{a}} * {{m}}))"],
+        ["return {{p}} {{op}} {{k}}", "return {{p}}"],
+        ["* {{m}})", "+ {{m}})"],
+        ["print({{f}}({{a}}) * {{m}})", "print({{f}}({{a}}))"]
+      ]
+    },
+    {
+      "id": "rv-early",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}):\n    if {{p}} {{cmp}} {{lim}}:\n        return \"{{yes}}\"\n    return \"{{no}}\"\n\nprint({{f}}({{a}}))\nprint({{f}}({{b}}))",
+      "values": [
+        {
+          "f": "check_fuel",
+          "p": "fuel",
+          "cmp": ">=",
+          "ncmp": "<",
+          "lim": 20,
+          "yes": "OK",
+          "no": "Low",
+          "a": 50,
+          "b": 10
+        },
+        {
+          "f": "is_hot",
+          "p": "temp",
+          "cmp": ">",
+          "ncmp": "<=",
+          "lim": 30,
+          "yes": "Hot",
+          "no": "Not hot",
+          "a": 12,
+          "b": 35
+        },
+        {
+          "f": "grade",
+          "p": "score",
+          "cmp": ">=",
+          "ncmp": "<",
+          "lim": 50,
+          "yes": "Pass",
+          "no": "Fail",
+          "a": 50,
+          "b": 49
+        },
+        {
+          "f": "speed_check",
+          "p": "speed",
+          "cmp": ">",
+          "ncmp": "<=",
+          "lim": 100,
+          "yes": "Too fast",
+          "no": "OK",
+          "a": 80,
+          "b": 120
+        },
+        {
+          "f": "can_vote",
+          "p": "age",
+          "cmp": ">=",
+          "ncmp": "<",
+          "lim": 18,
+          "yes": "Yes",
+          "no": "No",
+          "a": 18,
+          "b": 17
+        }
+      ],
+      "mistakes": [
+        ["        return \"{{yes}}\"", "        print(\"{{yes}}\")"],
+        ["    return \"{{no}}\"", "    print(\"{{no}}\")"],
+        ["{{cmp}}", "{{ncmp}}"],
+        ["\nprint({{f}}({{b}}))", ""]
+      ]
+    },
+    {
+      "id": "rv-dead",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}():\n    print(\"{{x}}\")\n    return {{n}}\n    print(\"{{y}}\")\n\nprint({{f}}())",
+      "values": [
+        {
+          "f": "start",
+          "x": "Engines on",
+          "n": 1,
+          "y": "Engines off"
+        },
+        {
+          "f": "count",
+          "x": "Counting",
+          "n": 3,
+          "y": "Done counting"
+        },
+        {
+          "f": "launch",
+          "x": "Launch",
+          "n": 10,
+          "y": "Abort"
+        },
+        {
+          "f": "ping",
+          "x": "Ping",
+          "n": 0,
+          "y": "Pong"
+        }
+      ],
+      "mistakes": [
+        ["    return {{n}}\n", ""],
+        ["    print(\"{{x}}\")\n    return {{n}}", "    return {{n}}\n    print(\"{{x}}\")"],
+        ["print({{f}}())", "{{f}}()"],
+        ["return {{n}}", "print({{n}})"]
+      ]
+    },
+    {
+      "id": "rv-none",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}):\n    print({{p}} {{op}} {{k}})\n\n{{r}} = {{f}}({{a}})\nprint({{r}})",
+      "values": [
+        {
+          "f": "double",
+          "p": "x",
+          "op": "*",
+          "k": 2,
+          "a": 4,
+          "r": "result"
+        },
+        {
+          "f": "add_ten",
+          "p": "score",
+          "op": "+",
+          "k": 10,
+          "a": 5,
+          "r": "new_score"
+        },
+        {
+          "f": "half",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 9,
+          "r": "part"
+        },
+        {
+          "f": "triple",
+          "p": "t",
+          "op": "*",
+          "k": 3,
+          "a": 7,
+          "r": "out"
+        }
+      ],
+      "mistakes": [
+        ["    print({{p}} {{op}} {{k}})", "    return {{p}} {{op}} {{k}}"],
+        ["print({{r}})", "print(\"{{r}}\")"],
+        ["{{p}} {{op}} {{k}}", "{{p}}"],
+        ["print({{r}})", "print({{a}})"]
+      ]
+    },
+    {
+      "id": "rv-if",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} {{cmp}} {{lim}}\n\nif {{f}}({{a}}):\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "f": "is_adult",
+          "p": "age",
+          "cmp": ">=",
+          "ncmp": "<",
+          "lim": 18,
+          "a": 20,
+          "yes": "Welcome",
+          "no": "Sorry, too young"
+        },
+        {
+          "f": "has_fuel",
+          "p": "fuel",
+          "cmp": ">",
+          "ncmp": "<=",
+          "lim": 0,
+          "a": 15,
+          "yes": "Launch",
+          "no": "Refuel first"
+        },
+        {
+          "f": "has_shield",
+          "p": "shield",
+          "cmp": ">",
+          "ncmp": "<=",
+          "lim": 50,
+          "a": 80,
+          "yes": "Shields up",
+          "no": "Shields low"
+        },
+        {
+          "f": "can_enter",
+          "p": "level",
+          "cmp": ">=",
+          "ncmp": "<",
+          "lim": 3,
+          "a": 5,
+          "yes": "Door opens",
+          "no": "Access denied"
+        },
+        {
+          "f": "is_cold",
+          "p": "temp",
+          "cmp": "<",
+          "ncmp": ">=",
+          "lim": 10,
+          "a": 4,
+          "yes": "Wear a coat",
+          "no": "No coat needed"
+        }
+      ],
+      "mistakes": [
+        ["{{cmp}}", "{{ncmp}}"],
+        ["return {{p}} {{cmp}} {{lim}}", "print({{p}} {{cmp}} {{lim}})"],
+        ["if {{f}}({{a}}):", "print({{f}}({{a}}))\nif {{f}}({{a}}):"],
+        ["else:\n    print(\"{{no}}\")", "print(\"{{no}}\")"]
+      ]
+    },
+    {
+      "id": "rv-which-return",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def {{f}}(a, b):\n    return a {{op}} b\n\nprint({{f}}({{x}}, {{y}}) * {{m}})",
+      "values": [
+        {
+          "f": "add",
+          "op": "+",
+          "x": 2,
+          "y": 3,
+          "m": 10
+        },
+        {
+          "f": "multiply",
+          "op": "*",
+          "x": 4,
+          "y": 5,
+          "m": 2
+        },
+        {
+          "f": "subtract",
+          "op": "-",
+          "x": 9,
+          "y": 4,
+          "m": 3
+        },
+        {
+          "f": "total",
+          "op": "+",
+          "x": 7,
+          "y": 1,
+          "m": 3
+        },
+        {
+          "f": "divide",
+          "op": "/",
+          "x": 8,
+          "y": 2,
+          "m": 5
+        }
+      ],
+      "mistakes": [
+        ["    return a {{op}} b", "    print(a {{op}} b)"],
+        [" * {{m}})", ")"],
+        ["return a {{op}} b", "return a"],
+        ["{{f}}({{x}}, {{y}}) * {{m}}", "{{f}}({{x}}, {{y}} * {{m}})"]
+      ]
+    },
+    {
+      "id": "rv-which-none",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def {{f}}({{p}}):\n    print({{p}} {{op}} {{k}})\n\n{{r}} = {{f}}({{a}})\nprint({{r}})",
+      "values": [
+        {
+          "f": "show_double",
+          "p": "x",
+          "op": "*",
+          "k": 2,
+          "a": 6,
+          "r": "result"
+        },
+        {
+          "f": "add_bonus",
+          "p": "points",
+          "op": "+",
+          "k": 5,
+          "a": 20,
+          "r": "total"
+        },
+        {
+          "f": "half",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 7,
+          "r": "part"
+        },
+        {
+          "f": "square",
+          "p": "side",
+          "op": "**",
+          "k": 2,
+          "a": 9,
+          "r": "area"
+        },
+        {
+          "f": "use_fuel",
+          "p": "fuel",
+          "op": "-",
+          "k": 10,
+          "a": 40,
+          "r": "left"
+        }
+      ],
+      "mistakes": [
+        ["    print({{p}} {{op}} {{k}})", "    return {{p}} {{op}} {{k}}"],
+        ["print({{r}})", "print(\"{{r}}\")"],
+        ["{{r}} = {{f}}({{a}})\nprint({{r}})", "{{f}}({{a}})"]
+      ]
+    },
+    {
+      "id": "rv-gap-return",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}):\n    ___\n\n{{r}} = {{f}}({{a}})\nprint({{r}})",
+      "values": [
+        {
+          "f": "double",
+          "p": "x",
+          "op": "*",
+          "k": 2,
+          "a": 7,
+          "r": "result"
+        },
+        {
+          "f": "add_bonus",
+          "p": "points",
+          "op": "+",
+          "k": 5,
+          "a": 20,
+          "r": "total"
+        },
+        {
+          "f": "half",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 9,
+          "r": "part"
+        },
+        {
+          "f": "square",
+          "p": "side",
+          "op": "**",
+          "k": 2,
+          "a": 6,
+          "r": "area"
+        },
+        {
+          "f": "lose_life",
+          "p": "lives",
+          "op": "-",
+          "k": 1,
+          "a": 3,
+          "r": "left"
+        }
+      ],
+      "answer": "return {{p}} {{op}} {{k}}",
+      "wrong": ["print({{p}} {{op}} {{k}})", "return {{p}}", "{{p}} {{op}} {{k}}", "return {{k}}"]
+    },
+    {
+      "id": "rv-gap-early",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}):\n    if {{p}} {{cmp}} {{lim}}:\n        return \"{{yes}}\"\n    ___\n\nprint({{f}}({{a}}))\nprint({{f}}({{b}}))",
+      "values": [
+        {
+          "f": "check_fuel",
+          "p": "fuel",
+          "cmp": ">=",
+          "lim": 20,
+          "yes": "OK",
+          "no": "Low",
+          "a": 35,
+          "b": 5
+        },
+        {
+          "f": "grade",
+          "p": "score",
+          "cmp": ">=",
+          "lim": 50,
+          "yes": "Pass",
+          "no": "Fail",
+          "a": 72,
+          "b": 31
+        },
+        {
+          "f": "is_hot",
+          "p": "temp",
+          "cmp": ">",
+          "lim": 30,
+          "yes": "Hot",
+          "no": "Not hot",
+          "a": 33,
+          "b": 21
+        },
+        {
+          "f": "speed_check",
+          "p": "speed",
+          "cmp": ">",
+          "lim": 100,
+          "yes": "Too fast",
+          "no": "OK",
+          "a": 130,
+          "b": 90
+        },
+        {
+          "f": "can_vote",
+          "p": "age",
+          "cmp": ">=",
+          "lim": 18,
+          "yes": "Yes",
+          "no": "No",
+          "a": 40,
+          "b": 16
+        }
+      ],
+      "answer": "return \"{{no}}\"",
+      "wrong": ["print(\"{{no}}\")", "return \"{{yes}}\"", "return", "return {{p}}"]
+    },
+    {
+      "id": "rv-val-arg",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} {{op}} {{k}}\n\nprint({{f}}(___))",
+      "values": [
+        {
+          "f": "double",
+          "p": "x",
+          "op": "*",
+          "k": 2,
+          "a": 6,
+          "v": 12,
+          "w": 3
+        },
+        {
+          "f": "add_five",
+          "p": "n",
+          "op": "+",
+          "k": 5,
+          "a": 4,
+          "v": 9,
+          "w": 3
+        },
+        {
+          "f": "half",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 10,
+          "v": "5.0",
+          "w": 20
+        },
+        {
+          "f": "square",
+          "p": "side",
+          "op": "**",
+          "k": 2,
+          "a": 4,
+          "v": 16,
+          "w": 8
+        },
+        {
+          "f": "use_fuel",
+          "p": "fuel",
+          "op": "-",
+          "k": 3,
+          "a": 10,
+          "v": 7,
+          "w": 13
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{v}}", "{{k}}", "{{p}}", "{{w}}"]
+    },
+    {
+      "id": "rv-val-ret",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}):\n    return ___\n\nprint({{f}}({{a}}))",
+      "values": [
+        {
+          "f": "double",
+          "p": "x",
+          "op": "*",
+          "k": 2,
+          "a": 9
+        },
+        {
+          "f": "triple",
+          "p": "n",
+          "op": "*",
+          "k": 3,
+          "a": 4
+        },
+        {
+          "f": "add_ten",
+          "p": "score",
+          "op": "+",
+          "k": 10,
+          "a": 15
+        },
+        {
+          "f": "half",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 5
+        },
+        {
+          "f": "lose_life",
+          "p": "lives",
+          "op": "-",
+          "k": 1,
+          "a": 7
+        }
+      ],
+      "answer": "{{p}} {{op}} {{k}}",
+      "wrong": ["{{p}}", "{{k}}", "\"{{p}} {{op}} {{k}}\"", "print({{p}} {{op}} {{k}})"]
+    },
+    {
+      "id": "rv-bad-print",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}(a, b):\n    return a {{op}} b\n\n{{r}} = {{f}}({{x}}, {{y}})\nprint({{r}} * 2)",
+      "values": [
+        {
+          "f": "add",
+          "op": "+",
+          "x": 4,
+          "y": 5,
+          "r": "total"
+        },
+        {
+          "f": "multiply",
+          "op": "*",
+          "x": 3,
+          "y": 8,
+          "r": "product"
+        },
+        {
+          "f": "subtract",
+          "op": "-",
+          "x": 20,
+          "y": 6,
+          "r": "left"
+        }
+      ],
+      "bug": ["    return a {{op}} b", "    print(a {{op}} b)"]
+    },
+    {
+      "id": "rv-bad-call",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}):\n    if {{p}} {{cmp}} {{lim}}:\n        return \"{{yes}}\"\n    return \"{{no}}\"\n\nprint({{f}}({{b}}))\nprint({{f}}({{a}}))",
+      "values": [
+        {
+          "f": "check_fuel",
+          "p": "fuel",
+          "cmp": ">=",
+          "lim": 20,
+          "yes": "OK",
+          "no": "Low",
+          "a": 35,
+          "b": 50
+        },
+        {
+          "f": "is_hot",
+          "p": "temp",
+          "cmp": ">",
+          "lim": 30,
+          "yes": "Hot",
+          "no": "Not hot",
+          "a": 18,
+          "b": 12
+        },
+        {
+          "f": "grade",
+          "p": "score",
+          "cmp": ">=",
+          "lim": 50,
+          "yes": "Pass",
+          "no": "Fail",
+          "a": 64,
+          "b": 90
+        }
+      ],
+      "bug": ["print({{f}}({{a}}))", "{{f}}({{a}})"]
+    },
+    {
+      "id": "rv-bad-args",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}(a, b):\n    return a {{op}} b\n\nprint({{f}}({{x}}, {{y}}))\nprint({{f}}({{y}}, {{x}}))",
+      "values": [
+        {
+          "f": "subtract",
+          "op": "-",
+          "x": 9,
+          "y": 4
+        },
+        {
+          "f": "divide",
+          "op": "/",
+          "x": 12,
+          "y": 3
+        },
+        {
+          "f": "power",
+          "op": "**",
+          "x": 2,
+          "y": 3
+        }
+      ],
+      "bug": ["def {{f}}(a, b):", "def {{f}}(a):"]
+    },
+    {
+      "id": "rv-bad-ret",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}):\n    {{t}} = {{p}} {{op}} {{k}}\n    print(\"Got:\", {{p}})\n    return {{t}}\n\nprint({{f}}({{a}}))",
+      "values": [
+        {
+          "f": "double",
+          "p": "x",
+          "t": "doubled",
+          "op": "*",
+          "k": 2,
+          "a": 6
+        },
+        {
+          "f": "add_tax",
+          "p": "price",
+          "t": "total",
+          "op": "+",
+          "k": 5,
+          "a": 20
+        },
+        {
+          "f": "half",
+          "p": "n",
+          "t": "part",
+          "op": "/",
+          "k": 2,
+          "a": 9
+        }
+      ],
+      "bug": ["    return {{t}}", "    return {{p}}"]
+    }
+  ]
+}

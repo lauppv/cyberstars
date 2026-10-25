@@ -1,0 +1,715 @@
+{
+  "note": "Made by npm run make:quiz from the templates in dictionaries-loop-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "dl-keys-b20393",
+      "text": "Ce afișează?",
+      "code": "nava = {\"nume\": \"Nova\", \"viteza\": 90, \"echipaj\": 4}\nfor cheie in nava:\n    print(cheie)",
+      "options": [
+        "nume\nviteza\nechipaj",
+        "Nova\n90\n4",
+        "{'nume': 'Nova', 'viteza': 90, 'echipaj': 4}\n{'nume': 'Nova', 'viteza': 90, 'echipaj': 4}\n{'nume': 'Nova', 'viteza': 90, 'echipaj': 4}",
+        "3\n3\n3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-keys-8cc823",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 7, \"Rex\": 9}\nfor nume in scoruri:\n    print(nume)",
+      "options": ["Ana\nRex", "7\n9", "{'Ana': 7, 'Rex': 9}\n{'Ana': 7, 'Rex': 9}", "2\n2"],
+      "answer": 0
+    },
+    {
+      "id": "dl-keys-16b724",
+      "text": "Ce afișează?",
+      "code": "preturi = {\"ceai\": 4, \"tort\": 6, \"suc\": 5}\nfor produs in preturi:\n    print(produs)",
+      "options": [
+        "ceai\ntort\nsuc",
+        "4\n6\n5",
+        "{'ceai': 4, 'tort': 6, 'suc': 5}\n{'ceai': 4, 'tort': 6, 'suc': 5}\n{'ceai': 4, 'tort': 6, 'suc': 5}",
+        "3\n3\n3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-values-387901",
+      "text": "Ce afișează?",
+      "code": "combustibil = {\"stanga\": 40, \"dreapta\": 25}\nfor c in combustibil.values():\n    print(c)",
+      "options": [
+        "40\n25",
+        "stanga\ndreapta",
+        "{'stanga': 40, 'dreapta': 25}\n{'stanga': 40, 'dreapta': 25}",
+        "2\n2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-values-77db54",
+      "text": "Ce afișează?",
+      "code": "varste = {\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}\nfor varsta in varste.values():\n    print(varsta)",
+      "options": [
+        "12\n30\n9",
+        "Ana\nRex\nKai",
+        "{'Ana': 12, 'Rex': 30, 'Kai': 9}\n{'Ana': 12, 'Rex': 30, 'Kai': 9}\n{'Ana': 12, 'Rex': 30, 'Kai': 9}",
+        "3\n3\n3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-values-a31ff3",
+      "text": "Ce afișează?",
+      "code": "capitale = {\"Franta\": \"Paris\", \"Italia\": \"Roma\"}\nfor oras in capitale.values():\n    print(oras)",
+      "options": [
+        "Paris\nRoma",
+        "Franta\nItalia",
+        "{'Franta': 'Paris', 'Italia': 'Roma'}\n{'Franta': 'Paris', 'Italia': 'Roma'}",
+        "2\n2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-items-64726e",
+      "text": "Ce afișează?",
+      "code": "preturi = {\"ceai\": 4, \"tort\": 6}\nfor produs, pret in preturi.items():\n    print(f\"{produs} costa {pret}\")",
+      "options": [
+        "ceai costa 4\ntort costa 6",
+        "4 costa ceai\n6 costa tort",
+        "{produs} costa {pret}\n{produs} costa {pret}",
+        "ceai costa {'ceai': 4, 'tort': 6}\ntort costa {'ceai': 4, 'tort': 6}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-items-707da4",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Tommy\": 88, \"Lance\": 95, \"Phil\": 70}\nfor nume, scor in scoruri.items():\n    print(f\"{nume}: {scor}\")",
+      "options": [
+        "Tommy: 88\nLance: 95\nPhil: 70",
+        "88: Tommy\n95: Lance\n70: Phil",
+        "{nume}: {scor}\n{nume}: {scor}\n{nume}: {scor}",
+        "Tommy: {'Tommy': 88, 'Lance': 95, 'Phil': 70}\nLance: {'Tommy': 88, 'Lance': 95, 'Phil': 70}\nPhil: {'Tommy': 88, 'Lance': 95, 'Phil': 70}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-items-33ce37",
+      "text": "Ce afișează?",
+      "code": "stoc = {\"mere\": 5, \"pere\": 0, \"prune\": 12}\nfor fruct, bucati in stoc.items():\n    print(f\"{fruct} - {bucati}\")",
+      "options": [
+        "mere - 5\npere - 0\nprune - 12",
+        "5 - mere\n0 - pere\n12 - prune",
+        "{fruct} - {bucati}\n{fruct} - {bucati}\n{fruct} - {bucati}",
+        "mere - {'mere': 5, 'pere': 0, 'prune': 12}\npere - {'mere': 5, 'pere': 0, 'prune': 12}\nprune - {'mere': 5, 'pere': 0, 'prune': 12}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-items-d21bfa",
+      "text": "Ce afișează?",
+      "code": "niveluri = {\"Ana\": 3, \"Rex\": 7}\nfor jucator, nivel in niveluri.items():\n    print(f\"{jucator} e la nivelul {nivel}\")",
+      "options": [
+        "Ana e la nivelul 3\nRex e la nivelul 7",
+        "3 e la nivelul Ana\n7 e la nivelul Rex",
+        "{jucator} e la nivelul {nivel}\n{jucator} e la nivelul {nivel}",
+        "Ana e la nivelul {'Ana': 3, 'Rex': 7}\nRex e la nivelul {'Ana': 3, 'Rex': 7}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-total-9abe4e",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scoruri.values():\n    total = total + s\nprint(total)",
+      "options": ["20", "8", "3", "7\n12\n20"],
+      "answer": 0
+    },
+    {
+      "id": "dl-total-48d76d",
+      "text": "Ce afișează?",
+      "code": "preturi = {\"paine\": 3, \"lapte\": 2, \"branza\": 10}\nplata = 0\nfor p in preturi.values():\n    plata = plata + p\nprint(plata)",
+      "options": ["15", "10", "3", "3\n5\n15"],
+      "answer": 0
+    },
+    {
+      "id": "dl-total-fadca2",
+      "text": "Ce afișează?",
+      "code": "combustibil = {\"stanga\": 40, \"dreapta\": 60}\ntotal = 0\nfor c in combustibil.values():\n    total = total + c\nprint(total)",
+      "options": ["100", "60", "2", "40\n100"],
+      "answer": 0
+    },
+    {
+      "id": "dl-total-bd2198",
+      "text": "Ce afișează?",
+      "code": "pasi = {\"luni\": 1200, \"marti\": 800, \"miercuri\": 1500}\nparcurs = 0\nfor p in pasi.values():\n    parcurs = parcurs + p\nprint(parcurs)",
+      "options": ["3500", "1500", "3", "1200\n2000\n3500"],
+      "answer": 0
+    },
+    {
+      "id": "dl-count-6f3e2a",
+      "text": "Ce afișează?",
+      "code": "contor = {}\nfor litera in \"cocos\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "options": [
+        "{'c': 2, 'o': 2, 's': 1}",
+        "{'c': 1, 'o': 1, 's': 1}",
+        "{'c': 1, 'o': 1, 's': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-count-54326e",
+      "text": "Ce afișează?",
+      "code": "contor = {}\nfor litera in \"lalea\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "options": [
+        "{'l': 2, 'a': 2, 'e': 1}",
+        "{'l': 1, 'a': 1, 'e': 1}",
+        "{'l': 1, 'a': 1, 'e': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-count-c9762f",
+      "text": "Ce afișează?",
+      "code": "contor = {}\nfor litera in \"mamaie\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "options": [
+        "{'m': 2, 'a': 2, 'i': 1, 'e': 1}",
+        "{'m': 1, 'a': 1, 'i': 1, 'e': 1}",
+        "{'m': 1, 'a': 1, 'i': 0, 'e': 0}",
+        "4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-count-5f4969",
+      "text": "Ce afișează?",
+      "code": "contor = {}\nfor litera in \"ananas\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "options": [
+        "{'a': 3, 'n': 2, 's': 1}",
+        "{'a': 1, 'n': 1, 's': 1}",
+        "{'a': 2, 'n': 1, 's': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-average-69ad1d",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 7, \"Rex\": 8}\ntotal = 0\nfor s in scoruri.values():\n    total = total + s\nprint(total / len(scoruri))",
+      "options": ["7.5", "15", "7", "4.0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-average-118325",
+      "text": "Ce afișează?",
+      "code": "temperaturi = {\"luni\": 20, \"marti\": 25, \"miercuri\": 24}\ntotal = 0\nfor t in temperaturi.values():\n    total = total + t\nprint(total / len(temperaturi))",
+      "options": ["23.0", "69", "23", "8.0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-average-712d19",
+      "text": "Ce afișează?",
+      "code": "note = {\"mate\": 9, \"desen\": 10, \"muzica\": 6, \"sport\": 10}\npuncte = 0\nfor n in note.values():\n    puncte = puncte + n\nprint(puncte / len(note))",
+      "options": ["8.75", "35", "8", "2.5"],
+      "answer": 0
+    },
+    {
+      "id": "dl-average-b28089",
+      "text": "Ce afișează?",
+      "code": "viteze = {\"Nova\": 90, \"Comet\": 75}\ntotal = 0\nfor v in viteze.values():\n    total = total + v\nprint(total / len(viteze))",
+      "options": ["82.5", "165", "82", "37.5"],
+      "answer": 0
+    },
+    {
+      "id": "dl-top-549814",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"{cel_mai_bun}: {maxim}\")",
+      "options": ["Rex: 9", "Max: 9", ": 9", ": 0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-top-2124e7",
+      "text": "Ce afișează?",
+      "code": "puncte = {\"Tommy\": 88, \"Lance\": 95, \"Phil\": 60, \"Ken\": 72, \"Sonny\": 65}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in puncte:\n    if puncte[nume] > maxim:\n        maxim = puncte[nume]\n        cel_mai_bun = nume\nprint(f\"{cel_mai_bun}: {maxim}\")",
+      "options": ["Lance: 95", "Sonny: 95", ": 95", ": 0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-top-47c78a",
+      "text": "Ce afișează?",
+      "code": "vizite = {\"Marte\": 6, \"Venus\": 3, \"Pamant\": 5, \"Luna\": 4, \"Pluto\": 1}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in vizite:\n    if vizite[nume] > maxim:\n        maxim = vizite[nume]\n        cel_mai_bun = nume\nprint(f\"{cel_mai_bun}: {maxim}\")",
+      "options": ["Marte: 6", "Pluto: 6", ": 6", ": 0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-top-c7a12a",
+      "text": "Ce afișează?",
+      "code": "voturi = {\"rosu\": 12, \"albastru\": 30, \"verde\": 8, \"negru\": 20, \"alb\": 10}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in voturi:\n    if voturi[nume] > maxim:\n        maxim = voturi[nume]\n        cel_mai_bun = nume\nprint(f\"{cel_mai_bun}: {maxim}\")",
+      "options": ["albastru: 30", "alb: 30", ": 30", ": 0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-pass-a383b5",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        promovati.append(nume)\nprint(promovati)",
+      "options": [
+        "['Ana', 'Kai', 'Zoe']",
+        "[55, 50, 90]",
+        "['Rex']",
+        "['Ana']\n['Ana']\n['Ana', 'Kai']\n['Ana', 'Kai', 'Zoe']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-pass-d00c92",
+      "text": "Ce afișează?",
+      "code": "temperaturi = {\"luni\": 18, \"marti\": 31, \"miercuri\": 27, \"joi\": 33}\ncalde = []\nfor zi in temperaturi:\n    if temperaturi[zi] > 30:\n        calde.append(zi)\nprint(calde)",
+      "options": [
+        "['marti', 'joi']",
+        "[31, 33]",
+        "['luni', 'miercuri']",
+        "[]\n['marti']\n['marti']\n['marti', 'joi']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-pass-8955ce",
+      "text": "Ce afișează?",
+      "code": "preturi = {\"ceai\": 4, \"tort\": 9, \"suc\": 5}\nieftine = []\nfor produs in preturi:\n    if preturi[produs] <= 5:\n        ieftine.append(produs)\nprint(ieftine)",
+      "options": ["['ceai', 'suc']", "[4, 5]", "['tort']", "['ceai']\n['ceai']\n['ceai', 'suc']"],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-values-5be085",
+      "text": "Care program afișează asta?",
+      "output": "100\n80",
+      "options": [
+        "viata = {\"Tommy\": 100, \"Lance\": 80}\nfor v in viata.values():\n    print(v)",
+        "viata = {\"Tommy\": 100, \"Lance\": 80}\nfor v in viata.keys():\n    print(v)",
+        "viata = {\"Tommy\": 100, \"Lance\": 80}\nfor v in viata.values():\n    print(viata)",
+        "viata = {\"Tommy\": 100, \"Lance\": 80}\nfor v in viata.values():\nprint(v)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-values-292f90",
+      "text": "Care program afișează asta?",
+      "output": "3\n2\n5",
+      "options": [
+        "preturi = {\"paine\": 3, \"lapte\": 2, \"gem\": 5}\nfor p in preturi.values():\n    print(p)",
+        "preturi = {\"paine\": 3, \"lapte\": 2, \"gem\": 5}\nfor p in preturi.keys():\n    print(p)",
+        "preturi = {\"paine\": 3, \"lapte\": 2, \"gem\": 5}\nfor p in preturi.values():\n    print(preturi)",
+        "preturi = {\"paine\": 3, \"lapte\": 2, \"gem\": 5}\nfor p in preturi.values():\nprint(p)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-values-afd738",
+      "text": "Care program afișează asta?",
+      "output": "Roma\nOslo",
+      "options": [
+        "orase = {\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.values():\n    print(oras)",
+        "orase = {\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.keys():\n    print(oras)",
+        "orase = {\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.values():\n    print(orase)",
+        "orase = {\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.values():\nprint(oras)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-items-3be77e",
+      "text": "Care program afișează asta?",
+      "output": "Ana: 12\nRex: 30",
+      "options": [
+        "varste = {\"Ana\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\n    print(f\"{nume}: {varsta}\")",
+        "varste = {\"Ana\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\n    print(f\"{varsta}: {nume}\")",
+        "varste = {\"Ana\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\n    print(\"{nume}: {varsta}\")",
+        "varste = {\"Ana\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\nprint(f\"{nume}: {varsta}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-items-a1c357",
+      "text": "Care program afișează asta?",
+      "output": "mere: 5\npere: 2\nprune: 9",
+      "options": [
+        "stoc = {\"mere\": 5, \"pere\": 2, \"prune\": 9}\nfor fruct, bucati in stoc.items():\n    print(f\"{fruct}: {bucati}\")",
+        "stoc = {\"mere\": 5, \"pere\": 2, \"prune\": 9}\nfor fruct, bucati in stoc.items():\n    print(f\"{bucati}: {fruct}\")",
+        "stoc = {\"mere\": 5, \"pere\": 2, \"prune\": 9}\nfor fruct, bucati in stoc.items():\n    print(\"{fruct}: {bucati}\")",
+        "stoc = {\"mere\": 5, \"pere\": 2, \"prune\": 9}\nfor fruct, bucati in stoc.items():\nprint(f\"{fruct}: {bucati}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-items-f60a7b",
+      "text": "Care program afișează asta?",
+      "output": "Lance: 1\nPhil: 2",
+      "options": [
+        "locuri = {\"Lance\": 1, \"Phil\": 2}\nfor nume, loc in locuri.items():\n    print(f\"{nume}: {loc}\")",
+        "locuri = {\"Lance\": 1, \"Phil\": 2}\nfor nume, loc in locuri.items():\n    print(f\"{loc}: {nume}\")",
+        "locuri = {\"Lance\": 1, \"Phil\": 2}\nfor nume, loc in locuri.items():\n    print(\"{nume}: {loc}\")",
+        "locuri = {\"Lance\": 1, \"Phil\": 2}\nfor nume, loc in locuri.items():\nprint(f\"{nume}: {loc}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-count-1faa32",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"cafea\":\n    if litera in contor:\n        ___\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "output": "{'c': 1, 'a': 2, 'f': 1, 'e': 1}",
+      "options": [
+        "contor[litera] = contor[litera] + 1",
+        "contor[litera] = 1",
+        "contor[litera] = contor[litera] + 2",
+        "contor = contor + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-count-3f28bd",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"copac\":\n    if litera in contor:\n        ___\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "output": "{'c': 2, 'o': 1, 'p': 1, 'a': 1}",
+      "options": [
+        "contor[litera] = contor[litera] + 1",
+        "contor[litera] = 1",
+        "contor[litera] = contor[litera] + 2",
+        "contor = contor + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-count-999828",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"lalele\":\n    if litera in contor:\n        ___\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "output": "{'l': 3, 'a': 1, 'e': 2}",
+      "options": [
+        "contor[litera] = contor[litera] + 1",
+        "contor[litera] = 1",
+        "contor[litera] = contor[litera] + 2",
+        "contor = contor + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-count-48c4ba",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"mama\":\n    if litera in contor:\n        ___\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "output": "{'m': 2, 'a': 2}",
+      "options": [
+        "contor[litera] = contor[litera] + 1",
+        "contor[litera] = 1",
+        "contor[litera] = contor[litera] + 2",
+        "contor = contor + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-loop-65bc75",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = {\"Tommy\": 88, \"Lance\": 95}\n___\n    print(f\"{nume}: {scor}\")",
+      "output": "Tommy: 88\nLance: 95",
+      "options": [
+        "for nume, scor in scoruri.items():",
+        "for nume, scor in scoruri:",
+        "for scor, nume in scoruri.items():",
+        "for nume, scor in scoruri.values():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-loop-ff2a4e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = {\"ceai\": 4, \"tort\": 6, \"suc\": 5}\n___\n    print(f\"{produs}: {pret}\")",
+      "output": "ceai: 4\ntort: 6\nsuc: 5",
+      "options": [
+        "for produs, pret in preturi.items():",
+        "for produs, pret in preturi:",
+        "for pret, produs in preturi.items():",
+        "for produs, pret in preturi.values():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-loop-61afc3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = {\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}\n___\n    print(f\"{nume}: {varsta}\")",
+      "output": "Ana: 12\nRex: 30\nKai: 9",
+      "options": [
+        "for nume, varsta in varste.items():",
+        "for nume, varsta in varste:",
+        "for varsta, nume in varste.items():",
+        "for nume, varsta in varste.values():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-loop-f3248c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = {\"stanga\": 40, \"dreapta\": 25}\n___\n    print(f\"{rezervor}: {litri}\")",
+      "output": "stanga: 40\ndreapta: 25",
+      "options": [
+        "for rezervor, litri in combustibil.items():",
+        "for rezervor, litri in combustibil:",
+        "for litri, rezervor in combustibil.items():",
+        "for rezervor, litri in combustibil.values():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-value-4a2f14",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "viata = {\"Tommy\": 100, \"Lance\": 80, \"Phil\": 45}\nfor nume in viata:\n    ___",
+      "output": "100\n80\n45",
+      "options": ["print(viata[nume])", "print(nume)", "print(viata)", "print(viata[0])"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-value-fb73c8",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "capitale = {\"Franta\": \"Paris\", \"Italia\": \"Roma\"}\nfor tara in capitale:\n    ___",
+      "output": "Paris\nRoma",
+      "options": ["print(capitale[tara])", "print(tara)", "print(capitale)", "print(capitale[0])"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-value-b0a4c6",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = {\"paine\": 3, \"lapte\": 2}\nfor produs in preturi:\n    ___",
+      "output": "3\n2",
+      "options": ["print(preturi[produs])", "print(produs)", "print(preturi)", "print(preturi[0])"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-value-4a67c3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "viteze = {\"Nova\": 90, \"Comet\": 75, \"Star\": 60}\nfor nava in viteze:\n    ___",
+      "output": "90\n75\n60",
+      "options": ["print(viteze[nava])", "print(nava)", "print(viteze)", "print(viteze[0])"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-method-4a30d0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "viata = {\"Tommy\": 100, \"Lance\": 80}\nfor x in viata.___():\n    print(x)",
+      "output": "100\n80",
+      "options": ["values", "keys", "items", "len"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-method-597448",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = {\"ceai\": 4, \"tort\": 6}\nfor x in preturi.___():\n    print(x)",
+      "output": "ceai\ntort",
+      "options": ["keys", "values", "items", "len"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-method-a0819f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "orase = {\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}\nfor x in orase.___():\n    print(x)",
+      "output": "Roma\nOslo",
+      "options": ["values", "keys", "items", "len"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-method-4ce565",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "temperaturi = {\"luni\": 21, \"marti\": 30, \"miercuri\": 34}\nfor x in temperaturi.___():\n    print(x)",
+      "output": "luni\nmarti\nmiercuri",
+      "options": ["keys", "values", "items", "len"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-start-60d86f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"salut\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = ___\nprint(contor)",
+      "output": "{'s': 1, 'a': 1, 'l': 1, 'u': 1, 't': 1}",
+      "options": ["1", "0", "2", "litera"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-start-f47a30",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"kiwi\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = ___\nprint(contor)",
+      "output": "{'k': 1, 'i': 2, 'w': 1}",
+      "options": ["1", "0", "2", "litera"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-start-cdee87",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"pizza\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = ___\nprint(contor)",
+      "output": "{'p': 1, 'i': 1, 'z': 2, 'a': 1}",
+      "options": ["1", "0", "2", "litera"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-start-520d6b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"racheta\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = ___\nprint(contor)",
+      "output": "{'r': 1, 'a': 2, 'c': 1, 'h': 1, 'e': 1, 't': 1}",
+      "options": ["1", "0", "2", "litera"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-len-a02c66",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = {\"Ana\": 6, \"Rex\": 9, \"Kai\": 9}\ntotal = 0\nfor s in scoruri.values():\n    total = total + s\nprint(total / ___)",
+      "output": "8.0",
+      "options": ["len(scoruri)", "len(scoruri) - 1", "total", "len(total)"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-len-f0574f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "temperaturi = {\"luni\": 20, \"marti\": 23, \"miercuri\": 24, \"joi\": 25}\ntotal = 0\nfor t in temperaturi.values():\n    total = total + t\nprint(total / ___)",
+      "output": "23.0",
+      "options": ["len(temperaturi)", "len(temperaturi) - 1", "total", "len(total)"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-len-e09974",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = {\"ceai\": 4, \"tort\": 7}\nplata = 0\nfor p in preturi.values():\n    plata = plata + p\nprint(plata / ___)",
+      "output": "5.5",
+      "options": ["len(preturi)", "len(preturi) - 1", "plata", "len(plata)"],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-sum-76954d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "preturi = {\"paine\": 3, \"lapte\": 2, \"branza\": 10}\nplata = 0\nfor p in preturi.values():\n    print(p)\n    plata = p\nprint(f\"De plata: {plata}\")",
+      "output": "3\n2\n10\nDe plata: 15",
+      "options": [
+        "plata = p",
+        "print(p)",
+        "plata = 0",
+        "preturi = {\"paine\": 3, \"lapte\": 2, \"branza\": 10}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-sum-24bca3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = {\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scoruri.values():\n    print(s)\n    total = s\nprint(f\"Total: {total}\")",
+      "output": "7\n5\n8\nTotal: 20",
+      "options": ["total = s", "print(s)", "total = 0", "print(f\"Total: {total}\")"],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-sum-8565f3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "pasi = {\"luni\": 1200, \"marti\": 800}\nparcurs = 0\nfor p in pasi.values():\n    print(p)\n    parcurs = p\nprint(f\"Pasi: {parcurs}\")",
+      "output": "1200\n800\nPasi: 2000",
+      "options": [
+        "parcurs = p",
+        "print(p)",
+        "parcurs = 0",
+        "pasi = {\"luni\": 1200, \"marti\": 800}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-items-c526c1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = {\"Tommy\": 88, \"Lance\": 95}\nprint(\"Scoruri:\")\nfor nume, scor in scoruri.items():\n    print(f\"{nume}: {nume}\")",
+      "output": "Scoruri:\nTommy: 88\nLance: 95",
+      "options": [
+        "print(f\"{nume}: {nume}\")",
+        "print(\"Scoruri:\")",
+        "scoruri = {\"Tommy\": 88, \"Lance\": 95}",
+        "for nume, scor in scoruri.items():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-items-1d1c77",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "stoc = {\"mere\": 5, \"pere\": 0, \"prune\": 12}\nprint(\"In stoc:\")\nfor fruct, bucati in stoc.items():\n    print(f\"{fruct}: {fruct}\")",
+      "output": "In stoc:\nmere: 5\npere: 0\nprune: 12",
+      "options": [
+        "print(f\"{fruct}: {fruct}\")",
+        "print(\"In stoc:\")",
+        "stoc = {\"mere\": 5, \"pere\": 0, \"prune\": 12}",
+        "for fruct, bucati in stoc.items():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-items-4f050b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varste = {\"Ana\": 12, \"Rex\": 30}\nprint(\"Varste:\")\nfor nume, varsta in varste.items():\n    print(f\"{nume}: {nume}\")",
+      "output": "Varste:\nAna: 12\nRex: 30",
+      "options": [
+        "print(f\"{nume}: {nume}\")",
+        "print(\"Varste:\")",
+        "varste = {\"Ana\": 12, \"Rex\": 30}",
+        "for nume, varsta in varste.items():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-check-6c8bb5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"litere\":\n    if litera not in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "output": "{'l': 1, 'i': 1, 't': 1, 'e': 2, 'r': 1}",
+      "options": ["if litera not in contor:", "for litera in \"litere\":", "contor = {}", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-check-eb8152",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"cocos\":\n    if litera not in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "output": "{'c': 2, 'o': 2, 's': 1}",
+      "options": ["if litera not in contor:", "for litera in \"cocos\":", "contor = {}", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-check-820c72",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "contor = {}\nfor litera in \"tata\":\n    if litera not in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "output": "{'t': 2, 'a': 2}",
+      "options": ["if litera not in contor:", "for litera in \"tata\":", "contor = {}", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-start-4d01d4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "contor = []\nfor litera in \"luna\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "output": "{'l': 1, 'u': 1, 'n': 1, 'a': 1}",
+      "options": [
+        "contor = []",
+        "contor[litera] = contor[litera] + 1",
+        "contor[litera] = 1",
+        "print(contor)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-start-4c2758",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "contor = []\nfor litera in \"cerc\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "output": "{'c': 2, 'e': 1, 'r': 1}",
+      "options": [
+        "contor = []",
+        "contor[litera] = contor[litera] + 1",
+        "contor[litera] = 1",
+        "print(contor)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-start-df5baf",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "contor = []\nfor litera in \"tenis\":\n    if litera in contor:\n        contor[litera] = contor[litera] + 1\n    else:\n        contor[litera] = 1\nprint(contor)",
+      "output": "{'t': 1, 'e': 1, 'n': 1, 'i': 1, 's': 1}",
+      "options": [
+        "contor = []",
+        "contor[litera] = contor[litera] + 1",
+        "contor[litera] = 1",
+        "print(contor)"
+      ],
+      "answer": 0
+    }
+  ]
+}

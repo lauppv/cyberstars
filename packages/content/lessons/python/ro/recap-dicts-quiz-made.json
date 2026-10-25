@@ -1,0 +1,690 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-dicts-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rd-average-01e2ef",
+      "text": "Ce afișează?",
+      "code": "def total_din(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total\n\nechipaj = {\"Tommy\": 90, \"Lance\": 60, \"Mira\": 75}\nprint(total_din(echipaj) / len(echipaj))",
+      "options": ["75.0", "25.0", "75", "30.0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-average-c79a41",
+      "text": "Ce afișează?",
+      "code": "def total_din(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total\n\nechipaj = {\"Cortez\": 84, \"Phil\": 42, \"Sonny\": 60}\nprint(total_din(echipaj) / len(echipaj))",
+      "options": ["62.0", "20.0", "62", "28.0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-average-8f36ec",
+      "text": "Ce afișează?",
+      "code": "def total_din(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total\n\nechipaj = {\"Ana\": 99, \"Ben\": 81, \"Cara\": 60}\nprint(total_din(echipaj) / len(echipaj))",
+      "options": ["80.0", "20.0", "80", "33.0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-average-8ea744",
+      "text": "Ce afișează?",
+      "code": "def total_din(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total\n\nechipaj = {\"Kai\": 30, \"Zoe\": 72, \"Rex\": 93}\nprint(total_din(echipaj) / len(echipaj))",
+      "options": ["65.0", "31.0", "65", "10.0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-average-647903",
+      "text": "Ce afișează?",
+      "code": "def total_din(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total\n\nechipaj = {\"Mia\": 66, \"Nova\": 54, \"Ken\": 90}\nprint(total_din(echipaj) / len(echipaj))",
+      "options": ["70.0", "30.0", "70", "22.0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-top-6722b4",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Tommy\": 80, \"Lance\": 95, \"Mira\": 70}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"Cel mai bun: {cel_mai_bun}\")",
+      "options": ["Cel mai bun: Lance", "Cel mai bun:", "Cel mai bun: Mira", "Cel mai bun: 95"],
+      "answer": 0
+    },
+    {
+      "id": "rd-top-38b366",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Cortez\": 60, \"Phil\": 88, \"Sonny\": 75}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"Cel mai bun: {cel_mai_bun}\")",
+      "options": ["Cel mai bun: Phil", "Cel mai bun:", "Cel mai bun: Sonny", "Cel mai bun: 88"],
+      "answer": 0
+    },
+    {
+      "id": "rd-top-4c6068",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 91, \"Ben\": 64, \"Cara\": 77}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"Cel mai bun: {cel_mai_bun}\")",
+      "options": ["Cel mai bun: Ana", "Cel mai bun:", "Cel mai bun: Cara", "Cel mai bun: 91"],
+      "answer": 0
+    },
+    {
+      "id": "rd-top-e000fd",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Kai\": 52, \"Zoe\": 68, \"Rex\": 99}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"Cel mai bun: {cel_mai_bun}\")",
+      "options": ["Cel mai bun: Rex", "Cel mai bun:", "Cel mai bun: 99", "Cel mai bun: Kai"],
+      "answer": 0
+    },
+    {
+      "id": "rd-top-8c0de4",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Mia\": 45, \"Nova\": 83, \"Ken\": 61}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"Cel mai bun: {cel_mai_bun}\")",
+      "options": ["Cel mai bun: Nova", "Cel mai bun:", "Cel mai bun: Ken", "Cel mai bun: 83"],
+      "answer": 0
+    },
+    {
+      "id": "rd-passing-cfe0b3",
+      "text": "Ce afișează?",
+      "code": "def promovati(scoruri, prag):\n    lista = []\n    for nume, scor in scoruri.items():\n        if scor >= prag:\n            lista.append(nume)\n    return lista\n\nrezultat = promovati({\"Tommy\": 95, \"Lance\": 42, \"Mira\": 88, \"Phil\": 50}, 50)\nprint(len(rezultat))\nfor nume in rezultat:\n    print(nume)",
+      "options": ["3\nTommy\nMira\nPhil", "2\nTommy\nMira", "3\n95\n88\n50", "1\nTommy"],
+      "answer": 0
+    },
+    {
+      "id": "rd-passing-2fcdc7",
+      "text": "Ce afișează?",
+      "code": "def promovati(scoruri, prag):\n    lista = []\n    for nume, scor in scoruri.items():\n        if scor >= prag:\n            lista.append(nume)\n    return lista\n\nrezultat = promovati({\"Tommy\": 70, \"Lance\": 70, \"Mira\": 40, \"Phil\": 85}, 70)\nprint(len(rezultat))\nfor nume in rezultat:\n    print(nume)",
+      "options": ["3\nTommy\nLance\nPhil", "1\nPhil", "3\n70\n70\n85", "1\nTommy"],
+      "answer": 0
+    },
+    {
+      "id": "rd-passing-3a2e20",
+      "text": "Ce afișează?",
+      "code": "def promovati(scoruri, prag):\n    lista = []\n    for nume, scor in scoruri.items():\n        if scor >= prag:\n            lista.append(nume)\n    return lista\n\nrezultat = promovati({\"Tommy\": 60, \"Lance\": 90, \"Mira\": 75, \"Phil\": 30}, 75)\nprint(len(rezultat))\nfor nume in rezultat:\n    print(nume)",
+      "options": ["2\nLance\nMira", "1\nLance", "2\n90\n75", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-passing-b2ef18",
+      "text": "Ce afișează?",
+      "code": "def promovati(scoruri, prag):\n    lista = []\n    for nume, scor in scoruri.items():\n        if scor >= prag:\n            lista.append(nume)\n    return lista\n\nrezultat = promovati({\"Tommy\": 45, \"Lance\": 80, \"Mira\": 80, \"Phil\": 66}, 80)\nprint(len(rezultat))\nfor nume in rezultat:\n    print(nume)",
+      "options": ["2\nLance\nMira", "0", "2\n80\n80", "Lance\nMira"],
+      "answer": 0
+    },
+    {
+      "id": "rd-passing-536b9c",
+      "text": "Ce afișează?",
+      "code": "def promovati(scoruri, prag):\n    lista = []\n    for nume, scor in scoruri.items():\n        if scor >= prag:\n            lista.append(nume)\n    return lista\n\nrezultat = promovati({\"Tommy\": 99, \"Lance\": 20, \"Mira\": 55, \"Phil\": 61}, 60)\nprint(len(rezultat))\nfor nume in rezultat:\n    print(nume)",
+      "options": ["2\nTommy\nPhil", "2\n99\n61", "1\nTommy", "Tommy\nPhil"],
+      "answer": 0
+    },
+    {
+      "id": "rd-count-8b2595",
+      "text": "Ce afișează?",
+      "code": "aparitii = {}\nfor obiect in [\"combustibil\", \"mancare\", \"combustibil\"]:\n    if obiect in aparitii:\n        aparitii[obiect] = aparitii[obiect] + 1\n    else:\n        aparitii[obiect] = 1\nprint(aparitii)",
+      "options": [
+        "{'combustibil': 2, 'mancare': 1}",
+        "{'combustibil': 1, 'mancare': 1}",
+        "{'combustibil': 1, 'mancare': 0}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-count-6c17f4",
+      "text": "Ce afișează?",
+      "code": "aparitii = {}\nfor obiect in [\"ok\", \"ok\", \"ok\", \"slab\"]:\n    if obiect in aparitii:\n        aparitii[obiect] = aparitii[obiect] + 1\n    else:\n        aparitii[obiect] = 1\nprint(aparitii)",
+      "options": ["{'ok': 3, 'slab': 1}", "{'ok': 1, 'slab': 1}", "{'ok': 2, 'slab': 0}", "2"],
+      "answer": 0
+    },
+    {
+      "id": "rd-count-2bed8b",
+      "text": "Ce afișează?",
+      "code": "aparitii = {}\nfor obiect in [\"rosu\", \"albastru\", \"rosu\", \"albastru\", \"rosu\"]:\n    if obiect in aparitii:\n        aparitii[obiect] = aparitii[obiect] + 1\n    else:\n        aparitii[obiect] = 1\nprint(aparitii)",
+      "options": [
+        "{'rosu': 3, 'albastru': 2}",
+        "{'rosu': 1, 'albastru': 1}",
+        "{'rosu': 2, 'albastru': 1}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-count-51ee61",
+      "text": "Ce afișează?",
+      "code": "aparitii = {}\nfor obiect in [\"A\", \"B\", \"C\", \"A\"]:\n    if obiect in aparitii:\n        aparitii[obiect] = aparitii[obiect] + 1\n    else:\n        aparitii[obiect] = 1\nprint(aparitii)",
+      "options": [
+        "{'A': 2, 'B': 1, 'C': 1}",
+        "{'A': 1, 'B': 1, 'C': 1}",
+        "{'A': 1, 'B': 0, 'C': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-count-96c284",
+      "text": "Ce afișează?",
+      "code": "aparitii = {}\nfor obiect in [\"Marte\", \"Venus\", \"Marte\", \"Marte\"]:\n    if obiect in aparitii:\n        aparitii[obiect] = aparitii[obiect] + 1\n    else:\n        aparitii[obiect] = 1\nprint(aparitii)",
+      "options": [
+        "{'Marte': 3, 'Venus': 1}",
+        "{'Marte': 1, 'Venus': 1}",
+        "{'Marte': 2, 'Venus': 0}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-update-b76d6a",
+      "text": "Ce afișează?",
+      "code": "echipaj = {\"Tommy\": 80, \"Lance\": 60}\nechipaj[\"Lance\"] = echipaj[\"Lance\"] + 10\nechipaj[\"Mira\"] = 75\ndel echipaj[\"Tommy\"]\nprint(echipaj)",
+      "options": [
+        "{'Lance': 70, 'Mira': 75}",
+        "{'Tommy': 80, 'Lance': 70, 'Mira': 75}",
+        "{'Lance': 10, 'Mira': 75}",
+        "{'Lance': 70}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-update-5aa5fa",
+      "text": "Ce afișează?",
+      "code": "echipaj = {\"Cortez\": 50, \"Phil\": 45}\nechipaj[\"Phil\"] = echipaj[\"Phil\"] + 5\nechipaj[\"Sonny\"] = 90\ndel echipaj[\"Cortez\"]\nprint(echipaj)",
+      "options": [
+        "{'Phil': 50, 'Sonny': 90}",
+        "{'Cortez': 50, 'Phil': 50, 'Sonny': 90}",
+        "{'Phil': 5, 'Sonny': 90}",
+        "{'Phil': 50}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-update-69d6ea",
+      "text": "Ce afișează?",
+      "code": "echipaj = {\"Ana\": 70, \"Ben\": 88}\nechipaj[\"Ben\"] = echipaj[\"Ben\"] + 2\nechipaj[\"Cara\"] = 64\ndel echipaj[\"Ana\"]\nprint(echipaj)",
+      "options": [
+        "{'Ben': 90, 'Cara': 64}",
+        "{'Ana': 70, 'Ben': 90, 'Cara': 64}",
+        "{'Ben': 2, 'Cara': 64}",
+        "{'Ben': 90}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-update-57ff11",
+      "text": "Ce afișează?",
+      "code": "echipaj = {\"Kai\": 33, \"Zoe\": 71}\nechipaj[\"Zoe\"] = echipaj[\"Zoe\"] + 9\nechipaj[\"Rex\"] = 58\ndel echipaj[\"Kai\"]\nprint(echipaj)",
+      "options": [
+        "{'Zoe': 80, 'Rex': 58}",
+        "{'Kai': 33, 'Zoe': 80, 'Rex': 58}",
+        "{'Zoe': 9, 'Rex': 58}",
+        "{'Zoe': 80}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-update-287183",
+      "text": "Ce afișează?",
+      "code": "echipaj = {\"Mia\": 90, \"Nova\": 39}\nechipaj[\"Nova\"] = echipaj[\"Nova\"] + 11\nechipaj[\"Ken\"] = 47\ndel echipaj[\"Mia\"]\nprint(echipaj)",
+      "options": [
+        "{'Nova': 50, 'Ken': 47}",
+        "{'Mia': 90, 'Nova': 50, 'Ken': 47}",
+        "{'Nova': 11, 'Ken': 47}",
+        "{'Nova': 50}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-first-low-f12dbb",
+      "text": "Ce afișează?",
+      "code": "def primul_slab(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < 50:\n            return nume\n    return \"Nimeni\"\n\nprint(primul_slab({\"Tommy\": 95, \"Lance\": 42, \"Phil\": 37}))",
+      "options": ["Lance", "Lance\nPhil\nNimeni", "Nimeni", "Tommy"],
+      "answer": 0
+    },
+    {
+      "id": "rd-first-low-332ffe",
+      "text": "Ce afișează?",
+      "code": "def primul_slab(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < 50:\n            return nume\n    return \"Nimeni\"\n\nprint(primul_slab({\"Mira\": 76, \"Cortez\": 88, \"Sonny\": 30}))",
+      "options": ["Sonny", "Sonny\nNimeni", "Nimeni", "Mira"],
+      "answer": 0
+    },
+    {
+      "id": "rd-first-low-ee7074",
+      "text": "Ce afișează?",
+      "code": "def primul_slab(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < 60:\n            return nume\n    return \"Nimeni\"\n\nprint(primul_slab({\"Ana\": 64, \"Ben\": 58, \"Cara\": 71}))",
+      "options": ["Ben", "Ben\nNimeni", "Nimeni", "Ana"],
+      "answer": 0
+    },
+    {
+      "id": "rd-first-low-57e9b1",
+      "text": "Ce afișează?",
+      "code": "def primul_slab(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < 50:\n            return nume\n    return \"Nimeni\"\n\nprint(primul_slab({\"Kai\": 49, \"Zoe\": 90, \"Rex\": 20}))",
+      "options": ["Kai", "Kai\nRex\nNimeni", "Zoe", "49"],
+      "answer": 0
+    },
+    {
+      "id": "rd-first-low-67aef3",
+      "text": "Ce afișează?",
+      "code": "def primul_slab(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < 70:\n            return nume\n    return \"Nimeni\"\n\nprint(primul_slab({\"Mia\": 81, \"Nova\": 77, \"Ken\": 66}))",
+      "options": ["Ken", "Ken\nNimeni", "Nimeni", "Mia"],
+      "answer": 0
+    },
+    {
+      "id": "rd-which-ship-ef357e",
+      "text": "Care program afișează asta?",
+      "output": "Falcon\n65",
+      "options": [
+        "nava = {\"nume\": \"Falcon\", \"combustibil\": 100}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 35\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Falcon\", \"combustibil\": 100}\nnava[\"combustibil\"] = 35\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Falcon\", \"combustibil\": 100}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 35\nprint(\"nume\")\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Falcon\", \"combustibil\": 100}\nnava[\"folosit\"] = nava[\"combustibil\"] - 35\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-which-ship-bc7b51",
+      "text": "Care program afișează asta?",
+      "output": "Atlas\n55",
+      "options": [
+        "nava = {\"nume\": \"Atlas\", \"combustibil\": 80}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 25\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Atlas\", \"combustibil\": 80}\nnava[\"combustibil\"] = 25\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Atlas\", \"combustibil\": 80}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 25\nprint(\"nume\")\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Atlas\", \"combustibil\": 80}\nnava[\"folosit\"] = nava[\"combustibil\"] - 25\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-which-ship-a71995",
+      "text": "Care program afișează asta?",
+      "output": "Nova\n45",
+      "options": [
+        "nava = {\"nume\": \"Nova\", \"combustibil\": 60}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 15\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Nova\", \"combustibil\": 60}\nnava[\"combustibil\"] = 15\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Nova\", \"combustibil\": 60}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 15\nprint(\"nume\")\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Nova\", \"combustibil\": 60}\nnava[\"folosit\"] = nava[\"combustibil\"] - 15\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-which-ship-a37b6e",
+      "text": "Care program afișează asta?",
+      "output": "Orion\n50",
+      "options": [
+        "nava = {\"nume\": \"Orion\", \"combustibil\": 90}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 40\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Orion\", \"combustibil\": 90}\nnava[\"combustibil\"] = 40\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Orion\", \"combustibil\": 90}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 40\nprint(\"nume\")\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Orion\", \"combustibil\": 90}\nnava[\"folosit\"] = nava[\"combustibil\"] - 40\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-which-ship-5db8b6",
+      "text": "Care program afișează asta?",
+      "output": "Vega\n45",
+      "options": [
+        "nava = {\"nume\": \"Vega\", \"combustibil\": 75}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 30\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Vega\", \"combustibil\": 75}\nnava[\"combustibil\"] = 30\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Vega\", \"combustibil\": 75}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 30\nprint(\"nume\")\nprint(nava[\"combustibil\"])",
+        "nava = {\"nume\": \"Vega\", \"combustibil\": 75}\nnava[\"folosit\"] = nava[\"combustibil\"] - 30\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-which-items-b21dfc",
+      "text": "Care program afișează asta?",
+      "output": "combustibil: 30\nmancare: 12",
+      "options": [
+        "stoc = {\"combustibil\": 30, \"mancare\": 12}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")",
+        "stoc = {\"combustibil\": 30, \"mancare\": 12}\nfor obiect, cantitate in stoc.items():\n    print(f\"{cantitate}: {obiect}\")",
+        "stoc = {\"combustibil\": 30, \"mancare\": 12}\nfor obiect, cantitate in stoc.items():\n    print(obiect, cantitate)",
+        "stoc = {\"combustibil\": 12, \"mancare\": 30}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-which-items-71fd42",
+      "text": "Care program afișează asta?",
+      "output": "apa: 8\naer: 5",
+      "options": [
+        "stoc = {\"apa\": 8, \"aer\": 5}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")",
+        "stoc = {\"apa\": 8, \"aer\": 5}\nfor obiect, cantitate in stoc.items():\n    print(f\"{cantitate}: {obiect}\")",
+        "stoc = {\"apa\": 8, \"aer\": 5}\nfor obiect, cantitate in stoc.items():\n    print(obiect, cantitate)",
+        "stoc = {\"apa\": 5, \"aer\": 8}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-which-items-b7b753",
+      "text": "Care program afișează asta?",
+      "output": "truse: 4\nunelte: 9",
+      "options": [
+        "stoc = {\"truse\": 4, \"unelte\": 9}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")",
+        "stoc = {\"truse\": 4, \"unelte\": 9}\nfor obiect, cantitate in stoc.items():\n    print(f\"{cantitate}: {obiect}\")",
+        "stoc = {\"truse\": 4, \"unelte\": 9}\nfor obiect, cantitate in stoc.items():\n    print(obiect, cantitate)",
+        "stoc = {\"truse\": 9, \"unelte\": 4}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-which-items-8aa6c8",
+      "text": "Care program afișează asta?",
+      "output": "harti: 2\nstatii: 6",
+      "options": [
+        "stoc = {\"harti\": 2, \"statii\": 6}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")",
+        "stoc = {\"harti\": 2, \"statii\": 6}\nfor obiect, cantitate in stoc.items():\n    print(f\"{cantitate}: {obiect}\")",
+        "stoc = {\"harti\": 2, \"statii\": 6}\nfor obiect, cantitate in stoc.items():\n    print(obiect, cantitate)",
+        "stoc = {\"harti\": 6, \"statii\": 2}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-which-items-f10ccb",
+      "text": "Care program afișează asta?",
+      "output": "scuturi: 3\nlasere: 7",
+      "options": [
+        "stoc = {\"scuturi\": 3, \"lasere\": 7}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")",
+        "stoc = {\"scuturi\": 3, \"lasere\": 7}\nfor obiect, cantitate in stoc.items():\n    print(f\"{cantitate}: {obiect}\")",
+        "stoc = {\"scuturi\": 3, \"lasere\": 7}\nfor obiect, cantitate in stoc.items():\n    print(obiect, cantitate)",
+        "stoc = {\"scuturi\": 7, \"lasere\": 3}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-return-4f90d0",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def total_combustibil(rezervoare):\n    total = 0\n    for cantitate in rezervoare.values():\n        total = total + cantitate\n    ___\n\nprint(total_combustibil({\"stanga\": 40, \"dreapta\": 30}))",
+      "output": "70",
+      "options": ["return total", "print(total)", "return cantitate", "return rezervoare"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-return-1c1329",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def total_combustibil(rezervoare):\n    total = 0\n    for cantitate in rezervoare.values():\n        total = total + cantitate\n    ___\n\nprint(total_combustibil({\"stanga\": 25, \"dreapta\": 25}))",
+      "output": "50",
+      "options": ["return total", "print(total)", "return cantitate", "return rezervoare"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-return-d8acbf",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def total_combustibil(rezervoare):\n    total = 0\n    for cantitate in rezervoare.values():\n        total = total + cantitate\n    ___\n\nprint(total_combustibil({\"stanga\": 60, \"dreapta\": 15}))",
+      "output": "75",
+      "options": ["return total", "print(total)", "return cantitate", "return rezervoare"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-return-bd0d0f",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def total_combustibil(rezervoare):\n    total = 0\n    for cantitate in rezervoare.values():\n        total = total + cantitate\n    ___\n\nprint(total_combustibil({\"stanga\": 12, \"dreapta\": 48}))",
+      "output": "60",
+      "options": ["return total", "print(total)", "return cantitate", "return rezervoare"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-return-92bf52",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def total_combustibil(rezervoare):\n    total = 0\n    for cantitate in rezervoare.values():\n        total = total + cantitate\n    ___\n\nprint(total_combustibil({\"stanga\": 33, \"dreapta\": 7}))",
+      "output": "40",
+      "options": ["return total", "print(total)", "return cantitate", "return rezervoare"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-append-741784",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = {\"Tommy\": 95, \"Lance\": 42, \"Mira\": 76}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        ___\nprint(promovati)",
+      "output": "['Tommy', 'Mira']",
+      "options": [
+        "promovati.append(nume)",
+        "promovati.append(scoruri[nume])",
+        "promovati = nume",
+        "promovati.append(scoruri)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-append-63a381",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = {\"Cortez\": 88, \"Phil\": 37, \"Sonny\": 50}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        ___\nprint(promovati)",
+      "output": "['Cortez', 'Sonny']",
+      "options": [
+        "promovati.append(nume)",
+        "promovati.append(scoruri[nume])",
+        "promovati = nume",
+        "promovati.append(scoruri)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-append-a289d4",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = {\"Ana\": 51, \"Ben\": 64, \"Cara\": 20}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        ___\nprint(promovati)",
+      "output": "['Ana', 'Ben']",
+      "options": [
+        "promovati.append(nume)",
+        "promovati.append(scoruri[nume])",
+        "promovati = nume",
+        "promovati.append(scoruri)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-append-8e92d9",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = {\"Kai\": 70, \"Zoe\": 90, \"Rex\": 85}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        ___\nprint(promovati)",
+      "output": "['Kai', 'Zoe', 'Rex']",
+      "options": [
+        "promovati.append(nume)",
+        "promovati.append(scoruri[nume])",
+        "promovati = nume",
+        "promovati.append(scoruri)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-append-cdce60",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = {\"Mia\": 49, \"Nova\": 66, \"Ken\": 99}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        ___\nprint(promovati)",
+      "output": "['Nova', 'Ken']",
+      "options": [
+        "promovati.append(nume)",
+        "promovati.append(scoruri[nume])",
+        "promovati = nume",
+        "promovati.append(scoruri)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-method-0761c8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"Tommy\": 95, \"Lance\": 42, \"Mira\": 76}\nfor x in echipaj.___():\n    print(x)",
+      "output": "95\n42\n76",
+      "options": ["values", "keys", "items", "append"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-method-56837a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"Cortez\": 88, \"Phil\": 37, \"Sonny\": 50}\nfor x in echipaj.___():\n    print(x)",
+      "output": "Cortez\nPhil\nSonny",
+      "options": ["keys", "values", "items", "append"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-method-5a2862",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"Ana\": 51, \"Ben\": 64, \"Cara\": 20}\nfor x in echipaj.___():\n    print(x)",
+      "output": "51\n64\n20",
+      "options": ["values", "keys", "items", "append"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-method-2d9a6e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"Kai\": 70, \"Zoe\": 90, \"Rex\": 85}\nfor x in echipaj.___():\n    print(x)",
+      "output": "Kai\nZoe\nRex",
+      "options": ["keys", "values", "items", "append"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-method-827061",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"Mia\": 49, \"Nova\": 66, \"Ken\": 99}\nfor x in echipaj.___():\n    print(x)",
+      "output": "49\n66\n99",
+      "options": ["values", "keys", "items", "append"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-key-f0d9cd",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def fa_raport(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return {\"total\": total, \"numar\": len(scoruri)}\n\nraport = fa_raport({\"Tommy\": 95, \"Lance\": 42})\nprint(raport[___])",
+      "output": "137",
+      "options": ["\"total\"", "\"numar\"", "total", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-key-ec37dd",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def fa_raport(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return {\"total\": total, \"numar\": len(scoruri)}\n\nraport = fa_raport({\"Mira\": 76, \"Phil\": 37})\nprint(raport[___])",
+      "output": "2",
+      "options": ["\"numar\"", "\"total\"", "total", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-key-002dd8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def fa_raport(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return {\"total\": total, \"numar\": len(scoruri)}\n\nraport = fa_raport({\"Ana\": 50, \"Ben\": 30})\nprint(raport[___])",
+      "output": "80",
+      "options": ["\"total\"", "\"numar\"", "total", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-key-527df3",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def fa_raport(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return {\"total\": total, \"numar\": len(scoruri)}\n\nraport = fa_raport({\"Kai\": 61, \"Zoe\": 19})\nprint(raport[___])",
+      "output": "2",
+      "options": ["\"numar\"", "\"total\"", "total", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-gap-key-686b5d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def fa_raport(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return {\"total\": total, \"numar\": len(scoruri)}\n\nraport = fa_raport({\"Mia\": 44, \"Ken\": 56})\nprint(raport[___])",
+      "output": "100",
+      "options": ["\"total\"", "\"numar\"", "total", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rd-bad-quotes-6a64ee",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = {\"Tommy\": 80, \"Lance\": 60}\nscoruri[\"Lance\"] = scoruri[\"Lance\"] + 5\nscoruri[\"Mira\"] = 75\nprint(scoruri[\"Mira\"])\nprint(scoruri[\"Lance\"])\nprint(scoruri[Tommy])",
+      "output": "75\n65\n80",
+      "options": [
+        "print(scoruri[Tommy])",
+        "print(scoruri[\"Lance\"])",
+        "print(scoruri[\"Mira\"])",
+        "scoruri[\"Mira\"] = 75"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-bad-quotes-7115cf",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = {\"Cortez\": 50, \"Phil\": 45}\nscoruri[\"Phil\"] = scoruri[\"Phil\"] + 5\nscoruri[\"Sonny\"] = 90\nprint(scoruri[\"Sonny\"])\nprint(scoruri[\"Phil\"])\nprint(scoruri[Cortez])",
+      "output": "90\n50\n50",
+      "options": [
+        "print(scoruri[Cortez])",
+        "print(scoruri[\"Phil\"])",
+        "print(scoruri[\"Sonny\"])",
+        "scoruri[\"Sonny\"] = 90"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-bad-quotes-9c5356",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = {\"Ana\": 70, \"Ben\": 88}\nscoruri[\"Ben\"] = scoruri[\"Ben\"] + 5\nscoruri[\"Cara\"] = 64\nprint(scoruri[\"Cara\"])\nprint(scoruri[\"Ben\"])\nprint(scoruri[Ana])",
+      "output": "64\n93\n70",
+      "options": [
+        "print(scoruri[Ana])",
+        "print(scoruri[\"Ben\"])",
+        "print(scoruri[\"Cara\"])",
+        "scoruri[\"Cara\"] = 64"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-bad-items-2168cd",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = {\"Tommy\": 95, \"Lance\": 42}\nprint(\"Raportul echipajului\")\nfor nume, scor in echipaj:\n    print(f\"{nume}: {scor}\")\nprint(\"Sfarsit de raport\")",
+      "output": "Raportul echipajului\nTommy: 95\nLance: 42\nSfarsit de raport",
+      "options": [
+        "for nume, scor in echipaj:",
+        "print(\"Raportul echipajului\")",
+        "echipaj = {\"Tommy\": 95, \"Lance\": 42}",
+        "print(f\"{nume}: {scor}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-bad-items-9a496a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = {\"Mira\": 76, \"Phil\": 37}\nprint(\"Raportul echipajului\")\nfor nume, scor in echipaj:\n    print(f\"{nume}: {scor}\")\nprint(\"Sfarsit de raport\")",
+      "output": "Raportul echipajului\nMira: 76\nPhil: 37\nSfarsit de raport",
+      "options": [
+        "for nume, scor in echipaj:",
+        "print(\"Raportul echipajului\")",
+        "echipaj = {\"Mira\": 76, \"Phil\": 37}",
+        "print(f\"{nume}: {scor}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-bad-items-0ca211",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = {\"Cortez\": 88, \"Sonny\": 50}\nprint(\"Raportul echipajului\")\nfor nume, scor in echipaj:\n    print(f\"{nume}: {scor}\")\nprint(\"Sfarsit de raport\")",
+      "output": "Raportul echipajului\nCortez: 88\nSonny: 50\nSfarsit de raport",
+      "options": [
+        "for nume, scor in echipaj:",
+        "print(\"Raportul echipajului\")",
+        "echipaj = {\"Cortez\": 88, \"Sonny\": 50}",
+        "print(f\"{nume}: {scor}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-bad-param-6d91e4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def medie(echipaj):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total / len(scoruri)\n\nprint(medie({\"Tommy\": 90, \"Lance\": 60}))",
+      "output": "75.0",
+      "options": [
+        "def medie(echipaj):",
+        "for scor in scoruri.values():",
+        "total = 0",
+        "total = total + scor"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-bad-param-679a2e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def medie(echipaj):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total / len(scoruri)\n\nprint(medie({\"Mira\": 76, \"Phil\": 38}))",
+      "output": "57.0",
+      "options": [
+        "def medie(echipaj):",
+        "for scor in scoruri.values():",
+        "total = 0",
+        "total = total + scor"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-bad-return-2651fb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def promovati(scoruri):\n    lista = []\n    for nume in scoruri:\n        if scoruri[nume] >= 50:\n            lista.append(nume)\n    return nume\n\nprint(promovati({\"Tommy\": 95, \"Lance\": 42, \"Mira\": 76}))",
+      "output": "['Tommy', 'Mira']",
+      "options": [
+        "return nume",
+        "lista.append(nume)",
+        "lista = []",
+        "print(promovati({\"Tommy\": 95, \"Lance\": 42, \"Mira\": 76}))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-bad-return-071c91",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def promovati(scoruri):\n    lista = []\n    for nume in scoruri:\n        if scoruri[nume] >= 50:\n            lista.append(nume)\n    return nume\n\nprint(promovati({\"Cortez\": 88, \"Phil\": 37, \"Sonny\": 50}))",
+      "output": "['Cortez', 'Sonny']",
+      "options": ["return nume", "lista.append(nume)", "lista = []", "if scoruri[nume] >= 50:"],
+      "answer": 0
+    }
+  ]
+}

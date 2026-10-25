@@ -1,0 +1,1144 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce este un dicționar?",
+      "options": [
+        "Perechi cheie: valoare, în care căutăm o valoare după cheia ei",
+        "O listă ale cărei elemente stau sortate",
+        "O variabilă care ține exact un nume",
+        "O listă de valori pe care le citim după poziție"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce paranteze fac un dicționar?",
+      "options": ["[ ]", "{ }", "( )", "< >"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "În `{\"Cortez\": \"555-1234\"}`, ce este `\"Cortez\"`?",
+      "options": ["Valoarea", "Indexul", "Cheia", "Numele dicționarului"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "agenda = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(agenda[\"Sonny\"])",
+      "options": [
+        "Nu afișează nimic",
+        "Afișează Sonny",
+        "Afișează ultimul număr, 555-5678",
+        "Se oprește cu KeyError: nu există cheia Sonny"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "agenda nu are cheia \"Tommy\". Ce face `agenda[\"Tommy\"] = \"555-0000\"`?",
+      "options": [
+        "Îl adaugă pe Tommy cu acel număr",
+        "Se oprește cu KeyError",
+        "Schimbă primul număr din agenda",
+        "Nimic, Tommy trebuie adăugat cu append"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "agenda îl are deja pe Lance. Ce face `agenda[\"Lance\"] = \"555-1111\"`?",
+      "options": [
+        "Adaugă un al doilea Lance, așa că rămâne și numărul vechi",
+        "Înlocuiește numărul lui Lance: o cheie apare o singură dată într-un dicționar",
+        "Se oprește cu o eroare: Lance există deja",
+        "Nu face nimic, rămâne numărul vechi"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Care linie îl scoate pe Lance din agenda?",
+      "options": [
+        "agenda[\"Lance\"] = \"\"",
+        "agenda.append(\"Lance\")",
+        "del agenda[\"Lance\"]",
+        "del \"Lance\""
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Cum verificăm că agenda are cheia Cortez înainte să citim valoarea ei?",
+      "options": [
+        "if agenda[\"Cortez\"]:",
+        "if agenda == \"Cortez\":",
+        "if \"Cortez\" = agenda:",
+        "if \"Cortez\" in agenda:"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "agenda = {\"Cortez\": \"555-1234\"}\nprint(\"555-1234\" in agenda)",
+      "options": [
+        "False: in se uită la chei, iar 555-1234 e o valoare",
+        "True: 555-1234 e în dicționar",
+        "Cortez",
+        "Se oprește cu KeyError"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Când e un dicționar o alegere mai bună decât o listă?",
+      "options": [
+        "Când valorile trebuie să stea sortate",
+        "Când căutăm valorile după un nume, nu după poziția lor",
+        "Când avem doar numere",
+        "Când valorile nu trebuie să se schimbe niciodată"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Cortez\": 1, \"Lance\": 2, \"Phil\": 3}\nscoruri[\"Lance\"] = 5\nprint(scoruri)",
+      "options": [
+        "{'Cortez': 1, 'Phil': 3, 'Lance': 5}",
+        "{'Cortez': 1, 'Lance': 2, 'Phil': 3, 'Lance': 5}",
+        "{'Cortez': 1, 'Lance': 5, 'Phil': 3}",
+        "Se oprește cu o eroare: Lance există deja"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "Ce pot fi valorile unui dicționar?",
+      "options": [
+        "Doar text",
+        "Doar numere",
+        "Doar text și numere",
+        "Orice fel de valoare: text, numere, valori booleene, chiar și liste sau alte dicționare"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "agenda = {\"Cortez\": \"555-1234\"}\nprint(agenda)",
+      "options": ["{'Cortez': '555-1234'}", "Cortez: 555-1234", "555-1234", "Cortez"],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "agenda = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(agenda[0])",
+      "options": [
+        "Afișează 555-1234, primul număr",
+        "Se oprește cu KeyError: 0 nu e una dintre cheile dicționarului",
+        "Afișează Cortez",
+        "Nu afișează nimic"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "În misiunea Baza de Date a Echipajului, care linie adaugă cheia \"statie\"?",
+      "options": [
+        "echipaj.append(statie)",
+        "statie = echipaj[\"statie\"]",
+        "echipaj[\"statie\"] = statie",
+        "echipaj = {\"statie\": statie}"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "În misiunea Baza de Date a Echipajului, care linie adaugă 1 la vârsta din echipaj?",
+      "options": [
+        "varsta = varsta + 1",
+        "echipaj[\"varsta\"] = 1",
+        "echipaj[\"varsta\" + 1]",
+        "echipaj[\"varsta\"] = echipaj[\"varsta\"] + 1"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "În misiunea Baza de Date a Echipajului, care linie decide să afișeze Rang: necunoscut?",
+      "options": [
+        "if \"rang\" not in echipaj:",
+        "if echipaj[\"rang\"] == \"necunoscut\":",
+        "if \"rang\" in echipaj:",
+        "if echipaj == \"rang\":"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "În misiune, `echipaj = {\"nume\": nume}`. Care e diferența dintre `\"nume\"` și `nume`?",
+      "options": [
+        "Niciuna, amândouă sunt același text",
+        "\"nume\" e cheia, un text; nume e variabila care ține valoarea, de exemplu Tommy",
+        "nume e cheia, iar \"nume\" e valoarea",
+        "Ghilimelele fac cheia ascunsă"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Ce se pune între o cheie și valoarea ei?",
+      "options": ["=", ",", ":", ";"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Ce se pune între două perechi cheie: valoare?",
+      "options": ["Două puncte", "Punct și virgulă", "Cuvântul și", "O virgulă"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "jucator = {\"nume\": \"Tommy\", \"arme\": [\"bata\", \"pistol\", \"pusca\"]}\nprint(jucator[\"arme\"][1])",
+      "options": ["pistol", "bata", "['bata', 'pistol', 'pusca']", "Se oprește cu o eroare"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "agenda = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\ndel agenda[\"Lance\"]\nprint(agenda[\"Lance\"])",
+      "options": [
+        "Afișează 555-5678",
+        "Se oprește cu KeyError: del a șters cheia Lance",
+        "Afișează o linie goală",
+        "Afișează None"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "varste = {\"Tommy\": 42}\nprint(\"tommy\" in varste)",
+      "options": [
+        "True: in nu ține cont de litere mari și mici",
+        "Tommy",
+        "False: tommy și Tommy sunt chei diferite",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Care dintre acestea e un dicționar gol?",
+      "options": ["[]", "{:}", "()", "{}"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "agenda îi are pe Cortez și Lance. După `agenda[\"Sonny\"] = \"555-0001\"` și `del agenda[\"Lance\"]`, câte perechi cheie: valoare are?",
+      "options": ["2", "3", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "nava = {\"combustibil\": 50}\nnava[\"combustibil\"] = nava[\"combustibil\"] - 20\nprint(nava[\"combustibil\"])",
+      "options": ["50", "30", "20", "Se oprește cu o eroare: combustibil există deja"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Când rulează codul de sub `if \"rang\" not in echipaj:`?",
+      "options": [
+        "Când echipaj[\"rang\"] e gol",
+        "Niciodată: not in merge doar la liste",
+        "Când echipaj nu are cheia \"rang\"",
+        "Când echipaj are cheia \"rang\""
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce dă înapoi `agenda[\"Lance\"]`?",
+      "options": [
+        "Cheia Lance",
+        "Poziția lui Lance în agenda",
+        "True sau False, după cum Lance e sau nu în agenda",
+        "Valoarea de la cheia Lance"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "E `{\"Tommy\": 90, \"Lance\": 90}` un dicționar valid?",
+      "options": [
+        "Da: cheile trebuie să difere, dar valorile se pot repeta",
+        "Nu: două valori nu pot fi la fel",
+        "Da, dar print() arată doar una dintre ele",
+        "Nu: valorile trebuie să fie text"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Care linie citește numărul lui Phil din agenda?",
+      "options": ["agenda(\"Phil\")", "agenda[\"Phil\"]", "agenda[Phil]", "agenda.Phil"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "dc-get",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}, \"{{k3}}\": {{v3}}}\nprint({{d}}[\"{{k2}}\"])",
+      "values": [
+        {
+          "d": "varste",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "k3": "Cortez",
+          "v3": 60
+        },
+        {
+          "d": "scoruri",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "k3": "Zoe",
+          "v3": 88
+        },
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "k3": "Vega",
+          "v3": 60
+        },
+        {
+          "d": "preturi",
+          "k1": "mere",
+          "v1": 3,
+          "k2": "paine",
+          "v2": 2,
+          "k3": "lapte",
+          "v3": 4
+        },
+        {
+          "d": "stoc",
+          "k1": "suruburi",
+          "v1": 120,
+          "k2": "rotite",
+          "v2": 35,
+          "k3": "fire",
+          "v3": 70
+        }
+      ],
+      "mistakes": [
+        ["{{d}}[\"{{k2}}\"]", "{{d}}[\"{{k1}}\"]"],
+        ["print({{d}}[\"{{k2}}\"])", "print(\"{{k2}}\")"],
+        ["print({{d}}[\"{{k2}}\"])", "print({{d}})"],
+        ["{{d}}[\"{{k2}}\"]", "{{d}}[\"{{k3}}\"]"]
+      ]
+    },
+    {
+      "id": "dc-set",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k3}}\"] = {{v3}}\n{{d}}[\"{{k1}}\"] = {{n}}\nprint({{d}})",
+      "values": [
+        {
+          "d": "varste",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "k3": "Cortez",
+          "v3": 60,
+          "n": 43
+        },
+        {
+          "d": "scoruri",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "k3": "Zoe",
+          "v3": 88,
+          "n": 95
+        },
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "k3": "Vega",
+          "v3": 60,
+          "n": 100
+        },
+        {
+          "d": "preturi",
+          "k1": "mere",
+          "v1": 3,
+          "k2": "paine",
+          "v2": 2,
+          "k3": "lapte",
+          "v3": 4,
+          "n": 5
+        },
+        {
+          "d": "vieti",
+          "k1": "Kai",
+          "v1": 3,
+          "k2": "Mia",
+          "v2": 1,
+          "k3": "Rex",
+          "v3": 5,
+          "n": 2
+        }
+      ],
+      "mistakes": [
+        ["\n{{d}}[\"{{k1}}\"] = {{n}}", ""],
+        ["{{d}}[\"{{k1}}\"] = {{n}}", "{{d}}[\"{{k2}}\"] = {{n}}"],
+        ["{{d}}[\"{{k3}}\"] = {{v3}}", "{{d}}[\"{{k1}}\"] = {{v3}}"],
+        ["{{d}}[\"{{k1}}\"] = {{n}}", "{{d}}[\"{{k1}}\"] = {{d}}[\"{{k1}}\"] + {{n}}"]
+      ]
+    },
+    {
+      "id": "dc-del",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}, \"{{k3}}\": {{v3}}}\ndel {{d}}[\"{{k2}}\"]\nprint({{d}})",
+      "values": [
+        {
+          "d": "varste",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "k3": "Cortez",
+          "v3": 60
+        },
+        {
+          "d": "scoruri",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "k3": "Zoe",
+          "v3": 88
+        },
+        {
+          "d": "stoc",
+          "k1": "suruburi",
+          "v1": 120,
+          "k2": "rotite",
+          "v2": 35,
+          "k3": "fire",
+          "v3": 70
+        },
+        {
+          "d": "camere",
+          "k1": "laborator",
+          "v1": 4,
+          "k2": "punte",
+          "v2": 1,
+          "k3": "doc",
+          "v3": 7
+        },
+        {
+          "d": "viteza",
+          "k1": "Nova",
+          "v1": 300,
+          "k2": "Orion",
+          "v2": 250,
+          "k3": "Vega",
+          "v3": 280
+        }
+      ],
+      "mistakes": [
+        ["del {{d}}[\"{{k2}}\"]", "del {{d}}[\"{{k1}}\"]"],
+        ["del {{d}}[\"{{k2}}\"]", "{{d}}[\"{{k2}}\"] = 0"],
+        ["\ndel {{d}}[\"{{k2}}\"]", ""],
+        ["del {{d}}[\"{{k2}}\"]", "del {{d}}[\"{{k3}}\"]"]
+      ]
+    },
+    {
+      "id": "dc-check",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\nfor nume in [\"{{a}}\", \"{{b}}\"]:\n    if nume in {{d}}:\n        print({{d}}[nume])\n    else:\n        print(\"{{none}}\")",
+      "values": [
+        {
+          "d": "varste",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "a": "Lance",
+          "b": "Sonny",
+          "none": "Nu am gasit"
+        },
+        {
+          "d": "scoruri",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "a": "Kai",
+          "b": "Ana",
+          "none": "Fara scor"
+        },
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "a": "Orion",
+          "b": "Vega",
+          "none": "Fara date"
+        },
+        {
+          "d": "preturi",
+          "k1": "mere",
+          "v1": 3,
+          "k2": "paine",
+          "v2": 2,
+          "a": "lapte",
+          "b": "paine",
+          "none": "Nu se vinde"
+        },
+        {
+          "d": "vieti",
+          "k1": "Kai",
+          "v1": 3,
+          "k2": "Mia",
+          "v2": 1,
+          "a": "Rex",
+          "b": "Kai",
+          "none": "Necunoscut"
+        }
+      ],
+      "mistakes": [
+        ["print({{d}}[nume])", "print(nume)"],
+        ["[\"{{a}}\", \"{{b}}\"]", "[\"{{b}}\", \"{{a}}\"]"],
+        ["print({{d}}[nume])", "print({{d}})"],
+        ["if nume in {{d}}:", "if nume not in {{d}}:"]
+      ]
+    },
+    {
+      "id": "dc-grow",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k2}}\"] = {{d}}[\"{{k2}}\"] {{op}} {{n}}\nprint({{d}}[\"{{k2}}\"])",
+      "values": [
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "op": "+",
+          "n": 30
+        },
+        {
+          "d": "viata",
+          "k1": "Tommy",
+          "v1": 100,
+          "k2": "Lance",
+          "v2": 70,
+          "op": "-",
+          "n": 25
+        },
+        {
+          "d": "scoruri",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "op": "+",
+          "n": 10
+        },
+        {
+          "d": "monede",
+          "k1": "Kai",
+          "v1": 12,
+          "k2": "Mia",
+          "v2": 30,
+          "op": "+",
+          "n": 5
+        },
+        {
+          "d": "vieti",
+          "k1": "Rex",
+          "v1": 5,
+          "k2": "Zoe",
+          "v2": 3,
+          "op": "-",
+          "n": 1
+        }
+      ],
+      "mistakes": [
+        ["= {{d}}[\"{{k2}}\"] {{op}} {{n}}", "= {{n}}"],
+        ["{{d}}[\"{{k2}}\"] {{op}} {{n}}", "{{d}}[\"{{k1}}\"] {{op}} {{n}}"],
+        ["print({{d}}[\"{{k2}}\"])", "print({{d}}[\"{{k1}}\"])"],
+        ["\n{{d}}[\"{{k2}}\"] = {{d}}[\"{{k2}}\"] {{op}} {{n}}", ""]
+      ]
+    },
+    {
+      "id": "dc-list",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{d}} = {\"nume\": \"{{who}}\", \"{{lk}}\": [\"{{i1}}\", \"{{i2}}\", \"{{i3}}\"]}\nprint({{d}}[\"{{lk}}\"][{{i}}])",
+      "values": [
+        {
+          "d": "garaj",
+          "who": "Tommy",
+          "lk": "masini",
+          "i1": "Cheetah",
+          "i2": "Infernus",
+          "i3": "Sabre",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "d": "nava",
+          "who": "Nova",
+          "lk": "echipaj",
+          "i1": "Ana",
+          "i2": "Ben",
+          "i3": "Zoe",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "d": "rucsac",
+          "who": "Kai",
+          "lk": "obiecte",
+          "i1": "harta",
+          "i2": "franghie",
+          "i3": "lanterna",
+          "i": 2,
+          "j": 0
+        },
+        {
+          "d": "robot",
+          "who": "R2",
+          "lk": "unelte",
+          "i1": "cheie",
+          "i2": "bormasina",
+          "i3": "fierastrau",
+          "i": 1,
+          "j": 0
+        },
+        {
+          "d": "statie",
+          "who": "Laniakea",
+          "lk": "camere",
+          "i1": "laborator",
+          "i2": "punte",
+          "i3": "doc",
+          "i": 2,
+          "j": 1
+        }
+      ],
+      "mistakes": [
+        ["[{{i}}])", "[{{j}}])"],
+        ["print({{d}}[\"{{lk}}\"][{{i}}])", "print({{d}}[\"{{lk}}\"])"],
+        ["print({{d}}[\"{{lk}}\"][{{i}}])", "print(len({{d}}[\"{{lk}}\"]))"],
+        ["print({{d}}[\"{{lk}}\"][{{i}}])", "print({{d}}[\"nume\"])"]
+      ]
+    },
+    {
+      "id": "dc-which-get",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{d}} = {\"{{k1}}\": \"{{v1}}\", \"{{k2}}\": \"{{v2}}\"}\nprint({{d}}[\"{{k2}}\"])",
+      "values": [
+        {
+          "d": "agenda",
+          "k1": "Cortez",
+          "v1": "555-1234",
+          "k2": "Lance",
+          "v2": "555-5678"
+        },
+        {
+          "d": "roluri",
+          "k1": "Tommy",
+          "v1": "pilot",
+          "k2": "Lance",
+          "v2": "medic"
+        },
+        {
+          "d": "culori",
+          "k1": "cer",
+          "v1": "albastru",
+          "k2": "iarba",
+          "v2": "verde"
+        },
+        {
+          "d": "porti",
+          "k1": "Nova",
+          "v1": "A7",
+          "k2": "Orion",
+          "v2": "B2"
+        }
+      ],
+      "mistakes": [
+        ["{{d}}[\"{{k2}}\"]", "{{d}}[\"{{k1}}\"]"],
+        ["{{d}}[\"{{k2}}\"]", "{{d}}[1]"],
+        ["{{d}}[\"{{k2}}\"]", "{{d}}[{{k2}}]"],
+        ["{{d}}[\"{{k2}}\"]", "{{d}}(\"{{k2}}\")"]
+      ]
+    },
+    {
+      "id": "dc-which-in",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\nif \"{{q}}\" in {{d}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "d": "echipaj",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "q": "Lance",
+          "qv": 35,
+          "yes": "L-am gasit pe Lance!",
+          "no": "Lance lipseste"
+        },
+        {
+          "d": "scoruri",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "q": "Ana",
+          "qv": 90,
+          "yes": "Ana are scor",
+          "no": "Ana nu are scor"
+        },
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "q": "Orion",
+          "qv": 45,
+          "yes": "Orion e gata",
+          "no": "Orion lipseste"
+        },
+        {
+          "d": "preturi",
+          "k1": "mere",
+          "v1": 3,
+          "k2": "paine",
+          "v2": 2,
+          "q": "paine",
+          "qv": 2,
+          "yes": "Avem paine",
+          "no": "Azi nu e paine"
+        }
+      ],
+      "mistakes": [
+        ["\"{{q}}\" in {{d}}", "\"{{q}}\" not in {{d}}"],
+        ["\"{{q}}\" in {{d}}", "{{qv}} in {{d}}"],
+        ["if \"{{q}}\" in {{d}}:", "if \"{{q}}\" in {{d}}"],
+        ["print(\"{{yes}}\")", "print(\"{{no}}\")"]
+      ]
+    },
+    {
+      "id": "dc-gap-add",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}}\n___\nprint({{d}})",
+      "values": [
+        {
+          "d": "varste",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35
+        },
+        {
+          "d": "scoruri",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75
+        },
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Vega",
+          "v2": 60
+        },
+        {
+          "d": "preturi",
+          "k1": "mere",
+          "v1": 3,
+          "k2": "lapte",
+          "v2": 4
+        },
+        {
+          "d": "stoc",
+          "k1": "suruburi",
+          "v1": 120,
+          "k2": "fire",
+          "v2": 70
+        }
+      ],
+      "answer": "{{d}}[\"{{k2}}\"] = {{v2}}",
+      "wrong": [
+        "{{d}}[\"{{k1}}\"] = {{v2}}",
+        "{{d}}.append({{v2}})",
+        "{{d}}[{{v2}}] = \"{{k2}}\"",
+        "{{d}} = {\"{{k2}}\": {{v2}}}"
+      ]
+    },
+    {
+      "id": "dc-gap-del",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}, \"{{k3}}\": {{v3}}}\n___\nprint({{d}})",
+      "values": [
+        {
+          "d": "varste",
+          "k1": "Phil",
+          "v1": 50,
+          "k2": "Sonny",
+          "v2": 38,
+          "k3": "Ken",
+          "v3": 29
+        },
+        {
+          "d": "niveluri",
+          "k1": "Zoe",
+          "v1": 12,
+          "k2": "Kai",
+          "v2": 7,
+          "k3": "Ana",
+          "v3": 9
+        },
+        {
+          "d": "vieti",
+          "k1": "Kai",
+          "v1": 3,
+          "k2": "Mia",
+          "v2": 1,
+          "k3": "Rex",
+          "v3": 5
+        },
+        {
+          "d": "preturi",
+          "k1": "mere",
+          "v1": 3,
+          "k2": "paine",
+          "v2": 2,
+          "k3": "lapte",
+          "v3": 4
+        },
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "k3": "Vega",
+          "v3": 60
+        }
+      ],
+      "answer": "del {{d}}[\"{{k2}}\"]",
+      "wrong": ["del {{d}}[1]", "{{d}}[\"{{k2}}\"] = 0", "del {{d}}", "del \"{{k2}}\""]
+    },
+    {
+      "id": "dc-gap-key",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}, \"{{k3}}\": {{v3}}}\nprint({{d}}[___])",
+      "values": [
+        {
+          "d": "vieti",
+          "k1": "Kai",
+          "v1": 3,
+          "k2": "Mia",
+          "v2": 1,
+          "k3": "Rex",
+          "v3": 5
+        },
+        {
+          "d": "camere",
+          "k1": "laborator",
+          "v1": 4,
+          "k2": "punte",
+          "v2": 1,
+          "k3": "doc",
+          "v3": 7
+        },
+        {
+          "d": "niveluri",
+          "k1": "Zoe",
+          "v1": 12,
+          "k2": "Kai",
+          "v2": 7,
+          "k3": "Ana",
+          "v3": 9
+        },
+        {
+          "d": "varste",
+          "k1": "Phil",
+          "v1": 50,
+          "k2": "Sonny",
+          "v2": 38,
+          "k3": "Ken",
+          "v3": 29
+        },
+        {
+          "d": "viteza",
+          "k1": "Nova",
+          "v1": 300,
+          "k2": "Orion",
+          "v2": 250,
+          "k3": "Vega",
+          "v3": 280
+        }
+      ],
+      "answer": "\"{{k2}}\"",
+      "wrong": ["1", "{{k2}}", "\"{{k1}}\"", "{{v2}}"]
+    },
+    {
+      "id": "dc-gap-in",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\nif \"{{q}}\" ___ {{d}}:\n    print(\"{{msg}}\")\nelse:\n    print(\"{{other}}\")",
+      "values": [
+        {
+          "d": "echipaj",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "q": "Lance",
+          "op": "in",
+          "nop": "not in",
+          "msg": "L-am gasit pe Lance!",
+          "other": "Lance lipseste"
+        },
+        {
+          "d": "echipaj",
+          "k1": "nume",
+          "v1": "\"Tommy\"",
+          "k2": "varsta",
+          "v2": 35,
+          "q": "rang",
+          "op": "not in",
+          "nop": "in",
+          "msg": "Rang: necunoscut",
+          "other": "Rang: cunoscut"
+        },
+        {
+          "d": "scoruri",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "q": "Zoe",
+          "op": "not in",
+          "nop": "in",
+          "msg": "Zoe nu are scor",
+          "other": "Zoe are scor"
+        },
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "q": "Nova",
+          "op": "in",
+          "nop": "not in",
+          "msg": "Nova e gata",
+          "other": "Nova lipseste"
+        },
+        {
+          "d": "stoc",
+          "k1": "suruburi",
+          "v1": 120,
+          "k2": "rotite",
+          "v2": 35,
+          "q": "fire",
+          "op": "not in",
+          "nop": "in",
+          "msg": "Comanda fire",
+          "other": "Avem fire"
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": ["{{nop}}", "==", "=", "in not"]
+    },
+    {
+      "id": "dc-bad-brackets",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k3}}\"] = {{v3}}\nprint({{d}}[\"{{k1}}\"])\nprint({{d}}[\"{{k2}}\"])\nprint({{d}}[\"{{k3}}\"])",
+      "values": [
+        {
+          "d": "varste",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "k3": "Cortez",
+          "v3": 60
+        },
+        {
+          "d": "scoruri",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "k3": "Zoe",
+          "v3": 88
+        },
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "k3": "Vega",
+          "v3": 60
+        }
+      ],
+      "bug": [
+        "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}",
+        "{{d}} = [\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}]"
+      ]
+    },
+    {
+      "id": "dc-bad-paren",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k3}}\"] = {{v3}}\nprint({{d}}[\"{{k1}}\"])\nprint({{d}}[\"{{k2}}\"])\nprint({{d}}[\"{{k3}}\"])",
+      "values": [
+        {
+          "d": "preturi",
+          "k1": "mere",
+          "v1": 3,
+          "k2": "paine",
+          "v2": 2,
+          "k3": "lapte",
+          "v3": 4
+        },
+        {
+          "d": "stoc",
+          "k1": "suruburi",
+          "v1": 120,
+          "k2": "rotite",
+          "v2": 35,
+          "k3": "fire",
+          "v3": 70
+        },
+        {
+          "d": "vieti",
+          "k1": "Kai",
+          "v1": 3,
+          "k2": "Mia",
+          "v2": 1,
+          "k3": "Rex",
+          "v3": 5
+        }
+      ],
+      "bug": ["print({{d}}[\"{{k3}}\"])", "print({{d}}(\"{{k3}}\"))"]
+    },
+    {
+      "id": "dc-bad-quotes",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k2}}\"] = {{d}}[\"{{k2}}\"] + {{n}}\nprint({{d}}[\"{{k1}}\"])\nprint({{d}}[\"{{k2}}\"])",
+      "values": [
+        {
+          "d": "varste",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "n": 1
+        },
+        {
+          "d": "scoruri",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "n": 10
+        },
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "n": 30
+        }
+      ],
+      "bug": ["print({{d}}[\"{{k1}}\"])", "print({{d}}[{{k1}}])"]
+    },
+    {
+      "id": "dc-bad-del",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}, \"{{k3}}\": {{v3}}}\ndel {{d}}[\"{{k2}}\"]\n{{d}}[\"{{k4}}\"] = {{v4}}\nprint({{d}})",
+      "values": [
+        {
+          "d": "varste",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "k3": "Cortez",
+          "v3": 60,
+          "k4": "Phil",
+          "v4": 50
+        },
+        {
+          "d": "niveluri",
+          "k1": "Zoe",
+          "v1": 12,
+          "k2": "Kai",
+          "v2": 7,
+          "k3": "Ana",
+          "v3": 9,
+          "k4": "Mia",
+          "v4": 4
+        },
+        {
+          "d": "camere",
+          "k1": "laborator",
+          "v1": 4,
+          "k2": "punte",
+          "v2": 1,
+          "k3": "doc",
+          "v3": 7,
+          "k4": "hangar",
+          "v4": 2
+        }
+      ],
+      "bug": ["del {{d}}[\"{{k2}}\"]", "delete {{d}}[\"{{k2}}\"]"]
+    }
+  ]
+}

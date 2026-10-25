@@ -1,0 +1,722 @@
+{
+  "note": "Made by npm run make:quiz from the templates in dictionaries-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "dc-get-aa8b24",
+      "text": "What does this print?",
+      "code": "ages = {\"Tommy\": 42, \"Lance\": 35, \"Cortez\": 60}\nprint(ages[\"Lance\"])",
+      "options": ["35", "42", "Lance", "{'Tommy': 42, 'Lance': 35, 'Cortez': 60}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-get-539aa3",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 90, \"Ben\": 75, \"Zoe\": 88}\nprint(scores[\"Ben\"])",
+      "options": ["75", "90", "Ben", "{'Ana': 90, 'Ben': 75, 'Zoe': 88}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-get-51e82e",
+      "text": "What does this print?",
+      "code": "fuel = {\"Nova\": 80, \"Orion\": 45, \"Vega\": 60}\nprint(fuel[\"Orion\"])",
+      "options": ["45", "80", "Orion", "{'Nova': 80, 'Orion': 45, 'Vega': 60}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-get-27c10c",
+      "text": "What does this print?",
+      "code": "prices = {\"apples\": 3, \"bread\": 2, \"milk\": 4}\nprint(prices[\"bread\"])",
+      "options": ["2", "3", "bread", "{'apples': 3, 'bread': 2, 'milk': 4}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-get-177f35",
+      "text": "What does this print?",
+      "code": "stock = {\"bolts\": 120, \"gears\": 35, \"wires\": 70}\nprint(stock[\"gears\"])",
+      "options": ["35", "120", "gears", "{'bolts': 120, 'gears': 35, 'wires': 70}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-set-a10820",
+      "text": "What does this print?",
+      "code": "ages = {\"Tommy\": 42, \"Lance\": 35}\nages[\"Cortez\"] = 60\nages[\"Tommy\"] = 43\nprint(ages)",
+      "options": [
+        "{'Tommy': 43, 'Lance': 35, 'Cortez': 60}",
+        "{'Tommy': 42, 'Lance': 35, 'Cortez': 60}",
+        "{'Tommy': 42, 'Lance': 43, 'Cortez': 60}",
+        "{'Tommy': 43, 'Lance': 35}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-set-204244",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 90, \"Ben\": 75}\nscores[\"Zoe\"] = 88\nscores[\"Ana\"] = 95\nprint(scores)",
+      "options": [
+        "{'Ana': 95, 'Ben': 75, 'Zoe': 88}",
+        "{'Ana': 90, 'Ben': 75, 'Zoe': 88}",
+        "{'Ana': 90, 'Ben': 95, 'Zoe': 88}",
+        "{'Ana': 95, 'Ben': 75}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-set-7bb1f2",
+      "text": "What does this print?",
+      "code": "fuel = {\"Nova\": 80, \"Orion\": 45}\nfuel[\"Vega\"] = 60\nfuel[\"Nova\"] = 100\nprint(fuel)",
+      "options": [
+        "{'Nova': 100, 'Orion': 45, 'Vega': 60}",
+        "{'Nova': 80, 'Orion': 45, 'Vega': 60}",
+        "{'Nova': 80, 'Orion': 100, 'Vega': 60}",
+        "{'Nova': 100, 'Orion': 45}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-set-7c850a",
+      "text": "What does this print?",
+      "code": "prices = {\"apples\": 3, \"bread\": 2}\nprices[\"milk\"] = 4\nprices[\"apples\"] = 5\nprint(prices)",
+      "options": [
+        "{'apples': 5, 'bread': 2, 'milk': 4}",
+        "{'apples': 3, 'bread': 2, 'milk': 4}",
+        "{'apples': 3, 'bread': 5, 'milk': 4}",
+        "{'apples': 5, 'bread': 2}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-set-8976eb",
+      "text": "What does this print?",
+      "code": "lives = {\"Kai\": 3, \"Mia\": 1}\nlives[\"Rex\"] = 5\nlives[\"Kai\"] = 2\nprint(lives)",
+      "options": [
+        "{'Kai': 2, 'Mia': 1, 'Rex': 5}",
+        "{'Kai': 3, 'Mia': 1, 'Rex': 5}",
+        "{'Kai': 3, 'Mia': 2, 'Rex': 5}",
+        "{'Kai': 2, 'Mia': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-del-aa8b24",
+      "text": "What does this print?",
+      "code": "ages = {\"Tommy\": 42, \"Lance\": 35, \"Cortez\": 60}\ndel ages[\"Lance\"]\nprint(ages)",
+      "options": [
+        "{'Tommy': 42, 'Cortez': 60}",
+        "{'Lance': 35, 'Cortez': 60}",
+        "{'Tommy': 42, 'Lance': 0, 'Cortez': 60}",
+        "{'Tommy': 42, 'Lance': 35, 'Cortez': 60}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-del-539aa3",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 90, \"Ben\": 75, \"Zoe\": 88}\ndel scores[\"Ben\"]\nprint(scores)",
+      "options": [
+        "{'Ana': 90, 'Zoe': 88}",
+        "{'Ben': 75, 'Zoe': 88}",
+        "{'Ana': 90, 'Ben': 0, 'Zoe': 88}",
+        "{'Ana': 90, 'Ben': 75, 'Zoe': 88}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-del-177f35",
+      "text": "What does this print?",
+      "code": "stock = {\"bolts\": 120, \"gears\": 35, \"wires\": 70}\ndel stock[\"gears\"]\nprint(stock)",
+      "options": [
+        "{'bolts': 120, 'wires': 70}",
+        "{'gears': 35, 'wires': 70}",
+        "{'bolts': 120, 'gears': 0, 'wires': 70}",
+        "{'bolts': 120, 'gears': 35, 'wires': 70}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-del-2e7db7",
+      "text": "What does this print?",
+      "code": "rooms = {\"lab\": 4, \"bridge\": 1, \"dock\": 7}\ndel rooms[\"bridge\"]\nprint(rooms)",
+      "options": [
+        "{'lab': 4, 'dock': 7}",
+        "{'bridge': 1, 'dock': 7}",
+        "{'lab': 4, 'bridge': 0, 'dock': 7}",
+        "{'lab': 4, 'bridge': 1, 'dock': 7}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-del-3e57d4",
+      "text": "What does this print?",
+      "code": "speed = {\"Nova\": 300, \"Orion\": 250, \"Vega\": 280}\ndel speed[\"Orion\"]\nprint(speed)",
+      "options": [
+        "{'Nova': 300, 'Vega': 280}",
+        "{'Orion': 250, 'Vega': 280}",
+        "{'Nova': 300, 'Orion': 0, 'Vega': 280}",
+        "{'Nova': 300, 'Orion': 250, 'Vega': 280}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-check-cf6576",
+      "text": "What does this print?",
+      "code": "ages = {\"Tommy\": 42, \"Lance\": 35}\nfor name in [\"Lance\", \"Sonny\"]:\n    if name in ages:\n        print(ages[name])\n    else:\n        print(\"Not found\")",
+      "options": [
+        "35\nNot found",
+        "Lance\nNot found",
+        "Not found\n35",
+        "{'Tommy': 42, 'Lance': 35}\nNot found"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-check-d90025",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 90, \"Ben\": 75}\nfor name in [\"Kai\", \"Ana\"]:\n    if name in scores:\n        print(scores[name])\n    else:\n        print(\"No score\")",
+      "options": [
+        "No score\n90",
+        "No score\nAna",
+        "90\nNo score",
+        "No score\n{'Ana': 90, 'Ben': 75}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-check-6984f8",
+      "text": "What does this print?",
+      "code": "fuel = {\"Nova\": 80, \"Orion\": 45}\nfor name in [\"Orion\", \"Vega\"]:\n    if name in fuel:\n        print(fuel[name])\n    else:\n        print(\"No data\")",
+      "options": [
+        "45\nNo data",
+        "Orion\nNo data",
+        "No data\n45",
+        "{'Nova': 80, 'Orion': 45}\nNo data"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-check-de0bc9",
+      "text": "What does this print?",
+      "code": "prices = {\"apples\": 3, \"bread\": 2}\nfor name in [\"milk\", \"bread\"]:\n    if name in prices:\n        print(prices[name])\n    else:\n        print(\"Not for sale\")",
+      "options": [
+        "Not for sale\n2",
+        "Not for sale\nbread",
+        "2\nNot for sale",
+        "Not for sale\n{'apples': 3, 'bread': 2}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-check-f01b23",
+      "text": "What does this print?",
+      "code": "lives = {\"Kai\": 3, \"Mia\": 1}\nfor name in [\"Rex\", \"Kai\"]:\n    if name in lives:\n        print(lives[name])\n    else:\n        print(\"Unknown\")",
+      "options": ["Unknown\n3", "Unknown\nKai", "3\nUnknown", "Unknown\n{'Kai': 3, 'Mia': 1}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-grow-ee0ca1",
+      "text": "What does this print?",
+      "code": "fuel = {\"Nova\": 80, \"Orion\": 45}\nfuel[\"Orion\"] = fuel[\"Orion\"] + 30\nprint(fuel[\"Orion\"])",
+      "options": ["75", "30", "110", "80"],
+      "answer": 0
+    },
+    {
+      "id": "dc-grow-1a9877",
+      "text": "What does this print?",
+      "code": "health = {\"Tommy\": 100, \"Lance\": 70}\nhealth[\"Lance\"] = health[\"Lance\"] - 25\nprint(health[\"Lance\"])",
+      "options": ["45", "25", "75", "100"],
+      "answer": 0
+    },
+    {
+      "id": "dc-grow-348130",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 90, \"Ben\": 75}\nscores[\"Ben\"] = scores[\"Ben\"] + 10\nprint(scores[\"Ben\"])",
+      "options": ["85", "10", "100", "90"],
+      "answer": 0
+    },
+    {
+      "id": "dc-grow-ec93b7",
+      "text": "What does this print?",
+      "code": "coins = {\"Kai\": 12, \"Mia\": 30}\ncoins[\"Mia\"] = coins[\"Mia\"] + 5\nprint(coins[\"Mia\"])",
+      "options": ["35", "5", "17", "12"],
+      "answer": 0
+    },
+    {
+      "id": "dc-grow-137f9e",
+      "text": "What does this print?",
+      "code": "lives = {\"Rex\": 5, \"Zoe\": 3}\nlives[\"Zoe\"] = lives[\"Zoe\"] - 1\nprint(lives[\"Zoe\"])",
+      "options": ["2", "1", "4", "5"],
+      "answer": 0
+    },
+    {
+      "id": "dc-list-e3539b",
+      "text": "What does this print?",
+      "code": "garage = {\"name\": \"Tommy\", \"cars\": [\"Cheetah\", \"Infernus\", \"Sabre\"]}\nprint(garage[\"cars\"][1])",
+      "options": ["Infernus", "Sabre", "['Cheetah', 'Infernus', 'Sabre']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "dc-list-19d513",
+      "text": "What does this print?",
+      "code": "ship = {\"name\": \"Nova\", \"crew\": [\"Ana\", \"Ben\", \"Zoe\"]}\nprint(ship[\"crew\"][0])",
+      "options": ["Ana", "Ben", "['Ana', 'Ben', 'Zoe']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "dc-list-7f9f74",
+      "text": "What does this print?",
+      "code": "backpack = {\"name\": \"Kai\", \"items\": [\"map\", \"rope\", \"lamp\"]}\nprint(backpack[\"items\"][2])",
+      "options": ["lamp", "map", "['map', 'rope', 'lamp']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "dc-list-7189cb",
+      "text": "What does this print?",
+      "code": "robot = {\"name\": \"R2\", \"tools\": [\"wrench\", \"drill\", \"saw\"]}\nprint(robot[\"tools\"][1])",
+      "options": ["drill", "wrench", "['wrench', 'drill', 'saw']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "dc-list-547f86",
+      "text": "What does this print?",
+      "code": "station = {\"name\": \"Laniakea\", \"rooms\": [\"lab\", \"bridge\", \"dock\"]}\nprint(station[\"rooms\"][2])",
+      "options": ["dock", "bridge", "['lab', 'bridge', 'dock']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-get-393440",
+      "text": "Which program shows this?",
+      "output": "555-5678",
+      "options": [
+        "phone_book = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(phone_book[\"Lance\"])",
+        "phone_book = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(phone_book[\"Cortez\"])",
+        "phone_book = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(phone_book[1])",
+        "phone_book = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(phone_book[Lance])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-get-e93c8e",
+      "text": "Which program shows this?",
+      "output": "medic",
+      "options": [
+        "roles = {\"Tommy\": \"pilot\", \"Lance\": \"medic\"}\nprint(roles[\"Lance\"])",
+        "roles = {\"Tommy\": \"pilot\", \"Lance\": \"medic\"}\nprint(roles[\"Tommy\"])",
+        "roles = {\"Tommy\": \"pilot\", \"Lance\": \"medic\"}\nprint(roles[1])",
+        "roles = {\"Tommy\": \"pilot\", \"Lance\": \"medic\"}\nprint(roles[Lance])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-get-4e4c4b",
+      "text": "Which program shows this?",
+      "output": "green",
+      "options": [
+        "colors = {\"sky\": \"blue\", \"grass\": \"green\"}\nprint(colors[\"grass\"])",
+        "colors = {\"sky\": \"blue\", \"grass\": \"green\"}\nprint(colors[\"sky\"])",
+        "colors = {\"sky\": \"blue\", \"grass\": \"green\"}\nprint(colors[1])",
+        "colors = {\"sky\": \"blue\", \"grass\": \"green\"}\nprint(colors[grass])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-get-cccb7b",
+      "text": "Which program shows this?",
+      "output": "B2",
+      "options": [
+        "gates = {\"Nova\": \"A7\", \"Orion\": \"B2\"}\nprint(gates[\"Orion\"])",
+        "gates = {\"Nova\": \"A7\", \"Orion\": \"B2\"}\nprint(gates[\"Nova\"])",
+        "gates = {\"Nova\": \"A7\", \"Orion\": \"B2\"}\nprint(gates[1])",
+        "gates = {\"Nova\": \"A7\", \"Orion\": \"B2\"}\nprint(gates[Orion])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-in-cd4e76",
+      "text": "Which program shows this?",
+      "output": "Found Lance!",
+      "options": [
+        "crew = {\"Tommy\": 42, \"Lance\": 35}\nif \"Lance\" in crew:\n    print(\"Found Lance!\")\nelse:\n    print(\"No Lance\")",
+        "crew = {\"Tommy\": 42, \"Lance\": 35}\nif \"Lance\" not in crew:\n    print(\"Found Lance!\")\nelse:\n    print(\"No Lance\")",
+        "crew = {\"Tommy\": 42, \"Lance\": 35}\nif 35 in crew:\n    print(\"Found Lance!\")\nelse:\n    print(\"No Lance\")",
+        "crew = {\"Tommy\": 42, \"Lance\": 35}\nif \"Lance\" in crew\n    print(\"Found Lance!\")\nelse:\n    print(\"No Lance\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-in-4f0aa4",
+      "text": "Which program shows this?",
+      "output": "Ana has a score",
+      "options": [
+        "scores = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" in scores:\n    print(\"Ana has a score\")\nelse:\n    print(\"Ana has no score\")",
+        "scores = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" not in scores:\n    print(\"Ana has a score\")\nelse:\n    print(\"Ana has no score\")",
+        "scores = {\"Ana\": 90, \"Ben\": 75}\nif 90 in scores:\n    print(\"Ana has a score\")\nelse:\n    print(\"Ana has no score\")",
+        "scores = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" in scores\n    print(\"Ana has a score\")\nelse:\n    print(\"Ana has no score\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-in-72edf3",
+      "text": "Which program shows this?",
+      "output": "Orion is ready",
+      "options": [
+        "fuel = {\"Nova\": 80, \"Orion\": 45}\nif \"Orion\" in fuel:\n    print(\"Orion is ready\")\nelse:\n    print(\"Orion is missing\")",
+        "fuel = {\"Nova\": 80, \"Orion\": 45}\nif \"Orion\" not in fuel:\n    print(\"Orion is ready\")\nelse:\n    print(\"Orion is missing\")",
+        "fuel = {\"Nova\": 80, \"Orion\": 45}\nif 45 in fuel:\n    print(\"Orion is ready\")\nelse:\n    print(\"Orion is missing\")",
+        "fuel = {\"Nova\": 80, \"Orion\": 45}\nif \"Orion\" in fuel\n    print(\"Orion is ready\")\nelse:\n    print(\"Orion is missing\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-in-ccd68d",
+      "text": "Which program shows this?",
+      "output": "Bread is for sale",
+      "options": [
+        "prices = {\"apples\": 3, \"bread\": 2}\nif \"bread\" in prices:\n    print(\"Bread is for sale\")\nelse:\n    print(\"No bread today\")",
+        "prices = {\"apples\": 3, \"bread\": 2}\nif \"bread\" not in prices:\n    print(\"Bread is for sale\")\nelse:\n    print(\"No bread today\")",
+        "prices = {\"apples\": 3, \"bread\": 2}\nif 2 in prices:\n    print(\"Bread is for sale\")\nelse:\n    print(\"No bread today\")",
+        "prices = {\"apples\": 3, \"bread\": 2}\nif \"bread\" in prices\n    print(\"Bread is for sale\")\nelse:\n    print(\"No bread today\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-add-dfcdcf",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "ages = {\"Tommy\": 42}\n___\nprint(ages)",
+      "output": "{'Tommy': 42, 'Lance': 35}",
+      "options": [
+        "ages[\"Lance\"] = 35",
+        "ages[\"Tommy\"] = 35",
+        "ages.append(35)",
+        "ages[35] = \"Lance\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-add-1efa10",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "scores = {\"Ana\": 90}\n___\nprint(scores)",
+      "output": "{'Ana': 90, 'Ben': 75}",
+      "options": [
+        "scores[\"Ben\"] = 75",
+        "scores[\"Ana\"] = 75",
+        "scores.append(75)",
+        "scores[75] = \"Ben\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-add-55bd79",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fuel = {\"Nova\": 80}\n___\nprint(fuel)",
+      "output": "{'Nova': 80, 'Vega': 60}",
+      "options": [
+        "fuel[\"Vega\"] = 60",
+        "fuel[\"Nova\"] = 60",
+        "fuel.append(60)",
+        "fuel[60] = \"Vega\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-add-92eed3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "prices = {\"apples\": 3}\n___\nprint(prices)",
+      "output": "{'apples': 3, 'milk': 4}",
+      "options": [
+        "prices[\"milk\"] = 4",
+        "prices[\"apples\"] = 4",
+        "prices.append(4)",
+        "prices[4] = \"milk\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-add-d1bde1",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "stock = {\"bolts\": 120}\n___\nprint(stock)",
+      "output": "{'bolts': 120, 'wires': 70}",
+      "options": [
+        "stock[\"wires\"] = 70",
+        "stock[\"bolts\"] = 70",
+        "stock.append(70)",
+        "stock[70] = \"wires\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-del-73ebbd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "ages = {\"Phil\": 50, \"Sonny\": 38, \"Ken\": 29}\n___\nprint(ages)",
+      "output": "{'Phil': 50, 'Ken': 29}",
+      "options": ["del ages[\"Sonny\"]", "del ages[1]", "ages[\"Sonny\"] = 0", "del ages"],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-del-fe5b79",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\n___\nprint(levels)",
+      "output": "{'Zoe': 12, 'Ana': 9}",
+      "options": ["del levels[\"Kai\"]", "del levels[1]", "levels[\"Kai\"] = 0", "del levels"],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-del-baf2d8",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "lives = {\"Kai\": 3, \"Mia\": 1, \"Rex\": 5}\n___\nprint(lives)",
+      "output": "{'Kai': 3, 'Rex': 5}",
+      "options": ["del lives[\"Mia\"]", "del lives[1]", "lives[\"Mia\"] = 0", "del lives"],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-del-f4a08a",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "prices = {\"apples\": 3, \"bread\": 2, \"milk\": 4}\n___\nprint(prices)",
+      "output": "{'apples': 3, 'milk': 4}",
+      "options": ["del prices[\"bread\"]", "del prices[1]", "prices[\"bread\"] = 0", "del prices"],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-del-2a0e71",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fuel = {\"Nova\": 80, \"Orion\": 45, \"Vega\": 60}\n___\nprint(fuel)",
+      "output": "{'Nova': 80, 'Vega': 60}",
+      "options": ["del fuel[\"Orion\"]", "del fuel[1]", "fuel[\"Orion\"] = 0", "del fuel"],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-key-8b2dcb",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "lives = {\"Kai\": 3, \"Mia\": 1, \"Rex\": 5}\nprint(lives[___])",
+      "output": "1",
+      "options": ["\"Mia\"", "1", "Mia", "\"Kai\""],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-key-067a50",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "rooms = {\"lab\": 4, \"bridge\": 1, \"dock\": 7}\nprint(rooms[___])",
+      "output": "1",
+      "options": ["\"bridge\"", "1", "bridge", "\"lab\""],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-key-912955",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\nprint(levels[___])",
+      "output": "7",
+      "options": ["\"Kai\"", "1", "Kai", "\"Zoe\""],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-key-1f31cf",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "ages = {\"Phil\": 50, \"Sonny\": 38, \"Ken\": 29}\nprint(ages[___])",
+      "output": "38",
+      "options": ["\"Sonny\"", "1", "Sonny", "\"Phil\""],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-key-d0db2c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "speed = {\"Nova\": 300, \"Orion\": 250, \"Vega\": 280}\nprint(speed[___])",
+      "output": "250",
+      "options": ["\"Orion\"", "1", "Orion", "\"Nova\""],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-in-4d9512",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "crew = {\"Tommy\": 42, \"Lance\": 35}\nif \"Lance\" ___ crew:\n    print(\"Found Lance!\")\nelse:\n    print(\"No Lance\")",
+      "output": "Found Lance!",
+      "options": ["in", "not in", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-in-1dcaf5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "crew = {\"name\": \"Tommy\", \"age\": 35}\nif \"rank\" ___ crew:\n    print(\"Rank: unknown\")\nelse:\n    print(\"Rank: known\")",
+      "output": "Rank: unknown",
+      "options": ["not in", "in", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-in-0a975d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "scores = {\"Ana\": 90, \"Ben\": 75}\nif \"Zoe\" ___ scores:\n    print(\"Zoe has no score\")\nelse:\n    print(\"Zoe has a score\")",
+      "output": "Zoe has no score",
+      "options": ["not in", "in", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-in-a68cf0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "fuel = {\"Nova\": 80, \"Orion\": 45}\nif \"Nova\" ___ fuel:\n    print(\"Nova is ready\")\nelse:\n    print(\"Nova is missing\")",
+      "output": "Nova is ready",
+      "options": ["in", "not in", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-in-d155fd",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "stock = {\"bolts\": 120, \"gears\": 35}\nif \"wires\" ___ stock:\n    print(\"Order wires\")\nelse:\n    print(\"Wires in stock\")",
+      "output": "Order wires",
+      "options": ["not in", "in", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-brackets-1e91c4",
+      "text": "Which line stops this program from printing this?",
+      "code": "ages = [\"Tommy\": 42, \"Lance\": 35]\nages[\"Cortez\"] = 60\nprint(ages[\"Tommy\"])\nprint(ages[\"Lance\"])\nprint(ages[\"Cortez\"])",
+      "output": "42\n35\n60",
+      "options": [
+        "ages = [\"Tommy\": 42, \"Lance\": 35]",
+        "ages[\"Cortez\"] = 60",
+        "print(ages[\"Tommy\"])",
+        "print(ages[\"Lance\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-brackets-d5b695",
+      "text": "Which line stops this program from printing this?",
+      "code": "scores = [\"Ana\": 90, \"Ben\": 75]\nscores[\"Zoe\"] = 88\nprint(scores[\"Ana\"])\nprint(scores[\"Ben\"])\nprint(scores[\"Zoe\"])",
+      "output": "90\n75\n88",
+      "options": [
+        "scores = [\"Ana\": 90, \"Ben\": 75]",
+        "scores[\"Zoe\"] = 88",
+        "print(scores[\"Ana\"])",
+        "print(scores[\"Ben\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-brackets-ffc630",
+      "text": "Which line stops this program from printing this?",
+      "code": "fuel = [\"Nova\": 80, \"Orion\": 45]\nfuel[\"Vega\"] = 60\nprint(fuel[\"Nova\"])\nprint(fuel[\"Orion\"])\nprint(fuel[\"Vega\"])",
+      "output": "80\n45\n60",
+      "options": [
+        "fuel = [\"Nova\": 80, \"Orion\": 45]",
+        "fuel[\"Vega\"] = 60",
+        "print(fuel[\"Nova\"])",
+        "print(fuel[\"Orion\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-paren-b339c8",
+      "text": "Which line stops this program from printing this?",
+      "code": "prices = {\"apples\": 3, \"bread\": 2}\nprices[\"milk\"] = 4\nprint(prices[\"apples\"])\nprint(prices[\"bread\"])\nprint(prices(\"milk\"))",
+      "output": "3\n2\n4",
+      "options": [
+        "print(prices(\"milk\"))",
+        "print(prices[\"bread\"])",
+        "print(prices[\"apples\"])",
+        "prices[\"milk\"] = 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-paren-5bb584",
+      "text": "Which line stops this program from printing this?",
+      "code": "stock = {\"bolts\": 120, \"gears\": 35}\nstock[\"wires\"] = 70\nprint(stock[\"bolts\"])\nprint(stock[\"gears\"])\nprint(stock(\"wires\"))",
+      "output": "120\n35\n70",
+      "options": [
+        "print(stock(\"wires\"))",
+        "print(stock[\"gears\"])",
+        "print(stock[\"bolts\"])",
+        "stock[\"wires\"] = 70"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-paren-84ff88",
+      "text": "Which line stops this program from printing this?",
+      "code": "lives = {\"Kai\": 3, \"Mia\": 1}\nlives[\"Rex\"] = 5\nprint(lives[\"Kai\"])\nprint(lives[\"Mia\"])\nprint(lives(\"Rex\"))",
+      "output": "3\n1\n5",
+      "options": [
+        "print(lives(\"Rex\"))",
+        "print(lives[\"Mia\"])",
+        "print(lives[\"Kai\"])",
+        "lives[\"Rex\"] = 5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-quotes-1297aa",
+      "text": "Which line stops this program from printing this?",
+      "code": "ages = {\"Tommy\": 42, \"Lance\": 35}\nages[\"Lance\"] = ages[\"Lance\"] + 1\nprint(ages[Tommy])\nprint(ages[\"Lance\"])",
+      "output": "42\n36",
+      "options": [
+        "print(ages[Tommy])",
+        "ages[\"Lance\"] = ages[\"Lance\"] + 1",
+        "ages = {\"Tommy\": 42, \"Lance\": 35}",
+        "print(ages[\"Lance\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-quotes-198549",
+      "text": "Which line stops this program from printing this?",
+      "code": "scores = {\"Ana\": 90, \"Ben\": 75}\nscores[\"Ben\"] = scores[\"Ben\"] + 10\nprint(scores[Ana])\nprint(scores[\"Ben\"])",
+      "output": "90\n85",
+      "options": [
+        "print(scores[Ana])",
+        "scores[\"Ben\"] = scores[\"Ben\"] + 10",
+        "scores = {\"Ana\": 90, \"Ben\": 75}",
+        "print(scores[\"Ben\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-quotes-4c41d1",
+      "text": "Which line stops this program from printing this?",
+      "code": "fuel = {\"Nova\": 80, \"Orion\": 45}\nfuel[\"Orion\"] = fuel[\"Orion\"] + 30\nprint(fuel[Nova])\nprint(fuel[\"Orion\"])",
+      "output": "80\n75",
+      "options": [
+        "print(fuel[Nova])",
+        "fuel[\"Orion\"] = fuel[\"Orion\"] + 30",
+        "fuel = {\"Nova\": 80, \"Orion\": 45}",
+        "print(fuel[\"Orion\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-del-7b1a76",
+      "text": "Which line stops this program from printing this?",
+      "code": "ages = {\"Tommy\": 42, \"Lance\": 35, \"Cortez\": 60}\ndelete ages[\"Lance\"]\nages[\"Phil\"] = 50\nprint(ages)",
+      "output": "{'Tommy': 42, 'Cortez': 60, 'Phil': 50}",
+      "options": [
+        "delete ages[\"Lance\"]",
+        "ages = {\"Tommy\": 42, \"Lance\": 35, \"Cortez\": 60}",
+        "ages[\"Phil\"] = 50",
+        "print(ages)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-del-0e713a",
+      "text": "Which line stops this program from printing this?",
+      "code": "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\ndelete levels[\"Kai\"]\nlevels[\"Mia\"] = 4\nprint(levels)",
+      "output": "{'Zoe': 12, 'Ana': 9, 'Mia': 4}",
+      "options": [
+        "delete levels[\"Kai\"]",
+        "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}",
+        "levels[\"Mia\"] = 4",
+        "print(levels)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-del-e2aab1",
+      "text": "Which line stops this program from printing this?",
+      "code": "rooms = {\"lab\": 4, \"bridge\": 1, \"dock\": 7}\ndelete rooms[\"bridge\"]\nrooms[\"hangar\"] = 2\nprint(rooms)",
+      "output": "{'lab': 4, 'dock': 7, 'hangar': 2}",
+      "options": [
+        "delete rooms[\"bridge\"]",
+        "rooms = {\"lab\": 4, \"bridge\": 1, \"dock\": 7}",
+        "rooms[\"hangar\"] = 2",
+        "print(rooms)"
+      ],
+      "answer": 0
+    }
+  ]
+}

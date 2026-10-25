@@ -1,0 +1,988 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "In the Supply Run mission, what does `item[0:4]` give for `\"con-eggs\"`?",
+      "options": ["\"con-\"", "\"con-e\"", "\"con\"", "\"eggs\""],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "In the Supply Run mission, why is a `con-` crate skipped with `continue` and not with `break`?",
+      "options": [
+        "continue takes the crate out of items",
+        "break would end the loop, so the good crates after it would never be checked",
+        "break works only in while loops",
+        "It makes no difference here"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "In the Supply Run mission, why does `break` come after `clean.append(item)` and not before it?",
+      "options": [
+        "So the loop skips butter",
+        "Because break must always be the last line of a loop",
+        "So butter is added to clean before the loop stops",
+        "So jam is added too"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "In the Supply Run mission, why does `jam` never end up in clean?",
+      "options": [
+        "Its name starts with con-",
+        "It is the last element, and a loop skips the last element",
+        "clean can hold only 4 elements",
+        "The loop stopped with break at butter, before it reached jam"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "items = [\"milk\", \"con-eggs\", \"bread\"]\nclean = []\nfor item in items:\n    if item[0:4] == \"con-\":\n        continue\n    clean.append(item)\nprint(clean)",
+      "options": ["['milk', 'bread']", "['milk', 'con-eggs', 'bread']", "['con-eggs']", "['milk']"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "items = [\"milk\", \"butter\", \"jam\"]\nclean = []\nfor item in items:\n    if item == \"butter\":\n        break\n    clean.append(item)\nprint(clean)",
+      "options": ["['milk', 'butter']", "['milk']", "['milk', 'jam']", "[]"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "word = \"station\"\nprint(word[0:3].upper())",
+      "options": ["STATION", "sta", "STA", "STAT"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "names holds `\"Ana\"` and `\"Rex\"`. After `names.append(\"Kai\")`, what does `len(names)` give?",
+      "options": ["2", "9", "Kai", "3"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What is the difference between `name.upper()` and `names.append(\"Kai\")`?",
+      "options": [
+        "upper() gives a new string and leaves name as it was; append() changes the list itself",
+        "Both change the variable they are used on",
+        "Neither changes anything: you have to write names = names.append(\"Kai\")",
+        "upper() changes name; append() makes a new list"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "name = \"lance\"\nname.upper()\nprint(name)",
+      "options": ["LANCE", "lance", "Lance", "It stops with an error"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "numbers = [4, 9, 2, 7]\nfor n in numbers:\n    if n > 5:\n        break\n    print(n)",
+      "options": ["4\n2", "9", "4", "4\n9"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "numbers = [4, 9, 2, 7]\nfor n in numbers:\n    if n > 5:\n        continue\n    print(n)",
+      "options": ["4", "9\n7", "4\n9\n2\n7", "4\n2"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "What does `continue` do in a for loop that goes through a list?",
+      "options": [
+        "It skips the rest of the lines for this element and goes on with the next one",
+        "It stops the loop for good",
+        "It goes back to the first element of the list",
+        "It takes the current element out of the list"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "A for loop goes through a list and runs `break`. Which line runs next?",
+      "options": [
+        "The first line of the loop, with the next element",
+        "The first line after the loop",
+        "The line right under break, in the same block",
+        "None, the whole program stops there"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "A list has 3 elements. At which index is the last one?",
+      "options": ["3", "1", "2", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "What happens when this runs?",
+      "code": "crew = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(crew[len(crew)])",
+      "options": [
+        "It prints Cortez",
+        "It prints 3",
+        "It prints Tommy",
+        "It stops with an IndexError: there is no element at index 3"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "words = [\"sun\", \"moon\", \"star\"]\ncount = 0\nfor w in words:\n    if len(w) == 4:\n        count = count + 1\nprint(count)",
+      "options": ["2", "1", "3", "11"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "names = [\"ana\", \"rex\"]\nfor i in range(len(names)):\n    names[i] = names[i].upper()\nprint(names)",
+      "options": ["['ana', 'rex']", "['ANA', 'REX']", "ANA\nREX", "['ana', 'rex', 'ANA', 'REX']"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "name = \"Tommy Vercetti\"\nprint(name[0] + name[6])",
+      "options": ["T V", "Tommy Vercetti", "TV", "To"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Which loop stops at the first name longer than 5 letters, without printing it?",
+      "options": [
+        "for n in names:\n    print(n)\n    if len(n) > 5:\n        break",
+        "for n in names:\n    if len(n) > 5:\n        continue\n    print(n)",
+        "for n in names:\n    if len(n) < 5:\n        break\n    print(n)",
+        "for n in names:\n    if len(n) > 5:\n        break\n    print(n)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "In the Supply Run mission, how many lines does the program print?",
+      "options": ["5", "4", "7", "6"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "In the Supply Run mission, `\"butter\"` is taken out of items. What does the program print after `Total: `?",
+      "options": ["3", "4", "5", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "code = \"con-yogurt\"\nprint(code[4:])",
+      "options": ["con-", "-yogurt", "yogurt", "ogurt"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Why is `clean = []` written before the loop and not inside it?",
+      "options": [
+        "Because a list can be empty only before a loop",
+        "So clean holds only the first crate",
+        "So the loop skips the empty crates",
+        "Inside the loop, clean would be emptied again for every crate"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "word = \"rocket\"\nfirst = word[0:3]\nlast = word[3:6]\nprint(last + first)",
+      "options": ["ketroc", "rocket", "ket roc", "rocketroc"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "items = [\"milk\", \"jam\"]\nitems[1] = \"butter\"\nitems.append(\"jam\")\nprint(items)",
+      "options": [
+        "['milk', 'jam', 'butter']",
+        "['milk', 'butter', 'jam']",
+        "['butter', 'jam']",
+        "['milk', 'butter']"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "A for loop goes through a list of 6 elements and runs `break` at the element at index 2. For how many elements did the loop run?",
+      "options": ["2", "6", "3", "4"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "prices = [5, 10, 20, 40]\ntotal = 0\nfor p in prices:\n    if p == 20:\n        break\n    total = total + p\nprint(total)",
+      "options": ["75", "35", "5", "15"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Which condition is True for `\"con-milk\"` but False for `\"milk\"`?",
+      "options": [
+        "item[0:4] == \"con-\"",
+        "item[0:3] == \"con-\"",
+        "len(item) > 3",
+        "item[0] == \"m\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor n in names:\n    if n == \"Lance\":\n        continue\n    print(n.lower())",
+      "options": ["tommy\nlance\ncortez", "tommy\ncortez", "Tommy\nCortez", "tommy"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "col-skip",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    if {{x}}[0:{{k}}] == \"{{pre}}\":\n        continue\n    {{w}}.append({{x}})\nprint({{w}})",
+      "values": [
+        {
+          "v": "items",
+          "items": "\"milk\", \"con-eggs\", \"bread\", \"con-jam\"",
+          "x": "item",
+          "w": "clean",
+          "pre": "con-",
+          "k": 4
+        },
+        {
+          "v": "files",
+          "items": "\"old-notes\", \"report\", \"old-photo\", \"plan\"",
+          "x": "f",
+          "w": "keep",
+          "pre": "old-",
+          "k": 4
+        },
+        {
+          "v": "codes",
+          "items": "\"a7\", \"x1\", \"b2\", \"x9\"",
+          "x": "c",
+          "w": "good",
+          "pre": "x",
+          "k": 1
+        },
+        {
+          "v": "tasks",
+          "items": "\"fix engine\", \"done: wash\", \"launch\", \"done: refuel\"",
+          "x": "t",
+          "w": "todo",
+          "pre": "done:",
+          "k": 5
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["== \"{{pre}}\"", "!= \"{{pre}}\""],
+        ["\n    {{w}}.append({{x}})", "\n        {{w}}.append({{x}})"],
+        ["\nprint({{w}})", "\n    print({{w}})"]
+      ]
+    },
+    {
+      "id": "col-stop",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break\nprint({{w}})",
+      "values": [
+        {
+          "v": "items",
+          "items": "\"milk\", \"bread\", \"butter\", \"jam\"",
+          "x": "item",
+          "w": "bay",
+          "stop": "butter"
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\", \"Saturn\"",
+          "x": "p",
+          "w": "visited",
+          "stop": "Venus"
+        },
+        {
+          "v": "songs",
+          "items": "\"Intro\", \"Wave\", \"Rain\", \"Outro\", \"Bonus\"",
+          "x": "s",
+          "w": "played",
+          "stop": "Rain"
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        [
+          "    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break",
+          "    if {{x}} == \"{{stop}}\":\n        break\n    {{w}}.append({{x}})"
+        ],
+        ["\nprint({{w}})", "\n    print({{w}})"],
+        ["{{w}}.append({{x}})", "{{w}} = [{{x}}]"]
+      ]
+    },
+    {
+      "id": "col-cap",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{word}}\"\nprint({{v}}[0:{{k}}].upper() + {{v}}[{{k}}:])",
+      "values": [
+        {
+          "v": "word",
+          "word": "station",
+          "k": 3,
+          "k1": 4
+        },
+        {
+          "v": "name",
+          "word": "rocket",
+          "k": 1,
+          "k1": 2
+        },
+        {
+          "v": "code",
+          "word": "planet",
+          "k": 4,
+          "k1": 5
+        }
+      ],
+      "mistakes": [
+        [".upper()", ".lower()"],
+        ["[0:{{k}}]", "[0:{{k1}}]"],
+        [" + {{v}}[{{k}}:]", " + \" \" + {{v}}[{{k}}:]"],
+        ["{{v}}[{{k}}:])", "{{v}})"]
+      ]
+    },
+    {
+      "id": "col-long",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\n{{c}} = 0\nfor w in {{v}}:\n    if len(w) > {{n}}:\n        {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "v": "words",
+          "items": "\"sun\", \"moon\", \"planet\", \"star\"",
+          "c": "count",
+          "n": 4
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Ken\", \"Cortez\", \"Lance\", \"Phil\"",
+          "c": "long",
+          "n": 4
+        },
+        {
+          "v": "cities",
+          "items": "\"Rome\", \"Oslo\", \"Berlin\", \"Paris\"",
+          "c": "big",
+          "n": 5
+        },
+        {
+          "v": "tools",
+          "items": "\"saw\", \"hammer\", \"drill\", \"wrench\"",
+          "c": "count",
+          "n": 5
+        }
+      ],
+      "mistakes": [
+        ["len(w) > {{n}}", "len(w) >= {{n}}"],
+        ["{{c}} + 1", "{{c}} + len(w)"],
+        ["len(w) > {{n}}", "len(w) < {{n}}"],
+        ["\nprint({{c}})", "\n    print({{c}})"]
+      ]
+    },
+    {
+      "id": "col-find",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    if {{x}} == \"{{t}}\":\n        print(\"{{found}}\")\n        break\n    print({{x}})",
+      "values": [
+        {
+          "v": "sectors",
+          "items": "\"A1\", \"B4\", \"C7\", \"D2\"",
+          "x": "s",
+          "t": "C7",
+          "found": "Signal found!"
+        },
+        {
+          "v": "crew",
+          "items": "\"Lance\", \"Phil\", \"Tommy\", \"Ken\", \"Mia\"",
+          "x": "m",
+          "t": "Tommy",
+          "found": "Captain on board"
+        },
+        {
+          "v": "doors",
+          "items": "\"red\", \"green\", \"blue\"",
+          "x": "d",
+          "t": "green",
+          "found": "Door open"
+        },
+        {
+          "v": "crates",
+          "items": "\"jam\", \"milk\", \"tea\", \"gold\", \"rice\"",
+          "x": "c",
+          "t": "gold",
+          "found": "Treasure!"
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["\n    print({{x}})", "\n        print({{x}})"],
+        [
+          "        print(\"{{found}}\")\n        break",
+          "        break\n        print(\"{{found}}\")"
+        ],
+        ["== \"{{t}}\"", "!= \"{{t}}\""]
+      ]
+    },
+    {
+      "id": "col-initials",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\n{{s}} = \"\"\nfor w in {{v}}:\n    {{s}} = {{s}} + w[0]\nprint({{s}})",
+      "values": [
+        {
+          "v": "words",
+          "items": "\"Never\", \"Ever\", \"Stop\"",
+          "s": "code"
+        },
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Victor\", \"Lance\", \"Ken\"",
+          "s": "team"
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Earth\", \"Venus\"",
+          "s": "route"
+        }
+      ],
+      "mistakes": [
+        ["{{s}} + w[0]", "{{s}} + w"],
+        ["{{s}} + w[0]", "w[0] + {{s}}"],
+        ["w[0]\n", "w[1]\n"],
+        ["\nprint({{s}})", "\n    print({{s}})"]
+      ]
+    },
+    {
+      "id": "col-replace",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    if {{v}}[i][0:{{k}}] == \"{{pre}}\":\n        {{v}}[i] = \"{{rep}}\"\nprint({{v}})",
+      "values": [
+        {
+          "v": "items",
+          "items": "\"milk\", \"con-eggs\", \"bread\", \"con-jam\"",
+          "k": 4,
+          "pre": "con-",
+          "rep": "empty"
+        },
+        {
+          "v": "seats",
+          "items": "\"Ana\", \"x\", \"Rex\", \"x\"",
+          "k": 1,
+          "pre": "x",
+          "rep": "free"
+        },
+        {
+          "v": "files",
+          "items": "\"plan\", \"tmp-a\", \"notes\", \"tmp-b\"",
+          "k": 4,
+          "pre": "tmp-",
+          "rep": "deleted"
+        },
+        {
+          "v": "signals",
+          "items": "\"ok\", \"err1\", \"ok\", \"err2\"",
+          "k": 3,
+          "pre": "err",
+          "rep": "lost"
+        }
+      ],
+      "mistakes": [
+        ["{{v}}[i] = \"{{rep}}\"", "{{v}}.append(\"{{rep}}\")"],
+        ["] == \"{{pre}}\"", "] != \"{{pre}}\""],
+        ["range(len({{v}}))", "range(len({{v}}) - 1)"],
+        ["\nprint({{v}})", "\n    print({{v}})"]
+      ]
+    },
+    {
+      "id": "col-sum-stop",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\n{{t}} = 0\nfor n in {{v}}:\n    if n {{op}} {{lim}}:\n        break\n    {{t}} = {{t}} + n\nprint({{t}})",
+      "values": [
+        {
+          "v": "prices",
+          "items": "5, 10, 20, 40, 1",
+          "t": "total",
+          "op": "==",
+          "lim": 20
+        },
+        {
+          "v": "loads",
+          "items": "30, 25, 90, 10",
+          "t": "weight",
+          "op": ">",
+          "lim": 50
+        },
+        {
+          "v": "scores",
+          "items": "8, 6, 0, 9, 7",
+          "t": "points",
+          "op": "<",
+          "lim": 1
+        },
+        {
+          "v": "steps",
+          "items": "100, 200, 999, 300",
+          "t": "walked",
+          "op": ">=",
+          "lim": 999
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["\n    {{t}} = {{t}} + n", "\n        {{t}} = {{t}} + n"],
+        ["\nprint({{t}})", "\n    print({{t}})"]
+      ]
+    },
+    {
+      "id": "col-which-skip",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    if {{x}}[0:{{k}}] == \"{{pre}}\":\n        continue\n    {{w}}.append({{x}})\nprint({{w}})",
+      "values": [
+        {
+          "v": "items",
+          "items": "\"rice\", \"con-milk\", \"tea\", \"con-jam\"",
+          "x": "item",
+          "w": "clean",
+          "pre": "con-",
+          "k": 4
+        },
+        {
+          "v": "names",
+          "items": "\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"",
+          "x": "n",
+          "w": "others",
+          "pre": "Dr.",
+          "k": 3
+        },
+        {
+          "v": "codes",
+          "items": "\"ok-1\", \"bad-2\", \"ok-3\"",
+          "x": "c",
+          "w": "good",
+          "pre": "bad",
+          "k": 3
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["== \"{{pre}}\"", "!= \"{{pre}}\""],
+        ["\nprint({{w}})", "\n    print({{w}})"]
+      ]
+    },
+    {
+      "id": "col-which-stop",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break\nprint({{w}})",
+      "values": [
+        {
+          "v": "crates",
+          "items": "\"tea\", \"rice\", \"oil\", \"salt\"",
+          "x": "c",
+          "w": "bay",
+          "stop": "rice"
+        },
+        {
+          "v": "stops",
+          "items": "\"Moon\", \"Mars\", \"Titan\", \"Pluto\"",
+          "x": "s",
+          "w": "route",
+          "stop": "Titan"
+        },
+        {
+          "v": "cards",
+          "items": "\"3\", \"7\", \"K\", \"9\", \"2\"",
+          "x": "c",
+          "w": "hand",
+          "stop": "K"
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        [
+          "    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break",
+          "    if {{x}} == \"{{stop}}\":\n        break\n    {{w}}.append({{x}})"
+        ],
+        ["\nprint({{w}})", "\n    print({{w}})"],
+        ["{{w}}.append({{x}})", "{{w}} = [{{x}}]"]
+      ]
+    },
+    {
+      "id": "col-gap-continue",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    if {{x}}[0:{{k}}] == \"{{pre}}\":\n        ___\n    print({{x}})",
+      "values": [
+        {
+          "v": "items",
+          "items": "\"milk\", \"con-eggs\", \"bread\", \"jam\"",
+          "x": "item",
+          "k": 4,
+          "pre": "con-"
+        },
+        {
+          "v": "files",
+          "items": "\"plan\", \"old-map\", \"notes\", \"old-log\", \"photo\"",
+          "x": "f",
+          "k": 4,
+          "pre": "old-"
+        },
+        {
+          "v": "codes",
+          "items": "\"a1\", \"x2\", \"b3\"",
+          "x": "c",
+          "k": 1,
+          "pre": "x"
+        },
+        {
+          "v": "names",
+          "items": "\"Ana\", \"Dr. Rex\", \"Kai\"",
+          "x": "n",
+          "k": 3,
+          "pre": "Dr."
+        }
+      ],
+      "answer": "continue",
+      "wrong": ["break", "print({{x}})", "print(\"{{pre}}\")"]
+    },
+    {
+      "id": "col-gap-append",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    ___\n    if {{x}} == \"{{stop}}\":\n        break\nprint({{w}})",
+      "values": [
+        {
+          "v": "items",
+          "items": "\"milk\", \"bread\", \"butter\", \"jam\"",
+          "x": "item",
+          "w": "clean",
+          "stop": "butter"
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\"",
+          "x": "p",
+          "w": "seen",
+          "stop": "Venus"
+        },
+        {
+          "v": "tasks",
+          "items": "\"wake\", \"eat\", \"train\", \"sleep\"",
+          "x": "t",
+          "w": "done",
+          "stop": "train"
+        },
+        {
+          "v": "levels",
+          "items": "\"easy\", \"hard\", \"boss\", \"bonus\"",
+          "x": "l",
+          "w": "played",
+          "stop": "boss"
+        }
+      ],
+      "answer": "{{w}}.append({{x}})",
+      "wrong": ["{{w}} = [{{x}}]", "{{w}}.append({{v}})", "print({{x}})"]
+    },
+    {
+      "id": "col-gap-upper",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{word}}\"\n___\nprint({{v}})",
+      "values": [
+        {
+          "v": "name",
+          "word": "lance"
+        },
+        {
+          "v": "city",
+          "word": "vice city"
+        },
+        {
+          "v": "alert",
+          "word": "red alert"
+        }
+      ],
+      "answer": "{{v}} = {{v}}.upper()",
+      "wrong": ["{{v}}.upper()", "{{v}} = {{v}}.lower()", "{{v}} = {{v}}[0].upper()"]
+    },
+    {
+      "id": "col-gap-start",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    if {{x}}[0:___] == \"{{pre}}\":\n        continue\n    print({{x}})",
+      "values": [
+        {
+          "v": "items",
+          "items": "\"milk\", \"con-eggs\", \"jam\"",
+          "x": "item",
+          "k": 4,
+          "pre": "con-"
+        },
+        {
+          "v": "files",
+          "items": "\"old-map\", \"plan\", \"old-log\"",
+          "x": "f",
+          "k": 4,
+          "pre": "old-"
+        },
+        {
+          "v": "names",
+          "items": "\"Dr. Ana\", \"Rex\", \"Kai\"",
+          "x": "n",
+          "k": 3,
+          "pre": "Dr."
+        },
+        {
+          "v": "codes",
+          "items": "\"ab12\", \"xy34\", \"ab56\"",
+          "x": "c",
+          "k": 2,
+          "pre": "ab"
+        }
+      ],
+      "answer": "{{k}}",
+      "wrong": ["1", "2", "3", "4", "5", "6"]
+    },
+    {
+      "id": "col-gap-index",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}}[___].upper())",
+      "values": [
+        {
+          "v": "planets",
+          "items": "\"mars\", \"venus\", \"earth\", \"saturn\"",
+          "i": 2
+        },
+        {
+          "v": "crew",
+          "items": "\"tommy\", \"lance\", \"ken\"",
+          "i": 1
+        },
+        {
+          "v": "colors",
+          "items": "\"red\", \"green\", \"blue\", \"pink\"",
+          "i": 3
+        },
+        {
+          "v": "items",
+          "items": "\"milk\", \"bread\", \"jam\"",
+          "i": 0
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["0", "1", "2", "3", "len({{v}})"]
+    },
+    {
+      "id": "col-gap-stop",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}})\n    if {{x}} == ___:\n        break\nprint(len({{w}}))",
+      "values": [
+        {
+          "v": "items",
+          "items": "\"milk\", \"bread\", \"butter\", \"jam\"",
+          "x": "item",
+          "w": "clean",
+          "stop": "butter",
+          "a": "milk",
+          "b": "bread",
+          "c": "butter",
+          "d": "jam"
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\", \"Saturn\"",
+          "x": "p",
+          "w": "seen",
+          "stop": "Venus",
+          "a": "Mars",
+          "b": "Venus",
+          "c": "Earth",
+          "d": "Saturn"
+        },
+        {
+          "v": "songs",
+          "items": "\"Intro\", \"Wave\", \"Rain\", \"Outro\"",
+          "x": "s",
+          "w": "played",
+          "stop": "Outro",
+          "a": "Intro",
+          "b": "Wave",
+          "c": "Rain",
+          "d": "Outro"
+        },
+        {
+          "v": "tasks",
+          "items": "\"wake\", \"eat\", \"train\", \"sleep\"",
+          "x": "t",
+          "w": "done",
+          "stop": "wake",
+          "a": "wake",
+          "b": "eat",
+          "c": "train",
+          "d": "sleep"
+        }
+      ],
+      "answer": "\"{{stop}}\"",
+      "wrong": ["\"{{a}}\"", "\"{{b}}\"", "\"{{c}}\"", "\"{{d}}\""]
+    },
+    {
+      "id": "col-bad-slice",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    if {{x}}[0:{{k}}] == \"{{pre}}\":\n        continue\n    {{w}}.append({{x}})\nprint({{w}})",
+      "values": [
+        {
+          "v": "items",
+          "items": "\"milk\", \"con-eggs\", \"bread\", \"con-jam\"",
+          "x": "item",
+          "w": "clean",
+          "pre": "con-",
+          "k": 4
+        },
+        {
+          "v": "files",
+          "items": "\"old-map\", \"plan\", \"old-log\", \"photo\"",
+          "x": "f",
+          "w": "keep",
+          "pre": "old-",
+          "k": 4
+        },
+        {
+          "v": "names",
+          "items": "\"Dr. Ana\", \"Rex\", \"Kai\", \"Dr. Mia\"",
+          "x": "n",
+          "w": "others",
+          "pre": "Dr.",
+          "k": 3
+        }
+      ],
+      "bug": ["[0:{{k}}]", "[1:{{k}}]"]
+    },
+    {
+      "id": "col-bad-break",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break\nprint(len({{w}}))",
+      "values": [
+        {
+          "v": "items",
+          "items": "\"milk\", \"bread\", \"butter\", \"jam\"",
+          "x": "item",
+          "w": "clean",
+          "stop": "butter"
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\", \"Saturn\", \"Pluto\"",
+          "x": "p",
+          "w": "seen",
+          "stop": "Earth"
+        },
+        {
+          "v": "songs",
+          "items": "\"Intro\", \"Wave\", \"Rain\"",
+          "x": "s",
+          "w": "played",
+          "stop": "Intro"
+        }
+      ],
+      "bug": ["break", "continue"]
+    },
+    {
+      "id": "col-bad-start",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{c}} = 0\n{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    if {{x}}[0] == \"{{l}}\":\n        print({{x}})\n        {{c}} = {{c}} + 1\nprint(f\"{{label}}: {{{c}}}\")",
+      "values": [
+        {
+          "c": "count",
+          "v": "names",
+          "items": "\"Tommy\", \"Ken\", \"Tina\", \"Lance\"",
+          "x": "n",
+          "l": "T",
+          "label": "Names with T"
+        },
+        {
+          "c": "found",
+          "v": "cities",
+          "items": "\"Rome\", \"Oslo\", \"Riga\"",
+          "x": "c",
+          "l": "R",
+          "label": "Cities with R"
+        },
+        {
+          "c": "total",
+          "v": "words",
+          "items": "\"sun\", \"sky\", \"moon\", \"star\", \"sea\"",
+          "x": "w",
+          "l": "s",
+          "label": "Words with s"
+        }
+      ],
+      "bug": ["{{c}} = 0", "{{c}} = 1"]
+    },
+    {
+      "id": "col-bad-print",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    if len({{x}}) > {{n}}:\n        {{w}}.append({{x}}.upper())\nprint({{w}})",
+      "values": [
+        {
+          "v": "words",
+          "items": "\"sun\", \"planet\", \"moon\", \"rocket\"",
+          "x": "w",
+          "w": "long",
+          "n": 4
+        },
+        {
+          "v": "names",
+          "items": "\"Ken\", \"Cortez\", \"Lance\"",
+          "x": "n",
+          "w": "loud",
+          "n": 3
+        },
+        {
+          "v": "cities",
+          "items": "\"Rome\", \"Berlin\", \"Oslo\", \"Madrid\"",
+          "x": "c",
+          "w": "big",
+          "n": 4
+        }
+      ],
+      "bug": ["print({{w}})", "print({{v}})"]
+    }
+  ]
+}

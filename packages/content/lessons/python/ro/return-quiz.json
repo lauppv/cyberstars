@@ -1,0 +1,1041 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce face `return` într-o funcție?",
+      "options": [
+        "Dă o valoare înapoi, în locul unde a fost apelată funcția",
+        "Afișează valoarea pe ecran",
+        "Rulează funcția din nou de la început",
+        "Salvează valoarea într-o variabilă numită return"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează acest program?",
+      "code": "def aduna(a, b):\n    return a + b\n\naduna(2, 3)",
+      "options": [
+        "5",
+        "Nimic: valoarea se întoarce, dar nimic n-o afișează",
+        "aduna(2, 3)",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Ce afișează?",
+      "code": "def aduna(a, b):\n    return a + b\n\nrezultat = aduna(2, 3) * 10\nprint(rezultat)",
+      "options": ["5", "15", "50", "aduna(2, 3) * 10"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Care e diferența dintre o funcție care își afișează rezultatul și una care îl returnează?",
+      "options": [
+        "Niciuna: fac același lucru",
+        "O valoare returnată poate fi păstrată și folosită mai departe, una afișată doar apare pe ecran",
+        "O valoare afișată poate intra într-un calcul, una returnată nu",
+        "Doar o funcție care afișează poate primi parametri"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "def f():\n    return 1\n    print(\"nu se afiseaza niciodata\")\n\nprint(f())",
+      "options": [
+        "1\nnu se afiseaza niciodata",
+        "nu se afiseaza niciodata\n1",
+        "nu se afiseaza niciodata",
+        "1"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "Ce se întâmplă cu liniile scrise după `return` în același bloc?",
+      "options": [
+        "Rulează după ce valoarea e dată înapoi",
+        "Rulează doar a doua oară când e apelată funcția",
+        "Python se oprește cu o eroare",
+        "Nu rulează niciodată: funcția se termină imediat ce ajunge la return"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Ce dă înapoi o funcție fără `return`?",
+      "options": [
+        "0",
+        "Un text gol",
+        "None, felul lui Python de a spune „nimic”",
+        "Ultima valoare pe care a afișat-o"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "def f():\n    print(\"salut\")\n\nrezultat = f()\nprint(rezultat)",
+      "options": ["salut\nNone", "salut\nsalut", "None", "salut"],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "def imparte(a, b):\n    if b == 0:\n        return \"nu se poate imparti la zero\"\n    return a / b\n\nprint(imparte(10, 0))",
+      "options": ["0.0", "Se oprește cu o eroare: 10 / 0", "nu se poate imparti la zero", "Nimic"],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "def imparte(a, b):\n    if b == 0:\n        return \"nu se poate imparti la zero\"\n    return a / b\n\nprint(imparte(10, 2))",
+      "options": ["5.0", "5", "nu se poate imparti la zero", "nu se poate imparti la zero\n5.0"],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "Ce poate da înapoi o funcție cu `return`?",
+      "options": [
+        "Doar numere",
+        "Doar numere și texte",
+        "Orice valoare: un număr, un text, un boolean, o listă",
+        "Doar True sau False, ca să le folosim într-un if"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "`este_adult(varsta)` din lecție returnează `varsta >= 18`. Ce afișează `print(este_adult(15))`?",
+      "options": ["True", "15", "None", "False"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Unde putem folosi un apel ca `este_adult(20)`, al unei funcții care returnează o valoare?",
+      "options": [
+        "Doar singur, pe o linie",
+        "Oriunde merge o valoare: în print(), într-un if, într-un calcul",
+        "Doar după ce îl punem într-o variabilă",
+        "Doar în interiorul altei funcții"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "De ce pune lecția formula pentru Fahrenheit într-o funcție în loc s-o scrie pentru fiecare senzor?",
+      "options": [
+        "O scriem o dată și o refolosim cu alte argumente, iar o corectură se face într-un singur loc",
+        "O funcție o calculează mai repede",
+        "Python nu poate calcula 9 / 5 în afara unei funcții",
+        "Ca rezultatul să iasă int"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "`fahrenheit(c)` din lecție returnează `c * 9 / 5 + 32`. Ce dă înapoi `fahrenheit(100)`?",
+      "options": ["212", "212.0", "100", "180.0"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "def saluta(nume):\n    return f\"Salut, {nume}!\"\n\nmesaj = saluta(\"Cortez\")\nprint(mesaj)",
+      "options": ["Salut, {nume}!", "mesaj", "None", "Salut, Cortez!"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "În misiunea Atlasul Galaxiilor, ce returnează `cea_mai_lunga_stea`?",
+      "options": [
+        "Numele stelei cu cele mai multe litere din galaxia pe care o primește",
+        "Câte litere are cea mai lungă stea",
+        "Ultima stea din listă",
+        "Galaxia cu cele mai multe stele"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "În misiunea Atlasul Galaxiilor, de ce o funcție apelată de cinci ori în loc de cinci copii ale buclei?",
+      "options": [
+        "Cinci bucle ar afișa stelele în ordinea greșită",
+        "O listă poate fi parcursă doar într-o funcție",
+        "Logica e scrisă o dată și refolosită pentru fiecare galaxie, fără să repetăm corpul",
+        "Funcția trece prin toate cele cinci galaxii la un singur apel"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "În misiunea Atlasul Galaxiilor, ce returnează `cea_mai_lunga_stea([\"rigel\", \"vega\", \"betelgeuse\", \"spica\"])`?",
+      "options": ["rigel", "spica", "10", "betelgeuse"],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "În misiunea Atlasul Galaxiilor, `cea_mai_lunga_stea` trece prin galaxie cu o buclă for. Unde merge `return cea_mai_lunga`?",
+      "options": [
+        "În buclă, sub if",
+        "După buclă, aliniat cu linia for, ca să ruleze după ce toate stelele au fost verificate",
+        "Înainte de buclă",
+        "În afara funcției, după cele cinci apeluri"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "def dublu(x):\n    return x * 2\n\nprint(dublu(dublu(3)))",
+      "options": ["6", "36", "Se oprește cu o eroare", "12"],
+      "answer": 3
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "def aduna(a, b):\n    return a + b\n\nprint(aduna(1, 2) + aduna(3, 4))",
+      "options": ["10", "37", "3\n7", "1234"],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "În `rezultat = aduna(2, 3)`, unde ajunge valoarea pe care o returnează `aduna`?",
+      "options": [
+        "În a, primul parametru",
+        "Pe ecran",
+        "În variabila rezultat",
+        "Nicăieri: return doar încheie funcția"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "def verifica(n):\n    if n > 0:\n        return \"pozitiv\"\n    return \"nu e pozitiv\"\n\nprint(verifica(5))\nprint(verifica(0))",
+      "options": [
+        "pozitiv\nnu e pozitiv",
+        "pozitiv",
+        "pozitiv\npozitiv",
+        "pozitiv\nnu e pozitiv\nnu e pozitiv"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "O funcție are două linii cu `return`. Câte valori dă înapoi un apel?",
+      "options": [
+        "Două, câte una de la fiecare return",
+        "Una: primul return la care ajunge Python încheie apelul",
+        "Niciuna: două return-uri se anulează",
+        "Se oprește cu o eroare: o funcție poate avea un singur return"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def aduna_si_afiseaza(a, b):\n    print(a + b)\n\nrezultat = aduna_si_afiseaza(2, 3)\nprint(rezultat * 10)",
+      "options": [
+        "Afișează 50",
+        "Afișează 5, apoi 50",
+        "Afișează 5, apoi se oprește cu o eroare: rezultat e None",
+        "Nu afișează nimic"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "Ce linie, pusă în corpul lui `def patrat(n):`, face ca `arie = patrat(4)` să pună 16 în arie?",
+      "options": ["print(n * n)", "return n * n", "patrat = n * n", "return"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "def f(x):\n    return x + 1\n    return x + 2\n\nprint(f(5))",
+      "options": ["6\n7", "7", "8", "6"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "def este_par(n):\n    return n % 2 == 0\n\nif este_par(7):\n    print(\"par\")\nelse:\n    print(\"impar\")",
+      "options": ["impar", "par", "True", "False"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "def total(preturi):\n    t = 0\n    for p in preturi:\n        t = t + p\n    return t\n\nprint(total([3, 4, 5]))",
+      "options": ["3", "345", "[3, 4, 5]", "12"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "rv-add",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}(a, b):\n    return a {{op}} b\n\n{{r}} = {{f}}({{x}}, {{y}})\nprint({{r}})",
+      "values": [
+        {
+          "f": "aduna",
+          "op": "+",
+          "x": 2,
+          "y": 3,
+          "r": "rezultat"
+        },
+        {
+          "f": "scade",
+          "op": "-",
+          "x": 10,
+          "y": 4,
+          "r": "diferenta"
+        },
+        {
+          "f": "inmulteste",
+          "op": "*",
+          "x": 6,
+          "y": 7,
+          "r": "produs"
+        },
+        {
+          "f": "imparte",
+          "op": "/",
+          "x": 9,
+          "y": 3,
+          "r": "parte"
+        },
+        {
+          "f": "putere",
+          "op": "**",
+          "x": 2,
+          "y": 5,
+          "r": "mare"
+        }
+      ],
+      "mistakes": [
+        ["    return a {{op}} b", "    print(a {{op}} b)"],
+        ["print({{r}})", "print(\"{{r}}\")"],
+        ["return a {{op}} b", "return a {{op}} a"],
+        ["{{f}}({{x}}, {{y}})", "{{f}}({{y}}, {{x}})"]
+      ]
+    },
+    {
+      "id": "rv-chain",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} {{op}} {{k}}\n\nprint({{f}}({{a}}) * {{m}})",
+      "values": [
+        {
+          "f": "plus_cinci",
+          "p": "x",
+          "op": "+",
+          "k": 5,
+          "a": 3,
+          "m": 10
+        },
+        {
+          "f": "dublu",
+          "p": "n",
+          "op": "*",
+          "k": 2,
+          "a": 4,
+          "m": 3
+        },
+        {
+          "f": "pierde_viata",
+          "p": "vieti",
+          "op": "-",
+          "k": 1,
+          "a": 5,
+          "m": 2
+        },
+        {
+          "f": "jumatate",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 10,
+          "m": 3
+        },
+        {
+          "f": "patrat",
+          "p": "latura",
+          "op": "**",
+          "k": 2,
+          "a": 3,
+          "m": 2
+        }
+      ],
+      "mistakes": [
+        ["print({{f}}({{a}}) * {{m}})", "print({{f}}({{a}} * {{m}}))"],
+        ["return {{p}} {{op}} {{k}}", "return {{p}}"],
+        ["* {{m}})", "+ {{m}})"],
+        ["print({{f}}({{a}}) * {{m}})", "print({{f}}({{a}}))"]
+      ]
+    },
+    {
+      "id": "rv-early",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{p}}):\n    if {{p}} {{cmp}} {{lim}}:\n        return \"{{yes}}\"\n    return \"{{no}}\"\n\nprint({{f}}({{a}}))\nprint({{f}}({{b}}))",
+      "values": [
+        {
+          "f": "verifica_combustibil",
+          "p": "combustibil",
+          "cmp": ">=",
+          "ncmp": "<",
+          "lim": 20,
+          "yes": "OK",
+          "no": "Scazut",
+          "a": 50,
+          "b": 10
+        },
+        {
+          "f": "e_cald",
+          "p": "temp",
+          "cmp": ">",
+          "ncmp": "<=",
+          "lim": 30,
+          "yes": "Cald",
+          "no": "Nu e cald",
+          "a": 12,
+          "b": 35
+        },
+        {
+          "f": "nota",
+          "p": "scor",
+          "cmp": ">=",
+          "ncmp": "<",
+          "lim": 50,
+          "yes": "Admis",
+          "no": "Respins",
+          "a": 50,
+          "b": 49
+        },
+        {
+          "f": "verifica_viteza",
+          "p": "viteza",
+          "cmp": ">",
+          "ncmp": "<=",
+          "lim": 100,
+          "yes": "Prea repede",
+          "no": "OK",
+          "a": 80,
+          "b": 120
+        },
+        {
+          "f": "poate_vota",
+          "p": "varsta",
+          "cmp": ">=",
+          "ncmp": "<",
+          "lim": 18,
+          "yes": "Da",
+          "no": "Nu",
+          "a": 18,
+          "b": 17
+        }
+      ],
+      "mistakes": [
+        ["        return \"{{yes}}\"", "        print(\"{{yes}}\")"],
+        ["    return \"{{no}}\"", "    print(\"{{no}}\")"],
+        ["{{cmp}}", "{{ncmp}}"],
+        ["\nprint({{f}}({{b}}))", ""]
+      ]
+    },
+    {
+      "id": "rv-dead",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}():\n    print(\"{{x}}\")\n    return {{n}}\n    print(\"{{y}}\")\n\nprint({{f}}())",
+      "values": [
+        {
+          "f": "porneste",
+          "x": "Motoare pornite",
+          "n": 1,
+          "y": "Motoare oprite"
+        },
+        {
+          "f": "numara",
+          "x": "Pornesc numaratoarea",
+          "n": 3,
+          "y": "Am terminat"
+        },
+        {
+          "f": "lansare",
+          "x": "Lansare",
+          "n": 10,
+          "y": "Anulare"
+        },
+        {
+          "f": "ping",
+          "x": "Ping",
+          "n": 0,
+          "y": "Pong"
+        }
+      ],
+      "mistakes": [
+        ["    return {{n}}\n", ""],
+        ["    print(\"{{x}}\")\n    return {{n}}", "    return {{n}}\n    print(\"{{x}}\")"],
+        ["print({{f}}())", "{{f}}()"],
+        ["return {{n}}", "print({{n}})"]
+      ]
+    },
+    {
+      "id": "rv-none",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{p}}):\n    print({{p}} {{op}} {{k}})\n\n{{r}} = {{f}}({{a}})\nprint({{r}})",
+      "values": [
+        {
+          "f": "dublu",
+          "p": "x",
+          "op": "*",
+          "k": 2,
+          "a": 4,
+          "r": "rezultat"
+        },
+        {
+          "f": "plus_zece",
+          "p": "scor",
+          "op": "+",
+          "k": 10,
+          "a": 5,
+          "r": "scor_nou"
+        },
+        {
+          "f": "jumatate",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 9,
+          "r": "parte"
+        },
+        {
+          "f": "triplu",
+          "p": "t",
+          "op": "*",
+          "k": 3,
+          "a": 7,
+          "r": "iesire"
+        }
+      ],
+      "mistakes": [
+        ["    print({{p}} {{op}} {{k}})", "    return {{p}} {{op}} {{k}}"],
+        ["print({{r}})", "print(\"{{r}}\")"],
+        ["{{p}} {{op}} {{k}}", "{{p}}"],
+        ["print({{r}})", "print({{a}})"]
+      ]
+    },
+    {
+      "id": "rv-if",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} {{cmp}} {{lim}}\n\nif {{f}}({{a}}):\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "f": "este_adult",
+          "p": "varsta",
+          "cmp": ">=",
+          "ncmp": "<",
+          "lim": 18,
+          "a": 20,
+          "yes": "Bun venit",
+          "no": "Imi pare rau, prea tanar"
+        },
+        {
+          "f": "are_combustibil",
+          "p": "combustibil",
+          "cmp": ">",
+          "ncmp": "<=",
+          "lim": 0,
+          "a": 15,
+          "yes": "Lansare",
+          "no": "Alimenteaza intai"
+        },
+        {
+          "f": "are_scut",
+          "p": "scut",
+          "cmp": ">",
+          "ncmp": "<=",
+          "lim": 50,
+          "a": 80,
+          "yes": "Scuturi ridicate",
+          "no": "Scuturi slabe"
+        },
+        {
+          "f": "poate_intra",
+          "p": "nivel",
+          "cmp": ">=",
+          "ncmp": "<",
+          "lim": 3,
+          "a": 5,
+          "yes": "Usa se deschide",
+          "no": "Acces interzis"
+        },
+        {
+          "f": "e_frig",
+          "p": "temp",
+          "cmp": "<",
+          "ncmp": ">=",
+          "lim": 10,
+          "a": 4,
+          "yes": "Ia o geaca",
+          "no": "Nu ai nevoie de geaca"
+        }
+      ],
+      "mistakes": [
+        ["{{cmp}}", "{{ncmp}}"],
+        ["return {{p}} {{cmp}} {{lim}}", "print({{p}} {{cmp}} {{lim}})"],
+        ["if {{f}}({{a}}):", "print({{f}}({{a}}))\nif {{f}}({{a}}):"],
+        ["else:\n    print(\"{{no}}\")", "print(\"{{no}}\")"]
+      ]
+    },
+    {
+      "id": "rv-which-return",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def {{f}}(a, b):\n    return a {{op}} b\n\nprint({{f}}({{x}}, {{y}}) * {{m}})",
+      "values": [
+        {
+          "f": "aduna",
+          "op": "+",
+          "x": 2,
+          "y": 3,
+          "m": 10
+        },
+        {
+          "f": "inmulteste",
+          "op": "*",
+          "x": 4,
+          "y": 5,
+          "m": 2
+        },
+        {
+          "f": "scade",
+          "op": "-",
+          "x": 9,
+          "y": 4,
+          "m": 3
+        },
+        {
+          "f": "total",
+          "op": "+",
+          "x": 7,
+          "y": 1,
+          "m": 3
+        },
+        {
+          "f": "imparte",
+          "op": "/",
+          "x": 8,
+          "y": 2,
+          "m": 5
+        }
+      ],
+      "mistakes": [
+        ["    return a {{op}} b", "    print(a {{op}} b)"],
+        [" * {{m}})", ")"],
+        ["return a {{op}} b", "return a"],
+        ["{{f}}({{x}}, {{y}}) * {{m}}", "{{f}}({{x}}, {{y}} * {{m}})"]
+      ]
+    },
+    {
+      "id": "rv-which-none",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def {{f}}({{p}}):\n    print({{p}} {{op}} {{k}})\n\n{{r}} = {{f}}({{a}})\nprint({{r}})",
+      "values": [
+        {
+          "f": "arata_dublu",
+          "p": "x",
+          "op": "*",
+          "k": 2,
+          "a": 6,
+          "r": "rezultat"
+        },
+        {
+          "f": "adauga_bonus",
+          "p": "puncte",
+          "op": "+",
+          "k": 5,
+          "a": 20,
+          "r": "total"
+        },
+        {
+          "f": "jumatate",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 7,
+          "r": "parte"
+        },
+        {
+          "f": "patrat",
+          "p": "latura",
+          "op": "**",
+          "k": 2,
+          "a": 9,
+          "r": "arie"
+        },
+        {
+          "f": "consuma",
+          "p": "combustibil",
+          "op": "-",
+          "k": 10,
+          "a": 40,
+          "r": "ramas"
+        }
+      ],
+      "mistakes": [
+        ["    print({{p}} {{op}} {{k}})", "    return {{p}} {{op}} {{k}}"],
+        ["print({{r}})", "print(\"{{r}}\")"],
+        ["{{r}} = {{f}}({{a}})\nprint({{r}})", "{{f}}({{a}})"]
+      ]
+    },
+    {
+      "id": "rv-gap-return",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    ___\n\n{{r}} = {{f}}({{a}})\nprint({{r}})",
+      "values": [
+        {
+          "f": "dublu",
+          "p": "x",
+          "op": "*",
+          "k": 2,
+          "a": 7,
+          "r": "rezultat"
+        },
+        {
+          "f": "adauga_bonus",
+          "p": "puncte",
+          "op": "+",
+          "k": 5,
+          "a": 20,
+          "r": "total"
+        },
+        {
+          "f": "jumatate",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 9,
+          "r": "parte"
+        },
+        {
+          "f": "patrat",
+          "p": "latura",
+          "op": "**",
+          "k": 2,
+          "a": 6,
+          "r": "arie"
+        },
+        {
+          "f": "pierde_viata",
+          "p": "vieti",
+          "op": "-",
+          "k": 1,
+          "a": 3,
+          "r": "ramase"
+        }
+      ],
+      "answer": "return {{p}} {{op}} {{k}}",
+      "wrong": ["print({{p}} {{op}} {{k}})", "return {{p}}", "{{p}} {{op}} {{k}}", "return {{k}}"]
+    },
+    {
+      "id": "rv-gap-early",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    if {{p}} {{cmp}} {{lim}}:\n        return \"{{yes}}\"\n    ___\n\nprint({{f}}({{a}}))\nprint({{f}}({{b}}))",
+      "values": [
+        {
+          "f": "verifica_combustibil",
+          "p": "combustibil",
+          "cmp": ">=",
+          "lim": 20,
+          "yes": "OK",
+          "no": "Scazut",
+          "a": 35,
+          "b": 5
+        },
+        {
+          "f": "nota",
+          "p": "scor",
+          "cmp": ">=",
+          "lim": 50,
+          "yes": "Admis",
+          "no": "Respins",
+          "a": 72,
+          "b": 31
+        },
+        {
+          "f": "e_cald",
+          "p": "temp",
+          "cmp": ">",
+          "lim": 30,
+          "yes": "Cald",
+          "no": "Nu e cald",
+          "a": 33,
+          "b": 21
+        },
+        {
+          "f": "verifica_viteza",
+          "p": "viteza",
+          "cmp": ">",
+          "lim": 100,
+          "yes": "Prea repede",
+          "no": "OK",
+          "a": 130,
+          "b": 90
+        },
+        {
+          "f": "poate_vota",
+          "p": "varsta",
+          "cmp": ">=",
+          "lim": 18,
+          "yes": "Da",
+          "no": "Nu",
+          "a": 40,
+          "b": 16
+        }
+      ],
+      "answer": "return \"{{no}}\"",
+      "wrong": ["print(\"{{no}}\")", "return \"{{yes}}\"", "return", "return {{p}}"]
+    },
+    {
+      "id": "rv-val-arg",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} {{op}} {{k}}\n\nprint({{f}}(___))",
+      "values": [
+        {
+          "f": "dublu",
+          "p": "x",
+          "op": "*",
+          "k": 2,
+          "a": 6,
+          "v": 12,
+          "w": 3
+        },
+        {
+          "f": "plus_cinci",
+          "p": "n",
+          "op": "+",
+          "k": 5,
+          "a": 4,
+          "v": 9,
+          "w": 3
+        },
+        {
+          "f": "jumatate",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 10,
+          "v": "5.0",
+          "w": 20
+        },
+        {
+          "f": "patrat",
+          "p": "latura",
+          "op": "**",
+          "k": 2,
+          "a": 4,
+          "v": 16,
+          "w": 8
+        },
+        {
+          "f": "consuma",
+          "p": "combustibil",
+          "op": "-",
+          "k": 3,
+          "a": 10,
+          "v": 7,
+          "w": 13
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{v}}", "{{k}}", "{{p}}", "{{w}}"]
+    },
+    {
+      "id": "rv-val-ret",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    return ___\n\nprint({{f}}({{a}}))",
+      "values": [
+        {
+          "f": "dublu",
+          "p": "x",
+          "op": "*",
+          "k": 2,
+          "a": 9
+        },
+        {
+          "f": "triplu",
+          "p": "n",
+          "op": "*",
+          "k": 3,
+          "a": 4
+        },
+        {
+          "f": "plus_zece",
+          "p": "scor",
+          "op": "+",
+          "k": 10,
+          "a": 15
+        },
+        {
+          "f": "jumatate",
+          "p": "n",
+          "op": "/",
+          "k": 2,
+          "a": 5
+        },
+        {
+          "f": "pierde_viata",
+          "p": "vieti",
+          "op": "-",
+          "k": 1,
+          "a": 7
+        }
+      ],
+      "answer": "{{p}} {{op}} {{k}}",
+      "wrong": ["{{p}}", "{{k}}", "\"{{p}} {{op}} {{k}}\"", "print({{p}} {{op}} {{k}})"]
+    },
+    {
+      "id": "rv-bad-print",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}(a, b):\n    return a {{op}} b\n\n{{r}} = {{f}}({{x}}, {{y}})\nprint({{r}} * 2)",
+      "values": [
+        {
+          "f": "aduna",
+          "op": "+",
+          "x": 4,
+          "y": 5,
+          "r": "total"
+        },
+        {
+          "f": "inmulteste",
+          "op": "*",
+          "x": 3,
+          "y": 8,
+          "r": "produs"
+        },
+        {
+          "f": "scade",
+          "op": "-",
+          "x": 20,
+          "y": 6,
+          "r": "ramas"
+        }
+      ],
+      "bug": ["    return a {{op}} b", "    print(a {{op}} b)"]
+    },
+    {
+      "id": "rv-bad-call",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    if {{p}} {{cmp}} {{lim}}:\n        return \"{{yes}}\"\n    return \"{{no}}\"\n\nprint({{f}}({{b}}))\nprint({{f}}({{a}}))",
+      "values": [
+        {
+          "f": "verifica_combustibil",
+          "p": "combustibil",
+          "cmp": ">=",
+          "lim": 20,
+          "yes": "OK",
+          "no": "Scazut",
+          "a": 35,
+          "b": 50
+        },
+        {
+          "f": "e_cald",
+          "p": "temp",
+          "cmp": ">",
+          "lim": 30,
+          "yes": "Cald",
+          "no": "Nu e cald",
+          "a": 18,
+          "b": 12
+        },
+        {
+          "f": "nota",
+          "p": "scor",
+          "cmp": ">=",
+          "lim": 50,
+          "yes": "Admis",
+          "no": "Respins",
+          "a": 64,
+          "b": 90
+        }
+      ],
+      "bug": ["print({{f}}({{a}}))", "{{f}}({{a}})"]
+    },
+    {
+      "id": "rv-bad-args",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}(a, b):\n    return a {{op}} b\n\nprint({{f}}({{x}}, {{y}}))\nprint({{f}}({{y}}, {{x}}))",
+      "values": [
+        {
+          "f": "scade",
+          "op": "-",
+          "x": 9,
+          "y": 4
+        },
+        {
+          "f": "imparte",
+          "op": "/",
+          "x": 12,
+          "y": 3
+        },
+        {
+          "f": "putere",
+          "op": "**",
+          "x": 2,
+          "y": 3
+        }
+      ],
+      "bug": ["def {{f}}(a, b):", "def {{f}}(a):"]
+    },
+    {
+      "id": "rv-bad-ret",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    {{t}} = {{p}} {{op}} {{k}}\n    print(\"Primit:\", {{p}})\n    return {{t}}\n\nprint({{f}}({{a}}))",
+      "values": [
+        {
+          "f": "dublu",
+          "p": "x",
+          "t": "dublat",
+          "op": "*",
+          "k": 2,
+          "a": 6
+        },
+        {
+          "f": "adauga_taxa",
+          "p": "pret",
+          "t": "total",
+          "op": "+",
+          "k": 5,
+          "a": 20
+        },
+        {
+          "f": "jumatate",
+          "p": "n",
+          "t": "parte",
+          "op": "/",
+          "k": 2,
+          "a": 9
+        }
+      ],
+      "bug": ["    return {{t}}", "    return {{p}}"]
+    }
+  ]
+}
