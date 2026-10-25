@@ -27,83 +27,27 @@ Live at [cyberstars.app](https://cyberstars.app), in English and Romanian.
 - **Community**: a forum, messages and notifications
 - **Sandboxed**: your code runs in locked-down Docker containers on the server, never in your browser
 
-## Quick start
+## Run it locally
 
-**Prerequisites:** Node.js 24+, PostgreSQL 14+, Docker.
-
-```bash
-git clone https://github.com/lauppv/cyberstars.git
-cd cyberstars
-cp .env.example .env   # then edit with your DB credentials and a JWT_SECRET
-npm ci
-npm run dev
-```
-
-`npm run dev` handles everything: it generates Prisma client, runs migrations, seeds the database, starts both frontend (`:5173`) and backend (`:5000`).
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed setup instructions (PostgreSQL, Docker images, Linux sandbox).
+You need Node.js 24+, PostgreSQL 14+ and Docker. The setup is one block of commands in [CONTRIBUTING.md](CONTRIBUTING.md#run-it-locally); after it, `npm run dev` serves the app on `:5173` and the API on `:5000`.
 
 ## Tech stack
 
-| Layer     | Stack                                                            |
-| --------- | ---------------------------------------------------------------- |
-| Frontend  | React 19, TypeScript, Vite 7, Tailwind CSS 4, CodeMirror         |
-| Backend   | Express 5, TypeScript, Prisma 6 (PostgreSQL), Zod                |
-| Execution | Docker containers (sandboxed, per-language)                      |
-| Auth      | JWT in httpOnly cookies, bcryptjs                                |
-| Shared    | `packages/shared` with DTO types and constants used by both apps |
+| Layer     | Stack                                                    |
+| --------- | -------------------------------------------------------- |
+| Frontend  | React 19, TypeScript, Vite 7, Tailwind CSS 4, CodeMirror |
+| Backend   | Express 5, TypeScript, Prisma 6 (PostgreSQL), Zod        |
+| Execution | Docker containers (sandboxed, per-language)              |
+| Auth      | JWT in httpOnly cookies, bcryptjs                        |
 
-## Project structure
+One npm workspace: the app in `apps/ui`, the API in `apps/api`, shared types in `packages/shared` and the lessons in `packages/content`. [ARCHITECTURE.md](ARCHITECTURE.md) has the full breakdown, the API endpoints and the database schema.
 
-One npm workspace with two apps and two shared packages:
-
-```
-cyberstars/
-├── apps/
-│   ├── ui/          # React frontend
-│   └── api/         # Express API, database schema, migrations, seed
-├── packages/
-│   ├── shared/      # Types and rules (UI + API)
-│   └── content/     # Lessons, algorithm challenges, curriculum
-├── e2e/             # Playwright tests
-├── test/            # Test setup
-└── .github/         # CI workflows
-```
-
-Run every script from the root; it forwards to the right workspace. See [ARCHITECTURE.md](ARCHITECTURE.md) for the full architecture breakdown, why it's one repo, API endpoints, and database schema.
-
-## Scripts
-
-| Script                      | Description                                              |
-| --------------------------- | -------------------------------------------------------- |
-| `npm run dev`               | Start everything (DB setup + Vite + Express)             |
-| `npm test`                  | Run unit suite (Vitest: UI on jsdom, API on Node)        |
-| `npm run test:coverage`     | Unit suite + v8 coverage; fails if below 90% on any axis |
-| `npm run test:integration`  | Real-Postgres integration tests (needs `.env.test`)      |
-| `npm run test:e2e:browser`  | Playwright UI flows (auth/forum/support/courses/profile) |
-| `npm run test:e2e:docker`   | Playwright code-execution flows (Python/C/Java/terminal) |
-| `npm run typecheck`         | TypeScript type checking                                 |
-| `npm run lint`              | ESLint                                                   |
-| `npm run format` / `:check` | Prettier write / check                                   |
-| `npm run dead-code`         | Find unused files, exports, and dependencies (knip)      |
-| `npm run build`             | Production build                                         |
-| `npm run db:studio`         | Open Prisma Studio (DB browser)                          |
-
-## CI
-
-Every push and pull request runs format, lint, typecheck, the unit suite with coverage, `npm audit`, dead-code, the lesson test specs, the Laniakea questions, integration tests against Postgres, both Playwright suites and the build ([`ci.yml`](.github/workflows/ci.yml)). A second workflow grades the lessons a pull request changed through the real Docker judge ([`lesson-tests.yml`](.github/workflows/lesson-tests.yml)).
+Every pull request runs format, lint, typecheck, the tests with coverage, audit, dead code, integration, both Playwright suites and the build ([`ci.yml`](.github/workflows/ci.yml)), and grades the lessons it changed through the real judge ([`lesson-tests.yml`](.github/workflows/lesson-tests.yml)).
 
 ## Contributing
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, adding lessons, code style and the pull request process. Found a mistake in a lesson? [Open an issue](https://github.com/lauppv/cyberstars/issues/new/choose). Have a question? Ask in [Discussions](https://github.com/lauppv/cyberstars/discussions).
-
-Please follow our [Code of Conduct](CODE_OF_CONDUCT.md), and report security issues privately as described in [SECURITY.md](SECURITY.md).
-
-Since October 11, 2026, work on CyberStars is planned as tickets in [Linear](https://linear.app/cyberstars).
-That's where references like `CYB-23` in PRs point. The workspace isn't public, so opening them
-needs an account. Issues, forks and PRs on GitHub are always welcome. To contribute regularly,
-create a Linear account and open an issue asking to join the workspace.
+Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md). A mistake in a lesson? [Open an issue](https://github.com/lauppv/cyberstars/issues/new/choose). A question? Ask in [Discussions](https://github.com/lauppv/cyberstars/discussions). Please follow the [Code of Conduct](CODE_OF_CONDUCT.md), and report security issues privately as [SECURITY.md](SECURITY.md) says.
 
 ## License
 
-[BSD 3-Clause](LICENSE)
+Code under [BSD 3-Clause](LICENSE), lessons under [CC BY-SA 4.0](LICENSE-content.md).
