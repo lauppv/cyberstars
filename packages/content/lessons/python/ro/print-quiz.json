@@ -556,6 +556,70 @@
         }
       ],
       "bug": ["print(\"{{d}}\")", "Print(\"{{d}}\")"]
+    },
+    {
+      "id": "var-kent",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{text}}\"\nnume = {{v}}\nprint(nume)",
+      "values": [
+        {
+          "v": "Kent",
+          "text": "Booooo"
+        },
+        {
+          "v": "Lance",
+          "text": "Salutare"
+        },
+        {
+          "v": "Paul",
+          "text": "Ora de pizza"
+        }
+      ],
+      "mistakes": [
+        ["nume = {{v}}", "nume = \"{{v}}\""],
+        ["print(nume)", "print(\"nume\")"],
+        ["print(nume)", "print(\"{{v}}\", nume)"]
+      ]
+    },
+    {
+      "id": "var-again",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "nume = \"{{a}}\"\nnume = \"{{b}}\"\nprint(nume)",
+      "values": [
+        {
+          "a": "Tommy",
+          "b": "Lance"
+        },
+        {
+          "a": "Ana",
+          "b": "Ben"
+        }
+      ],
+      "mistakes": [
+        ["nume = \"{{b}}\"\n", ""],
+        ["print(nume)", "print(\"nume\")"],
+        ["print(nume)", "print(\"{{a}}\")\nprint(nume)"]
+      ]
+    },
+    {
+      "id": "var-swap",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"{{a}}\"\nprint(nume)\n___\nprint(nume)",
+      "values": [
+        {
+          "a": "Shadow",
+          "b": "Jess"
+        },
+        {
+          "a": "Lance",
+          "b": "Paul"
+        }
+      ],
+      "answer": "nume = \"{{b}}\"",
+      "wrong": ["nume = {{b}}", "print(\"{{b}}\")", "\"{{b}}\""]
     }
   ]
 }

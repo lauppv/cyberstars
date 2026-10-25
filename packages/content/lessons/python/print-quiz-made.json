@@ -352,6 +352,57 @@
       "output": "One\nTwo\nThree\nFour",
       "options": ["Print(\"Four\")", "print(\"One\")", "print(\"Two\")", "print(\"Three\")"],
       "answer": 0
+    },
+    {
+      "id": "var-kent-315248",
+      "text": "What does this print?",
+      "code": "Kent = \"Booooo\"\nname = Kent\nprint(name)",
+      "options": ["Booooo", "Kent", "name", "Kent Booooo"],
+      "answer": 0
+    },
+    {
+      "id": "var-kent-fbc119",
+      "text": "What does this print?",
+      "code": "Lance = \"Hello there\"\nname = Lance\nprint(name)",
+      "options": ["Hello there", "Lance", "name", "Lance Hello there"],
+      "answer": 0
+    },
+    {
+      "id": "var-kent-e43ce6",
+      "text": "What does this print?",
+      "code": "Paul = \"Pizza time\"\nname = Paul\nprint(name)",
+      "options": ["Pizza time", "Paul", "name", "Paul Pizza time"],
+      "answer": 0
+    },
+    {
+      "id": "var-again-1d0c78",
+      "text": "What does this print?",
+      "code": "name = \"Tommy\"\nname = \"Lance\"\nprint(name)",
+      "options": ["Lance", "Tommy", "name", "Tommy\nLance"],
+      "answer": 0
+    },
+    {
+      "id": "var-again-49f128",
+      "text": "What does this print?",
+      "code": "name = \"Ana\"\nname = \"Ben\"\nprint(name)",
+      "options": ["Ben", "Ana", "name", "Ana\nBen"],
+      "answer": 0
+    },
+    {
+      "id": "var-swap-f0d8fe",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Shadow\"\nprint(name)\n___\nprint(name)",
+      "output": "Shadow\nJess",
+      "options": ["name = \"Jess\"", "name = Jess", "print(\"Jess\")", "\"Jess\""],
+      "answer": 0
+    },
+    {
+      "id": "var-swap-1df4ca",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Lance\"\nprint(name)\n___\nprint(name)",
+      "output": "Lance\nPaul",
+      "options": ["name = \"Paul\"", "name = Paul", "print(\"Paul\")", "\"Paul\""],
+      "answer": 0
     }
   ]
 }

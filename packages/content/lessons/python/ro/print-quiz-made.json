@@ -367,6 +367,57 @@
       "output": "Unu\nDoi\nTrei\nPatru",
       "options": ["Print(\"Patru\")", "print(\"Unu\")", "print(\"Doi\")", "print(\"Trei\")"],
       "answer": 0
+    },
+    {
+      "id": "var-kent-315248",
+      "text": "Ce afișează?",
+      "code": "Kent = \"Booooo\"\nnume = Kent\nprint(nume)",
+      "options": ["Booooo", "Kent", "nume", "Kent Booooo"],
+      "answer": 0
+    },
+    {
+      "id": "var-kent-fbc119",
+      "text": "Ce afișează?",
+      "code": "Lance = \"Salutare\"\nnume = Lance\nprint(nume)",
+      "options": ["Salutare", "Lance", "nume", "Lance Salutare"],
+      "answer": 0
+    },
+    {
+      "id": "var-kent-e43ce6",
+      "text": "Ce afișează?",
+      "code": "Paul = \"Ora de pizza\"\nnume = Paul\nprint(nume)",
+      "options": ["Ora de pizza", "Paul", "nume", "Paul Ora de pizza"],
+      "answer": 0
+    },
+    {
+      "id": "var-again-1d0c78",
+      "text": "Ce afișează?",
+      "code": "nume = \"Tommy\"\nnume = \"Lance\"\nprint(nume)",
+      "options": ["Lance", "Tommy", "nume", "Tommy\nLance"],
+      "answer": 0
+    },
+    {
+      "id": "var-again-49f128",
+      "text": "Ce afișează?",
+      "code": "nume = \"Ana\"\nnume = \"Ben\"\nprint(nume)",
+      "options": ["Ben", "Ana", "nume", "Ana\nBen"],
+      "answer": 0
+    },
+    {
+      "id": "var-swap-f0d8fe",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Shadow\"\nprint(nume)\n___\nprint(nume)",
+      "output": "Shadow\nJess",
+      "options": ["nume = \"Jess\"", "nume = Jess", "print(\"Jess\")", "\"Jess\""],
+      "answer": 0
+    },
+    {
+      "id": "var-swap-1df4ca",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Lance\"\nprint(nume)\n___\nprint(nume)",
+      "output": "Lance\nPaul",
+      "options": ["nume = \"Paul\"", "nume = Paul", "print(\"Paul\")", "\"Paul\""],
+      "answer": 0
     }
   ]
 }

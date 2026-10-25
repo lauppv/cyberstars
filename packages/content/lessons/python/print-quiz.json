@@ -556,6 +556,70 @@
         }
       ],
       "bug": ["print(\"{{d}}\")", "Print(\"{{d}}\")"]
+    },
+    {
+      "id": "var-kent",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{text}}\"\nname = {{v}}\nprint(name)",
+      "values": [
+        {
+          "v": "Kent",
+          "text": "Booooo"
+        },
+        {
+          "v": "Lance",
+          "text": "Hello there"
+        },
+        {
+          "v": "Paul",
+          "text": "Pizza time"
+        }
+      ],
+      "mistakes": [
+        ["name = {{v}}", "name = \"{{v}}\""],
+        ["print(name)", "print(\"name\")"],
+        ["print(name)", "print(\"{{v}}\", name)"]
+      ]
+    },
+    {
+      "id": "var-again",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "name = \"{{a}}\"\nname = \"{{b}}\"\nprint(name)",
+      "values": [
+        {
+          "a": "Tommy",
+          "b": "Lance"
+        },
+        {
+          "a": "Ana",
+          "b": "Ben"
+        }
+      ],
+      "mistakes": [
+        ["name = \"{{b}}\"\n", ""],
+        ["print(name)", "print(\"name\")"],
+        ["print(name)", "print(\"{{a}}\")\nprint(name)"]
+      ]
+    },
+    {
+      "id": "var-swap",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"{{a}}\"\nprint(name)\n___\nprint(name)",
+      "values": [
+        {
+          "a": "Shadow",
+          "b": "Jess"
+        },
+        {
+          "a": "Lance",
+          "b": "Paul"
+        }
+      ],
+      "answer": "name = \"{{b}}\"",
+      "wrong": ["name = {{b}}", "print(\"{{b}}\")", "\"{{b}}\""]
     }
   ]
 }
