@@ -545,6 +545,119 @@
         "pilot = \"Jess\"\nship = \"Nova\"\nprint(f\"Pilot {ship} is flying {ship}\")"
       ],
       "answer": 0
+    },
+    {
+      "id": "card-broken-83a86f",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = Shadow\nlevel = 42\nhealth = 97.5\nprint(f\"Player {name}({level}) has {health} health\")",
+      "output": "Player Shadow(42) has 97.5 health",
+      "options": [
+        "name = Shadow",
+        "level = 42",
+        "health = 97.5",
+        "print(f\"Player {name}({level}) has {health} health\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-broken-7f510c",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = Ana\nlevel = 7\nhealth = 50.5\nprint(f\"Player {name}({level}) has {health} health\")",
+      "output": "Player Ana(7) has 50.5 health",
+      "options": [
+        "name = Ana",
+        "level = 7",
+        "health = 50.5",
+        "print(f\"Player {name}({level}) has {health} health\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-broken-1a861b",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = Ben\nlevel = 12\nhealth = 80.25\nprint(f\"Player {name}({level}) has {health} health\")",
+      "output": "Player Ben(12) has 80.25 health",
+      "options": [
+        "name = Ben",
+        "level = 12",
+        "health = 80.25",
+        "print(f\"Player {name}({level}) has {health} health\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-8e4a08",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Shadow\"\nlevel = 42\n___\nprint(f\"{name} is level {level} in {guild}\")",
+      "output": "Shadow is level 42 in CyberStars",
+      "options": [
+        "guild = \"CyberStars\"",
+        "guild = CyberStars",
+        "guild = \"guild\"",
+        "\"CyberStars\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-a47dd8",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Ana\"\nlevel = 7\n___\nprint(f\"{name} is level {level} in {guild}\")",
+      "output": "Ana is level 7 in Rockets",
+      "options": ["guild = \"Rockets\"", "guild = Rockets", "guild = \"guild\"", "\"Rockets\""],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-65c4f2",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Ben\"\nlevel = 12\n___\nprint(f\"{name} is level {level} in {guild}\")",
+      "output": "Ben is level 12 in Pirates",
+      "options": ["guild = \"Pirates\"", "guild = Pirates", "guild = \"guild\"", "\"Pirates\""],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-325928",
+      "text": "What does this print?",
+      "code": "a = 1\na = a + 2\n# a = a + 3\nprint(a)",
+      "options": ["3", "6", "1", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-cc722f",
+      "text": "What does this print?",
+      "code": "a = 5\na = a + 10\n# a = a + 100\nprint(a)",
+      "options": ["15", "115", "5", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-a7ede8",
+      "text": "What does this print?",
+      "code": "a = 2\na = a + 3\n# a = a + 4\nprint(a)",
+      "options": ["5", "9", "2", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-which-27149b",
+      "text": "Which program shows this?",
+      "output": "Ship ready\nLaunch",
+      "options": [
+        "print(\"Ship ready\")\n# print(\"Wind: 40 km/h\")\nprint(\"Launch\")",
+        "print(\"Ship ready\")\nprint(\"Wind: 40 km/h\")\nprint(\"Launch\")",
+        "print(\"Ship ready\")\n# print(\"Wind: 40 km/h\")\n# print(\"Launch\")",
+        "# print(\"Ship ready\")\n# print(\"Wind: 40 km/h\")\nprint(\"Launch\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "comment-which-05c263",
+      "text": "Which program shows this?",
+      "output": "Good night\nSee you",
+      "options": [
+        "print(\"Good night\")\n# print(\"Secret\")\nprint(\"See you\")",
+        "print(\"Good night\")\nprint(\"Secret\")\nprint(\"See you\")",
+        "print(\"Good night\")\n# print(\"Secret\")\n# print(\"See you\")",
+        "# print(\"Good night\")\n# print(\"Secret\")\nprint(\"See you\")"
+      ],
+      "answer": 0
     }
   ]
 }

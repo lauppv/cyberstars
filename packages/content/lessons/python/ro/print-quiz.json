@@ -753,6 +753,106 @@
         ["{nava}", "nava"],
         ["{pilot}", "{nava}"]
       ]
+    },
+    {
+      "id": "card-broken",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "nume = \"{{name}}\"\nnivel = {{level}}\nviata = {{health}}\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
+      "values": [
+        {
+          "name": "Shadow",
+          "level": 42,
+          "health": 97.5
+        },
+        {
+          "name": "Ana",
+          "level": 7,
+          "health": 50.5
+        },
+        {
+          "name": "Ben",
+          "level": 12,
+          "health": 80.25
+        }
+      ],
+      "bug": ["nume = \"{{name}}\"", "nume = {{name}}"]
+    },
+    {
+      "id": "card-gap",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"{{name}}\"\nnivel = {{level}}\n___\nprint(f\"{nume} are nivelul {nivel} in {breasla}\")",
+      "values": [
+        {
+          "name": "Shadow",
+          "level": 42,
+          "guild": "CyberStars"
+        },
+        {
+          "name": "Ana",
+          "level": 7,
+          "guild": "Rachetele"
+        },
+        {
+          "name": "Ben",
+          "level": 12,
+          "guild": "Piratii"
+        }
+      ],
+      "answer": "breasla = \"{{guild}}\"",
+      "wrong": ["breasla = {{guild}}", "breasla = \"breasla\"", "\"{{guild}}\""]
+    },
+    {
+      "id": "comment-skip",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "a = {{a}}\na = a + {{b}}\n# a = a + {{c}}\nprint(a)",
+      "values": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        },
+        {
+          "a": 5,
+          "b": 10,
+          "c": 100
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "c": 4
+        }
+      ],
+      "mistakes": [
+        ["# a = a + {{c}}", "a = a + {{c}}"],
+        ["a = a + {{b}}", "a = a"],
+        ["print(a)", "print(\"a\")"]
+      ]
+    },
+    {
+      "id": "comment-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "print(\"{{a}}\")\n# print(\"{{b}}\")\nprint(\"{{c}}\")",
+      "values": [
+        {
+          "a": "Nava e gata",
+          "b": "Vant: 40 km/h",
+          "c": "Lansare"
+        },
+        {
+          "a": "Noapte buna",
+          "b": "Secret",
+          "c": "Ne vedem"
+        }
+      ],
+      "mistakes": [
+        ["# print(\"{{b}}\")", "print(\"{{b}}\")"],
+        ["print(\"{{c}}\")", "# print(\"{{c}}\")"],
+        ["print(\"{{a}}\")\n", "# print(\"{{a}}\")\n"]
+      ]
     }
   ]
 }

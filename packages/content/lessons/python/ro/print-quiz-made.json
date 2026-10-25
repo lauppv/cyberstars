@@ -560,6 +560,129 @@
         "pilot = \"Jess\"\nnava = \"Nova\"\nprint(f\"Pilotul {nava} piloteaza {nava}\")"
       ],
       "answer": 0
+    },
+    {
+      "id": "card-broken-83a86f",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "nume = Shadow\nnivel = 42\nviata = 97.5\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
+      "output": "Jucatorul Shadow(42) are viata 97.5",
+      "options": [
+        "nume = Shadow",
+        "nivel = 42",
+        "viata = 97.5",
+        "print(f\"Jucatorul {nume}({nivel}) are viata {viata}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-broken-7f510c",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "nume = Ana\nnivel = 7\nviata = 50.5\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
+      "output": "Jucatorul Ana(7) are viata 50.5",
+      "options": [
+        "nume = Ana",
+        "nivel = 7",
+        "viata = 50.5",
+        "print(f\"Jucatorul {nume}({nivel}) are viata {viata}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-broken-1a861b",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "nume = Ben\nnivel = 12\nviata = 80.25\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
+      "output": "Jucatorul Ben(12) are viata 80.25",
+      "options": [
+        "nume = Ben",
+        "nivel = 12",
+        "viata = 80.25",
+        "print(f\"Jucatorul {nume}({nivel}) are viata {viata}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-8e4a08",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Shadow\"\nnivel = 42\n___\nprint(f\"{nume} are nivelul {nivel} in {breasla}\")",
+      "output": "Shadow are nivelul 42 in CyberStars",
+      "options": [
+        "breasla = \"CyberStars\"",
+        "breasla = CyberStars",
+        "breasla = \"breasla\"",
+        "\"CyberStars\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-a47dd8",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Ana\"\nnivel = 7\n___\nprint(f\"{nume} are nivelul {nivel} in {breasla}\")",
+      "output": "Ana are nivelul 7 in Rachetele",
+      "options": [
+        "breasla = \"Rachetele\"",
+        "breasla = Rachetele",
+        "breasla = \"breasla\"",
+        "\"Rachetele\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-65c4f2",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Ben\"\nnivel = 12\n___\nprint(f\"{nume} are nivelul {nivel} in {breasla}\")",
+      "output": "Ben are nivelul 12 in Piratii",
+      "options": [
+        "breasla = \"Piratii\"",
+        "breasla = Piratii",
+        "breasla = \"breasla\"",
+        "\"Piratii\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-325928",
+      "text": "Ce afișează?",
+      "code": "a = 1\na = a + 2\n# a = a + 3\nprint(a)",
+      "options": ["3", "6", "1", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-cc722f",
+      "text": "Ce afișează?",
+      "code": "a = 5\na = a + 10\n# a = a + 100\nprint(a)",
+      "options": ["15", "115", "5", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-a7ede8",
+      "text": "Ce afișează?",
+      "code": "a = 2\na = a + 3\n# a = a + 4\nprint(a)",
+      "options": ["5", "9", "2", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-which-27149b",
+      "text": "Care program afișează asta?",
+      "output": "Nava e gata\nLansare",
+      "options": [
+        "print(\"Nava e gata\")\n# print(\"Vant: 40 km/h\")\nprint(\"Lansare\")",
+        "print(\"Nava e gata\")\nprint(\"Vant: 40 km/h\")\nprint(\"Lansare\")",
+        "print(\"Nava e gata\")\n# print(\"Vant: 40 km/h\")\n# print(\"Lansare\")",
+        "# print(\"Nava e gata\")\n# print(\"Vant: 40 km/h\")\nprint(\"Lansare\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "comment-which-05c263",
+      "text": "Care program afișează asta?",
+      "output": "Noapte buna\nNe vedem",
+      "options": [
+        "print(\"Noapte buna\")\n# print(\"Secret\")\nprint(\"Ne vedem\")",
+        "print(\"Noapte buna\")\nprint(\"Secret\")\nprint(\"Ne vedem\")",
+        "print(\"Noapte buna\")\n# print(\"Secret\")\n# print(\"Ne vedem\")",
+        "# print(\"Noapte buna\")\n# print(\"Secret\")\nprint(\"Ne vedem\")"
+      ],
+      "answer": 0
     }
   ]
 }
