@@ -86,13 +86,20 @@ export function AppShell({ children }: { children: ReactNode }) {
     if (!isWide()) setToggled(false);
   }
 
+  // The page under an open drawer holds still (the stylesheet does that only
+  // where it is a drawer, so turning the phone keeps it right), and Escape closes it
   useEffect(() => {
     if (state !== 'open') return;
+    const root = document.documentElement;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && !isWide()) setToggled(false);
     };
+    root.dataset.drawer = 'open';
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    return () => {
+      delete root.dataset.drawer;
+      document.removeEventListener('keydown', onKey);
+    };
   }, [state]);
 
   // Home is the welcome page for a visitor and the dashboard for a student, so
