@@ -1,0 +1,275 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does Bubble Sort compare?",
+      "options": [
+        "Neighbouring elements, two at a time",
+        "The first element with the last",
+        "Each element with the biggest one",
+        "Random pairs of elements"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "When do two neighbours swap, to sort from smallest to largest?",
+      "options": [
+        "When the right one is bigger",
+        "When the left one is bigger",
+        "When they are equal",
+        "Always"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "After the first pass, where is the biggest number?",
+      "options": ["At the start", "In the middle", "At the end", "Where it was"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Why is it called Bubble Sort?",
+      "options": [
+        "It was invented by someone called Bubble",
+        "It draws bubbles on the screen",
+        "It sorts only round numbers",
+        "Each pass, the biggest number left bubbles up to the end"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "What does `a, b = b, a` do?",
+      "options": [
+        "It swaps the values of a and b",
+        "It copies a into b",
+        "It adds a and b",
+        "It stops with an error"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Which line swaps numbers[j] and numbers[j + 1]?",
+      "options": [
+        "numbers[j] = numbers[j + 1]",
+        "numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]",
+        "numbers[j + 1] = numbers[j]",
+        "numbers[j] == numbers[j + 1]"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Why does j go only up to len(numbers) - 1?",
+      "options": [
+        "To skip the first element",
+        "To make it faster",
+        "Because j is compared with j + 1, which must not go past the end",
+        "Python asks for it in every loop"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What does the outer loop (i) count?",
+      "options": ["Which pair is compared", "The swaps", "The prints", "The passes over the list"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What does the inner loop (j) do?",
+      "options": [
+        "It walks the list and compares each pair of neighbours",
+        "It counts the passes",
+        "It prints the list",
+        "It sorts the list by itself in one go"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "At most how many passes does a list of n elements need?",
+      "options": ["1", "n", "2", "n × n"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Roughly how many comparisons does Bubble Sort make for n elements?",
+      "options": ["About n", "About n / 2", "About n × n", "Always 10"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "About how many comparisons for 10 elements?",
+      "options": ["10", "20", "1,000", "100"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Is Bubble Sort a good choice for a million numbers?",
+      "options": [
+        "No: about a million million comparisons, very slow",
+        "Yes, it is the fastest sort",
+        "Yes, the more numbers the faster",
+        "It can't sort more than 100 numbers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "What do we use to sort in real code?",
+      "options": ["Bubble Sort, always", "sorted()", "len()", "print()"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Why learn Bubble Sort then?",
+      "options": [
+        "Because it is faster than sorted()",
+        "Because Python needs it to run",
+        "It teaches comparisons and swaps, which many algorithms build on",
+        "It is the only sort that works"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "In [5, 3, 8, 1, 2], what is the list after the first comparison?",
+      "options": ["[5, 3, 8, 1, 2]", "[1, 3, 8, 5, 2]", "[3, 5, 1, 8, 2]", "[3, 5, 8, 1, 2]"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "In [3, 5, 8, 1, 2], 5 and 8 are compared. What happens?",
+      "options": ["They stay: 5 is smaller", "They swap", "8 jumps to the start", "The sort stops"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "What is [5, 3, 8, 1, 2] after the first pass?",
+      "options": ["[1, 2, 3, 5, 8]", "[3, 5, 1, 2, 8]", "[3, 5, 8, 1, 2]", "[8, 5, 3, 2, 1]"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "What does ascending order mean?",
+      "options": [
+        "From largest to smallest",
+        "Only in alphabetical order",
+        "From smallest to largest",
+        "In random order"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "How do you make Bubble Sort sort from largest to smallest?",
+      "options": [
+        "Drop the inner loop",
+        "Swap when the left one is bigger, as before",
+        "Use sorted() inside the loop",
+        "Swap when the left one is smaller: use <"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What does Bubble Sort change in a list that is already sorted?",
+      "options": [
+        "Nothing: no pair needs to swap",
+        "It reverses it",
+        "It swaps every pair",
+        "It stops with an error"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "In the mission, what must bubble_sort(numbers) do at the end?",
+      "options": [
+        "Print the list",
+        "Return the sorted list",
+        "Return its first element",
+        "Return how many elements it has"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "How many pairs of neighbours does a list of 5 elements have?",
+      "options": ["5", "10", "4", "25"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "After the second pass, which numbers are surely in place?",
+      "options": [
+        "The smallest two",
+        "None yet",
+        "Only the middle one",
+        "The biggest two, at the end"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "What happens if j reaches the last index and the code reads numbers[j + 1]?",
+      "options": [
+        "It stops with an IndexError",
+        "It reads the first element",
+        "It reads 0",
+        "Nothing, the line is skipped"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What would a swap need in many other languages?",
+      "options": [
+        "Two loops",
+        "A temporary variable to hold one value",
+        "The sorted() function",
+        "Nothing more than in Python"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Does the lesson's Bubble Sort change the list or make a new one?",
+      "options": [
+        "It makes a new list and leaves the old one",
+        "It deletes the list",
+        "It changes the same list, swapping inside it",
+        "It makes a copy for each pass"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "How many swaps does Bubble Sort make to sort [2, 1]?",
+      "options": ["0", "2", "4", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "How many swaps does Bubble Sort make to sort [3, 2, 1]?",
+      "options": ["3", "1", "2", "6"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Two equal neighbours are compared with >. Do they swap?",
+      "options": [
+        "Yes, always",
+        "No, only a bigger left one swaps",
+        "Only on the last pass",
+        "It stops with an error"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": []
+}
