@@ -560,25 +560,25 @@
     {
       "id": "wh-bad-step-22f3ae",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 2\nprint(total)",
-      "output": "10",
-      "options": ["i = i + 2", "total = total + i", "i = 1", "print(total)"],
+      "code": "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    print(i)\n    i = i + 2\nprint(total)",
+      "output": "1\n2\n3\n4\n10",
+      "options": ["i = i + 2", "print(i)", "total = total + i", "print(total)"],
       "answer": 0
     },
     {
       "id": "wh-bad-step-6b3e0a",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "puncte = 0\ni = 1\nwhile i <= 5:\n    puncte = puncte + i\n    i = i + 2\nprint(puncte)",
-      "output": "15",
-      "options": ["i = i + 2", "puncte = puncte + i", "i = 1", "print(puncte)"],
+      "code": "puncte = 0\ni = 1\nwhile i <= 5:\n    puncte = puncte + i\n    print(i)\n    i = i + 2\nprint(puncte)",
+      "output": "1\n2\n3\n4\n5\n15",
+      "options": ["i = i + 2", "print(i)", "puncte = puncte + i", "print(puncte)"],
       "answer": 0
     },
     {
       "id": "wh-bad-step-0da281",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "energie = 0\ni = 1\nwhile i <= 6:\n    energie = energie + i\n    i = i + 2\nprint(energie)",
-      "output": "21",
-      "options": ["i = i + 2", "energie = energie + i", "i = 1", "energie = 0"],
+      "code": "energie = 0\ni = 1\nwhile i <= 6:\n    energie = energie + i\n    print(i)\n    i = i + 2\nprint(energie)",
+      "output": "1\n2\n3\n4\n5\n6\n21",
+      "options": ["i = i + 2", "print(i)", "energie = energie + i", "i = 1"],
       "answer": 0
     }
   ]
