@@ -35,6 +35,11 @@ vi.mock('../../context/CurriculumContext', () => ({
         title: 'Python',
         lessons: [
           { slug: 'print', title: 'Print' },
+          { slug: 'variables-str', title: 'Variables (Strings)' },
+          { slug: 'variables-int', title: 'Variables (Integers)' },
+          { slug: 'print-f', title: 'Print F-strings' },
+          { slug: 'recap-variables', title: 'Recap: Player Card' },
+          { slug: 'comment', title: 'Comments' },
           { slug: 'lists', title: 'Lists' },
           { slug: 'for', title: 'For Loops' },
         ],
@@ -167,7 +172,7 @@ describe('LaniakeaPage', () => {
     key('KeyB');
     expect(screen.queryByRole('region', { name: 'Board' })).toBeNull();
     key('KeyB');
-    fireEvent.click(screen.getByRole('button', { name: /^Print/ }));
+    fireEvent.click(screen.getByRole('button', { name: /^First steps · Lessons 1–6/ }));
     expect(h.engine.setTarget).toHaveBeenLastCalledWith('print');
     act(() => h.events!.onPose({ position: [0, 0, 0], quaternion: [0, 0, 0, 1] }, 0));
     expect(screen.getByText('Target')).toBeInTheDocument();
@@ -181,7 +186,7 @@ describe('LaniakeaPage', () => {
     expect(h.startQuiz).not.toHaveBeenCalled();
     act(() => h.events!.onAim({ slug: 'print', distance: 300, inReach: true }));
     key('KeyE');
-    expect(await screen.findByRole('dialog', { name: 'Print' })).toBeInTheDocument();
+    expect(await screen.findByRole('dialog', { name: 'First steps' })).toBeInTheDocument();
     expect(h.startQuiz).toHaveBeenCalledWith('print', 'en');
     expect(h.engine.setActive).toHaveBeenLastCalledWith(false);
   });
@@ -288,7 +293,7 @@ describe('LaniakeaPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /^Board/ }));
     const innerWidth = window.innerWidth;
     window.innerWidth = 400;
-    fireEvent.click(screen.getByRole('button', { name: /^Print/ }));
+    fireEvent.click(screen.getByRole('button', { name: /^First steps/ }));
     window.innerWidth = innerWidth;
     expect(screen.queryByRole('region', { name: 'Board' })).toBeNull();
     expect(h.engine.setTarget).toHaveBeenLastCalledWith('print');

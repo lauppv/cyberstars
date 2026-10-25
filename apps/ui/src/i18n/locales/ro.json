@@ -1060,12 +1060,18 @@
       "recapTitle": "Recapitulare trecută",
       "recapBody": "Planeta urcă la treapta {{level}} din {{total}}. Următoarea recapitulare se deschide în {{wait}}.",
       "foreverTitle": "A ta pentru totdeauna",
-      "foreverBody": "Ai trecut toate recapitulările, așa că {{planet}} e a ta pentru totdeauna. Realizare deblocată: păzitorul planetei {{planet}}.",
+      "foreverBody": "Ai trecut toate recapitulările, așa că planeta {{planet}} e a ta pentru totdeauna. Realizare deblocată: păzitorul planetei {{planet}}.",
       "practiceTitle": "Exercițiu încheiat",
       "practiceBody": "Bravo. Exercițiul nu mută planeta: următoarea recapitulare se deschide în {{wait}}.",
       "practiceForeverBody": "Bravo. Planeta e deja a ta pentru totdeauna."
     },
-    "achievement": "Realizare: {{planet}} e a ta pentru totdeauna",
+    "achievement": "Realizare: planeta {{planet}} e a ta pentru totdeauna",
+    "firstSteps": {
+      "name": "Primii pași",
+      "covers_one": "Lecția 1",
+      "covers_few": "Lecțiile 1–{{count}}",
+      "covers_other": "Lecțiile 1–{{count}}"
+    },
     "betaHint": "Încă în lucru: urmează întrebări pentru fiecare lecție și mai multe cursuri"
   },
   "code": {

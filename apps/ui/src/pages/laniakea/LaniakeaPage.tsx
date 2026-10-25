@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { Award, ChevronDown, ChevronUp, LogOut, Pause, PanelRight } from 'lucide-react';
 import {
   FOREVER_LEVEL,
+  planetLessons,
   type LaniakeaState,
   type QuizAnswerResult,
 } from '@cyberstars/shared/laniakea';
@@ -94,10 +95,20 @@ export function LaniakeaPage() {
   const throttleUp = useRef<HTMLButtonElement>(null);
   const throttleDown = useRef<HTMLButtonElement>(null);
 
-  const titles = useMemo(() => {
+  // Each planet's name, its lesson's title but for First steps, which also says
+  // the lessons it covers
+  const { titles, covers } = useMemo(() => {
     const course = courses.find((c) => c.key === state?.courseKey);
-    return new Map((course?.lessons ?? []).map((l) => [l.slug, l.title]));
-  }, [courses, state?.courseKey]);
+    const lessons = course?.lessons ?? [];
+    const names = new Map(lessons.map((l) => [l.slug, l.title]));
+    const spans = new Map<string, string>();
+    for (const p of planetLessons(lessons.map((l) => l.slug))) {
+      if (p.lessons.length < 2) continue;
+      names.set(p.slug, t('laniakea.firstSteps.name'));
+      spans.set(p.slug, t('laniakea.firstSteps.covers', { count: p.lessons.length }));
+    }
+    return { titles: names, covers: spans };
+  }, [courses, state?.courseKey, t]);
 
   const slugKey = state?.planets.map((p) => p.slug).join(',') ?? '';
   const spots = useMemo(
@@ -284,6 +295,7 @@ export function LaniakeaPage() {
         aim={feeds.aim}
         planets={planets}
         titles={titles}
+        covers={covers}
         now={now}
         isTouch={isTouch}
         onLand={land}
@@ -299,6 +311,7 @@ export function LaniakeaPage() {
         <ShipBoard
           planets={state.planets}
           titles={titles}
+          covers={covers}
           now={now}
           target={target}
           onTarget={(slug) => {

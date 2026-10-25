@@ -1024,6 +1024,11 @@
       "practiceForeverBody": "Well done. This planet is already yours for good."
     },
     "achievement": "Achievement: {{planet}} is yours for good",
+    "firstSteps": {
+      "name": "First steps",
+      "covers_one": "Lesson 1",
+      "covers_other": "Lessons 1–{{count}}"
+    },
     "betaHint": "Still being built: questions for every lesson and more courses are on the way"
   },
   "code": {
