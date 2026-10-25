@@ -1,0 +1,710 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recursion-intro-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "ri-countdown-9a2b7a",
+      "text": "Ce afișează?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(7)",
+      "options": [
+        "7\n6\n5\n4\n3\n2\n1\nStart!",
+        "Start!\n1\n2\n3\n4\n5\n6\n7",
+        "7\n6\n5\n4\n3\n2\nStart!",
+        "6\n5\n4\n3\n2\n1\n0\nStart!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-countdown-1951a8",
+      "text": "Ce afișează?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(4)",
+      "options": [
+        "4\n3\n2\n1\nStart!",
+        "Start!\n1\n2\n3\n4",
+        "4\n3\n2\nStart!",
+        "3\n2\n1\n0\nStart!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-countdown-e3797b",
+      "text": "Ce afișează?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(2)",
+      "options": ["2\n1\nStart!", "Start!\n1\n2", "2\nStart!", "1\n0\nStart!"],
+      "answer": 0
+    },
+    {
+      "id": "ri-countdown-f63f4d",
+      "text": "Ce afișează?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(5)",
+      "options": [
+        "5\n4\n3\n2\n1\nStart!",
+        "Start!\n1\n2\n3\n4\n5",
+        "5\n4\n3\n2\nStart!",
+        "4\n3\n2\n1\n0\nStart!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-countdown-7dc437",
+      "text": "Ce afișează?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(6)",
+      "options": [
+        "6\n5\n4\n3\n2\n1\nStart!",
+        "Start!\n1\n2\n3\n4\n5\n6",
+        "6\n5\n4\n3\n2\nStart!",
+        "5\n4\n3\n2\n1\n0\nStart!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-factorial-67f157",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(3))",
+      "options": ["6", "3", "0", "2"],
+      "answer": 0
+    },
+    {
+      "id": "ri-factorial-799f78",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(8))",
+      "options": ["40320", "36", "20160", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-factorial-f63f4d",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))",
+      "options": ["120", "15", "60", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-factorial-7dc437",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(6))",
+      "options": ["720", "21", "360", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-factorial-9a2b7a",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(7))",
+      "options": ["5040", "28", "2520", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-sum-list-a78a94",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([1, 2, 3, 4, 5]))",
+      "options": ["15", "16", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-sum-list-3c3a21",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([4, 7, 9]))",
+      "options": ["20", "21", "4", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-sum-list-766f8d",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([10, 20, 30, 40]))",
+      "options": ["100", "101", "10", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-sum-list-8da3ba",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([6, 1, 8]))",
+      "options": ["15", "16", "6", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-sum-list-9b7323",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([5, 15, 2, 3]))",
+      "options": ["25", "26", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-power-47cd42",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nbaza = 2\nfor exponent in range(5):\n    print(f\"{baza}^{exponent} = {putere(baza, exponent)}\")",
+      "options": [
+        "2^0 = 1\n2^1 = 2\n2^2 = 4\n2^3 = 8\n2^4 = 16",
+        "2^0 = 2\n2^1 = 4\n2^2 = 8\n2^3 = 16\n2^4 = 32",
+        "2^0 = 1\n2^1 = 2\n2^2 = 4\n2^3 = 6\n2^4 = 8",
+        "2^1 = 2\n2^2 = 4\n2^3 = 8\n2^4 = 16"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-power-17c019",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nbaza = 3\nfor exponent in range(4):\n    print(f\"{baza}^{exponent} = {putere(baza, exponent)}\")",
+      "options": [
+        "3^0 = 1\n3^1 = 3\n3^2 = 9\n3^3 = 27",
+        "3^0 = 3\n3^1 = 9\n3^2 = 27\n3^3 = 81",
+        "3^0 = 1\n3^1 = 3\n3^2 = 6\n3^3 = 9",
+        "3^1 = 3\n3^2 = 9\n3^3 = 27"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-power-4bd492",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nbaza = 10\nfor exponent in range(3):\n    print(f\"{baza}^{exponent} = {putere(baza, exponent)}\")",
+      "options": [
+        "10^0 = 1\n10^1 = 10\n10^2 = 100",
+        "10^0 = 10\n10^1 = 100\n10^2 = 1000",
+        "10^0 = 1\n10^1 = 10\n10^2 = 20",
+        "10^1 = 10\n10^2 = 100"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-power-7bccf7",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nbaza = 5\nfor exponent in range(3):\n    print(f\"{baza}^{exponent} = {putere(baza, exponent)}\")",
+      "options": [
+        "5^0 = 1\n5^1 = 5\n5^2 = 25",
+        "5^0 = 5\n5^1 = 25\n5^2 = 125",
+        "5^0 = 1\n5^1 = 5\n5^2 = 10",
+        "5^1 = 5\n5^2 = 25"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-power-163102",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nbaza = 4\nfor exponent in range(4):\n    print(f\"{baza}^{exponent} = {putere(baza, exponent)}\")",
+      "options": [
+        "4^0 = 1\n4^1 = 4\n4^2 = 16\n4^3 = 64",
+        "4^0 = 4\n4^1 = 16\n4^2 = 64\n4^3 = 256",
+        "4^0 = 1\n4^1 = 4\n4^2 = 8\n4^3 = 12",
+        "4^1 = 4\n4^2 = 16\n4^3 = 64"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-unwind-05672d",
+      "text": "Ce afișează?",
+      "code": "def arata(n):\n    if n == 0:\n        print(\"caz de baza\")\n        return\n    print(\"intra\", n)\n    arata(n - 1)\n    print(\"iese\", n)\n\narata(1)",
+      "options": [
+        "intra 1\ncaz de baza\niese 1",
+        "intra 1\ncaz de baza",
+        "caz de baza\nintra 1\niese 1",
+        "caz de baza"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-unwind-e3797b",
+      "text": "Ce afișează?",
+      "code": "def arata(n):\n    if n == 0:\n        print(\"caz de baza\")\n        return\n    print(\"intra\", n)\n    arata(n - 1)\n    print(\"iese\", n)\n\narata(2)",
+      "options": [
+        "intra 2\nintra 1\ncaz de baza\niese 1\niese 2",
+        "intra 2\nintra 1\ncaz de baza",
+        "caz de baza\nintra 1\niese 1\nintra 2\niese 2",
+        "intra 2\ncaz de baza\niese 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-unwind-67f157",
+      "text": "Ce afișează?",
+      "code": "def arata(n):\n    if n == 0:\n        print(\"caz de baza\")\n        return\n    print(\"intra\", n)\n    arata(n - 1)\n    print(\"iese\", n)\n\narata(3)",
+      "options": [
+        "intra 3\nintra 2\nintra 1\ncaz de baza\niese 1\niese 2\niese 3",
+        "intra 3\nintra 2\nintra 1\ncaz de baza",
+        "caz de baza\nintra 1\niese 1\nintra 2\niese 2\nintra 3\niese 3",
+        "intra 3\nintra 2\ncaz de baza\niese 2\niese 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-unwind-1951a8",
+      "text": "Ce afișează?",
+      "code": "def arata(n):\n    if n == 0:\n        print(\"caz de baza\")\n        return\n    print(\"intra\", n)\n    arata(n - 1)\n    print(\"iese\", n)\n\narata(4)",
+      "options": [
+        "intra 4\nintra 3\nintra 2\nintra 1\ncaz de baza\niese 1\niese 2\niese 3\niese 4",
+        "intra 4\nintra 3\nintra 2\nintra 1\ncaz de baza",
+        "caz de baza\nintra 1\niese 1\nintra 2\niese 2\nintra 3\niese 3\nintra 4\niese 4",
+        "intra 4\nintra 3\nintra 2\ncaz de baza\niese 2\niese 3\niese 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-add-up-f63f4d",
+      "text": "Ce afișează?",
+      "code": "def aduna(n):\n    if n == 0:\n        return 0\n    return n + aduna(n - 1)\n\nprint(aduna(5))",
+      "options": ["15", "16", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-add-up-7dc437",
+      "text": "Ce afișează?",
+      "code": "def aduna(n):\n    if n == 0:\n        return 0\n    return n + aduna(n - 1)\n\nprint(aduna(6))",
+      "options": ["21", "22", "12", "6"],
+      "answer": 0
+    },
+    {
+      "id": "ri-add-up-f56b08",
+      "text": "Ce afișează?",
+      "code": "def aduna(n):\n    if n == 0:\n        return 0\n    return n + aduna(n - 1)\n\nprint(aduna(10))",
+      "options": ["55", "56", "30", "10"],
+      "answer": 0
+    },
+    {
+      "id": "ri-calls-e3797b",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(2))",
+      "options": [
+        "factorial(2)\nfactorial(1)\n2",
+        "factorial(2)\n1",
+        "factorial(2)\n2",
+        "factorial(2)\nfactorial(1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-calls-67f157",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(3))",
+      "options": [
+        "factorial(3)\nfactorial(2)\nfactorial(1)\n6",
+        "factorial(3)\nfactorial(2)\n3",
+        "factorial(3)\n6",
+        "factorial(3)\nfactorial(2)\nfactorial(1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-calls-1951a8",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(4))",
+      "options": [
+        "factorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)\n24",
+        "factorial(4)\nfactorial(3)\nfactorial(2)\n12",
+        "factorial(4)\n12",
+        "factorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-calls-f63f4d",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))",
+      "options": [
+        "factorial(5)\nfactorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)\n120",
+        "factorial(5)\nfactorial(4)\nfactorial(3)\nfactorial(2)\n60",
+        "factorial(5)\n20",
+        "factorial(5)\nfactorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-fact-f59250",
+      "text": "Care program afișează asta?",
+      "output": "1 1\n2 2\n3 6",
+      "options": [
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, 4):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 4):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 0\n    return n * factorial(n - 1)\n\nfor n in range(1, 4):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(2, 4):\n    print(n, factorial(n))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-fact-279bed",
+      "text": "Care program afișează asta?",
+      "output": "1 1\n2 2\n3 6\n4 24",
+      "options": [
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, 5):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 5):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 0\n    return n * factorial(n - 1)\n\nfor n in range(1, 5):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(2, 5):\n    print(n, factorial(n))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-fact-e2ada8",
+      "text": "Care program afișează asta?",
+      "output": "1 1\n2 2\n3 6\n4 24\n5 120",
+      "options": [
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, 6):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 6):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 0\n    return n * factorial(n - 1)\n\nfor n in range(1, 6):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(2, 6):\n    print(n, factorial(n))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-fact-259fba",
+      "text": "Care program afișează asta?",
+      "output": "1 1\n2 2",
+      "options": [
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, 3):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 3):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 0\n    return n * factorial(n - 1)\n\nfor n in range(1, 3):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(2, 3):\n    print(n, factorial(n))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-countdown-73b32f",
+      "text": "Care program afișează asta?",
+      "output": "2\n1\nStart!",
+      "options": [
+        "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(2)",
+        "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    numaratoare_inversa(n - 1)\n    print(n)\n\nnumaratoare_inversa(2)",
+        "def numaratoare_inversa(n):\n    if n == 1:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(2)",
+        "def numaratoare_inversa(n):\n    if n == 0:\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-countdown-98dfa9",
+      "text": "Care program afișează asta?",
+      "output": "3\n2\n1\nStart!",
+      "options": [
+        "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(3)",
+        "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    numaratoare_inversa(n - 1)\n    print(n)\n\nnumaratoare_inversa(3)",
+        "def numaratoare_inversa(n):\n    if n == 1:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(3)",
+        "def numaratoare_inversa(n):\n    if n == 0:\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(3)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-countdown-784049",
+      "text": "Care program afișează asta?",
+      "output": "4\n3\n2\n1\nStart!",
+      "options": [
+        "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(4)",
+        "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    numaratoare_inversa(n - 1)\n    print(n)\n\nnumaratoare_inversa(4)",
+        "def numaratoare_inversa(n):\n    if n == 1:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(4)",
+        "def numaratoare_inversa(n):\n    if n == 0:\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(4)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-countdown-f39da7",
+      "text": "Care program afișează asta?",
+      "output": "5\n4\n3\n2\n1\nStart!",
+      "options": [
+        "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(5)",
+        "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    numaratoare_inversa(n - 1)\n    print(n)\n\nnumaratoare_inversa(5)",
+        "def numaratoare_inversa(n):\n    if n == 1:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(5)",
+        "def numaratoare_inversa(n):\n    if n == 0:\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(5)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-countdown-824fa1",
+      "text": "Care program afișează asta?",
+      "output": "6\n5\n4\n3\n2\n1\nStart!",
+      "options": [
+        "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(6)",
+        "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    numaratoare_inversa(n - 1)\n    print(n)\n\nnumaratoare_inversa(6)",
+        "def numaratoare_inversa(n):\n    if n == 1:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(6)",
+        "def numaratoare_inversa(n):\n    if n == 0:\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(6)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-call-797296",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, 4):\n    print(factorial(n))",
+      "output": "1\n2\n6",
+      "options": [
+        "return n * factorial(n - 1)",
+        "return factorial(n - 1)",
+        "return n + factorial(n - 1)",
+        "return n * factorial(n)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-call-6a9989",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, 5):\n    print(factorial(n))",
+      "output": "1\n2\n6\n24",
+      "options": [
+        "return n * factorial(n - 1)",
+        "return factorial(n - 1)",
+        "return n * (n - 1)",
+        "return n + factorial(n - 1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-call-fcc9b9",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, 6):\n    print(factorial(n))",
+      "output": "1\n2\n6\n24\n120",
+      "options": [
+        "return n * factorial(n - 1)",
+        "return factorial(n - 1)",
+        "return n * (n - 1)",
+        "return n + factorial(n - 1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-call-e7a1cd",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, 7):\n    print(factorial(n))",
+      "output": "1\n2\n6\n24\n120\n720",
+      "options": [
+        "return n * factorial(n - 1)",
+        "return factorial(n - 1)",
+        "return n * (n - 1)",
+        "return n + factorial(n - 1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-call-94f80c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, 3):\n    print(factorial(n))",
+      "output": "1\n2",
+      "options": [
+        "return n * factorial(n - 1)",
+        "return factorial(n - 1)",
+        "return n + factorial(n - 1)",
+        "return n * factorial(n)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-base-2c4cf2",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        ___\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([1, 2, 3]))",
+      "output": "6",
+      "options": ["return 0", "return 1", "return numere[0]", "return numere"],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-base-96cc21",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        ___\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([4, 5]))",
+      "output": "9",
+      "options": ["return 0", "return 1", "return numere[0]", "return numere"],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-base-402797",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        ___\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([10, 20, 30, 40]))",
+      "output": "100",
+      "options": ["return 0", "return 1", "return numere[0]", "return numere"],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-base-0eafaa",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        ___\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([7, 8, 9]))",
+      "output": "24",
+      "options": ["return 0", "return 1", "return numere[0]", "return numere"],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-base-eaf6f6",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        ___\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([2, 4, 6, 8]))",
+      "output": "20",
+      "options": ["return 0", "return 1", "return numere[0]", "return numere"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-step-98be9b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - ___)\n\nnumaratoare_inversa(4)",
+      "output": "4\n3\n2\n1\nStart!",
+      "options": ["1", "2", "n", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-step-3f0339",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - ___)\n\nnumaratoare_inversa(6)",
+      "output": "6\n5\n4\n3\n2\n1\nStart!",
+      "options": ["1", "2", "n", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-step-a2251b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - ___)\n\nnumaratoare_inversa(8)",
+      "output": "8\n7\n6\n5\n4\n3\n2\n1\nStart!",
+      "options": ["1", "2", "n", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-step-768d7b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - ___)\n\nnumaratoare_inversa(2)",
+      "output": "2\n1\nStart!",
+      "options": ["1", "2", "n", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-step-3acba5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - ___)\n\nnumaratoare_inversa(10)",
+      "output": "10\n9\n8\n7\n6\n5\n4\n3\n2\n1\nStart!",
+      "options": ["1", "2", "n", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-base-bf9673",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return ___\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(2, 3))",
+      "output": "8",
+      "options": ["1", "0", "baza", "exponent"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-base-83c025",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return ___\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(3, 2))",
+      "output": "9",
+      "options": ["1", "0", "baza", "exponent"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-base-8738ac",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return ___\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(5, 2))",
+      "output": "25",
+      "options": ["1", "0", "baza", "exponent"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-base-70f5b6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return ___\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(2, 5))",
+      "output": "32",
+      "options": ["1", "0", "baza", "exponent"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-base-0d05a6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return ___\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(10, 2))",
+      "output": "100",
+      "options": ["1", "0", "baza", "exponent"],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-fact-b10aa6",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 4):\n    print(n, factorial(n))",
+      "output": "1 1\n2 2\n3 6",
+      "options": [
+        "return n + factorial(n - 1)",
+        "return 1",
+        "print(n, factorial(n))",
+        "for n in range(1, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-fact-8405e4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 5):\n    print(n, factorial(n))",
+      "output": "1 1\n2 2\n3 6\n4 24",
+      "options": ["return n + factorial(n - 1)", "return 1", "if n == 1:", "def factorial(n):"],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-fact-83e9d1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 6):\n    print(n, factorial(n))",
+      "output": "1 1\n2 2\n3 6\n4 24\n5 120",
+      "options": ["return n + factorial(n - 1)", "return 1", "if n == 1:", "def factorial(n):"],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-fact-8ebf87",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 7):\n    print(n, factorial(n))",
+      "output": "1 1\n2 2\n3 6\n4 24\n5 120\n6 720",
+      "options": ["return n + factorial(n - 1)", "return 1", "if n == 1:", "def factorial(n):"],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-fact-9b6222",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 3):\n    print(n, factorial(n))",
+      "output": "1 1\n2 2",
+      "options": ["return n + factorial(n - 1)", "return 1", "if n == 1:", "def factorial(n):"],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-sum-b8bb03",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 1\n    return numere[0] + suma_lista(numere[1:])\n\nfor numere in [[1, 2, 3], [5, 5]]:\n    print(numere, suma_lista(numere))",
+      "output": "[1, 2, 3] 6\n[5, 5] 10",
+      "options": [
+        "return 1",
+        "if len(numere) == 0:",
+        "def suma_lista(numere):",
+        "return numere[0] + suma_lista(numere[1:])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-sum-8c2d00",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 1\n    return numere[0] + suma_lista(numere[1:])\n\nfor numere in [[4, 6, 8], [2, 9]]:\n    print(numere, suma_lista(numere))",
+      "output": "[4, 6, 8] 18\n[2, 9] 11",
+      "options": [
+        "return 1",
+        "if len(numere) == 0:",
+        "return numere[0] + suma_lista(numere[1:])",
+        "print(numere, suma_lista(numere))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-sum-c7256d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 1\n    return numere[0] + suma_lista(numere[1:])\n\nfor numere in [[10, 20], [3, 1, 4]]:\n    print(numere, suma_lista(numere))",
+      "output": "[10, 20] 30\n[3, 1, 4] 8",
+      "options": [
+        "return 1",
+        "if len(numere) == 0:",
+        "def suma_lista(numere):",
+        "return numere[0] + suma_lista(numere[1:])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-sum-aa4ad8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 1\n    return numere[0] + suma_lista(numere[1:])\n\nfor numere in [[7, 7, 7], [1, 2]]:\n    print(numere, suma_lista(numere))",
+      "output": "[7, 7, 7] 21\n[1, 2] 3",
+      "options": [
+        "return 1",
+        "if len(numere) == 0:",
+        "return numere[0] + suma_lista(numere[1:])",
+        "print(numere, suma_lista(numere))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-sum-3ba8ba",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 1\n    return numere[0] + suma_lista(numere[1:])\n\nfor numere in [[6, 2], [5, 1, 9]]:\n    print(numere, suma_lista(numere))",
+      "output": "[6, 2] 8\n[5, 1, 9] 15",
+      "options": [
+        "return 1",
+        "if len(numere) == 0:",
+        "return numere[0] + suma_lista(numere[1:])",
+        "print(numere, suma_lista(numere))"
+      ],
+      "answer": 0
+    }
+  ]
+}

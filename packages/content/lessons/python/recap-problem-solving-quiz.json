@@ -1,0 +1,737 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does the mission's `clean_text` keep from a text?",
+      "options": [
+        "Only the letters, each made lowercase",
+        "Every character, made lowercase",
+        "Only the letters, as they were written",
+        "The letters and the digits, made lowercase"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\nprint(clean_text(\"Signal 5 OK!\"))",
+      "options": ["Signal 5 OK!", "SignalOK", "signalok", "signal ok"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Why does the mission call `clean_text` before `is_palindrome` on \"A man, a plan, a canal: Panama\"?",
+      "options": [
+        "`is_palindrome` only works on words of up to 10 letters",
+        "Spaces, commas and capitals would make the two ends differ",
+        "So the text gets shorter and the loop runs faster",
+        "Because `is_palindrome` can't read a colon and stops with an error"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "word = \"level\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        print(False)\n        break\n    left += 1\n    right -= 1\nprint(True)",
+      "options": ["l l\ne e\nv v\nTrue", "l l\nTrue", "True", "l l\ne e\nTrue"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "In the two pointers palindrome check, why is the loop `while left < right` and not `while left <= right`?",
+      "options": [
+        "When both point at the middle letter there is nothing left to compare it with",
+        "With `<=` the loop would never stop",
+        "With `<=` every word would come out a palindrome",
+        "`<=` can't compare two numbers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "print(sorted(\"Listen!\") == sorted(\"Silent\"))",
+      "options": [
+        "True",
+        "False",
+        "['!', 'L', 'e', 'i', 'n', 's', 't']",
+        "Nothing: it stops with an error"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    return \" \".join(words[::-1])\n\nprint(reverse_words(\"all systems are online\"))",
+      "options": [
+        "enilno era smetsys lla",
+        "all systems are online",
+        "online are systems all",
+        "lla smetsys era enilno"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "`reverse_words` must turn \"system is online\" into \"online is system\". Which version does it?",
+      "options": [
+        "return sentence[::-1]",
+        "return \" \".join(sentence[::-1])",
+        "return sentence.split(\" \")[::-1]",
+        "return \" \".join(sentence.split(\" \")[::-1])"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "print([char for char in \"R2D2\" if char.isalpha()])",
+      "options": ["['R', 'D']", "['2', '2']", "['r', 'd']", "RD"],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "The mission's `are_anagrams` gets \"Dormitory\" and \"Dirty room!\". What does it return?",
+      "options": [
+        "False: the second one has a space and a !",
+        "True: once cleaned, both have the same letters",
+        "False: one starts with a capital D, the other doesn't",
+        "It stops with an error, since the texts aren't the same length"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Why does sorting the letters tell whether two words are anagrams?",
+      "options": [
+        "Sorting puts the words in alphabetical order, and anagrams are next to each other",
+        "Sorting removes the letters that repeat",
+        "sorted() returns True when the words match",
+        "Two words with the same letters, in any order, give the same sorted list"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([1, 2, 4, 5, 7], 9))",
+      "options": ["(1, 8)", "None", "(2, 7)", "(4, 5)"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "What does the mission's `is_palindrome` return for an empty word, \"\"?",
+      "options": [
+        "True: `right` starts at -1, so the loop never runs",
+        "False: an empty word has no letters to match",
+        "It stops with an IndexError at `word[left]`",
+        "None, because nothing is returned"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "print(sorted(\"crab\"))",
+      "options": ["['c', 'r', 'a', 'b']", "abcr", "['r', 'c', 'b', 'a']", "['a', 'b', 'c', 'r']"],
+      "answer": 3
+    },
+    {
+      "id": "q15",
+      "text": "Which of these texts does the mission's toolkit call a palindrome, `is_palindrome(clean_text(text))`?",
+      "options": [
+        "\"Never even or odd\"",
+        "\"Never odd or even\"",
+        "\"Online system\"",
+        "\"Panama canal\""
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "words = \"scan the next sector\".split(\" \")\nprint(len(words))",
+      "options": ["1", "3", "4", "19"],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "words = \"navigation system is online\".split(\" \")\nprint([w.upper() for w in words if len(w) > 2])",
+      "options": [
+        "['NAVIGATION', 'SYSTEM', 'ONLINE']",
+        "['navigation', 'system', 'online']",
+        "['NAVIGATION', 'SYSTEM', 'IS', 'ONLINE']",
+        "['IS']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "print(\"is online\"[::-1])",
+      "options": ["online is", "is online", "si enilno", "enilno si"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "The mission asks for `is_palindrome` with two pointers. Which body is that?",
+      "options": [
+        "`return word == word[::-1]`",
+        "Start `left` at 0 and `right` at the end, compare, and move them towards each other",
+        "Sort the letters and compare them with the word",
+        "Count each letter in a dictionary"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nprint(is_palindrome(clean_text(\"No lemon, no melon\")))",
+      "options": ["True", "False", "nolemonnomelon", "No lemon, no melon"],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nprint(pair_with_sum([1, 2, 3, 4, 5, 6], 7))",
+      "options": ["[(1, 6)]", "[(1, 6), (2, 5), (3, 4), (4, 3)]", "[(1, 6), (2, 5), (3, 4)]", "3"],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "Why does the two pointers pair search need the list sorted?",
+      "options": [
+        "Because an unsorted list can't be indexed from the end",
+        "So the pairs come out in alphabetical order",
+        "It doesn't: two pointers work the same on any list",
+        "Only then does moving `left` right make the sum bigger and moving `right` left make it smaller"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "What happens when this runs?",
+      "code": "word = \"radar\"\nleft = 0\nright = len(word)\nwhile left < right:\n    if word[left] != word[right]:\n        print(False)\n        break\n    left += 1\n    right -= 1",
+      "options": [
+        "It prints True",
+        "It stops with an IndexError: `right` starts one past the last letter",
+        "It prints False",
+        "The loop never ends"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Why can `is_palindrome` return False at the first pair that differs, without checking the rest?",
+      "options": [
+        "One mismatched pair is enough to show the word doesn't read the same both ways",
+        "Because the rest of the pairs always match",
+        "Because `return` inside a loop only skips that turn",
+        "It can't: it has to check every pair first"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "readings = [45, 82, 96, 38, 91]\nprint([min(r + 5, 100) for r in readings if r >= 50])",
+      "options": ["[82, 95, 91]", "[87, 100, 101]", "[87, 100, 96]", "[50, 87, 100, 96]"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Which comprehension keeps the words longer than 3 letters and makes them lowercase?",
+      "options": [
+        "[w for w in words if len(w.lower()) > 3]",
+        "[w.lower() for w in words if len(w) >= 3]",
+        "[len(w) > 3 for w in words]",
+        "[w.lower() for w in words if len(w) > 3]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "for char in sorted(\"cab\"):\n    print(char)",
+      "options": ["c\nb\na", "a\nb\nc", "abc", "a b c"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "In `are_anagrams`, what would go wrong without `clean_text`, for \"Listen!\" and \"Silent\"?",
+      "options": [
+        "It would return False: the ! and the capital L don't match the other word's letters",
+        "Nothing: sorted() skips punctuation by itself",
+        "It would stop with an error on the !",
+        "It would return True for any two words"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "text = \"com\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+      "options": ["com", "c\no\nm", "moc", "mo"],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "codes = [\"radar\", \"orbit\", \"level\", \"sun\", \"noon\"]\nvalid = [c for c in codes if c == c[::-1]]\nprint(len(valid))",
+      "options": ["2", "5", "['radar', 'level', 'noon']", "3"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "rps-clean",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\nprint(clean_text(\"{{t}}\"))",
+      "values": [
+        {
+          "t": "S3ct0r 7 cl34r!"
+        },
+        {
+          "t": "Ab-C 12d"
+        },
+        {
+          "t": "Mars, Venus!"
+        },
+        {
+          "t": "R2-D2 Online"
+        },
+        {
+          "t": "Orbit 42 OK"
+        }
+      ],
+      "mistakes": [
+        ["result += char.lower()", "result += char"],
+        ["if char.isalpha():", "if not char.isalpha():"],
+        ["result += char.lower()", "result = char.lower()"],
+        [
+          "        if char.isalpha():\n            result += char.lower()",
+          "        result += char.lower()"
+        ]
+      ]
+    },
+    {
+      "id": "rps-pal-steps",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        print(word[left], word[right])\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nprint(is_palindrome(\"{{w}}\"))",
+      "values": [
+        {
+          "w": "radar"
+        },
+        {
+          "w": "stars"
+        },
+        {
+          "w": "rotor"
+        },
+        {
+          "w": "trust"
+        },
+        {
+          "w": "noon"
+        }
+      ],
+      "mistakes": [
+        ["            return False", "            print(False)"],
+        ["        right -= 1", "        right -= 2"],
+        ["right = len(word) - 1", "right = len(word) - 2"],
+        ["        left += 1\n", ""],
+        ["    return True", "    return False"]
+      ]
+    },
+    {
+      "id": "rps-anagram",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef are_anagrams(a, b):\n    return sorted(clean_text(a)) == sorted(clean_text(b))\n\nprint(are_anagrams(\"{{a}}\", \"{{b}}\"))\nprint(sorted(clean_text(\"{{a}}\")))",
+      "values": [
+        {
+          "a": "Listen!",
+          "b": "Silent"
+        },
+        {
+          "a": "Evil",
+          "b": "vile"
+        },
+        {
+          "a": "Note",
+          "b": "Tone!"
+        },
+        {
+          "a": "Act",
+          "b": "cat!"
+        },
+        {
+          "a": "Earth",
+          "b": "heart"
+        }
+      ],
+      "mistakes": [
+        ["sorted(clean_text(a)) == sorted(clean_text(b))", "sorted(a) == sorted(b)"],
+        ["clean_text(a)) == sorted", "clean_text(a)) != sorted"],
+        ["sorted(clean_text(a)) == sorted(clean_text(b))", "clean_text(a) == clean_text(b)"],
+        ["print(sorted(clean_text(\"{{a}}\")))", "print(clean_text(\"{{a}}\"))"],
+        ["print(sorted(clean_text(\"{{a}}\")))", "print(sorted(\"{{a}}\"))"]
+      ]
+    },
+    {
+      "id": "rps-reverse-words",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    return \" \".join(words[::-1])\n\nprint(reverse_words(\"{{s}}\"))",
+      "values": [
+        {
+          "s": "navigation system is online"
+        },
+        {
+          "s": "scan the next sector"
+        },
+        {
+          "s": "all crew on deck"
+        },
+        {
+          "s": "signal lost again"
+        },
+        {
+          "s": "engines are ready"
+        }
+      ],
+      "mistakes": [
+        ["words[::-1]", "words"],
+        ["\" \".join(words[::-1])", "\"\".join(words[::-1])"],
+        ["return \" \".join(words[::-1])", "return sentence[::-1]"],
+        ["\" \".join(words[::-1])", "words[::-1]"]
+      ]
+    },
+    {
+      "id": "rps-filter",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "readings = [{{r}}]\nboosted = [min(r + {{b}}, 100) for r in readings if r >= {{m}}]\nprint(boosted)\nprint(len(boosted))",
+      "values": [
+        {
+          "r": "45, 82, 96, 38, 91",
+          "b": 5,
+          "m": 50
+        },
+        {
+          "r": "70, 20, 99, 60",
+          "b": 10,
+          "m": 60
+        },
+        {
+          "r": "55, 49, 97, 30, 75",
+          "b": 5,
+          "m": 50
+        },
+        {
+          "r": "88, 92, 15, 40",
+          "b": 10,
+          "m": 40
+        },
+        {
+          "r": "65, 95, 35",
+          "b": 8,
+          "m": 65
+        }
+      ],
+      "mistakes": [
+        ["if r >= {{m}}", "if r > {{m}}"],
+        ["min(r + {{b}}, 100)", "r + {{b}}"],
+        ["if r >= {{m}}", "if r < {{m}}"],
+        ["min(r + {{b}}, 100)", "max(r + {{b}}, 100)"],
+        ["print(len(boosted))", "print(len(readings))"]
+      ]
+    },
+    {
+      "id": "rps-pairs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nresult = pair_with_sum([{{n}}], {{t}})\nprint(result)\nprint(len(result))",
+      "values": [
+        {
+          "n": "1, 2, 3, 4, 5, 6",
+          "t": 7
+        },
+        {
+          "n": "1, 3, 4, 6, 8",
+          "t": 9
+        },
+        {
+          "n": "2, 4, 5, 6, 7, 9",
+          "t": 11
+        },
+        {
+          "n": "1, 2, 5, 8, 10",
+          "t": 10
+        },
+        {
+          "n": "3, 4, 5, 6, 7",
+          "t": 10
+        }
+      ],
+      "mistakes": [
+        ["    while left < right:", "    while left <= right:"],
+        ["(numbers[left], numbers[right])", "numbers[left]"],
+        [
+          "            left += 1\n            right -= 1\n        elif",
+          "            left += 1\n            right -= 2\n        elif"
+        ],
+        ["print(len(result))", "print(len(result) * 2)"],
+        ["current_sum == target", "current_sum >= target"]
+      ]
+    },
+    {
+      "id": "rps-toolkit",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\ntext = \"{{t}}\"\nprint(clean_text(text))\nprint(is_palindrome(clean_text(text)))",
+      "values": [
+        {
+          "t": "Never odd or even"
+        },
+        {
+          "t": "Was it a car?"
+        },
+        {
+          "t": "Step on no pets!"
+        },
+        {
+          "t": "Top spot"
+        }
+      ],
+      "mistakes": [
+        ["print(is_palindrome(clean_text(text)))", "print(is_palindrome(text))"],
+        ["result += char.lower()", "result += char"],
+        ["print(clean_text(text))", "print(text)"],
+        ["if char.isalpha():", "if not char.isalpha():"]
+      ]
+    },
+    {
+      "id": "rps-which-clean",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "text = \"{{t}}\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char.lower()\nprint(result)",
+      "values": [
+        {
+          "t": "Code 7B!"
+        },
+        {
+          "t": "R2 D2"
+        },
+        {
+          "t": "Mars 3X"
+        },
+        {
+          "t": "Hi 5 Ok"
+        },
+        {
+          "t": "Zone 51A"
+        }
+      ],
+      "mistakes": [
+        ["result += char.lower()", "result += char"],
+        ["if char.isalpha():", "if not char.isalpha():"],
+        ["char.isalpha()", "char.islower()"],
+        ["result += char.lower()", "result += char.upper()"]
+      ]
+    },
+    {
+      "id": "rps-which-reverse",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "sentence = \"{{s}}\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+      "values": [
+        {
+          "s": "red alert now"
+        },
+        {
+          "s": "the hull is safe"
+        },
+        {
+          "s": "fuel low"
+        },
+        {
+          "s": "dock at gate two"
+        },
+        {
+          "s": "radio is quiet"
+        }
+      ],
+      "mistakes": [
+        ["print(\" \".join(words[::-1]))", "print(sentence[::-1])"],
+        ["print(\" \".join(words[::-1]))", "print(\" \".join(words))"],
+        ["print(\" \".join(words[::-1]))", "print(\"\".join(words[::-1]))"],
+        ["print(\" \".join(words[::-1]))", "print(words[::-1])"]
+      ]
+    },
+    {
+      "id": "rps-gap-move",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"{{w}}\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    ___",
+      "values": [
+        {
+          "w": "level"
+        },
+        {
+          "w": "stats"
+        },
+        {
+          "w": "refer"
+        },
+        {
+          "w": "deed"
+        },
+        {
+          "w": "civic"
+        }
+      ],
+      "answer": "right -= 1",
+      "wrong": ["left += 1", "right = 0", "right -= 2", "left = right"]
+    },
+    {
+      "id": "rps-gap-join",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    ___\n\nprint(reverse_words(\"{{s}}\"))",
+      "values": [
+        {
+          "s": "system is online"
+        },
+        {
+          "s": "engines are hot"
+        },
+        {
+          "s": "crew on deck"
+        },
+        {
+          "s": "signal lost"
+        }
+      ],
+      "answer": "return \" \".join(words[::-1])",
+      "wrong": [
+        "return \" \".join(words)",
+        "return sentence[::-1]",
+        "return \"\".join(words[::-1])",
+        "return words[::-1]"
+      ]
+    },
+    {
+      "id": "rps-val-right",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - ___\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nfor word in [{{ws}}]:\n    print(word, is_palindrome(word))",
+      "values": [
+        {
+          "ws": "\"radar\", \"orbit\""
+        },
+        {
+          "ws": "\"noon\", \"moon\""
+        },
+        {
+          "ws": "\"kayak\", \"comet\""
+        },
+        {
+          "ws": "\"pop\", \"sun\""
+        },
+        {
+          "ws": "\"wow\", \"star\""
+        }
+      ],
+      "answer": "1",
+      "wrong": ["0", "2", "len(word)"]
+    },
+    {
+      "id": "rps-val-method",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = \"{{t}}\"\nresult = \"\"\nfor char in text:\n    if char.___():\n        result += char\nprint(result)",
+      "values": [
+        {
+          "t": "R2D2 go",
+          "m": "isalpha",
+          "w1": "isdigit",
+          "w2": "isupper",
+          "w3": "islower"
+        },
+        {
+          "t": "Area 51b",
+          "m": "isdigit",
+          "w1": "isalpha",
+          "w2": "isupper",
+          "w3": "islower"
+        },
+        {
+          "t": "Mars7x",
+          "m": "islower",
+          "w1": "isalpha",
+          "w2": "isdigit",
+          "w3": "isupper"
+        },
+        {
+          "t": "abC9De",
+          "m": "isupper",
+          "w1": "isalpha",
+          "w2": "isdigit",
+          "w3": "islower"
+        }
+      ],
+      "answer": "{{m}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "rps-bad-clean",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\nfor text in [{{ts}}]:\n    print(text, clean_text(text))",
+      "values": [
+        {
+          "ts": "\"Ab1\", \"C-d\""
+        },
+        {
+          "ts": "\"Go 7\", \"Hi!\""
+        },
+        {
+          "ts": "\"R2D2\", \"Ok\""
+        },
+        {
+          "ts": "\"Zx 9\", \"Mm\""
+        }
+      ],
+      "bug": ["result += char.lower()", "result += char"]
+    },
+    {
+      "id": "rps-bad-pairs",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [{{n}}]\ntarget = {{t}}\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    print(numbers[left], numbers[right], current_sum)\n    if current_sum == target:\n        break\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1",
+      "values": [
+        {
+          "n": "1, 3, 5, 7",
+          "t": 10
+        },
+        {
+          "n": "2, 3, 5, 8",
+          "t": 8
+        },
+        {
+          "n": "1, 2, 4, 7, 11",
+          "t": 9
+        },
+        {
+          "n": "2, 4, 6, 9",
+          "t": 10
+        }
+      ],
+      "bug": ["        left += 1", "        left += 2"]
+    }
+  ]
+}

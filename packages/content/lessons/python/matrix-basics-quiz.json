@@ -1,0 +1,825 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "How does Python store a matrix?",
+      "options": [
+        "As one long list, read three at a time",
+        "As a dictionary from row numbers to values",
+        "As a list of lists, each inner list being a row",
+        "As a string with a line per row"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nprint(matrix[1][2])",
+      "options": ["6", "8", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "In `matrix[i][j]`, what does `i` choose?",
+      "options": ["The column", "The value", "How many rows there are", "The row"],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nprint(matrix[2][0])",
+      "options": ["3", "7", "1", "9"],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [4, 0, 7],\n    [1, 5, 2]\n]\nprint(len(matrix))\nprint(len(matrix[0]))",
+      "options": ["3\n2", "6\n3", "2\n3", "2\n2"],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2],\n    [3, 4]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+      "options": ["1 2\n3 4", "1 2 3 4", "1\n2\n3\n4", "[1, 2]\n[3, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "In the lesson's nested loops, what does the `print()` after the inner loop do?",
+      "options": [
+        "It prints the whole row again",
+        "It prints an empty matrix",
+        "It stops the outer loop",
+        "It starts a new line once a row is printed"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2],\n    [3, 4]\n]\ntotal = 0\nfor row in matrix:\n    for element in row:\n        total += element\nprint(total)",
+      "options": ["4", "10", "[1, 2, 3, 4]", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "grid = [\n    [3, 12, -3],\n    [9, 0, 7]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value > biggest:\n            biggest = value\nprint(biggest)",
+      "options": ["9", "7", "12", "-3"],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "Why does the lesson start `biggest` at `matrix[0][0]` and not at 0?",
+      "options": [
+        "If every number were negative, 0 would win though it isn't in the matrix",
+        "Because 0 can't be compared with a number from a list",
+        "Because the biggest number is always the first one",
+        "So the loop can skip the first row"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "game_map = [\n    [1, 0, 0],\n    [0, 1, 0],\n    [0, 0, 1]\n]\nwalls = 0\nfor row in game_map:\n    for cell in row:\n        if cell == 1:\n            walls += 1\nprint(f\"Walls: {walls}\")",
+      "options": ["Walls: 6", "Walls: 2", "Walls: 9", "Walls: 3"],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "What happens when this runs?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nprint(matrix[3][0])",
+      "options": [
+        "It prints 7",
+        "It stops with an IndexError: the rows are 0, 1 and 2",
+        "It prints 9",
+        "It prints None"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nprint(matrix[0])",
+      "options": ["1", "[1, 4, 7]", "[1, 2, 3]", "1 2 3"],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nfor row in matrix:\n    print(row[1])",
+      "options": ["2\n5\n8", "4\n5\n6", "2", "1\n4\n7"],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nfor i in range(3):\n    print(matrix[i][i])",
+      "options": ["1\n2\n3", "3\n5\n7", "1\n4\n7", "1\n5\n9"],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "In the Sensor Grid mission, why does each line print `i + 1` and not `i`?",
+      "options": [
+        "Because the first row is skipped",
+        "The rows are numbered from 1 for people, but their indexes start at 0",
+        "Because `i` is the row's sum",
+        "So the last row isn't printed twice"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "In the mission's grid, how many readings are strictly greater than 7?",
+      "options": ["9", "5", "7", "10"],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [4, 6],\n    [1, 3]\n]\nfor i in range(len(matrix)):\n    for j in range(len(matrix[i])):\n        print(f\"[{i}][{j}] = {matrix[i][j]}\")",
+      "options": [
+        "[0][0] = 4\n[0][1] = 6\n[1][0] = 1\n[1][1] = 3",
+        "[0][0] = 4\n[1][0] = 6\n[0][1] = 1\n[1][1] = 3",
+        "[1][1] = 4\n[1][2] = 6\n[2][1] = 1\n[2][2] = 3",
+        "4\n6\n1\n3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2],\n    [3, 4]\n]\nmatrix[0][1] = 9\nprint(matrix)",
+      "options": ["[[9, 2], [3, 4]]", "[[1, 2], [9, 4]]", "[[1, 2], [3, 9]]", "[[1, 9], [3, 4]]"],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nprint(sum(matrix[1]))",
+      "options": ["12", "15", "6", "45"],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "grid = [\n    [0, 1, 0, 1],\n    [1, 1, 0, 0],\n    [0, 0, 0, 1]\n]\ncount = 0\nfor row in grid:\n    for cell in row:\n        count += 1\nprint(count)",
+      "options": ["3", "4", "12", "7"],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "In `for row in matrix:` with `for element in row:` inside it, which loop goes through the rows?",
+      "options": [
+        "The outer one, `for row in matrix:`",
+        "The inner one, `for element in row:`",
+        "Both, one row each",
+        "Neither: the rows are read by `print()`"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\ntotal = 0\nfor row in matrix:\n    total += row[0]\nprint(total)",
+      "options": ["6", "15", "45", "12"],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "What happens when this runs?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\ntotal = 0\nfor element in matrix:\n    total += element\nprint(total)",
+      "options": [
+        "It prints 45",
+        "It stops with a TypeError: each `element` here is a whole row, a list",
+        "It prints 3",
+        "It prints [1, 2, 3, 4, 5, 6, 7, 8, 9]"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "In a 4×4 grid named `grid`, which expression is the value in the last row and the first column?",
+      "options": ["grid[0][3]", "grid[4][1]", "grid[3][0]", "grid[4][0]"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 4):\n        print(i * j, end=\" \")\n    print()",
+      "options": ["1 2 3\n2 4 6\n3 6 9", "1 2 3 2 4 6 3 6 9", "1\n4\n9", "2 3 4\n3 4 5\n4 5 6"],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "grid = [\n    [1, 2, 3],\n    [4, 5, 6]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total += value\n    print(f\"Row {i + 1}: {total}\")",
+      "options": ["Row 0: 6\nRow 1: 15", "Row 1: 6\nRow 2: 21", "Row 1: 21", "Row 1: 6\nRow 2: 15"],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "What does a 2×5 matrix have?",
+      "options": [
+        "5 rows of 2 values each",
+        "2 rows of 5 values each",
+        "2 values in all, 5 times",
+        "10 rows"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "In the mission's row sums, where must `total = 0` go?",
+      "options": [
+        "Before both loops, once for the whole grid",
+        "Inside the inner loop, before `total += value`",
+        "Inside the outer loop, before the inner one, so each row starts from 0",
+        "After the `print`, at the end of the outer loop"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "grid = [\n    [-4, -1],\n    [-9, -2]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value > biggest:\n            biggest = value\nprint(biggest)",
+      "options": ["-1", "0", "-9", "5"],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "mb-access",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [{{a}}],\n    [{{b}}],\n    [{{c}}]\n]\nprint(matrix[{{r}}][{{k}}])",
+      "values": [
+        {
+          "a": "5, 8, 3",
+          "b": "9, 2, 7",
+          "c": "1, 4, 6",
+          "r": 1,
+          "k": 2
+        },
+        {
+          "a": "10, 20, 30",
+          "b": "40, 50, 60",
+          "c": "70, 80, 90",
+          "r": 2,
+          "k": 1
+        },
+        {
+          "a": "3, 1, 4",
+          "b": "1, 5, 9",
+          "c": "2, 6, 5",
+          "r": 1,
+          "k": 1
+        },
+        {
+          "a": "7, 0, 2",
+          "b": "8, 6, 1",
+          "c": "9, 3, 4",
+          "r": 2,
+          "k": 2
+        },
+        {
+          "a": "11, 12, 13",
+          "b": "21, 22, 23",
+          "c": "31, 32, 33",
+          "r": 0,
+          "k": 2
+        }
+      ],
+      "mistakes": [
+        ["matrix[{{r}}][{{k}}]", "matrix[{{k}}][{{r}}]"],
+        ["matrix[{{r}}][{{k}}]", "matrix[{{r}}]"],
+        ["matrix[{{r}}][{{k}}]", "matrix[{{r}} - 1][{{k}} - 1]"],
+        ["matrix[{{r}}][{{k}}]", "matrix[{{r}}][0]"]
+      ]
+    },
+    {
+      "id": "mb-print-grid",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [{{a}}],\n    [{{b}}]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+      "values": [
+        {
+          "a": "1, 2, 3",
+          "b": "4, 5, 6"
+        },
+        {
+          "a": "7, 8",
+          "b": "9, 10"
+        },
+        {
+          "a": "5, 3, 8, 2",
+          "b": "6, 1, 4, 7"
+        },
+        {
+          "a": "12, 15",
+          "b": "20, 25"
+        }
+      ],
+      "mistakes": [
+        [
+          "        print(element, end=\" \")\n    print()",
+          "        print(element, end=\" \")\n        print()"
+        ],
+        ["print(element, end=\" \")", "print(element, end=\"\")"],
+        ["        print(element, end=\" \")\n    print()", "        print(element, end=\" \")"],
+        [
+          "    for element in row:\n        print(element, end=\" \")\n    print()",
+          "    print(row)"
+        ]
+      ]
+    },
+    {
+      "id": "mb-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [{{a}}],\n    [{{b}}],\n    [{{c}}]\n]\ntotal = 0\nfor row in matrix:\n    for element in row:\n        total += element\nprint(total)",
+      "values": [
+        {
+          "a": "1, 2",
+          "b": "3, 4",
+          "c": "5, 6"
+        },
+        {
+          "a": "10, 0",
+          "b": "5, 5",
+          "c": "2, 8"
+        },
+        {
+          "a": "7, 1",
+          "b": "2, 9",
+          "c": "4, 3"
+        },
+        {
+          "a": "6, 6",
+          "b": "1, 2",
+          "c": "3, 0"
+        },
+        {
+          "a": "12, 3",
+          "b": "4, 4",
+          "c": "8, 1"
+        }
+      ],
+      "mistakes": [
+        ["total += element", "total = element"],
+        ["total += element", "total += 1"],
+        ["print(total)", "    print(total)"],
+        ["        total += element", "        total += row[0]"]
+      ]
+    },
+    {
+      "id": "mb-max",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "grid = [\n    [{{a}}],\n    [{{b}}]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value > biggest:\n            biggest = value\nprint(biggest)",
+      "values": [
+        {
+          "a": "5, 8, 3",
+          "b": "9, 2, 7"
+        },
+        {
+          "a": "-4, -1, -7",
+          "b": "-9, -2, -3"
+        },
+        {
+          "a": "12, 40, 2",
+          "b": "33, 18, 7"
+        },
+        {
+          "a": "6, 1",
+          "b": "4, 10"
+        },
+        {
+          "a": "-5, 3, -8",
+          "b": "-1, -2, -6"
+        }
+      ],
+      "mistakes": [
+        ["value > biggest", "value < biggest"],
+        ["biggest = grid[0][0]", "biggest = 0"],
+        ["print(biggest)", "print(value)"],
+        ["    for value in row:", "    for value in grid[0]:"],
+        ["            biggest = value", "            biggest = biggest + 1"]
+      ]
+    },
+    {
+      "id": "mb-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "game_map = [\n    [{{a}}],\n    [{{b}}],\n    [{{c}}]\n]\nwalls = 0\nfor row in game_map:\n    for cell in row:\n        if cell == 1:\n            walls += 1\nprint(f\"Walls: {walls}\")",
+      "values": [
+        {
+          "a": "0, 0, 1, 0",
+          "b": "0, 1, 0, 0",
+          "c": "1, 1, 0, 1"
+        },
+        {
+          "a": "1, 1, 1",
+          "b": "0, 0, 0",
+          "c": "1, 0, 0"
+        },
+        {
+          "a": "0, 1",
+          "b": "1, 1",
+          "c": "0, 0"
+        },
+        {
+          "a": "1, 0, 1, 0",
+          "b": "0, 0, 0, 1",
+          "c": "0, 1, 0, 0"
+        },
+        {
+          "a": "0, 0, 0",
+          "b": "0, 1, 0",
+          "c": "1, 1, 1"
+        }
+      ],
+      "mistakes": [
+        ["cell == 1", "cell == 0"],
+        ["walls += 1", "walls = 1"],
+        ["            walls += 1", "            walls += cell + 1"],
+        ["print(f\"Walls: {walls}\")", "    print(f\"Walls: {walls}\")"]
+      ]
+    },
+    {
+      "id": "mb-row-sums",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "grid = [\n    [{{a}}],\n    [{{b}}],\n    [{{c}}]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total += value\n    print(f\"Row {i + 1}: {total}\")",
+      "values": [
+        {
+          "a": "5, 8, 3",
+          "b": "9, 2, 7",
+          "c": "1, 4, 6"
+        },
+        {
+          "a": "1, 1",
+          "b": "2, 2",
+          "c": "3, 3"
+        },
+        {
+          "a": "10, 20, 30",
+          "b": "5, 5, 5",
+          "c": "0, 0, 9"
+        },
+        {
+          "a": "4, 7",
+          "b": "8, 1",
+          "c": "6, 6"
+        },
+        {
+          "a": "2, 4, 6, 8",
+          "b": "1, 3, 5, 7",
+          "c": "9, 9, 9, 9"
+        }
+      ],
+      "mistakes": [
+        ["for i in range(len(grid)):\n    total = 0", "total = 0\nfor i in range(len(grid)):"],
+        ["Row {i + 1}", "Row {i}"],
+        ["    print(f\"Row {i + 1}: {total}\")", "        print(f\"Row {i + 1}: {total}\")"],
+        ["total += value", "total = value"]
+      ]
+    },
+    {
+      "id": "mb-column",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [{{a}}],\n    [{{b}}],\n    [{{c}}]\n]\nfor row in matrix:\n    print(row[{{k}}])",
+      "values": [
+        {
+          "a": "1, 2, 3",
+          "b": "4, 5, 6",
+          "c": "7, 8, 9",
+          "k": 0
+        },
+        {
+          "a": "10, 20, 30",
+          "b": "40, 50, 60",
+          "c": "70, 80, 90",
+          "k": 2
+        },
+        {
+          "a": "5, 3, 1",
+          "b": "8, 6, 4",
+          "c": "2, 9, 7",
+          "k": 1
+        },
+        {
+          "a": "0, 7, 3",
+          "b": "6, 2, 8",
+          "c": "4, 1, 5",
+          "k": 2
+        }
+      ],
+      "mistakes": [
+        ["    print(row[{{k}}])", "    print(matrix[{{k}}])"],
+        ["row[{{k}}]", "row[{{k}} + 1]"],
+        ["row[{{k}}]", "row[{{k}} - 1]"],
+        ["row[{{k}}]", "row"]
+      ]
+    },
+    {
+      "id": "mb-diagonal",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [{{a}}],\n    [{{b}}],\n    [{{c}}]\n]\nfor i in range(len(matrix)):\n    print(matrix[i][i], end=\" \")",
+      "values": [
+        {
+          "a": "1, 2, 3",
+          "b": "4, 5, 6",
+          "c": "7, 8, 9"
+        },
+        {
+          "a": "5, 0, 0",
+          "b": "0, 7, 0",
+          "c": "0, 0, 9"
+        },
+        {
+          "a": "3, 8, 1",
+          "b": "6, 4, 2",
+          "c": "9, 5, 7"
+        },
+        {
+          "a": "10, 11, 12",
+          "b": "13, 14, 15",
+          "c": "16, 17, 18"
+        }
+      ],
+      "mistakes": [
+        ["matrix[i][i]", "matrix[i][0]"],
+        ["matrix[i][i]", "matrix[0][i]"],
+        ["matrix[i][i]", "matrix[i][len(matrix) - 1 - i]"],
+        ["matrix[i][i]", "matrix[i]"]
+      ]
+    },
+    {
+      "id": "mb-which-rows",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "matrix = [\n    [{{a}}],\n    [{{b}}]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+      "values": [
+        {
+          "a": "1, 2",
+          "b": "3, 4"
+        },
+        {
+          "a": "9, 8, 7",
+          "b": "6, 5, 4"
+        },
+        {
+          "a": "0, 5",
+          "b": "5, 0"
+        },
+        {
+          "a": "2, 4, 6",
+          "b": "1, 3, 5"
+        }
+      ],
+      "mistakes": [
+        [
+          "        print(element, end=\" \")\n    print()",
+          "        print(element, end=\" \")\n        print()"
+        ],
+        ["print(element, end=\" \")", "print(element, end=\"\")"],
+        ["        print(element, end=\" \")\n    print()", "        print(element, end=\" \")"]
+      ]
+    },
+    {
+      "id": "mb-which-above",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "grid = [\n    [{{a}}],\n    [{{b}}]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value > {{lim}}:\n            above += 1\nprint(f\"Above {{lim}}: {above}\")",
+      "values": [
+        {
+          "a": "5, 8, 3, 6",
+          "b": "9, 2, 7, 8",
+          "lim": 7
+        },
+        {
+          "a": "1, 4, 5",
+          "b": "10, 9, 8",
+          "lim": 5
+        },
+        {
+          "a": "12, 3, 6",
+          "b": "7, 9, 1",
+          "lim": 6
+        },
+        {
+          "a": "4, 4, 9",
+          "b": "2, 4, 6",
+          "lim": 4
+        }
+      ],
+      "mistakes": [
+        ["value > {{lim}}", "value >= {{lim}}"],
+        ["above += 1", "above += value"],
+        ["value > {{lim}}", "value < {{lim}}"]
+      ]
+    },
+    {
+      "id": "mb-gap-inner",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [{{a}}],\n    [{{b}}]\n]\ntotal = 0\nfor row in matrix:\n    ___\n        total += element\nprint(total)",
+      "values": [
+        {
+          "a": "1, 2, 3",
+          "b": "4, 5, 6"
+        },
+        {
+          "a": "10, 20",
+          "b": "30, 40"
+        },
+        {
+          "a": "7, 7, 7",
+          "b": "1, 1, 1"
+        },
+        {
+          "a": "2, 9",
+          "b": "5, 3"
+        },
+        {
+          "a": "6, 0, 4",
+          "b": "8, 2, 5"
+        }
+      ],
+      "answer": "for element in row:",
+      "wrong": [
+        "for element in matrix:",
+        "for element in range(len(row)):",
+        "for element in row[0]:",
+        "for element in matrix[0]:"
+      ]
+    },
+    {
+      "id": "mb-gap-newline",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [{{a}}],\n    [{{b}}],\n    [{{c}}]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    ___",
+      "values": [
+        {
+          "a": "1, 2",
+          "b": "3, 4",
+          "c": "5, 6"
+        },
+        {
+          "a": "9, 8, 7",
+          "b": "6, 5, 4",
+          "c": "3, 2, 1"
+        },
+        {
+          "a": "0, 1",
+          "b": "1, 0",
+          "c": "1, 1"
+        },
+        {
+          "a": "4, 4",
+          "b": "8, 8",
+          "c": "2, 2"
+        }
+      ],
+      "answer": "print()",
+      "wrong": ["print(row)", "break", "print(element)", "print(matrix)"]
+    },
+    {
+      "id": "mb-val-row",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [{{a}}],\n    [{{b}}],\n    [{{c}}]\n]\nprint(grid[___][{{k}}])",
+      "values": [
+        {
+          "a": "5, 8, 3",
+          "b": "9, 2, 7",
+          "c": "1, 4, 6",
+          "k": 1,
+          "r": 2,
+          "w1": 1,
+          "w2": 0,
+          "w3": 3
+        },
+        {
+          "a": "10, 20, 30",
+          "b": "40, 50, 60",
+          "c": "70, 80, 90",
+          "k": 0,
+          "r": 1,
+          "w1": 0,
+          "w2": 2,
+          "w3": 3
+        },
+        {
+          "a": "3, 1, 4",
+          "b": "1, 5, 9",
+          "c": "2, 6, 5",
+          "k": 2,
+          "r": 0,
+          "w1": 1,
+          "w2": 2,
+          "w3": 3
+        },
+        {
+          "a": "7, 0, 2",
+          "b": "8, 6, 1",
+          "c": "9, 3, 4",
+          "k": 1,
+          "r": 1,
+          "w1": 0,
+          "w2": 2,
+          "w3": 3
+        }
+      ],
+      "answer": "{{r}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "mb-val-compare",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [{{a}}],\n    [{{b}}]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value ___ {{lim}}:\n            above += 1\nprint(above)",
+      "values": [
+        {
+          "a": "5, 8, 3, 6",
+          "b": "9, 2, 7, 8",
+          "lim": 7
+        },
+        {
+          "a": "1, 4, 6",
+          "b": "10, 5, 8",
+          "lim": 5
+        },
+        {
+          "a": "12, 3, 6",
+          "b": "7, 9, 1",
+          "lim": 6
+        },
+        {
+          "a": "4, 4, 9",
+          "b": "2, 4, 1",
+          "lim": 4
+        }
+      ],
+      "answer": ">",
+      "wrong": [">=", "<", "==", "<="]
+    },
+    {
+      "id": "mb-bad-max",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "grid = [\n    [{{a}}],\n    [{{b}}]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value > biggest:\n            biggest = value\n    print(row, biggest)",
+      "values": [
+        {
+          "a": "3, 9, 2",
+          "b": "4, 12, 6"
+        },
+        {
+          "a": "8, 1, 5",
+          "b": "7, 3, 10"
+        },
+        {
+          "a": "6, 2",
+          "b": "9, 4"
+        },
+        {
+          "a": "1, 5, 3",
+          "b": "8, 2, 6"
+        }
+      ],
+      "bug": ["value > biggest", "value < biggest"]
+    },
+    {
+      "id": "mb-bad-rows",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "grid = [\n    [{{a}}],\n    [{{b}}]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total += value\n    print(grid[i], total)",
+      "values": [
+        {
+          "a": "1, 2, 3",
+          "b": "4, 5, 6"
+        },
+        {
+          "a": "7, 8",
+          "b": "2, 9"
+        },
+        {
+          "a": "10, 0, 5",
+          "b": "3, 3, 3"
+        },
+        {
+          "a": "6, 4",
+          "b": "1, 7"
+        }
+      ],
+      "bug": ["total += value", "total = value"]
+    }
+  ]
+}

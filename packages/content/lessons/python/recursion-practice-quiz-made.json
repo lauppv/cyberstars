@@ -1,0 +1,661 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recursion-practice-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rp-fib-row-fc621b",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(5):\n    print(fib(i), end=\" \")",
+      "options": ["0 1 1 2 3", "1 1 2 3 5", "0 1 2 4 8", "1 1 2 3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-fib-row-8d9cc0",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(7):\n    print(fib(i), end=\" \")",
+      "options": ["0 1 1 2 3 5 8", "1 1 2 3 5 8 13", "0 1 2 4 8 16 32", "1 1 2 3 5 8"],
+      "answer": 0
+    },
+    {
+      "id": "rp-fib-row-6385ac",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(8):\n    print(fib(i), end=\" \")",
+      "options": ["0 1 1 2 3 5 8 13", "1 1 2 3 5 8 13 21", "0 1 2 4 8 16 32 64", "1 1 2 3 5 8 13"],
+      "answer": 0
+    },
+    {
+      "id": "rp-fib-row-27a86e",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(9):\n    print(fib(i), end=\" \")",
+      "options": [
+        "0 1 1 2 3 5 8 13 21",
+        "1 1 2 3 5 8 13 21 34",
+        "0 1 2 4 8 16 32 64 128",
+        "1 1 2 3 5 8 13 21"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-fib-row-af4693",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(4):\n    print(fib(i), end=\" \")",
+      "options": ["0 1 1 2", "1 1 2 3", "0 1 2 4", "1 1 2"],
+      "answer": 0
+    },
+    {
+      "id": "rp-fib-f63f4d",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(5))",
+      "options": ["5", "8", "12", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-fib-9a2b7a",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(7))",
+      "options": ["13", "21", "7", "33"],
+      "answer": 0
+    },
+    {
+      "id": "rp-fib-799f78",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(8))",
+      "options": ["21", "34", "8", "54"],
+      "answer": 0
+    },
+    {
+      "id": "rp-fib-6fcf6e",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(9))",
+      "options": ["34", "55", "9", "88"],
+      "answer": 0
+    },
+    {
+      "id": "rp-fib-0a08a0",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(11))",
+      "options": ["89", "144", "11", "232"],
+      "answer": 0
+    },
+    {
+      "id": "rp-reverse-e87b69",
+      "text": "What does this print?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"Tommy\"))",
+      "options": ["ymmoT", "Tommy", "ymT", "mmoT"],
+      "answer": 0
+    },
+    {
+      "id": "rp-reverse-112aa5",
+      "text": "What does this print?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"orbit\"))",
+      "options": ["tibro", "orbit", "tbo", "ibro"],
+      "answer": 0
+    },
+    {
+      "id": "rp-reverse-e4ee51",
+      "text": "What does this print?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"Lance\"))",
+      "options": ["ecnaL", "Lance", "enL", "cnaL"],
+      "answer": 0
+    },
+    {
+      "id": "rp-reverse-66b27b",
+      "text": "What does this print?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"comet\"))",
+      "options": ["temoc", "comet", "tmc", "emoc"],
+      "answer": 0
+    },
+    {
+      "id": "rp-reverse-01dff3",
+      "text": "What does this print?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"Vice\"))",
+      "options": ["eciV", "Vice", "cV", "ciV"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-a553b8",
+      "text": "What does this print?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] == target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"banana\", \"a\"))",
+      "options": ["3", "0", "4", "6"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-a19d15",
+      "text": "What does this print?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] == target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"mississippi\", \"s\"))",
+      "options": ["4", "7", "0", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-7778f4",
+      "text": "What does this print?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] == target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"rocket\", \"o\"))",
+      "options": ["1", "5", "0", "2"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-94b79c",
+      "text": "What does this print?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] == target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"galaxy\", \"a\"))",
+      "options": ["2", "4", "0", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-54a079",
+      "text": "What does this print?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] == target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"level\", \"e\"))",
+      "options": ["2", "3", "0", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flatten-57bd14",
+      "text": "What does this print?",
+      "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if type(item) == list:\n            result = result + flatten(item)\n        else:\n            result.append(item)\n    return result\n\nprint(flatten([1, [2, 3], [4, [5, 6]], 7]))",
+      "options": [
+        "[1, 2, 3, 4, 5, 6, 7]",
+        "[1, [2, 3], [4, [5, 6]], 7]",
+        "[5, 6, 7]",
+        "[1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-flatten-c15af7",
+      "text": "What does this print?",
+      "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if type(item) == list:\n            result = result + flatten(item)\n        else:\n            result.append(item)\n    return result\n\nprint(flatten([[1, 2], [3, [4]]]))",
+      "options": ["[1, 2, 3, 4]", "[[1, 2], [3, [4]]]", "[4]", "[1, 1, 2, 2, 3, 3, 4, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flatten-17587f",
+      "text": "What does this print?",
+      "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if type(item) == list:\n            result = result + flatten(item)\n        else:\n            result.append(item)\n    return result\n\nprint(flatten([5, [6, [7, [8]]]]))",
+      "options": ["[5, 6, 7, 8]", "[5, [6, [7, [8]]]]", "[8]", "[5, 5, 6, 6, 7, 7, 8, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flatten-5a62f9",
+      "text": "What does this print?",
+      "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if type(item) == list:\n            result = result + flatten(item)\n        else:\n            result.append(item)\n    return result\n\nprint(flatten([[10], 20, [30, 40]]))",
+      "options": [
+        "[10, 20, 30, 40]",
+        "[[10], 20, [30, 40]]",
+        "[30, 40]",
+        "[10, 10, 20, 20, 30, 30, 40, 40]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-flatten-ece78c",
+      "text": "What does this print?",
+      "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if type(item) == list:\n            result = result + flatten(item)\n        else:\n            result.append(item)\n    return result\n\nprint(flatten([1, [], [2, [3, []]]]))",
+      "options": ["[1, 2, 3]", "[1, [], [2, [3, []]]]", "[]", "[1, 1, 2, 2, 3, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "rp-digits-aeab7f",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\nfor code in [1234, 56]:\n    print(f\"{code}: {sum_digits(code)}\")",
+      "options": ["1234: 10\n56: 11", "1234: 9\n56: 6", "1234: 127\n56: 11", "1234: 24\n56: 30"],
+      "answer": 0
+    },
+    {
+      "id": "rp-digits-f1e1a0",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\nfor code in [999, 7]:\n    print(f\"{code}: {sum_digits(code)}\")",
+      "options": ["999: 27\n7: 7", "999: 18\n7: 0", "999: 108\n7: 7", "999: 729\n7: 7"],
+      "answer": 0
+    },
+    {
+      "id": "rp-digits-2d58c7",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\nfor code in [4070, 88]:\n    print(f\"{code}: {sum_digits(code)}\")",
+      "options": ["4070: 11\n88: 16", "4070: 7\n88: 8", "4070: 407\n88: 16", "4070: 0\n88: 64"],
+      "answer": 0
+    },
+    {
+      "id": "rp-digits-dae719",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\nfor code in [305, 61]:\n    print(f\"{code}: {sum_digits(code)}\")",
+      "options": ["305: 8\n61: 7", "305: 5\n61: 1", "305: 35\n61: 7", "305: 0\n61: 6"],
+      "answer": 0
+    },
+    {
+      "id": "rp-digits-b755dc",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\nfor code in [2024, 13]:\n    print(f\"{code}: {sum_digits(code)}\")",
+      "options": ["2024: 8\n13: 4", "2024: 6\n13: 3", "2024: 206\n13: 4", "2024: 0\n13: 3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-checksums-206b01",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\ncodes = [1234, 999, 5, 4070, 88]\nlargest = 0\nfor code in codes:\n    checksum = sum_digits(code)\n    if checksum > largest:\n        largest = checksum\nprint(f\"Largest checksum: {largest}\")",
+      "options": [
+        "Largest checksum: 27",
+        "Largest checksum: 0",
+        "Largest checksum: 1234",
+        "Largest checksum: 10\nLargest checksum: 27\nLargest checksum: 27\nLargest checksum: 27\nLargest checksum: 27"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-checksums-a48b71",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\ncodes = [11, 505, 72]\nlargest = 0\nfor code in codes:\n    checksum = sum_digits(code)\n    if checksum > largest:\n        largest = checksum\nprint(f\"Largest checksum: {largest}\")",
+      "options": [
+        "Largest checksum: 10",
+        "Largest checksum: 0",
+        "Largest checksum: 11",
+        "Largest checksum: 2\nLargest checksum: 10\nLargest checksum: 10"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-checksums-23d523",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\ncodes = [1000, 46, 333]\nlargest = 0\nfor code in codes:\n    checksum = sum_digits(code)\n    if checksum > largest:\n        largest = checksum\nprint(f\"Largest checksum: {largest}\")",
+      "options": [
+        "Largest checksum: 10",
+        "Largest checksum: 0",
+        "Largest checksum: 1000",
+        "Largest checksum: 1\nLargest checksum: 10\nLargest checksum: 10"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-checksums-d94170",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\ncodes = [19, 91, 60]\nlargest = 0\nfor code in codes:\n    checksum = sum_digits(code)\n    if checksum > largest:\n        largest = checksum\nprint(f\"Largest checksum: {largest}\")",
+      "options": [
+        "Largest checksum: 10",
+        "Largest checksum: 0",
+        "Largest checksum: 19",
+        "Largest checksum: 10\nLargest checksum: 10\nLargest checksum: 10"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-checksums-3f8251",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\ncodes = [250, 8, 1111]\nlargest = 0\nfor code in codes:\n    checksum = sum_digits(code)\n    if checksum > largest:\n        largest = checksum\nprint(f\"Largest checksum: {largest}\")",
+      "options": [
+        "Largest checksum: 8",
+        "Largest checksum: 0",
+        "Largest checksum: 250",
+        "Largest checksum: 7\nLargest checksum: 8\nLargest checksum: 8"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-digits-439feb",
+      "text": "What does this print?",
+      "code": "def count_digits(n):\n    if n < 10:\n        return 1\n    return 1 + count_digits(n // 10)\n\nfor n in [7, 42, 4070]:\n    print(n, count_digits(n))",
+      "options": [
+        "7 1\n42 2\n4070 4",
+        "7 0\n42 1\n4070 3",
+        "7 1\n42 2\n4070 3",
+        "7 1\n42 3\n4070 8"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-digits-86304d",
+      "text": "What does this print?",
+      "code": "def count_digits(n):\n    if n < 10:\n        return 1\n    return 1 + count_digits(n // 10)\n\nfor n in [100, 9, 12345]:\n    print(n, count_digits(n))",
+      "options": [
+        "100 3\n9 1\n12345 5",
+        "100 2\n9 0\n12345 4",
+        "100 2\n9 1\n12345 3",
+        "100 1\n9 1\n12345 15"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-digits-d376c9",
+      "text": "What does this print?",
+      "code": "def count_digits(n):\n    if n < 10:\n        return 1\n    return 1 + count_digits(n // 10)\n\nfor n in [88, 1000, 5]:\n    print(n, count_digits(n))",
+      "options": [
+        "88 2\n1000 4\n5 1",
+        "88 1\n1000 3\n5 0",
+        "88 2\n1000 3\n5 1",
+        "88 9\n1000 1\n5 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-reverse-bebb1a",
+      "text": "Which program shows this?",
+      "output": "rats",
+      "options": [
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"star\"))",
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return s[0] + reverse_str(s[1:])\n\nprint(reverse_str(\"star\"))",
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[1]\n\nprint(reverse_str(\"star\"))",
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return \"\"\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"star\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-reverse-db1e1a",
+      "text": "Which program shows this?",
+      "output": "sraM",
+      "options": [
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"Mars\"))",
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return s[0] + reverse_str(s[1:])\n\nprint(reverse_str(\"Mars\"))",
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[1]\n\nprint(reverse_str(\"Mars\"))",
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return \"\"\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"Mars\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-reverse-fdb89b",
+      "text": "Which program shows this?",
+      "output": "tenalp",
+      "options": [
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"planet\"))",
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return s[0] + reverse_str(s[1:])\n\nprint(reverse_str(\"planet\"))",
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[1]\n\nprint(reverse_str(\"planet\"))",
+        "def reverse_str(s):\n    if len(s) <= 1:\n        return \"\"\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"planet\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-digits-e2e738",
+      "text": "Which program shows this?",
+      "output": "10",
+      "options": [
+        "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\nprint(sum_digits(1234))",
+        "def sum_digits(n):\n    if n < 10:\n        return n\n    return n // 10 + sum_digits(n % 10)\n\nprint(sum_digits(1234))",
+        "def sum_digits(n):\n    if n < 10:\n        return 0\n    return n % 10 + sum_digits(n // 10)\n\nprint(sum_digits(1234))",
+        "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + n // 10\n\nprint(sum_digits(1234))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-digits-dde90b",
+      "text": "Which program shows this?",
+      "output": "11",
+      "options": [
+        "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\nprint(sum_digits(4070))",
+        "def sum_digits(n):\n    if n < 10:\n        return n\n    return n // 10 + sum_digits(n % 10)\n\nprint(sum_digits(4070))",
+        "def sum_digits(n):\n    if n < 10:\n        return 0\n    return n % 10 + sum_digits(n // 10)\n\nprint(sum_digits(4070))",
+        "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + n // 10\n\nprint(sum_digits(4070))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-digits-bf6521",
+      "text": "Which program shows this?",
+      "output": "8",
+      "options": [
+        "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\nprint(sum_digits(305))",
+        "def sum_digits(n):\n    if n < 10:\n        return n\n    return n // 10 + sum_digits(n % 10)\n\nprint(sum_digits(305))",
+        "def sum_digits(n):\n    if n < 10:\n        return 0\n    return n % 10 + sum_digits(n // 10)\n\nprint(sum_digits(305))",
+        "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + n // 10\n\nprint(sum_digits(305))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-rest-3e870d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    ___\n\nprint(reverse_str(\"Tommy\"))",
+      "output": "ymmoT",
+      "options": [
+        "return reverse_str(s[1:]) + s[0]",
+        "return s[0] + reverse_str(s[1:])",
+        "return reverse_str(s[1:])",
+        "return reverse_str(s) + s[0]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-rest-9d1906",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    ___\n\nprint(reverse_str(\"orbit\"))",
+      "output": "tibro",
+      "options": [
+        "return reverse_str(s[1:]) + s[0]",
+        "return s[0] + reverse_str(s[1:])",
+        "return reverse_str(s[1:])",
+        "return reverse_str(s) + s[0]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-rest-39991b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    ___\n\nprint(reverse_str(\"signal\"))",
+      "output": "langis",
+      "options": [
+        "return reverse_str(s[1:]) + s[0]",
+        "return s[0] + reverse_str(s[1:])",
+        "return reverse_str(s[1:])",
+        "return reverse_str(s) + s[0]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-rest-12f832",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    ___\n\nprint(reverse_str(\"Mars\"))",
+      "output": "sraM",
+      "options": [
+        "return reverse_str(s[1:]) + s[0]",
+        "return s[0] + reverse_str(s[1:])",
+        "return reverse_str(s[1:])",
+        "return reverse_str(s) + s[0]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-rest-305dac",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    ___\n\nprint(reverse_str(\"comet\"))",
+      "output": "temoc",
+      "options": [
+        "return reverse_str(s[1:]) + s[0]",
+        "return s[0] + reverse_str(s[1:])",
+        "return reverse_str(s[1:])",
+        "return reverse_str(s) + s[0]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-base-6a9989",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        ___\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(5):\n    print(fib(i), end=\" \")",
+      "output": "0 1 1 2 3",
+      "options": ["return 1", "return 0", "return 2", "return fib(n - 2)"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-base-fcc9b9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        ___\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(6):\n    print(fib(i), end=\" \")",
+      "output": "0 1 1 2 3 5",
+      "options": ["return 1", "return 0", "return 2", "return fib(n - 2)"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-base-e7a1cd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        ___\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(7):\n    print(fib(i), end=\" \")",
+      "output": "0 1 1 2 3 5 8",
+      "options": ["return 1", "return 0", "return 2", "return fib(n - 2)"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-base-b7b001",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        ___\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(8):\n    print(fib(i), end=\" \")",
+      "output": "0 1 1 2 3 5 8 13",
+      "options": ["return 1", "return 0", "return 2", "return fib(n - 2)"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-base-f626c3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        ___\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(9):\n    print(fib(i), end=\" \")",
+      "output": "0 1 1 2 3 5 8 13 21",
+      "options": ["return 1", "return 0", "return 2", "return fib(n - 2)"],
+      "answer": 0
+    },
+    {
+      "id": "rp-val-digit-bbf1a4",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n ___ 10 + sum_digits(n // 10)\n\nprint(sum_digits(1234))",
+      "output": "10",
+      "options": ["%", "//", "*", "+"],
+      "answer": 0
+    },
+    {
+      "id": "rp-val-digit-07e65a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n ___ 10 + sum_digits(n // 10)\n\nprint(sum_digits(4070))",
+      "output": "11",
+      "options": ["%", "//", "*", "+"],
+      "answer": 0
+    },
+    {
+      "id": "rp-val-digit-12525e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n ___ 10 + sum_digits(n // 10)\n\nprint(sum_digits(999))",
+      "output": "27",
+      "options": ["%", "//", "*", "+"],
+      "answer": 0
+    },
+    {
+      "id": "rp-val-digit-d78334",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n ___ 10 + sum_digits(n // 10)\n\nprint(sum_digits(88))",
+      "output": "16",
+      "options": ["%", "*", "+", "-"],
+      "answer": 0
+    },
+    {
+      "id": "rp-val-digit-fb6bb0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n ___ 10 + sum_digits(n // 10)\n\nprint(sum_digits(516))",
+      "output": "12",
+      "options": ["%", "//", "*", "+"],
+      "answer": 0
+    },
+    {
+      "id": "rp-val-ternary-09cc61",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] ___ target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"banana\", \"n\"))",
+      "output": "2",
+      "options": ["==", "!=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "rp-val-ternary-4da43b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] ___ target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"rocket\", \"o\"))",
+      "output": "1",
+      "options": ["==", "!=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "rp-val-ternary-2ab951",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] ___ target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"mississippi\", \"p\"))",
+      "output": "2",
+      "options": ["==", "!=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "rp-val-ternary-a7a54b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] ___ target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"galaxy\", \"l\"))",
+      "output": "1",
+      "options": ["==", "!=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "rp-val-ternary-d8d2de",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] ___ target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"comet\", \"m\"))",
+      "output": "1",
+      "options": ["==", "!=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-flatten-e2d6a0",
+      "text": "Which line stops this program from printing this?",
+      "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if type(item) == list:\n            result = result + [item]\n        else:\n            result.append(item)\n    return result\n\nfor lst in [[1, [2, 3]], [[4], 5]]:\n    print(flatten(lst))",
+      "output": "[1, 2, 3]\n[4, 5]",
+      "options": [
+        "result = result + [item]",
+        "result = []",
+        "if type(item) == list:",
+        "for item in lst:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-flatten-e35986",
+      "text": "Which line stops this program from printing this?",
+      "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if type(item) == list:\n            result = result + [item]\n        else:\n            result.append(item)\n    return result\n\nfor lst in [[[1, 2], 3], [4, [5, [6]]]]:\n    print(flatten(lst))",
+      "output": "[1, 2, 3]\n[4, 5, 6]",
+      "options": [
+        "result = result + [item]",
+        "result = []",
+        "if type(item) == list:",
+        "for item in lst:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-flatten-c1106a",
+      "text": "Which line stops this program from printing this?",
+      "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if type(item) == list:\n            result = result + [item]\n        else:\n            result.append(item)\n    return result\n\nfor lst in [[[1], [2]], [3, [4, 5]]]:\n    print(flatten(lst))",
+      "output": "[1, 2]\n[3, 4, 5]",
+      "options": [
+        "result = result + [item]",
+        "result = []",
+        "if type(item) == list:",
+        "for item in lst:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-digits-dbe489",
+      "text": "Which line stops this program from printing this?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 100)\n\nfor code in [1234, 56]:\n    print(code, sum_digits(code))",
+      "output": "1234 10\n56 11",
+      "options": [
+        "return n % 10 + sum_digits(n // 100)",
+        "return n",
+        "print(code, sum_digits(code))",
+        "for code in [1234, 56]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-digits-89454f",
+      "text": "Which line stops this program from printing this?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 100)\n\nfor code in [999, 70]:\n    print(code, sum_digits(code))",
+      "output": "999 27\n70 7",
+      "options": [
+        "return n % 10 + sum_digits(n // 100)",
+        "return n",
+        "print(code, sum_digits(code))",
+        "for code in [999, 70]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-digits-8d275d",
+      "text": "Which line stops this program from printing this?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 100)\n\nfor code in [4070, 88]:\n    print(code, sum_digits(code))",
+      "output": "4070 11\n88 16",
+      "options": [
+        "return n % 10 + sum_digits(n // 100)",
+        "return n",
+        "if n < 10:",
+        "def sum_digits(n):"
+      ],
+      "answer": 0
+    }
+  ]
+}

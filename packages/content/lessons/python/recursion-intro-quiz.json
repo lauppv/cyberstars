@@ -1,0 +1,699 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is recursion?",
+      "options": [
+        "A function that calls itself",
+        "A loop that runs forever",
+        "A function that calls another function with the same arguments",
+        "A list that holds itself"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What is the base case of a recursive function?",
+      "options": [
+        "The first call, the one made from outside the function",
+        "The biggest value the function can take",
+        "The case it answers directly, without calling itself again",
+        "The line where the function calls itself"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "What does this print?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(3)",
+      "options": ["3\n2\n1\n0\nGo!", "3\n2\n1\nGo!", "Go!\n1\n2\n3", "3\nGo!"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "What happens when this runs?",
+      "code": "def countdown(n):\n    print(n)\n    countdown(n - 1)\n\ncountdown(5)",
+      "options": [
+        "It prints 5 4 3 2 1 and stops",
+        "It prints 5 4 3 2 1 0 and stops",
+        "It prints nothing",
+        "It prints 5, 4, 3 and on below zero until Python stops it with a RecursionError"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(4))",
+      "options": ["24", "10", "4", "6"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "In the lesson's trace, factorial(5) = 5 × ... what?",
+      "options": ["factorial(6)", "4", "factorial(4)", "factorial(1)"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([2, 4, 6]))",
+      "options": ["6", "12", "2", "[2, 4, 6]"],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Why does `sum_list` pass `numbers[1:]` to itself?",
+      "options": [
+        "To skip the first number, which is always 0",
+        "Because `numbers[0]` was removed from the list",
+        "So the list is copied and the original stays sorted",
+        "The rest of the list is one shorter each call, until it is empty"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "In the mission, how many times is `power` called in all for `power(2, 3)`, counting the first call?",
+      "options": [
+        "4: with exp 3, 2, 1 and 0",
+        "3: with exp 3, 2 and 1",
+        "8, as many as the answer",
+        "1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nprint(power(3, 2))",
+      "options": ["6", "8", "9", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "Why does the mission's `power` return 1 in its base case, `exp == 0`?",
+      "options": [
+        "Because 1 is the smallest exponent",
+        "Any number to the power 0 is 1, and multiplying by 1 changes nothing on the way back",
+        "So the function returns True",
+        "Any number to the power 0 is 0, but 1 avoids a division by zero"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "In the lesson's line of people, who knows the answer straight away?",
+      "options": [
+        "The person at the back, who asked first",
+        "Everyone, since they all ask the same question",
+        "The person in the middle of the line",
+        "The person at the very front, with nobody in front of them"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "def count_up(n):\n    if n == 0:\n        return\n    count_up(n - 1)\n    print(n)\n\ncount_up(3)",
+      "options": ["1\n2\n3", "3\n2\n1", "0\n1\n2\n3", "3"],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "What happens when this runs?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(0))",
+      "options": [
+        "It prints 0",
+        "It prints 1",
+        "It stops with a RecursionError: n goes 0, -1, -2... and never reaches 1",
+        "It prints nothing and stops"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "When does the lesson say a loop is usually better than recursion?",
+      "options": [
+        "For nested lists, whatever their depth",
+        "For simple things like counting or summing",
+        "For any problem made of smaller versions of itself",
+        "Never: recursion is always clearer"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(1))",
+      "options": ["0", "Nothing: it stops with a RecursionError", "None", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([]))",
+      "options": ["0", "None", "Nothing: it stops with an IndexError", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Which line of `factorial` is the recursive call?",
+      "options": ["if n == 1:", "return 1", "return n * factorial(n - 1)", "def factorial(n):"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "What happens when this runs?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 2)\n\ncountdown(5)",
+      "options": [
+        "It prints 5 3 1 Go!",
+        "It prints 5, 3, 1, -1... and stops with a RecursionError: n skips 0",
+        "It prints 5 3 1 0 Go!",
+        "It prints 5 4 3 2 1 Go!"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "The mission bans loops and `**` inside `power`. Which line follows its rule `base^exp = base * base^(exp - 1)`?",
+      "options": [
+        "return base * exp",
+        "return power(base, exp - 1)",
+        "return base * power(base - 1, exp)",
+        "return base * power(base, exp - 1)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "In the factorial trace, what happens once factorial(1) returns 1?",
+      "options": [
+        "The calls waiting finish one by one: 2 × 1 = 2, then 3 × 2 = 6, and so on up to 120",
+        "The program stops, since the base case was reached",
+        "factorial(5) is called again from the start",
+        "Each call returns 1, so factorial(5) is 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nbase = 2\nfor exp in range(3):\n    print(f\"{base}^{exp} = {power(base, exp)}\")",
+      "options": [
+        "2^1 = 2\n2^2 = 4\n2^3 = 8",
+        "2^0 = 0\n2^1 = 2\n2^2 = 4",
+        "2^0 = 1\n2^1 = 2\n2^2 = 4",
+        "2^0 = 1\n2^1 = 2\n2^2 = 4\n2^3 = 8"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "def add_up(n):\n    if n == 0:\n        return 0\n    return n + add_up(n - 1)\n\nprint(add_up(4))",
+      "options": ["4", "10", "24", "9"],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "In `countdown`, the base case prints \"Go!\" and then has `return`. What does that `return` do?",
+      "options": [
+        "It sends \"Go!\" back to the call before",
+        "It starts the countdown over",
+        "It ends every call waiting, all at once",
+        "It ends this call, so the function doesn't go on to call itself again"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Which problems does the lesson say recursion shines on?",
+      "options": [
+        "Problems made of smaller versions of themselves, like trees and nested structures",
+        "Problems where a value is counted one by one",
+        "Problems that need a list sorted first",
+        "Problems that read input from the user"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nprint(power(5, 0))",
+      "options": ["0", "5", "1", "Nothing: it stops with a RecursionError"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    print(numbers)\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([1, 2, 3]))",
+      "options": [
+        "[1, 2, 3]\n6",
+        "[1, 2, 3]\n[2, 3]\n[3]\n[]\n6",
+        "[]\n[3]\n[2, 3]\n[1, 2, 3]\n6",
+        "[1, 2, 3]\n[2, 3]\n[3]\n6"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "How many calls to `factorial` does `factorial(5)` make in all, counting the first one?",
+      "options": ["4", "6", "120", "5"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(3) + factorial(2))",
+      "options": ["8", "12", "6", "720"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Why can't a recursive function call itself with the same argument it got, as in `countdown(n)` inside `countdown`?",
+      "options": [
+        "Python doesn't allow a function to use its own name",
+        "The argument would be lost after the first call",
+        "The problem never gets smaller, so it never reaches the base case",
+        "It can: the base case stops it anyway"
+      ],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "ri-countdown",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown({{n}})",
+      "values": [
+        {
+          "n": 7
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 2
+        },
+        {
+          "n": 5
+        },
+        {
+          "n": 6
+        }
+      ],
+      "mistakes": [
+        ["    print(n)\n    countdown(n - 1)", "    countdown(n - 1)\n    print(n)"],
+        ["if n == 0:", "if n == 1:"],
+        ["    print(n)\n    countdown(n - 1)", "    print(n - 1)\n    countdown(n - 1)"],
+        ["        print(\"Go!\")\n        return", "        return"]
+      ]
+    },
+    {
+      "id": "ri-factorial",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial({{n}}))",
+      "values": [
+        {
+          "n": 3
+        },
+        {
+          "n": 8
+        },
+        {
+          "n": 5
+        },
+        {
+          "n": 6
+        },
+        {
+          "n": 7
+        }
+      ],
+      "mistakes": [
+        ["n * factorial(n - 1)", "n + factorial(n - 1)"],
+        ["if n == 1:", "if n == 2:"],
+        ["        return 1", "        return 0"],
+        ["n * factorial(n - 1)", "(n - 1) * factorial(n - 1)"]
+      ]
+    },
+    {
+      "id": "ri-sum-list",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([{{nums}}]))",
+      "values": [
+        {
+          "nums": "1, 2, 3, 4, 5"
+        },
+        {
+          "nums": "4, 7, 9"
+        },
+        {
+          "nums": "10, 20, 30, 40"
+        },
+        {
+          "nums": "6, 1, 8"
+        },
+        {
+          "nums": "5, 15, 2, 3"
+        }
+      ],
+      "mistakes": [
+        ["        return 0", "        return 1"],
+        ["return numbers[0] + sum_list(numbers[1:])", "return numbers[0]"],
+        ["numbers[0] + sum_list", "numbers[0] * sum_list"],
+        ["sum_list(numbers[1:])", "sum_list(numbers[2:])"]
+      ]
+    },
+    {
+      "id": "ri-power",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nbase = {{b}}\nfor exp in range({{k}}):\n    print(f\"{base}^{exp} = {power(base, exp)}\")",
+      "values": [
+        {
+          "b": 2,
+          "k": 5
+        },
+        {
+          "b": 3,
+          "k": 4
+        },
+        {
+          "b": 10,
+          "k": 3
+        },
+        {
+          "b": 5,
+          "k": 3
+        },
+        {
+          "b": 4,
+          "k": 4
+        }
+      ],
+      "mistakes": [
+        ["        return 1", "        return base"],
+        ["return base * power(base, exp - 1)", "return base * exp"],
+        ["range({{k}})", "range(1, {{k}})"],
+        ["        return 1", "        return 0"]
+      ]
+    },
+    {
+      "id": "ri-unwind",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def show(n):\n    if n == 0:\n        print(\"base case\")\n        return\n    print(\"enter\", n)\n    show(n - 1)\n    print(\"leave\", n)\n\nshow({{n}})",
+      "values": [
+        {
+          "n": 1
+        },
+        {
+          "n": 2
+        },
+        {
+          "n": 3
+        },
+        {
+          "n": 4
+        }
+      ],
+      "mistakes": [
+        ["    print(\"leave\", n)", ""],
+        ["    print(\"enter\", n)\n    show(n - 1)", "    show(n - 1)\n    print(\"enter\", n)"],
+        ["if n == 0:", "if n == 1:"],
+        ["show(n - 1)", "show(n - 2)"]
+      ]
+    },
+    {
+      "id": "ri-add-up",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def add_up(n):\n    if n == 0:\n        return 0\n    return n + add_up(n - 1)\n\nprint(add_up({{n}}))",
+      "values": [
+        {
+          "n": 5
+        },
+        {
+          "n": 6
+        },
+        {
+          "n": 10
+        }
+      ],
+      "mistakes": [
+        ["        return 0", "        return 1"],
+        ["return n + add_up(n - 1)", "return n + add_up(n - 2)"],
+        ["return n + add_up(n - 1)", "return 1 + add_up(n - 1)"],
+        ["return n + add_up(n - 1)", "return n * add_up(n - 1)"]
+      ]
+    },
+    {
+      "id": "ri-calls",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial({{n}}))",
+      "values": [
+        {
+          "n": 2
+        },
+        {
+          "n": 3
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 5
+        }
+      ],
+      "mistakes": [
+        ["if n == 1:", "if n == 2:"],
+        ["return n * factorial(n - 1)", "return n * (n - 1)"],
+        ["print(factorial({{n}}))", "factorial({{n}})"],
+        ["return n * factorial(n - 1)", "return n + factorial(n - 1)"]
+      ]
+    },
+    {
+      "id": "ri-which-fact",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, {{k}}):\n    print(n, factorial(n))",
+      "values": [
+        {
+          "k": 4
+        },
+        {
+          "k": 5
+        },
+        {
+          "k": 6
+        },
+        {
+          "k": 3
+        }
+      ],
+      "mistakes": [
+        ["n * factorial(n - 1)", "n + factorial(n - 1)"],
+        ["        return 1", "        return 0"],
+        ["range(1, {{k}})", "range(2, {{k}})"],
+        ["n * factorial(n - 1)", "n * (n - 1)"]
+      ]
+    },
+    {
+      "id": "ri-which-countdown",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown({{n}})",
+      "values": [
+        {
+          "n": 2
+        },
+        {
+          "n": 3
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 5
+        },
+        {
+          "n": 6
+        }
+      ],
+      "mistakes": [
+        ["    print(n)\n    countdown(n - 1)", "    countdown(n - 1)\n    print(n)"],
+        ["if n == 0:", "if n == 1:"],
+        ["        print(\"Go!\")\n        return", "        return"]
+      ]
+    },
+    {
+      "id": "ri-gap-call",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, {{k}}):\n    print(factorial(n))",
+      "values": [
+        {
+          "k": 4
+        },
+        {
+          "k": 5
+        },
+        {
+          "k": 6
+        },
+        {
+          "k": 7
+        },
+        {
+          "k": 3
+        }
+      ],
+      "answer": "return n * factorial(n - 1)",
+      "wrong": [
+        "return factorial(n - 1)",
+        "return n * (n - 1)",
+        "return n + factorial(n - 1)",
+        "return n * factorial(n)"
+      ]
+    },
+    {
+      "id": "ri-gap-base",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        ___\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([{{nums}}]))",
+      "values": [
+        {
+          "nums": "1, 2, 3"
+        },
+        {
+          "nums": "4, 5"
+        },
+        {
+          "nums": "10, 20, 30, 40"
+        },
+        {
+          "nums": "7, 8, 9"
+        },
+        {
+          "nums": "2, 4, 6, 8"
+        }
+      ],
+      "answer": "return 0",
+      "wrong": ["return 1", "return numbers[0]", "return numbers", "return 10"]
+    },
+    {
+      "id": "ri-val-step",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - ___)\n\ncountdown({{n}})",
+      "values": [
+        {
+          "n": 4
+        },
+        {
+          "n": 6
+        },
+        {
+          "n": 8
+        },
+        {
+          "n": 2
+        },
+        {
+          "n": 10
+        }
+      ],
+      "answer": "1",
+      "wrong": ["2", "n", "3", "4"]
+    },
+    {
+      "id": "ri-val-base",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return ___\n    return base * power(base, exp - 1)\n\nprint(power({{b}}, {{e}}))",
+      "values": [
+        {
+          "b": 2,
+          "e": 3
+        },
+        {
+          "b": 3,
+          "e": 2
+        },
+        {
+          "b": 5,
+          "e": 2
+        },
+        {
+          "b": 2,
+          "e": 5
+        },
+        {
+          "b": 10,
+          "e": 2
+        }
+      ],
+      "answer": "1",
+      "wrong": ["0", "base", "exp", "2"]
+    },
+    {
+      "id": "ri-bad-fact",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, {{k}}):\n    print(n, factorial(n))",
+      "values": [
+        {
+          "k": 4
+        },
+        {
+          "k": 5
+        },
+        {
+          "k": 6
+        },
+        {
+          "k": 7
+        },
+        {
+          "k": 3
+        }
+      ],
+      "bug": ["n * factorial(n - 1)", "n + factorial(n - 1)"]
+    },
+    {
+      "id": "ri-bad-sum",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nfor numbers in [[{{a}}], [{{b}}]]:\n    print(numbers, sum_list(numbers))",
+      "values": [
+        {
+          "a": "1, 2, 3",
+          "b": "5, 5"
+        },
+        {
+          "a": "4, 6, 8",
+          "b": "2, 9"
+        },
+        {
+          "a": "10, 20",
+          "b": "3, 1, 4"
+        },
+        {
+          "a": "7, 7, 7",
+          "b": "1, 2"
+        },
+        {
+          "a": "6, 2",
+          "b": "5, 1, 9"
+        }
+      ],
+      "bug": ["        return 0", "        return 1"]
+    }
+  ]
+}

@@ -1,0 +1,705 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recursion-intro-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "ri-countdown-9a2b7a",
+      "text": "What does this print?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(7)",
+      "options": [
+        "7\n6\n5\n4\n3\n2\n1\nGo!",
+        "Go!\n1\n2\n3\n4\n5\n6\n7",
+        "7\n6\n5\n4\n3\n2\nGo!",
+        "6\n5\n4\n3\n2\n1\n0\nGo!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-countdown-1951a8",
+      "text": "What does this print?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(4)",
+      "options": ["4\n3\n2\n1\nGo!", "Go!\n1\n2\n3\n4", "4\n3\n2\nGo!", "3\n2\n1\n0\nGo!"],
+      "answer": 0
+    },
+    {
+      "id": "ri-countdown-e3797b",
+      "text": "What does this print?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(2)",
+      "options": ["2\n1\nGo!", "Go!\n1\n2", "2\nGo!", "1\n0\nGo!"],
+      "answer": 0
+    },
+    {
+      "id": "ri-countdown-f63f4d",
+      "text": "What does this print?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(5)",
+      "options": [
+        "5\n4\n3\n2\n1\nGo!",
+        "Go!\n1\n2\n3\n4\n5",
+        "5\n4\n3\n2\nGo!",
+        "4\n3\n2\n1\n0\nGo!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-countdown-7dc437",
+      "text": "What does this print?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(6)",
+      "options": [
+        "6\n5\n4\n3\n2\n1\nGo!",
+        "Go!\n1\n2\n3\n4\n5\n6",
+        "6\n5\n4\n3\n2\nGo!",
+        "5\n4\n3\n2\n1\n0\nGo!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-factorial-67f157",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(3))",
+      "options": ["6", "3", "0", "2"],
+      "answer": 0
+    },
+    {
+      "id": "ri-factorial-799f78",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(8))",
+      "options": ["40320", "36", "20160", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-factorial-f63f4d",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))",
+      "options": ["120", "15", "60", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-factorial-7dc437",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(6))",
+      "options": ["720", "21", "360", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-factorial-9a2b7a",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(7))",
+      "options": ["5040", "28", "2520", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-sum-list-a78a94",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([1, 2, 3, 4, 5]))",
+      "options": ["15", "16", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-sum-list-3c3a21",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([4, 7, 9]))",
+      "options": ["20", "21", "4", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-sum-list-766f8d",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([10, 20, 30, 40]))",
+      "options": ["100", "101", "10", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-sum-list-8da3ba",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([6, 1, 8]))",
+      "options": ["15", "16", "6", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-sum-list-9b7323",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([5, 15, 2, 3]))",
+      "options": ["25", "26", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-power-47cd42",
+      "text": "What does this print?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nbase = 2\nfor exp in range(5):\n    print(f\"{base}^{exp} = {power(base, exp)}\")",
+      "options": [
+        "2^0 = 1\n2^1 = 2\n2^2 = 4\n2^3 = 8\n2^4 = 16",
+        "2^0 = 2\n2^1 = 4\n2^2 = 8\n2^3 = 16\n2^4 = 32",
+        "2^0 = 1\n2^1 = 2\n2^2 = 4\n2^3 = 6\n2^4 = 8",
+        "2^1 = 2\n2^2 = 4\n2^3 = 8\n2^4 = 16"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-power-17c019",
+      "text": "What does this print?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nbase = 3\nfor exp in range(4):\n    print(f\"{base}^{exp} = {power(base, exp)}\")",
+      "options": [
+        "3^0 = 1\n3^1 = 3\n3^2 = 9\n3^3 = 27",
+        "3^0 = 3\n3^1 = 9\n3^2 = 27\n3^3 = 81",
+        "3^0 = 1\n3^1 = 3\n3^2 = 6\n3^3 = 9",
+        "3^1 = 3\n3^2 = 9\n3^3 = 27"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-power-4bd492",
+      "text": "What does this print?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nbase = 10\nfor exp in range(3):\n    print(f\"{base}^{exp} = {power(base, exp)}\")",
+      "options": [
+        "10^0 = 1\n10^1 = 10\n10^2 = 100",
+        "10^0 = 10\n10^1 = 100\n10^2 = 1000",
+        "10^0 = 1\n10^1 = 10\n10^2 = 20",
+        "10^1 = 10\n10^2 = 100"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-power-7bccf7",
+      "text": "What does this print?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nbase = 5\nfor exp in range(3):\n    print(f\"{base}^{exp} = {power(base, exp)}\")",
+      "options": [
+        "5^0 = 1\n5^1 = 5\n5^2 = 25",
+        "5^0 = 5\n5^1 = 25\n5^2 = 125",
+        "5^0 = 1\n5^1 = 5\n5^2 = 10",
+        "5^1 = 5\n5^2 = 25"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-power-163102",
+      "text": "What does this print?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nbase = 4\nfor exp in range(4):\n    print(f\"{base}^{exp} = {power(base, exp)}\")",
+      "options": [
+        "4^0 = 1\n4^1 = 4\n4^2 = 16\n4^3 = 64",
+        "4^0 = 4\n4^1 = 16\n4^2 = 64\n4^3 = 256",
+        "4^0 = 1\n4^1 = 4\n4^2 = 8\n4^3 = 12",
+        "4^1 = 4\n4^2 = 16\n4^3 = 64"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-unwind-05672d",
+      "text": "What does this print?",
+      "code": "def show(n):\n    if n == 0:\n        print(\"base case\")\n        return\n    print(\"enter\", n)\n    show(n - 1)\n    print(\"leave\", n)\n\nshow(1)",
+      "options": [
+        "enter 1\nbase case\nleave 1",
+        "enter 1\nbase case",
+        "base case\nenter 1\nleave 1",
+        "base case"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-unwind-e3797b",
+      "text": "What does this print?",
+      "code": "def show(n):\n    if n == 0:\n        print(\"base case\")\n        return\n    print(\"enter\", n)\n    show(n - 1)\n    print(\"leave\", n)\n\nshow(2)",
+      "options": [
+        "enter 2\nenter 1\nbase case\nleave 1\nleave 2",
+        "enter 2\nenter 1\nbase case",
+        "base case\nenter 1\nleave 1\nenter 2\nleave 2",
+        "enter 2\nbase case\nleave 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-unwind-67f157",
+      "text": "What does this print?",
+      "code": "def show(n):\n    if n == 0:\n        print(\"base case\")\n        return\n    print(\"enter\", n)\n    show(n - 1)\n    print(\"leave\", n)\n\nshow(3)",
+      "options": [
+        "enter 3\nenter 2\nenter 1\nbase case\nleave 1\nleave 2\nleave 3",
+        "enter 3\nenter 2\nenter 1\nbase case",
+        "base case\nenter 1\nleave 1\nenter 2\nleave 2\nenter 3\nleave 3",
+        "enter 3\nenter 2\nbase case\nleave 2\nleave 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-unwind-1951a8",
+      "text": "What does this print?",
+      "code": "def show(n):\n    if n == 0:\n        print(\"base case\")\n        return\n    print(\"enter\", n)\n    show(n - 1)\n    print(\"leave\", n)\n\nshow(4)",
+      "options": [
+        "enter 4\nenter 3\nenter 2\nenter 1\nbase case\nleave 1\nleave 2\nleave 3\nleave 4",
+        "enter 4\nenter 3\nenter 2\nenter 1\nbase case",
+        "base case\nenter 1\nleave 1\nenter 2\nleave 2\nenter 3\nleave 3\nenter 4\nleave 4",
+        "enter 4\nenter 3\nenter 2\nbase case\nleave 2\nleave 3\nleave 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-add-up-f63f4d",
+      "text": "What does this print?",
+      "code": "def add_up(n):\n    if n == 0:\n        return 0\n    return n + add_up(n - 1)\n\nprint(add_up(5))",
+      "options": ["15", "16", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-add-up-7dc437",
+      "text": "What does this print?",
+      "code": "def add_up(n):\n    if n == 0:\n        return 0\n    return n + add_up(n - 1)\n\nprint(add_up(6))",
+      "options": ["21", "22", "12", "6"],
+      "answer": 0
+    },
+    {
+      "id": "ri-add-up-f56b08",
+      "text": "What does this print?",
+      "code": "def add_up(n):\n    if n == 0:\n        return 0\n    return n + add_up(n - 1)\n\nprint(add_up(10))",
+      "options": ["55", "56", "30", "10"],
+      "answer": 0
+    },
+    {
+      "id": "ri-calls-e3797b",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(2))",
+      "options": [
+        "factorial(2)\nfactorial(1)\n2",
+        "factorial(2)\n1",
+        "factorial(2)\n2",
+        "factorial(2)\nfactorial(1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-calls-67f157",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(3))",
+      "options": [
+        "factorial(3)\nfactorial(2)\nfactorial(1)\n6",
+        "factorial(3)\nfactorial(2)\n3",
+        "factorial(3)\n6",
+        "factorial(3)\nfactorial(2)\nfactorial(1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-calls-1951a8",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(4))",
+      "options": [
+        "factorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)\n24",
+        "factorial(4)\nfactorial(3)\nfactorial(2)\n12",
+        "factorial(4)\n12",
+        "factorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-calls-f63f4d",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))",
+      "options": [
+        "factorial(5)\nfactorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)\n120",
+        "factorial(5)\nfactorial(4)\nfactorial(3)\nfactorial(2)\n60",
+        "factorial(5)\n20",
+        "factorial(5)\nfactorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-fact-f59250",
+      "text": "Which program shows this?",
+      "output": "1 1\n2 2\n3 6",
+      "options": [
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, 4):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 4):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 0\n    return n * factorial(n - 1)\n\nfor n in range(1, 4):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(2, 4):\n    print(n, factorial(n))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-fact-279bed",
+      "text": "Which program shows this?",
+      "output": "1 1\n2 2\n3 6\n4 24",
+      "options": [
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, 5):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 5):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 0\n    return n * factorial(n - 1)\n\nfor n in range(1, 5):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(2, 5):\n    print(n, factorial(n))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-fact-e2ada8",
+      "text": "Which program shows this?",
+      "output": "1 1\n2 2\n3 6\n4 24\n5 120",
+      "options": [
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, 6):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 6):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 0\n    return n * factorial(n - 1)\n\nfor n in range(1, 6):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(2, 6):\n    print(n, factorial(n))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-fact-259fba",
+      "text": "Which program shows this?",
+      "output": "1 1\n2 2",
+      "options": [
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, 3):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 3):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 0\n    return n * factorial(n - 1)\n\nfor n in range(1, 3):\n    print(n, factorial(n))",
+        "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(2, 3):\n    print(n, factorial(n))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-countdown-73b32f",
+      "text": "Which program shows this?",
+      "output": "2\n1\nGo!",
+      "options": [
+        "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(2)",
+        "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    countdown(n - 1)\n    print(n)\n\ncountdown(2)",
+        "def countdown(n):\n    if n == 1:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(2)",
+        "def countdown(n):\n    if n == 0:\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-countdown-98dfa9",
+      "text": "Which program shows this?",
+      "output": "3\n2\n1\nGo!",
+      "options": [
+        "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(3)",
+        "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    countdown(n - 1)\n    print(n)\n\ncountdown(3)",
+        "def countdown(n):\n    if n == 1:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(3)",
+        "def countdown(n):\n    if n == 0:\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(3)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-countdown-784049",
+      "text": "Which program shows this?",
+      "output": "4\n3\n2\n1\nGo!",
+      "options": [
+        "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(4)",
+        "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    countdown(n - 1)\n    print(n)\n\ncountdown(4)",
+        "def countdown(n):\n    if n == 1:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(4)",
+        "def countdown(n):\n    if n == 0:\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(4)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-countdown-f39da7",
+      "text": "Which program shows this?",
+      "output": "5\n4\n3\n2\n1\nGo!",
+      "options": [
+        "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(5)",
+        "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    countdown(n - 1)\n    print(n)\n\ncountdown(5)",
+        "def countdown(n):\n    if n == 1:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(5)",
+        "def countdown(n):\n    if n == 0:\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(5)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-which-countdown-824fa1",
+      "text": "Which program shows this?",
+      "output": "6\n5\n4\n3\n2\n1\nGo!",
+      "options": [
+        "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(6)",
+        "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    countdown(n - 1)\n    print(n)\n\ncountdown(6)",
+        "def countdown(n):\n    if n == 1:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(6)",
+        "def countdown(n):\n    if n == 0:\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(6)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-call-797296",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, 4):\n    print(factorial(n))",
+      "output": "1\n2\n6",
+      "options": [
+        "return n * factorial(n - 1)",
+        "return factorial(n - 1)",
+        "return n + factorial(n - 1)",
+        "return n * factorial(n)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-call-6a9989",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, 5):\n    print(factorial(n))",
+      "output": "1\n2\n6\n24",
+      "options": [
+        "return n * factorial(n - 1)",
+        "return factorial(n - 1)",
+        "return n * (n - 1)",
+        "return n + factorial(n - 1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-call-fcc9b9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, 6):\n    print(factorial(n))",
+      "output": "1\n2\n6\n24\n120",
+      "options": [
+        "return n * factorial(n - 1)",
+        "return factorial(n - 1)",
+        "return n * (n - 1)",
+        "return n + factorial(n - 1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-call-e7a1cd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, 7):\n    print(factorial(n))",
+      "output": "1\n2\n6\n24\n120\n720",
+      "options": [
+        "return n * factorial(n - 1)",
+        "return factorial(n - 1)",
+        "return n * (n - 1)",
+        "return n + factorial(n - 1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-call-94f80c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, 3):\n    print(factorial(n))",
+      "output": "1\n2",
+      "options": [
+        "return n * factorial(n - 1)",
+        "return factorial(n - 1)",
+        "return n + factorial(n - 1)",
+        "return n * factorial(n)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-base-2c4cf2",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        ___\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([1, 2, 3]))",
+      "output": "6",
+      "options": ["return 0", "return 1", "return numbers[0]", "return numbers"],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-base-96cc21",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        ___\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([4, 5]))",
+      "output": "9",
+      "options": ["return 0", "return 1", "return numbers[0]", "return numbers"],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-base-402797",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        ___\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([10, 20, 30, 40]))",
+      "output": "100",
+      "options": ["return 0", "return 1", "return numbers[0]", "return numbers"],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-base-0eafaa",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        ___\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([7, 8, 9]))",
+      "output": "24",
+      "options": ["return 0", "return 1", "return numbers[0]", "return numbers"],
+      "answer": 0
+    },
+    {
+      "id": "ri-gap-base-eaf6f6",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        ___\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([2, 4, 6, 8]))",
+      "output": "20",
+      "options": ["return 0", "return 1", "return numbers[0]", "return numbers"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-step-98be9b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - ___)\n\ncountdown(4)",
+      "output": "4\n3\n2\n1\nGo!",
+      "options": ["1", "2", "n", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-step-3f0339",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - ___)\n\ncountdown(6)",
+      "output": "6\n5\n4\n3\n2\n1\nGo!",
+      "options": ["1", "2", "n", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-step-a2251b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - ___)\n\ncountdown(8)",
+      "output": "8\n7\n6\n5\n4\n3\n2\n1\nGo!",
+      "options": ["1", "2", "n", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-step-768d7b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - ___)\n\ncountdown(2)",
+      "output": "2\n1\nGo!",
+      "options": ["1", "2", "n", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-step-3acba5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def countdown(n):\n    if n == 0:\n        print(\"Go!\")\n        return\n    print(n)\n    countdown(n - ___)\n\ncountdown(10)",
+      "output": "10\n9\n8\n7\n6\n5\n4\n3\n2\n1\nGo!",
+      "options": ["1", "2", "n", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-base-bf9673",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return ___\n    return base * power(base, exp - 1)\n\nprint(power(2, 3))",
+      "output": "8",
+      "options": ["1", "0", "base", "exp"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-base-83c025",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return ___\n    return base * power(base, exp - 1)\n\nprint(power(3, 2))",
+      "output": "9",
+      "options": ["1", "0", "base", "exp"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-base-8738ac",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return ___\n    return base * power(base, exp - 1)\n\nprint(power(5, 2))",
+      "output": "25",
+      "options": ["1", "0", "base", "exp"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-base-70f5b6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return ___\n    return base * power(base, exp - 1)\n\nprint(power(2, 5))",
+      "output": "32",
+      "options": ["1", "0", "base", "exp"],
+      "answer": 0
+    },
+    {
+      "id": "ri-val-base-0d05a6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return ___\n    return base * power(base, exp - 1)\n\nprint(power(10, 2))",
+      "output": "100",
+      "options": ["1", "0", "base", "exp"],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-fact-b10aa6",
+      "text": "Which line stops this program from printing this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 4):\n    print(n, factorial(n))",
+      "output": "1 1\n2 2\n3 6",
+      "options": [
+        "return n + factorial(n - 1)",
+        "return 1",
+        "print(n, factorial(n))",
+        "for n in range(1, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-fact-8405e4",
+      "text": "Which line stops this program from printing this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 5):\n    print(n, factorial(n))",
+      "output": "1 1\n2 2\n3 6\n4 24",
+      "options": ["return n + factorial(n - 1)", "return 1", "if n == 1:", "def factorial(n):"],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-fact-83e9d1",
+      "text": "Which line stops this program from printing this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 6):\n    print(n, factorial(n))",
+      "output": "1 1\n2 2\n3 6\n4 24\n5 120",
+      "options": ["return n + factorial(n - 1)", "return 1", "if n == 1:", "def factorial(n):"],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-fact-8ebf87",
+      "text": "Which line stops this program from printing this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 7):\n    print(n, factorial(n))",
+      "output": "1 1\n2 2\n3 6\n4 24\n5 120\n6 720",
+      "options": ["return n + factorial(n - 1)", "return 1", "if n == 1:", "def factorial(n):"],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-fact-9b6222",
+      "text": "Which line stops this program from printing this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n + factorial(n - 1)\n\nfor n in range(1, 3):\n    print(n, factorial(n))",
+      "output": "1 1\n2 2",
+      "options": ["return n + factorial(n - 1)", "return 1", "if n == 1:", "def factorial(n):"],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-sum-b8bb03",
+      "text": "Which line stops this program from printing this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 1\n    return numbers[0] + sum_list(numbers[1:])\n\nfor numbers in [[1, 2, 3], [5, 5]]:\n    print(numbers, sum_list(numbers))",
+      "output": "[1, 2, 3] 6\n[5, 5] 10",
+      "options": [
+        "return 1",
+        "if len(numbers) == 0:",
+        "def sum_list(numbers):",
+        "return numbers[0] + sum_list(numbers[1:])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-sum-8c2d00",
+      "text": "Which line stops this program from printing this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 1\n    return numbers[0] + sum_list(numbers[1:])\n\nfor numbers in [[4, 6, 8], [2, 9]]:\n    print(numbers, sum_list(numbers))",
+      "output": "[4, 6, 8] 18\n[2, 9] 11",
+      "options": [
+        "return 1",
+        "if len(numbers) == 0:",
+        "return numbers[0] + sum_list(numbers[1:])",
+        "print(numbers, sum_list(numbers))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-sum-c7256d",
+      "text": "Which line stops this program from printing this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 1\n    return numbers[0] + sum_list(numbers[1:])\n\nfor numbers in [[10, 20], [3, 1, 4]]:\n    print(numbers, sum_list(numbers))",
+      "output": "[10, 20] 30\n[3, 1, 4] 8",
+      "options": [
+        "return 1",
+        "if len(numbers) == 0:",
+        "def sum_list(numbers):",
+        "return numbers[0] + sum_list(numbers[1:])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-sum-aa4ad8",
+      "text": "Which line stops this program from printing this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 1\n    return numbers[0] + sum_list(numbers[1:])\n\nfor numbers in [[7, 7, 7], [1, 2]]:\n    print(numbers, sum_list(numbers))",
+      "output": "[7, 7, 7] 21\n[1, 2] 3",
+      "options": [
+        "return 1",
+        "if len(numbers) == 0:",
+        "return numbers[0] + sum_list(numbers[1:])",
+        "print(numbers, sum_list(numbers))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ri-bad-sum-3ba8ba",
+      "text": "Which line stops this program from printing this?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 1\n    return numbers[0] + sum_list(numbers[1:])\n\nfor numbers in [[6, 2], [5, 1, 9]]:\n    print(numbers, sum_list(numbers))",
+      "output": "[6, 2] 8\n[5, 1, 9] 15",
+      "options": [
+        "return 1",
+        "if len(numbers) == 0:",
+        "return numbers[0] + sum_list(numbers[1:])",
+        "print(numbers, sum_list(numbers))"
+      ],
+      "answer": 0
+    }
+  ]
+}

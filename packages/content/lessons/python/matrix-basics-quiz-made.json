@@ -1,0 +1,640 @@
+{
+  "note": "Made by npm run make:quiz from the templates in matrix-basics-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "mb-access-7d1883",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [5, 8, 3],\n    [9, 2, 7],\n    [1, 4, 6]\n]\nprint(matrix[1][2])",
+      "options": ["7", "4", "[9, 2, 7]", "8"],
+      "answer": 0
+    },
+    {
+      "id": "mb-access-f2d875",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [10, 20, 30],\n    [40, 50, 60],\n    [70, 80, 90]\n]\nprint(matrix[2][1])",
+      "options": ["80", "60", "[70, 80, 90]", "40"],
+      "answer": 0
+    },
+    {
+      "id": "mb-access-e7b8c6",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [3, 1, 4],\n    [1, 5, 9],\n    [2, 6, 5]\n]\nprint(matrix[1][1])",
+      "options": ["5", "[1, 5, 9]", "3", "1"],
+      "answer": 0
+    },
+    {
+      "id": "mb-access-caa600",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [7, 0, 2],\n    [8, 6, 1],\n    [9, 3, 4]\n]\nprint(matrix[2][2])",
+      "options": ["4", "[9, 3, 4]", "6", "9"],
+      "answer": 0
+    },
+    {
+      "id": "mb-access-f49298",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [11, 12, 13],\n    [21, 22, 23],\n    [31, 32, 33]\n]\nprint(matrix[0][2])",
+      "options": ["13", "31", "[11, 12, 13]", "32"],
+      "answer": 0
+    },
+    {
+      "id": "mb-print-grid-1b6360",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+      "options": ["1 2 3\n4 5 6", "1\n2\n3\n4\n5\n6", "123\n456", "1 2 3 4 5 6"],
+      "answer": 0
+    },
+    {
+      "id": "mb-print-grid-58c4f6",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [7, 8],\n    [9, 10]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+      "options": ["7 8\n9 10", "7\n8\n9\n10", "78\n910", "7 8 9 10"],
+      "answer": 0
+    },
+    {
+      "id": "mb-print-grid-40081b",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [5, 3, 8, 2],\n    [6, 1, 4, 7]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+      "options": ["5 3 8 2\n6 1 4 7", "5\n3\n8\n2\n6\n1\n4\n7", "5382\n6147", "5 3 8 2 6 1 4 7"],
+      "answer": 0
+    },
+    {
+      "id": "mb-print-grid-0d1926",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [12, 15],\n    [20, 25]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+      "options": ["12 15\n20 25", "12\n15\n20\n25", "1215\n2025", "12 15 20 25"],
+      "answer": 0
+    },
+    {
+      "id": "mb-sum-23e42c",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2],\n    [3, 4],\n    [5, 6]\n]\ntotal = 0\nfor row in matrix:\n    for element in row:\n        total += element\nprint(total)",
+      "options": ["21", "6", "3\n10\n21", "18"],
+      "answer": 0
+    },
+    {
+      "id": "mb-sum-a62f2a",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [10, 0],\n    [5, 5],\n    [2, 8]\n]\ntotal = 0\nfor row in matrix:\n    for element in row:\n        total += element\nprint(total)",
+      "options": ["30", "8", "6", "10\n20\n30"],
+      "answer": 0
+    },
+    {
+      "id": "mb-sum-698818",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [7, 1],\n    [2, 9],\n    [4, 3]\n]\ntotal = 0\nfor row in matrix:\n    for element in row:\n        total += element\nprint(total)",
+      "options": ["26", "3", "6", "8\n19\n26"],
+      "answer": 0
+    },
+    {
+      "id": "mb-sum-a50a42",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [6, 6],\n    [1, 2],\n    [3, 0]\n]\ntotal = 0\nfor row in matrix:\n    for element in row:\n        total += element\nprint(total)",
+      "options": ["18", "0", "6", "12\n15\n18"],
+      "answer": 0
+    },
+    {
+      "id": "mb-sum-6413aa",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [12, 3],\n    [4, 4],\n    [8, 1]\n]\ntotal = 0\nfor row in matrix:\n    for element in row:\n        total += element\nprint(total)",
+      "options": ["32", "1", "6", "15\n23\n32"],
+      "answer": 0
+    },
+    {
+      "id": "mb-max-1bfac9",
+      "text": "What does this print?",
+      "code": "grid = [\n    [5, 8, 3],\n    [9, 2, 7]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value > biggest:\n            biggest = value\nprint(biggest)",
+      "options": ["9", "2", "7", "8"],
+      "answer": 0
+    },
+    {
+      "id": "mb-max-820c5c",
+      "text": "What does this print?",
+      "code": "grid = [\n    [-4, -1, -7],\n    [-9, -2, -3]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value > biggest:\n            biggest = value\nprint(biggest)",
+      "options": ["-1", "-9", "0", "-3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-max-b95a47",
+      "text": "What does this print?",
+      "code": "grid = [\n    [12, 40, 2],\n    [33, 18, 7]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value > biggest:\n            biggest = value\nprint(biggest)",
+      "options": ["40", "2", "7", "15"],
+      "answer": 0
+    },
+    {
+      "id": "mb-max-fbe43b",
+      "text": "What does this print?",
+      "code": "grid = [\n    [6, 1],\n    [4, 10]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value > biggest:\n            biggest = value\nprint(biggest)",
+      "options": ["10", "1", "6", "7"],
+      "answer": 0
+    },
+    {
+      "id": "mb-max-ff55eb",
+      "text": "What does this print?",
+      "code": "grid = [\n    [-5, 3, -8],\n    [-1, -2, -6]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value > biggest:\n            biggest = value\nprint(biggest)",
+      "options": ["3", "-8", "-6", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "mb-count-412ea7",
+      "text": "What does this print?",
+      "code": "game_map = [\n    [0, 0, 1, 0],\n    [0, 1, 0, 0],\n    [1, 1, 0, 1]\n]\nwalls = 0\nfor row in game_map:\n    for cell in row:\n        if cell == 1:\n            walls += 1\nprint(f\"Walls: {walls}\")",
+      "options": ["Walls: 5", "Walls: 7", "Walls: 1", "Walls: 10"],
+      "answer": 0
+    },
+    {
+      "id": "mb-count-09bd7c",
+      "text": "What does this print?",
+      "code": "game_map = [\n    [1, 1, 1],\n    [0, 0, 0],\n    [1, 0, 0]\n]\nwalls = 0\nfor row in game_map:\n    for cell in row:\n        if cell == 1:\n            walls += 1\nprint(f\"Walls: {walls}\")",
+      "options": ["Walls: 4", "Walls: 5", "Walls: 1", "Walls: 8"],
+      "answer": 0
+    },
+    {
+      "id": "mb-count-31c060",
+      "text": "What does this print?",
+      "code": "game_map = [\n    [0, 1],\n    [1, 1],\n    [0, 0]\n]\nwalls = 0\nfor row in game_map:\n    for cell in row:\n        if cell == 1:\n            walls += 1\nprint(f\"Walls: {walls}\")",
+      "options": ["Walls: 3", "Walls: 1", "Walls: 6", "Walls: 1\nWalls: 3\nWalls: 3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-count-69f601",
+      "text": "What does this print?",
+      "code": "game_map = [\n    [1, 0, 1, 0],\n    [0, 0, 0, 1],\n    [0, 1, 0, 0]\n]\nwalls = 0\nfor row in game_map:\n    for cell in row:\n        if cell == 1:\n            walls += 1\nprint(f\"Walls: {walls}\")",
+      "options": ["Walls: 4", "Walls: 8", "Walls: 1", "Walls: 2\nWalls: 3\nWalls: 4"],
+      "answer": 0
+    },
+    {
+      "id": "mb-count-b6b36a",
+      "text": "What does this print?",
+      "code": "game_map = [\n    [0, 0, 0],\n    [0, 1, 0],\n    [1, 1, 1]\n]\nwalls = 0\nfor row in game_map:\n    for cell in row:\n        if cell == 1:\n            walls += 1\nprint(f\"Walls: {walls}\")",
+      "options": ["Walls: 4", "Walls: 5", "Walls: 1", "Walls: 8"],
+      "answer": 0
+    },
+    {
+      "id": "mb-row-sums-c1a633",
+      "text": "What does this print?",
+      "code": "grid = [\n    [5, 8, 3],\n    [9, 2, 7],\n    [1, 4, 6]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total += value\n    print(f\"Row {i + 1}: {total}\")",
+      "options": [
+        "Row 1: 16\nRow 2: 18\nRow 3: 11",
+        "Row 1: 16\nRow 2: 34\nRow 3: 45",
+        "Row 0: 16\nRow 1: 18\nRow 2: 11",
+        "Row 1: 5\nRow 1: 13\nRow 1: 16\nRow 2: 9\nRow 2: 11\nRow 2: 18\nRow 3: 1\nRow 3: 5\nRow 3: 11"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-row-sums-8fbb35",
+      "text": "What does this print?",
+      "code": "grid = [\n    [1, 1],\n    [2, 2],\n    [3, 3]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total += value\n    print(f\"Row {i + 1}: {total}\")",
+      "options": [
+        "Row 1: 2\nRow 2: 4\nRow 3: 6",
+        "Row 1: 2\nRow 2: 6\nRow 3: 12",
+        "Row 0: 2\nRow 1: 4\nRow 2: 6",
+        "Row 1: 1\nRow 1: 2\nRow 2: 2\nRow 2: 4\nRow 3: 3\nRow 3: 6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-row-sums-b1fc91",
+      "text": "What does this print?",
+      "code": "grid = [\n    [10, 20, 30],\n    [5, 5, 5],\n    [0, 0, 9]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total += value\n    print(f\"Row {i + 1}: {total}\")",
+      "options": [
+        "Row 1: 60\nRow 2: 15\nRow 3: 9",
+        "Row 1: 60\nRow 2: 75\nRow 3: 84",
+        "Row 0: 60\nRow 1: 15\nRow 2: 9",
+        "Row 1: 10\nRow 1: 30\nRow 1: 60\nRow 2: 5\nRow 2: 10\nRow 2: 15\nRow 3: 0\nRow 3: 0\nRow 3: 9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-row-sums-6be567",
+      "text": "What does this print?",
+      "code": "grid = [\n    [4, 7],\n    [8, 1],\n    [6, 6]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total += value\n    print(f\"Row {i + 1}: {total}\")",
+      "options": [
+        "Row 1: 11\nRow 2: 9\nRow 3: 12",
+        "Row 1: 11\nRow 2: 20\nRow 3: 32",
+        "Row 0: 11\nRow 1: 9\nRow 2: 12",
+        "Row 1: 4\nRow 1: 11\nRow 2: 8\nRow 2: 9\nRow 3: 6\nRow 3: 12"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-row-sums-dc69a2",
+      "text": "What does this print?",
+      "code": "grid = [\n    [2, 4, 6, 8],\n    [1, 3, 5, 7],\n    [9, 9, 9, 9]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total += value\n    print(f\"Row {i + 1}: {total}\")",
+      "options": [
+        "Row 1: 20\nRow 2: 16\nRow 3: 36",
+        "Row 1: 20\nRow 2: 36\nRow 3: 72",
+        "Row 0: 20\nRow 1: 16\nRow 2: 36",
+        "Row 1: 2\nRow 1: 6\nRow 1: 12\nRow 1: 20\nRow 2: 1\nRow 2: 4\nRow 2: 9\nRow 2: 16\nRow 3: 9\nRow 3: 18\nRow 3: 27\nRow 3: 36"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-column-cb80a0",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nfor row in matrix:\n    print(row[0])",
+      "options": ["1\n4\n7", "[1, 2, 3]\n[1, 2, 3]\n[1, 2, 3]", "2\n5\n8", "3\n6\n9"],
+      "answer": 0
+    },
+    {
+      "id": "mb-column-4168f9",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [10, 20, 30],\n    [40, 50, 60],\n    [70, 80, 90]\n]\nfor row in matrix:\n    print(row[2])",
+      "options": [
+        "30\n60\n90",
+        "[70, 80, 90]\n[70, 80, 90]\n[70, 80, 90]",
+        "20\n50\n80",
+        "[10, 20, 30]\n[40, 50, 60]\n[70, 80, 90]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-column-e0b77e",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [5, 3, 1],\n    [8, 6, 4],\n    [2, 9, 7]\n]\nfor row in matrix:\n    print(row[1])",
+      "options": ["3\n6\n9", "[8, 6, 4]\n[8, 6, 4]\n[8, 6, 4]", "1\n4\n7", "5\n8\n2"],
+      "answer": 0
+    },
+    {
+      "id": "mb-column-e6e8ec",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [0, 7, 3],\n    [6, 2, 8],\n    [4, 1, 5]\n]\nfor row in matrix:\n    print(row[2])",
+      "options": [
+        "3\n8\n5",
+        "[4, 1, 5]\n[4, 1, 5]\n[4, 1, 5]",
+        "7\n2\n1",
+        "[0, 7, 3]\n[6, 2, 8]\n[4, 1, 5]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-diagonal-38fc05",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nfor i in range(len(matrix)):\n    print(matrix[i][i], end=\" \")",
+      "options": ["1 5 9", "1 4 7", "1 2 3", "3 5 7"],
+      "answer": 0
+    },
+    {
+      "id": "mb-diagonal-550328",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [5, 0, 0],\n    [0, 7, 0],\n    [0, 0, 9]\n]\nfor i in range(len(matrix)):\n    print(matrix[i][i], end=\" \")",
+      "options": ["5 7 9", "5 0 0", "0 7 0", "[5, 0, 0] [0, 7, 0] [0, 0, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "mb-diagonal-33ef39",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [3, 8, 1],\n    [6, 4, 2],\n    [9, 5, 7]\n]\nfor i in range(len(matrix)):\n    print(matrix[i][i], end=\" \")",
+      "options": ["3 4 7", "3 6 9", "3 8 1", "1 4 9"],
+      "answer": 0
+    },
+    {
+      "id": "mb-diagonal-268910",
+      "text": "What does this print?",
+      "code": "matrix = [\n    [10, 11, 12],\n    [13, 14, 15],\n    [16, 17, 18]\n]\nfor i in range(len(matrix)):\n    print(matrix[i][i], end=\" \")",
+      "options": ["10 14 18", "10 13 16", "10 11 12", "12 14 16"],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-rows-64b8b5",
+      "text": "Which program shows this?",
+      "output": "1 2\n3 4",
+      "options": [
+        "matrix = [\n    [1, 2],\n    [3, 4]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+        "matrix = [\n    [1, 2],\n    [3, 4]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n        print()",
+        "matrix = [\n    [1, 2],\n    [3, 4]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\"\")\n    print()",
+        "matrix = [\n    [1, 2],\n    [3, 4]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-rows-1d6c58",
+      "text": "Which program shows this?",
+      "output": "9 8 7\n6 5 4",
+      "options": [
+        "matrix = [\n    [9, 8, 7],\n    [6, 5, 4]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+        "matrix = [\n    [9, 8, 7],\n    [6, 5, 4]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n        print()",
+        "matrix = [\n    [9, 8, 7],\n    [6, 5, 4]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\"\")\n    print()",
+        "matrix = [\n    [9, 8, 7],\n    [6, 5, 4]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-rows-3f9d2b",
+      "text": "Which program shows this?",
+      "output": "0 5\n5 0",
+      "options": [
+        "matrix = [\n    [0, 5],\n    [5, 0]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+        "matrix = [\n    [0, 5],\n    [5, 0]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n        print()",
+        "matrix = [\n    [0, 5],\n    [5, 0]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\"\")\n    print()",
+        "matrix = [\n    [0, 5],\n    [5, 0]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-rows-cc4b6b",
+      "text": "Which program shows this?",
+      "output": "2 4 6\n1 3 5",
+      "options": [
+        "matrix = [\n    [2, 4, 6],\n    [1, 3, 5]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    print()",
+        "matrix = [\n    [2, 4, 6],\n    [1, 3, 5]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n        print()",
+        "matrix = [\n    [2, 4, 6],\n    [1, 3, 5]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\"\")\n    print()",
+        "matrix = [\n    [2, 4, 6],\n    [1, 3, 5]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-above-688e75",
+      "text": "Which program shows this?",
+      "output": "Above 7: 3",
+      "options": [
+        "grid = [\n    [5, 8, 3, 6],\n    [9, 2, 7, 8]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value > 7:\n            above += 1\nprint(f\"Above 7: {above}\")",
+        "grid = [\n    [5, 8, 3, 6],\n    [9, 2, 7, 8]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value >= 7:\n            above += 1\nprint(f\"Above 7: {above}\")",
+        "grid = [\n    [5, 8, 3, 6],\n    [9, 2, 7, 8]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value > 7:\n            above += value\nprint(f\"Above 7: {above}\")",
+        "grid = [\n    [5, 8, 3, 6],\n    [9, 2, 7, 8]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value < 7:\n            above += 1\nprint(f\"Above 7: {above}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-above-174236",
+      "text": "Which program shows this?",
+      "output": "Above 5: 3",
+      "options": [
+        "grid = [\n    [1, 4, 5],\n    [10, 9, 8]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value > 5:\n            above += 1\nprint(f\"Above 5: {above}\")",
+        "grid = [\n    [1, 4, 5],\n    [10, 9, 8]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value >= 5:\n            above += 1\nprint(f\"Above 5: {above}\")",
+        "grid = [\n    [1, 4, 5],\n    [10, 9, 8]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value > 5:\n            above += value\nprint(f\"Above 5: {above}\")",
+        "grid = [\n    [1, 4, 5],\n    [10, 9, 8]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value < 5:\n            above += 1\nprint(f\"Above 5: {above}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-above-4fc16b",
+      "text": "Which program shows this?",
+      "output": "Above 6: 3",
+      "options": [
+        "grid = [\n    [12, 3, 6],\n    [7, 9, 1]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value > 6:\n            above += 1\nprint(f\"Above 6: {above}\")",
+        "grid = [\n    [12, 3, 6],\n    [7, 9, 1]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value >= 6:\n            above += 1\nprint(f\"Above 6: {above}\")",
+        "grid = [\n    [12, 3, 6],\n    [7, 9, 1]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value > 6:\n            above += value\nprint(f\"Above 6: {above}\")",
+        "grid = [\n    [12, 3, 6],\n    [7, 9, 1]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value < 6:\n            above += 1\nprint(f\"Above 6: {above}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-above-17eb70",
+      "text": "Which program shows this?",
+      "output": "Above 4: 2",
+      "options": [
+        "grid = [\n    [4, 4, 9],\n    [2, 4, 6]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value > 4:\n            above += 1\nprint(f\"Above 4: {above}\")",
+        "grid = [\n    [4, 4, 9],\n    [2, 4, 6]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value >= 4:\n            above += 1\nprint(f\"Above 4: {above}\")",
+        "grid = [\n    [4, 4, 9],\n    [2, 4, 6]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value > 4:\n            above += value\nprint(f\"Above 4: {above}\")",
+        "grid = [\n    [4, 4, 9],\n    [2, 4, 6]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value < 4:\n            above += 1\nprint(f\"Above 4: {above}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-inner-4d02c4",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [1, 2, 3],\n    [4, 5, 6]\n]\ntotal = 0\nfor row in matrix:\n    ___\n        total += element\nprint(total)",
+      "output": "21",
+      "options": [
+        "for element in row:",
+        "for element in matrix:",
+        "for element in range(len(row)):",
+        "for element in row[0]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-inner-317382",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [10, 20],\n    [30, 40]\n]\ntotal = 0\nfor row in matrix:\n    ___\n        total += element\nprint(total)",
+      "output": "100",
+      "options": [
+        "for element in row:",
+        "for element in matrix:",
+        "for element in range(len(row)):",
+        "for element in row[0]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-inner-d91e70",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [7, 7, 7],\n    [1, 1, 1]\n]\ntotal = 0\nfor row in matrix:\n    ___\n        total += element\nprint(total)",
+      "output": "24",
+      "options": [
+        "for element in row:",
+        "for element in matrix:",
+        "for element in range(len(row)):",
+        "for element in row[0]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-inner-e75e35",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [2, 9],\n    [5, 3]\n]\ntotal = 0\nfor row in matrix:\n    ___\n        total += element\nprint(total)",
+      "output": "19",
+      "options": [
+        "for element in row:",
+        "for element in matrix:",
+        "for element in range(len(row)):",
+        "for element in row[0]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-inner-c3b6a4",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [6, 0, 4],\n    [8, 2, 5]\n]\ntotal = 0\nfor row in matrix:\n    ___\n        total += element\nprint(total)",
+      "output": "25",
+      "options": [
+        "for element in row:",
+        "for element in matrix:",
+        "for element in range(len(row)):",
+        "for element in row[0]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-newline-899867",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [1, 2],\n    [3, 4],\n    [5, 6]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    ___",
+      "output": "1 2\n3 4\n5 6",
+      "options": ["print()", "print(row)", "break", "print(element)"],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-newline-cecad5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [9, 8, 7],\n    [6, 5, 4],\n    [3, 2, 1]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    ___",
+      "output": "9 8 7\n6 5 4\n3 2 1",
+      "options": ["print()", "print(row)", "break", "print(element)"],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-newline-909f01",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [0, 1],\n    [1, 0],\n    [1, 1]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    ___",
+      "output": "0 1\n1 0\n1 1",
+      "options": ["print()", "print(row)", "break", "print(element)"],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-newline-5936ba",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "matrix = [\n    [4, 4],\n    [8, 8],\n    [2, 2]\n]\nfor row in matrix:\n    for element in row:\n        print(element, end=\" \")\n    ___",
+      "output": "4 4\n8 8\n2 2",
+      "options": ["print()", "print(row)", "break", "print(element)"],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-row-3b2970",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [5, 8, 3],\n    [9, 2, 7],\n    [1, 4, 6]\n]\nprint(grid[___][1])",
+      "output": "4",
+      "options": ["2", "1", "0", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-row-bbcfe0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [10, 20, 30],\n    [40, 50, 60],\n    [70, 80, 90]\n]\nprint(grid[___][0])",
+      "output": "40",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-row-457922",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [3, 1, 4],\n    [1, 5, 9],\n    [2, 6, 5]\n]\nprint(grid[___][2])",
+      "output": "4",
+      "options": ["0", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-row-6dbc07",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [7, 0, 2],\n    [8, 6, 1],\n    [9, 3, 4]\n]\nprint(grid[___][1])",
+      "output": "6",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-compare-12837f",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [5, 8, 3, 6],\n    [9, 2, 7, 8]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value ___ 7:\n            above += 1\nprint(above)",
+      "output": "3",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-compare-4c4326",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [1, 4, 6],\n    [10, 5, 8]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value ___ 5:\n            above += 1\nprint(above)",
+      "output": "3",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-compare-1e46cb",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [12, 3, 6],\n    [7, 9, 1]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value ___ 6:\n            above += 1\nprint(above)",
+      "output": "3",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-compare-d737d3",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [4, 4, 9],\n    [2, 4, 1]\n]\nabove = 0\nfor row in grid:\n    for value in row:\n        if value ___ 4:\n            above += 1\nprint(above)",
+      "output": "1",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-max-c60211",
+      "text": "Which line stops this program from printing this?",
+      "code": "grid = [\n    [3, 9, 2],\n    [4, 12, 6]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value < biggest:\n            biggest = value\n    print(row, biggest)",
+      "output": "[3, 9, 2] 9\n[4, 12, 6] 12",
+      "options": [
+        "if value < biggest:",
+        "for value in row:",
+        "for row in grid:",
+        "biggest = grid[0][0]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-max-e0215b",
+      "text": "Which line stops this program from printing this?",
+      "code": "grid = [\n    [8, 1, 5],\n    [7, 3, 10]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value < biggest:\n            biggest = value\n    print(row, biggest)",
+      "output": "[8, 1, 5] 8\n[7, 3, 10] 10",
+      "options": [
+        "if value < biggest:",
+        "for value in row:",
+        "biggest = value",
+        "print(row, biggest)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-max-cf4bef",
+      "text": "Which line stops this program from printing this?",
+      "code": "grid = [\n    [6, 2],\n    [9, 4]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value < biggest:\n            biggest = value\n    print(row, biggest)",
+      "output": "[6, 2] 6\n[9, 4] 9",
+      "options": [
+        "if value < biggest:",
+        "for value in row:",
+        "for row in grid:",
+        "biggest = grid[0][0]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-max-2dfa2f",
+      "text": "Which line stops this program from printing this?",
+      "code": "grid = [\n    [1, 5, 3],\n    [8, 2, 6]\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for value in row:\n        if value < biggest:\n            biggest = value\n    print(row, biggest)",
+      "output": "[1, 5, 3] 5\n[8, 2, 6] 8",
+      "options": [
+        "if value < biggest:",
+        "for value in row:",
+        "for row in grid:",
+        "biggest = value"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-rows-885af1",
+      "text": "Which line stops this program from printing this?",
+      "code": "grid = [\n    [1, 2, 3],\n    [4, 5, 6]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total = value\n    print(grid[i], total)",
+      "output": "[1, 2, 3] 6\n[4, 5, 6] 15",
+      "options": ["total = value", "total = 0", "]", "print(grid[i], total)"],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-rows-afef2e",
+      "text": "Which line stops this program from printing this?",
+      "code": "grid = [\n    [7, 8],\n    [2, 9]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total = value\n    print(grid[i], total)",
+      "output": "[7, 8] 15\n[2, 9] 11",
+      "options": ["total = value", "total = 0", "]", "[2, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-rows-87ae77",
+      "text": "Which line stops this program from printing this?",
+      "code": "grid = [\n    [10, 0, 5],\n    [3, 3, 3]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total = value\n    print(grid[i], total)",
+      "output": "[10, 0, 5] 15\n[3, 3, 3] 9",
+      "options": ["total = value", "total = 0", "]", "[3, 3, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-rows-9ac45a",
+      "text": "Which line stops this program from printing this?",
+      "code": "grid = [\n    [6, 4],\n    [1, 7]\n]\nfor i in range(len(grid)):\n    total = 0\n    for value in grid[i]:\n        total = value\n    print(grid[i], total)",
+      "output": "[6, 4] 10\n[1, 7] 8",
+      "options": ["total = value", "total = 0", "]", "print(grid[i], total)"],
+      "answer": 0
+    }
+  ]
+}

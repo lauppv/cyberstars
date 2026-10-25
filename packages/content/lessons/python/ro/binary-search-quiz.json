@@ -1,0 +1,744 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "De ce are nevoie căutarea binară de la listă?",
+      "options": [
+        "Să aibă un număr par de elemente",
+        "Să fie sortată",
+        "Să conțină doar numere pozitive",
+        "De nimic: merge pe orice listă"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Căutarea binară se uită la elementul din mijloc, iar acesta e mai mare decât ținta. Unde caută mai departe?",
+      "options": [
+        "În jumătatea dreaptă, după mijloc",
+        "Din nou de la începutul listei",
+        "Lângă mijloc, câte un element",
+        "În jumătatea stângă, înainte de mijloc"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "Ce afișează?",
+      "code": "stanga = 0\ndreapta = 9\nmijloc = (stanga + dreapta) // 2\nprint(mijloc)",
+      "options": ["4", "5", "4.5", "9"],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]\nprint(cautare_binara(numere, 13))",
+      "options": ["13", "7", "6", "-1"],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]\nprint(cautare_binara(numere, 6))",
+      "options": ["2", "-1", "3", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "De ce returnează `cautare_binara` -1 când ținta nu e acolo?",
+      "options": [
+        "Pentru că ținta e mereu mai mică decât toate numerele",
+        "-1 e indicele ultimului element, unde s-a oprit",
+        "Pentru că Python returnează singur -1 la finalul unei funcții",
+        "-1 nu e niciodată un indice returnat pentru un număr găsit, așa că înseamnă clar negăsit"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Cam câte numere verifică cel mult căutarea binară într-o listă sortată de 1.000.000?",
+      "options": ["Cam 20", "Cam 1.000", "Cam 500.000", "Toate cele 1.000.000"],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Când `numere[mijloc] < tinta`, de ce e `stanga = mijloc + 1` și nu `stanga = mijloc`?",
+      "options": [
+        "Pentru că lista începe de la indicele 1",
+        "Ca să meargă căutarea la stânga",
+        "`numere[mijloc]` a fost deja verificat, iar cu `stanga = mijloc` căutarea s-ar putea bloca pe același mijloc",
+        "`stanga = mijloc` merge la fel de bine și e același lucru"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "De ce e bucla `while stanga <= dreapta` și nu `while stanga < dreapta`?",
+      "options": [
+        "Cu `<` bucla nu s-ar termina niciodată",
+        "Când `stanga == dreapta` mai e un număr de verificat",
+        "Pentru că `dreapta` pornește mai mare decât lista",
+        "`<=` face căutarea de două ori mai rapidă"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "În urmărirea din lecție pentru 13, cât sunt `stanga` și `dreapta` după primul pas?",
+      "options": [
+        "stanga = 0, dreapta = 3",
+        "stanga = 4, dreapta = 9",
+        "stanga = 5, dreapta = 6",
+        "stanga = 5, dreapta = 9"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 5, 8, 12, 16]\ntinta = 12\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    print(stanga, mijloc, dreapta)\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
+      "options": ["0 2 4\n3 3 4", "0 2 4\n3 3 4\n4 4 4", "0 2 4", "2\n3"],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([9, 2, 7, 4, 1], 2))",
+      "options": ["1", "2", "-1", "Nimic: se oprește cu o eroare"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "Care e cazul de bază al lui `cautare_binara_recursiva`?",
+      "options": [
+        "`numere[mijloc] == tinta`: singura dată când se oprește",
+        "`stanga > dreapta`: nu mai e nimic de căutat, așa că returnează -1",
+        "`stanga == 0`: începutul listei",
+        "`mijloc == dreapta`: ultimul element"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara_recursiva(numere, tinta, stanga, dreapta):\n    if stanga > dreapta:\n        return -1\n    mijloc = (stanga + dreapta) // 2\n    if numere[mijloc] == tinta:\n        return mijloc\n    elif numere[mijloc] < tinta:\n        return cautare_binara_recursiva(numere, tinta, mijloc + 1, dreapta)\n    else:\n        return cautare_binara_recursiva(numere, tinta, stanga, mijloc - 1)\n\nnumere = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]\nprint(cautare_binara_recursiva(numere, 13, 0, len(numere) - 1))",
+      "options": ["-1", "13", "5", "6"],
+      "answer": 3
+    },
+    {
+      "id": "q15",
+      "text": "În misiunea Căutare în Arhivă, interogările sunt 23, 50, 8, 91 și 100. Care e ultima linie?",
+      "options": ["Gasite: 3", "Gasite: 5", "Gasite: 2", "100 -> negasit"],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "În misiune, ce se afișează pentru interogarea 50?",
+      "options": ["50 -> index -1", "50 -> index 7", "50 -> negasit", "Nimic pentru ea"],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "În lecție, căutarea binară îl găsește pe 13 într-o listă de 10 numere. Câte numere verifică?",
+      "options": ["10", "4", "7", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "print((5 + 6) // 2)",
+      "options": ["5.5", "6", "11", "5"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([1, 3, 5, 7, 9], 1))",
+      "options": ["0", "1", "-1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3, 4, 5, 6, 7, 8]\ntinta = 1\nstanga = 0\ndreapta = len(numere) - 1\nverificari = 0\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    verificari += 1\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1\nprint(verificari)",
+      "options": ["1", "4", "3", "8"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "numere = [2, 4, 6, 8, 10]\ntinta = 20\nstanga = 0\ndreapta = len(numere)\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    if numere[mijloc] == tinta:\n        print(mijloc)\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
+      "options": [
+        "Afișează -1",
+        "Se oprește cu IndexError: `dreapta` pornește de la 5, după ultimul indice",
+        "Afișează 4",
+        "Afișează 5"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "Când `numere[mijloc] < tinta`, ce parte a listei lasă deoparte căutarea binară?",
+      "options": [
+        "Tot ce e la dreapta lui `mijloc`",
+        "Doar `numere[mijloc]`",
+        "Nimic: caută din nou în toată lista",
+        "`mijloc` și tot ce e la stânga lui"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 5, 8, 12, 16]\nstanga = 0\ndreapta = len(numere) - 1\nmijloc = (stanga + dreapta) // 2\nprint(numere[mijloc])",
+      "options": ["8", "5", "12", "16"],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "De câte ori poate fi înjumătățită o listă de 16 numere până rămâne un singur număr?",
+      "options": ["8", "16", "4", "2"],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "De ce primește `cautare_binara_recursiva` pe `stanga` și `dreapta` ca argumente?",
+      "options": [
+        "Pentru că o funcție recursivă trebuie să primească patru argumente",
+        "Ca fiecare apel să știe ce parte a listei se mai caută",
+        "Ca să poată sorta lista întâi",
+        "Ca să numere câte apeluri s-au făcut"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]\nprint(cautare_binara(numere, 19))",
+      "options": ["19", "10", "-1", "9"],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "În cartea de telefon din lecție, pagina din mijloc arată nume care încep cu „M”. Unde e „Vercetti”?",
+      "options": [
+        "În a doua jumătate, după M",
+        "În prima jumătate, înainte de M",
+        "Pe pagina din mijloc",
+        "Nu putem ști"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\ncoduri = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]\ninterogare = 8\nindex = cautare_binara(coduri, interogare)\nif index == -1:\n    print(f\"{interogare} -> negasit\")\nelse:\n    print(f\"{interogare} -> index {index}\")",
+      "options": ["8 -> index 3", "8 -> negasit", "8 -> index 2", "2 -> index 8"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "De ce nu poate căutarea binară să găsească sigur numere în `[5, 1, 4, 2]`?",
+      "options": [
+        "Lista e prea scurtă pentru căutarea binară",
+        "Lista nu e sortată, așa că numărul din mijloc nu spune în ce jumătate e ținta",
+        "Pentru că 5 e mai mare decât mijlocul",
+        "Poate: ordinea numerelor nu contează"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([7], 7))",
+      "options": ["7", "-1", "1", "0"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "bs-find",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [{{nums}}]\nprint(cautare_binara(numere, {{t}}))",
+      "values": [
+        {
+          "nums": "2, 5, 8, 12, 16, 23, 38, 56, 72, 91",
+          "t": 23
+        },
+        {
+          "nums": "1, 4, 9, 16, 25, 36, 49",
+          "t": 4
+        },
+        {
+          "nums": "3, 6, 9, 12, 15, 18",
+          "t": 18
+        },
+        {
+          "nums": "10, 20, 30, 40, 50, 60, 70, 80",
+          "t": 70
+        },
+        {
+          "nums": "5, 7, 11, 13, 17, 19, 23",
+          "t": 11
+        }
+      ],
+      "mistakes": [
+        ["            return mijloc", "            return numere[mijloc]"],
+        ["numere[mijloc] < tinta", "numere[mijloc] > tinta"],
+        ["    while stanga <= dreapta:", "    while stanga < dreapta:"],
+        ["dreapta = len(numere) - 1", "dreapta = len(numere) - 2"],
+        ["            stanga = mijloc + 1", "            stanga = mijloc + 2"],
+        ["            return mijloc", "            return mijloc + 1"]
+      ]
+    },
+    {
+      "id": "bs-missing",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [{{nums}}]\nfor tinta in [{{a}}, {{b}}]:\n    print(tinta, cautare_binara(numere, tinta))",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7, 9, 11, 13, 15, 17, 19",
+          "a": 13,
+          "b": 6
+        },
+        {
+          "nums": "2, 4, 6, 8, 10, 12",
+          "a": 7,
+          "b": 12
+        },
+        {
+          "nums": "10, 20, 30, 40, 50",
+          "a": 10,
+          "b": 35
+        },
+        {
+          "nums": "5, 15, 25, 35, 45, 55, 65",
+          "a": 50,
+          "b": 65
+        },
+        {
+          "nums": "1, 2, 4, 8, 16, 32",
+          "a": 8,
+          "b": 3
+        }
+      ],
+      "mistakes": [
+        ["    return -1", "    return 0"],
+        ["            return mijloc", "            return numere[mijloc]"],
+        ["numere[mijloc] < tinta", "numere[mijloc] > tinta"],
+        ["    while stanga <= dreapta:", "    while stanga < dreapta:"]
+      ]
+    },
+    {
+      "id": "bs-trace",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{nums}}]\ntinta = {{t}}\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    print(stanga, mijloc, dreapta)\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7, 9, 11, 13, 15, 17, 19",
+          "t": 13
+        },
+        {
+          "nums": "2, 5, 8, 12, 16, 23, 38, 56, 72, 91",
+          "t": 8
+        },
+        {
+          "nums": "4, 8, 15, 16, 23, 42",
+          "t": 42
+        },
+        {
+          "nums": "10, 20, 30, 40, 50, 60, 70",
+          "t": 50
+        },
+        {
+          "nums": "1, 2, 3, 4, 5, 6, 7, 8, 9",
+          "t": 4
+        }
+      ],
+      "mistakes": [
+        ["        stanga = mijloc + 1", "        stanga = mijloc + 2"],
+        ["        dreapta = mijloc - 1", "        dreapta = mijloc - 2"],
+        [
+          "    mijloc = (stanga + dreapta) // 2\n    print(stanga, mijloc, dreapta)",
+          "    print(stanga, dreapta)\n    mijloc = (stanga + dreapta) // 2"
+        ],
+        ["while stanga <= dreapta:", "while stanga < dreapta:"]
+      ]
+    },
+    {
+      "id": "bs-checks",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{nums}}]\ntinta = {{t}}\nstanga = 0\ndreapta = len(numere) - 1\nverificari = 0\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    verificari += 1\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1\nprint(f\"Verificari: {verificari}\")",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7, 9, 11, 13, 15, 17, 19",
+          "t": 19
+        },
+        {
+          "nums": "2, 4, 6, 8, 10, 12, 14, 16",
+          "t": 2
+        },
+        {
+          "nums": "5, 10, 15, 20, 25, 30, 35",
+          "t": 35
+        },
+        {
+          "nums": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15",
+          "t": 15
+        },
+        {
+          "nums": "3, 6, 9, 12, 15",
+          "t": 6
+        }
+      ],
+      "mistakes": [
+        ["verificari += 1", "verificari = 1"],
+        ["verificari += 1", "verificari += 2"],
+        ["print(f\"Verificari: {verificari}\")", "print(f\"Verificari: {mijloc}\")"],
+        ["verificari = 0", "verificari = 1"]
+      ]
+    },
+    {
+      "id": "bs-recursive",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara_recursiva(numere, tinta, stanga, dreapta):\n    if stanga > dreapta:\n        return -1\n    mijloc = (stanga + dreapta) // 2\n    if numere[mijloc] == tinta:\n        return mijloc\n    elif numere[mijloc] < tinta:\n        return cautare_binara_recursiva(numere, tinta, mijloc + 1, dreapta)\n    else:\n        return cautare_binara_recursiva(numere, tinta, stanga, mijloc - 1)\n\nnumere = [{{nums}}]\nprint(cautare_binara_recursiva(numere, {{t}}, 0, len(numere) - 1))",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7, 9, 11, 13, 15, 17, 19",
+          "t": 15
+        },
+        {
+          "nums": "2, 4, 6, 8, 10",
+          "t": 8
+        },
+        {
+          "nums": "10, 20, 30, 40, 50, 60",
+          "t": 20
+        },
+        {
+          "nums": "7, 14, 21, 28, 35, 42, 49",
+          "t": 49
+        },
+        {
+          "nums": "1, 4, 9, 16, 25",
+          "t": 16
+        }
+      ],
+      "mistakes": [
+        ["        return mijloc", "        return numere[mijloc]"],
+        ["        return -1", "        return 0"],
+        [
+          "return cautare_binara_recursiva(numere, tinta, mijloc + 1, dreapta)",
+          "return cautare_binara_recursiva(numere, tinta, stanga, mijloc - 1)"
+        ],
+        ["    if stanga > dreapta:", "    if stanga >= dreapta:"],
+        ["        return mijloc", "        return mijloc + 1"]
+      ]
+    },
+    {
+      "id": "bs-mission",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\ncoduri = [{{xs}}]\ninterogari = [{{q}}]\ngasite = 0\nfor interogare in interogari:\n    index = cautare_binara(coduri, interogare)\n    if index == -1:\n        print(f\"{interogare} -> negasit\")\n    else:\n        print(f\"{interogare} -> index {index}\")\n        gasite += 1\nprint(f\"Gasite: {gasite}\")",
+      "values": [
+        {
+          "xs": "2, 5, 8, 12, 16, 23, 38, 56, 72, 91",
+          "q": "23, 50, 8"
+        },
+        {
+          "xs": "3, 7, 11, 19, 24, 30",
+          "q": "19, 4, 30"
+        },
+        {
+          "xs": "10, 20, 30, 40, 50, 60, 70",
+          "q": "70, 15, 10, 45"
+        },
+        {
+          "xs": "1, 5, 9, 13, 17",
+          "q": "6, 13"
+        },
+        {
+          "xs": "4, 8, 12, 16, 20, 24, 28, 32",
+          "q": "28, 4, 30"
+        }
+      ],
+      "mistakes": [
+        ["if index == -1:", "if index == 0:"],
+        ["        gasite += 1\n", ""],
+        ["{interogare} -> index {index}", "{interogare} -> index {interogare}"],
+        ["print(f\"Gasite: {gasite}\")", "print(f\"Gasite: {len(interogari)}\")"]
+      ]
+    },
+    {
+      "id": "bs-which-update",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "numere = [{{nums}}]\ntinta = {{t}}\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    print(numere[mijloc])\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7, 9, 11, 13",
+          "t": 13
+        },
+        {
+          "nums": "2, 4, 6, 8, 10, 12, 14, 16",
+          "t": 4
+        },
+        {
+          "nums": "5, 10, 15, 20, 25, 30",
+          "t": 25
+        },
+        {
+          "nums": "1, 2, 3, 4, 5, 6, 7, 8, 9",
+          "t": 3
+        },
+        {
+          "nums": "3, 6, 9, 12, 15, 18, 21",
+          "t": 6
+        }
+      ],
+      "mistakes": [
+        ["numere[mijloc] < tinta", "numere[mijloc] > tinta"],
+        ["        stanga = mijloc + 1", "        stanga = mijloc + 2"],
+        ["    print(numere[mijloc])\n", "    print(mijloc)\n"],
+        ["        dreapta = mijloc - 1", "        dreapta = mijloc - 2"],
+        ["mijloc = (stanga + dreapta) // 2", "mijloc = (stanga + dreapta + 1) // 2"]
+      ]
+    },
+    {
+      "id": "bs-which-return",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [{{nums}}]\nprint(numere)\nprint(cautare_binara(numere, {{t}}))",
+      "values": [
+        {
+          "nums": "4, 8, 15, 16, 23, 42",
+          "t": 23
+        },
+        {
+          "nums": "1, 3, 5, 7, 9",
+          "t": 9
+        },
+        {
+          "nums": "10, 20, 30, 40",
+          "t": 40
+        },
+        {
+          "nums": "2, 3, 5, 7, 11, 13",
+          "t": 7
+        },
+        {
+          "nums": "5, 10, 15, 20, 25, 30, 35",
+          "t": 30
+        }
+      ],
+      "mistakes": [
+        ["            return mijloc", "            return numere[mijloc]"],
+        ["numere[mijloc] < tinta", "numere[mijloc] > tinta"],
+        ["            return mijloc", "            return mijloc + 1"]
+      ]
+    },
+    {
+      "id": "bs-gap-left",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            ___\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([{{nums}}], {{t}}))",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7, 9, 11, 13, 15, 17, 19",
+          "t": 13
+        },
+        {
+          "nums": "2, 4, 6, 8, 10, 12",
+          "t": 10
+        },
+        {
+          "nums": "5, 10, 15, 20, 25, 30, 35",
+          "t": 30
+        },
+        {
+          "nums": "1, 2, 3, 4, 5, 6, 7, 8",
+          "t": 6
+        },
+        {
+          "nums": "3, 9, 27, 81, 243",
+          "t": 81
+        }
+      ],
+      "answer": "stanga = mijloc + 1",
+      "wrong": ["dreapta = mijloc - 1", "return -1", "break", "return mijloc"]
+    },
+    {
+      "id": "bs-gap-loop",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    ___\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nfor tinta in [{{a}}, {{b}}]:\n    print(tinta, cautare_binara([{{nums}}], tinta))",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7, 9",
+          "a": 9,
+          "b": 1
+        },
+        {
+          "nums": "2, 4, 6, 8, 10, 12",
+          "a": 12,
+          "b": 6
+        },
+        {
+          "nums": "10, 20, 30, 40",
+          "a": 10,
+          "b": 40
+        },
+        {
+          "nums": "5, 6, 7, 8, 9, 10, 11",
+          "a": 11,
+          "b": 7
+        },
+        {
+          "nums": "3, 6, 9, 12, 15",
+          "a": 15,
+          "b": 3
+        }
+      ],
+      "answer": "while stanga <= dreapta:",
+      "wrong": [
+        "while stanga < dreapta:",
+        "if stanga <= dreapta:",
+        "while stanga == dreapta:",
+        "while stanga > dreapta:"
+      ]
+    },
+    {
+      "id": "bs-val-mid",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) ___ 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([{{nums}}], {{t}}))",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7, 9, 11, 13, 15, 17, 19",
+          "t": 13
+        },
+        {
+          "nums": "2, 4, 6, 8, 10",
+          "t": 8
+        },
+        {
+          "nums": "10, 20, 30, 40, 50, 60",
+          "t": 50
+        },
+        {
+          "nums": "4, 8, 15, 16, 23, 42",
+          "t": 4
+        },
+        {
+          "nums": "7, 14, 21, 28, 35, 42, 49",
+          "t": 42
+        }
+      ],
+      "answer": "//",
+      "wrong": ["/", "*", "+"]
+    },
+    {
+      "id": "bs-val-start",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - ___\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [{{nums}}]\nfor tinta in [{{a}}, {{b}}]:\n    print(tinta, cautare_binara(numere, tinta))",
+      "values": [
+        {
+          "nums": "2, 4, 6, 8, 10, 12",
+          "a": 12,
+          "b": 4
+        },
+        {
+          "nums": "1, 3, 5, 7, 9",
+          "a": 9,
+          "b": 3
+        },
+        {
+          "nums": "10, 20, 30, 40, 50, 60, 70",
+          "a": 70,
+          "b": 20
+        },
+        {
+          "nums": "5, 15, 25, 35",
+          "a": 35,
+          "b": 5
+        },
+        {
+          "nums": "4, 8, 12, 16, 20",
+          "a": 20,
+          "b": 8
+        }
+      ],
+      "answer": "1",
+      "wrong": ["0", "2", "len(numere)", "3"]
+    },
+    {
+      "id": "bs-bad-compare",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [{{nums}}]\ntinta = {{t}}\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    print(stanga, mijloc, dreapta)\n    if numere[mijloc] == tinta:\n        print(\"Gasite\", mijloc)\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7, 9, 11, 13",
+          "t": 11
+        },
+        {
+          "nums": "2, 4, 6, 8, 10, 12, 14, 16",
+          "t": 14
+        },
+        {
+          "nums": "5, 10, 15, 20, 25",
+          "t": 20
+        },
+        {
+          "nums": "1, 2, 3, 4, 5, 6, 7, 8, 9",
+          "t": 8
+        },
+        {
+          "nums": "10, 20, 30, 40, 50, 60, 70",
+          "t": 60
+        }
+      ],
+      "bug": ["numere[mijloc] < tinta", "numere[mijloc] > tinta"]
+    },
+    {
+      "id": "bs-bad-return",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [{{nums}}]\nfor tinta in [{{a}}, {{b}}]:\n    print(tinta, cautare_binara(numere, tinta))",
+      "values": [
+        {
+          "nums": "2, 4, 6, 8, 10, 12",
+          "a": 8,
+          "b": 2
+        },
+        {
+          "nums": "1, 3, 5, 7, 9",
+          "a": 3,
+          "b": 9
+        },
+        {
+          "nums": "10, 20, 30, 40, 50",
+          "a": 50,
+          "b": 20
+        },
+        {
+          "nums": "5, 15, 25, 35, 45, 55",
+          "a": 15,
+          "b": 45
+        },
+        {
+          "nums": "4, 8, 12, 16, 20, 24, 28",
+          "a": 28,
+          "b": 8
+        }
+      ],
+      "bug": ["            return mijloc", "            return numere[mijloc]"]
+    }
+  ]
+}
