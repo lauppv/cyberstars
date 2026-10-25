@@ -1,251 +1,72 @@
 # Contributing to CyberStars
 
-Thanks for your interest in contributing! CyberStars is an open-source coding education platform and we welcome contributions of all kinds.
+Thanks for helping! Bugs, lesson fixes, new lessons and code are all welcome.
 
-## Getting started
+## Run it locally
 
-### Prerequisites
-
-- Node.js 24+
-- PostgreSQL 14+
-- Docker (required for code execution sandboxing)
-- Linux or macOS
-
-### Setup
-
-If you just want to run CyberStars locally (try it out, follow the lessons), clone the main repo directly with the command below. If you plan to submit changes, fork the repo first and clone your fork instead; see [Code changes](#code-changes) for the full fork workflow.
+You need Node.js 24+, PostgreSQL 14+ and Docker, on Linux or macOS.
 
 ```bash
-git clone https://github.com/lauppv/cyberstars.git
+git clone https://github.com/<your-username>/cyberstars.git   # your fork
 cd cyberstars
-cp .env.example .env
-```
-
-Edit `.env` before continuing:
-
-- Set `DB_PASSWORD` to the password you'll create below
-- Set `DATABASE_URL` to match: `postgresql://cyberstars:<your-password>@localhost:5432/cyberstars`
-- Set `JWT_SECRET` to any random string (e.g. `openssl rand -hex 32`)
-
-#### PostgreSQL setup
-
-Make sure PostgreSQL is running, then create the user and database:
-
-**Linux:**
-
-```bash
-sudo systemctl start postgresql
-sudo -u postgres psql -c "CREATE USER cyberstars WITH PASSWORD 'your-password-here';"
+git remote add upstream https://github.com/lauppv/cyberstars.git
+cp .env.example .env          # set JWT_SECRET to any random string
+sudo -u postgres psql -c "CREATE USER cyberstars WITH PASSWORD 'change-me';"
 sudo -u postgres psql -c "CREATE DATABASE cyberstars OWNER cyberstars;"
-```
-
-**macOS (Homebrew):**
-
-```bash
-brew services start postgresql
-psql postgres -c "CREATE USER cyberstars WITH PASSWORD 'your-password-here';"
-psql postgres -c "CREATE DATABASE cyberstars OWNER cyberstars;"
-```
-
-#### Docker setup
-
-Pull the Docker images for code execution:
-
-```bash
-docker pull gcc:latest
-docker pull python:3.10-slim
-docker pull eclipse-temurin:21-jdk-alpine
-```
-
-**Linux only**: your user must be in the `docker` group:
-
-```bash
-sudo usermod -aG docker $USER
-# Log out and back in for the group change to take effect
-```
-
-On macOS, Docker Desktop handles permissions automatically.
-
-#### Install and run
-
-```bash
-npm ci
-npm run dev
-```
-
-`npm run dev` handles everything automatically: it generates Prisma client, runs migrations, seeds the database, and starts both the frontend (Vite on `:5173`) and backend (Express on `:5000`).
-
-### Linux terminal sandbox
-
-The Linux course uses a custom sandbox image. Build it with:
-
-```bash
+for i in gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine; do docker pull $i; done
 docker build -t cyberstars-linux-sandbox apps/api/src/runtimes/linux-sandbox
+npm ci
+npm run dev                   # migrates, seeds, serves the app on :5173 and the API on :5000
 ```
 
-Without this image, everything else works; only the Linux terminal lessons will fail.
+- The password must match `DB_PASSWORD` and `DATABASE_URL` in `.env` (`change-me` by default).
+- On macOS use `psql postgres` instead of `sudo -u postgres psql`. On Linux your user must be in the `docker` group.
+- Without the sandbox image everything works except the Linux terminal lessons.
+- Run every npm script from the repo root.
 
-## Project structure
+## Where things are
 
-The repo is one npm workspace. See [ARCHITECTURE.md](ARCHITECTURE.md) for the full architecture. The short version:
+- `apps/ui/`: the React app
+- `apps/api/`: the Express API, with the database in `apps/api/prisma/`
+- `packages/shared/`: types and constants both use
+- `packages/content/`: lessons, algorithm challenges, the curriculum and solution variants
 
-- `apps/ui/`: React 19 + Vite + Tailwind frontend
-- `apps/api/`: Express 5 + TypeScript API, with the database schema, migrations and seed in `apps/api/prisma/`
-- `packages/shared/`: Types and constants used by both the UI and the API
-- `packages/content/`: Lessons, algorithm challenges, the curriculum (`curriculum.ts`) and the solution variants
+[ARCHITECTURE.md](ARCHITECTURE.md) has the full picture.
 
-Run every npm script from the root; it forwards to the right workspace.
+## Report a problem
 
-## How to contribute
+[Open an issue](https://github.com/lauppv/cyberstars/issues/new/choose) and pick a form: a bug, a problem in a lesson, or an idea. Security issues go through [SECURITY.md](SECURITY.md), never a public issue.
 
-### How we track work
+## Lessons
 
-Since October 11, 2026, CyberStars has moved to tickets in [Linear](https://linear.app/cyberstars)
-(team `CYB`), as the project has grown several directions of development worth planning.
-Each PR is tied to a ticket, which is why you'll see references like `CYB-23` in PR
-titles and descriptions. The Linear workspace isn't public, so those links need an account.
+- A lesson is `<slug>.md` plus `<slug>-code.md` (the starter) in `packages/content/lessons/<course>/`, registered in `packages/content/curriculum.ts`, the one source of the curriculum. A Linux lesson has `<slug>-setup.json` (its sandbox files) instead of the starter.
+- Code blocks are full programs: C with `#include`, `int main(void)` and `return 0`, Java inside `public class Main`.
+- `apps/ui/public/lessons/` and `curriculum.json` are generated by `npm run dev` and the build. Never edit them.
+- A lesson is completed only by passing its tests, so to make it completable add `<slug>-tests.json` and `<slug>-solution.md`.
+- Tests accept any correct program. They require an exact name only where a value is injected or the mission names what to write, plus the construct the lesson teaches.
+- Next to the tests, keep variants in `packages/content/variants/<course>/<slug>/`: `accept-*` must pass, `reject-*` (hardcoded output, a near miss, the right output without the taught construct) must fail. Add a reject for every construct the lesson requires.
+- An algorithm challenge states its input limits (`1 <= N <= 200`), and every test case stays within them.
+- Check with `npm run validate:tests` and `npm run check:tests <course>/<slug>` (the real judge, in Docker). CI runs it on the lessons a PR changes.
 
-GitHub issues, forks and PRs are always welcome. If you'd like to contribute regularly,
-create a Linear account and open an issue here asking to join. A maintainer will
-send you an invite to the workspace.
+Formats (tests, hidden parts, step-by-step visuals, multi-language courses) are in [ARCHITECTURE.md](ARCHITECTURE.md#lesson-format). Copy an existing lesson when in doubt.
 
-### Reporting bugs
+## Translations
 
-[Open an issue](https://github.com/lauppv/cyberstars/issues/new/choose) and pick the form that fits:
-a bug on the site, a problem in a lesson (a typo, a wrong explanation, a test that fails a correct
-solution), or a feature idea. Security issues go through [SECURITY.md](SECURITY.md), never a public
-issue.
+English is the source; Romanian is optional and can come later, since a missing translation falls back to English. A translation keeps the slug and sits in a `ro/` folder beside the English file:
 
-### Adding lessons
+- Lessons: `packages/content/lessons/<course>/ro/`. Code and output stay ASCII, diacritics only in the prose.
+- Almanac: `apps/ui/public/almanac/ro/`
+- UI strings: every key in `apps/ui/src/i18n/locales/en.json` also goes in `ro.json`.
 
-Lesson content lives in `packages/content/lessons/{python,c,java,linux,trees-graphs}/`. Python, C and Java lessons need two files:
+## Code
 
-1. `<slug>.md`: the lesson content (Markdown with runnable code blocks)
-2. `<slug>-code.md`: the starter code template shown in the editor
+1. Branch from `main` and keep it current: `git fetch upstream && git rebase upstream/main`.
+2. Keep each commit to one concern, so it can be reverted on its own, and leave every commit green.
+3. Before pushing, run what CI runs: `npm run format && npm run lint && npm run typecheck && npm test && npm run dead-code`.
+4. Open a PR against `lauppv/cyberstars` saying what changes and how you checked it.
 
-A multi-language course (today `trees-graphs`, Beta) teaches every lesson in Python, Java and C, so it keeps one folder per language, `lessons/<course>/<language>/` (each with its own `ro/`), and every file of a lesson must exist in all three. Its starter code is bare: the student types the mission's values.
+Style: strict TypeScript, Zod for every request body, colours from the CSS variables in `index.css`, flat `.panel` surfaces, `lucide-react` icons, no decorative emoji, no all-caps text, comments only for a non-obvious why.
 
-Then register the lesson in `packages/content/curriculum.ts` (the `lessons` array) with the correct `courseKey`, `slug`, `title`, and `sortOrder`. This file is the **single source of truth** for curriculum structure: you edit it in one place, and it both seeds the database and generates the static `curriculum.json` the client reads.
+Work is planned in [Linear](https://linear.app/cyberstars) (team `CYB`, not public), hence the `CYB-23` in PR titles. Issues and PRs here are always welcome; to join Linear, open an issue and ask.
 
-Lesson content and curriculum are served as **static files**, not API routes. `npm run dev` (and `npm run build`) run `packages/content/scripts/generate-static-content.ts`, which copies the lesson Markdown into `apps/ui/public/lessons/` and writes `apps/ui/public/curriculum.json`. Those outputs are generated, not committed. Never edit them by hand; edit `packages/content/lessons/` and `packages/content/curriculum.ts` instead.
-
-Completion is **judge-driven**, not honor-system: to make a lesson completable, add an
-optional `<slug>-tests.json` (judge test cases) and `<slug>-solution.md` (reference
-solution) beside the lesson. Passing the judge (the "Run Tests" button) is the only way
-to complete a lesson. The server verifies it, so there is no manual "Mark Complete"
-button. Lessons without test files still work; they just aren't completable yet.
-
-Algorithm challenges (`packages/content/algorithms/{python,java,c}/`, plus the multi-language
-`algorithms/trees-graphs/<language>/`) state their input limits in
-the statement's Input list, in English and Romanian, written as `<=` with powers
-(`1 <= N <= 200`, `-10^9 <= x <= 10^9`). Their tests mix a few hand-written cases with
-hidden `"generated": true` ones, and every case has to stay within the stated limits.
-The trees and graphs challenges have the student write only one function: a
-`<slug>-harness.md` per language and locale holds the rest of the program, with a
-`{{code: <name>}}` placeholder where the student's code goes (`<name>` is the function it
-calls). Their starter shows, as a comment, what the function may use from it, and their
-solution and variants are only the function, the way a student writes it.
-
-Course lessons are graded the way an online judge grades: any correct program passes,
-whatever its idea and naming. A test only requires an exact name where the judge injects
-a value or the mission names the function or class to write, plus the construct the
-lesson teaches (the `for` lesson needs a `for`, the class lesson a class of the
-student's own). Next to the tests, a lesson keeps variants in
-`packages/content/variants/<course>/<slug>/` (`variants/<course>/<language>/<slug>/` on a
-multi-language course): `accept-*` files are other correct solutions
-that must pass, `reject-*` files are cheats or near misses that must fail (hardcoded
-output, the wrong loop, the right output without the taught construct). Add a reject for
-every construct a lesson requires.
-
-Before opening a PR, run `npm run validate:tests` and
-`npm run check:tests <course>/<slug>` (for example `python/string-reverse` or
-`algo-c/binary-search-c`; a multi-language lesson names its language, `trees-graphs/c/trees`,
-or leaves it out to grade all three), which grades the reference solution and the variants through
-the real Docker judge: the reference must pass every case, and every variant must come
-out as its name says. CI runs the same check on the lessons your PR changes.
-
-A lesson or challenge can show an algorithm step by step in a ` ```visual ` fence holding
-JSON: an `array`, `boxes` (boxes and arrows), a `tree`, a `graph`, a `grid` or a `stack`
-(`"queue": true` for a queue), and a step with an `ask` can offer `choices` with the right
-`answer`. Copy the shape from an existing one. A multi-language course writes each visual
-once in `lessons/<course>/visuals/<name>.json` (`visuals/ro/` for Romanian) and its lessons
-name it with `{"use": "<name>"}`. `lessonVisuals.test.ts` (part of `npm test`) fails on a
-visual the player can't read, words too long for a phone, or a Romanian lesson whose
-visuals differ from its English one's.
-
-Important rules:
-
-- C code blocks must be full programs (`#include`, `int main(void)`, `return 0`)
-- Java code blocks must have `public class Main` with `main()` method
-- Linux lessons use two files instead: `<slug>.md` (the lesson) and `<slug>-setup.json` (the sandbox filesystem), no `-code.md`
-- Look at existing lessons for the format; consistency matters
-
-### Translations (optional)
-
-CyberStars has a bilingual UI (English + Romanian) with a language toggle. **English is the default and the source of truth**, so always author lessons, algorithm challenges, and almanac entries in English first.
-
-Translations are **optional and can be added later**; you never have to translate content in the same change that adds it. Until a translation exists, the app falls back to English automatically, so an English-only lesson renders correctly in both languages and nothing breaks when a reader switches to Romanian.
-
-To translate content, add the localized file alongside the English source in a per-language subfolder (currently `ro`), reusing the **same slug** (slugs are language-independent):
-
-- Lessons: `packages/content/lessons/<course>/ro/<slug>.md` (and `<slug>-code.md` if the course has one); on a multi-language course `lessons/<course>/<language>/ro/`
-- Almanac: `apps/ui/public/almanac/ro/articles/<slug>.json`, plus `ro/index.json` and `ro/extras.json`
-- UI strings: add the matching keys to `apps/ui/src/i18n/locales/ro.json` (keep its structure in sync with `en.json`)
-
-Lesson and course titles come from `curriculum.ts` and are not translated per-language.
-
-### Code changes
-
-CyberStars uses the **fork-and-pull** model: you push branches to your own fork, then open a pull request against this repo. Direct push access to this repo is only granted to collaborators, so external contributors always work from a fork.
-
-1. Fork the repo on GitHub, then clone your fork and add this repo as `upstream`:
-   ```bash
-   git clone https://github.com/<your-username>/cyberstars.git
-   cd cyberstars
-   git remote add upstream https://github.com/lauppv/cyberstars.git
-   ```
-2. Create a feature branch from `main`: `git switch -c my-feature main`
-3. Keep your branch up to date with upstream: `git fetch upstream && git rebase upstream/main`
-4. Make your changes
-5. Run `npm run format:check && npm run lint && npm run typecheck && npm test && npm run dead-code`. All five must pass (these mirror the CI gates)
-6. Push to your fork (`git push origin my-feature`) and open a pull request against `lauppv/cyberstars` with a clear description of what and why
-
-### Commits
-
-Keep each commit to one concern: a piece of shared infrastructure, one behaviour change,
-the tests that belong to it, docs, or an unrelated cleanup. A PR usually holds several
-commits, not one.
-
-Why: any single piece can be reverted on its own without losing the rest, reviewers can
-read the PR one step at a time, and `git bisect` lands on a small change instead of a
-whole session's work.
-
-Stage per path (or with `git add -p`) rather than `git add -A`. The one limit on
-splitting: every commit must leave the tree green, so never split so finely that an
-intermediate commit fails typecheck or tests.
-
-### Formatting
-
-This project uses [Prettier](https://prettier.io/) to enforce consistent code style (single quotes, semicolons, 2-space indent, 100-char lines). CI will reject unformatted code.
-
-Before committing, run:
-
-```bash
-npm run format        # auto-fix all formatting issues
-npm run format:check  # verify everything is clean (same check CI runs)
-```
-
-If `format:check` fails, just run `format`, it fixes everything automatically.
-
-### Style guide
-
-- TypeScript everywhere, strict mode
-- Zod for all request validation
-- CSS custom properties for theming (accent: `#6C5CE7`)
-- No comments unless the "why" is non-obvious
-- Flat, opaque panels (`.panel`), lucide-react icons, no decorative emoji or animated backgrounds
-
-## Code of conduct
-
-Be respectful. We're all here to learn and build something cool. Everyone taking part follows our
-[Code of Conduct](CODE_OF_CONDUCT.md).
+Everyone here follows the [Code of Conduct](CODE_OF_CONDUCT.md).
