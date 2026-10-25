@@ -1,0 +1,588 @@
+{
+  "note": "Made by npm run make:quiz from the templates in pattern-accumulator-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "pa-sum-4de1d9",
+      "text": "Ce afișează?",
+      "code": "preturi = [10, 20, 30, 40]\ntotal = 0\nfor n in preturi:\n    total += n\nprint(total)",
+      "options": ["100", "40", "101", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pa-sum-d33c6b",
+      "text": "Ce afișează?",
+      "code": "puncte = [7, 3, 12]\ntotal = 0\nfor n in puncte:\n    total += n\nprint(total)",
+      "options": ["22", "12", "23", "3"],
+      "answer": 0
+    },
+    {
+      "id": "pa-sum-e5321e",
+      "text": "Ce afișează?",
+      "code": "combustibil = [25, 5, 15, 30]\ntotal = 0\nfor n in combustibil:\n    total += n\nprint(total)",
+      "options": ["75", "30", "76", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pa-sum-dcec02",
+      "text": "Ce afișează?",
+      "code": "scoruri = [8, 14, 6, 2]\ntotal = 0\nfor n in scoruri:\n    total += n\nprint(total)",
+      "options": ["30", "2", "31", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pa-product-e4ea00",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 3, 4, 5]\nprodus = 1\nfor n in numere:\n    produs *= n\nprint(produs)",
+      "options": ["120", "0", "15", "5"],
+      "answer": 0
+    },
+    {
+      "id": "pa-product-3a7eba",
+      "text": "Ce afișează?",
+      "code": "factori = [3, 3, 2]\nprodus = 1\nfor n in factori:\n    produs *= n\nprint(produs)",
+      "options": ["18", "0", "9", "2"],
+      "answer": 0
+    },
+    {
+      "id": "pa-product-2de6d4",
+      "text": "Ce afișează?",
+      "code": "bonusuri = [5, 2, 4]\nprodus = 1\nfor n in bonusuri:\n    produs *= n\nprint(produs)",
+      "options": ["40", "0", "12", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pa-product-1aee1f",
+      "text": "Ce afișează?",
+      "code": "pasi = [6, 1, 3]\nprodus = 1\nfor n in pasi:\n    produs *= n\nprint(produs)",
+      "options": ["18", "0", "11", "3"],
+      "answer": 0
+    },
+    {
+      "id": "pa-string-793f7f",
+      "text": "Ce afișează?",
+      "code": "parti = [\"Vice\", \"City\", \"Stories\"]\ncod = \"\"\nfor p in parti:\n    cod += p + \"-\"\nprint(cod)",
+      "options": ["Vice-City-Stories-", "Stories-", "-Vice-City-Stories", "Stories-City-Vice-"],
+      "answer": 0
+    },
+    {
+      "id": "pa-string-5aa404",
+      "text": "Ce afișează?",
+      "code": "parti = [\"A\", \"B\", \"C\", \"D\"]\ncod = \"\"\nfor p in parti:\n    cod += p + \".\"\nprint(cod)",
+      "options": ["A.B.C.D.", "D.", ".A.B.C.D", "D.C.B.A."],
+      "answer": 0
+    },
+    {
+      "id": "pa-string-a5601b",
+      "text": "Ce afișează?",
+      "code": "parti = [\"rosu\", \"albastru\"]\ncod = \"\"\nfor p in parti:\n    cod += p + \"/\"\nprint(cod)",
+      "options": ["rosu/albastru/", "albastru/", "/rosu/albastru", "albastru/rosu/"],
+      "answer": 0
+    },
+    {
+      "id": "pa-string-3ebbf2",
+      "text": "Ce afișează?",
+      "code": "parti = [\"Marte\", \"Venus\", \"Pamant\"]\ncod = \"\"\nfor p in parti:\n    cod += p + \",\"\nprint(cod)",
+      "options": ["Marte,Venus,Pamant,", "Pamant,", ",Marte,Venus,Pamant", "Pamant,Venus,Marte,"],
+      "answer": 0
+    },
+    {
+      "id": "pa-reverse-a8b7db",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"ORBITA\"\ninvers = \"\"\nfor caracter in cuvant:\n    invers = caracter + invers\nprint(invers)",
+      "options": ["ATIBRO", "ORBITA", "A", "O\nRO\nBRO\nIBRO\nTIBRO\nATIBRO"],
+      "answer": 0
+    },
+    {
+      "id": "pa-reverse-0f13b2",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"LASER\"\ninvers = \"\"\nfor caracter in cuvant:\n    invers = caracter + invers\nprint(invers)",
+      "options": ["RESAL", "LASER", "R", "L\nAL\nSAL\nESAL\nRESAL"],
+      "answer": 0
+    },
+    {
+      "id": "pa-reverse-e87b69",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Tommy\"\ninvers = \"\"\nfor caracter in cuvant:\n    invers = caracter + invers\nprint(invers)",
+      "options": ["ymmoT", "Tommy", "y", "T\noT\nmoT\nmmoT\nymmoT"],
+      "answer": 0
+    },
+    {
+      "id": "pa-reverse-fb4677",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"COMETA\"\ninvers = \"\"\nfor caracter in cuvant:\n    invers = caracter + invers\nprint(invers)",
+      "options": ["ATEMOC", "COMETA", "A", "C\nOC\nMOC\nEMOC\nTEMOC\nATEMOC"],
+      "answer": 0
+    },
+    {
+      "id": "pa-filter-283d71",
+      "text": "Ce afișează?",
+      "code": "intensitati = [30, 65, 20, 90, 50]\nputernice = []\nfor s in intensitati:\n    if s > 50:\n        puternice.append(s)\nprint(puternice)",
+      "options": ["[65, 90]", "[65, 90, 50]", "[90]", "[30, 20]"],
+      "answer": 0
+    },
+    {
+      "id": "pa-filter-c1db0f",
+      "text": "Ce afișează?",
+      "code": "semnale = [12, 40, 25, 8, 40]\nputernice = []\nfor s in semnale:\n    if s > 25:\n        puternice.append(s)\nprint(puternice)",
+      "options": ["[40, 40]", "[40, 25, 40]", "[40]", "[12, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "pa-filter-d315c4",
+      "text": "Ce afișează?",
+      "code": "citiri = [70, 100, 45, 100, 80]\nputernice = []\nfor s in citiri:\n    if s > 80:\n        puternice.append(s)\nprint(puternice)",
+      "options": ["[100, 100]", "[100, 100, 80]", "[100]", "[70, 45]"],
+      "answer": 0
+    },
+    {
+      "id": "pa-filter-b86a3c",
+      "text": "Ce afișează?",
+      "code": "niveluri = [5, 9, 3, 6, 7]\nputernice = []\nfor s in niveluri:\n    if s > 6:\n        puternice.append(s)\nprint(puternice)",
+      "options": ["[9, 7]", "[9, 6, 7]", "[7]", "[5, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "pa-letters-925d71",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"soare\", \"luna\", \"stea\"]\nlitere = 0\nfor c in cuvinte:\n    litere += len(c)\nprint(litere)",
+      "options": ["13", "3", "4", "14"],
+      "answer": 0
+    },
+    {
+      "id": "pa-letters-3e779f",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"Tommy\", \"Ken\"]\nlitere = 0\nfor c in cuvinte:\n    litere += len(c)\nprint(litere)",
+      "options": ["8", "2", "3", "9"],
+      "answer": 0
+    },
+    {
+      "id": "pa-letters-d1b054",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"du\", \"te\", \"la\", \"baza\"]\nlitere = 0\nfor c in cuvinte:\n    litere += len(c)\nprint(litere)",
+      "options": ["10", "4", "11", "16"],
+      "answer": 0
+    },
+    {
+      "id": "pa-letters-6906be",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"radar\", \"laser\", \"sonda\"]\nlitere = 0\nfor c in cuvinte:\n    litere += len(c)\nprint(litere)",
+      "options": ["15", "3", "5", "16"],
+      "answer": 0
+    },
+    {
+      "id": "pa-evens-b83cd6",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3, 4, 5, 6]\ntotal = 0\nfor n in numere:\n    if n % 2 == 0:\n        total += n\nprint(f\"Suma: {total}\")",
+      "options": ["Suma: 12", "Suma: 9", "Suma: 3", "Suma: 21"],
+      "answer": 0
+    },
+    {
+      "id": "pa-evens-21f61e",
+      "text": "Ce afișează?",
+      "code": "coduri = [10, 15, 20]\ntotal = 0\nfor n in coduri:\n    if n % 2 == 0:\n        total += n\nprint(f\"Suma: {total}\")",
+      "options": ["Suma: 30", "Suma: 15", "Suma: 2", "Suma: 45"],
+      "answer": 0
+    },
+    {
+      "id": "pa-evens-fff22b",
+      "text": "Ce afișează?",
+      "code": "varste = [7, 8, 12, 9]\ntotal = 0\nfor n in varste:\n    if n % 2 == 0:\n        total += n\nprint(f\"Suma: {total}\")",
+      "options": ["Suma: 20", "Suma: 16", "Suma: 2", "Suma: 36"],
+      "answer": 0
+    },
+    {
+      "id": "pa-evens-2b9ec1",
+      "text": "Ce afișează?",
+      "code": "valori = [3, 14, 5, 6, 11]\ntotal = 0\nfor n in valori:\n    if n % 2 == 0:\n        total += n\nprint(f\"Suma: {total}\")",
+      "options": ["Suma: 20", "Suma: 19", "Suma: 2", "Suma: 39"],
+      "answer": 0
+    },
+    {
+      "id": "pa-initials-b56c42",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Lance\", \"Ken\"]\ninitiale = \"\"\nfor nume in echipaj:\n    initiale += nume[0]\nprint(initiale)",
+      "options": ["TLK", "oae", "K", "KLT"],
+      "answer": 0
+    },
+    {
+      "id": "pa-initials-f74f08",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Pamant\", \"Venus\", \"Pluto\"]\ninitiale = \"\"\nfor nume in planete:\n    initiale += nume[0]\nprint(initiale)",
+      "options": ["MPVP", "aael", "P", "PVPM"],
+      "answer": 0
+    },
+    {
+      "id": "pa-initials-6b2a55",
+      "text": "Ce afișează?",
+      "code": "masini = [\"Sabre\", \"Infernus\", \"Cheetah\"]\ninitiale = \"\"\nfor nume in masini:\n    initiale += nume[0]\nprint(initiale)",
+      "options": ["SIC", "anh", "C", "CIS"],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-double-0ba11f",
+      "text": "Care program afișează asta?",
+      "output": "[2, 4, 6]",
+      "options": [
+        "numere = [1, 2, 3]\ndublate = []\nfor n in numere:\n    dublate.append(n * 2)\nprint(dublate)",
+        "numere = [1, 2, 3]\ndublate = []\nfor n in numere:\n    dublate.append(n)\nprint(dublate)",
+        "numere = [1, 2, 3]\ndublate = []\nfor n in numere:\n    dublate = [n * 2]\nprint(dublate)",
+        "numere = [1, 2, 3]\ndublate = []\nfor n in numere:\n    dublate.append(n * 2)\n    print(dublate)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-double-b66bde",
+      "text": "Care program afișează asta?",
+      "output": "[20, 50, 80]",
+      "options": [
+        "viteze = [10, 25, 40]\ndublate = []\nfor n in viteze:\n    dublate.append(n * 2)\nprint(dublate)",
+        "viteze = [10, 25, 40]\ndublate = []\nfor n in viteze:\n    dublate.append(n)\nprint(dublate)",
+        "viteze = [10, 25, 40]\ndublate = []\nfor n in viteze:\n    dublate = [n * 2]\nprint(dublate)",
+        "viteze = [10, 25, 40]\ndublate = []\nfor n in viteze:\n    dublate.append(n * 2)\n    print(dublate)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-double-57d0b2",
+      "text": "Care program afișează asta?",
+      "output": "[6, 10]",
+      "options": [
+        "vieti = [3, 5]\ndublate = []\nfor n in vieti:\n    dublate.append(n * 2)\nprint(dublate)",
+        "vieti = [3, 5]\ndublate = []\nfor n in vieti:\n    dublate.append(n)\nprint(dublate)",
+        "vieti = [3, 5]\ndublate = []\nfor n in vieti:\n    dublate = [n * 2]\nprint(dublate)",
+        "vieti = [3, 5]\ndublate = []\nfor n in vieti:\n    dublate.append(n * 2)\n    print(dublate)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-reverse-4f1db6",
+      "text": "Care program afișează asta?",
+      "output": "OIDAR",
+      "options": [
+        "cod = \"RADIO\"\ninvers = \"\"\nfor caracter in cod:\n    invers = caracter + invers\nprint(invers)",
+        "cod = \"RADIO\"\ninvers = \"\"\nfor caracter in cod:\n    invers = invers + caracter\nprint(invers)",
+        "cod = \"RADIO\"\ninvers = \"\"\nfor caracter in cod:\n    invers = caracter\nprint(invers)",
+        "cod = \"RADIO\"\ninvers = \"\"\nfor caracter in cod:\n    invers = caracter + invers\nprint(cod)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-reverse-e0dfb3",
+      "text": "Care program afișează asta?",
+      "output": "ecnaL",
+      "options": [
+        "nume = \"Lance\"\ninvers = \"\"\nfor caracter in nume:\n    invers = caracter + invers\nprint(invers)",
+        "nume = \"Lance\"\ninvers = \"\"\nfor caracter in nume:\n    invers = invers + caracter\nprint(invers)",
+        "nume = \"Lance\"\ninvers = \"\"\nfor caracter in nume:\n    invers = caracter\nprint(invers)",
+        "nume = \"Lance\"\ninvers = \"\"\nfor caracter in nume:\n    invers = caracter + invers\nprint(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-reverse-c42976",
+      "text": "Care program afișează asta?",
+      "output": "AFLA",
+      "options": [
+        "semnal = \"ALFA\"\ninvers = \"\"\nfor caracter in semnal:\n    invers = caracter + invers\nprint(invers)",
+        "semnal = \"ALFA\"\ninvers = \"\"\nfor caracter in semnal:\n    invers = invers + caracter\nprint(invers)",
+        "semnal = \"ALFA\"\ninvers = \"\"\nfor caracter in semnal:\n    invers = caracter\nprint(invers)",
+        "semnal = \"ALFA\"\ninvers = \"\"\nfor caracter in semnal:\n    invers = caracter + invers\nprint(semnal)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-start-a7d8ef",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\nfor n in [2, 3, 4]:\n    produs *= n\nprint(produs)",
+      "output": "24",
+      "options": ["produs = 1", "produs = 0", "produs = 2", "produs = []"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-start-2b018f",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\nfor n in [5, 2, 2]:\n    produs *= n\nprint(produs)",
+      "output": "20",
+      "options": ["produs = 1", "produs = 0", "produs = 2", "produs = []"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-start-32318b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\nfor n in [3, 7]:\n    produs *= n\nprint(produs)",
+      "output": "21",
+      "options": ["produs = 1", "produs = 0", "produs = 2", "produs = []"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-start-910b80",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\nfor n in [4, 1, 5]:\n    produs *= n\nprint(produs)",
+      "output": "20",
+      "options": ["produs = 1", "produs = 0", "produs = 2", "produs = []"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-append-e23446",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "citiri = [40, 12, 75, 8]\nmici = []\nfor n in citiri:\n    if n < 20:\n        ___\nprint(mici)",
+      "output": "[12, 8]",
+      "options": ["mici.append(n)", "mici = [n]", "mici.append(20)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-append-75a179",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = [15, 30, 9, 18]\nmici = []\nfor n in varste:\n    if n < 18:\n        ___\nprint(mici)",
+      "output": "[15, 9]",
+      "options": ["mici.append(n)", "mici = [n]", "mici.append(18)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-append-986796",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = [5, 50, 3, 25]\nmici = []\nfor n in preturi:\n    if n < 10:\n        ___\nprint(mici)",
+      "output": "[5, 3]",
+      "options": ["mici.append(n)", "mici = [n]", "mici.append(10)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-append-cd8b77",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [60, 45, 90, 30]\nmici = []\nfor n in scoruri:\n    if n < 50:\n        ___\nprint(mici)",
+      "output": "[45, 30]",
+      "options": ["mici.append(n)", "mici = [n]", "mici.append(50)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-reverse-3ccaa9",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"SATURN\"\nrezultat = \"\"\nfor caracter in cuvant:\n    ___\nprint(rezultat)",
+      "output": "NRUTAS",
+      "options": [
+        "rezultat = caracter + rezultat",
+        "rezultat = rezultat + caracter",
+        "rezultat = caracter",
+        "rezultat += cuvant"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-reverse-6d10c6",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Cortez\"\nrezultat = \"\"\nfor caracter in cuvant:\n    ___\nprint(rezultat)",
+      "output": "zetroC",
+      "options": [
+        "rezultat = caracter + rezultat",
+        "rezultat = rezultat + caracter",
+        "rezultat = caracter",
+        "rezultat += cuvant"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-reverse-ad4873",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"SONDA\"\nrezultat = \"\"\nfor caracter in cuvant:\n    ___\nprint(rezultat)",
+      "output": "ADNOS",
+      "options": [
+        "rezultat = caracter + rezultat",
+        "rezultat = rezultat + caracter",
+        "rezultat = caracter",
+        "rezultat += cuvant"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-reverse-85b03c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"VENUS\"\nrezultat = \"\"\nfor caracter in cuvant:\n    ___\nprint(rezultat)",
+      "output": "SUNEV",
+      "options": [
+        "rezultat = caracter + rezultat",
+        "rezultat = rezultat + caracter",
+        "rezultat = caracter",
+        "rezultat += cuvant"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-start-797d06",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "total = ___\nfor x in [4, 6, 10]:\n    total += x\nprint(total)",
+      "output": "20",
+      "options": ["0", "1", "10", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-start-03ae50",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "produs = ___\nfor x in [2, 5, 3]:\n    produs *= x\nprint(produs)",
+      "output": "30",
+      "options": ["1", "0", "2", "10"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-start-9fa05e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = ___\nfor x in [\"S\", \"O\", \"S\"]:\n    cuvant += x\nprint(cuvant)",
+      "output": "SOS",
+      "options": ["\"\"", "\"S\"", "\" \"", "\"-\""],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-limit-c6c8da",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "intensitati = [30, 65, 20, 90, 50]\nputernice = []\nfor s in intensitati:\n    if s > ___:\n        puternice.append(s)\nprint(puternice)",
+      "output": "[65, 90]",
+      "options": ["50", "20", "65", "90"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-limit-96c587",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "semnale = [15, 8, 40, 22]\nputernice = []\nfor s in semnale:\n    if s > ___:\n        puternice.append(s)\nprint(puternice)",
+      "output": "[15, 40, 22]",
+      "options": ["10", "15", "22", "5"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-limit-002af8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "niveluri = [3, 9, 6, 1]\nputernice = []\nfor s in niveluri:\n    if s > ___:\n        puternice.append(s)\nprint(puternice)",
+      "output": "[9, 6]",
+      "options": ["5", "1", "6", "9"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-op-d69054",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "factori = [2, 3, 4]\nrezultat = 1\nfor n in factori:\n    rezultat = rezultat ___ n\nprint(rezultat)",
+      "output": "24",
+      "options": ["*", "+", "-", "//"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-op-7329eb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "bonusuri = [5, 5]\nrezultat = 1\nfor n in bonusuri:\n    rezultat = rezultat ___ n\nprint(rezultat)",
+      "output": "25",
+      "options": ["*", "+", "-", "//"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-op-4d090d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [3, 2, 6]\nrezultat = 1\nfor n in numere:\n    rezultat = rezultat ___ n\nprint(rezultat)",
+      "output": "36",
+      "options": ["*", "+", "-", "//"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-start-0ccc58",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [2, 3, 5]\nprodus = 0\nfor n in numere:\n    produs *= n\nprint(produs)",
+      "output": "30",
+      "options": ["produs = 0", "produs *= n", "print(produs)", "for n in numere:"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-start-98d3cb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "factori = [4, 2, 3]\nprodus = 0\nfor n in factori:\n    produs *= n\nprint(produs)",
+      "output": "24",
+      "options": ["produs = 0", "produs *= n", "print(produs)", "for n in factori:"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-start-66b36f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "bonusuri = [3, 3, 3]\nprodus = 0\nfor n in bonusuri:\n    produs *= n\nprint(produs)",
+      "output": "27",
+      "options": ["produs = 0", "bonusuri = [3, 3, 3]", "produs *= n", "print(produs)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-add-150a64",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor p in [10, 20, 30]:\n    print(p)\n    total = p\nprint(f\"Total: {total}\")",
+      "output": "10\n20\n30\nTotal: 60",
+      "options": ["total = p", "print(p)", "total = 0", "for p in [10, 20, 30]:"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-add-2cf8b4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor p in [5, 15, 25, 5]:\n    print(p)\n    total = p\nprint(f\"Total: {total}\")",
+      "output": "5\n15\n25\n5\nTotal: 50",
+      "options": ["total = p", "print(p)", "total = 0", "print(f\"Total: {total}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-add-28df51",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor p in [40, 12, 8]:\n    print(p)\n    total = p\nprint(f\"Total: {total}\")",
+      "output": "40\n12\n8\nTotal: 60",
+      "options": ["total = p", "print(p)", "total = 0", "print(f\"Total: {total}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-order-b9041a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"ORBITA\"\nprint(cuvant)\ninvers = \"\"\nfor caracter in cuvant:\n    invers = invers + caracter\nprint(invers)",
+      "output": "ORBITA\nATIBRO",
+      "options": ["invers = invers + caracter", "invers = \"\"", "print(cuvant)", "print(invers)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-order-6c9c9e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"PLANETA\"\nprint(cuvant)\ninvers = \"\"\nfor caracter in cuvant:\n    invers = invers + caracter\nprint(invers)",
+      "output": "PLANETA\nATENALP",
+      "options": ["invers = invers + caracter", "invers = \"\"", "print(cuvant)", "print(invers)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-order-68888d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"Ken\"\nprint(cuvant)\ninvers = \"\"\nfor caracter in cuvant:\n    invers = invers + caracter\nprint(invers)",
+      "output": "Ken\nneK",
+      "options": ["invers = invers + caracter", "invers = \"\"", "print(cuvant)", "print(invers)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-append-9878ed",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "intensitati = [30, 65, 20, 90]\nputernice = []\nfor s in intensitati:\n    if s > 50:\n        puternice = [s]\nprint(puternice)",
+      "output": "[65, 90]",
+      "options": [
+        "puternice = [s]",
+        "puternice = []",
+        "intensitati = [30, 65, 20, 90]",
+        "if s > 50:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-append-e9f64e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "semnale = [70, 10, 85, 40, 95]\nputernice = []\nfor s in semnale:\n    if s > 60:\n        puternice = [s]\nprint(puternice)",
+      "output": "[70, 85, 95]",
+      "options": [
+        "puternice = [s]",
+        "puternice = []",
+        "semnale = [70, 10, 85, 40, 95]",
+        "print(puternice)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-append-29426b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "citiri = [6, 2, 8, 1]\nputernice = []\nfor s in citiri:\n    if s > 4:\n        puternice = [s]\nprint(puternice)",
+      "output": "[6, 8]",
+      "options": ["puternice = [s]", "puternice = []", "citiri = [6, 2, 8, 1]", "if s > 4:"],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,656 @@
+{
+  "note": "Made by npm run make:quiz from the templates in pattern-counter-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "pc-even-c9c249",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 8, 12, 5, 6]\ncontor = 0\nfor n in numere:\n    if n % 2 == 0:\n        contor += 1\nprint(f\"Pare: {contor}\")",
+      "options": ["Pare: 3", "Pare: 2", "Pare: 26", "Pare: 4"],
+      "answer": 0
+    },
+    {
+      "id": "pc-even-3e467e",
+      "text": "Ce afișează?",
+      "code": "scoruri = [10, 7, 4, 9]\ncontor = 0\nfor n in scoruri:\n    if n % 2 == 0:\n        contor += 1\nprint(f\"Pare: {contor}\")",
+      "options": ["Pare: 2", "Pare: 14", "Pare: 3", "Pare: 1\nPare: 1\nPare: 2\nPare: 2"],
+      "answer": 0
+    },
+    {
+      "id": "pc-even-7f6f3f",
+      "text": "Ce afișează?",
+      "code": "varste = [21, 34, 18, 40, 15, 22]\ncontor = 0\nfor n in varste:\n    if n % 2 == 0:\n        contor += 1\nprint(f\"Pare: {contor}\")",
+      "options": ["Pare: 4", "Pare: 2", "Pare: 114", "Pare: 5"],
+      "answer": 0
+    },
+    {
+      "id": "pc-even-40afe3",
+      "text": "Ce afișează?",
+      "code": "niveluri = [1, 3, 5, 2]\ncontor = 0\nfor n in niveluri:\n    if n % 2 == 0:\n        contor += 1\nprint(f\"Pare: {contor}\")",
+      "options": ["Pare: 1", "Pare: 3", "Pare: 2", "Pare: 0\nPare: 0\nPare: 0\nPare: 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-above-1d9a5e",
+      "text": "Ce afișează?",
+      "code": "citiri = [42, 75, 100, 30, 88]\npeste = 0\nfor c in citiri:\n    if c > 75:\n        peste += 1\nprint(peste)",
+      "options": ["2", "3", "1", "188"],
+      "answer": 0
+    },
+    {
+      "id": "pc-above-ff074e",
+      "text": "Ce afișează?",
+      "code": "temperaturi = [12, 30, 25, 30, 8]\npeste = 0\nfor c in temperaturi:\n    if c > 25:\n        peste += 1\nprint(peste)",
+      "options": ["2", "3", "1", "60"],
+      "answer": 0
+    },
+    {
+      "id": "pc-above-c47657",
+      "text": "Ce afișează?",
+      "code": "combustibil = [5, 50, 20, 15, 35]\npeste = 0\nfor c in combustibil:\n    if c > 15:\n        peste += 1\nprint(peste)",
+      "options": ["3", "4", "1", "105"],
+      "answer": 0
+    },
+    {
+      "id": "pc-upper-25d747",
+      "text": "Ce afișează?",
+      "code": "nume = \"Tommy Vercetti\"\nmajuscule = 0\nfor caracter in nume:\n    if caracter.isupper():\n        majuscule += 1\nprint(f\"Majuscule: {majuscule}\")",
+      "options": ["Majuscule: 2", "Majuscule: 11", "Majuscule: 13", "Majuscule: 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-upper-fd6e6d",
+      "text": "Ce afișează?",
+      "code": "cod = \"NASA Baza 7\"\nmajuscule = 0\nfor caracter in cod:\n    if caracter.isupper():\n        majuscule += 1\nprint(f\"Majuscule: {majuscule}\")",
+      "options": ["Majuscule: 5", "Majuscule: 3", "Majuscule: 8", "Majuscule: 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-upper-a4b7ce",
+      "text": "Ce afișează?",
+      "code": "nava = \"USS Orbit\"\nmajuscule = 0\nfor caracter in nava:\n    if caracter.isupper():\n        majuscule += 1\nprint(f\"Majuscule: {majuscule}\")",
+      "options": [
+        "Majuscule: 4",
+        "Majuscule: 8",
+        "Majuscule: 1",
+        "Majuscule: 1\nMajuscule: 2\nMajuscule: 3\nMajuscule: 3\nMajuscule: 4\nMajuscule: 4\nMajuscule: 4\nMajuscule: 4\nMajuscule: 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-digits-b2cf56",
+      "text": "Ce afișează?",
+      "code": "cod = \"R2D2\"\ncifre = 0\nfor caracter in cod:\n    if caracter.isdigit():\n        cifre += 1\nprint(cifre)",
+      "options": ["2", "1", "3", "0\n1\n1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "pc-digits-a81e02",
+      "text": "Ce afișează?",
+      "code": "cod = \"Agent 47\"\ncifre = 0\nfor caracter in cod:\n    if caracter.isdigit():\n        cifre += 1\nprint(cifre)",
+      "options": ["2", "5", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "pc-digits-5f9d0a",
+      "text": "Ce afișează?",
+      "code": "cod = \"X1Y22Z\"\ncifre = 0\nfor caracter in cod:\n    if caracter.isdigit():\n        cifre += 1\nprint(cifre)",
+      "options": ["3", "1", "4", "0\n1\n1\n2\n3\n3"],
+      "answer": 0
+    },
+    {
+      "id": "pc-multi-9b307a",
+      "text": "Ce afișează?",
+      "code": "text = \"Vice City 86\"\nlitere = 0\ncifre = 0\nspatii = 0\nfor caracter in text:\n    if caracter.isalpha():\n        litere += 1\n    elif caracter.isdigit():\n        cifre += 1\n    elif caracter == \" \":\n        spatii += 1\nprint(f\"Litere: {litere}, Cifre: {cifre}, Spatii: {spatii}\")",
+      "options": [
+        "Litere: 8, Cifre: 2, Spatii: 2",
+        "Litere: 10, Cifre: 0, Spatii: 2",
+        "Litere: 8, Cifre: 2, Spatii: 0",
+        "Litere: 8, Cifre: 2, Spatii: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-multi-778c5b",
+      "text": "Ce afișează?",
+      "code": "text = \"Sala 101\"\nlitere = 0\ncifre = 0\nspatii = 0\nfor caracter in text:\n    if caracter.isalpha():\n        litere += 1\n    elif caracter.isdigit():\n        cifre += 1\n    elif caracter == \" \":\n        spatii += 1\nprint(f\"Litere: {litere}, Cifre: {cifre}, Spatii: {spatii}\")",
+      "options": [
+        "Litere: 4, Cifre: 3, Spatii: 1",
+        "Litere: 7, Cifre: 0, Spatii: 1",
+        "Litere: 4, Cifre: 3, Spatii: 0",
+        "Litere: 5, Cifre: 3, Spatii: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-multi-53fabc",
+      "text": "Ce afișează?",
+      "code": "text = \"Poarta 3 la 9 PM\"\nlitere = 0\ncifre = 0\nspatii = 0\nfor caracter in text:\n    if caracter.isalpha():\n        litere += 1\n    elif caracter.isdigit():\n        cifre += 1\n    elif caracter == \" \":\n        spatii += 1\nprint(f\"Litere: {litere}, Cifre: {cifre}, Spatii: {spatii}\")",
+      "options": [
+        "Litere: 10, Cifre: 2, Spatii: 4",
+        "Litere: 12, Cifre: 0, Spatii: 4",
+        "Litere: 10, Cifre: 2, Spatii: 0",
+        "Litere: 10, Cifre: 2, Spatii: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bands-d576a8",
+      "text": "Ce afișează?",
+      "code": "citiri = [42, 75, 100, 30, 88, 120]\nmici = 0\nmedii = 0\nmari = 0\nfor c in citiri:\n    if c < 50:\n        mici += 1\n    elif c < 100:\n        medii += 1\n    else:\n        mari += 1\nprint(f\"Mici: {mici}\")\nprint(f\"Medii: {medii}\")\nprint(f\"Mari: {mari}\")",
+      "options": [
+        "Mici: 2\nMedii: 2\nMari: 2",
+        "Mici: 2\nMedii: 3\nMari: 1",
+        "Mici: 2\nMedii: 0\nMari: 4",
+        "Mici: 2\nMedii: 2\nMari: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bands-a67ab2",
+      "text": "Ce afișează?",
+      "code": "niveluri = [50, 99, 100, 49, 130, 140, 160]\nmici = 0\nmedii = 0\nmari = 0\nfor c in niveluri:\n    if c < 50:\n        mici += 1\n    elif c < 100:\n        medii += 1\n    else:\n        mari += 1\nprint(f\"Mici: {mici}\")\nprint(f\"Medii: {medii}\")\nprint(f\"Mari: {mari}\")",
+      "options": [
+        "Mici: 1\nMedii: 2\nMari: 4",
+        "Mici: 1\nMedii: 3\nMari: 3",
+        "Mici: 2\nMedii: 1\nMari: 4",
+        "Mici: 1\nMedii: 0\nMari: 6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bands-aa0753",
+      "text": "Ce afișează?",
+      "code": "semnale = [10, 50, 100, 100, 60, 70]\nmici = 0\nmedii = 0\nmari = 0\nfor c in semnale:\n    if c < 50:\n        mici += 1\n    elif c < 100:\n        medii += 1\n    else:\n        mari += 1\nprint(f\"Mici: {mici}\")\nprint(f\"Medii: {medii}\")\nprint(f\"Mari: {mari}\")",
+      "options": [
+        "Mici: 1\nMedii: 3\nMari: 2",
+        "Mici: 1\nMedii: 5\nMari: 0",
+        "Mici: 2\nMedii: 2\nMari: 2",
+        "Mici: 1\nMedii: 0\nMari: 5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bands-d56475",
+      "text": "Ce afișează?",
+      "code": "scanari = [100, 20, 50, 150, 80, 35, 5]\nmici = 0\nmedii = 0\nmari = 0\nfor c in scanari:\n    if c < 50:\n        mici += 1\n    elif c < 100:\n        medii += 1\n    else:\n        mari += 1\nprint(f\"Mici: {mici}\")\nprint(f\"Medii: {medii}\")\nprint(f\"Mari: {mari}\")",
+      "options": [
+        "Mici: 3\nMedii: 2\nMari: 2",
+        "Mici: 3\nMedii: 3\nMari: 1",
+        "Mici: 4\nMedii: 1\nMari: 2",
+        "Mici: 3\nMedii: 0\nMari: 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-shortcut-7e77d2",
+      "text": "Ce afișează?",
+      "code": "combustibil = 10\ncombustibil += 5\ncombustibil -= 3\ncombustibil *= 2\nprint(combustibil)",
+      "options": ["24", "4", "-6", "14"],
+      "answer": 0
+    },
+    {
+      "id": "pc-shortcut-b6434c",
+      "text": "Ce afișează?",
+      "code": "scor = 7\nscor += 3\nscor -= 4\nscor *= 2\nprint(scor)",
+      "options": ["12", "-2", "-8", "8"],
+      "answer": 0
+    },
+    {
+      "id": "pc-shortcut-24bf6c",
+      "text": "Ce afișează?",
+      "code": "monede = 20\nmonede += 10\nmonede -= 5\nmonede *= 2\nprint(monede)",
+      "options": ["50", "10", "-10", "27"],
+      "answer": 0
+    },
+    {
+      "id": "pc-long-fe3547",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"Vice\", \"City\", \"Stories\", \"Ocean\"]\nlungi = 0\nfor w in cuvinte:\n    if len(w) > 4:\n        lungi += 1\nprint(f\"Cuvinte lungi: {lungi}\")",
+      "options": ["Cuvinte lungi: 2", "Cuvinte lungi: 4", "Cuvinte lungi: 12", "Cuvinte lungi: 3"],
+      "answer": 0
+    },
+    {
+      "id": "pc-long-f8152c",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Ken\", \"Cortez\"]\nlungi = 0\nfor w in nume:\n    if len(w) > 5:\n        lungi += 1\nprint(f\"Cuvinte lungi: {lungi}\")",
+      "options": ["Cuvinte lungi: 1", "Cuvinte lungi: 3", "Cuvinte lungi: 6", "Cuvinte lungi: 2"],
+      "answer": 0
+    },
+    {
+      "id": "pc-long-b50404",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Terra\", \"Jupiter\"]\nlungi = 0\nfor w in planete:\n    if len(w) > 4:\n        lungi += 1\nprint(f\"Cuvinte lungi: {lungi}\")",
+      "options": ["Cuvinte lungi: 4", "Cuvinte lungi: 22", "Cuvinte lungi: 5", "Cuvinte lungi: 0"],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-match-a94bd5",
+      "text": "Care program afișează asta?",
+      "output": "Tommy: 3",
+      "options": [
+        "echipaj = [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\", \"Tommy\"]\ncontor = 0\nfor x in echipaj:\n    if x == \"Tommy\":\n        contor += 1\nprint(f\"Tommy: {contor}\")",
+        "echipaj = [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\", \"Tommy\"]\ncontor = 0\nfor x in echipaj:\n    if x != \"Tommy\":\n        contor += 1\nprint(f\"Tommy: {contor}\")",
+        "echipaj = [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\", \"Tommy\"]\ncontor = 0\nfor x in echipaj:\n    if x == \"Tommy\":\n        contor = 1\nprint(f\"Tommy: {contor}\")",
+        "echipaj = [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\", \"Tommy\"]\ncontor = 1\nfor x in echipaj:\n    if x == \"Tommy\":\n        contor += 1\nprint(f\"Tommy: {contor}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-match-f832a5",
+      "text": "Care program afișează asta?",
+      "output": "eroare: 2",
+      "options": [
+        "jurnal = [\"ok\", \"eroare\", \"ok\", \"eroare\", \"ok\", \"ok\"]\ncontor = 0\nfor x in jurnal:\n    if x == \"eroare\":\n        contor += 1\nprint(f\"eroare: {contor}\")",
+        "jurnal = [\"ok\", \"eroare\", \"ok\", \"eroare\", \"ok\", \"ok\"]\ncontor = 0\nfor x in jurnal:\n    if x != \"eroare\":\n        contor += 1\nprint(f\"eroare: {contor}\")",
+        "jurnal = [\"ok\", \"eroare\", \"ok\", \"eroare\", \"ok\", \"ok\"]\ncontor = 0\nfor x in jurnal:\n    if x == \"eroare\":\n        contor = 1\nprint(f\"eroare: {contor}\")",
+        "jurnal = [\"ok\", \"eroare\", \"ok\", \"eroare\", \"ok\", \"ok\"]\ncontor = 1\nfor x in jurnal:\n    if x == \"eroare\":\n        contor += 1\nprint(f\"eroare: {contor}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-match-dc3fb2",
+      "text": "Care program afișează asta?",
+      "output": "da: 3",
+      "options": [
+        "voturi = [\"da\", \"nu\", \"da\", \"da\"]\ncontor = 0\nfor x in voturi:\n    if x == \"da\":\n        contor += 1\nprint(f\"da: {contor}\")",
+        "voturi = [\"da\", \"nu\", \"da\", \"da\"]\ncontor = 0\nfor x in voturi:\n    if x != \"da\":\n        contor += 1\nprint(f\"da: {contor}\")",
+        "voturi = [\"da\", \"nu\", \"da\", \"da\"]\ncontor = 0\nfor x in voturi:\n    if x == \"da\":\n        contor = 1\nprint(f\"da: {contor}\")",
+        "voturi = [\"da\", \"nu\", \"da\", \"da\"]\ncontor = 1\nfor x in voturi:\n    if x == \"da\":\n        contor += 1\nprint(f\"da: {contor}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-match-260319",
+      "text": "Care program afișează asta?",
+      "output": "rosu: 4",
+      "options": [
+        "culori = [\"rosu\", \"albastru\", \"rosu\", \"verde\", \"rosu\", \"rosu\"]\ncontor = 0\nfor x in culori:\n    if x == \"rosu\":\n        contor += 1\nprint(f\"rosu: {contor}\")",
+        "culori = [\"rosu\", \"albastru\", \"rosu\", \"verde\", \"rosu\", \"rosu\"]\ncontor = 0\nfor x in culori:\n    if x != \"rosu\":\n        contor += 1\nprint(f\"rosu: {contor}\")",
+        "culori = [\"rosu\", \"albastru\", \"rosu\", \"verde\", \"rosu\", \"rosu\"]\ncontor = 0\nfor x in culori:\n    if x == \"rosu\":\n        contor = 1\nprint(f\"rosu: {contor}\")",
+        "culori = [\"rosu\", \"albastru\", \"rosu\", \"verde\", \"rosu\", \"rosu\"]\ncontor = 1\nfor x in culori:\n    if x == \"rosu\":\n        contor += 1\nprint(f\"rosu: {contor}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-lower-398ea9",
+      "text": "Care program afișează asta?",
+      "output": "4",
+      "options": [
+        "nume = \"Tommy\"\nminuscule = 0\nfor caracter in nume:\n    if caracter.islower():\n        minuscule += 1\nprint(minuscule)",
+        "nume = \"Tommy\"\nminuscule = 0\nfor caracter in nume:\n    if caracter.isupper():\n        minuscule += 1\nprint(minuscule)",
+        "nume = \"Tommy\"\nminuscule = 0\nfor caracter in nume:\n    if caracter.isalpha():\n        minuscule += 1\nprint(minuscule)",
+        "nume = \"Tommy\"\nminuscule = 0\nfor caracter in nume:\n    if caracter.islower():\n        minuscule = 1\nprint(minuscule)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-lower-9296b2",
+      "text": "Care program afișează asta?",
+      "output": "6",
+      "options": [
+        "oras = \"Vice City\"\nminuscule = 0\nfor caracter in oras:\n    if caracter.islower():\n        minuscule += 1\nprint(minuscule)",
+        "oras = \"Vice City\"\nminuscule = 0\nfor caracter in oras:\n    if caracter.isupper():\n        minuscule += 1\nprint(minuscule)",
+        "oras = \"Vice City\"\nminuscule = 0\nfor caracter in oras:\n    if caracter.isalpha():\n        minuscule += 1\nprint(minuscule)",
+        "oras = \"Vice City\"\nminuscule = 0\nfor caracter in oras:\n    if caracter.islower():\n        minuscule = 1\nprint(minuscule)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-lower-314388",
+      "text": "Care program afișează asta?",
+      "output": "8",
+      "options": [
+        "echipaj = \"Lance Vance\"\nminuscule = 0\nfor caracter in echipaj:\n    if caracter.islower():\n        minuscule += 1\nprint(minuscule)",
+        "echipaj = \"Lance Vance\"\nminuscule = 0\nfor caracter in echipaj:\n    if caracter.isupper():\n        minuscule += 1\nprint(minuscule)",
+        "echipaj = \"Lance Vance\"\nminuscule = 0\nfor caracter in echipaj:\n    if caracter.isalpha():\n        minuscule += 1\nprint(minuscule)",
+        "echipaj = \"Lance Vance\"\nminuscule = 0\nfor caracter in echipaj:\n    if caracter.islower():\n        minuscule = 1\nprint(minuscule)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-lower-c1eef0",
+      "text": "Care program afișează asta?",
+      "output": "9",
+      "options": [
+        "pilot = \"Phil Cassidy\"\nminuscule = 0\nfor caracter in pilot:\n    if caracter.islower():\n        minuscule += 1\nprint(minuscule)",
+        "pilot = \"Phil Cassidy\"\nminuscule = 0\nfor caracter in pilot:\n    if caracter.isupper():\n        minuscule += 1\nprint(minuscule)",
+        "pilot = \"Phil Cassidy\"\nminuscule = 0\nfor caracter in pilot:\n    if caracter.isalpha():\n        minuscule += 1\nprint(minuscule)",
+        "pilot = \"Phil Cassidy\"\nminuscule = 0\nfor caracter in pilot:\n    if caracter.islower():\n        minuscule = 1\nprint(minuscule)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-increase-de3757",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [80, 95, 40, 70, 88]\ncontor = 0\nfor n in scoruri:\n    if n > 75:\n        ___\nprint(f\"Peste 75: {contor}\")",
+      "output": "Peste 75: 3",
+      "options": ["contor += 1", "contor = 1", "contor += n", "contor -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-increase-84fb81",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "citiri = [42, 75, 100, 30, 88]\ncontor = 0\nfor n in citiri:\n    if n > 50:\n        ___\nprint(f\"Peste 50: {contor}\")",
+      "output": "Peste 50: 3",
+      "options": ["contor += 1", "contor = 1", "contor += n", "contor -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-increase-52bb0e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "temperaturi = [12, 30, 25, 31]\ncontor = 0\nfor n in temperaturi:\n    if n > 28:\n        ___\nprint(f\"Peste 28: {contor}\")",
+      "output": "Peste 28: 2",
+      "options": ["contor += 1", "contor = 1", "contor += n", "contor -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-increase-988435",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "viteze = [60, 120, 90, 150, 95]\ncontor = 0\nfor n in viteze:\n    if n > 70:\n        ___\nprint(f\"Peste 70: {contor}\")",
+      "output": "Peste 70: 4",
+      "options": ["contor += 1", "contor = 1", "contor += n", "contor -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-init-b61cdd",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Tommy Vercetti\"\n___\nfor caracter in nume:\n    if caracter.isupper():\n        majuscule += 1\nprint(majuscule)",
+      "output": "2",
+      "options": ["majuscule = 0", "majuscule = 1", "majuscule = len(nume)", "majuscule = \"0\""],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-init-b3ee4f",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cod = \"NASA Baza\"\n___\nfor caracter in cod:\n    if caracter.isupper():\n        majuscule += 1\nprint(majuscule)",
+      "output": "5",
+      "options": ["majuscule = 0", "majuscule = 1", "majuscule = len(cod)", "majuscule = \"0\""],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-init-7617ff",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "oras = \"Vice City\"\n___\nfor caracter in oras:\n    if caracter.isupper():\n        majuscule += 1\nprint(majuscule)",
+      "output": "2",
+      "options": ["majuscule = 0", "majuscule = 1", "majuscule = len(oras)", "majuscule = \"0\""],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-init-a9d756",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nava = \"USS Orbit\"\n___\nfor caracter in nava:\n    if caracter.isupper():\n        majuscule += 1\nprint(majuscule)",
+      "output": "4",
+      "options": ["majuscule = 0", "majuscule = 1", "majuscule = len(nava)", "majuscule = \"0\""],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-check-12f7a5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cod = \"Agent 47\"\ncifre = 0\nfor caracter in cod:\n    ___\n        cifre += 1\nprint(f\"Cifre: {cifre}\")",
+      "output": "Cifre: 2",
+      "options": [
+        "if caracter.isdigit():",
+        "if caracter.isalpha():",
+        "if caracter.isupper():",
+        "if caracter == \" \":"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-check-700e54",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "sala = \"Sala 101\"\ncifre = 0\nfor caracter in sala:\n    ___\n        cifre += 1\nprint(f\"Cifre: {cifre}\")",
+      "output": "Cifre: 3",
+      "options": [
+        "if caracter.isdigit():",
+        "if caracter.isalpha():",
+        "if caracter.isupper():",
+        "if caracter == \" \":"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-check-eba623",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "poarta = \"Doc 12 Poarta 7\"\ncifre = 0\nfor caracter in poarta:\n    ___\n        cifre += 1\nprint(f\"Cifre: {cifre}\")",
+      "output": "Cifre: 3",
+      "options": [
+        "if caracter.isdigit():",
+        "if caracter.isalpha():",
+        "if caracter.isupper():",
+        "if caracter.islower():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-check-6f8d45",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "pin = \"Cod 1234\"\ncifre = 0\nfor caracter in pin:\n    ___\n        cifre += 1\nprint(f\"Cifre: {cifre}\")",
+      "output": "Cifre: 4",
+      "options": [
+        "if caracter.isdigit():",
+        "if caracter.isalpha():",
+        "if caracter.isupper():",
+        "if caracter == \" \":"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-method-0bb8ff",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Tommy Vercetti 1986\"\ncontor = 0\nfor caracter in nume:\n    if caracter.___():\n        contor += 1\nprint(contor)",
+      "output": "2",
+      "options": ["isupper", "islower", "isdigit", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-method-c963a0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cod = \"Agent 47\"\ncontor = 0\nfor caracter in cod:\n    if caracter.___():\n        contor += 1\nprint(contor)",
+      "output": "2",
+      "options": ["isdigit", "isupper", "islower", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-method-f62441",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "oras = \"Vice City\"\ncontor = 0\nfor caracter in oras:\n    if caracter.___():\n        contor += 1\nprint(contor)",
+      "output": "6",
+      "options": ["islower", "isupper", "isdigit", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-method-597049",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "droizi = \"R2D2 si C3PO\"\ncontor = 0\nfor caracter in droizi:\n    if caracter.___():\n        contor += 1\nprint(contor)",
+      "output": "7",
+      "options": ["isalpha", "isupper", "islower", "isdigit"],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-compare-1ed7a1",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "citiri = [42, 50, 75, 50, 30]\ncontor = 0\nfor c in citiri:\n    if c ___ 50:\n        contor += 1\nprint(contor)",
+      "output": "3",
+      "options": [">=", ">", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-compare-13c2a5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "niveluri = [100, 120, 99, 100, 130]\ncontor = 0\nfor c in niveluri:\n    if c ___ 100:\n        contor += 1\nprint(contor)",
+      "output": "1",
+      "options": ["<", ">", ">=", "<="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-compare-ef7e60",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [60, 40, 60, 80]\ncontor = 0\nfor c in scoruri:\n    if c ___ 60:\n        contor += 1\nprint(contor)",
+      "output": "1",
+      "options": [">", ">=", "<=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-compare-c9370a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = [5, 9, 12, 9, 3]\ncontor = 0\nfor c in varste:\n    if c ___ 9:\n        contor += 1\nprint(contor)",
+      "output": "4",
+      "options": ["<=", ">", ">=", "<"],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-step-2afba1",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [4, 7, 10, 2]\npare = 0\nfor n in numere:\n    if n % 2 == 0:\n        pare ___ 1\nprint(pare)",
+      "output": "3",
+      "options": ["+=", "-=", "=", "*="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-step-8a6fc8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [1, 3, 6, 8, 12]\nnumar_pare = 0\nfor n in scoruri:\n    if n % 2 == 0:\n        numar_pare ___ 1\nprint(numar_pare)",
+      "output": "3",
+      "options": ["+=", "-=", "=", "*="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-step-b9905d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "niveluri = [2, 4, 6, 8]\ngasite = 0\nfor n in niveluri:\n    if n % 2 == 0:\n        gasite ___ 1\nprint(gasite)",
+      "output": "4",
+      "options": ["+=", "-=", "=", "*="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-step-7e5ef2",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = [11, 20, 35, 40, 50]\nvarste_pare = 0\nfor n in varste:\n    if n % 2 == 0:\n        varste_pare ___ 1\nprint(varste_pare)",
+      "output": "3",
+      "options": ["+=", "-=", "=", "*="],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-start-f4c36f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = [80, 95, 40, 70, 88]\ncontor = 1\nfor n in scoruri:\n    if n > 75:\n        print(n)\n        contor += 1\nprint(f\"Numar: {contor}\")",
+      "output": "80\n95\n88\nNumar: 3",
+      "options": ["contor = 1", "print(n)", "contor += 1", "print(f\"Numar: {contor}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-start-313f1f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "citiri = [42, 75, 100, 30, 88]\ncontor = 1\nfor n in citiri:\n    if n > 50:\n        print(n)\n        contor += 1\nprint(f\"Numar: {contor}\")",
+      "output": "75\n100\n88\nNumar: 3",
+      "options": ["contor = 1", "print(n)", "contor += 1", "print(f\"Numar: {contor}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-start-f34f0b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "temperaturi = [12, 30, 25, 31]\ncontor = 1\nfor n in temperaturi:\n    if n > 20:\n        print(n)\n        contor += 1\nprint(f\"Numar: {contor}\")",
+      "output": "30\n25\n31\nNumar: 3",
+      "options": ["contor = 1", "temperaturi = [12, 30, 25, 31]", "print(n)", "contor += 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-method-276d8c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Tommy Vercetti\"\nmajuscule = 0\nfor caracter in nume:\n    if caracter.islower():\n        print(caracter)\n        majuscule += 1\nprint(f\"Majuscule: {majuscule}\")",
+      "output": "T\nV\nMajuscule: 2",
+      "options": [
+        "if caracter.islower():",
+        "for caracter in nume:",
+        "print(caracter)",
+        "majuscule += 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-method-1e4564",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cod = \"NASA Baza\"\nmajuscule = 0\nfor caracter in cod:\n    if caracter.islower():\n        print(caracter)\n        majuscule += 1\nprint(f\"Majuscule: {majuscule}\")",
+      "output": "N\nA\nS\nA\nB\nMajuscule: 5",
+      "options": [
+        "if caracter.islower():",
+        "print(caracter)",
+        "majuscule += 1",
+        "print(f\"Majuscule: {majuscule}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-method-ca4e6b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "oras = \"Vice City\"\nmajuscule = 0\nfor caracter in oras:\n    if caracter.islower():\n        print(caracter)\n        majuscule += 1\nprint(f\"Majuscule: {majuscule}\")",
+      "output": "V\nC\nMajuscule: 2",
+      "options": [
+        "if caracter.islower():",
+        "for caracter in oras:",
+        "majuscule = 0",
+        "print(caracter)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-add-35f38e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\"]\ngasite = 0\nfor x in echipaj:\n    print(x)\n    if x == \"Tommy\":\n        gasite = 1\nprint(f\"Tommy: {gasite}\")",
+      "output": "Tommy\nLance\nTommy\nKen\nTommy: 2",
+      "options": ["gasite = 1", "print(x)", "gasite = 0", "print(f\"Tommy: {gasite}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-add-a14e65",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jurnal = [\"ok\", \"eroare\", \"ok\", \"ok\"]\ngasite = 0\nfor x in jurnal:\n    print(x)\n    if x == \"ok\":\n        gasite = 1\nprint(f\"ok: {gasite}\")",
+      "output": "ok\neroare\nok\nok\nok: 3",
+      "options": [
+        "gasite = 1",
+        "print(x)",
+        "gasite = 0",
+        "jurnal = [\"ok\", \"eroare\", \"ok\", \"ok\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-add-18785a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "voturi = [\"da\", \"nu\", \"da\", \"nu\", \"nu\"]\ngasite = 0\nfor x in voturi:\n    print(x)\n    if x == \"nu\":\n        gasite = 1\nprint(f\"nu: {gasite}\")",
+      "output": "da\nnu\nda\nnu\nnu\nnu: 3",
+      "options": [
+        "gasite = 1",
+        "print(x)",
+        "gasite = 0",
+        "voturi = [\"da\", \"nu\", \"da\", \"nu\", \"nu\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-high-313f1f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "citiri = [42, 75, 100, 30, 88]\nmici = 0\nmari = 0\nfor c in citiri:\n    if c < 50:\n        mici += 1\n    else:\n        mari = 1\nprint(f\"Mici: {mici}\")\nprint(f\"Mari: {mari}\")",
+      "output": "Mici: 2\nMari: 3",
+      "options": ["mari = 1", "mici += 1", "mari = 0", "print(f\"Mici: {mici}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-high-d53fae",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "niveluri = [100, 120, 99, 130]\nmici = 0\nmari = 0\nfor c in niveluri:\n    if c < 100:\n        mici += 1\n    else:\n        mari = 1\nprint(f\"Mici: {mici}\")\nprint(f\"Mari: {mari}\")",
+      "output": "Mici: 1\nMari: 3",
+      "options": ["mari = 1", "mici += 1", "mari = 0", "print(f\"Mici: {mici}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-high-3f4560",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "semnale = [7, 3, 9, 10, 1, 6]\nmici = 0\nmari = 0\nfor c in semnale:\n    if c < 5:\n        mici += 1\n    else:\n        mari = 1\nprint(f\"Mici: {mici}\")\nprint(f\"Mari: {mari}\")",
+      "output": "Mici: 2\nMari: 4",
+      "options": ["mari = 1", "mici += 1", "mari = 0", "mici = 0"],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,831 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce este un steag în tiparul steag?",
+      "options": [
+        "Un contor care crește cu 1 de fiecare dată când ceva se potrivește",
+        "O variabilă booleană care pornește True sau False și se schimbă când o condiție e îndeplinită",
+        "O listă care strânge fiecare potrivire",
+        "Un text care ține ultima valoare văzută de buclă"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 4, 7, 8, 10]\ntoate_pare = True\n\nfor n in numere:\n    if n % 2 != 0:\n        toate_pare = False\n\nif toate_pare:\n    print(\"Toate numerele sunt pare\")\nelse:\n    print(\"Nu toate numerele sunt pare\")",
+      "options": [
+        "Toate numerele sunt pare",
+        "Toate numerele sunt pare\nNu toate numerele sunt pare",
+        "7",
+        "Nu toate numerele sunt pare"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "De ce pornește `toate_pare` ca True în lecție?",
+      "options": [
+        "Pornim optimist: rămâne True dacă niciun număr nu ne contrazice",
+        "Python cere ca orice steag să pornească True",
+        "Pentru că primul număr din listă e par",
+        "Ca bucla să mai ruleze o dată"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "De ce pornește `gasit` ca False când căutăm un nume într-o listă?",
+      "options": [
+        "Un steag poate porni doar ca False",
+        "Ca bucla să sară peste primul nume",
+        "Pornim pesimist: doar găsirea numelui îl face True",
+        "Pentru că numele nu e niciodată în listă"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 8, 5]\nare_mare = False\nfor n in numere:\n    if n > 6:\n        are_mare = True\n    else:\n        are_mare = False\nprint(are_mare)",
+      "options": ["True", "False", "8", "True\nFalse"],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "De ce o buclă cu steag nu are de obicei un `else` care pune steagul înapoi?",
+      "options": [
+        "Un else după un if nu e permis într-o buclă",
+        "Steagul s-ar transforma într-un număr",
+        "Bucla nu s-ar mai termina",
+        "Un element de mai târziu care nu se potrivește ar șterge ce a găsit unul de dinainte"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\ngasit = False\nfor n in nume:\n    print(n)\n    if n == \"Lance\":\n        gasit = True\n        break\nprint(gasit)",
+      "options": [
+        "Tommy\nLance\nTrue",
+        "Tommy\nLance\nCortez\nPhil\nTrue",
+        "Tommy\nTrue",
+        "Lance\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Ce adaugă `break` unei căutări cu steag?",
+      "options": [
+        "Pune singur steagul pe True",
+        "Pornește bucla din nou de la primul element",
+        "Oprește bucla imediat ce ținta e găsită, așa că restul nu mai e verificat",
+        "Pune steagul înapoi pe False"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "parola = \"tommy123\"\nare_majuscula = False\nare_minuscula = False\nare_cifra = False\n\nfor caracter in parola:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.islower():\n        are_minuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\n\nif are_majuscula and are_minuscula and are_cifra:\n    print(\"Parola puternica\")\nelse:\n    print(\"Parola slaba\")",
+      "options": ["Parola puternica", "Parola slaba", "Parola puternica\nParola slaba", "False"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "În misiunea Verificarea Codului de Acces, utilizatorul tastează `racheta77`. Care verificare afișează False?",
+      "options": ["Are majuscula", "Are cifra", "Suficient de lung", "Niciuna: codul e valid"],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "În misiune, utilizatorul tastează `A1bcd`. Ce afișează programul?",
+      "options": [
+        "Are majuscula: True\nAre cifra: True\nSuficient de lung: True\nCod de acces valid",
+        "Are majuscula: True\nAre cifra: False\nSuficient de lung: False\nCod de acces invalid",
+        "Are majuscula: False\nAre cifra: True\nSuficient de lung: False\nCod de acces invalid",
+        "Are majuscula: True\nAre cifra: True\nSuficient de lung: False\nCod de acces invalid"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "În misiune, de ce nu e `suficient_de_lung` un steag schimbat în buclă?",
+      "options": [
+        "O buclă nu poate trece prin caracterele unui text",
+        "Numele oricărui steag trebuie să înceapă cu are_",
+        "`len(cod) >= 6` dă deja True sau False, fără nicio buclă",
+        "Pentru că 6 e o cifră, iar cifrele sunt verificate în buclă"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "cod = \"Orbit\"\nsuficient_de_lung = len(cod) >= 6\nprint(suficient_de_lung)",
+      "options": ["True", "False", "5", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Bucla din misiune verifică `caracter.isupper()` și apoi `elif caracter.isdigit()`. Poate elif-ul să rateze o cifră?",
+      "options": [
+        "Nu: un caracter nu e niciodată și majusculă, și cifră",
+        "Da: o cifră majusculă pune doar are_majuscula",
+        "Da: ultimul caracter nu e verificat niciodată de elif",
+        "Nu, pentru că elif oprește bucla la prima cifră"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "for n in [1, 3, 5]:\n    if n % 2 == 0:\n        are_par = True\nprint(are_par)",
+      "options": [
+        "Afișează False",
+        "Afișează True",
+        "Se oprește cu NameError: niciun număr nu e par, așa că are_par n-a fost creat niciodată",
+        "Nu afișează nimic"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Care linie dă același True sau False ca bucla asta?",
+      "code": "are_negativ = False\nfor n in citiri:\n    if n < 0:\n        are_negativ = True",
+      "options": [
+        "are_negativ = all(n < 0 for n in citiri)",
+        "are_negativ = sum(citiri) < 0",
+        "are_negativ = min(citiri) > 0",
+        "are_negativ = any(n < 0 for n in citiri)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Care linie dă același True sau False ca bucla asta?",
+      "code": "toti_au_trecut = True\nfor s in scoruri:\n    if s < 50:\n        toti_au_trecut = False",
+      "options": [
+        "toti_au_trecut = any(s < 50 for s in scoruri)",
+        "toti_au_trecut = all(s >= 50 for s in scoruri)",
+        "toti_au_trecut = all(s < 50 for s in scoruri)",
+        "toti_au_trecut = any(s >= 50 for s in scoruri)"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\"]\ngasit = True\nfor n in nume:\n    if n == \"Ken\":\n        gasit = True\nprint(gasit)",
+      "options": ["True", "False", "Ken", "Nimic: se oprește cu o eroare"],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "Ce început se potrivește tiparului steag pentru „există măcar o citire negativă?”",
+      "options": [
+        "are_negativ = True, pus pe False la o citire negativă",
+        "are_negativ = True, pus pe True la o citire negativă",
+        "are_negativ = False, pus pe True la o citire negativă",
+        "are_negativ = False, pus pe False la o citire pozitivă"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Ce început se potrivește tiparului steag pentru „sunt toate citirile sub 100?”",
+      "options": [
+        "toate_sub = False, pus pe True la o citire sub 100",
+        "toate_sub = True, pus pe False la o citire sub 100",
+        "toate_sub = False, pus pe False la o citire de 100 sau mai mare",
+        "toate_sub = True, pus pe False la o citire de 100 sau mai mare"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 9, 12, 7]\ngasit = False\nfor n in numere:\n    if n > 10:\n        gasit = True\n        break\n    print(n)\nprint(gasit)",
+      "options": ["4\n9\n12\nTrue", "4\n9\nTrue", "4\n9\n7\nTrue", "4\n9\nFalse"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "Care e diferența dintre tiparul contor și tiparul steag?",
+      "options": [
+        "Contorul spune câte elemente s-au potrivit, steagul doar dacă s-a potrivit vreunul",
+        "Steagul spune câte elemente s-au potrivit, contorul doar dacă s-a potrivit vreunul",
+        "Niciuna: amândouă pornesc de la 0 și cresc cu 1",
+        "Steagul merge doar cu break, contorul doar fără"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "cod = \"ABCDEF\"\nare_majuscula = False\nare_cifra = False\nfor caracter in cod:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nprint(are_majuscula and are_cifra)\nprint(are_majuscula or are_cifra)",
+      "options": ["True\nTrue", "False\nFalse", "False\nTrue", "True\nFalse"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "În misiune, de ce verdictul folosește `are_majuscula and are_cifra and suficient_de_lung`, nu `or`?",
+      "options": [
+        "or nu merge cu True și False",
+        "Codul e valid doar când sunt îndeplinite toate cele trei reguli; cu or ar trece și un cod care o respectă doar pe una",
+        "and rulează mai repede decât or",
+        "Cu or, fiecare linie s-ar afișa de două ori"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Lance\", \"Cortez\"]\ngasit = False\nfor n in echipaj:\n    if n == \"Phil\":\n        gasit = True\nprint(f\"Gasit: {gasit}\")",
+      "options": ["Gasit: True", "Gasit: Phil", "False", "Gasit: False"],
+      "answer": 3
+    },
+    {
+      "id": "q26",
+      "text": "Care `if` face același lucru ca `if gasit:`?",
+      "options": [
+        "if gasit == True:",
+        "if gasit == \"True\":",
+        "if gasit = True:",
+        "if not gasit:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 3, 5]\ntoate_impare = True\nfor n in numere:\n    if n % 2 == 0:\n        toate_impare = False\nif not toate_impare:\n    print(\"Am gasit unul par\")\nelse:\n    print(\"Toate impare\")",
+      "options": ["Am gasit unul par", "Toate impare\nAm gasit unul par", "Toate impare", "False"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "O buclă cu steag peste 1000 de citiri găsește o potrivire la a treia. Fără break, la câte citiri se uită?",
+      "options": ["3", "4", "997", "1000"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "În verificarea parolei din lecție, `Tommy123` e puternică. Ce caracter pune are_majuscula pe True?",
+      "options": ["o", "T", "1", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "citiri = [12, 40, 7, 55]\nalarma = False\nfor r in citiri:\n    if r > 50:\n        alarma = True\nif alarma:\n    print(\"Alarma!\")\nelse:\n    print(\"Liniste\")\nprint(r)",
+      "options": ["Alarma!\n55", "Liniste\n55", "Alarma!\n7", "Alarma!"],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "pf-search-break",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\ngasit = False\nfor n in {{v}}:\n    print(n)\n    if n == \"{{t}}\":\n        gasit = True\n        break\nprint(gasit)",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"",
+          "t": "Lance"
+        },
+        {
+          "v": "nave",
+          "items": "\"Pioneer\", \"Voyager\", \"Apollo\", \"Juno\"",
+          "t": "Apollo"
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Terra\"",
+          "t": "Venus"
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Ken\", \"Mercedes\", \"Phil\", \"Kent\", \"Victor\"",
+          "t": "Kent"
+        }
+      ],
+      "mistakes": [
+        ["        gasit = True\n        break", "        gasit = True"],
+        [
+          "    print(n)\n    if n == \"{{t}}\":\n        gasit = True\n        break",
+          "    if n == \"{{t}}\":\n        gasit = True\n        break\n    print(n)"
+        ],
+        ["n == ", "n != "],
+        ["break", "continue"],
+        ["print(gasit)", "print(n)"]
+      ]
+    },
+    {
+      "id": "pf-all-passed",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "scoruri = [{{s}}]\ntoti_au_trecut = True\nfor s in scoruri:\n    if s < {{m}}:\n        toti_au_trecut = False\nprint(f\"Toti au trecut: {toti_au_trecut}\")",
+      "values": [
+        {
+          "s": "80, 95, 40, 70",
+          "m": 50
+        },
+        {
+          "s": "60, 75, 90",
+          "m": 50
+        },
+        {
+          "s": "55, 49, 72, 88",
+          "m": 50
+        },
+        {
+          "s": "7, 9, 6, 10",
+          "m": 5
+        }
+      ],
+      "mistakes": [
+        ["s < {{m}}", "s > {{m}}"],
+        [
+          "print(f\"Toti au trecut: {toti_au_trecut}\")",
+          "    print(f\"Toti au trecut: {toti_au_trecut}\")"
+        ],
+        ["{toti_au_trecut}\")", "{s}\")"],
+        ["toti_au_trecut = True", "toti_au_trecut = False"],
+        ["        toti_au_trecut = False", "        toti_au_trecut = True"]
+      ]
+    },
+    {
+      "id": "pf-password",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "parola = \"{{p}}\"\nare_majuscula = False\nare_minuscula = False\nare_cifra = False\nfor caracter in parola:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.islower():\n        are_minuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nprint(are_majuscula, are_minuscula, are_cifra)",
+      "values": [
+        {
+          "p": "Tommy123"
+        },
+        {
+          "p": "vice99"
+        },
+        {
+          "p": "Lance7"
+        },
+        {
+          "p": "Orbit"
+        }
+      ],
+      "mistakes": [
+        ["caracter.isdigit()", "caracter.isalpha()"],
+        [
+          "print(are_majuscula, are_minuscula, are_cifra)",
+          "print(are_majuscula and are_minuscula and are_cifra)"
+        ],
+        ["        are_minuscula = True", "        are_minuscula = False"],
+        ["elif caracter.islower():", "elif caracter.isupper():"],
+        [
+          "print(are_majuscula, are_minuscula, are_cifra)",
+          "print(are_cifra, are_minuscula, are_majuscula)"
+        ]
+      ]
+    },
+    {
+      "id": "pf-access",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cod = \"{{c}}\"\nare_majuscula = False\nare_cifra = False\nfor caracter in cod:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nsuficient_de_lung = len(cod) >= 6\nprint(f\"Are majuscula: {are_majuscula}\")\nprint(f\"Are cifra: {are_cifra}\")\nprint(f\"Suficient de lung: {suficient_de_lung}\")\nif are_majuscula and are_cifra and suficient_de_lung:\n    print(\"Cod de acces valid\")\nelse:\n    print(\"Cod de acces invalid\")",
+      "values": [
+        {
+          "c": "Orbit42"
+        },
+        {
+          "c": "A1bcd"
+        },
+        {
+          "c": "rocket77"
+        },
+        {
+          "c": "ZX9qwe"
+        }
+      ],
+      "mistakes": [
+        ["len(cod) >= 6", "len(cod) > 6"],
+        [
+          "are_majuscula and are_cifra and suficient_de_lung",
+          "are_majuscula or are_cifra or suficient_de_lung"
+        ],
+        ["elif caracter.isdigit():", "elif caracter.isupper():"],
+        ["len(cod) >= 6", "len(cod) <= 6"],
+        ["        are_majuscula = True", "        are_majuscula = False"],
+        [
+          "are_majuscula and are_cifra and suficient_de_lung",
+          "are_majuscula and are_cifra and not suficient_de_lung"
+        ]
+      ]
+    },
+    {
+      "id": "pf-first-alarm",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "citiri = [{{r}}]\nalarma = False\nfor r in citiri:\n    if r > {{lim}}:\n        alarma = True\n        break\nprint(alarma)\nprint(r)",
+      "values": [
+        {
+          "r": "12, 50, 64, 30, 90",
+          "lim": 50
+        },
+        {
+          "r": "7, 10, 15, 3",
+          "lim": 10
+        },
+        {
+          "r": "100, 80, 120, 95",
+          "lim": 100
+        },
+        {
+          "r": "5, 25, 40, 26, 8",
+          "lim": 25
+        }
+      ],
+      "mistakes": [
+        ["        alarma = True\n        break", "        alarma = True"],
+        ["r > {{lim}}", "r >= {{lim}}"],
+        ["print(alarma)", "print(not alarma)"],
+        ["print(r)", "print(citiri)"]
+      ]
+    },
+    {
+      "id": "pf-even-odd",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{nums}}]\nare_par = False\nare_impar = False\nfor n in numere:\n    if n % 2 == 0:\n        are_par = True\n    else:\n        are_impar = True\nprint(f\"Par: {are_par}, Impar: {are_impar}\")",
+      "values": [
+        {
+          "nums": "2, 4, 6, 8"
+        },
+        {
+          "nums": "3, 8, 5"
+        },
+        {
+          "nums": "1, 7, 9"
+        },
+        {
+          "nums": "10, 12, 13, 14"
+        }
+      ],
+      "mistakes": [
+        ["n % 2 == 0", "n % 2 == 1"],
+        ["Impar: {are_impar}", "Impar: {are_par}"],
+        ["        are_impar = True", "        are_impar = False"],
+        ["are_par = False\n", "are_par = True\n"],
+        ["Par: {are_par}", "Par: {n}"],
+        ["        are_par = True", "        are_par = False"],
+        ["        are_impar = True", "        are_par = False"]
+      ]
+    },
+    {
+      "id": "pf-flag-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "citiri = [{{r}}]\nmici = 0\nare_zero = False\nfor r in citiri:\n    if r < {{lim}}:\n        mici += 1\n    if r == 0:\n        are_zero = True\nprint(f\"Mici: {mici}\")\nprint(f\"Zero: {are_zero}\")",
+      "values": [
+        {
+          "r": "12, 0, 40, 10, 3",
+          "lim": 10
+        },
+        {
+          "r": "5, 20, 20, 0",
+          "lim": 20
+        },
+        {
+          "r": "0, 0, 60, 50",
+          "lim": 50
+        },
+        {
+          "r": "14, 9, 0, 25, 15",
+          "lim": 15
+        }
+      ],
+      "mistakes": [
+        ["    if r == 0:", "    elif r == 0:"],
+        ["mici += 1", "mici = 1"],
+        ["r < {{lim}}", "r <= {{lim}}"],
+        ["        are_zero = True", "        are_zero = False"]
+      ]
+    },
+    {
+      "id": "pf-func",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def are_cifra(text):\n    for caracter in text:\n        if caracter.isdigit():\n            return True\n    return False\n\nfor cuvant in [{{words}}]:\n    print(cuvant, are_cifra(cuvant))",
+      "values": [
+        {
+          "words": "\"Orbit42\", \"Lance\", \"7up\""
+        },
+        {
+          "words": "\"Vice\", \"R2D2\", \"Mars\""
+        },
+        {
+          "words": "\"Apollo11\", \"9lives\", \"Juno\""
+        },
+        {
+          "words": "\"Phil\", \"Tommy\", \"B52\""
+        }
+      ],
+      "mistakes": [
+        [
+          "            return True\n    return False",
+          "            return True\n        return False"
+        ],
+        ["caracter.isdigit()", "caracter.isalpha()"],
+        ["return True", "return False"],
+        ["print(cuvant, are_cifra(cuvant))", "print(are_cifra(cuvant))"]
+      ]
+    },
+    {
+      "id": "pf-which-search",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{items}}]\ngasit = False\nfor n in {{v}}:\n    if n == \"{{t}}\":\n        gasit = True\nprint(f\"{{t}} gasit: {gasit}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "t": "Ken"
+        },
+        {
+          "v": "nave",
+          "items": "\"Pioneer\", \"Voyager\"",
+          "t": "Juno"
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Phil\", \"Mercedes\", \"Victor\"",
+          "t": "Kent"
+        }
+      ],
+      "mistakes": [
+        ["gasit = False", "gasit = True"],
+        ["n == ", "n != "],
+        ["gasit: {gasit}", "gasit: {n}"]
+      ]
+    },
+    {
+      "id": "pf-which-break",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "gasit = False\nfor n in [{{nums}}]:\n    if n > {{lim}}:\n        gasit = True\n        break\n    print(n)\nprint(gasit)",
+      "values": [
+        {
+          "nums": "4, 9, 12, 7",
+          "lim": 10
+        },
+        {
+          "nums": "20, 35, 60, 15, 80",
+          "lim": 50
+        },
+        {
+          "nums": "1, 3, 6, 2",
+          "lim": 5
+        }
+      ],
+      "mistakes": [
+        ["        gasit = True\n        break", "        gasit = True"],
+        ["n > {{lim}}", "n < {{lim}}"],
+        ["        break\n    print(n)", "        break\nprint(n)"]
+      ]
+    },
+    {
+      "id": "pf-gap-flip",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{r}}]\ntotul_ok = True\nfor r in {{v}}:\n    print(r)\n    if r > {{max}}:\n        ___\nprint(f\"Totul OK: {totul_ok}\")",
+      "values": [
+        {
+          "v": "citiri",
+          "r": "40, 85, 60",
+          "max": 80
+        },
+        {
+          "v": "semnale",
+          "r": "7, 3, 12, 5",
+          "max": 10
+        },
+        {
+          "v": "citiri",
+          "r": "99, 101, 98",
+          "max": 100
+        },
+        {
+          "v": "semnale",
+          "r": "15, 22, 9",
+          "max": 20
+        }
+      ],
+      "answer": "totul_ok = False",
+      "wrong": ["totul_ok = True", "break", "print(totul_ok)", "continue"]
+    },
+    {
+      "id": "pf-gap-break",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "gasit = False\nfor n in [{{items}}]:\n    print(n)\n    if n == \"{{t}}\":\n        gasit = True\n        ___\nprint(gasit)",
+      "values": [
+        {
+          "items": "\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"",
+          "t": "Cortez"
+        },
+        {
+          "items": "\"Marte\", \"Venus\", \"Terra\", \"Jupiter\"",
+          "t": "Venus"
+        },
+        {
+          "items": "\"Ken\", \"Kent\", \"Victor\"",
+          "t": "Ken"
+        }
+      ],
+      "answer": "break",
+      "wrong": ["continue", "gasit = False", "print(gasit)"]
+    },
+    {
+      "id": "pf-gap-start",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "parola = \"{{p}}\"\n___\nfor caracter in parola:\n    if caracter.isdigit():\n        are_cifra = True\nprint(f\"Are cifra: {are_cifra}\")",
+      "values": [
+        {
+          "p": "Orbit"
+        },
+        {
+          "p": "lance"
+        },
+        {
+          "p": "VICE"
+        }
+      ],
+      "answer": "are_cifra = False",
+      "wrong": ["are_cifra = True", "are_cifra = 0", "are_cifra = []"]
+    },
+    {
+      "id": "pf-val-start",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [{{nums}}]\ntoate_pare = ___\nfor n in numere:\n    print(n)\n    if n % 2 != 0:\n        toate_pare = False\nprint(toate_pare)",
+      "values": [
+        {
+          "nums": "2, 4, 6, 8"
+        },
+        {
+          "nums": "10, 20, 30"
+        },
+        {
+          "nums": "12, 14, 16"
+        }
+      ],
+      "answer": "True",
+      "wrong": ["False", "0", "1", "[]"]
+    },
+    {
+      "id": "pf-val-cond",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "citiri = [{{r}}]\nprea_cald = False\nfor r in citiri:\n    if r ___ {{lim}}:\n        prea_cald = True\nprint(f\"Prea cald: {prea_cald}\")",
+      "values": [
+        {
+          "r": "40, 90, 75",
+          "lim": 90
+        },
+        {
+          "r": "30, 50, 50, 10",
+          "lim": 50
+        },
+        {
+          "r": "100, 64, 99",
+          "lim": 100
+        }
+      ],
+      "answer": ">",
+      "wrong": [">=", "<", "!=", "=="]
+    },
+    {
+      "id": "pf-val-method",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cod = \"{{c}}\"\ngasit = False\nfor caracter in cod:\n    if caracter.___():\n        print(caracter)\n        gasit = True\nprint(gasit)",
+      "values": [
+        {
+          "c": "Orbit42",
+          "m": "isdigit",
+          "w1": "isupper",
+          "w2": "islower",
+          "w3": "isalpha"
+        },
+        {
+          "c": "mars7X",
+          "m": "isupper",
+          "w1": "isdigit",
+          "w2": "islower",
+          "w3": "isalpha"
+        },
+        {
+          "c": "AB12c",
+          "m": "islower",
+          "w1": "isupper",
+          "w2": "isdigit",
+          "w3": "isalpha"
+        },
+        {
+          "c": "r2D2",
+          "m": "isalpha",
+          "w1": "isdigit",
+          "w2": "islower",
+          "w3": "isupper"
+        }
+      ],
+      "answer": "{{m}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "pf-bad-compare",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\ngasit = False\nfor n in {{v}}:\n    if n == \"{{t}}\":\n        print(\"Gasit\", n)\n        gasit = True\nprint(gasit)",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "t": "Lance"
+        },
+        {
+          "v": "nave",
+          "items": "\"Pioneer\", \"Voyager\", \"Juno\"",
+          "t": "Juno"
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Phil\", \"Ken\", \"Kent\"",
+          "t": "Phil"
+        }
+      ],
+      "bug": ["n == ", "n != "]
+    },
+    {
+      "id": "pf-bad-even",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "toate_pare = True\nfor n in [{{nums}}]:\n    if n % 2 != 0:\n        toate_pare = False\n    print(n, toate_pare)",
+      "values": [
+        {
+          "nums": "4, 7, 6"
+        },
+        {
+          "nums": "2, 8, 3, 10"
+        },
+        {
+          "nums": "6, 9, 12"
+        }
+      ],
+      "bug": ["n % 2 != 0", "n % 2 == 0"]
+    },
+    {
+      "id": "pf-bad-break",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "gasit = False\nfor n in [{{items}}]:\n    print(n)\n    if n == \"{{t}}\":\n        gasit = True\n        break\nprint(gasit)",
+      "values": [
+        {
+          "items": "\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"",
+          "t": "Cortez"
+        },
+        {
+          "items": "\"Marte\", \"Venus\", \"Terra\"",
+          "t": "Terra"
+        },
+        {
+          "items": "\"Ken\", \"Kent\", \"Victor\", \"Phil\"",
+          "t": "Victor"
+        }
+      ],
+      "bug": ["        break", "    break"]
+    },
+    {
+      "id": "pf-bad-and",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cod = \"{{c}}\"\nare_majuscula = False\nare_cifra = False\nfor caracter in cod:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nprint(f\"Majuscula: {are_majuscula}\")\nprint(f\"Cifra: {are_cifra}\")\nprint(f\"Valid: {are_majuscula and are_cifra}\")",
+      "values": [
+        {
+          "c": "orbit42"
+        },
+        {
+          "c": "ORBIT"
+        },
+        {
+          "c": "vice7"
+        }
+      ],
+      "bug": ["are_majuscula and are_cifra", "are_majuscula or are_cifra"]
+    }
+  ]
+}

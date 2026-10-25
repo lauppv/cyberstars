@@ -1,0 +1,761 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is decomposition?",
+      "options": [
+        "Breaking a problem into smaller steps and solving them one at a time",
+        "Writing the whole program in one go, then testing it",
+        "Deleting the lines a program doesn't need",
+        "Making a program run faster with built-in functions"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "In the lesson's most common word problem, what is Step 1?",
+      "options": [
+        "Count how many times each word appears with a dictionary",
+        "Find the word with the highest count",
+        "Get the single words of the sentence with .split(\" \")",
+        "Print the most common word"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "What does this print?",
+      "code": "sentence = \"the cat sat on the mat\"\nwords = sentence.split(\" \")\nprint(len(words))",
+      "options": ["5", "6", "22", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "words = \"a b a\".split(\" \")\ncounter = {}\nfor word in words:\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
+      "options": ["{'a': 1, 'b': 1}", "['a', 'b', 'a']", "{'b': 1, 'a': 2}", "{'a': 2, 'b': 1}"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "In Step 2's counting loop, why is there an `else` that sets `counter[word] = 1`?",
+      "options": [
+        "The first time a word shows up it isn't a key yet, so its count starts at 1",
+        "To set the count of every word back to 1",
+        "To skip the words the loop has already seen",
+        "Because `counter[word] + 1` works only after an else"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What happens when this runs?",
+      "code": "counter = {}\ncounter[\"the\"] = counter[\"the\"] + 1\nprint(counter)",
+      "options": [
+        "counter becomes {'the': 1}",
+        "counter becomes {'the': 0}",
+        "It stops with a KeyError: \"the\" is not a key yet",
+        "counter becomes {'the': 2}"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "In Step 3, why does `best_count` start at 0?",
+      "options": [
+        "So the loop runs zero times",
+        "Because a count can be negative",
+        "Because best_word starts as an empty string",
+        "Every word in the counter appears at least once, so the first one beats 0"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "counter = {\"ok\": 2, \"sos\": 2, \"bye\": 1}\nbest_word = \"\"\nbest_count = 0\nfor word, count in counter.items():\n    if count > best_count:\n        best_count = count\n        best_word = word\nprint(f\"{best_word} ({best_count})\")",
+      "options": ["sos (2)", "ok (2)", "ok (2)\nsos (2)", "bye (1)"],
+      "answer": 1
+    },
+    {
+      "id": "q9",
+      "text": "In Step 3, two words both appear 3 times. Which one is kept if the check is `count >= best_count` instead of `count > best_count`?",
+      "options": [
+        "The last of the two that the loop meets",
+        "The first of the two that the loop meets",
+        "Both of them",
+        "Neither: best_word stays empty"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "What are the lesson's four steps for solving a problem, in order?",
+      "options": [
+        "Break it into sub-problems, solve each one, understand it, combine the solutions",
+        "Solve it, combine the solutions, understand it, break it into sub-problems",
+        "Understand it, break it into sub-problems, solve each one, combine the solutions",
+        "Understand it, solve each sub-problem, combine the solutions, break it into sub-problems"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "numbers = [2, 6, 4, 4, 5]\ntarget = 8\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "options": [
+        "2 + 6 = 8\n4 + 4 = 8\n6 + 2 = 8",
+        "2 + 6 = 8",
+        "2 + 6 = 8\n4 + 4 = 8\n4 + 4 = 8",
+        "2 + 6 = 8\n4 + 4 = 8"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "In the pairs problem, why does the inner loop use `range(i + 1, len(numbers))`?",
+      "options": [
+        "So the last number of the list is skipped",
+        "So a number isn't paired with itself and no pair is found twice",
+        "Because two loops can't both start at 0",
+        "Only to make it faster: range(len(numbers)) finds the same pairs"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "numbers = [1, 3, 5]\ntarget = 6\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "options": [
+        "1 + 5 = 6\n3 + 3 = 6\n5 + 1 = 6",
+        "1 + 5 = 6",
+        "1 + 5 = 6\n5 + 1 = 6",
+        "1 + 5 = 6\n3 + 3 = 6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "A list has 4 numbers. How many pairs do the lesson's loops `for i in range(len(numbers))` and `for j in range(i + 1, len(numbers))` check?",
+      "options": ["16", "12", "6", "4"],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "In the Log Analyzer, what does `split_codes(\"alpha beta alpha\")` give back?",
+      "options": [
+        "{'alpha': 2, 'beta': 1}",
+        "['alpha', 'beta', 'alpha']",
+        "\"alpha beta alpha\"",
+        "['alpha', 'beta']"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "In the Log Analyzer, what does `count_codes([\"sos\", \"ok\", \"sos\"])` give back?",
+      "options": ["{'sos': 1, 'ok': 1}", "['sos', 'ok']", "3", "{'sos': 2, 'ok': 1}"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "In the Log Analyzer, the log is `\"sos sos ok ok ok bye\"`. What does the program print after `Most common: `?",
+      "options": ["ok", "sos", "bye", "sos ok"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "In the Log Analyzer, the log is `\"sos sos ok ok ok bye\"`. What does the program print after `Codes: `?",
+      "options": ["3", "4", "6", "2"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "Why does the Log Analyzer split the work into three functions?",
+      "options": [
+        "Python needs three functions to use a dictionary",
+        "So the program needs no loops",
+        "So the dictionary prints its keys in order",
+        "Each one does one small job that can be written and tested on its own"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "def split_codes(log):\n    return log.split(\" \")\n\ndef count_codes(codes):\n    counts = {}\n    for code in codes:\n        if code in counts:\n            counts[code] = counts[code] + 1\n        else:\n            counts[code] = 1\n    return counts\n\ncounts = count_codes(split_codes(\"x y y z\"))\nprint(counts[\"y\"])",
+      "options": ["1", "2", "4", "{'y': 2}"],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "def split_codes(log):\n    log.split(\" \")\n\ncodes = split_codes(\"a b c\")\nprint(codes)",
+      "options": ["None", "['a', 'b', 'c']", "a b c", "['a b c']"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "print(\"ok  ok\".split(\" \"))",
+      "options": ["['ok', 'ok']", "['ok  ok']", "['ok', '', 'ok']", "['ok', ' ', 'ok']"],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "For \"find the most common word in a sentence\", which step do you write and test first?",
+      "options": [
+        "Printing the answer, so you see it early",
+        "Getting the words out of the sentence: the other steps need them",
+        "Finding the highest count, since it's the hardest step",
+        "All three at once, then testing them together"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "counter = {\"the\": 3, \"cat\": 2}\nfor word, count in counter.items():\n    print(f\"{word}: {count}\")",
+      "options": ["the\ncat", "3\n2", "('the', 3)\n('cat', 2)", "the: 3\ncat: 2"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "You have to print the average length of the words in a sentence. Which split into steps fits?",
+      "options": [
+        "Divide the length of the sentence by 2",
+        "Count the spaces in the sentence, then print that number",
+        "Split the sentence into words, add up their lengths, divide by how many words there are",
+        "Find the most common word, then print its length"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "words = \"go go stop go\".split(\" \")\ncount = 0\nfor w in words:\n    if w == \"go\":\n        count = count + 1\nprint(count)",
+      "options": ["3", "4", "1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "In the Log Analyzer, `most_common` starts with `best = \"\"` and `highest = 0`. What does `most_common({})` give back?",
+      "options": ["0", "None", "Nothing: it stops with a KeyError", "An empty string \"\""],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "numbers = [4, 1, 3]\ncount = 0\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        count = count + 1\nprint(count)",
+      "options": ["9", "3", "6", "2"],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "How do professional programmers write a program, as the lesson says?",
+      "options": [
+        "In one go, then they test it once at the end",
+        "They learn all of Python's syntax first, then write it all at once",
+        "Piece by piece, testing each piece along the way",
+        "They write the hardest part first and the rest only if there is time"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "counts = {\"alpha\": 3, \"beta\": 2, \"gamma\": 1}\nprint(sum(counts.values()))",
+      "options": ["6", "3", "1", "[3, 2, 1]"],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "pd-split-len",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{s}}\"\nwords = {{v}}.split(\" \")\nprint(len(words))\nprint(words[{{i}}])",
+      "values": [
+        {
+          "v": "sentence",
+          "s": "the cat sat on the mat",
+          "i": 2
+        },
+        {
+          "v": "log",
+          "s": "boot sync boot dock",
+          "i": 3
+        },
+        {
+          "v": "message",
+          "s": "dock at gate four",
+          "i": 1
+        },
+        {
+          "v": "names",
+          "s": "Tommy Lance Ken",
+          "i": 0
+        }
+      ],
+      "mistakes": [
+        ["len(words)", "len({{v}})"],
+        ["words[{{i}}]", "words[{{i}} + 1]"],
+        ["print(len(words))\n", ""],
+        ["print(words[{{i}}])", "print(words)"]
+      ]
+    },
+    {
+      "id": "pd-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "counter = {}\nfor word in \"{{s}}\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
+      "values": [
+        {
+          "s": "ok sos ok"
+        },
+        {
+          "s": "red blue red red"
+        },
+        {
+          "s": "go stop go wait"
+        },
+        {
+          "s": "up down up up down"
+        }
+      ],
+      "mistakes": [
+        ["counter[word] + 1", "1"],
+        ["counter[word] = 1", "counter[word] = 0"],
+        ["print(counter)", "print(len(counter))"],
+        ["\"{{s}}\".split(\" \")", "\"{{s}}\""]
+      ]
+    },
+    {
+      "id": "pd-best",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "counts = {{d}}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
+      "values": [
+        {
+          "d": "{\"alpha\": 3, \"beta\": 5, \"gamma\": 1}"
+        },
+        {
+          "d": "{\"sos\": 2, \"ok\": 4, \"bye\": 1}"
+        },
+        {
+          "d": "{\"x\": 2, \"y\": 2, \"z\": 1}"
+        },
+        {
+          "d": "{\"dock\": 1, \"boot\": 4, \"sync\": 6}"
+        }
+      ],
+      "mistakes": [
+        ["count > highest", "count < highest"],
+        ["count > highest", "count >= highest"],
+        ["        best = code", "        best = count"],
+        ["        highest = count\n", ""],
+        ["{best} ({highest})", "{highest} ({best})"]
+      ]
+    },
+    {
+      "id": "pd-pairs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = {{n}}\ntarget = {{t}}\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "values": [
+        {
+          "n": "[2, 4, 6, 3]",
+          "t": 7
+        },
+        {
+          "n": "[5, 1, 4, 2]",
+          "t": 6
+        },
+        {
+          "n": "[3, 3, 4, 2]",
+          "t": 6
+        },
+        {
+          "n": "[1, 6, 3, 4, 5]",
+          "t": 9
+        }
+      ],
+      "mistakes": [
+        ["range(i + 1, len(numbers))", "range(len(numbers))"],
+        ["range(i + 1, len(numbers))", "range(i, len(numbers))"],
+        ["numbers[i] + numbers[j] == target", "numbers[i] + numbers[j] > target"],
+        ["print(f\"{numbers[i]} + {numbers[j]} = {target}\")", "print(numbers[i], numbers[j])"]
+      ]
+    },
+    {
+      "id": "pd-funcs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def split_codes(log):\n    return log.split(\" \")\n\ndef count_codes(codes):\n    counts = {}\n    for code in codes:\n        if code in counts:\n            counts[code] = counts[code] + 1\n        else:\n            counts[code] = 1\n    return counts\n\ncodes = split_codes(\"{{log}}\")\ncounts = count_codes(codes)\nprint(f\"Codes: {len(codes)}\")\nfor code, count in counts.items():\n    print(f\"{code}: {count}\")",
+      "values": [
+        {
+          "log": "sos sos ok ok ok bye"
+        },
+        {
+          "log": "x y y z"
+        },
+        {
+          "log": "dock dock undock dock"
+        },
+        {
+          "log": "boot sync boot"
+        }
+      ],
+      "mistakes": [
+        ["print(f\"Codes: {len(codes)}\")", "print(f\"Codes: {len(counts)}\")"],
+        ["counts = count_codes(codes)", "counts = count_codes(\"{{log}}\")"],
+        ["counts[code] + 1", "1"],
+        ["print(f\"{code}: {count}\")", "print(f\"{count}: {code}\")"]
+      ]
+    },
+    {
+      "id": "pd-longest",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef longest(words):\n    best = \"\"\n    for w in words:\n        if len(w) > len(best):\n            best = w\n    return best\n\nprint(longest(get_words(\"{{s}}\")))",
+      "values": [
+        {
+          "s": "red green blue black"
+        },
+        {
+          "s": "sun moon star comet"
+        },
+        {
+          "s": "go stop wait jump"
+        },
+        {
+          "s": "alpha beta delta pi"
+        }
+      ],
+      "mistakes": [
+        ["len(w) > len(best)", "w > best"],
+        ["len(w) > len(best)", "len(w) >= len(best)"],
+        ["print(longest(get_words(\"{{s}}\")))", "print(len(longest(get_words(\"{{s}}\"))))"],
+        ["get_words(\"{{s}}\")", "\"{{s}}\""]
+      ]
+    },
+    {
+      "id": "pd-count-pairs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = {{n}}\npairs = 0\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == {{t}}:\n            pairs = pairs + 1\nprint(f\"Pairs: {pairs}\")",
+      "values": [
+        {
+          "n": "[1, 2, 3, 4, 5]",
+          "t": 6
+        },
+        {
+          "n": "[4, 4, 4]",
+          "t": 8
+        },
+        {
+          "n": "[10, 5, 3, 7, 0]",
+          "t": 10
+        }
+      ],
+      "mistakes": [
+        ["range(i + 1, len(numbers))", "range(len(numbers))"],
+        ["range(i + 1, len(numbers))", "range(i, len(numbers))"],
+        ["pairs = pairs + 1", "pairs = 1"],
+        ["== {{t}}", "> {{t}}"]
+      ]
+    },
+    {
+      "id": "pd-avg",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "words = \"{{s}}\".split(\" \")\nlengths = [len(w) for w in words]\nprint(lengths)\nprint(round(sum(lengths) / len(lengths), 1))",
+      "values": [
+        {
+          "s": "the cat sat"
+        },
+        {
+          "s": "station log ready"
+        },
+        {
+          "s": "dock and refuel now"
+        }
+      ],
+      "mistakes": [
+        ["sum(lengths) / len(lengths)", "sum(lengths) / len(\"{{s}}\")"],
+        ["[len(w) for w in words]", "[len(words) for w in words]"],
+        ["round(sum(lengths) / len(lengths), 1)", "sum(lengths)"],
+        ["\"{{s}}\".split(\" \")", "\"{{s}}\""]
+      ]
+    },
+    {
+      "id": "pd-which-count",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "counter = {}\nfor code in \"{{s}}\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+      "values": [
+        {
+          "s": "sos ok sos"
+        },
+        {
+          "s": "dock boot dock dock"
+        },
+        {
+          "s": "ping pong ping"
+        },
+        {
+          "s": "err warn err ok"
+        }
+      ],
+      "mistakes": [
+        ["counter[code] = 1", "counter[code] = 0"],
+        ["counter[code] + 1", "counter[code] + 2"],
+        ["\"{{s}}\".split(\" \")", "\"{{s}}\""],
+        ["print(f\"{code}: {count}\")", "print(code)"]
+      ]
+    },
+    {
+      "id": "pd-which-pairs",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "numbers = {{n}}\ntarget = {{t}}\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "values": [
+        {
+          "n": "[1, 3, 5, 7, 2]",
+          "t": 8
+        },
+        {
+          "n": "[6, 2, 4, 4]",
+          "t": 8
+        },
+        {
+          "n": "[9, 1, 5, 5]",
+          "t": 10
+        },
+        {
+          "n": "[2, 7, 3, 6]",
+          "t": 9
+        }
+      ],
+      "mistakes": [
+        ["range(i + 1, len(numbers))", "range(len(numbers))"],
+        ["range(i + 1, len(numbers))", "range(i, len(numbers))"],
+        ["== target", "> target"],
+        [
+          "print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+          "print(f\"{numbers[j]} + {numbers[i]} = {target}\")"
+        ]
+      ]
+    },
+    {
+      "id": "pd-gap-split",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def split_codes(log):\n    ___\n\ncodes = split_codes(\"{{log}}\")\nprint(codes)\nprint(len(codes))",
+      "values": [
+        {
+          "log": "alpha beta alpha"
+        },
+        {
+          "log": "sos ok"
+        },
+        {
+          "log": "dock boot sync dock"
+        },
+        {
+          "log": "ping pong"
+        }
+      ],
+      "answer": "return log.split(\" \")",
+      "wrong": ["print(log.split(\" \"))", "return log", "return [log]", "return log.split(\"a\")"]
+    },
+    {
+      "id": "pd-gap-else",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor word in \"{{s}}\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        ___\nprint(counter)",
+      "values": [
+        {
+          "s": "ok sos ok"
+        },
+        {
+          "s": "a b b c b"
+        },
+        {
+          "s": "go go stop"
+        },
+        {
+          "s": "x y x y x"
+        }
+      ],
+      "answer": "counter[word] = 1",
+      "wrong": [
+        "counter[word] = 0",
+        "counter[word] = counter[word] + 1",
+        "counter = {}",
+        "counter[word] = 2"
+      ]
+    },
+    {
+      "id": "pd-gap-best",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counts = {{d}}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        ___\nprint(f\"Most common: {best}\")",
+      "values": [
+        {
+          "d": "{\"sos\": 2, \"ok\": 4, \"bye\": 1}"
+        },
+        {
+          "d": "{\"dock\": 1, \"boot\": 4, \"sync\": 6}"
+        },
+        {
+          "d": "{\"red\": 7, \"blue\": 2}"
+        },
+        {
+          "d": "{\"ping\": 3, \"pong\": 5, \"err\": 4}"
+        }
+      ],
+      "answer": "best = code",
+      "wrong": ["best = count", "best = highest", "code = best", "highest = code"]
+    },
+    {
+      "id": "pd-val-start",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = {{n}}\nfor i in range(len(numbers)):\n    for j in range(___, len(numbers)):\n        if numbers[i] + numbers[j] == {{t}}:\n            print(numbers[i], numbers[j])",
+      "values": [
+        {
+          "n": "[1, 3, 5, 7, 2]",
+          "t": 8
+        },
+        {
+          "n": "[3, 3, 4, 2]",
+          "t": 6
+        },
+        {
+          "n": "[5, 5, 1, 9]",
+          "t": 10
+        },
+        {
+          "n": "[2, 6, 4, 4]",
+          "t": 8
+        }
+      ],
+      "answer": "i + 1",
+      "wrong": ["i", "0", "1", "len(numbers)"]
+    },
+    {
+      "id": "pd-val-target",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = {{n}}\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == ___:\n            print(numbers[i], numbers[j])",
+      "values": [
+        {
+          "n": "[1, 3, 5, 7, 2]",
+          "t": 8,
+          "w1": 6,
+          "w2": 9,
+          "w3": 10
+        },
+        {
+          "n": "[4, 1, 6, 3]",
+          "t": 7,
+          "w1": 5,
+          "w2": 10,
+          "w3": 9
+        },
+        {
+          "n": "[2, 5, 8, 3]",
+          "t": 10,
+          "w1": 8,
+          "w2": 11,
+          "w3": 13
+        },
+        {
+          "n": "[6, 4, 2, 9]",
+          "t": 11,
+          "w1": 10,
+          "w2": 8,
+          "w3": 13
+        }
+      ],
+      "answer": "{{t}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "pd-bad-split",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def split_codes(log):\n    return log.split(\" \")\n\ncodes = split_codes(\"{{log}}\")\nprint(f\"Codes: {len(codes)}\")\nprint(codes[0])",
+      "values": [
+        {
+          "log": "alpha beta alpha"
+        },
+        {
+          "log": "sos ok sos"
+        },
+        {
+          "log": "dock boot sync"
+        }
+      ],
+      "bug": ["return log.split(\" \")", "return log"]
+    },
+    {
+      "id": "pd-bad-else",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "counter = {}\nfor word in \"{{s}}\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
+      "values": [
+        {
+          "s": "ok sos ok"
+        },
+        {
+          "s": "red blue red"
+        },
+        {
+          "s": "go stop go go"
+        }
+      ],
+      "bug": ["counter[word] = 1", "counter[word] = 0"]
+    },
+    {
+      "id": "pd-bad-range",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = {{n}}\ntarget = {{t}}\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "values": [
+        {
+          "n": "[1, 3, 5, 7, 2]",
+          "t": 8
+        },
+        {
+          "n": "[5, 1, 4, 2]",
+          "t": 6
+        },
+        {
+          "n": "[2, 7, 3, 6]",
+          "t": 9
+        }
+      ],
+      "bug": ["range(i + 1, len(numbers))", "range(len(numbers))"]
+    },
+    {
+      "id": "pd-bad-best",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "counts = {{d}}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
+      "values": [
+        {
+          "d": "{\"alpha\": 3, \"beta\": 5, \"gamma\": 1}"
+        },
+        {
+          "d": "{\"sos\": 4, \"ok\": 2, \"bye\": 1}"
+        },
+        {
+          "d": "{\"dock\": 6, \"boot\": 4}"
+        }
+      ],
+      "bug": ["highest = count", "count = highest"]
+    }
+  ]
+}

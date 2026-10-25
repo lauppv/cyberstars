@@ -1,0 +1,712 @@
+{
+  "note": "Made by npm run make:quiz from the templates in pattern-flag-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "pf-search-break-9083a9",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\ngasit = False\nfor n in echipaj:\n    print(n)\n    if n == \"Lance\":\n        gasit = True\n        break\nprint(gasit)",
+      "options": [
+        "Tommy\nLance\nTrue",
+        "Tommy\nLance\nCortez\nPhil\nTrue",
+        "Tommy\nTrue",
+        "Tommy\nLance\nLance"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-search-break-78015b",
+      "text": "Ce afișează?",
+      "code": "nave = [\"Pioneer\", \"Voyager\", \"Apollo\", \"Juno\"]\ngasit = False\nfor n in nave:\n    print(n)\n    if n == \"Apollo\":\n        gasit = True\n        break\nprint(gasit)",
+      "options": [
+        "Pioneer\nVoyager\nApollo\nTrue",
+        "Pioneer\nVoyager\nApollo\nJuno\nTrue",
+        "Pioneer\nVoyager\nTrue",
+        "Pioneer\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-search-break-d7cbc5",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Terra\"]\ngasit = False\nfor n in planete:\n    print(n)\n    if n == \"Venus\":\n        gasit = True\n        break\nprint(gasit)",
+      "options": [
+        "Marte\nVenus\nTrue",
+        "Marte\nVenus\nTerra\nTrue",
+        "Marte\nTrue",
+        "Marte\nVenus\nVenus"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-search-break-cf3013",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Ken\", \"Mercedes\", \"Phil\", \"Kent\", \"Victor\"]\ngasit = False\nfor n in echipaj:\n    print(n)\n    if n == \"Kent\":\n        gasit = True\n        break\nprint(gasit)",
+      "options": [
+        "Ken\nMercedes\nPhil\nKent\nTrue",
+        "Ken\nMercedes\nPhil\nKent\nVictor\nTrue",
+        "Ken\nMercedes\nPhil\nTrue",
+        "Ken\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-all-passed-929fea",
+      "text": "Ce afișează?",
+      "code": "scoruri = [80, 95, 40, 70]\ntoti_au_trecut = True\nfor s in scoruri:\n    if s < 50:\n        toti_au_trecut = False\nprint(f\"Toti au trecut: {toti_au_trecut}\")",
+      "options": [
+        "Toti au trecut: False",
+        "Toti au trecut: True\nToti au trecut: True\nToti au trecut: False\nToti au trecut: False",
+        "Toti au trecut: 70",
+        "Toti au trecut: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-all-passed-9dde27",
+      "text": "Ce afișează?",
+      "code": "scoruri = [60, 75, 90]\ntoti_au_trecut = True\nfor s in scoruri:\n    if s < 50:\n        toti_au_trecut = False\nprint(f\"Toti au trecut: {toti_au_trecut}\")",
+      "options": [
+        "Toti au trecut: True",
+        "Toti au trecut: False",
+        "Toti au trecut: True\nToti au trecut: True\nToti au trecut: True",
+        "Toti au trecut: 90"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-all-passed-92c71b",
+      "text": "Ce afișează?",
+      "code": "scoruri = [55, 49, 72, 88]\ntoti_au_trecut = True\nfor s in scoruri:\n    if s < 50:\n        toti_au_trecut = False\nprint(f\"Toti au trecut: {toti_au_trecut}\")",
+      "options": [
+        "Toti au trecut: False",
+        "Toti au trecut: True\nToti au trecut: False\nToti au trecut: False\nToti au trecut: False",
+        "Toti au trecut: 88",
+        "Toti au trecut: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-all-passed-86f940",
+      "text": "Ce afișează?",
+      "code": "scoruri = [7, 9, 6, 10]\ntoti_au_trecut = True\nfor s in scoruri:\n    if s < 5:\n        toti_au_trecut = False\nprint(f\"Toti au trecut: {toti_au_trecut}\")",
+      "options": [
+        "Toti au trecut: True",
+        "Toti au trecut: False",
+        "Toti au trecut: True\nToti au trecut: True\nToti au trecut: True\nToti au trecut: True",
+        "Toti au trecut: 10"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-password-ddf2eb",
+      "text": "Ce afișează?",
+      "code": "parola = \"Tommy123\"\nare_majuscula = False\nare_minuscula = False\nare_cifra = False\nfor caracter in parola:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.islower():\n        are_minuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nprint(are_majuscula, are_minuscula, are_cifra)",
+      "options": ["True True True", "True True False", "True", "True False True"],
+      "answer": 0
+    },
+    {
+      "id": "pf-password-1d2294",
+      "text": "Ce afișează?",
+      "code": "parola = \"vice99\"\nare_majuscula = False\nare_minuscula = False\nare_cifra = False\nfor caracter in parola:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.islower():\n        are_minuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nprint(are_majuscula, are_minuscula, are_cifra)",
+      "options": ["False True True", "False True False", "False", "False False True"],
+      "answer": 0
+    },
+    {
+      "id": "pf-password-2439ae",
+      "text": "Ce afișează?",
+      "code": "parola = \"Lance7\"\nare_majuscula = False\nare_minuscula = False\nare_cifra = False\nfor caracter in parola:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.islower():\n        are_minuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nprint(are_majuscula, are_minuscula, are_cifra)",
+      "options": ["True True True", "True True False", "True", "True False True"],
+      "answer": 0
+    },
+    {
+      "id": "pf-password-86d085",
+      "text": "Ce afișează?",
+      "code": "parola = \"Orbit\"\nare_majuscula = False\nare_minuscula = False\nare_cifra = False\nfor caracter in parola:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.islower():\n        are_minuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nprint(are_majuscula, are_minuscula, are_cifra)",
+      "options": ["True True False", "False", "True False False", "False True True"],
+      "answer": 0
+    },
+    {
+      "id": "pf-access-4007cb",
+      "text": "Ce afișează?",
+      "code": "cod = \"Orbit42\"\nare_majuscula = False\nare_cifra = False\nfor caracter in cod:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nsuficient_de_lung = len(cod) >= 6\nprint(f\"Are majuscula: {are_majuscula}\")\nprint(f\"Are cifra: {are_cifra}\")\nprint(f\"Suficient de lung: {suficient_de_lung}\")\nif are_majuscula and are_cifra and suficient_de_lung:\n    print(\"Cod de acces valid\")\nelse:\n    print(\"Cod de acces invalid\")",
+      "options": [
+        "Are majuscula: True\nAre cifra: True\nSuficient de lung: True\nCod de acces valid",
+        "Are majuscula: True\nAre cifra: False\nSuficient de lung: True\nCod de acces invalid",
+        "Are majuscula: True\nAre cifra: True\nSuficient de lung: False\nCod de acces invalid",
+        "Are majuscula: False\nAre cifra: True\nSuficient de lung: True\nCod de acces invalid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-access-9a5901",
+      "text": "Ce afișează?",
+      "code": "cod = \"A1bcd\"\nare_majuscula = False\nare_cifra = False\nfor caracter in cod:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nsuficient_de_lung = len(cod) >= 6\nprint(f\"Are majuscula: {are_majuscula}\")\nprint(f\"Are cifra: {are_cifra}\")\nprint(f\"Suficient de lung: {suficient_de_lung}\")\nif are_majuscula and are_cifra and suficient_de_lung:\n    print(\"Cod de acces valid\")\nelse:\n    print(\"Cod de acces invalid\")",
+      "options": [
+        "Are majuscula: True\nAre cifra: True\nSuficient de lung: False\nCod de acces invalid",
+        "Are majuscula: True\nAre cifra: True\nSuficient de lung: False\nCod de acces valid",
+        "Are majuscula: True\nAre cifra: False\nSuficient de lung: False\nCod de acces invalid",
+        "Are majuscula: True\nAre cifra: True\nSuficient de lung: True\nCod de acces valid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-access-5724f1",
+      "text": "Ce afișează?",
+      "code": "cod = \"rocket77\"\nare_majuscula = False\nare_cifra = False\nfor caracter in cod:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nsuficient_de_lung = len(cod) >= 6\nprint(f\"Are majuscula: {are_majuscula}\")\nprint(f\"Are cifra: {are_cifra}\")\nprint(f\"Suficient de lung: {suficient_de_lung}\")\nif are_majuscula and are_cifra and suficient_de_lung:\n    print(\"Cod de acces valid\")\nelse:\n    print(\"Cod de acces invalid\")",
+      "options": [
+        "Are majuscula: False\nAre cifra: True\nSuficient de lung: True\nCod de acces invalid",
+        "Are majuscula: False\nAre cifra: True\nSuficient de lung: True\nCod de acces valid",
+        "Are majuscula: False\nAre cifra: False\nSuficient de lung: True\nCod de acces invalid",
+        "Are majuscula: False\nAre cifra: True\nSuficient de lung: False\nCod de acces invalid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-access-302878",
+      "text": "Ce afișează?",
+      "code": "cod = \"ZX9qwe\"\nare_majuscula = False\nare_cifra = False\nfor caracter in cod:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nsuficient_de_lung = len(cod) >= 6\nprint(f\"Are majuscula: {are_majuscula}\")\nprint(f\"Are cifra: {are_cifra}\")\nprint(f\"Suficient de lung: {suficient_de_lung}\")\nif are_majuscula and are_cifra and suficient_de_lung:\n    print(\"Cod de acces valid\")\nelse:\n    print(\"Cod de acces invalid\")",
+      "options": [
+        "Are majuscula: True\nAre cifra: True\nSuficient de lung: True\nCod de acces valid",
+        "Are majuscula: True\nAre cifra: True\nSuficient de lung: False\nCod de acces invalid",
+        "Are majuscula: True\nAre cifra: False\nSuficient de lung: True\nCod de acces invalid",
+        "Are majuscula: False\nAre cifra: True\nSuficient de lung: True\nCod de acces invalid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-first-alarm-ea3694",
+      "text": "Ce afișează?",
+      "code": "citiri = [12, 50, 64, 30, 90]\nalarma = False\nfor r in citiri:\n    if r > 50:\n        alarma = True\n        break\nprint(alarma)\nprint(r)",
+      "options": ["True\n64", "True\n90", "True\n50", "False\n64"],
+      "answer": 0
+    },
+    {
+      "id": "pf-first-alarm-3a3051",
+      "text": "Ce afișează?",
+      "code": "citiri = [7, 10, 15, 3]\nalarma = False\nfor r in citiri:\n    if r > 10:\n        alarma = True\n        break\nprint(alarma)\nprint(r)",
+      "options": ["True\n15", "True\n3", "True\n10", "False\n15"],
+      "answer": 0
+    },
+    {
+      "id": "pf-first-alarm-72188c",
+      "text": "Ce afișează?",
+      "code": "citiri = [100, 80, 120, 95]\nalarma = False\nfor r in citiri:\n    if r > 100:\n        alarma = True\n        break\nprint(alarma)\nprint(r)",
+      "options": ["True\n120", "True\n95", "True\n100", "False\n120"],
+      "answer": 0
+    },
+    {
+      "id": "pf-first-alarm-2956a7",
+      "text": "Ce afișează?",
+      "code": "citiri = [5, 25, 40, 26, 8]\nalarma = False\nfor r in citiri:\n    if r > 25:\n        alarma = True\n        break\nprint(alarma)\nprint(r)",
+      "options": ["True\n40", "True\n8", "True\n25", "False\n40"],
+      "answer": 0
+    },
+    {
+      "id": "pf-even-odd-e663c9",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 4, 6, 8]\nare_par = False\nare_impar = False\nfor n in numere:\n    if n % 2 == 0:\n        are_par = True\n    else:\n        are_impar = True\nprint(f\"Par: {are_par}, Impar: {are_impar}\")",
+      "options": [
+        "Par: True, Impar: False",
+        "Par: False, Impar: True",
+        "Par: True, Impar: True",
+        "Par: 8, Impar: False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-even-odd-d1b7cc",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 8, 5]\nare_par = False\nare_impar = False\nfor n in numere:\n    if n % 2 == 0:\n        are_par = True\n    else:\n        are_impar = True\nprint(f\"Par: {are_par}, Impar: {are_impar}\")",
+      "options": [
+        "Par: True, Impar: True",
+        "Par: True, Impar: False",
+        "Par: 5, Impar: True",
+        "Par: False, Impar: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-even-odd-c8ce9c",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 7, 9]\nare_par = False\nare_impar = False\nfor n in numere:\n    if n % 2 == 0:\n        are_par = True\n    else:\n        are_impar = True\nprint(f\"Par: {are_par}, Impar: {are_impar}\")",
+      "options": [
+        "Par: False, Impar: True",
+        "Par: True, Impar: False",
+        "Par: False, Impar: False",
+        "Par: True, Impar: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-even-odd-590908",
+      "text": "Ce afișează?",
+      "code": "numere = [10, 12, 13, 14]\nare_par = False\nare_impar = False\nfor n in numere:\n    if n % 2 == 0:\n        are_par = True\n    else:\n        are_impar = True\nprint(f\"Par: {are_par}, Impar: {are_impar}\")",
+      "options": [
+        "Par: True, Impar: True",
+        "Par: True, Impar: False",
+        "Par: 14, Impar: True",
+        "Par: False, Impar: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-flag-count-c5b280",
+      "text": "Ce afișează?",
+      "code": "citiri = [12, 0, 40, 10, 3]\nmici = 0\nare_zero = False\nfor r in citiri:\n    if r < 10:\n        mici += 1\n    if r == 0:\n        are_zero = True\nprint(f\"Mici: {mici}\")\nprint(f\"Zero: {are_zero}\")",
+      "options": [
+        "Mici: 2\nZero: True",
+        "Mici: 2\nZero: False",
+        "Mici: 1\nZero: True",
+        "Mici: 3\nZero: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-flag-count-882f44",
+      "text": "Ce afișează?",
+      "code": "citiri = [5, 20, 20, 0]\nmici = 0\nare_zero = False\nfor r in citiri:\n    if r < 20:\n        mici += 1\n    if r == 0:\n        are_zero = True\nprint(f\"Mici: {mici}\")\nprint(f\"Zero: {are_zero}\")",
+      "options": [
+        "Mici: 2\nZero: True",
+        "Mici: 2\nZero: False",
+        "Mici: 1\nZero: True",
+        "Mici: 4\nZero: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-flag-count-aed39f",
+      "text": "Ce afișează?",
+      "code": "citiri = [0, 0, 60, 50]\nmici = 0\nare_zero = False\nfor r in citiri:\n    if r < 50:\n        mici += 1\n    if r == 0:\n        are_zero = True\nprint(f\"Mici: {mici}\")\nprint(f\"Zero: {are_zero}\")",
+      "options": [
+        "Mici: 2\nZero: True",
+        "Mici: 2\nZero: False",
+        "Mici: 1\nZero: True",
+        "Mici: 3\nZero: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-flag-count-d643e0",
+      "text": "Ce afișează?",
+      "code": "citiri = [14, 9, 0, 25, 15]\nmici = 0\nare_zero = False\nfor r in citiri:\n    if r < 15:\n        mici += 1\n    if r == 0:\n        are_zero = True\nprint(f\"Mici: {mici}\")\nprint(f\"Zero: {are_zero}\")",
+      "options": [
+        "Mici: 3\nZero: True",
+        "Mici: 3\nZero: False",
+        "Mici: 1\nZero: True",
+        "Mici: 4\nZero: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-func-739c31",
+      "text": "Ce afișează?",
+      "code": "def are_cifra(text):\n    for caracter in text:\n        if caracter.isdigit():\n            return True\n    return False\n\nfor cuvant in [\"Orbit42\", \"Lance\", \"7up\"]:\n    print(cuvant, are_cifra(cuvant))",
+      "options": [
+        "Orbit42 True\nLance False\n7up True",
+        "Orbit42 False\nLance False\n7up True",
+        "Orbit42 True\nLance True\n7up True",
+        "Orbit42 False\nLance False\n7up False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-func-91352c",
+      "text": "Ce afișează?",
+      "code": "def are_cifra(text):\n    for caracter in text:\n        if caracter.isdigit():\n            return True\n    return False\n\nfor cuvant in [\"Vice\", \"R2D2\", \"Mars\"]:\n    print(cuvant, are_cifra(cuvant))",
+      "options": [
+        "Vice False\nR2D2 True\nMars False",
+        "Vice False\nR2D2 False\nMars False",
+        "Vice True\nR2D2 True\nMars True",
+        "False\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-func-6f87da",
+      "text": "Ce afișează?",
+      "code": "def are_cifra(text):\n    for caracter in text:\n        if caracter.isdigit():\n            return True\n    return False\n\nfor cuvant in [\"Apollo11\", \"9lives\", \"Juno\"]:\n    print(cuvant, are_cifra(cuvant))",
+      "options": [
+        "Apollo11 True\n9lives True\nJuno False",
+        "Apollo11 False\n9lives True\nJuno False",
+        "Apollo11 True\n9lives True\nJuno True",
+        "Apollo11 False\n9lives False\nJuno False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-func-bde34d",
+      "text": "Ce afișează?",
+      "code": "def are_cifra(text):\n    for caracter in text:\n        if caracter.isdigit():\n            return True\n    return False\n\nfor cuvant in [\"Phil\", \"Tommy\", \"B52\"]:\n    print(cuvant, are_cifra(cuvant))",
+      "options": [
+        "Phil False\nTommy False\nB52 True",
+        "Phil False\nTommy False\nB52 False",
+        "Phil True\nTommy True\nB52 True",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-search-420037",
+      "text": "Care program afișează asta?",
+      "output": "Ken gasit: False",
+      "options": [
+        "echipaj = [\"Tommy\", \"Lance\", \"Cortez\"]\ngasit = False\nfor n in echipaj:\n    if n == \"Ken\":\n        gasit = True\nprint(f\"Ken gasit: {gasit}\")",
+        "echipaj = [\"Tommy\", \"Lance\", \"Cortez\"]\ngasit = True\nfor n in echipaj:\n    if n == \"Ken\":\n        gasit = True\nprint(f\"Ken gasit: {gasit}\")",
+        "echipaj = [\"Tommy\", \"Lance\", \"Cortez\"]\ngasit = False\nfor n in echipaj:\n    if n != \"Ken\":\n        gasit = True\nprint(f\"Ken gasit: {gasit}\")",
+        "echipaj = [\"Tommy\", \"Lance\", \"Cortez\"]\ngasit = False\nfor n in echipaj:\n    if n == \"Ken\":\n        gasit = True\nprint(f\"Ken gasit: {n}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-search-43c167",
+      "text": "Care program afișează asta?",
+      "output": "Juno gasit: False",
+      "options": [
+        "nave = [\"Pioneer\", \"Voyager\"]\ngasit = False\nfor n in nave:\n    if n == \"Juno\":\n        gasit = True\nprint(f\"Juno gasit: {gasit}\")",
+        "nave = [\"Pioneer\", \"Voyager\"]\ngasit = True\nfor n in nave:\n    if n == \"Juno\":\n        gasit = True\nprint(f\"Juno gasit: {gasit}\")",
+        "nave = [\"Pioneer\", \"Voyager\"]\ngasit = False\nfor n in nave:\n    if n != \"Juno\":\n        gasit = True\nprint(f\"Juno gasit: {gasit}\")",
+        "nave = [\"Pioneer\", \"Voyager\"]\ngasit = False\nfor n in nave:\n    if n == \"Juno\":\n        gasit = True\nprint(f\"Juno gasit: {n}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-search-d17bc5",
+      "text": "Care program afișează asta?",
+      "output": "Kent gasit: False",
+      "options": [
+        "echipaj = [\"Phil\", \"Mercedes\", \"Victor\"]\ngasit = False\nfor n in echipaj:\n    if n == \"Kent\":\n        gasit = True\nprint(f\"Kent gasit: {gasit}\")",
+        "echipaj = [\"Phil\", \"Mercedes\", \"Victor\"]\ngasit = True\nfor n in echipaj:\n    if n == \"Kent\":\n        gasit = True\nprint(f\"Kent gasit: {gasit}\")",
+        "echipaj = [\"Phil\", \"Mercedes\", \"Victor\"]\ngasit = False\nfor n in echipaj:\n    if n != \"Kent\":\n        gasit = True\nprint(f\"Kent gasit: {gasit}\")",
+        "echipaj = [\"Phil\", \"Mercedes\", \"Victor\"]\ngasit = False\nfor n in echipaj:\n    if n == \"Kent\":\n        gasit = True\nprint(f\"Kent gasit: {n}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-break-5999af",
+      "text": "Care program afișează asta?",
+      "output": "4\n9\nTrue",
+      "options": [
+        "gasit = False\nfor n in [4, 9, 12, 7]:\n    if n > 10:\n        gasit = True\n        break\n    print(n)\nprint(gasit)",
+        "gasit = False\nfor n in [4, 9, 12, 7]:\n    if n > 10:\n        gasit = True\n    print(n)\nprint(gasit)",
+        "gasit = False\nfor n in [4, 9, 12, 7]:\n    if n < 10:\n        gasit = True\n        break\n    print(n)\nprint(gasit)",
+        "gasit = False\nfor n in [4, 9, 12, 7]:\n    if n > 10:\n        gasit = True\n        break\nprint(n)\nprint(gasit)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-break-b4910f",
+      "text": "Care program afișează asta?",
+      "output": "20\n35\nTrue",
+      "options": [
+        "gasit = False\nfor n in [20, 35, 60, 15, 80]:\n    if n > 50:\n        gasit = True\n        break\n    print(n)\nprint(gasit)",
+        "gasit = False\nfor n in [20, 35, 60, 15, 80]:\n    if n > 50:\n        gasit = True\n    print(n)\nprint(gasit)",
+        "gasit = False\nfor n in [20, 35, 60, 15, 80]:\n    if n < 50:\n        gasit = True\n        break\n    print(n)\nprint(gasit)",
+        "gasit = False\nfor n in [20, 35, 60, 15, 80]:\n    if n > 50:\n        gasit = True\n        break\nprint(n)\nprint(gasit)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-break-c1dfa3",
+      "text": "Care program afișează asta?",
+      "output": "1\n3\nTrue",
+      "options": [
+        "gasit = False\nfor n in [1, 3, 6, 2]:\n    if n > 5:\n        gasit = True\n        break\n    print(n)\nprint(gasit)",
+        "gasit = False\nfor n in [1, 3, 6, 2]:\n    if n > 5:\n        gasit = True\n    print(n)\nprint(gasit)",
+        "gasit = False\nfor n in [1, 3, 6, 2]:\n    if n < 5:\n        gasit = True\n        break\n    print(n)\nprint(gasit)",
+        "gasit = False\nfor n in [1, 3, 6, 2]:\n    if n > 5:\n        gasit = True\n        break\nprint(n)\nprint(gasit)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-flip-ed5cc3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "citiri = [40, 85, 60]\ntotul_ok = True\nfor r in citiri:\n    print(r)\n    if r > 80:\n        ___\nprint(f\"Totul OK: {totul_ok}\")",
+      "output": "40\n85\n60\nTotul OK: False",
+      "options": ["totul_ok = False", "totul_ok = True", "break", "print(totul_ok)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-flip-de8845",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "semnale = [7, 3, 12, 5]\ntotul_ok = True\nfor r in semnale:\n    print(r)\n    if r > 10:\n        ___\nprint(f\"Totul OK: {totul_ok}\")",
+      "output": "7\n3\n12\n5\nTotul OK: False",
+      "options": ["totul_ok = False", "totul_ok = True", "break", "print(totul_ok)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-flip-6c9d21",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "citiri = [99, 101, 98]\ntotul_ok = True\nfor r in citiri:\n    print(r)\n    if r > 100:\n        ___\nprint(f\"Totul OK: {totul_ok}\")",
+      "output": "99\n101\n98\nTotul OK: False",
+      "options": ["totul_ok = False", "totul_ok = True", "break", "print(totul_ok)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-flip-4c6a68",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "semnale = [15, 22, 9]\ntotul_ok = True\nfor r in semnale:\n    print(r)\n    if r > 20:\n        ___\nprint(f\"Totul OK: {totul_ok}\")",
+      "output": "15\n22\n9\nTotul OK: False",
+      "options": ["totul_ok = False", "totul_ok = True", "break", "print(totul_ok)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-break-17a703",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "gasit = False\nfor n in [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]:\n    print(n)\n    if n == \"Cortez\":\n        gasit = True\n        ___\nprint(gasit)",
+      "output": "Tommy\nLance\nCortez\nTrue",
+      "options": ["break", "continue", "gasit = False", "print(gasit)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-break-c14aa1",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "gasit = False\nfor n in [\"Marte\", \"Venus\", \"Terra\", \"Jupiter\"]:\n    print(n)\n    if n == \"Venus\":\n        gasit = True\n        ___\nprint(gasit)",
+      "output": "Marte\nVenus\nTrue",
+      "options": ["break", "continue", "gasit = False", "print(gasit)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-break-37b22c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "gasit = False\nfor n in [\"Ken\", \"Kent\", \"Victor\"]:\n    print(n)\n    if n == \"Ken\":\n        gasit = True\n        ___\nprint(gasit)",
+      "output": "Ken\nTrue",
+      "options": ["break", "continue", "gasit = False", "print(gasit)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-start-0544f3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "parola = \"Orbit\"\n___\nfor caracter in parola:\n    if caracter.isdigit():\n        are_cifra = True\nprint(f\"Are cifra: {are_cifra}\")",
+      "output": "Are cifra: False",
+      "options": ["are_cifra = False", "are_cifra = True", "are_cifra = 0", "are_cifra = []"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-start-a10c1a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "parola = \"lance\"\n___\nfor caracter in parola:\n    if caracter.isdigit():\n        are_cifra = True\nprint(f\"Are cifra: {are_cifra}\")",
+      "output": "Are cifra: False",
+      "options": ["are_cifra = False", "are_cifra = True", "are_cifra = 0", "are_cifra = []"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-start-83b8b6",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "parola = \"VICE\"\n___\nfor caracter in parola:\n    if caracter.isdigit():\n        are_cifra = True\nprint(f\"Are cifra: {are_cifra}\")",
+      "output": "Are cifra: False",
+      "options": ["are_cifra = False", "are_cifra = True", "are_cifra = 0", "are_cifra = []"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-start-cf88c6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [2, 4, 6, 8]\ntoate_pare = ___\nfor n in numere:\n    print(n)\n    if n % 2 != 0:\n        toate_pare = False\nprint(toate_pare)",
+      "output": "2\n4\n6\n8\nTrue",
+      "options": ["True", "False", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-start-bb5485",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [10, 20, 30]\ntoate_pare = ___\nfor n in numere:\n    print(n)\n    if n % 2 != 0:\n        toate_pare = False\nprint(toate_pare)",
+      "output": "10\n20\n30\nTrue",
+      "options": ["True", "False", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-start-ca4095",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [12, 14, 16]\ntoate_pare = ___\nfor n in numere:\n    print(n)\n    if n % 2 != 0:\n        toate_pare = False\nprint(toate_pare)",
+      "output": "12\n14\n16\nTrue",
+      "options": ["True", "False", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-cond-6706a7",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "citiri = [40, 90, 75]\nprea_cald = False\nfor r in citiri:\n    if r ___ 90:\n        prea_cald = True\nprint(f\"Prea cald: {prea_cald}\")",
+      "output": "Prea cald: False",
+      "options": [">", ">=", "<", "!="],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-cond-a72a64",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "citiri = [30, 50, 50, 10]\nprea_cald = False\nfor r in citiri:\n    if r ___ 50:\n        prea_cald = True\nprint(f\"Prea cald: {prea_cald}\")",
+      "output": "Prea cald: False",
+      "options": [">", ">=", "<", "!="],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-cond-4293a2",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "citiri = [100, 64, 99]\nprea_cald = False\nfor r in citiri:\n    if r ___ 100:\n        prea_cald = True\nprint(f\"Prea cald: {prea_cald}\")",
+      "output": "Prea cald: False",
+      "options": [">", ">=", "<", "!="],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-method-342694",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cod = \"Orbit42\"\ngasit = False\nfor caracter in cod:\n    if caracter.___():\n        print(caracter)\n        gasit = True\nprint(gasit)",
+      "output": "4\n2\nTrue",
+      "options": ["isdigit", "isupper", "islower", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-method-a5dbd1",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cod = \"mars7X\"\ngasit = False\nfor caracter in cod:\n    if caracter.___():\n        print(caracter)\n        gasit = True\nprint(gasit)",
+      "output": "X\nTrue",
+      "options": ["isupper", "isdigit", "islower", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-method-e74417",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cod = \"AB12c\"\ngasit = False\nfor caracter in cod:\n    if caracter.___():\n        print(caracter)\n        gasit = True\nprint(gasit)",
+      "output": "c\nTrue",
+      "options": ["islower", "isupper", "isdigit", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-method-ea98c6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cod = \"r2D2\"\ngasit = False\nfor caracter in cod:\n    if caracter.___():\n        print(caracter)\n        gasit = True\nprint(gasit)",
+      "output": "r\nD\nTrue",
+      "options": ["isalpha", "isdigit", "islower", "isupper"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-compare-026ed8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = [\"Tommy\", \"Lance\", \"Cortez\"]\ngasit = False\nfor n in echipaj:\n    if n != \"Lance\":\n        print(\"Gasit\", n)\n        gasit = True\nprint(gasit)",
+      "output": "Gasit Lance\nTrue",
+      "options": [
+        "if n != \"Lance\":",
+        "for n in echipaj:",
+        "gasit = False",
+        "print(\"Gasit\", n)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-compare-b6a667",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nave = [\"Pioneer\", \"Voyager\", \"Juno\"]\ngasit = False\nfor n in nave:\n    if n != \"Juno\":\n        print(\"Gasit\", n)\n        gasit = True\nprint(gasit)",
+      "output": "Gasit Juno\nTrue",
+      "options": ["if n != \"Juno\":", "for n in nave:", "gasit = False", "print(\"Gasit\", n)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-compare-f7f35a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = [\"Phil\", \"Ken\", \"Kent\"]\ngasit = False\nfor n in echipaj:\n    if n != \"Phil\":\n        print(\"Gasit\", n)\n        gasit = True\nprint(gasit)",
+      "output": "Gasit Phil\nTrue",
+      "options": ["if n != \"Phil\":", "print(\"Gasit\", n)", "gasit = True", "print(gasit)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-even-89867c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "toate_pare = True\nfor n in [4, 7, 6]:\n    if n % 2 == 0:\n        toate_pare = False\n    print(n, toate_pare)",
+      "output": "4 True\n7 False\n6 False",
+      "options": [
+        "if n % 2 == 0:",
+        "for n in [4, 7, 6]:",
+        "toate_pare = False",
+        "print(n, toate_pare)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-even-733b43",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "toate_pare = True\nfor n in [2, 8, 3, 10]:\n    if n % 2 == 0:\n        toate_pare = False\n    print(n, toate_pare)",
+      "output": "2 True\n8 True\n3 False\n10 False",
+      "options": [
+        "if n % 2 == 0:",
+        "for n in [2, 8, 3, 10]:",
+        "toate_pare = False",
+        "print(n, toate_pare)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-even-151868",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "toate_pare = True\nfor n in [6, 9, 12]:\n    if n % 2 == 0:\n        toate_pare = False\n    print(n, toate_pare)",
+      "output": "6 True\n9 False\n12 False",
+      "options": [
+        "if n % 2 == 0:",
+        "for n in [6, 9, 12]:",
+        "toate_pare = False",
+        "print(n, toate_pare)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-break-c8e9dd",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "gasit = False\nfor n in [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]:\n    print(n)\n    if n == \"Cortez\":\n        gasit = True\n    break\nprint(gasit)",
+      "output": "Tommy\nLance\nCortez\nTrue",
+      "options": ["break", "gasit = True", "print(n)", "print(gasit)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-break-c93077",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "gasit = False\nfor n in [\"Marte\", \"Venus\", \"Terra\"]:\n    print(n)\n    if n == \"Terra\":\n        gasit = True\n    break\nprint(gasit)",
+      "output": "Marte\nVenus\nTerra\nTrue",
+      "options": ["break", "gasit = True", "print(n)", "gasit = False"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-break-e2037c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "gasit = False\nfor n in [\"Ken\", \"Kent\", \"Victor\", \"Phil\"]:\n    print(n)\n    if n == \"Victor\":\n        gasit = True\n    break\nprint(gasit)",
+      "output": "Ken\nKent\nVictor\nTrue",
+      "options": ["break", "gasit = True", "print(n)", "gasit = False"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-and-4d9ce5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cod = \"orbit42\"\nare_majuscula = False\nare_cifra = False\nfor caracter in cod:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nprint(f\"Majuscula: {are_majuscula}\")\nprint(f\"Cifra: {are_cifra}\")\nprint(f\"Valid: {are_majuscula or are_cifra}\")",
+      "output": "Majuscula: False\nCifra: True\nValid: False",
+      "options": [
+        "print(f\"Valid: {are_majuscula or are_cifra}\")",
+        "print(f\"Cifra: {are_cifra}\")",
+        "print(f\"Majuscula: {are_majuscula}\")",
+        "are_cifra = True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-and-bb2511",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cod = \"ORBIT\"\nare_majuscula = False\nare_cifra = False\nfor caracter in cod:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nprint(f\"Majuscula: {are_majuscula}\")\nprint(f\"Cifra: {are_cifra}\")\nprint(f\"Valid: {are_majuscula or are_cifra}\")",
+      "output": "Majuscula: True\nCifra: False\nValid: False",
+      "options": [
+        "print(f\"Valid: {are_majuscula or are_cifra}\")",
+        "print(f\"Cifra: {are_cifra}\")",
+        "print(f\"Majuscula: {are_majuscula}\")",
+        "are_cifra = True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-and-282aa3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cod = \"vice7\"\nare_majuscula = False\nare_cifra = False\nfor caracter in cod:\n    if caracter.isupper():\n        are_majuscula = True\n    elif caracter.isdigit():\n        are_cifra = True\nprint(f\"Majuscula: {are_majuscula}\")\nprint(f\"Cifra: {are_cifra}\")\nprint(f\"Valid: {are_majuscula or are_cifra}\")",
+      "output": "Majuscula: False\nCifra: True\nValid: False",
+      "options": [
+        "print(f\"Valid: {are_majuscula or are_cifra}\")",
+        "print(f\"Cifra: {are_cifra}\")",
+        "print(f\"Majuscula: {are_majuscula}\")",
+        "are_cifra = True"
+      ],
+      "answer": 0
+    }
+  ]
+}

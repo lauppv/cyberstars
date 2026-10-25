@@ -1,0 +1,717 @@
+{
+  "note": "Made by npm run make:quiz from the templates in pattern-flag-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "pf-search-break-9083a9",
+      "text": "What does this print?",
+      "code": "crew = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\nfound = False\nfor name in crew:\n    print(name)\n    if name == \"Lance\":\n        found = True\n        break\nprint(found)",
+      "options": [
+        "Tommy\nLance\nTrue",
+        "Tommy\nLance\nCortez\nPhil\nTrue",
+        "Tommy\nTrue",
+        "Tommy\nLance\nLance"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-search-break-78015b",
+      "text": "What does this print?",
+      "code": "ships = [\"Pioneer\", \"Voyager\", \"Apollo\", \"Juno\"]\nfound = False\nfor name in ships:\n    print(name)\n    if name == \"Apollo\":\n        found = True\n        break\nprint(found)",
+      "options": [
+        "Pioneer\nVoyager\nApollo\nTrue",
+        "Pioneer\nVoyager\nApollo\nJuno\nTrue",
+        "Pioneer\nVoyager\nTrue",
+        "Pioneer\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-search-break-d7cbc5",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\"]\nfound = False\nfor name in planets:\n    print(name)\n    if name == \"Venus\":\n        found = True\n        break\nprint(found)",
+      "options": [
+        "Mars\nVenus\nTrue",
+        "Mars\nVenus\nEarth\nTrue",
+        "Mars\nTrue",
+        "Mars\nVenus\nVenus"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-search-break-cf3013",
+      "text": "What does this print?",
+      "code": "crew = [\"Ken\", \"Mercedes\", \"Phil\", \"Kent\", \"Victor\"]\nfound = False\nfor name in crew:\n    print(name)\n    if name == \"Kent\":\n        found = True\n        break\nprint(found)",
+      "options": [
+        "Ken\nMercedes\nPhil\nKent\nTrue",
+        "Ken\nMercedes\nPhil\nKent\nVictor\nTrue",
+        "Ken\nMercedes\nPhil\nTrue",
+        "Ken\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-all-passed-929fea",
+      "text": "What does this print?",
+      "code": "scores = [80, 95, 40, 70]\nall_passed = True\nfor s in scores:\n    if s < 50:\n        all_passed = False\nprint(f\"All passed: {all_passed}\")",
+      "options": [
+        "All passed: False",
+        "All passed: True\nAll passed: True\nAll passed: False\nAll passed: False",
+        "All passed: 70",
+        "All passed: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-all-passed-9dde27",
+      "text": "What does this print?",
+      "code": "scores = [60, 75, 90]\nall_passed = True\nfor s in scores:\n    if s < 50:\n        all_passed = False\nprint(f\"All passed: {all_passed}\")",
+      "options": [
+        "All passed: True",
+        "All passed: False",
+        "All passed: True\nAll passed: True\nAll passed: True",
+        "All passed: 90"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-all-passed-92c71b",
+      "text": "What does this print?",
+      "code": "scores = [55, 49, 72, 88]\nall_passed = True\nfor s in scores:\n    if s < 50:\n        all_passed = False\nprint(f\"All passed: {all_passed}\")",
+      "options": [
+        "All passed: False",
+        "All passed: True\nAll passed: False\nAll passed: False\nAll passed: False",
+        "All passed: 88",
+        "All passed: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-all-passed-86f940",
+      "text": "What does this print?",
+      "code": "scores = [7, 9, 6, 10]\nall_passed = True\nfor s in scores:\n    if s < 5:\n        all_passed = False\nprint(f\"All passed: {all_passed}\")",
+      "options": [
+        "All passed: True",
+        "All passed: False",
+        "All passed: True\nAll passed: True\nAll passed: True\nAll passed: True",
+        "All passed: 10"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-password-ddf2eb",
+      "text": "What does this print?",
+      "code": "password = \"Tommy123\"\nhas_upper = False\nhas_lower = False\nhas_digit = False\nfor char in password:\n    if char.isupper():\n        has_upper = True\n    elif char.islower():\n        has_lower = True\n    elif char.isdigit():\n        has_digit = True\nprint(has_upper, has_lower, has_digit)",
+      "options": ["True True True", "True True False", "True", "True False True"],
+      "answer": 0
+    },
+    {
+      "id": "pf-password-1d2294",
+      "text": "What does this print?",
+      "code": "password = \"vice99\"\nhas_upper = False\nhas_lower = False\nhas_digit = False\nfor char in password:\n    if char.isupper():\n        has_upper = True\n    elif char.islower():\n        has_lower = True\n    elif char.isdigit():\n        has_digit = True\nprint(has_upper, has_lower, has_digit)",
+      "options": ["False True True", "False True False", "False", "False False True"],
+      "answer": 0
+    },
+    {
+      "id": "pf-password-2439ae",
+      "text": "What does this print?",
+      "code": "password = \"Lance7\"\nhas_upper = False\nhas_lower = False\nhas_digit = False\nfor char in password:\n    if char.isupper():\n        has_upper = True\n    elif char.islower():\n        has_lower = True\n    elif char.isdigit():\n        has_digit = True\nprint(has_upper, has_lower, has_digit)",
+      "options": ["True True True", "True True False", "True", "True False True"],
+      "answer": 0
+    },
+    {
+      "id": "pf-password-86d085",
+      "text": "What does this print?",
+      "code": "password = \"Orbit\"\nhas_upper = False\nhas_lower = False\nhas_digit = False\nfor char in password:\n    if char.isupper():\n        has_upper = True\n    elif char.islower():\n        has_lower = True\n    elif char.isdigit():\n        has_digit = True\nprint(has_upper, has_lower, has_digit)",
+      "options": ["True True False", "False", "True False False", "False True True"],
+      "answer": 0
+    },
+    {
+      "id": "pf-access-4007cb",
+      "text": "What does this print?",
+      "code": "code = \"Orbit42\"\nhas_upper = False\nhas_digit = False\nfor char in code:\n    if char.isupper():\n        has_upper = True\n    elif char.isdigit():\n        has_digit = True\nlong_enough = len(code) >= 6\nprint(f\"Has uppercase: {has_upper}\")\nprint(f\"Has digit: {has_digit}\")\nprint(f\"Long enough: {long_enough}\")\nif has_upper and has_digit and long_enough:\n    print(\"Access code valid\")\nelse:\n    print(\"Access code invalid\")",
+      "options": [
+        "Has uppercase: True\nHas digit: True\nLong enough: True\nAccess code valid",
+        "Has uppercase: True\nHas digit: False\nLong enough: True\nAccess code invalid",
+        "Has uppercase: True\nHas digit: True\nLong enough: False\nAccess code invalid",
+        "Has uppercase: False\nHas digit: True\nLong enough: True\nAccess code invalid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-access-9a5901",
+      "text": "What does this print?",
+      "code": "code = \"A1bcd\"\nhas_upper = False\nhas_digit = False\nfor char in code:\n    if char.isupper():\n        has_upper = True\n    elif char.isdigit():\n        has_digit = True\nlong_enough = len(code) >= 6\nprint(f\"Has uppercase: {has_upper}\")\nprint(f\"Has digit: {has_digit}\")\nprint(f\"Long enough: {long_enough}\")\nif has_upper and has_digit and long_enough:\n    print(\"Access code valid\")\nelse:\n    print(\"Access code invalid\")",
+      "options": [
+        "Has uppercase: True\nHas digit: True\nLong enough: False\nAccess code invalid",
+        "Has uppercase: True\nHas digit: True\nLong enough: False\nAccess code valid",
+        "Has uppercase: True\nHas digit: False\nLong enough: False\nAccess code invalid",
+        "Has uppercase: True\nHas digit: True\nLong enough: True\nAccess code valid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-access-5724f1",
+      "text": "What does this print?",
+      "code": "code = \"rocket77\"\nhas_upper = False\nhas_digit = False\nfor char in code:\n    if char.isupper():\n        has_upper = True\n    elif char.isdigit():\n        has_digit = True\nlong_enough = len(code) >= 6\nprint(f\"Has uppercase: {has_upper}\")\nprint(f\"Has digit: {has_digit}\")\nprint(f\"Long enough: {long_enough}\")\nif has_upper and has_digit and long_enough:\n    print(\"Access code valid\")\nelse:\n    print(\"Access code invalid\")",
+      "options": [
+        "Has uppercase: False\nHas digit: True\nLong enough: True\nAccess code invalid",
+        "Has uppercase: False\nHas digit: True\nLong enough: True\nAccess code valid",
+        "Has uppercase: False\nHas digit: False\nLong enough: True\nAccess code invalid",
+        "Has uppercase: False\nHas digit: True\nLong enough: False\nAccess code invalid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-access-302878",
+      "text": "What does this print?",
+      "code": "code = \"ZX9qwe\"\nhas_upper = False\nhas_digit = False\nfor char in code:\n    if char.isupper():\n        has_upper = True\n    elif char.isdigit():\n        has_digit = True\nlong_enough = len(code) >= 6\nprint(f\"Has uppercase: {has_upper}\")\nprint(f\"Has digit: {has_digit}\")\nprint(f\"Long enough: {long_enough}\")\nif has_upper and has_digit and long_enough:\n    print(\"Access code valid\")\nelse:\n    print(\"Access code invalid\")",
+      "options": [
+        "Has uppercase: True\nHas digit: True\nLong enough: True\nAccess code valid",
+        "Has uppercase: True\nHas digit: True\nLong enough: False\nAccess code invalid",
+        "Has uppercase: True\nHas digit: False\nLong enough: True\nAccess code invalid",
+        "Has uppercase: False\nHas digit: True\nLong enough: True\nAccess code invalid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-first-alarm-ea3694",
+      "text": "What does this print?",
+      "code": "readings = [12, 50, 64, 30, 90]\nalarm = False\nfor r in readings:\n    if r > 50:\n        alarm = True\n        break\nprint(alarm)\nprint(r)",
+      "options": ["True\n64", "True\n90", "True\n50", "False\n64"],
+      "answer": 0
+    },
+    {
+      "id": "pf-first-alarm-3a3051",
+      "text": "What does this print?",
+      "code": "readings = [7, 10, 15, 3]\nalarm = False\nfor r in readings:\n    if r > 10:\n        alarm = True\n        break\nprint(alarm)\nprint(r)",
+      "options": ["True\n15", "True\n3", "True\n10", "False\n15"],
+      "answer": 0
+    },
+    {
+      "id": "pf-first-alarm-72188c",
+      "text": "What does this print?",
+      "code": "readings = [100, 80, 120, 95]\nalarm = False\nfor r in readings:\n    if r > 100:\n        alarm = True\n        break\nprint(alarm)\nprint(r)",
+      "options": ["True\n120", "True\n95", "True\n100", "False\n120"],
+      "answer": 0
+    },
+    {
+      "id": "pf-first-alarm-2956a7",
+      "text": "What does this print?",
+      "code": "readings = [5, 25, 40, 26, 8]\nalarm = False\nfor r in readings:\n    if r > 25:\n        alarm = True\n        break\nprint(alarm)\nprint(r)",
+      "options": ["True\n40", "True\n8", "True\n25", "False\n40"],
+      "answer": 0
+    },
+    {
+      "id": "pf-even-odd-e663c9",
+      "text": "What does this print?",
+      "code": "numbers = [2, 4, 6, 8]\nhas_even = False\nhas_odd = False\nfor n in numbers:\n    if n % 2 == 0:\n        has_even = True\n    else:\n        has_odd = True\nprint(f\"Even: {has_even}, Odd: {has_odd}\")",
+      "options": [
+        "Even: True, Odd: False",
+        "Even: False, Odd: True",
+        "Even: True, Odd: True",
+        "Even: 8, Odd: False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-even-odd-d1b7cc",
+      "text": "What does this print?",
+      "code": "numbers = [3, 8, 5]\nhas_even = False\nhas_odd = False\nfor n in numbers:\n    if n % 2 == 0:\n        has_even = True\n    else:\n        has_odd = True\nprint(f\"Even: {has_even}, Odd: {has_odd}\")",
+      "options": [
+        "Even: True, Odd: True",
+        "Even: True, Odd: False",
+        "Even: 5, Odd: True",
+        "Even: False, Odd: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-even-odd-c8ce9c",
+      "text": "What does this print?",
+      "code": "numbers = [1, 7, 9]\nhas_even = False\nhas_odd = False\nfor n in numbers:\n    if n % 2 == 0:\n        has_even = True\n    else:\n        has_odd = True\nprint(f\"Even: {has_even}, Odd: {has_odd}\")",
+      "options": [
+        "Even: False, Odd: True",
+        "Even: True, Odd: False",
+        "Even: False, Odd: False",
+        "Even: True, Odd: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-even-odd-590908",
+      "text": "What does this print?",
+      "code": "numbers = [10, 12, 13, 14]\nhas_even = False\nhas_odd = False\nfor n in numbers:\n    if n % 2 == 0:\n        has_even = True\n    else:\n        has_odd = True\nprint(f\"Even: {has_even}, Odd: {has_odd}\")",
+      "options": [
+        "Even: True, Odd: True",
+        "Even: True, Odd: False",
+        "Even: 14, Odd: True",
+        "Even: False, Odd: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-flag-count-c5b280",
+      "text": "What does this print?",
+      "code": "readings = [12, 0, 40, 10, 3]\nlow = 0\nany_zero = False\nfor r in readings:\n    if r < 10:\n        low += 1\n    if r == 0:\n        any_zero = True\nprint(f\"Low: {low}\")\nprint(f\"Zero: {any_zero}\")",
+      "options": [
+        "Low: 2\nZero: True",
+        "Low: 2\nZero: False",
+        "Low: 1\nZero: True",
+        "Low: 3\nZero: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-flag-count-882f44",
+      "text": "What does this print?",
+      "code": "readings = [5, 20, 20, 0]\nlow = 0\nany_zero = False\nfor r in readings:\n    if r < 20:\n        low += 1\n    if r == 0:\n        any_zero = True\nprint(f\"Low: {low}\")\nprint(f\"Zero: {any_zero}\")",
+      "options": [
+        "Low: 2\nZero: True",
+        "Low: 2\nZero: False",
+        "Low: 1\nZero: True",
+        "Low: 4\nZero: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-flag-count-aed39f",
+      "text": "What does this print?",
+      "code": "readings = [0, 0, 60, 50]\nlow = 0\nany_zero = False\nfor r in readings:\n    if r < 50:\n        low += 1\n    if r == 0:\n        any_zero = True\nprint(f\"Low: {low}\")\nprint(f\"Zero: {any_zero}\")",
+      "options": [
+        "Low: 2\nZero: True",
+        "Low: 2\nZero: False",
+        "Low: 1\nZero: True",
+        "Low: 3\nZero: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-flag-count-d643e0",
+      "text": "What does this print?",
+      "code": "readings = [14, 9, 0, 25, 15]\nlow = 0\nany_zero = False\nfor r in readings:\n    if r < 15:\n        low += 1\n    if r == 0:\n        any_zero = True\nprint(f\"Low: {low}\")\nprint(f\"Zero: {any_zero}\")",
+      "options": [
+        "Low: 3\nZero: True",
+        "Low: 3\nZero: False",
+        "Low: 1\nZero: True",
+        "Low: 4\nZero: True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-func-739c31",
+      "text": "What does this print?",
+      "code": "def has_digit(text):\n    for char in text:\n        if char.isdigit():\n            return True\n    return False\n\nfor word in [\"Orbit42\", \"Lance\", \"7up\"]:\n    print(word, has_digit(word))",
+      "options": [
+        "Orbit42 True\nLance False\n7up True",
+        "Orbit42 False\nLance False\n7up True",
+        "Orbit42 True\nLance True\n7up True",
+        "Orbit42 False\nLance False\n7up False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-func-91352c",
+      "text": "What does this print?",
+      "code": "def has_digit(text):\n    for char in text:\n        if char.isdigit():\n            return True\n    return False\n\nfor word in [\"Vice\", \"R2D2\", \"Mars\"]:\n    print(word, has_digit(word))",
+      "options": [
+        "Vice False\nR2D2 True\nMars False",
+        "Vice False\nR2D2 False\nMars False",
+        "Vice True\nR2D2 True\nMars True",
+        "False\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-func-6f87da",
+      "text": "What does this print?",
+      "code": "def has_digit(text):\n    for char in text:\n        if char.isdigit():\n            return True\n    return False\n\nfor word in [\"Apollo11\", \"9lives\", \"Juno\"]:\n    print(word, has_digit(word))",
+      "options": [
+        "Apollo11 True\n9lives True\nJuno False",
+        "Apollo11 False\n9lives True\nJuno False",
+        "Apollo11 True\n9lives True\nJuno True",
+        "Apollo11 False\n9lives False\nJuno False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-func-bde34d",
+      "text": "What does this print?",
+      "code": "def has_digit(text):\n    for char in text:\n        if char.isdigit():\n            return True\n    return False\n\nfor word in [\"Phil\", \"Tommy\", \"B52\"]:\n    print(word, has_digit(word))",
+      "options": [
+        "Phil False\nTommy False\nB52 True",
+        "Phil False\nTommy False\nB52 False",
+        "Phil True\nTommy True\nB52 True",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-search-420037",
+      "text": "Which program shows this?",
+      "output": "Ken found: False",
+      "options": [
+        "crew = [\"Tommy\", \"Lance\", \"Cortez\"]\nfound = False\nfor name in crew:\n    if name == \"Ken\":\n        found = True\nprint(f\"Ken found: {found}\")",
+        "crew = [\"Tommy\", \"Lance\", \"Cortez\"]\nfound = True\nfor name in crew:\n    if name == \"Ken\":\n        found = True\nprint(f\"Ken found: {found}\")",
+        "crew = [\"Tommy\", \"Lance\", \"Cortez\"]\nfound = False\nfor name in crew:\n    if name != \"Ken\":\n        found = True\nprint(f\"Ken found: {found}\")",
+        "crew = [\"Tommy\", \"Lance\", \"Cortez\"]\nfound = False\nfor name in crew:\n    if name == \"Ken\":\n        found = True\nprint(f\"Ken found: {name}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-search-43c167",
+      "text": "Which program shows this?",
+      "output": "Juno found: False",
+      "options": [
+        "ships = [\"Pioneer\", \"Voyager\"]\nfound = False\nfor name in ships:\n    if name == \"Juno\":\n        found = True\nprint(f\"Juno found: {found}\")",
+        "ships = [\"Pioneer\", \"Voyager\"]\nfound = True\nfor name in ships:\n    if name == \"Juno\":\n        found = True\nprint(f\"Juno found: {found}\")",
+        "ships = [\"Pioneer\", \"Voyager\"]\nfound = False\nfor name in ships:\n    if name != \"Juno\":\n        found = True\nprint(f\"Juno found: {found}\")",
+        "ships = [\"Pioneer\", \"Voyager\"]\nfound = False\nfor name in ships:\n    if name == \"Juno\":\n        found = True\nprint(f\"Juno found: {name}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-search-d17bc5",
+      "text": "Which program shows this?",
+      "output": "Kent found: False",
+      "options": [
+        "crew = [\"Phil\", \"Mercedes\", \"Victor\"]\nfound = False\nfor name in crew:\n    if name == \"Kent\":\n        found = True\nprint(f\"Kent found: {found}\")",
+        "crew = [\"Phil\", \"Mercedes\", \"Victor\"]\nfound = True\nfor name in crew:\n    if name == \"Kent\":\n        found = True\nprint(f\"Kent found: {found}\")",
+        "crew = [\"Phil\", \"Mercedes\", \"Victor\"]\nfound = False\nfor name in crew:\n    if name != \"Kent\":\n        found = True\nprint(f\"Kent found: {found}\")",
+        "crew = [\"Phil\", \"Mercedes\", \"Victor\"]\nfound = False\nfor name in crew:\n    if name == \"Kent\":\n        found = True\nprint(f\"Kent found: {name}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-break-5999af",
+      "text": "Which program shows this?",
+      "output": "4\n9\nTrue",
+      "options": [
+        "found = False\nfor n in [4, 9, 12, 7]:\n    if n > 10:\n        found = True\n        break\n    print(n)\nprint(found)",
+        "found = False\nfor n in [4, 9, 12, 7]:\n    if n > 10:\n        found = True\n    print(n)\nprint(found)",
+        "found = False\nfor n in [4, 9, 12, 7]:\n    if n < 10:\n        found = True\n        break\n    print(n)\nprint(found)",
+        "found = False\nfor n in [4, 9, 12, 7]:\n    if n > 10:\n        found = True\n        break\nprint(n)\nprint(found)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-break-b4910f",
+      "text": "Which program shows this?",
+      "output": "20\n35\nTrue",
+      "options": [
+        "found = False\nfor n in [20, 35, 60, 15, 80]:\n    if n > 50:\n        found = True\n        break\n    print(n)\nprint(found)",
+        "found = False\nfor n in [20, 35, 60, 15, 80]:\n    if n > 50:\n        found = True\n    print(n)\nprint(found)",
+        "found = False\nfor n in [20, 35, 60, 15, 80]:\n    if n < 50:\n        found = True\n        break\n    print(n)\nprint(found)",
+        "found = False\nfor n in [20, 35, 60, 15, 80]:\n    if n > 50:\n        found = True\n        break\nprint(n)\nprint(found)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-which-break-c1dfa3",
+      "text": "Which program shows this?",
+      "output": "1\n3\nTrue",
+      "options": [
+        "found = False\nfor n in [1, 3, 6, 2]:\n    if n > 5:\n        found = True\n        break\n    print(n)\nprint(found)",
+        "found = False\nfor n in [1, 3, 6, 2]:\n    if n > 5:\n        found = True\n    print(n)\nprint(found)",
+        "found = False\nfor n in [1, 3, 6, 2]:\n    if n < 5:\n        found = True\n        break\n    print(n)\nprint(found)",
+        "found = False\nfor n in [1, 3, 6, 2]:\n    if n > 5:\n        found = True\n        break\nprint(n)\nprint(found)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-flip-ed5cc3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "readings = [40, 85, 60]\nall_ok = True\nfor r in readings:\n    print(r)\n    if r > 80:\n        ___\nprint(f\"All OK: {all_ok}\")",
+      "output": "40\n85\n60\nAll OK: False",
+      "options": ["all_ok = False", "all_ok = True", "break", "print(all_ok)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-flip-de8845",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "signals = [7, 3, 12, 5]\nall_ok = True\nfor r in signals:\n    print(r)\n    if r > 10:\n        ___\nprint(f\"All OK: {all_ok}\")",
+      "output": "7\n3\n12\n5\nAll OK: False",
+      "options": ["all_ok = False", "all_ok = True", "break", "print(all_ok)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-flip-6c9d21",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "readings = [99, 101, 98]\nall_ok = True\nfor r in readings:\n    print(r)\n    if r > 100:\n        ___\nprint(f\"All OK: {all_ok}\")",
+      "output": "99\n101\n98\nAll OK: False",
+      "options": ["all_ok = False", "all_ok = True", "break", "print(all_ok)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-flip-4c6a68",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "signals = [15, 22, 9]\nall_ok = True\nfor r in signals:\n    print(r)\n    if r > 20:\n        ___\nprint(f\"All OK: {all_ok}\")",
+      "output": "15\n22\n9\nAll OK: False",
+      "options": ["all_ok = False", "all_ok = True", "break", "print(all_ok)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-break-17a703",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "found = False\nfor name in [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]:\n    print(name)\n    if name == \"Cortez\":\n        found = True\n        ___\nprint(found)",
+      "output": "Tommy\nLance\nCortez\nTrue",
+      "options": ["break", "continue", "found = False", "print(found)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-break-c14aa1",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "found = False\nfor name in [\"Mars\", \"Venus\", \"Earth\", \"Jupiter\"]:\n    print(name)\n    if name == \"Venus\":\n        found = True\n        ___\nprint(found)",
+      "output": "Mars\nVenus\nTrue",
+      "options": ["break", "continue", "found = False", "print(found)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-break-37b22c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "found = False\nfor name in [\"Ken\", \"Kent\", \"Victor\"]:\n    print(name)\n    if name == \"Ken\":\n        found = True\n        ___\nprint(found)",
+      "output": "Ken\nTrue",
+      "options": ["break", "continue", "found = False", "print(found)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-start-0544f3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "password = \"Orbit\"\n___\nfor char in password:\n    if char.isdigit():\n        has_digit = True\nprint(f\"Has digit: {has_digit}\")",
+      "output": "Has digit: False",
+      "options": ["has_digit = False", "has_digit = True", "has_digit = 0", "has_digit = []"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-start-a10c1a",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "password = \"lance\"\n___\nfor char in password:\n    if char.isdigit():\n        has_digit = True\nprint(f\"Has digit: {has_digit}\")",
+      "output": "Has digit: False",
+      "options": ["has_digit = False", "has_digit = True", "has_digit = 0", "has_digit = []"],
+      "answer": 0
+    },
+    {
+      "id": "pf-gap-start-83b8b6",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "password = \"VICE\"\n___\nfor char in password:\n    if char.isdigit():\n        has_digit = True\nprint(f\"Has digit: {has_digit}\")",
+      "output": "Has digit: False",
+      "options": ["has_digit = False", "has_digit = True", "has_digit = 0", "has_digit = []"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-start-cf88c6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [2, 4, 6, 8]\nall_even = ___\nfor n in numbers:\n    print(n)\n    if n % 2 != 0:\n        all_even = False\nprint(all_even)",
+      "output": "2\n4\n6\n8\nTrue",
+      "options": ["True", "False", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-start-bb5485",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [10, 20, 30]\nall_even = ___\nfor n in numbers:\n    print(n)\n    if n % 2 != 0:\n        all_even = False\nprint(all_even)",
+      "output": "10\n20\n30\nTrue",
+      "options": ["True", "False", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-start-ca4095",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [12, 14, 16]\nall_even = ___\nfor n in numbers:\n    print(n)\n    if n % 2 != 0:\n        all_even = False\nprint(all_even)",
+      "output": "12\n14\n16\nTrue",
+      "options": ["True", "False", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-cond-6706a7",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "readings = [40, 90, 75]\ntoo_hot = False\nfor r in readings:\n    if r ___ 90:\n        too_hot = True\nprint(f\"Too hot: {too_hot}\")",
+      "output": "Too hot: False",
+      "options": [">", ">=", "<", "!="],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-cond-a72a64",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "readings = [30, 50, 50, 10]\ntoo_hot = False\nfor r in readings:\n    if r ___ 50:\n        too_hot = True\nprint(f\"Too hot: {too_hot}\")",
+      "output": "Too hot: False",
+      "options": [">", ">=", "<", "!="],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-cond-4293a2",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "readings = [100, 64, 99]\ntoo_hot = False\nfor r in readings:\n    if r ___ 100:\n        too_hot = True\nprint(f\"Too hot: {too_hot}\")",
+      "output": "Too hot: False",
+      "options": [">", ">=", "<", "!="],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-method-342694",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "code = \"Orbit42\"\nfound = False\nfor char in code:\n    if char.___():\n        print(char)\n        found = True\nprint(found)",
+      "output": "4\n2\nTrue",
+      "options": ["isdigit", "isupper", "islower", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-method-a5dbd1",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "code = \"mars7X\"\nfound = False\nfor char in code:\n    if char.___():\n        print(char)\n        found = True\nprint(found)",
+      "output": "X\nTrue",
+      "options": ["isupper", "isdigit", "islower", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-method-e74417",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "code = \"AB12c\"\nfound = False\nfor char in code:\n    if char.___():\n        print(char)\n        found = True\nprint(found)",
+      "output": "c\nTrue",
+      "options": ["islower", "isupper", "isdigit", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pf-val-method-ea98c6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "code = \"r2D2\"\nfound = False\nfor char in code:\n    if char.___():\n        print(char)\n        found = True\nprint(found)",
+      "output": "r\nD\nTrue",
+      "options": ["isalpha", "isdigit", "islower", "isupper"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-compare-026ed8",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = [\"Tommy\", \"Lance\", \"Cortez\"]\nfound = False\nfor name in crew:\n    if name != \"Lance\":\n        print(\"Found\", name)\n        found = True\nprint(found)",
+      "output": "Found Lance\nTrue",
+      "options": [
+        "if name != \"Lance\":",
+        "for name in crew:",
+        "found = False",
+        "print(\"Found\", name)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-compare-b6a667",
+      "text": "Which line stops this program from printing this?",
+      "code": "ships = [\"Pioneer\", \"Voyager\", \"Juno\"]\nfound = False\nfor name in ships:\n    if name != \"Juno\":\n        print(\"Found\", name)\n        found = True\nprint(found)",
+      "output": "Found Juno\nTrue",
+      "options": [
+        "if name != \"Juno\":",
+        "for name in ships:",
+        "found = False",
+        "print(\"Found\", name)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-compare-f7f35a",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = [\"Phil\", \"Ken\", \"Kent\"]\nfound = False\nfor name in crew:\n    if name != \"Phil\":\n        print(\"Found\", name)\n        found = True\nprint(found)",
+      "output": "Found Phil\nTrue",
+      "options": ["if name != \"Phil\":", "print(\"Found\", name)", "found = True", "print(found)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-even-89867c",
+      "text": "Which line stops this program from printing this?",
+      "code": "all_even = True\nfor n in [4, 7, 6]:\n    if n % 2 == 0:\n        all_even = False\n    print(n, all_even)",
+      "output": "4 True\n7 False\n6 False",
+      "options": [
+        "if n % 2 == 0:",
+        "for n in [4, 7, 6]:",
+        "all_even = False",
+        "print(n, all_even)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-even-733b43",
+      "text": "Which line stops this program from printing this?",
+      "code": "all_even = True\nfor n in [2, 8, 3, 10]:\n    if n % 2 == 0:\n        all_even = False\n    print(n, all_even)",
+      "output": "2 True\n8 True\n3 False\n10 False",
+      "options": [
+        "if n % 2 == 0:",
+        "for n in [2, 8, 3, 10]:",
+        "all_even = False",
+        "print(n, all_even)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-even-151868",
+      "text": "Which line stops this program from printing this?",
+      "code": "all_even = True\nfor n in [6, 9, 12]:\n    if n % 2 == 0:\n        all_even = False\n    print(n, all_even)",
+      "output": "6 True\n9 False\n12 False",
+      "options": [
+        "if n % 2 == 0:",
+        "for n in [6, 9, 12]:",
+        "all_even = False",
+        "print(n, all_even)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-break-c8e9dd",
+      "text": "Which line stops this program from printing this?",
+      "code": "found = False\nfor name in [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]:\n    print(name)\n    if name == \"Cortez\":\n        found = True\n    break\nprint(found)",
+      "output": "Tommy\nLance\nCortez\nTrue",
+      "options": ["break", "found = True", "print(name)", "print(found)"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-break-c93077",
+      "text": "Which line stops this program from printing this?",
+      "code": "found = False\nfor name in [\"Mars\", \"Venus\", \"Earth\"]:\n    print(name)\n    if name == \"Earth\":\n        found = True\n    break\nprint(found)",
+      "output": "Mars\nVenus\nEarth\nTrue",
+      "options": ["break", "found = True", "print(name)", "found = False"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-break-e2037c",
+      "text": "Which line stops this program from printing this?",
+      "code": "found = False\nfor name in [\"Ken\", \"Kent\", \"Victor\", \"Phil\"]:\n    print(name)\n    if name == \"Victor\":\n        found = True\n    break\nprint(found)",
+      "output": "Ken\nKent\nVictor\nTrue",
+      "options": ["break", "found = True", "print(name)", "found = False"],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-and-4d9ce5",
+      "text": "Which line stops this program from printing this?",
+      "code": "code = \"orbit42\"\nhas_upper = False\nhas_digit = False\nfor char in code:\n    if char.isupper():\n        has_upper = True\n    elif char.isdigit():\n        has_digit = True\nprint(f\"Upper: {has_upper}\")\nprint(f\"Digit: {has_digit}\")\nprint(f\"Valid: {has_upper or has_digit}\")",
+      "output": "Upper: False\nDigit: True\nValid: False",
+      "options": [
+        "print(f\"Valid: {has_upper or has_digit}\")",
+        "print(f\"Digit: {has_digit}\")",
+        "print(f\"Upper: {has_upper}\")",
+        "has_digit = True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-and-bb2511",
+      "text": "Which line stops this program from printing this?",
+      "code": "code = \"ORBIT\"\nhas_upper = False\nhas_digit = False\nfor char in code:\n    if char.isupper():\n        has_upper = True\n    elif char.isdigit():\n        has_digit = True\nprint(f\"Upper: {has_upper}\")\nprint(f\"Digit: {has_digit}\")\nprint(f\"Valid: {has_upper or has_digit}\")",
+      "output": "Upper: True\nDigit: False\nValid: False",
+      "options": [
+        "print(f\"Valid: {has_upper or has_digit}\")",
+        "print(f\"Digit: {has_digit}\")",
+        "print(f\"Upper: {has_upper}\")",
+        "has_digit = True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pf-bad-and-282aa3",
+      "text": "Which line stops this program from printing this?",
+      "code": "code = \"vice7\"\nhas_upper = False\nhas_digit = False\nfor char in code:\n    if char.isupper():\n        has_upper = True\n    elif char.isdigit():\n        has_digit = True\nprint(f\"Upper: {has_upper}\")\nprint(f\"Digit: {has_digit}\")\nprint(f\"Valid: {has_upper or has_digit}\")",
+      "output": "Upper: False\nDigit: True\nValid: False",
+      "options": [
+        "print(f\"Valid: {has_upper or has_digit}\")",
+        "print(f\"Digit: {has_digit}\")",
+        "print(f\"Upper: {has_upper}\")",
+        "has_digit = True"
+      ],
+      "answer": 0
+    }
+  ]
+}
