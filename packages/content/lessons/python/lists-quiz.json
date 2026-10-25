@@ -1,0 +1,278 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is a list?",
+      "options": [
+        "Many values kept in one variable",
+        "A variable that holds exactly one value",
+        "A kind of loop",
+        "A kind of comment"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Which brackets make a list?",
+      "options": ["( )", "[ ]", "{ }", "< >"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "What goes between the elements of a list?",
+      "options": ["A dot", "A semicolon", "A comma", "The word and"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What index does the first element of a list have?",
+      "options": ["1", "It has no index", "-1", "0"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "`names = [\"Tommy\", \"Lance\", \"Cortez\"]`. Which one is \"Lance\"?",
+      "options": ["names[1]", "names[2]", "names(1)", "names[Lance]"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What happens when this runs?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(names[10])",
+      "options": [
+        "It prints Cortez, the last one",
+        "It stops with an IndexError: there is no element at 10",
+        "It prints nothing",
+        "It prints 10"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "What does len() tell you about a list?",
+      "options": [
+        "Its longest element",
+        "Its last index",
+        "How many elements it has",
+        "The sum of its numbers"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What does .append() do?",
+      "options": [
+        "It adds an element at the start",
+        "It replaces the first element",
+        "It sorts the list",
+        "It adds an element at the end"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "After `names.append(\"Cortez\")`, what is names?",
+      "options": [
+        "The same list, changed: Cortez is now in it",
+        "The old list; append gave back a new one",
+        "An empty list",
+        "Only \"Cortez\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "What does the second line do?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nnames[1] = \"Ken\"",
+      "options": [
+        "It adds Ken at the end",
+        "It puts Ken in place of Lance",
+        "It puts Ken in place of Tommy",
+        "It stops with an error"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Which of these is a list of numbers?",
+      "options": [
+        "[\"42\", \"35\", \"60\"]",
+        "\"42, 35, 60\"",
+        "[42, 35, 60]",
+        "[forty-two, thirty-five]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "Can a list hold True and False?",
+      "options": [
+        "No, only text",
+        "No, only numbers",
+        "Only one of them",
+        "Yes, a list can hold any kind of value"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "A list has 5 elements. What is the index of the last one?",
+      "options": ["4", "5", "6", "0"],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Why is a list better than name1, name2, ... name100?",
+      "options": [
+        "Python doesn't allow numbers in names",
+        "One variable holds them all, however many there are",
+        "Each name is typed faster",
+        "A list runs only once"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Which line adds \"Cortez\" at the end of names?",
+      "options": [
+        "names.add(\"Cortez\")",
+        "names + \"Cortez\"",
+        "names.append(\"Cortez\")",
+        "append(names, \"Cortez\")"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Which line makes \"Tommy\" the first element of names?",
+      "options": [
+        "names[1] = \"Tommy\"",
+        "names(0) = \"Tommy\"",
+        "names = \"Tommy\"",
+        "names[0] = \"Tommy\""
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Which of these is an empty list?",
+      "options": ["[]", "[0]", "\"\"", "[\"\"]"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "What do we call the 2 in `names[2]`?",
+      "options": ["The length", "The index", "The element", "The append"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "How is .append() on a list unlike .upper() on a string?",
+      "options": [
+        "append gives back a new list and leaves the old one alone",
+        "There is no difference",
+        "append changes the list itself, upper gives back a new string",
+        "upper changes the string itself"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Can one list mix numbers, text and True?",
+      "options": [
+        "No, Python stops with an error",
+        "Only when the list is empty",
+        "Yes, and you must always do it",
+        "Yes, though it's rare and often a sign of a messy design"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Is len(names) the index of the last element?",
+      "options": [
+        "No, the last index is len(names) - 1",
+        "Yes, always",
+        "No, it is len(names) + 1",
+        "They have nothing to do with each other"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "In the Cargo Bay mission, which line empties the item at index 1?",
+      "options": [
+        "cargo[2] = \"empty\"",
+        "cargo[1] = \"empty\"",
+        "cargo.append(\"empty\")",
+        "cargo = \"empty\""
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "In the Cargo Bay mission, after the 4 items are added, what is len(cargo)?",
+      "options": ["3", "5", "4", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "What happens to Lance after `names[1] = \"Ken\"` in `[\"Tommy\", \"Lance\"]`?",
+      "options": [
+        "He moves to the end",
+        "He moves to the start",
+        "Python stops with an error",
+        "He is gone: Ken took his place"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Which of these is not a list?",
+      "options": ["\"Tommy, Lance\"", "[\"Tommy\", \"Lance\"]", "[]", "[1, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy Vercetti\", \"Lance Vance\"]\nprint(names[0])",
+      "options": ["'Tommy Vercetti'", "Tommy Vercetti", "['Tommy Vercetti']", "T"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "A list has 3 elements. Can you read the one at index 3?",
+      "options": [
+        "Yes, it's the last one",
+        "Yes, it's the first one",
+        "No, its indexes are 0, 1 and 2",
+        "Yes, it's an empty string"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "In what order are the elements after several appends?",
+      "options": ["Sorted", "In random order", "Last added first", "In the order they were added"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does `len([])` give?",
+      "options": ["0", "1", "An error", "None"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "How does Python show a list of text when it prints the whole list?",
+      "options": [
+        "Each text on its own line",
+        "With brackets and quotes, like ['Ana', 'Ben']",
+        "Only the first text",
+        "Joined with no spaces, like AnaBen"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": []
+}
