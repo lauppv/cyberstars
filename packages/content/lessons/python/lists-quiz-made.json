@@ -194,6 +194,125 @@
       "answer": 0
     },
     {
+      "id": "list-change-277124",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nnames[1] = \"Ken\"\nprint(names)",
+      "options": [
+        "['Tommy', 'Ken', 'Cortez']",
+        "['Tommy', 'Lance', 'Ken']",
+        "['Tommy', 'Lance', 'Cortez', 'Ken']",
+        "['Tommy', 'Lance', 'Cortez']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-change-66be5d",
+      "text": "What does this print?",
+      "code": "ages = [42, 35, 60]\nages[0] = 18\nprint(ages)",
+      "options": ["[18, 35, 60]", "[42, 18, 60]", "[42, 35, 60, 18]", "[42, 35, 60]"],
+      "answer": 0
+    },
+    {
+      "id": "list-change-1ec82d",
+      "text": "What does this print?",
+      "code": "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]\ncargo[1] = \"empty\"\nprint(cargo)",
+      "options": [
+        "['oxygen', 'empty', 'food', 'fuel']",
+        "['oxygen', 'water', 'empty', 'fuel']",
+        "['oxygen', 'water', 'food', 'fuel', 'empty']",
+        "['oxygen', 'water', 'food', 'fuel']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-change-95a957",
+      "text": "What does this print?",
+      "code": "crew = [\"Shadow\", \"Jess\", \"Quincy\"]\ncrew[2] = \"Ana\"\nprint(crew)",
+      "options": [
+        "['Shadow', 'Jess', 'Ana']",
+        "['Shadow', 'Ana', 'Quincy']",
+        "['Shadow', 'Jess', 'Quincy', 'Ana']",
+        "['Shadow', 'Jess', 'Quincy']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-change-13650b",
+      "text": "What does this print?",
+      "code": "prices = [3.14, 9.99, 12.5]\nprices[1] = 5.5\nprint(prices)",
+      "options": [
+        "[3.14, 5.5, 12.5]",
+        "[5.5, 9.99, 12.5]",
+        "[3.14, 9.99, 12.5, 5.5]",
+        "[3.14, 9.99, 12.5]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-change-310dc3",
+      "text": "What does this print?",
+      "code": "fruit = [\"apple\", \"pear\", \"plum\", \"kiwi\"]\nfruit[0] = \"lemon\"\nprint(fruit)",
+      "options": [
+        "['lemon', 'pear', 'plum', 'kiwi']",
+        "['apple', 'lemon', 'plum', 'kiwi']",
+        "['apple', 'pear', 'plum', 'kiwi', 'lemon']",
+        "['apple', 'pear', 'plum', 'kiwi']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-index-8df106",
+      "text": "Which line stops this program from printing this?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(names[0])\nprint(len(names))\nprint(names[3])",
+      "output": "Tommy\n3\nCortez",
+      "options": [
+        "print(names[3])",
+        "names = [\"Tommy\", \"Lance\", \"Cortez\"]",
+        "print(names[0])",
+        "print(len(names))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-index-33b13b",
+      "text": "Which line stops this program from printing this?",
+      "code": "ages = [42, 35, 60, 29]\nprint(ages[0])\nprint(len(ages))\nprint(ages[4])",
+      "output": "42\n4\n29",
+      "options": [
+        "print(ages[4])",
+        "ages = [42, 35, 60, 29]",
+        "print(ages[0])",
+        "print(len(ages))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-index-f17b71",
+      "text": "Which line stops this program from printing this?",
+      "code": "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]\nprint(cargo[0])\nprint(len(cargo))\nprint(cargo[4])",
+      "output": "oxygen\n4\nfuel",
+      "options": [
+        "print(cargo[4])",
+        "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]",
+        "print(cargo[0])",
+        "print(len(cargo))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-index-dfb777",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = [\"Shadow\", \"Jess\"]\nprint(crew[0])\nprint(len(crew))\nprint(crew[2])",
+      "output": "Shadow\n2\nJess",
+      "options": [
+        "print(crew[2])",
+        "crew = [\"Shadow\", \"Jess\"]",
+        "print(crew[0])",
+        "print(len(crew))"
+      ],
+      "answer": 0
+    },
+    {
       "id": "list-gap-index-b23122",
       "text": "What goes in the gap so the program prints this?",
       "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(names[___])",
@@ -406,6 +525,54 @@
       "text": "What does this print?",
       "code": "prices = [3.14, 9.99, 12.5, 1.5]\nprices.append(2)\nprint(len(prices))",
       "options": ["5", "4", "[3.14, 9.99, 12.5, 1.5, 2]", "6"],
+      "answer": 0
+    },
+    {
+      "id": "list-which-e4b584",
+      "text": "Which program shows this?",
+      "output": "['Tommy', 'Lance']",
+      "options": [
+        "names = [\"Tommy\", \"Lance\"]\nprint(names)",
+        "names = [\"Tommy\", \"Lance\"]\nprint(\"names\")",
+        "names = \"Tommy\", \"Lance\"\nprint(names)",
+        "names = [\"Tommy\", \"Lance\"]\nprint(names[0], names[1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-which-d56661",
+      "text": "Which program shows this?",
+      "output": "['oxygen', 'water']",
+      "options": [
+        "cargo = [\"oxygen\", \"water\"]\nprint(cargo)",
+        "cargo = [\"oxygen\", \"water\"]\nprint(\"cargo\")",
+        "cargo = \"oxygen\", \"water\"\nprint(cargo)",
+        "cargo = [\"oxygen\", \"water\"]\nprint(cargo[0], cargo[1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-which-68cbae",
+      "text": "Which program shows this?",
+      "output": "['Shadow', 'Jess']",
+      "options": [
+        "crew = [\"Shadow\", \"Jess\"]\nprint(crew)",
+        "crew = [\"Shadow\", \"Jess\"]\nprint(\"crew\")",
+        "crew = \"Shadow\", \"Jess\"\nprint(crew)",
+        "crew = [\"Shadow\", \"Jess\"]\nprint(crew[0], crew[1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-which-3b6bbd",
+      "text": "Which program shows this?",
+      "output": "['apple', 'pear']",
+      "options": [
+        "fruit = [\"apple\", \"pear\"]\nprint(fruit)",
+        "fruit = [\"apple\", \"pear\"]\nprint(\"fruit\")",
+        "fruit = \"apple\", \"pear\"\nprint(fruit)",
+        "fruit = [\"apple\", \"pear\"]\nprint(fruit[0], fruit[1])"
+      ],
       "answer": 0
     },
     {

@@ -460,6 +460,94 @@
       ]
     },
     {
+      "id": "list-change",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{v}}[{{i}}] = {{new}}\nprint({{v}})",
+      "values": [
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "i": 1,
+          "j": 2,
+          "new": "\"Ken\""
+        },
+        {
+          "v": "varste",
+          "items": "42, 35, 60",
+          "i": 0,
+          "j": 1,
+          "new": 18
+        },
+        {
+          "v": "incarcatura",
+          "items": "\"oxigen\", \"apa\", \"mancare\", \"combustibil\"",
+          "i": 1,
+          "j": 2,
+          "new": "\"gol\""
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Shadow\", \"Jess\", \"Quincy\"",
+          "i": 2,
+          "j": 1,
+          "new": "\"Ana\""
+        },
+        {
+          "v": "preturi",
+          "items": "3.14, 9.99, 12.5",
+          "i": 1,
+          "j": 0,
+          "new": 5.5
+        },
+        {
+          "v": "fructe",
+          "items": "\"mar\", \"para\", \"pruna\", \"kiwi\"",
+          "i": 0,
+          "j": 1,
+          "new": "\"lamaie\""
+        }
+      ],
+      "mistakes": [
+        ["{{v}}[{{i}}] = {{new}}", "{{v}}[{{j}}] = {{new}}"],
+        ["{{v}}[{{i}}] = {{new}}", "{{v}}.append({{new}})"],
+        ["{{v}}[{{i}}] = {{new}}\n", ""]
+      ]
+    },
+    {
+      "id": "list-bad-index",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}}[0])\nprint(len({{v}}))\nprint({{v}}[{{last}}])",
+      "values": [
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "last": 2,
+          "n": 3
+        },
+        {
+          "v": "varste",
+          "items": "42, 35, 60, 29",
+          "last": 3,
+          "n": 4
+        },
+        {
+          "v": "incarcatura",
+          "items": "\"oxigen\", \"apa\", \"mancare\", \"combustibil\"",
+          "last": 3,
+          "n": 4
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Shadow\", \"Jess\"",
+          "last": 1,
+          "n": 2
+        }
+      ],
+      "bug": ["print({{v}}[{{last}}])", "print({{v}}[{{n}}])"]
+    },
+    {
       "id": "list-gap-index",
       "kind": "missing-value",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
@@ -655,6 +743,39 @@
         ["{{v}}.append({{new}})\n", ""],
         ["print(len({{v}}))", "print({{v}})"],
         ["print(len({{v}}))", "print(len({{v}}) + 1)"]
+      ]
+    },
+    {
+      "id": "list-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [\"{{a}}\", \"{{b}}\"]\nprint({{v}})",
+      "values": [
+        {
+          "v": "nume",
+          "a": "Tommy",
+          "b": "Lance"
+        },
+        {
+          "v": "incarcatura",
+          "a": "oxigen",
+          "b": "apa"
+        },
+        {
+          "v": "echipaj",
+          "a": "Shadow",
+          "b": "Jess"
+        },
+        {
+          "v": "fructe",
+          "a": "mar",
+          "b": "para"
+        }
+      ],
+      "mistakes": [
+        ["print({{v}})", "print(\"{{v}}\")"],
+        ["[\"{{a}}\", \"{{b}}\"]", "\"{{a}}\", \"{{b}}\""],
+        ["print({{v}})", "print({{v}}[0], {{v}}[1])"]
       ]
     },
     {
