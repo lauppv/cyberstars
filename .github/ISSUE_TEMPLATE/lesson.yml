@@ -1,0 +1,39 @@
+name: Problem in a lesson
+description: A typo, a wrong explanation, or a test that fails a correct solution
+labels: [lesson]
+body:
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson or challenge
+      description: Its address on the site.
+      placeholder: https://cyberstars.app/lesson/python/print
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What's wrong
+      options:
+        - A typo or unclear text
+        - A wrong explanation or example
+        - A test fails a correct solution
+        - A test passes a wrong solution
+        - Something else
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Page language
+      options:
+        - English
+        - Romanian
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Quote the text, or paste your code and the result it got.
+      render: text
+    validations:
+      required: true
