@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { GuestVisitDTO, VisitRange, VisitStep } from '@cyberstars/shared/visits';
 import { PLACEMENT_QUESTION_COUNT } from '@cyberstars/shared/placement';
@@ -108,23 +108,36 @@ export function GuestVisits({
   const [source, setSource] = useState('');
   const [visits, setVisits] = useState<GuestVisitDTO[] | null>(null);
   const [next, setNext] = useState<number | null>(null);
+  const [loadingMore, setLoadingMore] = useState(false);
+  // Which list is current: an answer for an older range or source is dropped.
+  const asked = useRef(0);
 
   useEffect(() => {
+    const query = ++asked.current;
     getGuestVisits(range, source || undefined)
       .then((page) => {
+        if (query !== asked.current) return;
         setVisits(page.visits);
         setNext(page.next);
       })
       .catch(() => {});
   }, [range, source, reload]);
 
+  // A source picked on another range or before a refresh may have left the top
+  // ten; it stays an option so the filter still shows what it's filtering by.
+  const options = source && !sources.includes(source) ? [...sources, source] : sources;
+
   function more(before: number) {
+    const query = asked.current;
+    setLoadingMore(true);
     getGuestVisits(range, source || undefined, before)
       .then((page) => {
+        if (query !== asked.current) return;
         setVisits((shown) => [...(shown ?? []), ...page.visits]);
         setNext(page.next);
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setLoadingMore(false));
   }
 
   return (
@@ -138,7 +151,7 @@ export function GuestVisits({
           className="px-2 py-1 rounded-[var(--radius-sm)] text-[12px] border border-[var(--border)] bg-[var(--glass)] text-[var(--text2)] cursor-pointer"
         >
           <option value="">{t('admin.allSources')}</option>
-          {sources.map((key) => (
+          {options.map((key) => (
             <option key={key} value={key}>
               {sourceName(key)}
             </option>
@@ -172,7 +185,8 @@ export function GuestVisits({
       {next !== null && (
         <button
           onClick={() => more(next)}
-          className="mt-3 px-2.5 py-1 rounded-[var(--radius-sm)] text-[12px] border border-[var(--border)] bg-transparent text-[var(--text2)] hover:text-[var(--text)] cursor-pointer transition"
+          disabled={loadingMore}
+          className="mt-3 px-2.5 py-1 rounded-[var(--radius-sm)] text-[12px] border border-[var(--border)] bg-transparent text-[var(--text2)] hover:text-[var(--text)] cursor-pointer transition disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {t('admin.showMore')}
         </button>

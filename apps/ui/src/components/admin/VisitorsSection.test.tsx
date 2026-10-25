@@ -72,6 +72,22 @@ describe('VisitorsSection', () => {
     expect(screen.getByText('5 presses · 2 visits')).toBeInTheDocument();
   });
 
+  it('charts a week a point past 3 months', async () => {
+    const days = Array.from({ length: 14 }, (_, i) => ({
+      day: `2026-${i < 7 ? '05' : '06'}-0${(i % 7) + 1}`,
+      visitors: 1,
+      views: 1,
+      newAccounts: 0,
+    }));
+    getVisits.mockResolvedValue({ ...dto, range: 182, days });
+    render(<VisitorsSection className="" reload={0} />);
+    expect(await screen.findByRole('img', { name: 'Visitors a week' })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'New accounts a week' })).toBeInTheDocument();
+    const table = screen.getByRole('table', { name: 'Visitors' });
+    expect(within(table).getAllByRole('row')).toHaveLength(3); // the header and two weeks
+    expect(within(table).getByText('2026-06-01')).toBeInTheDocument();
+  });
+
   it('lists the guest visits for the same range, filtered by the sources above', async () => {
     render(<VisitorsSection className="" reload={0} />);
     await screen.findByText('Guest visits');
@@ -99,22 +115,55 @@ describe('VisitorsSection', () => {
     expect(localStorage.getItem('cyberstars.counted')).toBe('no');
   });
 
-  it('switches to 90 days and loads again on a refresh', async () => {
+  it('offers 1 to 24 months and loads again on a refresh', async () => {
     const { rerender } = render(<VisitorsSection className="" reload={0} />);
     await screen.findByText('/lesson/python/print');
+    const range = within(screen.getByRole('group', { name: 'Time range' }));
+    expect(range.getAllByRole('button').map((b) => b.textContent)).toEqual([
+      '1 month',
+      '3 months',
+      '6 months',
+      '12 months',
+      '24 months',
+    ]);
 
-    fireEvent.click(screen.getByRole('button', { name: '90 days' }));
+    fireEvent.click(range.getByRole('button', { name: '3 months' }));
     expect(getVisits).toHaveBeenLastCalledWith(90);
-    expect(screen.getByRole('button', { name: '90 days' })).toHaveAttribute('aria-pressed', 'true');
+    expect(range.getByRole('button', { name: '3 months' })).toHaveAttribute('aria-pressed', 'true');
 
     rerender(<VisitorsSection className="" reload={1} />);
     expect(getVisits).toHaveBeenCalledTimes(3);
   });
 
-  it('says there is nothing yet when the numbers could not be loaded or are empty', async () => {
+  it('dims the old range until the new one comes, and drops a late answer for it', async () => {
+    let answer30!: (dto: AdminVisitsDTO) => void;
+    let answer90!: (dto: AdminVisitsDTO) => void;
+    getVisits
+      .mockReturnValueOnce(Promise.resolve(dto))
+      .mockReturnValueOnce(new Promise((resolve) => (answer90 = resolve)))
+      .mockReturnValueOnce(new Promise((resolve) => (answer30 = resolve)));
+    render(<VisitorsSection className="" reload={0} />);
+    const page = await screen.findByText('/lesson/python/print');
+    const range = within(screen.getByRole('group', { name: 'Time range' }));
+
+    fireEvent.click(range.getByRole('button', { name: '3 months' }));
+    expect(page.closest('[aria-busy]')).toHaveAttribute('aria-busy', 'true');
+    fireEvent.click(range.getByRole('button', { name: '1 month' }));
+    expect(page.closest('[aria-busy]')).toHaveAttribute('aria-busy', 'false');
+
+    answer30({ ...dto, pages: [{ key: '/courses', visitors: 1, views: 1 }] });
+    expect(await screen.findByText('/courses')).toBeInTheDocument();
+    answer90({ ...dto, range: 90, pages: [{ key: '/almanac', visitors: 1, views: 1 }] });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(screen.queryByText('/almanac')).not.toBeInTheDocument();
+    expect(screen.getByText('/courses')).toBeInTheDocument();
+  });
+
+  it('says the numbers could not be loaded, and there is nothing yet when they are empty', async () => {
     getVisits.mockRejectedValueOnce(new Error('403'));
     const { unmount } = render(<VisitorsSection className="" reload={0} />);
-    expect(screen.getByText('No data yet')).toBeInTheDocument();
+    expect(await screen.findByRole('alert')).toHaveTextContent("Couldn't load these numbers.");
+    expect(screen.queryByText('No data yet')).not.toBeInTheDocument();
     unmount();
 
     getVisits.mockResolvedValueOnce({ ...dto, pages: [], sources: [], clicks: [] });

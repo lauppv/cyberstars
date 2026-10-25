@@ -211,17 +211,17 @@ describe('Visitor counts', () => {
       .expect(400);
   });
 
-  it("keeps a finished day's guest visits without their hash, for 90 days", async () => {
+  it("keeps a finished day's guest visits without their hash, for 728 days", async () => {
     const day = (n: number) => new Date(asDate(today()).getTime() - n * 86_400_000);
     await prisma.guestVisit.create({
       data: { day: day(1), visitor: 'a'.repeat(64), source: 'google', lang: 'en' },
     });
     await prisma.guestVisit.create({
-      data: { day: day(89), visitor: null, source: null, lang: 'en' },
+      data: { day: day(727), visitor: null, source: null, lang: 'en' },
     });
     await prisma.guestVisit.create({
       data: {
-        day: day(90),
+        day: day(728),
         visitor: null,
         source: null,
         lang: 'en',
@@ -234,7 +234,7 @@ describe('Visitor counts', () => {
 
     const left = await prisma.guestVisit.findMany({ orderBy: { day: 'asc' } });
     expect(left.map((v) => [v.day, v.visitor === null])).toEqual([
-      [day(89), true],
+      [day(727), true],
       [day(1), true],
       [asDate(today()), false], // today's still has its hash
     ]);

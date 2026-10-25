@@ -230,13 +230,13 @@ describe('guest steps', () => {
 });
 
 describe('rollUp', () => {
-  it('rolls up every day before today and keeps guest visits for 90 days', async () => {
+  it('rolls up every day before today and keeps guest visits for 728 days', async () => {
     vi.useFakeTimers({ toFake: ['Date'] });
     vi.setSystemTime(new Date('2026-11-01T23:30:00Z')); // already Nov 2 in Romania
     await service.rollUp();
     expect(mockRepo.rollUpBefore).toHaveBeenCalledWith(
       new Date('2026-11-02T00:00:00Z'),
-      new Date('2026-08-05T00:00:00Z'), // the first of the 90 days up to Nov 2
+      new Date('2024-11-05T00:00:00Z'), // the first of the 728 days up to Nov 2
     );
   });
 });

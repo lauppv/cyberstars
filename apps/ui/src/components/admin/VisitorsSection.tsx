@@ -10,6 +10,7 @@ import type {
 import { getVisits } from '../../services/visitsService';
 import { isCounted, setCounted } from '../../services/visitCounting';
 import { DailyChart } from './DailyChart';
+import { byWeek } from './byWeek';
 import { GuestVisits } from './GuestVisits';
 
 // The places CYB-64 posts to, by their own names; any other site shows as its
@@ -22,6 +23,9 @@ const SOURCE_NAMES: Record<string, string> = {
   devto: 'dev.to',
   github: 'GitHub',
 };
+
+// Each range by the months the buttons call it.
+const MONTHS: Record<VisitRange, number> = { 30: 1, 90: 3, 182: 6, 364: 12, 728: 24 };
 
 function count(rows: VisitCount[], key: string) {
   return rows.find((r) => r.key === key)?.visitors ?? 0;
@@ -97,11 +101,12 @@ function PlacementFunnelTable({ funnel }: { funnel: PlacementFunnel }) {
 }
 
 // Who visits and where they come from, counted by our own API (CYB-65). It
-// loads on its own so the 30/90 day switch doesn't redo the rest of the page.
+// loads on its own so the range switch doesn't redo the rest of the page.
 export function VisitorsSection({ className, reload }: { className: string; reload: number }) {
   const { t } = useTranslation();
   const [range, setRange] = useState<VisitRange>(VISIT_RANGES[0]);
   const [data, setData] = useState<AdminVisitsDTO | null>(null);
+  const [failed, setFailed] = useState(false);
   const [counted, setCountedHere] = useState(isCounted);
 
   function toggleCounted() {
@@ -110,10 +115,28 @@ export function VisitorsSection({ className, reload }: { className: string; relo
   }
 
   useEffect(() => {
+    // A slower answer for the range picked before mustn't land over this one.
+    let current = true;
     getVisits(range)
-      .then(setData)
-      .catch(() => {});
+      .then((dto) => {
+        if (!current) return;
+        setData(dto);
+        setFailed(false);
+      })
+      .catch(() => {
+        if (current) setFailed(true);
+      });
+    return () => {
+      current = false;
+    };
   }, [range, reload]);
+
+  // Until the new range comes, the old one's numbers stay up, dimmed.
+  const loading = data !== null && data.range !== range;
+
+  // Past 3 months a point a day is too many to read, so the charts go by week.
+  const weekly = data !== null && data.range > 90;
+  const points = data && weekly ? byWeek(data.days) : (data?.days ?? []);
 
   const sourceName = (key: string) =>
     SOURCE_NAMES[key] ?? (key === 'direct' || key === 'other' ? t(`admin.source.${key}`) : key);
@@ -134,32 +157,48 @@ export function VisitorsSection({ className, reload }: { className: string; relo
                   : 'border-[var(--border)] text-[var(--text3)] hover:text-[var(--text2)]'
               }`}
             >
-              {t('admin.lastDays', { count: r })}
+              {t('admin.lastMonths', { count: MONTHS[r] })}
             </button>
           ))}
         </div>
       </div>
 
+      {failed && (
+        <p role="alert" className="mt-0 mb-4 text-[12px] text-[var(--error)]">
+          {t('admin.loadError')}
+        </p>
+      )}
+
       {!data ? (
-        <span className="text-[12px] text-[var(--text3)]">{t('admin.noData')}</span>
+        !failed && <span className="text-[12px] text-[var(--text3)]">{t('admin.noData')}</span>
       ) : (
-        <>
+        <div aria-busy={loading} className={`transition-opacity ${loading ? 'opacity-50' : ''}`}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <DailyChart days={data.days} field="visitors" title={t('admin.visitorsADay')} />
-            <DailyChart days={data.days} field="newAccounts" title={t('admin.newAccountsADay')} />
+            <DailyChart
+              days={points}
+              field="visitors"
+              title={t(weekly ? 'admin.visitorsAWeek' : 'admin.visitorsADay')}
+              weekly={weekly}
+            />
+            <DailyChart
+              days={points}
+              field="newAccounts"
+              title={t(weekly ? 'admin.newAccountsAWeek' : 'admin.newAccountsADay')}
+              weekly={weekly}
+            />
           </div>
           <table className="sr-only">
             <caption>{t('admin.visits')}</caption>
             <thead>
               <tr>
-                <th>{t('admin.day')}</th>
+                <th>{t(weekly ? 'admin.week' : 'admin.day')}</th>
                 <th>{t('admin.visitorsWord', { count: 2 })}</th>
                 <th>{t('admin.viewsWord', { count: 2 })}</th>
                 <th>{t('admin.newAccountsWord', { count: 2 })}</th>
               </tr>
             </thead>
             <tbody>
-              {data.days.map((d) => (
+              {points.map((d) => (
                 <tr key={d.day}>
                   <td>{d.day}</td>
                   <td>{d.visitors}</td>
@@ -219,7 +258,7 @@ export function VisitorsSection({ className, reload }: { className: string; relo
             sourceName={sourceName}
             reload={reload}
           />
-        </>
+        </div>
       )}
 
       <p className="mt-4 mb-0 text-[11px] text-[var(--text3)]">

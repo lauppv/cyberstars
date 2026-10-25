@@ -25,7 +25,7 @@ Live at [cyberstars.app](https://cyberstars.app).
 - **Community forum**: threaded discussions with reactions and solution marking
 - **In-app notifications**: live bell for forum replies/solutions and support activity, pushed over a per-user WebSocket
 - **Linux terminal**: interactive sandboxed shell for learning Linux commands
-- **Admin dashboard**: admin-only `/admin` view with platform statistics (users, lesson progress, forum/support, live code-execution metrics) and visitor counts kept without cookies or IPs (visitors a day, top pages, where they come from, each guest's visit step by step for 90 days, and how far guests get in the placement test); access is server-authoritative, the role is read from the DB, never trusted from the client
+- **Admin dashboard**: admin-only `/admin` view with platform statistics (users, lesson progress, forum/support, live code-execution metrics) and visitor counts kept without cookies or IPs (visitors a day, top pages, where they come from, each guest's visit step by step, over up to 24 months, and how far guests get in the placement test); access is server-authoritative, the role is read from the DB, never trusted from the client
 
 ## Quick start
 

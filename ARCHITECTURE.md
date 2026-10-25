@@ -317,11 +317,11 @@ profile's connect button. Streak is computed by the shared
 
 Gated by `requireAdmin` (after `authenticateToken`); the role is read fresh from the DB, never from the JWT.
 
-| Method | Endpoint                   | Auth  | Description                                                                                                                            |
-| ------ | -------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| GET    | `/api/admin/stats`         | Admin | Platform stats (users/progress/forum/support, cached ~5min, + live code-exec metrics); `?fresh=1` bypasses the cache                   |
-| GET    | `/api/admin/visits`        | Admin | Visitors and new accounts a day, top pages, sources, guest/signed-in, en/ro and the most pressed buttons over `?range=30` or `90` days |
-| GET    | `/api/admin/visits/guests` | Admin | Guest visits with their start time and steps, newest first, 20 a page; `?range=30\|90`, `?source=`, `?before=<id>` for the next page   |
+| Method | Endpoint                   | Auth  | Description                                                                                                                                                 |
+| ------ | -------------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/api/admin/stats`         | Admin | Platform stats (users/progress/forum/support, cached ~5min, + live code-exec metrics); `?fresh=1` bypasses the cache                                        |
+| GET    | `/api/admin/visits`        | Admin | Visitors and new accounts a day, top pages, sources, guest/signed-in, en/ro and the most pressed buttons over `?range=30`, `90`, `182`, `364` or `728` days |
+| GET    | `/api/admin/visits/guests` | Admin | Guest visits with their start time and steps, newest first, 20 a page; `?range=` as above, `?source=`, `?before=<id>` for the next page                     |
 
 ### Visits
 
@@ -380,7 +380,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma). Fie
 - **TutorConversation / TutorMessage**: a student's tutor conversations, each general or about one lesson or challenge, titled by its first question (the newest 50 kept), and their messages and answers, each answer with how it ended (the newest 200 per conversation kept)
 - **LaniakeaPlanet**: a student's planet in Laniakea, one per Python lesson: its level, last pass, retry time, the questions seen in the current round, and the test going on
 - **UsageWindow**: what a student has used of each capped feature (Show Solution, the tutor session) in its current window, one row per student and feature
-- **GuestVisit / VisitStep**: a guest's day on the site and what they did in it (pages, named clicks, scroll depth) in order of id; only the visit keeps a time, that of its first page; the hash goes when the day ends, the visit after 90 days
+- **GuestVisit / VisitStep**: a guest's day on the site and what they did in it (pages, named clicks, scroll depth) in order of id; only the visit keeps a time, that of its first page; the hash goes when the day ends, the visit after 728 days (24 months)
 
 ### Key relationships
 
