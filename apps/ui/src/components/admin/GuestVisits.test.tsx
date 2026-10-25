@@ -146,6 +146,17 @@ describe('GuestVisits', () => {
     expect(screen.queryByText('/courses')).not.toBeInTheDocument();
   });
 
+  it('keeps showing the picked source once it leaves the list', async () => {
+    getGuestVisits.mockResolvedValue({ visits: [], next: null });
+    const { rerender } = show();
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'reddit' } });
+    rerender(<GuestVisits range={30} sources={['google']} sourceName={(key) => key} reload={1} />);
+    const filter = screen.getByRole('combobox') as HTMLSelectElement;
+    expect(filter.value).toBe('reddit');
+    expect([...filter.options].map((o) => o.value)).toEqual(['', 'google', 'reddit']);
+    expect(getGuestVisits).toHaveBeenLastCalledWith(30, 'reddit');
+  });
+
   it('says there is nothing yet when the list is empty or could not be loaded', async () => {
     getGuestVisits.mockResolvedValueOnce({ visits: [], next: null });
     const { unmount } = show();

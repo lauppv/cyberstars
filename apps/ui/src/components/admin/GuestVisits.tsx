@@ -118,6 +118,10 @@ export function GuestVisits({
       .catch(() => {});
   }, [range, source, reload]);
 
+  // A source picked on another range or before a refresh may have left the top
+  // ten; it stays an option so the filter still shows what it's filtering by.
+  const options = source && !sources.includes(source) ? [...sources, source] : sources;
+
   function more(before: number) {
     getGuestVisits(range, source || undefined, before)
       .then((page) => {
@@ -138,7 +142,7 @@ export function GuestVisits({
           className="px-2 py-1 rounded-[var(--radius-sm)] text-[12px] border border-[var(--border)] bg-[var(--glass)] text-[var(--text2)] cursor-pointer"
         >
           <option value="">{t('admin.allSources')}</option>
-          {sources.map((key) => (
+          {options.map((key) => (
             <option key={key} value={key}>
               {sourceName(key)}
             </option>
