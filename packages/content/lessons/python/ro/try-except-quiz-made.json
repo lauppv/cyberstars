@@ -1,0 +1,707 @@
+{
+  "note": "Made by npm run make:quiz from the templates in try-except-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "te-ok-e760e3",
+      "text": "Ce afișează?",
+      "code": "text = \"12\"\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"Nu e un numar\")",
+      "options": ["24", "14", "1212", "Nu e un numar"],
+      "answer": 0
+    },
+    {
+      "id": "te-ok-c50fcb",
+      "text": "Ce afișează?",
+      "code": "combustibil = \"40\"\ntry:\n    n = int(combustibil)\n    print(n * 3)\nexcept ValueError:\n    print(\"Citire gresita\")",
+      "options": ["120", "43", "404040", "Citire gresita"],
+      "answer": 0
+    },
+    {
+      "id": "te-ok-a50717",
+      "text": "Ce afișează?",
+      "code": "vieti = \"3\"\ntry:\n    n = int(vieti)\n    print(n * 5)\nexcept ValueError:\n    print(\"Vietile trebuie sa fie un numar\")",
+      "options": ["15", "8", "33333", "Vietile trebuie sa fie un numar"],
+      "answer": 0
+    },
+    {
+      "id": "te-ok-c18b48",
+      "text": "Ce afișează?",
+      "code": "viteza = \"25\"\ntry:\n    n = int(viteza)\n    print(n * 4)\nexcept ValueError:\n    print(\"Viteza necunoscuta\")",
+      "options": ["100", "29", "25252525", "Viteza necunoscuta"],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-bfb5ea",
+      "text": "Ce afișează?",
+      "code": "text = \"abc\"\ntry:\n    n = int(text)\n    print(\"Numar:\", n)\nexcept ValueError:\n    print(\"Nu e un numar\")\nprint(\"Gata\")",
+      "options": [
+        "Nu e un numar\nGata",
+        "Numar: abc\nNu e un numar\nGata",
+        "Nu e un numar",
+        "abc\nGata"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-5ce144",
+      "text": "Ce afișează?",
+      "code": "varsta = \"zece\"\ntry:\n    n = int(varsta)\n    print(\"Numar:\", n)\nexcept ValueError:\n    print(\"Scrie cifre, nu cuvinte\")\nprint(\"Pa\")",
+      "options": [
+        "Scrie cifre, nu cuvinte\nPa",
+        "Numar: zece\nScrie cifre, nu cuvinte\nPa",
+        "Scrie cifre, nu cuvinte",
+        "zece\nPa"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-fc3d0e",
+      "text": "Ce afișează?",
+      "code": "cod = \"4x2\"\ntry:\n    n = int(cod)\n    print(\"Numar:\", n)\nexcept ValueError:\n    print(\"Cod gresit\")\nprint(\"Urmatorul\")",
+      "options": [
+        "Cod gresit\nUrmatorul",
+        "Numar: 4x2\nCod gresit\nUrmatorul",
+        "Cod gresit",
+        "4x2\nUrmatorul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-lines-3ff035",
+      "text": "Ce afișează?",
+      "code": "try:\n    print(\"Start\")\n    n = int(\"x7\")\n    print(\"Convertit\")\nexcept ValueError:\n    print(\"Esuat\")\nprint(\"Sfarsit\")",
+      "options": [
+        "Start\nEsuat\nSfarsit",
+        "Start\nConvertit\nSfarsit",
+        "Esuat\nSfarsit",
+        "Start\nEsuat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-lines-6a113a",
+      "text": "Ce afișează?",
+      "code": "try:\n    print(\"Citesc\")\n    n = int(\"nimic\")\n    print(\"Am citit\")\nexcept ValueError:\n    print(\"Corupt\")\nprint(\"Senzorul urmator\")",
+      "options": [
+        "Citesc\nCorupt\nSenzorul urmator",
+        "Citesc\nAm citit\nSenzorul urmator",
+        "Corupt\nSenzorul urmator",
+        "Citesc\nCorupt"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-lines-b1382d",
+      "text": "Ce afișează?",
+      "code": "try:\n    print(\"Se incarca\")\n    n = int(\"3.5\")\n    print(\"Incarcat\")\nexcept ValueError:\n    print(\"Nu e un numar intreg\")\nprint(\"Meniu\")",
+      "options": [
+        "Se incarca\nNu e un numar intreg\nMeniu",
+        "Se incarca\nIncarcat\nMeniu",
+        "Nu e un numar intreg\nMeniu",
+        "Se incarca\nNu e un numar intreg"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-zero-b71cd1",
+      "text": "Ce afișează?",
+      "code": "echipaj = \"0\"\ntry:\n    n = int(echipaj)\n    print(100 / n)\nexcept ValueError:\n    print(\"Nu e un numar\")\nexcept ZeroDivisionError:\n    print(\"Nu e nimeni cu care sa imparti\")",
+      "options": ["Nu e nimeni cu care sa imparti", "Nu e un numar", "0.0", "100.0"],
+      "answer": 0
+    },
+    {
+      "id": "te-zero-29aa00",
+      "text": "Ce afișează?",
+      "code": "jucatori = \"0\"\ntry:\n    n = int(jucatori)\n    print(60 / n)\nexcept ValueError:\n    print(\"Scrie un numar\")\nexcept ZeroDivisionError:\n    print(\"Nu poti imparti la zero\")",
+      "options": ["Nu poti imparti la zero", "Scrie un numar", "0.0", "60.0"],
+      "answer": 0
+    },
+    {
+      "id": "te-zero-2285df",
+      "text": "Ce afișează?",
+      "code": "zile = \"0\"\ntry:\n    n = int(zile)\n    print(90 / n)\nexcept ValueError:\n    print(\"Intrare gresita\")\nexcept ZeroDivisionError:\n    print(\"Zero zile?\")",
+      "options": ["Zero zile?", "Intrare gresita", "0.0", "90.0"],
+      "answer": 0
+    },
+    {
+      "id": "te-notnum-fa209c",
+      "text": "Ce afișează?",
+      "code": "echipaj = \"patru\"\ntry:\n    n = int(echipaj)\n    print(100 / n)\nexcept ValueError:\n    print(\"Nu e un numar\")\nexcept ZeroDivisionError:\n    print(\"Nu e nimeni cu care sa imparti\")",
+      "options": ["Nu e un numar", "Nu e nimeni cu care sa imparti", "20.0", "patru"],
+      "answer": 0
+    },
+    {
+      "id": "te-notnum-7bcfc7",
+      "text": "Ce afișează?",
+      "code": "jucatori = \"sase\"\ntry:\n    n = int(jucatori)\n    print(60 / n)\nexcept ValueError:\n    print(\"Scrie un numar\")\nexcept ZeroDivisionError:\n    print(\"Nu poti imparti la zero\")",
+      "options": ["Scrie un numar", "Nu poti imparti la zero", "15.0", "sase"],
+      "answer": 0
+    },
+    {
+      "id": "te-notnum-247d98",
+      "text": "Ce afișează?",
+      "code": "zile = \"2x\"\ntry:\n    n = int(zile)\n    print(90 / n)\nexcept ValueError:\n    print(\"Intrare gresita\")\nexcept ZeroDivisionError:\n    print(\"Zero zile?\")",
+      "options": ["Intrare gresita", "Zero zile?", "45.0", "2x"],
+      "answer": 0
+    },
+    {
+      "id": "te-sum-749e9f",
+      "text": "Ce afișează?",
+      "code": "citiri = [\"42\", \"x9\", \"100\", \"rau\", \"7\"]\ntotal = 0\ncorupte = 0\nfor c in citiri:\n    try:\n        total = total + int(c)\n    except ValueError:\n        corupte = corupte + 1\nprint(f\"Total: {total}\")\nprint(f\"Corupte: {corupte}\")",
+      "options": [
+        "Total: 149\nCorupte: 2",
+        "Total: 149\nCorupte: 1",
+        "Total: 7\nCorupte: 2",
+        "Total: 149\nCorupte: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-sum-759b2e",
+      "text": "Ce afișează?",
+      "code": "senzori = [\"5\", \"err\", \"15\", \"?\", \"20\", \"1\"]\ntotal = 0\ncorupte = 0\nfor c in senzori:\n    try:\n        total = total + int(c)\n    except ValueError:\n        corupte = corupte + 1\nprint(f\"Total: {total}\")\nprint(f\"Corupte: {corupte}\")",
+      "options": [
+        "Total: 41\nCorupte: 2",
+        "Total: 41\nCorupte: 1",
+        "Total: 1\nCorupte: 2",
+        "Total: 41\nCorupte: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-sum-1a6a43",
+      "text": "Ce afișează?",
+      "code": "scoruri = [\"10\", \"zece\", \"30\", \"\", \"-\"]\ntotal = 0\ncorupte = 0\nfor c in scoruri:\n    try:\n        total = total + int(c)\n    except ValueError:\n        corupte = corupte + 1\nprint(f\"Total: {total}\")\nprint(f\"Corupte: {corupte}\")",
+      "options": [
+        "Total: 40\nCorupte: 3",
+        "Total: 40\nCorupte: 1",
+        "Total: 30\nCorupte: 3",
+        "Total: 40\nCorupte: 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-sum-61db50",
+      "text": "Ce afișează?",
+      "code": "niveluri = [\"3\", \"4\", \"max\", \"jos\", \"8\"]\ntotal = 0\ncorupte = 0\nfor c in niveluri:\n    try:\n        total = total + int(c)\n    except ValueError:\n        corupte = corupte + 1\nprint(f\"Total: {total}\")\nprint(f\"Corupte: {corupte}\")",
+      "options": [
+        "Total: 15\nCorupte: 2",
+        "Total: 15\nCorupte: 1",
+        "Total: 8\nCorupte: 2",
+        "Total: 15\nCorupte: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-sum-d8a413",
+      "text": "Ce afișează?",
+      "code": "temperaturi = [\"21\", \"19\", \"cald\", \"24\", \"n/a\"]\ntotal = 0\ncorupte = 0\nfor c in temperaturi:\n    try:\n        total = total + int(c)\n    except ValueError:\n        corupte = corupte + 1\nprint(f\"Total: {total}\")\nprint(f\"Corupte: {corupte}\")",
+      "options": [
+        "Total: 64\nCorupte: 2",
+        "Total: 64\nCorupte: 1",
+        "Total: 24\nCorupte: 2",
+        "Total: 64\nCorupte: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-around-08a695",
+      "text": "Ce afișează?",
+      "code": "citiri = [\"4\", \"9\", \"x\", \"6\"]\ntotal = 0\ntry:\n    for c in citiri:\n        total = total + int(c)\nexcept ValueError:\n    print(\"Citire oprita\")\nprint(total)",
+      "options": [
+        "Citire oprita\n13",
+        "Citire oprita\n19",
+        "Citire oprita\n9",
+        "Citire oprita\nCitire oprita"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-around-d0785d",
+      "text": "Ce afișează?",
+      "code": "preturi = [\"12\", \"7\", \"gratis\", \"8\"]\ntotal = 0\ntry:\n    for c in preturi:\n        total = total + int(c)\nexcept ValueError:\n    print(\"Nu e un pret\")\nprint(total)",
+      "options": [
+        "Nu e un pret\n19",
+        "Nu e un pret\n27",
+        "Nu e un pret\n7",
+        "Nu e un pret\nNu e un pret"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-around-8340de",
+      "text": "Ce afișează?",
+      "code": "ture = [\"30\", \"25\", \"28\", \"DNF\", \"31\"]\ntotal = 0\ntry:\n    for c in ture:\n        total = total + int(c)\nexcept ValueError:\n    print(\"Cursa oprita\")\nprint(total)",
+      "options": [
+        "Cursa oprita\n83",
+        "Cursa oprita\n114",
+        "Cursa oprita\n28",
+        "Cursa oprita\nCursa oprita"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-else-75bffb",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"12\")\nexcept ValueError:\n    print(\"Eroare!\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Verificat\")",
+      "options": ["24\nVerificat", "14\nVerificat", "24\n12", "1212\nVerificat"],
+      "answer": 0
+    },
+    {
+      "id": "te-else-d36e98",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"35\")\nexcept ValueError:\n    print(\"Nu e un numar\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Ruleaza mereu\")",
+      "options": ["70\nRuleaza mereu", "37\nRuleaza mereu", "70\n35", "3535\nRuleaza mereu"],
+      "answer": 0
+    },
+    {
+      "id": "te-else-1210ce",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"8\")\nexcept ValueError:\n    print(\"Valoare gresita\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Gata\")",
+      "options": ["16\nGata", "10\nGata", "16\n8", "88\nGata"],
+      "answer": 0
+    },
+    {
+      "id": "te-finally-195e07",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"salut\")\n    print(n)\nexcept ValueError:\n    print(\"Te rog introdu un numar\")\nfinally:\n    print(\"Multumesc\")",
+      "options": [
+        "Te rog introdu un numar\nMultumesc",
+        "salut\nMultumesc",
+        "Te rog introdu un numar",
+        "Te rog introdu un numar\nMultumesc\nMultumesc"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-finally-e2b75c",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"7 7\")\n    print(n)\nexcept ValueError:\n    print(\"Doar un numar\")\nfinally:\n    print(\"Verificat\")",
+      "options": [
+        "Doar un numar\nVerificat",
+        "7 7\nVerificat",
+        "Doar un numar",
+        "Doar un numar\nVerificat\nVerificat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-finally-8dded2",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"zero\")\n    print(n)\nexcept ValueError:\n    print(\"Cifre, te rog\")\nfinally:\n    print(\"Gata\")",
+      "options": [
+        "Cifre, te rog\nGata",
+        "zero\nGata",
+        "Cifre, te rog",
+        "Cifre, te rog\nGata\nGata"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-index-855c3d",
+      "text": "Care program afișează asta?",
+      "output": "Nu e nimeni acolo\nGata",
+      "options": [
+        "echipaj = [\"Tommy\", \"Lance\"]\ntry:\n    print(echipaj[2])\nexcept IndexError:\n    print(\"Nu e nimeni acolo\")\nprint(\"Gata\")",
+        "echipaj = [\"Tommy\", \"Lance\"]\ntry:\n    print(echipaj[2])\nexcept ValueError:\n    print(\"Nu e nimeni acolo\")\nprint(\"Gata\")",
+        "echipaj = [\"Tommy\", \"Lance\"]\ntry:\n    print(echipaj[0])\nexcept IndexError:\n    print(\"Nu e nimeni acolo\")\nprint(\"Gata\")",
+        "echipaj = [\"Tommy\", \"Lance\"]\ntry:\n    print(echipaj[2])\nexcept IndexError:\n    print(\"Nu e nimeni acolo\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-index-63a902",
+      "text": "Care program afișează asta?",
+      "output": "Nu exista planeta\nScanare terminata",
+      "options": [
+        "planete = [\"Marte\", \"Venus\", \"Pamant\"]\ntry:\n    print(planete[5])\nexcept IndexError:\n    print(\"Nu exista planeta\")\nprint(\"Scanare terminata\")",
+        "planete = [\"Marte\", \"Venus\", \"Pamant\"]\ntry:\n    print(planete[5])\nexcept ValueError:\n    print(\"Nu exista planeta\")\nprint(\"Scanare terminata\")",
+        "planete = [\"Marte\", \"Venus\", \"Pamant\"]\ntry:\n    print(planete[0])\nexcept IndexError:\n    print(\"Nu exista planeta\")\nprint(\"Scanare terminata\")",
+        "planete = [\"Marte\", \"Venus\", \"Pamant\"]\ntry:\n    print(planete[5])\nexcept IndexError:\n    print(\"Nu exista planeta\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-index-8a2e13",
+      "text": "Care program afișează asta?",
+      "output": "Sfarsitul listei\nStop",
+      "options": [
+        "melodii = [\"Intro\", \"Val\"]\ntry:\n    print(melodii[3])\nexcept IndexError:\n    print(\"Sfarsitul listei\")\nprint(\"Stop\")",
+        "melodii = [\"Intro\", \"Val\"]\ntry:\n    print(melodii[3])\nexcept ValueError:\n    print(\"Sfarsitul listei\")\nprint(\"Stop\")",
+        "melodii = [\"Intro\", \"Val\"]\ntry:\n    print(melodii[0])\nexcept IndexError:\n    print(\"Sfarsitul listei\")\nprint(\"Stop\")",
+        "melodii = [\"Intro\", \"Val\"]\ntry:\n    print(melodii[3])\nexcept IndexError:\n    print(\"Sfarsitul listei\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-index-44d776",
+      "text": "Care program afișează asta?",
+      "output": "Nicio masina acolo\nGaraj inchis",
+      "options": [
+        "masini = [\"Cheetah\", \"Sabre\", \"Infernus\"]\ntry:\n    print(masini[4])\nexcept IndexError:\n    print(\"Nicio masina acolo\")\nprint(\"Garaj inchis\")",
+        "masini = [\"Cheetah\", \"Sabre\", \"Infernus\"]\ntry:\n    print(masini[4])\nexcept ValueError:\n    print(\"Nicio masina acolo\")\nprint(\"Garaj inchis\")",
+        "masini = [\"Cheetah\", \"Sabre\", \"Infernus\"]\ntry:\n    print(masini[0])\nexcept IndexError:\n    print(\"Nicio masina acolo\")\nprint(\"Garaj inchis\")",
+        "masini = [\"Cheetah\", \"Sabre\", \"Infernus\"]\ntry:\n    print(masini[4])\nexcept IndexError:\n    print(\"Nicio masina acolo\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-else-ab79ba",
+      "text": "Care program afișează asta?",
+      "output": "42\nGata",
+      "options": [
+        "try:\n    n = int(\"41\")\nexcept ValueError:\n    print(\"Nu e un numar\")\nelse:\n    print(n + 1)\nprint(\"Gata\")",
+        "try:\n    n = int(\"41x\")\nexcept ValueError:\n    print(\"Nu e un numar\")\nelse:\n    print(n + 1)\nprint(\"Gata\")",
+        "try:\n    n = int(\"41\")\nexcept ValueError:\n    print(\"Nu e un numar\")\nelse:\n    print(n)\nprint(\"Gata\")",
+        "try:\n    n = int(\"41\")\nexcept ValueError:\n    print(\"Nu e un numar\")\nprint(\"Gata\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-else-9e53ed",
+      "text": "Care program afișează asta?",
+      "output": "10\nUrmatorul",
+      "options": [
+        "try:\n    n = int(\"9\")\nexcept ValueError:\n    print(\"Eroare!\")\nelse:\n    print(n + 1)\nprint(\"Urmatorul\")",
+        "try:\n    n = int(\"9x\")\nexcept ValueError:\n    print(\"Eroare!\")\nelse:\n    print(n + 1)\nprint(\"Urmatorul\")",
+        "try:\n    n = int(\"9\")\nexcept ValueError:\n    print(\"Eroare!\")\nelse:\n    print(n)\nprint(\"Urmatorul\")",
+        "try:\n    n = int(\"9\")\nexcept ValueError:\n    print(\"Eroare!\")\nprint(\"Urmatorul\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-else-ed5707",
+      "text": "Care program afișează asta?",
+      "output": "18\nPa",
+      "options": [
+        "try:\n    n = int(\"17\")\nexcept ValueError:\n    print(\"Varsta gresita\")\nelse:\n    print(n + 1)\nprint(\"Pa\")",
+        "try:\n    n = int(\"17x\")\nexcept ValueError:\n    print(\"Varsta gresita\")\nelse:\n    print(n + 1)\nprint(\"Pa\")",
+        "try:\n    n = int(\"17\")\nexcept ValueError:\n    print(\"Varsta gresita\")\nelse:\n    print(n)\nprint(\"Pa\")",
+        "try:\n    n = int(\"17\")\nexcept ValueError:\n    print(\"Varsta gresita\")\nprint(\"Pa\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-else-62524a",
+      "text": "Care program afișează asta?",
+      "output": "100\nSfarsit",
+      "options": [
+        "try:\n    n = int(\"99\")\nexcept ValueError:\n    print(\"Scrie cifre\")\nelse:\n    print(n + 1)\nprint(\"Sfarsit\")",
+        "try:\n    n = int(\"99x\")\nexcept ValueError:\n    print(\"Scrie cifre\")\nelse:\n    print(n + 1)\nprint(\"Sfarsit\")",
+        "try:\n    n = int(\"99\")\nexcept ValueError:\n    print(\"Scrie cifre\")\nelse:\n    print(n)\nprint(\"Sfarsit\")",
+        "try:\n    n = int(\"99\")\nexcept ValueError:\n    print(\"Scrie cifre\")\nprint(\"Sfarsit\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-except-ac36e8",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"abc\"\ntry:\n    n = int(text)\n    print(n)\n___\n    print(\"Nu e un numar\")",
+      "output": "Nu e un numar",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "except IndexError:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-except-448e2b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = \"mare\"\ntry:\n    n = int(varsta)\n    print(n)\n___\n    print(\"Scrie varsta in cifre\")",
+      "output": "Scrie varsta in cifre",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "except IndexError:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-except-4df62e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cod = \"12a\"\ntry:\n    n = int(cod)\n    print(n)\n___\n    print(\"Cod gresit\")",
+      "output": "Cod gresit",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "except IndexError:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-except-4d4ff3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = \"plin\"\ntry:\n    n = int(combustibil)\n    print(n)\n___\n    print(\"Combustibilul trebuie sa fie un numar\")",
+      "output": "Combustibilul trebuie sa fie un numar",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "except IndexError:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-add-86e892",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "total = 0\nfor c in [\"4\", \"x\", \"9\"]:\n    try:\n        ___\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(total)",
+      "output": "Sar peste x\n13",
+      "options": [
+        "total = total + int(c)",
+        "total = int(c)",
+        "total = total + 1",
+        "total = total + c"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-add-536529",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "total = 0\nfor c in [\"10\", \"20\", \"n/a\", \"5\"]:\n    try:\n        ___\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(total)",
+      "output": "Sar peste n/a\n35",
+      "options": [
+        "total = total + int(c)",
+        "total = int(c)",
+        "total = total + 1",
+        "total = total + c"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-add-090c6e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "total = 0\nfor c in [\"rau\", \"7\", \"3\"]:\n    try:\n        ___\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(total)",
+      "output": "Sar peste rau\n10",
+      "options": [
+        "total = total + int(c)",
+        "total = int(c)",
+        "total = total + 1",
+        "total = total + c"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-add-723621",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "total = 0\nfor c in [\"15\", \"?\", \"6\", \"err\"]:\n    try:\n        ___\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(total)",
+      "output": "Sar peste ?\nSar peste err\n21",
+      "options": [
+        "total = total + int(c)",
+        "total = int(c)",
+        "total = total + 1",
+        "total = total + c"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-finally-11eeea",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "try:\n    n = int(\"doisprezece\")\n    print(n)\nexcept ValueError:\n    print(\"Nu e un numar\")\n___\n    print(\"Verificare gata\")",
+      "output": "Nu e un numar\nVerificare gata",
+      "options": ["finally:", "else:", "except:", "if n:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-finally-7141d5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "try:\n    n = int(\"x1\")\n    print(n)\nexcept ValueError:\n    print(\"Citire gresita\")\n___\n    print(\"Senzor oprit\")",
+      "output": "Citire gresita\nSenzor oprit",
+      "options": ["finally:", "else:", "except:", "if n:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-finally-4b31c3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "try:\n    n = int(\"salut\")\n    print(n)\nexcept ValueError:\n    print(\"Te rog scrie cifre\")\n___\n    print(\"Multumesc\")",
+      "output": "Te rog scrie cifre\nMultumesc",
+      "options": ["finally:", "else:", "except:", "if n:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-finally-b4680c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "try:\n    n = int(\"5 kg\")\n    print(n)\nexcept ValueError:\n    print(\"Doar numarul, te rog\")\n___\n    print(\"Salvat\")",
+      "output": "Doar numarul, te rog\nSalvat",
+      "options": ["finally:", "else:", "except:", "if n:"],
+      "answer": 0
+    },
+    {
+      "id": "te-val-error-ad6555",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "try:\n    n = int(\"abc\")\nexcept ___:\n    print(\"Nu e un numar\")\nprint(\"Gata\")",
+      "output": "Nu e un numar\nGata",
+      "options": ["ValueError", "ZeroDivisionError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "te-val-error-110be1",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "try:\n    print(10 / 0)\nexcept ___:\n    print(\"Matematica zice nu\")\nprint(\"Urmatorul\")",
+      "output": "Matematica zice nu\nUrmatorul",
+      "options": ["ZeroDivisionError", "ValueError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "te-val-error-c64c7e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "try:\n    print([\"Tommy\", \"Lance\"][10])\nexcept ___:\n    print(\"Nu e nimeni pe locul acela\")\nprint(\"Pa\")",
+      "output": "Nu e nimeni pe locul acela\nPa",
+      "options": ["IndexError", "ValueError", "ZeroDivisionError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "te-val-error-617750",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "try:\n    print({\"Tommy\": 42}[\"Ken\"])\nexcept ___:\n    print(\"Nu exista cheia\")\nprint(\"Sfarsit\")",
+      "output": "Nu exista cheia\nSfarsit",
+      "options": ["KeyError", "ValueError", "ZeroDivisionError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "te-val-text-af9e45",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = ___\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"Nu e un numar\")",
+      "output": "Nu e un numar",
+      "options": ["\"zece\"", "\"10\"", "\"5\"", "\"20\""],
+      "answer": 0
+    },
+    {
+      "id": "te-val-text-e7a404",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = ___\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"Valoare gresita\")",
+      "output": "42",
+      "options": ["\"21\"", "\"42\"", "\"douazeci\"", "\"2\""],
+      "answer": 0
+    },
+    {
+      "id": "te-val-text-83e33d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = ___\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"Scrie cifre\")",
+      "output": "14",
+      "options": ["\"7\"", "\"14\"", "\"7a\"", "\"0\""],
+      "answer": 0
+    },
+    {
+      "id": "te-val-text-693df2",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = ___\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"Corupt\")",
+      "output": "Corupt",
+      "options": ["\"x5\"", "\"5\"", "\"10\"", "\"55\""],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-catch-d43574",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for x in [\"5\", \"0\", \"2\"]:\n    try:\n        print(10 / int(x))\n    except ValueError:\n        print(\"Sarit:\", x)\nprint(\"Gata\")",
+      "output": "2.0\nSarit: 0\n5.0\nGata",
+      "options": ["except ValueError:", "print(10 / int(x))", "try:", "print(\"Sarit:\", x)"],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-catch-ca9cdd",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for x in [\"4\", \"8\", \"0\"]:\n    try:\n        print(40 / int(x))\n    except ValueError:\n        print(\"Zero, nu se imparte:\", x)\nprint(\"Sfarsit\")",
+      "output": "10.0\n5.0\nZero, nu se imparte: 0\nSfarsit",
+      "options": [
+        "except ValueError:",
+        "print(40 / int(x))",
+        "try:",
+        "print(\"Zero, nu se imparte:\", x)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-catch-c1ca9a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for x in [\"0\", \"3\", \"6\"]:\n    try:\n        print(30 / int(x))\n    except ValueError:\n        print(\"Nu poti imparti la zero:\", x)\nprint(\"Verificat\")",
+      "output": "Nu poti imparti la zero: 0\n10.0\n5.0\nVerificat",
+      "options": [
+        "except ValueError:",
+        "print(30 / int(x))",
+        "print(\"Nu poti imparti la zero:\", x)",
+        "print(\"Verificat\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-start-183216",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "corupte = 1\ncitiri = [\"42\", \"x9\", \"7\", \"rau\"]\nfor c in citiri:\n    try:\n        n = int(c)\n    except ValueError:\n        print(\"Sar peste\", c)\n        corupte = corupte + 1\nprint(f\"Corupte: {corupte}\")",
+      "output": "Sar peste x9\nSar peste rau\nCorupte: 2",
+      "options": ["corupte = 1", "citiri = [\"42\", \"x9\", \"7\", \"rau\"]", "try:", "n = int(c)"],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-start-19f0c0",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "corupte = 1\nsenzori = [\"err\", \"5\", \"?\", \"6\"]\nfor c in senzori:\n    try:\n        n = int(c)\n    except ValueError:\n        print(\"Sar peste\", c)\n        corupte = corupte + 1\nprint(f\"Corupte: {corupte}\")",
+      "output": "Sar peste err\nSar peste ?\nCorupte: 2",
+      "options": ["corupte = 1", "senzori = [\"err\", \"5\", \"?\", \"6\"]", "try:", "n = int(c)"],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-start-41ec25",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "corupte = 1\ncoduri = [\"12\", \"?\", \"30\", \"-\", \"n/a\"]\nfor c in coduri:\n    try:\n        n = int(c)\n    except ValueError:\n        print(\"Sar peste\", c)\n        corupte = corupte + 1\nprint(f\"Corupte: {corupte}\")",
+      "output": "Sar peste ?\nSar peste -\nSar peste n/a\nCorupte: 3",
+      "options": [
+        "corupte = 1",
+        "coduri = [\"12\", \"?\", \"30\", \"-\", \"n/a\"]",
+        "try:",
+        "n = int(c)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-indent-c2c3be",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor c in [\"4\", \"x\", \"9\"]:\n    try:\n        total = total + int(c)\n    except ValueError:\n        print(\"Sar peste\", c)\n    print(total)",
+      "output": "Sar peste x\n13",
+      "options": [
+        "print(total)",
+        "print(\"Sar peste\", c)",
+        "except ValueError:",
+        "total = total + int(c)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-indent-50153b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor c in [\"10\", \"20\", \"n/a\"]:\n    try:\n        total = total + int(c)\n    except ValueError:\n        print(\"Sar peste\", c)\n    print(total)",
+      "output": "Sar peste n/a\n30",
+      "options": [
+        "print(total)",
+        "print(\"Sar peste\", c)",
+        "except ValueError:",
+        "total = total + int(c)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-indent-9e80cf",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor c in [\"rau\", \"7\", \"3\"]:\n    try:\n        total = total + int(c)\n    except ValueError:\n        print(\"Sar peste\", c)\n    print(total)",
+      "output": "Sar peste rau\n10",
+      "options": [
+        "print(total)",
+        "print(\"Sar peste\", c)",
+        "except ValueError:",
+        "total = total + int(c)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-convert-3ee2b7",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor c in [\"8\", \"ups\", \"2\"]:\n    try:\n        total = total + c\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(f\"Total: {total}\")",
+      "output": "Sar peste ups\nTotal: 10",
+      "options": [
+        "total = total + c",
+        "except ValueError:",
+        "print(\"Sar peste\", c)",
+        "print(f\"Total: {total}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-convert-53f268",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor c in [\"x\", \"30\", \"12\"]:\n    try:\n        total = total + c\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(f\"Total: {total}\")",
+      "output": "Sar peste x\nTotal: 42",
+      "options": ["total = total + c", "try:", "except ValueError:", "print(\"Sar peste\", c)"],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-convert-4e6736",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor c in [\"5\", \"5\", \"?\", \"1\"]:\n    try:\n        total = total + c\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(f\"Total: {total}\")",
+      "output": "Sar peste ?\nTotal: 11",
+      "options": ["total = total + c", "try:", "except ValueError:", "print(\"Sar peste\", c)"],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,766 @@
+{
+  "note": "Made by npm run make:quiz from the templates in default-params-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "dp-word-586961",
+      "text": "Ce afișează?",
+      "code": "def saluta(nume, salut=\"Salut\"):\n    print(salut, nume)\n\nsaluta(\"Ana\")\nsaluta(\"Rex\", \"Hei\")",
+      "options": [
+        "Salut Ana\nHei Rex",
+        "Salut Ana\nRex Hei",
+        "Ana Salut\nRex Hei",
+        "Hei Ana\nHei Rex"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-word-e3f015",
+      "text": "Ce afișează?",
+      "code": "def incurajeaza(jucator, strigat=\"Hai\"):\n    print(strigat, jucator)\n\nincurajeaza(\"Kai\")\nincurajeaza(\"Mia\", \"Bravo\")",
+      "options": [
+        "Hai Kai\nBravo Mia",
+        "Hai Kai\nMia Bravo",
+        "Kai Hai\nMia Bravo",
+        "Bravo Kai\nBravo Mia"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-word-0c2eb1",
+      "text": "Ce afișează?",
+      "code": "def comanda(fel, marime=\"medie\"):\n    print(marime, fel)\n\ncomanda(\"pizza\")\ncomanda(\"supa\", \"mare\")",
+      "options": [
+        "medie pizza\nmare supa",
+        "medie pizza\nsupa mare",
+        "pizza medie\nsupa mare",
+        "mare pizza\nmare supa"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-word-868ab1",
+      "text": "Ce afișează?",
+      "code": "def vopseste(masina, culoare=\"rosu\"):\n    print(culoare, masina)\n\nvopseste(\"Infernus\")\nvopseste(\"Sabre\", \"albastru\")",
+      "options": [
+        "rosu Infernus\nalbastru Sabre",
+        "rosu Infernus\nSabre albastru",
+        "Infernus rosu\nSabre albastru",
+        "albastru Infernus\nalbastru Sabre"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-word-2cb99b",
+      "text": "Ce afișează?",
+      "code": "def aterizeaza(planeta, nava=\"Nova\"):\n    print(nava, planeta)\n\naterizeaza(\"Marte\")\naterizeaza(\"Titan\", \"Orion\")",
+      "options": [
+        "Nova Marte\nOrion Titan",
+        "Nova Marte\nTitan Orion",
+        "Marte Nova\nTitan Orion",
+        "Orion Marte\nOrion Titan"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-num-d2471b",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exp=2):\n    return baza ** exp\n\nprint(putere(5))\nprint(putere(5, 3))",
+      "options": ["25\n125", "125\n125", "25\n9", "32\n243"],
+      "answer": 0
+    },
+    {
+      "id": "dp-num-163db6",
+      "text": "Ce afișează?",
+      "code": "def adauga_taxa(pret, taxa=5):\n    return pret + taxa\n\nprint(adauga_taxa(30))\nprint(adauga_taxa(30, 1))",
+      "options": ["35\n31", "31\n31", "35\n6", "31"],
+      "answer": 0
+    },
+    {
+      "id": "dp-num-7b8820",
+      "text": "Ce afișează?",
+      "code": "def ori(n, k=10):\n    return n * k\n\nprint(ori(4))\nprint(ori(4, 3))",
+      "options": ["40\n12", "12\n12", "40\n30", "12"],
+      "answer": 0
+    },
+    {
+      "id": "dp-num-536904",
+      "text": "Ce afișează?",
+      "code": "def reducere(pret, minus=10):\n    return pret - minus\n\nprint(reducere(50))\nprint(reducere(50, 20))",
+      "options": ["40\n30", "30\n30", "40\n10", "-40\n-30"],
+      "answer": 0
+    },
+    {
+      "id": "dp-num-f15455",
+      "text": "Ce afișează?",
+      "code": "def urca_nivel(nivel, pas=1):\n    return nivel + pas\n\nprint(urca_nivel(5))\nprint(urca_nivel(5, 3))",
+      "options": ["6\n8", "8\n8", "6\n4", "8"],
+      "answer": 0
+    },
+    {
+      "id": "dp-keyword-d67f0e",
+      "text": "Ce afișează?",
+      "code": "def andocheaza(nava, doc=\"A1\", prioritate=\"normal\"):\n    print(f\"{nava} andocat la {doc} ({prioritate})\")\n\nandocheaza(\"Nova\", prioritate=\"urgent\")",
+      "options": [
+        "Nova andocat la A1 (urgent)",
+        "Nova andocat la urgent (normal)",
+        "Nova andocat la A1 (A1)",
+        "{nava} andocat la {doc} ({prioritate})"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-keyword-5f719d",
+      "text": "Ce afișează?",
+      "code": "def rezerva(oaspete, camera=\"single\", masa=\"mic dejun\"):\n    print(f\"{oaspete} a rezervat camera {camera} ({masa})\")\n\nrezerva(\"Ana\", masa=\"cina\")",
+      "options": [
+        "Ana a rezervat camera single (cina)",
+        "Ana a rezervat camera cina (mic dejun)",
+        "Ana a rezervat camera single (single)",
+        "{oaspete} a rezervat camera {camera} ({masa})"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-keyword-28ce09",
+      "text": "Ce afișează?",
+      "code": "def lanseaza(racheta, rampa=\"P1\", mod=\"test\"):\n    print(f\"{racheta} lansata de pe {rampa} ({mod})\")\n\nlanseaza(\"Orion\", mod=\"real\")",
+      "options": [
+        "Orion lansata de pe P1 (real)",
+        "Orion lansata de pe real (test)",
+        "Orion lansata de pe P1 (P1)",
+        "{racheta} lansata de pe {rampa} ({mod})"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-keyword-cd29aa",
+      "text": "Ce afișează?",
+      "code": "def vopseste(masina, culoare=\"rosu\", finisaj=\"mat\"):\n    print(f\"{masina} vopsita {culoare} ({finisaj})\")\n\nvopseste(\"Infernus\", finisaj=\"lucios\")",
+      "options": [
+        "Infernus vopsita rosu (lucios)",
+        "Infernus vopsita lucios (mat)",
+        "Infernus vopsita rosu (rosu)",
+        "{masina} vopsita {culoare} ({finisaj})"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-later-687a5e",
+      "text": "Ce afișează?",
+      "code": "def porneste(nivel=1):\n    print(\"Nivel\", nivel)\n\nporneste()\nporneste(3)\nporneste()",
+      "options": [
+        "Nivel 1\nNivel 3\nNivel 1",
+        "Nivel 1\nNivel 3\nNivel 3",
+        "Nivel 1\nNivel 1\nNivel 1",
+        "Nivel 3\nNivel 3\nNivel 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-later-0b81ed",
+      "text": "Ce afișează?",
+      "code": "def seteaza_volum(volum=5):\n    print(\"Volum\", volum)\n\nseteaza_volum()\nseteaza_volum(9)\nseteaza_volum()",
+      "options": [
+        "Volum 5\nVolum 9\nVolum 5",
+        "Volum 5\nVolum 9\nVolum 9",
+        "Volum 5\nVolum 5\nVolum 5",
+        "Volum 9\nVolum 9\nVolum 9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-later-10d049",
+      "text": "Ce afișează?",
+      "code": "def conduce(viteza=50):\n    print(\"Viteza\", viteza)\n\nconduce()\nconduce(120)\nconduce()",
+      "options": [
+        "Viteza 50\nViteza 120\nViteza 50",
+        "Viteza 50\nViteza 120\nViteza 120",
+        "Viteza 50\nViteza 50\nViteza 50",
+        "Viteza 120\nViteza 120\nViteza 120"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-later-50d18d",
+      "text": "Ce afișează?",
+      "code": "def joc_nou(vieti=3):\n    print(\"Vieti\", vieti)\n\njoc_nou()\njoc_nou(1)\njoc_nou()",
+      "options": [
+        "Vieti 3\nVieti 1\nVieti 3",
+        "Vieti 3\nVieti 1\nVieti 1",
+        "Vieti 3\nVieti 3\nVieti 3",
+        "Vieti 1\nVieti 1\nVieti 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-abc-675b55",
+      "text": "Ce afișează?",
+      "code": "def f(a, b=10, c=20):\n    print(a, b, c)\n\nf(3)\nf(3, 4)\nf(3, c=8)",
+      "options": [
+        "3 10 20\n3 4 20\n3 10 8",
+        "3 10 20\n3 4 20\n3 8 20",
+        "3 10 20\n3 10 4\n3 10 8",
+        "3 20 10\n3 20 4\n3 8 10"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-abc-21d4f6",
+      "text": "Ce afișează?",
+      "code": "def f(a, b=0, c=9):\n    print(a, b, c)\n\nf(7)\nf(7, 3)\nf(7, c=1)",
+      "options": [
+        "7 0 9\n7 3 9\n7 0 1",
+        "7 0 9\n7 3 9\n7 1 9",
+        "7 0 9\n7 0 3\n7 0 1",
+        "7 9 0\n7 9 3\n7 1 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-abc-17d840",
+      "text": "Ce afișează?",
+      "code": "def f(a, b=5, c=50):\n    print(a, b, c)\n\nf(2)\nf(2, 8)\nf(2, c=4)",
+      "options": [
+        "2 5 50\n2 8 50\n2 5 4",
+        "2 5 50\n2 8 50\n2 4 50",
+        "2 5 50\n2 5 8\n2 5 4",
+        "2 50 5\n2 50 8\n2 4 5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-abc-752d68",
+      "text": "Ce afișează?",
+      "code": "def f(a, b=1, c=100):\n    print(a, b, c)\n\nf(6)\nf(6, 30)\nf(6, c=7)",
+      "options": [
+        "6 1 100\n6 30 100\n6 1 7",
+        "6 1 100\n6 30 100\n6 7 100",
+        "6 1 100\n6 1 30\n6 1 7",
+        "6 100 1\n6 100 30\n6 7 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-glue-da4a89",
+      "text": "Ce afișează?",
+      "code": "def eticheta(text, semn=\"!\"):\n    return text + semn\n\nprint(eticheta(\"Hai\"))\nprint(eticheta(\"Hai\", \"?\"))",
+      "options": ["Hai!\nHai?", "!Hai\n?Hai", "Hai!\n?!", "Hai?\nHai?"],
+      "answer": 0
+    },
+    {
+      "id": "dp-glue-3b75ad",
+      "text": "Ce afișează?",
+      "code": "def nume_fisier(nume, ext=\".txt\"):\n    return nume + ext\n\nprint(nume_fisier(\"notite\"))\nprint(nume_fisier(\"notite\", \".py\"))",
+      "options": [
+        "notite.txt\nnotite.py",
+        ".txtnotite\n.pynotite",
+        "notite.txt\n.py.txt",
+        "notite.py\nnotite.py"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-glue-f61d72",
+      "text": "Ce afișează?",
+      "code": "def articol(cuvant, final=\"ul\"):\n    return cuvant + final\n\nprint(articol(\"drum\"))\nprint(articol(\"drum\", \"uri\"))",
+      "options": ["drumul\ndrumuri", "uldrum\nuridrum", "drumul\nuriul", "drumuri\ndrumuri"],
+      "answer": 0
+    },
+    {
+      "id": "dp-glue-37e507",
+      "text": "Ce afișează?",
+      "code": "def cod(sector, zona=\"-A\"):\n    return sector + zona\n\nprint(cod(\"B7\"))\nprint(cod(\"B7\", \"-Z\"))",
+      "options": ["B7-A\nB7-Z", "-AB7\n-ZB7", "B7-A\n-Z-A", "B7-Z\nB7-Z"],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-skip-49f2b6",
+      "text": "Care program afișează asta?",
+      "output": "Tommy | HP: 100 | Oras: Liberty City",
+      "options": [
+        "def creaza_jucator(nume, viata=100, oras=\"Vice City\"):\n    print(f\"{nume} | HP: {viata} | Oras: {oras}\")\n\ncreaza_jucator(\"Tommy\", oras=\"Liberty City\")",
+        "def creaza_jucator(nume, viata=100, oras=\"Vice City\"):\n    print(f\"{nume} | HP: {viata} | Oras: {oras}\")\n\ncreaza_jucator(\"Tommy\", \"Liberty City\")",
+        "def creaza_jucator(nume, viata=100, oras=\"Vice City\"):\n    print(f\"{nume} | HP: {viata} | Oras: {oras}\")\n\ncreaza_jucator(\"Tommy\")",
+        "def creaza_jucator(nume, viata=90, oras=\"Vice City\"):\n    print(f\"{nume} | HP: {viata} | Oras: {oras}\")\n\ncreaza_jucator(\"Tommy\", oras=\"Liberty City\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-skip-648536",
+      "text": "Care program afișează asta?",
+      "output": "Lance | HP: 100 | Oras: San Andreas",
+      "options": [
+        "def creaza_jucator(nume, viata=100, oras=\"Vice City\"):\n    print(f\"{nume} | HP: {viata} | Oras: {oras}\")\n\ncreaza_jucator(\"Lance\", oras=\"San Andreas\")",
+        "def creaza_jucator(nume, viata=100, oras=\"Vice City\"):\n    print(f\"{nume} | HP: {viata} | Oras: {oras}\")\n\ncreaza_jucator(\"Lance\", \"San Andreas\")",
+        "def creaza_jucator(nume, viata=100, oras=\"Vice City\"):\n    print(f\"{nume} | HP: {viata} | Oras: {oras}\")\n\ncreaza_jucator(\"Lance\")",
+        "def creaza_jucator(nume, viata=80, oras=\"Vice City\"):\n    print(f\"{nume} | HP: {viata} | Oras: {oras}\")\n\ncreaza_jucator(\"Lance\", oras=\"San Andreas\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-skip-2cf3e9",
+      "text": "Care program afișează asta?",
+      "output": "Cortez | HP: 100 | Cartier: Ocean Beach",
+      "options": [
+        "def jucator_nou(nume, hp=100, cartier=\"Vice City\"):\n    print(f\"{nume} | HP: {hp} | Cartier: {cartier}\")\n\njucator_nou(\"Cortez\", cartier=\"Ocean Beach\")",
+        "def jucator_nou(nume, hp=100, cartier=\"Vice City\"):\n    print(f\"{nume} | HP: {hp} | Cartier: {cartier}\")\n\njucator_nou(\"Cortez\", \"Ocean Beach\")",
+        "def jucator_nou(nume, hp=100, cartier=\"Vice City\"):\n    print(f\"{nume} | HP: {hp} | Cartier: {cartier}\")\n\njucator_nou(\"Cortez\")",
+        "def jucator_nou(nume, hp=70, cartier=\"Vice City\"):\n    print(f\"{nume} | HP: {hp} | Cartier: {cartier}\")\n\njucator_nou(\"Cortez\", cartier=\"Ocean Beach\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-skip-507f35",
+      "text": "Care program afișează asta?",
+      "output": "Phil | HP: 100 | Cartier: Little Haiti",
+      "options": [
+        "def jucator_nou(nume, hp=100, cartier=\"Vice City\"):\n    print(f\"{nume} | HP: {hp} | Cartier: {cartier}\")\n\njucator_nou(\"Phil\", cartier=\"Little Haiti\")",
+        "def jucator_nou(nume, hp=100, cartier=\"Vice City\"):\n    print(f\"{nume} | HP: {hp} | Cartier: {cartier}\")\n\njucator_nou(\"Phil\", \"Little Haiti\")",
+        "def jucator_nou(nume, hp=100, cartier=\"Vice City\"):\n    print(f\"{nume} | HP: {hp} | Cartier: {cartier}\")\n\njucator_nou(\"Phil\")",
+        "def jucator_nou(nume, hp=50, cartier=\"Vice City\"):\n    print(f\"{nume} | HP: {hp} | Cartier: {cartier}\")\n\njucator_nou(\"Phil\", cartier=\"Little Haiti\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-twice-887a52",
+      "text": "Care program afișează asta?",
+      "output": "Aterizam pe Marte\nAterizam pe Venus",
+      "options": [
+        "def aterizeaza(planeta, mesaj=\"Aterizam pe\"):\n    print(mesaj, planeta)\n\naterizeaza(\"Marte\")\naterizeaza(\"Venus\")",
+        "def aterizeaza(planeta, mesaj=\"Aterizam pe\"):\n    print(mesaj, planeta)\n\naterizeaza(\"Marte\")\naterizeaza(\"Venus\", \"Plecam de pe\")",
+        "def aterizeaza(planeta, mesaj=\"Aterizam pe\"):\n    print(planeta, mesaj)\n\naterizeaza(\"Marte\")\naterizeaza(\"Venus\")",
+        "def aterizeaza(planeta, mesaj=\"Plecam de pe\"):\n    print(mesaj, planeta)\n\naterizeaza(\"Marte\")\naterizeaza(\"Venus\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-twice-66431b",
+      "text": "Care program afișează asta?",
+      "output": "Bine ai venit Ana\nBine ai venit Kai",
+      "options": [
+        "def bun_venit(oaspete, cuvant=\"Bine ai venit\"):\n    print(cuvant, oaspete)\n\nbun_venit(\"Ana\")\nbun_venit(\"Kai\")",
+        "def bun_venit(oaspete, cuvant=\"Bine ai venit\"):\n    print(cuvant, oaspete)\n\nbun_venit(\"Ana\")\nbun_venit(\"Kai\", \"Pa\")",
+        "def bun_venit(oaspete, cuvant=\"Bine ai venit\"):\n    print(oaspete, cuvant)\n\nbun_venit(\"Ana\")\nbun_venit(\"Kai\")",
+        "def bun_venit(oaspete, cuvant=\"Pa\"):\n    print(cuvant, oaspete)\n\nbun_venit(\"Ana\")\nbun_venit(\"Kai\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-twice-9a3eed",
+      "text": "Care program afișează asta?",
+      "output": "Alerta rosie in Hangarul 1\nAlerta rosie in Hangarul 2",
+      "options": [
+        "def alarma(zona, nivel=\"Alerta rosie in\"):\n    print(nivel, zona)\n\nalarma(\"Hangarul 1\")\nalarma(\"Hangarul 2\")",
+        "def alarma(zona, nivel=\"Alerta rosie in\"):\n    print(nivel, zona)\n\nalarma(\"Hangarul 1\")\nalarma(\"Hangarul 2\", \"Liber in\")",
+        "def alarma(zona, nivel=\"Alerta rosie in\"):\n    print(zona, nivel)\n\nalarma(\"Hangarul 1\")\nalarma(\"Hangarul 2\")",
+        "def alarma(zona, nivel=\"Liber in\"):\n    print(nivel, zona)\n\nalarma(\"Hangarul 1\")\nalarma(\"Hangarul 2\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-twice-b5d384",
+      "text": "Care program afișează asta?",
+      "output": "Capitan Vega\nCapitan Orion",
+      "options": [
+        "def cheama(pilot, grad=\"Capitan\"):\n    print(grad, pilot)\n\ncheama(\"Vega\")\ncheama(\"Orion\")",
+        "def cheama(pilot, grad=\"Capitan\"):\n    print(grad, pilot)\n\ncheama(\"Vega\")\ncheama(\"Orion\", \"Cadet\")",
+        "def cheama(pilot, grad=\"Capitan\"):\n    print(pilot, grad)\n\ncheama(\"Vega\")\ncheama(\"Orion\")",
+        "def cheama(pilot, grad=\"Cadet\"):\n    print(grad, pilot)\n\ncheama(\"Vega\")\ncheama(\"Orion\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-def-feb7e6",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(f\"{nume} are {hp} HP\")\n\narata(\"Tommy\")\narata(\"Lance\", 80)",
+      "output": "Tommy are 100 HP\nLance are 80 HP",
+      "options": [
+        "def arata(nume, hp=100):",
+        "def arata(nume, hp):",
+        "def arata(hp=100, nume):",
+        "def arata(nume, hp=80):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-def-f8889b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(f\"{nava} are {combustibil} combustibil\")\n\nraport(\"Nova\")\nraport(\"Orion\", 20)",
+      "output": "Nova are 50 combustibil\nOrion are 20 combustibil",
+      "options": [
+        "def raport(nava, combustibil=50):",
+        "def raport(nava, combustibil):",
+        "def raport(combustibil=50, nava):",
+        "def raport(nava, combustibil=20):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-def-ba64c6",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(f\"{produs} are {bucati} bucati\")\n\nstoc(\"lapte\")\nstoc(\"paine\", 6)",
+      "output": "lapte are 0 bucati\npaine are 6 bucati",
+      "options": [
+        "def stoc(produs, bucati=0):",
+        "def stoc(produs, bucati):",
+        "def stoc(bucati=0, produs):",
+        "def stoc(produs, bucati=6):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-def-3cb0c4",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(f\"{jucator} are {ramase} vieti\")\n\nvieti(\"Kai\")\nvieti(\"Mia\", 2)",
+      "output": "Kai are 3 vieti\nMia are 2 vieti",
+      "options": [
+        "def vieti(jucator, ramase=3):",
+        "def vieti(jucator, ramase):",
+        "def vieti(ramase=3, jucator):",
+        "def vieti(jucator, ramase=2):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-call-b260cb",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def andocheaza(nava, doc=\"A1\", prioritate=\"normal\"):\n    print(nava, doc, prioritate)\n\nandocheaza(\"Nova\")\n___",
+      "output": "Nova A1 normal\nNova A1 urgent",
+      "options": [
+        "andocheaza(\"Nova\", prioritate=\"urgent\")",
+        "andocheaza(\"Nova\", \"urgent\")",
+        "andocheaza(prioritate=\"urgent\")",
+        "andocheaza(\"Nova\", prioritate=\"normal\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-call-dabb27",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def comanda(fel, marime=\"medie\", garnitura=\"cartofi\"):\n    print(fel, marime, garnitura)\n\ncomanda(\"burger\")\n___",
+      "output": "burger medie cartofi\nburger medie salata",
+      "options": [
+        "comanda(\"burger\", garnitura=\"salata\")",
+        "comanda(\"burger\", \"salata\")",
+        "comanda(garnitura=\"salata\")",
+        "comanda(\"burger\", garnitura=\"cartofi\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-call-26485d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def plimbare(masina, cutie=\"automata\", culoare=\"negru\"):\n    print(masina, cutie, culoare)\n\nplimbare(\"Cheetah\")\n___",
+      "output": "Cheetah automata negru\nCheetah automata alb",
+      "options": [
+        "plimbare(\"Cheetah\", culoare=\"alb\")",
+        "plimbare(\"Cheetah\", \"alb\")",
+        "plimbare(culoare=\"alb\")",
+        "plimbare(\"Cheetah\", culoare=\"negru\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-call-41ee8b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def trimite(mesaj, catre=\"baza\", mod=\"radio\"):\n    print(mesaj, catre, mod)\n\ntrimite(\"SOS\")\n___",
+      "output": "SOS baza radio\nSOS baza laser",
+      "options": [
+        "trimite(\"SOS\", mod=\"laser\")",
+        "trimite(\"SOS\", \"laser\")",
+        "trimite(mod=\"laser\")",
+        "trimite(\"SOS\", mod=\"radio\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-use-bd154b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def scaleaza(x, k=2):\n    return x * k\n\n___\nprint(scaleaza(7, 3))",
+      "output": "14\n21",
+      "options": [
+        "print(scaleaza(7))",
+        "scaleaza(7)",
+        "print(scaleaza(7, 1))",
+        "print(scaleaza(2))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-use-f46fd5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def amplifica(putere, factor=10):\n    return putere * factor\n\n___\nprint(amplifica(4, 3))",
+      "output": "40\n12",
+      "options": [
+        "print(amplifica(4))",
+        "amplifica(4)",
+        "print(amplifica(4, 1))",
+        "print(amplifica(10))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-use-4e8a04",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def bilete(persoane, pret=5):\n    return persoane * pret\n\n___\nprint(bilete(6, 8))",
+      "output": "30\n48",
+      "options": ["print(bilete(6))", "bilete(6)", "print(bilete(6, 1))", "print(bilete(5))"],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-use-113fe9",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def arie(latime, inaltime=4):\n    return latime * inaltime\n\n___\nprint(arie(9, 2))",
+      "output": "36\n18",
+      "options": ["print(arie(9))", "arie(9)", "print(arie(9, 1))", "print(arie(4))"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-default-ac8f86",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def jucator_nou(nume, vieti=___):\n    print(nume, vieti)\n\njucator_nou(\"Ana\")\njucator_nou(\"Rex\", 5)",
+      "output": "Ana 3\nRex 5",
+      "options": ["3", "5", "0", "\"vieti\""],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-default-c93976",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def nava_noua(nava, echipaj=___):\n    print(nava, echipaj)\n\nnava_noua(\"Nova\")\nnava_noua(\"Orion\", 8)",
+      "output": "Nova 4\nOrion 8",
+      "options": ["4", "8", "0", "\"echipaj\""],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-default-b8bb9d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga(produs, bucati=___):\n    print(produs, bucati)\n\nadauga(\"mere\")\nadauga(\"pere\", 2)",
+      "output": "mere 1\npere 2",
+      "options": ["1", "2", "0", "\"bucati\""],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-default-5a7461",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def timer(sarcina, minute=___):\n    print(sarcina, minute)\n\ntimer(\"ceai\")\ntimer(\"paste\", 9)",
+      "output": "ceai 5\npaste 9",
+      "options": ["5", "9", "0", "\"minute\""],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-kw-12c4a5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def andocheaza(nava, doc=\"A1\", prioritate=\"normal\"):\n    print(f\"{nava}: {doc}, {prioritate}\")\n\nandocheaza(\"Nova\", ___=\"urgent\")",
+      "output": "Nova: A1, urgent",
+      "options": ["prioritate", "doc", "nava", "urgent"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-kw-b2c3a8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def rezerva(oaspete, camera=\"single\", masa=\"mic dejun\"):\n    print(f\"{oaspete}: {camera}, {masa}\")\n\nrezerva(\"Ana\", ___=\"cina\")",
+      "output": "Ana: single, cina",
+      "options": ["masa", "camera", "oaspete", "cina"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-kw-08bae6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def jucator(nume, echipa=\"Sharks\", post=\"atacant\"):\n    print(f\"{nume}: {echipa}, {post}\")\n\njucator(\"Kai\", ___=\"portar\")",
+      "output": "Kai: Sharks, portar",
+      "options": ["post", "echipa", "nume", "portar"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-kw-79ffd5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def misiune(cod, zona=\"nord\", risc=\"mic\"):\n    print(f\"{cod}: {zona}, {risc}\")\n\nmisiune(\"M7\", ___=\"mare\")",
+      "output": "M7: nord, mare",
+      "options": ["risc", "zona", "cod", "mare"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-arg-35e053",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def putere(baza, exp=2):\n    return baza ** exp\n\nprint(putere(___))",
+      "output": "25",
+      "options": ["5", "25", "5, 3", "exp=5"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-arg-f9c695",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_taxa(pret, taxa=5):\n    return pret + taxa\n\nprint(adauga_taxa(___))",
+      "output": "25",
+      "options": ["20", "25", "20, 1", "taxa=20"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-arg-8fc24f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def ori(n, k=10):\n    return n * k\n\nprint(ori(___))",
+      "output": "40",
+      "options": ["4", "40", "4, 2", "k=4"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-arg-f3b70f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def jumatate(n, parti=2):\n    return n / parti\n\nprint(jumatate(___))",
+      "output": "4.5",
+      "options": ["9", "4.5", "9, 3", "parti=9"],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-order-cd8bdc",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def saluta(salut=\"Salut\", nume):\n    print(salut, nume)\n\nsaluta(\"Tommy\")\nsaluta(\"Lance\", \"Hei\")",
+      "output": "Salut Tommy\nHei Lance",
+      "options": [
+        "def saluta(salut=\"Salut\", nume):",
+        "print(salut, nume)",
+        "saluta(\"Tommy\")",
+        "saluta(\"Lance\", \"Hei\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-order-45b6d5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def anunta(mesaj=\"Urmatoarea oprire\", planeta):\n    print(mesaj, planeta)\n\nanunta(\"Marte\")\nanunta(\"Pluto\", \"Ultima oprire\")",
+      "output": "Urmatoarea oprire Marte\nUltima oprire Pluto",
+      "options": [
+        "def anunta(mesaj=\"Urmatoarea oprire\", planeta):",
+        "print(mesaj, planeta)",
+        "anunta(\"Marte\")",
+        "anunta(\"Pluto\", \"Ultima oprire\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-order-47591e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def eticheta(stare=\"nou\", obiect):\n    print(stare, obiect)\n\neticheta(\"casca\")\neticheta(\"bocanci\", \"folosit\")",
+      "output": "nou casca\nfolosit bocanci",
+      "options": [
+        "def eticheta(stare=\"nou\", obiect):",
+        "print(stare, obiect)",
+        "eticheta(\"casca\")",
+        "eticheta(\"bocanci\", \"folosit\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-kw-919731",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def andocheaza(nava, doc=\"A1\", prioritate=\"normal\"):\n    print(f\"{nava}: {doc}, {prioritate}\")\n\nandocheaza(\"Nova\")\nandocheaza(\"Vega\", \"C3\")\nandocheaza(\"Orion\", \"urgent\")",
+      "output": "Nova: A1, normal\nVega: C3, normal\nOrion: A1, urgent",
+      "options": [
+        "andocheaza(\"Orion\", \"urgent\")",
+        "andocheaza(\"Vega\", \"C3\")",
+        "andocheaza(\"Nova\")",
+        "print(f\"{nava}: {doc}, {prioritate}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-kw-5b8b11",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def rezerva(oaspete, camera=\"single\", masa=\"mic dejun\"):\n    print(f\"{oaspete}: {camera}, {masa}\")\n\nrezerva(\"Ana\")\nrezerva(\"Rex\", \"dubla\")\nrezerva(\"Kai\", \"cina\")",
+      "output": "Ana: single, mic dejun\nRex: dubla, mic dejun\nKai: single, cina",
+      "options": [
+        "rezerva(\"Kai\", \"cina\")",
+        "rezerva(\"Rex\", \"dubla\")",
+        "rezerva(\"Ana\")",
+        "print(f\"{oaspete}: {camera}, {masa}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-kw-72b5a8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def lanseaza(racheta, rampa=\"P1\", mod=\"test\"):\n    print(f\"{racheta}: {rampa}, {mod}\")\n\nlanseaza(\"Apollo\")\nlanseaza(\"Gemini\", \"P4\")\nlanseaza(\"Atlas\", \"real\")",
+      "output": "Apollo: P1, test\nGemini: P4, test\nAtlas: P1, real",
+      "options": [
+        "lanseaza(\"Atlas\", \"real\")",
+        "lanseaza(\"Gemini\", \"P4\")",
+        "lanseaza(\"Apollo\")",
+        "print(f\"{racheta}: {rampa}, {mod}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-default-c7e171",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def dublu(n, k=3):\n    print(\"Rezultat:\", n * k)\n\ndublu(4)\ndublu(6)\ndublu(5, 10)",
+      "output": "Rezultat: 8\nRezultat: 12\nRezultat: 50",
+      "options": ["def dublu(n, k=3):", "print(\"Rezultat:\", n * k)", "dublu(4)", "dublu(6)"],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-default-a547e1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_bacsis(nota, bacsis=1):\n    print(\"Total:\", nota + bacsis)\n\nadauga_bacsis(20)\nadauga_bacsis(40)\nadauga_bacsis(30, 0)",
+      "output": "Total: 25\nTotal: 45\nTotal: 30",
+      "options": [
+        "def adauga_bacsis(nota, bacsis=1):",
+        "print(\"Total:\", nota + bacsis)",
+        "adauga_bacsis(20)",
+        "adauga_bacsis(40)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-default-1ea804",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def alimenteaza(combustibil, extra=5):\n    print(\"Combustibil:\", combustibil + extra)\n\nalimenteaza(10)\nalimenteaza(25)\nalimenteaza(60, 40)",
+      "output": "Combustibil: 60\nCombustibil: 75\nCombustibil: 100",
+      "options": [
+        "def alimenteaza(combustibil, extra=5):",
+        "print(\"Combustibil:\", combustibil + extra)",
+        "alimenteaza(10)",
+        "alimenteaza(25)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-swap-957859",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def reducere(pret, minus=10):\n    return pret - minus\n\nprint(reducere(50))\nprint(reducere(20, 80))\nprint(reducere(30))",
+      "output": "40\n60\n20",
+      "options": [
+        "print(reducere(20, 80))",
+        "print(reducere(50))",
+        "return pret - minus",
+        "def reducere(pret, minus=10):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-swap-82196b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def consuma(combustibil, ars=5):\n    return combustibil - ars\n\nprint(consuma(40))\nprint(consuma(15, 90))\nprint(consuma(12))",
+      "output": "35\n75\n7",
+      "options": [
+        "print(consuma(15, 90))",
+        "print(consuma(40))",
+        "return combustibil - ars",
+        "def consuma(combustibil, ars=5):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-swap-7d55d0",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def pierde_vieti(vieti, lovituri=1):\n    return vieti - lovituri\n\nprint(pierde_vieti(5))\nprint(pierde_vieti(4, 9))\nprint(pierde_vieti(3))",
+      "output": "4\n5\n2",
+      "options": [
+        "print(pierde_vieti(4, 9))",
+        "print(pierde_vieti(5))",
+        "return vieti - lovituri",
+        "def pierde_vieti(vieti, lovituri=1):"
+      ],
+      "answer": 0
+    }
+  ]
+}

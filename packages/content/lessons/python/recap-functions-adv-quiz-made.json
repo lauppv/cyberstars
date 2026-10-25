@@ -1,0 +1,726 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-functions-adv-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rfa-safe-fb9974",
+      "text": "What does this print?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nnumbers = []\nfor reading in [\"10\", \"bad\", \"25\"]:\n    numbers.append(safe_int(reading))\nprint(numbers)",
+      "options": ["[10, 0, 25]", "[10, 'bad', 25]", "[10, -1, 25]", "['10', 'bad', '25']"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-safe-f600c1",
+      "text": "What does this print?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nnumbers = []\nfor reading in [\"7\", \"x\", \"3\", \"?\"]:\n    numbers.append(safe_int(reading))\nprint(numbers)",
+      "options": ["[7, 0, 3, 0]", "[7, 'x', 3, '?']", "[7, -1, 3, -1]", "['7', 'x', '3', '?']"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-safe-ae42c4",
+      "text": "What does this print?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nnumbers = []\nfor reading in [\"40\", \"4O\", \"12\"]:\n    numbers.append(safe_int(reading))\nprint(numbers)",
+      "options": ["[40, 0, 12]", "[40, '4O', 12]", "[40, -1, 12]", "['40', '4O', '12']"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-safe-3b159d",
+      "text": "What does this print?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nnumbers = []\nfor reading in [\"5\", \"\", \"8\"]:\n    numbers.append(safe_int(reading))\nprint(numbers)",
+      "options": ["[5, 0, 8]", "[5, '', 8]", "[5, -1, 8]", "['5', '', '8']"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-fallback-ee4924",
+      "text": "What does this print?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"12\"))\nprint(safe_int(\"twelve\"))\nprint(safe_int(\"twelve\", -1))",
+      "options": ["12\n0\n-1", "12\n1\n-1", "12\n0\n0", "12\ntwelve\ntwelve"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-fallback-ad9695",
+      "text": "What does this print?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"300\"))\nprint(safe_int(\"3OO\"))\nprint(safe_int(\"3OO\", 99))",
+      "options": ["300\n0\n99", "300\n1\n99", "300\n0\n0", "300\n3OO\n3OO"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-fallback-ab5921",
+      "text": "What does this print?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"5\"))\nprint(safe_int(\"five\"))\nprint(safe_int(\"five\", 1))",
+      "options": ["5\n0\n1", "5\n1\n1", "5\n0\n0", "5\nfive\nfive"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-summary-10af88",
+      "text": "What does this print?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\ntotal, largest, smallest = summarize([4, 9, 2])\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {smallest}\")",
+      "options": [
+        "Total: 15\nLargest: 9\nSmallest: 2",
+        "Total: 15\nLargest: 2\nSmallest: 9",
+        "Total: 3\nLargest: 9\nSmallest: 2",
+        "Total: 15\nLargest: 9\nSmallest: 9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-summary-074a70",
+      "text": "What does this print?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\ntotal, largest, smallest = summarize([10, 0, 25, 7, 0])\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {smallest}\")",
+      "options": [
+        "Total: 42\nLargest: 25\nSmallest: 0",
+        "Total: 42\nLargest: 0\nSmallest: 25",
+        "Total: 5\nLargest: 25\nSmallest: 0",
+        "Total: 42\nLargest: 25\nSmallest: 25"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-summary-5bbcb2",
+      "text": "What does this print?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\ntotal, largest, smallest = summarize([6, 3, 8, 1])\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {smallest}\")",
+      "options": [
+        "Total: 18\nLargest: 8\nSmallest: 1",
+        "Total: 18\nLargest: 1\nSmallest: 8",
+        "Total: 4\nLargest: 8\nSmallest: 1",
+        "Total: 18\nLargest: 8\nSmallest: 8"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-summary-b5e21a",
+      "text": "What does this print?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\ntotal, largest, smallest = summarize([12, 5, 20])\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {smallest}\")",
+      "options": [
+        "Total: 37\nLargest: 20\nSmallest: 5",
+        "Total: 37\nLargest: 5\nSmallest: 20",
+        "Total: 3\nLargest: 20\nSmallest: 5",
+        "Total: 37\nLargest: 20\nSmallest: 20"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-tuple-d1b7cc",
+      "text": "What does this print?",
+      "code": "def stats(numbers):\n    return max(numbers), min(numbers)\n\nprint(stats([3, 8, 5]))",
+      "options": ["(8, 3)", "[8, 3]", "8", "(3, 8)"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-tuple-8c458c",
+      "text": "What does this print?",
+      "code": "def stats(numbers):\n    return max(numbers), min(numbers)\n\nprint(stats([15, 4, 9, 11]))",
+      "options": ["(15, 4)", "[15, 4]", "15", "(4, 15)"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-tuple-a53618",
+      "text": "What does this print?",
+      "code": "def stats(numbers):\n    return max(numbers), min(numbers)\n\nprint(stats([7, 2]))",
+      "options": ["(7, 2)", "[7, 2]", "7", "(2, 7)"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-scope-3ddd4d",
+      "text": "What does this print?",
+      "code": "shield = 100\nprint(f\"Before: {shield}\")\n\ndef boost(s):\n    s = s * 2\n    return s\n\nboost(shield)\nprint(f\"Ignored: {shield}\")\nshield = boost(shield)\nprint(f\"After: {shield}\")",
+      "options": [
+        "Before: 100\nIgnored: 100\nAfter: 200",
+        "Before: 100\nIgnored: 100\nAfter: 100",
+        "Before: 100\nIgnored: 100\nAfter: 102",
+        "Before: 100\nIgnored: 200\nAfter: 400"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-scope-b4b03d",
+      "text": "What does this print?",
+      "code": "fuel = 35\nprint(f\"Before: {fuel}\")\n\ndef boost(f):\n    f = f * 2\n    return f\n\nboost(fuel)\nprint(f\"Ignored: {fuel}\")\nfuel = boost(fuel)\nprint(f\"After: {fuel}\")",
+      "options": [
+        "Before: 35\nIgnored: 35\nAfter: 70",
+        "Before: 35\nIgnored: 35\nAfter: 35",
+        "Before: 35\nIgnored: 35\nAfter: 37",
+        "Before: 35\nIgnored: 70\nAfter: 140"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-scope-8d40f2",
+      "text": "What does this print?",
+      "code": "power = 12\nprint(f\"Before: {power}\")\n\ndef boost(p):\n    p = p * 2\n    return p\n\nboost(power)\nprint(f\"Ignored: {power}\")\npower = boost(power)\nprint(f\"After: {power}\")",
+      "options": [
+        "Before: 12\nIgnored: 12\nAfter: 24",
+        "Before: 12\nIgnored: 12\nAfter: 12",
+        "Before: 12\nIgnored: 12\nAfter: 14",
+        "Before: 12\nIgnored: 24\nAfter: 48"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-scope-8ee82f",
+      "text": "What does this print?",
+      "code": "speed = 60\nprint(f\"Before: {speed}\")\n\ndef boost(x):\n    x = x * 2\n    return x\n\nboost(speed)\nprint(f\"Ignored: {speed}\")\nspeed = boost(speed)\nprint(f\"After: {speed}\")",
+      "options": [
+        "Before: 60\nIgnored: 60\nAfter: 120",
+        "Before: 60\nIgnored: 60\nAfter: 60",
+        "Before: 60\nIgnored: 60\nAfter: 62",
+        "Before: 60\nIgnored: 120\nAfter: 240"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-default-571dc5",
+      "text": "What does this print?",
+      "code": "def dock(ship, bay=\"A1\"):\n    print(f\"{ship} docked at {bay}\")\n\ndock(\"Voyager\")\ndock(\"Odyssey\", \"B7\")\ndock(\"Voyager\", bay=\"C3\")",
+      "options": [
+        "Voyager docked at A1\nOdyssey docked at B7\nVoyager docked at C3",
+        "Voyager docked at B7\nOdyssey docked at B7\nVoyager docked at C3",
+        "Voyager docked at A1\nB7 docked at Odyssey\nVoyager docked at C3",
+        "A1 docked at Voyager\nB7 docked at Odyssey\nC3 docked at Voyager"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-default-6b0f75",
+      "text": "What does this print?",
+      "code": "def dock(ship, bay=\"D4\"):\n    print(f\"{ship} docked at {bay}\")\n\ndock(\"Falcon\")\ndock(\"Nova\", \"A2\")\ndock(\"Falcon\", bay=\"B5\")",
+      "options": [
+        "Falcon docked at D4\nNova docked at A2\nFalcon docked at B5",
+        "Falcon docked at A2\nNova docked at A2\nFalcon docked at B5",
+        "Falcon docked at D4\nA2 docked at Nova\nFalcon docked at B5",
+        "D4 docked at Falcon\nA2 docked at Nova\nB5 docked at Falcon"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-default-3a8b80",
+      "text": "What does this print?",
+      "code": "def dock(ship, bay=\"C1\"):\n    print(f\"{ship} docked at {bay}\")\n\ndock(\"Pioneer\")\ndock(\"Atlas\", \"D8\")\ndock(\"Pioneer\", bay=\"A6\")",
+      "options": [
+        "Pioneer docked at C1\nAtlas docked at D8\nPioneer docked at A6",
+        "Pioneer docked at D8\nAtlas docked at D8\nPioneer docked at A6",
+        "Pioneer docked at C1\nD8 docked at Atlas\nPioneer docked at A6",
+        "C1 docked at Pioneer\nD8 docked at Atlas\nA6 docked at Pioneer"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-div-1fcf80",
+      "text": "What does this print?",
+      "code": "def safe_div(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Can't divide by zero\"\n\nprint(safe_div(10, 4))\nprint(safe_div(10, 0))",
+      "options": ["2.5\nCan't divide by zero", "2\nCan't divide by zero", "2.5\n0", "2.5\n0.0"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-div-b9943d",
+      "text": "What does this print?",
+      "code": "def safe_div(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Can't divide by zero\"\n\nprint(safe_div(9, 3))\nprint(safe_div(9, 0))",
+      "options": ["3.0\nCan't divide by zero", "3\nCan't divide by zero", "3.0\n0", "3.0\n0.0"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-div-f67991",
+      "text": "What does this print?",
+      "code": "def safe_div(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Can't divide by zero\"\n\nprint(safe_div(7, 2))\nprint(safe_div(7, 0))",
+      "options": ["3.5\nCan't divide by zero", "3\nCan't divide by zero", "3.5\n0", "3.5\n0.0"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-count-47c989",
+      "text": "What does this print?",
+      "code": "bad = 0\ngood = []\nfor reading in [\"8\", \"x\", \"3\", \"?\"]:\n    try:\n        good.append(int(reading))\n    except ValueError:\n        bad = bad + 1\nprint(good)\nprint(f\"Corrupted: {bad}\")",
+      "options": [
+        "[8, 3]\nCorrupted: 2",
+        "[8, 3]\nCorrupted: 1",
+        "['8', 'x', '3', '?']\nCorrupted: 0",
+        "2\nCorrupted: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-count-c05a7d",
+      "text": "What does this print?",
+      "code": "bad = 0\ngood = []\nfor reading in [\"15\", \"n/a\", \"4\", \"err\"]:\n    try:\n        good.append(int(reading))\n    except ValueError:\n        bad = bad + 1\nprint(good)\nprint(f\"Corrupted: {bad}\")",
+      "options": [
+        "[15, 4]\nCorrupted: 2",
+        "[15, 4]\nCorrupted: 1",
+        "['15', 'n/a', '4', 'err']\nCorrupted: 0",
+        "2\nCorrupted: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-count-c3a8c0",
+      "text": "What does this print?",
+      "code": "bad = 0\ngood = []\nfor reading in [\"2\", \"two\", \"6\", \"\", \"9\"]:\n    try:\n        good.append(int(reading))\n    except ValueError:\n        bad = bad + 1\nprint(good)\nprint(f\"Corrupted: {bad}\")",
+      "options": [
+        "[2, 6, 9]\nCorrupted: 2",
+        "[2, 6, 9]\nCorrupted: 1",
+        "['2', 'two', '6', '', '9']\nCorrupted: 0",
+        "2\nCorrupted: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-default-e6d46d",
+      "text": "Which program shows this?",
+      "output": "10\n15",
+      "options": [
+        "def scale(value, times=2):\n    return value * times\n\nprint(scale(5))\nprint(scale(5, 3))",
+        "def scale(value, times=3):\n    return value * times\n\nprint(scale(5))\nprint(scale(5, 3))",
+        "def scale(value, times=2):\n    return value + times\n\nprint(scale(5))\nprint(scale(5, 3))",
+        "def scale(value, times=2):\n    return value * times\n\nprint(scale(5, 1))\nprint(scale(5, 3))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-default-781876",
+      "text": "Which program shows this?",
+      "output": "40\n8",
+      "options": [
+        "def scale(value, times=10):\n    return value * times\n\nprint(scale(4))\nprint(scale(4, 2))",
+        "def scale(value, times=2):\n    return value * times\n\nprint(scale(4))\nprint(scale(4, 2))",
+        "def scale(value, times=10):\n    return value + times\n\nprint(scale(4))\nprint(scale(4, 2))",
+        "def scale(value, times=10):\n    return value * times\n\nprint(scale(4, 1))\nprint(scale(4, 2))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-default-c6e205",
+      "text": "Which program shows this?",
+      "output": "21\n35",
+      "options": [
+        "def scale(value, times=3):\n    return value * times\n\nprint(scale(7))\nprint(scale(7, 5))",
+        "def scale(value, times=5):\n    return value * times\n\nprint(scale(7))\nprint(scale(7, 5))",
+        "def scale(value, times=3):\n    return value + times\n\nprint(scale(7))\nprint(scale(7, 5))",
+        "def scale(value, times=3):\n    return value * times\n\nprint(scale(7, 1))\nprint(scale(7, 5))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-default-510d50",
+      "text": "Which program shows this?",
+      "output": "18\n36",
+      "options": [
+        "def scale(value, times=2):\n    return value * times\n\nprint(scale(9))\nprint(scale(9, 4))",
+        "def scale(value, times=4):\n    return value * times\n\nprint(scale(9))\nprint(scale(9, 4))",
+        "def scale(value, times=2):\n    return value + times\n\nprint(scale(9))\nprint(scale(9, 4))",
+        "def scale(value, times=2):\n    return value * times\n\nprint(scale(9, 1))\nprint(scale(9, 4))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-unpack-fbbd77",
+      "text": "Which program shows this?",
+      "output": "Vercetti\nTommy",
+      "options": [
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Tommy Vercetti\")\nprint(last)\nprint(first)",
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[0], parts[1]\n\nlast, first = split_name(\"Tommy Vercetti\")\nprint(last)\nprint(first)",
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[1], parts[1]\n\nfirst, last = split_name(\"Tommy Vercetti\")\nprint(last)\nprint(first)",
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Tommy Vercetti\")\nprint(last)\nprint(\"first\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-unpack-d42fbb",
+      "text": "Which program shows this?",
+      "output": "Vance\nLance",
+      "options": [
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Lance Vance\")\nprint(last)\nprint(first)",
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[0], parts[1]\n\nlast, first = split_name(\"Lance Vance\")\nprint(last)\nprint(first)",
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[1], parts[1]\n\nfirst, last = split_name(\"Lance Vance\")\nprint(last)\nprint(first)",
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Lance Vance\")\nprint(last)\nprint(\"first\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-unpack-f4402d",
+      "text": "Which program shows this?",
+      "output": "Rosenberg\nKen",
+      "options": [
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Ken Rosenberg\")\nprint(last)\nprint(first)",
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[0], parts[1]\n\nlast, first = split_name(\"Ken Rosenberg\")\nprint(last)\nprint(first)",
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[1], parts[1]\n\nfirst, last = split_name(\"Ken Rosenberg\")\nprint(last)\nprint(first)",
+        "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Ken Rosenberg\")\nprint(last)\nprint(\"first\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-except-344e75",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    ___\n        return fallback\n\nprint(safe_int(\"18\"))\nprint(safe_int(\"eighteen\"))",
+      "output": "18\n0",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "finally:"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-except-85d90f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    ___\n        return fallback\n\nprint(safe_int(\"4\"))\nprint(safe_int(\"4.5\"))",
+      "output": "4\n0",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "finally:"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-except-39f8d9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    ___\n        return fallback\n\nprint(safe_int(\"250\"))\nprint(safe_int(\"25O\"))",
+      "output": "250\n0",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "finally:"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-except-71e27b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    ___\n        return fallback\n\nprint(safe_int(\"9\"))\nprint(safe_int(\"nine\"))",
+      "output": "9\n0",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "finally:"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-unpack-91d935",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")",
+      "output": "Total: 16\nLargest: 9",
+      "options": [
+        "total, largest, smallest = summarize([3, 9, 4])",
+        "total = summarize([3, 9, 4])",
+        "largest, total, smallest = summarize([3, 9, 4])",
+        "total, smallest, largest = summarize([3, 9, 4])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-unpack-8da39b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")",
+      "output": "Total: 36\nLargest: 20",
+      "options": [
+        "total, largest, smallest = summarize([20, 5, 11])",
+        "total = summarize([20, 5, 11])",
+        "largest, total, smallest = summarize([20, 5, 11])",
+        "total, smallest, largest = summarize([20, 5, 11])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-unpack-ac9bff",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")",
+      "output": "Total: 13\nLargest: 6",
+      "options": [
+        "total, largest, smallest = summarize([6, 6, 1])",
+        "total = summarize([6, 6, 1])",
+        "largest, total, smallest = summarize([6, 6, 1])",
+        "total, smallest, largest = summarize([6, 6, 1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-unpack-a47574",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")",
+      "output": "Total: 30\nLargest: 15",
+      "options": [
+        "total, largest, smallest = summarize([8, 2, 15, 5])",
+        "total = summarize([8, 2, 15, 5])",
+        "largest, total, smallest = summarize([8, 2, 15, 5])",
+        "total, smallest, largest = summarize([8, 2, 15, 5])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-return-5a5267",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def low_high(numbers):\n    ___\n\nlow, high = low_high([8, 3, 6])\nprint(f\"Low: {low}, high: {high}\")",
+      "output": "Low: 3, high: 8",
+      "options": [
+        "return min(numbers), max(numbers)",
+        "return max(numbers), min(numbers)",
+        "print(min(numbers), max(numbers))",
+        "return min(numbers)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-return-527f13",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def low_high(numbers):\n    ___\n\nlow, high = low_high([12, 30, 18])\nprint(f\"Low: {low}, high: {high}\")",
+      "output": "Low: 12, high: 30",
+      "options": [
+        "return min(numbers), max(numbers)",
+        "return max(numbers), min(numbers)",
+        "print(min(numbers), max(numbers))",
+        "return min(numbers)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-return-d46682",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def low_high(numbers):\n    ___\n\nlow, high = low_high([5, 1, 4, 8])\nprint(f\"Low: {low}, high: {high}\")",
+      "output": "Low: 1, high: 8",
+      "options": [
+        "return min(numbers), max(numbers)",
+        "return max(numbers), min(numbers)",
+        "print(min(numbers), max(numbers))",
+        "return min(numbers)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-return-672a17",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def low_high(numbers):\n    ___\n\nlow, high = low_high([60, 45, 90])\nprint(f\"Low: {low}, high: {high}\")",
+      "output": "Low: 45, high: 90",
+      "options": [
+        "return min(numbers), max(numbers)",
+        "return max(numbers), min(numbers)",
+        "print(min(numbers), max(numbers))",
+        "return min(numbers)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-default-562812",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def dock(ship, bay=___):\n    print(f\"{ship} docked at {bay}\")\n\ndock(\"Hermes\")\ndock(\"Apollo\", \"G2\")",
+      "output": "Hermes docked at F3\nApollo docked at G2",
+      "options": ["\"F3\"", "\"G2\"", "\"bay\"", "F3"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-default-5cbf77",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def dock(ship, bay=___):\n    print(f\"{ship} docked at {bay}\")\n\ndock(\"Pioneer\")\ndock(\"Falcon\", \"D5\")",
+      "output": "Pioneer docked at C2\nFalcon docked at D5",
+      "options": ["\"C2\"", "\"D5\"", "\"bay\"", "C2"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-default-a635a8",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def dock(ship, bay=___):\n    print(f\"{ship} docked at {bay}\")\n\ndock(\"Nova\")\ndock(\"Atlas\", \"A2\")",
+      "output": "Nova docked at E4\nAtlas docked at A2",
+      "options": ["\"E4\"", "\"A2\"", "\"bay\"", "E4"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-default-46f35d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def dock(ship, bay=___):\n    print(f\"{ship} docked at {bay}\")\n\ndock(\"Orion\")\ndock(\"Comet\", \"C9\")",
+      "output": "Orion docked at B1\nComet docked at C9",
+      "options": ["\"B1\"", "\"C9\"", "\"bay\"", "B1"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-fallback-e22ffc",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"oops\", ___))",
+      "output": "-5",
+      "options": ["-5", "0", "fallback", "\"oops\""],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-fallback-4c1566",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"?\", ___))",
+      "output": "99",
+      "options": ["99", "0", "fallback", "\"?\""],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-fallback-4020f8",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"seven\", ___))",
+      "output": "7",
+      "options": ["7", "0", "fallback", "\"seven\""],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-fallback-8c90be",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"1O\", ___))",
+      "output": "10",
+      "options": ["10", "0", "fallback", "\"1O\""],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-index-4eb339",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def stats(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\nresult = stats([5, 11, 3])\nprint(result[___])",
+      "output": "11",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-index-082fc4",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def stats(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\nresult = stats([10, 3, 5])\nprint(result[___])",
+      "output": "18",
+      "options": ["0", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-index-30a688",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def stats(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\nresult = stats([7, 1, 6])\nprint(result[___])",
+      "output": "1",
+      "options": ["2", "0", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-index-1be061",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def stats(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\nresult = stats([20, 30, 10])\nprint(result[___])",
+      "output": "30",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-default-224b22",
+      "text": "Which line stops this program from printing this?",
+      "code": "def dock(bay=\"K2\", ship):\n    print(f\"{ship} | {bay}\")\n\ndock(\"Zephyr\")\ndock(\"Titan\", \"M4\")",
+      "output": "Zephyr | K2\nTitan | M4",
+      "options": [
+        "def dock(bay=\"K2\", ship):",
+        "print(f\"{ship} | {bay}\")",
+        "dock(\"Zephyr\")",
+        "dock(\"Titan\", \"M4\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-default-95e635",
+      "text": "Which line stops this program from printing this?",
+      "code": "def dock(bay=\"R1\", ship):\n    print(f\"{ship} | {bay}\")\n\ndock(\"Rover\")\ndock(\"Echo\", \"S3\")",
+      "output": "Rover | R1\nEcho | S3",
+      "options": [
+        "def dock(bay=\"R1\", ship):",
+        "print(f\"{ship} | {bay}\")",
+        "dock(\"Rover\")",
+        "dock(\"Echo\", \"S3\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-default-e049c6",
+      "text": "Which line stops this program from printing this?",
+      "code": "def dock(bay=\"H5\", ship):\n    print(f\"{ship} | {bay}\")\n\ndock(\"Juno\")\ndock(\"Vega\", \"J7\")",
+      "output": "Juno | H5\nVega | J7",
+      "options": [
+        "def dock(bay=\"H5\", ship):",
+        "print(f\"{ship} | {bay}\")",
+        "dock(\"Juno\")",
+        "dock(\"Vega\", \"J7\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-except-f0d7c3",
+      "text": "Which line stops this program from printing this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ZeroDivisionError:\n        return fallback\n\nprint(safe_int(\"33\"))\nprint(safe_int(\"3e\"))",
+      "output": "33\n0",
+      "options": [
+        "except ZeroDivisionError:",
+        "return int(text)",
+        "return fallback",
+        "print(safe_int(\"33\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-except-6a25e8",
+      "text": "Which line stops this program from printing this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ZeroDivisionError:\n        return fallback\n\nprint(safe_int(\"64\"))\nprint(safe_int(\"6.4\"))",
+      "output": "64\n0",
+      "options": [
+        "except ZeroDivisionError:",
+        "return int(text)",
+        "try:",
+        "def safe_int(text, fallback=0):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-except-c08aa8",
+      "text": "Which line stops this program from printing this?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ZeroDivisionError:\n        return fallback\n\nprint(safe_int(\"7\"))\nprint(safe_int(\"seven\"))",
+      "output": "7\n0",
+      "options": [
+        "except ZeroDivisionError:",
+        "return int(text)",
+        "try:",
+        "def safe_int(text, fallback=0):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-unpack-4d4c72",
+      "text": "Which line stops this program from printing this?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\ntotal, largest, smallest = summarize([7, 3, 5])\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {largest}\")",
+      "output": "Total: 15\nLargest: 7\nSmallest: 3",
+      "options": [
+        "print(f\"Smallest: {largest}\")",
+        "print(f\"Largest: {largest}\")",
+        "print(f\"Total: {total}\")",
+        "total, largest, smallest = summarize([7, 3, 5])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-unpack-b4cf3c",
+      "text": "Which line stops this program from printing this?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\ntotal, largest, smallest = summarize([11, 2, 9, 4])\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {largest}\")",
+      "output": "Total: 26\nLargest: 11\nSmallest: 2",
+      "options": [
+        "print(f\"Smallest: {largest}\")",
+        "print(f\"Largest: {largest}\")",
+        "print(f\"Total: {total}\")",
+        "total, largest, smallest = summarize([11, 2, 9, 4])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-unpack-7182ec",
+      "text": "Which line stops this program from printing this?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\ntotal, largest, smallest = summarize([30, 8, 14])\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {largest}\")",
+      "output": "Total: 52\nLargest: 30\nSmallest: 8",
+      "options": [
+        "print(f\"Smallest: {largest}\")",
+        "print(f\"Largest: {largest}\")",
+        "print(f\"Total: {total}\")",
+        "total, largest, smallest = summarize([30, 8, 14])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-store-21f64f",
+      "text": "Which line stops this program from printing this?",
+      "code": "shield = 80\nprint(\"Before:\", shield)\n\ndef boost(s):\n    s = s * 2\n    return s\n\nboost(shield)\nprint(\"After:\", shield)\nprint(\"Plus 5:\", shield + 5)",
+      "output": "Before: 80\nAfter: 160\nPlus 5: 165",
+      "options": ["boost(shield)", "return s", "s = s * 2", "print(\"After:\", shield)"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-store-b9ba3e",
+      "text": "Which line stops this program from printing this?",
+      "code": "fuel = 45\nprint(\"Before:\", fuel)\n\ndef boost(f):\n    f = f * 2\n    return f\n\nboost(fuel)\nprint(\"After:\", fuel)\nprint(\"Plus 5:\", fuel + 5)",
+      "output": "Before: 45\nAfter: 90\nPlus 5: 95",
+      "options": [
+        "boost(fuel)",
+        "return f",
+        "print(\"After:\", fuel)",
+        "print(\"Plus 5:\", fuel + 5)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-store-992b44",
+      "text": "Which line stops this program from printing this?",
+      "code": "power = 15\nprint(\"Before:\", power)\n\ndef boost(p):\n    p = p * 2\n    return p\n\nboost(power)\nprint(\"After:\", power)\nprint(\"Plus 5:\", power + 5)",
+      "output": "Before: 15\nAfter: 30\nPlus 5: 35",
+      "options": ["boost(power)", "return p", "p = p * 2", "print(\"Before:\", power)"],
+      "answer": 0
+    }
+  ]
+}

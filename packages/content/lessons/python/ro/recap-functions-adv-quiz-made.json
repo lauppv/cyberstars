@@ -1,0 +1,741 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-functions-adv-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rfa-safe-fb9974",
+      "text": "Ce afișează?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nnumere = []\nfor citire in [\"10\", \"rau\", \"25\"]:\n    numere.append(int_sigur(citire))\nprint(numere)",
+      "options": ["[10, 0, 25]", "[10, 'rau', 25]", "[10, -1, 25]", "['10', 'rau', '25']"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-safe-f600c1",
+      "text": "Ce afișează?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nnumere = []\nfor citire in [\"7\", \"x\", \"3\", \"?\"]:\n    numere.append(int_sigur(citire))\nprint(numere)",
+      "options": ["[7, 0, 3, 0]", "[7, 'x', 3, '?']", "[7, -1, 3, -1]", "['7', 'x', '3', '?']"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-safe-ae42c4",
+      "text": "Ce afișează?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nnumere = []\nfor citire in [\"40\", \"4O\", \"12\"]:\n    numere.append(int_sigur(citire))\nprint(numere)",
+      "options": ["[40, 0, 12]", "[40, '4O', 12]", "[40, -1, 12]", "['40', '4O', '12']"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-safe-3b159d",
+      "text": "Ce afișează?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nnumere = []\nfor citire in [\"5\", \"\", \"8\"]:\n    numere.append(int_sigur(citire))\nprint(numere)",
+      "options": ["[5, 0, 8]", "[5, '', 8]", "[5, -1, 8]", "['5', '', '8']"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-fallback-ee4924",
+      "text": "Ce afișează?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"12\"))\nprint(int_sigur(\"doisprezece\"))\nprint(int_sigur(\"doisprezece\", -1))",
+      "options": ["12\n0\n-1", "12\n1\n-1", "12\n0\n0", "12\ndoisprezece\ndoisprezece"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-fallback-ad9695",
+      "text": "Ce afișează?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"300\"))\nprint(int_sigur(\"3OO\"))\nprint(int_sigur(\"3OO\", 99))",
+      "options": ["300\n0\n99", "300\n1\n99", "300\n0\n0", "300\n3OO\n3OO"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-fallback-ab5921",
+      "text": "Ce afișează?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"5\"))\nprint(int_sigur(\"cinci\"))\nprint(int_sigur(\"cinci\", 1))",
+      "options": ["5\n0\n1", "5\n1\n1", "5\n0\n0", "5\ncinci\ncinci"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-summary-10af88",
+      "text": "Ce afișează?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([4, 9, 2])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mic}\")",
+      "options": [
+        "Total: 15\nCel mai mare: 9\nCel mai mic: 2",
+        "Total: 15\nCel mai mare: 2\nCel mai mic: 9",
+        "Total: 3\nCel mai mare: 9\nCel mai mic: 2",
+        "Total: 15\nCel mai mare: 9\nCel mai mic: 9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-summary-074a70",
+      "text": "Ce afișează?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([10, 0, 25, 7, 0])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mic}\")",
+      "options": [
+        "Total: 42\nCel mai mare: 25\nCel mai mic: 0",
+        "Total: 42\nCel mai mare: 0\nCel mai mic: 25",
+        "Total: 5\nCel mai mare: 25\nCel mai mic: 0",
+        "Total: 42\nCel mai mare: 25\nCel mai mic: 25"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-summary-5bbcb2",
+      "text": "Ce afișează?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([6, 3, 8, 1])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mic}\")",
+      "options": [
+        "Total: 18\nCel mai mare: 8\nCel mai mic: 1",
+        "Total: 18\nCel mai mare: 1\nCel mai mic: 8",
+        "Total: 4\nCel mai mare: 8\nCel mai mic: 1",
+        "Total: 18\nCel mai mare: 8\nCel mai mic: 8"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-summary-b5e21a",
+      "text": "Ce afișează?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([12, 5, 20])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mic}\")",
+      "options": [
+        "Total: 37\nCel mai mare: 20\nCel mai mic: 5",
+        "Total: 37\nCel mai mare: 5\nCel mai mic: 20",
+        "Total: 3\nCel mai mare: 20\nCel mai mic: 5",
+        "Total: 37\nCel mai mare: 20\nCel mai mic: 20"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-tuple-d1b7cc",
+      "text": "Ce afișează?",
+      "code": "def statistici(numere):\n    return max(numere), min(numere)\n\nprint(statistici([3, 8, 5]))",
+      "options": ["(8, 3)", "[8, 3]", "8", "(3, 8)"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-tuple-8c458c",
+      "text": "Ce afișează?",
+      "code": "def statistici(numere):\n    return max(numere), min(numere)\n\nprint(statistici([15, 4, 9, 11]))",
+      "options": ["(15, 4)", "[15, 4]", "15", "(4, 15)"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-tuple-a53618",
+      "text": "Ce afișează?",
+      "code": "def statistici(numere):\n    return max(numere), min(numere)\n\nprint(statistici([7, 2]))",
+      "options": ["(7, 2)", "[7, 2]", "7", "(2, 7)"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-scope-3ddd4d",
+      "text": "Ce afișează?",
+      "code": "scut = 100\nprint(f\"Inainte: {scut}\")\n\ndef amplifica(s):\n    s = s * 2\n    return s\n\namplifica(scut)\nprint(f\"Ignorat: {scut}\")\nscut = amplifica(scut)\nprint(f\"Dupa: {scut}\")",
+      "options": [
+        "Inainte: 100\nIgnorat: 100\nDupa: 200",
+        "Inainte: 100\nIgnorat: 100\nDupa: 100",
+        "Inainte: 100\nIgnorat: 100\nDupa: 102",
+        "Inainte: 100\nIgnorat: 200\nDupa: 400"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-scope-b4b03d",
+      "text": "Ce afișează?",
+      "code": "combustibil = 35\nprint(f\"Inainte: {combustibil}\")\n\ndef amplifica(f):\n    f = f * 2\n    return f\n\namplifica(combustibil)\nprint(f\"Ignorat: {combustibil}\")\ncombustibil = amplifica(combustibil)\nprint(f\"Dupa: {combustibil}\")",
+      "options": [
+        "Inainte: 35\nIgnorat: 35\nDupa: 70",
+        "Inainte: 35\nIgnorat: 35\nDupa: 35",
+        "Inainte: 35\nIgnorat: 35\nDupa: 37",
+        "Inainte: 35\nIgnorat: 70\nDupa: 140"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-scope-8d40f2",
+      "text": "Ce afișează?",
+      "code": "putere = 12\nprint(f\"Inainte: {putere}\")\n\ndef amplifica(p):\n    p = p * 2\n    return p\n\namplifica(putere)\nprint(f\"Ignorat: {putere}\")\nputere = amplifica(putere)\nprint(f\"Dupa: {putere}\")",
+      "options": [
+        "Inainte: 12\nIgnorat: 12\nDupa: 24",
+        "Inainte: 12\nIgnorat: 12\nDupa: 12",
+        "Inainte: 12\nIgnorat: 12\nDupa: 14",
+        "Inainte: 12\nIgnorat: 24\nDupa: 48"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-scope-8ee82f",
+      "text": "Ce afișează?",
+      "code": "viteza = 60\nprint(f\"Inainte: {viteza}\")\n\ndef amplifica(x):\n    x = x * 2\n    return x\n\namplifica(viteza)\nprint(f\"Ignorat: {viteza}\")\nviteza = amplifica(viteza)\nprint(f\"Dupa: {viteza}\")",
+      "options": [
+        "Inainte: 60\nIgnorat: 60\nDupa: 120",
+        "Inainte: 60\nIgnorat: 60\nDupa: 60",
+        "Inainte: 60\nIgnorat: 60\nDupa: 62",
+        "Inainte: 60\nIgnorat: 120\nDupa: 240"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-default-571dc5",
+      "text": "Ce afișează?",
+      "code": "def andocheaza(nava, doc=\"A1\"):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"Voyager\")\nandocheaza(\"Odyssey\", \"B7\")\nandocheaza(\"Voyager\", doc=\"C3\")",
+      "options": [
+        "Voyager andocat la A1\nOdyssey andocat la B7\nVoyager andocat la C3",
+        "Voyager andocat la B7\nOdyssey andocat la B7\nVoyager andocat la C3",
+        "Voyager andocat la A1\nB7 andocat la Odyssey\nVoyager andocat la C3",
+        "A1 andocat la Voyager\nB7 andocat la Odyssey\nC3 andocat la Voyager"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-default-6b0f75",
+      "text": "Ce afișează?",
+      "code": "def andocheaza(nava, doc=\"D4\"):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"Falcon\")\nandocheaza(\"Nova\", \"A2\")\nandocheaza(\"Falcon\", doc=\"B5\")",
+      "options": [
+        "Falcon andocat la D4\nNova andocat la A2\nFalcon andocat la B5",
+        "Falcon andocat la A2\nNova andocat la A2\nFalcon andocat la B5",
+        "Falcon andocat la D4\nA2 andocat la Nova\nFalcon andocat la B5",
+        "D4 andocat la Falcon\nA2 andocat la Nova\nB5 andocat la Falcon"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-default-3a8b80",
+      "text": "Ce afișează?",
+      "code": "def andocheaza(nava, doc=\"C1\"):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"Pioneer\")\nandocheaza(\"Atlas\", \"D8\")\nandocheaza(\"Pioneer\", doc=\"A6\")",
+      "options": [
+        "Pioneer andocat la C1\nAtlas andocat la D8\nPioneer andocat la A6",
+        "Pioneer andocat la D8\nAtlas andocat la D8\nPioneer andocat la A6",
+        "Pioneer andocat la C1\nD8 andocat la Atlas\nPioneer andocat la A6",
+        "C1 andocat la Pioneer\nD8 andocat la Atlas\nA6 andocat la Pioneer"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-div-1fcf80",
+      "text": "Ce afișează?",
+      "code": "def imparte_sigur(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Nu se poate imparti la zero\"\n\nprint(imparte_sigur(10, 4))\nprint(imparte_sigur(10, 0))",
+      "options": [
+        "2.5\nNu se poate imparti la zero",
+        "2\nNu se poate imparti la zero",
+        "2.5\n0",
+        "2.5\n0.0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-div-b9943d",
+      "text": "Ce afișează?",
+      "code": "def imparte_sigur(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Nu se poate imparti la zero\"\n\nprint(imparte_sigur(9, 3))\nprint(imparte_sigur(9, 0))",
+      "options": [
+        "3.0\nNu se poate imparti la zero",
+        "3\nNu se poate imparti la zero",
+        "3.0\n0",
+        "3.0\n0.0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-div-f67991",
+      "text": "Ce afișează?",
+      "code": "def imparte_sigur(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Nu se poate imparti la zero\"\n\nprint(imparte_sigur(7, 2))\nprint(imparte_sigur(7, 0))",
+      "options": [
+        "3.5\nNu se poate imparti la zero",
+        "3\nNu se poate imparti la zero",
+        "3.5\n0",
+        "3.5\n0.0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-count-47c989",
+      "text": "Ce afișează?",
+      "code": "corupte = 0\nbune = []\nfor citire in [\"8\", \"x\", \"3\", \"?\"]:\n    try:\n        bune.append(int(citire))\n    except ValueError:\n        corupte = corupte + 1\nprint(bune)\nprint(f\"Corupte: {corupte}\")",
+      "options": [
+        "[8, 3]\nCorupte: 2",
+        "[8, 3]\nCorupte: 1",
+        "['8', 'x', '3', '?']\nCorupte: 0",
+        "2\nCorupte: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-count-c05a7d",
+      "text": "Ce afișează?",
+      "code": "corupte = 0\nbune = []\nfor citire in [\"15\", \"n/a\", \"4\", \"eroare\"]:\n    try:\n        bune.append(int(citire))\n    except ValueError:\n        corupte = corupte + 1\nprint(bune)\nprint(f\"Corupte: {corupte}\")",
+      "options": [
+        "[15, 4]\nCorupte: 2",
+        "[15, 4]\nCorupte: 1",
+        "['15', 'n/a', '4', 'eroare']\nCorupte: 0",
+        "2\nCorupte: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-count-c3a8c0",
+      "text": "Ce afișează?",
+      "code": "corupte = 0\nbune = []\nfor citire in [\"2\", \"doi\", \"6\", \"\", \"9\"]:\n    try:\n        bune.append(int(citire))\n    except ValueError:\n        corupte = corupte + 1\nprint(bune)\nprint(f\"Corupte: {corupte}\")",
+      "options": [
+        "[2, 6, 9]\nCorupte: 2",
+        "[2, 6, 9]\nCorupte: 1",
+        "['2', 'doi', '6', '', '9']\nCorupte: 0",
+        "2\nCorupte: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-default-e6d46d",
+      "text": "Care program afișează asta?",
+      "output": "10\n15",
+      "options": [
+        "def inmulteste(valoare, ori=2):\n    return valoare * ori\n\nprint(inmulteste(5))\nprint(inmulteste(5, 3))",
+        "def inmulteste(valoare, ori=3):\n    return valoare * ori\n\nprint(inmulteste(5))\nprint(inmulteste(5, 3))",
+        "def inmulteste(valoare, ori=2):\n    return valoare + ori\n\nprint(inmulteste(5))\nprint(inmulteste(5, 3))",
+        "def inmulteste(valoare, ori=2):\n    return valoare * ori\n\nprint(inmulteste(5, 1))\nprint(inmulteste(5, 3))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-default-781876",
+      "text": "Care program afișează asta?",
+      "output": "40\n8",
+      "options": [
+        "def inmulteste(valoare, ori=10):\n    return valoare * ori\n\nprint(inmulteste(4))\nprint(inmulteste(4, 2))",
+        "def inmulteste(valoare, ori=2):\n    return valoare * ori\n\nprint(inmulteste(4))\nprint(inmulteste(4, 2))",
+        "def inmulteste(valoare, ori=10):\n    return valoare + ori\n\nprint(inmulteste(4))\nprint(inmulteste(4, 2))",
+        "def inmulteste(valoare, ori=10):\n    return valoare * ori\n\nprint(inmulteste(4, 1))\nprint(inmulteste(4, 2))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-default-c6e205",
+      "text": "Care program afișează asta?",
+      "output": "21\n35",
+      "options": [
+        "def inmulteste(valoare, ori=3):\n    return valoare * ori\n\nprint(inmulteste(7))\nprint(inmulteste(7, 5))",
+        "def inmulteste(valoare, ori=5):\n    return valoare * ori\n\nprint(inmulteste(7))\nprint(inmulteste(7, 5))",
+        "def inmulteste(valoare, ori=3):\n    return valoare + ori\n\nprint(inmulteste(7))\nprint(inmulteste(7, 5))",
+        "def inmulteste(valoare, ori=3):\n    return valoare * ori\n\nprint(inmulteste(7, 1))\nprint(inmulteste(7, 5))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-default-510d50",
+      "text": "Care program afișează asta?",
+      "output": "18\n36",
+      "options": [
+        "def inmulteste(valoare, ori=2):\n    return valoare * ori\n\nprint(inmulteste(9))\nprint(inmulteste(9, 4))",
+        "def inmulteste(valoare, ori=4):\n    return valoare * ori\n\nprint(inmulteste(9))\nprint(inmulteste(9, 4))",
+        "def inmulteste(valoare, ori=2):\n    return valoare + ori\n\nprint(inmulteste(9))\nprint(inmulteste(9, 4))",
+        "def inmulteste(valoare, ori=2):\n    return valoare * ori\n\nprint(inmulteste(9, 1))\nprint(inmulteste(9, 4))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-unpack-fbbd77",
+      "text": "Care program afișează asta?",
+      "output": "Vercetti\nTommy",
+      "options": [
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nprimul, ultimul = imparte_nume(\"Tommy Vercetti\")\nprint(ultimul)\nprint(primul)",
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nultimul, primul = imparte_nume(\"Tommy Vercetti\")\nprint(ultimul)\nprint(primul)",
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[1], parti[1]\n\nprimul, ultimul = imparte_nume(\"Tommy Vercetti\")\nprint(ultimul)\nprint(primul)",
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nprimul, ultimul = imparte_nume(\"Tommy Vercetti\")\nprint(ultimul)\nprint(\"primul\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-unpack-d42fbb",
+      "text": "Care program afișează asta?",
+      "output": "Vance\nLance",
+      "options": [
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nprimul, ultimul = imparte_nume(\"Lance Vance\")\nprint(ultimul)\nprint(primul)",
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nultimul, primul = imparte_nume(\"Lance Vance\")\nprint(ultimul)\nprint(primul)",
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[1], parti[1]\n\nprimul, ultimul = imparte_nume(\"Lance Vance\")\nprint(ultimul)\nprint(primul)",
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nprimul, ultimul = imparte_nume(\"Lance Vance\")\nprint(ultimul)\nprint(\"primul\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-which-unpack-f4402d",
+      "text": "Care program afișează asta?",
+      "output": "Rosenberg\nKen",
+      "options": [
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nprimul, ultimul = imparte_nume(\"Ken Rosenberg\")\nprint(ultimul)\nprint(primul)",
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nultimul, primul = imparte_nume(\"Ken Rosenberg\")\nprint(ultimul)\nprint(primul)",
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[1], parti[1]\n\nprimul, ultimul = imparte_nume(\"Ken Rosenberg\")\nprint(ultimul)\nprint(primul)",
+        "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nprimul, ultimul = imparte_nume(\"Ken Rosenberg\")\nprint(ultimul)\nprint(\"primul\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-except-344e75",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    ___\n        return valoare_implicita\n\nprint(int_sigur(\"18\"))\nprint(int_sigur(\"optsprezece\"))",
+      "output": "18\n0",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "finally:"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-except-85d90f",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    ___\n        return valoare_implicita\n\nprint(int_sigur(\"4\"))\nprint(int_sigur(\"4.5\"))",
+      "output": "4\n0",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "finally:"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-except-39f8d9",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    ___\n        return valoare_implicita\n\nprint(int_sigur(\"250\"))\nprint(int_sigur(\"25O\"))",
+      "output": "250\n0",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "finally:"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-except-71e27b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    ___\n        return valoare_implicita\n\nprint(int_sigur(\"9\"))\nprint(int_sigur(\"noua\"))",
+      "output": "9\n0",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "finally:"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-unpack-91d935",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")",
+      "output": "Total: 16\nCel mai mare: 9",
+      "options": [
+        "total, cel_mai_mare, cel_mai_mic = sumeaza([3, 9, 4])",
+        "total = sumeaza([3, 9, 4])",
+        "cel_mai_mare, total, cel_mai_mic = sumeaza([3, 9, 4])",
+        "total, cel_mai_mic, cel_mai_mare = sumeaza([3, 9, 4])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-unpack-8da39b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")",
+      "output": "Total: 36\nCel mai mare: 20",
+      "options": [
+        "total, cel_mai_mare, cel_mai_mic = sumeaza([20, 5, 11])",
+        "total = sumeaza([20, 5, 11])",
+        "cel_mai_mare, total, cel_mai_mic = sumeaza([20, 5, 11])",
+        "total, cel_mai_mic, cel_mai_mare = sumeaza([20, 5, 11])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-unpack-ac9bff",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")",
+      "output": "Total: 13\nCel mai mare: 6",
+      "options": [
+        "total, cel_mai_mare, cel_mai_mic = sumeaza([6, 6, 1])",
+        "total = sumeaza([6, 6, 1])",
+        "cel_mai_mare, total, cel_mai_mic = sumeaza([6, 6, 1])",
+        "total, cel_mai_mic, cel_mai_mare = sumeaza([6, 6, 1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-unpack-a47574",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")",
+      "output": "Total: 30\nCel mai mare: 15",
+      "options": [
+        "total, cel_mai_mare, cel_mai_mic = sumeaza([8, 2, 15, 5])",
+        "total = sumeaza([8, 2, 15, 5])",
+        "cel_mai_mare, total, cel_mai_mic = sumeaza([8, 2, 15, 5])",
+        "total, cel_mai_mic, cel_mai_mare = sumeaza([8, 2, 15, 5])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-return-5a5267",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def minim_maxim(numere):\n    ___\n\nmic, mare = minim_maxim([8, 3, 6])\nprint(f\"Mic: {mic}, mare: {mare}\")",
+      "output": "Mic: 3, mare: 8",
+      "options": [
+        "return min(numere), max(numere)",
+        "return max(numere), min(numere)",
+        "print(min(numere), max(numere))",
+        "return min(numere)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-return-527f13",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def minim_maxim(numere):\n    ___\n\nmic, mare = minim_maxim([12, 30, 18])\nprint(f\"Mic: {mic}, mare: {mare}\")",
+      "output": "Mic: 12, mare: 30",
+      "options": [
+        "return min(numere), max(numere)",
+        "return max(numere), min(numere)",
+        "print(min(numere), max(numere))",
+        "return min(numere)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-return-d46682",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def minim_maxim(numere):\n    ___\n\nmic, mare = minim_maxim([5, 1, 4, 8])\nprint(f\"Mic: {mic}, mare: {mare}\")",
+      "output": "Mic: 1, mare: 8",
+      "options": [
+        "return min(numere), max(numere)",
+        "return max(numere), min(numere)",
+        "print(min(numere), max(numere))",
+        "return min(numere)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-gap-return-672a17",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def minim_maxim(numere):\n    ___\n\nmic, mare = minim_maxim([60, 45, 90])\nprint(f\"Mic: {mic}, mare: {mare}\")",
+      "output": "Mic: 45, mare: 90",
+      "options": [
+        "return min(numere), max(numere)",
+        "return max(numere), min(numere)",
+        "print(min(numere), max(numere))",
+        "return min(numere)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-default-562812",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def andocheaza(nava, doc=___):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"Hermes\")\nandocheaza(\"Apollo\", \"G2\")",
+      "output": "Hermes andocat la F3\nApollo andocat la G2",
+      "options": ["\"F3\"", "\"G2\"", "\"doc\"", "F3"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-default-5cbf77",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def andocheaza(nava, doc=___):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"Pioneer\")\nandocheaza(\"Falcon\", \"D5\")",
+      "output": "Pioneer andocat la C2\nFalcon andocat la D5",
+      "options": ["\"C2\"", "\"D5\"", "\"doc\"", "C2"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-default-a635a8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def andocheaza(nava, doc=___):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"Nova\")\nandocheaza(\"Atlas\", \"A2\")",
+      "output": "Nova andocat la E4\nAtlas andocat la A2",
+      "options": ["\"E4\"", "\"A2\"", "\"doc\"", "E4"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-default-46f35d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def andocheaza(nava, doc=___):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"Orion\")\nandocheaza(\"Comet\", \"C9\")",
+      "output": "Orion andocat la B1\nComet andocat la C9",
+      "options": ["\"B1\"", "\"C9\"", "\"doc\"", "B1"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-fallback-e22ffc",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"ups\", ___))",
+      "output": "-5",
+      "options": ["-5", "0", "valoare_implicita", "\"ups\""],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-fallback-4c1566",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"?\", ___))",
+      "output": "99",
+      "options": ["99", "0", "valoare_implicita", "\"?\""],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-fallback-4020f8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"sapte\", ___))",
+      "output": "7",
+      "options": ["7", "0", "valoare_implicita", "\"sapte\""],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-fallback-8c90be",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"1O\", ___))",
+      "output": "10",
+      "options": ["10", "0", "valoare_implicita", "\"1O\""],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-index-4eb339",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def statistici(numere):\n    return sum(numere), max(numere), min(numere)\n\nrezultat = statistici([5, 11, 3])\nprint(rezultat[___])",
+      "output": "11",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-index-082fc4",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def statistici(numere):\n    return sum(numere), max(numere), min(numere)\n\nrezultat = statistici([10, 3, 5])\nprint(rezultat[___])",
+      "output": "18",
+      "options": ["0", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-index-30a688",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def statistici(numere):\n    return sum(numere), max(numere), min(numere)\n\nrezultat = statistici([7, 1, 6])\nprint(rezultat[___])",
+      "output": "1",
+      "options": ["2", "0", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-val-index-1be061",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def statistici(numere):\n    return sum(numere), max(numere), min(numere)\n\nrezultat = statistici([20, 30, 10])\nprint(rezultat[___])",
+      "output": "30",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-default-224b22",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def andocheaza(doc=\"K2\", nava):\n    print(f\"{nava} | {doc}\")\n\nandocheaza(\"Zephyr\")\nandocheaza(\"Titan\", \"M4\")",
+      "output": "Zephyr | K2\nTitan | M4",
+      "options": [
+        "def andocheaza(doc=\"K2\", nava):",
+        "print(f\"{nava} | {doc}\")",
+        "andocheaza(\"Zephyr\")",
+        "andocheaza(\"Titan\", \"M4\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-default-95e635",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def andocheaza(doc=\"R1\", nava):\n    print(f\"{nava} | {doc}\")\n\nandocheaza(\"Rover\")\nandocheaza(\"Echo\", \"S3\")",
+      "output": "Rover | R1\nEcho | S3",
+      "options": [
+        "def andocheaza(doc=\"R1\", nava):",
+        "print(f\"{nava} | {doc}\")",
+        "andocheaza(\"Rover\")",
+        "andocheaza(\"Echo\", \"S3\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-default-e049c6",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def andocheaza(doc=\"H5\", nava):\n    print(f\"{nava} | {doc}\")\n\nandocheaza(\"Juno\")\nandocheaza(\"Vega\", \"J7\")",
+      "output": "Juno | H5\nVega | J7",
+      "options": [
+        "def andocheaza(doc=\"H5\", nava):",
+        "print(f\"{nava} | {doc}\")",
+        "andocheaza(\"Juno\")",
+        "andocheaza(\"Vega\", \"J7\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-except-f0d7c3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ZeroDivisionError:\n        return valoare_implicita\n\nprint(int_sigur(\"33\"))\nprint(int_sigur(\"3e\"))",
+      "output": "33\n0",
+      "options": [
+        "except ZeroDivisionError:",
+        "return int(text)",
+        "return valoare_implicita",
+        "print(int_sigur(\"33\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-except-6a25e8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ZeroDivisionError:\n        return valoare_implicita\n\nprint(int_sigur(\"64\"))\nprint(int_sigur(\"6.4\"))",
+      "output": "64\n0",
+      "options": [
+        "except ZeroDivisionError:",
+        "return int(text)",
+        "try:",
+        "def int_sigur(text, valoare_implicita=0):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-except-c08aa8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ZeroDivisionError:\n        return valoare_implicita\n\nprint(int_sigur(\"7\"))\nprint(int_sigur(\"sapte\"))",
+      "output": "7\n0",
+      "options": [
+        "except ZeroDivisionError:",
+        "return int(text)",
+        "try:",
+        "def int_sigur(text, valoare_implicita=0):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-unpack-4d4c72",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([7, 3, 5])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mare}\")",
+      "output": "Total: 15\nCel mai mare: 7\nCel mai mic: 3",
+      "options": [
+        "print(f\"Cel mai mic: {cel_mai_mare}\")",
+        "print(f\"Cel mai mare: {cel_mai_mare}\")",
+        "print(f\"Total: {total}\")",
+        "total, cel_mai_mare, cel_mai_mic = sumeaza([7, 3, 5])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-unpack-b4cf3c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([11, 2, 9, 4])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mare}\")",
+      "output": "Total: 26\nCel mai mare: 11\nCel mai mic: 2",
+      "options": [
+        "print(f\"Cel mai mic: {cel_mai_mare}\")",
+        "print(f\"Cel mai mare: {cel_mai_mare}\")",
+        "print(f\"Total: {total}\")",
+        "total, cel_mai_mare, cel_mai_mic = sumeaza([11, 2, 9, 4])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-unpack-7182ec",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([30, 8, 14])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mare}\")",
+      "output": "Total: 52\nCel mai mare: 30\nCel mai mic: 8",
+      "options": [
+        "print(f\"Cel mai mic: {cel_mai_mare}\")",
+        "print(f\"Cel mai mare: {cel_mai_mare}\")",
+        "print(f\"Total: {total}\")",
+        "total, cel_mai_mare, cel_mai_mic = sumeaza([30, 8, 14])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-store-21f64f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scut = 80\nprint(\"Inainte:\", scut)\n\ndef amplifica(s):\n    s = s * 2\n    return s\n\namplifica(scut)\nprint(\"Dupa:\", scut)\nprint(\"Plus 5:\", scut + 5)",
+      "output": "Inainte: 80\nDupa: 160\nPlus 5: 165",
+      "options": ["amplifica(scut)", "return s", "s = s * 2", "print(\"Dupa:\", scut)"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-store-b9ba3e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "combustibil = 45\nprint(\"Inainte:\", combustibil)\n\ndef amplifica(f):\n    f = f * 2\n    return f\n\namplifica(combustibil)\nprint(\"Dupa:\", combustibil)\nprint(\"Plus 5:\", combustibil + 5)",
+      "output": "Inainte: 45\nDupa: 90\nPlus 5: 95",
+      "options": [
+        "amplifica(combustibil)",
+        "return f",
+        "print(\"Dupa:\", combustibil)",
+        "print(\"Plus 5:\", combustibil + 5)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rfa-bad-store-992b44",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "putere = 15\nprint(\"Inainte:\", putere)\n\ndef amplifica(p):\n    p = p * 2\n    return p\n\namplifica(putere)\nprint(\"Dupa:\", putere)\nprint(\"Plus 5:\", putere + 5)",
+      "output": "Inainte: 15\nDupa: 30\nPlus 5: 35",
+      "options": ["amplifica(putere)", "return p", "p = p * 2", "print(\"Inainte:\", putere)"],
+      "answer": 0
+    }
+  ]
+}

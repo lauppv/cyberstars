@@ -1,0 +1,996 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is a variable's scope?",
+      "options": [
+        "The part of the code where the variable exists and can be used",
+        "The kind of value it holds",
+        "How many times its value can change",
+        "The line where it was first written"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What happens when this runs?",
+      "code": "def greet():\n    message = \"Hello from Vice City\"\n    print(message)\n\ngreet()\nprint(message)",
+      "options": [
+        "It prints Hello from Vice City twice: message stays after the call",
+        "It prints Hello from Vice City, then stops with a NameError: message exists only inside greet",
+        "It prints nothing: greet() only stores the message",
+        "It stops before printing anything: print() can't be used inside a function"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Where can a variable created inside a function be used?",
+      "options": [
+        "Anywhere in the program, once the function has run",
+        "Only on the line right after the call",
+        "Inside that function and in the functions written after it",
+        "Only inside that function"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "Which variables can a function read without getting them as parameters?",
+      "options": [
+        "None: a function sees only its parameters",
+        "The local variables of the other functions",
+        "Global ones, created outside any function",
+        "Only the ones created after the function was called"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "name = \"Tommy Vercetti\"\n\ndef greet():\n    print(f\"Hello, {name}\")\n\ngreet()\nprint(name)",
+      "options": [
+        "Hello, Tommy Vercetti\nTommy Vercetti",
+        "Hello, {name}\nTommy Vercetti",
+        "It stops with a NameError",
+        "Hello, Tommy Vercetti"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What happens when this runs?",
+      "code": "health = 100\n\ndef take_damage():\n    health = health - 10\n    print(health)\n\ntake_damage()",
+      "options": [
+        "It prints 90: the function takes the global health and subtracts 10",
+        "It prints 100: the change is lost when the function ends",
+        "It prints 90 and the global health becomes 90 too",
+        "It stops with an error: health = ... makes health local, and the local one has no value yet"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "When does Python treat a variable inside a function as local?",
+      "options": [
+        "When the function gives it a value with =, even if a global has the same name",
+        "Only when no global has its name",
+        "Only when it is a parameter",
+        "Never: inside a function Python always uses the global"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "health = 100\n\ndef take_damage(hp):\n    hp = hp - 10\n    return hp\n\nhealth = take_damage(health)\nprint(health)",
+      "options": ["100", "It stops with an error", "80", "90"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What does the lesson call the best way for a function to work with data?",
+      "options": [
+        "Read and change the global variables directly",
+        "Print its results instead of returning them",
+        "Take data through parameters and send results back with return",
+        "Give every variable in the program a different name"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "def f():\n    x = 5\n    print(x)\n\ndef g():\n    x = 99\n    print(x)\n\nf()\ng()",
+      "options": ["99\n99", "5\n5", "5\n99", "It stops with an error: x is made twice"],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "`f` sets `x = 5` and `g` sets `x = 99`. Why don't the two x get in each other's way?",
+      "options": [
+        "Each one is local to its own function, so they are two different variables",
+        "Python keeps only the last x it saw",
+        "g runs after f, so it erases f's x first",
+        "They do: the second x replaces the first one for good"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "In the Shield Boost mission, `boost(shield)` is called without storing the result. What does the Ignored line print?",
+      "options": ["Ignored: 200", "Ignored: 100", "Ignored: None", "Ignored: 0"],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "text": "In the Shield Boost mission, which line makes shield 200?",
+      "options": [
+        "boost(shield)",
+        "boost = shield * 2",
+        "shield = boost(shield)",
+        "boost(shield) = shield"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "In the Shield Boost mission, why does boost work only with its parameter, not with the global shield?",
+      "options": [
+        "So it doubles whatever value it gets and never changes a global by surprise",
+        "Because a function can't read a global variable",
+        "Because a global variable can't be multiplied",
+        "So the function runs faster"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "def set_score():\n    score = 50\n\nscore = 10\nset_score()\nprint(score)",
+      "options": ["50", "10", "None", "It stops with an error"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "x = 5\n\ndef show():\n    print(x)\n\nshow()\nx = 8\nshow()",
+      "options": ["5\n8", "8\n8", "5\n5", "It stops with an error"],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "def double(n):\n    n = n * 2\n    return n\n\nn = 3\ndouble(n)\nprint(n)",
+      "options": ["6", "3", "None", "33"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "What happens to a function's local variables when the function ends?",
+      "options": [
+        "They stay, ready for the next call",
+        "They become global",
+        "They are gone",
+        "They are kept in the variable called return"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "What happens when this runs?",
+      "code": "def make():\n    total = 7\n    return total\n\nmake()\nprint(total)",
+      "options": [
+        "It prints 7: return hands total to the program",
+        "It prints None: total is empty outside",
+        "It prints nothing: make() was not printed",
+        "It stops with a NameError: total exists only inside make"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "Which line, written after this function, prints 7?",
+      "code": "def make():\n    total = 7\n    return total",
+      "options": ["print(make())", "print(total)", "print(make.total)", "make(total)"],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "def count_up():\n    count = 0\n    for i in range(3):\n        count = count + 1\n    return count\n\nprint(count_up())\nprint(count_up())",
+      "options": ["3\n6", "3\n3", "0\n0", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "A function sets `count = 0`, then adds to it in a loop. Why does count start from 0 again at every call?",
+      "options": [
+        "Each call makes its own new local variables",
+        "return sets count back to 0",
+        "The loop empties count when it ends",
+        "Python sets every variable back to 0 after a print"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "What happens when this runs?",
+      "code": "def greet(name):\n    print(f\"Hi, {name}\")\n\ngreet(\"Lance\")\nprint(name)",
+      "options": [
+        "It prints Hi, Lance twice: the parameter stays after the call",
+        "It prints Hi, Lance, then Lance",
+        "It prints Hi, Lance, then stops with a NameError: name exists only inside greet",
+        "It stops before printing anything: a parameter can't be used in an f-string"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Is a function's parameter local or global?",
+      "options": [
+        "Global: the whole program can read it",
+        "Global, but only after the first call",
+        "Local: it exists only inside its function",
+        "Neither: it is only a name in the def line"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "level = 1\n\ndef next_level(lv):\n    return lv + 1\n\nlevel = next_level(level)\nlevel = next_level(level)\nprint(level)",
+      "options": ["2", "3", "1", "It stops with an error"],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "What happens when this runs?",
+      "code": "x = 5\n\ndef f():\n    print(x)\n    x = 3\n\nf()",
+      "options": [
+        "It prints 5: x = 3 comes after the print",
+        "It prints 3: the function uses its own x",
+        "It prints 5, then 3",
+        "It stops with an error: x = 3 makes x local in all of f, and it has no value yet at the print"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "def f():\n    x = 1\n    print(x)\n\nx = 2\nf()\nprint(x)",
+      "options": ["1\n1", "1\n2", "2\n2", "2\n1"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Where is a global variable created?",
+      "options": [
+        "In a function's parameters",
+        "Inside a function, on its first line",
+        "Inside a loop",
+        "Outside any function, at the top level of the program"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "bonus = 10\n\ndef add_bonus(score):\n    return score + bonus\n\nprint(add_bonus(5))",
+      "options": ["15", "5", "10", "It stops with an error: bonus isn't a parameter"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "def heal(hp):\n    hp = hp + 20\n    print(hp)\n\nhealth = 50\nheal(health)\nprint(health)",
+      "options": ["70\n70", "50\n50", "50\n70", "70\n50"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "sc-local",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{a}}\n\ndef {{f}}():\n    {{v}} = {{b}}\n    print({{v}})\n\n{{f}}()\nprint({{v}})",
+      "values": [
+        {
+          "v": "shield",
+          "a": "100",
+          "b": "200",
+          "f": "boost"
+        },
+        {
+          "v": "health",
+          "a": "80",
+          "b": "50",
+          "f": "heal"
+        },
+        {
+          "v": "fuel",
+          "a": "30",
+          "b": "90",
+          "f": "refuel"
+        },
+        {
+          "v": "ammo",
+          "a": "12",
+          "b": "6",
+          "f": "reload"
+        },
+        {
+          "v": "score",
+          "a": "0",
+          "b": "10",
+          "f": "bonus"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}()\nprint({{v}})", "print({{v}})\n{{f}}()"],
+        ["    {{v}} = {{b}}\n", ""],
+        ["{{f}}()\nprint({{v}})", "{{f}}()"],
+        ["{{v}} = {{a}}\n\ndef", "{{v}} = {{b}}\n\ndef"]
+      ]
+    },
+    {
+      "id": "sc-read",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{a}}\n\ndef {{f}}():\n    print(f\"{{label}}: {{{v}}}\")\n\n{{f}}()\n{{v}} = {{b}}\n{{f}}()",
+      "values": [
+        {
+          "v": "shield",
+          "a": "100",
+          "b": "40",
+          "f": "show_shield",
+          "label": "Shield"
+        },
+        {
+          "v": "health",
+          "a": "90",
+          "b": "65",
+          "f": "show_health",
+          "label": "Health"
+        },
+        {
+          "v": "fuel",
+          "a": "20",
+          "b": "75",
+          "f": "show_fuel",
+          "label": "Fuel"
+        },
+        {
+          "v": "ammo",
+          "a": "8",
+          "b": "3",
+          "f": "show_ammo",
+          "label": "Ammo"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}()\n{{v}} = {{b}}\n{{f}}()", "{{f}}()\n{{f}}()\n{{v}} = {{b}}"],
+        ["print(f\"", "print(\""],
+        ["\n{{f}}()\n{{v}}", "\n{{v}}"],
+        ["{{{v}}}", "{{a}}"]
+      ]
+    },
+    {
+      "id": "sc-store",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} {{op}} {{k}}\n\n{{v}} = {{a}}\n{{f}}({{v}})\nprint({{v}})\n{{v}} = {{f}}({{v}})\nprint({{v}})",
+      "values": [
+        {
+          "f": "boost",
+          "p": "level",
+          "op": "*",
+          "k": "2",
+          "v": "shield",
+          "a": "100"
+        },
+        {
+          "f": "heal",
+          "p": "hp",
+          "op": "+",
+          "k": "25",
+          "v": "health",
+          "a": "50"
+        },
+        {
+          "f": "spend",
+          "p": "coins",
+          "op": "-",
+          "k": "30",
+          "v": "money",
+          "a": "100"
+        },
+        {
+          "f": "reload",
+          "p": "clip",
+          "op": "+",
+          "k": "6",
+          "v": "ammo",
+          "a": "4"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}({{v}})\nprint({{v}})\n{{v}} =", "{{v}} = {{f}}({{v}})\nprint({{v}})\n{{v}} ="],
+        ["{{v}} = {{f}}({{v}})\nprint", "{{f}}({{v}})\nprint"],
+        ["{{v}} = {{f}}({{v}})\nprint({{v}})", "{{v}} = {{f}}({{v}})\nprint({{f}}({{v}}))"],
+        ["return {{p}} {{op}} {{k}}", "print({{p}} {{op}} {{k}})"]
+      ]
+    },
+    {
+      "id": "sc-fresh",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}():\n    {{c}} = 0\n    for i in range({{n}}):\n        {{c}} = {{c}} + {{k}}\n    return {{c}}\n\nprint({{f}}())\nprint({{f}}())",
+      "values": [
+        {
+          "f": "collect",
+          "c": "coins",
+          "n": "4",
+          "k": "5"
+        },
+        {
+          "f": "charge",
+          "c": "power",
+          "n": "2",
+          "k": "10"
+        },
+        {
+          "f": "run_laps",
+          "c": "distance",
+          "n": "5",
+          "k": "2"
+        },
+        {
+          "f": "stack",
+          "c": "boxes",
+          "n": "3",
+          "k": "4"
+        }
+      ],
+      "mistakes": [
+        ["    return {{c}}", "    print({{c}})"],
+        ["        {{c}} = {{c}} + {{k}}", "        {{c}} = {{k}}"],
+        ["range({{n}})", "range({{n}} + 1)"],
+        ["print({{f}}())\nprint({{f}}())", "print({{f}}())"]
+      ]
+    },
+    {
+      "id": "sc-param",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{v}}):\n    {{v}} = {{v}} {{op}} {{k}}\n    return {{v}}\n\n{{v}} = {{a}}\n{{w}} = {{f}}({{v}})\nprint({{v}})\nprint({{w}})",
+      "values": [
+        {
+          "f": "double",
+          "v": "n",
+          "op": "*",
+          "k": "2",
+          "a": "3",
+          "w": "result"
+        },
+        {
+          "f": "add_tax",
+          "v": "price",
+          "op": "+",
+          "k": "5",
+          "a": "20",
+          "w": "total"
+        },
+        {
+          "f": "half",
+          "v": "n",
+          "op": "/",
+          "k": "2",
+          "a": "9",
+          "w": "part"
+        },
+        {
+          "f": "lose_life",
+          "v": "lives",
+          "op": "-",
+          "k": "1",
+          "a": "3",
+          "w": "left"
+        },
+        {
+          "f": "triple",
+          "v": "x",
+          "op": "*",
+          "k": "3",
+          "a": "4",
+          "w": "big"
+        }
+      ],
+      "mistakes": [
+        ["print({{v}})\nprint({{w}})", "print({{w}})\nprint({{v}})"],
+        ["{{w}} = {{f}}({{v}})", "{{w}} = {{v}}"],
+        ["    return {{v}}", "    return {{k}}"],
+        ["print({{v}})\nprint", "print({{w}})\nprint"]
+      ]
+    },
+    {
+      "id": "sc-two",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}():\n    {{v}} = {{a}}\n    print({{v}})\n\ndef {{g}}():\n    {{v}} = {{b}}\n    print({{v}})\n\n{{g}}()\n{{f}}()\n{{g}}()",
+      "values": [
+        {
+          "f": "first",
+          "g": "second",
+          "v": "x",
+          "a": "5",
+          "b": "99"
+        },
+        {
+          "f": "left",
+          "g": "right",
+          "v": "speed",
+          "a": "40",
+          "b": "70"
+        },
+        {
+          "f": "morning",
+          "g": "night",
+          "v": "temp",
+          "a": "12",
+          "b": "3"
+        },
+        {
+          "f": "alpha",
+          "g": "beta",
+          "v": "code",
+          "a": "101",
+          "b": "202"
+        }
+      ],
+      "mistakes": [
+        ["{{g}}()\n{{f}}()\n{{g}}()", "{{f}}()\n{{g}}()\n{{f}}()"],
+        ["    {{v}} = {{b}}", "    {{v}} = {{a}}"],
+        ["{{f}}()\n{{g}}()", "{{f}}()"],
+        ["    print({{v}})\n\ndef", "\ndef"]
+      ]
+    },
+    {
+      "id": "sc-which-store",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} * 2\n\n{{v}} = {{a}}\nprint(f\"Before: {{{v}}}\")\n{{v}} = {{f}}({{v}})\nprint(f\"After: {{{v}}}\")",
+      "values": [
+        {
+          "f": "boost",
+          "p": "level",
+          "v": "shield",
+          "a": "100"
+        },
+        {
+          "f": "heal",
+          "p": "hp",
+          "v": "health",
+          "a": "40"
+        },
+        {
+          "f": "refuel",
+          "p": "tank",
+          "v": "fuel",
+          "a": "35"
+        },
+        {
+          "f": "reload",
+          "p": "clip",
+          "v": "ammo",
+          "a": "6"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{f}}({{v}})", "{{f}}({{v}})"],
+        ["    return {{p}} * 2", "    print({{p}} * 2)"],
+        ["    return {{p}} * 2", "    {{p}} = {{p}} * 2"]
+      ]
+    },
+    {
+      "id": "sc-which-local",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{a}}\n\ndef {{f}}():\n    {{v}} = {{b}}\n    print(f\"Inside: {{{v}}}\")\n\n{{f}}()\nprint(f\"Outside: {{{v}}}\")",
+      "values": [
+        {
+          "v": "x",
+          "a": "1",
+          "b": "2",
+          "f": "f"
+        },
+        {
+          "v": "speed",
+          "a": "60",
+          "b": "90",
+          "f": "race"
+        },
+        {
+          "v": "level",
+          "a": "3",
+          "b": "7",
+          "f": "cheat"
+        },
+        {
+          "v": "gold",
+          "a": "15",
+          "b": "500",
+          "f": "dream"
+        }
+      ],
+      "mistakes": [
+        ["    {{v}} = {{b}}\n", ""],
+        ["{{v}} = {{a}}\n\ndef", "{{v}} = {{b}}\n\ndef"],
+        ["{{f}}()\nprint", "print"]
+      ]
+    },
+    {
+      "id": "sc-gap-store",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} * {{k}}\n\n{{v}} = {{a}}\n___\nprint({{v}})",
+      "values": [
+        {
+          "f": "boost",
+          "p": "level",
+          "k": "2",
+          "v": "shield",
+          "a": "100"
+        },
+        {
+          "f": "triple",
+          "p": "n",
+          "k": "3",
+          "v": "coins",
+          "a": "7"
+        },
+        {
+          "f": "double",
+          "p": "hp",
+          "k": "2",
+          "v": "health",
+          "a": "45"
+        },
+        {
+          "f": "scale",
+          "p": "size",
+          "k": "10",
+          "v": "width",
+          "a": "6"
+        }
+      ],
+      "answer": "{{v}} = {{f}}({{v}})",
+      "wrong": [
+        "{{f}}({{v}})",
+        "{{p}} = {{f}}({{v}})",
+        "{{v}} = {{p}} * {{k}}",
+        "print({{f}}({{v}}))"
+      ]
+    },
+    {
+      "id": "sc-gap-return",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}):\n    {{p}} = {{p}} {{op}} {{k}}\n    ___\n\n{{v}} = {{a}}\n{{v}} = {{f}}({{v}})\nprint({{v}})",
+      "values": [
+        {
+          "f": "take_damage",
+          "p": "hp",
+          "op": "-",
+          "k": "10",
+          "v": "health",
+          "a": "100"
+        },
+        {
+          "f": "add_points",
+          "p": "pts",
+          "op": "+",
+          "k": "15",
+          "v": "score",
+          "a": "40"
+        },
+        {
+          "f": "burn",
+          "p": "tank",
+          "op": "-",
+          "k": "25",
+          "v": "fuel",
+          "a": "60"
+        },
+        {
+          "f": "grow",
+          "p": "size",
+          "op": "*",
+          "k": "3",
+          "v": "crowd",
+          "a": "9"
+        }
+      ],
+      "answer": "return {{p}}",
+      "wrong": ["print({{p}})", "return {{v}}", "{{v}} = {{p}}", "return"]
+    },
+    {
+      "id": "sc-gap-def",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    return {{p}} {{op}} {{k}}\n\nprint({{f}}({{a}}))",
+      "values": [
+        {
+          "f": "boost",
+          "p": "shield",
+          "op": "*",
+          "k": "2",
+          "a": "100"
+        },
+        {
+          "f": "heal",
+          "p": "hp",
+          "op": "+",
+          "k": "30",
+          "a": "45"
+        },
+        {
+          "f": "spend",
+          "p": "money",
+          "op": "-",
+          "k": "12",
+          "a": "50"
+        },
+        {
+          "f": "split",
+          "p": "loot",
+          "op": "/",
+          "k": "4",
+          "a": "10"
+        }
+      ],
+      "answer": "def {{f}}({{p}}):",
+      "wrong": ["def {{f}}():", "def {{p}}({{f}}):", "def {{f}}({{a}}):", "{{f}}({{p}}):"]
+    },
+    {
+      "id": "sc-val-arg",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} * 2\n\n{{v}} = {{a}}\nprint({{f}}(___))\nprint({{v}})",
+      "values": [
+        {
+          "f": "boost",
+          "p": "level",
+          "v": "shield",
+          "a": "100"
+        },
+        {
+          "f": "double",
+          "p": "n",
+          "v": "coins",
+          "a": "13"
+        },
+        {
+          "f": "heal",
+          "p": "hp",
+          "v": "health",
+          "a": "35"
+        },
+        {
+          "f": "twice",
+          "p": "x",
+          "v": "laps",
+          "a": "4"
+        }
+      ],
+      "answer": "{{v}}",
+      "wrong": ["{{p}}", "\"{{v}}\"", "{{f}}"]
+    },
+    {
+      "id": "sc-val-store",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} + {{k}}\n\n{{v}} = {{a}}\n___ = {{f}}({{v}})\nprint({{v}})",
+      "values": [
+        {
+          "f": "heal",
+          "p": "hp",
+          "k": "20",
+          "v": "health",
+          "a": "60"
+        },
+        {
+          "f": "refuel",
+          "p": "tank",
+          "k": "50",
+          "v": "fuel",
+          "a": "15"
+        },
+        {
+          "f": "reload",
+          "p": "clip",
+          "k": "6",
+          "v": "ammo",
+          "a": "2"
+        },
+        {
+          "f": "level_up",
+          "p": "lv",
+          "k": "1",
+          "v": "level",
+          "a": "9"
+        }
+      ],
+      "answer": "{{v}}",
+      "wrong": ["{{p}}", "result", "{{f}}"]
+    },
+    {
+      "id": "sc-val-ret",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{t}} = {{z}}\n\ndef {{f}}({{p}}):\n    {{t}} = {{p}} * {{k}}\n    return ___\n\nprint({{f}}({{a}}))\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "z": "0",
+          "f": "times_ten",
+          "p": "n",
+          "k": "10",
+          "a": "7"
+        },
+        {
+          "t": "fence",
+          "z": "1",
+          "f": "fence_for",
+          "p": "side",
+          "k": "4",
+          "a": "4"
+        },
+        {
+          "t": "cost",
+          "z": "5",
+          "f": "price_of",
+          "p": "items",
+          "k": "3",
+          "a": "8"
+        },
+        {
+          "t": "damage",
+          "z": "2",
+          "f": "hit",
+          "p": "power",
+          "k": "5",
+          "a": "6"
+        }
+      ],
+      "answer": "{{t}}",
+      "wrong": ["{{p}}", "{{z}}", "\"{{t}}\""]
+    },
+    {
+      "id": "sc-bad-def",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{label}}: {{{p}}}\")\n    return {{p}} * {{k}}\n\n{{v}} = {{f}}({{a}})\nprint({{v}})",
+      "values": [
+        {
+          "f": "boost",
+          "p": "level",
+          "label": "Level",
+          "k": "2",
+          "v": "shield",
+          "a": "50"
+        },
+        {
+          "f": "triple",
+          "p": "coins",
+          "label": "Coins",
+          "k": "3",
+          "v": "loot",
+          "a": "9"
+        },
+        {
+          "f": "scale",
+          "p": "size",
+          "label": "Size",
+          "k": "10",
+          "v": "width",
+          "a": "4"
+        }
+      ],
+      "bug": ["def {{f}}({{p}}):", "def {{f}}():"]
+    },
+    {
+      "id": "sc-bad-store",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} * 2\n\n{{v}} = {{a}}\nprint(f\"Before: {{{v}}}\")\n{{v}} = {{f}}({{v}})\nprint(f\"After: {{{v}}}\")\nprint(f\"Plus 5: {{{v}} + 5}\")",
+      "values": [
+        {
+          "f": "boost",
+          "p": "level",
+          "v": "shield",
+          "a": "100"
+        },
+        {
+          "f": "double",
+          "p": "n",
+          "v": "coins",
+          "a": "25"
+        },
+        {
+          "f": "heal",
+          "p": "hp",
+          "v": "health",
+          "a": "30"
+        }
+      ],
+      "bug": ["{{v}} = {{f}}({{v}})", "{{f}}({{v}})"]
+    },
+    {
+      "id": "sc-bad-name",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}():\n    {{v}} = {{a}}\n    return {{v}}\n\n{{w}} = {{f}}()\nprint({{w}} {{op}} {{k}})\nprint({{w}})",
+      "values": [
+        {
+          "f": "start_health",
+          "v": "hp",
+          "a": "100",
+          "w": "health",
+          "op": "-",
+          "k": "10"
+        },
+        {
+          "f": "base_price",
+          "v": "price",
+          "a": "40",
+          "w": "cost",
+          "op": "+",
+          "k": "5"
+        },
+        {
+          "f": "first_level",
+          "v": "lv",
+          "a": "1",
+          "w": "level",
+          "op": "+",
+          "k": "1"
+        }
+      ],
+      "bug": ["print({{w}} {{op}} {{k}})", "print({{v}} {{op}} {{k}})"]
+    },
+    {
+      "id": "sc-bad-local",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}():\n    {{v}} = {{a}}\n    return {{v}}\n\ndef {{g}}():\n    {{w}} = {{b}}\n    return {{w}}\n\nprint({{f}}())\nprint({{g}}())",
+      "values": [
+        {
+          "f": "red_team",
+          "v": "red",
+          "a": "3",
+          "g": "blue_team",
+          "w": "blue",
+          "b": "5"
+        },
+        {
+          "f": "day_temp",
+          "v": "day",
+          "a": "28",
+          "g": "night_temp",
+          "w": "night",
+          "b": "14"
+        },
+        {
+          "f": "gold_count",
+          "v": "gold",
+          "a": "120",
+          "g": "gem_count",
+          "w": "gems",
+          "b": "8"
+        }
+      ],
+      "bug": ["print({{g}}())", "print({{w}})"]
+    }
+  ]
+}

@@ -1,0 +1,1001 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce este scope-ul unei variabile?",
+      "options": [
+        "Zona de cod în care variabila există și poate fi folosită",
+        "Felul valorii pe care o ține",
+        "De câte ori i se poate schimba valoarea",
+        "Linia unde a fost scrisă prima oară"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def saluta():\n    mesaj = \"Salut din Vice City\"\n    print(mesaj)\n\nsaluta()\nprint(mesaj)",
+      "options": [
+        "Afișează de două ori Salut din Vice City: mesaj rămâne după apel",
+        "Afișează Salut din Vice City, apoi se oprește cu un NameError: mesaj există doar în saluta",
+        "Nu afișează nimic: saluta() doar păstrează mesajul",
+        "Se oprește înainte să afișeze ceva: print() nu poate fi folosit într-o funcție"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Unde poate fi folosită o variabilă creată în interiorul unei funcții?",
+      "options": [
+        "Oriunde în program, după ce funcția a rulat",
+        "Doar pe linia de imediat după apel",
+        "În acea funcție și în funcțiile scrise după ea",
+        "Doar în interiorul acelei funcții"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "Ce variabile poate citi o funcție fără să le primească drept parametri?",
+      "options": [
+        "Niciuna: o funcție vede doar parametrii ei",
+        "Variabilele locale ale celorlalte funcții",
+        "Pe cele globale, create în afara oricărei funcții",
+        "Doar pe cele create după ce funcția a fost apelată"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "nume = \"Tommy Vercetti\"\n\ndef saluta():\n    print(f\"Salut, {nume}\")\n\nsaluta()\nprint(nume)",
+      "options": [
+        "Salut, Tommy Vercetti\nTommy Vercetti",
+        "Salut, {nume}\nTommy Vercetti",
+        "Se oprește cu un NameError",
+        "Salut, Tommy Vercetti"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "viata = 100\n\ndef primeste_lovitura():\n    viata = viata - 10\n    print(viata)\n\nprimeste_lovitura()",
+      "options": [
+        "Afișează 90: funcția ia viata globală și scade 10",
+        "Afișează 100: schimbarea se pierde când se termină funcția",
+        "Afișează 90, iar viata globală devine și ea 90",
+        "Se oprește cu o eroare: viata = ... face viata locală, iar cea locală nu are încă o valoare"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Când tratează Python o variabilă din interiorul unei funcții ca locală?",
+      "options": [
+        "Când funcția îi dă o valoare cu =, chiar dacă o globală are același nume",
+        "Doar când nicio globală nu are numele ei",
+        "Doar când e un parametru",
+        "Niciodată: într-o funcție Python folosește mereu globala"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "viata = 100\n\ndef primeste_lovitura(pv):\n    pv = pv - 10\n    return pv\n\nviata = primeste_lovitura(viata)\nprint(viata)",
+      "options": ["100", "Se oprește cu o eroare", "80", "90"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Care e, după lecție, cel mai bun fel în care o funcție lucrează cu date?",
+      "options": [
+        "Să citească și să schimbe direct variabilele globale",
+        "Să își afișeze rezultatele în loc să le returneze",
+        "Să primească datele prin parametri și să trimită rezultatele înapoi cu return",
+        "Să dea fiecărei variabile din program alt nume"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "def f():\n    x = 5\n    print(x)\n\ndef g():\n    x = 99\n    print(x)\n\nf()\ng()",
+      "options": ["99\n99", "5\n5", "5\n99", "Se oprește cu o eroare: x e creat de două ori"],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "`f` face `x = 5`, iar `g` face `x = 99`. De ce nu se încurcă cele două x?",
+      "options": [
+        "Fiecare e local în funcția lui, deci sunt două variabile diferite",
+        "Python păstrează doar ultimul x pe care l-a văzut",
+        "g rulează după f, așa că șterge întâi x-ul lui f",
+        "Ba se încurcă: al doilea x îl înlocuiește pe primul pentru totdeauna"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "În misiunea Amplificare Scut, `amplifica(scut)` e apelată fără să stocăm rezultatul. Ce afișează linia Ignorat?",
+      "options": ["Ignorat: 200", "Ignorat: 100", "Ignorat: None", "Ignorat: 0"],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "text": "În misiunea Amplificare Scut, care linie face scut 200?",
+      "options": [
+        "amplifica(scut)",
+        "amplifica = scut * 2",
+        "scut = amplifica(scut)",
+        "amplifica(scut) = scut"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "În misiunea Amplificare Scut, de ce lucrează amplifica doar cu parametrul ei, nu cu scut cel global?",
+      "options": [
+        "Ca să dubleze orice valoare primește și să nu schimbe pe neașteptate o globală",
+        "Pentru că o funcție nu poate citi o variabilă globală",
+        "Pentru că o variabilă globală nu poate fi înmulțită",
+        "Ca funcția să ruleze mai repede"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "def pune_scor():\n    scor = 50\n\nscor = 10\npune_scor()\nprint(scor)",
+      "options": ["50", "10", "None", "Se oprește cu o eroare"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "x = 5\n\ndef arata():\n    print(x)\n\narata()\nx = 8\narata()",
+      "options": ["5\n8", "8\n8", "5\n5", "Se oprește cu o eroare"],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "def dublu(n):\n    n = n * 2\n    return n\n\nn = 3\ndublu(n)\nprint(n)",
+      "options": ["6", "3", "None", "33"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Ce se întâmplă cu variabilele locale ale unei funcții când funcția se termină?",
+      "options": [
+        "Rămân, gata pentru următorul apel",
+        "Devin globale",
+        "Dispar",
+        "Sunt păstrate în variabila numită return"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def calculeaza():\n    total = 7\n    return total\n\ncalculeaza()\nprint(total)",
+      "options": [
+        "Afișează 7: return îi dă total programului",
+        "Afișează None: total e gol în afară",
+        "Nu afișează nimic: calculeaza() n-a fost afișat",
+        "Se oprește cu un NameError: total există doar în calculeaza"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "Ce linie, scrisă după această funcție, afișează 7?",
+      "code": "def calculeaza():\n    total = 7\n    return total",
+      "options": [
+        "print(calculeaza())",
+        "print(total)",
+        "print(calculeaza.total)",
+        "calculeaza(total)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "def numara():\n    contor = 0\n    for i in range(3):\n        contor = contor + 1\n    return contor\n\nprint(numara())\nprint(numara())",
+      "options": ["3\n6", "3\n3", "0\n0", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "O funcție face `contor = 0`, apoi îl crește într-o buclă. De ce pornește contor din nou de la 0 la fiecare apel?",
+      "options": [
+        "Fiecare apel își face propriile variabile locale, noi",
+        "return pune contor înapoi la 0",
+        "Bucla golește contor când se termină",
+        "Python pune orice variabilă înapoi la 0 după un print"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def saluta(nume):\n    print(f\"Salut, {nume}\")\n\nsaluta(\"Lance\")\nprint(nume)",
+      "options": [
+        "Afișează de două ori Salut, Lance: parametrul rămâne după apel",
+        "Afișează Salut, Lance, apoi Lance",
+        "Afișează Salut, Lance, apoi se oprește cu un NameError: nume există doar în saluta",
+        "Se oprește înainte să afișeze ceva: un parametru nu poate fi folosit într-un f-string"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Parametrul unei funcții e local sau global?",
+      "options": [
+        "Global: tot programul îl poate citi",
+        "Global, dar doar după primul apel",
+        "Local: există doar în interiorul funcției lui",
+        "Niciuna: e doar un nume în linia def"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "nivel = 1\n\ndef nivelul_urmator(nv):\n    return nv + 1\n\nnivel = nivelul_urmator(nivel)\nnivel = nivelul_urmator(nivel)\nprint(nivel)",
+      "options": ["2", "3", "1", "Se oprește cu o eroare"],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "x = 5\n\ndef f():\n    print(x)\n    x = 3\n\nf()",
+      "options": [
+        "Afișează 5: x = 3 vine după print",
+        "Afișează 3: funcția își folosește propriul x",
+        "Afișează 5, apoi 3",
+        "Se oprește cu o eroare: x = 3 face x local în tot f, iar la print nu are încă o valoare"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "def f():\n    x = 1\n    print(x)\n\nx = 2\nf()\nprint(x)",
+      "options": ["1\n1", "1\n2", "2\n2", "2\n1"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Unde e creată o variabilă globală?",
+      "options": [
+        "În parametrii unei funcții",
+        "Într-o funcție, pe prima ei linie",
+        "Într-o buclă",
+        "În afara oricărei funcții, la nivelul cel mai de sus al programului"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "bonus = 10\n\ndef adauga_bonus(scor):\n    return scor + bonus\n\nprint(adauga_bonus(5))",
+      "options": ["15", "5", "10", "Se oprește cu o eroare: bonus nu e un parametru"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "def vindeca(pv):\n    pv = pv + 20\n    print(pv)\n\nviata = 50\nvindeca(viata)\nprint(viata)",
+      "options": ["70\n70", "50\n50", "50\n70", "70\n50"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "sc-local",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{a}}\n\ndef {{f}}():\n    {{v}} = {{b}}\n    print({{v}})\n\n{{f}}()\nprint({{v}})",
+      "values": [
+        {
+          "v": "scut",
+          "a": "100",
+          "b": "200",
+          "f": "amplifica"
+        },
+        {
+          "v": "viata",
+          "a": "80",
+          "b": "50",
+          "f": "vindeca"
+        },
+        {
+          "v": "combustibil",
+          "a": "30",
+          "b": "90",
+          "f": "alimenteaza"
+        },
+        {
+          "v": "munitie",
+          "a": "12",
+          "b": "6",
+          "f": "reincarca"
+        },
+        {
+          "v": "scor",
+          "a": "0",
+          "b": "10",
+          "f": "bonus"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}()\nprint({{v}})", "print({{v}})\n{{f}}()"],
+        ["    {{v}} = {{b}}\n", ""],
+        ["{{f}}()\nprint({{v}})", "{{f}}()"],
+        ["{{v}} = {{a}}\n\ndef", "{{v}} = {{b}}\n\ndef"]
+      ]
+    },
+    {
+      "id": "sc-read",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{a}}\n\ndef {{f}}():\n    print(f\"{{label}}: {{{v}}}\")\n\n{{f}}()\n{{v}} = {{b}}\n{{f}}()",
+      "values": [
+        {
+          "v": "scut",
+          "a": "100",
+          "b": "40",
+          "f": "arata_scut",
+          "label": "Scut"
+        },
+        {
+          "v": "viata",
+          "a": "90",
+          "b": "65",
+          "f": "arata_viata",
+          "label": "Viata"
+        },
+        {
+          "v": "combustibil",
+          "a": "20",
+          "b": "75",
+          "f": "arata_combustibil",
+          "label": "Combustibil"
+        },
+        {
+          "v": "munitie",
+          "a": "8",
+          "b": "3",
+          "f": "arata_munitie",
+          "label": "Munitie"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}()\n{{v}} = {{b}}\n{{f}}()", "{{f}}()\n{{f}}()\n{{v}} = {{b}}"],
+        ["print(f\"", "print(\""],
+        ["\n{{f}}()\n{{v}}", "\n{{v}}"],
+        ["{{{v}}}", "{{a}}"]
+      ]
+    },
+    {
+      "id": "sc-store",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} {{op}} {{k}}\n\n{{v}} = {{a}}\n{{f}}({{v}})\nprint({{v}})\n{{v}} = {{f}}({{v}})\nprint({{v}})",
+      "values": [
+        {
+          "f": "amplifica",
+          "p": "nivel",
+          "op": "*",
+          "k": "2",
+          "v": "scut",
+          "a": "100"
+        },
+        {
+          "f": "vindeca",
+          "p": "pv",
+          "op": "+",
+          "k": "25",
+          "v": "viata",
+          "a": "50"
+        },
+        {
+          "f": "cheltuie",
+          "p": "monede",
+          "op": "-",
+          "k": "30",
+          "v": "bani",
+          "a": "100"
+        },
+        {
+          "f": "reincarca",
+          "p": "incarcator",
+          "op": "+",
+          "k": "6",
+          "v": "munitie",
+          "a": "4"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}({{v}})\nprint({{v}})\n{{v}} =", "{{v}} = {{f}}({{v}})\nprint({{v}})\n{{v}} ="],
+        ["{{v}} = {{f}}({{v}})\nprint", "{{f}}({{v}})\nprint"],
+        ["{{v}} = {{f}}({{v}})\nprint({{v}})", "{{v}} = {{f}}({{v}})\nprint({{f}}({{v}}))"],
+        ["return {{p}} {{op}} {{k}}", "print({{p}} {{op}} {{k}})"]
+      ]
+    },
+    {
+      "id": "sc-fresh",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}():\n    {{c}} = 0\n    for i in range({{n}}):\n        {{c}} = {{c}} + {{k}}\n    return {{c}}\n\nprint({{f}}())\nprint({{f}}())",
+      "values": [
+        {
+          "f": "aduna",
+          "c": "monede",
+          "n": "4",
+          "k": "5"
+        },
+        {
+          "f": "incarca",
+          "c": "putere",
+          "n": "2",
+          "k": "10"
+        },
+        {
+          "f": "alearga_ture",
+          "c": "distanta",
+          "n": "5",
+          "k": "2"
+        },
+        {
+          "f": "stivuieste",
+          "c": "cutii",
+          "n": "3",
+          "k": "4"
+        }
+      ],
+      "mistakes": [
+        ["    return {{c}}", "    print({{c}})"],
+        ["        {{c}} = {{c}} + {{k}}", "        {{c}} = {{k}}"],
+        ["range({{n}})", "range({{n}} + 1)"],
+        ["print({{f}}())\nprint({{f}}())", "print({{f}}())"]
+      ]
+    },
+    {
+      "id": "sc-param",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}({{v}}):\n    {{v}} = {{v}} {{op}} {{k}}\n    return {{v}}\n\n{{v}} = {{a}}\n{{w}} = {{f}}({{v}})\nprint({{v}})\nprint({{w}})",
+      "values": [
+        {
+          "f": "dublu",
+          "v": "n",
+          "op": "*",
+          "k": "2",
+          "a": "3",
+          "w": "rezultat"
+        },
+        {
+          "f": "adauga_taxa",
+          "v": "pret",
+          "op": "+",
+          "k": "5",
+          "a": "20",
+          "w": "total"
+        },
+        {
+          "f": "jumatate",
+          "v": "n",
+          "op": "/",
+          "k": "2",
+          "a": "9",
+          "w": "parte"
+        },
+        {
+          "f": "pierde_viata",
+          "v": "vieti",
+          "op": "-",
+          "k": "1",
+          "a": "3",
+          "w": "ramase"
+        },
+        {
+          "f": "triplu",
+          "v": "x",
+          "op": "*",
+          "k": "3",
+          "a": "4",
+          "w": "mare"
+        }
+      ],
+      "mistakes": [
+        ["print({{v}})\nprint({{w}})", "print({{w}})\nprint({{v}})"],
+        ["{{w}} = {{f}}({{v}})", "{{w}} = {{v}}"],
+        ["    return {{v}}", "    return {{k}}"],
+        ["print({{v}})\nprint", "print({{w}})\nprint"]
+      ]
+    },
+    {
+      "id": "sc-two",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def {{f}}():\n    {{v}} = {{a}}\n    print({{v}})\n\ndef {{g}}():\n    {{v}} = {{b}}\n    print({{v}})\n\n{{g}}()\n{{f}}()\n{{g}}()",
+      "values": [
+        {
+          "f": "primul",
+          "g": "al_doilea",
+          "v": "x",
+          "a": "5",
+          "b": "99"
+        },
+        {
+          "f": "stanga",
+          "g": "dreapta",
+          "v": "viteza",
+          "a": "40",
+          "b": "70"
+        },
+        {
+          "f": "dimineata",
+          "g": "noaptea",
+          "v": "temp",
+          "a": "12",
+          "b": "3"
+        },
+        {
+          "f": "alfa",
+          "g": "beta",
+          "v": "cod",
+          "a": "101",
+          "b": "202"
+        }
+      ],
+      "mistakes": [
+        ["{{g}}()\n{{f}}()\n{{g}}()", "{{f}}()\n{{g}}()\n{{f}}()"],
+        ["    {{v}} = {{b}}", "    {{v}} = {{a}}"],
+        ["{{f}}()\n{{g}}()", "{{f}}()"],
+        ["    print({{v}})\n\ndef", "\ndef"]
+      ]
+    },
+    {
+      "id": "sc-which-store",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} * 2\n\n{{v}} = {{a}}\nprint(f\"Inainte: {{{v}}}\")\n{{v}} = {{f}}({{v}})\nprint(f\"Dupa: {{{v}}}\")",
+      "values": [
+        {
+          "f": "amplifica",
+          "p": "nivel",
+          "v": "scut",
+          "a": "100"
+        },
+        {
+          "f": "vindeca",
+          "p": "pv",
+          "v": "viata",
+          "a": "40"
+        },
+        {
+          "f": "alimenteaza",
+          "p": "rezervor",
+          "v": "combustibil",
+          "a": "35"
+        },
+        {
+          "f": "reincarca",
+          "p": "incarcator",
+          "v": "munitie",
+          "a": "6"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{f}}({{v}})", "{{f}}({{v}})"],
+        ["    return {{p}} * 2", "    print({{p}} * 2)"],
+        ["    return {{p}} * 2", "    {{p}} = {{p}} * 2"]
+      ]
+    },
+    {
+      "id": "sc-which-local",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = {{a}}\n\ndef {{f}}():\n    {{v}} = {{b}}\n    print(f\"Inauntru: {{{v}}}\")\n\n{{f}}()\nprint(f\"Afara: {{{v}}}\")",
+      "values": [
+        {
+          "v": "x",
+          "a": "1",
+          "b": "2",
+          "f": "f"
+        },
+        {
+          "v": "viteza",
+          "a": "60",
+          "b": "90",
+          "f": "cursa"
+        },
+        {
+          "v": "nivel",
+          "a": "3",
+          "b": "7",
+          "f": "truc"
+        },
+        {
+          "v": "aur",
+          "a": "15",
+          "b": "500",
+          "f": "vis"
+        }
+      ],
+      "mistakes": [
+        ["    {{v}} = {{b}}\n", ""],
+        ["{{v}} = {{a}}\n\ndef", "{{v}} = {{b}}\n\ndef"],
+        ["{{f}}()\nprint", "print"]
+      ]
+    },
+    {
+      "id": "sc-gap-store",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} * {{k}}\n\n{{v}} = {{a}}\n___\nprint({{v}})",
+      "values": [
+        {
+          "f": "amplifica",
+          "p": "nivel",
+          "k": "2",
+          "v": "scut",
+          "a": "100"
+        },
+        {
+          "f": "triplu",
+          "p": "n",
+          "k": "3",
+          "v": "monede",
+          "a": "7"
+        },
+        {
+          "f": "dublu",
+          "p": "pv",
+          "k": "2",
+          "v": "viata",
+          "a": "45"
+        },
+        {
+          "f": "mareste",
+          "p": "marime",
+          "k": "10",
+          "v": "latime",
+          "a": "6"
+        }
+      ],
+      "answer": "{{v}} = {{f}}({{v}})",
+      "wrong": [
+        "{{f}}({{v}})",
+        "{{p}} = {{f}}({{v}})",
+        "{{v}} = {{p}} * {{k}}",
+        "print({{f}}({{v}}))"
+      ]
+    },
+    {
+      "id": "sc-gap-return",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    {{p}} = {{p}} {{op}} {{k}}\n    ___\n\n{{v}} = {{a}}\n{{v}} = {{f}}({{v}})\nprint({{v}})",
+      "values": [
+        {
+          "f": "primeste_lovitura",
+          "p": "pv",
+          "op": "-",
+          "k": "10",
+          "v": "viata",
+          "a": "100"
+        },
+        {
+          "f": "adauga_puncte",
+          "p": "pct",
+          "op": "+",
+          "k": "15",
+          "v": "scor",
+          "a": "40"
+        },
+        {
+          "f": "consuma",
+          "p": "rezervor",
+          "op": "-",
+          "k": "25",
+          "v": "combustibil",
+          "a": "60"
+        },
+        {
+          "f": "creste",
+          "p": "marime",
+          "op": "*",
+          "k": "3",
+          "v": "multime",
+          "a": "9"
+        }
+      ],
+      "answer": "return {{p}}",
+      "wrong": ["print({{p}})", "return {{v}}", "{{v}} = {{p}}", "return"]
+    },
+    {
+      "id": "sc-gap-def",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    return {{p}} {{op}} {{k}}\n\nprint({{f}}({{a}}))",
+      "values": [
+        {
+          "f": "amplifica",
+          "p": "scut",
+          "op": "*",
+          "k": "2",
+          "a": "100"
+        },
+        {
+          "f": "vindeca",
+          "p": "pv",
+          "op": "+",
+          "k": "30",
+          "a": "45"
+        },
+        {
+          "f": "cheltuie",
+          "p": "bani",
+          "op": "-",
+          "k": "12",
+          "a": "50"
+        },
+        {
+          "f": "imparte",
+          "p": "prada",
+          "op": "/",
+          "k": "4",
+          "a": "10"
+        }
+      ],
+      "answer": "def {{f}}({{p}}):",
+      "wrong": ["def {{f}}():", "def {{p}}({{f}}):", "def {{f}}({{a}}):", "{{f}}({{p}}):"]
+    },
+    {
+      "id": "sc-val-arg",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} * 2\n\n{{v}} = {{a}}\nprint({{f}}(___))\nprint({{v}})",
+      "values": [
+        {
+          "f": "amplifica",
+          "p": "nivel",
+          "v": "scut",
+          "a": "100"
+        },
+        {
+          "f": "dublu",
+          "p": "n",
+          "v": "monede",
+          "a": "13"
+        },
+        {
+          "f": "vindeca",
+          "p": "pv",
+          "v": "viata",
+          "a": "35"
+        },
+        {
+          "f": "de_doua_ori",
+          "p": "x",
+          "v": "ture",
+          "a": "4"
+        }
+      ],
+      "answer": "{{v}}",
+      "wrong": ["{{p}}", "\"{{v}}\"", "{{f}}"]
+    },
+    {
+      "id": "sc-val-store",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} + {{k}}\n\n{{v}} = {{a}}\n___ = {{f}}({{v}})\nprint({{v}})",
+      "values": [
+        {
+          "f": "vindeca",
+          "p": "pv",
+          "k": "20",
+          "v": "viata",
+          "a": "60"
+        },
+        {
+          "f": "alimenteaza",
+          "p": "rezervor",
+          "k": "50",
+          "v": "combustibil",
+          "a": "15"
+        },
+        {
+          "f": "reincarca",
+          "p": "incarcator",
+          "k": "6",
+          "v": "munitie",
+          "a": "2"
+        },
+        {
+          "f": "creste_nivelul",
+          "p": "nv",
+          "k": "1",
+          "v": "nivel",
+          "a": "9"
+        }
+      ],
+      "answer": "{{v}}",
+      "wrong": ["{{p}}", "rezultat", "{{f}}"]
+    },
+    {
+      "id": "sc-val-ret",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{t}} = {{z}}\n\ndef {{f}}({{p}}):\n    {{t}} = {{p}} * {{k}}\n    return ___\n\nprint({{f}}({{a}}))\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "z": "0",
+          "f": "ori_zece",
+          "p": "n",
+          "k": "10",
+          "a": "7"
+        },
+        {
+          "t": "gard",
+          "z": "1",
+          "f": "gard_pentru",
+          "p": "latura",
+          "k": "4",
+          "a": "4"
+        },
+        {
+          "t": "cost",
+          "z": "5",
+          "f": "pretul",
+          "p": "bucati",
+          "k": "3",
+          "a": "8"
+        },
+        {
+          "t": "lovitura",
+          "z": "2",
+          "f": "loveste",
+          "p": "putere",
+          "k": "5",
+          "a": "6"
+        }
+      ],
+      "answer": "{{t}}",
+      "wrong": ["{{p}}", "{{z}}", "\"{{t}}\""]
+    },
+    {
+      "id": "sc-bad-def",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{label}}: {{{p}}}\")\n    return {{p}} * {{k}}\n\n{{v}} = {{f}}({{a}})\nprint({{v}})",
+      "values": [
+        {
+          "f": "amplifica",
+          "p": "nivel",
+          "label": "Nivel",
+          "k": "2",
+          "v": "scut",
+          "a": "50"
+        },
+        {
+          "f": "triplu",
+          "p": "monede",
+          "label": "Monede",
+          "k": "3",
+          "v": "prada",
+          "a": "9"
+        },
+        {
+          "f": "mareste",
+          "p": "marime",
+          "label": "Marime",
+          "k": "10",
+          "v": "latime",
+          "a": "4"
+        }
+      ],
+      "bug": ["def {{f}}({{p}}):", "def {{f}}():"]
+    },
+    {
+      "id": "sc-bad-store",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} * 2\n\n{{v}} = {{a}}\nprint(f\"Inainte: {{{v}}}\")\n{{v}} = {{f}}({{v}})\nprint(f\"Dupa: {{{v}}}\")\nprint(f\"Plus 5: {{{v}} + 5}\")",
+      "values": [
+        {
+          "f": "amplifica",
+          "p": "nivel",
+          "v": "scut",
+          "a": "100"
+        },
+        {
+          "f": "dublu",
+          "p": "n",
+          "v": "monede",
+          "a": "25"
+        },
+        {
+          "f": "vindeca",
+          "p": "pv",
+          "v": "viata",
+          "a": "30"
+        }
+      ],
+      "bug": ["{{v}} = {{f}}({{v}})", "{{f}}({{v}})"]
+    },
+    {
+      "id": "sc-bad-name",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}():\n    {{v}} = {{a}}\n    return {{v}}\n\n{{w}} = {{f}}()\nprint({{w}} {{op}} {{k}})\nprint({{w}})",
+      "values": [
+        {
+          "f": "viata_de_start",
+          "v": "pv",
+          "a": "100",
+          "w": "viata",
+          "op": "-",
+          "k": "10"
+        },
+        {
+          "f": "pret_de_baza",
+          "v": "pret",
+          "a": "40",
+          "w": "cost",
+          "op": "+",
+          "k": "5"
+        },
+        {
+          "f": "primul_nivel",
+          "v": "nv",
+          "a": "1",
+          "w": "nivel",
+          "op": "+",
+          "k": "1"
+        }
+      ],
+      "bug": ["print({{w}} {{op}} {{k}})", "print({{v}} {{op}} {{k}})"]
+    },
+    {
+      "id": "sc-bad-local",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}():\n    {{v}} = {{a}}\n    return {{v}}\n\ndef {{g}}():\n    {{w}} = {{b}}\n    return {{w}}\n\nprint({{f}}())\nprint({{g}}())",
+      "values": [
+        {
+          "f": "echipa_rosie",
+          "v": "rosu",
+          "a": "3",
+          "g": "echipa_albastra",
+          "w": "albastru",
+          "b": "5"
+        },
+        {
+          "f": "temp_zi",
+          "v": "zi",
+          "a": "28",
+          "g": "temp_noapte",
+          "w": "noapte",
+          "b": "14"
+        },
+        {
+          "f": "numar_aur",
+          "v": "aur",
+          "a": "120",
+          "g": "numar_pietre",
+          "w": "pietre",
+          "b": "8"
+        }
+      ],
+      "bug": ["print({{g}}())", "print({{w}})"]
+    }
+  ]
+}

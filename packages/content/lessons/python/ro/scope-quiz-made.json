@@ -1,0 +1,656 @@
+{
+  "note": "Made by npm run make:quiz from the templates in scope-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "sc-local-dbaa32",
+      "text": "Ce afișează?",
+      "code": "scut = 100\n\ndef amplifica():\n    scut = 200\n    print(scut)\n\namplifica()\nprint(scut)",
+      "options": ["200\n100", "100\n200", "100\n100", "200"],
+      "answer": 0
+    },
+    {
+      "id": "sc-local-4f67fe",
+      "text": "Ce afișează?",
+      "code": "viata = 80\n\ndef vindeca():\n    viata = 50\n    print(viata)\n\nvindeca()\nprint(viata)",
+      "options": ["50\n80", "80\n50", "80\n80", "50"],
+      "answer": 0
+    },
+    {
+      "id": "sc-local-285d5d",
+      "text": "Ce afișează?",
+      "code": "combustibil = 30\n\ndef alimenteaza():\n    combustibil = 90\n    print(combustibil)\n\nalimenteaza()\nprint(combustibil)",
+      "options": ["90\n30", "30\n90", "30\n30", "90"],
+      "answer": 0
+    },
+    {
+      "id": "sc-local-3ab0ec",
+      "text": "Ce afișează?",
+      "code": "munitie = 12\n\ndef reincarca():\n    munitie = 6\n    print(munitie)\n\nreincarca()\nprint(munitie)",
+      "options": ["6\n12", "12\n6", "12\n12", "6"],
+      "answer": 0
+    },
+    {
+      "id": "sc-local-716233",
+      "text": "Ce afișează?",
+      "code": "scor = 0\n\ndef bonus():\n    scor = 10\n    print(scor)\n\nbonus()\nprint(scor)",
+      "options": ["10\n0", "0\n10", "0\n0", "10"],
+      "answer": 0
+    },
+    {
+      "id": "sc-read-a4e001",
+      "text": "Ce afișează?",
+      "code": "scut = 100\n\ndef arata_scut():\n    print(f\"Scut: {scut}\")\n\narata_scut()\nscut = 40\narata_scut()",
+      "options": [
+        "Scut: 100\nScut: 40",
+        "Scut: 100\nScut: 100",
+        "Scut: {scut}\nScut: {scut}",
+        "Scut: 40"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-read-e502b5",
+      "text": "Ce afișează?",
+      "code": "viata = 90\n\ndef arata_viata():\n    print(f\"Viata: {viata}\")\n\narata_viata()\nviata = 65\narata_viata()",
+      "options": [
+        "Viata: 90\nViata: 65",
+        "Viata: 90\nViata: 90",
+        "Viata: {viata}\nViata: {viata}",
+        "Viata: 65"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-read-4b7bc1",
+      "text": "Ce afișează?",
+      "code": "combustibil = 20\n\ndef arata_combustibil():\n    print(f\"Combustibil: {combustibil}\")\n\narata_combustibil()\ncombustibil = 75\narata_combustibil()",
+      "options": [
+        "Combustibil: 20\nCombustibil: 75",
+        "Combustibil: 20\nCombustibil: 20",
+        "Combustibil: {combustibil}\nCombustibil: {combustibil}",
+        "Combustibil: 75"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-read-364ed1",
+      "text": "Ce afișează?",
+      "code": "munitie = 8\n\ndef arata_munitie():\n    print(f\"Munitie: {munitie}\")\n\narata_munitie()\nmunitie = 3\narata_munitie()",
+      "options": [
+        "Munitie: 8\nMunitie: 3",
+        "Munitie: 8\nMunitie: 8",
+        "Munitie: {munitie}\nMunitie: {munitie}",
+        "Munitie: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-store-c16390",
+      "text": "Ce afișează?",
+      "code": "def amplifica(nivel):\n    return nivel * 2\n\nscut = 100\namplifica(scut)\nprint(scut)\nscut = amplifica(scut)\nprint(scut)",
+      "options": ["100\n200", "200\n400", "100\n100", "100\n400"],
+      "answer": 0
+    },
+    {
+      "id": "sc-store-c6091d",
+      "text": "Ce afișează?",
+      "code": "def vindeca(pv):\n    return pv + 25\n\nviata = 50\nvindeca(viata)\nprint(viata)\nviata = vindeca(viata)\nprint(viata)",
+      "options": ["50\n75", "75\n100", "50\n50", "50\n100"],
+      "answer": 0
+    },
+    {
+      "id": "sc-store-51012d",
+      "text": "Ce afișează?",
+      "code": "def cheltuie(monede):\n    return monede - 30\n\nbani = 100\ncheltuie(bani)\nprint(bani)\nbani = cheltuie(bani)\nprint(bani)",
+      "options": ["100\n70", "70\n40", "100\n100", "100\n40"],
+      "answer": 0
+    },
+    {
+      "id": "sc-store-562ca7",
+      "text": "Ce afișează?",
+      "code": "def reincarca(incarcator):\n    return incarcator + 6\n\nmunitie = 4\nreincarca(munitie)\nprint(munitie)\nmunitie = reincarca(munitie)\nprint(munitie)",
+      "options": ["4\n10", "10\n16", "4\n4", "4\n16"],
+      "answer": 0
+    },
+    {
+      "id": "sc-fresh-30dd70",
+      "text": "Ce afișează?",
+      "code": "def aduna():\n    monede = 0\n    for i in range(4):\n        monede = monede + 5\n    return monede\n\nprint(aduna())\nprint(aduna())",
+      "options": ["20\n20", "20\nNone\n20\nNone", "5\n5", "25\n25"],
+      "answer": 0
+    },
+    {
+      "id": "sc-fresh-111e53",
+      "text": "Ce afișează?",
+      "code": "def incarca():\n    putere = 0\n    for i in range(2):\n        putere = putere + 10\n    return putere\n\nprint(incarca())\nprint(incarca())",
+      "options": ["20\n20", "20\nNone\n20\nNone", "10\n10", "30\n30"],
+      "answer": 0
+    },
+    {
+      "id": "sc-fresh-a5f1d7",
+      "text": "Ce afișează?",
+      "code": "def alearga_ture():\n    distanta = 0\n    for i in range(5):\n        distanta = distanta + 2\n    return distanta\n\nprint(alearga_ture())\nprint(alearga_ture())",
+      "options": ["10\n10", "10\nNone\n10\nNone", "2\n2", "12\n12"],
+      "answer": 0
+    },
+    {
+      "id": "sc-fresh-19af76",
+      "text": "Ce afișează?",
+      "code": "def stivuieste():\n    cutii = 0\n    for i in range(3):\n        cutii = cutii + 4\n    return cutii\n\nprint(stivuieste())\nprint(stivuieste())",
+      "options": ["12\n12", "12\nNone\n12\nNone", "4\n4", "16\n16"],
+      "answer": 0
+    },
+    {
+      "id": "sc-param-ee99ca",
+      "text": "Ce afișează?",
+      "code": "def dublu(n):\n    n = n * 2\n    return n\n\nn = 3\nrezultat = dublu(n)\nprint(n)\nprint(rezultat)",
+      "options": ["3\n6", "6\n3", "3\n3", "3\n2"],
+      "answer": 0
+    },
+    {
+      "id": "sc-param-cb5532",
+      "text": "Ce afișează?",
+      "code": "def adauga_taxa(pret):\n    pret = pret + 5\n    return pret\n\npret = 20\ntotal = adauga_taxa(pret)\nprint(pret)\nprint(total)",
+      "options": ["20\n25", "25\n20", "20\n20", "20\n5"],
+      "answer": 0
+    },
+    {
+      "id": "sc-param-f09930",
+      "text": "Ce afișează?",
+      "code": "def jumatate(n):\n    n = n / 2\n    return n\n\nn = 9\nparte = jumatate(n)\nprint(n)\nprint(parte)",
+      "options": ["9\n4.5", "4.5\n9", "9\n9", "9\n2"],
+      "answer": 0
+    },
+    {
+      "id": "sc-param-8e918e",
+      "text": "Ce afișează?",
+      "code": "def pierde_viata(vieti):\n    vieti = vieti - 1\n    return vieti\n\nvieti = 3\nramase = pierde_viata(vieti)\nprint(vieti)\nprint(ramase)",
+      "options": ["3\n2", "2\n3", "3\n3", "3\n1"],
+      "answer": 0
+    },
+    {
+      "id": "sc-param-54216e",
+      "text": "Ce afișează?",
+      "code": "def triplu(x):\n    x = x * 3\n    return x\n\nx = 4\nmare = triplu(x)\nprint(x)\nprint(mare)",
+      "options": ["4\n12", "12\n4", "4\n4", "4\n3"],
+      "answer": 0
+    },
+    {
+      "id": "sc-two-3af515",
+      "text": "Ce afișează?",
+      "code": "def primul():\n    x = 5\n    print(x)\n\ndef al_doilea():\n    x = 99\n    print(x)\n\nal_doilea()\nprimul()\nal_doilea()",
+      "options": ["99\n5\n99", "5\n99\n5", "5\n5\n5", "99\n5"],
+      "answer": 0
+    },
+    {
+      "id": "sc-two-c67c48",
+      "text": "Ce afișează?",
+      "code": "def stanga():\n    viteza = 40\n    print(viteza)\n\ndef dreapta():\n    viteza = 70\n    print(viteza)\n\ndreapta()\nstanga()\ndreapta()",
+      "options": ["70\n40\n70", "40\n70\n40", "40\n40\n40", "70\n40"],
+      "answer": 0
+    },
+    {
+      "id": "sc-two-eeac4d",
+      "text": "Ce afișează?",
+      "code": "def dimineata():\n    temp = 12\n    print(temp)\n\ndef noaptea():\n    temp = 3\n    print(temp)\n\nnoaptea()\ndimineata()\nnoaptea()",
+      "options": ["3\n12\n3", "12\n3\n12", "12\n12\n12", "3\n12"],
+      "answer": 0
+    },
+    {
+      "id": "sc-two-12e8b8",
+      "text": "Ce afișează?",
+      "code": "def alfa():\n    cod = 101\n    print(cod)\n\ndef beta():\n    cod = 202\n    print(cod)\n\nbeta()\nalfa()\nbeta()",
+      "options": ["202\n101\n202", "101\n202\n101", "101\n101\n101", "202\n101"],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-store-31db4a",
+      "text": "Care program afișează asta?",
+      "output": "Inainte: 100\nDupa: 200",
+      "options": [
+        "def amplifica(nivel):\n    return nivel * 2\n\nscut = 100\nprint(f\"Inainte: {scut}\")\nscut = amplifica(scut)\nprint(f\"Dupa: {scut}\")",
+        "def amplifica(nivel):\n    return nivel * 2\n\nscut = 100\nprint(f\"Inainte: {scut}\")\namplifica(scut)\nprint(f\"Dupa: {scut}\")",
+        "def amplifica(nivel):\n    print(nivel * 2)\n\nscut = 100\nprint(f\"Inainte: {scut}\")\nscut = amplifica(scut)\nprint(f\"Dupa: {scut}\")",
+        "def amplifica(nivel):\n    nivel = nivel * 2\n\nscut = 100\nprint(f\"Inainte: {scut}\")\nscut = amplifica(scut)\nprint(f\"Dupa: {scut}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-store-3d5f26",
+      "text": "Care program afișează asta?",
+      "output": "Inainte: 40\nDupa: 80",
+      "options": [
+        "def vindeca(pv):\n    return pv * 2\n\nviata = 40\nprint(f\"Inainte: {viata}\")\nviata = vindeca(viata)\nprint(f\"Dupa: {viata}\")",
+        "def vindeca(pv):\n    return pv * 2\n\nviata = 40\nprint(f\"Inainte: {viata}\")\nvindeca(viata)\nprint(f\"Dupa: {viata}\")",
+        "def vindeca(pv):\n    print(pv * 2)\n\nviata = 40\nprint(f\"Inainte: {viata}\")\nviata = vindeca(viata)\nprint(f\"Dupa: {viata}\")",
+        "def vindeca(pv):\n    pv = pv * 2\n\nviata = 40\nprint(f\"Inainte: {viata}\")\nviata = vindeca(viata)\nprint(f\"Dupa: {viata}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-store-b4b20e",
+      "text": "Care program afișează asta?",
+      "output": "Inainte: 35\nDupa: 70",
+      "options": [
+        "def alimenteaza(rezervor):\n    return rezervor * 2\n\ncombustibil = 35\nprint(f\"Inainte: {combustibil}\")\ncombustibil = alimenteaza(combustibil)\nprint(f\"Dupa: {combustibil}\")",
+        "def alimenteaza(rezervor):\n    return rezervor * 2\n\ncombustibil = 35\nprint(f\"Inainte: {combustibil}\")\nalimenteaza(combustibil)\nprint(f\"Dupa: {combustibil}\")",
+        "def alimenteaza(rezervor):\n    print(rezervor * 2)\n\ncombustibil = 35\nprint(f\"Inainte: {combustibil}\")\ncombustibil = alimenteaza(combustibil)\nprint(f\"Dupa: {combustibil}\")",
+        "def alimenteaza(rezervor):\n    rezervor = rezervor * 2\n\ncombustibil = 35\nprint(f\"Inainte: {combustibil}\")\ncombustibil = alimenteaza(combustibil)\nprint(f\"Dupa: {combustibil}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-store-25398a",
+      "text": "Care program afișează asta?",
+      "output": "Inainte: 6\nDupa: 12",
+      "options": [
+        "def reincarca(incarcator):\n    return incarcator * 2\n\nmunitie = 6\nprint(f\"Inainte: {munitie}\")\nmunitie = reincarca(munitie)\nprint(f\"Dupa: {munitie}\")",
+        "def reincarca(incarcator):\n    return incarcator * 2\n\nmunitie = 6\nprint(f\"Inainte: {munitie}\")\nreincarca(munitie)\nprint(f\"Dupa: {munitie}\")",
+        "def reincarca(incarcator):\n    print(incarcator * 2)\n\nmunitie = 6\nprint(f\"Inainte: {munitie}\")\nmunitie = reincarca(munitie)\nprint(f\"Dupa: {munitie}\")",
+        "def reincarca(incarcator):\n    incarcator = incarcator * 2\n\nmunitie = 6\nprint(f\"Inainte: {munitie}\")\nmunitie = reincarca(munitie)\nprint(f\"Dupa: {munitie}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-local-1056e1",
+      "text": "Care program afișează asta?",
+      "output": "Inauntru: 2\nAfara: 1",
+      "options": [
+        "x = 1\n\ndef f():\n    x = 2\n    print(f\"Inauntru: {x}\")\n\nf()\nprint(f\"Afara: {x}\")",
+        "x = 1\n\ndef f():\n    print(f\"Inauntru: {x}\")\n\nf()\nprint(f\"Afara: {x}\")",
+        "x = 2\n\ndef f():\n    x = 2\n    print(f\"Inauntru: {x}\")\n\nf()\nprint(f\"Afara: {x}\")",
+        "x = 1\n\ndef f():\n    x = 2\n    print(f\"Inauntru: {x}\")\n\nprint(f\"Afara: {x}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-local-42dd85",
+      "text": "Care program afișează asta?",
+      "output": "Inauntru: 90\nAfara: 60",
+      "options": [
+        "viteza = 60\n\ndef cursa():\n    viteza = 90\n    print(f\"Inauntru: {viteza}\")\n\ncursa()\nprint(f\"Afara: {viteza}\")",
+        "viteza = 60\n\ndef cursa():\n    print(f\"Inauntru: {viteza}\")\n\ncursa()\nprint(f\"Afara: {viteza}\")",
+        "viteza = 90\n\ndef cursa():\n    viteza = 90\n    print(f\"Inauntru: {viteza}\")\n\ncursa()\nprint(f\"Afara: {viteza}\")",
+        "viteza = 60\n\ndef cursa():\n    viteza = 90\n    print(f\"Inauntru: {viteza}\")\n\nprint(f\"Afara: {viteza}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-local-6384af",
+      "text": "Care program afișează asta?",
+      "output": "Inauntru: 7\nAfara: 3",
+      "options": [
+        "nivel = 3\n\ndef truc():\n    nivel = 7\n    print(f\"Inauntru: {nivel}\")\n\ntruc()\nprint(f\"Afara: {nivel}\")",
+        "nivel = 3\n\ndef truc():\n    print(f\"Inauntru: {nivel}\")\n\ntruc()\nprint(f\"Afara: {nivel}\")",
+        "nivel = 7\n\ndef truc():\n    nivel = 7\n    print(f\"Inauntru: {nivel}\")\n\ntruc()\nprint(f\"Afara: {nivel}\")",
+        "nivel = 3\n\ndef truc():\n    nivel = 7\n    print(f\"Inauntru: {nivel}\")\n\nprint(f\"Afara: {nivel}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-local-fed3f1",
+      "text": "Care program afișează asta?",
+      "output": "Inauntru: 500\nAfara: 15",
+      "options": [
+        "aur = 15\n\ndef vis():\n    aur = 500\n    print(f\"Inauntru: {aur}\")\n\nvis()\nprint(f\"Afara: {aur}\")",
+        "aur = 15\n\ndef vis():\n    print(f\"Inauntru: {aur}\")\n\nvis()\nprint(f\"Afara: {aur}\")",
+        "aur = 500\n\ndef vis():\n    aur = 500\n    print(f\"Inauntru: {aur}\")\n\nvis()\nprint(f\"Afara: {aur}\")",
+        "aur = 15\n\ndef vis():\n    aur = 500\n    print(f\"Inauntru: {aur}\")\n\nprint(f\"Afara: {aur}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-store-19c14f",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def amplifica(nivel):\n    return nivel * 2\n\nscut = 100\n___\nprint(scut)",
+      "output": "200",
+      "options": [
+        "scut = amplifica(scut)",
+        "amplifica(scut)",
+        "nivel = amplifica(scut)",
+        "scut = nivel * 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-store-1a9bf9",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def triplu(n):\n    return n * 3\n\nmonede = 7\n___\nprint(monede)",
+      "output": "21",
+      "options": [
+        "monede = triplu(monede)",
+        "triplu(monede)",
+        "n = triplu(monede)",
+        "monede = n * 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-store-b5b638",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def dublu(pv):\n    return pv * 2\n\nviata = 45\n___\nprint(viata)",
+      "output": "90",
+      "options": ["viata = dublu(viata)", "dublu(viata)", "pv = dublu(viata)", "viata = pv * 2"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-store-a79546",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def mareste(marime):\n    return marime * 10\n\nlatime = 6\n___\nprint(latime)",
+      "output": "60",
+      "options": [
+        "latime = mareste(latime)",
+        "mareste(latime)",
+        "marime = mareste(latime)",
+        "latime = marime * 10"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-return-2ee10b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def primeste_lovitura(pv):\n    pv = pv - 10\n    ___\n\nviata = 100\nviata = primeste_lovitura(viata)\nprint(viata)",
+      "output": "90",
+      "options": ["return pv", "print(pv)", "return viata", "viata = pv"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-return-5fbf01",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_puncte(pct):\n    pct = pct + 15\n    ___\n\nscor = 40\nscor = adauga_puncte(scor)\nprint(scor)",
+      "output": "55",
+      "options": ["return pct", "print(pct)", "return scor", "scor = pct"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-return-2ffadd",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def consuma(rezervor):\n    rezervor = rezervor - 25\n    ___\n\ncombustibil = 60\ncombustibil = consuma(combustibil)\nprint(combustibil)",
+      "output": "35",
+      "options": [
+        "return rezervor",
+        "print(rezervor)",
+        "return combustibil",
+        "combustibil = rezervor"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-return-e04f90",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def creste(marime):\n    marime = marime * 3\n    ___\n\nmultime = 9\nmultime = creste(multime)\nprint(multime)",
+      "output": "27",
+      "options": ["return marime", "print(marime)", "return multime", "multime = marime"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-def-002b56",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    return scut * 2\n\nprint(amplifica(100))",
+      "output": "200",
+      "options": [
+        "def amplifica(scut):",
+        "def amplifica():",
+        "def scut(amplifica):",
+        "def amplifica(100):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-def-5ad3c5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    return pv + 30\n\nprint(vindeca(45))",
+      "output": "75",
+      "options": ["def vindeca(pv):", "def vindeca():", "def pv(vindeca):", "def vindeca(45):"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-def-b49ccb",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    return bani - 12\n\nprint(cheltuie(50))",
+      "output": "38",
+      "options": [
+        "def cheltuie(bani):",
+        "def cheltuie():",
+        "def bani(cheltuie):",
+        "def cheltuie(50):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-def-82be70",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    return prada / 4\n\nprint(imparte(10))",
+      "output": "2.5",
+      "options": [
+        "def imparte(prada):",
+        "def imparte():",
+        "def prada(imparte):",
+        "def imparte(10):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-arg-16b916",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def amplifica(nivel):\n    return nivel * 2\n\nscut = 100\nprint(amplifica(___))\nprint(scut)",
+      "output": "200\n100",
+      "options": ["scut", "nivel", "\"scut\"", "amplifica"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-arg-af1b5a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def dublu(n):\n    return n * 2\n\nmonede = 13\nprint(dublu(___))\nprint(monede)",
+      "output": "26\n13",
+      "options": ["monede", "n", "\"monede\"", "dublu"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-arg-ff71c2",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def vindeca(pv):\n    return pv * 2\n\nviata = 35\nprint(vindeca(___))\nprint(viata)",
+      "output": "70\n35",
+      "options": ["viata", "pv", "\"viata\"", "vindeca"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-arg-6d1943",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def de_doua_ori(x):\n    return x * 2\n\nture = 4\nprint(de_doua_ori(___))\nprint(ture)",
+      "output": "8\n4",
+      "options": ["ture", "x", "\"ture\"", "de_doua_ori"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-store-029c3b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def vindeca(pv):\n    return pv + 20\n\nviata = 60\n___ = vindeca(viata)\nprint(viata)",
+      "output": "80",
+      "options": ["viata", "pv", "rezultat", "vindeca"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-store-dadc9b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def alimenteaza(rezervor):\n    return rezervor + 50\n\ncombustibil = 15\n___ = alimenteaza(combustibil)\nprint(combustibil)",
+      "output": "65",
+      "options": ["combustibil", "rezervor", "rezultat", "alimenteaza"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-store-2b9912",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def reincarca(incarcator):\n    return incarcator + 6\n\nmunitie = 2\n___ = reincarca(munitie)\nprint(munitie)",
+      "output": "8",
+      "options": ["munitie", "incarcator", "rezultat", "reincarca"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-store-18f7d1",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def creste_nivelul(nv):\n    return nv + 1\n\nnivel = 9\n___ = creste_nivelul(nivel)\nprint(nivel)",
+      "output": "10",
+      "options": ["nivel", "nv", "rezultat", "creste_nivelul"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-ret-202538",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "total = 0\n\ndef ori_zece(n):\n    total = n * 10\n    return ___\n\nprint(ori_zece(7))\nprint(total)",
+      "output": "70\n0",
+      "options": ["total", "n", "0", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-ret-f921c9",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "gard = 1\n\ndef gard_pentru(latura):\n    gard = latura * 4\n    return ___\n\nprint(gard_pentru(4))\nprint(gard)",
+      "output": "16\n1",
+      "options": ["gard", "latura", "1", "\"gard\""],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-ret-a373ab",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cost = 5\n\ndef pretul(bucati):\n    cost = bucati * 3\n    return ___\n\nprint(pretul(8))\nprint(cost)",
+      "output": "24\n5",
+      "options": ["cost", "bucati", "5", "\"cost\""],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-ret-35c870",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "lovitura = 2\n\ndef loveste(putere):\n    lovitura = putere * 5\n    return ___\n\nprint(loveste(6))\nprint(lovitura)",
+      "output": "30\n2",
+      "options": ["lovitura", "putere", "2", "\"lovitura\""],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-def-aac625",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def amplifica():\n    print(f\"Nivel: {nivel}\")\n    return nivel * 2\n\nscut = amplifica(50)\nprint(scut)",
+      "output": "Nivel: 50\n100",
+      "options": [
+        "def amplifica():",
+        "print(f\"Nivel: {nivel}\")",
+        "return nivel * 2",
+        "scut = amplifica(50)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-def-2f2e77",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def triplu():\n    print(f\"Monede: {monede}\")\n    return monede * 3\n\nprada = triplu(9)\nprint(prada)",
+      "output": "Monede: 9\n27",
+      "options": [
+        "def triplu():",
+        "print(f\"Monede: {monede}\")",
+        "return monede * 3",
+        "prada = triplu(9)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-def-bddb4b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def mareste():\n    print(f\"Marime: {marime}\")\n    return marime * 10\n\nlatime = mareste(4)\nprint(latime)",
+      "output": "Marime: 4\n40",
+      "options": [
+        "def mareste():",
+        "print(f\"Marime: {marime}\")",
+        "return marime * 10",
+        "latime = mareste(4)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-store-29e09f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def amplifica(nivel):\n    return nivel * 2\n\nscut = 100\nprint(f\"Inainte: {scut}\")\namplifica(scut)\nprint(f\"Dupa: {scut}\")\nprint(f\"Plus 5: {scut + 5}\")",
+      "output": "Inainte: 100\nDupa: 200\nPlus 5: 205",
+      "options": [
+        "amplifica(scut)",
+        "print(f\"Inainte: {scut}\")",
+        "scut = 100",
+        "return nivel * 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-store-f9c724",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def dublu(n):\n    return n * 2\n\nmonede = 25\nprint(f\"Inainte: {monede}\")\ndublu(monede)\nprint(f\"Dupa: {monede}\")\nprint(f\"Plus 5: {monede + 5}\")",
+      "output": "Inainte: 25\nDupa: 50\nPlus 5: 55",
+      "options": [
+        "dublu(monede)",
+        "print(f\"Inainte: {monede}\")",
+        "monede = 25",
+        "print(f\"Dupa: {monede}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-store-ec14fc",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def vindeca(pv):\n    return pv * 2\n\nviata = 30\nprint(f\"Inainte: {viata}\")\nvindeca(viata)\nprint(f\"Dupa: {viata}\")\nprint(f\"Plus 5: {viata + 5}\")",
+      "output": "Inainte: 30\nDupa: 60\nPlus 5: 65",
+      "options": [
+        "vindeca(viata)",
+        "print(f\"Inainte: {viata}\")",
+        "print(f\"Dupa: {viata}\")",
+        "print(f\"Plus 5: {viata + 5}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-name-0cc1c4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def viata_de_start():\n    pv = 100\n    return pv\n\nviata = viata_de_start()\nprint(pv - 10)\nprint(viata)",
+      "output": "90\n100",
+      "options": ["print(pv - 10)", "viata = viata_de_start()", "return pv", "pv = 100"],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-name-82e6e0",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def pret_de_baza():\n    pret = 40\n    return pret\n\ncost = pret_de_baza()\nprint(pret + 5)\nprint(cost)",
+      "output": "45\n40",
+      "options": ["print(pret + 5)", "cost = pret_de_baza()", "return pret", "pret = 40"],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-name-902b71",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def primul_nivel():\n    nv = 1\n    return nv\n\nnivel = primul_nivel()\nprint(nv + 1)\nprint(nivel)",
+      "output": "2\n1",
+      "options": ["print(nv + 1)", "nivel = primul_nivel()", "return nv", "nv = 1"],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-local-ece306",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def echipa_rosie():\n    rosu = 3\n    return rosu\n\ndef echipa_albastra():\n    albastru = 5\n    return albastru\n\nprint(echipa_rosie())\nprint(albastru)",
+      "output": "3\n5",
+      "options": ["print(albastru)", "print(echipa_rosie())", "return albastru", "albastru = 5"],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-local-3594b5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def temp_zi():\n    zi = 28\n    return zi\n\ndef temp_noapte():\n    noapte = 14\n    return noapte\n\nprint(temp_zi())\nprint(noapte)",
+      "output": "28\n14",
+      "options": ["print(noapte)", "print(temp_zi())", "return noapte", "noapte = 14"],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-local-1c22ab",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def numar_aur():\n    aur = 120\n    return aur\n\ndef numar_pietre():\n    pietre = 8\n    return pietre\n\nprint(numar_aur())\nprint(pietre)",
+      "output": "120\n8",
+      "options": ["print(pietre)", "print(numar_aur())", "return pietre", "pietre = 8"],
+      "answer": 0
+    }
+  ]
+}

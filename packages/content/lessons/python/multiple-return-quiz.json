@@ -1,0 +1,747 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does `return a, b` give back?",
+      "options": [
+        "Only a, the first value",
+        "One tuple that holds a and b",
+        "Only b, the last value",
+        "Two separate lists"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "def min_max(numbers):\n    return min(numbers), max(numbers)\n\nsmallest, largest = min_max([4, 1, 7])\nprint(largest)",
+      "options": ["1", "(1, 7)", "4", "7"],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "What does this print?",
+      "code": "def min_max(numbers):\n    return min(numbers), max(numbers)\n\nresult = min_max([4, 1, 7])\nprint(result)",
+      "options": ["1 7", "[1, 7]", "(1, 7)", "1\n7"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "A function ends with `return a, b`. What does `print(type(result))` show for `result = f()`?",
+      "options": ["<class 'tuple'>", "<class 'list'>", "<class 'int'>", "<class 'dict'>"],
+      "answer": 0
+    },
+    {
+      "id": "q5",
+      "text": "Is there a difference between `return a, b` and `return (a, b)`?",
+      "options": [
+        "Yes: the first gives back two values, the second one tuple",
+        "Yes: the second one stops with an error",
+        "No: both give back the same tuple, Python just lets us skip the parentheses",
+        "Yes: the first gives back only a"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "What happens when this runs?",
+      "code": "def f():\n    return 1, 2, 3\n\na, b = f()\nprint(a)",
+      "options": [
+        "It prints 1, and the 3 is left out",
+        "It stops with an error: 3 values come back, and there are 2 names",
+        "It prints 1, and b gets (2, 3)",
+        "It prints 1 2 3"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "What does `\"Lance Vance\".split(\" \")` give?",
+      "options": [
+        "\"LanceVance\"",
+        "(\"Lance\", \"Vance\")",
+        "[\"Lance\", \" \", \"Vance\"]",
+        "[\"Lance\", \"Vance\"]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q8",
+      "text": "What does `.split(\" \")` give back?",
+      "options": [
+        "A list of the parts between the spaces",
+        "A tuple of the parts between the spaces",
+        "The same text without its spaces",
+        "How many spaces the text has"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "In the lesson, `player_stats([80, 95, 70, 88])` gives back the total, the average and the best score. What is the average?",
+      "options": ["83", "83.25", "333", "95"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "def stats(scores):\n    return sum(scores), max(scores)\n\ntotal, best = stats([3, 9, 4])\nprint(best, total)",
+      "options": ["16 9", "(9, 16)", "9 16", "9\n16"],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "Which line takes the two values `min_max(nums)` gives back into two names?",
+      "options": [
+        "low, high = min_max(nums)",
+        "low = high = min_max(nums)",
+        "min_max(nums) = low, high",
+        "low, high == min_max(nums)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "In the Coordinate Parser mission, why does `parse` turn each part into a number with `int()`?",
+      "options": [
+        "int() makes the numbers come out sorted",
+        "split() gives numbers that are too big for max()",
+        "So that parse gives back three values instead of one",
+        "split() gives text parts, and adding texts would join them instead of summing them"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "In the Coordinate Parser mission, the user types `45 90 12`. What does the program print on the line about the largest number?",
+      "options": ["Largest: 45", "Largest: 90", "Largest: 147", "Largest: 12"],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "In the mission, `total, largest, smallest = parse(reading)`. How does each name get its value?",
+      "options": [
+        "By name: Python finds the value called total in parse",
+        "Python sorts the values from the smallest to the largest first",
+        "By position: the first name takes the first value of the return, and so on",
+        "All three names get the whole tuple"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "def player():\n    return \"Tommy\", 42\n\nname, age = player()\nprint(age)",
+      "options": ["42", "Tommy", "('Tommy', 42)", "Tommy 42"],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "def min_max(numbers):\n    return min(numbers), max(numbers)\n\nresult = min_max([6, 2, 9])\nprint(result[1])",
+      "options": ["2", "(2, 9)", "It stops with an error: result holds two values", "9"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "What does `max(4, 9, 2)` give?",
+      "options": ["4", "2", "9", "15"],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "What does `sum([2, 3, 5])` give?",
+      "options": ["3", "10", "235", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "def split_name(full):\n    parts = full.split(\" \")\n    return parts[1], parts[0]\n\nfirst, last = split_name(\"Lance Vance\")\nprint(first)",
+      "options": ["Vance", "Lance", "Lance Vance", "['Lance', 'Vance']"],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "We need the smallest and the largest value of a list. Why one function that returns both?",
+      "options": [
+        "Python allows only one function for each list",
+        "Two functions can never take the same list",
+        "A program can have only one return",
+        "One call gives both related values, and the work on the list stays in one place"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "def report(scores):\n    total = sum(scores)\n    return total, total / len(scores)\n\nt, avg = report([4, 6, 8])\nprint(avg)",
+      "options": ["6", "6.0", "18", "18.0"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "def calc(a, b):\n    return a + b, a * b\n\ns, p = calc(2, 5)\nprint(p - s)",
+      "options": ["3", "-3", "7", "10"],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "How many values can one `return` give back?",
+      "options": [
+        "Only one",
+        "At most two",
+        "As many as we write, separated by commas",
+        "At most three"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Which line gives back both the sum and the length of the list numbers?",
+      "options": [
+        "return sum(numbers) + len(numbers)",
+        "print(sum(numbers), len(numbers))",
+        "return sum(numbers)\nreturn len(numbers)",
+        "return sum(numbers), len(numbers)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "def bounds(nums):\n    return min(nums), max(nums)\n\nlow, high = bounds([7, 3, 11, 5])\nprint(high - low)",
+      "options": ["8", "4", "14", "-8"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "The lesson says Python \"creates a tuple and then unpacks it\". What does that mean?",
+      "options": [
+        "Python turns the function into a tuple",
+        "return a, b puts both values in one tuple, and x, y = takes them out into two names",
+        "The values are packed into a list and sorted",
+        "The function runs twice, once for each value"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "def steps(x):\n    return x, x * 2, x * 3\n\na, b, c = steps(4)\nprint(a + c)",
+      "options": ["12", "20", "8", "16"],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "def stats(scores):\n    return sum(scores), max(scores), min(scores)\n\nresult = stats([5, 1, 9])\nprint(result[2])",
+      "options": ["9", "15", "1", "It stops with an error: result has no index 2"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "What is wrong with this function, meant to give back the smallest and the largest number?",
+      "code": "def min_max(numbers):\n    return min(numbers)\n    return max(numbers)",
+      "options": [
+        "Nothing: two returns give back both values",
+        "It ends at the first return, so the largest never comes back: it needs return min(numbers), max(numbers)",
+        "Two returns put the values in a list",
+        "The max line has to come first"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "def swap(a, b):\n    return b, a\n\nx, y = swap(3, 8)\nprint(x, y)",
+      "options": ["8 3", "3 8", "(8, 3)", "8\n3"],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "mr-minmax",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def min_max(numbers):\n    return min(numbers), max(numbers)\n\nlow, high = min_max({{nums}})\nprint(low)\nprint(high)",
+      "values": [
+        {
+          "nums": "[6, 3, 10, 7]"
+        },
+        {
+          "nums": "[12, 7, 30, 4]"
+        },
+        {
+          "nums": "[3, 3, 6]"
+        },
+        {
+          "nums": "[40, 15, 22, 18]"
+        },
+        {
+          "nums": "[9, 14, 2, 11]"
+        }
+      ],
+      "mistakes": [
+        ["low, high = ", "high, low = "],
+        ["print(low)\nprint(high)", "print(low, high)"],
+        [
+          "low, high = min_max({{nums}})\nprint(low)\nprint(high)",
+          "low = min_max({{nums}})\nprint(low)"
+        ],
+        [", max(numbers)", ", len(numbers)"]
+      ]
+    },
+    {
+      "id": "mr-tuple",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}(a, b):\n    return a + b, a - b\n\nresult = {{f}}({{x}}, {{y}})\nprint(result)",
+      "values": [
+        {
+          "f": "sum_and_diff",
+          "x": 8,
+          "y": 3
+        },
+        {
+          "f": "both",
+          "x": 10,
+          "y": 4
+        },
+        {
+          "f": "plus_minus",
+          "x": 7,
+          "y": 2
+        },
+        {
+          "f": "calc",
+          "x": 15,
+          "y": 6
+        }
+      ],
+      "mistakes": [
+        ["print(result)", "print(result[0])"],
+        ["return a + b, a - b", "return a + b"],
+        ["result = {{f}}({{x}}, {{y}})\nprint(result)", "s, d = {{f}}({{x}}, {{y}})\nprint(s, d)"],
+        ["a - b", "b - a"]
+      ]
+    },
+    {
+      "id": "mr-stats",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def stats(scores):\n    total = sum(scores)\n    best = max(scores)\n    return total, best\n\nt, m = stats({{s}})\nprint(f\"Total: {t}\")\nprint(f\"Best: {m}\")",
+      "values": [
+        {
+          "s": "[4, 9, 2]"
+        },
+        {
+          "s": "[15, 30, 25, 10]"
+        },
+        {
+          "s": "[7, 7, 3]"
+        },
+        {
+          "s": "[50, 20, 80]"
+        },
+        {
+          "s": "[11, 6, 1, 8]"
+        }
+      ],
+      "mistakes": [
+        ["max(scores)", "min(scores)"],
+        ["t, m = ", "m, t = "],
+        ["sum(scores)", "len(scores)"],
+        ["print(f\"Best: {m}\")", "print(f\"Best: {t}\")"]
+      ]
+    },
+    {
+      "id": "mr-avg",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def report(scores):\n    total = sum(scores)\n    average = total / len(scores)\n    return total, average\n\nt, m = report({{s}})\nprint(t)\nprint(m)",
+      "values": [
+        {
+          "s": "[80, 90, 70]"
+        },
+        {
+          "s": "[6, 9]"
+        },
+        {
+          "s": "[10, 20, 30, 40]"
+        },
+        {
+          "s": "[5, 8, 11]"
+        }
+      ],
+      "mistakes": [
+        ["total / len(scores)", "total // len(scores)"],
+        ["t, m = ", "m, t = "],
+        ["print(t)\nprint(m)", "print(t, m)"],
+        ["len(scores)", "max(scores)"]
+      ]
+    },
+    {
+      "id": "mr-split",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def split_name(full):\n    parts = full.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"{{name}}\")\nprint(f\"Last: {last}\")\nprint(f\"First: {first}\")",
+      "values": [
+        {
+          "name": "Lance Vance"
+        },
+        {
+          "name": "Ken Rosenberg"
+        },
+        {
+          "name": "Phil Cassidy"
+        },
+        {
+          "name": "Mercedes Cortez"
+        },
+        {
+          "name": "Ricardo Diaz"
+        }
+      ],
+      "mistakes": [
+        ["return parts[0], parts[1]", "return parts[1], parts[0]"],
+        ["print(f\"Last: {last}\")", "print(f\"Last: {first}\")"],
+        ["return parts[0], parts[1]", "return full, parts[1]"]
+      ]
+    },
+    {
+      "id": "mr-parse",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def parse(reading):\n    parts = reading.split(\" \")\n    a = int(parts[0])\n    b = int(parts[1])\n    c = int(parts[2])\n    return a + b + c, max(a, b, c), min(a, b, c)\n\ntotal, largest, smallest = parse(\"{{r}}\")\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {smallest}\")",
+      "values": [
+        {
+          "r": "10 40 25"
+        },
+        {
+          "r": "7 3 9"
+        },
+        {
+          "r": "60 15 30"
+        },
+        {
+          "r": "8 8 2"
+        }
+      ],
+      "mistakes": [
+        ["a + b + c", "a + b"],
+        ["total, largest, smallest = ", "total, smallest, largest = "],
+        ["c = int(parts[2])", "c = int(parts[1])"]
+      ]
+    },
+    {
+      "id": "mr-type",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}():\n    return {{a}}, {{b}}\n\nresult = {{f}}()\nprint(result)\nprint(type(result))",
+      "values": [
+        {
+          "f": "position",
+          "a": 3,
+          "b": 7
+        },
+        {
+          "f": "screen",
+          "a": 1920,
+          "b": 1080
+        },
+        {
+          "f": "player",
+          "a": "\"Ana\"",
+          "b": 12
+        }
+      ],
+      "mistakes": [
+        ["return {{a}}, {{b}}", "return [{{a}}, {{b}}]"],
+        ["print(type(result))", "print(len(result))"],
+        ["print(result)\n", "print(result[0])\n"]
+      ]
+    },
+    {
+      "id": "mr-which-order",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def min_max(numbers):\n    return min(numbers), max(numbers)\n\nlow, high = min_max({{nums}})\nprint(f\"Smallest: {low}\")\nprint(f\"Largest: {high}\")",
+      "values": [
+        {
+          "nums": "[4, 9, 2, 7]"
+        },
+        {
+          "nums": "[15, 3, 8]"
+        },
+        {
+          "nums": "[21, 30, 12, 18]"
+        },
+        {
+          "nums": "[5, 1, 6]"
+        }
+      ],
+      "mistakes": [
+        ["low, high = ", "high, low = "],
+        ["min(numbers)", "sum(numbers)"],
+        ["print(f\"Largest: {high}\")", "print(f\"Largest: {low}\")"]
+      ]
+    },
+    {
+      "id": "mr-which-tuple",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def {{f}}(a, b):\n    return a + b, a - b\n\nprint({{f}}({{x}}, {{y}}))",
+      "values": [
+        {
+          "f": "sum_and_diff",
+          "x": 5,
+          "y": 3
+        },
+        {
+          "f": "both",
+          "x": 9,
+          "y": 2
+        },
+        {
+          "f": "plus_minus",
+          "x": 12,
+          "y": 5
+        },
+        {
+          "f": "calc",
+          "x": 6,
+          "y": 1
+        }
+      ],
+      "mistakes": [
+        ["return a + b, a - b", "return a + b"],
+        ["a - b", "b - a"],
+        ["return a + b, a - b", "return [a + b, a - b]"],
+        ["({{x}}, {{y}})", "({{y}}, {{x}})"]
+      ]
+    },
+    {
+      "id": "mr-gap-return",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def {{f}}(numbers):\n    ___\n\nlow, high = {{f}}({{nums}})\nprint(low)\nprint(high)",
+      "values": [
+        {
+          "f": "extremes",
+          "nums": "[8, 3, 5]"
+        },
+        {
+          "f": "bounds",
+          "nums": "[20, 45, 10, 30]"
+        },
+        {
+          "f": "limits",
+          "nums": "[7, 1, 9, 4]"
+        },
+        {
+          "f": "min_max",
+          "nums": "[13, 6, 9]"
+        }
+      ],
+      "answer": "return min(numbers), max(numbers)",
+      "wrong": [
+        "return max(numbers), min(numbers)",
+        "return min(numbers)",
+        "print(min(numbers), max(numbers))",
+        "return min(numbers) + max(numbers)"
+      ]
+    },
+    {
+      "id": "mr-gap-unpack",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def stats(scores):\n    return sum(scores), max(scores)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Best: {best}\")",
+      "values": [
+        {
+          "s": "[4, 9, 2]"
+        },
+        {
+          "s": "[10, 35, 5]"
+        },
+        {
+          "s": "[6, 6, 1, 12]"
+        },
+        {
+          "s": "[25, 50]"
+        }
+      ],
+      "answer": "total, best = stats({{s}})",
+      "wrong": [
+        "best, total = stats({{s}})",
+        "total = stats({{s}})",
+        "total, best = stats",
+        "stats({{s}})"
+      ]
+    },
+    {
+      "id": "mr-gap-split",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def split_name(full):\n    ___\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"{{name}}\")\nprint(first)\nprint(last)",
+      "values": [
+        {
+          "name": "Lance Vance"
+        },
+        {
+          "name": "Ken Rosenberg"
+        },
+        {
+          "name": "Phil Cassidy"
+        },
+        {
+          "name": "Mercedes Cortez"
+        }
+      ],
+      "answer": "parts = full.split(\" \")",
+      "wrong": [
+        "parts = full",
+        "parts = [full]",
+        "parts = full.upper()",
+        "split = full.split(\" \")"
+      ]
+    },
+    {
+      "id": "mr-val-fn",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def stats(scores):\n    return sum(scores), ___(scores)\n\ntotal, {{v}} = stats({{s}})\nprint(total)\nprint({{v}})",
+      "values": [
+        {
+          "fn": "max",
+          "v": "best",
+          "s": "[4, 9, 2]"
+        },
+        {
+          "fn": "min",
+          "v": "worst",
+          "s": "[15, 30, 25, 10]"
+        },
+        {
+          "fn": "max",
+          "v": "top",
+          "s": "[7, 12, 3]"
+        },
+        {
+          "fn": "min",
+          "v": "lowest",
+          "s": "[50, 20, 80]"
+        }
+      ],
+      "answer": "{{fn}}",
+      "wrong": ["max", "min", "len", "sum"]
+    },
+    {
+      "id": "mr-val-index",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def {{f}}(a, b):\n    return a + b, a * b\n\nresult = {{f}}({{x}}, {{y}})\nprint(result[___])",
+      "values": [
+        {
+          "f": "sum_product",
+          "x": 3,
+          "y": 4,
+          "i": 1
+        },
+        {
+          "f": "both",
+          "x": 5,
+          "y": 6,
+          "i": 0
+        },
+        {
+          "f": "calc",
+          "x": 2,
+          "y": 9,
+          "i": 1
+        },
+        {
+          "f": "combine",
+          "x": 7,
+          "y": 3,
+          "i": 0
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["0", "1", "2", "3"]
+    },
+    {
+      "id": "mr-bad-max",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def min_max(numbers):\n    return min(numbers), max(numbers)\n\nlow, high = min_max({{nums}})\nprint(f\"Smallest: {low}\")\nprint(f\"Largest: {high}\")",
+      "values": [
+        {
+          "nums": "[4, 9, 2, 7]"
+        },
+        {
+          "nums": "[15, 3, 8]"
+        },
+        {
+          "nums": "[21, 30, 12, 18]"
+        }
+      ],
+      "bug": ["return min(numbers), max(numbers)", "return min(numbers), min(numbers)"]
+    },
+    {
+      "id": "mr-bad-def",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def stats(scores):\n    return sum(scores), max(scores)\n\ntotal, best = stats({{s}})\nprint(f\"Total: {total}\")\nprint(f\"Best: {best}\")",
+      "values": [
+        {
+          "s": "[4, 9, 2]"
+        },
+        {
+          "s": "[10, 35, 5]"
+        },
+        {
+          "s": "[6, 6, 1, 12]"
+        }
+      ],
+      "bug": ["def stats(scores):", "def stats():"]
+    },
+    {
+      "id": "mr-bad-last",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def split_name(full):\n    parts = full.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"{{name}}\")\nprint(f\"First: {first}\")\nprint(f\"Last: {last}\")",
+      "values": [
+        {
+          "name": "Lance Vance"
+        },
+        {
+          "name": "Ken Rosenberg"
+        },
+        {
+          "name": "Phil Cassidy"
+        }
+      ],
+      "bug": ["print(f\"Last: {last}\")", "print(f\"Last: {first}\")"]
+    },
+    {
+      "id": "mr-bad-return",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def report(scores):\n    total = sum(scores)\n    average = total / len(scores)\n    return total, average\n\nt, m = report({{s}})\nprint(f\"Total: {t}\")\nprint(f\"Average: {m}\")",
+      "values": [
+        {
+          "s": "[80, 90, 70]"
+        },
+        {
+          "s": "[6, 9]"
+        },
+        {
+          "s": "[10, 20, 30, 40]"
+        }
+      ],
+      "bug": ["return total, average", "return total, total"]
+    }
+  ]
+}

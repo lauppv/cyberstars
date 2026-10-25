@@ -1,0 +1,751 @@
+{
+  "note": "Made by npm run make:quiz from the templates in default-params-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "dp-word-586961",
+      "text": "What does this print?",
+      "code": "def greet(name, word=\"Hello\"):\n    print(word, name)\n\ngreet(\"Ana\")\ngreet(\"Rex\", \"Hi\")",
+      "options": ["Hello Ana\nHi Rex", "Hello Ana\nRex Hi", "Ana Hello\nRex Hi", "Hi Ana\nHi Rex"],
+      "answer": 0
+    },
+    {
+      "id": "dp-word-e3f015",
+      "text": "What does this print?",
+      "code": "def cheer(player, shout=\"Go\"):\n    print(shout, player)\n\ncheer(\"Kai\")\ncheer(\"Mia\", \"Bravo\")",
+      "options": [
+        "Go Kai\nBravo Mia",
+        "Go Kai\nMia Bravo",
+        "Kai Go\nMia Bravo",
+        "Bravo Kai\nBravo Mia"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-word-0c2eb1",
+      "text": "What does this print?",
+      "code": "def order(dish, size=\"medium\"):\n    print(size, dish)\n\norder(\"pizza\")\norder(\"soup\", \"large\")",
+      "options": [
+        "medium pizza\nlarge soup",
+        "medium pizza\nsoup large",
+        "pizza medium\nsoup large",
+        "large pizza\nlarge soup"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-word-868ab1",
+      "text": "What does this print?",
+      "code": "def paint(car, color=\"red\"):\n    print(color, car)\n\npaint(\"Infernus\")\npaint(\"Sabre\", \"blue\")",
+      "options": [
+        "red Infernus\nblue Sabre",
+        "red Infernus\nSabre blue",
+        "Infernus red\nSabre blue",
+        "blue Infernus\nblue Sabre"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-word-2cb99b",
+      "text": "What does this print?",
+      "code": "def land(planet, ship=\"Nova\"):\n    print(ship, planet)\n\nland(\"Mars\")\nland(\"Titan\", \"Orion\")",
+      "options": [
+        "Nova Mars\nOrion Titan",
+        "Nova Mars\nTitan Orion",
+        "Mars Nova\nTitan Orion",
+        "Orion Mars\nOrion Titan"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-num-d2471b",
+      "text": "What does this print?",
+      "code": "def power(base, exp=2):\n    return base ** exp\n\nprint(power(5))\nprint(power(5, 3))",
+      "options": ["25\n125", "125\n125", "25\n9", "32\n243"],
+      "answer": 0
+    },
+    {
+      "id": "dp-num-163db6",
+      "text": "What does this print?",
+      "code": "def add_tax(price, tax=5):\n    return price + tax\n\nprint(add_tax(30))\nprint(add_tax(30, 1))",
+      "options": ["35\n31", "31\n31", "35\n6", "31"],
+      "answer": 0
+    },
+    {
+      "id": "dp-num-7b8820",
+      "text": "What does this print?",
+      "code": "def times(n, k=10):\n    return n * k\n\nprint(times(4))\nprint(times(4, 3))",
+      "options": ["40\n12", "12\n12", "40\n30", "12"],
+      "answer": 0
+    },
+    {
+      "id": "dp-num-536904",
+      "text": "What does this print?",
+      "code": "def discount(price, off=10):\n    return price - off\n\nprint(discount(50))\nprint(discount(50, 20))",
+      "options": ["40\n30", "30\n30", "40\n10", "-40\n-30"],
+      "answer": 0
+    },
+    {
+      "id": "dp-num-f15455",
+      "text": "What does this print?",
+      "code": "def level_up(level, step=1):\n    return level + step\n\nprint(level_up(5))\nprint(level_up(5, 3))",
+      "options": ["6\n8", "8\n8", "6\n4", "8"],
+      "answer": 0
+    },
+    {
+      "id": "dp-keyword-d67f0e",
+      "text": "What does this print?",
+      "code": "def dock(ship, bay=\"A1\", priority=\"normal\"):\n    print(f\"{ship} docked at {bay} ({priority})\")\n\ndock(\"Nova\", priority=\"urgent\")",
+      "options": [
+        "Nova docked at A1 (urgent)",
+        "Nova docked at urgent (normal)",
+        "Nova docked at A1 (A1)",
+        "{ship} docked at {bay} ({priority})"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-keyword-5f719d",
+      "text": "What does this print?",
+      "code": "def book(guest, room=\"single\", meal=\"breakfast\"):\n    print(f\"{guest} booked a {room} ({meal})\")\n\nbook(\"Ana\", meal=\"dinner\")",
+      "options": [
+        "Ana booked a single (dinner)",
+        "Ana booked a dinner (breakfast)",
+        "Ana booked a single (single)",
+        "{guest} booked a {room} ({meal})"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-keyword-28ce09",
+      "text": "What does this print?",
+      "code": "def launch(rocket, pad=\"P1\", mode=\"test\"):\n    print(f\"{rocket} launched from {pad} ({mode})\")\n\nlaunch(\"Orion\", mode=\"live\")",
+      "options": [
+        "Orion launched from P1 (live)",
+        "Orion launched from live (test)",
+        "Orion launched from P1 (P1)",
+        "{rocket} launched from {pad} ({mode})"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-keyword-cd29aa",
+      "text": "What does this print?",
+      "code": "def paint(car, color=\"red\", finish=\"matte\"):\n    print(f\"{car} painted {color} ({finish})\")\n\npaint(\"Infernus\", finish=\"gloss\")",
+      "options": [
+        "Infernus painted red (gloss)",
+        "Infernus painted gloss (matte)",
+        "Infernus painted red (red)",
+        "{car} painted {color} ({finish})"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-later-687a5e",
+      "text": "What does this print?",
+      "code": "def start(level=1):\n    print(\"Level\", level)\n\nstart()\nstart(3)\nstart()",
+      "options": [
+        "Level 1\nLevel 3\nLevel 1",
+        "Level 1\nLevel 3\nLevel 3",
+        "Level 1\nLevel 1\nLevel 1",
+        "Level 3\nLevel 3\nLevel 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-later-0b81ed",
+      "text": "What does this print?",
+      "code": "def set_volume(volume=5):\n    print(\"Volume\", volume)\n\nset_volume()\nset_volume(9)\nset_volume()",
+      "options": [
+        "Volume 5\nVolume 9\nVolume 5",
+        "Volume 5\nVolume 9\nVolume 9",
+        "Volume 5\nVolume 5\nVolume 5",
+        "Volume 9\nVolume 9\nVolume 9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-later-10d049",
+      "text": "What does this print?",
+      "code": "def drive(speed=50):\n    print(\"Speed\", speed)\n\ndrive()\ndrive(120)\ndrive()",
+      "options": [
+        "Speed 50\nSpeed 120\nSpeed 50",
+        "Speed 50\nSpeed 120\nSpeed 120",
+        "Speed 50\nSpeed 50\nSpeed 50",
+        "Speed 120\nSpeed 120\nSpeed 120"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-later-50d18d",
+      "text": "What does this print?",
+      "code": "def new_game(lives=3):\n    print(\"Lives\", lives)\n\nnew_game()\nnew_game(1)\nnew_game()",
+      "options": [
+        "Lives 3\nLives 1\nLives 3",
+        "Lives 3\nLives 1\nLives 1",
+        "Lives 3\nLives 3\nLives 3",
+        "Lives 1\nLives 1\nLives 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-abc-675b55",
+      "text": "What does this print?",
+      "code": "def f(a, b=10, c=20):\n    print(a, b, c)\n\nf(3)\nf(3, 4)\nf(3, c=8)",
+      "options": [
+        "3 10 20\n3 4 20\n3 10 8",
+        "3 10 20\n3 4 20\n3 8 20",
+        "3 10 20\n3 10 4\n3 10 8",
+        "3 20 10\n3 20 4\n3 8 10"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-abc-21d4f6",
+      "text": "What does this print?",
+      "code": "def f(a, b=0, c=9):\n    print(a, b, c)\n\nf(7)\nf(7, 3)\nf(7, c=1)",
+      "options": [
+        "7 0 9\n7 3 9\n7 0 1",
+        "7 0 9\n7 3 9\n7 1 9",
+        "7 0 9\n7 0 3\n7 0 1",
+        "7 9 0\n7 9 3\n7 1 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-abc-17d840",
+      "text": "What does this print?",
+      "code": "def f(a, b=5, c=50):\n    print(a, b, c)\n\nf(2)\nf(2, 8)\nf(2, c=4)",
+      "options": [
+        "2 5 50\n2 8 50\n2 5 4",
+        "2 5 50\n2 8 50\n2 4 50",
+        "2 5 50\n2 5 8\n2 5 4",
+        "2 50 5\n2 50 8\n2 4 5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-abc-752d68",
+      "text": "What does this print?",
+      "code": "def f(a, b=1, c=100):\n    print(a, b, c)\n\nf(6)\nf(6, 30)\nf(6, c=7)",
+      "options": [
+        "6 1 100\n6 30 100\n6 1 7",
+        "6 1 100\n6 30 100\n6 7 100",
+        "6 1 100\n6 1 30\n6 1 7",
+        "6 100 1\n6 100 30\n6 7 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-glue-da4a89",
+      "text": "What does this print?",
+      "code": "def label(text, mark=\"!\"):\n    return text + mark\n\nprint(label(\"Go\"))\nprint(label(\"Go\", \"?\"))",
+      "options": ["Go!\nGo?", "!Go\n?Go", "Go!\n?!", "Go?\nGo?"],
+      "answer": 0
+    },
+    {
+      "id": "dp-glue-3b75ad",
+      "text": "What does this print?",
+      "code": "def file_name(name, ext=\".txt\"):\n    return name + ext\n\nprint(file_name(\"notes\"))\nprint(file_name(\"notes\", \".py\"))",
+      "options": [
+        "notes.txt\nnotes.py",
+        ".txtnotes\n.pynotes",
+        "notes.txt\n.py.txt",
+        "notes.py\nnotes.py"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-glue-f61d72",
+      "text": "What does this print?",
+      "code": "def add_end(word, end=\"s\"):\n    return word + end\n\nprint(add_end(\"star\"))\nprint(add_end(\"star\", \"dust\"))",
+      "options": ["stars\nstardust", "sstar\nduststar", "stars\ndusts", "stardust\nstardust"],
+      "answer": 0
+    },
+    {
+      "id": "dp-glue-37e507",
+      "text": "What does this print?",
+      "code": "def code(sector, zone=\"-A\"):\n    return sector + zone\n\nprint(code(\"B7\"))\nprint(code(\"B7\", \"-Z\"))",
+      "options": ["B7-A\nB7-Z", "-AB7\n-ZB7", "B7-A\n-Z-A", "B7-Z\nB7-Z"],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-skip-49f2b6",
+      "text": "Which program shows this?",
+      "output": "Tommy | HP: 100 | City: Liberty City",
+      "options": [
+        "def create_player(name, health=100, city=\"Vice City\"):\n    print(f\"{name} | HP: {health} | City: {city}\")\n\ncreate_player(\"Tommy\", city=\"Liberty City\")",
+        "def create_player(name, health=100, city=\"Vice City\"):\n    print(f\"{name} | HP: {health} | City: {city}\")\n\ncreate_player(\"Tommy\", \"Liberty City\")",
+        "def create_player(name, health=100, city=\"Vice City\"):\n    print(f\"{name} | HP: {health} | City: {city}\")\n\ncreate_player(\"Tommy\")",
+        "def create_player(name, health=90, city=\"Vice City\"):\n    print(f\"{name} | HP: {health} | City: {city}\")\n\ncreate_player(\"Tommy\", city=\"Liberty City\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-skip-648536",
+      "text": "Which program shows this?",
+      "output": "Lance | HP: 100 | City: San Andreas",
+      "options": [
+        "def create_player(name, health=100, city=\"Vice City\"):\n    print(f\"{name} | HP: {health} | City: {city}\")\n\ncreate_player(\"Lance\", city=\"San Andreas\")",
+        "def create_player(name, health=100, city=\"Vice City\"):\n    print(f\"{name} | HP: {health} | City: {city}\")\n\ncreate_player(\"Lance\", \"San Andreas\")",
+        "def create_player(name, health=100, city=\"Vice City\"):\n    print(f\"{name} | HP: {health} | City: {city}\")\n\ncreate_player(\"Lance\")",
+        "def create_player(name, health=80, city=\"Vice City\"):\n    print(f\"{name} | HP: {health} | City: {city}\")\n\ncreate_player(\"Lance\", city=\"San Andreas\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-skip-2cf3e9",
+      "text": "Which program shows this?",
+      "output": "Cortez | HP: 100 | Town: Ocean Beach",
+      "options": [
+        "def new_player(name, hp=100, town=\"Vice City\"):\n    print(f\"{name} | HP: {hp} | Town: {town}\")\n\nnew_player(\"Cortez\", town=\"Ocean Beach\")",
+        "def new_player(name, hp=100, town=\"Vice City\"):\n    print(f\"{name} | HP: {hp} | Town: {town}\")\n\nnew_player(\"Cortez\", \"Ocean Beach\")",
+        "def new_player(name, hp=100, town=\"Vice City\"):\n    print(f\"{name} | HP: {hp} | Town: {town}\")\n\nnew_player(\"Cortez\")",
+        "def new_player(name, hp=70, town=\"Vice City\"):\n    print(f\"{name} | HP: {hp} | Town: {town}\")\n\nnew_player(\"Cortez\", town=\"Ocean Beach\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-skip-507f35",
+      "text": "Which program shows this?",
+      "output": "Phil | HP: 100 | Town: Little Haiti",
+      "options": [
+        "def new_player(name, hp=100, town=\"Vice City\"):\n    print(f\"{name} | HP: {hp} | Town: {town}\")\n\nnew_player(\"Phil\", town=\"Little Haiti\")",
+        "def new_player(name, hp=100, town=\"Vice City\"):\n    print(f\"{name} | HP: {hp} | Town: {town}\")\n\nnew_player(\"Phil\", \"Little Haiti\")",
+        "def new_player(name, hp=100, town=\"Vice City\"):\n    print(f\"{name} | HP: {hp} | Town: {town}\")\n\nnew_player(\"Phil\")",
+        "def new_player(name, hp=50, town=\"Vice City\"):\n    print(f\"{name} | HP: {hp} | Town: {town}\")\n\nnew_player(\"Phil\", town=\"Little Haiti\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-twice-887a52",
+      "text": "Which program shows this?",
+      "output": "Landing on Mars\nLanding on Venus",
+      "options": [
+        "def land(planet, msg=\"Landing on\"):\n    print(msg, planet)\n\nland(\"Mars\")\nland(\"Venus\")",
+        "def land(planet, msg=\"Landing on\"):\n    print(msg, planet)\n\nland(\"Mars\")\nland(\"Venus\", \"Leaving\")",
+        "def land(planet, msg=\"Landing on\"):\n    print(planet, msg)\n\nland(\"Mars\")\nland(\"Venus\")",
+        "def land(planet, msg=\"Leaving\"):\n    print(msg, planet)\n\nland(\"Mars\")\nland(\"Venus\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-twice-66431b",
+      "text": "Which program shows this?",
+      "output": "Welcome Ana\nWelcome Kai",
+      "options": [
+        "def welcome(guest, word=\"Welcome\"):\n    print(word, guest)\n\nwelcome(\"Ana\")\nwelcome(\"Kai\")",
+        "def welcome(guest, word=\"Welcome\"):\n    print(word, guest)\n\nwelcome(\"Ana\")\nwelcome(\"Kai\", \"Bye\")",
+        "def welcome(guest, word=\"Welcome\"):\n    print(guest, word)\n\nwelcome(\"Ana\")\nwelcome(\"Kai\")",
+        "def welcome(guest, word=\"Bye\"):\n    print(word, guest)\n\nwelcome(\"Ana\")\nwelcome(\"Kai\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-twice-9a3eed",
+      "text": "Which program shows this?",
+      "output": "Red alert in Bay 1\nRed alert in Bay 2",
+      "options": [
+        "def alarm(zone, level=\"Red alert in\"):\n    print(level, zone)\n\nalarm(\"Bay 1\")\nalarm(\"Bay 2\")",
+        "def alarm(zone, level=\"Red alert in\"):\n    print(level, zone)\n\nalarm(\"Bay 1\")\nalarm(\"Bay 2\", \"All clear in\")",
+        "def alarm(zone, level=\"Red alert in\"):\n    print(zone, level)\n\nalarm(\"Bay 1\")\nalarm(\"Bay 2\")",
+        "def alarm(zone, level=\"All clear in\"):\n    print(level, zone)\n\nalarm(\"Bay 1\")\nalarm(\"Bay 2\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-which-twice-b5d384",
+      "text": "Which program shows this?",
+      "output": "Captain Vega\nCaptain Orion",
+      "options": [
+        "def call(pilot, rank=\"Captain\"):\n    print(rank, pilot)\n\ncall(\"Vega\")\ncall(\"Orion\")",
+        "def call(pilot, rank=\"Captain\"):\n    print(rank, pilot)\n\ncall(\"Vega\")\ncall(\"Orion\", \"Cadet\")",
+        "def call(pilot, rank=\"Captain\"):\n    print(pilot, rank)\n\ncall(\"Vega\")\ncall(\"Orion\")",
+        "def call(pilot, rank=\"Cadet\"):\n    print(rank, pilot)\n\ncall(\"Vega\")\ncall(\"Orion\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-def-feb7e6",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"{name} has {hp} HP\")\n\nshow(\"Tommy\")\nshow(\"Lance\", 80)",
+      "output": "Tommy has 100 HP\nLance has 80 HP",
+      "options": [
+        "def show(name, hp=100):",
+        "def show(name, hp):",
+        "def show(hp=100, name):",
+        "def show(name, hp=80):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-def-f8889b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"{ship} has {fuel} fuel\")\n\nreport(\"Nova\")\nreport(\"Orion\", 20)",
+      "output": "Nova has 50 fuel\nOrion has 20 fuel",
+      "options": [
+        "def report(ship, fuel=50):",
+        "def report(ship, fuel):",
+        "def report(fuel=50, ship):",
+        "def report(ship, fuel=20):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-def-ba64c6",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"{item} has {count} left\")\n\nstock(\"milk\")\nstock(\"bread\", 6)",
+      "output": "milk has 0 left\nbread has 6 left",
+      "options": [
+        "def stock(item, count=0):",
+        "def stock(item, count):",
+        "def stock(count=0, item):",
+        "def stock(item, count=6):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-def-3cb0c4",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"{player} has {left} lives\")\n\nlives(\"Kai\")\nlives(\"Mia\", 2)",
+      "output": "Kai has 3 lives\nMia has 2 lives",
+      "options": [
+        "def lives(player, left=3):",
+        "def lives(player, left):",
+        "def lives(left=3, player):",
+        "def lives(player, left=2):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-call-b260cb",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def dock(ship, bay=\"A1\", priority=\"normal\"):\n    print(ship, bay, priority)\n\ndock(\"Nova\")\n___",
+      "output": "Nova A1 normal\nNova A1 urgent",
+      "options": [
+        "dock(\"Nova\", priority=\"urgent\")",
+        "dock(\"Nova\", \"urgent\")",
+        "dock(priority=\"urgent\")",
+        "dock(\"Nova\", priority=\"normal\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-call-dabb27",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def order(dish, size=\"medium\", side=\"fries\"):\n    print(dish, size, side)\n\norder(\"burger\")\n___",
+      "output": "burger medium fries\nburger medium salad",
+      "options": [
+        "order(\"burger\", side=\"salad\")",
+        "order(\"burger\", \"salad\")",
+        "order(side=\"salad\")",
+        "order(\"burger\", side=\"fries\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-call-26485d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def ride(car, gear=\"auto\", color=\"black\"):\n    print(car, gear, color)\n\nride(\"Cheetah\")\n___",
+      "output": "Cheetah auto black\nCheetah auto white",
+      "options": [
+        "ride(\"Cheetah\", color=\"white\")",
+        "ride(\"Cheetah\", \"white\")",
+        "ride(color=\"white\")",
+        "ride(\"Cheetah\", color=\"black\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-call-41ee8b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def send(note, to=\"base\", mode=\"radio\"):\n    print(note, to, mode)\n\nsend(\"SOS\")\n___",
+      "output": "SOS base radio\nSOS base laser",
+      "options": [
+        "send(\"SOS\", mode=\"laser\")",
+        "send(\"SOS\", \"laser\")",
+        "send(mode=\"laser\")",
+        "send(\"SOS\", mode=\"radio\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-use-bd154b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def scale(x, k=2):\n    return x * k\n\n___\nprint(scale(7, 3))",
+      "output": "14\n21",
+      "options": ["print(scale(7))", "scale(7)", "print(scale(7, 1))", "print(scale(2))"],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-use-f46fd5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def boost(power, factor=10):\n    return power * factor\n\n___\nprint(boost(4, 3))",
+      "output": "40\n12",
+      "options": ["print(boost(4))", "boost(4)", "print(boost(4, 1))", "print(boost(10))"],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-use-4e8a04",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def tickets(people, price=5):\n    return people * price\n\n___\nprint(tickets(6, 8))",
+      "output": "30\n48",
+      "options": ["print(tickets(6))", "tickets(6)", "print(tickets(6, 1))", "print(tickets(5))"],
+      "answer": 0
+    },
+    {
+      "id": "dp-gap-use-113fe9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def area(width, height=4):\n    return width * height\n\n___\nprint(area(9, 2))",
+      "output": "36\n18",
+      "options": ["print(area(9))", "area(9)", "print(area(9, 1))", "print(area(4))"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-default-ac8f86",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def new_player(name, lives=___):\n    print(name, lives)\n\nnew_player(\"Ana\")\nnew_player(\"Rex\", 5)",
+      "output": "Ana 3\nRex 5",
+      "options": ["3", "5", "0", "\"lives\""],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-default-c93976",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def new_ship(ship, crew=___):\n    print(ship, crew)\n\nnew_ship(\"Nova\")\nnew_ship(\"Orion\", 8)",
+      "output": "Nova 4\nOrion 8",
+      "options": ["4", "8", "0", "\"crew\""],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-default-b8bb9d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def add_item(item, count=___):\n    print(item, count)\n\nadd_item(\"apples\")\nadd_item(\"pears\", 2)",
+      "output": "apples 1\npears 2",
+      "options": ["1", "2", "0", "\"count\""],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-default-5a7461",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def set_timer(task, minutes=___):\n    print(task, minutes)\n\nset_timer(\"tea\")\nset_timer(\"pasta\", 9)",
+      "output": "tea 5\npasta 9",
+      "options": ["5", "9", "0", "\"minutes\""],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-kw-12c4a5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def dock(ship, bay=\"A1\", priority=\"normal\"):\n    print(f\"{ship}: {bay}, {priority}\")\n\ndock(\"Nova\", ___=\"urgent\")",
+      "output": "Nova: A1, urgent",
+      "options": ["priority", "bay", "ship", "urgent"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-kw-b2c3a8",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def book(guest, room=\"single\", meal=\"breakfast\"):\n    print(f\"{guest}: {room}, {meal}\")\n\nbook(\"Ana\", ___=\"dinner\")",
+      "output": "Ana: single, dinner",
+      "options": ["meal", "room", "guest", "dinner"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-kw-08bae6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def player(name, team=\"Sharks\", role=\"striker\"):\n    print(f\"{name}: {team}, {role}\")\n\nplayer(\"Kai\", ___=\"keeper\")",
+      "output": "Kai: Sharks, keeper",
+      "options": ["role", "team", "name", "keeper"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-kw-79ffd5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def mission(code, zone=\"north\", risk=\"low\"):\n    print(f\"{code}: {zone}, {risk}\")\n\nmission(\"M7\", ___=\"high\")",
+      "output": "M7: north, high",
+      "options": ["risk", "zone", "code", "high"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-arg-35e053",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def power(base, exp=2):\n    return base ** exp\n\nprint(power(___))",
+      "output": "25",
+      "options": ["5", "25", "5, 3", "exp=5"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-arg-f9c695",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def add_tax(price, tax=5):\n    return price + tax\n\nprint(add_tax(___))",
+      "output": "25",
+      "options": ["20", "25", "20, 1", "tax=20"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-arg-8fc24f",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def times(n, k=10):\n    return n * k\n\nprint(times(___))",
+      "output": "40",
+      "options": ["4", "40", "4, 2", "k=4"],
+      "answer": 0
+    },
+    {
+      "id": "dp-val-arg-f3b70f",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def half(n, parts=2):\n    return n / parts\n\nprint(half(___))",
+      "output": "4.5",
+      "options": ["9", "4.5", "9, 3", "parts=9"],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-order-cd8bdc",
+      "text": "Which line stops this program from printing this?",
+      "code": "def greet(word=\"Hello\", name):\n    print(word, name)\n\ngreet(\"Tommy\")\ngreet(\"Lance\", \"Hey\")",
+      "output": "Hello Tommy\nHey Lance",
+      "options": [
+        "def greet(word=\"Hello\", name):",
+        "print(word, name)",
+        "greet(\"Tommy\")",
+        "greet(\"Lance\", \"Hey\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-order-45b6d5",
+      "text": "Which line stops this program from printing this?",
+      "code": "def announce(msg=\"Next stop\", planet):\n    print(msg, planet)\n\nannounce(\"Mars\")\nannounce(\"Pluto\", \"Last stop\")",
+      "output": "Next stop Mars\nLast stop Pluto",
+      "options": [
+        "def announce(msg=\"Next stop\", planet):",
+        "print(msg, planet)",
+        "announce(\"Mars\")",
+        "announce(\"Pluto\", \"Last stop\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-order-47591e",
+      "text": "Which line stops this program from printing this?",
+      "code": "def tag(state=\"new\", item):\n    print(state, item)\n\ntag(\"helmet\")\ntag(\"boots\", \"used\")",
+      "output": "new helmet\nused boots",
+      "options": [
+        "def tag(state=\"new\", item):",
+        "print(state, item)",
+        "tag(\"helmet\")",
+        "tag(\"boots\", \"used\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-kw-919731",
+      "text": "Which line stops this program from printing this?",
+      "code": "def dock(ship, bay=\"A1\", priority=\"normal\"):\n    print(f\"{ship}: {bay}, {priority}\")\n\ndock(\"Nova\")\ndock(\"Vega\", \"C3\")\ndock(\"Orion\", \"urgent\")",
+      "output": "Nova: A1, normal\nVega: C3, normal\nOrion: A1, urgent",
+      "options": [
+        "dock(\"Orion\", \"urgent\")",
+        "dock(\"Vega\", \"C3\")",
+        "dock(\"Nova\")",
+        "print(f\"{ship}: {bay}, {priority}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-kw-5b8b11",
+      "text": "Which line stops this program from printing this?",
+      "code": "def book(guest, room=\"single\", meal=\"breakfast\"):\n    print(f\"{guest}: {room}, {meal}\")\n\nbook(\"Ana\")\nbook(\"Rex\", \"double\")\nbook(\"Kai\", \"dinner\")",
+      "output": "Ana: single, breakfast\nRex: double, breakfast\nKai: single, dinner",
+      "options": [
+        "book(\"Kai\", \"dinner\")",
+        "book(\"Rex\", \"double\")",
+        "book(\"Ana\")",
+        "print(f\"{guest}: {room}, {meal}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-kw-72b5a8",
+      "text": "Which line stops this program from printing this?",
+      "code": "def launch(rocket, pad=\"P1\", mode=\"test\"):\n    print(f\"{rocket}: {pad}, {mode}\")\n\nlaunch(\"Apollo\")\nlaunch(\"Gemini\", \"P4\")\nlaunch(\"Atlas\", \"live\")",
+      "output": "Apollo: P1, test\nGemini: P4, test\nAtlas: P1, live",
+      "options": [
+        "launch(\"Atlas\", \"live\")",
+        "launch(\"Gemini\", \"P4\")",
+        "launch(\"Apollo\")",
+        "print(f\"{rocket}: {pad}, {mode}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-default-c7e171",
+      "text": "Which line stops this program from printing this?",
+      "code": "def double(n, k=3):\n    print(\"Result:\", n * k)\n\ndouble(4)\ndouble(6)\ndouble(5, 10)",
+      "output": "Result: 8\nResult: 12\nResult: 50",
+      "options": ["def double(n, k=3):", "print(\"Result:\", n * k)", "double(4)", "double(6)"],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-default-a547e1",
+      "text": "Which line stops this program from printing this?",
+      "code": "def add_tip(bill, tip=1):\n    print(\"Total:\", bill + tip)\n\nadd_tip(20)\nadd_tip(40)\nadd_tip(30, 0)",
+      "output": "Total: 25\nTotal: 45\nTotal: 30",
+      "options": [
+        "def add_tip(bill, tip=1):",
+        "print(\"Total:\", bill + tip)",
+        "add_tip(20)",
+        "add_tip(40)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-default-1ea804",
+      "text": "Which line stops this program from printing this?",
+      "code": "def refuel(fuel, extra=5):\n    print(\"Fuel:\", fuel + extra)\n\nrefuel(10)\nrefuel(25)\nrefuel(60, 40)",
+      "output": "Fuel: 60\nFuel: 75\nFuel: 100",
+      "options": [
+        "def refuel(fuel, extra=5):",
+        "print(\"Fuel:\", fuel + extra)",
+        "refuel(10)",
+        "refuel(25)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-swap-957859",
+      "text": "Which line stops this program from printing this?",
+      "code": "def discount(price, off=10):\n    return price - off\n\nprint(discount(50))\nprint(discount(20, 80))\nprint(discount(30))",
+      "output": "40\n60\n20",
+      "options": [
+        "print(discount(20, 80))",
+        "print(discount(50))",
+        "return price - off",
+        "def discount(price, off=10):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-swap-82196b",
+      "text": "Which line stops this program from printing this?",
+      "code": "def use_fuel(fuel, burn=5):\n    return fuel - burn\n\nprint(use_fuel(40))\nprint(use_fuel(15, 90))\nprint(use_fuel(12))",
+      "output": "35\n75\n7",
+      "options": [
+        "print(use_fuel(15, 90))",
+        "print(use_fuel(40))",
+        "return fuel - burn",
+        "def use_fuel(fuel, burn=5):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dp-bad-swap-7d55d0",
+      "text": "Which line stops this program from printing this?",
+      "code": "def lose_lives(lives, hits=1):\n    return lives - hits\n\nprint(lose_lives(5))\nprint(lose_lives(4, 9))\nprint(lose_lives(3))",
+      "output": "4\n5\n2",
+      "options": [
+        "print(lose_lives(4, 9))",
+        "print(lose_lives(5))",
+        "return lives - hits",
+        "def lose_lives(lives, hits=1):"
+      ],
+      "answer": 0
+    }
+  ]
+}

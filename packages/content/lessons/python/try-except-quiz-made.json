@@ -1,0 +1,697 @@
+{
+  "note": "Made by npm run make:quiz from the templates in try-except-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "te-ok-e760e3",
+      "text": "What does this print?",
+      "code": "text = \"12\"\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"Not a number\")",
+      "options": ["24", "14", "1212", "Not a number"],
+      "answer": 0
+    },
+    {
+      "id": "te-ok-c50fcb",
+      "text": "What does this print?",
+      "code": "fuel = \"40\"\ntry:\n    n = int(fuel)\n    print(n * 3)\nexcept ValueError:\n    print(\"Bad fuel reading\")",
+      "options": ["120", "43", "404040", "Bad fuel reading"],
+      "answer": 0
+    },
+    {
+      "id": "te-ok-a50717",
+      "text": "What does this print?",
+      "code": "lives = \"3\"\ntry:\n    n = int(lives)\n    print(n * 5)\nexcept ValueError:\n    print(\"Lives must be a number\")",
+      "options": ["15", "8", "33333", "Lives must be a number"],
+      "answer": 0
+    },
+    {
+      "id": "te-ok-c18b48",
+      "text": "What does this print?",
+      "code": "speed = \"25\"\ntry:\n    n = int(speed)\n    print(n * 4)\nexcept ValueError:\n    print(\"Speed unknown\")",
+      "options": ["100", "29", "25252525", "Speed unknown"],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-bfb5ea",
+      "text": "What does this print?",
+      "code": "text = \"abc\"\ntry:\n    n = int(text)\n    print(\"Number:\", n)\nexcept ValueError:\n    print(\"Not a number\")\nprint(\"Done\")",
+      "options": [
+        "Not a number\nDone",
+        "Number: abc\nNot a number\nDone",
+        "Not a number",
+        "abc\nDone"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-5ce144",
+      "text": "What does this print?",
+      "code": "age = \"ten\"\ntry:\n    n = int(age)\n    print(\"Number:\", n)\nexcept ValueError:\n    print(\"Type digits, not words\")\nprint(\"Bye\")",
+      "options": [
+        "Type digits, not words\nBye",
+        "Number: ten\nType digits, not words\nBye",
+        "Type digits, not words",
+        "ten\nBye"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-fc3d0e",
+      "text": "What does this print?",
+      "code": "code = \"4x2\"\ntry:\n    n = int(code)\n    print(\"Number:\", n)\nexcept ValueError:\n    print(\"Bad code\")\nprint(\"Next\")",
+      "options": ["Bad code\nNext", "Number: 4x2\nBad code\nNext", "Bad code", "4x2\nNext"],
+      "answer": 0
+    },
+    {
+      "id": "te-lines-3ff035",
+      "text": "What does this print?",
+      "code": "try:\n    print(\"Start\")\n    n = int(\"x7\")\n    print(\"Converted\")\nexcept ValueError:\n    print(\"Failed\")\nprint(\"End\")",
+      "options": ["Start\nFailed\nEnd", "Start\nConverted\nEnd", "Failed\nEnd", "Start\nFailed"],
+      "answer": 0
+    },
+    {
+      "id": "te-lines-6a113a",
+      "text": "What does this print?",
+      "code": "try:\n    print(\"Reading\")\n    n = int(\"none\")\n    print(\"Got it\")\nexcept ValueError:\n    print(\"Corrupted\")\nprint(\"Next sensor\")",
+      "options": [
+        "Reading\nCorrupted\nNext sensor",
+        "Reading\nGot it\nNext sensor",
+        "Corrupted\nNext sensor",
+        "Reading\nCorrupted"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-lines-b1382d",
+      "text": "What does this print?",
+      "code": "try:\n    print(\"Loading\")\n    n = int(\"3.5\")\n    print(\"Loaded\")\nexcept ValueError:\n    print(\"Not a whole number\")\nprint(\"Menu\")",
+      "options": [
+        "Loading\nNot a whole number\nMenu",
+        "Loading\nLoaded\nMenu",
+        "Not a whole number\nMenu",
+        "Loading\nNot a whole number"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-zero-b71cd1",
+      "text": "What does this print?",
+      "code": "crew = \"0\"\ntry:\n    n = int(crew)\n    print(100 / n)\nexcept ValueError:\n    print(\"Not a number\")\nexcept ZeroDivisionError:\n    print(\"No crew to share with\")",
+      "options": ["No crew to share with", "Not a number", "0.0", "100.0"],
+      "answer": 0
+    },
+    {
+      "id": "te-zero-29aa00",
+      "text": "What does this print?",
+      "code": "players = \"0\"\ntry:\n    n = int(players)\n    print(60 / n)\nexcept ValueError:\n    print(\"Type a number\")\nexcept ZeroDivisionError:\n    print(\"Can't divide by zero\")",
+      "options": ["Can't divide by zero", "Type a number", "0.0", "60.0"],
+      "answer": 0
+    },
+    {
+      "id": "te-zero-2285df",
+      "text": "What does this print?",
+      "code": "days = \"0\"\ntry:\n    n = int(days)\n    print(90 / n)\nexcept ValueError:\n    print(\"Bad input\")\nexcept ZeroDivisionError:\n    print(\"Zero days?\")",
+      "options": ["Zero days?", "Bad input", "0.0", "90.0"],
+      "answer": 0
+    },
+    {
+      "id": "te-notnum-fa209c",
+      "text": "What does this print?",
+      "code": "crew = \"four\"\ntry:\n    n = int(crew)\n    print(100 / n)\nexcept ValueError:\n    print(\"Not a number\")\nexcept ZeroDivisionError:\n    print(\"No crew to share with\")",
+      "options": ["Not a number", "No crew to share with", "25.0", "four"],
+      "answer": 0
+    },
+    {
+      "id": "te-notnum-7bcfc7",
+      "text": "What does this print?",
+      "code": "players = \"six\"\ntry:\n    n = int(players)\n    print(60 / n)\nexcept ValueError:\n    print(\"Type a number\")\nexcept ZeroDivisionError:\n    print(\"Can't divide by zero\")",
+      "options": ["Type a number", "Can't divide by zero", "20.0", "six"],
+      "answer": 0
+    },
+    {
+      "id": "te-notnum-247d98",
+      "text": "What does this print?",
+      "code": "days = \"2x\"\ntry:\n    n = int(days)\n    print(90 / n)\nexcept ValueError:\n    print(\"Bad input\")\nexcept ZeroDivisionError:\n    print(\"Zero days?\")",
+      "options": ["Bad input", "Zero days?", "45.0", "2x"],
+      "answer": 0
+    },
+    {
+      "id": "te-sum-749e9f",
+      "text": "What does this print?",
+      "code": "readings = [\"42\", \"x9\", \"100\", \"bad\", \"7\"]\ntotal = 0\nbad = 0\nfor r in readings:\n    try:\n        total = total + int(r)\n    except ValueError:\n        bad = bad + 1\nprint(f\"Total: {total}\")\nprint(f\"Corrupted: {bad}\")",
+      "options": [
+        "Total: 149\nCorrupted: 2",
+        "Total: 149\nCorrupted: 1",
+        "Total: 7\nCorrupted: 2",
+        "Total: 149\nCorrupted: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-sum-759b2e",
+      "text": "What does this print?",
+      "code": "sensors = [\"5\", \"err\", \"15\", \"?\", \"20\", \"1\"]\ntotal = 0\nbad = 0\nfor r in sensors:\n    try:\n        total = total + int(r)\n    except ValueError:\n        bad = bad + 1\nprint(f\"Total: {total}\")\nprint(f\"Corrupted: {bad}\")",
+      "options": [
+        "Total: 41\nCorrupted: 2",
+        "Total: 41\nCorrupted: 1",
+        "Total: 1\nCorrupted: 2",
+        "Total: 41\nCorrupted: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-sum-1a6a43",
+      "text": "What does this print?",
+      "code": "scores = [\"10\", \"ten\", \"30\", \"\", \"-\"]\ntotal = 0\nbad = 0\nfor r in scores:\n    try:\n        total = total + int(r)\n    except ValueError:\n        bad = bad + 1\nprint(f\"Total: {total}\")\nprint(f\"Corrupted: {bad}\")",
+      "options": [
+        "Total: 40\nCorrupted: 3",
+        "Total: 40\nCorrupted: 1",
+        "Total: 30\nCorrupted: 3",
+        "Total: 40\nCorrupted: 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-sum-61db50",
+      "text": "What does this print?",
+      "code": "levels = [\"3\", \"4\", \"max\", \"low\", \"8\"]\ntotal = 0\nbad = 0\nfor r in levels:\n    try:\n        total = total + int(r)\n    except ValueError:\n        bad = bad + 1\nprint(f\"Total: {total}\")\nprint(f\"Corrupted: {bad}\")",
+      "options": [
+        "Total: 15\nCorrupted: 2",
+        "Total: 15\nCorrupted: 1",
+        "Total: 8\nCorrupted: 2",
+        "Total: 15\nCorrupted: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-sum-d8a413",
+      "text": "What does this print?",
+      "code": "temps = [\"21\", \"19\", \"hot\", \"24\", \"n/a\"]\ntotal = 0\nbad = 0\nfor r in temps:\n    try:\n        total = total + int(r)\n    except ValueError:\n        bad = bad + 1\nprint(f\"Total: {total}\")\nprint(f\"Corrupted: {bad}\")",
+      "options": [
+        "Total: 64\nCorrupted: 2",
+        "Total: 64\nCorrupted: 1",
+        "Total: 24\nCorrupted: 2",
+        "Total: 64\nCorrupted: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-around-08a695",
+      "text": "What does this print?",
+      "code": "readings = [\"4\", \"9\", \"x\", \"6\"]\ntotal = 0\ntry:\n    for r in readings:\n        total = total + int(r)\nexcept ValueError:\n    print(\"Reading stopped\")\nprint(total)",
+      "options": [
+        "Reading stopped\n13",
+        "Reading stopped\n19",
+        "Reading stopped\n9",
+        "Reading stopped\nReading stopped"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-around-d0785d",
+      "text": "What does this print?",
+      "code": "prices = [\"12\", \"7\", \"free\", \"8\"]\ntotal = 0\ntry:\n    for r in prices:\n        total = total + int(r)\nexcept ValueError:\n    print(\"Not a price\")\nprint(total)",
+      "options": [
+        "Not a price\n19",
+        "Not a price\n27",
+        "Not a price\n7",
+        "Not a price\nNot a price"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-around-8340de",
+      "text": "What does this print?",
+      "code": "laps = [\"30\", \"25\", \"28\", \"DNF\", \"31\"]\ntotal = 0\ntry:\n    for r in laps:\n        total = total + int(r)\nexcept ValueError:\n    print(\"Race stopped\")\nprint(total)",
+      "options": [
+        "Race stopped\n83",
+        "Race stopped\n114",
+        "Race stopped\n28",
+        "Race stopped\nRace stopped"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-else-75bffb",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"12\")\nexcept ValueError:\n    print(\"Error!\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Checked\")",
+      "options": ["24\nChecked", "14\nChecked", "24\n12", "1212\nChecked"],
+      "answer": 0
+    },
+    {
+      "id": "te-else-d36e98",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"35\")\nexcept ValueError:\n    print(\"Not a number\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Always runs\")",
+      "options": ["70\nAlways runs", "37\nAlways runs", "70\n35", "3535\nAlways runs"],
+      "answer": 0
+    },
+    {
+      "id": "te-else-1210ce",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"8\")\nexcept ValueError:\n    print(\"Bad value\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Done\")",
+      "options": ["16\nDone", "10\nDone", "16\n8", "88\nDone"],
+      "answer": 0
+    },
+    {
+      "id": "te-finally-195e07",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"hello\")\n    print(n)\nexcept ValueError:\n    print(\"Please enter a number\")\nfinally:\n    print(\"Thanks\")",
+      "options": [
+        "Please enter a number\nThanks",
+        "hello\nThanks",
+        "Please enter a number",
+        "Please enter a number\nThanks\nThanks"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-finally-e2b75c",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"7 7\")\n    print(n)\nexcept ValueError:\n    print(\"One number only\")\nfinally:\n    print(\"Checked\")",
+      "options": [
+        "One number only\nChecked",
+        "7 7\nChecked",
+        "One number only",
+        "One number only\nChecked\nChecked"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-finally-8dded2",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"zero\")\n    print(n)\nexcept ValueError:\n    print(\"Digits, please\")\nfinally:\n    print(\"Done\")",
+      "options": [
+        "Digits, please\nDone",
+        "zero\nDone",
+        "Digits, please",
+        "Digits, please\nDone\nDone"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-index-855c3d",
+      "text": "Which program shows this?",
+      "output": "No one there\nDone",
+      "options": [
+        "crew = [\"Tommy\", \"Lance\"]\ntry:\n    print(crew[2])\nexcept IndexError:\n    print(\"No one there\")\nprint(\"Done\")",
+        "crew = [\"Tommy\", \"Lance\"]\ntry:\n    print(crew[2])\nexcept ValueError:\n    print(\"No one there\")\nprint(\"Done\")",
+        "crew = [\"Tommy\", \"Lance\"]\ntry:\n    print(crew[0])\nexcept IndexError:\n    print(\"No one there\")\nprint(\"Done\")",
+        "crew = [\"Tommy\", \"Lance\"]\ntry:\n    print(crew[2])\nexcept IndexError:\n    print(\"No one there\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-index-63a902",
+      "text": "Which program shows this?",
+      "output": "No such planet\nScan over",
+      "options": [
+        "planets = [\"Mars\", \"Venus\", \"Earth\"]\ntry:\n    print(planets[5])\nexcept IndexError:\n    print(\"No such planet\")\nprint(\"Scan over\")",
+        "planets = [\"Mars\", \"Venus\", \"Earth\"]\ntry:\n    print(planets[5])\nexcept ValueError:\n    print(\"No such planet\")\nprint(\"Scan over\")",
+        "planets = [\"Mars\", \"Venus\", \"Earth\"]\ntry:\n    print(planets[0])\nexcept IndexError:\n    print(\"No such planet\")\nprint(\"Scan over\")",
+        "planets = [\"Mars\", \"Venus\", \"Earth\"]\ntry:\n    print(planets[5])\nexcept IndexError:\n    print(\"No such planet\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-index-8a2e13",
+      "text": "Which program shows this?",
+      "output": "End of the list\nStop",
+      "options": [
+        "songs = [\"Intro\", \"Wave\"]\ntry:\n    print(songs[3])\nexcept IndexError:\n    print(\"End of the list\")\nprint(\"Stop\")",
+        "songs = [\"Intro\", \"Wave\"]\ntry:\n    print(songs[3])\nexcept ValueError:\n    print(\"End of the list\")\nprint(\"Stop\")",
+        "songs = [\"Intro\", \"Wave\"]\ntry:\n    print(songs[0])\nexcept IndexError:\n    print(\"End of the list\")\nprint(\"Stop\")",
+        "songs = [\"Intro\", \"Wave\"]\ntry:\n    print(songs[3])\nexcept IndexError:\n    print(\"End of the list\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-index-44d776",
+      "text": "Which program shows this?",
+      "output": "No car there\nGarage closed",
+      "options": [
+        "cars = [\"Cheetah\", \"Sabre\", \"Infernus\"]\ntry:\n    print(cars[4])\nexcept IndexError:\n    print(\"No car there\")\nprint(\"Garage closed\")",
+        "cars = [\"Cheetah\", \"Sabre\", \"Infernus\"]\ntry:\n    print(cars[4])\nexcept ValueError:\n    print(\"No car there\")\nprint(\"Garage closed\")",
+        "cars = [\"Cheetah\", \"Sabre\", \"Infernus\"]\ntry:\n    print(cars[0])\nexcept IndexError:\n    print(\"No car there\")\nprint(\"Garage closed\")",
+        "cars = [\"Cheetah\", \"Sabre\", \"Infernus\"]\ntry:\n    print(cars[4])\nexcept IndexError:\n    print(\"No car there\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-else-ab79ba",
+      "text": "Which program shows this?",
+      "output": "42\nDone",
+      "options": [
+        "try:\n    n = int(\"41\")\nexcept ValueError:\n    print(\"Not a number\")\nelse:\n    print(n + 1)\nprint(\"Done\")",
+        "try:\n    n = int(\"41x\")\nexcept ValueError:\n    print(\"Not a number\")\nelse:\n    print(n + 1)\nprint(\"Done\")",
+        "try:\n    n = int(\"41\")\nexcept ValueError:\n    print(\"Not a number\")\nelse:\n    print(n)\nprint(\"Done\")",
+        "try:\n    n = int(\"41\")\nexcept ValueError:\n    print(\"Not a number\")\nprint(\"Done\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-else-9e53ed",
+      "text": "Which program shows this?",
+      "output": "10\nNext",
+      "options": [
+        "try:\n    n = int(\"9\")\nexcept ValueError:\n    print(\"Error!\")\nelse:\n    print(n + 1)\nprint(\"Next\")",
+        "try:\n    n = int(\"9x\")\nexcept ValueError:\n    print(\"Error!\")\nelse:\n    print(n + 1)\nprint(\"Next\")",
+        "try:\n    n = int(\"9\")\nexcept ValueError:\n    print(\"Error!\")\nelse:\n    print(n)\nprint(\"Next\")",
+        "try:\n    n = int(\"9\")\nexcept ValueError:\n    print(\"Error!\")\nprint(\"Next\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-else-ed5707",
+      "text": "Which program shows this?",
+      "output": "18\nBye",
+      "options": [
+        "try:\n    n = int(\"17\")\nexcept ValueError:\n    print(\"Bad age\")\nelse:\n    print(n + 1)\nprint(\"Bye\")",
+        "try:\n    n = int(\"17x\")\nexcept ValueError:\n    print(\"Bad age\")\nelse:\n    print(n + 1)\nprint(\"Bye\")",
+        "try:\n    n = int(\"17\")\nexcept ValueError:\n    print(\"Bad age\")\nelse:\n    print(n)\nprint(\"Bye\")",
+        "try:\n    n = int(\"17\")\nexcept ValueError:\n    print(\"Bad age\")\nprint(\"Bye\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-which-else-62524a",
+      "text": "Which program shows this?",
+      "output": "100\nEnd",
+      "options": [
+        "try:\n    n = int(\"99\")\nexcept ValueError:\n    print(\"Type digits\")\nelse:\n    print(n + 1)\nprint(\"End\")",
+        "try:\n    n = int(\"99x\")\nexcept ValueError:\n    print(\"Type digits\")\nelse:\n    print(n + 1)\nprint(\"End\")",
+        "try:\n    n = int(\"99\")\nexcept ValueError:\n    print(\"Type digits\")\nelse:\n    print(n)\nprint(\"End\")",
+        "try:\n    n = int(\"99\")\nexcept ValueError:\n    print(\"Type digits\")\nprint(\"End\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-except-ac36e8",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "text = \"abc\"\ntry:\n    n = int(text)\n    print(n)\n___\n    print(\"Not a number\")",
+      "output": "Not a number",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "except IndexError:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-except-448e2b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "age = \"old\"\ntry:\n    n = int(age)\n    print(n)\n___\n    print(\"Type your age in digits\")",
+      "output": "Type your age in digits",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "except IndexError:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-except-4df62e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "code = \"12a\"\ntry:\n    n = int(code)\n    print(n)\n___\n    print(\"Bad code\")",
+      "output": "Bad code",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "except IndexError:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-except-4d4ff3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fuel = \"full\"\ntry:\n    n = int(fuel)\n    print(n)\n___\n    print(\"Fuel must be a number\")",
+      "output": "Fuel must be a number",
+      "options": ["except ValueError:", "except ZeroDivisionError:", "else:", "except IndexError:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-add-86e892",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "total = 0\nfor r in [\"4\", \"x\", \"9\"]:\n    try:\n        ___\n    except ValueError:\n        print(\"Skip\", r)\nprint(total)",
+      "output": "Skip x\n13",
+      "options": [
+        "total = total + int(r)",
+        "total = int(r)",
+        "total = total + 1",
+        "total = total + r"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-add-536529",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "total = 0\nfor r in [\"10\", \"20\", \"n/a\", \"5\"]:\n    try:\n        ___\n    except ValueError:\n        print(\"Skip\", r)\nprint(total)",
+      "output": "Skip n/a\n35",
+      "options": [
+        "total = total + int(r)",
+        "total = int(r)",
+        "total = total + 1",
+        "total = total + r"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-add-090c6e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "total = 0\nfor r in [\"bad\", \"7\", \"3\"]:\n    try:\n        ___\n    except ValueError:\n        print(\"Skip\", r)\nprint(total)",
+      "output": "Skip bad\n10",
+      "options": [
+        "total = total + int(r)",
+        "total = int(r)",
+        "total = total + 1",
+        "total = total + r"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-add-723621",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "total = 0\nfor r in [\"15\", \"?\", \"6\", \"err\"]:\n    try:\n        ___\n    except ValueError:\n        print(\"Skip\", r)\nprint(total)",
+      "output": "Skip ?\nSkip err\n21",
+      "options": [
+        "total = total + int(r)",
+        "total = int(r)",
+        "total = total + 1",
+        "total = total + r"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-finally-11eeea",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "try:\n    n = int(\"twelve\")\n    print(n)\nexcept ValueError:\n    print(\"Not a number\")\n___\n    print(\"Check done\")",
+      "output": "Not a number\nCheck done",
+      "options": ["finally:", "else:", "except:", "if n:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-finally-7141d5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "try:\n    n = int(\"x1\")\n    print(n)\nexcept ValueError:\n    print(\"Bad reading\")\n___\n    print(\"Sensor off\")",
+      "output": "Bad reading\nSensor off",
+      "options": ["finally:", "else:", "except:", "if n:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-finally-4b31c3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "try:\n    n = int(\"hi\")\n    print(n)\nexcept ValueError:\n    print(\"Please type digits\")\n___\n    print(\"Thanks\")",
+      "output": "Please type digits\nThanks",
+      "options": ["finally:", "else:", "except:", "if n:"],
+      "answer": 0
+    },
+    {
+      "id": "te-gap-finally-b4680c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "try:\n    n = int(\"5 kg\")\n    print(n)\nexcept ValueError:\n    print(\"Only the number, please\")\n___\n    print(\"Saved\")",
+      "output": "Only the number, please\nSaved",
+      "options": ["finally:", "else:", "except:", "if n:"],
+      "answer": 0
+    },
+    {
+      "id": "te-val-error-ad6555",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "try:\n    n = int(\"abc\")\nexcept ___:\n    print(\"Not a number\")\nprint(\"Done\")",
+      "output": "Not a number\nDone",
+      "options": ["ValueError", "ZeroDivisionError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "te-val-error-110be1",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "try:\n    print(10 / 0)\nexcept ___:\n    print(\"Math says no\")\nprint(\"Next\")",
+      "output": "Math says no\nNext",
+      "options": ["ZeroDivisionError", "ValueError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "te-val-error-c64c7e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "try:\n    print([\"Tommy\", \"Lance\"][10])\nexcept ___:\n    print(\"No one at that place\")\nprint(\"Bye\")",
+      "output": "No one at that place\nBye",
+      "options": ["IndexError", "ValueError", "ZeroDivisionError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "te-val-error-617750",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "try:\n    print({\"Tommy\": 42}[\"Ken\"])\nexcept ___:\n    print(\"No such key\")\nprint(\"End\")",
+      "output": "No such key\nEnd",
+      "options": ["KeyError", "ValueError", "ZeroDivisionError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "te-val-text-af9e45",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = ___\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"Not a number\")",
+      "output": "Not a number",
+      "options": ["\"ten\"", "\"10\"", "\"5\"", "\"20\""],
+      "answer": 0
+    },
+    {
+      "id": "te-val-text-e7a404",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = ___\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"Bad value\")",
+      "output": "42",
+      "options": ["\"21\"", "\"42\"", "\"twenty\"", "\"2\""],
+      "answer": 0
+    },
+    {
+      "id": "te-val-text-83e33d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = ___\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"Type digits\")",
+      "output": "14",
+      "options": ["\"7\"", "\"14\"", "\"7a\"", "\"0\""],
+      "answer": 0
+    },
+    {
+      "id": "te-val-text-693df2",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = ___\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"Corrupted\")",
+      "output": "Corrupted",
+      "options": ["\"x5\"", "\"5\"", "\"10\"", "\"55\""],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-catch-d43574",
+      "text": "Which line stops this program from printing this?",
+      "code": "for x in [\"5\", \"0\", \"2\"]:\n    try:\n        print(10 / int(x))\n    except ValueError:\n        print(\"Skipped:\", x)\nprint(\"Done\")",
+      "output": "2.0\nSkipped: 0\n5.0\nDone",
+      "options": ["except ValueError:", "print(10 / int(x))", "try:", "print(\"Skipped:\", x)"],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-catch-ca9cdd",
+      "text": "Which line stops this program from printing this?",
+      "code": "for x in [\"4\", \"8\", \"0\"]:\n    try:\n        print(40 / int(x))\n    except ValueError:\n        print(\"Zero, no share:\", x)\nprint(\"End\")",
+      "output": "10.0\n5.0\nZero, no share: 0\nEnd",
+      "options": [
+        "except ValueError:",
+        "print(40 / int(x))",
+        "try:",
+        "print(\"Zero, no share:\", x)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-catch-c1ca9a",
+      "text": "Which line stops this program from printing this?",
+      "code": "for x in [\"0\", \"3\", \"6\"]:\n    try:\n        print(30 / int(x))\n    except ValueError:\n        print(\"Can't divide by zero:\", x)\nprint(\"Checked\")",
+      "output": "Can't divide by zero: 0\n10.0\n5.0\nChecked",
+      "options": [
+        "except ValueError:",
+        "print(30 / int(x))",
+        "print(\"Can't divide by zero:\", x)",
+        "print(\"Checked\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-start-183216",
+      "text": "Which line stops this program from printing this?",
+      "code": "bad = 1\nreadings = [\"42\", \"x9\", \"7\", \"bad\"]\nfor r in readings:\n    try:\n        n = int(r)\n    except ValueError:\n        print(\"Skip\", r)\n        bad = bad + 1\nprint(f\"Corrupted: {bad}\")",
+      "output": "Skip x9\nSkip bad\nCorrupted: 2",
+      "options": ["bad = 1", "readings = [\"42\", \"x9\", \"7\", \"bad\"]", "try:", "n = int(r)"],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-start-19f0c0",
+      "text": "Which line stops this program from printing this?",
+      "code": "bad = 1\nsensors = [\"err\", \"5\", \"?\", \"6\"]\nfor r in sensors:\n    try:\n        n = int(r)\n    except ValueError:\n        print(\"Skip\", r)\n        bad = bad + 1\nprint(f\"Corrupted: {bad}\")",
+      "output": "Skip err\nSkip ?\nCorrupted: 2",
+      "options": ["bad = 1", "sensors = [\"err\", \"5\", \"?\", \"6\"]", "try:", "n = int(r)"],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-start-41ec25",
+      "text": "Which line stops this program from printing this?",
+      "code": "bad = 1\ncodes = [\"12\", \"?\", \"30\", \"-\", \"n/a\"]\nfor r in codes:\n    try:\n        n = int(r)\n    except ValueError:\n        print(\"Skip\", r)\n        bad = bad + 1\nprint(f\"Corrupted: {bad}\")",
+      "output": "Skip ?\nSkip -\nSkip n/a\nCorrupted: 3",
+      "options": [
+        "bad = 1",
+        "codes = [\"12\", \"?\", \"30\", \"-\", \"n/a\"]",
+        "try:",
+        "n = int(r)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-indent-c2c3be",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor r in [\"4\", \"x\", \"9\"]:\n    try:\n        total = total + int(r)\n    except ValueError:\n        print(\"Skip\", r)\n    print(total)",
+      "output": "Skip x\n13",
+      "options": [
+        "print(total)",
+        "print(\"Skip\", r)",
+        "except ValueError:",
+        "total = total + int(r)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-indent-50153b",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor r in [\"10\", \"20\", \"n/a\"]:\n    try:\n        total = total + int(r)\n    except ValueError:\n        print(\"Skip\", r)\n    print(total)",
+      "output": "Skip n/a\n30",
+      "options": [
+        "print(total)",
+        "print(\"Skip\", r)",
+        "except ValueError:",
+        "total = total + int(r)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-indent-9e80cf",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor r in [\"bad\", \"7\", \"3\"]:\n    try:\n        total = total + int(r)\n    except ValueError:\n        print(\"Skip\", r)\n    print(total)",
+      "output": "Skip bad\n10",
+      "options": [
+        "print(total)",
+        "print(\"Skip\", r)",
+        "except ValueError:",
+        "total = total + int(r)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-convert-3ee2b7",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor r in [\"8\", \"oops\", \"2\"]:\n    try:\n        total = total + r\n    except ValueError:\n        print(\"Skip\", r)\nprint(f\"Total: {total}\")",
+      "output": "Skip oops\nTotal: 10",
+      "options": [
+        "total = total + r",
+        "except ValueError:",
+        "print(\"Skip\", r)",
+        "print(f\"Total: {total}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-convert-53f268",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor r in [\"x\", \"30\", \"12\"]:\n    try:\n        total = total + r\n    except ValueError:\n        print(\"Skip\", r)\nprint(f\"Total: {total}\")",
+      "output": "Skip x\nTotal: 42",
+      "options": ["total = total + r", "try:", "except ValueError:", "print(\"Skip\", r)"],
+      "answer": 0
+    },
+    {
+      "id": "te-bad-convert-4e6736",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor r in [\"5\", \"5\", \"?\", \"1\"]:\n    try:\n        total = total + r\n    except ValueError:\n        print(\"Skip\", r)\nprint(f\"Total: {total}\")",
+      "output": "Skip ?\nTotal: 11",
+      "options": ["total = total + r", "try:", "except ValueError:", "print(\"Skip\", r)"],
+      "answer": 0
+    }
+  ]
+}

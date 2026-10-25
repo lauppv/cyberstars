@@ -1,0 +1,807 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "In the Telemetry Toolkit, what does `safe_int(\"bad\")` give back?",
+      "options": ["\"bad\"", "0", "Nothing: it stops with a ValueError", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "In the Telemetry Toolkit, what does `safe_int(\"bad\", -1)` give back?",
+      "options": ["-1", "0", "\"bad\"", "Nothing: it stops with a ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "Why does `fallback` have a default of 0 in `safe_int(text, fallback=0)`?",
+      "options": [
+        "Because try needs a variable set to 0",
+        "So that int() never fails",
+        "So a call can leave it out, and a corrupted reading then becomes 0",
+        "Because every default value has to be 0"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What does `summarize(numbers)` give back?",
+      "options": [
+        "A list with three numbers",
+        "Only the total; the largest and the smallest are printed",
+        "Nothing: it prints the three values",
+        "Three values, packed together in a tuple"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\nprint(summarize([3, 10, 6]))",
+      "options": ["(19, 10, 3)", "[19, 10, 3]", "19 10 3", "19\n10\n3"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "In the mission, readings is `[\"10\", \"bad\", \"25\", \"7\", \"x\"]`. How many of them become 0 in numbers?",
+      "options": ["1", "3", "2", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "In the mission, the reading \"bad\" is changed to \"8\". What does the program print after `Total: `?",
+      "options": ["42", "50", "8", "58"],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Why does `safe_int` catch ValueError by name, instead of a bare `except:`?",
+      "options": [
+        "A bare except: doesn't work inside a function",
+        "except: must always name an error, or Python stops",
+        "ValueError is the only error Python has",
+        "We know which error we expect: int() failing on a text"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"12\") + safe_int(\"ab\"))",
+      "options": ["12ab", "Nothing: it stops with a ValueError", "12", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "What happens when this runs?",
+      "code": "def make_total():\n    total = 42\n\nmake_total()\nprint(total)",
+      "options": [
+        "It stops with a NameError: total exists only inside make_total",
+        "It prints 42: make_total created total",
+        "It prints None: make_total returns nothing",
+        "It prints 0: a new variable starts at 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "Why should each function of the toolkit work only with its parameters and return its result?",
+      "options": [
+        "Because a function can't read global variables at all",
+        "So the program runs faster",
+        "Because every function has to end with return",
+        "So it does the same job wherever it is called, without touching variables outside it"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "x = 5\n\ndef f():\n    x = 99\n    return x\n\nf()\nprint(x)",
+      "options": ["99", "5", "None", "Nothing: it stops with an error"],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "text": "What happens when this runs?",
+      "code": "health = 100\n\ndef take_damage():\n    health = health - 10\n\ntake_damage()",
+      "options": [
+        "It stops with an error: inside the function health is local, and it is used before it has a value",
+        "health becomes 90 for the whole program",
+        "It prints 90",
+        "Nothing changes, and there is no error"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Which of these lines stops with a SyntaxError?",
+      "options": ["def f(a, b=2):", "def f(a=1, b):", "def f(a=1, b=2):", "def f(a, b):"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "def dock(ship, bay=\"A1\", priority=\"normal\"):\n    print(f\"{ship} at {bay} ({priority})\")\n\ndock(\"Pioneer\", priority=\"urgent\")",
+      "options": [
+        "Pioneer at urgent (normal)",
+        "Pioneer at A1 (normal)",
+        "Pioneer at A1 (urgent)",
+        "Nothing: it stops with an error"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "What does `return a, b` send back?",
+      "options": [
+        "Only a: b is left out",
+        "Two returns, one after the other",
+        "A list [a, b]",
+        "One tuple that holds a and b"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "def min_max(numbers):\n    return min(numbers), max(numbers)\n\nlow, high = min_max([7, 3, 9])\nprint(high - low)",
+      "options": ["-6", "12", "(3, 9)", "6"],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "`summarize` returns three values. What happens on `a, b = summarize([1, 2, 3])`?",
+      "options": [
+        "It stops with an error: three values, two variables",
+        "a gets 6, b gets 3, and the third value is dropped",
+        "a gets the whole tuple and b stays empty",
+        "a gets 1 and b gets 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"abc\")\n    print(100 / n)\nexcept ValueError:\n    print(\"Not a number\")\nexcept ZeroDivisionError:\n    print(\"Zero\")",
+      "options": [
+        "Zero",
+        "Not a number",
+        "Not a number\nZero",
+        "Nothing: it stops with a ValueError"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "An error happens on the first line of a try block. What happens to the lines after it in the try?",
+      "options": [
+        "They run after the except block",
+        "They run again from the top of the try",
+        "They are skipped: Python jumps to the except block",
+        "They run anyway, and the error is shown at the end"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"7\")\nexcept ValueError:\n    print(\"Error\")\nelse:\n    print(\"OK\")\nfinally:\n    print(\"Done\")",
+      "options": ["Done", "Error\nDone", "OK\nDone", "OK"],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nnums = []\nfor r in [\"3\", \"?\", \"5\"]:\n    nums.append(safe_int(r, -1))\nprint(nums)",
+      "options": ["[3, 0, 5]", "[3, 5]", "['3', -1, '5']", "[3, -1, 5]"],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "In the mission, why does `Smallest:` come out as 0?",
+      "options": [
+        "The corrupted readings became 0, and 0 is the smallest number in the list",
+        "min() gives 0 when the list once had text in it",
+        "summarize starts the smallest at 0",
+        "Because 7 is the last good reading, and 7 - 7 is 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "def stats(numbers):\n    return sum(numbers), len(numbers)\n\ntotal, count = stats([10, 20, 30])\nprint(total / count)",
+      "options": ["20", "20.0", "60", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "Where can the parameter `fallback` of `safe_int` be used?",
+      "options": [
+        "Anywhere in the program, once safe_int is defined",
+        "Only inside safe_int, where it is a local variable",
+        "Only in the main program, after the call",
+        "Only inside the except block"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "def label(name, health=100, city=\"Vice City\"):\n    return f\"{name} {health} {city}\"\n\nprint(label(\"Phil\", city=\"Liberty\"))",
+      "options": [
+        "Phil 100 Liberty",
+        "Phil Liberty Vice City",
+        "Phil 100 Vice City",
+        "Nothing: it stops with an error"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "Which call of `safe_int(text, fallback=0)` turns \"x\" into -1?",
+      "options": [
+        "safe_int(-1, \"x\")",
+        "safe_int(\"x\")",
+        "safe_int(\"x\", fallback=0)",
+        "safe_int(\"x\", -1)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "def check(text):\n    try:\n        value = int(text)\n    except ValueError:\n        return \"bad\"\n    return value * 2\n\nprint(check(\"4\"))\nprint(check(\"four\"))",
+      "options": ["44\nbad", "8\n8", "8\nbad", "bad\nbad"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "Why does `summarize` take the list as a parameter instead of reading `numbers` from outside?",
+      "options": [
+        "So it can sum up any list it is given, not only that one",
+        "Because sum() can't take a global list",
+        "Because a parameter makes the function faster",
+        "So the list can never change"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "def divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return 0\n\nprint(divide(8, 0) + divide(8, 2))",
+      "options": ["4", "4.0", "Nothing: it stops with a ZeroDivisionError", "0"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "rfa-safe",
+      "kind": "prints",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nnumbers = []\nfor reading in [{{readings}}]:\n    numbers.append(safe_int(reading))\nprint(numbers)",
+      "mistakes": [
+        ["return fallback", "return text"],
+        ["safe_int(reading))", "safe_int(reading, -1))"],
+        ["numbers.append(safe_int(reading))", "numbers.append(reading)"],
+        ["return int(text)", "return text"]
+      ],
+      "text": "What does this print?",
+      "values": [
+        {
+          "readings": "\"10\", \"bad\", \"25\""
+        },
+        {
+          "readings": "\"7\", \"x\", \"3\", \"?\""
+        },
+        {
+          "readings": "\"40\", \"4O\", \"12\""
+        },
+        {
+          "readings": "\"5\", \"\", \"8\""
+        }
+      ]
+    },
+    {
+      "id": "rfa-fallback",
+      "kind": "prints",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"{{a}}\"))\nprint(safe_int(\"{{b}}\"))\nprint(safe_int(\"{{b}}\", {{f}}))",
+      "mistakes": [
+        ["fallback=0", "fallback=1"],
+        ["return fallback", "return 0"],
+        ["print(safe_int(\"{{b}}\", {{f}}))", "print(safe_int(\"{{b}}\"))"],
+        ["return int(text)", "return text"]
+      ],
+      "text": "What does this print?",
+      "values": [
+        {
+          "a": "12",
+          "b": "twelve",
+          "f": -1
+        },
+        {
+          "a": "300",
+          "b": "3OO",
+          "f": 99
+        },
+        {
+          "a": "5",
+          "b": "five",
+          "f": 1
+        }
+      ]
+    },
+    {
+      "id": "rfa-summary",
+      "kind": "prints",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\ntotal, largest, smallest = summarize([{{nums}}])\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {smallest}\")",
+      "mistakes": [
+        ["total, largest, smallest =", "total, smallest, largest ="],
+        ["sum(numbers), max", "len(numbers), max"],
+        ["max(numbers), min(numbers)", "min(numbers), max(numbers)"],
+        ["print(f\"Smallest: {smallest}\")", "print(f\"Smallest: {largest}\")"]
+      ],
+      "text": "What does this print?",
+      "values": [
+        {
+          "nums": "4, 9, 2"
+        },
+        {
+          "nums": "10, 0, 25, 7, 0"
+        },
+        {
+          "nums": "6, 3, 8, 1"
+        },
+        {
+          "nums": "12, 5, 20"
+        }
+      ]
+    },
+    {
+      "id": "rfa-tuple",
+      "kind": "prints",
+      "code": "def stats(numbers):\n    return max(numbers), min(numbers)\n\nprint(stats([{{nums}}]))",
+      "mistakes": [
+        ["return max(numbers), min(numbers)", "return [max(numbers), min(numbers)]"],
+        ["print(stats([{{nums}}]))", "print(stats([{{nums}}])[0])"],
+        ["max(numbers), min(numbers)", "max(numbers)"],
+        ["max(numbers), min(numbers)", "min(numbers), max(numbers)"]
+      ],
+      "text": "What does this print?",
+      "values": [
+        {
+          "nums": "3, 8, 5"
+        },
+        {
+          "nums": "15, 4, 9, 11"
+        },
+        {
+          "nums": "7, 2"
+        }
+      ]
+    },
+    {
+      "id": "rfa-scope",
+      "kind": "prints",
+      "code": "{{v}} = {{a}}\nprint(f\"Before: {{{v}}}\")\n\ndef boost({{p}}):\n    {{p}} = {{p}} * 2\n    return {{p}}\n\nboost({{v}})\nprint(f\"Ignored: {{{v}}}\")\n{{v}} = boost({{v}})\nprint(f\"After: {{{v}}}\")",
+      "mistakes": [
+        ["{{v}} = boost({{v}})", "boost({{v}})"],
+        ["* 2", "+ 2"],
+        ["boost({{v}})\nprint(f\"Ignored", "{{v}} = boost({{v}})\nprint(f\"Ignored"]
+      ],
+      "text": "What does this print?",
+      "values": [
+        {
+          "v": "shield",
+          "p": "s",
+          "a": 100
+        },
+        {
+          "v": "fuel",
+          "p": "f",
+          "a": 35
+        },
+        {
+          "v": "power",
+          "p": "p",
+          "a": 12
+        },
+        {
+          "v": "speed",
+          "p": "x",
+          "a": 60
+        }
+      ]
+    },
+    {
+      "id": "rfa-default",
+      "kind": "prints",
+      "code": "def dock(ship, bay=\"{{d}}\"):\n    print(f\"{ship} docked at {bay}\")\n\ndock(\"{{a}}\")\ndock(\"{{b}}\", \"{{c}}\")\ndock(\"{{a}}\", bay=\"{{e}}\")",
+      "mistakes": [
+        ["bay=\"{{d}}\"", "bay=\"{{c}}\""],
+        ["dock(\"{{b}}\", \"{{c}}\")", "dock(\"{{c}}\", \"{{b}}\")"],
+        ["print(f\"{ship} docked at {bay}\")", "print(f\"{bay} docked at {ship}\")"]
+      ],
+      "text": "What does this print?",
+      "values": [
+        {
+          "d": "A1",
+          "a": "Voyager",
+          "b": "Odyssey",
+          "c": "B7",
+          "e": "C3"
+        },
+        {
+          "d": "D4",
+          "a": "Falcon",
+          "b": "Nova",
+          "c": "A2",
+          "e": "B5"
+        },
+        {
+          "d": "C1",
+          "a": "Pioneer",
+          "b": "Atlas",
+          "c": "D8",
+          "e": "A6"
+        }
+      ]
+    },
+    {
+      "id": "rfa-div",
+      "kind": "prints",
+      "code": "def safe_div(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Can't divide by zero\"\n\nprint(safe_div({{x}}, {{y}}))\nprint(safe_div({{x}}, 0))",
+      "mistakes": [
+        ["return a / b", "return a // b"],
+        ["return \"Can't divide by zero\"", "return 0"],
+        ["print(safe_div({{x}}, 0))", "print(safe_div(0, {{x}}))"]
+      ],
+      "text": "What does this print?",
+      "values": [
+        {
+          "x": 10,
+          "y": 4
+        },
+        {
+          "x": 9,
+          "y": 3
+        },
+        {
+          "x": 7,
+          "y": 2
+        }
+      ]
+    },
+    {
+      "id": "rfa-count",
+      "kind": "prints",
+      "code": "bad = 0\ngood = []\nfor reading in [{{readings}}]:\n    try:\n        good.append(int(reading))\n    except ValueError:\n        bad = bad + 1\nprint(good)\nprint(f\"Corrupted: {bad}\")",
+      "mistakes": [
+        ["bad = bad + 1", "bad = 1"],
+        ["good.append(int(reading))", "good.append(reading)"],
+        ["print(good)\n", "print(bad)\n"]
+      ],
+      "text": "What does this print?",
+      "values": [
+        {
+          "readings": "\"8\", \"x\", \"3\", \"?\""
+        },
+        {
+          "readings": "\"15\", \"n/a\", \"4\", \"err\""
+        },
+        {
+          "readings": "\"2\", \"two\", \"6\", \"\", \"9\""
+        }
+      ]
+    },
+    {
+      "id": "rfa-which-default",
+      "kind": "which-program",
+      "code": "def scale(value, times={{d}}):\n    return value * times\n\nprint(scale({{a}}))\nprint(scale({{a}}, {{b}}))",
+      "mistakes": [
+        ["times={{d}}", "times={{b}}"],
+        ["return value * times", "return value + times"],
+        ["print(scale({{a}}))\n", "print(scale({{a}}, 1))\n"]
+      ],
+      "text": "Which program shows this?",
+      "values": [
+        {
+          "d": 2,
+          "a": 5,
+          "b": 3
+        },
+        {
+          "d": 10,
+          "a": 4,
+          "b": 2
+        },
+        {
+          "d": 3,
+          "a": 7,
+          "b": 5
+        },
+        {
+          "d": 2,
+          "a": 9,
+          "b": 4
+        }
+      ]
+    },
+    {
+      "id": "rfa-which-unpack",
+      "kind": "which-program",
+      "code": "def split_name(full_name):\n    parts = full_name.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"{{n}}\")\nprint(last)\nprint(first)",
+      "mistakes": [
+        ["first, last =", "last, first ="],
+        ["parts[0], parts[1]", "parts[1], parts[1]"],
+        ["print(first)", "print(\"first\")"]
+      ],
+      "text": "Which program shows this?",
+      "values": [
+        {
+          "n": "Tommy Vercetti"
+        },
+        {
+          "n": "Lance Vance"
+        },
+        {
+          "n": "Ken Rosenberg"
+        }
+      ]
+    },
+    {
+      "id": "rfa-gap-except",
+      "kind": "missing-line",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    ___\n        return fallback\n\nprint(safe_int(\"{{a}}\"))\nprint(safe_int(\"{{b}}\"))",
+      "answer": "except ValueError:",
+      "wrong": ["except ZeroDivisionError:", "else:", "finally:", "except IndexError:"],
+      "text": "Which line goes in the gap so the program prints this?",
+      "values": [
+        {
+          "a": "18",
+          "b": "eighteen"
+        },
+        {
+          "a": "4",
+          "b": "4.5"
+        },
+        {
+          "a": "250",
+          "b": "25O"
+        },
+        {
+          "a": "9",
+          "b": "nine"
+        }
+      ]
+    },
+    {
+      "id": "rfa-gap-unpack",
+      "kind": "missing-line",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")",
+      "answer": "total, largest, smallest = summarize([{{nums}}])",
+      "wrong": [
+        "total = summarize([{{nums}}])",
+        "largest, total, smallest = summarize([{{nums}}])",
+        "total, smallest, largest = summarize([{{nums}}])"
+      ],
+      "text": "Which line goes in the gap so the program prints this?",
+      "values": [
+        {
+          "nums": "3, 9, 4"
+        },
+        {
+          "nums": "20, 5, 11"
+        },
+        {
+          "nums": "6, 6, 1"
+        },
+        {
+          "nums": "8, 2, 15, 5"
+        }
+      ]
+    },
+    {
+      "id": "rfa-gap-return",
+      "kind": "missing-line",
+      "code": "def low_high(numbers):\n    ___\n\nlow, high = low_high([{{nums}}])\nprint(f\"Low: {low}, high: {high}\")",
+      "answer": "return min(numbers), max(numbers)",
+      "wrong": [
+        "return max(numbers), min(numbers)",
+        "print(min(numbers), max(numbers))",
+        "return min(numbers)"
+      ],
+      "text": "Which line goes in the gap so the program prints this?",
+      "values": [
+        {
+          "nums": "8, 3, 6"
+        },
+        {
+          "nums": "12, 30, 18"
+        },
+        {
+          "nums": "5, 1, 4, 8"
+        },
+        {
+          "nums": "60, 45, 90"
+        }
+      ]
+    },
+    {
+      "id": "rfa-val-default",
+      "kind": "missing-value",
+      "code": "def dock(ship, bay=___):\n    print(f\"{ship} docked at {bay}\")\n\ndock(\"{{a}}\")\ndock(\"{{b}}\", \"{{c}}\")",
+      "answer": "\"{{d}}\"",
+      "wrong": ["\"{{c}}\"", "\"bay\"", "{{d}}", "\"{{a}}\""],
+      "text": "What goes in the gap so the program prints this?",
+      "values": [
+        {
+          "d": "F3",
+          "a": "Hermes",
+          "b": "Apollo",
+          "c": "G2"
+        },
+        {
+          "d": "C2",
+          "a": "Pioneer",
+          "b": "Falcon",
+          "c": "D5"
+        },
+        {
+          "d": "E4",
+          "a": "Nova",
+          "b": "Atlas",
+          "c": "A2"
+        },
+        {
+          "d": "B1",
+          "a": "Orion",
+          "b": "Comet",
+          "c": "C9"
+        }
+      ]
+    },
+    {
+      "id": "rfa-val-fallback",
+      "kind": "missing-value",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"{{b}}\", ___))",
+      "answer": "{{f}}",
+      "wrong": ["0", "fallback", "\"{{b}}\""],
+      "text": "What goes in the gap so the program prints this?",
+      "values": [
+        {
+          "b": "oops",
+          "f": -5
+        },
+        {
+          "b": "?",
+          "f": 99
+        },
+        {
+          "b": "seven",
+          "f": 7
+        },
+        {
+          "b": "1O",
+          "f": 10
+        }
+      ]
+    },
+    {
+      "id": "rfa-val-index",
+      "kind": "missing-value",
+      "code": "def stats(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\nresult = stats([{{nums}}])\nprint(result[___])",
+      "answer": "{{i}}",
+      "wrong": ["0", "1", "2", "3"],
+      "text": "What goes in the gap so the program prints this?",
+      "values": [
+        {
+          "nums": "5, 11, 3",
+          "i": 1
+        },
+        {
+          "nums": "10, 3, 5",
+          "i": 0
+        },
+        {
+          "nums": "7, 1, 6",
+          "i": 2
+        },
+        {
+          "nums": "20, 30, 10",
+          "i": 1
+        }
+      ]
+    },
+    {
+      "id": "rfa-bad-default",
+      "kind": "wrong-line",
+      "code": "def dock(ship, bay=\"{{d}}\"):\n    print(f\"{ship} | {bay}\")\n\ndock(\"{{a}}\")\ndock(\"{{b}}\", \"{{c}}\")",
+      "bug": ["ship, bay=\"{{d}}\"", "bay=\"{{d}}\", ship"],
+      "text": "Which line stops this program from printing this?",
+      "values": [
+        {
+          "d": "K2",
+          "a": "Zephyr",
+          "b": "Titan",
+          "c": "M4"
+        },
+        {
+          "d": "R1",
+          "a": "Rover",
+          "b": "Echo",
+          "c": "S3"
+        },
+        {
+          "d": "H5",
+          "a": "Juno",
+          "b": "Vega",
+          "c": "J7"
+        }
+      ]
+    },
+    {
+      "id": "rfa-bad-except",
+      "kind": "wrong-line",
+      "code": "def safe_int(text, fallback=0):\n    try:\n        return int(text)\n    except ValueError:\n        return fallback\n\nprint(safe_int(\"{{a}}\"))\nprint(safe_int(\"{{b}}\"))",
+      "bug": ["except ValueError:", "except ZeroDivisionError:"],
+      "text": "Which line stops this program from printing this?",
+      "values": [
+        {
+          "a": "33",
+          "b": "3e"
+        },
+        {
+          "a": "64",
+          "b": "6.4"
+        },
+        {
+          "a": "7",
+          "b": "seven"
+        }
+      ]
+    },
+    {
+      "id": "rfa-bad-unpack",
+      "kind": "wrong-line",
+      "code": "def summarize(numbers):\n    return sum(numbers), max(numbers), min(numbers)\n\ntotal, largest, smallest = summarize([{{nums}}])\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {smallest}\")",
+      "bug": ["print(f\"Smallest: {smallest}\")", "print(f\"Smallest: {largest}\")"],
+      "text": "Which line stops this program from printing this?",
+      "values": [
+        {
+          "nums": "7, 3, 5"
+        },
+        {
+          "nums": "11, 2, 9, 4"
+        },
+        {
+          "nums": "30, 8, 14"
+        }
+      ]
+    },
+    {
+      "id": "rfa-bad-store",
+      "kind": "wrong-line",
+      "code": "{{v}} = {{a}}\nprint(\"Before:\", {{v}})\n\ndef boost({{p}}):\n    {{p}} = {{p}} * 2\n    return {{p}}\n\n{{v}} = boost({{v}})\nprint(\"After:\", {{v}})\nprint(\"Plus 5:\", {{v}} + 5)",
+      "bug": ["{{v}} = boost({{v}})", "boost({{v}})"],
+      "text": "Which line stops this program from printing this?",
+      "values": [
+        {
+          "v": "shield",
+          "p": "s",
+          "a": 80
+        },
+        {
+          "v": "fuel",
+          "p": "f",
+          "a": 45
+        },
+        {
+          "v": "power",
+          "p": "p",
+          "a": 15
+        }
+      ]
+    }
+  ]
+}

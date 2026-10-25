@@ -1,0 +1,916 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce este o excepție în Python?",
+      "options": [
+        "O eroare care apare cât rulează programul și îl oprește, dacă nu o gestionăm",
+        "O linie peste care Python sare intenționat",
+        "Un avertisment pe care Python îl arată, apoi îl ignoră",
+        "Un fel special de variabilă pentru erori"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce eroare dă `int(\"abc\")`?",
+      "options": ["IndexError", "ValueError", "ZeroDivisionError", "KeyError"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "nume = [\"Tommy\", \"Lance\"]\nprint(nume[5])",
+      "options": [
+        "Afișează Lance, ultimul nume",
+        "Nu afișează nimic",
+        "Se oprește cu un IndexError: nu există niciun element la indexul 5",
+        "Afișează None"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Python rulează un bloc `try` și una dintre linii eșuează. Ce face mai departe?",
+      "options": [
+        "Rulează restul blocului try, apoi blocul except",
+        "Oprește tot programul",
+        "Rulează din nou linia care a eșuat",
+        "Sare la blocul except și rulează codul de acolo"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"2\")\n    print(n + 1)\nexcept ValueError:\n    print(\"Gresit\")\nprint(\"Gata\")",
+      "options": ["3\nGata", "Gresit\nGata", "Gata", "Gresit"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "try:\n    print(\"A\")\n    n = int(\"x\")\n    print(\"B\")\nexcept ValueError:\n    print(\"C\")\nprint(\"D\")",
+      "options": ["A\nB\nC\nD", "A\nC\nD", "C\nD", "A\nB\nD"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Într-un bloc `try`, ce se întâmplă cu liniile de după cea care eșuează?",
+      "options": [
+        "Rulează după blocul except",
+        "Rulează înaintea blocului except",
+        "Nu mai rulează: Python iese din blocul try la linia care eșuează",
+        "Rulează doar când blocul try e într-o buclă"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "De ce e adesea mai bun `except ValueError:` decât un `except:` gol?",
+      "options": [
+        "Rulează mai repede decât un except gol",
+        "Un except gol prinde doar ValueError",
+        "Doar except ValueError poate fi folosit într-o buclă",
+        "Știm exact ce a mers prost, iar fiecare eroare poate primi mesajul ei"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "try:\n    numar = int(\"0\")\n    print(100 / numar)\nexcept ValueError:\n    print(\"Acela nu e un numar!\")\nexcept ZeroDivisionError:\n    print(\"Nu poti imparti la zero!\")",
+      "options": [
+        "Nu poti imparti la zero!",
+        "Acela nu e un numar!",
+        "0",
+        "Acela nu e un numar!\nNu poti imparti la zero!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "try:\n    print(10 / 0)\nexcept ValueError:\n    print(\"Nu e un numar\")",
+      "options": [
+        "Afișează Nu e un numar",
+        "Se oprește cu un ZeroDivisionError: except ValueError nu îl prinde",
+        "Nu afișează nimic și merge mai departe",
+        "Afișează 0"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Când rulează codul de sub `else:`, după `try` și `except`?",
+      "options": [
+        "Doar când a apărut o eroare în blocul try",
+        "Mereu, după blocul except",
+        "Doar când nu a apărut nicio eroare în blocul try",
+        "Niciodată: else merge doar cu if"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "Când rulează codul de sub `finally:`?",
+      "options": [
+        "Indiferent de situație: cu eroare sau fără",
+        "Doar când a apărut o eroare",
+        "Doar când nu a apărut nicio eroare",
+        "Doar la sfârșitul programului"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "try:\n    numar = int(\"4x\")\nexcept ValueError:\n    print(\"Eroare!\")\nelse:\n    print(\"Nicio eroare\")\nfinally:\n    print(\"Mereu\")",
+      "options": [
+        "Nicio eroare\nMereu",
+        "Eroare!",
+        "Eroare!\nNicio eroare\nMereu",
+        "Eroare!\nMereu"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q14",
+      "text": "În bucla `while True` din lecție care cere vârsta, ce oprește bucla?",
+      "options": [
+        "Blocul except, după ce își afișează mesajul",
+        "break-ul de imediat după int(), așa că iese doar un număr valid",
+        "Python o oprește după trei încercări",
+        "Bucla se termină singură când utilizatorul apasă Enter"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "În bucla `while True` din lecție, utilizatorul tastează `abc`, apoi `hi`, apoi `20`. De câte ori afișează \"Acela nu e un numar, mai incearca\"?",
+      "options": ["1", "3", "2", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "În misiunea Curățarea Senzorilor, de ce e `\"x9\"` numărată ca coruptă?",
+      "options": [
+        "int(\"x9\") dă un ValueError, așa că blocul except o numără",
+        "E a doua citire, iar a doua e mereu sărită",
+        "E mai scurtă decât celelalte citiri",
+        "Python transformă în numere doar citirile care încep cu o cifră"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "În misiune, `total = total + int(citire)` eșuează pentru `\"rau\"`. Ce se întâmplă cu total?",
+      "options": [
+        "Devine 0",
+        "I se adaugă textul \"rau\"",
+        "Programul se oprește, așa că total se pierde",
+        "Rămâne cum era: int() eșuează înainte să se pună ceva în total"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "citiri = [\"5\", \"cinci\", \"\", \"8\"]\ntotal = 0\ncorupte = 0\nfor c in citiri:\n    try:\n        total = total + int(c)\n    except ValueError:\n        corupte = corupte + 1\nprint(f\"Total: {total}\")\nprint(f\"Corupte: {corupte}\")",
+      "options": [
+        "Total: 13\nCorupte: 1",
+        "Total: 13\nCorupte: 2",
+        "Total: 13\nCorupte: 3",
+        "Total: 0\nCorupte: 2"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Care dintre acestea face ca Python să dea un ValueError?",
+      "options": ["int(\"35\")", "int(\"-4\")", "int(\"sapte\")", "int(\"100\")"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Unde se pune linia care ar putea să eșueze?",
+      "options": [
+        "În blocul try",
+        "În blocul except",
+        "Imediat după blocul except",
+        "Înainte de cuvântul try"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "total = 0\ntry:\n    for c in [\"4\", \"x\", \"6\"]:\n        total = total + int(c)\nexcept ValueError:\n    print(\"Citire gresita\")\nprint(total)",
+      "options": [
+        "Citire gresita\n10",
+        "Citire gresita\n4",
+        "4",
+        "Citire gresita\nCitire gresita\n4"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "În misiune, de ce stă `try` în bucla for și nu în jurul ei?",
+      "options": [
+        "Un bloc try nu poate conține o buclă for",
+        "Ca bucla să ruleze de două ori",
+        "În jurul ei, prima citire coruptă ar opri toată bucla",
+        "Ca citirile corupte să fie adunate ca 0"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "text = \"abc\"\nnumar = int(text)\nprint(f\"Numar: {numar}\")",
+      "options": [
+        "Afișează Numar: abc",
+        "Afișează Numar: 0",
+        "Nu afișează nimic",
+        "Se oprește cu un ValueError: nimic nu îl prinde, așa că print nu mai rulează"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "varste = {\"Tommy\": 42}\ntry:\n    print(varste[\"Lance\"])\nexcept:\n    print(\"Nu exista numele\")",
+      "options": ["Nu exista numele", "None", "42", "Lance"],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Lance\"]\ntry:\n    print(echipaj[2])\nexcept IndexError:\n    print(\"Nu e nimeni acolo\")\nprint(\"Gata\")",
+      "options": ["Nu e nimeni acolo", "Lance\nGata", "Nu e nimeni acolo\nGata", "Gata"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Care linie prinde eroarea pe care o dă `int(\"abc\")`?",
+      "options": [
+        "except ZeroDivisionError:",
+        "except IndexError:",
+        "except int:",
+        "except ValueError:"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "Ce prinde un `except:` gol, fără numele unei erori?",
+      "options": [
+        "Doar ValueError",
+        "Orice eroare care apare în blocul try",
+        "Doar erorile ultimei linii",
+        "Nimic: are nevoie de numele unei erori"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"7\")\nexcept ValueError:\n    print(\"Gresit\")\nelse:\n    print(n * 2)",
+      "options": ["14", "Gresit", "7", "14\nGresit"],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "Un program fără try se oprește cu o eroare la a treia linie. Ce se întâmplă cu liniile de după?",
+      "options": [
+        "Rulează totuși, una câte una",
+        "Rulează după ce eroarea e afișată",
+        "Rulează doar liniile cu print dintre ele",
+        "Nu mai rulează: programul se oprește la eroare"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "total = 0\nfor c in [\"4\", \"x\", \"6\"]:\n    try:\n        total = total + int(c)\n    except ValueError:\n        print(\"Citire gresita\")\nprint(total)",
+      "options": ["Citire gresita\n10", "Citire gresita\n4", "10", "4\n10"],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "te-ok",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{s}}\"\ntry:\n    n = int({{v}})\n    print(n * {{k}})\nexcept ValueError:\n    print(\"{{msg}}\")",
+      "values": [
+        {
+          "v": "text",
+          "s": "12",
+          "k": 2,
+          "msg": "Nu e un numar"
+        },
+        {
+          "v": "combustibil",
+          "s": "40",
+          "k": 3,
+          "msg": "Citire gresita"
+        },
+        {
+          "v": "vieti",
+          "s": "3",
+          "k": 5,
+          "msg": "Vietile trebuie sa fie un numar"
+        },
+        {
+          "v": "viteza",
+          "s": "25",
+          "k": 4,
+          "msg": "Viteza necunoscuta"
+        }
+      ],
+      "mistakes": [
+        ["n * {{k}}", "n + {{k}}"],
+        ["print(n * {{k}})", "print({{v}} * {{k}})"],
+        ["print(n * {{k}})", "print(\"{{msg}}\")"],
+        ["print(n * {{k}})", "print(n)"]
+      ]
+    },
+    {
+      "id": "te-bad",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{s}}\"\ntry:\n    n = int({{v}})\n    print(\"Numar:\", n)\nexcept ValueError:\n    print(\"{{msg}}\")\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "v": "text",
+          "s": "abc",
+          "msg": "Nu e un numar",
+          "end": "Gata"
+        },
+        {
+          "v": "varsta",
+          "s": "zece",
+          "msg": "Scrie cifre, nu cuvinte",
+          "end": "Pa"
+        },
+        {
+          "v": "cod",
+          "s": "4x2",
+          "msg": "Cod gresit",
+          "end": "Urmatorul"
+        }
+      ],
+      "mistakes": [
+        [
+          "n = int({{v}})\n    print(\"Numar:\", n)",
+          "print(\"Numar:\", {{v}})\n    n = int({{v}})"
+        ],
+        ["\nprint(\"{{end}}\")", ""],
+        ["print(\"{{msg}}\")", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "te-lines",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "try:\n    print(\"{{a}}\")\n    n = int(\"{{s}}\")\n    print(\"{{b}}\")\nexcept ValueError:\n    print(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "Start",
+          "s": "x7",
+          "b": "Convertit",
+          "c": "Esuat",
+          "d": "Sfarsit"
+        },
+        {
+          "a": "Citesc",
+          "s": "nimic",
+          "b": "Am citit",
+          "c": "Corupt",
+          "d": "Senzorul urmator"
+        },
+        {
+          "a": "Se incarca",
+          "s": "3.5",
+          "b": "Incarcat",
+          "c": "Nu e un numar intreg",
+          "d": "Meniu"
+        }
+      ],
+      "mistakes": [
+        ["n = int(\"{{s}}\")", "n = \"{{s}}\""],
+        ["print(\"{{a}}\")\n    n = int(\"{{s}}\")", "n = int(\"{{s}}\")\n    print(\"{{a}}\")"],
+        ["\nprint(\"{{d}}\")", ""],
+        ["print(\"{{c}}\")", "print(\"{{b}}\")"]
+      ]
+    },
+    {
+      "id": "te-zero",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"0\"\ntry:\n    n = int({{v}})\n    print({{t}} / n)\nexcept ValueError:\n    print(\"{{m1}}\")\nexcept ZeroDivisionError:\n    print(\"{{m2}}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "t": 100,
+          "m1": "Nu e un numar",
+          "m2": "Nu e nimeni cu care sa imparti"
+        },
+        {
+          "v": "jucatori",
+          "t": 60,
+          "m1": "Scrie un numar",
+          "m2": "Nu poti imparti la zero"
+        },
+        {
+          "v": "zile",
+          "t": 90,
+          "m1": "Intrare gresita",
+          "m2": "Zero zile?"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{m1}}\")\nexcept ZeroDivisionError:\n    print(\"{{m2}}\")",
+          "print(\"{{m2}}\")\nexcept ZeroDivisionError:\n    print(\"{{m1}}\")"
+        ],
+        ["{{t}} / n", "n / {{t}}"],
+        ["n = int({{v}})", "n = len({{v}})"]
+      ]
+    },
+    {
+      "id": "te-notnum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{s}}\"\ntry:\n    n = int({{v}})\n    print({{t}} / n)\nexcept ValueError:\n    print(\"{{m1}}\")\nexcept ZeroDivisionError:\n    print(\"{{m2}}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "s": "patru",
+          "t": 100,
+          "m1": "Nu e un numar",
+          "m2": "Nu e nimeni cu care sa imparti"
+        },
+        {
+          "v": "jucatori",
+          "s": "sase",
+          "t": 60,
+          "m1": "Scrie un numar",
+          "m2": "Nu poti imparti la zero"
+        },
+        {
+          "v": "zile",
+          "s": "2x",
+          "t": 90,
+          "m1": "Intrare gresita",
+          "m2": "Zero zile?"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{m1}}\")\nexcept ZeroDivisionError:\n    print(\"{{m2}}\")",
+          "print(\"{{m2}}\")\nexcept ZeroDivisionError:\n    print(\"{{m1}}\")"
+        ],
+        ["n = int({{v}})", "n = len({{v}})"],
+        ["print(\"{{m1}}\")", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "te-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\ntotal = 0\ncorupte = 0\nfor c in {{v}}:\n    try:\n        total = total + int(c)\n    except ValueError:\n        corupte = corupte + 1\nprint(f\"Total: {total}\")\nprint(f\"Corupte: {corupte}\")",
+      "values": [
+        {
+          "v": "citiri",
+          "items": "\"42\", \"x9\", \"100\", \"rau\", \"7\""
+        },
+        {
+          "v": "senzori",
+          "items": "\"5\", \"err\", \"15\", \"?\", \"20\", \"1\""
+        },
+        {
+          "v": "scoruri",
+          "items": "\"10\", \"zece\", \"30\", \"\", \"-\""
+        },
+        {
+          "v": "niveluri",
+          "items": "\"3\", \"4\", \"max\", \"jos\", \"8\""
+        },
+        {
+          "v": "temperaturi",
+          "items": "\"21\", \"19\", \"cald\", \"24\", \"n/a\""
+        }
+      ],
+      "mistakes": [
+        ["corupte = corupte + 1", "corupte = 1"],
+        ["total = total + int(c)", "total = int(c)"],
+        ["corupte = 0", "corupte = 1"],
+        ["\nprint(f\"Corupte: {corupte}\")", ""]
+      ]
+    },
+    {
+      "id": "te-around",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\ntotal = 0\ntry:\n    for c in {{v}}:\n        total = total + int(c)\nexcept ValueError:\n    print(\"{{msg}}\")\nprint(total)",
+      "values": [
+        {
+          "v": "citiri",
+          "items": "\"4\", \"9\", \"x\", \"6\"",
+          "msg": "Citire oprita"
+        },
+        {
+          "v": "preturi",
+          "items": "\"12\", \"7\", \"gratis\", \"8\"",
+          "msg": "Nu e un pret"
+        },
+        {
+          "v": "ture",
+          "items": "\"30\", \"25\", \"28\", \"DNF\", \"31\"",
+          "msg": "Cursa oprita"
+        }
+      ],
+      "mistakes": [
+        [
+          "try:\n    for c in {{v}}:\n        total = total + int(c)\nexcept ValueError:\n    print(\"{{msg}}\")",
+          "for c in {{v}}:\n    try:\n        total = total + int(c)\n    except ValueError:\n        print(\"{{msg}}\")"
+        ],
+        ["total = total + int(c)", "total = int(c)"],
+        ["print(total)", "print(\"{{msg}}\")"]
+      ]
+    },
+    {
+      "id": "te-else",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"{{s}}\")\nexcept ValueError:\n    print(\"{{bad}}\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"{{end}}\")",
+      "values": [
+        {
+          "s": "12",
+          "bad": "Eroare!",
+          "end": "Verificat"
+        },
+        {
+          "s": "35",
+          "bad": "Nu e un numar",
+          "end": "Ruleaza mereu"
+        },
+        {
+          "s": "8",
+          "bad": "Valoare gresita",
+          "end": "Gata"
+        }
+      ],
+      "mistakes": [
+        ["n * 2", "n + 2"],
+        ["print(\"{{end}}\")", "print(n)"],
+        ["int(\"{{s}}\")", "\"{{s}}\""],
+        ["print(n * 2)", "print(\"{{bad}}\")"]
+      ]
+    },
+    {
+      "id": "te-finally",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"{{s}}\")\n    print(n)\nexcept ValueError:\n    print(\"{{bad}}\")\nfinally:\n    print(\"{{end}}\")",
+      "values": [
+        {
+          "s": "salut",
+          "bad": "Te rog introdu un numar",
+          "end": "Multumesc"
+        },
+        {
+          "s": "7 7",
+          "bad": "Doar un numar",
+          "end": "Verificat"
+        },
+        {
+          "s": "zero",
+          "bad": "Cifre, te rog",
+          "end": "Gata"
+        }
+      ],
+      "mistakes": [
+        ["int(\"{{s}}\")", "\"{{s}}\""],
+        ["finally:", "else:"],
+        ["print(\"{{bad}}\")", "print(\"{{bad}}\")\n    print(\"{{end}}\")"]
+      ]
+    },
+    {
+      "id": "te-which-index",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{items}}]\ntry:\n    print({{v}}[{{i}}])\nexcept IndexError:\n    print(\"{{msg}}\")\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\"",
+          "i": 2,
+          "msg": "Nu e nimeni acolo",
+          "end": "Gata"
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\"",
+          "i": 5,
+          "msg": "Nu exista planeta",
+          "end": "Scanare terminata"
+        },
+        {
+          "v": "melodii",
+          "items": "\"Intro\", \"Val\"",
+          "i": 3,
+          "msg": "Sfarsitul listei",
+          "end": "Stop"
+        },
+        {
+          "v": "masini",
+          "items": "\"Cheetah\", \"Sabre\", \"Infernus\"",
+          "i": 4,
+          "msg": "Nicio masina acolo",
+          "end": "Garaj inchis"
+        }
+      ],
+      "mistakes": [
+        ["except IndexError:", "except ValueError:"],
+        ["[{{i}}]", "[0]"],
+        ["\nprint(\"{{end}}\")", ""]
+      ]
+    },
+    {
+      "id": "te-which-else",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "try:\n    n = int(\"{{s}}\")\nexcept ValueError:\n    print(\"{{bad}}\")\nelse:\n    print(n + 1)\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "s": "41",
+          "bad": "Nu e un numar",
+          "end": "Gata"
+        },
+        {
+          "s": "9",
+          "bad": "Eroare!",
+          "end": "Urmatorul"
+        },
+        {
+          "s": "17",
+          "bad": "Varsta gresita",
+          "end": "Pa"
+        },
+        {
+          "s": "99",
+          "bad": "Scrie cifre",
+          "end": "Sfarsit"
+        }
+      ],
+      "mistakes": [
+        ["int(\"{{s}}\")", "int(\"{{s}}x\")"],
+        ["print(n + 1)", "print(n)"],
+        ["else:\n    print(n + 1)\n", ""]
+      ]
+    },
+    {
+      "id": "te-gap-except",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\ntry:\n    n = int({{v}})\n    print(n)\n___\n    print(\"{{msg}}\")",
+      "values": [
+        {
+          "v": "text",
+          "s": "abc",
+          "msg": "Nu e un numar"
+        },
+        {
+          "v": "varsta",
+          "s": "mare",
+          "msg": "Scrie varsta in cifre"
+        },
+        {
+          "v": "cod",
+          "s": "12a",
+          "msg": "Cod gresit"
+        },
+        {
+          "v": "combustibil",
+          "s": "plin",
+          "msg": "Combustibilul trebuie sa fie un numar"
+        }
+      ],
+      "answer": "except ValueError:",
+      "wrong": ["except ZeroDivisionError:", "else:", "except IndexError:"]
+    },
+    {
+      "id": "te-gap-add",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "total = 0\nfor c in [{{items}}]:\n    try:\n        ___\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(total)",
+      "values": [
+        {
+          "items": "\"4\", \"x\", \"9\""
+        },
+        {
+          "items": "\"10\", \"20\", \"n/a\", \"5\""
+        },
+        {
+          "items": "\"rau\", \"7\", \"3\""
+        },
+        {
+          "items": "\"15\", \"?\", \"6\", \"err\""
+        }
+      ],
+      "answer": "total = total + int(c)",
+      "wrong": ["total = int(c)", "total = total + 1", "total = total + c"]
+    },
+    {
+      "id": "te-gap-finally",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "try:\n    n = int(\"{{s}}\")\n    print(n)\nexcept ValueError:\n    print(\"{{bad}}\")\n___\n    print(\"{{end}}\")",
+      "values": [
+        {
+          "s": "doisprezece",
+          "bad": "Nu e un numar",
+          "end": "Verificare gata"
+        },
+        {
+          "s": "x1",
+          "bad": "Citire gresita",
+          "end": "Senzor oprit"
+        },
+        {
+          "s": "salut",
+          "bad": "Te rog scrie cifre",
+          "end": "Multumesc"
+        },
+        {
+          "s": "5 kg",
+          "bad": "Doar numarul, te rog",
+          "end": "Salvat"
+        }
+      ],
+      "answer": "finally:",
+      "wrong": ["else:", "except:", "if n:"]
+    },
+    {
+      "id": "te-val-error",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "try:\n    {{risky}}\nexcept ___:\n    print(\"{{msg}}\")\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "risky": "n = int(\"abc\")",
+          "err": "ValueError",
+          "msg": "Nu e un numar",
+          "end": "Gata"
+        },
+        {
+          "risky": "print(10 / 0)",
+          "err": "ZeroDivisionError",
+          "msg": "Matematica zice nu",
+          "end": "Urmatorul"
+        },
+        {
+          "risky": "print([\"Tommy\", \"Lance\"][10])",
+          "err": "IndexError",
+          "msg": "Nu e nimeni pe locul acela",
+          "end": "Pa"
+        },
+        {
+          "risky": "print({\"Tommy\": 42}[\"Ken\"])",
+          "err": "KeyError",
+          "msg": "Nu exista cheia",
+          "end": "Sfarsit"
+        }
+      ],
+      "answer": "{{err}}",
+      "wrong": ["ValueError", "ZeroDivisionError", "IndexError", "KeyError"]
+    },
+    {
+      "id": "te-val-text",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = ___\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"{{msg}}\")",
+      "values": [
+        {
+          "ans": "\"zece\"",
+          "w1": "\"10\"",
+          "w2": "\"5\"",
+          "w3": "\"20\"",
+          "msg": "Nu e un numar"
+        },
+        {
+          "ans": "\"21\"",
+          "w1": "\"42\"",
+          "w2": "\"douazeci\"",
+          "w3": "\"2\"",
+          "msg": "Valoare gresita"
+        },
+        {
+          "ans": "\"7\"",
+          "w1": "\"14\"",
+          "w2": "\"7a\"",
+          "w3": "\"0\"",
+          "msg": "Scrie cifre"
+        },
+        {
+          "ans": "\"x5\"",
+          "w1": "\"5\"",
+          "w2": "\"10\"",
+          "w3": "\"55\"",
+          "msg": "Corupt"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "te-bad-catch",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for x in [{{items}}]:\n    try:\n        print({{t}} / int(x))\n    except ZeroDivisionError:\n        print(\"{{msg}}:\", x)\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "items": "\"5\", \"0\", \"2\"",
+          "t": 10,
+          "msg": "Sarit",
+          "end": "Gata"
+        },
+        {
+          "items": "\"4\", \"8\", \"0\"",
+          "t": 40,
+          "msg": "Zero, nu se imparte",
+          "end": "Sfarsit"
+        },
+        {
+          "items": "\"0\", \"3\", \"6\"",
+          "t": 30,
+          "msg": "Nu poti imparti la zero",
+          "end": "Verificat"
+        }
+      ],
+      "bug": ["except ZeroDivisionError:", "except ValueError:"]
+    },
+    {
+      "id": "te-bad-start",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "corupte = 0\n{{v}} = [{{items}}]\nfor c in {{v}}:\n    try:\n        n = int(c)\n    except ValueError:\n        print(\"Sar peste\", c)\n        corupte = corupte + 1\nprint(f\"Corupte: {corupte}\")",
+      "values": [
+        {
+          "v": "citiri",
+          "items": "\"42\", \"x9\", \"7\", \"rau\""
+        },
+        {
+          "v": "senzori",
+          "items": "\"err\", \"5\", \"?\", \"6\""
+        },
+        {
+          "v": "coduri",
+          "items": "\"12\", \"?\", \"30\", \"-\", \"n/a\""
+        }
+      ],
+      "bug": ["corupte = 0", "corupte = 1"]
+    },
+    {
+      "id": "te-bad-indent",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor c in [{{items}}]:\n    try:\n        total = total + int(c)\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(total)",
+      "values": [
+        {
+          "items": "\"4\", \"x\", \"9\""
+        },
+        {
+          "items": "\"10\", \"20\", \"n/a\""
+        },
+        {
+          "items": "\"rau\", \"7\", \"3\""
+        }
+      ],
+      "bug": ["print(total)", "    print(total)"]
+    },
+    {
+      "id": "te-bad-convert",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor c in [{{items}}]:\n    try:\n        total = total + int(c)\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(f\"Total: {total}\")",
+      "values": [
+        {
+          "items": "\"8\", \"ups\", \"2\""
+        },
+        {
+          "items": "\"x\", \"30\", \"12\""
+        },
+        {
+          "items": "\"5\", \"5\", \"?\", \"1\""
+        }
+      ],
+      "bug": ["total = total + int(c)", "total = total + c"]
+    }
+  ]
+}
