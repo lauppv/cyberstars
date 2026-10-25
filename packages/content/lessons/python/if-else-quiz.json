@@ -540,7 +540,6 @@
         {
           "v": "temperature",
           "x": 1200,
-          "op": ">",
           "limit": 1000,
           "yes": "Danger",
           "no": "Stable"
@@ -548,7 +547,6 @@
         {
           "v": "score",
           "x": 30,
-          "op": ">",
           "limit": 50,
           "yes": "Pass",
           "no": "Fail"
@@ -556,7 +554,6 @@
         {
           "v": "speed",
           "x": 130,
-          "op": ">",
           "limit": 100,
           "yes": "Slow down",
           "no": "Good speed"
@@ -564,7 +561,6 @@
         {
           "v": "points",
           "x": 90,
-          "op": ">",
           "limit": 100,
           "yes": "New record",
           "no": "Try again"
@@ -581,7 +577,6 @@
         {
           "v": "temperature",
           "x": 10,
-          "op": "<",
           "limit": 15,
           "yes": "Take a sweater",
           "no": "A t-shirt is enough"
@@ -589,7 +584,6 @@
         {
           "v": "score",
           "x": 70,
-          "op": "<",
           "limit": 50,
           "yes": "Fail",
           "no": "Pass"
@@ -597,7 +591,6 @@
         {
           "v": "age",
           "x": 9,
-          "op": "<",
           "limit": 18,
           "yes": "Not yet",
           "no": "You can vote"
@@ -605,7 +598,6 @@
         {
           "v": "speed",
           "x": 60,
-          "op": "<",
           "limit": 100,
           "yes": "Good speed",
           "no": "Slow down"
@@ -659,7 +651,6 @@
         {
           "v": "score",
           "x": 40,
-          "op": ">=",
           "limit": 50,
           "yes": "Pass",
           "no": "Fail"
@@ -667,7 +658,6 @@
         {
           "v": "age",
           "x": 20,
-          "op": ">=",
           "limit": 18,
           "yes": "You can vote",
           "no": "Not yet"
@@ -675,7 +665,6 @@
         {
           "v": "fuel",
           "x": 500,
-          "op": ">=",
           "limit": 1000,
           "yes": "Danger",
           "no": "Stable"
@@ -683,7 +672,6 @@
         {
           "v": "speed",
           "x": 140,
-          "op": ">=",
           "limit": 100,
           "yes": "Slow down",
           "no": "Good speed"
@@ -700,7 +688,6 @@
         {
           "v": "score",
           "x": 50,
-          "op": ">=",
           "limit": 50,
           "yes": "Pass",
           "no": "Fail"
@@ -708,7 +695,6 @@
         {
           "v": "age",
           "x": 18,
-          "op": ">=",
           "limit": 18,
           "yes": "You can vote",
           "no": "Not yet"
@@ -716,7 +702,6 @@
         {
           "v": "fuel",
           "x": 1000,
-          "op": ">=",
           "limit": 1000,
           "yes": "Danger",
           "no": "Stable"
@@ -741,7 +726,6 @@
         {
           "v": "temperature",
           "x": 20,
-          "op": "<",
           "limit": 15,
           "yes": "Take a sweater",
           "no": "A t-shirt is enough"
@@ -749,7 +733,6 @@
         {
           "v": "score",
           "x": 80,
-          "op": "<",
           "limit": 50,
           "yes": "Fail",
           "no": "Pass"
@@ -757,7 +740,6 @@
         {
           "v": "speed",
           "x": 120,
-          "op": "<",
           "limit": 100,
           "yes": "Good speed",
           "no": "Slow down"
@@ -765,7 +747,6 @@
         {
           "v": "age",
           "x": 30,
-          "op": "<",
           "limit": 18,
           "yes": "Not yet",
           "no": "You can vote"
@@ -856,8 +837,6 @@
           "x": 14,
           "op": "<",
           "limit": 15,
-          "yes": "",
-          "no": "",
           "flip": ">="
         },
         {
@@ -865,8 +844,6 @@
           "x": 15,
           "op": "<",
           "limit": 15,
-          "yes": "",
-          "no": "",
           "flip": ">="
         },
         {
@@ -874,8 +851,6 @@
           "x": 50,
           "op": ">=",
           "limit": 50,
-          "yes": "",
-          "no": "",
           "flip": "<"
         },
         {
@@ -883,8 +858,6 @@
           "x": 1000,
           "op": ">",
           "limit": 1000,
-          "yes": "",
-          "no": "",
           "flip": "<="
         },
         {
@@ -892,8 +865,6 @@
           "x": 17,
           "op": "<=",
           "limit": 18,
-          "yes": "",
-          "no": "",
           "flip": ">"
         },
         {
@@ -901,8 +872,6 @@
           "x": 75,
           "op": "==",
           "limit": 75,
-          "yes": "",
-          "no": "",
           "flip": "<"
         }
       ],

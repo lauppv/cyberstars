@@ -184,7 +184,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-colon-2a118b",
+      "id": "ie-bad-colon-9ea2fc",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "temperatura = 1200\nif temperatura > 1000\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
       "output": "Pericol",
@@ -192,7 +192,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-colon-f702ba",
+      "id": "ie-bad-colon-433591",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "scor = 30\nif scor > 50\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
       "output": "Picat",
@@ -200,7 +200,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-colon-334a1e",
+      "id": "ie-bad-colon-5fff2e",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "viteza = 130\nif viteza > 100\n    print(\"Incetineste\")\nelse:\n    print(\"Viteza buna\")",
       "output": "Incetineste",
@@ -208,7 +208,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-colon-f3d06c",
+      "id": "ie-bad-colon-141888",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "puncte = 90\nif puncte > 100\n    print(\"Record nou\")\nelse:\n    print(\"Mai incearca\")",
       "output": "Mai incearca",
@@ -216,7 +216,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-indent-d24830",
+      "id": "ie-bad-indent-9b86c1",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "temperatura = 10\nif temperatura < 15:\n    print(\"Ia o bluza\")\nelse:\nprint(\"Un tricou e suficient\")",
       "output": "Ia o bluza",
@@ -229,7 +229,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-indent-aa3c01",
+      "id": "ie-bad-indent-5af52c",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "scor = 70\nif scor < 50:\n    print(\"Picat\")\nelse:\nprint(\"Trecut\")",
       "output": "Trecut",
@@ -237,7 +237,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-indent-5a5226",
+      "id": "ie-bad-indent-63d685",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "varsta = 9\nif varsta < 18:\n    print(\"Inca nu\")\nelse:\nprint(\"Poti vota\")",
       "output": "Inca nu",
@@ -245,7 +245,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-indent-7aeb33",
+      "id": "ie-bad-indent-32e317",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "viteza = 60\nif viteza < 100:\n    print(\"Viteza buna\")\nelse:\nprint(\"Incetineste\")",
       "output": "Viteza buna",
@@ -290,7 +290,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-else-d05305",
+      "id": "ie-bad-else-dbc284",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "scor = 40\nif scor >= 50:\n    print(\"Trecut\")\nelse\n    print(\"Picat\")",
       "output": "Picat",
@@ -298,7 +298,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-else-d8246e",
+      "id": "ie-bad-else-1b4042",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "varsta = 20\nif varsta >= 18:\n    print(\"Poti vota\")\nelse\n    print(\"Inca nu\")",
       "output": "Poti vota",
@@ -306,7 +306,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-else-6ffcb7",
+      "id": "ie-bad-else-dbf8de",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "combustibil = 500\nif combustibil >= 1000:\n    print(\"Pericol\")\nelse\n    print(\"Stabil\")",
       "output": "Stabil",
@@ -314,7 +314,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-else-3ba632",
+      "id": "ie-bad-else-8807b1",
       "text": "Care linie oprește programul să afișeze asta?",
       "code": "viteza = 140\nif viteza >= 100:\n    print(\"Incetineste\")\nelse\n    print(\"Viteza buna\")",
       "output": "Incetineste",
@@ -322,7 +322,7 @@
       "answer": 0
     },
     {
-      "id": "ie-which-edge-c9b302",
+      "id": "ie-which-edge-4b045f",
       "text": "Care program afișează asta?",
       "output": "Trecut",
       "options": [
@@ -334,7 +334,7 @@
       "answer": 0
     },
     {
-      "id": "ie-which-edge-a4bfc1",
+      "id": "ie-which-edge-f41afe",
       "text": "Care program afișează asta?",
       "output": "Poti vota",
       "options": [
@@ -346,7 +346,7 @@
       "answer": 0
     },
     {
-      "id": "ie-which-edge-24bb6c",
+      "id": "ie-which-edge-bb8288",
       "text": "Care program afișează asta?",
       "output": "Pericol",
       "options": [
@@ -358,7 +358,7 @@
       "answer": 0
     },
     {
-      "id": "ie-gap-else-1a7e86",
+      "id": "ie-gap-else-c17527",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
       "code": "temperatura = 20\nif temperatura < 15:\n    print(\"Ia o bluza\")\n___\n    print(\"Un tricou e suficient\")",
       "output": "Un tricou e suficient",
@@ -366,7 +366,7 @@
       "answer": 0
     },
     {
-      "id": "ie-gap-else-444d88",
+      "id": "ie-gap-else-0a552c",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
       "code": "scor = 80\nif scor < 50:\n    print(\"Picat\")\n___\n    print(\"Trecut\")",
       "output": "Trecut",
@@ -374,7 +374,7 @@
       "answer": 0
     },
     {
-      "id": "ie-gap-else-182f0e",
+      "id": "ie-gap-else-156f8a",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
       "code": "viteza = 120\nif viteza < 100:\n    print(\"Viteza buna\")\n___\n    print(\"Incetineste\")",
       "output": "Incetineste",
@@ -382,7 +382,7 @@
       "answer": 0
     },
     {
-      "id": "ie-gap-else-505ffc",
+      "id": "ie-gap-else-efd886",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
       "code": "varsta = 30\nif varsta < 18:\n    print(\"Inca nu\")\n___\n    print(\"Poti vota\")",
       "output": "Poti vota",
@@ -471,42 +471,42 @@
       "answer": 0
     },
     {
-      "id": "ie-condition-91e030",
+      "id": "ie-condition-19c784",
       "text": "Ce afișează?",
       "code": "temperatura = 14\nprint(temperatura < 15)",
       "options": ["True", "temperatura < 15", "False", "14"],
       "answer": 0
     },
     {
-      "id": "ie-condition-bd018d",
+      "id": "ie-condition-9dc65e",
       "text": "Ce afișează?",
       "code": "temperatura = 15\nprint(temperatura < 15)",
       "options": ["False", "temperatura < 15", "True", "15"],
       "answer": 0
     },
     {
-      "id": "ie-condition-0aba77",
+      "id": "ie-condition-f21f3d",
       "text": "Ce afișează?",
       "code": "scor = 50\nprint(scor >= 50)",
       "options": ["True", "scor >= 50", "False", "50"],
       "answer": 0
     },
     {
-      "id": "ie-condition-30fd6b",
+      "id": "ie-condition-32bb80",
       "text": "Ce afișează?",
       "code": "combustibil = 1000\nprint(combustibil > 1000)",
       "options": ["False", "combustibil > 1000", "True", "1000"],
       "answer": 0
     },
     {
-      "id": "ie-condition-6a96a8",
+      "id": "ie-condition-531767",
       "text": "Ce afișează?",
       "code": "varsta = 17\nprint(varsta <= 18)",
       "options": ["True", "varsta <= 18", "False", "17"],
       "answer": 0
     },
     {
-      "id": "ie-condition-bb1c00",
+      "id": "ie-condition-44ed3f",
       "text": "Ce afișează?",
       "code": "puncte = 75\nprint(puncte == 75)",
       "options": ["True", "puncte == 75", "False", "75"],

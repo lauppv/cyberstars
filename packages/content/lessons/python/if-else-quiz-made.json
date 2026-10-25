@@ -194,7 +194,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-colon-2a118b",
+      "id": "ie-bad-colon-9ea2fc",
       "text": "Which line stops this program from printing this?",
       "code": "temperature = 1200\nif temperature > 1000\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
       "output": "Danger",
@@ -202,7 +202,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-colon-f702ba",
+      "id": "ie-bad-colon-433591",
       "text": "Which line stops this program from printing this?",
       "code": "score = 30\nif score > 50\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
       "output": "Fail",
@@ -210,7 +210,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-colon-334a1e",
+      "id": "ie-bad-colon-5fff2e",
       "text": "Which line stops this program from printing this?",
       "code": "speed = 130\nif speed > 100\n    print(\"Slow down\")\nelse:\n    print(\"Good speed\")",
       "output": "Slow down",
@@ -218,7 +218,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-colon-f3d06c",
+      "id": "ie-bad-colon-141888",
       "text": "Which line stops this program from printing this?",
       "code": "points = 90\nif points > 100\n    print(\"New record\")\nelse:\n    print(\"Try again\")",
       "output": "Try again",
@@ -226,7 +226,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-indent-d24830",
+      "id": "ie-bad-indent-9b86c1",
       "text": "Which line stops this program from printing this?",
       "code": "temperature = 10\nif temperature < 15:\n    print(\"Take a sweater\")\nelse:\nprint(\"A t-shirt is enough\")",
       "output": "Take a sweater",
@@ -239,7 +239,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-indent-aa3c01",
+      "id": "ie-bad-indent-5af52c",
       "text": "Which line stops this program from printing this?",
       "code": "score = 70\nif score < 50:\n    print(\"Fail\")\nelse:\nprint(\"Pass\")",
       "output": "Pass",
@@ -247,7 +247,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-indent-5a5226",
+      "id": "ie-bad-indent-63d685",
       "text": "Which line stops this program from printing this?",
       "code": "age = 9\nif age < 18:\n    print(\"Not yet\")\nelse:\nprint(\"You can vote\")",
       "output": "Not yet",
@@ -255,7 +255,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-indent-7aeb33",
+      "id": "ie-bad-indent-32e317",
       "text": "Which line stops this program from printing this?",
       "code": "speed = 60\nif speed < 100:\n    print(\"Good speed\")\nelse:\nprint(\"Slow down\")",
       "output": "Good speed",
@@ -295,7 +295,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-else-d05305",
+      "id": "ie-bad-else-dbc284",
       "text": "Which line stops this program from printing this?",
       "code": "score = 40\nif score >= 50:\n    print(\"Pass\")\nelse\n    print(\"Fail\")",
       "output": "Fail",
@@ -303,7 +303,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-else-d8246e",
+      "id": "ie-bad-else-1b4042",
       "text": "Which line stops this program from printing this?",
       "code": "age = 20\nif age >= 18:\n    print(\"You can vote\")\nelse\n    print(\"Not yet\")",
       "output": "You can vote",
@@ -311,7 +311,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-else-6ffcb7",
+      "id": "ie-bad-else-dbf8de",
       "text": "Which line stops this program from printing this?",
       "code": "fuel = 500\nif fuel >= 1000:\n    print(\"Danger\")\nelse\n    print(\"Stable\")",
       "output": "Stable",
@@ -319,7 +319,7 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-else-3ba632",
+      "id": "ie-bad-else-8807b1",
       "text": "Which line stops this program from printing this?",
       "code": "speed = 140\nif speed >= 100:\n    print(\"Slow down\")\nelse\n    print(\"Good speed\")",
       "output": "Slow down",
@@ -327,7 +327,7 @@
       "answer": 0
     },
     {
-      "id": "ie-which-edge-c9b302",
+      "id": "ie-which-edge-4b045f",
       "text": "Which program shows this?",
       "output": "Pass",
       "options": [
@@ -339,7 +339,7 @@
       "answer": 0
     },
     {
-      "id": "ie-which-edge-a4bfc1",
+      "id": "ie-which-edge-f41afe",
       "text": "Which program shows this?",
       "output": "You can vote",
       "options": [
@@ -351,7 +351,7 @@
       "answer": 0
     },
     {
-      "id": "ie-which-edge-24bb6c",
+      "id": "ie-which-edge-bb8288",
       "text": "Which program shows this?",
       "output": "Danger",
       "options": [
@@ -363,7 +363,7 @@
       "answer": 0
     },
     {
-      "id": "ie-gap-else-1a7e86",
+      "id": "ie-gap-else-c17527",
       "text": "Which line goes in the gap so the program prints this?",
       "code": "temperature = 20\nif temperature < 15:\n    print(\"Take a sweater\")\n___\n    print(\"A t-shirt is enough\")",
       "output": "A t-shirt is enough",
@@ -371,7 +371,7 @@
       "answer": 0
     },
     {
-      "id": "ie-gap-else-444d88",
+      "id": "ie-gap-else-0a552c",
       "text": "Which line goes in the gap so the program prints this?",
       "code": "score = 80\nif score < 50:\n    print(\"Fail\")\n___\n    print(\"Pass\")",
       "output": "Pass",
@@ -379,7 +379,7 @@
       "answer": 0
     },
     {
-      "id": "ie-gap-else-182f0e",
+      "id": "ie-gap-else-156f8a",
       "text": "Which line goes in the gap so the program prints this?",
       "code": "speed = 120\nif speed < 100:\n    print(\"Good speed\")\n___\n    print(\"Slow down\")",
       "output": "Slow down",
@@ -387,7 +387,7 @@
       "answer": 0
     },
     {
-      "id": "ie-gap-else-505ffc",
+      "id": "ie-gap-else-efd886",
       "text": "Which line goes in the gap so the program prints this?",
       "code": "age = 30\nif age < 18:\n    print(\"Not yet\")\n___\n    print(\"You can vote\")",
       "output": "You can vote",
@@ -476,42 +476,42 @@
       "answer": 0
     },
     {
-      "id": "ie-condition-91e030",
+      "id": "ie-condition-19c784",
       "text": "What does this print?",
       "code": "temperature = 14\nprint(temperature < 15)",
       "options": ["True", "temperature < 15", "False", "14"],
       "answer": 0
     },
     {
-      "id": "ie-condition-bd018d",
+      "id": "ie-condition-9dc65e",
       "text": "What does this print?",
       "code": "temperature = 15\nprint(temperature < 15)",
       "options": ["False", "temperature < 15", "True", "15"],
       "answer": 0
     },
     {
-      "id": "ie-condition-0aba77",
+      "id": "ie-condition-f21f3d",
       "text": "What does this print?",
       "code": "score = 50\nprint(score >= 50)",
       "options": ["True", "score >= 50", "False", "50"],
       "answer": 0
     },
     {
-      "id": "ie-condition-30fd6b",
+      "id": "ie-condition-32bb80",
       "text": "What does this print?",
       "code": "fuel = 1000\nprint(fuel > 1000)",
       "options": ["False", "fuel > 1000", "True", "1000"],
       "answer": 0
     },
     {
-      "id": "ie-condition-6a96a8",
+      "id": "ie-condition-531767",
       "text": "What does this print?",
       "code": "age = 17\nprint(age <= 18)",
       "options": ["True", "age <= 18", "False", "17"],
       "answer": 0
     },
     {
-      "id": "ie-condition-bb1c00",
+      "id": "ie-condition-44ed3f",
       "text": "What does this print?",
       "code": "points = 75\nprint(points == 75)",
       "options": ["True", "points == 75", "False", "75"],

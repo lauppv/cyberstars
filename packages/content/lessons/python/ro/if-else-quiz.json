@@ -530,7 +530,6 @@
         {
           "v": "temperatura",
           "x": 1200,
-          "op": ">",
           "limit": 1000,
           "yes": "Pericol",
           "no": "Stabil"
@@ -538,7 +537,6 @@
         {
           "v": "scor",
           "x": 30,
-          "op": ">",
           "limit": 50,
           "yes": "Trecut",
           "no": "Picat"
@@ -546,7 +544,6 @@
         {
           "v": "viteza",
           "x": 130,
-          "op": ">",
           "limit": 100,
           "yes": "Incetineste",
           "no": "Viteza buna"
@@ -554,7 +551,6 @@
         {
           "v": "puncte",
           "x": 90,
-          "op": ">",
           "limit": 100,
           "yes": "Record nou",
           "no": "Mai incearca"
@@ -571,7 +567,6 @@
         {
           "v": "temperatura",
           "x": 10,
-          "op": "<",
           "limit": 15,
           "yes": "Ia o bluza",
           "no": "Un tricou e suficient"
@@ -579,7 +574,6 @@
         {
           "v": "scor",
           "x": 70,
-          "op": "<",
           "limit": 50,
           "yes": "Picat",
           "no": "Trecut"
@@ -587,7 +581,6 @@
         {
           "v": "varsta",
           "x": 9,
-          "op": "<",
           "limit": 18,
           "yes": "Inca nu",
           "no": "Poti vota"
@@ -595,7 +588,6 @@
         {
           "v": "viteza",
           "x": 60,
-          "op": "<",
           "limit": 100,
           "yes": "Viteza buna",
           "no": "Incetineste"
@@ -649,7 +641,6 @@
         {
           "v": "scor",
           "x": 40,
-          "op": ">=",
           "limit": 50,
           "yes": "Trecut",
           "no": "Picat"
@@ -657,7 +648,6 @@
         {
           "v": "varsta",
           "x": 20,
-          "op": ">=",
           "limit": 18,
           "yes": "Poti vota",
           "no": "Inca nu"
@@ -665,7 +655,6 @@
         {
           "v": "combustibil",
           "x": 500,
-          "op": ">=",
           "limit": 1000,
           "yes": "Pericol",
           "no": "Stabil"
@@ -673,7 +662,6 @@
         {
           "v": "viteza",
           "x": 140,
-          "op": ">=",
           "limit": 100,
           "yes": "Incetineste",
           "no": "Viteza buna"
@@ -690,7 +678,6 @@
         {
           "v": "scor",
           "x": 50,
-          "op": ">=",
           "limit": 50,
           "yes": "Trecut",
           "no": "Picat"
@@ -698,7 +685,6 @@
         {
           "v": "varsta",
           "x": 18,
-          "op": ">=",
           "limit": 18,
           "yes": "Poti vota",
           "no": "Inca nu"
@@ -706,7 +692,6 @@
         {
           "v": "combustibil",
           "x": 1000,
-          "op": ">=",
           "limit": 1000,
           "yes": "Pericol",
           "no": "Stabil"
@@ -731,7 +716,6 @@
         {
           "v": "temperatura",
           "x": 20,
-          "op": "<",
           "limit": 15,
           "yes": "Ia o bluza",
           "no": "Un tricou e suficient"
@@ -739,7 +723,6 @@
         {
           "v": "scor",
           "x": 80,
-          "op": "<",
           "limit": 50,
           "yes": "Picat",
           "no": "Trecut"
@@ -747,7 +730,6 @@
         {
           "v": "viteza",
           "x": 120,
-          "op": "<",
           "limit": 100,
           "yes": "Viteza buna",
           "no": "Incetineste"
@@ -755,7 +737,6 @@
         {
           "v": "varsta",
           "x": 30,
-          "op": "<",
           "limit": 18,
           "yes": "Inca nu",
           "no": "Poti vota"
@@ -846,8 +827,6 @@
           "x": 14,
           "op": "<",
           "limit": 15,
-          "yes": "",
-          "no": "",
           "flip": ">="
         },
         {
@@ -855,8 +834,6 @@
           "x": 15,
           "op": "<",
           "limit": 15,
-          "yes": "",
-          "no": "",
           "flip": ">="
         },
         {
@@ -864,8 +841,6 @@
           "x": 50,
           "op": ">=",
           "limit": 50,
-          "yes": "",
-          "no": "",
           "flip": "<"
         },
         {
@@ -873,8 +848,6 @@
           "x": 1000,
           "op": ">",
           "limit": 1000,
-          "yes": "",
-          "no": "",
           "flip": "<="
         },
         {
@@ -882,8 +855,6 @@
           "x": 17,
           "op": "<=",
           "limit": 18,
-          "yes": "",
-          "no": "",
           "flip": ">"
         },
         {
@@ -891,8 +862,6 @@
           "x": 75,
           "op": "==",
           "limit": 75,
-          "yes": "",
-          "no": "",
           "flip": "<"
         }
       ],
