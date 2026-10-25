@@ -390,6 +390,22 @@ kbd.lnk-kbd {
   -webkit-user-select: text;
   user-select: text;
 }
+.lnk-field {
+  width: 100%;
+  resize: vertical;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(108, 92, 231, 0.45);
+  background: rgba(6, 8, 18, 0.62);
+  color: #e8e8f0;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 400;
+  outline: none;
+}
+.lnk-field:focus {
+  border-color: #a79bff;
+}
 .lnk-progress {
   display: flex;
   gap: 4px;
