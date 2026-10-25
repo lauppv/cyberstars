@@ -1,0 +1,973 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "In the Mission Control Report, what does `analyze(scores)` give back?",
+      "options": [
+        "Nothing: it prints the report itself",
+        "A list of the passing names",
+        "A dictionary with the keys average, top and passing",
+        "Only the average score"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q2",
+      "text": "Why does `analyze` return a dictionary instead of printing the report itself?",
+      "options": [
+        "So the code that calls it can use the three results however it needs",
+        "print() can't be used inside a function",
+        "A dictionary prints faster than three lines",
+        "Every function has to return a dictionary"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "In the solution, why can `highest` start at 0 before the loop that finds the top member?",
+      "options": [
+        "A dictionary's values always start at 0",
+        "So the loop runs zero times",
+        "Python needs every number variable to start at 0",
+        "Every score is above 0, so the first member's score replaces it"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "In `total / len(scores)`, what is `len(scores)`?",
+      "options": [
+        "The sum of all the scores",
+        "How many members there are, one per key-value pair",
+        "The length of the longest name",
+        "The highest score"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "After `report = analyze(scores)`, what does `report[\"passing\"]` hold?",
+      "options": [
+        "How many members passed",
+        "A list of the names with 50 or more",
+        "True or False",
+        "The text \"passing\""
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "def double(n):\n    return n * 2\n    print(\"Done\")\n\nprint(double(4))",
+      "options": ["8\nDone", "Done\n8", "None", "8"],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "def greet(name):\n    print(f\"Hi, {name}\")\n\nresult = greet(\"Mira\")\nprint(result)",
+      "options": ["Hi, Mira\nNone", "Hi, Mira", "None", "Hi, Mira\nHi, Mira"],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Which expression reads Mira's score from `scores`?",
+      "options": ["scores(\"Mira\")", "scores.Mira", "scores[\"Mira\"]", "scores[Mira]"],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "What happens on `scores[\"Sonny\"]` when Sonny isn't a key of `scores`?",
+      "options": [
+        "The program stops with a KeyError",
+        "It gives back 0",
+        "Sonny is added with the score 0",
+        "It gives back None"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Phil is already in `scores`, with 37. What does `scores[\"Phil\"] = 60` do?",
+      "options": [
+        "Phil now has two scores, 37 and 60",
+        "The program stops with an error, since the key is already there",
+        "Phil's score becomes 60",
+        "It adds a second \"Phil\" key"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "In `for name in scores:`, what is `name` at each pass?",
+      "options": [
+        "A value: one member's score",
+        "A key: one member's name",
+        "A pair, the name and the score together",
+        "A position: 0, 1, 2..."
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "Which loop gets each name and its score at the same time?",
+      "options": [
+        "for name, score in scores:",
+        "for name, score in scores.values():",
+        "for name, score in scores.keys():",
+        "for name, score in scores.items():"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "crew = {\"Tommy\": 95, \"Lance\": 42}\nfor v in crew.values():\n    print(v)",
+      "options": ["Tommy\nLance", "Tommy 95\nLance 42", "{'Tommy': 95, 'Lance': 42}", "95\n42"],
+      "answer": 3
+    },
+    {
+      "id": "q14",
+      "text": "In the solution, why is `passing = []` written before the loop and not inside it?",
+      "options": [
+        "A list can't be made inside a loop",
+        "Inside, the list would start empty again at every pass and forget the names before",
+        "append() only works on a list made before the function",
+        "So the loop runs once for each name"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "def check(score):\n    if score >= 50:\n        return \"pass\"\n    return \"fail\"\n\nprint(check(50))\nprint(check(49))",
+      "options": ["pass\npass", "fail\nfail", "pass\nfail", "fail\npass"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Phil has exactly 50, and everyone with 50 or more passes. Which condition puts him in the passing list?",
+      "options": [
+        "scores[name] >= 50",
+        "scores[name] > 50",
+        "scores[name] < 50",
+        "scores[name] > 51"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "def stats(a, b):\n    return {\"sum\": a + b, \"diff\": a - b}\n\nr = stats(10, 4)\nprint(r[\"diff\"])",
+      "options": ["14", "6", "{'sum': 14, 'diff': 6}", "diff"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Two members both have the highest score, 95. With `if scores[name] > highest:`, who ends up as the top?",
+      "options": [
+        "The one that comes first in the dictionary",
+        "The one that comes last in the dictionary",
+        "Both, joined in one text",
+        "Nobody: top stays \"\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "What is `len(report)` for the dictionary `analyze` returns?",
+      "options": [
+        "5, one per member",
+        "1, since it is one dictionary",
+        "3, one per key",
+        "How many members passed"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "counts = {}\nfor letter in \"otto\":\n    if letter in counts:\n        counts[letter] = counts[letter] + 1\n    else:\n        counts[letter] = 1\nprint(counts)",
+      "options": ["{'o': 1, 't': 1}", "{'otto': 1}", "{'o': 2, 't': 1}", "{'o': 2, 't': 2}"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Which line adds the key \"Ken\" with the score 70 to `scores`?",
+      "options": [
+        "scores[\"Ken\"] = 70",
+        "scores.append(\"Ken\", 70)",
+        "scores[70] = \"Ken\"",
+        "scores + {\"Ken\": 70}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Which line takes Phil out of `scores`?",
+      "options": [
+        "scores[\"Phil\"] = 0",
+        "scores[\"Phil\"] = \"\"",
+        "scores - \"Phil\"",
+        "del scores[\"Phil\"]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "After `report = analyze(scores)`, which line prints how many members passed?",
+      "options": [
+        "print(len(report))",
+        "print(report[\"passing\"])",
+        "print(len(report[\"passing\"]))",
+        "print(len(scores))"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "What does `\"Tommy\" in scores` check?",
+      "options": [
+        "Whether \"Tommy\" is one of the values",
+        "Whether \"Tommy\" is one of the keys",
+        "Whether Tommy has 50 or more",
+        "Whether Tommy is the first key"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "def average(numbers):\n    total = 0\n    for n in numbers:\n        total = total + n\n    return total / len(numbers)\n\nprint(average([4, 6, 8]))",
+      "options": ["6", "18", "18.0", "6.0"],
+      "answer": 3
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "def pick(scores):\n    for name, score in scores.items():\n        if score < 50:\n            return name\n    return \"Nobody\"\n\nprint(pick({\"Ana\": 60, \"Ben\": 30, \"Cara\": 20}))",
+      "options": ["Ben\nCara", "Ben", "Cara", "Nobody"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Python reaches a `return` inside a for loop, in a function. What happens?",
+      "options": [
+        "The loop goes on to the next pass, as with continue",
+        "Only the loop ends, and the function goes on after it",
+        "The function ends at once and gives back the value, so the loop stops too",
+        "The program stops with an error: return can't be inside a loop"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "def high(scores):\n    names = []\n    for name in scores:\n        if scores[name] > 80:\n            names.append(name)\n    return names\n\nfor name in high({\"Ana\": 90, \"Ben\": 70, \"Cara\": 85}):\n    print(name)",
+      "options": ["Ana\nCara", "['Ana', 'Cara']", "Ana\nBen\nCara", "90\n85"],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "`prices = {\"fuel\": 30, \"food\": 12}`. Which expression gives 42?",
+      "options": [
+        "prices[\"fuel\" + \"food\"]",
+        "prices[\"fuel\"] + prices[\"food\"]",
+        "prices[0] + prices[1]",
+        "len(prices)"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "Tommy comes first in `scores`. Why doesn't `scores[0]` give his score?",
+      "options": [
+        "It does: scores[0] gives Tommy's score",
+        "A dictionary counts from 1, so it's scores[1]",
+        "0 isn't a key of scores: a dictionary is read by its keys, not by position",
+        "Only lists can use square brackets"
+      ],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "rd-average",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def total_of(scores):\n    total = 0\n    for score in scores.values():\n        total = total + score\n    return total\n\ncrew = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}\nprint(total_of(crew) / len(crew))",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 90,
+          "b": "Lance",
+          "y": 60,
+          "c": "Mira",
+          "z": 75
+        },
+        {
+          "a": "Cortez",
+          "x": 84,
+          "b": "Phil",
+          "y": 42,
+          "c": "Sonny",
+          "z": 60
+        },
+        {
+          "a": "Ana",
+          "x": 99,
+          "b": "Ben",
+          "y": 81,
+          "c": "Cara",
+          "z": 60
+        },
+        {
+          "a": "Kai",
+          "x": 30,
+          "b": "Zoe",
+          "y": 72,
+          "c": "Rex",
+          "z": 93
+        },
+        {
+          "a": "Mia",
+          "x": 66,
+          "b": "Nova",
+          "y": 54,
+          "c": "Ken",
+          "z": 90
+        }
+      ],
+      "mistakes": [
+        ["total = total + score", "total = score"],
+        ["/ len(crew)", "// len(crew)"],
+        ["    return total", "        return total"],
+        ["print(total_of(crew) / len(crew))", "print(total_of(crew))"]
+      ]
+    },
+    {
+      "id": "rd-top",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "scores = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}\ntop = \"\"\nhighest = 0\nfor name in scores:\n    if scores[name] > highest:\n        highest = scores[name]\n        top = name\nprint(f\"Top: {top}\")",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 80,
+          "b": "Lance",
+          "y": 95,
+          "c": "Mira",
+          "z": 70
+        },
+        {
+          "a": "Cortez",
+          "x": 60,
+          "b": "Phil",
+          "y": 88,
+          "c": "Sonny",
+          "z": 75
+        },
+        {
+          "a": "Ana",
+          "x": 91,
+          "b": "Ben",
+          "y": 64,
+          "c": "Cara",
+          "z": 77
+        },
+        {
+          "a": "Kai",
+          "x": 52,
+          "b": "Zoe",
+          "y": 68,
+          "c": "Rex",
+          "z": 99
+        },
+        {
+          "a": "Mia",
+          "x": 45,
+          "b": "Nova",
+          "y": 83,
+          "c": "Ken",
+          "z": 61
+        }
+      ],
+      "mistakes": [
+        ["scores[name] > highest", "scores[name] < highest"],
+        ["highest = scores[name]", "highest = 0"],
+        ["{top}", "{highest}"],
+        ["top = name", "top = \"{{a}}\""]
+      ]
+    },
+    {
+      "id": "rd-passing",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def passing(scores, limit):\n    names = []\n    for name, score in scores.items():\n        if score >= limit:\n            names.append(name)\n    return names\n\nresult = passing({\"Tommy\": {{t}}, \"Lance\": {{l}}, \"Mira\": {{m}}, \"Phil\": {{p}}}, {{limit}})\nprint(len(result))\nfor name in result:\n    print(name)",
+      "values": [
+        {
+          "t": 95,
+          "l": 42,
+          "m": 88,
+          "p": 50,
+          "limit": 50
+        },
+        {
+          "t": 70,
+          "l": 70,
+          "m": 40,
+          "p": 85,
+          "limit": 70
+        },
+        {
+          "t": 60,
+          "l": 90,
+          "m": 75,
+          "p": 30,
+          "limit": 75
+        },
+        {
+          "t": 45,
+          "l": 80,
+          "m": 80,
+          "p": 66,
+          "limit": 80
+        },
+        {
+          "t": 99,
+          "l": 20,
+          "m": 55,
+          "p": 61,
+          "limit": 60
+        }
+      ],
+      "mistakes": [
+        ["score >= limit", "score > limit"],
+        ["names.append(name)", "names.append(score)"],
+        ["    return names", "        return names"],
+        ["print(len(result))\n", ""]
+      ]
+    },
+    {
+      "id": "rd-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "counts = {}\nfor item in {{items}}:\n    if item in counts:\n        counts[item] = counts[item] + 1\n    else:\n        counts[item] = 1\nprint(counts)",
+      "values": [
+        {
+          "items": "[\"fuel\", \"food\", \"fuel\"]"
+        },
+        {
+          "items": "[\"ok\", \"ok\", \"ok\", \"low\"]"
+        },
+        {
+          "items": "[\"red\", \"blue\", \"red\", \"blue\", \"red\"]"
+        },
+        {
+          "items": "[\"A\", \"B\", \"C\", \"A\"]"
+        },
+        {
+          "items": "[\"Mars\", \"Venus\", \"Mars\", \"Mars\"]"
+        }
+      ],
+      "mistakes": [
+        ["counts[item] = counts[item] + 1", "counts[item] = 1"],
+        ["        counts[item] = 1", "        counts[item] = 0"],
+        ["print(counts)", "print(len(counts))"],
+        ["counts[item] + 1", "counts[item] + 2"]
+      ]
+    },
+    {
+      "id": "rd-update",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "crew = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}\ncrew[\"{{b}}\"] = crew[\"{{b}}\"] + {{bonus}}\ncrew[\"{{c}}\"] = {{z}}\ndel crew[\"{{a}}\"]\nprint(crew)",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 80,
+          "b": "Lance",
+          "y": 60,
+          "c": "Mira",
+          "z": 75,
+          "bonus": 10
+        },
+        {
+          "a": "Cortez",
+          "x": 50,
+          "b": "Phil",
+          "y": 45,
+          "c": "Sonny",
+          "z": 90,
+          "bonus": 5
+        },
+        {
+          "a": "Ana",
+          "x": 70,
+          "b": "Ben",
+          "y": 88,
+          "c": "Cara",
+          "z": 64,
+          "bonus": 2
+        },
+        {
+          "a": "Kai",
+          "x": 33,
+          "b": "Zoe",
+          "y": 71,
+          "c": "Rex",
+          "z": 58,
+          "bonus": 9
+        },
+        {
+          "a": "Mia",
+          "x": 90,
+          "b": "Nova",
+          "y": 39,
+          "c": "Ken",
+          "z": 47,
+          "bonus": 11
+        }
+      ],
+      "mistakes": [
+        ["del crew[\"{{a}}\"]\n", ""],
+        ["crew[\"{{b}}\"] + {{bonus}}", "{{bonus}}"],
+        ["crew[\"{{c}}\"] = {{z}}\n", ""],
+        ["del crew[\"{{a}}\"]", "crew[\"{{a}}\"] = 0"]
+      ]
+    },
+    {
+      "id": "rd-first-low",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def first_low(scores):\n    for name, score in scores.items():\n        if score < {{limit}}:\n            return name\n    return \"Nobody\"\n\nprint(first_low({\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}))",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Phil",
+          "z": 37,
+          "limit": 50
+        },
+        {
+          "a": "Mira",
+          "x": 76,
+          "b": "Cortez",
+          "y": 88,
+          "c": "Sonny",
+          "z": 30,
+          "limit": 50
+        },
+        {
+          "a": "Ana",
+          "x": 64,
+          "b": "Ben",
+          "y": 58,
+          "c": "Cara",
+          "z": 71,
+          "limit": 60
+        },
+        {
+          "a": "Kai",
+          "x": 49,
+          "b": "Zoe",
+          "y": 90,
+          "c": "Rex",
+          "z": 20,
+          "limit": 50
+        },
+        {
+          "a": "Mia",
+          "x": 81,
+          "b": "Nova",
+          "y": 77,
+          "c": "Ken",
+          "z": 66,
+          "limit": 70
+        }
+      ],
+      "mistakes": [
+        ["            return name", "            print(name)"],
+        ["    return \"Nobody\"", "        return \"Nobody\""],
+        ["score < {{limit}}", "score > {{limit}}"],
+        ["return name", "return score"]
+      ]
+    },
+    {
+      "id": "rd-which-ship",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "ship = {\"name\": \"{{name}}\", \"fuel\": {{fuel}}}\nship[\"fuel\"] = ship[\"fuel\"] - {{used}}\nprint(ship[\"name\"])\nprint(ship[\"fuel\"])",
+      "values": [
+        {
+          "name": "Falcon",
+          "fuel": 100,
+          "used": 35
+        },
+        {
+          "name": "Atlas",
+          "fuel": 80,
+          "used": 25
+        },
+        {
+          "name": "Nova",
+          "fuel": 60,
+          "used": 15
+        },
+        {
+          "name": "Orion",
+          "fuel": 90,
+          "used": 40
+        },
+        {
+          "name": "Vega",
+          "fuel": 75,
+          "used": 30
+        }
+      ],
+      "mistakes": [
+        ["ship[\"fuel\"] - {{used}}", "{{used}}"],
+        ["print(ship[\"name\"])", "print(\"name\")"],
+        ["ship[\"fuel\"] = ship", "ship[\"used\"] = ship"],
+        ["print(ship[\"fuel\"])", "print(ship)"]
+      ]
+    },
+    {
+      "id": "rd-which-items",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "stock = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}\nfor item, count in stock.items():\n    print(f\"{item}: {count}\")",
+      "values": [
+        {
+          "a": "fuel",
+          "x": 30,
+          "b": "food",
+          "y": 12
+        },
+        {
+          "a": "water",
+          "x": 8,
+          "b": "air",
+          "y": 5
+        },
+        {
+          "a": "medkits",
+          "x": 4,
+          "b": "tools",
+          "y": 9
+        },
+        {
+          "a": "maps",
+          "x": 2,
+          "b": "radios",
+          "y": 6
+        },
+        {
+          "a": "shields",
+          "x": 3,
+          "b": "lasers",
+          "y": 7
+        }
+      ],
+      "mistakes": [
+        ["{item}: {count}", "{count}: {item}"],
+        ["print(f\"{item}: {count}\")", "print(item, count)"],
+        ["\"{{a}}\": {{x}}, \"{{b}}\": {{y}}", "\"{{a}}\": {{y}}, \"{{b}}\": {{x}}"],
+        ["{item}: {count}", "{item}: {item}"]
+      ]
+    },
+    {
+      "id": "rd-gap-return",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def total_fuel(tanks):\n    total = 0\n    for amount in tanks.values():\n        total = total + amount\n    ___\n\nprint(total_fuel({\"left\": {{l}}, \"right\": {{r}}}))",
+      "values": [
+        {
+          "l": 40,
+          "r": 30
+        },
+        {
+          "l": 25,
+          "r": 25
+        },
+        {
+          "l": 60,
+          "r": 15
+        },
+        {
+          "l": 12,
+          "r": 48
+        },
+        {
+          "l": 33,
+          "r": 7
+        }
+      ],
+      "answer": "return total",
+      "wrong": ["print(total)", "return amount", "return tanks", "total = total"]
+    },
+    {
+      "id": "rd-gap-append",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "scores = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}\npassing = []\nfor name in scores:\n    if scores[name] >= 50:\n        ___\nprint(passing)",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Mira",
+          "z": 76
+        },
+        {
+          "a": "Cortez",
+          "x": 88,
+          "b": "Phil",
+          "y": 37,
+          "c": "Sonny",
+          "z": 50
+        },
+        {
+          "a": "Ana",
+          "x": 51,
+          "b": "Ben",
+          "y": 64,
+          "c": "Cara",
+          "z": 20
+        },
+        {
+          "a": "Kai",
+          "x": 70,
+          "b": "Zoe",
+          "y": 90,
+          "c": "Rex",
+          "z": 85
+        },
+        {
+          "a": "Mia",
+          "x": 49,
+          "b": "Nova",
+          "y": 66,
+          "c": "Ken",
+          "z": 99
+        }
+      ],
+      "answer": "passing.append(name)",
+      "wrong": [
+        "passing.append(scores[name])",
+        "passing = name",
+        "passing.append(scores)",
+        "passing = [name]"
+      ]
+    },
+    {
+      "id": "rd-gap-method",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "crew = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}\nfor x in crew.___():\n    print(x)",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Mira",
+          "z": 76,
+          "m": "values"
+        },
+        {
+          "a": "Cortez",
+          "x": 88,
+          "b": "Phil",
+          "y": 37,
+          "c": "Sonny",
+          "z": 50,
+          "m": "keys"
+        },
+        {
+          "a": "Ana",
+          "x": 51,
+          "b": "Ben",
+          "y": 64,
+          "c": "Cara",
+          "z": 20,
+          "m": "values"
+        },
+        {
+          "a": "Kai",
+          "x": 70,
+          "b": "Zoe",
+          "y": 90,
+          "c": "Rex",
+          "z": 85,
+          "m": "keys"
+        },
+        {
+          "a": "Mia",
+          "x": 49,
+          "b": "Nova",
+          "y": 66,
+          "c": "Ken",
+          "z": 99,
+          "m": "values"
+        }
+      ],
+      "answer": "{{m}}",
+      "wrong": ["keys", "values", "items", "append"]
+    },
+    {
+      "id": "rd-gap-key",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def make_report(scores):\n    total = 0\n    for score in scores.values():\n        total = total + score\n    return {\"total\": total, \"count\": len(scores)}\n\nreport = make_report({\"{{a}}\": {{x}}, \"{{b}}\": {{y}}})\nprint(report[___])",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "k": "total"
+        },
+        {
+          "a": "Mira",
+          "x": 76,
+          "b": "Phil",
+          "y": 37,
+          "k": "count"
+        },
+        {
+          "a": "Ana",
+          "x": 50,
+          "b": "Ben",
+          "y": 30,
+          "k": "total"
+        },
+        {
+          "a": "Kai",
+          "x": 61,
+          "b": "Zoe",
+          "y": 19,
+          "k": "count"
+        },
+        {
+          "a": "Mia",
+          "x": 44,
+          "b": "Ken",
+          "y": 56,
+          "k": "total"
+        }
+      ],
+      "answer": "\"{{k}}\"",
+      "wrong": ["\"total\"", "\"count\"", "total", "0"]
+    },
+    {
+      "id": "rd-bad-quotes",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "scores = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}\nscores[\"{{b}}\"] = scores[\"{{b}}\"] + 5\nscores[\"{{c}}\"] = {{z}}\nprint(scores[\"{{c}}\"])\nprint(scores[\"{{b}}\"])\nprint(scores[\"{{a}}\"])",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 80,
+          "b": "Lance",
+          "y": 60,
+          "c": "Mira",
+          "z": 75
+        },
+        {
+          "a": "Cortez",
+          "x": 50,
+          "b": "Phil",
+          "y": 45,
+          "c": "Sonny",
+          "z": 90
+        },
+        {
+          "a": "Ana",
+          "x": 70,
+          "b": "Ben",
+          "y": 88,
+          "c": "Cara",
+          "z": 64
+        }
+      ],
+      "bug": ["print(scores[\"{{a}}\"])", "print(scores[{{a}}])"]
+    },
+    {
+      "id": "rd-bad-items",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}\nprint(\"Crew report\")\nfor name, score in crew.items():\n    print(f\"{name}: {score}\")\nprint(\"End of report\")",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42
+        },
+        {
+          "a": "Mira",
+          "x": 76,
+          "b": "Phil",
+          "y": 37
+        },
+        {
+          "a": "Cortez",
+          "x": 88,
+          "b": "Sonny",
+          "y": 50
+        }
+      ],
+      "bug": ["crew.items()", "crew"]
+    },
+    {
+      "id": "rd-bad-param",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def average(scores):\n    total = 0\n    for score in scores.values():\n        total = total + score\n    return total / len(scores)\n\nprint(average({\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}))",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 90,
+          "b": "Lance",
+          "y": 60
+        },
+        {
+          "a": "Mira",
+          "x": 76,
+          "b": "Phil",
+          "y": 38
+        }
+      ],
+      "bug": ["def average(scores):", "def average(crew):"]
+    },
+    {
+      "id": "rd-bad-return",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def passing(scores):\n    names = []\n    for name in scores:\n        if scores[name] >= 50:\n            names.append(name)\n    return names\n\nprint(passing({\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}))",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Mira",
+          "z": 76
+        },
+        {
+          "a": "Cortez",
+          "x": 88,
+          "b": "Phil",
+          "y": 37,
+          "c": "Sonny",
+          "z": 50
+        }
+      ],
+      "bug": ["    return names", "    return name"]
+    }
+  ]
+}

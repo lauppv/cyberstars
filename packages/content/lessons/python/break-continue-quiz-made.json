@@ -492,25 +492,25 @@
     {
       "id": "bc-bad-break-271aab",
       "text": "Which line stops this program from printing this?",
-      "code": "for i in range(0, 8):\n    if i == 3:\n        continue\n    print(i)\nprint(\"Done\")",
-      "output": "0\n1\n2\nDone",
-      "options": ["continue", "if i == 3:", "print(i)", "print(\"Done\")"],
+      "code": "for i in range(0, 8):\n    if i == 3:\n        print(i, \"!\")\n        continue\n    print(i)\nprint(\"Done\")",
+      "output": "0\n1\n2\n3 !\nDone",
+      "options": ["continue", "print(i, \"!\")", "if i == 3:", "print(i)"],
       "answer": 0
     },
     {
       "id": "bc-bad-break-370f42",
       "text": "Which line stops this program from printing this?",
-      "code": "for i in range(2, 9):\n    if i == 5:\n        continue\n    print(i)\nprint(\"End\")",
-      "output": "2\n3\n4\nEnd",
-      "options": ["continue", "if i == 5:", "for i in range(2, 9):", "print(i)"],
+      "code": "for i in range(2, 9):\n    if i == 5:\n        print(i, \"!\")\n        continue\n    print(i)\nprint(\"End\")",
+      "output": "2\n3\n4\n5 !\nEnd",
+      "options": ["continue", "print(i, \"!\")", "if i == 5:", "print(i)"],
       "answer": 0
     },
     {
-      "id": "bc-bad-break-51fbdf",
+      "id": "bc-bad-break-a919e0",
       "text": "Which line stops this program from printing this?",
-      "code": "for i in range(1, 7):\n    if i == 4:\n        continue\n    print(i)\nprint(\"Stopped\")",
-      "output": "1\n2\n3\nStopped",
-      "options": ["continue", "if i == 4:", "print(i)", "print(\"Stopped\")"],
+      "code": "for i in range(1, 7):\n    if i == 4:\n        print(i, \"!\")\n        continue\n    print(i)\nprint(\"Over\")",
+      "output": "1\n2\n3\n4 !\nOver",
+      "options": ["continue", "print(i, \"!\")", "if i == 4:", "print(i)"],
       "answer": 0
     },
     {

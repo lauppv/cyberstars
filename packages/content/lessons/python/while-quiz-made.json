@@ -560,25 +560,25 @@
     {
       "id": "wh-bad-step-22f3ae",
       "text": "Which line stops this program from printing this?",
-      "code": "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 2\nprint(total)",
-      "output": "10",
-      "options": ["i = i + 2", "total = total + i", "i = 1", "print(total)"],
+      "code": "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    print(i)\n    i = i + 2\nprint(total)",
+      "output": "1\n2\n3\n4\n10",
+      "options": ["i = i + 2", "print(i)", "total = total + i", "print(total)"],
       "answer": 0
     },
     {
       "id": "wh-bad-step-6b3e0a",
       "text": "Which line stops this program from printing this?",
-      "code": "points = 0\ni = 1\nwhile i <= 5:\n    points = points + i\n    i = i + 2\nprint(points)",
-      "output": "15",
-      "options": ["i = i + 2", "points = points + i", "i = 1", "print(points)"],
+      "code": "points = 0\ni = 1\nwhile i <= 5:\n    points = points + i\n    print(i)\n    i = i + 2\nprint(points)",
+      "output": "1\n2\n3\n4\n5\n15",
+      "options": ["i = i + 2", "print(i)", "points = points + i", "print(points)"],
       "answer": 0
     },
     {
       "id": "wh-bad-step-0da281",
       "text": "Which line stops this program from printing this?",
-      "code": "energy = 0\ni = 1\nwhile i <= 6:\n    energy = energy + i\n    i = i + 2\nprint(energy)",
-      "output": "21",
-      "options": ["i = i + 2", "energy = energy + i", "i = 1", "energy = 0"],
+      "code": "energy = 0\ni = 1\nwhile i <= 6:\n    energy = energy + i\n    print(i)\n    i = i + 2\nprint(energy)",
+      "output": "1\n2\n3\n4\n5\n6\n21",
+      "options": ["i = i + 2", "print(i)", "energy = energy + i", "i = 1"],
       "answer": 0
     }
   ]

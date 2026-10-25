@@ -1,0 +1,993 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "În misiunea Aprovizionarea, ce dă `element[0:4]` pentru `\"con-oua\"`?",
+      "options": ["\"con-\"", "\"con-o\"", "\"con\"", "\"oua\""],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "În misiunea Aprovizionarea, de ce se sare peste o ladă `con-` cu `continue` și nu cu `break`?",
+      "options": [
+        "continue scoate lada din elemente",
+        "break ar opri bucla, deci lăzile bune de după ea n-ar mai fi verificate",
+        "break merge doar în buclele while",
+        "Aici nu contează"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "În misiunea Aprovizionarea, de ce vine `break` după `curate.append(element)` și nu înainte?",
+      "options": [
+        "Ca bucla să sară peste unt",
+        "Pentru că break trebuie să fie mereu ultima linie din buclă",
+        "Ca untul să ajungă în curate înainte ca bucla să se oprească",
+        "Ca să fie adăugat și gemul"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "În misiunea Aprovizionarea, de ce nu ajunge niciodată `gem` în curate?",
+      "options": [
+        "Numele lui începe cu con-",
+        "E ultimul element, iar o buclă sare peste ultimul element",
+        "curate poate ține doar 4 elemente",
+        "Bucla s-a oprit cu break la unt, înainte să ajungă la gem"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "elemente = [\"lapte\", \"con-oua\", \"paine\"]\ncurate = []\nfor element in elemente:\n    if element[0:4] == \"con-\":\n        continue\n    curate.append(element)\nprint(curate)",
+      "options": [
+        "['lapte', 'paine']",
+        "['lapte', 'con-oua', 'paine']",
+        "['con-oua']",
+        "['lapte']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "elemente = [\"lapte\", \"unt\", \"gem\"]\ncurate = []\nfor element in elemente:\n    if element == \"unt\":\n        break\n    curate.append(element)\nprint(curate)",
+      "options": ["['lapte', 'unt']", "['lapte']", "['lapte', 'gem']", "[]"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"statie\"\nprint(cuvant[0:3].upper())",
+      "options": ["STATIE", "sta", "STA", "STAT"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "nume ține `\"Ana\"` și `\"Rex\"`. După `nume.append(\"Kai\")`, ce dă `len(nume)`?",
+      "options": ["2", "9", "Kai", "3"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce diferență e între `nume.upper()` și `echipaj.append(\"Kai\")`?",
+      "options": [
+        "upper() dă un string nou și lasă nume cum era; append() schimbă chiar lista",
+        "Amândouă schimbă variabila pe care sunt folosite",
+        "Niciuna nu schimbă nimic: trebuie scris echipaj = echipaj.append(\"Kai\")",
+        "upper() schimbă nume; append() face o listă nouă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "nume = \"lance\"\nnume.upper()\nprint(nume)",
+      "options": ["LANCE", "lance", "Lance", "Se oprește cu o eroare"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 9, 2, 7]\nfor n in numere:\n    if n > 5:\n        break\n    print(n)",
+      "options": ["4\n2", "9", "4", "4\n9"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 9, 2, 7]\nfor n in numere:\n    if n > 5:\n        continue\n    print(n)",
+      "options": ["4", "9\n7", "4\n9\n2\n7", "4\n2"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce face `continue` într-o buclă for care parcurge o listă?",
+      "options": [
+        "Sare peste restul liniilor pentru elementul acesta și trece la următorul",
+        "Oprește bucla de tot",
+        "Se întoarce la primul element din listă",
+        "Scoate elementul curent din listă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "O buclă for parcurge o listă și ajunge la `break`. Ce linie rulează mai departe?",
+      "options": [
+        "Prima linie din buclă, cu elementul următor",
+        "Prima linie de după buclă",
+        "Linia de imediat sub break, din același bloc",
+        "Niciuna, tot programul se oprește acolo"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "O listă are 3 elemente. La ce index e ultimul?",
+      "options": ["3", "1", "2", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "echipaj = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(echipaj[len(echipaj)])",
+      "options": [
+        "Afișează Cortez",
+        "Afișează 3",
+        "Afișează Tommy",
+        "Se oprește cu un IndexError: nu există niciun element la indexul 3"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"cer\", \"luna\", \"nori\"]\ncontor = 0\nfor c in cuvinte:\n    if len(c) == 4:\n        contor = contor + 1\nprint(contor)",
+      "options": ["2", "1", "3", "11"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "nume = [\"ana\", \"rex\"]\nfor i in range(len(nume)):\n    nume[i] = nume[i].upper()\nprint(nume)",
+      "options": ["['ana', 'rex']", "['ANA', 'REX']", "ANA\nREX", "['ana', 'rex', 'ANA', 'REX']"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "nume = \"Tommy Vercetti\"\nprint(nume[0] + nume[6])",
+      "options": ["T V", "Tommy Vercetti", "TV", "To"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Ce buclă se oprește la primul nume mai lung de 5 litere, fără să-l afișeze?",
+      "options": [
+        "for n in nume:\n    print(n)\n    if len(n) > 5:\n        break",
+        "for n in nume:\n    if len(n) > 5:\n        continue\n    print(n)",
+        "for n in nume:\n    if len(n) < 5:\n        break\n    print(n)",
+        "for n in nume:\n    if len(n) > 5:\n        break\n    print(n)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "În misiunea Aprovizionarea, câte linii afișează programul?",
+      "options": ["5", "4", "7", "6"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "În misiunea Aprovizionarea, `\"unt\"` e scos din elemente. Ce afișează programul după `Total: `?",
+      "options": ["3", "4", "5", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "cod = \"con-iaurt\"\nprint(cod[4:])",
+      "options": ["con-", "-iaurt", "iaurt", "aurt"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "De ce e scris `curate = []` înainte de buclă și nu în ea?",
+      "options": [
+        "Pentru că o listă poate fi goală doar înainte de o buclă",
+        "Ca curate să țină doar prima ladă",
+        "Ca bucla să sară peste lăzile goale",
+        "În buclă, curate s-ar goli din nou la fiecare ladă"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"racheta\"\nprima = cuvant[0:3]\nrest = cuvant[3:7]\nprint(rest + prima)",
+      "options": ["hetarac", "racheta", "heta rac", "rachetarac"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "elemente = [\"lapte\", \"gem\"]\nelemente[1] = \"unt\"\nelemente.append(\"gem\")\nprint(elemente)",
+      "options": [
+        "['lapte', 'gem', 'unt']",
+        "['lapte', 'unt', 'gem']",
+        "['unt', 'gem']",
+        "['lapte', 'unt']"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "O buclă for parcurge o listă de 6 elemente și ajunge la `break` la elementul de la indexul 2. Pentru câte elemente a rulat bucla?",
+      "options": ["2", "6", "3", "4"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "preturi = [5, 10, 20, 40]\ntotal = 0\nfor p in preturi:\n    if p == 20:\n        break\n    total = total + p\nprint(total)",
+      "options": ["75", "35", "5", "15"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce condiție e True pentru `\"con-lapte\"`, dar False pentru `\"lapte\"`?",
+      "options": [
+        "element[0:4] == \"con-\"",
+        "element[0:3] == \"con-\"",
+        "len(element) > 3",
+        "element[0] == \"l\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor n in nume:\n    if n == \"Lance\":\n        continue\n    print(n.lower())",
+      "options": ["tommy\nlance\ncortez", "tommy\ncortez", "Tommy\nCortez", "tommy"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "col-skip",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    if {{x}}[0:{{k}}] == \"{{pre}}\":\n        continue\n    {{w}}.append({{x}})\nprint({{w}})",
+      "values": [
+        {
+          "v": "elemente",
+          "items": "\"lapte\", \"con-oua\", \"paine\", \"con-gem\"",
+          "x": "element",
+          "w": "curate",
+          "pre": "con-",
+          "k": 4
+        },
+        {
+          "v": "fisiere",
+          "items": "\"vechi-note\", \"raport\", \"vechi-poza\", \"plan\"",
+          "x": "f",
+          "w": "pastrate",
+          "pre": "vechi",
+          "k": 5
+        },
+        {
+          "v": "coduri",
+          "items": "\"a7\", \"x1\", \"b2\", \"x9\"",
+          "x": "c",
+          "w": "bune",
+          "pre": "x",
+          "k": 1
+        },
+        {
+          "v": "sarcini",
+          "items": "\"repara motorul\", \"gata: spalare\", \"lansare\", \"gata: alimentare\"",
+          "x": "s",
+          "w": "de_facut",
+          "pre": "gata:",
+          "k": 5
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["== \"{{pre}}\"", "!= \"{{pre}}\""],
+        ["\n    {{w}}.append({{x}})", "\n        {{w}}.append({{x}})"],
+        ["\nprint({{w}})", "\n    print({{w}})"]
+      ]
+    },
+    {
+      "id": "col-stop",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break\nprint({{w}})",
+      "values": [
+        {
+          "v": "elemente",
+          "items": "\"lapte\", \"paine\", \"unt\", \"gem\"",
+          "x": "element",
+          "w": "depozit",
+          "stop": "unt"
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\", \"Saturn\"",
+          "x": "p",
+          "w": "vizitate",
+          "stop": "Venus"
+        },
+        {
+          "v": "melodii",
+          "items": "\"Intro\", \"Val\", \"Ploaie\", \"Final\", \"Bonus\"",
+          "x": "m",
+          "w": "cantate",
+          "stop": "Ploaie"
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        [
+          "    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break",
+          "    if {{x}} == \"{{stop}}\":\n        break\n    {{w}}.append({{x}})"
+        ],
+        ["\nprint({{w}})", "\n    print({{w}})"],
+        ["{{w}}.append({{x}})", "{{w}} = [{{x}}]"]
+      ]
+    },
+    {
+      "id": "col-cap",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{word}}\"\nprint({{v}}[0:{{k}}].upper() + {{v}}[{{k}}:])",
+      "values": [
+        {
+          "v": "cuvant",
+          "word": "statie",
+          "k": 3,
+          "k1": 4
+        },
+        {
+          "v": "nume",
+          "word": "racheta",
+          "k": 1,
+          "k1": 2
+        },
+        {
+          "v": "cod",
+          "word": "planeta",
+          "k": 4,
+          "k1": 5
+        }
+      ],
+      "mistakes": [
+        [".upper()", ".lower()"],
+        ["[0:{{k}}]", "[0:{{k1}}]"],
+        [" + {{v}}[{{k}}:]", " + \" \" + {{v}}[{{k}}:]"],
+        ["{{v}}[{{k}}:])", "{{v}})"]
+      ]
+    },
+    {
+      "id": "col-long",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{c}} = 0\nfor w in {{v}}:\n    if len(w) > {{n}}:\n        {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "v": "cuvinte",
+          "items": "\"cer\", \"luna\", \"planeta\", \"stea\"",
+          "c": "contor",
+          "n": 4
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Ken\", \"Cortez\", \"Lance\", \"Phil\"",
+          "c": "lungi",
+          "n": 4
+        },
+        {
+          "v": "orase",
+          "items": "\"Roma\", \"Oslo\", \"Berlin\", \"Paris\"",
+          "c": "mari",
+          "n": 5
+        },
+        {
+          "v": "unelte",
+          "items": "\"cui\", \"ciocan\", \"clesti\", \"surub\"",
+          "c": "contor",
+          "n": 5
+        }
+      ],
+      "mistakes": [
+        ["len(w) > {{n}}", "len(w) >= {{n}}"],
+        ["{{c}} + 1", "{{c}} + len(w)"],
+        ["len(w) > {{n}}", "len(w) < {{n}}"],
+        ["\nprint({{c}})", "\n    print({{c}})"]
+      ]
+    },
+    {
+      "id": "col-find",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    if {{x}} == \"{{t}}\":\n        print(\"{{found}}\")\n        break\n    print({{x}})",
+      "values": [
+        {
+          "v": "sectoare",
+          "items": "\"A1\", \"B4\", \"C7\", \"D2\"",
+          "x": "s",
+          "t": "C7",
+          "found": "Semnal gasit!"
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Lance\", \"Phil\", \"Tommy\", \"Ken\", \"Mia\"",
+          "x": "m",
+          "t": "Tommy",
+          "found": "Capitanul e la bord"
+        },
+        {
+          "v": "usi",
+          "items": "\"rosu\", \"verde\", \"albastru\"",
+          "x": "u",
+          "t": "verde",
+          "found": "Usa deschisa"
+        },
+        {
+          "v": "lazi",
+          "items": "\"gem\", \"lapte\", \"ceai\", \"aur\", \"orez\"",
+          "x": "l",
+          "t": "aur",
+          "found": "Comoara!"
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["\n    print({{x}})", "\n        print({{x}})"],
+        [
+          "        print(\"{{found}}\")\n        break",
+          "        break\n        print(\"{{found}}\")"
+        ],
+        ["== \"{{t}}\"", "!= \"{{t}}\""]
+      ]
+    },
+    {
+      "id": "col-initials",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{s}} = \"\"\nfor w in {{v}}:\n    {{s}} = {{s}} + w[0]\nprint({{s}})",
+      "values": [
+        {
+          "v": "cuvinte",
+          "items": "\"Nu\", \"Uita\", \"Stelele\"",
+          "s": "cod"
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Victor\", \"Lance\", \"Ken\"",
+          "s": "echipa"
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Pamant\", \"Venus\"",
+          "s": "traseu"
+        }
+      ],
+      "mistakes": [
+        ["{{s}} + w[0]", "{{s}} + w"],
+        ["{{s}} + w[0]", "w[0] + {{s}}"],
+        ["w[0]\n", "w[1]\n"],
+        ["\nprint({{s}})", "\n    print({{s}})"]
+      ]
+    },
+    {
+      "id": "col-replace",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    if {{v}}[i][0:{{k}}] == \"{{pre}}\":\n        {{v}}[i] = \"{{rep}}\"\nprint({{v}})",
+      "values": [
+        {
+          "v": "elemente",
+          "items": "\"lapte\", \"con-oua\", \"paine\", \"con-gem\"",
+          "k": 4,
+          "pre": "con-",
+          "rep": "gol"
+        },
+        {
+          "v": "locuri",
+          "items": "\"Ana\", \"x\", \"Rex\", \"x\"",
+          "k": 1,
+          "pre": "x",
+          "rep": "liber"
+        },
+        {
+          "v": "fisiere",
+          "items": "\"plan\", \"tmp-a\", \"note\", \"tmp-b\"",
+          "k": 4,
+          "pre": "tmp-",
+          "rep": "sters"
+        },
+        {
+          "v": "semnale",
+          "items": "\"ok\", \"err1\", \"ok\", \"err2\"",
+          "k": 3,
+          "pre": "err",
+          "rep": "pierdut"
+        }
+      ],
+      "mistakes": [
+        ["{{v}}[i] = \"{{rep}}\"", "{{v}}.append(\"{{rep}}\")"],
+        ["] == \"{{pre}}\"", "] != \"{{pre}}\""],
+        ["range(len({{v}}))", "range(len({{v}}) - 1)"],
+        ["\nprint({{v}})", "\n    print({{v}})"]
+      ]
+    },
+    {
+      "id": "col-sum-stop",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\n{{t}} = 0\nfor n in {{v}}:\n    if n {{op}} {{lim}}:\n        break\n    {{t}} = {{t}} + n\nprint({{t}})",
+      "values": [
+        {
+          "v": "preturi",
+          "items": "5, 10, 20, 40, 1",
+          "t": "total",
+          "op": "==",
+          "lim": 20
+        },
+        {
+          "v": "incarcaturi",
+          "items": "30, 25, 90, 10",
+          "t": "greutate",
+          "op": ">",
+          "lim": 50
+        },
+        {
+          "v": "scoruri",
+          "items": "8, 6, 0, 9, 7",
+          "t": "puncte",
+          "op": "<",
+          "lim": 1
+        },
+        {
+          "v": "pasi",
+          "items": "100, 200, 999, 300",
+          "t": "parcurs",
+          "op": ">=",
+          "lim": 999
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["\n    {{t}} = {{t}} + n", "\n        {{t}} = {{t}} + n"],
+        ["\nprint({{t}})", "\n    print({{t}})"]
+      ]
+    },
+    {
+      "id": "col-which-skip",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    if {{x}}[0:{{k}}] == \"{{pre}}\":\n        continue\n    {{w}}.append({{x}})\nprint({{w}})",
+      "values": [
+        {
+          "v": "elemente",
+          "items": "\"orez\", \"con-lapte\", \"ceai\", \"con-gem\"",
+          "x": "element",
+          "w": "curate",
+          "pre": "con-",
+          "k": 4
+        },
+        {
+          "v": "nume",
+          "items": "\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"",
+          "x": "n",
+          "w": "altii",
+          "pre": "Dr.",
+          "k": 3
+        },
+        {
+          "v": "coduri",
+          "items": "\"ok-1\", \"rau-2\", \"ok-3\"",
+          "x": "c",
+          "w": "bune",
+          "pre": "rau",
+          "k": 3
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["== \"{{pre}}\"", "!= \"{{pre}}\""],
+        ["\nprint({{w}})", "\n    print({{w}})"]
+      ]
+    },
+    {
+      "id": "col-which-stop",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break\nprint({{w}})",
+      "values": [
+        {
+          "v": "lazi",
+          "items": "\"ceai\", \"orez\", \"ulei\", \"sare\"",
+          "x": "l",
+          "w": "depozit",
+          "stop": "orez"
+        },
+        {
+          "v": "opriri",
+          "items": "\"Luna\", \"Marte\", \"Titan\", \"Pluto\"",
+          "x": "o",
+          "w": "traseu",
+          "stop": "Titan"
+        },
+        {
+          "v": "carti",
+          "items": "\"3\", \"7\", \"K\", \"9\", \"2\"",
+          "x": "c",
+          "w": "mana",
+          "stop": "K"
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        [
+          "    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break",
+          "    if {{x}} == \"{{stop}}\":\n        break\n    {{w}}.append({{x}})"
+        ],
+        ["\nprint({{w}})", "\n    print({{w}})"],
+        ["{{w}}.append({{x}})", "{{w}} = [{{x}}]"]
+      ]
+    },
+    {
+      "id": "col-gap-continue",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    if {{x}}[0:{{k}}] == \"{{pre}}\":\n        ___\n    print({{x}})",
+      "values": [
+        {
+          "v": "elemente",
+          "items": "\"lapte\", \"con-oua\", \"paine\", \"gem\"",
+          "x": "element",
+          "k": 4,
+          "pre": "con-"
+        },
+        {
+          "v": "fisiere",
+          "items": "\"plan\", \"vechi-harta\", \"note\", \"vechi-log\", \"poza\"",
+          "x": "f",
+          "k": 5,
+          "pre": "vechi"
+        },
+        {
+          "v": "coduri",
+          "items": "\"a1\", \"x2\", \"b3\"",
+          "x": "c",
+          "k": 1,
+          "pre": "x"
+        },
+        {
+          "v": "nume",
+          "items": "\"Ana\", \"Dr. Rex\", \"Kai\"",
+          "x": "n",
+          "k": 3,
+          "pre": "Dr."
+        }
+      ],
+      "answer": "continue",
+      "wrong": ["break", "print({{x}})", "print(\"{{pre}}\")"]
+    },
+    {
+      "id": "col-gap-append",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    ___\n    if {{x}} == \"{{stop}}\":\n        break\nprint({{w}})",
+      "values": [
+        {
+          "v": "elemente",
+          "items": "\"lapte\", \"paine\", \"unt\", \"gem\"",
+          "x": "element",
+          "w": "curate",
+          "stop": "unt"
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\"",
+          "x": "p",
+          "w": "vazute",
+          "stop": "Venus"
+        },
+        {
+          "v": "sarcini",
+          "items": "\"trezire\", \"masa\", \"antrenament\", \"somn\"",
+          "x": "s",
+          "w": "gata",
+          "stop": "antrenament"
+        },
+        {
+          "v": "niveluri",
+          "items": "\"usor\", \"greu\", \"boss\", \"bonus\"",
+          "x": "n",
+          "w": "jucate",
+          "stop": "boss"
+        }
+      ],
+      "answer": "{{w}}.append({{x}})",
+      "wrong": ["{{w}} = [{{x}}]", "{{w}}.append({{v}})", "print({{x}})"]
+    },
+    {
+      "id": "col-gap-upper",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{word}}\"\n___\nprint({{v}})",
+      "values": [
+        {
+          "v": "nume",
+          "word": "lance"
+        },
+        {
+          "v": "oras",
+          "word": "vice city"
+        },
+        {
+          "v": "alerta",
+          "word": "alerta rosie"
+        }
+      ],
+      "answer": "{{v}} = {{v}}.upper()",
+      "wrong": ["{{v}}.upper()", "{{v}} = {{v}}.lower()", "{{v}} = {{v}}[0].upper()"]
+    },
+    {
+      "id": "col-gap-start",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    if {{x}}[0:___] == \"{{pre}}\":\n        continue\n    print({{x}})",
+      "values": [
+        {
+          "v": "elemente",
+          "items": "\"lapte\", \"con-oua\", \"gem\"",
+          "x": "element",
+          "k": 4,
+          "pre": "con-"
+        },
+        {
+          "v": "fisiere",
+          "items": "\"vechi-harta\", \"plan\", \"vechi-log\"",
+          "x": "f",
+          "k": 5,
+          "pre": "vechi"
+        },
+        {
+          "v": "nume",
+          "items": "\"Dr. Ana\", \"Rex\", \"Kai\"",
+          "x": "n",
+          "k": 3,
+          "pre": "Dr."
+        },
+        {
+          "v": "coduri",
+          "items": "\"ab12\", \"xy34\", \"ab56\"",
+          "x": "c",
+          "k": 2,
+          "pre": "ab"
+        }
+      ],
+      "answer": "{{k}}",
+      "wrong": ["1", "2", "3", "4", "5", "6"]
+    },
+    {
+      "id": "col-gap-index",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}}[___].upper())",
+      "values": [
+        {
+          "v": "planete",
+          "items": "\"marte\", \"venus\", \"pamant\", \"saturn\"",
+          "i": 2
+        },
+        {
+          "v": "echipaj",
+          "items": "\"tommy\", \"lance\", \"ken\"",
+          "i": 1
+        },
+        {
+          "v": "culori",
+          "items": "\"rosu\", \"verde\", \"albastru\", \"roz\"",
+          "i": 3
+        },
+        {
+          "v": "elemente",
+          "items": "\"lapte\", \"paine\", \"gem\"",
+          "i": 0
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["0", "1", "2", "3", "len({{v}})"]
+    },
+    {
+      "id": "col-gap-stop",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}})\n    if {{x}} == ___:\n        break\nprint(len({{w}}))",
+      "values": [
+        {
+          "v": "elemente",
+          "items": "\"lapte\", \"paine\", \"unt\", \"gem\"",
+          "x": "element",
+          "w": "curate",
+          "stop": "unt",
+          "a": "lapte",
+          "b": "paine",
+          "c": "unt",
+          "d": "gem"
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\", \"Saturn\"",
+          "x": "p",
+          "w": "vazute",
+          "stop": "Venus",
+          "a": "Marte",
+          "b": "Venus",
+          "c": "Pamant",
+          "d": "Saturn"
+        },
+        {
+          "v": "melodii",
+          "items": "\"Intro\", \"Val\", \"Ploaie\", \"Final\"",
+          "x": "m",
+          "w": "cantate",
+          "stop": "Final",
+          "a": "Intro",
+          "b": "Val",
+          "c": "Ploaie",
+          "d": "Final"
+        },
+        {
+          "v": "sarcini",
+          "items": "\"trezire\", \"masa\", \"antrenament\", \"somn\"",
+          "x": "s",
+          "w": "gata",
+          "stop": "trezire",
+          "a": "trezire",
+          "b": "masa",
+          "c": "antrenament",
+          "d": "somn"
+        }
+      ],
+      "answer": "\"{{stop}}\"",
+      "wrong": ["\"{{a}}\"", "\"{{b}}\"", "\"{{c}}\"", "\"{{d}}\""]
+    },
+    {
+      "id": "col-bad-slice",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    if {{x}}[0:{{k}}] == \"{{pre}}\":\n        continue\n    {{w}}.append({{x}})\nprint({{w}})",
+      "values": [
+        {
+          "v": "elemente",
+          "items": "\"lapte\", \"con-oua\", \"paine\", \"con-gem\"",
+          "x": "element",
+          "w": "curate",
+          "pre": "con-",
+          "k": 4
+        },
+        {
+          "v": "fisiere",
+          "items": "\"vechi-harta\", \"plan\", \"vechi-log\", \"poza\"",
+          "x": "f",
+          "w": "pastrate",
+          "pre": "vechi",
+          "k": 5
+        },
+        {
+          "v": "nume",
+          "items": "\"Dr. Ana\", \"Rex\", \"Kai\", \"Dr. Mia\"",
+          "x": "n",
+          "w": "altii",
+          "pre": "Dr.",
+          "k": 3
+        }
+      ],
+      "bug": ["[0:{{k}}]", "[1:{{k}}]"]
+    },
+    {
+      "id": "col-bad-break",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    {{w}}.append({{x}})\n    if {{x}} == \"{{stop}}\":\n        break\nprint({{w}})",
+      "values": [
+        {
+          "v": "elemente",
+          "items": "\"lapte\", \"paine\", \"unt\", \"gem\"",
+          "x": "element",
+          "w": "curate",
+          "stop": "unt"
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\", \"Saturn\", \"Pluto\"",
+          "x": "p",
+          "w": "vazute",
+          "stop": "Pamant"
+        },
+        {
+          "v": "melodii",
+          "items": "\"Intro\", \"Val\", \"Ploaie\"",
+          "x": "m",
+          "w": "cantate",
+          "stop": "Intro"
+        }
+      ],
+      "bug": ["break", "continue"]
+    },
+    {
+      "id": "col-bad-start",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{c}} = 0\n{{v}} = [{{items}}]\nfor {{x}} in {{v}}:\n    if {{x}}[0] == \"{{l}}\":\n        print({{x}})\n        {{c}} = {{c}} + 1\nprint(f\"{{label}}: {{{c}}}\")",
+      "values": [
+        {
+          "c": "contor",
+          "v": "nume",
+          "items": "\"Tommy\", \"Ken\", \"Tina\", \"Lance\"",
+          "x": "n",
+          "l": "T",
+          "label": "Nume cu T"
+        },
+        {
+          "c": "gasite",
+          "v": "orase",
+          "items": "\"Roma\", \"Oslo\", \"Riga\"",
+          "x": "o",
+          "l": "R",
+          "label": "Orase cu R"
+        },
+        {
+          "c": "total",
+          "v": "cuvinte",
+          "items": "\"soare\", \"cer\", \"stea\", \"luna\", \"sare\"",
+          "x": "c",
+          "l": "s",
+          "label": "Cuvinte cu s"
+        }
+      ],
+      "bug": ["{{c}} = 0", "{{c}} = 1"]
+    },
+    {
+      "id": "col-bad-print",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    if len({{x}}) > {{n}}:\n        {{w}}.append({{x}}.upper())\nprint({{w}})",
+      "values": [
+        {
+          "v": "cuvinte",
+          "items": "\"cer\", \"planeta\", \"luna\", \"racheta\"",
+          "x": "c",
+          "w": "lungi",
+          "n": 4
+        },
+        {
+          "v": "nume",
+          "items": "\"Ken\", \"Cortez\", \"Lance\"",
+          "x": "n",
+          "w": "tare",
+          "n": 3
+        },
+        {
+          "v": "orase",
+          "items": "\"Roma\", \"Berlin\", \"Oslo\", \"Madrid\"",
+          "x": "o",
+          "w": "mari",
+          "n": 4
+        }
+      ],
+      "bug": ["print({{w}})", "print({{v}})"]
+    }
+  ]
+}

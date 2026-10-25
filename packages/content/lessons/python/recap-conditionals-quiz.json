@@ -766,7 +766,7 @@
       "id": "rc-bad-bound-free",
       "kind": "wrong-line",
       "text": "Which line stops this program from printing this?",
-      "code": "age = {{a}}\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Discount: {discount} EUR\")",
+      "code": "age = {{a}}\nif age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5\nelif age <= 17:\n    discount = 3\nelse:\n    discount = 0\nprint(f\"Age {age}, discount: {discount} EUR\")",
       "values": [
         {
           "a": 6

@@ -1,0 +1,642 @@
+{
+  "note": "Made by npm run make:quiz from the templates in return-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rv-add-41d12c",
+      "text": "Ce afișează?",
+      "code": "def aduna(a, b):\n    return a + b\n\nrezultat = aduna(2, 3)\nprint(rezultat)",
+      "options": ["5", "5\nNone", "rezultat", "4"],
+      "answer": 0
+    },
+    {
+      "id": "rv-add-9d3c8d",
+      "text": "Ce afișează?",
+      "code": "def scade(a, b):\n    return a - b\n\ndiferenta = scade(10, 4)\nprint(diferenta)",
+      "options": ["6", "6\nNone", "diferenta", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rv-add-9db4e2",
+      "text": "Ce afișează?",
+      "code": "def inmulteste(a, b):\n    return a * b\n\nprodus = inmulteste(6, 7)\nprint(produs)",
+      "options": ["42", "42\nNone", "produs", "36"],
+      "answer": 0
+    },
+    {
+      "id": "rv-add-b8a46e",
+      "text": "Ce afișează?",
+      "code": "def imparte(a, b):\n    return a / b\n\nparte = imparte(9, 3)\nprint(parte)",
+      "options": ["3.0", "3.0\nNone", "parte", "1.0"],
+      "answer": 0
+    },
+    {
+      "id": "rv-add-3b8c3d",
+      "text": "Ce afișează?",
+      "code": "def putere(a, b):\n    return a ** b\n\nmare = putere(2, 5)\nprint(mare)",
+      "options": ["32", "32\nNone", "mare", "4"],
+      "answer": 0
+    },
+    {
+      "id": "rv-chain-9e04f8",
+      "text": "Ce afișează?",
+      "code": "def plus_cinci(x):\n    return x + 5\n\nprint(plus_cinci(3) * 10)",
+      "options": ["80", "35", "30", "18"],
+      "answer": 0
+    },
+    {
+      "id": "rv-chain-8e20f9",
+      "text": "Ce afișează?",
+      "code": "def dublu(n):\n    return n * 2\n\nprint(dublu(4) * 3)",
+      "options": ["24", "12", "11", "8"],
+      "answer": 0
+    },
+    {
+      "id": "rv-chain-e025ff",
+      "text": "Ce afișează?",
+      "code": "def pierde_viata(vieti):\n    return vieti - 1\n\nprint(pierde_viata(5) * 2)",
+      "options": ["8", "9", "10", "6"],
+      "answer": 0
+    },
+    {
+      "id": "rv-chain-7072d0",
+      "text": "Ce afișează?",
+      "code": "def jumatate(n):\n    return n / 2\n\nprint(jumatate(10) * 3)",
+      "options": ["15.0", "30", "8.0", "5.0"],
+      "answer": 0
+    },
+    {
+      "id": "rv-chain-6027ff",
+      "text": "Ce afișează?",
+      "code": "def patrat(latura):\n    return latura ** 2\n\nprint(patrat(3) * 2)",
+      "options": ["18", "36", "6", "11"],
+      "answer": 0
+    },
+    {
+      "id": "rv-early-ea095a",
+      "text": "Ce afișează?",
+      "code": "def verifica_combustibil(combustibil):\n    if combustibil >= 20:\n        return \"OK\"\n    return \"Scazut\"\n\nprint(verifica_combustibil(50))\nprint(verifica_combustibil(10))",
+      "options": ["OK\nScazut", "OK\nScazut\nScazut", "OK\nScazut\nNone", "Scazut\nOK"],
+      "answer": 0
+    },
+    {
+      "id": "rv-early-0e1789",
+      "text": "Ce afișează?",
+      "code": "def e_cald(temp):\n    if temp > 30:\n        return \"Cald\"\n    return \"Nu e cald\"\n\nprint(e_cald(12))\nprint(e_cald(35))",
+      "options": [
+        "Nu e cald\nCald",
+        "Nu e cald\nCald\nNu e cald",
+        "Nu e cald\nNone\nCald",
+        "Cald\nNu e cald"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-early-c1cb6a",
+      "text": "Ce afișează?",
+      "code": "def nota(scor):\n    if scor >= 50:\n        return \"Admis\"\n    return \"Respins\"\n\nprint(nota(50))\nprint(nota(49))",
+      "options": [
+        "Admis\nRespins",
+        "Admis\nRespins\nRespins",
+        "Admis\nRespins\nNone",
+        "Respins\nAdmis"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-early-d00223",
+      "text": "Ce afișează?",
+      "code": "def verifica_viteza(viteza):\n    if viteza > 100:\n        return \"Prea repede\"\n    return \"OK\"\n\nprint(verifica_viteza(80))\nprint(verifica_viteza(120))",
+      "options": [
+        "OK\nPrea repede",
+        "OK\nPrea repede\nOK",
+        "OK\nNone\nPrea repede",
+        "Prea repede\nOK"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-early-09aac9",
+      "text": "Ce afișează?",
+      "code": "def poate_vota(varsta):\n    if varsta >= 18:\n        return \"Da\"\n    return \"Nu\"\n\nprint(poate_vota(18))\nprint(poate_vota(17))",
+      "options": ["Da\nNu", "Da\nNu\nNu", "Da\nNu\nNone", "Nu\nDa"],
+      "answer": 0
+    },
+    {
+      "id": "rv-dead-3ed32f",
+      "text": "Ce afișează?",
+      "code": "def porneste():\n    print(\"Motoare pornite\")\n    return 1\n    print(\"Motoare oprite\")\n\nprint(porneste())",
+      "options": [
+        "Motoare pornite\n1",
+        "Motoare pornite\nMotoare oprite\nNone",
+        "1",
+        "Motoare pornite"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-dead-49d037",
+      "text": "Ce afișează?",
+      "code": "def numara():\n    print(\"Pornesc numaratoarea\")\n    return 3\n    print(\"Am terminat\")\n\nprint(numara())",
+      "options": [
+        "Pornesc numaratoarea\n3",
+        "Pornesc numaratoarea\nAm terminat\nNone",
+        "3",
+        "Pornesc numaratoarea"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-dead-413655",
+      "text": "Ce afișează?",
+      "code": "def lansare():\n    print(\"Lansare\")\n    return 10\n    print(\"Anulare\")\n\nprint(lansare())",
+      "options": ["Lansare\n10", "Lansare\nAnulare\nNone", "10", "Lansare"],
+      "answer": 0
+    },
+    {
+      "id": "rv-dead-36d34e",
+      "text": "Ce afișează?",
+      "code": "def ping():\n    print(\"Ping\")\n    return 0\n    print(\"Pong\")\n\nprint(ping())",
+      "options": ["Ping\n0", "Ping\nPong\nNone", "0", "Ping"],
+      "answer": 0
+    },
+    {
+      "id": "rv-none-b2c740",
+      "text": "Ce afișează?",
+      "code": "def dublu(x):\n    print(x * 2)\n\nrezultat = dublu(4)\nprint(rezultat)",
+      "options": ["8\nNone", "8", "8\nrezultat", "4\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "rv-none-2717c2",
+      "text": "Ce afișează?",
+      "code": "def plus_zece(scor):\n    print(scor + 10)\n\nscor_nou = plus_zece(5)\nprint(scor_nou)",
+      "options": ["15\nNone", "15", "15\nscor_nou", "5\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "rv-none-fe955c",
+      "text": "Ce afișează?",
+      "code": "def jumatate(n):\n    print(n / 2)\n\nparte = jumatate(9)\nprint(parte)",
+      "options": ["4.5\nNone", "4.5", "4.5\nparte", "9\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "rv-none-3c09fe",
+      "text": "Ce afișează?",
+      "code": "def triplu(t):\n    print(t * 3)\n\niesire = triplu(7)\nprint(iesire)",
+      "options": ["21\nNone", "21", "21\niesire", "7\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "rv-if-357ece",
+      "text": "Ce afișează?",
+      "code": "def este_adult(varsta):\n    return varsta >= 18\n\nif este_adult(20):\n    print(\"Bun venit\")\nelse:\n    print(\"Imi pare rau, prea tanar\")",
+      "options": [
+        "Bun venit",
+        "Imi pare rau, prea tanar",
+        "True\nImi pare rau, prea tanar",
+        "True\nBun venit"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-if-682492",
+      "text": "Ce afișează?",
+      "code": "def are_combustibil(combustibil):\n    return combustibil > 0\n\nif are_combustibil(15):\n    print(\"Lansare\")\nelse:\n    print(\"Alimenteaza intai\")",
+      "options": ["Lansare", "Alimenteaza intai", "True\nAlimenteaza intai", "True\nLansare"],
+      "answer": 0
+    },
+    {
+      "id": "rv-if-cd2950",
+      "text": "Ce afișează?",
+      "code": "def are_scut(scut):\n    return scut > 50\n\nif are_scut(80):\n    print(\"Scuturi ridicate\")\nelse:\n    print(\"Scuturi slabe\")",
+      "options": [
+        "Scuturi ridicate",
+        "Scuturi slabe",
+        "True\nScuturi slabe",
+        "True\nScuturi ridicate"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-if-a02589",
+      "text": "Ce afișează?",
+      "code": "def poate_intra(nivel):\n    return nivel >= 3\n\nif poate_intra(5):\n    print(\"Usa se deschide\")\nelse:\n    print(\"Acces interzis\")",
+      "options": [
+        "Usa se deschide",
+        "Acces interzis",
+        "True\nAcces interzis",
+        "True\nUsa se deschide"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-if-7eab45",
+      "text": "Ce afișează?",
+      "code": "def e_frig(temp):\n    return temp < 10\n\nif e_frig(4):\n    print(\"Ia o geaca\")\nelse:\n    print(\"Nu ai nevoie de geaca\")",
+      "options": [
+        "Ia o geaca",
+        "Nu ai nevoie de geaca",
+        "True\nNu ai nevoie de geaca",
+        "True\nIa o geaca"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-return-70ec44",
+      "text": "Care program afișează asta?",
+      "output": "50",
+      "options": [
+        "def aduna(a, b):\n    return a + b\n\nprint(aduna(2, 3) * 10)",
+        "def aduna(a, b):\n    print(a + b)\n\nprint(aduna(2, 3) * 10)",
+        "def aduna(a, b):\n    return a + b\n\nprint(aduna(2, 3))",
+        "def aduna(a, b):\n    return a\n\nprint(aduna(2, 3) * 10)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-return-3dda58",
+      "text": "Care program afișează asta?",
+      "output": "40",
+      "options": [
+        "def inmulteste(a, b):\n    return a * b\n\nprint(inmulteste(4, 5) * 2)",
+        "def inmulteste(a, b):\n    print(a * b)\n\nprint(inmulteste(4, 5) * 2)",
+        "def inmulteste(a, b):\n    return a * b\n\nprint(inmulteste(4, 5))",
+        "def inmulteste(a, b):\n    return a\n\nprint(inmulteste(4, 5) * 2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-return-66de3d",
+      "text": "Care program afișează asta?",
+      "output": "15",
+      "options": [
+        "def scade(a, b):\n    return a - b\n\nprint(scade(9, 4) * 3)",
+        "def scade(a, b):\n    print(a - b)\n\nprint(scade(9, 4) * 3)",
+        "def scade(a, b):\n    return a - b\n\nprint(scade(9, 4))",
+        "def scade(a, b):\n    return a\n\nprint(scade(9, 4) * 3)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-return-425b19",
+      "text": "Care program afișează asta?",
+      "output": "24",
+      "options": [
+        "def total(a, b):\n    return a + b\n\nprint(total(7, 1) * 3)",
+        "def total(a, b):\n    print(a + b)\n\nprint(total(7, 1) * 3)",
+        "def total(a, b):\n    return a + b\n\nprint(total(7, 1))",
+        "def total(a, b):\n    return a\n\nprint(total(7, 1) * 3)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-return-539ebc",
+      "text": "Care program afișează asta?",
+      "output": "20.0",
+      "options": [
+        "def imparte(a, b):\n    return a / b\n\nprint(imparte(8, 2) * 5)",
+        "def imparte(a, b):\n    print(a / b)\n\nprint(imparte(8, 2) * 5)",
+        "def imparte(a, b):\n    return a / b\n\nprint(imparte(8, 2))",
+        "def imparte(a, b):\n    return a\n\nprint(imparte(8, 2) * 5)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-none-10dc08",
+      "text": "Care program afișează asta?",
+      "output": "12\nNone",
+      "options": [
+        "def arata_dublu(x):\n    print(x * 2)\n\nrezultat = arata_dublu(6)\nprint(rezultat)",
+        "def arata_dublu(x):\n    return x * 2\n\nrezultat = arata_dublu(6)\nprint(rezultat)",
+        "def arata_dublu(x):\n    print(x * 2)\n\nrezultat = arata_dublu(6)\nprint(\"rezultat\")",
+        "def arata_dublu(x):\n    print(x * 2)\n\narata_dublu(6)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-none-d7d17e",
+      "text": "Care program afișează asta?",
+      "output": "25\nNone",
+      "options": [
+        "def adauga_bonus(puncte):\n    print(puncte + 5)\n\ntotal = adauga_bonus(20)\nprint(total)",
+        "def adauga_bonus(puncte):\n    return puncte + 5\n\ntotal = adauga_bonus(20)\nprint(total)",
+        "def adauga_bonus(puncte):\n    print(puncte + 5)\n\ntotal = adauga_bonus(20)\nprint(\"total\")",
+        "def adauga_bonus(puncte):\n    print(puncte + 5)\n\nadauga_bonus(20)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-none-690469",
+      "text": "Care program afișează asta?",
+      "output": "3.5\nNone",
+      "options": [
+        "def jumatate(n):\n    print(n / 2)\n\nparte = jumatate(7)\nprint(parte)",
+        "def jumatate(n):\n    return n / 2\n\nparte = jumatate(7)\nprint(parte)",
+        "def jumatate(n):\n    print(n / 2)\n\nparte = jumatate(7)\nprint(\"parte\")",
+        "def jumatate(n):\n    print(n / 2)\n\njumatate(7)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-none-bcbd66",
+      "text": "Care program afișează asta?",
+      "output": "81\nNone",
+      "options": [
+        "def patrat(latura):\n    print(latura ** 2)\n\narie = patrat(9)\nprint(arie)",
+        "def patrat(latura):\n    return latura ** 2\n\narie = patrat(9)\nprint(arie)",
+        "def patrat(latura):\n    print(latura ** 2)\n\narie = patrat(9)\nprint(\"arie\")",
+        "def patrat(latura):\n    print(latura ** 2)\n\npatrat(9)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-none-6c930b",
+      "text": "Care program afișează asta?",
+      "output": "30\nNone",
+      "options": [
+        "def consuma(combustibil):\n    print(combustibil - 10)\n\nramas = consuma(40)\nprint(ramas)",
+        "def consuma(combustibil):\n    return combustibil - 10\n\nramas = consuma(40)\nprint(ramas)",
+        "def consuma(combustibil):\n    print(combustibil - 10)\n\nramas = consuma(40)\nprint(\"ramas\")",
+        "def consuma(combustibil):\n    print(combustibil - 10)\n\nconsuma(40)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-return-e18f07",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def dublu(x):\n    ___\n\nrezultat = dublu(7)\nprint(rezultat)",
+      "output": "14",
+      "options": ["return x * 2", "print(x * 2)", "return x", "x * 2"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-return-becc54",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_bonus(puncte):\n    ___\n\ntotal = adauga_bonus(20)\nprint(total)",
+      "output": "25",
+      "options": ["return puncte + 5", "print(puncte + 5)", "return puncte", "puncte + 5"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-return-1bbaf9",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def jumatate(n):\n    ___\n\nparte = jumatate(9)\nprint(parte)",
+      "output": "4.5",
+      "options": ["return n / 2", "print(n / 2)", "return n", "n / 2"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-return-d9b46b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def patrat(latura):\n    ___\n\narie = patrat(6)\nprint(arie)",
+      "output": "36",
+      "options": ["return latura ** 2", "print(latura ** 2)", "return latura", "latura ** 2"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-return-431d0c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def pierde_viata(vieti):\n    ___\n\nramase = pierde_viata(3)\nprint(ramase)",
+      "output": "2",
+      "options": ["return vieti - 1", "print(vieti - 1)", "return vieti", "vieti - 1"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-early-2aba6e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def verifica_combustibil(combustibil):\n    if combustibil >= 20:\n        return \"OK\"\n    ___\n\nprint(verifica_combustibil(35))\nprint(verifica_combustibil(5))",
+      "output": "OK\nScazut",
+      "options": ["return \"Scazut\"", "print(\"Scazut\")", "return \"OK\"", "return"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-early-96e282",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def nota(scor):\n    if scor >= 50:\n        return \"Admis\"\n    ___\n\nprint(nota(72))\nprint(nota(31))",
+      "output": "Admis\nRespins",
+      "options": ["return \"Respins\"", "print(\"Respins\")", "return \"Admis\"", "return"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-early-a33677",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def e_cald(temp):\n    if temp > 30:\n        return \"Cald\"\n    ___\n\nprint(e_cald(33))\nprint(e_cald(21))",
+      "output": "Cald\nNu e cald",
+      "options": ["return \"Nu e cald\"", "print(\"Nu e cald\")", "return \"Cald\"", "return"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-early-2c7fbc",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def verifica_viteza(viteza):\n    if viteza > 100:\n        return \"Prea repede\"\n    ___\n\nprint(verifica_viteza(130))\nprint(verifica_viteza(90))",
+      "output": "Prea repede\nOK",
+      "options": ["return \"OK\"", "print(\"OK\")", "return \"Prea repede\"", "return"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-early-a05329",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def poate_vota(varsta):\n    if varsta >= 18:\n        return \"Da\"\n    ___\n\nprint(poate_vota(40))\nprint(poate_vota(16))",
+      "output": "Da\nNu",
+      "options": ["return \"Nu\"", "print(\"Nu\")", "return \"Da\"", "return"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-arg-0339ea",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def dublu(x):\n    return x * 2\n\nprint(dublu(___))",
+      "output": "12",
+      "options": ["6", "12", "2", "x"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-arg-c8c0d6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def plus_cinci(n):\n    return n + 5\n\nprint(plus_cinci(___))",
+      "output": "9",
+      "options": ["4", "9", "5", "n"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-arg-fa6ce0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def jumatate(n):\n    return n / 2\n\nprint(jumatate(___))",
+      "output": "5.0",
+      "options": ["10", "5.0", "2", "n"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-arg-e6edd0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def patrat(latura):\n    return latura ** 2\n\nprint(patrat(___))",
+      "output": "16",
+      "options": ["4", "16", "2", "latura"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-arg-ccb0e2",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def consuma(combustibil):\n    return combustibil - 3\n\nprint(consuma(___))",
+      "output": "7",
+      "options": ["10", "7", "3", "combustibil"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-ret-365148",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def dublu(x):\n    return ___\n\nprint(dublu(9))",
+      "output": "18",
+      "options": ["x * 2", "x", "2", "\"x * 2\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-ret-796414",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def triplu(n):\n    return ___\n\nprint(triplu(4))",
+      "output": "12",
+      "options": ["n * 3", "n", "3", "\"n * 3\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-ret-e4b2c6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def plus_zece(scor):\n    return ___\n\nprint(plus_zece(15))",
+      "output": "25",
+      "options": ["scor + 10", "scor", "10", "\"scor + 10\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-ret-43dafb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def jumatate(n):\n    return ___\n\nprint(jumatate(5))",
+      "output": "2.5",
+      "options": ["n / 2", "n", "2", "\"n / 2\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-ret-af9a0b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def pierde_viata(vieti):\n    return ___\n\nprint(pierde_viata(7))",
+      "output": "6",
+      "options": ["vieti - 1", "vieti", "1", "\"vieti - 1\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-print-8ed40f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def aduna(a, b):\n    print(a + b)\n\ntotal = aduna(4, 5)\nprint(total * 2)",
+      "output": "18",
+      "options": ["print(a + b)", "def aduna(a, b):", "total = aduna(4, 5)", "print(total * 2)"],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-print-2932cb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def inmulteste(a, b):\n    print(a * b)\n\nprodus = inmulteste(3, 8)\nprint(produs * 2)",
+      "output": "48",
+      "options": [
+        "print(a * b)",
+        "def inmulteste(a, b):",
+        "produs = inmulteste(3, 8)",
+        "print(produs * 2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-print-768f3a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def scade(a, b):\n    print(a - b)\n\nramas = scade(20, 6)\nprint(ramas * 2)",
+      "output": "28",
+      "options": ["print(a - b)", "def scade(a, b):", "ramas = scade(20, 6)", "print(ramas * 2)"],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-call-85080b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def verifica_combustibil(combustibil):\n    if combustibil >= 20:\n        return \"OK\"\n    return \"Scazut\"\n\nprint(verifica_combustibil(50))\nverifica_combustibil(35)",
+      "output": "OK\nOK",
+      "options": [
+        "verifica_combustibil(35)",
+        "print(verifica_combustibil(50))",
+        "return \"Scazut\"",
+        "return \"OK\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-call-4a6323",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def e_cald(temp):\n    if temp > 30:\n        return \"Cald\"\n    return \"Nu e cald\"\n\nprint(e_cald(12))\ne_cald(18)",
+      "output": "Nu e cald\nNu e cald",
+      "options": ["e_cald(18)", "print(e_cald(12))", "return \"Nu e cald\"", "return \"Cald\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-call-9e8425",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def nota(scor):\n    if scor >= 50:\n        return \"Admis\"\n    return \"Respins\"\n\nprint(nota(90))\nnota(64)",
+      "output": "Admis\nAdmis",
+      "options": ["nota(64)", "print(nota(90))", "return \"Respins\"", "return \"Admis\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-args-b9aad1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def scade(a):\n    return a - b\n\nprint(scade(9, 4))\nprint(scade(4, 9))",
+      "output": "5\n-5",
+      "options": ["def scade(a):", "return a - b", "print(scade(9, 4))", "print(scade(4, 9))"],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-args-a16302",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def imparte(a):\n    return a / b\n\nprint(imparte(12, 3))\nprint(imparte(3, 12))",
+      "output": "4.0\n0.25",
+      "options": [
+        "def imparte(a):",
+        "return a / b",
+        "print(imparte(12, 3))",
+        "print(imparte(3, 12))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-args-8caa67",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def putere(a):\n    return a ** b\n\nprint(putere(2, 3))\nprint(putere(3, 2))",
+      "output": "8\n9",
+      "options": ["def putere(a):", "return a ** b", "print(putere(2, 3))", "print(putere(3, 2))"],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-ret-0d957b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def dublu(x):\n    dublat = x * 2\n    print(\"Primit:\", x)\n    return x\n\nprint(dublu(6))",
+      "output": "Primit: 6\n12",
+      "options": ["return x", "print(\"Primit:\", x)", "dublat = x * 2", "def dublu(x):"],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-ret-96c628",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_taxa(pret):\n    total = pret + 5\n    print(\"Primit:\", pret)\n    return pret\n\nprint(adauga_taxa(20))",
+      "output": "Primit: 20\n25",
+      "options": [
+        "return pret",
+        "print(\"Primit:\", pret)",
+        "total = pret + 5",
+        "print(adauga_taxa(20))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-ret-2fc8d1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def jumatate(n):\n    parte = n / 2\n    print(\"Primit:\", n)\n    return n\n\nprint(jumatate(9))",
+      "output": "Primit: 9\n4.5",
+      "options": ["return n", "print(\"Primit:\", n)", "parte = n / 2", "print(jumatate(9))"],
+      "answer": 0
+    }
+  ]
+}

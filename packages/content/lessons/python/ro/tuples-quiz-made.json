@@ -1,0 +1,697 @@
+{
+  "note": "Made by npm run make:quiz from the templates in tuples-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "tp-index-8a826d",
+      "text": "Ce afișează?",
+      "code": "jucator = (\"Tommy\", 100, \"Vice City\")\nprint(jucator[2])",
+      "options": ["Vice City", "('Tommy', 100, 'Vice City')", "3", "Tommy"],
+      "answer": 0
+    },
+    {
+      "id": "tp-index-87f73b",
+      "text": "Ce afișează?",
+      "code": "data = (1986, 5, 30)\nprint(data[1])",
+      "options": ["5", "(1986, 5, 30)", "30", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-index-b8d6e3",
+      "text": "Ce afișează?",
+      "code": "nava = (\"Nova\", \"rosu\", 4, 90)\nprint(nava[0])",
+      "options": ["Nova", "('Nova', 'rosu', 4, 90)", "rosu", "4"],
+      "answer": 0
+    },
+    {
+      "id": "tp-index-0c67b2",
+      "text": "Ce afișează?",
+      "code": "culori = (\"roz\", \"turcoaz\", \"auriu\")\nprint(culori[1])",
+      "options": ["turcoaz", "('roz', 'turcoaz', 'auriu')", "auriu", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-unpack-4ffdb8",
+      "text": "Ce afișează?",
+      "code": "jucator = (\"Tommy\", 100, \"Vice City\")\nnume, viata, oras = jucator\nprint(viata)",
+      "options": ["100", "Tommy", "('Tommy', 100, 'Vice City')", "Vice City"],
+      "answer": 0
+    },
+    {
+      "id": "tp-unpack-f7a09b",
+      "text": "Ce afișează?",
+      "code": "lansare = (2002, 10, 29)\nan, luna, zi = lansare\nprint(luna)",
+      "options": ["10", "2002", "(2002, 10, 29)", "29"],
+      "answer": 0
+    },
+    {
+      "id": "tp-unpack-42924b",
+      "text": "Ce afișează?",
+      "code": "masina = (\"Infernus\", \"alba\", 240)\nmodel, culoare, viteza = masina\nprint(culoare)",
+      "options": ["alba", "Infernus", "('Infernus', 'alba', 240)", "240"],
+      "answer": 0
+    },
+    {
+      "id": "tp-unpack-16711a",
+      "text": "Ce afișează?",
+      "code": "stea = (\"Vega\", 25, 5)\nnume, distanta, planete = stea\nprint(distanta)",
+      "options": ["25", "Vega", "('Vega', 25, 5)", "5"],
+      "answer": 0
+    },
+    {
+      "id": "tp-unpack-cf7ecc",
+      "text": "Ce afișează?",
+      "code": "punct = (3, 8, 1)\nx, y, z = punct\nprint(y)",
+      "options": ["8", "3", "(3, 8, 1)", "1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-loop-9cf816",
+      "text": "Ce afișează?",
+      "code": "eroi = (\"Shrek\", \"Fiona\", \"Donkey\")\nfor erou in eroi:\n    print(erou)",
+      "options": [
+        "Shrek\nFiona\nDonkey",
+        "('Shrek', 'Fiona', 'Donkey')\n('Shrek', 'Fiona', 'Donkey')\n('Shrek', 'Fiona', 'Donkey')",
+        "3\n3\n3",
+        "Shrek\nShrek\nShrek"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-loop-47077f",
+      "text": "Ce afișează?",
+      "code": "zile = (\"Lu\", \"Ma\", \"Mi\", \"Jo\")\nfor zi in zile:\n    print(zi)",
+      "options": [
+        "Lu\nMa\nMi\nJo",
+        "('Lu', 'Ma', 'Mi', 'Jo')\n('Lu', 'Ma', 'Mi', 'Jo')\n('Lu', 'Ma', 'Mi', 'Jo')\n('Lu', 'Ma', 'Mi', 'Jo')",
+        "4\n4\n4\n4",
+        "Lu\nLu\nLu\nLu"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-loop-c459a9",
+      "text": "Ce afișează?",
+      "code": "niveluri = (5, 10, 15)\nfor nivel in niveluri:\n    print(nivel)",
+      "options": ["5\n10\n15", "(5, 10, 15)\n(5, 10, 15)\n(5, 10, 15)", "3\n3\n3", "5\n5\n5"],
+      "answer": 0
+    },
+    {
+      "id": "tp-loop-c4c876",
+      "text": "Ce afișează?",
+      "code": "echipaj = (\"Tommy\", \"Lance\")\nfor nume in echipaj:\n    print(nume)",
+      "options": ["Tommy\nLance", "('Tommy', 'Lance')\n('Tommy', 'Lance')", "2\n2", "Tommy\nTommy"],
+      "answer": 0
+    },
+    {
+      "id": "tp-sum-565c0e",
+      "text": "Ce afișează?",
+      "code": "preturi = (4, 6, 5)\nplata = 0\nfor p in preturi:\n    plata = plata + p\nprint(plata)",
+      "options": ["15", "5", "3", "4\n10\n15"],
+      "answer": 0
+    },
+    {
+      "id": "tp-sum-73a5d7",
+      "text": "Ce afișează?",
+      "code": "scoruri = (7, 3, 9, 1)\ntotal = 0\nfor s in scoruri:\n    total = total + s\nprint(total)",
+      "options": ["20", "1", "4", "7\n10\n19\n20"],
+      "answer": 0
+    },
+    {
+      "id": "tp-sum-a9c32e",
+      "text": "Ce afișează?",
+      "code": "pasi = (1200, 800)\nparcurs = 0\nfor p in pasi:\n    parcurs = parcurs + p\nprint(parcurs)",
+      "options": ["2000", "800", "2", "1200\n2000"],
+      "answer": 0
+    },
+    {
+      "id": "tp-sum-e53784",
+      "text": "Ce afișează?",
+      "code": "vieti = (3, 3, 2)\ntotal = 0\nfor n in vieti:\n    total = total + n\nprint(total)",
+      "options": ["8", "2", "3", "3\n6\n8"],
+      "answer": 0
+    },
+    {
+      "id": "tp-chart-77caff",
+      "text": "Ce afișează?",
+      "code": "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor sistem in sisteme:\n    nume, planete = sistem\n    print(f\"{nume}: {planete} planete\")",
+      "options": [
+        "Sol: 8 planete\nAlpha: 3 planete\nVega: 5 planete",
+        "8: Sol planete\n3: Alpha planete\n5: Vega planete",
+        "{nume}: {planete} planete\n{nume}: {planete} planete\n{nume}: {planete} planete",
+        "Vega: 5 planete"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-chart-2e26d1",
+      "text": "Ce afișează?",
+      "code": "echipaj = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor membru in echipaj:\n    nume, varsta = membru\n    print(f\"{nume} are {varsta} de ani\")",
+      "options": [
+        "Tommy are 35 de ani\nLance are 30 de ani",
+        "35 are Tommy de ani\n30 are Lance de ani",
+        "{nume} are {varsta} de ani\n{nume} are {varsta} de ani",
+        "Lance are 30 de ani"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-chart-6d30e2",
+      "text": "Ce afișează?",
+      "code": "masini = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor masina in masini:\n    model, viteza = masina\n    print(f\"{model} - {viteza} km/h\")",
+      "options": [
+        "Cheetah - 230 km/h\nSabre - 180 km/h\nStinger - 210 km/h",
+        "230 - Cheetah km/h\n180 - Sabre km/h\n210 - Stinger km/h",
+        "{model} - {viteza} km/h\n{model} - {viteza} km/h\n{model} - {viteza} km/h",
+        "Stinger - 210 km/h"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-chart-6f5f6c",
+      "text": "Ce afișează?",
+      "code": "animale = [(\"Rex\", 4), (\"Polly\", 2)]\nfor animal in animale:\n    nume, picioare = animal\n    print(f\"{nume} are {picioare} picioare\")",
+      "options": [
+        "Rex are 4 picioare\nPolly are 2 picioare",
+        "4 are Rex picioare\n2 are Polly picioare",
+        "{nume} are {picioare} picioare\n{nume} are {picioare} picioare",
+        "Polly are 2 picioare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-total-871538",
+      "text": "Ce afișează?",
+      "code": "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\ntotal = 0\nfor sistem in sisteme:\n    nume, planete = sistem\n    total = total + planete\nprint(f\"Total planete: {total}\")",
+      "options": [
+        "Total planete: 16",
+        "Total planete: 5",
+        "Total planete: 3",
+        "Total planete: 8\nTotal planete: 11\nTotal planete: 16"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-total-f1b987",
+      "text": "Ce afișează?",
+      "code": "cos = [(\"paine\", 3), (\"lapte\", 2), (\"branza\", 10)]\nplata = 0\nfor produs in cos:\n    nume, pret = produs\n    plata = plata + pret\nprint(f\"De plata: {plata}\")",
+      "options": [
+        "De plata: 15",
+        "De plata: 10",
+        "De plata: 3",
+        "De plata: 3\nDe plata: 5\nDe plata: 15"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-total-6f434b",
+      "text": "Ce afișează?",
+      "code": "alergari = [(\"luni\", 5), (\"miercuri\", 7)]\ndistanta = 0\nfor alergare in alergari:\n    zi, km = alergare\n    distanta = distanta + km\nprint(f\"Km: {distanta}\")",
+      "options": ["Km: 12", "Km: 7", "Km: 2", "Km: 5\nKm: 12"],
+      "answer": 0
+    },
+    {
+      "id": "tp-total-7c4e71",
+      "text": "Ce afișează?",
+      "code": "echipaj = [(\"Tommy\", 40), (\"Lance\", 25), (\"Mia\", 30), (\"Ken\", 5)]\npuncte = 0\nfor membru in echipaj:\n    nume, scor = membru\n    puncte = puncte + scor\nprint(f\"Puncte: {puncte}\")",
+      "options": [
+        "Puncte: 100",
+        "Puncte: 5",
+        "Puncte: 4",
+        "Puncte: 40\nPuncte: 65\nPuncte: 95\nPuncte: 100"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-nested-0e3adb",
+      "text": "Ce afișează?",
+      "code": "sisteme = [(\"Sol\", 0, 8), (\"Alpha\", 4, 3), (\"Vega\", 25, 5)]\nprint(sisteme[1][2])",
+      "options": ["3", "('Alpha', 4, 3)", "25", "Alpha"],
+      "answer": 0
+    },
+    {
+      "id": "tp-nested-320eb7",
+      "text": "Ce afișează?",
+      "code": "echipaj = [(\"Tommy\", 35), (\"Lance\", 30), (\"Mia\", 22)]\nprint(echipaj[2][0])",
+      "options": ["Mia", "('Mia', 22)", "Tommy", "22"],
+      "answer": 0
+    },
+    {
+      "id": "tp-nested-ac6865",
+      "text": "Ce afișează?",
+      "code": "masini = [(\"Cheetah\", 230), (\"Sabre\", 180)]\nprint(masini[0][1])",
+      "options": ["230", "('Cheetah', 230)", "Sabre", "Cheetah"],
+      "answer": 0
+    },
+    {
+      "id": "tp-nested-cd44bb",
+      "text": "Ce afișează?",
+      "code": "puncte = [(3, 8), (6, 1), (9, 4)]\nprint(puncte[2][1])",
+      "options": ["4", "(9, 4)", "9", "8"],
+      "answer": 0
+    },
+    {
+      "id": "tp-nested-d92b53",
+      "text": "Ce afișează?",
+      "code": "zboruri = [(\"Roma\", \"Oslo\", 3), (\"Paris\", \"Riga\", 4)]\nprint(zboruri[1][1])",
+      "options": ["Riga", "('Paris', 'Riga', 4)", "Paris", "Oslo"],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-unpack-62c160",
+      "text": "Care program afișează asta?",
+      "output": "Tommy\n100",
+      "options": [
+        "jucator = (\"Tommy\", 100, \"Vice City\")\nnume, viata, oras = jucator\nprint(nume)\nprint(viata)",
+        "jucator = (\"Tommy\", 100, \"Vice City\")\nviata, nume, oras = jucator\nprint(nume)\nprint(viata)",
+        "jucator = (\"Tommy\", 100, \"Vice City\")\nnume, viata, oras = jucator\nprint(nume)\nprint(oras)",
+        "jucator = (\"Tommy\", 100, \"Vice City\")\nnume, viata, oras = jucator\nprint(jucator)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-unpack-662765",
+      "text": "Care program afișează asta?",
+      "output": "1951\n7",
+      "options": [
+        "zi_de_nastere = (1951, 7, 15)\nan, luna, zi = zi_de_nastere\nprint(an)\nprint(luna)",
+        "zi_de_nastere = (1951, 7, 15)\nluna, an, zi = zi_de_nastere\nprint(an)\nprint(luna)",
+        "zi_de_nastere = (1951, 7, 15)\nan, luna, zi = zi_de_nastere\nprint(an)\nprint(zi)",
+        "zi_de_nastere = (1951, 7, 15)\nan, luna, zi = zi_de_nastere\nprint(zi_de_nastere)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-unpack-7c6a4c",
+      "text": "Care program afișează asta?",
+      "output": "Vega\n25",
+      "options": [
+        "stea = (\"Vega\", 25, 5)\nnume, distanta, planete = stea\nprint(nume)\nprint(distanta)",
+        "stea = (\"Vega\", 25, 5)\ndistanta, nume, planete = stea\nprint(nume)\nprint(distanta)",
+        "stea = (\"Vega\", 25, 5)\nnume, distanta, planete = stea\nprint(nume)\nprint(planete)",
+        "stea = (\"Vega\", 25, 5)\nnume, distanta, planete = stea\nprint(stea)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-unpack-246851",
+      "text": "Care program afișează asta?",
+      "output": "Infernus\nalba",
+      "options": [
+        "masina = (\"Infernus\", \"alba\", 240)\nmodel, culoare, viteza = masina\nprint(model)\nprint(culoare)",
+        "masina = (\"Infernus\", \"alba\", 240)\nculoare, model, viteza = masina\nprint(model)\nprint(culoare)",
+        "masina = (\"Infernus\", \"alba\", 240)\nmodel, culoare, viteza = masina\nprint(model)\nprint(viteza)",
+        "masina = (\"Infernus\", \"alba\", 240)\nmodel, culoare, viteza = masina\nprint(masina)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-loop-c1dc0f",
+      "text": "Care program afișează asta?",
+      "output": "Sol\nAlpha\nVega",
+      "options": [
+        "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor sistem in sisteme:\n    nume, planete = sistem\n    print(nume)",
+        "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor sistem in sisteme:\n    nume, planete = sistem\n    print(planete)",
+        "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor sistem in sisteme:\n    nume, planete = sistem\n    print(sistem)",
+        "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor sistem in sisteme:\n    nume, planete = sistem\nprint(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-loop-1fc428",
+      "text": "Care program afișează asta?",
+      "output": "Tommy\nLance",
+      "options": [
+        "echipaj = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor membru in echipaj:\n    nume, varsta = membru\n    print(nume)",
+        "echipaj = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor membru in echipaj:\n    nume, varsta = membru\n    print(varsta)",
+        "echipaj = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor membru in echipaj:\n    nume, varsta = membru\n    print(membru)",
+        "echipaj = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor membru in echipaj:\n    nume, varsta = membru\nprint(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-loop-bde51b",
+      "text": "Care program afișează asta?",
+      "output": "Cheetah\nSabre\nStinger",
+      "options": [
+        "masini = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor masina in masini:\n    model, viteza = masina\n    print(model)",
+        "masini = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor masina in masini:\n    model, viteza = masina\n    print(viteza)",
+        "masini = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor masina in masini:\n    model, viteza = masina\n    print(masina)",
+        "masini = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor masina in masini:\n    model, viteza = masina\nprint(model)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-loop-d9d103",
+      "text": "Care program afișează asta?",
+      "output": "Rex\nPolly",
+      "options": [
+        "animale = [(\"Rex\", 4), (\"Polly\", 2)]\nfor animal in animale:\n    nume, picioare = animal\n    print(nume)",
+        "animale = [(\"Rex\", 4), (\"Polly\", 2)]\nfor animal in animale:\n    nume, picioare = animal\n    print(picioare)",
+        "animale = [(\"Rex\", 4), (\"Polly\", 2)]\nfor animal in animale:\n    nume, picioare = animal\n    print(animal)",
+        "animale = [(\"Rex\", 4), (\"Polly\", 2)]\nfor animal in animale:\n    nume, picioare = animal\nprint(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-unpack-12db72",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "punct = (3, 8)\n___\nprint(x)\nprint(y)",
+      "output": "3\n8",
+      "options": ["x, y = punct", "y, x = punct", "x = punct", "punct = x, y"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-unpack-92a3fb",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "jucator = (\"Tommy\", 100)\n___\nprint(nume)\nprint(viata)",
+      "output": "Tommy\n100",
+      "options": [
+        "nume, viata = jucator",
+        "viata, nume = jucator",
+        "nume = jucator",
+        "jucator = nume, viata"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-unpack-dcecf5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "drum = (\"Roma\", \"Oslo\")\n___\nprint(plecare)\nprint(sosire)",
+      "output": "Roma\nOslo",
+      "options": [
+        "plecare, sosire = drum",
+        "sosire, plecare = drum",
+        "plecare = drum",
+        "drum = plecare, sosire"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-unpack-1eee62",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = (\"Lance\", 95)\n___\nprint(nume)\nprint(puncte)",
+      "output": "Lance\n95",
+      "options": [
+        "nume, puncte = scor",
+        "puncte, nume = scor",
+        "nume = scor",
+        "scor = nume, puncte"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-add-5cf08e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = (4, 6, 5)\nplata = 0\nfor p in preturi:\n    ___\nprint(plata)",
+      "output": "15",
+      "options": ["plata = plata + p", "plata = p", "plata = plata + 1", "p = plata + p"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-add-e29ecc",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = (7, 3, 9, 1)\ntotal = 0\nfor s in scoruri:\n    ___\nprint(total)",
+      "output": "20",
+      "options": ["total = total + s", "total = s", "total = total + 1", "s = total + s"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-add-0865d4",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "ture = (12, 15)\ntimp = 0\nfor tura in ture:\n    ___\nprint(timp)",
+      "output": "27",
+      "options": ["timp = timp + tura", "timp = tura", "timp = timp + 1", "tura = timp + tura"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-add-36aa49",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "lazi = (2, 5, 8)\ngreutate = 0\nfor l in lazi:\n    ___\nprint(greutate)",
+      "output": "15",
+      "options": [
+        "greutate = greutate + l",
+        "greutate = l",
+        "greutate = greutate + 1",
+        "l = greutate + l"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-loop-24ebd6",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor sistem in sisteme:\n    ___\n    print(f\"{nume}: {planete} planete\")",
+      "output": "Sol: 8 planete\nAlpha: 3 planete\nVega: 5 planete",
+      "options": [
+        "nume, planete = sistem",
+        "planete, nume = sistem",
+        "nume = sistem",
+        "sistem = nume, planete"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-loop-ce5ddf",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor membru in echipaj:\n    ___\n    print(f\"{nume} are {varsta} de ani\")",
+      "output": "Tommy are 35 de ani\nLance are 30 de ani",
+      "options": [
+        "nume, varsta = membru",
+        "varsta, nume = membru",
+        "nume = membru",
+        "membru = nume, varsta"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-loop-dbf9a2",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "masini = [(\"Cheetah\", 230), (\"Sabre\", 180)]\nfor masina in masini:\n    ___\n    print(f\"{model} - {viteza} km/h\")",
+      "output": "Cheetah - 230 km/h\nSabre - 180 km/h",
+      "options": [
+        "model, viteza = masina",
+        "viteza, model = masina",
+        "model = masina",
+        "masina = model, viteza"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-loop-e6255c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "animale = [(\"Rex\", 4), (\"Polly\", 2), (\"Nemo\", 0)]\nfor animal in animale:\n    ___\n    print(f\"{nume} are {picioare} picioare\")",
+      "output": "Rex are 4 picioare\nPolly are 2 picioare\nNemo are 0 picioare",
+      "options": [
+        "nume, picioare = animal",
+        "picioare, nume = animal",
+        "nume = animal",
+        "animal = nume, picioare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-index-60d916",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "jucator = (\"Tommy\", 100, \"Vice City\")\nprint(jucator[___])",
+      "output": "Vice City",
+      "options": ["2", "0", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-index-0e92a4",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "zi_de_nastere = (1951, 7, 15)\nprint(zi_de_nastere[___])",
+      "output": "7",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-index-5d0aa9",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "culori = (\"roz\", \"turcoaz\", \"auriu\", \"bleumarin\")\nprint(culori[___])",
+      "output": "bleumarin",
+      "options": ["3", "0", "1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-index-7a6641",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "eroi = (\"Shrek\", \"Fiona\", \"Donkey\")\nprint(eroi[___])",
+      "output": "Shrek",
+      "options": ["0", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-range-e29ed4",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "eroi = (\"Shrek\", \"Fiona\", \"Donkey\")\nfor i in range(___):\n    print(eroi[i])",
+      "output": "Shrek\nFiona\nDonkey",
+      "options": ["len(eroi)", "len(eroi) - 1", "len(eroi) + 1", "eroi"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-range-8ec0cc",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "niveluri = (5, 10, 15, 20)\nfor i in range(___):\n    print(niveluri[i])",
+      "output": "5\n10\n15\n20",
+      "options": ["len(niveluri)", "len(niveluri) - 1", "len(niveluri) + 1", "niveluri"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-range-3bfeb5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = (\"Tommy\", \"Lance\")\nfor i in range(___):\n    print(echipaj[i])",
+      "output": "Tommy\nLance",
+      "options": ["len(echipaj)", "len(echipaj) - 1", "len(echipaj) + 1", "echipaj"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-range-b7fa6c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "zile = (\"Lu\", \"Ma\", \"Mi\", \"Jo\", \"Vi\")\nfor i in range(___):\n    print(zile[i])",
+      "output": "Lu\nMa\nMi\nJo\nVi",
+      "options": ["len(zile)", "len(zile) - 1", "len(zile) + 1", "zile"],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-unpack-700dc0",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jucator = (\"Tommy\", 100, \"Vice City\")\nnume, viata = jucator\nprint(nume)\nprint(viata)\nprint(oras)",
+      "output": "Tommy\n100\nVice City",
+      "options": [
+        "nume, viata = jucator",
+        "jucator = (\"Tommy\", 100, \"Vice City\")",
+        "print(nume)",
+        "print(viata)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-unpack-80f9b4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "zi_de_nastere = (1951, 7, 15)\nan, luna = zi_de_nastere\nprint(an)\nprint(luna)\nprint(zi)",
+      "output": "1951\n7\n15",
+      "options": [
+        "an, luna = zi_de_nastere",
+        "zi_de_nastere = (1951, 7, 15)",
+        "print(an)",
+        "print(luna)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-unpack-353a3d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "stea = (\"Vega\", 25, 5)\nnume, distanta = stea\nprint(nume)\nprint(distanta)\nprint(planete)",
+      "output": "Vega\n25\n5",
+      "options": [
+        "nume, distanta = stea",
+        "stea = (\"Vega\", 25, 5)",
+        "print(nume)",
+        "print(distanta)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-indent-b457e3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor sistem in sisteme:\n    nume, planete = sistem\nprint(f\"{nume}: {planete} planete\")",
+      "output": "Sol: 8 planete\nAlpha: 3 planete\nVega: 5 planete",
+      "options": [
+        "print(f\"{nume}: {planete} planete\")",
+        "nume, planete = sistem",
+        "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]",
+        "for sistem in sisteme:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-indent-cd56a9",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor membru in echipaj:\n    nume, varsta = membru\nprint(f\"{nume} are {varsta} de ani\")",
+      "output": "Tommy are 35 de ani\nLance are 30 de ani",
+      "options": [
+        "print(f\"{nume} are {varsta} de ani\")",
+        "nume, varsta = membru",
+        "echipaj = [(\"Tommy\", 35), (\"Lance\", 30)]",
+        "for membru in echipaj:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-indent-c7be8a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "masini = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor masina in masini:\n    model, viteza = masina\nprint(f\"{model} - {viteza} km/h\")",
+      "output": "Cheetah - 230 km/h\nSabre - 180 km/h\nStinger - 210 km/h",
+      "options": [
+        "print(f\"{model} - {viteza} km/h\")",
+        "model, viteza = masina",
+        "masini = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]",
+        "for masina in masini:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-start-5e23a5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "plata = 1\npreturi = (4, 6, 5)\nfor p in preturi:\n    print(p)\n    plata = plata + p\nprint(f\"De plata: {plata}\")",
+      "output": "4\n6\n5\nDe plata: 15",
+      "options": ["plata = 1", "preturi = (4, 6, 5)", "print(p)", "plata = plata + p"],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-start-7fc48f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 1\nscoruri = (7, 3, 9)\nfor s in scoruri:\n    print(s)\n    total = total + s\nprint(f\"Total: {total}\")",
+      "output": "7\n3\n9\nTotal: 19",
+      "options": ["total = 1", "scoruri = (7, 3, 9)", "print(s)", "total = total + s"],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-start-186096",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "timp = 1\nture = (12, 15)\nfor tura in ture:\n    print(tura)\n    timp = timp + tura\nprint(f\"Timp: {timp}\")",
+      "output": "12\n15\nTimp: 27",
+      "options": ["timp = 1", "ture = (12, 15)", "print(tura)", "timp = timp + tura"],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-index-374aea",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jucator = (\"Tommy\", 100, \"Vice City\")\nprint(jucator)\nprint(jucator[2])\nprint(len(jucator))",
+      "output": "('Tommy', 100, 'Vice City')\n100\n3",
+      "options": [
+        "print(jucator[2])",
+        "print(jucator)",
+        "jucator = (\"Tommy\", 100, \"Vice City\")",
+        "print(len(jucator))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-index-e72641",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "zi_de_nastere = (1951, 7, 15)\nprint(zi_de_nastere)\nprint(zi_de_nastere[1])\nprint(len(zi_de_nastere))",
+      "output": "(1951, 7, 15)\n1951\n3",
+      "options": [
+        "print(zi_de_nastere[1])",
+        "print(zi_de_nastere)",
+        "zi_de_nastere = (1951, 7, 15)",
+        "print(len(zi_de_nastere))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-index-54345a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "eroi = (\"Shrek\", \"Fiona\", \"Donkey\")\nprint(eroi)\nprint(eroi[3])\nprint(len(eroi))",
+      "output": "('Shrek', 'Fiona', 'Donkey')\nDonkey\n3",
+      "options": [
+        "print(eroi[3])",
+        "print(eroi)",
+        "eroi = (\"Shrek\", \"Fiona\", \"Donkey\")",
+        "print(len(eroi))"
+      ],
+      "answer": 0
+    }
+  ]
+}

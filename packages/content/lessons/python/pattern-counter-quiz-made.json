@@ -1,0 +1,646 @@
+{
+  "note": "Made by npm run make:quiz from the templates in pattern-counter-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "pc-even-c9c249",
+      "text": "What does this print?",
+      "code": "numbers = [3, 8, 12, 5, 6]\ncount = 0\nfor n in numbers:\n    if n % 2 == 0:\n        count += 1\nprint(f\"Even: {count}\")",
+      "options": ["Even: 3", "Even: 2", "Even: 26", "Even: 4"],
+      "answer": 0
+    },
+    {
+      "id": "pc-even-3e467e",
+      "text": "What does this print?",
+      "code": "scores = [10, 7, 4, 9]\ncount = 0\nfor n in scores:\n    if n % 2 == 0:\n        count += 1\nprint(f\"Even: {count}\")",
+      "options": ["Even: 2", "Even: 14", "Even: 3", "Even: 1\nEven: 1\nEven: 2\nEven: 2"],
+      "answer": 0
+    },
+    {
+      "id": "pc-even-7f6f3f",
+      "text": "What does this print?",
+      "code": "ages = [21, 34, 18, 40, 15, 22]\ncount = 0\nfor n in ages:\n    if n % 2 == 0:\n        count += 1\nprint(f\"Even: {count}\")",
+      "options": ["Even: 4", "Even: 2", "Even: 114", "Even: 5"],
+      "answer": 0
+    },
+    {
+      "id": "pc-even-40afe3",
+      "text": "What does this print?",
+      "code": "levels = [1, 3, 5, 2]\ncount = 0\nfor n in levels:\n    if n % 2 == 0:\n        count += 1\nprint(f\"Even: {count}\")",
+      "options": ["Even: 1", "Even: 3", "Even: 2", "Even: 0\nEven: 0\nEven: 0\nEven: 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-above-1d9a5e",
+      "text": "What does this print?",
+      "code": "readings = [42, 75, 100, 30, 88]\nabove = 0\nfor r in readings:\n    if r > 75:\n        above += 1\nprint(above)",
+      "options": ["2", "3", "1", "188"],
+      "answer": 0
+    },
+    {
+      "id": "pc-above-ff074e",
+      "text": "What does this print?",
+      "code": "temps = [12, 30, 25, 30, 8]\nabove = 0\nfor r in temps:\n    if r > 25:\n        above += 1\nprint(above)",
+      "options": ["2", "3", "1", "60"],
+      "answer": 0
+    },
+    {
+      "id": "pc-above-c47657",
+      "text": "What does this print?",
+      "code": "fuel = [5, 50, 20, 15, 35]\nabove = 0\nfor r in fuel:\n    if r > 15:\n        above += 1\nprint(above)",
+      "options": ["3", "4", "1", "105"],
+      "answer": 0
+    },
+    {
+      "id": "pc-upper-25d747",
+      "text": "What does this print?",
+      "code": "name = \"Tommy Vercetti\"\nupper = 0\nfor char in name:\n    if char.isupper():\n        upper += 1\nprint(f\"Uppercase: {upper}\")",
+      "options": ["Uppercase: 2", "Uppercase: 11", "Uppercase: 13", "Uppercase: 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-upper-fd6e6d",
+      "text": "What does this print?",
+      "code": "code = \"NASA Base 7\"\nupper = 0\nfor char in code:\n    if char.isupper():\n        upper += 1\nprint(f\"Uppercase: {upper}\")",
+      "options": ["Uppercase: 5", "Uppercase: 3", "Uppercase: 8", "Uppercase: 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-upper-a4b7ce",
+      "text": "What does this print?",
+      "code": "ship = \"USS Orbit\"\nupper = 0\nfor char in ship:\n    if char.isupper():\n        upper += 1\nprint(f\"Uppercase: {upper}\")",
+      "options": [
+        "Uppercase: 4",
+        "Uppercase: 8",
+        "Uppercase: 1",
+        "Uppercase: 1\nUppercase: 2\nUppercase: 3\nUppercase: 3\nUppercase: 4\nUppercase: 4\nUppercase: 4\nUppercase: 4\nUppercase: 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-digits-b2cf56",
+      "text": "What does this print?",
+      "code": "code = \"R2D2\"\ndigits = 0\nfor char in code:\n    if char.isdigit():\n        digits += 1\nprint(digits)",
+      "options": ["2", "1", "3", "0\n1\n1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "pc-digits-a81e02",
+      "text": "What does this print?",
+      "code": "code = \"Agent 47\"\ndigits = 0\nfor char in code:\n    if char.isdigit():\n        digits += 1\nprint(digits)",
+      "options": ["2", "5", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "pc-digits-5f9d0a",
+      "text": "What does this print?",
+      "code": "code = \"X1Y22Z\"\ndigits = 0\nfor char in code:\n    if char.isdigit():\n        digits += 1\nprint(digits)",
+      "options": ["3", "1", "4", "0\n1\n1\n2\n3\n3"],
+      "answer": 0
+    },
+    {
+      "id": "pc-multi-9b307a",
+      "text": "What does this print?",
+      "code": "text = \"Vice City 86\"\nletters = 0\ndigits = 0\nspaces = 0\nfor char in text:\n    if char.isalpha():\n        letters += 1\n    elif char.isdigit():\n        digits += 1\n    elif char == \" \":\n        spaces += 1\nprint(f\"Letters: {letters}, Digits: {digits}, Spaces: {spaces}\")",
+      "options": [
+        "Letters: 8, Digits: 2, Spaces: 2",
+        "Letters: 10, Digits: 0, Spaces: 2",
+        "Letters: 8, Digits: 2, Spaces: 0",
+        "Letters: 8, Digits: 2, Spaces: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-multi-778c5b",
+      "text": "What does this print?",
+      "code": "text = \"Room 101\"\nletters = 0\ndigits = 0\nspaces = 0\nfor char in text:\n    if char.isalpha():\n        letters += 1\n    elif char.isdigit():\n        digits += 1\n    elif char == \" \":\n        spaces += 1\nprint(f\"Letters: {letters}, Digits: {digits}, Spaces: {spaces}\")",
+      "options": [
+        "Letters: 4, Digits: 3, Spaces: 1",
+        "Letters: 7, Digits: 0, Spaces: 1",
+        "Letters: 4, Digits: 3, Spaces: 0",
+        "Letters: 5, Digits: 3, Spaces: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-multi-53fabc",
+      "text": "What does this print?",
+      "code": "text = \"Gate 3 at 9 PM\"\nletters = 0\ndigits = 0\nspaces = 0\nfor char in text:\n    if char.isalpha():\n        letters += 1\n    elif char.isdigit():\n        digits += 1\n    elif char == \" \":\n        spaces += 1\nprint(f\"Letters: {letters}, Digits: {digits}, Spaces: {spaces}\")",
+      "options": [
+        "Letters: 8, Digits: 2, Spaces: 4",
+        "Letters: 10, Digits: 0, Spaces: 4",
+        "Letters: 8, Digits: 2, Spaces: 0",
+        "Letters: 8, Digits: 2, Spaces: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bands-d576a8",
+      "text": "What does this print?",
+      "code": "readings = [42, 75, 100, 30, 88, 120]\nlow = 0\nmid = 0\nhigh = 0\nfor r in readings:\n    if r < 50:\n        low += 1\n    elif r < 100:\n        mid += 1\n    else:\n        high += 1\nprint(f\"Low: {low}\")\nprint(f\"Mid: {mid}\")\nprint(f\"High: {high}\")",
+      "options": [
+        "Low: 2\nMid: 2\nHigh: 2",
+        "Low: 2\nMid: 3\nHigh: 1",
+        "Low: 2\nMid: 0\nHigh: 4",
+        "Low: 2\nMid: 2\nHigh: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bands-a67ab2",
+      "text": "What does this print?",
+      "code": "levels = [50, 99, 100, 49, 130, 140, 160]\nlow = 0\nmid = 0\nhigh = 0\nfor r in levels:\n    if r < 50:\n        low += 1\n    elif r < 100:\n        mid += 1\n    else:\n        high += 1\nprint(f\"Low: {low}\")\nprint(f\"Mid: {mid}\")\nprint(f\"High: {high}\")",
+      "options": [
+        "Low: 1\nMid: 2\nHigh: 4",
+        "Low: 1\nMid: 3\nHigh: 3",
+        "Low: 2\nMid: 1\nHigh: 4",
+        "Low: 1\nMid: 0\nHigh: 6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bands-aa0753",
+      "text": "What does this print?",
+      "code": "signals = [10, 50, 100, 100, 60, 70]\nlow = 0\nmid = 0\nhigh = 0\nfor r in signals:\n    if r < 50:\n        low += 1\n    elif r < 100:\n        mid += 1\n    else:\n        high += 1\nprint(f\"Low: {low}\")\nprint(f\"Mid: {mid}\")\nprint(f\"High: {high}\")",
+      "options": [
+        "Low: 1\nMid: 3\nHigh: 2",
+        "Low: 1\nMid: 5\nHigh: 0",
+        "Low: 2\nMid: 2\nHigh: 2",
+        "Low: 1\nMid: 0\nHigh: 5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bands-d56475",
+      "text": "What does this print?",
+      "code": "scans = [100, 20, 50, 150, 80, 35, 5]\nlow = 0\nmid = 0\nhigh = 0\nfor r in scans:\n    if r < 50:\n        low += 1\n    elif r < 100:\n        mid += 1\n    else:\n        high += 1\nprint(f\"Low: {low}\")\nprint(f\"Mid: {mid}\")\nprint(f\"High: {high}\")",
+      "options": [
+        "Low: 3\nMid: 2\nHigh: 2",
+        "Low: 3\nMid: 3\nHigh: 1",
+        "Low: 4\nMid: 1\nHigh: 2",
+        "Low: 3\nMid: 0\nHigh: 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-shortcut-7e77d2",
+      "text": "What does this print?",
+      "code": "fuel = 10\nfuel += 5\nfuel -= 3\nfuel *= 2\nprint(fuel)",
+      "options": ["24", "4", "-6", "14"],
+      "answer": 0
+    },
+    {
+      "id": "pc-shortcut-b6434c",
+      "text": "What does this print?",
+      "code": "score = 7\nscore += 3\nscore -= 4\nscore *= 2\nprint(score)",
+      "options": ["12", "-2", "-8", "8"],
+      "answer": 0
+    },
+    {
+      "id": "pc-shortcut-24bf6c",
+      "text": "What does this print?",
+      "code": "coins = 20\ncoins += 10\ncoins -= 5\ncoins *= 2\nprint(coins)",
+      "options": ["50", "10", "-10", "27"],
+      "answer": 0
+    },
+    {
+      "id": "pc-long-fe3547",
+      "text": "What does this print?",
+      "code": "words = [\"Vice\", \"City\", \"Stories\", \"Ocean\"]\nlong = 0\nfor w in words:\n    if len(w) > 4:\n        long += 1\nprint(f\"Long words: {long}\")",
+      "options": ["Long words: 2", "Long words: 4", "Long words: 12", "Long words: 3"],
+      "answer": 0
+    },
+    {
+      "id": "pc-long-f8152c",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Ken\", \"Cortez\"]\nlong = 0\nfor w in names:\n    if len(w) > 5:\n        long += 1\nprint(f\"Long words: {long}\")",
+      "options": ["Long words: 1", "Long words: 3", "Long words: 6", "Long words: 2"],
+      "answer": 0
+    },
+    {
+      "id": "pc-long-b50404",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Jupiter\"]\nlong = 0\nfor w in planets:\n    if len(w) > 4:\n        long += 1\nprint(f\"Long words: {long}\")",
+      "options": ["Long words: 3", "Long words: 4", "Long words: 17", "Long words: 0"],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-match-a94bd5",
+      "text": "Which program shows this?",
+      "output": "Tommy: 3",
+      "options": [
+        "crew = [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\", \"Tommy\"]\ncount = 0\nfor x in crew:\n    if x == \"Tommy\":\n        count += 1\nprint(f\"Tommy: {count}\")",
+        "crew = [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\", \"Tommy\"]\ncount = 0\nfor x in crew:\n    if x != \"Tommy\":\n        count += 1\nprint(f\"Tommy: {count}\")",
+        "crew = [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\", \"Tommy\"]\ncount = 0\nfor x in crew:\n    if x == \"Tommy\":\n        count = 1\nprint(f\"Tommy: {count}\")",
+        "crew = [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\", \"Tommy\"]\ncount = 1\nfor x in crew:\n    if x == \"Tommy\":\n        count += 1\nprint(f\"Tommy: {count}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-match-f832a5",
+      "text": "Which program shows this?",
+      "output": "error: 2",
+      "options": [
+        "log = [\"ok\", \"error\", \"ok\", \"error\", \"ok\", \"ok\"]\ncount = 0\nfor x in log:\n    if x == \"error\":\n        count += 1\nprint(f\"error: {count}\")",
+        "log = [\"ok\", \"error\", \"ok\", \"error\", \"ok\", \"ok\"]\ncount = 0\nfor x in log:\n    if x != \"error\":\n        count += 1\nprint(f\"error: {count}\")",
+        "log = [\"ok\", \"error\", \"ok\", \"error\", \"ok\", \"ok\"]\ncount = 0\nfor x in log:\n    if x == \"error\":\n        count = 1\nprint(f\"error: {count}\")",
+        "log = [\"ok\", \"error\", \"ok\", \"error\", \"ok\", \"ok\"]\ncount = 1\nfor x in log:\n    if x == \"error\":\n        count += 1\nprint(f\"error: {count}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-match-dc3fb2",
+      "text": "Which program shows this?",
+      "output": "yes: 3",
+      "options": [
+        "votes = [\"yes\", \"no\", \"yes\", \"yes\"]\ncount = 0\nfor x in votes:\n    if x == \"yes\":\n        count += 1\nprint(f\"yes: {count}\")",
+        "votes = [\"yes\", \"no\", \"yes\", \"yes\"]\ncount = 0\nfor x in votes:\n    if x != \"yes\":\n        count += 1\nprint(f\"yes: {count}\")",
+        "votes = [\"yes\", \"no\", \"yes\", \"yes\"]\ncount = 0\nfor x in votes:\n    if x == \"yes\":\n        count = 1\nprint(f\"yes: {count}\")",
+        "votes = [\"yes\", \"no\", \"yes\", \"yes\"]\ncount = 1\nfor x in votes:\n    if x == \"yes\":\n        count += 1\nprint(f\"yes: {count}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-match-260319",
+      "text": "Which program shows this?",
+      "output": "red: 4",
+      "options": [
+        "colors = [\"red\", \"blue\", \"red\", \"green\", \"red\", \"red\"]\ncount = 0\nfor x in colors:\n    if x == \"red\":\n        count += 1\nprint(f\"red: {count}\")",
+        "colors = [\"red\", \"blue\", \"red\", \"green\", \"red\", \"red\"]\ncount = 0\nfor x in colors:\n    if x != \"red\":\n        count += 1\nprint(f\"red: {count}\")",
+        "colors = [\"red\", \"blue\", \"red\", \"green\", \"red\", \"red\"]\ncount = 0\nfor x in colors:\n    if x == \"red\":\n        count = 1\nprint(f\"red: {count}\")",
+        "colors = [\"red\", \"blue\", \"red\", \"green\", \"red\", \"red\"]\ncount = 1\nfor x in colors:\n    if x == \"red\":\n        count += 1\nprint(f\"red: {count}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-lower-398ea9",
+      "text": "Which program shows this?",
+      "output": "4",
+      "options": [
+        "name = \"Tommy\"\nlower = 0\nfor char in name:\n    if char.islower():\n        lower += 1\nprint(lower)",
+        "name = \"Tommy\"\nlower = 0\nfor char in name:\n    if char.isupper():\n        lower += 1\nprint(lower)",
+        "name = \"Tommy\"\nlower = 0\nfor char in name:\n    if char.isalpha():\n        lower += 1\nprint(lower)",
+        "name = \"Tommy\"\nlower = 0\nfor char in name:\n    if char.islower():\n        lower = 1\nprint(lower)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-lower-9296b2",
+      "text": "Which program shows this?",
+      "output": "6",
+      "options": [
+        "city = \"Vice City\"\nlower = 0\nfor char in city:\n    if char.islower():\n        lower += 1\nprint(lower)",
+        "city = \"Vice City\"\nlower = 0\nfor char in city:\n    if char.isupper():\n        lower += 1\nprint(lower)",
+        "city = \"Vice City\"\nlower = 0\nfor char in city:\n    if char.isalpha():\n        lower += 1\nprint(lower)",
+        "city = \"Vice City\"\nlower = 0\nfor char in city:\n    if char.islower():\n        lower = 1\nprint(lower)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-lower-314388",
+      "text": "Which program shows this?",
+      "output": "8",
+      "options": [
+        "crew = \"Lance Vance\"\nlower = 0\nfor char in crew:\n    if char.islower():\n        lower += 1\nprint(lower)",
+        "crew = \"Lance Vance\"\nlower = 0\nfor char in crew:\n    if char.isupper():\n        lower += 1\nprint(lower)",
+        "crew = \"Lance Vance\"\nlower = 0\nfor char in crew:\n    if char.isalpha():\n        lower += 1\nprint(lower)",
+        "crew = \"Lance Vance\"\nlower = 0\nfor char in crew:\n    if char.islower():\n        lower = 1\nprint(lower)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-which-lower-c1eef0",
+      "text": "Which program shows this?",
+      "output": "9",
+      "options": [
+        "pilot = \"Phil Cassidy\"\nlower = 0\nfor char in pilot:\n    if char.islower():\n        lower += 1\nprint(lower)",
+        "pilot = \"Phil Cassidy\"\nlower = 0\nfor char in pilot:\n    if char.isupper():\n        lower += 1\nprint(lower)",
+        "pilot = \"Phil Cassidy\"\nlower = 0\nfor char in pilot:\n    if char.isalpha():\n        lower += 1\nprint(lower)",
+        "pilot = \"Phil Cassidy\"\nlower = 0\nfor char in pilot:\n    if char.islower():\n        lower = 1\nprint(lower)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-increase-de3757",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "scores = [80, 95, 40, 70, 88]\ncount = 0\nfor n in scores:\n    if n > 75:\n        ___\nprint(f\"Above 75: {count}\")",
+      "output": "Above 75: 3",
+      "options": ["count += 1", "count = 1", "count += n", "count -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-increase-84fb81",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "readings = [42, 75, 100, 30, 88]\ncount = 0\nfor n in readings:\n    if n > 50:\n        ___\nprint(f\"Above 50: {count}\")",
+      "output": "Above 50: 3",
+      "options": ["count += 1", "count = 1", "count += n", "count -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-increase-52bb0e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "temps = [12, 30, 25, 31]\ncount = 0\nfor n in temps:\n    if n > 28:\n        ___\nprint(f\"Above 28: {count}\")",
+      "output": "Above 28: 2",
+      "options": ["count += 1", "count = 1", "count += n", "count -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-increase-988435",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "speeds = [60, 120, 90, 150, 95]\ncount = 0\nfor n in speeds:\n    if n > 70:\n        ___\nprint(f\"Above 70: {count}\")",
+      "output": "Above 70: 4",
+      "options": ["count += 1", "count = 1", "count += n", "count -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-init-b61cdd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Tommy Vercetti\"\n___\nfor char in name:\n    if char.isupper():\n        upper += 1\nprint(upper)",
+      "output": "2",
+      "options": ["upper = 0", "upper = 1", "upper = len(name)", "upper = \"0\""],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-init-b3ee4f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "code = \"NASA Base\"\n___\nfor char in code:\n    if char.isupper():\n        upper += 1\nprint(upper)",
+      "output": "5",
+      "options": ["upper = 0", "upper = 1", "upper = len(code)", "upper = \"0\""],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-init-7617ff",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "city = \"Vice City\"\n___\nfor char in city:\n    if char.isupper():\n        upper += 1\nprint(upper)",
+      "output": "2",
+      "options": ["upper = 0", "upper = 1", "upper = len(city)", "upper = \"0\""],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-init-a9d756",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "ship = \"USS Orbit\"\n___\nfor char in ship:\n    if char.isupper():\n        upper += 1\nprint(upper)",
+      "output": "4",
+      "options": ["upper = 0", "upper = 1", "upper = len(ship)", "upper = \"0\""],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-check-12f7a5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "code = \"Agent 47\"\ndigits = 0\nfor char in code:\n    ___\n        digits += 1\nprint(f\"Digits: {digits}\")",
+      "output": "Digits: 2",
+      "options": [
+        "if char.isdigit():",
+        "if char.isalpha():",
+        "if char.isupper():",
+        "if char == \" \":"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-check-700e54",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "room = \"Room 101\"\ndigits = 0\nfor char in room:\n    ___\n        digits += 1\nprint(f\"Digits: {digits}\")",
+      "output": "Digits: 3",
+      "options": [
+        "if char.isdigit():",
+        "if char.isalpha():",
+        "if char.isupper():",
+        "if char == \" \":"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-check-eba623",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "gate = \"Bay 12 Gate 7\"\ndigits = 0\nfor char in gate:\n    ___\n        digits += 1\nprint(f\"Digits: {digits}\")",
+      "output": "Digits: 3",
+      "options": [
+        "if char.isdigit():",
+        "if char.isalpha():",
+        "if char.isupper():",
+        "if char.islower():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-gap-check-6f8d45",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "pin = \"Code 1234\"\ndigits = 0\nfor char in pin:\n    ___\n        digits += 1\nprint(f\"Digits: {digits}\")",
+      "output": "Digits: 4",
+      "options": [
+        "if char.isdigit():",
+        "if char.isupper():",
+        "if char == \" \":",
+        "if char.islower():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-method-0bb8ff",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Tommy Vercetti 1986\"\ncount = 0\nfor char in name:\n    if char.___():\n        count += 1\nprint(count)",
+      "output": "2",
+      "options": ["isupper", "islower", "isdigit", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-method-c963a0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "code = \"Agent 47\"\ncount = 0\nfor char in code:\n    if char.___():\n        count += 1\nprint(count)",
+      "output": "2",
+      "options": ["isdigit", "isupper", "islower", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-method-f62441",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "city = \"Vice City\"\ncount = 0\nfor char in city:\n    if char.___():\n        count += 1\nprint(count)",
+      "output": "6",
+      "options": ["islower", "isupper", "isdigit", "isalpha"],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-method-597049",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "droids = \"R2D2 and C3PO\"\ncount = 0\nfor char in droids:\n    if char.___():\n        count += 1\nprint(count)",
+      "output": "8",
+      "options": ["isalpha", "isupper", "islower", "isdigit"],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-compare-1ed7a1",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "readings = [42, 50, 75, 50, 30]\ncount = 0\nfor r in readings:\n    if r ___ 50:\n        count += 1\nprint(count)",
+      "output": "3",
+      "options": [">=", ">", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-compare-13c2a5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "levels = [100, 120, 99, 100, 130]\ncount = 0\nfor r in levels:\n    if r ___ 100:\n        count += 1\nprint(count)",
+      "output": "1",
+      "options": ["<", ">", ">=", "<="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-compare-ef7e60",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "scores = [60, 40, 60, 80]\ncount = 0\nfor r in scores:\n    if r ___ 60:\n        count += 1\nprint(count)",
+      "output": "1",
+      "options": [">", ">=", "<=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-compare-c9370a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "ages = [5, 9, 12, 9, 3]\ncount = 0\nfor r in ages:\n    if r ___ 9:\n        count += 1\nprint(count)",
+      "output": "4",
+      "options": ["<=", ">", ">=", "<"],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-step-2afba1",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [4, 7, 10, 2]\nevens = 0\nfor n in numbers:\n    if n % 2 == 0:\n        evens ___ 1\nprint(evens)",
+      "output": "3",
+      "options": ["+=", "-=", "=", "*="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-step-8a6fc8",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "scores = [1, 3, 6, 8, 12]\neven_count = 0\nfor n in scores:\n    if n % 2 == 0:\n        even_count ___ 1\nprint(even_count)",
+      "output": "3",
+      "options": ["+=", "-=", "=", "*="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-step-b9905d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "levels = [2, 4, 6, 8]\nfound = 0\nfor n in levels:\n    if n % 2 == 0:\n        found ___ 1\nprint(found)",
+      "output": "4",
+      "options": ["+=", "-=", "=", "*="],
+      "answer": 0
+    },
+    {
+      "id": "pc-val-step-7e5ef2",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "ages = [11, 20, 35, 40, 50]\neven_ages = 0\nfor n in ages:\n    if n % 2 == 0:\n        even_ages ___ 1\nprint(even_ages)",
+      "output": "3",
+      "options": ["+=", "-=", "=", "*="],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-start-f4c36f",
+      "text": "Which line stops this program from printing this?",
+      "code": "scores = [80, 95, 40, 70, 88]\ncount = 1\nfor n in scores:\n    if n > 75:\n        print(n)\n        count += 1\nprint(f\"Count: {count}\")",
+      "output": "80\n95\n88\nCount: 3",
+      "options": ["count = 1", "print(n)", "count += 1", "print(f\"Count: {count}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-start-313f1f",
+      "text": "Which line stops this program from printing this?",
+      "code": "readings = [42, 75, 100, 30, 88]\ncount = 1\nfor n in readings:\n    if n > 50:\n        print(n)\n        count += 1\nprint(f\"Count: {count}\")",
+      "output": "75\n100\n88\nCount: 3",
+      "options": ["count = 1", "print(n)", "count += 1", "print(f\"Count: {count}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-start-f34f0b",
+      "text": "Which line stops this program from printing this?",
+      "code": "temps = [12, 30, 25, 31]\ncount = 1\nfor n in temps:\n    if n > 20:\n        print(n)\n        count += 1\nprint(f\"Count: {count}\")",
+      "output": "30\n25\n31\nCount: 3",
+      "options": ["count = 1", "temps = [12, 30, 25, 31]", "print(n)", "count += 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-method-276d8c",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"Tommy Vercetti\"\nupper = 0\nfor char in name:\n    if char.islower():\n        print(char)\n        upper += 1\nprint(f\"Uppercase: {upper}\")",
+      "output": "T\nV\nUppercase: 2",
+      "options": ["if char.islower():", "for char in name:", "print(char)", "upper += 1"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-method-1e4564",
+      "text": "Which line stops this program from printing this?",
+      "code": "code = \"NASA Base\"\nupper = 0\nfor char in code:\n    if char.islower():\n        print(char)\n        upper += 1\nprint(f\"Uppercase: {upper}\")",
+      "output": "N\nA\nS\nA\nB\nUppercase: 5",
+      "options": [
+        "if char.islower():",
+        "print(char)",
+        "upper += 1",
+        "print(f\"Uppercase: {upper}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-method-ca4e6b",
+      "text": "Which line stops this program from printing this?",
+      "code": "city = \"Vice City\"\nupper = 0\nfor char in city:\n    if char.islower():\n        print(char)\n        upper += 1\nprint(f\"Uppercase: {upper}\")",
+      "output": "V\nC\nUppercase: 2",
+      "options": ["if char.islower():", "for char in city:", "upper = 0", "print(char)"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-add-35f38e",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\"]\nfound = 0\nfor x in crew:\n    print(x)\n    if x == \"Tommy\":\n        found = 1\nprint(f\"Tommy: {found}\")",
+      "output": "Tommy\nLance\nTommy\nKen\nTommy: 2",
+      "options": ["found = 1", "print(x)", "found = 0", "print(f\"Tommy: {found}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-add-a14e65",
+      "text": "Which line stops this program from printing this?",
+      "code": "log = [\"ok\", \"error\", \"ok\", \"ok\"]\nfound = 0\nfor x in log:\n    print(x)\n    if x == \"ok\":\n        found = 1\nprint(f\"ok: {found}\")",
+      "output": "ok\nerror\nok\nok\nok: 3",
+      "options": [
+        "found = 1",
+        "print(x)",
+        "found = 0",
+        "log = [\"ok\", \"error\", \"ok\", \"ok\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-add-18785a",
+      "text": "Which line stops this program from printing this?",
+      "code": "votes = [\"yes\", \"no\", \"yes\", \"no\", \"no\"]\nfound = 0\nfor x in votes:\n    print(x)\n    if x == \"no\":\n        found = 1\nprint(f\"no: {found}\")",
+      "output": "yes\nno\nyes\nno\nno\nno: 3",
+      "options": [
+        "found = 1",
+        "print(x)",
+        "found = 0",
+        "votes = [\"yes\", \"no\", \"yes\", \"no\", \"no\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-high-313f1f",
+      "text": "Which line stops this program from printing this?",
+      "code": "readings = [42, 75, 100, 30, 88]\nlow = 0\nhigh = 0\nfor r in readings:\n    if r < 50:\n        low += 1\n    else:\n        high = 1\nprint(f\"Low: {low}\")\nprint(f\"High: {high}\")",
+      "output": "Low: 2\nHigh: 3",
+      "options": ["high = 1", "low += 1", "high = 0", "print(f\"Low: {low}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-high-d53fae",
+      "text": "Which line stops this program from printing this?",
+      "code": "levels = [100, 120, 99, 130]\nlow = 0\nhigh = 0\nfor r in levels:\n    if r < 100:\n        low += 1\n    else:\n        high = 1\nprint(f\"Low: {low}\")\nprint(f\"High: {high}\")",
+      "output": "Low: 1\nHigh: 3",
+      "options": ["high = 1", "low += 1", "high = 0", "print(f\"Low: {low}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pc-bad-high-3f4560",
+      "text": "Which line stops this program from printing this?",
+      "code": "signals = [7, 3, 9, 10, 1, 6]\nlow = 0\nhigh = 0\nfor r in signals:\n    if r < 5:\n        low += 1\n    else:\n        high = 1\nprint(f\"Low: {low}\")\nprint(f\"High: {high}\")",
+      "output": "Low: 2\nHigh: 4",
+      "options": ["high = 1", "low += 1", "high = 0", "low = 0"],
+      "answer": 0
+    }
+  ]
+}

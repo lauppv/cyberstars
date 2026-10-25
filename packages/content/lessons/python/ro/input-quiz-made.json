@@ -430,8 +430,8 @@
     {
       "id": "in-bad-store-250f8b",
       "text": "Utilizatorul a tastat 14, deci `varsta` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
-      "code": "varsta = \"14\"\nint(varsta)\nanul_urmator = varsta + 1\nprint(anul_urmator)",
-      "output": "15",
+      "code": "varsta = \"14\"\nint(varsta)\nanul_urmator = varsta + 1\nprint(anul_urmator)\nprint(varsta * 2)",
+      "output": "15\n28",
       "options": [
         "int(varsta)",
         "varsta = \"14\"",
@@ -443,8 +443,8 @@
     {
       "id": "in-bad-store-8ac15a",
       "text": "Utilizatorul a tastat 70, deci `varsta` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
-      "code": "varsta = \"70\"\nint(varsta)\nanul_urmator = varsta + 1\nprint(anul_urmator)",
-      "output": "71",
+      "code": "varsta = \"70\"\nint(varsta)\nanul_urmator = varsta + 1\nprint(anul_urmator)\nprint(varsta * 2)",
+      "output": "71\n140",
       "options": [
         "int(varsta)",
         "varsta = \"70\"",
@@ -456,29 +456,29 @@
     {
       "id": "in-bad-store-c72c4e",
       "text": "Utilizatorul a tastat 6, deci `scor` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
-      "code": "scor = \"6\"\nint(scor)\ntotal = scor + 4\nprint(total)",
-      "output": "10",
-      "options": ["int(scor)", "scor = \"6\"", "total = scor + 4", "print(total)"],
+      "code": "scor = \"6\"\nint(scor)\ntotal = scor + 4\nprint(total)\nprint(scor * 2)",
+      "output": "10\n12",
+      "options": ["int(scor)", "total = scor + 4", "print(total)", "print(scor * 2)"],
       "answer": 0
     },
     {
       "id": "in-bad-store-f2abe1",
       "text": "Utilizatorul a tastat 150, deci `combustibil` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
-      "code": "combustibil = \"150\"\nint(combustibil)\ntotal = combustibil + 50\nprint(total)",
-      "output": "200",
+      "code": "combustibil = \"150\"\nint(combustibil)\ntotal = combustibil + 50\nprint(total)\nprint(combustibil * 2)",
+      "output": "200\n300",
       "options": [
         "int(combustibil)",
-        "combustibil = \"150\"",
         "total = combustibil + 50",
-        "print(total)"
+        "print(total)",
+        "print(combustibil * 2)"
       ],
       "answer": 0
     },
     {
       "id": "in-bad-store-2c77fc",
       "text": "Utilizatorul a tastat 4, deci `nivel` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
-      "code": "nivel = \"4\"\nint(nivel)\nnivel_urmator = nivel + 1\nprint(nivel_urmator)",
-      "output": "5",
+      "code": "nivel = \"4\"\nint(nivel)\nnivel_urmator = nivel + 1\nprint(nivel_urmator)\nprint(nivel * 2)",
+      "output": "5\n8",
       "options": [
         "int(nivel)",
         "nivel = \"4\"",

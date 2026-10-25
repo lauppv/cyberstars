@@ -1,0 +1,1183 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is a default value of a parameter?",
+      "options": [
+        "The value the parameter gets when the call passes nothing for it",
+        "The value the parameter keeps for good, whatever the call passes",
+        "The first value the function prints",
+        "The value the function returns when it has no return"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "def greet(name, word=\"Hello\"):\n    print(f\"{word}, {name}!\")\n\ngreet(\"Tommy\")",
+      "options": [
+        "Hello, Tommy!",
+        "word, Tommy!",
+        "It stops with an error: word is missing",
+        "Hello, name!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "What does this print?",
+      "code": "def greet(name, word=\"Hello\"):\n    print(f\"{word}, {name}!\")\n\ngreet(\"Tommy\", \"Hi\")",
+      "options": [
+        "Hello, Tommy!",
+        "Hi, Tommy!",
+        "Hello Hi, Tommy!",
+        "It stops with an error: word already has a value"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "In `def create_player(name, health=100, city=\"Vice City\"):`, which argument does every call have to pass?",
+      "options": ["health", "city", "name", "None: all three have a default"],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "What happens when this runs?",
+      "code": "def f(a=10, b, c):\n    print(a, b, c)\n\nf(2, 3)",
+      "options": [
+        "It prints 10 2 3",
+        "It prints 2 3 10",
+        "It prints 10 None None",
+        "It stops with a SyntaxError: b and c have no default but come after a, which has one"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "Which of these `def` lines is allowed?",
+      "options": [
+        "def f(a=1, b):",
+        "def f(a=1, b, c=3):",
+        "def f(a, b=2, c=3):",
+        "def f(a, b=2, c):"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "def create_player(name, health=100, city=\"Vice City\"):\n    print(f\"{name} | HP: {health} | City: {city}\")\n\ncreate_player(\"Tommy\", city=\"Liberty City\")",
+      "options": [
+        "Tommy | HP: 100 | City: Liberty City",
+        "Tommy | HP: Liberty City | City: Vice City",
+        "Tommy | HP: 100 | City: Vice City",
+        "It stops with an error: health was skipped"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Why does `create_player(\"Tommy\", city=\"Liberty City\")` name `city`?",
+      "options": [
+        "Because a text can only go into a parameter by its name",
+        "To change the default of city for every later call",
+        "Because city is the last parameter, and the last one always needs its name",
+        "To skip health, which keeps its default, and still set city"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Without a keyword argument, which call prints the same as `create_player(\"Tommy\", city=\"Liberty City\")`?",
+      "options": [
+        "create_player(\"Tommy\", \"Liberty City\")",
+        "create_player(\"Tommy\", \"Liberty City\", 100)",
+        "create_player(\"Tommy\", 100, \"Liberty City\")",
+        "create_player(\"Liberty City\", \"Tommy\")"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "In the Docking Log mission, what does `dock(ship2, \"B7\")` print?",
+      "options": [
+        "Odyssey docked at A1 (B7)",
+        "Odyssey docked at A1 (normal)",
+        "Odyssey docked at B7 (B7)",
+        "Odyssey docked at B7 (normal)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "In the Docking Log mission, what does `dock(ship3, priority=\"urgent\")` print?",
+      "options": [
+        "Pioneer docked at urgent (normal)",
+        "Pioneer docked at A1 (urgent)",
+        "Pioneer docked at A1 (normal)",
+        "It stops with an error: bay was skipped"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "In the Docking Log mission, what would `dock(ship3, \"urgent\")` print, without the name priority?",
+      "options": [
+        "Pioneer docked at A1 (urgent)",
+        "Pioneer docked at urgent (normal)",
+        "Pioneer docked at A1 (normal)",
+        "It stops with an error: urgent is not a bay"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "def power(base, exp=2):\n    return base ** exp\n\nprint(power(3))",
+      "options": ["6", "3", "9", "8"],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "def power(base, exp=2):\n    return base ** exp\n\nprint(power(2, 3))",
+      "options": ["8", "6", "9", "4"],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "With `def create_player(name, health=100, city=\"Vice City\"):`, how many arguments can a call pass?",
+      "options": ["Exactly 3", "Exactly 1", "0, 1, 2 or 3", "1, 2 or 3"],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "What happens when this runs?",
+      "code": "def create_player(name, health=100, city=\"Vice City\"):\n    print(f\"{name} | HP: {health} | City: {city}\")\n\ncreate_player()",
+      "options": [
+        "It prints | HP: 100 | City: Vice City",
+        "It prints None | HP: 100 | City: Vice City",
+        "It stops with an error: name has no default, so the call has to pass it",
+        "It prints nothing"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "def order(drink, size=\"small\"):\n    print(drink, size)\n\norder(\"tea\", \"large\")\norder(\"coffee\")",
+      "options": [
+        "tea large\ncoffee large",
+        "tea large\ncoffee small",
+        "tea small\ncoffee small",
+        "tea large\ncoffee"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "What is a keyword argument?",
+      "options": [
+        "An argument written with its parameter's name, like city=\"Liberty City\"",
+        "An argument that has to be a word, not a number",
+        "The first argument of a call",
+        "An argument that changes the default for good"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "In the lesson, why give health and city default values?",
+      "options": [
+        "So create_player runs faster",
+        "So the player can never change city",
+        "So the same 100 and \"Vice City\" aren't written in almost every call",
+        "Because a function can't have more than one parameter without a default"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "def total(price, tax=5):\n    return price + tax\n\nprint(total(20))\nprint(total(20, 0))",
+      "options": ["25\n25", "25\n20", "20\n20", "25\n0"],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "After `create_player(\"Phil\", 50)`, what is city inside the function?",
+      "options": [
+        "50",
+        "\"Vice City\"",
+        "Nothing: city was not passed, so it has no value",
+        "\"Phil\""
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "In `create_player(\"Phil\", 50)`, which parameter gets 50?",
+      "options": [
+        "city, since it is the one with a text default",
+        "name, since it is the first one",
+        "None: 50 is left over",
+        "health, the second parameter, since 50 is the second argument"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Which call prints `Lance | HP: 80 | City: Vice City`?",
+      "options": [
+        "create_player(\"Lance\")",
+        "create_player(\"Lance\", 80)",
+        "create_player(\"Lance\", city=80)",
+        "create_player(80, \"Lance\")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "A call passes a value for a parameter that has a default. What happens to the default?",
+      "options": [
+        "The passed value is used in its place, for that call only",
+        "The default becomes the passed value for every later call",
+        "The default is used and the passed value is ignored",
+        "Python stops with an error"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "def f(a, b=10, c=20):\n    print(a, b, c)\n\nf(1, 2)",
+      "options": ["1 2 20", "1 10 20", "1 2 2", "It stops with an error: c was not passed"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "def f(a, b=10, c=20):\n    print(a, b, c)\n\nf(1, c=5)",
+      "options": ["1 5 20", "1 10 20", "1 10 5", "5 10 20"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "Why does Python refuse `def f(a=10, b, c):`?",
+      "options": [
+        "Because a default can't be a number",
+        "Because a function can have only one default",
+        "Because a must always be the last parameter",
+        "From the arguments of a call, it couldn't tell which value goes to which parameter"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "In the Docking Log mission, which call prints `Voyager docked at A1 (urgent)`?",
+      "options": [
+        "dock(ship1, \"urgent\")",
+        "dock(ship1, priority=\"urgent\")",
+        "dock(ship1, \"A1\")",
+        "dock(priority=\"urgent\")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "def beep(count=1):\n    print(\"Beep\", count)\n\nbeep()\nbeep(4)",
+      "options": ["Beep 1\nBeep 4", "Beep 4\nBeep 4", "Beep\nBeep 4", "Beep 1\nBeep 1"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "`def dock(ship, bay=\"A1\", priority=\"normal\"):` In `dock(\"Nova\", \"B2\", \"high\")`, what is priority?",
+      "options": [
+        "\"normal\", its default",
+        "\"B2\"",
+        "\"high\"",
+        "Nothing: the call stops with an error"
+      ],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "dp-word",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{d}}\"):\n    print({{q}}, {{p}})\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\", \"{{c}}\")",
+      "values": [
+        {
+          "f": "greet",
+          "p": "name",
+          "q": "word",
+          "d": "Hello",
+          "a": "Ana",
+          "b": "Rex",
+          "c": "Hi"
+        },
+        {
+          "f": "cheer",
+          "p": "player",
+          "q": "shout",
+          "d": "Go",
+          "a": "Kai",
+          "b": "Mia",
+          "c": "Bravo"
+        },
+        {
+          "f": "order",
+          "p": "dish",
+          "q": "size",
+          "d": "medium",
+          "a": "pizza",
+          "b": "soup",
+          "c": "large"
+        },
+        {
+          "f": "paint",
+          "p": "car",
+          "q": "color",
+          "d": "red",
+          "a": "Infernus",
+          "b": "Sabre",
+          "c": "blue"
+        },
+        {
+          "f": "land",
+          "p": "planet",
+          "q": "ship",
+          "d": "Nova",
+          "a": "Mars",
+          "b": "Titan",
+          "c": "Orion"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}(\"{{b}}\", \"{{c}}\")", "{{f}}(\"{{c}}\", \"{{b}}\")"],
+        ["print({{q}}, {{p}})", "print({{p}}, {{q}})"],
+        ["{{f}}(\"{{a}}\")\n", "{{f}}(\"{{a}}\", \"{{c}}\")\n"],
+        ["{{q}}=\"{{d}}\"", "{{q}}=\"{{c}}\""]
+      ]
+    },
+    {
+      "id": "dp-num",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}, {{q}}={{d}}):\n    return {{p}} {{op}} {{q}}\n\nprint({{f}}({{a}}))\nprint({{f}}({{a}}, {{b}}))",
+      "values": [
+        {
+          "f": "power",
+          "p": "base",
+          "q": "exp",
+          "d": 2,
+          "op": "**",
+          "a": 5,
+          "b": 3
+        },
+        {
+          "f": "add_tax",
+          "p": "price",
+          "q": "tax",
+          "d": 5,
+          "op": "+",
+          "a": 30,
+          "b": 1
+        },
+        {
+          "f": "times",
+          "p": "n",
+          "q": "k",
+          "d": 10,
+          "op": "*",
+          "a": 4,
+          "b": 3
+        },
+        {
+          "f": "discount",
+          "p": "price",
+          "q": "off",
+          "d": 10,
+          "op": "-",
+          "a": 50,
+          "b": 20
+        },
+        {
+          "f": "level_up",
+          "p": "level",
+          "q": "step",
+          "d": 1,
+          "op": "+",
+          "a": 5,
+          "b": 3
+        }
+      ],
+      "mistakes": [
+        ["{{q}}={{d}}", "{{q}}={{b}}"],
+        ["print({{f}}({{a}}, {{b}}))", "print({{f}}({{b}}))"],
+        ["return {{p}} {{op}} {{q}}", "return {{q}} {{op}} {{p}}"],
+        ["print({{f}}({{a}}))\n", ""]
+      ]
+    },
+    {
+      "id": "dp-keyword",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{dq}}\", {{r}}=\"{{dr}}\"):\n    print(f\"{{{p}}} {{w}} {{{q}}} ({{{r}}})\")\n\n{{f}}(\"{{a}}\", {{r}}=\"{{x}}\")",
+      "values": [
+        {
+          "f": "dock",
+          "p": "ship",
+          "q": "bay",
+          "r": "priority",
+          "dq": "A1",
+          "dr": "normal",
+          "w": "docked at",
+          "a": "Nova",
+          "x": "urgent"
+        },
+        {
+          "f": "book",
+          "p": "guest",
+          "q": "room",
+          "r": "meal",
+          "dq": "single",
+          "dr": "breakfast",
+          "w": "booked a",
+          "a": "Ana",
+          "x": "dinner"
+        },
+        {
+          "f": "launch",
+          "p": "rocket",
+          "q": "pad",
+          "r": "mode",
+          "dq": "P1",
+          "dr": "test",
+          "w": "launched from",
+          "a": "Orion",
+          "x": "live"
+        },
+        {
+          "f": "paint",
+          "p": "car",
+          "q": "color",
+          "r": "finish",
+          "dq": "red",
+          "dr": "matte",
+          "w": "painted",
+          "a": "Infernus",
+          "x": "gloss"
+        }
+      ],
+      "mistakes": [
+        ["{{r}}=\"{{x}}\")", "\"{{x}}\")"],
+        ["({{{r}}})", "({{{q}}})"],
+        ["print(f\"", "print(\""],
+        ["{{f}}(\"{{a}}\", {{r}}=\"{{x}}\")", "{{f}}(\"{{a}}\")"]
+      ]
+    },
+    {
+      "id": "dp-later",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}={{d}}):\n    print(\"{{label}}\", {{p}})\n\n{{f}}()\n{{f}}({{v}})\n{{f}}()",
+      "values": [
+        {
+          "f": "start",
+          "p": "level",
+          "d": 1,
+          "v": 3,
+          "label": "Level"
+        },
+        {
+          "f": "set_volume",
+          "p": "volume",
+          "d": 5,
+          "v": 9,
+          "label": "Volume"
+        },
+        {
+          "f": "drive",
+          "p": "speed",
+          "d": 50,
+          "v": 120,
+          "label": "Speed"
+        },
+        {
+          "f": "new_game",
+          "p": "lives",
+          "d": 3,
+          "v": 1,
+          "label": "Lives"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}({{v}})\n{{f}}()", "{{f}}({{v}})\n{{f}}({{v}})"],
+        ["print(\"{{label}}\", {{p}})", "print(\"{{label}}\", {{d}})"],
+        ["({{p}}={{d}})", "({{p}}={{v}})"],
+        ["print(\"{{label}}\", {{p}})", "print(\"{{label}}\", \"{{p}}\")"]
+      ]
+    },
+    {
+      "id": "dp-abc",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def f(a, b={{b}}, c={{c}}):\n    print(a, b, c)\n\nf({{x}})\nf({{x}}, {{y}})\nf({{x}}, c={{z}})",
+      "values": [
+        {
+          "b": 10,
+          "c": 20,
+          "x": 3,
+          "y": 4,
+          "z": 8
+        },
+        {
+          "b": 0,
+          "c": 9,
+          "x": 7,
+          "y": 3,
+          "z": 1
+        },
+        {
+          "b": 5,
+          "c": 50,
+          "x": 2,
+          "y": 8,
+          "z": 4
+        },
+        {
+          "b": 1,
+          "c": 100,
+          "x": 6,
+          "y": 30,
+          "z": 7
+        }
+      ],
+      "mistakes": [
+        ["c={{z}})", "{{z}})"],
+        ["f({{x}}, {{y}})", "f({{x}}, c={{y}})"],
+        ["print(a, b, c)", "print(a, c, b)"],
+        ["b={{b}}, c={{c}}", "b={{c}}, c={{b}}"]
+      ]
+    },
+    {
+      "id": "dp-glue",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{d}}\"):\n    return {{p}} + {{q}}\n\nprint({{f}}(\"{{a}}\"))\nprint({{f}}(\"{{a}}\", \"{{b}}\"))",
+      "values": [
+        {
+          "f": "label",
+          "p": "text",
+          "q": "mark",
+          "d": "!",
+          "a": "Go",
+          "b": "?"
+        },
+        {
+          "f": "file_name",
+          "p": "name",
+          "q": "ext",
+          "d": ".txt",
+          "a": "notes",
+          "b": ".py"
+        },
+        {
+          "f": "add_end",
+          "p": "word",
+          "q": "end",
+          "d": "s",
+          "a": "star",
+          "b": "dust"
+        },
+        {
+          "f": "code",
+          "p": "sector",
+          "q": "zone",
+          "d": "-A",
+          "a": "B7",
+          "b": "-Z"
+        }
+      ],
+      "mistakes": [
+        ["return {{p}} + {{q}}", "return {{q}} + {{p}}"],
+        ["print({{f}}(\"{{a}}\", \"{{b}}\"))", "print({{f}}(\"{{b}}\"))"],
+        ["{{q}}=\"{{d}}\"", "{{q}}=\"{{b}}\""],
+        ["return {{p}} + {{q}}", "return {{p}}"]
+      ]
+    },
+    {
+      "id": "dp-which-skip",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def {{f}}({{p}}, {{q}}=100, {{r}}=\"Vice City\"):\n    print(f\"{{{p}}} | HP: {{{q}}} | {{rl}}: {{{r}}}\")\n\n{{f}}(\"{{a}}\", {{r}}=\"{{c}}\")",
+      "values": [
+        {
+          "f": "create_player",
+          "p": "name",
+          "q": "health",
+          "r": "city",
+          "rl": "City",
+          "a": "Tommy",
+          "c": "Liberty City",
+          "h": 90
+        },
+        {
+          "f": "create_player",
+          "p": "name",
+          "q": "health",
+          "r": "city",
+          "rl": "City",
+          "a": "Lance",
+          "c": "San Andreas",
+          "h": 80
+        },
+        {
+          "f": "new_player",
+          "p": "name",
+          "q": "hp",
+          "r": "town",
+          "rl": "Town",
+          "a": "Cortez",
+          "c": "Ocean Beach",
+          "h": 70
+        },
+        {
+          "f": "new_player",
+          "p": "name",
+          "q": "hp",
+          "r": "town",
+          "rl": "Town",
+          "a": "Phil",
+          "c": "Little Haiti",
+          "h": 50
+        }
+      ],
+      "mistakes": [
+        ["{{r}}=\"{{c}}\")", "\"{{c}}\")"],
+        ["{{f}}(\"{{a}}\", {{r}}=\"{{c}}\")", "{{f}}(\"{{a}}\")"],
+        ["{{q}}=100", "{{q}}={{h}}"]
+      ]
+    },
+    {
+      "id": "dp-which-twice",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{w}}\"):\n    print({{q}}, {{p}})\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\")",
+      "values": [
+        {
+          "f": "land",
+          "p": "planet",
+          "q": "msg",
+          "w": "Landing on",
+          "a": "Mars",
+          "b": "Venus",
+          "w2": "Leaving"
+        },
+        {
+          "f": "welcome",
+          "p": "guest",
+          "q": "word",
+          "w": "Welcome",
+          "a": "Ana",
+          "b": "Kai",
+          "w2": "Bye"
+        },
+        {
+          "f": "alarm",
+          "p": "zone",
+          "q": "level",
+          "w": "Red alert in",
+          "a": "Bay 1",
+          "b": "Bay 2",
+          "w2": "All clear in"
+        },
+        {
+          "f": "call",
+          "p": "pilot",
+          "q": "rank",
+          "w": "Captain",
+          "a": "Vega",
+          "b": "Orion",
+          "w2": "Cadet"
+        }
+      ],
+      "mistakes": [
+        ["{{f}}(\"{{b}}\")", "{{f}}(\"{{b}}\", \"{{w2}}\")"],
+        ["print({{q}}, {{p}})", "print({{p}}, {{q}})"],
+        ["{{q}}=\"{{w}}\"", "{{q}}=\"{{w2}}\""]
+      ]
+    },
+    {
+      "id": "dp-gap-def",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    print(f\"{{{p}}} has {{{q}}} {{unit}}\")\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\", {{n}})",
+      "values": [
+        {
+          "f": "show",
+          "p": "name",
+          "q": "hp",
+          "d": 100,
+          "unit": "HP",
+          "a": "Tommy",
+          "b": "Lance",
+          "n": 80
+        },
+        {
+          "f": "report",
+          "p": "ship",
+          "q": "fuel",
+          "d": 50,
+          "unit": "fuel",
+          "a": "Nova",
+          "b": "Orion",
+          "n": 20
+        },
+        {
+          "f": "stock",
+          "p": "item",
+          "q": "count",
+          "d": 0,
+          "unit": "left",
+          "a": "milk",
+          "b": "bread",
+          "n": 6
+        },
+        {
+          "f": "lives",
+          "p": "player",
+          "q": "left",
+          "d": 3,
+          "unit": "lives",
+          "a": "Kai",
+          "b": "Mia",
+          "n": 2
+        }
+      ],
+      "answer": "def {{f}}({{p}}, {{q}}={{d}}):",
+      "wrong": [
+        "def {{f}}({{p}}, {{q}}):",
+        "def {{f}}({{q}}={{d}}, {{p}}):",
+        "def {{f}}({{p}}, {{q}}={{n}}):"
+      ]
+    },
+    {
+      "id": "dp-gap-call",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{dq}}\", {{r}}=\"{{dr}}\"):\n    print({{p}}, {{q}}, {{r}})\n\n{{f}}(\"{{a}}\")\n___",
+      "values": [
+        {
+          "f": "dock",
+          "p": "ship",
+          "q": "bay",
+          "r": "priority",
+          "dq": "A1",
+          "dr": "normal",
+          "a": "Nova",
+          "x": "urgent"
+        },
+        {
+          "f": "order",
+          "p": "dish",
+          "q": "size",
+          "r": "side",
+          "dq": "medium",
+          "dr": "fries",
+          "a": "burger",
+          "x": "salad"
+        },
+        {
+          "f": "ride",
+          "p": "car",
+          "q": "gear",
+          "r": "color",
+          "dq": "auto",
+          "dr": "black",
+          "a": "Cheetah",
+          "x": "white"
+        },
+        {
+          "f": "send",
+          "p": "note",
+          "q": "to",
+          "r": "mode",
+          "dq": "base",
+          "dr": "radio",
+          "a": "SOS",
+          "x": "laser"
+        }
+      ],
+      "answer": "{{f}}(\"{{a}}\", {{r}}=\"{{x}}\")",
+      "wrong": [
+        "{{f}}(\"{{a}}\", \"{{x}}\")",
+        "{{f}}({{r}}=\"{{x}}\")",
+        "{{f}}(\"{{a}}\", {{r}}=\"{{dr}}\")"
+      ]
+    },
+    {
+      "id": "dp-gap-use",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}, {{q}}={{d}}):\n    return {{p}} * {{q}}\n\n___\nprint({{f}}({{a}}, {{b}}))",
+      "values": [
+        {
+          "f": "scale",
+          "p": "x",
+          "q": "k",
+          "d": 2,
+          "a": 7,
+          "b": 3
+        },
+        {
+          "f": "boost",
+          "p": "power",
+          "q": "factor",
+          "d": 10,
+          "a": 4,
+          "b": 3
+        },
+        {
+          "f": "tickets",
+          "p": "people",
+          "q": "price",
+          "d": 5,
+          "a": 6,
+          "b": 8
+        },
+        {
+          "f": "area",
+          "p": "width",
+          "q": "height",
+          "d": 4,
+          "a": 9,
+          "b": 2
+        }
+      ],
+      "answer": "print({{f}}({{a}}))",
+      "wrong": ["{{f}}({{a}})", "print({{f}}({{a}}, 1))", "print({{f}}({{d}}))"]
+    },
+    {
+      "id": "dp-val-default",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}, {{q}}=___):\n    print({{p}}, {{q}})\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\", {{n}})",
+      "values": [
+        {
+          "f": "new_player",
+          "p": "name",
+          "q": "lives",
+          "d": 3,
+          "a": "Ana",
+          "b": "Rex",
+          "n": 5
+        },
+        {
+          "f": "new_ship",
+          "p": "ship",
+          "q": "crew",
+          "d": 4,
+          "a": "Nova",
+          "b": "Orion",
+          "n": 8
+        },
+        {
+          "f": "add_item",
+          "p": "item",
+          "q": "count",
+          "d": 1,
+          "a": "apples",
+          "b": "pears",
+          "n": 2
+        },
+        {
+          "f": "set_timer",
+          "p": "task",
+          "q": "minutes",
+          "d": 5,
+          "a": "tea",
+          "b": "pasta",
+          "n": 9
+        }
+      ],
+      "answer": "{{d}}",
+      "wrong": ["{{n}}", "0", "\"{{q}}\""]
+    },
+    {
+      "id": "dp-val-kw",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{dq}}\", {{r}}=\"{{dr}}\"):\n    print(f\"{{{p}}}: {{{q}}}, {{{r}}}\")\n\n{{f}}(\"{{a}}\", ___=\"{{x}}\")",
+      "values": [
+        {
+          "f": "dock",
+          "p": "ship",
+          "q": "bay",
+          "r": "priority",
+          "dq": "A1",
+          "dr": "normal",
+          "a": "Nova",
+          "x": "urgent"
+        },
+        {
+          "f": "book",
+          "p": "guest",
+          "q": "room",
+          "r": "meal",
+          "dq": "single",
+          "dr": "breakfast",
+          "a": "Ana",
+          "x": "dinner"
+        },
+        {
+          "f": "player",
+          "p": "name",
+          "q": "team",
+          "r": "role",
+          "dq": "Sharks",
+          "dr": "striker",
+          "a": "Kai",
+          "x": "keeper"
+        },
+        {
+          "f": "mission",
+          "p": "code",
+          "q": "zone",
+          "r": "risk",
+          "dq": "north",
+          "dr": "low",
+          "a": "M7",
+          "x": "high"
+        }
+      ],
+      "answer": "{{r}}",
+      "wrong": ["{{q}}", "{{p}}", "{{x}}"]
+    },
+    {
+      "id": "dp-val-arg",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def {{f}}({{p}}, {{q}}={{d}}):\n    return {{p}} {{op}} {{q}}\n\nprint({{f}}(___))",
+      "values": [
+        {
+          "f": "power",
+          "p": "base",
+          "q": "exp",
+          "d": 2,
+          "op": "**",
+          "v": 5,
+          "w": 25,
+          "k": 3
+        },
+        {
+          "f": "add_tax",
+          "p": "price",
+          "q": "tax",
+          "d": 5,
+          "op": "+",
+          "v": 20,
+          "w": 25,
+          "k": 1
+        },
+        {
+          "f": "times",
+          "p": "n",
+          "q": "k",
+          "d": 10,
+          "op": "*",
+          "v": 4,
+          "w": 40,
+          "k": 2
+        },
+        {
+          "f": "half",
+          "p": "n",
+          "q": "parts",
+          "d": 2,
+          "op": "/",
+          "v": 9,
+          "w": 4.5,
+          "k": 3
+        }
+      ],
+      "answer": "{{v}}",
+      "wrong": ["{{w}}", "{{v}}, {{k}}", "{{q}}={{v}}"]
+    },
+    {
+      "id": "dp-bad-order",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{d}}\"):\n    print({{q}}, {{p}})\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\", \"{{c}}\")",
+      "values": [
+        {
+          "f": "greet",
+          "p": "name",
+          "q": "word",
+          "d": "Hello",
+          "a": "Tommy",
+          "b": "Lance",
+          "c": "Hey"
+        },
+        {
+          "f": "announce",
+          "p": "planet",
+          "q": "msg",
+          "d": "Next stop",
+          "a": "Mars",
+          "b": "Pluto",
+          "c": "Last stop"
+        },
+        {
+          "f": "tag",
+          "p": "item",
+          "q": "state",
+          "d": "new",
+          "a": "helmet",
+          "b": "boots",
+          "c": "used"
+        }
+      ],
+      "bug": ["def {{f}}({{p}}, {{q}}=\"{{d}}\"):", "def {{f}}({{q}}=\"{{d}}\", {{p}}):"]
+    },
+    {
+      "id": "dp-bad-kw",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{dq}}\", {{r}}=\"{{dr}}\"):\n    print(f\"{{{p}}}: {{{q}}}, {{{r}}}\")\n\n{{f}}(\"{{a}}\")\n{{f}}(\"{{b}}\", \"{{y}}\")\n{{f}}(\"{{c}}\", {{r}}=\"{{x}}\")",
+      "values": [
+        {
+          "f": "dock",
+          "p": "ship",
+          "q": "bay",
+          "r": "priority",
+          "dq": "A1",
+          "dr": "normal",
+          "a": "Nova",
+          "b": "Vega",
+          "y": "C3",
+          "c": "Orion",
+          "x": "urgent"
+        },
+        {
+          "f": "book",
+          "p": "guest",
+          "q": "room",
+          "r": "meal",
+          "dq": "single",
+          "dr": "breakfast",
+          "a": "Ana",
+          "b": "Rex",
+          "y": "double",
+          "c": "Kai",
+          "x": "dinner"
+        },
+        {
+          "f": "launch",
+          "p": "rocket",
+          "q": "pad",
+          "r": "mode",
+          "dq": "P1",
+          "dr": "test",
+          "a": "Apollo",
+          "b": "Gemini",
+          "y": "P4",
+          "c": "Atlas",
+          "x": "live"
+        }
+      ],
+      "bug": ["{{r}}=\"{{x}}\")", "\"{{x}}\")"]
+    },
+    {
+      "id": "dp-bad-default",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}, {{q}}={{d}}):\n    print(\"{{label}}:\", {{p}} {{op}} {{q}})\n\n{{f}}({{a}})\n{{f}}({{b}})\n{{f}}({{c}}, {{e}})",
+      "values": [
+        {
+          "f": "double",
+          "p": "n",
+          "q": "k",
+          "d": 2,
+          "bad": 3,
+          "op": "*",
+          "label": "Result",
+          "a": 4,
+          "b": 6,
+          "c": 5,
+          "e": 10
+        },
+        {
+          "f": "add_tip",
+          "p": "bill",
+          "q": "tip",
+          "d": 5,
+          "bad": 1,
+          "op": "+",
+          "label": "Total",
+          "a": 20,
+          "b": 40,
+          "c": 30,
+          "e": 0
+        },
+        {
+          "f": "refuel",
+          "p": "fuel",
+          "q": "extra",
+          "d": 50,
+          "bad": 5,
+          "op": "+",
+          "label": "Fuel",
+          "a": 10,
+          "b": 25,
+          "c": 60,
+          "e": 40
+        }
+      ],
+      "bug": ["{{q}}={{d}}):", "{{q}}={{bad}}):"]
+    },
+    {
+      "id": "dp-bad-swap",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}, {{q}}={{d}}):\n    return {{p}} - {{q}}\n\nprint({{f}}({{a}}))\nprint({{f}}({{b}}, {{c}}))\nprint({{f}}({{e}}))",
+      "values": [
+        {
+          "f": "discount",
+          "p": "price",
+          "q": "off",
+          "d": 10,
+          "a": 50,
+          "b": 80,
+          "c": 20,
+          "e": 30
+        },
+        {
+          "f": "use_fuel",
+          "p": "fuel",
+          "q": "burn",
+          "d": 5,
+          "a": 40,
+          "b": 90,
+          "c": 15,
+          "e": 12
+        },
+        {
+          "f": "lose_lives",
+          "p": "lives",
+          "q": "hits",
+          "d": 1,
+          "a": 5,
+          "b": 9,
+          "c": 4,
+          "e": 3
+        }
+      ],
+      "bug": ["print({{f}}({{b}}, {{c}}))", "print({{f}}({{c}}, {{b}}))"]
+    }
+  ]
+}

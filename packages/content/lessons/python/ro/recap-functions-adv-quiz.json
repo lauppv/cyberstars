@@ -1,0 +1,807 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "În Trusa de Telemetrie, ce dă înapoi `int_sigur(\"rau\")`?",
+      "options": ["\"rau\"", "0", "Nimic: se oprește cu ValueError", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "În Trusa de Telemetrie, ce dă înapoi `int_sigur(\"rau\", -1)`?",
+      "options": ["-1", "0", "\"rau\"", "Nimic: se oprește cu ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "De ce are `valoare_implicita` valoarea implicită 0 în `int_sigur(text, valoare_implicita=0)`?",
+      "options": [
+        "Pentru că try are nevoie de o variabilă pusă pe 0",
+        "Ca int() să nu dea niciodată greș",
+        "Ca un apel s-o poată omite, iar o citire coruptă devine atunci 0",
+        "Pentru că orice valoare implicită trebuie să fie 0"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Ce dă înapoi `sumeaza(numere)`?",
+      "options": [
+        "O listă cu trei numere",
+        "Doar totalul; cel mai mare și cel mai mic sunt afișate",
+        "Nimic: afișează cele trei valori",
+        "Trei valori, puse împreună într-un tuplu"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\nprint(sumeaza([3, 10, 6]))",
+      "options": ["(19, 10, 3)", "[19, 10, 3]", "19 10 3", "19\n10\n3"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "În misiune, citiri este `[\"10\", \"rau\", \"25\", \"7\", \"x\"]`. Câte dintre ele devin 0 în numere?",
+      "options": ["1", "3", "2", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "În misiune, citirea \"rau\" devine \"8\". Ce afișează programul după `Total: `?",
+      "options": ["42", "50", "8", "58"],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "De ce prinde `int_sigur` eroarea ValueError pe nume, în loc de un `except:` simplu?",
+      "options": [
+        "Un except: simplu nu merge într-o funcție",
+        "except: trebuie să numească mereu o eroare, altfel Python se oprește",
+        "ValueError e singura eroare din Python",
+        "Știm ce eroare așteptăm: int() care nu reușește pe un text"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"12\") + int_sigur(\"ab\"))",
+      "options": ["12ab", "Nimic: se oprește cu ValueError", "12", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def fa_total():\n    total = 42\n\nfa_total()\nprint(total)",
+      "options": [
+        "Se oprește cu NameError: total există doar în fa_total",
+        "Afișează 42: fa_total a creat total",
+        "Afișează None: fa_total nu returnează nimic",
+        "Afișează 0: o variabilă nouă pornește de la 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "De ce ar trebui ca fiecare funcție din trusă să lucreze doar cu parametrii ei și să-și returneze rezultatul?",
+      "options": [
+        "Pentru că o funcție nu poate citi deloc variabile globale",
+        "Ca programul să meargă mai repede",
+        "Pentru că orice funcție trebuie să se termine cu return",
+        "Ca să facă aceeași treabă oriunde e apelată, fără să atingă variabile din afara ei"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "x = 5\n\ndef f():\n    x = 99\n    return x\n\nf()\nprint(x)",
+      "options": ["99", "5", "None", "Nimic: se oprește cu o eroare"],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "viata = 100\n\ndef primeste_lovitura():\n    viata = viata - 10\n\nprimeste_lovitura()",
+      "options": [
+        "Se oprește cu o eroare: în funcție viata e locală și e folosită înainte să aibă o valoare",
+        "viata devine 90 pentru tot programul",
+        "Afișează 90",
+        "Nu se schimbă nimic și nu apare nicio eroare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Care dintre aceste linii se oprește cu SyntaxError?",
+      "options": ["def f(a, b=2):", "def f(a=1, b):", "def f(a=1, b=2):", "def f(a, b):"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "def andocheaza(nava, doc=\"A1\", prioritate=\"normal\"):\n    print(f\"{nava} la {doc} ({prioritate})\")\n\nandocheaza(\"Pioneer\", prioritate=\"urgent\")",
+      "options": [
+        "Pioneer la urgent (normal)",
+        "Pioneer la A1 (normal)",
+        "Pioneer la A1 (urgent)",
+        "Nimic: se oprește cu o eroare"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Ce trimite înapoi `return a, b`?",
+      "options": [
+        "Doar a: b e lăsat deoparte",
+        "Două return-uri, unul după altul",
+        "O listă [a, b]",
+        "Un singur tuplu care ține a și b"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "def minim_maxim(numere):\n    return min(numere), max(numere)\n\nmic, mare = minim_maxim([7, 3, 9])\nprint(mare - mic)",
+      "options": ["-6", "12", "(3, 9)", "6"],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "`sumeaza` returnează trei valori. Ce se întâmplă la `a, b = sumeaza([1, 2, 3])`?",
+      "options": [
+        "Se oprește cu o eroare: trei valori, două variabile",
+        "a primește 6, b primește 3, iar a treia valoare se pierde",
+        "a primește tot tuplul, iar b rămâne gol",
+        "a primește 1 și b primește 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"abc\")\n    print(100 / n)\nexcept ValueError:\n    print(\"Nu e un numar\")\nexcept ZeroDivisionError:\n    print(\"Zero\")",
+      "options": [
+        "Zero",
+        "Nu e un numar",
+        "Nu e un numar\nZero",
+        "Nimic: se oprește cu ValueError"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "Apare o eroare pe prima linie dintr-un bloc try. Ce se întâmplă cu liniile de după ea din try?",
+      "options": [
+        "Rulează după blocul except",
+        "Rulează din nou de la începutul lui try",
+        "Sunt sărite: Python sare la blocul except",
+        "Rulează oricum, iar eroarea apare la sfârșit"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "try:\n    n = int(\"7\")\nexcept ValueError:\n    print(\"Eroare\")\nelse:\n    print(\"OK\")\nfinally:\n    print(\"Gata\")",
+      "options": ["Gata", "Eroare\nGata", "OK\nGata", "OK"],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nnr = []\nfor c in [\"3\", \"?\", \"5\"]:\n    nr.append(int_sigur(c, -1))\nprint(nr)",
+      "options": ["[3, 0, 5]", "[3, 5]", "['3', -1, '5']", "[3, -1, 5]"],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "În misiune, de ce iese `Cel mai mic:` 0?",
+      "options": [
+        "Citirile corupte au devenit 0, iar 0 e cel mai mic număr din listă",
+        "min() dă 0 când lista a avut cândva text în ea",
+        "sumeaza pornește cel mai mic de la 0",
+        "Pentru că 7 e ultima citire bună, iar 7 - 7 e 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "def statistici(numere):\n    return sum(numere), len(numere)\n\ntotal, cate = statistici([10, 20, 30])\nprint(total / cate)",
+      "options": ["20", "20.0", "60", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "Unde poate fi folosit parametrul `valoare_implicita` al lui `int_sigur`?",
+      "options": [
+        "Oriunde în program, după ce int_sigur e definită",
+        "Doar în int_sigur, unde e o variabilă locală",
+        "Doar în programul principal, după apel",
+        "Doar în blocul except"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "def eticheta(nume, viata=100, oras=\"Vice City\"):\n    return f\"{nume} {viata} {oras}\"\n\nprint(eticheta(\"Phil\", oras=\"Liberty\"))",
+      "options": [
+        "Phil 100 Liberty",
+        "Phil Liberty Vice City",
+        "Phil 100 Vice City",
+        "Nimic: se oprește cu o eroare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "Care apel al lui `int_sigur(text, valoare_implicita=0)` transformă \"x\" în -1?",
+      "options": [
+        "int_sigur(-1, \"x\")",
+        "int_sigur(\"x\")",
+        "int_sigur(\"x\", valoare_implicita=0)",
+        "int_sigur(\"x\", -1)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "def verifica(text):\n    try:\n        valoare = int(text)\n    except ValueError:\n        return \"rau\"\n    return valoare * 2\n\nprint(verifica(\"4\"))\nprint(verifica(\"patru\"))",
+      "options": ["44\nrau", "8\n8", "8\nrau", "rau\nrau"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "De ce primește `sumeaza` lista ca parametru, în loc să citească `numere` din afară?",
+      "options": [
+        "Ca să poată rezuma orice listă primește, nu doar pe aceea",
+        "Pentru că sum() nu poate primi o listă globală",
+        "Pentru că un parametru face funcția mai rapidă",
+        "Ca lista să nu se poată schimba niciodată"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "def imparte(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return 0\n\nprint(imparte(8, 0) + imparte(8, 2))",
+      "options": ["4", "4.0", "Nimic: se oprește cu ZeroDivisionError", "0"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "rfa-safe",
+      "kind": "prints",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nnumere = []\nfor citire in [{{readings}}]:\n    numere.append(int_sigur(citire))\nprint(numere)",
+      "mistakes": [
+        ["return valoare_implicita", "return text"],
+        ["int_sigur(citire))", "int_sigur(citire, -1))"],
+        ["numere.append(int_sigur(citire))", "numere.append(citire)"],
+        ["return int(text)", "return text"]
+      ],
+      "text": "Ce afișează?",
+      "values": [
+        {
+          "readings": "\"10\", \"rau\", \"25\""
+        },
+        {
+          "readings": "\"7\", \"x\", \"3\", \"?\""
+        },
+        {
+          "readings": "\"40\", \"4O\", \"12\""
+        },
+        {
+          "readings": "\"5\", \"\", \"8\""
+        }
+      ]
+    },
+    {
+      "id": "rfa-fallback",
+      "kind": "prints",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"{{a}}\"))\nprint(int_sigur(\"{{b}}\"))\nprint(int_sigur(\"{{b}}\", {{f}}))",
+      "mistakes": [
+        ["valoare_implicita=0", "valoare_implicita=1"],
+        ["return valoare_implicita", "return 0"],
+        ["print(int_sigur(\"{{b}}\", {{f}}))", "print(int_sigur(\"{{b}}\"))"],
+        ["return int(text)", "return text"]
+      ],
+      "text": "Ce afișează?",
+      "values": [
+        {
+          "a": "12",
+          "b": "doisprezece",
+          "f": -1
+        },
+        {
+          "a": "300",
+          "b": "3OO",
+          "f": 99
+        },
+        {
+          "a": "5",
+          "b": "cinci",
+          "f": 1
+        }
+      ]
+    },
+    {
+      "id": "rfa-summary",
+      "kind": "prints",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([{{nums}}])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mic}\")",
+      "mistakes": [
+        ["total, cel_mai_mare, cel_mai_mic =", "total, cel_mai_mic, cel_mai_mare ="],
+        ["sum(numere), max", "len(numere), max"],
+        ["max(numere), min(numere)", "min(numere), max(numere)"],
+        ["print(f\"Cel mai mic: {cel_mai_mic}\")", "print(f\"Cel mai mic: {cel_mai_mare}\")"]
+      ],
+      "text": "Ce afișează?",
+      "values": [
+        {
+          "nums": "4, 9, 2"
+        },
+        {
+          "nums": "10, 0, 25, 7, 0"
+        },
+        {
+          "nums": "6, 3, 8, 1"
+        },
+        {
+          "nums": "12, 5, 20"
+        }
+      ]
+    },
+    {
+      "id": "rfa-tuple",
+      "kind": "prints",
+      "code": "def statistici(numere):\n    return max(numere), min(numere)\n\nprint(statistici([{{nums}}]))",
+      "mistakes": [
+        ["return max(numere), min(numere)", "return [max(numere), min(numere)]"],
+        ["print(statistici([{{nums}}]))", "print(statistici([{{nums}}])[0])"],
+        ["max(numere), min(numere)", "max(numere)"],
+        ["max(numere), min(numere)", "min(numere), max(numere)"]
+      ],
+      "text": "Ce afișează?",
+      "values": [
+        {
+          "nums": "3, 8, 5"
+        },
+        {
+          "nums": "15, 4, 9, 11"
+        },
+        {
+          "nums": "7, 2"
+        }
+      ]
+    },
+    {
+      "id": "rfa-scope",
+      "kind": "prints",
+      "code": "{{v}} = {{a}}\nprint(f\"Inainte: {{{v}}}\")\n\ndef amplifica({{p}}):\n    {{p}} = {{p}} * 2\n    return {{p}}\n\namplifica({{v}})\nprint(f\"Ignorat: {{{v}}}\")\n{{v}} = amplifica({{v}})\nprint(f\"Dupa: {{{v}}}\")",
+      "mistakes": [
+        ["{{v}} = amplifica({{v}})", "amplifica({{v}})"],
+        ["* 2", "+ 2"],
+        ["amplifica({{v}})\nprint(f\"Ignorat", "{{v}} = amplifica({{v}})\nprint(f\"Ignorat"]
+      ],
+      "text": "Ce afișează?",
+      "values": [
+        {
+          "v": "scut",
+          "p": "s",
+          "a": 100
+        },
+        {
+          "v": "combustibil",
+          "p": "f",
+          "a": 35
+        },
+        {
+          "v": "putere",
+          "p": "p",
+          "a": 12
+        },
+        {
+          "v": "viteza",
+          "p": "x",
+          "a": 60
+        }
+      ]
+    },
+    {
+      "id": "rfa-default",
+      "kind": "prints",
+      "code": "def andocheaza(nava, doc=\"{{d}}\"):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"{{a}}\")\nandocheaza(\"{{b}}\", \"{{c}}\")\nandocheaza(\"{{a}}\", doc=\"{{e}}\")",
+      "mistakes": [
+        ["doc=\"{{d}}\"", "doc=\"{{c}}\""],
+        ["andocheaza(\"{{b}}\", \"{{c}}\")", "andocheaza(\"{{c}}\", \"{{b}}\")"],
+        ["print(f\"{nava} andocat la {doc}\")", "print(f\"{doc} andocat la {nava}\")"]
+      ],
+      "text": "Ce afișează?",
+      "values": [
+        {
+          "d": "A1",
+          "a": "Voyager",
+          "b": "Odyssey",
+          "c": "B7",
+          "e": "C3"
+        },
+        {
+          "d": "D4",
+          "a": "Falcon",
+          "b": "Nova",
+          "c": "A2",
+          "e": "B5"
+        },
+        {
+          "d": "C1",
+          "a": "Pioneer",
+          "b": "Atlas",
+          "c": "D8",
+          "e": "A6"
+        }
+      ]
+    },
+    {
+      "id": "rfa-div",
+      "kind": "prints",
+      "code": "def imparte_sigur(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Nu se poate imparti la zero\"\n\nprint(imparte_sigur({{x}}, {{y}}))\nprint(imparte_sigur({{x}}, 0))",
+      "mistakes": [
+        ["return a / b", "return a // b"],
+        ["return \"Nu se poate imparti la zero\"", "return 0"],
+        ["print(imparte_sigur({{x}}, 0))", "print(imparte_sigur(0, {{x}}))"]
+      ],
+      "text": "Ce afișează?",
+      "values": [
+        {
+          "x": 10,
+          "y": 4
+        },
+        {
+          "x": 9,
+          "y": 3
+        },
+        {
+          "x": 7,
+          "y": 2
+        }
+      ]
+    },
+    {
+      "id": "rfa-count",
+      "kind": "prints",
+      "code": "corupte = 0\nbune = []\nfor citire in [{{readings}}]:\n    try:\n        bune.append(int(citire))\n    except ValueError:\n        corupte = corupte + 1\nprint(bune)\nprint(f\"Corupte: {corupte}\")",
+      "mistakes": [
+        ["corupte = corupte + 1", "corupte = 1"],
+        ["bune.append(int(citire))", "bune.append(citire)"],
+        ["print(bune)\n", "print(corupte)\n"]
+      ],
+      "text": "Ce afișează?",
+      "values": [
+        {
+          "readings": "\"8\", \"x\", \"3\", \"?\""
+        },
+        {
+          "readings": "\"15\", \"n/a\", \"4\", \"eroare\""
+        },
+        {
+          "readings": "\"2\", \"doi\", \"6\", \"\", \"9\""
+        }
+      ]
+    },
+    {
+      "id": "rfa-which-default",
+      "kind": "which-program",
+      "code": "def inmulteste(valoare, ori={{d}}):\n    return valoare * ori\n\nprint(inmulteste({{a}}))\nprint(inmulteste({{a}}, {{b}}))",
+      "mistakes": [
+        ["ori={{d}}", "ori={{b}}"],
+        ["return valoare * ori", "return valoare + ori"],
+        ["print(inmulteste({{a}}))\n", "print(inmulteste({{a}}, 1))\n"]
+      ],
+      "text": "Care program afișează asta?",
+      "values": [
+        {
+          "d": 2,
+          "a": 5,
+          "b": 3
+        },
+        {
+          "d": 10,
+          "a": 4,
+          "b": 2
+        },
+        {
+          "d": 3,
+          "a": 7,
+          "b": 5
+        },
+        {
+          "d": 2,
+          "a": 9,
+          "b": 4
+        }
+      ]
+    },
+    {
+      "id": "rfa-which-unpack",
+      "kind": "which-program",
+      "code": "def imparte_nume(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nprimul, ultimul = imparte_nume(\"{{n}}\")\nprint(ultimul)\nprint(primul)",
+      "mistakes": [
+        ["primul, ultimul =", "ultimul, primul ="],
+        ["parti[0], parti[1]", "parti[1], parti[1]"],
+        ["print(primul)", "print(\"primul\")"]
+      ],
+      "text": "Care program afișează asta?",
+      "values": [
+        {
+          "n": "Tommy Vercetti"
+        },
+        {
+          "n": "Lance Vance"
+        },
+        {
+          "n": "Ken Rosenberg"
+        }
+      ]
+    },
+    {
+      "id": "rfa-gap-except",
+      "kind": "missing-line",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    ___\n        return valoare_implicita\n\nprint(int_sigur(\"{{a}}\"))\nprint(int_sigur(\"{{b}}\"))",
+      "answer": "except ValueError:",
+      "wrong": ["except ZeroDivisionError:", "else:", "finally:", "except IndexError:"],
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "values": [
+        {
+          "a": "18",
+          "b": "optsprezece"
+        },
+        {
+          "a": "4",
+          "b": "4.5"
+        },
+        {
+          "a": "250",
+          "b": "25O"
+        },
+        {
+          "a": "9",
+          "b": "noua"
+        }
+      ]
+    },
+    {
+      "id": "rfa-gap-unpack",
+      "kind": "missing-line",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\n___\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")",
+      "answer": "total, cel_mai_mare, cel_mai_mic = sumeaza([{{nums}}])",
+      "wrong": [
+        "total = sumeaza([{{nums}}])",
+        "cel_mai_mare, total, cel_mai_mic = sumeaza([{{nums}}])",
+        "total, cel_mai_mic, cel_mai_mare = sumeaza([{{nums}}])"
+      ],
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "values": [
+        {
+          "nums": "3, 9, 4"
+        },
+        {
+          "nums": "20, 5, 11"
+        },
+        {
+          "nums": "6, 6, 1"
+        },
+        {
+          "nums": "8, 2, 15, 5"
+        }
+      ]
+    },
+    {
+      "id": "rfa-gap-return",
+      "kind": "missing-line",
+      "code": "def minim_maxim(numere):\n    ___\n\nmic, mare = minim_maxim([{{nums}}])\nprint(f\"Mic: {mic}, mare: {mare}\")",
+      "answer": "return min(numere), max(numere)",
+      "wrong": [
+        "return max(numere), min(numere)",
+        "print(min(numere), max(numere))",
+        "return min(numere)"
+      ],
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "values": [
+        {
+          "nums": "8, 3, 6"
+        },
+        {
+          "nums": "12, 30, 18"
+        },
+        {
+          "nums": "5, 1, 4, 8"
+        },
+        {
+          "nums": "60, 45, 90"
+        }
+      ]
+    },
+    {
+      "id": "rfa-val-default",
+      "kind": "missing-value",
+      "code": "def andocheaza(nava, doc=___):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"{{a}}\")\nandocheaza(\"{{b}}\", \"{{c}}\")",
+      "answer": "\"{{d}}\"",
+      "wrong": ["\"{{c}}\"", "\"doc\"", "{{d}}", "\"{{a}}\""],
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "values": [
+        {
+          "d": "F3",
+          "a": "Hermes",
+          "b": "Apollo",
+          "c": "G2"
+        },
+        {
+          "d": "C2",
+          "a": "Pioneer",
+          "b": "Falcon",
+          "c": "D5"
+        },
+        {
+          "d": "E4",
+          "a": "Nova",
+          "b": "Atlas",
+          "c": "A2"
+        },
+        {
+          "d": "B1",
+          "a": "Orion",
+          "b": "Comet",
+          "c": "C9"
+        }
+      ]
+    },
+    {
+      "id": "rfa-val-fallback",
+      "kind": "missing-value",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"{{b}}\", ___))",
+      "answer": "{{f}}",
+      "wrong": ["0", "valoare_implicita", "\"{{b}}\""],
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "values": [
+        {
+          "b": "ups",
+          "f": -5
+        },
+        {
+          "b": "?",
+          "f": 99
+        },
+        {
+          "b": "sapte",
+          "f": 7
+        },
+        {
+          "b": "1O",
+          "f": 10
+        }
+      ]
+    },
+    {
+      "id": "rfa-val-index",
+      "kind": "missing-value",
+      "code": "def statistici(numere):\n    return sum(numere), max(numere), min(numere)\n\nrezultat = statistici([{{nums}}])\nprint(rezultat[___])",
+      "answer": "{{i}}",
+      "wrong": ["0", "1", "2", "3"],
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "values": [
+        {
+          "nums": "5, 11, 3",
+          "i": 1
+        },
+        {
+          "nums": "10, 3, 5",
+          "i": 0
+        },
+        {
+          "nums": "7, 1, 6",
+          "i": 2
+        },
+        {
+          "nums": "20, 30, 10",
+          "i": 1
+        }
+      ]
+    },
+    {
+      "id": "rfa-bad-default",
+      "kind": "wrong-line",
+      "code": "def andocheaza(nava, doc=\"{{d}}\"):\n    print(f\"{nava} | {doc}\")\n\nandocheaza(\"{{a}}\")\nandocheaza(\"{{b}}\", \"{{c}}\")",
+      "bug": ["nava, doc=\"{{d}}\"", "doc=\"{{d}}\", nava"],
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "values": [
+        {
+          "d": "K2",
+          "a": "Zephyr",
+          "b": "Titan",
+          "c": "M4"
+        },
+        {
+          "d": "R1",
+          "a": "Rover",
+          "b": "Echo",
+          "c": "S3"
+        },
+        {
+          "d": "H5",
+          "a": "Juno",
+          "b": "Vega",
+          "c": "J7"
+        }
+      ]
+    },
+    {
+      "id": "rfa-bad-except",
+      "kind": "wrong-line",
+      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"{{a}}\"))\nprint(int_sigur(\"{{b}}\"))",
+      "bug": ["except ValueError:", "except ZeroDivisionError:"],
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "values": [
+        {
+          "a": "33",
+          "b": "3e"
+        },
+        {
+          "a": "64",
+          "b": "6.4"
+        },
+        {
+          "a": "7",
+          "b": "sapte"
+        }
+      ]
+    },
+    {
+      "id": "rfa-bad-unpack",
+      "kind": "wrong-line",
+      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([{{nums}}])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mic}\")",
+      "bug": ["print(f\"Cel mai mic: {cel_mai_mic}\")", "print(f\"Cel mai mic: {cel_mai_mare}\")"],
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "values": [
+        {
+          "nums": "7, 3, 5"
+        },
+        {
+          "nums": "11, 2, 9, 4"
+        },
+        {
+          "nums": "30, 8, 14"
+        }
+      ]
+    },
+    {
+      "id": "rfa-bad-store",
+      "kind": "wrong-line",
+      "code": "{{v}} = {{a}}\nprint(\"Inainte:\", {{v}})\n\ndef amplifica({{p}}):\n    {{p}} = {{p}} * 2\n    return {{p}}\n\n{{v}} = amplifica({{v}})\nprint(\"Dupa:\", {{v}})\nprint(\"Plus 5:\", {{v}} + 5)",
+      "bug": ["{{v}} = amplifica({{v}})", "amplifica({{v}})"],
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "values": [
+        {
+          "v": "scut",
+          "p": "s",
+          "a": 80
+        },
+        {
+          "v": "combustibil",
+          "p": "f",
+          "a": 45
+        },
+        {
+          "v": "putere",
+          "p": "p",
+          "a": 15
+        }
+      ]
+    }
+  ]
+}

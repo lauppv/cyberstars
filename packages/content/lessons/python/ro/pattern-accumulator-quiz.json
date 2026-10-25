@@ -1,0 +1,777 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Prin ce se deosebește tiparul acumulator de tiparul contor?",
+      "options": [
+        "Acumulatorul merge doar cu liste",
+        "Contorul adună 1 de fiecare dată, acumulatorul construiește un rezultat, ca o sumă, un șir sau o listă",
+        "Acumulatorul nu are nevoie de o buclă",
+        "Sunt două nume pentru același lucru"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "De la ce valoare ar trebui să pornească un acumulator pentru produs?",
+      "options": ["0", "\"\"", "[]", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 3, 4]\nprodus = 0\nfor n in numere:\n    produs *= n\nprint(produs)",
+      "options": ["0", "24", "9", "1"],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "Vrem să construim o propoziție cuvânt cu cuvânt. Cu ce pornește acumulatorul?",
+      "options": ["0", "[]", "\"\" (un șir gol)", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "parti = [\"Vice\", \"City\"]\nnume = \"\"\nfor parte in parti:\n    nume += parte + \"-\"\nprint(nume)",
+      "options": ["Vice-City", "Vice-City-", "-Vice-City", "City-Vice-"],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "În șirul inversat din lecție pentru \"Tommy\", cât este `sir_inversat` după a treia trecere prin buclă?",
+      "options": ["Tom", "ymm", "moT", "mmoT"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "De la ce valoare pornește un acumulator de tip listă?",
+      "options": ["[] (o listă goală)", "0", "\"\"", "[0]"],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 8, 5, 10, 7]\npare = []\nfor n in numere:\n    if n % 2 == 0:\n        pare.append(n)\nprint(pare)",
+      "options": ["[3, 5, 7]", "[10]", "2", "[8, 10]"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "De ce pornește un produs de la 1 și nu de la 0?",
+      "options": [
+        "Pentru că Python nu poate înmulți cu 0",
+        "Pentru că 0 înmulțit cu orice număr dă 0, așa că produsul ar rămâne 0 pentru totdeauna",
+        "Pentru că primul număr din listă e mereu 1",
+        "Nu e niciun motiv, 0 merge la fel de bine"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "În misiunea Acumulator de Semnal, intensitățile sunt `[30, 65, 20, 90, 50]`. De ce nu e 50 în lista celor puternice?",
+      "options": [
+        "Pentru că e ultima din listă",
+        "Pentru că append sare peste ultima valoare",
+        "Pentru că lista poate ține doar două valori",
+        "Pentru că verificarea e `> 50`, iar 50 nu e peste 50"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "În misiune, ce devine cuvântul `ORBITA`, inversat caracter cu caracter?",
+      "options": ["ATIBRO", "ORBITA", "ATIBR", "BIROTA"],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "preturi = [10, 20, 30]\nfor pret in preturi:\n    total = 0\n    total += pret\nprint(total)",
+      "options": ["60", "0", "30", "10"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "preturi = [5, 10, 15]\ntotal = 0\nfor pret in preturi:\n    total += pret\n    print(total)",
+      "options": ["30", "5\n15\n30", "5\n10\n15", "0\n5\n15"],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"Vice\", \"City\", \"Stories\"]\npropozitie = \"\"\nfor cuvant in cuvinte:\n    propozitie += cuvant + \" \"\nprint(len(propozitie))",
+      "options": ["17", "15", "3", "18"],
+      "answer": 3
+    },
+    {
+      "id": "q15",
+      "text": "Ce se întâmplă când rulează asta?",
+      "code": "total = \"\"\nfor n in [4, 5, 6]:\n    total += n\nprint(total)",
+      "options": [
+        "Afișează 15",
+        "Se oprește cu un TypeError: un număr nu se poate aduna la un șir",
+        "Afișează 456",
+        "Nu afișează nimic"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Care dintre aceste bucle e un acumulator care construiește o listă?",
+      "options": [
+        "for n in numere:\n    mari = [n]",
+        "for n in numere:\n    print(n)",
+        "for n in numere:\n    if n > 5:\n        mari.append(n)",
+        "for n in numere:\n    contor += 1"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"soare\", \"luna\", \"stea\"]\nlitere = 0\nfor cuvant in cuvinte:\n    litere += len(cuvant)\nprint(litere)",
+      "options": ["13", "3", "4", "soarelunastea"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3, 4]\nprodus = 1\nfor n in numere:\n    produs *= n\nprint(produs)",
+      "options": ["10", "0", "4", "24"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "scoruri = [40, 75, 90]\nmari = []\nfor s in scoruri:\n    if s > 50:\n        mari = [s]\nprint(mari)",
+      "options": ["[75, 90]", "[90]", "[75]", "[]"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"abc\"\nrezultat = \"\"\nfor caracter in cuvant:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+      "options": ["a\nab\nabc", "cba", "a\nba\ncba", "c\ncb\ncba"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Ken\"]\ninitiale = \"\"\nfor n in nume:\n    initiale += n[0]\nprint(initiale)",
+      "options": ["TLK", "KLT", "K", "TommyLanceKen"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "total = 10\nfor n in [1, 2, 3]:\n    total += n\nprint(total)",
+      "options": ["6", "13", "16", "10"],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "nave = [\"Cheetah\", \"Sabre\", \"Infernus\", \"Stinger\"]\nnume_lungi = []\nfor nava in nave:\n    if len(nava) > 6:\n        nume_lungi.append(nava)\nprint(len(nume_lungi))",
+      "options": ["4", "2", "3", "['Cheetah', 'Infernus', 'Stinger']"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Un program înmulțește toate numerele dintr-o listă, dar afișează mereu 0. Care linie e cel mai probabil vinovată?",
+      "options": ["produs *= n", "produs = 0", "for n in numere:", "print(produs)"],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"level\"\ninvers = \"\"\nfor caracter in cuvant:\n    invers = caracter + invers\nprint(invers == cuvant)",
+      "options": ["levle", "False", "level", "True"],
+      "answer": 3
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\nscurte = []\nfor nume in echipaj:\n    if len(nume) < 6:\n        scurte.append(nume)\nprint(scurte)",
+      "options": ["['Tommy', 'Lance', 'Phil']", "['Cortez']", "3", "['Phil']"],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "În misiune, unde ajunge fiecare caracter nou al cuvântului în șirul inversat?",
+      "options": [
+        "La sfârșit, după cele deja puse",
+        "La mijloc",
+        "În față, înaintea celor deja puse",
+        "Înlocuiește tot șirul"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce face `produs *= n`?",
+      "options": [
+        "La fel ca produs = n",
+        "La fel ca produs = produs + n",
+        "Compară produs cu n",
+        "La fel ca produs = produs * n"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "citiri = [12, 60, 5, 80]\ntotal = 0\nputernice = []\nfor c in citiri:\n    total += c\n    if c > 50:\n        puternice.append(c)\nprint(total)\nprint(puternice)",
+      "options": ["140\n[60, 80]", "157\n[60, 80]", "157\n[12, 5]", "157\n2"],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "litere = [\"S\", \"O\", \"S\"]\nmesaj = \"\"\nfor litera in litere:\n    mesaj = litera + \".\" + mesaj\nprint(mesaj)",
+      "options": ["S.O.S", ".S.O.S", "S.O.S.", "SOS."],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "pa-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\ntotal = 0\nfor n in {{v}}:\n    total += n\nprint(total)",
+      "values": [
+        {
+          "v": "preturi",
+          "nums": "10, 20, 30, 40"
+        },
+        {
+          "v": "puncte",
+          "nums": "7, 3, 12"
+        },
+        {
+          "v": "combustibil",
+          "nums": "25, 5, 15, 30"
+        },
+        {
+          "v": "scoruri",
+          "nums": "8, 14, 6, 2"
+        }
+      ],
+      "mistakes": [
+        ["total += n", "total = n"],
+        ["total = 0", "total = 1"],
+        ["total += n", "total += 1"],
+        ["    total += n\nprint(total)", "    total += n\n    print(total)"]
+      ]
+    },
+    {
+      "id": "pa-product",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\nprodus = 1\nfor n in {{v}}:\n    produs *= n\nprint(produs)",
+      "values": [
+        {
+          "v": "numere",
+          "nums": "2, 3, 4, 5"
+        },
+        {
+          "v": "factori",
+          "nums": "3, 3, 2"
+        },
+        {
+          "v": "bonusuri",
+          "nums": "5, 2, 4"
+        },
+        {
+          "v": "pasi",
+          "nums": "6, 1, 3"
+        }
+      ],
+      "mistakes": [
+        ["produs = 1", "produs = 0"],
+        ["produs *= n", "produs += n"],
+        ["produs *= n", "produs = n"],
+        ["produs *= n", "produs *= 2"]
+      ]
+    },
+    {
+      "id": "pa-string",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "parti = [{{words}}]\ncod = \"\"\nfor p in parti:\n    cod += p + \"{{sep}}\"\nprint(cod)",
+      "values": [
+        {
+          "words": "\"Vice\", \"City\", \"Stories\"",
+          "sep": "-"
+        },
+        {
+          "words": "\"A\", \"B\", \"C\", \"D\"",
+          "sep": "."
+        },
+        {
+          "words": "\"rosu\", \"albastru\"",
+          "sep": "/"
+        },
+        {
+          "words": "\"Marte\", \"Venus\", \"Pamant\"",
+          "sep": ","
+        }
+      ],
+      "mistakes": [
+        ["cod += p + \"{{sep}}\"", "cod = p + \"{{sep}}\""],
+        ["p + \"{{sep}}\"", "\"{{sep}}\" + p"],
+        ["cod += p + \"{{sep}}\"", "cod = p + \"{{sep}}\" + cod"]
+      ]
+    },
+    {
+      "id": "pa-reverse",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"{{w}}\"\ninvers = \"\"\nfor caracter in cuvant:\n    invers = caracter + invers\nprint(invers)",
+      "values": [
+        {
+          "w": "ORBITA"
+        },
+        {
+          "w": "LASER"
+        },
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "COMETA"
+        }
+      ],
+      "mistakes": [
+        ["invers = caracter + invers", "invers = invers + caracter"],
+        ["invers = caracter + invers", "invers = caracter"],
+        [
+          "    invers = caracter + invers\nprint(invers)",
+          "    invers = caracter + invers\n    print(invers)"
+        ],
+        ["invers = \"\"", "invers = \"*\""]
+      ]
+    },
+    {
+      "id": "pa-filter",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\nputernice = []\nfor s in {{v}}:\n    if s > {{t}}:\n        puternice.append(s)\nprint(puternice)",
+      "values": [
+        {
+          "v": "intensitati",
+          "nums": "30, 65, 20, 90, 50",
+          "t": 50
+        },
+        {
+          "v": "semnale",
+          "nums": "12, 40, 25, 8, 40",
+          "t": 25
+        },
+        {
+          "v": "citiri",
+          "nums": "70, 100, 45, 100, 80",
+          "t": 80
+        },
+        {
+          "v": "niveluri",
+          "nums": "5, 9, 3, 6, 7",
+          "t": 6
+        }
+      ],
+      "mistakes": [
+        ["s > {{t}}", "s >= {{t}}"],
+        ["puternice.append(s)", "puternice = [s]"],
+        ["s > {{t}}", "s < {{t}}"],
+        [
+          "        puternice.append(s)\nprint(puternice)",
+          "        puternice.append(s)\n        print(puternice)"
+        ]
+      ]
+    },
+    {
+      "id": "pa-letters",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [{{words}}]\nlitere = 0\nfor c in cuvinte:\n    litere += len(c)\nprint(litere)",
+      "values": [
+        {
+          "words": "\"soare\", \"luna\", \"stea\""
+        },
+        {
+          "words": "\"Tommy\", \"Ken\""
+        },
+        {
+          "words": "\"du\", \"te\", \"la\", \"baza\""
+        },
+        {
+          "words": "\"radar\", \"laser\", \"sonda\""
+        }
+      ],
+      "mistakes": [
+        ["litere += len(c)", "litere += 1"],
+        ["litere += len(c)", "litere = len(c)"],
+        ["litere = 0", "litere = 1"],
+        ["len(c)", "len(cuvinte)"]
+      ]
+    },
+    {
+      "id": "pa-evens",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\ntotal = 0\nfor n in {{v}}:\n    if n % 2 == 0:\n        total += n\nprint(f\"Suma: {total}\")",
+      "values": [
+        {
+          "v": "numere",
+          "nums": "1, 2, 3, 4, 5, 6"
+        },
+        {
+          "v": "coduri",
+          "nums": "10, 15, 20"
+        },
+        {
+          "v": "varste",
+          "nums": "7, 8, 12, 9"
+        },
+        {
+          "v": "valori",
+          "nums": "3, 14, 5, 6, 11"
+        }
+      ],
+      "mistakes": [
+        ["n % 2 == 0", "n % 2 == 1"],
+        ["total += n", "total += 1"],
+        ["    if n % 2 == 0:\n        total += n", "    total += n"],
+        ["total += n", "total = n"]
+      ]
+    },
+    {
+      "id": "pa-initials",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{names}}]\ninitiale = \"\"\nfor nume in {{v}}:\n    initiale += nume[0]\nprint(initiale)",
+      "values": [
+        {
+          "v": "echipaj",
+          "names": "\"Tommy\", \"Lance\", \"Ken\""
+        },
+        {
+          "v": "planete",
+          "names": "\"Marte\", \"Pamant\", \"Venus\", \"Pluto\""
+        },
+        {
+          "v": "masini",
+          "names": "\"Sabre\", \"Infernus\", \"Cheetah\""
+        }
+      ],
+      "mistakes": [
+        ["nume[0]", "nume[1]"],
+        ["initiale += nume[0]", "initiale = nume[0]"],
+        ["initiale += nume[0]", "initiale = nume[0] + initiale"],
+        ["initiale += nume[0]", "initiale += nume"]
+      ]
+    },
+    {
+      "id": "pa-which-double",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{nums}}]\ndublate = []\nfor n in {{v}}:\n    dublate.append(n * 2)\nprint(dublate)",
+      "values": [
+        {
+          "v": "numere",
+          "nums": "1, 2, 3"
+        },
+        {
+          "v": "viteze",
+          "nums": "10, 25, 40"
+        },
+        {
+          "v": "vieti",
+          "nums": "3, 5"
+        }
+      ],
+      "mistakes": [
+        ["dublate.append(n * 2)", "dublate.append(n)"],
+        ["dublate.append(n * 2)", "dublate = [n * 2]"],
+        [
+          "    dublate.append(n * 2)\nprint(dublate)",
+          "    dublate.append(n * 2)\n    print(dublate)"
+        ]
+      ]
+    },
+    {
+      "id": "pa-which-reverse",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = \"{{w}}\"\ninvers = \"\"\nfor caracter in {{v}}:\n    invers = caracter + invers\nprint(invers)",
+      "values": [
+        {
+          "v": "cod",
+          "w": "RADIO"
+        },
+        {
+          "v": "nume",
+          "w": "Lance"
+        },
+        {
+          "v": "semnal",
+          "w": "ALFA"
+        }
+      ],
+      "mistakes": [
+        ["invers = caracter + invers", "invers = invers + caracter"],
+        ["invers = caracter + invers", "invers = caracter"],
+        ["print(invers)", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "pa-gap-start",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\nfor n in [{{nums}}]:\n    produs *= n\nprint(produs)",
+      "values": [
+        {
+          "nums": "2, 3, 4"
+        },
+        {
+          "nums": "5, 2, 2"
+        },
+        {
+          "nums": "3, 7"
+        },
+        {
+          "nums": "4, 1, 5"
+        }
+      ],
+      "answer": "produs = 1",
+      "wrong": ["produs = 0", "produs = 2", "produs = []", "produs = n"]
+    },
+    {
+      "id": "pa-gap-append",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\nmici = []\nfor n in {{v}}:\n    if n < {{t}}:\n        ___\nprint(mici)",
+      "values": [
+        {
+          "v": "citiri",
+          "nums": "40, 12, 75, 8",
+          "t": 20
+        },
+        {
+          "v": "varste",
+          "nums": "15, 30, 9, 18",
+          "t": 18
+        },
+        {
+          "v": "preturi",
+          "nums": "5, 50, 3, 25",
+          "t": 10
+        },
+        {
+          "v": "scoruri",
+          "nums": "60, 45, 90, 30",
+          "t": 50
+        }
+      ],
+      "answer": "mici.append(n)",
+      "wrong": ["mici = [n]", "mici.append({{t}})", "print(n)", "mici.append({{v}})"]
+    },
+    {
+      "id": "pa-gap-reverse",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"{{w}}\"\nrezultat = \"\"\nfor caracter in cuvant:\n    ___\nprint(rezultat)",
+      "values": [
+        {
+          "w": "SATURN"
+        },
+        {
+          "w": "Cortez"
+        },
+        {
+          "w": "SONDA"
+        },
+        {
+          "w": "VENUS"
+        }
+      ],
+      "answer": "rezultat = caracter + rezultat",
+      "wrong": ["rezultat = rezultat + caracter", "rezultat = caracter", "rezultat += cuvant"]
+    },
+    {
+      "id": "pa-val-start",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{acc}} = ___\nfor x in [{{items}}]:\n    {{acc}} {{op}}= x\nprint({{acc}})",
+      "values": [
+        {
+          "acc": "total",
+          "op": "+",
+          "items": "4, 6, 10",
+          "ans": "0",
+          "w1": "1",
+          "w2": "10",
+          "w3": "4"
+        },
+        {
+          "acc": "produs",
+          "op": "*",
+          "items": "2, 5, 3",
+          "ans": "1",
+          "w1": "0",
+          "w2": "2",
+          "w3": "10"
+        },
+        {
+          "acc": "cuvant",
+          "op": "+",
+          "items": "\"S\", \"O\", \"S\"",
+          "ans": "\"\"",
+          "w1": "\"S\"",
+          "w2": "\" \"",
+          "w3": "\"-\""
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "pa-val-limit",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\nputernice = []\nfor s in {{v}}:\n    if s > ___:\n        puternice.append(s)\nprint(puternice)",
+      "values": [
+        {
+          "v": "intensitati",
+          "nums": "30, 65, 20, 90, 50",
+          "ans": 50,
+          "w1": 20,
+          "w2": 65,
+          "w3": 90
+        },
+        {
+          "v": "semnale",
+          "nums": "15, 8, 40, 22",
+          "ans": 10,
+          "w1": 15,
+          "w2": 22,
+          "w3": 5
+        },
+        {
+          "v": "niveluri",
+          "nums": "3, 9, 6, 1",
+          "ans": 5,
+          "w1": 1,
+          "w2": 6,
+          "w3": 9
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "pa-val-op",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\nrezultat = 1\nfor n in {{v}}:\n    rezultat = rezultat ___ n\nprint(rezultat)",
+      "values": [
+        {
+          "v": "factori",
+          "nums": "2, 3, 4"
+        },
+        {
+          "v": "bonusuri",
+          "nums": "5, 5"
+        },
+        {
+          "v": "numere",
+          "nums": "3, 2, 6"
+        }
+      ],
+      "answer": "*",
+      "wrong": ["+", "-", "//"]
+    },
+    {
+      "id": "pa-bad-start",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\nprodus = 1\nfor n in {{v}}:\n    produs *= n\nprint(produs)",
+      "values": [
+        {
+          "v": "numere",
+          "nums": "2, 3, 5"
+        },
+        {
+          "v": "factori",
+          "nums": "4, 2, 3"
+        },
+        {
+          "v": "bonusuri",
+          "nums": "3, 3, 3"
+        }
+      ],
+      "bug": ["produs = 1", "produs = 0"]
+    },
+    {
+      "id": "pa-bad-add",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\nfor p in [{{prices}}]:\n    print(p)\n    total += p\nprint(f\"Total: {total}\")",
+      "values": [
+        {
+          "prices": "10, 20, 30"
+        },
+        {
+          "prices": "5, 15, 25, 5"
+        },
+        {
+          "prices": "40, 12, 8"
+        }
+      ],
+      "bug": ["    total += p", "    total = p"]
+    },
+    {
+      "id": "pa-bad-order",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"{{w}}\"\nprint(cuvant)\ninvers = \"\"\nfor caracter in cuvant:\n    invers = caracter + invers\nprint(invers)",
+      "values": [
+        {
+          "w": "ORBITA"
+        },
+        {
+          "w": "PLANETA"
+        },
+        {
+          "w": "Ken"
+        }
+      ],
+      "bug": ["invers = caracter + invers", "invers = invers + caracter"]
+    },
+    {
+      "id": "pa-bad-append",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\nputernice = []\nfor s in {{v}}:\n    if s > {{t}}:\n        puternice.append(s)\nprint(puternice)",
+      "values": [
+        {
+          "v": "intensitati",
+          "nums": "30, 65, 20, 90",
+          "t": 50
+        },
+        {
+          "v": "semnale",
+          "nums": "70, 10, 85, 40, 95",
+          "t": 60
+        },
+        {
+          "v": "citiri",
+          "nums": "6, 2, 8, 1",
+          "t": 4
+        }
+      ],
+      "bug": ["puternice.append(s)", "puternice = [s]"]
+    }
+  ]
+}

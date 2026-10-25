@@ -1,0 +1,725 @@
+{
+  "note": "Made by npm run make:quiz from the templates in dictionaries-loop-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "dl-keys-b20393",
+      "text": "What does this print?",
+      "code": "ship = {\"name\": \"Nova\", \"speed\": 90, \"crew\": 4}\nfor key in ship:\n    print(key)",
+      "options": [
+        "name\nspeed\ncrew",
+        "Nova\n90\n4",
+        "{'name': 'Nova', 'speed': 90, 'crew': 4}\n{'name': 'Nova', 'speed': 90, 'crew': 4}\n{'name': 'Nova', 'speed': 90, 'crew': 4}",
+        "3\n3\n3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-keys-8cc823",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 7, \"Rex\": 9}\nfor name in scores:\n    print(name)",
+      "options": ["Ana\nRex", "7\n9", "{'Ana': 7, 'Rex': 9}\n{'Ana': 7, 'Rex': 9}", "2\n2"],
+      "answer": 0
+    },
+    {
+      "id": "dl-keys-16b724",
+      "text": "What does this print?",
+      "code": "prices = {\"tea\": 4, \"cake\": 6, \"juice\": 5}\nfor item in prices:\n    print(item)",
+      "options": [
+        "tea\ncake\njuice",
+        "4\n6\n5",
+        "{'tea': 4, 'cake': 6, 'juice': 5}\n{'tea': 4, 'cake': 6, 'juice': 5}\n{'tea': 4, 'cake': 6, 'juice': 5}",
+        "3\n3\n3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-values-387901",
+      "text": "What does this print?",
+      "code": "fuel = {\"left\": 40, \"right\": 25}\nfor f in fuel.values():\n    print(f)",
+      "options": [
+        "40\n25",
+        "left\nright",
+        "{'left': 40, 'right': 25}\n{'left': 40, 'right': 25}",
+        "2\n2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-values-77db54",
+      "text": "What does this print?",
+      "code": "ages = {\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}\nfor age in ages.values():\n    print(age)",
+      "options": [
+        "12\n30\n9",
+        "Ana\nRex\nKai",
+        "{'Ana': 12, 'Rex': 30, 'Kai': 9}\n{'Ana': 12, 'Rex': 30, 'Kai': 9}\n{'Ana': 12, 'Rex': 30, 'Kai': 9}",
+        "3\n3\n3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-values-a31ff3",
+      "text": "What does this print?",
+      "code": "capitals = {\"France\": \"Paris\", \"Italy\": \"Rome\"}\nfor city in capitals.values():\n    print(city)",
+      "options": [
+        "Paris\nRome",
+        "France\nItaly",
+        "{'France': 'Paris', 'Italy': 'Rome'}\n{'France': 'Paris', 'Italy': 'Rome'}",
+        "2\n2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-items-64726e",
+      "text": "What does this print?",
+      "code": "prices = {\"tea\": 4, \"cake\": 6}\nfor item, price in prices.items():\n    print(f\"{item} costs {price}\")",
+      "options": [
+        "tea costs 4\ncake costs 6",
+        "4 costs tea\n6 costs cake",
+        "{item} costs {price}\n{item} costs {price}",
+        "tea costs {'tea': 4, 'cake': 6}\ncake costs {'tea': 4, 'cake': 6}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-items-707da4",
+      "text": "What does this print?",
+      "code": "scores = {\"Tommy\": 88, \"Lance\": 95, \"Phil\": 70}\nfor name, score in scores.items():\n    print(f\"{name}: {score}\")",
+      "options": [
+        "Tommy: 88\nLance: 95\nPhil: 70",
+        "88: Tommy\n95: Lance\n70: Phil",
+        "{name}: {score}\n{name}: {score}\n{name}: {score}",
+        "Tommy: {'Tommy': 88, 'Lance': 95, 'Phil': 70}\nLance: {'Tommy': 88, 'Lance': 95, 'Phil': 70}\nPhil: {'Tommy': 88, 'Lance': 95, 'Phil': 70}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-items-33ce37",
+      "text": "What does this print?",
+      "code": "stock = {\"apples\": 5, \"pears\": 0, \"plums\": 12}\nfor fruit, count in stock.items():\n    print(f\"{fruit} - {count}\")",
+      "options": [
+        "apples - 5\npears - 0\nplums - 12",
+        "5 - apples\n0 - pears\n12 - plums",
+        "{fruit} - {count}\n{fruit} - {count}\n{fruit} - {count}",
+        "apples - {'apples': 5, 'pears': 0, 'plums': 12}\npears - {'apples': 5, 'pears': 0, 'plums': 12}\nplums - {'apples': 5, 'pears': 0, 'plums': 12}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-items-d21bfa",
+      "text": "What does this print?",
+      "code": "levels = {\"Ana\": 3, \"Rex\": 7}\nfor player, level in levels.items():\n    print(f\"{player} is on level {level}\")",
+      "options": [
+        "Ana is on level 3\nRex is on level 7",
+        "3 is on level Ana\n7 is on level Rex",
+        "{player} is on level {level}\n{player} is on level {level}",
+        "Ana is on level {'Ana': 3, 'Rex': 7}\nRex is on level {'Ana': 3, 'Rex': 7}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-total-9abe4e",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total)",
+      "options": ["20", "8", "3", "7\n12\n20"],
+      "answer": 0
+    },
+    {
+      "id": "dl-total-48d76d",
+      "text": "What does this print?",
+      "code": "prices = {\"bread\": 3, \"milk\": 2, \"cheese\": 10}\nbill = 0\nfor p in prices.values():\n    bill = bill + p\nprint(bill)",
+      "options": ["15", "10", "3", "3\n5\n15"],
+      "answer": 0
+    },
+    {
+      "id": "dl-total-fadca2",
+      "text": "What does this print?",
+      "code": "fuel = {\"left\": 40, \"right\": 60}\ntotal = 0\nfor f in fuel.values():\n    total = total + f\nprint(total)",
+      "options": ["100", "60", "2", "40\n100"],
+      "answer": 0
+    },
+    {
+      "id": "dl-total-bd2198",
+      "text": "What does this print?",
+      "code": "steps = {\"Mon\": 1200, \"Tue\": 800, \"Wed\": 1500}\nwalked = 0\nfor s in steps.values():\n    walked = walked + s\nprint(walked)",
+      "options": ["3500", "1500", "3", "1200\n2000\n3500"],
+      "answer": 0
+    },
+    {
+      "id": "dl-count-6f3e2a",
+      "text": "What does this print?",
+      "code": "counter = {}\nfor letter in \"apple\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "options": [
+        "{'a': 1, 'p': 2, 'l': 1, 'e': 1}",
+        "{'a': 1, 'p': 1, 'l': 1, 'e': 1}",
+        "{'a': 0, 'p': 1, 'l': 0, 'e': 0}",
+        "4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-count-54326e",
+      "text": "What does this print?",
+      "code": "counter = {}\nfor letter in \"cocoa\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "options": [
+        "{'c': 2, 'o': 2, 'a': 1}",
+        "{'c': 1, 'o': 1, 'a': 1}",
+        "{'c': 1, 'o': 1, 'a': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-count-c9762f",
+      "text": "What does this print?",
+      "code": "counter = {}\nfor letter in \"teeth\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "options": [
+        "{'t': 2, 'e': 2, 'h': 1}",
+        "{'t': 1, 'e': 1, 'h': 1}",
+        "{'t': 1, 'e': 1, 'h': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-count-5f4969",
+      "text": "What does this print?",
+      "code": "counter = {}\nfor letter in \"pepper\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "options": [
+        "{'p': 3, 'e': 2, 'r': 1}",
+        "{'p': 1, 'e': 1, 'r': 1}",
+        "{'p': 2, 'e': 1, 'r': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-average-69ad1d",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 7, \"Rex\": 8}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total / len(scores))",
+      "options": ["7.5", "15", "7", "4.0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-average-118325",
+      "text": "What does this print?",
+      "code": "temps = {\"Mon\": 20, \"Tue\": 25, \"Wed\": 24}\ntotal = 0\nfor t in temps.values():\n    total = total + t\nprint(total / len(temps))",
+      "options": ["23.0", "69", "23", "8.0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-average-712d19",
+      "text": "What does this print?",
+      "code": "grades = {\"math\": 9, \"art\": 10, \"music\": 6, \"sport\": 10}\npoints = 0\nfor g in grades.values():\n    points = points + g\nprint(points / len(grades))",
+      "options": ["8.75", "35", "8", "2.5"],
+      "answer": 0
+    },
+    {
+      "id": "dl-average-b28089",
+      "text": "What does this print?",
+      "code": "speeds = {\"Nova\": 90, \"Comet\": 75}\ntotal = 0\nfor s in speeds.values():\n    total = total + s\nprint(total / len(speeds))",
+      "options": ["82.5", "165", "82", "37.5"],
+      "answer": 0
+    },
+    {
+      "id": "dl-top-549814",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}\ntop = \"\"\nbest = 0\nfor name in scores:\n    if scores[name] > best:\n        best = scores[name]\n        top = name\nprint(f\"{top}: {best}\")",
+      "options": ["Rex: 9", "Max: 9", ": 9", ": 0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-top-2124e7",
+      "text": "What does this print?",
+      "code": "points = {\"Tommy\": 88, \"Lance\": 95, \"Phil\": 60, \"Ken\": 72, \"Sonny\": 65}\ntop = \"\"\nbest = 0\nfor name in points:\n    if points[name] > best:\n        best = points[name]\n        top = name\nprint(f\"{top}: {best}\")",
+      "options": ["Lance: 95", "Sonny: 95", ": 95", ": 0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-top-47c78a",
+      "text": "What does this print?",
+      "code": "visits = {\"Mars\": 6, \"Venus\": 3, \"Earth\": 5, \"Moon\": 4, \"Pluto\": 1}\ntop = \"\"\nbest = 0\nfor name in visits:\n    if visits[name] > best:\n        best = visits[name]\n        top = name\nprint(f\"{top}: {best}\")",
+      "options": ["Mars: 6", "Pluto: 6", ": 6", ": 0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-top-c7a12a",
+      "text": "What does this print?",
+      "code": "votes = {\"red\": 12, \"blue\": 30, \"green\": 8, \"black\": 20, \"white\": 10}\ntop = \"\"\nbest = 0\nfor name in votes:\n    if votes[name] > best:\n        best = votes[name]\n        top = name\nprint(f\"{top}: {best}\")",
+      "options": ["blue: 30", "white: 30", ": 30", ": 0"],
+      "answer": 0
+    },
+    {
+      "id": "dl-pass-a383b5",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\npassing = []\nfor name in scores:\n    if scores[name] >= 50:\n        passing.append(name)\nprint(passing)",
+      "options": [
+        "['Ana', 'Kai', 'Zoe']",
+        "[55, 50, 90]",
+        "['Rex']",
+        "['Ana']\n['Ana']\n['Ana', 'Kai']\n['Ana', 'Kai', 'Zoe']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-pass-d00c92",
+      "text": "What does this print?",
+      "code": "temps = {\"Mon\": 18, \"Tue\": 31, \"Wed\": 27, \"Thu\": 33}\nhot = []\nfor day in temps:\n    if temps[day] > 30:\n        hot.append(day)\nprint(hot)",
+      "options": [
+        "['Tue', 'Thu']",
+        "[31, 33]",
+        "['Mon', 'Wed']",
+        "[]\n['Tue']\n['Tue']\n['Tue', 'Thu']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-pass-8955ce",
+      "text": "What does this print?",
+      "code": "prices = {\"tea\": 4, \"cake\": 9, \"juice\": 5}\ncheap = []\nfor item in prices:\n    if prices[item] <= 5:\n        cheap.append(item)\nprint(cheap)",
+      "options": ["['tea', 'juice']", "[4, 5]", "['cake']", "['tea']\n['tea']\n['tea', 'juice']"],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-values-5be085",
+      "text": "Which program shows this?",
+      "output": "100\n80",
+      "options": [
+        "health = {\"Tommy\": 100, \"Lance\": 80}\nfor h in health.values():\n    print(h)",
+        "health = {\"Tommy\": 100, \"Lance\": 80}\nfor h in health.keys():\n    print(h)",
+        "health = {\"Tommy\": 100, \"Lance\": 80}\nfor h in health.values():\n    print(health)",
+        "health = {\"Tommy\": 100, \"Lance\": 80}\nfor h in health.values():\nprint(h)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-values-292f90",
+      "text": "Which program shows this?",
+      "output": "3\n2\n5",
+      "options": [
+        "prices = {\"bread\": 3, \"milk\": 2, \"jam\": 5}\nfor p in prices.values():\n    print(p)",
+        "prices = {\"bread\": 3, \"milk\": 2, \"jam\": 5}\nfor p in prices.keys():\n    print(p)",
+        "prices = {\"bread\": 3, \"milk\": 2, \"jam\": 5}\nfor p in prices.values():\n    print(prices)",
+        "prices = {\"bread\": 3, \"milk\": 2, \"jam\": 5}\nfor p in prices.values():\nprint(p)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-values-afd738",
+      "text": "Which program shows this?",
+      "output": "Rome\nOslo",
+      "options": [
+        "homes = {\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.values():\n    print(city)",
+        "homes = {\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.keys():\n    print(city)",
+        "homes = {\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.values():\n    print(homes)",
+        "homes = {\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.values():\nprint(city)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-items-3be77e",
+      "text": "Which program shows this?",
+      "output": "Ana: 12\nRex: 30",
+      "options": [
+        "ages = {\"Ana\": 12, \"Rex\": 30}\nfor name, age in ages.items():\n    print(f\"{name}: {age}\")",
+        "ages = {\"Ana\": 12, \"Rex\": 30}\nfor name, age in ages.items():\n    print(f\"{age}: {name}\")",
+        "ages = {\"Ana\": 12, \"Rex\": 30}\nfor name, age in ages.items():\n    print(\"{name}: {age}\")",
+        "ages = {\"Ana\": 12, \"Rex\": 30}\nfor name, age in ages.items():\nprint(f\"{name}: {age}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-items-a1c357",
+      "text": "Which program shows this?",
+      "output": "apples: 5\npears: 2\nplums: 9",
+      "options": [
+        "stock = {\"apples\": 5, \"pears\": 2, \"plums\": 9}\nfor fruit, count in stock.items():\n    print(f\"{fruit}: {count}\")",
+        "stock = {\"apples\": 5, \"pears\": 2, \"plums\": 9}\nfor fruit, count in stock.items():\n    print(f\"{count}: {fruit}\")",
+        "stock = {\"apples\": 5, \"pears\": 2, \"plums\": 9}\nfor fruit, count in stock.items():\n    print(\"{fruit}: {count}\")",
+        "stock = {\"apples\": 5, \"pears\": 2, \"plums\": 9}\nfor fruit, count in stock.items():\nprint(f\"{fruit}: {count}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-which-items-f60a7b",
+      "text": "Which program shows this?",
+      "output": "Lance: 1\nPhil: 2",
+      "options": [
+        "ranks = {\"Lance\": 1, \"Phil\": 2}\nfor name, rank in ranks.items():\n    print(f\"{name}: {rank}\")",
+        "ranks = {\"Lance\": 1, \"Phil\": 2}\nfor name, rank in ranks.items():\n    print(f\"{rank}: {name}\")",
+        "ranks = {\"Lance\": 1, \"Phil\": 2}\nfor name, rank in ranks.items():\n    print(\"{name}: {rank}\")",
+        "ranks = {\"Lance\": 1, \"Phil\": 2}\nfor name, rank in ranks.items():\nprint(f\"{name}: {rank}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-count-1faa32",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor letter in \"coffee\":\n    if letter in counter:\n        ___\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "output": "{'c': 1, 'o': 1, 'f': 2, 'e': 2}",
+      "options": [
+        "counter[letter] = counter[letter] + 1",
+        "counter[letter] = 1",
+        "counter[letter] = counter[letter] + 2",
+        "counter = counter + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-count-3f28bd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor letter in \"bubble\":\n    if letter in counter:\n        ___\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "output": "{'b': 3, 'u': 1, 'l': 1, 'e': 1}",
+      "options": [
+        "counter[letter] = counter[letter] + 1",
+        "counter[letter] = 1",
+        "counter[letter] = counter[letter] + 2",
+        "counter = counter + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-count-999828",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor letter in \"tomato\":\n    if letter in counter:\n        ___\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "output": "{'t': 2, 'o': 2, 'm': 1, 'a': 1}",
+      "options": [
+        "counter[letter] = counter[letter] + 1",
+        "counter[letter] = 1",
+        "counter[letter] = counter[letter] + 2",
+        "counter = counter + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-count-48c4ba",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor letter in \"sheep\":\n    if letter in counter:\n        ___\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "output": "{'s': 1, 'h': 1, 'e': 2, 'p': 1}",
+      "options": [
+        "counter[letter] = counter[letter] + 1",
+        "counter[letter] = 1",
+        "counter[letter] = counter[letter] + 2",
+        "counter = counter + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-loop-65bc75",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "scores = {\"Tommy\": 88, \"Lance\": 95}\n___\n    print(f\"{name}: {score}\")",
+      "output": "Tommy: 88\nLance: 95",
+      "options": [
+        "for name, score in scores.items():",
+        "for name, score in scores:",
+        "for score, name in scores.items():",
+        "for name, score in scores.values():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-loop-ff2a4e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "prices = {\"tea\": 4, \"cake\": 6, \"juice\": 5}\n___\n    print(f\"{item}: {price}\")",
+      "output": "tea: 4\ncake: 6\njuice: 5",
+      "options": [
+        "for item, price in prices.items():",
+        "for item, price in prices:",
+        "for price, item in prices.items():",
+        "for item, price in prices.values():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-loop-61afc3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "ages = {\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}\n___\n    print(f\"{name}: {age}\")",
+      "output": "Ana: 12\nRex: 30\nKai: 9",
+      "options": [
+        "for name, age in ages.items():",
+        "for name, age in ages:",
+        "for age, name in ages.items():",
+        "for name, age in ages.values():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-loop-f3248c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fuel = {\"left\": 40, \"right\": 25}\n___\n    print(f\"{tank}: {amount}\")",
+      "output": "left: 40\nright: 25",
+      "options": [
+        "for tank, amount in fuel.items():",
+        "for tank, amount in fuel:",
+        "for amount, tank in fuel.items():",
+        "for tank, amount in fuel.values():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-value-4a2f14",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "health = {\"Tommy\": 100, \"Lance\": 80, \"Phil\": 45}\nfor name in health:\n    ___",
+      "output": "100\n80\n45",
+      "options": ["print(health[name])", "print(name)", "print(health)", "print(health[0])"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-value-fb73c8",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "capitals = {\"France\": \"Paris\", \"Italy\": \"Rome\"}\nfor country in capitals:\n    ___",
+      "output": "Paris\nRome",
+      "options": [
+        "print(capitals[country])",
+        "print(country)",
+        "print(capitals)",
+        "print(capitals[0])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-value-b0a4c6",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "prices = {\"bread\": 3, \"milk\": 2}\nfor item in prices:\n    ___",
+      "output": "3\n2",
+      "options": ["print(prices[item])", "print(item)", "print(prices)", "print(prices[0])"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-value-4a67c3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "speeds = {\"Nova\": 90, \"Comet\": 75, \"Star\": 60}\nfor ship in speeds:\n    ___",
+      "output": "90\n75\n60",
+      "options": ["print(speeds[ship])", "print(ship)", "print(speeds)", "print(speeds[0])"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-method-4a30d0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "health = {\"Tommy\": 100, \"Lance\": 80}\nfor x in health.___():\n    print(x)",
+      "output": "100\n80",
+      "options": ["values", "keys", "items", "len"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-method-597448",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "prices = {\"tea\": 4, \"cake\": 6}\nfor x in prices.___():\n    print(x)",
+      "output": "tea\ncake",
+      "options": ["keys", "values", "items", "len"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-method-a0819f",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "homes = {\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}\nfor x in homes.___():\n    print(x)",
+      "output": "Rome\nOslo",
+      "options": ["values", "keys", "items", "len"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-method-4ce565",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "temps = {\"Mon\": 21, \"Tue\": 30, \"Wed\": 34}\nfor x in temps.___():\n    print(x)",
+      "output": "Mon\nTue\nWed",
+      "options": ["keys", "values", "items", "len"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-start-60d86f",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor letter in \"hello\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = ___\nprint(counter)",
+      "output": "{'h': 1, 'e': 1, 'l': 2, 'o': 1}",
+      "options": ["1", "0", "2", "letter"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-start-f47a30",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor letter in \"kiwi\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = ___\nprint(counter)",
+      "output": "{'k': 1, 'i': 2, 'w': 1}",
+      "options": ["1", "0", "2", "letter"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-start-cdee87",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor letter in \"pizza\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = ___\nprint(counter)",
+      "output": "{'p': 1, 'i': 1, 'z': 2, 'a': 1}",
+      "options": ["1", "0", "2", "letter"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-start-520d6b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor letter in \"rocket\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = ___\nprint(counter)",
+      "output": "{'r': 1, 'o': 1, 'c': 1, 'k': 1, 'e': 1, 't': 1}",
+      "options": ["1", "0", "2", "letter"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-len-a02c66",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "scores = {\"Ana\": 6, \"Rex\": 9, \"Kai\": 9}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total / ___)",
+      "output": "8.0",
+      "options": ["len(scores)", "len(scores) - 1", "total", "len(total)"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-len-f0574f",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "temps = {\"Mon\": 20, \"Tue\": 23, \"Wed\": 24, \"Thu\": 25}\ntotal = 0\nfor t in temps.values():\n    total = total + t\nprint(total / ___)",
+      "output": "23.0",
+      "options": ["len(temps)", "len(temps) - 1", "total", "len(total)"],
+      "answer": 0
+    },
+    {
+      "id": "dl-gap-len-e09974",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "prices = {\"tea\": 4, \"cake\": 7}\nbill = 0\nfor p in prices.values():\n    bill = bill + p\nprint(bill / ___)",
+      "output": "5.5",
+      "options": ["len(prices)", "len(prices) - 1", "bill", "len(bill)"],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-sum-76954d",
+      "text": "Which line stops this program from printing this?",
+      "code": "prices = {\"bread\": 3, \"milk\": 2, \"cheese\": 10}\nbill = 0\nfor p in prices.values():\n    print(p)\n    bill = p\nprint(f\"Bill: {bill}\")",
+      "output": "3\n2\n10\nBill: 15",
+      "options": [
+        "bill = p",
+        "print(p)",
+        "bill = 0",
+        "prices = {\"bread\": 3, \"milk\": 2, \"cheese\": 10}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-sum-24bca3",
+      "text": "Which line stops this program from printing this?",
+      "code": "scores = {\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scores.values():\n    print(s)\n    total = s\nprint(f\"Total: {total}\")",
+      "output": "7\n5\n8\nTotal: 20",
+      "options": ["total = s", "print(s)", "total = 0", "print(f\"Total: {total}\")"],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-sum-8565f3",
+      "text": "Which line stops this program from printing this?",
+      "code": "steps = {\"Mon\": 1200, \"Tue\": 800}\nwalked = 0\nfor s in steps.values():\n    print(s)\n    walked = s\nprint(f\"Steps: {walked}\")",
+      "output": "1200\n800\nSteps: 2000",
+      "options": ["walked = s", "print(s)", "walked = 0", "steps = {\"Mon\": 1200, \"Tue\": 800}"],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-items-c526c1",
+      "text": "Which line stops this program from printing this?",
+      "code": "scores = {\"Tommy\": 88, \"Lance\": 95}\nprint(\"Scores:\")\nfor name, score in scores.items():\n    print(f\"{name}: {name}\")",
+      "output": "Scores:\nTommy: 88\nLance: 95",
+      "options": [
+        "print(f\"{name}: {name}\")",
+        "print(\"Scores:\")",
+        "scores = {\"Tommy\": 88, \"Lance\": 95}",
+        "for name, score in scores.items():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-items-1d1c77",
+      "text": "Which line stops this program from printing this?",
+      "code": "stock = {\"apples\": 5, \"pears\": 0, \"plums\": 12}\nprint(\"In stock:\")\nfor fruit, count in stock.items():\n    print(f\"{fruit}: {fruit}\")",
+      "output": "In stock:\napples: 5\npears: 0\nplums: 12",
+      "options": [
+        "print(f\"{fruit}: {fruit}\")",
+        "print(\"In stock:\")",
+        "stock = {\"apples\": 5, \"pears\": 0, \"plums\": 12}",
+        "for fruit, count in stock.items():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-items-4f050b",
+      "text": "Which line stops this program from printing this?",
+      "code": "ages = {\"Ana\": 12, \"Rex\": 30}\nprint(\"Ages:\")\nfor name, age in ages.items():\n    print(f\"{name}: {name}\")",
+      "output": "Ages:\nAna: 12\nRex: 30",
+      "options": [
+        "print(f\"{name}: {name}\")",
+        "print(\"Ages:\")",
+        "ages = {\"Ana\": 12, \"Rex\": 30}",
+        "for name, age in ages.items():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-check-6c8bb5",
+      "text": "Which line stops this program from printing this?",
+      "code": "counter = {}\nfor letter in \"letter\":\n    if letter not in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "output": "{'l': 1, 'e': 2, 't': 2, 'r': 1}",
+      "options": [
+        "if letter not in counter:",
+        "for letter in \"letter\":",
+        "counter = {}",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-check-eb8152",
+      "text": "Which line stops this program from printing this?",
+      "code": "counter = {}\nfor letter in \"cookie\":\n    if letter not in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "output": "{'c': 1, 'o': 2, 'k': 1, 'i': 1, 'e': 1}",
+      "options": [
+        "if letter not in counter:",
+        "for letter in \"cookie\":",
+        "counter = {}",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-check-820c72",
+      "text": "Which line stops this program from printing this?",
+      "code": "counter = {}\nfor letter in \"puppy\":\n    if letter not in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "output": "{'p': 3, 'u': 1, 'y': 1}",
+      "options": ["if letter not in counter:", "for letter in \"puppy\":", "counter = {}", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-start-4d01d4",
+      "text": "Which line stops this program from printing this?",
+      "code": "counter = []\nfor letter in \"moon\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "output": "{'m': 1, 'o': 2, 'n': 1}",
+      "options": [
+        "counter = []",
+        "counter[letter] = counter[letter] + 1",
+        "counter[letter] = 1",
+        "print(counter)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-start-4c2758",
+      "text": "Which line stops this program from printing this?",
+      "code": "counter = []\nfor letter in \"radar\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "output": "{'r': 2, 'a': 2, 'd': 1}",
+      "options": [
+        "counter = []",
+        "counter[letter] = counter[letter] + 1",
+        "counter[letter] = 1",
+        "print(counter)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-bad-start-df5baf",
+      "text": "Which line stops this program from printing this?",
+      "code": "counter = []\nfor letter in \"tennis\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "output": "{'t': 1, 'e': 1, 'n': 2, 'i': 1, 's': 1}",
+      "options": [
+        "counter = []",
+        "counter[letter] = counter[letter] + 1",
+        "counter[letter] = 1",
+        "print(counter)"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,947 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "In `for k in scores:`, what is k on each pass?",
+      "options": [
+        "A key of scores, the next one each time",
+        "A value of scores, the next one each time",
+        "A whole key: value pair",
+        "How many pairs scores has"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "player = {\"name\": \"Tommy\", \"city\": \"Vice City\"}\nfor i in player:\n    print(i)",
+      "options": [
+        "Tommy\nVice City",
+        "name\ncity",
+        "name: Tommy\ncity: Vice City",
+        "{'name': 'Tommy', 'city': 'Vice City'}"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Inside `for name in scores:`, how do you get the score that goes with each name?",
+      "options": ["scores.name", "name[scores]", "scores(name)", "scores[name]"],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "What does `.items()` give a for loop on each pass?",
+      "options": [
+        "Only the key",
+        "The key and its value, together",
+        "Only the value",
+        "The position of the pair in the dictionary"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "Which loop gives the same keys as `for k in player:`?",
+      "options": [
+        "for k in player.values():",
+        "for k in player.items():",
+        "for k in player.keys():",
+        "for k in len(player):"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "prices is `{\"bread\": 3, \"milk\": 2}`. What does a loop over `prices.values()` give?",
+      "options": [
+        "\"bread\", then \"milk\"",
+        "5",
+        "\"bread\" with 3, then \"milk\" with 2",
+        "3, then 2"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "In `for key, value in player.items():`, player is `{\"name\": \"Tommy\", \"health\": 100}`. What is value on the first pass?",
+      "options": ["\"name\"", "100", "\"Tommy\"", "\"health\""],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "ages = {\"Ana\": 12, \"Rex\": 30}\nfor age, name in ages.items():\n    print(name)",
+      "options": [
+        "12\n30",
+        "Ana\nRex",
+        "It stops with an error: the names are the wrong way round",
+        "age\nname"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "player has 3 key: value pairs. What does `len(player)` give?",
+      "options": ["6", "2", "1", "3"],
+      "answer": 3
+    },
+    {
+      "id": "q10",
+      "text": "In the lesson, after counting the letters of \"banana\", what is `counter[\"a\"]`?",
+      "options": ["1", "6", "3", "2"],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "In the letter counter, why does a letter seen for the first time get `counter[letter] = 1`?",
+      "options": [
+        "Because counter[letter] + 1 would fail: the letter isn't a key in counter yet",
+        "So that letter is counted twice",
+        "Because every dictionary starts from 1",
+        "So the loop skips that letter"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "What happens when this runs?",
+      "code": "counter = {}\nfor letter in \"moon\":\n    counter[letter] = counter[letter] + 1\nprint(counter)",
+      "options": [
+        "It prints {'m': 1, 'o': 2, 'n': 1}",
+        "It prints {'m': 0, 'o': 1, 'n': 0}",
+        "It prints {}",
+        "It stops with a KeyError: \"m\" isn't a key in counter yet"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "word = \"hello\"\ncounter = {}\nfor letter in word:\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
+      "options": [
+        "{'h': 1, 'e': 1, 'l': 1, 'o': 1}",
+        "{'hello': 1}",
+        "{'h': 1, 'e': 1, 'l': 2, 'o': 1}",
+        "{'l': 2}"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "Why does the sum of a dictionary's scores loop over `.values()` and not over the dictionary itself?",
+      "options": [
+        "Looping over the dictionary gives the keys, the names, not the scores",
+        "A loop over a dictionary works only with .values()",
+        "So it gets the scores from the largest to the smallest",
+        ".values() adds the scores up by itself"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "fuel = {\"left\": 40, \"right\": 20}\ntotal = 0\nfor f in fuel.values():\n    total = total + f\nprint(total / len(fuel))",
+      "options": ["30", "60", "30.0", "2"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "In the Crew Scores mission, why does the loop that finds the top go through the names, not through `.values()`?",
+      "options": [
+        "With .values() the loop would skip the last member",
+        "It needs the name of the best member, and from a name it can get the score too",
+        ".values() doesn't work on a dictionary of numbers",
+        "So it prints the names in order"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "In the Crew Scores mission, the dictionary has 10 members. How many lines does the program print?",
+      "options": ["13", "23", "20", "10"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "In the Crew Scores mission, the scores add up to 785. Why is the average 78.5?",
+      "options": [
+        "Because 785 is divided by len(scores), which is 10",
+        "Because Python rounds 785 down",
+        "Because the top score is 95",
+        "Because 785 is divided by the keys and the values together, 20"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "In what order does `for k in d:` give the keys?",
+      "options": [
+        "From A to Z",
+        "In a random order, another one on each run",
+        "In the order they were put into the dictionary",
+        "From the smallest value to the largest"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "ranks = {}\nranks[\"Lance\"] = 2\nranks[\"Ana\"] = 1\nfor name in ranks:\n    print(name)",
+      "options": ["Ana\nLance", "Lance\nAna", "1\n2", "2\n1"],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "Which loop prints the same as this one?",
+      "code": "for v in player.values():\n    print(v)",
+      "options": [
+        "for k in player:\n    print(k)",
+        "for k in player:\n    print(player[k])",
+        "for k in player.keys():\n    print(k)",
+        "print(player)"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 10, \"Rex\": 20}\nfor name in scores:\n    scores[name] = scores[name] + 5\nprint(scores)",
+      "options": [
+        "{'Ana': 10, 'Rex': 20}",
+        "{'Ana': 15, 'Rex': 20}",
+        "It stops with an error",
+        "{'Ana': 15, 'Rex': 25}"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "prices = {\"tea\": 4, \"cake\": 6}\nfor p in prices.values():\n    p = p * 2\nprint(prices)",
+      "options": [
+        "{'tea': 4, 'cake': 6}",
+        "{'tea': 8, 'cake': 12}",
+        "{'tea': 8, 'cake': 6}",
+        "[8, 12]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "scores is `{\"Tommy\": 88}`. What does `88 in scores` give?",
+      "options": [
+        "True, since 88 is in the dictionary",
+        "\"Tommy\"",
+        "It stops with an error",
+        "False, since in looks only at the keys"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "temps = {\"Mon\": 21, \"Tue\": 30, \"Wed\": 34}\nhot = 0\nfor t in temps.values():\n    if t > 25:\n        hot = hot + 1\nprint(hot)",
+      "options": ["2", "64", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "scores = {\"Ana\": 40, \"Rex\": 75, \"Kai\": 50}\npassing = []\nfor name in scores:\n    if scores[name] >= 50:\n        passing.append(name)\nprint(passing)",
+      "options": ["['Rex']", "[75, 50]", "['Rex', 'Kai']", "['Ana']"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "stock = {\"apples\": 5, \"pears\": 0}\nfor item, count in stock.items():\n    print(f\"{item}: {count}\")",
+      "options": [
+        "apples: 5\npears: 0",
+        "item: count\nitem: count",
+        "apples\npears",
+        "5: apples\n0: pears"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "What happens when this runs?",
+      "code": "scores = {\"Tommy\": 88, \"Lance\": 95}\nfor name, score in scores:\n    print(f\"{name}: {score}\")",
+      "options": [
+        "It prints Tommy: 88 and Lance: 95",
+        "It prints only the names",
+        "It stops with an error: without .items() the loop gives only the keys",
+        "It prints 88 and 95"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "With a dictionary, you count how many times each word shows up in a list. What are its keys and its values?",
+      "options": [
+        "The keys are the counts and the values are the words",
+        "The keys are the words and the values are how many times each one shows up",
+        "The keys are the positions 0, 1, 2 and the values are the words",
+        "The keys and the values are both the words"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "What happens when this runs?",
+      "code": "scores = {\"Ana\": 7, \"Rex\": 5}\ntotal = 0\nfor name in scores:\n    total = total + name\nprint(total)",
+      "options": [
+        "It prints 12",
+        "It prints AnaRex",
+        "It prints 2",
+        "It stops with an error: name is a key, a text, and can't be added to a number"
+      ],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "dl-keys",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\nfor {{k}} in {{v}}:\n    print({{k}})",
+      "values": [
+        {
+          "v": "ship",
+          "d": "{\"name\": \"Nova\", \"speed\": 90, \"crew\": 4}",
+          "k": "key"
+        },
+        {
+          "v": "scores",
+          "d": "{\"Ana\": 7, \"Rex\": 9}",
+          "k": "name"
+        },
+        {
+          "v": "prices",
+          "d": "{\"tea\": 4, \"cake\": 6, \"juice\": 5}",
+          "k": "item"
+        }
+      ],
+      "mistakes": [
+        ["print({{k}})", "print({{v}}[{{k}}])"],
+        ["print({{k}})", "print({{v}})"],
+        ["\n    print({{k}})", "\nprint({{k}})"],
+        ["print({{k}})", "print(len({{v}}))"]
+      ]
+    },
+    {
+      "id": "dl-values",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\nfor {{x}} in {{v}}.values():\n    print({{x}})",
+      "values": [
+        {
+          "v": "fuel",
+          "d": "{\"left\": 40, \"right\": 25}",
+          "x": "f"
+        },
+        {
+          "v": "ages",
+          "d": "{\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}",
+          "x": "age"
+        },
+        {
+          "v": "capitals",
+          "d": "{\"France\": \"Paris\", \"Italy\": \"Rome\"}",
+          "x": "city"
+        }
+      ],
+      "mistakes": [
+        [".values()", ".keys()"],
+        ["print({{x}})", "print({{v}})"],
+        ["\n    print({{x}})", "\nprint({{x}})"],
+        ["print({{x}})", "print(len({{v}}))"]
+      ]
+    },
+    {
+      "id": "dl-items",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\nfor {{k}}, {{x}} in {{v}}.items():\n    print(f\"{{{k}}}{{sep}}{{{x}}}\")",
+      "values": [
+        {
+          "v": "prices",
+          "d": "{\"tea\": 4, \"cake\": 6}",
+          "k": "item",
+          "x": "price",
+          "sep": " costs "
+        },
+        {
+          "v": "scores",
+          "d": "{\"Tommy\": 88, \"Lance\": 95, \"Phil\": 70}",
+          "k": "name",
+          "x": "score",
+          "sep": ": "
+        },
+        {
+          "v": "stock",
+          "d": "{\"apples\": 5, \"pears\": 0, \"plums\": 12}",
+          "k": "fruit",
+          "x": "count",
+          "sep": " - "
+        },
+        {
+          "v": "levels",
+          "d": "{\"Ana\": 3, \"Rex\": 7}",
+          "k": "player",
+          "x": "level",
+          "sep": " is on level "
+        }
+      ],
+      "mistakes": [
+        ["{{{k}}}{{sep}}{{{x}}}", "{{{x}}}{{sep}}{{{k}}}"],
+        ["print(f\"", "print(\""],
+        ["\n    print(", "\nprint("],
+        ["{{{x}}}\")", "{{{v}}}\")"]
+      ]
+    },
+    {
+      "id": "dl-total",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{x}} in {{v}}.values():\n    {{t}} = {{t}} + {{x}}\nprint({{t}})",
+      "values": [
+        {
+          "v": "scores",
+          "d": "{\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}",
+          "t": "total",
+          "x": "s"
+        },
+        {
+          "v": "prices",
+          "d": "{\"bread\": 3, \"milk\": 2, \"cheese\": 10}",
+          "t": "bill",
+          "x": "p"
+        },
+        {
+          "v": "fuel",
+          "d": "{\"left\": 40, \"right\": 60}",
+          "t": "total",
+          "x": "f"
+        },
+        {
+          "v": "steps",
+          "d": "{\"Mon\": 1200, \"Tue\": 800, \"Wed\": 1500}",
+          "t": "walked",
+          "x": "s"
+        }
+      ],
+      "mistakes": [
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"],
+        ["{{t}} + {{x}}", "{{t}} + 1"],
+        ["\nprint({{t}})", "\n    print({{t}})"]
+      ]
+    },
+    {
+      "id": "dl-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{c}} = {}\nfor {{l}} in \"{{word}}\":\n    if {{l}} in {{c}}:\n        {{c}}[{{l}}] = {{c}}[{{l}}] + 1\n    else:\n        {{c}}[{{l}}] = 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "apple"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "cocoa"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "teeth"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "pepper"
+        }
+      ],
+      "mistakes": [
+        ["= {{c}}[{{l}}] + 1", "= 1"],
+        ["{{c}}[{{l}}] = 1\nprint", "{{c}}[{{l}}] = 0\nprint"],
+        ["print({{c}})", "print(len({{c}}))"]
+      ]
+    },
+    {
+      "id": "dl-average",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{x}} in {{v}}.values():\n    {{t}} = {{t}} + {{x}}\nprint({{t}} / len({{v}}))",
+      "values": [
+        {
+          "v": "scores",
+          "d": "{\"Ana\": 7, \"Rex\": 8}",
+          "t": "total",
+          "x": "s"
+        },
+        {
+          "v": "temps",
+          "d": "{\"Mon\": 20, \"Tue\": 25, \"Wed\": 24}",
+          "t": "total",
+          "x": "t"
+        },
+        {
+          "v": "grades",
+          "d": "{\"math\": 9, \"art\": 10, \"music\": 6, \"sport\": 10}",
+          "t": "points",
+          "x": "g"
+        },
+        {
+          "v": "speeds",
+          "d": "{\"Nova\": 90, \"Comet\": 75}",
+          "t": "total",
+          "x": "s"
+        }
+      ],
+      "mistakes": [
+        ["{{t}} / len({{v}})", "{{t}}"],
+        ["/ len", "// len"],
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"]
+      ]
+    },
+    {
+      "id": "dl-top",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\n{{tp}} = \"\"\n{{b}} = 0\nfor {{n}} in {{v}}:\n    if {{v}}[{{n}}] > {{b}}:\n        {{b}} = {{v}}[{{n}}]\n        {{tp}} = {{n}}\nprint(f\"{{{tp}}}: {{{b}}}\")",
+      "values": [
+        {
+          "tp": "top",
+          "b": "best",
+          "n": "name",
+          "v": "scores",
+          "d": "{\"Ana\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}"
+        },
+        {
+          "tp": "top",
+          "b": "best",
+          "n": "name",
+          "v": "points",
+          "d": "{\"Tommy\": 88, \"Lance\": 95, \"Phil\": 60, \"Ken\": 72, \"Sonny\": 65}"
+        },
+        {
+          "tp": "top",
+          "b": "best",
+          "n": "name",
+          "v": "visits",
+          "d": "{\"Mars\": 6, \"Venus\": 3, \"Earth\": 5, \"Moon\": 4, \"Pluto\": 1}"
+        },
+        {
+          "tp": "top",
+          "b": "best",
+          "n": "name",
+          "v": "votes",
+          "d": "{\"red\": 12, \"blue\": 30, \"green\": 8, \"black\": 20, \"white\": 10}"
+        }
+      ],
+      "mistakes": [
+        ["\n        {{tp}} = {{n}}", "\n    {{tp}} = {{n}}"],
+        ["\n        {{tp}} = {{n}}", ""],
+        ["{{v}}[{{n}}] > {{b}}", "{{v}}[{{n}}] < {{b}}"],
+        ["\n        {{b}} = {{v}}[{{n}}]", ""]
+      ]
+    },
+    {
+      "id": "dl-pass",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\n{{w}} = []\nfor {{n}} in {{v}}:\n    if {{v}}[{{n}}] {{op}} {{lim}}:\n        {{w}}.append({{n}})\nprint({{w}})",
+      "values": [
+        {
+          "v": "scores",
+          "d": "{\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
+          "w": "passing",
+          "n": "name",
+          "op": ">=",
+          "neg": "<",
+          "lim": "50"
+        },
+        {
+          "v": "temps",
+          "d": "{\"Mon\": 18, \"Tue\": 31, \"Wed\": 27, \"Thu\": 33}",
+          "w": "hot",
+          "n": "day",
+          "op": ">",
+          "neg": "<=",
+          "lim": "30"
+        },
+        {
+          "v": "prices",
+          "d": "{\"tea\": 4, \"cake\": 9, \"juice\": 5}",
+          "w": "cheap",
+          "n": "item",
+          "op": "<=",
+          "neg": ">",
+          "lim": "5"
+        }
+      ],
+      "mistakes": [
+        ["{{w}}.append({{n}})", "{{w}}.append({{v}}[{{n}}])"],
+        ["{{op}} {{lim}}", "{{neg}} {{lim}}"],
+        ["\nprint({{w}})", "\n    print({{w}})"]
+      ]
+    },
+    {
+      "id": "dl-which-values",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{d}}\nfor {{x}} in {{v}}.values():\n    print({{x}})",
+      "values": [
+        {
+          "v": "health",
+          "d": "{\"Tommy\": 100, \"Lance\": 80}",
+          "x": "h"
+        },
+        {
+          "v": "prices",
+          "d": "{\"bread\": 3, \"milk\": 2, \"jam\": 5}",
+          "x": "p"
+        },
+        {
+          "v": "homes",
+          "d": "{\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}",
+          "x": "city"
+        }
+      ],
+      "mistakes": [
+        [".values()", ".keys()"],
+        ["print({{x}})", "print({{v}})"],
+        ["\n    print({{x}})", "\nprint({{x}})"]
+      ]
+    },
+    {
+      "id": "dl-which-items",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{d}}\nfor {{k}}, {{x}} in {{v}}.items():\n    print(f\"{{{k}}}: {{{x}}}\")",
+      "values": [
+        {
+          "v": "ages",
+          "d": "{\"Ana\": 12, \"Rex\": 30}",
+          "k": "name",
+          "x": "age"
+        },
+        {
+          "v": "stock",
+          "d": "{\"apples\": 5, \"pears\": 2, \"plums\": 9}",
+          "k": "fruit",
+          "x": "count"
+        },
+        {
+          "v": "ranks",
+          "d": "{\"Lance\": 1, \"Phil\": 2}",
+          "k": "name",
+          "x": "rank"
+        }
+      ],
+      "mistakes": [
+        ["{{{k}}}: {{{x}}}", "{{{x}}}: {{{k}}}"],
+        ["print(f\"", "print(\""],
+        ["\n    print(", "\nprint("]
+      ]
+    },
+    {
+      "id": "dl-gap-count",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{c}} = {}\nfor {{l}} in \"{{word}}\":\n    if {{l}} in {{c}}:\n        ___\n    else:\n        {{c}}[{{l}}] = 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "coffee"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "bubble"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "tomato"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "sheep"
+        }
+      ],
+      "answer": "{{c}}[{{l}}] = {{c}}[{{l}}] + 1",
+      "wrong": ["{{c}}[{{l}}] = 1", "{{c}}[{{l}}] = {{c}}[{{l}}] + 2", "{{c}} = {{c}} + 1"]
+    },
+    {
+      "id": "dl-gap-loop",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{d}}\n___\n    print(f\"{{{k}}}: {{{x}}}\")",
+      "values": [
+        {
+          "v": "scores",
+          "d": "{\"Tommy\": 88, \"Lance\": 95}",
+          "k": "name",
+          "x": "score"
+        },
+        {
+          "v": "prices",
+          "d": "{\"tea\": 4, \"cake\": 6, \"juice\": 5}",
+          "k": "item",
+          "x": "price"
+        },
+        {
+          "v": "ages",
+          "d": "{\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}",
+          "k": "name",
+          "x": "age"
+        },
+        {
+          "v": "fuel",
+          "d": "{\"left\": 40, \"right\": 25}",
+          "k": "tank",
+          "x": "amount"
+        }
+      ],
+      "answer": "for {{k}}, {{x}} in {{v}}.items():",
+      "wrong": [
+        "for {{k}}, {{x}} in {{v}}:",
+        "for {{x}}, {{k}} in {{v}}.items():",
+        "for {{k}}, {{x}} in {{v}}.values():"
+      ]
+    },
+    {
+      "id": "dl-gap-value",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{d}}\nfor {{k}} in {{v}}:\n    ___",
+      "values": [
+        {
+          "v": "health",
+          "d": "{\"Tommy\": 100, \"Lance\": 80, \"Phil\": 45}",
+          "k": "name"
+        },
+        {
+          "v": "capitals",
+          "d": "{\"France\": \"Paris\", \"Italy\": \"Rome\"}",
+          "k": "country"
+        },
+        {
+          "v": "prices",
+          "d": "{\"bread\": 3, \"milk\": 2}",
+          "k": "item"
+        },
+        {
+          "v": "speeds",
+          "d": "{\"Nova\": 90, \"Comet\": 75, \"Star\": 60}",
+          "k": "ship"
+        }
+      ],
+      "answer": "print({{v}}[{{k}}])",
+      "wrong": ["print({{k}})", "print({{v}})", "print({{v}}[0])"]
+    },
+    {
+      "id": "dl-gap-method",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{d}}\nfor x in {{v}}.___():\n    print(x)",
+      "values": [
+        {
+          "v": "health",
+          "d": "{\"Tommy\": 100, \"Lance\": 80}",
+          "m": "values"
+        },
+        {
+          "v": "prices",
+          "d": "{\"tea\": 4, \"cake\": 6}",
+          "m": "keys"
+        },
+        {
+          "v": "homes",
+          "d": "{\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}",
+          "m": "values"
+        },
+        {
+          "v": "temps",
+          "d": "{\"Mon\": 21, \"Tue\": 30, \"Wed\": 34}",
+          "m": "keys"
+        }
+      ],
+      "answer": "{{m}}",
+      "wrong": ["keys", "values", "items", "len"]
+    },
+    {
+      "id": "dl-gap-start",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{c}} = {}\nfor {{l}} in \"{{word}}\":\n    if {{l}} in {{c}}:\n        {{c}}[{{l}}] = {{c}}[{{l}}] + 1\n    else:\n        {{c}}[{{l}}] = ___\nprint({{c}})",
+      "values": [
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "hello"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "kiwi"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "pizza"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "rocket"
+        }
+      ],
+      "answer": "1",
+      "wrong": ["0", "2", "{{l}}"]
+    },
+    {
+      "id": "dl-gap-len",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{x}} in {{v}}.values():\n    {{t}} = {{t}} + {{x}}\nprint({{t}} / ___)",
+      "values": [
+        {
+          "v": "scores",
+          "d": "{\"Ana\": 6, \"Rex\": 9, \"Kai\": 9}",
+          "t": "total",
+          "x": "s"
+        },
+        {
+          "v": "temps",
+          "d": "{\"Mon\": 20, \"Tue\": 23, \"Wed\": 24, \"Thu\": 25}",
+          "t": "total",
+          "x": "t"
+        },
+        {
+          "v": "prices",
+          "d": "{\"tea\": 4, \"cake\": 7}",
+          "t": "bill",
+          "x": "p"
+        }
+      ],
+      "answer": "len({{v}})",
+      "wrong": ["len({{v}}) - 1", "{{t}}", "len({{t}})", "2"]
+    },
+    {
+      "id": "dl-bad-sum",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{x}} in {{v}}.values():\n    print({{x}})\n    {{t}} = {{t}} + {{x}}\nprint(f\"{{label}}: {{{t}}}\")",
+      "values": [
+        {
+          "v": "prices",
+          "d": "{\"bread\": 3, \"milk\": 2, \"cheese\": 10}",
+          "t": "bill",
+          "x": "p",
+          "label": "Bill"
+        },
+        {
+          "v": "scores",
+          "d": "{\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}",
+          "t": "total",
+          "x": "s",
+          "label": "Total"
+        },
+        {
+          "v": "steps",
+          "d": "{\"Mon\": 1200, \"Tue\": 800}",
+          "t": "walked",
+          "x": "s",
+          "label": "Steps"
+        }
+      ],
+      "bug": ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"]
+    },
+    {
+      "id": "dl-bad-items",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{d}}\nprint(\"{{title}}\")\nfor {{k}}, {{x}} in {{v}}.items():\n    print(f\"{{{k}}}: {{{x}}}\")",
+      "values": [
+        {
+          "v": "scores",
+          "d": "{\"Tommy\": 88, \"Lance\": 95}",
+          "k": "name",
+          "x": "score",
+          "title": "Scores:"
+        },
+        {
+          "v": "stock",
+          "d": "{\"apples\": 5, \"pears\": 0, \"plums\": 12}",
+          "k": "fruit",
+          "x": "count",
+          "title": "In stock:"
+        },
+        {
+          "v": "ages",
+          "d": "{\"Ana\": 12, \"Rex\": 30}",
+          "k": "name",
+          "x": "age",
+          "title": "Ages:"
+        }
+      ],
+      "bug": ["{{{x}}}\")", "{{{k}}}\")"]
+    },
+    {
+      "id": "dl-bad-check",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{c}} = {}\nfor {{l}} in \"{{word}}\":\n    if {{l}} in {{c}}:\n        {{c}}[{{l}}] = {{c}}[{{l}}] + 1\n    else:\n        {{c}}[{{l}}] = 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "letter"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "cookie"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "puppy"
+        }
+      ],
+      "bug": ["if {{l}} in {{c}}:", "if {{l}} not in {{c}}:"]
+    },
+    {
+      "id": "dl-bad-start",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{c}} = {}\nfor {{l}} in \"{{word}}\":\n    if {{l}} in {{c}}:\n        {{c}}[{{l}}] = {{c}}[{{l}}] + 1\n    else:\n        {{c}}[{{l}}] = 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "moon"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "radar"
+        },
+        {
+          "c": "counter",
+          "l": "letter",
+          "word": "tennis"
+        }
+      ],
+      "bug": ["{{c}} = {}", "{{c}} = []"]
+    }
+  ]
+}

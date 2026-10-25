@@ -1,0 +1,906 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is an exception in Python?",
+      "options": [
+        "An error that happens while the program runs and stops it, unless we handle it",
+        "A line that Python skips on purpose",
+        "A warning that Python shows but then ignores",
+        "A special kind of variable for errors"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Which error does `int(\"abc\")` cause?",
+      "options": ["IndexError", "ValueError", "ZeroDivisionError", "KeyError"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "What happens when this runs?",
+      "code": "names = [\"Tommy\", \"Lance\"]\nprint(names[5])",
+      "options": [
+        "It prints Lance, the last name",
+        "It prints nothing",
+        "It stops with an IndexError: there is no element at index 5",
+        "It prints None"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Python runs a `try` block and one of its lines fails. What does it do next?",
+      "options": [
+        "It runs the rest of the try block, then the except block",
+        "It stops the whole program",
+        "It runs the failing line again",
+        "It jumps to the except block and runs that code instead"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"2\")\n    print(n + 1)\nexcept ValueError:\n    print(\"Bad\")\nprint(\"Done\")",
+      "options": ["3\nDone", "Bad\nDone", "Done", "Bad"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "try:\n    print(\"A\")\n    n = int(\"x\")\n    print(\"B\")\nexcept ValueError:\n    print(\"C\")\nprint(\"D\")",
+      "options": ["A\nB\nC\nD", "A\nC\nD", "C\nD", "A\nB\nD"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "In a `try` block, what happens to the lines after the one that fails?",
+      "options": [
+        "They run after the except block",
+        "They run before the except block",
+        "They never run: Python leaves the try block at the failing line",
+        "They run only when the try block is inside a loop"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Why is `except ValueError:` often better than a bare `except:`?",
+      "options": [
+        "It runs faster than a bare except",
+        "A bare except catches only ValueError",
+        "Only except ValueError can be used inside a loop",
+        "We know exactly what went wrong, and each error can get its own message"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "try:\n    number = int(\"0\")\n    print(100 / number)\nexcept ValueError:\n    print(\"That's not a number!\")\nexcept ZeroDivisionError:\n    print(\"Can't divide by zero!\")",
+      "options": [
+        "Can't divide by zero!",
+        "That's not a number!",
+        "0",
+        "That's not a number!\nCan't divide by zero!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "What happens when this runs?",
+      "code": "try:\n    print(10 / 0)\nexcept ValueError:\n    print(\"Not a number\")",
+      "options": [
+        "It prints Not a number",
+        "It stops with a ZeroDivisionError: except ValueError doesn't catch it",
+        "It prints nothing and goes on",
+        "It prints 0"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "When does the code under `else:` run, after `try` and `except`?",
+      "options": [
+        "Only when an error happened in the try block",
+        "Always, after the except block",
+        "Only when no error happened in the try block",
+        "Never: else works only with if"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "When does the code under `finally:` run?",
+      "options": [
+        "No matter what: with an error or without one",
+        "Only when an error happened",
+        "Only when no error happened",
+        "Only at the very end of the program"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "try:\n    number = int(\"4x\")\nexcept ValueError:\n    print(\"Error!\")\nelse:\n    print(\"No errors\")\nfinally:\n    print(\"Always\")",
+      "options": ["No errors\nAlways", "Error!", "Error!\nNo errors\nAlways", "Error!\nAlways"],
+      "answer": 3
+    },
+    {
+      "id": "q14",
+      "text": "In the lesson's `while True` loop that asks for the age, what ends the loop?",
+      "options": [
+        "The except block, once it prints its message",
+        "The break right after int() works, so only a valid number gets out",
+        "Python stops it after three tries",
+        "The loop ends by itself when the user presses Enter"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "In the lesson's `while True` age loop, the user types `abc`, then `hi`, then `20`. How many times does it print \"That's not a number, try again\"?",
+      "options": ["1", "3", "2", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "In the Sensor Cleanup mission, why is `\"x9\"` counted as corrupted?",
+      "options": [
+        "int(\"x9\") raises a ValueError, so the except block counts it",
+        "It is the second reading, and the second one is always skipped",
+        "It is shorter than the other readings",
+        "Python can turn only readings that start with a digit into numbers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "In the mission, `total = total + int(reading)` fails for `\"bad\"`. What happens to total?",
+      "options": [
+        "It becomes 0",
+        "It gets the text \"bad\" added to it",
+        "The program stops, so total is lost",
+        "It stays as it was: int() fails before anything is stored in total"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "readings = [\"5\", \"five\", \"\", \"8\"]\ntotal = 0\ncorrupted = 0\nfor r in readings:\n    try:\n        total = total + int(r)\n    except ValueError:\n        corrupted = corrupted + 1\nprint(f\"Total: {total}\")\nprint(f\"Corrupted: {corrupted}\")",
+      "options": [
+        "Total: 13\nCorrupted: 1",
+        "Total: 13\nCorrupted: 2",
+        "Total: 13\nCorrupted: 3",
+        "Total: 0\nCorrupted: 2"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Which of these makes Python raise a ValueError?",
+      "options": ["int(\"35\")", "int(\"-4\")", "int(\"seven\")", "int(\"100\")"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Where does the line that might fail go?",
+      "options": [
+        "Inside the try block",
+        "Inside the except block",
+        "Right after the except block",
+        "Before the word try"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "total = 0\ntry:\n    for r in [\"4\", \"x\", \"6\"]:\n        total = total + int(r)\nexcept ValueError:\n    print(\"Bad reading\")\nprint(total)",
+      "options": ["Bad reading\n10", "Bad reading\n4", "4", "Bad reading\nBad reading\n4"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "In the mission, why does the `try` go inside the for loop and not around it?",
+      "options": [
+        "A try block can't hold a for loop",
+        "So the loop runs twice",
+        "Around it, the first corrupted reading would stop the whole loop",
+        "So the corrupted readings are added as 0"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "What happens when this runs?",
+      "code": "text = \"abc\"\nnumber = int(text)\nprint(f\"Number: {number}\")",
+      "options": [
+        "It prints Number: abc",
+        "It prints Number: 0",
+        "It prints nothing",
+        "It stops with a ValueError: nothing catches it, so the print never runs"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "ages = {\"Tommy\": 42}\ntry:\n    print(ages[\"Lance\"])\nexcept:\n    print(\"No such name\")",
+      "options": ["No such name", "None", "42", "Lance"],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "crew = [\"Tommy\", \"Lance\"]\ntry:\n    print(crew[2])\nexcept IndexError:\n    print(\"No one there\")\nprint(\"Done\")",
+      "options": ["No one there", "Lance\nDone", "No one there\nDone", "Done"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Which line catches the error that `int(\"abc\")` causes?",
+      "options": [
+        "except ZeroDivisionError:",
+        "except IndexError:",
+        "except int:",
+        "except ValueError:"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "What does a bare `except:`, with no error name, catch?",
+      "options": [
+        "Only ValueError",
+        "Any error that happens in the try block",
+        "Only the errors of the last line",
+        "Nothing: it needs an error name"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"7\")\nexcept ValueError:\n    print(\"Bad\")\nelse:\n    print(n * 2)",
+      "options": ["14", "Bad", "7", "14\nBad"],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "A program without try crashes on its third line. What happens to the lines after it?",
+      "options": [
+        "They still run, one by one",
+        "They run once the error is printed",
+        "Only the print lines among them run",
+        "They never run: the program stops at the error"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "total = 0\nfor r in [\"4\", \"x\", \"6\"]:\n    try:\n        total = total + int(r)\n    except ValueError:\n        print(\"Bad reading\")\nprint(total)",
+      "options": ["Bad reading\n10", "Bad reading\n4", "10", "4\n10"],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "te-ok",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{s}}\"\ntry:\n    n = int({{v}})\n    print(n * {{k}})\nexcept ValueError:\n    print(\"{{msg}}\")",
+      "values": [
+        {
+          "v": "text",
+          "s": "12",
+          "k": 2,
+          "msg": "Not a number"
+        },
+        {
+          "v": "fuel",
+          "s": "40",
+          "k": 3,
+          "msg": "Bad fuel reading"
+        },
+        {
+          "v": "lives",
+          "s": "3",
+          "k": 5,
+          "msg": "Lives must be a number"
+        },
+        {
+          "v": "speed",
+          "s": "25",
+          "k": 4,
+          "msg": "Speed unknown"
+        }
+      ],
+      "mistakes": [
+        ["n * {{k}}", "n + {{k}}"],
+        ["print(n * {{k}})", "print({{v}} * {{k}})"],
+        ["print(n * {{k}})", "print(\"{{msg}}\")"],
+        ["print(n * {{k}})", "print(n)"]
+      ]
+    },
+    {
+      "id": "te-bad",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{s}}\"\ntry:\n    n = int({{v}})\n    print(\"Number:\", n)\nexcept ValueError:\n    print(\"{{msg}}\")\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "v": "text",
+          "s": "abc",
+          "msg": "Not a number",
+          "end": "Done"
+        },
+        {
+          "v": "age",
+          "s": "ten",
+          "msg": "Type digits, not words",
+          "end": "Bye"
+        },
+        {
+          "v": "code",
+          "s": "4x2",
+          "msg": "Bad code",
+          "end": "Next"
+        }
+      ],
+      "mistakes": [
+        [
+          "n = int({{v}})\n    print(\"Number:\", n)",
+          "print(\"Number:\", {{v}})\n    n = int({{v}})"
+        ],
+        ["\nprint(\"{{end}}\")", ""],
+        ["print(\"{{msg}}\")", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "te-lines",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "try:\n    print(\"{{a}}\")\n    n = int(\"{{s}}\")\n    print(\"{{b}}\")\nexcept ValueError:\n    print(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "Start",
+          "s": "x7",
+          "b": "Converted",
+          "c": "Failed",
+          "d": "End"
+        },
+        {
+          "a": "Reading",
+          "s": "none",
+          "b": "Got it",
+          "c": "Corrupted",
+          "d": "Next sensor"
+        },
+        {
+          "a": "Loading",
+          "s": "3.5",
+          "b": "Loaded",
+          "c": "Not a whole number",
+          "d": "Menu"
+        }
+      ],
+      "mistakes": [
+        ["n = int(\"{{s}}\")", "n = \"{{s}}\""],
+        ["print(\"{{a}}\")\n    n = int(\"{{s}}\")", "n = int(\"{{s}}\")\n    print(\"{{a}}\")"],
+        ["\nprint(\"{{d}}\")", ""],
+        ["print(\"{{c}}\")", "print(\"{{b}}\")"]
+      ]
+    },
+    {
+      "id": "te-zero",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"0\"\ntry:\n    n = int({{v}})\n    print({{t}} / n)\nexcept ValueError:\n    print(\"{{m1}}\")\nexcept ZeroDivisionError:\n    print(\"{{m2}}\")",
+      "values": [
+        {
+          "v": "crew",
+          "t": 100,
+          "m1": "Not a number",
+          "m2": "No crew to share with"
+        },
+        {
+          "v": "players",
+          "t": 60,
+          "m1": "Type a number",
+          "m2": "Can't divide by zero"
+        },
+        {
+          "v": "days",
+          "t": 90,
+          "m1": "Bad input",
+          "m2": "Zero days?"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{m1}}\")\nexcept ZeroDivisionError:\n    print(\"{{m2}}\")",
+          "print(\"{{m2}}\")\nexcept ZeroDivisionError:\n    print(\"{{m1}}\")"
+        ],
+        ["{{t}} / n", "n / {{t}}"],
+        ["n = int({{v}})", "n = len({{v}})"]
+      ]
+    },
+    {
+      "id": "te-notnum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{s}}\"\ntry:\n    n = int({{v}})\n    print({{t}} / n)\nexcept ValueError:\n    print(\"{{m1}}\")\nexcept ZeroDivisionError:\n    print(\"{{m2}}\")",
+      "values": [
+        {
+          "v": "crew",
+          "s": "four",
+          "t": 100,
+          "m1": "Not a number",
+          "m2": "No crew to share with"
+        },
+        {
+          "v": "players",
+          "s": "six",
+          "t": 60,
+          "m1": "Type a number",
+          "m2": "Can't divide by zero"
+        },
+        {
+          "v": "days",
+          "s": "2x",
+          "t": 90,
+          "m1": "Bad input",
+          "m2": "Zero days?"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{m1}}\")\nexcept ZeroDivisionError:\n    print(\"{{m2}}\")",
+          "print(\"{{m2}}\")\nexcept ZeroDivisionError:\n    print(\"{{m1}}\")"
+        ],
+        ["n = int({{v}})", "n = len({{v}})"],
+        ["print(\"{{m1}}\")", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "te-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\ntotal = 0\nbad = 0\nfor r in {{v}}:\n    try:\n        total = total + int(r)\n    except ValueError:\n        bad = bad + 1\nprint(f\"Total: {total}\")\nprint(f\"Corrupted: {bad}\")",
+      "values": [
+        {
+          "v": "readings",
+          "items": "\"42\", \"x9\", \"100\", \"bad\", \"7\""
+        },
+        {
+          "v": "sensors",
+          "items": "\"5\", \"err\", \"15\", \"?\", \"20\", \"1\""
+        },
+        {
+          "v": "scores",
+          "items": "\"10\", \"ten\", \"30\", \"\", \"-\""
+        },
+        {
+          "v": "levels",
+          "items": "\"3\", \"4\", \"max\", \"low\", \"8\""
+        },
+        {
+          "v": "temps",
+          "items": "\"21\", \"19\", \"hot\", \"24\", \"n/a\""
+        }
+      ],
+      "mistakes": [
+        ["bad = bad + 1", "bad = 1"],
+        ["total = total + int(r)", "total = int(r)"],
+        ["bad = 0", "bad = 1"],
+        ["\nprint(f\"Corrupted: {bad}\")", ""]
+      ]
+    },
+    {
+      "id": "te-around",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\ntotal = 0\ntry:\n    for r in {{v}}:\n        total = total + int(r)\nexcept ValueError:\n    print(\"{{msg}}\")\nprint(total)",
+      "values": [
+        {
+          "v": "readings",
+          "items": "\"4\", \"9\", \"x\", \"6\"",
+          "msg": "Reading stopped"
+        },
+        {
+          "v": "prices",
+          "items": "\"12\", \"7\", \"free\", \"8\"",
+          "msg": "Not a price"
+        },
+        {
+          "v": "laps",
+          "items": "\"30\", \"25\", \"28\", \"DNF\", \"31\"",
+          "msg": "Race stopped"
+        }
+      ],
+      "mistakes": [
+        [
+          "try:\n    for r in {{v}}:\n        total = total + int(r)\nexcept ValueError:\n    print(\"{{msg}}\")",
+          "for r in {{v}}:\n    try:\n        total = total + int(r)\n    except ValueError:\n        print(\"{{msg}}\")"
+        ],
+        ["total = total + int(r)", "total = int(r)"],
+        ["print(total)", "print(\"{{msg}}\")"]
+      ]
+    },
+    {
+      "id": "te-else",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"{{s}}\")\nexcept ValueError:\n    print(\"{{bad}}\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"{{end}}\")",
+      "values": [
+        {
+          "s": "12",
+          "bad": "Error!",
+          "end": "Checked"
+        },
+        {
+          "s": "35",
+          "bad": "Not a number",
+          "end": "Always runs"
+        },
+        {
+          "s": "8",
+          "bad": "Bad value",
+          "end": "Done"
+        }
+      ],
+      "mistakes": [
+        ["n * 2", "n + 2"],
+        ["print(\"{{end}}\")", "print(n)"],
+        ["int(\"{{s}}\")", "\"{{s}}\""],
+        ["print(n * 2)", "print(\"{{bad}}\")"]
+      ]
+    },
+    {
+      "id": "te-finally",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "try:\n    n = int(\"{{s}}\")\n    print(n)\nexcept ValueError:\n    print(\"{{bad}}\")\nfinally:\n    print(\"{{end}}\")",
+      "values": [
+        {
+          "s": "hello",
+          "bad": "Please enter a number",
+          "end": "Thanks"
+        },
+        {
+          "s": "7 7",
+          "bad": "One number only",
+          "end": "Checked"
+        },
+        {
+          "s": "zero",
+          "bad": "Digits, please",
+          "end": "Done"
+        }
+      ],
+      "mistakes": [
+        ["int(\"{{s}}\")", "\"{{s}}\""],
+        ["finally:", "else:"],
+        ["print(\"{{bad}}\")", "print(\"{{bad}}\")\n    print(\"{{end}}\")"]
+      ]
+    },
+    {
+      "id": "te-which-index",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{items}}]\ntry:\n    print({{v}}[{{i}}])\nexcept IndexError:\n    print(\"{{msg}}\")\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\"",
+          "i": 2,
+          "msg": "No one there",
+          "end": "Done"
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\"",
+          "i": 5,
+          "msg": "No such planet",
+          "end": "Scan over"
+        },
+        {
+          "v": "songs",
+          "items": "\"Intro\", \"Wave\"",
+          "i": 3,
+          "msg": "End of the list",
+          "end": "Stop"
+        },
+        {
+          "v": "cars",
+          "items": "\"Cheetah\", \"Sabre\", \"Infernus\"",
+          "i": 4,
+          "msg": "No car there",
+          "end": "Garage closed"
+        }
+      ],
+      "mistakes": [
+        ["except IndexError:", "except ValueError:"],
+        ["[{{i}}]", "[0]"],
+        ["\nprint(\"{{end}}\")", ""]
+      ]
+    },
+    {
+      "id": "te-which-else",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "try:\n    n = int(\"{{s}}\")\nexcept ValueError:\n    print(\"{{bad}}\")\nelse:\n    print(n + 1)\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "s": "41",
+          "bad": "Not a number",
+          "end": "Done"
+        },
+        {
+          "s": "9",
+          "bad": "Error!",
+          "end": "Next"
+        },
+        {
+          "s": "17",
+          "bad": "Bad age",
+          "end": "Bye"
+        },
+        {
+          "s": "99",
+          "bad": "Type digits",
+          "end": "End"
+        }
+      ],
+      "mistakes": [
+        ["int(\"{{s}}\")", "int(\"{{s}}x\")"],
+        ["print(n + 1)", "print(n)"],
+        ["else:\n    print(n + 1)\n", ""]
+      ]
+    },
+    {
+      "id": "te-gap-except",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{s}}\"\ntry:\n    n = int({{v}})\n    print(n)\n___\n    print(\"{{msg}}\")",
+      "values": [
+        {
+          "v": "text",
+          "s": "abc",
+          "msg": "Not a number"
+        },
+        {
+          "v": "age",
+          "s": "old",
+          "msg": "Type your age in digits"
+        },
+        {
+          "v": "code",
+          "s": "12a",
+          "msg": "Bad code"
+        },
+        {
+          "v": "fuel",
+          "s": "full",
+          "msg": "Fuel must be a number"
+        }
+      ],
+      "answer": "except ValueError:",
+      "wrong": ["except ZeroDivisionError:", "else:", "except IndexError:"]
+    },
+    {
+      "id": "te-gap-add",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "total = 0\nfor r in [{{items}}]:\n    try:\n        ___\n    except ValueError:\n        print(\"Skip\", r)\nprint(total)",
+      "values": [
+        {
+          "items": "\"4\", \"x\", \"9\""
+        },
+        {
+          "items": "\"10\", \"20\", \"n/a\", \"5\""
+        },
+        {
+          "items": "\"bad\", \"7\", \"3\""
+        },
+        {
+          "items": "\"15\", \"?\", \"6\", \"err\""
+        }
+      ],
+      "answer": "total = total + int(r)",
+      "wrong": ["total = int(r)", "total = total + 1", "total = total + r"]
+    },
+    {
+      "id": "te-gap-finally",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "try:\n    n = int(\"{{s}}\")\n    print(n)\nexcept ValueError:\n    print(\"{{bad}}\")\n___\n    print(\"{{end}}\")",
+      "values": [
+        {
+          "s": "twelve",
+          "bad": "Not a number",
+          "end": "Check done"
+        },
+        {
+          "s": "x1",
+          "bad": "Bad reading",
+          "end": "Sensor off"
+        },
+        {
+          "s": "hi",
+          "bad": "Please type digits",
+          "end": "Thanks"
+        },
+        {
+          "s": "5 kg",
+          "bad": "Only the number, please",
+          "end": "Saved"
+        }
+      ],
+      "answer": "finally:",
+      "wrong": ["else:", "except:", "if n:"]
+    },
+    {
+      "id": "te-val-error",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "try:\n    {{risky}}\nexcept ___:\n    print(\"{{msg}}\")\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "risky": "n = int(\"abc\")",
+          "err": "ValueError",
+          "msg": "Not a number",
+          "end": "Done"
+        },
+        {
+          "risky": "print(10 / 0)",
+          "err": "ZeroDivisionError",
+          "msg": "Math says no",
+          "end": "Next"
+        },
+        {
+          "risky": "print([\"Tommy\", \"Lance\"][10])",
+          "err": "IndexError",
+          "msg": "No one at that place",
+          "end": "Bye"
+        },
+        {
+          "risky": "print({\"Tommy\": 42}[\"Ken\"])",
+          "err": "KeyError",
+          "msg": "No such key",
+          "end": "End"
+        }
+      ],
+      "answer": "{{err}}",
+      "wrong": ["ValueError", "ZeroDivisionError", "IndexError", "KeyError"]
+    },
+    {
+      "id": "te-val-text",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = ___\ntry:\n    n = int(text)\n    print(n * 2)\nexcept ValueError:\n    print(\"{{msg}}\")",
+      "values": [
+        {
+          "ans": "\"ten\"",
+          "w1": "\"10\"",
+          "w2": "\"5\"",
+          "w3": "\"20\"",
+          "msg": "Not a number"
+        },
+        {
+          "ans": "\"21\"",
+          "w1": "\"42\"",
+          "w2": "\"twenty\"",
+          "w3": "\"2\"",
+          "msg": "Bad value"
+        },
+        {
+          "ans": "\"7\"",
+          "w1": "\"14\"",
+          "w2": "\"7a\"",
+          "w3": "\"0\"",
+          "msg": "Type digits"
+        },
+        {
+          "ans": "\"x5\"",
+          "w1": "\"5\"",
+          "w2": "\"10\"",
+          "w3": "\"55\"",
+          "msg": "Corrupted"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "te-bad-catch",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "for x in [{{items}}]:\n    try:\n        print({{t}} / int(x))\n    except ZeroDivisionError:\n        print(\"{{msg}}:\", x)\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "items": "\"5\", \"0\", \"2\"",
+          "t": 10,
+          "msg": "Skipped",
+          "end": "Done"
+        },
+        {
+          "items": "\"4\", \"8\", \"0\"",
+          "t": 40,
+          "msg": "Zero, no share",
+          "end": "End"
+        },
+        {
+          "items": "\"0\", \"3\", \"6\"",
+          "t": 30,
+          "msg": "Can't divide by zero",
+          "end": "Checked"
+        }
+      ],
+      "bug": ["except ZeroDivisionError:", "except ValueError:"]
+    },
+    {
+      "id": "te-bad-start",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "bad = 0\n{{v}} = [{{items}}]\nfor r in {{v}}:\n    try:\n        n = int(r)\n    except ValueError:\n        print(\"Skip\", r)\n        bad = bad + 1\nprint(f\"Corrupted: {bad}\")",
+      "values": [
+        {
+          "v": "readings",
+          "items": "\"42\", \"x9\", \"7\", \"bad\""
+        },
+        {
+          "v": "sensors",
+          "items": "\"err\", \"5\", \"?\", \"6\""
+        },
+        {
+          "v": "codes",
+          "items": "\"12\", \"?\", \"30\", \"-\", \"n/a\""
+        }
+      ],
+      "bug": ["bad = 0", "bad = 1"]
+    },
+    {
+      "id": "te-bad-indent",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor r in [{{items}}]:\n    try:\n        total = total + int(r)\n    except ValueError:\n        print(\"Skip\", r)\nprint(total)",
+      "values": [
+        {
+          "items": "\"4\", \"x\", \"9\""
+        },
+        {
+          "items": "\"10\", \"20\", \"n/a\""
+        },
+        {
+          "items": "\"bad\", \"7\", \"3\""
+        }
+      ],
+      "bug": ["print(total)", "    print(total)"]
+    },
+    {
+      "id": "te-bad-convert",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor r in [{{items}}]:\n    try:\n        total = total + int(r)\n    except ValueError:\n        print(\"Skip\", r)\nprint(f\"Total: {total}\")",
+      "values": [
+        {
+          "items": "\"8\", \"oops\", \"2\""
+        },
+        {
+          "items": "\"x\", \"30\", \"12\""
+        },
+        {
+          "items": "\"5\", \"5\", \"?\", \"1\""
+        }
+      ],
+      "bug": ["total = total + int(r)", "total = total + r"]
+    }
+  ]
+}

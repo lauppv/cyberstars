@@ -1,0 +1,953 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is the big difference between a tuple and a list?",
+      "options": [
+        "A tuple can hold only numbers",
+        "A tuple can't be changed once it is made",
+        "A tuple has no indexes",
+        "A tuple can hold at most two values"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Which brackets make a tuple?",
+      "options": ["[ ]", "{ }", "( )", "< >"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "What happens when this runs?",
+      "code": "coordinates = (10, 20)\ncoordinates[0] = 99\nprint(coordinates)",
+      "options": [
+        "coordinates becomes (99, 20)",
+        "coordinates becomes (99, 10, 20)",
+        "It stops with a TypeError: a tuple can't be changed",
+        "Nothing: Python skips that line"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "player = (\"Tommy Vercetti\", 100, \"Vice City\")\nprint(player[1])",
+      "options": ["100", "Tommy Vercetti", "Vice City", "('Tommy Vercetti', 100)"],
+      "answer": 0
+    },
+    {
+      "id": "q5",
+      "text": "`player = (\"Tommy Vercetti\", 100, \"Vice City\")`. What does `len(player)` give?",
+      "options": ["14", "2", "1", "3"],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "player = (\"Tommy Vercetti\", 100, \"Vice City\")\nname, health, city = player\nprint(city)",
+      "options": ["Tommy Vercetti", "100", "city", "Vice City"],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Why would we keep a date of birth in a tuple and not in a list?",
+      "options": [
+        "It should never change, and Python stops any code that tries to change it by mistake",
+        "A tuple can hold more numbers than a list, and a date needs three",
+        "A tuple keeps its numbers sorted, so the year always comes first",
+        "A list can hold only text, and a date is made of numbers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "a, b = (10, 20)\nprint(b, a)",
+      "options": ["10 20", "20", "(10, 20)", "20 10"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What happens when this runs?",
+      "code": "a, b = (1, 2, 3)\nprint(a)\nprint(b)",
+      "options": [
+        "a is 1 and b is 2; the 3 is left out",
+        "a is 1 and b is (2, 3)",
+        "It stops with an error: 2 variables on the left, 3 values in the tuple",
+        "a is 1 and b is 3"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "crew = (\"Tommy\", \"Lance\", \"Cortez\")\nfor name in crew:\n    print(name[0])",
+      "options": ["T\nL\nC", "Tommy\nLance\nCortez", "TLC", "('T', 'L', 'C')"],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "Which line makes a tuple with Tommy's name and his health?",
+      "options": [
+        "player = [\"Tommy\", 100]",
+        "player = (\"Tommy\" 100)",
+        "player = {\"Tommy\": 100}",
+        "player = (\"Tommy\", 100)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "In the Star Chart mission, what does `name, distance, planets = system` do when system is `(\"Vega\", 25, 5)`?",
+      "options": [
+        "It puts \"Vega\" in name, 25 in distance and 5 in planets",
+        "It puts the whole tuple in name",
+        "It puts 5 in name, 25 in distance and \"Vega\" in planets",
+        "It changes the tuple to (\"name\", \"distance\", \"planets\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "In the Star Chart mission, how much does the program add to the total for Alpha, `(\"Alpha\", 4, 3)`?",
+      "options": ["4", "7", "3", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "In the Star Chart mission, why is `total_planets = 0` written before the loop and not inside it?",
+      "options": [
+        "Inside, the total would go back to 0 for every system and keep only the last one",
+        "A tuple can be unpacked only after a variable set to 0",
+        "So the loop runs once for each planet",
+        "Python allows = 0 only outside a loop"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "In the Star Chart mission, `systems = [(\"Sol\", 0, 8), (\"Alpha\", 4, 3), (\"Vega\", 25, 5)]`. What is `systems[1]`?",
+      "options": ["(\"Sol\", 0, 8)", "0", "(\"Alpha\", 4, 3)", "\"Alpha\""],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "systems = [(\"Sol\", 0, 8), (\"Alpha\", 4, 3), (\"Vega\", 25, 5)]\nprint(systems[2][0])",
+      "options": ["Sol", "Vega", "25", "('Vega', 25, 5)"],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "What happens when this runs?",
+      "code": "point = (3, 4)\npoint.append(5)\nprint(point)",
+      "options": [
+        "It stops with an error: a tuple can't grow",
+        "It prints (3, 4)",
+        "It prints (3, 4, 5)",
+        "It prints (5, 3, 4)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Which of these works on a tuple just as on a list?",
+      "options": [
+        "append(), to add an element",
+        "Changing an element, like t[0] = 5",
+        "Removing an element",
+        "Reading an element by its index, like t[0]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "birthday = (1951, 7, 15)\nyear, month, day = birthday\nprint(month)",
+      "options": ["1951", "7", "15", "(1951, 7, 15)"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "In `for name, score in scores.items():`, what does the loop unpack on each pass?",
+      "options": [
+        "A tuple of a key and its value",
+        "The whole dictionary",
+        "Only the score",
+        "A list of all the names"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "point = (3, 4)\nx, y = point\nprint(x + y)",
+      "options": ["34", "7", "(3, 4)", "12"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "levels = (5, 10, 15)\nprint(levels[len(levels) - 1])",
+      "options": ["5", "3", "10", "15"],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "colors = (\"red\", \"blue\")\nprint(colors)",
+      "options": ["['red', 'blue']", "('red', 'blue')", "red blue", "redblue"],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "The lesson keeps the GPS coordinates of Vice City in a tuple. Why does a tuple fit them?",
+      "options": [
+        "The city is at a fixed place, so the two numbers should never change",
+        "Only a tuple can hold numbers with a decimal point, like 25.7617",
+        "A tuple keeps its numbers sorted, so the smaller one comes first",
+        "A list can hold only whole numbers, and these have decimals"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "prices = (4, 6, 5)\ntotal = 0\nfor p in prices:\n    total = total + p\nprint(total)",
+      "options": ["465", "15", "(4, 6, 5)", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "pets = [(\"Rex\", 3), (\"Mia\", 5)]\nfor pet in pets:\n    name, age = pet\n    print(name, age)",
+      "options": ["('Rex', 3)\n('Mia', 5)", "Rex 3\nMia 5", "3 Rex\n5 Mia", "Rex\nMia"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "`player = (\"Tommy\", 100)`. Tommy's health drops to 80. Which line works?",
+      "options": [
+        "player[1] = 80",
+        "player.append(80)",
+        "player = (\"Tommy\", 80)",
+        "player(1) = 80"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What happens when this runs?",
+      "code": "colors = (\"red\", \"green\", \"blue\")\nprint(colors[3])",
+      "options": [
+        "It prints blue",
+        "It prints ('red', 'green', 'blue')",
+        "It prints nothing",
+        "It stops with an IndexError: the last index is 2"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "In `name, health, city = player`, which element of player goes into health?",
+      "options": ["The first", "The last", "The whole tuple", "The second"],
+      "answer": 3
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "scores = (7, 3, 9)\nbest = 0\nfor s in scores:\n    if s > best:\n        best = s\nprint(best)",
+      "options": ["7", "3", "9", "19"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "tp-index",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\nprint({{v}}[{{i}}])",
+      "values": [
+        {
+          "v": "player",
+          "d": "(\"Tommy\", 100, \"Vice City\")",
+          "i": 2
+        },
+        {
+          "v": "date",
+          "d": "(1986, 5, 30)",
+          "i": 1
+        },
+        {
+          "v": "ship",
+          "d": "(\"Nova\", \"red\", 4, 90)",
+          "i": 0
+        },
+        {
+          "v": "colors",
+          "d": "(\"pink\", \"teal\", \"gold\")",
+          "i": 1
+        }
+      ],
+      "mistakes": [
+        ["print({{v}}[{{i}}])", "print({{v}})"],
+        ["[{{i}}]", "[{{i}} + 1]"],
+        ["print({{v}}[{{i}}])", "print(len({{v}}))"],
+        ["[{{i}}]", "[0]"],
+        ["[{{i}}]", "[1]"]
+      ]
+    },
+    {
+      "id": "tp-unpack",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\n{{x}}, {{y}}, {{z}} = {{v}}\nprint({{y}})",
+      "values": [
+        {
+          "v": "player",
+          "d": "(\"Tommy\", 100, \"Vice City\")",
+          "x": "name",
+          "y": "health",
+          "z": "city"
+        },
+        {
+          "v": "release",
+          "d": "(2002, 10, 29)",
+          "x": "year",
+          "y": "month",
+          "z": "day"
+        },
+        {
+          "v": "car",
+          "d": "(\"Infernus\", \"white\", 240)",
+          "x": "model",
+          "y": "color",
+          "z": "speed"
+        },
+        {
+          "v": "star",
+          "d": "(\"Vega\", 25, 5)",
+          "x": "name",
+          "y": "distance",
+          "z": "planets"
+        },
+        {
+          "v": "point",
+          "d": "(3, 8, 1)",
+          "x": "x",
+          "y": "y",
+          "z": "z"
+        }
+      ],
+      "mistakes": [
+        ["print({{y}})", "print({{x}})"],
+        ["print({{y}})", "print({{v}})"],
+        ["{{x}}, {{y}}, {{z}} =", "{{y}}, {{x}}, {{z}} ="],
+        ["print({{y}})", "print({{z}})"]
+      ]
+    },
+    {
+      "id": "tp-loop",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\nfor {{x}} in {{v}}:\n    print({{x}})",
+      "values": [
+        {
+          "v": "heroes",
+          "d": "(\"Shrek\", \"Fiona\", \"Donkey\")",
+          "x": "hero"
+        },
+        {
+          "v": "days",
+          "d": "(\"Mon\", \"Tue\", \"Wed\", \"Thu\")",
+          "x": "day"
+        },
+        {
+          "v": "levels",
+          "d": "(5, 10, 15)",
+          "x": "level"
+        },
+        {
+          "v": "crew",
+          "d": "(\"Tommy\", \"Lance\")",
+          "x": "name"
+        }
+      ],
+      "mistakes": [
+        ["print({{x}})", "print({{v}})"],
+        ["\n    print({{x}})", "\nprint({{x}})"],
+        ["print({{x}})", "print(len({{v}}))"],
+        ["print({{x}})", "print({{v}}[0])"]
+      ]
+    },
+    {
+      "id": "tp-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{x}} in {{v}}:\n    {{t}} = {{t}} + {{x}}\nprint({{t}})",
+      "values": [
+        {
+          "v": "prices",
+          "d": "(4, 6, 5)",
+          "t": "bill",
+          "x": "p"
+        },
+        {
+          "v": "scores",
+          "d": "(7, 3, 9, 1)",
+          "t": "total",
+          "x": "s"
+        },
+        {
+          "v": "steps",
+          "d": "(1200, 800)",
+          "t": "walked",
+          "x": "s"
+        },
+        {
+          "v": "lives",
+          "d": "(3, 3, 2)",
+          "t": "total",
+          "x": "n"
+        }
+      ],
+      "mistakes": [
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"],
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{t}} + 1"],
+        ["\nprint({{t}})", "\n    print({{t}})"],
+        ["print({{t}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "tp-chart",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\nfor {{s}} in {{v}}:\n    {{a}}, {{b}} = {{s}}\n    print(f\"{{{a}}}{{sep}}{{{b}}}{{unit}}\")",
+      "values": [
+        {
+          "v": "systems",
+          "s": "system",
+          "a": "name",
+          "b": "planets",
+          "sep": ": ",
+          "unit": " planets",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]"
+        },
+        {
+          "v": "crew",
+          "s": "member",
+          "a": "name",
+          "b": "age",
+          "sep": " is ",
+          "unit": "",
+          "d": "[(\"Tommy\", 35), (\"Lance\", 30)]"
+        },
+        {
+          "v": "cars",
+          "s": "car",
+          "a": "model",
+          "b": "speed",
+          "sep": " - ",
+          "unit": " km/h",
+          "d": "[(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]"
+        },
+        {
+          "v": "pets",
+          "s": "pet",
+          "a": "name",
+          "b": "legs",
+          "sep": " has ",
+          "unit": " legs",
+          "d": "[(\"Rex\", 4), (\"Polly\", 2)]"
+        }
+      ],
+      "mistakes": [
+        ["{{a}}, {{b}} = {{s}}", "{{b}}, {{a}} = {{s}}"],
+        ["print(f\"", "print(\""],
+        ["\n    print(", "\nprint("],
+        ["{{{b}}}{{unit}}\")", "{{{s}}}{{unit}}\")"]
+      ]
+    },
+    {
+      "id": "tp-total",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{s}} in {{v}}:\n    {{a}}, {{b}} = {{s}}\n    {{t}} = {{t}} + {{b}}\nprint(f\"{{label}}: {{{t}}}\")",
+      "values": [
+        {
+          "v": "systems",
+          "s": "system",
+          "a": "name",
+          "b": "planets",
+          "t": "total",
+          "label": "Total planets",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]"
+        },
+        {
+          "v": "cart",
+          "s": "item",
+          "a": "name",
+          "b": "price",
+          "t": "bill",
+          "label": "Bill",
+          "d": "[(\"bread\", 3), (\"milk\", 2), (\"cheese\", 10)]"
+        },
+        {
+          "v": "runs",
+          "s": "run",
+          "a": "day",
+          "b": "km",
+          "t": "distance",
+          "label": "Km",
+          "d": "[(\"Mon\", 5), (\"Wed\", 7)]"
+        },
+        {
+          "v": "crew",
+          "s": "member",
+          "a": "name",
+          "b": "score",
+          "t": "points",
+          "label": "Points",
+          "d": "[(\"Tommy\", 40), (\"Lance\", 25), (\"Mia\", 30), (\"Ken\", 5)]"
+        }
+      ],
+      "mistakes": [
+        ["{{t}} = {{t}} + {{b}}", "{{t}} = {{b}}"],
+        ["{{t}} = {{t}} + {{b}}", "{{t}} = {{t}} + 1"],
+        ["\nprint(f\"", "\n    print(f\""],
+        ["{{t}} = 0\n", ""]
+      ]
+    },
+    {
+      "id": "tp-nested",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{d}}\nprint({{v}}[{{i}}][{{j}}])",
+      "values": [
+        {
+          "v": "systems",
+          "d": "[(\"Sol\", 0, 8), (\"Alpha\", 4, 3), (\"Vega\", 25, 5)]",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "v": "crew",
+          "d": "[(\"Tommy\", 35), (\"Lance\", 30), (\"Mia\", 22)]",
+          "i": 2,
+          "j": 0
+        },
+        {
+          "v": "cars",
+          "d": "[(\"Cheetah\", 230), (\"Sabre\", 180)]",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "v": "points",
+          "d": "[(3, 8), (6, 1), (9, 4)]",
+          "i": 2,
+          "j": 1
+        },
+        {
+          "v": "flights",
+          "d": "[(\"Rome\", \"Oslo\", 3), (\"Paris\", \"Riga\", 4)]",
+          "i": 1,
+          "j": 1
+        }
+      ],
+      "mistakes": [
+        ["[{{i}}][{{j}}]", "[{{i}}]"],
+        ["[{{i}}][{{j}}]", "[{{j}}][{{i}}]"],
+        ["[{{i}}][{{j}}]", "[{{i}}][0]"],
+        ["[{{i}}][{{j}}]", "[0][{{j}}]"],
+        ["[{{i}}][{{j}}]", "[{{i}}][1]"]
+      ]
+    },
+    {
+      "id": "tp-which-unpack",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{d}}\n{{x}}, {{y}}, {{z}} = {{v}}\nprint({{x}})\nprint({{y}})",
+      "values": [
+        {
+          "v": "player",
+          "d": "(\"Tommy\", 100, \"Vice City\")",
+          "x": "name",
+          "y": "health",
+          "z": "city"
+        },
+        {
+          "v": "birthday",
+          "d": "(1951, 7, 15)",
+          "x": "year",
+          "y": "month",
+          "z": "day"
+        },
+        {
+          "v": "star",
+          "d": "(\"Vega\", 25, 5)",
+          "x": "name",
+          "y": "distance",
+          "z": "planets"
+        },
+        {
+          "v": "car",
+          "d": "(\"Infernus\", \"white\", 240)",
+          "x": "model",
+          "y": "color",
+          "z": "speed"
+        }
+      ],
+      "mistakes": [
+        ["{{x}}, {{y}}, {{z}} =", "{{y}}, {{x}}, {{z}} ="],
+        ["print({{y}})", "print({{z}})"],
+        ["print({{x}})\nprint({{y}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "tp-which-loop",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{d}}\nfor {{s}} in {{v}}:\n    {{a}}, {{b}} = {{s}}\n    print({{a}})",
+      "values": [
+        {
+          "v": "systems",
+          "s": "system",
+          "a": "name",
+          "b": "planets",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]"
+        },
+        {
+          "v": "crew",
+          "s": "member",
+          "a": "name",
+          "b": "age",
+          "d": "[(\"Tommy\", 35), (\"Lance\", 30)]"
+        },
+        {
+          "v": "cars",
+          "s": "car",
+          "a": "model",
+          "b": "speed",
+          "d": "[(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]"
+        },
+        {
+          "v": "pets",
+          "s": "pet",
+          "a": "name",
+          "b": "legs",
+          "d": "[(\"Rex\", 4), (\"Polly\", 2)]"
+        }
+      ],
+      "mistakes": [
+        ["print({{a}})", "print({{b}})"],
+        ["print({{a}})", "print({{s}})"],
+        ["\n    print({{a}})", "\nprint({{a}})"]
+      ]
+    },
+    {
+      "id": "tp-gap-unpack",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{d}}\n___\nprint({{x}})\nprint({{y}})",
+      "values": [
+        {
+          "v": "point",
+          "d": "(3, 8)",
+          "x": "x",
+          "y": "y"
+        },
+        {
+          "v": "player",
+          "d": "(\"Tommy\", 100)",
+          "x": "name",
+          "y": "health"
+        },
+        {
+          "v": "trip",
+          "d": "(\"Rome\", \"Oslo\")",
+          "x": "start",
+          "y": "end"
+        },
+        {
+          "v": "score",
+          "d": "(\"Lance\", 95)",
+          "x": "name",
+          "y": "points"
+        }
+      ],
+      "answer": "{{x}}, {{y}} = {{v}}",
+      "wrong": [
+        "{{y}}, {{x}} = {{v}}",
+        "{{x}} = {{v}}",
+        "{{v}} = {{x}}, {{y}}",
+        "{{x}}, {{y}} = {{v}}[0]"
+      ]
+    },
+    {
+      "id": "tp-gap-add",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{x}} in {{v}}:\n    ___\nprint({{t}})",
+      "values": [
+        {
+          "v": "prices",
+          "d": "(4, 6, 5)",
+          "t": "bill",
+          "x": "p"
+        },
+        {
+          "v": "scores",
+          "d": "(7, 3, 9, 1)",
+          "t": "total",
+          "x": "s"
+        },
+        {
+          "v": "laps",
+          "d": "(12, 15)",
+          "t": "time",
+          "x": "lap"
+        },
+        {
+          "v": "crates",
+          "d": "(2, 5, 8)",
+          "t": "weight",
+          "x": "c"
+        }
+      ],
+      "answer": "{{t}} = {{t}} + {{x}}",
+      "wrong": ["{{t}} = {{x}}", "{{t}} = {{t}} + 1", "{{x}} = {{t}} + {{x}}", "print({{x}})"]
+    },
+    {
+      "id": "tp-gap-loop",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{d}}\nfor {{s}} in {{v}}:\n    ___\n    print(f\"{{{a}}}{{sep}}{{{b}}}{{unit}}\")",
+      "values": [
+        {
+          "v": "systems",
+          "s": "system",
+          "a": "name",
+          "b": "planets",
+          "sep": ": ",
+          "unit": " planets",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]"
+        },
+        {
+          "v": "crew",
+          "s": "member",
+          "a": "name",
+          "b": "age",
+          "sep": " is ",
+          "unit": "",
+          "d": "[(\"Tommy\", 35), (\"Lance\", 30)]"
+        },
+        {
+          "v": "cars",
+          "s": "car",
+          "a": "model",
+          "b": "speed",
+          "sep": " - ",
+          "unit": " km/h",
+          "d": "[(\"Cheetah\", 230), (\"Sabre\", 180)]"
+        },
+        {
+          "v": "pets",
+          "s": "pet",
+          "a": "name",
+          "b": "legs",
+          "sep": " has ",
+          "unit": " legs",
+          "d": "[(\"Rex\", 4), (\"Polly\", 2), (\"Nemo\", 0)]"
+        }
+      ],
+      "answer": "{{a}}, {{b}} = {{s}}",
+      "wrong": [
+        "{{b}}, {{a}} = {{s}}",
+        "{{a}} = {{s}}",
+        "{{s}} = {{a}}, {{b}}",
+        "{{a}}, {{b}} = {{v}}"
+      ]
+    },
+    {
+      "id": "tp-gap-index",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{d}}\nprint({{v}}[___])",
+      "values": [
+        {
+          "v": "player",
+          "i": 2,
+          "d": "(\"Tommy\", 100, \"Vice City\")"
+        },
+        {
+          "v": "birthday",
+          "i": 1,
+          "d": "(1951, 7, 15)"
+        },
+        {
+          "v": "colors",
+          "i": 3,
+          "d": "(\"pink\", \"teal\", \"gold\", \"navy\")"
+        },
+        {
+          "v": "heroes",
+          "i": 0,
+          "d": "(\"Shrek\", \"Fiona\", \"Donkey\")"
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["0", "1", "2", "3"]
+    },
+    {
+      "id": "tp-gap-range",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{d}}\nfor i in range(___):\n    print({{v}}[i])",
+      "values": [
+        {
+          "v": "heroes",
+          "d": "(\"Shrek\", \"Fiona\", \"Donkey\")"
+        },
+        {
+          "v": "levels",
+          "d": "(5, 10, 15, 20)"
+        },
+        {
+          "v": "crew",
+          "d": "(\"Tommy\", \"Lance\")"
+        },
+        {
+          "v": "days",
+          "d": "(\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\")"
+        }
+      ],
+      "answer": "len({{v}})",
+      "wrong": ["len({{v}}) - 1", "len({{v}}) + 1", "{{v}}", "1"]
+    },
+    {
+      "id": "tp-bad-unpack",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{d}}\n{{x}}, {{y}}, {{z}} = {{v}}\nprint({{x}})\nprint({{y}})\nprint({{z}})",
+      "values": [
+        {
+          "v": "player",
+          "d": "(\"Tommy\", 100, \"Vice City\")",
+          "x": "name",
+          "y": "health",
+          "z": "city"
+        },
+        {
+          "v": "birthday",
+          "d": "(1951, 7, 15)",
+          "x": "year",
+          "y": "month",
+          "z": "day"
+        },
+        {
+          "v": "star",
+          "d": "(\"Vega\", 25, 5)",
+          "x": "name",
+          "y": "distance",
+          "z": "planets"
+        }
+      ],
+      "bug": ["{{x}}, {{y}}, {{z}} = {{v}}", "{{x}}, {{y}} = {{v}}"]
+    },
+    {
+      "id": "tp-bad-indent",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{d}}\nfor {{s}} in {{v}}:\n    {{a}}, {{b}} = {{s}}\n    print(f\"{{{a}}}{{sep}}{{{b}}}{{unit}}\")",
+      "values": [
+        {
+          "v": "systems",
+          "s": "system",
+          "a": "name",
+          "b": "planets",
+          "sep": ": ",
+          "unit": " planets",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]"
+        },
+        {
+          "v": "crew",
+          "s": "member",
+          "a": "name",
+          "b": "age",
+          "sep": " is ",
+          "unit": "",
+          "d": "[(\"Tommy\", 35), (\"Lance\", 30)]"
+        },
+        {
+          "v": "cars",
+          "s": "car",
+          "a": "model",
+          "b": "speed",
+          "sep": " - ",
+          "unit": " km/h",
+          "d": "[(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]"
+        }
+      ],
+      "bug": ["    print(f\"", "print(f\""]
+    },
+    {
+      "id": "tp-bad-start",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{t}} = 0\n{{v}} = {{d}}\nfor {{x}} in {{v}}:\n    print({{x}})\n    {{t}} = {{t}} + {{x}}\nprint(f\"{{label}}: {{{t}}}\")",
+      "values": [
+        {
+          "v": "prices",
+          "d": "(4, 6, 5)",
+          "t": "bill",
+          "x": "p",
+          "label": "Bill"
+        },
+        {
+          "v": "scores",
+          "d": "(7, 3, 9)",
+          "t": "total",
+          "x": "s",
+          "label": "Total"
+        },
+        {
+          "v": "laps",
+          "d": "(12, 15)",
+          "t": "time",
+          "x": "lap",
+          "label": "Time"
+        }
+      ],
+      "bug": ["{{t}} = 0", "{{t}} = 1"]
+    },
+    {
+      "id": "tp-bad-index",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{d}}\nprint({{v}})\nprint({{v}}[{{i}}])\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "player",
+          "d": "(\"Tommy\", 100, \"Vice City\")",
+          "i": 1,
+          "bad": 2
+        },
+        {
+          "v": "birthday",
+          "d": "(1951, 7, 15)",
+          "i": 0,
+          "bad": 1
+        },
+        {
+          "v": "heroes",
+          "d": "(\"Shrek\", \"Fiona\", \"Donkey\")",
+          "i": 2,
+          "bad": 3
+        }
+      ],
+      "bug": ["print({{v}}[{{i}}])", "print({{v}}[{{bad}}])"]
+    }
+  ]
+}

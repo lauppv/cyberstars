@@ -1,0 +1,677 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-data-structures-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rds-both-63edf9",
+      "text": "What does this print?",
+      "code": "team_a = [(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91)]\nteam_b = [(\"Mira\", 88), (\"Lance\", 65), (\"Tommy\", 91)]\nnames_b = set()\nfor name, score in team_b:\n    names_b.add(name)\nfor name, score in team_a:\n    if name in names_b:\n        print(name)",
+      "options": ["Tommy\nLance", "Cortez", "85\n72", "Mira\nLance\nTommy"],
+      "answer": 0
+    },
+    {
+      "id": "rds-both-c421f8",
+      "text": "What does this print?",
+      "code": "team_a = [(\"Ana\", 60), (\"Rex\", 75), (\"Kai\", 90)]\nteam_b = [(\"Kai\", 70), (\"Zoe\", 80), (\"Ana\", 55)]\nnames_b = set()\nfor name, score in team_b:\n    names_b.add(name)\nfor name, score in team_a:\n    if name in names_b:\n        print(name)",
+      "options": ["Ana\nKai", "Rex", "60\n90", "Kai\nZoe\nAna"],
+      "answer": 0
+    },
+    {
+      "id": "rds-both-859de7",
+      "text": "What does this print?",
+      "code": "team_a = [(\"Phil\", 40), (\"Sonny\", 95), (\"Mia\", 66)]\nteam_b = [(\"Mia\", 81), (\"Ken\", 77), (\"Nova\", 59)]\nnames_b = set()\nfor name, score in team_b:\n    names_b.add(name)\nfor name, score in team_a:\n    if name in names_b:\n        print(name)",
+      "options": ["Mia", "Phil\nSonny", "66", "Mia\nKen\nNova"],
+      "answer": 0
+    },
+    {
+      "id": "rds-both-612e98",
+      "text": "What does this print?",
+      "code": "team_a = [(\"Zoe\", 88), (\"Ben\", 52), (\"Cara\", 73)]\nteam_b = [(\"Cara\", 91), (\"Ben\", 64), (\"Max\", 70)]\nnames_b = set()\nfor name, score in team_b:\n    names_b.add(name)\nfor name, score in team_a:\n    if name in names_b:\n        print(name)",
+      "options": ["Ben\nCara", "Zoe", "52\n73", "Cara\nBen\nMax"],
+      "answer": 0
+    },
+    {
+      "id": "rds-high-c392a4",
+      "text": "What does this print?",
+      "code": "team = [(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91), (\"Phil\", 60)]\nhigh = [score for name, score in team if score > 80]\nprint(high)",
+      "options": ["[85, 91]", "['Tommy', 'Cortez']", "[85, 72, 91, 60]", "[72, 60]"],
+      "answer": 0
+    },
+    {
+      "id": "rds-high-e6087d",
+      "text": "What does this print?",
+      "code": "team = [(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95), (\"Zoe\", 70)]\nhigh = [score for name, score in team if score > 65]\nprint(high)",
+      "options": ["[70, 95, 70]", "['Rex', 'Kai', 'Zoe']", "[64, 70, 95, 70]", "[64]"],
+      "answer": 0
+    },
+    {
+      "id": "rds-high-71d106",
+      "text": "What does this print?",
+      "code": "team = [(\"Mia\", 50), (\"Ben\", 99), (\"Cara\", 75), (\"Max\", 81)]\nhigh = [score for name, score in team if score > 75]\nprint(high)",
+      "options": ["[99, 81]", "['Ben', 'Max']", "[50, 99, 75, 81]", "[50]"],
+      "answer": 0
+    },
+    {
+      "id": "rds-high-0e9972",
+      "text": "What does this print?",
+      "code": "team = [(\"Nova\", 33), (\"Ken\", 90), (\"Sonny\", 67), (\"Mira\", 88)]\nhigh = [score for name, score in team if score > 60]\nprint(high)",
+      "options": ["[90, 67, 88]", "['Ken', 'Sonny', 'Mira']", "[33, 90, 67, 88]", "[33]"],
+      "answer": 0
+    },
+    {
+      "id": "rds-system-e960e1",
+      "text": "What does this print?",
+      "code": "system = (\"Sol\", 0, 8)\nname, distance, planets = system\nprint(f\"{name}: {distance} ly, {planets} planets\")",
+      "options": [
+        "Sol: 0 ly, 8 planets",
+        "Sol: 8 ly, 0 planets",
+        "('Sol', 0, 8)",
+        "Sol: 3 ly, 8 planets"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-system-a479ae",
+      "text": "What does this print?",
+      "code": "system = (\"Alpha\", 4, 3)\nname, distance, planets = system\nprint(f\"{name}: {distance} ly, {planets} planets\")",
+      "options": [
+        "Alpha: 4 ly, 3 planets",
+        "Alpha: 3 ly, 4 planets",
+        "('Alpha', 4, 3)",
+        "Alpha: 3 ly, 3 planets"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-system-659fef",
+      "text": "What does this print?",
+      "code": "system = (\"Vega\", 25, 5)\nname, distance, planets = system\nprint(f\"{name}: {distance} ly, {planets} planets\")",
+      "options": [
+        "Vega: 25 ly, 5 planets",
+        "Vega: 5 ly, 25 planets",
+        "('Vega', 25, 5)",
+        "Vega: 3 ly, 5 planets"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-system-ca1f39",
+      "text": "What does this print?",
+      "code": "system = (\"Sirius\", 9, 2)\nname, distance, planets = system\nprint(f\"{name}: {distance} ly, {planets} planets\")",
+      "options": [
+        "Sirius: 9 ly, 2 planets",
+        "Sirius: 2 ly, 9 planets",
+        "('Sirius', 9, 2)",
+        "Sirius: 3 ly, 2 planets"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-pairs-0e3051",
+      "text": "What does this print?",
+      "code": "count = 0\nfor a in range(1, 4):\n    for b in range(1, 4):\n        if a + b == 5:\n            count = count + 1\nprint(count)",
+      "options": ["2", "1", "3", "7"],
+      "answer": 0
+    },
+    {
+      "id": "rds-pairs-d8c59b",
+      "text": "What does this print?",
+      "code": "count = 0\nfor a in range(1, 5):\n    for b in range(1, 4):\n        if a + b == 6:\n            count = count + 1\nprint(count)",
+      "options": ["2", "1", "3", "10"],
+      "answer": 0
+    },
+    {
+      "id": "rds-pairs-0060dd",
+      "text": "What does this print?",
+      "code": "count = 0\nfor a in range(1, 4):\n    for b in range(1, 6):\n        if a + b == 7:\n            count = count + 1\nprint(count)",
+      "options": ["2", "1", "3", "13"],
+      "answer": 0
+    },
+    {
+      "id": "rds-pairs-712183",
+      "text": "What does this print?",
+      "code": "count = 0\nfor a in range(1, 6):\n    for b in range(1, 6):\n        if a + b == 8:\n            count = count + 1\nprint(count)",
+      "options": ["3", "1", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rds-rect-639762",
+      "text": "What does this print?",
+      "code": "for row in range(2):\n    for col in range(4):\n        print(\"#\", end=\"\")\n    print()",
+      "options": ["####\n####", "#\n##", "#\n#\n#\n#\n#\n#\n#\n#", "#\n#\n#\n#\n\n#\n#\n#\n#"],
+      "answer": 0
+    },
+    {
+      "id": "rds-rect-6fecf7",
+      "text": "What does this print?",
+      "code": "for row in range(3):\n    for col in range(2):\n        print(\"*\", end=\"\")\n    print()",
+      "options": ["**\n**\n**", "*\n**\n***", "*\n*\n*\n*\n*\n*", "*\n*\n\n*\n*\n\n*\n*"],
+      "answer": 0
+    },
+    {
+      "id": "rds-rect-b2f306",
+      "text": "What does this print?",
+      "code": "for row in range(2):\n    for col in range(3):\n        print(\"@\", end=\"\")\n    print()",
+      "options": ["@@@\n@@@", "@\n@@", "@\n@\n@\n@\n@\n@", "@\n@\n@\n\n@\n@\n@"],
+      "answer": 0
+    },
+    {
+      "id": "rds-rect-aa5d68",
+      "text": "What does this print?",
+      "code": "for row in range(4):\n    for col in range(1):\n        print(\"+\", end=\"\")\n    print()",
+      "options": ["+\n+\n+\n+", "+\n++\n+++\n++++", "+\n\n+\n\n+\n\n+", "+"],
+      "answer": 0
+    },
+    {
+      "id": "rds-set-len-e10199",
+      "text": "What does this print?",
+      "code": "signals = [\"A1\", \"B2\", \"A1\", \"C3\", \"A1\"]\nunique = set(signals)\nprint(f\"Total: {len(signals)}\")\nprint(f\"Unique: {len(unique)}\")",
+      "options": ["Total: 5\nUnique: 3", "Total: 5\nUnique: 5", "Unique: 3", "Total: 2\nUnique: 3"],
+      "answer": 0
+    },
+    {
+      "id": "rds-set-len-4ab945",
+      "text": "What does this print?",
+      "code": "signals = [\"X\", \"Y\", \"X\", \"Y\"]\nunique = set(signals)\nprint(f\"Total: {len(signals)}\")\nprint(f\"Unique: {len(unique)}\")",
+      "options": ["Total: 4\nUnique: 2", "Total: 4\nUnique: 4", "Unique: 2", "Total: 2\nUnique: 2"],
+      "answer": 0
+    },
+    {
+      "id": "rds-set-len-0368f5",
+      "text": "What does this print?",
+      "code": "signals = [\"D4\", \"D4\", \"E5\", \"F6\", \"G7\", \"E5\"]\nunique = set(signals)\nprint(f\"Total: {len(signals)}\")\nprint(f\"Unique: {len(unique)}\")",
+      "options": ["Total: 6\nUnique: 4", "Total: 6\nUnique: 6", "Unique: 4", "Total: 2\nUnique: 4"],
+      "answer": 0
+    },
+    {
+      "id": "rds-set-len-a9eb4c",
+      "text": "What does this print?",
+      "code": "signals = [\"K9\", \"L1\", \"K9\"]\nunique = set(signals)\nprint(f\"Total: {len(signals)}\")\nprint(f\"Unique: {len(unique)}\")",
+      "options": ["Total: 3\nUnique: 2", "Total: 3\nUnique: 3", "Unique: 2", "Total: 1\nUnique: 2"],
+      "answer": 0
+    },
+    {
+      "id": "rds-remove-57a1c0",
+      "text": "What does this print?",
+      "code": "crew = {\"Tommy\", \"Lance\", \"Cortez\"}\ncrew.add(\"Mira\")\ncrew.remove(\"Tommy\")\nfor name in [\"Tommy\", \"Lance\", \"Mira\"]:\n    print(name in crew)",
+      "options": [
+        "False\nTrue\nTrue",
+        "True\nTrue\nTrue",
+        "False\nTrue\nFalse",
+        "True\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-remove-f7c680",
+      "text": "What does this print?",
+      "code": "crew = {\"Sonny\", \"Diaz\", \"Ken\"}\ncrew.add(\"Phil\")\ncrew.remove(\"Sonny\")\nfor name in [\"Phil\", \"Sonny\", \"Ken\"]:\n    print(name in crew)",
+      "options": [
+        "True\nFalse\nTrue",
+        "True\nTrue\nTrue",
+        "False\nFalse\nTrue",
+        "False\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-remove-19e1cd",
+      "text": "What does this print?",
+      "code": "crew = {\"Ana\", \"Rex\", \"Kai\"}\ncrew.add(\"Zoe\")\ncrew.remove(\"Ana\")\nfor name in [\"Rex\", \"Zoe\", \"Ana\"]:\n    print(name in crew)",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nTrue\nTrue",
+        "True\nFalse\nFalse",
+        "False\nTrue\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-remove-b8e631",
+      "text": "What does this print?",
+      "code": "crew = {\"Ben\", \"Cara\", \"Max\"}\ncrew.add(\"Nova\")\ncrew.remove(\"Ben\")\nfor name in [\"Max\", \"Ben\", \"Nova\"]:\n    print(name in crew)",
+      "options": [
+        "True\nFalse\nTrue",
+        "True\nTrue\nTrue",
+        "True\nFalse\nFalse",
+        "False\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-comp-350731",
+      "text": "What does this print?",
+      "code": "nums = [3, 8, 12, 5, 20]\nresult = [n * 2 for n in nums if n > 6]\nprint(result)",
+      "options": ["[16, 24, 40]", "[6, 16, 24, 10, 40]", "[8, 12, 20]", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "rds-comp-adb414",
+      "text": "What does this print?",
+      "code": "nums = [1, 2, 3, 4, 5, 6]\nresult = [n * 10 for n in nums if n < 4]\nprint(result)",
+      "options": ["[10, 20, 30]", "[10, 20, 30, 40, 50, 60]", "[1, 2, 3]", "[40]"],
+      "answer": 0
+    },
+    {
+      "id": "rds-comp-eae61e",
+      "text": "What does this print?",
+      "code": "nums = [10, 25, 5, 40, 15]\nresult = [n + 1 for n in nums if n >= 15]\nprint(result)",
+      "options": ["[26, 41, 16]", "[11, 26, 6, 41, 16]", "[25, 40, 15]", "[16]"],
+      "answer": 0
+    },
+    {
+      "id": "rds-comp-94ea2b",
+      "text": "What does this print?",
+      "code": "nums = [7, 14, 21, 28]\nresult = [n - 7 for n in nums if n > 10]\nprint(result)",
+      "options": ["[7, 14, 21]", "[0, 7, 14, 21]", "[14, 21, 28]", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "rds-which-names-9db674",
+      "text": "Which program shows this?",
+      "output": "['Tommy', 'Lance']",
+      "options": [
+        "team = [(\"Tommy\", 85), (\"Lance\", 50), (\"Cortez\", 40)]\nnames = [name for name, score in team if score >= 50]\nprint(names)",
+        "team = [(\"Tommy\", 85), (\"Lance\", 50), (\"Cortez\", 40)]\nnames = [name for name, score in team if score < 50]\nprint(names)",
+        "team = [(\"Tommy\", 85), (\"Lance\", 50), (\"Cortez\", 40)]\nnames = [score for name, score in team if score >= 50]\nprint(names)",
+        "team = [(\"Tommy\", 85), (\"Lance\", 50), (\"Cortez\", 40)]\nnames = [name for name, score in team if score > 50]\nprint(names)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-which-names-9dc92c",
+      "text": "Which program shows this?",
+      "output": "['Ana', 'Rex']",
+      "options": [
+        "team = [(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [name for name, score in team if score >= 70]\nprint(names)",
+        "team = [(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [name for name, score in team if score < 70]\nprint(names)",
+        "team = [(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [score for name, score in team if score >= 70]\nprint(names)",
+        "team = [(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [name for name, score in team if score > 70]\nprint(names)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-which-names-11962b",
+      "text": "Which program shows this?",
+      "output": "['Mia', 'Zoe']",
+      "options": [
+        "team = [(\"Mia\", 60), (\"Ben\", 45), (\"Zoe\", 99)]\nnames = [name for name, score in team if score >= 60]\nprint(names)",
+        "team = [(\"Mia\", 60), (\"Ben\", 45), (\"Zoe\", 99)]\nnames = [name for name, score in team if score < 60]\nprint(names)",
+        "team = [(\"Mia\", 60), (\"Ben\", 45), (\"Zoe\", 99)]\nnames = [score for name, score in team if score >= 60]\nprint(names)",
+        "team = [(\"Mia\", 60), (\"Ben\", 45), (\"Zoe\", 99)]\nnames = [name for name, score in team if score > 60]\nprint(names)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-which-break-d40dc0",
+      "text": "Which program shows this?",
+      "output": "1 1\n1 2\n2 1\n2 2",
+      "options": [
+        "for i in range(1, 3):\n    for j in range(1, 4):\n        if j == 3:\n            break\n        print(i, j)",
+        "for i in range(1, 3):\n    for j in range(1, 4):\n        if i == 3:\n            break\n        print(i, j)",
+        "for i in range(1, 3):\n    for j in range(1, 4):\n        if j == 3:\n            break\n    print(i, j)",
+        "for i in range(1, 3):\n    for j in range(1, 4):\n        if j == 3:\n            break\n        print(j, i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-which-break-c55252",
+      "text": "Which program shows this?",
+      "output": "1 1\n2 1\n3 1",
+      "options": [
+        "for i in range(1, 4):\n    for j in range(1, 3):\n        if j == 2:\n            break\n        print(i, j)",
+        "for i in range(1, 4):\n    for j in range(1, 3):\n        if i == 2:\n            break\n        print(i, j)",
+        "for i in range(1, 4):\n    for j in range(1, 3):\n        if j == 2:\n            break\n    print(i, j)",
+        "for i in range(1, 4):\n    for j in range(1, 3):\n        if j == 2:\n            break\n        print(j, i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-which-break-ede24f",
+      "text": "Which program shows this?",
+      "output": "1 1\n1 2\n1 3\n2 1\n2 2\n2 3",
+      "options": [
+        "for i in range(1, 3):\n    for j in range(1, 5):\n        if j == 4:\n            break\n        print(i, j)",
+        "for i in range(1, 3):\n    for j in range(1, 5):\n        if i == 4:\n            break\n        print(i, j)",
+        "for i in range(1, 3):\n    for j in range(1, 5):\n        if j == 4:\n            break\n    print(i, j)",
+        "for i in range(1, 3):\n    for j in range(1, 3):\n        if j == 4:\n            break\n        print(i, j)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-add-30971a",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "seen = set()\nfor name in [\"Tommy\", \"Lance\", \"Tommy\", \"Mira\"]:\n    ___\nprint(len(seen))",
+      "output": "3",
+      "options": ["seen.add(name)", "seen.append(name)", "seen = {name}", "print(name)"],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-add-c151b1",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "seen = set()\nfor name in [\"A1\", \"B2\", \"A1\", \"B2\", \"C3\"]:\n    ___\nprint(len(seen))",
+      "output": "3",
+      "options": ["seen.add(name)", "seen.append(name)", "seen = {name}", "print(name)"],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-add-6db865",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "seen = set()\nfor name in [\"Kai\", \"Kai\", \"Zoe\", \"Kai\"]:\n    ___\nprint(len(seen))",
+      "output": "2",
+      "options": ["seen.add(name)", "seen.append(name)", "seen = {name}", "print(name)"],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-add-197ef6",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "seen = set()\nfor name in [\"Rex\", \"Zoe\", \"Ana\", \"Zoe\", \"Rex\", \"Max\"]:\n    ___\nprint(len(seen))",
+      "output": "4",
+      "options": ["seen.add(name)", "seen.append(name)", "seen = {name}", "print(name)"],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-row-71a34f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for row in range(2):\n    for col in range(3):\n        print(col, end=\"\")\n    ___",
+      "output": "012\n012",
+      "options": ["print()", "print(col)", "continue", "print(row)"],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-row-166c1d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for row in range(3):\n    for col in range(2):\n        print(col, end=\"\")\n    ___",
+      "output": "01\n01\n01",
+      "options": ["print()", "print(col)", "continue", "print(row)"],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-row-9fd8f0",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for row in range(2):\n    for col in range(4):\n        print(col, end=\"\")\n    ___",
+      "output": "0123\n0123",
+      "options": ["print()", "print(col)", "continue", "print(row)"],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-row-1c4b10",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for row in range(3):\n    for col in range(4):\n        print(col, end=\"\")\n    ___",
+      "output": "0123\n0123\n0123",
+      "options": ["print()", "print(col)", "continue", "print(row)"],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-unpack-b5a011",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "system = (\"Sol\", 0, 8)\n___\nprint(f\"{name} has {planets} planets\")",
+      "output": "Sol has 8 planets",
+      "options": [
+        "name, distance, planets = system",
+        "name, planets, distance = system",
+        "name, planets = system",
+        "planets = system"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-unpack-59b3b5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "system = (\"Alpha\", 4, 3)\n___\nprint(f\"{name} has {planets} planets\")",
+      "output": "Alpha has 3 planets",
+      "options": [
+        "name, distance, planets = system",
+        "name, planets, distance = system",
+        "name, planets = system",
+        "planets = system"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-unpack-26cb67",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "system = (\"Vega\", 25, 5)\n___\nprint(f\"{name} has {planets} planets\")",
+      "output": "Vega has 5 planets",
+      "options": [
+        "name, distance, planets = system",
+        "name, planets, distance = system",
+        "name, planets = system",
+        "planets = system"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-gap-unpack-3a405f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "system = (\"Rigel\", 860, 6)\n___\nprint(f\"{name} has {planets} planets\")",
+      "output": "Rigel has 6 planets",
+      "options": [
+        "name, distance, planets = system",
+        "name, planets, distance = system",
+        "name, planets = system",
+        "planets = system"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-val-index-f18211",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "player = (\"Tommy\", 100, \"Vice City\")\nprint(player[___])",
+      "output": "Tommy",
+      "options": ["0", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rds-val-index-4e6d2f",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "player = (\"Lance\", 80, \"Miami\")\nprint(player[___])",
+      "output": "Miami",
+      "options": ["2", "0", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rds-val-index-73876a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "player = (\"Cortez\", 65, \"Havana\")\nprint(player[___])",
+      "output": "65",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rds-val-index-8f6516",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "player = (\"Mira\", 90, \"Oslo\")\nprint(player[___])",
+      "output": "Oslo",
+      "options": ["2", "0", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rds-val-range-0bcc57",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "count = 0\nfor i in range(___):\n    for j in range(4):\n        count = count + 1\nprint(count)",
+      "output": "12",
+      "options": ["3", "12", "4", "2"],
+      "answer": 0
+    },
+    {
+      "id": "rds-val-range-03f822",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "count = 0\nfor i in range(___):\n    for j in range(5):\n        count = count + 1\nprint(count)",
+      "output": "10",
+      "options": ["2", "10", "5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rds-val-range-f31e65",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "count = 0\nfor i in range(___):\n    for j in range(3):\n        count = count + 1\nprint(count)",
+      "output": "12",
+      "options": ["4", "12", "3", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rds-val-range-159ca5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "count = 0\nfor i in range(___):\n    for j in range(2):\n        count = count + 1\nprint(count)",
+      "output": "10",
+      "options": ["5", "10", "2", "6"],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-unpack-2a0205",
+      "text": "Which line stops this program from printing this?",
+      "code": "member = (\"Tommy\", 85)\nname, score, rank = member\nprint(f\"Name: {name}\")\nprint(f\"Rank: {rank}\")\nprint(f\"Score: {score}\")",
+      "output": "Name: Tommy\nRank: captain\nScore: 85",
+      "options": [
+        "member = (\"Tommy\", 85)",
+        "name, score, rank = member",
+        "print(f\"Name: {name}\")",
+        "print(f\"Rank: {rank}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-unpack-8d321b",
+      "text": "Which line stops this program from printing this?",
+      "code": "member = (\"Lance\", 72)\nname, score, rank = member\nprint(f\"Name: {name}\")\nprint(f\"Rank: {rank}\")\nprint(f\"Score: {score}\")",
+      "output": "Name: Lance\nRank: pilot\nScore: 72",
+      "options": [
+        "member = (\"Lance\", 72)",
+        "name, score, rank = member",
+        "print(f\"Name: {name}\")",
+        "print(f\"Rank: {rank}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-unpack-09f63f",
+      "text": "Which line stops this program from printing this?",
+      "code": "member = (\"Mira\", 90)\nname, score, rank = member\nprint(f\"Name: {name}\")\nprint(f\"Rank: {rank}\")\nprint(f\"Score: {score}\")",
+      "output": "Name: Mira\nRank: medic\nScore: 90",
+      "options": [
+        "member = (\"Mira\", 90)",
+        "name, score, rank = member",
+        "print(f\"Name: {name}\")",
+        "print(f\"Rank: {rank}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-add-8638e6",
+      "text": "Which line stops this program from printing this?",
+      "code": "seen = set()\nfor name in [\"Tommy\", \"Lance\", \"Tommy\"]:\n    if name in seen:\n        print(f\"Again: {name}\")\n    seen.append(name)\nprint(len(seen))",
+      "output": "Again: Tommy\n2",
+      "options": [
+        "seen.append(name)",
+        "print(f\"Again: {name}\")",
+        "seen = set()",
+        "if name in seen:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-add-601e22",
+      "text": "Which line stops this program from printing this?",
+      "code": "seen = set()\nfor name in [\"A1\", \"B2\", \"B2\", \"C3\"]:\n    if name in seen:\n        print(f\"Again: {name}\")\n    seen.append(name)\nprint(len(seen))",
+      "output": "Again: B2\n3",
+      "options": [
+        "seen.append(name)",
+        "print(f\"Again: {name}\")",
+        "seen = set()",
+        "print(len(seen))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-add-cb73e6",
+      "text": "Which line stops this program from printing this?",
+      "code": "seen = set()\nfor name in [\"Kai\", \"Zoe\", \"Kai\", \"Kai\"]:\n    if name in seen:\n        print(f\"Again: {name}\")\n    seen.append(name)\nprint(len(seen))",
+      "output": "Again: Kai\nAgain: Kai\n2",
+      "options": [
+        "seen.append(name)",
+        "print(f\"Again: {name}\")",
+        "seen = set()",
+        "print(len(seen))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-table-e30486",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 3):\n    for j in range(1, 3):\n        print(i * j, end=\"\")\n    print(i)",
+      "output": "12\n24",
+      "options": [
+        "print(i)",
+        "print(i * j, end=\"\")",
+        "for j in range(1, 3):",
+        "for i in range(1, 3):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-table-f267eb",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 4):\n    for j in range(1, 4):\n        print(i * j, end=\"\")\n    print(i)",
+      "output": "123\n246\n369",
+      "options": [
+        "print(i)",
+        "print(i * j, end=\"\")",
+        "for j in range(1, 4):",
+        "for i in range(1, 4):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-table-cad347",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 5):\n    for j in range(1, 5):\n        print(i * j, end=\"\")\n    print(i)",
+      "output": "1234\n2468\n36912\n481216",
+      "options": [
+        "print(i)",
+        "print(i * j, end=\"\")",
+        "for j in range(1, 5):",
+        "for i in range(1, 5):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-comp-624422",
+      "text": "Which line stops this program from printing this?",
+      "code": "team = [(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91)]\nnames = [score for name, score in team if score > 80]\nprint(len(names))\nprint(names)",
+      "output": "2\n['Tommy', 'Cortez']",
+      "options": [
+        "names = [score for name, score in team if score > 80]",
+        "team = [(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91)]",
+        "print(len(names))",
+        "print(names)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-comp-a8712d",
+      "text": "Which line stops this program from printing this?",
+      "code": "team = [(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95)]\nnames = [score for name, score in team if score > 65]\nprint(len(names))\nprint(names)",
+      "output": "2\n['Rex', 'Kai']",
+      "options": [
+        "names = [score for name, score in team if score > 65]",
+        "team = [(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95)]",
+        "print(len(names))",
+        "print(names)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-bad-comp-fb90b6",
+      "text": "Which line stops this program from printing this?",
+      "code": "team = [(\"Mia\", 50), (\"Ben\", 99), (\"Cara\", 75)]\nnames = [score for name, score in team if score > 60]\nprint(len(names))\nprint(names)",
+      "output": "2\n['Ben', 'Cara']",
+      "options": [
+        "names = [score for name, score in team if score > 60]",
+        "team = [(\"Mia\", 50), (\"Ben\", 99), (\"Cara\", 75)]",
+        "print(len(names))",
+        "print(names)"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,829 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce dă `sum([80, 95, 70, 88])`?",
+      "options": ["333", "4", "95", "[80, 95, 70, 88]"],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează?",
+      "code": "numere = [5, 2, 8, 1]\nlista_noua = sorted(numere)\nprint(numere)",
+      "options": ["[1, 2, 5, 8]", "[5, 2, 8, 1]", "[8, 5, 2, 1]", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Ce dă înapoi `sorted(numere, reverse=True)`?",
+      "options": [
+        "Cel mai mare număr din listă",
+        "Lista citită de la coadă, fără sortare",
+        "Aceeași listă, sortată pe loc",
+        "O listă nouă, de la cel mai mare număr la cel mai mic"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\nprint(sorted(nume))",
+      "options": [
+        "['Tommy', 'Lance', 'Cortez', 'Phil']",
+        "['Phil', 'Lance', 'Tommy', 'Cortez']",
+        "['Cortez', 'Lance', 'Phil', 'Tommy']",
+        "['Tommy', 'Phil', 'Lance', 'Cortez']"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "În `for i, n in enumerate(nume):`, ce sunt `i` și `n` la fiecare pas?",
+      "options": [
+        "i e indexul, iar n valoarea de la acel index",
+        "i e valoarea, iar n indexul ei",
+        "Amândouă sunt valoarea",
+        "i numără de la 1, iar n e valoarea"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i, n in enumerate(nume):\n    print(i, n)",
+      "options": [
+        "1 Tommy\n2 Lance\n3 Cortez",
+        "Tommy 0\nLance 1\nCortez 2",
+        "0\n1\n2",
+        "0 Tommy\n1 Lance\n2 Cortez"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Care buclă dă `i` ca index și `n` ca valoare, ca `for i in range(len(nume)):` cu `nume[i]`?",
+      "options": [
+        "for i, n in zip(nume):",
+        "for i, n in enumerate(nume):",
+        "for i in enumerate(nume):",
+        "for n, i in enumerate(nume):"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nscoruri = [95, 80, 70]\nfor membru, scor in zip(nume, scoruri):\n    print(f\"{membru}: {scor}\")",
+      "options": [
+        "Tommy: 95\nLance: 80\nCortez: 70",
+        "Tommy: 95",
+        "95: Tommy\n80: Lance\n70: Cortez",
+        "Tommy: [95, 80, 70]\nLance: [95, 80, 70]\nCortez: [95, 80, 70]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nscoruri = [95, 80]\nfor membru, scor in zip(nume, scoruri):\n    print(membru, scor)",
+      "options": [
+        "Tommy 95\nLance 80\nCortez 0",
+        "Tommy 95\nLance 80\nCortez None",
+        "Tommy 95\nLance 80",
+        "Tommy 95"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "`zip(a, b)` primește o listă de 5 elemente și una de 3. Câte perechi dă?",
+      "options": ["5", "8", "15", "3"],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "Ce afișează?",
+      "code": "scoruri = [80, 95, 40, 70]\nprint(any(s < 50 for s in scoruri))\nprint(all(s >= 50 for s in scoruri))",
+      "options": ["True\nTrue", "True\nFalse", "False\nFalse", "False\nTrue"],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "Când dă `all(s >= 50 for s in scoruri)` True?",
+      "options": [
+        "Când cel puțin un scor e 50 sau mai mult",
+        "Când scorurile adunate fac 50 sau mai mult",
+        "Când fiecare scor e 50 sau mai mult",
+        "Când primul scor e 50 sau mai mult"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "Când dă `any(s < 50 for s in scoruri)` True?",
+      "options": [
+        "Doar când fiecare scor e sub 50",
+        "Când cel puțin un scor e sub 50",
+        "Când lista are cel puțin un scor",
+        "Doar când exact un scor e sub 50"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Ce dă `abs(-100)`?",
+      "options": ["-100", "0", "100", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "print(abs(-5))\nprint(abs(5))",
+      "options": ["-5\n5", "5\n5", "5\n-5", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Ce dă `round(3.14159, 2)`?",
+      "options": ["3.14", "3", "3.1", "3.142"],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "print(round(3.7))\nprint(round(3.2))",
+      "options": ["3\n3", "4\n4", "3.7\n3.2", "4\n3"],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "În `round(x, 1)`, ce spune 1?",
+      "options": [
+        "Rotunjește în sus, niciodată în jos",
+        "Câte zecimale să păstreze",
+        "De câte ori să rotunjească",
+        "Ce cifră să taie"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "În misiunea Clasamentul Echipajului scorurile sunt `[88, 100, 47, 73]`. Ce dă `round(sum(scoruri) / len(scoruri), 1)`?",
+      "options": ["77", "308", "77.0", "77.5"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "În misiune, de ce afișează `Toti au trecut:` False?",
+      "options": [
+        "Boris are 100, mai mult de 50",
+        "Media e sub 80",
+        "all() e True doar când fiecare scor e 100",
+        "Cara are 47, sub 50"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "În misiune, ce dă `sorted(scoruri, reverse=True)` pentru `[88, 100, 47, 73]`?",
+      "options": [
+        "[100, 88, 73, 47]",
+        "[73, 47, 100, 88]",
+        "[47, 73, 88, 100]",
+        "[88, 100, 47, 73]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 1, 2]\nprint(sorted(numere, reverse=True))\nprint(numere)",
+      "options": [
+        "[3, 2, 1]\n[3, 2, 1]",
+        "[1, 2, 3]\n[3, 1, 2]",
+        "[2, 1, 3]\n[3, 1, 2]",
+        "[3, 2, 1]\n[3, 1, 2]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Care linie afișează totalul din `preturi` fără o buclă?",
+      "options": [
+        "print(len(preturi))",
+        "print(max(preturi))",
+        "print(sum(preturi))",
+        "print(sum)"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "citiri = [\"4\", \"5\"]\ntotal = sum(citiri)\nprint(total)",
+      "options": [
+        "Afișează 9",
+        "Afișează 45",
+        "Afișează ['4', '5']",
+        "Se oprește cu un TypeError: sum() adună numere, iar acestea sunt texte"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\nfor i, n in enumerate(nume):\n    if i == 2:\n        print(n)",
+      "options": ["Cortez", "Lance", "Phil", "2"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "a = [1, 2, 3]\nb = [10, 20, 30]\nfor x, y in zip(a, b):\n    print(x + y)",
+      "options": ["66", "6\n60", "11\n22\n33", "[1, 2, 3, 10, 20, 30]"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "schimbari = [-3, 5, -8]\nprint(sum(schimbari))\nprint(sum([abs(s) for s in schimbari]))",
+      "options": ["16\n16", "-6\n16", "-6\n-6", "16\n-6"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Care linie sortează `nume` și păstrează lista sortată în `nume`?",
+      "options": ["nume = sorted(nume)", "sorted(nume)", "sorted(nume) = nume", "nume = sorted()"],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "Ce dă `round(7.89, 1)`?",
+      "options": ["7.8", "8", "7.89", "7.9"],
+      "answer": 3
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "scoruri = [50, 60, 70]\nprint(all(s >= 50 for s in scoruri))\nprint(any(s == 100 for s in scoruri))",
+      "options": ["True\nTrue", "False\nFalse", "True\nFalse", "False\nTrue"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "bi-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\ntotal = sum({{v}})\nprint(f\"Total: {total}\")\nprint(f\"Medie: {total / len({{v}})}\")",
+      "values": [
+        {
+          "v": "scoruri",
+          "nums": "88, 100, 47, 73"
+        },
+        {
+          "v": "preturi",
+          "nums": "10, 20, 30"
+        },
+        {
+          "v": "puncte",
+          "nums": "12, 7, 5, 8"
+        },
+        {
+          "v": "combustibil",
+          "nums": "15, 25, 40, 20"
+        }
+      ],
+      "mistakes": [
+        ["sum({{v}})", "max({{v}})"],
+        ["sum({{v}})", "len({{v}})"],
+        ["total / len", "total // len"],
+        ["print(f\"Total: {total}\")\n", ""]
+      ]
+    },
+    {
+      "id": "bi-sorted-copy",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\nordonate = sorted({{v}})\nprint(ordonate)\nprint({{v}})",
+      "values": [
+        {
+          "v": "numere",
+          "nums": "5, 2, 8, 1"
+        },
+        {
+          "v": "varste",
+          "nums": "30, 12, 45, 7"
+        },
+        {
+          "v": "coduri",
+          "nums": "9, 4, 6"
+        }
+      ],
+      "mistakes": [
+        ["sorted({{v}})", "sorted({{v}}, reverse=True)"],
+        ["print({{v}})", "print(ordonate)"],
+        ["print(ordonate)\nprint({{v}})", "print({{v}})\nprint(ordonate)"],
+        ["print(ordonate)\n", "print(ordonate[0])\n"]
+      ]
+    },
+    {
+      "id": "bi-reverse",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nprint(sorted({{v}}, reverse=True))",
+      "values": [
+        {
+          "v": "scoruri",
+          "items": "88, 100, 47, 73"
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\", \"Phil\""
+        },
+        {
+          "v": "inaltimi",
+          "items": "3, 9, 1, 6"
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\""
+        }
+      ],
+      "mistakes": [
+        [", reverse=True", ""],
+        ["sorted({{v}}, reverse=True)", "{{v}}"],
+        ["sorted({{v}}, reverse=True)", "sorted({{v}}, reverse=True)[0]"],
+        ["sorted({{v}}, reverse=True)", "max({{v}})"]
+      ]
+    },
+    {
+      "id": "bi-enum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{items}}]\nfor i, nume in enumerate({{v}}):\n    print(f\"{i}: {nume}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\""
+        },
+        {
+          "v": "masini",
+          "items": "\"Cheetah\", \"Sabre\", \"Infernus\", \"Banshee\""
+        }
+      ],
+      "mistakes": [
+        ["for i, nume in", "for nume, i in"],
+        ["{i}: ", "{i + 1}: "],
+        ["print(f\"{i}: {nume}\")", "print(nume)"],
+        ["enumerate({{v}})", "zip({{v}}, {{v}})"]
+      ]
+    },
+    {
+      "id": "bi-zip",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "echipaj = [{{names}}]\nscoruri = [{{nums}}]\nfor membru, scor in zip(echipaj, scoruri):\n    print(f\"{membru}: {scor}\")",
+      "values": [
+        {
+          "names": "\"Tommy\", \"Boris\", \"Cara\"",
+          "nums": "88, 100, 47"
+        },
+        {
+          "names": "\"Lance\", \"Phil\"",
+          "nums": "95, 80, 70"
+        },
+        {
+          "names": "\"Ana\", \"Bo\", \"Kai\"",
+          "nums": "50, 49"
+        },
+        {
+          "names": "\"Dmitri\", \"Cortez\", \"Tommy\", \"Lance\"",
+          "nums": "73, 61, 90, 84"
+        }
+      ],
+      "mistakes": [
+        ["for membru, scor in", "for scor, membru in"],
+        ["{membru}: {scor}", "{membru}: {scoruri}"],
+        ["print(f\"{membru}: {scor}\")", "print(membru)"],
+        ["zip(echipaj, scoruri)", "zip(echipaj, echipaj)"]
+      ]
+    },
+    {
+      "id": "bi-anyall",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\nprint(any(s == 100 for s in {{v}}))\nprint(all(s >= 50 for s in {{v}}))",
+      "values": [
+        {
+          "v": "scoruri",
+          "nums": "88, 100, 47, 73"
+        },
+        {
+          "v": "rezultate",
+          "nums": "60, 75, 90"
+        },
+        {
+          "v": "teste",
+          "nums": "100, 30, 55"
+        },
+        {
+          "v": "note",
+          "nums": "51, 99, 64, 50"
+        }
+      ],
+      "mistakes": [
+        ["any(", "all("],
+        ["all(", "any("],
+        [
+          "print(any(s == 100 for s in {{v}}))\nprint(all(s >= 50 for s in {{v}}))",
+          "print(all(s >= 50 for s in {{v}}))\nprint(any(s == 100 for s in {{v}}))"
+        ],
+        ["s == 100", "s < 100"],
+        ["all(", "not all("]
+      ]
+    },
+    {
+      "id": "bi-abs",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\nprint(sum({{v}}))\nprint(sum([abs(n) for n in {{v}}]))",
+      "values": [
+        {
+          "v": "schimbari",
+          "nums": "-3, 5, -8"
+        },
+        {
+          "v": "miscari",
+          "nums": "4, -6, 2, -1"
+        },
+        {
+          "v": "temperaturi",
+          "nums": "-10, 7, -2"
+        }
+      ],
+      "mistakes": [
+        ["abs(n)", "n"],
+        ["sum([abs(n) for n in {{v}}])", "abs(sum({{v}}))"],
+        ["print(sum({{v}}))\n", ""],
+        ["abs(n) for", "-n for"]
+      ]
+    },
+    {
+      "id": "bi-round",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nprint(round({{v}}))\nprint(round({{v}}, {{d}}))",
+      "values": [
+        {
+          "v": "pi",
+          "x": 3.14159,
+          "d": 2
+        },
+        {
+          "v": "raport",
+          "x": 2.71828,
+          "d": 3
+        },
+        {
+          "v": "combustibil",
+          "x": 9.876,
+          "d": 2
+        },
+        {
+          "v": "distanta",
+          "x": 4.4444,
+          "d": 3
+        }
+      ],
+      "mistakes": [
+        ["round({{v}}, {{d}})", "round({{v}})"],
+        ["print(round({{v}}))", "print({{v}})"],
+        [", {{d}})", ", 1)"],
+        ["print(round({{v}}))", "print(int({{v}}))"]
+      ]
+    },
+    {
+      "id": "bi-mission",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "scoruri = [{{nums}}]\nprint(f\"Sortate: {sorted(scoruri, reverse=True)}\")\nprint(f\"Total: {sum(scoruri)}\")\nprint(f\"Medie: {round(sum(scoruri) / len(scoruri), 1)}\")",
+      "values": [
+        {
+          "nums": "70, 85, 90"
+        },
+        {
+          "nums": "88, 100, 47, 73"
+        },
+        {
+          "nums": "55, 81, 64"
+        },
+        {
+          "nums": "90, 72, 85, 66, 79"
+        }
+      ],
+      "mistakes": [
+        [", reverse=True", ""],
+        ["{sum(scoruri)}", "{len(scoruri)}"],
+        [", 1)}", ")}"],
+        ["round(sum(scoruri) / len(scoruri), 1)", "sum(scoruri) / len(scoruri)"]
+      ]
+    },
+    {
+      "id": "bi-which-sorted",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{nums}}]\nprint(sorted({{v}}))\nprint({{v}})",
+      "values": [
+        {
+          "v": "numere",
+          "nums": "4, 9, 1, 7"
+        },
+        {
+          "v": "scoruri",
+          "nums": "70, 95, 60"
+        },
+        {
+          "v": "niveluri",
+          "nums": "3, 1, 2"
+        }
+      ],
+      "mistakes": [
+        ["sorted({{v}}))\n", "sorted({{v}}, reverse=True))\n"],
+        ["print({{v}})", "print(sorted({{v}}))"],
+        ["print(sorted({{v}}))\n", "print(max({{v}}))\n"]
+      ]
+    },
+    {
+      "id": "bi-which-enum",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{items}}]\nfor i, nume in enumerate({{v}}):\n    print(i, nume)",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Phil\", \"Tommy\", \"Lance\""
+        },
+        {
+          "v": "melodii",
+          "items": "\"Intro\", \"Val\", \"Fulger\""
+        },
+        {
+          "v": "statii",
+          "items": "\"Alfa\", \"Beta\", \"Gama\""
+        }
+      ],
+      "mistakes": [
+        ["print(i, nume)", "print(i + 1, nume)"],
+        ["for i, nume in", "for nume, i in"],
+        ["print(i, nume)", "print(nume)"]
+      ]
+    },
+    {
+      "id": "bi-gap-total",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\n___\nprint(f\"Total: {total}\")",
+      "values": [
+        {
+          "v": "preturi",
+          "nums": "10, 20, 30"
+        },
+        {
+          "v": "puncte",
+          "nums": "12, 7, 5, 8"
+        },
+        {
+          "v": "combustibil",
+          "nums": "40, 25, 35"
+        }
+      ],
+      "answer": "total = sum({{v}})",
+      "wrong": [
+        "total = len({{v}})",
+        "total = max({{v}})",
+        "total = sorted({{v}})",
+        "total = {{v}}"
+      ]
+    },
+    {
+      "id": "bi-gap-zip",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = [{{names}}]\nscoruri = [{{nums}}]\n___\n    print(f\"{membru}: {scor}\")",
+      "values": [
+        {
+          "names": "\"Tommy\", \"Boris\", \"Cara\"",
+          "nums": "88, 100, 47"
+        },
+        {
+          "names": "\"Lance\", \"Phil\"",
+          "nums": "95, 80"
+        },
+        {
+          "names": "\"Ana\", \"Bo\", \"Kai\", \"Dan\"",
+          "nums": "50, 49, 61, 77"
+        }
+      ],
+      "answer": "for membru, scor in zip(echipaj, scoruri):",
+      "wrong": [
+        "for membru, scor in enumerate(echipaj):",
+        "for membru, scor in zip(scoruri, echipaj):",
+        "for membru, scor in zip(echipaj):"
+      ]
+    },
+    {
+      "id": "bi-gap-sorted",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\n___\nprint(clasament)\nprint({{v}})",
+      "values": [
+        {
+          "v": "scoruri",
+          "nums": "70, 95, 60, 88"
+        },
+        {
+          "v": "timpi",
+          "nums": "12, 30, 25"
+        },
+        {
+          "v": "vieti",
+          "nums": "2, 5, 3"
+        }
+      ],
+      "answer": "clasament = sorted({{v}}, reverse=True)",
+      "wrong": ["clasament = sorted({{v}})", "clasament = {{v}}", "clasament = max({{v}})"]
+    },
+    {
+      "id": "bi-val-func",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\nprint(___({{v}}))",
+      "values": [
+        {
+          "f": "sum",
+          "v": "scoruri",
+          "nums": "4, 9, 2"
+        },
+        {
+          "f": "sorted",
+          "v": "numere",
+          "nums": "6, 3, 8"
+        },
+        {
+          "f": "max",
+          "v": "combustibil",
+          "nums": "12, 40, 7, 25"
+        },
+        {
+          "f": "len",
+          "v": "vieti",
+          "nums": "5, 5, 5, 5"
+        }
+      ],
+      "answer": "{{f}}",
+      "wrong": ["sum", "max", "min", "len", "sorted"]
+    },
+    {
+      "id": "bi-val-anyall",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\nrezultat = ___(s >= {{k}} for s in {{v}})\nprint(rezultat)",
+      "values": [
+        {
+          "f": "any",
+          "k": 100,
+          "v": "scoruri",
+          "nums": "88, 100, 47, 73"
+        },
+        {
+          "f": "all",
+          "k": 50,
+          "v": "teste",
+          "nums": "60, 49, 75"
+        },
+        {
+          "f": "all",
+          "k": 18,
+          "v": "varste",
+          "nums": "21, 16, 30"
+        }
+      ],
+      "answer": "{{f}}",
+      "wrong": ["any", "all", "sum", "len"]
+    },
+    {
+      "id": "bi-val-round",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nprint(round({{v}}, ___))",
+      "values": [
+        {
+          "d": 2,
+          "v": "pi",
+          "x": 3.14159
+        },
+        {
+          "d": 1,
+          "v": "viteza",
+          "x": 7.86
+        },
+        {
+          "d": 3,
+          "v": "raport",
+          "x": 2.71828
+        }
+      ],
+      "answer": "{{d}}",
+      "wrong": ["0", "1", "2", "3"]
+    },
+    {
+      "id": "bi-bad-reverse",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\nfor n in {{v}}:\n    print(n)\nprint(sorted({{v}}, reverse=True))",
+      "values": [
+        {
+          "v": "scoruri",
+          "nums": "70, 95, 60"
+        },
+        {
+          "v": "inaltimi",
+          "nums": "3, 9, 1, 6"
+        },
+        {
+          "v": "combustibil",
+          "nums": "40, 15, 25"
+        }
+      ],
+      "bug": ["sorted({{v}}, reverse=True)", "sorted({{v}})"]
+    },
+    {
+      "id": "bi-bad-zip",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = [{{names}}]\nscoruri = [{{nums}}]\nfor membru, scor in zip(echipaj, scoruri):\n    print(f\"{membru}: {scor}\")",
+      "values": [
+        {
+          "names": "\"Tommy\", \"Boris\", \"Cara\"",
+          "nums": "88, 100, 47"
+        },
+        {
+          "names": "\"Lance\", \"Phil\", \"Cortez\"",
+          "nums": "95, 80, 70"
+        },
+        {
+          "names": "\"Dmitri\", \"Ana\"",
+          "nums": "73, 61"
+        }
+      ],
+      "bug": ["zip(echipaj, scoruri)", "zip(echipaj, echipaj)"]
+    },
+    {
+      "id": "bi-bad-enum",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\nfor i, nume in enumerate({{v}}):\n    print(f\"{i}: {nume}\")\nprint(f\"Numar: {len({{v}})}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Pamant\""
+        },
+        {
+          "v": "masini",
+          "items": "\"Cheetah\", \"Sabre\", \"Infernus\""
+        }
+      ],
+      "bug": ["enumerate({{v}})", "{{v}}"]
+    },
+    {
+      "id": "bi-bad-sum",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\nprint({{v}})\ntotal = sum({{v}})\nprint(f\"Total: {total}\")\nprint(f\"Medie: {total / len({{v}})}\")",
+      "values": [
+        {
+          "v": "preturi",
+          "nums": "10, 20, 30"
+        },
+        {
+          "v": "puncte",
+          "nums": "12, 7, 5, 8"
+        },
+        {
+          "v": "combustibil",
+          "nums": "15, 25, 40, 20"
+        }
+      ],
+      "bug": ["total = sum({{v}})", "total = max({{v}})"]
+    }
+  ]
+}

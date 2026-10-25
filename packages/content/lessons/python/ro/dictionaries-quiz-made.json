@@ -1,0 +1,742 @@
+{
+  "note": "Made by npm run make:quiz from the templates in dictionaries-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "dc-get-aa8b24",
+      "text": "Ce afișează?",
+      "code": "varste = {\"Tommy\": 42, \"Lance\": 35, \"Cortez\": 60}\nprint(varste[\"Lance\"])",
+      "options": ["35", "42", "Lance", "{'Tommy': 42, 'Lance': 35, 'Cortez': 60}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-get-539aa3",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75, \"Zoe\": 88}\nprint(scoruri[\"Ben\"])",
+      "options": ["75", "90", "Ben", "{'Ana': 90, 'Ben': 75, 'Zoe': 88}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-get-51e82e",
+      "text": "Ce afișează?",
+      "code": "combustibil = {\"Nova\": 80, \"Orion\": 45, \"Vega\": 60}\nprint(combustibil[\"Orion\"])",
+      "options": ["45", "80", "Orion", "{'Nova': 80, 'Orion': 45, 'Vega': 60}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-get-27c10c",
+      "text": "Ce afișează?",
+      "code": "preturi = {\"mere\": 3, \"paine\": 2, \"lapte\": 4}\nprint(preturi[\"paine\"])",
+      "options": ["2", "3", "paine", "{'mere': 3, 'paine': 2, 'lapte': 4}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-get-177f35",
+      "text": "Ce afișează?",
+      "code": "stoc = {\"suruburi\": 120, \"rotite\": 35, \"fire\": 70}\nprint(stoc[\"rotite\"])",
+      "options": ["35", "120", "rotite", "{'suruburi': 120, 'rotite': 35, 'fire': 70}"],
+      "answer": 0
+    },
+    {
+      "id": "dc-set-a10820",
+      "text": "Ce afișează?",
+      "code": "varste = {\"Tommy\": 42, \"Lance\": 35}\nvarste[\"Cortez\"] = 60\nvarste[\"Tommy\"] = 43\nprint(varste)",
+      "options": [
+        "{'Tommy': 43, 'Lance': 35, 'Cortez': 60}",
+        "{'Tommy': 42, 'Lance': 35, 'Cortez': 60}",
+        "{'Tommy': 42, 'Lance': 43, 'Cortez': 60}",
+        "{'Tommy': 43, 'Lance': 35}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-set-204244",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75}\nscoruri[\"Zoe\"] = 88\nscoruri[\"Ana\"] = 95\nprint(scoruri)",
+      "options": [
+        "{'Ana': 95, 'Ben': 75, 'Zoe': 88}",
+        "{'Ana': 90, 'Ben': 75, 'Zoe': 88}",
+        "{'Ana': 90, 'Ben': 95, 'Zoe': 88}",
+        "{'Ana': 95, 'Ben': 75}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-set-7bb1f2",
+      "text": "Ce afișează?",
+      "code": "combustibil = {\"Nova\": 80, \"Orion\": 45}\ncombustibil[\"Vega\"] = 60\ncombustibil[\"Nova\"] = 100\nprint(combustibil)",
+      "options": [
+        "{'Nova': 100, 'Orion': 45, 'Vega': 60}",
+        "{'Nova': 80, 'Orion': 45, 'Vega': 60}",
+        "{'Nova': 80, 'Orion': 100, 'Vega': 60}",
+        "{'Nova': 100, 'Orion': 45}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-set-7c850a",
+      "text": "Ce afișează?",
+      "code": "preturi = {\"mere\": 3, \"paine\": 2}\npreturi[\"lapte\"] = 4\npreturi[\"mere\"] = 5\nprint(preturi)",
+      "options": [
+        "{'mere': 5, 'paine': 2, 'lapte': 4}",
+        "{'mere': 3, 'paine': 2, 'lapte': 4}",
+        "{'mere': 3, 'paine': 5, 'lapte': 4}",
+        "{'mere': 5, 'paine': 2}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-set-8976eb",
+      "text": "Ce afișează?",
+      "code": "vieti = {\"Kai\": 3, \"Mia\": 1}\nvieti[\"Rex\"] = 5\nvieti[\"Kai\"] = 2\nprint(vieti)",
+      "options": [
+        "{'Kai': 2, 'Mia': 1, 'Rex': 5}",
+        "{'Kai': 3, 'Mia': 1, 'Rex': 5}",
+        "{'Kai': 3, 'Mia': 2, 'Rex': 5}",
+        "{'Kai': 2, 'Mia': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-del-aa8b24",
+      "text": "Ce afișează?",
+      "code": "varste = {\"Tommy\": 42, \"Lance\": 35, \"Cortez\": 60}\ndel varste[\"Lance\"]\nprint(varste)",
+      "options": [
+        "{'Tommy': 42, 'Cortez': 60}",
+        "{'Lance': 35, 'Cortez': 60}",
+        "{'Tommy': 42, 'Lance': 0, 'Cortez': 60}",
+        "{'Tommy': 42, 'Lance': 35, 'Cortez': 60}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-del-539aa3",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75, \"Zoe\": 88}\ndel scoruri[\"Ben\"]\nprint(scoruri)",
+      "options": [
+        "{'Ana': 90, 'Zoe': 88}",
+        "{'Ben': 75, 'Zoe': 88}",
+        "{'Ana': 90, 'Ben': 0, 'Zoe': 88}",
+        "{'Ana': 90, 'Ben': 75, 'Zoe': 88}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-del-177f35",
+      "text": "Ce afișează?",
+      "code": "stoc = {\"suruburi\": 120, \"rotite\": 35, \"fire\": 70}\ndel stoc[\"rotite\"]\nprint(stoc)",
+      "options": [
+        "{'suruburi': 120, 'fire': 70}",
+        "{'rotite': 35, 'fire': 70}",
+        "{'suruburi': 120, 'rotite': 0, 'fire': 70}",
+        "{'suruburi': 120, 'rotite': 35, 'fire': 70}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-del-2e7db7",
+      "text": "Ce afișează?",
+      "code": "camere = {\"laborator\": 4, \"punte\": 1, \"doc\": 7}\ndel camere[\"punte\"]\nprint(camere)",
+      "options": [
+        "{'laborator': 4, 'doc': 7}",
+        "{'punte': 1, 'doc': 7}",
+        "{'laborator': 4, 'punte': 0, 'doc': 7}",
+        "{'laborator': 4, 'punte': 1, 'doc': 7}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-del-3e57d4",
+      "text": "Ce afișează?",
+      "code": "viteza = {\"Nova\": 300, \"Orion\": 250, \"Vega\": 280}\ndel viteza[\"Orion\"]\nprint(viteza)",
+      "options": [
+        "{'Nova': 300, 'Vega': 280}",
+        "{'Orion': 250, 'Vega': 280}",
+        "{'Nova': 300, 'Orion': 0, 'Vega': 280}",
+        "{'Nova': 300, 'Orion': 250, 'Vega': 280}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-check-cf6576",
+      "text": "Ce afișează?",
+      "code": "varste = {\"Tommy\": 42, \"Lance\": 35}\nfor nume in [\"Lance\", \"Sonny\"]:\n    if nume in varste:\n        print(varste[nume])\n    else:\n        print(\"Nu am gasit\")",
+      "options": [
+        "35\nNu am gasit",
+        "Lance\nNu am gasit",
+        "Nu am gasit\n35",
+        "{'Tommy': 42, 'Lance': 35}\nNu am gasit"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-check-d90025",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75}\nfor nume in [\"Kai\", \"Ana\"]:\n    if nume in scoruri:\n        print(scoruri[nume])\n    else:\n        print(\"Fara scor\")",
+      "options": [
+        "Fara scor\n90",
+        "Fara scor\nAna",
+        "90\nFara scor",
+        "Fara scor\n{'Ana': 90, 'Ben': 75}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-check-6984f8",
+      "text": "Ce afișează?",
+      "code": "combustibil = {\"Nova\": 80, \"Orion\": 45}\nfor nume in [\"Orion\", \"Vega\"]:\n    if nume in combustibil:\n        print(combustibil[nume])\n    else:\n        print(\"Fara date\")",
+      "options": [
+        "45\nFara date",
+        "Orion\nFara date",
+        "Fara date\n45",
+        "{'Nova': 80, 'Orion': 45}\nFara date"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-check-de0bc9",
+      "text": "Ce afișează?",
+      "code": "preturi = {\"mere\": 3, \"paine\": 2}\nfor nume in [\"lapte\", \"paine\"]:\n    if nume in preturi:\n        print(preturi[nume])\n    else:\n        print(\"Nu se vinde\")",
+      "options": [
+        "Nu se vinde\n2",
+        "Nu se vinde\npaine",
+        "2\nNu se vinde",
+        "Nu se vinde\n{'mere': 3, 'paine': 2}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-check-f01b23",
+      "text": "Ce afișează?",
+      "code": "vieti = {\"Kai\": 3, \"Mia\": 1}\nfor nume in [\"Rex\", \"Kai\"]:\n    if nume in vieti:\n        print(vieti[nume])\n    else:\n        print(\"Necunoscut\")",
+      "options": [
+        "Necunoscut\n3",
+        "Necunoscut\nKai",
+        "3\nNecunoscut",
+        "Necunoscut\n{'Kai': 3, 'Mia': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-grow-ee0ca1",
+      "text": "Ce afișează?",
+      "code": "combustibil = {\"Nova\": 80, \"Orion\": 45}\ncombustibil[\"Orion\"] = combustibil[\"Orion\"] + 30\nprint(combustibil[\"Orion\"])",
+      "options": ["75", "30", "110", "80"],
+      "answer": 0
+    },
+    {
+      "id": "dc-grow-1a9877",
+      "text": "Ce afișează?",
+      "code": "viata = {\"Tommy\": 100, \"Lance\": 70}\nviata[\"Lance\"] = viata[\"Lance\"] - 25\nprint(viata[\"Lance\"])",
+      "options": ["45", "25", "75", "100"],
+      "answer": 0
+    },
+    {
+      "id": "dc-grow-348130",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75}\nscoruri[\"Ben\"] = scoruri[\"Ben\"] + 10\nprint(scoruri[\"Ben\"])",
+      "options": ["85", "10", "100", "90"],
+      "answer": 0
+    },
+    {
+      "id": "dc-grow-ec93b7",
+      "text": "Ce afișează?",
+      "code": "monede = {\"Kai\": 12, \"Mia\": 30}\nmonede[\"Mia\"] = monede[\"Mia\"] + 5\nprint(monede[\"Mia\"])",
+      "options": ["35", "5", "17", "12"],
+      "answer": 0
+    },
+    {
+      "id": "dc-grow-137f9e",
+      "text": "Ce afișează?",
+      "code": "vieti = {\"Rex\": 5, \"Zoe\": 3}\nvieti[\"Zoe\"] = vieti[\"Zoe\"] - 1\nprint(vieti[\"Zoe\"])",
+      "options": ["2", "1", "4", "5"],
+      "answer": 0
+    },
+    {
+      "id": "dc-list-e3539b",
+      "text": "Ce afișează?",
+      "code": "garaj = {\"nume\": \"Tommy\", \"masini\": [\"Cheetah\", \"Infernus\", \"Sabre\"]}\nprint(garaj[\"masini\"][1])",
+      "options": ["Infernus", "Sabre", "['Cheetah', 'Infernus', 'Sabre']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "dc-list-19d513",
+      "text": "Ce afișează?",
+      "code": "nava = {\"nume\": \"Nova\", \"echipaj\": [\"Ana\", \"Ben\", \"Zoe\"]}\nprint(nava[\"echipaj\"][0])",
+      "options": ["Ana", "Ben", "['Ana', 'Ben', 'Zoe']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "dc-list-7f9f74",
+      "text": "Ce afișează?",
+      "code": "rucsac = {\"nume\": \"Kai\", \"obiecte\": [\"harta\", \"franghie\", \"lanterna\"]}\nprint(rucsac[\"obiecte\"][2])",
+      "options": ["lanterna", "harta", "['harta', 'franghie', 'lanterna']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "dc-list-7189cb",
+      "text": "Ce afișează?",
+      "code": "robot = {\"nume\": \"R2\", \"unelte\": [\"cheie\", \"bormasina\", \"fierastrau\"]}\nprint(robot[\"unelte\"][1])",
+      "options": ["bormasina", "cheie", "['cheie', 'bormasina', 'fierastrau']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "dc-list-547f86",
+      "text": "Ce afișează?",
+      "code": "statie = {\"nume\": \"Laniakea\", \"camere\": [\"laborator\", \"punte\", \"doc\"]}\nprint(statie[\"camere\"][2])",
+      "options": ["doc", "punte", "['laborator', 'punte', 'doc']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-get-393440",
+      "text": "Care program afișează asta?",
+      "output": "555-5678",
+      "options": [
+        "agenda = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(agenda[\"Lance\"])",
+        "agenda = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(agenda[\"Cortez\"])",
+        "agenda = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(agenda[1])",
+        "agenda = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(agenda[Lance])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-get-e93c8e",
+      "text": "Care program afișează asta?",
+      "output": "medic",
+      "options": [
+        "roluri = {\"Tommy\": \"pilot\", \"Lance\": \"medic\"}\nprint(roluri[\"Lance\"])",
+        "roluri = {\"Tommy\": \"pilot\", \"Lance\": \"medic\"}\nprint(roluri[\"Tommy\"])",
+        "roluri = {\"Tommy\": \"pilot\", \"Lance\": \"medic\"}\nprint(roluri[1])",
+        "roluri = {\"Tommy\": \"pilot\", \"Lance\": \"medic\"}\nprint(roluri[Lance])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-get-4e4c4b",
+      "text": "Care program afișează asta?",
+      "output": "verde",
+      "options": [
+        "culori = {\"cer\": \"albastru\", \"iarba\": \"verde\"}\nprint(culori[\"iarba\"])",
+        "culori = {\"cer\": \"albastru\", \"iarba\": \"verde\"}\nprint(culori[\"cer\"])",
+        "culori = {\"cer\": \"albastru\", \"iarba\": \"verde\"}\nprint(culori[1])",
+        "culori = {\"cer\": \"albastru\", \"iarba\": \"verde\"}\nprint(culori[iarba])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-get-cccb7b",
+      "text": "Care program afișează asta?",
+      "output": "B2",
+      "options": [
+        "porti = {\"Nova\": \"A7\", \"Orion\": \"B2\"}\nprint(porti[\"Orion\"])",
+        "porti = {\"Nova\": \"A7\", \"Orion\": \"B2\"}\nprint(porti[\"Nova\"])",
+        "porti = {\"Nova\": \"A7\", \"Orion\": \"B2\"}\nprint(porti[1])",
+        "porti = {\"Nova\": \"A7\", \"Orion\": \"B2\"}\nprint(porti[Orion])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-in-cd4e76",
+      "text": "Care program afișează asta?",
+      "output": "L-am gasit pe Lance!",
+      "options": [
+        "echipaj = {\"Tommy\": 42, \"Lance\": 35}\nif \"Lance\" in echipaj:\n    print(\"L-am gasit pe Lance!\")\nelse:\n    print(\"Lance lipseste\")",
+        "echipaj = {\"Tommy\": 42, \"Lance\": 35}\nif \"Lance\" not in echipaj:\n    print(\"L-am gasit pe Lance!\")\nelse:\n    print(\"Lance lipseste\")",
+        "echipaj = {\"Tommy\": 42, \"Lance\": 35}\nif 35 in echipaj:\n    print(\"L-am gasit pe Lance!\")\nelse:\n    print(\"Lance lipseste\")",
+        "echipaj = {\"Tommy\": 42, \"Lance\": 35}\nif \"Lance\" in echipaj\n    print(\"L-am gasit pe Lance!\")\nelse:\n    print(\"Lance lipseste\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-in-4f0aa4",
+      "text": "Care program afișează asta?",
+      "output": "Ana are scor",
+      "options": [
+        "scoruri = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" in scoruri:\n    print(\"Ana are scor\")\nelse:\n    print(\"Ana nu are scor\")",
+        "scoruri = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" not in scoruri:\n    print(\"Ana are scor\")\nelse:\n    print(\"Ana nu are scor\")",
+        "scoruri = {\"Ana\": 90, \"Ben\": 75}\nif 90 in scoruri:\n    print(\"Ana are scor\")\nelse:\n    print(\"Ana nu are scor\")",
+        "scoruri = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" in scoruri\n    print(\"Ana are scor\")\nelse:\n    print(\"Ana nu are scor\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-in-72edf3",
+      "text": "Care program afișează asta?",
+      "output": "Orion e gata",
+      "options": [
+        "combustibil = {\"Nova\": 80, \"Orion\": 45}\nif \"Orion\" in combustibil:\n    print(\"Orion e gata\")\nelse:\n    print(\"Orion lipseste\")",
+        "combustibil = {\"Nova\": 80, \"Orion\": 45}\nif \"Orion\" not in combustibil:\n    print(\"Orion e gata\")\nelse:\n    print(\"Orion lipseste\")",
+        "combustibil = {\"Nova\": 80, \"Orion\": 45}\nif 45 in combustibil:\n    print(\"Orion e gata\")\nelse:\n    print(\"Orion lipseste\")",
+        "combustibil = {\"Nova\": 80, \"Orion\": 45}\nif \"Orion\" in combustibil\n    print(\"Orion e gata\")\nelse:\n    print(\"Orion lipseste\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-which-in-ccd68d",
+      "text": "Care program afișează asta?",
+      "output": "Avem paine",
+      "options": [
+        "preturi = {\"mere\": 3, \"paine\": 2}\nif \"paine\" in preturi:\n    print(\"Avem paine\")\nelse:\n    print(\"Azi nu e paine\")",
+        "preturi = {\"mere\": 3, \"paine\": 2}\nif \"paine\" not in preturi:\n    print(\"Avem paine\")\nelse:\n    print(\"Azi nu e paine\")",
+        "preturi = {\"mere\": 3, \"paine\": 2}\nif 2 in preturi:\n    print(\"Avem paine\")\nelse:\n    print(\"Azi nu e paine\")",
+        "preturi = {\"mere\": 3, \"paine\": 2}\nif \"paine\" in preturi\n    print(\"Avem paine\")\nelse:\n    print(\"Azi nu e paine\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-add-dfcdcf",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = {\"Tommy\": 42}\n___\nprint(varste)",
+      "output": "{'Tommy': 42, 'Lance': 35}",
+      "options": [
+        "varste[\"Lance\"] = 35",
+        "varste[\"Tommy\"] = 35",
+        "varste.append(35)",
+        "varste[35] = \"Lance\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-add-1efa10",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = {\"Ana\": 90}\n___\nprint(scoruri)",
+      "output": "{'Ana': 90, 'Ben': 75}",
+      "options": [
+        "scoruri[\"Ben\"] = 75",
+        "scoruri[\"Ana\"] = 75",
+        "scoruri.append(75)",
+        "scoruri[75] = \"Ben\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-add-55bd79",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = {\"Nova\": 80}\n___\nprint(combustibil)",
+      "output": "{'Nova': 80, 'Vega': 60}",
+      "options": [
+        "combustibil[\"Vega\"] = 60",
+        "combustibil[\"Nova\"] = 60",
+        "combustibil.append(60)",
+        "combustibil[60] = \"Vega\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-add-92eed3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = {\"mere\": 3}\n___\nprint(preturi)",
+      "output": "{'mere': 3, 'lapte': 4}",
+      "options": [
+        "preturi[\"lapte\"] = 4",
+        "preturi[\"mere\"] = 4",
+        "preturi.append(4)",
+        "preturi[4] = \"lapte\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-add-d1bde1",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "stoc = {\"suruburi\": 120}\n___\nprint(stoc)",
+      "output": "{'suruburi': 120, 'fire': 70}",
+      "options": [
+        "stoc[\"fire\"] = 70",
+        "stoc[\"suruburi\"] = 70",
+        "stoc.append(70)",
+        "stoc[70] = \"fire\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-del-73ebbd",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = {\"Phil\": 50, \"Sonny\": 38, \"Ken\": 29}\n___\nprint(varste)",
+      "output": "{'Phil': 50, 'Ken': 29}",
+      "options": ["del varste[\"Sonny\"]", "del varste[1]", "varste[\"Sonny\"] = 0", "del varste"],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-del-fe5b79",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\n___\nprint(niveluri)",
+      "output": "{'Zoe': 12, 'Ana': 9}",
+      "options": [
+        "del niveluri[\"Kai\"]",
+        "del niveluri[1]",
+        "niveluri[\"Kai\"] = 0",
+        "del niveluri"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-del-baf2d8",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "vieti = {\"Kai\": 3, \"Mia\": 1, \"Rex\": 5}\n___\nprint(vieti)",
+      "output": "{'Kai': 3, 'Rex': 5}",
+      "options": ["del vieti[\"Mia\"]", "del vieti[1]", "vieti[\"Mia\"] = 0", "del vieti"],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-del-f4a08a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = {\"mere\": 3, \"paine\": 2, \"lapte\": 4}\n___\nprint(preturi)",
+      "output": "{'mere': 3, 'lapte': 4}",
+      "options": [
+        "del preturi[\"paine\"]",
+        "del preturi[1]",
+        "preturi[\"paine\"] = 0",
+        "del preturi"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-del-2a0e71",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = {\"Nova\": 80, \"Orion\": 45, \"Vega\": 60}\n___\nprint(combustibil)",
+      "output": "{'Nova': 80, 'Vega': 60}",
+      "options": [
+        "del combustibil[\"Orion\"]",
+        "del combustibil[1]",
+        "combustibil[\"Orion\"] = 0",
+        "del combustibil"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-key-8b2dcb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "vieti = {\"Kai\": 3, \"Mia\": 1, \"Rex\": 5}\nprint(vieti[___])",
+      "output": "1",
+      "options": ["\"Mia\"", "1", "Mia", "\"Kai\""],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-key-067a50",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "camere = {\"laborator\": 4, \"punte\": 1, \"doc\": 7}\nprint(camere[___])",
+      "output": "1",
+      "options": ["\"punte\"", "1", "punte", "\"laborator\""],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-key-912955",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\nprint(niveluri[___])",
+      "output": "7",
+      "options": ["\"Kai\"", "1", "Kai", "\"Zoe\""],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-key-1f31cf",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = {\"Phil\": 50, \"Sonny\": 38, \"Ken\": 29}\nprint(varste[___])",
+      "output": "38",
+      "options": ["\"Sonny\"", "1", "Sonny", "\"Phil\""],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-key-d0db2c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "viteza = {\"Nova\": 300, \"Orion\": 250, \"Vega\": 280}\nprint(viteza[___])",
+      "output": "250",
+      "options": ["\"Orion\"", "1", "Orion", "\"Nova\""],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-in-4d9512",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"Tommy\": 42, \"Lance\": 35}\nif \"Lance\" ___ echipaj:\n    print(\"L-am gasit pe Lance!\")\nelse:\n    print(\"Lance lipseste\")",
+      "output": "L-am gasit pe Lance!",
+      "options": ["in", "not in", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-in-1dcaf5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"nume\": \"Tommy\", \"varsta\": 35}\nif \"rang\" ___ echipaj:\n    print(\"Rang: necunoscut\")\nelse:\n    print(\"Rang: cunoscut\")",
+      "output": "Rang: necunoscut",
+      "options": ["not in", "in", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-in-0a975d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75}\nif \"Zoe\" ___ scoruri:\n    print(\"Zoe nu are scor\")\nelse:\n    print(\"Zoe are scor\")",
+      "output": "Zoe nu are scor",
+      "options": ["not in", "in", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-in-a68cf0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = {\"Nova\": 80, \"Orion\": 45}\nif \"Nova\" ___ combustibil:\n    print(\"Nova e gata\")\nelse:\n    print(\"Nova lipseste\")",
+      "output": "Nova e gata",
+      "options": ["in", "not in", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "dc-gap-in-d155fd",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "stoc = {\"suruburi\": 120, \"rotite\": 35}\nif \"fire\" ___ stoc:\n    print(\"Comanda fire\")\nelse:\n    print(\"Avem fire\")",
+      "output": "Comanda fire",
+      "options": ["not in", "in", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-brackets-1e91c4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varste = [\"Tommy\": 42, \"Lance\": 35]\nvarste[\"Cortez\"] = 60\nprint(varste[\"Tommy\"])\nprint(varste[\"Lance\"])\nprint(varste[\"Cortez\"])",
+      "output": "42\n35\n60",
+      "options": [
+        "varste = [\"Tommy\": 42, \"Lance\": 35]",
+        "varste[\"Cortez\"] = 60",
+        "print(varste[\"Tommy\"])",
+        "print(varste[\"Lance\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-brackets-d5b695",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = [\"Ana\": 90, \"Ben\": 75]\nscoruri[\"Zoe\"] = 88\nprint(scoruri[\"Ana\"])\nprint(scoruri[\"Ben\"])\nprint(scoruri[\"Zoe\"])",
+      "output": "90\n75\n88",
+      "options": [
+        "scoruri = [\"Ana\": 90, \"Ben\": 75]",
+        "scoruri[\"Zoe\"] = 88",
+        "print(scoruri[\"Ana\"])",
+        "print(scoruri[\"Ben\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-brackets-ffc630",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "combustibil = [\"Nova\": 80, \"Orion\": 45]\ncombustibil[\"Vega\"] = 60\nprint(combustibil[\"Nova\"])\nprint(combustibil[\"Orion\"])\nprint(combustibil[\"Vega\"])",
+      "output": "80\n45\n60",
+      "options": [
+        "combustibil = [\"Nova\": 80, \"Orion\": 45]",
+        "combustibil[\"Vega\"] = 60",
+        "print(combustibil[\"Nova\"])",
+        "print(combustibil[\"Orion\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-paren-b339c8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "preturi = {\"mere\": 3, \"paine\": 2}\npreturi[\"lapte\"] = 4\nprint(preturi[\"mere\"])\nprint(preturi[\"paine\"])\nprint(preturi(\"lapte\"))",
+      "output": "3\n2\n4",
+      "options": [
+        "print(preturi(\"lapte\"))",
+        "print(preturi[\"paine\"])",
+        "print(preturi[\"mere\"])",
+        "preturi[\"lapte\"] = 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-paren-5bb584",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "stoc = {\"suruburi\": 120, \"rotite\": 35}\nstoc[\"fire\"] = 70\nprint(stoc[\"suruburi\"])\nprint(stoc[\"rotite\"])\nprint(stoc(\"fire\"))",
+      "output": "120\n35\n70",
+      "options": [
+        "print(stoc(\"fire\"))",
+        "print(stoc[\"rotite\"])",
+        "print(stoc[\"suruburi\"])",
+        "stoc[\"fire\"] = 70"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-paren-84ff88",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "vieti = {\"Kai\": 3, \"Mia\": 1}\nvieti[\"Rex\"] = 5\nprint(vieti[\"Kai\"])\nprint(vieti[\"Mia\"])\nprint(vieti(\"Rex\"))",
+      "output": "3\n1\n5",
+      "options": [
+        "print(vieti(\"Rex\"))",
+        "print(vieti[\"Mia\"])",
+        "print(vieti[\"Kai\"])",
+        "vieti[\"Rex\"] = 5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-quotes-1297aa",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varste = {\"Tommy\": 42, \"Lance\": 35}\nvarste[\"Lance\"] = varste[\"Lance\"] + 1\nprint(varste[Tommy])\nprint(varste[\"Lance\"])",
+      "output": "42\n36",
+      "options": [
+        "print(varste[Tommy])",
+        "varste[\"Lance\"] = varste[\"Lance\"] + 1",
+        "varste = {\"Tommy\": 42, \"Lance\": 35}",
+        "print(varste[\"Lance\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-quotes-198549",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75}\nscoruri[\"Ben\"] = scoruri[\"Ben\"] + 10\nprint(scoruri[Ana])\nprint(scoruri[\"Ben\"])",
+      "output": "90\n85",
+      "options": [
+        "print(scoruri[Ana])",
+        "scoruri[\"Ben\"] = scoruri[\"Ben\"] + 10",
+        "scoruri = {\"Ana\": 90, \"Ben\": 75}",
+        "print(scoruri[\"Ben\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-quotes-4c41d1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "combustibil = {\"Nova\": 80, \"Orion\": 45}\ncombustibil[\"Orion\"] = combustibil[\"Orion\"] + 30\nprint(combustibil[Nova])\nprint(combustibil[\"Orion\"])",
+      "output": "80\n75",
+      "options": [
+        "print(combustibil[Nova])",
+        "combustibil[\"Orion\"] = combustibil[\"Orion\"] + 30",
+        "combustibil = {\"Nova\": 80, \"Orion\": 45}",
+        "print(combustibil[\"Orion\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-del-7b1a76",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varste = {\"Tommy\": 42, \"Lance\": 35, \"Cortez\": 60}\ndelete varste[\"Lance\"]\nvarste[\"Phil\"] = 50\nprint(varste)",
+      "output": "{'Tommy': 42, 'Cortez': 60, 'Phil': 50}",
+      "options": [
+        "delete varste[\"Lance\"]",
+        "varste = {\"Tommy\": 42, \"Lance\": 35, \"Cortez\": 60}",
+        "varste[\"Phil\"] = 50",
+        "print(varste)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-del-0e713a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\ndelete niveluri[\"Kai\"]\nniveluri[\"Mia\"] = 4\nprint(niveluri)",
+      "output": "{'Zoe': 12, 'Ana': 9, 'Mia': 4}",
+      "options": [
+        "delete niveluri[\"Kai\"]",
+        "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}",
+        "niveluri[\"Mia\"] = 4",
+        "print(niveluri)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-bad-del-e2aab1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "camere = {\"laborator\": 4, \"punte\": 1, \"doc\": 7}\ndelete camere[\"punte\"]\ncamere[\"hangar\"] = 2\nprint(camere)",
+      "output": "{'laborator': 4, 'doc': 7, 'hangar': 2}",
+      "options": [
+        "delete camere[\"punte\"]",
+        "camere = {\"laborator\": 4, \"punte\": 1, \"doc\": 7}",
+        "camere[\"hangar\"] = 2",
+        "print(camere)"
+      ],
+      "answer": 0
+    }
+  ]
+}

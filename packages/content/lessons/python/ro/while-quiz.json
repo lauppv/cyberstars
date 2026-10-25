@@ -912,7 +912,7 @@
       "id": "wh-bad-step",
       "kind": "wrong-line",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "{{t}} = 0\ni = 1\nwhile i <= {{n}}:\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "code": "{{t}} = 0\ni = 1\nwhile i <= {{n}}:\n    {{t}} = {{t}} + i\n    print(i)\n    i = i + 1\nprint({{t}})",
       "values": [
         {
           "t": "total",

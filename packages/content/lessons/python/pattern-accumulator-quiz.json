@@ -1,0 +1,774 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "How is the accumulator pattern different from the counter pattern?",
+      "options": [
+        "The accumulator only works with lists",
+        "The counter adds 1 each time, the accumulator builds up a result such as a sum, a string or a list",
+        "The accumulator doesn't need a loop",
+        "They are two names for the same thing"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Which value should a product accumulator start from?",
+      "options": ["0", "\"\"", "[]", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "What does this print?",
+      "code": "numbers = [2, 3, 4]\nproduct = 0\nfor n in numbers:\n    product *= n\nprint(product)",
+      "options": ["0", "24", "9", "1"],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "We want to build a sentence word by word. What does the accumulator start as?",
+      "options": ["0", "[]", "\"\" (an empty string)", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "parts = [\"Vice\", \"City\"]\nname = \"\"\nfor part in parts:\n    name += part + \"-\"\nprint(name)",
+      "options": ["Vice-City", "Vice-City-", "-Vice-City", "City-Vice-"],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "In the lesson's reversed string for \"Tommy\", what is `reversed_str` after the third pass of the loop?",
+      "options": ["Tom", "ymm", "moT", "mmoT"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Which value does a list accumulator start from?",
+      "options": ["[] (an empty list)", "0", "\"\"", "[0]"],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "numbers = [3, 8, 5, 10, 7]\nevens = []\nfor n in numbers:\n    if n % 2 == 0:\n        evens.append(n)\nprint(evens)",
+      "options": ["[3, 5, 7]", "[10]", "2", "[8, 10]"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Why does a product start at 1 and not at 0?",
+      "options": [
+        "Because Python can't multiply by 0",
+        "Because 0 times any number is 0, so the product would stay 0 forever",
+        "Because the first number of the list is always 1",
+        "There is no reason, 0 works just as well"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "In the Signal Accumulator mission, the strengths are `[30, 65, 20, 90, 50]`. Why isn't 50 in the strong list?",
+      "options": [
+        "Because it is the last one in the list",
+        "Because append skips the last value",
+        "Because the list can hold only two values",
+        "Because the check is `> 50`, and 50 is not above 50"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "In the mission, what does the code word `ORBIT` become, reversed character by character?",
+      "options": ["TIBRO", "ORBIT", "TIBR", "BIROT"],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "prices = [10, 20, 30]\nfor price in prices:\n    total = 0\n    total += price\nprint(total)",
+      "options": ["60", "0", "30", "10"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "prices = [5, 10, 15]\ntotal = 0\nfor price in prices:\n    total += price\n    print(total)",
+      "options": ["30", "5\n15\n30", "5\n10\n15", "0\n5\n15"],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "words = [\"Vice\", \"City\", \"Stories\"]\nsentence = \"\"\nfor word in words:\n    sentence += word + \" \"\nprint(len(sentence))",
+      "options": ["17", "15", "3", "18"],
+      "answer": 3
+    },
+    {
+      "id": "q15",
+      "text": "What happens when this runs?",
+      "code": "total = \"\"\nfor n in [4, 5, 6]:\n    total += n\nprint(total)",
+      "options": [
+        "It prints 15",
+        "It stops with a TypeError: a number can't be added to a string",
+        "It prints 456",
+        "It prints nothing"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Which of these loops is an accumulator that builds a list?",
+      "options": [
+        "for n in numbers:\n    big = [n]",
+        "for n in numbers:\n    print(n)",
+        "for n in numbers:\n    if n > 5:\n        big.append(n)",
+        "for n in numbers:\n    count += 1"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "words = [\"sun\", \"moon\", \"star\"]\nletters = 0\nfor word in words:\n    letters += len(word)\nprint(letters)",
+      "options": ["11", "3", "4", "sunmoonstar"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "numbers = [1, 2, 3, 4]\nproduct = 1\nfor n in numbers:\n    product *= n\nprint(product)",
+      "options": ["10", "0", "4", "24"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "scores = [40, 75, 90]\nhigh = []\nfor s in scores:\n    if s > 50:\n        high = [s]\nprint(high)",
+      "options": ["[75, 90]", "[90]", "[75]", "[]"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "word = \"abc\"\nresult = \"\"\nfor char in word:\n    result = char + result\n    print(result)",
+      "options": ["a\nab\nabc", "cba", "a\nba\ncba", "c\ncb\ncba"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Ken\"]\ninitials = \"\"\nfor name in names:\n    initials += name[0]\nprint(initials)",
+      "options": ["TLK", "KLT", "K", "TommyLanceKen"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "total = 10\nfor n in [1, 2, 3]:\n    total += n\nprint(total)",
+      "options": ["6", "13", "16", "10"],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "ships = [\"Cheetah\", \"Sabre\", \"Infernus\", \"Stinger\"]\nlong_names = []\nfor ship in ships:\n    if len(ship) > 6:\n        long_names.append(ship)\nprint(len(long_names))",
+      "options": ["4", "2", "3", "['Cheetah', 'Infernus', 'Stinger']"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "A program multiplies all the numbers of a list, but it always prints 0. Which line is the most likely culprit?",
+      "options": ["product *= n", "product = 0", "for n in numbers:", "print(product)"],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "word = \"level\"\nbackwards = \"\"\nfor char in word:\n    backwards = char + backwards\nprint(backwards == word)",
+      "options": ["levle", "False", "level", "True"],
+      "answer": 3
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "crew = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\nshort = []\nfor name in crew:\n    if len(name) < 6:\n        short.append(name)\nprint(short)",
+      "options": ["['Tommy', 'Lance', 'Phil']", "['Cortez']", "3", "['Phil']"],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "In the mission, where does each new character of the code word go in the reversed string?",
+      "options": [
+        "At the end, after the ones already there",
+        "In the middle",
+        "At the front, before the ones already there",
+        "It replaces the whole string"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does `product *= n` do?",
+      "options": [
+        "The same as product = n",
+        "The same as product = product + n",
+        "It compares product with n",
+        "The same as product = product * n"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "readings = [12, 60, 5, 80]\ntotal = 0\nstrong = []\nfor r in readings:\n    total += r\n    if r > 50:\n        strong.append(r)\nprint(total)\nprint(strong)",
+      "options": ["140\n[60, 80]", "157\n[60, 80]", "157\n[12, 5]", "157\n2"],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "letters = [\"S\", \"O\", \"S\"]\nmessage = \"\"\nfor letter in letters:\n    message = letter + \".\" + message\nprint(message)",
+      "options": ["S.O.S", ".S.O.S", "S.O.S.", "SOS."],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "pa-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\ntotal = 0\nfor n in {{v}}:\n    total += n\nprint(total)",
+      "values": [
+        {
+          "v": "prices",
+          "nums": "10, 20, 30, 40"
+        },
+        {
+          "v": "points",
+          "nums": "7, 3, 12"
+        },
+        {
+          "v": "fuel",
+          "nums": "25, 5, 15, 30"
+        },
+        {
+          "v": "scores",
+          "nums": "8, 14, 6, 2"
+        }
+      ],
+      "mistakes": [
+        ["total += n", "total = n"],
+        ["total = 0", "total = 1"],
+        ["total += n", "total += 1"],
+        ["    total += n\nprint(total)", "    total += n\n    print(total)"]
+      ]
+    },
+    {
+      "id": "pa-product",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\nproduct = 1\nfor n in {{v}}:\n    product *= n\nprint(product)",
+      "values": [
+        {
+          "v": "numbers",
+          "nums": "2, 3, 4, 5"
+        },
+        {
+          "v": "factors",
+          "nums": "3, 3, 2"
+        },
+        {
+          "v": "boosts",
+          "nums": "5, 2, 4"
+        },
+        {
+          "v": "steps",
+          "nums": "6, 1, 3"
+        }
+      ],
+      "mistakes": [
+        ["product = 1", "product = 0"],
+        ["product *= n", "product += n"],
+        ["product *= n", "product = n"],
+        ["product *= n", "product *= 2"]
+      ]
+    },
+    {
+      "id": "pa-string",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "parts = [{{words}}]\ncode = \"\"\nfor p in parts:\n    code += p + \"{{sep}}\"\nprint(code)",
+      "values": [
+        {
+          "words": "\"Vice\", \"City\", \"Stories\"",
+          "sep": "-"
+        },
+        {
+          "words": "\"A\", \"B\", \"C\", \"D\"",
+          "sep": "."
+        },
+        {
+          "words": "\"red\", \"blue\"",
+          "sep": "/"
+        },
+        {
+          "words": "\"Mars\", \"Venus\", \"Earth\"",
+          "sep": ","
+        }
+      ],
+      "mistakes": [
+        ["code += p + \"{{sep}}\"", "code = p + \"{{sep}}\""],
+        ["p + \"{{sep}}\"", "\"{{sep}}\" + p"],
+        ["code += p + \"{{sep}}\"", "code = p + \"{{sep}}\" + code"]
+      ]
+    },
+    {
+      "id": "pa-reverse",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "word = \"{{w}}\"\nrev = \"\"\nfor char in word:\n    rev = char + rev\nprint(rev)",
+      "values": [
+        {
+          "w": "ORBIT"
+        },
+        {
+          "w": "LASER"
+        },
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "COMET"
+        }
+      ],
+      "mistakes": [
+        ["rev = char + rev", "rev = rev + char"],
+        ["rev = char + rev", "rev = char"],
+        ["    rev = char + rev\nprint(rev)", "    rev = char + rev\n    print(rev)"],
+        ["rev = \"\"", "rev = \"*\""]
+      ]
+    },
+    {
+      "id": "pa-filter",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\nstrong = []\nfor s in {{v}}:\n    if s > {{t}}:\n        strong.append(s)\nprint(strong)",
+      "values": [
+        {
+          "v": "strengths",
+          "nums": "30, 65, 20, 90, 50",
+          "t": 50
+        },
+        {
+          "v": "signals",
+          "nums": "12, 40, 25, 8, 40",
+          "t": 25
+        },
+        {
+          "v": "readings",
+          "nums": "70, 100, 45, 100, 80",
+          "t": 80
+        },
+        {
+          "v": "levels",
+          "nums": "5, 9, 3, 6, 7",
+          "t": 6
+        }
+      ],
+      "mistakes": [
+        ["s > {{t}}", "s >= {{t}}"],
+        ["strong.append(s)", "strong = [s]"],
+        ["s > {{t}}", "s < {{t}}"],
+        [
+          "        strong.append(s)\nprint(strong)",
+          "        strong.append(s)\n        print(strong)"
+        ]
+      ]
+    },
+    {
+      "id": "pa-letters",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "words = [{{words}}]\nletters = 0\nfor w in words:\n    letters += len(w)\nprint(letters)",
+      "values": [
+        {
+          "words": "\"sun\", \"moon\", \"star\""
+        },
+        {
+          "words": "\"Tommy\", \"Ken\""
+        },
+        {
+          "words": "\"go\", \"to\", \"the\", \"base\""
+        },
+        {
+          "words": "\"radar\", \"laser\", \"probe\""
+        }
+      ],
+      "mistakes": [
+        ["letters += len(w)", "letters += 1"],
+        ["letters += len(w)", "letters = len(w)"],
+        ["letters = 0", "letters = 1"],
+        ["len(w)", "len(words)"]
+      ]
+    },
+    {
+      "id": "pa-evens",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\ntotal = 0\nfor n in {{v}}:\n    if n % 2 == 0:\n        total += n\nprint(f\"Sum: {total}\")",
+      "values": [
+        {
+          "v": "numbers",
+          "nums": "1, 2, 3, 4, 5, 6"
+        },
+        {
+          "v": "codes",
+          "nums": "10, 15, 20"
+        },
+        {
+          "v": "ages",
+          "nums": "7, 8, 12, 9"
+        },
+        {
+          "v": "values",
+          "nums": "3, 14, 5, 6, 11"
+        }
+      ],
+      "mistakes": [
+        ["n % 2 == 0", "n % 2 == 1"],
+        ["total += n", "total += 1"],
+        ["    if n % 2 == 0:\n        total += n", "    total += n"],
+        ["total += n", "total = n"]
+      ]
+    },
+    {
+      "id": "pa-initials",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{names}}]\ninitials = \"\"\nfor name in {{v}}:\n    initials += name[0]\nprint(initials)",
+      "values": [
+        {
+          "v": "crew",
+          "names": "\"Tommy\", \"Lance\", \"Ken\""
+        },
+        {
+          "v": "planets",
+          "names": "\"Mars\", \"Earth\", \"Venus\", \"Pluto\""
+        },
+        {
+          "v": "cars",
+          "names": "\"Sabre\", \"Infernus\", \"Cheetah\""
+        }
+      ],
+      "mistakes": [
+        ["name[0]", "name[1]"],
+        ["initials += name[0]", "initials = name[0]"],
+        ["initials += name[0]", "initials = name[0] + initials"],
+        ["initials += name[0]", "initials += name"]
+      ]
+    },
+    {
+      "id": "pa-which-double",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{nums}}]\ndoubled = []\nfor n in {{v}}:\n    doubled.append(n * 2)\nprint(doubled)",
+      "values": [
+        {
+          "v": "numbers",
+          "nums": "1, 2, 3"
+        },
+        {
+          "v": "speeds",
+          "nums": "10, 25, 40"
+        },
+        {
+          "v": "lives",
+          "nums": "3, 5"
+        }
+      ],
+      "mistakes": [
+        ["doubled.append(n * 2)", "doubled.append(n)"],
+        ["doubled.append(n * 2)", "doubled = [n * 2]"],
+        [
+          "    doubled.append(n * 2)\nprint(doubled)",
+          "    doubled.append(n * 2)\n    print(doubled)"
+        ]
+      ]
+    },
+    {
+      "id": "pa-which-reverse",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = \"{{w}}\"\nbackwards = \"\"\nfor char in {{v}}:\n    backwards = char + backwards\nprint(backwards)",
+      "values": [
+        {
+          "v": "code",
+          "w": "RADIO"
+        },
+        {
+          "v": "name",
+          "w": "Lance"
+        },
+        {
+          "v": "signal",
+          "w": "ALPHA"
+        }
+      ],
+      "mistakes": [
+        ["backwards = char + backwards", "backwards = backwards + char"],
+        ["backwards = char + backwards", "backwards = char"],
+        ["print(backwards)", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "pa-gap-start",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\nfor n in [{{nums}}]:\n    product *= n\nprint(product)",
+      "values": [
+        {
+          "nums": "2, 3, 4"
+        },
+        {
+          "nums": "5, 2, 2"
+        },
+        {
+          "nums": "3, 7"
+        },
+        {
+          "nums": "4, 1, 5"
+        }
+      ],
+      "answer": "product = 1",
+      "wrong": ["product = 0", "product = 2", "product = []", "product = n"]
+    },
+    {
+      "id": "pa-gap-append",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{nums}}]\nsmall = []\nfor n in {{v}}:\n    if n < {{t}}:\n        ___\nprint(small)",
+      "values": [
+        {
+          "v": "readings",
+          "nums": "40, 12, 75, 8",
+          "t": 20
+        },
+        {
+          "v": "ages",
+          "nums": "15, 30, 9, 18",
+          "t": 18
+        },
+        {
+          "v": "prices",
+          "nums": "5, 50, 3, 25",
+          "t": 10
+        },
+        {
+          "v": "scores",
+          "nums": "60, 45, 90, 30",
+          "t": 50
+        }
+      ],
+      "answer": "small.append(n)",
+      "wrong": ["small = [n]", "small.append({{t}})", "print(n)", "small.append({{v}})"]
+    },
+    {
+      "id": "pa-gap-reverse",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"{{w}}\"\nresult = \"\"\nfor char in word:\n    ___\nprint(result)",
+      "values": [
+        {
+          "w": "SATURN"
+        },
+        {
+          "w": "Cortez"
+        },
+        {
+          "w": "PROBE"
+        },
+        {
+          "w": "VENUS"
+        }
+      ],
+      "answer": "result = char + result",
+      "wrong": ["result = result + char", "result = char", "result += word"]
+    },
+    {
+      "id": "pa-val-start",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{acc}} = ___\nfor x in [{{items}}]:\n    {{acc}} {{op}}= x\nprint({{acc}})",
+      "values": [
+        {
+          "acc": "total",
+          "op": "+",
+          "items": "4, 6, 10",
+          "ans": "0",
+          "w1": "1",
+          "w2": "10",
+          "w3": "4"
+        },
+        {
+          "acc": "product",
+          "op": "*",
+          "items": "2, 5, 3",
+          "ans": "1",
+          "w1": "0",
+          "w2": "2",
+          "w3": "10"
+        },
+        {
+          "acc": "word",
+          "op": "+",
+          "items": "\"S\", \"O\", \"S\"",
+          "ans": "\"\"",
+          "w1": "\"S\"",
+          "w2": "\" \"",
+          "w3": "\"-\""
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "pa-val-limit",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{nums}}]\nstrong = []\nfor s in {{v}}:\n    if s > ___:\n        strong.append(s)\nprint(strong)",
+      "values": [
+        {
+          "v": "strengths",
+          "nums": "30, 65, 20, 90, 50",
+          "ans": 50,
+          "w1": 20,
+          "w2": 65,
+          "w3": 90
+        },
+        {
+          "v": "signals",
+          "nums": "15, 8, 40, 22",
+          "ans": 10,
+          "w1": 15,
+          "w2": 22,
+          "w3": 5
+        },
+        {
+          "v": "levels",
+          "nums": "3, 9, 6, 1",
+          "ans": 5,
+          "w1": 1,
+          "w2": 6,
+          "w3": 9
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "pa-val-op",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{nums}}]\nresult = 1\nfor n in {{v}}:\n    result = result ___ n\nprint(result)",
+      "values": [
+        {
+          "v": "factors",
+          "nums": "2, 3, 4"
+        },
+        {
+          "v": "boosts",
+          "nums": "5, 5"
+        },
+        {
+          "v": "numbers",
+          "nums": "3, 2, 6"
+        }
+      ],
+      "answer": "*",
+      "wrong": ["+", "-", "//"]
+    },
+    {
+      "id": "pa-bad-start",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{nums}}]\nproduct = 1\nfor n in {{v}}:\n    product *= n\nprint(product)",
+      "values": [
+        {
+          "v": "numbers",
+          "nums": "2, 3, 5"
+        },
+        {
+          "v": "factors",
+          "nums": "4, 2, 3"
+        },
+        {
+          "v": "boosts",
+          "nums": "3, 3, 3"
+        }
+      ],
+      "bug": ["product = 1", "product = 0"]
+    },
+    {
+      "id": "pa-bad-add",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor p in [{{prices}}]:\n    print(p)\n    total += p\nprint(f\"Total: {total}\")",
+      "values": [
+        {
+          "prices": "10, 20, 30"
+        },
+        {
+          "prices": "5, 15, 25, 5"
+        },
+        {
+          "prices": "40, 12, 8"
+        }
+      ],
+      "bug": ["    total += p", "    total = p"]
+    },
+    {
+      "id": "pa-bad-order",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"{{w}}\"\nprint(word)\nrev = \"\"\nfor char in word:\n    rev = char + rev\nprint(rev)",
+      "values": [
+        {
+          "w": "ORBIT"
+        },
+        {
+          "w": "PLANET"
+        },
+        {
+          "w": "Ken"
+        }
+      ],
+      "bug": ["rev = char + rev", "rev = rev + char"]
+    },
+    {
+      "id": "pa-bad-append",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{nums}}]\nstrong = []\nfor s in {{v}}:\n    if s > {{t}}:\n        strong.append(s)\nprint(strong)",
+      "values": [
+        {
+          "v": "strengths",
+          "nums": "30, 65, 20, 90",
+          "t": 50
+        },
+        {
+          "v": "signals",
+          "nums": "70, 10, 85, 40, 95",
+          "t": 60
+        },
+        {
+          "v": "readings",
+          "nums": "6, 2, 8, 1",
+          "t": 4
+        }
+      ],
+      "bug": ["strong.append(s)", "strong = [s]"]
+    }
+  ]
+}

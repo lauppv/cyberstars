@@ -1,0 +1,597 @@
+{
+  "note": "Made by npm run make:quiz from the templates in return-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rv-add-41d12c",
+      "text": "What does this print?",
+      "code": "def add(a, b):\n    return a + b\n\nresult = add(2, 3)\nprint(result)",
+      "options": ["5", "5\nNone", "result", "4"],
+      "answer": 0
+    },
+    {
+      "id": "rv-add-9d3c8d",
+      "text": "What does this print?",
+      "code": "def subtract(a, b):\n    return a - b\n\ndiff = subtract(10, 4)\nprint(diff)",
+      "options": ["6", "6\nNone", "diff", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rv-add-9db4e2",
+      "text": "What does this print?",
+      "code": "def multiply(a, b):\n    return a * b\n\nproduct = multiply(6, 7)\nprint(product)",
+      "options": ["42", "42\nNone", "product", "36"],
+      "answer": 0
+    },
+    {
+      "id": "rv-add-b8a46e",
+      "text": "What does this print?",
+      "code": "def divide(a, b):\n    return a / b\n\nshare = divide(9, 3)\nprint(share)",
+      "options": ["3.0", "3.0\nNone", "share", "1.0"],
+      "answer": 0
+    },
+    {
+      "id": "rv-add-3b8c3d",
+      "text": "What does this print?",
+      "code": "def power(a, b):\n    return a ** b\n\nbig = power(2, 5)\nprint(big)",
+      "options": ["32", "32\nNone", "big", "4"],
+      "answer": 0
+    },
+    {
+      "id": "rv-chain-9e04f8",
+      "text": "What does this print?",
+      "code": "def add_five(x):\n    return x + 5\n\nprint(add_five(3) * 10)",
+      "options": ["80", "35", "30", "18"],
+      "answer": 0
+    },
+    {
+      "id": "rv-chain-8e20f9",
+      "text": "What does this print?",
+      "code": "def double(n):\n    return n * 2\n\nprint(double(4) * 3)",
+      "options": ["24", "12", "11", "8"],
+      "answer": 0
+    },
+    {
+      "id": "rv-chain-e025ff",
+      "text": "What does this print?",
+      "code": "def lose_life(lives):\n    return lives - 1\n\nprint(lose_life(5) * 2)",
+      "options": ["8", "9", "10", "6"],
+      "answer": 0
+    },
+    {
+      "id": "rv-chain-7072d0",
+      "text": "What does this print?",
+      "code": "def half(n):\n    return n / 2\n\nprint(half(10) * 3)",
+      "options": ["15.0", "30", "8.0", "5.0"],
+      "answer": 0
+    },
+    {
+      "id": "rv-chain-6027ff",
+      "text": "What does this print?",
+      "code": "def square(side):\n    return side ** 2\n\nprint(square(3) * 2)",
+      "options": ["18", "36", "6", "11"],
+      "answer": 0
+    },
+    {
+      "id": "rv-early-ea095a",
+      "text": "What does this print?",
+      "code": "def check_fuel(fuel):\n    if fuel >= 20:\n        return \"OK\"\n    return \"Low\"\n\nprint(check_fuel(50))\nprint(check_fuel(10))",
+      "options": ["OK\nLow", "OK\nLow\nLow", "OK\nLow\nNone", "Low\nOK"],
+      "answer": 0
+    },
+    {
+      "id": "rv-early-0e1789",
+      "text": "What does this print?",
+      "code": "def is_hot(temp):\n    if temp > 30:\n        return \"Hot\"\n    return \"Not hot\"\n\nprint(is_hot(12))\nprint(is_hot(35))",
+      "options": ["Not hot\nHot", "Not hot\nHot\nNot hot", "Not hot\nNone\nHot", "Hot\nNot hot"],
+      "answer": 0
+    },
+    {
+      "id": "rv-early-c1cb6a",
+      "text": "What does this print?",
+      "code": "def grade(score):\n    if score >= 50:\n        return \"Pass\"\n    return \"Fail\"\n\nprint(grade(50))\nprint(grade(49))",
+      "options": ["Pass\nFail", "Pass\nFail\nFail", "Pass\nFail\nNone", "Fail\nPass"],
+      "answer": 0
+    },
+    {
+      "id": "rv-early-d00223",
+      "text": "What does this print?",
+      "code": "def speed_check(speed):\n    if speed > 100:\n        return \"Too fast\"\n    return \"OK\"\n\nprint(speed_check(80))\nprint(speed_check(120))",
+      "options": ["OK\nToo fast", "OK\nToo fast\nOK", "OK\nNone\nToo fast", "Too fast\nOK"],
+      "answer": 0
+    },
+    {
+      "id": "rv-early-09aac9",
+      "text": "What does this print?",
+      "code": "def can_vote(age):\n    if age >= 18:\n        return \"Yes\"\n    return \"No\"\n\nprint(can_vote(18))\nprint(can_vote(17))",
+      "options": ["Yes\nNo", "Yes\nNo\nNo", "Yes\nNo\nNone", "No\nYes"],
+      "answer": 0
+    },
+    {
+      "id": "rv-dead-3ed32f",
+      "text": "What does this print?",
+      "code": "def start():\n    print(\"Engines on\")\n    return 1\n    print(\"Engines off\")\n\nprint(start())",
+      "options": ["Engines on\n1", "Engines on\nEngines off\nNone", "1", "Engines on"],
+      "answer": 0
+    },
+    {
+      "id": "rv-dead-49d037",
+      "text": "What does this print?",
+      "code": "def count():\n    print(\"Counting\")\n    return 3\n    print(\"Done counting\")\n\nprint(count())",
+      "options": ["Counting\n3", "Counting\nDone counting\nNone", "3", "Counting"],
+      "answer": 0
+    },
+    {
+      "id": "rv-dead-413655",
+      "text": "What does this print?",
+      "code": "def launch():\n    print(\"Launch\")\n    return 10\n    print(\"Abort\")\n\nprint(launch())",
+      "options": ["Launch\n10", "Launch\nAbort\nNone", "10", "Launch"],
+      "answer": 0
+    },
+    {
+      "id": "rv-dead-36d34e",
+      "text": "What does this print?",
+      "code": "def ping():\n    print(\"Ping\")\n    return 0\n    print(\"Pong\")\n\nprint(ping())",
+      "options": ["Ping\n0", "Ping\nPong\nNone", "0", "Ping"],
+      "answer": 0
+    },
+    {
+      "id": "rv-none-b2c740",
+      "text": "What does this print?",
+      "code": "def double(x):\n    print(x * 2)\n\nresult = double(4)\nprint(result)",
+      "options": ["8\nNone", "8", "8\nresult", "4\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "rv-none-2717c2",
+      "text": "What does this print?",
+      "code": "def add_ten(score):\n    print(score + 10)\n\nnew_score = add_ten(5)\nprint(new_score)",
+      "options": ["15\nNone", "15", "15\nnew_score", "5\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "rv-none-fe955c",
+      "text": "What does this print?",
+      "code": "def half(n):\n    print(n / 2)\n\npart = half(9)\nprint(part)",
+      "options": ["4.5\nNone", "4.5", "4.5\npart", "9\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "rv-none-3c09fe",
+      "text": "What does this print?",
+      "code": "def triple(t):\n    print(t * 3)\n\nout = triple(7)\nprint(out)",
+      "options": ["21\nNone", "21", "21\nout", "7\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "rv-if-357ece",
+      "text": "What does this print?",
+      "code": "def is_adult(age):\n    return age >= 18\n\nif is_adult(20):\n    print(\"Welcome\")\nelse:\n    print(\"Sorry, too young\")",
+      "options": ["Welcome", "Sorry, too young", "True\nSorry, too young", "True\nWelcome"],
+      "answer": 0
+    },
+    {
+      "id": "rv-if-682492",
+      "text": "What does this print?",
+      "code": "def has_fuel(fuel):\n    return fuel > 0\n\nif has_fuel(15):\n    print(\"Launch\")\nelse:\n    print(\"Refuel first\")",
+      "options": ["Launch", "Refuel first", "True\nRefuel first", "True\nLaunch"],
+      "answer": 0
+    },
+    {
+      "id": "rv-if-cd2950",
+      "text": "What does this print?",
+      "code": "def has_shield(shield):\n    return shield > 50\n\nif has_shield(80):\n    print(\"Shields up\")\nelse:\n    print(\"Shields low\")",
+      "options": ["Shields up", "Shields low", "True\nShields low", "True\nShields up"],
+      "answer": 0
+    },
+    {
+      "id": "rv-if-a02589",
+      "text": "What does this print?",
+      "code": "def can_enter(level):\n    return level >= 3\n\nif can_enter(5):\n    print(\"Door opens\")\nelse:\n    print(\"Access denied\")",
+      "options": ["Door opens", "Access denied", "True\nAccess denied", "True\nDoor opens"],
+      "answer": 0
+    },
+    {
+      "id": "rv-if-7eab45",
+      "text": "What does this print?",
+      "code": "def is_cold(temp):\n    return temp < 10\n\nif is_cold(4):\n    print(\"Wear a coat\")\nelse:\n    print(\"No coat needed\")",
+      "options": ["Wear a coat", "No coat needed", "True\nNo coat needed", "True\nWear a coat"],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-return-70ec44",
+      "text": "Which program shows this?",
+      "output": "50",
+      "options": [
+        "def add(a, b):\n    return a + b\n\nprint(add(2, 3) * 10)",
+        "def add(a, b):\n    print(a + b)\n\nprint(add(2, 3) * 10)",
+        "def add(a, b):\n    return a + b\n\nprint(add(2, 3))",
+        "def add(a, b):\n    return a\n\nprint(add(2, 3) * 10)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-return-3dda58",
+      "text": "Which program shows this?",
+      "output": "40",
+      "options": [
+        "def multiply(a, b):\n    return a * b\n\nprint(multiply(4, 5) * 2)",
+        "def multiply(a, b):\n    print(a * b)\n\nprint(multiply(4, 5) * 2)",
+        "def multiply(a, b):\n    return a * b\n\nprint(multiply(4, 5))",
+        "def multiply(a, b):\n    return a\n\nprint(multiply(4, 5) * 2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-return-66de3d",
+      "text": "Which program shows this?",
+      "output": "15",
+      "options": [
+        "def subtract(a, b):\n    return a - b\n\nprint(subtract(9, 4) * 3)",
+        "def subtract(a, b):\n    print(a - b)\n\nprint(subtract(9, 4) * 3)",
+        "def subtract(a, b):\n    return a - b\n\nprint(subtract(9, 4))",
+        "def subtract(a, b):\n    return a\n\nprint(subtract(9, 4) * 3)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-return-425b19",
+      "text": "Which program shows this?",
+      "output": "24",
+      "options": [
+        "def total(a, b):\n    return a + b\n\nprint(total(7, 1) * 3)",
+        "def total(a, b):\n    print(a + b)\n\nprint(total(7, 1) * 3)",
+        "def total(a, b):\n    return a + b\n\nprint(total(7, 1))",
+        "def total(a, b):\n    return a\n\nprint(total(7, 1) * 3)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-return-539ebc",
+      "text": "Which program shows this?",
+      "output": "20.0",
+      "options": [
+        "def divide(a, b):\n    return a / b\n\nprint(divide(8, 2) * 5)",
+        "def divide(a, b):\n    print(a / b)\n\nprint(divide(8, 2) * 5)",
+        "def divide(a, b):\n    return a / b\n\nprint(divide(8, 2))",
+        "def divide(a, b):\n    return a\n\nprint(divide(8, 2) * 5)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-none-10dc08",
+      "text": "Which program shows this?",
+      "output": "12\nNone",
+      "options": [
+        "def show_double(x):\n    print(x * 2)\n\nresult = show_double(6)\nprint(result)",
+        "def show_double(x):\n    return x * 2\n\nresult = show_double(6)\nprint(result)",
+        "def show_double(x):\n    print(x * 2)\n\nresult = show_double(6)\nprint(\"result\")",
+        "def show_double(x):\n    print(x * 2)\n\nshow_double(6)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-none-d7d17e",
+      "text": "Which program shows this?",
+      "output": "25\nNone",
+      "options": [
+        "def add_bonus(points):\n    print(points + 5)\n\ntotal = add_bonus(20)\nprint(total)",
+        "def add_bonus(points):\n    return points + 5\n\ntotal = add_bonus(20)\nprint(total)",
+        "def add_bonus(points):\n    print(points + 5)\n\ntotal = add_bonus(20)\nprint(\"total\")",
+        "def add_bonus(points):\n    print(points + 5)\n\nadd_bonus(20)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-none-690469",
+      "text": "Which program shows this?",
+      "output": "3.5\nNone",
+      "options": [
+        "def half(n):\n    print(n / 2)\n\npart = half(7)\nprint(part)",
+        "def half(n):\n    return n / 2\n\npart = half(7)\nprint(part)",
+        "def half(n):\n    print(n / 2)\n\npart = half(7)\nprint(\"part\")",
+        "def half(n):\n    print(n / 2)\n\nhalf(7)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-none-bcbd66",
+      "text": "Which program shows this?",
+      "output": "81\nNone",
+      "options": [
+        "def square(side):\n    print(side ** 2)\n\narea = square(9)\nprint(area)",
+        "def square(side):\n    return side ** 2\n\narea = square(9)\nprint(area)",
+        "def square(side):\n    print(side ** 2)\n\narea = square(9)\nprint(\"area\")",
+        "def square(side):\n    print(side ** 2)\n\nsquare(9)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-which-none-6c930b",
+      "text": "Which program shows this?",
+      "output": "30\nNone",
+      "options": [
+        "def use_fuel(fuel):\n    print(fuel - 10)\n\nleft = use_fuel(40)\nprint(left)",
+        "def use_fuel(fuel):\n    return fuel - 10\n\nleft = use_fuel(40)\nprint(left)",
+        "def use_fuel(fuel):\n    print(fuel - 10)\n\nleft = use_fuel(40)\nprint(\"left\")",
+        "def use_fuel(fuel):\n    print(fuel - 10)\n\nuse_fuel(40)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-return-e18f07",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def double(x):\n    ___\n\nresult = double(7)\nprint(result)",
+      "output": "14",
+      "options": ["return x * 2", "print(x * 2)", "return x", "x * 2"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-return-becc54",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def add_bonus(points):\n    ___\n\ntotal = add_bonus(20)\nprint(total)",
+      "output": "25",
+      "options": ["return points + 5", "print(points + 5)", "return points", "points + 5"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-return-1bbaf9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def half(n):\n    ___\n\npart = half(9)\nprint(part)",
+      "output": "4.5",
+      "options": ["return n / 2", "print(n / 2)", "return n", "n / 2"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-return-d9b46b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def square(side):\n    ___\n\narea = square(6)\nprint(area)",
+      "output": "36",
+      "options": ["return side ** 2", "print(side ** 2)", "return side", "side ** 2"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-return-431d0c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def lose_life(lives):\n    ___\n\nleft = lose_life(3)\nprint(left)",
+      "output": "2",
+      "options": ["return lives - 1", "print(lives - 1)", "return lives", "lives - 1"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-early-2aba6e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def check_fuel(fuel):\n    if fuel >= 20:\n        return \"OK\"\n    ___\n\nprint(check_fuel(35))\nprint(check_fuel(5))",
+      "output": "OK\nLow",
+      "options": ["return \"Low\"", "print(\"Low\")", "return \"OK\"", "return"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-early-96e282",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def grade(score):\n    if score >= 50:\n        return \"Pass\"\n    ___\n\nprint(grade(72))\nprint(grade(31))",
+      "output": "Pass\nFail",
+      "options": ["return \"Fail\"", "print(\"Fail\")", "return \"Pass\"", "return"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-early-a33677",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def is_hot(temp):\n    if temp > 30:\n        return \"Hot\"\n    ___\n\nprint(is_hot(33))\nprint(is_hot(21))",
+      "output": "Hot\nNot hot",
+      "options": ["return \"Not hot\"", "print(\"Not hot\")", "return \"Hot\"", "return"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-early-2c7fbc",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def speed_check(speed):\n    if speed > 100:\n        return \"Too fast\"\n    ___\n\nprint(speed_check(130))\nprint(speed_check(90))",
+      "output": "Too fast\nOK",
+      "options": ["return \"OK\"", "print(\"OK\")", "return \"Too fast\"", "return"],
+      "answer": 0
+    },
+    {
+      "id": "rv-gap-early-a05329",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def can_vote(age):\n    if age >= 18:\n        return \"Yes\"\n    ___\n\nprint(can_vote(40))\nprint(can_vote(16))",
+      "output": "Yes\nNo",
+      "options": ["return \"No\"", "print(\"No\")", "return \"Yes\"", "return"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-arg-0339ea",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def double(x):\n    return x * 2\n\nprint(double(___))",
+      "output": "12",
+      "options": ["6", "12", "2", "x"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-arg-c8c0d6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def add_five(n):\n    return n + 5\n\nprint(add_five(___))",
+      "output": "9",
+      "options": ["4", "9", "5", "n"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-arg-fa6ce0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def half(n):\n    return n / 2\n\nprint(half(___))",
+      "output": "5.0",
+      "options": ["10", "5.0", "2", "n"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-arg-e6edd0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def square(side):\n    return side ** 2\n\nprint(square(___))",
+      "output": "16",
+      "options": ["4", "16", "2", "side"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-arg-ccb0e2",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def use_fuel(fuel):\n    return fuel - 3\n\nprint(use_fuel(___))",
+      "output": "7",
+      "options": ["10", "7", "3", "fuel"],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-ret-365148",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def double(x):\n    return ___\n\nprint(double(9))",
+      "output": "18",
+      "options": ["x * 2", "x", "2", "\"x * 2\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-ret-796414",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def triple(n):\n    return ___\n\nprint(triple(4))",
+      "output": "12",
+      "options": ["n * 3", "n", "3", "\"n * 3\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-ret-e4b2c6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def add_ten(score):\n    return ___\n\nprint(add_ten(15))",
+      "output": "25",
+      "options": ["score + 10", "score", "10", "\"score + 10\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-ret-43dafb",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def half(n):\n    return ___\n\nprint(half(5))",
+      "output": "2.5",
+      "options": ["n / 2", "n", "2", "\"n / 2\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-val-ret-af9a0b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def lose_life(lives):\n    return ___\n\nprint(lose_life(7))",
+      "output": "6",
+      "options": ["lives - 1", "lives", "1", "\"lives - 1\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-print-8ed40f",
+      "text": "Which line stops this program from printing this?",
+      "code": "def add(a, b):\n    print(a + b)\n\ntotal = add(4, 5)\nprint(total * 2)",
+      "output": "18",
+      "options": ["print(a + b)", "def add(a, b):", "total = add(4, 5)", "print(total * 2)"],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-print-2932cb",
+      "text": "Which line stops this program from printing this?",
+      "code": "def multiply(a, b):\n    print(a * b)\n\nproduct = multiply(3, 8)\nprint(product * 2)",
+      "output": "48",
+      "options": [
+        "print(a * b)",
+        "def multiply(a, b):",
+        "product = multiply(3, 8)",
+        "print(product * 2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-print-768f3a",
+      "text": "Which line stops this program from printing this?",
+      "code": "def subtract(a, b):\n    print(a - b)\n\nleft = subtract(20, 6)\nprint(left * 2)",
+      "output": "28",
+      "options": [
+        "print(a - b)",
+        "def subtract(a, b):",
+        "left = subtract(20, 6)",
+        "print(left * 2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-call-85080b",
+      "text": "Which line stops this program from printing this?",
+      "code": "def check_fuel(fuel):\n    if fuel >= 20:\n        return \"OK\"\n    return \"Low\"\n\nprint(check_fuel(50))\ncheck_fuel(35)",
+      "output": "OK\nOK",
+      "options": ["check_fuel(35)", "print(check_fuel(50))", "return \"Low\"", "return \"OK\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-call-4a6323",
+      "text": "Which line stops this program from printing this?",
+      "code": "def is_hot(temp):\n    if temp > 30:\n        return \"Hot\"\n    return \"Not hot\"\n\nprint(is_hot(12))\nis_hot(18)",
+      "output": "Not hot\nNot hot",
+      "options": ["is_hot(18)", "print(is_hot(12))", "return \"Not hot\"", "return \"Hot\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-call-9e8425",
+      "text": "Which line stops this program from printing this?",
+      "code": "def grade(score):\n    if score >= 50:\n        return \"Pass\"\n    return \"Fail\"\n\nprint(grade(90))\ngrade(64)",
+      "output": "Pass\nPass",
+      "options": ["grade(64)", "print(grade(90))", "return \"Fail\"", "return \"Pass\""],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-args-b9aad1",
+      "text": "Which line stops this program from printing this?",
+      "code": "def subtract(a):\n    return a - b\n\nprint(subtract(9, 4))\nprint(subtract(4, 9))",
+      "output": "5\n-5",
+      "options": [
+        "def subtract(a):",
+        "return a - b",
+        "print(subtract(9, 4))",
+        "print(subtract(4, 9))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-args-a16302",
+      "text": "Which line stops this program from printing this?",
+      "code": "def divide(a):\n    return a / b\n\nprint(divide(12, 3))\nprint(divide(3, 12))",
+      "output": "4.0\n0.25",
+      "options": ["def divide(a):", "return a / b", "print(divide(12, 3))", "print(divide(3, 12))"],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-args-8caa67",
+      "text": "Which line stops this program from printing this?",
+      "code": "def power(a):\n    return a ** b\n\nprint(power(2, 3))\nprint(power(3, 2))",
+      "output": "8\n9",
+      "options": ["def power(a):", "return a ** b", "print(power(2, 3))", "print(power(3, 2))"],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-ret-0d957b",
+      "text": "Which line stops this program from printing this?",
+      "code": "def double(x):\n    doubled = x * 2\n    print(\"Got:\", x)\n    return x\n\nprint(double(6))",
+      "output": "Got: 6\n12",
+      "options": ["return x", "print(\"Got:\", x)", "doubled = x * 2", "def double(x):"],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-ret-96c628",
+      "text": "Which line stops this program from printing this?",
+      "code": "def add_tax(price):\n    total = price + 5\n    print(\"Got:\", price)\n    return price\n\nprint(add_tax(20))",
+      "output": "Got: 20\n25",
+      "options": [
+        "return price",
+        "print(\"Got:\", price)",
+        "total = price + 5",
+        "print(add_tax(20))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rv-bad-ret-2fc8d1",
+      "text": "Which line stops this program from printing this?",
+      "code": "def half(n):\n    part = n / 2\n    print(\"Got:\", n)\n    return n\n\nprint(half(9))",
+      "output": "Got: 9\n4.5",
+      "options": ["return n", "print(\"Got:\", n)", "part = n / 2", "print(half(9))"],
+      "answer": 0
+    }
+  ]
+}

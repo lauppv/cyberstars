@@ -714,7 +714,7 @@
       "id": "in-bad-store",
       "kind": "wrong-line",
       "text": "The user typed {{x}}, so `{{v}}` holds what input() gave back. Which line stops this program from printing this?",
-      "code": "{{v}} = \"{{x}}\"\n{{v}} = int({{v}})\n{{w}} = {{v}} + {{d}}\nprint({{w}})",
+      "code": "{{v}} = \"{{x}}\"\n{{v}} = int({{v}})\n{{w}} = {{v}} + {{d}}\nprint({{w}})\nprint({{v}} * 2)",
       "values": [
         {
           "v": "age",

@@ -1,0 +1,1034 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does a list comprehension do?",
+      "options": [
+        "It builds a new list from another one, in a single line",
+        "It sorts a list in place",
+        "It prints every element of a list",
+        "It turns a list into a dictionary"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "In `[n * 2 for n in numbers]`, what is `n * 2`?",
+      "options": [
+        "The loop that goes through numbers",
+        "The expression: what we do with each element",
+        "The condition that filters the elements",
+        "The name of the new list"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "What do the square brackets around a list comprehension do?",
+      "options": [
+        "They pick one element by its index",
+        "They make the loop run twice",
+        "They tell Python to put the results in a new list",
+        "They change the original list"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "nums = [1, 2, 3]\ndoubled = [n * 2 for n in nums]\nprint(nums)",
+      "options": ["[2, 4, 6]", "[1, 2, 3, 2, 4, 6]", "It stops with an error", "[1, 2, 3]"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Which loop builds the same list as `squares = [n * n for n in nums]`?",
+      "options": [
+        "squares = []\nfor n in nums:\n    squares.append(n * n)",
+        "squares = []\nfor n in nums:\n    squares.append(n)",
+        "squares = []\nfor n in nums:\n    print(n * n)",
+        "squares = []\nfor n in nums:\n    squares = n * n"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What does the `if` at the end of `[n for n in numbers if n % 2 == 0]` do?",
+      "options": [
+        "It stops the loop at the first even number",
+        "It keeps only the elements for which the condition is True",
+        "It changes every number into 0 or 1",
+        "It runs the whole comprehension only if the list has even numbers"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy Vercetti\", \"Lance\", \"Cortez\", \"Phil Cassidy\"]\nlong_names = [name for name in names if len(name) > 5]\nprint(long_names)",
+      "options": [
+        "['Tommy Vercetti', 'Phil Cassidy']",
+        "['Lance']",
+        "['Tommy Vercetti', 'Cortez', 'Phil Cassidy']",
+        "[14, 6, 12]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "names is `[\"tommy\", \"lance\"]`. Which line gives `['TOMMY', 'LANCE']`?",
+      "options": [
+        "[names.upper() for name in names]",
+        "[name for name in names.upper()]",
+        "[name.upper for name in names]",
+        "[name.upper() for name in names]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "In `[p * 0.9 for p in prices if p > 20]`, which prices get the 10% discount?",
+      "options": [
+        "Only those above 20: the if picks the elements first, then the expression changes them",
+        "All of them: the if only decides the order",
+        "Only those of 20 or less",
+        "Only the first price above 20"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "When is a regular for loop a better choice than a list comprehension?",
+      "options": [
+        "Never: a comprehension can do everything a loop does, just as clearly",
+        "When the logic gets complicated, with nested ifs or several lines of work",
+        "When the list has more than 10 elements",
+        "When the new list holds text, not numbers"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "scores is `[30, 42, 12]`. What does `[s for s in scores if s >= 50]` give?",
+      "options": ["None", "[30, 42, 12]", "[], an empty list", "It stops with an error"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "In the Data Filter mission, readings is `[75, 30, 95, 88, 42, 92]`. What is in `high`?",
+      "options": ["[75, 95, 88, 92]", "[150, 60, 190, 176, 84, 184]", "[30, 42]", "[95, 88, 92]"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "In the Data Filter mission, why is 75 in `passing` but not in `high`?",
+      "options": [
+        "passing keeps 50 or more and high keeps only above 80, and 75 is between them",
+        "high skips the first reading",
+        "passing is built before high",
+        "75 is changed by doubled"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "In the Data Filter mission, how many elements does `doubled` have?",
+      "options": [
+        "3, only the high ones",
+        "6, one for each reading: without an if, every element goes in",
+        "4, only the passing ones",
+        "12, twice as many as readings"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "In the Data Filter mission, which line builds `passing`?",
+      "options": [
+        "passing = [r for r in readings if r > 50]",
+        "passing = [r >= 50 for r in readings]",
+        "passing = [r for r in readings if r >= 50]",
+        "passing = [r for r in readings if r > 80]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "nums = [1, 5, 3, 7]\nchecks = [n > 3 for n in nums]\nprint(checks)",
+      "options": ["[5, 7]", "[1, 3]", "2", "[False, True, False, True]"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "words = [\"sun\", \"moon\"]\nloud = [w + \"!\" for w in words]\nprint(loud)",
+      "options": ["['sun!', 'moon!']", "['sun', 'moon', '!']", "sun!moon!", "['!sun', '!moon']"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "What is wrong with `doubled = [n * 2 for x in nums]`?",
+      "options": [
+        "Nothing, Python finds n by itself",
+        "n isn't defined: the variable after for is x, so the expression must use x",
+        "The brackets must be round",
+        "nums must come before for"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Which of these is a list comprehension?",
+      "options": [
+        "for n in nums: n * 2",
+        "[for n in nums: n * 2]",
+        "[n * 2 for n in nums]",
+        "n * 2 for n in nums"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "nums = [4, 9, 2]\nsmall = [n for n in nums if n < 5]\nprint(small[0])",
+      "options": ["[4]", "9", "2", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "names = [\"ana\", \"rex\"]\nnice = [n[0].upper() + n[1:] for n in names]\nprint(nice)",
+      "options": ["['Ana', 'Rex']", "['ANA', 'REX']", "['A', 'R']", "['ana', 'rex']"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "nums = [1, 2, 3, 4]\ndoubled = [n * 2 for n in nums]\nbig = [d for d in doubled if d > 4]\nprint(big)",
+      "options": ["[3, 4]", "[6, 8]", "[2, 4, 6, 8]", "[8]"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Which list comprehension builds the same list as this loop?",
+      "code": "evens = []\nfor n in nums:\n    if n % 2 == 0:\n        evens.append(n)",
+      "options": [
+        "[n % 2 == 0 for n in nums]",
+        "[n for n in nums if n % 2 == 1]",
+        "[n for n in nums if n % 2 == 0]",
+        "[n * 2 for n in nums]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Where does the `if` go in a list comprehension that filters?",
+      "options": [
+        "At the start, before the expression",
+        "Outside the brackets",
+        "Between for and in",
+        "At the end, after the for ... in ... part"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "prices = [3, 8, 12]\nlabels = [f\"{p} EUR\" for p in prices]\nprint(labels)",
+      "options": [
+        "['3 EUR', '8 EUR', '12 EUR']",
+        "['{p} EUR', '{p} EUR', '{p} EUR']",
+        "3 EUR\n8 EUR\n12 EUR",
+        "['3', '8', '12', 'EUR']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "A list comprehension without an if goes through a list of 8 elements. How many elements does the new list have?",
+      "options": ["1", "8", "0", "16"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "A list comprehension with an if goes through a list of 8 elements. How many elements can the new list have?",
+      "options": [
+        "Always 8",
+        "Always fewer than 8",
+        "Any number from 0 to 8, depending on how many pass the condition",
+        "Always at least 1"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What happens when this runs?",
+      "code": "names = [\"tommy\", \"lance\"]\nloud = [names.upper() for name in names]\nprint(loud)",
+      "options": [
+        "It prints ['TOMMY', 'LANCE']",
+        "It prints ['TOMMY LANCE']",
+        "It prints []",
+        "It stops with an error: names is a list, and a list has no upper()"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "scores = [85, 42, 91]\npassed = [s for s in scores if s >= 50]\nscores.append(60)\nprint(passed)",
+      "options": ["[85, 91]", "[85, 91, 60]", "[85, 42, 91, 60]", "[60]"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "nums = [5, 3, 8]\ncopy = [n for n in nums]\ncopy.append(1)\nprint(nums)",
+      "options": ["[5, 3, 8, 1]", "[5, 3, 8]", "[1]", "[5, 3, 8]\n[5, 3, 8, 1]"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "lc-double",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} * {{k}} for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "nums",
+          "data": "3, 5, 8",
+          "o": "doubled",
+          "x": "n",
+          "k": 2
+        },
+        {
+          "v": "prices",
+          "data": "4, 10, 7",
+          "o": "tripled",
+          "x": "p",
+          "k": 3
+        },
+        {
+          "v": "scores",
+          "data": "6, 9",
+          "o": "points",
+          "x": "s",
+          "k": 3
+        },
+        {
+          "v": "levels",
+          "data": "2, 7",
+          "o": "boosted",
+          "x": "l",
+          "k": 5
+        }
+      ],
+      "mistakes": [
+        ["{{x}} * {{k}} for", "{{x}} + {{k}} for"],
+        ["[{{x}} * {{k}} for {{x}} in {{v}}]", "{{v}} * {{k}}"],
+        ["{{x}} * {{k}} for", "{{x}} for"],
+        ["print({{o}})", "print(len({{o}}))"]
+      ]
+    },
+    {
+      "id": "lc-filter",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} > {{lim}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "temps",
+          "data": "18, 30, 33, 25, 31",
+          "o": "hot",
+          "x": "t",
+          "lim": 30
+        },
+        {
+          "v": "speeds",
+          "data": "120, 90, 100, 140",
+          "o": "fast",
+          "x": "s",
+          "lim": 100
+        },
+        {
+          "v": "ages",
+          "data": "12, 18, 25, 17",
+          "o": "adults",
+          "x": "a",
+          "lim": 17
+        }
+      ],
+      "mistakes": [
+        ["{{x}} > {{lim}}]", "{{x}} >= {{lim}}]"],
+        ["{{x}} > {{lim}}]", "{{x}} < {{lim}}]"],
+        ["[{{x}} for {{x}} in {{v}} if {{x}} > {{lim}}]", "[{{x}} > {{lim}} for {{x}} in {{v}}]"],
+        ["print({{o}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "lc-upper",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}}.upper() for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "names",
+          "data": "\"tommy\", \"Lance\", \"phil\"",
+          "o": "loud",
+          "x": "n"
+        },
+        {
+          "v": "cities",
+          "data": "\"rome\", \"Oslo\", \"riga\"",
+          "o": "signs",
+          "x": "c"
+        },
+        {
+          "v": "planets",
+          "data": "\"mars\", \"Venus\", \"earth\"",
+          "o": "labels",
+          "x": "p"
+        }
+      ],
+      "mistakes": [
+        [".upper() for", ".lower() for"],
+        ["{{x}}.upper() for", "{{x}}[0].upper() for"],
+        [".upper() for", " for"],
+        ["print({{o}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "lc-even",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} % 2 == {{r}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "nums",
+          "data": "4, 7, 10, 3, 8",
+          "o": "evens",
+          "x": "n",
+          "r": 0,
+          "w": 1
+        },
+        {
+          "v": "seats",
+          "data": "1, 6, 9, 12",
+          "o": "odds",
+          "x": "s",
+          "r": 1,
+          "w": 0
+        },
+        {
+          "v": "ids",
+          "data": "21, 14, 5, 30",
+          "o": "evens",
+          "x": "i",
+          "r": 0,
+          "w": 1
+        }
+      ],
+      "mistakes": [
+        ["% 2 == {{r}}", "% 2 == {{w}}"],
+        ["[{{x}} for", "[{{x}} % 2 for"],
+        [" if {{x}} % 2 == {{r}}]", "]"],
+        ["print({{o}})", "print(len({{o}}))"]
+      ]
+    },
+    {
+      "id": "lc-both",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} * {{k}} for {{x}} in {{v}} if {{x}} > {{lim}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "prices",
+          "data": "10, 25, 5, 40",
+          "o": "doubled",
+          "x": "p",
+          "k": 2,
+          "lim": 20
+        },
+        {
+          "v": "scores",
+          "data": "3, 8, 6, 9",
+          "o": "points",
+          "x": "s",
+          "k": 10,
+          "lim": 5
+        },
+        {
+          "v": "boxes",
+          "data": "12, 4, 7",
+          "o": "tripled",
+          "x": "b",
+          "k": 3,
+          "lim": 6
+        }
+      ],
+      "mistakes": [
+        [" if {{x}} > {{lim}}]", "]"],
+        ["[{{x}} * {{k}} for", "[{{x}} for"],
+        ["{{x}} > {{lim}}]", "{{x}} < {{lim}}]"],
+        ["{{x}} * {{k}} for", "{{x}} + {{k}} for"]
+      ]
+    },
+    {
+      "id": "lc-len",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [len({{x}}) for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "words",
+          "data": "\"sun\", \"moon\", \"planet\"",
+          "o": "sizes",
+          "x": "w"
+        },
+        {
+          "v": "names",
+          "data": "\"Tommy\", \"Ken\", \"Cortez\", \"Lance\"",
+          "o": "lengths",
+          "x": "n"
+        },
+        {
+          "v": "cities",
+          "data": "\"Rome\", \"Oslo\", \"Berlin\"",
+          "o": "letters",
+          "x": "c"
+        }
+      ],
+      "mistakes": [
+        ["[len({{x}}) for", "[{{x}} for"],
+        ["len({{x}}) for", "len({{v}}) for"],
+        ["print({{o}})", "print(len({{o}}))"]
+      ]
+    },
+    {
+      "id": "lc-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} >= {{lim}}]\nprint(len({{o}}))",
+      "values": [
+        {
+          "v": "scores",
+          "data": "85, 42, 50, 67, 38, 91",
+          "o": "passed",
+          "x": "s",
+          "lim": 50
+        },
+        {
+          "v": "temps",
+          "data": "30, 18, 25, 30, 12",
+          "o": "warm",
+          "x": "t",
+          "lim": 25
+        },
+        {
+          "v": "ages",
+          "data": "17, 18, 30, 12, 18, 65",
+          "o": "adults",
+          "x": "a",
+          "lim": 18
+        },
+        {
+          "v": "speeds",
+          "data": "90, 120, 100, 80",
+          "o": "fast",
+          "x": "s",
+          "lim": 100
+        }
+      ],
+      "mistakes": [
+        [">= {{lim}}]", "> {{lim}}]"],
+        ["print(len({{o}}))", "print({{o}})"],
+        [" if {{x}} >= {{lim}}]", "]"],
+        [">= {{lim}}]", "< {{lim}}]"]
+      ]
+    },
+    {
+      "id": "lc-first",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}}[0] for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "names",
+          "data": "\"Tommy\", \"Lance\", \"Ken\"",
+          "o": "initials",
+          "x": "n"
+        },
+        {
+          "v": "planets",
+          "data": "\"Mars\", \"Earth\", \"Venus\", \"Saturn\"",
+          "o": "letters",
+          "x": "p"
+        },
+        {
+          "v": "colors",
+          "data": "\"red\", \"green\", \"blue\"",
+          "o": "codes",
+          "x": "c"
+        }
+      ],
+      "mistakes": [
+        ["{{x}}[0] for", "{{v}}[0] for"],
+        ["{{x}}[0] for", "{{x}}[1] for"],
+        ["[{{x}}[0] for", "[{{x}} for"]
+      ]
+    },
+    {
+      "id": "lc-which-filter",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} >= {{lim}}]\nfor {{x}} in {{o}}:\n    print({{x}})",
+      "values": [
+        {
+          "v": "scores",
+          "data": "85, 42, 50, 91",
+          "o": "passed",
+          "x": "s",
+          "lim": 50
+        },
+        {
+          "v": "readings",
+          "data": "75, 30, 95, 88",
+          "o": "high",
+          "x": "r",
+          "lim": 88
+        },
+        {
+          "v": "temps",
+          "data": "21, 30, 18, 25",
+          "o": "warm",
+          "x": "t",
+          "lim": 21
+        },
+        {
+          "v": "ages",
+          "data": "17, 18, 40",
+          "o": "adults",
+          "x": "a",
+          "lim": 18
+        }
+      ],
+      "mistakes": [
+        [">= {{lim}}]", "> {{lim}}]"],
+        ["[{{x}} for {{x}} in {{v}} if {{x}} >= {{lim}}]", "[{{x}} >= {{lim}} for {{x}} in {{v}}]"],
+        ["for {{x}} in {{o}}:", "for {{x}} in {{v}}:"]
+      ]
+    },
+    {
+      "id": "lc-which-suffix",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} + \"{{suf}}\" for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "words",
+          "data": "\"sun\", \"moon\"",
+          "o": "loud",
+          "x": "w",
+          "suf": "!"
+        },
+        {
+          "v": "names",
+          "data": "\"Ana\", \"Rex\", \"Kai\"",
+          "o": "calls",
+          "x": "n",
+          "suf": "?"
+        },
+        {
+          "v": "files",
+          "data": "\"notes\", \"plan\"",
+          "o": "full",
+          "x": "f",
+          "suf": ".txt"
+        },
+        {
+          "v": "planets",
+          "data": "\"Mars\", \"Venus\"",
+          "o": "bases",
+          "x": "p",
+          "suf": " base"
+        }
+      ],
+      "mistakes": [
+        ["{{x}} + \"{{suf}}\" for", "\"{{suf}}\" + {{x}} for"],
+        ["[{{x}} + \"{{suf}}\" for {{x}} in {{v}}]", "{{v}} + [\"{{suf}}\"]"],
+        ["{{x}} + \"{{suf}}\" for", "{{x}} for"],
+        ["print({{o}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "lc-gap-filter",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{data}}]\n___\nprint({{o}})",
+      "values": [
+        {
+          "v": "readings",
+          "data": "75, 30, 95, 88, 42",
+          "o": "high",
+          "x": "r",
+          "lim": 80
+        },
+        {
+          "v": "temps",
+          "data": "12, 28, 35, 31",
+          "o": "hot",
+          "x": "t",
+          "lim": 30
+        },
+        {
+          "v": "prices",
+          "data": "9, 25, 14, 40",
+          "o": "pricey",
+          "x": "p",
+          "lim": 20
+        },
+        {
+          "v": "levels",
+          "data": "3, 8, 5, 10",
+          "o": "hard",
+          "x": "l",
+          "lim": 6
+        }
+      ],
+      "answer": "{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} > {{lim}}]",
+      "wrong": [
+        "{{o}} = [{{x}} > {{lim}} for {{x}} in {{v}}]",
+        "{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} < {{lim}}]",
+        "{{o}} = [{{x}} for {{x}} in {{v}}]"
+      ]
+    },
+    {
+      "id": "lc-gap-upper",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{data}}]\n___\nprint({{o}})",
+      "values": [
+        {
+          "v": "names",
+          "data": "\"tommy\", \"Lance\"",
+          "o": "loud",
+          "x": "n"
+        },
+        {
+          "v": "cities",
+          "data": "\"rome\", \"Oslo\", \"paris\"",
+          "o": "signs",
+          "x": "c"
+        },
+        {
+          "v": "crew",
+          "data": "\"ken\", \"Phil\", \"sonny\"",
+          "o": "calls",
+          "x": "m"
+        },
+        {
+          "v": "planets",
+          "data": "\"mars\", \"Venus\"",
+          "o": "labels",
+          "x": "p"
+        }
+      ],
+      "answer": "{{o}} = [{{x}}.upper() for {{x}} in {{v}}]",
+      "wrong": [
+        "{{o}} = [{{x}}.lower() for {{x}} in {{v}}]",
+        "{{o}} = [{{v}}.upper() for {{x}} in {{v}}]",
+        "{{o}} = [{{x}} for {{x}} in {{v}}]"
+      ]
+    },
+    {
+      "id": "lc-gap-times",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{data}}]\n___\nfor {{x}} in {{o}}:\n    print({{x}})",
+      "values": [
+        {
+          "v": "nums",
+          "data": "3, 5, 8",
+          "o": "doubled",
+          "x": "n",
+          "k": 2
+        },
+        {
+          "v": "prices",
+          "data": "4, 7",
+          "o": "tripled",
+          "x": "p",
+          "k": 3
+        },
+        {
+          "v": "scores",
+          "data": "6, 9, 2",
+          "o": "big",
+          "x": "s",
+          "k": 10
+        },
+        {
+          "v": "boxes",
+          "data": "5, 1",
+          "o": "stacks",
+          "x": "b",
+          "k": 4
+        }
+      ],
+      "answer": "{{o}} = [{{x}} * {{k}} for {{x}} in {{v}}]",
+      "wrong": [
+        "{{o}} = [{{x}} for {{x}} in {{v}}]",
+        "{{o}} = {{v}} * {{k}}",
+        "{{o}} = [{{x}} + {{k}} for {{x}} in {{v}}]"
+      ]
+    },
+    {
+      "id": "lc-val-cond",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} ___ {{lim}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "scores",
+          "data": "85, 42, 50, 67",
+          "o": "passed",
+          "x": "s",
+          "lim": 50,
+          "op": ">="
+        },
+        {
+          "v": "temps",
+          "data": "30, 18, 25, 30",
+          "o": "hot",
+          "x": "t",
+          "lim": 25,
+          "op": ">"
+        },
+        {
+          "v": "ages",
+          "data": "17, 18, 30",
+          "o": "kids",
+          "x": "a",
+          "lim": 18,
+          "op": "<"
+        },
+        {
+          "v": "prices",
+          "data": "5, 12, 9, 12",
+          "o": "cheap",
+          "x": "p",
+          "lim": 9,
+          "op": "<="
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": [">", ">=", "<", "<=", "=="]
+    },
+    {
+      "id": "lc-val-expr",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [___ for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "nums",
+          "data": "2, 5, 7",
+          "o": "doubled",
+          "x": "n",
+          "k": 2
+        },
+        {
+          "v": "prices",
+          "data": "4, 10",
+          "o": "tripled",
+          "x": "p",
+          "k": 3
+        },
+        {
+          "v": "scores",
+          "data": "1, 6, 3",
+          "o": "big",
+          "x": "s",
+          "k": 10
+        },
+        {
+          "v": "lives",
+          "data": "3, 5",
+          "o": "bonus",
+          "x": "l",
+          "k": 4
+        }
+      ],
+      "answer": "{{x}} * {{k}}",
+      "wrong": ["{{x}} + {{k}}", "{{x}}", "{{v}} * {{k}}", "{{k}}"]
+    },
+    {
+      "id": "lc-val-mod",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} % 2 == ___]\nprint({{o}})",
+      "values": [
+        {
+          "v": "nums",
+          "data": "1, 4, 7, 10",
+          "o": "evens",
+          "x": "n",
+          "r": 0
+        },
+        {
+          "v": "seats",
+          "data": "1, 2, 5, 8",
+          "o": "odds",
+          "x": "s",
+          "r": 1
+        },
+        {
+          "v": "ids",
+          "data": "3, 1, 6",
+          "o": "evens",
+          "x": "i",
+          "r": 0
+        },
+        {
+          "v": "floors",
+          "data": "1, 9, 12, 4",
+          "o": "odds",
+          "x": "f",
+          "r": 1
+        }
+      ],
+      "answer": "{{r}}",
+      "wrong": ["0", "1", "2", "{{x}}"]
+    },
+    {
+      "id": "lc-bad-cond",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{data}}]\nprint({{v}})\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} > {{lim}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "readings",
+          "data": "75, 30, 95, 88",
+          "o": "high",
+          "x": "r",
+          "lim": 80
+        },
+        {
+          "v": "temps",
+          "data": "12, 31, 28, 35",
+          "o": "hot",
+          "x": "t",
+          "lim": 30
+        },
+        {
+          "v": "prices",
+          "data": "9, 25, 40",
+          "o": "pricey",
+          "x": "p",
+          "lim": 20
+        }
+      ],
+      "bug": ["{{x}} > {{lim}}]", "{{x}} < {{lim}}]"]
+    },
+    {
+      "id": "lc-bad-print",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} * {{k}} for {{x}} in {{v}}]\nprint(\"{{label}}\", {{v}})\nprint({{o}})",
+      "values": [
+        {
+          "v": "nums",
+          "data": "3, 5, 8",
+          "o": "doubled",
+          "x": "n",
+          "k": 2,
+          "label": "Original:"
+        },
+        {
+          "v": "prices",
+          "data": "4, 10, 7",
+          "o": "tripled",
+          "x": "p",
+          "k": 3,
+          "label": "Original:"
+        },
+        {
+          "v": "scores",
+          "data": "6, 1",
+          "o": "big",
+          "x": "s",
+          "k": 10,
+          "label": "Original:"
+        }
+      ],
+      "bug": ["print({{o}})", "print({{v}})"]
+    },
+    {
+      "id": "lc-bad-def",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def {{f}}({{p}}):\n    print(len({{p}}))\n    return [{{x}} for {{x}} in {{p}} if {{x}} > {{lim}}]\n\n{{v}} = [{{data}}]\nprint({{f}}({{v}}))",
+      "values": [
+        {
+          "f": "keep_high",
+          "p": "values",
+          "x": "n",
+          "lim": 50,
+          "v": "scores",
+          "data": "40, 75, 90, 20"
+        },
+        {
+          "f": "hot_days",
+          "p": "temps",
+          "x": "t",
+          "lim": 30,
+          "v": "week",
+          "data": "28, 33, 31, 25"
+        },
+        {
+          "f": "big_orders",
+          "p": "orders",
+          "x": "o",
+          "lim": 100,
+          "v": "today",
+          "data": "250, 80, 120"
+        }
+      ],
+      "bug": ["def {{f}}({{p}}):", "def {{f}}():"]
+    },
+    {
+      "id": "lc-bad-var",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{data}}]\n{{h}} = [{{x}} for {{x}} in {{v}} if {{x}} > {{lim}}]\n{{d}} = [{{x}} * 2 for {{x}} in {{v}}]\nprint({{h}})\nprint({{d}})",
+      "values": [
+        {
+          "v": "readings",
+          "data": "75, 30, 95, 88",
+          "h": "high",
+          "d": "doubled",
+          "x": "r",
+          "lim": 80
+        },
+        {
+          "v": "scores",
+          "data": "40, 85, 60",
+          "h": "passed",
+          "d": "double",
+          "x": "s",
+          "lim": 50
+        },
+        {
+          "v": "temps",
+          "data": "12, 31, 35",
+          "h": "hot",
+          "d": "twice",
+          "x": "t",
+          "lim": 30
+        }
+      ],
+      "bug": ["for {{x}} in {{v}}]", "for {{x}} in {{h}}]"]
+    }
+  ]
+}

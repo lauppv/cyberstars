@@ -1,0 +1,1039 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce face un list comprehension?",
+      "options": [
+        "Construiește o listă nouă din alta, pe o singură linie",
+        "Sortează o listă pe loc",
+        "Afișează fiecare element al unei liste",
+        "Transformă o listă într-un dicționar"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "În `[n * 2 for n in numere]`, ce este `n * 2`?",
+      "options": [
+        "Bucla care parcurge numere",
+        "Expresia: ce facem cu fiecare element",
+        "Condiția care filtrează elementele",
+        "Numele listei noi"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Ce fac parantezele drepte din jurul unui list comprehension?",
+      "options": [
+        "Aleg un element după index",
+        "Fac bucla să ruleze de două ori",
+        "Îi spun lui Python să pună rezultatele într-o listă nouă",
+        "Schimbă lista inițială"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3]\ndublat = [n * 2 for n in numere]\nprint(numere)",
+      "options": ["[2, 4, 6]", "[1, 2, 3, 2, 4, 6]", "Se oprește cu o eroare", "[1, 2, 3]"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Care buclă construiește aceeași listă ca `patrate = [n * n for n in numere]`?",
+      "options": [
+        "patrate = []\nfor n in numere:\n    patrate.append(n * n)",
+        "patrate = []\nfor n in numere:\n    patrate.append(n)",
+        "patrate = []\nfor n in numere:\n    print(n * n)",
+        "patrate = []\nfor n in numere:\n    patrate = n * n"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce face `if`-ul de la finalul lui `[n for n in numere if n % 2 == 0]`?",
+      "options": [
+        "Oprește bucla la primul număr par",
+        "Păstrează doar elementele pentru care condiția e True",
+        "Transformă fiecare număr în 0 sau 1",
+        "Rulează tot comprehension-ul doar dacă lista are numere pare"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy Vercetti\", \"Lance\", \"Cortez\", \"Phil Cassidy\"]\nnume_lungi = [n for n in nume if len(n) > 5]\nprint(nume_lungi)",
+      "options": [
+        "['Tommy Vercetti', 'Phil Cassidy']",
+        "['Lance']",
+        "['Tommy Vercetti', 'Cortez', 'Phil Cassidy']",
+        "[14, 6, 12]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "nume este `[\"tommy\", \"lance\"]`. Care linie dă `['TOMMY', 'LANCE']`?",
+      "options": [
+        "[nume.upper() for n in nume]",
+        "[n for n in nume.upper()]",
+        "[n.upper for n in nume]",
+        "[n.upper() for n in nume]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "În `[pret * 0.9 for pret in preturi if pret > 20]`, ce prețuri primesc reducerea de 10%?",
+      "options": [
+        "Doar cele peste 20: if-ul alege întâi elementele, apoi expresia le schimbă",
+        "Toate: if-ul decide doar ordinea",
+        "Doar cele de 20 sau mai mici",
+        "Doar primul preț peste 20"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Când e o buclă for obișnuită o alegere mai bună decât un list comprehension?",
+      "options": [
+        "Niciodată: un comprehension poate face orice face o buclă, la fel de clar",
+        "Când logica devine complicată, cu if-uri imbricate sau mai multe linii de procesare",
+        "Când lista are mai mult de 10 elemente",
+        "Când lista nouă ține text, nu numere"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "scoruri este `[30, 42, 12]`. Ce dă `[s for s in scoruri if s >= 50]`?",
+      "options": ["None", "[30, 42, 12]", "[], o listă goală", "Se oprește cu o eroare"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "În misiunea Filtru de Date, citiri este `[75, 30, 95, 88, 42, 92]`. Ce e în `mari`?",
+      "options": ["[75, 95, 88, 92]", "[150, 60, 190, 176, 84, 184]", "[30, 42]", "[95, 88, 92]"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "În misiunea Filtru de Date, de ce 75 e în `promovate`, dar nu și în `mari`?",
+      "options": [
+        "promovate păstrează 50 sau mai mult, iar mari doar peste 80, și 75 e între ele",
+        "mari sare peste prima citire",
+        "promovate e construită înaintea lui mari",
+        "75 e schimbat de dublate"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "În misiunea Filtru de Date, câte elemente are `dublate`?",
+      "options": [
+        "3, doar cele mari",
+        "6, câte unul pentru fiecare citire: fără if, intră toate elementele",
+        "4, doar cele promovate",
+        "12, de două ori câte citiri sunt"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "În misiunea Filtru de Date, care linie construiește `promovate`?",
+      "options": [
+        "promovate = [c for c in citiri if c > 50]",
+        "promovate = [c >= 50 for c in citiri]",
+        "promovate = [c for c in citiri if c >= 50]",
+        "promovate = [c for c in citiri if c > 80]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 5, 3, 7]\nverificari = [n > 3 for n in numere]\nprint(verificari)",
+      "options": ["[5, 7]", "[1, 3]", "2", "[False, True, False, True]"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"soare\", \"luna\"]\ntare = [c + \"!\" for c in cuvinte]\nprint(tare)",
+      "options": [
+        "['soare!', 'luna!']",
+        "['soare', 'luna', '!']",
+        "soare!luna!",
+        "['!soare', '!luna']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Ce e greșit în `dublat = [n * 2 for x in numere]`?",
+      "options": [
+        "Nimic, Python găsește singur n",
+        "n nu e definit: variabila de după for e x, deci expresia trebuie să folosească x",
+        "Parantezele trebuie să fie rotunde",
+        "numere trebuie să vină înainte de for"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Care dintre acestea e un list comprehension?",
+      "options": [
+        "for n in numere: n * 2",
+        "[for n in numere: n * 2]",
+        "[n * 2 for n in numere]",
+        "n * 2 for n in numere"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 9, 2]\nmici = [n for n in numere if n < 5]\nprint(mici[0])",
+      "options": ["[4]", "9", "2", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "nume = [\"ana\", \"rex\"]\nfrumos = [n[0].upper() + n[1:] for n in nume]\nprint(frumos)",
+      "options": ["['Ana', 'Rex']", "['ANA', 'REX']", "['A', 'R']", "['ana', 'rex']"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3, 4]\ndublat = [n * 2 for n in numere]\nmari = [d for d in dublat if d > 4]\nprint(mari)",
+      "options": ["[3, 4]", "[6, 8]", "[2, 4, 6, 8]", "[8]"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Care list comprehension construiește aceeași listă ca bucla asta?",
+      "code": "pare = []\nfor n in numere:\n    if n % 2 == 0:\n        pare.append(n)",
+      "options": [
+        "[n % 2 == 0 for n in numere]",
+        "[n for n in numere if n % 2 == 1]",
+        "[n for n in numere if n % 2 == 0]",
+        "[n * 2 for n in numere]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Unde se pune `if`-ul într-un list comprehension care filtrează?",
+      "options": [
+        "La început, înaintea expresiei",
+        "În afara parantezelor",
+        "Între for și in",
+        "La final, după partea for ... in ..."
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "preturi = [3, 8, 12]\netichete = [f\"{p} EUR\" for p in preturi]\nprint(etichete)",
+      "options": [
+        "['3 EUR', '8 EUR', '12 EUR']",
+        "['{p} EUR', '{p} EUR', '{p} EUR']",
+        "3 EUR\n8 EUR\n12 EUR",
+        "['3', '8', '12', 'EUR']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Un list comprehension fără if parcurge o listă de 8 elemente. Câte elemente are lista nouă?",
+      "options": ["1", "8", "0", "16"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Un list comprehension cu if parcurge o listă de 8 elemente. Câte elemente poate avea lista nouă?",
+      "options": [
+        "Mereu 8",
+        "Mereu mai puțin de 8",
+        "Oricâte de la 0 la 8, după câte trec de condiție",
+        "Mereu cel puțin 1"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "nume = [\"tommy\", \"lance\"]\ntare = [nume.upper() for n in nume]\nprint(tare)",
+      "options": [
+        "Afișează ['TOMMY', 'LANCE']",
+        "Afișează ['TOMMY LANCE']",
+        "Afișează []",
+        "Se oprește cu o eroare: nume e o listă, iar o listă nu are upper()"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "scoruri = [85, 42, 91]\ntrecute = [s for s in scoruri if s >= 50]\nscoruri.append(60)\nprint(trecute)",
+      "options": ["[85, 91]", "[85, 91, 60]", "[85, 42, 91, 60]", "[60]"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "numere = [5, 3, 8]\ncopie = [n for n in numere]\ncopie.append(1)\nprint(numere)",
+      "options": ["[5, 3, 8, 1]", "[5, 3, 8]", "[1]", "[5, 3, 8]\n[5, 3, 8, 1]"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "lc-double",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} * {{k}} for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "numere",
+          "data": "3, 5, 8",
+          "o": "dublat",
+          "x": "n",
+          "k": 2
+        },
+        {
+          "v": "preturi",
+          "data": "4, 10, 7",
+          "o": "triplat",
+          "x": "p",
+          "k": 3
+        },
+        {
+          "v": "scoruri",
+          "data": "6, 9",
+          "o": "puncte",
+          "x": "s",
+          "k": 3
+        },
+        {
+          "v": "niveluri",
+          "data": "2, 7",
+          "o": "crescute",
+          "x": "l",
+          "k": 5
+        }
+      ],
+      "mistakes": [
+        ["{{x}} * {{k}} for", "{{x}} + {{k}} for"],
+        ["[{{x}} * {{k}} for {{x}} in {{v}}]", "{{v}} * {{k}}"],
+        ["{{x}} * {{k}} for", "{{x}} for"],
+        ["print({{o}})", "print(len({{o}}))"]
+      ]
+    },
+    {
+      "id": "lc-filter",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} > {{lim}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "temperaturi",
+          "data": "18, 30, 33, 25, 31",
+          "o": "calde",
+          "x": "t",
+          "lim": 30
+        },
+        {
+          "v": "viteze",
+          "data": "120, 90, 100, 140",
+          "o": "rapide",
+          "x": "s",
+          "lim": 100
+        },
+        {
+          "v": "varste",
+          "data": "12, 18, 25, 17",
+          "o": "adulti",
+          "x": "a",
+          "lim": 17
+        }
+      ],
+      "mistakes": [
+        ["{{x}} > {{lim}}]", "{{x}} >= {{lim}}]"],
+        ["{{x}} > {{lim}}]", "{{x}} < {{lim}}]"],
+        ["[{{x}} for {{x}} in {{v}} if {{x}} > {{lim}}]", "[{{x}} > {{lim}} for {{x}} in {{v}}]"],
+        ["print({{o}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "lc-upper",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}}.upper() for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "nume",
+          "data": "\"tommy\", \"Lance\", \"phil\"",
+          "o": "tare",
+          "x": "n"
+        },
+        {
+          "v": "orase",
+          "data": "\"roma\", \"Oslo\", \"riga\"",
+          "o": "panouri",
+          "x": "c"
+        },
+        {
+          "v": "planete",
+          "data": "\"marte\", \"Venus\", \"pamant\"",
+          "o": "etichete",
+          "x": "p"
+        }
+      ],
+      "mistakes": [
+        [".upper() for", ".lower() for"],
+        ["{{x}}.upper() for", "{{x}}[0].upper() for"],
+        [".upper() for", " for"],
+        ["print({{o}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "lc-even",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} % 2 == {{r}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "numere",
+          "data": "4, 7, 10, 3, 8",
+          "o": "pare",
+          "x": "n",
+          "r": 0,
+          "w": 1
+        },
+        {
+          "v": "locuri",
+          "data": "1, 6, 9, 12",
+          "o": "impare",
+          "x": "s",
+          "r": 1,
+          "w": 0
+        },
+        {
+          "v": "ids",
+          "data": "21, 14, 5, 30",
+          "o": "pare",
+          "x": "i",
+          "r": 0,
+          "w": 1
+        }
+      ],
+      "mistakes": [
+        ["% 2 == {{r}}", "% 2 == {{w}}"],
+        ["[{{x}} for", "[{{x}} % 2 for"],
+        [" if {{x}} % 2 == {{r}}]", "]"],
+        ["print({{o}})", "print(len({{o}}))"]
+      ]
+    },
+    {
+      "id": "lc-both",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} * {{k}} for {{x}} in {{v}} if {{x}} > {{lim}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "preturi",
+          "data": "10, 25, 5, 40",
+          "o": "dublat",
+          "x": "p",
+          "k": 2,
+          "lim": 20
+        },
+        {
+          "v": "scoruri",
+          "data": "3, 8, 6, 9",
+          "o": "puncte",
+          "x": "s",
+          "k": 10,
+          "lim": 5
+        },
+        {
+          "v": "cutii",
+          "data": "12, 4, 7",
+          "o": "triplat",
+          "x": "b",
+          "k": 3,
+          "lim": 6
+        }
+      ],
+      "mistakes": [
+        [" if {{x}} > {{lim}}]", "]"],
+        ["[{{x}} * {{k}} for", "[{{x}} for"],
+        ["{{x}} > {{lim}}]", "{{x}} < {{lim}}]"],
+        ["{{x}} * {{k}} for", "{{x}} + {{k}} for"]
+      ]
+    },
+    {
+      "id": "lc-len",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [len({{x}}) for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "cuvinte",
+          "data": "\"soare\", \"luna\", \"planeta\"",
+          "o": "lungimi",
+          "x": "w"
+        },
+        {
+          "v": "nume",
+          "data": "\"Tommy\", \"Ken\", \"Cortez\", \"Lance\"",
+          "o": "lungimi",
+          "x": "n"
+        },
+        {
+          "v": "orase",
+          "data": "\"Roma\", \"Oslo\", \"Berlin\"",
+          "o": "litere",
+          "x": "c"
+        }
+      ],
+      "mistakes": [
+        ["[len({{x}}) for", "[{{x}} for"],
+        ["len({{x}}) for", "len({{v}}) for"],
+        ["print({{o}})", "print(len({{o}}))"]
+      ]
+    },
+    {
+      "id": "lc-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} >= {{lim}}]\nprint(len({{o}}))",
+      "values": [
+        {
+          "v": "scoruri",
+          "data": "85, 42, 50, 67, 38, 91",
+          "o": "trecute",
+          "x": "s",
+          "lim": 50
+        },
+        {
+          "v": "temperaturi",
+          "data": "30, 18, 25, 30, 12",
+          "o": "calde",
+          "x": "t",
+          "lim": 25
+        },
+        {
+          "v": "varste",
+          "data": "17, 18, 30, 12, 18, 65",
+          "o": "adulti",
+          "x": "a",
+          "lim": 18
+        },
+        {
+          "v": "viteze",
+          "data": "90, 120, 100, 80",
+          "o": "rapide",
+          "x": "s",
+          "lim": 100
+        }
+      ],
+      "mistakes": [
+        [">= {{lim}}]", "> {{lim}}]"],
+        ["print(len({{o}}))", "print({{o}})"],
+        [" if {{x}} >= {{lim}}]", "]"],
+        [">= {{lim}}]", "< {{lim}}]"]
+      ]
+    },
+    {
+      "id": "lc-first",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}}[0] for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "nume",
+          "data": "\"Tommy\", \"Lance\", \"Ken\"",
+          "o": "initiale",
+          "x": "n"
+        },
+        {
+          "v": "planete",
+          "data": "\"Marte\", \"Pamant\", \"Venus\", \"Saturn\"",
+          "o": "litere",
+          "x": "p"
+        },
+        {
+          "v": "culori",
+          "data": "\"rosu\", \"verde\", \"albastru\"",
+          "o": "coduri",
+          "x": "c"
+        }
+      ],
+      "mistakes": [
+        ["{{x}}[0] for", "{{v}}[0] for"],
+        ["{{x}}[0] for", "{{x}}[1] for"],
+        ["[{{x}}[0] for", "[{{x}} for"]
+      ]
+    },
+    {
+      "id": "lc-which-filter",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} >= {{lim}}]\nfor {{x}} in {{o}}:\n    print({{x}})",
+      "values": [
+        {
+          "v": "scoruri",
+          "data": "85, 42, 50, 91",
+          "o": "trecute",
+          "x": "s",
+          "lim": 50
+        },
+        {
+          "v": "citiri",
+          "data": "75, 30, 95, 88",
+          "o": "mari",
+          "x": "r",
+          "lim": 88
+        },
+        {
+          "v": "temperaturi",
+          "data": "21, 30, 18, 25",
+          "o": "calde",
+          "x": "t",
+          "lim": 21
+        },
+        {
+          "v": "varste",
+          "data": "17, 18, 40",
+          "o": "adulti",
+          "x": "a",
+          "lim": 18
+        }
+      ],
+      "mistakes": [
+        [">= {{lim}}]", "> {{lim}}]"],
+        ["[{{x}} for {{x}} in {{v}} if {{x}} >= {{lim}}]", "[{{x}} >= {{lim}} for {{x}} in {{v}}]"],
+        ["for {{x}} in {{o}}:", "for {{x}} in {{v}}:"]
+      ]
+    },
+    {
+      "id": "lc-which-suffix",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} + \"{{suf}}\" for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "cuvinte",
+          "data": "\"soare\", \"luna\"",
+          "o": "tare",
+          "x": "w",
+          "suf": "!"
+        },
+        {
+          "v": "nume",
+          "data": "\"Ana\", \"Rex\", \"Kai\"",
+          "o": "strigate",
+          "x": "n",
+          "suf": "?"
+        },
+        {
+          "v": "fisiere",
+          "data": "\"note\", \"plan\"",
+          "o": "complete",
+          "x": "f",
+          "suf": ".txt"
+        },
+        {
+          "v": "planete",
+          "data": "\"Marte\", \"Venus\"",
+          "o": "baze",
+          "x": "p",
+          "suf": " baza"
+        }
+      ],
+      "mistakes": [
+        ["{{x}} + \"{{suf}}\" for", "\"{{suf}}\" + {{x}} for"],
+        ["[{{x}} + \"{{suf}}\" for {{x}} in {{v}}]", "{{v}} + [\"{{suf}}\"]"],
+        ["{{x}} + \"{{suf}}\" for", "{{x}} for"],
+        ["print({{o}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "lc-gap-filter",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{data}}]\n___\nprint({{o}})",
+      "values": [
+        {
+          "v": "citiri",
+          "data": "75, 30, 95, 88, 42",
+          "o": "mari",
+          "x": "r",
+          "lim": 80
+        },
+        {
+          "v": "temperaturi",
+          "data": "12, 28, 35, 31",
+          "o": "calde",
+          "x": "t",
+          "lim": 30
+        },
+        {
+          "v": "preturi",
+          "data": "9, 25, 14, 40",
+          "o": "scumpe",
+          "x": "p",
+          "lim": 20
+        },
+        {
+          "v": "niveluri",
+          "data": "3, 8, 5, 10",
+          "o": "grele",
+          "x": "l",
+          "lim": 6
+        }
+      ],
+      "answer": "{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} > {{lim}}]",
+      "wrong": [
+        "{{o}} = [{{x}} > {{lim}} for {{x}} in {{v}}]",
+        "{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} < {{lim}}]",
+        "{{o}} = [{{x}} for {{x}} in {{v}}]"
+      ]
+    },
+    {
+      "id": "lc-gap-upper",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{data}}]\n___\nprint({{o}})",
+      "values": [
+        {
+          "v": "nume",
+          "data": "\"tommy\", \"Lance\"",
+          "o": "tare",
+          "x": "n"
+        },
+        {
+          "v": "orase",
+          "data": "\"roma\", \"Oslo\", \"paris\"",
+          "o": "panouri",
+          "x": "c"
+        },
+        {
+          "v": "echipaj",
+          "data": "\"ken\", \"Phil\", \"sonny\"",
+          "o": "strigate",
+          "x": "m"
+        },
+        {
+          "v": "planete",
+          "data": "\"marte\", \"Venus\"",
+          "o": "etichete",
+          "x": "p"
+        }
+      ],
+      "answer": "{{o}} = [{{x}}.upper() for {{x}} in {{v}}]",
+      "wrong": [
+        "{{o}} = [{{x}}.lower() for {{x}} in {{v}}]",
+        "{{o}} = [{{v}}.upper() for {{x}} in {{v}}]",
+        "{{o}} = [{{x}} for {{x}} in {{v}}]"
+      ]
+    },
+    {
+      "id": "lc-gap-times",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{data}}]\n___\nfor {{x}} in {{o}}:\n    print({{x}})",
+      "values": [
+        {
+          "v": "numere",
+          "data": "3, 5, 8",
+          "o": "dublat",
+          "x": "n",
+          "k": 2
+        },
+        {
+          "v": "preturi",
+          "data": "4, 7",
+          "o": "triplat",
+          "x": "p",
+          "k": 3
+        },
+        {
+          "v": "scoruri",
+          "data": "6, 9, 2",
+          "o": "mari",
+          "x": "s",
+          "k": 10
+        },
+        {
+          "v": "cutii",
+          "data": "5, 1",
+          "o": "stive",
+          "x": "b",
+          "k": 4
+        }
+      ],
+      "answer": "{{o}} = [{{x}} * {{k}} for {{x}} in {{v}}]",
+      "wrong": [
+        "{{o}} = [{{x}} for {{x}} in {{v}}]",
+        "{{o}} = {{v}} * {{k}}",
+        "{{o}} = [{{x}} + {{k}} for {{x}} in {{v}}]"
+      ]
+    },
+    {
+      "id": "lc-val-cond",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} ___ {{lim}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "scoruri",
+          "data": "85, 42, 50, 67",
+          "o": "trecute",
+          "x": "s",
+          "lim": 50,
+          "op": ">="
+        },
+        {
+          "v": "temperaturi",
+          "data": "30, 18, 25, 30",
+          "o": "calde",
+          "x": "t",
+          "lim": 25,
+          "op": ">"
+        },
+        {
+          "v": "varste",
+          "data": "17, 18, 30",
+          "o": "copii",
+          "x": "a",
+          "lim": 18,
+          "op": "<"
+        },
+        {
+          "v": "preturi",
+          "data": "5, 12, 9, 12",
+          "o": "ieftine",
+          "x": "p",
+          "lim": 9,
+          "op": "<="
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": [">", ">=", "<", "<=", "=="]
+    },
+    {
+      "id": "lc-val-expr",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [___ for {{x}} in {{v}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "numere",
+          "data": "2, 5, 7",
+          "o": "dublat",
+          "x": "n",
+          "k": 2
+        },
+        {
+          "v": "preturi",
+          "data": "4, 10",
+          "o": "triplat",
+          "x": "p",
+          "k": 3
+        },
+        {
+          "v": "scoruri",
+          "data": "1, 6, 3",
+          "o": "mari",
+          "x": "s",
+          "k": 10
+        },
+        {
+          "v": "vieti",
+          "data": "3, 5",
+          "o": "bonus",
+          "x": "l",
+          "k": 4
+        }
+      ],
+      "answer": "{{x}} * {{k}}",
+      "wrong": ["{{x}} + {{k}}", "{{x}}", "{{v}} * {{k}}", "{{k}}"]
+    },
+    {
+      "id": "lc-val-mod",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} % 2 == ___]\nprint({{o}})",
+      "values": [
+        {
+          "v": "numere",
+          "data": "1, 4, 7, 10",
+          "o": "pare",
+          "x": "n",
+          "r": 0
+        },
+        {
+          "v": "locuri",
+          "data": "1, 2, 5, 8",
+          "o": "impare",
+          "x": "s",
+          "r": 1
+        },
+        {
+          "v": "ids",
+          "data": "3, 1, 6",
+          "o": "pare",
+          "x": "i",
+          "r": 0
+        },
+        {
+          "v": "etaje",
+          "data": "1, 9, 12, 4",
+          "o": "impare",
+          "x": "f",
+          "r": 1
+        }
+      ],
+      "answer": "{{r}}",
+      "wrong": ["0", "1", "2", "{{x}}"]
+    },
+    {
+      "id": "lc-bad-cond",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{data}}]\nprint({{v}})\n{{o}} = [{{x}} for {{x}} in {{v}} if {{x}} > {{lim}}]\nprint({{o}})",
+      "values": [
+        {
+          "v": "citiri",
+          "data": "75, 30, 95, 88",
+          "o": "mari",
+          "x": "r",
+          "lim": 80
+        },
+        {
+          "v": "temperaturi",
+          "data": "12, 31, 28, 35",
+          "o": "calde",
+          "x": "t",
+          "lim": 30
+        },
+        {
+          "v": "preturi",
+          "data": "9, 25, 40",
+          "o": "scumpe",
+          "x": "p",
+          "lim": 20
+        }
+      ],
+      "bug": ["{{x}} > {{lim}}]", "{{x}} < {{lim}}]"]
+    },
+    {
+      "id": "lc-bad-print",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{data}}]\n{{o}} = [{{x}} * {{k}} for {{x}} in {{v}}]\nprint(\"{{label}}\", {{v}})\nprint({{o}})",
+      "values": [
+        {
+          "v": "numere",
+          "data": "3, 5, 8",
+          "o": "dublat",
+          "x": "n",
+          "k": 2,
+          "label": "Initial:"
+        },
+        {
+          "v": "preturi",
+          "data": "4, 10, 7",
+          "o": "triplat",
+          "x": "p",
+          "k": 3,
+          "label": "Initial:"
+        },
+        {
+          "v": "scoruri",
+          "data": "6, 1",
+          "o": "mari",
+          "x": "s",
+          "k": 10,
+          "label": "Initial:"
+        }
+      ],
+      "bug": ["print({{o}})", "print({{v}})"]
+    },
+    {
+      "id": "lc-bad-def",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def {{f}}({{p}}):\n    print(len({{p}}))\n    return [{{x}} for {{x}} in {{p}} if {{x}} > {{lim}}]\n\n{{v}} = [{{data}}]\nprint({{f}}({{v}}))",
+      "values": [
+        {
+          "f": "pastreaza_mari",
+          "p": "valori",
+          "x": "n",
+          "lim": 50,
+          "v": "scoruri",
+          "data": "40, 75, 90, 20"
+        },
+        {
+          "f": "zile_calde",
+          "p": "temperaturi",
+          "x": "t",
+          "lim": 30,
+          "v": "saptamana",
+          "data": "28, 33, 31, 25"
+        },
+        {
+          "f": "comenzi_mari",
+          "p": "comenzi",
+          "x": "o",
+          "lim": 100,
+          "v": "azi",
+          "data": "250, 80, 120"
+        }
+      ],
+      "bug": ["def {{f}}({{p}}):", "def {{f}}():"]
+    },
+    {
+      "id": "lc-bad-var",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{data}}]\n{{h}} = [{{x}} for {{x}} in {{v}} if {{x}} > {{lim}}]\n{{d}} = [{{x}} * 2 for {{x}} in {{v}}]\nprint({{h}})\nprint({{d}})",
+      "values": [
+        {
+          "v": "citiri",
+          "data": "75, 30, 95, 88",
+          "h": "mari",
+          "d": "dublat",
+          "x": "r",
+          "lim": 80
+        },
+        {
+          "v": "scoruri",
+          "data": "40, 85, 60",
+          "h": "trecute",
+          "d": "duble",
+          "x": "s",
+          "lim": 50
+        },
+        {
+          "v": "temperaturi",
+          "data": "12, 31, 35",
+          "h": "calde",
+          "d": "dublu",
+          "x": "t",
+          "lim": 30
+        }
+      ],
+      "bug": ["for {{x}} in {{v}}]", "for {{x}} in {{h}}]"]
+    }
+  ]
+}

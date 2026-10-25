@@ -1,0 +1,727 @@
+{
+  "note": "Made by npm run make:quiz from the templates in sets-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "st-dedupe-5d440a",
+      "text": "What does this print?",
+      "code": "signals = [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\"]\nprint(len(signals))\nprint(len(set(signals)))",
+      "options": ["6\n3", "6\n6", "3\n6", "3"],
+      "answer": 0
+    },
+    {
+      "id": "st-dedupe-b6c306",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Tommy\", \"Phil\"]\nprint(len(names))\nprint(len(set(names)))",
+      "options": ["4\n3", "4\n4", "3\n4", "3"],
+      "answer": 0
+    },
+    {
+      "id": "st-dedupe-e7daf1",
+      "text": "What does this print?",
+      "code": "colors = [\"red\", \"red\", \"blue\", \"red\", \"green\", \"blue\", \"red\"]\nprint(len(colors))\nprint(len(set(colors)))",
+      "options": ["7\n3", "7\n7", "3\n7", "3"],
+      "answer": 0
+    },
+    {
+      "id": "st-dedupe-3bf71e",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Mars\", \"Venus\"]\nprint(len(planets))\nprint(len(set(planets)))",
+      "options": ["5\n3", "5\n5", "3\n5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "st-dedupe-eb25bd",
+      "text": "What does this print?",
+      "code": "rolls = [6, 2, 6, 6, 3, 2, 1, 6]\nprint(len(rolls))\nprint(len(set(rolls)))",
+      "options": ["8\n4", "8\n8", "4\n8", "4"],
+      "answer": 0
+    },
+    {
+      "id": "st-add-3420ef",
+      "text": "What does this print?",
+      "code": "crew = {\"Tommy\", \"Lance\", \"Phil\"}\ncrew.add(\"Lance\")\ncrew.add(\"Ken\")\nprint(len(crew))",
+      "options": ["4", "5", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "st-add-b6380b",
+      "text": "What does this print?",
+      "code": "weapons = {\"bat\", \"pistol\", \"knife\"}\nweapons.add(\"bat\")\nweapons.add(\"shotgun\")\nprint(len(weapons))",
+      "options": ["4", "5", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "st-add-a739ea",
+      "text": "What does this print?",
+      "code": "stamps = {\"Mars\", \"Venus\", \"Earth\", \"Pluto\"}\nstamps.add(\"Pluto\")\nstamps.add(\"Titan\")\nprint(len(stamps))",
+      "options": ["5", "6", "4", "2"],
+      "answer": 0
+    },
+    {
+      "id": "st-add-f80ba5",
+      "text": "What does this print?",
+      "code": "badges = {\"gold\", \"silver\", \"bronze\"}\nbadges.add(\"silver\")\nbadges.add(\"platinum\")\nprint(len(badges))",
+      "options": ["4", "5", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "st-add-b106db",
+      "text": "What does this print?",
+      "code": "codes = {\"A1\", \"B2\", \"C3\"}\ncodes.add(\"A1\")\ncodes.add(\"D4\")\nprint(len(codes))",
+      "options": ["4", "5", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "st-remove-838964",
+      "text": "What does this print?",
+      "code": "weapons = {\"bat\", \"pistol\", \"knife\"}\nweapons.remove(\"bat\")\nprint(\"bat\" in weapons)\nprint(len(weapons))",
+      "options": ["False\n2", "True\n3", "True\n2", "2\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "st-remove-6048a9",
+      "text": "What does this print?",
+      "code": "crew = {\"Tommy\", \"Lance\", \"Phil\", \"Ken\"}\ncrew.remove(\"Phil\")\nprint(\"Phil\" in crew)\nprint(len(crew))",
+      "options": ["False\n3", "True\n4", "True\n3", "3\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "st-remove-f2a62e",
+      "text": "What does this print?",
+      "code": "guests = {\"Ana\", \"Rex\"}\nguests.remove(\"Rex\")\nprint(\"Rex\" in guests)\nprint(len(guests))",
+      "options": ["False\n1", "True\n2", "True\n1", "1\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "st-remove-084c97",
+      "text": "What does this print?",
+      "code": "targets = {\"A\", \"B\", \"C\", \"D\", \"E\"}\ntargets.remove(\"C\")\nprint(\"C\" in targets)\nprint(len(targets))",
+      "options": ["False\n4", "True\n5", "True\n4", "4\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "st-remove-4203a1",
+      "text": "What does this print?",
+      "code": "moons = {\"Io\", \"Europa\", \"Titan\"}\nmoons.remove(\"Titan\")\nprint(\"Titan\" in moons)\nprint(len(moons))",
+      "options": ["False\n2", "True\n3", "True\n2", "2\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "st-check-c2cecb",
+      "text": "What does this print?",
+      "code": "banned = {\"Sonny\", \"Diaz\"}\nfor p in [\"Tommy\", \"Diaz\", \"Lance\"]:\n    if p in banned:\n        print(f\"{p} is banned!\")\n    else:\n        print(f\"{p} is welcome\")",
+      "options": [
+        "Tommy is welcome\nDiaz is banned!\nLance is welcome",
+        "Tommy is banned!\nDiaz is welcome\nLance is banned!",
+        "Diaz is banned!",
+        "Tommy is welcome\nDiaz is welcome\nLance is welcome"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-check-2208b5",
+      "text": "What does this print?",
+      "code": "broken = {\"B2\", \"D4\"}\nfor code in [\"A1\", \"B2\", \"C3\", \"D4\"]:\n    if code in broken:\n        print(f\"{code} is broken\")\n    else:\n        print(f\"{code} works\")",
+      "options": [
+        "A1 works\nB2 is broken\nC3 works\nD4 is broken",
+        "A1 is broken\nB2 works\nC3 is broken\nD4 works",
+        "B2 is broken\nD4 is broken",
+        "A1 works\nB2 works\nC3 works\nD4 works"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-check-a07245",
+      "text": "What does this print?",
+      "code": "full = {\"Mars\"}\nfor planet in [\"Mars\", \"Venus\"]:\n    if planet in full:\n        print(f\"{planet} is full\")\n    else:\n        print(f\"{planet} has room\")",
+      "options": [
+        "Mars is full\nVenus has room",
+        "Mars has room\nVenus is full",
+        "Mars is full",
+        "Mars has room\nVenus has room"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-check-2b29b0",
+      "text": "What does this print?",
+      "code": "sold = {\"tea\", \"cake\", \"jam\"}\nfor item in [\"cake\", \"milk\"]:\n    if item in sold:\n        print(f\"{item} is sold out\")\n    else:\n        print(f\"{item} is in stock\")",
+      "options": [
+        "cake is sold out\nmilk is in stock",
+        "cake is in stock\nmilk is sold out",
+        "cake is sold out",
+        "cake is in stock\nmilk is in stock"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-repeats-a2dd78",
+      "text": "What does this print?",
+      "code": "seen = set()\nrepeats = 0\nfor c in [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\"]:\n    if c in seen:\n        repeats = repeats + 1\n    else:\n        seen.add(c)\nprint(f\"Repeats: {repeats}\")",
+      "options": ["Repeats: 3", "A1\nB2\nA1\nC3\nB2\nA1\nRepeats: 0", "Repeats: 6", "Repeats: 1"],
+      "answer": 0
+    },
+    {
+      "id": "st-repeats-4dc0e2",
+      "text": "What does this print?",
+      "code": "met = set()\nagain = 0\nfor name in [\"Tommy\", \"Lance\", \"Tommy\", \"Phil\", \"Lance\"]:\n    if name in met:\n        again = again + 1\n    else:\n        met.add(name)\nprint(f\"Met again: {again}\")",
+      "options": [
+        "Met again: 2",
+        "Tommy\nLance\nTommy\nPhil\nLance\nMet again: 0",
+        "Met again: 5",
+        "Met again: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-repeats-2adb62",
+      "text": "What does this print?",
+      "code": "visited = set()\nreturns = 0\nfor p in [\"Mars\", \"Venus\", \"Mars\", \"Mars\", \"Earth\", \"Venus\"]:\n    if p in visited:\n        returns = returns + 1\n    else:\n        visited.add(p)\nprint(f\"Returns: {returns}\")",
+      "options": [
+        "Returns: 3",
+        "Mars\nVenus\nMars\nMars\nEarth\nVenus\nReturns: 0",
+        "Returns: 6",
+        "Returns: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-repeats-532152",
+      "text": "What does this print?",
+      "code": "heard = set()\nechoes = 0\nfor w in [\"hey\", \"ho\", \"hey\", \"hey\"]:\n    if w in heard:\n        echoes = echoes + 1\n    else:\n        heard.add(w)\nprint(f\"Echoes: {echoes}\")",
+      "options": ["Echoes: 2", "hey\nho\nhey\nhey\nEchoes: 0", "Echoes: 4", "Echoes: 1"],
+      "answer": 0
+    },
+    {
+      "id": "st-repeats-08bcbe",
+      "text": "What does this print?",
+      "code": "used = set()\nagain = 0\nfor n in [4, 8, 4, 15, 8, 4]:\n    if n in used:\n        again = again + 1\n    else:\n        used.add(n)\nprint(f\"Used again: {again}\")",
+      "options": [
+        "Used again: 3",
+        "4\n8\n4\n15\n8\n4\nUsed again: 0",
+        "Used again: 6",
+        "Used again: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-log-fc0e6a",
+      "text": "What does this print?",
+      "code": "signals = [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\"]\nprint(f\"Total: {len(signals)}\")\nunique = set(signals)\nprint(f\"Unique: {len(unique)}\")\nif \"C3\" in unique:\n    print(\"C3 detected\")\nelse:\n    print(\"C3 missing\")",
+      "options": [
+        "Total: 5\nUnique: 3\nC3 detected",
+        "Total: 5\nUnique: 5\nC3 detected",
+        "Total: 5\nUnique: 3\nC3 missing",
+        "Total: 3\nUnique: 3\nC3 detected"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-log-66a8c8",
+      "text": "What does this print?",
+      "code": "signals = [\"X1\", \"X1\", \"Y2\", \"X1\"]\nprint(f\"Total: {len(signals)}\")\nunique = set(signals)\nprint(f\"Unique: {len(unique)}\")\nif \"Z3\" in unique:\n    print(\"Z3 detected\")\nelse:\n    print(\"Z3 missing\")",
+      "options": [
+        "Total: 4\nUnique: 2\nZ3 missing",
+        "Total: 4\nUnique: 4\nZ3 missing",
+        "Total: 4\nUnique: 2\nZ3 detected",
+        "Total: 2\nUnique: 2\nZ3 missing"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-log-197a08",
+      "text": "What does this print?",
+      "code": "pings = [\"K7\", \"L8\", \"K7\", \"M9\", \"L8\", \"K7\", \"N1\"]\nprint(f\"Total: {len(pings)}\")\nunique = set(pings)\nprint(f\"Unique: {len(unique)}\")\nif \"N1\" in unique:\n    print(\"N1 detected\")\nelse:\n    print(\"N1 missing\")",
+      "options": [
+        "Total: 7\nUnique: 4\nN1 detected",
+        "Total: 7\nUnique: 7\nN1 detected",
+        "Total: 7\nUnique: 4\nN1 missing",
+        "Total: 4\nUnique: 4\nN1 detected"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-log-c7be6f",
+      "text": "What does this print?",
+      "code": "pings = [\"Q1\", \"R2\", \"S3\", \"Q1\"]\nprint(f\"Total: {len(pings)}\")\nunique = set(pings)\nprint(f\"Unique: {len(unique)}\")\nif \"T4\" in unique:\n    print(\"T4 detected\")\nelse:\n    print(\"T4 missing\")",
+      "options": [
+        "Total: 4\nUnique: 3\nT4 missing",
+        "Total: 4\nUnique: 4\nT4 missing",
+        "Total: 4\nUnique: 3\nT4 detected",
+        "Total: 3\nUnique: 3\nT4 missing"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-log-0b5d70",
+      "text": "What does this print?",
+      "code": "codes = [\"D4\", \"D4\", \"D4\"]\nprint(f\"Total: {len(codes)}\")\nunique = set(codes)\nprint(f\"Unique: {len(unique)}\")\nif \"D4\" in unique:\n    print(\"D4 detected\")\nelse:\n    print(\"D4 missing\")",
+      "options": [
+        "Total: 3\nUnique: 1\nD4 detected",
+        "Total: 3\nUnique: 3\nD4 detected",
+        "Total: 3\nUnique: 1\nD4 missing",
+        "Total: 1\nUnique: 1\nD4 detected"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-check-6e607b",
+      "text": "Which program shows this?",
+      "output": "Diaz: stop\nTommy: go",
+      "options": [
+        "banned = {\"Sonny\", \"Diaz\"}\nfor p in [\"Diaz\", \"Tommy\"]:\n    if p in banned:\n        print(f\"{p}: stop\")\n    else:\n        print(f\"{p}: go\")",
+        "banned = {\"Sonny\", \"Diaz\"}\nfor p in [\"Diaz\", \"Tommy\"]:\n    if p not in banned:\n        print(f\"{p}: stop\")\n    else:\n        print(f\"{p}: go\")",
+        "banned = {\"Sonny\", \"Diaz\"}\nfor p in [\"Diaz\", \"Tommy\"]:\n    if p == banned:\n        print(f\"{p}: stop\")\n    else:\n        print(f\"{p}: go\")",
+        "banned = set()\nfor p in [\"Diaz\", \"Tommy\"]:\n    if p in banned:\n        print(f\"{p}: stop\")\n    else:\n        print(f\"{p}: go\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-check-ee802c",
+      "text": "Which program shows this?",
+      "output": "A: open\nC: closed",
+      "options": [
+        "closed = {\"B\", \"C\"}\nfor gate in [\"A\", \"C\"]:\n    if gate in closed:\n        print(f\"{gate}: closed\")\n    else:\n        print(f\"{gate}: open\")",
+        "closed = {\"B\", \"C\"}\nfor gate in [\"A\", \"C\"]:\n    if gate not in closed:\n        print(f\"{gate}: closed\")\n    else:\n        print(f\"{gate}: open\")",
+        "closed = {\"B\", \"C\"}\nfor gate in [\"A\", \"C\"]:\n    if gate == closed:\n        print(f\"{gate}: closed\")\n    else:\n        print(f\"{gate}: open\")",
+        "closed = set()\nfor gate in [\"A\", \"C\"]:\n    if gate in closed:\n        print(f\"{gate}: closed\")\n    else:\n        print(f\"{gate}: open\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-check-79fe97",
+      "text": "Which program shows this?",
+      "output": "cook: done\nshop: to do\nwash: done",
+      "options": [
+        "done = {\"wash\", \"cook\"}\nfor job in [\"cook\", \"shop\", \"wash\"]:\n    if job in done:\n        print(f\"{job}: done\")\n    else:\n        print(f\"{job}: to do\")",
+        "done = {\"wash\", \"cook\"}\nfor job in [\"cook\", \"shop\", \"wash\"]:\n    if job not in done:\n        print(f\"{job}: done\")\n    else:\n        print(f\"{job}: to do\")",
+        "done = {\"wash\", \"cook\"}\nfor job in [\"cook\", \"shop\", \"wash\"]:\n    if job == done:\n        print(f\"{job}: done\")\n    else:\n        print(f\"{job}: to do\")",
+        "done = set()\nfor job in [\"cook\", \"shop\", \"wash\"]:\n    if job in done:\n        print(f\"{job}: done\")\n    else:\n        print(f\"{job}: to do\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-check-e2c99d",
+      "text": "Which program shows this?",
+      "output": "Europa: signal\nIo: no signal",
+      "options": [
+        "lost = {\"Io\"}\nfor moon in [\"Europa\", \"Io\"]:\n    if moon in lost:\n        print(f\"{moon}: no signal\")\n    else:\n        print(f\"{moon}: signal\")",
+        "lost = {\"Io\"}\nfor moon in [\"Europa\", \"Io\"]:\n    if moon not in lost:\n        print(f\"{moon}: no signal\")\n    else:\n        print(f\"{moon}: signal\")",
+        "lost = {\"Io\"}\nfor moon in [\"Europa\", \"Io\"]:\n    if moon == lost:\n        print(f\"{moon}: no signal\")\n    else:\n        print(f\"{moon}: signal\")",
+        "lost = set()\nfor moon in [\"Europa\", \"Io\"]:\n    if moon in lost:\n        print(f\"{moon}: no signal\")\n    else:\n        print(f\"{moon}: signal\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-add-543cb8",
+      "text": "Which program shows this?",
+      "output": "4",
+      "options": [
+        "crew = {\"Tommy\", \"Lance\", \"Phil\"}\ncrew.add(\"Ken\")\nprint(len(crew))",
+        "crew = {\"Tommy\", \"Lance\", \"Phil\"}\ncrew.add(\"Lance\")\nprint(len(crew))",
+        "crew = {\"Tommy\", \"Lance\", \"Phil\"}\ncrew.append(\"Ken\")\nprint(len(crew))",
+        "crew = {\"Tommy\", \"Lance\", \"Phil\"}\ncrew.remove(\"Lance\")\nprint(len(crew))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-add-96beee",
+      "text": "Which program shows this?",
+      "output": "3",
+      "options": [
+        "weapons = {\"bat\", \"pistol\"}\nweapons.add(\"knife\")\nprint(len(weapons))",
+        "weapons = {\"bat\", \"pistol\"}\nweapons.add(\"bat\")\nprint(len(weapons))",
+        "weapons = {\"bat\", \"pistol\"}\nweapons.append(\"knife\")\nprint(len(weapons))",
+        "weapons = {\"bat\", \"pistol\"}\nweapons.remove(\"bat\")\nprint(len(weapons))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-add-63abea",
+      "text": "Which program shows this?",
+      "output": "5",
+      "options": [
+        "stamps = {\"Mars\", \"Venus\", \"Earth\", \"Pluto\"}\nstamps.add(\"Titan\")\nprint(len(stamps))",
+        "stamps = {\"Mars\", \"Venus\", \"Earth\", \"Pluto\"}\nstamps.add(\"Earth\")\nprint(len(stamps))",
+        "stamps = {\"Mars\", \"Venus\", \"Earth\", \"Pluto\"}\nstamps.append(\"Titan\")\nprint(len(stamps))",
+        "stamps = {\"Mars\", \"Venus\", \"Earth\", \"Pluto\"}\nstamps.remove(\"Earth\")\nprint(len(stamps))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-add-ee7eb1",
+      "text": "Which program shows this?",
+      "output": "6",
+      "options": [
+        "codes = {\"A1\", \"B2\", \"C3\", \"D4\", \"E5\"}\ncodes.add(\"F6\")\nprint(len(codes))",
+        "codes = {\"A1\", \"B2\", \"C3\", \"D4\", \"E5\"}\ncodes.add(\"C3\")\nprint(len(codes))",
+        "codes = {\"A1\", \"B2\", \"C3\", \"D4\", \"E5\"}\ncodes.append(\"F6\")\nprint(len(codes))",
+        "codes = {\"A1\", \"B2\", \"C3\", \"D4\", \"E5\"}\ncodes.remove(\"C3\")\nprint(len(codes))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-which-add-7ebf10",
+      "text": "Which program shows this?",
+      "output": "2",
+      "options": [
+        "badges = {\"gold\"}\nbadges.add(\"bronze\")\nprint(len(badges))",
+        "badges = {\"gold\"}\nbadges.add(\"gold\")\nprint(len(badges))",
+        "badges = {\"gold\"}\nbadges.append(\"bronze\")\nprint(len(badges))",
+        "badges = {\"gold\"}\nbadges.remove(\"gold\")\nprint(len(badges))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-add-066693",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "crew = {\"Tommy\", \"Lance\"}\n___\nprint(\"Phil\" in crew)\nprint(len(crew))",
+      "output": "True\n3",
+      "options": [
+        "crew.add(\"Phil\")",
+        "crew.append(\"Phil\")",
+        "crew.add(\"Lance\")",
+        "crew = {\"Phil\"}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-add-45b7f3",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "weapons = {\"bat\", \"pistol\", \"knife\"}\n___\nprint(\"shotgun\" in weapons)\nprint(len(weapons))",
+      "output": "True\n4",
+      "options": [
+        "weapons.add(\"shotgun\")",
+        "weapons.append(\"shotgun\")",
+        "weapons.add(\"bat\")",
+        "weapons = {\"shotgun\"}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-add-5c6749",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "stamps = {\"Mars\"}\n___\nprint(\"Venus\" in stamps)\nprint(len(stamps))",
+      "output": "True\n2",
+      "options": [
+        "stamps.add(\"Venus\")",
+        "stamps.append(\"Venus\")",
+        "stamps.add(\"Mars\")",
+        "stamps = {\"Venus\"}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-add-992173",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "codes = {\"A1\", \"B2\", \"C3\", \"D4\"}\n___\nprint(\"E5\" in codes)\nprint(len(codes))",
+      "output": "True\n5",
+      "options": [
+        "codes.add(\"E5\")",
+        "codes.append(\"E5\")",
+        "codes.add(\"C3\")",
+        "codes = {\"E5\"}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-unique-e0a0fb",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "signals = [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\"]\n___\nprint(f\"Unique: {len(unique)}\")",
+      "output": "Unique: 3",
+      "options": [
+        "unique = set(signals)",
+        "unique = signals",
+        "unique = [signals]",
+        "unique = set()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-unique-2fb76d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Tommy\"]\n___\nprint(f\"Unique: {len(unique)}\")",
+      "output": "Unique: 2",
+      "options": ["unique = set(names)", "unique = names", "unique = [names]", "unique = set()"],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-unique-d1fe44",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "colors = [\"red\", \"blue\", \"red\", \"green\", \"blue\"]\n___\nprint(f\"Unique: {len(unique)}\")",
+      "output": "Unique: 3",
+      "options": ["unique = set(colors)", "unique = colors", "unique = [colors]", "unique = set()"],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-unique-7aada2",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "rolls = [5, 5, 2, 5, 1, 2, 6, 5]\n___\nprint(f\"Unique: {len(unique)}\")",
+      "output": "Unique: 4",
+      "options": ["unique = set(rolls)", "unique = rolls", "unique = [rolls]", "unique = set()"],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-remove-bbd85f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "weapons = {\"bat\", \"pistol\", \"knife\"}\n___\nprint(\"bat\" in weapons)\nprint(len(weapons))",
+      "output": "False\n2",
+      "options": [
+        "weapons.remove(\"bat\")",
+        "weapons.add(\"bat\")",
+        "del weapons[0]",
+        "weapons.remove(\"pistol\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-remove-b57571",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "crew = {\"Tommy\", \"Lance\", \"Phil\", \"Ken\"}\n___\nprint(\"Ken\" in crew)\nprint(len(crew))",
+      "output": "False\n3",
+      "options": [
+        "crew.remove(\"Ken\")",
+        "crew.add(\"Ken\")",
+        "del crew[0]",
+        "crew.remove(\"Tommy\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-remove-197741",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "guests = {\"Ana\", \"Rex\"}\n___\nprint(\"Ana\" in guests)\nprint(len(guests))",
+      "output": "False\n1",
+      "options": [
+        "guests.remove(\"Ana\")",
+        "guests.add(\"Ana\")",
+        "del guests[0]",
+        "guests.remove(\"Rex\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-gap-remove-cacdca",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "moons = {\"Io\", \"Europa\", \"Titan\"}\n___\nprint(\"Europa\" in moons)\nprint(len(moons))",
+      "output": "False\n2",
+      "options": [
+        "moons.remove(\"Europa\")",
+        "moons.add(\"Europa\")",
+        "del moons[0]",
+        "moons.remove(\"Io\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-val-in-51928b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "banned = {\"Sonny\", \"Gonzalez\", \"Mendez\"}\nplayer = ___\nif player in banned:\n    print(\"Stop\")\nelse:\n    print(\"Welcome\")",
+      "output": "Stop",
+      "options": ["\"Mendez\"", "\"Tommy\"", "\"Diaz\"", "\"banned\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-in-64866e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "broken = {\"B2\", \"D4\"}\ncode = ___\nif code in broken:\n    print(\"Repair\")\nelse:\n    print(\"All good\")",
+      "output": "Repair",
+      "options": ["\"D4\"", "\"A1\"", "\"C3\"", "\"broken\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-in-cbf613",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "full = {\"Mars\", \"Venus\"}\nplanet = ___\nif planet in full:\n    print(\"No room\")\nelse:\n    print(\"Land here\")",
+      "output": "No room",
+      "options": ["\"Venus\"", "\"Earth\"", "\"Pluto\"", "\"full\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-in-d24003",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "sold = {\"tea\", \"cake\"}\nitem = ___\nif item in sold:\n    print(\"Sold out\")\nelse:\n    print(\"In stock\")",
+      "output": "Sold out",
+      "options": ["\"tea\"", "\"milk\"", "\"jam\"", "\"sold\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-add-870e7a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "crew = {\"Tommy\", \"Lance\", \"Phil\"}\ncrew.add(___)\nprint(len(crew))",
+      "output": "4",
+      "options": ["\"Ken\"", "\"Tommy\"", "\"Lance\"", "\"Phil\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-add-584ad3",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "weapons = {\"bat\", \"pistol\", \"knife\"}\nweapons.add(___)\nprint(len(weapons))",
+      "output": "4",
+      "options": ["\"shotgun\"", "\"bat\"", "\"pistol\"", "\"knife\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-add-354f5d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "codes = {\"A1\", \"B2\", \"C3\", \"D4\"}\ncodes.add(___)\nprint(len(codes))",
+      "output": "5",
+      "options": ["\"E5\"", "\"A1\"", "\"C3\"", "\"D4\""],
+      "answer": 0
+    },
+    {
+      "id": "st-val-add-5ca0ad",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "stamps = {\"Mars\", \"Venus\", \"Earth\"}\nstamps.add(___)\nprint(len(stamps))",
+      "output": "4",
+      "options": ["\"Titan\"", "\"Mars\"", "\"Venus\"", "\"Earth\""],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-append-26492e",
+      "text": "Which line stops this program from printing this?",
+      "code": "seen = {\"A1\", \"B2\", \"A1\"}\nseen.append(\"C3\")\nprint(len(seen))\nprint(\"C3\" in seen)",
+      "output": "3\nTrue",
+      "options": [
+        "seen.append(\"C3\")",
+        "seen = {\"A1\", \"B2\", \"A1\"}",
+        "print(len(seen))",
+        "print(\"C3\" in seen)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-append-adc245",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = {\"Tommy\", \"Lance\", \"Tommy\", \"Phil\"}\ncrew.append(\"Ken\")\nprint(len(crew))\nprint(\"Ken\" in crew)",
+      "output": "4\nTrue",
+      "options": [
+        "crew.append(\"Ken\")",
+        "crew = {\"Tommy\", \"Lance\", \"Tommy\", \"Phil\"}",
+        "print(len(crew))",
+        "print(\"Ken\" in crew)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-append-bca458",
+      "text": "Which line stops this program from printing this?",
+      "code": "stamps = {\"Mars\", \"Mars\", \"Venus\"}\nstamps.append(\"Earth\")\nprint(len(stamps))\nprint(\"Earth\" in stamps)",
+      "output": "3\nTrue",
+      "options": [
+        "stamps.append(\"Earth\")",
+        "stamps = {\"Mars\", \"Mars\", \"Venus\"}",
+        "print(len(stamps))",
+        "print(\"Earth\" in stamps)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-empty-6c1d78",
+      "text": "Which line stops this program from printing this?",
+      "code": "seen = {}\nfor c in [\"A1\", \"B2\", \"A1\", \"C3\"]:\n    seen.add(c)\nseen.remove(\"A1\")\nprint(len(seen))",
+      "output": "2",
+      "options": ["seen = {}", "seen.add(c)", "seen.remove(\"A1\")", "print(len(seen))"],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-empty-19173d",
+      "text": "Which line stops this program from printing this?",
+      "code": "met = {}\nfor name in [\"Tommy\", \"Lance\", \"Tommy\"]:\n    met.add(name)\nmet.remove(\"Lance\")\nprint(len(met))",
+      "output": "1",
+      "options": ["met = {}", "met.add(name)", "met.remove(\"Lance\")", "print(len(met))"],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-empty-5252d2",
+      "text": "Which line stops this program from printing this?",
+      "code": "visited = {}\nfor p in [\"Mars\", \"Venus\", \"Mars\", \"Earth\", \"Venus\"]:\n    visited.add(p)\nvisited.remove(\"Earth\")\nprint(len(visited))",
+      "output": "2",
+      "options": [
+        "visited = {}",
+        "visited.add(p)",
+        "visited.remove(\"Earth\")",
+        "print(len(visited))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-len-430a34",
+      "text": "Which line stops this program from printing this?",
+      "code": "signals = [\"A1\", \"B2\", \"A1\", \"C3\"]\nunique = set(signals)\nprint(f\"Total: {len(signals)}\")\nprint(f\"Unique: {len(signals)}\")",
+      "output": "Total: 4\nUnique: 3",
+      "options": [
+        "print(f\"Unique: {len(signals)}\")",
+        "print(f\"Total: {len(signals)}\")",
+        "unique = set(signals)",
+        "signals = [\"A1\", \"B2\", \"A1\", \"C3\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-len-e7bada",
+      "text": "Which line stops this program from printing this?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Tommy\", \"Tommy\", \"Phil\"]\nunique = set(names)\nprint(f\"Total: {len(names)}\")\nprint(f\"Unique: {len(names)}\")",
+      "output": "Total: 5\nUnique: 3",
+      "options": [
+        "print(f\"Unique: {len(names)}\")",
+        "print(f\"Total: {len(names)}\")",
+        "unique = set(names)",
+        "names = [\"Tommy\", \"Lance\", \"Tommy\", \"Tommy\", \"Phil\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-len-68e15a",
+      "text": "Which line stops this program from printing this?",
+      "code": "rolls = [3, 3, 6, 1, 6, 3]\nunique = set(rolls)\nprint(f\"Total: {len(rolls)}\")\nprint(f\"Unique: {len(rolls)}\")",
+      "output": "Total: 6\nUnique: 3",
+      "options": [
+        "print(f\"Unique: {len(rolls)}\")",
+        "print(f\"Total: {len(rolls)}\")",
+        "unique = set(rolls)",
+        "rolls = [3, 3, 6, 1, 6, 3]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-remove-3ebaf2",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = {\"Tommy\", \"Lance\", \"Phil\"}\ncrew.remove(\"Phil\")\ncrew.add(\"Ken\")\nprint(\"Lance\" in crew)\nprint(\"Phil\" in crew)\nprint(len(crew))",
+      "output": "False\nTrue\n3",
+      "options": [
+        "crew.remove(\"Phil\")",
+        "crew.add(\"Ken\")",
+        "print(\"Lance\" in crew)",
+        "print(\"Phil\" in crew)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-remove-801833",
+      "text": "Which line stops this program from printing this?",
+      "code": "weapons = {\"bat\", \"pistol\", \"knife\"}\nweapons.remove(\"knife\")\nweapons.add(\"shotgun\")\nprint(\"bat\" in weapons)\nprint(\"knife\" in weapons)\nprint(len(weapons))",
+      "output": "False\nTrue\n3",
+      "options": [
+        "weapons.remove(\"knife\")",
+        "weapons = {\"bat\", \"pistol\", \"knife\"}",
+        "weapons.add(\"shotgun\")",
+        "print(\"bat\" in weapons)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-bad-remove-b52ce6",
+      "text": "Which line stops this program from printing this?",
+      "code": "moons = {\"Io\", \"Europa\", \"Titan\"}\nmoons.remove(\"Io\")\nmoons.add(\"Luna\")\nprint(\"Titan\" in moons)\nprint(\"Io\" in moons)\nprint(len(moons))",
+      "output": "False\nTrue\n3",
+      "options": [
+        "moons.remove(\"Io\")",
+        "moons = {\"Io\", \"Europa\", \"Titan\"}",
+        "moons.add(\"Luna\")",
+        "print(\"Titan\" in moons)"
+      ],
+      "answer": 0
+    }
+  ]
+}

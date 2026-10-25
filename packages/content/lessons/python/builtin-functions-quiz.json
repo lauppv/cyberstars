@@ -1,0 +1,829 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does `sum([80, 95, 70, 88])` give?",
+      "options": ["333", "4", "95", "[80, 95, 70, 88]"],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "numbers = [5, 2, 8, 1]\nnew_list = sorted(numbers)\nprint(numbers)",
+      "options": ["[1, 2, 5, 8]", "[5, 2, 8, 1]", "[8, 5, 2, 1]", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "What does `sorted(numbers, reverse=True)` give back?",
+      "options": [
+        "The biggest number of the list",
+        "The list read from the end, without sorting",
+        "The same list, now sorted in place",
+        "A new list, from the highest number to the lowest"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\nprint(sorted(names))",
+      "options": [
+        "['Tommy', 'Lance', 'Cortez', 'Phil']",
+        "['Phil', 'Lance', 'Tommy', 'Cortez']",
+        "['Cortez', 'Lance', 'Phil', 'Tommy']",
+        "['Tommy', 'Phil', 'Lance', 'Cortez']"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "In `for i, name in enumerate(names):`, what are `i` and `name` on each turn?",
+      "options": [
+        "i is the index and name the value at that index",
+        "i is the value and name its index",
+        "Both are the value",
+        "i counts from 1 and name is the value"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i, name in enumerate(names):\n    print(i, name)",
+      "options": [
+        "1 Tommy\n2 Lance\n3 Cortez",
+        "Tommy 0\nLance 1\nCortez 2",
+        "0\n1\n2",
+        "0 Tommy\n1 Lance\n2 Cortez"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Which loop gives `i` as the index and `name` as the value, like `for i in range(len(names)):` with `names[i]`?",
+      "options": [
+        "for i, name in zip(names):",
+        "for i, name in enumerate(names):",
+        "for i in enumerate(names):",
+        "for name, i in enumerate(names):"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nscores = [95, 80, 70]\nfor name, score in zip(names, scores):\n    print(f\"{name}: {score}\")",
+      "options": [
+        "Tommy: 95\nLance: 80\nCortez: 70",
+        "Tommy: 95",
+        "95: Tommy\n80: Lance\n70: Cortez",
+        "Tommy: [95, 80, 70]\nLance: [95, 80, 70]\nCortez: [95, 80, 70]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nscores = [95, 80]\nfor name, score in zip(names, scores):\n    print(name, score)",
+      "options": [
+        "Tommy 95\nLance 80\nCortez 0",
+        "Tommy 95\nLance 80\nCortez None",
+        "Tommy 95\nLance 80",
+        "Tommy 95"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "`zip(a, b)` gets a list of 5 elements and a list of 3. How many pairs does it give?",
+      "options": ["5", "8", "15", "3"],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "scores = [80, 95, 40, 70]\nprint(any(s < 50 for s in scores))\nprint(all(s >= 50 for s in scores))",
+      "options": ["True\nTrue", "True\nFalse", "False\nFalse", "False\nTrue"],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "When does `all(s >= 50 for s in scores)` give True?",
+      "options": [
+        "When at least one score is 50 or more",
+        "When the scores add up to 50 or more",
+        "When every score is 50 or more",
+        "When the first score is 50 or more"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "When does `any(s < 50 for s in scores)` give True?",
+      "options": [
+        "Only when every score is below 50",
+        "When at least one score is below 50",
+        "When the list has at least one score",
+        "Only when exactly one score is below 50"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "What does `abs(-100)` give?",
+      "options": ["-100", "0", "100", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "print(abs(-5))\nprint(abs(5))",
+      "options": ["-5\n5", "5\n5", "5\n-5", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "What does `round(3.14159, 2)` give?",
+      "options": ["3.14", "3", "3.1", "3.142"],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "print(round(3.7))\nprint(round(3.2))",
+      "options": ["3\n3", "4\n4", "3.7\n3.2", "4\n3"],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "In `round(x, 1)`, what does the 1 say?",
+      "options": [
+        "Round up, never down",
+        "How many decimal places to keep",
+        "How many times to round",
+        "Which digit to drop"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "In the Crew Leaderboard mission the scores are `[88, 100, 47, 73]`. What does `round(sum(scores) / len(scores), 1)` give?",
+      "options": ["77", "308", "77.0", "77.5"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "In the mission, why does `All passed:` print False?",
+      "options": [
+        "Boris has 100, more than 50",
+        "The average is below 80",
+        "all() is True only when every score is 100",
+        "Cara has 47, below 50"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "In the mission, what does `sorted(scores, reverse=True)` give for `[88, 100, 47, 73]`?",
+      "options": [
+        "[100, 88, 73, 47]",
+        "[73, 47, 100, 88]",
+        "[47, 73, 88, 100]",
+        "[88, 100, 47, 73]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "numbers = [3, 1, 2]\nprint(sorted(numbers, reverse=True))\nprint(numbers)",
+      "options": [
+        "[3, 2, 1]\n[3, 2, 1]",
+        "[1, 2, 3]\n[3, 1, 2]",
+        "[2, 1, 3]\n[3, 1, 2]",
+        "[3, 2, 1]\n[3, 1, 2]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Which line prints the total of `prices` without a loop?",
+      "options": ["print(len(prices))", "print(max(prices))", "print(sum(prices))", "print(sum)"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "What happens when this runs?",
+      "code": "readings = [\"4\", \"5\"]\ntotal = sum(readings)\nprint(total)",
+      "options": [
+        "It prints 9",
+        "It prints 45",
+        "It prints ['4', '5']",
+        "It stops with a TypeError: sum() adds numbers, and these are texts"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\nfor i, name in enumerate(names):\n    if i == 2:\n        print(name)",
+      "options": ["Cortez", "Lance", "Phil", "2"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "a = [1, 2, 3]\nb = [10, 20, 30]\nfor x, y in zip(a, b):\n    print(x + y)",
+      "options": ["66", "6\n60", "11\n22\n33", "[1, 2, 3, 10, 20, 30]"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "changes = [-3, 5, -8]\nprint(sum(changes))\nprint(sum([abs(c) for c in changes]))",
+      "options": ["16\n16", "-6\n16", "-6\n-6", "16\n-6"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Which line sorts `names` and keeps the sorted list in `names`?",
+      "options": [
+        "names = sorted(names)",
+        "sorted(names)",
+        "sorted(names) = names",
+        "names = sorted()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "What does `round(7.89, 1)` give?",
+      "options": ["7.8", "8", "7.89", "7.9"],
+      "answer": 3
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "scores = [50, 60, 70]\nprint(all(s >= 50 for s in scores))\nprint(any(s == 100 for s in scores))",
+      "options": ["True\nTrue", "False\nFalse", "True\nFalse", "False\nTrue"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "bi-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\ntotal = sum({{v}})\nprint(f\"Total: {total}\")\nprint(f\"Average: {total / len({{v}})}\")",
+      "values": [
+        {
+          "v": "scores",
+          "nums": "88, 100, 47, 73"
+        },
+        {
+          "v": "prices",
+          "nums": "10, 20, 30"
+        },
+        {
+          "v": "points",
+          "nums": "12, 7, 5, 8"
+        },
+        {
+          "v": "fuel",
+          "nums": "15, 25, 40, 20"
+        }
+      ],
+      "mistakes": [
+        ["sum({{v}})", "max({{v}})"],
+        ["sum({{v}})", "len({{v}})"],
+        ["total / len", "total // len"],
+        ["print(f\"Total: {total}\")\n", ""]
+      ]
+    },
+    {
+      "id": "bi-sorted-copy",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\nordered = sorted({{v}})\nprint(ordered)\nprint({{v}})",
+      "values": [
+        {
+          "v": "numbers",
+          "nums": "5, 2, 8, 1"
+        },
+        {
+          "v": "ages",
+          "nums": "30, 12, 45, 7"
+        },
+        {
+          "v": "codes",
+          "nums": "9, 4, 6"
+        }
+      ],
+      "mistakes": [
+        ["sorted({{v}})", "sorted({{v}}, reverse=True)"],
+        ["print({{v}})", "print(ordered)"],
+        ["print(ordered)\nprint({{v}})", "print({{v}})\nprint(ordered)"],
+        ["print(ordered)\n", "print(ordered[0])\n"]
+      ]
+    },
+    {
+      "id": "bi-reverse",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nprint(sorted({{v}}, reverse=True))",
+      "values": [
+        {
+          "v": "scores",
+          "items": "88, 100, 47, 73"
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\", \"Phil\""
+        },
+        {
+          "v": "heights",
+          "items": "3, 9, 1, 6"
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\""
+        }
+      ],
+      "mistakes": [
+        [", reverse=True", ""],
+        ["sorted({{v}}, reverse=True)", "{{v}}"],
+        ["sorted({{v}}, reverse=True)", "sorted({{v}}, reverse=True)[0]"],
+        ["sorted({{v}}, reverse=True)", "max({{v}})"]
+      ]
+    },
+    {
+      "id": "bi-enum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{items}}]\nfor i, name in enumerate({{v}}):\n    print(f\"{i}: {name}\")",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\""
+        },
+        {
+          "v": "cars",
+          "items": "\"Cheetah\", \"Sabre\", \"Infernus\", \"Banshee\""
+        }
+      ],
+      "mistakes": [
+        ["for i, name in", "for name, i in"],
+        ["{i}: ", "{i + 1}: "],
+        ["print(f\"{i}: {name}\")", "print(name)"],
+        ["enumerate({{v}})", "zip({{v}}, {{v}})"]
+      ]
+    },
+    {
+      "id": "bi-zip",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "crew = [{{names}}]\nscores = [{{nums}}]\nfor name, score in zip(crew, scores):\n    print(f\"{name}: {score}\")",
+      "values": [
+        {
+          "names": "\"Tommy\", \"Boris\", \"Cara\"",
+          "nums": "88, 100, 47"
+        },
+        {
+          "names": "\"Lance\", \"Phil\"",
+          "nums": "95, 80, 70"
+        },
+        {
+          "names": "\"Ana\", \"Bo\", \"Kai\"",
+          "nums": "50, 49"
+        },
+        {
+          "names": "\"Dmitri\", \"Cortez\", \"Tommy\", \"Lance\"",
+          "nums": "73, 61, 90, 84"
+        }
+      ],
+      "mistakes": [
+        ["for name, score in", "for score, name in"],
+        ["{name}: {score}", "{name}: {scores}"],
+        ["print(f\"{name}: {score}\")", "print(name)"],
+        ["zip(crew, scores)", "zip(crew, crew)"]
+      ]
+    },
+    {
+      "id": "bi-anyall",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\nprint(any(s == 100 for s in {{v}}))\nprint(all(s >= 50 for s in {{v}}))",
+      "values": [
+        {
+          "v": "scores",
+          "nums": "88, 100, 47, 73"
+        },
+        {
+          "v": "results",
+          "nums": "60, 75, 90"
+        },
+        {
+          "v": "tests",
+          "nums": "100, 30, 55"
+        },
+        {
+          "v": "grades",
+          "nums": "51, 99, 64, 50"
+        }
+      ],
+      "mistakes": [
+        ["any(", "all("],
+        ["all(", "any("],
+        [
+          "print(any(s == 100 for s in {{v}}))\nprint(all(s >= 50 for s in {{v}}))",
+          "print(all(s >= 50 for s in {{v}}))\nprint(any(s == 100 for s in {{v}}))"
+        ],
+        ["s == 100", "s < 100"],
+        ["all(", "not all("]
+      ]
+    },
+    {
+      "id": "bi-abs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\nprint(sum({{v}}))\nprint(sum([abs(n) for n in {{v}}]))",
+      "values": [
+        {
+          "v": "changes",
+          "nums": "-3, 5, -8"
+        },
+        {
+          "v": "moves",
+          "nums": "4, -6, 2, -1"
+        },
+        {
+          "v": "temps",
+          "nums": "-10, 7, -2"
+        }
+      ],
+      "mistakes": [
+        ["abs(n)", "n"],
+        ["sum([abs(n) for n in {{v}}])", "abs(sum({{v}}))"],
+        ["print(sum({{v}}))\n", ""],
+        ["abs(n) for", "-n for"]
+      ]
+    },
+    {
+      "id": "bi-round",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nprint(round({{v}}))\nprint(round({{v}}, {{d}}))",
+      "values": [
+        {
+          "v": "pi",
+          "x": 3.14159,
+          "d": 2
+        },
+        {
+          "v": "ratio",
+          "x": 2.71828,
+          "d": 3
+        },
+        {
+          "v": "fuel",
+          "x": 9.876,
+          "d": 2
+        },
+        {
+          "v": "distance",
+          "x": 4.4444,
+          "d": 3
+        }
+      ],
+      "mistakes": [
+        ["round({{v}}, {{d}})", "round({{v}})"],
+        ["print(round({{v}}))", "print({{v}})"],
+        [", {{d}})", ", 1)"],
+        ["print(round({{v}}))", "print(int({{v}}))"]
+      ]
+    },
+    {
+      "id": "bi-mission",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "scores = [{{nums}}]\nprint(f\"Sorted: {sorted(scores, reverse=True)}\")\nprint(f\"Total: {sum(scores)}\")\nprint(f\"Average: {round(sum(scores) / len(scores), 1)}\")",
+      "values": [
+        {
+          "nums": "70, 85, 90"
+        },
+        {
+          "nums": "88, 100, 47, 73"
+        },
+        {
+          "nums": "55, 81, 64"
+        },
+        {
+          "nums": "90, 72, 85, 66, 79"
+        }
+      ],
+      "mistakes": [
+        [", reverse=True", ""],
+        ["{sum(scores)}", "{len(scores)}"],
+        [", 1)}", ")}"],
+        ["round(sum(scores) / len(scores), 1)", "sum(scores) / len(scores)"]
+      ]
+    },
+    {
+      "id": "bi-which-sorted",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{nums}}]\nprint(sorted({{v}}))\nprint({{v}})",
+      "values": [
+        {
+          "v": "numbers",
+          "nums": "4, 9, 1, 7"
+        },
+        {
+          "v": "scores",
+          "nums": "70, 95, 60"
+        },
+        {
+          "v": "levels",
+          "nums": "3, 1, 2"
+        }
+      ],
+      "mistakes": [
+        ["sorted({{v}}))\n", "sorted({{v}}, reverse=True))\n"],
+        ["print({{v}})", "print(sorted({{v}}))"],
+        ["print(sorted({{v}}))\n", "print(max({{v}}))\n"]
+      ]
+    },
+    {
+      "id": "bi-which-enum",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{items}}]\nfor i, name in enumerate({{v}}):\n    print(i, name)",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Phil\", \"Tommy\", \"Lance\""
+        },
+        {
+          "v": "songs",
+          "items": "\"Intro\", \"Wave\", \"Flash\""
+        },
+        {
+          "v": "stations",
+          "items": "\"Alpha\", \"Beta\", \"Gamma\""
+        }
+      ],
+      "mistakes": [
+        ["print(i, name)", "print(i + 1, name)"],
+        ["for i, name in", "for name, i in"],
+        ["print(i, name)", "print(name)"]
+      ]
+    },
+    {
+      "id": "bi-gap-total",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{nums}}]\n___\nprint(f\"Total: {total}\")",
+      "values": [
+        {
+          "v": "prices",
+          "nums": "10, 20, 30"
+        },
+        {
+          "v": "points",
+          "nums": "12, 7, 5, 8"
+        },
+        {
+          "v": "fuel",
+          "nums": "40, 25, 35"
+        }
+      ],
+      "answer": "total = sum({{v}})",
+      "wrong": [
+        "total = len({{v}})",
+        "total = max({{v}})",
+        "total = sorted({{v}})",
+        "total = {{v}}"
+      ]
+    },
+    {
+      "id": "bi-gap-zip",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "crew = [{{names}}]\nscores = [{{nums}}]\n___\n    print(f\"{name}: {score}\")",
+      "values": [
+        {
+          "names": "\"Tommy\", \"Boris\", \"Cara\"",
+          "nums": "88, 100, 47"
+        },
+        {
+          "names": "\"Lance\", \"Phil\"",
+          "nums": "95, 80"
+        },
+        {
+          "names": "\"Ana\", \"Bo\", \"Kai\", \"Dan\"",
+          "nums": "50, 49, 61, 77"
+        }
+      ],
+      "answer": "for name, score in zip(crew, scores):",
+      "wrong": [
+        "for name, score in enumerate(crew):",
+        "for name, score in zip(scores, crew):",
+        "for name, score in zip(crew):"
+      ]
+    },
+    {
+      "id": "bi-gap-sorted",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{nums}}]\n___\nprint(ranked)\nprint({{v}})",
+      "values": [
+        {
+          "v": "scores",
+          "nums": "70, 95, 60, 88"
+        },
+        {
+          "v": "times",
+          "nums": "12, 30, 25"
+        },
+        {
+          "v": "lives",
+          "nums": "2, 5, 3"
+        }
+      ],
+      "answer": "ranked = sorted({{v}}, reverse=True)",
+      "wrong": ["ranked = sorted({{v}})", "ranked = {{v}}", "ranked = max({{v}})"]
+    },
+    {
+      "id": "bi-val-func",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{nums}}]\nprint(___({{v}}))",
+      "values": [
+        {
+          "f": "sum",
+          "v": "scores",
+          "nums": "4, 9, 2"
+        },
+        {
+          "f": "sorted",
+          "v": "numbers",
+          "nums": "6, 3, 8"
+        },
+        {
+          "f": "max",
+          "v": "fuel",
+          "nums": "12, 40, 7, 25"
+        },
+        {
+          "f": "len",
+          "v": "lives",
+          "nums": "5, 5, 5, 5"
+        }
+      ],
+      "answer": "{{f}}",
+      "wrong": ["sum", "max", "min", "len", "sorted"]
+    },
+    {
+      "id": "bi-val-anyall",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{nums}}]\nresult = ___(s >= {{k}} for s in {{v}})\nprint(result)",
+      "values": [
+        {
+          "f": "any",
+          "k": 100,
+          "v": "scores",
+          "nums": "88, 100, 47, 73"
+        },
+        {
+          "f": "all",
+          "k": 50,
+          "v": "tests",
+          "nums": "60, 49, 75"
+        },
+        {
+          "f": "all",
+          "k": 18,
+          "v": "ages",
+          "nums": "21, 16, 30"
+        }
+      ],
+      "answer": "{{f}}",
+      "wrong": ["any", "all", "sum", "len"]
+    },
+    {
+      "id": "bi-val-round",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{x}}\nprint(round({{v}}, ___))",
+      "values": [
+        {
+          "d": 2,
+          "v": "pi",
+          "x": 3.14159
+        },
+        {
+          "d": 1,
+          "v": "speed",
+          "x": 7.86
+        },
+        {
+          "d": 3,
+          "v": "ratio",
+          "x": 2.71828
+        }
+      ],
+      "answer": "{{d}}",
+      "wrong": ["0", "1", "2", "3"]
+    },
+    {
+      "id": "bi-bad-reverse",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{nums}}]\nfor n in {{v}}:\n    print(n)\nprint(sorted({{v}}, reverse=True))",
+      "values": [
+        {
+          "v": "scores",
+          "nums": "70, 95, 60"
+        },
+        {
+          "v": "heights",
+          "nums": "3, 9, 1, 6"
+        },
+        {
+          "v": "fuel",
+          "nums": "40, 15, 25"
+        }
+      ],
+      "bug": ["sorted({{v}}, reverse=True)", "sorted({{v}})"]
+    },
+    {
+      "id": "bi-bad-zip",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = [{{names}}]\nscores = [{{nums}}]\nfor name, score in zip(crew, scores):\n    print(f\"{name}: {score}\")",
+      "values": [
+        {
+          "names": "\"Tommy\", \"Boris\", \"Cara\"",
+          "nums": "88, 100, 47"
+        },
+        {
+          "names": "\"Lance\", \"Phil\", \"Cortez\"",
+          "nums": "95, 80, 70"
+        },
+        {
+          "names": "\"Dmitri\", \"Ana\"",
+          "nums": "73, 61"
+        }
+      ],
+      "bug": ["zip(crew, scores)", "zip(crew, crew)"]
+    },
+    {
+      "id": "bi-bad-enum",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{items}}]\nfor i, name in enumerate({{v}}):\n    print(f\"{i}: {name}\")\nprint(f\"Count: {len({{v}})}\")",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\""
+        },
+        {
+          "v": "cars",
+          "items": "\"Cheetah\", \"Sabre\", \"Infernus\""
+        }
+      ],
+      "bug": ["enumerate({{v}})", "{{v}}"]
+    },
+    {
+      "id": "bi-bad-sum",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{nums}}]\nprint({{v}})\ntotal = sum({{v}})\nprint(f\"Total: {total}\")\nprint(f\"Average: {total / len({{v}})}\")",
+      "values": [
+        {
+          "v": "prices",
+          "nums": "10, 20, 30"
+        },
+        {
+          "v": "points",
+          "nums": "12, 7, 5, 8"
+        },
+        {
+          "v": "fuel",
+          "nums": "15, 25, 40, 20"
+        }
+      ],
+      "bug": ["total = sum({{v}})", "total = max({{v}})"]
+    }
+  ]
+}

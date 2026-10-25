@@ -1,0 +1,774 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce este descompunerea?",
+      "options": [
+        "Împărțirea unei probleme în pași mai mici, rezolvați pe rând",
+        "Scrierea întregului program dintr-o dată, apoi testarea lui",
+        "Ștergerea liniilor de care programul nu are nevoie",
+        "Grăbirea unui program cu funcții predefinite"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "În problema din lecție cu cel mai frecvent cuvânt, care e Pasul 1?",
+      "options": [
+        "Numeri cu un dicționar de câte ori apare fiecare cuvânt",
+        "Găsești cuvântul cu numărul cel mai mare",
+        "Obții cuvintele propoziției cu .split(\" \")",
+        "Afișezi cel mai frecvent cuvânt"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"pisica sta pe un pres mic\"\ncuvinte = propozitie.split(\" \")\nprint(len(cuvinte))",
+      "options": ["5", "6", "25", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"a b a\".split(\" \")\ncontor = {}\nfor cuvant in cuvinte:\n    if cuvant in contor:\n        contor[cuvant] = contor[cuvant] + 1\n    else:\n        contor[cuvant] = 1\nprint(contor)",
+      "options": ["{'a': 1, 'b': 1}", "['a', 'b', 'a']", "{'b': 1, 'a': 2}", "{'a': 2, 'b': 1}"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "În bucla de numărare de la Pasul 2, de ce există un `else` care pune `contor[cuvant] = 1`?",
+      "options": [
+        "Prima dată când apare un cuvânt, el nu e încă o cheie, așa că numărul lui pornește de la 1",
+        "Ca să readucă numărul fiecărui cuvânt la 1",
+        "Ca să sară peste cuvintele deja văzute de buclă",
+        "Pentru că `contor[cuvant] + 1` merge doar după un else"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "contor = {}\ncontor[\"pisica\"] = contor[\"pisica\"] + 1\nprint(contor)",
+      "options": [
+        "contor devine {'pisica': 1}",
+        "contor devine {'pisica': 0}",
+        "Se oprește cu un KeyError: \"pisica\" nu e încă o cheie",
+        "contor devine {'pisica': 2}"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "La Pasul 3, de ce pornește `cel_mai_bun_numar` de la 0?",
+      "options": [
+        "Ca bucla să ruleze de zero ori",
+        "Pentru că un număr de apariții poate fi negativ",
+        "Pentru că cel_mai_bun_cuvant pornește ca text gol",
+        "Orice cuvânt din contor apare cel puțin o dată, așa că primul trece de 0"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "contor = {\"ok\": 2, \"sos\": 2, \"pa\": 1}\ncel_mai_bun_cuvant = \"\"\ncel_mai_bun_numar = 0\nfor cuvant, numar in contor.items():\n    if numar > cel_mai_bun_numar:\n        cel_mai_bun_numar = numar\n        cel_mai_bun_cuvant = cuvant\nprint(f\"{cel_mai_bun_cuvant} ({cel_mai_bun_numar})\")",
+      "options": ["sos (2)", "ok (2)", "ok (2)\nsos (2)", "pa (1)"],
+      "answer": 1
+    },
+    {
+      "id": "q9",
+      "text": "La Pasul 3, două cuvinte apar fiecare de 3 ori. Care rămâne dacă verificarea e `numar >= cel_mai_bun_numar` în loc de `numar > cel_mai_bun_numar`?",
+      "options": [
+        "Ultimul dintre cele două la care ajunge bucla",
+        "Primul dintre cele două la care ajunge bucla",
+        "Amândouă",
+        "Niciunul: cel_mai_bun_cuvant rămâne gol"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Care sunt, în ordine, cei patru pași din lecție pentru a rezolva o problemă?",
+      "options": [
+        "O împarți în sub-probleme, rezolvi fiecare sub-problemă, o înțelegi, combini soluțiile",
+        "O rezolvi, combini soluțiile, o înțelegi, o împarți în sub-probleme",
+        "O înțelegi, o împarți în sub-probleme, rezolvi fiecare sub-problemă, combini soluțiile",
+        "O înțelegi, rezolvi fiecare sub-problemă, combini soluțiile, o împarți în sub-probleme"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 6, 4, 4, 5]\ntinta = 8\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == tinta:\n            print(f\"{numere[i]} + {numere[j]} = {tinta}\")",
+      "options": [
+        "2 + 6 = 8\n4 + 4 = 8\n6 + 2 = 8",
+        "2 + 6 = 8",
+        "2 + 6 = 8\n4 + 4 = 8\n4 + 4 = 8",
+        "2 + 6 = 8\n4 + 4 = 8"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "În problema perechilor, de ce folosește bucla interioară `range(i + 1, len(numere))`?",
+      "options": [
+        "Ca ultimul număr din listă să fie sărit",
+        "Ca un număr să nu fie pus în pereche cu el însuși și nicio pereche să nu fie găsită de două ori",
+        "Pentru că două bucle nu pot porni amândouă de la 0",
+        "Doar ca să fie mai rapid: range(len(numere)) găsește aceleași perechi"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 3, 5]\ntinta = 6\nfor i in range(len(numere)):\n    for j in range(len(numere)):\n        if numere[i] + numere[j] == tinta:\n            print(f\"{numere[i]} + {numere[j]} = {tinta}\")",
+      "options": [
+        "1 + 5 = 6\n3 + 3 = 6\n5 + 1 = 6",
+        "1 + 5 = 6",
+        "1 + 5 = 6\n5 + 1 = 6",
+        "1 + 5 = 6\n3 + 3 = 6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "O listă are 4 numere. Câte perechi verifică buclele din lecție `for i in range(len(numere))` și `for j in range(i + 1, len(numere))`?",
+      "options": ["16", "12", "6", "4"],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "În Analizatorul de Jurnal, ce returnează `desparte_coduri(\"alpha beta alpha\")`?",
+      "options": [
+        "{'alpha': 2, 'beta': 1}",
+        "['alpha', 'beta', 'alpha']",
+        "\"alpha beta alpha\"",
+        "['alpha', 'beta']"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "În Analizatorul de Jurnal, ce returnează `numara_coduri([\"sos\", \"ok\", \"sos\"])`?",
+      "options": ["{'sos': 1, 'ok': 1}", "['sos', 'ok']", "3", "{'sos': 2, 'ok': 1}"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "În Analizatorul de Jurnal, jurnalul e `\"sos sos ok ok ok bye\"`. Ce afișează programul după `Cel mai frecvent: `?",
+      "options": ["ok", "sos", "bye", "sos ok"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "În Analizatorul de Jurnal, jurnalul e `\"sos sos ok ok ok bye\"`. Ce afișează programul după `Coduri: `?",
+      "options": ["3", "4", "6", "2"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "De ce împarte Analizatorul de Jurnal munca în trei funcții?",
+      "options": [
+        "Python are nevoie de trei funcții ca să folosească un dicționar",
+        "Ca programul să nu mai aibă nevoie de bucle",
+        "Ca dicționarul să-și afișeze cheile în ordine",
+        "Fiecare face o treabă mică, care poate fi scrisă și testată singură"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "def desparte_coduri(jurnal):\n    return jurnal.split(\" \")\n\ndef numara_coduri(coduri):\n    contor = {}\n    for cod in coduri:\n        if cod in contor:\n            contor[cod] = contor[cod] + 1\n        else:\n            contor[cod] = 1\n    return contor\n\ncontor = numara_coduri(desparte_coduri(\"x y y z\"))\nprint(contor[\"y\"])",
+      "options": ["1", "2", "4", "{'y': 2}"],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "def desparte_coduri(jurnal):\n    jurnal.split(\" \")\n\ncoduri = desparte_coduri(\"a b c\")\nprint(coduri)",
+      "options": ["None", "['a', 'b', 'c']", "a b c", "['a b c']"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "print(\"ok  ok\".split(\" \"))",
+      "options": ["['ok', 'ok']", "['ok  ok']", "['ok', '', 'ok']", "['ok', ' ', 'ok']"],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "Pentru „găsește cel mai frecvent cuvânt dintr-o propoziție”, ce pas scrii și testezi primul?",
+      "options": [
+        "Afișarea răspunsului, ca să-l vezi devreme",
+        "Scoaterea cuvintelor din propoziție: ceilalți pași au nevoie de ele",
+        "Găsirea numărului celui mai mare, fiindcă e pasul cel mai greu",
+        "Toți trei odată, apoi îi testezi împreună"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "contor = {\"pisica\": 3, \"pres\": 2}\nfor cuvant, numar in contor.items():\n    print(f\"{cuvant}: {numar}\")",
+      "options": ["pisica\npres", "3\n2", "('pisica', 3)\n('pres', 2)", "pisica: 3\npres: 2"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Trebuie să afișezi lungimea medie a cuvintelor dintr-o propoziție. Ce împărțire în pași se potrivește?",
+      "options": [
+        "Împarți lungimea propoziției la 2",
+        "Numeri spațiile din propoziție, apoi afișezi acel număr",
+        "Desparți propoziția în cuvinte, aduni lungimile lor, împarți la câte cuvinte sunt",
+        "Găsești cel mai frecvent cuvânt, apoi îi afișezi lungimea"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"da da nu da\".split(\" \")\nnumar = 0\nfor c in cuvinte:\n    if c == \"da\":\n        numar = numar + 1\nprint(numar)",
+      "options": ["3", "4", "1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "În Analizatorul de Jurnal, `cel_mai_frecvent` pornește cu `cel_mai_bun = \"\"` și `cel_mai_mare = 0`. Ce returnează `cel_mai_frecvent({})`?",
+      "options": ["0", "None", "Nimic: se oprește cu un KeyError", "Un text gol \"\""],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 1, 3]\nnumar = 0\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        numar = numar + 1\nprint(numar)",
+      "options": ["9", "3", "6", "2"],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "Cum scriu programatorii profesioniști un program, după cum spune lecția?",
+      "options": [
+        "Dintr-o singură mișcare, apoi îl testează o dată la final",
+        "Învață întâi toată sintaxa Python, apoi îl scriu tot odată",
+        "Bucată cu bucată, testând fiecare bucată pe parcurs",
+        "Scriu întâi partea cea mai grea, iar restul doar dacă mai au timp"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "contor = {\"alpha\": 3, \"beta\": 2, \"gamma\": 1}\nprint(sum(contor.values()))",
+      "options": ["6", "3", "1", "[3, 2, 1]"],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "pd-split-len",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{s}}\"\ncuvinte = {{v}}.split(\" \")\nprint(len(cuvinte))\nprint(cuvinte[{{i}}])",
+      "values": [
+        {
+          "v": "propozitie",
+          "s": "pisica sta pe un pres mic",
+          "i": 2
+        },
+        {
+          "v": "jurnal",
+          "s": "boot sync boot dock",
+          "i": 3
+        },
+        {
+          "v": "mesaj",
+          "s": "andocare la poarta patru",
+          "i": 1
+        },
+        {
+          "v": "nume",
+          "s": "Tommy Lance Ken",
+          "i": 0
+        }
+      ],
+      "mistakes": [
+        ["len(cuvinte)", "len({{v}})"],
+        ["cuvinte[{{i}}]", "cuvinte[{{i}} + 1]"],
+        ["print(len(cuvinte))\n", ""],
+        ["print(cuvinte[{{i}}])", "print(cuvinte)"]
+      ]
+    },
+    {
+      "id": "pd-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "contor = {}\nfor cuvant in \"{{s}}\".split(\" \"):\n    if cuvant in contor:\n        contor[cuvant] = contor[cuvant] + 1\n    else:\n        contor[cuvant] = 1\nprint(contor)",
+      "values": [
+        {
+          "s": "ok sos ok"
+        },
+        {
+          "s": "rosu albastru rosu rosu"
+        },
+        {
+          "s": "mergi stai mergi asteapta"
+        },
+        {
+          "s": "sus jos sus sus jos"
+        }
+      ],
+      "mistakes": [
+        ["contor[cuvant] + 1", "1"],
+        ["contor[cuvant] = 1", "contor[cuvant] = 0"],
+        ["print(contor)", "print(len(contor))"],
+        ["\"{{s}}\".split(\" \")", "\"{{s}}\""]
+      ]
+    },
+    {
+      "id": "pd-best",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "contor = {{d}}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cod, numar in contor.items():\n    if numar > cel_mai_mare:\n        cel_mai_mare = numar\n        cel_mai_bun = cod\nprint(f\"Cel mai frecvent: {cel_mai_bun} ({cel_mai_mare})\")",
+      "values": [
+        {
+          "d": "{\"alpha\": 3, \"beta\": 5, \"gamma\": 1}"
+        },
+        {
+          "d": "{\"sos\": 2, \"ok\": 4, \"pa\": 1}"
+        },
+        {
+          "d": "{\"x\": 2, \"y\": 2, \"z\": 1}"
+        },
+        {
+          "d": "{\"dock\": 1, \"boot\": 4, \"sync\": 6}"
+        }
+      ],
+      "mistakes": [
+        ["numar > cel_mai_mare", "numar < cel_mai_mare"],
+        ["numar > cel_mai_mare", "numar >= cel_mai_mare"],
+        ["        cel_mai_bun = cod", "        cel_mai_bun = numar"],
+        ["        cel_mai_mare = numar\n", ""],
+        ["{cel_mai_bun} ({cel_mai_mare})", "{cel_mai_mare} ({cel_mai_bun})"]
+      ]
+    },
+    {
+      "id": "pd-pairs",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = {{n}}\ntinta = {{t}}\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == tinta:\n            print(f\"{numere[i]} + {numere[j]} = {tinta}\")",
+      "values": [
+        {
+          "n": "[2, 4, 6, 3]",
+          "t": 7
+        },
+        {
+          "n": "[5, 1, 4, 2]",
+          "t": 6
+        },
+        {
+          "n": "[3, 3, 4, 2]",
+          "t": 6
+        },
+        {
+          "n": "[1, 6, 3, 4, 5]",
+          "t": 9
+        }
+      ],
+      "mistakes": [
+        ["range(i + 1, len(numere))", "range(len(numere))"],
+        ["range(i + 1, len(numere))", "range(i, len(numere))"],
+        ["numere[i] + numere[j] == tinta", "numere[i] + numere[j] > tinta"],
+        ["print(f\"{numere[i]} + {numere[j]} = {tinta}\")", "print(numere[i], numere[j])"]
+      ]
+    },
+    {
+      "id": "pd-funcs",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def desparte_coduri(jurnal):\n    return jurnal.split(\" \")\n\ndef numara_coduri(coduri):\n    contor = {}\n    for cod in coduri:\n        if cod in contor:\n            contor[cod] = contor[cod] + 1\n        else:\n            contor[cod] = 1\n    return contor\n\ncoduri = desparte_coduri(\"{{log}}\")\ncontor = numara_coduri(coduri)\nprint(f\"Coduri: {len(coduri)}\")\nfor cod, numar in contor.items():\n    print(f\"{cod}: {numar}\")",
+      "values": [
+        {
+          "log": "sos sos ok ok ok pa"
+        },
+        {
+          "log": "x y y z"
+        },
+        {
+          "log": "dock dock undock dock"
+        },
+        {
+          "log": "boot sync boot"
+        }
+      ],
+      "mistakes": [
+        ["print(f\"Coduri: {len(coduri)}\")", "print(f\"Coduri: {len(contor)}\")"],
+        ["contor = numara_coduri(coduri)", "contor = numara_coduri(\"{{log}}\")"],
+        ["contor[cod] + 1", "1"],
+        ["print(f\"{cod}: {numar}\")", "print(f\"{numar}: {cod}\")"]
+      ]
+    },
+    {
+      "id": "pd-longest",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def ia_cuvinte(text):\n    return text.split(\" \")\n\ndef cel_mai_lung(cuvinte):\n    cel_mai_bun = \"\"\n    for w in cuvinte:\n        if len(w) > len(cel_mai_bun):\n            cel_mai_bun = w\n    return cel_mai_bun\n\nprint(cel_mai_lung(ia_cuvinte(\"{{s}}\")))",
+      "values": [
+        {
+          "s": "rosu verde alb negru"
+        },
+        {
+          "s": "soare luna stea cometa"
+        },
+        {
+          "s": "du stai asteapta sari"
+        },
+        {
+          "s": "alpha beta delta pi"
+        }
+      ],
+      "mistakes": [
+        ["len(w) > len(cel_mai_bun)", "w > cel_mai_bun"],
+        ["len(w) > len(cel_mai_bun)", "len(w) >= len(cel_mai_bun)"],
+        [
+          "print(cel_mai_lung(ia_cuvinte(\"{{s}}\")))",
+          "print(len(cel_mai_lung(ia_cuvinte(\"{{s}}\"))))"
+        ],
+        ["ia_cuvinte(\"{{s}}\")", "\"{{s}}\""]
+      ]
+    },
+    {
+      "id": "pd-count-pairs",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = {{n}}\nperechi = 0\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == {{t}}:\n            perechi = perechi + 1\nprint(f\"Perechi: {perechi}\")",
+      "values": [
+        {
+          "n": "[1, 2, 3, 4, 5]",
+          "t": 6
+        },
+        {
+          "n": "[4, 4, 4]",
+          "t": 8
+        },
+        {
+          "n": "[10, 5, 3, 7, 0]",
+          "t": 10
+        }
+      ],
+      "mistakes": [
+        ["range(i + 1, len(numere))", "range(len(numere))"],
+        ["range(i + 1, len(numere))", "range(i, len(numere))"],
+        ["perechi = perechi + 1", "perechi = 1"],
+        ["== {{t}}", "> {{t}}"]
+      ]
+    },
+    {
+      "id": "pd-avg",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"{{s}}\".split(\" \")\nlungimi = [len(w) for w in cuvinte]\nprint(lungimi)\nprint(round(sum(lungimi) / len(lungimi), 1))",
+      "values": [
+        {
+          "s": "pisica sta jos"
+        },
+        {
+          "s": "jurnal statie gata"
+        },
+        {
+          "s": "andocare si alimentare acum"
+        }
+      ],
+      "mistakes": [
+        ["sum(lungimi) / len(lungimi)", "sum(lungimi) / len(\"{{s}}\")"],
+        ["[len(w) for w in cuvinte]", "[len(cuvinte) for w in cuvinte]"],
+        ["round(sum(lungimi) / len(lungimi), 1)", "sum(lungimi)"],
+        ["\"{{s}}\".split(\" \")", "\"{{s}}\""]
+      ]
+    },
+    {
+      "id": "pd-which-count",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "contor = {}\nfor cod in \"{{s}}\".split(\" \"):\n    if cod in contor:\n        contor[cod] = contor[cod] + 1\n    else:\n        contor[cod] = 1\nfor cod, numar in contor.items():\n    print(f\"{cod}: {numar}\")",
+      "values": [
+        {
+          "s": "sos ok sos"
+        },
+        {
+          "s": "dock boot dock dock"
+        },
+        {
+          "s": "ping pong ping"
+        },
+        {
+          "s": "err warn err ok"
+        }
+      ],
+      "mistakes": [
+        ["contor[cod] = 1", "contor[cod] = 0"],
+        ["contor[cod] + 1", "contor[cod] + 2"],
+        ["\"{{s}}\".split(\" \")", "\"{{s}}\""],
+        ["print(f\"{cod}: {numar}\")", "print(cod)"]
+      ]
+    },
+    {
+      "id": "pd-which-pairs",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "numere = {{n}}\ntinta = {{t}}\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == tinta:\n            print(f\"{numere[i]} + {numere[j]} = {tinta}\")",
+      "values": [
+        {
+          "n": "[1, 3, 5, 7, 2]",
+          "t": 8
+        },
+        {
+          "n": "[6, 2, 4, 4]",
+          "t": 8
+        },
+        {
+          "n": "[9, 1, 5, 5]",
+          "t": 10
+        },
+        {
+          "n": "[2, 7, 3, 6]",
+          "t": 9
+        }
+      ],
+      "mistakes": [
+        ["range(i + 1, len(numere))", "range(len(numere))"],
+        ["range(i + 1, len(numere))", "range(i, len(numere))"],
+        ["== tinta", "> tinta"],
+        [
+          "print(f\"{numere[i]} + {numere[j]} = {tinta}\")",
+          "print(f\"{numere[j]} + {numere[i]} = {tinta}\")"
+        ]
+      ]
+    },
+    {
+      "id": "pd-gap-split",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def desparte_coduri(jurnal):\n    ___\n\ncoduri = desparte_coduri(\"{{log}}\")\nprint(coduri)\nprint(len(coduri))",
+      "values": [
+        {
+          "log": "alpha beta alpha"
+        },
+        {
+          "log": "sos ok"
+        },
+        {
+          "log": "dock boot sync dock"
+        },
+        {
+          "log": "ping pong"
+        }
+      ],
+      "answer": "return jurnal.split(\" \")",
+      "wrong": [
+        "print(jurnal.split(\" \"))",
+        "return jurnal",
+        "return [jurnal]",
+        "return jurnal.split(\"a\")"
+      ]
+    },
+    {
+      "id": "pd-gap-else",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "contor = {}\nfor cuvant in \"{{s}}\".split(\" \"):\n    if cuvant in contor:\n        contor[cuvant] = contor[cuvant] + 1\n    else:\n        ___\nprint(contor)",
+      "values": [
+        {
+          "s": "ok sos ok"
+        },
+        {
+          "s": "a b b c b"
+        },
+        {
+          "s": "da da nu"
+        },
+        {
+          "s": "x y x y x"
+        }
+      ],
+      "answer": "contor[cuvant] = 1",
+      "wrong": [
+        "contor[cuvant] = 0",
+        "contor[cuvant] = contor[cuvant] + 1",
+        "contor = {}",
+        "contor[cuvant] = 2"
+      ]
+    },
+    {
+      "id": "pd-gap-best",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "contor = {{d}}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cod, numar in contor.items():\n    if numar > cel_mai_mare:\n        cel_mai_mare = numar\n        ___\nprint(f\"Cel mai frecvent: {cel_mai_bun}\")",
+      "values": [
+        {
+          "d": "{\"sos\": 2, \"ok\": 4, \"pa\": 1}"
+        },
+        {
+          "d": "{\"dock\": 1, \"boot\": 4, \"sync\": 6}"
+        },
+        {
+          "d": "{\"rosu\": 7, \"albastru\": 2}"
+        },
+        {
+          "d": "{\"ping\": 3, \"pong\": 5, \"err\": 4}"
+        }
+      ],
+      "answer": "cel_mai_bun = cod",
+      "wrong": [
+        "cel_mai_bun = numar",
+        "cel_mai_bun = cel_mai_mare",
+        "cod = cel_mai_bun",
+        "cel_mai_mare = cod"
+      ]
+    },
+    {
+      "id": "pd-val-start",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = {{n}}\nfor i in range(len(numere)):\n    for j in range(___, len(numere)):\n        if numere[i] + numere[j] == {{t}}:\n            print(numere[i], numere[j])",
+      "values": [
+        {
+          "n": "[1, 3, 5, 7, 2]",
+          "t": 8
+        },
+        {
+          "n": "[3, 3, 4, 2]",
+          "t": 6
+        },
+        {
+          "n": "[5, 5, 1, 9]",
+          "t": 10
+        },
+        {
+          "n": "[2, 6, 4, 4]",
+          "t": 8
+        }
+      ],
+      "answer": "i + 1",
+      "wrong": ["i", "0", "1", "len(numere)"]
+    },
+    {
+      "id": "pd-val-target",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = {{n}}\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == ___:\n            print(numere[i], numere[j])",
+      "values": [
+        {
+          "n": "[1, 3, 5, 7, 2]",
+          "t": 8,
+          "w1": 6,
+          "w2": 9,
+          "w3": 10
+        },
+        {
+          "n": "[4, 1, 6, 3]",
+          "t": 7,
+          "w1": 5,
+          "w2": 10,
+          "w3": 9
+        },
+        {
+          "n": "[2, 5, 8, 3]",
+          "t": 10,
+          "w1": 8,
+          "w2": 11,
+          "w3": 13
+        },
+        {
+          "n": "[6, 4, 2, 9]",
+          "t": 11,
+          "w1": 10,
+          "w2": 8,
+          "w3": 13
+        }
+      ],
+      "answer": "{{t}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "pd-bad-split",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def desparte_coduri(jurnal):\n    return jurnal.split(\" \")\n\ncoduri = desparte_coduri(\"{{log}}\")\nprint(f\"Coduri: {len(coduri)}\")\nprint(coduri[0])",
+      "values": [
+        {
+          "log": "alpha beta alpha"
+        },
+        {
+          "log": "sos ok sos"
+        },
+        {
+          "log": "dock boot sync"
+        }
+      ],
+      "bug": ["return jurnal.split(\" \")", "return jurnal"]
+    },
+    {
+      "id": "pd-bad-else",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "contor = {}\nfor cuvant in \"{{s}}\".split(\" \"):\n    if cuvant in contor:\n        contor[cuvant] = contor[cuvant] + 1\n    else:\n        contor[cuvant] = 1\nprint(contor)",
+      "values": [
+        {
+          "s": "ok sos ok"
+        },
+        {
+          "s": "rosu albastru rosu"
+        },
+        {
+          "s": "mergi stai mergi mergi"
+        }
+      ],
+      "bug": ["contor[cuvant] = 1", "contor[cuvant] = 0"]
+    },
+    {
+      "id": "pd-bad-range",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = {{n}}\ntinta = {{t}}\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == tinta:\n            print(f\"{numere[i]} + {numere[j]} = {tinta}\")",
+      "values": [
+        {
+          "n": "[1, 3, 5, 7, 2]",
+          "t": 8
+        },
+        {
+          "n": "[5, 1, 4, 2]",
+          "t": 6
+        },
+        {
+          "n": "[2, 7, 3, 6]",
+          "t": 9
+        }
+      ],
+      "bug": ["range(i + 1, len(numere))", "range(len(numere))"]
+    },
+    {
+      "id": "pd-bad-best",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "contor = {{d}}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cod, numar in contor.items():\n    if numar > cel_mai_mare:\n        cel_mai_mare = numar\n        cel_mai_bun = cod\nprint(f\"Cel mai frecvent: {cel_mai_bun} ({cel_mai_mare})\")",
+      "values": [
+        {
+          "d": "{\"alpha\": 3, \"beta\": 5, \"gamma\": 1}"
+        },
+        {
+          "d": "{\"sos\": 4, \"ok\": 2, \"pa\": 1}"
+        },
+        {
+          "d": "{\"dock\": 6, \"boot\": 4}"
+        }
+      ],
+      "bug": ["cel_mai_mare = numar", "numar = cel_mai_mare"]
+    }
+  ]
+}

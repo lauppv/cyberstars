@@ -1,0 +1,672 @@
+{
+  "note": "Made by npm run make:quiz from the templates in tuples-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "tp-index-8a826d",
+      "text": "What does this print?",
+      "code": "player = (\"Tommy\", 100, \"Vice City\")\nprint(player[2])",
+      "options": ["Vice City", "('Tommy', 100, 'Vice City')", "3", "Tommy"],
+      "answer": 0
+    },
+    {
+      "id": "tp-index-87f73b",
+      "text": "What does this print?",
+      "code": "date = (1986, 5, 30)\nprint(date[1])",
+      "options": ["5", "(1986, 5, 30)", "30", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-index-b8d6e3",
+      "text": "What does this print?",
+      "code": "ship = (\"Nova\", \"red\", 4, 90)\nprint(ship[0])",
+      "options": ["Nova", "('Nova', 'red', 4, 90)", "red", "4"],
+      "answer": 0
+    },
+    {
+      "id": "tp-index-0c67b2",
+      "text": "What does this print?",
+      "code": "colors = (\"pink\", \"teal\", \"gold\")\nprint(colors[1])",
+      "options": ["teal", "('pink', 'teal', 'gold')", "gold", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-unpack-4ffdb8",
+      "text": "What does this print?",
+      "code": "player = (\"Tommy\", 100, \"Vice City\")\nname, health, city = player\nprint(health)",
+      "options": ["100", "Tommy", "('Tommy', 100, 'Vice City')", "Vice City"],
+      "answer": 0
+    },
+    {
+      "id": "tp-unpack-f7a09b",
+      "text": "What does this print?",
+      "code": "release = (2002, 10, 29)\nyear, month, day = release\nprint(month)",
+      "options": ["10", "2002", "(2002, 10, 29)", "29"],
+      "answer": 0
+    },
+    {
+      "id": "tp-unpack-42924b",
+      "text": "What does this print?",
+      "code": "car = (\"Infernus\", \"white\", 240)\nmodel, color, speed = car\nprint(color)",
+      "options": ["white", "Infernus", "('Infernus', 'white', 240)", "240"],
+      "answer": 0
+    },
+    {
+      "id": "tp-unpack-16711a",
+      "text": "What does this print?",
+      "code": "star = (\"Vega\", 25, 5)\nname, distance, planets = star\nprint(distance)",
+      "options": ["25", "Vega", "('Vega', 25, 5)", "5"],
+      "answer": 0
+    },
+    {
+      "id": "tp-unpack-cf7ecc",
+      "text": "What does this print?",
+      "code": "point = (3, 8, 1)\nx, y, z = point\nprint(y)",
+      "options": ["8", "3", "(3, 8, 1)", "1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-loop-9cf816",
+      "text": "What does this print?",
+      "code": "heroes = (\"Shrek\", \"Fiona\", \"Donkey\")\nfor hero in heroes:\n    print(hero)",
+      "options": [
+        "Shrek\nFiona\nDonkey",
+        "('Shrek', 'Fiona', 'Donkey')\n('Shrek', 'Fiona', 'Donkey')\n('Shrek', 'Fiona', 'Donkey')",
+        "3\n3\n3",
+        "Shrek\nShrek\nShrek"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-loop-47077f",
+      "text": "What does this print?",
+      "code": "days = (\"Mon\", \"Tue\", \"Wed\", \"Thu\")\nfor day in days:\n    print(day)",
+      "options": [
+        "Mon\nTue\nWed\nThu",
+        "('Mon', 'Tue', 'Wed', 'Thu')\n('Mon', 'Tue', 'Wed', 'Thu')\n('Mon', 'Tue', 'Wed', 'Thu')\n('Mon', 'Tue', 'Wed', 'Thu')",
+        "4\n4\n4\n4",
+        "Mon\nMon\nMon\nMon"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-loop-c459a9",
+      "text": "What does this print?",
+      "code": "levels = (5, 10, 15)\nfor level in levels:\n    print(level)",
+      "options": ["5\n10\n15", "(5, 10, 15)\n(5, 10, 15)\n(5, 10, 15)", "3\n3\n3", "5\n5\n5"],
+      "answer": 0
+    },
+    {
+      "id": "tp-loop-c4c876",
+      "text": "What does this print?",
+      "code": "crew = (\"Tommy\", \"Lance\")\nfor name in crew:\n    print(name)",
+      "options": ["Tommy\nLance", "('Tommy', 'Lance')\n('Tommy', 'Lance')", "2\n2", "Tommy\nTommy"],
+      "answer": 0
+    },
+    {
+      "id": "tp-sum-565c0e",
+      "text": "What does this print?",
+      "code": "prices = (4, 6, 5)\nbill = 0\nfor p in prices:\n    bill = bill + p\nprint(bill)",
+      "options": ["15", "5", "3", "4\n10\n15"],
+      "answer": 0
+    },
+    {
+      "id": "tp-sum-73a5d7",
+      "text": "What does this print?",
+      "code": "scores = (7, 3, 9, 1)\ntotal = 0\nfor s in scores:\n    total = total + s\nprint(total)",
+      "options": ["20", "1", "4", "7\n10\n19\n20"],
+      "answer": 0
+    },
+    {
+      "id": "tp-sum-a9c32e",
+      "text": "What does this print?",
+      "code": "steps = (1200, 800)\nwalked = 0\nfor s in steps:\n    walked = walked + s\nprint(walked)",
+      "options": ["2000", "800", "2", "1200\n2000"],
+      "answer": 0
+    },
+    {
+      "id": "tp-sum-e53784",
+      "text": "What does this print?",
+      "code": "lives = (3, 3, 2)\ntotal = 0\nfor n in lives:\n    total = total + n\nprint(total)",
+      "options": ["8", "2", "3", "3\n6\n8"],
+      "answer": 0
+    },
+    {
+      "id": "tp-chart-77caff",
+      "text": "What does this print?",
+      "code": "systems = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor system in systems:\n    name, planets = system\n    print(f\"{name}: {planets} planets\")",
+      "options": [
+        "Sol: 8 planets\nAlpha: 3 planets\nVega: 5 planets",
+        "8: Sol planets\n3: Alpha planets\n5: Vega planets",
+        "{name}: {planets} planets\n{name}: {planets} planets\n{name}: {planets} planets",
+        "Vega: 5 planets"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-chart-2e26d1",
+      "text": "What does this print?",
+      "code": "crew = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor member in crew:\n    name, age = member\n    print(f\"{name} is {age}\")",
+      "options": [
+        "Tommy is 35\nLance is 30",
+        "35 is Tommy\n30 is Lance",
+        "{name} is {age}\n{name} is {age}",
+        "Lance is 30"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-chart-6d30e2",
+      "text": "What does this print?",
+      "code": "cars = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor car in cars:\n    model, speed = car\n    print(f\"{model} - {speed} km/h\")",
+      "options": [
+        "Cheetah - 230 km/h\nSabre - 180 km/h\nStinger - 210 km/h",
+        "230 - Cheetah km/h\n180 - Sabre km/h\n210 - Stinger km/h",
+        "{model} - {speed} km/h\n{model} - {speed} km/h\n{model} - {speed} km/h",
+        "Stinger - 210 km/h"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-chart-6f5f6c",
+      "text": "What does this print?",
+      "code": "pets = [(\"Rex\", 4), (\"Polly\", 2)]\nfor pet in pets:\n    name, legs = pet\n    print(f\"{name} has {legs} legs\")",
+      "options": [
+        "Rex has 4 legs\nPolly has 2 legs",
+        "4 has Rex legs\n2 has Polly legs",
+        "{name} has {legs} legs\n{name} has {legs} legs",
+        "Polly has 2 legs"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-total-871538",
+      "text": "What does this print?",
+      "code": "systems = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\ntotal = 0\nfor system in systems:\n    name, planets = system\n    total = total + planets\nprint(f\"Total planets: {total}\")",
+      "options": [
+        "Total planets: 16",
+        "Total planets: 5",
+        "Total planets: 3",
+        "Total planets: 8\nTotal planets: 11\nTotal planets: 16"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-total-f1b987",
+      "text": "What does this print?",
+      "code": "cart = [(\"bread\", 3), (\"milk\", 2), (\"cheese\", 10)]\nbill = 0\nfor item in cart:\n    name, price = item\n    bill = bill + price\nprint(f\"Bill: {bill}\")",
+      "options": ["Bill: 15", "Bill: 10", "Bill: 3", "Bill: 3\nBill: 5\nBill: 15"],
+      "answer": 0
+    },
+    {
+      "id": "tp-total-6f434b",
+      "text": "What does this print?",
+      "code": "runs = [(\"Mon\", 5), (\"Wed\", 7)]\ndistance = 0\nfor run in runs:\n    day, km = run\n    distance = distance + km\nprint(f\"Km: {distance}\")",
+      "options": ["Km: 12", "Km: 7", "Km: 2", "Km: 5\nKm: 12"],
+      "answer": 0
+    },
+    {
+      "id": "tp-total-7c4e71",
+      "text": "What does this print?",
+      "code": "crew = [(\"Tommy\", 40), (\"Lance\", 25), (\"Mia\", 30), (\"Ken\", 5)]\npoints = 0\nfor member in crew:\n    name, score = member\n    points = points + score\nprint(f\"Points: {points}\")",
+      "options": [
+        "Points: 100",
+        "Points: 5",
+        "Points: 4",
+        "Points: 40\nPoints: 65\nPoints: 95\nPoints: 100"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-nested-0e3adb",
+      "text": "What does this print?",
+      "code": "systems = [(\"Sol\", 0, 8), (\"Alpha\", 4, 3), (\"Vega\", 25, 5)]\nprint(systems[1][2])",
+      "options": ["3", "('Alpha', 4, 3)", "25", "Alpha"],
+      "answer": 0
+    },
+    {
+      "id": "tp-nested-320eb7",
+      "text": "What does this print?",
+      "code": "crew = [(\"Tommy\", 35), (\"Lance\", 30), (\"Mia\", 22)]\nprint(crew[2][0])",
+      "options": ["Mia", "('Mia', 22)", "Tommy", "22"],
+      "answer": 0
+    },
+    {
+      "id": "tp-nested-ac6865",
+      "text": "What does this print?",
+      "code": "cars = [(\"Cheetah\", 230), (\"Sabre\", 180)]\nprint(cars[0][1])",
+      "options": ["230", "('Cheetah', 230)", "Sabre", "Cheetah"],
+      "answer": 0
+    },
+    {
+      "id": "tp-nested-cd44bb",
+      "text": "What does this print?",
+      "code": "points = [(3, 8), (6, 1), (9, 4)]\nprint(points[2][1])",
+      "options": ["4", "(9, 4)", "9", "8"],
+      "answer": 0
+    },
+    {
+      "id": "tp-nested-d92b53",
+      "text": "What does this print?",
+      "code": "flights = [(\"Rome\", \"Oslo\", 3), (\"Paris\", \"Riga\", 4)]\nprint(flights[1][1])",
+      "options": ["Riga", "('Paris', 'Riga', 4)", "Paris", "Oslo"],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-unpack-62c160",
+      "text": "Which program shows this?",
+      "output": "Tommy\n100",
+      "options": [
+        "player = (\"Tommy\", 100, \"Vice City\")\nname, health, city = player\nprint(name)\nprint(health)",
+        "player = (\"Tommy\", 100, \"Vice City\")\nhealth, name, city = player\nprint(name)\nprint(health)",
+        "player = (\"Tommy\", 100, \"Vice City\")\nname, health, city = player\nprint(name)\nprint(city)",
+        "player = (\"Tommy\", 100, \"Vice City\")\nname, health, city = player\nprint(player)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-unpack-662765",
+      "text": "Which program shows this?",
+      "output": "1951\n7",
+      "options": [
+        "birthday = (1951, 7, 15)\nyear, month, day = birthday\nprint(year)\nprint(month)",
+        "birthday = (1951, 7, 15)\nmonth, year, day = birthday\nprint(year)\nprint(month)",
+        "birthday = (1951, 7, 15)\nyear, month, day = birthday\nprint(year)\nprint(day)",
+        "birthday = (1951, 7, 15)\nyear, month, day = birthday\nprint(birthday)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-unpack-7c6a4c",
+      "text": "Which program shows this?",
+      "output": "Vega\n25",
+      "options": [
+        "star = (\"Vega\", 25, 5)\nname, distance, planets = star\nprint(name)\nprint(distance)",
+        "star = (\"Vega\", 25, 5)\ndistance, name, planets = star\nprint(name)\nprint(distance)",
+        "star = (\"Vega\", 25, 5)\nname, distance, planets = star\nprint(name)\nprint(planets)",
+        "star = (\"Vega\", 25, 5)\nname, distance, planets = star\nprint(star)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-unpack-246851",
+      "text": "Which program shows this?",
+      "output": "Infernus\nwhite",
+      "options": [
+        "car = (\"Infernus\", \"white\", 240)\nmodel, color, speed = car\nprint(model)\nprint(color)",
+        "car = (\"Infernus\", \"white\", 240)\ncolor, model, speed = car\nprint(model)\nprint(color)",
+        "car = (\"Infernus\", \"white\", 240)\nmodel, color, speed = car\nprint(model)\nprint(speed)",
+        "car = (\"Infernus\", \"white\", 240)\nmodel, color, speed = car\nprint(car)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-loop-c1dc0f",
+      "text": "Which program shows this?",
+      "output": "Sol\nAlpha\nVega",
+      "options": [
+        "systems = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor system in systems:\n    name, planets = system\n    print(name)",
+        "systems = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor system in systems:\n    name, planets = system\n    print(planets)",
+        "systems = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor system in systems:\n    name, planets = system\n    print(system)",
+        "systems = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor system in systems:\n    name, planets = system\nprint(name)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-loop-1fc428",
+      "text": "Which program shows this?",
+      "output": "Tommy\nLance",
+      "options": [
+        "crew = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor member in crew:\n    name, age = member\n    print(name)",
+        "crew = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor member in crew:\n    name, age = member\n    print(age)",
+        "crew = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor member in crew:\n    name, age = member\n    print(member)",
+        "crew = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor member in crew:\n    name, age = member\nprint(name)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-loop-bde51b",
+      "text": "Which program shows this?",
+      "output": "Cheetah\nSabre\nStinger",
+      "options": [
+        "cars = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor car in cars:\n    model, speed = car\n    print(model)",
+        "cars = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor car in cars:\n    model, speed = car\n    print(speed)",
+        "cars = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor car in cars:\n    model, speed = car\n    print(car)",
+        "cars = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor car in cars:\n    model, speed = car\nprint(model)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-loop-d9d103",
+      "text": "Which program shows this?",
+      "output": "Rex\nPolly",
+      "options": [
+        "pets = [(\"Rex\", 4), (\"Polly\", 2)]\nfor pet in pets:\n    name, legs = pet\n    print(name)",
+        "pets = [(\"Rex\", 4), (\"Polly\", 2)]\nfor pet in pets:\n    name, legs = pet\n    print(legs)",
+        "pets = [(\"Rex\", 4), (\"Polly\", 2)]\nfor pet in pets:\n    name, legs = pet\n    print(pet)",
+        "pets = [(\"Rex\", 4), (\"Polly\", 2)]\nfor pet in pets:\n    name, legs = pet\nprint(name)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-unpack-12db72",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "point = (3, 8)\n___\nprint(x)\nprint(y)",
+      "output": "3\n8",
+      "options": ["x, y = point", "y, x = point", "x = point", "point = x, y"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-unpack-92a3fb",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "player = (\"Tommy\", 100)\n___\nprint(name)\nprint(health)",
+      "output": "Tommy\n100",
+      "options": [
+        "name, health = player",
+        "health, name = player",
+        "name = player",
+        "player = name, health"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-unpack-dcecf5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "trip = (\"Rome\", \"Oslo\")\n___\nprint(start)\nprint(end)",
+      "output": "Rome\nOslo",
+      "options": ["start, end = trip", "end, start = trip", "start = trip", "trip = start, end"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-unpack-1eee62",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "score = (\"Lance\", 95)\n___\nprint(name)\nprint(points)",
+      "output": "Lance\n95",
+      "options": [
+        "name, points = score",
+        "points, name = score",
+        "name = score",
+        "score = name, points"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-add-5cf08e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "prices = (4, 6, 5)\nbill = 0\nfor p in prices:\n    ___\nprint(bill)",
+      "output": "15",
+      "options": ["bill = bill + p", "bill = p", "bill = bill + 1", "p = bill + p"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-add-e29ecc",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "scores = (7, 3, 9, 1)\ntotal = 0\nfor s in scores:\n    ___\nprint(total)",
+      "output": "20",
+      "options": ["total = total + s", "total = s", "total = total + 1", "s = total + s"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-add-0865d4",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "laps = (12, 15)\ntime = 0\nfor lap in laps:\n    ___\nprint(time)",
+      "output": "27",
+      "options": ["time = time + lap", "time = lap", "time = time + 1", "lap = time + lap"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-add-36aa49",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "crates = (2, 5, 8)\nweight = 0\nfor c in crates:\n    ___\nprint(weight)",
+      "output": "15",
+      "options": ["weight = weight + c", "weight = c", "weight = weight + 1", "c = weight + c"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-loop-24ebd6",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "systems = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor system in systems:\n    ___\n    print(f\"{name}: {planets} planets\")",
+      "output": "Sol: 8 planets\nAlpha: 3 planets\nVega: 5 planets",
+      "options": [
+        "name, planets = system",
+        "planets, name = system",
+        "name = system",
+        "system = name, planets"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-loop-ce5ddf",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "crew = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor member in crew:\n    ___\n    print(f\"{name} is {age}\")",
+      "output": "Tommy is 35\nLance is 30",
+      "options": [
+        "name, age = member",
+        "age, name = member",
+        "name = member",
+        "member = name, age"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-loop-dbf9a2",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "cars = [(\"Cheetah\", 230), (\"Sabre\", 180)]\nfor car in cars:\n    ___\n    print(f\"{model} - {speed} km/h\")",
+      "output": "Cheetah - 230 km/h\nSabre - 180 km/h",
+      "options": ["model, speed = car", "speed, model = car", "model = car", "car = model, speed"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-loop-e6255c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "pets = [(\"Rex\", 4), (\"Polly\", 2), (\"Nemo\", 0)]\nfor pet in pets:\n    ___\n    print(f\"{name} has {legs} legs\")",
+      "output": "Rex has 4 legs\nPolly has 2 legs\nNemo has 0 legs",
+      "options": ["name, legs = pet", "legs, name = pet", "name = pet", "pet = name, legs"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-index-60d916",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "player = (\"Tommy\", 100, \"Vice City\")\nprint(player[___])",
+      "output": "Vice City",
+      "options": ["2", "0", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-index-0e92a4",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "birthday = (1951, 7, 15)\nprint(birthday[___])",
+      "output": "7",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-index-5d0aa9",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "colors = (\"pink\", \"teal\", \"gold\", \"navy\")\nprint(colors[___])",
+      "output": "navy",
+      "options": ["3", "0", "1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-index-7a6641",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "heroes = (\"Shrek\", \"Fiona\", \"Donkey\")\nprint(heroes[___])",
+      "output": "Shrek",
+      "options": ["0", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-range-e29ed4",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "heroes = (\"Shrek\", \"Fiona\", \"Donkey\")\nfor i in range(___):\n    print(heroes[i])",
+      "output": "Shrek\nFiona\nDonkey",
+      "options": ["len(heroes)", "len(heroes) - 1", "len(heroes) + 1", "heroes"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-range-8ec0cc",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "levels = (5, 10, 15, 20)\nfor i in range(___):\n    print(levels[i])",
+      "output": "5\n10\n15\n20",
+      "options": ["len(levels)", "len(levels) - 1", "len(levels) + 1", "levels"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-range-3bfeb5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "crew = (\"Tommy\", \"Lance\")\nfor i in range(___):\n    print(crew[i])",
+      "output": "Tommy\nLance",
+      "options": ["len(crew)", "len(crew) - 1", "len(crew) + 1", "crew"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-range-b7fa6c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "days = (\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\")\nfor i in range(___):\n    print(days[i])",
+      "output": "Mon\nTue\nWed\nThu\nFri",
+      "options": ["len(days)", "len(days) - 1", "len(days) + 1", "days"],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-unpack-700dc0",
+      "text": "Which line stops this program from printing this?",
+      "code": "player = (\"Tommy\", 100, \"Vice City\")\nname, health = player\nprint(name)\nprint(health)\nprint(city)",
+      "output": "Tommy\n100\nVice City",
+      "options": [
+        "name, health = player",
+        "player = (\"Tommy\", 100, \"Vice City\")",
+        "print(name)",
+        "print(health)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-unpack-80f9b4",
+      "text": "Which line stops this program from printing this?",
+      "code": "birthday = (1951, 7, 15)\nyear, month = birthday\nprint(year)\nprint(month)\nprint(day)",
+      "output": "1951\n7\n15",
+      "options": [
+        "year, month = birthday",
+        "birthday = (1951, 7, 15)",
+        "print(year)",
+        "print(month)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-unpack-353a3d",
+      "text": "Which line stops this program from printing this?",
+      "code": "star = (\"Vega\", 25, 5)\nname, distance = star\nprint(name)\nprint(distance)\nprint(planets)",
+      "output": "Vega\n25\n5",
+      "options": [
+        "name, distance = star",
+        "star = (\"Vega\", 25, 5)",
+        "print(name)",
+        "print(distance)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-indent-b457e3",
+      "text": "Which line stops this program from printing this?",
+      "code": "systems = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\nfor system in systems:\n    name, planets = system\nprint(f\"{name}: {planets} planets\")",
+      "output": "Sol: 8 planets\nAlpha: 3 planets\nVega: 5 planets",
+      "options": [
+        "print(f\"{name}: {planets} planets\")",
+        "name, planets = system",
+        "systems = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]",
+        "for system in systems:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-indent-cd56a9",
+      "text": "Which line stops this program from printing this?",
+      "code": "crew = [(\"Tommy\", 35), (\"Lance\", 30)]\nfor member in crew:\n    name, age = member\nprint(f\"{name} is {age}\")",
+      "output": "Tommy is 35\nLance is 30",
+      "options": [
+        "print(f\"{name} is {age}\")",
+        "name, age = member",
+        "crew = [(\"Tommy\", 35), (\"Lance\", 30)]",
+        "for member in crew:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-indent-c7be8a",
+      "text": "Which line stops this program from printing this?",
+      "code": "cars = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]\nfor car in cars:\n    model, speed = car\nprint(f\"{model} - {speed} km/h\")",
+      "output": "Cheetah - 230 km/h\nSabre - 180 km/h\nStinger - 210 km/h",
+      "options": [
+        "print(f\"{model} - {speed} km/h\")",
+        "model, speed = car",
+        "cars = [(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]",
+        "for car in cars:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-start-5e23a5",
+      "text": "Which line stops this program from printing this?",
+      "code": "bill = 1\nprices = (4, 6, 5)\nfor p in prices:\n    print(p)\n    bill = bill + p\nprint(f\"Bill: {bill}\")",
+      "output": "4\n6\n5\nBill: 15",
+      "options": ["bill = 1", "prices = (4, 6, 5)", "print(p)", "bill = bill + p"],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-start-7fc48f",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 1\nscores = (7, 3, 9)\nfor s in scores:\n    print(s)\n    total = total + s\nprint(f\"Total: {total}\")",
+      "output": "7\n3\n9\nTotal: 19",
+      "options": ["total = 1", "scores = (7, 3, 9)", "print(s)", "total = total + s"],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-start-186096",
+      "text": "Which line stops this program from printing this?",
+      "code": "time = 1\nlaps = (12, 15)\nfor lap in laps:\n    print(lap)\n    time = time + lap\nprint(f\"Time: {time}\")",
+      "output": "12\n15\nTime: 27",
+      "options": ["time = 1", "laps = (12, 15)", "print(lap)", "time = time + lap"],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-index-374aea",
+      "text": "Which line stops this program from printing this?",
+      "code": "player = (\"Tommy\", 100, \"Vice City\")\nprint(player)\nprint(player[2])\nprint(len(player))",
+      "output": "('Tommy', 100, 'Vice City')\n100\n3",
+      "options": [
+        "print(player[2])",
+        "print(player)",
+        "player = (\"Tommy\", 100, \"Vice City\")",
+        "print(len(player))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-index-e72641",
+      "text": "Which line stops this program from printing this?",
+      "code": "birthday = (1951, 7, 15)\nprint(birthday)\nprint(birthday[1])\nprint(len(birthday))",
+      "output": "(1951, 7, 15)\n1951\n3",
+      "options": [
+        "print(birthday[1])",
+        "print(birthday)",
+        "birthday = (1951, 7, 15)",
+        "print(len(birthday))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-index-54345a",
+      "text": "Which line stops this program from printing this?",
+      "code": "heroes = (\"Shrek\", \"Fiona\", \"Donkey\")\nprint(heroes)\nprint(heroes[3])\nprint(len(heroes))",
+      "output": "('Shrek', 'Fiona', 'Donkey')\nDonkey\n3",
+      "options": [
+        "print(heroes[3])",
+        "print(heroes)",
+        "heroes = (\"Shrek\", \"Fiona\", \"Donkey\")",
+        "print(len(heroes))"
+      ],
+      "answer": 0
+    }
+  ]
+}

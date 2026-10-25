@@ -709,7 +709,7 @@
       "id": "in-bad-store",
       "kind": "wrong-line",
       "text": "Utilizatorul a tastat {{x}}, deci `{{v}}` ține ce a returnat input(). Care linie împiedică programul să afișeze asta?",
-      "code": "{{v}} = \"{{x}}\"\n{{v}} = int({{v}})\n{{w}} = {{v}} + {{d}}\nprint({{w}})",
+      "code": "{{v}} = \"{{x}}\"\n{{v}} = int({{v}})\n{{w}} = {{v}} + {{d}}\nprint({{w}})\nprint({{v}} * 2)",
       "values": [
         {
           "v": "varsta",

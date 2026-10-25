@@ -1,0 +1,973 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "În Raportul de la Centrul de Control, ce returnează `analizeaza(scoruri)`?",
+      "options": [
+        "Nimic: afișează ea raportul",
+        "O listă cu numele celor promovați",
+        "Un dicționar cu cheile medie, cel_mai_bun și promovati",
+        "Doar scorul mediu"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q2",
+      "text": "De ce returnează `analizeaza` un dicționar în loc să afișeze ea raportul?",
+      "options": [
+        "Ca codul care o apelează să poată folosi cele trei rezultate cum are nevoie",
+        "print() nu poate fi folosit într-o funcție",
+        "Un dicționar se afișează mai repede decât trei linii",
+        "Orice funcție trebuie să returneze un dicționar"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "În soluție, de ce poate `maxim` să pornească de la 0 înainte de bucla care caută cel mai bun membru?",
+      "options": [
+        "Valorile unui dicționar pornesc mereu de la 0",
+        "Ca bucla să ruleze de zero ori",
+        "Python cere ca orice variabilă numerică să pornească de la 0",
+        "Toate scorurile sunt peste 0, așa că scorul primului membru îl înlocuiește"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "În `total / len(scoruri)`, ce este `len(scoruri)`?",
+      "options": [
+        "Suma tuturor scorurilor",
+        "Câți membri sunt, câte unul pentru fiecare pereche cheie-valoare",
+        "Lungimea celui mai lung nume",
+        "Cel mai mare scor"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "După `raport = analizeaza(scoruri)`, ce conține `raport[\"promovati\"]`?",
+      "options": [
+        "Câți membri au promovat",
+        "O listă cu numele celor care au 50 sau mai mult",
+        "True sau False",
+        "Textul \"promovati\""
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "def dublu(n):\n    return n * 2\n    print(\"Gata\")\n\nprint(dublu(4))",
+      "options": ["8\nGata", "Gata\n8", "None", "8"],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "def saluta(nume):\n    print(f\"Salut, {nume}\")\n\nrezultat = saluta(\"Mira\")\nprint(rezultat)",
+      "options": ["Salut, Mira\nNone", "Salut, Mira", "None", "Salut, Mira\nSalut, Mira"],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Care expresie citește scorul Mirei din `scoruri`?",
+      "options": ["scoruri(\"Mira\")", "scoruri.Mira", "scoruri[\"Mira\"]", "scoruri[Mira]"],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "Ce se întâmplă la `scoruri[\"Sonny\"]` când Sonny nu e o cheie din `scoruri`?",
+      "options": [
+        "Programul se oprește cu o eroare KeyError",
+        "Dă înapoi 0",
+        "Sonny e adăugat cu scorul 0",
+        "Dă înapoi None"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Phil e deja în `scoruri`, cu 37. Ce face `scoruri[\"Phil\"] = 60`?",
+      "options": [
+        "Phil are acum două scoruri, 37 și 60",
+        "Programul se oprește cu o eroare, pentru că cheia există deja",
+        "Scorul lui Phil devine 60",
+        "Adaugă a doua cheie \"Phil\""
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "În `for nume in scoruri:`, ce este `nume` la fiecare iterație?",
+      "options": [
+        "O valoare: scorul unui membru",
+        "O cheie: numele unui membru",
+        "O pereche, numele și scorul împreună",
+        "O poziție: 0, 1, 2..."
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "Care buclă ia fiecare nume și scorul lui în același timp?",
+      "options": [
+        "for nume, scor in scoruri:",
+        "for nume, scor in scoruri.values():",
+        "for nume, scor in scoruri.keys():",
+        "for nume, scor in scoruri.items():"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "echipaj = {\"Tommy\": 95, \"Lance\": 42}\nfor v in echipaj.values():\n    print(v)",
+      "options": ["Tommy\nLance", "Tommy 95\nLance 42", "{'Tommy': 95, 'Lance': 42}", "95\n42"],
+      "answer": 3
+    },
+    {
+      "id": "q14",
+      "text": "În soluție, de ce e scris `promovati = []` înainte de buclă și nu în ea?",
+      "options": [
+        "O listă nu poate fi făcută într-o buclă",
+        "În buclă, lista ar porni goală la fiecare iterație și ar uita numele de dinainte",
+        "append() merge doar pe o listă făcută înaintea funcției",
+        "Ca bucla să ruleze o dată pentru fiecare nume"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "def verifica(scor):\n    if scor >= 50:\n        return \"promovat\"\n    return \"picat\"\n\nprint(verifica(50))\nprint(verifica(49))",
+      "options": ["promovat\npromovat", "picat\npicat", "promovat\npicat", "picat\npromovat"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Phil are exact 50, iar toți cei cu 50 sau mai mult promovează. Care condiție îl pune în lista celor promovați?",
+      "options": [
+        "scoruri[nume] >= 50",
+        "scoruri[nume] > 50",
+        "scoruri[nume] < 50",
+        "scoruri[nume] > 51"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "def statistici(a, b):\n    return {\"suma\": a + b, \"diferenta\": a - b}\n\nr = statistici(10, 4)\nprint(r[\"diferenta\"])",
+      "options": ["14", "6", "{'suma': 14, 'diferenta': 6}", "diferenta"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Doi membri au amândoi cel mai mare scor, 95. Cu `if scoruri[nume] > maxim:`, cine iese cel mai bun?",
+      "options": [
+        "Cel care vine primul în dicționar",
+        "Cel care vine ultimul în dicționar",
+        "Amândoi, lipiți într-un singur text",
+        "Nimeni: cel_mai_bun rămâne \"\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "Cât e `len(raport)` pentru dicționarul returnat de `analizeaza`?",
+      "options": [
+        "5, câte unul pentru fiecare membru",
+        "1, pentru că e un singur dicționar",
+        "3, câte unul pentru fiecare cheie",
+        "Câți membri au promovat"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "aparitii = {}\nfor litera in \"otto\":\n    if litera in aparitii:\n        aparitii[litera] = aparitii[litera] + 1\n    else:\n        aparitii[litera] = 1\nprint(aparitii)",
+      "options": ["{'o': 1, 't': 1}", "{'otto': 1}", "{'o': 2, 't': 1}", "{'o': 2, 't': 2}"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Care linie adaugă în `scoruri` cheia \"Ken\" cu scorul 70?",
+      "options": [
+        "scoruri[\"Ken\"] = 70",
+        "scoruri.append(\"Ken\", 70)",
+        "scoruri[70] = \"Ken\"",
+        "scoruri + {\"Ken\": 70}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Care linie îl scoate pe Phil din `scoruri`?",
+      "options": [
+        "scoruri[\"Phil\"] = 0",
+        "scoruri[\"Phil\"] = \"\"",
+        "scoruri - \"Phil\"",
+        "del scoruri[\"Phil\"]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "După `raport = analizeaza(scoruri)`, care linie afișează câți membri au promovat?",
+      "options": [
+        "print(len(raport))",
+        "print(raport[\"promovati\"])",
+        "print(len(raport[\"promovati\"]))",
+        "print(len(scoruri))"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Ce verifică `\"Tommy\" in scoruri`?",
+      "options": [
+        "Dacă \"Tommy\" e una dintre valori",
+        "Dacă \"Tommy\" e una dintre chei",
+        "Dacă Tommy are 50 sau mai mult",
+        "Dacă Tommy e prima cheie"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "def medie(numere):\n    total = 0\n    for n in numere:\n        total = total + n\n    return total / len(numere)\n\nprint(medie([4, 6, 8]))",
+      "options": ["6", "18", "18.0", "6.0"],
+      "answer": 3
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "def alege(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < 50:\n            return nume\n    return \"Nimeni\"\n\nprint(alege({\"Ana\": 60, \"Ben\": 30, \"Cara\": 20}))",
+      "options": ["Ben\nCara", "Ben", "Cara", "Nimeni"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Python ajunge la un `return` dintr-o buclă for, într-o funcție. Ce se întâmplă?",
+      "options": [
+        "Bucla trece la următoarea iterație, ca la continue",
+        "Se încheie doar bucla, iar funcția merge mai departe după ea",
+        "Funcția se încheie pe loc și returnează valoarea, deci se oprește și bucla",
+        "Programul se oprește cu o eroare: return nu poate sta într-o buclă"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "def buni(scoruri):\n    lista = []\n    for nume in scoruri:\n        if scoruri[nume] > 80:\n            lista.append(nume)\n    return lista\n\nfor nume in buni({\"Ana\": 90, \"Ben\": 70, \"Cara\": 85}):\n    print(nume)",
+      "options": ["Ana\nCara", "['Ana', 'Cara']", "Ana\nBen\nCara", "90\n85"],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "`preturi = {\"combustibil\": 30, \"mancare\": 12}`. Care expresie dă 42?",
+      "options": [
+        "preturi[\"combustibil\" + \"mancare\"]",
+        "preturi[\"combustibil\"] + preturi[\"mancare\"]",
+        "preturi[0] + preturi[1]",
+        "len(preturi)"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "Tommy e primul în `scoruri`. De ce nu dă `scoruri[0]` scorul lui?",
+      "options": [
+        "Ba da: scoruri[0] dă scorul lui Tommy",
+        "Un dicționar numără de la 1, deci e scoruri[1]",
+        "0 nu e o cheie din scoruri: un dicționar se citește după chei, nu după poziție",
+        "Doar listele pot folosi paranteze drepte"
+      ],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "rd-average",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def total_din(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total\n\nechipaj = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}\nprint(total_din(echipaj) / len(echipaj))",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 90,
+          "b": "Lance",
+          "y": 60,
+          "c": "Mira",
+          "z": 75
+        },
+        {
+          "a": "Cortez",
+          "x": 84,
+          "b": "Phil",
+          "y": 42,
+          "c": "Sonny",
+          "z": 60
+        },
+        {
+          "a": "Ana",
+          "x": 99,
+          "b": "Ben",
+          "y": 81,
+          "c": "Cara",
+          "z": 60
+        },
+        {
+          "a": "Kai",
+          "x": 30,
+          "b": "Zoe",
+          "y": 72,
+          "c": "Rex",
+          "z": 93
+        },
+        {
+          "a": "Mia",
+          "x": 66,
+          "b": "Nova",
+          "y": 54,
+          "c": "Ken",
+          "z": 90
+        }
+      ],
+      "mistakes": [
+        ["total = total + scor", "total = scor"],
+        ["/ len(echipaj)", "// len(echipaj)"],
+        ["    return total", "        return total"],
+        ["print(total_din(echipaj) / len(echipaj))", "print(total_din(echipaj))"]
+      ]
+    },
+    {
+      "id": "rd-top",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "scoruri = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"Cel mai bun: {cel_mai_bun}\")",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 80,
+          "b": "Lance",
+          "y": 95,
+          "c": "Mira",
+          "z": 70
+        },
+        {
+          "a": "Cortez",
+          "x": 60,
+          "b": "Phil",
+          "y": 88,
+          "c": "Sonny",
+          "z": 75
+        },
+        {
+          "a": "Ana",
+          "x": 91,
+          "b": "Ben",
+          "y": 64,
+          "c": "Cara",
+          "z": 77
+        },
+        {
+          "a": "Kai",
+          "x": 52,
+          "b": "Zoe",
+          "y": 68,
+          "c": "Rex",
+          "z": 99
+        },
+        {
+          "a": "Mia",
+          "x": 45,
+          "b": "Nova",
+          "y": 83,
+          "c": "Ken",
+          "z": 61
+        }
+      ],
+      "mistakes": [
+        ["scoruri[nume] > maxim", "scoruri[nume] < maxim"],
+        ["maxim = scoruri[nume]", "maxim = 0"],
+        ["{cel_mai_bun}", "{maxim}"],
+        ["cel_mai_bun = nume", "cel_mai_bun = \"{{a}}\""]
+      ]
+    },
+    {
+      "id": "rd-passing",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def promovati(scoruri, prag):\n    lista = []\n    for nume, scor in scoruri.items():\n        if scor >= prag:\n            lista.append(nume)\n    return lista\n\nrezultat = promovati({\"Tommy\": {{t}}, \"Lance\": {{l}}, \"Mira\": {{m}}, \"Phil\": {{p}}}, {{limit}})\nprint(len(rezultat))\nfor nume in rezultat:\n    print(nume)",
+      "values": [
+        {
+          "t": 95,
+          "l": 42,
+          "m": 88,
+          "p": 50,
+          "limit": 50
+        },
+        {
+          "t": 70,
+          "l": 70,
+          "m": 40,
+          "p": 85,
+          "limit": 70
+        },
+        {
+          "t": 60,
+          "l": 90,
+          "m": 75,
+          "p": 30,
+          "limit": 75
+        },
+        {
+          "t": 45,
+          "l": 80,
+          "m": 80,
+          "p": 66,
+          "limit": 80
+        },
+        {
+          "t": 99,
+          "l": 20,
+          "m": 55,
+          "p": 61,
+          "limit": 60
+        }
+      ],
+      "mistakes": [
+        ["scor >= prag", "scor > prag"],
+        ["lista.append(nume)", "lista.append(scor)"],
+        ["    return lista", "        return lista"],
+        ["print(len(rezultat))\n", ""]
+      ]
+    },
+    {
+      "id": "rd-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "aparitii = {}\nfor obiect in {{items}}:\n    if obiect in aparitii:\n        aparitii[obiect] = aparitii[obiect] + 1\n    else:\n        aparitii[obiect] = 1\nprint(aparitii)",
+      "values": [
+        {
+          "items": "[\"combustibil\", \"mancare\", \"combustibil\"]"
+        },
+        {
+          "items": "[\"ok\", \"ok\", \"ok\", \"slab\"]"
+        },
+        {
+          "items": "[\"rosu\", \"albastru\", \"rosu\", \"albastru\", \"rosu\"]"
+        },
+        {
+          "items": "[\"A\", \"B\", \"C\", \"A\"]"
+        },
+        {
+          "items": "[\"Marte\", \"Venus\", \"Marte\", \"Marte\"]"
+        }
+      ],
+      "mistakes": [
+        ["aparitii[obiect] = aparitii[obiect] + 1", "aparitii[obiect] = 1"],
+        ["        aparitii[obiect] = 1", "        aparitii[obiect] = 0"],
+        ["print(aparitii)", "print(len(aparitii))"],
+        ["aparitii[obiect] + 1", "aparitii[obiect] + 2"]
+      ]
+    },
+    {
+      "id": "rd-update",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "echipaj = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}\nechipaj[\"{{b}}\"] = echipaj[\"{{b}}\"] + {{bonus}}\nechipaj[\"{{c}}\"] = {{z}}\ndel echipaj[\"{{a}}\"]\nprint(echipaj)",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 80,
+          "b": "Lance",
+          "y": 60,
+          "c": "Mira",
+          "z": 75,
+          "bonus": 10
+        },
+        {
+          "a": "Cortez",
+          "x": 50,
+          "b": "Phil",
+          "y": 45,
+          "c": "Sonny",
+          "z": 90,
+          "bonus": 5
+        },
+        {
+          "a": "Ana",
+          "x": 70,
+          "b": "Ben",
+          "y": 88,
+          "c": "Cara",
+          "z": 64,
+          "bonus": 2
+        },
+        {
+          "a": "Kai",
+          "x": 33,
+          "b": "Zoe",
+          "y": 71,
+          "c": "Rex",
+          "z": 58,
+          "bonus": 9
+        },
+        {
+          "a": "Mia",
+          "x": 90,
+          "b": "Nova",
+          "y": 39,
+          "c": "Ken",
+          "z": 47,
+          "bonus": 11
+        }
+      ],
+      "mistakes": [
+        ["del echipaj[\"{{a}}\"]\n", ""],
+        ["echipaj[\"{{b}}\"] + {{bonus}}", "{{bonus}}"],
+        ["echipaj[\"{{c}}\"] = {{z}}\n", ""],
+        ["del echipaj[\"{{a}}\"]", "echipaj[\"{{a}}\"] = 0"]
+      ]
+    },
+    {
+      "id": "rd-first-low",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def primul_slab(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < {{limit}}:\n            return nume\n    return \"Nimeni\"\n\nprint(primul_slab({\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}))",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Phil",
+          "z": 37,
+          "limit": 50
+        },
+        {
+          "a": "Mira",
+          "x": 76,
+          "b": "Cortez",
+          "y": 88,
+          "c": "Sonny",
+          "z": 30,
+          "limit": 50
+        },
+        {
+          "a": "Ana",
+          "x": 64,
+          "b": "Ben",
+          "y": 58,
+          "c": "Cara",
+          "z": 71,
+          "limit": 60
+        },
+        {
+          "a": "Kai",
+          "x": 49,
+          "b": "Zoe",
+          "y": 90,
+          "c": "Rex",
+          "z": 20,
+          "limit": 50
+        },
+        {
+          "a": "Mia",
+          "x": 81,
+          "b": "Nova",
+          "y": 77,
+          "c": "Ken",
+          "z": 66,
+          "limit": 70
+        }
+      ],
+      "mistakes": [
+        ["            return nume", "            print(nume)"],
+        ["    return \"Nimeni\"", "        return \"Nimeni\""],
+        ["scor < {{limit}}", "scor > {{limit}}"],
+        ["return nume", "return scor"]
+      ]
+    },
+    {
+      "id": "rd-which-ship",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "nava = {\"nume\": \"{{name}}\", \"combustibil\": {{fuel}}}\nnava[\"combustibil\"] = nava[\"combustibil\"] - {{used}}\nprint(nava[\"nume\"])\nprint(nava[\"combustibil\"])",
+      "values": [
+        {
+          "name": "Falcon",
+          "fuel": 100,
+          "used": 35
+        },
+        {
+          "name": "Atlas",
+          "fuel": 80,
+          "used": 25
+        },
+        {
+          "name": "Nova",
+          "fuel": 60,
+          "used": 15
+        },
+        {
+          "name": "Orion",
+          "fuel": 90,
+          "used": 40
+        },
+        {
+          "name": "Vega",
+          "fuel": 75,
+          "used": 30
+        }
+      ],
+      "mistakes": [
+        ["nava[\"combustibil\"] - {{used}}", "{{used}}"],
+        ["print(nava[\"nume\"])", "print(\"nume\")"],
+        ["nava[\"combustibil\"] = nava", "nava[\"folosit\"] = nava"],
+        ["print(nava[\"combustibil\"])", "print(nava)"]
+      ]
+    },
+    {
+      "id": "rd-which-items",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "stoc = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}\nfor obiect, cantitate in stoc.items():\n    print(f\"{obiect}: {cantitate}\")",
+      "values": [
+        {
+          "a": "combustibil",
+          "x": 30,
+          "b": "mancare",
+          "y": 12
+        },
+        {
+          "a": "apa",
+          "x": 8,
+          "b": "aer",
+          "y": 5
+        },
+        {
+          "a": "truse",
+          "x": 4,
+          "b": "unelte",
+          "y": 9
+        },
+        {
+          "a": "harti",
+          "x": 2,
+          "b": "statii",
+          "y": 6
+        },
+        {
+          "a": "scuturi",
+          "x": 3,
+          "b": "lasere",
+          "y": 7
+        }
+      ],
+      "mistakes": [
+        ["{obiect}: {cantitate}", "{cantitate}: {obiect}"],
+        ["print(f\"{obiect}: {cantitate}\")", "print(obiect, cantitate)"],
+        ["\"{{a}}\": {{x}}, \"{{b}}\": {{y}}", "\"{{a}}\": {{y}}, \"{{b}}\": {{x}}"],
+        ["{obiect}: {cantitate}", "{obiect}: {obiect}"]
+      ]
+    },
+    {
+      "id": "rd-gap-return",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def total_combustibil(rezervoare):\n    total = 0\n    for cantitate in rezervoare.values():\n        total = total + cantitate\n    ___\n\nprint(total_combustibil({\"stanga\": {{l}}, \"dreapta\": {{r}}}))",
+      "values": [
+        {
+          "l": 40,
+          "r": 30
+        },
+        {
+          "l": 25,
+          "r": 25
+        },
+        {
+          "l": 60,
+          "r": 15
+        },
+        {
+          "l": 12,
+          "r": 48
+        },
+        {
+          "l": 33,
+          "r": 7
+        }
+      ],
+      "answer": "return total",
+      "wrong": ["print(total)", "return cantitate", "return rezervoare", "total = total"]
+    },
+    {
+      "id": "rd-gap-append",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        ___\nprint(promovati)",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Mira",
+          "z": 76
+        },
+        {
+          "a": "Cortez",
+          "x": 88,
+          "b": "Phil",
+          "y": 37,
+          "c": "Sonny",
+          "z": 50
+        },
+        {
+          "a": "Ana",
+          "x": 51,
+          "b": "Ben",
+          "y": 64,
+          "c": "Cara",
+          "z": 20
+        },
+        {
+          "a": "Kai",
+          "x": 70,
+          "b": "Zoe",
+          "y": 90,
+          "c": "Rex",
+          "z": 85
+        },
+        {
+          "a": "Mia",
+          "x": 49,
+          "b": "Nova",
+          "y": 66,
+          "c": "Ken",
+          "z": 99
+        }
+      ],
+      "answer": "promovati.append(nume)",
+      "wrong": [
+        "promovati.append(scoruri[nume])",
+        "promovati = nume",
+        "promovati.append(scoruri)",
+        "promovati = [nume]"
+      ]
+    },
+    {
+      "id": "rd-gap-method",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}\nfor x in echipaj.___():\n    print(x)",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Mira",
+          "z": 76,
+          "m": "values"
+        },
+        {
+          "a": "Cortez",
+          "x": 88,
+          "b": "Phil",
+          "y": 37,
+          "c": "Sonny",
+          "z": 50,
+          "m": "keys"
+        },
+        {
+          "a": "Ana",
+          "x": 51,
+          "b": "Ben",
+          "y": 64,
+          "c": "Cara",
+          "z": 20,
+          "m": "values"
+        },
+        {
+          "a": "Kai",
+          "x": 70,
+          "b": "Zoe",
+          "y": 90,
+          "c": "Rex",
+          "z": 85,
+          "m": "keys"
+        },
+        {
+          "a": "Mia",
+          "x": 49,
+          "b": "Nova",
+          "y": 66,
+          "c": "Ken",
+          "z": 99,
+          "m": "values"
+        }
+      ],
+      "answer": "{{m}}",
+      "wrong": ["keys", "values", "items", "append"]
+    },
+    {
+      "id": "rd-gap-key",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def fa_raport(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return {\"total\": total, \"numar\": len(scoruri)}\n\nraport = fa_raport({\"{{a}}\": {{x}}, \"{{b}}\": {{y}}})\nprint(raport[___])",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "k": "total"
+        },
+        {
+          "a": "Mira",
+          "x": 76,
+          "b": "Phil",
+          "y": 37,
+          "k": "numar"
+        },
+        {
+          "a": "Ana",
+          "x": 50,
+          "b": "Ben",
+          "y": 30,
+          "k": "total"
+        },
+        {
+          "a": "Kai",
+          "x": 61,
+          "b": "Zoe",
+          "y": 19,
+          "k": "numar"
+        },
+        {
+          "a": "Mia",
+          "x": 44,
+          "b": "Ken",
+          "y": 56,
+          "k": "total"
+        }
+      ],
+      "answer": "\"{{k}}\"",
+      "wrong": ["\"total\"", "\"numar\"", "total", "0"]
+    },
+    {
+      "id": "rd-bad-quotes",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}\nscoruri[\"{{b}}\"] = scoruri[\"{{b}}\"] + 5\nscoruri[\"{{c}}\"] = {{z}}\nprint(scoruri[\"{{c}}\"])\nprint(scoruri[\"{{b}}\"])\nprint(scoruri[\"{{a}}\"])",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 80,
+          "b": "Lance",
+          "y": 60,
+          "c": "Mira",
+          "z": 75
+        },
+        {
+          "a": "Cortez",
+          "x": 50,
+          "b": "Phil",
+          "y": 45,
+          "c": "Sonny",
+          "z": 90
+        },
+        {
+          "a": "Ana",
+          "x": 70,
+          "b": "Ben",
+          "y": 88,
+          "c": "Cara",
+          "z": 64
+        }
+      ],
+      "bug": ["print(scoruri[\"{{a}}\"])", "print(scoruri[{{a}}])"]
+    },
+    {
+      "id": "rd-bad-items",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}\nprint(\"Raportul echipajului\")\nfor nume, scor in echipaj.items():\n    print(f\"{nume}: {scor}\")\nprint(\"Sfarsit de raport\")",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42
+        },
+        {
+          "a": "Mira",
+          "x": 76,
+          "b": "Phil",
+          "y": 37
+        },
+        {
+          "a": "Cortez",
+          "x": 88,
+          "b": "Sonny",
+          "y": 50
+        }
+      ],
+      "bug": ["echipaj.items()", "echipaj"]
+    },
+    {
+      "id": "rd-bad-param",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def medie(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total / len(scoruri)\n\nprint(medie({\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}))",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 90,
+          "b": "Lance",
+          "y": 60
+        },
+        {
+          "a": "Mira",
+          "x": 76,
+          "b": "Phil",
+          "y": 38
+        }
+      ],
+      "bug": ["def medie(scoruri):", "def medie(echipaj):"]
+    },
+    {
+      "id": "rd-bad-return",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def promovati(scoruri):\n    lista = []\n    for nume in scoruri:\n        if scoruri[nume] >= 50:\n            lista.append(nume)\n    return lista\n\nprint(promovati({\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}))",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Mira",
+          "z": 76
+        },
+        {
+          "a": "Cortez",
+          "x": 88,
+          "b": "Phil",
+          "y": 37,
+          "c": "Sonny",
+          "z": 50
+        }
+      ],
+      "bug": ["    return lista", "    return nume"]
+    }
+  ]
+}

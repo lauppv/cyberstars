@@ -1,0 +1,631 @@
+{
+  "note": "Made by npm run make:quiz from the templates in scope-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "sc-local-dbaa32",
+      "text": "What does this print?",
+      "code": "shield = 100\n\ndef boost():\n    shield = 200\n    print(shield)\n\nboost()\nprint(shield)",
+      "options": ["200\n100", "100\n200", "100\n100", "200"],
+      "answer": 0
+    },
+    {
+      "id": "sc-local-4f67fe",
+      "text": "What does this print?",
+      "code": "health = 80\n\ndef heal():\n    health = 50\n    print(health)\n\nheal()\nprint(health)",
+      "options": ["50\n80", "80\n50", "80\n80", "50"],
+      "answer": 0
+    },
+    {
+      "id": "sc-local-285d5d",
+      "text": "What does this print?",
+      "code": "fuel = 30\n\ndef refuel():\n    fuel = 90\n    print(fuel)\n\nrefuel()\nprint(fuel)",
+      "options": ["90\n30", "30\n90", "30\n30", "90"],
+      "answer": 0
+    },
+    {
+      "id": "sc-local-3ab0ec",
+      "text": "What does this print?",
+      "code": "ammo = 12\n\ndef reload():\n    ammo = 6\n    print(ammo)\n\nreload()\nprint(ammo)",
+      "options": ["6\n12", "12\n6", "12\n12", "6"],
+      "answer": 0
+    },
+    {
+      "id": "sc-local-716233",
+      "text": "What does this print?",
+      "code": "score = 0\n\ndef bonus():\n    score = 10\n    print(score)\n\nbonus()\nprint(score)",
+      "options": ["10\n0", "0\n10", "0\n0", "10"],
+      "answer": 0
+    },
+    {
+      "id": "sc-read-a4e001",
+      "text": "What does this print?",
+      "code": "shield = 100\n\ndef show_shield():\n    print(f\"Shield: {shield}\")\n\nshow_shield()\nshield = 40\nshow_shield()",
+      "options": [
+        "Shield: 100\nShield: 40",
+        "Shield: 100\nShield: 100",
+        "Shield: {shield}\nShield: {shield}",
+        "Shield: 40"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-read-e502b5",
+      "text": "What does this print?",
+      "code": "health = 90\n\ndef show_health():\n    print(f\"Health: {health}\")\n\nshow_health()\nhealth = 65\nshow_health()",
+      "options": [
+        "Health: 90\nHealth: 65",
+        "Health: 90\nHealth: 90",
+        "Health: {health}\nHealth: {health}",
+        "Health: 65"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-read-4b7bc1",
+      "text": "What does this print?",
+      "code": "fuel = 20\n\ndef show_fuel():\n    print(f\"Fuel: {fuel}\")\n\nshow_fuel()\nfuel = 75\nshow_fuel()",
+      "options": [
+        "Fuel: 20\nFuel: 75",
+        "Fuel: 20\nFuel: 20",
+        "Fuel: {fuel}\nFuel: {fuel}",
+        "Fuel: 75"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-read-364ed1",
+      "text": "What does this print?",
+      "code": "ammo = 8\n\ndef show_ammo():\n    print(f\"Ammo: {ammo}\")\n\nshow_ammo()\nammo = 3\nshow_ammo()",
+      "options": ["Ammo: 8\nAmmo: 3", "Ammo: 8\nAmmo: 8", "Ammo: {ammo}\nAmmo: {ammo}", "Ammo: 3"],
+      "answer": 0
+    },
+    {
+      "id": "sc-store-c16390",
+      "text": "What does this print?",
+      "code": "def boost(level):\n    return level * 2\n\nshield = 100\nboost(shield)\nprint(shield)\nshield = boost(shield)\nprint(shield)",
+      "options": ["100\n200", "200\n400", "100\n100", "100\n400"],
+      "answer": 0
+    },
+    {
+      "id": "sc-store-c6091d",
+      "text": "What does this print?",
+      "code": "def heal(hp):\n    return hp + 25\n\nhealth = 50\nheal(health)\nprint(health)\nhealth = heal(health)\nprint(health)",
+      "options": ["50\n75", "75\n100", "50\n50", "50\n100"],
+      "answer": 0
+    },
+    {
+      "id": "sc-store-51012d",
+      "text": "What does this print?",
+      "code": "def spend(coins):\n    return coins - 30\n\nmoney = 100\nspend(money)\nprint(money)\nmoney = spend(money)\nprint(money)",
+      "options": ["100\n70", "70\n40", "100\n100", "100\n40"],
+      "answer": 0
+    },
+    {
+      "id": "sc-store-562ca7",
+      "text": "What does this print?",
+      "code": "def reload(clip):\n    return clip + 6\n\nammo = 4\nreload(ammo)\nprint(ammo)\nammo = reload(ammo)\nprint(ammo)",
+      "options": ["4\n10", "10\n16", "4\n4", "4\n16"],
+      "answer": 0
+    },
+    {
+      "id": "sc-fresh-30dd70",
+      "text": "What does this print?",
+      "code": "def collect():\n    coins = 0\n    for i in range(4):\n        coins = coins + 5\n    return coins\n\nprint(collect())\nprint(collect())",
+      "options": ["20\n20", "20\nNone\n20\nNone", "5\n5", "25\n25"],
+      "answer": 0
+    },
+    {
+      "id": "sc-fresh-111e53",
+      "text": "What does this print?",
+      "code": "def charge():\n    power = 0\n    for i in range(2):\n        power = power + 10\n    return power\n\nprint(charge())\nprint(charge())",
+      "options": ["20\n20", "20\nNone\n20\nNone", "10\n10", "30\n30"],
+      "answer": 0
+    },
+    {
+      "id": "sc-fresh-a5f1d7",
+      "text": "What does this print?",
+      "code": "def run_laps():\n    distance = 0\n    for i in range(5):\n        distance = distance + 2\n    return distance\n\nprint(run_laps())\nprint(run_laps())",
+      "options": ["10\n10", "10\nNone\n10\nNone", "2\n2", "12\n12"],
+      "answer": 0
+    },
+    {
+      "id": "sc-fresh-19af76",
+      "text": "What does this print?",
+      "code": "def stack():\n    boxes = 0\n    for i in range(3):\n        boxes = boxes + 4\n    return boxes\n\nprint(stack())\nprint(stack())",
+      "options": ["12\n12", "12\nNone\n12\nNone", "4\n4", "16\n16"],
+      "answer": 0
+    },
+    {
+      "id": "sc-param-ee99ca",
+      "text": "What does this print?",
+      "code": "def double(n):\n    n = n * 2\n    return n\n\nn = 3\nresult = double(n)\nprint(n)\nprint(result)",
+      "options": ["3\n6", "6\n3", "3\n3", "3\n2"],
+      "answer": 0
+    },
+    {
+      "id": "sc-param-cb5532",
+      "text": "What does this print?",
+      "code": "def add_tax(price):\n    price = price + 5\n    return price\n\nprice = 20\ntotal = add_tax(price)\nprint(price)\nprint(total)",
+      "options": ["20\n25", "25\n20", "20\n20", "20\n5"],
+      "answer": 0
+    },
+    {
+      "id": "sc-param-f09930",
+      "text": "What does this print?",
+      "code": "def half(n):\n    n = n / 2\n    return n\n\nn = 9\npart = half(n)\nprint(n)\nprint(part)",
+      "options": ["9\n4.5", "4.5\n9", "9\n9", "9\n2"],
+      "answer": 0
+    },
+    {
+      "id": "sc-param-8e918e",
+      "text": "What does this print?",
+      "code": "def lose_life(lives):\n    lives = lives - 1\n    return lives\n\nlives = 3\nleft = lose_life(lives)\nprint(lives)\nprint(left)",
+      "options": ["3\n2", "2\n3", "3\n3", "3\n1"],
+      "answer": 0
+    },
+    {
+      "id": "sc-param-54216e",
+      "text": "What does this print?",
+      "code": "def triple(x):\n    x = x * 3\n    return x\n\nx = 4\nbig = triple(x)\nprint(x)\nprint(big)",
+      "options": ["4\n12", "12\n4", "4\n4", "4\n3"],
+      "answer": 0
+    },
+    {
+      "id": "sc-two-3af515",
+      "text": "What does this print?",
+      "code": "def first():\n    x = 5\n    print(x)\n\ndef second():\n    x = 99\n    print(x)\n\nsecond()\nfirst()\nsecond()",
+      "options": ["99\n5\n99", "5\n99\n5", "5\n5\n5", "99\n5"],
+      "answer": 0
+    },
+    {
+      "id": "sc-two-c67c48",
+      "text": "What does this print?",
+      "code": "def left():\n    speed = 40\n    print(speed)\n\ndef right():\n    speed = 70\n    print(speed)\n\nright()\nleft()\nright()",
+      "options": ["70\n40\n70", "40\n70\n40", "40\n40\n40", "70\n40"],
+      "answer": 0
+    },
+    {
+      "id": "sc-two-eeac4d",
+      "text": "What does this print?",
+      "code": "def morning():\n    temp = 12\n    print(temp)\n\ndef night():\n    temp = 3\n    print(temp)\n\nnight()\nmorning()\nnight()",
+      "options": ["3\n12\n3", "12\n3\n12", "12\n12\n12", "3\n12"],
+      "answer": 0
+    },
+    {
+      "id": "sc-two-12e8b8",
+      "text": "What does this print?",
+      "code": "def alpha():\n    code = 101\n    print(code)\n\ndef beta():\n    code = 202\n    print(code)\n\nbeta()\nalpha()\nbeta()",
+      "options": ["202\n101\n202", "101\n202\n101", "101\n101\n101", "202\n101"],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-store-31db4a",
+      "text": "Which program shows this?",
+      "output": "Before: 100\nAfter: 200",
+      "options": [
+        "def boost(level):\n    return level * 2\n\nshield = 100\nprint(f\"Before: {shield}\")\nshield = boost(shield)\nprint(f\"After: {shield}\")",
+        "def boost(level):\n    return level * 2\n\nshield = 100\nprint(f\"Before: {shield}\")\nboost(shield)\nprint(f\"After: {shield}\")",
+        "def boost(level):\n    print(level * 2)\n\nshield = 100\nprint(f\"Before: {shield}\")\nshield = boost(shield)\nprint(f\"After: {shield}\")",
+        "def boost(level):\n    level = level * 2\n\nshield = 100\nprint(f\"Before: {shield}\")\nshield = boost(shield)\nprint(f\"After: {shield}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-store-3d5f26",
+      "text": "Which program shows this?",
+      "output": "Before: 40\nAfter: 80",
+      "options": [
+        "def heal(hp):\n    return hp * 2\n\nhealth = 40\nprint(f\"Before: {health}\")\nhealth = heal(health)\nprint(f\"After: {health}\")",
+        "def heal(hp):\n    return hp * 2\n\nhealth = 40\nprint(f\"Before: {health}\")\nheal(health)\nprint(f\"After: {health}\")",
+        "def heal(hp):\n    print(hp * 2)\n\nhealth = 40\nprint(f\"Before: {health}\")\nhealth = heal(health)\nprint(f\"After: {health}\")",
+        "def heal(hp):\n    hp = hp * 2\n\nhealth = 40\nprint(f\"Before: {health}\")\nhealth = heal(health)\nprint(f\"After: {health}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-store-b4b20e",
+      "text": "Which program shows this?",
+      "output": "Before: 35\nAfter: 70",
+      "options": [
+        "def refuel(tank):\n    return tank * 2\n\nfuel = 35\nprint(f\"Before: {fuel}\")\nfuel = refuel(fuel)\nprint(f\"After: {fuel}\")",
+        "def refuel(tank):\n    return tank * 2\n\nfuel = 35\nprint(f\"Before: {fuel}\")\nrefuel(fuel)\nprint(f\"After: {fuel}\")",
+        "def refuel(tank):\n    print(tank * 2)\n\nfuel = 35\nprint(f\"Before: {fuel}\")\nfuel = refuel(fuel)\nprint(f\"After: {fuel}\")",
+        "def refuel(tank):\n    tank = tank * 2\n\nfuel = 35\nprint(f\"Before: {fuel}\")\nfuel = refuel(fuel)\nprint(f\"After: {fuel}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-store-25398a",
+      "text": "Which program shows this?",
+      "output": "Before: 6\nAfter: 12",
+      "options": [
+        "def reload(clip):\n    return clip * 2\n\nammo = 6\nprint(f\"Before: {ammo}\")\nammo = reload(ammo)\nprint(f\"After: {ammo}\")",
+        "def reload(clip):\n    return clip * 2\n\nammo = 6\nprint(f\"Before: {ammo}\")\nreload(ammo)\nprint(f\"After: {ammo}\")",
+        "def reload(clip):\n    print(clip * 2)\n\nammo = 6\nprint(f\"Before: {ammo}\")\nammo = reload(ammo)\nprint(f\"After: {ammo}\")",
+        "def reload(clip):\n    clip = clip * 2\n\nammo = 6\nprint(f\"Before: {ammo}\")\nammo = reload(ammo)\nprint(f\"After: {ammo}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-local-1056e1",
+      "text": "Which program shows this?",
+      "output": "Inside: 2\nOutside: 1",
+      "options": [
+        "x = 1\n\ndef f():\n    x = 2\n    print(f\"Inside: {x}\")\n\nf()\nprint(f\"Outside: {x}\")",
+        "x = 1\n\ndef f():\n    print(f\"Inside: {x}\")\n\nf()\nprint(f\"Outside: {x}\")",
+        "x = 2\n\ndef f():\n    x = 2\n    print(f\"Inside: {x}\")\n\nf()\nprint(f\"Outside: {x}\")",
+        "x = 1\n\ndef f():\n    x = 2\n    print(f\"Inside: {x}\")\n\nprint(f\"Outside: {x}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-local-42dd85",
+      "text": "Which program shows this?",
+      "output": "Inside: 90\nOutside: 60",
+      "options": [
+        "speed = 60\n\ndef race():\n    speed = 90\n    print(f\"Inside: {speed}\")\n\nrace()\nprint(f\"Outside: {speed}\")",
+        "speed = 60\n\ndef race():\n    print(f\"Inside: {speed}\")\n\nrace()\nprint(f\"Outside: {speed}\")",
+        "speed = 90\n\ndef race():\n    speed = 90\n    print(f\"Inside: {speed}\")\n\nrace()\nprint(f\"Outside: {speed}\")",
+        "speed = 60\n\ndef race():\n    speed = 90\n    print(f\"Inside: {speed}\")\n\nprint(f\"Outside: {speed}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-local-6384af",
+      "text": "Which program shows this?",
+      "output": "Inside: 7\nOutside: 3",
+      "options": [
+        "level = 3\n\ndef cheat():\n    level = 7\n    print(f\"Inside: {level}\")\n\ncheat()\nprint(f\"Outside: {level}\")",
+        "level = 3\n\ndef cheat():\n    print(f\"Inside: {level}\")\n\ncheat()\nprint(f\"Outside: {level}\")",
+        "level = 7\n\ndef cheat():\n    level = 7\n    print(f\"Inside: {level}\")\n\ncheat()\nprint(f\"Outside: {level}\")",
+        "level = 3\n\ndef cheat():\n    level = 7\n    print(f\"Inside: {level}\")\n\nprint(f\"Outside: {level}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-which-local-fed3f1",
+      "text": "Which program shows this?",
+      "output": "Inside: 500\nOutside: 15",
+      "options": [
+        "gold = 15\n\ndef dream():\n    gold = 500\n    print(f\"Inside: {gold}\")\n\ndream()\nprint(f\"Outside: {gold}\")",
+        "gold = 15\n\ndef dream():\n    print(f\"Inside: {gold}\")\n\ndream()\nprint(f\"Outside: {gold}\")",
+        "gold = 500\n\ndef dream():\n    gold = 500\n    print(f\"Inside: {gold}\")\n\ndream()\nprint(f\"Outside: {gold}\")",
+        "gold = 15\n\ndef dream():\n    gold = 500\n    print(f\"Inside: {gold}\")\n\nprint(f\"Outside: {gold}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-store-19c14f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def boost(level):\n    return level * 2\n\nshield = 100\n___\nprint(shield)",
+      "output": "200",
+      "options": [
+        "shield = boost(shield)",
+        "boost(shield)",
+        "level = boost(shield)",
+        "shield = level * 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-store-1a9bf9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def triple(n):\n    return n * 3\n\ncoins = 7\n___\nprint(coins)",
+      "output": "21",
+      "options": ["coins = triple(coins)", "triple(coins)", "n = triple(coins)", "coins = n * 3"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-store-b5b638",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def double(hp):\n    return hp * 2\n\nhealth = 45\n___\nprint(health)",
+      "output": "90",
+      "options": [
+        "health = double(health)",
+        "double(health)",
+        "hp = double(health)",
+        "health = hp * 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-store-a79546",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def scale(size):\n    return size * 10\n\nwidth = 6\n___\nprint(width)",
+      "output": "60",
+      "options": [
+        "width = scale(width)",
+        "scale(width)",
+        "size = scale(width)",
+        "width = size * 10"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-return-2ee10b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def take_damage(hp):\n    hp = hp - 10\n    ___\n\nhealth = 100\nhealth = take_damage(health)\nprint(health)",
+      "output": "90",
+      "options": ["return hp", "print(hp)", "return health", "health = hp"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-return-5fbf01",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def add_points(pts):\n    pts = pts + 15\n    ___\n\nscore = 40\nscore = add_points(score)\nprint(score)",
+      "output": "55",
+      "options": ["return pts", "print(pts)", "return score", "score = pts"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-return-2ffadd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def burn(tank):\n    tank = tank - 25\n    ___\n\nfuel = 60\nfuel = burn(fuel)\nprint(fuel)",
+      "output": "35",
+      "options": ["return tank", "print(tank)", "return fuel", "fuel = tank"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-return-e04f90",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def grow(size):\n    size = size * 3\n    ___\n\ncrowd = 9\ncrowd = grow(crowd)\nprint(crowd)",
+      "output": "27",
+      "options": ["return size", "print(size)", "return crowd", "crowd = size"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-def-002b56",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    return shield * 2\n\nprint(boost(100))",
+      "output": "200",
+      "options": ["def boost(shield):", "def boost():", "def shield(boost):", "def boost(100):"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-def-5ad3c5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    return hp + 30\n\nprint(heal(45))",
+      "output": "75",
+      "options": ["def heal(hp):", "def heal():", "def hp(heal):", "def heal(45):"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-def-b49ccb",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    return money - 12\n\nprint(spend(50))",
+      "output": "38",
+      "options": ["def spend(money):", "def spend():", "def money(spend):", "def spend(50):"],
+      "answer": 0
+    },
+    {
+      "id": "sc-gap-def-82be70",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\n    return loot / 4\n\nprint(split(10))",
+      "output": "2.5",
+      "options": ["def split(loot):", "def split():", "def loot(split):", "def split(10):"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-arg-16b916",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def boost(level):\n    return level * 2\n\nshield = 100\nprint(boost(___))\nprint(shield)",
+      "output": "200\n100",
+      "options": ["shield", "level", "\"shield\"", "boost"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-arg-af1b5a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def double(n):\n    return n * 2\n\ncoins = 13\nprint(double(___))\nprint(coins)",
+      "output": "26\n13",
+      "options": ["coins", "n", "\"coins\"", "double"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-arg-ff71c2",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def heal(hp):\n    return hp * 2\n\nhealth = 35\nprint(heal(___))\nprint(health)",
+      "output": "70\n35",
+      "options": ["health", "hp", "\"health\"", "heal"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-arg-6d1943",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def twice(x):\n    return x * 2\n\nlaps = 4\nprint(twice(___))\nprint(laps)",
+      "output": "8\n4",
+      "options": ["laps", "x", "\"laps\"", "twice"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-store-029c3b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def heal(hp):\n    return hp + 20\n\nhealth = 60\n___ = heal(health)\nprint(health)",
+      "output": "80",
+      "options": ["health", "hp", "result", "heal"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-store-dadc9b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def refuel(tank):\n    return tank + 50\n\nfuel = 15\n___ = refuel(fuel)\nprint(fuel)",
+      "output": "65",
+      "options": ["fuel", "tank", "result", "refuel"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-store-2b9912",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def reload(clip):\n    return clip + 6\n\nammo = 2\n___ = reload(ammo)\nprint(ammo)",
+      "output": "8",
+      "options": ["ammo", "clip", "result", "reload"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-store-18f7d1",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def level_up(lv):\n    return lv + 1\n\nlevel = 9\n___ = level_up(level)\nprint(level)",
+      "output": "10",
+      "options": ["level", "lv", "result", "level_up"],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-ret-202538",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "total = 0\n\ndef times_ten(n):\n    total = n * 10\n    return ___\n\nprint(times_ten(7))\nprint(total)",
+      "output": "70\n0",
+      "options": ["total", "n", "0", "\"total\""],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-ret-f921c9",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "fence = 1\n\ndef fence_for(side):\n    fence = side * 4\n    return ___\n\nprint(fence_for(4))\nprint(fence)",
+      "output": "16\n1",
+      "options": ["fence", "side", "1", "\"fence\""],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-ret-a373ab",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "cost = 5\n\ndef price_of(items):\n    cost = items * 3\n    return ___\n\nprint(price_of(8))\nprint(cost)",
+      "output": "24\n5",
+      "options": ["cost", "items", "5", "\"cost\""],
+      "answer": 0
+    },
+    {
+      "id": "sc-val-ret-35c870",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "damage = 2\n\ndef hit(power):\n    damage = power * 5\n    return ___\n\nprint(hit(6))\nprint(damage)",
+      "output": "30\n2",
+      "options": ["damage", "power", "2", "\"damage\""],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-def-aac625",
+      "text": "Which line stops this program from printing this?",
+      "code": "def boost():\n    print(f\"Level: {level}\")\n    return level * 2\n\nshield = boost(50)\nprint(shield)",
+      "output": "Level: 50\n100",
+      "options": [
+        "def boost():",
+        "print(f\"Level: {level}\")",
+        "return level * 2",
+        "shield = boost(50)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-def-2f2e77",
+      "text": "Which line stops this program from printing this?",
+      "code": "def triple():\n    print(f\"Coins: {coins}\")\n    return coins * 3\n\nloot = triple(9)\nprint(loot)",
+      "output": "Coins: 9\n27",
+      "options": [
+        "def triple():",
+        "print(f\"Coins: {coins}\")",
+        "return coins * 3",
+        "loot = triple(9)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-def-bddb4b",
+      "text": "Which line stops this program from printing this?",
+      "code": "def scale():\n    print(f\"Size: {size}\")\n    return size * 10\n\nwidth = scale(4)\nprint(width)",
+      "output": "Size: 4\n40",
+      "options": [
+        "def scale():",
+        "print(f\"Size: {size}\")",
+        "return size * 10",
+        "width = scale(4)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-store-29e09f",
+      "text": "Which line stops this program from printing this?",
+      "code": "def boost(level):\n    return level * 2\n\nshield = 100\nprint(f\"Before: {shield}\")\nboost(shield)\nprint(f\"After: {shield}\")\nprint(f\"Plus 5: {shield + 5}\")",
+      "output": "Before: 100\nAfter: 200\nPlus 5: 205",
+      "options": [
+        "boost(shield)",
+        "print(f\"Before: {shield}\")",
+        "shield = 100",
+        "return level * 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-store-f9c724",
+      "text": "Which line stops this program from printing this?",
+      "code": "def double(n):\n    return n * 2\n\ncoins = 25\nprint(f\"Before: {coins}\")\ndouble(coins)\nprint(f\"After: {coins}\")\nprint(f\"Plus 5: {coins + 5}\")",
+      "output": "Before: 25\nAfter: 50\nPlus 5: 55",
+      "options": [
+        "double(coins)",
+        "print(f\"Before: {coins}\")",
+        "coins = 25",
+        "print(f\"After: {coins}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-store-ec14fc",
+      "text": "Which line stops this program from printing this?",
+      "code": "def heal(hp):\n    return hp * 2\n\nhealth = 30\nprint(f\"Before: {health}\")\nheal(health)\nprint(f\"After: {health}\")\nprint(f\"Plus 5: {health + 5}\")",
+      "output": "Before: 30\nAfter: 60\nPlus 5: 65",
+      "options": [
+        "heal(health)",
+        "print(f\"Before: {health}\")",
+        "print(f\"After: {health}\")",
+        "print(f\"Plus 5: {health + 5}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-name-0cc1c4",
+      "text": "Which line stops this program from printing this?",
+      "code": "def start_health():\n    hp = 100\n    return hp\n\nhealth = start_health()\nprint(hp - 10)\nprint(health)",
+      "output": "90\n100",
+      "options": ["print(hp - 10)", "health = start_health()", "return hp", "hp = 100"],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-name-82e6e0",
+      "text": "Which line stops this program from printing this?",
+      "code": "def base_price():\n    price = 40\n    return price\n\ncost = base_price()\nprint(price + 5)\nprint(cost)",
+      "output": "45\n40",
+      "options": ["print(price + 5)", "cost = base_price()", "return price", "price = 40"],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-name-902b71",
+      "text": "Which line stops this program from printing this?",
+      "code": "def first_level():\n    lv = 1\n    return lv\n\nlevel = first_level()\nprint(lv + 1)\nprint(level)",
+      "output": "2\n1",
+      "options": ["print(lv + 1)", "level = first_level()", "return lv", "lv = 1"],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-local-ece306",
+      "text": "Which line stops this program from printing this?",
+      "code": "def red_team():\n    red = 3\n    return red\n\ndef blue_team():\n    blue = 5\n    return blue\n\nprint(red_team())\nprint(blue)",
+      "output": "3\n5",
+      "options": ["print(blue)", "print(red_team())", "return blue", "blue = 5"],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-local-3594b5",
+      "text": "Which line stops this program from printing this?",
+      "code": "def day_temp():\n    day = 28\n    return day\n\ndef night_temp():\n    night = 14\n    return night\n\nprint(day_temp())\nprint(night)",
+      "output": "28\n14",
+      "options": ["print(night)", "print(day_temp())", "return night", "night = 14"],
+      "answer": 0
+    },
+    {
+      "id": "sc-bad-local-1c22ab",
+      "text": "Which line stops this program from printing this?",
+      "code": "def gold_count():\n    gold = 120\n    return gold\n\ndef gem_count():\n    gems = 8\n    return gems\n\nprint(gold_count())\nprint(gems)",
+      "output": "120\n8",
+      "options": ["print(gems)", "print(gold_count())", "return gems", "gems = 8"],
+      "answer": 0
+    }
+  ]
+}

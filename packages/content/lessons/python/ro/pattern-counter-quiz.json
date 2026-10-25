@@ -1,0 +1,831 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Care sunt cei patru pași ai tiparului contor, în ordine?",
+      "options": [
+        "Inițializează, parcurge, verifică, crește",
+        "Parcurge, inițializează, crește, verifică",
+        "Verifică, parcurge, crește, inițializează",
+        "Inițializează, crește, parcurge, verifică"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 7, 10, 13, 16]\nnumar_pare = 0\n\nfor n in numere:\n    if n % 2 == 0:\n        numar_pare = numar_pare + 1\n\nprint(f\"Numere pare: {numar_pare}\")",
+      "options": ["Numere pare: 2", "Numere pare: 5", "Numere pare: 3", "Numere pare: 30"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "De ce pornește un contor de la 0?",
+      "options": [
+        "Python cere ca orice variabilă să pornească de la 0",
+        "Înainte de buclă n-am găsit încă nimic",
+        "Ca bucla să mai ruleze o dată",
+        "0 îi spune lui Python că variabila e un contor"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Ce face `x += 1`?",
+      "options": [
+        "Îl face pe x egal cu 1",
+        "Verifică dacă x e 1",
+        "Adună 1 la x, dar doar într-o buclă",
+        "Același lucru ca x = x + 1"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "vieti = 5\nvieti -= 1\nvieti -= 1\nvieti += 3\nprint(vieti)",
+      "options": ["6", "4", "9", "3"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "nume = \"Lance Vance\"\nnumar_majuscule = 0\n\nfor caracter in nume:\n    if caracter.isupper():\n        numar_majuscule += 1\n\nprint(f\"Litere majuscule: {numar_majuscule}\")",
+      "options": [
+        "Litere majuscule: 11",
+        "Litere majuscule: 10",
+        "Litere majuscule: 2",
+        "Litere majuscule: 8"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Ce dă `\"7\".isdigit()`?",
+      "options": ["False", "True", "7", "\"7\""],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Ce metodă ne spune dacă un caracter e o literă?",
+      "options": [".isdigit()", ".isletter()", ".ischar()", ".isalpha()"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "text = \"Sala 404 e libera\"\nlitere = 0\ncifre = 0\nspatii = 0\n\nfor caracter in text:\n    if caracter.isalpha():\n        litere += 1\n    elif caracter.isdigit():\n        cifre += 1\n    elif caracter == \" \":\n        spatii += 1\n\nprint(f\"Litere: {litere}, Cifre: {cifre}, Spatii: {spatii}\")",
+      "options": [
+        "Litere: 11, Cifre: 3, Spatii: 3",
+        "Litere: 11, Cifre: 3, Spatii: 2",
+        "Litere: 17, Cifre: 0, Spatii: 0",
+        "Litere: 14, Cifre: 3, Spatii: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 4, 6]\nfor n in numere:\n    contor = 0\n    if n % 2 == 0:\n        contor += 1\nprint(contor)",
+      "options": ["3", "1", "0", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Ce afișează?",
+      "code": "contor = 0\nfor n in [5, 8, 12]:\n    if n > 6:\n        contor += 1\n    print(contor)",
+      "options": ["2", "1\n2", "0\n1\n2", "1\n2\n3"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "În misiunea Benzi de Citiri, în ce bandă intră o citire de exact 100?",
+      "options": ["Medii", "Mici", "În niciuna", "Mari"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "În misiunea Benzi de Citiri, în ce bandă intră o citire de exact 50?",
+      "options": ["Medii", "Mici", "Mari", "Și în Mici, și în Medii"],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "În misiune, de ce e de ajuns `elif citire < 100:` pentru Medii, fără să verificăm și `citire >= 50`?",
+      "options": [
+        "Python adaugă singur verificarea `>= 50`",
+        "Și citirile sub 50 se numără la Medii",
+        "elif-ul rulează doar când `citire < 50` a fost fals, așa că citirea e deja 50 sau mai mult",
+        "Un elif mai verifică o dată fiecare condiție de deasupra"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "text = \"A1 b2\"\nlitere = 0\ncifre = 0\nfor caracter in text:\n    if caracter.isalpha():\n        litere += 1\n    if caracter.isdigit():\n        cifre += 1\nprint(litere, cifre)",
+      "options": ["2 3", "2 2", "5 0", "3 2"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "contor = 0\nfor n in [3, 8, 11]:\n    if n > 5:\n        contor += \"1\"\nprint(contor)",
+      "options": [
+        "Afișează 2",
+        "Afișează 11",
+        "Afișează 0",
+        "Se oprește cu un TypeError: un număr și un text nu se pot aduna"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "for n in [3, 8, 11]:\n    if n > 5:\n        total += 1\nprint(total)",
+      "options": [
+        "Se oprește cu un NameError: total nu are nicio valoare înainte de primul +=",
+        "Afișează 2",
+        "Afișează 0",
+        "Afișează 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Ce linie face același lucru ca `x -= 1`?",
+      "options": ["x = -1", "x = 1 - x", "x = x - 1", "x == x - 1"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "contor = 10\ncontor *= 2\ncontor -= 5\nprint(contor)",
+      "options": ["20", "15", "25", "10"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "nume = \"Banana Bay\"\nnumar_a = 0\nfor caracter in nume:\n    if caracter == \"a\":\n        numar_a += 1\nprint(numar_a)",
+      "options": ["3", "5", "2", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "O buclă cu contor are `contor += 1` sub if. Ce se schimbă dacă scriem acolo `contor += n`?",
+      "options": [
+        "Adună numerele care trec verificarea, în loc să le numere",
+        "Nimic: tot le numără",
+        "Îl numără pe fiecare de două ori",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Unde se pune linia `contor = 0` în tiparul contor?",
+      "options": [
+        "În buclă, înainte de if",
+        "În if, înainte de +=",
+        "Înainte de buclă, o singură dată",
+        "După buclă, înainte de print"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "Vrem să afișăm doar numărul final. Unde se pune `print(contor)`?",
+      "options": [
+        "În if, sub +=",
+        "După buclă, neindentat sub ea",
+        "În buclă, după if",
+        "Înainte de buclă"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "oras = \"Vice City\"\nminuscule = 0\nfor caracter in oras:\n    if caracter.islower():\n        minuscule += 1\nprint(minuscule)",
+      "options": ["2", "8", "9", "6"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Ken\", \"Lance\", \"Phil\"]\nscurte = 0\nfor n in nume:\n    if len(n) < 5:\n        scurte += 1\nprint(f\"Nume scurte: {scurte}\")",
+      "options": ["Nume scurte: 2", "Nume scurte: 3", "Nume scurte: 4", "Nume scurte: 7"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "scoruri = [45, 80, 92, 60, 30, 75]\ntrecuti = 0\npicati = 0\nfor s in scoruri:\n    if s >= 50:\n        trecuti += 1\n    else:\n        picati += 1\nprint(trecuti, picati)",
+      "options": ["2 4", "6 0", "4 2", "3 3"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "O buclă cu contor parcurge caracterele unui cod. Ce verificare o face să numere doar cifrele?",
+      "options": [
+        "if caracter.isalpha():",
+        "if caracter.isdigit():",
+        "if caracter == cifra:",
+        "if caracter.isupper():"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "text = \"a fi sau nu\"\nspatii = 0\nfor caracter in text:\n    if caracter == \" \":\n        spatii += 1\nprint(f\"Cuvinte: {spatii + 1}\")",
+      "options": ["Cuvinte: 3", "Cuvinte: 11", "Cuvinte: 1", "Cuvinte: 4"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Când nu e de ajuns `len(numere)`, așa că avem nevoie de un contor?",
+      "options": [
+        "Când numărăm doar elementele care trec o verificare, cum sunt cele pare",
+        "Niciodată: len() poate număra orice",
+        "Când lista are mai mult de 10 elemente",
+        "Când lista ține texte în loc de numere"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "scoruri = [80, 95, 40, 70]\npeste = 0\nfor s in scoruri:\n    if s > 75:\n        peste += 1\nprint(f\"{peste} din {len(scoruri)} peste 75\")",
+      "options": ["3 din 4 peste 75", "2 din 2 peste 75", "2 din 4 peste 75", "175 din 4 peste 75"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "pc-even",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\ncontor = 0\nfor n in {{v}}:\n    if n % 2 == 0:\n        contor += 1\nprint(f\"Pare: {contor}\")",
+      "values": [
+        {
+          "v": "numere",
+          "nums": "3, 8, 12, 5, 6"
+        },
+        {
+          "v": "scoruri",
+          "nums": "10, 7, 4, 9"
+        },
+        {
+          "v": "varste",
+          "nums": "21, 34, 18, 40, 15, 22"
+        },
+        {
+          "v": "niveluri",
+          "nums": "1, 3, 5, 2"
+        }
+      ],
+      "mistakes": [
+        ["n % 2 == 0", "n % 2 == 1"],
+        ["contor += 1", "contor += n"],
+        ["contor = 0", "contor = 1"],
+        ["\nprint(f\"Pare: {contor}\")", "\n    print(f\"Pare: {contor}\")"]
+      ]
+    },
+    {
+      "id": "pc-above",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\npeste = 0\nfor c in {{v}}:\n    if c > {{t}}:\n        peste += 1\nprint(peste)",
+      "values": [
+        {
+          "v": "citiri",
+          "nums": "42, 75, 100, 30, 88",
+          "t": 75
+        },
+        {
+          "v": "temperaturi",
+          "nums": "12, 30, 25, 30, 8",
+          "t": 25
+        },
+        {
+          "v": "combustibil",
+          "nums": "5, 50, 20, 15, 35",
+          "t": 15
+        }
+      ],
+      "mistakes": [
+        ["c > {{t}}", "c >= {{t}}"],
+        ["peste += 1", "peste = 1"],
+        ["peste += 1", "peste += c"],
+        ["c > {{t}}", "c < {{t}}"]
+      ]
+    },
+    {
+      "id": "pc-upper",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{s}}\"\nmajuscule = 0\nfor caracter in {{v}}:\n    if caracter.isupper():\n        majuscule += 1\nprint(f\"Majuscule: {majuscule}\")",
+      "values": [
+        {
+          "v": "nume",
+          "s": "Tommy Vercetti"
+        },
+        {
+          "v": "cod",
+          "s": "NASA Baza 7"
+        },
+        {
+          "v": "nava",
+          "s": "USS Orbit"
+        }
+      ],
+      "mistakes": [
+        ["isupper", "islower"],
+        ["isupper", "isalpha"],
+        ["majuscule += 1", "majuscule = 1"],
+        ["\nprint(f\"Majuscule: {majuscule}\")", "\n    print(f\"Majuscule: {majuscule}\")"]
+      ]
+    },
+    {
+      "id": "pc-digits",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cod = \"{{s}}\"\ncifre = 0\nfor caracter in cod:\n    if caracter.isdigit():\n        cifre += 1\nprint(cifre)",
+      "values": [
+        {
+          "s": "R2D2"
+        },
+        {
+          "s": "Agent 47"
+        },
+        {
+          "s": "X1Y22Z"
+        }
+      ],
+      "mistakes": [
+        ["isdigit", "isalpha"],
+        ["cifre += 1", "cifre = 1"],
+        ["cifre = 0", "cifre = 1"],
+        ["\nprint(cifre)", "\n    print(cifre)"]
+      ]
+    },
+    {
+      "id": "pc-multi",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "text = \"{{s}}\"\nlitere = 0\ncifre = 0\nspatii = 0\nfor caracter in text:\n    if caracter.isalpha():\n        litere += 1\n    elif caracter.isdigit():\n        cifre += 1\n    elif caracter == \" \":\n        spatii += 1\nprint(f\"Litere: {litere}, Cifre: {cifre}, Spatii: {spatii}\")",
+      "values": [
+        {
+          "s": "Vice City 86"
+        },
+        {
+          "s": "Sala 101"
+        },
+        {
+          "s": "Poarta 3 la 9 PM"
+        }
+      ],
+      "mistakes": [
+        ["cifre += 1", "litere += 1"],
+        ["elif caracter == \" \":", "elif caracter != \" \":"],
+        ["spatii += 1", "spatii = 1"],
+        ["litere = 0", "litere = 1"]
+      ]
+    },
+    {
+      "id": "pc-bands",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{nums}}]\nmici = 0\nmedii = 0\nmari = 0\nfor c in {{v}}:\n    if c < 50:\n        mici += 1\n    elif c < 100:\n        medii += 1\n    else:\n        mari += 1\nprint(f\"Mici: {mici}\")\nprint(f\"Medii: {medii}\")\nprint(f\"Mari: {mari}\")",
+      "values": [
+        {
+          "v": "citiri",
+          "nums": "42, 75, 100, 30, 88, 120"
+        },
+        {
+          "v": "niveluri",
+          "nums": "50, 99, 100, 49, 130, 140, 160"
+        },
+        {
+          "v": "semnale",
+          "nums": "10, 50, 100, 100, 60, 70"
+        },
+        {
+          "v": "scanari",
+          "nums": "100, 20, 50, 150, 80, 35, 5"
+        }
+      ],
+      "mistakes": [
+        ["elif c < 100:", "elif c <= 100:"],
+        ["if c < 50:", "if c <= 50:"],
+        ["medii += 1", "mari += 1"],
+        ["mari += 1", "mari = 1"]
+      ]
+    },
+    {
+      "id": "pc-shortcut",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{a}}\n{{v}} += {{b}}\n{{v}} -= {{c}}\n{{v}} *= 2\nprint({{v}})",
+      "values": [
+        {
+          "v": "combustibil",
+          "a": 10,
+          "b": 5,
+          "c": 3
+        },
+        {
+          "v": "scor",
+          "a": 7,
+          "b": 3,
+          "c": 4
+        },
+        {
+          "v": "monede",
+          "a": 20,
+          "b": 10,
+          "c": 5
+        }
+      ],
+      "mistakes": [
+        ["{{v}} += {{b}}", "{{v}} = {{b}}"],
+        ["{{v}} -= {{c}}", "{{v}} =- {{c}}"],
+        ["{{v}} *= 2", "{{v}} += 2"]
+      ]
+    },
+    {
+      "id": "pc-long",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = [{{words}}]\nlungi = 0\nfor w in {{v}}:\n    if len(w) > {{k}}:\n        lungi += 1\nprint(f\"Cuvinte lungi: {lungi}\")",
+      "values": [
+        {
+          "v": "cuvinte",
+          "words": "\"Vice\", \"City\", \"Stories\", \"Ocean\"",
+          "k": 4
+        },
+        {
+          "v": "nume",
+          "words": "\"Tommy\", \"Lance\", \"Ken\", \"Cortez\"",
+          "k": 5
+        },
+        {
+          "v": "planete",
+          "words": "\"Marte\", \"Venus\", \"Terra\", \"Jupiter\"",
+          "k": 4
+        }
+      ],
+      "mistakes": [
+        ["len(w) > {{k}}", "len(w) >= {{k}}"],
+        ["lungi += 1", "lungi += len(w)"],
+        ["lungi = 0", "lungi = 1"],
+        ["len(w) > {{k}}", "len(w) < {{k}}"]
+      ]
+    },
+    {
+      "id": "pc-which-match",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = [{{items}}]\ncontor = 0\nfor x in {{v}}:\n    if x == \"{{t}}\":\n        contor += 1\nprint(f\"{{t}}: {contor}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Ken\", \"Tommy\"",
+          "t": "Tommy"
+        },
+        {
+          "v": "jurnal",
+          "items": "\"ok\", \"eroare\", \"ok\", \"eroare\", \"ok\", \"ok\"",
+          "t": "eroare"
+        },
+        {
+          "v": "voturi",
+          "items": "\"da\", \"nu\", \"da\", \"da\"",
+          "t": "da"
+        },
+        {
+          "v": "culori",
+          "items": "\"rosu\", \"albastru\", \"rosu\", \"verde\", \"rosu\", \"rosu\"",
+          "t": "rosu"
+        }
+      ],
+      "mistakes": [
+        ["x == \"{{t}}\"", "x != \"{{t}}\""],
+        ["contor += 1", "contor = 1"],
+        ["contor = 0", "contor = 1"],
+        ["\nprint(f\"{{t}}: {contor}\")", "\n    print(f\"{{t}}: {contor}\")"]
+      ]
+    },
+    {
+      "id": "pc-which-lower",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = \"{{s}}\"\nminuscule = 0\nfor caracter in {{v}}:\n    if caracter.islower():\n        minuscule += 1\nprint(minuscule)",
+      "values": [
+        {
+          "v": "nume",
+          "s": "Tommy"
+        },
+        {
+          "v": "oras",
+          "s": "Vice City"
+        },
+        {
+          "v": "echipaj",
+          "s": "Lance Vance"
+        },
+        {
+          "v": "pilot",
+          "s": "Phil Cassidy"
+        }
+      ],
+      "mistakes": [
+        ["islower", "isupper"],
+        ["islower", "isalpha"],
+        ["minuscule += 1", "minuscule = 1"],
+        ["minuscule = 0", "minuscule = 1"]
+      ]
+    },
+    {
+      "id": "pc-gap-increase",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\ncontor = 0\nfor n in {{v}}:\n    if n > {{t}}:\n        ___\nprint(f\"Peste {{t}}: {contor}\")",
+      "values": [
+        {
+          "v": "scoruri",
+          "nums": "80, 95, 40, 70, 88",
+          "t": 75
+        },
+        {
+          "v": "citiri",
+          "nums": "42, 75, 100, 30, 88",
+          "t": 50
+        },
+        {
+          "v": "temperaturi",
+          "nums": "12, 30, 25, 31",
+          "t": 28
+        },
+        {
+          "v": "viteze",
+          "nums": "60, 120, 90, 150, 95",
+          "t": 70
+        }
+      ],
+      "answer": "contor += 1",
+      "wrong": ["contor = 1", "contor += n", "contor -= 1", "contor = n"]
+    },
+    {
+      "id": "pc-gap-init",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\n___\nfor caracter in {{v}}:\n    if caracter.isupper():\n        majuscule += 1\nprint(majuscule)",
+      "values": [
+        {
+          "v": "nume",
+          "s": "Tommy Vercetti"
+        },
+        {
+          "v": "cod",
+          "s": "NASA Baza"
+        },
+        {
+          "v": "oras",
+          "s": "Vice City"
+        },
+        {
+          "v": "nava",
+          "s": "USS Orbit"
+        }
+      ],
+      "answer": "majuscule = 0",
+      "wrong": [
+        "majuscule = 1",
+        "majuscule = len({{v}})",
+        "majuscule = \"0\"",
+        "majuscule = caracter"
+      ]
+    },
+    {
+      "id": "pc-gap-check",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\ncifre = 0\nfor caracter in {{v}}:\n    ___\n        cifre += 1\nprint(f\"Cifre: {cifre}\")",
+      "values": [
+        {
+          "v": "cod",
+          "s": "Agent 47"
+        },
+        {
+          "v": "sala",
+          "s": "Sala 101"
+        },
+        {
+          "v": "poarta",
+          "s": "Doc 12 Poarta 7"
+        },
+        {
+          "v": "pin",
+          "s": "Cod 1234"
+        }
+      ],
+      "answer": "if caracter.isdigit():",
+      "wrong": [
+        "if caracter.isalpha():",
+        "if caracter.isupper():",
+        "if caracter == \" \":",
+        "if caracter.islower():"
+      ]
+    },
+    {
+      "id": "pc-val-method",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\ncontor = 0\nfor caracter in {{v}}:\n    if caracter.___():\n        contor += 1\nprint(contor)",
+      "values": [
+        {
+          "v": "nume",
+          "s": "Tommy Vercetti 1986",
+          "m": "isupper"
+        },
+        {
+          "v": "cod",
+          "s": "Agent 47",
+          "m": "isdigit"
+        },
+        {
+          "v": "oras",
+          "s": "Vice City",
+          "m": "islower"
+        },
+        {
+          "v": "droizi",
+          "s": "R2D2 si C3PO",
+          "m": "isalpha"
+        }
+      ],
+      "answer": "{{m}}",
+      "wrong": ["isupper", "islower", "isdigit", "isalpha"]
+    },
+    {
+      "id": "pc-val-compare",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\ncontor = 0\nfor c in {{v}}:\n    if c ___ {{t}}:\n        contor += 1\nprint(contor)",
+      "values": [
+        {
+          "v": "citiri",
+          "nums": "42, 50, 75, 50, 30",
+          "t": 50,
+          "op": ">="
+        },
+        {
+          "v": "niveluri",
+          "nums": "100, 120, 99, 100, 130",
+          "t": 100,
+          "op": "<"
+        },
+        {
+          "v": "scoruri",
+          "nums": "60, 40, 60, 80",
+          "t": 60,
+          "op": ">"
+        },
+        {
+          "v": "varste",
+          "nums": "5, 9, 12, 9, 3",
+          "t": 9,
+          "op": "<="
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": [">", ">=", "<", "<=", "=="]
+    },
+    {
+      "id": "pc-val-step",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\n{{c}} = 0\nfor n in {{v}}:\n    if n % 2 == 0:\n        {{c}} ___ 1\nprint({{c}})",
+      "values": [
+        {
+          "v": "numere",
+          "nums": "4, 7, 10, 2",
+          "c": "pare"
+        },
+        {
+          "v": "scoruri",
+          "nums": "1, 3, 6, 8, 12",
+          "c": "numar_pare"
+        },
+        {
+          "v": "niveluri",
+          "nums": "2, 4, 6, 8",
+          "c": "gasite"
+        },
+        {
+          "v": "varste",
+          "nums": "11, 20, 35, 40, 50",
+          "c": "varste_pare"
+        }
+      ],
+      "answer": "+=",
+      "wrong": ["-=", "=", "*=", "=="]
+    },
+    {
+      "id": "pc-bad-start",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\ncontor = 0\nfor n in {{v}}:\n    if n > {{t}}:\n        print(n)\n        contor += 1\nprint(f\"Numar: {contor}\")",
+      "values": [
+        {
+          "v": "scoruri",
+          "nums": "80, 95, 40, 70, 88",
+          "t": 75
+        },
+        {
+          "v": "citiri",
+          "nums": "42, 75, 100, 30, 88",
+          "t": 50
+        },
+        {
+          "v": "temperaturi",
+          "nums": "12, 30, 25, 31",
+          "t": 20
+        }
+      ],
+      "bug": ["contor = 0", "contor = 1"]
+    },
+    {
+      "id": "pc-bad-method",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\nmajuscule = 0\nfor caracter in {{v}}:\n    if caracter.isupper():\n        print(caracter)\n        majuscule += 1\nprint(f\"Majuscule: {majuscule}\")",
+      "values": [
+        {
+          "v": "nume",
+          "s": "Tommy Vercetti"
+        },
+        {
+          "v": "cod",
+          "s": "NASA Baza"
+        },
+        {
+          "v": "oras",
+          "s": "Vice City"
+        }
+      ],
+      "bug": ["isupper", "islower"]
+    },
+    {
+      "id": "pc-bad-add",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{items}}]\ngasite = 0\nfor x in {{v}}:\n    print(x)\n    if x == \"{{t}}\":\n        gasite += 1\nprint(f\"{{t}}: {gasite}\")",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Ken\"",
+          "t": "Tommy"
+        },
+        {
+          "v": "jurnal",
+          "items": "\"ok\", \"eroare\", \"ok\", \"ok\"",
+          "t": "ok"
+        },
+        {
+          "v": "voturi",
+          "items": "\"da\", \"nu\", \"da\", \"nu\", \"nu\"",
+          "t": "nu"
+        }
+      ],
+      "bug": ["gasite += 1", "gasite = 1"]
+    },
+    {
+      "id": "pc-bad-high",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = [{{nums}}]\nmici = 0\nmari = 0\nfor c in {{v}}:\n    if c < {{t}}:\n        mici += 1\n    else:\n        mari += 1\nprint(f\"Mici: {mici}\")\nprint(f\"Mari: {mari}\")",
+      "values": [
+        {
+          "v": "citiri",
+          "nums": "42, 75, 100, 30, 88",
+          "t": 50
+        },
+        {
+          "v": "niveluri",
+          "nums": "100, 120, 99, 130",
+          "t": 100
+        },
+        {
+          "v": "semnale",
+          "nums": "7, 3, 9, 10, 1, 6",
+          "t": 5
+        }
+      ],
+      "bug": ["mari += 1", "mari = 1"]
+    }
+  ]
+}

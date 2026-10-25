@@ -1,0 +1,826 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What are the four steps of the counter pattern, in order?",
+      "options": [
+        "Initialize, loop, check, increase",
+        "Loop, initialize, increase, check",
+        "Check, loop, increase, initialize",
+        "Initialize, increase, loop, check"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "numbers = [4, 7, 10, 13, 16]\neven_count = 0\n\nfor n in numbers:\n    if n % 2 == 0:\n        even_count = even_count + 1\n\nprint(f\"Even numbers: {even_count}\")",
+      "options": ["Even numbers: 2", "Even numbers: 5", "Even numbers: 3", "Even numbers: 30"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Why does a counter start at 0?",
+      "options": [
+        "Python needs every variable to start at 0",
+        "Before the loop we haven't found anything yet",
+        "So the loop runs one more time",
+        "0 tells Python the variable is a counter"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "What does `x += 1` do?",
+      "options": [
+        "It sets x to 1",
+        "It checks whether x is 1",
+        "It adds 1 to x, but only inside a loop",
+        "The same as x = x + 1"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "lives = 5\nlives -= 1\nlives -= 1\nlives += 3\nprint(lives)",
+      "options": ["6", "4", "9", "3"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "name = \"Lance Vance\"\nupper_count = 0\n\nfor char in name:\n    if char.isupper():\n        upper_count += 1\n\nprint(f\"Uppercase letters: {upper_count}\")",
+      "options": [
+        "Uppercase letters: 11",
+        "Uppercase letters: 10",
+        "Uppercase letters: 2",
+        "Uppercase letters: 8"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "What does `\"7\".isdigit()` give?",
+      "options": ["False", "True", "7", "\"7\""],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Which method tells us whether a character is a letter?",
+      "options": [".isdigit()", ".isletter()", ".ischar()", ".isalpha()"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "text = \"Room 404 is free\"\nletters = 0\ndigits = 0\nspaces = 0\n\nfor char in text:\n    if char.isalpha():\n        letters += 1\n    elif char.isdigit():\n        digits += 1\n    elif char == \" \":\n        spaces += 1\n\nprint(f\"Letters: {letters}, Digits: {digits}, Spaces: {spaces}\")",
+      "options": [
+        "Letters: 10, Digits: 3, Spaces: 3",
+        "Letters: 10, Digits: 3, Spaces: 2",
+        "Letters: 16, Digits: 0, Spaces: 0",
+        "Letters: 13, Digits: 3, Spaces: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "numbers = [2, 4, 6]\nfor n in numbers:\n    count = 0\n    if n % 2 == 0:\n        count += 1\nprint(count)",
+      "options": ["3", "1", "0", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "count = 0\nfor n in [5, 8, 12]:\n    if n > 6:\n        count += 1\n    print(count)",
+      "options": ["2", "1\n2", "0\n1\n2", "1\n2\n3"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "In the Reading Bands mission, which band does a reading of exactly 100 go into?",
+      "options": ["Mid", "Low", "None of them", "High"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "In the Reading Bands mission, which band does a reading of exactly 50 go into?",
+      "options": ["Mid", "Low", "High", "Both Low and Mid"],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "In the mission, why is `elif reading < 100:` enough for Mid, without also checking `reading >= 50`?",
+      "options": [
+        "Python adds the `>= 50` check by itself",
+        "Readings below 50 count as Mid too",
+        "The elif runs only when `reading < 50` was false, so the reading is already 50 or more",
+        "An elif checks every condition above it once more"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "text = \"A1 b2\"\nletters = 0\ndigits = 0\nfor char in text:\n    if char.isalpha():\n        letters += 1\n    if char.isdigit():\n        digits += 1\nprint(letters, digits)",
+      "options": ["2 3", "2 2", "5 0", "3 2"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "What happens when this runs?",
+      "code": "count = 0\nfor n in [3, 8, 11]:\n    if n > 5:\n        count += \"1\"\nprint(count)",
+      "options": [
+        "It prints 2",
+        "It prints 11",
+        "It prints 0",
+        "It stops with a TypeError: a number and a text can't be added"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "What happens when this runs?",
+      "code": "for n in [3, 8, 11]:\n    if n > 5:\n        total += 1\nprint(total)",
+      "options": [
+        "It stops with a NameError: total has no value before the first +=",
+        "It prints 2",
+        "It prints 0",
+        "It prints 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Which line does the same as `x -= 1`?",
+      "options": ["x = -1", "x = 1 - x", "x = x - 1", "x == x - 1"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "count = 10\ncount *= 2\ncount -= 5\nprint(count)",
+      "options": ["20", "15", "25", "10"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "name = \"Banana Bay\"\na_count = 0\nfor char in name:\n    if char == \"a\":\n        a_count += 1\nprint(a_count)",
+      "options": ["3", "5", "2", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "A counter loop has `count += 1` under its if. What changes if we write `count += n` there instead?",
+      "options": [
+        "It adds up the numbers that pass the check instead of counting them",
+        "Nothing: it still counts them",
+        "It counts each one twice",
+        "It stops with an error"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Where does the line `count = 0` go in the counter pattern?",
+      "options": [
+        "Inside the loop, before the if",
+        "Inside the if, before the +=",
+        "Before the loop, once",
+        "After the loop, before the print"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "We want to print only the final count. Where does the `print(count)` go?",
+      "options": [
+        "Inside the if, under the +=",
+        "After the loop, not indented under it",
+        "Inside the loop, after the if",
+        "Before the loop"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "city = \"Vice City\"\nlower = 0\nfor char in city:\n    if char.islower():\n        lower += 1\nprint(lower)",
+      "options": ["2", "8", "9", "6"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Ken\", \"Lance\", \"Phil\"]\nshort = 0\nfor name in names:\n    if len(name) < 5:\n        short += 1\nprint(f\"Short names: {short}\")",
+      "options": ["Short names: 2", "Short names: 3", "Short names: 4", "Short names: 7"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "scores = [45, 80, 92, 60, 30, 75]\npassed = 0\nfailed = 0\nfor s in scores:\n    if s >= 50:\n        passed += 1\n    else:\n        failed += 1\nprint(passed, failed)",
+      "options": ["2 4", "6 0", "4 2", "3 3"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "A counter loop goes over the characters of a code. Which check makes it count only the digits?",
+      "options": [
+        "if char.isalpha():",
+        "if char.isdigit():",
+        "if char == digit:",
+        "if char.isupper():"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "text = \"to be or not\"\nspaces = 0\nfor char in text:\n    if char == \" \":\n        spaces += 1\nprint(f\"Words: {spaces + 1}\")",
+      "options": ["Words: 3", "Words: 12", "Words: 1", "Words: 4"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "When is `len(numbers)` not enough, so we need a counter?",
+      "options": [
+        "When we count only the items that pass a check, like the even ones",
+        "Never: len() can count anything",
+        "When the list has more than 10 items",
+        "When the list holds text instead of numbers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "scores = [80, 95, 40, 70]\nabove = 0\nfor s in scores:\n    if s > 75:\n        above += 1\nprint(f\"{above} of {len(scores)} above 75\")",
+      "options": ["3 of 4 above 75", "2 of 2 above 75", "2 of 4 above 75", "175 of 4 above 75"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "pc-even",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\ncount = 0\nfor n in {{v}}:\n    if n % 2 == 0:\n        count += 1\nprint(f\"Even: {count}\")",
+      "values": [
+        {
+          "v": "numbers",
+          "nums": "3, 8, 12, 5, 6"
+        },
+        {
+          "v": "scores",
+          "nums": "10, 7, 4, 9"
+        },
+        {
+          "v": "ages",
+          "nums": "21, 34, 18, 40, 15, 22"
+        },
+        {
+          "v": "levels",
+          "nums": "1, 3, 5, 2"
+        }
+      ],
+      "mistakes": [
+        ["n % 2 == 0", "n % 2 == 1"],
+        ["count += 1", "count += n"],
+        ["count = 0", "count = 1"],
+        ["\nprint(f\"Even: {count}\")", "\n    print(f\"Even: {count}\")"]
+      ]
+    },
+    {
+      "id": "pc-above",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\nabove = 0\nfor r in {{v}}:\n    if r > {{t}}:\n        above += 1\nprint(above)",
+      "values": [
+        {
+          "v": "readings",
+          "nums": "42, 75, 100, 30, 88",
+          "t": 75
+        },
+        {
+          "v": "temps",
+          "nums": "12, 30, 25, 30, 8",
+          "t": 25
+        },
+        {
+          "v": "fuel",
+          "nums": "5, 50, 20, 15, 35",
+          "t": 15
+        }
+      ],
+      "mistakes": [
+        ["r > {{t}}", "r >= {{t}}"],
+        ["above += 1", "above = 1"],
+        ["above += 1", "above += r"],
+        ["r > {{t}}", "r < {{t}}"]
+      ]
+    },
+    {
+      "id": "pc-upper",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{s}}\"\nupper = 0\nfor char in {{v}}:\n    if char.isupper():\n        upper += 1\nprint(f\"Uppercase: {upper}\")",
+      "values": [
+        {
+          "v": "name",
+          "s": "Tommy Vercetti"
+        },
+        {
+          "v": "code",
+          "s": "NASA Base 7"
+        },
+        {
+          "v": "ship",
+          "s": "USS Orbit"
+        }
+      ],
+      "mistakes": [
+        ["isupper", "islower"],
+        ["isupper", "isalpha"],
+        ["upper += 1", "upper = 1"],
+        ["\nprint(f\"Uppercase: {upper}\")", "\n    print(f\"Uppercase: {upper}\")"]
+      ]
+    },
+    {
+      "id": "pc-digits",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "code = \"{{s}}\"\ndigits = 0\nfor char in code:\n    if char.isdigit():\n        digits += 1\nprint(digits)",
+      "values": [
+        {
+          "s": "R2D2"
+        },
+        {
+          "s": "Agent 47"
+        },
+        {
+          "s": "X1Y22Z"
+        }
+      ],
+      "mistakes": [
+        ["isdigit", "isalpha"],
+        ["digits += 1", "digits = 1"],
+        ["digits = 0", "digits = 1"],
+        ["\nprint(digits)", "\n    print(digits)"]
+      ]
+    },
+    {
+      "id": "pc-multi",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "text = \"{{s}}\"\nletters = 0\ndigits = 0\nspaces = 0\nfor char in text:\n    if char.isalpha():\n        letters += 1\n    elif char.isdigit():\n        digits += 1\n    elif char == \" \":\n        spaces += 1\nprint(f\"Letters: {letters}, Digits: {digits}, Spaces: {spaces}\")",
+      "values": [
+        {
+          "s": "Vice City 86"
+        },
+        {
+          "s": "Room 101"
+        },
+        {
+          "s": "Gate 3 at 9 PM"
+        }
+      ],
+      "mistakes": [
+        ["digits += 1", "letters += 1"],
+        ["elif char == \" \":", "elif char != \" \":"],
+        ["spaces += 1", "spaces = 1"],
+        ["letters = 0", "letters = 1"]
+      ]
+    },
+    {
+      "id": "pc-bands",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{nums}}]\nlow = 0\nmid = 0\nhigh = 0\nfor r in {{v}}:\n    if r < 50:\n        low += 1\n    elif r < 100:\n        mid += 1\n    else:\n        high += 1\nprint(f\"Low: {low}\")\nprint(f\"Mid: {mid}\")\nprint(f\"High: {high}\")",
+      "values": [
+        {
+          "v": "readings",
+          "nums": "42, 75, 100, 30, 88, 120"
+        },
+        {
+          "v": "levels",
+          "nums": "50, 99, 100, 49, 130, 140, 160"
+        },
+        {
+          "v": "signals",
+          "nums": "10, 50, 100, 100, 60, 70"
+        },
+        {
+          "v": "scans",
+          "nums": "100, 20, 50, 150, 80, 35, 5"
+        }
+      ],
+      "mistakes": [
+        ["elif r < 100:", "elif r <= 100:"],
+        ["if r < 50:", "if r <= 50:"],
+        ["mid += 1", "high += 1"],
+        ["high += 1", "high = 1"]
+      ]
+    },
+    {
+      "id": "pc-shortcut",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{a}}\n{{v}} += {{b}}\n{{v}} -= {{c}}\n{{v}} *= 2\nprint({{v}})",
+      "values": [
+        {
+          "v": "fuel",
+          "a": 10,
+          "b": 5,
+          "c": 3
+        },
+        {
+          "v": "score",
+          "a": 7,
+          "b": 3,
+          "c": 4
+        },
+        {
+          "v": "coins",
+          "a": 20,
+          "b": 10,
+          "c": 5
+        }
+      ],
+      "mistakes": [
+        ["{{v}} += {{b}}", "{{v}} = {{b}}"],
+        ["{{v}} -= {{c}}", "{{v}} =- {{c}}"],
+        ["{{v}} *= 2", "{{v}} += 2"]
+      ]
+    },
+    {
+      "id": "pc-long",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = [{{words}}]\nlong = 0\nfor w in {{v}}:\n    if len(w) > {{k}}:\n        long += 1\nprint(f\"Long words: {long}\")",
+      "values": [
+        {
+          "v": "words",
+          "words": "\"Vice\", \"City\", \"Stories\", \"Ocean\"",
+          "k": 4
+        },
+        {
+          "v": "names",
+          "words": "\"Tommy\", \"Lance\", \"Ken\", \"Cortez\"",
+          "k": 5
+        },
+        {
+          "v": "planets",
+          "words": "\"Mars\", \"Venus\", \"Earth\", \"Jupiter\"",
+          "k": 4
+        }
+      ],
+      "mistakes": [
+        ["len(w) > {{k}}", "len(w) >= {{k}}"],
+        ["long += 1", "long += len(w)"],
+        ["long = 0", "long = 1"],
+        ["len(w) > {{k}}", "len(w) < {{k}}"]
+      ]
+    },
+    {
+      "id": "pc-which-match",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = [{{items}}]\ncount = 0\nfor x in {{v}}:\n    if x == \"{{t}}\":\n        count += 1\nprint(f\"{{t}}: {count}\")",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Ken\", \"Tommy\"",
+          "t": "Tommy"
+        },
+        {
+          "v": "log",
+          "items": "\"ok\", \"error\", \"ok\", \"error\", \"ok\", \"ok\"",
+          "t": "error"
+        },
+        {
+          "v": "votes",
+          "items": "\"yes\", \"no\", \"yes\", \"yes\"",
+          "t": "yes"
+        },
+        {
+          "v": "colors",
+          "items": "\"red\", \"blue\", \"red\", \"green\", \"red\", \"red\"",
+          "t": "red"
+        }
+      ],
+      "mistakes": [
+        ["x == \"{{t}}\"", "x != \"{{t}}\""],
+        ["count += 1", "count = 1"],
+        ["count = 0", "count = 1"],
+        ["\nprint(f\"{{t}}: {count}\")", "\n    print(f\"{{t}}: {count}\")"]
+      ]
+    },
+    {
+      "id": "pc-which-lower",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = \"{{s}}\"\nlower = 0\nfor char in {{v}}:\n    if char.islower():\n        lower += 1\nprint(lower)",
+      "values": [
+        {
+          "v": "name",
+          "s": "Tommy"
+        },
+        {
+          "v": "city",
+          "s": "Vice City"
+        },
+        {
+          "v": "crew",
+          "s": "Lance Vance"
+        },
+        {
+          "v": "pilot",
+          "s": "Phil Cassidy"
+        }
+      ],
+      "mistakes": [
+        ["islower", "isupper"],
+        ["islower", "isalpha"],
+        ["lower += 1", "lower = 1"],
+        ["lower = 0", "lower = 1"]
+      ]
+    },
+    {
+      "id": "pc-gap-increase",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{nums}}]\ncount = 0\nfor n in {{v}}:\n    if n > {{t}}:\n        ___\nprint(f\"Above {{t}}: {count}\")",
+      "values": [
+        {
+          "v": "scores",
+          "nums": "80, 95, 40, 70, 88",
+          "t": 75
+        },
+        {
+          "v": "readings",
+          "nums": "42, 75, 100, 30, 88",
+          "t": 50
+        },
+        {
+          "v": "temps",
+          "nums": "12, 30, 25, 31",
+          "t": 28
+        },
+        {
+          "v": "speeds",
+          "nums": "60, 120, 90, 150, 95",
+          "t": 70
+        }
+      ],
+      "answer": "count += 1",
+      "wrong": ["count = 1", "count += n", "count -= 1", "count = n"]
+    },
+    {
+      "id": "pc-gap-init",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{s}}\"\n___\nfor char in {{v}}:\n    if char.isupper():\n        upper += 1\nprint(upper)",
+      "values": [
+        {
+          "v": "name",
+          "s": "Tommy Vercetti"
+        },
+        {
+          "v": "code",
+          "s": "NASA Base"
+        },
+        {
+          "v": "city",
+          "s": "Vice City"
+        },
+        {
+          "v": "ship",
+          "s": "USS Orbit"
+        }
+      ],
+      "answer": "upper = 0",
+      "wrong": ["upper = 1", "upper = len({{v}})", "upper = \"0\"", "upper = char"]
+    },
+    {
+      "id": "pc-gap-check",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{s}}\"\ndigits = 0\nfor char in {{v}}:\n    ___\n        digits += 1\nprint(f\"Digits: {digits}\")",
+      "values": [
+        {
+          "v": "code",
+          "s": "Agent 47"
+        },
+        {
+          "v": "room",
+          "s": "Room 101"
+        },
+        {
+          "v": "gate",
+          "s": "Bay 12 Gate 7"
+        },
+        {
+          "v": "pin",
+          "s": "Code 1234"
+        }
+      ],
+      "answer": "if char.isdigit():",
+      "wrong": [
+        "if char.isalpha():",
+        "if char.isupper():",
+        "if char == \" \":",
+        "if char.islower():"
+      ]
+    },
+    {
+      "id": "pc-val-method",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = \"{{s}}\"\ncount = 0\nfor char in {{v}}:\n    if char.___():\n        count += 1\nprint(count)",
+      "values": [
+        {
+          "v": "name",
+          "s": "Tommy Vercetti 1986",
+          "m": "isupper"
+        },
+        {
+          "v": "code",
+          "s": "Agent 47",
+          "m": "isdigit"
+        },
+        {
+          "v": "city",
+          "s": "Vice City",
+          "m": "islower"
+        },
+        {
+          "v": "droids",
+          "s": "R2D2 and C3PO",
+          "m": "isalpha"
+        }
+      ],
+      "answer": "{{m}}",
+      "wrong": ["isupper", "islower", "isdigit", "isalpha"]
+    },
+    {
+      "id": "pc-val-compare",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{nums}}]\ncount = 0\nfor r in {{v}}:\n    if r ___ {{t}}:\n        count += 1\nprint(count)",
+      "values": [
+        {
+          "v": "readings",
+          "nums": "42, 50, 75, 50, 30",
+          "t": 50,
+          "op": ">="
+        },
+        {
+          "v": "levels",
+          "nums": "100, 120, 99, 100, 130",
+          "t": 100,
+          "op": "<"
+        },
+        {
+          "v": "scores",
+          "nums": "60, 40, 60, 80",
+          "t": 60,
+          "op": ">"
+        },
+        {
+          "v": "ages",
+          "nums": "5, 9, 12, 9, 3",
+          "t": 9,
+          "op": "<="
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": [">", ">=", "<", "<=", "=="]
+    },
+    {
+      "id": "pc-val-step",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = [{{nums}}]\n{{c}} = 0\nfor n in {{v}}:\n    if n % 2 == 0:\n        {{c}} ___ 1\nprint({{c}})",
+      "values": [
+        {
+          "v": "numbers",
+          "nums": "4, 7, 10, 2",
+          "c": "evens"
+        },
+        {
+          "v": "scores",
+          "nums": "1, 3, 6, 8, 12",
+          "c": "even_count"
+        },
+        {
+          "v": "levels",
+          "nums": "2, 4, 6, 8",
+          "c": "found"
+        },
+        {
+          "v": "ages",
+          "nums": "11, 20, 35, 40, 50",
+          "c": "even_ages"
+        }
+      ],
+      "answer": "+=",
+      "wrong": ["-=", "=", "*=", "=="]
+    },
+    {
+      "id": "pc-bad-start",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{nums}}]\ncount = 0\nfor n in {{v}}:\n    if n > {{t}}:\n        print(n)\n        count += 1\nprint(f\"Count: {count}\")",
+      "values": [
+        {
+          "v": "scores",
+          "nums": "80, 95, 40, 70, 88",
+          "t": 75
+        },
+        {
+          "v": "readings",
+          "nums": "42, 75, 100, 30, 88",
+          "t": 50
+        },
+        {
+          "v": "temps",
+          "nums": "12, 30, 25, 31",
+          "t": 20
+        }
+      ],
+      "bug": ["count = 0", "count = 1"]
+    },
+    {
+      "id": "pc-bad-method",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = \"{{s}}\"\nupper = 0\nfor char in {{v}}:\n    if char.isupper():\n        print(char)\n        upper += 1\nprint(f\"Uppercase: {upper}\")",
+      "values": [
+        {
+          "v": "name",
+          "s": "Tommy Vercetti"
+        },
+        {
+          "v": "code",
+          "s": "NASA Base"
+        },
+        {
+          "v": "city",
+          "s": "Vice City"
+        }
+      ],
+      "bug": ["isupper", "islower"]
+    },
+    {
+      "id": "pc-bad-add",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{items}}]\nfound = 0\nfor x in {{v}}:\n    print(x)\n    if x == \"{{t}}\":\n        found += 1\nprint(f\"{{t}}: {found}\")",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Ken\"",
+          "t": "Tommy"
+        },
+        {
+          "v": "log",
+          "items": "\"ok\", \"error\", \"ok\", \"ok\"",
+          "t": "ok"
+        },
+        {
+          "v": "votes",
+          "items": "\"yes\", \"no\", \"yes\", \"no\", \"no\"",
+          "t": "no"
+        }
+      ],
+      "bug": ["found += 1", "found = 1"]
+    },
+    {
+      "id": "pc-bad-high",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = [{{nums}}]\nlow = 0\nhigh = 0\nfor r in {{v}}:\n    if r < {{t}}:\n        low += 1\n    else:\n        high += 1\nprint(f\"Low: {low}\")\nprint(f\"High: {high}\")",
+      "values": [
+        {
+          "v": "readings",
+          "nums": "42, 75, 100, 30, 88",
+          "t": 50
+        },
+        {
+          "v": "levels",
+          "nums": "100, 120, 99, 130",
+          "t": 100
+        },
+        {
+          "v": "signals",
+          "nums": "7, 3, 9, 10, 1, 6",
+          "t": 5
+        }
+      ],
+      "bug": ["high += 1", "high = 1"]
+    }
+  ]
+}

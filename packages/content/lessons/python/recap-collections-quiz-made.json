@@ -1,0 +1,665 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-collections-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "col-skip-867996",
+      "text": "What does this print?",
+      "code": "items = [\"milk\", \"con-eggs\", \"bread\", \"con-jam\"]\nclean = []\nfor item in items:\n    if item[0:4] == \"con-\":\n        continue\n    clean.append(item)\nprint(clean)",
+      "options": ["['milk', 'bread']", "['milk']", "['con-eggs', 'con-jam']", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "col-skip-195c2c",
+      "text": "What does this print?",
+      "code": "files = [\"old-notes\", \"report\", \"old-photo\", \"plan\"]\nkeep = []\nfor f in files:\n    if f[0:4] == \"old-\":\n        continue\n    keep.append(f)\nprint(keep)",
+      "options": [
+        "['report', 'plan']",
+        "[]",
+        "['old-notes', 'old-photo']",
+        "['report']\n['report', 'plan']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-skip-496455",
+      "text": "What does this print?",
+      "code": "codes = [\"a7\", \"x1\", \"b2\", \"x9\"]\ngood = []\nfor c in codes:\n    if c[0:1] == \"x\":\n        continue\n    good.append(c)\nprint(good)",
+      "options": ["['a7', 'b2']", "['a7']", "['x1', 'x9']", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "col-skip-b45dd3",
+      "text": "What does this print?",
+      "code": "tasks = [\"fix engine\", \"done: wash\", \"launch\", \"done: refuel\"]\ntodo = []\nfor t in tasks:\n    if t[0:5] == \"done:\":\n        continue\n    todo.append(t)\nprint(todo)",
+      "options": [
+        "['fix engine', 'launch']",
+        "['fix engine']",
+        "['done: wash', 'done: refuel']",
+        "[]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-stop-66b005",
+      "text": "What does this print?",
+      "code": "items = [\"milk\", \"bread\", \"butter\", \"jam\"]\nbay = []\nfor item in items:\n    bay.append(item)\n    if item == \"butter\":\n        break\nprint(bay)",
+      "options": [
+        "['milk', 'bread', 'butter']",
+        "['milk', 'bread', 'butter', 'jam']",
+        "['milk', 'bread']",
+        "['milk']\n['milk', 'bread']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-stop-efb0cd",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Saturn\"]\nvisited = []\nfor p in planets:\n    visited.append(p)\n    if p == \"Venus\":\n        break\nprint(visited)",
+      "options": [
+        "['Mars', 'Venus']",
+        "['Mars', 'Venus', 'Earth', 'Saturn']",
+        "['Mars']",
+        "['Venus']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-stop-25894a",
+      "text": "What does this print?",
+      "code": "songs = [\"Intro\", \"Wave\", \"Rain\", \"Outro\", \"Bonus\"]\nplayed = []\nfor s in songs:\n    played.append(s)\n    if s == \"Rain\":\n        break\nprint(played)",
+      "options": [
+        "['Intro', 'Wave', 'Rain']",
+        "['Intro', 'Wave', 'Rain', 'Outro', 'Bonus']",
+        "['Intro', 'Wave']",
+        "['Intro']\n['Intro', 'Wave']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-cap-b568cc",
+      "text": "What does this print?",
+      "code": "word = \"station\"\nprint(word[0:3].upper() + word[3:])",
+      "options": ["STAtion", "station", "STATtion", "STA tion"],
+      "answer": 0
+    },
+    {
+      "id": "col-cap-a79376",
+      "text": "What does this print?",
+      "code": "name = \"rocket\"\nprint(name[0:1].upper() + name[1:])",
+      "options": ["Rocket", "rocket", "ROocket", "R ocket"],
+      "answer": 0
+    },
+    {
+      "id": "col-cap-cdb9ba",
+      "text": "What does this print?",
+      "code": "code = \"planet\"\nprint(code[0:4].upper() + code[4:])",
+      "options": ["PLANet", "planet", "PLANEet", "PLAN et"],
+      "answer": 0
+    },
+    {
+      "id": "col-long-158b34",
+      "text": "What does this print?",
+      "code": "words = [\"sun\", \"moon\", \"planet\", \"star\"]\ncount = 0\nfor w in words:\n    if len(w) > 4:\n        count = count + 1\nprint(count)",
+      "options": ["1", "3", "6", "0\n0\n1\n1"],
+      "answer": 0
+    },
+    {
+      "id": "col-long-37ae08",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Ken\", \"Cortez\", \"Lance\", \"Phil\"]\nlong = 0\nfor w in names:\n    if len(w) > 4:\n        long = long + 1\nprint(long)",
+      "options": ["3", "4", "16", "1"],
+      "answer": 0
+    },
+    {
+      "id": "col-long-aaa7f2",
+      "text": "What does this print?",
+      "code": "cities = [\"Rome\", \"Oslo\", \"Berlin\", \"Paris\"]\nbig = 0\nfor w in cities:\n    if len(w) > 5:\n        big = big + 1\nprint(big)",
+      "options": ["1", "2", "6", "0\n0\n1\n1"],
+      "answer": 0
+    },
+    {
+      "id": "col-long-8a6234",
+      "text": "What does this print?",
+      "code": "tools = [\"saw\", \"hammer\", \"drill\", \"wrench\"]\ncount = 0\nfor w in tools:\n    if len(w) > 5:\n        count = count + 1\nprint(count)",
+      "options": ["2", "3", "12", "1"],
+      "answer": 0
+    },
+    {
+      "id": "col-find-c75014",
+      "text": "What does this print?",
+      "code": "sectors = [\"A1\", \"B4\", \"C7\", \"D2\"]\nfor s in sectors:\n    if s == \"C7\":\n        print(\"Signal found!\")\n        break\n    print(s)",
+      "options": ["A1\nB4\nSignal found!", "A1\nB4\nSignal found!\nD2", "Signal found!", "A1\nB4"],
+      "answer": 0
+    },
+    {
+      "id": "col-find-3f0e13",
+      "text": "What does this print?",
+      "code": "crew = [\"Lance\", \"Phil\", \"Tommy\", \"Ken\", \"Mia\"]\nfor m in crew:\n    if m == \"Tommy\":\n        print(\"Captain on board\")\n        break\n    print(m)",
+      "options": [
+        "Lance\nPhil\nCaptain on board",
+        "Lance\nPhil\nCaptain on board\nKen\nMia",
+        "Captain on board",
+        "Lance\nPhil"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-find-5e0beb",
+      "text": "What does this print?",
+      "code": "doors = [\"red\", \"green\", \"blue\"]\nfor d in doors:\n    if d == \"green\":\n        print(\"Door open\")\n        break\n    print(d)",
+      "options": ["red\nDoor open", "red\nDoor open\nblue", "Door open", "red"],
+      "answer": 0
+    },
+    {
+      "id": "col-find-a6fe31",
+      "text": "What does this print?",
+      "code": "crates = [\"jam\", \"milk\", \"tea\", \"gold\", \"rice\"]\nfor c in crates:\n    if c == \"gold\":\n        print(\"Treasure!\")\n        break\n    print(c)",
+      "options": [
+        "jam\nmilk\ntea\nTreasure!",
+        "jam\nmilk\ntea\nTreasure!\nrice",
+        "Treasure!",
+        "jam\nmilk\ntea"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-initials-ca0fbb",
+      "text": "What does this print?",
+      "code": "words = [\"Never\", \"Ever\", \"Stop\"]\ncode = \"\"\nfor w in words:\n    code = code + w[0]\nprint(code)",
+      "options": ["NES", "NeverEverStop", "SEN", "evt"],
+      "answer": 0
+    },
+    {
+      "id": "col-initials-e0b17e",
+      "text": "What does this print?",
+      "code": "crew = [\"Tommy\", \"Victor\", \"Lance\", \"Ken\"]\nteam = \"\"\nfor w in crew:\n    team = team + w[0]\nprint(team)",
+      "options": ["TVLK", "TommyVictorLanceKen", "KLVT", "oiae"],
+      "answer": 0
+    },
+    {
+      "id": "col-initials-fa0f85",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Earth\", \"Venus\"]\nroute = \"\"\nfor w in planets:\n    route = route + w[0]\nprint(route)",
+      "options": ["MEV", "MarsEarthVenus", "VEM", "aae"],
+      "answer": 0
+    },
+    {
+      "id": "col-replace-2525f6",
+      "text": "What does this print?",
+      "code": "items = [\"milk\", \"con-eggs\", \"bread\", \"con-jam\"]\nfor i in range(len(items)):\n    if items[i][0:4] == \"con-\":\n        items[i] = \"empty\"\nprint(items)",
+      "options": [
+        "['milk', 'empty', 'bread', 'empty']",
+        "['milk', 'con-eggs', 'bread', 'con-jam', 'empty', 'empty']",
+        "['empty', 'con-eggs', 'empty', 'con-jam']",
+        "['milk', 'empty', 'bread', 'con-jam']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-replace-3665f1",
+      "text": "What does this print?",
+      "code": "seats = [\"Ana\", \"x\", \"Rex\", \"x\"]\nfor i in range(len(seats)):\n    if seats[i][0:1] == \"x\":\n        seats[i] = \"free\"\nprint(seats)",
+      "options": [
+        "['Ana', 'free', 'Rex', 'free']",
+        "['Ana', 'x', 'Rex', 'x', 'free', 'free']",
+        "['free', 'x', 'free', 'x']",
+        "['Ana', 'free', 'Rex', 'x']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-replace-82a22f",
+      "text": "What does this print?",
+      "code": "files = [\"plan\", \"tmp-a\", \"notes\", \"tmp-b\"]\nfor i in range(len(files)):\n    if files[i][0:4] == \"tmp-\":\n        files[i] = \"deleted\"\nprint(files)",
+      "options": [
+        "['plan', 'deleted', 'notes', 'deleted']",
+        "['plan', 'tmp-a', 'notes', 'tmp-b', 'deleted', 'deleted']",
+        "['deleted', 'tmp-a', 'deleted', 'tmp-b']",
+        "['plan', 'deleted', 'notes', 'tmp-b']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-replace-1b5d1a",
+      "text": "What does this print?",
+      "code": "signals = [\"ok\", \"err1\", \"ok\", \"err2\"]\nfor i in range(len(signals)):\n    if signals[i][0:3] == \"err\":\n        signals[i] = \"lost\"\nprint(signals)",
+      "options": [
+        "['ok', 'lost', 'ok', 'lost']",
+        "['ok', 'err1', 'ok', 'err2', 'lost', 'lost']",
+        "['lost', 'err1', 'lost', 'err2']",
+        "['ok', 'lost', 'ok', 'err2']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-sum-stop-9a020b",
+      "text": "What does this print?",
+      "code": "prices = [5, 10, 20, 40, 1]\ntotal = 0\nfor n in prices:\n    if n == 20:\n        break\n    total = total + n\nprint(total)",
+      "options": ["15", "56", "0", "5\n15"],
+      "answer": 0
+    },
+    {
+      "id": "col-sum-stop-66fa56",
+      "text": "What does this print?",
+      "code": "loads = [30, 25, 90, 10]\nweight = 0\nfor n in loads:\n    if n > 50:\n        break\n    weight = weight + n\nprint(weight)",
+      "options": ["55", "65", "0", "30\n55"],
+      "answer": 0
+    },
+    {
+      "id": "col-sum-stop-ab275d",
+      "text": "What does this print?",
+      "code": "scores = [8, 6, 0, 9, 7]\npoints = 0\nfor n in scores:\n    if n < 1:\n        break\n    points = points + n\nprint(points)",
+      "options": ["14", "30", "0", "8\n14"],
+      "answer": 0
+    },
+    {
+      "id": "col-sum-stop-7f749d",
+      "text": "What does this print?",
+      "code": "steps = [100, 200, 999, 300]\nwalked = 0\nfor n in steps:\n    if n >= 999:\n        break\n    walked = walked + n\nprint(walked)",
+      "options": ["300", "600", "0", "100\n300"],
+      "answer": 0
+    },
+    {
+      "id": "col-which-skip-00e4c0",
+      "text": "Which program shows this?",
+      "output": "['rice', 'tea']",
+      "options": [
+        "items = [\"rice\", \"con-milk\", \"tea\", \"con-jam\"]\nclean = []\nfor item in items:\n    if item[0:4] == \"con-\":\n        continue\n    clean.append(item)\nprint(clean)",
+        "items = [\"rice\", \"con-milk\", \"tea\", \"con-jam\"]\nclean = []\nfor item in items:\n    if item[0:4] == \"con-\":\n        break\n    clean.append(item)\nprint(clean)",
+        "items = [\"rice\", \"con-milk\", \"tea\", \"con-jam\"]\nclean = []\nfor item in items:\n    if item[0:4] != \"con-\":\n        continue\n    clean.append(item)\nprint(clean)",
+        "items = [\"rice\", \"con-milk\", \"tea\", \"con-jam\"]\nclean = []\nfor item in items:\n    if item[0:4] == \"con-\":\n        continue\n    clean.append(item)\n    print(clean)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-which-skip-13a2cd",
+      "text": "Which program shows this?",
+      "output": "['Rex', 'Mia']",
+      "options": [
+        "names = [\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        continue\n    others.append(n)\nprint(others)",
+        "names = [\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        break\n    others.append(n)\nprint(others)",
+        "names = [\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] != \"Dr.\":\n        continue\n    others.append(n)\nprint(others)",
+        "names = [\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        continue\n    others.append(n)\n    print(others)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-which-skip-304a32",
+      "text": "Which program shows this?",
+      "output": "['ok-1', 'ok-3']",
+      "options": [
+        "codes = [\"ok-1\", \"bad-2\", \"ok-3\"]\ngood = []\nfor c in codes:\n    if c[0:3] == \"bad\":\n        continue\n    good.append(c)\nprint(good)",
+        "codes = [\"ok-1\", \"bad-2\", \"ok-3\"]\ngood = []\nfor c in codes:\n    if c[0:3] == \"bad\":\n        break\n    good.append(c)\nprint(good)",
+        "codes = [\"ok-1\", \"bad-2\", \"ok-3\"]\ngood = []\nfor c in codes:\n    if c[0:3] != \"bad\":\n        continue\n    good.append(c)\nprint(good)",
+        "codes = [\"ok-1\", \"bad-2\", \"ok-3\"]\ngood = []\nfor c in codes:\n    if c[0:3] == \"bad\":\n        continue\n    good.append(c)\n    print(good)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-which-stop-a777f4",
+      "text": "Which program shows this?",
+      "output": "['tea', 'rice']",
+      "options": [
+        "crates = [\"tea\", \"rice\", \"oil\", \"salt\"]\nbay = []\nfor c in crates:\n    bay.append(c)\n    if c == \"rice\":\n        break\nprint(bay)",
+        "crates = [\"tea\", \"rice\", \"oil\", \"salt\"]\nbay = []\nfor c in crates:\n    bay.append(c)\n    if c == \"rice\":\n        continue\nprint(bay)",
+        "crates = [\"tea\", \"rice\", \"oil\", \"salt\"]\nbay = []\nfor c in crates:\n    if c == \"rice\":\n        break\n    bay.append(c)\nprint(bay)",
+        "crates = [\"tea\", \"rice\", \"oil\", \"salt\"]\nbay = []\nfor c in crates:\n    bay.append(c)\n    if c == \"rice\":\n        break\n    print(bay)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-which-stop-5d4b8f",
+      "text": "Which program shows this?",
+      "output": "['Moon', 'Mars', 'Titan']",
+      "options": [
+        "stops = [\"Moon\", \"Mars\", \"Titan\", \"Pluto\"]\nroute = []\nfor s in stops:\n    route.append(s)\n    if s == \"Titan\":\n        break\nprint(route)",
+        "stops = [\"Moon\", \"Mars\", \"Titan\", \"Pluto\"]\nroute = []\nfor s in stops:\n    route.append(s)\n    if s == \"Titan\":\n        continue\nprint(route)",
+        "stops = [\"Moon\", \"Mars\", \"Titan\", \"Pluto\"]\nroute = []\nfor s in stops:\n    if s == \"Titan\":\n        break\n    route.append(s)\nprint(route)",
+        "stops = [\"Moon\", \"Mars\", \"Titan\", \"Pluto\"]\nroute = []\nfor s in stops:\n    route.append(s)\n    if s == \"Titan\":\n        break\n    print(route)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-which-stop-2847b5",
+      "text": "Which program shows this?",
+      "output": "['3', '7', 'K']",
+      "options": [
+        "cards = [\"3\", \"7\", \"K\", \"9\", \"2\"]\nhand = []\nfor c in cards:\n    hand.append(c)\n    if c == \"K\":\n        break\nprint(hand)",
+        "cards = [\"3\", \"7\", \"K\", \"9\", \"2\"]\nhand = []\nfor c in cards:\n    hand.append(c)\n    if c == \"K\":\n        continue\nprint(hand)",
+        "cards = [\"3\", \"7\", \"K\", \"9\", \"2\"]\nhand = []\nfor c in cards:\n    if c == \"K\":\n        break\n    hand.append(c)\nprint(hand)",
+        "cards = [\"3\", \"7\", \"K\", \"9\", \"2\"]\nhand = []\nfor c in cards:\n    hand.append(c)\n    if c == \"K\":\n        break\n    print(hand)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-continue-8d2ca9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "items = [\"milk\", \"con-eggs\", \"bread\", \"jam\"]\nfor item in items:\n    if item[0:4] == \"con-\":\n        ___\n    print(item)",
+      "output": "milk\nbread\njam",
+      "options": ["continue", "break", "print(item)", "print(\"con-\")"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-continue-f8dcb9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "files = [\"plan\", \"old-map\", \"notes\", \"old-log\", \"photo\"]\nfor f in files:\n    if f[0:4] == \"old-\":\n        ___\n    print(f)",
+      "output": "plan\nnotes\nphoto",
+      "options": ["continue", "break", "print(f)", "print(\"old-\")"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-continue-5f36ca",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "codes = [\"a1\", \"x2\", \"b3\"]\nfor c in codes:\n    if c[0:1] == \"x\":\n        ___\n    print(c)",
+      "output": "a1\nb3",
+      "options": ["continue", "break", "print(c)", "print(\"x\")"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-continue-5f9a90",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "names = [\"Ana\", \"Dr. Rex\", \"Kai\"]\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        ___\n    print(n)",
+      "output": "Ana\nKai",
+      "options": ["continue", "break", "print(n)", "print(\"Dr.\")"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-append-d6b1e2",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "items = [\"milk\", \"bread\", \"butter\", \"jam\"]\nclean = []\nfor item in items:\n    ___\n    if item == \"butter\":\n        break\nprint(clean)",
+      "output": "['milk', 'bread', 'butter']",
+      "options": ["clean.append(item)", "clean = [item]", "clean.append(items)", "print(item)"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-append-646a19",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\"]\nseen = []\nfor p in planets:\n    ___\n    if p == \"Venus\":\n        break\nprint(seen)",
+      "output": "['Mars', 'Venus']",
+      "options": ["seen.append(p)", "seen = [p]", "seen.append(planets)", "print(p)"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-append-d64e86",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "tasks = [\"wake\", \"eat\", \"train\", \"sleep\"]\ndone = []\nfor t in tasks:\n    ___\n    if t == \"train\":\n        break\nprint(done)",
+      "output": "['wake', 'eat', 'train']",
+      "options": ["done.append(t)", "done = [t]", "done.append(tasks)", "print(t)"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-append-36ae69",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "levels = [\"easy\", \"hard\", \"boss\", \"bonus\"]\nplayed = []\nfor l in levels:\n    ___\n    if l == \"boss\":\n        break\nprint(played)",
+      "output": "['easy', 'hard', 'boss']",
+      "options": ["played.append(l)", "played = [l]", "played.append(levels)", "print(l)"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-upper-58a004",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"lance\"\n___\nprint(name)",
+      "output": "LANCE",
+      "options": [
+        "name = name.upper()",
+        "name.upper()",
+        "name = name.lower()",
+        "name = name[0].upper()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-upper-e3504b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "city = \"vice city\"\n___\nprint(city)",
+      "output": "VICE CITY",
+      "options": [
+        "city = city.upper()",
+        "city.upper()",
+        "city = city.lower()",
+        "city = city[0].upper()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-upper-dd35cd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "alert = \"red alert\"\n___\nprint(alert)",
+      "output": "RED ALERT",
+      "options": [
+        "alert = alert.upper()",
+        "alert.upper()",
+        "alert = alert.lower()",
+        "alert = alert[0].upper()"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-start-2cdee6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "items = [\"milk\", \"con-eggs\", \"jam\"]\nfor item in items:\n    if item[0:___] == \"con-\":\n        continue\n    print(item)",
+      "output": "milk\njam",
+      "options": ["4", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-start-afa316",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "files = [\"old-map\", \"plan\", \"old-log\"]\nfor f in files:\n    if f[0:___] == \"old-\":\n        continue\n    print(f)",
+      "output": "plan",
+      "options": ["4", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-start-8af3d8",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "names = [\"Dr. Ana\", \"Rex\", \"Kai\"]\nfor n in names:\n    if n[0:___] == \"Dr.\":\n        continue\n    print(n)",
+      "output": "Rex\nKai",
+      "options": ["3", "1", "2", "4"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-start-456e84",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "codes = [\"ab12\", \"xy34\", \"ab56\"]\nfor c in codes:\n    if c[0:___] == \"ab\":\n        continue\n    print(c)",
+      "output": "xy34",
+      "options": ["2", "1", "3", "4"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-index-f1ddbf",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "planets = [\"mars\", \"venus\", \"earth\", \"saturn\"]\nprint(planets[___].upper())",
+      "output": "EARTH",
+      "options": ["2", "0", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-index-0bc044",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "crew = [\"tommy\", \"lance\", \"ken\"]\nprint(crew[___].upper())",
+      "output": "LANCE",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-index-71fc17",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "colors = [\"red\", \"green\", \"blue\", \"pink\"]\nprint(colors[___].upper())",
+      "output": "PINK",
+      "options": ["3", "0", "1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-index-eea28f",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "items = [\"milk\", \"bread\", \"jam\"]\nprint(items[___].upper())",
+      "output": "MILK",
+      "options": ["0", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-stop-4ca254",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "items = [\"milk\", \"bread\", \"butter\", \"jam\"]\nclean = []\nfor item in items:\n    clean.append(item)\n    if item == ___:\n        break\nprint(len(clean))",
+      "output": "3",
+      "options": ["\"butter\"", "\"milk\"", "\"bread\"", "\"jam\""],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-stop-c6e211",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Saturn\"]\nseen = []\nfor p in planets:\n    seen.append(p)\n    if p == ___:\n        break\nprint(len(seen))",
+      "output": "2",
+      "options": ["\"Venus\"", "\"Mars\"", "\"Earth\"", "\"Saturn\""],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-stop-f69955",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "songs = [\"Intro\", \"Wave\", \"Rain\", \"Outro\"]\nplayed = []\nfor s in songs:\n    played.append(s)\n    if s == ___:\n        break\nprint(len(played))",
+      "output": "4",
+      "options": ["\"Outro\"", "\"Intro\"", "\"Wave\"", "\"Rain\""],
+      "answer": 0
+    },
+    {
+      "id": "col-gap-stop-8af0e3",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "tasks = [\"wake\", \"eat\", \"train\", \"sleep\"]\ndone = []\nfor t in tasks:\n    done.append(t)\n    if t == ___:\n        break\nprint(len(done))",
+      "output": "1",
+      "options": ["\"wake\"", "\"eat\"", "\"train\"", "\"sleep\""],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-slice-54a4aa",
+      "text": "Which line stops this program from printing this?",
+      "code": "items = [\"milk\", \"con-eggs\", \"bread\", \"con-jam\"]\nclean = []\nfor item in items:\n    if item[1:4] == \"con-\":\n        continue\n    clean.append(item)\nprint(clean)",
+      "output": "['milk', 'bread']",
+      "options": ["if item[1:4] == \"con-\":", "for item in items:", "clean = []", "continue"],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-slice-545411",
+      "text": "Which line stops this program from printing this?",
+      "code": "files = [\"old-map\", \"plan\", \"old-log\", \"photo\"]\nkeep = []\nfor f in files:\n    if f[1:4] == \"old-\":\n        continue\n    keep.append(f)\nprint(keep)",
+      "output": "['plan', 'photo']",
+      "options": ["if f[1:4] == \"old-\":", "continue", "keep.append(f)", "print(keep)"],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-slice-7728d9",
+      "text": "Which line stops this program from printing this?",
+      "code": "names = [\"Dr. Ana\", \"Rex\", \"Kai\", \"Dr. Mia\"]\nothers = []\nfor n in names:\n    if n[1:3] == \"Dr.\":\n        continue\n    others.append(n)\nprint(others)",
+      "output": "['Rex', 'Kai']",
+      "options": ["if n[1:3] == \"Dr.\":", "for n in names:", "continue", "others.append(n)"],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-break-b4fbdd",
+      "text": "Which line stops this program from printing this?",
+      "code": "items = [\"milk\", \"bread\", \"butter\", \"jam\"]\nclean = []\nfor item in items:\n    clean.append(item)\n    if item == \"butter\":\n        continue\nprint(clean)",
+      "output": "['milk', 'bread', 'butter']",
+      "options": ["continue", "clean.append(item)", "clean = []", "print(clean)"],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-break-e0632c",
+      "text": "Which line stops this program from printing this?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Saturn\", \"Pluto\"]\nseen = []\nfor p in planets:\n    seen.append(p)\n    if p == \"Earth\":\n        continue\nprint(seen)",
+      "output": "['Mars', 'Venus', 'Earth']",
+      "options": ["continue", "seen.append(p)", "seen = []", "print(seen)"],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-break-6259d1",
+      "text": "Which line stops this program from printing this?",
+      "code": "songs = [\"Intro\", \"Wave\", \"Rain\"]\nplayed = []\nfor s in songs:\n    played.append(s)\n    if s == \"Intro\":\n        continue\nprint(played)",
+      "output": "['Intro']",
+      "options": [
+        "continue",
+        "played.append(s)",
+        "played = []",
+        "songs = [\"Intro\", \"Wave\", \"Rain\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-start-63a948",
+      "text": "Which line stops this program from printing this?",
+      "code": "count = 1\nnames = [\"Tommy\", \"Ken\", \"Tina\", \"Lance\"]\nfor n in names:\n    if n[0] == \"T\":\n        print(n)\n        count = count + 1\nprint(f\"Names with T: {count}\")",
+      "output": "Tommy\nTina\nNames with T: 2",
+      "options": [
+        "count = 1",
+        "names = [\"Tommy\", \"Ken\", \"Tina\", \"Lance\"]",
+        "print(n)",
+        "count = count + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-start-2dda89",
+      "text": "Which line stops this program from printing this?",
+      "code": "found = 1\ncities = [\"Rome\", \"Oslo\", \"Riga\"]\nfor c in cities:\n    if c[0] == \"R\":\n        print(c)\n        found = found + 1\nprint(f\"Cities with R: {found}\")",
+      "output": "Rome\nRiga\nCities with R: 2",
+      "options": [
+        "found = 1",
+        "cities = [\"Rome\", \"Oslo\", \"Riga\"]",
+        "print(c)",
+        "found = found + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-start-b187b0",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 1\nwords = [\"sun\", \"sky\", \"moon\", \"star\", \"sea\"]\nfor w in words:\n    if w[0] == \"s\":\n        print(w)\n        total = total + 1\nprint(f\"Words with s: {total}\")",
+      "output": "sun\nsky\nstar\nsea\nWords with s: 4",
+      "options": [
+        "total = 1",
+        "words = [\"sun\", \"sky\", \"moon\", \"star\", \"sea\"]",
+        "print(w)",
+        "total = total + 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-print-7af9ad",
+      "text": "Which line stops this program from printing this?",
+      "code": "words = [\"sun\", \"planet\", \"moon\", \"rocket\"]\nlong = []\nfor w in words:\n    if len(w) > 4:\n        long.append(w.upper())\nprint(words)",
+      "output": "['PLANET', 'ROCKET']",
+      "options": [
+        "print(words)",
+        "long.append(w.upper())",
+        "long = []",
+        "words = [\"sun\", \"planet\", \"moon\", \"rocket\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-print-1ff4e0",
+      "text": "Which line stops this program from printing this?",
+      "code": "names = [\"Ken\", \"Cortez\", \"Lance\"]\nloud = []\nfor n in names:\n    if len(n) > 3:\n        loud.append(n.upper())\nprint(names)",
+      "output": "['CORTEZ', 'LANCE']",
+      "options": [
+        "print(names)",
+        "loud.append(n.upper())",
+        "loud = []",
+        "names = [\"Ken\", \"Cortez\", \"Lance\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-bad-print-90b125",
+      "text": "Which line stops this program from printing this?",
+      "code": "cities = [\"Rome\", \"Berlin\", \"Oslo\", \"Madrid\"]\nbig = []\nfor c in cities:\n    if len(c) > 4:\n        big.append(c.upper())\nprint(cities)",
+      "output": "['BERLIN', 'MADRID']",
+      "options": [
+        "print(cities)",
+        "big.append(c.upper())",
+        "big = []",
+        "cities = [\"Rome\", \"Berlin\", \"Oslo\", \"Madrid\"]"
+      ],
+      "answer": 0
+    }
+  ]
+}

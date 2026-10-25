@@ -1,0 +1,578 @@
+{
+  "note": "Made by npm run make:quiz from the templates in pattern-accumulator-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "pa-sum-4de1d9",
+      "text": "What does this print?",
+      "code": "prices = [10, 20, 30, 40]\ntotal = 0\nfor n in prices:\n    total += n\nprint(total)",
+      "options": ["100", "40", "101", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pa-sum-d33c6b",
+      "text": "What does this print?",
+      "code": "points = [7, 3, 12]\ntotal = 0\nfor n in points:\n    total += n\nprint(total)",
+      "options": ["22", "12", "23", "3"],
+      "answer": 0
+    },
+    {
+      "id": "pa-sum-e5321e",
+      "text": "What does this print?",
+      "code": "fuel = [25, 5, 15, 30]\ntotal = 0\nfor n in fuel:\n    total += n\nprint(total)",
+      "options": ["75", "30", "76", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pa-sum-dcec02",
+      "text": "What does this print?",
+      "code": "scores = [8, 14, 6, 2]\ntotal = 0\nfor n in scores:\n    total += n\nprint(total)",
+      "options": ["30", "2", "31", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pa-product-e4ea00",
+      "text": "What does this print?",
+      "code": "numbers = [2, 3, 4, 5]\nproduct = 1\nfor n in numbers:\n    product *= n\nprint(product)",
+      "options": ["120", "0", "15", "5"],
+      "answer": 0
+    },
+    {
+      "id": "pa-product-3a7eba",
+      "text": "What does this print?",
+      "code": "factors = [3, 3, 2]\nproduct = 1\nfor n in factors:\n    product *= n\nprint(product)",
+      "options": ["18", "0", "9", "2"],
+      "answer": 0
+    },
+    {
+      "id": "pa-product-2de6d4",
+      "text": "What does this print?",
+      "code": "boosts = [5, 2, 4]\nproduct = 1\nfor n in boosts:\n    product *= n\nprint(product)",
+      "options": ["40", "0", "12", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pa-product-1aee1f",
+      "text": "What does this print?",
+      "code": "steps = [6, 1, 3]\nproduct = 1\nfor n in steps:\n    product *= n\nprint(product)",
+      "options": ["18", "0", "11", "3"],
+      "answer": 0
+    },
+    {
+      "id": "pa-string-793f7f",
+      "text": "What does this print?",
+      "code": "parts = [\"Vice\", \"City\", \"Stories\"]\ncode = \"\"\nfor p in parts:\n    code += p + \"-\"\nprint(code)",
+      "options": ["Vice-City-Stories-", "Stories-", "-Vice-City-Stories", "Stories-City-Vice-"],
+      "answer": 0
+    },
+    {
+      "id": "pa-string-5aa404",
+      "text": "What does this print?",
+      "code": "parts = [\"A\", \"B\", \"C\", \"D\"]\ncode = \"\"\nfor p in parts:\n    code += p + \".\"\nprint(code)",
+      "options": ["A.B.C.D.", "D.", ".A.B.C.D", "D.C.B.A."],
+      "answer": 0
+    },
+    {
+      "id": "pa-string-a5601b",
+      "text": "What does this print?",
+      "code": "parts = [\"red\", \"blue\"]\ncode = \"\"\nfor p in parts:\n    code += p + \"/\"\nprint(code)",
+      "options": ["red/blue/", "blue/", "/red/blue", "blue/red/"],
+      "answer": 0
+    },
+    {
+      "id": "pa-string-3ebbf2",
+      "text": "What does this print?",
+      "code": "parts = [\"Mars\", \"Venus\", \"Earth\"]\ncode = \"\"\nfor p in parts:\n    code += p + \",\"\nprint(code)",
+      "options": ["Mars,Venus,Earth,", "Earth,", ",Mars,Venus,Earth", "Earth,Venus,Mars,"],
+      "answer": 0
+    },
+    {
+      "id": "pa-reverse-a8b7db",
+      "text": "What does this print?",
+      "code": "word = \"ORBIT\"\nrev = \"\"\nfor char in word:\n    rev = char + rev\nprint(rev)",
+      "options": ["TIBRO", "ORBIT", "T", "O\nRO\nBRO\nIBRO\nTIBRO"],
+      "answer": 0
+    },
+    {
+      "id": "pa-reverse-0f13b2",
+      "text": "What does this print?",
+      "code": "word = \"LASER\"\nrev = \"\"\nfor char in word:\n    rev = char + rev\nprint(rev)",
+      "options": ["RESAL", "LASER", "R", "L\nAL\nSAL\nESAL\nRESAL"],
+      "answer": 0
+    },
+    {
+      "id": "pa-reverse-e87b69",
+      "text": "What does this print?",
+      "code": "word = \"Tommy\"\nrev = \"\"\nfor char in word:\n    rev = char + rev\nprint(rev)",
+      "options": ["ymmoT", "Tommy", "y", "T\noT\nmoT\nmmoT\nymmoT"],
+      "answer": 0
+    },
+    {
+      "id": "pa-reverse-fb4677",
+      "text": "What does this print?",
+      "code": "word = \"COMET\"\nrev = \"\"\nfor char in word:\n    rev = char + rev\nprint(rev)",
+      "options": ["TEMOC", "COMET", "T", "C\nOC\nMOC\nEMOC\nTEMOC"],
+      "answer": 0
+    },
+    {
+      "id": "pa-filter-283d71",
+      "text": "What does this print?",
+      "code": "strengths = [30, 65, 20, 90, 50]\nstrong = []\nfor s in strengths:\n    if s > 50:\n        strong.append(s)\nprint(strong)",
+      "options": ["[65, 90]", "[65, 90, 50]", "[90]", "[30, 20]"],
+      "answer": 0
+    },
+    {
+      "id": "pa-filter-c1db0f",
+      "text": "What does this print?",
+      "code": "signals = [12, 40, 25, 8, 40]\nstrong = []\nfor s in signals:\n    if s > 25:\n        strong.append(s)\nprint(strong)",
+      "options": ["[40, 40]", "[40, 25, 40]", "[40]", "[12, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "pa-filter-d315c4",
+      "text": "What does this print?",
+      "code": "readings = [70, 100, 45, 100, 80]\nstrong = []\nfor s in readings:\n    if s > 80:\n        strong.append(s)\nprint(strong)",
+      "options": ["[100, 100]", "[100, 100, 80]", "[100]", "[70, 45]"],
+      "answer": 0
+    },
+    {
+      "id": "pa-filter-b86a3c",
+      "text": "What does this print?",
+      "code": "levels = [5, 9, 3, 6, 7]\nstrong = []\nfor s in levels:\n    if s > 6:\n        strong.append(s)\nprint(strong)",
+      "options": ["[9, 7]", "[9, 6, 7]", "[7]", "[5, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "pa-letters-925d71",
+      "text": "What does this print?",
+      "code": "words = [\"sun\", \"moon\", \"star\"]\nletters = 0\nfor w in words:\n    letters += len(w)\nprint(letters)",
+      "options": ["11", "3", "4", "12"],
+      "answer": 0
+    },
+    {
+      "id": "pa-letters-3e779f",
+      "text": "What does this print?",
+      "code": "words = [\"Tommy\", \"Ken\"]\nletters = 0\nfor w in words:\n    letters += len(w)\nprint(letters)",
+      "options": ["8", "2", "3", "9"],
+      "answer": 0
+    },
+    {
+      "id": "pa-letters-d1b054",
+      "text": "What does this print?",
+      "code": "words = [\"go\", \"to\", \"the\", \"base\"]\nletters = 0\nfor w in words:\n    letters += len(w)\nprint(letters)",
+      "options": ["11", "4", "12", "16"],
+      "answer": 0
+    },
+    {
+      "id": "pa-letters-6906be",
+      "text": "What does this print?",
+      "code": "words = [\"radar\", \"laser\", \"probe\"]\nletters = 0\nfor w in words:\n    letters += len(w)\nprint(letters)",
+      "options": ["15", "3", "5", "16"],
+      "answer": 0
+    },
+    {
+      "id": "pa-evens-b83cd6",
+      "text": "What does this print?",
+      "code": "numbers = [1, 2, 3, 4, 5, 6]\ntotal = 0\nfor n in numbers:\n    if n % 2 == 0:\n        total += n\nprint(f\"Sum: {total}\")",
+      "options": ["Sum: 12", "Sum: 9", "Sum: 3", "Sum: 21"],
+      "answer": 0
+    },
+    {
+      "id": "pa-evens-21f61e",
+      "text": "What does this print?",
+      "code": "codes = [10, 15, 20]\ntotal = 0\nfor n in codes:\n    if n % 2 == 0:\n        total += n\nprint(f\"Sum: {total}\")",
+      "options": ["Sum: 30", "Sum: 15", "Sum: 2", "Sum: 45"],
+      "answer": 0
+    },
+    {
+      "id": "pa-evens-fff22b",
+      "text": "What does this print?",
+      "code": "ages = [7, 8, 12, 9]\ntotal = 0\nfor n in ages:\n    if n % 2 == 0:\n        total += n\nprint(f\"Sum: {total}\")",
+      "options": ["Sum: 20", "Sum: 16", "Sum: 2", "Sum: 36"],
+      "answer": 0
+    },
+    {
+      "id": "pa-evens-2b9ec1",
+      "text": "What does this print?",
+      "code": "values = [3, 14, 5, 6, 11]\ntotal = 0\nfor n in values:\n    if n % 2 == 0:\n        total += n\nprint(f\"Sum: {total}\")",
+      "options": ["Sum: 20", "Sum: 19", "Sum: 2", "Sum: 39"],
+      "answer": 0
+    },
+    {
+      "id": "pa-initials-b56c42",
+      "text": "What does this print?",
+      "code": "crew = [\"Tommy\", \"Lance\", \"Ken\"]\ninitials = \"\"\nfor name in crew:\n    initials += name[0]\nprint(initials)",
+      "options": ["TLK", "oae", "K", "KLT"],
+      "answer": 0
+    },
+    {
+      "id": "pa-initials-f74f08",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Earth\", \"Venus\", \"Pluto\"]\ninitials = \"\"\nfor name in planets:\n    initials += name[0]\nprint(initials)",
+      "options": ["MEVP", "aael", "P", "PVEM"],
+      "answer": 0
+    },
+    {
+      "id": "pa-initials-6b2a55",
+      "text": "What does this print?",
+      "code": "cars = [\"Sabre\", \"Infernus\", \"Cheetah\"]\ninitials = \"\"\nfor name in cars:\n    initials += name[0]\nprint(initials)",
+      "options": ["SIC", "anh", "C", "CIS"],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-double-0ba11f",
+      "text": "Which program shows this?",
+      "output": "[2, 4, 6]",
+      "options": [
+        "numbers = [1, 2, 3]\ndoubled = []\nfor n in numbers:\n    doubled.append(n * 2)\nprint(doubled)",
+        "numbers = [1, 2, 3]\ndoubled = []\nfor n in numbers:\n    doubled.append(n)\nprint(doubled)",
+        "numbers = [1, 2, 3]\ndoubled = []\nfor n in numbers:\n    doubled = [n * 2]\nprint(doubled)",
+        "numbers = [1, 2, 3]\ndoubled = []\nfor n in numbers:\n    doubled.append(n * 2)\n    print(doubled)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-double-b66bde",
+      "text": "Which program shows this?",
+      "output": "[20, 50, 80]",
+      "options": [
+        "speeds = [10, 25, 40]\ndoubled = []\nfor n in speeds:\n    doubled.append(n * 2)\nprint(doubled)",
+        "speeds = [10, 25, 40]\ndoubled = []\nfor n in speeds:\n    doubled.append(n)\nprint(doubled)",
+        "speeds = [10, 25, 40]\ndoubled = []\nfor n in speeds:\n    doubled = [n * 2]\nprint(doubled)",
+        "speeds = [10, 25, 40]\ndoubled = []\nfor n in speeds:\n    doubled.append(n * 2)\n    print(doubled)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-double-57d0b2",
+      "text": "Which program shows this?",
+      "output": "[6, 10]",
+      "options": [
+        "lives = [3, 5]\ndoubled = []\nfor n in lives:\n    doubled.append(n * 2)\nprint(doubled)",
+        "lives = [3, 5]\ndoubled = []\nfor n in lives:\n    doubled.append(n)\nprint(doubled)",
+        "lives = [3, 5]\ndoubled = []\nfor n in lives:\n    doubled = [n * 2]\nprint(doubled)",
+        "lives = [3, 5]\ndoubled = []\nfor n in lives:\n    doubled.append(n * 2)\n    print(doubled)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-reverse-4f1db6",
+      "text": "Which program shows this?",
+      "output": "OIDAR",
+      "options": [
+        "code = \"RADIO\"\nbackwards = \"\"\nfor char in code:\n    backwards = char + backwards\nprint(backwards)",
+        "code = \"RADIO\"\nbackwards = \"\"\nfor char in code:\n    backwards = backwards + char\nprint(backwards)",
+        "code = \"RADIO\"\nbackwards = \"\"\nfor char in code:\n    backwards = char\nprint(backwards)",
+        "code = \"RADIO\"\nbackwards = \"\"\nfor char in code:\n    backwards = char + backwards\nprint(code)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-reverse-e0dfb3",
+      "text": "Which program shows this?",
+      "output": "ecnaL",
+      "options": [
+        "name = \"Lance\"\nbackwards = \"\"\nfor char in name:\n    backwards = char + backwards\nprint(backwards)",
+        "name = \"Lance\"\nbackwards = \"\"\nfor char in name:\n    backwards = backwards + char\nprint(backwards)",
+        "name = \"Lance\"\nbackwards = \"\"\nfor char in name:\n    backwards = char\nprint(backwards)",
+        "name = \"Lance\"\nbackwards = \"\"\nfor char in name:\n    backwards = char + backwards\nprint(name)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-which-reverse-c42976",
+      "text": "Which program shows this?",
+      "output": "AHPLA",
+      "options": [
+        "signal = \"ALPHA\"\nbackwards = \"\"\nfor char in signal:\n    backwards = char + backwards\nprint(backwards)",
+        "signal = \"ALPHA\"\nbackwards = \"\"\nfor char in signal:\n    backwards = backwards + char\nprint(backwards)",
+        "signal = \"ALPHA\"\nbackwards = \"\"\nfor char in signal:\n    backwards = char\nprint(backwards)",
+        "signal = \"ALPHA\"\nbackwards = \"\"\nfor char in signal:\n    backwards = char + backwards\nprint(signal)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-start-a7d8ef",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\nfor n in [2, 3, 4]:\n    product *= n\nprint(product)",
+      "output": "24",
+      "options": ["product = 1", "product = 0", "product = 2", "product = []"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-start-2b018f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\nfor n in [5, 2, 2]:\n    product *= n\nprint(product)",
+      "output": "20",
+      "options": ["product = 1", "product = 0", "product = 2", "product = []"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-start-32318b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\nfor n in [3, 7]:\n    product *= n\nprint(product)",
+      "output": "21",
+      "options": ["product = 1", "product = 0", "product = 2", "product = []"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-start-910b80",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "___\nfor n in [4, 1, 5]:\n    product *= n\nprint(product)",
+      "output": "20",
+      "options": ["product = 1", "product = 0", "product = 2", "product = []"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-append-e23446",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "readings = [40, 12, 75, 8]\nsmall = []\nfor n in readings:\n    if n < 20:\n        ___\nprint(small)",
+      "output": "[12, 8]",
+      "options": ["small.append(n)", "small = [n]", "small.append(20)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-append-75a179",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "ages = [15, 30, 9, 18]\nsmall = []\nfor n in ages:\n    if n < 18:\n        ___\nprint(small)",
+      "output": "[15, 9]",
+      "options": ["small.append(n)", "small = [n]", "small.append(18)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-append-986796",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "prices = [5, 50, 3, 25]\nsmall = []\nfor n in prices:\n    if n < 10:\n        ___\nprint(small)",
+      "output": "[5, 3]",
+      "options": ["small.append(n)", "small = [n]", "small.append(10)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-append-cd8b77",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "scores = [60, 45, 90, 30]\nsmall = []\nfor n in scores:\n    if n < 50:\n        ___\nprint(small)",
+      "output": "[45, 30]",
+      "options": ["small.append(n)", "small = [n]", "small.append(50)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-reverse-3ccaa9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"SATURN\"\nresult = \"\"\nfor char in word:\n    ___\nprint(result)",
+      "output": "NRUTAS",
+      "options": [
+        "result = char + result",
+        "result = result + char",
+        "result = char",
+        "result += word"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-reverse-6d10c6",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"Cortez\"\nresult = \"\"\nfor char in word:\n    ___\nprint(result)",
+      "output": "zetroC",
+      "options": [
+        "result = char + result",
+        "result = result + char",
+        "result = char",
+        "result += word"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-reverse-ad4873",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"PROBE\"\nresult = \"\"\nfor char in word:\n    ___\nprint(result)",
+      "output": "EBORP",
+      "options": [
+        "result = char + result",
+        "result = result + char",
+        "result = char",
+        "result += word"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-gap-reverse-85b03c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"VENUS\"\nresult = \"\"\nfor char in word:\n    ___\nprint(result)",
+      "output": "SUNEV",
+      "options": [
+        "result = char + result",
+        "result = result + char",
+        "result = char",
+        "result += word"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-start-797d06",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "total = ___\nfor x in [4, 6, 10]:\n    total += x\nprint(total)",
+      "output": "20",
+      "options": ["0", "1", "10", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-start-03ae50",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "product = ___\nfor x in [2, 5, 3]:\n    product *= x\nprint(product)",
+      "output": "30",
+      "options": ["1", "0", "2", "10"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-start-9fa05e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = ___\nfor x in [\"S\", \"O\", \"S\"]:\n    word += x\nprint(word)",
+      "output": "SOS",
+      "options": ["\"\"", "\"S\"", "\" \"", "\"-\""],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-limit-c6c8da",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "strengths = [30, 65, 20, 90, 50]\nstrong = []\nfor s in strengths:\n    if s > ___:\n        strong.append(s)\nprint(strong)",
+      "output": "[65, 90]",
+      "options": ["50", "20", "65", "90"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-limit-96c587",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "signals = [15, 8, 40, 22]\nstrong = []\nfor s in signals:\n    if s > ___:\n        strong.append(s)\nprint(strong)",
+      "output": "[15, 40, 22]",
+      "options": ["10", "15", "22", "5"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-limit-002af8",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "levels = [3, 9, 6, 1]\nstrong = []\nfor s in levels:\n    if s > ___:\n        strong.append(s)\nprint(strong)",
+      "output": "[9, 6]",
+      "options": ["5", "1", "6", "9"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-op-d69054",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "factors = [2, 3, 4]\nresult = 1\nfor n in factors:\n    result = result ___ n\nprint(result)",
+      "output": "24",
+      "options": ["*", "+", "-", "//"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-op-7329eb",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "boosts = [5, 5]\nresult = 1\nfor n in boosts:\n    result = result ___ n\nprint(result)",
+      "output": "25",
+      "options": ["*", "+", "-", "//"],
+      "answer": 0
+    },
+    {
+      "id": "pa-val-op-4d090d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [3, 2, 6]\nresult = 1\nfor n in numbers:\n    result = result ___ n\nprint(result)",
+      "output": "36",
+      "options": ["*", "+", "-", "//"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-start-0ccc58",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [2, 3, 5]\nproduct = 0\nfor n in numbers:\n    product *= n\nprint(product)",
+      "output": "30",
+      "options": ["product = 0", "product *= n", "print(product)", "for n in numbers:"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-start-98d3cb",
+      "text": "Which line stops this program from printing this?",
+      "code": "factors = [4, 2, 3]\nproduct = 0\nfor n in factors:\n    product *= n\nprint(product)",
+      "output": "24",
+      "options": ["product = 0", "product *= n", "print(product)", "for n in factors:"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-start-66b36f",
+      "text": "Which line stops this program from printing this?",
+      "code": "boosts = [3, 3, 3]\nproduct = 0\nfor n in boosts:\n    product *= n\nprint(product)",
+      "output": "27",
+      "options": ["product = 0", "boosts = [3, 3, 3]", "product *= n", "print(product)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-add-150a64",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor p in [10, 20, 30]:\n    print(p)\n    total = p\nprint(f\"Total: {total}\")",
+      "output": "10\n20\n30\nTotal: 60",
+      "options": ["total = p", "print(p)", "total = 0", "for p in [10, 20, 30]:"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-add-2cf8b4",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor p in [5, 15, 25, 5]:\n    print(p)\n    total = p\nprint(f\"Total: {total}\")",
+      "output": "5\n15\n25\n5\nTotal: 50",
+      "options": ["total = p", "print(p)", "total = 0", "print(f\"Total: {total}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-add-28df51",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\nfor p in [40, 12, 8]:\n    print(p)\n    total = p\nprint(f\"Total: {total}\")",
+      "output": "40\n12\n8\nTotal: 60",
+      "options": ["total = p", "print(p)", "total = 0", "print(f\"Total: {total}\")"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-order-b9041a",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"ORBIT\"\nprint(word)\nrev = \"\"\nfor char in word:\n    rev = rev + char\nprint(rev)",
+      "output": "ORBIT\nTIBRO",
+      "options": ["rev = rev + char", "rev = \"\"", "print(word)", "print(rev)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-order-6c9c9e",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"PLANET\"\nprint(word)\nrev = \"\"\nfor char in word:\n    rev = rev + char\nprint(rev)",
+      "output": "PLANET\nTENALP",
+      "options": ["rev = rev + char", "rev = \"\"", "print(word)", "print(rev)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-order-68888d",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"Ken\"\nprint(word)\nrev = \"\"\nfor char in word:\n    rev = rev + char\nprint(rev)",
+      "output": "Ken\nneK",
+      "options": ["rev = rev + char", "rev = \"\"", "print(word)", "print(rev)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-append-9878ed",
+      "text": "Which line stops this program from printing this?",
+      "code": "strengths = [30, 65, 20, 90]\nstrong = []\nfor s in strengths:\n    if s > 50:\n        strong = [s]\nprint(strong)",
+      "output": "[65, 90]",
+      "options": ["strong = [s]", "strong = []", "strengths = [30, 65, 20, 90]", "if s > 50:"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-append-e9f64e",
+      "text": "Which line stops this program from printing this?",
+      "code": "signals = [70, 10, 85, 40, 95]\nstrong = []\nfor s in signals:\n    if s > 60:\n        strong = [s]\nprint(strong)",
+      "output": "[70, 85, 95]",
+      "options": ["strong = [s]", "strong = []", "signals = [70, 10, 85, 40, 95]", "print(strong)"],
+      "answer": 0
+    },
+    {
+      "id": "pa-bad-append-29426b",
+      "text": "Which line stops this program from printing this?",
+      "code": "readings = [6, 2, 8, 1]\nstrong = []\nfor s in readings:\n    if s > 4:\n        strong = [s]\nprint(strong)",
+      "output": "[6, 8]",
+      "options": ["strong = [s]", "strong = []", "readings = [6, 2, 8, 1]", "if s > 4:"],
+      "answer": 0
+    }
+  ]
+}

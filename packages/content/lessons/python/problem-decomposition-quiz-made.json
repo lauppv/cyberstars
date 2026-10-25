@@ -1,0 +1,737 @@
+{
+  "note": "Made by npm run make:quiz from the templates in problem-decomposition-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "pd-split-len-c451f2",
+      "text": "What does this print?",
+      "code": "sentence = \"the cat sat on the mat\"\nwords = sentence.split(\" \")\nprint(len(words))\nprint(words[2])",
+      "options": ["6\nsat", "22\nsat", "6\non", "sat"],
+      "answer": 0
+    },
+    {
+      "id": "pd-split-len-67e7d5",
+      "text": "What does this print?",
+      "code": "log = \"boot sync boot dock\"\nwords = log.split(\" \")\nprint(len(words))\nprint(words[3])",
+      "options": ["4\ndock", "19\ndock", "dock", "4\n['boot', 'sync', 'boot', 'dock']"],
+      "answer": 0
+    },
+    {
+      "id": "pd-split-len-4f49cc",
+      "text": "What does this print?",
+      "code": "message = \"dock at gate four\"\nwords = message.split(\" \")\nprint(len(words))\nprint(words[1])",
+      "options": ["4\nat", "17\nat", "4\ngate", "at"],
+      "answer": 0
+    },
+    {
+      "id": "pd-split-len-25f7c3",
+      "text": "What does this print?",
+      "code": "names = \"Tommy Lance Ken\"\nwords = names.split(\" \")\nprint(len(words))\nprint(words[0])",
+      "options": ["3\nTommy", "15\nTommy", "3\nLance", "Tommy"],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-70a130",
+      "text": "What does this print?",
+      "code": "counter = {}\nfor word in \"ok sos ok\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
+      "options": ["{'ok': 2, 'sos': 1}", "{'ok': 1, 'sos': 1}", "{'ok': 1, 'sos': 0}", "2"],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-a347a9",
+      "text": "What does this print?",
+      "code": "counter = {}\nfor word in \"red blue red red\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
+      "options": ["{'red': 3, 'blue': 1}", "{'red': 1, 'blue': 1}", "{'red': 2, 'blue': 0}", "2"],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-90953b",
+      "text": "What does this print?",
+      "code": "counter = {}\nfor word in \"go stop go wait\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
+      "options": [
+        "{'go': 2, 'stop': 1, 'wait': 1}",
+        "{'go': 1, 'stop': 1, 'wait': 1}",
+        "{'go': 1, 'stop': 0, 'wait': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-1713b5",
+      "text": "What does this print?",
+      "code": "counter = {}\nfor word in \"up down up up down\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
+      "options": ["{'up': 3, 'down': 2}", "{'up': 1, 'down': 1}", "{'up': 2, 'down': 1}", "2"],
+      "answer": 0
+    },
+    {
+      "id": "pd-best-4ee504",
+      "text": "What does this print?",
+      "code": "counts = {\"alpha\": 3, \"beta\": 5, \"gamma\": 1}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
+      "options": [
+        "Most common: beta (5)",
+        "Most common:  (0)",
+        "Most common: 5 (5)",
+        "Most common: gamma (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-best-0e9995",
+      "text": "What does this print?",
+      "code": "counts = {\"sos\": 2, \"ok\": 4, \"bye\": 1}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
+      "options": [
+        "Most common: ok (4)",
+        "Most common:  (0)",
+        "Most common: 4 (4)",
+        "Most common: bye (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-best-f28853",
+      "text": "What does this print?",
+      "code": "counts = {\"x\": 2, \"y\": 2, \"z\": 1}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
+      "options": [
+        "Most common: x (2)",
+        "Most common:  (0)",
+        "Most common: y (2)",
+        "Most common: 2 (2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-best-713aa0",
+      "text": "What does this print?",
+      "code": "counts = {\"dock\": 1, \"boot\": 4, \"sync\": 6}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
+      "options": [
+        "Most common: sync (6)",
+        "Most common:  (0)",
+        "Most common: 6 (6)",
+        "Most common: sync (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-pairs-42da49",
+      "text": "What does this print?",
+      "code": "numbers = [2, 4, 6, 3]\ntarget = 7\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "options": ["4 + 3 = 7", "4 + 3 = 7\n3 + 4 = 7", "2 + 6 = 7\n4 + 6 = 7\n6 + 3 = 7", "4 3"],
+      "answer": 0
+    },
+    {
+      "id": "pd-pairs-5047ca",
+      "text": "What does this print?",
+      "code": "numbers = [5, 1, 4, 2]\ntarget = 6\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "options": [
+        "5 + 1 = 6\n4 + 2 = 6",
+        "5 + 1 = 6\n1 + 5 = 6\n4 + 2 = 6\n2 + 4 = 6",
+        "5 + 4 = 6\n5 + 2 = 6",
+        "5 1\n4 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-pairs-ba29dc",
+      "text": "What does this print?",
+      "code": "numbers = [3, 3, 4, 2]\ntarget = 6\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "options": [
+        "3 + 3 = 6\n4 + 2 = 6",
+        "3 + 3 = 6\n3 + 3 = 6\n3 + 3 = 6\n3 + 3 = 6\n4 + 2 = 6\n2 + 4 = 6",
+        "3 + 3 = 6\n3 + 3 = 6\n3 + 3 = 6\n4 + 2 = 6",
+        "3 + 4 = 6\n3 + 4 = 6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-pairs-717ca5",
+      "text": "What does this print?",
+      "code": "numbers = [1, 6, 3, 4, 5]\ntarget = 9\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "options": [
+        "6 + 3 = 9\n4 + 5 = 9",
+        "6 + 3 = 9\n3 + 6 = 9\n4 + 5 = 9\n5 + 4 = 9",
+        "6 + 4 = 9\n6 + 5 = 9",
+        "6 3\n4 5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-funcs-796d12",
+      "text": "What does this print?",
+      "code": "def split_codes(log):\n    return log.split(\" \")\n\ndef count_codes(codes):\n    counts = {}\n    for code in codes:\n        if code in counts:\n            counts[code] = counts[code] + 1\n        else:\n            counts[code] = 1\n    return counts\n\ncodes = split_codes(\"sos sos ok ok ok bye\")\ncounts = count_codes(codes)\nprint(f\"Codes: {len(codes)}\")\nfor code, count in counts.items():\n    print(f\"{code}: {count}\")",
+      "options": [
+        "Codes: 6\nsos: 2\nok: 3\nbye: 1",
+        "Codes: 3\nsos: 2\nok: 3\nbye: 1",
+        "Codes: 6\ns: 4\no: 5\n : 5\nk: 3\nb: 1\ny: 1\ne: 1",
+        "Codes: 6\nsos: 1\nok: 1\nbye: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-funcs-58bf31",
+      "text": "What does this print?",
+      "code": "def split_codes(log):\n    return log.split(\" \")\n\ndef count_codes(codes):\n    counts = {}\n    for code in codes:\n        if code in counts:\n            counts[code] = counts[code] + 1\n        else:\n            counts[code] = 1\n    return counts\n\ncodes = split_codes(\"x y y z\")\ncounts = count_codes(codes)\nprint(f\"Codes: {len(codes)}\")\nfor code, count in counts.items():\n    print(f\"{code}: {count}\")",
+      "options": [
+        "Codes: 4\nx: 1\ny: 2\nz: 1",
+        "Codes: 3\nx: 1\ny: 2\nz: 1",
+        "Codes: 4\nx: 1\n : 3\ny: 2\nz: 1",
+        "Codes: 4\nx: 1\ny: 1\nz: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-funcs-5e46b7",
+      "text": "What does this print?",
+      "code": "def split_codes(log):\n    return log.split(\" \")\n\ndef count_codes(codes):\n    counts = {}\n    for code in codes:\n        if code in counts:\n            counts[code] = counts[code] + 1\n        else:\n            counts[code] = 1\n    return counts\n\ncodes = split_codes(\"dock dock undock dock\")\ncounts = count_codes(codes)\nprint(f\"Codes: {len(codes)}\")\nfor code, count in counts.items():\n    print(f\"{code}: {count}\")",
+      "options": [
+        "Codes: 4\ndock: 3\nundock: 1",
+        "Codes: 2\ndock: 3\nundock: 1",
+        "Codes: 4\nd: 4\no: 4\nc: 4\nk: 4\n : 3\nu: 1\nn: 1",
+        "Codes: 4\ndock: 1\nundock: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-funcs-38cb13",
+      "text": "What does this print?",
+      "code": "def split_codes(log):\n    return log.split(\" \")\n\ndef count_codes(codes):\n    counts = {}\n    for code in codes:\n        if code in counts:\n            counts[code] = counts[code] + 1\n        else:\n            counts[code] = 1\n    return counts\n\ncodes = split_codes(\"boot sync boot\")\ncounts = count_codes(codes)\nprint(f\"Codes: {len(codes)}\")\nfor code, count in counts.items():\n    print(f\"{code}: {count}\")",
+      "options": [
+        "Codes: 3\nboot: 2\nsync: 1",
+        "Codes: 2\nboot: 2\nsync: 1",
+        "Codes: 3\nb: 2\no: 4\nt: 2\n : 2\ns: 1\ny: 1\nn: 1\nc: 1",
+        "Codes: 3\nboot: 1\nsync: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-longest-238e54",
+      "text": "What does this print?",
+      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef longest(words):\n    best = \"\"\n    for w in words:\n        if len(w) > len(best):\n            best = w\n    return best\n\nprint(longest(get_words(\"red green blue black\")))",
+      "options": ["green", "red", "black", "5"],
+      "answer": 0
+    },
+    {
+      "id": "pd-longest-578395",
+      "text": "What does this print?",
+      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef longest(words):\n    best = \"\"\n    for w in words:\n        if len(w) > len(best):\n            best = w\n    return best\n\nprint(longest(get_words(\"sun moon star comet\")))",
+      "options": ["comet", "sun", "5", "s"],
+      "answer": 0
+    },
+    {
+      "id": "pd-longest-51e55f",
+      "text": "What does this print?",
+      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef longest(words):\n    best = \"\"\n    for w in words:\n        if len(w) > len(best):\n            best = w\n    return best\n\nprint(longest(get_words(\"go stop wait jump\")))",
+      "options": ["stop", "wait", "jump", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pd-longest-e10287",
+      "text": "What does this print?",
+      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef longest(words):\n    best = \"\"\n    for w in words:\n        if len(w) > len(best):\n            best = w\n    return best\n\nprint(longest(get_words(\"alpha beta delta pi\")))",
+      "options": ["alpha", "pi", "delta", "5"],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-pairs-d70d34",
+      "text": "What does this print?",
+      "code": "numbers = [1, 2, 3, 4, 5]\npairs = 0\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == 6:\n            pairs = pairs + 1\nprint(f\"Pairs: {pairs}\")",
+      "options": ["Pairs: 2", "Pairs: 5", "Pairs: 3", "Pairs: 1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-pairs-8b3d3c",
+      "text": "What does this print?",
+      "code": "numbers = [4, 4, 4]\npairs = 0\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == 8:\n            pairs = pairs + 1\nprint(f\"Pairs: {pairs}\")",
+      "options": ["Pairs: 3", "Pairs: 9", "Pairs: 6", "Pairs: 1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-pairs-2340f1",
+      "text": "What does this print?",
+      "code": "numbers = [10, 5, 3, 7, 0]\npairs = 0\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == 10:\n            pairs = pairs + 1\nprint(f\"Pairs: {pairs}\")",
+      "options": ["Pairs: 2", "Pairs: 5", "Pairs: 3", "Pairs: 1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-avg-f74139",
+      "text": "What does this print?",
+      "code": "words = \"the cat sat\".split(\" \")\nlengths = [len(w) for w in words]\nprint(lengths)\nprint(round(sum(lengths) / len(lengths), 1))",
+      "options": [
+        "[3, 3, 3]\n3.0",
+        "[3, 3, 3]\n0.8",
+        "[3, 3, 3]\n9",
+        "[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\n1.0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-avg-f2795d",
+      "text": "What does this print?",
+      "code": "words = \"station log ready\".split(\" \")\nlengths = [len(w) for w in words]\nprint(lengths)\nprint(round(sum(lengths) / len(lengths), 1))",
+      "options": ["[7, 3, 5]\n5.0", "[7, 3, 5]\n0.9", "[3, 3, 3]\n3.0", "[7, 3, 5]\n15"],
+      "answer": 0
+    },
+    {
+      "id": "pd-avg-4e98dd",
+      "text": "What does this print?",
+      "code": "words = \"dock and refuel now\".split(\" \")\nlengths = [len(w) for w in words]\nprint(lengths)\nprint(round(sum(lengths) / len(lengths), 1))",
+      "options": [
+        "[4, 3, 6, 3]\n4.0",
+        "[4, 3, 6, 3]\n0.8",
+        "[4, 4, 4, 4]\n4.0",
+        "[4, 3, 6, 3]\n16"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-count-5590ec",
+      "text": "Which program shows this?",
+      "output": "sos: 2\nok: 1",
+      "options": [
+        "counter = {}\nfor code in \"sos ok sos\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"sos ok sos\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 0\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"sos ok sos\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 2\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"sos ok sos\":\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-count-d4d804",
+      "text": "Which program shows this?",
+      "output": "dock: 3\nboot: 1",
+      "options": [
+        "counter = {}\nfor code in \"dock boot dock dock\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"dock boot dock dock\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 0\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"dock boot dock dock\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 2\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"dock boot dock dock\":\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-count-f80711",
+      "text": "Which program shows this?",
+      "output": "ping: 2\npong: 1",
+      "options": [
+        "counter = {}\nfor code in \"ping pong ping\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"ping pong ping\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 0\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"ping pong ping\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 2\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"ping pong ping\":\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-count-7b7ac2",
+      "text": "Which program shows this?",
+      "output": "err: 2\nwarn: 1\nok: 1",
+      "options": [
+        "counter = {}\nfor code in \"err warn err ok\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"err warn err ok\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 0\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"err warn err ok\".split(\" \"):\n    if code in counter:\n        counter[code] = counter[code] + 2\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")",
+        "counter = {}\nfor code in \"err warn err ok\":\n    if code in counter:\n        counter[code] = counter[code] + 1\n    else:\n        counter[code] = 1\nfor code, count in counter.items():\n    print(f\"{code}: {count}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-pairs-034e96",
+      "text": "Which program shows this?",
+      "output": "1 + 7 = 8\n3 + 5 = 8",
+      "options": [
+        "numbers = [1, 3, 5, 7, 2]\ntarget = 8\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [1, 3, 5, 7, 2]\ntarget = 8\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [1, 3, 5, 7, 2]\ntarget = 8\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] > target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [1, 3, 5, 7, 2]\ntarget = 8\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[j]} + {numbers[i]} = {target}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-pairs-18b3e4",
+      "text": "Which program shows this?",
+      "output": "6 + 2 = 8\n4 + 4 = 8",
+      "options": [
+        "numbers = [6, 2, 4, 4]\ntarget = 8\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [6, 2, 4, 4]\ntarget = 8\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [6, 2, 4, 4]\ntarget = 8\nfor i in range(len(numbers)):\n    for j in range(i, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [6, 2, 4, 4]\ntarget = 8\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] > target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-pairs-387a88",
+      "text": "Which program shows this?",
+      "output": "9 + 1 = 10\n5 + 5 = 10",
+      "options": [
+        "numbers = [9, 1, 5, 5]\ntarget = 10\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [9, 1, 5, 5]\ntarget = 10\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [9, 1, 5, 5]\ntarget = 10\nfor i in range(len(numbers)):\n    for j in range(i, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [9, 1, 5, 5]\ntarget = 10\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] > target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-pairs-a413fa",
+      "text": "Which program shows this?",
+      "output": "2 + 7 = 9\n3 + 6 = 9",
+      "options": [
+        "numbers = [2, 7, 3, 6]\ntarget = 9\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [2, 7, 3, 6]\ntarget = 9\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [2, 7, 3, 6]\ntarget = 9\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] > target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+        "numbers = [2, 7, 3, 6]\ntarget = 9\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[j]} + {numbers[i]} = {target}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-split-9aeeb5",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def split_codes(log):\n    ___\n\ncodes = split_codes(\"alpha beta alpha\")\nprint(codes)\nprint(len(codes))",
+      "output": "['alpha', 'beta', 'alpha']\n3",
+      "options": [
+        "return log.split(\" \")",
+        "print(log.split(\" \"))",
+        "return log",
+        "return [log]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-split-d129fd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def split_codes(log):\n    ___\n\ncodes = split_codes(\"sos ok\")\nprint(codes)\nprint(len(codes))",
+      "output": "['sos', 'ok']\n2",
+      "options": [
+        "return log.split(\" \")",
+        "print(log.split(\" \"))",
+        "return log",
+        "return [log]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-split-feb91f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def split_codes(log):\n    ___\n\ncodes = split_codes(\"dock boot sync dock\")\nprint(codes)\nprint(len(codes))",
+      "output": "['dock', 'boot', 'sync', 'dock']\n4",
+      "options": [
+        "return log.split(\" \")",
+        "print(log.split(\" \"))",
+        "return log",
+        "return [log]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-split-b15018",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def split_codes(log):\n    ___\n\ncodes = split_codes(\"ping pong\")\nprint(codes)\nprint(len(codes))",
+      "output": "['ping', 'pong']\n2",
+      "options": [
+        "return log.split(\" \")",
+        "print(log.split(\" \"))",
+        "return log",
+        "return [log]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-else-96f599",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor word in \"ok sos ok\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        ___\nprint(counter)",
+      "output": "{'ok': 2, 'sos': 1}",
+      "options": [
+        "counter[word] = 1",
+        "counter[word] = 0",
+        "counter[word] = counter[word] + 1",
+        "counter = {}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-else-325844",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor word in \"a b b c b\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        ___\nprint(counter)",
+      "output": "{'a': 1, 'b': 3, 'c': 1}",
+      "options": [
+        "counter[word] = 1",
+        "counter[word] = 0",
+        "counter[word] = counter[word] + 1",
+        "counter = {}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-else-8a37ea",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor word in \"go go stop\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        ___\nprint(counter)",
+      "output": "{'go': 2, 'stop': 1}",
+      "options": [
+        "counter[word] = 1",
+        "counter[word] = 0",
+        "counter[word] = counter[word] + 1",
+        "counter = {}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-else-c3fd0c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counter = {}\nfor word in \"x y x y x\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        ___\nprint(counter)",
+      "output": "{'x': 3, 'y': 2}",
+      "options": [
+        "counter[word] = 1",
+        "counter[word] = 0",
+        "counter[word] = counter[word] + 1",
+        "counter = {}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-best-ae8d20",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counts = {\"sos\": 2, \"ok\": 4, \"bye\": 1}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        ___\nprint(f\"Most common: {best}\")",
+      "output": "Most common: ok",
+      "options": ["best = code", "best = count", "best = highest", "code = best"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-best-ab6dd1",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counts = {\"dock\": 1, \"boot\": 4, \"sync\": 6}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        ___\nprint(f\"Most common: {best}\")",
+      "output": "Most common: sync",
+      "options": ["best = code", "best = count", "best = highest", "code = best"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-best-efd658",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counts = {\"red\": 7, \"blue\": 2}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        ___\nprint(f\"Most common: {best}\")",
+      "output": "Most common: red",
+      "options": ["best = code", "best = count", "best = highest", "code = best"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-best-33b9f9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "counts = {\"ping\": 3, \"pong\": 5, \"err\": 4}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        ___\nprint(f\"Most common: {best}\")",
+      "output": "Most common: pong",
+      "options": ["best = code", "best = count", "best = highest", "code = best"],
+      "answer": 0
+    },
+    {
+      "id": "pd-val-start-890475",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [1, 3, 5, 7, 2]\nfor i in range(len(numbers)):\n    for j in range(___, len(numbers)):\n        if numbers[i] + numbers[j] == 8:\n            print(numbers[i], numbers[j])",
+      "output": "1 7\n3 5",
+      "options": ["i + 1", "0", "1", "len(numbers)"],
+      "answer": 0
+    },
+    {
+      "id": "pd-val-start-64569a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [3, 3, 4, 2]\nfor i in range(len(numbers)):\n    for j in range(___, len(numbers)):\n        if numbers[i] + numbers[j] == 6:\n            print(numbers[i], numbers[j])",
+      "output": "3 3\n4 2",
+      "options": ["i + 1", "i", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-val-start-e4786c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [5, 5, 1, 9]\nfor i in range(len(numbers)):\n    for j in range(___, len(numbers)):\n        if numbers[i] + numbers[j] == 10:\n            print(numbers[i], numbers[j])",
+      "output": "5 5\n1 9",
+      "options": ["i + 1", "i", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-val-start-9b2a80",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [2, 6, 4, 4]\nfor i in range(len(numbers)):\n    for j in range(___, len(numbers)):\n        if numbers[i] + numbers[j] == 8:\n            print(numbers[i], numbers[j])",
+      "output": "2 6\n4 4",
+      "options": ["i + 1", "i", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-val-target-beb84a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [1, 3, 5, 7, 2]\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == ___:\n            print(numbers[i], numbers[j])",
+      "output": "1 7\n3 5",
+      "options": ["8", "6", "9", "10"],
+      "answer": 0
+    },
+    {
+      "id": "pd-val-target-f10d33",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [4, 1, 6, 3]\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == ___:\n            print(numbers[i], numbers[j])",
+      "output": "4 3\n1 6",
+      "options": ["7", "5", "10", "9"],
+      "answer": 0
+    },
+    {
+      "id": "pd-val-target-0b93d1",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [2, 5, 8, 3]\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == ___:\n            print(numbers[i], numbers[j])",
+      "output": "2 8",
+      "options": ["10", "8", "11", "13"],
+      "answer": 0
+    },
+    {
+      "id": "pd-val-target-85ff1a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [6, 4, 2, 9]\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == ___:\n            print(numbers[i], numbers[j])",
+      "output": "2 9",
+      "options": ["11", "10", "8", "13"],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-split-b2746c",
+      "text": "Which line stops this program from printing this?",
+      "code": "def split_codes(log):\n    return log\n\ncodes = split_codes(\"alpha beta alpha\")\nprint(f\"Codes: {len(codes)}\")\nprint(codes[0])",
+      "output": "Codes: 3\nalpha",
+      "options": [
+        "return log",
+        "codes = split_codes(\"alpha beta alpha\")",
+        "print(f\"Codes: {len(codes)}\")",
+        "print(codes[0])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-split-0213ce",
+      "text": "Which line stops this program from printing this?",
+      "code": "def split_codes(log):\n    return log\n\ncodes = split_codes(\"sos ok sos\")\nprint(f\"Codes: {len(codes)}\")\nprint(codes[0])",
+      "output": "Codes: 3\nsos",
+      "options": [
+        "return log",
+        "def split_codes(log):",
+        "codes = split_codes(\"sos ok sos\")",
+        "print(f\"Codes: {len(codes)}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-split-065091",
+      "text": "Which line stops this program from printing this?",
+      "code": "def split_codes(log):\n    return log\n\ncodes = split_codes(\"dock boot sync\")\nprint(f\"Codes: {len(codes)}\")\nprint(codes[0])",
+      "output": "Codes: 3\ndock",
+      "options": [
+        "return log",
+        "codes = split_codes(\"dock boot sync\")",
+        "print(f\"Codes: {len(codes)}\")",
+        "print(codes[0])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-else-f64fb7",
+      "text": "Which line stops this program from printing this?",
+      "code": "counter = {}\nfor word in \"ok sos ok\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 0\nprint(counter)",
+      "output": "{'ok': 2, 'sos': 1}",
+      "options": [
+        "counter[word] = 0",
+        "counter[word] = counter[word] + 1",
+        "counter = {}",
+        "print(counter)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-else-909bc8",
+      "text": "Which line stops this program from printing this?",
+      "code": "counter = {}\nfor word in \"red blue red\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 0\nprint(counter)",
+      "output": "{'red': 2, 'blue': 1}",
+      "options": [
+        "counter[word] = 0",
+        "counter[word] = counter[word] + 1",
+        "counter = {}",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-else-42cc1f",
+      "text": "Which line stops this program from printing this?",
+      "code": "counter = {}\nfor word in \"go stop go go\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 0\nprint(counter)",
+      "output": "{'go': 3, 'stop': 1}",
+      "options": [
+        "counter[word] = 0",
+        "counter[word] = counter[word] + 1",
+        "counter = {}",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-range-b56ad5",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [1, 3, 5, 7, 2]\ntarget = 8\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "output": "1 + 7 = 8\n3 + 5 = 8",
+      "options": [
+        "for j in range(len(numbers)):",
+        "for i in range(len(numbers)):",
+        "if numbers[i] + numbers[j] == target:",
+        "print(f\"{numbers[i]} + {numbers[j]} = {target}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-range-4a35c1",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [5, 1, 4, 2]\ntarget = 6\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "output": "5 + 1 = 6\n4 + 2 = 6",
+      "options": [
+        "for j in range(len(numbers)):",
+        "for i in range(len(numbers)):",
+        "target = 6",
+        "numbers = [5, 1, 4, 2]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-range-67ceea",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [2, 7, 3, 6]\ntarget = 9\nfor i in range(len(numbers)):\n    for j in range(len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
+      "output": "2 + 7 = 9\n3 + 6 = 9",
+      "options": [
+        "for j in range(len(numbers)):",
+        "for i in range(len(numbers)):",
+        "if numbers[i] + numbers[j] == target:",
+        "print(f\"{numbers[i]} + {numbers[j]} = {target}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-best-f9e3b8",
+      "text": "Which line stops this program from printing this?",
+      "code": "counts = {\"alpha\": 3, \"beta\": 5, \"gamma\": 1}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        count = highest\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
+      "output": "Most common: beta (5)",
+      "options": [
+        "count = highest",
+        "highest = 0",
+        "best = \"\"",
+        "counts = {\"alpha\": 3, \"beta\": 5, \"gamma\": 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-best-bd5dd3",
+      "text": "Which line stops this program from printing this?",
+      "code": "counts = {\"sos\": 4, \"ok\": 2, \"bye\": 1}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        count = highest\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
+      "output": "Most common: sos (4)",
+      "options": [
+        "count = highest",
+        "highest = 0",
+        "best = \"\"",
+        "counts = {\"sos\": 4, \"ok\": 2, \"bye\": 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-best-2f94a8",
+      "text": "Which line stops this program from printing this?",
+      "code": "counts = {\"dock\": 6, \"boot\": 4}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        count = highest\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
+      "output": "Most common: dock (6)",
+      "options": [
+        "count = highest",
+        "highest = 0",
+        "best = \"\"",
+        "counts = {\"dock\": 6, \"boot\": 4}"
+      ],
+      "answer": 0
+    }
+  ]
+}

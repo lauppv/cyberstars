@@ -752,7 +752,7 @@
       "id": "op-bad-hours",
       "kind": "wrong-line",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "minute = {{m}}\nore = minute // 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")",
+      "code": "minute = {{m}}\nore = minute // 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")\nprint(ore * 60 + rest)",
       "values": [
         {
           "m": 150

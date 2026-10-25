@@ -1,0 +1,1149 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is a dictionary?",
+      "options": [
+        "Pairs of key: value, where we look a value up by its key",
+        "A list whose elements are kept sorted",
+        "A variable that holds exactly one name",
+        "A list of values we read by their position"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Which brackets make a dictionary?",
+      "options": ["[ ]", "{ }", "( )", "< >"],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "In `{\"Cortez\": \"555-1234\"}`, what is `\"Cortez\"`?",
+      "options": ["The value", "The index", "The key", "The dictionary's name"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What happens when this runs?",
+      "code": "phone_book = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(phone_book[\"Sonny\"])",
+      "options": [
+        "It prints nothing",
+        "It prints Sonny",
+        "It prints the last number, 555-5678",
+        "It stops with a KeyError: there is no key Sonny"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "phone_book has no key \"Tommy\". What does `phone_book[\"Tommy\"] = \"555-0000\"` do?",
+      "options": [
+        "It adds Tommy with that number",
+        "It stops with a KeyError",
+        "It changes the first number in phone_book",
+        "Nothing, Tommy has to be added with append"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "phone_book already has Lance. What does `phone_book[\"Lance\"] = \"555-1111\"` do?",
+      "options": [
+        "It adds a second Lance, so the old number stays too",
+        "It replaces Lance's number: a key is in a dictionary only once",
+        "It stops with an error: Lance is already there",
+        "It does nothing, the old number stays"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Which line removes Lance from phone_book?",
+      "options": [
+        "phone_book[\"Lance\"] = \"\"",
+        "phone_book.append(\"Lance\")",
+        "del phone_book[\"Lance\"]",
+        "del \"Lance\""
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "How do we check that phone_book has the key Cortez before we read it?",
+      "options": [
+        "if phone_book[\"Cortez\"]:",
+        "if phone_book == \"Cortez\":",
+        "if \"Cortez\" = phone_book:",
+        "if \"Cortez\" in phone_book:"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "phone_book = {\"Cortez\": \"555-1234\"}\nprint(\"555-1234\" in phone_book)",
+      "options": [
+        "False: in looks at the keys, and 555-1234 is a value",
+        "True: 555-1234 is in the dictionary",
+        "Cortez",
+        "It stops with a KeyError"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "When is a dictionary a better choice than a list?",
+      "options": [
+        "When the values have to stay sorted",
+        "When we look values up by a name, not by their position",
+        "When we have only numbers",
+        "When the values must never change"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "scores = {\"Cortez\": 1, \"Lance\": 2, \"Phil\": 3}\nscores[\"Lance\"] = 5\nprint(scores)",
+      "options": [
+        "{'Cortez': 1, 'Phil': 3, 'Lance': 5}",
+        "{'Cortez': 1, 'Lance': 2, 'Phil': 3, 'Lance': 5}",
+        "{'Cortez': 1, 'Lance': 5, 'Phil': 3}",
+        "It stops with an error: Lance is already there"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "What can the values of a dictionary be?",
+      "options": [
+        "Only text",
+        "Only numbers",
+        "Only text and numbers",
+        "Any kind of value: text, numbers, booleans, even lists or other dictionaries"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "phone_book = {\"Cortez\": \"555-1234\"}\nprint(phone_book)",
+      "options": ["{'Cortez': '555-1234'}", "Cortez: 555-1234", "555-1234", "Cortez"],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "What happens when this runs?",
+      "code": "phone_book = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(phone_book[0])",
+      "options": [
+        "It prints 555-1234, the first number",
+        "It stops with a KeyError: 0 is not one of its keys",
+        "It prints Cortez",
+        "It prints nothing"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "In the Crew Database mission, which line adds the key \"station\"?",
+      "options": [
+        "crew.append(station)",
+        "station = crew[\"station\"]",
+        "crew[\"station\"] = station",
+        "crew = {\"station\": station}"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "In the Crew Database mission, which line adds 1 to the age inside crew?",
+      "options": [
+        "age = age + 1",
+        "crew[\"age\"] = 1",
+        "crew[\"age\" + 1]",
+        "crew[\"age\"] = crew[\"age\"] + 1"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "In the Crew Database mission, which line decides to print Rank: unknown?",
+      "options": [
+        "if \"rank\" not in crew:",
+        "if crew[\"rank\"] == \"unknown\":",
+        "if \"rank\" in crew:",
+        "if crew == \"rank\":"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "In the mission, `crew = {\"name\": name}`. What is the difference between `\"name\"` and `name`?",
+      "options": [
+        "None, both are the same text",
+        "\"name\" is the key, a text; name is the variable that holds the value, like Tommy",
+        "name is the key and \"name\" is the value",
+        "The quotes make the key hidden"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "What goes between a key and its value?",
+      "options": ["=", ",", ":", ";"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "What goes between two key: value pairs?",
+      "options": ["A colon", "A semicolon", "The word and", "A comma"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "player = {\"name\": \"Tommy\", \"weapons\": [\"bat\", \"pistol\", \"shotgun\"]}\nprint(player[\"weapons\"][1])",
+      "options": ["pistol", "bat", "['bat', 'pistol', 'shotgun']", "It stops with an error"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What happens when this runs?",
+      "code": "phone_book = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\ndel phone_book[\"Lance\"]\nprint(phone_book[\"Lance\"])",
+      "options": [
+        "It prints 555-5678",
+        "It stops with a KeyError: del removed the key Lance",
+        "It prints an empty line",
+        "It prints None"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "ages = {\"Tommy\": 42}\nprint(\"tommy\" in ages)",
+      "options": [
+        "True: in doesn't care about upper or lower case",
+        "Tommy",
+        "False: tommy and Tommy are different keys",
+        "It stops with an error"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Which of these is an empty dictionary?",
+      "options": ["[]", "{:}", "()", "{}"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "phone_book holds Cortez and Lance. After `phone_book[\"Sonny\"] = \"555-0001\"` and `del phone_book[\"Lance\"]`, how many key: value pairs does it hold?",
+      "options": ["2", "3", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "ship = {\"fuel\": 50}\nship[\"fuel\"] = ship[\"fuel\"] - 20\nprint(ship[\"fuel\"])",
+      "options": ["50", "30", "20", "It stops with an error: fuel is already there"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "When does the code under `if \"rank\" not in crew:` run?",
+      "options": [
+        "When crew[\"rank\"] is empty",
+        "Never: not in only works on lists",
+        "When crew has no key \"rank\"",
+        "When crew has the key \"rank\""
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does `phone_book[\"Lance\"]` give back?",
+      "options": [
+        "The key Lance",
+        "Lance's position in phone_book",
+        "True or False, whether Lance is in phone_book",
+        "The value stored under the key Lance"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Is `{\"Tommy\": 90, \"Lance\": 90}` a valid dictionary?",
+      "options": [
+        "Yes: keys have to differ, but values may repeat",
+        "No: two values can't be the same",
+        "Yes, but print() shows only one of them",
+        "No: the values have to be text"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Which line reads Phil's number from phone_book?",
+      "options": [
+        "phone_book(\"Phil\")",
+        "phone_book[\"Phil\"]",
+        "phone_book[Phil]",
+        "phone_book.Phil"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "dc-get",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}, \"{{k3}}\": {{v3}}}\nprint({{d}}[\"{{k2}}\"])",
+      "values": [
+        {
+          "d": "ages",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "k3": "Cortez",
+          "v3": 60
+        },
+        {
+          "d": "scores",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "k3": "Zoe",
+          "v3": 88
+        },
+        {
+          "d": "fuel",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "k3": "Vega",
+          "v3": 60
+        },
+        {
+          "d": "prices",
+          "k1": "apples",
+          "v1": 3,
+          "k2": "bread",
+          "v2": 2,
+          "k3": "milk",
+          "v3": 4
+        },
+        {
+          "d": "stock",
+          "k1": "bolts",
+          "v1": 120,
+          "k2": "gears",
+          "v2": 35,
+          "k3": "wires",
+          "v3": 70
+        }
+      ],
+      "mistakes": [
+        ["{{d}}[\"{{k2}}\"]", "{{d}}[\"{{k1}}\"]"],
+        ["print({{d}}[\"{{k2}}\"])", "print(\"{{k2}}\")"],
+        ["print({{d}}[\"{{k2}}\"])", "print({{d}})"],
+        ["{{d}}[\"{{k2}}\"]", "{{d}}[\"{{k3}}\"]"]
+      ]
+    },
+    {
+      "id": "dc-set",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k3}}\"] = {{v3}}\n{{d}}[\"{{k1}}\"] = {{n}}\nprint({{d}})",
+      "values": [
+        {
+          "d": "ages",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "k3": "Cortez",
+          "v3": 60,
+          "n": 43
+        },
+        {
+          "d": "scores",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "k3": "Zoe",
+          "v3": 88,
+          "n": 95
+        },
+        {
+          "d": "fuel",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "k3": "Vega",
+          "v3": 60,
+          "n": 100
+        },
+        {
+          "d": "prices",
+          "k1": "apples",
+          "v1": 3,
+          "k2": "bread",
+          "v2": 2,
+          "k3": "milk",
+          "v3": 4,
+          "n": 5
+        },
+        {
+          "d": "lives",
+          "k1": "Kai",
+          "v1": 3,
+          "k2": "Mia",
+          "v2": 1,
+          "k3": "Rex",
+          "v3": 5,
+          "n": 2
+        }
+      ],
+      "mistakes": [
+        ["\n{{d}}[\"{{k1}}\"] = {{n}}", ""],
+        ["{{d}}[\"{{k1}}\"] = {{n}}", "{{d}}[\"{{k2}}\"] = {{n}}"],
+        ["{{d}}[\"{{k3}}\"] = {{v3}}", "{{d}}[\"{{k1}}\"] = {{v3}}"],
+        ["{{d}}[\"{{k1}}\"] = {{n}}", "{{d}}[\"{{k1}}\"] = {{d}}[\"{{k1}}\"] + {{n}}"]
+      ]
+    },
+    {
+      "id": "dc-del",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}, \"{{k3}}\": {{v3}}}\ndel {{d}}[\"{{k2}}\"]\nprint({{d}})",
+      "values": [
+        {
+          "d": "ages",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "k3": "Cortez",
+          "v3": 60
+        },
+        {
+          "d": "scores",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "k3": "Zoe",
+          "v3": 88
+        },
+        {
+          "d": "stock",
+          "k1": "bolts",
+          "v1": 120,
+          "k2": "gears",
+          "v2": 35,
+          "k3": "wires",
+          "v3": 70
+        },
+        {
+          "d": "rooms",
+          "k1": "lab",
+          "v1": 4,
+          "k2": "bridge",
+          "v2": 1,
+          "k3": "dock",
+          "v3": 7
+        },
+        {
+          "d": "speed",
+          "k1": "Nova",
+          "v1": 300,
+          "k2": "Orion",
+          "v2": 250,
+          "k3": "Vega",
+          "v3": 280
+        }
+      ],
+      "mistakes": [
+        ["del {{d}}[\"{{k2}}\"]", "del {{d}}[\"{{k1}}\"]"],
+        ["del {{d}}[\"{{k2}}\"]", "{{d}}[\"{{k2}}\"] = 0"],
+        ["\ndel {{d}}[\"{{k2}}\"]", ""],
+        ["del {{d}}[\"{{k2}}\"]", "del {{d}}[\"{{k3}}\"]"]
+      ]
+    },
+    {
+      "id": "dc-check",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\nfor name in [\"{{a}}\", \"{{b}}\"]:\n    if name in {{d}}:\n        print({{d}}[name])\n    else:\n        print(\"{{none}}\")",
+      "values": [
+        {
+          "d": "ages",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "a": "Lance",
+          "b": "Sonny",
+          "none": "Not found"
+        },
+        {
+          "d": "scores",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "a": "Kai",
+          "b": "Ana",
+          "none": "No score"
+        },
+        {
+          "d": "fuel",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "a": "Orion",
+          "b": "Vega",
+          "none": "No data"
+        },
+        {
+          "d": "prices",
+          "k1": "apples",
+          "v1": 3,
+          "k2": "bread",
+          "v2": 2,
+          "a": "milk",
+          "b": "bread",
+          "none": "Not for sale"
+        },
+        {
+          "d": "lives",
+          "k1": "Kai",
+          "v1": 3,
+          "k2": "Mia",
+          "v2": 1,
+          "a": "Rex",
+          "b": "Kai",
+          "none": "Unknown"
+        }
+      ],
+      "mistakes": [
+        ["print({{d}}[name])", "print(name)"],
+        ["[\"{{a}}\", \"{{b}}\"]", "[\"{{b}}\", \"{{a}}\"]"],
+        ["print({{d}}[name])", "print({{d}})"],
+        ["if name in {{d}}:", "if name not in {{d}}:"]
+      ]
+    },
+    {
+      "id": "dc-grow",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k2}}\"] = {{d}}[\"{{k2}}\"] {{op}} {{n}}\nprint({{d}}[\"{{k2}}\"])",
+      "values": [
+        {
+          "d": "fuel",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "op": "+",
+          "n": 30
+        },
+        {
+          "d": "health",
+          "k1": "Tommy",
+          "v1": 100,
+          "k2": "Lance",
+          "v2": 70,
+          "op": "-",
+          "n": 25
+        },
+        {
+          "d": "scores",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "op": "+",
+          "n": 10
+        },
+        {
+          "d": "coins",
+          "k1": "Kai",
+          "v1": 12,
+          "k2": "Mia",
+          "v2": 30,
+          "op": "+",
+          "n": 5
+        },
+        {
+          "d": "lives",
+          "k1": "Rex",
+          "v1": 5,
+          "k2": "Zoe",
+          "v2": 3,
+          "op": "-",
+          "n": 1
+        }
+      ],
+      "mistakes": [
+        ["= {{d}}[\"{{k2}}\"] {{op}} {{n}}", "= {{n}}"],
+        ["{{d}}[\"{{k2}}\"] {{op}} {{n}}", "{{d}}[\"{{k1}}\"] {{op}} {{n}}"],
+        ["print({{d}}[\"{{k2}}\"])", "print({{d}}[\"{{k1}}\"])"],
+        ["\n{{d}}[\"{{k2}}\"] = {{d}}[\"{{k2}}\"] {{op}} {{n}}", ""]
+      ]
+    },
+    {
+      "id": "dc-list",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{d}} = {\"name\": \"{{who}}\", \"{{lk}}\": [\"{{i1}}\", \"{{i2}}\", \"{{i3}}\"]}\nprint({{d}}[\"{{lk}}\"][{{i}}])",
+      "values": [
+        {
+          "d": "garage",
+          "who": "Tommy",
+          "lk": "cars",
+          "i1": "Cheetah",
+          "i2": "Infernus",
+          "i3": "Sabre",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "d": "ship",
+          "who": "Nova",
+          "lk": "crew",
+          "i1": "Ana",
+          "i2": "Ben",
+          "i3": "Zoe",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "d": "backpack",
+          "who": "Kai",
+          "lk": "items",
+          "i1": "map",
+          "i2": "rope",
+          "i3": "lamp",
+          "i": 2,
+          "j": 0
+        },
+        {
+          "d": "robot",
+          "who": "R2",
+          "lk": "tools",
+          "i1": "wrench",
+          "i2": "drill",
+          "i3": "saw",
+          "i": 1,
+          "j": 0
+        },
+        {
+          "d": "station",
+          "who": "Laniakea",
+          "lk": "rooms",
+          "i1": "lab",
+          "i2": "bridge",
+          "i3": "dock",
+          "i": 2,
+          "j": 1
+        }
+      ],
+      "mistakes": [
+        ["[{{i}}])", "[{{j}}])"],
+        ["print({{d}}[\"{{lk}}\"][{{i}}])", "print({{d}}[\"{{lk}}\"])"],
+        ["print({{d}}[\"{{lk}}\"][{{i}}])", "print(len({{d}}[\"{{lk}}\"]))"],
+        ["print({{d}}[\"{{lk}}\"][{{i}}])", "print({{d}}[\"name\"])"]
+      ]
+    },
+    {
+      "id": "dc-which-get",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{d}} = {\"{{k1}}\": \"{{v1}}\", \"{{k2}}\": \"{{v2}}\"}\nprint({{d}}[\"{{k2}}\"])",
+      "values": [
+        {
+          "d": "phone_book",
+          "k1": "Cortez",
+          "v1": "555-1234",
+          "k2": "Lance",
+          "v2": "555-5678"
+        },
+        {
+          "d": "roles",
+          "k1": "Tommy",
+          "v1": "pilot",
+          "k2": "Lance",
+          "v2": "medic"
+        },
+        {
+          "d": "colors",
+          "k1": "sky",
+          "v1": "blue",
+          "k2": "grass",
+          "v2": "green"
+        },
+        {
+          "d": "gates",
+          "k1": "Nova",
+          "v1": "A7",
+          "k2": "Orion",
+          "v2": "B2"
+        }
+      ],
+      "mistakes": [
+        ["{{d}}[\"{{k2}}\"]", "{{d}}[\"{{k1}}\"]"],
+        ["{{d}}[\"{{k2}}\"]", "{{d}}[1]"],
+        ["{{d}}[\"{{k2}}\"]", "{{d}}[{{k2}}]"],
+        ["{{d}}[\"{{k2}}\"]", "{{d}}(\"{{k2}}\")"]
+      ]
+    },
+    {
+      "id": "dc-which-in",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\nif \"{{q}}\" in {{d}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "d": "crew",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "q": "Lance",
+          "qv": 35,
+          "yes": "Found Lance!",
+          "no": "No Lance"
+        },
+        {
+          "d": "scores",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "q": "Ana",
+          "qv": 90,
+          "yes": "Ana has a score",
+          "no": "Ana has no score"
+        },
+        {
+          "d": "fuel",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "q": "Orion",
+          "qv": 45,
+          "yes": "Orion is ready",
+          "no": "Orion is missing"
+        },
+        {
+          "d": "prices",
+          "k1": "apples",
+          "v1": 3,
+          "k2": "bread",
+          "v2": 2,
+          "q": "bread",
+          "qv": 2,
+          "yes": "Bread is for sale",
+          "no": "No bread today"
+        }
+      ],
+      "mistakes": [
+        ["\"{{q}}\" in {{d}}", "\"{{q}}\" not in {{d}}"],
+        ["\"{{q}}\" in {{d}}", "{{qv}} in {{d}}"],
+        ["if \"{{q}}\" in {{d}}:", "if \"{{q}}\" in {{d}}"],
+        ["print(\"{{yes}}\")", "print(\"{{no}}\")"]
+      ]
+    },
+    {
+      "id": "dc-gap-add",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}}\n___\nprint({{d}})",
+      "values": [
+        {
+          "d": "ages",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35
+        },
+        {
+          "d": "scores",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75
+        },
+        {
+          "d": "fuel",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Vega",
+          "v2": 60
+        },
+        {
+          "d": "prices",
+          "k1": "apples",
+          "v1": 3,
+          "k2": "milk",
+          "v2": 4
+        },
+        {
+          "d": "stock",
+          "k1": "bolts",
+          "v1": 120,
+          "k2": "wires",
+          "v2": 70
+        }
+      ],
+      "answer": "{{d}}[\"{{k2}}\"] = {{v2}}",
+      "wrong": [
+        "{{d}}[\"{{k1}}\"] = {{v2}}",
+        "{{d}}.append({{v2}})",
+        "{{d}}[{{v2}}] = \"{{k2}}\"",
+        "{{d}} = {\"{{k2}}\": {{v2}}}"
+      ]
+    },
+    {
+      "id": "dc-gap-del",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}, \"{{k3}}\": {{v3}}}\n___\nprint({{d}})",
+      "values": [
+        {
+          "d": "ages",
+          "k1": "Phil",
+          "v1": 50,
+          "k2": "Sonny",
+          "v2": 38,
+          "k3": "Ken",
+          "v3": 29
+        },
+        {
+          "d": "levels",
+          "k1": "Zoe",
+          "v1": 12,
+          "k2": "Kai",
+          "v2": 7,
+          "k3": "Ana",
+          "v3": 9
+        },
+        {
+          "d": "lives",
+          "k1": "Kai",
+          "v1": 3,
+          "k2": "Mia",
+          "v2": 1,
+          "k3": "Rex",
+          "v3": 5
+        },
+        {
+          "d": "prices",
+          "k1": "apples",
+          "v1": 3,
+          "k2": "bread",
+          "v2": 2,
+          "k3": "milk",
+          "v3": 4
+        },
+        {
+          "d": "fuel",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "k3": "Vega",
+          "v3": 60
+        }
+      ],
+      "answer": "del {{d}}[\"{{k2}}\"]",
+      "wrong": ["del {{d}}[1]", "{{d}}[\"{{k2}}\"] = 0", "del {{d}}", "del \"{{k2}}\""]
+    },
+    {
+      "id": "dc-gap-key",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}, \"{{k3}}\": {{v3}}}\nprint({{d}}[___])",
+      "values": [
+        {
+          "d": "lives",
+          "k1": "Kai",
+          "v1": 3,
+          "k2": "Mia",
+          "v2": 1,
+          "k3": "Rex",
+          "v3": 5
+        },
+        {
+          "d": "rooms",
+          "k1": "lab",
+          "v1": 4,
+          "k2": "bridge",
+          "v2": 1,
+          "k3": "dock",
+          "v3": 7
+        },
+        {
+          "d": "levels",
+          "k1": "Zoe",
+          "v1": 12,
+          "k2": "Kai",
+          "v2": 7,
+          "k3": "Ana",
+          "v3": 9
+        },
+        {
+          "d": "ages",
+          "k1": "Phil",
+          "v1": 50,
+          "k2": "Sonny",
+          "v2": 38,
+          "k3": "Ken",
+          "v3": 29
+        },
+        {
+          "d": "speed",
+          "k1": "Nova",
+          "v1": 300,
+          "k2": "Orion",
+          "v2": 250,
+          "k3": "Vega",
+          "v3": 280
+        }
+      ],
+      "answer": "\"{{k2}}\"",
+      "wrong": ["1", "{{k2}}", "\"{{k1}}\"", "{{v2}}"]
+    },
+    {
+      "id": "dc-gap-in",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\nif \"{{q}}\" ___ {{d}}:\n    print(\"{{msg}}\")\nelse:\n    print(\"{{other}}\")",
+      "values": [
+        {
+          "d": "crew",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "q": "Lance",
+          "op": "in",
+          "nop": "not in",
+          "msg": "Found Lance!",
+          "other": "No Lance"
+        },
+        {
+          "d": "crew",
+          "k1": "name",
+          "v1": "\"Tommy\"",
+          "k2": "age",
+          "v2": 35,
+          "q": "rank",
+          "op": "not in",
+          "nop": "in",
+          "msg": "Rank: unknown",
+          "other": "Rank: known"
+        },
+        {
+          "d": "scores",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "q": "Zoe",
+          "op": "not in",
+          "nop": "in",
+          "msg": "Zoe has no score",
+          "other": "Zoe has a score"
+        },
+        {
+          "d": "fuel",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "q": "Nova",
+          "op": "in",
+          "nop": "not in",
+          "msg": "Nova is ready",
+          "other": "Nova is missing"
+        },
+        {
+          "d": "stock",
+          "k1": "bolts",
+          "v1": 120,
+          "k2": "gears",
+          "v2": 35,
+          "q": "wires",
+          "op": "not in",
+          "nop": "in",
+          "msg": "Order wires",
+          "other": "Wires in stock"
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": ["{{nop}}", "==", "=", "in not"]
+    },
+    {
+      "id": "dc-bad-brackets",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k3}}\"] = {{v3}}\nprint({{d}}[\"{{k1}}\"])\nprint({{d}}[\"{{k2}}\"])\nprint({{d}}[\"{{k3}}\"])",
+      "values": [
+        {
+          "d": "ages",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "k3": "Cortez",
+          "v3": 60
+        },
+        {
+          "d": "scores",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "k3": "Zoe",
+          "v3": 88
+        },
+        {
+          "d": "fuel",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "k3": "Vega",
+          "v3": 60
+        }
+      ],
+      "bug": [
+        "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}",
+        "{{d}} = [\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}]"
+      ]
+    },
+    {
+      "id": "dc-bad-paren",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k3}}\"] = {{v3}}\nprint({{d}}[\"{{k1}}\"])\nprint({{d}}[\"{{k2}}\"])\nprint({{d}}[\"{{k3}}\"])",
+      "values": [
+        {
+          "d": "prices",
+          "k1": "apples",
+          "v1": 3,
+          "k2": "bread",
+          "v2": 2,
+          "k3": "milk",
+          "v3": 4
+        },
+        {
+          "d": "stock",
+          "k1": "bolts",
+          "v1": 120,
+          "k2": "gears",
+          "v2": 35,
+          "k3": "wires",
+          "v3": 70
+        },
+        {
+          "d": "lives",
+          "k1": "Kai",
+          "v1": 3,
+          "k2": "Mia",
+          "v2": 1,
+          "k3": "Rex",
+          "v3": 5
+        }
+      ],
+      "bug": ["print({{d}}[\"{{k3}}\"])", "print({{d}}(\"{{k3}}\"))"]
+    },
+    {
+      "id": "dc-bad-quotes",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k2}}\"] = {{d}}[\"{{k2}}\"] + {{n}}\nprint({{d}}[\"{{k1}}\"])\nprint({{d}}[\"{{k2}}\"])",
+      "values": [
+        {
+          "d": "ages",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "n": 1
+        },
+        {
+          "d": "scores",
+          "k1": "Ana",
+          "v1": 90,
+          "k2": "Ben",
+          "v2": 75,
+          "n": 10
+        },
+        {
+          "d": "fuel",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "n": 30
+        }
+      ],
+      "bug": ["print({{d}}[\"{{k1}}\"])", "print({{d}}[{{k1}}])"]
+    },
+    {
+      "id": "dc-bad-del",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}, \"{{k3}}\": {{v3}}}\ndel {{d}}[\"{{k2}}\"]\n{{d}}[\"{{k4}}\"] = {{v4}}\nprint({{d}})",
+      "values": [
+        {
+          "d": "ages",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "k3": "Cortez",
+          "v3": 60,
+          "k4": "Phil",
+          "v4": 50
+        },
+        {
+          "d": "levels",
+          "k1": "Zoe",
+          "v1": 12,
+          "k2": "Kai",
+          "v2": 7,
+          "k3": "Ana",
+          "v3": 9,
+          "k4": "Mia",
+          "v4": 4
+        },
+        {
+          "d": "rooms",
+          "k1": "lab",
+          "v1": 4,
+          "k2": "bridge",
+          "v2": 1,
+          "k3": "dock",
+          "v3": 7,
+          "k4": "hangar",
+          "v4": 2
+        }
+      ],
+      "bug": ["del {{d}}[\"{{k2}}\"]", "delete {{d}}[\"{{k2}}\"]"]
+    }
+  ]
+}
