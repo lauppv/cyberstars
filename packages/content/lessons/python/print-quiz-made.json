@@ -132,9 +132,9 @@
       "output": "My name is Ana\nI am 12 years old\nI like pizza\nCyberStars is the coolest",
       "options": [
         "print(I like pizza)",
-        "print(\"My name is Ana\")",
         "print(\"I am 12 years old\")",
-        "print(\"CyberStars is the coolest\")"
+        "print(\"CyberStars is the coolest\")",
+        "print(\"My name is Ana\")"
       ],
       "answer": 0
     },
@@ -143,7 +143,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "print(\"Ready\")\nprint(\"Set\")\nprint(Go)\nprint(\"Done\")",
       "output": "Ready\nSet\nGo\nDone",
-      "options": ["print(Go)", "print(\"Ready\")", "print(\"Set\")", "print(\"Done\")"],
+      "options": ["print(Go)", "print(\"Set\")", "print(\"Done\")", "print(\"Ready\")"],
       "answer": 0
     },
     {
@@ -339,9 +339,9 @@
       "output": "I like pizza\nI like pasta\nI like soup\nI like cake",
       "options": [
         "Print(\"I like cake\")",
-        "print(\"I like pizza\")",
+        "print(\"I like soup\")",
         "print(\"I like pasta\")",
-        "print(\"I like soup\")"
+        "print(\"I like pizza\")"
       ],
       "answer": 0
     },
@@ -350,7 +350,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "print(\"One\")\nprint(\"Two\")\nprint(\"Three\")\nPrint(\"Four\")",
       "output": "One\nTwo\nThree\nFour",
-      "options": ["Print(\"Four\")", "print(\"One\")", "print(\"Two\")", "print(\"Three\")"],
+      "options": ["Print(\"Four\")", "print(\"Three\")", "print(\"Two\")", "print(\"One\")"],
       "answer": 0
     },
     {

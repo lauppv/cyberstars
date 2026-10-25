@@ -267,9 +267,9 @@
       "output": "Tommy\n3\nCortez",
       "options": [
         "print(names[3])",
-        "names = [\"Tommy\", \"Lance\", \"Cortez\"]",
+        "print(len(names))",
         "print(names[0])",
-        "print(len(names))"
+        "names = [\"Tommy\", \"Lance\", \"Cortez\"]"
       ],
       "answer": 0
     },
@@ -280,9 +280,9 @@
       "output": "42\n4\n29",
       "options": [
         "print(ages[4])",
-        "ages = [42, 35, 60, 29]",
+        "print(len(ages))",
         "print(ages[0])",
-        "print(len(ages))"
+        "ages = [42, 35, 60, 29]"
       ],
       "answer": 0
     },
@@ -293,9 +293,9 @@
       "output": "oxygen\n4\nfuel",
       "options": [
         "print(cargo[4])",
-        "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]",
+        "print(len(cargo))",
         "print(cargo[0])",
-        "print(len(cargo))"
+        "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]"
       ],
       "answer": 0
     },
@@ -306,9 +306,9 @@
       "output": "Shadow\n2\nJess",
       "options": [
         "print(crew[2])",
-        "crew = [\"Shadow\", \"Jess\"]",
+        "print(len(crew))",
         "print(crew[0])",
-        "print(len(crew))"
+        "crew = [\"Shadow\", \"Jess\"]"
       ],
       "answer": 0
     },
@@ -457,9 +457,9 @@
       "output": "['oxygen', 'water']",
       "options": [
         "cargo.append[\"water\"]",
-        "cargo = []",
         "cargo.append(\"oxygen\")",
-        "print(cargo)"
+        "print(cargo)",
+        "cargo = []"
       ],
       "answer": 0
     },
@@ -470,9 +470,9 @@
       "output": "['Tommy', 'Lance']",
       "options": [
         "names.append[\"Lance\"]",
-        "names = []",
         "names.append(\"Tommy\")",
-        "print(names)"
+        "print(names)",
+        "names = []"
       ],
       "answer": 0
     },
@@ -481,7 +481,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "ages = []\nages.append(42)\nages.append[35]\nprint(ages)",
       "output": "[42, 35]",
-      "options": ["ages.append[35]", "ages = []", "ages.append(42)", "print(ages)"],
+      "options": ["ages.append[35]", "ages.append(42)", "print(ages)", "ages = []"],
       "answer": 0
     },
     {
@@ -489,7 +489,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "crew = []\ncrew.append(\"Shadow\")\ncrew.append[\"Jess\"]\nprint(crew)",
       "output": "['Shadow', 'Jess']",
-      "options": ["crew.append[\"Jess\"]", "crew = []", "crew.append(\"Shadow\")", "print(crew)"],
+      "options": ["crew.append[\"Jess\"]", "crew.append(\"Shadow\")", "print(crew)", "crew = []"],
       "answer": 0
     },
     {

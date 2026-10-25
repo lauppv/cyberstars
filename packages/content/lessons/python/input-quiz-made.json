@@ -486,9 +486,9 @@
       "output": "Welcome aboard, Cortez! You are 60. Next year you will be 61.",
       "options": [
         "age = int(name)",
-        "name = \"Cortez\"",
         "age = \"60\"",
-        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")"
+        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+        "name = \"Cortez\""
       ],
       "answer": 0
     },
@@ -499,9 +499,9 @@
       "output": "Welcome aboard, Nova! You are 20. Next year you will be 21.",
       "options": [
         "age = int(name)",
-        "name = \"Nova\"",
         "age = \"20\"",
-        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")"
+        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+        "name = \"Nova\""
       ],
       "answer": 0
     },
@@ -512,9 +512,9 @@
       "output": "Welcome aboard, Kenji! You are 18. Next year you will be 19.",
       "options": [
         "age = int(name)",
-        "name = \"Kenji\"",
         "age = \"18\"",
-        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")"
+        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+        "name = \"Kenji\""
       ],
       "answer": 0
     },
@@ -525,9 +525,9 @@
       "output": "Welcome aboard, Mary Jane! You are 19. Next year you will be 20.",
       "options": [
         "age = int(name)",
-        "name = \"Mary Jane\"",
         "age = \"19\"",
-        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")"
+        "print(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+        "name = \"Mary Jane\""
       ],
       "answer": 0
     },

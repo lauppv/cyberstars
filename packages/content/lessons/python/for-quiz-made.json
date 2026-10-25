@@ -576,7 +576,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "total = 0\nfor i in range(2, 5):\n    total = total + i\n    print(total)",
       "output": "9",
-      "options": ["print(total)", "total = 0", "for i in range(2, 5):", "total = total + i"],
+      "options": ["print(total)", "total = total + i", "total = 0", "for i in range(2, 5):"],
       "answer": 0
     },
     {
@@ -584,7 +584,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "energy = 0\nfor i in range(1, 4):\n    energy = energy + i\n    print(energy)",
       "output": "6",
-      "options": ["print(energy)", "energy = 0", "for i in range(1, 4):", "energy = energy + i"],
+      "options": ["print(energy)", "energy = energy + i", "energy = 0", "for i in range(1, 4):"],
       "answer": 0
     },
     {
@@ -592,7 +592,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "points = 0\nfor i in range(1, 5):\n    points = i\nprint(points)",
       "output": "10",
-      "options": ["points = i", "points = 0", "for i in range(1, 5):", "print(points)"],
+      "options": ["points = i", "print(points)", "points = 0", "for i in range(1, 5):"],
       "answer": 0
     },
     {
@@ -600,7 +600,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "score = 0\nfor i in range(4, 7):\n    score = i\nprint(score)",
       "output": "15",
-      "options": ["score = i", "score = 0", "for i in range(4, 7):", "print(score)"],
+      "options": ["score = i", "print(score)", "score = 0", "for i in range(4, 7):"],
       "answer": 0
     }
   ]

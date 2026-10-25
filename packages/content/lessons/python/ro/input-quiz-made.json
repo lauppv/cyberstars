@@ -536,9 +536,9 @@
       "output": "Bun venit la bord, Cortez! Ai 60. Anul viitor vei avea 61.",
       "options": [
         "varsta = int(nume)",
-        "nume = \"Cortez\"",
         "varsta = \"60\"",
-        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")"
+        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+        "nume = \"Cortez\""
       ],
       "answer": 0
     },
@@ -549,9 +549,9 @@
       "output": "Bun venit la bord, Nova! Ai 20. Anul viitor vei avea 21.",
       "options": [
         "varsta = int(nume)",
-        "nume = \"Nova\"",
         "varsta = \"20\"",
-        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")"
+        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+        "nume = \"Nova\""
       ],
       "answer": 0
     },
@@ -562,9 +562,9 @@
       "output": "Bun venit la bord, Kenji! Ai 18. Anul viitor vei avea 19.",
       "options": [
         "varsta = int(nume)",
-        "nume = \"Kenji\"",
         "varsta = \"18\"",
-        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")"
+        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+        "nume = \"Kenji\""
       ],
       "answer": 0
     },
@@ -575,9 +575,9 @@
       "output": "Bun venit la bord, Mary Jane! Ai 19. Anul viitor vei avea 20.",
       "options": [
         "varsta = int(nume)",
-        "nume = \"Mary Jane\"",
         "varsta = \"19\"",
-        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")"
+        "print(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+        "nume = \"Mary Jane\""
       ],
       "answer": 0
     },

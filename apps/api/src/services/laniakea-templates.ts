@@ -27,7 +27,8 @@ import { QUIZ_ID, type QuizQuestionSpec } from './laniakea-quiz.js';
 // - missing-value: the same with ___ inside a line, filled with a value.
 // - wrong-line: `bug`, [what, instead] on one line, breaks `code`. The question
 //   shows the broken program and what `code` prints, and the options are the
-//   broken line and three other lines of it.
+//   broken line and three others, those of its kind (opening a block with
+//   `:` or not) first, each nearest first.
 //
 // A wrong option that gives the right output (or for prints, one that fails or
 // prints nothing) or repeats another option is passed over, so a template may
@@ -293,7 +294,26 @@ export function planTemplate(
           if (gives(brokenRun, out))
             throw new Error(`${where}: the broken program still prints it`);
           const bad = lines[at].trim();
-          const others = lines.map((line, i) => (i === at || !line.trim() ? null : line.trim()));
+          // The lines a student hunting the bug would suspect, not the
+          // program's first lines, which are often a plain `x = 5`: first the
+          // ones of the broken line's kind (an if, elif, else or for line, or a
+          // plain one), then the rest, each nearest first and the one above
+          // before the one below.
+          const opens = (line: string) => line.trim().endsWith(':');
+          const kind = opens(code.split('\n')[at]);
+          const kept = lines
+            .map((line, i) => ({ line: line.trim(), i }))
+            .filter(({ line, i }) => line !== '' && i !== at);
+          const below = kept.findIndex(({ i }) => i > at);
+          const split = below < 0 ? kept.length : below;
+          const others = kept
+            .map(({ line }, j) => ({
+              line,
+              other: opens(line) !== kind,
+              far: j < split ? (split - j) * 2 - 1 : (j - split) * 2 + 2,
+            }))
+            .sort((a, b) => Number(a.other) - Number(b.other) || a.far - b.far)
+            .map(({ line }) => line);
           return question({ code: broken, output: out }, bad, pick(bad, others));
         },
       };

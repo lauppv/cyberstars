@@ -198,7 +198,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "temperature = 1200\nif temperature > 1000\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
       "output": "Danger",
-      "options": ["if temperature > 1000", "temperature = 1200", "print(\"Danger\")", "else:"],
+      "options": ["if temperature > 1000", "else:", "temperature = 1200", "print(\"Danger\")"],
       "answer": 0
     },
     {
@@ -206,7 +206,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "score = 30\nif score > 50\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
       "output": "Fail",
-      "options": ["if score > 50", "score = 30", "print(\"Pass\")", "else:"],
+      "options": ["if score > 50", "else:", "score = 30", "print(\"Pass\")"],
       "answer": 0
     },
     {
@@ -214,7 +214,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "speed = 130\nif speed > 100\n    print(\"Slow down\")\nelse:\n    print(\"Good speed\")",
       "output": "Slow down",
-      "options": ["if speed > 100", "speed = 130", "print(\"Slow down\")", "else:"],
+      "options": ["if speed > 100", "else:", "speed = 130", "print(\"Slow down\")"],
       "answer": 0
     },
     {
@@ -222,7 +222,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "points = 90\nif points > 100\n    print(\"New record\")\nelse:\n    print(\"Try again\")",
       "output": "Try again",
-      "options": ["if points > 100", "points = 90", "print(\"New record\")", "else:"],
+      "options": ["if points > 100", "else:", "points = 90", "print(\"New record\")"],
       "answer": 0
     },
     {
@@ -232,9 +232,9 @@
       "output": "Take a sweater",
       "options": [
         "print(\"A t-shirt is enough\")",
+        "print(\"Take a sweater\")",
         "temperature = 10",
-        "if temperature < 15:",
-        "print(\"Take a sweater\")"
+        "else:"
       ],
       "answer": 0
     },
@@ -243,7 +243,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "score = 70\nif score < 50:\n    print(\"Fail\")\nelse:\nprint(\"Pass\")",
       "output": "Pass",
-      "options": ["print(\"Pass\")", "score = 70", "if score < 50:", "print(\"Fail\")"],
+      "options": ["print(\"Pass\")", "print(\"Fail\")", "score = 70", "else:"],
       "answer": 0
     },
     {
@@ -251,7 +251,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "age = 9\nif age < 18:\n    print(\"Not yet\")\nelse:\nprint(\"You can vote\")",
       "output": "Not yet",
-      "options": ["print(\"You can vote\")", "age = 9", "if age < 18:", "print(\"Not yet\")"],
+      "options": ["print(\"You can vote\")", "print(\"Not yet\")", "age = 9", "else:"],
       "answer": 0
     },
     {
@@ -259,7 +259,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "speed = 60\nif speed < 100:\n    print(\"Good speed\")\nelse:\nprint(\"Slow down\")",
       "output": "Good speed",
-      "options": ["print(\"Slow down\")", "speed = 60", "if speed < 100:", "print(\"Good speed\")"],
+      "options": ["print(\"Slow down\")", "print(\"Good speed\")", "speed = 60", "else:"],
       "answer": 0
     },
     {
@@ -267,7 +267,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "stars = 5\nif stars = 5:\n    print(\"Full score\")\nelse:\n    print(\"Not yet\")",
       "output": "Full score",
-      "options": ["if stars = 5:", "stars = 5", "print(\"Full score\")", "else:"],
+      "options": ["if stars = 5:", "else:", "stars = 5", "print(\"Full score\")"],
       "answer": 0
     },
     {
@@ -275,7 +275,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "lives = 0\nif lives = 0:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
       "output": "Game over",
-      "options": ["if lives = 0:", "lives = 0", "print(\"Game over\")", "else:"],
+      "options": ["if lives = 0:", "else:", "lives = 0", "print(\"Game over\")"],
       "answer": 0
     },
     {
@@ -283,7 +283,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "code = 1234\nif code = 1234:\n    print(\"Door open\")\nelse:\n    print(\"Door locked\")",
       "output": "Door open",
-      "options": ["if code = 1234:", "code = 1234", "print(\"Door open\")", "else:"],
+      "options": ["if code = 1234:", "else:", "code = 1234", "print(\"Door open\")"],
       "answer": 0
     },
     {
@@ -291,7 +291,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "level = 5\nif level = 10:\n    print(\"Boss fight\")\nelse:\n    print(\"Keep going\")",
       "output": "Keep going",
-      "options": ["if level = 10:", "level = 5", "print(\"Boss fight\")", "else:"],
+      "options": ["if level = 10:", "else:", "level = 5", "print(\"Boss fight\")"],
       "answer": 0
     },
     {
@@ -299,7 +299,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "score = 40\nif score >= 50:\n    print(\"Pass\")\nelse\n    print(\"Fail\")",
       "output": "Fail",
-      "options": ["else", "score = 40", "if score >= 50:", "print(\"Pass\")"],
+      "options": ["else", "if score >= 50:", "print(\"Pass\")", "print(\"Fail\")"],
       "answer": 0
     },
     {
@@ -307,7 +307,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "age = 20\nif age >= 18:\n    print(\"You can vote\")\nelse\n    print(\"Not yet\")",
       "output": "You can vote",
-      "options": ["else", "age = 20", "if age >= 18:", "print(\"You can vote\")"],
+      "options": ["else", "if age >= 18:", "print(\"You can vote\")", "print(\"Not yet\")"],
       "answer": 0
     },
     {
@@ -315,7 +315,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "fuel = 500\nif fuel >= 1000:\n    print(\"Danger\")\nelse\n    print(\"Stable\")",
       "output": "Stable",
-      "options": ["else", "fuel = 500", "if fuel >= 1000:", "print(\"Danger\")"],
+      "options": ["else", "if fuel >= 1000:", "print(\"Danger\")", "print(\"Stable\")"],
       "answer": 0
     },
     {
@@ -323,7 +323,7 @@
       "text": "Which line stops this program from printing this?",
       "code": "speed = 140\nif speed >= 100:\n    print(\"Slow down\")\nelse\n    print(\"Good speed\")",
       "output": "Slow down",
-      "options": ["else", "speed = 140", "if speed >= 100:", "print(\"Slow down\")"],
+      "options": ["else", "if speed >= 100:", "print(\"Slow down\")", "print(\"Good speed\")"],
       "answer": 0
     },
     {
@@ -584,8 +584,8 @@
       "options": [
         "online = true",
         "user = \"Tommy\"",
-        "if online == True:",
-        "print(f\"{user} is playing\")"
+        "print(f\"{user} is playing\")",
+        "print(f\"{user} is offline\")"
       ],
       "answer": 0
     },
@@ -597,8 +597,8 @@
       "options": [
         "online = false",
         "user = \"Lance\"",
-        "if online == True:",
-        "print(f\"{user} is playing\")"
+        "print(f\"{user} is playing\")",
+        "print(f\"{user} is offline\")"
       ],
       "answer": 0
     },
@@ -610,8 +610,8 @@
       "options": [
         "online = true",
         "user = \"Ana\"",
-        "if online == True:",
-        "print(f\"{user} is playing\")"
+        "print(f\"{user} is playing\")",
+        "print(f\"{user} is offline\")"
       ],
       "answer": 0
     }

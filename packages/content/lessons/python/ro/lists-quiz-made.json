@@ -272,9 +272,9 @@
       "output": "Tommy\n3\nCortez",
       "options": [
         "print(nume[3])",
-        "nume = [\"Tommy\", \"Lance\", \"Cortez\"]",
+        "print(len(nume))",
         "print(nume[0])",
-        "print(len(nume))"
+        "nume = [\"Tommy\", \"Lance\", \"Cortez\"]"
       ],
       "answer": 0
     },
@@ -285,9 +285,9 @@
       "output": "42\n4\n29",
       "options": [
         "print(varste[4])",
-        "varste = [42, 35, 60, 29]",
+        "print(len(varste))",
         "print(varste[0])",
-        "print(len(varste))"
+        "varste = [42, 35, 60, 29]"
       ],
       "answer": 0
     },
@@ -298,9 +298,9 @@
       "output": "oxigen\n4\ncombustibil",
       "options": [
         "print(incarcatura[4])",
-        "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]",
+        "print(len(incarcatura))",
         "print(incarcatura[0])",
-        "print(len(incarcatura))"
+        "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]"
       ],
       "answer": 0
     },
@@ -311,9 +311,9 @@
       "output": "Shadow\n2\nJess",
       "options": [
         "print(echipaj[2])",
-        "echipaj = [\"Shadow\", \"Jess\"]",
+        "print(len(echipaj))",
         "print(echipaj[0])",
-        "print(len(echipaj))"
+        "echipaj = [\"Shadow\", \"Jess\"]"
       ],
       "answer": 0
     },
@@ -467,9 +467,9 @@
       "output": "['oxigen', 'apa']",
       "options": [
         "incarcatura.append[\"apa\"]",
-        "incarcatura = []",
         "incarcatura.append(\"oxigen\")",
-        "print(incarcatura)"
+        "print(incarcatura)",
+        "incarcatura = []"
       ],
       "answer": 0
     },
@@ -478,7 +478,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nume = []\nnume.append(\"Tommy\")\nnume.append[\"Lance\"]\nprint(nume)",
       "output": "['Tommy', 'Lance']",
-      "options": ["nume.append[\"Lance\"]", "nume = []", "nume.append(\"Tommy\")", "print(nume)"],
+      "options": ["nume.append[\"Lance\"]", "nume.append(\"Tommy\")", "print(nume)", "nume = []"],
       "answer": 0
     },
     {
@@ -486,7 +486,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varste = []\nvarste.append(42)\nvarste.append[35]\nprint(varste)",
       "output": "[42, 35]",
-      "options": ["varste.append[35]", "varste = []", "varste.append(42)", "print(varste)"],
+      "options": ["varste.append[35]", "varste.append(42)", "print(varste)", "varste = []"],
       "answer": 0
     },
     {
@@ -496,9 +496,9 @@
       "output": "['Shadow', 'Jess']",
       "options": [
         "echipaj.append[\"Jess\"]",
-        "echipaj = []",
         "echipaj.append(\"Shadow\")",
-        "print(echipaj)"
+        "print(echipaj)",
+        "echipaj = []"
       ],
       "answer": 0
     },

@@ -230,7 +230,7 @@ describe('planTemplate', () => {
     bug: ['print(a)', 'print(c)'],
   };
 
-  it('wrong-line: shows the broken program, its broken line and three others as options', () => {
+  it('wrong-line: shows the broken program, its broken line and the three lines nearest it', () => {
     const [plan] = plans(wrongLine);
     expect(plan.programs).toEqual([
       'a = 1\nb = 2\n\nprint(a)\nprint(b)',
@@ -241,9 +241,37 @@ describe('planTemplate', () => {
       text: 'Which line is wrong?',
       code: 'a = 1\nb = 2\n\nprint(c)\nprint(b)',
       output: '1\n2',
-      options: ['print(c)', 'a = 1', 'b = 2', 'print(b)'],
+      options: ['print(c)', 'b = 2', 'print(b)', 'a = 1'],
       answer: 0,
     });
+  });
+
+  it('wrong-line: leaves out the lines far from the broken one', () => {
+    const [plan] = plans({
+      ...wrongLine,
+      code: 'a = 1\nb = 2\nc = 3\nprint(a)\nprint(b)\nprint(c)',
+      bug: ['print(b)', 'print(d)'],
+    });
+    expect(plan.build([ok('1\n2\n3\n'), fails()]).options).toEqual([
+      'print(d)',
+      'print(a)',
+      'print(c)',
+      'c = 3',
+    ]);
+  });
+
+  it('wrong-line: puts the lines of the broken line kind first', () => {
+    const [plan] = plans({
+      ...wrongLine,
+      code: 'x = 1\ny = 2\nif x > 0:\n    print(x)\nelse:\n    print(y)',
+      bug: ['if x > 0:', 'if x > 0'],
+    });
+    expect(plan.build([ok('1\n'), fails()]).options).toEqual([
+      'if x > 0',
+      'else:',
+      'y = 2',
+      'print(x)',
+    ]);
   });
 
   it('wrong-line: refuses a broken program that still prints the output, or too few lines', () => {

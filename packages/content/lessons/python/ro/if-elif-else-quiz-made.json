@@ -611,12 +611,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "oxigen = 60\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen >= 50\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
       "output": "Oxigen scazut",
-      "options": [
-        "elif oxigen >= 50",
-        "oxigen = 60",
-        "if oxigen >= 80:",
-        "print(\"Oxigen nominal\")"
-      ],
+      "options": ["elif oxigen >= 50", "if oxigen >= 80:", "else:", "print(\"Oxigen nominal\")"],
       "answer": 0
     },
     {
@@ -626,8 +621,8 @@
       "output": "Rezervor pe jumatate",
       "options": [
         "elif combustibil >= 30",
-        "combustibil = 40",
         "if combustibil >= 70:",
+        "else:",
         "print(\"Rezervor plin\")"
       ],
       "answer": 0
@@ -637,12 +632,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "oxigen = 95\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nif oxigen >= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
       "output": "Oxigen nominal",
-      "options": [
-        "if oxigen >= 50:",
-        "oxigen = 95",
-        "if oxigen >= 80:",
-        "print(\"Oxigen nominal\")"
-      ],
+      "options": ["if oxigen >= 50:", "if oxigen >= 80:", "else:", "print(\"Oxigen nominal\")"],
       "answer": 0
     },
     {
@@ -650,7 +640,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "scor = 100\nif scor >= 90:\n    print(\"Excelent\")\nif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
       "output": "Excelent",
-      "options": ["if scor >= 50:", "scor = 100", "if scor >= 90:", "print(\"Excelent\")"],
+      "options": ["if scor >= 50:", "if scor >= 90:", "else:", "print(\"Excelent\")"],
       "answer": 0
     },
     {
@@ -658,12 +648,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "baterie = 80\nif baterie >= 60:\n    print(\"Baterie buna\")\nif baterie >= 20:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
       "output": "Baterie buna",
-      "options": [
-        "if baterie >= 20:",
-        "baterie = 80",
-        "if baterie >= 60:",
-        "print(\"Baterie buna\")"
-      ],
+      "options": ["if baterie >= 20:", "if baterie >= 60:", "else:", "print(\"Baterie buna\")"],
       "answer": 0
     },
     {
@@ -671,7 +656,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "scor = 35\nif scor >= 90:\n    print(\"Excelent\")\nelif scor >= 50:\n    print(\"Trecut\")\nelse scor < 50:\n    print(\"Picat\")",
       "output": "Picat",
-      "options": ["else scor < 50:", "scor = 35", "if scor >= 90:", "print(\"Excelent\")"],
+      "options": ["else scor < 50:", "elif scor >= 50:", "if scor >= 90:", "print(\"Trecut\")"],
       "answer": 0
     },
     {
@@ -681,9 +666,9 @@
       "output": "Incarca acum",
       "options": [
         "else baterie < 20:",
-        "baterie = 5",
+        "elif baterie >= 20:",
         "if baterie >= 60:",
-        "print(\"Baterie buna\")"
+        "print(\"Baterie slaba\")"
       ],
       "answer": 0
     },
@@ -692,12 +677,7 @@
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "oxigen = 70\nif oxigen >= 80:\n    print(\"Oxigen nominal\")\nelif oxigen <= 50:\n    print(\"Oxigen scazut\")\nelse:\n    print(\"Oxigen critic\")",
       "output": "Oxigen scazut",
-      "options": [
-        "elif oxigen <= 50:",
-        "oxigen = 70",
-        "if oxigen >= 80:",
-        "print(\"Oxigen nominal\")"
-      ],
+      "options": ["elif oxigen <= 50:", "if oxigen >= 80:", "else:", "print(\"Oxigen nominal\")"],
       "answer": 0
     },
     {
@@ -707,8 +687,8 @@
       "output": "Rezervor pe jumatate",
       "options": [
         "elif combustibil <= 30:",
-        "combustibil = 55",
         "if combustibil >= 70:",
+        "else:",
         "print(\"Rezervor plin\")"
       ],
       "answer": 0
