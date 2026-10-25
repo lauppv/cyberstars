@@ -39,15 +39,15 @@ Hai să explicăm acest cod
 
 **for** face singur variabila **i**, așa că nu o scriem înainte de buclă. Se uită la **range(1, 1001)** și știe că asta înseamnă **toate numerele de la 1 la 1000 (1001 - 1)**. La fiecare iterație îi dă lui **i** următorul număr din **range()**, începând cu primul, **1**
 
-Mai întâi, **i = 1**, apoi intră în bloc și îl afișează, după care **automat face i = i + 1**
+Mai întâi, **i = 1**, apoi intră în bloc și îl afișează, după care **for** îi dă lui **i** următorul număr din **range()**
 
-Acum **i = 2**, îl afișează, apoi din nou face **i = i + 1**
+Acum **i = 2**, îl afișează, apoi **i** primește din nou următorul număr
 
-Acum **i = 3**, îl afișează, apoi face din nou **i = i + 1**
+Acum **i = 3**, îl afișează, apoi **i** primește încă o dată următorul număr
 
 ... și tot așa **:)**. Nu e fascinant? Practic facem calculatorul să facă această **repetiție** pentru noi
 
-**in** este un cuvânt cheie. Îi spune lui **Python** să ia variabila **i** și să o verifice cu **range()**
+**in** este un cuvânt cheie. Îi spune lui **Python** de unde își ia **i** valorile: din **range()**, câte un număr pe rând
 
 ---
 
@@ -71,7 +71,7 @@ for i in range(0, 11, 2):
     print(i)
 ```
 
-Asta afișează **0, 2, 4, 6, 8, 10**. În loc de **i = i + 1**, acum **for** face **i = i + 2** la fiecare pas
+Asta afișează **0, 2, 4, 6, 8, 10**. Fiecare număr pe care îl primește **i** e acum cu **2** mai mare decât cel dinainte
 
 ---
 

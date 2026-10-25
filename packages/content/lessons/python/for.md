@@ -39,15 +39,15 @@ Let's explain this code
 
 **for** makes the variable **i** itself, so we don't write it before the loop. It looks at **range(1, 1001)** and knows this means **all numbers from 1 to 1000 (1001 - 1)**. On each iteration it gives **i** the next number of **range()**, starting with the first one, **1**
 
-First, **i = 1**, then it enters the block and prints it, after which it **automatically does i = i + 1**
+First, **i = 1**, then it enters the block and prints it, after which **for** gives **i** the next number of **range()**
 
-Now **i = 2**, it prints it, then again does **i = i + 1**
+Now **i = 2**, it prints it, then **i** gets the next number again
 
-Now **i = 3**, it prints it, then does **i = i + 1** again
+Now **i = 3**, it prints it, then **i** gets the next number once more
 
 ... and so on **:)**. Isn't it fascinating? We basically make the computer do this **repetition** for us
 
-**in** is a keyword. It tells **Python** to take the variable **i** and check it against **range()**
+**in** is a keyword. It tells **Python** where **i** takes its values from: **range()**, one number at a time
 
 ---
 
@@ -71,7 +71,7 @@ for i in range(0, 11, 2):
     print(i)
 ```
 
-This prints **0, 2, 4, 6, 8, 10**. Instead of **i = i + 1**, now **for** does **i = i + 2** on each step
+This prints **0, 2, 4, 6, 8, 10**. Each number **i** gets is now **2** more than the one before
 
 ---
 
