@@ -806,7 +806,7 @@
       "id": "bc-bad-break",
       "kind": "wrong-line",
       "text": "Which line stops this program from printing this?",
-      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        break\n    print(i)\nprint(\"{{end}}\")",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        print(i, \"!\")\n        break\n    print(i)\nprint(\"{{end}}\")",
       "values": [
         {
           "a": 0,
@@ -824,7 +824,7 @@
           "a": 1,
           "b": 7,
           "s": 4,
-          "end": "Stopped"
+          "end": "Over"
         }
       ],
       "bug": ["break", "continue"]
