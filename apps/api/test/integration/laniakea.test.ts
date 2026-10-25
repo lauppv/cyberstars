@@ -117,9 +117,12 @@ describe('Laniakea', () => {
   });
 
   it("refuses a planet whose lesson isn't done and one without questions", async () => {
-    const { agent } = await student([...FIRST_STEPS, 'if-else']);
+    const { agent } = await student([...FIRST_STEPS, 'if-elif-else']);
     await agent.post('/api/laniakea/for/quiz').send({ lang: 'en' }).expect(403);
-    const none = await agent.post('/api/laniakea/if-else/quiz').send({ lang: 'en' }).expect(404);
+    const none = await agent
+      .post('/api/laniakea/if-elif-else/quiz')
+      .send({ lang: 'en' })
+      .expect(404);
     expect(none.body.error).toBe('This planet has no questions yet');
   });
 });
