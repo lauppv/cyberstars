@@ -21,7 +21,7 @@ print(nume.upper())   # TOMMY VERCETTI
 print(nume.lower())   # tommy vercetti
 ```
 
-Observă **punctul** dintre **nume** și **upper()**. **Sintaxa cu punct** înseamnă: „ia acest string și aplică-i această metodă". O **metodă** este pur și simplu o funcție care aparține a ceva, în cazul acesta unui string
+Observă **punctul** dintre **nume** și **upper()**. **Sintaxa cu punct** înseamnă: „ia acest string și aplică-i această metodă". O **metodă** este pur și simplu o funcție care ține de ceva, în cazul acesta de un string
 
 **Important**: **nume.upper()** **NU schimbă** variabila originală. Returnează un string **nou**
 
