@@ -22,7 +22,6 @@ It's clear that we **repeated** the code, and that is completely **forbidden**. 
 This is where the power of the **for** loop comes in
 
 ```py
-i = 1
 for i in range(1, 1000):
     print(i)
 ```
@@ -30,7 +29,6 @@ for i in range(1, 1000):
 This will print all the numbers from **1 to 999**. Why doesn't it include **1000**? **range()** is a **function** that already exists in **Python** and tells us where we want to **start** and where we want to **stop - 1**. That is, **range(1, 1000)** means from **1 to 999**. If we want from **1 to 1000**, we can say **range(1, 1001)**
 
 ```py
-i = 1
 for i in range(1, 1001):
     print(i)
 ```
@@ -39,9 +37,7 @@ Now we see all the numbers from **1 to 1000**
 
 Let's explain this code
 
-**i = 1**
-
-**for** looks at **i** and checks the variable i from before. It knows **i = 1**, so it starts from there. Then **for** looks further and sees **range(1, 1001)**. It knows this means **all numbers from 1 to 1000 (1001 - 1)**, so it takes **i** and on each iteration increases it by **1**, like **i = i + 1**
+**for** makes the variable **i** itself, so we don't write it before the loop. It looks at **range(1, 1001)** and knows this means **all numbers from 1 to 1000 (1001 - 1)**. On each iteration it gives **i** the next number of **range()**, starting with the first one, **1**
 
 First, **i = 1**, then it enters the block and prints it, after which it **automatically does i = i + 1**
 
