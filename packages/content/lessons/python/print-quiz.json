@@ -219,6 +219,63 @@
         "The shortest line first"
       ],
       "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "Why doesn't this program work?",
+      "code": "name = Paul\nprint(name)",
+      "options": [
+        "Paul has no quotes, so Python looks for a variable called Paul",
+        "print needs a capital P",
+        "A variable can't be called name",
+        "It should be print(\"name\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What do we call text written between quotes, like \"Paul\"?",
+      "options": ["A variable", "A string", "A comment", "An integer"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "What does Python do with `x = 23 + 22`?",
+      "options": [
+        "It stores 23 in x and skips the rest",
+        "It stores the text 23 + 22 in x",
+        "It works out 23 + 22, then stores 45 in x",
+        "It prints 45"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Which of these is a number with decimals?",
+      "options": ["314", "\"3.14\"", "-15", "3.14"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does the f in `f\"Hi {name}\"` tell Python?",
+      "options": [
+        "To put each variable's value in place of its {}",
+        "To print the text in bold",
+        "To turn the text into a number",
+        "Nothing, it's only there for looks"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does Python do with a line that starts with #?",
+      "options": [
+        "It prints it",
+        "It skips it: the line is a comment",
+        "It stops with an error",
+        "It runs it twice"
+      ],
+      "answer": 1
     }
   ],
   "templates": [

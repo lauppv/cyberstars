@@ -219,6 +219,63 @@
         "Întâi linia cea mai scurtă"
       ],
       "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "De ce nu merge programul?",
+      "code": "nume = Paul\nprint(nume)",
+      "options": [
+        "Paul nu are ghilimele, așa că Python caută o variabilă numită Paul",
+        "print trebuie scris cu P mare",
+        "O variabilă nu se poate numi nume",
+        "Trebuia print(\"nume\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Cum se numește un text scris între ghilimele, ca \"Paul\"?",
+      "options": ["Variabilă", "String", "Comentariu", "Număr întreg"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Ce face Python cu `x = 23 + 22`?",
+      "options": [
+        "Pune 23 în x și sare peste rest",
+        "Pune textul 23 + 22 în x",
+        "Calculează 23 + 22, apoi pune 45 în x",
+        "Afișează 45"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Care dintre acestea e un număr cu zecimale?",
+      "options": ["314", "\"3.14\"", "-15", "3.14"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce îi spune lui Python f-ul din `f\"Salut {nume}\"`?",
+      "options": [
+        "Să pună valoarea fiecărei variabile în locul acoladelor ei",
+        "Să afișeze textul îngroșat",
+        "Să transforme textul într-un număr",
+        "Nimic, e doar de decor"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce face Python cu o linie care începe cu #?",
+      "options": [
+        "O afișează",
+        "O sare: linia e un comentariu",
+        "Se oprește cu o eroare",
+        "O rulează de două ori"
+      ],
+      "answer": 1
     }
   ],
   "templates": [
