@@ -1,0 +1,715 @@
+{
+  "note": "Made by npm run make:quiz from the templates in palindrome-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "pd-slice-f6c98e",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"capac\"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
+      "options": ["Palindrom!", "Nu e palindrom", "Palindrom! capac", "capac"],
+      "answer": 0
+    },
+    {
+      "id": "pd-slice-112aa5",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"orbita\"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
+      "options": ["Nu e palindrom", "Palindrom!", "Nu e palindrom orbita", "atibro"],
+      "answer": 0
+    },
+    {
+      "id": "pd-slice-276d4d",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"radar\"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
+      "options": ["Palindrom!", "Nu e palindrom", "Palindrom! radar", "radar"],
+      "answer": 0
+    },
+    {
+      "id": "pd-slice-fdab90",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Ana\"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
+      "options": ["Nu e palindrom", "Palindrom!", "Nu e palindrom Ana", "anA"],
+      "answer": 0
+    },
+    {
+      "id": "pd-slice-d2c62e",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"sas\"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
+      "options": ["Palindrom!", "Nu e palindrom", "Palindrom! sas", "sas"],
+      "answer": 0
+    },
+    {
+      "id": "pd-func-d57cd0",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"capac\", \"cerc\", \"rotor\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "options": [
+        "capac True\ncerc False\nrotor True",
+        "capac True\ncerc True\nrotor True",
+        "capac False\ncerc False\nrotor False",
+        "True\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-func-4d4c3f",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"radar\", \"racheta\", \"sas\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "options": [
+        "radar True\nracheta False\nsas True",
+        "radar True\nracheta True\nsas True",
+        "radar False\nracheta False\nsas True",
+        "True\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-func-532624",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"cojoc\", \"cuib\", \"civic\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "options": [
+        "cojoc True\ncuib False\ncivic True",
+        "cojoc True\ncuib True\ncivic True",
+        "cojoc False\ncuib False\ncivic False",
+        "True\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-func-f0dc42",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"rotitor\", \"rapir\", \"potop\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "options": [
+        "rotitor True\nrapir False\npotop True",
+        "rotitor True\nrapir True\npotop True",
+        "rotitor False\nrapir False\npotop False",
+        "True\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-func-857a1d",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"elevele\", \"mars\", \"sas\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "options": [
+        "elevele True\nmars False\nsas True",
+        "elevele True\nmars True\nsas True",
+        "elevele False\nmars False\nsas True",
+        "True\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-pairs-5d770b",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"racheta\"\nfor i in range(len(cuvant) // 2):\n    print(cuvant[i], cuvant[len(cuvant) - 1 - i])",
+      "options": [
+        "r a\na t\nc e",
+        "r a\na t\nc e\nh h\ne c\nt a\na r",
+        "r a\na c\nc h",
+        "0 6\n1 5\n2 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-pairs-06f61b",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"planeta\"\nfor i in range(len(cuvant) // 2):\n    print(cuvant[i], cuvant[len(cuvant) - 1 - i])",
+      "options": [
+        "p a\nl t\na e",
+        "p a\nl t\na e\nn n\ne a\nt l\na p",
+        "p l\nl a\na n",
+        "0 6\n1 5\n2 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-pairs-b32d07",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"rotitor\"\nfor i in range(len(cuvant) // 2):\n    print(cuvant[i], cuvant[len(cuvant) - 1 - i])",
+      "options": [
+        "r r\no o\nt t",
+        "r r\no o\nt t\ni i\nt t\no o\nr r",
+        "r o\no t\nt i",
+        "0 6\n1 5\n2 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-pairs-88f259",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"galaxie\"\nfor i in range(len(cuvant) // 2):\n    print(cuvant[i], cuvant[len(cuvant) - 1 - i])",
+      "options": [
+        "g e\na i\nl x",
+        "g e\na i\nl x\na a\nx l\ni a\ne g",
+        "g a\na l\nl a",
+        "0 6\n1 5\n2 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-pairs-66b27b",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"cometa\"\nfor i in range(len(cuvant) // 2):\n    print(cuvant[i], cuvant[len(cuvant) - 1 - i])",
+      "options": [
+        "c a\no t\nm e",
+        "c a\no t\nm e\ne m\nt o\na c",
+        "c o\no m\nm e",
+        "0 5\n1 4\n2 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-clean-17690e",
+      "text": "Ce afișează?",
+      "code": "text = \"Ele fac cafele\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "options": [
+        "elefaccafele\nTrue",
+        "Elefaccafele\nFalse",
+        "ele fac cafele\nFalse",
+        "elefaccafele\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-clean-81e122",
+      "text": "Ce afișează?",
+      "code": "text = \"Ion a luat luana noi\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "options": [
+        "ionaluatluananoi\nFalse",
+        "Ionaluatluananoi\nFalse",
+        "ion a luat luana noi\nFalse",
+        "i\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-clean-5d2764",
+      "text": "Ce afișează?",
+      "code": "text = \"Salut Lume\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "options": ["salutlume\nFalse", "SalutLume\nFalse", "salut lume\nFalse", "e\nTrue"],
+      "answer": 0
+    },
+    {
+      "id": "pd-clean-a48228",
+      "text": "Ce afișează?",
+      "code": "text = \"Ana are mere\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "options": ["anaaremere\nFalse", "Anaaremere\nFalse", "ana are mere\nFalse", "e\nTrue"],
+      "answer": 0
+    },
+    {
+      "id": "pd-clean-c97a99",
+      "text": "Ce afișează?",
+      "code": "text = \"Rara bara\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "options": ["rarabara\nFalse", "Rarabara\nFalse", "rara bara\nFalse", "a\nTrue"],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-7fe1f9",
+      "text": "Ce afișează?",
+      "code": "coduri = [\"rotitor\", \"semnal\", \"capac\", \"orbita\", \"radar\"]\nvalide = 0\nfor cod in coduri:\n    if cod == cod[::-1]:\n        valide += 1\nprint(f\"Semnale valide: {valide}\")",
+      "options": [
+        "Semnale valide: 3",
+        "Semnale valide: 2",
+        "Semnale valide: 1",
+        "Semnale valide: 1\nSemnale valide: 1\nSemnale valide: 2\nSemnale valide: 2\nSemnale valide: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-2b722c",
+      "text": "Ce afișează?",
+      "code": "coduri = [\"cojoc\", \"luna\", \"civic\"]\nvalide = 0\nfor cod in coduri:\n    if cod == cod[::-1]:\n        valide += 1\nprint(f\"Semnale valide: {valide}\")",
+      "options": [
+        "Semnale valide: 2",
+        "Semnale valide: 1",
+        "Semnale valide: 1\nSemnale valide: 1\nSemnale valide: 2",
+        "Semnale valide: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-884474",
+      "text": "Ce afișează?",
+      "code": "coduri = [\"sas\", \"rotor\", \"racheta\", \"potop\"]\nvalide = 0\nfor cod in coduri:\n    if cod == cod[::-1]:\n        valide += 1\nprint(f\"Semnale valide: {valide}\")",
+      "options": [
+        "Semnale valide: 3",
+        "Semnale valide: 1",
+        "Semnale valide: 1\nSemnale valide: 2\nSemnale valide: 2\nSemnale valide: 3",
+        "Semnale valide: 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-0cad9d",
+      "text": "Ce afișează?",
+      "code": "coduri = [\"solar\", \"rotor\", \"ele\", \"cometa\", \"elevele\"]\nvalide = 0\nfor cod in coduri:\n    if cod == cod[::-1]:\n        valide += 1\nprint(f\"Semnale valide: {valide}\")",
+      "options": [
+        "Semnale valide: 3",
+        "Semnale valide: 2",
+        "Semnale valide: 1",
+        "Semnale valide: 0\nSemnale valide: 1\nSemnale valide: 2\nSemnale valide: 2\nSemnale valide: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-count-eda0af",
+      "text": "Ce afișează?",
+      "code": "coduri = [\"aerisirea\", \"Marte\", \"cojoc\"]\nvalide = 0\nfor cod in coduri:\n    if cod == cod[::-1]:\n        valide += 1\nprint(f\"Semnale valide: {valide}\")",
+      "options": [
+        "Semnale valide: 2",
+        "Semnale valide: 1",
+        "Semnale valide: 1\nSemnale valide: 1\nSemnale valide: 2",
+        "Semnale valide: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-checks-b32d07",
+      "text": "Ce afișează?",
+      "code": "def numara_verificari(cuvant):\n    verificari = 0\n    for i in range(len(cuvant) // 2):\n        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n    return verificari\n\nprint(numara_verificari(\"rotitor\"))",
+      "options": ["3", "7", "4", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-checks-f90969",
+      "text": "Ce afișează?",
+      "code": "def numara_verificari(cuvant):\n    verificari = 0\n    for i in range(len(cuvant) // 2):\n        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n    return verificari\n\nprint(numara_verificari(\"potop\"))",
+      "options": ["2", "5", "3", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-checks-b352ab",
+      "text": "Ce afișează?",
+      "code": "def numara_verificari(cuvant):\n    verificari = 0\n    for i in range(len(cuvant) // 2):\n        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n    return verificari\n\nprint(numara_verificari(\"aerisirea\"))",
+      "options": ["4", "9", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-checks-6a01d6",
+      "text": "Ce afișează?",
+      "code": "def numara_verificari(cuvant):\n    verificari = 0\n    for i in range(len(cuvant) // 2):\n        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n    return verificari\n\nprint(numara_verificari(\"elevele\"))",
+      "options": ["3", "7", "4", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-checks-6abad3",
+      "text": "Ce afișează?",
+      "code": "def numara_verificari(cuvant):\n    verificari = 0\n    for i in range(len(cuvant) // 2):\n        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n    return verificari\n\nprint(numara_verificari(\"rotor\"))",
+      "options": ["2", "5", "3", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-bacca5",
+      "text": "Care program afișează asta?",
+      "output": "rotor True\ncerc False",
+      "options": [
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"rotor\", \"cerc\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nfor cuvant in [\"rotor\", \"cerc\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] == cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"rotor\", \"cerc\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(1):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"rotor\", \"cerc\"]:\n    print(cuvant, este_palindrom(cuvant))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-5bdc7d",
+      "text": "Care program afișează asta?",
+      "output": "civic True\ncopac False",
+      "options": [
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"civic\", \"copac\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nfor cuvant in [\"civic\", \"copac\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] == cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"civic\", \"copac\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(1):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"civic\", \"copac\"]:\n    print(cuvant, este_palindrom(cuvant))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-f1993b",
+      "text": "Care program afișează asta?",
+      "output": "potop True\nplop False",
+      "options": [
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"potop\", \"plop\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nfor cuvant in [\"potop\", \"plop\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] == cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"potop\", \"plop\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(1):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"potop\", \"plop\"]:\n    print(cuvant, este_palindrom(cuvant))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-a9f604",
+      "text": "Care program afișează asta?",
+      "output": "capac True\ncric False",
+      "options": [
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"capac\", \"cric\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nfor cuvant in [\"capac\", \"cric\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] == cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"capac\", \"cric\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(1):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"capac\", \"cric\"]:\n    print(cuvant, este_palindrom(cuvant))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-which-e6edff",
+      "text": "Care program afișează asta?",
+      "output": "cojoc True\ncozonac False",
+      "options": [
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"cojoc\", \"cozonac\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nfor cuvant in [\"cojoc\", \"cozonac\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] == cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"cojoc\", \"cozonac\"]:\n    print(cuvant, este_palindrom(cuvant))",
+        "def este_palindrom(cuvant):\n    for i in range(1):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"cojoc\", \"cozonac\"]:\n    print(cuvant, este_palindrom(cuvant))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-return-951404",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    ___\n\nprint(este_palindrom(\"capac\"), este_palindrom(\"orbita\"))",
+      "output": "True False",
+      "options": ["return True", "return False", "return cuvant", "print(True)"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-return-051269",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    ___\n\nprint(este_palindrom(\"radar\"), este_palindrom(\"racheta\"))",
+      "output": "True False",
+      "options": ["return True", "return False", "return cuvant", "print(True)"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-return-f13757",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    ___\n\nprint(este_palindrom(\"cojoc\"), este_palindrom(\"luna\"))",
+      "output": "True False",
+      "options": ["return True", "return False", "return cuvant", "print(True)"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-return-72a0e4",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    ___\n\nprint(este_palindrom(\"sas\"), este_palindrom(\"start\"))",
+      "output": "True False",
+      "options": ["return True", "return False", "return cuvant", "print(True)"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-return-fd6aae",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    ___\n\nprint(este_palindrom(\"rotor\"), este_palindrom(\"rigla\"))",
+      "output": "True False",
+      "options": ["return True", "return False", "return cuvant", "print(True)"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-half-c9b89b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"racheta\"\nfor i in range(___):\n    print(cuvant[i] + cuvant[len(cuvant) - 1 - i])",
+      "output": "ra\nat\nce",
+      "options": ["len(cuvant) // 2", "len(cuvant)", "len(cuvant) - 1", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-half-2a1ec3",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"rotitor\"\nfor i in range(___):\n    print(cuvant[i] + cuvant[len(cuvant) - 1 - i])",
+      "output": "rr\noo\ntt",
+      "options": ["len(cuvant) // 2", "len(cuvant)", "len(cuvant) - 1", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-half-ba9c39",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"planeta\"\nfor i in range(___):\n    print(cuvant[i] + cuvant[len(cuvant) - 1 - i])",
+      "output": "pa\nlt\nae",
+      "options": ["len(cuvant) // 2", "len(cuvant)", "len(cuvant) - 1", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-half-3b4b2a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"orbite\"\nfor i in range(___):\n    print(cuvant[i] + cuvant[len(cuvant) - 1 - i])",
+      "output": "oe\nrt\nbi",
+      "options": ["len(cuvant) // 2", "len(cuvant)", "len(cuvant) - 1", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-half-f3172a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"radar\"\nfor i in range(___):\n    print(cuvant[i] + cuvant[len(cuvant) - 1 - i])",
+      "output": "rr\naa",
+      "options": ["len(cuvant) // 2", "len(cuvant)", "len(cuvant) - 1", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-mirror-121eaa",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[___]:\n            return False\n    return True\n\nfor cuvant in [\"capac\", \"capat\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "capac True\ncapat False",
+      "options": ["len(cuvant) - 1 - i", "len(cuvant) - i", "i", "len(cuvant) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-mirror-f55172",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[___]:\n            return False\n    return True\n\nfor cuvant in [\"radar\", \"rapid\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "radar True\nrapid False",
+      "options": ["len(cuvant) - 1 - i", "len(cuvant) - i", "i", "len(cuvant) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-mirror-c6b61a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[___]:\n            return False\n    return True\n\nfor cuvant in [\"civic\", \"comic\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "civic True\ncomic False",
+      "options": ["len(cuvant) - 1 - i", "len(cuvant) - i", "i", "len(cuvant) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-mirror-d9d923",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[___]:\n            return False\n    return True\n\nfor cuvant in [\"rotor\", \"robot\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "rotor True\nrobot False",
+      "options": ["len(cuvant) - 1 - i", "len(cuvant) - i", "i", "len(cuvant) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-mirror-59d52e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[___]:\n            return False\n    return True\n\nfor cuvant in [\"elevele\", \"elefant\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "elevele True\nelefant False",
+      "options": ["len(cuvant) - 1 - i", "len(cuvant) - i", "i", "len(cuvant) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-clean-5775b4",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"Ele fac cafele\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.___():\n        curatat += caracter.lower()\nprint(curatat, curatat == curatat[::-1])",
+      "output": "elefaccafele True",
+      "options": ["isalpha", "isdigit", "isupper", "islower"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-clean-905938",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"Rara bara 42\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.___():\n        curatat += caracter.lower()\nprint(curatat, curatat == curatat[::-1])",
+      "output": "rarabara False",
+      "options": ["isalpha", "isdigit", "isupper", "islower"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-clean-bd75a8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"Ion a luat luana noi 9\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.___():\n        curatat += caracter.lower()\nprint(curatat, curatat == curatat[::-1])",
+      "output": "ionaluatluananoi False",
+      "options": ["isalpha", "isdigit", "isupper", "islower"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-clean-0d2c5d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"Ele fac cafele 5\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.___():\n        curatat += caracter.lower()\nprint(curatat, curatat == curatat[::-1])",
+      "output": "elefaccafele True",
+      "options": ["isalpha", "isdigit", "isupper", "islower"],
+      "answer": 0
+    },
+    {
+      "id": "pd-gap-clean-f160da",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"Rara bara\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.___():\n        curatat += caracter.lower()\nprint(curatat, curatat == curatat[::-1])",
+      "output": "rarabara False",
+      "options": ["isalpha", "isdigit", "isupper", "islower"],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-neq-f84b6b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] == cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"capac\", \"cutie\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "capac True\ncutie False",
+      "options": [
+        "if cuvant[i] == cuvant[len(cuvant) - 1 - i]:",
+        "for i in range(len(cuvant) // 2):",
+        "def este_palindrom(cuvant):",
+        "for cuvant in [\"capac\", \"cutie\"]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-neq-cc46e5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] == cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"potop\", \"pirat\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "potop True\npirat False",
+      "options": [
+        "if cuvant[i] == cuvant[len(cuvant) - 1 - i]:",
+        "for i in range(len(cuvant) // 2):",
+        "def este_palindrom(cuvant):",
+        "for cuvant in [\"potop\", \"pirat\"]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-neq-39a05d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] == cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"cojoc\", \"cutie\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "cojoc True\ncutie False",
+      "options": [
+        "if cuvant[i] == cuvant[len(cuvant) - 1 - i]:",
+        "for cuvant in [\"cojoc\", \"cutie\"]:",
+        "return False",
+        "return True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-neq-81bdd3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] == cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"sas\", \"sat\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "sas True\nsat False",
+      "options": [
+        "if cuvant[i] == cuvant[len(cuvant) - 1 - i]:",
+        "for i in range(len(cuvant) // 2):",
+        "for cuvant in [\"sas\", \"sat\"]:",
+        "return False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-neq-11a794",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] == cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"radar\", \"robot\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "radar True\nrobot False",
+      "options": [
+        "if cuvant[i] == cuvant[len(cuvant) - 1 - i]:",
+        "for i in range(len(cuvant) // 2):",
+        "for cuvant in [\"radar\", \"robot\"]:",
+        "return False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-lower-3403d5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"Ele fac cafele\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "output": "elefaccafele\nTrue",
+      "options": [
+        "curatat += caracter",
+        "curatat = \"\"",
+        "text = \"Ele fac cafele\"",
+        "if caracter.isalpha():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-lower-8b4bb8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"Ion a luat luana noi\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "output": "ionaluatluananoi\nFalse",
+      "options": [
+        "curatat += caracter",
+        "curatat = \"\"",
+        "text = \"Ion a luat luana noi\"",
+        "if caracter.isalpha():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-lower-305ab6",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"Rara bara\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "output": "rarabara\nFalse",
+      "options": [
+        "curatat += caracter",
+        "curatat = \"\"",
+        "print(curatat)",
+        "print(curatat == curatat[::-1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-lower-5d0cea",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"Ana are mere\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "output": "anaaremere\nFalse",
+      "options": [
+        "curatat += caracter",
+        "curatat = \"\"",
+        "text = \"Ana are mere\"",
+        "print(curatat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-lower-ee9d05",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"Rapir si ripar\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "output": "rapirsiripar\nFalse",
+      "options": [
+        "curatat += caracter",
+        "curatat = \"\"",
+        "text = \"Rapir si ripar\"",
+        "print(curatat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-return-d316de",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nfor cuvant in [\"rotor\", \"cerc\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "rotor True\ncerc False",
+      "options": [
+        "return True",
+        "return False",
+        "if cuvant[i] != cuvant[len(cuvant) - 1 - i]:",
+        "for i in range(len(cuvant) // 2):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-return-638b4b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nfor cuvant in [\"rotitor\", \"sens\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "rotitor True\nsens False",
+      "options": [
+        "return True",
+        "return False",
+        "if cuvant[i] != cuvant[len(cuvant) - 1 - i]:",
+        "print(cuvant, este_palindrom(cuvant))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-return-e61459",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nfor cuvant in [\"potop\", \"plop\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "potop True\nplop False",
+      "options": [
+        "return True",
+        "return False",
+        "print(cuvant, este_palindrom(cuvant))",
+        "for cuvant in [\"potop\", \"plop\"]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-return-7d6367",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nfor cuvant in [\"civic\", \"cubic\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "civic True\ncubic False",
+      "options": [
+        "return True",
+        "return False",
+        "if cuvant[i] != cuvant[len(cuvant) - 1 - i]:",
+        "print(cuvant, este_palindrom(cuvant))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-bad-return-5b0da4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nfor cuvant in [\"cojoc\", \"colac\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "cojoc True\ncolac False",
+      "options": [
+        "return True",
+        "return False",
+        "if cuvant[i] != cuvant[len(cuvant) - 1 - i]:",
+        "for i in range(len(cuvant) // 2):"
+      ],
+      "answer": 0
+    }
+  ]
+}

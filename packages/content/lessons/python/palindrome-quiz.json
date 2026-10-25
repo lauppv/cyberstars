@@ -1,0 +1,682 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is a palindrome?",
+      "options": [
+        "A word with no repeated letters",
+        "A word that reads the same forwards and backwards",
+        "A word whose letters are in alphabetical order",
+        "A word with an even number of letters"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "What does this print?",
+      "code": "word = \"racecar\"\nif word == word[::-1]:\n    print(\"Palindrome!\")\nelse:\n    print(\"Not a palindrome\")",
+      "options": ["Palindrome!", "Not a palindrome", "racecar", "racecar\nPalindrome!"],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "How does `word == word[::-1]` check for a palindrome?",
+      "options": [
+        "It counts the word's letters",
+        "It checks that the word has no spaces",
+        "It sorts the letters and compares",
+        "It compares the word with its reverse"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "In the loop version, which character is `word[i]` compared with?",
+      "options": [
+        "`word[i + 1]`, the next one",
+        "`word[0]`, the first one",
+        "`word[len(word) - 1 - i]`, its mirror from the end",
+        "`word[len(word)]`, the last one"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "Why does the loop only go through `range(len(word) // 2)`?",
+      "options": [
+        "The second half of a word is never a palindrome",
+        "Each check covers a character and its mirror, so half the word is enough",
+        "Python can only loop over half a string",
+        "To skip the middle letter of every word"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "For \"racecar\" (7 letters), which positions does the loop check against which?",
+      "options": [
+        "0, 1, 2, 3 against 6, 5, 4, 3",
+        "1, 2, 3 against 7, 6, 5",
+        "0 against 6 only",
+        "0, 1, 2 against 6, 5, 4"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n    return True\n\nprint(is_palindrome(\"racecar\"))\nprint(is_palindrome(\"hello\"))\nprint(is_palindrome(\"madam\"))",
+      "options": [
+        "True\nFalse\nTrue",
+        "True\nTrue\nTrue",
+        "False\nFalse\nFalse",
+        "True\nFalse\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Why does `return True` come after the loop, not inside it?",
+      "options": [
+        "Python doesn't allow `return True` inside a loop",
+        "So the function returns before checking anything",
+        "We only know it's a palindrome once every pair has matched",
+        "Because `return False` must be the last line"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n        return True\n\nprint(is_palindrome(\"noun\"))",
+      "options": ["False", "True", "noun", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "What happens as soon as the loop finds a pair that doesn't match?",
+      "options": [
+        "The loop skips that pair and goes on",
+        "The function prints the pair",
+        "The loop starts over from the beginning",
+        "`return False` ends the function, the rest isn't checked"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "What does `len(word) // 2` give for a word of 7 letters?",
+      "options": ["3", "3.5", "4", "7"],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "Why can the middle letter of \"racecar\" be left unchecked?",
+      "options": [
+        "It is always a vowel",
+        "The loop can't reach the middle",
+        "It is its own mirror, so it always matches",
+        "Python skips odd positions"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "def is_palindrome_sentence(text):\n    cleaned = \"\"\n    for char in text:\n        if char.isalpha():\n            cleaned += char.lower()\n    return cleaned == cleaned[::-1]\n\nprint(is_palindrome_sentence(\"A man a plan a canal Panama\"))\nprint(is_palindrome_sentence(\"racecar\"))\nprint(is_palindrome_sentence(\"hello world\"))",
+      "options": [
+        "False\nTrue\nFalse",
+        "True\nTrue\nFalse",
+        "True\nTrue\nTrue",
+        "False\nFalse\nFalse"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Why does the sentence check keep only `char.isalpha()` characters?",
+      "options": [
+        "So the sentence gets shorter for speed",
+        "So the digits are compared first",
+        "Because `[::-1]` can't reverse spaces",
+        "So spaces and punctuation don't count"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q15",
+      "text": "Why does the sentence check use `char.lower()`?",
+      "options": [
+        "So capital and small letters count as the same",
+        "To remove the spaces",
+        "To reverse the text",
+        "Because `isalpha()` only works on small letters"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "text = \"A man a plan a canal Panama\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()\nprint(cleaned)",
+      "options": [
+        "A man a plan a canal Panama",
+        "AmanaplanacanalPanama",
+        "amanaplanacanalpanama",
+        "amanaplanacanalpanama\nTrue"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "word = \"Racecar\"\nprint(word == word[::-1])",
+      "options": ["True", "False", "Racecar", "racecaR"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "word = \"radar\"\nfor i in range(len(word) // 2):\n    print(word[i], word[len(word) - 1 - i])",
+      "options": ["r r\na a\nd d", "r\na", "r r", "r r\na a"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "codes = [\"racecar\", \"signal\", \"level\"]\nvalid = 0\nfor code in codes:\n    result = code == code[::-1]\n    print(f\"{code}: {result}\")\n    if result:\n        valid += 1\nprint(f\"Valid signals: {valid}\")",
+      "options": [
+        "racecar: True\nsignal: False\nlevel: True\nValid signals: 2",
+        "racecar: True\nsignal: False\nlevel: True\nValid signals: 3",
+        "Valid signals: 2",
+        "racecar: True\nsignal: True\nlevel: True\nValid signals: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "Which of these words is a palindrome?",
+      "options": ["rocket", "orbit", "radar", "signal"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "How many comparisons does the loop version make for \"hello\" before it returns False?",
+      "options": ["2", "1: h and o already differ", "5", "None, it returns at once"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "What happens when this runs?",
+      "code": "word = \"level\"\nprint(word[0] == word[len(word)])",
+      "options": [
+        "It prints True",
+        "It prints False",
+        "It prints nothing",
+        "An error: `word[len(word)]` is past the last index"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "word = \"a\"\nprint(word == word[::-1])",
+      "options": ["True", "False", "a", "None"],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "Which is the same idea as \"the first character equals the last, the second the second-to-last, and so on\"?",
+      "options": [
+        "Sorting the letters",
+        "Counting the vowels",
+        "Comparing the word with its reverse",
+        "Checking that the word has an odd length"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "word = \"level\"\nchecks = 0\nfor i in range(len(word) // 2):\n    checks += 1\nprint(checks)",
+      "options": ["1", "2", "3", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "Why does the mission ask for a loop in `is_palindrome`, not `[::-1]`?",
+      "options": [
+        "Because `[::-1]` gives a wrong answer for odd lengths",
+        "Because `[::-1]` only works on lists",
+        "Because a loop can't return False",
+        "To practise comparing the mirrored pairs, the logic behind the shortcut"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "text = \"Never odd or even\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()\nprint(cleaned == cleaned[::-1])\nprint(text == text[::-1])",
+      "options": ["True\nFalse", "True\nTrue", "False\nFalse", "False\nTrue"],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "In \"A man a plan a canal Panama\", what makes the plain `text == text[::-1]` say False?",
+      "options": [
+        "The sentence is too long",
+        "The letter m appears twice",
+        "The spaces and the capital letters",
+        "Sentences can never be palindromes"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n    return True\n\nvalid = 0\nfor code in [\"radar\", \"orbit\", \"noon\"]:\n    if is_palindrome(code):\n        valid += 1\nprint(valid)",
+      "options": ["0", "2", "3", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "word = \"noon \"\nif word == word[::-1]:\n    print(\"Palindrome!\")\nelse:\n    print(\"Not a palindrome\")",
+      "options": ["Palindrome!", "Palindrome!\nNot a palindrome", "noon", "Not a palindrome"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "pd-slice",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "word = \"{{w}}\"\nif word == word[::-1]:\n    print(\"Palindrome!\")\nelse:\n    print(\"Not a palindrome\")",
+      "values": [
+        {
+          "w": "level"
+        },
+        {
+          "w": "orbit"
+        },
+        {
+          "w": "radar"
+        },
+        {
+          "w": "Anna"
+        },
+        {
+          "w": "stats"
+        }
+      ],
+      "mistakes": [
+        ["word == word[::-1]", "word != word[::-1]"],
+        ["print(\"Palindrome!\")", "print(\"Palindrome!\", word)"],
+        ["print(\"Not a palindrome\")", "print(\"Not a palindrome\", word)"],
+        ["print(\"Palindrome!\")", "print(word)"],
+        ["print(\"Not a palindrome\")", "print(word[::-1])"]
+      ]
+    },
+    {
+      "id": "pd-func",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n    return True\n\nfor word in [{{words}}]:\n    print(word, is_palindrome(word))",
+      "values": [
+        {
+          "words": "\"level\", \"noun\", \"rotor\""
+        },
+        {
+          "words": "\"radar\", \"rocket\", \"stats\""
+        },
+        {
+          "words": "\"noon\", \"night\", \"civic\""
+        },
+        {
+          "words": "\"refer\", \"rider\", \"kayak\""
+        },
+        {
+          "words": "\"madam\", \"mars\", \"solos\""
+        }
+      ],
+      "mistakes": [
+        [
+          "            return False\n    return True",
+          "            return False\n        return True"
+        ],
+        ["return False", "return True"],
+        ["range(len(word) // 2)", "range(1)"],
+        ["word[len(word) - 1 - i]", "word[len(word) - 1]"],
+        ["print(word, is_palindrome(word))", "print(is_palindrome(word))"]
+      ]
+    },
+    {
+      "id": "pd-pairs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "word = \"{{w}}\"\nfor i in range(len(word) // 2):\n    print(word[i], word[len(word) - 1 - i])",
+      "values": [
+        {
+          "w": "rocket"
+        },
+        {
+          "w": "planet"
+        },
+        {
+          "w": "racecar"
+        },
+        {
+          "w": "galaxy"
+        },
+        {
+          "w": "comet"
+        }
+      ],
+      "mistakes": [
+        ["len(word) // 2", "len(word)"],
+        ["word[len(word) - 1 - i]", "word[i + 1]"],
+        ["print(word[i], word[len(word) - 1 - i])", "print(i, len(word) - 1 - i)"],
+        ["word[len(word) - 1 - i]", "word[len(word) - 1]"]
+      ]
+    },
+    {
+      "id": "pd-clean",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "text = \"{{t}}\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()\nprint(cleaned)\nprint(cleaned == cleaned[::-1])",
+      "values": [
+        {
+          "t": "Never odd or even"
+        },
+        {
+          "t": "Step on no pets"
+        },
+        {
+          "t": "Hello World"
+        },
+        {
+          "t": "Was it a car"
+        },
+        {
+          "t": "Top spot"
+        }
+      ],
+      "mistakes": [
+        ["cleaned += char.lower()", "cleaned += char"],
+        ["    if char.isalpha():\n        cleaned += char.lower()", "    cleaned += char.lower()"],
+        ["print(cleaned == cleaned[::-1])", "print(text == text[::-1])"],
+        ["cleaned += char.lower()", "cleaned = char.lower()"]
+      ]
+    },
+    {
+      "id": "pd-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "codes = [{{codes}}]\nvalid = 0\nfor code in codes:\n    if code == code[::-1]:\n        valid += 1\nprint(f\"Valid signals: {valid}\")",
+      "values": [
+        {
+          "codes": "\"racecar\", \"signal\", \"level\", \"orbit\", \"radar\""
+        },
+        {
+          "codes": "\"noon\", \"moon\", \"civic\""
+        },
+        {
+          "codes": "\"stats\", \"kayak\", \"rocket\", \"refer\""
+        },
+        {
+          "codes": "\"solar\", \"rotor\", \"wow\", \"comet\", \"madam\""
+        },
+        {
+          "codes": "\"tenet\", \"Mars\", \"pop\""
+        }
+      ],
+      "mistakes": [
+        ["code == code[::-1]", "code != code[::-1]"],
+        ["valid += 1", "valid = 1"],
+        ["print(f\"Valid signals: {valid}\")", "    print(f\"Valid signals: {valid}\")"],
+        ["valid = 0", "valid = 1"]
+      ]
+    },
+    {
+      "id": "pd-checks",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def count_checks(word):\n    checks = 0\n    for i in range(len(word) // 2):\n        checks += 1\n        if word[i] != word[len(word) - 1 - i]:\n            return checks\n    return checks\n\nprint(count_checks(\"{{w}}\"))",
+      "values": [
+        {
+          "w": "racecar"
+        },
+        {
+          "w": "redeemer"
+        },
+        {
+          "w": "repaper"
+        },
+        {
+          "w": "reviver"
+        },
+        {
+          "w": "redder"
+        }
+      ],
+      "mistakes": [
+        ["len(word) // 2", "len(word)"],
+        [
+          "        checks += 1\n        if word[i] != word[len(word) - 1 - i]:\n            return checks",
+          "        if word[i] != word[len(word) - 1 - i]:\n            return checks\n        checks += 1"
+        ],
+        ["checks = 0", "checks = 1"],
+        ["word[i] != word", "word[i] == word"],
+        ["            return checks\n    return checks", "            return checks\n    return 0"]
+      ]
+    },
+    {
+      "id": "pd-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n    return True\n\nfor word in [{{words}}]:\n    print(word, is_palindrome(word))",
+      "values": [
+        {
+          "words": "\"rotor\", \"noun\""
+        },
+        {
+          "words": "\"civic\", \"stars\""
+        },
+        {
+          "words": "\"kayak\", \"knock\""
+        },
+        {
+          "words": "\"madam\", \"maxim\""
+        },
+        {
+          "words": "\"level\", \"label\""
+        }
+      ],
+      "mistakes": [
+        [
+          "            return False\n    return True",
+          "            return False\n        return True"
+        ],
+        ["!=", "=="],
+        ["range(len(word) // 2)", "range(1)"],
+        ["word[len(word) - 1 - i]", "word[len(word) - 1]"]
+      ]
+    },
+    {
+      "id": "pd-gap-return",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n    ___\n\nprint(is_palindrome(\"{{a}}\"), is_palindrome(\"{{b}}\"))",
+      "values": [
+        {
+          "a": "level",
+          "b": "orbit"
+        },
+        {
+          "a": "radar",
+          "b": "rocket"
+        },
+        {
+          "a": "noon",
+          "b": "moon"
+        },
+        {
+          "a": "stats",
+          "b": "start"
+        },
+        {
+          "a": "refer",
+          "b": "ruler"
+        }
+      ],
+      "answer": "return True",
+      "wrong": ["return False", "return word", "print(True)"]
+    },
+    {
+      "id": "pd-gap-half",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"{{w}}\"\nfor i in range(___):\n    print(word[i] + word[len(word) - 1 - i])",
+      "values": [
+        {
+          "w": "rocket"
+        },
+        {
+          "w": "racecar"
+        },
+        {
+          "w": "planet"
+        },
+        {
+          "w": "orbits"
+        },
+        {
+          "w": "radar"
+        }
+      ],
+      "answer": "len(word) // 2",
+      "wrong": ["len(word)", "len(word) - 1", "1"]
+    },
+    {
+      "id": "pd-gap-mirror",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[___]:\n            return False\n    return True\n\nfor word in [{{words}}]:\n    print(word, is_palindrome(word))",
+      "values": [
+        {
+          "words": "\"level\", \"lever\""
+        },
+        {
+          "words": "\"radar\", \"rider\""
+        },
+        {
+          "words": "\"civic\", \"comic\""
+        },
+        {
+          "words": "\"rotor\", \"robot\""
+        },
+        {
+          "words": "\"stats\", \"stars\""
+        }
+      ],
+      "answer": "len(word) - 1 - i",
+      "wrong": ["len(word) - i", "i", "len(word) - 1"]
+    },
+    {
+      "id": "pd-gap-clean",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = \"{{t}}\"\ncleaned = \"\"\nfor char in text:\n    if char.___():\n        cleaned += char.lower()\nprint(cleaned, cleaned == cleaned[::-1])",
+      "values": [
+        {
+          "t": "Never odd or even"
+        },
+        {
+          "t": "Top spot 42"
+        },
+        {
+          "t": "Was it a rat 9"
+        },
+        {
+          "t": "No lemon no melon"
+        },
+        {
+          "t": "Step on no pets 7"
+        }
+      ],
+      "answer": "isalpha",
+      "wrong": ["isdigit", "isupper", "islower"]
+    },
+    {
+      "id": "pd-bad-neq",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n    return True\n\nfor word in [{{words}}]:\n    print(word, is_palindrome(word))",
+      "values": [
+        {
+          "words": "\"level\", \"lemon\""
+        },
+        {
+          "words": "\"kayak\", \"knock\""
+        },
+        {
+          "words": "\"madam\", \"music\""
+        },
+        {
+          "words": "\"noon\", \"neon\""
+        },
+        {
+          "words": "\"radar\", \"robot\""
+        }
+      ],
+      "bug": ["!=", "=="]
+    },
+    {
+      "id": "pd-bad-lower",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "text = \"{{t}}\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()\nprint(cleaned)\nprint(cleaned == cleaned[::-1])",
+      "values": [
+        {
+          "t": "Never odd or even"
+        },
+        {
+          "t": "Step on no pets"
+        },
+        {
+          "t": "Top spot"
+        },
+        {
+          "t": "Was it a car"
+        },
+        {
+          "t": "No lemon no melon"
+        }
+      ],
+      "bug": ["cleaned += char.lower()", "cleaned += char"]
+    },
+    {
+      "id": "pd-bad-return",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n    return True\n\nfor word in [{{words}}]:\n    print(word, is_palindrome(word))",
+      "values": [
+        {
+          "words": "\"rotor\", \"noun\""
+        },
+        {
+          "words": "\"stats\", \"stairs\""
+        },
+        {
+          "words": "\"refer\", \"robber\""
+        },
+        {
+          "words": "\"civic\", \"cubic\""
+        },
+        {
+          "words": "\"kayak\", \"knack\""
+        }
+      ],
+      "bug": ["    return True", "        return True"]
+    }
+  ]
+}

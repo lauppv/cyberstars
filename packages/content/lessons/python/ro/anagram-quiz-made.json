@@ -1,0 +1,755 @@
+{
+  "note": "Made by npm run make:quiz from the templates in anagram-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "an-sorted-112aa5",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"orbita\"\nprint(sorted(cuvant))",
+      "options": ["['a', 'b', 'i', 'o', 'r', 't']", "orbita", "a", "6"],
+      "answer": 0
+    },
+    {
+      "id": "an-sorted-66b27b",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"cometa\"\nprint(sorted(cuvant))",
+      "options": ["['a', 'c', 'e', 'm', 'o', 't']", "cometa", "a", "6"],
+      "answer": 0
+    },
+    {
+      "id": "an-sorted-f9327b",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"stea\"\nprint(sorted(cuvant))",
+      "options": ["['a', 'e', 's', 't']", "stea", "a", "4"],
+      "answer": 0
+    },
+    {
+      "id": "an-sorted-efa722",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"luna\"\nprint(sorted(cuvant))",
+      "options": ["['a', 'l', 'n', 'u']", "luna", "a", "4"],
+      "answer": 0
+    },
+    {
+      "id": "an-sorted-ae26a3",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Marte\"\nprint(sorted(cuvant))",
+      "options": ["['M', 'a', 'e', 'r', 't']", "Marte", "M", "5"],
+      "answer": 0
+    },
+    {
+      "id": "an-check-0b90d2",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"roma\", \"amor\"))\nprint(este_anagrama(\"Mare\", \"Rame\"))\nprint(este_anagrama(\"roma\", \"Mare\"))",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nFalse\nFalse",
+        "False\nFalse\nFalse",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-check-f6beec",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"marti\", \"mirat\"))\nprint(este_anagrama(\"Lac\", \"Cal\"))\nprint(este_anagrama(\"marti\", \"Lac\"))",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nFalse\nFalse",
+        "False\nFalse\nFalse",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-check-f35b14",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"rac\", \"car\"))\nprint(este_anagrama(\"Pod\", \"Dop\"))\nprint(este_anagrama(\"rac\", \"Pod\"))",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nFalse\nFalse",
+        "False\nFalse\nFalse",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-check-6ac6ad",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"sare\", \"rase\"))\nprint(este_anagrama(\"Rost\", \"Tors\"))\nprint(este_anagrama(\"sare\", \"Rost\"))",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nFalse\nFalse",
+        "False\nFalse\nFalse",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-check-6a44ef",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"cer\", \"rec\"))\nprint(este_anagrama(\"Ton\", \"Not\"))\nprint(este_anagrama(\"cer\", \"Ton\"))",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nFalse\nFalse",
+        "False\nFalse\nFalse",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-freq-4fe22d",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"banana\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "options": [
+        "{'b': 1, 'a': 3, 'n': 2}",
+        "{'b': 1, 'a': 1, 'n': 1}",
+        "{'b': 0, 'a': 2, 'n': 1}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-freq-08ceb1",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"racheta\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "options": [
+        "{'r': 1, 'a': 2, 'c': 1, 'h': 1, 'e': 1, 't': 1}",
+        "{'r': 1, 'a': 1, 'c': 1, 'h': 1, 'e': 1, 't': 1}",
+        "{'r': 0, 'a': 1, 'c': 0, 'h': 0, 'e': 0, 't': 0}",
+        "6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-freq-f6c98e",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"capac\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "options": [
+        "{'c': 2, 'a': 2, 'p': 1}",
+        "{'c': 1, 'a': 1, 'p': 1}",
+        "{'c': 1, 'a': 1, 'p': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-freq-efa722",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"lalea\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "options": [
+        "{'l': 2, 'a': 2, 'e': 1}",
+        "{'l': 1, 'a': 1, 'e': 1}",
+        "{'l': 1, 'a': 1, 'e': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-freq-12f7c6",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"cafea\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "options": [
+        "{'c': 1, 'a': 2, 'f': 1, 'e': 1}",
+        "{'c': 1, 'a': 1, 'f': 1, 'e': 1}",
+        "{'c': 0, 'a': 1, 'f': 0, 'e': 0}",
+        "4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-len-ea3340",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"stea\", \"stele\"))\nprint(este_anagrama(\"marti\", \"mirat\"))\nprint(este_anagrama(\"orbita\", \"robota\"))",
+      "options": [
+        "Lungimi diferite\nFalse\nTrue\nFalse",
+        "False\nLungimi diferite\nFalse\nLungimi diferite\nFalse",
+        "Lungimi diferite\nFalse\nTrue\nTrue",
+        "Lungimi diferite\nTrue\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-len-760494",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"racheta\", \"rac\"))\nprint(este_anagrama(\"sare\", \"rase\"))\nprint(este_anagrama(\"cometa\", \"comoda\"))",
+      "options": [
+        "Lungimi diferite\nFalse\nTrue\nFalse",
+        "False\nLungimi diferite\nFalse\nLungimi diferite\nFalse",
+        "Lungimi diferite\nFalse\nTrue\nTrue",
+        "Lungimi diferite\nTrue\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-len-395294",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"roma\", \"amorul\"))\nprint(este_anagrama(\"lac\", \"cal\"))\nprint(este_anagrama(\"luna\", \"lume\"))",
+      "options": [
+        "Lungimi diferite\nFalse\nTrue\nFalse",
+        "False\nLungimi diferite\nFalse\nLungimi diferite\nFalse",
+        "Lungimi diferite\nFalse\nTrue\nTrue",
+        "Lungimi diferite\nTrue\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-len-4960ff",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"pod\", \"podul\"))\nprint(este_anagrama(\"ton\", \"not\"))\nprint(este_anagrama(\"mare\", \"mere\"))",
+      "options": [
+        "Lungimi diferite\nFalse\nTrue\nFalse",
+        "False\nLungimi diferite\nFalse\nLungimi diferite\nFalse",
+        "Lungimi diferite\nFalse\nTrue\nTrue",
+        "Lungimi diferite\nTrue\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-len-80fed8",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"cer\", \"ceruri\"))\nprint(este_anagrama(\"rost\", \"tors\"))\nprint(este_anagrama(\"sac\", \"sat\"))",
+      "options": [
+        "Lungimi diferite\nFalse\nTrue\nFalse",
+        "False\nLungimi diferite\nFalse\nLungimi diferite\nFalse",
+        "Lungimi diferite\nFalse\nTrue\nTrue",
+        "Lungimi diferite\nTrue\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-join-ed0e31",
+      "text": "Ce afișează?",
+      "code": "for cuvant in [\"Roma\", \"Amor\"]:\n    print(cuvant, \"\".join(sorted(cuvant.lower())))",
+      "options": [
+        "Roma amor\nAmor amor",
+        "Roma Ramo\nAmor Amor",
+        "Roma ['a', 'm', 'o', 'r']\nAmor ['a', 'm', 'o', 'r']",
+        "amor\namor"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-join-95573e",
+      "text": "Ce afișează?",
+      "code": "for cuvant in [\"Marti\", \"Mirat\"]:\n    print(cuvant, \"\".join(sorted(cuvant.lower())))",
+      "options": [
+        "Marti aimrt\nMirat aimrt",
+        "Marti Mairt\nMirat Mairt",
+        "Marti ['a', 'i', 'm', 'r', 't']\nMirat ['a', 'i', 'm', 'r', 't']",
+        "aimrt\naimrt"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-join-9acf06",
+      "text": "Ce afișează?",
+      "code": "for cuvant in [\"Rac\", \"Car\"]:\n    print(cuvant, \"\".join(sorted(cuvant.lower())))",
+      "options": [
+        "Rac acr\nCar acr",
+        "Rac Rac\nCar Car",
+        "Rac ['a', 'c', 'r']\nCar ['a', 'c', 'r']",
+        "acr\nacr"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-join-b096f4",
+      "text": "Ce afișează?",
+      "code": "for cuvant in [\"Sare\", \"Rase\"]:\n    print(cuvant, \"\".join(sorted(cuvant.lower())))",
+      "options": [
+        "Sare aers\nRase aers",
+        "Sare Saer\nRase Raes",
+        "Sare ['a', 'e', 'r', 's']\nRase ['a', 'e', 'r', 's']",
+        "aers\naers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-join-b7c528",
+      "text": "Ce afișează?",
+      "code": "for cuvant in [\"Lapte\", \"Paleta\"]:\n    print(cuvant, \"\".join(sorted(cuvant.lower())))",
+      "options": [
+        "Lapte aelpt\nPaleta aaelpt",
+        "Lapte Laept\nPaleta Paaelt",
+        "Lapte ['a', 'e', 'l', 'p', 't']\nPaleta ['a', 'a', 'e', 'l', 'p', 't']",
+        "aelpt\naaelpt"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-group-96d08b",
+      "text": "Ce afișează?",
+      "code": "grupuri = {}\nfor cuvant in [\"rac\", \"car\", \"pod\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
+      "options": [
+        "{'acr': ['rac', 'car'], 'dop': ['pod']}",
+        "{'acr': ['car'], 'dop': ['pod']}",
+        "{'rac': ['rac'], 'car': ['car'], 'pod': ['pod']}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-group-d9c10d",
+      "text": "Ce afișează?",
+      "code": "grupuri = {}\nfor cuvant in [\"roma\", \"amor\", \"mora\", \"luna\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
+      "options": [
+        "{'amor': ['roma', 'amor', 'mora'], 'alnu': ['luna']}",
+        "{'amor': ['mora'], 'alnu': ['luna']}",
+        "{'roma': ['roma'], 'amor': ['amor'], 'mora': ['mora'], 'luna': ['luna']}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-group-a870ad",
+      "text": "Ce afișează?",
+      "code": "grupuri = {}\nfor cuvant in [\"sare\", \"rase\", \"cometa\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
+      "options": [
+        "{'aers': ['sare', 'rase'], 'acemot': ['cometa']}",
+        "{'aers': ['rase'], 'acemot': ['cometa']}",
+        "{'sare': ['sare'], 'rase': ['rase'], 'cometa': ['cometa']}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-group-f34436",
+      "text": "Ce afișează?",
+      "code": "grupuri = {}\nfor cuvant in [\"marti\", \"soare\", \"mirat\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
+      "options": [
+        "{'aimrt': ['marti', 'mirat'], 'aeors': ['soare']}",
+        "{'aimrt': ['mirat'], 'aeors': ['soare']}",
+        "{'marti': ['marti'], 'soare': ['soare'], 'mirat': ['mirat']}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-group-93433d",
+      "text": "Ce afișează?",
+      "code": "grupuri = {}\nfor cuvant in [\"cer\", \"rec\", \"pod\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
+      "options": [
+        "{'cer': ['cer', 'rec'], 'dop': ['pod']}",
+        "{'cer': ['rec'], 'dop': ['pod']}",
+        "{'cer': ['cer'], 'rec': ['rec'], 'pod': ['pod']}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-count-3c99fc",
+      "text": "Ce afișează?",
+      "code": "tinta = \"mare\"\nnumar = 0\nfor cuvant in [\"rame\", \"arme\", \"marea\", \"mere\"]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "options": ["rame\narme\n2", "0", "rame\narme\nmere\n3", "rame\narme\n1"],
+      "answer": 0
+    },
+    {
+      "id": "an-count-335fad",
+      "text": "Ce afișează?",
+      "code": "tinta = \"rac\"\nnumar = 0\nfor cuvant in [\"car\", \"arc\", \"rece\", \"cart\"]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "options": ["car\narc\n2", "0", "car\narc\n1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "an-count-56e619",
+      "text": "Ce afișează?",
+      "code": "tinta = \"marti\"\nnumar = 0\nfor cuvant in [\"mirat\", \"marti\", \"martie\"]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "options": ["mirat\nmarti\n2", "marti\n1", "mirat\nmarti\n1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "an-count-9f02ce",
+      "text": "Ce afișează?",
+      "code": "tinta = \"sare\"\nnumar = 0\nfor cuvant in [\"rase\", \"ares\", \"sarea\", \"sar\"]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "options": ["rase\nares\n2", "0", "rase\nares\n1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "an-count-4f8e66",
+      "text": "Ce afișează?",
+      "code": "tinta = \"cer\"\nnumar = 0\nfor cuvant in [\"rec\", \"cere\", \"cer\", \"ceri\"]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "options": ["rec\ncer\n2", "cer\n1", "rec\ncer\n1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "an-which-aa1c2f",
+      "text": "Care program afișează asta?",
+      "output": "amor roma True\nRame Mare True\namor Mare False",
+      "options": [
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nfor pereche in [(\"amor\", \"roma\"), (\"Rame\", \"Mare\"), (\"amor\", \"Mare\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1) == sorted(cuvant2)\n\nfor pereche in [(\"amor\", \"roma\"), (\"Rame\", \"Mare\"), (\"amor\", \"Mare\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return cuvant1.lower() == cuvant2.lower()\n\nfor pereche in [(\"amor\", \"roma\"), (\"Rame\", \"Mare\"), (\"amor\", \"Mare\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) != sorted(cuvant2.lower())\n\nfor pereche in [(\"amor\", \"roma\"), (\"Rame\", \"Mare\"), (\"amor\", \"Mare\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-which-9da220",
+      "text": "Care program afișează asta?",
+      "output": "mirat marti True\nCal Lac True\nmirat Lac False",
+      "options": [
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nfor pereche in [(\"mirat\", \"marti\"), (\"Cal\", \"Lac\"), (\"mirat\", \"Lac\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1) == sorted(cuvant2)\n\nfor pereche in [(\"mirat\", \"marti\"), (\"Cal\", \"Lac\"), (\"mirat\", \"Lac\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return cuvant1.lower() == cuvant2.lower()\n\nfor pereche in [(\"mirat\", \"marti\"), (\"Cal\", \"Lac\"), (\"mirat\", \"Lac\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) != sorted(cuvant2.lower())\n\nfor pereche in [(\"mirat\", \"marti\"), (\"Cal\", \"Lac\"), (\"mirat\", \"Lac\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-which-da2fe5",
+      "text": "Care program afișează asta?",
+      "output": "car rac True\nDop Pod True\ncar Pod False",
+      "options": [
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nfor pereche in [(\"car\", \"rac\"), (\"Dop\", \"Pod\"), (\"car\", \"Pod\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1) == sorted(cuvant2)\n\nfor pereche in [(\"car\", \"rac\"), (\"Dop\", \"Pod\"), (\"car\", \"Pod\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return cuvant1.lower() == cuvant2.lower()\n\nfor pereche in [(\"car\", \"rac\"), (\"Dop\", \"Pod\"), (\"car\", \"Pod\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) != sorted(cuvant2.lower())\n\nfor pereche in [(\"car\", \"rac\"), (\"Dop\", \"Pod\"), (\"car\", \"Pod\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-which-81d695",
+      "text": "Care program afișează asta?",
+      "output": "rase sare True\nTors Rost True\nrase Rost False",
+      "options": [
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nfor pereche in [(\"rase\", \"sare\"), (\"Tors\", \"Rost\"), (\"rase\", \"Rost\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1) == sorted(cuvant2)\n\nfor pereche in [(\"rase\", \"sare\"), (\"Tors\", \"Rost\"), (\"rase\", \"Rost\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return cuvant1.lower() == cuvant2.lower()\n\nfor pereche in [(\"rase\", \"sare\"), (\"Tors\", \"Rost\"), (\"rase\", \"Rost\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) != sorted(cuvant2.lower())\n\nfor pereche in [(\"rase\", \"sare\"), (\"Tors\", \"Rost\"), (\"rase\", \"Rost\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-which-5a2846",
+      "text": "Care program afișează asta?",
+      "output": "rec cer True\nNot Ton True\nrec Ton False",
+      "options": [
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nfor pereche in [(\"rec\", \"cer\"), (\"Not\", \"Ton\"), (\"rec\", \"Ton\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1) == sorted(cuvant2)\n\nfor pereche in [(\"rec\", \"cer\"), (\"Not\", \"Ton\"), (\"rec\", \"Ton\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return cuvant1.lower() == cuvant2.lower()\n\nfor pereche in [(\"rec\", \"cer\"), (\"Not\", \"Ton\"), (\"rec\", \"Ton\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+        "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) != sorted(cuvant2.lower())\n\nfor pereche in [(\"rec\", \"cer\"), (\"Not\", \"Ton\"), (\"rec\", \"Ton\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-sorted-6f3250",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == ___(cuvant2.lower())\n\nprint(este_anagrama(\"roma\", \"amor\"))\nprint(este_anagrama(\"Mare\", \"Rame\"))",
+      "output": "True\nTrue",
+      "options": ["sorted", "len", "list", "str"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-sorted-4a1bd7",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == ___(cuvant2.lower())\n\nprint(este_anagrama(\"marti\", \"mirat\"))\nprint(este_anagrama(\"Lac\", \"Cal\"))",
+      "output": "True\nTrue",
+      "options": ["sorted", "len", "list", "str"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-sorted-913eec",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == ___(cuvant2.lower())\n\nprint(este_anagrama(\"rac\", \"car\"))\nprint(este_anagrama(\"Pod\", \"Dop\"))",
+      "output": "True\nTrue",
+      "options": ["sorted", "len", "list", "str"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-sorted-308dd5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == ___(cuvant2.lower())\n\nprint(este_anagrama(\"sare\", \"rase\"))\nprint(este_anagrama(\"Rost\", \"Tors\"))",
+      "output": "True\nTrue",
+      "options": ["sorted", "len", "list", "str"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-sorted-286511",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == ___(cuvant2.lower())\n\nprint(este_anagrama(\"cer\", \"rec\"))\nprint(este_anagrama(\"Ton\", \"Not\"))",
+      "output": "True\nTrue",
+      "options": ["sorted", "len", "list", "str"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-freq-2f0349",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {}\nfor caracter in \"banana\":\n    if caracter in frecventa:\n        ___\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "output": "{'b': 1, 'a': 3, 'n': 2}",
+      "options": [
+        "frecventa[caracter] += 1",
+        "frecventa[caracter] = 1",
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] -= 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-freq-f7e071",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {}\nfor caracter in \"litere\":\n    if caracter in frecventa:\n        ___\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "output": "{'l': 1, 'i': 1, 't': 1, 'e': 2, 'r': 1}",
+      "options": [
+        "frecventa[caracter] += 1",
+        "frecventa[caracter] = 1",
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] -= 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-freq-85dfad",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {}\nfor caracter in \"lalea\":\n    if caracter in frecventa:\n        ___\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "output": "{'l': 2, 'a': 2, 'e': 1}",
+      "options": [
+        "frecventa[caracter] += 1",
+        "frecventa[caracter] = 1",
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] -= 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-freq-0aaee4",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {}\nfor caracter in \"misiune\":\n    if caracter in frecventa:\n        ___\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "output": "{'m': 1, 'i': 2, 's': 1, 'u': 1, 'n': 1, 'e': 1}",
+      "options": [
+        "frecventa[caracter] += 1",
+        "frecventa[caracter] = 1",
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] -= 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-freq-b4db89",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {}\nfor caracter in \"racheta\":\n    if caracter in frecventa:\n        ___\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "output": "{'r': 1, 'a': 2, 'c': 1, 'h': 1, 'e': 1, 't': 1}",
+      "options": [
+        "frecventa[caracter] += 1",
+        "frecventa[caracter] = 1",
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] -= 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-early-b6f919",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        ___\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"stea\", \"stele\"))\nprint(este_anagrama(\"marti\", \"mirat\"))",
+      "output": "False\nTrue",
+      "options": ["return False", "return True", "print(False)", "return cuvant1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-early-43b675",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        ___\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"sare\", \"rase\"))\nprint(este_anagrama(\"racheta\", \"rac\"))",
+      "output": "True\nFalse",
+      "options": ["return False", "return True", "print(False)", "return cuvant1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-early-230e34",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        ___\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"roma\", \"amorul\"))\nprint(este_anagrama(\"lac\", \"cal\"))",
+      "output": "False\nTrue",
+      "options": ["return False", "return True", "print(False)", "return cuvant1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-early-f02495",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        ___\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"rac\", \"car\"))\nprint(este_anagrama(\"cometa\", \"comet\"))",
+      "output": "True\nFalse",
+      "options": ["return False", "return True", "print(False)", "return cuvant1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-early-846ab0",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        ___\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"luna\", \"lunar\"))\nprint(este_anagrama(\"mare\", \"rame\"))",
+      "output": "False\nTrue",
+      "options": ["return False", "return True", "print(False)", "return cuvant1"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-lower-c809b0",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2)\n\nprint(este_anagrama(\"roma\", \"Amor\"))\nprint(este_anagrama(\"Mare\", \"Rame\"))",
+      "output": "True\nTrue",
+      "options": [
+        "return sorted(cuvant1.lower()) == sorted(cuvant2)",
+        "def este_anagrama(cuvant1, cuvant2):",
+        "print(este_anagrama(\"roma\", \"Amor\"))",
+        "print(este_anagrama(\"Mare\", \"Rame\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-lower-a72610",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2)\n\nprint(este_anagrama(\"marti\", \"Mirat\"))\nprint(este_anagrama(\"Lac\", \"Cal\"))",
+      "output": "True\nTrue",
+      "options": [
+        "return sorted(cuvant1.lower()) == sorted(cuvant2)",
+        "def este_anagrama(cuvant1, cuvant2):",
+        "print(este_anagrama(\"marti\", \"Mirat\"))",
+        "print(este_anagrama(\"Lac\", \"Cal\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-lower-7455cb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2)\n\nprint(este_anagrama(\"rac\", \"Car\"))\nprint(este_anagrama(\"Pod\", \"Dop\"))",
+      "output": "True\nTrue",
+      "options": [
+        "return sorted(cuvant1.lower()) == sorted(cuvant2)",
+        "def este_anagrama(cuvant1, cuvant2):",
+        "print(este_anagrama(\"rac\", \"Car\"))",
+        "print(este_anagrama(\"Pod\", \"Dop\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-lower-f6c358",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2)\n\nprint(este_anagrama(\"sare\", \"Rase\"))\nprint(este_anagrama(\"Rost\", \"Tors\"))",
+      "output": "True\nTrue",
+      "options": [
+        "return sorted(cuvant1.lower()) == sorted(cuvant2)",
+        "def este_anagrama(cuvant1, cuvant2):",
+        "print(este_anagrama(\"sare\", \"Rase\"))",
+        "print(este_anagrama(\"Rost\", \"Tors\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-lower-025e2a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2)\n\nprint(este_anagrama(\"cer\", \"Rec\"))\nprint(este_anagrama(\"Ton\", \"Not\"))",
+      "output": "True\nTrue",
+      "options": [
+        "return sorted(cuvant1.lower()) == sorted(cuvant2)",
+        "def este_anagrama(cuvant1, cuvant2):",
+        "print(este_anagrama(\"cer\", \"Rec\"))",
+        "print(este_anagrama(\"Ton\", \"Not\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-freq-47eba0",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"banana\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 0\nprint(frecventa)",
+      "output": "{'b': 1, 'a': 3, 'n': 2}",
+      "options": [
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] += 1",
+        "frecventa = {}",
+        "print(frecventa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-freq-4e083f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"litera\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 0\nprint(frecventa)",
+      "output": "{'l': 1, 'i': 1, 't': 1, 'e': 1, 'r': 1, 'a': 1}",
+      "options": [
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] += 1",
+        "frecventa = {}",
+        "print(frecventa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-freq-d39e78",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"luna\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 0\nprint(frecventa)",
+      "output": "{'l': 1, 'u': 1, 'n': 1, 'a': 1}",
+      "options": [
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] += 1",
+        "frecventa = {}",
+        "cuvant = \"luna\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-freq-5d3801",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"cafea\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 0\nprint(frecventa)",
+      "output": "{'c': 1, 'a': 2, 'f': 1, 'e': 1}",
+      "options": [
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] += 1",
+        "frecventa = {}",
+        "cuvant = \"cafea\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-freq-c8cd79",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"galaxie\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 0\nprint(frecventa)",
+      "output": "{'g': 1, 'a': 2, 'l': 1, 'x': 1, 'i': 1, 'e': 1}",
+      "options": [
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] += 1",
+        "frecventa = {}",
+        "print(frecventa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-count-47fb7a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "tinta = \"mare\"\nnumar = 0\nfor cuvant in [\"rame\", \"arme\", \"mere\"]:\n    if sorted(cuvant) == tinta:\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "output": "rame\narme\n2",
+      "options": ["if sorted(cuvant) == tinta:", "print(cuvant)", "numar += 1", "print(numar)"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-count-ea453a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "tinta = \"rac\"\nnumar = 0\nfor cuvant in [\"car\", \"arc\", \"cart\"]:\n    if sorted(cuvant) == tinta:\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "output": "car\narc\n2",
+      "options": ["if sorted(cuvant) == tinta:", "print(cuvant)", "numar += 1", "print(numar)"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-count-169c9a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "tinta = \"marti\"\nnumar = 0\nfor cuvant in [\"mirat\", \"marti\", \"marte\"]:\n    if sorted(cuvant) == tinta:\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "output": "mirat\nmarti\n2",
+      "options": ["if sorted(cuvant) == tinta:", "print(cuvant)", "numar += 1", "print(numar)"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-count-b49b25",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "tinta = \"sare\"\nnumar = 0\nfor cuvant in [\"rase\", \"ares\", \"sari\"]:\n    if sorted(cuvant) == tinta:\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "output": "rase\nares\n2",
+      "options": [
+        "if sorted(cuvant) == tinta:",
+        "for cuvant in [\"rase\", \"ares\", \"sari\"]:",
+        "numar = 0",
+        "tinta = \"sare\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-count-338f65",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "tinta = \"cer\"\nnumar = 0\nfor cuvant in [\"rec\", \"cer\", \"ceri\"]:\n    if sorted(cuvant) == tinta:\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "output": "rec\ncer\n2",
+      "options": ["if sorted(cuvant) == tinta:", "print(cuvant)", "numar += 1", "print(numar)"],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,791 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "When are two words anagrams?",
+      "options": [
+        "When they read the same backwards",
+        "When they have the same length",
+        "When they have exactly the same letters, maybe in another order",
+        "When they start with the same letter"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q2",
+      "text": "Why does sorting the letters tell us if two words are anagrams?",
+      "options": [
+        "Words with the same letters give the same sorted letters",
+        "Sorting removes the letters that differ",
+        "Sorting puts the words in alphabetical order in a list",
+        "Sorting counts the vowels"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "What does this print?",
+      "code": "print(sorted(\"listen\"))",
+      "options": [
+        "eilnst",
+        "listen",
+        "['l', 'i', 's', 't', 'e', 'n']",
+        "['e', 'i', 'l', 'n', 's', 't']"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"listen\", \"silent\"))\nprint(is_anagram(\"hello\", \"world\"))\nprint(is_anagram(\"Evil\", \"Vile\"))",
+      "options": [
+        "True\nFalse\nFalse",
+        "True\nFalse\nTrue",
+        "False\nFalse\nTrue",
+        "True\nTrue\nTrue"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "Why does `is_anagram` call `.lower()` on both words?",
+      "options": [
+        "To sort the letters",
+        "To remove the spaces",
+        "So capital and small letters count as the same",
+        "Because `sorted()` only works on small letters"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "print(sorted(\"Evil\") == sorted(\"Vile\"))",
+      "options": ["True", "False", "['E', 'i', 'l', 'v']", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "In the frequency approach, when are two words anagrams?",
+      "options": [
+        "When both dictionaries have the same number of keys",
+        "When both words have the same first letter",
+        "When one dictionary is bigger than the other",
+        "When every letter appears the same number of times in both"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "freq = {}\nfor char in \"level\":\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
+      "options": [
+        "{'l': 2, 'e': 2, 'v': 1}",
+        "{'l': 1, 'e': 1, 'v': 1}",
+        "{'e': 2, 'l': 2, 'v': 1}",
+        "5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "Why does the frequency version first check `len(word1) != len(word2)`?",
+      "options": [
+        "The dictionaries can't hold long words",
+        "To make the words the same length",
+        "Words of different lengths can't be anagrams, so there's nothing to count",
+        "Because `==` doesn't work on dictionaries"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "freq1 = {\"a\": 1, \"b\": 2}\nfreq2 = {\"b\": 2, \"a\": 1}\nprint(freq1 == freq2)",
+      "options": ["False", "True", "{'a': 1, 'b': 2}", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "When are two dictionaries equal with `==`?",
+      "options": [
+        "Only when their keys were added in the same order",
+        "When they have the same number of keys",
+        "Never, dictionaries can't be compared",
+        "When they hold the same keys with the same values, in any order"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "Which approach takes fewer steps on very long words?",
+      "options": [
+        "Counting letters in a frequency dictionary",
+        "Sorting the letters",
+        "Both always take exactly the same steps",
+        "Reversing both words"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "print(\"\".join(sorted(\"silent\")))",
+      "options": ["['e', 'i', 'l', 'n', 's', 't']", "silent", "eilnst", "e i l n s t"],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"star\", \"stars\"))",
+      "options": ["True", "False", "Different lengths", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does `sorted(\"orbit\")` give back?",
+      "options": [
+        "The word with its letters sorted, as text",
+        "The word reversed",
+        "The number of letters",
+        "A list of the letters in alphabetical order"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "print(sorted(\"plea\") == sorted(\"leap\"))",
+      "options": ["True", "False", "['a', 'e', 'l', 'p']", "None"],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "Are \"night\" and \"thing\" anagrams?",
+      "options": [
+        "No, they start with different letters",
+        "No, one of them is a palindrome",
+        "Yes, they have the same five letters",
+        "Only if we lower them first"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "What happens when this runs?",
+      "code": "freq = {}\nfor char in \"ab\":\n    freq[char] += 1\nprint(freq)",
+      "options": [
+        "It prints {'a': 1, 'b': 1}",
+        "An error: the program reads `freq[char]` before it exists",
+        "It prints {}",
+        "It prints {'a': 0, 'b': 0}"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "def are_anagrams(a, b):\n    return sorted(a.lower()) == sorted(b.lower())\n\nresult = are_anagrams(\"Listen\", \"Silent\")\nprint(result)\nif result:\n    print(\"Access granted\")\nelse:\n    print(\"Access denied\")",
+      "options": [
+        "True\nAccess denied",
+        "False\nAccess denied",
+        "Access granted",
+        "True\nAccess granted"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "def are_anagrams(a, b):\n    return sorted(a.lower()) == sorted(b.lower())\n\nresult = are_anagrams(\"orbit\", \"robot\")\nprint(result)\nif result:\n    print(\"Access granted\")\nelse:\n    print(\"Access denied\")",
+      "options": [
+        "False\nAccess denied",
+        "True\nAccess granted",
+        "False\nAccess granted",
+        "True\nAccess denied"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "Why are \"orbit\" and \"robot\" not anagrams?",
+      "options": [
+        "They have different lengths",
+        "They start with different letters",
+        "\"robot\" has two o's and no i, so the letters differ",
+        "One has a capital letter"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "target = \"race\"\ncount = 0\nfor word in [\"care\", \"acre\", \"racer\", \"cart\"]:\n    if sorted(word) == sorted(target):\n        count += 1\nprint(count)",
+      "options": ["1", "2", "3", "0"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Is every word an anagram of itself by the sorting check?",
+      "options": [
+        "No, an anagram needs another order",
+        "Only if it has no repeated letters",
+        "Only if it is a palindrome",
+        "Yes, sorting the same letters gives the same list"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "print(sorted(\"moon starer\") == sorted(\"astronomer\"))",
+      "options": ["False", "True", "Different lengths", "None"],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "Why are \"moon starer\" and \"astronomer\" not anagrams for `sorted(a) == sorted(b)`?",
+      "options": [
+        "Sorting can't handle long words",
+        "They have different letters",
+        "The space counts as a character too",
+        "`sorted()` drops the spaces"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "freq = {}\nfor char in \"non\":\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
+      "options": ["{'n': 1, 'o': 1}", "{'n': 2, 'o': 1}", "{'n': 2, 'o': 2}", "{'o': 1, 'n': 2}"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Two words have the same length. What else must hold for them to be anagrams?",
+      "options": [
+        "They must start with the same letter",
+        "Their letters must already be sorted",
+        "Nothing else, the same length is enough",
+        "Each letter must appear the same number of times in both"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "print(sorted(\"aab\") == sorted(\"aba\"))",
+      "options": ["True", "False", "['a', 'b']", "None"],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "print(sorted(\"aab\") == sorted(\"abb\"))",
+      "options": ["True", "['a', 'a', 'b']", "False", "None"],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "groups = {}\nfor word in [\"tea\", \"eat\", \"sun\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
+      "options": [
+        "{'t': ['tea', 'eat'], 's': ['sun']}",
+        "{'aet': ['tea', 'eat'], 'nsu': ['sun']}",
+        "{'aet': ['eat'], 'nsu': ['sun']}",
+        "{'tea': ['tea'], 'eat': ['eat'], 'sun': ['sun']}"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "an-sorted",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "word = \"{{w}}\"\nprint(sorted(word))",
+      "values": [
+        {
+          "w": "orbit"
+        },
+        {
+          "w": "comet"
+        },
+        {
+          "w": "star"
+        },
+        {
+          "w": "moon"
+        },
+        {
+          "w": "Mars"
+        }
+      ],
+      "mistakes": [
+        ["sorted(word)", "word"],
+        ["print(sorted(word))", "print(sorted(word)[0])"],
+        ["sorted(word)", "len(word)"],
+        ["sorted(word)", "sorted(word.upper())"]
+      ]
+    },
+    {
+      "id": "an-check",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"{{a}}\", \"{{b}}\"))\nprint(is_anagram(\"{{c}}\", \"{{d}}\"))\nprint(is_anagram(\"{{a}}\", \"{{c}}\"))",
+      "values": [
+        {
+          "a": "listen",
+          "b": "silent",
+          "c": "Evil",
+          "d": "Vile"
+        },
+        {
+          "a": "night",
+          "b": "thing",
+          "c": "Dusty",
+          "d": "Study"
+        },
+        {
+          "a": "star",
+          "b": "rats",
+          "c": "Below",
+          "d": "Elbow"
+        },
+        {
+          "a": "earth",
+          "b": "heart",
+          "c": "Lemon",
+          "d": "Melon"
+        },
+        {
+          "a": "arc",
+          "b": "car",
+          "c": "Inch",
+          "d": "Chin"
+        }
+      ],
+      "mistakes": [
+        ["sorted(word1.lower()) == sorted(word2.lower())", "sorted(word1) == sorted(word2)"],
+        ["sorted(word1.lower()) == sorted(word2.lower())", "word1.lower() == word2.lower()"],
+        ["==", "!="],
+        ["sorted(word1.lower()) == sorted(word2.lower())", "len(word1) == len(word2)"]
+      ]
+    },
+    {
+      "id": "an-freq",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "word = \"{{w}}\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
+      "values": [
+        {
+          "w": "banana"
+        },
+        {
+          "w": "balloon"
+        },
+        {
+          "w": "level"
+        },
+        {
+          "w": "moon"
+        },
+        {
+          "w": "coffee"
+        }
+      ],
+      "mistakes": [
+        ["freq[char] += 1", "freq[char] = 1"],
+        ["        freq[char] = 1", "        freq[char] = 0"],
+        ["print(freq)", "print(len(freq))"],
+        ["freq[char] += 1", "freq[char] += 2"]
+      ]
+    },
+    {
+      "id": "an-len",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"{{a}}\", \"{{b}}\"))\nprint(is_anagram(\"{{c}}\", \"{{d}}\"))\nprint(is_anagram(\"{{e}}\", \"{{f}}\"))",
+      "values": [
+        {
+          "a": "star",
+          "b": "stars",
+          "c": "night",
+          "d": "thing",
+          "e": "orbit",
+          "f": "robot"
+        },
+        {
+          "a": "rocket",
+          "b": "rock",
+          "c": "moon",
+          "d": "mono",
+          "e": "comet",
+          "f": "comic"
+        },
+        {
+          "a": "earth",
+          "b": "hearts",
+          "c": "below",
+          "d": "elbow",
+          "e": "lemon",
+          "f": "lemur"
+        },
+        {
+          "a": "cat",
+          "b": "cats",
+          "c": "inch",
+          "d": "chin",
+          "e": "star",
+          "f": "stir"
+        },
+        {
+          "a": "melon",
+          "b": "melons",
+          "c": "heart",
+          "d": "earth",
+          "e": "night",
+          "f": "might"
+        }
+      ],
+      "mistakes": [
+        ["len(word1) != len(word2)", "len(word1) == len(word2)"],
+        ["return sorted(word1) == sorted(word2)", "return True"],
+        ["        return False", "        return True"],
+        ["        print(\"Different lengths\")\n", ""]
+      ]
+    },
+    {
+      "id": "an-join",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "for word in [{{words}}]:\n    print(word, \"\".join(sorted(word.lower())))",
+      "values": [
+        {
+          "words": "\"Listen\", \"Silent\""
+        },
+        {
+          "words": "\"Night\", \"Thing\""
+        },
+        {
+          "words": "\"Star\", \"Rats\""
+        },
+        {
+          "words": "\"Earth\", \"Heart\""
+        },
+        {
+          "words": "\"Below\", \"Elbow\""
+        }
+      ],
+      "mistakes": [
+        ["word.lower()", "word"],
+        ["\"\".join(sorted(word.lower()))", "sorted(word.lower())"],
+        ["print(word, ", "print("],
+        ["\"\".join", "\" \".join"]
+      ]
+    },
+    {
+      "id": "an-group",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "groups = {}\nfor word in [{{words}}]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
+      "values": [
+        {
+          "words": "\"dog\", \"god\", \"cat\""
+        },
+        {
+          "words": "\"star\", \"rats\", \"arts\", \"moon\""
+        },
+        {
+          "words": "\"earth\", \"heart\", \"comet\""
+        },
+        {
+          "words": "\"night\", \"sun\", \"thing\""
+        },
+        {
+          "words": "\"act\", \"tac\", \"cat\""
+        }
+      ],
+      "mistakes": [
+        ["groups[key].append(word)", "groups[key] = [word]"],
+        ["key = \"\".join(sorted(word))", "key = word"],
+        ["print(groups)", "print(len(groups))"],
+        ["groups[key] = [word]", "groups[key] = word"]
+      ]
+    },
+    {
+      "id": "an-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "target = \"{{t}}\"\ncount = 0\nfor word in [{{words}}]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
+      "values": [
+        {
+          "t": "race",
+          "words": "\"care\", \"acre\", \"racer\", \"cart\""
+        },
+        {
+          "t": "star",
+          "words": "\"rats\", \"tsar\", \"stars\", \"start\""
+        },
+        {
+          "t": "night",
+          "words": "\"thing\", \"night\", \"nights\""
+        },
+        {
+          "t": "earth",
+          "words": "\"heart\", \"hater\", \"heard\", \"eart\""
+        },
+        {
+          "t": "melon",
+          "words": "\"lemon\", \"solo\", \"melon\", \"lemons\""
+        }
+      ],
+      "mistakes": [
+        ["sorted(word) == sorted(target)", "word == target"],
+        ["sorted(word) == sorted(target)", "len(word) == len(target)"],
+        ["count += 1", "count = 1"],
+        ["        print(word)\n", ""]
+      ]
+    },
+    {
+      "id": "an-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nfor pair in [(\"{{a}}\", \"{{b}}\"), (\"{{c}}\", \"{{d}}\"), (\"{{a}}\", \"{{d}}\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+      "values": [
+        {
+          "a": "silent",
+          "b": "listen",
+          "c": "Vile",
+          "d": "Evil"
+        },
+        {
+          "a": "thing",
+          "b": "night",
+          "c": "Study",
+          "d": "Dusty"
+        },
+        {
+          "a": "rats",
+          "b": "star",
+          "c": "Elbow",
+          "d": "Below"
+        },
+        {
+          "a": "heart",
+          "b": "earth",
+          "c": "Melon",
+          "d": "Lemon"
+        },
+        {
+          "a": "act",
+          "b": "cat",
+          "c": "Chin",
+          "d": "Inch"
+        }
+      ],
+      "mistakes": [
+        ["sorted(word1.lower()) == sorted(word2.lower())", "sorted(word1) == sorted(word2)"],
+        ["sorted(word1.lower()) == sorted(word2.lower())", "word1.lower() == word2.lower()"],
+        ["==", "!="]
+      ]
+    },
+    {
+      "id": "an-gap-sorted",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == ___(word2.lower())\n\nprint(is_anagram(\"{{a}}\", \"{{b}}\"))\nprint(is_anagram(\"{{c}}\", \"{{d}}\"))",
+      "values": [
+        {
+          "a": "listen",
+          "b": "silent",
+          "c": "Evil",
+          "d": "Vile"
+        },
+        {
+          "a": "night",
+          "b": "thing",
+          "c": "Dusty",
+          "d": "Study"
+        },
+        {
+          "a": "star",
+          "b": "rats",
+          "c": "Below",
+          "d": "Elbow"
+        },
+        {
+          "a": "earth",
+          "b": "heart",
+          "c": "Lemon",
+          "d": "Melon"
+        },
+        {
+          "a": "arc",
+          "b": "car",
+          "c": "Inch",
+          "d": "Chin"
+        }
+      ],
+      "answer": "sorted",
+      "wrong": ["len", "list", "str"]
+    },
+    {
+      "id": "an-gap-freq",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "freq = {}\nfor char in \"{{w}}\":\n    if char in freq:\n        ___\n    else:\n        freq[char] = 1\nprint(freq)",
+      "values": [
+        {
+          "w": "banana"
+        },
+        {
+          "w": "letter"
+        },
+        {
+          "w": "moon"
+        },
+        {
+          "w": "mission"
+        },
+        {
+          "w": "coffee"
+        }
+      ],
+      "answer": "freq[char] += 1",
+      "wrong": ["freq[char] = 1", "freq[char] = 0", "freq[char] -= 1", "freq = {}"]
+    },
+    {
+      "id": "an-gap-early",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        ___\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"{{a}}\", \"{{b}}\"))\nprint(is_anagram(\"{{c}}\", \"{{d}}\"))",
+      "values": [
+        {
+          "a": "star",
+          "b": "stars",
+          "c": "night",
+          "d": "thing"
+        },
+        {
+          "a": "moon",
+          "b": "mono",
+          "c": "rocket",
+          "d": "rock"
+        },
+        {
+          "a": "earth",
+          "b": "hearts",
+          "c": "below",
+          "d": "elbow"
+        },
+        {
+          "a": "cat",
+          "b": "act",
+          "c": "comet",
+          "d": "come"
+        },
+        {
+          "a": "lemon",
+          "b": "lemons",
+          "c": "melon",
+          "d": "lemon"
+        }
+      ],
+      "answer": "return False",
+      "wrong": ["return True", "print(False)", "return word1"]
+    },
+    {
+      "id": "an-bad-lower",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"{{a}}\", \"{{b}}\"))\nprint(is_anagram(\"{{c}}\", \"{{d}}\"))",
+      "values": [
+        {
+          "a": "listen",
+          "b": "Silent",
+          "c": "Evil",
+          "d": "Vile"
+        },
+        {
+          "a": "night",
+          "b": "Thing",
+          "c": "Dusty",
+          "d": "Study"
+        },
+        {
+          "a": "star",
+          "b": "Rats",
+          "c": "Below",
+          "d": "Elbow"
+        },
+        {
+          "a": "earth",
+          "b": "Heart",
+          "c": "Lemon",
+          "d": "Melon"
+        },
+        {
+          "a": "cat",
+          "b": "Act",
+          "c": "Inch",
+          "d": "Chin"
+        }
+      ],
+      "bug": ["sorted(word2.lower())", "sorted(word2)"]
+    },
+    {
+      "id": "an-bad-freq",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"{{w}}\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
+      "values": [
+        {
+          "w": "banana"
+        },
+        {
+          "w": "letter"
+        },
+        {
+          "w": "moon"
+        },
+        {
+          "w": "coffee"
+        },
+        {
+          "w": "galaxy"
+        }
+      ],
+      "bug": ["        freq[char] = 1", "        freq[char] = 0"]
+    },
+    {
+      "id": "an-bad-count",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "target = \"{{t}}\"\ncount = 0\nfor word in [{{words}}]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
+      "values": [
+        {
+          "t": "race",
+          "words": "\"care\", \"acre\", \"cart\""
+        },
+        {
+          "t": "star",
+          "words": "\"rats\", \"tsar\", \"start\""
+        },
+        {
+          "t": "night",
+          "words": "\"thing\", \"night\", \"tight\""
+        },
+        {
+          "t": "earth",
+          "words": "\"heart\", \"hater\", \"heard\""
+        },
+        {
+          "t": "melon",
+          "words": "\"lemon\", \"solo\", \"melon\""
+        }
+      ],
+      "bug": ["sorted(word) == sorted(target)", "sorted(word) == target"]
+    }
+  ]
+}

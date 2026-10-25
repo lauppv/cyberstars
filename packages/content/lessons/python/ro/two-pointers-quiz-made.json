@@ -1,0 +1,695 @@
+{
+  "note": "Made by npm run make:quiz from the templates in two-pointers-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "tp-two-sum-5a56e3",
+      "text": "Ce afișează?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 4, 7, 11, 15], 9))",
+      "options": ["(2, 7)", "None", "(1, 3)", "9"],
+      "answer": 0
+    },
+    {
+      "id": "tp-two-sum-b1c0af",
+      "text": "Ce afișează?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([2, 3, 5, 8, 13], 16))",
+      "options": ["(3, 13)", "None", "(1, 4)", "16"],
+      "answer": 0
+    },
+    {
+      "id": "tp-two-sum-302456",
+      "text": "Ce afișează?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 4, 6, 9, 10, 12], 13))",
+      "options": ["(1, 12)", "(0, 5)", "13", "None"],
+      "answer": 0
+    },
+    {
+      "id": "tp-two-sum-69b9f4",
+      "text": "Ce afișează?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([3, 5, 7, 9], 12))",
+      "options": ["(3, 9)", "(0, 3)", "12", "None"],
+      "answer": 0
+    },
+    {
+      "id": "tp-two-sum-362bb6",
+      "text": "Ce afișează?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 3, 10, 20], 22))",
+      "options": ["(2, 20)", "None", "(1, 4)", "22"],
+      "answer": 0
+    },
+    {
+      "id": "tp-trace-5a56e3",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 4, 7, 11, 15]\ntinta = 9\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga < dreapta:\n    suma_curenta = numere[stanga] + numere[dreapta]\n    print(stanga, dreapta, suma_curenta)\n    if suma_curenta == tinta:\n        break\n    elif suma_curenta < tinta:\n        stanga += 1\n    else:\n        dreapta -= 1",
+      "options": [
+        "0 5 16\n0 4 12\n0 3 8\n1 3 9",
+        "0 5 16\n1 5 17\n2 5 19\n3 5 22\n4 5 26",
+        "1 15\n1 11\n1 7\n2 7",
+        "0 4 12\n0 3 8\n1 3 9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-trace-ab9455",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 3, 5, 8]\ntinta = 11\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga < dreapta:\n    suma_curenta = numere[stanga] + numere[dreapta]\n    print(stanga, dreapta, suma_curenta)\n    if suma_curenta == tinta:\n        break\n    elif suma_curenta < tinta:\n        stanga += 1\n    else:\n        dreapta -= 1",
+      "options": ["0 3 10\n1 3 11", "0 3 10\n0 2 7\n0 1 5", "2 8\n3 8", "0 2 7\n1 2 8"],
+      "answer": 0
+    },
+    {
+      "id": "tp-trace-0c21e3",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 3, 6, 10]\ntinta = 9\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga < dreapta:\n    suma_curenta = numere[stanga] + numere[dreapta]\n    print(stanga, dreapta, suma_curenta)\n    if suma_curenta == tinta:\n        break\n    elif suma_curenta < tinta:\n        stanga += 1\n    else:\n        dreapta -= 1",
+      "options": [
+        "0 3 11\n0 2 7\n1 2 9",
+        "0 3 11\n1 3 13\n2 3 16",
+        "1 10\n1 6\n3 6",
+        "0 2 7\n1 2 9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-trace-2c2e5c",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 5, 6, 9]\ntinta = 11\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga < dreapta:\n    suma_curenta = numere[stanga] + numere[dreapta]\n    print(stanga, dreapta, suma_curenta)\n    if suma_curenta == tinta:\n        break\n    elif suma_curenta < tinta:\n        stanga += 1\n    else:\n        dreapta -= 1",
+      "options": [
+        "0 3 13\n0 2 10\n1 2 11",
+        "0 3 13\n1 3 14\n2 3 15",
+        "4 9\n4 6\n5 6",
+        "0 2 10\n1 2 11"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-trace-b185ae",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 4, 7, 9, 12]\ntinta = 13\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga < dreapta:\n    suma_curenta = numere[stanga] + numere[dreapta]\n    print(stanga, dreapta, suma_curenta)\n    if suma_curenta == tinta:\n        break\n    elif suma_curenta < tinta:\n        stanga += 1\n    else:\n        dreapta -= 1",
+      "options": [
+        "0 4 14\n0 3 11\n1 3 13",
+        "0 4 14\n1 4 16\n2 4 19\n3 4 21",
+        "2 12\n2 9\n4 9",
+        "0 3 11\n1 3 13"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-pal-b32d07",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"rotitor\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga < dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    if cuvant[stanga] != cuvant[dreapta]:\n        break\n    stanga += 1\n    dreapta -= 1",
+      "options": ["r r\no o\nt t", "r r\no o\nt t\ni i", "r o", "0 6\n1 5\n2 4"],
+      "answer": 0
+    },
+    {
+      "id": "tp-pal-5d770b",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"racheta\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga < dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    if cuvant[stanga] != cuvant[dreapta]:\n        break\n    stanga += 1\n    dreapta -= 1",
+      "options": ["r a", "r a\nc t", "r t", "0 6"],
+      "answer": 0
+    },
+    {
+      "id": "tp-pal-f6c98e",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"capac\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga < dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    if cuvant[stanga] != cuvant[dreapta]:\n        break\n    stanga += 1\n    dreapta -= 1",
+      "options": ["c c\na a", "c c\na a\np p", "c a", "0 4\n1 3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-pal-ced543",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"radio\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga < dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    if cuvant[stanga] != cuvant[dreapta]:\n        break\n    stanga += 1\n    dreapta -= 1",
+      "options": ["r o", "r o\nd i", "r i", "0 4"],
+      "answer": 0
+    },
+    {
+      "id": "tp-pal-641a66",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"elevele\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga < dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    if cuvant[stanga] != cuvant[dreapta]:\n        break\n    stanga += 1\n    dreapta -= 1",
+      "options": ["e e\nl l\ne e", "e e\nl l\ne e\nv v", "e l", "0 6\n1 5\n2 4"],
+      "answer": 0
+    },
+    {
+      "id": "tp-dedup-95b532",
+      "text": "Ce afișează?",
+      "code": "def elimina_duplicatele(numere):\n    if len(numere) == 0:\n        return []\n    rezultat = [numere[0]]\n    for i in range(1, len(numere)):\n        if numere[i] != numere[i - 1]:\n            rezultat.append(numere[i])\n    return rezultat\n\nprint(elimina_duplicatele([1, 1, 2, 3, 3]))",
+      "options": ["[1, 2, 3]", "[1, 1, 3]", "[2, 3]", "[1, 2, 3, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "tp-dedup-4fa169",
+      "text": "Ce afișează?",
+      "code": "def elimina_duplicatele(numere):\n    if len(numere) == 0:\n        return []\n    rezultat = [numere[0]]\n    for i in range(1, len(numere)):\n        if numere[i] != numere[i - 1]:\n            rezultat.append(numere[i])\n    return rezultat\n\nprint(elimina_duplicatele([4, 4, 4, 5, 6, 6]))",
+      "options": ["[4, 5, 6]", "[4, 4, 4, 6]", "[5, 6]", "[4, 5, 6, 6]"],
+      "answer": 0
+    },
+    {
+      "id": "tp-dedup-b27199",
+      "text": "Ce afișează?",
+      "code": "def elimina_duplicatele(numere):\n    if len(numere) == 0:\n        return []\n    rezultat = [numere[0]]\n    for i in range(1, len(numere)):\n        if numere[i] != numere[i - 1]:\n            rezultat.append(numere[i])\n    return rezultat\n\nprint(elimina_duplicatele([2, 3, 3, 8]))",
+      "options": ["[2, 3, 8]", "[2, 3]", "[2, 8]", "[3, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "tp-dedup-e91cd2",
+      "text": "Ce afișează?",
+      "code": "def elimina_duplicatele(numere):\n    if len(numere) == 0:\n        return []\n    rezultat = [numere[0]]\n    for i in range(1, len(numere)):\n        if numere[i] != numere[i - 1]:\n            rezultat.append(numere[i])\n    return rezultat\n\nprint(elimina_duplicatele([7, 7, 9, 9, 9, 10]))",
+      "options": ["[7, 9, 10]", "[7, 7, 9, 9]", "[9, 10]", "[7, 9, 9, 9, 10]"],
+      "answer": 0
+    },
+    {
+      "id": "tp-dedup-cb5b2b",
+      "text": "Ce afișează?",
+      "code": "def elimina_duplicatele(numere):\n    if len(numere) == 0:\n        return []\n    rezultat = [numere[0]]\n    for i in range(1, len(numere)):\n        if numere[i] != numere[i - 1]:\n            rezultat.append(numere[i])\n    return rezultat\n\nprint(elimina_duplicatele([1, 2, 2, 2, 5, 5]))",
+      "options": ["[1, 2, 5]", "[1, 2, 2, 5]", "[1, 5]", "[2, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "tp-all-pairs-bcf1e9",
+      "text": "Ce afișează?",
+      "code": "def pereche_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nrezultat = pereche_cu_suma([1, 2, 3, 4, 5, 6, 7, 8, 9], 10)\nprint(rezultat)\nprint(len(rezultat))",
+      "options": [
+        "[(1, 9), (2, 8), (3, 7), (4, 6)]\n4",
+        "[10, 10, 10, 10]\n4",
+        "[(1, 9), (2, 8), (3, 7), (4, 6), (5, 5)]\n5",
+        "[(0, 8), (1, 7), (2, 6), (3, 5)]\n4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-all-pairs-41e316",
+      "text": "Ce afișează?",
+      "code": "def pereche_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nrezultat = pereche_cu_suma([1, 3, 4, 5, 7, 9], 8)\nprint(rezultat)\nprint(len(rezultat))",
+      "options": [
+        "[(1, 7), (3, 5)]\n2",
+        "[8, 8]\n2",
+        "[(1, 7), (3, 5), (4, 4)]\n3",
+        "[(0, 4), (1, 3)]\n2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-all-pairs-4daf5d",
+      "text": "Ce afișează?",
+      "code": "def pereche_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nrezultat = pereche_cu_suma([2, 4, 5, 6, 8], 10)\nprint(rezultat)\nprint(len(rezultat))",
+      "options": [
+        "[(2, 8), (4, 6)]\n2",
+        "[10, 10]\n2",
+        "[(2, 8), (4, 6), (5, 5)]\n3",
+        "[(0, 4), (1, 3)]\n2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-all-pairs-a9a8d1",
+      "text": "Ce afișează?",
+      "code": "def pereche_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nrezultat = pereche_cu_suma([1, 2, 5, 6, 9, 10], 10)\nprint(rezultat)\nprint(len(rezultat))",
+      "options": ["[(1, 9)]\n1", "[10]\n1", "[(1, 9), (5, 5)]\n2", "[(0, 4)]\n1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-all-pairs-41da5b",
+      "text": "Ce afișează?",
+      "code": "def pereche_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nrezultat = pereche_cu_suma([3, 4, 6, 7, 9], 12)\nprint(rezultat)\nprint(len(rezultat))",
+      "options": ["[(3, 9)]\n1", "[12]\n1", "[(3, 9), (6, 6)]\n2", "[(0, 4)]\n1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-535169",
+      "text": "Care program afișează asta?",
+      "output": "(1, 6)",
+      "options": [
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 3, 4, 6, 9], 7))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta > tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 3, 4, 6, 9], 7))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (stanga, dreapta)\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 3, 4, 6, 9], 7))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            dreapta -= 1\n        else:\n            stanga += 1\n    return None\n\nprint(doua_numere([1, 3, 4, 6, 9], 7))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-8f08cd",
+      "text": "Care program afișează asta?",
+      "output": "(7, 8)",
+      "options": [
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([2, 5, 7, 8, 11], 15))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta > tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([2, 5, 7, 8, 11], 15))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (stanga, dreapta)\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([2, 5, 7, 8, 11], 15))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            dreapta -= 1\n        else:\n            stanga += 1\n    return None\n\nprint(doua_numere([2, 5, 7, 8, 11], 15))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-31ec4c",
+      "text": "Care program afișează asta?",
+      "output": "(2, 12)",
+      "options": [
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 6, 7, 12], 14))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta > tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 6, 7, 12], 14))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (stanga, dreapta)\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 6, 7, 12], 14))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            dreapta -= 1\n        else:\n            stanga += 1\n    return None\n\nprint(doua_numere([1, 2, 6, 7, 12], 14))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-64dec5",
+      "text": "Care program afișează asta?",
+      "output": "(4, 8)",
+      "options": [
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([3, 4, 8, 10], 12))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta > tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([3, 4, 8, 10], 12))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (stanga, dreapta)\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([3, 4, 8, 10], 12))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            dreapta -= 1\n        else:\n            stanga += 1\n    return None\n\nprint(doua_numere([3, 4, 8, 10], 12))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-which-2e4b77",
+      "text": "Care program afișează asta?",
+      "output": "(4, 9)",
+      "options": [
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([2, 4, 5, 9, 14], 13))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta > tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([2, 4, 5, 9, 14], 13))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (stanga, dreapta)\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([2, 4, 5, 9, 14], 13))",
+        "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            dreapta -= 1\n        else:\n            stanga += 1\n    return None\n\nprint(doua_numere([2, 4, 5, 9, 14], 13))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-move-121c5d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            ___\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 4, 7, 11, 15], 9))",
+      "output": "(2, 7)",
+      "options": ["stanga += 1", "dreapta -= 1", "break", "return None"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-move-0867e0",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            ___\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([2, 3, 5, 8, 13], 16))",
+      "output": "(3, 13)",
+      "options": ["stanga += 1", "dreapta -= 1", "break", "return None"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-move-a5c92a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            ___\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 4, 6, 9, 10], 13))",
+      "output": "(4, 9)",
+      "options": ["stanga += 1", "dreapta -= 1", "break", "return None"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-move-ebf7c6",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            ___\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([3, 5, 7, 9], 14))",
+      "output": "(5, 9)",
+      "options": ["stanga += 1", "dreapta -= 1", "break", "return None"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-move-e5760b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            ___\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 3, 10, 20], 22))",
+      "output": "(2, 20)",
+      "options": ["stanga += 1", "dreapta -= 1", "break", "return None"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-start-2cf49b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = ___\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 4, 7, 11, 15], 16))",
+      "output": "(1, 15)",
+      "options": ["len(numere) - 1", "len(numere)", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-start-783756",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = ___\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([2, 3, 5, 8, 13], 15))",
+      "output": "(2, 13)",
+      "options": ["len(numere) - 1", "len(numere)", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-start-43eafd",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = ___\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 4, 6, 9, 10], 11))",
+      "output": "(1, 10)",
+      "options": ["len(numere) - 1", "len(numere)", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-start-0a118a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = ___\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([3, 5, 7, 9], 14))",
+      "output": "(5, 9)",
+      "options": ["len(numere) - 1", "len(numere)", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-start-d8e033",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = ___\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 3, 10, 20], 21))",
+      "output": "(1, 20)",
+      "options": ["len(numere) - 1", "len(numere)", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-cond-d9e24f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"rotor\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga ___ dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    stanga += 1\n    dreapta -= 1",
+      "output": "r r\no o",
+      "options": ["<", "<=", ">", "=="],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-cond-fe1f41",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Venus\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga ___ dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    stanga += 1\n    dreapta -= 1",
+      "output": "V s\ne u",
+      "options": ["<", "<=", ">", "=="],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-cond-350ee8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"stele\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga ___ dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    stanga += 1\n    dreapta -= 1",
+      "output": "s e\nt l",
+      "options": ["<", "<=", ">", "=="],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-cond-10d205",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"pilot\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga ___ dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    stanga += 1\n    dreapta -= 1",
+      "output": "p t\ni o",
+      "options": ["<", "<=", ">", "=="],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-cond-3d5e3d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"marte\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga ___ dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    stanga += 1\n    dreapta -= 1",
+      "output": "m e\na t",
+      "options": ["<", "<=", ">", "=="],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-dedup-d32f87",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [1, 1, 2, 3, 3, 1]\nrezultat = [numere[0]]\nfor i in range(1, len(numere)):\n    if numere[i] != numere[___]:\n        rezultat.append(numere[i])\nprint(rezultat)",
+      "output": "[1, 2, 3, 1]",
+      "options": ["i - 1", "0", "i", "i + 1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-dedup-c8ea0b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [4, 4, 5, 6, 6, 4]\nrezultat = [numere[0]]\nfor i in range(1, len(numere)):\n    if numere[i] != numere[___]:\n        rezultat.append(numere[i])\nprint(rezultat)",
+      "output": "[4, 5, 6, 4]",
+      "options": ["i - 1", "0", "i", "i + 1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-dedup-4ede88",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [2, 3, 3, 8, 2]\nrezultat = [numere[0]]\nfor i in range(1, len(numere)):\n    if numere[i] != numere[___]:\n        rezultat.append(numere[i])\nprint(rezultat)",
+      "output": "[2, 3, 8, 2]",
+      "options": ["i - 1", "0", "i", "i + 1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-dedup-0fcd70",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [7, 7, 9, 9, 10, 7]\nrezultat = [numere[0]]\nfor i in range(1, len(numere)):\n    if numere[i] != numere[___]:\n        rezultat.append(numere[i])\nprint(rezultat)",
+      "output": "[7, 9, 10, 7]",
+      "options": ["i - 1", "0", "i", "i + 1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-gap-dedup-36d19c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [1, 2, 2, 5, 5, 1]\nrezultat = [numere[0]]\nfor i in range(1, len(numere)):\n    if numere[i] != numere[___]:\n        rezultat.append(numere[i])\nprint(rezultat)",
+      "output": "[1, 2, 5, 1]",
+      "options": ["i - 1", "0", "i", "i + 1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-move-9ba4cb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta > tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 4, 7, 11, 15], 9))",
+      "output": "(2, 7)",
+      "options": [
+        "elif suma_curenta > tinta:",
+        "if suma_curenta == tinta:",
+        "while stanga < dreapta:",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-move-35dd9f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta > tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([2, 3, 5, 8, 13], 16))",
+      "output": "(3, 13)",
+      "options": [
+        "elif suma_curenta > tinta:",
+        "if suma_curenta == tinta:",
+        "else:",
+        "stanga += 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-move-2abad0",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta > tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 4, 6, 9, 10, 12], 19))",
+      "output": "(9, 10)",
+      "options": [
+        "elif suma_curenta > tinta:",
+        "if suma_curenta == tinta:",
+        "while stanga < dreapta:",
+        "def doua_numere(numere, tinta):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-move-d785ff",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta > tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([3, 5, 7, 9], 14))",
+      "output": "(5, 9)",
+      "options": [
+        "elif suma_curenta > tinta:",
+        "if suma_curenta == tinta:",
+        "while stanga < dreapta:",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-move-20eb05",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta > tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 3, 10, 20], 22))",
+      "output": "(2, 20)",
+      "options": [
+        "elif suma_curenta > tinta:",
+        "if suma_curenta == tinta:",
+        "while stanga < dreapta:",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-dedup-342b37",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def elimina_duplicatele(numere):\n    if len(numere) == 0:\n        return []\n    rezultat = [numere[0]]\n    for i in range(1, len(numere)):\n        if numere[i] != numere[0]:\n            rezultat.append(numere[i])\n    return rezultat\n\nprint(elimina_duplicatele([1, 1, 2, 3, 3]))",
+      "output": "[1, 2, 3]",
+      "options": [
+        "if numere[i] != numere[0]:",
+        "for i in range(1, len(numere)):",
+        "rezultat.append(numere[i])",
+        "return rezultat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-dedup-bc500a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def elimina_duplicatele(numere):\n    if len(numere) == 0:\n        return []\n    rezultat = [numere[0]]\n    for i in range(1, len(numere)):\n        if numere[i] != numere[0]:\n            rezultat.append(numere[i])\n    return rezultat\n\nprint(elimina_duplicatele([4, 4, 4, 5, 6, 6]))",
+      "output": "[4, 5, 6]",
+      "options": [
+        "if numere[i] != numere[0]:",
+        "for i in range(1, len(numere)):",
+        "rezultat.append(numere[i])",
+        "return rezultat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-dedup-a52432",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def elimina_duplicatele(numere):\n    if len(numere) == 0:\n        return []\n    rezultat = [numere[0]]\n    for i in range(1, len(numere)):\n        if numere[i] != numere[0]:\n            rezultat.append(numere[i])\n    return rezultat\n\nprint(elimina_duplicatele([2, 3, 3, 5, 5, 8]))",
+      "output": "[2, 3, 5, 8]",
+      "options": [
+        "if numere[i] != numere[0]:",
+        "for i in range(1, len(numere)):",
+        "if len(numere) == 0:",
+        "rezultat.append(numere[i])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-dedup-5ffb3e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def elimina_duplicatele(numere):\n    if len(numere) == 0:\n        return []\n    rezultat = [numere[0]]\n    for i in range(1, len(numere)):\n        if numere[i] != numere[0]:\n            rezultat.append(numere[i])\n    return rezultat\n\nprint(elimina_duplicatele([7, 7, 9, 9, 9, 10]))",
+      "output": "[7, 9, 10]",
+      "options": [
+        "if numere[i] != numere[0]:",
+        "for i in range(1, len(numere)):",
+        "rezultat.append(numere[i])",
+        "return rezultat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-dedup-d9ae7a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def elimina_duplicatele(numere):\n    if len(numere) == 0:\n        return []\n    rezultat = [numere[0]]\n    for i in range(1, len(numere)):\n        if numere[i] != numere[0]:\n            rezultat.append(numere[i])\n    return rezultat\n\nprint(elimina_duplicatele([1, 2, 2, 2, 5, 5]))",
+      "output": "[1, 2, 5]",
+      "options": [
+        "if numere[i] != numere[0]:",
+        "for i in range(1, len(numere)):",
+        "rezultat.append(numere[i])",
+        "return rezultat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-pal-f84b6b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] == cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nfor cuvant in [\"capac\", \"cutie\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "capac True\ncutie False",
+      "options": [
+        "if cuvant[stanga] == cuvant[dreapta]:",
+        "for cuvant in [\"capac\", \"cutie\"]:",
+        "return False",
+        "stanga += 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-pal-cc46e5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] == cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nfor cuvant in [\"potop\", \"pirat\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "potop True\npirat False",
+      "options": [
+        "if cuvant[stanga] == cuvant[dreapta]:",
+        "while stanga < dreapta:",
+        "def este_palindrom(cuvant):",
+        "for cuvant in [\"potop\", \"pirat\"]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-pal-39a05d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] == cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nfor cuvant in [\"cojoc\", \"colac\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "cojoc True\ncolac False",
+      "options": [
+        "if cuvant[stanga] == cuvant[dreapta]:",
+        "while stanga < dreapta:",
+        "def este_palindrom(cuvant):",
+        "dreapta = len(cuvant) - 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-pal-81bdd3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] == cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nfor cuvant in [\"sas\", \"sat\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "sas True\nsat False",
+      "options": [
+        "if cuvant[stanga] == cuvant[dreapta]:",
+        "while stanga < dreapta:",
+        "def este_palindrom(cuvant):",
+        "dreapta = len(cuvant) - 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-pal-11a794",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] == cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nfor cuvant in [\"radar\", \"robot\"]:\n    print(cuvant, este_palindrom(cuvant))",
+      "output": "radar True\nrobot False",
+      "options": [
+        "if cuvant[stanga] == cuvant[dreapta]:",
+        "while stanga < dreapta:",
+        "for cuvant in [\"radar\", \"robot\"]:",
+        "return False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-pairs-7a33f2",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def pereche_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[stanga]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nprint(pereche_cu_suma([1, 2, 3, 4, 5, 6, 7, 8, 9], 10))",
+      "output": "[(1, 9), (2, 8), (3, 7), (4, 6)]",
+      "options": [
+        "perechi.append((numere[stanga], numere[stanga]))",
+        "suma_curenta = numere[stanga] + numere[dreapta]",
+        "dreapta = len(numere) - 1",
+        "stanga = 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-pairs-65532e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def pereche_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[stanga]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nprint(pereche_cu_suma([1, 3, 4, 5, 7, 9], 8))",
+      "output": "[(1, 7), (3, 5)]",
+      "options": [
+        "perechi.append((numere[stanga], numere[stanga]))",
+        "suma_curenta = numere[stanga] + numere[dreapta]",
+        "dreapta = len(numere) - 1",
+        "stanga += 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-pairs-25daa3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def pereche_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[stanga]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nprint(pereche_cu_suma([2, 4, 5, 6, 8], 10))",
+      "output": "[(2, 8), (4, 6)]",
+      "options": [
+        "perechi.append((numere[stanga], numere[stanga]))",
+        "suma_curenta = numere[stanga] + numere[dreapta]",
+        "stanga += 1",
+        "dreapta -= 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-pairs-e047a8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def pereche_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[stanga]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nprint(pereche_cu_suma([1, 2, 5, 6, 9, 10], 10))",
+      "output": "[(1, 9)]",
+      "options": [
+        "perechi.append((numere[stanga], numere[stanga]))",
+        "stanga += 1",
+        "dreapta -= 1",
+        "return perechi"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "tp-bad-pairs-2cb2a9",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def pereche_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[stanga]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nprint(pereche_cu_suma([3, 4, 6, 7, 9], 12))",
+      "output": "[(3, 9)]",
+      "options": [
+        "perechi.append((numere[stanga], numere[stanga]))",
+        "suma_curenta = numere[stanga] + numere[dreapta]",
+        "stanga += 1",
+        "dreapta -= 1"
+      ],
+      "answer": 0
+    }
+  ]
+}

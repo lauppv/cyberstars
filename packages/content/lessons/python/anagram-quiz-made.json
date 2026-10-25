@@ -1,0 +1,705 @@
+{
+  "note": "Made by npm run make:quiz from the templates in anagram-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "an-sorted-112aa5",
+      "text": "What does this print?",
+      "code": "word = \"orbit\"\nprint(sorted(word))",
+      "options": ["['b', 'i', 'o', 'r', 't']", "orbit", "b", "5"],
+      "answer": 0
+    },
+    {
+      "id": "an-sorted-66b27b",
+      "text": "What does this print?",
+      "code": "word = \"comet\"\nprint(sorted(word))",
+      "options": ["['c', 'e', 'm', 'o', 't']", "comet", "c", "5"],
+      "answer": 0
+    },
+    {
+      "id": "an-sorted-f9327b",
+      "text": "What does this print?",
+      "code": "word = \"star\"\nprint(sorted(word))",
+      "options": ["['a', 'r', 's', 't']", "star", "a", "4"],
+      "answer": 0
+    },
+    {
+      "id": "an-sorted-efa722",
+      "text": "What does this print?",
+      "code": "word = \"moon\"\nprint(sorted(word))",
+      "options": ["['m', 'n', 'o', 'o']", "moon", "m", "4"],
+      "answer": 0
+    },
+    {
+      "id": "an-sorted-ae26a3",
+      "text": "What does this print?",
+      "code": "word = \"Mars\"\nprint(sorted(word))",
+      "options": ["['M', 'a', 'r', 's']", "Mars", "M", "4"],
+      "answer": 0
+    },
+    {
+      "id": "an-check-0b90d2",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"listen\", \"silent\"))\nprint(is_anagram(\"Evil\", \"Vile\"))\nprint(is_anagram(\"listen\", \"Evil\"))",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nFalse\nFalse",
+        "False\nFalse\nFalse",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-check-f6beec",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"night\", \"thing\"))\nprint(is_anagram(\"Dusty\", \"Study\"))\nprint(is_anagram(\"night\", \"Dusty\"))",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nFalse\nFalse",
+        "False\nFalse\nFalse",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-check-f35b14",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"star\", \"rats\"))\nprint(is_anagram(\"Below\", \"Elbow\"))\nprint(is_anagram(\"star\", \"Below\"))",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nFalse\nFalse",
+        "False\nFalse\nFalse",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-check-6ac6ad",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"earth\", \"heart\"))\nprint(is_anagram(\"Lemon\", \"Melon\"))\nprint(is_anagram(\"earth\", \"Lemon\"))",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nFalse\nFalse",
+        "False\nFalse\nFalse",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-check-6a44ef",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"arc\", \"car\"))\nprint(is_anagram(\"Inch\", \"Chin\"))\nprint(is_anagram(\"arc\", \"Inch\"))",
+      "options": [
+        "True\nTrue\nFalse",
+        "True\nFalse\nFalse",
+        "False\nFalse\nFalse",
+        "False\nFalse\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-freq-4fe22d",
+      "text": "What does this print?",
+      "code": "word = \"banana\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
+      "options": [
+        "{'b': 1, 'a': 3, 'n': 2}",
+        "{'b': 1, 'a': 1, 'n': 1}",
+        "{'b': 0, 'a': 2, 'n': 1}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-freq-08ceb1",
+      "text": "What does this print?",
+      "code": "word = \"balloon\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
+      "options": [
+        "{'b': 1, 'a': 1, 'l': 2, 'o': 2, 'n': 1}",
+        "{'b': 1, 'a': 1, 'l': 1, 'o': 1, 'n': 1}",
+        "{'b': 0, 'a': 0, 'l': 1, 'o': 1, 'n': 0}",
+        "5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-freq-f6c98e",
+      "text": "What does this print?",
+      "code": "word = \"level\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
+      "options": [
+        "{'l': 2, 'e': 2, 'v': 1}",
+        "{'l': 1, 'e': 1, 'v': 1}",
+        "{'l': 1, 'e': 1, 'v': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-freq-efa722",
+      "text": "What does this print?",
+      "code": "word = \"moon\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
+      "options": [
+        "{'m': 1, 'o': 2, 'n': 1}",
+        "{'m': 1, 'o': 1, 'n': 1}",
+        "{'m': 0, 'o': 1, 'n': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-freq-12f7c6",
+      "text": "What does this print?",
+      "code": "word = \"coffee\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
+      "options": [
+        "{'c': 1, 'o': 1, 'f': 2, 'e': 2}",
+        "{'c': 1, 'o': 1, 'f': 1, 'e': 1}",
+        "{'c': 0, 'o': 0, 'f': 1, 'e': 1}",
+        "4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-len-ea3340",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"star\", \"stars\"))\nprint(is_anagram(\"night\", \"thing\"))\nprint(is_anagram(\"orbit\", \"robot\"))",
+      "options": [
+        "Different lengths\nFalse\nTrue\nFalse",
+        "False\nDifferent lengths\nFalse\nDifferent lengths\nFalse",
+        "Different lengths\nFalse\nTrue\nTrue",
+        "Different lengths\nTrue\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-len-760494",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"rocket\", \"rock\"))\nprint(is_anagram(\"moon\", \"mono\"))\nprint(is_anagram(\"comet\", \"comic\"))",
+      "options": [
+        "Different lengths\nFalse\nTrue\nFalse",
+        "False\nDifferent lengths\nFalse\nDifferent lengths\nFalse",
+        "Different lengths\nFalse\nTrue\nTrue",
+        "Different lengths\nTrue\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-len-395294",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"earth\", \"hearts\"))\nprint(is_anagram(\"below\", \"elbow\"))\nprint(is_anagram(\"lemon\", \"lemur\"))",
+      "options": [
+        "Different lengths\nFalse\nTrue\nFalse",
+        "False\nDifferent lengths\nFalse\nDifferent lengths\nFalse",
+        "Different lengths\nFalse\nTrue\nTrue",
+        "Different lengths\nTrue\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-len-4960ff",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"cat\", \"cats\"))\nprint(is_anagram(\"inch\", \"chin\"))\nprint(is_anagram(\"star\", \"stir\"))",
+      "options": [
+        "Different lengths\nFalse\nTrue\nFalse",
+        "False\nDifferent lengths\nFalse\nDifferent lengths\nFalse",
+        "Different lengths\nFalse\nTrue\nTrue",
+        "Different lengths\nTrue\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-len-80fed8",
+      "text": "What does this print?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"melon\", \"melons\"))\nprint(is_anagram(\"heart\", \"earth\"))\nprint(is_anagram(\"night\", \"might\"))",
+      "options": [
+        "Different lengths\nFalse\nTrue\nFalse",
+        "False\nDifferent lengths\nFalse\nDifferent lengths\nFalse",
+        "Different lengths\nFalse\nTrue\nTrue",
+        "Different lengths\nTrue\nTrue\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-join-ed0e31",
+      "text": "What does this print?",
+      "code": "for word in [\"Listen\", \"Silent\"]:\n    print(word, \"\".join(sorted(word.lower())))",
+      "options": [
+        "Listen eilnst\nSilent eilnst",
+        "Listen Leinst\nSilent Seilnt",
+        "Listen ['e', 'i', 'l', 'n', 's', 't']\nSilent ['e', 'i', 'l', 'n', 's', 't']",
+        "eilnst\neilnst"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-join-95573e",
+      "text": "What does this print?",
+      "code": "for word in [\"Night\", \"Thing\"]:\n    print(word, \"\".join(sorted(word.lower())))",
+      "options": [
+        "Night ghint\nThing ghint",
+        "Night Nghit\nThing Tghin",
+        "Night ['g', 'h', 'i', 'n', 't']\nThing ['g', 'h', 'i', 'n', 't']",
+        "ghint\nghint"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-join-9acf06",
+      "text": "What does this print?",
+      "code": "for word in [\"Star\", \"Rats\"]:\n    print(word, \"\".join(sorted(word.lower())))",
+      "options": [
+        "Star arst\nRats arst",
+        "Star Sart\nRats Rast",
+        "Star ['a', 'r', 's', 't']\nRats ['a', 'r', 's', 't']",
+        "arst\narst"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-join-b096f4",
+      "text": "What does this print?",
+      "code": "for word in [\"Earth\", \"Heart\"]:\n    print(word, \"\".join(sorted(word.lower())))",
+      "options": [
+        "Earth aehrt\nHeart aehrt",
+        "Earth Eahrt\nHeart Haert",
+        "Earth ['a', 'e', 'h', 'r', 't']\nHeart ['a', 'e', 'h', 'r', 't']",
+        "aehrt\naehrt"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-join-b7c528",
+      "text": "What does this print?",
+      "code": "for word in [\"Below\", \"Elbow\"]:\n    print(word, \"\".join(sorted(word.lower())))",
+      "options": [
+        "Below below\nElbow below",
+        "Below Below\nElbow Eblow",
+        "Below ['b', 'e', 'l', 'o', 'w']\nElbow ['b', 'e', 'l', 'o', 'w']",
+        "below\nbelow"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-group-96d08b",
+      "text": "What does this print?",
+      "code": "groups = {}\nfor word in [\"dog\", \"god\", \"cat\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
+      "options": [
+        "{'dgo': ['dog', 'god'], 'act': ['cat']}",
+        "{'dgo': ['god'], 'act': ['cat']}",
+        "{'dog': ['dog'], 'god': ['god'], 'cat': ['cat']}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-group-d9c10d",
+      "text": "What does this print?",
+      "code": "groups = {}\nfor word in [\"star\", \"rats\", \"arts\", \"moon\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
+      "options": [
+        "{'arst': ['star', 'rats', 'arts'], 'mnoo': ['moon']}",
+        "{'arst': ['arts'], 'mnoo': ['moon']}",
+        "{'star': ['star'], 'rats': ['rats'], 'arts': ['arts'], 'moon': ['moon']}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-group-a870ad",
+      "text": "What does this print?",
+      "code": "groups = {}\nfor word in [\"earth\", \"heart\", \"comet\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
+      "options": [
+        "{'aehrt': ['earth', 'heart'], 'cemot': ['comet']}",
+        "{'aehrt': ['heart'], 'cemot': ['comet']}",
+        "{'earth': ['earth'], 'heart': ['heart'], 'comet': ['comet']}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-group-f34436",
+      "text": "What does this print?",
+      "code": "groups = {}\nfor word in [\"night\", \"sun\", \"thing\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
+      "options": [
+        "{'ghint': ['night', 'thing'], 'nsu': ['sun']}",
+        "{'ghint': ['thing'], 'nsu': ['sun']}",
+        "{'night': ['night'], 'sun': ['sun'], 'thing': ['thing']}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-group-93433d",
+      "text": "What does this print?",
+      "code": "groups = {}\nfor word in [\"act\", \"tac\", \"cat\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
+      "options": [
+        "{'act': ['act', 'tac', 'cat']}",
+        "{'act': ['cat']}",
+        "{'act': ['act'], 'tac': ['tac'], 'cat': ['cat']}",
+        "1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-count-3c99fc",
+      "text": "What does this print?",
+      "code": "target = \"race\"\ncount = 0\nfor word in [\"care\", \"acre\", \"racer\", \"cart\"]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
+      "options": ["care\nacre\n2", "0", "care\nacre\ncart\n3", "care\nacre\n1"],
+      "answer": 0
+    },
+    {
+      "id": "an-count-335fad",
+      "text": "What does this print?",
+      "code": "target = \"star\"\ncount = 0\nfor word in [\"rats\", \"tsar\", \"stars\", \"start\"]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
+      "options": ["rats\ntsar\n2", "0", "rats\ntsar\n1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "an-count-56e619",
+      "text": "What does this print?",
+      "code": "target = \"night\"\ncount = 0\nfor word in [\"thing\", \"night\", \"nights\"]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
+      "options": ["thing\nnight\n2", "night\n1", "thing\nnight\n1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "an-count-9f02ce",
+      "text": "What does this print?",
+      "code": "target = \"earth\"\ncount = 0\nfor word in [\"heart\", \"hater\", \"heard\", \"eart\"]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
+      "options": ["heart\nhater\n2", "0", "heart\nhater\nheard\n3", "heart\nhater\n1"],
+      "answer": 0
+    },
+    {
+      "id": "an-count-4f8e66",
+      "text": "What does this print?",
+      "code": "target = \"melon\"\ncount = 0\nfor word in [\"lemon\", \"solo\", \"melon\", \"lemons\"]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
+      "options": ["lemon\nmelon\n2", "melon\n1", "lemon\nmelon\n1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "an-which-aa1c2f",
+      "text": "Which program shows this?",
+      "output": "silent listen True\nVile Evil True\nsilent Evil False",
+      "options": [
+        "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nfor pair in [(\"silent\", \"listen\"), (\"Vile\", \"Evil\"), (\"silent\", \"Evil\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return sorted(word1) == sorted(word2)\n\nfor pair in [(\"silent\", \"listen\"), (\"Vile\", \"Evil\"), (\"silent\", \"Evil\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return word1.lower() == word2.lower()\n\nfor pair in [(\"silent\", \"listen\"), (\"Vile\", \"Evil\"), (\"silent\", \"Evil\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return sorted(word1.lower()) != sorted(word2.lower())\n\nfor pair in [(\"silent\", \"listen\"), (\"Vile\", \"Evil\"), (\"silent\", \"Evil\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-which-9da220",
+      "text": "Which program shows this?",
+      "output": "thing night True\nStudy Dusty True\nthing Dusty False",
+      "options": [
+        "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nfor pair in [(\"thing\", \"night\"), (\"Study\", \"Dusty\"), (\"thing\", \"Dusty\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return sorted(word1) == sorted(word2)\n\nfor pair in [(\"thing\", \"night\"), (\"Study\", \"Dusty\"), (\"thing\", \"Dusty\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return word1.lower() == word2.lower()\n\nfor pair in [(\"thing\", \"night\"), (\"Study\", \"Dusty\"), (\"thing\", \"Dusty\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return sorted(word1.lower()) != sorted(word2.lower())\n\nfor pair in [(\"thing\", \"night\"), (\"Study\", \"Dusty\"), (\"thing\", \"Dusty\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-which-da2fe5",
+      "text": "Which program shows this?",
+      "output": "rats star True\nElbow Below True\nrats Below False",
+      "options": [
+        "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nfor pair in [(\"rats\", \"star\"), (\"Elbow\", \"Below\"), (\"rats\", \"Below\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return sorted(word1) == sorted(word2)\n\nfor pair in [(\"rats\", \"star\"), (\"Elbow\", \"Below\"), (\"rats\", \"Below\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return word1.lower() == word2.lower()\n\nfor pair in [(\"rats\", \"star\"), (\"Elbow\", \"Below\"), (\"rats\", \"Below\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return sorted(word1.lower()) != sorted(word2.lower())\n\nfor pair in [(\"rats\", \"star\"), (\"Elbow\", \"Below\"), (\"rats\", \"Below\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-which-81d695",
+      "text": "Which program shows this?",
+      "output": "heart earth True\nMelon Lemon True\nheart Lemon False",
+      "options": [
+        "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nfor pair in [(\"heart\", \"earth\"), (\"Melon\", \"Lemon\"), (\"heart\", \"Lemon\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return sorted(word1) == sorted(word2)\n\nfor pair in [(\"heart\", \"earth\"), (\"Melon\", \"Lemon\"), (\"heart\", \"Lemon\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return word1.lower() == word2.lower()\n\nfor pair in [(\"heart\", \"earth\"), (\"Melon\", \"Lemon\"), (\"heart\", \"Lemon\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return sorted(word1.lower()) != sorted(word2.lower())\n\nfor pair in [(\"heart\", \"earth\"), (\"Melon\", \"Lemon\"), (\"heart\", \"Lemon\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-which-5a2846",
+      "text": "Which program shows this?",
+      "output": "act cat True\nChin Inch True\nact Inch False",
+      "options": [
+        "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nfor pair in [(\"act\", \"cat\"), (\"Chin\", \"Inch\"), (\"act\", \"Inch\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return sorted(word1) == sorted(word2)\n\nfor pair in [(\"act\", \"cat\"), (\"Chin\", \"Inch\"), (\"act\", \"Inch\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return word1.lower() == word2.lower()\n\nfor pair in [(\"act\", \"cat\"), (\"Chin\", \"Inch\"), (\"act\", \"Inch\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))",
+        "def is_anagram(word1, word2):\n    return sorted(word1.lower()) != sorted(word2.lower())\n\nfor pair in [(\"act\", \"cat\"), (\"Chin\", \"Inch\"), (\"act\", \"Inch\")]:\n    print(pair[0], pair[1], is_anagram(pair[0], pair[1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-sorted-6f3250",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == ___(word2.lower())\n\nprint(is_anagram(\"listen\", \"silent\"))\nprint(is_anagram(\"Evil\", \"Vile\"))",
+      "output": "True\nTrue",
+      "options": ["sorted", "len", "list", "str"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-sorted-4a1bd7",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == ___(word2.lower())\n\nprint(is_anagram(\"night\", \"thing\"))\nprint(is_anagram(\"Dusty\", \"Study\"))",
+      "output": "True\nTrue",
+      "options": ["sorted", "len", "list", "str"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-sorted-913eec",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == ___(word2.lower())\n\nprint(is_anagram(\"star\", \"rats\"))\nprint(is_anagram(\"Below\", \"Elbow\"))",
+      "output": "True\nTrue",
+      "options": ["sorted", "len", "list", "str"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-sorted-308dd5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == ___(word2.lower())\n\nprint(is_anagram(\"earth\", \"heart\"))\nprint(is_anagram(\"Lemon\", \"Melon\"))",
+      "output": "True\nTrue",
+      "options": ["sorted", "len", "list", "str"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-sorted-286511",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == ___(word2.lower())\n\nprint(is_anagram(\"arc\", \"car\"))\nprint(is_anagram(\"Inch\", \"Chin\"))",
+      "output": "True\nTrue",
+      "options": ["sorted", "len", "list", "str"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-freq-2f0349",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "freq = {}\nfor char in \"banana\":\n    if char in freq:\n        ___\n    else:\n        freq[char] = 1\nprint(freq)",
+      "output": "{'b': 1, 'a': 3, 'n': 2}",
+      "options": ["freq[char] += 1", "freq[char] = 1", "freq[char] = 0", "freq[char] -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-freq-f7e071",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "freq = {}\nfor char in \"letter\":\n    if char in freq:\n        ___\n    else:\n        freq[char] = 1\nprint(freq)",
+      "output": "{'l': 1, 'e': 2, 't': 2, 'r': 1}",
+      "options": ["freq[char] += 1", "freq[char] = 1", "freq[char] = 0", "freq[char] -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-freq-85dfad",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "freq = {}\nfor char in \"moon\":\n    if char in freq:\n        ___\n    else:\n        freq[char] = 1\nprint(freq)",
+      "output": "{'m': 1, 'o': 2, 'n': 1}",
+      "options": ["freq[char] += 1", "freq[char] = 1", "freq[char] = 0", "freq[char] -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-freq-0aaee4",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "freq = {}\nfor char in \"mission\":\n    if char in freq:\n        ___\n    else:\n        freq[char] = 1\nprint(freq)",
+      "output": "{'m': 1, 'i': 2, 's': 2, 'o': 1, 'n': 1}",
+      "options": ["freq[char] += 1", "freq[char] = 1", "freq[char] = 0", "freq[char] -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-freq-b4db89",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "freq = {}\nfor char in \"coffee\":\n    if char in freq:\n        ___\n    else:\n        freq[char] = 1\nprint(freq)",
+      "output": "{'c': 1, 'o': 1, 'f': 2, 'e': 2}",
+      "options": ["freq[char] += 1", "freq[char] = 1", "freq[char] = 0", "freq[char] -= 1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-early-b6f919",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        ___\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"star\", \"stars\"))\nprint(is_anagram(\"night\", \"thing\"))",
+      "output": "False\nTrue",
+      "options": ["return False", "return True", "print(False)", "return word1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-early-43b675",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        ___\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"moon\", \"mono\"))\nprint(is_anagram(\"rocket\", \"rock\"))",
+      "output": "True\nFalse",
+      "options": ["return False", "return True", "print(False)", "return word1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-early-230e34",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        ___\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"earth\", \"hearts\"))\nprint(is_anagram(\"below\", \"elbow\"))",
+      "output": "False\nTrue",
+      "options": ["return False", "return True", "print(False)", "return word1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-early-f02495",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        ___\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"cat\", \"act\"))\nprint(is_anagram(\"comet\", \"come\"))",
+      "output": "True\nFalse",
+      "options": ["return False", "return True", "print(False)", "return word1"],
+      "answer": 0
+    },
+    {
+      "id": "an-gap-early-846ab0",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        ___\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"lemon\", \"lemons\"))\nprint(is_anagram(\"melon\", \"lemon\"))",
+      "output": "False\nTrue",
+      "options": ["return False", "return True", "print(False)", "return word1"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-lower-c809b0",
+      "text": "Which line stops this program from printing this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2)\n\nprint(is_anagram(\"listen\", \"Silent\"))\nprint(is_anagram(\"Evil\", \"Vile\"))",
+      "output": "True\nTrue",
+      "options": [
+        "return sorted(word1.lower()) == sorted(word2)",
+        "def is_anagram(word1, word2):",
+        "print(is_anagram(\"listen\", \"Silent\"))",
+        "print(is_anagram(\"Evil\", \"Vile\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-lower-a72610",
+      "text": "Which line stops this program from printing this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2)\n\nprint(is_anagram(\"night\", \"Thing\"))\nprint(is_anagram(\"Dusty\", \"Study\"))",
+      "output": "True\nTrue",
+      "options": [
+        "return sorted(word1.lower()) == sorted(word2)",
+        "def is_anagram(word1, word2):",
+        "print(is_anagram(\"night\", \"Thing\"))",
+        "print(is_anagram(\"Dusty\", \"Study\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-lower-7455cb",
+      "text": "Which line stops this program from printing this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2)\n\nprint(is_anagram(\"star\", \"Rats\"))\nprint(is_anagram(\"Below\", \"Elbow\"))",
+      "output": "True\nTrue",
+      "options": [
+        "return sorted(word1.lower()) == sorted(word2)",
+        "def is_anagram(word1, word2):",
+        "print(is_anagram(\"star\", \"Rats\"))",
+        "print(is_anagram(\"Below\", \"Elbow\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-lower-f6c358",
+      "text": "Which line stops this program from printing this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2)\n\nprint(is_anagram(\"earth\", \"Heart\"))\nprint(is_anagram(\"Lemon\", \"Melon\"))",
+      "output": "True\nTrue",
+      "options": [
+        "return sorted(word1.lower()) == sorted(word2)",
+        "def is_anagram(word1, word2):",
+        "print(is_anagram(\"earth\", \"Heart\"))",
+        "print(is_anagram(\"Lemon\", \"Melon\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-lower-025e2a",
+      "text": "Which line stops this program from printing this?",
+      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2)\n\nprint(is_anagram(\"cat\", \"Act\"))\nprint(is_anagram(\"Inch\", \"Chin\"))",
+      "output": "True\nTrue",
+      "options": [
+        "return sorted(word1.lower()) == sorted(word2)",
+        "def is_anagram(word1, word2):",
+        "print(is_anagram(\"cat\", \"Act\"))",
+        "print(is_anagram(\"Inch\", \"Chin\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-freq-47eba0",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"banana\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 0\nprint(freq)",
+      "output": "{'b': 1, 'a': 3, 'n': 2}",
+      "options": ["freq[char] = 0", "freq[char] += 1", "freq = {}", "print(freq)"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-freq-4e083f",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"letter\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 0\nprint(freq)",
+      "output": "{'l': 1, 'e': 2, 't': 2, 'r': 1}",
+      "options": ["freq[char] = 0", "freq[char] += 1", "freq = {}", "print(freq)"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-freq-d39e78",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"moon\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 0\nprint(freq)",
+      "output": "{'m': 1, 'o': 2, 'n': 1}",
+      "options": ["freq[char] = 0", "freq[char] += 1", "freq = {}", "word = \"moon\""],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-freq-5d3801",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"coffee\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 0\nprint(freq)",
+      "output": "{'c': 1, 'o': 1, 'f': 2, 'e': 2}",
+      "options": ["freq[char] = 0", "freq[char] += 1", "freq = {}", "word = \"coffee\""],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-freq-c8cd79",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"galaxy\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 0\nprint(freq)",
+      "output": "{'g': 1, 'a': 2, 'l': 1, 'x': 1, 'y': 1}",
+      "options": ["freq[char] = 0", "freq[char] += 1", "freq = {}", "print(freq)"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-count-47fb7a",
+      "text": "Which line stops this program from printing this?",
+      "code": "target = \"race\"\ncount = 0\nfor word in [\"care\", \"acre\", \"cart\"]:\n    if sorted(word) == target:\n        print(word)\n        count += 1\nprint(count)",
+      "output": "care\nacre\n2",
+      "options": ["if sorted(word) == target:", "print(word)", "count += 1", "print(count)"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-count-ea453a",
+      "text": "Which line stops this program from printing this?",
+      "code": "target = \"star\"\ncount = 0\nfor word in [\"rats\", \"tsar\", \"start\"]:\n    if sorted(word) == target:\n        print(word)\n        count += 1\nprint(count)",
+      "output": "rats\ntsar\n2",
+      "options": ["if sorted(word) == target:", "print(word)", "count += 1", "print(count)"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-count-169c9a",
+      "text": "Which line stops this program from printing this?",
+      "code": "target = \"night\"\ncount = 0\nfor word in [\"thing\", \"night\", \"tight\"]:\n    if sorted(word) == target:\n        print(word)\n        count += 1\nprint(count)",
+      "output": "thing\nnight\n2",
+      "options": ["if sorted(word) == target:", "print(word)", "count += 1", "print(count)"],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-count-b49b25",
+      "text": "Which line stops this program from printing this?",
+      "code": "target = \"earth\"\ncount = 0\nfor word in [\"heart\", \"hater\", \"heard\"]:\n    if sorted(word) == target:\n        print(word)\n        count += 1\nprint(count)",
+      "output": "heart\nhater\n2",
+      "options": [
+        "if sorted(word) == target:",
+        "for word in [\"heart\", \"hater\", \"heard\"]:",
+        "count = 0",
+        "target = \"earth\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-bad-count-338f65",
+      "text": "Which line stops this program from printing this?",
+      "code": "target = \"melon\"\ncount = 0\nfor word in [\"lemon\", \"solo\", \"melon\"]:\n    if sorted(word) == target:\n        print(word)\n        count += 1\nprint(count)",
+      "output": "lemon\nmelon\n2",
+      "options": ["if sorted(word) == target:", "print(word)", "count += 1", "print(count)"],
+      "answer": 0
+    }
+  ]
+}
