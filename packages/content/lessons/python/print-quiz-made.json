@@ -461,6 +461,90 @@
       "output": "42",
       "options": ["40 + 2", "\"40 + 2\"", "402", "40 - 2"],
       "answer": 0
+    },
+    {
+      "id": "fstring-gap-a9eca6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Quincy\"\nage = 32\nprint(f\"My name is {___}\")",
+      "output": "My name is Quincy",
+      "options": ["name", "\"name\"", "age", "Name"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-gap-f31819",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Cortez\"\nage = 57\nprint(f\"My name is {___}\")",
+      "output": "My name is Cortez",
+      "options": ["name", "\"name\"", "age", "Name"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-gap-f0f760",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Ana\"\nage = 12\nprint(f\"My name is {___}\")",
+      "output": "My name is Ana",
+      "options": ["name", "\"name\"", "age", "Name"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-a99b08",
+      "text": "What does this print?",
+      "code": "name = \"Quincy\"\nage = 32\nprint(f\"My name is {name} and I am {age}\")",
+      "options": [
+        "My name is Quincy and I am 32",
+        "My name is {name} and I am {age}",
+        "My name is name and I am 32",
+        "My name is Quincy and I am Quincy"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-139a2f",
+      "text": "What does this print?",
+      "code": "name = \"Ana\"\nage = 12\nprint(f\"My name is {name} and I am {age}\")",
+      "options": [
+        "My name is Ana and I am 12",
+        "My name is {name} and I am {age}",
+        "My name is name and I am 12",
+        "My name is Ana and I am Ana"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-63a7c5",
+      "text": "What does this print?",
+      "code": "name = \"Paul\"\nage = 40\nprint(f\"My name is {name} and I am {age}\")",
+      "options": [
+        "My name is Paul and I am 40",
+        "My name is {name} and I am {age}",
+        "My name is name and I am 40",
+        "My name is Paul and I am Paul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-which-458091",
+      "text": "Which program shows this?",
+      "output": "Pilot Shadow is flying Orion",
+      "options": [
+        "pilot = \"Shadow\"\nship = \"Orion\"\nprint(f\"Pilot {pilot} is flying {ship}\")",
+        "pilot = \"Shadow\"\nship = \"Orion\"\nprint(\"Pilot {pilot} is flying {ship}\")",
+        "pilot = \"Shadow\"\nship = \"Orion\"\nprint(f\"Pilot {pilot} is flying ship\")",
+        "pilot = \"Shadow\"\nship = \"Orion\"\nprint(f\"Pilot {ship} is flying {ship}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-which-4f2301",
+      "text": "Which program shows this?",
+      "output": "Pilot Jess is flying Nova",
+      "options": [
+        "pilot = \"Jess\"\nship = \"Nova\"\nprint(f\"Pilot {pilot} is flying {ship}\")",
+        "pilot = \"Jess\"\nship = \"Nova\"\nprint(\"Pilot {pilot} is flying {ship}\")",
+        "pilot = \"Jess\"\nship = \"Nova\"\nprint(f\"Pilot {pilot} is flying ship\")",
+        "pilot = \"Jess\"\nship = \"Nova\"\nprint(f\"Pilot {ship} is flying {ship}\")"
+      ],
+      "answer": 0
     }
   ]
 }

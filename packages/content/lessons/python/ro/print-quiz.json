@@ -685,6 +685,74 @@
       ],
       "answer": "{{a}} + {{b}}",
       "wrong": ["\"{{a}} + {{b}}\"", "{{a}}{{b}}", "{{a}} - {{b}}"]
+    },
+    {
+      "id": "fstring-gap",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"{{name}}\"\nvarsta = {{age}}\nprint(f\"Numele meu este {___}\")",
+      "values": [
+        {
+          "name": "Quincy",
+          "age": 32
+        },
+        {
+          "name": "Cortez",
+          "age": 57
+        },
+        {
+          "name": "Ana",
+          "age": 12
+        }
+      ],
+      "answer": "nume",
+      "wrong": ["\"nume\"", "varsta", "Nume"]
+    },
+    {
+      "id": "fstring-no-f",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "nume = \"{{name}}\"\nvarsta = {{age}}\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
+      "values": [
+        {
+          "name": "Quincy",
+          "age": 32
+        },
+        {
+          "name": "Ana",
+          "age": 12
+        },
+        {
+          "name": "Paul",
+          "age": 40
+        }
+      ],
+      "mistakes": [
+        ["print(f\"", "print(\""],
+        [" {nume} ", " nume "],
+        ["{varsta}\"", "{nume}\""]
+      ]
+    },
+    {
+      "id": "fstring-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "pilot = \"{{p}}\"\nnava = \"{{s}}\"\nprint(f\"Pilotul {pilot} piloteaza {nava}\")",
+      "values": [
+        {
+          "p": "Shadow",
+          "s": "Orion"
+        },
+        {
+          "p": "Jess",
+          "s": "Nova"
+        }
+      ],
+      "mistakes": [
+        ["print(f\"", "print(\""],
+        ["{nava}", "nava"],
+        ["{pilot}", "{nava}"]
+      ]
     }
   ]
 }

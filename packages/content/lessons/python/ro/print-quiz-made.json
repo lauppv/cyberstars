@@ -476,6 +476,90 @@
       "output": "42",
       "options": ["40 + 2", "\"40 + 2\"", "402", "40 - 2"],
       "answer": 0
+    },
+    {
+      "id": "fstring-gap-a9eca6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Quincy\"\nvarsta = 32\nprint(f\"Numele meu este {___}\")",
+      "output": "Numele meu este Quincy",
+      "options": ["nume", "\"nume\"", "varsta", "Nume"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-gap-f31819",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Cortez\"\nvarsta = 57\nprint(f\"Numele meu este {___}\")",
+      "output": "Numele meu este Cortez",
+      "options": ["nume", "\"nume\"", "varsta", "Nume"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-gap-f0f760",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Ana\"\nvarsta = 12\nprint(f\"Numele meu este {___}\")",
+      "output": "Numele meu este Ana",
+      "options": ["nume", "\"nume\"", "varsta", "Nume"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-a99b08",
+      "text": "Ce afișează?",
+      "code": "nume = \"Quincy\"\nvarsta = 32\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
+      "options": [
+        "Numele meu este Quincy si varsta mea e 32",
+        "Numele meu este {nume} si varsta mea e {varsta}",
+        "Numele meu este nume si varsta mea e 32",
+        "Numele meu este Quincy si varsta mea e Quincy"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-139a2f",
+      "text": "Ce afișează?",
+      "code": "nume = \"Ana\"\nvarsta = 12\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
+      "options": [
+        "Numele meu este Ana si varsta mea e 12",
+        "Numele meu este {nume} si varsta mea e {varsta}",
+        "Numele meu este nume si varsta mea e 12",
+        "Numele meu este Ana si varsta mea e Ana"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-63a7c5",
+      "text": "Ce afișează?",
+      "code": "nume = \"Paul\"\nvarsta = 40\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
+      "options": [
+        "Numele meu este Paul si varsta mea e 40",
+        "Numele meu este {nume} si varsta mea e {varsta}",
+        "Numele meu este nume si varsta mea e 40",
+        "Numele meu este Paul si varsta mea e Paul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-which-458091",
+      "text": "Care program afișează asta?",
+      "output": "Pilotul Shadow piloteaza Orion",
+      "options": [
+        "pilot = \"Shadow\"\nnava = \"Orion\"\nprint(f\"Pilotul {pilot} piloteaza {nava}\")",
+        "pilot = \"Shadow\"\nnava = \"Orion\"\nprint(\"Pilotul {pilot} piloteaza {nava}\")",
+        "pilot = \"Shadow\"\nnava = \"Orion\"\nprint(f\"Pilotul {pilot} piloteaza nava\")",
+        "pilot = \"Shadow\"\nnava = \"Orion\"\nprint(f\"Pilotul {nava} piloteaza {nava}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-which-4f2301",
+      "text": "Care program afișează asta?",
+      "output": "Pilotul Jess piloteaza Nova",
+      "options": [
+        "pilot = \"Jess\"\nnava = \"Nova\"\nprint(f\"Pilotul {pilot} piloteaza {nava}\")",
+        "pilot = \"Jess\"\nnava = \"Nova\"\nprint(\"Pilotul {pilot} piloteaza {nava}\")",
+        "pilot = \"Jess\"\nnava = \"Nova\"\nprint(f\"Pilotul {pilot} piloteaza nava\")",
+        "pilot = \"Jess\"\nnava = \"Nova\"\nprint(f\"Pilotul {nava} piloteaza {nava}\")"
+      ],
+      "answer": 0
     }
   ]
 }
