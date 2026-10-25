@@ -1,0 +1,649 @@
+{
+  "note": "Made by npm run make:quiz from the templates in strings-methods-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "sm-len-f86af5",
+      "text": "Ce afișează?",
+      "code": "nava = \"Steaua Rapida\"\nprint(len(nava))",
+      "options": ["13", "Steaua Rapida", "4", "12"],
+      "answer": 0
+    },
+    {
+      "id": "sm-len-73f01a",
+      "text": "Ce afișează?",
+      "code": "planeta = \"Marte\"\nprint(len(planeta))",
+      "options": ["5", "Marte", "7", "4"],
+      "answer": 0
+    },
+    {
+      "id": "sm-len-01cc62",
+      "text": "Ce afișează?",
+      "code": "cod = \"A-17!\"\nprint(len(cod))",
+      "options": ["5", "A-17!", "3", "4"],
+      "answer": 0
+    },
+    {
+      "id": "sm-len-8a2afa",
+      "text": "Ce afișează?",
+      "code": "oras = \"Vice City\"\nprint(len(oras))",
+      "options": ["9", "Vice City", "4", "8"],
+      "answer": 0
+    },
+    {
+      "id": "sm-len-a949fe",
+      "text": "Ce afișează?",
+      "code": "echipaj = \"Ana si Ben\"\nprint(len(echipaj))",
+      "options": ["10", "Ana si Ben", "7", "9"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-lost-1ebc3b",
+      "text": "Ce afișează?",
+      "code": "nume = \"lance vance\"\nnume.upper()\nprint(nume)",
+      "options": ["lance vance", "LANCE VANCE", "nume", "Lance vance"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-lost-33fce7",
+      "text": "Ce afișează?",
+      "code": "pilot = \"sonny\"\npilot.upper()\nprint(pilot)",
+      "options": ["sonny", "SONNY", "pilot", "Sonny"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-lost-6ef19d",
+      "text": "Ce afișează?",
+      "code": "capitan = \"mercedes\"\ncapitan.upper()\nprint(capitan)",
+      "options": ["mercedes", "MERCEDES", "capitan", "Mercedes"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-lost-01b982",
+      "text": "Ce afișează?",
+      "code": "oaspete = \"ken rosenberg\"\noaspete.upper()\nprint(oaspete)",
+      "options": ["ken rosenberg", "KEN ROSENBERG", "oaspete", "Ken rosenberg"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-kept-6c2cb4",
+      "text": "Ce afișează?",
+      "code": "apel = \"Ajutor\"\napel = apel.upper()\nprint(apel)",
+      "options": ["AJUTOR", "Ajutor", "ajutor", "apel"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-kept-690943",
+      "text": "Ce afișează?",
+      "code": "eticheta = \"Oaspete VIP\"\neticheta = eticheta.lower()\nprint(eticheta)",
+      "options": ["oaspete vip", "Oaspete VIP", "OASPETE VIP", "eticheta"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-kept-52211b",
+      "text": "Ce afișează?",
+      "code": "semnal = \"Cod Rosu\"\nsemnal = semnal.upper()\nprint(semnal)",
+      "options": ["COD ROSU", "Cod Rosu", "cod rosu", "semnal"],
+      "answer": 0
+    },
+    {
+      "id": "sm-upper-kept-b0e825",
+      "text": "Ce afișează?",
+      "code": "alerta = \"Bresa in CARENA\"\nalerta = alerta.lower()\nprint(alerta)",
+      "options": ["bresa in carena", "Bresa in CARENA", "BRESA IN CARENA", "alerta"],
+      "answer": 0
+    },
+    {
+      "id": "sm-index-00f82d",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Galaxie\"\nprint(cuvant[2])",
+      "options": ["l", "a", "Ga", "Galaxie"],
+      "answer": 0
+    },
+    {
+      "id": "sm-index-907219",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Nebuloasa\"\nprint(cuvant[4])",
+      "options": ["l", "u", "o", "Nebu"],
+      "answer": 0
+    },
+    {
+      "id": "sm-index-3f0ba1",
+      "text": "Ce afișează?",
+      "code": "planeta = \"Saturn\"\nprint(planeta[1])",
+      "options": ["a", "S", "t", "Saturn"],
+      "answer": 0
+    },
+    {
+      "id": "sm-index-dceba1",
+      "text": "Ce afișează?",
+      "code": "nume = \"Cometa\"\nprint(nume[3])",
+      "options": ["e", "m", "t", "Com"],
+      "answer": 0
+    },
+    {
+      "id": "sm-index-aea7c5",
+      "text": "Ce afișează?",
+      "code": "cod = \"Orbital\"\nprint(cod[5])",
+      "options": ["a", "t", "l", "Orbit"],
+      "answer": 0
+    },
+    {
+      "id": "sm-slice-cc932f",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Stelar\"\nprint(cuvant[0:4])",
+      "options": ["Stel", "Stela", "ar", "S"],
+      "answer": 0
+    },
+    {
+      "id": "sm-slice-a085ca",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Lunaparcuri\"\nprint(cuvant[4:8])",
+      "options": ["parc", "parcu", "uri", "p"],
+      "answer": 0
+    },
+    {
+      "id": "sm-slice-08b421",
+      "text": "Ce afișează?",
+      "code": "nava = \"Calator\"\nprint(nava[2:5])",
+      "options": ["lat", "lato", "or", "l"],
+      "answer": 0
+    },
+    {
+      "id": "sm-slice-fb20f6",
+      "text": "Ce afișează?",
+      "code": "oras = \"Viceoras\"\nprint(oras[0:4])",
+      "options": ["Vice", "Viceo", "oras", "V"],
+      "answer": 0
+    },
+    {
+      "id": "sm-slice-3799b4",
+      "text": "Ce afișează?",
+      "code": "cod = \"ZX81Alfa\"\nprint(cod[2:4])",
+      "options": ["81", "81A", "Alfa", "8"],
+      "answer": 0
+    },
+    {
+      "id": "sm-concat-fb2bde",
+      "text": "Ce afișează?",
+      "code": "prenume = \"Lance\"\nnume_familie = \"Vance\"\nprint(prenume + \" \" + nume_familie)",
+      "options": ["Lance Vance", "LanceVance", "prenume nume_familie", "Vance Lance"],
+      "answer": 0
+    },
+    {
+      "id": "sm-concat-8f48b1",
+      "text": "Ce afișează?",
+      "code": "prenume = \"Ken\"\nnume_familie = \"Rosenberg\"\nprint(prenume + \" \" + nume_familie)",
+      "options": ["Ken Rosenberg", "KenRosenberg", "prenume nume_familie", "Rosenberg Ken"],
+      "answer": 0
+    },
+    {
+      "id": "sm-concat-ec383f",
+      "text": "Ce afișează?",
+      "code": "prenume = \"Kent\"\nnume_familie = \"Paul\"\nprint(prenume + \" \" + nume_familie)",
+      "options": ["Kent Paul", "KentPaul", "prenume nume_familie", "Paul Kent"],
+      "answer": 0
+    },
+    {
+      "id": "sm-concat-acc6d5",
+      "text": "Ce afișează?",
+      "code": "nava = \"Nova\"\nport = \"Prima\"\nprint(nava + \" \" + port)",
+      "options": ["Nova Prima", "NovaPrima", "nava port", "Prima Nova"],
+      "answer": 0
+    },
+    {
+      "id": "sm-concat-2618a6",
+      "text": "Ce afișează?",
+      "code": "oras = \"Vice\"\nzona = \"Plaja\"\nprint(oras + \" \" + zona)",
+      "options": ["Vice Plaja", "VicePlaja", "oras zona", "Plaja Vice"],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-slice-8d0405",
+      "text": "Care program afișează asta?",
+      "output": "And",
+      "options": [
+        "cuvant = \"Andromeda\"\nprint(cuvant[0:3])",
+        "cuvant = \"Andromeda\"\nprint(cuvant[0:4])",
+        "cuvant = \"Andromeda\"\nprint(cuvant[0:2])",
+        "cuvant = \"Andromeda\"\nprint(cuvant[1:4])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-slice-0891d4",
+      "text": "Care program afișează asta?",
+      "output": "Cosmo",
+      "options": [
+        "cuvant = \"Cosmodrom\"\nprint(cuvant[0:5])",
+        "cuvant = \"Cosmodrom\"\nprint(cuvant[0:6])",
+        "cuvant = \"Cosmodrom\"\nprint(cuvant[0:4])",
+        "cuvant = \"Cosmodrom\"\nprint(cuvant[1:6])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-slice-01bc4c",
+      "text": "Care program afișează asta?",
+      "output": "Rose",
+      "options": [
+        "nume = \"Rosenberg\"\nprint(nume[0:4])",
+        "nume = \"Rosenberg\"\nprint(nume[0:5])",
+        "nume = \"Rosenberg\"\nprint(nume[0:3])",
+        "nume = \"Rosenberg\"\nprint(nume[1:5])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-slice-9408e7",
+      "text": "Care program afișează asta?",
+      "output": "lger",
+      "options": [
+        "nava = \"Fulgerator\"\nprint(nava[2:6])",
+        "nava = \"Fulgerator\"\nprint(nava[2:7])",
+        "nava = \"Fulgerator\"\nprint(nava[2:5])",
+        "nava = \"Fulgerator\"\nprint(nava[3:7])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-upper-17a4df",
+      "text": "Care program afișează asta?",
+      "output": "SONNY",
+      "options": [
+        "nume = \"sonny\"\nnume = nume.upper()\nprint(nume)",
+        "nume = \"sonny\"\nnume.upper()\nprint(nume)",
+        "nume = \"sonny\"\nnume = nume.lower()\nprint(nume)",
+        "nume = \"sonny\"\nnume = nume.upper()\nprint(\"nume\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-upper-b3b7ae",
+      "text": "Care program afișează asta?",
+      "output": "AJUTOR",
+      "options": [
+        "apel = \"ajutor\"\napel = apel.upper()\nprint(apel)",
+        "apel = \"ajutor\"\napel.upper()\nprint(apel)",
+        "apel = \"ajutor\"\napel = apel.lower()\nprint(apel)",
+        "apel = \"ajutor\"\napel = apel.upper()\nprint(\"apel\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-upper-b1fa3c",
+      "text": "Care program afișează asta?",
+      "output": "NEPTUN",
+      "options": [
+        "planeta = \"neptun\"\nplaneta = planeta.upper()\nprint(planeta)",
+        "planeta = \"neptun\"\nplaneta.upper()\nprint(planeta)",
+        "planeta = \"neptun\"\nplaneta = planeta.lower()\nprint(planeta)",
+        "planeta = \"neptun\"\nplaneta = planeta.upper()\nprint(\"planeta\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-which-upper-2685a7",
+      "text": "Care program afișează asta?",
+      "output": "ROSU CINCI",
+      "options": [
+        "echipa = \"rosu cinci\"\nechipa = echipa.upper()\nprint(echipa)",
+        "echipa = \"rosu cinci\"\nechipa.upper()\nprint(echipa)",
+        "echipa = \"rosu cinci\"\nechipa = echipa.lower()\nprint(echipa)",
+        "echipa = \"rosu cinci\"\nechipa = echipa.upper()\nprint(\"echipa\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-index-5b9532",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Pluton\"\nprint(cuvant[___])",
+      "output": "t",
+      "options": ["3", "4", "2", "6"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-index-2b691d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Jupiter\"\nprint(cuvant[___])",
+      "output": "p",
+      "options": ["2", "3", "1", "7"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-index-d56197",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cod = \"QZ7RX\"\nprint(cod[___])",
+      "output": "Z",
+      "options": ["1", "2", "0", "5"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-index-1ddbe0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Rosenberg\"\nprint(nume[___])",
+      "output": "n",
+      "options": ["4", "5", "3", "9"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-end-ca4e44",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Navetista\"\nprint(cuvant[0:___])",
+      "output": "Navet",
+      "options": ["5", "4", "6", "1"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-end-c015eb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Lunarul\"\nprint(cuvant[0:___])",
+      "output": "Luna",
+      "options": ["4", "3", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-end-1c7161",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Mercedes\"\nprint(nume[0:___])",
+      "output": "Mer",
+      "options": ["3", "2", "4", "1"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-end-98ae03",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nava = \"Stelara\"\nprint(nava[0:___])",
+      "output": "Stel",
+      "options": ["4", "3", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-method-3b6e9a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "apel = \"Ajutor\"\nprint(apel.___())",
+      "output": "AJUTOR",
+      "options": ["upper", "lower", "len", "UPPER"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-method-ccc2bd",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "eticheta = \"Lista Oaspeti\"\nprint(eticheta.___())",
+      "output": "lista oaspeti",
+      "options": ["lower", "upper", "len", "LOWER"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-method-eea636",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "semnal = \"totul e bine\"\nprint(semnal.___())",
+      "output": "TOTUL E BINE",
+      "options": ["upper", "lower", "len", "UPPER"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-method-8c60ad",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "alerta = \"Combustibil PUTIN\"\nprint(alerta.___())",
+      "output": "combustibil putin",
+      "options": ["lower", "upper", "len", "LOWER"],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-keep-ce714f",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"tommy\"\n___\nprint(nume)",
+      "output": "TOMMY",
+      "options": [
+        "nume = nume.upper()",
+        "nume.upper()",
+        "nume == nume.upper()",
+        "nume = upper(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-keep-09c4db",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "apel = \"AJUTOR\"\n___\nprint(apel)",
+      "output": "ajutor",
+      "options": [
+        "apel = apel.lower()",
+        "apel.lower()",
+        "apel == apel.lower()",
+        "apel = lower(apel)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-keep-4ed618",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "pilot = \"kent paul\"\n___\nprint(pilot)",
+      "output": "KENT PAUL",
+      "options": [
+        "pilot = pilot.upper()",
+        "pilot.upper()",
+        "pilot == pilot.upper()",
+        "pilot = upper(pilot)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-keep-7903ce",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "eticheta = \"VIP\"\n___\nprint(eticheta)",
+      "output": "vip",
+      "options": [
+        "eticheta = eticheta.lower()",
+        "eticheta.lower()",
+        "eticheta == eticheta.lower()",
+        "eticheta = lower(eticheta)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-keep-2570cc",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "planeta = \"venus\"\n___\nprint(planeta)",
+      "output": "VENUS",
+      "options": [
+        "planeta = planeta.upper()",
+        "planeta.upper()",
+        "planeta == planeta.upper()",
+        "planeta = upper(planeta)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-concat-addea2",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "prenume = \"Tommy\"\nnume_familie = \"Vercetti\"\n___\nprint(nume_complet)",
+      "output": "Tommy Vercetti",
+      "options": [
+        "nume_complet = prenume + \" \" + nume_familie",
+        "nume_complet = prenume + nume_familie",
+        "nume_complet = \"prenume nume_familie\"",
+        "nume_complet = nume_familie + \" \" + prenume"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-concat-106516",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "prenume = \"Sonny\"\nnume_familie = \"Forelli\"\n___\nprint(nume_complet)",
+      "output": "Sonny Forelli",
+      "options": [
+        "nume_complet = prenume + \" \" + nume_familie",
+        "nume_complet = prenume + nume_familie",
+        "nume_complet = \"prenume nume_familie\"",
+        "nume_complet = nume_familie + \" \" + prenume"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-concat-8f8b7c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "prenume = \"Ada\"\nnume_familie = \"Lovelace\"\n___\nprint(nume_complet)",
+      "output": "Ada Lovelace",
+      "options": [
+        "nume_complet = prenume + \" \" + nume_familie",
+        "nume_complet = prenume + nume_familie",
+        "nume_complet = \"prenume nume_familie\"",
+        "nume_complet = nume_familie + \" \" + prenume"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-concat-bac74c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nava = \"Soimul\"\nmodel = \"Noua\"\n___\nprint(eticheta)",
+      "output": "Soimul Noua",
+      "options": [
+        "eticheta = nava + \" \" + model",
+        "eticheta = nava + model",
+        "eticheta = \"nava model\"",
+        "eticheta = model + \" \" + nava"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-gap-concat-1878d1",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "oras = \"Vice\"\nzona = \"Port\"\n___\nprint(loc)",
+      "output": "Vice Port",
+      "options": [
+        "loc = oras + \" \" + zona",
+        "loc = oras + zona",
+        "loc = \"oras zona\"",
+        "loc = zona + \" \" + oras"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-method-cae8dc",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Sonny\"\ntare = nume.lower()\nprint(nume)\nprint(tare)",
+      "output": "Sonny\nSONNY",
+      "options": ["tare = nume.lower()", "nume = \"Sonny\"", "print(nume)", "print(tare)"],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-method-695fae",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "apel = \"AjuTor\"\nincet = apel.upper()\nprint(apel)\nprint(incet)",
+      "output": "AjuTor\najutor",
+      "options": ["incet = apel.upper()", "apel = \"AjuTor\"", "print(apel)", "print(incet)"],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-method-ad089c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "planeta = \"Neptun\"\nmare = planeta.lower()\nprint(planeta)\nprint(mare)",
+      "output": "Neptun\nNEPTUN",
+      "options": [
+        "mare = planeta.lower()",
+        "planeta = \"Neptun\"",
+        "print(planeta)",
+        "print(mare)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-method-a37b23",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "eticheta = \"Oaspete VIP\"\nmic = eticheta.upper()\nprint(eticheta)\nprint(mic)",
+      "output": "Oaspete VIP\noaspete vip",
+      "options": [
+        "mic = eticheta.upper()",
+        "eticheta = \"Oaspete VIP\"",
+        "print(eticheta)",
+        "print(mic)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-index-08803f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"Nebuloasa\"\nprint(cuvant)\nprint(cuvant[3])\nprint(cuvant[0:3])",
+      "output": "Nebuloasa\nb\nNeb",
+      "options": [
+        "print(cuvant[3])",
+        "print(cuvant)",
+        "print(cuvant[0:3])",
+        "cuvant = \"Nebuloasa\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-index-976dc7",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"Galaxie\"\nprint(cuvant)\nprint(cuvant[5])\nprint(cuvant[0:2])",
+      "output": "Galaxie\nx\nGa",
+      "options": [
+        "print(cuvant[5])",
+        "print(cuvant)",
+        "print(cuvant[0:2])",
+        "cuvant = \"Galaxie\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-index-fc7c22",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Mercedes\"\nprint(nume)\nprint(nume[2])\nprint(nume[0:4])",
+      "output": "Mercedes\ne\nMerc",
+      "options": ["print(nume[2])", "print(nume)", "print(nume[0:4])", "nume = \"Mercedes\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-index-5d69f5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cod = \"QZ7RX\"\nprint(cod)\nprint(cod[4])\nprint(cod[0:2])",
+      "output": "QZ7RX\nR\nQZ",
+      "options": ["print(cod[4])", "print(cod)", "print(cod[0:2])", "cod = \"QZ7RX\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-slice-a6582b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"Stelara\"\nprint(cuvant)\nprint(cuvant[0])\nprint(cuvant[4:6])",
+      "output": "Stelara\nS\nara",
+      "options": [
+        "print(cuvant[4:6])",
+        "print(cuvant[0])",
+        "print(cuvant)",
+        "cuvant = \"Stelara\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-slice-cbffec",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"Lunaparc\"\nprint(cuvant)\nprint(cuvant[0])\nprint(cuvant[0:3])",
+      "output": "Lunaparc\nL\nLuna",
+      "options": [
+        "print(cuvant[0:3])",
+        "print(cuvant[0])",
+        "print(cuvant)",
+        "cuvant = \"Lunaparc\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-slice-7986f8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nava = \"Calator\"\nprint(nava)\nprint(nava[0])\nprint(nava[2:4])",
+      "output": "Calator\nC\nlat",
+      "options": ["print(nava[2:4])", "print(nava[0])", "print(nava)", "nava = \"Calator\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-bad-slice-79dd3b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Rosenberg\"\nprint(nume)\nprint(nume[0])\nprint(nume[4:8])",
+      "output": "Rosenberg\nR\nnberg",
+      "options": ["print(nume[4:8])", "print(nume[0])", "print(nume)", "nume = \"Rosenberg\""],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,865 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce dă len() pentru un string?",
+      "options": [
+        "Câte cuvinte are",
+        "Câte caractere are, cu tot cu spații și semne",
+        "Câte litere are, fără spații",
+        "Poziția ultimului lui caracter"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează?",
+      "code": "nume = \"Tommy Vercetti\"\nprint(len(nume))",
+      "options": ["14", "13", "2", "12"],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "De unde începe numărarea pozițiilor dintr-un string?",
+      "options": ["De la 1", "De la ultimul caracter", "De la primul spațiu", "De la 0"],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "`nume` ține \"Tommy\". Ce este `nume[1]`?",
+      "options": ["T", "m", "o", "Tommy"],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "Ce îi face `nume.upper()` lui `nume`?",
+      "options": [
+        "Îl trece pe nume în majuscule pentru totdeauna",
+        "Nimic: dă înapoi un string nou cu majuscule, iar nume rămâne cum era",
+        "Afișează nume cu majuscule",
+        "Se oprește cu o eroare dacă nume nu e deja cu majuscule"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "nume = \"tommy\"\nnume.upper()\nprint(nume)",
+      "options": ["tommy", "TOMMY", "Tommy", "Nimic"],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "Ce linie îl păstrează pe `nume` cu majuscule pentru totdeauna?",
+      "options": ["nume.upper()", "upper(nume)", "nume == nume.upper()", "nume = nume.upper()"],
+      "answer": 3
+    },
+    {
+      "id": "q8",
+      "text": "Ce este o metodă, ca `upper()` din `nume.upper()`?",
+      "options": [
+        "O variabilă ținută într-un string",
+        "Un cuvânt cheie, ca if",
+        "O funcție care ține de ceva, apelată după un punct",
+        "Un comentariu scris după o linie"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "Ce face `+` între două string-uri?",
+      "options": [
+        "Adună lungimile lor",
+        "Le lipește într-un singur string",
+        "Pune un spațiu între ele și le afișează",
+        "Se oprește cu o eroare: + e doar pentru numere"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "primul = \"Stea\"\nal_doilea = \"Nava\"\nprint(primul + al_doilea)",
+      "options": ["SteaNava", "Stea Nava", "Stea+Nava", "primul + al_doilea"],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "Ce linie afișează Tommy Vercetti, când `prenume` e \"Tommy\" și `nume_familie` e \"Vercetti\"?",
+      "options": [
+        "print(prenume + nume_familie)",
+        "print(\"prenume nume_familie\")",
+        "print(prenume + \"\" + nume_familie)",
+        "print(prenume + \" \" + nume_familie)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "Cum se numește lipirea string-urilor cu +?",
+      "options": ["Indexare", "O iterație", "Concatenare", "O metodă"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "Ce poziții ia `nume[0:5]`?",
+      "options": ["0, 1, 2, 3, 4 și 5", "0, 1, 2, 3 și 4", "1, 2, 3, 4 și 5", "Doar 0 și 5"],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "De ce nu ia `nume[0:5]` și caracterul de pe poziția 5?",
+      "options": [
+        "Sfârșitul nu e inclus, ca la range()",
+        "Python sare mereu peste ultima literă a unui cuvânt",
+        "Pe poziția 5 e mereu un spațiu",
+        "Îl ia: nume[0:5] are 6 caractere"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "`nume` ține \"Tommy Vercetti\". Ce este `nume[6:]`?",
+      "options": ["Tommy", "V", "ercetti", "Vercetti"],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "`nume` ține \"Tommy Vercetti\". Ce este `nume[:5]`?",
+      "options": ["Tomm", "Vercetti", "Tommy", "y"],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "Câte caractere ia `cuvant[2:7]`?",
+      "options": ["7", "5", "6", "2"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "`nume` ține \"Tommy Vercetti\". Ce caracter este `nume[9]`?",
+      "options": ["c", "e", "t", "r"],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "Contează un spațiu în `len()`?",
+      "options": [
+        "Nu: len(\"a b\") este 2",
+        "Doar un spațiu de la sfârșit",
+        "Doar într-un f-string",
+        "Da: len(\"a b\") este 3"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "Ce linie afișează primul caracter din `cuvant`?",
+      "options": ["print(cuvant[1])", "print(cuvant(0))", "print(cuvant[0])", "print(cuvant[0:0])"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "În misiunea Decodorul de Poziții utilizatorul tastează Andromeda. Ce caracter este `cuvant[3]`?",
+      "options": ["d", "r", "o", "n"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "În misiunea Decodorul de Poziții utilizatorul tastează Andromeda. Ce este `cuvant[4:]`?",
+      "options": ["omeda", "romeda", "meda", "Andr"],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "În misiunea Decodorul de Poziții utilizatorul tastează Orion. Ce afișează programul?",
+      "options": ["O\ni\nOri\non", "O\no\nOrion\nn", "r\no\nOrio\nn", "O\no\nOrio\nn"],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"planeta\"\nprint(cuvant[0:3] + cuvant[3:])",
+      "options": ["pla", "neta", "planeta", "plannete"],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "nume = \"Ada\"\nprint(nume.lower())",
+      "options": ["ADA", "ada", "Ada", "a"],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "`nume` ține \"Tommy\". Care e poziția ultimului caracter?",
+      "options": ["4", "5", "6", "0"],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "Care dă același lucru ca `nume[0:3]`?",
+      "options": ["nume[3:]", "nume[1:3]", "nume[0:2]", "nume[:3]"],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "cod = \"ab\"\nprint(cod + cod)",
+      "options": ["ab ab", "ab", "abab", "codcod"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "Ce linie se oprește cu o eroare?",
+      "options": [
+        "print(\"Nivel \" + \"5\")",
+        "print(\"Nivel \" + 5)",
+        "print(f\"Nivel {5}\")",
+        "print(\"Nivel 5\")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "`nume` ține \"tommy\". Ce linie afișează Tommy, doar cu prima literă mare?",
+      "options": [
+        "print(nume[0].upper() + nume[1:])",
+        "print(nume.upper())",
+        "print(nume[0] + nume[1:].upper())",
+        "print(nume[0].upper())"
+      ],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "sm-len",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{s}}\"\nprint(len({{v}}))",
+      "values": [
+        {
+          "v": "nava",
+          "s": "Steaua Rapida"
+        },
+        {
+          "v": "planeta",
+          "s": "Marte"
+        },
+        {
+          "v": "cod",
+          "s": "A-17!"
+        },
+        {
+          "v": "oras",
+          "s": "Vice City"
+        },
+        {
+          "v": "echipaj",
+          "s": "Ana si Ben"
+        }
+      ],
+      "mistakes": [
+        ["len({{v}})", "{{v}}"],
+        ["len({{v}})", "len(\"{{v}}\")"],
+        ["len({{v}})", "len({{v}}) - 1"],
+        ["len({{v}})", "len({{v}}) + 1"]
+      ]
+    },
+    {
+      "id": "sm-upper-lost",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{s}}\"\n{{v}}.upper()\nprint({{v}})",
+      "values": [
+        {
+          "v": "nume",
+          "s": "lance vance"
+        },
+        {
+          "v": "pilot",
+          "s": "sonny"
+        },
+        {
+          "v": "capitan",
+          "s": "mercedes"
+        },
+        {
+          "v": "oaspete",
+          "s": "ken rosenberg"
+        }
+      ],
+      "mistakes": [
+        ["{{v}}.upper()\nprint", "{{v}} = {{v}}.upper()\nprint"],
+        ["print({{v}})", "print(\"{{v}}\")"],
+        ["print({{v}})", "print({{v}}[0].upper() + {{v}}[1:])"]
+      ]
+    },
+    {
+      "id": "sm-upper-kept",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{s}}\"\n{{v}} = {{v}}.{{m}}()\nprint({{v}})",
+      "values": [
+        {
+          "v": "apel",
+          "s": "Ajutor",
+          "m": "upper",
+          "o": "lower"
+        },
+        {
+          "v": "eticheta",
+          "s": "Oaspete VIP",
+          "m": "lower",
+          "o": "upper"
+        },
+        {
+          "v": "semnal",
+          "s": "Cod Rosu",
+          "m": "upper",
+          "o": "lower"
+        },
+        {
+          "v": "alerta",
+          "s": "Bresa in CARENA",
+          "m": "lower",
+          "o": "upper"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{v}}.{{m}}()", "{{v}}.{{m}}()"],
+        [".{{m}}()", ".{{o}}()"],
+        ["print({{v}})", "print(\"{{v}}\")"]
+      ]
+    },
+    {
+      "id": "sm-index",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}[{{i}}])",
+      "values": [
+        {
+          "v": "cuvant",
+          "s": "Galaxie",
+          "i": 2,
+          "im": 1,
+          "ip": 3
+        },
+        {
+          "v": "cuvant",
+          "s": "Nebuloasa",
+          "i": 4,
+          "im": 3,
+          "ip": 5
+        },
+        {
+          "v": "planeta",
+          "s": "Saturn",
+          "i": 1,
+          "im": 0,
+          "ip": 2
+        },
+        {
+          "v": "nume",
+          "s": "Cometa",
+          "i": 3,
+          "im": 2,
+          "ip": 4
+        },
+        {
+          "v": "cod",
+          "s": "Orbital",
+          "i": 5,
+          "im": 4,
+          "ip": 6
+        }
+      ],
+      "mistakes": [
+        ["[{{i}}]", "[{{im}}]"],
+        ["[{{i}}]", "[{{ip}}]"],
+        ["[{{i}}]", "[0:{{i}}]"],
+        ["print({{v}}[{{i}}])", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "sm-slice",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}[{{a}}:{{b}}])",
+      "values": [
+        {
+          "v": "cuvant",
+          "s": "Stelar",
+          "a": 0,
+          "b": 4,
+          "bp": 5
+        },
+        {
+          "v": "cuvant",
+          "s": "Lunaparcuri",
+          "a": 4,
+          "b": 8,
+          "bp": 9
+        },
+        {
+          "v": "nava",
+          "s": "Calator",
+          "a": 2,
+          "b": 5,
+          "bp": 6
+        },
+        {
+          "v": "oras",
+          "s": "Viceoras",
+          "a": 0,
+          "b": 4,
+          "bp": 5
+        },
+        {
+          "v": "cod",
+          "s": "ZX81Alfa",
+          "a": 2,
+          "b": 4,
+          "bp": 5
+        }
+      ],
+      "mistakes": [
+        ["{{a}}:{{b}}", "{{a}}:{{bp}}"],
+        ["[{{a}}:{{b}}]", "[{{b}}:]"],
+        ["[{{a}}:{{b}}]", "[{{a}}]"],
+        ["[{{a}}:{{b}}]", "[:{{a}}]"]
+      ]
+    },
+    {
+      "id": "sm-concat",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{a}} = \"{{x}}\"\n{{b}} = \"{{y}}\"\nprint({{a}} + \" \" + {{b}})",
+      "values": [
+        {
+          "a": "prenume",
+          "b": "nume_familie",
+          "x": "Lance",
+          "y": "Vance"
+        },
+        {
+          "a": "prenume",
+          "b": "nume_familie",
+          "x": "Ken",
+          "y": "Rosenberg"
+        },
+        {
+          "a": "prenume",
+          "b": "nume_familie",
+          "x": "Kent",
+          "y": "Paul"
+        },
+        {
+          "a": "nava",
+          "b": "port",
+          "x": "Nova",
+          "y": "Prima"
+        },
+        {
+          "a": "oras",
+          "b": "zona",
+          "x": "Vice",
+          "y": "Plaja"
+        }
+      ],
+      "mistakes": [
+        ["{{a}} + \" \" + {{b}}", "{{a}} + {{b}}"],
+        ["{{a}} + \" \" + {{b}}", "\"{{a}} {{b}}\""],
+        ["{{a}} + \" \" + {{b}}", "{{b}} + \" \" + {{a}}"]
+      ]
+    },
+    {
+      "id": "sm-which-slice",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}[{{a}}:{{b}}])",
+      "values": [
+        {
+          "v": "cuvant",
+          "s": "Andromeda",
+          "a": 0,
+          "b": 3,
+          "bp": 4,
+          "bm": 2,
+          "ap": 1
+        },
+        {
+          "v": "cuvant",
+          "s": "Cosmodrom",
+          "a": 0,
+          "b": 5,
+          "bp": 6,
+          "bm": 4,
+          "ap": 1
+        },
+        {
+          "v": "nume",
+          "s": "Rosenberg",
+          "a": 0,
+          "b": 4,
+          "bp": 5,
+          "bm": 3,
+          "ap": 1
+        },
+        {
+          "v": "nava",
+          "s": "Fulgerator",
+          "a": 2,
+          "b": 6,
+          "bp": 7,
+          "bm": 5,
+          "ap": 3
+        }
+      ],
+      "mistakes": [
+        ["{{a}}:{{b}}", "{{a}}:{{bp}}"],
+        ["{{a}}:{{b}}", "{{a}}:{{bm}}"],
+        ["{{a}}:{{b}}", "{{ap}}:{{bp}}"]
+      ]
+    },
+    {
+      "id": "sm-which-upper",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = \"{{s}}\"\n{{v}} = {{v}}.upper()\nprint({{v}})",
+      "values": [
+        {
+          "v": "nume",
+          "s": "sonny"
+        },
+        {
+          "v": "apel",
+          "s": "ajutor"
+        },
+        {
+          "v": "planeta",
+          "s": "neptun"
+        },
+        {
+          "v": "echipa",
+          "s": "rosu cinci"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{v}}.upper()", "{{v}}.upper()"],
+        ["{{v}} = {{v}}.upper()", "{{v}} = {{v}}.lower()"],
+        ["print({{v}})", "print(\"{{v}}\")"]
+      ]
+    },
+    {
+      "id": "sm-gap-index",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}[___])",
+      "values": [
+        {
+          "v": "cuvant",
+          "s": "Pluton",
+          "i": 3,
+          "im": 2,
+          "ip": 4,
+          "n": 6
+        },
+        {
+          "v": "cuvant",
+          "s": "Jupiter",
+          "i": 2,
+          "im": 1,
+          "ip": 3,
+          "n": 7
+        },
+        {
+          "v": "cod",
+          "s": "QZ7RX",
+          "i": 1,
+          "im": 0,
+          "ip": 2,
+          "n": 5
+        },
+        {
+          "v": "nume",
+          "s": "Rosenberg",
+          "i": 4,
+          "im": 3,
+          "ip": 5,
+          "n": 9
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["{{ip}}", "{{im}}", "{{n}}"]
+    },
+    {
+      "id": "sm-gap-end",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}[0:___])",
+      "values": [
+        {
+          "v": "cuvant",
+          "s": "Navetista",
+          "b": 5,
+          "bm": 4,
+          "bp": 6
+        },
+        {
+          "v": "cuvant",
+          "s": "Lunarul",
+          "b": 4,
+          "bm": 3,
+          "bp": 5
+        },
+        {
+          "v": "nume",
+          "s": "Mercedes",
+          "b": 3,
+          "bm": 2,
+          "bp": 4
+        },
+        {
+          "v": "nava",
+          "s": "Stelara",
+          "b": 4,
+          "bm": 3,
+          "bp": 5
+        }
+      ],
+      "answer": "{{b}}",
+      "wrong": ["{{bm}}", "{{bp}}", "1"]
+    },
+    {
+      "id": "sm-gap-method",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}}.___())",
+      "values": [
+        {
+          "v": "apel",
+          "s": "Ajutor",
+          "m": "upper",
+          "o": "lower",
+          "w": "UPPER"
+        },
+        {
+          "v": "eticheta",
+          "s": "Lista Oaspeti",
+          "m": "lower",
+          "o": "upper",
+          "w": "LOWER"
+        },
+        {
+          "v": "semnal",
+          "s": "totul e bine",
+          "m": "upper",
+          "o": "lower",
+          "w": "UPPER"
+        },
+        {
+          "v": "alerta",
+          "s": "Combustibil PUTIN",
+          "m": "lower",
+          "o": "upper",
+          "w": "LOWER"
+        }
+      ],
+      "answer": "{{m}}",
+      "wrong": ["{{o}}", "len", "{{w}}"]
+    },
+    {
+      "id": "sm-gap-keep",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\n___\nprint({{v}})",
+      "values": [
+        {
+          "v": "nume",
+          "s": "tommy",
+          "m": "upper"
+        },
+        {
+          "v": "apel",
+          "s": "AJUTOR",
+          "m": "lower"
+        },
+        {
+          "v": "pilot",
+          "s": "kent paul",
+          "m": "upper"
+        },
+        {
+          "v": "eticheta",
+          "s": "VIP",
+          "m": "lower"
+        },
+        {
+          "v": "planeta",
+          "s": "venus",
+          "m": "upper"
+        }
+      ],
+      "answer": "{{v}} = {{v}}.{{m}}()",
+      "wrong": ["{{v}}.{{m}}()", "{{v}} == {{v}}.{{m}}()", "{{v}} = {{m}}({{v}})"]
+    },
+    {
+      "id": "sm-gap-concat",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{a}} = \"{{x}}\"\n{{b}} = \"{{y}}\"\n___\nprint({{c}})",
+      "values": [
+        {
+          "a": "prenume",
+          "b": "nume_familie",
+          "c": "nume_complet",
+          "x": "Tommy",
+          "y": "Vercetti"
+        },
+        {
+          "a": "prenume",
+          "b": "nume_familie",
+          "c": "nume_complet",
+          "x": "Sonny",
+          "y": "Forelli"
+        },
+        {
+          "a": "prenume",
+          "b": "nume_familie",
+          "c": "nume_complet",
+          "x": "Ada",
+          "y": "Lovelace"
+        },
+        {
+          "a": "nava",
+          "b": "model",
+          "c": "eticheta",
+          "x": "Soimul",
+          "y": "Noua"
+        },
+        {
+          "a": "oras",
+          "b": "zona",
+          "c": "loc",
+          "x": "Vice",
+          "y": "Port"
+        }
+      ],
+      "answer": "{{c}} = {{a}} + \" \" + {{b}}",
+      "wrong": ["{{c}} = {{a}} + {{b}}", "{{c}} = \"{{a}} {{b}}\"", "{{c}} = {{b}} + \" \" + {{a}}"]
+    },
+    {
+      "id": "sm-bad-method",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\n{{w}} = {{v}}.{{m}}()\nprint({{v}})\nprint({{w}})",
+      "values": [
+        {
+          "v": "nume",
+          "w": "tare",
+          "s": "Sonny",
+          "m": "upper",
+          "o": "lower"
+        },
+        {
+          "v": "apel",
+          "w": "incet",
+          "s": "AjuTor",
+          "m": "lower",
+          "o": "upper"
+        },
+        {
+          "v": "planeta",
+          "w": "mare",
+          "s": "Neptun",
+          "m": "upper",
+          "o": "lower"
+        },
+        {
+          "v": "eticheta",
+          "w": "mic",
+          "s": "Oaspete VIP",
+          "m": "lower",
+          "o": "upper"
+        }
+      ],
+      "bug": [".{{m}}()", ".{{o}}()"]
+    },
+    {
+      "id": "sm-bad-index",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}})\nprint({{v}}[{{i}}])\nprint({{v}}[0:{{b}}])",
+      "values": [
+        {
+          "v": "cuvant",
+          "s": "Nebuloasa",
+          "i": 2,
+          "ip": 3,
+          "b": 3
+        },
+        {
+          "v": "cuvant",
+          "s": "Galaxie",
+          "i": 4,
+          "ip": 5,
+          "b": 2
+        },
+        {
+          "v": "nume",
+          "s": "Mercedes",
+          "i": 1,
+          "ip": 2,
+          "b": 4
+        },
+        {
+          "v": "cod",
+          "s": "QZ7RX",
+          "i": 3,
+          "ip": 4,
+          "b": 2
+        }
+      ],
+      "bug": ["[{{i}}]", "[{{ip}}]"]
+    },
+    {
+      "id": "sm-bad-slice",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}})\nprint({{v}}[0])\nprint({{v}}[{{a}}:{{b}}])",
+      "values": [
+        {
+          "v": "cuvant",
+          "s": "Stelara",
+          "a": 4,
+          "b": 7,
+          "bm": 6
+        },
+        {
+          "v": "cuvant",
+          "s": "Lunaparc",
+          "a": 0,
+          "b": 4,
+          "bm": 3
+        },
+        {
+          "v": "nava",
+          "s": "Calator",
+          "a": 2,
+          "b": 5,
+          "bm": 4
+        },
+        {
+          "v": "nume",
+          "s": "Rosenberg",
+          "a": 4,
+          "b": 9,
+          "bm": 8
+        }
+      ],
+      "bug": ["{{a}}:{{b}}", "{{a}}:{{bm}}"]
+    }
+  ]
+}

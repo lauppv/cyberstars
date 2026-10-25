@@ -1,0 +1,692 @@
+{
+  "note": "Made by npm run make:quiz from the templates in lists-for-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "lf-each-100f84",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Jupiter\"]\nfor planeta in planete:\n    print(f\"Urmatoarea oprire, {planeta}!\")",
+      "options": [
+        "Urmatoarea oprire, Marte!\nUrmatoarea oprire, Venus!\nUrmatoarea oprire, Jupiter!",
+        "Urmatoarea oprire, ['Marte', 'Venus', 'Jupiter']!\nUrmatoarea oprire, ['Marte', 'Venus', 'Jupiter']!\nUrmatoarea oprire, ['Marte', 'Venus', 'Jupiter']!",
+        "Urmatoarea oprire, {planeta}!\nUrmatoarea oprire, {planeta}!\nUrmatoarea oprire, {planeta}!",
+        "Urmatoarea oprire, 0!\nUrmatoarea oprire, 1!\nUrmatoarea oprire, 2!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-each-247d05",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Lance\", \"Cortez\"]\nfor membru in echipaj:\n    print(f\"Bun venit, {membru}!\")",
+      "options": [
+        "Bun venit, Lance!\nBun venit, Cortez!",
+        "Bun venit, ['Lance', 'Cortez']!\nBun venit, ['Lance', 'Cortez']!",
+        "Bun venit, {membru}!\nBun venit, {membru}!",
+        "Bun venit, 0!\nBun venit, 1!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-each-b951e2",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Phil\", \"Sonny\", \"Ken\"]\nfor n in nume:\n    print(f\"Salut, {n}!\")",
+      "options": [
+        "Salut, Tommy!\nSalut, Phil!\nSalut, Sonny!\nSalut, Ken!",
+        "Salut, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nSalut, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nSalut, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nSalut, ['Tommy', 'Phil', 'Sonny', 'Ken']!",
+        "Salut, {n}!\nSalut, {n}!\nSalut, {n}!\nSalut, {n}!",
+        "Salut, 0!\nSalut, 1!\nSalut, 2!\nSalut, 3!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-each-8bd748",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\"Ana\", \"Rex\"]\nfor i in jucatori:\n    print(f\"Succes, {i}!\")",
+      "options": [
+        "Succes, Ana!\nSucces, Rex!",
+        "Succes, ['Ana', 'Rex']!\nSucces, ['Ana', 'Rex']!",
+        "Succes, {i}!\nSucces, {i}!",
+        "Succes, 0!\nSucces, 1!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-index-edff32",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\"]\nfor i in range(len(planete)):\n    print(f\"Planeta {i + 1}: {planete[i]}\")",
+      "options": [
+        "Planeta 1: Marte\nPlaneta 2: Venus\nPlaneta 3: Pamant",
+        "Planeta 0: Marte\nPlaneta 1: Venus\nPlaneta 2: Pamant",
+        "Planeta 2: Venus\nPlaneta 3: Pamant",
+        "Planeta 1: 0\nPlaneta 2: 1\nPlaneta 3: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-index-b9c481",
+      "text": "Ce afișează?",
+      "code": "sarcini = [\"Alimentare\", \"Verificare motoare\", \"Lansare\"]\nfor i in range(len(sarcini)):\n    print(f\"Pasul {i + 1}: {sarcini[i]}\")",
+      "options": [
+        "Pasul 1: Alimentare\nPasul 2: Verificare motoare\nPasul 3: Lansare",
+        "Pasul 0: Alimentare\nPasul 1: Verificare motoare\nPasul 2: Lansare",
+        "Pasul 2: Verificare motoare\nPasul 3: Lansare",
+        "Pasul 1: 0\nPasul 2: 1\nPasul 3: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-index-6a1ced",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\"Ana\", \"Rex\", \"Kai\", \"Zoe\"]\nfor i in range(len(jucatori)):\n    print(f\"Jucatorul {i + 1}: {jucatori[i]}\")",
+      "options": [
+        "Jucatorul 1: Ana\nJucatorul 2: Rex\nJucatorul 3: Kai\nJucatorul 4: Zoe",
+        "Jucatorul 0: Ana\nJucatorul 1: Rex\nJucatorul 2: Kai\nJucatorul 3: Zoe",
+        "Jucatorul 2: Rex\nJucatorul 3: Kai\nJucatorul 4: Zoe",
+        "Jucatorul 1: 0\nJucatorul 2: 1\nJucatorul 3: 2\nJucatorul 4: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-9d0c99",
+      "text": "Ce afișează?",
+      "code": "preturi = [5, 15, 25]\ntotal = 0\nfor pret in preturi:\n    total = total + pret\nprint(total)",
+      "options": ["45", "25", "3", "5\n20\n45"],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-dc56f6",
+      "text": "Ce afișează?",
+      "code": "scoruri = [7, 3, 9, 1]\npuncte = 0\nfor s in scoruri:\n    puncte = puncte + s\nprint(puncte)",
+      "options": ["20", "1", "4", "7\n10\n19\n20"],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-bab618",
+      "text": "Ce afișează?",
+      "code": "rezervoare = [40, 60]\ncombustibil = 0\nfor rezervor in rezervoare:\n    combustibil = combustibil + rezervor\nprint(combustibil)",
+      "options": ["100", "60", "2", "40\n100"],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-24598e",
+      "text": "Ce afișează?",
+      "code": "varste = [12, 30, 8]\ntotal = 0\nfor varsta in varste:\n    total = total + varsta\nprint(total)",
+      "options": ["50", "8", "3", "12\n42\n50"],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-b37b23",
+      "text": "Ce afișează?",
+      "code": "pasi = [100, 250, 150, 500]\nparcurs = 0\nfor p in pasi:\n    parcurs = parcurs + p\nprint(parcurs)",
+      "options": ["1000", "500", "4", "100\n350\n500\n1000"],
+      "answer": 0
+    },
+    {
+      "id": "lf-sum-94c2d8",
+      "text": "Ce afișează?",
+      "code": "monede = [2, 2, 2, 2, 2]\ntotal = 0\nfor m in monede:\n    total = total + m\nprint(total)",
+      "options": ["10", "2", "5", "2\n4\n6\n8\n10"],
+      "answer": 0
+    },
+    {
+      "id": "lf-count-a31631",
+      "text": "Ce afișează?",
+      "code": "varste = [12, 18, 30, 15]\ncontor = 0\nfor n in varste:\n    if n >= 18:\n        contor = contor + 1\nprint(contor)",
+      "options": ["2", "48", "1", "0\n1\n2\n2"],
+      "answer": 0
+    },
+    {
+      "id": "lf-count-c1d264",
+      "text": "Ce afișează?",
+      "code": "temperaturi = [21, 35, 30, 28]\nzile_calde = 0\nfor n in temperaturi:\n    if n > 30:\n        zile_calde = zile_calde + 1\nprint(zile_calde)",
+      "options": ["1", "35", "2", "0\n1\n1\n1"],
+      "answer": 0
+    },
+    {
+      "id": "lf-count-fa3277",
+      "text": "Ce afișează?",
+      "code": "note = [4, 10, 5, 9, 5]\nmici = 0\nfor n in note:\n    if n < 5:\n        mici = mici + 1\nprint(mici)",
+      "options": ["1", "4", "3", "1\n1\n1\n1\n1"],
+      "answer": 0
+    },
+    {
+      "id": "lf-count-515285",
+      "text": "Ce afișează?",
+      "code": "viteze = [90, 120, 130, 100]\nsigure = 0\nfor n in viteze:\n    if n <= 100:\n        sigure = sigure + 1\nprint(sigure)",
+      "options": ["2", "190", "1", "1\n1\n1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "lf-max-2cf89a",
+      "text": "Ce afișează?",
+      "code": "scoruri = [7, 15, 9]\nmaxim = scoruri[0]\nfor n in scoruri:\n    if n > maxim:\n        maxim = n\nprint(maxim)",
+      "options": ["15", "7", "9", "7\n15\n15"],
+      "answer": 0
+    },
+    {
+      "id": "lf-max-7f4c22",
+      "text": "Ce afișează?",
+      "code": "inaltimi = [120, 95, 150, 130]\ncel_mai_inalt = inaltimi[0]\nfor n in inaltimi:\n    if n > cel_mai_inalt:\n        cel_mai_inalt = n\nprint(cel_mai_inalt)",
+      "options": ["150", "95", "130", "120\n120\n150\n150"],
+      "answer": 0
+    },
+    {
+      "id": "lf-max-2806e3",
+      "text": "Ce afișează?",
+      "code": "niveluri = [3, 8, 2, 5]\nmaxim = niveluri[0]\nfor n in niveluri:\n    if n > maxim:\n        maxim = n\nprint(maxim)",
+      "options": ["8", "2", "5", "3\n8\n8\n8"],
+      "answer": 0
+    },
+    {
+      "id": "lf-max-3147fd",
+      "text": "Ce afișează?",
+      "code": "combustibil = [40, 70, 20, 55]\ncel_mai_mult = combustibil[0]\nfor n in combustibil:\n    if n > cel_mai_mult:\n        cel_mai_mult = n\nprint(cel_mai_mult)",
+      "options": ["70", "20", "55", "40\n70\n70\n70"],
+      "answer": 0
+    },
+    {
+      "id": "lf-build-02efbc",
+      "text": "Ce afișează?",
+      "code": "numere = [6, 14, 3, 25]\nmari = []\nfor n in numere:\n    if n > 10:\n        mari.append(n)\nprint(mari)",
+      "options": ["[14, 25]", "[6, 3]", "[25]", "[]\n[14]\n[14]\n[14, 25]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-build-c974cc",
+      "text": "Ce afișează?",
+      "code": "temperaturi = [30, 18, 25, 10]\nreci = []\nfor n in temperaturi:\n    if n < 20:\n        reci.append(n)\nprint(reci)",
+      "options": ["[18, 10]", "[30, 25]", "[10]", "[]\n[18]\n[18]\n[18, 10]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-build-b69d0a",
+      "text": "Ce afișează?",
+      "code": "scoruri = [50, 75, 90, 40]\ntrecute = []\nfor n in scoruri:\n    if n >= 50:\n        trecute.append(n)\nprint(trecute)",
+      "options": ["[50, 75, 90]", "[40]", "[90]", "[50]\n[50, 75]\n[50, 75, 90]\n[50, 75, 90]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-build-d8e95c",
+      "text": "Ce afișează?",
+      "code": "preturi = [3, 15, 7, 22]\nieftine = []\nfor n in preturi:\n    if n <= 7:\n        ieftine.append(n)\nprint(ieftine)",
+      "options": ["[3, 7]", "[15, 22]", "[7]", "[3]\n[3]\n[3, 7]\n[3, 7]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-upper-c0c660",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"Marte\", \"Luna\"]\ntare = []\nfor cuvant in cuvinte:\n    tare.append(cuvant.upper())\nprint(tare)",
+      "options": [
+        "['MARTE', 'LUNA']",
+        "['Marte', 'Luna']",
+        "['marte', 'luna']",
+        "['MARTE']\n['MARTE', 'LUNA']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-upper-69f0eb",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Ken\"]\nstrigate = []\nfor n in nume:\n    strigate.append(n.upper())\nprint(strigate)",
+      "options": [
+        "['TOMMY', 'LANCE', 'KEN']",
+        "['Tommy', 'Lance', 'Ken']",
+        "['tommy', 'lance', 'ken']",
+        "['TOMMY']\n['TOMMY', 'LANCE']\n['TOMMY', 'LANCE', 'KEN']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-upper-d7de3d",
+      "text": "Ce afișează?",
+      "code": "orase = [\"Roma\", \"Oslo\"]\npanouri = []\nfor o in orase:\n    panouri.append(o.upper())\nprint(panouri)",
+      "options": [
+        "['ROMA', 'OSLO']",
+        "['Roma', 'Oslo']",
+        "['roma', 'oslo']",
+        "['ROMA']\n['ROMA', 'OSLO']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-double-05b0e5",
+      "text": "Ce afișează?",
+      "code": "preturi = [10, 20, 30]\nfor i in range(len(preturi)):\n    preturi[i] = preturi[i] * 2\nprint(preturi)",
+      "options": [
+        "[20, 40, 60]",
+        "[12, 22, 32]",
+        "[10, 40, 60]",
+        "[20, 20, 30]\n[20, 40, 30]\n[20, 40, 60]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-double-a48016",
+      "text": "Ce afișează?",
+      "code": "puncte = [1, 5, 3, 4]\nfor i in range(len(puncte)):\n    puncte[i] = puncte[i] * 3\nprint(puncte)",
+      "options": [
+        "[3, 15, 9, 12]",
+        "[4, 8, 6, 7]",
+        "[1, 15, 9, 12]",
+        "[3, 5, 3, 4]\n[3, 15, 3, 4]\n[3, 15, 9, 4]\n[3, 15, 9, 12]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-double-a3e7ca",
+      "text": "Ce afișează?",
+      "code": "viteze = [4, 8]\nfor i in range(len(viteze)):\n    viteze[i] = viteze[i] * 10\nprint(viteze)",
+      "options": ["[40, 80]", "[14, 18]", "[4, 80]", "[40, 8]\n[40, 80]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-sum-da8df9",
+      "text": "Care program afișează asta?",
+      "output": "20",
+      "options": [
+        "preturi = [4, 6, 10]\ntotal = 0\nfor p in preturi:\n    total = total + p\nprint(total)",
+        "preturi = [4, 6, 10]\ntotal = 0\nfor p in preturi:\n    total = p\nprint(total)",
+        "preturi = [4, 6, 10]\ntotal = 0\nfor p in preturi:\n    total = total + 1\nprint(total)",
+        "preturi = [4, 6, 10]\ntotal = 0\nfor p in preturi:\n    total = total + p\n    print(total)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-sum-b5e3c4",
+      "text": "Care program afișează asta?",
+      "output": "25",
+      "options": [
+        "scoruri = [15, 9, 1]\npuncte = 0\nfor s in scoruri:\n    puncte = puncte + s\nprint(puncte)",
+        "scoruri = [15, 9, 1]\npuncte = 0\nfor s in scoruri:\n    puncte = s\nprint(puncte)",
+        "scoruri = [15, 9, 1]\npuncte = 0\nfor s in scoruri:\n    puncte = puncte + 1\nprint(puncte)",
+        "scoruri = [15, 9, 1]\npuncte = 0\nfor s in scoruri:\n    puncte = puncte + s\n    print(puncte)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-sum-588e4a",
+      "text": "Care program afișează asta?",
+      "output": "24",
+      "options": [
+        "varste = [7, 8, 9]\ntotal = 0\nfor v in varste:\n    total = total + v\nprint(total)",
+        "varste = [7, 8, 9]\ntotal = 0\nfor v in varste:\n    total = v\nprint(total)",
+        "varste = [7, 8, 9]\ntotal = 0\nfor v in varste:\n    total = total + 1\nprint(total)",
+        "varste = [7, 8, 9]\ntotal = 0\nfor v in varste:\n    total = total + v\n    print(total)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-sum-e41dec",
+      "text": "Care program afișează asta?",
+      "output": "175",
+      "options": [
+        "rezervoare = [100, 50, 25]\ncombustibil = 0\nfor rezervor in rezervoare:\n    combustibil = combustibil + rezervor\nprint(combustibil)",
+        "rezervoare = [100, 50, 25]\ncombustibil = 0\nfor rezervor in rezervoare:\n    combustibil = rezervor\nprint(combustibil)",
+        "rezervoare = [100, 50, 25]\ncombustibil = 0\nfor rezervor in rezervoare:\n    combustibil = combustibil + 1\nprint(combustibil)",
+        "rezervoare = [100, 50, 25]\ncombustibil = 0\nfor rezervor in rezervoare:\n    combustibil = combustibil + rezervor\n    print(combustibil)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-each-355d25",
+      "text": "Care program afișează asta?",
+      "output": "rosu\nverde\nalbastru",
+      "options": [
+        "culori = [\"rosu\", \"verde\", \"albastru\"]\nfor c in culori:\n    print(c)",
+        "culori = [\"rosu\", \"verde\", \"albastru\"]\nfor c in culori:\n    print(culori)",
+        "culori = [\"rosu\", \"verde\", \"albastru\"]\nfor c in range(len(culori)):\n    print(c)",
+        "culori = [\"rosu\", \"verde\", \"albastru\"]\nfor c in culori:\n    print(culori[0])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-each-98558c",
+      "text": "Care program afișează asta?",
+      "output": "Tommy\nLance",
+      "options": [
+        "nume = [\"Tommy\", \"Lance\"]\nfor n in nume:\n    print(n)",
+        "nume = [\"Tommy\", \"Lance\"]\nfor n in nume:\n    print(nume)",
+        "nume = [\"Tommy\", \"Lance\"]\nfor n in range(len(nume)):\n    print(n)",
+        "nume = [\"Tommy\", \"Lance\"]\nfor n in nume:\n    print(nume[0])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-which-each-327eac",
+      "text": "Care program afișează asta?",
+      "output": "7\n3\n9",
+      "options": [
+        "numere = [7, 3, 9]\nfor n in numere:\n    print(n)",
+        "numere = [7, 3, 9]\nfor n in numere:\n    print(numere)",
+        "numere = [7, 3, 9]\nfor n in range(len(numere)):\n    print(n)",
+        "numere = [7, 3, 9]\nfor n in numere:\n    print(numere[0])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-add-c7a046",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = [3, 9, 12]\ntotal = 0\nfor p in preturi:\n    ___\nprint(total)",
+      "output": "24",
+      "options": ["total = total + p", "total = p", "total = total + 1", "total + p"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-add-8c0faf",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [20, 5]\npuncte = 0\nfor s in scoruri:\n    ___\nprint(puncte)",
+      "output": "25",
+      "options": ["puncte = puncte + s", "puncte = s", "puncte = puncte + 1", "puncte + s"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-add-7216f3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "greutati = [6, 6, 1]\nincarcatura = 0\nfor g in greutati:\n    ___\nprint(incarcatura)",
+      "output": "13",
+      "options": [
+        "incarcatura = incarcatura + g",
+        "incarcatura = g",
+        "incarcatura = incarcatura + 1",
+        "incarcatura + g"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-add-6d83ea",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "pasi = [11, 22, 33]\nparcurs = 0\nfor p in pasi:\n    ___\nprint(parcurs)",
+      "output": "66",
+      "options": ["parcurs = parcurs + p", "parcurs = p", "parcurs = parcurs + 1", "parcurs + p"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-add-3993a5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "monede = [8, 2, 5, 1]\nbani = 0\nfor m in monede:\n    ___\nprint(bani)",
+      "output": "16",
+      "options": ["bani = bani + m", "bani = m", "bani = bani + 1", "bani + m"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-loop-0e6459",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = [\"Maria\", \"Andrei\", \"Elena\"]\n___\n    print(f\"{i + 1}. {echipaj[i]}\")",
+      "output": "1. Maria\n2. Andrei\n3. Elena",
+      "options": [
+        "for i in range(len(echipaj)):",
+        "for i in echipaj:",
+        "for i in range(1, len(echipaj)):",
+        "for i in range(len(echipaj) - 1):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-loop-e5601d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\", \"Saturn\"]\n___\n    print(f\"{i + 1}. {planete[i]}\")",
+      "output": "1. Marte\n2. Venus\n3. Pamant\n4. Saturn",
+      "options": [
+        "for i in range(len(planete)):",
+        "for i in planete:",
+        "for i in range(1, len(planete)):",
+        "for i in range(len(planete) - 1):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-loop-9e103a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "sarcini = [\"Alimentare\", \"Lansare\"]\n___\n    print(f\"{i + 1}. {sarcini[i]}\")",
+      "output": "1. Alimentare\n2. Lansare",
+      "options": [
+        "for i in range(len(sarcini)):",
+        "for i in sarcini:",
+        "for i in range(1, len(sarcini)):",
+        "for i in range(len(sarcini) - 1):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-append-968a21",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [3, 14, 9, 30]\nmari = []\nfor n in numere:\n    if n > 10:\n        ___\nprint(mari)",
+      "output": "[14, 30]",
+      "options": ["mari.append(n)", "mari = [n]", "mari.append(10)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-append-14a7f5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "niveluri = [16, 4, 2, 7]\nmici = []\nfor n in niveluri:\n    if n < 5:\n        ___\nprint(mici)",
+      "output": "[4, 2]",
+      "options": ["mici.append(n)", "mici = [n]", "mici.append(5)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-append-4cb556",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [60, 45, 80]\ntrecute = []\nfor n in scoruri:\n    if n >= 50:\n        ___\nprint(trecute)",
+      "output": "[60, 80]",
+      "options": ["trecute.append(n)", "trecute = [n]", "trecute.append(50)", "print(n)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-plus-a2547b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = [\"Maria\", \"Andrei\"]\nfor i in range(len(echipaj)):\n    print(f\"{i + ___}. {echipaj[i]}\")",
+      "output": "1. Maria\n2. Andrei",
+      "options": ["1", "0", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-plus-2440df",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\"]\nfor i in range(len(planete)):\n    print(f\"{i + ___}. {planete[i]}\")",
+      "output": "1. Marte\n2. Venus\n3. Pamant",
+      "options": ["1", "0", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-plus-933c44",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "jucatori = [\"Ana\", \"Rex\", \"Kai\"]\nfor i in range(len(jucatori)):\n    print(f\"{i + ___}. {jucatori[i]}\")",
+      "output": "1. Ana\n2. Rex\n3. Kai",
+      "options": ["1", "0", "2", "i"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-idx-b2d98a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "culori = [\"rosu\", \"verde\", \"albastru\"]\nfor i in range(len(culori)):\n    print(culori[___])",
+      "output": "rosu\nverde\nalbastru",
+      "options": ["i", "i + 1", "0", "len(culori)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-idx-619e77",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [5, 10, 15, 20]\nfor i in range(len(numere)):\n    print(numere[___])",
+      "output": "5\n10\n15\n20",
+      "options": ["i", "i + 1", "0", "len(numere)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-idx-b06c60",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = [\"Tommy\", \"Ken\"]\nfor i in range(len(nume)):\n    print(nume[___])",
+      "output": "Tommy\nKen",
+      "options": ["i", "i + 1", "0", "len(nume)"],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-op-eb5723",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = [12, 18, 30, 15]\nmajori = 0\nfor n in varste:\n    if n ___ 18:\n        majori = majori + 1\nprint(majori)",
+      "output": "2",
+      "options": [">=", ">", "<=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-op-58d1ed",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "temperaturi = [21, 35, 30, 28]\nzile_calde = 0\nfor n in temperaturi:\n    if n ___ 30:\n        zile_calde = zile_calde + 1\nprint(zile_calde)",
+      "output": "1",
+      "options": [">", ">=", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "lf-gap-op-6062f2",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "viteze = [90, 120, 130, 100]\nsigure = 0\nfor n in viteze:\n    if n ___ 100:\n        sigure = sigure + 1\nprint(sigure)",
+      "output": "2",
+      "options": ["<=", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-index-e3fa74",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = [\"Maria\", \"Andrei\", \"Elena\"]\nprint(\"Echipaj:\")\nfor i in range(len(echipaj)):\n    print(f\"{i + 1}. {echipaj[i + 1]}\")\nprint(\"Sfarsitul listei\")",
+      "output": "Echipaj:\n1. Maria\n2. Andrei\n3. Elena\nSfarsitul listei",
+      "options": [
+        "print(f\"{i + 1}. {echipaj[i + 1]}\")",
+        "print(\"Sfarsitul listei\")",
+        "print(\"Echipaj:\")",
+        "echipaj = [\"Maria\", \"Andrei\", \"Elena\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-index-fb8601",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\", \"Saturn\"]\nprint(\"Traseu:\")\nfor i in range(len(planete)):\n    print(f\"{i + 1}. {planete[i + 1]}\")\nprint(\"Traseu gata\")",
+      "output": "Traseu:\n1. Marte\n2. Venus\n3. Pamant\n4. Saturn\nTraseu gata",
+      "options": [
+        "print(f\"{i + 1}. {planete[i + 1]}\")",
+        "print(\"Traseu gata\")",
+        "print(\"Traseu:\")",
+        "planete = [\"Marte\", \"Venus\", \"Pamant\", \"Saturn\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-index-cc0681",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "sarcini = [\"Alimentare\", \"Verificare motoare\", \"Lansare\"]\nprint(\"Lista de verificare:\")\nfor i in range(len(sarcini)):\n    print(f\"{i + 1}. {sarcini[i + 1]}\")\nprint(\"Totul e gata\")",
+      "output": "Lista de verificare:\n1. Alimentare\n2. Verificare motoare\n3. Lansare\nTotul e gata",
+      "options": [
+        "print(f\"{i + 1}. {sarcini[i + 1]}\")",
+        "print(\"Totul e gata\")",
+        "print(\"Lista de verificare:\")",
+        "sarcini = [\"Alimentare\", \"Verificare motoare\", \"Lansare\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-range-0bea83",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = [\"Lance\", \"Cortez\", \"Phil\"]\nprint(\"Echipaj:\")\nfor i in range(1, len(echipaj)):\n    print(f\"{i + 1}. {echipaj[i]}\")\nprint(\"Gata\")",
+      "output": "Echipaj:\n1. Lance\n2. Cortez\n3. Phil\nGata",
+      "options": [
+        "for i in range(1, len(echipaj)):",
+        "print(\"Echipaj:\")",
+        "print(f\"{i + 1}. {echipaj[i]}\")",
+        "echipaj = [\"Lance\", \"Cortez\", \"Phil\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-range-c78806",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "planete = [\"Mercur\", \"Venus\"]\nprint(\"Traseu:\")\nfor i in range(1, len(planete)):\n    print(f\"{i + 1}. {planete[i]}\")\nprint(\"Terminat\")",
+      "output": "Traseu:\n1. Mercur\n2. Venus\nTerminat",
+      "options": [
+        "for i in range(1, len(planete)):",
+        "print(\"Traseu:\")",
+        "print(f\"{i + 1}. {planete[i]}\")",
+        "planete = [\"Mercur\", \"Venus\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-range-6d5b78",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jucatori = [\"Ana\", \"Rex\", \"Kai\", \"Zoe\"]\nprint(\"Jucatori:\")\nfor i in range(1, len(jucatori)):\n    print(f\"{i + 1}. {jucatori[i]}\")\nprint(\"Hai sa jucam\")",
+      "output": "Jucatori:\n1. Ana\n2. Rex\n3. Kai\n4. Zoe\nHai sa jucam",
+      "options": [
+        "for i in range(1, len(jucatori)):",
+        "print(\"Jucatori:\")",
+        "print(f\"{i + 1}. {jucatori[i]}\")",
+        "jucatori = [\"Ana\", \"Rex\", \"Kai\", \"Zoe\"]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-sum-e6ba5a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "preturi = [8, 12, 30]\ntotal = 0\nfor p in preturi:\n    total = p\nprint(f\"Totalul pentru {preturi}: {total}\")",
+      "output": "Totalul pentru [8, 12, 30]: 50",
+      "options": [
+        "total = p",
+        "print(f\"Totalul pentru {preturi}: {total}\")",
+        "total = 0",
+        "preturi = [8, 12, 30]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-sum-be8c1d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = [4, 4, 1, 6]\npuncte = 0\nfor s in scoruri:\n    puncte = s\nprint(f\"Punctele din {scoruri}: {puncte}\")",
+      "output": "Punctele din [4, 4, 1, 6]: 15",
+      "options": [
+        "puncte = s",
+        "print(f\"Punctele din {scoruri}: {puncte}\")",
+        "puncte = 0",
+        "scoruri = [4, 4, 1, 6]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-sum-7fedd9",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "monede = [25, 75]\nbani = 0\nfor m in monede:\n    bani = m\nprint(f\"Banii din {monede}: {bani}\")",
+      "output": "Banii din [25, 75]: 100",
+      "options": [
+        "bani = m",
+        "print(f\"Banii din {monede}: {bani}\")",
+        "bani = 0",
+        "monede = [25, 75]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-max-71510e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scoruri = [12, 31, 18]\nmaxim = scoruri[0]\nfor n in scoruri:\n    if n < maxim:\n        maxim = n\nprint(f\"Cel mai mare din {scoruri}: {maxim}\")",
+      "output": "Cel mai mare din [12, 31, 18]: 31",
+      "options": ["if n < maxim:", "for n in scoruri:", "maxim = n", "maxim = scoruri[0]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-max-4157e3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "inaltimi = [60, 85, 70, 40]\ncel_mai_inalt = inaltimi[0]\nfor n in inaltimi:\n    if n < cel_mai_inalt:\n        cel_mai_inalt = n\nprint(f\"Cel mai inalt din {inaltimi}: {cel_mai_inalt}\")",
+      "output": "Cel mai inalt din [60, 85, 70, 40]: 85",
+      "options": [
+        "if n < cel_mai_inalt:",
+        "for n in inaltimi:",
+        "cel_mai_inalt = n",
+        "cel_mai_inalt = inaltimi[0]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-bad-max-d3f8fb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "niveluri = [2, 9, 4]\nmaxim = niveluri[0]\nfor n in niveluri:\n    if n < maxim:\n        maxim = n\nprint(f\"Nivelul maxim din {niveluri}: {maxim}\")",
+      "output": "Nivelul maxim din [2, 9, 4]: 9",
+      "options": ["if n < maxim:", "for n in niveluri:", "maxim = n", "maxim = niveluri[0]"],
+      "answer": 0
+    }
+  ]
+}

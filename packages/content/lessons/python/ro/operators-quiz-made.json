@@ -1,0 +1,604 @@
+{
+  "note": "Made by npm run make:quiz from the templates in operators-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "op-div-2ef28b",
+      "text": "Ce afișează?",
+      "code": "a = 7\nb = 2\nprint(a / b)",
+      "options": ["3.5", "3", "1", "14"],
+      "answer": 0
+    },
+    {
+      "id": "op-div-92e131",
+      "text": "Ce afișează?",
+      "code": "a = 9\nb = 4\nprint(a / b)",
+      "options": ["2.25", "2", "1", "36"],
+      "answer": 0
+    },
+    {
+      "id": "op-div-c6a559",
+      "text": "Ce afișează?",
+      "code": "a = 12\nb = 4\nprint(a / b)",
+      "options": ["3.0", "3", "0", "48"],
+      "answer": 0
+    },
+    {
+      "id": "op-div-ccac34",
+      "text": "Ce afișează?",
+      "code": "a = 10\nb = 4\nprint(a / b)",
+      "options": ["2.5", "2", "40", "6"],
+      "answer": 0
+    },
+    {
+      "id": "op-intdiv-0e1102",
+      "text": "Ce afișează?",
+      "code": "a = 13\nb = 4\nprint(a // b)",
+      "options": ["3", "3.25", "1", "52"],
+      "answer": 0
+    },
+    {
+      "id": "op-intdiv-1f843d",
+      "text": "Ce afișează?",
+      "code": "a = 9\nb = 2\nprint(a // b)",
+      "options": ["4", "4.5", "1", "18"],
+      "answer": 0
+    },
+    {
+      "id": "op-intdiv-4cc1dc",
+      "text": "Ce afișează?",
+      "code": "a = 22\nb = 5\nprint(a // b)",
+      "options": ["4", "4.4", "2", "110"],
+      "answer": 0
+    },
+    {
+      "id": "op-intdiv-44c3f6",
+      "text": "Ce afișează?",
+      "code": "a = 11\nb = 4\nprint(a // b)",
+      "options": ["2", "2.75", "3", "44"],
+      "answer": 0
+    },
+    {
+      "id": "op-mod-65e5a0",
+      "text": "Ce afișează?",
+      "code": "a = 14\nb = 4\nprint(a % b)",
+      "options": ["2", "3", "3.5", "10"],
+      "answer": 0
+    },
+    {
+      "id": "op-mod-c6bf41",
+      "text": "Ce afișează?",
+      "code": "a = 23\nb = 5\nprint(a % b)",
+      "options": ["3", "4", "4.6", "18"],
+      "answer": 0
+    },
+    {
+      "id": "op-mod-68776e",
+      "text": "Ce afișează?",
+      "code": "a = 19\nb = 4\nprint(a % b)",
+      "options": ["3", "4", "4.75", "15"],
+      "answer": 0
+    },
+    {
+      "id": "op-mod-679ba2",
+      "text": "Ce afișează?",
+      "code": "a = 30\nb = 6\nprint(a % b)",
+      "options": ["0", "5", "5.0", "24"],
+      "answer": 0
+    },
+    {
+      "id": "op-pow-c08e9e",
+      "text": "Ce afișează?",
+      "code": "a = 3\nb = 2\nprint(a ** b)",
+      "options": ["9", "6", "8", "5"],
+      "answer": 0
+    },
+    {
+      "id": "op-pow-9b4167",
+      "text": "Ce afișează?",
+      "code": "a = 2\nb = 5\nprint(a ** b)",
+      "options": ["32", "10", "25", "7"],
+      "answer": 0
+    },
+    {
+      "id": "op-pow-c06022",
+      "text": "Ce afișează?",
+      "code": "a = 4\nb = 3\nprint(a ** b)",
+      "options": ["64", "12", "81", "7"],
+      "answer": 0
+    },
+    {
+      "id": "op-pow-50b4f7",
+      "text": "Ce afișează?",
+      "code": "a = 5\nb = 3\nprint(a ** b)",
+      "options": ["125", "15", "243", "8"],
+      "answer": 0
+    },
+    {
+      "id": "op-pow-3a54f3",
+      "text": "Ce afișează?",
+      "code": "a = 10\nb = 2\nprint(a ** b)",
+      "options": ["100", "20", "1024", "12"],
+      "answer": 0
+    },
+    {
+      "id": "op-order-b61113",
+      "text": "Ce afișează?",
+      "code": "print(1 + 2 * 5)",
+      "options": ["11", "15", "8", "10"],
+      "answer": 0
+    },
+    {
+      "id": "op-order-45564d",
+      "text": "Ce afișează?",
+      "code": "print(4 + 2 * 3)",
+      "options": ["10", "18", "9", "24"],
+      "answer": 0
+    },
+    {
+      "id": "op-order-541737",
+      "text": "Ce afișează?",
+      "code": "print(5 + 5 * 2)",
+      "options": ["15", "20", "12", "50"],
+      "answer": 0
+    },
+    {
+      "id": "op-order-7d5353",
+      "text": "Ce afișează?",
+      "code": "print(3 + 4 * 10)",
+      "options": ["43", "70", "17", "120"],
+      "answer": 0
+    },
+    {
+      "id": "op-paren-5d3854",
+      "text": "Ce afișează?",
+      "code": "print((3 + 1) * 4)",
+      "options": ["16", "7", "8", "12"],
+      "answer": 0
+    },
+    {
+      "id": "op-paren-fdc53d",
+      "text": "Ce afișează?",
+      "code": "print((2 + 6) * 3)",
+      "options": ["24", "20", "11", "36"],
+      "answer": 0
+    },
+    {
+      "id": "op-paren-ea9c04",
+      "text": "Ce afișează?",
+      "code": "print((10 + 5) * 2)",
+      "options": ["30", "20", "17", "100"],
+      "answer": 0
+    },
+    {
+      "id": "op-even-87e347",
+      "text": "Ce afișează?",
+      "code": "n = 14\nif n % 2 == 0:\n    print(\"par\")\nelse:\n    print(\"impar\")",
+      "options": ["par", "impar", "0", "7"],
+      "answer": 0
+    },
+    {
+      "id": "op-even-6fcf6e",
+      "text": "Ce afișează?",
+      "code": "n = 9\nif n % 2 == 0:\n    print(\"par\")\nelse:\n    print(\"impar\")",
+      "options": ["impar", "par", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "op-even-4fb198",
+      "text": "Ce afișează?",
+      "code": "n = 30\nif n % 2 == 0:\n    print(\"par\")\nelse:\n    print(\"impar\")",
+      "options": ["par", "impar", "0", "15"],
+      "answer": 0
+    },
+    {
+      "id": "op-even-3ebd96",
+      "text": "Ce afișează?",
+      "code": "n = 21\nif n % 2 == 0:\n    print(\"par\")\nelse:\n    print(\"impar\")",
+      "options": ["impar", "par", "1", "10"],
+      "answer": 0
+    },
+    {
+      "id": "op-which-6d49f9",
+      "text": "Care program afișează asta?",
+      "output": "3",
+      "options": [
+        "a = 11\nb = 3\nprint(a // b)",
+        "a = 11\nb = 3\nprint(a % b)",
+        "a = 11\nb = 3\nprint(a / b)",
+        "a = 11\nb = 3\nprint(a * b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-which-7dac27",
+      "text": "Care program afișează asta?",
+      "output": "2",
+      "options": [
+        "a = 11\nb = 3\nprint(a % b)",
+        "a = 11\nb = 3\nprint(a // b)",
+        "a = 11\nb = 3\nprint(a - b)",
+        "a = 11\nb = 3\nprint(a / b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-which-dfc58e",
+      "text": "Care program afișează asta?",
+      "output": "512",
+      "options": [
+        "a = 8\nb = 3\nprint(a ** b)",
+        "a = 8\nb = 3\nprint(a * b)",
+        "a = 8\nb = 3\nprint(a // b)",
+        "a = 8\nb = 3\nprint(a + b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-which-076c6f",
+      "text": "Care program afișează asta?",
+      "output": "4.5",
+      "options": [
+        "a = 9\nb = 2\nprint(a / b)",
+        "a = 9\nb = 2\nprint(a // b)",
+        "a = 9\nb = 2\nprint(a % b)",
+        "a = 9\nb = 2\nprint(a * b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-which-0cea85",
+      "text": "Care program afișează asta?",
+      "output": "4",
+      "options": [
+        "a = 16\nb = 4\nprint(a // b)",
+        "a = 16\nb = 4\nprint(a / b)",
+        "a = 16\nb = 4\nprint(a % b)",
+        "a = 16\nb = 4\nprint(a - b)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-which-paren-922465",
+      "text": "Care program afișează asta?",
+      "output": "15",
+      "options": [
+        "print((1 + 4) * 3)",
+        "print(1 + 4 * 3)",
+        "print((1 * 4) + 3)",
+        "print(1 + 4 + 3)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-which-paren-bb0ec5",
+      "text": "Care program afișează asta?",
+      "output": "40",
+      "options": [
+        "print((6 + 2) * 5)",
+        "print(6 + 2 * 5)",
+        "print((6 * 2) + 5)",
+        "print(6 + 2 + 5)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-which-paren-2c5364",
+      "text": "Care program afișează asta?",
+      "output": "60",
+      "options": [
+        "print((3 + 3) * 10)",
+        "print(3 + 3 * 10)",
+        "print((3 * 3) + 10)",
+        "print(3 + 3 + 10)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-op-8edf33",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 14\nb = 4\nprint(a ___ b)",
+      "output": "3",
+      "options": ["//", "/", "%", "*"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-op-0df9b7",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 14\nb = 4\nprint(a ___ b)",
+      "output": "2",
+      "options": ["%", "//", "/", "-"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-op-ee3953",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 6\nb = 4\nprint(a ___ b)",
+      "output": "1.5",
+      "options": ["/", "//", "%", "*"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-op-89a625",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 3\nb = 4\nprint(a ___ b)",
+      "output": "81",
+      "options": ["**", "*", "//", "%"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-op-a96667",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 20\nb = 5\nprint(a ___ b)",
+      "output": "4",
+      "options": ["//", "/", "%", "-"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-pow-b90045",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(2 ** ___)",
+      "output": "16",
+      "options": ["4", "8", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-pow-ae63eb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(3 ** ___)",
+      "output": "27",
+      "options": ["3", "9", "2", "4"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-pow-fa94dc",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(5 ** ___)",
+      "output": "25",
+      "options": ["2", "5", "10", "3"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-pow-bdc6a3",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(10 ** ___)",
+      "output": "1000",
+      "options": ["3", "100", "2", "4"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-line-ab784b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 13\nb = 5\n___",
+      "output": "3",
+      "options": ["print(a % b)", "print(a // b)", "print(a / b)", "print(\"a % b\")"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-line-39ff77",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 13\nb = 5\n___",
+      "output": "2",
+      "options": ["print(a // b)", "print(a % b)", "print(a / b)", "print(\"a // b\")"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-line-9fc012",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 9\nb = 2\n___",
+      "output": "4.5",
+      "options": ["print(a / b)", "print(a // b)", "print(a % b)", "print(\"a / b\")"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-line-a53936",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 4\nb = 3\n___",
+      "output": "64",
+      "options": ["print(a ** b)", "print(a * b)", "print(a + b)", "print(\"a ** b\")"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-line-4d4f3d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 7\nb = 2\n___",
+      "output": "14",
+      "options": ["print(a * b)", "print(a ** b)", "print(a + b)", "print(\"a * b\")"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-panel-2a645d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 6\nb = 3\nprint(a + b)\nprint(a - b)\n___\nprint(a / b)",
+      "output": "9\n3\n18\n2.0",
+      "options": ["print(a * b)", "print(a ** b)", "print(a // b)", "print(a * a)"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-panel-1bbc69",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 8\nb = 2\nprint(a + b)\nprint(a - b)\n___\nprint(a / b)",
+      "output": "10\n6\n16\n4.0",
+      "options": ["print(a * b)", "print(a ** b)", "print(a // b)", "print(a * a)"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-panel-f14961",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 10\nb = 4\nprint(a + b)\nprint(a - b)\n___\nprint(a / b)",
+      "output": "14\n6\n40\n2.5",
+      "options": ["print(a * b)", "print(a ** b)", "print(a // b)", "print(a * a)"],
+      "answer": 0
+    },
+    {
+      "id": "op-gap-panel-1b1100",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "a = 9\nb = 3\nprint(a + b)\nprint(a - b)\n___\nprint(a / b)",
+      "output": "12\n6\n27\n3.0",
+      "options": ["print(a * b)", "print(a ** b)", "print(a // b)", "print(a * a)"],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-div-368f0f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = 9\nb = 2\nprint(a / b)\nprint(a % b)",
+      "output": "4\n1",
+      "options": ["print(a / b)", "b = 2", "print(a % b)", "a = 9"],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-div-badadf",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = 13\nb = 4\nprint(a / b)\nprint(a % b)",
+      "output": "3\n1",
+      "options": ["print(a / b)", "b = 4", "print(a % b)", "a = 13"],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-div-3e64f2",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = 22\nb = 5\nprint(a / b)\nprint(a % b)",
+      "output": "4\n2",
+      "options": ["print(a / b)", "b = 5", "print(a % b)", "a = 22"],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-div-c0cde4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = 11\nb = 3\nprint(a / b)\nprint(a % b)",
+      "output": "3\n2",
+      "options": ["print(a / b)", "b = 3", "print(a % b)", "a = 11"],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-div-75d509",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = 17\nb = 4\nprint(a / b)\nprint(a % b)",
+      "output": "4\n1",
+      "options": ["print(a / b)", "b = 4", "print(a % b)", "a = 17"],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-paren-9ce8b8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = 1\nb = 4\nc = 3\ntotal = a + b * c\nprint(f\"({a} + {b}) * {c} = {total}\")",
+      "output": "(1 + 4) * 3 = 15",
+      "options": ["total = a + b * c", "c = 3", "print(f\"({a} + {b}) * {c} = {total}\")", "b = 4"],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-paren-26f329",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = 5\nb = 1\nc = 2\ntotal = a + b * c\nprint(f\"({a} + {b}) * {c} = {total}\")",
+      "output": "(5 + 1) * 2 = 12",
+      "options": ["total = a + b * c", "c = 2", "print(f\"({a} + {b}) * {c} = {total}\")", "b = 1"],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-paren-bac199",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = 3\nb = 2\nc = 6\ntotal = a + b * c\nprint(f\"({a} + {b}) * {c} = {total}\")",
+      "output": "(3 + 2) * 6 = 30",
+      "options": ["total = a + b * c", "c = 6", "print(f\"({a} + {b}) * {c} = {total}\")", "b = 2"],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-paren-06ee5d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "a = 4\nb = 4\nc = 2\ntotal = a + b * c\nprint(f\"({a} + {b}) * {c} = {total}\")",
+      "output": "(4 + 4) * 2 = 16",
+      "options": ["total = a + b * c", "c = 2", "print(f\"({a} + {b}) * {c} = {total}\")", "b = 4"],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-rest-610e5a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "minute = 135\nore = minute // 60\nrest = minute // 60\nprint(f\"{ore} h {rest} min\")",
+      "output": "2 h 15 min",
+      "options": [
+        "rest = minute // 60",
+        "ore = minute // 60",
+        "print(f\"{ore} h {rest} min\")",
+        "minute = 135"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-rest-7b8e07",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "minute = 75\nore = minute // 60\nrest = minute // 60\nprint(f\"{ore} h {rest} min\")",
+      "output": "1 h 15 min",
+      "options": [
+        "rest = minute // 60",
+        "ore = minute // 60",
+        "print(f\"{ore} h {rest} min\")",
+        "minute = 75"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-rest-188f8c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "minute = 200\nore = minute // 60\nrest = minute // 60\nprint(f\"{ore} h {rest} min\")",
+      "output": "3 h 20 min",
+      "options": [
+        "rest = minute // 60",
+        "ore = minute // 60",
+        "print(f\"{ore} h {rest} min\")",
+        "minute = 200"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-rest-37f337",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "minute = 90\nore = minute // 60\nrest = minute // 60\nprint(f\"{ore} h {rest} min\")",
+      "output": "1 h 30 min",
+      "options": [
+        "rest = minute // 60",
+        "ore = minute // 60",
+        "print(f\"{ore} h {rest} min\")",
+        "minute = 90"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-hours-3a49d4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "minute = 150\nore = minute / 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")",
+      "output": "2 h 30 min",
+      "options": [
+        "ore = minute / 60",
+        "minute = 150",
+        "rest = minute % 60",
+        "print(f\"{ore} h {rest} min\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-hours-c7d61a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "minute = 65\nore = minute / 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")",
+      "output": "1 h 5 min",
+      "options": [
+        "ore = minute / 60",
+        "minute = 65",
+        "rest = minute % 60",
+        "print(f\"{ore} h {rest} min\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "op-bad-hours-2e2ad6",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "minute = 230\nore = minute / 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")",
+      "output": "3 h 50 min",
+      "options": [
+        "ore = minute / 60",
+        "minute = 230",
+        "rest = minute % 60",
+        "print(f\"{ore} h {rest} min\")"
+      ],
+      "answer": 0
+    }
+  ]
+}

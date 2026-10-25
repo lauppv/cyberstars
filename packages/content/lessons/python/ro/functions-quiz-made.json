@@ -1,0 +1,747 @@
+{
+  "note": "Made by npm run make:quiz from the templates in functions-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "fn-greet-35e230",
+      "text": "Ce afișează?",
+      "code": "def saluta(nume):\n    print(f\"Salut, {nume}!\")\n\nsaluta(\"Ana\")\nsaluta(\"Ben\")",
+      "options": [
+        "Salut, Ana!\nSalut, Ben!",
+        "Salut, {nume}!\nSalut, {nume}!",
+        "Salut, nume!\nSalut, nume!",
+        "Salut, Ben!\nSalut, Ana!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-greet-fb4656",
+      "text": "Ce afișează?",
+      "code": "def bun_venit(membru):\n    print(f\"Bun venit la bord, {membru}!\")\n\nbun_venit(\"Cortez\")\nbun_venit(\"Lance\")",
+      "options": [
+        "Bun venit la bord, Cortez!\nBun venit la bord, Lance!",
+        "Bun venit la bord, {membru}!\nBun venit la bord, {membru}!",
+        "Bun venit la bord, membru!\nBun venit la bord, membru!",
+        "Bun venit la bord, Lance!\nBun venit la bord, Cortez!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-greet-2bdcc8",
+      "text": "Ce afișează?",
+      "code": "def bravo(jucator):\n    print(f\"Bravo, {jucator}!\")\n\nbravo(\"Zoe\")\nbravo(\"Kai\")",
+      "options": [
+        "Bravo, Zoe!\nBravo, Kai!",
+        "Bravo, {jucator}!\nBravo, {jucator}!",
+        "Bravo, jucator!\nBravo, jucator!",
+        "Bravo, Kai!\nBravo, Zoe!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-greet-4a54c2",
+      "text": "Ce afișează?",
+      "code": "def hei(prieten):\n    print(f\"Hei, {prieten}!\")\n\nhei(\"Tommy\")\nhei(\"Mia\")",
+      "options": [
+        "Hei, Tommy!\nHei, Mia!",
+        "Hei, {prieten}!\nHei, {prieten}!",
+        "Hei, prieten!\nHei, prieten!",
+        "Hei, Mia!\nHei, Tommy!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-greet-2a4633",
+      "text": "Ce afișează?",
+      "code": "def noroc(pilot):\n    print(f\"Succes, {pilot}!\")\n\nnoroc(\"Nova\")\nnoroc(\"Rex\")",
+      "options": [
+        "Succes, Nova!\nSucces, Rex!",
+        "Succes, {pilot}!\nSucces, {pilot}!",
+        "Succes, pilot!\nSucces, pilot!",
+        "Succes, Rex!\nSucces, Nova!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-two-9d1533",
+      "text": "Ce afișează?",
+      "code": "def arata_varsta(nume, varsta):\n    print(f\"{nume} are {varsta} de ani\")\n\narata_varsta(\"Tommy\", 42)",
+      "options": [
+        "Tommy are 42 de ani",
+        "42 are Tommy de ani",
+        "{nume} are {varsta} de ani",
+        "Tommy are varsta de ani"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-two-835759",
+      "text": "Ce afișează?",
+      "code": "def raport(nava, combustibil):\n    print(f\"{nava} are {combustibil} de litri de combustibil\")\n\nraport(\"Nova\", 80)",
+      "options": [
+        "Nova are 80 de litri de combustibil",
+        "80 are Nova de litri de combustibil",
+        "{nava} are {combustibil} de litri de combustibil",
+        "Nova are combustibil de litri de combustibil"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-two-a9a312",
+      "text": "Ce afișează?",
+      "code": "def scor_jucator(jucator, scor):\n    print(f\"{jucator} a facut {scor} puncte\")\n\nscor_jucator(\"Zoe\", 15)",
+      "options": [
+        "Zoe a facut 15 puncte",
+        "15 a facut Zoe puncte",
+        "{jucator} a facut {scor} puncte",
+        "Zoe a facut scor puncte"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-two-82d3b2",
+      "text": "Ce afișează?",
+      "code": "def nota(hotel, stele):\n    print(f\"{hotel} are {stele} stele\")\n\nnota(\"Orion\", 4)",
+      "options": [
+        "Orion are 4 stele",
+        "4 are Orion stele",
+        "{hotel} are {stele} stele",
+        "Orion are stele stele"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-two-ef6efb",
+      "text": "Ce afișează?",
+      "code": "def varsta_echipaj(pilot, varsta):\n    print(f\"{pilot} are {varsta} de ani\")\n\nvarsta_echipaj(\"Lance\", 35)",
+      "options": [
+        "Lance are 35 de ani",
+        "35 are Lance de ani",
+        "{pilot} are {varsta} de ani",
+        "Lance are varsta de ani"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-calls-e39780",
+      "text": "Ce afișează?",
+      "code": "def bip():\n    print(\"Bip\")\n\nbip()\nbip()\nprint(\"Gata\")",
+      "options": ["Bip\nBip\nGata", "Bip\nGata", "Bip\nGata\nBip\nGata\nGata", "Gata\nBip\nBip"],
+      "answer": 0
+    },
+    {
+      "id": "fn-calls-f39847",
+      "text": "Ce afișează?",
+      "code": "def ura():\n    print(\"Hai echipa\")\n\nura()\nura()\nprint(\"Meci terminat\")",
+      "options": [
+        "Hai echipa\nHai echipa\nMeci terminat",
+        "Hai echipa\nMeci terminat",
+        "Hai echipa\nMeci terminat\nHai echipa\nMeci terminat\nMeci terminat",
+        "Meci terminat\nHai echipa\nHai echipa"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-calls-9b5c8e",
+      "text": "Ce afișează?",
+      "code": "def alarma():\n    print(\"Trezeste-te\")\n\nalarma()\nalarma()\nprint(\"Buna dimineata\")",
+      "options": [
+        "Trezeste-te\nTrezeste-te\nBuna dimineata",
+        "Trezeste-te\nBuna dimineata",
+        "Trezeste-te\nBuna dimineata\nTrezeste-te\nBuna dimineata\nBuna dimineata",
+        "Buna dimineata\nTrezeste-te\nTrezeste-te"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-calls-764ec0",
+      "text": "Ce afișează?",
+      "code": "def cioc():\n    print(\"Cioc cioc\")\n\ncioc()\ncioc()\nprint(\"Cine e acolo?\")",
+      "options": [
+        "Cioc cioc\nCioc cioc\nCine e acolo?",
+        "Cioc cioc\nCine e acolo?",
+        "Cioc cioc\nCine e acolo?\nCioc cioc\nCine e acolo?\nCine e acolo?",
+        "Cine e acolo?\nCioc cioc\nCioc cioc"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-loop-94f3f8",
+      "text": "Ce afișează?",
+      "code": "def numara_ture(ture):\n    for i in range(1, ture + 1):\n        print(f\"Tura {i}\")\n\nnumara_ture(3)",
+      "options": [
+        "Tura 1\nTura 2\nTura 3",
+        "Tura 1\nTura 2",
+        "Tura 0\nTura 1\nTura 2",
+        "Tura {i}\nTura {i}\nTura {i}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-loop-61848c",
+      "text": "Ce afișează?",
+      "code": "def arata_niveluri(niveluri):\n    for i in range(1, niveluri + 1):\n        print(f\"Nivelul {i}\")\n\narata_niveluri(4)",
+      "options": [
+        "Nivelul 1\nNivelul 2\nNivelul 3\nNivelul 4",
+        "Nivelul 1\nNivelul 2\nNivelul 3",
+        "Nivelul 0\nNivelul 1\nNivelul 2\nNivelul 3",
+        "Nivelul {i}\nNivelul {i}\nNivelul {i}\nNivelul {i}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-loop-c7358a",
+      "text": "Ce afișează?",
+      "code": "def suna(ori):\n    for i in range(1, ori + 1):\n        print(f\"Suna {i}\")\n\nsuna(2)",
+      "options": ["Suna 1\nSuna 2", "Suna 1", "Suna 0\nSuna 1", "Suna {i}\nSuna {i}"],
+      "answer": 0
+    },
+    {
+      "id": "fn-loop-1b3e85",
+      "text": "Ce afișează?",
+      "code": "def lanseaza_valuri(valuri):\n    for i in range(1, valuri + 1):\n        print(f\"Valul {i}\")\n\nlanseaza_valuri(3)",
+      "options": [
+        "Valul 1\nValul 2\nValul 3",
+        "Valul 1\nValul 2",
+        "Valul 0\nValul 1\nValul 2",
+        "Valul {i}\nValul {i}\nValul {i}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-loop-7aabe6",
+      "text": "Ce afișează?",
+      "code": "def verifica_usi(usi):\n    for i in range(1, usi + 1):\n        print(f\"Usa {i}\")\n\nverifica_usi(5)",
+      "options": [
+        "Usa 1\nUsa 2\nUsa 3\nUsa 4\nUsa 5",
+        "Usa 1\nUsa 2\nUsa 3\nUsa 4",
+        "Usa 0\nUsa 1\nUsa 2\nUsa 3\nUsa 4",
+        "Usa {i}\nUsa {i}\nUsa {i}\nUsa {i}\nUsa {i}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-status-61a784",
+      "text": "Ce afișează?",
+      "code": "def f(nume, stare):\n    if stare == True:\n        print(f\"{nume} este online\")\n    else:\n        print(f\"{nume} este offline\")\n\nf(\"Admin\", True)",
+      "options": [
+        "Admin este online",
+        "Admin este offline",
+        "True este offline",
+        "nume este online"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-status-61c228",
+      "text": "Ce afișează?",
+      "code": "def f(nume, stare):\n    if stare == True:\n        print(f\"{nume} este online\")\n    else:\n        print(f\"{nume} este offline\")\n\nf(\"Admin\", False)",
+      "options": [
+        "Admin este offline",
+        "Admin este online",
+        "False este offline",
+        "nume este offline"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-status-b3a58f",
+      "text": "Ce afișează?",
+      "code": "def usa(camera, incuiata):\n    if incuiata == True:\n        print(f\"{camera} e incuiata\")\n    else:\n        print(f\"{camera} e deschisa\")\n\nusa(\"Laboratorul\", True)",
+      "options": [
+        "Laboratorul e incuiata",
+        "Laboratorul e deschisa",
+        "True e deschisa",
+        "camera e incuiata"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-status-f90f27",
+      "text": "Ce afișează?",
+      "code": "def usa(camera, incuiata):\n    if incuiata == True:\n        print(f\"{camera} e incuiata\")\n    else:\n        print(f\"{camera} e deschisa\")\n\nusa(\"Puntea\", False)",
+      "options": [
+        "Puntea e deschisa",
+        "Puntea e incuiata",
+        "False e deschisa",
+        "camera e deschisa"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-status-e971ec",
+      "text": "Ce afișează?",
+      "code": "def motor(nava, gata):\n    if gata == True:\n        print(f\"{nava} e gata\")\n    else:\n        print(f\"{nava} trebuie reparata\")\n\nmotor(\"Nova\", True)",
+      "options": ["Nova e gata", "Nova trebuie reparata", "True trebuie reparata", "nava e gata"],
+      "answer": 0
+    },
+    {
+      "id": "fn-math-96397d",
+      "text": "Ce afișează?",
+      "code": "def triplu(x):\n    print(x * 3)\n\ntriplu(2)\ntriplu(7)",
+      "options": ["6\n21", "x * 3\nx * 3", "6\n6", "6"],
+      "answer": 0
+    },
+    {
+      "id": "fn-math-2af7ca",
+      "text": "Ce afișează?",
+      "code": "def jumatate(n):\n    print(n / 2)\n\njumatate(9)\njumatate(4)",
+      "options": ["4.5\n2.0", "n / 2\nn / 2", "4.5\n4.5", "4.5"],
+      "answer": 0
+    },
+    {
+      "id": "fn-math-4b4b2a",
+      "text": "Ce afișează?",
+      "code": "def plus_zece(scor):\n    print(scor + 10)\n\nplus_zece(5)\nplus_zece(30)",
+      "options": ["15\n40", "scor + 10\nscor + 10", "15\n15", "15"],
+      "answer": 0
+    },
+    {
+      "id": "fn-math-c0e24c",
+      "text": "Ce afișează?",
+      "code": "def patrat(latura):\n    print(latura ** 2)\n\npatrat(3)\npatrat(5)",
+      "options": ["9\n25", "latura ** 2\nlatura ** 2", "9\n9", "9"],
+      "answer": 0
+    },
+    {
+      "id": "fn-math-beac18",
+      "text": "Ce afișează?",
+      "code": "def pierde_viata(vieti):\n    print(vieti - 1)\n\npierde_viata(3)\npierde_viata(1)",
+      "options": ["2\n0", "vieti - 1\nvieti - 1", "2\n2", "2"],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-call-8e885e",
+      "text": "Care program afișează asta?",
+      "output": "Salut, Cortez!",
+      "options": [
+        "def saluta(nume):\n    print(f\"Salut, {nume}!\")\n\nsaluta(\"Cortez\")",
+        "def saluta(nume):\n    print(f\"Salut, {nume}!\")",
+        "def saluta(nume):\n    print(\"Salut, {nume}!\")\n\nsaluta(\"Cortez\")",
+        "def saluta(nume):\n    print(f\"Salut, nume!\")\n\nsaluta(\"Cortez\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-call-2c233b",
+      "text": "Care program afișează asta?",
+      "output": "Bun venit la bord, Zoe!",
+      "options": [
+        "def bun_venit(membru):\n    print(f\"Bun venit la bord, {membru}!\")\n\nbun_venit(\"Zoe\")",
+        "def bun_venit(membru):\n    print(f\"Bun venit la bord, {membru}!\")",
+        "def bun_venit(membru):\n    print(\"Bun venit la bord, {membru}!\")\n\nbun_venit(\"Zoe\")",
+        "def bun_venit(membru):\n    print(f\"Bun venit la bord, membru!\")\n\nbun_venit(\"Zoe\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-call-8f331e",
+      "text": "Care program afișează asta?",
+      "output": "Bravo, Tommy!",
+      "options": [
+        "def bravo(jucator):\n    print(f\"Bravo, {jucator}!\")\n\nbravo(\"Tommy\")",
+        "def bravo(jucator):\n    print(f\"Bravo, {jucator}!\")",
+        "def bravo(jucator):\n    print(\"Bravo, {jucator}!\")\n\nbravo(\"Tommy\")",
+        "def bravo(jucator):\n    print(f\"Bravo, jucator!\")\n\nbravo(\"Tommy\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-call-e9f7db",
+      "text": "Care program afișează asta?",
+      "output": "Hei, Nova!",
+      "options": [
+        "def hei(prieten):\n    print(f\"Hei, {prieten}!\")\n\nhei(\"Nova\")",
+        "def hei(prieten):\n    print(f\"Hei, {prieten}!\")",
+        "def hei(prieten):\n    print(\"Hei, {prieten}!\")\n\nhei(\"Nova\")",
+        "def hei(prieten):\n    print(f\"Hei, prieten!\")\n\nhei(\"Nova\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-call-cad945",
+      "text": "Care program afișează asta?",
+      "output": "Succes, Ana!",
+      "options": [
+        "def noroc(pilot):\n    print(f\"Succes, {pilot}!\")\n\nnoroc(\"Ana\")",
+        "def noroc(pilot):\n    print(f\"Succes, {pilot}!\")",
+        "def noroc(pilot):\n    print(\"Succes, {pilot}!\")\n\nnoroc(\"Ana\")",
+        "def noroc(pilot):\n    print(f\"Succes, pilot!\")\n\nnoroc(\"Ana\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-order-b78990",
+      "text": "Care program afișează asta?",
+      "output": "Nova are 80 de litri de combustibil",
+      "options": [
+        "def raport(nava, combustibil):\n    print(f\"{nava} are {combustibil} de litri de combustibil\")\n\nraport(\"Nova\", 80)",
+        "def raport(nava, combustibil):\n    print(f\"{nava} are {combustibil} de litri de combustibil\")\n\nraport(80, \"Nova\")",
+        "def raport(combustibil, nava):\n    print(f\"{nava} are {combustibil} de litri de combustibil\")\n\nraport(\"Nova\", 80)",
+        "def raport(nava, combustibil):\n    print(f\"nava are {combustibil} de litri de combustibil\")\n\nraport(\"Nova\", 80)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-order-9c0af2",
+      "text": "Care program afișează asta?",
+      "output": "Zoe a facut 15 puncte",
+      "options": [
+        "def scor_jucator(jucator, scor):\n    print(f\"{jucator} a facut {scor} puncte\")\n\nscor_jucator(\"Zoe\", 15)",
+        "def scor_jucator(jucator, scor):\n    print(f\"{jucator} a facut {scor} puncte\")\n\nscor_jucator(15, \"Zoe\")",
+        "def scor_jucator(scor, jucator):\n    print(f\"{jucator} a facut {scor} puncte\")\n\nscor_jucator(\"Zoe\", 15)",
+        "def scor_jucator(jucator, scor):\n    print(f\"jucator a facut {scor} puncte\")\n\nscor_jucator(\"Zoe\", 15)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-order-8731e5",
+      "text": "Care program afișează asta?",
+      "output": "Orion are 4 stele",
+      "options": [
+        "def nota(hotel, stele):\n    print(f\"{hotel} are {stele} stele\")\n\nnota(\"Orion\", 4)",
+        "def nota(hotel, stele):\n    print(f\"{hotel} are {stele} stele\")\n\nnota(4, \"Orion\")",
+        "def nota(stele, hotel):\n    print(f\"{hotel} are {stele} stele\")\n\nnota(\"Orion\", 4)",
+        "def nota(hotel, stele):\n    print(f\"hotel are {stele} stele\")\n\nnota(\"Orion\", 4)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-which-order-c6f6f7",
+      "text": "Care program afișează asta?",
+      "output": "Lance are 35 de ani",
+      "options": [
+        "def varsta_echipaj(pilot, varsta):\n    print(f\"{pilot} are {varsta} de ani\")\n\nvarsta_echipaj(\"Lance\", 35)",
+        "def varsta_echipaj(pilot, varsta):\n    print(f\"{pilot} are {varsta} de ani\")\n\nvarsta_echipaj(35, \"Lance\")",
+        "def varsta_echipaj(varsta, pilot):\n    print(f\"{pilot} are {varsta} de ani\")\n\nvarsta_echipaj(\"Lance\", 35)",
+        "def varsta_echipaj(pilot, varsta):\n    print(f\"pilot are {varsta} de ani\")\n\nvarsta_echipaj(\"Lance\", 35)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-call-02b790",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def saluta(nume):\n    print(f\"Salut, {nume}!\")\n\n___",
+      "output": "Salut, Ben!",
+      "options": ["saluta(\"Ben\")", "saluta(\"nume\")", "saluta", "def saluta(\"Ben\"):"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-call-9ed66e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def bun_venit(membru):\n    print(f\"Bun venit la bord, {membru}!\")\n\n___",
+      "output": "Bun venit la bord, Lance!",
+      "options": [
+        "bun_venit(\"Lance\")",
+        "bun_venit(\"membru\")",
+        "bun_venit",
+        "def bun_venit(\"Lance\"):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-call-c7a040",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def bravo(jucator):\n    print(f\"Bravo, {jucator}!\")\n\n___",
+      "output": "Bravo, Kai!",
+      "options": ["bravo(\"Kai\")", "bravo(\"jucator\")", "bravo", "def bravo(\"Kai\"):"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-call-f169c1",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def hei(prieten):\n    print(f\"Hei, {prieten}!\")\n\n___",
+      "output": "Hei, Mia!",
+      "options": ["hei(\"Mia\")", "hei(\"prieten\")", "hei", "def hei(\"Mia\"):"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-call-d94c67",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def noroc(pilot):\n    print(f\"Succes, {pilot}!\")\n\n___",
+      "output": "Succes, Rex!",
+      "options": ["noroc(\"Rex\")", "noroc(\"pilot\")", "noroc", "def noroc(\"Rex\"):"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-def-c61c0d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(f\"Salut, {nume}!\")\n\nsaluta(\"Lance\")",
+      "output": "Salut, Lance!",
+      "options": ["def saluta(nume):", "def saluta(nume)", "saluta(nume):", "def saluta():"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-def-abeb64",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(f\"Bun venit la bord, {membru}!\")\n\nbun_venit(\"Ana\")",
+      "output": "Bun venit la bord, Ana!",
+      "options": [
+        "def bun_venit(membru):",
+        "def bun_venit(membru)",
+        "bun_venit(membru):",
+        "def bun_venit():"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-def-c7a040",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(f\"Bravo, {jucator}!\")\n\nbravo(\"Kai\")",
+      "output": "Bravo, Kai!",
+      "options": ["def bravo(jucator):", "def bravo(jucator)", "bravo(jucator):", "def bravo():"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-def-cf2ee7",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(f\"Hei, {prieten}!\")\n\nhei(\"Rex\")",
+      "output": "Hei, Rex!",
+      "options": ["def hei(prieten):", "def hei(prieten)", "hei(prieten):", "def hei():"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-def-ccac41",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "___\n    print(f\"Succes, {pilot}!\")\n\nnoroc(\"Mia\")",
+      "output": "Succes, Mia!",
+      "options": ["def noroc(pilot):", "def noroc(pilot)", "noroc(pilot):", "def noroc():"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-arg-5056fa",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def arata_varsta(nume, varsta):\n    print(f\"{nume} are {varsta} de ani\")\n\narata_varsta(\"Tommy\", ___)",
+      "output": "Tommy are 42 de ani",
+      "options": ["42", "\"Tommy\"", "varsta", "42 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-arg-755d6c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def raport(nava, combustibil):\n    print(f\"{nava} are {combustibil} de litri de combustibil\")\n\nraport(\"Nova\", ___)",
+      "output": "Nova are 80 de litri de combustibil",
+      "options": ["80", "\"Nova\"", "combustibil", "80 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-arg-46e751",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def scor_jucator(jucator, scor):\n    print(f\"{jucator} a facut {scor} puncte\")\n\nscor_jucator(\"Zoe\", ___)",
+      "output": "Zoe a facut 15 puncte",
+      "options": ["15", "\"Zoe\"", "scor", "15 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-arg-e6f6f6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def nota(hotel, stele):\n    print(f\"{hotel} are {stele} stele\")\n\nnota(\"Orion\", ___)",
+      "output": "Orion are 4 stele",
+      "options": ["4", "\"Orion\"", "stele", "4 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-arg-539b8d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def varsta_echipaj(pilot, varsta):\n    print(f\"{pilot} are {varsta} de ani\")\n\nvarsta_echipaj(\"Lance\", ___)",
+      "output": "Lance are 35 de ani",
+      "options": ["35", "\"Lance\"", "varsta", "35 + 1"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-times-44c69a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def numara_ture(ture):\n    for i in range(1, ture + 1):\n        print(f\"Tura {i}\")\n\nnumara_ture(___)",
+      "output": "Tura 1\nTura 2\nTura 3",
+      "options": ["3", "2", "4", "0"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-times-8d1b54",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def arata_niveluri(niveluri):\n    for i in range(1, niveluri + 1):\n        print(f\"Nivelul {i}\")\n\narata_niveluri(___)",
+      "output": "Nivelul 1\nNivelul 2\nNivelul 3\nNivelul 4",
+      "options": ["4", "3", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-times-609416",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def suna(ori):\n    for i in range(1, ori + 1):\n        print(f\"Suna {i}\")\n\nsuna(___)",
+      "output": "Suna 1\nSuna 2",
+      "options": ["2", "1", "3", "0"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-times-6f727a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def lanseaza_valuri(valuri):\n    for i in range(1, valuri + 1):\n        print(f\"Valul {i}\")\n\nlanseaza_valuri(___)",
+      "output": "Valul 1\nValul 2\nValul 3\nValul 4\nValul 5",
+      "options": ["5", "4", "6", "0"],
+      "answer": 0
+    },
+    {
+      "id": "fn-gap-times-3e7a3d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def verifica_usi(usi):\n    for i in range(1, usi + 1):\n        print(f\"Usa {i}\")\n\nverifica_usi(___)",
+      "output": "Usa 1\nUsa 2\nUsa 3\nUsa 4\nUsa 5\nUsa 6",
+      "options": ["6", "5", "7", "0"],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-colon-13494f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def saluta(nume)\n    print(f\"Salut, {nume}!\")\n\nsaluta(\"Zoe\")\nsaluta(\"Kai\")",
+      "output": "Salut, Zoe!\nSalut, Kai!",
+      "options": [
+        "def saluta(nume)",
+        "print(f\"Salut, {nume}!\")",
+        "saluta(\"Zoe\")",
+        "saluta(\"Kai\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-colon-6c215f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def bun_venit(membru)\n    print(f\"Bun venit la bord, {membru}!\")\n\nbun_venit(\"Tommy\")\nbun_venit(\"Mia\")",
+      "output": "Bun venit la bord, Tommy!\nBun venit la bord, Mia!",
+      "options": [
+        "def bun_venit(membru)",
+        "print(f\"Bun venit la bord, {membru}!\")",
+        "bun_venit(\"Tommy\")",
+        "bun_venit(\"Mia\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-colon-926691",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def bravo(jucator)\n    print(f\"Bravo, {jucator}!\")\n\nbravo(\"Nova\")\nbravo(\"Rex\")",
+      "output": "Bravo, Nova!\nBravo, Rex!",
+      "options": [
+        "def bravo(jucator)",
+        "print(f\"Bravo, {jucator}!\")",
+        "bravo(\"Nova\")",
+        "bravo(\"Rex\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-f-cc5860",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def bravo(jucator):\n    print(\"Bravo, {jucator}!\")\n\nbravo(\"Ana\")\nbravo(\"Ben\")",
+      "output": "Bravo, Ana!\nBravo, Ben!",
+      "options": [
+        "print(\"Bravo, {jucator}!\")",
+        "bravo(\"Ana\")",
+        "bravo(\"Ben\")",
+        "def bravo(jucator):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-f-d1a836",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def hei(prieten):\n    print(\"Hei, {prieten}!\")\n\nhei(\"Cortez\")\nhei(\"Lance\")",
+      "output": "Hei, Cortez!\nHei, Lance!",
+      "options": [
+        "print(\"Hei, {prieten}!\")",
+        "hei(\"Cortez\")",
+        "hei(\"Lance\")",
+        "def hei(prieten):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-f-09f3ea",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def noroc(pilot):\n    print(\"Succes, {pilot}!\")\n\nnoroc(\"Zoe\")\nnoroc(\"Kai\")",
+      "output": "Succes, Zoe!\nSucces, Kai!",
+      "options": [
+        "print(\"Succes, {pilot}!\")",
+        "noroc(\"Zoe\")",
+        "noroc(\"Kai\")",
+        "def noroc(pilot):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-name-442437",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def saluta(nume):\n    print(f\"Salut, {nume}!\")\n\nsaluta(\"Ana\")\nSaluta(\"Ben\")",
+      "output": "Salut, Ana!\nSalut, Ben!",
+      "options": [
+        "Saluta(\"Ben\")",
+        "saluta(\"Ana\")",
+        "print(f\"Salut, {nume}!\")",
+        "def saluta(nume):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-name-e1ee52",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def bun_venit(membru):\n    print(f\"Bun venit la bord, {membru}!\")\n\nbun_venit(\"Zoe\")\nBun_venit(\"Kai\")",
+      "output": "Bun venit la bord, Zoe!\nBun venit la bord, Kai!",
+      "options": [
+        "Bun_venit(\"Kai\")",
+        "bun_venit(\"Zoe\")",
+        "print(f\"Bun venit la bord, {membru}!\")",
+        "def bun_venit(membru):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-name-a634e2",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def bravo(jucator):\n    print(f\"Bravo, {jucator}!\")\n\nbravo(\"Tommy\")\nbravoo(\"Mia\")",
+      "output": "Bravo, Tommy!\nBravo, Mia!",
+      "options": [
+        "bravoo(\"Mia\")",
+        "bravo(\"Tommy\")",
+        "print(f\"Bravo, {jucator}!\")",
+        "def bravo(jucator):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-missing-455055",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def arata_varsta(nume, varsta):\n    print(f\"{nume} are {varsta} de ani\")\n\narata_varsta(\"Tommy\", 42)\narata_varsta(\"Lance\")",
+      "output": "Tommy are 42 de ani\nLance are 35 de ani",
+      "options": [
+        "arata_varsta(\"Lance\")",
+        "arata_varsta(\"Tommy\", 42)",
+        "print(f\"{nume} are {varsta} de ani\")",
+        "def arata_varsta(nume, varsta):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-missing-56bd28",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def scor_jucator(jucator, scor):\n    print(f\"{jucator} a facut {scor} puncte\")\n\nscor_jucator(\"Zoe\", 15)\nscor_jucator(\"Kai\")",
+      "output": "Zoe a facut 15 puncte\nKai a facut 9 puncte",
+      "options": [
+        "scor_jucator(\"Kai\")",
+        "scor_jucator(\"Zoe\", 15)",
+        "print(f\"{jucator} a facut {scor} puncte\")",
+        "def scor_jucator(jucator, scor):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fn-bad-missing-06fd5a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def nota(hotel, stele):\n    print(f\"{hotel} are {stele} stele\")\n\nnota(\"Orion\", 4)\nnota(\"Vega\")",
+      "output": "Orion are 4 stele\nVega are 5 stele",
+      "options": [
+        "nota(\"Vega\")",
+        "nota(\"Orion\", 4)",
+        "print(f\"{hotel} are {stele} stele\")",
+        "def nota(hotel, stele):"
+      ],
+      "answer": 0
+    }
+  ]
+}
