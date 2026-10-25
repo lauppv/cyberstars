@@ -93,10 +93,12 @@ Not API routes: static files generated from `packages/content/` at build time in
 
 ### Code execution
 
-| Method | Endpoint       | Auth | Description                                         |
-| ------ | -------------- | ---- | --------------------------------------------------- |
-| WS     | `/ws/run`      | No   | Run code interactively                              |
-| WS     | `/ws/presence` | No   | One per tab; closing it frees the owner's container |
+| Method | Endpoint                   | Auth  | Description                                                       |
+| ------ | -------------------------- | ----- | ----------------------------------------------------------------- |
+| WS     | `/ws/run`                  | No    | Run code interactively                                            |
+| WS     | `/ws/presence`             | No    | One per tab; closing it frees the owner's container               |
+| GET    | `/api/runs/:runId/waiting` | Owner | Whether a Run Tests or terminal command still waits for a sandbox |
+| GET    | `/api/time`                | No    | The server's clock; the deploy's health check                     |
 
 ### Progress
 
