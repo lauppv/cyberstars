@@ -875,7 +875,7 @@
       "id": "for-bad-add",
       "kind": "wrong-line",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    {{t}} = {{t}} + i\nprint({{t}})",
+      "code": "{{t}} = 0\nfor i in range({{a}}, {{b}}):\n    print(i)\n    {{t}} = {{t}} + i\nprint({{t}})",
       "values": [
         {
           "t": "puncte",
