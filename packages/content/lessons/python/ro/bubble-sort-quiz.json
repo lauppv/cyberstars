@@ -1,0 +1,686 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce compară Bubble Sort?",
+      "options": [
+        "Elemente vecine, câte două",
+        "Primul element cu ultimul",
+        "Fiecare element cu cel mai mare",
+        "Perechi de elemente la întâmplare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Când se schimbă doi vecini, ca lista să fie sortată de la mic la mare?",
+      "options": [
+        "Când cel din dreapta e mai mare",
+        "Când cel din stânga e mai mare",
+        "Când sunt egali",
+        "Mereu"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "După prima trecere, unde e cel mai mare număr?",
+      "options": ["La început", "La mijloc", "La sfârșit", "Unde era"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "De ce se numește Bubble Sort?",
+      "options": [
+        "L-a inventat cineva pe nume Bubble",
+        "Desenează bule pe ecran",
+        "Sortează doar numere rotunde",
+        "La fiecare trecere, cel mai mare număr rămas urcă la sfârșit ca o bulă"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce face `a, b = b, a`?",
+      "options": [
+        "Schimbă între ele valorile lui a și b",
+        "Copiază a în b",
+        "Adună a și b",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce linie schimbă între ele numere[j] și numere[j + 1]?",
+      "options": [
+        "numere[j] = numere[j + 1]",
+        "numere[j], numere[j + 1] = numere[j + 1], numere[j]",
+        "numere[j + 1] = numere[j]",
+        "numere[j] == numere[j + 1]"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "De ce merge j doar până la len(numere) - 1?",
+      "options": [
+        "Ca să sară peste primul element",
+        "Ca să fie mai rapid",
+        "Pentru că j e comparat cu j + 1, care nu trebuie să treacă de sfârșit",
+        "Python cere asta în orice buclă"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Ce numără bucla din afară (i)?",
+      "options": ["Ce pereche se compară", "Schimbările", "Afișările", "Trecerile prin listă"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce face bucla din interior (j)?",
+      "options": [
+        "Parcurge lista și compară fiecare pereche de vecini",
+        "Numără trecerile",
+        "Afișează lista",
+        "Sortează singură lista dintr-odată"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Cel mult câte treceri îi trebuie unei liste de n elemente?",
+      "options": ["1", "n", "2", "n × n"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Cam câte comparații face Bubble Sort pentru n elemente?",
+      "options": ["Cam n", "Cam n / 2", "Cam n × n", "Mereu 10"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "Cam câte comparații pentru 10 elemente?",
+      "options": ["10", "20", "1.000", "100"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "E Bubble Sort o alegere bună pentru un milion de numere?",
+      "options": [
+        "Nu: cam un milion de milioane de comparații, foarte încet",
+        "Da, e cea mai rapidă sortare",
+        "Da, cu cât sunt mai multe cu atât e mai rapid",
+        "Nu poate sorta mai mult de 100 de numere"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Ce folosim ca să sortăm în cod adevărat?",
+      "options": ["Bubble Sort, mereu", "sorted()", "len()", "print()"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "De ce învățăm atunci Bubble Sort?",
+      "options": [
+        "Pentru că e mai rapid decât sorted()",
+        "Pentru că Python are nevoie de el ca să ruleze",
+        "Ne învață comparații și schimbări, pe care se sprijină mulți algoritmi",
+        "E singura sortare care merge"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "În [5, 3, 8, 1, 2], cum arată lista după prima comparație?",
+      "options": ["[5, 3, 8, 1, 2]", "[1, 3, 8, 5, 2]", "[3, 5, 1, 8, 2]", "[3, 5, 8, 1, 2]"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "În [3, 5, 8, 1, 2], se compară 5 și 8. Ce se întâmplă?",
+      "options": [
+        "Rămân pe loc: 5 e mai mic",
+        "Se schimbă între ele",
+        "8 sare la început",
+        "Sortarea se oprește"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Cum arată [5, 3, 8, 1, 2] după prima trecere?",
+      "options": ["[1, 2, 3, 5, 8]", "[3, 5, 1, 2, 8]", "[3, 5, 8, 1, 2]", "[8, 5, 3, 2, 1]"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Ce înseamnă ordine crescătoare?",
+      "options": [
+        "De la cel mai mare la cel mai mic",
+        "Doar în ordine alfabetică",
+        "De la cel mai mic la cel mai mare",
+        "În ordine întâmplătoare"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Cum faci Bubble Sort să sorteze de la mare la mic?",
+      "options": [
+        "Scoți bucla din interior",
+        "Schimbi când cel din stânga e mai mare, ca înainte",
+        "Folosești sorted() în buclă",
+        "Schimbi când cel din stânga e mai mic: folosești <"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce schimbă Bubble Sort într-o listă deja sortată?",
+      "options": [
+        "Nimic: nicio pereche nu trebuie schimbată",
+        "O inversează",
+        "Schimbă fiecare pereche",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "În misiune, ce trebuie să facă sortare_bule(numere) la final?",
+      "options": [
+        "Să afișeze lista",
+        "Să returneze lista sortată",
+        "Să returneze primul element",
+        "Să returneze câte elemente are"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Câte perechi de vecini are o listă de 5 elemente?",
+      "options": ["5", "10", "4", "25"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "După a doua trecere, ce numere sunt sigur la locul lor?",
+      "options": [
+        "Cele mai mici două",
+        "Încă niciunul",
+        "Doar cel din mijloc",
+        "Cele mai mari două, la sfârșit"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Ce se întâmplă dacă j ajunge la ultimul index și codul citește numere[j + 1]?",
+      "options": [
+        "Se oprește cu IndexError",
+        "Citește primul element",
+        "Citește 0",
+        "Nimic, linia e sărită"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "De ce ar avea nevoie o schimbare în multe alte limbaje?",
+      "options": [
+        "De două bucle",
+        "De o variabilă temporară care ține o valoare",
+        "De funcția sorted()",
+        "De nimic în plus față de Python"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Bubble Sort-ul din lecție schimbă lista sau face una nouă?",
+      "options": [
+        "Face o listă nouă și o lasă pe cea veche",
+        "Șterge lista",
+        "Schimbă aceeași listă, făcând schimbări în ea",
+        "Face câte o copie la fiecare trecere"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Câte schimbări face Bubble Sort ca să sorteze [2, 1]?",
+      "options": ["0", "2", "4", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Câte schimbări face Bubble Sort ca să sorteze [3, 2, 1]?",
+      "options": ["3", "1", "2", "6"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Doi vecini egali sunt comparați cu >. Se schimbă?",
+      "options": [
+        "Da, mereu",
+        "Nu, se schimbă doar când cel din stânga e mai mare",
+        "Doar la ultima trecere",
+        "Se oprește cu o eroare"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "bs-one-compare",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{a}}, {{b}}]\nif numere[0] > numere[1]:\n    numere[0], numere[1] = numere[1], numere[0]\nprint(numere)",
+      "values": [
+        {
+          "a": 5,
+          "b": 3
+        },
+        {
+          "a": 3,
+          "b": 5
+        },
+        {
+          "a": 8,
+          "b": 1
+        },
+        {
+          "a": 2,
+          "b": 9
+        },
+        {
+          "a": 7,
+          "b": 4
+        }
+      ],
+      "mistakes": [
+        ["numere[0] > numere[1]", "numere[0] < numere[1]"],
+        ["numere[0], numere[1] = numere[1], numere[0]", "numere[0] = numere[1]"],
+        ["print(numere)", "print(numere[0])"],
+        ["print(numere)", "print(numere[1])"]
+      ]
+    },
+    {
+      "id": "bs-one-pass",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{list}}]\nfor j in range(len(numere) - 1):\n    if numere[j] > numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "7, 2, 9, 4, 1"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        },
+        {
+          "list": "3, 1, 2, 4"
+        },
+        {
+          "list": "6, 5, 4, 3"
+        },
+        {
+          "list": "1, 9, 2, 8"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] > numere[j + 1]", "numere[j] < numere[j + 1]"],
+        ["numere[j], numere[j + 1] = numere[j + 1], numere[j]", "numere[j] = numere[j + 1]"],
+        ["range(len(numere) - 1)", "range(1)"],
+        ["print(numere)", "print(sorted(numere))"]
+      ]
+    },
+    {
+      "id": "bs-full",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        },
+        {
+          "list": "42, 17, 88, 9, 23"
+        },
+        {
+          "list": "5, 4, 3, 2, 1"
+        },
+        {
+          "list": "10, 30, 20"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] > numere[j + 1]", "numere[j] < numere[j + 1]"],
+        ["for i in range(len(numere)):", "for i in range(1):"],
+        ["print(numere)", "print(numere[0])"],
+        ["numere[j], numere[j + 1] = numere[j + 1], numere[j]", "numere[j] = numere[j + 1]"]
+      ]
+    },
+    {
+      "id": "bs-count-swaps",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{list}}]\nschimbari = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\n            schimbari = schimbari + 1\nprint(schimbari)",
+      "values": [
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "3, 2, 1"
+        },
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "6, 5, 1, 2"
+        },
+        {
+          "list": "4, 3, 2, 1"
+        }
+      ],
+      "mistakes": [
+        ["schimbari = schimbari + 1", "schimbari = 1"],
+        ["print(schimbari)", "print(numere)"],
+        ["for i in range(len(numere)):", "for i in range(1):"],
+        ["numere[j] > numere[j + 1]", "numere[j] < numere[j + 1]"]
+      ]
+    },
+    {
+      "id": "bs-gap-up",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        },
+        {
+          "list": "30, 10, 20"
+        },
+        {
+          "list": "7, 2, 5"
+        }
+      ],
+      "answer": ">",
+      "wrong": ["<", "==", "="]
+    },
+    {
+      "id": "bs-gap-down",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "3, 5, 1, 8"
+        },
+        {
+          "list": "1, 4, 2"
+        },
+        {
+          "list": "6, 2, 9, 4"
+        },
+        {
+          "list": "10, 40, 20, 30"
+        }
+      ],
+      "answer": "<",
+      "wrong": [">", "==", "="]
+    },
+    {
+      "id": "bs-gap-swap",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            ___\nprint(numere)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        }
+      ],
+      "answer": "numere[j], numere[j + 1] = numere[j + 1], numere[j]",
+      "wrong": [
+        "numere[j] = numere[j + 1]",
+        "numere[j + 1] = numere[j]",
+        "numere[j], numere[j + 1] = numere[j], numere[j + 1]",
+        "numere[j] == numere[j + 1]"
+      ]
+    },
+    {
+      "id": "bs-bad-colon",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        }
+      ],
+      "bug": ["for j in range(len(numere) - 1):", "for j in range(len(numere) - 1)"]
+    },
+    {
+      "id": "bs-passes",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{list}}]\nfor i in range({{k}}):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "8, 4, 6, 2, 7",
+          "k": 1,
+          "k2": 2
+        },
+        {
+          "list": "5, 3, 8, 1, 2",
+          "k": 2,
+          "k2": 1
+        },
+        {
+          "list": "4, 3, 2, 1",
+          "k": 1,
+          "k2": 2
+        },
+        {
+          "list": "4, 3, 2, 1",
+          "k": 2,
+          "k2": 1
+        },
+        {
+          "list": "6, 1, 5, 2, 4",
+          "k": 1,
+          "k2": 2
+        },
+        {
+          "list": "6, 5, 4, 1, 2, 3",
+          "k": 2,
+          "k2": 1
+        },
+        {
+          "list": "9, 8, 7, 6, 5",
+          "k": 3,
+          "k2": 2
+        },
+        {
+          "list": "7, 3, 9, 1",
+          "k": 2,
+          "k2": 1
+        }
+      ],
+      "mistakes": [
+        ["numere[j] > numere[j + 1]", "numere[j] < numere[j + 1]"],
+        ["range({{k}})", "range(len(numere))"],
+        ["range({{k}})", "range({{k2}})"],
+        ["print(numere)", "print(sorted(numere, reverse=True))"]
+      ]
+    },
+    {
+      "id": "bs-function",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def sortare_bule(numere):\n    for i in range(len(numere)):\n        for j in range(len(numere) - 1):\n            if numere[j] > numere[j + 1]:\n                numere[j], numere[j + 1] = numere[j + 1], numere[j]\n    return numere\n\nprint(sortare_bule([{{list}}]))",
+      "values": [
+        {
+          "list": "42, 17, 88, 9, 23"
+        },
+        {
+          "list": "5, 4, 3, 2, 1"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        },
+        {
+          "list": "30, 10, 20"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        }
+      ],
+      "mistakes": [
+        ["return numere", "return numere[0]"],
+        ["return numere", "return len(numere)"],
+        ["return numere", "print(numere)"],
+        ["numere[j] > numere[j + 1]", "numere[j] < numere[j + 1]"]
+      ]
+    },
+    {
+      "id": "bs-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 8, 7"
+        },
+        {
+          "list": "6, 4, 2"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] > numere[j + 1]", "numere[j] < numere[j + 1]"],
+        ["for i in range(len(numere)):", "for i in range(1):"],
+        ["numere[j], numere[j + 1] = numere[j + 1], numere[j]", "numere[j] = numere[j + 1]"]
+      ]
+    },
+    {
+      "id": "bs-swap-vars",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "a = {{a}}\nb = {{b}}\na, b = b, a\nprint(a, b)",
+      "values": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        {
+          "a": 5,
+          "b": 9
+        },
+        {
+          "a": 42,
+          "b": 17
+        },
+        {
+          "a": 3,
+          "b": 8
+        },
+        {
+          "a": 10,
+          "b": 4
+        },
+        {
+          "a": 7,
+          "b": 70
+        }
+      ],
+      "mistakes": [
+        ["a, b = b, a", "a = b\nb = a"],
+        ["a, b = b, a\n", ""],
+        ["print(a, b)", "print(\"a\", \"b\")"],
+        ["a, b = b, a", "b = a\na = b"]
+      ]
+    },
+    {
+      "id": "bs-count-compares",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{list}}]\ncomparatii = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        comparatii = comparatii + 1\nprint(comparatii)",
+      "values": [
+        {
+          "list": "3, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "6, 5, 4, 3, 2, 1"
+        }
+      ],
+      "mistakes": [
+        ["range(len(numere) - 1)", "range(len(numere))"],
+        ["comparatii = comparatii + 1", "comparatii = 1"],
+        ["print(comparatii)", "print(len(numere))"]
+      ]
+    }
+  ]
+}

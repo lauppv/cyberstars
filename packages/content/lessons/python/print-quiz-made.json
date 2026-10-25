@@ -145,6 +145,519 @@
       "output": "Ready\nSet\nGo\nDone",
       "options": ["print(Go)", "print(\"Ready\")", "print(\"Set\")", "print(\"Done\")"],
       "answer": 0
+    },
+    {
+      "id": "three-lines-a236c7",
+      "text": "What does this program show?",
+      "code": "print(\"Wake up\")\nprint(\"Brush teeth\")\nprint(\"Eat breakfast\")",
+      "options": [
+        "Wake up\nBrush teeth\nEat breakfast",
+        "Brush teeth\nWake up\nEat breakfast",
+        "Wake up\nEat breakfast\nBrush teeth",
+        "Brush teeth\nEat breakfast"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "three-lines-5dc3b6",
+      "text": "What does this program show?",
+      "code": "print(\"3\")\nprint(\"2\")\nprint(\"1\")",
+      "options": ["3\n2\n1", "2\n3\n1", "3\n1\n2", "2\n1"],
+      "answer": 0
+    },
+    {
+      "id": "three-lines-1fea6d",
+      "text": "What does this program show?",
+      "code": "print(\"Red\")\nprint(\"Yellow\")\nprint(\"Green\")",
+      "options": [
+        "Red\nYellow\nGreen",
+        "Yellow\nRed\nGreen",
+        "Red\nGreen\nYellow",
+        "Yellow\nGreen"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "three-lines-a0aba9",
+      "text": "What does this program show?",
+      "code": "print(\"Ana\")\nprint(\"Ben\")\nprint(\"Cris\")",
+      "options": ["Ana\nBen\nCris", "Ben\nAna\nCris", "Ana\nCris\nBen", "Ben\nCris"],
+      "answer": 0
+    },
+    {
+      "id": "one-line-5d104e",
+      "text": "Which line shows this?",
+      "output": "Hi there",
+      "options": [
+        "print(\"Hi there\")",
+        "print(Hi there)",
+        "Print(\"Hi there\")",
+        "print \"Hi there\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "one-line-8e774f",
+      "text": "Which line shows this?",
+      "output": "I am 10",
+      "options": [
+        "print(\"I am 10\")",
+        "print(I am 10)",
+        "Print(\"I am 10\")",
+        "print \"I am 10\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "one-line-a82956",
+      "text": "Which line shows this?",
+      "output": "Let's go",
+      "options": [
+        "print(\"Let's go\")",
+        "print(Let's go)",
+        "Print(\"Let's go\")",
+        "print \"Let's go\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "one-line-ec23a1",
+      "text": "Which line shows this?",
+      "output": "Space is big",
+      "options": [
+        "print(\"Space is big\")",
+        "print(Space is big)",
+        "Print(\"Space is big\")",
+        "print \"Space is big\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-ef0fbb",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "print(___)",
+      "output": "5 + 3",
+      "options": ["\"5 + 3\"", "5 + 3", "\"5+3\"", "\"53\""],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-f63720",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "print(___)",
+      "output": "10 + 2",
+      "options": ["\"10 + 2\"", "10 + 2", "\"10+2\"", "\"102\""],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-6860fe",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "print(___)",
+      "output": "7 + 7",
+      "options": ["\"7 + 7\"", "7 + 7", "\"7+7\"", "\"77\""],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-cbc2b3",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "print(___)",
+      "output": "4 + 1",
+      "options": ["\"4 + 1\"", "4 + 1", "\"4+1\"", "\"41\""],
+      "answer": 0
+    },
+    {
+      "id": "gap-last-8d2ada",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "print(\"Knock knock\")\nprint(\"Who's there?\")\n___",
+      "output": "Knock knock\nWho's there?\nPython",
+      "options": [
+        "print(\"Python\")",
+        "print(Python)",
+        "print \"Python\"",
+        "print(\"Who's there?\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gap-last-fee320",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "print(\"Monday\")\nprint(\"Tuesday\")\n___",
+      "output": "Monday\nTuesday\nWednesday",
+      "options": [
+        "print(\"Wednesday\")",
+        "print(Wednesday)",
+        "print \"Wednesday\"",
+        "print(\"Tuesday\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gap-last-742254",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "print(\"Start\")\nprint(\"Middle\")\n___",
+      "output": "Start\nMiddle\nEnd",
+      "options": ["print(\"End\")", "print(End)", "print \"End\"", "print(\"Middle\")"],
+      "answer": 0
+    },
+    {
+      "id": "bad-quote-78eb33",
+      "text": "Which line stops this program from printing this?",
+      "code": "print(\"Hello\")\nprint(\"My name is Ben)\nprint(\"I am 11\")\nprint(\"Bye\")",
+      "output": "Hello\nMy name is Ben\nI am 11\nBye",
+      "options": [
+        "print(\"My name is Ben)",
+        "print(\"Hello\")",
+        "print(\"I am 11\")",
+        "print(\"Bye\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-quote-8c5eef",
+      "text": "Which line stops this program from printing this?",
+      "code": "print(\"Planet one\")\nprint(\"Planet two)\nprint(\"Planet three\")\nprint(\"Home\")",
+      "output": "Planet one\nPlanet two\nPlanet three\nHome",
+      "options": [
+        "print(\"Planet two)",
+        "print(\"Planet one\")",
+        "print(\"Planet three\")",
+        "print(\"Home\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-quote-3bc095",
+      "text": "Which line stops this program from printing this?",
+      "code": "print(\"Step 1\")\nprint(\"Step 2)\nprint(\"Step 3\")\nprint(\"Done\")",
+      "output": "Step 1\nStep 2\nStep 3\nDone",
+      "options": ["print(\"Step 2)", "print(\"Step 1\")", "print(\"Step 3\")", "print(\"Done\")"],
+      "answer": 0
+    },
+    {
+      "id": "bad-case-5ddae1",
+      "text": "Which line stops this program from printing this?",
+      "code": "print(\"I like pizza\")\nprint(\"I like pasta\")\nprint(\"I like soup\")\nPrint(\"I like cake\")",
+      "output": "I like pizza\nI like pasta\nI like soup\nI like cake",
+      "options": [
+        "Print(\"I like cake\")",
+        "print(\"I like pizza\")",
+        "print(\"I like pasta\")",
+        "print(\"I like soup\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-case-ff7c22",
+      "text": "Which line stops this program from printing this?",
+      "code": "print(\"One\")\nprint(\"Two\")\nprint(\"Three\")\nPrint(\"Four\")",
+      "output": "One\nTwo\nThree\nFour",
+      "options": ["Print(\"Four\")", "print(\"One\")", "print(\"Two\")", "print(\"Three\")"],
+      "answer": 0
+    },
+    {
+      "id": "var-kent-315248",
+      "text": "What does this print?",
+      "code": "Kent = \"Booooo\"\nname = Kent\nprint(name)",
+      "options": ["Booooo", "Kent", "name", "Kent Booooo"],
+      "answer": 0
+    },
+    {
+      "id": "var-kent-fbc119",
+      "text": "What does this print?",
+      "code": "Lance = \"Hello there\"\nname = Lance\nprint(name)",
+      "options": ["Hello there", "Lance", "name", "Lance Hello there"],
+      "answer": 0
+    },
+    {
+      "id": "var-kent-e43ce6",
+      "text": "What does this print?",
+      "code": "Paul = \"Pizza time\"\nname = Paul\nprint(name)",
+      "options": ["Pizza time", "Paul", "name", "Paul Pizza time"],
+      "answer": 0
+    },
+    {
+      "id": "var-again-1d0c78",
+      "text": "What does this print?",
+      "code": "name = \"Tommy\"\nname = \"Lance\"\nprint(name)",
+      "options": ["Lance", "Tommy", "name", "Tommy\nLance"],
+      "answer": 0
+    },
+    {
+      "id": "var-again-49f128",
+      "text": "What does this print?",
+      "code": "name = \"Ana\"\nname = \"Ben\"\nprint(name)",
+      "options": ["Ben", "Ana", "name", "Ana\nBen"],
+      "answer": 0
+    },
+    {
+      "id": "var-swap-f0d8fe",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Shadow\"\nprint(name)\n___\nprint(name)",
+      "output": "Shadow\nJess",
+      "options": ["name = \"Jess\"", "name = Jess", "print(\"Jess\")", "\"Jess\""],
+      "answer": 0
+    },
+    {
+      "id": "var-swap-1df4ca",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Lance\"\nprint(name)\n___\nprint(name)",
+      "output": "Lance\nPaul",
+      "options": ["name = \"Paul\"", "name = Paul", "print(\"Paul\")", "\"Paul\""],
+      "answer": 0
+    },
+    {
+      "id": "int-sum-97a50f",
+      "text": "What does this print?",
+      "code": "a = 2\nb = 6\nc = a + b\nprint(c)",
+      "options": ["8", "c", "a + b", "26"],
+      "answer": 0
+    },
+    {
+      "id": "int-sum-ad12ed",
+      "text": "What does this print?",
+      "code": "a = 10\nb = 5\nc = a + b\nprint(c)",
+      "options": ["15", "c", "a + b", "105"],
+      "answer": 0
+    },
+    {
+      "id": "int-sum-f36ece",
+      "text": "What does this print?",
+      "code": "a = 7\nb = 3\nc = a + b\nprint(c)",
+      "options": ["10", "c", "a + b", "73"],
+      "answer": 0
+    },
+    {
+      "id": "int-plus-one-f56b08",
+      "text": "What does this print?",
+      "code": "n = 10\nn = n + 1\nprint(n)",
+      "options": ["11", "10", "n + 1", "n"],
+      "answer": 0
+    },
+    {
+      "id": "int-plus-one-1951a8",
+      "text": "What does this print?",
+      "code": "n = 4\nn = n + 1\nprint(n)",
+      "options": ["5", "4", "n + 1", "n"],
+      "answer": 0
+    },
+    {
+      "id": "int-plus-one-2b2bc6",
+      "text": "What does this print?",
+      "code": "n = 99\nn = n + 1\nprint(n)",
+      "options": ["100", "99", "n + 1", "n"],
+      "answer": 0
+    },
+    {
+      "id": "int-first-71489c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "x = ___\nprint(x)",
+      "output": "45",
+      "options": ["23 + 22", "\"23 + 22\"", "2322", "23 - 22"],
+      "answer": 0
+    },
+    {
+      "id": "int-first-f57c2d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "x = ___\nprint(x)",
+      "output": "42",
+      "options": ["40 + 2", "\"40 + 2\"", "402", "40 - 2"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-gap-a9eca6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Quincy\"\nage = 32\nprint(f\"My name is {___}\")",
+      "output": "My name is Quincy",
+      "options": ["name", "\"name\"", "age", "Name"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-gap-f31819",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Cortez\"\nage = 57\nprint(f\"My name is {___}\")",
+      "output": "My name is Cortez",
+      "options": ["name", "\"name\"", "age", "Name"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-gap-f0f760",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Ana\"\nage = 12\nprint(f\"My name is {___}\")",
+      "output": "My name is Ana",
+      "options": ["name", "\"name\"", "age", "Name"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-a99b08",
+      "text": "What does this print?",
+      "code": "name = \"Quincy\"\nage = 32\nprint(f\"My name is {name} and I am {age}\")",
+      "options": [
+        "My name is Quincy and I am 32",
+        "My name is {name} and I am {age}",
+        "My name is name and I am 32",
+        "My name is Quincy and I am Quincy"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-139a2f",
+      "text": "What does this print?",
+      "code": "name = \"Ana\"\nage = 12\nprint(f\"My name is {name} and I am {age}\")",
+      "options": [
+        "My name is Ana and I am 12",
+        "My name is {name} and I am {age}",
+        "My name is name and I am 12",
+        "My name is Ana and I am Ana"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-63a7c5",
+      "text": "What does this print?",
+      "code": "name = \"Paul\"\nage = 40\nprint(f\"My name is {name} and I am {age}\")",
+      "options": [
+        "My name is Paul and I am 40",
+        "My name is {name} and I am {age}",
+        "My name is name and I am 40",
+        "My name is Paul and I am Paul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-which-458091",
+      "text": "Which program shows this?",
+      "output": "Pilot Shadow is flying Orion",
+      "options": [
+        "pilot = \"Shadow\"\nship = \"Orion\"\nprint(f\"Pilot {pilot} is flying {ship}\")",
+        "pilot = \"Shadow\"\nship = \"Orion\"\nprint(\"Pilot {pilot} is flying {ship}\")",
+        "pilot = \"Shadow\"\nship = \"Orion\"\nprint(f\"Pilot {pilot} is flying ship\")",
+        "pilot = \"Shadow\"\nship = \"Orion\"\nprint(f\"Pilot {ship} is flying {ship}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-which-4f2301",
+      "text": "Which program shows this?",
+      "output": "Pilot Jess is flying Nova",
+      "options": [
+        "pilot = \"Jess\"\nship = \"Nova\"\nprint(f\"Pilot {pilot} is flying {ship}\")",
+        "pilot = \"Jess\"\nship = \"Nova\"\nprint(\"Pilot {pilot} is flying {ship}\")",
+        "pilot = \"Jess\"\nship = \"Nova\"\nprint(f\"Pilot {pilot} is flying ship\")",
+        "pilot = \"Jess\"\nship = \"Nova\"\nprint(f\"Pilot {ship} is flying {ship}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-broken-83a86f",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = Shadow\nlevel = 42\nhealth = 97.5\nprint(f\"Player {name}({level}) has {health} health\")",
+      "output": "Player Shadow(42) has 97.5 health",
+      "options": [
+        "name = Shadow",
+        "level = 42",
+        "health = 97.5",
+        "print(f\"Player {name}({level}) has {health} health\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-broken-7f510c",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = Ana\nlevel = 7\nhealth = 50.5\nprint(f\"Player {name}({level}) has {health} health\")",
+      "output": "Player Ana(7) has 50.5 health",
+      "options": [
+        "name = Ana",
+        "level = 7",
+        "health = 50.5",
+        "print(f\"Player {name}({level}) has {health} health\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-broken-1a861b",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = Ben\nlevel = 12\nhealth = 80.25\nprint(f\"Player {name}({level}) has {health} health\")",
+      "output": "Player Ben(12) has 80.25 health",
+      "options": [
+        "name = Ben",
+        "level = 12",
+        "health = 80.25",
+        "print(f\"Player {name}({level}) has {health} health\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-8e4a08",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Shadow\"\nlevel = 42\n___\nprint(f\"{name} is level {level} in {guild}\")",
+      "output": "Shadow is level 42 in CyberStars",
+      "options": [
+        "guild = \"CyberStars\"",
+        "guild = CyberStars",
+        "guild = \"guild\"",
+        "\"CyberStars\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-a47dd8",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Ana\"\nlevel = 7\n___\nprint(f\"{name} is level {level} in {guild}\")",
+      "output": "Ana is level 7 in Rockets",
+      "options": ["guild = \"Rockets\"", "guild = Rockets", "guild = \"guild\"", "\"Rockets\""],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-65c4f2",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"Ben\"\nlevel = 12\n___\nprint(f\"{name} is level {level} in {guild}\")",
+      "output": "Ben is level 12 in Pirates",
+      "options": ["guild = \"Pirates\"", "guild = Pirates", "guild = \"guild\"", "\"Pirates\""],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-325928",
+      "text": "What does this print?",
+      "code": "a = 1\na = a + 2\n# a = a + 3\nprint(a)",
+      "options": ["3", "6", "1", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-cc722f",
+      "text": "What does this print?",
+      "code": "a = 5\na = a + 10\n# a = a + 100\nprint(a)",
+      "options": ["15", "115", "5", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-a7ede8",
+      "text": "What does this print?",
+      "code": "a = 2\na = a + 3\n# a = a + 4\nprint(a)",
+      "options": ["5", "9", "2", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-which-27149b",
+      "text": "Which program shows this?",
+      "output": "Ship ready\nLaunch",
+      "options": [
+        "print(\"Ship ready\")\n# print(\"Wind: 40 km/h\")\nprint(\"Launch\")",
+        "print(\"Ship ready\")\nprint(\"Wind: 40 km/h\")\nprint(\"Launch\")",
+        "print(\"Ship ready\")\n# print(\"Wind: 40 km/h\")\n# print(\"Launch\")",
+        "# print(\"Ship ready\")\n# print(\"Wind: 40 km/h\")\nprint(\"Launch\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "comment-which-05c263",
+      "text": "Which program shows this?",
+      "output": "Good night\nSee you",
+      "options": [
+        "print(\"Good night\")\n# print(\"Secret\")\nprint(\"See you\")",
+        "print(\"Good night\")\nprint(\"Secret\")\nprint(\"See you\")",
+        "print(\"Good night\")\n# print(\"Secret\")\n# print(\"See you\")",
+        "# print(\"Good night\")\n# print(\"Secret\")\nprint(\"See you\")"
+      ],
+      "answer": 0
     }
   ]
 }

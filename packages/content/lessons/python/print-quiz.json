@@ -180,6 +180,102 @@
       "text": "A program has print(\"Hello\") on its first line and print(\"Bye\") on its second. What does it show?",
       "options": ["Hello\nBye", "Bye\nHello", "Hello Bye", "Only Bye"],
       "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "Why does `print(hey, I like pizza)` stop with an error?",
+      "options": [
+        "The text has no quotes around it",
+        "print() can't show commas",
+        "The line is too long",
+        "The word pizza isn't allowed"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What do the quotes in `print(\"Hi\")` tell Python?",
+      "options": [
+        "Where the text to show starts and ends",
+        "To show the text with quotes around it",
+        "That the line should be skipped",
+        "That Hi is a number"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Which of these lines does Python understand?",
+      "options": ["Print(\"Hi\")", "pritn(\"Hi\")", "print(\"Hi\")", "print[\"Hi\"]"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "In what order does Python run the lines of a program?",
+      "options": [
+        "From the top down, one after another",
+        "From the bottom up",
+        "All at the same time",
+        "The shortest line first"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "Why doesn't this program work?",
+      "code": "name = Paul\nprint(name)",
+      "options": [
+        "Paul has no quotes, so Python looks for a variable called Paul",
+        "print needs a capital P",
+        "A variable can't be called name",
+        "It should be print(\"name\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What do we call text written between quotes, like \"Paul\"?",
+      "options": ["A variable", "A string", "A comment", "An integer"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "What does Python do with `x = 23 + 22`?",
+      "options": [
+        "It stores 23 in x and skips the rest",
+        "It stores the text 23 + 22 in x",
+        "It works out 23 + 22, then stores 45 in x",
+        "It prints 45"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Which of these is a number with decimals?",
+      "options": ["314", "\"3.14\"", "-15", "3.14"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does the f in `f\"Hi {name}\"` tell Python?",
+      "options": [
+        "To put each variable's value in place of its {}",
+        "To print the text in bold",
+        "To turn the text into a number",
+        "Nothing, it's only there for looks"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does Python do with a line that starts with #?",
+      "options": [
+        "It prints it",
+        "It skips it: the line is a comment",
+        "It stops with an error",
+        "It runs it twice"
+      ],
+      "answer": 1
     }
   ],
   "templates": [
@@ -301,6 +397,462 @@
         }
       ],
       "bug": ["print(\"{{c}}\")", "print({{c}})"]
+    },
+    {
+      "id": "three-lines",
+      "kind": "prints",
+      "text": "What does this program show?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")",
+      "values": [
+        {
+          "a": "Wake up",
+          "b": "Brush teeth",
+          "c": "Eat breakfast"
+        },
+        {
+          "a": "3",
+          "b": "2",
+          "c": "1"
+        },
+        {
+          "a": "Red",
+          "b": "Yellow",
+          "c": "Green"
+        },
+        {
+          "a": "Ana",
+          "b": "Ben",
+          "c": "Cris"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{a}}\")\nprint(\"{{b}}\")", "print(\"{{b}}\")\nprint(\"{{a}}\")"],
+        ["print(\"{{b}}\")\nprint(\"{{c}}\")", "print(\"{{c}}\")\nprint(\"{{b}}\")"],
+        ["print(\"{{a}}\")\n", ""],
+        ["print(\"{{c}}\")", "print(\"{{a}}\")"]
+      ]
+    },
+    {
+      "id": "one-line",
+      "kind": "which-program",
+      "text": "Which line shows this?",
+      "code": "print(\"{{text}}\")",
+      "values": [
+        {
+          "text": "Hi there"
+        },
+        {
+          "text": "I am 10"
+        },
+        {
+          "text": "Let's go"
+        },
+        {
+          "text": "Space is big"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{text}}\")", "print({{text}})"],
+        ["print", "Print"],
+        ["(\"{{text}}\")", " \"{{text}}\""],
+        ["\"{{text}}\"", "\"{{text}}"]
+      ]
+    },
+    {
+      "id": "sum-text",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "print(___)",
+      "values": [
+        {
+          "a": 5,
+          "b": 3
+        },
+        {
+          "a": 10,
+          "b": 2
+        },
+        {
+          "a": 7,
+          "b": 7
+        },
+        {
+          "a": 4,
+          "b": 1
+        }
+      ],
+      "answer": "\"{{a}} + {{b}}\"",
+      "wrong": ["{{a}} + {{b}}", "\"{{a}}+{{b}}\"", "\"{{a}}{{b}}\""]
+    },
+    {
+      "id": "gap-last",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\n___",
+      "values": [
+        {
+          "a": "Knock knock",
+          "b": "Who's there?",
+          "c": "Python"
+        },
+        {
+          "a": "Monday",
+          "b": "Tuesday",
+          "c": "Wednesday"
+        },
+        {
+          "a": "Start",
+          "b": "Middle",
+          "c": "End"
+        }
+      ],
+      "answer": "print(\"{{c}}\")",
+      "wrong": ["print({{c}})", "print \"{{c}}\"", "print(\"{{b}}\")", "Print(\"{{c}}\")"]
+    },
+    {
+      "id": "bad-quote",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "Hello",
+          "b": "My name is Ben",
+          "c": "I am 11",
+          "d": "Bye"
+        },
+        {
+          "a": "Planet one",
+          "b": "Planet two",
+          "c": "Planet three",
+          "d": "Home"
+        },
+        {
+          "a": "Step 1",
+          "b": "Step 2",
+          "c": "Step 3",
+          "d": "Done"
+        }
+      ],
+      "bug": ["print(\"{{b}}\")", "print(\"{{b}})"]
+    },
+    {
+      "id": "bad-case",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "I like pizza",
+          "b": "I like pasta",
+          "c": "I like soup",
+          "d": "I like cake"
+        },
+        {
+          "a": "One",
+          "b": "Two",
+          "c": "Three",
+          "d": "Four"
+        }
+      ],
+      "bug": ["print(\"{{d}}\")", "Print(\"{{d}}\")"]
+    },
+    {
+      "id": "var-kent",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = \"{{text}}\"\nname = {{v}}\nprint(name)",
+      "values": [
+        {
+          "v": "Kent",
+          "text": "Booooo"
+        },
+        {
+          "v": "Lance",
+          "text": "Hello there"
+        },
+        {
+          "v": "Paul",
+          "text": "Pizza time"
+        }
+      ],
+      "mistakes": [
+        ["name = {{v}}", "name = \"{{v}}\""],
+        ["print(name)", "print(\"name\")"],
+        ["print(name)", "print(\"{{v}}\", name)"]
+      ]
+    },
+    {
+      "id": "var-again",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "name = \"{{a}}\"\nname = \"{{b}}\"\nprint(name)",
+      "values": [
+        {
+          "a": "Tommy",
+          "b": "Lance"
+        },
+        {
+          "a": "Ana",
+          "b": "Ben"
+        }
+      ],
+      "mistakes": [
+        ["name = \"{{b}}\"\n", ""],
+        ["print(name)", "print(\"name\")"],
+        ["print(name)", "print(\"{{a}}\")\nprint(name)"]
+      ]
+    },
+    {
+      "id": "var-swap",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"{{a}}\"\nprint(name)\n___\nprint(name)",
+      "values": [
+        {
+          "a": "Shadow",
+          "b": "Jess"
+        },
+        {
+          "a": "Lance",
+          "b": "Paul"
+        }
+      ],
+      "answer": "name = \"{{b}}\"",
+      "wrong": ["name = {{b}}", "print(\"{{b}}\")", "\"{{b}}\""]
+    },
+    {
+      "id": "int-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "a = {{a}}\nb = {{b}}\nc = a + b\nprint(c)",
+      "values": [
+        {
+          "a": 2,
+          "b": 6
+        },
+        {
+          "a": 10,
+          "b": 5
+        },
+        {
+          "a": 7,
+          "b": 3
+        }
+      ],
+      "mistakes": [
+        ["print(c)", "print(\"c\")"],
+        ["c = a + b", "c = \"a + b\""],
+        ["a = {{a}}\nb = {{b}}", "a = \"{{a}}\"\nb = \"{{b}}\""]
+      ]
+    },
+    {
+      "id": "int-plus-one",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "n = {{n}}\nn = n + 1\nprint(n)",
+      "values": [
+        {
+          "n": 10
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 99
+        }
+      ],
+      "mistakes": [
+        ["n = n + 1", "n + 1"],
+        ["n = n + 1", "n = \"n + 1\""],
+        ["print(n)", "print(\"n\")"]
+      ]
+    },
+    {
+      "id": "int-first",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "x = ___\nprint(x)",
+      "values": [
+        {
+          "a": 23,
+          "b": 22
+        },
+        {
+          "a": 40,
+          "b": 2
+        }
+      ],
+      "answer": "{{a}} + {{b}}",
+      "wrong": ["\"{{a}} + {{b}}\"", "{{a}}{{b}}", "{{a}} - {{b}}"]
+    },
+    {
+      "id": "fstring-gap",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"{{name}}\"\nage = {{age}}\nprint(f\"My name is {___}\")",
+      "values": [
+        {
+          "name": "Quincy",
+          "age": 32
+        },
+        {
+          "name": "Cortez",
+          "age": 57
+        },
+        {
+          "name": "Ana",
+          "age": 12
+        }
+      ],
+      "answer": "name",
+      "wrong": ["\"name\"", "age", "Name"]
+    },
+    {
+      "id": "fstring-no-f",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "name = \"{{name}}\"\nage = {{age}}\nprint(f\"My name is {name} and I am {age}\")",
+      "values": [
+        {
+          "name": "Quincy",
+          "age": 32
+        },
+        {
+          "name": "Ana",
+          "age": 12
+        },
+        {
+          "name": "Paul",
+          "age": 40
+        }
+      ],
+      "mistakes": [
+        ["print(f\"", "print(\""],
+        [" {name} ", " name "],
+        ["{age}\"", "{name}\""]
+      ]
+    },
+    {
+      "id": "fstring-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "pilot = \"{{p}}\"\nship = \"{{s}}\"\nprint(f\"Pilot {pilot} is flying {ship}\")",
+      "values": [
+        {
+          "p": "Shadow",
+          "s": "Orion"
+        },
+        {
+          "p": "Jess",
+          "s": "Nova"
+        }
+      ],
+      "mistakes": [
+        ["print(f\"", "print(\""],
+        ["{ship}", "ship"],
+        ["{pilot}", "{ship}"]
+      ]
+    },
+    {
+      "id": "card-broken",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"{{name}}\"\nlevel = {{level}}\nhealth = {{health}}\nprint(f\"Player {name}({level}) has {health} health\")",
+      "values": [
+        {
+          "name": "Shadow",
+          "level": 42,
+          "health": 97.5
+        },
+        {
+          "name": "Ana",
+          "level": 7,
+          "health": 50.5
+        },
+        {
+          "name": "Ben",
+          "level": 12,
+          "health": 80.25
+        }
+      ],
+      "bug": ["name = \"{{name}}\"", "name = {{name}}"]
+    },
+    {
+      "id": "card-gap",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "name = \"{{name}}\"\nlevel = {{level}}\n___\nprint(f\"{name} is level {level} in {guild}\")",
+      "values": [
+        {
+          "name": "Shadow",
+          "level": 42,
+          "guild": "CyberStars"
+        },
+        {
+          "name": "Ana",
+          "level": 7,
+          "guild": "Rockets"
+        },
+        {
+          "name": "Ben",
+          "level": 12,
+          "guild": "Pirates"
+        }
+      ],
+      "answer": "guild = \"{{guild}}\"",
+      "wrong": ["guild = {{guild}}", "guild = \"guild\"", "\"{{guild}}\""]
+    },
+    {
+      "id": "comment-skip",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "a = {{a}}\na = a + {{b}}\n# a = a + {{c}}\nprint(a)",
+      "values": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        },
+        {
+          "a": 5,
+          "b": 10,
+          "c": 100
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "c": 4
+        }
+      ],
+      "mistakes": [
+        ["# a = a + {{c}}", "a = a + {{c}}"],
+        ["a = a + {{b}}", "a = a"],
+        ["print(a)", "print(\"a\")"]
+      ]
+    },
+    {
+      "id": "comment-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "print(\"{{a}}\")\n# print(\"{{b}}\")\nprint(\"{{c}}\")",
+      "values": [
+        {
+          "a": "Ship ready",
+          "b": "Wind: 40 km/h",
+          "c": "Launch"
+        },
+        {
+          "a": "Good night",
+          "b": "Secret",
+          "c": "See you"
+        }
+      ],
+      "mistakes": [
+        ["# print(\"{{b}}\")", "print(\"{{b}}\")"],
+        ["print(\"{{c}}\")", "# print(\"{{c}}\")"],
+        ["print(\"{{a}}\")\n", "# print(\"{{a}}\")\n"]
+      ]
     }
   ]
 }

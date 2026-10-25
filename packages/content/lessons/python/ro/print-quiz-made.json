@@ -137,7 +137,7 @@
     },
     {
       "id": "bad-line-8365eb",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"Numele meu este Ana\")\nprint(\"Am 12 ani\")\nprint(Imi place pizza)\nprint(\"CyberStars e cel mai tare\")",
       "output": "Numele meu este Ana\nAm 12 ani\nImi place pizza\nCyberStars e cel mai tare",
       "options": [
@@ -150,7 +150,7 @@
     },
     {
       "id": "bad-line-fd890b",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"Pe locuri\")\nprint(\"Fiti gata\")\nprint(Start)\nprint(\"Gata\")",
       "output": "Pe locuri\nFiti gata\nStart\nGata",
       "options": [
@@ -158,6 +158,529 @@
         "print(\"Pe locuri\")",
         "print(\"Fiti gata\")",
         "print(\"Gata\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "three-lines-a236c7",
+      "text": "Ce afișează programul?",
+      "code": "print(\"Trezirea\")\nprint(\"Spalatul pe dinti\")\nprint(\"Micul dejun\")",
+      "options": [
+        "Trezirea\nSpalatul pe dinti\nMicul dejun",
+        "Spalatul pe dinti\nTrezirea\nMicul dejun",
+        "Trezirea\nMicul dejun\nSpalatul pe dinti",
+        "Spalatul pe dinti\nMicul dejun"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "three-lines-5dc3b6",
+      "text": "Ce afișează programul?",
+      "code": "print(\"3\")\nprint(\"2\")\nprint(\"1\")",
+      "options": ["3\n2\n1", "2\n3\n1", "3\n1\n2", "2\n1"],
+      "answer": 0
+    },
+    {
+      "id": "three-lines-1fea6d",
+      "text": "Ce afișează programul?",
+      "code": "print(\"Rosu\")\nprint(\"Galben\")\nprint(\"Verde\")",
+      "options": [
+        "Rosu\nGalben\nVerde",
+        "Galben\nRosu\nVerde",
+        "Rosu\nVerde\nGalben",
+        "Galben\nVerde"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "three-lines-a0aba9",
+      "text": "Ce afișează programul?",
+      "code": "print(\"Ana\")\nprint(\"Ben\")\nprint(\"Cris\")",
+      "options": ["Ana\nBen\nCris", "Ben\nAna\nCris", "Ana\nCris\nBen", "Ben\nCris"],
+      "answer": 0
+    },
+    {
+      "id": "one-line-5d104e",
+      "text": "Care linie afișează asta?",
+      "output": "Salutare",
+      "options": [
+        "print(\"Salutare\")",
+        "print(Salutare)",
+        "Print(\"Salutare\")",
+        "print \"Salutare\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "one-line-8e774f",
+      "text": "Care linie afișează asta?",
+      "output": "Am 10 ani",
+      "options": [
+        "print(\"Am 10 ani\")",
+        "print(Am 10 ani)",
+        "Print(\"Am 10 ani\")",
+        "print \"Am 10 ani\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "one-line-a82956",
+      "text": "Care linie afișează asta?",
+      "output": "Hai sa mergem",
+      "options": [
+        "print(\"Hai sa mergem\")",
+        "print(Hai sa mergem)",
+        "Print(\"Hai sa mergem\")",
+        "print \"Hai sa mergem\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "one-line-ec23a1",
+      "text": "Care linie afișează asta?",
+      "output": "Spatiul e mare",
+      "options": [
+        "print(\"Spatiul e mare\")",
+        "print(Spatiul e mare)",
+        "Print(\"Spatiul e mare\")",
+        "print \"Spatiul e mare\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-ef0fbb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "5 + 3",
+      "options": ["\"5 + 3\"", "5 + 3", "\"5+3\"", "\"53\""],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-f63720",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "10 + 2",
+      "options": ["\"10 + 2\"", "10 + 2", "\"10+2\"", "\"102\""],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-6860fe",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "7 + 7",
+      "options": ["\"7 + 7\"", "7 + 7", "\"7+7\"", "\"77\""],
+      "answer": 0
+    },
+    {
+      "id": "sum-text-cbc2b3",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "output": "4 + 1",
+      "options": ["\"4 + 1\"", "4 + 1", "\"4+1\"", "\"41\""],
+      "answer": 0
+    },
+    {
+      "id": "gap-last-8d2ada",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"Cioc cioc\")\nprint(\"Cine e?\")\n___",
+      "output": "Cioc cioc\nCine e?\nPython",
+      "options": ["print(\"Python\")", "print(Python)", "print \"Python\"", "print(\"Cine e?\")"],
+      "answer": 0
+    },
+    {
+      "id": "gap-last-fee320",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"Luni\")\nprint(\"Marti\")\n___",
+      "output": "Luni\nMarti\nMiercuri",
+      "options": [
+        "print(\"Miercuri\")",
+        "print(Miercuri)",
+        "print \"Miercuri\"",
+        "print(\"Marti\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gap-last-742254",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"Inceput\")\nprint(\"Mijloc\")\n___",
+      "output": "Inceput\nMijloc\nSfarsit",
+      "options": ["print(\"Sfarsit\")", "print(Sfarsit)", "print \"Sfarsit\"", "print(\"Mijloc\")"],
+      "answer": 0
+    },
+    {
+      "id": "bad-quote-78eb33",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "print(\"Salut\")\nprint(\"Ma numesc Ben)\nprint(\"Am 11 ani\")\nprint(\"Pa\")",
+      "output": "Salut\nMa numesc Ben\nAm 11 ani\nPa",
+      "options": [
+        "print(\"Ma numesc Ben)",
+        "print(\"Salut\")",
+        "print(\"Am 11 ani\")",
+        "print(\"Pa\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-quote-8c5eef",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "print(\"Planeta unu\")\nprint(\"Planeta doi)\nprint(\"Planeta trei\")\nprint(\"Acasa\")",
+      "output": "Planeta unu\nPlaneta doi\nPlaneta trei\nAcasa",
+      "options": [
+        "print(\"Planeta doi)",
+        "print(\"Planeta unu\")",
+        "print(\"Planeta trei\")",
+        "print(\"Acasa\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-quote-3bc095",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "print(\"Pasul 1\")\nprint(\"Pasul 2)\nprint(\"Pasul 3\")\nprint(\"Gata\")",
+      "output": "Pasul 1\nPasul 2\nPasul 3\nGata",
+      "options": [
+        "print(\"Pasul 2)",
+        "print(\"Pasul 1\")",
+        "print(\"Pasul 3\")",
+        "print(\"Gata\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-case-5ddae1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "print(\"Imi place pizza\")\nprint(\"Imi plac pastele\")\nprint(\"Imi place supa\")\nPrint(\"Imi place tortul\")",
+      "output": "Imi place pizza\nImi plac pastele\nImi place supa\nImi place tortul",
+      "options": [
+        "Print(\"Imi place tortul\")",
+        "print(\"Imi place pizza\")",
+        "print(\"Imi plac pastele\")",
+        "print(\"Imi place supa\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bad-case-ff7c22",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "print(\"Unu\")\nprint(\"Doi\")\nprint(\"Trei\")\nPrint(\"Patru\")",
+      "output": "Unu\nDoi\nTrei\nPatru",
+      "options": ["Print(\"Patru\")", "print(\"Unu\")", "print(\"Doi\")", "print(\"Trei\")"],
+      "answer": 0
+    },
+    {
+      "id": "var-kent-315248",
+      "text": "Ce afișează?",
+      "code": "Kent = \"Booooo\"\nnume = Kent\nprint(nume)",
+      "options": ["Booooo", "Kent", "nume", "Kent Booooo"],
+      "answer": 0
+    },
+    {
+      "id": "var-kent-fbc119",
+      "text": "Ce afișează?",
+      "code": "Lance = \"Salutare\"\nnume = Lance\nprint(nume)",
+      "options": ["Salutare", "Lance", "nume", "Lance Salutare"],
+      "answer": 0
+    },
+    {
+      "id": "var-kent-e43ce6",
+      "text": "Ce afișează?",
+      "code": "Paul = \"Ora de pizza\"\nnume = Paul\nprint(nume)",
+      "options": ["Ora de pizza", "Paul", "nume", "Paul Ora de pizza"],
+      "answer": 0
+    },
+    {
+      "id": "var-again-1d0c78",
+      "text": "Ce afișează?",
+      "code": "nume = \"Tommy\"\nnume = \"Lance\"\nprint(nume)",
+      "options": ["Lance", "Tommy", "nume", "Tommy\nLance"],
+      "answer": 0
+    },
+    {
+      "id": "var-again-49f128",
+      "text": "Ce afișează?",
+      "code": "nume = \"Ana\"\nnume = \"Ben\"\nprint(nume)",
+      "options": ["Ben", "Ana", "nume", "Ana\nBen"],
+      "answer": 0
+    },
+    {
+      "id": "var-swap-f0d8fe",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Shadow\"\nprint(nume)\n___\nprint(nume)",
+      "output": "Shadow\nJess",
+      "options": ["nume = \"Jess\"", "nume = Jess", "print(\"Jess\")", "\"Jess\""],
+      "answer": 0
+    },
+    {
+      "id": "var-swap-1df4ca",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Lance\"\nprint(nume)\n___\nprint(nume)",
+      "output": "Lance\nPaul",
+      "options": ["nume = \"Paul\"", "nume = Paul", "print(\"Paul\")", "\"Paul\""],
+      "answer": 0
+    },
+    {
+      "id": "int-sum-97a50f",
+      "text": "Ce afișează?",
+      "code": "a = 2\nb = 6\nc = a + b\nprint(c)",
+      "options": ["8", "c", "a + b", "26"],
+      "answer": 0
+    },
+    {
+      "id": "int-sum-ad12ed",
+      "text": "Ce afișează?",
+      "code": "a = 10\nb = 5\nc = a + b\nprint(c)",
+      "options": ["15", "c", "a + b", "105"],
+      "answer": 0
+    },
+    {
+      "id": "int-sum-f36ece",
+      "text": "Ce afișează?",
+      "code": "a = 7\nb = 3\nc = a + b\nprint(c)",
+      "options": ["10", "c", "a + b", "73"],
+      "answer": 0
+    },
+    {
+      "id": "int-plus-one-f56b08",
+      "text": "Ce afișează?",
+      "code": "n = 10\nn = n + 1\nprint(n)",
+      "options": ["11", "10", "n + 1", "n"],
+      "answer": 0
+    },
+    {
+      "id": "int-plus-one-1951a8",
+      "text": "Ce afișează?",
+      "code": "n = 4\nn = n + 1\nprint(n)",
+      "options": ["5", "4", "n + 1", "n"],
+      "answer": 0
+    },
+    {
+      "id": "int-plus-one-2b2bc6",
+      "text": "Ce afișează?",
+      "code": "n = 99\nn = n + 1\nprint(n)",
+      "options": ["100", "99", "n + 1", "n"],
+      "answer": 0
+    },
+    {
+      "id": "int-first-71489c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "x = ___\nprint(x)",
+      "output": "45",
+      "options": ["23 + 22", "\"23 + 22\"", "2322", "23 - 22"],
+      "answer": 0
+    },
+    {
+      "id": "int-first-f57c2d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "x = ___\nprint(x)",
+      "output": "42",
+      "options": ["40 + 2", "\"40 + 2\"", "402", "40 - 2"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-gap-a9eca6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Quincy\"\nvarsta = 32\nprint(f\"Numele meu este {___}\")",
+      "output": "Numele meu este Quincy",
+      "options": ["nume", "\"nume\"", "varsta", "Nume"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-gap-f31819",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Cortez\"\nvarsta = 57\nprint(f\"Numele meu este {___}\")",
+      "output": "Numele meu este Cortez",
+      "options": ["nume", "\"nume\"", "varsta", "Nume"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-gap-f0f760",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Ana\"\nvarsta = 12\nprint(f\"Numele meu este {___}\")",
+      "output": "Numele meu este Ana",
+      "options": ["nume", "\"nume\"", "varsta", "Nume"],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-a99b08",
+      "text": "Ce afișează?",
+      "code": "nume = \"Quincy\"\nvarsta = 32\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
+      "options": [
+        "Numele meu este Quincy si varsta mea e 32",
+        "Numele meu este {nume} si varsta mea e {varsta}",
+        "Numele meu este nume si varsta mea e 32",
+        "Numele meu este Quincy si varsta mea e Quincy"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-139a2f",
+      "text": "Ce afișează?",
+      "code": "nume = \"Ana\"\nvarsta = 12\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
+      "options": [
+        "Numele meu este Ana si varsta mea e 12",
+        "Numele meu este {nume} si varsta mea e {varsta}",
+        "Numele meu este nume si varsta mea e 12",
+        "Numele meu este Ana si varsta mea e Ana"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-no-f-63a7c5",
+      "text": "Ce afișează?",
+      "code": "nume = \"Paul\"\nvarsta = 40\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
+      "options": [
+        "Numele meu este Paul si varsta mea e 40",
+        "Numele meu este {nume} si varsta mea e {varsta}",
+        "Numele meu este nume si varsta mea e 40",
+        "Numele meu este Paul si varsta mea e Paul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-which-458091",
+      "text": "Care program afișează asta?",
+      "output": "Pilotul Shadow piloteaza Orion",
+      "options": [
+        "pilot = \"Shadow\"\nnava = \"Orion\"\nprint(f\"Pilotul {pilot} piloteaza {nava}\")",
+        "pilot = \"Shadow\"\nnava = \"Orion\"\nprint(\"Pilotul {pilot} piloteaza {nava}\")",
+        "pilot = \"Shadow\"\nnava = \"Orion\"\nprint(f\"Pilotul {pilot} piloteaza nava\")",
+        "pilot = \"Shadow\"\nnava = \"Orion\"\nprint(f\"Pilotul {nava} piloteaza {nava}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fstring-which-4f2301",
+      "text": "Care program afișează asta?",
+      "output": "Pilotul Jess piloteaza Nova",
+      "options": [
+        "pilot = \"Jess\"\nnava = \"Nova\"\nprint(f\"Pilotul {pilot} piloteaza {nava}\")",
+        "pilot = \"Jess\"\nnava = \"Nova\"\nprint(\"Pilotul {pilot} piloteaza {nava}\")",
+        "pilot = \"Jess\"\nnava = \"Nova\"\nprint(f\"Pilotul {pilot} piloteaza nava\")",
+        "pilot = \"Jess\"\nnava = \"Nova\"\nprint(f\"Pilotul {nava} piloteaza {nava}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-broken-83a86f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = Shadow\nnivel = 42\nviata = 97.5\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
+      "output": "Jucatorul Shadow(42) are viata 97.5",
+      "options": [
+        "nume = Shadow",
+        "nivel = 42",
+        "viata = 97.5",
+        "print(f\"Jucatorul {nume}({nivel}) are viata {viata}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-broken-7f510c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = Ana\nnivel = 7\nviata = 50.5\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
+      "output": "Jucatorul Ana(7) are viata 50.5",
+      "options": [
+        "nume = Ana",
+        "nivel = 7",
+        "viata = 50.5",
+        "print(f\"Jucatorul {nume}({nivel}) are viata {viata}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-broken-1a861b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = Ben\nnivel = 12\nviata = 80.25\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
+      "output": "Jucatorul Ben(12) are viata 80.25",
+      "options": [
+        "nume = Ben",
+        "nivel = 12",
+        "viata = 80.25",
+        "print(f\"Jucatorul {nume}({nivel}) are viata {viata}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-8e4a08",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Shadow\"\nnivel = 42\n___\nprint(f\"{nume} are nivelul {nivel} in {breasla}\")",
+      "output": "Shadow are nivelul 42 in CyberStars",
+      "options": [
+        "breasla = \"CyberStars\"",
+        "breasla = CyberStars",
+        "breasla = \"breasla\"",
+        "\"CyberStars\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-a47dd8",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Ana\"\nnivel = 7\n___\nprint(f\"{nume} are nivelul {nivel} in {breasla}\")",
+      "output": "Ana are nivelul 7 in Rachetele",
+      "options": [
+        "breasla = \"Rachetele\"",
+        "breasla = Rachetele",
+        "breasla = \"breasla\"",
+        "\"Rachetele\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "card-gap-65c4f2",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Ben\"\nnivel = 12\n___\nprint(f\"{nume} are nivelul {nivel} in {breasla}\")",
+      "output": "Ben are nivelul 12 in Piratii",
+      "options": [
+        "breasla = \"Piratii\"",
+        "breasla = Piratii",
+        "breasla = \"breasla\"",
+        "\"Piratii\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-325928",
+      "text": "Ce afișează?",
+      "code": "a = 1\na = a + 2\n# a = a + 3\nprint(a)",
+      "options": ["3", "6", "1", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-cc722f",
+      "text": "Ce afișează?",
+      "code": "a = 5\na = a + 10\n# a = a + 100\nprint(a)",
+      "options": ["15", "115", "5", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-skip-a7ede8",
+      "text": "Ce afișează?",
+      "code": "a = 2\na = a + 3\n# a = a + 4\nprint(a)",
+      "options": ["5", "9", "2", "a"],
+      "answer": 0
+    },
+    {
+      "id": "comment-which-27149b",
+      "text": "Care program afișează asta?",
+      "output": "Nava e gata\nLansare",
+      "options": [
+        "print(\"Nava e gata\")\n# print(\"Vant: 40 km/h\")\nprint(\"Lansare\")",
+        "print(\"Nava e gata\")\nprint(\"Vant: 40 km/h\")\nprint(\"Lansare\")",
+        "print(\"Nava e gata\")\n# print(\"Vant: 40 km/h\")\n# print(\"Lansare\")",
+        "# print(\"Nava e gata\")\n# print(\"Vant: 40 km/h\")\nprint(\"Lansare\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "comment-which-05c263",
+      "text": "Care program afișează asta?",
+      "output": "Noapte buna\nNe vedem",
+      "options": [
+        "print(\"Noapte buna\")\n# print(\"Secret\")\nprint(\"Ne vedem\")",
+        "print(\"Noapte buna\")\nprint(\"Secret\")\nprint(\"Ne vedem\")",
+        "print(\"Noapte buna\")\n# print(\"Secret\")\n# print(\"Ne vedem\")",
+        "# print(\"Noapte buna\")\n# print(\"Secret\")\nprint(\"Ne vedem\")"
       ],
       "answer": 0
     }

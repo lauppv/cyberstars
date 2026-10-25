@@ -1,0 +1,619 @@
+{
+  "note": "Made by npm run make:quiz from the templates in if-else-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "ie-branch-66c7d7",
+      "text": "What does this print?",
+      "code": "temperature = 14\nif temperature < 15:\n    print(\"Take a sweater\")\nelse:\n    print(\"A t-shirt is enough\")",
+      "options": [
+        "Take a sweater",
+        "A t-shirt is enough",
+        "Take a sweater\nA t-shirt is enough",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-eea487",
+      "text": "What does this print?",
+      "code": "temperature = 15\nif temperature < 15:\n    print(\"Take a sweater\")\nelse:\n    print(\"A t-shirt is enough\")",
+      "options": [
+        "A t-shirt is enough",
+        "Take a sweater",
+        "Take a sweater\nA t-shirt is enough",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-b7a9a9",
+      "text": "What does this print?",
+      "code": "score = 50\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Pass", "Fail", "Pass\nFail", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-c0bca8",
+      "text": "What does this print?",
+      "code": "score = 49\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Fail", "Pass", "Pass\nFail", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-cc886f",
+      "text": "What does this print?",
+      "code": "fuel = 1000\nif fuel > 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+      "options": ["Stable", "Danger", "Danger\nStable", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-c6d917",
+      "text": "What does this print?",
+      "code": "fuel = 1200\nif fuel > 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+      "options": ["Danger", "Stable", "Danger\nStable", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-bbf3ee",
+      "text": "What does this print?",
+      "code": "age = 18\nif age >= 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+      "options": ["You can vote", "Not yet", "You can vote\nNot yet", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-28db7d",
+      "text": "What does this print?",
+      "code": "age = 12\nif age >= 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+      "options": ["Not yet", "You can vote", "You can vote\nNot yet", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-86192f",
+      "text": "What does this print?",
+      "code": "stars = 3\nif stars == 3:\n    print(\"Full score\")\nelse:\n    print(\"Not yet\")",
+      "options": ["Full score", "Not yet", "Full score\nNot yet", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-583e93",
+      "text": "What does this print?",
+      "code": "lives = 0\nif lives == 0:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
+      "options": ["Game over", "Keep playing", "Game over\nKeep playing", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-219b0a",
+      "text": "What does this print?",
+      "code": "lives = 3\nif lives == 0:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
+      "options": ["Keep playing", "Game over", "Game over\nKeep playing", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-1f9621",
+      "text": "What does this print?",
+      "code": "code = 1111\nif code == 1234:\n    print(\"Door open\")\nelse:\n    print(\"Door locked\")",
+      "options": ["Door locked", "Door open", "Door open\nDoor locked", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-2cfab4",
+      "text": "What does this print?",
+      "code": "user = \"Tommy\"\nonline = True\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": [
+        "Tommy is playing",
+        "Tommy is offline",
+        "Tommy is playing\nTommy is offline",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-f88f30",
+      "text": "What does this print?",
+      "code": "user = \"Lance\"\nonline = False\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": [
+        "Lance is offline",
+        "Lance is playing",
+        "Lance is playing\nLance is offline",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-cbab11",
+      "text": "What does this print?",
+      "code": "user = \"Ana\"\nonline = True\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": ["Ana is playing", "Ana is offline", "Ana is playing\nAna is offline", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-7e20b4",
+      "text": "What does this print?",
+      "code": "user = \"Ben\"\nonline = False\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": ["Ben is offline", "Ben is playing", "Ben is playing\nBen is offline", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-7addfd",
+      "text": "What does this print?",
+      "code": "user = \"Cortez\"\nonline = False\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": [
+        "Cortez is offline",
+        "Cortez is playing",
+        "Cortez is playing\nCortez is offline",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-84d0c7",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "temperature = 14\nif temperature ___ 15:\n    print(\"Take a sweater\")\nelse:\n    print(\"A t-shirt is enough\")",
+      "output": "Take a sweater",
+      "options": ["<", "=", ">", ">="],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-eee204",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "score = 50\nif score ___ 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "output": "Pass",
+      "options": [">=", "=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-7f1b3d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "fuel = 1001\nif fuel ___ 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+      "output": "Danger",
+      "options": [">", "=", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-45c5e5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "age = 18\nif age ___ 18:\n    print(\"Not yet\")\nelse:\n    print(\"You can vote\")",
+      "output": "You can vote",
+      "options": ["<", "=", "<=", ">="],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-0e5c2c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "speed = 100\nif speed ___ 100:\n    print(\"Good speed\")\nelse:\n    print(\"Slow down\")",
+      "output": "Good speed",
+      "options": ["<=", "=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-96a66e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "points = 75\nif points ___ 75:\n    print(\"New record\")\nelse:\n    print(\"Try again\")",
+      "output": "New record",
+      "options": ["==", "=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-colon-9ea2fc",
+      "text": "Which line stops this program from printing this?",
+      "code": "temperature = 1200\nif temperature > 1000\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+      "output": "Danger",
+      "options": ["if temperature > 1000", "temperature = 1200", "print(\"Danger\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-colon-433591",
+      "text": "Which line stops this program from printing this?",
+      "code": "score = 30\nif score > 50\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "output": "Fail",
+      "options": ["if score > 50", "score = 30", "print(\"Pass\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-colon-5fff2e",
+      "text": "Which line stops this program from printing this?",
+      "code": "speed = 130\nif speed > 100\n    print(\"Slow down\")\nelse:\n    print(\"Good speed\")",
+      "output": "Slow down",
+      "options": ["if speed > 100", "speed = 130", "print(\"Slow down\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-colon-141888",
+      "text": "Which line stops this program from printing this?",
+      "code": "points = 90\nif points > 100\n    print(\"New record\")\nelse:\n    print(\"Try again\")",
+      "output": "Try again",
+      "options": ["if points > 100", "points = 90", "print(\"New record\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-indent-9b86c1",
+      "text": "Which line stops this program from printing this?",
+      "code": "temperature = 10\nif temperature < 15:\n    print(\"Take a sweater\")\nelse:\nprint(\"A t-shirt is enough\")",
+      "output": "Take a sweater",
+      "options": [
+        "print(\"A t-shirt is enough\")",
+        "temperature = 10",
+        "if temperature < 15:",
+        "print(\"Take a sweater\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-indent-5af52c",
+      "text": "Which line stops this program from printing this?",
+      "code": "score = 70\nif score < 50:\n    print(\"Fail\")\nelse:\nprint(\"Pass\")",
+      "output": "Pass",
+      "options": ["print(\"Pass\")", "score = 70", "if score < 50:", "print(\"Fail\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-indent-63d685",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 9\nif age < 18:\n    print(\"Not yet\")\nelse:\nprint(\"You can vote\")",
+      "output": "Not yet",
+      "options": ["print(\"You can vote\")", "age = 9", "if age < 18:", "print(\"Not yet\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-indent-32e317",
+      "text": "Which line stops this program from printing this?",
+      "code": "speed = 60\nif speed < 100:\n    print(\"Good speed\")\nelse:\nprint(\"Slow down\")",
+      "output": "Good speed",
+      "options": ["print(\"Slow down\")", "speed = 60", "if speed < 100:", "print(\"Good speed\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-equal-3170e0",
+      "text": "Which line stops this program from printing this?",
+      "code": "stars = 5\nif stars = 5:\n    print(\"Full score\")\nelse:\n    print(\"Not yet\")",
+      "output": "Full score",
+      "options": ["if stars = 5:", "stars = 5", "print(\"Full score\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-equal-b2cb08",
+      "text": "Which line stops this program from printing this?",
+      "code": "lives = 0\nif lives = 0:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
+      "output": "Game over",
+      "options": ["if lives = 0:", "lives = 0", "print(\"Game over\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-equal-3ce6cf",
+      "text": "Which line stops this program from printing this?",
+      "code": "code = 1234\nif code = 1234:\n    print(\"Door open\")\nelse:\n    print(\"Door locked\")",
+      "output": "Door open",
+      "options": ["if code = 1234:", "code = 1234", "print(\"Door open\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-equal-4db33c",
+      "text": "Which line stops this program from printing this?",
+      "code": "level = 5\nif level = 10:\n    print(\"Boss fight\")\nelse:\n    print(\"Keep going\")",
+      "output": "Keep going",
+      "options": ["if level = 10:", "level = 5", "print(\"Boss fight\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-else-dbc284",
+      "text": "Which line stops this program from printing this?",
+      "code": "score = 40\nif score >= 50:\n    print(\"Pass\")\nelse\n    print(\"Fail\")",
+      "output": "Fail",
+      "options": ["else", "score = 40", "if score >= 50:", "print(\"Pass\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-else-1b4042",
+      "text": "Which line stops this program from printing this?",
+      "code": "age = 20\nif age >= 18:\n    print(\"You can vote\")\nelse\n    print(\"Not yet\")",
+      "output": "You can vote",
+      "options": ["else", "age = 20", "if age >= 18:", "print(\"You can vote\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-else-dbf8de",
+      "text": "Which line stops this program from printing this?",
+      "code": "fuel = 500\nif fuel >= 1000:\n    print(\"Danger\")\nelse\n    print(\"Stable\")",
+      "output": "Stable",
+      "options": ["else", "fuel = 500", "if fuel >= 1000:", "print(\"Danger\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-else-8807b1",
+      "text": "Which line stops this program from printing this?",
+      "code": "speed = 140\nif speed >= 100:\n    print(\"Slow down\")\nelse\n    print(\"Good speed\")",
+      "output": "Slow down",
+      "options": ["else", "speed = 140", "if speed >= 100:", "print(\"Slow down\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-which-edge-4b045f",
+      "text": "Which program shows this?",
+      "output": "Pass",
+      "options": [
+        "score = 50\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 50\nif score > 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 50\nif score < 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 50\nif score >= 50:\n    print(\"Fail\")\nelse:\n    print(\"Pass\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-which-edge-f41afe",
+      "text": "Which program shows this?",
+      "output": "You can vote",
+      "options": [
+        "age = 18\nif age >= 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+        "age = 18\nif age > 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+        "age = 18\nif age < 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+        "age = 18\nif age >= 18:\n    print(\"Not yet\")\nelse:\n    print(\"You can vote\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-which-edge-bb8288",
+      "text": "Which program shows this?",
+      "output": "Danger",
+      "options": [
+        "fuel = 1000\nif fuel >= 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+        "fuel = 1000\nif fuel > 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+        "fuel = 1000\nif fuel < 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+        "fuel = 1000\nif fuel >= 1000:\n    print(\"Stable\")\nelse:\n    print(\"Danger\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-c17527",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "temperature = 20\nif temperature < 15:\n    print(\"Take a sweater\")\n___\n    print(\"A t-shirt is enough\")",
+      "output": "A t-shirt is enough",
+      "options": ["else:", "else", "if:", "else temperature < 15:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-0a552c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "score = 80\nif score < 50:\n    print(\"Fail\")\n___\n    print(\"Pass\")",
+      "output": "Pass",
+      "options": ["else:", "else", "if:", "else score < 50:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-156f8a",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "speed = 120\nif speed < 100:\n    print(\"Good speed\")\n___\n    print(\"Slow down\")",
+      "output": "Slow down",
+      "options": ["else:", "else", "if:", "else speed < 100:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-efd886",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "age = 30\nif age < 18:\n    print(\"Not yet\")\n___\n    print(\"You can vote\")",
+      "output": "You can vote",
+      "options": ["else:", "else", "if:", "else age < 18:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-two-ifs-f18980",
+      "text": "What does this print?",
+      "code": "x = 20\nif x > 10:\n    print(\"Warm\")\nif x > 15:\n    print(\"Hot\")",
+      "options": ["Warm\nHot", "Warm", "Hot", "Warm\nWarm"],
+      "answer": 0
+    },
+    {
+      "id": "ie-two-ifs-cf4377",
+      "text": "What does this print?",
+      "code": "x = 16\nif x > 10:\n    print(\"Warm\")\nif x > 15:\n    print(\"Hot\")",
+      "options": ["Warm\nHot", "Warm", "Hot", "Warm\nWarm"],
+      "answer": 0
+    },
+    {
+      "id": "ie-two-ifs-33eb45",
+      "text": "What does this print?",
+      "code": "x = 101\nif x > 50:\n    print(\"Fast\")\nif x > 100:\n    print(\"Too fast\")",
+      "options": ["Fast\nToo fast", "Fast", "Too fast", "Fast\nFast"],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-e47eba",
+      "text": "What does this print?",
+      "code": "temperature = 1200\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "options": [
+        "Danger: reactor at 1200 degrees - shutting down",
+        "Danger: reactor at {temperature} degrees - shutting down",
+        "Danger: reactor at 1200 degrees - shutting down\nReactor stable at 1200 degrees",
+        "Reactor stable at 1200 degrees"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-516098",
+      "text": "What does this print?",
+      "code": "temperature = 800\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "options": [
+        "Reactor stable at 800 degrees",
+        "Reactor stable at {temperature} degrees",
+        "Danger: reactor at 800 degrees - shutting down\nReactor stable at 800 degrees",
+        "Danger: reactor at 800 degrees - shutting down"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-1439e3",
+      "text": "What does this print?",
+      "code": "temperature = 1000\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "options": [
+        "Reactor stable at 1000 degrees",
+        "Danger: reactor at 1000 degrees - shutting down",
+        "Reactor stable at {temperature} degrees",
+        "Danger: reactor at 1000 degrees - shutting down\nReactor stable at 1000 degrees"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-7cd450",
+      "text": "What does this print?",
+      "code": "temperature = 1001\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "options": [
+        "Danger: reactor at 1001 degrees - shutting down",
+        "Danger: reactor at {temperature} degrees - shutting down",
+        "Danger: reactor at 1001 degrees - shutting down\nReactor stable at 1001 degrees",
+        "Reactor stable at 1001 degrees"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-reactor-aadb24",
+      "text": "What does this print?",
+      "code": "temperature = 999\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "options": [
+        "Reactor stable at 999 degrees",
+        "Reactor stable at {temperature} degrees",
+        "Danger: reactor at 999 degrees - shutting down\nReactor stable at 999 degrees",
+        "Danger: reactor at 999 degrees - shutting down"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-19c784",
+      "text": "What does this print?",
+      "code": "temperature = 14\nprint(temperature < 15)",
+      "options": ["True", "temperature < 15", "False", "14"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-9dc65e",
+      "text": "What does this print?",
+      "code": "temperature = 15\nprint(temperature < 15)",
+      "options": ["False", "temperature < 15", "True", "15"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-f21f3d",
+      "text": "What does this print?",
+      "code": "score = 50\nprint(score >= 50)",
+      "options": ["True", "score >= 50", "False", "50"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-32bb80",
+      "text": "What does this print?",
+      "code": "fuel = 1000\nprint(fuel > 1000)",
+      "options": ["False", "fuel > 1000", "True", "1000"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-531767",
+      "text": "What does this print?",
+      "code": "age = 17\nprint(age <= 18)",
+      "options": ["True", "age <= 18", "False", "17"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-44ed3f",
+      "text": "What does this print?",
+      "code": "points = 75\nprint(points == 75)",
+      "options": ["True", "points == 75", "False", "75"],
+      "answer": 0
+    },
+    {
+      "id": "ie-update-7876e3",
+      "text": "What does this print?",
+      "code": "temperature = 990\ntemperature = temperature + 20\nif temperature > 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+      "options": ["Danger", "Stable", "1010", "Danger\nStable"],
+      "answer": 0
+    },
+    {
+      "id": "ie-update-9d9df1",
+      "text": "What does this print?",
+      "code": "score = 45\nscore = score + 10\nif score > 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Pass", "Fail", "55", "Pass\nFail"],
+      "answer": 0
+    },
+    {
+      "id": "ie-update-fb6c86",
+      "text": "What does this print?",
+      "code": "points = 95\npoints = points + 10\nif points > 100:\n    print(\"New record\")\nelse:\n    print(\"Try again\")",
+      "options": ["New record", "Try again", "105", "New record\nTry again"],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-ef55a3",
+      "text": "What does this print?",
+      "code": "speed = 130\nif speed > 100:\n    print(\"Slow down\")\nprint(\"Drive on\")",
+      "options": [
+        "Slow down\nDrive on",
+        "Drive on",
+        "Slow down\nSlow down",
+        "Slow down\nDrive on\nSlow down"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-65e1e5",
+      "text": "What does this print?",
+      "code": "speed = 80\nif speed > 100:\n    print(\"Slow down\")\nprint(\"Drive on\")",
+      "options": ["Drive on", "Slow down\nDrive on", "Slow down", "Drive on\nSlow down"],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-257792",
+      "text": "What does this print?",
+      "code": "points = 120\nif points > 100:\n    print(\"New record\")\nprint(\"Game over\")",
+      "options": [
+        "New record\nGame over",
+        "Game over",
+        "New record\nNew record",
+        "New record\nGame over\nNew record"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-no-else-a4f099",
+      "text": "What does this print?",
+      "code": "points = 40\nif points > 100:\n    print(\"New record\")\nprint(\"Game over\")",
+      "options": ["Game over", "New record\nGame over", "New record", "Game over\nNew record"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-true-a70919",
+      "text": "Which line stops this program from printing this?",
+      "code": "user = \"Tommy\"\nonline = true\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "output": "Tommy is playing",
+      "options": [
+        "online = true",
+        "user = \"Tommy\"",
+        "if online == True:",
+        "print(f\"{user} is playing\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-true-bfb8e3",
+      "text": "Which line stops this program from printing this?",
+      "code": "user = \"Lance\"\nonline = false\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "output": "Lance is offline",
+      "options": [
+        "online = false",
+        "user = \"Lance\"",
+        "if online == True:",
+        "print(f\"{user} is playing\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-true-b65c32",
+      "text": "Which line stops this program from printing this?",
+      "code": "user = \"Ana\"\nonline = true\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "output": "Ana is playing",
+      "options": [
+        "online = true",
+        "user = \"Ana\"",
+        "if online == True:",
+        "print(f\"{user} is playing\")"
+      ],
+      "answer": 0
+    }
+  ]
+}

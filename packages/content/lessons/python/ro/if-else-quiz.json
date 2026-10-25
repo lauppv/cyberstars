@@ -1,0 +1,984 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce înseamnă else într-un if / else?",
+      "options": [
+        "Altfel: liniile lui rulează când condiția din if e falsă",
+        "Și: liniile lui rulează mereu după if",
+        "Stop: programul se oprește acolo",
+        "Încă o dată: if-ul rulează din nou"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce trebuie pus la sfârșitul unei linii cu if?",
+      "options": [";", ":", ".", ","],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "De ce sunt indentate liniile de sub if?",
+      "options": [
+        "Doar ca să arate mai frumos",
+        "Ca să ruleze mai repede",
+        "Ca Python să știe că țin de if",
+        "Python oricum ignoră spațiile"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Ce înseamnă < în `if temperatura < 15:`?",
+      "options": ["Mai mare decât", "Egal cu", "Diferit de", "Mai mic decât"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce valori fac `x <= 15` adevărat?",
+      "options": ["15, 14 și -12", "Doar 15", "16, 20 și 145", "Doar numerele sub 15"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce valori fac `x > 15` adevărat?",
+      "options": ["15, 16 și 20", "16, 20 și 145", "15 și mai mici", "Doar 15"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Ce înseamnă >=?",
+      "options": ["Mai mare decât", "Mai mic sau egal cu", "Mai mare sau egal cu", "Diferit de"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Care e diferența dintre = și ==?",
+      "options": [
+        "= pune o valoare într-o variabilă, == verifică dacă două valori sunt egale",
+        "Fac același lucru",
+        "== pune valoarea de două ori",
+        "= verifică dacă două valori sunt egale, == pune o valoare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "x = 4\nif x = 4:\n    print(\"Bau\")",
+      "options": [
+        "Afișează Bau",
+        "Nu afișează nimic",
+        "Se oprește cu o eroare: if-ul are nevoie de ==",
+        "Afișează 4"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "Orice if are nevoie de un else?",
+      "options": [
+        "Da, mereu",
+        "Nu, doar când trebuie să se întâmple ceva și când condiția e falsă",
+        "Doar la sfârșitul programului",
+        "Doar când if-ul compară numere"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Când un if are un else, câte dintre cele două blocuri rulează?",
+      "options": [
+        "Exact unul dintre ele",
+        "Amândouă, unul după altul",
+        "Niciunul",
+        "Amândouă, în același timp"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "Ce sunt True și False?",
+      "options": [
+        "Două texte",
+        "Numerele 1 și 2",
+        "Două variabile pe care trebuie să le creăm înainte",
+        "Cele două valori pe care le poate avea o condiție: da sau nu"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "temperatura = 14\nif temperatura < 15:\nprint(\"Ia o bluza\")\nelse:\nprint(\"Un tricou e suficient\")",
+      "options": [
+        "Afișează Ia o bluza",
+        "Se oprește cu o eroare: liniile cu print nu sunt indentate",
+        "Afișează amândouă liniile",
+        "Nu afișează nimic"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "E adevărat `temperatura < 15` când temperatura e 15?",
+      "options": [
+        "Da, 15 e mai mic decât 15",
+        "Nu, 15 nu e mai mic decât 15",
+        "Se oprește cu o eroare",
+        "Doar dacă îl scriem de două ori"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "În misiunea cu reactorul, de ce e stabil reactorul la 1000 de grade?",
+      "options": [
+        "Pentru că 1000 nu e mai mare decât 1000, așa că rulează else",
+        "Pentru că 1000 e mai mare decât 1000",
+        "Pentru că un if nu rulează niciodată cu 1000",
+        "Pentru că 1000 e prea mare pentru Python"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "Ce condiție e adevărată când temperatura e exact 1000?",
+      "options": [
+        "temperatura > 1000",
+        "temperatura < 1000",
+        "temperatura >= 1000",
+        "temperatura == 999"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "Cum se numesc liniile indentate de sub un if?",
+      "options": ["Condiția if-ului", "Blocul if-ului", "Un comentariu", "Else-ul"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Ce faci când Python îți arată o eroare?",
+      "options": [
+        "O citești: îți spune ce a mers prost",
+        "O ignori și rulezi din nou",
+        "Ștergi tot codul",
+        "Repornești calculatorul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "Ce linie verifică dacă scor e egal cu 10?",
+      "options": ["if scor = 10:", "if scor == 10", "if scor == 10:", "if scor e 10 atunci:"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Care dintre aceste linii e corectă?",
+      "options": ["else", "else:", "else if:", "altfel:"],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "În lecție, `este_utilizator_online` e False. Ce bloc rulează?",
+      "options": [
+        "Blocul if: utilizatorul joacă",
+        "Amândouă blocurile",
+        "Blocul else: utilizatorul e offline",
+        "Niciun bloc"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "Ce verifică Python imediat după if?",
+      "options": [
+        "O condiție, care e adevărată sau falsă",
+        "Doar numele unei variabile",
+        "Un print",
+        "Dacă codul are comentarii"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Un examen e trecut cu cel puțin 50 de puncte. Care program spune asta?",
+      "options": [
+        "if scor > 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "if scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "if scor <= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "if scor >= 50:\n    print(\"Picat\")\nelse:\n    print(\"Trecut\")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Poate blocul unui if să aibă mai multe linii?",
+      "options": [
+        "Nu, doar una",
+        "Doar la else",
+        "Da, orice linie indentată sub if ține de el",
+        "Doar două linii"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "Unde se pune else?",
+      "options": [
+        "Imediat după blocul if-ului, aliniat cu if-ul lui",
+        "În blocul if-ului, indentat",
+        "Înainte de if",
+        "Oriunde în program"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Care dintre acestea e o condiție?",
+      "options": ["print(\"Salut\")", "temperatura = 15", "else:", "temperatura < 15"],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "Ce face programul după ce se termină if / else?",
+      "options": [
+        "Se oprește",
+        "Merge mai departe cu linia de după",
+        "Rulează din nou if-ul",
+        "Rulează și else-ul"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Ce condiție înseamnă „cel mult 15”?",
+      "options": ["x < 15", "x >= 15", "x <= 15", "x > 15"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "De ce e `temperatura` un nume mai bun decât `x`?",
+      "options": [
+        "Oricine citește codul știe ce ține",
+        "Face programul mai rapid",
+        "Python nu permite nume scurte",
+        "x poate ține doar text"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "x = 4\nif x == 4:\n    print(\"Bau\")",
+      "options": ["Se oprește cu o eroare", "Afișează Bau", "Afișează x == 4", "Nu afișează nimic"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "ie-branch",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nif {{v}} {{op}} {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 14,
+          "op": "<",
+          "limit": 15,
+          "yes": "Ia o bluza",
+          "no": "Un tricou e suficient",
+          "flip": ">="
+        },
+        {
+          "v": "temperatura",
+          "x": 15,
+          "op": "<",
+          "limit": 15,
+          "yes": "Ia o bluza",
+          "no": "Un tricou e suficient",
+          "flip": ">="
+        },
+        {
+          "v": "scor",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat",
+          "flip": "<"
+        },
+        {
+          "v": "scor",
+          "x": 49,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat",
+          "flip": "<"
+        },
+        {
+          "v": "combustibil",
+          "x": 1000,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil",
+          "flip": "<="
+        },
+        {
+          "v": "combustibil",
+          "x": 1200,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil",
+          "flip": "<="
+        },
+        {
+          "v": "varsta",
+          "x": 18,
+          "op": ">=",
+          "limit": 18,
+          "yes": "Poti vota",
+          "no": "Inca nu",
+          "flip": "<"
+        },
+        {
+          "v": "varsta",
+          "x": 12,
+          "op": ">=",
+          "limit": 18,
+          "yes": "Poti vota",
+          "no": "Inca nu",
+          "flip": "<"
+        }
+      ],
+      "mistakes": [
+        ["{{op}}", "{{flip}}"],
+        [
+          "if {{v}} {{op}} {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        [
+          "if {{v}} {{op}} {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{v}} {{op}} {{limit}})"
+        ]
+      ]
+    },
+    {
+      "id": "ie-equal",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "stele",
+          "x": 3,
+          "y": 3,
+          "yes": "Punctaj maxim",
+          "no": "Inca nu"
+        },
+        {
+          "v": "vieti",
+          "x": 0,
+          "y": 0,
+          "yes": "Joc terminat",
+          "no": "Joaca mai departe"
+        },
+        {
+          "v": "vieti",
+          "x": 3,
+          "y": 0,
+          "yes": "Joc terminat",
+          "no": "Joaca mai departe"
+        },
+        {
+          "v": "cod",
+          "x": 1111,
+          "y": 1234,
+          "yes": "Usa deschisa",
+          "no": "Usa incuiata"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        [
+          "if {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        [
+          "if {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{v}} == {{y}})"
+        ]
+      ]
+    },
+    {
+      "id": "ie-online",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "jucator = \"{{user}}\"\nonline = {{b}}\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "values": [
+        {
+          "user": "Tommy",
+          "b": "True"
+        },
+        {
+          "user": "Lance",
+          "b": "False"
+        },
+        {
+          "user": "Ana",
+          "b": "True"
+        },
+        {
+          "user": "Ben",
+          "b": "False"
+        },
+        {
+          "user": "Cortez",
+          "b": "False"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+          "print(f\"{jucator} este offline\")\nelse:\n    print(f\"{jucator} joaca\")"
+        ],
+        [
+          "if online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+          "print(f\"{jucator} joaca\")\nprint(f\"{jucator} este offline\")"
+        ],
+        [
+          "if online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+          "print(online)"
+        ]
+      ]
+    },
+    {
+      "id": "ie-gap-op",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} ___ {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 14,
+          "op": "<",
+          "limit": 15,
+          "yes": "Ia o bluza",
+          "no": "Un tricou e suficient"
+        },
+        {
+          "v": "scor",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat"
+        },
+        {
+          "v": "combustibil",
+          "x": 1001,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil"
+        },
+        {
+          "v": "varsta",
+          "x": 18,
+          "op": "<",
+          "limit": 18,
+          "yes": "Inca nu",
+          "no": "Poti vota"
+        },
+        {
+          "v": "viteza",
+          "x": 100,
+          "op": "<=",
+          "limit": 100,
+          "yes": "Viteza buna",
+          "no": "Incetineste"
+        },
+        {
+          "v": "puncte",
+          "x": 75,
+          "op": "==",
+          "limit": 75,
+          "yes": "Record nou",
+          "no": "Mai incearca"
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": ["=", "<", ">", "<=", ">=", "=="]
+    },
+    {
+      "id": "ie-bad-colon",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 1200,
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil"
+        },
+        {
+          "v": "scor",
+          "x": 30,
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat"
+        },
+        {
+          "v": "viteza",
+          "x": 130,
+          "limit": 100,
+          "yes": "Incetineste",
+          "no": "Viteza buna"
+        },
+        {
+          "v": "puncte",
+          "x": 90,
+          "limit": 100,
+          "yes": "Record nou",
+          "no": "Mai incearca"
+        }
+      ],
+      "bug": ["if {{v}} > {{limit}}:", "if {{v}} > {{limit}}"]
+    },
+    {
+      "id": "ie-bad-indent",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} < {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 10,
+          "limit": 15,
+          "yes": "Ia o bluza",
+          "no": "Un tricou e suficient"
+        },
+        {
+          "v": "scor",
+          "x": 70,
+          "limit": 50,
+          "yes": "Picat",
+          "no": "Trecut"
+        },
+        {
+          "v": "varsta",
+          "x": 9,
+          "limit": 18,
+          "yes": "Inca nu",
+          "no": "Poti vota"
+        },
+        {
+          "v": "viteza",
+          "x": 60,
+          "limit": 100,
+          "yes": "Viteza buna",
+          "no": "Incetineste"
+        }
+      ],
+      "bug": ["    print(\"{{no}}\")", "print(\"{{no}}\")"]
+    },
+    {
+      "id": "ie-bad-equal",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "stele",
+          "x": 5,
+          "y": 5,
+          "yes": "Punctaj maxim",
+          "no": "Inca nu"
+        },
+        {
+          "v": "vieti",
+          "x": 0,
+          "y": 0,
+          "yes": "Joc terminat",
+          "no": "Joaca mai departe"
+        },
+        {
+          "v": "cod",
+          "x": 1234,
+          "y": 1234,
+          "yes": "Usa deschisa",
+          "no": "Usa incuiata"
+        },
+        {
+          "v": "nivel",
+          "x": 5,
+          "y": 10,
+          "yes": "Lupta finala",
+          "no": "Mergi mai departe"
+        }
+      ],
+      "bug": ["if {{v}} == {{y}}:", "if {{v}} = {{y}}:"]
+    },
+    {
+      "id": "ie-bad-else",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "scor",
+          "x": 40,
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat"
+        },
+        {
+          "v": "varsta",
+          "x": 20,
+          "limit": 18,
+          "yes": "Poti vota",
+          "no": "Inca nu"
+        },
+        {
+          "v": "combustibil",
+          "x": 500,
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil"
+        },
+        {
+          "v": "viteza",
+          "x": 140,
+          "limit": 100,
+          "yes": "Incetineste",
+          "no": "Viteza buna"
+        }
+      ],
+      "bug": ["else:", "else"]
+    },
+    {
+      "id": "ie-which-edge",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "scor",
+          "x": 50,
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat"
+        },
+        {
+          "v": "varsta",
+          "x": 18,
+          "limit": 18,
+          "yes": "Poti vota",
+          "no": "Inca nu"
+        },
+        {
+          "v": "combustibil",
+          "x": 1000,
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} >= {{limit}}", "{{v}} > {{limit}}"],
+        ["{{v}} >= {{limit}}", "{{v}} < {{limit}}"],
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "ie-gap-else",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} < {{limit}}:\n    print(\"{{yes}}\")\n___\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 20,
+          "limit": 15,
+          "yes": "Ia o bluza",
+          "no": "Un tricou e suficient"
+        },
+        {
+          "v": "scor",
+          "x": 80,
+          "limit": 50,
+          "yes": "Picat",
+          "no": "Trecut"
+        },
+        {
+          "v": "viteza",
+          "x": 120,
+          "limit": 100,
+          "yes": "Viteza buna",
+          "no": "Incetineste"
+        },
+        {
+          "v": "varsta",
+          "x": 30,
+          "limit": 18,
+          "yes": "Inca nu",
+          "no": "Poti vota"
+        }
+      ],
+      "answer": "else:",
+      "wrong": ["else", "if:", "else {{v}} < {{limit}}:"]
+    },
+    {
+      "id": "ie-two-ifs",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "x = {{x}}\nif x > {{a}}:\n    print(\"{{p}}\")\nif x > {{b}}:\n    print(\"{{q}}\")",
+      "values": [
+        {
+          "x": 20,
+          "a": 10,
+          "b": 15,
+          "p": "Cald",
+          "q": "Foarte cald"
+        },
+        {
+          "x": 16,
+          "a": 10,
+          "b": 15,
+          "p": "Cald",
+          "q": "Foarte cald"
+        },
+        {
+          "x": 101,
+          "a": 50,
+          "b": 100,
+          "p": "Rapid",
+          "q": "Prea rapid"
+        }
+      ],
+      "mistakes": [
+        ["if x > {{b}}:\n    print(\"{{q}}\")", "else:\n    print(\"{{q}}\")"],
+        ["if x > {{a}}:", "if x < {{a}}:"],
+        ["if x > {{b}}:", "if x < {{b}}:"],
+        ["print(\"{{q}}\")", "print(\"{{p}}\")"]
+      ]
+    },
+    {
+      "id": "ie-reactor",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "temperatura = {{t}}\nif temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+      "values": [
+        {
+          "t": 1200
+        },
+        {
+          "t": 800
+        },
+        {
+          "t": 1000
+        },
+        {
+          "t": 1001
+        },
+        {
+          "t": 999
+        }
+      ],
+      "mistakes": [
+        ["temperatura > 1000", "temperatura >= 1000"],
+        ["f\"Reactor", "\"Reactor"],
+        ["f\"Pericol", "\"Pericol"],
+        [
+          "if temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+          "print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nprint(f\"Reactor stabil la {temperatura} grade\")"
+        ],
+        [
+          "print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
+          "print(f\"Reactor stabil la {temperatura} grade\")\nelse:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")"
+        ]
+      ]
+    },
+    {
+      "id": "ie-condition",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nprint({{v}} {{op}} {{limit}})",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 14,
+          "op": "<",
+          "limit": 15,
+          "flip": ">="
+        },
+        {
+          "v": "temperatura",
+          "x": 15,
+          "op": "<",
+          "limit": 15,
+          "flip": ">="
+        },
+        {
+          "v": "scor",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "flip": "<"
+        },
+        {
+          "v": "combustibil",
+          "x": 1000,
+          "op": ">",
+          "limit": 1000,
+          "flip": "<="
+        },
+        {
+          "v": "varsta",
+          "x": 17,
+          "op": "<=",
+          "limit": 18,
+          "flip": ">"
+        },
+        {
+          "v": "puncte",
+          "x": 75,
+          "op": "==",
+          "limit": 75,
+          "flip": "<"
+        }
+      ],
+      "mistakes": [
+        ["print({{v}} {{op}} {{limit}})", "print(\"{{v}} {{op}} {{limit}}\")"],
+        ["{{op}}", "{{flip}}"],
+        ["print({{v}} {{op}} {{limit}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "ie-update",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\n{{v}} = {{v}} + {{d}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 990,
+          "d": 20,
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil"
+        },
+        {
+          "v": "scor",
+          "x": 45,
+          "d": 10,
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat"
+        },
+        {
+          "v": "puncte",
+          "x": 95,
+          "d": 10,
+          "limit": 100,
+          "yes": "Record nou",
+          "no": "Mai incearca"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{v}} + {{d}}\n", ""],
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        ["print(\"{{yes}}\")", "print({{v}})"],
+        [
+          "if {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "ie-no-else",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nprint(\"{{after}}\")",
+      "values": [
+        {
+          "v": "viteza",
+          "x": 130,
+          "limit": 100,
+          "yes": "Incetineste",
+          "after": "Mergi mai departe"
+        },
+        {
+          "v": "viteza",
+          "x": 80,
+          "limit": 100,
+          "yes": "Incetineste",
+          "after": "Mergi mai departe"
+        },
+        {
+          "v": "puncte",
+          "x": 120,
+          "limit": 100,
+          "yes": "Record nou",
+          "after": "Joc terminat"
+        },
+        {
+          "v": "puncte",
+          "x": 40,
+          "limit": 100,
+          "yes": "Record nou",
+          "after": "Joc terminat"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} > {{limit}}", "{{v}} < {{limit}}"],
+        ["if {{v}} > {{limit}}:\n    print(\"{{yes}}\")", "print(\"{{yes}}\")"],
+        ["print(\"{{after}}\")", "print(\"{{yes}}\")"],
+        ["print(\"{{after}}\")", "print(\"{{after}}\")\nprint(\"{{yes}}\")"]
+      ]
+    },
+    {
+      "id": "ie-bad-true",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jucator = \"{{user}}\"\nonline = {{b}}\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "values": [
+        {
+          "user": "Tommy",
+          "b": "True",
+          "bl": "true"
+        },
+        {
+          "user": "Lance",
+          "b": "False",
+          "bl": "false"
+        },
+        {
+          "user": "Ana",
+          "b": "True",
+          "bl": "true"
+        }
+      ],
+      "bug": ["online = {{b}}", "online = {{bl}}"]
+    }
+  ]
+}

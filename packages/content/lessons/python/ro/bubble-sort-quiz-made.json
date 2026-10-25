@@ -1,0 +1,578 @@
+{
+  "note": "Made by npm run make:quiz from the templates in bubble-sort-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "bs-one-compare-50b4f7",
+      "text": "Ce afișează?",
+      "code": "numere = [5, 3]\nif numere[0] > numere[1]:\n    numere[0], numere[1] = numere[1], numere[0]\nprint(numere)",
+      "options": ["[3, 5]", "[5, 3]", "[3, 3]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-compare-8c7306",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 5]\nif numere[0] > numere[1]:\n    numere[0], numere[1] = numere[1], numere[0]\nprint(numere)",
+      "options": ["[3, 5]", "[5, 3]", "3", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-compare-530d0a",
+      "text": "Ce afișează?",
+      "code": "numere = [8, 1]\nif numere[0] > numere[1]:\n    numere[0], numere[1] = numere[1], numere[0]\nprint(numere)",
+      "options": ["[1, 8]", "[8, 1]", "[1, 1]", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-compare-439990",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 9]\nif numere[0] > numere[1]:\n    numere[0], numere[1] = numere[1], numere[0]\nprint(numere)",
+      "options": ["[2, 9]", "[9, 2]", "2", "9"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-compare-e42333",
+      "text": "Ce afișează?",
+      "code": "numere = [7, 4]\nif numere[0] > numere[1]:\n    numere[0], numere[1] = numere[1], numere[0]\nprint(numere)",
+      "options": ["[4, 7]", "[7, 4]", "[4, 4]", "4"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-c4fb20",
+      "text": "Ce afișează?",
+      "code": "numere = [7, 2, 9, 4, 1]\nfor j in range(len(numere) - 1):\n    if numere[j] > numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[2, 7, 4, 1, 9]", "[7, 9, 4, 2, 1]", "[2, 2, 4, 1, 1]", "[2, 7, 9, 4, 1]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-7e1566",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 1, 3, 2]\nfor j in range(len(numere) - 1):\n    if numere[j] > numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[1, 3, 2, 4]", "[4, 3, 2, 1]", "[1, 1, 2, 2]", "[1, 4, 3, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-295bae",
+      "text": "Ce afișează?",
+      "code": "numere = [9, 7, 8]\nfor j in range(len(numere) - 1):\n    if numere[j] > numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[7, 8, 9]", "[9, 8, 7]", "[7, 7, 8]", "[7, 9, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-b8a3c8",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 6, 1, 5]\nfor j in range(len(numere) - 1):\n    if numere[j] > numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[2, 1, 5, 6]", "[6, 2, 5, 1]", "[2, 1, 1, 5]", "[2, 6, 1, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-a6493f",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 1, 2, 4]\nfor j in range(len(numere) - 1):\n    if numere[j] > numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[1, 2, 3, 4]", "[3, 2, 4, 1]", "[1, 1, 2, 4]", "[1, 3, 2, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-ad86ca",
+      "text": "Ce afișează?",
+      "code": "numere = [6, 5, 4, 3]\nfor j in range(len(numere) - 1):\n    if numere[j] > numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[5, 4, 3, 6]", "[6, 5, 4, 3]", "[5, 4, 3, 3]", "[5, 6, 4, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-one-pass-767c42",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 9, 2, 8]\nfor j in range(len(numere) - 1):\n    if numere[j] > numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[1, 2, 8, 9]", "[9, 2, 8, 1]", "[1, 2, 2, 8]", "[1, 9, 2, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-full-f49fc8",
+      "text": "Ce afișează?",
+      "code": "numere = [5, 3, 8, 1, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[1, 2, 3, 5, 8]", "[8, 5, 3, 2, 1]", "[3, 5, 1, 2, 8]", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bs-full-7e1566",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 1, 3, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[1, 2, 3, 4]", "[4, 3, 2, 1]", "[1, 3, 2, 4]", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bs-full-295bae",
+      "text": "Ce afișează?",
+      "code": "numere = [9, 7, 8]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[7, 8, 9]", "[9, 8, 7]", "7", "[7, 7, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-full-b8a3c8",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 6, 1, 5]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[1, 2, 5, 6]", "[6, 5, 2, 1]", "[2, 1, 5, 6]", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bs-full-65dd6e",
+      "text": "Ce afișează?",
+      "code": "numere = [42, 17, 88, 9, 23]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[9, 17, 23, 42, 88]", "[88, 42, 23, 17, 9]", "[17, 42, 9, 23, 88]", "9"],
+      "answer": 0
+    },
+    {
+      "id": "bs-full-a170d1",
+      "text": "Ce afișează?",
+      "code": "numere = [5, 4, 3, 2, 1]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[1, 2, 3, 4, 5]", "[5, 4, 3, 2, 1]", "[4, 3, 2, 1, 5]", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bs-full-4b45c3",
+      "text": "Ce afișează?",
+      "code": "numere = [10, 30, 20]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[10, 20, 30]", "[30, 20, 10]", "10", "[10, 20, 20]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-swaps-7e1566",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 1, 3, 2]\nschimbari = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\n            schimbari = schimbari + 1\nprint(schimbari)",
+      "options": ["4", "1", "[1, 2, 3, 4]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-swaps-b746db",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 2, 1]\nschimbari = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\n            schimbari = schimbari + 1\nprint(schimbari)",
+      "options": ["3", "1", "[1, 2, 3]", "2"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-swaps-f49fc8",
+      "text": "Ce afișează?",
+      "code": "numere = [5, 3, 8, 1, 2]\nschimbari = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\n            schimbari = schimbari + 1\nprint(schimbari)",
+      "options": ["7", "1", "[1, 2, 3, 5, 8]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-swaps-902101",
+      "text": "Ce afișează?",
+      "code": "numere = [6, 5, 1, 2]\nschimbari = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\n            schimbari = schimbari + 1\nprint(schimbari)",
+      "options": ["5", "1", "[1, 2, 5, 6]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-swaps-93333e",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 3, 2, 1]\nschimbari = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\n            schimbari = schimbari + 1\nprint(schimbari)",
+      "options": ["6", "1", "[1, 2, 3, 4]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-7db866",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [5, 3, 8, 1, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[1, 2, 3, 5, 8]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-7ba3f8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [4, 1, 3, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[1, 2, 3, 4]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-5b4d58",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [9, 7, 8]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[7, 8, 9]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-75cf92",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [2, 6, 1, 5]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[1, 2, 5, 6]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-0e8ca0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [30, 10, 20]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[10, 20, 30]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-a1c421",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [7, 2, 5]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[2, 5, 7]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-down-652793",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [3, 5, 1, 8]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[8, 5, 3, 1]",
+      "options": ["<", ">", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-down-b196e9",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [1, 4, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[4, 2, 1]",
+      "options": ["<", ">", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-down-e67ac7",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [6, 2, 9, 4]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[9, 6, 4, 2]",
+      "options": ["<", ">", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-down-855b34",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [10, 40, 20, 30]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] ___ numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[40, 30, 20, 10]",
+      "options": ["<", ">", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-swap-b3f62d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [5, 3, 8, 1, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            ___\nprint(numere)",
+      "output": "[1, 2, 3, 5, 8]",
+      "options": [
+        "numere[j], numere[j + 1] = numere[j + 1], numere[j]",
+        "numere[j] = numere[j + 1]",
+        "numere[j + 1] = numere[j]",
+        "numere[j], numere[j + 1] = numere[j], numere[j + 1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-swap-b24c7c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [4, 1, 3, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            ___\nprint(numere)",
+      "output": "[1, 2, 3, 4]",
+      "options": [
+        "numere[j], numere[j + 1] = numere[j + 1], numere[j]",
+        "numere[j] = numere[j + 1]",
+        "numere[j + 1] = numere[j]",
+        "numere[j], numere[j + 1] = numere[j], numere[j + 1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-swap-e48f83",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [9, 7, 8]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            ___\nprint(numere)",
+      "output": "[7, 8, 9]",
+      "options": [
+        "numere[j], numere[j + 1] = numere[j + 1], numere[j]",
+        "numere[j] = numere[j + 1]",
+        "numere[j + 1] = numere[j]",
+        "numere[j], numere[j + 1] = numere[j], numere[j + 1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-swap-b79b95",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [2, 6, 1, 5]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            ___\nprint(numere)",
+      "output": "[1, 2, 5, 6]",
+      "options": [
+        "numere[j], numere[j + 1] = numere[j + 1], numere[j]",
+        "numere[j] = numere[j + 1]",
+        "numere[j + 1] = numere[j]",
+        "numere[j], numere[j + 1] = numere[j], numere[j + 1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-bad-colon-ac29fc",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [5, 3, 8, 1, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1)\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[1, 2, 3, 5, 8]",
+      "options": [
+        "for j in range(len(numere) - 1)",
+        "numere = [5, 3, 8, 1, 2]",
+        "for i in range(len(numere)):",
+        "if numere[j] > numere[j + 1]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-bad-colon-be5eb5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [4, 1, 3, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1)\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[1, 2, 3, 4]",
+      "options": [
+        "for j in range(len(numere) - 1)",
+        "numere = [4, 1, 3, 2]",
+        "for i in range(len(numere)):",
+        "if numere[j] > numere[j + 1]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-bad-colon-bcc53b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [9, 7, 8]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1)\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[7, 8, 9]",
+      "options": [
+        "for j in range(len(numere) - 1)",
+        "numere = [9, 7, 8]",
+        "for i in range(len(numere)):",
+        "if numere[j] > numere[j + 1]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-bad-colon-5412e8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [2, 6, 1, 5]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1)\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "output": "[1, 2, 5, 6]",
+      "options": [
+        "for j in range(len(numere) - 1)",
+        "numere = [2, 6, 1, 5]",
+        "for i in range(len(numere)):",
+        "if numere[j] > numere[j + 1]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-passes-0e3f05",
+      "text": "Ce afișează?",
+      "code": "numere = [8, 4, 6, 2, 7]\nfor i in range(1):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[4, 6, 2, 7, 8]", "[8, 6, 4, 7, 2]", "[2, 4, 6, 7, 8]", "[4, 2, 6, 7, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-passes-1485c8",
+      "text": "Ce afișează?",
+      "code": "numere = [5, 3, 8, 1, 2]\nfor i in range(2):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[3, 1, 2, 5, 8]", "[8, 5, 3, 2, 1]", "[1, 2, 3, 5, 8]", "[3, 5, 1, 2, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-passes-02fcae",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 3, 2, 1]\nfor i in range(1):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[3, 2, 1, 4]", "[4, 3, 2, 1]", "[1, 2, 3, 4]", "[2, 1, 3, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-passes-d74efc",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 3, 2, 1]\nfor i in range(2):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[2, 1, 3, 4]", "[4, 3, 2, 1]", "[1, 2, 3, 4]", "[3, 2, 1, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-passes-520337",
+      "text": "Ce afișează?",
+      "code": "numere = [6, 1, 5, 2, 4]\nfor i in range(1):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[1, 5, 2, 4, 6]", "[6, 5, 2, 4, 1]", "[1, 2, 4, 5, 6]", "[6, 5, 4, 2, 1]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-passes-c19a45",
+      "text": "Ce afișează?",
+      "code": "numere = [6, 5, 4, 1, 2, 3]\nfor i in range(2):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": [
+        "[4, 1, 2, 3, 5, 6]",
+        "[6, 5, 4, 3, 2, 1]",
+        "[1, 2, 3, 4, 5, 6]",
+        "[5, 4, 1, 2, 3, 6]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-passes-37ea0a",
+      "text": "Ce afișează?",
+      "code": "numere = [9, 8, 7, 6, 5]\nfor i in range(3):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[6, 5, 7, 8, 9]", "[9, 8, 7, 6, 5]", "[5, 6, 7, 8, 9]", "[7, 6, 5, 8, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-passes-f781dc",
+      "text": "Ce afișează?",
+      "code": "numere = [7, 3, 9, 1]\nfor i in range(2):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[3, 1, 7, 9]", "[9, 7, 3, 1]", "[1, 3, 7, 9]", "[3, 7, 1, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-65dd6e",
+      "text": "Ce afișează?",
+      "code": "def sortare_bule(numere):\n    for i in range(len(numere)):\n        for j in range(len(numere) - 1):\n            if numere[j] > numere[j + 1]:\n                numere[j], numere[j + 1] = numere[j + 1], numere[j]\n    return numere\n\nprint(sortare_bule([42, 17, 88, 9, 23]))",
+      "options": ["[9, 17, 23, 42, 88]", "9", "5", "[9, 17, 23, 42, 88]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-a170d1",
+      "text": "Ce afișează?",
+      "code": "def sortare_bule(numere):\n    for i in range(len(numere)):\n        for j in range(len(numere) - 1):\n            if numere[j] > numere[j + 1]:\n                numere[j], numere[j + 1] = numere[j + 1], numere[j]\n    return numere\n\nprint(sortare_bule([5, 4, 3, 2, 1]))",
+      "options": ["[1, 2, 3, 4, 5]", "1", "5", "[1, 2, 3, 4, 5]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-295bae",
+      "text": "Ce afișează?",
+      "code": "def sortare_bule(numere):\n    for i in range(len(numere)):\n        for j in range(len(numere) - 1):\n            if numere[j] > numere[j + 1]:\n                numere[j], numere[j + 1] = numere[j + 1], numere[j]\n    return numere\n\nprint(sortare_bule([9, 7, 8]))",
+      "options": ["[7, 8, 9]", "7", "3", "[7, 8, 9]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-b8a3c8",
+      "text": "Ce afișează?",
+      "code": "def sortare_bule(numere):\n    for i in range(len(numere)):\n        for j in range(len(numere) - 1):\n            if numere[j] > numere[j + 1]:\n                numere[j], numere[j + 1] = numere[j + 1], numere[j]\n    return numere\n\nprint(sortare_bule([2, 6, 1, 5]))",
+      "options": ["[1, 2, 5, 6]", "1", "4", "[1, 2, 5, 6]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-d4ac34",
+      "text": "Ce afișează?",
+      "code": "def sortare_bule(numere):\n    for i in range(len(numere)):\n        for j in range(len(numere) - 1):\n            if numere[j] > numere[j + 1]:\n                numere[j], numere[j + 1] = numere[j + 1], numere[j]\n    return numere\n\nprint(sortare_bule([30, 10, 20]))",
+      "options": ["[10, 20, 30]", "10", "3", "[10, 20, 30]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-7e1566",
+      "text": "Ce afișează?",
+      "code": "def sortare_bule(numere):\n    for i in range(len(numere)):\n        for j in range(len(numere) - 1):\n            if numere[j] > numere[j + 1]:\n                numere[j], numere[j + 1] = numere[j + 1], numere[j]\n    return numere\n\nprint(sortare_bule([4, 1, 3, 2]))",
+      "options": ["[1, 2, 3, 4]", "1", "4", "[1, 2, 3, 4]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-which-eb81bb",
+      "text": "Care program afișează asta?",
+      "output": "[1, 2, 3, 5, 8]",
+      "options": [
+        "numere = [5, 3, 8, 1, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [5, 3, 8, 1, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] < numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [5, 3, 8, 1, 2]\nfor i in range(1):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [5, 3, 8, 1, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j] = numere[j + 1]\nprint(numere)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-which-f5dfd8",
+      "text": "Care program afișează asta?",
+      "output": "[1, 2, 3, 4]",
+      "options": [
+        "numere = [4, 1, 3, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [4, 1, 3, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] < numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [4, 1, 3, 2]\nfor i in range(1):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [4, 1, 3, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j] = numere[j + 1]\nprint(numere)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-which-e39eda",
+      "text": "Care program afișează asta?",
+      "output": "[7, 8, 9]",
+      "options": [
+        "numere = [9, 8, 7]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [9, 8, 7]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] < numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [9, 8, 7]\nfor i in range(1):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [9, 8, 7]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j] = numere[j + 1]\nprint(numere)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-which-1c1019",
+      "text": "Care program afișează asta?",
+      "output": "[2, 4, 6]",
+      "options": [
+        "numere = [6, 4, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [6, 4, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] < numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [6, 4, 2]\nfor i in range(1):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+        "numere = [6, 4, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j] = numere[j + 1]\nprint(numere)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-2122d4",
+      "text": "Ce afișează?",
+      "code": "a = 1\nb = 2\na, b = b, a\nprint(a, b)",
+      "options": ["2 1", "2 2", "1 2", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-fce826",
+      "text": "Ce afișează?",
+      "code": "a = 5\nb = 9\na, b = b, a\nprint(a, b)",
+      "options": ["9 5", "9 9", "5 9", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-25b7c4",
+      "text": "Ce afișează?",
+      "code": "a = 42\nb = 17\na, b = b, a\nprint(a, b)",
+      "options": ["17 42", "17 17", "42 17", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-c10bad",
+      "text": "Ce afișează?",
+      "code": "a = 3\nb = 8\na, b = b, a\nprint(a, b)",
+      "options": ["8 3", "8 8", "3 8", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-ccac34",
+      "text": "Ce afișează?",
+      "code": "a = 10\nb = 4\na, b = b, a\nprint(a, b)",
+      "options": ["4 10", "4 4", "10 4", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-swap-vars-fc9567",
+      "text": "Ce afișează?",
+      "code": "a = 7\nb = 70\na, b = b, a\nprint(a, b)",
+      "options": ["70 7", "70 70", "7 70", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-compares-1961c9",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 1, 2]\ncomparatii = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        comparatii = comparatii + 1\nprint(comparatii)",
+      "options": ["6", "9", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-compares-7e1566",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 1, 3, 2]\ncomparatii = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        comparatii = comparatii + 1\nprint(comparatii)",
+      "options": ["12", "16", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-compares-f49fc8",
+      "text": "Ce afișează?",
+      "code": "numere = [5, 3, 8, 1, 2]\ncomparatii = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        comparatii = comparatii + 1\nprint(comparatii)",
+      "options": ["20", "25", "1", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-compares-b1c5e8",
+      "text": "Ce afișează?",
+      "code": "numere = [6, 5, 4, 3, 2, 1]\ncomparatii = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        comparatii = comparatii + 1\nprint(comparatii)",
+      "options": ["30", "36", "1", "6"],
+      "answer": 0
+    }
+  ]
+}

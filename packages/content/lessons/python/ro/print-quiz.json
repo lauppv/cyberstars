@@ -180,6 +180,102 @@
       "text": "Un program are print(\"Salut\") pe prima linie și print(\"Pa\") pe a doua. Ce afișează?",
       "options": ["Salut\nPa", "Pa\nSalut", "Salut Pa", "Doar Pa"],
       "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "De ce se oprește cu o eroare `print(salut, imi place pizza)`?",
+      "options": [
+        "Textul nu are ghilimele în jur",
+        "print() nu poate afișa virgule",
+        "Linia e prea lungă",
+        "Cuvântul pizza nu e permis"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce îi spun lui Python ghilimelele din `print(\"Salut\")`?",
+      "options": [
+        "Unde începe și unde se termină textul de afișat",
+        "Să afișeze textul cu ghilimele în jur",
+        "Că linia trebuie sărită",
+        "Că Salut e un număr"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Pe care dintre linii o înțelege Python?",
+      "options": ["Print(\"Salut\")", "pritn(\"Salut\")", "print(\"Salut\")", "print[\"Salut\"]"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "În ce ordine rulează Python liniile unui program?",
+      "options": [
+        "De sus în jos, una după alta",
+        "De jos în sus",
+        "Toate deodată",
+        "Întâi linia cea mai scurtă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "De ce nu merge programul?",
+      "code": "nume = Paul\nprint(nume)",
+      "options": [
+        "Paul nu are ghilimele, așa că Python caută o variabilă numită Paul",
+        "print trebuie scris cu P mare",
+        "O variabilă nu se poate numi nume",
+        "Trebuia print(\"nume\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Cum se numește un text scris între ghilimele, ca \"Paul\"?",
+      "options": ["Variabilă", "String", "Comentariu", "Număr întreg"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Ce face Python cu `x = 23 + 22`?",
+      "options": [
+        "Pune 23 în x și sare peste rest",
+        "Pune textul 23 + 22 în x",
+        "Calculează 23 + 22, apoi pune 45 în x",
+        "Afișează 45"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Care dintre acestea e un număr cu zecimale?",
+      "options": ["314", "\"3.14\"", "-15", "3.14"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce îi spune lui Python f-ul din `f\"Salut {nume}\"`?",
+      "options": [
+        "Să pună valoarea fiecărei variabile în locul acoladelor ei",
+        "Să afișeze textul îngroșat",
+        "Să transforme textul într-un număr",
+        "Nimic, e doar de decor"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce face Python cu o linie care începe cu #?",
+      "options": [
+        "O afișează",
+        "O sare: linia e un comentariu",
+        "Se oprește cu o eroare",
+        "O rulează de două ori"
+      ],
+      "answer": 1
     }
   ],
   "templates": [
@@ -284,7 +380,7 @@
     {
       "id": "bad-line",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
       "values": [
         {
@@ -301,6 +397,462 @@
         }
       ],
       "bug": ["print(\"{{c}}\")", "print({{c}})"]
+    },
+    {
+      "id": "three-lines",
+      "kind": "prints",
+      "text": "Ce afișează programul?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")",
+      "values": [
+        {
+          "a": "Trezirea",
+          "b": "Spalatul pe dinti",
+          "c": "Micul dejun"
+        },
+        {
+          "a": "3",
+          "b": "2",
+          "c": "1"
+        },
+        {
+          "a": "Rosu",
+          "b": "Galben",
+          "c": "Verde"
+        },
+        {
+          "a": "Ana",
+          "b": "Ben",
+          "c": "Cris"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{a}}\")\nprint(\"{{b}}\")", "print(\"{{b}}\")\nprint(\"{{a}}\")"],
+        ["print(\"{{b}}\")\nprint(\"{{c}}\")", "print(\"{{c}}\")\nprint(\"{{b}}\")"],
+        ["print(\"{{a}}\")\n", ""],
+        ["print(\"{{c}}\")", "print(\"{{a}}\")"]
+      ]
+    },
+    {
+      "id": "one-line",
+      "kind": "which-program",
+      "text": "Care linie afișează asta?",
+      "code": "print(\"{{text}}\")",
+      "values": [
+        {
+          "text": "Salutare"
+        },
+        {
+          "text": "Am 10 ani"
+        },
+        {
+          "text": "Hai sa mergem"
+        },
+        {
+          "text": "Spatiul e mare"
+        }
+      ],
+      "mistakes": [
+        ["print(\"{{text}}\")", "print({{text}})"],
+        ["print", "Print"],
+        ["(\"{{text}}\")", " \"{{text}}\""],
+        ["\"{{text}}\"", "\"{{text}}"]
+      ]
+    },
+    {
+      "id": "sum-text",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "print(___)",
+      "values": [
+        {
+          "a": 5,
+          "b": 3
+        },
+        {
+          "a": 10,
+          "b": 2
+        },
+        {
+          "a": 7,
+          "b": 7
+        },
+        {
+          "a": 4,
+          "b": 1
+        }
+      ],
+      "answer": "\"{{a}} + {{b}}\"",
+      "wrong": ["{{a}} + {{b}}", "\"{{a}}+{{b}}\"", "\"{{a}}{{b}}\""]
+    },
+    {
+      "id": "gap-last",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\n___",
+      "values": [
+        {
+          "a": "Cioc cioc",
+          "b": "Cine e?",
+          "c": "Python"
+        },
+        {
+          "a": "Luni",
+          "b": "Marti",
+          "c": "Miercuri"
+        },
+        {
+          "a": "Inceput",
+          "b": "Mijloc",
+          "c": "Sfarsit"
+        }
+      ],
+      "answer": "print(\"{{c}}\")",
+      "wrong": ["print({{c}})", "print \"{{c}}\"", "print(\"{{b}}\")", "Print(\"{{c}}\")"]
+    },
+    {
+      "id": "bad-quote",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "Salut",
+          "b": "Ma numesc Ben",
+          "c": "Am 11 ani",
+          "d": "Pa"
+        },
+        {
+          "a": "Planeta unu",
+          "b": "Planeta doi",
+          "c": "Planeta trei",
+          "d": "Acasa"
+        },
+        {
+          "a": "Pasul 1",
+          "b": "Pasul 2",
+          "c": "Pasul 3",
+          "d": "Gata"
+        }
+      ],
+      "bug": ["print(\"{{b}}\")", "print(\"{{b}})"]
+    },
+    {
+      "id": "bad-case",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
+      "values": [
+        {
+          "a": "Imi place pizza",
+          "b": "Imi plac pastele",
+          "c": "Imi place supa",
+          "d": "Imi place tortul"
+        },
+        {
+          "a": "Unu",
+          "b": "Doi",
+          "c": "Trei",
+          "d": "Patru"
+        }
+      ],
+      "bug": ["print(\"{{d}}\")", "Print(\"{{d}}\")"]
+    },
+    {
+      "id": "var-kent",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = \"{{text}}\"\nnume = {{v}}\nprint(nume)",
+      "values": [
+        {
+          "v": "Kent",
+          "text": "Booooo"
+        },
+        {
+          "v": "Lance",
+          "text": "Salutare"
+        },
+        {
+          "v": "Paul",
+          "text": "Ora de pizza"
+        }
+      ],
+      "mistakes": [
+        ["nume = {{v}}", "nume = \"{{v}}\""],
+        ["print(nume)", "print(\"nume\")"],
+        ["print(nume)", "print(\"{{v}}\", nume)"]
+      ]
+    },
+    {
+      "id": "var-again",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "nume = \"{{a}}\"\nnume = \"{{b}}\"\nprint(nume)",
+      "values": [
+        {
+          "a": "Tommy",
+          "b": "Lance"
+        },
+        {
+          "a": "Ana",
+          "b": "Ben"
+        }
+      ],
+      "mistakes": [
+        ["nume = \"{{b}}\"\n", ""],
+        ["print(nume)", "print(\"nume\")"],
+        ["print(nume)", "print(\"{{a}}\")\nprint(nume)"]
+      ]
+    },
+    {
+      "id": "var-swap",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"{{a}}\"\nprint(nume)\n___\nprint(nume)",
+      "values": [
+        {
+          "a": "Shadow",
+          "b": "Jess"
+        },
+        {
+          "a": "Lance",
+          "b": "Paul"
+        }
+      ],
+      "answer": "nume = \"{{b}}\"",
+      "wrong": ["nume = {{b}}", "print(\"{{b}}\")", "\"{{b}}\""]
+    },
+    {
+      "id": "int-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "a = {{a}}\nb = {{b}}\nc = a + b\nprint(c)",
+      "values": [
+        {
+          "a": 2,
+          "b": 6
+        },
+        {
+          "a": 10,
+          "b": 5
+        },
+        {
+          "a": 7,
+          "b": 3
+        }
+      ],
+      "mistakes": [
+        ["print(c)", "print(\"c\")"],
+        ["c = a + b", "c = \"a + b\""],
+        ["a = {{a}}\nb = {{b}}", "a = \"{{a}}\"\nb = \"{{b}}\""]
+      ]
+    },
+    {
+      "id": "int-plus-one",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "n = {{n}}\nn = n + 1\nprint(n)",
+      "values": [
+        {
+          "n": 10
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 99
+        }
+      ],
+      "mistakes": [
+        ["n = n + 1", "n + 1"],
+        ["n = n + 1", "n = \"n + 1\""],
+        ["print(n)", "print(\"n\")"]
+      ]
+    },
+    {
+      "id": "int-first",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "x = ___\nprint(x)",
+      "values": [
+        {
+          "a": 23,
+          "b": 22
+        },
+        {
+          "a": 40,
+          "b": 2
+        }
+      ],
+      "answer": "{{a}} + {{b}}",
+      "wrong": ["\"{{a}} + {{b}}\"", "{{a}}{{b}}", "{{a}} - {{b}}"]
+    },
+    {
+      "id": "fstring-gap",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"{{name}}\"\nvarsta = {{age}}\nprint(f\"Numele meu este {___}\")",
+      "values": [
+        {
+          "name": "Quincy",
+          "age": 32
+        },
+        {
+          "name": "Cortez",
+          "age": 57
+        },
+        {
+          "name": "Ana",
+          "age": 12
+        }
+      ],
+      "answer": "nume",
+      "wrong": ["\"nume\"", "varsta", "Nume"]
+    },
+    {
+      "id": "fstring-no-f",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "nume = \"{{name}}\"\nvarsta = {{age}}\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
+      "values": [
+        {
+          "name": "Quincy",
+          "age": 32
+        },
+        {
+          "name": "Ana",
+          "age": 12
+        },
+        {
+          "name": "Paul",
+          "age": 40
+        }
+      ],
+      "mistakes": [
+        ["print(f\"", "print(\""],
+        [" {nume} ", " nume "],
+        ["{varsta}\"", "{nume}\""]
+      ]
+    },
+    {
+      "id": "fstring-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "pilot = \"{{p}}\"\nnava = \"{{s}}\"\nprint(f\"Pilotul {pilot} piloteaza {nava}\")",
+      "values": [
+        {
+          "p": "Shadow",
+          "s": "Orion"
+        },
+        {
+          "p": "Jess",
+          "s": "Nova"
+        }
+      ],
+      "mistakes": [
+        ["print(f\"", "print(\""],
+        ["{nava}", "nava"],
+        ["{pilot}", "{nava}"]
+      ]
+    },
+    {
+      "id": "card-broken",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"{{name}}\"\nnivel = {{level}}\nviata = {{health}}\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
+      "values": [
+        {
+          "name": "Shadow",
+          "level": 42,
+          "health": 97.5
+        },
+        {
+          "name": "Ana",
+          "level": 7,
+          "health": 50.5
+        },
+        {
+          "name": "Ben",
+          "level": 12,
+          "health": 80.25
+        }
+      ],
+      "bug": ["nume = \"{{name}}\"", "nume = {{name}}"]
+    },
+    {
+      "id": "card-gap",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"{{name}}\"\nnivel = {{level}}\n___\nprint(f\"{nume} are nivelul {nivel} in {breasla}\")",
+      "values": [
+        {
+          "name": "Shadow",
+          "level": 42,
+          "guild": "CyberStars"
+        },
+        {
+          "name": "Ana",
+          "level": 7,
+          "guild": "Rachetele"
+        },
+        {
+          "name": "Ben",
+          "level": 12,
+          "guild": "Piratii"
+        }
+      ],
+      "answer": "breasla = \"{{guild}}\"",
+      "wrong": ["breasla = {{guild}}", "breasla = \"breasla\"", "\"{{guild}}\""]
+    },
+    {
+      "id": "comment-skip",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "a = {{a}}\na = a + {{b}}\n# a = a + {{c}}\nprint(a)",
+      "values": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        },
+        {
+          "a": 5,
+          "b": 10,
+          "c": 100
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "c": 4
+        }
+      ],
+      "mistakes": [
+        ["# a = a + {{c}}", "a = a + {{c}}"],
+        ["a = a + {{b}}", "a = a"],
+        ["print(a)", "print(\"a\")"]
+      ]
+    },
+    {
+      "id": "comment-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "print(\"{{a}}\")\n# print(\"{{b}}\")\nprint(\"{{c}}\")",
+      "values": [
+        {
+          "a": "Nava e gata",
+          "b": "Vant: 40 km/h",
+          "c": "Lansare"
+        },
+        {
+          "a": "Noapte buna",
+          "b": "Secret",
+          "c": "Ne vedem"
+        }
+      ],
+      "mistakes": [
+        ["# print(\"{{b}}\")", "print(\"{{b}}\")"],
+        ["print(\"{{c}}\")", "# print(\"{{c}}\")"],
+        ["print(\"{{a}}\")\n", "# print(\"{{a}}\")\n"]
+      ]
     }
   ]
 }

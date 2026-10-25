@@ -1,0 +1,994 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does else mean in an if / else?",
+      "options": [
+        "Otherwise: its lines run when the if's condition is false",
+        "Also: its lines always run after the if",
+        "Stop: the program ends there",
+        "Again: the if runs one more time"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What has to come at the end of an if line?",
+      "options": [";", ":", ".", ","],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Why are the lines under if indented?",
+      "options": [
+        "Only to look nicer",
+        "So they run faster",
+        "So Python knows they belong to the if",
+        "Python ignores the spaces anyway"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What does < mean in `if temperature < 15:`?",
+      "options": ["Greater than", "Equal to", "Not equal to", "Less than"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Which values make `x <= 15` true?",
+      "options": ["15, 14 and -12", "Only 15", "16, 20 and 145", "Only the numbers below 15"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Which values make `x > 15` true?",
+      "options": ["15, 16 and 20", "16, 20 and 145", "15 and below", "Only 15"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "What does >= mean?",
+      "options": [
+        "Greater than",
+        "Less than or equal to",
+        "Greater than or equal to",
+        "Not equal to"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What is the difference between = and ==?",
+      "options": [
+        "= stores a value in a variable, == checks whether two values are equal",
+        "They do the same thing",
+        "== stores a value twice",
+        "= checks whether two values are equal, == stores a value"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "What happens when this runs?",
+      "code": "x = 4\nif x = 4:\n    print(\"Boo\")",
+      "options": [
+        "It prints Boo",
+        "It prints nothing",
+        "It stops with an error: the if needs ==",
+        "It prints 4"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "Does every if need an else?",
+      "options": [
+        "Yes, always",
+        "No, only when something must also happen when the condition is false",
+        "Only at the end of a program",
+        "Only when the if compares numbers"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "When an if has an else, how many of the two blocks run?",
+      "options": [
+        "Exactly one of them",
+        "Both, one after the other",
+        "Neither",
+        "Both, at the same time"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "What are True and False?",
+      "options": [
+        "Two pieces of text",
+        "The numbers 1 and 2",
+        "Two variables we have to create first",
+        "The two values a condition can have: yes or no"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "What happens when this runs?",
+      "code": "temperature = 14\nif temperature < 15:\nprint(\"Take a sweater\")\nelse:\nprint(\"A t-shirt is enough\")",
+      "options": [
+        "It prints Take a sweater",
+        "It stops with an error: the print lines aren't indented",
+        "It prints both lines",
+        "It prints nothing"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Is `temperature < 15` true when temperature is 15?",
+      "options": [
+        "Yes, 15 is less than 15",
+        "No, 15 is not less than 15",
+        "It stops with an error",
+        "Only if we write it twice"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "In the Reactor Watch mission, why is the reactor stable at 1000 degrees?",
+      "options": [
+        "Because 1000 is not greater than 1000, so the else runs",
+        "Because 1000 is greater than 1000",
+        "Because an if never runs with 1000",
+        "Because 1000 is too big for Python"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "Which condition is true when temperature is exactly 1000?",
+      "options": [
+        "temperature > 1000",
+        "temperature < 1000",
+        "temperature >= 1000",
+        "temperature == 999"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "What do we call the indented lines under an if?",
+      "options": ["The if's condition", "The if's block", "A comment", "The else"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "What should you do when Python shows an error?",
+      "options": [
+        "Read it: it tells you what went wrong",
+        "Ignore it and run again",
+        "Delete all the code",
+        "Restart the computer"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "Which line checks whether score is equal to 10?",
+      "options": ["if score = 10:", "if score == 10", "if score == 10:", "if score is 10 then:"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Which of these lines is right?",
+      "options": ["else", "else:", "else if:", "otherwise:"],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "In the lesson, `is_user_online` is False. Which block runs?",
+      "options": [
+        "The if block: the user is playing",
+        "Both blocks",
+        "The else block: the user is offline",
+        "Neither block"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "What does Python check right after if?",
+      "options": [
+        "A condition, which is true or false",
+        "Only the name of a variable",
+        "A print",
+        "Whether the code has comments"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "An exam is passed with at least 50 points. Which program says so?",
+      "options": [
+        "if score > 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "if score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "if score <= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "if score >= 50:\n    print(\"Fail\")\nelse:\n    print(\"Pass\")"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Can the block of an if have more than one line?",
+      "options": [
+        "No, only one",
+        "Only in the else",
+        "Yes, every indented line under the if belongs to it",
+        "Only two lines"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "Where does else go?",
+      "options": [
+        "Right after the if's block, as far left as its if",
+        "Inside the if's block, indented",
+        "Before the if",
+        "Anywhere in the program"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Which of these is a condition?",
+      "options": ["print(\"Hi\")", "temperature = 15", "else:", "temperature < 15"],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "What does the program do once the if / else is over?",
+      "options": [
+        "It stops",
+        "It goes on with the next line after it",
+        "It runs the if again",
+        "It runs the else as well"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Which condition means 'no more than 15'?",
+      "options": ["x < 15", "x >= 15", "x <= 15", "x > 15"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "Why is `temperature` a better name than `x`?",
+      "options": [
+        "Anyone reading the code knows what it holds",
+        "It makes the program faster",
+        "Python doesn't allow short names",
+        "x can only hold text"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What happens when this runs?",
+      "code": "x = 4\nif x == 4:\n    print(\"Boo\")",
+      "options": [
+        "It stops with an error",
+        "It prints Boo",
+        "It prints x == 4",
+        "It prints nothing"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "ie-branch",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nif {{v}} {{op}} {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 14,
+          "op": "<",
+          "limit": 15,
+          "yes": "Take a sweater",
+          "no": "A t-shirt is enough",
+          "flip": ">="
+        },
+        {
+          "v": "temperature",
+          "x": 15,
+          "op": "<",
+          "limit": 15,
+          "yes": "Take a sweater",
+          "no": "A t-shirt is enough",
+          "flip": ">="
+        },
+        {
+          "v": "score",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail",
+          "flip": "<"
+        },
+        {
+          "v": "score",
+          "x": 49,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail",
+          "flip": "<"
+        },
+        {
+          "v": "fuel",
+          "x": 1000,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable",
+          "flip": "<="
+        },
+        {
+          "v": "fuel",
+          "x": 1200,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable",
+          "flip": "<="
+        },
+        {
+          "v": "age",
+          "x": 18,
+          "op": ">=",
+          "limit": 18,
+          "yes": "You can vote",
+          "no": "Not yet",
+          "flip": "<"
+        },
+        {
+          "v": "age",
+          "x": 12,
+          "op": ">=",
+          "limit": 18,
+          "yes": "You can vote",
+          "no": "Not yet",
+          "flip": "<"
+        }
+      ],
+      "mistakes": [
+        ["{{op}}", "{{flip}}"],
+        [
+          "if {{v}} {{op}} {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        [
+          "if {{v}} {{op}} {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{v}} {{op}} {{limit}})"
+        ]
+      ]
+    },
+    {
+      "id": "ie-equal",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "stars",
+          "x": 3,
+          "y": 3,
+          "yes": "Full score",
+          "no": "Not yet"
+        },
+        {
+          "v": "lives",
+          "x": 0,
+          "y": 0,
+          "yes": "Game over",
+          "no": "Keep playing"
+        },
+        {
+          "v": "lives",
+          "x": 3,
+          "y": 0,
+          "yes": "Game over",
+          "no": "Keep playing"
+        },
+        {
+          "v": "code",
+          "x": 1111,
+          "y": 1234,
+          "yes": "Door open",
+          "no": "Door locked"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        [
+          "if {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        [
+          "if {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{v}} == {{y}})"
+        ]
+      ]
+    },
+    {
+      "id": "ie-online",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "user = \"{{user}}\"\nonline = {{b}}\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "values": [
+        {
+          "user": "Tommy",
+          "b": "True"
+        },
+        {
+          "user": "Lance",
+          "b": "False"
+        },
+        {
+          "user": "Ana",
+          "b": "True"
+        },
+        {
+          "user": "Ben",
+          "b": "False"
+        },
+        {
+          "user": "Cortez",
+          "b": "False"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+          "print(f\"{user} is offline\")\nelse:\n    print(f\"{user} is playing\")"
+        ],
+        [
+          "if online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+          "print(f\"{user} is playing\")\nprint(f\"{user} is offline\")"
+        ],
+        [
+          "if online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+          "print(online)"
+        ]
+      ]
+    },
+    {
+      "id": "ie-gap-op",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{x}}\nif {{v}} ___ {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 14,
+          "op": "<",
+          "limit": 15,
+          "yes": "Take a sweater",
+          "no": "A t-shirt is enough"
+        },
+        {
+          "v": "score",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail"
+        },
+        {
+          "v": "fuel",
+          "x": 1001,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable"
+        },
+        {
+          "v": "age",
+          "x": 18,
+          "op": "<",
+          "limit": 18,
+          "yes": "Not yet",
+          "no": "You can vote"
+        },
+        {
+          "v": "speed",
+          "x": 100,
+          "op": "<=",
+          "limit": 100,
+          "yes": "Good speed",
+          "no": "Slow down"
+        },
+        {
+          "v": "points",
+          "x": 75,
+          "op": "==",
+          "limit": 75,
+          "yes": "New record",
+          "no": "Try again"
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": ["=", "<", ">", "<=", ">=", "=="]
+    },
+    {
+      "id": "ie-bad-colon",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 1200,
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable"
+        },
+        {
+          "v": "score",
+          "x": 30,
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail"
+        },
+        {
+          "v": "speed",
+          "x": 130,
+          "limit": 100,
+          "yes": "Slow down",
+          "no": "Good speed"
+        },
+        {
+          "v": "points",
+          "x": 90,
+          "limit": 100,
+          "yes": "New record",
+          "no": "Try again"
+        }
+      ],
+      "bug": ["if {{v}} > {{limit}}:", "if {{v}} > {{limit}}"]
+    },
+    {
+      "id": "ie-bad-indent",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} < {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 10,
+          "limit": 15,
+          "yes": "Take a sweater",
+          "no": "A t-shirt is enough"
+        },
+        {
+          "v": "score",
+          "x": 70,
+          "limit": 50,
+          "yes": "Fail",
+          "no": "Pass"
+        },
+        {
+          "v": "age",
+          "x": 9,
+          "limit": 18,
+          "yes": "Not yet",
+          "no": "You can vote"
+        },
+        {
+          "v": "speed",
+          "x": 60,
+          "limit": 100,
+          "yes": "Good speed",
+          "no": "Slow down"
+        }
+      ],
+      "bug": ["    print(\"{{no}}\")", "print(\"{{no}}\")"]
+    },
+    {
+      "id": "ie-bad-equal",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "stars",
+          "x": 5,
+          "y": 5,
+          "yes": "Full score",
+          "no": "Not yet"
+        },
+        {
+          "v": "lives",
+          "x": 0,
+          "y": 0,
+          "yes": "Game over",
+          "no": "Keep playing"
+        },
+        {
+          "v": "code",
+          "x": 1234,
+          "y": 1234,
+          "yes": "Door open",
+          "no": "Door locked"
+        },
+        {
+          "v": "level",
+          "x": 5,
+          "y": 10,
+          "yes": "Boss fight",
+          "no": "Keep going"
+        }
+      ],
+      "bug": ["if {{v}} == {{y}}:", "if {{v}} = {{y}}:"]
+    },
+    {
+      "id": "ie-bad-else",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "score",
+          "x": 40,
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail"
+        },
+        {
+          "v": "age",
+          "x": 20,
+          "limit": 18,
+          "yes": "You can vote",
+          "no": "Not yet"
+        },
+        {
+          "v": "fuel",
+          "x": 500,
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable"
+        },
+        {
+          "v": "speed",
+          "x": 140,
+          "limit": 100,
+          "yes": "Slow down",
+          "no": "Good speed"
+        }
+      ],
+      "bug": ["else:", "else"]
+    },
+    {
+      "id": "ie-which-edge",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "score",
+          "x": 50,
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail"
+        },
+        {
+          "v": "age",
+          "x": 18,
+          "limit": 18,
+          "yes": "You can vote",
+          "no": "Not yet"
+        },
+        {
+          "v": "fuel",
+          "x": 1000,
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} >= {{limit}}", "{{v}} > {{limit}}"],
+        ["{{v}} >= {{limit}}", "{{v}} < {{limit}}"],
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "ie-gap-else",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{x}}\nif {{v}} < {{limit}}:\n    print(\"{{yes}}\")\n___\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 20,
+          "limit": 15,
+          "yes": "Take a sweater",
+          "no": "A t-shirt is enough"
+        },
+        {
+          "v": "score",
+          "x": 80,
+          "limit": 50,
+          "yes": "Fail",
+          "no": "Pass"
+        },
+        {
+          "v": "speed",
+          "x": 120,
+          "limit": 100,
+          "yes": "Good speed",
+          "no": "Slow down"
+        },
+        {
+          "v": "age",
+          "x": 30,
+          "limit": 18,
+          "yes": "Not yet",
+          "no": "You can vote"
+        }
+      ],
+      "answer": "else:",
+      "wrong": ["else", "if:", "else {{v}} < {{limit}}:"]
+    },
+    {
+      "id": "ie-two-ifs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "x = {{x}}\nif x > {{a}}:\n    print(\"{{p}}\")\nif x > {{b}}:\n    print(\"{{q}}\")",
+      "values": [
+        {
+          "x": 20,
+          "a": 10,
+          "b": 15,
+          "p": "Warm",
+          "q": "Hot"
+        },
+        {
+          "x": 16,
+          "a": 10,
+          "b": 15,
+          "p": "Warm",
+          "q": "Hot"
+        },
+        {
+          "x": 101,
+          "a": 50,
+          "b": 100,
+          "p": "Fast",
+          "q": "Too fast"
+        }
+      ],
+      "mistakes": [
+        ["if x > {{b}}:\n    print(\"{{q}}\")", "else:\n    print(\"{{q}}\")"],
+        ["if x > {{a}}:", "if x < {{a}}:"],
+        ["if x > {{b}}:", "if x < {{b}}:"],
+        ["print(\"{{q}}\")", "print(\"{{p}}\")"]
+      ]
+    },
+    {
+      "id": "ie-reactor",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "temperature = {{t}}\nif temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+      "values": [
+        {
+          "t": 1200
+        },
+        {
+          "t": 800
+        },
+        {
+          "t": 1000
+        },
+        {
+          "t": 1001
+        },
+        {
+          "t": 999
+        }
+      ],
+      "mistakes": [
+        ["temperature > 1000", "temperature >= 1000"],
+        ["f\"Reactor", "\"Reactor"],
+        ["f\"Danger", "\"Danger"],
+        [
+          "if temperature > 1000:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+          "print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nprint(f\"Reactor stable at {temperature} degrees\")"
+        ],
+        [
+          "print(f\"Danger: reactor at {temperature} degrees - shutting down\")\nelse:\n    print(f\"Reactor stable at {temperature} degrees\")",
+          "print(f\"Reactor stable at {temperature} degrees\")\nelse:\n    print(f\"Danger: reactor at {temperature} degrees - shutting down\")"
+        ]
+      ]
+    },
+    {
+      "id": "ie-condition",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nprint({{v}} {{op}} {{limit}})",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 14,
+          "op": "<",
+          "limit": 15,
+          "flip": ">="
+        },
+        {
+          "v": "temperature",
+          "x": 15,
+          "op": "<",
+          "limit": 15,
+          "flip": ">="
+        },
+        {
+          "v": "score",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "flip": "<"
+        },
+        {
+          "v": "fuel",
+          "x": 1000,
+          "op": ">",
+          "limit": 1000,
+          "flip": "<="
+        },
+        {
+          "v": "age",
+          "x": 17,
+          "op": "<=",
+          "limit": 18,
+          "flip": ">"
+        },
+        {
+          "v": "points",
+          "x": 75,
+          "op": "==",
+          "limit": 75,
+          "flip": "<"
+        }
+      ],
+      "mistakes": [
+        ["print({{v}} {{op}} {{limit}})", "print(\"{{v}} {{op}} {{limit}}\")"],
+        ["{{op}}", "{{flip}}"],
+        ["print({{v}} {{op}} {{limit}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "ie-update",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\n{{v}} = {{v}} + {{d}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 990,
+          "d": 20,
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable"
+        },
+        {
+          "v": "score",
+          "x": 45,
+          "d": 10,
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail"
+        },
+        {
+          "v": "points",
+          "x": 95,
+          "d": 10,
+          "limit": 100,
+          "yes": "New record",
+          "no": "Try again"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} = {{v}} + {{d}}\n", ""],
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        ["print(\"{{yes}}\")", "print({{v}})"],
+        [
+          "if {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "ie-no-else",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nprint(\"{{after}}\")",
+      "values": [
+        {
+          "v": "speed",
+          "x": 130,
+          "limit": 100,
+          "yes": "Slow down",
+          "after": "Drive on"
+        },
+        {
+          "v": "speed",
+          "x": 80,
+          "limit": 100,
+          "yes": "Slow down",
+          "after": "Drive on"
+        },
+        {
+          "v": "points",
+          "x": 120,
+          "limit": 100,
+          "yes": "New record",
+          "after": "Game over"
+        },
+        {
+          "v": "points",
+          "x": 40,
+          "limit": 100,
+          "yes": "New record",
+          "after": "Game over"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} > {{limit}}", "{{v}} < {{limit}}"],
+        ["if {{v}} > {{limit}}:\n    print(\"{{yes}}\")", "print(\"{{yes}}\")"],
+        ["print(\"{{after}}\")", "print(\"{{yes}}\")"],
+        ["print(\"{{after}}\")", "print(\"{{after}}\")\nprint(\"{{yes}}\")"]
+      ]
+    },
+    {
+      "id": "ie-bad-true",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "user = \"{{user}}\"\nonline = {{b}}\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "values": [
+        {
+          "user": "Tommy",
+          "b": "True",
+          "bl": "true"
+        },
+        {
+          "user": "Lance",
+          "b": "False",
+          "bl": "false"
+        },
+        {
+          "user": "Ana",
+          "b": "True",
+          "bl": "true"
+        }
+      ],
+      "bug": ["online = {{b}}", "online = {{bl}}"]
+    }
+  ]
+}

@@ -1,0 +1,634 @@
+{
+  "note": "Made by npm run make:quiz from the templates in lists-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "list-print-a3512d",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(nume)",
+      "options": ["['Tommy', 'Lance', 'Cortez']", "nume", "Tommy", "3"],
+      "answer": 0
+    },
+    {
+      "id": "list-print-770742",
+      "text": "Ce afișează?",
+      "code": "varste = [42, 35, 60, 29]\nprint(varste)",
+      "options": ["[42, 35, 60, 29]", "varste", "42", "4"],
+      "answer": 0
+    },
+    {
+      "id": "list-print-691941",
+      "text": "Ce afișează?",
+      "code": "preturi = [3.14, 9.99, 12.5]\nprint(preturi)",
+      "options": ["[3.14, 9.99, 12.5]", "preturi", "3.14", "3"],
+      "answer": 0
+    },
+    {
+      "id": "list-print-06897a",
+      "text": "Ce afișează?",
+      "code": "fanioane = [True, False, True]\nprint(fanioane)",
+      "options": ["[True, False, True]", "fanioane", "True", "3"],
+      "answer": 0
+    },
+    {
+      "id": "list-print-4c60ec",
+      "text": "Ce afișează?",
+      "code": "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]\nprint(incarcatura)",
+      "options": ["['oxigen', 'apa', 'mancare', 'combustibil']", "incarcatura", "oxigen", "4"],
+      "answer": 0
+    },
+    {
+      "id": "list-print-2953b8",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\"]\nprint(planete)",
+      "options": ["['Marte', 'Venus', 'Pamant']", "planete", "Marte", "3"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-f84b18",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(nume[0])",
+      "options": ["Tommy", "Lance", "['Tommy', 'Lance', 'Cortez']", "nume[0]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-ccaec8",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(nume[1])",
+      "options": ["Lance", "Cortez", "['Tommy', 'Lance', 'Cortez']", "nume[1]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-9bcf8a",
+      "text": "Ce afișează?",
+      "code": "varste = [42, 35, 60, 29]\nprint(varste[2])",
+      "options": ["60", "29", "[42, 35, 60, 29]", "varste[2]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-9532d3",
+      "text": "Ce afișează?",
+      "code": "varste = [42, 35, 60, 29]\nprint(varste[0])",
+      "options": ["42", "35", "[42, 35, 60, 29]", "varste[0]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-948fe5",
+      "text": "Ce afișează?",
+      "code": "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]\nprint(incarcatura[1])",
+      "options": [
+        "apa",
+        "mancare",
+        "['oxigen', 'apa', 'mancare', 'combustibil']",
+        "incarcatura[1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-index-15141a",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Shadow\", \"Jess\", \"Quincy\"]\nprint(echipaj[1])",
+      "options": ["Jess", "Quincy", "['Shadow', 'Jess', 'Quincy']", "echipaj[1]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-e9ef59",
+      "text": "Ce afișează?",
+      "code": "fructe = [\"mar\", \"para\", \"pruna\", \"kiwi\"]\nprint(fructe[2])",
+      "options": ["pruna", "kiwi", "['mar', 'para', 'pruna', 'kiwi']", "fructe[2]"],
+      "answer": 0
+    },
+    {
+      "id": "list-index-e12752",
+      "text": "Ce afișează?",
+      "code": "preturi = [3.14, 9.99, 12.5]\nprint(preturi[0])",
+      "options": ["3.14", "9.99", "[3.14, 9.99, 12.5]", "preturi[0]"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-a3512d",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(len(nume))",
+      "options": ["3", "['Tommy', 'Lance', 'Cortez']", "2", "4"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-770742",
+      "text": "Ce afișează?",
+      "code": "varste = [42, 35, 60, 29]\nprint(len(varste))",
+      "options": ["4", "[42, 35, 60, 29]", "3", "6"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-4c60ec",
+      "text": "Ce afișează?",
+      "code": "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]\nprint(len(incarcatura))",
+      "options": ["4", "['oxigen', 'apa', 'mancare', 'combustibil']", "3", "11"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-cf0bb4",
+      "text": "Ce afișează?",
+      "code": "scoruri = [7, 3]\nprint(len(scoruri))",
+      "options": ["2", "[7, 3]", "1", "7"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-3b6c59",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\", \"Mercur\", \"Jupiter\"]\nprint(len(planete))",
+      "options": ["5", "['Marte', 'Venus', 'Pamant', 'Mercur', 'Jupiter']", "4", "7"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-691941",
+      "text": "Ce afișează?",
+      "code": "preturi = [3.14, 9.99, 12.5]\nprint(len(preturi))",
+      "options": ["3", "[3.14, 9.99, 12.5]", "2", "7"],
+      "answer": 0
+    },
+    {
+      "id": "list-append-edabb4",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\"]\nnume.append(\"Cortez\")\nprint(nume)",
+      "options": [
+        "['Tommy', 'Lance', 'Cortez']",
+        "['Tommy', 'Lance']",
+        "['Cortez', 'Tommy', 'Lance']",
+        "['Cortez']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-append-bf0ac5",
+      "text": "Ce afișează?",
+      "code": "varste = [42, 35]\nvarste.append(60)\nprint(varste)",
+      "options": ["[42, 35, 60]", "[42, 35]", "[60, 42, 35]", "[60]"],
+      "answer": 0
+    },
+    {
+      "id": "list-append-0d578f",
+      "text": "Ce afișează?",
+      "code": "incarcatura = [\"oxigen\", \"apa\"]\nincarcatura.append(\"mancare\")\nprint(incarcatura)",
+      "options": [
+        "['oxigen', 'apa', 'mancare']",
+        "['oxigen', 'apa']",
+        "['mancare', 'oxigen', 'apa']",
+        "['mancare']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-append-fb7e2b",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Shadow\"]\nechipaj.append(\"Jess\")\nprint(echipaj)",
+      "options": ["['Shadow', 'Jess']", "['Shadow']", "['Jess', 'Shadow']", "['Jess']"],
+      "answer": 0
+    },
+    {
+      "id": "list-append-c412b7",
+      "text": "Ce afișează?",
+      "code": "preturi = [3.14, 9.99]\npreturi.append(12.5)\nprint(preturi)",
+      "options": ["[3.14, 9.99, 12.5]", "[3.14, 9.99]", "[12.5, 3.14, 9.99]", "[12.5]"],
+      "answer": 0
+    },
+    {
+      "id": "list-append-213203",
+      "text": "Ce afișează?",
+      "code": "fanioane = [True]\nfanioane.append(False)\nprint(fanioane)",
+      "options": ["[True, False]", "[True]", "[False, True]", "[False]"],
+      "answer": 0
+    },
+    {
+      "id": "list-change-277124",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nnume[1] = \"Ken\"\nprint(nume)",
+      "options": [
+        "['Tommy', 'Ken', 'Cortez']",
+        "['Tommy', 'Lance', 'Ken']",
+        "['Tommy', 'Lance', 'Cortez', 'Ken']",
+        "['Tommy', 'Lance', 'Cortez']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-change-66be5d",
+      "text": "Ce afișează?",
+      "code": "varste = [42, 35, 60]\nvarste[0] = 18\nprint(varste)",
+      "options": ["[18, 35, 60]", "[42, 18, 60]", "[42, 35, 60, 18]", "[42, 35, 60]"],
+      "answer": 0
+    },
+    {
+      "id": "list-change-1ec82d",
+      "text": "Ce afișează?",
+      "code": "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]\nincarcatura[1] = \"gol\"\nprint(incarcatura)",
+      "options": [
+        "['oxigen', 'gol', 'mancare', 'combustibil']",
+        "['oxigen', 'apa', 'gol', 'combustibil']",
+        "['oxigen', 'apa', 'mancare', 'combustibil', 'gol']",
+        "['oxigen', 'apa', 'mancare', 'combustibil']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-change-95a957",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Shadow\", \"Jess\", \"Quincy\"]\nechipaj[2] = \"Ana\"\nprint(echipaj)",
+      "options": [
+        "['Shadow', 'Jess', 'Ana']",
+        "['Shadow', 'Ana', 'Quincy']",
+        "['Shadow', 'Jess', 'Quincy', 'Ana']",
+        "['Shadow', 'Jess', 'Quincy']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-change-13650b",
+      "text": "Ce afișează?",
+      "code": "preturi = [3.14, 9.99, 12.5]\npreturi[1] = 5.5\nprint(preturi)",
+      "options": [
+        "[3.14, 5.5, 12.5]",
+        "[5.5, 9.99, 12.5]",
+        "[3.14, 9.99, 12.5, 5.5]",
+        "[3.14, 9.99, 12.5]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-change-310dc3",
+      "text": "Ce afișează?",
+      "code": "fructe = [\"mar\", \"para\", \"pruna\", \"kiwi\"]\nfructe[0] = \"lamaie\"\nprint(fructe)",
+      "options": [
+        "['lamaie', 'para', 'pruna', 'kiwi']",
+        "['mar', 'lamaie', 'pruna', 'kiwi']",
+        "['mar', 'para', 'pruna', 'kiwi', 'lamaie']",
+        "['mar', 'para', 'pruna', 'kiwi']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-index-8df106",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(nume[0])\nprint(len(nume))\nprint(nume[3])",
+      "output": "Tommy\n3\nCortez",
+      "options": [
+        "print(nume[3])",
+        "nume = [\"Tommy\", \"Lance\", \"Cortez\"]",
+        "print(nume[0])",
+        "print(len(nume))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-index-33b13b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varste = [42, 35, 60, 29]\nprint(varste[0])\nprint(len(varste))\nprint(varste[4])",
+      "output": "42\n4\n29",
+      "options": [
+        "print(varste[4])",
+        "varste = [42, 35, 60, 29]",
+        "print(varste[0])",
+        "print(len(varste))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-index-f17b71",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]\nprint(incarcatura[0])\nprint(len(incarcatura))\nprint(incarcatura[4])",
+      "output": "oxigen\n4\ncombustibil",
+      "options": [
+        "print(incarcatura[4])",
+        "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]",
+        "print(incarcatura[0])",
+        "print(len(incarcatura))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-index-dfb777",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = [\"Shadow\", \"Jess\"]\nprint(echipaj[0])\nprint(len(echipaj))\nprint(echipaj[2])",
+      "output": "Shadow\n2\nJess",
+      "options": [
+        "print(echipaj[2])",
+        "echipaj = [\"Shadow\", \"Jess\"]",
+        "print(echipaj[0])",
+        "print(len(echipaj))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-b23122",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(nume[___])",
+      "output": "Lance",
+      "options": ["1", "3", "2", "0"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-de17a8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = [42, 35, 60, 29]\nprint(varste[___])",
+      "output": "42",
+      "options": ["0", "4", "1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-c48f6c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]\nprint(incarcatura[___])",
+      "output": "combustibil",
+      "options": ["3", "4", "2", "1"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-cafc87",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = [\"Shadow\", \"Jess\", \"Quincy\"]\nprint(echipaj[___])",
+      "output": "Quincy",
+      "options": ["2", "3", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-b45a7e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "fructe = [\"mar\", \"para\", \"pruna\", \"kiwi\"]\nprint(fructe[___])",
+      "output": "para",
+      "options": ["1", "4", "2", "0"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-index-72c08c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = [3.14, 9.99, 12.5]\nprint(preturi[___])",
+      "output": "12.5",
+      "options": ["2", "3", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-append-22c9fd",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = [\"Tommy\", \"Lance\"]\n___\nprint(nume)",
+      "output": "['Tommy', 'Lance', 'Cortez']",
+      "options": [
+        "nume.append(\"Cortez\")",
+        "nume = [\"Cortez\"]",
+        "nume.add(\"Cortez\")",
+        "nume[1] = \"Cortez\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-append-151c51",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "incarcatura = [\"oxigen\", \"apa\"]\n___\nprint(incarcatura)",
+      "output": "['oxigen', 'apa', 'mancare']",
+      "options": [
+        "incarcatura.append(\"mancare\")",
+        "incarcatura = [\"mancare\"]",
+        "incarcatura.add(\"mancare\")",
+        "incarcatura[1] = \"mancare\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-append-00f3fc",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = [42, 35]\n___\nprint(varste)",
+      "output": "[42, 35, 60]",
+      "options": ["varste.append(60)", "varste = [60]", "varste.add(60)", "varste[1] = 60"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-append-0d0c22",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "echipaj = [\"Shadow\", \"Jess\"]\n___\nprint(echipaj)",
+      "output": "['Shadow', 'Jess', 'Quincy']",
+      "options": [
+        "echipaj.append(\"Quincy\")",
+        "echipaj = [\"Quincy\"]",
+        "echipaj.add(\"Quincy\")",
+        "echipaj[1] = \"Quincy\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-append-bcb128",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = [3.14, 9.99]\n___\nprint(preturi)",
+      "output": "[3.14, 9.99, 12.5]",
+      "options": [
+        "preturi.append(12.5)",
+        "preturi = [12.5]",
+        "preturi.add(12.5)",
+        "preturi[1] = 12.5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-two-appends-42ee2b",
+      "text": "Ce afișează?",
+      "code": "incarcatura = []\nincarcatura.append(\"oxigen\")\nincarcatura.append(\"apa\")\nprint(incarcatura)",
+      "options": ["['oxigen', 'apa']", "['apa', 'oxigen']", "2", "['apa']"],
+      "answer": 0
+    },
+    {
+      "id": "list-two-appends-89dc8d",
+      "text": "Ce afișează?",
+      "code": "nume = []\nnume.append(\"Tommy\")\nnume.append(\"Lance\")\nprint(nume)",
+      "options": ["['Tommy', 'Lance']", "['Lance', 'Tommy']", "2", "['Lance']"],
+      "answer": 0
+    },
+    {
+      "id": "list-two-appends-b026b8",
+      "text": "Ce afișează?",
+      "code": "varste = []\nvarste.append(42)\nvarste.append(35)\nprint(varste)",
+      "options": ["[42, 35]", "[35, 42]", "2", "[35]"],
+      "answer": 0
+    },
+    {
+      "id": "list-two-appends-00e5b5",
+      "text": "Ce afișează?",
+      "code": "echipaj = []\nechipaj.append(\"Shadow\")\nechipaj.append(\"Jess\")\nprint(echipaj)",
+      "options": ["['Shadow', 'Jess']", "['Jess', 'Shadow']", "2", "['Jess']"],
+      "answer": 0
+    },
+    {
+      "id": "list-two-appends-cb00f8",
+      "text": "Ce afișează?",
+      "code": "fanioane = []\nfanioane.append(True)\nfanioane.append(False)\nprint(fanioane)",
+      "options": ["[True, False]", "[False, True]", "2", "[False]"],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-append-ccf421",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "incarcatura = []\nincarcatura.append(\"oxigen\")\nincarcatura.append[\"apa\"]\nprint(incarcatura)",
+      "output": "['oxigen', 'apa']",
+      "options": [
+        "incarcatura.append[\"apa\"]",
+        "incarcatura = []",
+        "incarcatura.append(\"oxigen\")",
+        "print(incarcatura)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-append-f23f8d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = []\nnume.append(\"Tommy\")\nnume.append[\"Lance\"]\nprint(nume)",
+      "output": "['Tommy', 'Lance']",
+      "options": ["nume.append[\"Lance\"]", "nume = []", "nume.append(\"Tommy\")", "print(nume)"],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-append-335b05",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varste = []\nvarste.append(42)\nvarste.append[35]\nprint(varste)",
+      "output": "[42, 35]",
+      "options": ["varste.append[35]", "varste = []", "varste.append(42)", "print(varste)"],
+      "answer": 0
+    },
+    {
+      "id": "list-bad-append-22b2b7",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "echipaj = []\nechipaj.append(\"Shadow\")\nechipaj.append[\"Jess\"]\nprint(echipaj)",
+      "output": "['Shadow', 'Jess']",
+      "options": [
+        "echipaj.append[\"Jess\"]",
+        "echipaj = []",
+        "echipaj.append(\"Shadow\")",
+        "print(echipaj)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-len-append-ae919e",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nnume.append(\"Ken\")\nprint(len(nume))",
+      "options": ["4", "3", "['Tommy', 'Lance', 'Cortez', 'Ken']", "5"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-append-bf0ac5",
+      "text": "Ce afișează?",
+      "code": "varste = [42, 35]\nvarste.append(60)\nprint(len(varste))",
+      "options": ["3", "2", "[42, 35, 60]", "4"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-append-d3aa57",
+      "text": "Ce afișează?",
+      "code": "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]\nincarcatura.append(\"gheata\")\nprint(len(incarcatura))",
+      "options": ["5", "4", "['oxigen', 'apa', 'mancare', 'combustibil', 'gheata']", "6"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-append-fb7e2b",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Shadow\"]\nechipaj.append(\"Jess\")\nprint(len(echipaj))",
+      "options": ["2", "1", "['Shadow', 'Jess']", "3"],
+      "answer": 0
+    },
+    {
+      "id": "list-len-append-b886ad",
+      "text": "Ce afișează?",
+      "code": "preturi = [3.14, 9.99, 12.5, 1.5]\npreturi.append(2)\nprint(len(preturi))",
+      "options": ["5", "4", "[3.14, 9.99, 12.5, 1.5, 2]", "6"],
+      "answer": 0
+    },
+    {
+      "id": "list-which-e4b584",
+      "text": "Care program afișează asta?",
+      "output": "['Tommy', 'Lance']",
+      "options": [
+        "nume = [\"Tommy\", \"Lance\"]\nprint(nume)",
+        "nume = [\"Tommy\", \"Lance\"]\nprint(\"nume\")",
+        "nume = \"Tommy\", \"Lance\"\nprint(nume)",
+        "nume = [\"Tommy\", \"Lance\"]\nprint(nume[0], nume[1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-which-d56661",
+      "text": "Care program afișează asta?",
+      "output": "['oxigen', 'apa']",
+      "options": [
+        "incarcatura = [\"oxigen\", \"apa\"]\nprint(incarcatura)",
+        "incarcatura = [\"oxigen\", \"apa\"]\nprint(\"incarcatura\")",
+        "incarcatura = \"oxigen\", \"apa\"\nprint(incarcatura)",
+        "incarcatura = [\"oxigen\", \"apa\"]\nprint(incarcatura[0], incarcatura[1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-which-68cbae",
+      "text": "Care program afișează asta?",
+      "output": "['Shadow', 'Jess']",
+      "options": [
+        "echipaj = [\"Shadow\", \"Jess\"]\nprint(echipaj)",
+        "echipaj = [\"Shadow\", \"Jess\"]\nprint(\"echipaj\")",
+        "echipaj = \"Shadow\", \"Jess\"\nprint(echipaj)",
+        "echipaj = [\"Shadow\", \"Jess\"]\nprint(echipaj[0], echipaj[1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-which-3b6bbd",
+      "text": "Care program afișează asta?",
+      "output": "['mar', 'para']",
+      "options": [
+        "fructe = [\"mar\", \"para\"]\nprint(fructe)",
+        "fructe = [\"mar\", \"para\"]\nprint(\"fructe\")",
+        "fructe = \"mar\", \"para\"\nprint(fructe)",
+        "fructe = [\"mar\", \"para\"]\nprint(fructe[0], fructe[1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-len-7b4d65",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(___)",
+      "output": "3",
+      "options": ["len(nume)", "nume", "len(\"nume\")", "len(nume) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-len-19af66",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varste = [42, 35, 60, 29]\nprint(___)",
+      "output": "4",
+      "options": ["len(varste)", "varste", "len(\"varste\")", "len(varste) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-len-76b8f7",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]\nprint(___)",
+      "output": "4",
+      "options": [
+        "len(incarcatura)",
+        "incarcatura",
+        "len(\"incarcatura\")",
+        "len(incarcatura) - 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-len-c8f1d8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [7, 3]\nprint(___)",
+      "output": "2",
+      "options": ["len(scoruri)", "scoruri", "len(\"scoruri\")", "len(scoruri) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "list-gap-len-d41f06",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "preturi = [3.14, 9.99, 12.5]\nprint(___)",
+      "output": "3",
+      "options": ["len(preturi)", "preturi", "len(\"preturi\")", "len(preturi) - 1"],
+      "answer": 0
+    }
+  ]
+}
