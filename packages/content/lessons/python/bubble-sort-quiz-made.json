@@ -37,10 +37,10 @@
       "answer": 0
     },
     {
-      "id": "bs-one-pass-f49fc8",
+      "id": "bs-one-pass-c4fb20",
       "text": "What does this print?",
-      "code": "numbers = [5, 3, 8, 1, 2]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
-      "options": ["[3, 5, 1, 2, 8]", "[5, 8, 3, 2, 1]", "[3, 3, 1, 1, 2]", "[3, 5, 8, 1, 2]"],
+      "code": "numbers = [7, 2, 9, 4, 1]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["[2, 7, 4, 1, 9]", "[7, 9, 4, 2, 1]", "[2, 2, 4, 1, 1]", "[2, 7, 9, 4, 1]"],
       "answer": 0
     },
     {
@@ -354,10 +354,10 @@
       "answer": 0
     },
     {
-      "id": "bs-passes-02f098",
+      "id": "bs-passes-0e3f05",
       "text": "What does this print?",
-      "code": "numbers = [5, 3, 8, 1, 2]\nfor i in range(1):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
-      "options": ["[3, 5, 1, 2, 8]", "[5, 8, 3, 2, 1]", "[1, 2, 3, 5, 8]", "[3, 1, 2, 5, 8]"],
+      "code": "numbers = [8, 4, 6, 2, 7]\nfor i in range(1):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["[4, 6, 2, 7, 8]", "[8, 6, 4, 7, 2]", "[2, 4, 6, 7, 8]", "[4, 2, 6, 7, 8]"],
       "answer": 0
     },
     {

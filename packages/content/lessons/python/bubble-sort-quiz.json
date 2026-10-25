@@ -313,7 +313,7 @@
       "code": "numbers = [{{list}}]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
       "values": [
         {
-          "list": "5, 3, 8, 1, 2"
+          "list": "7, 2, 9, 4, 1"
         },
         {
           "list": "4, 1, 3, 2"
@@ -510,7 +510,7 @@
       "code": "numbers = [{{list}}]\nfor i in range({{k}}):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
       "values": [
         {
-          "list": "5, 3, 8, 1, 2",
+          "list": "8, 4, 6, 2, 7",
           "k": 1,
           "k2": 2
         },

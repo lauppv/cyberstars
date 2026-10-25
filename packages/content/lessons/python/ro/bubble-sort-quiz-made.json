@@ -37,10 +37,10 @@
       "answer": 0
     },
     {
-      "id": "bs-one-pass-f49fc8",
+      "id": "bs-one-pass-c4fb20",
       "text": "Ce afișează?",
-      "code": "numere = [5, 3, 8, 1, 2]\nfor j in range(len(numere) - 1):\n    if numere[j] > numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
-      "options": ["[3, 5, 1, 2, 8]", "[5, 8, 3, 2, 1]", "[3, 3, 1, 1, 2]", "[3, 5, 8, 1, 2]"],
+      "code": "numere = [7, 2, 9, 4, 1]\nfor j in range(len(numere) - 1):\n    if numere[j] > numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[2, 7, 4, 1, 9]", "[7, 9, 4, 2, 1]", "[2, 2, 4, 1, 1]", "[2, 7, 9, 4, 1]"],
       "answer": 0
     },
     {
@@ -354,10 +354,10 @@
       "answer": 0
     },
     {
-      "id": "bs-passes-02f098",
+      "id": "bs-passes-0e3f05",
       "text": "Ce afișează?",
-      "code": "numere = [5, 3, 8, 1, 2]\nfor i in range(1):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
-      "options": ["[3, 5, 1, 2, 8]", "[5, 8, 3, 2, 1]", "[1, 2, 3, 5, 8]", "[3, 1, 2, 5, 8]"],
+      "code": "numere = [8, 4, 6, 2, 7]\nfor i in range(1):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[4, 6, 2, 7, 8]", "[8, 6, 4, 7, 2]", "[2, 4, 6, 7, 8]", "[4, 2, 6, 7, 8]"],
       "answer": 0
     },
     {
