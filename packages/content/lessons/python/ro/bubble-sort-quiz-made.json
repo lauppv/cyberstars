@@ -303,7 +303,7 @@
     },
     {
       "id": "bs-bad-colon-ac29fc",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "numere = [5, 3, 8, 1, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1)\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
       "output": "[1, 2, 3, 5, 8]",
       "options": [
@@ -316,7 +316,7 @@
     },
     {
       "id": "bs-bad-colon-be5eb5",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "numere = [4, 1, 3, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1)\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
       "output": "[1, 2, 3, 4]",
       "options": [
@@ -329,7 +329,7 @@
     },
     {
       "id": "bs-bad-colon-bcc53b",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "numere = [9, 7, 8]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1)\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
       "output": "[7, 8, 9]",
       "options": [
@@ -342,7 +342,7 @@
     },
     {
       "id": "bs-bad-colon-5412e8",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "numere = [2, 6, 1, 5]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1)\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
       "output": "[1, 2, 5, 6]",
       "options": [

@@ -524,7 +524,7 @@
     {
       "id": "ie-bad-colon",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
       "values": [
         {
@@ -561,7 +561,7 @@
     {
       "id": "ie-bad-indent",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "{{v}} = {{x}}\nif {{v}} < {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
       "values": [
         {
@@ -598,7 +598,7 @@
     {
       "id": "ie-bad-equal",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "{{v}} = {{x}}\nif {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
       "values": [
         {
@@ -635,7 +635,7 @@
     {
       "id": "ie-bad-else",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "{{v}} = {{x}}\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
       "values": [
         {
@@ -959,7 +959,7 @@
     {
       "id": "ie-bad-true",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "jucator = \"{{user}}\"\nonline = {{b}}\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
       "values": [
         {

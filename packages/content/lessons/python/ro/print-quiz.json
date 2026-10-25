@@ -380,7 +380,7 @@
     {
       "id": "bad-line",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
       "values": [
         {
@@ -512,7 +512,7 @@
     {
       "id": "bad-quote",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
       "values": [
         {
@@ -539,7 +539,7 @@
     {
       "id": "bad-case",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
       "values": [
         {
@@ -757,7 +757,7 @@
     {
       "id": "card-broken",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nume = \"{{name}}\"\nnivel = {{level}}\nviata = {{health}}\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
       "values": [
         {

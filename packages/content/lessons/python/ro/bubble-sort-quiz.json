@@ -490,7 +490,7 @@
     {
       "id": "bs-bad-colon",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "numere = [{{list}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
       "values": [
         {

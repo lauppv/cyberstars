@@ -137,7 +137,7 @@
     },
     {
       "id": "bad-line-8365eb",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"Numele meu este Ana\")\nprint(\"Am 12 ani\")\nprint(Imi place pizza)\nprint(\"CyberStars e cel mai tare\")",
       "output": "Numele meu este Ana\nAm 12 ani\nImi place pizza\nCyberStars e cel mai tare",
       "options": [
@@ -150,7 +150,7 @@
     },
     {
       "id": "bad-line-fd890b",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"Pe locuri\")\nprint(\"Fiti gata\")\nprint(Start)\nprint(\"Gata\")",
       "output": "Pe locuri\nFiti gata\nStart\nGata",
       "options": [
@@ -310,7 +310,7 @@
     },
     {
       "id": "bad-quote-78eb33",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"Salut\")\nprint(\"Ma numesc Ben)\nprint(\"Am 11 ani\")\nprint(\"Pa\")",
       "output": "Salut\nMa numesc Ben\nAm 11 ani\nPa",
       "options": [
@@ -323,7 +323,7 @@
     },
     {
       "id": "bad-quote-8c5eef",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"Planeta unu\")\nprint(\"Planeta doi)\nprint(\"Planeta trei\")\nprint(\"Acasa\")",
       "output": "Planeta unu\nPlaneta doi\nPlaneta trei\nAcasa",
       "options": [
@@ -336,7 +336,7 @@
     },
     {
       "id": "bad-quote-3bc095",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"Pasul 1\")\nprint(\"Pasul 2)\nprint(\"Pasul 3\")\nprint(\"Gata\")",
       "output": "Pasul 1\nPasul 2\nPasul 3\nGata",
       "options": [
@@ -349,7 +349,7 @@
     },
     {
       "id": "bad-case-5ddae1",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"Imi place pizza\")\nprint(\"Imi plac pastele\")\nprint(\"Imi place supa\")\nPrint(\"Imi place tortul\")",
       "output": "Imi place pizza\nImi plac pastele\nImi place supa\nImi place tortul",
       "options": [
@@ -362,7 +362,7 @@
     },
     {
       "id": "bad-case-ff7c22",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "print(\"Unu\")\nprint(\"Doi\")\nprint(\"Trei\")\nPrint(\"Patru\")",
       "output": "Unu\nDoi\nTrei\nPatru",
       "options": ["Print(\"Patru\")", "print(\"Unu\")", "print(\"Doi\")", "print(\"Trei\")"],
@@ -563,7 +563,7 @@
     },
     {
       "id": "card-broken-83a86f",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nume = Shadow\nnivel = 42\nviata = 97.5\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
       "output": "Jucatorul Shadow(42) are viata 97.5",
       "options": [
@@ -576,7 +576,7 @@
     },
     {
       "id": "card-broken-7f510c",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nume = Ana\nnivel = 7\nviata = 50.5\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
       "output": "Jucatorul Ana(7) are viata 50.5",
       "options": [
@@ -589,7 +589,7 @@
     },
     {
       "id": "card-broken-1a861b",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nume = Ben\nnivel = 12\nviata = 80.25\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
       "output": "Jucatorul Ben(12) are viata 80.25",
       "options": [

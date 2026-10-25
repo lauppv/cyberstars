@@ -267,7 +267,7 @@
     },
     {
       "id": "list-bad-index-8df106",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(nume[0])\nprint(len(nume))\nprint(nume[3])",
       "output": "Tommy\n3\nCortez",
       "options": [
@@ -280,7 +280,7 @@
     },
     {
       "id": "list-bad-index-33b13b",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varste = [42, 35, 60, 29]\nprint(varste[0])\nprint(len(varste))\nprint(varste[4])",
       "output": "42\n4\n29",
       "options": [
@@ -293,7 +293,7 @@
     },
     {
       "id": "list-bad-index-f17b71",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "incarcatura = [\"oxigen\", \"apa\", \"mancare\", \"combustibil\"]\nprint(incarcatura[0])\nprint(len(incarcatura))\nprint(incarcatura[4])",
       "output": "oxigen\n4\ncombustibil",
       "options": [
@@ -306,7 +306,7 @@
     },
     {
       "id": "list-bad-index-dfb777",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "echipaj = [\"Shadow\", \"Jess\"]\nprint(echipaj[0])\nprint(len(echipaj))\nprint(echipaj[2])",
       "output": "Shadow\n2\nJess",
       "options": [
@@ -462,7 +462,7 @@
     },
     {
       "id": "list-bad-append-ccf421",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "incarcatura = []\nincarcatura.append(\"oxigen\")\nincarcatura.append[\"apa\"]\nprint(incarcatura)",
       "output": "['oxigen', 'apa']",
       "options": [
@@ -475,7 +475,7 @@
     },
     {
       "id": "list-bad-append-f23f8d",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "nume = []\nnume.append(\"Tommy\")\nnume.append[\"Lance\"]\nprint(nume)",
       "output": "['Tommy', 'Lance']",
       "options": ["nume.append[\"Lance\"]", "nume = []", "nume.append(\"Tommy\")", "print(nume)"],
@@ -483,7 +483,7 @@
     },
     {
       "id": "list-bad-append-335b05",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "varste = []\nvarste.append(42)\nvarste.append[35]\nprint(varste)",
       "output": "[42, 35]",
       "options": ["varste.append[35]", "varste = []", "varste.append(42)", "print(varste)"],
@@ -491,7 +491,7 @@
     },
     {
       "id": "list-bad-append-22b2b7",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "echipaj = []\nechipaj.append(\"Shadow\")\nechipaj.append[\"Jess\"]\nprint(echipaj)",
       "output": "['Shadow', 'Jess']",
       "options": [

@@ -517,7 +517,7 @@
     {
       "id": "list-bad-index",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "{{v}} = [{{items}}]\nprint({{v}}[0])\nprint(len({{v}}))\nprint({{v}}[{{last}}])",
       "values": [
         {
@@ -681,7 +681,7 @@
     {
       "id": "list-bad-append",
       "kind": "wrong-line",
-      "text": "Care linie oprește programul să afișeze asta?",
+      "text": "Care linie împiedică programul să afișeze asta?",
       "code": "{{v}} = []\n{{v}}.append({{a}})\n{{v}}.append({{b}})\nprint({{v}})",
       "values": [
         {
