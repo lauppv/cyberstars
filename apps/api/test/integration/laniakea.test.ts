@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { createAuthenticatedAgent, userIdFor } from './helpers.js';
 import { prisma } from '../../src/config/db.js';
-import { loadQuiz } from '../../src/services/laniakea-quiz.js';
+import { lessons } from '@cyberstars/content/curriculum';
+import { LANIAKEA_COURSE, planetLessons } from '@cyberstars/shared/laniakea';
+import { hasQuiz, loadQuiz } from '../../src/services/laniakea-quiz.js';
 import type { StoredQuiz } from '../../src/repositories/laniakea.repository.js';
 
 type Agent = Awaited<ReturnType<typeof createAuthenticatedAgent>>['agent'];
@@ -19,11 +21,19 @@ const FIRST_STEPS = [
   'comment',
 ];
 
-async function student(lessons = FIRST_STEPS) {
+// The first planet that has no questions yet, or none once every planet has them
+const BARE = planetLessons(
+  lessons
+    .filter((l) => l.courseKey === LANIAKEA_COURSE)
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map((l) => l.slug),
+).find((p) => !hasQuiz(p.slug))?.slug;
+
+async function student(done = FIRST_STEPS) {
   const s = await createAuthenticatedAgent();
   const userId = await userIdFor(s.email);
   await prisma.userLessonProgress.createMany({
-    data: lessons.map((lessonSlug) => ({
+    data: done.map((lessonSlug) => ({
       userId,
       courseKey: 'python',
       lessonSlug,
@@ -116,13 +126,14 @@ describe('Laniakea', () => {
     await answer(agent, 5, 0).expect(404);
   });
 
-  it("refuses a planet whose lesson isn't done and one without questions", async () => {
-    const { agent } = await student([...FIRST_STEPS, 'if-elif-else']);
+  it("refuses a planet whose lesson isn't done", async () => {
+    const { agent } = await student();
     await agent.post('/api/laniakea/for/quiz').send({ lang: 'en' }).expect(403);
-    const none = await agent
-      .post('/api/laniakea/if-elif-else/quiz')
-      .send({ lang: 'en' })
-      .expect(404);
+  });
+
+  it.skipIf(!BARE)('refuses a planet without questions', async () => {
+    const { agent } = await student([...FIRST_STEPS, BARE!]);
+    const none = await agent.post(`/api/laniakea/${BARE}/quiz`).send({ lang: 'en' }).expect(404);
     expect(none.body.error).toBe('This planet has no questions yet');
   });
 });
