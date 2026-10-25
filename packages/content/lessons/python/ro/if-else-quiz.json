@@ -700,7 +700,6 @@
       "mistakes": [
         ["{{v}} >= {{limit}}", "{{v}} > {{limit}}"],
         ["{{v}} >= {{limit}}", "{{v}} < {{limit}}"],
-        ["{{v}} >= {{limit}}", "{{v}} <= {{limit}}"],
         [
           "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
           "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
@@ -743,7 +742,7 @@
         }
       ],
       "answer": "else:",
-      "wrong": ["else", "if:", "else {{v}} < {{limit}}:", "if {{v}} > {{limit}}:"]
+      "wrong": ["else", "if:", "else {{v}} < {{limit}}:"]
     },
     {
       "id": "ie-two-ifs",
