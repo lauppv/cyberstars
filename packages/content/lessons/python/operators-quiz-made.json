@@ -564,21 +564,21 @@
     {
       "id": "op-bad-hours-3a49d4",
       "text": "Which line stops this program from printing this?",
-      "code": "minutes = 150\nhours = minutes / 60\nrest = minutes % 60\nprint(f\"{hours} h {rest} min\")",
-      "output": "2 h 30 min",
+      "code": "minutes = 150\nhours = minutes / 60\nrest = minutes % 60\nprint(f\"{hours} h {rest} min\")\nprint(hours * 60 + rest)",
+      "output": "2 h 30 min\n150",
       "options": [
         "hours = minutes / 60",
-        "minutes = 150",
         "rest = minutes % 60",
-        "print(f\"{hours} h {rest} min\")"
+        "print(f\"{hours} h {rest} min\")",
+        "print(hours * 60 + rest)"
       ],
       "answer": 0
     },
     {
       "id": "op-bad-hours-c7d61a",
       "text": "Which line stops this program from printing this?",
-      "code": "minutes = 65\nhours = minutes / 60\nrest = minutes % 60\nprint(f\"{hours} h {rest} min\")",
-      "output": "1 h 5 min",
+      "code": "minutes = 65\nhours = minutes / 60\nrest = minutes % 60\nprint(f\"{hours} h {rest} min\")\nprint(hours * 60 + rest)",
+      "output": "1 h 5 min\n65",
       "options": [
         "hours = minutes / 60",
         "minutes = 65",
@@ -590,8 +590,8 @@
     {
       "id": "op-bad-hours-2e2ad6",
       "text": "Which line stops this program from printing this?",
-      "code": "minutes = 230\nhours = minutes / 60\nrest = minutes % 60\nprint(f\"{hours} h {rest} min\")",
-      "output": "3 h 50 min",
+      "code": "minutes = 230\nhours = minutes / 60\nrest = minutes % 60\nprint(f\"{hours} h {rest} min\")\nprint(hours * 60 + rest)",
+      "output": "3 h 50 min\n230",
       "options": [
         "hours = minutes / 60",
         "minutes = 230",

@@ -564,21 +564,21 @@
     {
       "id": "op-bad-hours-3a49d4",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "minute = 150\nore = minute / 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")",
-      "output": "2 h 30 min",
+      "code": "minute = 150\nore = minute / 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")\nprint(ore * 60 + rest)",
+      "output": "2 h 30 min\n150",
       "options": [
         "ore = minute / 60",
-        "minute = 150",
         "rest = minute % 60",
-        "print(f\"{ore} h {rest} min\")"
+        "print(f\"{ore} h {rest} min\")",
+        "print(ore * 60 + rest)"
       ],
       "answer": 0
     },
     {
       "id": "op-bad-hours-c7d61a",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "minute = 65\nore = minute / 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")",
-      "output": "1 h 5 min",
+      "code": "minute = 65\nore = minute / 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")\nprint(ore * 60 + rest)",
+      "output": "1 h 5 min\n65",
       "options": [
         "ore = minute / 60",
         "minute = 65",
@@ -590,8 +590,8 @@
     {
       "id": "op-bad-hours-2e2ad6",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "minute = 230\nore = minute / 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")",
-      "output": "3 h 50 min",
+      "code": "minute = 230\nore = minute / 60\nrest = minute % 60\nprint(f\"{ore} h {rest} min\")\nprint(ore * 60 + rest)",
+      "output": "3 h 50 min\n230",
       "options": [
         "ore = minute / 60",
         "minute = 230",

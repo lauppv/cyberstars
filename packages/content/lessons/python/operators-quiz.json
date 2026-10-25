@@ -752,7 +752,7 @@
       "id": "op-bad-hours",
       "kind": "wrong-line",
       "text": "Which line stops this program from printing this?",
-      "code": "minutes = {{m}}\nhours = minutes // 60\nrest = minutes % 60\nprint(f\"{hours} h {rest} min\")",
+      "code": "minutes = {{m}}\nhours = minutes // 60\nrest = minutes % 60\nprint(f\"{hours} h {rest} min\")\nprint(hours * 60 + rest)",
       "values": [
         {
           "m": 150
