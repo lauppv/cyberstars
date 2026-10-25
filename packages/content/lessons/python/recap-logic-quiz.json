@@ -1,0 +1,743 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "In the Launch Console, what does the operator type to say the input is over?",
+      "options": ["stop", "0", "A negative number", "Nothing, just Enter"],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "In the Launch Console, what happens to a negative reading?",
+      "options": [
+        "It prints Critical system",
+        "It ends the input",
+        "It is ignored: nothing is printed for it",
+        "It aborts the launch at once"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Why does the Launch Console read the levels with `while True` and not with a for over a range?",
+      "options": [
+        "We don't know up front how many readings the operator will type",
+        "A for loop can't call input()",
+        "while True runs faster than for",
+        "A for loop can't use break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "Why do the checks for 0 and for negative readings come before `if level < 50:` in the solution?",
+      "options": [
+        "break and continue must be the first lines of a loop",
+        "Python checks the ifs of a loop from the bottom up",
+        "The order doesn't matter, it prints the same",
+        "0 and negative readings are below 50 too, so they would count as critical"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "In the solution, what does `continue` do when the operator types -5?",
+      "options": [
+        "It ends the loop",
+        "It skips the rest of this pass and the loop asks for the next reading",
+        "It sets launch_ok to False",
+        "It prints -5 and goes on"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "In the solution, what does `break` do when the operator types 0?",
+      "options": [
+        "It ends the whole program at once, printing nothing more",
+        "It skips this reading and asks for the next one",
+        "It leaves the loop, and the program goes on with the if after it",
+        "It sets launch_ok to False"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Why is `launch_ok = True` written before the loop and not inside it?",
+      "options": [
+        "Inside, it would become True again at every reading and forget a critical system",
+        "A variable can't be made inside a loop",
+        "while True needs it to start",
+        "So the loop runs only once"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "What do we call a variable like `launch_ok`, a boolean that remembers something while the loop runs?",
+      "options": ["A loop", "A keyword", "A range", "A flag"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Which line means the same as `if launch_ok:`?",
+      "options": [
+        "if launch_ok = True:",
+        "if launch_ok == True:",
+        "if launch_ok == False:",
+        "if not launch_ok:"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "The operator types 90, then 75, then 0. What does this print?",
+      "code": "launch_ok = True\n\nwhile True:\n    level = int(input())\n    if level == 0:\n        break\n    if level < 0:\n        continue\n    if level < 50:\n        print(\"Critical system\")\n        launch_ok = False\n    else:\n        print(\"System OK\")\n\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "options": [
+        "System OK\nSystem OK\nCritical system\nLaunch aborted",
+        "System OK\nSystem OK",
+        "System OK\nSystem OK\nLaunch authorized",
+        "Launch authorized"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "The operator types 40, then -3, then 0. What does this print?",
+      "code": "launch_ok = True\n\nwhile True:\n    level = int(input())\n    if level == 0:\n        break\n    if level < 0:\n        continue\n    if level < 50:\n        print(\"Critical system\")\n        launch_ok = False\n    else:\n        print(\"System OK\")\n\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "options": [
+        "Critical system\nLaunch aborted",
+        "Critical system\nCritical system\nLaunch aborted",
+        "Critical system\nLaunch authorized",
+        "Launch aborted"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "The operator types 0 right away. What does this print?",
+      "code": "launch_ok = True\n\nwhile True:\n    level = int(input())\n    if level == 0:\n        break\n    if level < 0:\n        continue\n    if level < 50:\n        print(\"Critical system\")\n        launch_ok = False\n    else:\n        print(\"System OK\")\n\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "options": [
+        "Launch aborted",
+        "Critical system\nLaunch aborted",
+        "Nothing",
+        "Launch authorized"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "The operator types 50, then 0. What does this print?",
+      "code": "launch_ok = True\n\nwhile True:\n    level = int(input())\n    if level == 0:\n        break\n    if level < 0:\n        continue\n    if level < 50:\n        print(\"Critical system\")\n        launch_ok = False\n    else:\n        print(\"System OK\")\n\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "options": [
+        "Critical system\nLaunch aborted",
+        "System OK\nLaunch authorized",
+        "System OK\nLaunch aborted",
+        "System OK"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "In the solution, what happens if `level = int(input())` becomes `level = input()` and the operator types 90?",
+      "options": [
+        "Nothing changes, Python turns it into a number by itself",
+        "Every reading counts as critical",
+        "level holds the text \"90\", so comparing it with 0 stops the program with an error",
+        "The loop never ends"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "The operator types 90, then 30, then 80, then 0. How many times does the solution call input()?",
+      "options": ["4", "3", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "level is 30 and launch_ok is True. Which condition is True?",
+      "options": [
+        "level >= 50 and launch_ok",
+        "level < 0 or level == 0",
+        "not launch_ok",
+        "level < 50 and launch_ok"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "When is `not launch_ok` True?",
+      "options": [
+        "When launch_ok is True",
+        "Always, not makes any condition True",
+        "When launch_ok is False",
+        "Never, not only works inside while"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "for i in range(1, 6):\n    if i == 2:\n        continue\n    if i == 4:\n        break\n    print(i)",
+      "options": ["1\n3\n5", "1\n3", "1\n2\n3", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "count = 0\nwhile True:\n    count = count + 1\n    if count == 3:\n        break\nprint(count)",
+      "options": ["3", "2", "4", "Nothing, the loop never stops"],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "Why does this loop never stop?",
+      "code": "level = 10\nwhile level != 0:\n    print(level)",
+      "options": [
+        "!= can't be used in a while",
+        "A while always needs a break to stop",
+        "print() starts the loop again",
+        "level never changes inside the loop, so level != 0 stays True"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Which code asks the operator for a level again and again, until they type 0?",
+      "options": [
+        "while True:\n    level = int(input())\n    if level == 0:\n        continue",
+        "level = int(input())\nif level == 0:\n    break",
+        "while True:\n    level = int(input())\n    if level == 0:\n        break",
+        "for i in range(0):\n    level = int(input())"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "In `while True:`, what is True?",
+      "options": [
+        "A variable we have to make before the loop",
+        "The loop's condition, which never turns false by itself",
+        "The text \"True\"",
+        "How many times the loop runs"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "When is `level >= 50 and launch_ok` True?",
+      "options": [
+        "When at least one of the two is True",
+        "Only when level is exactly 50",
+        "Whenever launch_ok is True",
+        "Only when level is 50 or more and launch_ok is True"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "The operator types 70, then 20, then 90, then 0. Which line does the solution print last?",
+      "options": ["Launch aborted", "Launch authorized", "System OK", "Critical system"],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "A system now counts as critical up to 50, 50 included. How does `if level < 50:` change?",
+      "options": ["if level > 50:", "if level < 51 == True:", "if level <= 50:", "if level == 50:"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "The operator types wait, then hold, then go. What does this print?",
+      "code": "code = input()\nwhile code != \"go\":\n    print(\"Waiting\")\n    code = input()\nprint(\"Launch\")",
+      "options": [
+        "Waiting\nWaiting\nWaiting\nLaunch",
+        "Waiting\nWaiting\nLaunch",
+        "Waiting\nLaunch",
+        "Launch"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Why does the solution write `level == 0` and not `level = 0`?",
+      "options": [
+        "= puts a value in a variable, == compares two values",
+        "== is faster than =",
+        "They do the same, == is only the newer way",
+        "= works only with text"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "Where does the final if / else go, so the verdict is printed once, after every reading?",
+      "options": [
+        "Inside the loop, right after input()",
+        "Before the loop, after launch_ok = True",
+        "Inside the loop, in the else",
+        "After the loop, with no spaces in front"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "The operator types 60, then -5, then 0. How many lines does the solution print?",
+      "options": ["3", "2", "1", "4"],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "fuel = 80\nweather_ok = False\nif fuel >= 50 or weather_ok:\n    print(\"Fuel OK\")\nif fuel >= 50 and weather_ok:\n    print(\"Go\")\nelse:\n    print(\"Hold\")",
+      "options": ["Fuel OK\nGo", "Hold", "Fuel OK\nHold", "Go"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "rl-reading",
+      "kind": "prints",
+      "text": "The operator typed {{typed}}, so `level` holds what input() gave back. What does this print?",
+      "code": "level = \"{{typed}}\"\nlevel = int(level)\nif level == 0:\n    print(\"Input over\")\nelif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "values": [
+        {
+          "typed": 75
+        },
+        {
+          "typed": 50
+        },
+        {
+          "typed": 49
+        },
+        {
+          "typed": -5
+        },
+        {
+          "typed": 30
+        },
+        {
+          "typed": -40
+        }
+      ],
+      "mistakes": [
+        ["elif level < 50", "elif level > 50"],
+        ["if level == 0", "if level != 0"],
+        ["elif level < 0", "elif level > 0"],
+        ["level < 50", "level <= 50"],
+        ["elif level < 0", "if level < 0"],
+        ["elif level < 50", "if level < 50"]
+      ]
+    },
+    {
+      "id": "rl-flag",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "launch_ok = True\nfuel = {{fuel}}\nengines = {{eng}}\nif fuel < 50:\n    print(\"Fuel critical\")\n    launch_ok = False\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "values": [
+        {
+          "fuel": 80,
+          "eng": 90
+        },
+        {
+          "fuel": 30,
+          "eng": 90
+        },
+        {
+          "fuel": 80,
+          "eng": 20
+        },
+        {
+          "fuel": 50,
+          "eng": 50
+        },
+        {
+          "fuel": 10,
+          "eng": 40
+        }
+      ],
+      "mistakes": [
+        ["launch_ok = True", "launch_ok = False"],
+        ["if launch_ok:", "if not launch_ok:"],
+        ["if engines < 50", "elif engines < 50"],
+        ["engines < 50", "engines > 50"],
+        ["fuel < 50", "fuel > 50"],
+        ["fuel < 50", "fuel <= 50"],
+        ["engines < 50", "engines <= 50"],
+        ["    launch_ok = False\nif engines", "if engines"]
+      ]
+    },
+    {
+      "id": "rl-scan",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "for sector in range(1, {{stop}}):\n    if sector == {{noise}}:\n        continue\n    if sector == {{found}}:\n        print(f\"Signal in sector {sector}\")\n        break\n    print(f\"Sector {sector} clear\")",
+      "values": [
+        {
+          "stop": 8,
+          "noise": 2,
+          "found": 4
+        },
+        {
+          "stop": 8,
+          "noise": 3,
+          "found": 5
+        },
+        {
+          "stop": 6,
+          "noise": 5,
+          "found": 3
+        },
+        {
+          "stop": 5,
+          "noise": 2,
+          "found": 9
+        },
+        {
+          "stop": 7,
+          "noise": 1,
+          "found": 3
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["        break", "        continue"],
+        ["\n        break", ""],
+        ["range(1, {{stop}})", "range(1, {{stop}} + 1)"],
+        ["if sector == {{noise}}", "if sector != {{noise}}"]
+      ]
+    },
+    {
+      "id": "rl-countdown",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "seconds = {{start}}\naborted = False\nwhile seconds > 0:\n    if seconds == {{abort}}:\n        aborted = True\n        break\n    print(seconds)\n    seconds = seconds - 1\nif aborted:\n    print(\"Launch aborted\")\nelse:\n    print(\"Liftoff\")",
+      "values": [
+        {
+          "start": 3,
+          "abort": 7
+        },
+        {
+          "start": 5,
+          "abort": 3
+        },
+        {
+          "start": 4,
+          "abort": 2
+        },
+        {
+          "start": 3,
+          "abort": 1
+        },
+        {
+          "start": 2,
+          "abort": 5
+        }
+      ],
+      "mistakes": [
+        ["\n        break", ""],
+        ["seconds > 0", "seconds >= 0"],
+        [
+          "    print(seconds)\n    seconds = seconds - 1",
+          "    seconds = seconds - 1\n    print(seconds)"
+        ],
+        ["aborted = False", "aborted = True"],
+        ["if aborted:", "if not aborted:"]
+      ]
+    },
+    {
+      "id": "rl-gonogo",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "fuel = {{fuel}}\nweather_ok = {{w}}\ncrew_ready = {{c}}\nif fuel >= 50 and weather_ok:\n    print(\"Fuel and weather OK\")\nif not crew_ready:\n    print(\"Crew not ready\")\nif fuel >= 50 and weather_ok and crew_ready:\n    print(\"Go for launch\")\nelse:\n    print(\"Hold\")",
+      "values": [
+        {
+          "fuel": 80,
+          "w": "True",
+          "c": "True"
+        },
+        {
+          "fuel": 80,
+          "w": "True",
+          "c": "False"
+        },
+        {
+          "fuel": 30,
+          "w": "True",
+          "c": "True"
+        },
+        {
+          "fuel": 80,
+          "w": "False",
+          "c": "True"
+        },
+        {
+          "fuel": 50,
+          "w": "True",
+          "c": "True"
+        }
+      ],
+      "mistakes": [
+        ["fuel >= 50 and weather_ok:", "fuel >= 50 or weather_ok:"],
+        ["if not crew_ready", "if crew_ready"],
+        ["and weather_ok and crew_ready", "and weather_ok or crew_ready"],
+        ["fuel >= 50 and weather_ok and", "fuel > 50 and weather_ok and"],
+        ["if fuel >= 50 and weather_ok:", "if fuel >= 50 and not weather_ok:"],
+        ["else:\n    print(\"Hold\")", "print(\"Hold\")"]
+      ]
+    },
+    {
+      "id": "rl-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "total = 0\nfor level in range({{a}}, {{b}}, 10):\n    if level < 50:\n        continue\n    total = total + level\nprint(total)",
+      "values": [
+        {
+          "a": 30,
+          "b": 80
+        },
+        {
+          "a": 40,
+          "b": 101
+        },
+        {
+          "a": 20,
+          "b": 61
+        },
+        {
+          "a": 50,
+          "b": 91
+        },
+        {
+          "a": 10,
+          "b": 71
+        },
+        {
+          "a": 30,
+          "b": 111
+        },
+        {
+          "a": 20,
+          "b": 91
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["level < 50", "level <= 50"],
+        ["    total = total + level\nprint", "    total = total + level\n    print"],
+        ["total = total + level", "total = level"]
+      ]
+    },
+    {
+      "id": "rl-which-reading",
+      "kind": "which-program",
+      "text": "The operator typed {{typed}}, so `level` holds what input() gave back. Which program shows this?",
+      "code": "level = \"{{typed}}\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level < 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "values": [
+        {
+          "typed": 30
+        },
+        {
+          "typed": 75
+        },
+        {
+          "typed": -5
+        },
+        {
+          "typed": 49
+        },
+        {
+          "typed": 50
+        }
+      ],
+      "mistakes": [
+        ["elif level < 50", "if level < 50"],
+        ["level < 50", "level > 50"],
+        ["level = int(level)\n", ""],
+        ["if level < 0", "if level > 0"],
+        ["level < 50", "level <= 50"]
+      ]
+    },
+    {
+      "id": "rl-which-loop",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "seconds = {{start}}\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+      "values": [
+        {
+          "start": 3
+        },
+        {
+          "start": 4
+        },
+        {
+          "start": 2
+        },
+        {
+          "start": 5
+        },
+        {
+          "start": 1
+        }
+      ],
+      "mistakes": [
+        ["seconds == 0", "seconds == 1"],
+        [
+          "    print(seconds)\n    seconds = seconds - 1",
+          "    seconds = seconds - 1\n    print(seconds)"
+        ],
+        ["\nprint(\"Liftoff\")", "\n    print(\"Liftoff\")"],
+        ["seconds == 0", "seconds < 0"]
+      ]
+    },
+    {
+      "id": "rl-gap-break",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for sector in range(1, 10):\n    if sector == {{found}}:\n        print(f\"Signal in sector {sector}\")\n        ___\n    print(f\"Sector {sector} clear\")",
+      "values": [
+        {
+          "found": 3
+        },
+        {
+          "found": 5
+        },
+        {
+          "found": 2
+        },
+        {
+          "found": 7
+        },
+        {
+          "found": 4
+        }
+      ],
+      "answer": "break",
+      "wrong": ["continue", "sector = 10", "print(f\"Sector {sector} clear\")"]
+    },
+    {
+      "id": "rl-gap-flag",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "launch_ok = True\nfuel = {{fuel}}\nengines = {{eng}}\nif fuel < 50:\n    print(\"Fuel critical\")\n    ___\nif engines < 50:\n    print(\"Engines critical\")\n    launch_ok = False\nif launch_ok:\n    print(\"Launch authorized\")\nelse:\n    print(\"Launch aborted\")",
+      "values": [
+        {
+          "fuel": 30,
+          "eng": 90
+        },
+        {
+          "fuel": 10,
+          "eng": 60
+        },
+        {
+          "fuel": 49,
+          "eng": 50
+        },
+        {
+          "fuel": 20,
+          "eng": 75
+        },
+        {
+          "fuel": 45,
+          "eng": 80
+        }
+      ],
+      "answer": "launch_ok = False",
+      "wrong": ["launch_ok == False", "launch_ok = True", "print(\"Launch aborted\")"]
+    },
+    {
+      "id": "rl-gap-op",
+      "kind": "missing-value",
+      "text": "The operator typed {{typed}}, so `level` holds what input() gave back. What goes in the gap so the program prints this?",
+      "code": "level = \"{{typed}}\"\nlevel = int(level)\nif level < 0:\n    print(\"Noise\")\nelif level ___ 50:\n    print(\"Critical system\")\nelse:\n    print(\"System OK\")",
+      "values": [
+        {
+          "typed": 49
+        },
+        {
+          "typed": 50
+        },
+        {
+          "typed": 30
+        },
+        {
+          "typed": 80
+        },
+        {
+          "typed": 51
+        }
+      ],
+      "answer": "<",
+      "wrong": ["<=", ">", ">=", "==", "!="]
+    },
+    {
+      "id": "rl-gap-bool",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "running = ___\nchecks = 0\nwhile running:\n    checks = checks + 1\n    print(f\"Check {checks}\")\n    if checks == {{n}}:\n        running = False\nprint(\"Console closed\")",
+      "values": [
+        {
+          "n": 2
+        },
+        {
+          "n": 3
+        },
+        {
+          "n": 1
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 5
+        }
+      ],
+      "answer": "True",
+      "wrong": ["False", "true", "not True"]
+    },
+    {
+      "id": "rl-bad-true",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "seconds = {{start}}\nwhile True:\n    if seconds == 0:\n        break\n    print(seconds)\n    seconds = seconds - 1\nprint(\"Liftoff\")",
+      "values": [
+        {
+          "start": 3
+        },
+        {
+          "start": 2
+        },
+        {
+          "start": 4
+        }
+      ],
+      "bug": ["while True:", "while true:"]
+    },
+    {
+      "id": "rl-bad-skip",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "for sector in range(1, {{stop}}):\n    if sector == {{noise}}:\n        continue\n    print(f\"Sector {sector} checked\")\nprint(\"Scan complete\")",
+      "values": [
+        {
+          "stop": 6,
+          "noise": 3
+        },
+        {
+          "stop": 5,
+          "noise": 2
+        },
+        {
+          "stop": 7,
+          "noise": 4
+        },
+        {
+          "stop": 4,
+          "noise": 1
+        }
+      ],
+      "bug": ["continue", "break"]
+    }
+  ]
+}

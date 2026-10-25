@@ -1,0 +1,928 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does a while loop do?",
+      "options": [
+        "Repeats its lines as long as its condition is true",
+        "Runs its lines a number of times given up front",
+        "Checks its condition once, then runs its lines to the end",
+        "Repeats its lines until the program ends"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "When does a while loop check its condition?",
+      "options": [
+        "Only once, before the first pass",
+        "Before every pass, the first one too",
+        "After every pass, so its lines always run at least once",
+        "Only when the variable in the condition changes"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "What is the last number this prints?",
+      "code": "i = 0\nwhile i < 10:\n    print(i)\n    i = i + 1",
+      "options": ["10", "11", "9", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Why doesn't `while i < 10:` print 10, when i grows by 1 from 0?",
+      "options": [
+        "Python always skips the last number of a loop",
+        "10 is printed too, but after the loop",
+        "The loop stops one pass early to save time",
+        "When i is 10, i < 10 is false, so the loop stops"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "i starts at 0 and grows by 1. Which line prints every number from 0 to 10, both included?",
+      "options": ["while i <= 10:", "while i < 10:", "while i == 10:", "while i > 10:"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What happens when this runs?",
+      "code": "i = 0\nwhile i <= 100:\n    print(i)",
+      "options": [
+        "It prints every number from 0 to 100",
+        "It prints 0 forever, since i never changes",
+        "It prints 0 once, then stops",
+        "It stops with an error: the loop has no i = i + 1"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "What do we call a loop whose condition never becomes false?",
+      "options": ["A for loop", "An empty loop", "An infinite loop", "A nested loop"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Which line keeps `while i < 5:` from running forever, when i starts at 0?",
+      "options": [
+        "i = 0, before the loop",
+        "print(i), inside the loop",
+        "i = i + 1, after the loop",
+        "i = i + 1, inside the loop"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "How many times does this print Hi?",
+      "code": "i = 10\nwhile i < 5:\n    print(\"Hi\")\n    i = i + 1",
+      "options": [
+        "Never: 10 < 5 is false from the start",
+        "Once: the lines run before the check",
+        "5 times",
+        "Forever"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "When does a while loop fit better than a for loop?",
+      "options": [
+        "When we count from 1 to 10",
+        "When we don't know up front how many times to repeat",
+        "When the loop has a print() in it",
+        "Never: a for loop can always do it more simply"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Why does the lesson write `password = \"\"` before the loop?",
+      "options": [
+        "So the password is empty at the end",
+        "Because input() needs an empty variable",
+        "So the condition has something to check on the first pass",
+        "So the loop runs only once"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "`password` was never made. What happens when Python reaches `while password != \"starlet\":`?",
+      "options": [
+        "Python skips the loop",
+        "The loop runs forever",
+        "password becomes \"\" by itself",
+        "It stops with an error"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "What does `!=` mean in `while password != \"starlet\":`?",
+      "options": ["Is not equal to", "Is equal to", "Gets a new value", "Is less than or equal to"],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "In the lesson's password example the user types moon, then starlet. How many times does the program ask for the password?",
+      "options": ["Once", "Twice", "Three times", "Until the user stops the program"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "In the lesson's password example, when does the loop stop?",
+      "options": [
+        "As soon as the user types anything",
+        "After three wrong tries",
+        "When password is starlet, so password != \"starlet\" is false",
+        "When the password is empty"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "In the Access Code mission the user types 1111, then 2222, then 1234. What does the program print?",
+      "options": [
+        "Wrong code\nAccess granted",
+        "Access granted",
+        "Wrong code\nWrong code\nWrong code\nAccess granted",
+        "Wrong code\nWrong code\nAccess granted"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "In the Access Code mission, why is the code compared with \"1234\", in quotes?",
+      "options": [
+        "input() gives back text, and the text \"1234\" is not the number 1234",
+        "Quotes make the comparison faster",
+        "A while line needs quotes in its condition",
+        "So 1234 is printed at the end"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "In the Access Code mission the user types 1234 right away. What does the program print?",
+      "options": [
+        "Wrong code, then Access granted",
+        "Only Access granted",
+        "Nothing",
+        "Wrong code, again and again"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "What has to come at the end of a while line?",
+      "options": [";", ".", ":", ","],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "What happens when this runs?",
+      "code": "i = 0\nwhile i < 3:\n    print(i)\ni = i + 1",
+      "options": [
+        "It prints 0, 1 and 2",
+        "It prints 0, 1, 2 and 3",
+        "It stops with an error",
+        "It prints 0 forever: i = i + 1 is after the loop"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What is the last number this prints?",
+      "code": "i = 3\nwhile i > 0:\n    print(i)\n    i = i - 1",
+      "options": ["1", "0", "3", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "How many times do the loop's lines run?",
+      "code": "n = 0\nwhile n < 10:\n    n = n + 2",
+      "options": ["10", "5", "4", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Which program prints the same as `for i in range(5):` with `print(i)` inside?",
+      "options": [
+        "i = 0\nwhile i <= 5:\n    print(i)\n    i = i + 1",
+        "i = 1\nwhile i < 5:\n    print(i)\n    i = i + 1",
+        "i = 0\nwhile i < 5:\n    print(i)\n    i = i + 1",
+        "i = 0\nwhile i < 5:\n    i = i + 1\n    print(i)"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "In `while i < 10:`, what is `i < 10`?",
+      "options": [
+        "How many times the loop runs",
+        "The value i starts from",
+        "A comment for the loop",
+        "The condition: the loop runs as long as it is true"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Which of these lines is right?",
+      "options": ["while i < 10:", "while i < 10", "while: i < 10", "while i < 10 do:"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 1\nprint(total)",
+      "options": ["4", "10", "6", "15"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "i = 5\nwhile i < 5:\n    print(i)\n    i = i + 1\nprint(\"Done\")",
+      "options": ["5\nDone", "Nothing", "Done", "5"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "A while loop and a for loop print the same numbers. Why does the while one need more lines?",
+      "options": [
+        "A while loop is slower, so it needs more lines",
+        "A for loop can't print numbers on their own",
+        "There is no difference: they always have as many lines",
+        "We make the variable before it and change it inside it ourselves; for does both itself"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "For a while loop to stop, which variable has to change inside it?",
+      "options": [
+        "The one printed in the loop",
+        "One that its condition checks",
+        "Any variable of the program",
+        "None: a while loop stops by itself after a while"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "What does Python do once the condition of a while loop is false?",
+      "options": [
+        "It skips the loop's lines and goes on with the line after the loop",
+        "It starts the loop again from the top",
+        "It stops the program with an error",
+        "It runs the loop's lines one more time"
+      ],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "wh-up",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} {{op}} {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + {{step}}",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "op": "<",
+          "stop": 4,
+          "step": 1,
+          "alt": "<="
+        },
+        {
+          "v": "i",
+          "start": 2,
+          "op": "<=",
+          "stop": 5,
+          "step": 1,
+          "alt": "<"
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "op": "<",
+          "stop": 10,
+          "step": 3,
+          "alt": "<="
+        },
+        {
+          "v": "k",
+          "start": 0,
+          "op": "<=",
+          "stop": 8,
+          "step": 2,
+          "alt": "<"
+        },
+        {
+          "v": "x",
+          "start": 5,
+          "op": "<",
+          "stop": 8,
+          "step": 1,
+          "alt": "<="
+        }
+      ],
+      "mistakes": [
+        ["{{op}} {{stop}}", "{{alt}} {{stop}}"],
+        [
+          "print({{v}})\n    {{v}} = {{v}} + {{step}}",
+          "{{v}} = {{v}} + {{step}}\n    print({{v}})"
+        ],
+        [
+          "    print({{v}})\n    {{v}} = {{v}} + {{step}}",
+          "    {{v}} = {{v}} + {{step}}\nprint({{v}})"
+        ]
+      ]
+    },
+    {
+      "id": "wh-down",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} {{op}} {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} - {{step}}",
+      "values": [
+        {
+          "v": "i",
+          "start": 3,
+          "op": ">",
+          "stop": 0,
+          "step": 1,
+          "alt": ">="
+        },
+        {
+          "v": "seconds",
+          "start": 5,
+          "op": ">",
+          "stop": 2,
+          "step": 1,
+          "alt": ">="
+        },
+        {
+          "v": "n",
+          "start": 10,
+          "op": ">=",
+          "stop": 2,
+          "step": 4,
+          "alt": ">"
+        },
+        {
+          "v": "lives",
+          "start": 3,
+          "op": ">=",
+          "stop": 1,
+          "step": 1,
+          "alt": ">"
+        }
+      ],
+      "mistakes": [
+        ["{{op}} {{stop}}", "{{alt}} {{stop}}"],
+        [
+          "print({{v}})\n    {{v}} = {{v}} - {{step}}",
+          "{{v}} = {{v}} - {{step}}\n    print({{v}})"
+        ],
+        [
+          "    print({{v}})\n    {{v}} = {{v}} - {{step}}",
+          "    {{v}} = {{v}} - {{step}}\nprint({{v}})"
+        ]
+      ]
+    },
+    {
+      "id": "wh-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{t}} = 0\ni = 1\nwhile i <= {{n}}:\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "n": 3
+        },
+        {
+          "t": "points",
+          "n": 4
+        },
+        {
+          "t": "energy",
+          "n": 5
+        },
+        {
+          "t": "fuel",
+          "n": 6
+        },
+        {
+          "t": "total",
+          "n": 10
+        }
+      ],
+      "mistakes": [
+        ["i <= {{n}}", "i < {{n}}"],
+        ["\nprint({{t}})", "\n    print({{t}})"],
+        ["{{t}} = {{t}} + i", "{{t}} = {{t}} + 1"],
+        ["{{t}} = 0", "{{t}} = 1"]
+      ]
+    },
+    {
+      "id": "wh-after",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    {{v}} = {{v}} + {{step}}\nprint({{v}})",
+      "values": [
+        {
+          "v": "x",
+          "start": 0,
+          "stop": 10,
+          "step": 3
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "stop": 10,
+          "step": 4
+        },
+        {
+          "v": "height",
+          "start": 0,
+          "stop": 7,
+          "step": 2
+        },
+        {
+          "v": "level",
+          "start": 1,
+          "stop": 6,
+          "step": 2
+        },
+        {
+          "v": "points",
+          "start": 2,
+          "stop": 20,
+          "step": 5
+        }
+      ],
+      "mistakes": [
+        [
+          "    {{v}} = {{v}} + {{step}}\nprint({{v}})",
+          "    {{v}} = {{v}} + {{step}}\n    print({{v}})"
+        ],
+        ["{{v}} + {{step}}", "{{v}} + 1"],
+        ["print({{v}})", "print({{stop}})"],
+        ["print({{v}})", "print(\"{{v}}\")"]
+      ]
+    },
+    {
+      "id": "wh-then",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + 1\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "v": "i",
+          "start": 2,
+          "stop": 4,
+          "end": "Done"
+        },
+        {
+          "v": "n",
+          "start": 0,
+          "stop": 3,
+          "end": "Liftoff"
+        },
+        {
+          "v": "k",
+          "start": 5,
+          "stop": 7,
+          "end": "Ready"
+        },
+        {
+          "v": "seconds",
+          "start": 1,
+          "stop": 3,
+          "end": "Game over"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} < {{stop}}", "{{v}} <= {{stop}}"],
+        ["{{v}} = {{start}}", "{{v}} = 0"],
+        ["\nprint(\"{{end}}\")", "\n    print(\"{{end}}\")"],
+        ["    print({{v}})\n", ""]
+      ]
+    },
+    {
+      "id": "wh-passes",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{c}} = 0\n{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    {{v}} = {{v}} + {{step}}\n    {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "count",
+          "v": "x",
+          "start": 0,
+          "stop": 10,
+          "step": 2
+        },
+        {
+          "c": "laps",
+          "v": "i",
+          "start": 0,
+          "stop": 9,
+          "step": 3
+        },
+        {
+          "c": "count",
+          "v": "n",
+          "start": 1,
+          "stop": 6,
+          "step": 2
+        },
+        {
+          "c": "steps",
+          "v": "height",
+          "start": 0,
+          "stop": 10,
+          "step": 4
+        }
+      ],
+      "mistakes": [
+        ["{{v}} < {{stop}}", "{{v}} <= {{stop}}"],
+        ["{{c}} = 0", "{{c}} = 1"],
+        ["\nprint({{c}})", "\n    print({{c}})"],
+        ["print({{c}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "wh-which-up",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + 1",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 4,
+          "other": 1
+        },
+        {
+          "v": "n",
+          "start": 3,
+          "stop": 6,
+          "other": 4
+        },
+        {
+          "v": "i",
+          "start": 1,
+          "stop": 5,
+          "other": 0
+        },
+        {
+          "v": "k",
+          "start": 5,
+          "stop": 9,
+          "other": 6
+        }
+      ],
+      "mistakes": [
+        ["{{v}} < {{stop}}", "{{v}} <= {{stop}}"],
+        ["{{v}} = {{start}}", "{{v}} = {{other}}"],
+        ["print({{v}})\n    {{v}} = {{v}} + 1", "{{v}} = {{v}} + 1\n    print({{v}})"]
+      ]
+    },
+    {
+      "id": "wh-which-sum",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{t}} = 0\ni = 1\nwhile i <= {{n}}:\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "n": 4
+        },
+        {
+          "t": "energy",
+          "n": 3
+        },
+        {
+          "t": "points",
+          "n": 5
+        },
+        {
+          "t": "fuel",
+          "n": 7
+        }
+      ],
+      "mistakes": [
+        ["i <= {{n}}", "i < {{n}}"],
+        ["\nprint({{t}})", "\n    print({{t}})"],
+        ["{{t}} = {{t}} + i", "{{t}} = {{t}} + 1"]
+      ]
+    },
+    {
+      "id": "wh-gap-op",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} ___ {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + 1",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 3,
+          "a": "<",
+          "w1": "<=",
+          "w2": ">",
+          "w3": "=="
+        },
+        {
+          "v": "i",
+          "start": 1,
+          "stop": 3,
+          "a": "<=",
+          "w1": "<",
+          "w2": ">=",
+          "w3": "=="
+        },
+        {
+          "v": "n",
+          "start": 2,
+          "stop": 5,
+          "a": "<",
+          "w1": "<=",
+          "w2": ">",
+          "w3": ">="
+        },
+        {
+          "v": "k",
+          "start": 1,
+          "stop": 4,
+          "a": "<=",
+          "w1": "<",
+          "w2": ">",
+          "w3": "=="
+        },
+        {
+          "v": "x",
+          "start": 4,
+          "stop": 6,
+          "a": "<",
+          "w1": "<=",
+          "w2": ">=",
+          "w3": "=="
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "wh-gap-stop",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < ___:\n    print({{v}})\n    {{v}} = {{v}} + 1",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 5,
+          "w1": 4,
+          "w2": 6,
+          "w3": 3
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "stop": 4,
+          "w1": 3,
+          "w2": 5,
+          "w3": 2
+        },
+        {
+          "v": "i",
+          "start": 3,
+          "stop": 7,
+          "w1": 6,
+          "w2": 8,
+          "w3": 4
+        },
+        {
+          "v": "k",
+          "start": 10,
+          "stop": 13,
+          "w1": 12,
+          "w2": 14,
+          "w3": 3
+        }
+      ],
+      "answer": "{{stop}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "wh-gap-step",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + ___",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 7,
+          "step": 2,
+          "w1": 1,
+          "w2": 3,
+          "w3": 4
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "stop": 11,
+          "step": 3,
+          "w1": 2,
+          "w2": 4,
+          "w3": 1
+        },
+        {
+          "v": "x",
+          "start": 0,
+          "stop": 20,
+          "step": 5,
+          "w1": 4,
+          "w2": 10,
+          "w3": 1
+        }
+      ],
+      "answer": "{{step}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "wh-gap-head",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{t}} = 0\ni = 1\n___\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "n": 4
+        },
+        {
+          "t": "points",
+          "n": 3
+        },
+        {
+          "t": "energy",
+          "n": 6
+        },
+        {
+          "t": "fuel",
+          "n": 5
+        }
+      ],
+      "answer": "while i <= {{n}}:",
+      "wrong": ["while i < {{n}}:", "while i > {{n}}:", "while i <= {{n}}", "while i == {{n}}:"]
+    },
+    {
+      "id": "wh-gap-start",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{t}} = 0\n___\nwhile i <= {{n}}:\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "n": 4,
+          "s2": 2
+        },
+        {
+          "t": "points",
+          "n": 5,
+          "s2": 3
+        },
+        {
+          "t": "energy",
+          "n": 3,
+          "s2": 2
+        },
+        {
+          "t": "fuel",
+          "n": 6,
+          "s2": 2
+        }
+      ],
+      "answer": "i = 1",
+      "wrong": ["i = 0", "i = {{s2}}", "i = {{n}}", "{{t}} = 1"]
+    },
+    {
+      "id": "wh-gap-print",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    {{v}} = {{v}} + {{step}}\n___",
+      "values": [
+        {
+          "v": "x",
+          "start": 0,
+          "stop": 10,
+          "step": 4
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "stop": 8,
+          "step": 3
+        },
+        {
+          "v": "level",
+          "start": 0,
+          "stop": 5,
+          "step": 2
+        }
+      ],
+      "answer": "print({{v}})",
+      "wrong": ["print(\"{{v}}\")", "print({{stop}})", "print({{step}})"]
+    },
+    {
+      "id": "wh-bad-colon",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} < {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + 1",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 3
+        },
+        {
+          "v": "n",
+          "start": 2,
+          "stop": 5
+        },
+        {
+          "v": "k",
+          "start": 1,
+          "stop": 3
+        }
+      ],
+      "bug": ["{{v}} < {{stop}}:", "{{v}} < {{stop}}"]
+    },
+    {
+      "id": "wh-bad-op",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{start}}\nwhile {{v}} <= {{stop}}:\n    print({{v}})\n    {{v}} = {{v}} + 1",
+      "values": [
+        {
+          "v": "i",
+          "start": 0,
+          "stop": 3
+        },
+        {
+          "v": "n",
+          "start": 1,
+          "stop": 4
+        },
+        {
+          "v": "x",
+          "start": 5,
+          "stop": 7
+        },
+        {
+          "v": "k",
+          "start": 2,
+          "stop": 4
+        },
+        {
+          "v": "seconds",
+          "start": 1,
+          "stop": 3
+        },
+        {
+          "v": "level",
+          "start": 3,
+          "stop": 6
+        }
+      ],
+      "bug": ["{{v}} <= {{stop}}", "{{v}} < {{stop}}"]
+    },
+    {
+      "id": "wh-bad-step",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{t}} = 0\ni = 1\nwhile i <= {{n}}:\n    {{t}} = {{t}} + i\n    i = i + 1\nprint({{t}})",
+      "values": [
+        {
+          "t": "total",
+          "n": 4
+        },
+        {
+          "t": "points",
+          "n": 5
+        },
+        {
+          "t": "energy",
+          "n": 6
+        }
+      ],
+      "bug": ["i = i + 1", "i = i + 2"]
+    }
+  ]
+}

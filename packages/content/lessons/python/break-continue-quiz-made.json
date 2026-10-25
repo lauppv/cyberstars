@@ -1,0 +1,620 @@
+{
+  "note": "Made by npm run make:quiz from the templates in break-continue-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "bc-break-9e72d9",
+      "text": "What does this print?",
+      "code": "for i in range(0, 10):\n    if i == 4:\n        break\n    print(i)",
+      "options": [
+        "0\n1\n2\n3",
+        "0\n1\n2\n3\n5\n6\n7\n8\n9",
+        "0\n1\n2\n3\n4",
+        "0\n1\n2\n3\n4\n5\n6\n7\n8\n9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-break-38bb7a",
+      "text": "What does this print?",
+      "code": "for i in range(1, 8):\n    if i == 5:\n        break\n    print(i)",
+      "options": ["1\n2\n3\n4", "1\n2\n3\n4\n6\n7", "1\n2\n3\n4\n5", "1\n2\n3\n4\n5\n6\n7"],
+      "answer": 0
+    },
+    {
+      "id": "bc-break-84108a",
+      "text": "What does this print?",
+      "code": "for i in range(3, 12):\n    if i == 6:\n        break\n    print(i)",
+      "options": [
+        "3\n4\n5",
+        "3\n4\n5\n7\n8\n9\n10\n11",
+        "3\n4\n5\n6",
+        "3\n4\n5\n6\n7\n8\n9\n10\n11"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-break-0ae17e",
+      "text": "What does this print?",
+      "code": "for i in range(2, 9):\n    if i == 7:\n        break\n    print(i)",
+      "options": ["2\n3\n4\n5\n6", "2\n3\n4\n5\n6\n8", "2\n3\n4\n5\n6\n7", "2\n3\n4\n5\n6\n7\n8"],
+      "answer": 0
+    },
+    {
+      "id": "bc-continue-78bfc7",
+      "text": "What does this print?",
+      "code": "for i in range(0, 6):\n    if i == 3:\n        continue\n    print(i)",
+      "options": ["0\n1\n2\n4\n5", "0\n1\n2", "0\n1\n2\n3\n4\n5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bc-continue-3d1480",
+      "text": "What does this print?",
+      "code": "for i in range(1, 7):\n    if i == 2:\n        continue\n    print(i)",
+      "options": ["1\n3\n4\n5\n6", "1", "1\n2\n3\n4\n5\n6", "2"],
+      "answer": 0
+    },
+    {
+      "id": "bc-continue-f6ff85",
+      "text": "What does this print?",
+      "code": "for i in range(4, 9):\n    if i == 6:\n        continue\n    print(i)",
+      "options": ["4\n5\n7\n8", "4\n5", "4\n5\n6\n7\n8", "6"],
+      "answer": 0
+    },
+    {
+      "id": "bc-continue-07bc92",
+      "text": "What does this print?",
+      "code": "for i in range(2, 8):\n    if i == 5:\n        continue\n    print(i)",
+      "options": ["2\n3\n4\n6\n7", "2\n3\n4", "2\n3\n4\n5\n6\n7", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bc-even-82c218",
+      "text": "What does this print?",
+      "code": "for i in range(0, 9):\n    if i % 2 != 0:\n        continue\n    print(i)",
+      "options": ["0\n2\n4\n6\n8", "1\n3\n5\n7", "0", "0\n1\n2\n3\n4\n5\n6\n7\n8"],
+      "answer": 0
+    },
+    {
+      "id": "bc-even-3f1b36",
+      "text": "What does this print?",
+      "code": "for i in range(2, 11):\n    if i % 2 != 0:\n        continue\n    print(i)",
+      "options": ["2\n4\n6\n8\n10", "3\n5\n7\n9", "2", "2\n3\n4\n5\n6\n7\n8\n9\n10"],
+      "answer": 0
+    },
+    {
+      "id": "bc-even-7c086a",
+      "text": "What does this print?",
+      "code": "for i in range(1, 10):\n    if i % 2 == 0:\n        continue\n    print(i)",
+      "options": ["1\n3\n5\n7\n9", "2\n4\n6\n8", "1", "1\n2\n3\n4\n5\n6\n7\n8\n9"],
+      "answer": 0
+    },
+    {
+      "id": "bc-even-14aa21",
+      "text": "What does this print?",
+      "code": "for i in range(3, 12):\n    if i % 2 == 0:\n        continue\n    print(i)",
+      "options": ["3\n5\n7\n9\n11", "4\n6\n8\n10", "3", "3\n4\n5\n6\n7\n8\n9\n10\n11"],
+      "answer": 0
+    },
+    {
+      "id": "bc-scan-b012ea",
+      "text": "What does this print?",
+      "code": "for sector in range(1, 7):\n    if sector == 3:\n        print(f\"Signal found in sector {sector}!\")\n        break\n    print(f\"Scanning sector {sector}...\")",
+      "options": [
+        "Scanning sector 1...\nScanning sector 2...\nSignal found in sector 3!",
+        "Scanning sector 1...\nScanning sector 2...\nSignal found in sector 3!\nScanning sector 3...\nScanning sector 4...\nScanning sector 5...\nScanning sector 6...",
+        "Scanning sector 1...\nScanning sector 2...\nSignal found in sector 3!\nScanning sector 4...\nScanning sector 5...\nScanning sector 6...",
+        "Signal found in sector 1!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-scan-06ed37",
+      "text": "What does this print?",
+      "code": "for planet in range(1, 6):\n    if planet == 4:\n        print(f\"Base found on planet {planet}!\")\n        break\n    print(f\"Checking planet {planet}...\")",
+      "options": [
+        "Checking planet 1...\nChecking planet 2...\nChecking planet 3...\nBase found on planet 4!",
+        "Checking planet 1...\nChecking planet 2...\nChecking planet 3...\nBase found on planet 4!\nChecking planet 4...\nChecking planet 5...",
+        "Checking planet 1...\nChecking planet 2...\nChecking planet 3...\nBase found on planet 4!\nChecking planet 5...",
+        "Base found on planet 1!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-scan-457740",
+      "text": "What does this print?",
+      "code": "for room in range(1, 8):\n    if room == 2:\n        print(f\"Key found in room {room}!\")\n        break\n    print(f\"Searching room {room}...\")",
+      "options": [
+        "Searching room 1...\nKey found in room 2!",
+        "Searching room 1...\nKey found in room 2!\nSearching room 2...\nSearching room 3...\nSearching room 4...\nSearching room 5...\nSearching room 6...\nSearching room 7...",
+        "Searching room 1...\nKey found in room 2!\nSearching room 3...\nSearching room 4...\nSearching room 5...\nSearching room 6...\nSearching room 7...",
+        "Key found in room 1!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-true-63d805",
+      "text": "What does this print?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == 4:\n        break\n    print(n)\nprint(\"Done\")",
+      "options": ["1\n2\n3\nDone", "1\n2\n3\n4\nDone", "1\nDone\n2\nDone\n3\nDone", "2\n3\nDone"],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-true-0a92e4",
+      "text": "What does this print?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == 3:\n        break\n    print(n)\nprint(\"Loop over\")",
+      "options": [
+        "1\n2\nLoop over",
+        "1\n2\n3\nLoop over",
+        "1\nLoop over\n2\nLoop over",
+        "2\nLoop over"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-true-b9fded",
+      "text": "What does this print?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == 5:\n        break\n    print(n)\nprint(\"Stopped\")",
+      "options": [
+        "1\n2\n3\n4\nStopped",
+        "1\n2\n3\n4\n5\nStopped",
+        "1\nStopped\n2\nStopped\n3\nStopped\n4\nStopped",
+        "2\n3\n4\nStopped"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-continue-93790c",
+      "text": "What does this print?",
+      "code": "n = 0\nwhile n < 5:\n    n = n + 1\n    if n == 3:\n        continue\n    print(n)",
+      "options": ["1\n2\n4\n5", "1\n2", "1\n2\n3\n4\n5", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-continue-8d82f2",
+      "text": "What does this print?",
+      "code": "n = 0\nwhile n < 6:\n    n = n + 1\n    if n == 2:\n        continue\n    print(n)",
+      "options": ["1\n3\n4\n5\n6", "1", "1\n2\n3\n4\n5\n6", "2"],
+      "answer": 0
+    },
+    {
+      "id": "bc-while-continue-ecdb39",
+      "text": "What does this print?",
+      "code": "n = 0\nwhile n < 7:\n    n = n + 1\n    if n == 5:\n        continue\n    print(n)",
+      "options": ["1\n2\n3\n4\n6\n7", "1\n2\n3\n4", "1\n2\n3\n4\n5\n6\n7", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bc-sum-9d8793",
+      "text": "What does this print?",
+      "code": "total = 0\nfor i in range(1, 10):\n    if i == 4:\n        break\n    total = total + i\nprint(total)",
+      "options": ["6", "41", "45", "1\n3\n6"],
+      "answer": 0
+    },
+    {
+      "id": "bc-sum-3c6cd5",
+      "text": "What does this print?",
+      "code": "points = 0\nfor i in range(1, 8):\n    if i == 5:\n        break\n    points = points + i\nprint(points)",
+      "options": ["10", "23", "28", "1\n3\n6\n10"],
+      "answer": 0
+    },
+    {
+      "id": "bc-sum-9fcbb6",
+      "text": "What does this print?",
+      "code": "energy = 0\nfor i in range(1, 7):\n    if i == 3:\n        break\n    energy = energy + i\nprint(energy)",
+      "options": ["3", "18", "21", "1\n3"],
+      "answer": 0
+    },
+    {
+      "id": "bc-sum-634337",
+      "text": "What does this print?",
+      "code": "score = 0\nfor i in range(1, 12):\n    if i == 6:\n        break\n    score = score + i\nprint(score)",
+      "options": ["15", "60", "66", "1\n3\n6\n10\n15"],
+      "answer": 0
+    },
+    {
+      "id": "bc-count-5b4e04",
+      "text": "What does this print?",
+      "code": "count = 0\nfor i in range(2, 10):\n    if i == 4:\n        continue\n    count = count + 1\nprint(count)",
+      "options": ["7", "2", "8", "9"],
+      "answer": 0
+    },
+    {
+      "id": "bc-count-020d02",
+      "text": "What does this print?",
+      "code": "count = 0\nfor i in range(5, 12):\n    if i == 7:\n        continue\n    count = count + 1\nprint(count)",
+      "options": ["6", "2", "7", "11"],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-break-e0fdc8",
+      "text": "Which program shows this?",
+      "output": "1\n2\n3",
+      "options": [
+        "for i in range(1, 8):\n    if i == 4:\n        break\n    print(i)",
+        "for i in range(1, 8):\n    if i == 4:\n        continue\n    print(i)",
+        "for i in range(1, 8):\n    if i == 5:\n        break\n    print(i)",
+        "for i in range(0, 8):\n    if i == 4:\n        break\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-break-c5220f",
+      "text": "Which program shows this?",
+      "output": "1\n2",
+      "options": [
+        "for i in range(1, 6):\n    if i == 3:\n        break\n    print(i)",
+        "for i in range(1, 6):\n    if i == 3:\n        continue\n    print(i)",
+        "for i in range(1, 6):\n    if i == 4:\n        break\n    print(i)",
+        "for i in range(0, 6):\n    if i == 3:\n        break\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-break-ec9f9f",
+      "text": "Which program shows this?",
+      "output": "1\n2\n3\n4",
+      "options": [
+        "for i in range(1, 9):\n    if i == 5:\n        break\n    print(i)",
+        "for i in range(1, 9):\n    if i == 5:\n        continue\n    print(i)",
+        "for i in range(1, 9):\n    if i == 6:\n        break\n    print(i)",
+        "for i in range(0, 9):\n    if i == 5:\n        break\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-break-3500fa",
+      "text": "Which program shows this?",
+      "output": "1",
+      "options": [
+        "for i in range(1, 7):\n    if i == 2:\n        break\n    print(i)",
+        "for i in range(1, 7):\n    if i == 2:\n        continue\n    print(i)",
+        "for i in range(1, 7):\n    if i == 3:\n        break\n    print(i)",
+        "for i in range(0, 7):\n    if i == 2:\n        break\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-continue-2adfb7",
+      "text": "Which program shows this?",
+      "output": "1\n2\n4\n5",
+      "options": [
+        "for i in range(1, 6):\n    if i == 3:\n        continue\n    print(i)",
+        "for i in range(1, 6):\n    if i == 3:\n        break\n    print(i)",
+        "for i in range(1, 6):\n    if i != 3:\n        continue\n    print(i)",
+        "for i in range(1, 5):\n    if i == 3:\n        continue\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-continue-fac11b",
+      "text": "Which program shows this?",
+      "output": "1\n2\n3\n5\n6",
+      "options": [
+        "for i in range(1, 7):\n    if i == 4:\n        continue\n    print(i)",
+        "for i in range(1, 7):\n    if i == 4:\n        break\n    print(i)",
+        "for i in range(1, 7):\n    if i != 4:\n        continue\n    print(i)",
+        "for i in range(1, 6):\n    if i == 4:\n        continue\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-continue-72f687",
+      "text": "Which program shows this?",
+      "output": "1\n3\n4",
+      "options": [
+        "for i in range(1, 5):\n    if i == 2:\n        continue\n    print(i)",
+        "for i in range(1, 5):\n    if i == 2:\n        break\n    print(i)",
+        "for i in range(1, 5):\n    if i != 2:\n        continue\n    print(i)",
+        "for i in range(1, 4):\n    if i == 2:\n        continue\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-which-continue-1dcf57",
+      "text": "Which program shows this?",
+      "output": "1\n2\n3\n4\n5\n7",
+      "options": [
+        "for i in range(1, 8):\n    if i == 6:\n        continue\n    print(i)",
+        "for i in range(1, 8):\n    if i == 6:\n        break\n    print(i)",
+        "for i in range(1, 8):\n    if i != 6:\n        continue\n    print(i)",
+        "for i in range(1, 7):\n    if i == 6:\n        continue\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-kw-89fb96",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(0, 8):\n    if i == 4:\n        ___\n    print(i)",
+      "output": "0\n1\n2\n3",
+      "options": ["break", "continue", "stop", "skip"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-kw-9e61c9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(1, 7):\n    if i == 3:\n        ___\n    print(i)",
+      "output": "1\n2\n4\n5\n6",
+      "options": ["continue", "break", "stop", "skip"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-kw-3381ed",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(2, 9):\n    if i == 6:\n        ___\n    print(i)",
+      "output": "2\n3\n4\n5",
+      "options": ["break", "continue", "stop", "skip"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-kw-34e738",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(0, 6):\n    if i == 2:\n        ___\n    print(i)",
+      "output": "0\n1\n3\n4\n5",
+      "options": ["continue", "break", "stop", "skip"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-kw-29315e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for i in range(3, 9):\n    if i == 5:\n        ___\n    print(i)",
+      "output": "3\n4\n6\n7\n8",
+      "options": ["continue", "break", "stop", "skip"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-scan-f1b39e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for sector in range(1, 6):\n    if sector == 4:\n        print(f\"Signal found in sector {sector}!\")\n        ___\n    print(f\"Scanning sector {sector}...\")",
+      "output": "Scanning sector 1...\nScanning sector 2...\nScanning sector 3...\nSignal found in sector 4!",
+      "options": ["break", "continue", "sector = 6", "sector = 0"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-scan-b5d4f7",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for planet in range(1, 7):\n    if planet == 2:\n        print(f\"Base found on planet {planet}!\")\n        ___\n    print(f\"Checking planet {planet}...\")",
+      "output": "Checking planet 1...\nBase found on planet 2!",
+      "options": ["break", "continue", "planet = 7", "planet = 0"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-scan-847d6e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "for room in range(1, 5):\n    if room == 3:\n        print(f\"Key found in room {room}!\")\n        ___\n    print(f\"Searching room {room}...\")",
+      "output": "Searching room 1...\nSearching room 2...\nKey found in room 3!",
+      "options": ["break", "continue", "room = 5", "room = 0"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-while-25bb81",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "n = 1\nwhile True:\n    ___\n        break\n    print(n)\n    n = n + 1\nprint(\"Done\")",
+      "output": "1\n2\n3\nDone",
+      "options": ["if n == 4:", "if n != 4:", "if n > 4:", "if n == 4"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-while-e2e8f2",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "n = 3\nwhile True:\n    ___\n        break\n    print(n)\n    n = n + 1\nprint(\"Scan complete\")",
+      "output": "3\n4\n5\nScan complete",
+      "options": ["if n == 6:", "if n != 6:", "if n > 6:", "if n == 6"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-while-aac56c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "n = 0\nwhile True:\n    ___\n        break\n    print(n)\n    n = n + 1\nprint(\"Stopped\")",
+      "output": "0\n1\n2\nStopped",
+      "options": ["if n == 3:", "if n != 3:", "if n > 3:", "if n == 3"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-stop-3282c7",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 10):\n    if i == ___:\n        break\n    print(i)",
+      "output": "1\n2\n3",
+      "options": ["4", "3", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-stop-7e8ed4",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 10):\n    if i == ___:\n        break\n    print(i)",
+      "output": "1\n2\n3\n4\n5",
+      "options": ["6", "5", "7", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-stop-6b857c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 10):\n    if i == ___:\n        break\n    print(i)",
+      "output": "1\n2",
+      "options": ["3", "2", "4", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-stop-2520fb",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 10):\n    if i == ___:\n        break\n    print(i)",
+      "output": "1\n2\n3\n4\n5\n6",
+      "options": ["7", "6", "8", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-skip-3e5102",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(0, 6):\n    if i == ___:\n        continue\n    print(i)",
+      "output": "0\n1\n3\n4\n5",
+      "options": ["2", "1", "3", "6"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-skip-b767ae",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 7):\n    if i == ___:\n        continue\n    print(i)",
+      "output": "1\n2\n3\n4\n6",
+      "options": ["5", "4", "6", "7"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-skip-c3e89d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(3, 8):\n    if i == ___:\n        continue\n    print(i)",
+      "output": "3\n5\n6\n7",
+      "options": ["4", "3", "5", "8"],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-op-e72f0d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(0, 9):\n    if i % 2 ___ 0:\n        continue\n    print(i)",
+      "output": "0\n2\n4\n6\n8",
+      "options": ["!=", "==", "<", "="],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-op-9854ef",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(1, 10):\n    if i % 2 ___ 0:\n        continue\n    print(i)",
+      "output": "1\n3\n5\n7\n9",
+      "options": ["==", "!=", "<", "="],
+      "answer": 0
+    },
+    {
+      "id": "bc-gap-op-850449",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "for i in range(2, 9):\n    if i % 2 ___ 0:\n        continue\n    print(i)",
+      "output": "2\n4\n6\n8",
+      "options": ["!=", "==", "<", "="],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-break-271aab",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(0, 8):\n    if i == 3:\n        continue\n    print(i)\nprint(\"Done\")",
+      "output": "0\n1\n2\nDone",
+      "options": ["continue", "print(i)", "print(\"Done\")", "if i == 3:"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-break-370f42",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(2, 9):\n    if i == 5:\n        continue\n    print(i)\nprint(\"End\")",
+      "output": "2\n3\n4\nEnd",
+      "options": ["continue", "print(i)", "print(\"End\")", "if i == 5:"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-break-51fbdf",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 7):\n    if i == 4:\n        continue\n    print(i)\nprint(\"Stopped\")",
+      "output": "1\n2\n3\nStopped",
+      "options": ["continue", "print(i)", "print(\"Stopped\")", "if i == 4:"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-continue-7b9754",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(0, 6):\n    if i == 2:\n        break\n    print(i)\nprint(\"Done\")",
+      "output": "0\n1\n3\n4\n5\nDone",
+      "options": ["break", "print(i)", "print(\"Done\")", "if i == 2:"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-continue-00c335",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(3, 9):\n    if i == 5:\n        break\n    print(i)\nprint(\"End\")",
+      "output": "3\n4\n6\n7\n8\nEnd",
+      "options": ["break", "print(i)", "print(\"End\")", "if i == 5:"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-continue-b64099",
+      "text": "Which line stops this program from printing this?",
+      "code": "for i in range(1, 6):\n    if i == 4:\n        break\n    print(i)\nprint(\"Stopped\")",
+      "output": "1\n2\n3\n5\nStopped",
+      "options": ["break", "print(i)", "print(\"Stopped\")", "if i == 4:"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-scan-e062c1",
+      "text": "Which line stops this program from printing this?",
+      "code": "for sector in range(1, 6):\n    if sector != 3:\n        print(f\"Signal found in sector {sector}!\")\n        break\n    print(f\"Scanning sector {sector}...\")",
+      "output": "Scanning sector 1...\nScanning sector 2...\nSignal found in sector 3!",
+      "options": [
+        "if sector != 3:",
+        "for sector in range(1, 6):",
+        "print(f\"Signal found in sector {sector}!\")",
+        "break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-scan-2f3896",
+      "text": "Which line stops this program from printing this?",
+      "code": "for planet in range(1, 8):\n    if planet != 5:\n        print(f\"Base found on planet {planet}!\")\n        break\n    print(f\"Checking planet {planet}...\")",
+      "output": "Checking planet 1...\nChecking planet 2...\nChecking planet 3...\nChecking planet 4...\nBase found on planet 5!",
+      "options": [
+        "if planet != 5:",
+        "for planet in range(1, 8):",
+        "print(f\"Base found on planet {planet}!\")",
+        "break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-scan-907749",
+      "text": "Which line stops this program from printing this?",
+      "code": "for room in range(1, 7):\n    if room != 4:\n        print(f\"Key found in room {room}!\")\n        break\n    print(f\"Searching room {room}...\")",
+      "output": "Searching room 1...\nSearching room 2...\nSearching room 3...\nKey found in room 4!",
+      "options": [
+        "if room != 4:",
+        "for room in range(1, 7):",
+        "print(f\"Key found in room {room}!\")",
+        "break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-colon-16e73e",
+      "text": "Which line stops this program from printing this?",
+      "code": "n = 0\nwhile True\n    n = n + 1\n    if n == 3:\n        break\n    print(n)",
+      "output": "1\n2",
+      "options": ["while True", "if n == 3:", "n = 0", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-colon-118db5",
+      "text": "Which line stops this program from printing this?",
+      "code": "n = 0\nwhile True\n    n = n + 1\n    if n == 4:\n        break\n    print(n)",
+      "output": "1\n2\n3",
+      "options": ["while True", "if n == 4:", "n = 0", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-colon-480d3d",
+      "text": "Which line stops this program from printing this?",
+      "code": "n = 0\nwhile True\n    n = n + 1\n    if n == 5:\n        break\n    print(n)",
+      "output": "1\n2\n3\n4",
+      "options": ["while True", "if n == 5:", "n = 0", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-true-6fb202",
+      "text": "Which line stops this program from printing this?",
+      "code": "n = 0\nwhile true:\n    n = n + 1\n    if n == 2:\n        break\n    print(n)",
+      "output": "1",
+      "options": ["while true:", "if n == 2:", "n = 0", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-bad-true-b8e0e7",
+      "text": "Which line stops this program from printing this?",
+      "code": "n = 0\nwhile true:\n    n = n + 1\n    if n == 6:\n        break\n    print(n)",
+      "output": "1\n2\n3\n4\n5",
+      "options": ["while true:", "if n == 6:", "n = 0", "n = n + 1"],
+      "answer": 0
+    }
+  ]
+}

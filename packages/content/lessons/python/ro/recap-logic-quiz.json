@@ -1,0 +1,743 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "În Consola de lansare, ce tastează operatorul ca să spună că introducerea s-a terminat?",
+      "options": ["stop", "0", "Un număr negativ", "Nimic, doar Enter"],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "În Consola de lansare, ce se întâmplă cu o citire negativă?",
+      "options": [
+        "Afișează Sistem critic",
+        "Încheie introducerea",
+        "Se ignoră: nu se afișează nimic pentru ea",
+        "Anulează lansarea pe loc"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "De ce citește Consola de lansare nivelurile cu `while True` și nu cu un for pe un range?",
+      "options": [
+        "Nu știm dinainte câte citiri va tasta operatorul",
+        "O buclă for nu poate apela input()",
+        "while True rulează mai repede decât for",
+        "O buclă for nu poate folosi break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "De ce vin verificările pentru 0 și pentru citirile negative înainte de `if nivel < 50:` în soluție?",
+      "options": [
+        "break și continue trebuie să fie primele linii dintr-o buclă",
+        "Python verifică if-urile dintr-o buclă de jos în sus",
+        "Ordinea nu contează, afișează la fel",
+        "Și 0, și citirile negative sunt sub 50, așa că ar fi socotite critice"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "În soluție, ce face `continue` când operatorul tastează -5?",
+      "options": [
+        "Încheie bucla",
+        "Sare peste restul acestei iterații, iar bucla cere următoarea citire",
+        "Face lansare_ok False",
+        "Afișează -5 și merge mai departe"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "În soluție, ce face `break` când operatorul tastează 0?",
+      "options": [
+        "Oprește tot programul pe loc, fără să mai afișeze ceva",
+        "Sare peste această citire și o cere pe următoarea",
+        "Iese din buclă, iar programul merge mai departe cu if-ul de după ea",
+        "Face lansare_ok False"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "De ce e scris `lansare_ok = True` înainte de buclă și nu în ea?",
+      "options": [
+        "În buclă, ar redeveni True la fiecare citire și ar uita de un sistem critic",
+        "O variabilă nu poate fi făcută într-o buclă",
+        "while True are nevoie de ea ca să pornească",
+        "Ca bucla să ruleze o singură dată"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Cum numim o variabilă ca `lansare_ok`, un boolean care ține minte ceva cât rulează bucla?",
+      "options": ["O buclă", "Un cuvânt cheie", "Un range", "Un steag (flag)"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Care linie înseamnă același lucru ca `if lansare_ok:`?",
+      "options": [
+        "if lansare_ok = True:",
+        "if lansare_ok == True:",
+        "if lansare_ok == False:",
+        "if not lansare_ok:"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "Operatorul tastează 90, apoi 75, apoi 0. Ce afișează?",
+      "code": "lansare_ok = True\n\nwhile True:\n    nivel = int(input())\n    if nivel == 0:\n        break\n    if nivel < 0:\n        continue\n    if nivel < 50:\n        print(\"Sistem critic\")\n        lansare_ok = False\n    else:\n        print(\"Sistem OK\")\n\nif lansare_ok:\n    print(\"Lansare autorizata\")\nelse:\n    print(\"Lansare anulata\")",
+      "options": [
+        "Sistem OK\nSistem OK\nSistem critic\nLansare anulata",
+        "Sistem OK\nSistem OK",
+        "Sistem OK\nSistem OK\nLansare autorizata",
+        "Lansare autorizata"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "Operatorul tastează 40, apoi -3, apoi 0. Ce afișează?",
+      "code": "lansare_ok = True\n\nwhile True:\n    nivel = int(input())\n    if nivel == 0:\n        break\n    if nivel < 0:\n        continue\n    if nivel < 50:\n        print(\"Sistem critic\")\n        lansare_ok = False\n    else:\n        print(\"Sistem OK\")\n\nif lansare_ok:\n    print(\"Lansare autorizata\")\nelse:\n    print(\"Lansare anulata\")",
+      "options": [
+        "Sistem critic\nLansare anulata",
+        "Sistem critic\nSistem critic\nLansare anulata",
+        "Sistem critic\nLansare autorizata",
+        "Lansare anulata"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "Operatorul tastează 0 de la început. Ce afișează?",
+      "code": "lansare_ok = True\n\nwhile True:\n    nivel = int(input())\n    if nivel == 0:\n        break\n    if nivel < 0:\n        continue\n    if nivel < 50:\n        print(\"Sistem critic\")\n        lansare_ok = False\n    else:\n        print(\"Sistem OK\")\n\nif lansare_ok:\n    print(\"Lansare autorizata\")\nelse:\n    print(\"Lansare anulata\")",
+      "options": [
+        "Lansare anulata",
+        "Sistem critic\nLansare anulata",
+        "Nimic",
+        "Lansare autorizata"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Operatorul tastează 50, apoi 0. Ce afișează?",
+      "code": "lansare_ok = True\n\nwhile True:\n    nivel = int(input())\n    if nivel == 0:\n        break\n    if nivel < 0:\n        continue\n    if nivel < 50:\n        print(\"Sistem critic\")\n        lansare_ok = False\n    else:\n        print(\"Sistem OK\")\n\nif lansare_ok:\n    print(\"Lansare autorizata\")\nelse:\n    print(\"Lansare anulata\")",
+      "options": [
+        "Sistem critic\nLansare anulata",
+        "Sistem OK\nLansare autorizata",
+        "Sistem OK\nLansare anulata",
+        "Sistem OK"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "În soluție, ce se întâmplă dacă `nivel = int(input())` devine `nivel = input()` și operatorul tastează 90?",
+      "options": [
+        "Nu se schimbă nimic, Python îl face singur număr",
+        "Fiecare citire e socotită critică",
+        "nivel ține textul \"90\", așa că, comparat cu 0, oprește programul cu o eroare",
+        "Bucla nu se mai oprește"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "Operatorul tastează 90, apoi 30, apoi 80, apoi 0. De câte ori apelează soluția input()?",
+      "options": ["4", "3", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "nivel e 30, iar lansare_ok e True. Care condiție e True?",
+      "options": [
+        "nivel >= 50 and lansare_ok",
+        "nivel < 0 or nivel == 0",
+        "not lansare_ok",
+        "nivel < 50 and lansare_ok"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Când e `not lansare_ok` True?",
+      "options": [
+        "Când lansare_ok e True",
+        "Mereu, not face orice condiție True",
+        "Când lansare_ok e False",
+        "Niciodată, not merge doar în while"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 6):\n    if i == 2:\n        continue\n    if i == 4:\n        break\n    print(i)",
+      "options": ["1\n3\n5", "1\n3", "1\n2\n3", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "contor = 0\nwhile True:\n    contor = contor + 1\n    if contor == 3:\n        break\nprint(contor)",
+      "options": ["3", "2", "4", "Nimic, bucla nu se oprește niciodată"],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "De ce nu se oprește niciodată bucla asta?",
+      "code": "nivel = 10\nwhile nivel != 0:\n    print(nivel)",
+      "options": [
+        "!= nu poate fi folosit într-un while",
+        "Un while are mereu nevoie de un break ca să se oprească",
+        "print() pornește bucla din nou",
+        "nivel nu se schimbă niciodată în buclă, așa că nivel != 0 rămâne True"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Care cod îi cere operatorului un nivel iar și iar, până tastează 0?",
+      "options": [
+        "while True:\n    nivel = int(input())\n    if nivel == 0:\n        continue",
+        "nivel = int(input())\nif nivel == 0:\n    break",
+        "while True:\n    nivel = int(input())\n    if nivel == 0:\n        break",
+        "for i in range(0):\n    nivel = int(input())"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "În `while True:`, ce este True?",
+      "options": [
+        "O variabilă pe care trebuie s-o facem înainte de buclă",
+        "Condiția buclei, care nu devine niciodată falsă de la sine",
+        "Textul \"True\"",
+        "De câte ori rulează bucla"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "Când e `nivel >= 50 and lansare_ok` True?",
+      "options": [
+        "Când măcar una dintre cele două e True",
+        "Doar când nivel e exact 50",
+        "Oricând lansare_ok e True",
+        "Doar când nivel e cel puțin 50 și lansare_ok e True"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "Operatorul tastează 70, apoi 20, apoi 90, apoi 0. Ce linie afișează soluția la final?",
+      "options": ["Lansare anulata", "Lansare autorizata", "Sistem OK", "Sistem critic"],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "Acum un sistem e critic până la 50, cu 50 cu tot. Cum se schimbă `if nivel < 50:`?",
+      "options": ["if nivel > 50:", "if nivel < 51 == True:", "if nivel <= 50:", "if nivel == 50:"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Operatorul tastează stai, apoi asteapta, apoi start. Ce afișează?",
+      "code": "cod = input()\nwhile cod != \"start\":\n    print(\"Asteptam\")\n    cod = input()\nprint(\"Lansare\")",
+      "options": [
+        "Asteptam\nAsteptam\nAsteptam\nLansare",
+        "Asteptam\nAsteptam\nLansare",
+        "Asteptam\nLansare",
+        "Lansare"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "De ce scrie soluția `nivel == 0` și nu `nivel = 0`?",
+      "options": [
+        "= pune o valoare într-o variabilă, == compară două valori",
+        "== e mai rapid decât =",
+        "Fac același lucru, == e doar varianta mai nouă",
+        "= merge doar cu text"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "Unde vine if / else-ul de la final, ca verdictul să fie afișat o dată, după toate citirile?",
+      "options": [
+        "În buclă, imediat după input()",
+        "Înainte de buclă, după lansare_ok = True",
+        "În buclă, în else",
+        "După buclă, fără spații în față"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Operatorul tastează 60, apoi -5, apoi 0. Câte linii afișează soluția?",
+      "options": ["3", "2", "1", "4"],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "combustibil = 80\nvreme_ok = False\nif combustibil >= 50 or vreme_ok:\n    print(\"Combustibil OK\")\nif combustibil >= 50 and vreme_ok:\n    print(\"Start\")\nelse:\n    print(\"Asteptam\")",
+      "options": ["Combustibil OK\nStart", "Asteptam", "Combustibil OK\nAsteptam", "Start"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "rl-reading",
+      "kind": "prints",
+      "text": "Operatorul a tastat {{typed}}, deci `nivel` ține ce a returnat input(). Ce afișează?",
+      "code": "nivel = \"{{typed}}\"\nnivel = int(nivel)\nif nivel == 0:\n    print(\"Introducere terminata\")\nelif nivel < 0:\n    print(\"Zgomot\")\nelif nivel < 50:\n    print(\"Sistem critic\")\nelse:\n    print(\"Sistem OK\")",
+      "values": [
+        {
+          "typed": 75
+        },
+        {
+          "typed": 50
+        },
+        {
+          "typed": 49
+        },
+        {
+          "typed": -5
+        },
+        {
+          "typed": 30
+        },
+        {
+          "typed": -40
+        }
+      ],
+      "mistakes": [
+        ["elif nivel < 50", "elif nivel > 50"],
+        ["if nivel == 0", "if nivel != 0"],
+        ["elif nivel < 0", "elif nivel > 0"],
+        ["nivel < 50", "nivel <= 50"],
+        ["elif nivel < 0", "if nivel < 0"],
+        ["elif nivel < 50", "if nivel < 50"]
+      ]
+    },
+    {
+      "id": "rl-flag",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "lansare_ok = True\ncombustibil = {{fuel}}\nmotoare = {{eng}}\nif combustibil < 50:\n    print(\"Combustibil critic\")\n    lansare_ok = False\nif motoare < 50:\n    print(\"Motoare critice\")\n    lansare_ok = False\nif lansare_ok:\n    print(\"Lansare autorizata\")\nelse:\n    print(\"Lansare anulata\")",
+      "values": [
+        {
+          "fuel": 80,
+          "eng": 90
+        },
+        {
+          "fuel": 30,
+          "eng": 90
+        },
+        {
+          "fuel": 80,
+          "eng": 20
+        },
+        {
+          "fuel": 50,
+          "eng": 50
+        },
+        {
+          "fuel": 10,
+          "eng": 40
+        }
+      ],
+      "mistakes": [
+        ["lansare_ok = True", "lansare_ok = False"],
+        ["if lansare_ok:", "if not lansare_ok:"],
+        ["if motoare < 50", "elif motoare < 50"],
+        ["motoare < 50", "motoare > 50"],
+        ["combustibil < 50", "combustibil > 50"],
+        ["combustibil < 50", "combustibil <= 50"],
+        ["motoare < 50", "motoare <= 50"],
+        ["    lansare_ok = False\nif motoare", "if motoare"]
+      ]
+    },
+    {
+      "id": "rl-scan",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for sector in range(1, {{stop}}):\n    if sector == {{noise}}:\n        continue\n    if sector == {{found}}:\n        print(f\"Semnal in sectorul {sector}\")\n        break\n    print(f\"Sectorul {sector} liber\")",
+      "values": [
+        {
+          "stop": 8,
+          "noise": 2,
+          "found": 4
+        },
+        {
+          "stop": 8,
+          "noise": 3,
+          "found": 5
+        },
+        {
+          "stop": 6,
+          "noise": 5,
+          "found": 3
+        },
+        {
+          "stop": 5,
+          "noise": 2,
+          "found": 9
+        },
+        {
+          "stop": 7,
+          "noise": 1,
+          "found": 3
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["        break", "        continue"],
+        ["\n        break", ""],
+        ["range(1, {{stop}})", "range(1, {{stop}} + 1)"],
+        ["if sector == {{noise}}", "if sector != {{noise}}"]
+      ]
+    },
+    {
+      "id": "rl-countdown",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "secunde = {{start}}\nanulat = False\nwhile secunde > 0:\n    if secunde == {{abort}}:\n        anulat = True\n        break\n    print(secunde)\n    secunde = secunde - 1\nif anulat:\n    print(\"Lansare anulata\")\nelse:\n    print(\"Decolare\")",
+      "values": [
+        {
+          "start": 3,
+          "abort": 7
+        },
+        {
+          "start": 5,
+          "abort": 3
+        },
+        {
+          "start": 4,
+          "abort": 2
+        },
+        {
+          "start": 3,
+          "abort": 1
+        },
+        {
+          "start": 2,
+          "abort": 5
+        }
+      ],
+      "mistakes": [
+        ["\n        break", ""],
+        ["secunde > 0", "secunde >= 0"],
+        [
+          "    print(secunde)\n    secunde = secunde - 1",
+          "    secunde = secunde - 1\n    print(secunde)"
+        ],
+        ["anulat = False", "anulat = True"],
+        ["if anulat:", "if not anulat:"]
+      ]
+    },
+    {
+      "id": "rl-gonogo",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "combustibil = {{fuel}}\nvreme_ok = {{w}}\nechipaj_gata = {{c}}\nif combustibil >= 50 and vreme_ok:\n    print(\"Combustibil si vreme OK\")\nif not echipaj_gata:\n    print(\"Echipajul nu e gata\")\nif combustibil >= 50 and vreme_ok and echipaj_gata:\n    print(\"Gata de lansare\")\nelse:\n    print(\"Asteptam\")",
+      "values": [
+        {
+          "fuel": 80,
+          "w": "True",
+          "c": "True"
+        },
+        {
+          "fuel": 80,
+          "w": "True",
+          "c": "False"
+        },
+        {
+          "fuel": 30,
+          "w": "True",
+          "c": "True"
+        },
+        {
+          "fuel": 80,
+          "w": "False",
+          "c": "True"
+        },
+        {
+          "fuel": 50,
+          "w": "True",
+          "c": "True"
+        }
+      ],
+      "mistakes": [
+        ["combustibil >= 50 and vreme_ok:", "combustibil >= 50 or vreme_ok:"],
+        ["if not echipaj_gata", "if echipaj_gata"],
+        ["and vreme_ok and echipaj_gata", "and vreme_ok or echipaj_gata"],
+        ["combustibil >= 50 and vreme_ok and", "combustibil > 50 and vreme_ok and"],
+        ["if combustibil >= 50 and vreme_ok:", "if combustibil >= 50 and not vreme_ok:"],
+        ["else:\n    print(\"Asteptam\")", "print(\"Asteptam\")"]
+      ]
+    },
+    {
+      "id": "rl-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "total = 0\nfor nivel in range({{a}}, {{b}}, 10):\n    if nivel < 50:\n        continue\n    total = total + nivel\nprint(total)",
+      "values": [
+        {
+          "a": 30,
+          "b": 80
+        },
+        {
+          "a": 40,
+          "b": 101
+        },
+        {
+          "a": 20,
+          "b": 61
+        },
+        {
+          "a": 50,
+          "b": 91
+        },
+        {
+          "a": 10,
+          "b": 71
+        },
+        {
+          "a": 30,
+          "b": 111
+        },
+        {
+          "a": 20,
+          "b": 91
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["nivel < 50", "nivel <= 50"],
+        ["    total = total + nivel\nprint", "    total = total + nivel\n    print"],
+        ["total = total + nivel", "total = nivel"]
+      ]
+    },
+    {
+      "id": "rl-which-reading",
+      "kind": "which-program",
+      "text": "Operatorul a tastat {{typed}}, deci `nivel` ține ce a returnat input(). Care program afișează asta?",
+      "code": "nivel = \"{{typed}}\"\nnivel = int(nivel)\nif nivel < 0:\n    print(\"Zgomot\")\nelif nivel < 50:\n    print(\"Sistem critic\")\nelse:\n    print(\"Sistem OK\")",
+      "values": [
+        {
+          "typed": 30
+        },
+        {
+          "typed": 75
+        },
+        {
+          "typed": -5
+        },
+        {
+          "typed": 49
+        },
+        {
+          "typed": 50
+        }
+      ],
+      "mistakes": [
+        ["elif nivel < 50", "if nivel < 50"],
+        ["nivel < 50", "nivel > 50"],
+        ["nivel = int(nivel)\n", ""],
+        ["if nivel < 0", "if nivel > 0"],
+        ["nivel < 50", "nivel <= 50"]
+      ]
+    },
+    {
+      "id": "rl-which-loop",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "secunde = {{start}}\nwhile True:\n    if secunde == 0:\n        break\n    print(secunde)\n    secunde = secunde - 1\nprint(\"Decolare\")",
+      "values": [
+        {
+          "start": 3
+        },
+        {
+          "start": 4
+        },
+        {
+          "start": 2
+        },
+        {
+          "start": 5
+        },
+        {
+          "start": 1
+        }
+      ],
+      "mistakes": [
+        ["secunde == 0", "secunde == 1"],
+        [
+          "    print(secunde)\n    secunde = secunde - 1",
+          "    secunde = secunde - 1\n    print(secunde)"
+        ],
+        ["\nprint(\"Decolare\")", "\n    print(\"Decolare\")"],
+        ["secunde == 0", "secunde < 0"]
+      ]
+    },
+    {
+      "id": "rl-gap-break",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for sector in range(1, 10):\n    if sector == {{found}}:\n        print(f\"Semnal in sectorul {sector}\")\n        ___\n    print(f\"Sectorul {sector} liber\")",
+      "values": [
+        {
+          "found": 3
+        },
+        {
+          "found": 5
+        },
+        {
+          "found": 2
+        },
+        {
+          "found": 7
+        },
+        {
+          "found": 4
+        }
+      ],
+      "answer": "break",
+      "wrong": ["continue", "sector = 10", "print(f\"Sectorul {sector} liber\")"]
+    },
+    {
+      "id": "rl-gap-flag",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "lansare_ok = True\ncombustibil = {{fuel}}\nmotoare = {{eng}}\nif combustibil < 50:\n    print(\"Combustibil critic\")\n    ___\nif motoare < 50:\n    print(\"Motoare critice\")\n    lansare_ok = False\nif lansare_ok:\n    print(\"Lansare autorizata\")\nelse:\n    print(\"Lansare anulata\")",
+      "values": [
+        {
+          "fuel": 30,
+          "eng": 90
+        },
+        {
+          "fuel": 10,
+          "eng": 60
+        },
+        {
+          "fuel": 49,
+          "eng": 50
+        },
+        {
+          "fuel": 20,
+          "eng": 75
+        },
+        {
+          "fuel": 45,
+          "eng": 80
+        }
+      ],
+      "answer": "lansare_ok = False",
+      "wrong": ["lansare_ok == False", "lansare_ok = True", "print(\"Lansare anulata\")"]
+    },
+    {
+      "id": "rl-gap-op",
+      "kind": "missing-value",
+      "text": "Operatorul a tastat {{typed}}, deci `nivel` ține ce a returnat input(). Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nivel = \"{{typed}}\"\nnivel = int(nivel)\nif nivel < 0:\n    print(\"Zgomot\")\nelif nivel ___ 50:\n    print(\"Sistem critic\")\nelse:\n    print(\"Sistem OK\")",
+      "values": [
+        {
+          "typed": 49
+        },
+        {
+          "typed": 50
+        },
+        {
+          "typed": 30
+        },
+        {
+          "typed": 80
+        },
+        {
+          "typed": 51
+        }
+      ],
+      "answer": "<",
+      "wrong": ["<=", ">", ">=", "==", "!="]
+    },
+    {
+      "id": "rl-gap-bool",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "pornit = ___\nverificari = 0\nwhile pornit:\n    verificari = verificari + 1\n    print(f\"Verificarea {verificari}\")\n    if verificari == {{n}}:\n        pornit = False\nprint(\"Consola inchisa\")",
+      "values": [
+        {
+          "n": 2
+        },
+        {
+          "n": 3
+        },
+        {
+          "n": 1
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 5
+        }
+      ],
+      "answer": "True",
+      "wrong": ["False", "true", "not True"]
+    },
+    {
+      "id": "rl-bad-true",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "secunde = {{start}}\nwhile True:\n    if secunde == 0:\n        break\n    print(secunde)\n    secunde = secunde - 1\nprint(\"Decolare\")",
+      "values": [
+        {
+          "start": 3
+        },
+        {
+          "start": 2
+        },
+        {
+          "start": 4
+        }
+      ],
+      "bug": ["while True:", "while true:"]
+    },
+    {
+      "id": "rl-bad-skip",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for sector in range(1, {{stop}}):\n    if sector == {{noise}}:\n        continue\n    print(f\"Sectorul {sector} verificat\")\nprint(\"Scanare terminata\")",
+      "values": [
+        {
+          "stop": 6,
+          "noise": 3
+        },
+        {
+          "stop": 5,
+          "noise": 2
+        },
+        {
+          "stop": 7,
+          "noise": 4
+        },
+        {
+          "stop": 4,
+          "noise": 1
+        }
+      ],
+      "bug": ["continue", "break"]
+    }
+  ]
+}

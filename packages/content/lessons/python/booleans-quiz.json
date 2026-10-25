@@ -1,0 +1,1075 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What can a boolean hold?",
+      "options": [
+        "Only True or False",
+        "True or False, and any text as well",
+        "Any number from 0 to 1",
+        "Any text in quotes"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Which line makes a boolean variable?",
+      "options": [
+        "is_online = true",
+        "is_online = \"True\"",
+        "is_online = True",
+        "is_online == True"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "What happens when this runs?",
+      "code": "has_key = false\nprint(has_key)",
+      "options": [
+        "It stops with an error: it has to be written False",
+        "It prints false",
+        "It prints False",
+        "It prints nothing"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "age = 20\nprint(age < 18)",
+      "options": ["True", "False", "age < 18", "20"],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "What is a condition like `x == 5` really?",
+      "options": [
+        "A number",
+        "A piece of text",
+        "A line that puts 5 in x",
+        "A boolean: it is True or False"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "When is `left and right` True?",
+      "options": [
+        "When at least one of them is True",
+        "Only when both are True",
+        "When both are False",
+        "When left is True, whatever right is"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "When is `left or right` True?",
+      "options": [
+        "Only when both are True",
+        "Only when exactly one of them is True",
+        "When at least one of them is True",
+        "Only when left is True"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What is `not True`?",
+      "options": ["False", "True", "An error: not needs a variable", "Nothing"],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "What is `True and False`?",
+      "options": ["True", "True and False", "An error", "False"],
+      "answer": 3
+    },
+    {
+      "id": "q10",
+      "text": "What is `False or True`?",
+      "options": ["False", "True", "False or True", "An error"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "What is `False and False`?",
+      "options": ["True: two False make a True", "An error", "False", "Nothing"],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "In the lesson, `age = 20` and `has_license = False`. What runs for `if age >= 18 and has_license == True:`?",
+      "options": [
+        "The else: True and False is False",
+        "The if: age >= 18 is True",
+        "Both the if and the else",
+        "Nothing: Python stops with an error"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "Does `if has_license:` mean the same as `if has_license == True:`?",
+      "options": [
+        "No: the first one is always True",
+        "No: the first one stops with an error",
+        "Only inside a while",
+        "Yes: has_license is already a boolean"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q14",
+      "text": "In the lesson's club, `is_vip = False` and `has_invitation = True`. What does `if is_vip or has_invitation:` lead to?",
+      "options": [
+        "Access denied",
+        "Welcome to the club",
+        "Welcome to the club, then Access denied",
+        "An error, since is_vip is False"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does `not` do to a boolean?",
+      "options": [
+        "It flips it: True becomes False and False becomes True",
+        "It makes it False, whatever it was",
+        "It deletes the variable",
+        "It checks that the variable exists"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "`is_logged_in` is False. Does `if not is_logged_in:` run its block?",
+      "options": [
+        "No: is_logged_in is False",
+        "No: not works only on True",
+        "Yes: not False is True",
+        "It stops with an error"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "What do we call a boolean variable that keeps a loop going, like `running`?",
+      "options": ["A counter", "A range", "A comment", "A flag"],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "`running` becomes False in the middle of a `while running:` loop. When does the loop stop?",
+      "options": [
+        "At its next check: the rest of that iteration still runs",
+        "Right away, in the middle of the iteration",
+        "After one more full iteration",
+        "Never: a while loop needs break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "What does the lesson's flag loop print?",
+      "code": "running = True\nnumber = 0\nwhile running:\n    print(number)\n    number = number + 1\n    if number == 3:\n        running = False\nprint(\"Done\")",
+      "options": ["0\n1\n2\n3\nDone", "0\n1\n2\nDone", "1\n2\n3\nDone", "0\n1\n2"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "Why does the lesson call a flag a clean alternative to break?",
+      "options": [
+        "A flag makes the loop run faster",
+        "break doesn't work in a while loop",
+        "The loop's own condition closes it, instead of jumping out abruptly",
+        "A flag stops the loop in the middle of the iteration"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "What does `print(5 == 5)` print?",
+      "options": ["5 == 5", "5", "10", "True"],
+      "answer": 3
+    },
+    {
+      "id": "q22",
+      "text": "What is the difference between `=` and `==`?",
+      "options": [
+        "= puts a value in a variable; == compares two values and gives True or False",
+        "None, they mean the same",
+        "== puts a value in a variable; = compares",
+        "= is for numbers, == is for text"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "x = 7\nprint(x != 7)",
+      "options": ["True", "False", "7", "x != 7"],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "In the Command Console mission, the user types status, then hello, then shutdown. What does the program print?",
+      "options": [
+        "System active\nUnknown command",
+        "System active\nUnknown command\nUnknown command\nClosing console...",
+        "System active\nUnknown command\nClosing console...",
+        "Closing console..."
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "In the Command Console mission, what happens once the user types shutdown?",
+      "options": [
+        "The program stops at once, without printing Closing console...",
+        "It prints Unknown command and asks again",
+        "powered_on becomes False, but the loop keeps asking for commands",
+        "powered_on becomes False, the loop stops at its next check and Closing console... is printed"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q26",
+      "text": "In the Command Console mission, why does `powered_on` start as True?",
+      "options": [
+        "So the while loop runs and asks for the first command",
+        "So the program prints True first",
+        "Every variable has to start as True",
+        "So shutdown is typed by itself"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "After `age = 15` and `is_adult = age >= 18`, what does `is_adult` hold?",
+      "options": ["True", "False", "15", "The text age >= 18"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Which condition is True when age is 20 and has_license is True, and False as soon as one of them fails?",
+      "options": [
+        "age >= 18 or has_license",
+        "age >= 18 and not has_license",
+        "age >= 18 and has_license",
+        "not has_license"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "Why does a `while True:` loop with no break never stop?",
+      "options": [
+        "True means the loop has to stop, but Python ignores it",
+        "It stops after the first iteration",
+        "It stops once it prints True",
+        "Its condition is always True"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q30",
+      "text": "What is `not False`?",
+      "options": ["False", "True", "An error: not needs a variable", "Nothing"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "bo-print-cmp",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{x}}\nprint({{v}} {{op}} {{y}})",
+      "values": [
+        {
+          "v": "age",
+          "x": 15,
+          "op": "<",
+          "y": 18,
+          "flip": ">="
+        },
+        {
+          "v": "age",
+          "x": 20,
+          "op": ">=",
+          "y": 18,
+          "flip": "<"
+        },
+        {
+          "v": "score",
+          "x": 50,
+          "op": "==",
+          "y": 50,
+          "flip": "!="
+        },
+        {
+          "v": "fuel",
+          "x": 30,
+          "op": ">",
+          "y": 40,
+          "flip": "<="
+        },
+        {
+          "v": "lives",
+          "x": 0,
+          "op": "!=",
+          "y": 0,
+          "flip": "=="
+        }
+      ],
+      "mistakes": [
+        ["{{op}}", "{{flip}}"],
+        ["print({{v}} {{op}} {{y}})", "print(\"{{v}} {{op}} {{y}}\")"],
+        ["print({{v}} {{op}} {{y}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "bo-and",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{a}} = {{x}}\n{{b}} = {{bv}}\nif {{a}} >= {{lim}} and {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "age",
+          "b": "has_license",
+          "lim": 18,
+          "yes": "You can drive",
+          "no": "No driving yet",
+          "x": 20,
+          "bv": "True"
+        },
+        {
+          "a": "age",
+          "b": "has_license",
+          "lim": 18,
+          "yes": "You can drive",
+          "no": "No driving yet",
+          "x": 16,
+          "bv": "True"
+        },
+        {
+          "a": "age",
+          "b": "has_license",
+          "lim": 18,
+          "yes": "You can drive",
+          "no": "No driving yet",
+          "x": 20,
+          "bv": "False"
+        },
+        {
+          "a": "level",
+          "b": "has_key",
+          "lim": 5,
+          "yes": "The door opens",
+          "no": "The door stays shut",
+          "x": 7,
+          "bv": "True"
+        },
+        {
+          "a": "level",
+          "b": "has_key",
+          "lim": 5,
+          "yes": "The door opens",
+          "no": "The door stays shut",
+          "x": 3,
+          "bv": "True"
+        },
+        {
+          "a": "level",
+          "b": "has_key",
+          "lim": 5,
+          "yes": "The door opens",
+          "no": "The door stays shut",
+          "x": 5,
+          "bv": "False"
+        },
+        {
+          "a": "fuel",
+          "b": "engine_ok",
+          "lim": 50,
+          "yes": "Ready to launch",
+          "no": "Launch on hold",
+          "x": 80,
+          "bv": "True"
+        },
+        {
+          "a": "fuel",
+          "b": "engine_ok",
+          "lim": 50,
+          "yes": "Ready to launch",
+          "no": "Launch on hold",
+          "x": 30,
+          "bv": "False"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        [
+          "if {{a}} >= {{lim}} and {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        [
+          "if {{a}} >= {{lim}} and {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{a}} >= {{lim}} and {{b}})"
+        ],
+        [" and ", " or "]
+      ]
+    },
+    {
+      "id": "bo-or",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{a}} = {{av}}\n{{b}} = {{bv}}\nif {{a}} or {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "is_vip",
+          "b": "has_invitation",
+          "yes": "Welcome to the club",
+          "no": "Access denied",
+          "av": "False",
+          "bv": "True"
+        },
+        {
+          "a": "is_vip",
+          "b": "has_invitation",
+          "yes": "Welcome to the club",
+          "no": "Access denied",
+          "av": "False",
+          "bv": "False"
+        },
+        {
+          "a": "is_vip",
+          "b": "has_invitation",
+          "yes": "Welcome to the club",
+          "no": "Access denied",
+          "av": "True",
+          "bv": "False"
+        },
+        {
+          "a": "is_admin",
+          "b": "is_owner",
+          "yes": "You can edit",
+          "no": "Read only",
+          "av": "False",
+          "bv": "False"
+        },
+        {
+          "a": "is_admin",
+          "b": "is_owner",
+          "yes": "You can edit",
+          "no": "Read only",
+          "av": "False",
+          "bv": "True"
+        },
+        {
+          "a": "has_map",
+          "b": "has_guide",
+          "yes": "You find the way",
+          "no": "You are lost",
+          "av": "True",
+          "bv": "True"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        [
+          "if {{a}} or {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        [
+          "if {{a}} or {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{a}} or {{b}})"
+        ],
+        [" or ", " and "]
+      ]
+    },
+    {
+      "id": "bo-not",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{v}} = {{b}}\nif not {{v}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "is_logged_in",
+          "yes": "Please log in first",
+          "no": "Welcome back",
+          "b": "False"
+        },
+        {
+          "v": "is_logged_in",
+          "yes": "Please log in first",
+          "no": "Welcome back",
+          "b": "True"
+        },
+        {
+          "v": "door_locked",
+          "yes": "Come in",
+          "no": "Find the key",
+          "b": "True"
+        },
+        {
+          "v": "door_locked",
+          "yes": "Come in",
+          "no": "Find the key",
+          "b": "False"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        [
+          "if not {{v}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        ["if not {{v}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")", "print(not {{v}})"],
+        ["if not {{v}}:", "if {{v}}:"]
+      ]
+    },
+    {
+      "id": "bo-flag",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "{{f}} = True\n{{n}} = 0\nwhile {{f}}:\n    print({{n}})\n    {{n}} = {{n}} + 1\n    if {{n}} == {{stop}}:\n        {{f}} = False\nprint(\"{{done}}\")",
+      "values": [
+        {
+          "f": "running",
+          "n": "number",
+          "stop": 4,
+          "done": "Done"
+        },
+        {
+          "f": "active",
+          "n": "step",
+          "stop": 2,
+          "done": "Stopped"
+        },
+        {
+          "f": "on",
+          "n": "count",
+          "stop": 4,
+          "done": "Finished"
+        },
+        {
+          "f": "scanning",
+          "n": "sector",
+          "stop": 3,
+          "done": "Scan complete"
+        }
+      ],
+      "mistakes": [
+        ["    print({{n}})\n    {{n}} = {{n}} + 1", "    {{n}} = {{n}} + 1\n    print({{n}})"],
+        ["{{n}} = 0", "{{n}} = 1"],
+        ["{{f}} = True", "{{f}} = False"],
+        ["print(\"{{done}}\")", "    print(\"{{done}}\")"]
+      ]
+    },
+    {
+      "id": "bo-gap-op",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{a}} = {{av}}\n{{b}} = {{bv}}\nif {{a}} ___ {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "has_ticket",
+          "b": "has_id",
+          "yes": "Board the ship",
+          "no": "Stay at the gate",
+          "av": "True",
+          "bv": "False",
+          "ans": "and",
+          "other": "or",
+          "caps": "AND",
+          "sym": "&&"
+        },
+        {
+          "a": "has_ticket",
+          "b": "has_id",
+          "yes": "Board the ship",
+          "no": "Stay at the gate",
+          "av": "False",
+          "bv": "True",
+          "ans": "and",
+          "other": "or",
+          "caps": "AND",
+          "sym": "&&"
+        },
+        {
+          "a": "is_vip",
+          "b": "has_invitation",
+          "yes": "Welcome to the club",
+          "no": "Access denied",
+          "av": "False",
+          "bv": "True",
+          "ans": "or",
+          "other": "and",
+          "caps": "OR",
+          "sym": "||"
+        },
+        {
+          "a": "is_weekend",
+          "b": "is_holiday",
+          "yes": "No school today",
+          "no": "School day",
+          "av": "True",
+          "bv": "False",
+          "ans": "or",
+          "other": "and",
+          "caps": "OR",
+          "sym": "||"
+        },
+        {
+          "a": "has_fuel",
+          "b": "has_pilot",
+          "yes": "Take off",
+          "no": "Stay on the ground",
+          "av": "True",
+          "bv": "False",
+          "ans": "and",
+          "other": "or",
+          "caps": "AND",
+          "sym": "&&"
+        },
+        {
+          "a": "is_cold",
+          "b": "is_windy",
+          "yes": "Wear a jacket",
+          "no": "A t-shirt is fine",
+          "av": "False",
+          "bv": "True",
+          "ans": "or",
+          "other": "and",
+          "caps": "OR",
+          "sym": "||"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{other}}", "{{caps}}", "{{sym}}"]
+    },
+    {
+      "id": "bo-gap-bool",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = ___\nif {{v}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "is_online",
+          "yes": "Online",
+          "no": "Offline",
+          "ans": "True",
+          "other": "False",
+          "low": "true",
+          "low_other": "false"
+        },
+        {
+          "v": "has_key",
+          "yes": "Door open",
+          "no": "Door locked",
+          "ans": "False",
+          "other": "True",
+          "low": "false",
+          "low_other": "true"
+        },
+        {
+          "v": "game_over",
+          "yes": "Game over",
+          "no": "Keep playing",
+          "ans": "False",
+          "other": "True",
+          "low": "false",
+          "low_other": "true"
+        },
+        {
+          "v": "shield_on",
+          "yes": "Shield up",
+          "no": "Shield down",
+          "ans": "True",
+          "other": "False",
+          "low": "true",
+          "low_other": "false"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{other}}", "{{low}}", "\"{{ans}}\"", "{{low_other}}"]
+    },
+    {
+      "id": "bo-gap-print",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{x}}\n___",
+      "values": [
+        {
+          "v": "age",
+          "x": 12,
+          "op": "<",
+          "y": 18,
+          "flip": ">="
+        },
+        {
+          "v": "score",
+          "x": 75,
+          "op": ">=",
+          "y": 50,
+          "flip": "<"
+        },
+        {
+          "v": "fuel",
+          "x": 90,
+          "op": "<=",
+          "y": 40,
+          "flip": ">"
+        },
+        {
+          "v": "speed",
+          "x": 120,
+          "op": "!=",
+          "y": 100,
+          "flip": "=="
+        },
+        {
+          "v": "lives",
+          "x": 0,
+          "op": "==",
+          "y": 0,
+          "flip": "!="
+        },
+        {
+          "v": "stars",
+          "x": 2,
+          "op": ">",
+          "y": 3,
+          "flip": "<="
+        }
+      ],
+      "answer": "print({{v}} {{op}} {{y}})",
+      "wrong": ["print({{v}} {{flip}} {{y}})", "print(\"{{v}} {{op}} {{y}}\")", "print({{v}})"]
+    },
+    {
+      "id": "bo-gap-if",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{a}} = {{x}}\n{{b}} = {{bv}}\n___\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "age",
+          "b": "has_license",
+          "lim": 18,
+          "yes": "You can drive",
+          "no": "No driving yet",
+          "x": 20,
+          "bv": "True"
+        },
+        {
+          "a": "age",
+          "b": "has_license",
+          "lim": 18,
+          "yes": "You can drive",
+          "no": "No driving yet",
+          "x": 20,
+          "bv": "False"
+        },
+        {
+          "a": "level",
+          "b": "has_key",
+          "lim": 5,
+          "yes": "The door opens",
+          "no": "The door stays shut",
+          "x": 3,
+          "bv": "True"
+        },
+        {
+          "a": "fuel",
+          "b": "engine_ok",
+          "lim": 50,
+          "yes": "Ready to launch",
+          "no": "Launch on hold",
+          "x": 60,
+          "bv": "True"
+        }
+      ],
+      "answer": "if {{a}} >= {{lim}} and {{b}}:",
+      "wrong": [
+        "if {{a}} >= {{lim}} or {{b}}:",
+        "if {{a}} < {{lim}} and {{b}}:",
+        "if {{a}} >= {{lim}} and not {{b}}:",
+        "if {{a}} >= {{lim}} and {{b}}",
+        "if {{a}} >= {{lim}} AND {{b}}:"
+      ]
+    },
+    {
+      "id": "bo-which-op",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{a}} = {{av}}\n{{b}} = {{bv}}\nif {{a}} {{op}} {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "has_ticket",
+          "b": "has_id",
+          "yes": "Board the ship",
+          "no": "Stay at the gate",
+          "av": "True",
+          "bv": "False",
+          "avn": "False",
+          "bvn": "True",
+          "op": "and",
+          "other": "or"
+        },
+        {
+          "a": "is_vip",
+          "b": "has_invitation",
+          "yes": "Welcome to the club",
+          "no": "Access denied",
+          "av": "False",
+          "bv": "True",
+          "avn": "True",
+          "bvn": "False",
+          "op": "or",
+          "other": "and"
+        },
+        {
+          "a": "has_fuel",
+          "b": "has_pilot",
+          "yes": "Take off",
+          "no": "Stay on the ground",
+          "av": "False",
+          "bv": "True",
+          "avn": "True",
+          "bvn": "False",
+          "op": "and",
+          "other": "or"
+        },
+        {
+          "a": "is_weekend",
+          "b": "is_holiday",
+          "yes": "No school today",
+          "no": "School day",
+          "av": "False",
+          "bv": "True",
+          "avn": "True",
+          "bvn": "False",
+          "op": "or",
+          "other": "and"
+        },
+        {
+          "a": "is_admin",
+          "b": "is_owner",
+          "yes": "You can edit",
+          "no": "Read only",
+          "av": "True",
+          "bv": "False",
+          "avn": "False",
+          "bvn": "True",
+          "op": "or",
+          "other": "and"
+        },
+        {
+          "a": "is_cold",
+          "b": "is_windy",
+          "yes": "Wear a jacket",
+          "no": "A t-shirt is fine",
+          "av": "True",
+          "bv": "False",
+          "avn": "False",
+          "bvn": "True",
+          "op": "and",
+          "other": "or"
+        }
+      ],
+      "mistakes": [
+        [" {{op}} ", " {{other}} "],
+        ["{{a}} = {{av}}", "{{a}} = {{avn}}"],
+        ["{{b}} = {{bv}}", "{{b}} = {{bvn}}"],
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "bo-which-print",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{x}}\nprint({{v}} {{op}} {{y}})",
+      "values": [
+        {
+          "v": "age",
+          "x": 17,
+          "op": ">=",
+          "y": 18,
+          "flip": "<"
+        },
+        {
+          "v": "stars",
+          "x": 3,
+          "op": "==",
+          "y": 3,
+          "flip": "!="
+        }
+      ],
+      "mistakes": [
+        ["{{op}}", "{{flip}}"],
+        ["print({{v}} {{op}} {{y}})", "print(\"{{v}} {{op}} {{y}}\")"],
+        ["print({{v}} {{op}} {{y}})", "print({{v}})"]
+      ]
+    },
+    {
+      "id": "bo-bad-case",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{b}}\nif {{v}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "is_online",
+          "yes": "Online",
+          "no": "Offline",
+          "b": "True",
+          "low": "true"
+        },
+        {
+          "v": "has_key",
+          "yes": "Door open",
+          "no": "Door locked",
+          "b": "False",
+          "low": "false"
+        },
+        {
+          "v": "game_over",
+          "yes": "Game over",
+          "no": "Keep playing",
+          "b": "True",
+          "low": "true"
+        },
+        {
+          "v": "shield_on",
+          "yes": "Shield up",
+          "no": "Shield down",
+          "b": "False",
+          "low": "false"
+        }
+      ],
+      "bug": ["{{v}} = {{b}}", "{{v}} = {{low}}"]
+    },
+    {
+      "id": "bo-bad-and",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{a}} = {{x}}\n{{b}} = {{bv}}\nif {{a}} >= {{lim}} and {{b}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "a": "age",
+          "b": "has_license",
+          "lim": 18,
+          "yes": "You can drive",
+          "no": "No driving yet",
+          "x": 19,
+          "bv": "True"
+        },
+        {
+          "a": "level",
+          "b": "has_key",
+          "lim": 5,
+          "yes": "The door opens",
+          "no": "The door stays shut",
+          "x": 4,
+          "bv": "True"
+        },
+        {
+          "a": "fuel",
+          "b": "engine_ok",
+          "lim": 50,
+          "yes": "Ready to launch",
+          "no": "Launch on hold",
+          "x": 70,
+          "bv": "False"
+        },
+        {
+          "a": "fuel",
+          "b": "engine_ok",
+          "lim": 50,
+          "yes": "Ready to launch",
+          "no": "Launch on hold",
+          "x": 55,
+          "bv": "True"
+        }
+      ],
+      "bug": [" and ", " AND "]
+    },
+    {
+      "id": "bo-bad-equal",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{b}}\nif {{v}} == True:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "is_online",
+          "yes": "Online",
+          "no": "Offline",
+          "b": "True"
+        },
+        {
+          "v": "has_key",
+          "yes": "Door open",
+          "no": "Door locked",
+          "b": "False"
+        },
+        {
+          "v": "shield_on",
+          "yes": "Shield up",
+          "no": "Shield down",
+          "b": "True"
+        }
+      ],
+      "bug": ["{{v}} == True", "{{v}} = True"]
+    },
+    {
+      "id": "bo-bad-stop",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{f}} = True\n{{n}} = 0\nwhile {{f}}:\n    print({{n}})\n    {{n}} = {{n}} + 1\n    if {{n}} == {{stop}}:\n        {{f}} = False\nprint(\"{{done}}\")",
+      "values": [
+        {
+          "f": "running",
+          "n": "number",
+          "stop": 3,
+          "wrong": 2,
+          "done": "Done"
+        },
+        {
+          "f": "active",
+          "n": "step",
+          "stop": 4,
+          "wrong": 5,
+          "done": "Stopped"
+        },
+        {
+          "f": "on",
+          "n": "count",
+          "stop": 2,
+          "wrong": 1,
+          "done": "Finished"
+        },
+        {
+          "f": "scanning",
+          "n": "sector",
+          "stop": 5,
+          "wrong": 4,
+          "done": "Scan complete"
+        }
+      ],
+      "bug": ["{{n}} == {{stop}}", "{{n}} == {{wrong}}"]
+    }
+  ]
+}

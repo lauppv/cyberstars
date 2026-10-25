@@ -1,0 +1,923 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce face break într-o buclă?",
+      "options": [
+        "Oprește bucla complet, indiferent câte iterații mai rămăseseră",
+        "Sare peste restul iterației curente și trece la următoarea",
+        "Oprește tot programul",
+        "Pune bucla pe pauză până când utilizatorul apasă Enter"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce face continue într-o buclă?",
+      "options": [
+        "Oprește bucla complet",
+        "Sare peste restul iterației curente și trece la următoarea",
+        "Rulează iterația curentă din nou, de la început",
+        "Merge mai departe cu linia de după buclă"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "După ce rulează break, ce linie rulează mai departe?",
+      "options": [
+        "Prima linie din buclă, pentru iterația următoare",
+        "Linia de imediat sub break, din același bloc",
+        "Prima linie de după buclă",
+        "Niciuna, programul se termină acolo"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "În primul exemplu din lecție, `for i in range(0, 100):` se oprește cu break când i e 5. Care e ultimul număr afișat?",
+      "options": ["5", "99", "6", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 6):\n    if i == 3:\n        break\n    print(i)\nprint(\"Gata\")",
+      "options": ["1\n2\nGata", "1\n2\n4\n5\nGata", "1\n2\n3\nGata", "1\n2"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "În exemplul cu continue din lecție, `for i in range(0, 10):` cu `continue` când i e 5, ce lipsește din afișare?",
+      "options": [
+        "Toate numerele de la 5 încolo",
+        "Doar 5",
+        "Doar 9",
+        "Nimic, se afișează toate de la 0 la 9"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "În scanarea de sectoare din lecție, semnalul e în sectorul 7. Câte linii Scanez sectorul afișează?",
+      "options": ["7", "99", "6", "8"],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "De ce folosește scanarea de sectoare break după ce găsește semnalul?",
+      "options": [
+        "Ca semnalul să fie afișat de două ori",
+        "Pentru că o buclă for nu se poate termina singură",
+        "Ca să scaneze mai repede sectoarele rămase",
+        "Nu mai e nimic de căutat, așa că verificarea celorlalte sectoare ar pierde doar timp"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce se întâmplă cu un i impar aici?",
+      "code": "for i in range(0, 11):\n    if i % 2 != 0:\n        continue\n    print(i)",
+      "options": [
+        "continue sare peste print(i)-ul lui, iar bucla merge mai departe cu următorul i",
+        "continue oprește bucla la primul număr impar",
+        "Se afișează, pentru că continue înseamnă mergi mai departe",
+        "Python se oprește cu o eroare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Merg break și continue și într-o buclă while?",
+      "options": [
+        "Doar break, continue merge doar în for",
+        "Da, la fel ca într-o buclă for",
+        "Doar continue, break merge doar în for",
+        "Nu, o buclă while se oprește doar prin condiția ei"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Ce ar face `while True:` fără un break în ea?",
+      "options": [
+        "Și-ar rula blocul o dată",
+        "Nu și-ar rula blocul niciodată",
+        "S-ar repeta la nesfârșit: e o buclă infinită",
+        "S-ar opri cu o eroare, pentru că True nu e o condiție"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "În bucla de comenzi din lecție, utilizatorul tastează Stop. Ce se întâmplă?",
+      "code": "while True:\n    comanda = input(\"Comanda: \")\n    if comanda == \"stop\":\n        break\n    print(f\"Execut: {comanda}\")\nprint(\"Sistem oprit\")",
+      "options": [
+        "Bucla se oprește și se afișează Sistem oprit",
+        "Python se oprește cu o eroare",
+        "Nu se afișează nimic și întreabă din nou",
+        "Afișează Execut: Stop și întreabă din nou, pentru că \"Stop\" nu e \"stop\""
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Când e adevărat `comanda == \"stop\"`?",
+      "options": [
+        "Doar când comanda ține exact cuvântul stop",
+        "Când comanda ține stop, Stop sau STOP",
+        "Când comanda începe cu stop",
+        "Niciodată, == merge doar cu numere"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "În misiunea Scaner manual de sectoare, operatorul tastează 4, apoi -2, apoi 7, apoi 0. Ce afișează programul?",
+      "options": [
+        "Sector 4 verificat\nSector -2 verificat\nSector 7 verificat\nScanare terminata",
+        "Sector 4 verificat\nSector 7 verificat\nScanare terminata",
+        "Sector 4 verificat\nScanare terminata",
+        "Sector 4 verificat\nSector 7 verificat\nSector 0 verificat\nScanare terminata"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "În misiunea Scaner manual de sectoare, de ce e tratat un număr negativ cu continue și nu cu break?",
+      "options": [
+        "Pentru că break nu merge într-o buclă while True",
+        "Pentru că continue afișează numărul ca zgomot",
+        "E doar zgomot: îl sărim și citim mai departe, pe când break ar termina scanarea",
+        "Nu e nicio diferență între ele aici"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "În misiunea Scaner manual de sectoare, operatorul tastează întâi 0. Ce afișează programul?",
+      "options": [
+        "Sector 0 verificat\nScanare terminata",
+        "Nimic",
+        "Sector 0 verificat",
+        "Scanare terminata"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Ce face acest program?",
+      "code": "n = 0\nwhile n < 5:\n    if n == 2:\n        continue\n    print(n)\n    n = n + 1",
+      "options": [
+        "Afișează 0 și 1, apoi nu se mai termină: continue sare peste n = n + 1, așa că n rămâne 2",
+        "Afișează 0, 1, 3 și 4",
+        "Afișează 0 și 1, apoi se oprește",
+        "Afișează 0, 1, 2, 3 și 4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Un break stă într-un if, în interiorul unui for. Din ce iese?",
+      "options": [
+        "Doar din if: bucla merge mai departe cu iterația următoare",
+        "Din toată bucla for",
+        "Din tot programul",
+        "Doar din iterația curentă"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "După continue într-o buclă for, cât e i la iterația următoare?",
+      "options": [
+        "Aceeași valoare, iterația rulează din nou",
+        "Din nou prima valoare din range()",
+        "Următoarea valoare din range(), ca de obicei",
+        "Nimic: bucla se termină"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "for i in range(1, 4):\n    if i == 2:\n        break\n        print(\"Gasit\")\n    print(i)",
+      "options": ["1\nGasit", "1\n2\nGasit", "1\n3", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce cuvânt cheie sare peste o valoare care e doar zgomot și lasă bucla să meargă mai departe?",
+      "options": ["continue", "break", "else", "while"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "O buclă caută ceva. Ce cuvânt cheie o termină după ce l-a găsit?",
+      "options": ["continue", "break", "elif", "range"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "O buclă for are un break al cărui if nu e niciodată adevărat. Ce se întâmplă?",
+      "options": [
+        "Bucla se oprește la prima iterație",
+        "Python se oprește cu o eroare",
+        "Bucla rulează până la capăt, ca și cum break n-ar fi acolo",
+        "Bucla nu se mai termină"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "În bucla de comenzi din lecție, utilizatorul tastează scan, apoi stop. Ce afișează programul?",
+      "options": [
+        "Execut: scan\nExecut: stop\nSistem oprit",
+        "Execut: scan",
+        "Sistem oprit",
+        "Execut: scan\nSistem oprit"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "În bucla de comenzi din lecție, utilizatorul tastează a, apoi b, apoi stop. De câte ori cere programul o comandă?",
+      "options": ["De 3 ori", "De 2 ori", "O singură dată", "De 4 ori"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Un continue e ultima linie din blocul unei bucle. Ce schimbă?",
+      "options": [
+        "Bucla se oprește după iterația asta",
+        "Nimic: nu mai e nimic de sărit în iterație",
+        "Iterația următoare e sărită",
+        "Iterația rulează de două ori"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "De ce folosește bucla de comenzi `while True` cu un break, și nu o condiție pe linia cu while?",
+      "options": [
+        "Pentru că o linie cu while nu poate compara text",
+        "Pentru că while True rulează mai repede",
+        "Aflăm dacă ne oprim abia după ce tastează utilizatorul, ceea ce se întâmplă în buclă",
+        "Pentru că break merge doar în while True"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "for i in range(0, 5):\n    if i == 2:\n        continue\n    if i == 4:\n        break\n    print(i)",
+      "options": ["0\n1", "0\n1\n3\n4", "0\n1\n2\n3", "0\n1\n3"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Unde sare continue?",
+      "options": [
+        "Înapoi la începutul buclei, pentru iterația următoare",
+        "La prima linie de după buclă",
+        "La începutul programului",
+        "La linia de imediat sub el"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == 3:\n        break\nprint(n)",
+      "options": ["2", "3", "4", "Nimic: while True nu se termină niciodată"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "bc-break",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        break\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 10,
+          "s": 4
+        },
+        {
+          "a": 1,
+          "b": 8,
+          "s": 5
+        },
+        {
+          "a": 3,
+          "b": 12,
+          "s": 6
+        },
+        {
+          "a": 2,
+          "b": 9,
+          "s": 7
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        [
+          "    if i == {{s}}:\n        break\n    print(i)",
+          "    print(i)\n    if i == {{s}}:\n        break"
+        ],
+        ["    if i == {{s}}:\n        break\n", ""]
+      ]
+    },
+    {
+      "id": "bc-continue",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        continue\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 6,
+          "s": 3
+        },
+        {
+          "a": 1,
+          "b": 7,
+          "s": 2
+        },
+        {
+          "a": 4,
+          "b": 9,
+          "s": 6
+        },
+        {
+          "a": 2,
+          "b": 8,
+          "s": 5
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["    if i == {{s}}:\n        continue\n", ""],
+        ["i == {{s}}", "i != {{s}}"]
+      ]
+    },
+    {
+      "id": "bc-even",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i % 2 {{op}} 0:\n        continue\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 9,
+          "op": "!=",
+          "flip": "=="
+        },
+        {
+          "a": 2,
+          "b": 11,
+          "op": "!=",
+          "flip": "=="
+        },
+        {
+          "a": 1,
+          "b": 10,
+          "op": "==",
+          "flip": "!="
+        },
+        {
+          "a": 3,
+          "b": 12,
+          "op": "==",
+          "flip": "!="
+        }
+      ],
+      "mistakes": [
+        ["{{op}}", "{{flip}}"],
+        ["continue", "break"],
+        ["    if i % 2 {{op}} 0:\n        continue\n", ""]
+      ]
+    },
+    {
+      "id": "bc-scan",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for {{v}} in range(1, {{b}}):\n    if {{v}} == {{s}}:\n        print(f\"{{found}} {{{v}}}!\")\n        break\n    print(f\"{{scan}} {{{v}}}...\")",
+      "values": [
+        {
+          "b": 7,
+          "s": 3,
+          "v": "sector",
+          "found": "Semnal gasit in sectorul",
+          "scan": "Scanez sectorul"
+        },
+        {
+          "b": 6,
+          "s": 4,
+          "v": "planeta",
+          "found": "Baza gasita pe planeta",
+          "scan": "Verific planeta"
+        },
+        {
+          "b": 8,
+          "s": 2,
+          "v": "camera",
+          "found": "Cheie gasita in camera",
+          "scan": "Caut in camera"
+        }
+      ],
+      "mistakes": [
+        ["        break\n", ""],
+        ["        break", "        continue"],
+        ["{{v}} == {{s}}", "{{v}} != {{s}}"]
+      ]
+    },
+    {
+      "id": "bc-while-true",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == {{s}}:\n        break\n    print(n)\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "s": 4,
+          "end": "Gata"
+        },
+        {
+          "s": 3,
+          "end": "Bucla s-a terminat"
+        },
+        {
+          "s": 5,
+          "end": "Oprit"
+        }
+      ],
+      "mistakes": [
+        [
+          "    if n == {{s}}:\n        break\n    print(n)",
+          "    print(n)\n    if n == {{s}}:\n        break"
+        ],
+        ["print(\"{{end}}\")", "    print(\"{{end}}\")"],
+        ["n = 0", "n = 1"]
+      ]
+    },
+    {
+      "id": "bc-while-continue",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "n = 0\nwhile n < {{b}}:\n    n = n + 1\n    if n == {{s}}:\n        continue\n    print(n)",
+      "values": [
+        {
+          "b": 5,
+          "s": 3
+        },
+        {
+          "b": 6,
+          "s": 2
+        },
+        {
+          "b": 7,
+          "s": 5
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["    if n == {{s}}:\n        continue\n", ""],
+        ["n == {{s}}", "n != {{s}}"]
+      ]
+    },
+    {
+      "id": "bc-sum",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = 0\nfor i in range(1, {{b}}):\n    if i == {{s}}:\n        break\n    {{v}} = {{v}} + i\nprint({{v}})",
+      "values": [
+        {
+          "b": 10,
+          "s": 4,
+          "v": "total"
+        },
+        {
+          "b": 8,
+          "s": 5,
+          "v": "puncte"
+        },
+        {
+          "b": 7,
+          "s": 3,
+          "v": "energie"
+        },
+        {
+          "b": 12,
+          "s": 6,
+          "v": "scor"
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["    if i == {{s}}:\n        break\n", ""],
+        ["    {{v}} = {{v}} + i\nprint({{v}})", "    {{v}} = {{v}} + i\n    print({{v}})"]
+      ]
+    },
+    {
+      "id": "bc-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{c}} = 0\nfor i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        continue\n    {{c}} = {{c}} + 1\nprint({{c}})",
+      "values": [
+        {
+          "a": 2,
+          "b": 10,
+          "s": 4,
+          "c": "contor"
+        },
+        {
+          "a": 5,
+          "b": 12,
+          "s": 7,
+          "c": "contor"
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["    if i == {{s}}:\n        continue\n", ""],
+        ["{{c}} = {{c}} + 1", "{{c}} = i"],
+        ["{{c}} = 0", "{{c}} = 1"]
+      ]
+    },
+    {
+      "id": "bc-which-break",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "for i in range(1, {{b}}):\n    if i == {{s}}:\n        break\n    print(i)",
+      "values": [
+        {
+          "b": 8,
+          "s": 4,
+          "s1": 5
+        },
+        {
+          "b": 6,
+          "s": 3,
+          "s1": 4
+        },
+        {
+          "b": 9,
+          "s": 5,
+          "s1": 6
+        },
+        {
+          "b": 7,
+          "s": 2,
+          "s1": 3
+        }
+      ],
+      "mistakes": [
+        ["break", "continue"],
+        ["i == {{s}}", "i == {{s1}}"],
+        ["range(1, {{b}})", "range(0, {{b}})"]
+      ]
+    },
+    {
+      "id": "bc-which-continue",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "for i in range(1, {{b}}):\n    if i == {{s}}:\n        continue\n    print(i)",
+      "values": [
+        {
+          "b": 6,
+          "s": 3,
+          "b1": 5
+        },
+        {
+          "b": 7,
+          "s": 4,
+          "b1": 6
+        },
+        {
+          "b": 5,
+          "s": 2,
+          "b1": 4
+        },
+        {
+          "b": 8,
+          "s": 6,
+          "b1": 7
+        }
+      ],
+      "mistakes": [
+        ["continue", "break"],
+        ["i == {{s}}", "i != {{s}}"],
+        ["range(1, {{b}})", "range(1, {{b1}})"]
+      ]
+    },
+    {
+      "id": "bc-gap-kw",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        ___\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 8,
+          "s": 4,
+          "kw": "break",
+          "other": "continue"
+        },
+        {
+          "a": 1,
+          "b": 7,
+          "s": 3,
+          "kw": "continue",
+          "other": "break"
+        },
+        {
+          "a": 2,
+          "b": 9,
+          "s": 6,
+          "kw": "break",
+          "other": "continue"
+        },
+        {
+          "a": 0,
+          "b": 6,
+          "s": 2,
+          "kw": "continue",
+          "other": "break"
+        },
+        {
+          "a": 3,
+          "b": 9,
+          "s": 5,
+          "kw": "continue",
+          "other": "break"
+        }
+      ],
+      "answer": "{{kw}}",
+      "wrong": ["{{other}}", "stop", "skip"]
+    },
+    {
+      "id": "bc-gap-scan",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "for {{v}} in range(1, {{b}}):\n    if {{v}} == {{s}}:\n        print(f\"{{found}} {{{v}}}!\")\n        ___\n    print(f\"{{scan}} {{{v}}}...\")",
+      "values": [
+        {
+          "b": 6,
+          "s": 4,
+          "v": "sector",
+          "found": "Semnal gasit in sectorul",
+          "scan": "Scanez sectorul"
+        },
+        {
+          "b": 7,
+          "s": 2,
+          "v": "planeta",
+          "found": "Baza gasita pe planeta",
+          "scan": "Verific planeta"
+        },
+        {
+          "b": 5,
+          "s": 3,
+          "v": "camera",
+          "found": "Cheie gasita in camera",
+          "scan": "Caut in camera"
+        }
+      ],
+      "answer": "break",
+      "wrong": ["continue", "{{v}} = {{b}}", "{{v}} = 0"]
+    },
+    {
+      "id": "bc-gap-while",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "n = {{start}}\nwhile True:\n    ___\n        break\n    print(n)\n    n = n + 1\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "start": 1,
+          "s": 4,
+          "end": "Gata"
+        },
+        {
+          "start": 3,
+          "s": 6,
+          "end": "Scanare terminata"
+        },
+        {
+          "start": 0,
+          "s": 3,
+          "end": "Oprit"
+        }
+      ],
+      "answer": "if n == {{s}}:",
+      "wrong": ["if n != {{s}}:", "if n > {{s}}:", "if n == {{s}}", "if n < {{s}}:"]
+    },
+    {
+      "id": "bc-gap-stop",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range(1, 10):\n    if i == ___:\n        break\n    print(i)",
+      "values": [
+        {
+          "s": 4,
+          "lo": 3,
+          "hi": 5
+        },
+        {
+          "s": 6,
+          "lo": 5,
+          "hi": 7
+        },
+        {
+          "s": 3,
+          "lo": 2,
+          "hi": 4
+        },
+        {
+          "s": 7,
+          "lo": 6,
+          "hi": 8
+        }
+      ],
+      "answer": "{{s}}",
+      "wrong": ["{{lo}}", "{{hi}}", "1"]
+    },
+    {
+      "id": "bc-gap-skip",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == ___:\n        continue\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 6,
+          "s": 2,
+          "lo": 1,
+          "hi": 3
+        },
+        {
+          "a": 1,
+          "b": 7,
+          "s": 5,
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "a": 3,
+          "b": 8,
+          "s": 4,
+          "lo": 3,
+          "hi": 5
+        }
+      ],
+      "answer": "{{s}}",
+      "wrong": ["{{lo}}", "{{hi}}", "{{b}}"]
+    },
+    {
+      "id": "bc-gap-op",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i % 2 ___ 0:\n        continue\n    print(i)",
+      "values": [
+        {
+          "a": 0,
+          "b": 9,
+          "op": "!=",
+          "flip": "=="
+        },
+        {
+          "a": 1,
+          "b": 10,
+          "op": "==",
+          "flip": "!="
+        },
+        {
+          "a": 2,
+          "b": 9,
+          "op": "!=",
+          "flip": "=="
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": ["{{flip}}", "<", "="]
+    },
+    {
+      "id": "bc-bad-break",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        break\n    print(i)\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "a": 0,
+          "b": 8,
+          "s": 3,
+          "end": "Gata"
+        },
+        {
+          "a": 2,
+          "b": 9,
+          "s": 5,
+          "end": "Sfarsit"
+        },
+        {
+          "a": 1,
+          "b": 7,
+          "s": 4,
+          "end": "Oprit"
+        }
+      ],
+      "bug": ["break", "continue"]
+    },
+    {
+      "id": "bc-bad-continue",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for i in range({{a}}, {{b}}):\n    if i == {{s}}:\n        continue\n    print(i)\nprint(\"{{end}}\")",
+      "values": [
+        {
+          "a": 0,
+          "b": 6,
+          "s": 2,
+          "end": "Gata"
+        },
+        {
+          "a": 3,
+          "b": 9,
+          "s": 5,
+          "end": "Sfarsit"
+        },
+        {
+          "a": 1,
+          "b": 6,
+          "s": 4,
+          "end": "Oprit"
+        }
+      ],
+      "bug": ["continue", "break"]
+    },
+    {
+      "id": "bc-bad-scan",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "for {{v}} in range(1, {{b}}):\n    if {{v}} == {{s}}:\n        print(f\"{{found}} {{{v}}}!\")\n        break\n    print(f\"{{scan}} {{{v}}}...\")",
+      "values": [
+        {
+          "b": 6,
+          "s": 3,
+          "v": "sector",
+          "found": "Semnal gasit in sectorul",
+          "scan": "Scanez sectorul"
+        },
+        {
+          "b": 8,
+          "s": 5,
+          "v": "planeta",
+          "found": "Baza gasita pe planeta",
+          "scan": "Verific planeta"
+        },
+        {
+          "b": 7,
+          "s": 4,
+          "v": "camera",
+          "found": "Cheie gasita in camera",
+          "scan": "Caut in camera"
+        }
+      ],
+      "bug": ["{{v}} == {{s}}", "{{v}} != {{s}}"]
+    },
+    {
+      "id": "bc-bad-colon",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == {{s}}:\n        break\n    print(n)",
+      "values": [
+        {
+          "s": 3
+        },
+        {
+          "s": 4
+        },
+        {
+          "s": 5
+        }
+      ],
+      "bug": ["while True:", "while True"]
+    },
+    {
+      "id": "bc-bad-true",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "n = 0\nwhile True:\n    n = n + 1\n    if n == {{s}}:\n        break\n    print(n)",
+      "values": [
+        {
+          "s": 2
+        },
+        {
+          "s": 6
+        }
+      ],
+      "bug": ["while True:", "while true:"]
+    }
+  ]
+}

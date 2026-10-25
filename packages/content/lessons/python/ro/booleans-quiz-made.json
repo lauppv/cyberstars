@@ -1,0 +1,710 @@
+{
+  "note": "Made by npm run make:quiz from the templates in booleans-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "bo-print-cmp-2ab7f0",
+      "text": "Ce afișează?",
+      "code": "varsta = 15\nprint(varsta < 18)",
+      "options": ["True", "False", "varsta < 18", "15"],
+      "answer": 0
+    },
+    {
+      "id": "bo-print-cmp-4d5578",
+      "text": "Ce afișează?",
+      "code": "varsta = 20\nprint(varsta >= 18)",
+      "options": ["True", "False", "varsta >= 18", "20"],
+      "answer": 0
+    },
+    {
+      "id": "bo-print-cmp-e88441",
+      "text": "Ce afișează?",
+      "code": "scor = 50\nprint(scor == 50)",
+      "options": ["True", "False", "scor == 50", "50"],
+      "answer": 0
+    },
+    {
+      "id": "bo-print-cmp-2e2f05",
+      "text": "Ce afișează?",
+      "code": "combustibil = 30\nprint(combustibil > 40)",
+      "options": ["False", "True", "combustibil > 40", "30"],
+      "answer": 0
+    },
+    {
+      "id": "bo-print-cmp-93dc0a",
+      "text": "Ce afișează?",
+      "code": "vieti = 0\nprint(vieti != 0)",
+      "options": ["False", "True", "vieti != 0", "0"],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-ffb584",
+      "text": "Ce afișează?",
+      "code": "varsta = 20\nare_permis = True\nif varsta >= 18 and are_permis:\n    print(\"Poti conduce\")\nelse:\n    print(\"Inca nu poti conduce\")",
+      "options": [
+        "Poti conduce",
+        "Inca nu poti conduce",
+        "Poti conduce\nInca nu poti conduce",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-d9c4aa",
+      "text": "Ce afișează?",
+      "code": "varsta = 16\nare_permis = True\nif varsta >= 18 and are_permis:\n    print(\"Poti conduce\")\nelse:\n    print(\"Inca nu poti conduce\")",
+      "options": [
+        "Inca nu poti conduce",
+        "Poti conduce",
+        "Poti conduce\nInca nu poti conduce",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-a02724",
+      "text": "Ce afișează?",
+      "code": "varsta = 20\nare_permis = False\nif varsta >= 18 and are_permis:\n    print(\"Poti conduce\")\nelse:\n    print(\"Inca nu poti conduce\")",
+      "options": [
+        "Inca nu poti conduce",
+        "Poti conduce",
+        "Poti conduce\nInca nu poti conduce",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-be9b4a",
+      "text": "Ce afișează?",
+      "code": "nivel = 7\nare_cheie = True\nif nivel >= 5 and are_cheie:\n    print(\"Usa se deschide\")\nelse:\n    print(\"Usa ramane inchisa\")",
+      "options": [
+        "Usa se deschide",
+        "Usa ramane inchisa",
+        "Usa se deschide\nUsa ramane inchisa",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-0503fd",
+      "text": "Ce afișează?",
+      "code": "nivel = 3\nare_cheie = True\nif nivel >= 5 and are_cheie:\n    print(\"Usa se deschide\")\nelse:\n    print(\"Usa ramane inchisa\")",
+      "options": [
+        "Usa ramane inchisa",
+        "Usa se deschide",
+        "Usa se deschide\nUsa ramane inchisa",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-4db432",
+      "text": "Ce afișează?",
+      "code": "nivel = 5\nare_cheie = False\nif nivel >= 5 and are_cheie:\n    print(\"Usa se deschide\")\nelse:\n    print(\"Usa ramane inchisa\")",
+      "options": [
+        "Usa ramane inchisa",
+        "Usa se deschide",
+        "Usa se deschide\nUsa ramane inchisa",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-2177ea",
+      "text": "Ce afișează?",
+      "code": "combustibil = 80\nmotor_ok = True\nif combustibil >= 50 and motor_ok:\n    print(\"Gata de lansare\")\nelse:\n    print(\"Lansarea asteapta\")",
+      "options": [
+        "Gata de lansare",
+        "Lansarea asteapta",
+        "Gata de lansare\nLansarea asteapta",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-and-32e8f5",
+      "text": "Ce afișează?",
+      "code": "combustibil = 30\nmotor_ok = False\nif combustibil >= 50 and motor_ok:\n    print(\"Gata de lansare\")\nelse:\n    print(\"Lansarea asteapta\")",
+      "options": [
+        "Lansarea asteapta",
+        "Gata de lansare",
+        "Gata de lansare\nLansarea asteapta",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-470edf",
+      "text": "Ce afișează?",
+      "code": "este_vip = False\nare_invitatie = True\nif este_vip or are_invitatie:\n    print(\"Bun venit in club\")\nelse:\n    print(\"Acces refuzat\")",
+      "options": ["Bun venit in club", "Acces refuzat", "Bun venit in club\nAcces refuzat", "True"],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-2d406d",
+      "text": "Ce afișează?",
+      "code": "este_vip = False\nare_invitatie = False\nif este_vip or are_invitatie:\n    print(\"Bun venit in club\")\nelse:\n    print(\"Acces refuzat\")",
+      "options": [
+        "Acces refuzat",
+        "Bun venit in club",
+        "Bun venit in club\nAcces refuzat",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-2a9f8c",
+      "text": "Ce afișează?",
+      "code": "este_vip = True\nare_invitatie = False\nif este_vip or are_invitatie:\n    print(\"Bun venit in club\")\nelse:\n    print(\"Acces refuzat\")",
+      "options": ["Bun venit in club", "Acces refuzat", "Bun venit in club\nAcces refuzat", "True"],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-9d3af9",
+      "text": "Ce afișează?",
+      "code": "este_admin = False\neste_proprietar = False\nif este_admin or este_proprietar:\n    print(\"Poti edita\")\nelse:\n    print(\"Doar citire\")",
+      "options": ["Doar citire", "Poti edita", "Poti edita\nDoar citire", "False"],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-f9fc59",
+      "text": "Ce afișează?",
+      "code": "este_admin = False\neste_proprietar = True\nif este_admin or este_proprietar:\n    print(\"Poti edita\")\nelse:\n    print(\"Doar citire\")",
+      "options": ["Poti edita", "Doar citire", "Poti edita\nDoar citire", "True"],
+      "answer": 0
+    },
+    {
+      "id": "bo-or-22da04",
+      "text": "Ce afișează?",
+      "code": "are_harta = True\nare_ghid = True\nif are_harta or are_ghid:\n    print(\"Gasesti drumul\")\nelse:\n    print(\"Te-ai ratacit\")",
+      "options": ["Gasesti drumul", "Te-ai ratacit", "Gasesti drumul\nTe-ai ratacit", "True"],
+      "answer": 0
+    },
+    {
+      "id": "bo-not-436bea",
+      "text": "Ce afișează?",
+      "code": "este_autentificat = False\nif not este_autentificat:\n    print(\"Te rog autentifica-te mai intai\")\nelse:\n    print(\"Bine ai revenit\")",
+      "options": [
+        "Te rog autentifica-te mai intai",
+        "Bine ai revenit",
+        "Te rog autentifica-te mai intai\nBine ai revenit",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-not-576396",
+      "text": "Ce afișează?",
+      "code": "este_autentificat = True\nif not este_autentificat:\n    print(\"Te rog autentifica-te mai intai\")\nelse:\n    print(\"Bine ai revenit\")",
+      "options": [
+        "Bine ai revenit",
+        "Te rog autentifica-te mai intai",
+        "Te rog autentifica-te mai intai\nBine ai revenit",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-not-cdc008",
+      "text": "Ce afișează?",
+      "code": "usa_incuiata = True\nif not usa_incuiata:\n    print(\"Intra\")\nelse:\n    print(\"Cauta cheia\")",
+      "options": ["Cauta cheia", "Intra", "Intra\nCauta cheia", "False"],
+      "answer": 0
+    },
+    {
+      "id": "bo-not-970249",
+      "text": "Ce afișează?",
+      "code": "usa_incuiata = False\nif not usa_incuiata:\n    print(\"Intra\")\nelse:\n    print(\"Cauta cheia\")",
+      "options": ["Intra", "Cauta cheia", "Intra\nCauta cheia", "True"],
+      "answer": 0
+    },
+    {
+      "id": "bo-flag-dbf6f4",
+      "text": "Ce afișează?",
+      "code": "ruleaza = True\nnumar = 0\nwhile ruleaza:\n    print(numar)\n    numar = numar + 1\n    if numar == 4:\n        ruleaza = False\nprint(\"Gata\")",
+      "options": ["0\n1\n2\n3\nGata", "1\n2\n3\n4\nGata", "1\n2\n3\nGata", "Gata"],
+      "answer": 0
+    },
+    {
+      "id": "bo-flag-9ebaa8",
+      "text": "Ce afișează?",
+      "code": "activ = True\npas = 0\nwhile activ:\n    print(pas)\n    pas = pas + 1\n    if pas == 2:\n        activ = False\nprint(\"Oprit\")",
+      "options": ["0\n1\nOprit", "1\n2\nOprit", "1\nOprit", "Oprit"],
+      "answer": 0
+    },
+    {
+      "id": "bo-flag-d07b3c",
+      "text": "Ce afișează?",
+      "code": "pornit = True\ncontor = 0\nwhile pornit:\n    print(contor)\n    contor = contor + 1\n    if contor == 4:\n        pornit = False\nprint(\"Terminat\")",
+      "options": ["0\n1\n2\n3\nTerminat", "1\n2\n3\n4\nTerminat", "1\n2\n3\nTerminat", "Terminat"],
+      "answer": 0
+    },
+    {
+      "id": "bo-flag-9a9c8e",
+      "text": "Ce afișează?",
+      "code": "scanez = True\nsector = 0\nwhile scanez:\n    print(sector)\n    sector = sector + 1\n    if sector == 3:\n        scanez = False\nprint(\"Scanare completa\")",
+      "options": [
+        "0\n1\n2\nScanare completa",
+        "1\n2\n3\nScanare completa",
+        "1\n2\nScanare completa",
+        "Scanare completa"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-321762",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "are_bilet = True\nare_buletin = False\nif are_bilet ___ are_buletin:\n    print(\"Urca in nava\")\nelse:\n    print(\"Ramai la poarta\")",
+      "output": "Ramai la poarta",
+      "options": ["and", "or", "AND", "&&"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-070571",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "are_bilet = False\nare_buletin = True\nif are_bilet ___ are_buletin:\n    print(\"Urca in nava\")\nelse:\n    print(\"Ramai la poarta\")",
+      "output": "Ramai la poarta",
+      "options": ["and", "or", "AND", "&&"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-02f754",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "este_vip = False\nare_invitatie = True\nif este_vip ___ are_invitatie:\n    print(\"Bun venit in club\")\nelse:\n    print(\"Acces refuzat\")",
+      "output": "Bun venit in club",
+      "options": ["or", "and", "OR", "||"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-12f245",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "este_weekend = True\neste_vacanta = False\nif este_weekend ___ este_vacanta:\n    print(\"Azi nu e scoala\")\nelse:\n    print(\"Zi de scoala\")",
+      "output": "Azi nu e scoala",
+      "options": ["or", "and", "OR", "||"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-ed4fa7",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "are_combustibil = True\nare_pilot = False\nif are_combustibil ___ are_pilot:\n    print(\"Decoleaza\")\nelse:\n    print(\"Ramai la sol\")",
+      "output": "Ramai la sol",
+      "options": ["and", "or", "AND", "&&"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-op-b01de6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "e_frig = False\nbate_vantul = True\nif e_frig ___ bate_vantul:\n    print(\"Ia o geaca\")\nelse:\n    print(\"Un tricou e de ajuns\")",
+      "output": "Ia o geaca",
+      "options": ["or", "and", "OR", "||"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-bool-cc902e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "este_online = ___\nif este_online:\n    print(\"Conectat\")\nelse:\n    print(\"Deconectat\")",
+      "output": "Conectat",
+      "options": ["True", "False", "true", "false"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-bool-55fe2c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "are_cheie = ___\nif are_cheie:\n    print(\"Usa deschisa\")\nelse:\n    print(\"Usa incuiata\")",
+      "output": "Usa incuiata",
+      "options": ["False", "True", "false", "\"False\""],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-bool-aa34c0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "joc_terminat = ___\nif joc_terminat:\n    print(\"Joc terminat\")\nelse:\n    print(\"Joaca mai departe\")",
+      "output": "Joaca mai departe",
+      "options": ["False", "True", "false", "\"False\""],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-bool-d6507f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scut_activ = ___\nif scut_activ:\n    print(\"Scut activ\")\nelse:\n    print(\"Scut oprit\")",
+      "output": "Scut activ",
+      "options": ["True", "False", "true", "false"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-780df0",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 12\n___",
+      "output": "True",
+      "options": [
+        "print(varsta < 18)",
+        "print(varsta >= 18)",
+        "print(\"varsta < 18\")",
+        "print(varsta)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-649715",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 75\n___",
+      "output": "True",
+      "options": ["print(scor >= 50)", "print(scor < 50)", "print(\"scor >= 50\")", "print(scor)"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-070a10",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = 90\n___",
+      "output": "False",
+      "options": [
+        "print(combustibil <= 40)",
+        "print(combustibil > 40)",
+        "print(\"combustibil <= 40\")",
+        "print(combustibil)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-942e09",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "viteza = 120\n___",
+      "output": "True",
+      "options": [
+        "print(viteza != 100)",
+        "print(viteza == 100)",
+        "print(\"viteza != 100\")",
+        "print(viteza)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-ab0cfe",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "vieti = 0\n___",
+      "output": "True",
+      "options": [
+        "print(vieti == 0)",
+        "print(vieti != 0)",
+        "print(\"vieti == 0\")",
+        "print(vieti)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-print-fe736a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "stele = 2\n___",
+      "output": "False",
+      "options": ["print(stele > 3)", "print(stele <= 3)", "print(\"stele > 3\")", "print(stele)"],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-if-717211",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 20\nare_permis = True\n___\n    print(\"Poti conduce\")\nelse:\n    print(\"Inca nu poti conduce\")",
+      "output": "Poti conduce",
+      "options": [
+        "if varsta >= 18 and are_permis:",
+        "if varsta < 18 and are_permis:",
+        "if varsta >= 18 and not are_permis:",
+        "if varsta >= 18 and are_permis"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-if-2d9831",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 20\nare_permis = False\n___\n    print(\"Poti conduce\")\nelse:\n    print(\"Inca nu poti conduce\")",
+      "output": "Inca nu poti conduce",
+      "options": [
+        "if varsta >= 18 and are_permis:",
+        "if varsta >= 18 or are_permis:",
+        "if varsta >= 18 and not are_permis:",
+        "if varsta >= 18 and are_permis"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-if-196677",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nivel = 3\nare_cheie = True\n___\n    print(\"Usa se deschide\")\nelse:\n    print(\"Usa ramane inchisa\")",
+      "output": "Usa ramane inchisa",
+      "options": [
+        "if nivel >= 5 and are_cheie:",
+        "if nivel >= 5 or are_cheie:",
+        "if nivel < 5 and are_cheie:",
+        "if nivel >= 5 and are_cheie"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-gap-if-84ea0c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = 60\nmotor_ok = True\n___\n    print(\"Gata de lansare\")\nelse:\n    print(\"Lansarea asteapta\")",
+      "output": "Gata de lansare",
+      "options": [
+        "if combustibil >= 50 and motor_ok:",
+        "if combustibil < 50 and motor_ok:",
+        "if combustibil >= 50 and not motor_ok:",
+        "if combustibil >= 50 and motor_ok"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-4c5822",
+      "text": "Care program afișează asta?",
+      "output": "Ramai la poarta",
+      "options": [
+        "are_bilet = True\nare_buletin = False\nif are_bilet and are_buletin:\n    print(\"Urca in nava\")\nelse:\n    print(\"Ramai la poarta\")",
+        "are_bilet = True\nare_buletin = False\nif are_bilet or are_buletin:\n    print(\"Urca in nava\")\nelse:\n    print(\"Ramai la poarta\")",
+        "are_bilet = True\nare_buletin = True\nif are_bilet and are_buletin:\n    print(\"Urca in nava\")\nelse:\n    print(\"Ramai la poarta\")",
+        "are_bilet = True\nare_buletin = False\nif are_bilet and are_buletin:\n    print(\"Ramai la poarta\")\nelse:\n    print(\"Urca in nava\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-f95482",
+      "text": "Care program afișează asta?",
+      "output": "Bun venit in club",
+      "options": [
+        "este_vip = False\nare_invitatie = True\nif este_vip or are_invitatie:\n    print(\"Bun venit in club\")\nelse:\n    print(\"Acces refuzat\")",
+        "este_vip = False\nare_invitatie = True\nif este_vip and are_invitatie:\n    print(\"Bun venit in club\")\nelse:\n    print(\"Acces refuzat\")",
+        "este_vip = False\nare_invitatie = False\nif este_vip or are_invitatie:\n    print(\"Bun venit in club\")\nelse:\n    print(\"Acces refuzat\")",
+        "este_vip = False\nare_invitatie = True\nif este_vip or are_invitatie:\n    print(\"Acces refuzat\")\nelse:\n    print(\"Bun venit in club\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-301811",
+      "text": "Care program afișează asta?",
+      "output": "Ramai la sol",
+      "options": [
+        "are_combustibil = False\nare_pilot = True\nif are_combustibil and are_pilot:\n    print(\"Decoleaza\")\nelse:\n    print(\"Ramai la sol\")",
+        "are_combustibil = False\nare_pilot = True\nif are_combustibil or are_pilot:\n    print(\"Decoleaza\")\nelse:\n    print(\"Ramai la sol\")",
+        "are_combustibil = True\nare_pilot = True\nif are_combustibil and are_pilot:\n    print(\"Decoleaza\")\nelse:\n    print(\"Ramai la sol\")",
+        "are_combustibil = False\nare_pilot = True\nif are_combustibil and are_pilot:\n    print(\"Ramai la sol\")\nelse:\n    print(\"Decoleaza\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-203f11",
+      "text": "Care program afișează asta?",
+      "output": "Azi nu e scoala",
+      "options": [
+        "este_weekend = False\neste_vacanta = True\nif este_weekend or este_vacanta:\n    print(\"Azi nu e scoala\")\nelse:\n    print(\"Zi de scoala\")",
+        "este_weekend = False\neste_vacanta = True\nif este_weekend and este_vacanta:\n    print(\"Azi nu e scoala\")\nelse:\n    print(\"Zi de scoala\")",
+        "este_weekend = False\neste_vacanta = False\nif este_weekend or este_vacanta:\n    print(\"Azi nu e scoala\")\nelse:\n    print(\"Zi de scoala\")",
+        "este_weekend = False\neste_vacanta = True\nif este_weekend or este_vacanta:\n    print(\"Zi de scoala\")\nelse:\n    print(\"Azi nu e scoala\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-3cec62",
+      "text": "Care program afișează asta?",
+      "output": "Poti edita",
+      "options": [
+        "este_admin = True\neste_proprietar = False\nif este_admin or este_proprietar:\n    print(\"Poti edita\")\nelse:\n    print(\"Doar citire\")",
+        "este_admin = True\neste_proprietar = False\nif este_admin and este_proprietar:\n    print(\"Poti edita\")\nelse:\n    print(\"Doar citire\")",
+        "este_admin = False\neste_proprietar = False\nif este_admin or este_proprietar:\n    print(\"Poti edita\")\nelse:\n    print(\"Doar citire\")",
+        "este_admin = True\neste_proprietar = False\nif este_admin or este_proprietar:\n    print(\"Doar citire\")\nelse:\n    print(\"Poti edita\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-op-4a61a7",
+      "text": "Care program afișează asta?",
+      "output": "Un tricou e de ajuns",
+      "options": [
+        "e_frig = True\nbate_vantul = False\nif e_frig and bate_vantul:\n    print(\"Ia o geaca\")\nelse:\n    print(\"Un tricou e de ajuns\")",
+        "e_frig = True\nbate_vantul = False\nif e_frig or bate_vantul:\n    print(\"Ia o geaca\")\nelse:\n    print(\"Un tricou e de ajuns\")",
+        "e_frig = True\nbate_vantul = True\nif e_frig and bate_vantul:\n    print(\"Ia o geaca\")\nelse:\n    print(\"Un tricou e de ajuns\")",
+        "e_frig = True\nbate_vantul = False\nif e_frig and bate_vantul:\n    print(\"Un tricou e de ajuns\")\nelse:\n    print(\"Ia o geaca\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-print-da7b7b",
+      "text": "Care program afișează asta?",
+      "output": "False",
+      "options": [
+        "varsta = 17\nprint(varsta >= 18)",
+        "varsta = 17\nprint(varsta < 18)",
+        "varsta = 17\nprint(\"varsta >= 18\")",
+        "varsta = 17\nprint(varsta)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-which-print-95739f",
+      "text": "Care program afișează asta?",
+      "output": "True",
+      "options": [
+        "stele = 3\nprint(stele == 3)",
+        "stele = 3\nprint(stele != 3)",
+        "stele = 3\nprint(\"stele == 3\")",
+        "stele = 3\nprint(stele)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-case-62583a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "este_online = true\nif este_online:\n    print(\"Conectat\")\nelse:\n    print(\"Deconectat\")",
+      "output": "Conectat",
+      "options": [
+        "este_online = true",
+        "print(\"Conectat\")",
+        "print(\"Deconectat\")",
+        "if este_online:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-case-f770c4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "are_cheie = false\nif are_cheie:\n    print(\"Usa deschisa\")\nelse:\n    print(\"Usa incuiata\")",
+      "output": "Usa incuiata",
+      "options": [
+        "are_cheie = false",
+        "print(\"Usa deschisa\")",
+        "print(\"Usa incuiata\")",
+        "if are_cheie:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-case-c980c4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "joc_terminat = true\nif joc_terminat:\n    print(\"Joc terminat\")\nelse:\n    print(\"Joaca mai departe\")",
+      "output": "Joc terminat",
+      "options": [
+        "joc_terminat = true",
+        "print(\"Joc terminat\")",
+        "print(\"Joaca mai departe\")",
+        "if joc_terminat:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-case-a8f58a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scut_activ = false\nif scut_activ:\n    print(\"Scut activ\")\nelse:\n    print(\"Scut oprit\")",
+      "output": "Scut oprit",
+      "options": [
+        "scut_activ = false",
+        "print(\"Scut activ\")",
+        "print(\"Scut oprit\")",
+        "if scut_activ:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-and-241202",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "varsta = 19\nare_permis = True\nif varsta >= 18 AND are_permis:\n    print(\"Poti conduce\")\nelse:\n    print(\"Inca nu poti conduce\")",
+      "output": "Poti conduce",
+      "options": [
+        "if varsta >= 18 AND are_permis:",
+        "else:",
+        "are_permis = True",
+        "print(\"Poti conduce\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-and-64a714",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nivel = 4\nare_cheie = True\nif nivel >= 5 AND are_cheie:\n    print(\"Usa se deschide\")\nelse:\n    print(\"Usa ramane inchisa\")",
+      "output": "Usa ramane inchisa",
+      "options": [
+        "if nivel >= 5 AND are_cheie:",
+        "else:",
+        "are_cheie = True",
+        "print(\"Usa se deschide\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-and-a5f084",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "combustibil = 70\nmotor_ok = False\nif combustibil >= 50 AND motor_ok:\n    print(\"Gata de lansare\")\nelse:\n    print(\"Lansarea asteapta\")",
+      "output": "Lansarea asteapta",
+      "options": [
+        "if combustibil >= 50 AND motor_ok:",
+        "else:",
+        "motor_ok = False",
+        "print(\"Gata de lansare\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-and-861d64",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "combustibil = 55\nmotor_ok = True\nif combustibil >= 50 AND motor_ok:\n    print(\"Gata de lansare\")\nelse:\n    print(\"Lansarea asteapta\")",
+      "output": "Gata de lansare",
+      "options": [
+        "if combustibil >= 50 AND motor_ok:",
+        "else:",
+        "motor_ok = True",
+        "print(\"Gata de lansare\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-equal-c755a6",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "este_online = True\nif este_online = True:\n    print(\"Conectat\")\nelse:\n    print(\"Deconectat\")",
+      "output": "Conectat",
+      "options": ["if este_online = True:", "else:", "este_online = True", "print(\"Conectat\")"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-equal-027630",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "are_cheie = False\nif are_cheie = True:\n    print(\"Usa deschisa\")\nelse:\n    print(\"Usa incuiata\")",
+      "output": "Usa incuiata",
+      "options": ["if are_cheie = True:", "else:", "are_cheie = False", "print(\"Usa deschisa\")"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-equal-5d4d6e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scut_activ = True\nif scut_activ = True:\n    print(\"Scut activ\")\nelse:\n    print(\"Scut oprit\")",
+      "output": "Scut activ",
+      "options": ["if scut_activ = True:", "else:", "scut_activ = True", "print(\"Scut activ\")"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-stop-4fd5d7",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "ruleaza = True\nnumar = 0\nwhile ruleaza:\n    print(numar)\n    numar = numar + 1\n    if numar == 2:\n        ruleaza = False\nprint(\"Gata\")",
+      "output": "0\n1\n2\nGata",
+      "options": ["if numar == 2:", "while ruleaza:", "numar = numar + 1", "ruleaza = False"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-stop-c8d3b7",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "activ = True\npas = 0\nwhile activ:\n    print(pas)\n    pas = pas + 1\n    if pas == 5:\n        activ = False\nprint(\"Oprit\")",
+      "output": "0\n1\n2\n3\nOprit",
+      "options": ["if pas == 5:", "while activ:", "pas = pas + 1", "activ = False"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-stop-362331",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "pornit = True\ncontor = 0\nwhile pornit:\n    print(contor)\n    contor = contor + 1\n    if contor == 1:\n        pornit = False\nprint(\"Terminat\")",
+      "output": "0\n1\nTerminat",
+      "options": ["if contor == 1:", "while pornit:", "contor = contor + 1", "pornit = False"],
+      "answer": 0
+    },
+    {
+      "id": "bo-bad-stop-4c7bfc",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scanez = True\nsector = 0\nwhile scanez:\n    print(sector)\n    sector = sector + 1\n    if sector == 4:\n        scanez = False\nprint(\"Scanare completa\")",
+      "output": "0\n1\n2\n3\n4\nScanare completa",
+      "options": ["if sector == 4:", "while scanez:", "sector = sector + 1", "scanez = False"],
+      "answer": 0
+    }
+  ]
+}

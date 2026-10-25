@@ -1,0 +1,585 @@
+{
+  "note": "Made by npm run make:quiz from the templates in while-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "wh-up-ca927c",
+      "text": "What does this print?",
+      "code": "i = 0\nwhile i < 4:\n    print(i)\n    i = i + 1",
+      "options": ["0\n1\n2\n3", "0\n1\n2\n3\n4", "1\n2\n3\n4", "4"],
+      "answer": 0
+    },
+    {
+      "id": "wh-up-6e8104",
+      "text": "What does this print?",
+      "code": "i = 2\nwhile i <= 5:\n    print(i)\n    i = i + 1",
+      "options": ["2\n3\n4\n5", "2\n3\n4", "3\n4\n5\n6", "6"],
+      "answer": 0
+    },
+    {
+      "id": "wh-up-e355a9",
+      "text": "What does this print?",
+      "code": "n = 1\nwhile n < 10:\n    print(n)\n    n = n + 3",
+      "options": ["1\n4\n7", "1\n4\n7\n10", "4\n7\n10", "10"],
+      "answer": 0
+    },
+    {
+      "id": "wh-up-39f72a",
+      "text": "What does this print?",
+      "code": "k = 0\nwhile k <= 8:\n    print(k)\n    k = k + 2",
+      "options": ["0\n2\n4\n6\n8", "0\n2\n4\n6", "2\n4\n6\n8\n10", "10"],
+      "answer": 0
+    },
+    {
+      "id": "wh-up-098a5e",
+      "text": "What does this print?",
+      "code": "x = 5\nwhile x < 8:\n    print(x)\n    x = x + 1",
+      "options": ["5\n6\n7", "5\n6\n7\n8", "6\n7\n8", "8"],
+      "answer": 0
+    },
+    {
+      "id": "wh-down-35785e",
+      "text": "What does this print?",
+      "code": "i = 3\nwhile i > 0:\n    print(i)\n    i = i - 1",
+      "options": ["3\n2\n1", "3\n2\n1\n0", "2\n1\n0", "0"],
+      "answer": 0
+    },
+    {
+      "id": "wh-down-8416aa",
+      "text": "What does this print?",
+      "code": "seconds = 5\nwhile seconds > 2:\n    print(seconds)\n    seconds = seconds - 1",
+      "options": ["5\n4\n3", "5\n4\n3\n2", "4\n3\n2", "2"],
+      "answer": 0
+    },
+    {
+      "id": "wh-down-a8c086",
+      "text": "What does this print?",
+      "code": "n = 10\nwhile n >= 2:\n    print(n)\n    n = n - 4",
+      "options": ["10\n6\n2", "10\n6", "6\n2\n-2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "wh-down-683338",
+      "text": "What does this print?",
+      "code": "lives = 3\nwhile lives >= 1:\n    print(lives)\n    lives = lives - 1",
+      "options": ["3\n2\n1", "3\n2", "2\n1\n0", "0"],
+      "answer": 0
+    },
+    {
+      "id": "wh-sum-4658c9",
+      "text": "What does this print?",
+      "code": "total = 0\ni = 1\nwhile i <= 3:\n    total = total + i\n    i = i + 1\nprint(total)",
+      "options": ["6", "3", "1\n3\n6", "7"],
+      "answer": 0
+    },
+    {
+      "id": "wh-sum-528917",
+      "text": "What does this print?",
+      "code": "points = 0\ni = 1\nwhile i <= 4:\n    points = points + i\n    i = i + 1\nprint(points)",
+      "options": ["10", "6", "1\n3\n6\n10", "4"],
+      "answer": 0
+    },
+    {
+      "id": "wh-sum-90cf50",
+      "text": "What does this print?",
+      "code": "energy = 0\ni = 1\nwhile i <= 5:\n    energy = energy + i\n    i = i + 1\nprint(energy)",
+      "options": ["15", "10", "1\n3\n6\n10\n15", "5"],
+      "answer": 0
+    },
+    {
+      "id": "wh-sum-99623e",
+      "text": "What does this print?",
+      "code": "fuel = 0\ni = 1\nwhile i <= 6:\n    fuel = fuel + i\n    i = i + 1\nprint(fuel)",
+      "options": ["21", "15", "1\n3\n6\n10\n15\n21", "6"],
+      "answer": 0
+    },
+    {
+      "id": "wh-sum-c4a517",
+      "text": "What does this print?",
+      "code": "total = 0\ni = 1\nwhile i <= 10:\n    total = total + i\n    i = i + 1\nprint(total)",
+      "options": ["55", "45", "1\n3\n6\n10\n15\n21\n28\n36\n45\n55", "10"],
+      "answer": 0
+    },
+    {
+      "id": "wh-after-b844be",
+      "text": "What does this print?",
+      "code": "x = 0\nwhile x < 10:\n    x = x + 3\nprint(x)",
+      "options": ["12", "3\n6\n9\n12", "10", "x"],
+      "answer": 0
+    },
+    {
+      "id": "wh-after-f2ee7f",
+      "text": "What does this print?",
+      "code": "n = 1\nwhile n < 10:\n    n = n + 4\nprint(n)",
+      "options": ["13", "5\n9\n13", "10", "n"],
+      "answer": 0
+    },
+    {
+      "id": "wh-after-c15264",
+      "text": "What does this print?",
+      "code": "height = 0\nwhile height < 7:\n    height = height + 2\nprint(height)",
+      "options": ["8", "2\n4\n6\n8", "7", "height"],
+      "answer": 0
+    },
+    {
+      "id": "wh-after-f8128b",
+      "text": "What does this print?",
+      "code": "level = 1\nwhile level < 6:\n    level = level + 2\nprint(level)",
+      "options": ["7", "3\n5\n7", "6", "level"],
+      "answer": 0
+    },
+    {
+      "id": "wh-after-8f5382",
+      "text": "What does this print?",
+      "code": "points = 2\nwhile points < 20:\n    points = points + 5\nprint(points)",
+      "options": ["22", "7\n12\n17\n22", "20", "points"],
+      "answer": 0
+    },
+    {
+      "id": "wh-then-2956f1",
+      "text": "What does this print?",
+      "code": "i = 2\nwhile i < 4:\n    print(i)\n    i = i + 1\nprint(\"Done\")",
+      "options": ["2\n3\nDone", "2\n3\n4\nDone", "0\n1\n2\n3\nDone", "2\nDone\n3\nDone"],
+      "answer": 0
+    },
+    {
+      "id": "wh-then-c439e8",
+      "text": "What does this print?",
+      "code": "n = 0\nwhile n < 3:\n    print(n)\n    n = n + 1\nprint(\"Liftoff\")",
+      "options": [
+        "0\n1\n2\nLiftoff",
+        "0\n1\n2\n3\nLiftoff",
+        "0\nLiftoff\n1\nLiftoff\n2\nLiftoff",
+        "Liftoff"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-then-915909",
+      "text": "What does this print?",
+      "code": "k = 5\nwhile k < 7:\n    print(k)\n    k = k + 1\nprint(\"Ready\")",
+      "options": [
+        "5\n6\nReady",
+        "5\n6\n7\nReady",
+        "0\n1\n2\n3\n4\n5\n6\nReady",
+        "5\nReady\n6\nReady"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-then-358c1d",
+      "text": "What does this print?",
+      "code": "seconds = 1\nwhile seconds < 3:\n    print(seconds)\n    seconds = seconds + 1\nprint(\"Game over\")",
+      "options": [
+        "1\n2\nGame over",
+        "1\n2\n3\nGame over",
+        "0\n1\n2\nGame over",
+        "1\nGame over\n2\nGame over"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-passes-d64d22",
+      "text": "What does this print?",
+      "code": "count = 0\nx = 0\nwhile x < 10:\n    x = x + 2\n    count = count + 1\nprint(count)",
+      "options": ["5", "6", "1\n2\n3\n4\n5", "10"],
+      "answer": 0
+    },
+    {
+      "id": "wh-passes-d3b262",
+      "text": "What does this print?",
+      "code": "laps = 0\ni = 0\nwhile i < 9:\n    i = i + 3\n    laps = laps + 1\nprint(laps)",
+      "options": ["3", "4", "1\n2\n3", "9"],
+      "answer": 0
+    },
+    {
+      "id": "wh-passes-164d86",
+      "text": "What does this print?",
+      "code": "count = 0\nn = 1\nwhile n < 6:\n    n = n + 2\n    count = count + 1\nprint(count)",
+      "options": ["3", "4", "1\n2\n3", "7"],
+      "answer": 0
+    },
+    {
+      "id": "wh-passes-b24227",
+      "text": "What does this print?",
+      "code": "steps = 0\nheight = 0\nwhile height < 10:\n    height = height + 4\n    steps = steps + 1\nprint(steps)",
+      "options": ["3", "4", "1\n2\n3", "12"],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-up-339899",
+      "text": "Which program shows this?",
+      "output": "0\n1\n2\n3",
+      "options": [
+        "i = 0\nwhile i < 4:\n    print(i)\n    i = i + 1",
+        "i = 0\nwhile i <= 4:\n    print(i)\n    i = i + 1",
+        "i = 1\nwhile i < 4:\n    print(i)\n    i = i + 1",
+        "i = 0\nwhile i < 4:\n    i = i + 1\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-up-5a8944",
+      "text": "Which program shows this?",
+      "output": "3\n4\n5",
+      "options": [
+        "n = 3\nwhile n < 6:\n    print(n)\n    n = n + 1",
+        "n = 3\nwhile n <= 6:\n    print(n)\n    n = n + 1",
+        "n = 4\nwhile n < 6:\n    print(n)\n    n = n + 1",
+        "n = 3\nwhile n < 6:\n    n = n + 1\n    print(n)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-up-889f6d",
+      "text": "Which program shows this?",
+      "output": "1\n2\n3\n4",
+      "options": [
+        "i = 1\nwhile i < 5:\n    print(i)\n    i = i + 1",
+        "i = 1\nwhile i <= 5:\n    print(i)\n    i = i + 1",
+        "i = 0\nwhile i < 5:\n    print(i)\n    i = i + 1",
+        "i = 1\nwhile i < 5:\n    i = i + 1\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-up-2d5d02",
+      "text": "Which program shows this?",
+      "output": "5\n6\n7\n8",
+      "options": [
+        "k = 5\nwhile k < 9:\n    print(k)\n    k = k + 1",
+        "k = 5\nwhile k <= 9:\n    print(k)\n    k = k + 1",
+        "k = 6\nwhile k < 9:\n    print(k)\n    k = k + 1",
+        "k = 5\nwhile k < 9:\n    k = k + 1\n    print(k)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-sum-d4714c",
+      "text": "Which program shows this?",
+      "output": "10",
+      "options": [
+        "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 1\nprint(total)",
+        "total = 0\ni = 1\nwhile i < 4:\n    total = total + i\n    i = i + 1\nprint(total)",
+        "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 1\n    print(total)",
+        "total = 0\ni = 1\nwhile i <= 4:\n    total = total + 1\n    i = i + 1\nprint(total)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-sum-e9300a",
+      "text": "Which program shows this?",
+      "output": "6",
+      "options": [
+        "energy = 0\ni = 1\nwhile i <= 3:\n    energy = energy + i\n    i = i + 1\nprint(energy)",
+        "energy = 0\ni = 1\nwhile i < 3:\n    energy = energy + i\n    i = i + 1\nprint(energy)",
+        "energy = 0\ni = 1\nwhile i <= 3:\n    energy = energy + i\n    i = i + 1\n    print(energy)",
+        "energy = 0\ni = 1\nwhile i <= 3:\n    energy = energy + 1\n    i = i + 1\nprint(energy)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-sum-7f3509",
+      "text": "Which program shows this?",
+      "output": "15",
+      "options": [
+        "points = 0\ni = 1\nwhile i <= 5:\n    points = points + i\n    i = i + 1\nprint(points)",
+        "points = 0\ni = 1\nwhile i < 5:\n    points = points + i\n    i = i + 1\nprint(points)",
+        "points = 0\ni = 1\nwhile i <= 5:\n    points = points + i\n    i = i + 1\n    print(points)",
+        "points = 0\ni = 1\nwhile i <= 5:\n    points = points + 1\n    i = i + 1\nprint(points)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-sum-8b9452",
+      "text": "Which program shows this?",
+      "output": "28",
+      "options": [
+        "fuel = 0\ni = 1\nwhile i <= 7:\n    fuel = fuel + i\n    i = i + 1\nprint(fuel)",
+        "fuel = 0\ni = 1\nwhile i < 7:\n    fuel = fuel + i\n    i = i + 1\nprint(fuel)",
+        "fuel = 0\ni = 1\nwhile i <= 7:\n    fuel = fuel + i\n    i = i + 1\n    print(fuel)",
+        "fuel = 0\ni = 1\nwhile i <= 7:\n    fuel = fuel + 1\n    i = i + 1\nprint(fuel)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-op-937128",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "i = 0\nwhile i ___ 3:\n    print(i)\n    i = i + 1",
+      "output": "0\n1\n2",
+      "options": ["<", "<=", ">", "=="],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-op-6dab8b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "i = 1\nwhile i ___ 3:\n    print(i)\n    i = i + 1",
+      "output": "1\n2\n3",
+      "options": ["<=", "<", ">=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-op-693693",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "n = 2\nwhile n ___ 5:\n    print(n)\n    n = n + 1",
+      "output": "2\n3\n4",
+      "options": ["<", "<=", ">", ">="],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-op-d8ed11",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "k = 1\nwhile k ___ 4:\n    print(k)\n    k = k + 1",
+      "output": "1\n2\n3\n4",
+      "options": ["<=", "<", ">", "=="],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-op-055391",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "x = 4\nwhile x ___ 6:\n    print(x)\n    x = x + 1",
+      "output": "4\n5",
+      "options": ["<", "<=", ">=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-stop-ba1303",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "i = 0\nwhile i < ___:\n    print(i)\n    i = i + 1",
+      "output": "0\n1\n2\n3\n4",
+      "options": ["5", "4", "6", "3"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-stop-89c8a5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "n = 1\nwhile n < ___:\n    print(n)\n    n = n + 1",
+      "output": "1\n2\n3",
+      "options": ["4", "3", "5", "2"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-stop-90d59c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "i = 3\nwhile i < ___:\n    print(i)\n    i = i + 1",
+      "output": "3\n4\n5\n6",
+      "options": ["7", "6", "8", "4"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-stop-c7a19d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "k = 10\nwhile k < ___:\n    print(k)\n    k = k + 1",
+      "output": "10\n11\n12",
+      "options": ["13", "12", "14", "3"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-step-e0981d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "i = 0\nwhile i < 7:\n    print(i)\n    i = i + ___",
+      "output": "0\n2\n4\n6",
+      "options": ["2", "1", "3", "4"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-step-8d6187",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "n = 1\nwhile n < 11:\n    print(n)\n    n = n + ___",
+      "output": "1\n4\n7\n10",
+      "options": ["3", "2", "4", "1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-step-ecb3a2",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "x = 0\nwhile x < 20:\n    print(x)\n    x = x + ___",
+      "output": "0\n5\n10\n15",
+      "options": ["5", "4", "10", "1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-head-9d602d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "total = 0\ni = 1\n___\n    total = total + i\n    i = i + 1\nprint(total)",
+      "output": "10",
+      "options": ["while i <= 4:", "while i < 4:", "while i > 4:", "while i <= 4"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-head-69b268",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "points = 0\ni = 1\n___\n    points = points + i\n    i = i + 1\nprint(points)",
+      "output": "6",
+      "options": ["while i <= 3:", "while i < 3:", "while i > 3:", "while i <= 3"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-head-bccf28",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "energy = 0\ni = 1\n___\n    energy = energy + i\n    i = i + 1\nprint(energy)",
+      "output": "21",
+      "options": ["while i <= 6:", "while i < 6:", "while i > 6:", "while i <= 6"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-head-ab227c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fuel = 0\ni = 1\n___\n    fuel = fuel + i\n    i = i + 1\nprint(fuel)",
+      "output": "15",
+      "options": ["while i <= 5:", "while i < 5:", "while i > 5:", "while i <= 5"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-start-472318",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "total = 0\n___\nwhile i <= 4:\n    total = total + i\n    i = i + 1\nprint(total)",
+      "output": "10",
+      "options": ["i = 1", "i = 2", "i = 4", "total = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-start-b55f31",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "points = 0\n___\nwhile i <= 5:\n    points = points + i\n    i = i + 1\nprint(points)",
+      "output": "15",
+      "options": ["i = 1", "i = 3", "i = 5", "points = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-start-eeb5bd",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "energy = 0\n___\nwhile i <= 3:\n    energy = energy + i\n    i = i + 1\nprint(energy)",
+      "output": "6",
+      "options": ["i = 1", "i = 2", "i = 3", "energy = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-start-fe9b33",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "fuel = 0\n___\nwhile i <= 6:\n    fuel = fuel + i\n    i = i + 1\nprint(fuel)",
+      "output": "21",
+      "options": ["i = 1", "i = 2", "i = 6", "fuel = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-print-fc61ef",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "x = 0\nwhile x < 10:\n    x = x + 4\n___",
+      "output": "12",
+      "options": ["print(x)", "print(\"x\")", "print(10)", "print(4)"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-print-6094ec",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "n = 1\nwhile n < 8:\n    n = n + 3\n___",
+      "output": "10",
+      "options": ["print(n)", "print(\"n\")", "print(8)", "print(3)"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-print-8bff1c",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "level = 0\nwhile level < 5:\n    level = level + 2\n___",
+      "output": "6",
+      "options": ["print(level)", "print(\"level\")", "print(5)", "print(2)"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-colon-eba3eb",
+      "text": "Which line stops this program from printing this?",
+      "code": "i = 0\nwhile i < 3\n    print(i)\n    i = i + 1",
+      "output": "0\n1\n2",
+      "options": ["while i < 3", "i = 0", "print(i)", "i = i + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-colon-fb830d",
+      "text": "Which line stops this program from printing this?",
+      "code": "n = 2\nwhile n < 5\n    print(n)\n    n = n + 1",
+      "output": "2\n3\n4",
+      "options": ["while n < 5", "n = 2", "print(n)", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-colon-6d30ba",
+      "text": "Which line stops this program from printing this?",
+      "code": "k = 1\nwhile k < 3\n    print(k)\n    k = k + 1",
+      "output": "1\n2",
+      "options": ["while k < 3", "k = 1", "print(k)", "k = k + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-eba3eb",
+      "text": "Which line stops this program from printing this?",
+      "code": "i = 0\nwhile i < 3:\n    print(i)\n    i = i + 1",
+      "output": "0\n1\n2\n3",
+      "options": ["while i < 3:", "i = 0", "print(i)", "i = i + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-b23139",
+      "text": "Which line stops this program from printing this?",
+      "code": "n = 1\nwhile n < 4:\n    print(n)\n    n = n + 1",
+      "output": "1\n2\n3\n4",
+      "options": ["while n < 4:", "n = 1", "print(n)", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-472fd4",
+      "text": "Which line stops this program from printing this?",
+      "code": "x = 5\nwhile x < 7:\n    print(x)\n    x = x + 1",
+      "output": "5\n6\n7",
+      "options": ["while x < 7:", "x = 5", "print(x)", "x = x + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-997a37",
+      "text": "Which line stops this program from printing this?",
+      "code": "k = 2\nwhile k < 4:\n    print(k)\n    k = k + 1",
+      "output": "2\n3\n4",
+      "options": ["while k < 4:", "k = 2", "print(k)", "k = k + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-b69833",
+      "text": "Which line stops this program from printing this?",
+      "code": "seconds = 1\nwhile seconds < 3:\n    print(seconds)\n    seconds = seconds + 1",
+      "output": "1\n2\n3",
+      "options": ["while seconds < 3:", "seconds = 1", "print(seconds)", "seconds = seconds + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-47027e",
+      "text": "Which line stops this program from printing this?",
+      "code": "level = 3\nwhile level < 6:\n    print(level)\n    level = level + 1",
+      "output": "3\n4\n5\n6",
+      "options": ["while level < 6:", "level = 3", "print(level)", "level = level + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-step-22f3ae",
+      "text": "Which line stops this program from printing this?",
+      "code": "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 2\nprint(total)",
+      "output": "10",
+      "options": ["i = i + 2", "total = total + i", "print(total)", "i = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-step-6b3e0a",
+      "text": "Which line stops this program from printing this?",
+      "code": "points = 0\ni = 1\nwhile i <= 5:\n    points = points + i\n    i = i + 2\nprint(points)",
+      "output": "15",
+      "options": ["i = i + 2", "points = points + i", "print(points)", "i = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-step-0da281",
+      "text": "Which line stops this program from printing this?",
+      "code": "energy = 0\ni = 1\nwhile i <= 6:\n    energy = energy + i\n    i = i + 2\nprint(energy)",
+      "output": "21",
+      "options": ["i = i + 2", "energy = energy + i", "print(energy)", "i = 1"],
+      "answer": 0
+    }
+  ]
+}

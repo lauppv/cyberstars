@@ -1,0 +1,585 @@
+{
+  "note": "Made by npm run make:quiz from the templates in while-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "wh-up-ca927c",
+      "text": "Ce afișează?",
+      "code": "i = 0\nwhile i < 4:\n    print(i)\n    i = i + 1",
+      "options": ["0\n1\n2\n3", "0\n1\n2\n3\n4", "1\n2\n3\n4", "4"],
+      "answer": 0
+    },
+    {
+      "id": "wh-up-6e8104",
+      "text": "Ce afișează?",
+      "code": "i = 2\nwhile i <= 5:\n    print(i)\n    i = i + 1",
+      "options": ["2\n3\n4\n5", "2\n3\n4", "3\n4\n5\n6", "6"],
+      "answer": 0
+    },
+    {
+      "id": "wh-up-e355a9",
+      "text": "Ce afișează?",
+      "code": "n = 1\nwhile n < 10:\n    print(n)\n    n = n + 3",
+      "options": ["1\n4\n7", "1\n4\n7\n10", "4\n7\n10", "10"],
+      "answer": 0
+    },
+    {
+      "id": "wh-up-39f72a",
+      "text": "Ce afișează?",
+      "code": "k = 0\nwhile k <= 8:\n    print(k)\n    k = k + 2",
+      "options": ["0\n2\n4\n6\n8", "0\n2\n4\n6", "2\n4\n6\n8\n10", "10"],
+      "answer": 0
+    },
+    {
+      "id": "wh-up-098a5e",
+      "text": "Ce afișează?",
+      "code": "x = 5\nwhile x < 8:\n    print(x)\n    x = x + 1",
+      "options": ["5\n6\n7", "5\n6\n7\n8", "6\n7\n8", "8"],
+      "answer": 0
+    },
+    {
+      "id": "wh-down-35785e",
+      "text": "Ce afișează?",
+      "code": "i = 3\nwhile i > 0:\n    print(i)\n    i = i - 1",
+      "options": ["3\n2\n1", "3\n2\n1\n0", "2\n1\n0", "0"],
+      "answer": 0
+    },
+    {
+      "id": "wh-down-8416aa",
+      "text": "Ce afișează?",
+      "code": "secunde = 5\nwhile secunde > 2:\n    print(secunde)\n    secunde = secunde - 1",
+      "options": ["5\n4\n3", "5\n4\n3\n2", "4\n3\n2", "2"],
+      "answer": 0
+    },
+    {
+      "id": "wh-down-a8c086",
+      "text": "Ce afișează?",
+      "code": "n = 10\nwhile n >= 2:\n    print(n)\n    n = n - 4",
+      "options": ["10\n6\n2", "10\n6", "6\n2\n-2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "wh-down-683338",
+      "text": "Ce afișează?",
+      "code": "vieti = 3\nwhile vieti >= 1:\n    print(vieti)\n    vieti = vieti - 1",
+      "options": ["3\n2\n1", "3\n2", "2\n1\n0", "0"],
+      "answer": 0
+    },
+    {
+      "id": "wh-sum-4658c9",
+      "text": "Ce afișează?",
+      "code": "total = 0\ni = 1\nwhile i <= 3:\n    total = total + i\n    i = i + 1\nprint(total)",
+      "options": ["6", "3", "1\n3\n6", "7"],
+      "answer": 0
+    },
+    {
+      "id": "wh-sum-528917",
+      "text": "Ce afișează?",
+      "code": "puncte = 0\ni = 1\nwhile i <= 4:\n    puncte = puncte + i\n    i = i + 1\nprint(puncte)",
+      "options": ["10", "6", "1\n3\n6\n10", "4"],
+      "answer": 0
+    },
+    {
+      "id": "wh-sum-90cf50",
+      "text": "Ce afișează?",
+      "code": "energie = 0\ni = 1\nwhile i <= 5:\n    energie = energie + i\n    i = i + 1\nprint(energie)",
+      "options": ["15", "10", "1\n3\n6\n10\n15", "5"],
+      "answer": 0
+    },
+    {
+      "id": "wh-sum-99623e",
+      "text": "Ce afișează?",
+      "code": "combustibil = 0\ni = 1\nwhile i <= 6:\n    combustibil = combustibil + i\n    i = i + 1\nprint(combustibil)",
+      "options": ["21", "15", "1\n3\n6\n10\n15\n21", "6"],
+      "answer": 0
+    },
+    {
+      "id": "wh-sum-c4a517",
+      "text": "Ce afișează?",
+      "code": "total = 0\ni = 1\nwhile i <= 10:\n    total = total + i\n    i = i + 1\nprint(total)",
+      "options": ["55", "45", "1\n3\n6\n10\n15\n21\n28\n36\n45\n55", "10"],
+      "answer": 0
+    },
+    {
+      "id": "wh-after-b844be",
+      "text": "Ce afișează?",
+      "code": "x = 0\nwhile x < 10:\n    x = x + 3\nprint(x)",
+      "options": ["12", "3\n6\n9\n12", "10", "x"],
+      "answer": 0
+    },
+    {
+      "id": "wh-after-f2ee7f",
+      "text": "Ce afișează?",
+      "code": "n = 1\nwhile n < 10:\n    n = n + 4\nprint(n)",
+      "options": ["13", "5\n9\n13", "10", "n"],
+      "answer": 0
+    },
+    {
+      "id": "wh-after-c15264",
+      "text": "Ce afișează?",
+      "code": "inaltime = 0\nwhile inaltime < 7:\n    inaltime = inaltime + 2\nprint(inaltime)",
+      "options": ["8", "2\n4\n6\n8", "7", "inaltime"],
+      "answer": 0
+    },
+    {
+      "id": "wh-after-f8128b",
+      "text": "Ce afișează?",
+      "code": "nivel = 1\nwhile nivel < 6:\n    nivel = nivel + 2\nprint(nivel)",
+      "options": ["7", "3\n5\n7", "6", "nivel"],
+      "answer": 0
+    },
+    {
+      "id": "wh-after-8f5382",
+      "text": "Ce afișează?",
+      "code": "puncte = 2\nwhile puncte < 20:\n    puncte = puncte + 5\nprint(puncte)",
+      "options": ["22", "7\n12\n17\n22", "20", "puncte"],
+      "answer": 0
+    },
+    {
+      "id": "wh-then-2956f1",
+      "text": "Ce afișează?",
+      "code": "i = 2\nwhile i < 4:\n    print(i)\n    i = i + 1\nprint(\"Gata\")",
+      "options": ["2\n3\nGata", "2\n3\n4\nGata", "0\n1\n2\n3\nGata", "2\nGata\n3\nGata"],
+      "answer": 0
+    },
+    {
+      "id": "wh-then-c439e8",
+      "text": "Ce afișează?",
+      "code": "n = 0\nwhile n < 3:\n    print(n)\n    n = n + 1\nprint(\"Decolare\")",
+      "options": [
+        "0\n1\n2\nDecolare",
+        "0\n1\n2\n3\nDecolare",
+        "0\nDecolare\n1\nDecolare\n2\nDecolare",
+        "Decolare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-then-915909",
+      "text": "Ce afișează?",
+      "code": "k = 5\nwhile k < 7:\n    print(k)\n    k = k + 1\nprint(\"Pregatit\")",
+      "options": [
+        "5\n6\nPregatit",
+        "5\n6\n7\nPregatit",
+        "0\n1\n2\n3\n4\n5\n6\nPregatit",
+        "5\nPregatit\n6\nPregatit"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-then-358c1d",
+      "text": "Ce afișează?",
+      "code": "secunde = 1\nwhile secunde < 3:\n    print(secunde)\n    secunde = secunde + 1\nprint(\"Joc terminat\")",
+      "options": [
+        "1\n2\nJoc terminat",
+        "1\n2\n3\nJoc terminat",
+        "0\n1\n2\nJoc terminat",
+        "1\nJoc terminat\n2\nJoc terminat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-passes-d64d22",
+      "text": "Ce afișează?",
+      "code": "contor = 0\nx = 0\nwhile x < 10:\n    x = x + 2\n    contor = contor + 1\nprint(contor)",
+      "options": ["5", "6", "1\n2\n3\n4\n5", "10"],
+      "answer": 0
+    },
+    {
+      "id": "wh-passes-d3b262",
+      "text": "Ce afișează?",
+      "code": "ture = 0\ni = 0\nwhile i < 9:\n    i = i + 3\n    ture = ture + 1\nprint(ture)",
+      "options": ["3", "4", "1\n2\n3", "9"],
+      "answer": 0
+    },
+    {
+      "id": "wh-passes-164d86",
+      "text": "Ce afișează?",
+      "code": "contor = 0\nn = 1\nwhile n < 6:\n    n = n + 2\n    contor = contor + 1\nprint(contor)",
+      "options": ["3", "4", "1\n2\n3", "7"],
+      "answer": 0
+    },
+    {
+      "id": "wh-passes-b24227",
+      "text": "Ce afișează?",
+      "code": "pasi = 0\ninaltime = 0\nwhile inaltime < 10:\n    inaltime = inaltime + 4\n    pasi = pasi + 1\nprint(pasi)",
+      "options": ["3", "4", "1\n2\n3", "12"],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-up-339899",
+      "text": "Care program afișează asta?",
+      "output": "0\n1\n2\n3",
+      "options": [
+        "i = 0\nwhile i < 4:\n    print(i)\n    i = i + 1",
+        "i = 0\nwhile i <= 4:\n    print(i)\n    i = i + 1",
+        "i = 1\nwhile i < 4:\n    print(i)\n    i = i + 1",
+        "i = 0\nwhile i < 4:\n    i = i + 1\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-up-5a8944",
+      "text": "Care program afișează asta?",
+      "output": "3\n4\n5",
+      "options": [
+        "n = 3\nwhile n < 6:\n    print(n)\n    n = n + 1",
+        "n = 3\nwhile n <= 6:\n    print(n)\n    n = n + 1",
+        "n = 4\nwhile n < 6:\n    print(n)\n    n = n + 1",
+        "n = 3\nwhile n < 6:\n    n = n + 1\n    print(n)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-up-889f6d",
+      "text": "Care program afișează asta?",
+      "output": "1\n2\n3\n4",
+      "options": [
+        "i = 1\nwhile i < 5:\n    print(i)\n    i = i + 1",
+        "i = 1\nwhile i <= 5:\n    print(i)\n    i = i + 1",
+        "i = 0\nwhile i < 5:\n    print(i)\n    i = i + 1",
+        "i = 1\nwhile i < 5:\n    i = i + 1\n    print(i)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-up-2d5d02",
+      "text": "Care program afișează asta?",
+      "output": "5\n6\n7\n8",
+      "options": [
+        "k = 5\nwhile k < 9:\n    print(k)\n    k = k + 1",
+        "k = 5\nwhile k <= 9:\n    print(k)\n    k = k + 1",
+        "k = 6\nwhile k < 9:\n    print(k)\n    k = k + 1",
+        "k = 5\nwhile k < 9:\n    k = k + 1\n    print(k)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-sum-d4714c",
+      "text": "Care program afișează asta?",
+      "output": "10",
+      "options": [
+        "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 1\nprint(total)",
+        "total = 0\ni = 1\nwhile i < 4:\n    total = total + i\n    i = i + 1\nprint(total)",
+        "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 1\n    print(total)",
+        "total = 0\ni = 1\nwhile i <= 4:\n    total = total + 1\n    i = i + 1\nprint(total)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-sum-e9300a",
+      "text": "Care program afișează asta?",
+      "output": "6",
+      "options": [
+        "energie = 0\ni = 1\nwhile i <= 3:\n    energie = energie + i\n    i = i + 1\nprint(energie)",
+        "energie = 0\ni = 1\nwhile i < 3:\n    energie = energie + i\n    i = i + 1\nprint(energie)",
+        "energie = 0\ni = 1\nwhile i <= 3:\n    energie = energie + i\n    i = i + 1\n    print(energie)",
+        "energie = 0\ni = 1\nwhile i <= 3:\n    energie = energie + 1\n    i = i + 1\nprint(energie)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-sum-7f3509",
+      "text": "Care program afișează asta?",
+      "output": "15",
+      "options": [
+        "puncte = 0\ni = 1\nwhile i <= 5:\n    puncte = puncte + i\n    i = i + 1\nprint(puncte)",
+        "puncte = 0\ni = 1\nwhile i < 5:\n    puncte = puncte + i\n    i = i + 1\nprint(puncte)",
+        "puncte = 0\ni = 1\nwhile i <= 5:\n    puncte = puncte + i\n    i = i + 1\n    print(puncte)",
+        "puncte = 0\ni = 1\nwhile i <= 5:\n    puncte = puncte + 1\n    i = i + 1\nprint(puncte)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-which-sum-8b9452",
+      "text": "Care program afișează asta?",
+      "output": "28",
+      "options": [
+        "combustibil = 0\ni = 1\nwhile i <= 7:\n    combustibil = combustibil + i\n    i = i + 1\nprint(combustibil)",
+        "combustibil = 0\ni = 1\nwhile i < 7:\n    combustibil = combustibil + i\n    i = i + 1\nprint(combustibil)",
+        "combustibil = 0\ni = 1\nwhile i <= 7:\n    combustibil = combustibil + i\n    i = i + 1\n    print(combustibil)",
+        "combustibil = 0\ni = 1\nwhile i <= 7:\n    combustibil = combustibil + 1\n    i = i + 1\nprint(combustibil)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-op-937128",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "i = 0\nwhile i ___ 3:\n    print(i)\n    i = i + 1",
+      "output": "0\n1\n2",
+      "options": ["<", "<=", ">", "=="],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-op-6dab8b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "i = 1\nwhile i ___ 3:\n    print(i)\n    i = i + 1",
+      "output": "1\n2\n3",
+      "options": ["<=", "<", ">=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-op-693693",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "n = 2\nwhile n ___ 5:\n    print(n)\n    n = n + 1",
+      "output": "2\n3\n4",
+      "options": ["<", "<=", ">", ">="],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-op-d8ed11",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "k = 1\nwhile k ___ 4:\n    print(k)\n    k = k + 1",
+      "output": "1\n2\n3\n4",
+      "options": ["<=", "<", ">", "=="],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-op-055391",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "x = 4\nwhile x ___ 6:\n    print(x)\n    x = x + 1",
+      "output": "4\n5",
+      "options": ["<", "<=", ">=", "=="],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-stop-ba1303",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "i = 0\nwhile i < ___:\n    print(i)\n    i = i + 1",
+      "output": "0\n1\n2\n3\n4",
+      "options": ["5", "4", "6", "3"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-stop-89c8a5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "n = 1\nwhile n < ___:\n    print(n)\n    n = n + 1",
+      "output": "1\n2\n3",
+      "options": ["4", "3", "5", "2"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-stop-90d59c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "i = 3\nwhile i < ___:\n    print(i)\n    i = i + 1",
+      "output": "3\n4\n5\n6",
+      "options": ["7", "6", "8", "4"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-stop-c7a19d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "k = 10\nwhile k < ___:\n    print(k)\n    k = k + 1",
+      "output": "10\n11\n12",
+      "options": ["13", "12", "14", "3"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-step-e0981d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "i = 0\nwhile i < 7:\n    print(i)\n    i = i + ___",
+      "output": "0\n2\n4\n6",
+      "options": ["2", "1", "3", "4"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-step-8d6187",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "n = 1\nwhile n < 11:\n    print(n)\n    n = n + ___",
+      "output": "1\n4\n7\n10",
+      "options": ["3", "2", "4", "1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-step-ecb3a2",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "x = 0\nwhile x < 20:\n    print(x)\n    x = x + ___",
+      "output": "0\n5\n10\n15",
+      "options": ["5", "4", "10", "1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-head-9d602d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "total = 0\ni = 1\n___\n    total = total + i\n    i = i + 1\nprint(total)",
+      "output": "10",
+      "options": ["while i <= 4:", "while i < 4:", "while i > 4:", "while i <= 4"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-head-69b268",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "puncte = 0\ni = 1\n___\n    puncte = puncte + i\n    i = i + 1\nprint(puncte)",
+      "output": "6",
+      "options": ["while i <= 3:", "while i < 3:", "while i > 3:", "while i <= 3"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-head-bccf28",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "energie = 0\ni = 1\n___\n    energie = energie + i\n    i = i + 1\nprint(energie)",
+      "output": "21",
+      "options": ["while i <= 6:", "while i < 6:", "while i > 6:", "while i <= 6"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-head-ab227c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = 0\ni = 1\n___\n    combustibil = combustibil + i\n    i = i + 1\nprint(combustibil)",
+      "output": "15",
+      "options": ["while i <= 5:", "while i < 5:", "while i > 5:", "while i <= 5"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-start-472318",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "total = 0\n___\nwhile i <= 4:\n    total = total + i\n    i = i + 1\nprint(total)",
+      "output": "10",
+      "options": ["i = 1", "i = 2", "i = 4", "total = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-start-b55f31",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "puncte = 0\n___\nwhile i <= 5:\n    puncte = puncte + i\n    i = i + 1\nprint(puncte)",
+      "output": "15",
+      "options": ["i = 1", "i = 3", "i = 5", "puncte = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-start-eeb5bd",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "energie = 0\n___\nwhile i <= 3:\n    energie = energie + i\n    i = i + 1\nprint(energie)",
+      "output": "6",
+      "options": ["i = 1", "i = 2", "i = 3", "energie = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-start-fe9b33",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = 0\n___\nwhile i <= 6:\n    combustibil = combustibil + i\n    i = i + 1\nprint(combustibil)",
+      "output": "21",
+      "options": ["i = 1", "i = 2", "i = 6", "combustibil = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-print-fc61ef",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "x = 0\nwhile x < 10:\n    x = x + 4\n___",
+      "output": "12",
+      "options": ["print(x)", "print(\"x\")", "print(10)", "print(4)"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-print-6094ec",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "n = 1\nwhile n < 8:\n    n = n + 3\n___",
+      "output": "10",
+      "options": ["print(n)", "print(\"n\")", "print(8)", "print(3)"],
+      "answer": 0
+    },
+    {
+      "id": "wh-gap-print-8bff1c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nivel = 0\nwhile nivel < 5:\n    nivel = nivel + 2\n___",
+      "output": "6",
+      "options": ["print(nivel)", "print(\"nivel\")", "print(5)", "print(2)"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-colon-eba3eb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "i = 0\nwhile i < 3\n    print(i)\n    i = i + 1",
+      "output": "0\n1\n2",
+      "options": ["while i < 3", "i = 0", "print(i)", "i = i + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-colon-fb830d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "n = 2\nwhile n < 5\n    print(n)\n    n = n + 1",
+      "output": "2\n3\n4",
+      "options": ["while n < 5", "n = 2", "print(n)", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-colon-6d30ba",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "k = 1\nwhile k < 3\n    print(k)\n    k = k + 1",
+      "output": "1\n2",
+      "options": ["while k < 3", "k = 1", "print(k)", "k = k + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-eba3eb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "i = 0\nwhile i < 3:\n    print(i)\n    i = i + 1",
+      "output": "0\n1\n2\n3",
+      "options": ["while i < 3:", "i = 0", "print(i)", "i = i + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-b23139",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "n = 1\nwhile n < 4:\n    print(n)\n    n = n + 1",
+      "output": "1\n2\n3\n4",
+      "options": ["while n < 4:", "n = 1", "print(n)", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-472fd4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "x = 5\nwhile x < 7:\n    print(x)\n    x = x + 1",
+      "output": "5\n6\n7",
+      "options": ["while x < 7:", "x = 5", "print(x)", "x = x + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-997a37",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "k = 2\nwhile k < 4:\n    print(k)\n    k = k + 1",
+      "output": "2\n3\n4",
+      "options": ["while k < 4:", "k = 2", "print(k)", "k = k + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-b69833",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "secunde = 1\nwhile secunde < 3:\n    print(secunde)\n    secunde = secunde + 1",
+      "output": "1\n2\n3",
+      "options": ["while secunde < 3:", "secunde = 1", "print(secunde)", "secunde = secunde + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-op-47027e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nivel = 3\nwhile nivel < 6:\n    print(nivel)\n    nivel = nivel + 1",
+      "output": "3\n4\n5\n6",
+      "options": ["while nivel < 6:", "nivel = 3", "print(nivel)", "nivel = nivel + 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-step-22f3ae",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "total = 0\ni = 1\nwhile i <= 4:\n    total = total + i\n    i = i + 2\nprint(total)",
+      "output": "10",
+      "options": ["i = i + 2", "total = total + i", "print(total)", "i = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-step-6b3e0a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "puncte = 0\ni = 1\nwhile i <= 5:\n    puncte = puncte + i\n    i = i + 2\nprint(puncte)",
+      "output": "15",
+      "options": ["i = i + 2", "puncte = puncte + i", "print(puncte)", "i = 1"],
+      "answer": 0
+    },
+    {
+      "id": "wh-bad-step-0da281",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "energie = 0\ni = 1\nwhile i <= 6:\n    energie = energie + i\n    i = i + 2\nprint(energie)",
+      "output": "21",
+      "options": ["i = i + 2", "energie = energie + i", "print(energie)", "i = 1"],
+      "answer": 0
+    }
+  ]
+}
