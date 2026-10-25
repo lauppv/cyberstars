@@ -1,0 +1,803 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Când sunt două cuvinte anagrame?",
+      "options": [
+        "Când se citesc la fel de la coadă la cap",
+        "Când au aceeași lungime",
+        "Când au exact aceleași litere, poate în altă ordine",
+        "Când încep cu aceeași literă"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q2",
+      "text": "De ce ne spune sortarea literelor dacă două cuvinte sunt anagrame?",
+      "options": [
+        "Cuvintele cu aceleași litere dau aceleași litere sortate",
+        "Sortarea scoate literele care diferă",
+        "Sortarea pune cuvintele în ordine alfabetică într-o listă",
+        "Sortarea numără vocalele"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "Ce afișează?",
+      "code": "print(sorted(\"roma\"))",
+      "options": ["amor", "roma", "['r', 'o', 'm', 'a']", "['a', 'm', 'o', 'r']"],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"roma\", \"amor\"))\nprint(este_anagrama(\"salut\", \"lume\"))\nprint(este_anagrama(\"Mare\", \"Rame\"))",
+      "options": [
+        "True\nFalse\nFalse",
+        "True\nFalse\nTrue",
+        "False\nFalse\nTrue",
+        "True\nTrue\nTrue"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "De ce apelează `este_anagrama` `.lower()` pe ambele cuvinte?",
+      "options": [
+        "Ca să sorteze literele",
+        "Ca să scoată spațiile",
+        "Ca literele mari și mici să conteze la fel",
+        "Pentru că `sorted()` merge doar pe litere mici"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "print(sorted(\"Mare\") == sorted(\"Rame\"))",
+      "options": ["True", "False", "['M', 'a', 'e', 'r']", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "În metoda cu frecvențe, când sunt două cuvinte anagrame?",
+      "options": [
+        "Când ambele dicționare au același număr de chei",
+        "Când ambele cuvinte au aceeași primă literă",
+        "Când un dicționar e mai mare decât celălalt",
+        "Când fiecare literă apare de același număr de ori în ambele"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "frecventa = {}\nfor caracter in \"capac\":\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "options": [
+        "{'c': 2, 'a': 2, 'p': 1}",
+        "{'c': 1, 'a': 1, 'p': 1}",
+        "{'a': 2, 'c': 2, 'p': 1}",
+        "5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q9",
+      "text": "De ce verifică întâi varianta cu frecvențe `len(cuvant1) != len(cuvant2)`?",
+      "options": [
+        "Dicționarele nu pot ține cuvinte lungi",
+        "Ca să facă cuvintele de aceeași lungime",
+        "Cuvintele de lungimi diferite nu pot fi anagrame, deci nu e nimic de numărat",
+        "Pentru că `==` nu merge pe dicționare"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "frecventa1 = {\"a\": 1, \"b\": 2}\nfrecventa2 = {\"b\": 2, \"a\": 1}\nprint(frecventa1 == frecventa2)",
+      "options": ["False", "True", "{'a': 1, 'b': 2}", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Când sunt egale două dicționare cu `==`?",
+      "options": [
+        "Doar când cheile au fost adăugate în aceeași ordine",
+        "Când au același număr de chei",
+        "Niciodată, dicționarele nu se pot compara",
+        "Când au aceleași chei cu aceleași valori, în orice ordine"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "Ce metodă face mai puțini pași pe cuvinte foarte lungi?",
+      "options": [
+        "Numărarea literelor într-un dicționar de frecvențe",
+        "Sortarea literelor",
+        "Amândouă fac mereu exact aceiași pași",
+        "Inversarea ambelor cuvinte"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "print(\"\".join(sorted(\"roma\")))",
+      "options": ["['a', 'm', 'o', 'r']", "roma", "amor", "a m o r"],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"star\", \"stars\"))",
+      "options": ["True", "False", "Lungimi diferite", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Ce dă înapoi `sorted(\"orbita\")`?",
+      "options": [
+        "Cuvântul cu literele sortate, ca text",
+        "Cuvântul inversat",
+        "Numărul de litere",
+        "O listă cu literele în ordine alfabetică"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "print(sorted(\"sare\") == sorted(\"rase\"))",
+      "options": ["True", "False", "['a', 'e', 'r', 's']", "None"],
+      "answer": 0
+    },
+    {
+      "id": "q17",
+      "text": "Sunt „mare” și „rame” anagrame?",
+      "options": [
+        "Nu, încep cu litere diferite",
+        "Nu, unul dintre ele e palindrom",
+        "Da, au aceleași patru litere",
+        "Doar dacă le facem întâi cu litere mici"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "frecventa = {}\nfor caracter in \"ab\":\n    frecventa[caracter] += 1\nprint(frecventa)",
+      "options": [
+        "Afișează {'a': 1, 'b': 1}",
+        "O eroare: programul citește `frecventa[caracter]` înainte să existe",
+        "Afișează {}",
+        "Afișează {'a': 0, 'b': 0}"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "def sunt_anagrame(a, b):\n    return sorted(a.lower()) == sorted(b.lower())\n\nrezultat = sunt_anagrame(\"Listen\", \"Silent\")\nprint(rezultat)\nif rezultat:\n    print(\"Acces permis\")\nelse:\n    print(\"Acces refuzat\")",
+      "options": [
+        "True\nAcces refuzat",
+        "False\nAcces refuzat",
+        "Acces permis",
+        "True\nAcces permis"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "def sunt_anagrame(a, b):\n    return sorted(a.lower()) == sorted(b.lower())\n\nrezultat = sunt_anagrame(\"orbit\", \"robot\")\nprint(rezultat)\nif rezultat:\n    print(\"Acces permis\")\nelse:\n    print(\"Acces refuzat\")",
+      "options": [
+        "False\nAcces refuzat",
+        "True\nAcces permis",
+        "False\nAcces permis",
+        "True\nAcces refuzat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "De ce nu sunt „orbit” și „robot” anagrame?",
+      "options": [
+        "Au lungimi diferite",
+        "Încep cu litere diferite",
+        "„robot” are doi o și niciun i, deci literele diferă",
+        "Unul are o literă mare"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "tinta = \"mare\"\nnumar = 0\nfor cuvant in [\"rame\", \"arme\", \"marea\", \"mere\"]:\n    if sorted(cuvant) == sorted(tinta):\n        numar += 1\nprint(numar)",
+      "options": ["1", "2", "3", "0"],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "După verificarea cu sortare, e orice cuvânt anagrama lui însuși?",
+      "options": [
+        "Nu, o anagramă cere altă ordine",
+        "Doar dacă nu are litere repetate",
+        "Doar dacă e palindrom",
+        "Da, aceleași litere sortate dau aceeași listă"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "print(sorted(\"moon starer\") == sorted(\"astronomer\"))",
+      "options": ["False", "True", "Lungimi diferite", "None"],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "De ce nu sunt „moon starer” și „astronomer” anagrame pentru `sorted(a) == sorted(b)`?",
+      "options": [
+        "Sortarea nu poate lucra cu cuvinte lungi",
+        "Au litere diferite",
+        "Spațiul contează și el ca un caracter",
+        "`sorted()` scoate spațiile"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "frecventa = {}\nfor caracter in \"non\":\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "options": ["{'n': 1, 'o': 1}", "{'n': 2, 'o': 1}", "{'n': 2, 'o': 2}", "{'o': 1, 'n': 2}"],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Două cuvinte au aceeași lungime. Ce mai trebuie să fie adevărat ca să fie anagrame?",
+      "options": [
+        "Trebuie să înceapă cu aceeași literă",
+        "Literele lor trebuie să fie deja sortate",
+        "Nimic altceva, aceeași lungime ajunge",
+        "Fiecare literă trebuie să apară de același număr de ori în ambele"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "print(sorted(\"aab\") == sorted(\"aba\"))",
+      "options": ["True", "False", "['a', 'b']", "None"],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "print(sorted(\"aab\") == sorted(\"abb\"))",
+      "options": ["True", "['a', 'a', 'b']", "False", "None"],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "grupuri = {}\nfor cuvant in [\"tea\", \"eat\", \"sun\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
+      "options": [
+        "{'t': ['tea', 'eat'], 's': ['sun']}",
+        "{'aet': ['tea', 'eat'], 'nsu': ['sun']}",
+        "{'aet': ['eat'], 'nsu': ['sun']}",
+        "{'tea': ['tea'], 'eat': ['eat'], 'sun': ['sun']}"
+      ],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "an-sorted",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"{{w}}\"\nprint(sorted(cuvant))",
+      "values": [
+        {
+          "w": "orbita"
+        },
+        {
+          "w": "cometa"
+        },
+        {
+          "w": "stea"
+        },
+        {
+          "w": "luna"
+        },
+        {
+          "w": "Marte"
+        }
+      ],
+      "mistakes": [
+        ["sorted(cuvant)", "cuvant"],
+        ["print(sorted(cuvant))", "print(sorted(cuvant)[0])"],
+        ["sorted(cuvant)", "len(cuvant)"],
+        ["sorted(cuvant)", "sorted(cuvant.upper())"]
+      ]
+    },
+    {
+      "id": "an-check",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"{{a}}\", \"{{b}}\"))\nprint(este_anagrama(\"{{c}}\", \"{{d}}\"))\nprint(este_anagrama(\"{{a}}\", \"{{c}}\"))",
+      "values": [
+        {
+          "a": "roma",
+          "b": "amor",
+          "c": "Mare",
+          "d": "Rame"
+        },
+        {
+          "a": "marti",
+          "b": "mirat",
+          "c": "Lac",
+          "d": "Cal"
+        },
+        {
+          "a": "rac",
+          "b": "car",
+          "c": "Pod",
+          "d": "Dop"
+        },
+        {
+          "a": "sare",
+          "b": "rase",
+          "c": "Rost",
+          "d": "Tors"
+        },
+        {
+          "a": "cer",
+          "b": "rec",
+          "c": "Ton",
+          "d": "Not"
+        }
+      ],
+      "mistakes": [
+        [
+          "sorted(cuvant1.lower()) == sorted(cuvant2.lower())",
+          "sorted(cuvant1) == sorted(cuvant2)"
+        ],
+        [
+          "sorted(cuvant1.lower()) == sorted(cuvant2.lower())",
+          "cuvant1.lower() == cuvant2.lower()"
+        ],
+        ["==", "!="],
+        ["sorted(cuvant1.lower()) == sorted(cuvant2.lower())", "len(cuvant1) == len(cuvant2)"]
+      ]
+    },
+    {
+      "id": "an-freq",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"{{w}}\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "values": [
+        {
+          "w": "banana"
+        },
+        {
+          "w": "racheta"
+        },
+        {
+          "w": "capac"
+        },
+        {
+          "w": "lalea"
+        },
+        {
+          "w": "cafea"
+        }
+      ],
+      "mistakes": [
+        ["frecventa[caracter] += 1", "frecventa[caracter] = 1"],
+        ["        frecventa[caracter] = 1", "        frecventa[caracter] = 0"],
+        ["print(frecventa)", "print(len(frecventa))"],
+        ["frecventa[caracter] += 1", "frecventa[caracter] += 2"]
+      ]
+    },
+    {
+      "id": "an-len",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"{{a}}\", \"{{b}}\"))\nprint(este_anagrama(\"{{c}}\", \"{{d}}\"))\nprint(este_anagrama(\"{{e}}\", \"{{f}}\"))",
+      "values": [
+        {
+          "a": "stea",
+          "b": "stele",
+          "c": "marti",
+          "d": "mirat",
+          "e": "orbita",
+          "f": "robota"
+        },
+        {
+          "a": "racheta",
+          "b": "rac",
+          "c": "sare",
+          "d": "rase",
+          "e": "cometa",
+          "f": "comoda"
+        },
+        {
+          "a": "roma",
+          "b": "amorul",
+          "c": "lac",
+          "d": "cal",
+          "e": "luna",
+          "f": "lume"
+        },
+        {
+          "a": "pod",
+          "b": "podul",
+          "c": "ton",
+          "d": "not",
+          "e": "mare",
+          "f": "mere"
+        },
+        {
+          "a": "cer",
+          "b": "ceruri",
+          "c": "rost",
+          "d": "tors",
+          "e": "sac",
+          "f": "sat"
+        }
+      ],
+      "mistakes": [
+        ["len(cuvant1) != len(cuvant2)", "len(cuvant1) == len(cuvant2)"],
+        ["return sorted(cuvant1) == sorted(cuvant2)", "return True"],
+        ["        return False", "        return True"],
+        ["        print(\"Lungimi diferite\")\n", ""]
+      ]
+    },
+    {
+      "id": "an-join",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "for cuvant in [{{words}}]:\n    print(cuvant, \"\".join(sorted(cuvant.lower())))",
+      "values": [
+        {
+          "words": "\"Roma\", \"Amor\""
+        },
+        {
+          "words": "\"Marti\", \"Mirat\""
+        },
+        {
+          "words": "\"Rac\", \"Car\""
+        },
+        {
+          "words": "\"Sare\", \"Rase\""
+        },
+        {
+          "words": "\"Lapte\", \"Paleta\""
+        }
+      ],
+      "mistakes": [
+        ["cuvant.lower()", "cuvant"],
+        ["\"\".join(sorted(cuvant.lower()))", "sorted(cuvant.lower())"],
+        ["print(cuvant, ", "print("],
+        ["\"\".join", "\" \".join"]
+      ]
+    },
+    {
+      "id": "an-group",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "grupuri = {}\nfor cuvant in [{{words}}]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
+      "values": [
+        {
+          "words": "\"rac\", \"car\", \"pod\""
+        },
+        {
+          "words": "\"roma\", \"amor\", \"mora\", \"luna\""
+        },
+        {
+          "words": "\"sare\", \"rase\", \"cometa\""
+        },
+        {
+          "words": "\"marti\", \"soare\", \"mirat\""
+        },
+        {
+          "words": "\"cer\", \"rec\", \"pod\""
+        }
+      ],
+      "mistakes": [
+        ["grupuri[cheie].append(cuvant)", "grupuri[cheie] = [cuvant]"],
+        ["cheie = \"\".join(sorted(cuvant))", "cheie = cuvant"],
+        ["print(grupuri)", "print(len(grupuri))"],
+        ["grupuri[cheie] = [cuvant]", "grupuri[cheie] = cuvant"]
+      ]
+    },
+    {
+      "id": "an-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "tinta = \"{{t}}\"\nnumar = 0\nfor cuvant in [{{words}}]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "values": [
+        {
+          "t": "mare",
+          "words": "\"rame\", \"arme\", \"marea\", \"mere\""
+        },
+        {
+          "t": "rac",
+          "words": "\"car\", \"arc\", \"rece\", \"cart\""
+        },
+        {
+          "t": "marti",
+          "words": "\"mirat\", \"marti\", \"martie\""
+        },
+        {
+          "t": "sare",
+          "words": "\"rase\", \"ares\", \"sarea\", \"sar\""
+        },
+        {
+          "t": "cer",
+          "words": "\"rec\", \"cere\", \"cer\", \"ceri\""
+        }
+      ],
+      "mistakes": [
+        ["sorted(cuvant) == sorted(tinta)", "cuvant == tinta"],
+        ["sorted(cuvant) == sorted(tinta)", "len(cuvant) == len(tinta)"],
+        ["numar += 1", "numar = 1"],
+        ["        print(cuvant)\n", ""]
+      ]
+    },
+    {
+      "id": "an-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nfor pereche in [(\"{{a}}\", \"{{b}}\"), (\"{{c}}\", \"{{d}}\"), (\"{{a}}\", \"{{d}}\")]:\n    print(pereche[0], pereche[1], este_anagrama(pereche[0], pereche[1]))",
+      "values": [
+        {
+          "a": "amor",
+          "b": "roma",
+          "c": "Rame",
+          "d": "Mare"
+        },
+        {
+          "a": "mirat",
+          "b": "marti",
+          "c": "Cal",
+          "d": "Lac"
+        },
+        {
+          "a": "car",
+          "b": "rac",
+          "c": "Dop",
+          "d": "Pod"
+        },
+        {
+          "a": "rase",
+          "b": "sare",
+          "c": "Tors",
+          "d": "Rost"
+        },
+        {
+          "a": "rec",
+          "b": "cer",
+          "c": "Not",
+          "d": "Ton"
+        }
+      ],
+      "mistakes": [
+        [
+          "sorted(cuvant1.lower()) == sorted(cuvant2.lower())",
+          "sorted(cuvant1) == sorted(cuvant2)"
+        ],
+        [
+          "sorted(cuvant1.lower()) == sorted(cuvant2.lower())",
+          "cuvant1.lower() == cuvant2.lower()"
+        ],
+        ["==", "!="]
+      ]
+    },
+    {
+      "id": "an-gap-sorted",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == ___(cuvant2.lower())\n\nprint(este_anagrama(\"{{a}}\", \"{{b}}\"))\nprint(este_anagrama(\"{{c}}\", \"{{d}}\"))",
+      "values": [
+        {
+          "a": "roma",
+          "b": "amor",
+          "c": "Mare",
+          "d": "Rame"
+        },
+        {
+          "a": "marti",
+          "b": "mirat",
+          "c": "Lac",
+          "d": "Cal"
+        },
+        {
+          "a": "rac",
+          "b": "car",
+          "c": "Pod",
+          "d": "Dop"
+        },
+        {
+          "a": "sare",
+          "b": "rase",
+          "c": "Rost",
+          "d": "Tors"
+        },
+        {
+          "a": "cer",
+          "b": "rec",
+          "c": "Ton",
+          "d": "Not"
+        }
+      ],
+      "answer": "sorted",
+      "wrong": ["len", "list", "str"]
+    },
+    {
+      "id": "an-gap-freq",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {}\nfor caracter in \"{{w}}\":\n    if caracter in frecventa:\n        ___\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "values": [
+        {
+          "w": "banana"
+        },
+        {
+          "w": "litere"
+        },
+        {
+          "w": "lalea"
+        },
+        {
+          "w": "misiune"
+        },
+        {
+          "w": "racheta"
+        }
+      ],
+      "answer": "frecventa[caracter] += 1",
+      "wrong": [
+        "frecventa[caracter] = 1",
+        "frecventa[caracter] = 0",
+        "frecventa[caracter] -= 1",
+        "frecventa = {}"
+      ]
+    },
+    {
+      "id": "an-gap-early",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        ___\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"{{a}}\", \"{{b}}\"))\nprint(este_anagrama(\"{{c}}\", \"{{d}}\"))",
+      "values": [
+        {
+          "a": "stea",
+          "b": "stele",
+          "c": "marti",
+          "d": "mirat"
+        },
+        {
+          "a": "sare",
+          "b": "rase",
+          "c": "racheta",
+          "d": "rac"
+        },
+        {
+          "a": "roma",
+          "b": "amorul",
+          "c": "lac",
+          "d": "cal"
+        },
+        {
+          "a": "rac",
+          "b": "car",
+          "c": "cometa",
+          "d": "comet"
+        },
+        {
+          "a": "luna",
+          "b": "lunar",
+          "c": "mare",
+          "d": "rame"
+        }
+      ],
+      "answer": "return False",
+      "wrong": ["return True", "print(False)", "return cuvant1"]
+    },
+    {
+      "id": "an-bad-lower",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"{{a}}\", \"{{b}}\"))\nprint(este_anagrama(\"{{c}}\", \"{{d}}\"))",
+      "values": [
+        {
+          "a": "roma",
+          "b": "Amor",
+          "c": "Mare",
+          "d": "Rame"
+        },
+        {
+          "a": "marti",
+          "b": "Mirat",
+          "c": "Lac",
+          "d": "Cal"
+        },
+        {
+          "a": "rac",
+          "b": "Car",
+          "c": "Pod",
+          "d": "Dop"
+        },
+        {
+          "a": "sare",
+          "b": "Rase",
+          "c": "Rost",
+          "d": "Tors"
+        },
+        {
+          "a": "cer",
+          "b": "Rec",
+          "c": "Ton",
+          "d": "Not"
+        }
+      ],
+      "bug": ["sorted(cuvant2.lower())", "sorted(cuvant2)"]
+    },
+    {
+      "id": "an-bad-freq",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"{{w}}\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
+      "values": [
+        {
+          "w": "banana"
+        },
+        {
+          "w": "litera"
+        },
+        {
+          "w": "luna"
+        },
+        {
+          "w": "cafea"
+        },
+        {
+          "w": "galaxie"
+        }
+      ],
+      "bug": ["        frecventa[caracter] = 1", "        frecventa[caracter] = 0"]
+    },
+    {
+      "id": "an-bad-count",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "tinta = \"{{t}}\"\nnumar = 0\nfor cuvant in [{{words}}]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
+      "values": [
+        {
+          "t": "mare",
+          "words": "\"rame\", \"arme\", \"mere\""
+        },
+        {
+          "t": "rac",
+          "words": "\"car\", \"arc\", \"cart\""
+        },
+        {
+          "t": "marti",
+          "words": "\"mirat\", \"marti\", \"marte\""
+        },
+        {
+          "t": "sare",
+          "words": "\"rase\", \"ares\", \"sari\""
+        },
+        {
+          "t": "cer",
+          "words": "\"rec\", \"cer\", \"ceri\""
+        }
+      ],
+      "bug": ["sorted(cuvant) == sorted(tinta)", "sorted(cuvant) == tinta"]
+    }
+  ]
+}

@@ -1,0 +1,697 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does Selection Sort do for each position, from the first one on?",
+      "options": [
+        "It swaps every pair of neighbours that are out of order",
+        "It moves the biggest number to the start",
+        "It finds the smallest number of those left and swaps it into that position",
+        "It splits the list in half"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q2",
+      "text": "What is the key difference between Selection Sort and Bubble Sort?",
+      "options": [
+        "Selection Sort makes no comparisons",
+        "Selection Sort makes one swap per pass instead of possibly many",
+        "Selection Sort works only on sorted lists",
+        "Bubble Sort finds the smallest number first"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Selection Sort works on [5, 3, 8, 1, 2]. What is the list after the first step?",
+      "options": ["[3, 5, 8, 1, 2]", "[1, 3, 8, 5, 2]", "[1, 5, 3, 8, 2]", "[1, 2, 3, 5, 8]"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "The list is [1, 3, 8, 5, 2] after the first step. What is it after the second?",
+      "options": ["[1, 2, 8, 5, 3]", "[1, 3, 5, 8, 2]", "[1, 2, 3, 5, 8]", "[1, 3, 2, 5, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "q5",
+      "text": "What does `min_index` remember while j walks the list?",
+      "options": [
+        "The smallest number itself",
+        "How many swaps were made",
+        "Where the smallest number seen so far is",
+        "The position j stopped at last time"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "Why does j start at `i + 1`?",
+      "options": [
+        "Because lists start at index 1",
+        "So j never reaches the last element",
+        "To skip every second element",
+        "`min_index` already starts at i, and the positions before i are already sorted"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "What does the outer loop (i) pick?",
+      "options": [
+        "The smallest number",
+        "The pair of neighbours to compare",
+        "The position to fill next",
+        "How many times to run the program"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "In the lesson's trace, at i = 3 the list is [1, 2, 3, 5, 8]. What happens?",
+      "options": [
+        "5 and 8 swap",
+        "The loop stops with an error",
+        "5 is already the smallest left, so it swaps with itself and nothing moves",
+        "3 and 5 swap"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "numbers = [4, 2, 7, 1]\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "options": ["[1, 2, 4, 7]", "[7, 4, 2, 1]", "[4, 2, 7, 1]", "[1, 4, 2, 7]"],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "How many times does the lesson's code run the swap line for a list of n elements?",
+      "options": [
+        "Once for every comparison",
+        "n times, once per position, even when a number swaps with itself",
+        "Never more than once",
+        "n × n times"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Roughly how many comparisons does Selection Sort make for n elements?",
+      "options": ["About n × n, like Bubble Sort", "About n", "Only one", "About 2 × n"],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "Which one usually makes fewer swaps?",
+      "options": [
+        "Bubble Sort",
+        "They always make the same number",
+        "Neither swaps anything",
+        "Selection Sort"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "What does the lesson say to use for sorting in real programs?",
+      "options": [
+        "Selection Sort, since it swaps less",
+        "`sorted()`, which is hundreds of times faster",
+        "Bubble Sort",
+        "Linear search"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "How do you make Selection Sort sort from largest to smallest?",
+      "options": [
+        "Start i at the end of the list",
+        "Look for the biggest number instead: compare with `>`",
+        "Swap only when i is even",
+        "Remove the inner loop"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "After the first pass of Selection Sort, what is surely in place?",
+      "options": [
+        "The biggest number, at the end",
+        "Every number",
+        "The smallest number, at position 0",
+        "Nothing yet"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "numbers = [7, 4, 9, 2, 5]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nprint(min_index)",
+      "options": ["2", "3", "0", "4"],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "Does the lesson's Selection Sort change the list it gets or make a new one?",
+      "options": [
+        "It makes a new sorted list and leaves the old one",
+        "It makes a copy at every pass",
+        "It empties the list",
+        "It changes the same list, swapping inside it"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "In the mission, what must `selection_sort(numbers)` do at the end?",
+      "options": [
+        "Print each number",
+        "Return the sorted list",
+        "Return the smallest number",
+        "Return how many swaps it made"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "In the mission, what does `selection_sort([9, 7, 5, 3, 1])` give?",
+      "options": ["[9, 7, 5, 3, 1]", "[1, 7, 5, 3, 9]", "1", "[1, 3, 5, 7, 9]"],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "What does `numbers[i], numbers[min_index] = numbers[min_index], numbers[i]` do?",
+      "options": [
+        "It copies the smallest number over both places",
+        "It compares the two numbers",
+        "It deletes the number at i",
+        "It swaps the number at i with the smallest one found"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "How many comparisons does the inner loop make in total for [3, 1, 2]?",
+      "options": ["9", "2", "3", "6"],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "Selection Sort gets a list that is already sorted. What does it do?",
+      "options": [
+        "It still makes every comparison, it doesn't stop early",
+        "It stops after the first comparison",
+        "It reverses the list",
+        "It makes no comparisons"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "numbers = [8, 3, 5, 1]\ncomparisons = 0\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        comparisons += 1\nprint(comparisons)",
+      "options": ["16", "4", "3", "6"],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "Two equal numbers meet in `numbers[j] < numbers[min_index]`. Does min_index move?",
+      "options": [
+        "Yes, it moves to the second",
+        "The loop stops",
+        "Both numbers are removed",
+        "No, an equal number isn't smaller, so it stays on the first one"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Why does the last pass never move anything?",
+      "options": [
+        "Only one number is left, and it's already the biggest",
+        "The inner loop runs backwards there",
+        "Python skips the last pass",
+        "The last number is always 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "At i = 2 of the lesson's trace the list is [1, 2, 8, 5, 3]. Where does min_index end up?",
+      "options": ["2", "3", "4", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "numbers = [7, 4, 9, 2, 5]\nmax_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] > numbers[max_index]:\n        max_index = j\nprint(max_index)",
+      "options": ["3", "2", "0", "9"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Why learn Selection Sort when `sorted()` is much faster?",
+      "options": [
+        "To learn to break a problem into steps, keep track with variables and use nested loops",
+        "Because `sorted()` doesn't work on numbers",
+        "Because real programs use Selection Sort",
+        "Because it is the fastest sort there is"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "What happens when this runs?",
+      "code": "numbers = [3, 1, 2]\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers) + 1):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "options": [
+        "An IndexError: j reaches `len(numbers)`, past the last index",
+        "It prints [1, 2, 3]",
+        "It prints [3, 1, 2]",
+        "It runs forever"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Selection Sort looks for the smallest number in [4, 1, 3, 1]. At which index does min_index stop?",
+      "options": ["3", "0", "1", "2"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "ss-full",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{L}}]\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "64, 25, 12, 22, 11"
+        },
+        {
+          "L": "9, 4, 7, 1"
+        },
+        {
+          "L": "6, 2, 9, 3, 5"
+        },
+        {
+          "L": "30, 10, 20"
+        }
+      ],
+      "mistakes": [
+        ["numbers[j] < numbers[min_index]", "numbers[j] > numbers[min_index]"],
+        ["            min_index = j", "            min_index = i"],
+        ["range(i + 1, len(numbers))", "range(i + 1, len(numbers) - 1)"],
+        [
+          "    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]",
+          "    numbers[i] = numbers[min_index]"
+        ]
+      ]
+    },
+    {
+      "id": "ss-passes",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{L}}]\nfor i in range({{k}}):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2",
+          "k": 2
+        },
+        {
+          "L": "64, 25, 12, 22, 11",
+          "k": 1
+        },
+        {
+          "L": "7, 6, 5, 4, 3",
+          "k": 2
+        },
+        {
+          "L": "4, 9, 2, 8, 1",
+          "k": 3
+        },
+        {
+          "L": "8, 1, 6, 2, 7, 3",
+          "k": 2
+        }
+      ],
+      "mistakes": [
+        ["range({{k}})", "range(len(numbers))"],
+        ["numbers[j] < numbers[min_index]", "numbers[j] > numbers[min_index]"],
+        ["range({{k}})", "range({{k}} - 1)"],
+        [
+          "    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]",
+          "    numbers[i] = numbers[min_index]"
+        ]
+      ]
+    },
+    {
+      "id": "ss-min-index",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{L}}]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nprint(min_index)",
+      "values": [
+        {
+          "L": "12, 19, 15, 10, 11, 17"
+        },
+        {
+          "L": "16, 17, 8, 12, 14"
+        },
+        {
+          "L": "12, 15, 10, 11, 14"
+        },
+        {
+          "L": "14, 10, 7, 16, 19, 15"
+        },
+        {
+          "L": "6, 2, 4, 8, 3, 1"
+        }
+      ],
+      "mistakes": [
+        ["print(min_index)", "print(numbers[min_index])"],
+        ["numbers[j] < numbers[min_index]", "numbers[j] > numbers[min_index]"],
+        ["print(min_index)", "print(min_index + 1)"],
+        ["range(1, len(numbers))", "range(1, len(numbers) - 1)"]
+      ]
+    },
+    {
+      "id": "ss-first-swap",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{L}}]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nnumbers[0], numbers[min_index] = numbers[min_index], numbers[0]\nprint(numbers)",
+      "values": [
+        {
+          "L": "7, 4, 9, 2, 5"
+        },
+        {
+          "L": "3, 8, 1, 6"
+        },
+        {
+          "L": "12, 15, 10, 11, 14"
+        },
+        {
+          "L": "9, 5, 8, 6"
+        },
+        {
+          "L": "6, 2, 4, 8, 3, 1"
+        }
+      ],
+      "mistakes": [
+        ["numbers[j] < numbers[min_index]", "numbers[j] > numbers[min_index]"],
+        [
+          "numbers[0], numbers[min_index] = numbers[min_index], numbers[0]",
+          "numbers[0] = numbers[min_index]"
+        ],
+        ["print(numbers)", "print(numbers[0])"],
+        ["range(1, len(numbers))", "range(1, len(numbers) - 1)"]
+      ]
+    },
+    {
+      "id": "ss-function",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def selection_sort(numbers):\n    for i in range(len(numbers)):\n        min_index = i\n        for j in range(i + 1, len(numbers)):\n            if numbers[j] < numbers[min_index]:\n                min_index = j\n        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n    return numbers\n\nprint(selection_sort([{{L}}]))",
+      "values": [
+        {
+          "L": "42, 17, 88, 9, 23"
+        },
+        {
+          "L": "8, 3, 9, 1, 5"
+        },
+        {
+          "L": "4, 1, 3, 2"
+        },
+        {
+          "L": "50, 40, 60, 10"
+        },
+        {
+          "L": "6, 8, 2, 4"
+        }
+      ],
+      "mistakes": [
+        ["    return numbers", "        return numbers"],
+        ["    return numbers", "    return numbers[0]"],
+        ["numbers[j] < numbers[min_index]", "numbers[j] > numbers[min_index]"],
+        ["for i in range(len(numbers)):", "for i in range(1):"],
+        ["                min_index = j", "                min_index = i"]
+      ]
+    },
+    {
+      "id": "ss-desc",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{L}}]\nfor i in range(len(numbers)):\n    max_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] > numbers[max_index]:\n            max_index = j\n    numbers[i], numbers[max_index] = numbers[max_index], numbers[i]\nprint(numbers)",
+      "values": [
+        {
+          "L": "3, 9, 1, 7"
+        },
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "10, 40, 20, 30"
+        },
+        {
+          "L": "2, 6, 4"
+        },
+        {
+          "L": "11, 25, 64, 12, 22"
+        }
+      ],
+      "mistakes": [
+        ["numbers[j] > numbers[max_index]", "numbers[j] < numbers[max_index]"],
+        ["            max_index = j", "            max_index = i"],
+        ["for i in range(len(numbers)):", "for i in range(1):"],
+        [
+          "    numbers[i], numbers[max_index] = numbers[max_index], numbers[i]",
+          "    numbers[max_index] = numbers[i]"
+        ]
+      ]
+    },
+    {
+      "id": "ss-count-compares",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{L}}]\ncomparisons = 0\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        comparisons += 1\nprint(comparisons)",
+      "values": [
+        {
+          "L": "3, 1, 2"
+        },
+        {
+          "L": "4, 1, 3, 2"
+        },
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "6, 5, 4, 3, 2, 1"
+        },
+        {
+          "L": "9, 8"
+        }
+      ],
+      "mistakes": [
+        ["range(i + 1, len(numbers))", "range(len(numbers))"],
+        ["range(i + 1, len(numbers))", "range(i, len(numbers))"],
+        ["        comparisons += 1", "        comparisons = 1"],
+        ["print(comparisons)", "print(len(numbers))"]
+      ]
+    },
+    {
+      "id": "ss-real-swaps",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{L}}]\nswaps = 0\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    if min_index != i:\n        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n        swaps += 1\nprint(swaps)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "1, 3, 2, 4"
+        },
+        {
+          "L": "2, 1, 4, 3"
+        },
+        {
+          "L": "4, 3, 2, 1"
+        },
+        {
+          "L": "3, 1, 2"
+        }
+      ],
+      "mistakes": [
+        [
+          "    if min_index != i:\n        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n        swaps += 1",
+          "    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n    swaps += 1"
+        ],
+        ["min_index != i", "min_index == i"],
+        ["print(swaps)", "print(numbers)"],
+        ["        swaps += 1", "        swaps = 1"]
+      ]
+    },
+    {
+      "id": "ss-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "numbers = [{{L}}]\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "values": [
+        {
+          "L": "6, 1, 5, 2"
+        },
+        {
+          "L": "8, 3, 9, 4, 1"
+        },
+        {
+          "L": "7, 2, 5"
+        },
+        {
+          "L": "20, 50, 10, 40"
+        },
+        {
+          "L": "3, 6, 2, 9, 1, 4"
+        }
+      ],
+      "mistakes": [
+        ["numbers[j] < numbers[min_index]", "numbers[j] > numbers[min_index]"],
+        ["            min_index = j", "            min_index = i"],
+        ["for i in range(len(numbers)):", "for i in range(1):"],
+        [
+          "    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]",
+          "    numbers[i] = numbers[min_index]"
+        ]
+      ]
+    },
+    {
+      "id": "ss-gap-start",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [{{L}}]\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(___, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "9, 4, 7, 1"
+        },
+        {
+          "L": "6, 2, 9, 3, 5"
+        },
+        {
+          "L": "30, 10, 20"
+        },
+        {
+          "L": "4, 8, 2, 6"
+        }
+      ],
+      "answer": "i + 1",
+      "wrong": ["0", "len(numbers)", "i + 2", "i - 1"]
+    },
+    {
+      "id": "ss-gap-min",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "numbers = [{{L}}]\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            ___\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "64, 25, 12, 22, 11"
+        },
+        {
+          "L": "9, 4, 7, 1"
+        },
+        {
+          "L": "6, 2, 9, 3, 5"
+        },
+        {
+          "L": "8, 6, 7"
+        }
+      ],
+      "answer": "min_index = j",
+      "wrong": ["min_index = i", "min_index = numbers[j]", "j = min_index", "min_index = j + 1"]
+    },
+    {
+      "id": "ss-gap-cmp",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [{{L}}]\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] ___ numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "2, 7, 4, 9"
+        },
+        {
+          "L": "6, 2, 9, 3, 5"
+        },
+        {
+          "L": "30, 10, 20"
+        },
+        {
+          "L": "1, 5, 3"
+        }
+      ],
+      "answer": "<",
+      "wrong": [">", "==", "="]
+    },
+    {
+      "id": "ss-bad-start",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [{{L}}]\nprint(numbers)\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "7, 3, 9, 5"
+        },
+        {
+          "L": "6, 2, 9, 3, 5"
+        },
+        {
+          "L": "3, 9, 4, 6"
+        },
+        {
+          "L": "4, 8, 2, 6"
+        }
+      ],
+      "bug": ["    min_index = i", "    min_index = 0"]
+    },
+    {
+      "id": "ss-bad-swap",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [{{L}}]\nprint(numbers)\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "64, 25, 12, 22, 11"
+        },
+        {
+          "L": "9, 4, 7, 1"
+        },
+        {
+          "L": "6, 2, 9, 3"
+        },
+        {
+          "L": "30, 10, 20"
+        }
+      ],
+      "bug": [
+        "    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]",
+        "    numbers[i] = numbers[min_index]"
+      ]
+    }
+  ]
+}

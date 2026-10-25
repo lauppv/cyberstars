@@ -1,0 +1,708 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "In the mission, which pattern does `count_word(log, word)` use?",
+      "options": ["The accumulator", "The counter", "The flag", "Linear search"],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "In the mission, which pattern does `longest_word(log)` use?",
+      "options": [
+        "The counter",
+        "The accumulator: it keeps the longest word so far",
+        "The flag",
+        "A frequency dictionary"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "In the mission, which pattern does `has_duplicate(log)` use?",
+      "options": [
+        "The counter",
+        "The accumulator",
+        "Sorting",
+        "The flag: True as soon as a word shows up again"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "Why does the mission split the work into three functions?",
+      "options": [
+        "Python allows at most ten lines in a function",
+        "Each one does one small job, so it's easier to write, read and check",
+        "So the program runs three times faster",
+        "Because a log can only be read once"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"scan probe scan\", \"scan\"))",
+      "options": ["1", "3", "0", "2"],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"cat dog\"))",
+      "options": ["dog", "cat dog", "cat", "3"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Why does `longest_word` compare with `>` and not `>=`?",
+      "options": [
+        "With `>` the first of several equally long words stays, as the mission asks",
+        "`>=` doesn't work on numbers",
+        "With `>` the last one wins",
+        "There is no difference"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return False\n\nprint(has_duplicate(\"red green blue\"))",
+      "options": ["True", "3", "None", "False"],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What does `seen` hold in `has_duplicate`?",
+      "options": [
+        "Every word that appears twice",
+        "How many words there are",
+        "The words already met in the loop",
+        "The longest word so far"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "Why does `has_duplicate` return True at once, inside the loop?",
+      "options": [
+        "One repeated word is enough to answer, so there's no need to look further",
+        "So the loop starts again",
+        "Because `return` only works inside loops",
+        "So it can count every duplicate"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "words = \"b a b c\".split(\" \")\nprint(sorted(set(words)))",
+      "options": ["['b', 'a', 'b', 'c']", "['b', 'a', 'c']", "3", "['a', 'b', 'c']"],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "Why does the mission write `sorted(set(words))` and not just `set(words)`?",
+      "options": [
+        "A set keeps no fixed order; sorted() turns it into a list in alphabetical order",
+        "set() alone doesn't drop repeated words",
+        "sorted() removes the repeated words",
+        "set() works only on numbers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "log = \"boot scan probe scan\"\nprint(len(log.split(\" \")))",
+      "options": ["1", "15", "3", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q14",
+      "text": "What does `log.split(\" \")` give?",
+      "options": [
+        "The number of words",
+        "The first word",
+        "A list of the log's words",
+        "The log without spaces"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "Why does `longest` start as an empty text, `\"\"`?",
+      "options": [
+        "Every word is longer than it, so the first word replaces it",
+        "Python needs every text to start empty",
+        "So the function returns nothing",
+        "Because the log may have no spaces"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "What does a counter start at, before the loop?",
+      "options": ["1", "The first element", "None", "0"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "`has_duplicate` has no flag variable. What does the flag's job?",
+      "options": [
+        "The set `seen`",
+        "`return True` as soon as a word repeats, and `return False` once the loop ends",
+        "The variable `w`",
+        "Nothing, the function always returns True"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "words = [\"go\", \"probe\", \"up\", \"radar\"]\ncount = 0\nfor w in words:\n    if len(w) > 3:\n        count += 1\nprint(count)",
+      "options": ["2", "3", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "words = [\"scan\", \"boot\", \"ping\"]\ntotal = 0\nfor w in words:\n    total += len(w)\nprint(total)",
+      "options": ["4", "3", "12", "10"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "lengths = [3, 7, 2]\nprint(max(lengths), min(lengths))",
+      "options": ["2 7", "7", "7 2", "12"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "for i, w in enumerate([\"scan\", \"boot\"]):\n    print(i, w)",
+      "options": ["0 scan\n1 boot", "1 scan\n2 boot", "scan 0\nboot 1", "0\n1"],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "The mission's log is \"scan probe scan analyze probe scan boot\". What is the last line it prints?",
+      "options": [
+        "Unique words: ['scan', 'probe', 'analyze', 'boot']",
+        "Unique words: ['analyze', 'boot', 'probe', 'probe', 'scan', 'scan', 'scan']",
+        "Unique words: ['analyze', 'boot', 'probe', 'scan']",
+        "Unique words: 4"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "How many words does the mission's log have?",
+      "options": ["4", "3", "7", "6"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "In the mission's log, which is the longest word?",
+      "options": ["probe", "analyze", "scan", "boot"],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "words = [\"scan\", \"go\", \"boot\"]\nall_long = True\nfor w in words:\n    if len(w) < 3:\n        all_long = False\nprint(all_long)",
+      "options": ["True", "boot", "3", "False"],
+      "answer": 3
+    },
+    {
+      "id": "q26",
+      "text": "Which built-in function gives how many words the list `words` has?",
+      "options": ["`sum(words)`", "`max(words)`", "`sorted(words)`", "`len(words)`"],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "Why is it `'scan'`, with single quotes, inside `f\"Count of scan: {count_word(log, 'scan')}\"`?",
+      "options": [
+        "Double quotes would end the f-string too early",
+        "Single quotes make it a number",
+        "Python counts only words in single quotes",
+        "So the word is printed in capitals"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "Why does each function get the log as a parameter instead of using the variable `log` from outside?",
+      "options": [
+        "Parameters make the program faster",
+        "So it works on any log it is given, not just one",
+        "A function can't see any variable from outside",
+        "So the log is changed for good"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "What happens when this runs?",
+      "code": "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"a b a\"))",
+      "options": [
+        "It prints 0",
+        "A TypeError: `count_word` needs two arguments and gets one",
+        "It prints 2",
+        "It prints None"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "words = \"up down up left up\".split(\" \")\nprint(len(set(words)))",
+      "options": ["5", "2", "3", "1"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "rp-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"{{s}}\", \"{{w}}\"))",
+      "values": [
+        {
+          "s": "scan probe scan analyze probe scan boot",
+          "w": "scan"
+        },
+        {
+          "s": "ping ping echo ping",
+          "w": "ping"
+        },
+        {
+          "s": "boot scan probe scan",
+          "w": "probe"
+        },
+        {
+          "s": "up down up down up",
+          "w": "down"
+        },
+        {
+          "s": "alpha beta alpha gamma beta alpha",
+          "w": "beta"
+        }
+      ],
+      "mistakes": [
+        ["            count += 1", "            count = 1"],
+        ["    return count", "        return count"],
+        ["w == word", "w != word"],
+        ["    count = 0", "    count = 1"],
+        ["            count += 1", "            count += len(w)"],
+        ["log.split(\" \")", "log"]
+      ]
+    },
+    {
+      "id": "rp-longest",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"{{s}}\"))",
+      "values": [
+        {
+          "s": "scan probe analyze boot"
+        },
+        {
+          "s": "go far away"
+        },
+        {
+          "s": "red blue green gray"
+        },
+        {
+          "s": "mars venus earth pluto"
+        },
+        {
+          "s": "ion orbit comet star"
+        }
+      ],
+      "mistakes": [
+        ["len(w) > len(longest)", "len(w) >= len(longest)"],
+        ["len(w) > len(longest)", "len(w) < len(longest)"],
+        ["    return longest", "    return len(longest)"],
+        ["    return longest", "        return longest"],
+        ["            longest = w", "            longest = log"],
+        ["    return longest", "    return w"]
+      ]
+    },
+    {
+      "id": "rp-dup",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return False\n\nprint(has_duplicate(\"{{a}}\"), has_duplicate(\"{{b}}\"))",
+      "values": [
+        {
+          "a": "scan probe scan",
+          "b": "boot ping echo"
+        },
+        {
+          "a": "red blue",
+          "b": "go up go"
+        },
+        {
+          "a": "a b c d",
+          "b": "a b c a"
+        },
+        {
+          "a": "mars mars",
+          "b": "venus earth"
+        },
+        {
+          "a": "one two three",
+          "b": "one one"
+        }
+      ],
+      "mistakes": [
+        ["            return True", "            return w"],
+        ["    return False", "    return len(seen)"],
+        ["w in seen", "w not in seen"],
+        ["        seen.add(w)", "    seen.add(w)"]
+      ]
+    },
+    {
+      "id": "rp-unique",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "log = \"{{s}}\"\nwords = log.split(\" \")\nprint(sorted(set(words)))",
+      "values": [
+        {
+          "s": "scan probe scan boot"
+        },
+        {
+          "s": "up down up"
+        },
+        {
+          "s": "red blue green red blue"
+        },
+        {
+          "s": "echo ping echo"
+        },
+        {
+          "s": "gamma alpha beta alpha"
+        }
+      ],
+      "mistakes": [
+        ["print(sorted(set(words)))", "print(sorted(words))"],
+        ["print(sorted(set(words)))", "print(len(set(words)))"],
+        ["print(sorted(set(words)))", "print(len(words))"],
+        ["log.split(\" \")", "log.split(\"a\")"]
+      ]
+    },
+    {
+      "id": "rp-total-len",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "log = \"{{s}}\"\ntotal = 0\nfor w in log.split(\" \"):\n    total += len(w)\nprint(total)",
+      "values": [
+        {
+          "s": "scan boot ping"
+        },
+        {
+          "s": "go far away"
+        },
+        {
+          "s": "alpha beta"
+        },
+        {
+          "s": "a bb ccc dddd"
+        },
+        {
+          "s": "probe orbit"
+        }
+      ],
+      "mistakes": [
+        ["    total += len(w)", "    total = len(w)"],
+        ["    total += len(w)", "    total += 1"],
+        ["print(total)", "print(len(log))"],
+        ["    total += len(w)", "    total += len(log)"]
+      ]
+    },
+    {
+      "id": "rp-report",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "log = \"{{s}}\"\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\ndef longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\nwords = log.split(\" \")\ncount = count_word(log, \"{{w}}\")\nprint(f\"Total words: {len(words)}\")\nprint(f\"Count of {{w}}: {count}\")\nprint(f\"Longest word: {longest_word(log)}\")",
+      "values": [
+        {
+          "s": "scan probe scan analyze probe scan boot",
+          "w": "scan"
+        },
+        {
+          "s": "ping ping echo ping",
+          "w": "ping"
+        },
+        {
+          "s": "boot scan probe scan",
+          "w": "probe"
+        },
+        {
+          "s": "up down up down up",
+          "w": "down"
+        },
+        {
+          "s": "alpha beta alpha gamma beta alpha",
+          "w": "beta"
+        }
+      ],
+      "mistakes": [
+        ["{len(words)}", "{len(log)}"],
+        ["            count += 1", "            count = 1"],
+        ["len(w) > len(longest)", "len(w) < len(longest)"],
+        ["{longest_word(log)}", "{len(longest_word(log))}"]
+      ]
+    },
+    {
+      "id": "rp-count-long",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "words = \"{{s}}\".split(\" \")\ncount = 0\nfor w in words:\n    if len(w) > {{n}}:\n        count += 1\nprint(count)",
+      "values": [
+        {
+          "s": "go probe up radar scan",
+          "n": 3
+        },
+        {
+          "s": "a bb ccc dddd eeeee",
+          "n": 2
+        },
+        {
+          "s": "orbit ion comet sun",
+          "n": 3
+        },
+        {
+          "s": "alpha beta gamma delta",
+          "n": 4
+        },
+        {
+          "s": "red blue green",
+          "n": 3
+        }
+      ],
+      "mistakes": [
+        ["len(w) > {{n}}", "len(w) >= {{n}}"],
+        ["        count += 1", "        count += len(w)"],
+        ["len(w) > {{n}}", "len(w) < {{n}}"],
+        ["print(count)", "print(len(words))"]
+      ]
+    },
+    {
+      "id": "rp-flag",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "words = \"{{s}}\".split(\" \")\nall_short = True\nfor w in words:\n    if len(w) > {{n}}:\n        all_short = False\nprint(all_short, w)",
+      "values": [
+        {
+          "s": "go up on",
+          "n": 2
+        },
+        {
+          "s": "scan boot probe",
+          "n": 4
+        },
+        {
+          "s": "ion sun orbit",
+          "n": 3
+        },
+        {
+          "s": "a bb ccc",
+          "n": 3
+        },
+        {
+          "s": "mars venus earth",
+          "n": 4
+        }
+      ],
+      "mistakes": [
+        ["all_short = True", "all_short = False"],
+        ["len(w) > {{n}}", "len(w) < {{n}}"],
+        ["        all_short = False", "        all_short = True"],
+        ["print(all_short, w)", "print(all_short, words)"],
+        ["len(w) > {{n}}", "len(w) >= {{n}}"],
+        ["print(all_short, w)", "print(all_short, len(w))"]
+      ]
+    },
+    {
+      "id": "rp-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"{{s}}\", \"{{w}}\"))",
+      "values": [
+        {
+          "s": "ping ping echo ping",
+          "w": "ping"
+        },
+        {
+          "s": "go up go",
+          "w": "up"
+        },
+        {
+          "s": "a b a b",
+          "w": "b"
+        },
+        {
+          "s": "scan scan scan scan boot",
+          "w": "scan"
+        },
+        {
+          "s": "go go go go go",
+          "w": "go"
+        }
+      ],
+      "mistakes": [
+        ["            count += 1", "            count = 1"],
+        ["w == word", "w != word"],
+        ["    count = 0", "    count = 1"],
+        ["    return count", "        return count"]
+      ]
+    },
+    {
+      "id": "rp-gap-acc",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            ___\n    return longest\n\nprint(longest_word(\"{{s}}\"))",
+      "values": [
+        {
+          "s": "scan probe analyze boot"
+        },
+        {
+          "s": "go far away"
+        },
+        {
+          "s": "red blue green"
+        },
+        {
+          "s": "ion orbit comet"
+        },
+        {
+          "s": "a bb ccc dd"
+        }
+      ],
+      "answer": "longest = w",
+      "wrong": ["longest = len(w)", "w = longest", "longest = log", "return w"]
+    },
+    {
+      "id": "rp-gap-cmp",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) ___ len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"{{s}}\"))",
+      "values": [
+        {
+          "s": "bird cat dog"
+        },
+        {
+          "s": "probe scan orbit"
+        },
+        {
+          "s": "red blue pink"
+        },
+        {
+          "s": "away go up"
+        },
+        {
+          "s": "alpha beta gamma"
+        }
+      ],
+      "answer": ">",
+      "wrong": [">=", "<", "==", "!="]
+    },
+    {
+      "id": "rp-gap-false",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return ___\n\nprint(has_duplicate(\"{{a}}\"))\nprint(has_duplicate(\"{{b}}\"))",
+      "values": [
+        {
+          "a": "scan probe scan",
+          "b": "boot ping"
+        },
+        {
+          "a": "red blue",
+          "b": "go up go"
+        },
+        {
+          "a": "a b c a",
+          "b": "a b c d"
+        },
+        {
+          "a": "venus earth",
+          "b": "mars mars"
+        },
+        {
+          "a": "one one",
+          "b": "two three"
+        }
+      ],
+      "answer": "False",
+      "wrong": ["True", "0", "w", "log"]
+    },
+    {
+      "id": "rp-bad-count",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "log = \"{{s}}\"\nprint(log)\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\nprint(count_word(log, \"{{w}}\"))",
+      "values": [
+        {
+          "s": "scan probe scan analyze probe scan boot",
+          "w": "scan"
+        },
+        {
+          "s": "ping ping echo ping",
+          "w": "ping"
+        },
+        {
+          "s": "boot scan probe scan",
+          "w": "scan"
+        },
+        {
+          "s": "up down up down up",
+          "w": "up"
+        },
+        {
+          "s": "alpha beta alpha gamma beta alpha",
+          "w": "alpha"
+        }
+      ],
+      "bug": ["            count += 1", "            count = 1"]
+    },
+    {
+      "id": "rp-bad-dup",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return False\n\nfor log in [\"{{a}}\", \"{{b}}\", \"{{c}}\"]:\n    print(log, has_duplicate(log))",
+      "values": [
+        {
+          "a": "scan probe scan",
+          "b": "boot ping",
+          "c": "up up"
+        },
+        {
+          "a": "red blue",
+          "b": "red blue red",
+          "c": "go far"
+        },
+        {
+          "a": "a b c a",
+          "b": "a b c d",
+          "c": "x y x"
+        },
+        {
+          "a": "mars venus mars",
+          "b": "earth moon",
+          "c": "sun sun sun"
+        },
+        {
+          "a": "one two",
+          "b": "up down up",
+          "c": "left right"
+        }
+      ],
+      "bug": ["        seen.add(w)", "        seen.add(log)"]
+    }
+  ]
+}

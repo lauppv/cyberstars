@@ -1,0 +1,640 @@
+{
+  "note": "Made by npm run make:quiz from the templates in frequency-dict-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "fd-letters-d5196b",
+      "text": "What does this print?",
+      "code": "word = \"hello\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "options": [
+        "{'h': 1, 'e': 1, 'l': 2, 'o': 1}",
+        "{'h': 1, 'e': 1, 'l': 1, 'o': 1}",
+        "{'h': 0, 'e': 0, 'l': 1, 'o': 0}",
+        "4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-letters-e1dd02",
+      "text": "What does this print?",
+      "code": "word = \"cocoa\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "options": [
+        "{'c': 2, 'o': 2, 'a': 1}",
+        "{'c': 1, 'o': 1, 'a': 1}",
+        "{'c': 1, 'o': 1, 'a': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-letters-efa722",
+      "text": "What does this print?",
+      "code": "word = \"moon\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "options": [
+        "{'m': 1, 'o': 2, 'n': 1}",
+        "{'m': 1, 'o': 1, 'n': 1}",
+        "{'m': 0, 'o': 1, 'n': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-letters-083a3f",
+      "text": "What does this print?",
+      "code": "word = \"apple\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "options": [
+        "{'a': 1, 'p': 2, 'l': 1, 'e': 1}",
+        "{'a': 1, 'p': 1, 'l': 1, 'e': 1}",
+        "{'a': 0, 'p': 1, 'l': 0, 'e': 0}",
+        "4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-letters-f6c98e",
+      "text": "What does this print?",
+      "code": "word = \"level\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "options": [
+        "{'l': 2, 'e': 2, 'v': 1}",
+        "{'l': 1, 'e': 1, 'v': 1}",
+        "{'l': 1, 'e': 1, 'v': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-words-0c823b",
+      "text": "What does this print?",
+      "code": "sentence = \"go go stop go\"\nfreq = {}\nfor word in sentence.split(\" \"):\n    if word in freq:\n        freq[word] += 1\n    else:\n        freq[word] = 1\nprint(freq)",
+      "options": [
+        "{'go': 3, 'stop': 1}",
+        "{'go': 1, 'stop': 1}",
+        "{'g': 3, 'o': 4, ' ': 3, 's': 1, 't': 1, 'p': 1}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-words-5cfa00",
+      "text": "What does this print?",
+      "code": "sentence = \"red blue red green blue red\"\nfreq = {}\nfor word in sentence.split(\" \"):\n    if word in freq:\n        freq[word] += 1\n    else:\n        freq[word] = 1\nprint(freq)",
+      "options": [
+        "{'red': 3, 'blue': 2, 'green': 1}",
+        "{'red': 1, 'blue': 1, 'green': 1}",
+        "{'r': 4, 'e': 7, 'd': 3, ' ': 5, 'b': 2, 'l': 2, 'u': 2, 'g': 1, 'n': 1}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-words-9905d6",
+      "text": "What does this print?",
+      "code": "sentence = \"up down up\"\nfreq = {}\nfor word in sentence.split(\" \"):\n    if word in freq:\n        freq[word] += 1\n    else:\n        freq[word] = 1\nprint(freq)",
+      "options": [
+        "{'up': 2, 'down': 1}",
+        "{'up': 1, 'down': 1}",
+        "{'u': 2, 'p': 2, ' ': 2, 'd': 1, 'o': 1, 'w': 1, 'n': 1}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-words-02eb57",
+      "text": "What does this print?",
+      "code": "sentence = \"scan probe scan boot\"\nfreq = {}\nfor word in sentence.split(\" \"):\n    if word in freq:\n        freq[word] += 1\n    else:\n        freq[word] = 1\nprint(freq)",
+      "options": [
+        "{'scan': 2, 'probe': 1, 'boot': 1}",
+        "{'scan': 1, 'probe': 1, 'boot': 1}",
+        "{'s': 2, 'c': 2, 'a': 2, 'n': 2, ' ': 3, 'p': 1, 'r': 1, 'o': 3, 'b': 2, 'e': 1, 't': 1}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-words-2fed32",
+      "text": "What does this print?",
+      "code": "sentence = \"yes no no yes yes\"\nfreq = {}\nfor word in sentence.split(\" \"):\n    if word in freq:\n        freq[word] += 1\n    else:\n        freq[word] = 1\nprint(freq)",
+      "options": [
+        "{'yes': 3, 'no': 2}",
+        "{'yes': 1, 'no': 1}",
+        "{'y': 3, 'e': 3, 's': 3, ' ': 4, 'n': 2, 'o': 2}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-one-key-4f9717",
+      "text": "What does this print?",
+      "code": "items = [3, 1, 3, 2, 3]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(freq[3])",
+      "options": ["3", "1", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "fd-one-key-ac97c2",
+      "text": "What does this print?",
+      "code": "items = [7, 7, 5, 7, 5]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(freq[7])",
+      "options": ["3", "1", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "fd-one-key-49230a",
+      "text": "What does this print?",
+      "code": "items = [1, 2, 2, 2, 1, 2]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(freq[2])",
+      "options": ["4", "1", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-one-key-51e1e9",
+      "text": "What does this print?",
+      "code": "items = [9, 4, 4, 9, 4, 4]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(freq[4])",
+      "options": ["4", "1", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-one-key-dd56e0",
+      "text": "What does this print?",
+      "code": "items = [6, 8, 6, 8, 6, 6, 8]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(freq[6])",
+      "options": ["4", "1", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-most-26cb84",
+      "text": "What does this print?",
+      "code": "votes = [\"B\", \"A\", \"C\", \"B\", \"A\", \"B\"]\nfreq = {}\nfor vote in votes:\n    if vote in freq:\n        freq[vote] += 1\n    else:\n        freq[vote] = 1\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count > highest:\n        highest = count\n        best = key\nprint(f\"Most common: {best} ({highest})\")",
+      "options": [
+        "Most common: B (3)",
+        "Most common:  (0)",
+        "Most common: 3 (3)",
+        "Most common: C (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-most-21eef4",
+      "text": "What does this print?",
+      "code": "votes = [\"X\", \"Y\", \"Y\", \"Z\", \"Y\", \"X\"]\nfreq = {}\nfor vote in votes:\n    if vote in freq:\n        freq[vote] += 1\n    else:\n        freq[vote] = 1\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count > highest:\n        highest = count\n        best = key\nprint(f\"Most common: {best} ({highest})\")",
+      "options": [
+        "Most common: Y (3)",
+        "Most common:  (0)",
+        "Most common: 3 (3)",
+        "Most common: Z (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-most-d5e616",
+      "text": "What does this print?",
+      "code": "votes = [\"D\", \"D\", \"E\", \"F\", \"F\", \"F\", \"F\"]\nfreq = {}\nfor vote in votes:\n    if vote in freq:\n        freq[vote] += 1\n    else:\n        freq[vote] = 1\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count > highest:\n        highest = count\n        best = key\nprint(f\"Most common: {best} ({highest})\")",
+      "options": [
+        "Most common: F (4)",
+        "Most common:  (0)",
+        "Most common: 4 (4)",
+        "Most common: F (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-most-90dcd4",
+      "text": "What does this print?",
+      "code": "votes = [\"M\", \"N\", \"N\", \"N\"]\nfreq = {}\nfor vote in votes:\n    if vote in freq:\n        freq[vote] += 1\n    else:\n        freq[vote] = 1\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count > highest:\n        highest = count\n        best = key\nprint(f\"Most common: {best} ({highest})\")",
+      "options": [
+        "Most common: N (3)",
+        "Most common:  (0)",
+        "Most common: 3 (3)",
+        "Most common: N (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-most-9b1b7a",
+      "text": "What does this print?",
+      "code": "votes = [\"Q\", \"R\", \"S\", \"R\", \"S\", \"S\", \"Q\", \"S\"]\nfreq = {}\nfor vote in votes:\n    if vote in freq:\n        freq[vote] += 1\n    else:\n        freq[vote] = 1\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count > highest:\n        highest = count\n        best = key\nprint(f\"Most common: {best} ({highest})\")",
+      "options": [
+        "Most common: S (4)",
+        "Most common:  (0)",
+        "Most common: 4 (4)",
+        "Most common: S (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-unique-4fe22d",
+      "text": "What does this print?",
+      "code": "word = \"banana\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nunique = []\nfor key, count in freq.items():\n    if count == 1:\n        unique.append(key)\nprint(unique)",
+      "options": ["['b']", "['a', 'n']", "[1]", "['b', 'a', 'n']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-unique-5d770b",
+      "text": "What does this print?",
+      "code": "word = \"rocket\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nunique = []\nfor key, count in freq.items():\n    if count == 1:\n        unique.append(key)\nprint(unique)",
+      "options": ["['r', 'o', 'c', 'k', 'e', 't']", "[]", "[1, 1, 1, 1, 1, 1]", "6"],
+      "answer": 0
+    },
+    {
+      "id": "fd-unique-e2d4e1",
+      "text": "What does this print?",
+      "code": "word = \"letters\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nunique = []\nfor key, count in freq.items():\n    if count == 1:\n        unique.append(key)\nprint(unique)",
+      "options": ["['l', 'r', 's']", "['e', 't']", "[1, 1, 1]", "['l', 'e', 't', 'r', 's']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-unique-06f61b",
+      "text": "What does this print?",
+      "code": "word = \"planet\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nunique = []\nfor key, count in freq.items():\n    if count == 1:\n        unique.append(key)\nprint(unique)",
+      "options": ["['p', 'l', 'a', 'n', 'e', 't']", "[]", "[1, 1, 1, 1, 1, 1]", "6"],
+      "answer": 0
+    },
+    {
+      "id": "fd-unique-12f7c6",
+      "text": "What does this print?",
+      "code": "word = \"coffee\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nunique = []\nfor key, count in freq.items():\n    if count == 1:\n        unique.append(key)\nprint(unique)",
+      "options": ["['c', 'o']", "['f', 'e']", "[1, 1]", "['c', 'o', 'f', 'e']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-sorted-26cb84",
+      "text": "What does this print?",
+      "code": "signals = [\"B\", \"A\", \"C\", \"B\", \"A\", \"B\"]\nfreq = {}\nfor signal in signals:\n    if signal in freq:\n        freq[signal] += 1\n    else:\n        freq[signal] = 1\nfor channel in sorted(freq):\n    print(f\"{channel}: {freq[channel]}\")",
+      "options": ["A: 2\nB: 3\nC: 1", "B: 3\nA: 2\nC: 1", "2: A\n3: B\n1: C", "A: 1\nB: 1\nC: 1"],
+      "answer": 0
+    },
+    {
+      "id": "fd-sorted-702c51",
+      "text": "What does this print?",
+      "code": "signals = [\"D\", \"C\", \"D\", \"A\"]\nfreq = {}\nfor signal in signals:\n    if signal in freq:\n        freq[signal] += 1\n    else:\n        freq[signal] = 1\nfor channel in sorted(freq):\n    print(f\"{channel}: {freq[channel]}\")",
+      "options": ["A: 1\nC: 1\nD: 2", "D: 2\nC: 1\nA: 1", "1: A\n1: C\n2: D", "A: 1\nC: 1\nD: 1"],
+      "answer": 0
+    },
+    {
+      "id": "fd-sorted-f23b4c",
+      "text": "What does this print?",
+      "code": "signals = [\"C\", \"B\", \"A\", \"C\", \"C\"]\nfreq = {}\nfor signal in signals:\n    if signal in freq:\n        freq[signal] += 1\n    else:\n        freq[signal] = 1\nfor channel in sorted(freq):\n    print(f\"{channel}: {freq[channel]}\")",
+      "options": ["A: 1\nB: 1\nC: 3", "C: 3\nB: 1\nA: 1", "1: A\n1: B\n3: C", "A: 1\nB: 1\nC: 1"],
+      "answer": 0
+    },
+    {
+      "id": "fd-sorted-b21f11",
+      "text": "What does this print?",
+      "code": "signals = [\"Z\", \"X\", \"Y\", \"X\"]\nfreq = {}\nfor signal in signals:\n    if signal in freq:\n        freq[signal] += 1\n    else:\n        freq[signal] = 1\nfor channel in sorted(freq):\n    print(f\"{channel}: {freq[channel]}\")",
+      "options": ["X: 2\nY: 1\nZ: 1", "Z: 1\nX: 2\nY: 1", "2: X\n1: Y\n1: Z", "X: 1\nY: 1\nZ: 1"],
+      "answer": 0
+    },
+    {
+      "id": "fd-sorted-f5c3b6",
+      "text": "What does this print?",
+      "code": "signals = [\"E\", \"A\", \"E\", \"B\", \"A\", \"E\"]\nfreq = {}\nfor signal in signals:\n    if signal in freq:\n        freq[signal] += 1\n    else:\n        freq[signal] = 1\nfor channel in sorted(freq):\n    print(f\"{channel}: {freq[channel]}\")",
+      "options": ["A: 2\nB: 1\nE: 3", "E: 3\nA: 2\nB: 1", "2: A\n1: B\n3: E", "A: 1\nB: 1\nE: 1"],
+      "answer": 0
+    },
+    {
+      "id": "fd-len-c3c61a",
+      "text": "What does this print?",
+      "code": "items = [1, 2, 1, 3, 1]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(len(items), len(freq))",
+      "options": ["5 3", "3 5", "5 {1: 3, 2: 1, 3: 1}", "5 4"],
+      "answer": 0
+    },
+    {
+      "id": "fd-len-4609a5",
+      "text": "What does this print?",
+      "code": "items = [5, 5, 5, 5]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(len(items), len(freq))",
+      "options": ["4 1", "1 4", "4 {5: 4}", "4 2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-len-e395ca",
+      "text": "What does this print?",
+      "code": "items = [4, 8, 4, 8, 2, 6]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(len(items), len(freq))",
+      "options": ["6 4", "4 6", "6 {4: 2, 8: 2, 2: 1, 6: 1}", "6 5"],
+      "answer": 0
+    },
+    {
+      "id": "fd-len-8fbba6",
+      "text": "What does this print?",
+      "code": "items = [7, 3, 9]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(len(items), len(freq))",
+      "options": ["3 3", "3 {7: 1, 3: 1, 9: 1}", "3 4", "3 2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-len-3ba871",
+      "text": "What does this print?",
+      "code": "items = [2, 2, 3, 3, 3, 2, 2]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(len(items), len(freq))",
+      "options": ["7 2", "2 7", "7 {2: 4, 3: 3}", "7 3"],
+      "answer": 0
+    },
+    {
+      "id": "fd-tie-1d57fa",
+      "text": "What does this print?",
+      "code": "freq = {\"a\": 2, \"b\": 4, \"c\": 4}\nbest_key = \"\"\nbest_count = 0\nfor key, count in freq.items():\n    if count > best_count:\n        best_count = count\n        best_key = key\nprint(best_key, best_count)",
+      "options": ["b 4", "c 4", "4 4", " 0"],
+      "answer": 0
+    },
+    {
+      "id": "fd-tie-2bd536",
+      "text": "What does this print?",
+      "code": "freq = {\"x\": 1, \"y\": 1, \"z\": 1}\nbest_key = \"\"\nbest_count = 0\nfor key, count in freq.items():\n    if count > best_count:\n        best_count = count\n        best_key = key\nprint(best_key, best_count)",
+      "options": ["x 1", "z 1", "1 1", " 0"],
+      "answer": 0
+    },
+    {
+      "id": "fd-tie-766d09",
+      "text": "What does this print?",
+      "code": "freq = {\"p\": 5, \"q\": 2, \"r\": 5}\nbest_key = \"\"\nbest_count = 0\nfor key, count in freq.items():\n    if count > best_count:\n        best_count = count\n        best_key = key\nprint(best_key, best_count)",
+      "options": ["p 5", "r 5", "5 5", " 0"],
+      "answer": 0
+    },
+    {
+      "id": "fd-tie-efdb59",
+      "text": "What does this print?",
+      "code": "freq = {\"m\": 3, \"n\": 6, \"o\": 6, \"k\": 1}\nbest_key = \"\"\nbest_count = 0\nfor key, count in freq.items():\n    if count > best_count:\n        best_count = count\n        best_key = key\nprint(best_key, best_count)",
+      "options": ["n 6", "o 6", "6 6", " 0"],
+      "answer": 0
+    },
+    {
+      "id": "fd-tie-69d372",
+      "text": "What does this print?",
+      "code": "freq = {\"s\": 7, \"t\": 7}\nbest_key = \"\"\nbest_count = 0\nfor key, count in freq.items():\n    if count > best_count:\n        best_count = count\n        best_key = key\nprint(best_key, best_count)",
+      "options": ["s 7", "t 7", "7 7", " 0"],
+      "answer": 0
+    },
+    {
+      "id": "fd-which-e1272f",
+      "text": "Which program shows this?",
+      "output": "{'n': 2, 'o': 2}",
+      "options": [
+        "word = \"noon\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+        "word = \"noon\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] = 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+        "word = \"noon\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 0\nprint(freq)",
+        "word = \"noon\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 2\n    else:\n        freq[letter] = 1\nprint(freq)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-which-39a53f",
+      "text": "Which program shows this?",
+      "output": "{'p': 3, 'u': 1, 'y': 1}",
+      "options": [
+        "word = \"puppy\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+        "word = \"puppy\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] = 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+        "word = \"puppy\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 0\nprint(freq)",
+        "word = \"puppy\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 2\n    else:\n        freq[letter] = 1\nprint(freq)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-which-78773a",
+      "text": "Which program shows this?",
+      "output": "{'c': 2, 'i': 2, 'v': 1}",
+      "options": [
+        "word = \"civic\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+        "word = \"civic\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] = 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+        "word = \"civic\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 0\nprint(freq)",
+        "word = \"civic\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 2\n    else:\n        freq[letter] = 1\nprint(freq)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-which-1bb17d",
+      "text": "Which program shows this?",
+      "output": "{'t': 1, 'r': 1, 'e': 2}",
+      "options": [
+        "word = \"tree\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+        "word = \"tree\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] = 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+        "word = \"tree\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 0\nprint(freq)",
+        "word = \"tree\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 2\n    else:\n        freq[letter] = 1\nprint(freq)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-which-4bbb5d",
+      "text": "Which program shows this?",
+      "output": "{'a': 1, 'd': 3, 'e': 1}",
+      "options": [
+        "word = \"added\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+        "word = \"added\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] = 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+        "word = \"added\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 0\nprint(freq)",
+        "word = \"added\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 2\n    else:\n        freq[letter] = 1\nprint(freq)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-add-51297e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"hello\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        ___\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "output": "{'h': 1, 'e': 1, 'l': 2, 'o': 1}",
+      "options": ["freq[letter] += 1", "freq[letter] = 1", "freq[letter] = 0", "freq[letter] += 2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-add-2f0349",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"banana\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        ___\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "output": "{'b': 1, 'a': 3, 'n': 2}",
+      "options": ["freq[letter] += 1", "freq[letter] = 1", "freq[letter] = 0", "freq[letter] += 2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-add-85dfad",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"moon\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        ___\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "output": "{'m': 1, 'o': 2, 'n': 1}",
+      "options": ["freq[letter] += 1", "freq[letter] = 1", "freq[letter] = 0", "freq[letter] += 2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-add-852762",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"cocoa\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        ___\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "output": "{'c': 2, 'o': 2, 'a': 1}",
+      "options": ["freq[letter] += 1", "freq[letter] = 1", "freq[letter] = 0", "freq[letter] += 2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-add-e2b6e0",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"puppy\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        ___\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "output": "{'p': 3, 'u': 1, 'y': 1}",
+      "options": ["freq[letter] += 1", "freq[letter] = 1", "freq[letter] = 0", "freq[letter] += 2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-new-18161d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"kayak\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = ___\nprint(freq)",
+      "output": "{'k': 2, 'a': 2, 'y': 1}",
+      "options": ["1", "0", "2", "letter"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-new-0600e1",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"stars\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = ___\nprint(freq)",
+      "output": "{'s': 2, 't': 1, 'a': 1, 'r': 1}",
+      "options": ["1", "0", "2", "letter"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-new-3dfa2d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"seven\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = ___\nprint(freq)",
+      "output": "{'s': 1, 'e': 2, 'v': 1, 'n': 1}",
+      "options": ["1", "0", "2", "letter"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-new-f8e906",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"tooth\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = ___\nprint(freq)",
+      "output": "{'t': 2, 'o': 2, 'h': 1}",
+      "options": ["1", "0", "2", "letter"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-new-968b1c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"array\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = ___\nprint(freq)",
+      "output": "{'a': 2, 'r': 2, 'y': 1}",
+      "options": ["1", "0", "2", "letter"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-best-c8a96d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "freq = {\"A\": 3, \"B\": 4, \"C\": 1}\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count ___ highest:\n        highest = count\n        best = key\nprint(best, highest)",
+      "output": "B 4",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-best-33b9c0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "freq = {\"x\": 2, \"y\": 5, \"z\": 3}\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count ___ highest:\n        highest = count\n        best = key\nprint(best, highest)",
+      "output": "y 5",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-best-b37338",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "freq = {\"python\": 5, \"java\": 3, \"c\": 2}\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count ___ highest:\n        highest = count\n        best = key\nprint(best, highest)",
+      "output": "python 5",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-best-deb80c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "freq = {\"red\": 1, \"blue\": 6, \"green\": 2}\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count ___ highest:\n        highest = count\n        best = key\nprint(best, highest)",
+      "output": "blue 6",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-best-44ac34",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "freq = {\"D\": 2, \"E\": 2, \"F\": 7}\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count ___ highest:\n        highest = count\n        best = key\nprint(best, highest)",
+      "output": "F 7",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-new-b26f13",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"pepper\"\nprint(word)\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 0\nprint(freq)",
+      "output": "pepper\n{'p': 3, 'e': 2, 'r': 1}",
+      "options": ["freq[letter] = 0", "freq[letter] += 1", "freq = {}", "print(word)"],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-new-0d7255",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"rocket\"\nprint(word)\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 0\nprint(freq)",
+      "output": "rocket\n{'r': 1, 'o': 1, 'c': 1, 'k': 1, 'e': 1, 't': 1}",
+      "options": ["freq[letter] = 0", "freq[letter] += 1", "freq = {}", "print(freq)"],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-new-44788d",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"lilac\"\nprint(word)\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 0\nprint(freq)",
+      "output": "lilac\n{'l': 2, 'i': 1, 'a': 1, 'c': 1}",
+      "options": ["freq[letter] = 0", "freq[letter] += 1", "freq = {}", "print(freq)"],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-new-71b886",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"ballad\"\nprint(word)\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 0\nprint(freq)",
+      "output": "ballad\n{'b': 1, 'a': 2, 'l': 2, 'd': 1}",
+      "options": ["freq[letter] = 0", "freq[letter] += 1", "freq = {}", "print(word)"],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-new-64203c",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"sniff\"\nprint(word)\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 0\nprint(freq)",
+      "output": "sniff\n{'s': 1, 'n': 1, 'i': 1, 'f': 2}",
+      "options": ["freq[letter] = 0", "freq[letter] += 1", "freq = {}", "print(word)"],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-best-a9828a",
+      "text": "Which line stops this program from printing this?",
+      "code": "freq = {\"A\": 3, \"B\": 4, \"C\": 1}\nprint(freq)\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count < highest:\n        highest = count\n        best = key\nprint(best)",
+      "output": "{'A': 3, 'B': 4, 'C': 1}\nB",
+      "options": [
+        "if count < highest:",
+        "for key, count in freq.items():",
+        "highest = 0",
+        "highest = count"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-best-61a90c",
+      "text": "Which line stops this program from printing this?",
+      "code": "freq = {\"x\": 2, \"y\": 5, \"z\": 3}\nprint(freq)\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count < highest:\n        highest = count\n        best = key\nprint(best)",
+      "output": "{'x': 2, 'y': 5, 'z': 3}\ny",
+      "options": [
+        "if count < highest:",
+        "for key, count in freq.items():",
+        "highest = count",
+        "best = key"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-best-e6b52d",
+      "text": "Which line stops this program from printing this?",
+      "code": "freq = {\"Q\": 6, \"R\": 2, \"S\": 4}\nprint(freq)\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count < highest:\n        highest = count\n        best = key\nprint(best)",
+      "output": "{'Q': 6, 'R': 2, 'S': 4}\nQ",
+      "options": [
+        "if count < highest:",
+        "for key, count in freq.items():",
+        "highest = count",
+        "best = key"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-best-3fbba0",
+      "text": "Which line stops this program from printing this?",
+      "code": "freq = {\"m\": 1, \"n\": 8, \"o\": 3}\nprint(freq)\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count < highest:\n        highest = count\n        best = key\nprint(best)",
+      "output": "{'m': 1, 'n': 8, 'o': 3}\nn",
+      "options": [
+        "if count < highest:",
+        "for key, count in freq.items():",
+        "highest = 0",
+        "highest = count"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-best-328184",
+      "text": "Which line stops this program from printing this?",
+      "code": "freq = {\"D\": 5, \"E\": 9, \"F\": 7}\nprint(freq)\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count < highest:\n        highest = count\n        best = key\nprint(best)",
+      "output": "{'D': 5, 'E': 9, 'F': 7}\nE",
+      "options": ["if count < highest:", "highest = count", "best = key", "print(best)"],
+      "answer": 0
+    }
+  ]
+}

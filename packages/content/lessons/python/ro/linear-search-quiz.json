@@ -1,0 +1,727 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Cum caută căutarea liniară o valoare într-o listă?",
+      "options": [
+        "Sare direct la mijlocul listei",
+        "Sortează întâi lista, apoi caută",
+        "Verifică elementele unul câte unul, de la început până la sfârșit",
+        "Verifică doar primul și ultimul element"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q2",
+      "text": "Ce returnează `cautare_liniara` din lecție când ținta nu e în listă?",
+      "options": ["0", "None", "Lungimea listei", "-1"],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "De ce returnează lecția -1 pentru „negăsit”?",
+      "options": [
+        "E o convenție: indexurile pe care le returnează căutarea pornesc de la 0, deci -1 iese în evidență ca nicio poziție",
+        "Altfel Python oprește funcția cu o eroare",
+        "Pentru că -1 este indexul primului element",
+        "Pentru că bucla numără invers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnume = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\", \"Sonny\"]\nprint(cautare_liniara(nume, \"Cortez\"))",
+      "options": ["2", "3", "Cortez", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "q5",
+      "text": "O listă are 1.000.000 de elemente și ținta nu e în ea. Câte elemente verifică căutarea liniară?",
+      "options": ["Cam 20", "Jumătate dintre ele", "Toate cele 1.000.000", "Doar primul"],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "Când face căutarea liniară cele mai multe verificări?",
+      "options": [
+        "Când ținta este primul element",
+        "Când ținta nu e în listă",
+        "Când lista e sortată",
+        "Când lista are doar numere"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Are nevoie căutarea liniară ca lista să fie sortată?",
+      "options": [
+        "Nu, merge pe orice listă",
+        "Da, de la cel mai mic la cel mai mare",
+        "Da, dar doar pentru liste de texte",
+        "Doar când lista are mai mult de 10 elemente"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Ce căutare mai rapidă, care vine mai târziu în curs, merge doar pe liste sortate?",
+      "options": [
+        "Căutarea liniară",
+        "Căutarea binară",
+        "Bubble Sort",
+        "Un dicționar de frecvență"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q9",
+      "text": "De ce este `return i` în buclă, sub `if`?",
+      "options": [
+        "Ca bucla să mai ruleze o dată",
+        "Ca funcția să se oprească la prima potrivire și să-i dea înapoi indexul",
+        "Ca să fie returnat fiecare index al listei",
+        "Python nu permite return după o buclă"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Ana\", \"Ben\", \"Ana\", \"Cal\"]\nprint(cautare_liniara(echipaj, \"Ana\"))",
+      "options": ["2", "0", "[0, 2]", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nprint(cautare_liniara([4, 7, 9], 9))",
+      "options": ["2", "9", "0", "-1"],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "Câte elemente verifică căutarea liniară ca să-l găsească pe „Cortez” în [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\", \"Sonny\"]?",
+      "options": ["3", "2", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "scoruri = [65, 42, 88, 95, 99]\n\nfor i in range(len(scoruri)):\n    if scoruri[i] > 90:\n        print(f\"Am gasit un scor peste 90: {scoruri[i]} la indexul {i}\")\n        break",
+      "options": [
+        "Am gasit un scor peste 90: 95 la indexul 4",
+        "Am gasit un scor peste 90: 88 la indexul 2",
+        "Am gasit un scor peste 90: 95 la indexul 3\nAm gasit un scor peste 90: 99 la indexul 4",
+        "Am gasit un scor peste 90: 95 la indexul 3"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q14",
+      "text": "În căutarea unui scor peste 90, ce face `break`?",
+      "options": [
+        "Sare peste scorul care se potrivește și merge mai departe",
+        "Oprește bucla la primul scor care se potrivește",
+        "Termină tot programul",
+        "Pornește bucla din nou de la indexul 0"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "scoruri = [65, 95, 42, 99]\nfor i in range(len(scoruri)):\n    if scoruri[i] > 90:\n        print(i)",
+      "options": ["1", "3", "1\n3", "95\n99"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Prin ce numere trece `range(len(elemente))` când `elemente` are 5 elemente?",
+      "options": ["1, 2, 3, 4, 5", "0, 1, 2, 3, 4", "0, 1, 2, 3, 4, 5", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "Ținta este ultimul din 10 elemente. Câte verificări face căutarea liniară?",
+      "options": ["9", "1", "5", "10"],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "Ținta este primul element. Câte verificări face căutarea liniară?",
+      "options": ["0", "2", "Câte elemente are lista", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "În misiune, ce trebuie să returneze `gaseste_echipaj(echipaj, tinta)` pentru un nume care nu e la bord?",
+      "options": ["0", "False", "Textul „nu este la bord”", "-1"],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultat = cautare_liniara([\"a\", \"b\"], \"c\")\nif rezultat == -1:\n    print(\"Negasit\")\nelse:\n    print(f\"Gasit la {rezultat}\")",
+      "options": ["Gasit la -1", "Gasit la 2", "Negasit\nGasit la -1", "Negasit"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce verifică `elemente[i] == tinta`?",
+      "options": [
+        "Dacă i este egal cu ținta",
+        "Dacă elementul de pe poziția i e cel căutat",
+        "Dacă lista conține ținta undeva",
+        "Dacă lista e la fel de lungă ca ținta"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Tommy\", \"Lance\"]\nprint(cautare_liniara(echipaj, \"tommy\"))",
+      "options": ["0", "Tommy", "-1", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "Care e diferența dintre `return i` și `return elemente[i]` într-o căutare?",
+      "options": [
+        "Niciuna, amândouă dau poziția",
+        "`return elemente[i]` oprește bucla, `return i` nu",
+        "`return i` dă poziția, `return elemente[i]` dă elementul însuși",
+        "`return i` merge doar pe liste de numere"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "Cum găsești indexul ultimei potriviri în loc de prima?",
+      "options": [
+        "Returnezi -1 în loc de i",
+        "Folosești `break` imediat după prima potrivire",
+        "Pornești bucla de la indexul 1",
+        "Parcurgi toată lista fără să te oprești și ții minte indexul de fiecare dată când se potrivește"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    verificari = 0\n    for i in range(len(elemente)):\n        verificari += 1\n        if elemente[i] == tinta:\n            return verificari\n    return verificari\n\nprint(cautare_liniara([3, 8, 1, 6], 6))",
+      "options": ["4", "3", "6", "1"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Lista devine de două ori mai lungă și ținta nu e în ea. Ce se întâmplă cu numărul de verificări?",
+      "options": ["Se dublează și el", "Rămâne la fel", "Crește cu unu", "Se înjumătățește"],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "De unde știe căutarea că ținta nu e în listă?",
+      "options": [
+        "Python dă o eroare pe care funcția o prinde",
+        "Primul element e diferit de țintă",
+        "Bucla se termină fără s-o găsească, așa că linia de după buclă returnează -1",
+        "Lista se golește"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nprint(cautare_liniara([], 3))",
+      "options": ["0", "-1", "None", "O eroare"],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nprint(cautare_liniara([10, 20, 30], 20))",
+      "options": ["1", "2", "0", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "În misiune, utilizatorul tastează `Zane`, care nu e pe listă. Ce afișează programul?",
+      "options": ["Zane este la statia -1", "-1", "Zane nu este la bord", "Zane este la statia 0"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "ls-index",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [{{L}}]\nprint(cautare_liniara(numere, {{t}}))",
+      "values": [
+        {
+          "L": "4, 8, 15, 16, 23",
+          "t": 15
+        },
+        {
+          "L": "7, 3, 9, 1",
+          "t": 1
+        },
+        {
+          "L": "12, 5, 12, 8",
+          "t": 8
+        },
+        {
+          "L": "6, 2, 6, 2",
+          "t": 2
+        },
+        {
+          "L": "30, 10, 20",
+          "t": 30
+        }
+      ],
+      "mistakes": [
+        ["            return i", "            return elemente[i]"],
+        ["    return -1", "    return 0"],
+        ["range(len(elemente))", "range(1, len(elemente))"],
+        ["elemente[i] == tinta", "elemente[i] != tinta"],
+        ["    return -1", "        return -1"]
+      ]
+    },
+    {
+      "id": "ls-missing",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [{{L}}]\nprint(cautare_liniara(numere, {{t}}))\nprint(cautare_liniara(numere, {{u}}))",
+      "values": [
+        {
+          "L": "4, 8, 15, 16",
+          "t": 16,
+          "u": 5
+        },
+        {
+          "L": "9, 1, 7",
+          "t": 2,
+          "u": 9
+        },
+        {
+          "L": "3, 6, 9, 12",
+          "t": 9,
+          "u": 10
+        },
+        {
+          "L": "20, 40, 60",
+          "t": 50,
+          "u": 60
+        },
+        {
+          "L": "5, 5, 1, 2",
+          "t": 1,
+          "u": 3
+        }
+      ],
+      "mistakes": [
+        ["    return -1", "    return 0"],
+        ["            return i", "            return elemente[i]"],
+        ["    return -1", "    return len(elemente)"],
+        ["elemente[i] == tinta", "elemente[i] > tinta"]
+      ]
+    },
+    {
+      "id": "ls-names",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [{{L}}]\nprint(cautare_liniara(echipaj, \"{{t}}\"))",
+      "values": [
+        {
+          "L": "\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"",
+          "t": "Phil"
+        },
+        {
+          "L": "\"Boris\", \"Cara\", \"Dmitri\"",
+          "t": "Cara"
+        },
+        {
+          "L": "\"Rex\", \"Ana\", \"Ben\", \"Ana\"",
+          "t": "Ana"
+        },
+        {
+          "L": "\"Kent\", \"Mercedes\", \"Victor\"",
+          "t": "Victor"
+        },
+        {
+          "L": "\"Sonny\", \"Lance\", \"Tommy\", \"Cortez\", \"Phil\"",
+          "t": "Tommy"
+        }
+      ],
+      "mistakes": [
+        ["            return i", "            return elemente[i]"],
+        ["    return -1", "        return -1"],
+        ["    return -1", "    return 0"],
+        ["            return i", "            return i + 1"],
+        ["elemente[i] == tinta", "elemente[i] != tinta"]
+      ]
+    },
+    {
+      "id": "ls-checks",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    verificari = 0\n    for i in range(len(elemente)):\n        verificari += 1\n        if elemente[i] == tinta:\n            return verificari\n    return verificari\n\nprint(cautare_liniara([{{L}}], {{t}}))",
+      "values": [
+        {
+          "L": "5, 9, 2, 7, 4",
+          "t": 7
+        },
+        {
+          "L": "8, 3, 6",
+          "t": 6
+        },
+        {
+          "L": "2, 4, 6, 8, 10, 12",
+          "t": 12
+        },
+        {
+          "L": "11, 22, 33, 44",
+          "t": 33
+        },
+        {
+          "L": "6, 7, 6, 7, 6",
+          "t": 7
+        }
+      ],
+      "mistakes": [
+        [
+          "        verificari += 1\n        if elemente[i] == tinta:\n            return verificari",
+          "        if elemente[i] == tinta:\n            return verificari\n        verificari += 1"
+        ],
+        ["        verificari += 1", "        verificari += 2"],
+        ["    verificari = 0", "    verificari = 1"],
+        ["elemente[i] == tinta", "elemente[i] != tinta"]
+      ]
+    },
+    {
+      "id": "ls-first-above",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "scoruri = [{{L}}]\nfor i in range(len(scoruri)):\n    if scoruri[i] > {{m}}:\n        print(f\"{scoruri[i]} la indexul {i}\")\n        break",
+      "values": [
+        {
+          "L": "65, 42, 95, 88, 99",
+          "m": 90
+        },
+        {
+          "L": "10, 30, 20, 50, 40",
+          "m": 25
+        },
+        {
+          "L": "7, 4, 9, 12, 3",
+          "m": 8
+        },
+        {
+          "L": "55, 60, 75, 80",
+          "m": 70
+        },
+        {
+          "L": "3, 8, 5, 9, 6",
+          "m": 4
+        }
+      ],
+      "mistakes": [
+        ["        break", "        continue"],
+        ["scoruri[i] > {{m}}", "scoruri[i] < {{m}}"],
+        ["{scoruri[i]} la indexul {i}", "{i} la indexul {scoruri[i]}"],
+        ["for i in range(len(scoruri)):", "for i in range(1, len(scoruri)):"]
+      ]
+    },
+    {
+      "id": "ls-find-all",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def gaseste_toate(elemente, tinta):\n    locuri = []\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            locuri.append(i)\n    return locuri\n\nprint(gaseste_toate([{{L}}], {{t}}))",
+      "values": [
+        {
+          "L": "3, 7, 3, 1, 3",
+          "t": 3
+        },
+        {
+          "L": "5, 2, 8, 2",
+          "t": 2
+        },
+        {
+          "L": "9, 9, 4",
+          "t": 9
+        },
+        {
+          "L": "8, 1, 8",
+          "t": 8
+        },
+        {
+          "L": "6, 0, 6, 0, 0",
+          "t": 0
+        }
+      ],
+      "mistakes": [
+        ["            locuri.append(i)", "            locuri.append(elemente[i])"],
+        ["    return locuri", "        return locuri"],
+        ["elemente[i] == tinta", "elemente[i] != tinta"],
+        ["            locuri.append(i)", "            locuri = [i]"]
+      ]
+    },
+    {
+      "id": "ls-last",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def gaseste_ultimul(elemente, tinta):\n    ultim = -1\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ultim = i\n    return ultim\n\nprint(gaseste_ultimul([{{L}}], {{t}}))",
+      "values": [
+        {
+          "L": "4, 1, 4, 2",
+          "t": 4
+        },
+        {
+          "L": "7, 7, 7",
+          "t": 7
+        },
+        {
+          "L": "2, 5, 8, 5, 1",
+          "t": 5
+        },
+        {
+          "L": "3, 6, 9, 6",
+          "t": 6
+        },
+        {
+          "L": "0, 1, 0, 1, 0, 2",
+          "t": 1
+        }
+      ],
+      "mistakes": [
+        ["            ultim = i", "            ultim = elemente[i]"],
+        ["            ultim = i", "            return i"],
+        ["            ultim = i", "            ultim = i + 1"],
+        ["elemente[i] == tinta", "elemente[i] != tinta"]
+      ]
+    },
+    {
+      "id": "ls-report",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef gaseste_echipaj(echipaj, tinta):\n    for i in range(len(echipaj)):\n        if echipaj[i] == tinta:\n            return i\n    return -1\n\ntinta = \"{{t}}\"\nstatie = gaseste_echipaj(echipaj, tinta)\nif statie == -1:\n    print(f\"{tinta} nu este la bord\")\nelse:\n    print(f\"{tinta} este la statia {statie}\")",
+      "values": [
+        {
+          "t": "Cara"
+        },
+        {
+          "t": "Boris"
+        },
+        {
+          "t": "Tommy"
+        },
+        {
+          "t": "Cortez"
+        },
+        {
+          "t": "Dmitri"
+        }
+      ],
+      "mistakes": [
+        ["statie == -1", "statie == 0"],
+        ["{tinta} este la statia {statie}", "{tinta} este la statia {statie + 1}"],
+        ["    return -1", "        return -1"],
+        ["            return i", "            return echipaj[i]"],
+        ["statie == -1", "statie != -1"]
+      ]
+    },
+    {
+      "id": "ls-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [{{L}}]\nprint(cautare_liniara(numere, {{t}}))",
+      "values": [
+        {
+          "L": "2, 4, 6, 8",
+          "t": 6
+        },
+        {
+          "L": "9, 7, 5, 3",
+          "t": 3
+        },
+        {
+          "L": "1, 3, 1, 3",
+          "t": 3
+        },
+        {
+          "L": "5, 10, 15, 20, 25",
+          "t": 25
+        },
+        {
+          "L": "1, 2, 3, 4, 5, 6",
+          "t": 6
+        }
+      ],
+      "mistakes": [
+        ["            return i", "            return elemente[i]"],
+        ["    return -1", "        return -1"],
+        ["range(len(elemente))", "range(len(elemente) - 1)"],
+        ["    return -1", "    return 0"],
+        ["elemente[i] == tinta", "elemente[i] != tinta"]
+      ]
+    },
+    {
+      "id": "ls-gap-return",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ___\n    return -1\n\nnumere = [{{L}}]\nprint(cautare_liniara(numere, {{t}}))\nprint(cautare_liniara(numere, {{u}}))",
+      "values": [
+        {
+          "L": "5, 10, 15, 20",
+          "t": 15,
+          "u": 4
+        },
+        {
+          "L": "8, 6, 7",
+          "t": 7,
+          "u": 8
+        },
+        {
+          "L": "3, 1, 4, 1",
+          "t": 4,
+          "u": 1
+        },
+        {
+          "L": "12, 24, 36",
+          "t": 36,
+          "u": 13
+        },
+        {
+          "L": "9, 0, 9",
+          "t": 0,
+          "u": 2
+        }
+      ],
+      "answer": "return i",
+      "wrong": ["return elemente[i]", "return -1", "print(i)", "return tinta"]
+    },
+    {
+      "id": "ls-gap-eq",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] ___ tinta:\n            return i\n    return -1\n\nnumere = [{{L}}]\nprint(cautare_liniara(numere, {{t}}))",
+      "values": [
+        {
+          "L": "3, 8, 5, 1",
+          "t": 5
+        },
+        {
+          "L": "9, 2, 7",
+          "t": 7
+        },
+        {
+          "L": "4, 6, 10, 2",
+          "t": 10
+        },
+        {
+          "L": "1, 5, 3",
+          "t": 3
+        },
+        {
+          "L": "20, 30, 25",
+          "t": 25
+        }
+      ],
+      "answer": "==",
+      "wrong": ["!=", ">", "<", "="]
+    },
+    {
+      "id": "ls-gap-notfound",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return ___\n\nnumere = [{{L}}]\nprint(cautare_liniara(numere, {{t}}))\nprint(cautare_liniara(numere, {{u}}))",
+      "values": [
+        {
+          "L": "2, 4, 6",
+          "t": 4,
+          "u": 5
+        },
+        {
+          "L": "7, 1, 9, 3",
+          "t": 9,
+          "u": 8
+        },
+        {
+          "L": "5, 15, 25",
+          "t": 25,
+          "u": 35
+        },
+        {
+          "L": "6, 3, 6",
+          "t": 6,
+          "u": 1
+        },
+        {
+          "L": "11, 13, 17, 19",
+          "t": 17,
+          "u": 12
+        }
+      ],
+      "answer": "-1",
+      "wrong": ["0", "i", "len(elemente)", "tinta"]
+    },
+    {
+      "id": "ls-bad-indent",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [{{L}}]\nprint(numere)\nprint(cautare_liniara(numere, {{t}}))",
+      "values": [
+        {
+          "L": "4, 9, 2, 7",
+          "t": 7
+        },
+        {
+          "L": "5, 3, 8",
+          "t": 8
+        },
+        {
+          "L": "1, 6, 3, 6",
+          "t": 3
+        },
+        {
+          "L": "10, 30, 50, 70",
+          "t": 50
+        },
+        {
+          "L": "8, 2, 4",
+          "t": 4
+        }
+      ],
+      "bug": ["    return -1", "        return -1"]
+    },
+    {
+      "id": "ls-bad-return",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [{{L}}]\nprint(numere)\nprint(cautare_liniara(numere, {{t}}))",
+      "values": [
+        {
+          "L": "40, 10, 30, 20",
+          "t": 30
+        },
+        {
+          "L": "6, 7, 8, 9",
+          "t": 9
+        },
+        {
+          "L": "15, 25, 35",
+          "t": 15
+        },
+        {
+          "L": "4, 5, 7, 11",
+          "t": 11
+        },
+        {
+          "L": "2, 9, 4, 1",
+          "t": 1
+        }
+      ],
+      "bug": ["            return i", "            return elemente[i]"]
+    }
+  ]
+}

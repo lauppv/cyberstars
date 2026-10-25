@@ -1,0 +1,669 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "În misiune, ce unealtă numără victoriile fiecărui membru al echipajului?",
+      "options": ["Bubble Sort", "Un dicționar de frecvență", "Căutarea liniară", "Un steag"],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Găsirea campionului înseamnă să treci o dată prin fiecare membru al echipajului și să-l ții pe cel mai bun. Ce idee e asta?",
+      "options": ["Selection Sort", "Un dicționar de frecvență", "Căutarea liniară", "Bubble Sort"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "De ce face misiunea tupluri `(victorii, nume)`, cu victoriile primele?",
+      "options": [
+        "Ca `[0]` să fie numărul de victorii, pe care îl compară sortarea",
+        "Pentru că tuplurile trebuie să înceapă cu un număr",
+        "Ca numele să iasă în ordine alfabetică",
+        "Python nu poate pune un text primul într-un tuplu"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "Cum sortează misiunea clasamentul?",
+      "options": [
+        "Cu Selection Sort, găsind cele mai multe victorii la fiecare trecere și mutându-le în față",
+        "Cu Bubble Sort, interschimbând vecini",
+        "Cu `sorted()`",
+        "Nu îl sortează"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q5",
+      "text": "Ca să sorteze de la cele mai multe victorii la cele mai puține, ce comparație folosește Selection Sort?",
+      "options": ["`<`: caută cel mai mic", "`>`: caută cel mai mare", "`==`", "`!=`"],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "pereche = (3, \"Boris\")\nprint(pereche[0], pereche[1])",
+      "options": ["Boris 3", "3 Boris", "(3, 'Boris')", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "contor, nume = (4, \"Tommy\")\nprint(f\"{nume} - {contor} victorii\")",
+      "options": [
+        "4 - Tommy victorii",
+        "Tommy - 4 victorii",
+        "Tommy - Tommy victorii",
+        "(4, 'Tommy')"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "victorii = {\"Rex\": 1, \"Cara\": 3, \"Boris\": 2}\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(f\"Campion: {campion} ({cel_mai_mare} victorii)\")",
+      "options": [
+        "Campion: Rex (1 victorii)",
+        "Campion: Boris (2 victorii)",
+        "Campion:  (0 victorii)",
+        "Campion: Cara (3 victorii)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Care e prima linie pe care o afișează misiunea?",
+      "options": [
+        "Campion: Tommy (4 victorii)",
+        "=== CLASAMENT ===",
+        "1. Tommy - 4 victorii",
+        "Campion: Boris (3 victorii)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "De ce afișează clasamentul `i + 1` și nu `i`?",
+      "options": [
+        "Ca ultimul membru al echipajului să fie lăsat afară",
+        "Pentru că `i` e numărul de victorii",
+        "Ca să sară peste campion",
+        "Locurile încep de la 1, dar indexurile de la 0"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "În misiune, care e ultima linie a clasamentului?",
+      "options": [
+        "4. Rex - 1 victorii",
+        "1. Rex - 1 victorii",
+        "4. Tommy - 4 victorii",
+        "3. Rex - 1 victorii"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "Rezultatele din misiune numesc 4 membri ai echipajului, de 10 ori în total. Câte linii vin după `=== CLASAMENT ===`?",
+      "options": ["4", "10", "1", "5"],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "victorii = {\"Rex\": 1, \"Tommy\": 2}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nprint(clasament)",
+      "options": [
+        "[('Rex', 1), ('Tommy', 2)]",
+        "[(2, 'Tommy'), (1, 'Rex')]",
+        "[(1, 'Rex'), (2, 'Tommy')]",
+        "[1, 2]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "clasament = [(3, \"Ana\"), (1, \"Cal\"), (3, \"Ben\")]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
+      "options": [
+        "[(3, 'Ben'), (3, 'Ana'), (1, 'Cal')]",
+        "[(1, 'Cal'), (3, 'Ana'), (3, 'Ben')]",
+        "[(3, 'Ana'), (3, 'Ben'), (1, 'Cal')]",
+        "[(3, 'Ana'), (1, 'Cal'), (3, 'Ben')]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "Ce unealtă din acest capitol răspunde la „unde e acest nume în listă?”",
+      "options": ["Un dicționar de frecvență", "Bubble Sort", "Căutarea liniară", "Selection Sort"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Ce unealtă din acest capitol răspunde la „de câte ori apare fiecare nume?”",
+      "options": ["Căutarea liniară", "Un dicționar de frecvență", "Bubble Sort", "Selection Sort"],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "Ce sortare din acest capitol interschimbă vecinii care nu sunt în ordine?",
+      "options": ["Selection Sort", "Amândouă", "Bubble Sort", "Niciuna"],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "Ce sortare din acest capitol găsește cel mai mic (sau cel mai mare) și îl interschimbă o dată pe trecere?",
+      "options": ["Bubble Sort", "Amândouă", "Selection Sort", "Niciuna"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 3, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] < numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "options": ["[1, 2, 3]", "[3, 1, 2]", "[3, 2, 1]", "[2, 3, 1]"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\"]\nprint(cautare_liniara(rezultate, \"Boris\"))",
+      "options": ["5", "8", "-1", "2"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "rezultate = [\"Rex\", \"Tommy\", \"Boris\", \"Tommy\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\nprint(victorii)",
+      "options": [
+        "{'Rex': 1, 'Tommy': 2, 'Boris': 1}",
+        "{'Tommy': 2, 'Rex': 1, 'Boris': 1}",
+        "{'Rex': 1, 'Tommy': 1, 'Boris': 1}",
+        "['Rex', 'Tommy', 'Boris']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "De ce compară sortarea `clasament[j][0]`, prima parte a fiecărui tuplu?",
+      "options": [
+        "`[0]` e numele membrului echipajului",
+        "Tuplurile au o singură parte",
+        "Ca lista să devină mai scurtă",
+        "`[0]` e numărul de victorii, după care facem clasamentul"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Ce interschimbă `clasament[i], clasament[index_max] = clasament[index_max], clasament[i]`?",
+      "options": [
+        "Două tupluri întregi, victorii și nume împreună",
+        "Doar victoriile celor doi",
+        "Doar numele",
+        "Mereu primul și ultimul element"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "De ce pornește căutarea campionului cu `cel_mai_mare = 0`?",
+      "options": [
+        "Pentru că campionul are 0 victorii",
+        "Oricine e în dicționar are cel puțin o victorie, deci primul îl înlocuiește",
+        "Ca bucla să meargă invers",
+        "Un dicționar nu poate ține 0"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "victorii = {\"Ana\": 2, \"Ben\": 2}\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor >= cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion)",
+      "options": ["Ana", "Ana\nBen", "Ben", "2"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "După ce misiunea sortează clasamentul, ce este `clasament[0]`?",
+      "options": ["('Tommy', 4)", "(1, 'Rex')", "4", "(4, 'Tommy')"],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "victorii = {\"Rex\": 1, \"Ana\": 3}\nprint(sorted(victorii))",
+      "options": ["['Ana', 'Rex']", "['Rex', 'Ana']", "[1, 3]", "[3, 1]"],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "pereche = (3, \"Boris\")\npereche[0] = 4\nprint(pereche)",
+      "options": [
+        "Afișează (4, 'Boris')",
+        "Afișează (3, 'Boris')",
+        "Afișează 4",
+        "Un TypeError: un tuplu nu poate fi schimbat după ce e făcut"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Câte comparații face Selection Sort pe un clasament de 4 membri ai echipajului?",
+      "options": ["4", "6", "16", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "Ce face `contor, nume = clasament[i]`?",
+      "options": [
+        "Face un tuplu nou din contor și nume",
+        "Compară contor cu nume",
+        "Schimbă tuplul din listă",
+        "Desface tuplul: victoriile lui ajung în `contor` și numele în `nume`"
+      ],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "ra-freq",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "rezultate = [{{r}}]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\nprint(victorii)",
+      "values": [
+        {
+          "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\""
+        },
+        {
+          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
+        },
+        {
+          "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\""
+        },
+        {
+          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\""
+        },
+        {
+          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\""
+        }
+      ],
+      "mistakes": [
+        ["        victorii[nume] += 1", "        victorii[nume] = 1"],
+        ["        victorii[nume] = 1", "        victorii[nume] = 0"],
+        ["print(victorii)", "print(len(victorii))"],
+        ["        victorii[nume] += 1", "        victorii[nume] += 2"]
+      ]
+    },
+    {
+      "id": "ra-champion",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "rezultate = [{{r}}]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(f\"Campion: {campion} ({cel_mai_mare} victorii)\")",
+      "values": [
+        {
+          "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\""
+        },
+        {
+          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
+        },
+        {
+          "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\""
+        },
+        {
+          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\""
+        },
+        {
+          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\""
+        }
+      ],
+      "mistakes": [
+        ["contor > cel_mai_mare", "contor < cel_mai_mare"],
+        ["        victorii[nume] += 1", "        victorii[nume] = 1"],
+        ["        campion = nume", "        campion = contor"],
+        ["({cel_mai_mare} victorii)", "({len(victorii)} victorii)"]
+      ]
+    },
+    {
+      "id": "ra-tuples",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "victorii = {{{d}}}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nprint(clasament)",
+      "values": [
+        {
+          "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
+        },
+        {
+          "d": "\"Ana\": 3, \"Ben\": 1"
+        },
+        {
+          "d": "\"Cara\": 2, \"Phil\": 5, \"Lance\": 1"
+        },
+        {
+          "d": "\"Kent\": 3, \"Vic\": 1, \"Mia\": 2"
+        },
+        {
+          "d": "\"Zoe\": 4, \"Liv\": 2"
+        }
+      ],
+      "mistakes": [
+        ["clasament.append((contor, nume))", "clasament.append((nume, contor))"],
+        ["clasament.append((contor, nume))", "clasament.append(contor)"],
+        ["clasament.append((contor, nume))", "clasament = [(contor, nume)]"],
+        ["print(clasament)", "print(len(clasament))"]
+      ]
+    },
+    {
+      "id": "ra-sort",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "clasament = [{{L}}]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
+      "values": [
+        {
+          "L": "(1, \"Rex\"), (4, \"Tommy\"), (3, \"Boris\")"
+        },
+        {
+          "L": "(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\"), (3, \"Dan\")"
+        },
+        {
+          "L": "(1, \"Phil\"), (3, \"Cara\"), (2, \"Lance\")"
+        },
+        {
+          "L": "(2, \"Kent\"), (1, \"Vic\"), (3, \"Mia\"), (4, \"Ivy\")"
+        },
+        {
+          "L": "(4, \"Zoe\"), (6, \"Liv\"), (2, \"Max\"), (5, \"Ivy\")"
+        }
+      ],
+      "mistakes": [
+        ["clasament[j][0] > clasament[index_max][0]", "clasament[j][0] < clasament[index_max][0]"],
+        ["            index_max = j", "            index_max = i"],
+        ["for i in range(len(clasament)):", "for i in range(1):"],
+        ["range(i + 1, len(clasament))", "range(i + 1, len(clasament) - 1)"]
+      ]
+    },
+    {
+      "id": "ra-board",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "victorii = {{{d}}}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nfor i in range(len(clasament)):\n    contor, nume = clasament[i]\n    print(f\"{i + 1}. {nume} - {contor} victorii\")",
+      "values": [
+        {
+          "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3, \"Cara\": 2"
+        },
+        {
+          "d": "\"Ana\": 3, \"Ben\": 1, \"Cal\": 2"
+        },
+        {
+          "d": "\"Lance\": 1, \"Phil\": 3"
+        },
+        {
+          "d": "\"Kent\": 2, \"Vic\": 5, \"Mia\": 1"
+        },
+        {
+          "d": "\"Zoe\": 1, \"Liv\": 2, \"Max\": 4"
+        }
+      ],
+      "mistakes": [
+        ["{i + 1}. ", "{i}. "],
+        ["clasament[j][0] > clasament[index_max][0]", "clasament[j][0] < clasament[index_max][0]"],
+        ["    contor, nume = clasament[i]", "    nume, contor = clasament[i]"],
+        ["            index_max = j", "            index_max = i"]
+      ]
+    },
+    {
+      "id": "ra-linear",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [{{r}}]\nprint(cautare_liniara(rezultate, \"{{t}}\"))",
+      "values": [
+        {
+          "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\"",
+          "t": "Cara"
+        },
+        {
+          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"",
+          "t": "Cal"
+        },
+        {
+          "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\"",
+          "t": "Sonny"
+        },
+        {
+          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\"",
+          "t": "Vic"
+        },
+        {
+          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\"",
+          "t": "Liv"
+        }
+      ],
+      "mistakes": [
+        ["            return i", "            return elemente[i]"],
+        ["    return -1", "        return -1"],
+        ["            return i", "            return i + 1"],
+        ["elemente[i] == tinta", "elemente[i] != tinta"]
+      ]
+    },
+    {
+      "id": "ra-bubble-desc",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{L}}]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] < numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
+      "values": [
+        {
+          "L": "1, 4, 3, 2"
+        },
+        {
+          "L": "5, 3, 8, 1"
+        },
+        {
+          "L": "2, 7, 4"
+        },
+        {
+          "L": "10, 30, 20, 40"
+        },
+        {
+          "L": "6, 9, 2, 8, 5"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] < numere[j + 1]", "numere[j] > numere[j + 1]"],
+        ["for i in range(len(numere)):", "for i in range(1):"],
+        [
+          "            numere[j], numere[j + 1] = numere[j + 1], numere[j]",
+          "            numere[j] = numere[j + 1]"
+        ],
+        ["print(numere)", "print(numere[0])"]
+      ]
+    },
+    {
+      "id": "ra-selection-max",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{L}}]\nfor i in range(len(numere)):\n    index_max = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] > numere[index_max]:\n            index_max = j\n    numere[i], numere[index_max] = numere[index_max], numere[i]\n    print(numere)",
+      "values": [
+        {
+          "L": "2, 5, 1, 4"
+        },
+        {
+          "L": "3, 1, 2"
+        },
+        {
+          "L": "1, 6, 3, 7"
+        },
+        {
+          "L": "4, 2, 9"
+        },
+        {
+          "L": "5, 8, 6, 7"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] > numere[index_max]", "numere[j] < numere[index_max]"],
+        ["    print(numere)", "print(numere)"],
+        ["            index_max = j", "            index_max = i"],
+        ["range(i + 1, len(numere))", "range(i + 1, len(numere) - 1)"]
+      ]
+    },
+    {
+      "id": "ra-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "rezultate = [{{r}}]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion, cel_mai_mare)",
+      "values": [
+        {
+          "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\""
+        },
+        {
+          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
+        },
+        {
+          "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\""
+        },
+        {
+          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\""
+        },
+        {
+          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\""
+        }
+      ],
+      "mistakes": [
+        ["contor > cel_mai_mare", "contor < cel_mai_mare"],
+        ["        victorii[nume] += 1", "        victorii[nume] = 1"],
+        ["        campion = nume", "        campion = contor"],
+        ["print(campion, cel_mai_mare)", "print(nume, contor)"]
+      ]
+    },
+    {
+      "id": "ra-gap-append",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "victorii = {{{d}}}\nclasament = []\nfor nume, contor in victorii.items():\n    ___\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
+      "values": [
+        {
+          "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
+        },
+        {
+          "d": "\"Ana\": 3, \"Ben\": 1, \"Cal\": 2"
+        },
+        {
+          "d": "\"Phil\": 2, \"Lance\": 5"
+        },
+        {
+          "d": "\"Kent\": 1, \"Vic\": 3, \"Mia\": 2"
+        },
+        {
+          "d": "\"Zoe\": 2, \"Liv\": 6, \"Max\": 4"
+        }
+      ],
+      "answer": "clasament.append((contor, nume))",
+      "wrong": [
+        "clasament.append((nume, contor))",
+        "clasament = [(contor, nume)]",
+        "clasament.append(nume)",
+        "clasament.append(contor)"
+      ]
+    },
+    {
+      "id": "ra-gap-cmp",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "clasament = [{{L}}]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] ___ clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
+      "values": [
+        {
+          "L": "(1, \"Rex\"), (4, \"Tommy\"), (3, \"Boris\")"
+        },
+        {
+          "L": "(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")"
+        },
+        {
+          "L": "(3, \"Cara\"), (1, \"Phil\"), (2, \"Lance\")"
+        },
+        {
+          "L": "(1, \"Kent\"), (2, \"Vic\"), (3, \"Mia\")"
+        },
+        {
+          "L": "(4, \"Zoe\"), (6, \"Liv\"), (2, \"Max\")"
+        }
+      ],
+      "answer": ">",
+      "wrong": ["<", "==", "="]
+    },
+    {
+      "id": "ra-gap-rank",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "clasament = [{{L}}]\nfor i in range(len(clasament)):\n    contor, nume = clasament[i]\n    print(f\"{___}. {nume} - {contor} victorii\")",
+      "values": [
+        {
+          "L": "(4, \"Tommy\"), (3, \"Boris\"), (1, \"Rex\")"
+        },
+        {
+          "L": "(5, \"Ben\"), (2, \"Ana\")"
+        },
+        {
+          "L": "(3, \"Cara\"), (2, \"Lance\"), (1, \"Phil\")"
+        },
+        {
+          "L": "(6, \"Liv\"), (4, \"Zoe\"), (2, \"Max\"), (1, \"Ivy\")"
+        },
+        {
+          "L": "(3, \"Mia\"), (2, \"Vic\")"
+        }
+      ],
+      "answer": "i + 1",
+      "wrong": ["i", "contor", "len(clasament)", "i - 1"]
+    },
+    {
+      "id": "ra-bad-champ",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "victorii = {{{d}}}\nprint(victorii)\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion, cel_mai_mare)",
+      "values": [
+        {
+          "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
+        },
+        {
+          "d": "\"Ana\": 3, \"Ben\": 1, \"Cal\": 2"
+        },
+        {
+          "d": "\"Phil\": 2, \"Lance\": 5, \"Sonny\": 3"
+        },
+        {
+          "d": "\"Kent\": 1, \"Vic\": 3, \"Mia\": 2"
+        },
+        {
+          "d": "\"Zoe\": 2, \"Liv\": 6, \"Max\": 4"
+        }
+      ],
+      "bug": ["contor > cel_mai_mare", "contor < cel_mai_mare"]
+    },
+    {
+      "id": "ra-bad-sort",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "clasament = [{{L}}]\nprint(clasament)\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
+      "values": [
+        {
+          "L": "(1, \"Rex\"), (4, \"Tommy\"), (3, \"Boris\")"
+        },
+        {
+          "L": "(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")"
+        },
+        {
+          "L": "(3, \"Cara\"), (1, \"Phil\"), (4, \"Lance\")"
+        },
+        {
+          "L": "(1, \"Kent\"), (2, \"Vic\"), (3, \"Mia\")"
+        },
+        {
+          "L": "(4, \"Zoe\"), (6, \"Liv\"), (2, \"Max\")"
+        }
+      ],
+      "bug": ["            index_max = j", "            index_max = i"]
+    }
+  ]
+}

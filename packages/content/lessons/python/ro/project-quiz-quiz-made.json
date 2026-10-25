@@ -1,0 +1,750 @@
+{
+  "note": "Made by npm run make:quiz from the templates in project-quiz-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "pq-grade-b82e2f",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}]\nraspunsuri_jucator = [\"B\", \"C\", \"A\", \"B\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            corecte += 1\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "options": ["Scor: 3/4", "Scor: 1/4", "Scor: 2/4", "Scor: 4/3"],
+      "answer": 0
+    },
+    {
+      "id": "pq-grade-3e419c",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"A\"}]\nraspunsuri_jucator = [\"A\", \"B\", \"D\", \"D\", \"C\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            corecte += 1\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "options": ["Scor: 3/5", "Scor: 1/5", "Scor: 2/5", "Scor: 5/3"],
+      "answer": 0
+    },
+    {
+      "id": "pq-grade-141e5a",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}]\nraspunsuri_jucator = [\"C\", \"A\", \"B\", \"A\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            corecte += 1\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "options": ["Scor: 3/4", "Scor: 1/4", "Scor: 2/4", "Scor: 4/3"],
+      "answer": 0
+    },
+    {
+      "id": "pq-grade-3dddc8",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri_jucator = [\"D\", \"C\", \"B\", \"C\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            corecte += 1\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "options": ["Scor: 3/4", "Scor: 1/4", "Scor: 2/4", "Scor: 4/3"],
+      "answer": 0
+    },
+    {
+      "id": "pq-grade-fa0948",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]\nraspunsuri_jucator = [\"B\", \"A\", \"A\", \"A\", \"C\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            corecte += 1\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "options": ["Scor: 4/5", "Scor: 1/5", "Scor: 3/5", "Scor: 5/4"],
+      "answer": 0
+    },
+    {
+      "id": "pq-percent-728916",
+      "text": "Ce afișează?",
+      "code": "scor = 3\ntotal = 4\nprocent = round(scor / total * 100)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "options": [
+        "Procentaj: 75%\nAdmis",
+        "Procentaj: 133%\nAdmis",
+        "Procentaj: 0%\nRespins",
+        "Procentaj: 75%\nRespins"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-percent-d842c4",
+      "text": "Ce afișează?",
+      "code": "scor = 1\ntotal = 3\nprocent = round(scor / total * 100)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "options": [
+        "Procentaj: 33%\nRespins",
+        "Procentaj: 300%\nAdmis",
+        "Procentaj: 0%\nRespins",
+        "Procentaj: 33%\nAdmis"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-percent-f7105d",
+      "text": "Ce afișează?",
+      "code": "scor = 5\ntotal = 8\nprocent = round(scor / total * 100)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "options": [
+        "Procentaj: 62%\nAdmis",
+        "Procentaj: 160%\nAdmis",
+        "Procentaj: 0%\nRespins",
+        "Procentaj: 62%\nRespins"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-percent-00f922",
+      "text": "Ce afișează?",
+      "code": "scor = 2\ntotal = 5\nprocent = round(scor / total * 100)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "options": [
+        "Procentaj: 40%\nRespins",
+        "Procentaj: 250%\nAdmis",
+        "Procentaj: 0%\nRespins",
+        "Procentaj: 40%\nAdmis"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-percent-d06a98",
+      "text": "Ce afișează?",
+      "code": "scor = 7\ntotal = 10\nprocent = round(scor / total * 100)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "options": [
+        "Procentaj: 70%\nAdmis",
+        "Procentaj: 143%\nAdmis",
+        "Procentaj: 0%\nRespins",
+        "Procentaj: 70%\nRespins"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-upper-e1975b",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}]\nraspunsuri = [\"b\", \"C\", \"a\", \"D\"]\nscor = 0\nfor i in range(len(quiz)):\n    if raspunsuri[i].upper() == quiz[i][\"raspuns\"]:\n        scor += 1\nprint(f\"Scor: {scor}\")",
+      "options": ["Scor: 3", "Scor: 1", "Scor: 0", "Scor: 4"],
+      "answer": 0
+    },
+    {
+      "id": "pq-upper-9fe713",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"B\"}]\nraspunsuri = [\"a\", \"d\", \"C\", \"C\"]\nscor = 0\nfor i in range(len(quiz)):\n    if raspunsuri[i].upper() == quiz[i][\"raspuns\"]:\n        scor += 1\nprint(f\"Scor: {scor}\")",
+      "options": ["Scor: 3", "Scor: 1", "Scor: 0", "Scor: 4"],
+      "answer": 0
+    },
+    {
+      "id": "pq-upper-616ab9",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}]\nraspunsuri = [\"c\", \"C\", \"b\", \"d\"]\nscor = 0\nfor i in range(len(quiz)):\n    if raspunsuri[i].upper() == quiz[i][\"raspuns\"]:\n        scor += 1\nprint(f\"Scor: {scor}\")",
+      "options": ["Scor: 3", "Scor: 1", "Scor: 0", "Scor: 4"],
+      "answer": 0
+    },
+    {
+      "id": "pq-upper-983b6d",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"D\", \"b\", \"a\", \"A\"]\nscor = 0\nfor i in range(len(quiz)):\n    if raspunsuri[i].upper() == quiz[i][\"raspuns\"]:\n        scor += 1\nprint(f\"Scor: {scor}\")",
+      "options": ["Scor: 3", "Scor: 1", "Scor: 0", "Scor: 4"],
+      "answer": 0
+    },
+    {
+      "id": "pq-upper-3c45dc",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"D\"}]\nraspunsuri = [\"a\", \"b\", \"c\", \"B\"]\nscor = 0\nfor i in range(len(quiz)):\n    if raspunsuri[i].upper() == quiz[i][\"raspuns\"]:\n        scor += 1\nprint(f\"Scor: {scor}\")",
+      "options": ["Scor: 3", "Scor: 0", "Scor: 4", "Scor: 1"],
+      "answer": 0
+    },
+    {
+      "id": "pq-numbers-9fe799",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"text\": \"Ce face print()?\"}, {\"text\": \"Ce incepe un comentariu?\"}]\nfor i, q in enumerate(quiz):\n    print(f\"Intrebarea {i + 1}: {q['text']}\")",
+      "options": [
+        "Intrebarea 1: Ce face print()?\nIntrebarea 2: Ce incepe un comentariu?",
+        "Intrebarea 0: Ce face print()?\nIntrebarea 1: Ce incepe un comentariu?",
+        "Intrebarea 1: {'text': 'Ce face print()?'}\nIntrebarea 2: {'text': 'Ce incepe un comentariu?'}",
+        "Intrebarea 2: Ce face print()?\nIntrebarea 2: Ce incepe un comentariu?"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-numbers-ee958a",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"text\": \"Ce returneaza len()?\"}, {\"text\": \"Ce cuvant-cheie defineste o functie?\"}, {\"text\": \"Ce da inapoi input()?\"}]\nfor i, q in enumerate(quiz):\n    print(f\"Intrebarea {i + 1}: {q['text']}\")",
+      "options": [
+        "Intrebarea 1: Ce returneaza len()?\nIntrebarea 2: Ce cuvant-cheie defineste o functie?\nIntrebarea 3: Ce da inapoi input()?",
+        "Intrebarea 0: Ce returneaza len()?\nIntrebarea 1: Ce cuvant-cheie defineste o functie?\nIntrebarea 2: Ce da inapoi input()?",
+        "Intrebarea 1: {'text': 'Ce returneaza len()?'}\nIntrebarea 2: {'text': 'Ce cuvant-cheie defineste o functie?'}\nIntrebarea 3: {'text': 'Ce da inapoi input()?'}",
+        "Intrebarea 3: Ce returneaza len()?\nIntrebarea 3: Ce cuvant-cheie defineste o functie?\nIntrebarea 3: Ce da inapoi input()?"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-numbers-edf530",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"text\": \"Cat face 7 // 2?\"}, {\"text\": \"Ce face break?\"}]\nfor i, q in enumerate(quiz):\n    print(f\"Intrebarea {i + 1}: {q['text']}\")",
+      "options": [
+        "Intrebarea 1: Cat face 7 // 2?\nIntrebarea 2: Ce face break?",
+        "Intrebarea 0: Cat face 7 // 2?\nIntrebarea 1: Ce face break?",
+        "Intrebarea 1: {'text': 'Cat face 7 // 2?'}\nIntrebarea 2: {'text': 'Ce face break?'}",
+        "Intrebarea 2: Cat face 7 // 2?\nIntrebarea 2: Ce face break?"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-numbers-8801d6",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"text\": \"Ce bucla se repeta cat timp o conditie e adevarata?\"}, {\"text\": \"Ce face .upper()?\"}, {\"text\": \"Ce este o lista?\"}]\nfor i, q in enumerate(quiz):\n    print(f\"Intrebarea {i + 1}: {q['text']}\")",
+      "options": [
+        "Intrebarea 1: Ce bucla se repeta cat timp o conditie e adevarata?\nIntrebarea 2: Ce face .upper()?\nIntrebarea 3: Ce este o lista?",
+        "Intrebarea 0: Ce bucla se repeta cat timp o conditie e adevarata?\nIntrebarea 1: Ce face .upper()?\nIntrebarea 2: Ce este o lista?",
+        "Intrebarea 1: {'text': 'Ce bucla se repeta cat timp o conditie e adevarata?'}\nIntrebarea 2: {'text': 'Ce face .upper()?'}\nIntrebarea 3: {'text': 'Ce este o lista?'}",
+        "Intrebarea 3: Ce bucla se repeta cat timp o conditie e adevarata?\nIntrebarea 3: Ce face .upper()?\nIntrebarea 3: Ce este o lista?"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-numbers-c07e99",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"text\": \"Ce face return?\"}, {\"text\": \"Ce este un dictionar?\"}]\nfor i, q in enumerate(quiz):\n    print(f\"Intrebarea {i + 1}: {q['text']}\")",
+      "options": [
+        "Intrebarea 1: Ce face return?\nIntrebarea 2: Ce este un dictionar?",
+        "Intrebarea 0: Ce face return?\nIntrebarea 1: Ce este un dictionar?",
+        "Intrebarea 1: {'text': 'Ce face return?'}\nIntrebarea 2: {'text': 'Ce este un dictionar?'}",
+        "Intrebarea 2: Ce face return?\nIntrebarea 2: Ce este un dictionar?"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-feedback-0c8b30",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+      "options": [
+        "Corect!\nGresit! Raspunsul era C",
+        "Corect!\nGresit! Raspunsul era A",
+        "Gresit! Raspunsul era B\nCorect!",
+        "Corect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-feedback-3bd5af",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"D\", \"D\", \"C\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+      "options": [
+        "Gresit! Raspunsul era A\nCorect!\nCorect!",
+        "Gresit! Raspunsul era D\nCorect!\nCorect!",
+        "Corect!\nGresit! Raspunsul era D\nGresit! Raspunsul era C",
+        "Gresit! Raspunsul era A\nCorect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-feedback-67ad77",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}]\nraspunsuri = [\"C\", \"A\", \"D\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+      "options": [
+        "Corect!\nCorect!\nGresit! Raspunsul era B",
+        "Corect!\nCorect!\nGresit! Raspunsul era D",
+        "Gresit! Raspunsul era C\nGresit! Raspunsul era A\nCorect!",
+        "Corect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-feedback-63704b",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"A\", \"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+      "options": [
+        "Gresit! Raspunsul era D\nCorect!\nGresit! Raspunsul era C",
+        "Gresit! Raspunsul era A\nCorect!\nGresit! Raspunsul era A",
+        "Corect!\nGresit! Raspunsul era B\nCorect!",
+        "Gresit! Raspunsul era D\nCorect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-feedback-3b9c97",
+      "text": "Ce afișează?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"C\", \"A\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+      "options": [
+        "Gresit! Raspunsul era B\nCorect!\nGresit! Raspunsul era C",
+        "Gresit! Raspunsul era C\nCorect!\nGresit! Raspunsul era A",
+        "Corect!\nGresit! Raspunsul era A\nCorect!",
+        "Gresit! Raspunsul era B\nCorect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-tuple-b82e2f",
+      "text": "Ce afișează?",
+      "code": "def ruleaza_test(intrebari, raspunsuri):\n    scor = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            scor += 1\n    return scor, len(intrebari)\n\nscor, total = ruleaza_test([{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}], [\"B\", \"C\", \"A\", \"B\"])\nprocent = round(scor / total * 100)\nprint(f\"Scor final: {scor}/{total} ({procent}%)\")",
+      "options": [
+        "Scor final: 3/4 (75%)",
+        "Scor final: 4/3 (133%)",
+        "Scor final: 1/4 (25%)",
+        "Scor final: 3/4 (8%)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-tuple-afd78a",
+      "text": "Ce afișează?",
+      "code": "def ruleaza_test(intrebari, raspunsuri):\n    scor = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            scor += 1\n    return scor, len(intrebari)\n\nscor, total = ruleaza_test([{\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}], [\"A\", \"C\", \"C\"])\nprocent = round(scor / total * 100)\nprint(f\"Scor final: {scor}/{total} ({procent}%)\")",
+      "options": [
+        "Scor final: 2/3 (67%)",
+        "Scor final: 3/2 (150%)",
+        "Scor final: 1/3 (33%)",
+        "Scor final: 2/3 (7%)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-tuple-d5da91",
+      "text": "Ce afișează?",
+      "code": "def ruleaza_test(intrebari, raspunsuri):\n    scor = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            scor += 1\n    return scor, len(intrebari)\n\nscor, total = ruleaza_test([{\"raspuns\": \"C\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}], [\"C\", \"C\", \"B\", \"B\"])\nprocent = round(scor / total * 100)\nprint(f\"Scor final: {scor}/{total} ({procent}%)\")",
+      "options": [
+        "Scor final: 3/4 (75%)",
+        "Scor final: 4/3 (133%)",
+        "Scor final: 1/4 (25%)",
+        "Scor final: 3/4 (8%)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-tuple-e7e899",
+      "text": "Ce afișează?",
+      "code": "def ruleaza_test(intrebari, raspunsuri):\n    scor = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            scor += 1\n    return scor, len(intrebari)\n\nscor, total = ruleaza_test([{\"raspuns\": \"D\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}], [\"D\", \"C\", \"B\", \"C\", \"B\"])\nprocent = round(scor / total * 100)\nprint(f\"Scor final: {scor}/{total} ({procent}%)\")",
+      "options": [
+        "Scor final: 3/5 (60%)",
+        "Scor final: 5/3 (167%)",
+        "Scor final: 1/5 (20%)",
+        "Scor final: 3/5 (6%)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-tuple-0521ba",
+      "text": "Ce afișează?",
+      "code": "def ruleaza_test(intrebari, raspunsuri):\n    scor = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            scor += 1\n    return scor, len(intrebari)\n\nscor, total = ruleaza_test([{\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}], [\"B\", \"B\", \"C\"])\nprocent = round(scor / total * 100)\nprint(f\"Scor final: {scor}/{total} ({procent}%)\")",
+      "options": [
+        "Scor final: 2/3 (67%)",
+        "Scor final: 3/2 (150%)",
+        "Scor final: 1/3 (33%)",
+        "Scor final: 2/3 (7%)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-zip-0dc860",
+      "text": "Ce afișează?",
+      "code": "chei = [\"B\", \"C\", \"A\", \"D\"]\nraspunsuri = [\"B\", \"C\", \"A\", \"B\"]\nscor = 0\nfor cheie, raspuns in zip(chei, raspunsuri):\n    if cheie == raspuns:\n        scor += 1\nprint(f\"{scor} corecte, {len(chei) - scor} gresite\")",
+      "options": [
+        "3 corecte, 1 gresite",
+        "1 corecte, 3 gresite",
+        "3 corecte, 4 gresite",
+        "6 corecte, -2 gresite"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-zip-34b9d7",
+      "text": "Ce afișează?",
+      "code": "chei = [\"A\", \"A\", \"B\"]\nraspunsuri = [\"A\", \"B\", \"B\"]\nscor = 0\nfor cheie, raspuns in zip(chei, raspunsuri):\n    if cheie == raspuns:\n        scor += 1\nprint(f\"{scor} corecte, {len(chei) - scor} gresite\")",
+      "options": [
+        "2 corecte, 1 gresite",
+        "1 corecte, 2 gresite",
+        "2 corecte, 3 gresite",
+        "4 corecte, -1 gresite"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-zip-2d630b",
+      "text": "Ce afișează?",
+      "code": "chei = [\"C\", \"D\", \"B\", \"A\", \"C\"]\nraspunsuri = [\"C\", \"D\", \"C\", \"A\", \"A\"]\nscor = 0\nfor cheie, raspuns in zip(chei, raspunsuri):\n    if cheie == raspuns:\n        scor += 1\nprint(f\"{scor} corecte, {len(chei) - scor} gresite\")",
+      "options": [
+        "3 corecte, 2 gresite",
+        "2 corecte, 3 gresite",
+        "3 corecte, 5 gresite",
+        "6 corecte, -1 gresite"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-zip-80cb5c",
+      "text": "Ce afișează?",
+      "code": "chei = [\"D\", \"D\", \"A\"]\nraspunsuri = [\"D\", \"C\", \"A\"]\nscor = 0\nfor cheie, raspuns in zip(chei, raspunsuri):\n    if cheie == raspuns:\n        scor += 1\nprint(f\"{scor} corecte, {len(chei) - scor} gresite\")",
+      "options": [
+        "2 corecte, 1 gresite",
+        "1 corecte, 2 gresite",
+        "2 corecte, 3 gresite",
+        "4 corecte, -1 gresite"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-zip-1f43ff",
+      "text": "Ce afișează?",
+      "code": "chei = [\"A\", \"B\", \"C\", \"D\"]\nraspunsuri = [\"A\", \"B\", \"B\", \"D\"]\nscor = 0\nfor cheie, raspuns in zip(chei, raspunsuri):\n    if cheie == raspuns:\n        scor += 1\nprint(f\"{scor} corecte, {len(chei) - scor} gresite\")",
+      "options": [
+        "3 corecte, 1 gresite",
+        "1 corecte, 3 gresite",
+        "3 corecte, 4 gresite",
+        "6 corecte, -2 gresite"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-count-74da90",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}]\nraspunsuri_jucator = [\"B\", \"C\", \"A\", \"B\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            ___\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "output": "Scor: 3/4",
+      "options": ["corecte += 1", "corecte = 1", "return corecte", "corecte += 2"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-count-11dc5b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"A\"}]\nraspunsuri_jucator = [\"A\", \"B\", \"D\", \"D\", \"C\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            ___\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "output": "Scor: 3/5",
+      "options": ["corecte += 1", "corecte = 1", "corecte += i", "return corecte"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-count-c7b3d3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}]\nraspunsuri_jucator = [\"C\", \"A\", \"B\", \"A\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            ___\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "output": "Scor: 3/4",
+      "options": ["corecte += 1", "corecte = 1", "corecte += i", "return corecte"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-count-106c2a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri_jucator = [\"D\", \"C\", \"B\", \"C\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            ___\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "output": "Scor: 3/4",
+      "options": ["corecte += 1", "corecte = 1", "corecte += i", "return corecte"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-count-2806c3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]\nraspunsuri_jucator = [\"B\", \"A\", \"A\", \"A\", \"C\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][\"raspuns\"] == raspunsuri[i]:\n            ___\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "output": "Scor: 4/5",
+      "options": ["corecte += 1", "corecte = 1", "corecte += i", "return corecte"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-key-72a3f2",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}]\nraspunsuri_jucator = [\"B\", \"C\", \"A\", \"B\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][___] == raspunsuri[i]:\n            corecte += 1\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "output": "Scor: 3/4",
+      "options": ["\"raspuns\"", "\"text\"", "i", "raspunsuri[i]"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-key-59cef4",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"A\"}]\nraspunsuri_jucator = [\"A\", \"B\", \"D\", \"D\", \"C\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][___] == raspunsuri[i]:\n            corecte += 1\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "output": "Scor: 3/5",
+      "options": ["\"raspuns\"", "\"text\"", "i", "raspunsuri[i]"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-key-a893cb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}]\nraspunsuri_jucator = [\"C\", \"A\", \"B\", \"A\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][___] == raspunsuri[i]:\n            corecte += 1\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "output": "Scor: 3/4",
+      "options": ["\"raspuns\"", "\"text\"", "i", "raspunsuri[i]"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-key-ae93e4",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri_jucator = [\"D\", \"C\", \"B\", \"C\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][___] == raspunsuri[i]:\n            corecte += 1\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "output": "Scor: 3/4",
+      "options": ["\"raspuns\"", "\"text\"", "i", "raspunsuri[i]"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-key-19a027",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]\nraspunsuri_jucator = [\"B\", \"A\", \"A\", \"A\", \"C\"]\n\ndef noteaza_test(intrebari, raspunsuri):\n    corecte = 0\n    for i in range(len(intrebari)):\n        if intrebari[i][___] == raspunsuri[i]:\n            corecte += 1\n    return corecte\n\nscor = noteaza_test(quiz, raspunsuri_jucator)\nprint(f\"Scor: {scor}/{len(quiz)}\")",
+      "output": "Scor: 4/5",
+      "options": ["\"raspuns\"", "\"text\"", "i", "raspunsuri[i]"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-round-154bcd",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 3\ntotal = 4\nprocent = round(scor / total * ___)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "output": "Procentaj: 75%\nAdmis",
+      "options": ["100", "10", "1", "1000"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-round-301fdf",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 1\ntotal = 4\nprocent = round(scor / total * ___)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "output": "Procentaj: 25%\nRespins",
+      "options": ["100", "10", "1", "1000"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-round-bd2c45",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 9\ntotal = 10\nprocent = round(scor / total * ___)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "output": "Procentaj: 90%\nAdmis",
+      "options": ["100", "10", "1", "1000"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-round-859c9b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 2\ntotal = 8\nprocent = round(scor / total * ___)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "output": "Procentaj: 25%\nRespins",
+      "options": ["100", "10", "1", "1000"],
+      "answer": 0
+    },
+    {
+      "id": "pq-gap-round-94ed6e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 3\ntotal = 5\nprocent = round(scor / total * ___)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "output": "Procentaj: 60%\nAdmis",
+      "options": ["100", "10", "1", "1000"],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-number-c8956d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "quiz = [{\"text\": \"Ce face print()?\"}, {\"text\": \"Ce incepe un comentariu?\"}]\nprint(f\"{len(quiz)} intrebari\")\nfor i, q in enumerate(quiz):\n    print(f\"Intrebarea {i}: {q['text']}\")\nprint(\"Mult noroc!\")",
+      "output": "2 intrebari\nIntrebarea 1: Ce face print()?\nIntrebarea 2: Ce incepe un comentariu?\nMult noroc!",
+      "options": [
+        "print(f\"Intrebarea {i}: {q['text']}\")",
+        "print(f\"{len(quiz)} intrebari\")",
+        "quiz = [{\"text\": \"Ce face print()?\"}, {\"text\": \"Ce incepe un comentariu?\"}]",
+        "for i, q in enumerate(quiz):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-number-4e8f61",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "quiz = [{\"text\": \"Ce returneaza len()?\"}, {\"text\": \"Ce cuvant-cheie defineste o functie?\"}, {\"text\": \"Ce da inapoi input()?\"}]\nprint(f\"{len(quiz)} intrebari\")\nfor i, q in enumerate(quiz):\n    print(f\"Intrebarea {i}: {q['text']}\")\nprint(\"Mult noroc!\")",
+      "output": "3 intrebari\nIntrebarea 1: Ce returneaza len()?\nIntrebarea 2: Ce cuvant-cheie defineste o functie?\nIntrebarea 3: Ce da inapoi input()?\nMult noroc!",
+      "options": [
+        "print(f\"Intrebarea {i}: {q['text']}\")",
+        "print(f\"{len(quiz)} intrebari\")",
+        "quiz = [{\"text\": \"Ce returneaza len()?\"}, {\"text\": \"Ce cuvant-cheie defineste o functie?\"}, {\"text\": \"Ce da inapoi input()?\"}]",
+        "print(\"Mult noroc!\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-number-364bed",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "quiz = [{\"text\": \"Cat face 7 // 2?\"}, {\"text\": \"Ce face break?\"}]\nprint(f\"{len(quiz)} intrebari\")\nfor i, q in enumerate(quiz):\n    print(f\"Intrebarea {i}: {q['text']}\")\nprint(\"Mult noroc!\")",
+      "output": "2 intrebari\nIntrebarea 1: Cat face 7 // 2?\nIntrebarea 2: Ce face break?\nMult noroc!",
+      "options": [
+        "print(f\"Intrebarea {i}: {q['text']}\")",
+        "print(f\"{len(quiz)} intrebari\")",
+        "quiz = [{\"text\": \"Cat face 7 // 2?\"}, {\"text\": \"Ce face break?\"}]",
+        "print(\"Mult noroc!\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-number-5c8b6a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "quiz = [{\"text\": \"Ce bucla se repeta cat timp o conditie e adevarata?\"}, {\"text\": \"Ce face .upper()?\"}, {\"text\": \"Ce este o lista?\"}]\nprint(f\"{len(quiz)} intrebari\")\nfor i, q in enumerate(quiz):\n    print(f\"Intrebarea {i}: {q['text']}\")\nprint(\"Mult noroc!\")",
+      "output": "3 intrebari\nIntrebarea 1: Ce bucla se repeta cat timp o conditie e adevarata?\nIntrebarea 2: Ce face .upper()?\nIntrebarea 3: Ce este o lista?\nMult noroc!",
+      "options": [
+        "print(f\"Intrebarea {i}: {q['text']}\")",
+        "print(f\"{len(quiz)} intrebari\")",
+        "quiz = [{\"text\": \"Ce bucla se repeta cat timp o conditie e adevarata?\"}, {\"text\": \"Ce face .upper()?\"}, {\"text\": \"Ce este o lista?\"}]",
+        "print(\"Mult noroc!\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-number-a757b9",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "quiz = [{\"text\": \"Ce face return?\"}, {\"text\": \"Ce este un dictionar?\"}]\nprint(f\"{len(quiz)} intrebari\")\nfor i, q in enumerate(quiz):\n    print(f\"Intrebarea {i}: {q['text']}\")\nprint(\"Mult noroc!\")",
+      "output": "2 intrebari\nIntrebarea 1: Ce face return?\nIntrebarea 2: Ce este un dictionar?\nMult noroc!",
+      "options": [
+        "print(f\"Intrebarea {i}: {q['text']}\")",
+        "print(f\"{len(quiz)} intrebari\")",
+        "quiz = [{\"text\": \"Ce face return?\"}, {\"text\": \"Ce este un dictionar?\"}]",
+        "for i, q in enumerate(quiz):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-round-6c28cf",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scor = 3\ntotal = 4\nprocent = round(scor / total)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "output": "Procentaj: 75%\nAdmis",
+      "options": [
+        "procent = round(scor / total)",
+        "total = 4",
+        "print(f\"Procentaj: {procent}%\")",
+        "print(\"Admis\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-round-7e8f28",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scor = 1\ntotal = 3\nprocent = round(scor / total)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "output": "Procentaj: 33%\nRespins",
+      "options": [
+        "procent = round(scor / total)",
+        "total = 3",
+        "print(f\"Procentaj: {procent}%\")",
+        "print(\"Admis\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-round-b365d9",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scor = 5\ntotal = 8\nprocent = round(scor / total)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "output": "Procentaj: 62%\nAdmis",
+      "options": [
+        "procent = round(scor / total)",
+        "print(f\"Procentaj: {procent}%\")",
+        "print(\"Admis\")",
+        "print(\"Respins\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-round-af0923",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scor = 2\ntotal = 5\nprocent = round(scor / total)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "output": "Procentaj: 40%\nRespins",
+      "options": [
+        "procent = round(scor / total)",
+        "total = 5",
+        "print(f\"Procentaj: {procent}%\")",
+        "print(\"Admis\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-round-c2cf76",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "scor = 7\ntotal = 10\nprocent = round(scor / total)\nprint(f\"Procentaj: {procent}%\")\nif procent >= 50:\n    print(\"Admis\")\nelse:\n    print(\"Respins\")",
+      "output": "Procentaj: 70%\nAdmis",
+      "options": [
+        "procent = round(scor / total)",
+        "total = 10",
+        "print(f\"Procentaj: {procent}%\")",
+        "print(\"Admis\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-feedback-a2db16",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+      "output": "Corect!\nGresit! Raspunsul era C",
+      "options": [
+        "print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+        "print(\"Corect!\")",
+        "raspunsuri = [\"B\", \"A\"]",
+        "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-feedback-7596f8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"D\", \"D\", \"C\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+      "output": "Gresit! Raspunsul era A\nCorect!\nCorect!",
+      "options": [
+        "print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+        "print(\"Corect!\")",
+        "raspunsuri = [\"D\", \"D\", \"C\"]",
+        "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"C\"}]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-feedback-9182c6",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}]\nraspunsuri = [\"C\", \"A\", \"D\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+      "output": "Corect!\nCorect!\nGresit! Raspunsul era B",
+      "options": [
+        "print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+        "print(\"Corect!\")",
+        "raspunsuri = [\"C\", \"A\", \"D\"]",
+        "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-feedback-19a40f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"A\", \"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+      "output": "Gresit! Raspunsul era D\nCorect!\nGresit! Raspunsul era C",
+      "options": [
+        "print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+        "print(\"Corect!\")",
+        "raspunsuri = [\"A\", \"B\", \"A\"]",
+        "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-bad-feedback-3ac2f0",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"C\", \"A\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+      "output": "Gresit! Raspunsul era B\nCorect!\nGresit! Raspunsul era C",
+      "options": [
+        "print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+        "print(\"Corect!\")",
+        "raspunsuri = [\"C\", \"A\", \"A\"]",
+        "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-which-feedback-ec9abd",
+      "text": "Care program afișează asta?",
+      "output": "Corect!\nGresit! Raspunsul era C",
+      "options": [
+        "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+        "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+        "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] != q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+        "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n        break\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-which-feedback-92bf12",
+      "text": "Care program afișează asta?",
+      "output": "Gresit! Raspunsul era A\nCorect!\nCorect!",
+      "options": [
+        "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"D\", \"D\", \"C\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+        "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"D\", \"D\", \"C\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+        "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"D\", \"D\", \"C\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] != q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+        "quiz = [{\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"D\", \"D\", \"C\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n        break\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-which-feedback-97da90",
+      "text": "Care program afișează asta?",
+      "output": "Corect!\nCorect!\nGresit! Raspunsul era B",
+      "options": [
+        "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}]\nraspunsuri = [\"C\", \"A\", \"D\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+        "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}]\nraspunsuri = [\"C\", \"A\", \"D\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+        "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}]\nraspunsuri = [\"C\", \"A\", \"D\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] != q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+        "quiz = [{\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}]\nraspunsuri = [\"C\", \"A\", \"D\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n        break\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-which-feedback-d57e9c",
+      "text": "Care program afișează asta?",
+      "output": "Gresit! Raspunsul era D\nCorect!\nGresit! Raspunsul era C",
+      "options": [
+        "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"A\", \"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+        "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"A\", \"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+        "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"A\", \"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] != q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+        "quiz = [{\"raspuns\": \"D\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"A\", \"B\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n        break\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pq-which-feedback-e5a567",
+      "text": "Care program afișează asta?",
+      "output": "Gresit! Raspunsul era B\nCorect!\nGresit! Raspunsul era C",
+      "options": [
+        "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"C\", \"A\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+        "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"C\", \"A\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {raspunsuri[i]}\")",
+        "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"C\", \"A\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] != q[\"raspuns\"]:\n        print(\"Corect!\")\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")",
+        "quiz = [{\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}]\nraspunsuri = [\"C\", \"A\", \"A\"]\nfor i, q in enumerate(quiz):\n    if raspunsuri[i] == q[\"raspuns\"]:\n        print(\"Corect!\")\n        break\n    else:\n        print(f\"Gresit! Raspunsul era {q['raspuns']}\")"
+      ],
+      "answer": 0
+    }
+  ]
+}

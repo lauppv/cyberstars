@@ -1,0 +1,741 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Why does the lesson keep a question in a dictionary?",
+      "options": [
+        "A dictionary is the only thing that can hold strings",
+        "So the questions come out in a random order",
+        "Each part gets a name: its text, its options and its answer",
+        "So Python checks the answer by itself"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q2",
+      "text": "How does the lesson store a whole quiz?",
+      "options": [
+        "A list of dictionaries, one dictionary per question",
+        "A dictionary of lists, one list per answer",
+        "One long string with every question in it",
+        "A set of answers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "What does this print?",
+      "code": "q = {\"text\": \"What does len() return?\", \"answer\": \"C\"}\nprint(q[\"answer\"])",
+      "options": ["answer", "What does len() return?", "q[\"answer\"]", "C"],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "quiz = [\n    {\"text\": \"What does print() do?\", \"answer\": \"B\"},\n    {\"text\": \"What starts a comment?\", \"answer\": \"C\"},\n    {\"text\": \"What does len() return?\", \"answer\": \"C\"},\n]\nprint(len(quiz))",
+      "options": ["6", "3", "2", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "quiz = [\n    {\"text\": \"What does print() do?\", \"answer\": \"B\"},\n    {\"text\": \"What starts a comment?\", \"answer\": \"C\"},\n]\nprint(quiz[1][\"text\"])",
+      "options": [
+        "What does print() do?",
+        "C",
+        "What starts a comment?",
+        "{'text': 'What starts a comment?', 'answer': 'C'}"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "Why does the game call `.upper()` on the player's answer?",
+      "options": [
+        "So b counts as B: the right answers are stored as capital letters",
+        "So the answer turns into a number",
+        "To take the spaces out of the answer",
+        "To print the answer in capitals"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "answer = \"b\"\nprint(answer.upper() == \"B\")",
+      "options": ["False", "B", "b", "True"],
+      "answer": 3
+    },
+    {
+      "id": "q8",
+      "text": "What does `enumerate(quiz)` give the loop at each pass?",
+      "options": [
+        "Only the question",
+        "The position of the question and the question itself",
+        "Only the position",
+        "The question's right answer"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q9",
+      "text": "Why does the game print `{i + 1}` and not `{i}` before each question?",
+      "options": [
+        "`i` is the score so far",
+        "`i + 1` is the number of questions left",
+        "`enumerate` counts from 0, and people number questions from 1",
+        "Without `+ 1` it stops with an error"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "for i, letter in enumerate([\"A\", \"B\"]):\n    print(i, letter)",
+      "options": ["0 A\n1 B", "1 A\n2 B", "A\nB", "0\n1"],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "score = 2\ntotal = 3\nprint(round(score / total * 100))",
+      "options": ["66", "0", "6667", "67"],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "What does `return score, len(questions)` give back?",
+      "options": [
+        "Only the score",
+        "Two values, which `score, total = run_quiz(quiz)` puts in two variables",
+        "The text \"score, len(questions)\"",
+        "An error: a function returns one value"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "text": "What happens when this runs?",
+      "code": "q = {\"text\": \"What does print() do?\", \"answer\": \"B\"}\nprint(q[\"options\"])",
+      "options": [
+        "It prints []",
+        "It prints None",
+        "It stops with a KeyError: this question has no \"options\" key",
+        "It prints B"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "quiz = [{\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"D\"}]\nplayer_answers = [\"B\", \"A\", \"A\", \"C\"]\ncorrect = 0\nfor i in range(len(quiz)):\n    if quiz[i][\"answer\"] == player_answers[i]:\n        correct += 1\nprint(f\"Score: {correct}/{len(quiz)}\")",
+      "options": ["Score: 2/4", "Score: 4/4", "Score: 2/2", "Score: 1/4"],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "Which pattern does `score += 1` on every right answer use?",
+      "options": ["The flag pattern", "Binary search", "Recursion", "The counter pattern"],
+      "answer": 3
+    },
+    {
+      "id": "q16",
+      "text": "Why does `grade_quiz` loop over `range(len(questions))`?",
+      "options": [
+        "A list of dictionaries can't be looped over directly",
+        "The same index `i` gives a question and the player's answer to it",
+        "`range` sorts the questions first",
+        "So the loop skips the first question"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "score = 9\ntotal = 12\npercentage = round(score / total * 100)\nprint(f\"Percentage: {percentage}%\")\nif percentage >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": [
+        "Percentage: 0.75%\nPass",
+        "Percentage: 75%\nFail",
+        "Percentage: 75%\nPass",
+        "Percentage: 3/4\nPass"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "Why does the mission pass with `percentage >= 50` and not `percentage > 50`?",
+      "options": [
+        "So a candidate with exactly 50% still passes",
+        "They give the same result for every score",
+        "`>` doesn't work on numbers from `round`",
+        "So a candidate with 49% passes too"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "quiz = [{\"answer\": \"D\"}, {\"answer\": \"C\"}]\nanswers = [\"D\", \"A\"]\nfor i, q in enumerate(quiz):\n    if answers[i] == q[\"answer\"]:\n        print(\"Correct!\")\n    else:\n        print(f\"Wrong! The answer was {q['answer']}\")",
+      "options": [
+        "Correct!\nCorrect!",
+        "Wrong! The answer was D\nCorrect!",
+        "Correct!\nWrong! The answer was A",
+        "Correct!\nWrong! The answer was C"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "Where does the lesson print You scored, with the final score?",
+      "options": [
+        "Inside the loop, after each question",
+        "After the loop, once every question has been asked",
+        "Before the loop, so the player knows the total",
+        "Inside the `else`, after a wrong answer"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "What does the `\\n` at the start of `print(f\"\\nQuestion {i + 1}: ...\")` do?",
+      "options": [
+        "It prints a backslash and an n",
+        "It ends the program",
+        "It prints an empty line first, so each question stands apart",
+        "It numbers the question"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "q = {\"text\": \"What starts a comment?\", \"options\": [\"A) //\", \"B) /*\", \"C) #\"], \"answer\": \"C\"}\nfor option in q[\"options\"]:\n    print(option)",
+      "options": ["A) //\nB) /*\nC) #", "['A) //', 'B) /*', 'C) #']", "A) // B) /* C) #", "C) #"],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "What goes wrong if `score = 0` moves inside the `for` loop?",
+      "options": [
+        "Nothing: the score is the same",
+        "The program stops with an error",
+        "Every right answer counts twice",
+        "The score starts over at every question, so it ends at 0 or 1"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "answer = \"c\"\nright = \"C\"\nif answer == right:\n    print(\"Correct\")\nelse:\n    print(\"Wrong\")",
+      "options": ["Correct", "Wrong", "c", "C"],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "Which gives the right answer of the second question in `quiz`?",
+      "options": [
+        "quiz[\"answer\"][1]",
+        "quiz[2][\"answer\"]",
+        "quiz[1][\"answer\"]",
+        "quiz[1].answer"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "keys = [\"B\", \"C\", \"A\", \"D\"]\nanswers = [\"B\", \"D\", \"A\", \"C\"]\nscore = 0\nfor key, answer in zip(keys, answers):\n    if key == answer:\n        score += 1\nprint(score)",
+      "options": ["2", "3", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "Why does the mission need no `input()`?",
+      "options": [
+        "`input()` can't read letters",
+        "A function can't call `input()`",
+        "The answers come from `random`",
+        "The candidate's answers are already in a list, so it only grades and reports"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "print(round(5 / 6 * 100))",
+      "options": ["84", "83", "0", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "In a list of question dictionaries, what does `len(quiz)` count?",
+      "options": [
+        "Every key of every dictionary",
+        "The letters of every question",
+        "The questions, one per dictionary",
+        "The right answers"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "Which line reads the player's answer in the lesson, ready to compare?",
+      "options": [
+        "answer = input(\"Your answer (A/B/C/D): \")",
+        "answer = int(input(\"Your answer (A/B/C/D): \"))",
+        "answer = q[\"answer\"]",
+        "answer = input(\"Your answer (A/B/C/D): \").upper()"
+      ],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "pq-grade",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "quiz = [{{q}}]\nplayer_answers = [{{a}}]\n\ndef grade_quiz(questions, answers):\n    correct = 0\n    for i in range(len(questions)):\n        if questions[i][\"answer\"] == answers[i]:\n            correct += 1\n    return correct\n\nscore = grade_quiz(quiz, player_answers)\nprint(f\"Score: {score}/{len(quiz)}\")",
+      "values": [
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"D\"}",
+          "a": "\"B\", \"C\", \"A\", \"B\""
+        },
+        {
+          "q": "{\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"D\"}, {\"answer\": \"A\"}",
+          "a": "\"A\", \"B\", \"D\", \"D\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"C\"}, {\"answer\": \"C\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}",
+          "a": "\"C\", \"A\", \"B\", \"A\""
+        },
+        {
+          "q": "{\"answer\": \"D\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"D\", \"C\", \"B\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}, {\"answer\": \"A\"}, {\"answer\": \"C\"}",
+          "a": "\"B\", \"A\", \"A\", \"A\", \"C\""
+        }
+      ],
+      "mistakes": [
+        ["            correct += 1", "            correct = 1"],
+        ["questions[i][\"answer\"] == answers[i]", "questions[i][\"answer\"] != answers[i]"],
+        ["    return correct", "            return correct"],
+        ["range(len(questions))", "range(1, len(questions))"],
+        ["print(f\"Score: {score}/{len(quiz)}\")", "print(f\"Score: {len(quiz)}/{score}\")"]
+      ]
+    },
+    {
+      "id": "pq-percent",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "score = {{s}}\ntotal = {{t}}\npercentage = round(score / total * 100)\nprint(f\"Percentage: {percentage}%\")\nif percentage >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "values": [
+        {
+          "s": 3,
+          "t": 4
+        },
+        {
+          "s": 1,
+          "t": 3
+        },
+        {
+          "s": 5,
+          "t": 8
+        },
+        {
+          "s": 2,
+          "t": 5
+        },
+        {
+          "s": 7,
+          "t": 10
+        }
+      ],
+      "mistakes": [
+        ["round(score / total * 100)", "round(total / score * 100)"],
+        ["round(score / total * 100)", "score // total * 100"],
+        ["percentage >= 50", "percentage < 50"],
+        ["round(score / total * 100)", "round(score / total * 10)"]
+      ]
+    },
+    {
+      "id": "pq-upper",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "quiz = [{{q}}]\nanswers = [{{a}}]\nscore = 0\nfor i in range(len(quiz)):\n    if answers[i].upper() == quiz[i][\"answer\"]:\n        score += 1\nprint(f\"Score: {score}\")",
+      "values": [
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}",
+          "a": "\"b\", \"C\", \"a\", \"D\""
+        },
+        {
+          "q": "{\"answer\": \"A\"}, {\"answer\": \"D\"}, {\"answer\": \"C\"}, {\"answer\": \"B\"}",
+          "a": "\"a\", \"d\", \"C\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"C\"}, {\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"D\"}",
+          "a": "\"c\", \"C\", \"b\", \"d\""
+        },
+        {
+          "q": "{\"answer\": \"D\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}, {\"answer\": \"C\"}",
+          "a": "\"D\", \"b\", \"a\", \"A\""
+        },
+        {
+          "q": "{\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"D\"}",
+          "a": "\"a\", \"b\", \"c\", \"B\""
+        }
+      ],
+      "mistakes": [
+        ["answers[i].upper()", "answers[i]"],
+        ["answers[i].upper()", "answers[i].lower()"],
+        ["print(f\"Score: {score}\")", "print(f\"Score: {len(quiz)}\")"],
+        ["        score += 1", "        score += 1\n        break"]
+      ]
+    },
+    {
+      "id": "pq-numbers",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "quiz = [{{q}}]\nfor i, q in enumerate(quiz):\n    print(f\"Question {i + 1}: {q['text']}\")",
+      "values": [
+        {
+          "q": "{\"text\": \"What does print() do?\"}, {\"text\": \"What starts a comment?\"}"
+        },
+        {
+          "q": "{\"text\": \"What does len() return?\"}, {\"text\": \"Which keyword defines a function?\"}, {\"text\": \"What does input() give back?\"}"
+        },
+        {
+          "q": "{\"text\": \"What is 7 // 2?\"}, {\"text\": \"What does break do?\"}"
+        },
+        {
+          "q": "{\"text\": \"Which loop repeats while a condition holds?\"}, {\"text\": \"What does .upper() do?\"}, {\"text\": \"What is a list?\"}"
+        },
+        {
+          "q": "{\"text\": \"What does return do?\"}, {\"text\": \"What is a dictionary?\"}"
+        }
+      ],
+      "mistakes": [
+        ["{i + 1}", "{i}"],
+        ["{q['text']}", "{q}"],
+        ["{i + 1}", "{len(quiz)}"],
+        [
+          "    print(f\"Question {i + 1}: {q['text']}\")",
+          "print(f\"Question {i + 1}: {q['text']}\")"
+        ]
+      ]
+    },
+    {
+      "id": "pq-feedback",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "quiz = [{{q}}]\nanswers = [{{a}}]\nfor i, q in enumerate(quiz):\n    if answers[i] == q[\"answer\"]:\n        print(\"Correct!\")\n    else:\n        print(f\"Wrong! The answer was {q['answer']}\")",
+      "values": [
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"B\", \"A\""
+        },
+        {
+          "q": "{\"answer\": \"A\"}, {\"answer\": \"D\"}, {\"answer\": \"C\"}",
+          "a": "\"D\", \"D\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}",
+          "a": "\"C\", \"A\", \"D\""
+        },
+        {
+          "q": "{\"answer\": \"D\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"A\", \"B\", \"A\""
+        },
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"A\"}, {\"answer\": \"C\"}",
+          "a": "\"C\", \"A\", \"A\""
+        }
+      ],
+      "mistakes": [
+        ["{q['answer']}", "{answers[i]}"],
+        ["answers[i] == q[\"answer\"]", "answers[i] != q[\"answer\"]"],
+        ["        print(\"Correct!\")", "        print(\"Correct!\")\n        break"],
+        ["enumerate(quiz)", "enumerate(answers)"]
+      ]
+    },
+    {
+      "id": "pq-tuple",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def run_quiz(questions, answers):\n    score = 0\n    for i in range(len(questions)):\n        if questions[i][\"answer\"] == answers[i]:\n            score += 1\n    return score, len(questions)\n\nscore, total = run_quiz([{{q}}], [{{a}}])\npercentage = round(score / total * 100)\nprint(f\"Final score: {score}/{total} ({percentage}%)\")",
+      "values": [
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"D\"}",
+          "a": "\"B\", \"C\", \"A\", \"B\""
+        },
+        {
+          "q": "{\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"A\", \"C\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"C\"}, {\"answer\": \"C\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}",
+          "a": "\"C\", \"C\", \"B\", \"B\""
+        },
+        {
+          "q": "{\"answer\": \"D\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"A\"}",
+          "a": "\"D\", \"C\", \"B\", \"C\", \"B\""
+        },
+        {
+          "q": "{\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"B\", \"B\", \"C\""
+        }
+      ],
+      "mistakes": [
+        ["return score, len(questions)", "return len(questions), score"],
+        ["            score += 1", "            score = 1"],
+        ["round(score / total * 100)", "round(score / total * 10)"],
+        ["    return score, len(questions)", "        return score, len(questions)"]
+      ]
+    },
+    {
+      "id": "pq-zip",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "keys = [{{k}}]\nanswers = [{{a}}]\nscore = 0\nfor key, answer in zip(keys, answers):\n    if key == answer:\n        score += 1\nprint(f\"{score} right, {len(keys) - score} wrong\")",
+      "values": [
+        {
+          "k": "\"B\", \"C\", \"A\", \"D\"",
+          "a": "\"B\", \"C\", \"A\", \"B\""
+        },
+        {
+          "k": "\"A\", \"A\", \"B\"",
+          "a": "\"A\", \"B\", \"B\""
+        },
+        {
+          "k": "\"C\", \"D\", \"B\", \"A\", \"C\"",
+          "a": "\"C\", \"D\", \"C\", \"A\", \"A\""
+        },
+        {
+          "k": "\"D\", \"D\", \"A\"",
+          "a": "\"D\", \"C\", \"A\""
+        },
+        {
+          "k": "\"A\", \"B\", \"C\", \"D\"",
+          "a": "\"A\", \"B\", \"B\", \"D\""
+        }
+      ],
+      "mistakes": [
+        ["key == answer", "key != answer"],
+        ["{len(keys) - score} wrong", "{len(keys)} wrong"],
+        ["{score} right, {len(keys) - score} wrong", "{len(keys) - score} right, {score} wrong"],
+        ["        score += 1", "        score += 2"]
+      ]
+    },
+    {
+      "id": "pq-gap-count",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "quiz = [{{q}}]\nplayer_answers = [{{a}}]\n\ndef grade_quiz(questions, answers):\n    correct = 0\n    for i in range(len(questions)):\n        if questions[i][\"answer\"] == answers[i]:\n            ___\n    return correct\n\nscore = grade_quiz(quiz, player_answers)\nprint(f\"Score: {score}/{len(quiz)}\")",
+      "values": [
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"D\"}",
+          "a": "\"B\", \"C\", \"A\", \"B\""
+        },
+        {
+          "q": "{\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"D\"}, {\"answer\": \"A\"}",
+          "a": "\"A\", \"B\", \"D\", \"D\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"C\"}, {\"answer\": \"C\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}",
+          "a": "\"C\", \"A\", \"B\", \"A\""
+        },
+        {
+          "q": "{\"answer\": \"D\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"D\", \"C\", \"B\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}, {\"answer\": \"A\"}, {\"answer\": \"C\"}",
+          "a": "\"B\", \"A\", \"A\", \"A\", \"C\""
+        }
+      ],
+      "answer": "correct += 1",
+      "wrong": ["correct = 1", "correct += i", "return correct", "correct += 2"]
+    },
+    {
+      "id": "pq-gap-key",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "quiz = [{{q}}]\nplayer_answers = [{{a}}]\n\ndef grade_quiz(questions, answers):\n    correct = 0\n    for i in range(len(questions)):\n        if questions[i][___] == answers[i]:\n            correct += 1\n    return correct\n\nscore = grade_quiz(quiz, player_answers)\nprint(f\"Score: {score}/{len(quiz)}\")",
+      "values": [
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"D\"}",
+          "a": "\"B\", \"C\", \"A\", \"B\""
+        },
+        {
+          "q": "{\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"D\"}, {\"answer\": \"A\"}",
+          "a": "\"A\", \"B\", \"D\", \"D\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"C\"}, {\"answer\": \"C\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}",
+          "a": "\"C\", \"A\", \"B\", \"A\""
+        },
+        {
+          "q": "{\"answer\": \"D\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"D\", \"C\", \"B\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}, {\"answer\": \"A\"}, {\"answer\": \"C\"}",
+          "a": "\"B\", \"A\", \"A\", \"A\", \"C\""
+        }
+      ],
+      "answer": "\"answer\"",
+      "wrong": ["\"text\"", "i", "answers[i]"]
+    },
+    {
+      "id": "pq-gap-round",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "score = {{s}}\ntotal = {{t}}\npercentage = round(score / total * ___)\nprint(f\"Percentage: {percentage}%\")\nif percentage >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "values": [
+        {
+          "s": 3,
+          "t": 4
+        },
+        {
+          "s": 1,
+          "t": 4
+        },
+        {
+          "s": 9,
+          "t": 10
+        },
+        {
+          "s": 2,
+          "t": 8
+        },
+        {
+          "s": 3,
+          "t": 5
+        }
+      ],
+      "answer": "100",
+      "wrong": ["10", "1", "1000"]
+    },
+    {
+      "id": "pq-bad-number",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "quiz = [{{q}}]\nprint(f\"{len(quiz)} questions\")\nfor i, q in enumerate(quiz):\n    print(f\"Question {i + 1}: {q['text']}\")\nprint(\"Good luck!\")",
+      "values": [
+        {
+          "q": "{\"text\": \"What does print() do?\"}, {\"text\": \"What starts a comment?\"}"
+        },
+        {
+          "q": "{\"text\": \"What does len() return?\"}, {\"text\": \"Which keyword defines a function?\"}, {\"text\": \"What does input() give back?\"}"
+        },
+        {
+          "q": "{\"text\": \"What is 7 // 2?\"}, {\"text\": \"What does break do?\"}"
+        },
+        {
+          "q": "{\"text\": \"Which loop repeats while a condition holds?\"}, {\"text\": \"What does .upper() do?\"}, {\"text\": \"What is a list?\"}"
+        },
+        {
+          "q": "{\"text\": \"What does return do?\"}, {\"text\": \"What is a dictionary?\"}"
+        }
+      ],
+      "bug": ["{i + 1}", "{i}"]
+    },
+    {
+      "id": "pq-bad-round",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "score = {{s}}\ntotal = {{t}}\npercentage = round(score / total * 100)\nprint(f\"Percentage: {percentage}%\")\nif percentage >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "values": [
+        {
+          "s": 3,
+          "t": 4
+        },
+        {
+          "s": 1,
+          "t": 3
+        },
+        {
+          "s": 5,
+          "t": 8
+        },
+        {
+          "s": 2,
+          "t": 5
+        },
+        {
+          "s": 7,
+          "t": 10
+        }
+      ],
+      "bug": ["round(score / total * 100)", "round(score / total)"]
+    },
+    {
+      "id": "pq-bad-feedback",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "quiz = [{{q}}]\nanswers = [{{a}}]\nfor i, q in enumerate(quiz):\n    if answers[i] == q[\"answer\"]:\n        print(\"Correct!\")\n    else:\n        print(f\"Wrong! The answer was {q['answer']}\")",
+      "values": [
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"B\", \"A\""
+        },
+        {
+          "q": "{\"answer\": \"A\"}, {\"answer\": \"D\"}, {\"answer\": \"C\"}",
+          "a": "\"D\", \"D\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}",
+          "a": "\"C\", \"A\", \"D\""
+        },
+        {
+          "q": "{\"answer\": \"D\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"A\", \"B\", \"A\""
+        },
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"A\"}, {\"answer\": \"C\"}",
+          "a": "\"C\", \"A\", \"A\""
+        }
+      ],
+      "bug": ["{q['answer']}", "{answers[i]}"]
+    },
+    {
+      "id": "pq-which-feedback",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "quiz = [{{q}}]\nanswers = [{{a}}]\nfor i, q in enumerate(quiz):\n    if answers[i] == q[\"answer\"]:\n        print(\"Correct!\")\n    else:\n        print(f\"Wrong! The answer was {q['answer']}\")",
+      "values": [
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"B\", \"A\""
+        },
+        {
+          "q": "{\"answer\": \"A\"}, {\"answer\": \"D\"}, {\"answer\": \"C\"}",
+          "a": "\"D\", \"D\", \"C\""
+        },
+        {
+          "q": "{\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}",
+          "a": "\"C\", \"A\", \"D\""
+        },
+        {
+          "q": "{\"answer\": \"D\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
+          "a": "\"A\", \"B\", \"A\""
+        },
+        {
+          "q": "{\"answer\": \"B\"}, {\"answer\": \"A\"}, {\"answer\": \"C\"}",
+          "a": "\"C\", \"A\", \"A\""
+        }
+      ],
+      "mistakes": [
+        ["{q['answer']}", "{answers[i]}"],
+        ["answers[i] == q[\"answer\"]", "answers[i] != q[\"answer\"]"],
+        ["        print(\"Correct!\")", "        print(\"Correct!\")\n        break"],
+        [
+          "    else:\n        print(f\"Wrong! The answer was {q['answer']}\")",
+          "    print(f\"Wrong! The answer was {q['answer']}\")"
+        ]
+      ]
+    }
+  ]
+}

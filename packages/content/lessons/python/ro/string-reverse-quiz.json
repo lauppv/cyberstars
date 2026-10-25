@@ -1,0 +1,651 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce afișează?",
+      "code": "nume = \"Tommy\"\nprint(nume[::-1])",
+      "options": ["ymmoT", "Tommy", "T", "y"],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Într-un slice `[start:stop:step]`, ce face un pas de -1?",
+      "options": [
+        "Scoate ultimul caracter",
+        "Ia un caracter da, unul nu",
+        "Parcurge textul invers, de la sfârșit la început",
+        "Pornește de la indexul -1 și se oprește imediat"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "De ce inversează textul `sir_inversat = caracter + sir_inversat`?",
+      "options": [
+        "Python citește bucla de la capăt",
+        "Fiecare caracter nou ajunge în fața celor de dinainte",
+        "Semnul `+` adună singur caracterele în ordine inversă",
+        "Pentru că `sir_inversat` pornește ca tot textul"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Ce afișează?",
+      "code": "original = \"Tommy\"\nsir_inversat = \"\"\nfor caracter in original:\n    sir_inversat = sir_inversat + caracter\nprint(sir_inversat)",
+      "options": ["ymmoT", "T", "y", "Tommy"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Pentru `nume = \"Tommy\"`, prin ce indexuri trece `range(len(nume) - 1, -1, -1)`?",
+      "options": ["4, 3, 2, 1, 0", "5, 4, 3, 2, 1", "4, 3, 2, 1", "0, 1, 2, 3, 4"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "De ce oprirea din `range(len(nume) - 1, -1, -1)` e -1, nu 0?",
+      "options": [
+        "Indexul -1 este ultimul caracter",
+        "Cu 0 bucla nu s-ar mai termina",
+        "Oprirea nu e inclusă, așa că -1 lasă și indexul 0 să intre",
+        "Un pas de -1 cere o oprire de -1"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "nume = \"Tommy\"\nsir_inversat = \"\"\nfor i in range(len(nume) - 1, 0, -1):\n    sir_inversat += nume[i]\nprint(sir_inversat)",
+      "options": ["ymmoT", "ymmo", "Tommy", "ymm"],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Ce dă `\" \".join([\"a\", \"b\", \"c\"])`?",
+      "options": ["\"abc\"", "[\"a\", \"b\", \"c\"]", "\"c b a\"", "\"a b c\""],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce metodă face opusul lui `.join()`?",
+      "options": ["`.split()`", "`.lower()`", "`.append()`", "`[::-1]`"],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"Imi place Vice City\"\ncuvinte = propozitie.split(\" \")\ncuvinte_inversate = cuvinte[::-1]\nprint(\" \".join(cuvinte_inversate))",
+      "options": [
+        "Imi place Vice City",
+        "ytiC eciV ecalp imI",
+        "City Vice place Imi",
+        "['City', 'Vice', 'place', 'Imi']"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "Ce dă înapoi `propozitie.split(\" \")`?",
+      "options": [
+        "Propoziția fără spații",
+        "O listă cu cuvintele propoziției",
+        "Numărul de cuvinte",
+        "Propoziția inversată"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "planete = [\"Marte\", \"Venus\", \"Terra\"]\nprint(\"-\".join(planete))",
+      "options": ["MarteVenusTerra", "Terra-Venus-Marte", "Marte Venus Terra", "Marte-Venus-Terra"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "De ce pornește `sir_inversat` ca `\"\"` înainte de buclă?",
+      "options": [
+        "E un text gol pe care bucla construiește rezultatul",
+        "Python cere ca orice text să pornească gol",
+        "Ca bucla să sară peste primul caracter",
+        "Ca rezultatul să fie afișat invers"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "litere = \"abc\"\nprint(litere[::-1].upper())",
+      "options": ["cba", "ABC", "CBA", "abc"],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"capac\"\nprint(cuvant[::-1])",
+      "options": ["capca", "capac", "c", "apac"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "numere = [1, 2, 3]\nprint(\" \".join(numere))",
+      "options": [
+        "Afișează 1 2 3",
+        "Afișează 123",
+        "Afișează [1, 2, 3]",
+        "O eroare: `.join()` lipește doar texte, nu numere"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"Imi place Vice\"\nprint(propozitie[::-1])",
+      "options": ["eciV ecalp imI", "Vice place Imi", "Imi place Vice", "imI ecalp eciV"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "De ce cere misiunea o buclă, nu `[::-1]`, în `inverseaza_text`?",
+      "options": [
+        "Pentru că `[::-1]` nu merge pe texte lungi",
+        "Pentru că `[::-1]` inversează doar liste",
+        "Ca să exersăm construirea rezultatului de mână, ideea din spatele scurtăturii",
+        "Pentru că o buclă e mai rapidă decât slicing-ul"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "nume = \"Lance\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\n    print(rezultat)",
+      "options": ["ecnaL", "e\nec\necn\necna\necnaL", "L\nLa\nLan\nLanc\nLance", "e\nc\nn\na\nL"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "Cu `original = \"Tommy\"`, cât e `sir_inversat` după a doua trecere prin buclă a lui `sir_inversat = caracter + sir_inversat`?",
+      "options": ["\"To\"", "\"T\"", "\"ymmoT\"", "\"oT\""],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"unu doi trei\".split(\" \")\nprint(cuvinte[::-1])",
+      "options": [
+        "['trei', 'doi', 'unu']",
+        "trei doi unu",
+        "['unu', 'doi', 'trei']",
+        "iert iod unu"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce este `len(nume) - 1` în `range(len(nume) - 1, -1, -1)`?",
+      "options": [
+        "Lungimea textului",
+        "Primul index",
+        "Ultimul index al textului",
+        "Mijlocul textului"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "def inverseaza_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        rezultat = caracter + rezultat\n    return rezultat\n\nprint(inverseaza_text(\"abc\") + \"!\")",
+      "options": ["!cba", "cba!", "abc!", "!abc"],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "def inverseaza_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        rezultat = caracter + rezultat\n        return rezultat\n\nprint(inverseaza_text(\"Orbit\"))",
+      "options": ["tibrO", "Orbit", "t", "O"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "litere = [\"V\", \"i\", \"c\", \"e\"]\nprint(\"\".join(litere))",
+      "options": ["Vice", "V i c e", "eciV", "['V', 'i', 'c', 'e']"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"Vice City\".split(\" \")\nprint(\" \".join([c[::-1] for c in cuvinte]))",
+      "options": ["ytiC eciV", "City Vice", "eciV ytiC", "Vice City"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "cifre = \"12345\"\nprint(cifre[::-2])",
+      "options": ["54321", "531", "135", "12345"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "În `nume[::-1]`, ce înseamnă că start și stop sunt lăsate goale?",
+      "options": [
+        "Textul e gol",
+        "Python ia doar primul și ultimul caracter",
+        "Slice-ul se oprește imediat",
+        "Start și stop lipsesc, așa că slice-ul ia tot textul"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce buclă construiește în `rezultat`, care pornește ca `\"\"`, inversul lui `text`?",
+      "options": [
+        "`for caracter in text: rezultat = caracter + rezultat`",
+        "`for caracter in text: rezultat = rezultat + caracter`",
+        "`for caracter in text: rezultat = caracter`",
+        "`for caracter in text: rezultat = text + caracter`"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "mesaj = \"navigare sistem online\"\ncuvinte = mesaj.split(\" \")\nprint(f\"Ordine cuvinte: {' '.join(cuvinte[::-1])}\")",
+      "options": [
+        "Ordine cuvinte: enilno metsis eragivan",
+        "Ordine cuvinte: navigare sistem online",
+        "Ordine cuvinte: online sistem navigare",
+        "Ordine cuvinte: onlinesistemnavigare"
+      ],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "sr-acc",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "text = \"{{w}}\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "Orbita"
+        },
+        {
+          "w": "Lance"
+        },
+        {
+          "w": "racheta"
+        },
+        {
+          "w": "Vercetti"
+        }
+      ],
+      "mistakes": [
+        ["caracter + rezultat", "rezultat + caracter"],
+        ["print(rezultat)", "    print(rezultat)"],
+        ["rezultat = \"\"", "rezultat = \"{{w}}\""],
+        ["print(rezultat)", "print(text)"]
+      ]
+    },
+    {
+      "id": "sr-acc-steps",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "text = \"{{w}}\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+      "values": [
+        {
+          "w": "Marte"
+        },
+        {
+          "w": "Juno"
+        },
+        {
+          "w": "Vice"
+        },
+        {
+          "w": "Phil"
+        },
+        {
+          "w": "stea"
+        }
+      ],
+      "mistakes": [
+        ["caracter + rezultat", "rezultat + caracter"],
+        ["    print(rezultat)", "print(rezultat)"],
+        ["rezultat = caracter + rezultat", "rezultat = caracter"],
+        ["    print(rezultat)", "    print(caracter)"]
+      ]
+    },
+    {
+      "id": "sr-slice",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"{{w}}\"\nprint(cuvant[{{s}}])",
+      "values": [
+        {
+          "w": "Tommy",
+          "s": "::-1"
+        },
+        {
+          "w": "Vercetti",
+          "s": "::2"
+        },
+        {
+          "w": "Lance",
+          "s": "1:"
+        },
+        {
+          "w": "Cortez",
+          "s": "::-2"
+        },
+        {
+          "w": "Orbit",
+          "s": ":3"
+        }
+      ],
+      "mistakes": [
+        ["print(cuvant[{{s}}])", "print(cuvant)"],
+        ["print(cuvant[{{s}}])", "print(cuvant[::-1])"],
+        ["print(cuvant[{{s}}])", "print(cuvant[1:])"],
+        ["print(cuvant[{{s}}])", "print(cuvant[::2])"]
+      ]
+    },
+    {
+      "id": "sr-index",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "nume = \"{{w}}\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "Orbita"
+        },
+        {
+          "w": "Lance"
+        },
+        {
+          "w": "racheta"
+        },
+        {
+          "w": "Vercetti"
+        }
+      ],
+      "mistakes": [
+        ["1, -1, -1)", "1, 0, -1)"],
+        ["rezultat += nume[i]", "rezultat = nume[i]"],
+        ["for i in range(len(nume) - 1, -1, -1):", "for i in range(len(nume)):"],
+        ["print(rezultat)", "print(nume[i])"]
+      ]
+    },
+    {
+      "id": "sr-words",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"{{s}}\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+      "values": [
+        {
+          "s": "Imi place Vice City"
+        },
+        {
+          "s": "nava este gata"
+        },
+        {
+          "s": "controlul misiunii online"
+        },
+        {
+          "s": "Marte este rosie"
+        },
+        {
+          "s": "lansare in zori"
+        }
+      ],
+      "mistakes": [
+        ["cuvinte[::-1]", "cuvinte"],
+        ["print(\" \".join(cuvinte[::-1]))", "print(propozitie[::-1])"],
+        ["\" \".join", "\"\".join"],
+        ["print(\" \".join(cuvinte[::-1]))", "print(cuvinte[::-1])"]
+      ]
+    },
+    {
+      "id": "sr-which-acc",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "text = \"{{w}}\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+      "values": [
+        {
+          "w": "Pioneer"
+        },
+        {
+          "w": "Apollo"
+        },
+        {
+          "w": "Kent"
+        },
+        {
+          "w": "Victor"
+        },
+        {
+          "w": "planeta"
+        }
+      ],
+      "mistakes": [
+        ["caracter + rezultat", "rezultat + caracter"],
+        ["print(rezultat)", "    print(rezultat)"],
+        ["rezultat = caracter + rezultat", "rezultat = caracter"]
+      ]
+    },
+    {
+      "id": "sr-which-words",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "propozitie = \"{{s}}\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+      "values": [
+        {
+          "s": "zburam noaptea tarziu"
+        },
+        {
+          "s": "echipajul este treaz"
+        },
+        {
+          "s": "semnal de pe Marte"
+        },
+        {
+          "s": "stelele sunt stralucitoare"
+        },
+        {
+          "s": "andocheaza nava acum"
+        }
+      ],
+      "mistakes": [
+        ["cuvinte[::-1]", "cuvinte"],
+        ["print(\" \".join(cuvinte[::-1]))", "print(propozitie[::-1])"],
+        ["\" \".join", "\"\".join"]
+      ]
+    },
+    {
+      "id": "sr-gap-acc",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"{{w}}\"\nrezultat = \"\"\nfor caracter in text:\n    ___\nprint(rezultat)",
+      "values": [
+        {
+          "w": "Cortez"
+        },
+        {
+          "w": "Saturn"
+        },
+        {
+          "w": "Ken"
+        },
+        {
+          "w": "galaxie"
+        },
+        {
+          "w": "Mercedes"
+        }
+      ],
+      "answer": "rezultat = caracter + rezultat",
+      "wrong": [
+        "rezultat = rezultat + caracter",
+        "rezultat = caracter",
+        "rezultat = text + rezultat",
+        "rezultat += text"
+      ]
+    },
+    {
+      "id": "sr-gap-join",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvinte = \"{{s}}\".split(\" \")\nprint(___.join(cuvinte[::-1]))",
+      "values": [
+        {
+          "s": "gata de lansare"
+        },
+        {
+          "s": "Vice City noaptea"
+        },
+        {
+          "s": "luna este plina"
+        },
+        {
+          "s": "alimenteaza racheta"
+        },
+        {
+          "s": "toate sistemele merg"
+        }
+      ],
+      "answer": "\" \"",
+      "wrong": ["\"\"", "\"-\"", "\",\""]
+    },
+    {
+      "id": "sr-gap-stop",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"{{w}}\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, ___, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "Comet"
+        },
+        {
+          "w": "Lance"
+        },
+        {
+          "w": "Nova"
+        },
+        {
+          "w": "Phil"
+        }
+      ],
+      "answer": "-1",
+      "wrong": ["0", "1", "len(nume)"]
+    },
+    {
+      "id": "sr-gap-step",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"{{w}}\"\nprint(cuvant[::___])",
+      "values": [
+        {
+          "w": "Voyager"
+        },
+        {
+          "w": "Sonny"
+        },
+        {
+          "w": "Jupiter"
+        },
+        {
+          "w": "Racheta"
+        },
+        {
+          "w": "Hilary"
+        }
+      ],
+      "answer": "-1",
+      "wrong": ["1", "2", "-2"]
+    },
+    {
+      "id": "sr-bad-acc",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"{{w}}\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+      "values": [
+        {
+          "w": "Ricardo"
+        },
+        {
+          "w": "Marte"
+        },
+        {
+          "w": "Diaz"
+        },
+        {
+          "w": "Avery"
+        },
+        {
+          "w": "cometa"
+        }
+      ],
+      "bug": ["caracter + rezultat", "rezultat + caracter"]
+    },
+    {
+      "id": "sr-bad-range",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"{{w}}\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "Orbita"
+        },
+        {
+          "w": "Kent"
+        },
+        {
+          "w": "Terra"
+        },
+        {
+          "w": "Gonzalez"
+        }
+      ],
+      "bug": ["1, -1, -1)", "1, 0, -1)"]
+    },
+    {
+      "id": "sr-bad-words",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "propozitie = \"{{s}}\"\ncuvinte = propozitie.split(\" \")\ncuvinte_inversate = cuvinte[::-1]\nprint(\" \".join(cuvinte_inversate))",
+      "values": [
+        {
+          "s": "Imi place Vice City"
+        },
+        {
+          "s": "deschide ecluza"
+        },
+        {
+          "s": "motorul este fierbinte"
+        },
+        {
+          "s": "verificare radio unu"
+        },
+        {
+          "s": "aterizeaza pe Marte"
+        }
+      ],
+      "bug": ["cuvinte[::-1]", "cuvinte[::1]"]
+    }
+  ]
+}

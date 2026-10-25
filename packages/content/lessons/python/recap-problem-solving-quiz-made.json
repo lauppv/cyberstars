@@ -1,0 +1,666 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-problem-solving-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rps-clean-d04ba7",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\nprint(clean_text(\"S3ct0r 7 cl34r!\"))",
+      "options": ["sctrclr", "Sctrclr", "30 7 34!", "r"],
+      "answer": 0
+    },
+    {
+      "id": "rps-clean-46edf3",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\nprint(clean_text(\"Ab-C 12d\"))",
+      "options": ["abcd", "AbCd", "- 12", "d"],
+      "answer": 0
+    },
+    {
+      "id": "rps-clean-2ec7d0",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\nprint(clean_text(\"Mars, Venus!\"))",
+      "options": ["marsvenus", "MarsVenus", ", !", "s"],
+      "answer": 0
+    },
+    {
+      "id": "rps-clean-65553b",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\nprint(clean_text(\"R2-D2 Online\"))",
+      "options": ["rdonline", "RDOnline", "2-2", "e"],
+      "answer": 0
+    },
+    {
+      "id": "rps-clean-1ae19e",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\nprint(clean_text(\"Orbit 42 OK\"))",
+      "options": ["orbitok", "OrbitOK", " 42", "k"],
+      "answer": 0
+    },
+    {
+      "id": "rps-pal-steps-276d4d",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        print(word[left], word[right])\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nprint(is_palindrome(\"radar\"))",
+      "options": ["r r\na a\nTrue", "r r\na d\nFalse", "r a\nFalse", "r r\nr a\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "rps-pal-steps-ec80a2",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        print(word[left], word[right])\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nprint(is_palindrome(\"stars\"))",
+      "options": ["s s\nt r\nFalse", "s s\nt r\nFalse\nTrue", "s s\nt a\nFalse", "s r\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "rps-pal-steps-86a1d1",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        print(word[left], word[right])\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nprint(is_palindrome(\"rotor\"))",
+      "options": ["r r\no o\nTrue", "r r\no t\nFalse", "r o\nFalse", "r r\nr o\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "rps-pal-steps-803aa6",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        print(word[left], word[right])\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nprint(is_palindrome(\"trust\"))",
+      "options": ["t t\nr s\nFalse", "t t\nr s\nFalse\nTrue", "t t\nr u\nFalse", "t s\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "rps-pal-steps-44fa06",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        print(word[left], word[right])\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nprint(is_palindrome(\"noon\"))",
+      "options": ["n n\no o\nTrue", "n n\nTrue", "n o\nFalse", "n n\nn o\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "rps-anagram-ea2c5e",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef are_anagrams(a, b):\n    return sorted(clean_text(a)) == sorted(clean_text(b))\n\nprint(are_anagrams(\"Listen!\", \"Silent\"))\nprint(sorted(clean_text(\"Listen!\")))",
+      "options": [
+        "True\n['e', 'i', 'l', 'n', 's', 't']",
+        "False\n['e', 'i', 'l', 'n', 's', 't']",
+        "True\nlisten",
+        "True\n['!', 'L', 'e', 'i', 'n', 's', 't']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-anagram-28da5d",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef are_anagrams(a, b):\n    return sorted(clean_text(a)) == sorted(clean_text(b))\n\nprint(are_anagrams(\"Evil\", \"vile\"))\nprint(sorted(clean_text(\"Evil\")))",
+      "options": [
+        "True\n['e', 'i', 'l', 'v']",
+        "False\n['e', 'i', 'l', 'v']",
+        "True\nevil",
+        "True\n['E', 'i', 'l', 'v']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-anagram-697a6f",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef are_anagrams(a, b):\n    return sorted(clean_text(a)) == sorted(clean_text(b))\n\nprint(are_anagrams(\"Note\", \"Tone!\"))\nprint(sorted(clean_text(\"Note\")))",
+      "options": [
+        "True\n['e', 'n', 'o', 't']",
+        "False\n['e', 'n', 'o', 't']",
+        "True\nnote",
+        "True\n['N', 'e', 'o', 't']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-anagram-1b20d9",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef are_anagrams(a, b):\n    return sorted(clean_text(a)) == sorted(clean_text(b))\n\nprint(are_anagrams(\"Act\", \"cat!\"))\nprint(sorted(clean_text(\"Act\")))",
+      "options": [
+        "True\n['a', 'c', 't']",
+        "False\n['a', 'c', 't']",
+        "True\nact",
+        "True\n['A', 'c', 't']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-anagram-5ec897",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef are_anagrams(a, b):\n    return sorted(clean_text(a)) == sorted(clean_text(b))\n\nprint(are_anagrams(\"Earth\", \"heart\"))\nprint(sorted(clean_text(\"Earth\")))",
+      "options": [
+        "True\n['a', 'e', 'h', 'r', 't']",
+        "False\n['a', 'e', 'h', 'r', 't']",
+        "True\nearth",
+        "True\n['E', 'a', 'h', 'r', 't']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-reverse-words-64eb07",
+      "text": "What does this print?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    return \" \".join(words[::-1])\n\nprint(reverse_words(\"navigation system is online\"))",
+      "options": [
+        "online is system navigation",
+        "navigation system is online",
+        "onlineissystemnavigation",
+        "enilno si metsys noitagivan"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-reverse-words-eb3263",
+      "text": "What does this print?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    return \" \".join(words[::-1])\n\nprint(reverse_words(\"scan the next sector\"))",
+      "options": [
+        "sector next the scan",
+        "scan the next sector",
+        "sectornextthescan",
+        "rotces txen eht nacs"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-reverse-words-8aaff9",
+      "text": "What does this print?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    return \" \".join(words[::-1])\n\nprint(reverse_words(\"all crew on deck\"))",
+      "options": ["deck on crew all", "all crew on deck", "deckoncrewall", "kced no werc lla"],
+      "answer": 0
+    },
+    {
+      "id": "rps-reverse-words-e7b497",
+      "text": "What does this print?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    return \" \".join(words[::-1])\n\nprint(reverse_words(\"signal lost again\"))",
+      "options": ["again lost signal", "signal lost again", "againlostsignal", "niaga tsol langis"],
+      "answer": 0
+    },
+    {
+      "id": "rps-reverse-words-c941dd",
+      "text": "What does this print?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    return \" \".join(words[::-1])\n\nprint(reverse_words(\"engines are ready\"))",
+      "options": ["ready are engines", "engines are ready", "readyareengines", "ydaer era senigne"],
+      "answer": 0
+    },
+    {
+      "id": "rps-filter-bf1a2d",
+      "text": "What does this print?",
+      "code": "readings = [45, 82, 96, 38, 91]\nboosted = [min(r + 5, 100) for r in readings if r >= 50]\nprint(boosted)\nprint(len(boosted))",
+      "options": ["[87, 100, 96]\n3", "[87, 101, 96]\n3", "[50, 43]\n2", "[100, 101, 100]\n3"],
+      "answer": 0
+    },
+    {
+      "id": "rps-filter-ec3271",
+      "text": "What does this print?",
+      "code": "readings = [70, 20, 99, 60]\nboosted = [min(r + 10, 100) for r in readings if r >= 60]\nprint(boosted)\nprint(len(boosted))",
+      "options": ["[80, 100, 70]\n3", "[80, 100]\n2", "[80, 109, 70]\n3", "[30]\n1"],
+      "answer": 0
+    },
+    {
+      "id": "rps-filter-c131a2",
+      "text": "What does this print?",
+      "code": "readings = [55, 49, 97, 30, 75]\nboosted = [min(r + 5, 100) for r in readings if r >= 50]\nprint(boosted)\nprint(len(boosted))",
+      "options": ["[60, 100, 80]\n3", "[60, 102, 80]\n3", "[54, 35]\n2", "[100, 102, 100]\n3"],
+      "answer": 0
+    },
+    {
+      "id": "rps-filter-7a7352",
+      "text": "What does this print?",
+      "code": "readings = [88, 92, 15, 40]\nboosted = [min(r + 10, 100) for r in readings if r >= 40]\nprint(boosted)\nprint(len(boosted))",
+      "options": ["[98, 100, 50]\n3", "[98, 100]\n2", "[98, 102, 50]\n3", "[25]\n1"],
+      "answer": 0
+    },
+    {
+      "id": "rps-filter-9b1f0a",
+      "text": "What does this print?",
+      "code": "readings = [65, 95, 35]\nboosted = [min(r + 8, 100) for r in readings if r >= 65]\nprint(boosted)\nprint(len(boosted))",
+      "options": ["[73, 100]\n2", "[100]\n1", "[73, 103]\n2", "[43]\n1"],
+      "answer": 0
+    },
+    {
+      "id": "rps-pairs-2ba469",
+      "text": "What does this print?",
+      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nresult = pair_with_sum([1, 2, 3, 4, 5, 6], 7)\nprint(result)\nprint(len(result))",
+      "options": [
+        "[(1, 6), (2, 5), (3, 4)]\n3",
+        "[1, 2, 3]\n3",
+        "[(1, 6), (3, 4)]\n2",
+        "[(1, 6), (2, 5), (3, 4)]\n6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-pairs-7d726d",
+      "text": "What does this print?",
+      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nresult = pair_with_sum([1, 3, 4, 6, 8], 9)\nprint(result)\nprint(len(result))",
+      "options": ["[(1, 8), (3, 6)]\n2", "[1, 3]\n2", "[(1, 8)]\n1", "[(1, 8), (3, 6)]\n4"],
+      "answer": 0
+    },
+    {
+      "id": "rps-pairs-ed39d3",
+      "text": "What does this print?",
+      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nresult = pair_with_sum([2, 4, 5, 6, 7, 9], 11)\nprint(result)\nprint(len(result))",
+      "options": [
+        "[(2, 9), (4, 7), (5, 6)]\n3",
+        "[2, 4, 5]\n3",
+        "[(2, 9), (5, 6)]\n2",
+        "[(2, 9), (4, 7), (5, 6)]\n6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-pairs-91a93e",
+      "text": "What does this print?",
+      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nresult = pair_with_sum([1, 2, 5, 8, 10], 10)\nprint(result)\nprint(len(result))",
+      "options": ["[(2, 8)]\n1", "[(2, 8), (5, 5)]\n2", "[2]\n1", "[(2, 8)]\n2"],
+      "answer": 0
+    },
+    {
+      "id": "rps-pairs-60df96",
+      "text": "What does this print?",
+      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nresult = pair_with_sum([3, 4, 5, 6, 7], 10)\nprint(result)\nprint(len(result))",
+      "options": ["[(3, 7), (4, 6)]\n2", "[(3, 7), (4, 6), (5, 5)]\n3", "[3, 4]\n2", "[(3, 7)]\n1"],
+      "answer": 0
+    },
+    {
+      "id": "rps-toolkit-17690e",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\ntext = \"Never odd or even\"\nprint(clean_text(text))\nprint(is_palindrome(clean_text(text)))",
+      "options": [
+        "neveroddoreven\nTrue",
+        "neveroddoreven\nFalse",
+        "Neveroddoreven\nFalse",
+        "Never odd or even\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-toolkit-6d9f92",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\ntext = \"Was it a car?\"\nprint(clean_text(text))\nprint(is_palindrome(clean_text(text)))",
+      "options": ["wasitacar\nFalse", "Wasitacar\nFalse", "Was it a car?\nFalse", "   ?\nFalse"],
+      "answer": 0
+    },
+    {
+      "id": "rps-toolkit-20c0ee",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\ntext = \"Step on no pets!\"\nprint(clean_text(text))\nprint(is_palindrome(clean_text(text)))",
+      "options": [
+        "steponnopets\nTrue",
+        "steponnopets\nFalse",
+        "Steponnopets\nFalse",
+        "Step on no pets!\nTrue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-toolkit-c97a99",
+      "text": "What does this print?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\ndef is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\ntext = \"Top spot\"\nprint(clean_text(text))\nprint(is_palindrome(clean_text(text)))",
+      "options": ["topspot\nTrue", "topspot\nFalse", "Topspot\nFalse", "Top spot\nTrue"],
+      "answer": 0
+    },
+    {
+      "id": "rps-which-clean-5f95d5",
+      "text": "Which program shows this?",
+      "output": "codeb",
+      "options": [
+        "text = \"Code 7B!\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char.lower()\nprint(result)",
+        "text = \"Code 7B!\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char\nprint(result)",
+        "text = \"Code 7B!\"\nresult = \"\"\nfor char in text:\n    if not char.isalpha():\n        result += char.lower()\nprint(result)",
+        "text = \"Code 7B!\"\nresult = \"\"\nfor char in text:\n    if char.islower():\n        result += char.lower()\nprint(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-which-clean-951620",
+      "text": "Which program shows this?",
+      "output": "rd",
+      "options": [
+        "text = \"R2 D2\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char.lower()\nprint(result)",
+        "text = \"R2 D2\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char\nprint(result)",
+        "text = \"R2 D2\"\nresult = \"\"\nfor char in text:\n    if not char.isalpha():\n        result += char.lower()\nprint(result)",
+        "text = \"R2 D2\"\nresult = \"\"\nfor char in text:\n    if char.islower():\n        result += char.lower()\nprint(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-which-clean-cc5f9f",
+      "text": "Which program shows this?",
+      "output": "marsx",
+      "options": [
+        "text = \"Mars 3X\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char.lower()\nprint(result)",
+        "text = \"Mars 3X\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char\nprint(result)",
+        "text = \"Mars 3X\"\nresult = \"\"\nfor char in text:\n    if not char.isalpha():\n        result += char.lower()\nprint(result)",
+        "text = \"Mars 3X\"\nresult = \"\"\nfor char in text:\n    if char.islower():\n        result += char.lower()\nprint(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-which-clean-a2e9d7",
+      "text": "Which program shows this?",
+      "output": "hiok",
+      "options": [
+        "text = \"Hi 5 Ok\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char.lower()\nprint(result)",
+        "text = \"Hi 5 Ok\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char\nprint(result)",
+        "text = \"Hi 5 Ok\"\nresult = \"\"\nfor char in text:\n    if not char.isalpha():\n        result += char.lower()\nprint(result)",
+        "text = \"Hi 5 Ok\"\nresult = \"\"\nfor char in text:\n    if char.islower():\n        result += char.lower()\nprint(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-which-clean-da45b8",
+      "text": "Which program shows this?",
+      "output": "zonea",
+      "options": [
+        "text = \"Zone 51A\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char.lower()\nprint(result)",
+        "text = \"Zone 51A\"\nresult = \"\"\nfor char in text:\n    if char.isalpha():\n        result += char\nprint(result)",
+        "text = \"Zone 51A\"\nresult = \"\"\nfor char in text:\n    if not char.isalpha():\n        result += char.lower()\nprint(result)",
+        "text = \"Zone 51A\"\nresult = \"\"\nfor char in text:\n    if char.islower():\n        result += char.lower()\nprint(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-which-reverse-9ed6b7",
+      "text": "Which program shows this?",
+      "output": "now alert red",
+      "options": [
+        "sentence = \"red alert now\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+        "sentence = \"red alert now\"\nwords = sentence.split(\" \")\nprint(sentence[::-1])",
+        "sentence = \"red alert now\"\nwords = sentence.split(\" \")\nprint(\" \".join(words))",
+        "sentence = \"red alert now\"\nwords = sentence.split(\" \")\nprint(\"\".join(words[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-which-reverse-ab7614",
+      "text": "Which program shows this?",
+      "output": "safe is hull the",
+      "options": [
+        "sentence = \"the hull is safe\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+        "sentence = \"the hull is safe\"\nwords = sentence.split(\" \")\nprint(sentence[::-1])",
+        "sentence = \"the hull is safe\"\nwords = sentence.split(\" \")\nprint(\" \".join(words))",
+        "sentence = \"the hull is safe\"\nwords = sentence.split(\" \")\nprint(\"\".join(words[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-which-reverse-d97330",
+      "text": "Which program shows this?",
+      "output": "low fuel",
+      "options": [
+        "sentence = \"fuel low\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+        "sentence = \"fuel low\"\nwords = sentence.split(\" \")\nprint(sentence[::-1])",
+        "sentence = \"fuel low\"\nwords = sentence.split(\" \")\nprint(\" \".join(words))",
+        "sentence = \"fuel low\"\nwords = sentence.split(\" \")\nprint(\"\".join(words[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-which-reverse-d5f413",
+      "text": "Which program shows this?",
+      "output": "two gate at dock",
+      "options": [
+        "sentence = \"dock at gate two\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+        "sentence = \"dock at gate two\"\nwords = sentence.split(\" \")\nprint(sentence[::-1])",
+        "sentence = \"dock at gate two\"\nwords = sentence.split(\" \")\nprint(\" \".join(words))",
+        "sentence = \"dock at gate two\"\nwords = sentence.split(\" \")\nprint(\"\".join(words[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-which-reverse-98c0b9",
+      "text": "Which program shows this?",
+      "output": "quiet is radio",
+      "options": [
+        "sentence = \"radio is quiet\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+        "sentence = \"radio is quiet\"\nwords = sentence.split(\" \")\nprint(sentence[::-1])",
+        "sentence = \"radio is quiet\"\nwords = sentence.split(\" \")\nprint(\" \".join(words))",
+        "sentence = \"radio is quiet\"\nwords = sentence.split(\" \")\nprint(\"\".join(words[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-gap-move-5ef9d9",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"level\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    ___",
+      "output": "l l\ne e",
+      "options": ["right -= 1", "left += 1", "right = 0", "right -= 2"],
+      "answer": 0
+    },
+    {
+      "id": "rps-gap-move-0c3ceb",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"stats\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    ___",
+      "output": "s s\nt t",
+      "options": ["right -= 1", "left += 1", "right = 0", "right -= 2"],
+      "answer": 0
+    },
+    {
+      "id": "rps-gap-move-7643b4",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"refer\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    ___",
+      "output": "r r\ne e",
+      "options": ["right -= 1", "left += 1", "right = 0", "right -= 2"],
+      "answer": 0
+    },
+    {
+      "id": "rps-gap-move-4c6778",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"deed\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    ___",
+      "output": "d d\ne e",
+      "options": ["right -= 1", "left += 1", "right = 0", "right -= 2"],
+      "answer": 0
+    },
+    {
+      "id": "rps-gap-move-498217",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"civic\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    ___",
+      "output": "c c\ni i",
+      "options": ["right -= 1", "left += 1", "right = 0", "right -= 2"],
+      "answer": 0
+    },
+    {
+      "id": "rps-gap-join-24a046",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    ___\n\nprint(reverse_words(\"system is online\"))",
+      "output": "online is system",
+      "options": [
+        "return \" \".join(words[::-1])",
+        "return \" \".join(words)",
+        "return sentence[::-1]",
+        "return \"\".join(words[::-1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-gap-join-0f1c05",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    ___\n\nprint(reverse_words(\"engines are hot\"))",
+      "output": "hot are engines",
+      "options": [
+        "return \" \".join(words[::-1])",
+        "return \" \".join(words)",
+        "return sentence[::-1]",
+        "return \"\".join(words[::-1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-gap-join-ef5ff0",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    ___\n\nprint(reverse_words(\"crew on deck\"))",
+      "output": "deck on crew",
+      "options": [
+        "return \" \".join(words[::-1])",
+        "return \" \".join(words)",
+        "return sentence[::-1]",
+        "return \"\".join(words[::-1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-gap-join-67e210",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def reverse_words(sentence):\n    words = sentence.split(\" \")\n    ___\n\nprint(reverse_words(\"signal lost\"))",
+      "output": "lost signal",
+      "options": [
+        "return \" \".join(words[::-1])",
+        "return \" \".join(words)",
+        "return sentence[::-1]",
+        "return \"\".join(words[::-1])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-val-right-d164e7",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - ___\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nfor word in [\"radar\", \"orbit\"]:\n    print(word, is_palindrome(word))",
+      "output": "radar True\norbit False",
+      "options": ["1", "0", "2", "len(word)"],
+      "answer": 0
+    },
+    {
+      "id": "rps-val-right-47e756",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - ___\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nfor word in [\"noon\", \"moon\"]:\n    print(word, is_palindrome(word))",
+      "output": "noon True\nmoon False",
+      "options": ["1", "0", "2", "len(word)"],
+      "answer": 0
+    },
+    {
+      "id": "rps-val-right-ab98e6",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - ___\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nfor word in [\"kayak\", \"comet\"]:\n    print(word, is_palindrome(word))",
+      "output": "kayak True\ncomet False",
+      "options": ["1", "0", "2", "len(word)"],
+      "answer": 0
+    },
+    {
+      "id": "rps-val-right-7136ab",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - ___\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nfor word in [\"pop\", \"sun\"]:\n    print(word, is_palindrome(word))",
+      "output": "pop True\nsun False",
+      "options": ["1", "0", "2", "len(word)"],
+      "answer": 0
+    },
+    {
+      "id": "rps-val-right-b594e4",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - ___\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nfor word in [\"wow\", \"star\"]:\n    print(word, is_palindrome(word))",
+      "output": "wow True\nstar False",
+      "options": ["1", "0", "2", "len(word)"],
+      "answer": 0
+    },
+    {
+      "id": "rps-val-method-42b431",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = \"R2D2 go\"\nresult = \"\"\nfor char in text:\n    if char.___():\n        result += char\nprint(result)",
+      "output": "RDgo",
+      "options": ["isalpha", "isdigit", "isupper", "islower"],
+      "answer": 0
+    },
+    {
+      "id": "rps-val-method-b50dff",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = \"Area 51b\"\nresult = \"\"\nfor char in text:\n    if char.___():\n        result += char\nprint(result)",
+      "output": "51",
+      "options": ["isdigit", "isalpha", "isupper", "islower"],
+      "answer": 0
+    },
+    {
+      "id": "rps-val-method-795cdc",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = \"Mars7x\"\nresult = \"\"\nfor char in text:\n    if char.___():\n        result += char\nprint(result)",
+      "output": "arsx",
+      "options": ["islower", "isalpha", "isdigit", "isupper"],
+      "answer": 0
+    },
+    {
+      "id": "rps-val-method-fad728",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "text = \"abC9De\"\nresult = \"\"\nfor char in text:\n    if char.___():\n        result += char\nprint(result)",
+      "output": "CD",
+      "options": ["isupper", "isalpha", "isdigit", "islower"],
+      "answer": 0
+    },
+    {
+      "id": "rps-bad-clean-f78f29",
+      "text": "Which line stops this program from printing this?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char\n    return result\n\nfor text in [\"Ab1\", \"C-d\"]:\n    print(text, clean_text(text))",
+      "output": "Ab1 ab\nC-d cd",
+      "options": ["result += char", "result = \"\"", "if char.isalpha():", "for char in text:"],
+      "answer": 0
+    },
+    {
+      "id": "rps-bad-clean-4ca87c",
+      "text": "Which line stops this program from printing this?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char\n    return result\n\nfor text in [\"Go 7\", \"Hi!\"]:\n    print(text, clean_text(text))",
+      "output": "Go 7 go\nHi! hi",
+      "options": ["result += char", "result = \"\"", "if char.isalpha():", "for char in text:"],
+      "answer": 0
+    },
+    {
+      "id": "rps-bad-clean-20b4bc",
+      "text": "Which line stops this program from printing this?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char\n    return result\n\nfor text in [\"R2D2\", \"Ok\"]:\n    print(text, clean_text(text))",
+      "output": "R2D2 rd\nOk ok",
+      "options": [
+        "result += char",
+        "return result",
+        "print(text, clean_text(text))",
+        "for text in [\"R2D2\", \"Ok\"]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-bad-clean-96e9f0",
+      "text": "Which line stops this program from printing this?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char\n    return result\n\nfor text in [\"Zx 9\", \"Mm\"]:\n    print(text, clean_text(text))",
+      "output": "Zx 9 zx\nMm mm",
+      "options": ["result += char", "result = \"\"", "if char.isalpha():", "return result"],
+      "answer": 0
+    },
+    {
+      "id": "rps-bad-pairs-9a57db",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [1, 3, 5, 7]\ntarget = 10\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    print(numbers[left], numbers[right], current_sum)\n    if current_sum == target:\n        break\n    elif current_sum < target:\n        left += 2\n    else:\n        right -= 1",
+      "output": "1 7 8\n3 7 10",
+      "options": [
+        "left += 2",
+        "break",
+        "print(numbers[left], numbers[right], current_sum)",
+        "current_sum = numbers[left] + numbers[right]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-bad-pairs-8f5fb7",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [2, 3, 5, 8]\ntarget = 8\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    print(numbers[left], numbers[right], current_sum)\n    if current_sum == target:\n        break\n    elif current_sum < target:\n        left += 2\n    else:\n        right -= 1",
+      "output": "2 8 10\n2 5 7\n3 5 8",
+      "options": [
+        "left += 2",
+        "break",
+        "print(numbers[left], numbers[right], current_sum)",
+        "current_sum = numbers[left] + numbers[right]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-bad-pairs-5e8bcb",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [1, 2, 4, 7, 11]\ntarget = 9\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    print(numbers[left], numbers[right], current_sum)\n    if current_sum == target:\n        break\n    elif current_sum < target:\n        left += 2\n    else:\n        right -= 1",
+      "output": "1 11 12\n1 7 8\n2 7 9",
+      "options": ["left += 2", "break", "right -= 1", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "rps-bad-pairs-33b283",
+      "text": "Which line stops this program from printing this?",
+      "code": "numbers = [2, 4, 6, 9]\ntarget = 10\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    print(numbers[left], numbers[right], current_sum)\n    if current_sum == target:\n        break\n    elif current_sum < target:\n        left += 2\n    else:\n        right -= 1",
+      "output": "2 9 11\n2 6 8\n4 6 10",
+      "options": [
+        "left += 2",
+        "break",
+        "print(numbers[left], numbers[right], current_sum)",
+        "current_sum = numbers[left] + numbers[right]"
+      ],
+      "answer": 0
+    }
+  ]
+}

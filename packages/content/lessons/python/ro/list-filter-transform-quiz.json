@@ -1,0 +1,789 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce înseamnă să filtrezi o listă?",
+      "options": [
+        "Să păstrezi doar elementele care îndeplinesc o condiție",
+        "Să schimbi fiecare element într-un fel",
+        "Să sortezi lista",
+        "Să scoți primul element al listei"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce înseamnă să transformi o listă?",
+      "options": [
+        "Să păstrezi doar unele elemente",
+        "Să inversezi lista",
+        "Să aplici o operație fiecărui element",
+        "Să numeri elementele"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Ce afișează?",
+      "code": "scoruri = [45, 82, 67, 91, 38, 74, 55, 96]\npromovate = []\nfor s in scoruri:\n    if s >= 50:\n        promovate.append(s)\nprint(promovate)",
+      "options": ["[45, 38]", "[82, 67, 91, 74, 55, 96]", "[45, 82, 67, 91, 38, 74, 55, 96]", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Ce comprehension păstrează scorurile de 50 sau mai mult?",
+      "options": [
+        "`[s >= 50 for s in scoruri]`",
+        "`[s for s >= 50 in scoruri]`",
+        "`[if s >= 50 for s in scoruri]`",
+        "`[s for s in scoruri if s >= 50]`"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "scoruri = [45, 82, 67]\nprint([s >= 50 for s in scoruri])",
+      "options": ["[False, True, True]", "[82, 67]", "[45]", "[True, False, False]"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "preturi = [10.0, 20.0, 8.0]\ncu_taxa = []\nfor pret in preturi:\n    cu_taxa.append(round(pret * 1.19, 2))\nprint(cu_taxa)",
+      "options": ["[10.0, 20.0, 8.0]", "[11.9, 23.8, 9.5]", "[11.9, 23.8, 9.52]", "[12, 24, 10]"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Ce face `round(pret * 1.19, 2)` cu prețul?",
+      "options": [
+        "Înmulțește cu 1.19 și dublează rezultatul",
+        "Adaugă 19% și păstrează două zecimale",
+        "Rotunjește prețul la cel mai apropiat 2",
+        "Adaugă 1.19 și 2 la preț"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\n    {\"nume\": \"Tommy\", \"online\": True},\n    {\"nume\": \"Lance\", \"online\": False},\n    {\"nume\": \"Cortez\", \"online\": True},\n    {\"nume\": \"Phil\", \"online\": True},\n    {\"nume\": \"Sonny\", \"online\": False}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"online\"]])",
+      "options": [
+        "['Lance', 'Sonny']",
+        "['Tommy', 'Lance', 'Cortez', 'Phil', 'Sonny']",
+        "3",
+        "['Tommy', 'Cortez', 'Phil']"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "În `[j[\"nume\"] for j in jucatori if j[\"online\"]]`, ce parte filtrează și ce parte transformă?",
+      "options": [
+        "`if j[\"online\"]` filtrează, `j[\"nume\"]` transformă",
+        "`j[\"nume\"]` filtrează, `if j[\"online\"]` transformă",
+        "`for j in jucatori` le face pe amândouă",
+        "Nu se filtrează nimic, doar se transformă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "note = [45, 82, 67, 91, 38, 74, 55, 96]\nprint([min(g + 5, 100) for g in note if g >= 50])",
+      "options": [
+        "[87, 72, 96, 79, 60, 101]",
+        "[50, 87, 72, 96, 43, 79, 60, 100]",
+        "[87, 72, 96, 79, 60, 100]",
+        "[82, 67, 91, 74, 55, 96]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "De ce plafonează `min(n + 5, 100)` nota la 100?",
+      "options": [
+        "Dă mereu 100",
+        "Dă cel mai mic dintre cele două, deci orice peste 100 devine 100",
+        "Scoate din listă notele de peste 100",
+        "Rotunjește nota la cea mai apropiată sută"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "print(min(98 + 5, 100))",
+      "options": ["103", "98", "[100]", "100"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "citiri = [45, 82, 12, 55]\ncu_impuls = []\nfor citire in citiri:\n    if citire >= 50:\n        cu_impuls.append(min(citire + 5, 100))\nprint(f\"Cu impuls: {cu_impuls}\")\nprint(f\"Reactoare stabile: {len(cu_impuls)}\")\nprint(f\"Medie: {round(sum(cu_impuls) / len(cu_impuls))}\")",
+      "options": [
+        "Cu impuls: [87, 60]\nReactoare stabile: 2\nMedie: 74",
+        "Cu impuls: [87, 60]\nReactoare stabile: 2\nMedie: 73.5",
+        "Cu impuls: [82, 55]\nReactoare stabile: 2\nMedie: 68",
+        "Cu impuls: [50, 87, 17, 60]\nReactoare stabile: 4\nMedie: 54"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "În misiune, de ce filtrăm înainte să calculăm media?",
+      "options": [
+        "Pentru că `sum()` nu poate aduna numere mici",
+        "Ca lista să fie sortată",
+        "Ca să conteze doar citirile cu impuls ale reactoarelor stabile",
+        "Pentru că `round()` cere o listă filtrată"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3, 4]\nprint([n * 2 for n in numere if n % 2 == 0])",
+      "options": ["[2, 4]", "[4, 8]", "[1, 2, 3, 4]", "[2, 6, 4, 8]"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3, 4]\nprint([n * 2 for n in numere if n * 2 % 2 == 0])",
+      "options": ["[4, 8]", "[]", "[2, 6]", "[2, 4, 6, 8]"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Schimbă un filtru elementele pe care le păstrează?",
+      "options": [
+        "Nu, doar decide care rămân",
+        "Da, le dublează",
+        "Da, le sortează",
+        "Da, le face True sau False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "O transformare rulează pe o listă de 6 elemente, fără filtru. Câte elemente are lista nouă?",
+      "options": ["Mai puțin de 6", "Mai mult de 6", "6", "Depinde de condiție"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "scoruri = [45, 38]\nprint([s for s in scoruri if s >= 50])",
+      "options": ["[45, 38]", "[]", "None", "[0]"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "citiri = [12, 30]\namplificat = [min(r + 5, 100) for r in citiri if r >= 50]\nprint(round(sum(amplificat) / len(amplificat)))",
+      "options": [
+        "Afișează 0",
+        "Afișează []",
+        "Afișează None",
+        "O eroare: `len(amplificat)` e 0, deci împarte la zero"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\nprint([n.upper() for n in nume if len(n) >= 5])",
+      "options": [
+        "['TOMMY', 'LANCE', 'CORTEZ']",
+        "['Tommy', 'Lance', 'Cortez']",
+        "['TOMMY', 'LANCE', 'CORTEZ', 'PHIL']",
+        "['CORTEZ']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\n    {\"nume\": \"Tommy\", \"scor\": 95},\n    {\"nume\": \"Lance\", \"scor\": 42},\n    {\"nume\": \"Cortez\", \"scor\": 88}\n]\nprint([p[\"scor\"] for p in jucatori if p[\"scor\"] > 50])",
+      "options": ["['Tommy', 'Cortez']", "[95, 42, 88]", "[95, 88]", "[42]"],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "Ce buclă face același lucru ca `promovate = [s for s in scoruri if s >= 50]`?",
+      "options": [
+        "`for s in scoruri:` apoi `promovate.append(s >= 50)`",
+        "`for s in scoruri:` apoi `if s >= 50:` apoi `promovate.append(s)`, cu `promovate = []` întâi",
+        "`for s in scoruri:` apoi `promovate = s`",
+        "`if s >= 50:` apoi `for s in scoruri:` apoi `promovate.append(s)`"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "note = [45, 82, 67, 91, 38, 74, 55, 96]\nrezultat = []\nfor nota in note:\n    if nota >= 50:\n        amplificat = nota + 5\n        if amplificat > 100:\n            amplificat = 100\nrezultat.append(nota)\nprint(rezultat)",
+      "options": ["[87, 72, 96, 79, 60, 100]", "[100]", "[]", "[96]"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 3, 2, 4]\npastrate = []\nfor n in numere:\n    if n > 1:\n        pastrate.append(n)\nprint(pastrate)",
+      "options": ["[3, 2, 4]", "[1, 3, 2, 4]", "[2, 4]", "[3, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "De ce scrie varianta cu comprehension `min(n + 5, 100)` în locul celor două linii `if` din buclă?",
+      "options": [
+        "Comprehension-urile nu pot folosi `+`",
+        "`min()` filtrează și notele",
+        "`min()` face plafonarea într-o singură expresie, care încape într-un comprehension",
+        "Varianta cu buclă dă alt rezultat"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "scoruri = [45, 82, 67, 91]\npromovate = [s for s in scoruri if s >= 50]\nprint(len(promovate))",
+      "options": ["[82, 67, 91]", "3", "4", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Contează ordinea filtrării și transformării în `[n * 2 for n in numere if n > 5]`?",
+      "options": [
+        "Nu, nu contează niciodată",
+        "Da: condiția se uită la `n * 2`",
+        "Doar când lista e sortată",
+        "Da: condiția se uită la `n`, înainte să fie dublat"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3, 4]\nprint([n * 2 for n in numere if n > 2])",
+      "options": ["[6, 8]", "[8]", "[3, 4]", "[2, 4, 6, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 7, 5]\nrezultat = []\nfor n in numere:\n    if n != 5:\n        rezultat.append(n * 3)\nprint(rezultat)",
+      "options": ["[3, 7]", "[9, 21]", "[9, 21, 15]", "[3, 7, 5]"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "ft-filter",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "scoruri = [{{s}}]\npromovate = []\nfor s in scoruri:\n    if s >= {{m}}:\n        promovate.append(s)\nprint(promovate)",
+      "values": [
+        {
+          "s": "45, 82, 67, 91, 38",
+          "m": 50
+        },
+        {
+          "s": "12, 60, 60, 75, 30",
+          "m": 60
+        },
+        {
+          "s": "90, 15, 70, 40",
+          "m": 40
+        },
+        {
+          "s": "5, 9, 7, 3, 10",
+          "m": 7
+        },
+        {
+          "s": "55, 50, 49, 80",
+          "m": 50
+        }
+      ],
+      "mistakes": [
+        ["s >= {{m}}", "s > {{m}}"],
+        ["promovate.append(s)", "promovate = [s]"],
+        ["print(promovate)", "    print(promovate)"],
+        ["s >= {{m}}", "s <= {{m}}"]
+      ]
+    },
+    {
+      "id": "ft-comp",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{n}}]\nprint([n for n in numere if n {{c}}])",
+      "values": [
+        {
+          "n": "3, 8, 12, 5, 20",
+          "c": "> 6"
+        },
+        {
+          "n": "1, 2, 3, 4, 5, 6",
+          "c": "% 2 == 0"
+        },
+        {
+          "n": "15, 7, 22, 9, 30",
+          "c": "< 10"
+        },
+        {
+          "n": "4, 9, 16, 25",
+          "c": "% 3 == 1"
+        },
+        {
+          "n": "10, 20, 30, 40",
+          "c": "!= 30"
+        }
+      ],
+      "mistakes": [
+        ["if n {{c}}", "if not n {{c}}"],
+        ["[n for", "[n * 2 for"],
+        ["print([n for n in numere if n {{c}}])", "print(numere)"],
+        ["print([n for n in numere if n {{c}}])", "print([n {{c}} for n in numere])"]
+      ]
+    },
+    {
+      "id": "ft-transform",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "scoruri = [{{s}}]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + {{b}})\nprint(cu_bonus)",
+      "values": [
+        {
+          "s": "45, 82, 67",
+          "b": 5
+        },
+        {
+          "s": "10, 20, 30, 40",
+          "b": 3
+        },
+        {
+          "s": "7, 1, 9",
+          "b": 10
+        },
+        {
+          "s": "50, 60",
+          "b": 15
+        },
+        {
+          "s": "99, 0, 50, 25",
+          "b": 1
+        }
+      ],
+      "mistakes": [
+        ["cu_bonus.append(s + {{b}})", "cu_bonus.append({{b}})"],
+        ["s + {{b}}", "s * {{b}}"],
+        ["print(cu_bonus)", "print(scoruri)"],
+        ["print(cu_bonus)", "    print(cu_bonus)"]
+      ]
+    },
+    {
+      "id": "ft-cap",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "note = [{{g}}]\nprint([min(g + {{b}}, 100) for g in note if g >= 50])",
+      "values": [
+        {
+          "g": "45, 82, 97, 38, 74",
+          "b": 5
+        },
+        {
+          "g": "90, 55, 30, 99",
+          "b": 10
+        },
+        {
+          "g": "60, 49, 50, 95",
+          "b": 8
+        },
+        {
+          "g": "85, 12, 98, 70",
+          "b": 4
+        },
+        {
+          "g": "51, 92, 20",
+          "b": 9
+        }
+      ],
+      "mistakes": [
+        ["min(", "max("],
+        ["g >= 50", "g < 50"],
+        ["min(g + {{b}}, 100)", "g + {{b}}"],
+        [" if g >= 50", ""]
+      ]
+    },
+    {
+      "id": "ft-dicts",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\n    {\"nume\": \"{{a}}\", \"scor\": {{x}}},\n    {\"nume\": \"{{b}}\", \"scor\": {{y}}},\n    {\"nume\": \"{{c}}\", \"scor\": {{z}}}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= {{m}}])",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Cortez",
+          "z": 88,
+          "m": 50
+        },
+        {
+          "a": "Phil",
+          "x": 71,
+          "b": "Sonny",
+          "y": 33,
+          "c": "Ken",
+          "z": 60,
+          "m": 60
+        },
+        {
+          "a": "Mercedes",
+          "x": 50,
+          "b": "Kent",
+          "y": 75,
+          "c": "Victor",
+          "z": 49,
+          "m": 50
+        },
+        {
+          "a": "Avery",
+          "x": 20,
+          "b": "Diaz",
+          "y": 90,
+          "c": "Hilary",
+          "z": 85,
+          "m": 80
+        },
+        {
+          "a": "Ricardo",
+          "x": 66,
+          "b": "Lance",
+          "y": 99,
+          "c": "Tommy",
+          "z": 12,
+          "m": 65
+        }
+      ],
+      "mistakes": [
+        ["p[\"nume\"] for", "p[\"scor\"] for"],
+        [">= {{m}}", "< {{m}}"],
+        [
+          "print([p[\"nume\"] for p in jucatori if p[\"scor\"] >= {{m}}])",
+          "print(len([p[\"nume\"] for p in jucatori if p[\"scor\"] >= {{m}}]))"
+        ],
+        [">= {{m}}", "> {{m}}"]
+      ]
+    },
+    {
+      "id": "ft-avg",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "citiri = [{{r}}]\namplificat = []\nfor r in citiri:\n    if r >= 50:\n        amplificat.append(min(r + 5, 100))\nprint(len(amplificat))\nprint(round(sum(amplificat) / len(amplificat)))",
+      "values": [
+        {
+          "r": "45, 82, 97, 38, 50"
+        },
+        {
+          "r": "60, 12, 99, 70"
+        },
+        {
+          "r": "50, 51, 20, 96"
+        },
+        {
+          "r": "30, 80, 50, 98, 10"
+        },
+        {
+          "r": "75, 50, 40"
+        }
+      ],
+      "mistakes": [
+        ["min(r + 5, 100)", "r + 5"],
+        ["print(len(amplificat))", "print(len(citiri))"],
+        ["sum(amplificat) / len(amplificat)", "sum(amplificat) / len(citiri)"],
+        ["r >= 50", "r > 50"]
+      ]
+    },
+    {
+      "id": "ft-order",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{n}}]\nprint([n * 2 for n in numere if n > {{m}}])",
+      "values": [
+        {
+          "n": "1, 3, 5, 7",
+          "m": 4
+        },
+        {
+          "n": "2, 4, 6, 8",
+          "m": 5
+        },
+        {
+          "n": "10, 3, 8, 1",
+          "m": 5
+        },
+        {
+          "n": "4, 5, 6",
+          "m": 4
+        },
+        {
+          "n": "9, 2, 7, 4",
+          "m": 5
+        }
+      ],
+      "mistakes": [
+        ["if n > {{m}}", "if n * 2 > {{m}}"],
+        ["n * 2 for", "n for"],
+        ["n > {{m}}", "n < {{m}}"],
+        ["print([n * 2 for n in numere if n > {{m}}])", "print([n > {{m}} for n in numere])"]
+      ]
+    },
+    {
+      "id": "ft-strings",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [{{w}}]\nprint([c.upper() for c in cuvinte if len(c) > {{k}}])",
+      "values": [
+        {
+          "w": "\"orbita\", \"soare\", \"galaxie\", \"luna\"",
+          "k": 5
+        },
+        {
+          "w": "\"Marte\", \"Venus\", \"Terra\", \"Io\"",
+          "k": 3
+        },
+        {
+          "w": "\"nava\", \"racheta\", \"echipaj\", \"pilot\"",
+          "k": 5
+        },
+        {
+          "w": "\"stea\", \"cometa\", \"cer\"",
+          "k": 3
+        },
+        {
+          "w": "\"doc\", \"lansare\", \"motor\", \"combustibil\"",
+          "k": 5
+        }
+      ],
+      "mistakes": [
+        ["c.upper() for", "c for"],
+        ["len(c) > {{k}}", "len(c) < {{k}}"],
+        [
+          "[c.upper() for c in cuvinte if len(c) > {{k}}]",
+          "[len(c) for c in cuvinte if len(c) > {{k}}]"
+        ],
+        ["len(c) > {{k}}", "len(c) >= {{k}}"]
+      ]
+    },
+    {
+      "id": "ft-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "scoruri = [{{s}}]\npromovate = []\nfor s in scoruri:\n    if s >= {{m}}:\n        promovate.append(s)\nprint(promovate)",
+      "values": [
+        {
+          "s": "30, 70, 50, 90",
+          "m": 50
+        },
+        {
+          "s": "8, 3, 6, 9",
+          "m": 6
+        },
+        {
+          "s": "100, 20, 45, 60",
+          "m": 45
+        },
+        {
+          "s": "70, 35, 70, 10",
+          "m": 35
+        },
+        {
+          "s": "1, 5, 2, 4",
+          "m": 2
+        }
+      ],
+      "mistakes": [
+        ["s >= {{m}}", "s > {{m}}"],
+        ["        promovate.append(s)", "    promovate.append(s)"],
+        ["print(promovate)", "    print(promovate)"],
+        ["s >= {{m}}", "s <= {{m}}"]
+      ]
+    },
+    {
+      "id": "ft-gap-append",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [{{s}}]\npromovate = []\nfor s in scoruri:\n    if s >= {{m}}:\n        ___\nprint(promovate)",
+      "values": [
+        {
+          "s": "45, 82, 67, 91, 38",
+          "m": 50
+        },
+        {
+          "s": "12, 60, 75, 30",
+          "m": 60
+        },
+        {
+          "s": "90, 15, 70, 40",
+          "m": 40
+        },
+        {
+          "s": "5, 9, 7, 3, 10",
+          "m": 7
+        },
+        {
+          "s": "55, 49, 80",
+          "m": 50
+        }
+      ],
+      "answer": "promovate.append(s)",
+      "wrong": [
+        "promovate.append(scoruri)",
+        "promovate = [s]",
+        "promovate.append({{m}})",
+        "print(s)"
+      ]
+    },
+    {
+      "id": "ft-gap-cond",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [{{n}}]\nprint([n for n in numere if n ___ {{m}}])",
+      "values": [
+        {
+          "n": "3, 8, 12, 5, 8",
+          "m": 8
+        },
+        {
+          "n": "10, 20, 30, 40",
+          "m": 20
+        },
+        {
+          "n": "7, 1, 7, 9",
+          "m": 7
+        },
+        {
+          "n": "50, 49, 51, 60",
+          "m": 50
+        },
+        {
+          "n": "2, 4, 6, 8, 10",
+          "m": 6
+        }
+      ],
+      "answer": ">=",
+      "wrong": [">", "<", "<=", "=="]
+    },
+    {
+      "id": "ft-gap-cap",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "note = [{{g}}]\nprint([___(g + {{b}}, 100) for g in note if g >= 50])",
+      "values": [
+        {
+          "g": "45, 82, 97, 38, 74",
+          "b": 5
+        },
+        {
+          "g": "90, 55, 30, 99",
+          "b": 10
+        },
+        {
+          "g": "60, 49, 50, 95",
+          "b": 8
+        },
+        {
+          "g": "85, 12, 98, 70",
+          "b": 4
+        },
+        {
+          "g": "51, 92, 20",
+          "b": 9
+        }
+      ],
+      "answer": "min",
+      "wrong": ["max", "round", "sum"]
+    },
+    {
+      "id": "ft-bad-cap",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "note = [{{g}}]\nrezultat = []\nfor nota in note:\n    if nota >= 50:\n        amplificat = nota + {{b}}\n        if amplificat > 100:\n            amplificat = 100\n        rezultat.append(amplificat)\nprint(rezultat)",
+      "values": [
+        {
+          "g": "45, 82, 97, 38",
+          "b": 5
+        },
+        {
+          "g": "90, 55, 30, 99",
+          "b": 10
+        },
+        {
+          "g": "60, 49, 95",
+          "b": 8
+        },
+        {
+          "g": "85, 12, 98, 70",
+          "b": 4
+        },
+        {
+          "g": "51, 92, 20",
+          "b": 9
+        }
+      ],
+      "bug": ["rezultat.append(amplificat)", "rezultat.append(nota)"]
+    },
+    {
+      "id": "ft-bad-dicts",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jucatori = [\n    {\"nume\": \"{{a}}\", \"online\": {{x}}},\n    {\"nume\": \"{{b}}\", \"online\": {{y}}},\n    {\"nume\": \"{{c}}\", \"online\": {{z}}}\n]\nnume_conectati = []\nfor jucator in jucatori:\n    if jucator[\"online\"]:\n        nume_conectati.append(jucator[\"nume\"])\nprint(nume_conectati)",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": "True",
+          "b": "Lance",
+          "y": "False",
+          "c": "Cortez",
+          "z": "True"
+        },
+        {
+          "a": "Phil",
+          "x": "False",
+          "b": "Sonny",
+          "y": "True",
+          "c": "Ken",
+          "z": "False"
+        },
+        {
+          "a": "Mercedes",
+          "x": "True",
+          "b": "Kent",
+          "y": "True",
+          "c": "Victor",
+          "z": "False"
+        },
+        {
+          "a": "Avery",
+          "x": "False",
+          "b": "Diaz",
+          "y": "False",
+          "c": "Hilary",
+          "z": "True"
+        },
+        {
+          "a": "Ricardo",
+          "x": "True",
+          "b": "Lance",
+          "y": "False",
+          "c": "Tommy",
+          "z": "False"
+        }
+      ],
+      "bug": ["if jucator[\"online\"]:", "if jucator[\"nume\"]:"]
+    }
+  ]
+}

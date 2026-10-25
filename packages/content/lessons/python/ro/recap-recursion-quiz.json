@@ -1,0 +1,779 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Cum se uită `numara_balize` din recapitulare la fiecare celulă a sectorului?",
+      "options": [
+        "Cu câte un apel recursiv pentru fiecare celulă",
+        "Cu bucle imbricate: una peste rânduri, una peste celulele fiecărui rând",
+        "Cu căutare binară peste grilă",
+        "Cu o singură buclă peste `sector`, care dă celulele una câte una"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "De ce verifică `aplatizeaza_sortat` `if celula not in valori` înainte să adauge?",
+      "options": [
+        "Ca bucla să sară peste primul rând",
+        "Pentru că `append` dă eroare pe o valoare care e deja acolo",
+        "Ca valorile să iasă sortate",
+        "Ca fiecare valoare să intre o singură dată și lista să păstreze doar valorile unice"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "De ce are nevoie `gaseste_valoare` de o listă sortată?",
+      "options": [
+        "Aruncă jumătate din listă după o privire la mijloc, ceea ce merge doar când valorile sunt în ordine",
+        "O funcție recursivă merge doar pe liste sortate",
+        "`len()` numără doar listele sortate",
+        "Nu are: căutarea binară găsește o valoare în orice listă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "Care este cazul de bază al lui `gaseste_valoare` din recapitulare?",
+      "options": [
+        "`mijloc` ajunge la 0",
+        "O țintă egală cu 0",
+        "O listă goală: întoarce False",
+        "O listă cu o singură valoare: întoarce True"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [4, 7, 1],\n    [2, 9, 5],\n]\nprint(grila[1][0])",
+      "options": ["7", "2", "4", "9"],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "Câte rânduri și coloane are `grila = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]`?",
+      "options": [
+        "4 rânduri și 3 coloane",
+        "12 rânduri și o coloană",
+        "3 rânduri și 3 coloane",
+        "3 rânduri și 4 coloane"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def numaratoare_inversa(n):\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(3)",
+      "options": [
+        "Afișează 3, 2, 1, 0, -1 și tot așa, până când Python o oprește cu un RecursionError: nu are caz de bază",
+        "Afișează 3, 2 și 1, apoi se oprește",
+        "Afișează 3 și se oprește",
+        "Se oprește cu o eroare înainte să afișeze ceva"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(3) + factorial(2))",
+      "options": ["5", "6", "8", "24"],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([2, 4, 6]))",
+      "options": ["6", "12", "2", "[2, 4, 6]"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "Ce dă `numere[1:]` când `numere` este `[5, 8, 3]`?",
+      "options": ["[5]", "8", "[5, 8]", "[8, 3]"],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "Căutarea binară caută 11 în `[1, 3, 5, 7, 9, 11, 13]`. La ce valoare se uită prima dată?",
+      "options": ["7, cea din mijloc", "1, prima", "13, ultima", "11, pentru că știe unde e"],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "La aproximativ câte valori se uită căutarea binară într-o listă sortată de 1.000.000?",
+      "options": ["1.000", "500.000", "20", "1.000.000"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "De ce întoarce căutarea binară recursivă din lecție -1 când `stanga > dreapta`?",
+      "options": [
+        "-1 este indexul ultimei valori",
+        "Partea care mai trebuie căutată e goală, deci ținta nu e în listă",
+        "Ca să o ia de la capăt cu căutarea",
+        "Pentru că a găsit ținta la indexul -1"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [1, 2],\n    [3, 4],\n    [5, 6],\n]\nfor rand in grila:\n    total = 0\n    for celula in rand:\n        total += celula\n    print(total)",
+      "options": ["21", "9\n12", "3\n10\n21", "3\n7\n11"],
+      "answer": 3
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(6))",
+      "options": ["8", "5", "13", "6"],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "Ce face o funcție recursivă să se cheme la nesfârșit?",
+      "options": [
+        "Un `return` în cazul de bază",
+        "Două cazuri de bază, cum are `fib`",
+        "Un apel care nu se apropie de cazul de bază, ca `numaratoare_inversa(n)` în loc de `numaratoare_inversa(n - 1)`",
+        "Un `print` înainte de apelul recursiv"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "def suma_cifrelor(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifrelor(n // 10)\n\nprint(suma_cifrelor(4070))",
+      "options": ["4070", "11", "407", "7"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "grila = [\n    [1, 2],\n    [3, 4],\n]\nprint(grila[2][1])",
+      "options": [
+        "Afișează 4",
+        "Afișează 3",
+        "Nu afișează nimic",
+        "Se oprește cu un IndexError: grila are doar rândurile 0 și 1"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "Ce face diferit `print(celula, end=\" \")` față de `print(celula)`?",
+      "options": [
+        "Se termină cu un spațiu în loc de un rând nou, deci următorul print continuă pe același rând",
+        "Afișează celula de două ori",
+        "Afișează și indexul celulei",
+        "Pune celula între ghilimele"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [3, 8],\n    [12, 5],\n    [7, 1],\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for celula in rand:\n        if celula > cel_mai_mare:\n            cel_mai_mare = celula\nprint(cel_mai_mare)",
+      "options": ["8", "3", "12", "36"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "De ce pornește lecția `cel_mai_mare` de la `matrice[0][0]` și nu de la 0?",
+      "options": [
+        "Pentru că o variabilă nu poate porni de la 0",
+        "Ca să pornească de la o valoare reală și să meargă și când toate valorile sunt negative",
+        "Pentru că `matrice[0][0]` e mereu cea mai mare valoare",
+        "Ca bucla să meargă mai repede"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"Lance\"))",
+      "options": ["Lance", "anceL", "e", "ecnaL"],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "def numara_caractere(text, tinta):\n    if len(text) == 0:\n        return 0\n    primul = 1 if text[0] == tinta else 0\n    return primul + numara_caractere(text[1:], tinta)\n\nprint(numara_caractere(\"satelitul\", \"l\"))",
+      "options": ["2", "1", "3", "0"],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "Care linie află indexul din mijloc în căutarea binară din lecție?",
+      "options": [
+        "mijloc = stanga + dreapta",
+        "mijloc = len(numere)",
+        "mijloc = (stanga + dreapta) // 2",
+        "mijloc = dreapta - stanga"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "În căutarea binară din lecție, ce se întâmplă când `numere[mijloc] < tinta`?",
+      "options": [
+        "`dreapta = mijloc - 1`: ținta poate fi doar în stânga lui `mijloc`",
+        "`stanga = mijloc + 1`: ținta poate fi doar în dreapta lui `mijloc`",
+        "`stanga = mijloc`: căutarea rămâne pe loc",
+        "Întoarce -1"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "def aplatizeaza(lista):\n    rezultat = []\n    for element in lista:\n        if type(element) == list:\n            rezultat = rezultat + aplatizeaza(element)\n        else:\n            rezultat.append(element)\n    return rezultat\n\nprint(aplatizeaza([1, [2, [3]], 4]))",
+      "options": ["[1, [2, [3]], 4]", "[1, 2, [3], 4]", "4", "[1, 2, 3, 4]"],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "O grilă are 3 rânduri a câte 4 celule. De câte ori rulează corpul buclei din interior?",
+      "options": ["12", "7", "4", "3"],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([2, 5, 8, 12], 6))",
+      "options": ["2", "1", "-1", "False"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "De ce e lent `fib(30)` din lecție?",
+      "options": [
+        "Orice funcție recursivă e lentă",
+        "Calculează aceleași valori iar și iar: și `fib(5)`, și `fib(4)` cheamă `fib(3)`",
+        "30 e un număr prea mare pentru Python",
+        "Afișarea rezultatului ia cel mai mult timp"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "Lista asta nu e sortată. Ce afișează programul?",
+      "code": "def gaseste_valoare(lista_sortata, tinta):\n    if len(lista_sortata) == 0:\n        return False\n    mijloc = len(lista_sortata) // 2\n    if lista_sortata[mijloc] == tinta:\n        return True\n    elif lista_sortata[mijloc] < tinta:\n        return gaseste_valoare(lista_sortata[mijloc + 1:], tinta)\n    else:\n        return gaseste_valoare(lista_sortata[:mijloc], tinta)\n\nprint(gaseste_valoare([9, 2, 7, 4, 1], 9))",
+      "options": [
+        "True",
+        "Se oprește cu o eroare",
+        "0, indexul lui 9",
+        "False, deși 9 e în listă: căutarea binară a luat-o în partea greșită"
+      ],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "rr-cell",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [{{r0}}],\n    [{{r1}}],\n    [{{r2}}],\n]\nprint(grila[{{i}}][{{j}}])",
+      "values": [
+        {
+          "r0": "4, 7, 1",
+          "r1": "2, 9, 5",
+          "r2": "8, 3, 6",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "r0": "0, 1, 0",
+          "r1": "1, 2, 1",
+          "r2": "5, 4, 3",
+          "i": 2,
+          "j": 1
+        },
+        {
+          "r0": "5, 10, 15",
+          "r1": "20, 25, 30",
+          "r2": "35, 40, 45",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "r0": "9, 8, 7",
+          "r1": "6, 5, 4",
+          "r2": "3, 2, 1",
+          "i": 1,
+          "j": 0
+        },
+        {
+          "r0": "12, 4, 6",
+          "r1": "1, 7, 11",
+          "r2": "2, 10, 13",
+          "i": 2,
+          "j": 1
+        }
+      ],
+      "mistakes": [
+        ["grila[{{i}}][{{j}}]", "grila[{{j}}][{{i}}]"],
+        ["grila[{{i}}][{{j}}]", "grila[{{i}}]"],
+        ["grila[{{i}}][{{j}}]", "grila[{{i}}][0]"],
+        ["grila[{{i}}][{{j}}]", "grila[0][{{j}}]"]
+      ]
+    },
+    {
+      "id": "rr-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def numara_balize(sector):\n    total = 0\n    for rand in sector:\n        for celula in rand:\n            if celula == {{v}}:\n                total += 1\n    return total\n\nsector = [\n    [{{r0}}],\n    [{{r1}}],\n    [{{r2}}],\n]\nprint(numara_balize(sector))",
+      "values": [
+        {
+          "v": 2,
+          "r0": "0, 2, 1, 2",
+          "r1": "1, 0, 0, 2",
+          "r2": "2, 1, 0, 0"
+        },
+        {
+          "v": 3,
+          "r0": "3, 1, 0",
+          "r1": "0, 3, 3",
+          "r2": "2, 0, 1"
+        },
+        {
+          "v": 2,
+          "r0": "0, 0, 1",
+          "r1": "2, 1, 0",
+          "r2": "0, 1, 0"
+        },
+        {
+          "v": 1,
+          "r0": "0, 1, 2, 1",
+          "r1": "1, 1, 0, 0",
+          "r2": "2, 1, 1, 0"
+        }
+      ],
+      "mistakes": [
+        ["celula == {{v}}", "celula != {{v}}"],
+        ["total += 1", "total = 1"],
+        ["total += 1", "total += celula"],
+        ["    return total", "            return total"],
+        ["celula == {{v}}", "celula > {{v}}"]
+      ]
+    },
+    {
+      "id": "rr-unique",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def aplatizeaza_sortat(sector):\n    valori = []\n    for rand in sector:\n        for celula in rand:\n            if celula not in valori:\n                valori.append(celula)\n    return sorted(valori)\n\nsector = [\n    [{{r0}}],\n    [{{r1}}],\n]\nprint(aplatizeaza_sortat(sector))",
+      "values": [
+        {
+          "r0": "2, 0, 1",
+          "r1": "1, 0, 2"
+        },
+        {
+          "r0": "3, 3, 1",
+          "r1": "0, 1, 2"
+        },
+        {
+          "r0": "1, 0, 0, 1",
+          "r1": "0, 2, 1, 0"
+        },
+        {
+          "r0": "5, 2, 5",
+          "r1": "9, 2, 4"
+        }
+      ],
+      "mistakes": [
+        ["return sorted(valori)", "return valori"],
+        ["celula not in valori", "celula in valori"],
+        ["valori.append(celula)", "valori = [celula]"],
+        ["valori.append(celula)", "valori.append(rand)"]
+      ]
+    },
+    {
+      "id": "rr-bs-index",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [{{list}}]\nprint(cautare_binara(numere, {{t}}))",
+      "values": [
+        {
+          "list": "1, 3, 5, 7, 9, 11, 13",
+          "t": 11
+        },
+        {
+          "list": "2, 5, 8, 12, 16, 23, 38",
+          "t": 5
+        },
+        {
+          "list": "4, 8, 15, 16, 23, 42",
+          "t": 42
+        },
+        {
+          "list": "10, 20, 30, 40, 50",
+          "t": 10
+        },
+        {
+          "list": "3, 6, 9, 12, 15, 18, 21, 24",
+          "t": 18
+        }
+      ],
+      "mistakes": [
+        ["            return mijloc", "            return numere[mijloc]"],
+        ["            return mijloc", "            return mijloc + 1"],
+        ["elif numere[mijloc] < tinta:", "elif numere[mijloc] > tinta:"],
+        ["    return -1", "    return stanga"]
+      ]
+    },
+    {
+      "id": "rr-bs-steps",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{list}}]\ntinta = {{t}}\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    print(numere[mijloc])\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
+      "values": [
+        {
+          "list": "1, 3, 5, 7, 9, 11, 13, 15, 17, 19",
+          "t": 13
+        },
+        {
+          "list": "2, 4, 6, 8, 10, 12, 14",
+          "t": 4
+        },
+        {
+          "list": "5, 10, 15, 20, 25, 30, 35, 40",
+          "t": 35
+        },
+        {
+          "list": "1, 2, 3, 4, 5, 6, 7, 8, 9",
+          "t": 8
+        },
+        {
+          "list": "11, 22, 33, 44, 55, 66, 77",
+          "t": 20
+        }
+      ],
+      "mistakes": [
+        ["print(numere[mijloc])", "print(mijloc)"],
+        ["(stanga + dreapta) // 2", "(stanga + dreapta + 1) // 2"],
+        ["elif numere[mijloc] < tinta:", "elif numere[mijloc] > tinta:"],
+        ["dreapta = len(numere) - 1", "dreapta = len(numere) // 2"]
+      ]
+    },
+    {
+      "id": "rr-fact",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial({{n}}))",
+      "values": [
+        {
+          "n": 7
+        },
+        {
+          "n": 5
+        },
+        {
+          "n": 6
+        },
+        {
+          "n": 4
+        }
+      ],
+      "mistakes": [
+        ["        return 1", "        return 0"],
+        ["n * factorial(n - 1)", "n + factorial(n - 1)"],
+        ["if n == 1:", "if n == 2:"],
+        ["n * factorial(n - 1)", "n * (n - 1)"]
+      ]
+    },
+    {
+      "id": "rr-sum-list",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([{{list}}]))",
+      "values": [
+        {
+          "list": "3, 5, 2"
+        },
+        {
+          "list": "10, 20, 30, 40"
+        },
+        {
+          "list": "7, 1, 4, 6"
+        },
+        {
+          "list": "8, 9"
+        }
+      ],
+      "mistakes": [
+        ["        return 0", "        return 1"],
+        ["len(numere) == 0", "len(numere) == 1"],
+        ["numere[0] + suma_lista", "numere[0] * suma_lista"],
+        ["numere[0] + suma_lista(numere[1:])", "numere[0]"]
+      ]
+    },
+    {
+      "id": "rr-power",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nfor exponent in range({{n}}):\n    rezultat = putere({{b}}, exponent)\n    print(f\"{{b}}^{exponent} = {rezultat}\")",
+      "values": [
+        {
+          "b": 2,
+          "n": 4
+        },
+        {
+          "b": 3,
+          "n": 4
+        },
+        {
+          "b": 5,
+          "n": 3
+        },
+        {
+          "b": 10,
+          "n": 4
+        }
+      ],
+      "mistakes": [
+        ["        return 1", "        return baza"],
+        ["baza * putere(baza, exponent - 1)", "baza + putere(baza, exponent - 1)"],
+        ["range({{n}})", "range(1, {{n}})"],
+        ["baza * putere(baza, exponent - 1)", "baza * exponent"]
+      ]
+    },
+    {
+      "id": "rr-digits",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def suma_cifrelor(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifrelor(n // 10)\n\nfor cod in [{{codes}}]:\n    print(f\"{cod}: {suma_cifrelor(cod)}\")",
+      "values": [
+        {
+          "codes": "1234, 88"
+        },
+        {
+          "codes": "999, 5"
+        },
+        {
+          "codes": "4070, 31"
+        },
+        {
+          "codes": "56, 702"
+        }
+      ],
+      "mistakes": [
+        ["n % 10 + ", "n // 10 + "],
+        ["        return n", "        return 0"],
+        ["n < 10", "n < 100"],
+        ["suma_cifrelor(n // 10)", "n // 10"]
+      ]
+    },
+    {
+      "id": "rr-gap-row",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "grila = [\n    [{{r0}}],\n    [{{r1}}],\n    [{{r2}}],\n]\nfor rand in grila:\n    total = 0\n    for celula in rand:\n        ___\n    print(total)",
+      "values": [
+        {
+          "r0": "1, 2, 3",
+          "r1": "4, 5, 6",
+          "r2": "7, 8, 9"
+        },
+        {
+          "r0": "5, 1, 4",
+          "r1": "2, 2, 2",
+          "r2": "10, 0, 3"
+        },
+        {
+          "r0": "3, 7",
+          "r1": "6, 1",
+          "r2": "9, 9"
+        },
+        {
+          "r0": "12, 4, 6, 3",
+          "r1": "1, 7, 11, 2",
+          "r2": "2, 10, 13, 5"
+        }
+      ],
+      "answer": "total += celula",
+      "wrong": ["total = celula", "total += 1", "total += rand", "total = total + rand[0]"]
+    },
+    {
+      "id": "rr-gap-max",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "grila = [\n    [{{r0}}],\n    [{{r1}}],\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for celula in rand:\n        if celula ___ cel_mai_mare:\n            cel_mai_mare = celula\nprint(cel_mai_mare)",
+      "values": [
+        {
+          "r0": "3, 8, 2",
+          "r1": "12, 5, 7"
+        },
+        {
+          "r0": "40, 15",
+          "r1": "25, 60"
+        },
+        {
+          "r0": "6, 1, 9, 4",
+          "r1": "2, 11, 3, 5"
+        },
+        {
+          "r0": "-5, -2",
+          "r1": "-9, -7"
+        }
+      ],
+      "answer": ">",
+      "wrong": ["<", "==", "!=", "<="]
+    },
+    {
+      "id": "rr-bad-bs",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [{{list}}]\nprint(cautare_binara(numere, {{t}}))",
+      "values": [
+        {
+          "list": "1, 3, 5, 7, 9, 11, 13",
+          "t": 11
+        },
+        {
+          "list": "2, 5, 8, 12, 16, 23, 38",
+          "t": 5
+        },
+        {
+          "list": "4, 8, 15, 16, 23, 42",
+          "t": 42
+        },
+        {
+          "list": "10, 20, 30, 40, 50",
+          "t": 20
+        }
+      ],
+      "bug": ["elif numere[mijloc] < tinta:", "elif numere[mijloc] > tinta:"]
+    },
+    {
+      "id": "rr-bad-fact",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in [{{a}}, {{b}}]:\n    print(n, factorial(n))",
+      "values": [
+        {
+          "a": 3,
+          "b": 5
+        },
+        {
+          "a": 4,
+          "b": 6
+        },
+        {
+          "a": 2,
+          "b": 7
+        },
+        {
+          "a": 5,
+          "b": 3
+        }
+      ],
+      "bug": ["        return 1", "        return n - 1"]
+    },
+    {
+      "id": "rr-bad-count",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "sector = [\n    [{{r0}}],\n    [{{r1}}],\n]\nfaruri = 0\nresturi = 0\nfor rand in sector:\n    for celula in rand:\n        if celula == 2:\n            faruri += 1\n        elif celula == 1:\n            resturi += 1\nprint(f\"Faruri: {faruri}\")\nprint(f\"Resturi: {resturi}\")",
+      "values": [
+        {
+          "r0": "0, 2, 1, 2",
+          "r1": "1, 0, 2, 2"
+        },
+        {
+          "r0": "2, 2, 0",
+          "r1": "1, 2, 0"
+        },
+        {
+          "r0": "2, 0, 2, 1",
+          "r1": "1, 1, 2, 0"
+        },
+        {
+          "r0": "2, 1, 2, 0",
+          "r1": "0, 2, 1, 2"
+        }
+      ],
+      "bug": ["            faruri += 1", "            faruri += celula"]
+    },
+    {
+      "id": "rr-which-sum",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "grila = [\n    [{{r0}}],\n    [{{r1}}],\n]\ntotal = 0\nfor rand in grila:\n    for celula in rand:\n        total += celula\nprint(total)",
+      "values": [
+        {
+          "r0": "1, 2, 3",
+          "r1": "4, 5, 6"
+        },
+        {
+          "r0": "10, 20",
+          "r1": "30, 40"
+        },
+        {
+          "r0": "7, 0, 2",
+          "r1": "5, 3, 8"
+        },
+        {
+          "r0": "4, 4, 4",
+          "r1": "1, 2, 9"
+        }
+      ],
+      "mistakes": [
+        ["total = 0\nfor rand in grila:\n", "for rand in grila:\n    total = 0\n"],
+        ["total += celula", "total += rand[0]"],
+        ["for celula in rand:", "for celula in grila[0]:"],
+        ["total += celula", "total += 1"]
+      ]
+    },
+    {
+      "id": "rr-gap-unique",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "sector = [\n    [{{r0}}],\n    [{{r1}}],\n]\nvalori = []\nfor rand in sector:\n    for celula in rand:\n        if celula not in valori:\n            ___\nprint(sorted(valori))",
+      "values": [
+        {
+          "r0": "2, 0, 1",
+          "r1": "1, 0, 2"
+        },
+        {
+          "r0": "3, 3, 1",
+          "r1": "0, 1, 2"
+        },
+        {
+          "r0": "5, 2, 5",
+          "r1": "9, 2, 4"
+        },
+        {
+          "r0": "1, 0, 0, 1",
+          "r1": "0, 2, 1, 0"
+        }
+      ],
+      "answer": "valori.append(celula)",
+      "wrong": ["valori = [celula]", "valori.append(rand)", "print(celula)"]
+    },
+    {
+      "id": "rr-reverse",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"{{w}}\"))",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "orbita"
+        },
+        {
+          "w": "Marte"
+        }
+      ],
+      "mistakes": [
+        ["inverseaza_sir(s[1:]) + s[0]", "s[0] + inverseaza_sir(s[1:])"],
+        ["        return s", "        return \"\""],
+        ["+ s[0]", "+ s[1]"],
+        ["inverseaza_sir(s[1:]) + s[0]", "s[1:] + s[0]"]
+      ]
+    }
+  ]
+}

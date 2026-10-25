@@ -1,0 +1,800 @@
+{
+  "note": "Made by npm run make:quiz from the templates in project-guessing-game-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "gg-replay-e68a44",
+      "text": "What does this print?",
+      "code": "secret = 42\nguesses = [50, 30, 40, 45, 42, 60]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"correct\":\n        print(f\"Cracked in {attempts} attempts!\")\n        break",
+      "options": [
+        "50: too high\n30: too low\n40: too low\n45: too high\n42: correct\nCracked in 5 attempts!",
+        "50: too low\n30: correct\nCracked in 2 attempts!",
+        "50: too high\n30: too low\n40: too low\n45: too high\n42: correct\nCracked in 5 attempts!\nKeep going\n60: too high",
+        "50: too high\n30: too low\n40: too low\n45: too high\n42: correct\nCracked in 1 attempts!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-replay-e4c9c1",
+      "text": "What does this print?",
+      "code": "secret = 7\nguesses = [5, 9, 7, 8]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"correct\":\n        print(f\"Cracked in {attempts} attempts!\")\n        break",
+      "options": [
+        "5: too low\n9: too high\n7: correct\nCracked in 3 attempts!",
+        "5: correct\nCracked in 1 attempts!",
+        "5: too low\n9: too high\n7: correct\nCracked in 3 attempts!\nKeep going\n8: too high",
+        "5: too low\n9: too high\n7: correct\nCracked in 1 attempts!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-replay-7d2fc3",
+      "text": "What does this print?",
+      "code": "secret = 63\nguesses = [50, 75, 63, 70]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"correct\":\n        print(f\"Cracked in {attempts} attempts!\")\n        break",
+      "options": [
+        "50: too low\n75: too high\n63: correct\nCracked in 3 attempts!",
+        "50: correct\nCracked in 1 attempts!",
+        "50: too low\n75: too high\n63: correct\nCracked in 3 attempts!\nKeep going\n70: too high",
+        "50: too low\n75: too high\n63: correct\nCracked in 1 attempts!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-replay-560d31",
+      "text": "What does this print?",
+      "code": "secret = 18\nguesses = [25, 12, 15, 20, 18, 30]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"correct\":\n        print(f\"Cracked in {attempts} attempts!\")\n        break",
+      "options": [
+        "25: too high\n12: too low\n15: too low\n20: too high\n18: correct\nCracked in 5 attempts!",
+        "25: too low\n12: correct\nCracked in 2 attempts!",
+        "25: too high\n12: too low\n15: too low\n20: too high\n18: correct\nCracked in 5 attempts!\nKeep going\n30: too high",
+        "25: too high\n12: too low\n15: too low\n20: too high\n18: correct\nCracked in 1 attempts!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-replay-294b41",
+      "text": "What does this print?",
+      "code": "secret = 90\nguesses = [50, 90, 95]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"correct\":\n        print(f\"Cracked in {attempts} attempts!\")\n        break",
+      "options": [
+        "50: too low\n90: correct\nCracked in 2 attempts!",
+        "50: correct\nCracked in 1 attempts!",
+        "50: too low\n90: correct\nCracked in 2 attempts!\nKeep going\n95: too high",
+        "50: too low\n90: correct\nCracked in 1 attempts!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-check-0df9d2",
+      "text": "What does this print?",
+      "code": "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [50, 42, 30]:\n    print(check_guess(42, guess))",
+      "options": [
+        "too high\ncorrect\ntoo low",
+        "too high\ncorrect\ntoo high",
+        "too high\ntoo low\ntoo low",
+        "correct\ncorrect\ntoo low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-check-765288",
+      "text": "What does this print?",
+      "code": "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [3, 15, 10]:\n    print(check_guess(10, guess))",
+      "options": [
+        "too low\ntoo high\ncorrect",
+        "too high\ntoo high\ncorrect",
+        "too low\ntoo high\ntoo low",
+        "too low\ncorrect\ncorrect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-check-f73db2",
+      "text": "What does this print?",
+      "code": "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [75, 80, 60]:\n    print(check_guess(75, guess))",
+      "options": [
+        "correct\ntoo high\ntoo low",
+        "correct\ntoo high\ntoo high",
+        "too low\ntoo high\ntoo low",
+        "correct\ncorrect\ntoo low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-check-e0fc3d",
+      "text": "What does this print?",
+      "code": "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [6, 4, 5]:\n    print(check_guess(5, guess))",
+      "options": [
+        "too high\ntoo low\ncorrect",
+        "too high\ntoo high\ncorrect",
+        "too high\ntoo low\ntoo low",
+        "correct\ntoo low\ncorrect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-check-224e07",
+      "text": "What does this print?",
+      "code": "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [30, 33, 40]:\n    print(check_guess(33, guess))",
+      "options": [
+        "too low\ncorrect\ntoo high",
+        "too high\ncorrect\ntoo high",
+        "too low\ntoo low\ntoo high",
+        "too low\ncorrect\ncorrect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-while-cea767",
+      "text": "What does this print?",
+      "code": "secret = 30\nguesses = [10, 40, 30, 20]\ni = 0\nwhile True:\n    guess = guesses[i]\n    i += 1\n    if guess == secret:\n        break\nprint(f\"Found in {i} guesses\")",
+      "options": [
+        "Found in 3 guesses",
+        "Found in 30 guesses",
+        "Found in 1 guesses",
+        "3\nFound in 3 guesses"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-while-479e38",
+      "text": "What does this print?",
+      "code": "secret = 8\nguesses = [5, 3, 8, 9]\ni = 0\nwhile True:\n    guess = guesses[i]\n    i += 1\n    if guess == secret:\n        break\nprint(f\"Found in {i} guesses\")",
+      "options": [
+        "Found in 3 guesses",
+        "Found in 8 guesses",
+        "Found in 1 guesses",
+        "3\nFound in 3 guesses"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-while-a9917c",
+      "text": "What does this print?",
+      "code": "secret = 55\nguesses = [50, 60, 58, 55, 54]\ni = 0\nwhile True:\n    guess = guesses[i]\n    i += 1\n    if guess == secret:\n        break\nprint(f\"Found in {i} guesses\")",
+      "options": [
+        "Found in 4 guesses",
+        "Found in 55 guesses",
+        "Found in 1 guesses",
+        "4\nFound in 4 guesses"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-while-39fb21",
+      "text": "What does this print?",
+      "code": "secret = 3\nguesses = [1, 3, 2]\ni = 0\nwhile True:\n    guess = guesses[i]\n    i += 1\n    if guess == secret:\n        break\nprint(f\"Found in {i} guesses\")",
+      "options": [
+        "Found in 2 guesses",
+        "Found in 3 guesses",
+        "Found in 1 guesses",
+        "2\nFound in 2 guesses"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-while-c8ab2c",
+      "text": "What does this print?",
+      "code": "secret = 71\nguesses = [70, 72, 75, 71]\ni = 0\nwhile True:\n    guess = guesses[i]\n    i += 1\n    if guess == secret:\n        break\nprint(f\"Found in {i} guesses\")",
+      "options": [
+        "Found in 4 guesses",
+        "Found in 71 guesses",
+        "Found in 1 guesses",
+        "4\nFound in 4 guesses"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-low-high-c84fda",
+      "text": "What does this print?",
+      "code": "secret = 25\nguesses = [10, 40, 20, 25, 30, 35]\nlow = 0\nhigh = 0\nfor guess in guesses:\n    if guess < secret:\n        low += 1\n    elif guess > secret:\n        high += 1\nprint(f\"Too low: {low}, too high: {high}\")",
+      "options": [
+        "Too low: 2, too high: 3",
+        "Too low: 3, too high: 3",
+        "Too low: 5, too high: 0",
+        "Too low: 2, too high: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-low-high-2c872c",
+      "text": "What does this print?",
+      "code": "secret = 50\nguesses = [60, 70, 40, 50]\nlow = 0\nhigh = 0\nfor guess in guesses:\n    if guess < secret:\n        low += 1\n    elif guess > secret:\n        high += 1\nprint(f\"Too low: {low}, too high: {high}\")",
+      "options": [
+        "Too low: 1, too high: 2",
+        "Too low: 2, too high: 2",
+        "Too low: 3, too high: 0",
+        "Too low: 1, too high: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-low-high-b738a8",
+      "text": "What does this print?",
+      "code": "secret = 9\nguesses = [1, 2, 3, 12, 9]\nlow = 0\nhigh = 0\nfor guess in guesses:\n    if guess < secret:\n        low += 1\n    elif guess > secret:\n        high += 1\nprint(f\"Too low: {low}, too high: {high}\")",
+      "options": [
+        "Too low: 3, too high: 1",
+        "Too low: 4, too high: 1",
+        "Too low: 4, too high: 0",
+        "Too low: 3, too high: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-low-high-ce1eea",
+      "text": "What does this print?",
+      "code": "secret = 64\nguesses = [80, 32, 48, 72, 64]\nlow = 0\nhigh = 0\nfor guess in guesses:\n    if guess < secret:\n        low += 1\n    elif guess > secret:\n        high += 1\nprint(f\"Too low: {low}, too high: {high}\")",
+      "options": [
+        "Too low: 2, too high: 2",
+        "Too low: 3, too high: 2",
+        "Too low: 4, too high: 0",
+        "Too low: 2, too high: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-low-high-9046dc",
+      "text": "What does this print?",
+      "code": "secret = 15\nguesses = [20, 15, 10, 5]\nlow = 0\nhigh = 0\nfor guess in guesses:\n    if guess < secret:\n        low += 1\n    elif guess > secret:\n        high += 1\nprint(f\"Too low: {low}, too high: {high}\")",
+      "options": [
+        "Too low: 2, too high: 1",
+        "Too low: 3, too high: 1",
+        "Too low: 3, too high: 0",
+        "Too low: 2, too high: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-play-539bb2",
+      "text": "What does this print?",
+      "code": "def play(secret, guesses, max_attempts):\n    for attempt in range(1, max_attempts + 1):\n        guess = guesses[attempt - 1]\n        if guess < secret:\n            print(\"Too low!\")\n        elif guess > secret:\n            print(\"Too high!\")\n        else:\n            print(f\"Correct! You got it in {attempt} attempts!\")\n            return\n    print(f\"Game over! The number was {secret}\")\n\nplay(42, [50, 30, 42, 45], 4)",
+      "options": [
+        "Too high!\nToo low!\nCorrect! You got it in 3 attempts!",
+        "Too high!\nToo low!\nCorrect! You got it in 3 attempts!\nGame over! The number was 42",
+        "Too low!\nCorrect! You got it in 2 attempts!",
+        "Too high!\nToo high!\nCorrect! You got it in 3 attempts!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-play-93a450",
+      "text": "What does this print?",
+      "code": "def play(secret, guesses, max_attempts):\n    for attempt in range(1, max_attempts + 1):\n        guess = guesses[attempt - 1]\n        if guess < secret:\n            print(\"Too low!\")\n        elif guess > secret:\n            print(\"Too high!\")\n        else:\n            print(f\"Correct! You got it in {attempt} attempts!\")\n            return\n    print(f\"Game over! The number was {secret}\")\n\nplay(7, [5, 9, 7], 3)",
+      "options": [
+        "Too low!\nToo high!\nCorrect! You got it in 3 attempts!",
+        "Too low!\nToo high!\nCorrect! You got it in 3 attempts!\nGame over! The number was 7",
+        "Too low!\nToo high!\nGame over! The number was 7",
+        "Too high!\nCorrect! You got it in 2 attempts!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-play-325910",
+      "text": "What does this print?",
+      "code": "def play(secret, guesses, max_attempts):\n    for attempt in range(1, max_attempts + 1):\n        guess = guesses[attempt - 1]\n        if guess < secret:\n            print(\"Too low!\")\n        elif guess > secret:\n            print(\"Too high!\")\n        else:\n            print(f\"Correct! You got it in {attempt} attempts!\")\n            return\n    print(f\"Game over! The number was {secret}\")\n\nplay(63, [50, 75, 63, 70, 64], 3)",
+      "options": [
+        "Too low!\nToo high!\nCorrect! You got it in 3 attempts!",
+        "Too low!\nToo high!\nCorrect! You got it in 3 attempts!\nGame over! The number was 63",
+        "Too low!\nToo high!\nGame over! The number was 63",
+        "Too high!\nCorrect! You got it in 2 attempts!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-play-484b65",
+      "text": "What does this print?",
+      "code": "def play(secret, guesses, max_attempts):\n    for attempt in range(1, max_attempts + 1):\n        guess = guesses[attempt - 1]\n        if guess < secret:\n            print(\"Too low!\")\n        elif guess > secret:\n            print(\"Too high!\")\n        else:\n            print(f\"Correct! You got it in {attempt} attempts!\")\n            return\n    print(f\"Game over! The number was {secret}\")\n\nplay(18, [25, 12, 15, 20], 3)",
+      "options": [
+        "Too high!\nToo low!\nToo low!\nGame over! The number was 18",
+        "Too high!\nToo low!\nGame over! The number was 18",
+        "Too low!\nToo low!\nToo high!\nGame over! The number was 18",
+        "Too high!\nToo high!\nToo high!\nGame over! The number was 18"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-play-b6a03b",
+      "text": "What does this print?",
+      "code": "def play(secret, guesses, max_attempts):\n    for attempt in range(1, max_attempts + 1):\n        guess = guesses[attempt - 1]\n        if guess < secret:\n            print(\"Too low!\")\n        elif guess > secret:\n            print(\"Too high!\")\n        else:\n            print(f\"Correct! You got it in {attempt} attempts!\")\n            return\n    print(f\"Game over! The number was {secret}\")\n\nplay(90, [50, 75, 90], 3)",
+      "options": [
+        "Too low!\nToo low!\nCorrect! You got it in 3 attempts!",
+        "Too low!\nToo low!\nCorrect! You got it in 3 attempts!\nGame over! The number was 90",
+        "Too low!\nToo low!\nGame over! The number was 90",
+        "Too low!\nCorrect! You got it in 2 attempts!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-try-14302e",
+      "text": "What does this print?",
+      "code": "secret = 42\nfor text in [\"50\", \"abc\", \"42\"]:\n    try:\n        guess = int(text)\n    except ValueError:\n        print(\"That's not a number!\")\n        continue\n    if guess < secret:\n        print(\"Too low!\")\n    elif guess > secret:\n        print(\"Too high!\")\n    else:\n        print(\"Correct!\")",
+      "options": [
+        "Too high!\nThat's not a number!\nCorrect!",
+        "Too high!\nThat's not a number!",
+        "Too low!\nThat's not a number!\nCorrect!",
+        "Too high!\nabc\nCorrect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-try-e38964",
+      "text": "What does this print?",
+      "code": "secret = 7\nfor text in [\"seven\", \"3\", \"7\"]:\n    try:\n        guess = int(text)\n    except ValueError:\n        print(\"That's not a number!\")\n        continue\n    if guess < secret:\n        print(\"Too low!\")\n    elif guess > secret:\n        print(\"Too high!\")\n    else:\n        print(\"Correct!\")",
+      "options": [
+        "That's not a number!\nToo low!\nCorrect!",
+        "That's not a number!",
+        "That's not a number!\nCorrect!\nCorrect!",
+        "seven\nToo low!\nCorrect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-try-3df10b",
+      "text": "What does this print?",
+      "code": "secret = 20\nfor text in [\"25\", \"2o\", \"15\", \"20\"]:\n    try:\n        guess = int(text)\n    except ValueError:\n        print(\"That's not a number!\")\n        continue\n    if guess < secret:\n        print(\"Too low!\")\n    elif guess > secret:\n        print(\"Too high!\")\n    else:\n        print(\"Correct!\")",
+      "options": [
+        "Too high!\nThat's not a number!\nToo low!\nCorrect!",
+        "Too high!\nThat's not a number!",
+        "Too low!\nThat's not a number!\nCorrect!\nCorrect!",
+        "Too high!\n2o\nToo low!\nCorrect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-try-5c2ed1",
+      "text": "What does this print?",
+      "code": "secret = 64\nfor text in [\"x\", \"64\", \"70\"]:\n    try:\n        guess = int(text)\n    except ValueError:\n        print(\"That's not a number!\")\n        continue\n    if guess < secret:\n        print(\"Too low!\")\n    elif guess > secret:\n        print(\"Too high!\")\n    else:\n        print(\"Correct!\")",
+      "options": [
+        "That's not a number!\nCorrect!\nToo high!",
+        "That's not a number!",
+        "That's not a number!\nCorrect!\nToo low!",
+        "x\nCorrect!\nToo high!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-try-ab0099",
+      "text": "What does this print?",
+      "code": "secret = 11\nfor text in [\"10\", \"ten\", \"12\", \"\"]:\n    try:\n        guess = int(text)\n    except ValueError:\n        print(\"That's not a number!\")\n        continue\n    if guess < secret:\n        print(\"Too low!\")\n    elif guess > secret:\n        print(\"Too high!\")\n    else:\n        print(\"Correct!\")",
+      "options": [
+        "Too low!\nThat's not a number!\nToo high!\nThat's not a number!",
+        "Too low!\nThat's not a number!",
+        "Correct!\nThat's not a number!\nToo low!\nThat's not a number!",
+        "Too low!\nten\nToo high!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-break-59305b",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "secret = 42\nguesses = [50, 30, 40, 45, 42, 60]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"correct\":\n        print(f\"Cracked in {attempts} attempts!\")\n        ___",
+      "output": "50: too high\n30: too low\n40: too low\n45: too high\n42: correct\nCracked in 5 attempts!",
+      "options": ["break", "continue", "attempts += 1", "print(attempts)"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-break-d2396d",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "secret = 7\nguesses = [5, 9, 7, 8]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"correct\":\n        print(f\"Cracked in {attempts} attempts!\")\n        ___",
+      "output": "5: too low\n9: too high\n7: correct\nCracked in 3 attempts!",
+      "options": ["break", "continue", "attempts += 1", "print(attempts)"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-break-ed7b5e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "secret = 63\nguesses = [50, 75, 63, 70]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"correct\":\n        print(f\"Cracked in {attempts} attempts!\")\n        ___",
+      "output": "50: too low\n75: too high\n63: correct\nCracked in 3 attempts!",
+      "options": ["break", "continue", "attempts += 1", "print(attempts)"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-break-22af92",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "secret = 18\nguesses = [25, 12, 15, 20, 18, 30]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"correct\":\n        print(f\"Cracked in {attempts} attempts!\")\n        ___",
+      "output": "25: too high\n12: too low\n15: too low\n20: too high\n18: correct\nCracked in 5 attempts!",
+      "options": ["break", "continue", "attempts += 1", "print(attempts)"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-break-716625",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "secret = 90\nguesses = [50, 90, 95]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"correct\":\n        print(f\"Cracked in {attempts} attempts!\")\n        ___",
+      "output": "50: too low\n90: correct\nCracked in 2 attempts!",
+      "options": ["break", "continue", "attempts += 1", "print(attempts)"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-cmp-be201a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def check_guess(secret, guess):\n    if guess ___ secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [50, 42, 30]:\n    print(guess, check_guess(42, guess))",
+      "output": "50 too high\n42 correct\n30 too low",
+      "options": ["<", ">", "==", "<="],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-cmp-c2a144",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def check_guess(secret, guess):\n    if guess ___ secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [3, 15, 10]:\n    print(guess, check_guess(10, guess))",
+      "output": "3 too low\n15 too high\n10 correct",
+      "options": ["<", ">", "==", "<="],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-cmp-66fec2",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def check_guess(secret, guess):\n    if guess ___ secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [75, 80, 60]:\n    print(guess, check_guess(75, guess))",
+      "output": "75 correct\n80 too high\n60 too low",
+      "options": ["<", ">", "==", "<="],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-cmp-e9b42a",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def check_guess(secret, guess):\n    if guess ___ secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [6, 4, 5]:\n    print(guess, check_guess(5, guess))",
+      "output": "6 too high\n4 too low\n5 correct",
+      "options": ["<", ">", "==", "<="],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-cmp-9b8bb9",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def check_guess(secret, guess):\n    if guess ___ secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [30, 33, 40]:\n    print(guess, check_guess(33, guess))",
+      "output": "30 too low\n33 correct\n40 too high",
+      "options": ["<", ">", "==", "<="],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-range-3ea260",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "max_attempts = 3\nguesses = [50, 25, 12, 6]\nfor attempt in range(1, ___):\n    print(f\"Attempt {attempt}/{max_attempts}: {guesses[attempt - 1]}\")",
+      "output": "Attempt 1/3: 50\nAttempt 2/3: 25\nAttempt 3/3: 12",
+      "options": ["max_attempts + 1", "max_attempts", "max_attempts - 1", "max_attempts + 2"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-range-4f45c1",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "max_attempts = 2\nguesses = [40, 60, 70]\nfor attempt in range(1, ___):\n    print(f\"Attempt {attempt}/{max_attempts}: {guesses[attempt - 1]}\")",
+      "output": "Attempt 1/2: 40\nAttempt 2/2: 60",
+      "options": ["max_attempts + 1", "max_attempts", "max_attempts - 1", "max_attempts + 2"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-range-6e4c3b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "max_attempts = 4\nguesses = [10, 20, 30, 40, 50]\nfor attempt in range(1, ___):\n    print(f\"Attempt {attempt}/{max_attempts}: {guesses[attempt - 1]}\")",
+      "output": "Attempt 1/4: 10\nAttempt 2/4: 20\nAttempt 3/4: 30\nAttempt 4/4: 40",
+      "options": ["max_attempts + 1", "max_attempts", "max_attempts - 1", "max_attempts + 2"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-range-e9dbc9",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "max_attempts = 3\nguesses = [7, 8, 9, 10]\nfor attempt in range(1, ___):\n    print(f\"Attempt {attempt}/{max_attempts}: {guesses[attempt - 1]}\")",
+      "output": "Attempt 1/3: 7\nAttempt 2/3: 8\nAttempt 3/3: 9",
+      "options": ["max_attempts + 1", "max_attempts", "max_attempts - 1", "max_attempts + 2"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-range-001c26",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "max_attempts = 1\nguesses = [99, 98]\nfor attempt in range(1, ___):\n    print(f\"Attempt {attempt}/{max_attempts}: {guesses[attempt - 1]}\")",
+      "output": "Attempt 1/1: 99",
+      "options": ["max_attempts + 1", "max_attempts", "max_attempts - 1", "max_attempts + 2"],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-check-aa837b",
+      "text": "Which line stops this program from printing this?",
+      "code": "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too low\"\n    else:\n        return \"correct\"\n\nfor guess in [50, 42, 30]:\n    print(guess, check_guess(42, guess))",
+      "output": "50 too high\n42 correct\n30 too low",
+      "options": [
+        "return \"too low\"",
+        "elif guess > secret:",
+        "if guess < secret:",
+        "return \"correct\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-check-c96ea0",
+      "text": "Which line stops this program from printing this?",
+      "code": "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too low\"\n    else:\n        return \"correct\"\n\nfor guess in [3, 15, 10]:\n    print(guess, check_guess(10, guess))",
+      "output": "3 too low\n15 too high\n10 correct",
+      "options": [
+        "return \"too low\"",
+        "return \"correct\"",
+        "print(guess, check_guess(10, guess))",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-check-db76db",
+      "text": "Which line stops this program from printing this?",
+      "code": "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too low\"\n    else:\n        return \"correct\"\n\nfor guess in [75, 80, 60]:\n    print(guess, check_guess(75, guess))",
+      "output": "75 correct\n80 too high\n60 too low",
+      "options": [
+        "return \"too low\"",
+        "return \"correct\"",
+        "print(guess, check_guess(75, guess))",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-check-dc9c37",
+      "text": "Which line stops this program from printing this?",
+      "code": "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too low\"\n    else:\n        return \"correct\"\n\nfor guess in [6, 4, 5]:\n    print(guess, check_guess(5, guess))",
+      "output": "6 too high\n4 too low\n5 correct",
+      "options": [
+        "return \"too low\"",
+        "elif guess > secret:",
+        "return \"correct\"",
+        "print(guess, check_guess(5, guess))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-check-6b2e46",
+      "text": "Which line stops this program from printing this?",
+      "code": "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too low\"\n    else:\n        return \"correct\"\n\nfor guess in [30, 33, 40]:\n    print(guess, check_guess(33, guess))",
+      "output": "30 too low\n33 correct\n40 too high",
+      "options": [
+        "return \"too low\"",
+        "return \"correct\"",
+        "print(guess, check_guess(33, guess))",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-replay-4c03eb",
+      "text": "Which line stops this program from printing this?",
+      "code": "secret = 42\nguesses = [50, 30, 40, 45, 42, 60]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"too low\":\n        print(f\"Cracked in {attempts} attempts!\")\n        break",
+      "output": "50: too high\n30: too low\n40: too low\n45: too high\n42: correct\nCracked in 5 attempts!",
+      "options": [
+        "if result == \"too low\":",
+        "for guess in guesses:",
+        "print(f\"Cracked in {attempts} attempts!\")",
+        "break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-replay-a8d39b",
+      "text": "Which line stops this program from printing this?",
+      "code": "secret = 7\nguesses = [5, 9, 7, 8]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"too low\":\n        print(f\"Cracked in {attempts} attempts!\")\n        break",
+      "output": "5: too low\n9: too high\n7: correct\nCracked in 3 attempts!",
+      "options": [
+        "if result == \"too low\":",
+        "for guess in guesses:",
+        "print(f\"Cracked in {attempts} attempts!\")",
+        "break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-replay-c7b051",
+      "text": "Which line stops this program from printing this?",
+      "code": "secret = 63\nguesses = [50, 75, 63, 70]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"too low\":\n        print(f\"Cracked in {attempts} attempts!\")\n        break",
+      "output": "50: too low\n75: too high\n63: correct\nCracked in 3 attempts!",
+      "options": [
+        "if result == \"too low\":",
+        "for guess in guesses:",
+        "else:",
+        "print(f\"Cracked in {attempts} attempts!\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-replay-58b7b3",
+      "text": "Which line stops this program from printing this?",
+      "code": "secret = 18\nguesses = [25, 12, 15, 20, 18, 30]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"too low\":\n        print(f\"Cracked in {attempts} attempts!\")\n        break",
+      "output": "25: too high\n12: too low\n15: too low\n20: too high\n18: correct\nCracked in 5 attempts!",
+      "options": [
+        "if result == \"too low\":",
+        "for guess in guesses:",
+        "else:",
+        "elif guess > secret:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-replay-bdaf2c",
+      "text": "Which line stops this program from printing this?",
+      "code": "secret = 90\nguesses = [50, 90, 95]\n\ndef check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nattempts = 0\nfor guess in guesses:\n    attempts += 1\n    result = check_guess(secret, guess)\n    print(f\"{guess}: {result}\")\n    if result == \"too low\":\n        print(f\"Cracked in {attempts} attempts!\")\n        break",
+      "output": "50: too low\n90: correct\nCracked in 2 attempts!",
+      "options": [
+        "if result == \"too low\":",
+        "for guess in guesses:",
+        "else:",
+        "elif guess > secret:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-play-aca8df",
+      "text": "Which line stops this program from printing this?",
+      "code": "def play(secret, guesses, max_attempts):\n    for attempt in range(1, max_attempts + 1):\n        guess = guesses[attempt - 1]\n        if guess < secret:\n            print(\"Too low!\")\n        elif guess > secret:\n            print(\"Too high!\")\n        else:\n            print(f\"Correct! You got it in {attempt} attempts!\")\n            continue\n    print(f\"Game over! The number was {secret}\")\n\nplay(42, [50, 30, 42, 45], 4)",
+      "output": "Too high!\nToo low!\nCorrect! You got it in 3 attempts!",
+      "options": [
+        "continue",
+        "print(f\"Correct! You got it in {attempt} attempts!\")",
+        "print(\"Too high!\")",
+        "print(f\"Game over! The number was {secret}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-play-fb0149",
+      "text": "Which line stops this program from printing this?",
+      "code": "def play(secret, guesses, max_attempts):\n    for attempt in range(1, max_attempts + 1):\n        guess = guesses[attempt - 1]\n        if guess < secret:\n            print(\"Too low!\")\n        elif guess > secret:\n            print(\"Too high!\")\n        else:\n            print(f\"Correct! You got it in {attempt} attempts!\")\n            continue\n    print(f\"Game over! The number was {secret}\")\n\nplay(7, [5, 9, 7, 8], 4)",
+      "output": "Too low!\nToo high!\nCorrect! You got it in 3 attempts!",
+      "options": [
+        "continue",
+        "print(f\"Correct! You got it in {attempt} attempts!\")",
+        "print(\"Too high!\")",
+        "print(\"Too low!\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-play-b2e793",
+      "text": "Which line stops this program from printing this?",
+      "code": "def play(secret, guesses, max_attempts):\n    for attempt in range(1, max_attempts + 1):\n        guess = guesses[attempt - 1]\n        if guess < secret:\n            print(\"Too low!\")\n        elif guess > secret:\n            print(\"Too high!\")\n        else:\n            print(f\"Correct! You got it in {attempt} attempts!\")\n            continue\n    print(f\"Game over! The number was {secret}\")\n\nplay(63, [70, 50, 63, 64], 4)",
+      "output": "Too high!\nToo low!\nCorrect! You got it in 3 attempts!",
+      "options": [
+        "continue",
+        "print(f\"Correct! You got it in {attempt} attempts!\")",
+        "print(f\"Game over! The number was {secret}\")",
+        "play(63, [70, 50, 63, 64], 4)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-play-e77f23",
+      "text": "Which line stops this program from printing this?",
+      "code": "def play(secret, guesses, max_attempts):\n    for attempt in range(1, max_attempts + 1):\n        guess = guesses[attempt - 1]\n        if guess < secret:\n            print(\"Too low!\")\n        elif guess > secret:\n            print(\"Too high!\")\n        else:\n            print(f\"Correct! You got it in {attempt} attempts!\")\n            continue\n    print(f\"Game over! The number was {secret}\")\n\nplay(18, [25, 12, 18, 20], 4)",
+      "output": "Too high!\nToo low!\nCorrect! You got it in 3 attempts!",
+      "options": [
+        "continue",
+        "print(f\"Correct! You got it in {attempt} attempts!\")",
+        "print(\"Too high!\")",
+        "print(\"Too low!\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-play-d9779f",
+      "text": "Which line stops this program from printing this?",
+      "code": "def play(secret, guesses, max_attempts):\n    for attempt in range(1, max_attempts + 1):\n        guess = guesses[attempt - 1]\n        if guess < secret:\n            print(\"Too low!\")\n        elif guess > secret:\n            print(\"Too high!\")\n        else:\n            print(f\"Correct! You got it in {attempt} attempts!\")\n            continue\n    print(f\"Game over! The number was {secret}\")\n\nplay(90, [95, 50, 90, 75], 4)",
+      "output": "Too high!\nToo low!\nCorrect! You got it in 3 attempts!",
+      "options": [
+        "continue",
+        "print(f\"Correct! You got it in {attempt} attempts!\")",
+        "print(\"Too high!\")",
+        "print(f\"Game over! The number was {secret}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-check-18627a",
+      "text": "Which program shows this?",
+      "output": "too high\ncorrect\ntoo low",
+      "options": [
+        "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [50, 42, 30]:\n    print(check_guess(42, guess))",
+        "def check_guess(secret, guess):\n    if guess > secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [50, 42, 30]:\n    print(check_guess(42, guess))",
+        "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too high\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [50, 42, 30]:\n    print(check_guess(42, guess))",
+        "def check_guess(secret, guess):\n    if guess <= secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [50, 42, 30]:\n    print(check_guess(42, guess))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-check-65bf8f",
+      "text": "Which program shows this?",
+      "output": "too low\ntoo high\ncorrect",
+      "options": [
+        "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [3, 15, 10]:\n    print(check_guess(10, guess))",
+        "def check_guess(secret, guess):\n    if guess > secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [3, 15, 10]:\n    print(check_guess(10, guess))",
+        "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too high\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [3, 15, 10]:\n    print(check_guess(10, guess))",
+        "def check_guess(secret, guess):\n    if guess <= secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [3, 15, 10]:\n    print(check_guess(10, guess))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-check-72a834",
+      "text": "Which program shows this?",
+      "output": "correct\ntoo high\ntoo low",
+      "options": [
+        "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [75, 80, 60]:\n    print(check_guess(75, guess))",
+        "def check_guess(secret, guess):\n    if guess > secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [75, 80, 60]:\n    print(check_guess(75, guess))",
+        "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too high\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [75, 80, 60]:\n    print(check_guess(75, guess))",
+        "def check_guess(secret, guess):\n    if guess <= secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [75, 80, 60]:\n    print(check_guess(75, guess))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-check-99a25c",
+      "text": "Which program shows this?",
+      "output": "too high\ntoo low\ncorrect",
+      "options": [
+        "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [6, 4, 5]:\n    print(check_guess(5, guess))",
+        "def check_guess(secret, guess):\n    if guess > secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [6, 4, 5]:\n    print(check_guess(5, guess))",
+        "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too high\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [6, 4, 5]:\n    print(check_guess(5, guess))",
+        "def check_guess(secret, guess):\n    if guess <= secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [6, 4, 5]:\n    print(check_guess(5, guess))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-check-10b11c",
+      "text": "Which program shows this?",
+      "output": "too low\ncorrect\ntoo high",
+      "options": [
+        "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [30, 33, 40]:\n    print(check_guess(33, guess))",
+        "def check_guess(secret, guess):\n    if guess > secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [30, 33, 40]:\n    print(check_guess(33, guess))",
+        "def check_guess(secret, guess):\n    if guess < secret:\n        return \"too high\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [30, 33, 40]:\n    print(check_guess(33, guess))",
+        "def check_guess(secret, guess):\n    if guess <= secret:\n        return \"too low\"\n    elif guess > secret:\n        return \"too high\"\n    else:\n        return \"correct\"\n\nfor guess in [30, 33, 40]:\n    print(check_guess(33, guess))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-count-510338",
+      "text": "Which program shows this?",
+      "output": "2",
+      "options": [
+        "secret = 4\nattempts = 0\nfor guess in [2, 4, 6]:\n    attempts += 1\n    if guess == secret:\n        break\nprint(attempts)",
+        "secret = 4\nattempts = 0\nfor guess in [2, 4, 6]:\n    attempts += 1\n    if guess == secret:\n        continue\nprint(attempts)",
+        "secret = 4\nattempts = 0\nfor guess in [2, 4, 6]:\n    if guess == secret:\n        break\n    attempts += 1\nprint(attempts)",
+        "secret = 4\nattempts = 1\nfor guess in [2, 4, 6]:\n    attempts += 1\n    if guess == secret:\n        break\nprint(attempts)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-count-dfa5e4",
+      "text": "Which program shows this?",
+      "output": "3",
+      "options": [
+        "secret = 9\nattempts = 0\nfor guess in [5, 7, 9, 8]:\n    attempts += 1\n    if guess == secret:\n        break\nprint(attempts)",
+        "secret = 9\nattempts = 0\nfor guess in [5, 7, 9, 8]:\n    attempts += 1\n    if guess == secret:\n        continue\nprint(attempts)",
+        "secret = 9\nattempts = 0\nfor guess in [5, 7, 9, 8]:\n    if guess == secret:\n        break\n    attempts += 1\nprint(attempts)",
+        "secret = 9\nattempts = 1\nfor guess in [5, 7, 9, 8]:\n    attempts += 1\n    if guess == secret:\n        break\nprint(attempts)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-count-651474",
+      "text": "Which program shows this?",
+      "output": "1",
+      "options": [
+        "secret = 30\nattempts = 0\nfor guess in [30, 20, 10]:\n    attempts += 1\n    if guess == secret:\n        break\nprint(attempts)",
+        "secret = 30\nattempts = 0\nfor guess in [30, 20, 10]:\n    attempts += 1\n    if guess == secret:\n        continue\nprint(attempts)",
+        "secret = 30\nattempts = 0\nfor guess in [30, 20, 10]:\n    if guess == secret:\n        break\n    attempts += 1\nprint(attempts)",
+        "secret = 30\nattempts = 1\nfor guess in [30, 20, 10]:\n    attempts += 1\n    if guess == secret:\n        break\nprint(attempts)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-count-a1e978",
+      "text": "Which program shows this?",
+      "output": "5",
+      "options": [
+        "secret = 15\nattempts = 0\nfor guess in [10, 20, 12, 14, 15, 13]:\n    attempts += 1\n    if guess == secret:\n        break\nprint(attempts)",
+        "secret = 15\nattempts = 0\nfor guess in [10, 20, 12, 14, 15, 13]:\n    attempts += 1\n    if guess == secret:\n        continue\nprint(attempts)",
+        "secret = 15\nattempts = 0\nfor guess in [10, 20, 12, 14, 15, 13]:\n    if guess == secret:\n        break\n    attempts += 1\nprint(attempts)",
+        "secret = 15\nattempts = 1\nfor guess in [10, 20, 12, 14, 15, 13]:\n    attempts += 1\n    if guess == secret:\n        break\nprint(attempts)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-count-05daf1",
+      "text": "Which program shows this?",
+      "output": "4",
+      "options": [
+        "secret = 61\nattempts = 0\nfor guess in [50, 70, 65, 61, 60]:\n    attempts += 1\n    if guess == secret:\n        break\nprint(attempts)",
+        "secret = 61\nattempts = 0\nfor guess in [50, 70, 65, 61, 60]:\n    attempts += 1\n    if guess == secret:\n        continue\nprint(attempts)",
+        "secret = 61\nattempts = 0\nfor guess in [50, 70, 65, 61, 60]:\n    if guess == secret:\n        break\n    attempts += 1\nprint(attempts)",
+        "secret = 61\nattempts = 1\nfor guess in [50, 70, 65, 61, 60]:\n    attempts += 1\n    if guess == secret:\n        break\nprint(attempts)"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,700 @@
+{
+  "note": "Made by npm run make:quiz from the templates in frequency-dict-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "fd-letters-d5196b",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"lalea\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "options": [
+        "{'l': 2, 'a': 2, 'e': 1}",
+        "{'l': 1, 'a': 1, 'e': 1}",
+        "{'l': 1, 'a': 1, 'e': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-letters-e1dd02",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"cacao\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "options": [
+        "{'c': 2, 'a': 2, 'o': 1}",
+        "{'c': 1, 'a': 1, 'o': 1}",
+        "{'c': 1, 'a': 1, 'o': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-letters-efa722",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"mama\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "options": ["{'m': 2, 'a': 2}", "{'m': 1, 'a': 1}", "2", "{'m': 3, 'a': 3}"],
+      "answer": 0
+    },
+    {
+      "id": "fd-letters-083a3f",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"mere\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "options": [
+        "{'m': 1, 'e': 2, 'r': 1}",
+        "{'m': 1, 'e': 1, 'r': 1}",
+        "{'m': 0, 'e': 1, 'r': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-letters-f6c98e",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"cocos\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "options": [
+        "{'c': 2, 'o': 2, 's': 1}",
+        "{'c': 1, 'o': 1, 's': 1}",
+        "{'c': 1, 'o': 1, 's': 0}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-words-0c823b",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"hai hai stop hai\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
+      "options": [
+        "{'hai': 3, 'stop': 1}",
+        "{'hai': 1, 'stop': 1}",
+        "{'h': 3, 'a': 3, 'i': 3, ' ': 3, 's': 1, 't': 1, 'o': 1, 'p': 1}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-words-5cfa00",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"rosu albastru rosu verde albastru rosu\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
+      "options": [
+        "{'rosu': 3, 'albastru': 2, 'verde': 1}",
+        "{'rosu': 1, 'albastru': 1, 'verde': 1}",
+        "{'r': 6, 'o': 3, 's': 5, 'u': 5, ' ': 5, 'a': 4, 'l': 2, 'b': 2, 't': 2, 'v': 1, 'e': 2, 'd': 1}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-words-9905d6",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"sus jos sus\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
+      "options": [
+        "{'sus': 2, 'jos': 1}",
+        "{'sus': 1, 'jos': 1}",
+        "{'s': 5, 'u': 2, ' ': 2, 'j': 1, 'o': 1}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-words-02eb57",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"scan sonda scan start\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
+      "options": [
+        "{'scan': 2, 'sonda': 1, 'start': 1}",
+        "{'scan': 1, 'sonda': 1, 'start': 1}",
+        "{'s': 4, 'c': 2, 'a': 4, 'n': 3, ' ': 3, 'o': 1, 'd': 1, 't': 2, 'r': 1}",
+        "3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-words-2fed32",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"da nu nu da da\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
+      "options": [
+        "{'da': 3, 'nu': 2}",
+        "{'da': 1, 'nu': 1}",
+        "{'d': 3, 'a': 3, ' ': 4, 'n': 2, 'u': 2}",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-one-key-4f9717",
+      "text": "Ce afișează?",
+      "code": "elemente = [3, 1, 3, 2, 3]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[3])",
+      "options": ["3", "1", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "fd-one-key-ac97c2",
+      "text": "Ce afișează?",
+      "code": "elemente = [7, 7, 5, 7, 5]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[7])",
+      "options": ["3", "1", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "fd-one-key-49230a",
+      "text": "Ce afișează?",
+      "code": "elemente = [1, 2, 2, 2, 1, 2]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[2])",
+      "options": ["4", "1", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-one-key-51e1e9",
+      "text": "Ce afișează?",
+      "code": "elemente = [9, 4, 4, 9, 4, 4]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[4])",
+      "options": ["4", "1", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-one-key-dd56e0",
+      "text": "Ce afișează?",
+      "code": "elemente = [6, 8, 6, 8, 6, 6, 8]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[6])",
+      "options": ["4", "1", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-most-26cb84",
+      "text": "Ce afișează?",
+      "code": "voturi = [\"B\", \"A\", \"C\", \"B\", \"A\", \"B\"]\nfrecventa = {}\nfor vot in voturi:\n    if vot in frecventa:\n        frecventa[vot] += 1\n    else:\n        frecventa[vot] = 1\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(f\"Cel mai comun: {cel_mai_bun} ({cel_mai_mare})\")",
+      "options": [
+        "Cel mai comun: B (3)",
+        "Cel mai comun:  (0)",
+        "Cel mai comun: 3 (3)",
+        "Cel mai comun: C (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-most-21eef4",
+      "text": "Ce afișează?",
+      "code": "voturi = [\"X\", \"Y\", \"Y\", \"Z\", \"Y\", \"X\"]\nfrecventa = {}\nfor vot in voturi:\n    if vot in frecventa:\n        frecventa[vot] += 1\n    else:\n        frecventa[vot] = 1\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(f\"Cel mai comun: {cel_mai_bun} ({cel_mai_mare})\")",
+      "options": [
+        "Cel mai comun: Y (3)",
+        "Cel mai comun:  (0)",
+        "Cel mai comun: 3 (3)",
+        "Cel mai comun: Z (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-most-d5e616",
+      "text": "Ce afișează?",
+      "code": "voturi = [\"D\", \"D\", \"E\", \"F\", \"F\", \"F\", \"F\"]\nfrecventa = {}\nfor vot in voturi:\n    if vot in frecventa:\n        frecventa[vot] += 1\n    else:\n        frecventa[vot] = 1\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(f\"Cel mai comun: {cel_mai_bun} ({cel_mai_mare})\")",
+      "options": [
+        "Cel mai comun: F (4)",
+        "Cel mai comun:  (0)",
+        "Cel mai comun: 4 (4)",
+        "Cel mai comun: F (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-most-90dcd4",
+      "text": "Ce afișează?",
+      "code": "voturi = [\"M\", \"N\", \"N\", \"N\"]\nfrecventa = {}\nfor vot in voturi:\n    if vot in frecventa:\n        frecventa[vot] += 1\n    else:\n        frecventa[vot] = 1\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(f\"Cel mai comun: {cel_mai_bun} ({cel_mai_mare})\")",
+      "options": [
+        "Cel mai comun: N (3)",
+        "Cel mai comun:  (0)",
+        "Cel mai comun: 3 (3)",
+        "Cel mai comun: N (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-most-9b1b7a",
+      "text": "Ce afișează?",
+      "code": "voturi = [\"Q\", \"R\", \"S\", \"R\", \"S\", \"S\", \"Q\", \"S\"]\nfrecventa = {}\nfor vot in voturi:\n    if vot in frecventa:\n        frecventa[vot] += 1\n    else:\n        frecventa[vot] = 1\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(f\"Cel mai comun: {cel_mai_bun} ({cel_mai_mare})\")",
+      "options": [
+        "Cel mai comun: S (4)",
+        "Cel mai comun:  (0)",
+        "Cel mai comun: 4 (4)",
+        "Cel mai comun: S (0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-unique-4fe22d",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"banana\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
+      "options": ["['b']", "['a', 'n']", "[1]", "['b', 'a', 'n']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-unique-5d770b",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"racheta\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
+      "options": [
+        "['r', 'c', 'h', 'e', 't']",
+        "['a']",
+        "[1, 1, 1, 1, 1]",
+        "['r', 'a', 'c', 'h', 'e', 't']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-unique-e2d4e1",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"litere\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
+      "options": ["['l', 'i', 't', 'r']", "['e']", "[1, 1, 1, 1]", "['l', 'i', 't', 'e', 'r']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-unique-06f61b",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"planeta\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
+      "options": [
+        "['p', 'l', 'n', 'e', 't']",
+        "['a']",
+        "[1, 1, 1, 1, 1]",
+        "['p', 'l', 'a', 'n', 'e', 't']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-unique-12f7c6",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"cafea\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
+      "options": ["['c', 'f', 'e']", "['a']", "[1, 1, 1]", "['c', 'a', 'f', 'e']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-sorted-26cb84",
+      "text": "Ce afișează?",
+      "code": "semnale = [\"B\", \"A\", \"C\", \"B\", \"A\", \"B\"]\nfrecventa = {}\nfor semnal in semnale:\n    if semnal in frecventa:\n        frecventa[semnal] += 1\n    else:\n        frecventa[semnal] = 1\nfor canal in sorted(frecventa):\n    print(f\"{canal}: {frecventa[canal]}\")",
+      "options": ["A: 2\nB: 3\nC: 1", "B: 3\nA: 2\nC: 1", "2: A\n3: B\n1: C", "A: 1\nB: 1\nC: 1"],
+      "answer": 0
+    },
+    {
+      "id": "fd-sorted-702c51",
+      "text": "Ce afișează?",
+      "code": "semnale = [\"D\", \"C\", \"D\", \"A\"]\nfrecventa = {}\nfor semnal in semnale:\n    if semnal in frecventa:\n        frecventa[semnal] += 1\n    else:\n        frecventa[semnal] = 1\nfor canal in sorted(frecventa):\n    print(f\"{canal}: {frecventa[canal]}\")",
+      "options": ["A: 1\nC: 1\nD: 2", "D: 2\nC: 1\nA: 1", "1: A\n1: C\n2: D", "A: 1\nC: 1\nD: 1"],
+      "answer": 0
+    },
+    {
+      "id": "fd-sorted-f23b4c",
+      "text": "Ce afișează?",
+      "code": "semnale = [\"C\", \"B\", \"A\", \"C\", \"C\"]\nfrecventa = {}\nfor semnal in semnale:\n    if semnal in frecventa:\n        frecventa[semnal] += 1\n    else:\n        frecventa[semnal] = 1\nfor canal in sorted(frecventa):\n    print(f\"{canal}: {frecventa[canal]}\")",
+      "options": ["A: 1\nB: 1\nC: 3", "C: 3\nB: 1\nA: 1", "1: A\n1: B\n3: C", "A: 1\nB: 1\nC: 1"],
+      "answer": 0
+    },
+    {
+      "id": "fd-sorted-b21f11",
+      "text": "Ce afișează?",
+      "code": "semnale = [\"Z\", \"X\", \"Y\", \"X\"]\nfrecventa = {}\nfor semnal in semnale:\n    if semnal in frecventa:\n        frecventa[semnal] += 1\n    else:\n        frecventa[semnal] = 1\nfor canal in sorted(frecventa):\n    print(f\"{canal}: {frecventa[canal]}\")",
+      "options": ["X: 2\nY: 1\nZ: 1", "Z: 1\nX: 2\nY: 1", "2: X\n1: Y\n1: Z", "X: 1\nY: 1\nZ: 1"],
+      "answer": 0
+    },
+    {
+      "id": "fd-sorted-f5c3b6",
+      "text": "Ce afișează?",
+      "code": "semnale = [\"E\", \"A\", \"E\", \"B\", \"A\", \"E\"]\nfrecventa = {}\nfor semnal in semnale:\n    if semnal in frecventa:\n        frecventa[semnal] += 1\n    else:\n        frecventa[semnal] = 1\nfor canal in sorted(frecventa):\n    print(f\"{canal}: {frecventa[canal]}\")",
+      "options": ["A: 2\nB: 1\nE: 3", "E: 3\nA: 2\nB: 1", "2: A\n1: B\n3: E", "A: 1\nB: 1\nE: 1"],
+      "answer": 0
+    },
+    {
+      "id": "fd-len-c3c61a",
+      "text": "Ce afișează?",
+      "code": "elemente = [1, 2, 1, 3, 1]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
+      "options": ["5 3", "3 5", "5 {1: 3, 2: 1, 3: 1}", "5 4"],
+      "answer": 0
+    },
+    {
+      "id": "fd-len-4609a5",
+      "text": "Ce afișează?",
+      "code": "elemente = [5, 5, 5, 5]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
+      "options": ["4 1", "1 4", "4 {5: 4}", "4 2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-len-e395ca",
+      "text": "Ce afișează?",
+      "code": "elemente = [4, 8, 4, 8, 2, 6]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
+      "options": ["6 4", "4 6", "6 {4: 2, 8: 2, 2: 1, 6: 1}", "6 5"],
+      "answer": 0
+    },
+    {
+      "id": "fd-len-8fbba6",
+      "text": "Ce afișează?",
+      "code": "elemente = [7, 3, 9]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
+      "options": ["3 3", "3 {7: 1, 3: 1, 9: 1}", "3 4", "3 2"],
+      "answer": 0
+    },
+    {
+      "id": "fd-len-3ba871",
+      "text": "Ce afișează?",
+      "code": "elemente = [2, 2, 3, 3, 3, 2, 2]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
+      "options": ["7 2", "2 7", "7 {2: 4, 3: 3}", "7 3"],
+      "answer": 0
+    },
+    {
+      "id": "fd-tie-1d57fa",
+      "text": "Ce afișează?",
+      "code": "frecventa = {\"a\": 2, \"b\": 4, \"c\": 4}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(cea_mai_buna_cheie, cel_mai_bun_numar)",
+      "options": ["b 4", "c 4", "4 4", " 0"],
+      "answer": 0
+    },
+    {
+      "id": "fd-tie-2bd536",
+      "text": "Ce afișează?",
+      "code": "frecventa = {\"x\": 1, \"y\": 1, \"z\": 1}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(cea_mai_buna_cheie, cel_mai_bun_numar)",
+      "options": ["x 1", "z 1", "1 1", " 0"],
+      "answer": 0
+    },
+    {
+      "id": "fd-tie-766d09",
+      "text": "Ce afișează?",
+      "code": "frecventa = {\"p\": 5, \"q\": 2, \"r\": 5}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(cea_mai_buna_cheie, cel_mai_bun_numar)",
+      "options": ["p 5", "r 5", "5 5", " 0"],
+      "answer": 0
+    },
+    {
+      "id": "fd-tie-efdb59",
+      "text": "Ce afișează?",
+      "code": "frecventa = {\"m\": 3, \"n\": 6, \"o\": 6, \"k\": 1}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(cea_mai_buna_cheie, cel_mai_bun_numar)",
+      "options": ["n 6", "o 6", "6 6", " 0"],
+      "answer": 0
+    },
+    {
+      "id": "fd-tie-69d372",
+      "text": "Ce afișează?",
+      "code": "frecventa = {\"s\": 7, \"t\": 7}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(cea_mai_buna_cheie, cel_mai_bun_numar)",
+      "options": ["s 7", "t 7", "7 7", " 0"],
+      "answer": 0
+    },
+    {
+      "id": "fd-which-e1272f",
+      "text": "Care program afișează asta?",
+      "output": "{'a': 2, 'n': 2}",
+      "options": [
+        "cuvant = \"anna\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+        "cuvant = \"anna\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] = 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+        "cuvant = \"anna\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 0\nprint(frecventa)",
+        "cuvant = \"anna\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 2\n    else:\n        frecventa[litera] = 1\nprint(frecventa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-which-39a53f",
+      "text": "Care program afișează asta?",
+      "output": "{'p': 2, 'a': 2}",
+      "options": [
+        "cuvant = \"papa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+        "cuvant = \"papa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] = 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+        "cuvant = \"papa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 0\nprint(frecventa)",
+        "cuvant = \"papa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 2\n    else:\n        frecventa[litera] = 1\nprint(frecventa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-which-78773a",
+      "text": "Care program afișează asta?",
+      "output": "{'c': 2, 'a': 2, 'p': 1}",
+      "options": [
+        "cuvant = \"capac\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+        "cuvant = \"capac\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] = 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+        "cuvant = \"capac\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 0\nprint(frecventa)",
+        "cuvant = \"capac\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 2\n    else:\n        frecventa[litera] = 1\nprint(frecventa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-which-1bb17d",
+      "text": "Care program afișează asta?",
+      "output": "{'m': 1, 'e': 2, 'r': 1}",
+      "options": [
+        "cuvant = \"mere\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+        "cuvant = \"mere\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] = 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+        "cuvant = \"mere\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 0\nprint(frecventa)",
+        "cuvant = \"mere\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 2\n    else:\n        frecventa[litera] = 1\nprint(frecventa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-which-4bbb5d",
+      "text": "Care program afișează asta?",
+      "output": "{'s': 2, 'a': 2}",
+      "options": [
+        "cuvant = \"sasa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+        "cuvant = \"sasa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] = 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+        "cuvant = \"sasa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 0\nprint(frecventa)",
+        "cuvant = \"sasa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 2\n    else:\n        frecventa[litera] = 1\nprint(frecventa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-add-51297e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"lalea\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        ___\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "output": "{'l': 2, 'a': 2, 'e': 1}",
+      "options": [
+        "frecventa[litera] += 1",
+        "frecventa[litera] = 1",
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-add-2f0349",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"banana\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        ___\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "output": "{'b': 1, 'a': 3, 'n': 2}",
+      "options": [
+        "frecventa[litera] += 1",
+        "frecventa[litera] = 1",
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-add-85dfad",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"mama\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        ___\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "output": "{'m': 2, 'a': 2}",
+      "options": [
+        "frecventa[litera] += 1",
+        "frecventa[litera] = 1",
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-add-852762",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"cacao\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        ___\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "output": "{'c': 2, 'a': 2, 'o': 1}",
+      "options": [
+        "frecventa[litera] += 1",
+        "frecventa[litera] = 1",
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-add-e2b6e0",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"papa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        ___\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "output": "{'p': 2, 'a': 2}",
+      "options": [
+        "frecventa[litera] += 1",
+        "frecventa[litera] = 1",
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-new-18161d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"cojoc\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = ___\nprint(frecventa)",
+      "output": "{'c': 2, 'o': 2, 'j': 1}",
+      "options": ["1", "0", "2", "litera"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-new-0600e1",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"stele\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = ___\nprint(frecventa)",
+      "output": "{'s': 1, 't': 1, 'e': 2, 'l': 1}",
+      "options": ["1", "0", "2", "litera"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-new-3dfa2d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"sapte\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = ___\nprint(frecventa)",
+      "output": "{'s': 1, 'a': 1, 'p': 1, 't': 1, 'e': 1}",
+      "options": ["1", "0", "2", "litera"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-new-f8e906",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"ramura\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = ___\nprint(frecventa)",
+      "output": "{'r': 2, 'a': 2, 'm': 1, 'u': 1}",
+      "options": ["1", "0", "2", "litera"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-new-968b1c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"masa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = ___\nprint(frecventa)",
+      "output": "{'m': 1, 'a': 2, 's': 1}",
+      "options": ["1", "0", "2", "litera"],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-best-c8a96d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {\"A\": 3, \"B\": 4, \"C\": 1}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor ___ cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun, cel_mai_mare)",
+      "output": "B 4",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-best-33b9c0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {\"x\": 2, \"y\": 5, \"z\": 3}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor ___ cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun, cel_mai_mare)",
+      "output": "y 5",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-best-b37338",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {\"python\": 5, \"java\": 3, \"c\": 2}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor ___ cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun, cel_mai_mare)",
+      "output": "python 5",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-best-deb80c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {\"rosu\": 1, \"albastru\": 6, \"verde\": 2}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor ___ cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun, cel_mai_mare)",
+      "output": "albastru 6",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "fd-gap-best-44ac34",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {\"D\": 2, \"E\": 2, \"F\": 7}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor ___ cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun, cel_mai_mare)",
+      "output": "F 7",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-new-b26f13",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"piper\"\nprint(cuvant)\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 0\nprint(frecventa)",
+      "output": "piper\n{'p': 2, 'i': 1, 'e': 1, 'r': 1}",
+      "options": [
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 1",
+        "frecventa = {}",
+        "print(cuvant)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-new-0d7255",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"racheta\"\nprint(cuvant)\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 0\nprint(frecventa)",
+      "output": "racheta\n{'r': 1, 'a': 2, 'c': 1, 'h': 1, 'e': 1, 't': 1}",
+      "options": [
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 1",
+        "frecventa = {}",
+        "print(frecventa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-new-44788d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"liliac\"\nprint(cuvant)\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 0\nprint(frecventa)",
+      "output": "liliac\n{'l': 2, 'i': 2, 'a': 1, 'c': 1}",
+      "options": [
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 1",
+        "frecventa = {}",
+        "print(frecventa)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-new-71b886",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"balada\"\nprint(cuvant)\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 0\nprint(frecventa)",
+      "output": "balada\n{'b': 1, 'a': 3, 'l': 1, 'd': 1}",
+      "options": [
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 1",
+        "frecventa = {}",
+        "print(cuvant)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-new-64203c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"sniff\"\nprint(cuvant)\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 0\nprint(frecventa)",
+      "output": "sniff\n{'s': 1, 'n': 1, 'i': 1, 'f': 2}",
+      "options": [
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 1",
+        "frecventa = {}",
+        "print(cuvant)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-best-a9828a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "frecventa = {\"A\": 3, \"B\": 4, \"C\": 1}\nprint(frecventa)\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor < cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun)",
+      "output": "{'A': 3, 'B': 4, 'C': 1}\nB",
+      "options": [
+        "if contor < cel_mai_mare:",
+        "for cheie, contor in frecventa.items():",
+        "cel_mai_mare = 0",
+        "cel_mai_mare = contor"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-best-61a90c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "frecventa = {\"x\": 2, \"y\": 5, \"z\": 3}\nprint(frecventa)\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor < cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun)",
+      "output": "{'x': 2, 'y': 5, 'z': 3}\ny",
+      "options": [
+        "if contor < cel_mai_mare:",
+        "for cheie, contor in frecventa.items():",
+        "cel_mai_mare = contor",
+        "cel_mai_bun = cheie"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-best-e6b52d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "frecventa = {\"Q\": 6, \"R\": 2, \"S\": 4}\nprint(frecventa)\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor < cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun)",
+      "output": "{'Q': 6, 'R': 2, 'S': 4}\nQ",
+      "options": [
+        "if contor < cel_mai_mare:",
+        "for cheie, contor in frecventa.items():",
+        "cel_mai_mare = contor",
+        "cel_mai_bun = cheie"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-best-3fbba0",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "frecventa = {\"m\": 1, \"n\": 8, \"o\": 3}\nprint(frecventa)\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor < cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun)",
+      "output": "{'m': 1, 'n': 8, 'o': 3}\nn",
+      "options": [
+        "if contor < cel_mai_mare:",
+        "for cheie, contor in frecventa.items():",
+        "cel_mai_mare = 0",
+        "cel_mai_mare = contor"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-bad-best-328184",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "frecventa = {\"D\": 5, \"E\": 9, \"F\": 7}\nprint(frecventa)\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor < cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun)",
+      "output": "{'D': 5, 'E': 9, 'F': 7}\nE",
+      "options": [
+        "if contor < cel_mai_mare:",
+        "cel_mai_mare = contor",
+        "cel_mai_bun = cheie",
+        "print(cel_mai_bun)"
+      ],
+      "answer": 0
+    }
+  ]
+}

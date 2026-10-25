@@ -1,0 +1,708 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is the two pointers technique?",
+      "options": [
+        "Keeping two copies of the list",
+        "Looping over the list twice",
+        "Comparing every element with every other one",
+        "Scanning the data with two variables, often one from each end"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q2",
+      "text": "In the palindrome check, where do `left` and `right` start?",
+      "options": [
+        "`left` at 0, `right` at the last index",
+        "Both at 0",
+        "Both in the middle",
+        "`left` at the last index, `right` at 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "When does `while left < right` stop in the palindrome check?",
+      "options": [
+        "When `left` reaches the last index",
+        "After one comparison",
+        "When the pointers meet or cross in the middle",
+        "Never, it needs a break"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nprint(is_palindrome(\"racecar\"))\nprint(is_palindrome(\"hello\"))",
+      "options": ["True\nTrue", "True\nFalse", "False\nFalse", "False\nTrue"],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([1, 2, 4, 7, 11, 15], 13))",
+      "options": ["(1, 15)", "(1, 11)", "None", "(2, 11)"],
+      "answer": 3
+    },
+    {
+      "id": "q6",
+      "text": "In two sum, the sum is too small. Which pointer moves, and why?",
+      "options": [
+        "`left` moves right, to a bigger number",
+        "`right` moves left, to a smaller number",
+        "Both move towards the middle",
+        "Neither, the search stops"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q7",
+      "text": "In two sum, the sum is too big. Which pointer moves?",
+      "options": [
+        "`left` moves right, to a bigger number",
+        "`left` moves back to 0",
+        "`right` moves left, to a smaller number",
+        "Both move one step right"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Why does two sum with two pointers need a sorted list?",
+      "options": [
+        "Because `while` only works on sorted lists",
+        "Only then does moving `left` make the sum bigger and moving `right` make it smaller",
+        "So the answer is always the first two numbers",
+        "Because unsorted lists can't be indexed"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([1, 2, 4, 7, 11, 15], 100))",
+      "options": ["(1, 15)", "(7, 11)", "()", "None"],
+      "answer": 3
+    },
+    {
+      "id": "q10",
+      "text": "What does it mean when `left` and `right` meet in two sum without a match?",
+      "options": [
+        "No pair adds up to the target",
+        "The pair is the middle number twice",
+        "The list wasn't sorted",
+        "The target is the first number"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q11",
+      "text": "Why is two pointers faster than the nested loop that checks every pair?",
+      "options": [
+        "It checks two pairs at a time",
+        "Nested loops can't find pairs",
+        "Each step drops one number for good, so it goes through the list once",
+        "It only looks at the first and last numbers"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "numbers = [1, 2, 4, 7, 11, 15]\ntarget = 11\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    print(left, right, current_sum)\n    if current_sum == target:\n        break\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1",
+      "options": ["0 5 16\n1 5 17", "0 5 16\n0 4 12\n0 3 8\n1 3 9\n2 3 11", "0 5 16", "2 3 11"],
+      "answer": 1
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "def remove_duplicates(numbers):\n    if len(numbers) == 0:\n        return []\n    result = [numbers[0]]\n    for i in range(1, len(numbers)):\n        if numbers[i] != numbers[i - 1]:\n            result.append(numbers[i])\n    return result\n\nprint(remove_duplicates([1, 1, 2, 2, 2, 3, 4, 4, 5]))",
+      "options": [
+        "[1, 1, 2, 2, 2, 3, 4, 4, 5]",
+        "[1, 2, 2, 3, 4, 5]",
+        "[2, 3, 4, 5]",
+        "[1, 2, 3, 4, 5]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q14",
+      "text": "In `remove_duplicates`, why can each element be compared only with the one before it?",
+      "options": [
+        "The list is sorted, so equal values sit next to each other",
+        "Because the first element is always unique",
+        "Comparing with all the others would give a wrong answer",
+        "Because `range(1, ...)` skips the duplicates"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q15",
+      "text": "Why does `remove_duplicates` start `result` as `[numbers[0]]`?",
+      "options": [
+        "So the first element is removed",
+        "Because `result` can't start empty",
+        "The first element has nothing before it, so it is always kept",
+        "To mark where the loop starts"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "def remove_duplicates(numbers):\n    if len(numbers) == 0:\n        return []\n    result = [numbers[0]]\n    for i in range(1, len(numbers)):\n        if numbers[i] != numbers[i - 1]:\n            result.append(numbers[i])\n    return result\n\nprint(remove_duplicates([]))",
+      "options": ["[0]", "[]", "None", "An error"],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nresult = pair_with_sum([1, 2, 3, 4, 5, 6, 7, 8, 9], 10)\nprint(f\"Pairs: {result}\")\nprint(f\"Total pairs: {len(result)}\")",
+      "options": [
+        "Pairs: [(1, 9)]\nTotal pairs: 1",
+        "Pairs: [(1, 9), (2, 8), (3, 7), (4, 6), (5, 5)]\nTotal pairs: 5",
+        "Pairs: []\nTotal pairs: 0",
+        "Pairs: [(1, 9), (2, 8), (3, 7), (4, 6)]\nTotal pairs: 4"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "In the mission, why do both pointers move after a pair is found?",
+      "options": [
+        "Neither number can be part of another pair with the same target, so the search goes on inward",
+        "To stop the loop at once",
+        "To check the same pair again",
+        "Because the target changes after each pair"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "What happens when this runs?",
+      "code": "numbers = [1, 5, 9]\ntarget = 10\npairs = []\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    if current_sum == target:\n        pairs.append((numbers[left], numbers[right]))\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1\nprint(pairs)",
+      "options": [
+        "It prints the pairs once",
+        "It prints [(1, 9)]",
+        "The loop never ends: after a match neither pointer moves",
+        "It prints []"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "Why is the loop condition `left < right` and not `left <= right` in two sum?",
+      "options": [
+        "With `<=` the loop never starts",
+        "With `<=` a number could be paired with itself",
+        "`<=` doesn't work with numbers",
+        "There is no difference"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([1, 3, 5, 8], 10))",
+      "options": ["None", "(1, 9)", "(3, 7)", "(5, 5)"],
+      "answer": 3
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "word = \"stats\"\nleft = 0\nright = len(word) - 1\nwhile left <= right:\n    print(word[left], word[right])\n    left += 1\n    right -= 1",
+      "options": ["s s\nt t\na a", "s s\nt t\na a\nt t", "s\nt\na", "s s"],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "What is `right - left` after each step of the palindrome check?",
+      "options": ["It grows by 2", "It stays the same", "It shrinks by 2", "It shrinks by 1"],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "word = \"racecar\"\nleft = 0\nright = len(word) - 1\nsteps = 0\nwhile left < right:\n    steps += 1\n    left += 1\n    right -= 1\nprint(steps)",
+      "options": ["2", "3", "4", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "What does two sum give back when a pair is found?",
+      "options": [
+        "A list of every pair",
+        "The two indexes",
+        "True",
+        "A tuple with the two numbers"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q26",
+      "text": "Which tells two pointers on one list apart from a nested loop over it?",
+      "options": [
+        "Two pointers move a little each step and never check a pair twice",
+        "Two pointers need two lists",
+        "A nested loop can't use `while`",
+        "Two pointers only work on strings"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "numbers = [3, 3, 5, 7, 7]\nresult = [numbers[0]]\nfor i in range(1, len(numbers)):\n    if numbers[i] != numbers[i - 1]:\n        result.append(numbers[i])\nprint(result)",
+      "options": ["[3, 3, 5, 7, 7]", "[3, 5, 7, 7]", "[3, 5, 7]", "[5]"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "numbers = [3, 3, 5, 7, 7]\nresult = []\nfor i in range(1, len(numbers)):\n    if numbers[i] == numbers[i - 1]:\n        result.append(numbers[i])\nprint(result)",
+      "options": ["[3, 3, 5, 7, 7]", "[3, 7]", "[3, 5, 7]", "[]"],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "Why does `range(1, len(numbers))` in `remove_duplicates` start at 1?",
+      "options": [
+        "Index 0 is always a duplicate",
+        "Python lists start at 1",
+        "To skip the last element",
+        "Index 0 has no element before it to compare with"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([1, 3, 5, 7, 9], 12))",
+      "options": ["(3, 9)", "(5, 7)", "(1, 11)", "None"],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "tp-two-sum",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([{{n}}], {{t}}))",
+      "values": [
+        {
+          "n": "1, 2, 4, 7, 11, 15",
+          "t": 9
+        },
+        {
+          "n": "2, 3, 5, 8, 13",
+          "t": 16
+        },
+        {
+          "n": "1, 4, 6, 9, 10, 12",
+          "t": 13
+        },
+        {
+          "n": "3, 5, 7, 9",
+          "t": 12
+        },
+        {
+          "n": "1, 2, 3, 10, 20",
+          "t": 22
+        }
+      ],
+      "mistakes": [
+        ["current_sum < target", "current_sum > target"],
+        ["return (numbers[left], numbers[right])", "return (left, right)"],
+        ["return (numbers[left], numbers[right])", "return current_sum"],
+        ["right = len(numbers) - 1", "right = 1"]
+      ]
+    },
+    {
+      "id": "tp-trace",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{n}}]\ntarget = {{t}}\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    print(left, right, current_sum)\n    if current_sum == target:\n        break\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1",
+      "values": [
+        {
+          "n": "1, 2, 4, 7, 11, 15",
+          "t": 9
+        },
+        {
+          "n": "2, 3, 5, 8",
+          "t": 11
+        },
+        {
+          "n": "1, 3, 6, 10",
+          "t": 9
+        },
+        {
+          "n": "4, 5, 6, 9",
+          "t": 11
+        },
+        {
+          "n": "2, 4, 7, 9, 12",
+          "t": 13
+        }
+      ],
+      "mistakes": [
+        ["current_sum < target", "current_sum > target"],
+        ["print(left, right, current_sum)", "print(numbers[left], numbers[right])"],
+        [
+          "    print(left, right, current_sum)\n    if current_sum == target:\n        break",
+          "    if current_sum == target:\n        break\n    print(left, right, current_sum)"
+        ],
+        ["right = len(numbers) - 1", "right = len(numbers) - 2"]
+      ]
+    },
+    {
+      "id": "tp-pal",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "word = \"{{w}}\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    right -= 1",
+      "values": [
+        {
+          "w": "racecar"
+        },
+        {
+          "w": "rocket"
+        },
+        {
+          "w": "level"
+        },
+        {
+          "w": "radio"
+        },
+        {
+          "w": "rotator"
+        }
+      ],
+      "mistakes": [
+        ["left < right", "left <= right"],
+        ["        break", "        left += 1"],
+        ["right = len(word) - 1", "right = len(word) - 2"],
+        ["print(word[left], word[right])", "print(left, right)"]
+      ]
+    },
+    {
+      "id": "tp-dedup",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def remove_duplicates(numbers):\n    if len(numbers) == 0:\n        return []\n    result = [numbers[0]]\n    for i in range(1, len(numbers)):\n        if numbers[i] != numbers[i - 1]:\n            result.append(numbers[i])\n    return result\n\nprint(remove_duplicates([{{n}}]))",
+      "values": [
+        {
+          "n": "1, 1, 2, 3, 3"
+        },
+        {
+          "n": "4, 4, 4, 5, 6, 6"
+        },
+        {
+          "n": "2, 3, 3, 8"
+        },
+        {
+          "n": "7, 7, 9, 9, 9, 10"
+        },
+        {
+          "n": "1, 2, 2, 2, 5, 5"
+        }
+      ],
+      "mistakes": [
+        ["numbers[i] != numbers[i - 1]", "numbers[i] == numbers[i - 1]"],
+        ["range(1, len(numbers))", "range(2, len(numbers))"],
+        ["result = [numbers[0]]", "result = []"],
+        ["numbers[i - 1]", "numbers[0]"]
+      ]
+    },
+    {
+      "id": "tp-all-pairs",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nresult = pair_with_sum([{{n}}], {{t}})\nprint(result)\nprint(len(result))",
+      "values": [
+        {
+          "n": "1, 2, 3, 4, 5, 6, 7, 8, 9",
+          "t": 10
+        },
+        {
+          "n": "1, 3, 4, 5, 7, 9",
+          "t": 8
+        },
+        {
+          "n": "2, 4, 5, 6, 8",
+          "t": 10
+        },
+        {
+          "n": "1, 2, 5, 6, 9, 10",
+          "t": 10
+        },
+        {
+          "n": "3, 4, 6, 7, 9",
+          "t": 12
+        }
+      ],
+      "mistakes": [
+        [
+          "pairs.append((numbers[left], numbers[right]))",
+          "pairs.append(numbers[left] + numbers[right])"
+        ],
+        ["while left < right:", "while left <= right:"],
+        ["pairs.append((numbers[left], numbers[right]))", "pairs.append((left, right))"],
+        ["print(len(result))", "print(len(result) * 2)"]
+      ]
+    },
+    {
+      "id": "tp-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([{{n}}], {{t}}))",
+      "values": [
+        {
+          "n": "1, 3, 4, 6, 9",
+          "t": 7
+        },
+        {
+          "n": "2, 5, 7, 8, 11",
+          "t": 15
+        },
+        {
+          "n": "1, 2, 6, 7, 12",
+          "t": 14
+        },
+        {
+          "n": "3, 4, 8, 10",
+          "t": 12
+        },
+        {
+          "n": "2, 4, 5, 9, 14",
+          "t": 13
+        }
+      ],
+      "mistakes": [
+        ["current_sum < target", "current_sum > target"],
+        ["return (numbers[left], numbers[right])", "return (left, right)"],
+        [
+          "            left += 1\n        else:\n            right -= 1",
+          "            right -= 1\n        else:\n            left += 1"
+        ]
+      ]
+    },
+    {
+      "id": "tp-gap-move",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            ___\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([{{n}}], {{t}}))",
+      "values": [
+        {
+          "n": "1, 2, 4, 7, 11, 15",
+          "t": 9
+        },
+        {
+          "n": "2, 3, 5, 8, 13",
+          "t": 16
+        },
+        {
+          "n": "1, 4, 6, 9, 10",
+          "t": 13
+        },
+        {
+          "n": "3, 5, 7, 9",
+          "t": 14
+        },
+        {
+          "n": "1, 2, 3, 10, 20",
+          "t": 22
+        }
+      ],
+      "answer": "left += 1",
+      "wrong": ["right -= 1", "break", "return None", "left = right"]
+    },
+    {
+      "id": "tp-gap-start",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def two_sum(numbers, target):\n    left = 0\n    right = ___\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([{{n}}], {{t}}))",
+      "values": [
+        {
+          "n": "1, 2, 4, 7, 11, 15",
+          "t": 16
+        },
+        {
+          "n": "2, 3, 5, 8, 13",
+          "t": 15
+        },
+        {
+          "n": "1, 4, 6, 9, 10",
+          "t": 11
+        },
+        {
+          "n": "3, 5, 7, 9",
+          "t": 14
+        },
+        {
+          "n": "1, 2, 3, 10, 20",
+          "t": 21
+        }
+      ],
+      "answer": "len(numbers) - 1",
+      "wrong": ["len(numbers)", "0", "1"]
+    },
+    {
+      "id": "tp-gap-cond",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"{{w}}\"\nleft = 0\nright = len(word) - 1\nwhile left ___ right:\n    print(word[left], word[right])\n    left += 1\n    right -= 1",
+      "values": [
+        {
+          "w": "rotor"
+        },
+        {
+          "w": "Venus"
+        },
+        {
+          "w": "comet"
+        },
+        {
+          "w": "pilot"
+        },
+        {
+          "w": "orbit"
+        }
+      ],
+      "answer": "<",
+      "wrong": ["<=", ">", "=="]
+    },
+    {
+      "id": "tp-gap-dedup",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [{{n}}]\nresult = [numbers[0]]\nfor i in range(1, len(numbers)):\n    if numbers[i] != numbers[___]:\n        result.append(numbers[i])\nprint(result)",
+      "values": [
+        {
+          "n": "1, 1, 2, 3, 3, 1"
+        },
+        {
+          "n": "4, 4, 5, 6, 6, 4"
+        },
+        {
+          "n": "2, 3, 3, 8, 2"
+        },
+        {
+          "n": "7, 7, 9, 9, 10, 7"
+        },
+        {
+          "n": "1, 2, 2, 5, 5, 1"
+        }
+      ],
+      "answer": "i - 1",
+      "wrong": ["0", "i", "i + 1"]
+    },
+    {
+      "id": "tp-bad-move",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([{{n}}], {{t}}))",
+      "values": [
+        {
+          "n": "1, 2, 4, 7, 11, 15",
+          "t": 9
+        },
+        {
+          "n": "2, 3, 5, 8, 13",
+          "t": 16
+        },
+        {
+          "n": "1, 4, 6, 9, 10, 12",
+          "t": 19
+        },
+        {
+          "n": "3, 5, 7, 9",
+          "t": 14
+        },
+        {
+          "n": "1, 2, 3, 10, 20",
+          "t": 22
+        }
+      ],
+      "bug": ["current_sum < target", "current_sum > target"]
+    },
+    {
+      "id": "tp-bad-dedup",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def remove_duplicates(numbers):\n    if len(numbers) == 0:\n        return []\n    result = [numbers[0]]\n    for i in range(1, len(numbers)):\n        if numbers[i] != numbers[i - 1]:\n            result.append(numbers[i])\n    return result\n\nprint(remove_duplicates([{{n}}]))",
+      "values": [
+        {
+          "n": "1, 1, 2, 3, 3"
+        },
+        {
+          "n": "4, 4, 4, 5, 6, 6"
+        },
+        {
+          "n": "2, 3, 3, 5, 5, 8"
+        },
+        {
+          "n": "7, 7, 9, 9, 9, 10"
+        },
+        {
+          "n": "1, 2, 2, 2, 5, 5"
+        }
+      ],
+      "bug": ["numbers[i - 1]", "numbers[0]"]
+    },
+    {
+      "id": "tp-bad-pal",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def is_palindrome(word):\n    left = 0\n    right = len(word) - 1\n    while left < right:\n        if word[left] != word[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n\nfor word in [{{words}}]:\n    print(word, is_palindrome(word))",
+      "values": [
+        {
+          "words": "\"level\", \"lemon\""
+        },
+        {
+          "words": "\"kayak\", \"knock\""
+        },
+        {
+          "words": "\"madam\", \"music\""
+        },
+        {
+          "words": "\"noon\", \"neon\""
+        },
+        {
+          "words": "\"radar\", \"robot\""
+        }
+      ],
+      "bug": ["word[left] != word[right]", "word[left] == word[right]"]
+    },
+    {
+      "id": "tp-bad-pairs",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nprint(pair_with_sum([{{n}}], {{t}}))",
+      "values": [
+        {
+          "n": "1, 2, 3, 4, 5, 6, 7, 8, 9",
+          "t": 10
+        },
+        {
+          "n": "1, 3, 4, 5, 7, 9",
+          "t": 8
+        },
+        {
+          "n": "2, 4, 5, 6, 8",
+          "t": 10
+        },
+        {
+          "n": "1, 2, 5, 6, 9, 10",
+          "t": 10
+        },
+        {
+          "n": "3, 4, 6, 7, 9",
+          "t": 12
+        }
+      ],
+      "bug": ["(numbers[left], numbers[right])", "(numbers[left], numbers[left])"]
+    }
+  ]
+}

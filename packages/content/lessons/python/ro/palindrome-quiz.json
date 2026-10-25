@@ -1,0 +1,683 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce este un palindrom?",
+      "options": [
+        "Un cuvânt fără litere repetate",
+        "Un cuvânt care se citește la fel de la stânga la dreapta și invers",
+        "Un cuvânt cu literele în ordine alfabetică",
+        "Un cuvânt cu un număr par de litere"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"rotitor\"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
+      "options": ["Palindrom!", "Nu e palindrom", "rotitor", "rotitor\nPalindrom!"],
+      "answer": 0
+    },
+    {
+      "id": "q3",
+      "text": "Cum verifică `cuvant == cuvant[::-1]` dacă e palindrom?",
+      "options": [
+        "Numără literele cuvântului",
+        "Verifică dacă cuvântul nu are spații",
+        "Sortează literele și compară",
+        "Compară cuvântul cu inversul lui"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q4",
+      "text": "În varianta cu buclă, cu ce caracter e comparat `cuvant[i]`?",
+      "options": [
+        "`cuvant[i + 1]`, următorul",
+        "`cuvant[0]`, primul",
+        "`cuvant[len(cuvant) - 1 - i]`, oglinda lui de la capăt",
+        "`cuvant[len(cuvant)]`, ultimul"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "De ce merge bucla doar prin `range(len(cuvant) // 2)`?",
+      "options": [
+        "A doua jumătate a unui cuvânt nu e niciodată palindrom",
+        "Fiecare verificare acoperă un caracter și oglinda lui, deci jumătate de cuvânt ajunge",
+        "Python poate parcurge doar jumătate dintr-un text",
+        "Ca să sară peste litera din mijloc a fiecărui cuvânt"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "Pentru „rotitor” (7 litere), ce poziții verifică bucla și cu care?",
+      "options": [
+        "0, 1, 2, 3 cu 6, 5, 4, 3",
+        "1, 2, 3 cu 7, 6, 5",
+        "Doar 0 cu 6",
+        "0, 1, 2 cu 6, 5, 4"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nprint(este_palindrom(\"rotitor\"))\nprint(este_palindrom(\"salut\"))\nprint(este_palindrom(\"cojoc\"))",
+      "options": [
+        "True\nFalse\nTrue",
+        "True\nTrue\nTrue",
+        "False\nFalse\nFalse",
+        "True\nFalse\nFalse"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "De ce vine `return True` după buclă, nu în ea?",
+      "options": [
+        "Python nu permite `return True` într-o buclă",
+        "Ca funcția să iasă înainte să verifice ceva",
+        "Știm că e palindrom doar după ce s-au potrivit toate perechile",
+        "Pentru că `return False` trebuie să fie ultima linie"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n        return True\n\nprint(este_palindrom(\"cerc\"))",
+      "options": ["False", "True", "cerc", "None"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "Ce se întâmplă imediat ce bucla găsește o pereche care nu se potrivește?",
+      "options": [
+        "Bucla sare peste perechea aceea și continuă",
+        "Funcția afișează perechea",
+        "Bucla o ia de la capăt",
+        "`return False` încheie funcția, restul nu mai e verificat"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "Ce dă `len(cuvant) // 2` pentru un cuvânt de 7 litere?",
+      "options": ["3", "3.5", "4", "7"],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "De ce poate rămâne neverificată litera din mijloc a lui „rotitor”?",
+      "options": [
+        "E mereu o vocală",
+        "Bucla nu poate ajunge la mijloc",
+        "Este propria ei oglindă, deci se potrivește mereu",
+        "Python sare peste pozițiile impare"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom_propozitie(text):\n    curatat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            curatat += caracter.lower()\n    return curatat == curatat[::-1]\n\nprint(este_palindrom_propozitie(\"Ele fac cafele\"))\nprint(este_palindrom_propozitie(\"rotitor\"))\nprint(este_palindrom_propozitie(\"salut lume\"))",
+      "options": [
+        "False\nTrue\nFalse",
+        "True\nTrue\nFalse",
+        "True\nTrue\nTrue",
+        "False\nFalse\nFalse"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "De ce păstrează verificarea propoziției doar caracterele cu `caracter.isalpha()`?",
+      "options": [
+        "Ca propoziția să fie mai scurtă, pentru viteză",
+        "Ca cifrele să fie comparate primele",
+        "Pentru că `[::-1]` nu poate inversa spații",
+        "Ca spațiile și semnele de punctuație să nu conteze"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q15",
+      "text": "De ce folosește verificarea propoziției `caracter.lower()`?",
+      "options": [
+        "Ca literele mari și mici să conteze la fel",
+        "Ca să scoată spațiile",
+        "Ca să inverseze textul",
+        "Pentru că `isalpha()` merge doar pe litere mici"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "text = \"Ele fac cafele\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)",
+      "options": ["Ele fac cafele", "Elefaccafele", "elefaccafele", "elefaccafele\nTrue"],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Rotitor\"\nprint(cuvant == cuvant[::-1])",
+      "options": ["True", "False", "Rotitor", "rotitoR"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"rotor\"\nfor i in range(len(cuvant) // 2):\n    print(cuvant[i], cuvant[len(cuvant) - 1 - i])",
+      "options": ["r r\no o\nt t", "r\no", "r r", "r r\no o"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "coduri = [\"rotitor\", \"semnal\", \"capac\"]\nvalide = 0\nfor cod in coduri:\n    rezultat = cod == cod[::-1]\n    print(f\"{cod}: {rezultat}\")\n    if rezultat:\n        valide += 1\nprint(f\"Semnale valide: {valide}\")",
+      "options": [
+        "rotitor: True\nsemnal: False\ncapac: True\nSemnale valide: 2",
+        "rotitor: True\nsemnal: False\ncapac: True\nSemnale valide: 3",
+        "Semnale valide: 2",
+        "rotitor: True\nsemnal: True\ncapac: True\nSemnale valide: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "Care dintre aceste cuvinte e palindrom?",
+      "options": ["racheta", "orbita", "radar", "semnal"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "Câte comparații face varianta cu buclă pentru „salut” înainte să returneze False?",
+      "options": ["2", "1: s și t diferă deja", "5", "Niciuna, iese imediat"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "cuvant = \"capac\"\nprint(cuvant[0] == cuvant[len(cuvant)])",
+      "options": [
+        "Afișează True",
+        "Afișează False",
+        "Nu afișează nimic",
+        "O eroare: `cuvant[len(cuvant)]` e dincolo de ultimul index"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"a\"\nprint(cuvant == cuvant[::-1])",
+      "options": ["True", "False", "a", "None"],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "Ce idee e aceeași cu „primul caracter e egal cu ultimul, al doilea cu penultimul și așa mai departe”?",
+      "options": [
+        "Sortarea literelor",
+        "Numărarea vocalelor",
+        "Compararea cuvântului cu inversul lui",
+        "Verificarea că are un număr impar de litere"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"capac\"\nverificari = 0\nfor i in range(len(cuvant) // 2):\n    verificari += 1\nprint(verificari)",
+      "options": ["1", "2", "3", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "De ce cere misiunea o buclă în `este_palindrom`, nu `[::-1]`?",
+      "options": [
+        "Pentru că `[::-1]` greșește la lungimi impare",
+        "Pentru că `[::-1]` merge doar pe liste",
+        "Pentru că o buclă nu poate returna False",
+        "Ca să exersăm compararea perechilor în oglindă, logica din spatele scurtăturii"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "text = \"Ele fac cafele\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat == curatat[::-1])\nprint(text == text[::-1])",
+      "options": ["True\nFalse", "True\nTrue", "False\nFalse", "False\nTrue"],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "În „Ele fac cafele”, ce face ca simplul `text == text[::-1]` să spună False?",
+      "options": [
+        "Propoziția e prea lungă",
+        "Litera e apare de mai multe ori",
+        "Spațiile și litera mare",
+        "Propozițiile nu pot fi niciodată palindroame"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nvalide = 0\nfor cod in [\"radar\", \"orbita\", \"cojoc\"]:\n    if este_palindrom(cod):\n        valide += 1\nprint(valide)",
+      "options": ["0", "2", "3", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"cojoc \"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
+      "options": ["Palindrom!", "Palindrom!\nNu e palindrom", "cojoc", "Nu e palindrom"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "pd-slice",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"{{w}}\"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
+      "values": [
+        {
+          "w": "capac"
+        },
+        {
+          "w": "orbita"
+        },
+        {
+          "w": "radar"
+        },
+        {
+          "w": "Ana"
+        },
+        {
+          "w": "sas"
+        }
+      ],
+      "mistakes": [
+        ["cuvant == cuvant[::-1]", "cuvant != cuvant[::-1]"],
+        ["print(\"Palindrom!\")", "print(\"Palindrom!\", cuvant)"],
+        ["print(\"Nu e palindrom\")", "print(\"Nu e palindrom\", cuvant)"],
+        ["print(\"Palindrom!\")", "print(cuvant)"],
+        ["print(\"Nu e palindrom\")", "print(cuvant[::-1])"]
+      ]
+    },
+    {
+      "id": "pd-func",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [{{words}}]:\n    print(cuvant, este_palindrom(cuvant))",
+      "values": [
+        {
+          "words": "\"capac\", \"cerc\", \"rotor\""
+        },
+        {
+          "words": "\"radar\", \"racheta\", \"sas\""
+        },
+        {
+          "words": "\"cojoc\", \"cuib\", \"civic\""
+        },
+        {
+          "words": "\"rotitor\", \"rapir\", \"potop\""
+        },
+        {
+          "words": "\"elevele\", \"mars\", \"sas\""
+        }
+      ],
+      "mistakes": [
+        [
+          "            return False\n    return True",
+          "            return False\n        return True"
+        ],
+        ["return False", "return True"],
+        ["range(len(cuvant) // 2)", "range(1)"],
+        ["cuvant[len(cuvant) - 1 - i]", "cuvant[len(cuvant) - 1]"],
+        ["print(cuvant, este_palindrom(cuvant))", "print(este_palindrom(cuvant))"]
+      ]
+    },
+    {
+      "id": "pd-pairs",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"{{w}}\"\nfor i in range(len(cuvant) // 2):\n    print(cuvant[i], cuvant[len(cuvant) - 1 - i])",
+      "values": [
+        {
+          "w": "racheta"
+        },
+        {
+          "w": "planeta"
+        },
+        {
+          "w": "rotitor"
+        },
+        {
+          "w": "galaxie"
+        },
+        {
+          "w": "cometa"
+        }
+      ],
+      "mistakes": [
+        ["len(cuvant) // 2", "len(cuvant)"],
+        ["cuvant[len(cuvant) - 1 - i]", "cuvant[i + 1]"],
+        ["print(cuvant[i], cuvant[len(cuvant) - 1 - i])", "print(i, len(cuvant) - 1 - i)"],
+        ["cuvant[len(cuvant) - 1 - i]", "cuvant[len(cuvant) - 1]"]
+      ]
+    },
+    {
+      "id": "pd-clean",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "text = \"{{t}}\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "values": [
+        {
+          "t": "Ele fac cafele"
+        },
+        {
+          "t": "Ion a luat luana noi"
+        },
+        {
+          "t": "Salut Lume"
+        },
+        {
+          "t": "Ana are mere"
+        },
+        {
+          "t": "Rara bara"
+        }
+      ],
+      "mistakes": [
+        ["curatat += caracter.lower()", "curatat += caracter"],
+        [
+          "    if caracter.isalpha():\n        curatat += caracter.lower()",
+          "    curatat += caracter.lower()"
+        ],
+        ["print(curatat == curatat[::-1])", "print(text == text[::-1])"],
+        ["curatat += caracter.lower()", "curatat = caracter.lower()"]
+      ]
+    },
+    {
+      "id": "pd-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "coduri = [{{codes}}]\nvalide = 0\nfor cod in coduri:\n    if cod == cod[::-1]:\n        valide += 1\nprint(f\"Semnale valide: {valide}\")",
+      "values": [
+        {
+          "codes": "\"rotitor\", \"semnal\", \"capac\", \"orbita\", \"radar\""
+        },
+        {
+          "codes": "\"cojoc\", \"luna\", \"civic\""
+        },
+        {
+          "codes": "\"sas\", \"rotor\", \"racheta\", \"potop\""
+        },
+        {
+          "codes": "\"solar\", \"rotor\", \"ele\", \"cometa\", \"elevele\""
+        },
+        {
+          "codes": "\"aerisirea\", \"Marte\", \"cojoc\""
+        }
+      ],
+      "mistakes": [
+        ["cod == cod[::-1]", "cod != cod[::-1]"],
+        ["valide += 1", "valide = 1"],
+        ["print(f\"Semnale valide: {valide}\")", "    print(f\"Semnale valide: {valide}\")"],
+        ["valide = 0", "valide = 1"]
+      ]
+    },
+    {
+      "id": "pd-checks",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def numara_verificari(cuvant):\n    verificari = 0\n    for i in range(len(cuvant) // 2):\n        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n    return verificari\n\nprint(numara_verificari(\"{{w}}\"))",
+      "values": [
+        {
+          "w": "rotitor"
+        },
+        {
+          "w": "potop"
+        },
+        {
+          "w": "aerisirea"
+        },
+        {
+          "w": "elevele"
+        },
+        {
+          "w": "rotor"
+        }
+      ],
+      "mistakes": [
+        ["len(cuvant) // 2", "len(cuvant)"],
+        [
+          "        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari",
+          "        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n        verificari += 1"
+        ],
+        ["verificari = 0", "verificari = 1"],
+        ["cuvant[i] != cuvant", "cuvant[i] == cuvant"],
+        [
+          "            return verificari\n    return verificari",
+          "            return verificari\n    return 0"
+        ]
+      ]
+    },
+    {
+      "id": "pd-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [{{words}}]:\n    print(cuvant, este_palindrom(cuvant))",
+      "values": [
+        {
+          "words": "\"rotor\", \"cerc\""
+        },
+        {
+          "words": "\"civic\", \"copac\""
+        },
+        {
+          "words": "\"potop\", \"plop\""
+        },
+        {
+          "words": "\"capac\", \"cric\""
+        },
+        {
+          "words": "\"cojoc\", \"cozonac\""
+        }
+      ],
+      "mistakes": [
+        [
+          "            return False\n    return True",
+          "            return False\n        return True"
+        ],
+        ["!=", "=="],
+        ["range(len(cuvant) // 2)", "range(1)"],
+        ["cuvant[len(cuvant) - 1 - i]", "cuvant[len(cuvant) - 1]"]
+      ]
+    },
+    {
+      "id": "pd-gap-return",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    ___\n\nprint(este_palindrom(\"{{a}}\"), este_palindrom(\"{{b}}\"))",
+      "values": [
+        {
+          "a": "capac",
+          "b": "orbita"
+        },
+        {
+          "a": "radar",
+          "b": "racheta"
+        },
+        {
+          "a": "cojoc",
+          "b": "luna"
+        },
+        {
+          "a": "sas",
+          "b": "start"
+        },
+        {
+          "a": "rotor",
+          "b": "rigla"
+        }
+      ],
+      "answer": "return True",
+      "wrong": ["return False", "return cuvant", "print(True)"]
+    },
+    {
+      "id": "pd-gap-half",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"{{w}}\"\nfor i in range(___):\n    print(cuvant[i] + cuvant[len(cuvant) - 1 - i])",
+      "values": [
+        {
+          "w": "racheta"
+        },
+        {
+          "w": "rotitor"
+        },
+        {
+          "w": "planeta"
+        },
+        {
+          "w": "orbite"
+        },
+        {
+          "w": "radar"
+        }
+      ],
+      "answer": "len(cuvant) // 2",
+      "wrong": ["len(cuvant)", "len(cuvant) - 1", "1"]
+    },
+    {
+      "id": "pd-gap-mirror",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[___]:\n            return False\n    return True\n\nfor cuvant in [{{words}}]:\n    print(cuvant, este_palindrom(cuvant))",
+      "values": [
+        {
+          "words": "\"capac\", \"capat\""
+        },
+        {
+          "words": "\"radar\", \"rapid\""
+        },
+        {
+          "words": "\"civic\", \"comic\""
+        },
+        {
+          "words": "\"rotor\", \"robot\""
+        },
+        {
+          "words": "\"elevele\", \"elefant\""
+        }
+      ],
+      "answer": "len(cuvant) - 1 - i",
+      "wrong": ["len(cuvant) - i", "i", "len(cuvant) - 1"]
+    },
+    {
+      "id": "pd-gap-clean",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"{{t}}\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.___():\n        curatat += caracter.lower()\nprint(curatat, curatat == curatat[::-1])",
+      "values": [
+        {
+          "t": "Ele fac cafele"
+        },
+        {
+          "t": "Rara bara 42"
+        },
+        {
+          "t": "Ion a luat luana noi 9"
+        },
+        {
+          "t": "Ele fac cafele 5"
+        },
+        {
+          "t": "Rara bara"
+        }
+      ],
+      "answer": "isalpha",
+      "wrong": ["isdigit", "isupper", "islower"]
+    },
+    {
+      "id": "pd-bad-neq",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [{{words}}]:\n    print(cuvant, este_palindrom(cuvant))",
+      "values": [
+        {
+          "words": "\"capac\", \"cutie\""
+        },
+        {
+          "words": "\"potop\", \"pirat\""
+        },
+        {
+          "words": "\"cojoc\", \"cutie\""
+        },
+        {
+          "words": "\"sas\", \"sat\""
+        },
+        {
+          "words": "\"radar\", \"robot\""
+        }
+      ],
+      "bug": ["!=", "=="]
+    },
+    {
+      "id": "pd-bad-lower",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"{{t}}\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "values": [
+        {
+          "t": "Ele fac cafele"
+        },
+        {
+          "t": "Ion a luat luana noi"
+        },
+        {
+          "t": "Rara bara"
+        },
+        {
+          "t": "Ana are mere"
+        },
+        {
+          "t": "Rapir si ripar"
+        }
+      ],
+      "bug": ["curatat += caracter.lower()", "curatat += caracter"]
+    },
+    {
+      "id": "pd-bad-return",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [{{words}}]:\n    print(cuvant, este_palindrom(cuvant))",
+      "values": [
+        {
+          "words": "\"rotor\", \"cerc\""
+        },
+        {
+          "words": "\"rotitor\", \"sens\""
+        },
+        {
+          "words": "\"potop\", \"plop\""
+        },
+        {
+          "words": "\"civic\", \"cubic\""
+        },
+        {
+          "words": "\"cojoc\", \"colac\""
+        }
+      ],
+      "bug": ["    return True", "        return True"]
+    }
+  ]
+}

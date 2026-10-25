@@ -1,0 +1,675 @@
+{
+  "note": "Made by npm run make:quiz from the templates in string-reverse-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "sr-acc-e87b69",
+      "text": "What does this print?",
+      "code": "text = \"Tommy\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+      "options": ["ymmoT", "Tommy", "T\noT\nmoT\nmmoT\nymmoT", "ymmoTTommy"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-dd036d",
+      "text": "What does this print?",
+      "code": "text = \"Orbit\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+      "options": ["tibrO", "Orbit", "O\nrO\nbrO\nibrO\ntibrO", "tibrOOrbit"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-e4ee51",
+      "text": "What does this print?",
+      "code": "text = \"Lance\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+      "options": ["ecnaL", "Lance", "L\naL\nnaL\ncnaL\necnaL", "ecnaLLance"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-5d770b",
+      "text": "What does this print?",
+      "code": "text = \"rocket\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+      "options": ["tekcor", "rocket", "r\nor\ncor\nkcor\nekcor\ntekcor", "tekcorrocket"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-249df7",
+      "text": "What does this print?",
+      "code": "text = \"Vercetti\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+      "options": [
+        "ittecreV",
+        "Vercetti",
+        "V\neV\nreV\ncreV\necreV\ntecreV\nttecreV\nittecreV",
+        "ittecreVVercetti"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-steps-ae26a3",
+      "text": "What does this print?",
+      "code": "text = \"Mars\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+      "options": ["M\naM\nraM\nsraM", "M\nMa\nMar\nMars", "sraM", "M\na\nr\ns"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-steps-c8faaa",
+      "text": "What does this print?",
+      "code": "text = \"Juno\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+      "options": ["J\nuJ\nnuJ\nonuJ", "J\nJu\nJun\nJuno", "onuJ", "J\nu\nn\no"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-steps-01dff3",
+      "text": "What does this print?",
+      "code": "text = \"Vice\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+      "options": ["V\niV\nciV\neciV", "V\nVi\nVic\nVice", "eciV", "V\ni\nc\ne"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-steps-711692",
+      "text": "What does this print?",
+      "code": "text = \"Phil\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+      "options": ["P\nhP\nihP\nlihP", "P\nPh\nPhi\nPhil", "lihP", "P\nh\ni\nl"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-steps-f9327b",
+      "text": "What does this print?",
+      "code": "text = \"star\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+      "options": ["s\nts\nats\nrats", "s\nst\nsta\nstar", "rats", "s\nt\na\nr"],
+      "answer": 0
+    },
+    {
+      "id": "sr-slice-b06d4c",
+      "text": "What does this print?",
+      "code": "word = \"Tommy\"\nprint(word[::-1])",
+      "options": ["ymmoT", "Tommy", "ommy", "Tmy"],
+      "answer": 0
+    },
+    {
+      "id": "sr-slice-d06892",
+      "text": "What does this print?",
+      "code": "word = \"Vercetti\"\nprint(word[::2])",
+      "options": ["Vret", "Vercetti", "ittecreV", "ercetti"],
+      "answer": 0
+    },
+    {
+      "id": "sr-slice-bbe536",
+      "text": "What does this print?",
+      "code": "word = \"Lance\"\nprint(word[1:])",
+      "options": ["ance", "Lance", "ecnaL", "Lne"],
+      "answer": 0
+    },
+    {
+      "id": "sr-slice-faeafe",
+      "text": "What does this print?",
+      "code": "word = \"Cortez\"\nprint(word[::-2])",
+      "options": ["zto", "Cortez", "zetroC", "ortez"],
+      "answer": 0
+    },
+    {
+      "id": "sr-slice-5d950d",
+      "text": "What does this print?",
+      "code": "word = \"Orbit\"\nprint(word[:3])",
+      "options": ["Orb", "Orbit", "tibrO", "rbit"],
+      "answer": 0
+    },
+    {
+      "id": "sr-index-e87b69",
+      "text": "What does this print?",
+      "code": "name = \"Tommy\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
+      "options": ["ymmoT", "ymmo", "T", "Tommy"],
+      "answer": 0
+    },
+    {
+      "id": "sr-index-dd036d",
+      "text": "What does this print?",
+      "code": "name = \"Orbit\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
+      "options": ["tibrO", "tibr", "O", "Orbit"],
+      "answer": 0
+    },
+    {
+      "id": "sr-index-e4ee51",
+      "text": "What does this print?",
+      "code": "name = \"Lance\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
+      "options": ["ecnaL", "ecna", "L", "Lance"],
+      "answer": 0
+    },
+    {
+      "id": "sr-index-5d770b",
+      "text": "What does this print?",
+      "code": "name = \"rocket\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
+      "options": ["tekcor", "tekco", "r", "rocket"],
+      "answer": 0
+    },
+    {
+      "id": "sr-index-249df7",
+      "text": "What does this print?",
+      "code": "name = \"Vercetti\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
+      "options": ["ittecreV", "ittecre", "V", "Vercetti"],
+      "answer": 0
+    },
+    {
+      "id": "sr-words-a26ec1",
+      "text": "What does this print?",
+      "code": "sentence = \"I love Vice City\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+      "options": ["City Vice love I", "I love Vice City", "ytiC eciV evol I", "CityViceloveI"],
+      "answer": 0
+    },
+    {
+      "id": "sr-words-c42b28",
+      "text": "What does this print?",
+      "code": "sentence = \"the ship is ready\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+      "options": ["ready is ship the", "the ship is ready", "ydaer si pihs eht", "readyisshipthe"],
+      "answer": 0
+    },
+    {
+      "id": "sr-words-ad41fc",
+      "text": "What does this print?",
+      "code": "sentence = \"mission control online\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+      "options": [
+        "online control mission",
+        "mission control online",
+        "enilno lortnoc noissim",
+        "onlinecontrolmission"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-words-761e07",
+      "text": "What does this print?",
+      "code": "sentence = \"Mars is red\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+      "options": ["red is Mars", "Mars is red", "der si sraM", "redisMars"],
+      "answer": 0
+    },
+    {
+      "id": "sr-words-c9d28a",
+      "text": "What does this print?",
+      "code": "sentence = \"launch at dawn\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+      "options": ["dawn at launch", "launch at dawn", "nwad ta hcnual", "dawnatlaunch"],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-acc-56c6a3",
+      "text": "Which program shows this?",
+      "output": "reenoiP",
+      "options": [
+        "text = \"Pioneer\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+        "text = \"Pioneer\"\nresult = \"\"\nfor char in text:\n    result = result + char\nprint(result)",
+        "text = \"Pioneer\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+        "text = \"Pioneer\"\nresult = \"\"\nfor char in text:\n    result = char\nprint(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-acc-a5a7cd",
+      "text": "Which program shows this?",
+      "output": "ollopA",
+      "options": [
+        "text = \"Apollo\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+        "text = \"Apollo\"\nresult = \"\"\nfor char in text:\n    result = result + char\nprint(result)",
+        "text = \"Apollo\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+        "text = \"Apollo\"\nresult = \"\"\nfor char in text:\n    result = char\nprint(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-acc-8274d3",
+      "text": "Which program shows this?",
+      "output": "tneK",
+      "options": [
+        "text = \"Kent\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+        "text = \"Kent\"\nresult = \"\"\nfor char in text:\n    result = result + char\nprint(result)",
+        "text = \"Kent\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+        "text = \"Kent\"\nresult = \"\"\nfor char in text:\n    result = char\nprint(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-acc-c47e21",
+      "text": "Which program shows this?",
+      "output": "rotciV",
+      "options": [
+        "text = \"Victor\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+        "text = \"Victor\"\nresult = \"\"\nfor char in text:\n    result = result + char\nprint(result)",
+        "text = \"Victor\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+        "text = \"Victor\"\nresult = \"\"\nfor char in text:\n    result = char\nprint(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-acc-fdb89b",
+      "text": "Which program shows this?",
+      "output": "tenalp",
+      "options": [
+        "text = \"planet\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+        "text = \"planet\"\nresult = \"\"\nfor char in text:\n    result = result + char\nprint(result)",
+        "text = \"planet\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+        "text = \"planet\"\nresult = \"\"\nfor char in text:\n    result = char\nprint(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-words-b52133",
+      "text": "Which program shows this?",
+      "output": "night at fly we",
+      "options": [
+        "sentence = \"we fly at night\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+        "sentence = \"we fly at night\"\nwords = sentence.split(\" \")\nprint(\" \".join(words))",
+        "sentence = \"we fly at night\"\nwords = sentence.split(\" \")\nprint(sentence[::-1])",
+        "sentence = \"we fly at night\"\nwords = sentence.split(\" \")\nprint(\"\".join(words[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-words-fc5ed7",
+      "text": "Which program shows this?",
+      "output": "awake is crew the",
+      "options": [
+        "sentence = \"the crew is awake\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+        "sentence = \"the crew is awake\"\nwords = sentence.split(\" \")\nprint(\" \".join(words))",
+        "sentence = \"the crew is awake\"\nwords = sentence.split(\" \")\nprint(sentence[::-1])",
+        "sentence = \"the crew is awake\"\nwords = sentence.split(\" \")\nprint(\"\".join(words[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-words-1ce446",
+      "text": "Which program shows this?",
+      "output": "Mars from signal",
+      "options": [
+        "sentence = \"signal from Mars\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+        "sentence = \"signal from Mars\"\nwords = sentence.split(\" \")\nprint(\" \".join(words))",
+        "sentence = \"signal from Mars\"\nwords = sentence.split(\" \")\nprint(sentence[::-1])",
+        "sentence = \"signal from Mars\"\nwords = sentence.split(\" \")\nprint(\"\".join(words[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-words-5c7954",
+      "text": "Which program shows this?",
+      "output": "bright are stars the",
+      "options": [
+        "sentence = \"the stars are bright\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+        "sentence = \"the stars are bright\"\nwords = sentence.split(\" \")\nprint(\" \".join(words))",
+        "sentence = \"the stars are bright\"\nwords = sentence.split(\" \")\nprint(sentence[::-1])",
+        "sentence = \"the stars are bright\"\nwords = sentence.split(\" \")\nprint(\"\".join(words[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-words-8192f6",
+      "text": "Which program shows this?",
+      "output": "now ship the dock",
+      "options": [
+        "sentence = \"dock the ship now\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+        "sentence = \"dock the ship now\"\nwords = sentence.split(\" \")\nprint(\" \".join(words))",
+        "sentence = \"dock the ship now\"\nwords = sentence.split(\" \")\nprint(sentence[::-1])",
+        "sentence = \"dock the ship now\"\nwords = sentence.split(\" \")\nprint(\"\".join(words[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-acc-6d10c6",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "text = \"Cortez\"\nresult = \"\"\nfor char in text:\n    ___\nprint(result)",
+      "output": "zetroC",
+      "options": [
+        "result = char + result",
+        "result = result + char",
+        "result = char",
+        "result = text + result"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-acc-f8ce4f",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "text = \"Saturn\"\nresult = \"\"\nfor char in text:\n    ___\nprint(result)",
+      "output": "nrutaS",
+      "options": [
+        "result = char + result",
+        "result = result + char",
+        "result = char",
+        "result = text + result"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-acc-2a0837",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "text = \"Ken\"\nresult = \"\"\nfor char in text:\n    ___\nprint(result)",
+      "output": "neK",
+      "options": [
+        "result = char + result",
+        "result = result + char",
+        "result = char",
+        "result = text + result"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-acc-a1cf97",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "text = \"galaxy\"\nresult = \"\"\nfor char in text:\n    ___\nprint(result)",
+      "output": "yxalag",
+      "options": [
+        "result = char + result",
+        "result = result + char",
+        "result = char",
+        "result = text + result"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-acc-4ec4c8",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "text = \"Mercedes\"\nresult = \"\"\nfor char in text:\n    ___\nprint(result)",
+      "output": "sedecreM",
+      "options": [
+        "result = char + result",
+        "result = result + char",
+        "result = char",
+        "result = text + result"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-join-506cf5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "words = \"ready for launch\".split(\" \")\nprint(___.join(words[::-1]))",
+      "output": "launch for ready",
+      "options": ["\" \"", "\"\"", "\"-\"", "\",\""],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-join-776057",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "words = \"Vice City at night\".split(\" \")\nprint(___.join(words[::-1]))",
+      "output": "night at City Vice",
+      "options": ["\" \"", "\"\"", "\"-\"", "\",\""],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-join-4adc6b",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "words = \"the moon is full\".split(\" \")\nprint(___.join(words[::-1]))",
+      "output": "full is moon the",
+      "options": ["\" \"", "\"\"", "\"-\"", "\",\""],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-join-e0d971",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "words = \"fuel the rocket\".split(\" \")\nprint(___.join(words[::-1]))",
+      "output": "rocket the fuel",
+      "options": ["\" \"", "\"\"", "\"-\"", "\",\""],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-join-d0626c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "words = \"all systems go\".split(\" \")\nprint(___.join(words[::-1]))",
+      "output": "go systems all",
+      "options": ["\" \"", "\"\"", "\"-\"", "\",\""],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-stop-5cc9ba",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Tommy\"\nresult = \"\"\nfor i in range(len(name) - 1, ___, -1):\n    result += name[i]\nprint(result)",
+      "output": "ymmoT",
+      "options": ["-1", "0", "1", "len(name)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-stop-e12585",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Comet\"\nresult = \"\"\nfor i in range(len(name) - 1, ___, -1):\n    result += name[i]\nprint(result)",
+      "output": "temoC",
+      "options": ["-1", "0", "1", "len(name)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-stop-b7eb2d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Lance\"\nresult = \"\"\nfor i in range(len(name) - 1, ___, -1):\n    result += name[i]\nprint(result)",
+      "output": "ecnaL",
+      "options": ["-1", "0", "1", "len(name)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-stop-c57a18",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Nova\"\nresult = \"\"\nfor i in range(len(name) - 1, ___, -1):\n    result += name[i]\nprint(result)",
+      "output": "avoN",
+      "options": ["-1", "0", "1", "len(name)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-stop-c9bf78",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"Phil\"\nresult = \"\"\nfor i in range(len(name) - 1, ___, -1):\n    result += name[i]\nprint(result)",
+      "output": "lihP",
+      "options": ["-1", "0", "1", "len(name)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-step-944a70",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"Voyager\"\nprint(word[::___])",
+      "output": "regayoV",
+      "options": ["-1", "1", "2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-step-057f62",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"Sonny\"\nprint(word[::___])",
+      "output": "ynnoS",
+      "options": ["-1", "1", "2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-step-62cb9d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"Jupiter\"\nprint(word[::___])",
+      "output": "retipuJ",
+      "options": ["-1", "1", "2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-step-ec745e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"Rocket\"\nprint(word[::___])",
+      "output": "tekcoR",
+      "options": ["-1", "1", "2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-step-66dab5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"Hilary\"\nprint(word[::___])",
+      "output": "yraliH",
+      "options": ["-1", "1", "2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-acc-878a07",
+      "text": "Which line stops this program from printing this?",
+      "code": "text = \"Ricardo\"\nresult = \"\"\nfor char in text:\n    result = result + char\nprint(result)",
+      "output": "odraciR",
+      "options": [
+        "result = result + char",
+        "result = \"\"",
+        "text = \"Ricardo\"",
+        "for char in text:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-acc-3aee64",
+      "text": "Which line stops this program from printing this?",
+      "code": "text = \"Mars\"\nresult = \"\"\nfor char in text:\n    result = result + char\nprint(result)",
+      "output": "sraM",
+      "options": ["result = result + char", "result = \"\"", "text = \"Mars\"", "print(result)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-acc-2d2c7b",
+      "text": "Which line stops this program from printing this?",
+      "code": "text = \"Diaz\"\nresult = \"\"\nfor char in text:\n    result = result + char\nprint(result)",
+      "output": "zaiD",
+      "options": ["result = result + char", "result = \"\"", "text = \"Diaz\"", "print(result)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-acc-603fd5",
+      "text": "Which line stops this program from printing this?",
+      "code": "text = \"Avery\"\nresult = \"\"\nfor char in text:\n    result = result + char\nprint(result)",
+      "output": "yrevA",
+      "options": [
+        "result = result + char",
+        "result = \"\"",
+        "text = \"Avery\"",
+        "for char in text:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-acc-e62af3",
+      "text": "Which line stops this program from printing this?",
+      "code": "text = \"comet\"\nresult = \"\"\nfor char in text:\n    result = result + char\nprint(result)",
+      "output": "temoc",
+      "options": ["result = result + char", "result = \"\"", "text = \"comet\"", "print(result)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-range-5fe4c2",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"Tommy\"\nresult = \"\"\nfor i in range(len(name) - 1, 0, -1):\n    result += name[i]\nprint(result)",
+      "output": "ymmoT",
+      "options": [
+        "for i in range(len(name) - 1, 0, -1):",
+        "result = \"\"",
+        "result += name[i]",
+        "print(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-range-9063f3",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"Orbit\"\nresult = \"\"\nfor i in range(len(name) - 1, 0, -1):\n    result += name[i]\nprint(result)",
+      "output": "tibrO",
+      "options": [
+        "for i in range(len(name) - 1, 0, -1):",
+        "result = \"\"",
+        "result += name[i]",
+        "print(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-range-52698c",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"Kent\"\nresult = \"\"\nfor i in range(len(name) - 1, 0, -1):\n    result += name[i]\nprint(result)",
+      "output": "tneK",
+      "options": [
+        "for i in range(len(name) - 1, 0, -1):",
+        "result = \"\"",
+        "name = \"Kent\"",
+        "result += name[i]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-range-76851c",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"Earth\"\nresult = \"\"\nfor i in range(len(name) - 1, 0, -1):\n    result += name[i]\nprint(result)",
+      "output": "htraE",
+      "options": [
+        "for i in range(len(name) - 1, 0, -1):",
+        "result = \"\"",
+        "result += name[i]",
+        "print(result)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-range-064ddd",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"Gonzalez\"\nresult = \"\"\nfor i in range(len(name) - 1, 0, -1):\n    result += name[i]\nprint(result)",
+      "output": "zelaznoG",
+      "options": [
+        "for i in range(len(name) - 1, 0, -1):",
+        "result = \"\"",
+        "name = \"Gonzalez\"",
+        "result += name[i]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-words-3a664b",
+      "text": "Which line stops this program from printing this?",
+      "code": "sentence = \"I love Vice City\"\nwords = sentence.split(\" \")\nreversed_words = words[::1]\nprint(\" \".join(reversed_words))",
+      "output": "City Vice love I",
+      "options": [
+        "reversed_words = words[::1]",
+        "words = sentence.split(\" \")",
+        "sentence = \"I love Vice City\"",
+        "print(\" \".join(reversed_words))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-words-df4c0b",
+      "text": "Which line stops this program from printing this?",
+      "code": "sentence = \"open the airlock\"\nwords = sentence.split(\" \")\nreversed_words = words[::1]\nprint(\" \".join(reversed_words))",
+      "output": "airlock the open",
+      "options": [
+        "reversed_words = words[::1]",
+        "words = sentence.split(\" \")",
+        "sentence = \"open the airlock\"",
+        "print(\" \".join(reversed_words))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-words-ffbae4",
+      "text": "Which line stops this program from printing this?",
+      "code": "sentence = \"the engine is hot\"\nwords = sentence.split(\" \")\nreversed_words = words[::1]\nprint(\" \".join(reversed_words))",
+      "output": "hot is engine the",
+      "options": [
+        "reversed_words = words[::1]",
+        "words = sentence.split(\" \")",
+        "sentence = \"the engine is hot\"",
+        "print(\" \".join(reversed_words))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-words-61eee9",
+      "text": "Which line stops this program from printing this?",
+      "code": "sentence = \"radio check one\"\nwords = sentence.split(\" \")\nreversed_words = words[::1]\nprint(\" \".join(reversed_words))",
+      "output": "one check radio",
+      "options": [
+        "reversed_words = words[::1]",
+        "words = sentence.split(\" \")",
+        "sentence = \"radio check one\"",
+        "print(\" \".join(reversed_words))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-words-f7f3a5",
+      "text": "Which line stops this program from printing this?",
+      "code": "sentence = \"land on Mars\"\nwords = sentence.split(\" \")\nreversed_words = words[::1]\nprint(\" \".join(reversed_words))",
+      "output": "Mars on land",
+      "options": [
+        "reversed_words = words[::1]",
+        "words = sentence.split(\" \")",
+        "sentence = \"land on Mars\"",
+        "print(\" \".join(reversed_words))"
+      ],
+      "answer": 0
+    }
+  ]
+}

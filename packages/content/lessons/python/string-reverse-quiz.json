@@ -1,0 +1,651 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does this print?",
+      "code": "name = \"Tommy\"\nprint(name[::-1])",
+      "options": ["ymmoT", "Tommy", "T", "y"],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "In a slice `[start:stop:step]`, what does a step of -1 do?",
+      "options": [
+        "It drops the last character",
+        "It takes every other character",
+        "It walks the text backwards, from the end to the start",
+        "It starts from index -1 and stops at once"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Why does `reversed_str = char + reversed_str` reverse the text?",
+      "options": [
+        "Python reads the loop from the end",
+        "Each new character goes in front of the ones already there",
+        "The `+` sign adds the characters in reverse order on its own",
+        "Because `reversed_str` starts as the whole text"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "original = \"Tommy\"\nreversed_str = \"\"\nfor char in original:\n    reversed_str = reversed_str + char\nprint(reversed_str)",
+      "options": ["ymmoT", "T", "y", "Tommy"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "For `name = \"Tommy\"`, which indexes does `range(len(name) - 1, -1, -1)` go through?",
+      "options": ["4, 3, 2, 1, 0", "5, 4, 3, 2, 1", "4, 3, 2, 1", "0, 1, 2, 3, 4"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Why is the stop of `range(len(name) - 1, -1, -1)` -1 and not 0?",
+      "options": [
+        "Index -1 is the last character",
+        "With 0 the loop would never end",
+        "The stop is left out, so -1 lets index 0 in",
+        "A step of -1 needs a stop of -1"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "name = \"Tommy\"\nreversed_str = \"\"\nfor i in range(len(name) - 1, 0, -1):\n    reversed_str += name[i]\nprint(reversed_str)",
+      "options": ["ymmoT", "ymmo", "Tommy", "ymm"],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "What does `\" \".join([\"a\", \"b\", \"c\"])` give?",
+      "options": ["\"abc\"", "[\"a\", \"b\", \"c\"]", "\"c b a\"", "\"a b c\""],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Which method does the opposite of `.join()`?",
+      "options": ["`.split()`", "`.lower()`", "`.append()`", "`[::-1]`"],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "sentence = \"I love Vice City\"\nwords = sentence.split(\" \")\nreversed_words = words[::-1]\nprint(\" \".join(reversed_words))",
+      "options": [
+        "I love Vice City",
+        "ytiC eciV evol I",
+        "City Vice love I",
+        "['City', 'Vice', 'love', 'I']"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "What does `sentence.split(\" \")` give back?",
+      "options": [
+        "The sentence without spaces",
+        "A list of the sentence's words",
+        "The number of words",
+        "The sentence reversed"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "planets = [\"Mars\", \"Venus\", \"Earth\"]\nprint(\"-\".join(planets))",
+      "options": ["MarsVenusEarth", "Earth-Venus-Mars", "Mars Venus Earth", "Mars-Venus-Earth"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Why does `reversed_str` start as `\"\"` before the loop?",
+      "options": [
+        "It is an empty string the loop builds the result onto",
+        "Python needs every string to start empty",
+        "So the loop skips the first character",
+        "So the result is printed backwards"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "letters = \"abc\"\nprint(letters[::-1].upper())",
+      "options": ["cba", "ABC", "CBA", "abc"],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "word = \"level\"\nprint(word[::-1])",
+      "options": ["levle", "level", "l", "evel"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "What happens when this runs?",
+      "code": "numbers = [1, 2, 3]\nprint(\" \".join(numbers))",
+      "options": [
+        "It prints 1 2 3",
+        "It prints 123",
+        "It prints [1, 2, 3]",
+        "An error: `.join()` only puts strings together, not numbers"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "sentence = \"I love Vice\"\nprint(sentence[::-1])",
+      "options": ["eciV evol I", "Vice love I", "I love Vice", "I evol eciV"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Why does the mission ask for a loop and not `[::-1]` in `reverse_text`?",
+      "options": [
+        "Because `[::-1]` doesn't work on long texts",
+        "Because `[::-1]` only reverses lists",
+        "To practise building the result by hand, the idea behind the shortcut",
+        "Because a loop is faster than slicing"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "name = \"Lance\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\n    print(result)",
+      "options": ["ecnaL", "e\nec\necn\necna\necnaL", "L\nLa\nLan\nLanc\nLance", "e\nc\nn\na\nL"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "With `original = \"Tommy\"`, what is `reversed_str` after the loop's second pass of `reversed_str = char + reversed_str`?",
+      "options": ["\"To\"", "\"T\"", "\"ymmoT\"", "\"oT\""],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "words = \"one two three\".split(\" \")\nprint(words[::-1])",
+      "options": [
+        "['three', 'two', 'one']",
+        "three two one",
+        "['one', 'two', 'three']",
+        "eerht owt eno"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What is `len(name) - 1` in `range(len(name) - 1, -1, -1)`?",
+      "options": [
+        "The text's length",
+        "The first index",
+        "The last index of the text",
+        "The middle of the text"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "def reverse_text(text):\n    result = \"\"\n    for char in text:\n        result = char + result\n    return result\n\nprint(reverse_text(\"abc\") + \"!\")",
+      "options": ["!cba", "cba!", "abc!", "!abc"],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "def reverse_text(text):\n    result = \"\"\n    for char in text:\n        result = char + result\n        return result\n\nprint(reverse_text(\"Orbit\"))",
+      "options": ["tibrO", "Orbit", "t", "O"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "letters = [\"V\", \"i\", \"c\", \"e\"]\nprint(\"\".join(letters))",
+      "options": ["Vice", "V i c e", "eciV", "['V', 'i', 'c', 'e']"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "words = \"Vice City\".split(\" \")\nprint(\" \".join([w[::-1] for w in words]))",
+      "options": ["ytiC eciV", "City Vice", "eciV ytiC", "Vice City"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "digits = \"12345\"\nprint(digits[::-2])",
+      "options": ["54321", "531", "135", "12345"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "In `name[::-1]`, what does leaving start and stop empty mean?",
+      "options": [
+        "The text is empty",
+        "Python takes only the first and last characters",
+        "The slice stops at once",
+        "Start and stop are left out, so the slice takes the whole text"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Which loop builds the reverse of `text` in `result`, which starts as `\"\"`?",
+      "options": [
+        "`for char in text: result = char + result`",
+        "`for char in text: result = result + char`",
+        "`for char in text: result = char`",
+        "`for char in text: result = text + char`"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "message = \"navigation system online\"\nwords = message.split(\" \")\nprint(f\"Word order: {' '.join(words[::-1])}\")",
+      "options": [
+        "Word order: enilno metsys noitagivan",
+        "Word order: navigation system online",
+        "Word order: online system navigation",
+        "Word order: onlinesystemnavigation"
+      ],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "sr-acc",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "text = \"{{w}}\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "Orbit"
+        },
+        {
+          "w": "Lance"
+        },
+        {
+          "w": "rocket"
+        },
+        {
+          "w": "Vercetti"
+        }
+      ],
+      "mistakes": [
+        ["char + result", "result + char"],
+        ["print(result)", "    print(result)"],
+        ["result = \"\"", "result = \"{{w}}\""],
+        ["print(result)", "print(text)"]
+      ]
+    },
+    {
+      "id": "sr-acc-steps",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "text = \"{{w}}\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
+      "values": [
+        {
+          "w": "Mars"
+        },
+        {
+          "w": "Juno"
+        },
+        {
+          "w": "Vice"
+        },
+        {
+          "w": "Phil"
+        },
+        {
+          "w": "star"
+        }
+      ],
+      "mistakes": [
+        ["char + result", "result + char"],
+        ["    print(result)", "print(result)"],
+        ["result = char + result", "result = char"],
+        ["    print(result)", "    print(char)"]
+      ]
+    },
+    {
+      "id": "sr-slice",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "word = \"{{w}}\"\nprint(word[{{s}}])",
+      "values": [
+        {
+          "w": "Tommy",
+          "s": "::-1"
+        },
+        {
+          "w": "Vercetti",
+          "s": "::2"
+        },
+        {
+          "w": "Lance",
+          "s": "1:"
+        },
+        {
+          "w": "Cortez",
+          "s": "::-2"
+        },
+        {
+          "w": "Orbit",
+          "s": ":3"
+        }
+      ],
+      "mistakes": [
+        ["print(word[{{s}}])", "print(word)"],
+        ["print(word[{{s}}])", "print(word[::-1])"],
+        ["print(word[{{s}}])", "print(word[1:])"],
+        ["print(word[{{s}}])", "print(word[::2])"]
+      ]
+    },
+    {
+      "id": "sr-index",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "name = \"{{w}}\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "Orbit"
+        },
+        {
+          "w": "Lance"
+        },
+        {
+          "w": "rocket"
+        },
+        {
+          "w": "Vercetti"
+        }
+      ],
+      "mistakes": [
+        ["1, -1, -1)", "1, 0, -1)"],
+        ["result += name[i]", "result = name[i]"],
+        ["for i in range(len(name) - 1, -1, -1):", "for i in range(len(name)):"],
+        ["print(result)", "print(name[i])"]
+      ]
+    },
+    {
+      "id": "sr-words",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "sentence = \"{{s}}\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+      "values": [
+        {
+          "s": "I love Vice City"
+        },
+        {
+          "s": "the ship is ready"
+        },
+        {
+          "s": "mission control online"
+        },
+        {
+          "s": "Mars is red"
+        },
+        {
+          "s": "launch at dawn"
+        }
+      ],
+      "mistakes": [
+        ["words[::-1]", "words"],
+        ["print(\" \".join(words[::-1]))", "print(sentence[::-1])"],
+        ["\" \".join", "\"\".join"],
+        ["print(\" \".join(words[::-1]))", "print(words[::-1])"]
+      ]
+    },
+    {
+      "id": "sr-which-acc",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "text = \"{{w}}\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+      "values": [
+        {
+          "w": "Pioneer"
+        },
+        {
+          "w": "Apollo"
+        },
+        {
+          "w": "Kent"
+        },
+        {
+          "w": "Victor"
+        },
+        {
+          "w": "planet"
+        }
+      ],
+      "mistakes": [
+        ["char + result", "result + char"],
+        ["print(result)", "    print(result)"],
+        ["result = char + result", "result = char"]
+      ]
+    },
+    {
+      "id": "sr-which-words",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "sentence = \"{{s}}\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
+      "values": [
+        {
+          "s": "we fly at night"
+        },
+        {
+          "s": "the crew is awake"
+        },
+        {
+          "s": "signal from Mars"
+        },
+        {
+          "s": "the stars are bright"
+        },
+        {
+          "s": "dock the ship now"
+        }
+      ],
+      "mistakes": [
+        ["words[::-1]", "words"],
+        ["print(\" \".join(words[::-1]))", "print(sentence[::-1])"],
+        ["\" \".join", "\"\".join"]
+      ]
+    },
+    {
+      "id": "sr-gap-acc",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "text = \"{{w}}\"\nresult = \"\"\nfor char in text:\n    ___\nprint(result)",
+      "values": [
+        {
+          "w": "Cortez"
+        },
+        {
+          "w": "Saturn"
+        },
+        {
+          "w": "Ken"
+        },
+        {
+          "w": "galaxy"
+        },
+        {
+          "w": "Mercedes"
+        }
+      ],
+      "answer": "result = char + result",
+      "wrong": [
+        "result = result + char",
+        "result = char",
+        "result = text + result",
+        "result += text"
+      ]
+    },
+    {
+      "id": "sr-gap-join",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "words = \"{{s}}\".split(\" \")\nprint(___.join(words[::-1]))",
+      "values": [
+        {
+          "s": "ready for launch"
+        },
+        {
+          "s": "Vice City at night"
+        },
+        {
+          "s": "the moon is full"
+        },
+        {
+          "s": "fuel the rocket"
+        },
+        {
+          "s": "all systems go"
+        }
+      ],
+      "answer": "\" \"",
+      "wrong": ["\"\"", "\"-\"", "\",\""]
+    },
+    {
+      "id": "sr-gap-stop",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "name = \"{{w}}\"\nresult = \"\"\nfor i in range(len(name) - 1, ___, -1):\n    result += name[i]\nprint(result)",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "Comet"
+        },
+        {
+          "w": "Lance"
+        },
+        {
+          "w": "Nova"
+        },
+        {
+          "w": "Phil"
+        }
+      ],
+      "answer": "-1",
+      "wrong": ["0", "1", "len(name)"]
+    },
+    {
+      "id": "sr-gap-step",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"{{w}}\"\nprint(word[::___])",
+      "values": [
+        {
+          "w": "Voyager"
+        },
+        {
+          "w": "Sonny"
+        },
+        {
+          "w": "Jupiter"
+        },
+        {
+          "w": "Rocket"
+        },
+        {
+          "w": "Hilary"
+        }
+      ],
+      "answer": "-1",
+      "wrong": ["1", "2", "-2"]
+    },
+    {
+      "id": "sr-bad-acc",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "text = \"{{w}}\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
+      "values": [
+        {
+          "w": "Ricardo"
+        },
+        {
+          "w": "Mars"
+        },
+        {
+          "w": "Diaz"
+        },
+        {
+          "w": "Avery"
+        },
+        {
+          "w": "comet"
+        }
+      ],
+      "bug": ["char + result", "result + char"]
+    },
+    {
+      "id": "sr-bad-range",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "name = \"{{w}}\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "Orbit"
+        },
+        {
+          "w": "Kent"
+        },
+        {
+          "w": "Earth"
+        },
+        {
+          "w": "Gonzalez"
+        }
+      ],
+      "bug": ["1, -1, -1)", "1, 0, -1)"]
+    },
+    {
+      "id": "sr-bad-words",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "sentence = \"{{s}}\"\nwords = sentence.split(\" \")\nreversed_words = words[::-1]\nprint(\" \".join(reversed_words))",
+      "values": [
+        {
+          "s": "I love Vice City"
+        },
+        {
+          "s": "open the airlock"
+        },
+        {
+          "s": "the engine is hot"
+        },
+        {
+          "s": "radio check one"
+        },
+        {
+          "s": "land on Mars"
+        }
+      ],
+      "bug": ["words[::-1]", "words[::1]"]
+    }
+  ]
+}

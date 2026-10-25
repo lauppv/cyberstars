@@ -1,0 +1,640 @@
+{
+  "note": "Made by npm run make:quiz from the templates in matrix-basics-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "mb-access-7d1883",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [5, 8, 3],\n    [9, 2, 7],\n    [1, 4, 6]\n]\nprint(matrice[1][2])",
+      "options": ["7", "4", "[9, 2, 7]", "8"],
+      "answer": 0
+    },
+    {
+      "id": "mb-access-f2d875",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [10, 20, 30],\n    [40, 50, 60],\n    [70, 80, 90]\n]\nprint(matrice[2][1])",
+      "options": ["80", "60", "[70, 80, 90]", "40"],
+      "answer": 0
+    },
+    {
+      "id": "mb-access-e7b8c6",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [3, 1, 4],\n    [1, 5, 9],\n    [2, 6, 5]\n]\nprint(matrice[1][1])",
+      "options": ["5", "[1, 5, 9]", "3", "1"],
+      "answer": 0
+    },
+    {
+      "id": "mb-access-caa600",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [7, 0, 2],\n    [8, 6, 1],\n    [9, 3, 4]\n]\nprint(matrice[2][2])",
+      "options": ["4", "[9, 3, 4]", "6", "9"],
+      "answer": 0
+    },
+    {
+      "id": "mb-access-f49298",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [11, 12, 13],\n    [21, 22, 23],\n    [31, 32, 33]\n]\nprint(matrice[0][2])",
+      "options": ["13", "31", "[11, 12, 13]", "32"],
+      "answer": 0
+    },
+    {
+      "id": "mb-print-grid-1b6360",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [1, 2, 3],\n    [4, 5, 6]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    print()",
+      "options": ["1 2 3\n4 5 6", "1\n2\n3\n4\n5\n6", "123\n456", "1 2 3 4 5 6"],
+      "answer": 0
+    },
+    {
+      "id": "mb-print-grid-58c4f6",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [7, 8],\n    [9, 10]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    print()",
+      "options": ["7 8\n9 10", "7\n8\n9\n10", "78\n910", "7 8 9 10"],
+      "answer": 0
+    },
+    {
+      "id": "mb-print-grid-40081b",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [5, 3, 8, 2],\n    [6, 1, 4, 7]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    print()",
+      "options": ["5 3 8 2\n6 1 4 7", "5\n3\n8\n2\n6\n1\n4\n7", "5382\n6147", "5 3 8 2 6 1 4 7"],
+      "answer": 0
+    },
+    {
+      "id": "mb-print-grid-0d1926",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [12, 15],\n    [20, 25]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    print()",
+      "options": ["12 15\n20 25", "12\n15\n20\n25", "1215\n2025", "12 15 20 25"],
+      "answer": 0
+    },
+    {
+      "id": "mb-sum-23e42c",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [1, 2],\n    [3, 4],\n    [5, 6]\n]\ntotal = 0\nfor rand in matrice:\n    for element in rand:\n        total += element\nprint(total)",
+      "options": ["21", "6", "3\n10\n21", "18"],
+      "answer": 0
+    },
+    {
+      "id": "mb-sum-a62f2a",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [10, 0],\n    [5, 5],\n    [2, 8]\n]\ntotal = 0\nfor rand in matrice:\n    for element in rand:\n        total += element\nprint(total)",
+      "options": ["30", "8", "6", "10\n20\n30"],
+      "answer": 0
+    },
+    {
+      "id": "mb-sum-698818",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [7, 1],\n    [2, 9],\n    [4, 3]\n]\ntotal = 0\nfor rand in matrice:\n    for element in rand:\n        total += element\nprint(total)",
+      "options": ["26", "3", "6", "8\n19\n26"],
+      "answer": 0
+    },
+    {
+      "id": "mb-sum-a50a42",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [6, 6],\n    [1, 2],\n    [3, 0]\n]\ntotal = 0\nfor rand in matrice:\n    for element in rand:\n        total += element\nprint(total)",
+      "options": ["18", "0", "6", "12\n15\n18"],
+      "answer": 0
+    },
+    {
+      "id": "mb-sum-6413aa",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [12, 3],\n    [4, 4],\n    [8, 1]\n]\ntotal = 0\nfor rand in matrice:\n    for element in rand:\n        total += element\nprint(total)",
+      "options": ["32", "1", "6", "15\n23\n32"],
+      "answer": 0
+    },
+    {
+      "id": "mb-max-1bfac9",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [5, 8, 3],\n    [9, 2, 7]\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for valoare in rand:\n        if valoare > cel_mai_mare:\n            cel_mai_mare = valoare\nprint(cel_mai_mare)",
+      "options": ["9", "2", "7", "8"],
+      "answer": 0
+    },
+    {
+      "id": "mb-max-820c5c",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [-4, -1, -7],\n    [-9, -2, -3]\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for valoare in rand:\n        if valoare > cel_mai_mare:\n            cel_mai_mare = valoare\nprint(cel_mai_mare)",
+      "options": ["-1", "-9", "0", "-3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-max-b95a47",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [12, 40, 2],\n    [33, 18, 7]\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for valoare in rand:\n        if valoare > cel_mai_mare:\n            cel_mai_mare = valoare\nprint(cel_mai_mare)",
+      "options": ["40", "2", "7", "15"],
+      "answer": 0
+    },
+    {
+      "id": "mb-max-fbe43b",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [6, 1],\n    [4, 10]\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for valoare in rand:\n        if valoare > cel_mai_mare:\n            cel_mai_mare = valoare\nprint(cel_mai_mare)",
+      "options": ["10", "1", "6", "7"],
+      "answer": 0
+    },
+    {
+      "id": "mb-max-ff55eb",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [-5, 3, -8],\n    [-1, -2, -6]\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for valoare in rand:\n        if valoare > cel_mai_mare:\n            cel_mai_mare = valoare\nprint(cel_mai_mare)",
+      "options": ["3", "-8", "-6", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "mb-count-412ea7",
+      "text": "Ce afișează?",
+      "code": "harta_joc = [\n    [0, 0, 1, 0],\n    [0, 1, 0, 0],\n    [1, 1, 0, 1]\n]\nziduri = 0\nfor rand in harta_joc:\n    for celula in rand:\n        if celula == 1:\n            ziduri += 1\nprint(f\"Ziduri: {ziduri}\")",
+      "options": ["Ziduri: 5", "Ziduri: 7", "Ziduri: 1", "Ziduri: 10"],
+      "answer": 0
+    },
+    {
+      "id": "mb-count-09bd7c",
+      "text": "Ce afișează?",
+      "code": "harta_joc = [\n    [1, 1, 1],\n    [0, 0, 0],\n    [1, 0, 0]\n]\nziduri = 0\nfor rand in harta_joc:\n    for celula in rand:\n        if celula == 1:\n            ziduri += 1\nprint(f\"Ziduri: {ziduri}\")",
+      "options": ["Ziduri: 4", "Ziduri: 5", "Ziduri: 1", "Ziduri: 8"],
+      "answer": 0
+    },
+    {
+      "id": "mb-count-31c060",
+      "text": "Ce afișează?",
+      "code": "harta_joc = [\n    [0, 1],\n    [1, 1],\n    [0, 0]\n]\nziduri = 0\nfor rand in harta_joc:\n    for celula in rand:\n        if celula == 1:\n            ziduri += 1\nprint(f\"Ziduri: {ziduri}\")",
+      "options": ["Ziduri: 3", "Ziduri: 1", "Ziduri: 6", "Ziduri: 1\nZiduri: 3\nZiduri: 3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-count-69f601",
+      "text": "Ce afișează?",
+      "code": "harta_joc = [\n    [1, 0, 1, 0],\n    [0, 0, 0, 1],\n    [0, 1, 0, 0]\n]\nziduri = 0\nfor rand in harta_joc:\n    for celula in rand:\n        if celula == 1:\n            ziduri += 1\nprint(f\"Ziduri: {ziduri}\")",
+      "options": ["Ziduri: 4", "Ziduri: 8", "Ziduri: 1", "Ziduri: 2\nZiduri: 3\nZiduri: 4"],
+      "answer": 0
+    },
+    {
+      "id": "mb-count-b6b36a",
+      "text": "Ce afișează?",
+      "code": "harta_joc = [\n    [0, 0, 0],\n    [0, 1, 0],\n    [1, 1, 1]\n]\nziduri = 0\nfor rand in harta_joc:\n    for celula in rand:\n        if celula == 1:\n            ziduri += 1\nprint(f\"Ziduri: {ziduri}\")",
+      "options": ["Ziduri: 4", "Ziduri: 5", "Ziduri: 1", "Ziduri: 8"],
+      "answer": 0
+    },
+    {
+      "id": "mb-row-sums-c1a633",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [5, 8, 3],\n    [9, 2, 7],\n    [1, 4, 6]\n]\nfor i in range(len(grila)):\n    total = 0\n    for valoare in grila[i]:\n        total += valoare\n    print(f\"Rand {i + 1}: {total}\")",
+      "options": [
+        "Rand 1: 16\nRand 2: 18\nRand 3: 11",
+        "Rand 1: 16\nRand 2: 34\nRand 3: 45",
+        "Rand 0: 16\nRand 1: 18\nRand 2: 11",
+        "Rand 1: 5\nRand 1: 13\nRand 1: 16\nRand 2: 9\nRand 2: 11\nRand 2: 18\nRand 3: 1\nRand 3: 5\nRand 3: 11"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-row-sums-8fbb35",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [1, 1],\n    [2, 2],\n    [3, 3]\n]\nfor i in range(len(grila)):\n    total = 0\n    for valoare in grila[i]:\n        total += valoare\n    print(f\"Rand {i + 1}: {total}\")",
+      "options": [
+        "Rand 1: 2\nRand 2: 4\nRand 3: 6",
+        "Rand 1: 2\nRand 2: 6\nRand 3: 12",
+        "Rand 0: 2\nRand 1: 4\nRand 2: 6",
+        "Rand 1: 1\nRand 1: 2\nRand 2: 2\nRand 2: 4\nRand 3: 3\nRand 3: 6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-row-sums-b1fc91",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [10, 20, 30],\n    [5, 5, 5],\n    [0, 0, 9]\n]\nfor i in range(len(grila)):\n    total = 0\n    for valoare in grila[i]:\n        total += valoare\n    print(f\"Rand {i + 1}: {total}\")",
+      "options": [
+        "Rand 1: 60\nRand 2: 15\nRand 3: 9",
+        "Rand 1: 60\nRand 2: 75\nRand 3: 84",
+        "Rand 0: 60\nRand 1: 15\nRand 2: 9",
+        "Rand 1: 10\nRand 1: 30\nRand 1: 60\nRand 2: 5\nRand 2: 10\nRand 2: 15\nRand 3: 0\nRand 3: 0\nRand 3: 9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-row-sums-6be567",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [4, 7],\n    [8, 1],\n    [6, 6]\n]\nfor i in range(len(grila)):\n    total = 0\n    for valoare in grila[i]:\n        total += valoare\n    print(f\"Rand {i + 1}: {total}\")",
+      "options": [
+        "Rand 1: 11\nRand 2: 9\nRand 3: 12",
+        "Rand 1: 11\nRand 2: 20\nRand 3: 32",
+        "Rand 0: 11\nRand 1: 9\nRand 2: 12",
+        "Rand 1: 4\nRand 1: 11\nRand 2: 8\nRand 2: 9\nRand 3: 6\nRand 3: 12"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-row-sums-dc69a2",
+      "text": "Ce afișează?",
+      "code": "grila = [\n    [2, 4, 6, 8],\n    [1, 3, 5, 7],\n    [9, 9, 9, 9]\n]\nfor i in range(len(grila)):\n    total = 0\n    for valoare in grila[i]:\n        total += valoare\n    print(f\"Rand {i + 1}: {total}\")",
+      "options": [
+        "Rand 1: 20\nRand 2: 16\nRand 3: 36",
+        "Rand 1: 20\nRand 2: 36\nRand 3: 72",
+        "Rand 0: 20\nRand 1: 16\nRand 2: 36",
+        "Rand 1: 2\nRand 1: 6\nRand 1: 12\nRand 1: 20\nRand 2: 1\nRand 2: 4\nRand 2: 9\nRand 2: 16\nRand 3: 9\nRand 3: 18\nRand 3: 27\nRand 3: 36"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-column-cb80a0",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nfor rand in matrice:\n    print(rand[0])",
+      "options": ["1\n4\n7", "[1, 2, 3]\n[1, 2, 3]\n[1, 2, 3]", "2\n5\n8", "3\n6\n9"],
+      "answer": 0
+    },
+    {
+      "id": "mb-column-4168f9",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [10, 20, 30],\n    [40, 50, 60],\n    [70, 80, 90]\n]\nfor rand in matrice:\n    print(rand[2])",
+      "options": [
+        "30\n60\n90",
+        "[70, 80, 90]\n[70, 80, 90]\n[70, 80, 90]",
+        "20\n50\n80",
+        "[10, 20, 30]\n[40, 50, 60]\n[70, 80, 90]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-column-e0b77e",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [5, 3, 1],\n    [8, 6, 4],\n    [2, 9, 7]\n]\nfor rand in matrice:\n    print(rand[1])",
+      "options": ["3\n6\n9", "[8, 6, 4]\n[8, 6, 4]\n[8, 6, 4]", "1\n4\n7", "5\n8\n2"],
+      "answer": 0
+    },
+    {
+      "id": "mb-column-e6e8ec",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [0, 7, 3],\n    [6, 2, 8],\n    [4, 1, 5]\n]\nfor rand in matrice:\n    print(rand[2])",
+      "options": [
+        "3\n8\n5",
+        "[4, 1, 5]\n[4, 1, 5]\n[4, 1, 5]",
+        "7\n2\n1",
+        "[0, 7, 3]\n[6, 2, 8]\n[4, 1, 5]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-diagonal-38fc05",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nfor i in range(len(matrice)):\n    print(matrice[i][i], end=\" \")",
+      "options": ["1 5 9", "1 4 7", "1 2 3", "3 5 7"],
+      "answer": 0
+    },
+    {
+      "id": "mb-diagonal-550328",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [5, 0, 0],\n    [0, 7, 0],\n    [0, 0, 9]\n]\nfor i in range(len(matrice)):\n    print(matrice[i][i], end=\" \")",
+      "options": ["5 7 9", "5 0 0", "0 7 0", "[5, 0, 0] [0, 7, 0] [0, 0, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "mb-diagonal-33ef39",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [3, 8, 1],\n    [6, 4, 2],\n    [9, 5, 7]\n]\nfor i in range(len(matrice)):\n    print(matrice[i][i], end=\" \")",
+      "options": ["3 4 7", "3 6 9", "3 8 1", "1 4 9"],
+      "answer": 0
+    },
+    {
+      "id": "mb-diagonal-268910",
+      "text": "Ce afișează?",
+      "code": "matrice = [\n    [10, 11, 12],\n    [13, 14, 15],\n    [16, 17, 18]\n]\nfor i in range(len(matrice)):\n    print(matrice[i][i], end=\" \")",
+      "options": ["10 14 18", "10 13 16", "10 11 12", "12 14 16"],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-rows-64b8b5",
+      "text": "Care program afișează asta?",
+      "output": "1 2\n3 4",
+      "options": [
+        "matrice = [\n    [1, 2],\n    [3, 4]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    print()",
+        "matrice = [\n    [1, 2],\n    [3, 4]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n        print()",
+        "matrice = [\n    [1, 2],\n    [3, 4]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\"\")\n    print()",
+        "matrice = [\n    [1, 2],\n    [3, 4]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-rows-1d6c58",
+      "text": "Care program afișează asta?",
+      "output": "9 8 7\n6 5 4",
+      "options": [
+        "matrice = [\n    [9, 8, 7],\n    [6, 5, 4]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    print()",
+        "matrice = [\n    [9, 8, 7],\n    [6, 5, 4]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n        print()",
+        "matrice = [\n    [9, 8, 7],\n    [6, 5, 4]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\"\")\n    print()",
+        "matrice = [\n    [9, 8, 7],\n    [6, 5, 4]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-rows-3f9d2b",
+      "text": "Care program afișează asta?",
+      "output": "0 5\n5 0",
+      "options": [
+        "matrice = [\n    [0, 5],\n    [5, 0]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    print()",
+        "matrice = [\n    [0, 5],\n    [5, 0]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n        print()",
+        "matrice = [\n    [0, 5],\n    [5, 0]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\"\")\n    print()",
+        "matrice = [\n    [0, 5],\n    [5, 0]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-rows-cc4b6b",
+      "text": "Care program afișează asta?",
+      "output": "2 4 6\n1 3 5",
+      "options": [
+        "matrice = [\n    [2, 4, 6],\n    [1, 3, 5]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    print()",
+        "matrice = [\n    [2, 4, 6],\n    [1, 3, 5]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n        print()",
+        "matrice = [\n    [2, 4, 6],\n    [1, 3, 5]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\"\")\n    print()",
+        "matrice = [\n    [2, 4, 6],\n    [1, 3, 5]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-above-688e75",
+      "text": "Care program afișează asta?",
+      "output": "Peste 7: 3",
+      "options": [
+        "grila = [\n    [5, 8, 3, 6],\n    [9, 2, 7, 8]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare > 7:\n            peste += 1\nprint(f\"Peste 7: {peste}\")",
+        "grila = [\n    [5, 8, 3, 6],\n    [9, 2, 7, 8]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare >= 7:\n            peste += 1\nprint(f\"Peste 7: {peste}\")",
+        "grila = [\n    [5, 8, 3, 6],\n    [9, 2, 7, 8]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare > 7:\n            peste += valoare\nprint(f\"Peste 7: {peste}\")",
+        "grila = [\n    [5, 8, 3, 6],\n    [9, 2, 7, 8]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare < 7:\n            peste += 1\nprint(f\"Peste 7: {peste}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-above-174236",
+      "text": "Care program afișează asta?",
+      "output": "Peste 5: 3",
+      "options": [
+        "grila = [\n    [1, 4, 5],\n    [10, 9, 8]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare > 5:\n            peste += 1\nprint(f\"Peste 5: {peste}\")",
+        "grila = [\n    [1, 4, 5],\n    [10, 9, 8]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare >= 5:\n            peste += 1\nprint(f\"Peste 5: {peste}\")",
+        "grila = [\n    [1, 4, 5],\n    [10, 9, 8]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare > 5:\n            peste += valoare\nprint(f\"Peste 5: {peste}\")",
+        "grila = [\n    [1, 4, 5],\n    [10, 9, 8]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare < 5:\n            peste += 1\nprint(f\"Peste 5: {peste}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-above-4fc16b",
+      "text": "Care program afișează asta?",
+      "output": "Peste 6: 3",
+      "options": [
+        "grila = [\n    [12, 3, 6],\n    [7, 9, 1]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare > 6:\n            peste += 1\nprint(f\"Peste 6: {peste}\")",
+        "grila = [\n    [12, 3, 6],\n    [7, 9, 1]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare >= 6:\n            peste += 1\nprint(f\"Peste 6: {peste}\")",
+        "grila = [\n    [12, 3, 6],\n    [7, 9, 1]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare > 6:\n            peste += valoare\nprint(f\"Peste 6: {peste}\")",
+        "grila = [\n    [12, 3, 6],\n    [7, 9, 1]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare < 6:\n            peste += 1\nprint(f\"Peste 6: {peste}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-which-above-17eb70",
+      "text": "Care program afișează asta?",
+      "output": "Peste 4: 2",
+      "options": [
+        "grila = [\n    [4, 4, 9],\n    [2, 4, 6]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare > 4:\n            peste += 1\nprint(f\"Peste 4: {peste}\")",
+        "grila = [\n    [4, 4, 9],\n    [2, 4, 6]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare >= 4:\n            peste += 1\nprint(f\"Peste 4: {peste}\")",
+        "grila = [\n    [4, 4, 9],\n    [2, 4, 6]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare > 4:\n            peste += valoare\nprint(f\"Peste 4: {peste}\")",
+        "grila = [\n    [4, 4, 9],\n    [2, 4, 6]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare < 4:\n            peste += 1\nprint(f\"Peste 4: {peste}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-inner-4d02c4",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "matrice = [\n    [1, 2, 3],\n    [4, 5, 6]\n]\ntotal = 0\nfor rand in matrice:\n    ___\n        total += element\nprint(total)",
+      "output": "21",
+      "options": [
+        "for element in rand:",
+        "for element in matrice:",
+        "for element in range(len(rand)):",
+        "for element in rand[0]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-inner-317382",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "matrice = [\n    [10, 20],\n    [30, 40]\n]\ntotal = 0\nfor rand in matrice:\n    ___\n        total += element\nprint(total)",
+      "output": "100",
+      "options": [
+        "for element in rand:",
+        "for element in matrice:",
+        "for element in range(len(rand)):",
+        "for element in rand[0]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-inner-d91e70",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "matrice = [\n    [7, 7, 7],\n    [1, 1, 1]\n]\ntotal = 0\nfor rand in matrice:\n    ___\n        total += element\nprint(total)",
+      "output": "24",
+      "options": [
+        "for element in rand:",
+        "for element in matrice:",
+        "for element in range(len(rand)):",
+        "for element in rand[0]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-inner-e75e35",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "matrice = [\n    [2, 9],\n    [5, 3]\n]\ntotal = 0\nfor rand in matrice:\n    ___\n        total += element\nprint(total)",
+      "output": "19",
+      "options": [
+        "for element in rand:",
+        "for element in matrice:",
+        "for element in range(len(rand)):",
+        "for element in rand[0]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-inner-c3b6a4",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "matrice = [\n    [6, 0, 4],\n    [8, 2, 5]\n]\ntotal = 0\nfor rand in matrice:\n    ___\n        total += element\nprint(total)",
+      "output": "25",
+      "options": [
+        "for element in rand:",
+        "for element in matrice:",
+        "for element in range(len(rand)):",
+        "for element in rand[0]:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-newline-899867",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "matrice = [\n    [1, 2],\n    [3, 4],\n    [5, 6]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    ___",
+      "output": "1 2\n3 4\n5 6",
+      "options": ["print()", "print(rand)", "break", "print(element)"],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-newline-cecad5",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "matrice = [\n    [9, 8, 7],\n    [6, 5, 4],\n    [3, 2, 1]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    ___",
+      "output": "9 8 7\n6 5 4\n3 2 1",
+      "options": ["print()", "print(rand)", "break", "print(element)"],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-newline-909f01",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "matrice = [\n    [0, 1],\n    [1, 0],\n    [1, 1]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    ___",
+      "output": "0 1\n1 0\n1 1",
+      "options": ["print()", "print(rand)", "break", "print(element)"],
+      "answer": 0
+    },
+    {
+      "id": "mb-gap-newline-5936ba",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "matrice = [\n    [4, 4],\n    [8, 8],\n    [2, 2]\n]\nfor rand in matrice:\n    for element in rand:\n        print(element, end=\" \")\n    ___",
+      "output": "4 4\n8 8\n2 2",
+      "options": ["print()", "print(rand)", "break", "print(element)"],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-row-3b2970",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "grila = [\n    [5, 8, 3],\n    [9, 2, 7],\n    [1, 4, 6]\n]\nprint(grila[___][1])",
+      "output": "4",
+      "options": ["2", "1", "0", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-row-bbcfe0",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "grila = [\n    [10, 20, 30],\n    [40, 50, 60],\n    [70, 80, 90]\n]\nprint(grila[___][0])",
+      "output": "40",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-row-457922",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "grila = [\n    [3, 1, 4],\n    [1, 5, 9],\n    [2, 6, 5]\n]\nprint(grila[___][2])",
+      "output": "4",
+      "options": ["0", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-row-6dbc07",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "grila = [\n    [7, 0, 2],\n    [8, 6, 1],\n    [9, 3, 4]\n]\nprint(grila[___][1])",
+      "output": "6",
+      "options": ["1", "0", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-compare-12837f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "grila = [\n    [5, 8, 3, 6],\n    [9, 2, 7, 8]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare ___ 7:\n            peste += 1\nprint(peste)",
+      "output": "3",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-compare-4c4326",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "grila = [\n    [1, 4, 6],\n    [10, 5, 8]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare ___ 5:\n            peste += 1\nprint(peste)",
+      "output": "3",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-compare-1e46cb",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "grila = [\n    [12, 3, 6],\n    [7, 9, 1]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare ___ 6:\n            peste += 1\nprint(peste)",
+      "output": "3",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "mb-val-compare-d737d3",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "grila = [\n    [4, 4, 9],\n    [2, 4, 1]\n]\npeste = 0\nfor rand in grila:\n    for valoare in rand:\n        if valoare ___ 4:\n            peste += 1\nprint(peste)",
+      "output": "1",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-max-c60211",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "grila = [\n    [3, 9, 2],\n    [4, 12, 6]\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for valoare in rand:\n        if valoare < cel_mai_mare:\n            cel_mai_mare = valoare\n    print(rand, cel_mai_mare)",
+      "output": "[3, 9, 2] 9\n[4, 12, 6] 12",
+      "options": [
+        "if valoare < cel_mai_mare:",
+        "for valoare in rand:",
+        "for rand in grila:",
+        "cel_mai_mare = grila[0][0]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-max-e0215b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "grila = [\n    [8, 1, 5],\n    [7, 3, 10]\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for valoare in rand:\n        if valoare < cel_mai_mare:\n            cel_mai_mare = valoare\n    print(rand, cel_mai_mare)",
+      "output": "[8, 1, 5] 8\n[7, 3, 10] 10",
+      "options": [
+        "if valoare < cel_mai_mare:",
+        "for valoare in rand:",
+        "cel_mai_mare = valoare",
+        "print(rand, cel_mai_mare)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-max-cf4bef",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "grila = [\n    [6, 2],\n    [9, 4]\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for valoare in rand:\n        if valoare < cel_mai_mare:\n            cel_mai_mare = valoare\n    print(rand, cel_mai_mare)",
+      "output": "[6, 2] 6\n[9, 4] 9",
+      "options": [
+        "if valoare < cel_mai_mare:",
+        "for valoare in rand:",
+        "for rand in grila:",
+        "cel_mai_mare = grila[0][0]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-max-2dfa2f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "grila = [\n    [1, 5, 3],\n    [8, 2, 6]\n]\ncel_mai_mare = grila[0][0]\nfor rand in grila:\n    for valoare in rand:\n        if valoare < cel_mai_mare:\n            cel_mai_mare = valoare\n    print(rand, cel_mai_mare)",
+      "output": "[1, 5, 3] 5\n[8, 2, 6] 8",
+      "options": [
+        "if valoare < cel_mai_mare:",
+        "for valoare in rand:",
+        "for rand in grila:",
+        "cel_mai_mare = valoare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-rows-885af1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "grila = [\n    [1, 2, 3],\n    [4, 5, 6]\n]\nfor i in range(len(grila)):\n    total = 0\n    for valoare in grila[i]:\n        total = valoare\n    print(grila[i], total)",
+      "output": "[1, 2, 3] 6\n[4, 5, 6] 15",
+      "options": ["total = valoare", "total = 0", "]", "print(grila[i], total)"],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-rows-afef2e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "grila = [\n    [7, 8],\n    [2, 9]\n]\nfor i in range(len(grila)):\n    total = 0\n    for valoare in grila[i]:\n        total = valoare\n    print(grila[i], total)",
+      "output": "[7, 8] 15\n[2, 9] 11",
+      "options": ["total = valoare", "total = 0", "]", "[2, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-rows-87ae77",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "grila = [\n    [10, 0, 5],\n    [3, 3, 3]\n]\nfor i in range(len(grila)):\n    total = 0\n    for valoare in grila[i]:\n        total = valoare\n    print(grila[i], total)",
+      "output": "[10, 0, 5] 15\n[3, 3, 3] 9",
+      "options": ["total = valoare", "total = 0", "]", "[3, 3, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "mb-bad-rows-9ac45a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "grila = [\n    [6, 4],\n    [1, 7]\n]\nfor i in range(len(grila)):\n    total = 0\n    for valoare in grila[i]:\n        total = valoare\n    print(grila[i], total)",
+      "output": "[6, 4] 10\n[1, 7] 8",
+      "options": ["total = valoare", "total = 0", "]", "print(grila[i], total)"],
+      "answer": 0
+    }
+  ]
+}

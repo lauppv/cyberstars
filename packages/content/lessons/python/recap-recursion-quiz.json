@@ -1,0 +1,784 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "How does `count_beacons` in the recap look at every cell of the sector?",
+      "options": [
+        "With one recursive call per cell",
+        "With nested loops: one over the rows, one over the cells of each row",
+        "With binary search over the grid",
+        "With one loop over `sector`, which gives the cells one by one"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Why does `flatten_sorted` check `if cell not in values` before it appends?",
+      "options": [
+        "So the loop skips the first row",
+        "Because `append` fails on a value that is already there",
+        "So the values come out sorted",
+        "So each value goes in once and the list keeps only the unique values"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "Why does `find_value` need a sorted list?",
+      "options": [
+        "It drops half the list after one look at the middle, which only works when the values are in order",
+        "A recursive function only works on sorted lists",
+        "`len()` only counts sorted lists",
+        "It doesn't: binary search finds a value in any list"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "What is the base case of the recap's `find_value`?",
+      "options": [
+        "`mid` reaching 0",
+        "A target equal to 0",
+        "An empty list: it returns False",
+        "A list with one value: it returns True"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "grid = [\n    [4, 7, 1],\n    [2, 9, 5],\n]\nprint(grid[1][0])",
+      "options": ["7", "2", "4", "9"],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "How many rows and columns does `grid = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]` have?",
+      "options": [
+        "4 rows and 3 columns",
+        "12 rows and 1 column",
+        "3 rows and 3 columns",
+        "3 rows and 4 columns"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "What happens when this runs?",
+      "code": "def countdown(n):\n    print(n)\n    countdown(n - 1)\n\ncountdown(3)",
+      "options": [
+        "It prints 3, 2, 1, 0, -1 and on, until Python stops it with a RecursionError: there is no base case",
+        "It prints 3, 2 and 1, then stops",
+        "It prints 3 and stops",
+        "It stops with an error before printing anything"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(3) + factorial(2))",
+      "options": ["5", "6", "8", "24"],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([2, 4, 6]))",
+      "options": ["6", "12", "2", "[2, 4, 6]"],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "What does `numbers[1:]` give when `numbers` is `[5, 8, 3]`?",
+      "options": ["[5]", "8", "[5, 8]", "[8, 3]"],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "Binary search looks for 11 in `[1, 3, 5, 7, 9, 11, 13]`. Which value does it look at first?",
+      "options": [
+        "7, the one in the middle",
+        "1, the first one",
+        "13, the last one",
+        "11, since it knows where it is"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "About how many values does binary search look at in a sorted list of 1,000,000?",
+      "options": ["1,000", "500,000", "20", "1,000,000"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "Why does the lesson's recursive binary search return -1 once `left > right`?",
+      "options": [
+        "-1 is the index of the last value",
+        "The part still to search is empty, so the target isn't in the list",
+        "So the search starts over from the beginning",
+        "Because it found the target at index -1"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "grid = [\n    [1, 2],\n    [3, 4],\n    [5, 6],\n]\nfor row in grid:\n    total = 0\n    for cell in row:\n        total += cell\n    print(total)",
+      "options": ["21", "9\n12", "3\n10\n21", "3\n7\n11"],
+      "answer": 3
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(6))",
+      "options": ["8", "5", "13", "6"],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "What makes a recursive function call itself forever?",
+      "options": [
+        "A `return` in the base case",
+        "Having two base cases, as `fib` does",
+        "A call that doesn't get any closer to the base case, like `countdown(n)` in place of `countdown(n - 1)`",
+        "Calling `print` before the recursive call"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\nprint(sum_digits(4070))",
+      "options": ["4070", "11", "407", "7"],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "What happens when this runs?",
+      "code": "grid = [\n    [1, 2],\n    [3, 4],\n]\nprint(grid[2][1])",
+      "options": [
+        "It prints 4",
+        "It prints 3",
+        "It prints nothing",
+        "It stops with an IndexError: the grid only has rows 0 and 1"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "What does `print(cell, end=\" \")` do differently from `print(cell)`?",
+      "options": [
+        "It ends with a space instead of a new line, so the next print goes on the same line",
+        "It prints the cell twice",
+        "It prints the cell's index too",
+        "It puts the cell in quotes"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "grid = [\n    [3, 8],\n    [12, 5],\n    [7, 1],\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for cell in row:\n        if cell > biggest:\n            biggest = cell\nprint(biggest)",
+      "options": ["8", "3", "12", "36"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "Why does the lesson start `biggest` at `matrix[0][0]` and not at 0?",
+      "options": [
+        "Because a variable can't start at 0",
+        "So it starts from a real value and still works when every value is negative",
+        "Because `matrix[0][0]` is always the biggest value",
+        "So the loop runs faster"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"Lance\"))",
+      "options": ["Lance", "anceL", "e", "ecnaL"],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "What does this print?",
+      "code": "def count_char(text, target):\n    if len(text) == 0:\n        return 0\n    first = 1 if text[0] == target else 0\n    return first + count_char(text[1:], target)\n\nprint(count_char(\"satellite\", \"l\"))",
+      "options": ["2", "1", "3", "0"],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "Which line finds the middle index in the lesson's binary search?",
+      "options": [
+        "mid = left + right",
+        "mid = len(numbers)",
+        "mid = (left + right) // 2",
+        "mid = right - left"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "In the lesson's binary search, what happens when `numbers[mid] < target`?",
+      "options": [
+        "`right = mid - 1`: the target can only be to the left of `mid`",
+        "`left = mid + 1`: the target can only be to the right of `mid`",
+        "`left = mid`: the search stays where it is",
+        "It returns -1"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "What does this print?",
+      "code": "def flatten(lst):\n    result = []\n    for item in lst:\n        if type(item) == list:\n            result = result + flatten(item)\n        else:\n            result.append(item)\n    return result\n\nprint(flatten([1, [2, [3]], 4]))",
+      "options": ["[1, [2, [3]], 4]", "[1, 2, [3], 4]", "4", "[1, 2, 3, 4]"],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "A grid has 3 rows of 4 cells. How many times does the body of the inner loop run?",
+      "options": ["12", "7", "4", "3"],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nprint(binary_search([2, 5, 8, 12], 6))",
+      "options": ["2", "1", "-1", "False"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "Why is the lesson's `fib(30)` slow?",
+      "options": [
+        "Every recursive function is slow",
+        "It works out the same values again and again: `fib(5)` and `fib(4)` both call `fib(3)`",
+        "30 is too big a number for Python",
+        "Printing the result takes most of the time"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "This list isn't sorted. What does the program print?",
+      "code": "def find_value(sorted_list, target):\n    if len(sorted_list) == 0:\n        return False\n    mid = len(sorted_list) // 2\n    if sorted_list[mid] == target:\n        return True\n    elif sorted_list[mid] < target:\n        return find_value(sorted_list[mid + 1:], target)\n    else:\n        return find_value(sorted_list[:mid], target)\n\nprint(find_value([9, 2, 7, 4, 1], 9))",
+      "options": [
+        "True",
+        "It stops with an error",
+        "0, the index of 9",
+        "False, though 9 is in the list: binary search went the wrong way"
+      ],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "rr-cell",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "grid = [\n    [{{r0}}],\n    [{{r1}}],\n    [{{r2}}],\n]\nprint(grid[{{i}}][{{j}}])",
+      "values": [
+        {
+          "r0": "4, 7, 1",
+          "r1": "2, 9, 5",
+          "r2": "8, 3, 6",
+          "i": 1,
+          "j": 2
+        },
+        {
+          "r0": "0, 1, 0",
+          "r1": "1, 2, 1",
+          "r2": "5, 4, 3",
+          "i": 2,
+          "j": 1
+        },
+        {
+          "r0": "5, 10, 15",
+          "r1": "20, 25, 30",
+          "r2": "35, 40, 45",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "r0": "9, 8, 7",
+          "r1": "6, 5, 4",
+          "r2": "3, 2, 1",
+          "i": 1,
+          "j": 0
+        },
+        {
+          "r0": "12, 4, 6",
+          "r1": "1, 7, 11",
+          "r2": "2, 10, 13",
+          "i": 2,
+          "j": 1
+        }
+      ],
+      "mistakes": [
+        ["grid[{{i}}][{{j}}]", "grid[{{j}}][{{i}}]"],
+        ["grid[{{i}}][{{j}}]", "grid[{{i}}]"],
+        ["grid[{{i}}][{{j}}]", "grid[{{i}}][0]"],
+        ["grid[{{i}}][{{j}}]", "grid[0][{{j}}]"]
+      ]
+    },
+    {
+      "id": "rr-count",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def count_beacons(sector):\n    total = 0\n    for row in sector:\n        for cell in row:\n            if cell == {{v}}:\n                total += 1\n    return total\n\nsector = [\n    [{{r0}}],\n    [{{r1}}],\n    [{{r2}}],\n]\nprint(count_beacons(sector))",
+      "values": [
+        {
+          "v": 2,
+          "r0": "0, 2, 1, 2",
+          "r1": "1, 0, 0, 2",
+          "r2": "2, 1, 0, 0"
+        },
+        {
+          "v": 3,
+          "r0": "3, 1, 0",
+          "r1": "0, 3, 3",
+          "r2": "2, 0, 1"
+        },
+        {
+          "v": 2,
+          "r0": "0, 0, 1",
+          "r1": "2, 1, 0",
+          "r2": "0, 1, 0"
+        },
+        {
+          "v": 1,
+          "r0": "0, 1, 2, 1",
+          "r1": "1, 1, 0, 0",
+          "r2": "2, 1, 1, 0"
+        }
+      ],
+      "mistakes": [
+        ["cell == {{v}}", "cell != {{v}}"],
+        ["total += 1", "total = 1"],
+        ["total += 1", "total += cell"],
+        ["    return total", "            return total"],
+        ["cell == {{v}}", "cell > {{v}}"]
+      ]
+    },
+    {
+      "id": "rr-unique",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def flatten_sorted(sector):\n    values = []\n    for row in sector:\n        for cell in row:\n            if cell not in values:\n                values.append(cell)\n    return sorted(values)\n\nsector = [\n    [{{r0}}],\n    [{{r1}}],\n]\nprint(flatten_sorted(sector))",
+      "values": [
+        {
+          "r0": "2, 0, 1",
+          "r1": "1, 0, 2"
+        },
+        {
+          "r0": "3, 3, 1",
+          "r1": "0, 1, 2"
+        },
+        {
+          "r0": "1, 0, 0, 1",
+          "r1": "0, 2, 1, 0"
+        },
+        {
+          "r0": "5, 2, 5",
+          "r1": "9, 2, 4"
+        }
+      ],
+      "mistakes": [
+        ["return sorted(values)", "return values"],
+        ["cell not in values", "cell in values"],
+        ["values.append(cell)", "values = [cell]"],
+        ["values.append(cell)", "values.append(row)"]
+      ]
+    },
+    {
+      "id": "rr-bs-index",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnumbers = [{{list}}]\nprint(binary_search(numbers, {{t}}))",
+      "values": [
+        {
+          "list": "1, 3, 5, 7, 9, 11, 13",
+          "t": 11
+        },
+        {
+          "list": "2, 5, 8, 12, 16, 23, 38",
+          "t": 5
+        },
+        {
+          "list": "4, 8, 15, 16, 23, 42",
+          "t": 42
+        },
+        {
+          "list": "10, 20, 30, 40, 50",
+          "t": 10
+        },
+        {
+          "list": "3, 6, 9, 12, 15, 18, 21, 24",
+          "t": 18
+        }
+      ],
+      "mistakes": [
+        ["            return mid", "            return numbers[mid]"],
+        ["            return mid", "            return mid + 1"],
+        ["elif numbers[mid] < target:", "elif numbers[mid] > target:"],
+        ["    return -1", "    return left"]
+      ]
+    },
+    {
+      "id": "rr-bs-steps",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{list}}]\ntarget = {{t}}\nleft = 0\nright = len(numbers) - 1\nwhile left <= right:\n    mid = (left + right) // 2\n    print(numbers[mid])\n    if numbers[mid] == target:\n        break\n    elif numbers[mid] < target:\n        left = mid + 1\n    else:\n        right = mid - 1",
+      "values": [
+        {
+          "list": "1, 3, 5, 7, 9, 11, 13, 15, 17, 19",
+          "t": 13
+        },
+        {
+          "list": "2, 4, 6, 8, 10, 12, 14",
+          "t": 4
+        },
+        {
+          "list": "5, 10, 15, 20, 25, 30, 35, 40",
+          "t": 35
+        },
+        {
+          "list": "1, 2, 3, 4, 5, 6, 7, 8, 9",
+          "t": 8
+        },
+        {
+          "list": "11, 22, 33, 44, 55, 66, 77",
+          "t": 20
+        }
+      ],
+      "mistakes": [
+        ["print(numbers[mid])", "print(mid)"],
+        ["(left + right) // 2", "(left + right + 1) // 2"],
+        ["elif numbers[mid] < target:", "elif numbers[mid] > target:"],
+        ["right = len(numbers) - 1", "right = len(numbers) // 2"]
+      ]
+    },
+    {
+      "id": "rr-fact",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial({{n}}))",
+      "values": [
+        {
+          "n": 7
+        },
+        {
+          "n": 5
+        },
+        {
+          "n": 6
+        },
+        {
+          "n": 4
+        }
+      ],
+      "mistakes": [
+        ["        return 1", "        return 0"],
+        ["n * factorial(n - 1)", "n + factorial(n - 1)"],
+        ["if n == 1:", "if n == 2:"],
+        ["n * factorial(n - 1)", "n * (n - 1)"]
+      ]
+    },
+    {
+      "id": "rr-sum-list",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\nprint(sum_list([{{list}}]))",
+      "values": [
+        {
+          "list": "3, 5, 2"
+        },
+        {
+          "list": "10, 20, 30, 40"
+        },
+        {
+          "list": "7, 1, 4, 6"
+        },
+        {
+          "list": "8, 9"
+        }
+      ],
+      "mistakes": [
+        ["        return 0", "        return 1"],
+        ["len(numbers) == 0", "len(numbers) == 1"],
+        ["numbers[0] + sum_list", "numbers[0] * sum_list"],
+        ["numbers[0] + sum_list(numbers[1:])", "numbers[0]"]
+      ]
+    },
+    {
+      "id": "rr-power",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nfor exp in range({{n}}):\n    result = power({{b}}, exp)\n    print(f\"{{b}}^{exp} = {result}\")",
+      "values": [
+        {
+          "b": 2,
+          "n": 4
+        },
+        {
+          "b": 3,
+          "n": 4
+        },
+        {
+          "b": 5,
+          "n": 3
+        },
+        {
+          "b": 10,
+          "n": 4
+        }
+      ],
+      "mistakes": [
+        ["        return 1", "        return base"],
+        ["base * power(base, exp - 1)", "base + power(base, exp - 1)"],
+        ["range({{n}})", "range(1, {{n}})"],
+        ["base * power(base, exp - 1)", "base * exp"]
+      ]
+    },
+    {
+      "id": "rr-digits",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def sum_digits(n):\n    if n < 10:\n        return n\n    return n % 10 + sum_digits(n // 10)\n\nfor code in [{{codes}}]:\n    print(f\"{code}: {sum_digits(code)}\")",
+      "values": [
+        {
+          "codes": "1234, 88"
+        },
+        {
+          "codes": "999, 5"
+        },
+        {
+          "codes": "4070, 31"
+        },
+        {
+          "codes": "56, 702"
+        }
+      ],
+      "mistakes": [
+        ["n % 10 + ", "n // 10 + "],
+        ["        return n", "        return 0"],
+        ["n < 10", "n < 100"],
+        ["sum_digits(n // 10)", "n // 10"]
+      ]
+    },
+    {
+      "id": "rr-gap-row",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "grid = [\n    [{{r0}}],\n    [{{r1}}],\n    [{{r2}}],\n]\nfor row in grid:\n    total = 0\n    for cell in row:\n        ___\n    print(total)",
+      "values": [
+        {
+          "r0": "1, 2, 3",
+          "r1": "4, 5, 6",
+          "r2": "7, 8, 9"
+        },
+        {
+          "r0": "5, 1, 4",
+          "r1": "2, 2, 2",
+          "r2": "10, 0, 3"
+        },
+        {
+          "r0": "3, 7",
+          "r1": "6, 1",
+          "r2": "9, 9"
+        },
+        {
+          "r0": "12, 4, 6, 3",
+          "r1": "1, 7, 11, 2",
+          "r2": "2, 10, 13, 5"
+        }
+      ],
+      "answer": "total += cell",
+      "wrong": ["total = cell", "total += 1", "total += row", "total = total + row[0]"]
+    },
+    {
+      "id": "rr-gap-max",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grid = [\n    [{{r0}}],\n    [{{r1}}],\n]\nbiggest = grid[0][0]\nfor row in grid:\n    for cell in row:\n        if cell ___ biggest:\n            biggest = cell\nprint(biggest)",
+      "values": [
+        {
+          "r0": "3, 8, 2",
+          "r1": "12, 5, 7"
+        },
+        {
+          "r0": "40, 15",
+          "r1": "25, 60"
+        },
+        {
+          "r0": "6, 1, 9, 4",
+          "r1": "2, 11, 3, 5"
+        },
+        {
+          "r0": "-5, -2",
+          "r1": "-9, -7"
+        }
+      ],
+      "answer": ">",
+      "wrong": ["<", "==", "!=", "<="]
+    },
+    {
+      "id": "rr-bad-bs",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnumbers = [{{list}}]\nprint(binary_search(numbers, {{t}}))",
+      "values": [
+        {
+          "list": "1, 3, 5, 7, 9, 11, 13",
+          "t": 11
+        },
+        {
+          "list": "2, 5, 8, 12, 16, 23, 38",
+          "t": 5
+        },
+        {
+          "list": "4, 8, 15, 16, 23, 42",
+          "t": 42
+        },
+        {
+          "list": "10, 20, 30, 40, 50",
+          "t": 20
+        }
+      ],
+      "bug": ["elif numbers[mid] < target:", "elif numbers[mid] > target:"]
+    },
+    {
+      "id": "rr-bad-fact",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in [{{a}}, {{b}}]:\n    print(n, factorial(n))",
+      "values": [
+        {
+          "a": 3,
+          "b": 5
+        },
+        {
+          "a": 4,
+          "b": 6
+        },
+        {
+          "a": 2,
+          "b": 7
+        },
+        {
+          "a": 5,
+          "b": 3
+        }
+      ],
+      "bug": ["        return 1", "        return n - 1"]
+    },
+    {
+      "id": "rr-bad-count",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "sector = [\n    [{{r0}}],\n    [{{r1}}],\n]\nbeacons = 0\ndebris = 0\nfor row in sector:\n    for cell in row:\n        if cell == 2:\n            beacons += 1\n        elif cell == 1:\n            debris += 1\nprint(f\"Beacons: {beacons}\")\nprint(f\"Debris: {debris}\")",
+      "values": [
+        {
+          "r0": "0, 2, 1, 2",
+          "r1": "1, 0, 2, 2"
+        },
+        {
+          "r0": "2, 2, 0",
+          "r1": "1, 2, 0"
+        },
+        {
+          "r0": "2, 0, 2, 1",
+          "r1": "1, 1, 2, 0"
+        },
+        {
+          "r0": "2, 1, 2, 0",
+          "r1": "0, 2, 1, 2"
+        }
+      ],
+      "bug": ["            beacons += 1", "            beacons += cell"]
+    },
+    {
+      "id": "rr-which-sum",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "grid = [\n    [{{r0}}],\n    [{{r1}}],\n]\ntotal = 0\nfor row in grid:\n    for cell in row:\n        total += cell\nprint(total)",
+      "values": [
+        {
+          "r0": "1, 2, 3",
+          "r1": "4, 5, 6"
+        },
+        {
+          "r0": "10, 20",
+          "r1": "30, 40"
+        },
+        {
+          "r0": "7, 0, 2",
+          "r1": "5, 3, 8"
+        },
+        {
+          "r0": "4, 4, 4",
+          "r1": "1, 2, 9"
+        }
+      ],
+      "mistakes": [
+        ["total = 0\nfor row in grid:\n", "for row in grid:\n    total = 0\n"],
+        ["total += cell", "total += row[0]"],
+        ["for cell in row:", "for cell in grid[0]:"],
+        ["total += cell", "total += 1"]
+      ]
+    },
+    {
+      "id": "rr-gap-unique",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "sector = [\n    [{{r0}}],\n    [{{r1}}],\n]\nvalues = []\nfor row in sector:\n    for cell in row:\n        if cell not in values:\n            ___\nprint(sorted(values))",
+      "values": [
+        {
+          "r0": "2, 0, 1",
+          "r1": "1, 0, 2"
+        },
+        {
+          "r0": "3, 3, 1",
+          "r1": "0, 1, 2"
+        },
+        {
+          "r0": "5, 2, 5",
+          "r1": "9, 2, 4"
+        },
+        {
+          "r0": "1, 0, 0, 1",
+          "r1": "0, 2, 1, 0"
+        }
+      ],
+      "answer": "values.append(cell)",
+      "wrong": ["values = [cell]", "values.append(row)", "print(cell)"]
+    },
+    {
+      "id": "rr-reverse",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str(\"{{w}}\"))",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "orbit"
+        },
+        {
+          "w": "Mars"
+        }
+      ],
+      "mistakes": [
+        ["reverse_str(s[1:]) + s[0]", "s[0] + reverse_str(s[1:])"],
+        ["        return s", "        return \"\""],
+        ["+ s[0]", "+ s[1]"],
+        ["reverse_str(s[1:]) + s[0]", "s[1:] + s[0]"]
+      ]
+    }
+  ]
+}

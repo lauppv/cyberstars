@@ -1,0 +1,615 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-patterns-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rp-count-581b48",
+      "text": "Ce afișează?",
+      "code": "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"citire sonda citire analiza sonda citire start\", \"citire\"))",
+      "options": ["3", "1", "4", "18"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-6f68a5",
+      "text": "Ce afișează?",
+      "code": "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"ping ping ecou ping\", \"ping\"))",
+      "options": ["3", "1", "4", "12"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-d35aa6",
+      "text": "Ce afișează?",
+      "code": "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"start citire sonda citire\", \"sonda\"))",
+      "options": ["1", "0", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-d6b93b",
+      "text": "Ce afișează?",
+      "code": "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"sus jos sus jos sus\", \"jos\"))",
+      "options": ["2", "1", "0", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-caa01a",
+      "text": "Ce afișează?",
+      "code": "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"alfa beta alfa gama beta alfa\", \"beta\"))",
+      "options": ["2", "1", "0", "4"],
+      "answer": 0
+    },
+    {
+      "id": "rp-longest-c05a36",
+      "text": "Ce afișează?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"scan sonda analiza start\"))",
+      "options": ["analiza", "7", "scan", "scan sonda analiza start"],
+      "answer": 0
+    },
+    {
+      "id": "rp-longest-ac0dc4",
+      "text": "Ce afișează?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"hai mai departe\"))",
+      "options": ["departe", "7", "hai", "hai mai departe"],
+      "answer": 0
+    },
+    {
+      "id": "rp-longest-0828e6",
+      "text": "Ce afișează?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"rosu gri albastru verde\"))",
+      "options": ["albastru", "8", "rosu", "rosu gri albastru verde"],
+      "answer": 0
+    },
+    {
+      "id": "rp-longest-6ecfb3",
+      "text": "Ce afișează?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"marte venus terra pluto\"))",
+      "options": ["marte", "pluto", "5", "marte venus terra pluto"],
+      "answer": 0
+    },
+    {
+      "id": "rp-longest-e57c13",
+      "text": "Ce afișează?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"ion orbita cometa stea\"))",
+      "options": ["orbita", "cometa", "6", "ion"],
+      "answer": 0
+    },
+    {
+      "id": "rp-dup-7699b3",
+      "text": "Ce afișează?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(w)\n    return False\n\nprint(are_duplicate(\"citire sonda citire\"), are_duplicate(\"start ping ecou\"))",
+      "options": ["True False", "citire False", "True 3", "True True"],
+      "answer": 0
+    },
+    {
+      "id": "rp-dup-4503f0",
+      "text": "Ce afișează?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(w)\n    return False\n\nprint(are_duplicate(\"rosu albastru\"), are_duplicate(\"hai sus hai\"))",
+      "options": ["False True", "False hai", "2 True", "True True"],
+      "answer": 0
+    },
+    {
+      "id": "rp-dup-f8e0cb",
+      "text": "Ce afișează?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(w)\n    return False\n\nprint(are_duplicate(\"a b c d\"), are_duplicate(\"a b c a\"))",
+      "options": ["False True", "False a", "4 True", "True True"],
+      "answer": 0
+    },
+    {
+      "id": "rp-dup-fdbfaf",
+      "text": "Ce afișează?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(w)\n    return False\n\nprint(are_duplicate(\"marte marte\"), are_duplicate(\"venus terra\"))",
+      "options": ["True False", "marte False", "True 2", "True True"],
+      "answer": 0
+    },
+    {
+      "id": "rp-dup-447355",
+      "text": "Ce afișează?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(w)\n    return False\n\nprint(are_duplicate(\"unu doi trei\"), are_duplicate(\"unu unu\"))",
+      "options": ["False True", "False unu", "3 True", "True True"],
+      "answer": 0
+    },
+    {
+      "id": "rp-unique-02eb57",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"scan sonda scan start\"\ncuvinte = jurnal.split(\" \")\nprint(sorted(set(cuvinte)))",
+      "options": ["['scan', 'sonda', 'start']", "['scan', 'scan', 'sonda', 'start']", "3", "4"],
+      "answer": 0
+    },
+    {
+      "id": "rp-unique-9905d6",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"sus jos sus\"\ncuvinte = jurnal.split(\" \")\nprint(sorted(set(cuvinte)))",
+      "options": ["['jos', 'sus']", "['jos', 'sus', 'sus']", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-unique-be9d31",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"rosu albastru verde rosu albastru\"\ncuvinte = jurnal.split(\" \")\nprint(sorted(set(cuvinte)))",
+      "options": [
+        "['albastru', 'rosu', 'verde']",
+        "['albastru', 'albastru', 'rosu', 'rosu', 'verde']",
+        "3",
+        "5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-unique-8f4b9e",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"ecou ping ecou\"\ncuvinte = jurnal.split(\" \")\nprint(sorted(set(cuvinte)))",
+      "options": ["['ecou', 'ping']", "['ecou', 'ecou', 'ping']", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-unique-b8a4b5",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"gama alfa beta alfa\"\ncuvinte = jurnal.split(\" \")\nprint(sorted(set(cuvinte)))",
+      "options": ["['alfa', 'beta', 'gama']", "['alfa', 'alfa', 'beta', 'gama']", "3", "4"],
+      "answer": 0
+    },
+    {
+      "id": "rp-total-len-3f8ccf",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"scan port ping\"\ntotal = 0\nfor w in jurnal.split(\" \"):\n    total += len(w)\nprint(total)",
+      "options": ["12", "4", "3", "14"],
+      "answer": 0
+    },
+    {
+      "id": "rp-total-len-ac0dc4",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"hai mai sus\"\ntotal = 0\nfor w in jurnal.split(\" \"):\n    total += len(w)\nprint(total)",
+      "options": ["9", "3", "11", "33"],
+      "answer": 0
+    },
+    {
+      "id": "rp-total-len-ffaabd",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"alfa beta\"\ntotal = 0\nfor w in jurnal.split(\" \"):\n    total += len(w)\nprint(total)",
+      "options": ["8", "4", "2", "9"],
+      "answer": 0
+    },
+    {
+      "id": "rp-total-len-9e225d",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"a bb ccc dddd\"\ntotal = 0\nfor w in jurnal.split(\" \"):\n    total += len(w)\nprint(total)",
+      "options": ["10", "4", "13", "52"],
+      "answer": 0
+    },
+    {
+      "id": "rp-total-len-662d0c",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"sonda orbit\"\ntotal = 0\nfor w in jurnal.split(\" \"):\n    total += len(w)\nprint(total)",
+      "options": ["10", "5", "2", "11"],
+      "answer": 0
+    },
+    {
+      "id": "rp-report-581b48",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"citire sonda citire analiza sonda citire start\"\ndef contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\ndef cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\ncuvinte = jurnal.split(\" \")\ncontor = contor_cuvant(jurnal, \"citire\")\nprint(f\"Total cuvinte: {len(cuvinte)}\")\nprint(f\"Aparitii citire: {contor}\")\nprint(f\"Cel mai lung cuvant: {cel_mai_lung_cuvant(jurnal)}\")",
+      "options": [
+        "Total cuvinte: 7\nAparitii citire: 3\nCel mai lung cuvant: analiza",
+        "Total cuvinte: 46\nAparitii citire: 3\nCel mai lung cuvant: analiza",
+        "Total cuvinte: 7\nAparitii citire: 1\nCel mai lung cuvant: analiza",
+        "Total cuvinte: 7\nAparitii citire: 3\nCel mai lung cuvant:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-report-6f68a5",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"ping ping ecou ping\"\ndef contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\ndef cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\ncuvinte = jurnal.split(\" \")\ncontor = contor_cuvant(jurnal, \"ping\")\nprint(f\"Total cuvinte: {len(cuvinte)}\")\nprint(f\"Aparitii ping: {contor}\")\nprint(f\"Cel mai lung cuvant: {cel_mai_lung_cuvant(jurnal)}\")",
+      "options": [
+        "Total cuvinte: 4\nAparitii ping: 3\nCel mai lung cuvant: ping",
+        "Total cuvinte: 19\nAparitii ping: 3\nCel mai lung cuvant: ping",
+        "Total cuvinte: 4\nAparitii ping: 1\nCel mai lung cuvant: ping",
+        "Total cuvinte: 4\nAparitii ping: 3\nCel mai lung cuvant:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-report-d35aa6",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"start citire sonda citire\"\ndef contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\ndef cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\ncuvinte = jurnal.split(\" \")\ncontor = contor_cuvant(jurnal, \"sonda\")\nprint(f\"Total cuvinte: {len(cuvinte)}\")\nprint(f\"Aparitii sonda: {contor}\")\nprint(f\"Cel mai lung cuvant: {cel_mai_lung_cuvant(jurnal)}\")",
+      "options": [
+        "Total cuvinte: 4\nAparitii sonda: 1\nCel mai lung cuvant: citire",
+        "Total cuvinte: 25\nAparitii sonda: 1\nCel mai lung cuvant: citire",
+        "Total cuvinte: 4\nAparitii sonda: 1\nCel mai lung cuvant:",
+        "Total cuvinte: 4\nAparitii sonda: 1\nCel mai lung cuvant: 6"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-report-d6b93b",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"sus jos sus jos sus\"\ndef contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\ndef cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\ncuvinte = jurnal.split(\" \")\ncontor = contor_cuvant(jurnal, \"jos\")\nprint(f\"Total cuvinte: {len(cuvinte)}\")\nprint(f\"Aparitii jos: {contor}\")\nprint(f\"Cel mai lung cuvant: {cel_mai_lung_cuvant(jurnal)}\")",
+      "options": [
+        "Total cuvinte: 5\nAparitii jos: 2\nCel mai lung cuvant: sus",
+        "Total cuvinte: 19\nAparitii jos: 2\nCel mai lung cuvant: sus",
+        "Total cuvinte: 5\nAparitii jos: 1\nCel mai lung cuvant: sus",
+        "Total cuvinte: 5\nAparitii jos: 2\nCel mai lung cuvant:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-report-caa01a",
+      "text": "Ce afișează?",
+      "code": "jurnal = \"alfa beta alfa gama beta alfa\"\ndef contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\ndef cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\ncuvinte = jurnal.split(\" \")\ncontor = contor_cuvant(jurnal, \"beta\")\nprint(f\"Total cuvinte: {len(cuvinte)}\")\nprint(f\"Aparitii beta: {contor}\")\nprint(f\"Cel mai lung cuvant: {cel_mai_lung_cuvant(jurnal)}\")",
+      "options": [
+        "Total cuvinte: 6\nAparitii beta: 2\nCel mai lung cuvant: alfa",
+        "Total cuvinte: 29\nAparitii beta: 2\nCel mai lung cuvant: alfa",
+        "Total cuvinte: 6\nAparitii beta: 1\nCel mai lung cuvant: alfa",
+        "Total cuvinte: 6\nAparitii beta: 2\nCel mai lung cuvant:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-long-9b8962",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"da sonda nu radar scan\".split(\" \")\ncontor = 0\nfor w in cuvinte:\n    if len(w) > 3:\n        contor += 1\nprint(contor)",
+      "options": ["3", "14", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-long-3a1ba8",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"a bb ccc dddd eeeee\".split(\" \")\ncontor = 0\nfor w in cuvinte:\n    if len(w) > 2:\n        contor += 1\nprint(contor)",
+      "options": ["3", "4", "12", "1"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-long-4b3897",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"orbita ion cometa sol\".split(\" \")\ncontor = 0\nfor w in cuvinte:\n    if len(w) > 3:\n        contor += 1\nprint(contor)",
+      "options": ["2", "4", "12", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-long-58c19c",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"alfa beta gama delta\".split(\" \")\ncontor = 0\nfor w in cuvinte:\n    if len(w) > 4:\n        contor += 1\nprint(contor)",
+      "options": ["1", "4", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-long-4ee5e0",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"gri roz verde\".split(\" \")\ncontor = 0\nfor w in cuvinte:\n    if len(w) > 3:\n        contor += 1\nprint(contor)",
+      "options": ["1", "3", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flag-ad2ce2",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"da nu sa\".split(\" \")\ntoate_scurte = True\nfor w in cuvinte:\n    if len(w) > 2:\n        toate_scurte = False\nprint(toate_scurte, w)",
+      "options": ["True sa", "False sa", "True ['da', 'nu', 'sa']", "True 2"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flag-313365",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"scan pas sonda\".split(\" \")\ntoate_scurte = True\nfor w in cuvinte:\n    if len(w) > 4:\n        toate_scurte = False\nprint(toate_scurte, w)",
+      "options": ["False sonda", "True sonda", "False ['scan', 'pas', 'sonda']", "False 5"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flag-d512cc",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"ion sol orbita\".split(\" \")\ntoate_scurte = True\nfor w in cuvinte:\n    if len(w) > 3:\n        toate_scurte = False\nprint(toate_scurte, w)",
+      "options": ["False orbita", "True orbita", "False ['ion', 'sol', 'orbita']", "False 6"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flag-7f4614",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"a bb ccc\".split(\" \")\ntoate_scurte = True\nfor w in cuvinte:\n    if len(w) > 3:\n        toate_scurte = False\nprint(toate_scurte, w)",
+      "options": ["True ccc", "False ccc", "True ['a', 'bb', 'ccc']", "True 3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flag-650021",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"marte venus terra\".split(\" \")\ntoate_scurte = True\nfor w in cuvinte:\n    if len(w) > 4:\n        toate_scurte = False\nprint(toate_scurte, w)",
+      "options": ["False terra", "True terra", "False ['marte', 'venus', 'terra']", "False 5"],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-f21e5f",
+      "text": "Care program afișează asta?",
+      "output": "3",
+      "options": [
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"ping ping ecou ping\", \"ping\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor = 1\n    return contor\n\nprint(contor_cuvant(\"ping ping ecou ping\", \"ping\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w != cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"ping ping ecou ping\", \"ping\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 1\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"ping ping ecou ping\", \"ping\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-c6aa6a",
+      "text": "Care program afișează asta?",
+      "output": "1",
+      "options": [
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"hai sus hai\", \"sus\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w != cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"hai sus hai\", \"sus\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 1\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"hai sus hai\", \"sus\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n        return contor\n\nprint(contor_cuvant(\"hai sus hai\", \"sus\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-e5ccae",
+      "text": "Care program afișează asta?",
+      "output": "2",
+      "options": [
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"a b a b\", \"b\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor = 1\n    return contor\n\nprint(contor_cuvant(\"a b a b\", \"b\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 1\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"a b a b\", \"b\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n        return contor\n\nprint(contor_cuvant(\"a b a b\", \"b\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-b0eb37",
+      "text": "Care program afișează asta?",
+      "output": "4",
+      "options": [
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"scan scan scan scan start\", \"scan\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor = 1\n    return contor\n\nprint(contor_cuvant(\"scan scan scan scan start\", \"scan\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w != cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"scan scan scan scan start\", \"scan\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 1\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"scan scan scan scan start\", \"scan\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-cfcbda",
+      "text": "Care program afișează asta?",
+      "output": "5",
+      "options": [
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"hai hai hai hai hai\", \"hai\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor = 1\n    return contor\n\nprint(contor_cuvant(\"hai hai hai hai hai\", \"hai\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w != cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"hai hai hai hai hai\", \"hai\"))",
+        "def contor_cuvant(jurnal, cuvant):\n    contor = 1\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor += 1\n    return contor\n\nprint(contor_cuvant(\"hai hai hai hai hai\", \"hai\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-acc-1c4adf",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            ___\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"scan sonda analiza start\"))",
+      "output": "analiza",
+      "options": [
+        "cel_mai_lung = w",
+        "cel_mai_lung = len(w)",
+        "w = cel_mai_lung",
+        "cel_mai_lung = jurnal"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-acc-cd0bac",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            ___\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"hai mai departe\"))",
+      "output": "departe",
+      "options": [
+        "cel_mai_lung = w",
+        "cel_mai_lung = len(w)",
+        "w = cel_mai_lung",
+        "cel_mai_lung = jurnal"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-acc-c220c4",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            ___\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"rosu albastru verde\"))",
+      "output": "albastru",
+      "options": [
+        "cel_mai_lung = w",
+        "cel_mai_lung = len(w)",
+        "w = cel_mai_lung",
+        "cel_mai_lung = jurnal"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-acc-6db276",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            ___\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"ion orbita cometa\"))",
+      "output": "orbita",
+      "options": [
+        "cel_mai_lung = w",
+        "cel_mai_lung = len(w)",
+        "w = cel_mai_lung",
+        "cel_mai_lung = jurnal"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-acc-e4b2c2",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) > len(cel_mai_lung):\n            ___\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"a bb ccc dd\"))",
+      "output": "ccc",
+      "options": [
+        "cel_mai_lung = w",
+        "cel_mai_lung = len(w)",
+        "w = cel_mai_lung",
+        "cel_mai_lung = jurnal"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-cmp-f21fe9",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) ___ len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"cal pui urs\"))",
+      "output": "cal",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-cmp-82fe08",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) ___ len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"sonda scan radar\"))",
+      "output": "sonda",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-cmp-166a06",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) ___ len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"gri roz alb\"))",
+      "output": "gri",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-cmp-3049ad",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) ___ len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"departe da nu\"))",
+      "output": "departe",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-cmp-a09f59",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cel_mai_lung_cuvant(jurnal):\n    cel_mai_lung = \"\"\n    for w in jurnal.split(\" \"):\n        if len(w) ___ len(cel_mai_lung):\n            cel_mai_lung = w\n    return cel_mai_lung\n\nprint(cel_mai_lung_cuvant(\"alfa beta gama\"))",
+      "output": "alfa",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-false-2610c5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(w)\n    return ___\n\nprint(are_duplicate(\"citire sonda citire\"))\nprint(are_duplicate(\"start ping\"))",
+      "output": "True\nFalse",
+      "options": ["False", "True", "0", "w"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-false-91694c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(w)\n    return ___\n\nprint(are_duplicate(\"rosu albastru\"))\nprint(are_duplicate(\"hai sus hai\"))",
+      "output": "False\nTrue",
+      "options": ["False", "True", "0", "w"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-false-7a5062",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(w)\n    return ___\n\nprint(are_duplicate(\"a b c a\"))\nprint(are_duplicate(\"a b c d\"))",
+      "output": "True\nFalse",
+      "options": ["False", "True", "0", "w"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-false-9c837e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(w)\n    return ___\n\nprint(are_duplicate(\"venus terra\"))\nprint(are_duplicate(\"marte marte\"))",
+      "output": "False\nTrue",
+      "options": ["False", "True", "0", "w"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-false-4b0368",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(w)\n    return ___\n\nprint(are_duplicate(\"unu unu\"))\nprint(are_duplicate(\"doi trei\"))",
+      "output": "True\nFalse",
+      "options": ["False", "True", "0", "w"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-count-c18263",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jurnal = \"citire sonda citire analiza sonda citire start\"\nprint(jurnal)\ndef contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor = 1\n    return contor\nprint(contor_cuvant(jurnal, \"citire\"))",
+      "output": "citire sonda citire analiza sonda citire start\n3",
+      "options": [
+        "contor = 1",
+        "contor = 0",
+        "print(jurnal)",
+        "jurnal = \"citire sonda citire analiza sonda citire start\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-count-50e27d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jurnal = \"ping ping ecou ping\"\nprint(jurnal)\ndef contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor = 1\n    return contor\nprint(contor_cuvant(jurnal, \"ping\"))",
+      "output": "ping ping ecou ping\n3",
+      "options": ["contor = 1", "contor = 0", "print(jurnal)", "return contor"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-count-b6b18c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jurnal = \"start citire sonda citire\"\nprint(jurnal)\ndef contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor = 1\n    return contor\nprint(contor_cuvant(jurnal, \"citire\"))",
+      "output": "start citire sonda citire\n2",
+      "options": [
+        "contor = 1",
+        "contor = 0",
+        "return contor",
+        "print(contor_cuvant(jurnal, \"citire\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-count-cbe233",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jurnal = \"sus jos sus jos sus\"\nprint(jurnal)\ndef contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor = 1\n    return contor\nprint(contor_cuvant(jurnal, \"sus\"))",
+      "output": "sus jos sus jos sus\n3",
+      "options": ["contor = 1", "contor = 0", "print(jurnal)", "jurnal = \"sus jos sus jos sus\""],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-count-eabceb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jurnal = \"alfa beta alfa gama beta alfa\"\nprint(jurnal)\ndef contor_cuvant(jurnal, cuvant):\n    contor = 0\n    for w in jurnal.split(\" \"):\n        if w == cuvant:\n            contor = 1\n    return contor\nprint(contor_cuvant(jurnal, \"alfa\"))",
+      "output": "alfa beta alfa gama beta alfa\n3",
+      "options": [
+        "contor = 1",
+        "contor = 0",
+        "print(jurnal)",
+        "jurnal = \"alfa beta alfa gama beta alfa\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-dup-03e8b1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(jurnal)\n    return False\n\nfor jurnal in [\"citire sonda citire\", \"start ping\", \"sus sus\"]:\n    print(jurnal, are_duplicate(jurnal))",
+      "output": "citire sonda citire True\nstart ping False\nsus sus True",
+      "options": ["vazute.add(jurnal)", "return True", "vazute = set()", "if w in vazute:"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-dup-69681c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(jurnal)\n    return False\n\nfor jurnal in [\"rosu albastru\", \"rosu albastru rosu\", \"hai departe\"]:\n    print(jurnal, are_duplicate(jurnal))",
+      "output": "rosu albastru False\nrosu albastru rosu True\nhai departe False",
+      "options": ["vazute.add(jurnal)", "return True", "vazute = set()", "return False"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-dup-cedf97",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(jurnal)\n    return False\n\nfor jurnal in [\"a b c a\", \"a b c d\", \"x y x\"]:\n    print(jurnal, are_duplicate(jurnal))",
+      "output": "a b c a True\na b c d False\nx y x True",
+      "options": ["vazute.add(jurnal)", "return True", "vazute = set()", "return False"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-dup-7d8192",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(jurnal)\n    return False\n\nfor jurnal in [\"marte venus marte\", \"terra luna\", \"sol sol sol\"]:\n    print(jurnal, are_duplicate(jurnal))",
+      "output": "marte venus marte True\nterra luna False\nsol sol sol True",
+      "options": ["vazute.add(jurnal)", "return True", "vazute = set()", "return False"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-dup-6a9dd6",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def are_duplicate(jurnal):\n    vazute = set()\n    for w in jurnal.split(\" \"):\n        if w in vazute:\n            return True\n        vazute.add(jurnal)\n    return False\n\nfor jurnal in [\"unu doi\", \"sus jos sus\", \"stanga dreapta\"]:\n    print(jurnal, are_duplicate(jurnal))",
+      "output": "unu doi False\nsus jos sus True\nstanga dreapta False",
+      "options": ["vazute.add(jurnal)", "return True", "vazute = set()", "if w in vazute:"],
+      "answer": 0
+    }
+  ]
+}

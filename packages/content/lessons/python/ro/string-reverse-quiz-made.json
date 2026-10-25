@@ -1,0 +1,700 @@
+{
+  "note": "Made by npm run make:quiz from the templates in string-reverse-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "sr-acc-e87b69",
+      "text": "Ce afișează?",
+      "code": "text = \"Tommy\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+      "options": ["ymmoT", "Tommy", "T\noT\nmoT\nmmoT\nymmoT", "ymmoTTommy"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-dd036d",
+      "text": "Ce afișează?",
+      "code": "text = \"Orbita\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+      "options": ["atibrO", "Orbita", "O\nrO\nbrO\nibrO\ntibrO\natibrO", "atibrOOrbita"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-e4ee51",
+      "text": "Ce afișează?",
+      "code": "text = \"Lance\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+      "options": ["ecnaL", "Lance", "L\naL\nnaL\ncnaL\necnaL", "ecnaLLance"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-5d770b",
+      "text": "Ce afișează?",
+      "code": "text = \"racheta\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+      "options": [
+        "atehcar",
+        "racheta",
+        "r\nar\ncar\nhcar\nehcar\ntehcar\natehcar",
+        "atehcarracheta"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-249df7",
+      "text": "Ce afișează?",
+      "code": "text = \"Vercetti\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+      "options": [
+        "ittecreV",
+        "Vercetti",
+        "V\neV\nreV\ncreV\necreV\ntecreV\nttecreV\nittecreV",
+        "ittecreVVercetti"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-steps-ae26a3",
+      "text": "Ce afișează?",
+      "code": "text = \"Marte\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+      "options": ["M\naM\nraM\ntraM\netraM", "M\nMa\nMar\nMart\nMarte", "etraM", "M\na\nr\nt\ne"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-steps-c8faaa",
+      "text": "Ce afișează?",
+      "code": "text = \"Juno\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+      "options": ["J\nuJ\nnuJ\nonuJ", "J\nJu\nJun\nJuno", "onuJ", "J\nu\nn\no"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-steps-01dff3",
+      "text": "Ce afișează?",
+      "code": "text = \"Vice\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+      "options": ["V\niV\nciV\neciV", "V\nVi\nVic\nVice", "eciV", "V\ni\nc\ne"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-steps-711692",
+      "text": "Ce afișează?",
+      "code": "text = \"Phil\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+      "options": ["P\nhP\nihP\nlihP", "P\nPh\nPhi\nPhil", "lihP", "P\nh\ni\nl"],
+      "answer": 0
+    },
+    {
+      "id": "sr-acc-steps-f9327b",
+      "text": "Ce afișează?",
+      "code": "text = \"stea\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+      "options": ["s\nts\nets\naets", "s\nst\nste\nstea", "aets", "s\nt\ne\na"],
+      "answer": 0
+    },
+    {
+      "id": "sr-slice-b06d4c",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Tommy\"\nprint(cuvant[::-1])",
+      "options": ["ymmoT", "Tommy", "ommy", "Tmy"],
+      "answer": 0
+    },
+    {
+      "id": "sr-slice-d06892",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Vercetti\"\nprint(cuvant[::2])",
+      "options": ["Vret", "Vercetti", "ittecreV", "ercetti"],
+      "answer": 0
+    },
+    {
+      "id": "sr-slice-bbe536",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Lance\"\nprint(cuvant[1:])",
+      "options": ["ance", "Lance", "ecnaL", "Lne"],
+      "answer": 0
+    },
+    {
+      "id": "sr-slice-faeafe",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Cortez\"\nprint(cuvant[::-2])",
+      "options": ["zto", "Cortez", "zetroC", "ortez"],
+      "answer": 0
+    },
+    {
+      "id": "sr-slice-5d950d",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Orbit\"\nprint(cuvant[:3])",
+      "options": ["Orb", "Orbit", "tibrO", "rbit"],
+      "answer": 0
+    },
+    {
+      "id": "sr-index-e87b69",
+      "text": "Ce afișează?",
+      "code": "nume = \"Tommy\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "options": ["ymmoT", "ymmo", "T", "Tommy"],
+      "answer": 0
+    },
+    {
+      "id": "sr-index-dd036d",
+      "text": "Ce afișează?",
+      "code": "nume = \"Orbita\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "options": ["atibrO", "atibr", "O", "Orbita"],
+      "answer": 0
+    },
+    {
+      "id": "sr-index-e4ee51",
+      "text": "Ce afișează?",
+      "code": "nume = \"Lance\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "options": ["ecnaL", "ecna", "L", "Lance"],
+      "answer": 0
+    },
+    {
+      "id": "sr-index-5d770b",
+      "text": "Ce afișează?",
+      "code": "nume = \"racheta\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "options": ["atehcar", "atehca", "r", "racheta"],
+      "answer": 0
+    },
+    {
+      "id": "sr-index-249df7",
+      "text": "Ce afișează?",
+      "code": "nume = \"Vercetti\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "options": ["ittecreV", "ittecre", "V", "Vercetti"],
+      "answer": 0
+    },
+    {
+      "id": "sr-words-a26ec1",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"Imi place Vice City\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+      "options": [
+        "City Vice place Imi",
+        "Imi place Vice City",
+        "ytiC eciV ecalp imI",
+        "CityViceplaceImi"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-words-c42b28",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"nava este gata\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+      "options": ["gata este nava", "nava este gata", "atag etse avan", "gataestenava"],
+      "answer": 0
+    },
+    {
+      "id": "sr-words-ad41fc",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"controlul misiunii online\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+      "options": [
+        "online misiunii controlul",
+        "controlul misiunii online",
+        "enilno iinuisim lulortnoc",
+        "onlinemisiuniicontrolul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-words-761e07",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"Marte este rosie\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+      "options": ["rosie este Marte", "Marte este rosie", "eisor etse etraM", "rosieesteMarte"],
+      "answer": 0
+    },
+    {
+      "id": "sr-words-c9d28a",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"lansare in zori\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+      "options": ["zori in lansare", "lansare in zori", "iroz ni erasnal", "zoriinlansare"],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-acc-56c6a3",
+      "text": "Care program afișează asta?",
+      "output": "reenoiP",
+      "options": [
+        "text = \"Pioneer\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+        "text = \"Pioneer\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = rezultat + caracter\nprint(rezultat)",
+        "text = \"Pioneer\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+        "text = \"Pioneer\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter\nprint(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-acc-a5a7cd",
+      "text": "Care program afișează asta?",
+      "output": "ollopA",
+      "options": [
+        "text = \"Apollo\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+        "text = \"Apollo\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = rezultat + caracter\nprint(rezultat)",
+        "text = \"Apollo\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+        "text = \"Apollo\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter\nprint(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-acc-8274d3",
+      "text": "Care program afișează asta?",
+      "output": "tneK",
+      "options": [
+        "text = \"Kent\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+        "text = \"Kent\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = rezultat + caracter\nprint(rezultat)",
+        "text = \"Kent\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+        "text = \"Kent\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter\nprint(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-acc-c47e21",
+      "text": "Care program afișează asta?",
+      "output": "rotciV",
+      "options": [
+        "text = \"Victor\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+        "text = \"Victor\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = rezultat + caracter\nprint(rezultat)",
+        "text = \"Victor\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+        "text = \"Victor\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter\nprint(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-acc-fdb89b",
+      "text": "Care program afișează asta?",
+      "output": "atenalp",
+      "options": [
+        "text = \"planeta\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+        "text = \"planeta\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = rezultat + caracter\nprint(rezultat)",
+        "text = \"planeta\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
+        "text = \"planeta\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter\nprint(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-words-b52133",
+      "text": "Care program afișează asta?",
+      "output": "tarziu noaptea zburam",
+      "options": [
+        "propozitie = \"zburam noaptea tarziu\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+        "propozitie = \"zburam noaptea tarziu\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte))",
+        "propozitie = \"zburam noaptea tarziu\"\ncuvinte = propozitie.split(\" \")\nprint(propozitie[::-1])",
+        "propozitie = \"zburam noaptea tarziu\"\ncuvinte = propozitie.split(\" \")\nprint(\"\".join(cuvinte[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-words-fc5ed7",
+      "text": "Care program afișează asta?",
+      "output": "treaz este echipajul",
+      "options": [
+        "propozitie = \"echipajul este treaz\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+        "propozitie = \"echipajul este treaz\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte))",
+        "propozitie = \"echipajul este treaz\"\ncuvinte = propozitie.split(\" \")\nprint(propozitie[::-1])",
+        "propozitie = \"echipajul este treaz\"\ncuvinte = propozitie.split(\" \")\nprint(\"\".join(cuvinte[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-words-1ce446",
+      "text": "Care program afișează asta?",
+      "output": "Marte pe de semnal",
+      "options": [
+        "propozitie = \"semnal de pe Marte\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+        "propozitie = \"semnal de pe Marte\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte))",
+        "propozitie = \"semnal de pe Marte\"\ncuvinte = propozitie.split(\" \")\nprint(propozitie[::-1])",
+        "propozitie = \"semnal de pe Marte\"\ncuvinte = propozitie.split(\" \")\nprint(\"\".join(cuvinte[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-words-5c7954",
+      "text": "Care program afișează asta?",
+      "output": "stralucitoare sunt stelele",
+      "options": [
+        "propozitie = \"stelele sunt stralucitoare\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+        "propozitie = \"stelele sunt stralucitoare\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte))",
+        "propozitie = \"stelele sunt stralucitoare\"\ncuvinte = propozitie.split(\" \")\nprint(propozitie[::-1])",
+        "propozitie = \"stelele sunt stralucitoare\"\ncuvinte = propozitie.split(\" \")\nprint(\"\".join(cuvinte[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-which-words-8192f6",
+      "text": "Care program afișează asta?",
+      "output": "acum nava andocheaza",
+      "options": [
+        "propozitie = \"andocheaza nava acum\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+        "propozitie = \"andocheaza nava acum\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte))",
+        "propozitie = \"andocheaza nava acum\"\ncuvinte = propozitie.split(\" \")\nprint(propozitie[::-1])",
+        "propozitie = \"andocheaza nava acum\"\ncuvinte = propozitie.split(\" \")\nprint(\"\".join(cuvinte[::-1]))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-acc-6d10c6",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"Cortez\"\nrezultat = \"\"\nfor caracter in text:\n    ___\nprint(rezultat)",
+      "output": "zetroC",
+      "options": [
+        "rezultat = caracter + rezultat",
+        "rezultat = rezultat + caracter",
+        "rezultat = caracter",
+        "rezultat = text + rezultat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-acc-f8ce4f",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"Saturn\"\nrezultat = \"\"\nfor caracter in text:\n    ___\nprint(rezultat)",
+      "output": "nrutaS",
+      "options": [
+        "rezultat = caracter + rezultat",
+        "rezultat = rezultat + caracter",
+        "rezultat = caracter",
+        "rezultat = text + rezultat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-acc-2a0837",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"Ken\"\nrezultat = \"\"\nfor caracter in text:\n    ___\nprint(rezultat)",
+      "output": "neK",
+      "options": [
+        "rezultat = caracter + rezultat",
+        "rezultat = rezultat + caracter",
+        "rezultat = caracter",
+        "rezultat = text + rezultat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-acc-a1cf97",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"galaxie\"\nrezultat = \"\"\nfor caracter in text:\n    ___\nprint(rezultat)",
+      "output": "eixalag",
+      "options": [
+        "rezultat = caracter + rezultat",
+        "rezultat = rezultat + caracter",
+        "rezultat = caracter",
+        "rezultat = text + rezultat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-acc-4ec4c8",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"Mercedes\"\nrezultat = \"\"\nfor caracter in text:\n    ___\nprint(rezultat)",
+      "output": "sedecreM",
+      "options": [
+        "rezultat = caracter + rezultat",
+        "rezultat = rezultat + caracter",
+        "rezultat = caracter",
+        "rezultat = text + rezultat"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-join-506cf5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvinte = \"gata de lansare\".split(\" \")\nprint(___.join(cuvinte[::-1]))",
+      "output": "lansare de gata",
+      "options": ["\" \"", "\"\"", "\"-\"", "\",\""],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-join-776057",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvinte = \"Vice City noaptea\".split(\" \")\nprint(___.join(cuvinte[::-1]))",
+      "output": "noaptea City Vice",
+      "options": ["\" \"", "\"\"", "\"-\"", "\",\""],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-join-4adc6b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvinte = \"luna este plina\".split(\" \")\nprint(___.join(cuvinte[::-1]))",
+      "output": "plina este luna",
+      "options": ["\" \"", "\"\"", "\"-\"", "\",\""],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-join-e0d971",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvinte = \"alimenteaza racheta\".split(\" \")\nprint(___.join(cuvinte[::-1]))",
+      "output": "racheta alimenteaza",
+      "options": ["\" \"", "\"\"", "\"-\"", "\",\""],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-join-d0626c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvinte = \"toate sistemele merg\".split(\" \")\nprint(___.join(cuvinte[::-1]))",
+      "output": "merg sistemele toate",
+      "options": ["\" \"", "\"\"", "\"-\"", "\",\""],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-stop-5cc9ba",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Tommy\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, ___, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "output": "ymmoT",
+      "options": ["-1", "0", "1", "len(nume)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-stop-e12585",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Comet\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, ___, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "output": "temoC",
+      "options": ["-1", "0", "1", "len(nume)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-stop-b7eb2d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Lance\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, ___, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "output": "ecnaL",
+      "options": ["-1", "0", "1", "len(nume)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-stop-c57a18",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Nova\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, ___, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "output": "avoN",
+      "options": ["-1", "0", "1", "len(nume)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-stop-c9bf78",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Phil\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, ___, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "output": "lihP",
+      "options": ["-1", "0", "1", "len(nume)"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-step-944a70",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Voyager\"\nprint(cuvant[::___])",
+      "output": "regayoV",
+      "options": ["-1", "1", "2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-step-057f62",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Sonny\"\nprint(cuvant[::___])",
+      "output": "ynnoS",
+      "options": ["-1", "1", "2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-step-62cb9d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Jupiter\"\nprint(cuvant[::___])",
+      "output": "retipuJ",
+      "options": ["-1", "1", "2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-step-ec745e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Racheta\"\nprint(cuvant[::___])",
+      "output": "atehcaR",
+      "options": ["-1", "1", "2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "sr-gap-step-66dab5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"Hilary\"\nprint(cuvant[::___])",
+      "output": "yraliH",
+      "options": ["-1", "1", "2", "-2"],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-acc-878a07",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"Ricardo\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = rezultat + caracter\nprint(rezultat)",
+      "output": "odraciR",
+      "options": [
+        "rezultat = rezultat + caracter",
+        "rezultat = \"\"",
+        "text = \"Ricardo\"",
+        "for caracter in text:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-acc-3aee64",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"Marte\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = rezultat + caracter\nprint(rezultat)",
+      "output": "etraM",
+      "options": [
+        "rezultat = rezultat + caracter",
+        "rezultat = \"\"",
+        "text = \"Marte\"",
+        "print(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-acc-2d2c7b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"Diaz\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = rezultat + caracter\nprint(rezultat)",
+      "output": "zaiD",
+      "options": [
+        "rezultat = rezultat + caracter",
+        "rezultat = \"\"",
+        "text = \"Diaz\"",
+        "print(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-acc-603fd5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"Avery\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = rezultat + caracter\nprint(rezultat)",
+      "output": "yrevA",
+      "options": [
+        "rezultat = rezultat + caracter",
+        "rezultat = \"\"",
+        "text = \"Avery\"",
+        "for caracter in text:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-acc-e62af3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "text = \"cometa\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = rezultat + caracter\nprint(rezultat)",
+      "output": "atemoc",
+      "options": [
+        "rezultat = rezultat + caracter",
+        "rezultat = \"\"",
+        "text = \"cometa\"",
+        "print(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-range-5fe4c2",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Tommy\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, 0, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "output": "ymmoT",
+      "options": [
+        "for i in range(len(nume) - 1, 0, -1):",
+        "rezultat = \"\"",
+        "rezultat += nume[i]",
+        "print(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-range-9063f3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Orbita\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, 0, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "output": "atibrO",
+      "options": [
+        "for i in range(len(nume) - 1, 0, -1):",
+        "rezultat = \"\"",
+        "rezultat += nume[i]",
+        "print(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-range-52698c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Kent\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, 0, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "output": "tneK",
+      "options": [
+        "for i in range(len(nume) - 1, 0, -1):",
+        "rezultat = \"\"",
+        "nume = \"Kent\"",
+        "rezultat += nume[i]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-range-76851c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Terra\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, 0, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "output": "arreT",
+      "options": [
+        "for i in range(len(nume) - 1, 0, -1):",
+        "rezultat = \"\"",
+        "rezultat += nume[i]",
+        "print(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-range-064ddd",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "nume = \"Gonzalez\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, 0, -1):\n    rezultat += nume[i]\nprint(rezultat)",
+      "output": "zelaznoG",
+      "options": [
+        "for i in range(len(nume) - 1, 0, -1):",
+        "rezultat = \"\"",
+        "nume = \"Gonzalez\"",
+        "rezultat += nume[i]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-words-3a664b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "propozitie = \"Imi place Vice City\"\ncuvinte = propozitie.split(\" \")\ncuvinte_inversate = cuvinte[::1]\nprint(\" \".join(cuvinte_inversate))",
+      "output": "City Vice place Imi",
+      "options": [
+        "cuvinte_inversate = cuvinte[::1]",
+        "cuvinte = propozitie.split(\" \")",
+        "propozitie = \"Imi place Vice City\"",
+        "print(\" \".join(cuvinte_inversate))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-words-df4c0b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "propozitie = \"deschide ecluza\"\ncuvinte = propozitie.split(\" \")\ncuvinte_inversate = cuvinte[::1]\nprint(\" \".join(cuvinte_inversate))",
+      "output": "ecluza deschide",
+      "options": [
+        "cuvinte_inversate = cuvinte[::1]",
+        "cuvinte = propozitie.split(\" \")",
+        "propozitie = \"deschide ecluza\"",
+        "print(\" \".join(cuvinte_inversate))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-words-ffbae4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "propozitie = \"motorul este fierbinte\"\ncuvinte = propozitie.split(\" \")\ncuvinte_inversate = cuvinte[::1]\nprint(\" \".join(cuvinte_inversate))",
+      "output": "fierbinte este motorul",
+      "options": [
+        "cuvinte_inversate = cuvinte[::1]",
+        "cuvinte = propozitie.split(\" \")",
+        "propozitie = \"motorul este fierbinte\"",
+        "print(\" \".join(cuvinte_inversate))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-words-61eee9",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "propozitie = \"verificare radio unu\"\ncuvinte = propozitie.split(\" \")\ncuvinte_inversate = cuvinte[::1]\nprint(\" \".join(cuvinte_inversate))",
+      "output": "unu radio verificare",
+      "options": [
+        "cuvinte_inversate = cuvinte[::1]",
+        "cuvinte = propozitie.split(\" \")",
+        "propozitie = \"verificare radio unu\"",
+        "print(\" \".join(cuvinte_inversate))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "sr-bad-words-f7f3a5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "propozitie = \"aterizeaza pe Marte\"\ncuvinte = propozitie.split(\" \")\ncuvinte_inversate = cuvinte[::1]\nprint(\" \".join(cuvinte_inversate))",
+      "output": "Marte pe aterizeaza",
+      "options": [
+        "cuvinte_inversate = cuvinte[::1]",
+        "cuvinte = propozitie.split(\" \")",
+        "propozitie = \"aterizeaza pe Marte\"",
+        "print(\" \".join(cuvinte_inversate))"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,635 @@
+{
+  "note": "Made by npm run make:quiz from the templates in list-filter-transform-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "ft-filter-2350fa",
+      "text": "Ce afișează?",
+      "code": "scoruri = [45, 82, 67, 91, 38]\npromovate = []\nfor s in scoruri:\n    if s >= 50:\n        promovate.append(s)\nprint(promovate)",
+      "options": [
+        "[82, 67, 91]",
+        "[91]",
+        "[]\n[82]\n[82, 67]\n[82, 67, 91]\n[82, 67, 91]",
+        "[45, 38]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-filter-e15775",
+      "text": "Ce afișează?",
+      "code": "scoruri = [12, 60, 60, 75, 30]\npromovate = []\nfor s in scoruri:\n    if s >= 60:\n        promovate.append(s)\nprint(promovate)",
+      "options": [
+        "[60, 60, 75]",
+        "[75]",
+        "[]\n[60]\n[60, 60]\n[60, 60, 75]\n[60, 60, 75]",
+        "[12, 60, 60, 30]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-filter-63c0e4",
+      "text": "Ce afișează?",
+      "code": "scoruri = [90, 15, 70, 40]\npromovate = []\nfor s in scoruri:\n    if s >= 40:\n        promovate.append(s)\nprint(promovate)",
+      "options": ["[90, 70, 40]", "[90, 70]", "[40]", "[90]\n[90]\n[90, 70]\n[90, 70, 40]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-filter-fda2ea",
+      "text": "Ce afișează?",
+      "code": "scoruri = [5, 9, 7, 3, 10]\npromovate = []\nfor s in scoruri:\n    if s >= 7:\n        promovate.append(s)\nprint(promovate)",
+      "options": ["[9, 7, 10]", "[9, 10]", "[10]", "[]\n[9]\n[9, 7]\n[9, 7]\n[9, 7, 10]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-filter-e30a6b",
+      "text": "Ce afișează?",
+      "code": "scoruri = [55, 50, 49, 80]\npromovate = []\nfor s in scoruri:\n    if s >= 50:\n        promovate.append(s)\nprint(promovate)",
+      "options": ["[55, 50, 80]", "[55, 80]", "[80]", "[55]\n[55, 50]\n[55, 50]\n[55, 50, 80]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-comp-ab4d32",
+      "text": "Ce afișează?",
+      "code": "numere = [3, 8, 12, 5, 20]\nprint([n for n in numere if n > 6])",
+      "options": ["[8, 12, 20]", "[3, 5]", "[16, 24, 40]", "[3, 8, 12, 5, 20]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-comp-180303",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 2, 3, 4, 5, 6]\nprint([n for n in numere if n % 2 == 0])",
+      "options": ["[2, 4, 6]", "[1, 3, 5]", "[4, 8, 12]", "[1, 2, 3, 4, 5, 6]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-comp-04dda5",
+      "text": "Ce afișează?",
+      "code": "numere = [15, 7, 22, 9, 30]\nprint([n for n in numere if n < 10])",
+      "options": ["[7, 9]", "[15, 22, 30]", "[14, 18]", "[15, 7, 22, 9, 30]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-comp-d1367f",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 9, 16, 25]\nprint([n for n in numere if n % 3 == 1])",
+      "options": ["[4, 16, 25]", "[9]", "[8, 32, 50]", "[4, 9, 16, 25]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-comp-6bdc13",
+      "text": "Ce afișează?",
+      "code": "numere = [10, 20, 30, 40]\nprint([n for n in numere if n != 30])",
+      "options": ["[10, 20, 40]", "[30]", "[20, 40, 80]", "[10, 20, 30, 40]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-transform-d78d88",
+      "text": "Ce afișează?",
+      "code": "scoruri = [45, 82, 67]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + 5)\nprint(cu_bonus)",
+      "options": ["[50, 87, 72]", "[5, 5, 5]", "[225, 410, 335]", "[45, 82, 67]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-transform-ff527b",
+      "text": "Ce afișează?",
+      "code": "scoruri = [10, 20, 30, 40]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + 3)\nprint(cu_bonus)",
+      "options": ["[13, 23, 33, 43]", "[3, 3, 3, 3]", "[30, 60, 90, 120]", "[10, 20, 30, 40]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-transform-2a9a21",
+      "text": "Ce afișează?",
+      "code": "scoruri = [7, 1, 9]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + 10)\nprint(cu_bonus)",
+      "options": ["[17, 11, 19]", "[10, 10, 10]", "[70, 10, 90]", "[7, 1, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-transform-402d1a",
+      "text": "Ce afișează?",
+      "code": "scoruri = [50, 60]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + 15)\nprint(cu_bonus)",
+      "options": ["[65, 75]", "[15, 15]", "[750, 900]", "[50, 60]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-transform-3eb03d",
+      "text": "Ce afișează?",
+      "code": "scoruri = [99, 0, 50, 25]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + 1)\nprint(cu_bonus)",
+      "options": [
+        "[100, 1, 51, 26]",
+        "[1, 1, 1, 1]",
+        "[99, 0, 50, 25]",
+        "[100]\n[100, 1]\n[100, 1, 51]\n[100, 1, 51, 26]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-cap-f16e4a",
+      "text": "Ce afișează?",
+      "code": "note = [45, 82, 97, 38, 74]\nprint([min(g + 5, 100) for g in note if g >= 50])",
+      "options": ["[87, 100, 79]", "[100, 102, 100]", "[50, 43]", "[87, 102, 79]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-cap-bac8d0",
+      "text": "Ce afișează?",
+      "code": "note = [90, 55, 30, 99]\nprint([min(g + 10, 100) for g in note if g >= 50])",
+      "options": ["[100, 65, 100]", "[100, 100, 109]", "[40]", "[100, 65, 109]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-cap-ae054e",
+      "text": "Ce afișează?",
+      "code": "note = [60, 49, 50, 95]\nprint([min(g + 8, 100) for g in note if g >= 50])",
+      "options": ["[68, 58, 100]", "[100, 100, 103]", "[57]", "[68, 58, 103]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-cap-c122bf",
+      "text": "Ce afișează?",
+      "code": "note = [85, 12, 98, 70]\nprint([min(g + 4, 100) for g in note if g >= 50])",
+      "options": ["[89, 100, 74]", "[100, 102, 100]", "[16]", "[89, 102, 74]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-cap-a70dcd",
+      "text": "Ce afișează?",
+      "code": "note = [51, 92, 20]\nprint([min(g + 9, 100) for g in note if g >= 50])",
+      "options": ["[60, 100]", "[100, 101]", "[29]", "[60, 101]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-dicts-cc5e6c",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\n    {\"nume\": \"Tommy\", \"scor\": 95},\n    {\"nume\": \"Lance\", \"scor\": 42},\n    {\"nume\": \"Cortez\", \"scor\": 88}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= 50])",
+      "options": ["['Tommy', 'Cortez']", "[95, 88]", "['Lance']", "2"],
+      "answer": 0
+    },
+    {
+      "id": "ft-dicts-f8eba4",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\n    {\"nume\": \"Phil\", \"scor\": 71},\n    {\"nume\": \"Sonny\", \"scor\": 33},\n    {\"nume\": \"Ken\", \"scor\": 60}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= 60])",
+      "options": ["['Phil', 'Ken']", "[71, 60]", "['Sonny']", "2"],
+      "answer": 0
+    },
+    {
+      "id": "ft-dicts-5c4490",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\n    {\"nume\": \"Mercedes\", \"scor\": 50},\n    {\"nume\": \"Kent\", \"scor\": 75},\n    {\"nume\": \"Victor\", \"scor\": 49}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= 50])",
+      "options": ["['Mercedes', 'Kent']", "[50, 75]", "['Victor']", "2"],
+      "answer": 0
+    },
+    {
+      "id": "ft-dicts-115a04",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\n    {\"nume\": \"Avery\", \"scor\": 20},\n    {\"nume\": \"Diaz\", \"scor\": 90},\n    {\"nume\": \"Hilary\", \"scor\": 85}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= 80])",
+      "options": ["['Diaz', 'Hilary']", "[90, 85]", "['Avery']", "2"],
+      "answer": 0
+    },
+    {
+      "id": "ft-dicts-74fbfe",
+      "text": "Ce afișează?",
+      "code": "jucatori = [\n    {\"nume\": \"Ricardo\", \"scor\": 66},\n    {\"nume\": \"Lance\", \"scor\": 99},\n    {\"nume\": \"Tommy\", \"scor\": 12}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= 65])",
+      "options": ["['Ricardo', 'Lance']", "[66, 99]", "['Tommy']", "2"],
+      "answer": 0
+    },
+    {
+      "id": "ft-avg-a42b61",
+      "text": "Ce afișează?",
+      "code": "citiri = [45, 82, 97, 38, 50]\namplificat = []\nfor r in citiri:\n    if r >= 50:\n        amplificat.append(min(r + 5, 100))\nprint(len(amplificat))\nprint(round(sum(amplificat) / len(amplificat)))",
+      "options": ["3\n81", "5\n81", "3\n48", "2\n94"],
+      "answer": 0
+    },
+    {
+      "id": "ft-avg-a52ed0",
+      "text": "Ce afișează?",
+      "code": "citiri = [60, 12, 99, 70]\namplificat = []\nfor r in citiri:\n    if r >= 50:\n        amplificat.append(min(r + 5, 100))\nprint(len(amplificat))\nprint(round(sum(amplificat) / len(amplificat)))",
+      "options": ["3\n80", "3\n81", "4\n80", "3\n60"],
+      "answer": 0
+    },
+    {
+      "id": "ft-avg-9527ea",
+      "text": "Ce afișează?",
+      "code": "citiri = [50, 51, 20, 96]\namplificat = []\nfor r in citiri:\n    if r >= 50:\n        amplificat.append(min(r + 5, 100))\nprint(len(amplificat))\nprint(round(sum(amplificat) / len(amplificat)))",
+      "options": ["3\n70", "3\n71", "4\n70", "3\n53"],
+      "answer": 0
+    },
+    {
+      "id": "ft-avg-ce636d",
+      "text": "Ce afișează?",
+      "code": "citiri = [30, 80, 50, 98, 10]\namplificat = []\nfor r in citiri:\n    if r >= 50:\n        amplificat.append(min(r + 5, 100))\nprint(len(amplificat))\nprint(round(sum(amplificat) / len(amplificat)))",
+      "options": ["3\n80", "3\n81", "5\n80", "3\n48"],
+      "answer": 0
+    },
+    {
+      "id": "ft-avg-d980f6",
+      "text": "Ce afișează?",
+      "code": "citiri = [75, 50, 40]\namplificat = []\nfor r in citiri:\n    if r >= 50:\n        amplificat.append(min(r + 5, 100))\nprint(len(amplificat))\nprint(round(sum(amplificat) / len(amplificat)))",
+      "options": ["2\n68", "3\n68", "2\n45", "1\n80"],
+      "answer": 0
+    },
+    {
+      "id": "ft-order-ea80c4",
+      "text": "Ce afișează?",
+      "code": "numere = [1, 3, 5, 7]\nprint([n * 2 for n in numere if n > 4])",
+      "options": ["[10, 14]", "[6, 10, 14]", "[5, 7]", "[2, 6]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-order-190786",
+      "text": "Ce afișează?",
+      "code": "numere = [2, 4, 6, 8]\nprint([n * 2 for n in numere if n > 5])",
+      "options": ["[12, 16]", "[8, 12, 16]", "[6, 8]", "[4, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-order-820a9c",
+      "text": "Ce afișează?",
+      "code": "numere = [10, 3, 8, 1]\nprint([n * 2 for n in numere if n > 5])",
+      "options": ["[20, 16]", "[20, 6, 16]", "[10, 8]", "[6, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-order-d7a1dc",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 5, 6]\nprint([n * 2 for n in numere if n > 4])",
+      "options": ["[10, 12]", "[8, 10, 12]", "[5, 6]", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-order-78eb32",
+      "text": "Ce afișează?",
+      "code": "numere = [9, 2, 7, 4]\nprint([n * 2 for n in numere if n > 5])",
+      "options": ["[18, 14]", "[18, 14, 8]", "[9, 7]", "[4, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-strings-43c50f",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"orbita\", \"soare\", \"galaxie\", \"luna\"]\nprint([c.upper() for c in cuvinte if len(c) > 5])",
+      "options": ["['ORBITA', 'GALAXIE']", "['orbita', 'galaxie']", "['LUNA']", "[6, 7]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-strings-2dd1d8",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"Marte\", \"Venus\", \"Terra\", \"Io\"]\nprint([c.upper() for c in cuvinte if len(c) > 3])",
+      "options": [
+        "['MARTE', 'VENUS', 'TERRA']",
+        "['Marte', 'Venus', 'Terra']",
+        "['IO']",
+        "[5, 5, 5]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-strings-9a51db",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"nava\", \"racheta\", \"echipaj\", \"pilot\"]\nprint([c.upper() for c in cuvinte if len(c) > 5])",
+      "options": ["['RACHETA', 'ECHIPAJ']", "['racheta', 'echipaj']", "['NAVA']", "[7, 7]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-strings-257275",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"stea\", \"cometa\", \"cer\"]\nprint([c.upper() for c in cuvinte if len(c) > 3])",
+      "options": ["['STEA', 'COMETA']", "['stea', 'cometa']", "[]", "[4, 6]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-strings-17e5b9",
+      "text": "Ce afișează?",
+      "code": "cuvinte = [\"doc\", \"lansare\", \"motor\", \"combustibil\"]\nprint([c.upper() for c in cuvinte if len(c) > 5])",
+      "options": ["['LANSARE', 'COMBUSTIBIL']", "['lansare', 'combustibil']", "['DOC']", "[7, 11]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-which-15347a",
+      "text": "Care program afișează asta?",
+      "output": "[70, 50, 90]",
+      "options": [
+        "scoruri = [30, 70, 50, 90]\npromovate = []\nfor s in scoruri:\n    if s >= 50:\n        promovate.append(s)\nprint(promovate)",
+        "scoruri = [30, 70, 50, 90]\npromovate = []\nfor s in scoruri:\n    if s > 50:\n        promovate.append(s)\nprint(promovate)",
+        "scoruri = [30, 70, 50, 90]\npromovate = []\nfor s in scoruri:\n    if s >= 50:\n    promovate.append(s)\nprint(promovate)",
+        "scoruri = [30, 70, 50, 90]\npromovate = []\nfor s in scoruri:\n    if s >= 50:\n        promovate.append(s)\n    print(promovate)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-which-8a8955",
+      "text": "Care program afișează asta?",
+      "output": "[8, 6, 9]",
+      "options": [
+        "scoruri = [8, 3, 6, 9]\npromovate = []\nfor s in scoruri:\n    if s >= 6:\n        promovate.append(s)\nprint(promovate)",
+        "scoruri = [8, 3, 6, 9]\npromovate = []\nfor s in scoruri:\n    if s > 6:\n        promovate.append(s)\nprint(promovate)",
+        "scoruri = [8, 3, 6, 9]\npromovate = []\nfor s in scoruri:\n    if s >= 6:\n    promovate.append(s)\nprint(promovate)",
+        "scoruri = [8, 3, 6, 9]\npromovate = []\nfor s in scoruri:\n    if s >= 6:\n        promovate.append(s)\n    print(promovate)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-which-a4bb3b",
+      "text": "Care program afișează asta?",
+      "output": "[100, 45, 60]",
+      "options": [
+        "scoruri = [100, 20, 45, 60]\npromovate = []\nfor s in scoruri:\n    if s >= 45:\n        promovate.append(s)\nprint(promovate)",
+        "scoruri = [100, 20, 45, 60]\npromovate = []\nfor s in scoruri:\n    if s > 45:\n        promovate.append(s)\nprint(promovate)",
+        "scoruri = [100, 20, 45, 60]\npromovate = []\nfor s in scoruri:\n    if s >= 45:\n    promovate.append(s)\nprint(promovate)",
+        "scoruri = [100, 20, 45, 60]\npromovate = []\nfor s in scoruri:\n    if s >= 45:\n        promovate.append(s)\n    print(promovate)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-which-a65a9e",
+      "text": "Care program afișează asta?",
+      "output": "[70, 35, 70]",
+      "options": [
+        "scoruri = [70, 35, 70, 10]\npromovate = []\nfor s in scoruri:\n    if s >= 35:\n        promovate.append(s)\nprint(promovate)",
+        "scoruri = [70, 35, 70, 10]\npromovate = []\nfor s in scoruri:\n    if s > 35:\n        promovate.append(s)\nprint(promovate)",
+        "scoruri = [70, 35, 70, 10]\npromovate = []\nfor s in scoruri:\n    if s >= 35:\n    promovate.append(s)\nprint(promovate)",
+        "scoruri = [70, 35, 70, 10]\npromovate = []\nfor s in scoruri:\n    if s >= 35:\n        promovate.append(s)\n    print(promovate)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-which-b099d4",
+      "text": "Care program afișează asta?",
+      "output": "[5, 2, 4]",
+      "options": [
+        "scoruri = [1, 5, 2, 4]\npromovate = []\nfor s in scoruri:\n    if s >= 2:\n        promovate.append(s)\nprint(promovate)",
+        "scoruri = [1, 5, 2, 4]\npromovate = []\nfor s in scoruri:\n    if s > 2:\n        promovate.append(s)\nprint(promovate)",
+        "scoruri = [1, 5, 2, 4]\npromovate = []\nfor s in scoruri:\n    if s >= 2:\n    promovate.append(s)\nprint(promovate)",
+        "scoruri = [1, 5, 2, 4]\npromovate = []\nfor s in scoruri:\n    if s >= 2:\n        promovate.append(s)\n    print(promovate)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-append-b0ff0a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [45, 82, 67, 91, 38]\npromovate = []\nfor s in scoruri:\n    if s >= 50:\n        ___\nprint(promovate)",
+      "output": "[82, 67, 91]",
+      "options": [
+        "promovate.append(s)",
+        "promovate.append(scoruri)",
+        "promovate = [s]",
+        "promovate.append(50)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-append-1974d4",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [12, 60, 75, 30]\npromovate = []\nfor s in scoruri:\n    if s >= 60:\n        ___\nprint(promovate)",
+      "output": "[60, 75]",
+      "options": [
+        "promovate.append(s)",
+        "promovate.append(scoruri)",
+        "promovate = [s]",
+        "promovate.append(60)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-append-8ff404",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [90, 15, 70, 40]\npromovate = []\nfor s in scoruri:\n    if s >= 40:\n        ___\nprint(promovate)",
+      "output": "[90, 70, 40]",
+      "options": [
+        "promovate.append(s)",
+        "promovate.append(scoruri)",
+        "promovate = [s]",
+        "promovate.append(40)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-append-c0d49a",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [5, 9, 7, 3, 10]\npromovate = []\nfor s in scoruri:\n    if s >= 7:\n        ___\nprint(promovate)",
+      "output": "[9, 7, 10]",
+      "options": [
+        "promovate.append(s)",
+        "promovate.append(scoruri)",
+        "promovate = [s]",
+        "promovate.append(7)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-append-cdd673",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scoruri = [55, 49, 80]\npromovate = []\nfor s in scoruri:\n    if s >= 50:\n        ___\nprint(promovate)",
+      "output": "[55, 80]",
+      "options": [
+        "promovate.append(s)",
+        "promovate.append(scoruri)",
+        "promovate = [s]",
+        "promovate.append(50)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-cond-3738c5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [3, 8, 12, 5, 8]\nprint([n for n in numere if n ___ 8])",
+      "output": "[8, 12, 8]",
+      "options": [">=", ">", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-cond-81d7a6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [10, 20, 30, 40]\nprint([n for n in numere if n ___ 20])",
+      "output": "[20, 30, 40]",
+      "options": [">=", ">", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-cond-58bff8",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [7, 1, 7, 9]\nprint([n for n in numere if n ___ 7])",
+      "output": "[7, 7, 9]",
+      "options": [">=", ">", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-cond-aa946b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [50, 49, 51, 60]\nprint([n for n in numere if n ___ 50])",
+      "output": "[50, 51, 60]",
+      "options": [">=", ">", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-cond-d93f8d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [2, 4, 6, 8, 10]\nprint([n for n in numere if n ___ 6])",
+      "output": "[6, 8, 10]",
+      "options": [">=", ">", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-cap-15a151",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "note = [45, 82, 97, 38, 74]\nprint([___(g + 5, 100) for g in note if g >= 50])",
+      "output": "[87, 100, 79]",
+      "options": ["min", "max", "round", "sum"],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-cap-2337cd",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "note = [90, 55, 30, 99]\nprint([___(g + 10, 100) for g in note if g >= 50])",
+      "output": "[100, 65, 100]",
+      "options": ["min", "max", "round", "sum"],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-cap-1b647f",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "note = [60, 49, 50, 95]\nprint([___(g + 8, 100) for g in note if g >= 50])",
+      "output": "[68, 58, 100]",
+      "options": ["min", "max", "round", "sum"],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-cap-39b1bc",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "note = [85, 12, 98, 70]\nprint([___(g + 4, 100) for g in note if g >= 50])",
+      "output": "[89, 100, 74]",
+      "options": ["min", "max", "round", "sum"],
+      "answer": 0
+    },
+    {
+      "id": "ft-gap-cap-ae510b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "note = [51, 92, 20]\nprint([___(g + 9, 100) for g in note if g >= 50])",
+      "output": "[60, 100]",
+      "options": ["min", "max", "round", "sum"],
+      "answer": 0
+    },
+    {
+      "id": "ft-bad-cap-060ba8",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "note = [45, 82, 97, 38]\nrezultat = []\nfor nota in note:\n    if nota >= 50:\n        amplificat = nota + 5\n        if amplificat > 100:\n            amplificat = 100\n        rezultat.append(nota)\nprint(rezultat)",
+      "output": "[87, 100]",
+      "options": [
+        "rezultat.append(nota)",
+        "amplificat = 100",
+        "amplificat = nota + 5",
+        "rezultat = []"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-bad-cap-b90213",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "note = [90, 55, 30, 99]\nrezultat = []\nfor nota in note:\n    if nota >= 50:\n        amplificat = nota + 10\n        if amplificat > 100:\n            amplificat = 100\n        rezultat.append(nota)\nprint(rezultat)",
+      "output": "[100, 65, 100]",
+      "options": [
+        "rezultat.append(nota)",
+        "amplificat = 100",
+        "amplificat = nota + 10",
+        "print(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-bad-cap-ac643b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "note = [60, 49, 95]\nrezultat = []\nfor nota in note:\n    if nota >= 50:\n        amplificat = nota + 8\n        if amplificat > 100:\n            amplificat = 100\n        rezultat.append(nota)\nprint(rezultat)",
+      "output": "[68, 100]",
+      "options": [
+        "rezultat.append(nota)",
+        "amplificat = 100",
+        "amplificat = nota + 8",
+        "print(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-bad-cap-62a39b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "note = [85, 12, 98, 70]\nrezultat = []\nfor nota in note:\n    if nota >= 50:\n        amplificat = nota + 4\n        if amplificat > 100:\n            amplificat = 100\n        rezultat.append(nota)\nprint(rezultat)",
+      "output": "[89, 100, 74]",
+      "options": [
+        "rezultat.append(nota)",
+        "amplificat = 100",
+        "amplificat = nota + 4",
+        "print(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-bad-cap-66cd49",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "note = [51, 92, 20]\nrezultat = []\nfor nota in note:\n    if nota >= 50:\n        amplificat = nota + 9\n        if amplificat > 100:\n            amplificat = 100\n        rezultat.append(nota)\nprint(rezultat)",
+      "output": "[60, 100]",
+      "options": [
+        "rezultat.append(nota)",
+        "amplificat = 100",
+        "amplificat = nota + 9",
+        "print(rezultat)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-bad-dicts-fefb60",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jucatori = [\n    {\"nume\": \"Tommy\", \"online\": True},\n    {\"nume\": \"Lance\", \"online\": False},\n    {\"nume\": \"Cortez\", \"online\": True}\n]\nnume_conectati = []\nfor jucator in jucatori:\n    if jucator[\"nume\"]:\n        nume_conectati.append(jucator[\"nume\"])\nprint(nume_conectati)",
+      "output": "['Tommy', 'Cortez']",
+      "options": [
+        "if jucator[\"nume\"]:",
+        "for jucator in jucatori:",
+        "nume_conectati = []",
+        "nume_conectati.append(jucator[\"nume\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-bad-dicts-300d1f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jucatori = [\n    {\"nume\": \"Phil\", \"online\": False},\n    {\"nume\": \"Sonny\", \"online\": True},\n    {\"nume\": \"Ken\", \"online\": False}\n]\nnume_conectati = []\nfor jucator in jucatori:\n    if jucator[\"nume\"]:\n        nume_conectati.append(jucator[\"nume\"])\nprint(nume_conectati)",
+      "output": "['Sonny']",
+      "options": [
+        "if jucator[\"nume\"]:",
+        "for jucator in jucatori:",
+        "nume_conectati.append(jucator[\"nume\"])",
+        "print(nume_conectati)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-bad-dicts-4de784",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jucatori = [\n    {\"nume\": \"Mercedes\", \"online\": True},\n    {\"nume\": \"Kent\", \"online\": True},\n    {\"nume\": \"Victor\", \"online\": False}\n]\nnume_conectati = []\nfor jucator in jucatori:\n    if jucator[\"nume\"]:\n        nume_conectati.append(jucator[\"nume\"])\nprint(nume_conectati)",
+      "output": "['Mercedes', 'Kent']",
+      "options": [
+        "if jucator[\"nume\"]:",
+        "for jucator in jucatori:",
+        "nume_conectati = []",
+        "nume_conectati.append(jucator[\"nume\"])"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-bad-dicts-2a518a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jucatori = [\n    {\"nume\": \"Avery\", \"online\": False},\n    {\"nume\": \"Diaz\", \"online\": False},\n    {\"nume\": \"Hilary\", \"online\": True}\n]\nnume_conectati = []\nfor jucator in jucatori:\n    if jucator[\"nume\"]:\n        nume_conectati.append(jucator[\"nume\"])\nprint(nume_conectati)",
+      "output": "['Hilary']",
+      "options": ["if jucator[\"nume\"]:", "for jucator in jucatori:", "nume_conectati = []", "]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-bad-dicts-9700a1",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "jucatori = [\n    {\"nume\": \"Ricardo\", \"online\": True},\n    {\"nume\": \"Lance\", \"online\": False},\n    {\"nume\": \"Tommy\", \"online\": False}\n]\nnume_conectati = []\nfor jucator in jucatori:\n    if jucator[\"nume\"]:\n        nume_conectati.append(jucator[\"nume\"])\nprint(nume_conectati)",
+      "output": "['Ricardo']",
+      "options": [
+        "if jucator[\"nume\"]:",
+        "for jucator in jucatori:",
+        "nume_conectati = []",
+        "nume_conectati.append(jucator[\"nume\"])"
+      ],
+      "answer": 0
+    }
+  ]
+}

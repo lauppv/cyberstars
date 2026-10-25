@@ -1,0 +1,825 @@
+{
+  "note": "Made by npm run make:quiz from the templates in project-guessing-game-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "gg-replay-e68a44",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 42\nghiciri = [50, 30, 40, 45, 42, 60]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"corect\":\n        print(f\"Spart in {incercari} incercari!\")\n        break",
+      "options": [
+        "50: prea mare\n30: prea mic\n40: prea mic\n45: prea mare\n42: corect\nSpart in 5 incercari!",
+        "50: prea mic\n30: corect\nSpart in 2 incercari!",
+        "50: prea mare\n30: prea mic\n40: prea mic\n45: prea mare\n42: corect\nSpart in 5 incercari!\nMai incearca\n60: prea mare",
+        "50: prea mare\n30: prea mic\n40: prea mic\n45: prea mare\n42: corect\nSpart in 1 incercari!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-replay-e4c9c1",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 7\nghiciri = [5, 9, 7, 8]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"corect\":\n        print(f\"Spart in {incercari} incercari!\")\n        break",
+      "options": [
+        "5: prea mic\n9: prea mare\n7: corect\nSpart in 3 incercari!",
+        "5: corect\nSpart in 1 incercari!",
+        "5: prea mic\n9: prea mare\n7: corect\nSpart in 3 incercari!\nMai incearca\n8: prea mare",
+        "5: prea mic\n9: prea mare\n7: corect\nSpart in 1 incercari!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-replay-7d2fc3",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 63\nghiciri = [50, 75, 63, 70]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"corect\":\n        print(f\"Spart in {incercari} incercari!\")\n        break",
+      "options": [
+        "50: prea mic\n75: prea mare\n63: corect\nSpart in 3 incercari!",
+        "50: corect\nSpart in 1 incercari!",
+        "50: prea mic\n75: prea mare\n63: corect\nSpart in 3 incercari!\nMai incearca\n70: prea mare",
+        "50: prea mic\n75: prea mare\n63: corect\nSpart in 1 incercari!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-replay-560d31",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 18\nghiciri = [25, 12, 15, 20, 18, 30]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"corect\":\n        print(f\"Spart in {incercari} incercari!\")\n        break",
+      "options": [
+        "25: prea mare\n12: prea mic\n15: prea mic\n20: prea mare\n18: corect\nSpart in 5 incercari!",
+        "25: prea mic\n12: corect\nSpart in 2 incercari!",
+        "25: prea mare\n12: prea mic\n15: prea mic\n20: prea mare\n18: corect\nSpart in 5 incercari!\nMai incearca\n30: prea mare",
+        "25: prea mare\n12: prea mic\n15: prea mic\n20: prea mare\n18: corect\nSpart in 1 incercari!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-replay-294b41",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 90\nghiciri = [50, 90, 95]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"corect\":\n        print(f\"Spart in {incercari} incercari!\")\n        break",
+      "options": [
+        "50: prea mic\n90: corect\nSpart in 2 incercari!",
+        "50: corect\nSpart in 1 incercari!",
+        "50: prea mic\n90: corect\nSpart in 2 incercari!\nMai incearca\n95: prea mare",
+        "50: prea mic\n90: corect\nSpart in 1 incercari!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-check-0df9d2",
+      "text": "Ce afișează?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [50, 42, 30]:\n    print(verifica_ghicirea(42, ghicire))",
+      "options": [
+        "prea mare\ncorect\nprea mic",
+        "prea mare\ncorect\nprea mare",
+        "prea mare\nprea mic\nprea mic",
+        "corect\ncorect\nprea mic"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-check-765288",
+      "text": "Ce afișează?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [3, 15, 10]:\n    print(verifica_ghicirea(10, ghicire))",
+      "options": [
+        "prea mic\nprea mare\ncorect",
+        "prea mare\nprea mare\ncorect",
+        "prea mic\nprea mare\nprea mic",
+        "prea mic\ncorect\ncorect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-check-f73db2",
+      "text": "Ce afișează?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [75, 80, 60]:\n    print(verifica_ghicirea(75, ghicire))",
+      "options": [
+        "corect\nprea mare\nprea mic",
+        "corect\nprea mare\nprea mare",
+        "prea mic\nprea mare\nprea mic",
+        "corect\ncorect\nprea mic"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-check-e0fc3d",
+      "text": "Ce afișează?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [6, 4, 5]:\n    print(verifica_ghicirea(5, ghicire))",
+      "options": [
+        "prea mare\nprea mic\ncorect",
+        "prea mare\nprea mare\ncorect",
+        "prea mare\nprea mic\nprea mic",
+        "corect\nprea mic\ncorect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-check-224e07",
+      "text": "Ce afișează?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [30, 33, 40]:\n    print(verifica_ghicirea(33, ghicire))",
+      "options": [
+        "prea mic\ncorect\nprea mare",
+        "prea mare\ncorect\nprea mare",
+        "prea mic\nprea mic\nprea mare",
+        "prea mic\ncorect\ncorect"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-while-cea767",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 30\nghiciri = [10, 40, 30, 20]\ni = 0\nwhile True:\n    ghicire = ghiciri[i]\n    i += 1\n    if ghicire == numar_secret:\n        break\nprint(f\"Gasit din {i} ghiciri\")",
+      "options": [
+        "Gasit din 3 ghiciri",
+        "Gasit din 30 ghiciri",
+        "Gasit din 1 ghiciri",
+        "3\nGasit din 3 ghiciri"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-while-479e38",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 8\nghiciri = [5, 3, 8, 9]\ni = 0\nwhile True:\n    ghicire = ghiciri[i]\n    i += 1\n    if ghicire == numar_secret:\n        break\nprint(f\"Gasit din {i} ghiciri\")",
+      "options": [
+        "Gasit din 3 ghiciri",
+        "Gasit din 8 ghiciri",
+        "Gasit din 1 ghiciri",
+        "3\nGasit din 3 ghiciri"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-while-a9917c",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 55\nghiciri = [50, 60, 58, 55, 54]\ni = 0\nwhile True:\n    ghicire = ghiciri[i]\n    i += 1\n    if ghicire == numar_secret:\n        break\nprint(f\"Gasit din {i} ghiciri\")",
+      "options": [
+        "Gasit din 4 ghiciri",
+        "Gasit din 55 ghiciri",
+        "Gasit din 1 ghiciri",
+        "4\nGasit din 4 ghiciri"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-while-39fb21",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 3\nghiciri = [1, 3, 2]\ni = 0\nwhile True:\n    ghicire = ghiciri[i]\n    i += 1\n    if ghicire == numar_secret:\n        break\nprint(f\"Gasit din {i} ghiciri\")",
+      "options": [
+        "Gasit din 2 ghiciri",
+        "Gasit din 3 ghiciri",
+        "Gasit din 1 ghiciri",
+        "2\nGasit din 2 ghiciri"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-while-c8ab2c",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 71\nghiciri = [70, 72, 75, 71]\ni = 0\nwhile True:\n    ghicire = ghiciri[i]\n    i += 1\n    if ghicire == numar_secret:\n        break\nprint(f\"Gasit din {i} ghiciri\")",
+      "options": [
+        "Gasit din 4 ghiciri",
+        "Gasit din 71 ghiciri",
+        "Gasit din 1 ghiciri",
+        "4\nGasit din 4 ghiciri"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-low-high-c84fda",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 25\nghiciri = [10, 40, 20, 25, 30, 35]\nmici = 0\nmari = 0\nfor ghicire in ghiciri:\n    if ghicire < numar_secret:\n        mici += 1\n    elif ghicire > numar_secret:\n        mari += 1\nprint(f\"Prea mici: {mici}, prea mari: {mari}\")",
+      "options": [
+        "Prea mici: 2, prea mari: 3",
+        "Prea mici: 3, prea mari: 3",
+        "Prea mici: 5, prea mari: 0",
+        "Prea mici: 2, prea mari: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-low-high-2c872c",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 50\nghiciri = [60, 70, 40, 50]\nmici = 0\nmari = 0\nfor ghicire in ghiciri:\n    if ghicire < numar_secret:\n        mici += 1\n    elif ghicire > numar_secret:\n        mari += 1\nprint(f\"Prea mici: {mici}, prea mari: {mari}\")",
+      "options": [
+        "Prea mici: 1, prea mari: 2",
+        "Prea mici: 2, prea mari: 2",
+        "Prea mici: 3, prea mari: 0",
+        "Prea mici: 1, prea mari: 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-low-high-b738a8",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 9\nghiciri = [1, 2, 3, 12, 9]\nmici = 0\nmari = 0\nfor ghicire in ghiciri:\n    if ghicire < numar_secret:\n        mici += 1\n    elif ghicire > numar_secret:\n        mari += 1\nprint(f\"Prea mici: {mici}, prea mari: {mari}\")",
+      "options": [
+        "Prea mici: 3, prea mari: 1",
+        "Prea mici: 4, prea mari: 1",
+        "Prea mici: 4, prea mari: 0",
+        "Prea mici: 3, prea mari: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-low-high-ce1eea",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 64\nghiciri = [80, 32, 48, 72, 64]\nmici = 0\nmari = 0\nfor ghicire in ghiciri:\n    if ghicire < numar_secret:\n        mici += 1\n    elif ghicire > numar_secret:\n        mari += 1\nprint(f\"Prea mici: {mici}, prea mari: {mari}\")",
+      "options": [
+        "Prea mici: 2, prea mari: 2",
+        "Prea mici: 3, prea mari: 2",
+        "Prea mici: 4, prea mari: 0",
+        "Prea mici: 2, prea mari: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-low-high-9046dc",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 15\nghiciri = [20, 15, 10, 5]\nmici = 0\nmari = 0\nfor ghicire in ghiciri:\n    if ghicire < numar_secret:\n        mici += 1\n    elif ghicire > numar_secret:\n        mari += 1\nprint(f\"Prea mici: {mici}, prea mari: {mari}\")",
+      "options": [
+        "Prea mici: 2, prea mari: 1",
+        "Prea mici: 3, prea mari: 1",
+        "Prea mici: 3, prea mari: 0",
+        "Prea mici: 2, prea mari: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-play-539bb2",
+      "text": "Ce afișează?",
+      "code": "def joaca(numar_secret, ghiciri, maxim_incercari):\n    for incercare in range(1, maxim_incercari + 1):\n        ghicire = ghiciri[incercare - 1]\n        if ghicire < numar_secret:\n            print(\"Prea mic!\")\n        elif ghicire > numar_secret:\n            print(\"Prea mare!\")\n        else:\n            print(f\"Corect! L-ai ghicit in {incercare} incercari!\")\n            return\n    print(f\"Joc terminat! Numarul a fost {numar_secret}\")\n\njoaca(42, [50, 30, 42, 45], 4)",
+      "options": [
+        "Prea mare!\nPrea mic!\nCorect! L-ai ghicit in 3 incercari!",
+        "Prea mare!\nPrea mic!\nCorect! L-ai ghicit in 3 incercari!\nJoc terminat! Numarul a fost 42",
+        "Prea mic!\nCorect! L-ai ghicit in 2 incercari!",
+        "Prea mare!\nPrea mare!\nCorect! L-ai ghicit in 3 incercari!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-play-93a450",
+      "text": "Ce afișează?",
+      "code": "def joaca(numar_secret, ghiciri, maxim_incercari):\n    for incercare in range(1, maxim_incercari + 1):\n        ghicire = ghiciri[incercare - 1]\n        if ghicire < numar_secret:\n            print(\"Prea mic!\")\n        elif ghicire > numar_secret:\n            print(\"Prea mare!\")\n        else:\n            print(f\"Corect! L-ai ghicit in {incercare} incercari!\")\n            return\n    print(f\"Joc terminat! Numarul a fost {numar_secret}\")\n\njoaca(7, [5, 9, 7], 3)",
+      "options": [
+        "Prea mic!\nPrea mare!\nCorect! L-ai ghicit in 3 incercari!",
+        "Prea mic!\nPrea mare!\nCorect! L-ai ghicit in 3 incercari!\nJoc terminat! Numarul a fost 7",
+        "Prea mic!\nPrea mare!\nJoc terminat! Numarul a fost 7",
+        "Prea mare!\nCorect! L-ai ghicit in 2 incercari!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-play-325910",
+      "text": "Ce afișează?",
+      "code": "def joaca(numar_secret, ghiciri, maxim_incercari):\n    for incercare in range(1, maxim_incercari + 1):\n        ghicire = ghiciri[incercare - 1]\n        if ghicire < numar_secret:\n            print(\"Prea mic!\")\n        elif ghicire > numar_secret:\n            print(\"Prea mare!\")\n        else:\n            print(f\"Corect! L-ai ghicit in {incercare} incercari!\")\n            return\n    print(f\"Joc terminat! Numarul a fost {numar_secret}\")\n\njoaca(63, [50, 75, 63, 70, 64], 3)",
+      "options": [
+        "Prea mic!\nPrea mare!\nCorect! L-ai ghicit in 3 incercari!",
+        "Prea mic!\nPrea mare!\nCorect! L-ai ghicit in 3 incercari!\nJoc terminat! Numarul a fost 63",
+        "Prea mic!\nPrea mare!\nJoc terminat! Numarul a fost 63",
+        "Prea mare!\nCorect! L-ai ghicit in 2 incercari!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-play-484b65",
+      "text": "Ce afișează?",
+      "code": "def joaca(numar_secret, ghiciri, maxim_incercari):\n    for incercare in range(1, maxim_incercari + 1):\n        ghicire = ghiciri[incercare - 1]\n        if ghicire < numar_secret:\n            print(\"Prea mic!\")\n        elif ghicire > numar_secret:\n            print(\"Prea mare!\")\n        else:\n            print(f\"Corect! L-ai ghicit in {incercare} incercari!\")\n            return\n    print(f\"Joc terminat! Numarul a fost {numar_secret}\")\n\njoaca(18, [25, 12, 15, 20], 3)",
+      "options": [
+        "Prea mare!\nPrea mic!\nPrea mic!\nJoc terminat! Numarul a fost 18",
+        "Prea mare!\nPrea mic!\nJoc terminat! Numarul a fost 18",
+        "Prea mic!\nPrea mic!\nPrea mare!\nJoc terminat! Numarul a fost 18",
+        "Prea mare!\nPrea mare!\nPrea mare!\nJoc terminat! Numarul a fost 18"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-play-b6a03b",
+      "text": "Ce afișează?",
+      "code": "def joaca(numar_secret, ghiciri, maxim_incercari):\n    for incercare in range(1, maxim_incercari + 1):\n        ghicire = ghiciri[incercare - 1]\n        if ghicire < numar_secret:\n            print(\"Prea mic!\")\n        elif ghicire > numar_secret:\n            print(\"Prea mare!\")\n        else:\n            print(f\"Corect! L-ai ghicit in {incercare} incercari!\")\n            return\n    print(f\"Joc terminat! Numarul a fost {numar_secret}\")\n\njoaca(90, [50, 75, 90], 3)",
+      "options": [
+        "Prea mic!\nPrea mic!\nCorect! L-ai ghicit in 3 incercari!",
+        "Prea mic!\nPrea mic!\nCorect! L-ai ghicit in 3 incercari!\nJoc terminat! Numarul a fost 90",
+        "Prea mic!\nPrea mic!\nJoc terminat! Numarul a fost 90",
+        "Prea mic!\nCorect! L-ai ghicit in 2 incercari!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-try-14302e",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 42\nfor text in [\"50\", \"abc\", \"42\"]:\n    try:\n        ghicire = int(text)\n    except ValueError:\n        print(\"Asta nu e un numar!\")\n        continue\n    if ghicire < numar_secret:\n        print(\"Prea mic!\")\n    elif ghicire > numar_secret:\n        print(\"Prea mare!\")\n    else:\n        print(\"Corect!\")",
+      "options": [
+        "Prea mare!\nAsta nu e un numar!\nCorect!",
+        "Prea mare!\nAsta nu e un numar!",
+        "Prea mic!\nAsta nu e un numar!\nCorect!",
+        "Prea mare!\nabc\nCorect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-try-e38964",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 7\nfor text in [\"sapte\", \"3\", \"7\"]:\n    try:\n        ghicire = int(text)\n    except ValueError:\n        print(\"Asta nu e un numar!\")\n        continue\n    if ghicire < numar_secret:\n        print(\"Prea mic!\")\n    elif ghicire > numar_secret:\n        print(\"Prea mare!\")\n    else:\n        print(\"Corect!\")",
+      "options": [
+        "Asta nu e un numar!\nPrea mic!\nCorect!",
+        "Asta nu e un numar!",
+        "Asta nu e un numar!\nCorect!\nCorect!",
+        "sapte\nPrea mic!\nCorect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-try-3df10b",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 20\nfor text in [\"25\", \"2o\", \"15\", \"20\"]:\n    try:\n        ghicire = int(text)\n    except ValueError:\n        print(\"Asta nu e un numar!\")\n        continue\n    if ghicire < numar_secret:\n        print(\"Prea mic!\")\n    elif ghicire > numar_secret:\n        print(\"Prea mare!\")\n    else:\n        print(\"Corect!\")",
+      "options": [
+        "Prea mare!\nAsta nu e un numar!\nPrea mic!\nCorect!",
+        "Prea mare!\nAsta nu e un numar!",
+        "Prea mic!\nAsta nu e un numar!\nCorect!\nCorect!",
+        "Prea mare!\n2o\nPrea mic!\nCorect!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-try-5c2ed1",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 64\nfor text in [\"x\", \"64\", \"70\"]:\n    try:\n        ghicire = int(text)\n    except ValueError:\n        print(\"Asta nu e un numar!\")\n        continue\n    if ghicire < numar_secret:\n        print(\"Prea mic!\")\n    elif ghicire > numar_secret:\n        print(\"Prea mare!\")\n    else:\n        print(\"Corect!\")",
+      "options": [
+        "Asta nu e un numar!\nCorect!\nPrea mare!",
+        "Asta nu e un numar!",
+        "Asta nu e un numar!\nCorect!\nPrea mic!",
+        "x\nCorect!\nPrea mare!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-try-ab0099",
+      "text": "Ce afișează?",
+      "code": "numar_secret = 11\nfor text in [\"10\", \"zece\", \"12\", \"\"]:\n    try:\n        ghicire = int(text)\n    except ValueError:\n        print(\"Asta nu e un numar!\")\n        continue\n    if ghicire < numar_secret:\n        print(\"Prea mic!\")\n    elif ghicire > numar_secret:\n        print(\"Prea mare!\")\n    else:\n        print(\"Corect!\")",
+      "options": [
+        "Prea mic!\nAsta nu e un numar!\nPrea mare!\nAsta nu e un numar!",
+        "Prea mic!\nAsta nu e un numar!",
+        "Corect!\nAsta nu e un numar!\nPrea mic!\nAsta nu e un numar!",
+        "Prea mic!\nzece\nPrea mare!"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-break-59305b",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numar_secret = 42\nghiciri = [50, 30, 40, 45, 42, 60]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"corect\":\n        print(f\"Spart in {incercari} incercari!\")\n        ___",
+      "output": "50: prea mare\n30: prea mic\n40: prea mic\n45: prea mare\n42: corect\nSpart in 5 incercari!",
+      "options": ["break", "continue", "incercari += 1", "print(incercari)"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-break-d2396d",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numar_secret = 7\nghiciri = [5, 9, 7, 8]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"corect\":\n        print(f\"Spart in {incercari} incercari!\")\n        ___",
+      "output": "5: prea mic\n9: prea mare\n7: corect\nSpart in 3 incercari!",
+      "options": ["break", "continue", "incercari += 1", "print(incercari)"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-break-ed7b5e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numar_secret = 63\nghiciri = [50, 75, 63, 70]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"corect\":\n        print(f\"Spart in {incercari} incercari!\")\n        ___",
+      "output": "50: prea mic\n75: prea mare\n63: corect\nSpart in 3 incercari!",
+      "options": ["break", "continue", "incercari += 1", "print(incercari)"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-break-22af92",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numar_secret = 18\nghiciri = [25, 12, 15, 20, 18, 30]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"corect\":\n        print(f\"Spart in {incercari} incercari!\")\n        ___",
+      "output": "25: prea mare\n12: prea mic\n15: prea mic\n20: prea mare\n18: corect\nSpart in 5 incercari!",
+      "options": ["break", "continue", "incercari += 1", "print(incercari)"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-break-716625",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numar_secret = 90\nghiciri = [50, 90, 95]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"corect\":\n        print(f\"Spart in {incercari} incercari!\")\n        ___",
+      "output": "50: prea mic\n90: corect\nSpart in 2 incercari!",
+      "options": ["break", "continue", "incercari += 1", "print(incercari)"],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-cmp-be201a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire ___ numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [50, 42, 30]:\n    print(ghicire, verifica_ghicirea(42, ghicire))",
+      "output": "50 prea mare\n42 corect\n30 prea mic",
+      "options": ["<", ">", "==", "<="],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-cmp-c2a144",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire ___ numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [3, 15, 10]:\n    print(ghicire, verifica_ghicirea(10, ghicire))",
+      "output": "3 prea mic\n15 prea mare\n10 corect",
+      "options": ["<", ">", "==", "<="],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-cmp-66fec2",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire ___ numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [75, 80, 60]:\n    print(ghicire, verifica_ghicirea(75, ghicire))",
+      "output": "75 corect\n80 prea mare\n60 prea mic",
+      "options": ["<", ">", "==", "<="],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-cmp-e9b42a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire ___ numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [6, 4, 5]:\n    print(ghicire, verifica_ghicirea(5, ghicire))",
+      "output": "6 prea mare\n4 prea mic\n5 corect",
+      "options": ["<", ">", "==", "<="],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-cmp-9b8bb9",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire ___ numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [30, 33, 40]:\n    print(ghicire, verifica_ghicirea(33, ghicire))",
+      "output": "30 prea mic\n33 corect\n40 prea mare",
+      "options": ["<", ">", "==", "<="],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-range-3ea260",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "maxim_incercari = 3\nghiciri = [50, 25, 12, 6]\nfor incercare in range(1, ___):\n    print(f\"Incercarea {incercare}/{maxim_incercari}: {ghiciri[incercare - 1]}\")",
+      "output": "Incercarea 1/3: 50\nIncercarea 2/3: 25\nIncercarea 3/3: 12",
+      "options": [
+        "maxim_incercari + 1",
+        "maxim_incercari",
+        "maxim_incercari - 1",
+        "maxim_incercari + 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-range-4f45c1",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "maxim_incercari = 2\nghiciri = [40, 60, 70]\nfor incercare in range(1, ___):\n    print(f\"Incercarea {incercare}/{maxim_incercari}: {ghiciri[incercare - 1]}\")",
+      "output": "Incercarea 1/2: 40\nIncercarea 2/2: 60",
+      "options": [
+        "maxim_incercari + 1",
+        "maxim_incercari",
+        "maxim_incercari - 1",
+        "maxim_incercari + 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-range-6e4c3b",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "maxim_incercari = 4\nghiciri = [10, 20, 30, 40, 50]\nfor incercare in range(1, ___):\n    print(f\"Incercarea {incercare}/{maxim_incercari}: {ghiciri[incercare - 1]}\")",
+      "output": "Incercarea 1/4: 10\nIncercarea 2/4: 20\nIncercarea 3/4: 30\nIncercarea 4/4: 40",
+      "options": [
+        "maxim_incercari + 1",
+        "maxim_incercari",
+        "maxim_incercari - 1",
+        "maxim_incercari + 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-range-e9dbc9",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "maxim_incercari = 3\nghiciri = [7, 8, 9, 10]\nfor incercare in range(1, ___):\n    print(f\"Incercarea {incercare}/{maxim_incercari}: {ghiciri[incercare - 1]}\")",
+      "output": "Incercarea 1/3: 7\nIncercarea 2/3: 8\nIncercarea 3/3: 9",
+      "options": [
+        "maxim_incercari + 1",
+        "maxim_incercari",
+        "maxim_incercari - 1",
+        "maxim_incercari + 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-gap-range-001c26",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "maxim_incercari = 1\nghiciri = [99, 98]\nfor incercare in range(1, ___):\n    print(f\"Incercarea {incercare}/{maxim_incercari}: {ghiciri[incercare - 1]}\")",
+      "output": "Incercarea 1/1: 99",
+      "options": [
+        "maxim_incercari + 1",
+        "maxim_incercari",
+        "maxim_incercari - 1",
+        "maxim_incercari + 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-check-aa837b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mic\"\n    else:\n        return \"corect\"\n\nfor ghicire in [50, 42, 30]:\n    print(ghicire, verifica_ghicirea(42, ghicire))",
+      "output": "50 prea mare\n42 corect\n30 prea mic",
+      "options": [
+        "return \"prea mic\"",
+        "elif ghicire > numar_secret:",
+        "if ghicire < numar_secret:",
+        "return \"corect\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-check-c96ea0",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mic\"\n    else:\n        return \"corect\"\n\nfor ghicire in [3, 15, 10]:\n    print(ghicire, verifica_ghicirea(10, ghicire))",
+      "output": "3 prea mic\n15 prea mare\n10 corect",
+      "options": [
+        "return \"prea mic\"",
+        "return \"corect\"",
+        "print(ghicire, verifica_ghicirea(10, ghicire))",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-check-db76db",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mic\"\n    else:\n        return \"corect\"\n\nfor ghicire in [75, 80, 60]:\n    print(ghicire, verifica_ghicirea(75, ghicire))",
+      "output": "75 corect\n80 prea mare\n60 prea mic",
+      "options": [
+        "return \"prea mic\"",
+        "return \"corect\"",
+        "print(ghicire, verifica_ghicirea(75, ghicire))",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-check-dc9c37",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mic\"\n    else:\n        return \"corect\"\n\nfor ghicire in [6, 4, 5]:\n    print(ghicire, verifica_ghicirea(5, ghicire))",
+      "output": "6 prea mare\n4 prea mic\n5 corect",
+      "options": [
+        "return \"prea mic\"",
+        "elif ghicire > numar_secret:",
+        "return \"corect\"",
+        "print(ghicire, verifica_ghicirea(5, ghicire))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-check-6b2e46",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mic\"\n    else:\n        return \"corect\"\n\nfor ghicire in [30, 33, 40]:\n    print(ghicire, verifica_ghicirea(33, ghicire))",
+      "output": "30 prea mic\n33 corect\n40 prea mare",
+      "options": [
+        "return \"prea mic\"",
+        "return \"corect\"",
+        "print(ghicire, verifica_ghicirea(33, ghicire))",
+        "else:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-replay-4c03eb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numar_secret = 42\nghiciri = [50, 30, 40, 45, 42, 60]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"prea mic\":\n        print(f\"Spart in {incercari} incercari!\")\n        break",
+      "output": "50: prea mare\n30: prea mic\n40: prea mic\n45: prea mare\n42: corect\nSpart in 5 incercari!",
+      "options": [
+        "if rezultat == \"prea mic\":",
+        "for ghicire in ghiciri:",
+        "print(f\"Spart in {incercari} incercari!\")",
+        "break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-replay-a8d39b",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numar_secret = 7\nghiciri = [5, 9, 7, 8]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"prea mic\":\n        print(f\"Spart in {incercari} incercari!\")\n        break",
+      "output": "5: prea mic\n9: prea mare\n7: corect\nSpart in 3 incercari!",
+      "options": [
+        "if rezultat == \"prea mic\":",
+        "for ghicire in ghiciri:",
+        "print(f\"Spart in {incercari} incercari!\")",
+        "break"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-replay-c7b051",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numar_secret = 63\nghiciri = [50, 75, 63, 70]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"prea mic\":\n        print(f\"Spart in {incercari} incercari!\")\n        break",
+      "output": "50: prea mic\n75: prea mare\n63: corect\nSpart in 3 incercari!",
+      "options": [
+        "if rezultat == \"prea mic\":",
+        "for ghicire in ghiciri:",
+        "else:",
+        "print(f\"Spart in {incercari} incercari!\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-replay-58b7b3",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numar_secret = 18\nghiciri = [25, 12, 15, 20, 18, 30]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"prea mic\":\n        print(f\"Spart in {incercari} incercari!\")\n        break",
+      "output": "25: prea mare\n12: prea mic\n15: prea mic\n20: prea mare\n18: corect\nSpart in 5 incercari!",
+      "options": [
+        "if rezultat == \"prea mic\":",
+        "for ghicire in ghiciri:",
+        "else:",
+        "elif ghicire > numar_secret:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-replay-bdaf2c",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numar_secret = 90\nghiciri = [50, 90, 95]\n\ndef verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nincercari = 0\nfor ghicire in ghiciri:\n    incercari += 1\n    rezultat = verifica_ghicirea(numar_secret, ghicire)\n    print(f\"{ghicire}: {rezultat}\")\n    if rezultat == \"prea mic\":\n        print(f\"Spart in {incercari} incercari!\")\n        break",
+      "output": "50: prea mic\n90: corect\nSpart in 2 incercari!",
+      "options": [
+        "if rezultat == \"prea mic\":",
+        "for ghicire in ghiciri:",
+        "else:",
+        "elif ghicire > numar_secret:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-play-aca8df",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def joaca(numar_secret, ghiciri, maxim_incercari):\n    for incercare in range(1, maxim_incercari + 1):\n        ghicire = ghiciri[incercare - 1]\n        if ghicire < numar_secret:\n            print(\"Prea mic!\")\n        elif ghicire > numar_secret:\n            print(\"Prea mare!\")\n        else:\n            print(f\"Corect! L-ai ghicit in {incercare} incercari!\")\n            continue\n    print(f\"Joc terminat! Numarul a fost {numar_secret}\")\n\njoaca(42, [50, 30, 42, 45], 4)",
+      "output": "Prea mare!\nPrea mic!\nCorect! L-ai ghicit in 3 incercari!",
+      "options": [
+        "continue",
+        "print(f\"Corect! L-ai ghicit in {incercare} incercari!\")",
+        "print(\"Prea mare!\")",
+        "print(f\"Joc terminat! Numarul a fost {numar_secret}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-play-fb0149",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def joaca(numar_secret, ghiciri, maxim_incercari):\n    for incercare in range(1, maxim_incercari + 1):\n        ghicire = ghiciri[incercare - 1]\n        if ghicire < numar_secret:\n            print(\"Prea mic!\")\n        elif ghicire > numar_secret:\n            print(\"Prea mare!\")\n        else:\n            print(f\"Corect! L-ai ghicit in {incercare} incercari!\")\n            continue\n    print(f\"Joc terminat! Numarul a fost {numar_secret}\")\n\njoaca(7, [5, 9, 7, 8], 4)",
+      "output": "Prea mic!\nPrea mare!\nCorect! L-ai ghicit in 3 incercari!",
+      "options": [
+        "continue",
+        "print(f\"Corect! L-ai ghicit in {incercare} incercari!\")",
+        "print(\"Prea mare!\")",
+        "print(\"Prea mic!\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-play-b2e793",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def joaca(numar_secret, ghiciri, maxim_incercari):\n    for incercare in range(1, maxim_incercari + 1):\n        ghicire = ghiciri[incercare - 1]\n        if ghicire < numar_secret:\n            print(\"Prea mic!\")\n        elif ghicire > numar_secret:\n            print(\"Prea mare!\")\n        else:\n            print(f\"Corect! L-ai ghicit in {incercare} incercari!\")\n            continue\n    print(f\"Joc terminat! Numarul a fost {numar_secret}\")\n\njoaca(63, [70, 50, 63, 64], 4)",
+      "output": "Prea mare!\nPrea mic!\nCorect! L-ai ghicit in 3 incercari!",
+      "options": [
+        "continue",
+        "print(f\"Corect! L-ai ghicit in {incercare} incercari!\")",
+        "print(f\"Joc terminat! Numarul a fost {numar_secret}\")",
+        "joaca(63, [70, 50, 63, 64], 4)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-play-e77f23",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def joaca(numar_secret, ghiciri, maxim_incercari):\n    for incercare in range(1, maxim_incercari + 1):\n        ghicire = ghiciri[incercare - 1]\n        if ghicire < numar_secret:\n            print(\"Prea mic!\")\n        elif ghicire > numar_secret:\n            print(\"Prea mare!\")\n        else:\n            print(f\"Corect! L-ai ghicit in {incercare} incercari!\")\n            continue\n    print(f\"Joc terminat! Numarul a fost {numar_secret}\")\n\njoaca(18, [25, 12, 18, 20], 4)",
+      "output": "Prea mare!\nPrea mic!\nCorect! L-ai ghicit in 3 incercari!",
+      "options": [
+        "continue",
+        "print(f\"Corect! L-ai ghicit in {incercare} incercari!\")",
+        "print(\"Prea mare!\")",
+        "print(\"Prea mic!\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-bad-play-d9779f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def joaca(numar_secret, ghiciri, maxim_incercari):\n    for incercare in range(1, maxim_incercari + 1):\n        ghicire = ghiciri[incercare - 1]\n        if ghicire < numar_secret:\n            print(\"Prea mic!\")\n        elif ghicire > numar_secret:\n            print(\"Prea mare!\")\n        else:\n            print(f\"Corect! L-ai ghicit in {incercare} incercari!\")\n            continue\n    print(f\"Joc terminat! Numarul a fost {numar_secret}\")\n\njoaca(90, [95, 50, 90, 75], 4)",
+      "output": "Prea mare!\nPrea mic!\nCorect! L-ai ghicit in 3 incercari!",
+      "options": [
+        "continue",
+        "print(f\"Corect! L-ai ghicit in {incercare} incercari!\")",
+        "print(\"Prea mare!\")",
+        "print(f\"Joc terminat! Numarul a fost {numar_secret}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-check-18627a",
+      "text": "Care program afișează asta?",
+      "output": "prea mare\ncorect\nprea mic",
+      "options": [
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [50, 42, 30]:\n    print(verifica_ghicirea(42, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire > numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [50, 42, 30]:\n    print(verifica_ghicirea(42, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mare\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [50, 42, 30]:\n    print(verifica_ghicirea(42, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire <= numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [50, 42, 30]:\n    print(verifica_ghicirea(42, ghicire))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-check-65bf8f",
+      "text": "Care program afișează asta?",
+      "output": "prea mic\nprea mare\ncorect",
+      "options": [
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [3, 15, 10]:\n    print(verifica_ghicirea(10, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire > numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [3, 15, 10]:\n    print(verifica_ghicirea(10, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mare\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [3, 15, 10]:\n    print(verifica_ghicirea(10, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire <= numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [3, 15, 10]:\n    print(verifica_ghicirea(10, ghicire))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-check-72a834",
+      "text": "Care program afișează asta?",
+      "output": "corect\nprea mare\nprea mic",
+      "options": [
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [75, 80, 60]:\n    print(verifica_ghicirea(75, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire > numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [75, 80, 60]:\n    print(verifica_ghicirea(75, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mare\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [75, 80, 60]:\n    print(verifica_ghicirea(75, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire <= numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [75, 80, 60]:\n    print(verifica_ghicirea(75, ghicire))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-check-99a25c",
+      "text": "Care program afișează asta?",
+      "output": "prea mare\nprea mic\ncorect",
+      "options": [
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [6, 4, 5]:\n    print(verifica_ghicirea(5, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire > numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [6, 4, 5]:\n    print(verifica_ghicirea(5, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mare\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [6, 4, 5]:\n    print(verifica_ghicirea(5, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire <= numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [6, 4, 5]:\n    print(verifica_ghicirea(5, ghicire))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-check-10b11c",
+      "text": "Care program afișează asta?",
+      "output": "prea mic\ncorect\nprea mare",
+      "options": [
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [30, 33, 40]:\n    print(verifica_ghicirea(33, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire > numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [30, 33, 40]:\n    print(verifica_ghicirea(33, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire < numar_secret:\n        return \"prea mare\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [30, 33, 40]:\n    print(verifica_ghicirea(33, ghicire))",
+        "def verifica_ghicirea(numar_secret, ghicire):\n    if ghicire <= numar_secret:\n        return \"prea mic\"\n    elif ghicire > numar_secret:\n        return \"prea mare\"\n    else:\n        return \"corect\"\n\nfor ghicire in [30, 33, 40]:\n    print(verifica_ghicirea(33, ghicire))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-count-510338",
+      "text": "Care program afișează asta?",
+      "output": "2",
+      "options": [
+        "numar_secret = 4\nincercari = 0\nfor ghicire in [2, 4, 6]:\n    incercari += 1\n    if ghicire == numar_secret:\n        break\nprint(incercari)",
+        "numar_secret = 4\nincercari = 0\nfor ghicire in [2, 4, 6]:\n    incercari += 1\n    if ghicire == numar_secret:\n        continue\nprint(incercari)",
+        "numar_secret = 4\nincercari = 0\nfor ghicire in [2, 4, 6]:\n    if ghicire == numar_secret:\n        break\n    incercari += 1\nprint(incercari)",
+        "numar_secret = 4\nincercari = 1\nfor ghicire in [2, 4, 6]:\n    incercari += 1\n    if ghicire == numar_secret:\n        break\nprint(incercari)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-count-dfa5e4",
+      "text": "Care program afișează asta?",
+      "output": "3",
+      "options": [
+        "numar_secret = 9\nincercari = 0\nfor ghicire in [5, 7, 9, 8]:\n    incercari += 1\n    if ghicire == numar_secret:\n        break\nprint(incercari)",
+        "numar_secret = 9\nincercari = 0\nfor ghicire in [5, 7, 9, 8]:\n    incercari += 1\n    if ghicire == numar_secret:\n        continue\nprint(incercari)",
+        "numar_secret = 9\nincercari = 0\nfor ghicire in [5, 7, 9, 8]:\n    if ghicire == numar_secret:\n        break\n    incercari += 1\nprint(incercari)",
+        "numar_secret = 9\nincercari = 1\nfor ghicire in [5, 7, 9, 8]:\n    incercari += 1\n    if ghicire == numar_secret:\n        break\nprint(incercari)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-count-651474",
+      "text": "Care program afișează asta?",
+      "output": "1",
+      "options": [
+        "numar_secret = 30\nincercari = 0\nfor ghicire in [30, 20, 10]:\n    incercari += 1\n    if ghicire == numar_secret:\n        break\nprint(incercari)",
+        "numar_secret = 30\nincercari = 0\nfor ghicire in [30, 20, 10]:\n    incercari += 1\n    if ghicire == numar_secret:\n        continue\nprint(incercari)",
+        "numar_secret = 30\nincercari = 0\nfor ghicire in [30, 20, 10]:\n    if ghicire == numar_secret:\n        break\n    incercari += 1\nprint(incercari)",
+        "numar_secret = 30\nincercari = 1\nfor ghicire in [30, 20, 10]:\n    incercari += 1\n    if ghicire == numar_secret:\n        break\nprint(incercari)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-count-a1e978",
+      "text": "Care program afișează asta?",
+      "output": "5",
+      "options": [
+        "numar_secret = 15\nincercari = 0\nfor ghicire in [10, 20, 12, 14, 15, 13]:\n    incercari += 1\n    if ghicire == numar_secret:\n        break\nprint(incercari)",
+        "numar_secret = 15\nincercari = 0\nfor ghicire in [10, 20, 12, 14, 15, 13]:\n    incercari += 1\n    if ghicire == numar_secret:\n        continue\nprint(incercari)",
+        "numar_secret = 15\nincercari = 0\nfor ghicire in [10, 20, 12, 14, 15, 13]:\n    if ghicire == numar_secret:\n        break\n    incercari += 1\nprint(incercari)",
+        "numar_secret = 15\nincercari = 1\nfor ghicire in [10, 20, 12, 14, 15, 13]:\n    incercari += 1\n    if ghicire == numar_secret:\n        break\nprint(incercari)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "gg-which-count-05daf1",
+      "text": "Care program afișează asta?",
+      "output": "4",
+      "options": [
+        "numar_secret = 61\nincercari = 0\nfor ghicire in [50, 70, 65, 61, 60]:\n    incercari += 1\n    if ghicire == numar_secret:\n        break\nprint(incercari)",
+        "numar_secret = 61\nincercari = 0\nfor ghicire in [50, 70, 65, 61, 60]:\n    incercari += 1\n    if ghicire == numar_secret:\n        continue\nprint(incercari)",
+        "numar_secret = 61\nincercari = 0\nfor ghicire in [50, 70, 65, 61, 60]:\n    if ghicire == numar_secret:\n        break\n    incercari += 1\nprint(incercari)",
+        "numar_secret = 61\nincercari = 1\nfor ghicire in [50, 70, 65, 61, 60]:\n    incercari += 1\n    if ghicire == numar_secret:\n        break\nprint(incercari)"
+      ],
+      "answer": 0
+    }
+  ]
+}

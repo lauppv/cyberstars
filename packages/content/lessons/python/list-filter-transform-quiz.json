@@ -1,0 +1,784 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What does filtering a list mean?",
+      "options": [
+        "Keeping only the elements that match a condition",
+        "Changing every element in some way",
+        "Sorting the list",
+        "Removing the list's first element"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "What does transforming a list mean?",
+      "options": [
+        "Keeping only some elements",
+        "Reversing the list",
+        "Applying an operation to every element",
+        "Counting the elements"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "What does this print?",
+      "code": "scores = [45, 82, 67, 91, 38, 74, 55, 96]\npassed = []\nfor s in scores:\n    if s >= 50:\n        passed.append(s)\nprint(passed)",
+      "options": ["[45, 38]", "[82, 67, 91, 74, 55, 96]", "[45, 82, 67, 91, 38, 74, 55, 96]", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Which comprehension keeps the scores of 50 or more?",
+      "options": [
+        "`[s >= 50 for s in scores]`",
+        "`[s for s >= 50 in scores]`",
+        "`[if s >= 50 for s in scores]`",
+        "`[s for s in scores if s >= 50]`"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "What does this print?",
+      "code": "scores = [45, 82, 67]\nprint([s >= 50 for s in scores])",
+      "options": ["[False, True, True]", "[82, 67]", "[45]", "[True, False, False]"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "prices = [10.0, 20.0, 8.0]\nwith_tax = []\nfor price in prices:\n    with_tax.append(round(price * 1.19, 2))\nprint(with_tax)",
+      "options": ["[10.0, 20.0, 8.0]", "[11.9, 23.8, 9.5]", "[11.9, 23.8, 9.52]", "[12, 24, 10]"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "What does `round(price * 1.19, 2)` do to the price?",
+      "options": [
+        "Multiplies by 1.19 and doubles it",
+        "Adds 19% and keeps two digits after the point",
+        "Rounds the price to the nearest 2",
+        "Adds 1.19 and 2 to the price"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "players = [\n    {\"name\": \"Tommy\", \"online\": True},\n    {\"name\": \"Lance\", \"online\": False},\n    {\"name\": \"Cortez\", \"online\": True},\n    {\"name\": \"Phil\", \"online\": True},\n    {\"name\": \"Sonny\", \"online\": False}\n]\nprint([p[\"name\"] for p in players if p[\"online\"]])",
+      "options": [
+        "['Lance', 'Sonny']",
+        "['Tommy', 'Lance', 'Cortez', 'Phil', 'Sonny']",
+        "3",
+        "['Tommy', 'Cortez', 'Phil']"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "In `[p[\"name\"] for p in players if p[\"online\"]]`, which part filters and which transforms?",
+      "options": [
+        "`if p[\"online\"]` filters, `p[\"name\"]` transforms",
+        "`p[\"name\"]` filters, `if p[\"online\"]` transforms",
+        "`for p in players` does both",
+        "Nothing is filtered, only transformed"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "grades = [45, 82, 67, 91, 38, 74, 55, 96]\nprint([min(g + 5, 100) for g in grades if g >= 50])",
+      "options": [
+        "[87, 72, 96, 79, 60, 101]",
+        "[50, 87, 72, 96, 43, 79, 60, 100]",
+        "[87, 72, 96, 79, 60, 100]",
+        "[82, 67, 91, 74, 55, 96]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "Why does `min(g + 5, 100)` cap the grade at 100?",
+      "options": [
+        "It always gives 100",
+        "It gives the smaller of the two, so anything over 100 becomes 100",
+        "It removes grades over 100 from the list",
+        "It rounds the grade to the nearest hundred"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "print(min(98 + 5, 100))",
+      "options": ["103", "98", "[100]", "100"],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "readings = [45, 82, 12, 55]\nboosted = []\nfor reading in readings:\n    if reading >= 50:\n        boosted.append(min(reading + 5, 100))\nprint(f\"Boosted: {boosted}\")\nprint(f\"Stable reactors: {len(boosted)}\")\nprint(f\"Average: {round(sum(boosted) / len(boosted))}\")",
+      "options": [
+        "Boosted: [87, 60]\nStable reactors: 2\nAverage: 74",
+        "Boosted: [87, 60]\nStable reactors: 2\nAverage: 73.5",
+        "Boosted: [82, 55]\nStable reactors: 2\nAverage: 68",
+        "Boosted: [50, 87, 17, 60]\nStable reactors: 4\nAverage: 54"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "In the mission, why filter before working out the average?",
+      "options": [
+        "Because `sum()` can't add small numbers",
+        "So the list is sorted",
+        "So only the stable reactors' boosted readings count",
+        "Because `round()` needs a filtered list"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "numbers = [1, 2, 3, 4]\nprint([n * 2 for n in numbers if n % 2 == 0])",
+      "options": ["[2, 4]", "[4, 8]", "[1, 2, 3, 4]", "[2, 6, 4, 8]"],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "What does this print?",
+      "code": "numbers = [1, 2, 3, 4]\nprint([n * 2 for n in numbers if n * 2 % 2 == 0])",
+      "options": ["[4, 8]", "[]", "[2, 6]", "[2, 4, 6, 8]"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Does a filter change the elements it keeps?",
+      "options": [
+        "No, it only decides which ones stay",
+        "Yes, it doubles them",
+        "Yes, it sorts them",
+        "Yes, it turns them into True or False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "A transform runs on a list of 6 elements, with no filter. How many elements does the new list have?",
+      "options": ["Fewer than 6", "More than 6", "6", "It depends on the condition"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "scores = [45, 38]\nprint([s for s in scores if s >= 50])",
+      "options": ["[45, 38]", "[]", "None", "[0]"],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "What happens when this runs?",
+      "code": "readings = [12, 30]\nboosted = [min(r + 5, 100) for r in readings if r >= 50]\nprint(round(sum(boosted) / len(boosted)))",
+      "options": [
+        "It prints 0",
+        "It prints []",
+        "It prints None",
+        "An error: `len(boosted)` is 0, so it divides by zero"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "names = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\nprint([n.upper() for n in names if len(n) >= 5])",
+      "options": [
+        "['TOMMY', 'LANCE', 'CORTEZ']",
+        "['Tommy', 'Lance', 'Cortez']",
+        "['TOMMY', 'LANCE', 'CORTEZ', 'PHIL']",
+        "['CORTEZ']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "players = [\n    {\"name\": \"Tommy\", \"score\": 95},\n    {\"name\": \"Lance\", \"score\": 42},\n    {\"name\": \"Cortez\", \"score\": 88}\n]\nprint([p[\"score\"] for p in players if p[\"score\"] > 50])",
+      "options": ["['Tommy', 'Cortez']", "[95, 42, 88]", "[95, 88]", "[42]"],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "Which loop does the same as `passed = [s for s in scores if s >= 50]`?",
+      "options": [
+        "`for s in scores:` then `passed.append(s >= 50)`",
+        "`for s in scores:` then `if s >= 50:` then `passed.append(s)`, with `passed = []` first",
+        "`for s in scores:` then `passed = s`",
+        "`if s >= 50:` then `for s in scores:` then `passed.append(s)`"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "grades = [45, 82, 67, 91, 38, 74, 55, 96]\nresult = []\nfor grade in grades:\n    if grade >= 50:\n        boosted = grade + 5\n        if boosted > 100:\n            boosted = 100\nresult.append(grade)\nprint(result)",
+      "options": ["[87, 72, 96, 79, 60, 100]", "[100]", "[]", "[96]"],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "numbers = [1, 3, 2, 4]\nkept = []\nfor n in numbers:\n    if n > 1:\n        kept.append(n)\nprint(kept)",
+      "options": ["[3, 2, 4]", "[1, 3, 2, 4]", "[2, 4]", "[3, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Why does the comprehension version write `min(g + 5, 100)` instead of the two `if` lines of the loop?",
+      "options": [
+        "Comprehensions can't use `+`",
+        "`min()` also filters the grades",
+        "`min()` does the cap in one expression, which fits inside a comprehension",
+        "The loop version gives a different result"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "scores = [45, 82, 67, 91]\npassed = [s for s in scores if s >= 50]\nprint(len(passed))",
+      "options": ["[82, 67, 91]", "3", "4", "6"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Does the order of filter and transform matter in `[n * 2 for n in numbers if n > 5]`?",
+      "options": [
+        "No, it never matters",
+        "Yes: the condition looks at `n * 2`",
+        "Only when the list is sorted",
+        "Yes: the condition looks at `n`, before it is doubled"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "numbers = [1, 2, 3, 4]\nprint([n * 2 for n in numbers if n > 2])",
+      "options": ["[6, 8]", "[8]", "[3, 4]", "[2, 4, 6, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does this print?",
+      "code": "numbers = [3, 7, 5]\nresult = []\nfor n in numbers:\n    if n != 5:\n        result.append(n * 3)\nprint(result)",
+      "options": ["[3, 7]", "[9, 21]", "[9, 21, 15]", "[3, 7, 5]"],
+      "answer": 1
+    }
+  ],
+  "templates": [
+    {
+      "id": "ft-filter",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "scores = [{{s}}]\npassed = []\nfor s in scores:\n    if s >= {{m}}:\n        passed.append(s)\nprint(passed)",
+      "values": [
+        {
+          "s": "45, 82, 67, 91, 38",
+          "m": 50
+        },
+        {
+          "s": "12, 60, 60, 75, 30",
+          "m": 60
+        },
+        {
+          "s": "90, 15, 70, 40",
+          "m": 40
+        },
+        {
+          "s": "5, 9, 7, 3, 10",
+          "m": 7
+        },
+        {
+          "s": "55, 50, 49, 80",
+          "m": 50
+        }
+      ],
+      "mistakes": [
+        ["s >= {{m}}", "s > {{m}}"],
+        ["passed.append(s)", "passed = [s]"],
+        ["print(passed)", "    print(passed)"],
+        ["s >= {{m}}", "s <= {{m}}"]
+      ]
+    },
+    {
+      "id": "ft-comp",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{n}}]\nprint([n for n in numbers if n {{c}}])",
+      "values": [
+        {
+          "n": "3, 8, 12, 5, 20",
+          "c": "> 6"
+        },
+        {
+          "n": "1, 2, 3, 4, 5, 6",
+          "c": "% 2 == 0"
+        },
+        {
+          "n": "15, 7, 22, 9, 30",
+          "c": "< 10"
+        },
+        {
+          "n": "4, 9, 16, 25",
+          "c": "% 3 == 1"
+        },
+        {
+          "n": "10, 20, 30, 40",
+          "c": "!= 30"
+        }
+      ],
+      "mistakes": [
+        ["if n {{c}}", "if not n {{c}}"],
+        ["[n for", "[n * 2 for"],
+        ["print([n for n in numbers if n {{c}}])", "print(numbers)"],
+        ["print([n for n in numbers if n {{c}}])", "print([n {{c}} for n in numbers])"]
+      ]
+    },
+    {
+      "id": "ft-transform",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "scores = [{{s}}]\nwith_bonus = []\nfor s in scores:\n    with_bonus.append(s + {{b}})\nprint(with_bonus)",
+      "values": [
+        {
+          "s": "45, 82, 67",
+          "b": 5
+        },
+        {
+          "s": "10, 20, 30, 40",
+          "b": 3
+        },
+        {
+          "s": "7, 1, 9",
+          "b": 10
+        },
+        {
+          "s": "50, 60",
+          "b": 15
+        },
+        {
+          "s": "99, 0, 50, 25",
+          "b": 1
+        }
+      ],
+      "mistakes": [
+        ["with_bonus.append(s + {{b}})", "with_bonus.append({{b}})"],
+        ["s + {{b}}", "s * {{b}}"],
+        ["print(with_bonus)", "print(scores)"],
+        ["print(with_bonus)", "    print(with_bonus)"]
+      ]
+    },
+    {
+      "id": "ft-cap",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "grades = [{{g}}]\nprint([min(g + {{b}}, 100) for g in grades if g >= 50])",
+      "values": [
+        {
+          "g": "45, 82, 97, 38, 74",
+          "b": 5
+        },
+        {
+          "g": "90, 55, 30, 99",
+          "b": 10
+        },
+        {
+          "g": "60, 49, 50, 95",
+          "b": 8
+        },
+        {
+          "g": "85, 12, 98, 70",
+          "b": 4
+        },
+        {
+          "g": "51, 92, 20",
+          "b": 9
+        }
+      ],
+      "mistakes": [
+        ["min(", "max("],
+        ["g >= 50", "g < 50"],
+        ["min(g + {{b}}, 100)", "g + {{b}}"],
+        [" if g >= 50", ""]
+      ]
+    },
+    {
+      "id": "ft-dicts",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "players = [\n    {\"name\": \"{{a}}\", \"score\": {{x}}},\n    {\"name\": \"{{b}}\", \"score\": {{y}}},\n    {\"name\": \"{{c}}\", \"score\": {{z}}}\n]\nprint([p[\"name\"] for p in players if p[\"score\"] >= {{m}}])",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Cortez",
+          "z": 88,
+          "m": 50
+        },
+        {
+          "a": "Phil",
+          "x": 71,
+          "b": "Sonny",
+          "y": 33,
+          "c": "Ken",
+          "z": 60,
+          "m": 60
+        },
+        {
+          "a": "Mercedes",
+          "x": 50,
+          "b": "Kent",
+          "y": 75,
+          "c": "Victor",
+          "z": 49,
+          "m": 50
+        },
+        {
+          "a": "Avery",
+          "x": 20,
+          "b": "Diaz",
+          "y": 90,
+          "c": "Hilary",
+          "z": 85,
+          "m": 80
+        },
+        {
+          "a": "Ricardo",
+          "x": 66,
+          "b": "Lance",
+          "y": 99,
+          "c": "Tommy",
+          "z": 12,
+          "m": 65
+        }
+      ],
+      "mistakes": [
+        ["p[\"name\"] for", "p[\"score\"] for"],
+        [">= {{m}}", "< {{m}}"],
+        [
+          "print([p[\"name\"] for p in players if p[\"score\"] >= {{m}}])",
+          "print(len([p[\"name\"] for p in players if p[\"score\"] >= {{m}}]))"
+        ],
+        [">= {{m}}", "> {{m}}"]
+      ]
+    },
+    {
+      "id": "ft-avg",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "readings = [{{r}}]\nboosted = []\nfor r in readings:\n    if r >= 50:\n        boosted.append(min(r + 5, 100))\nprint(len(boosted))\nprint(round(sum(boosted) / len(boosted)))",
+      "values": [
+        {
+          "r": "45, 82, 97, 38, 50"
+        },
+        {
+          "r": "60, 12, 99, 70"
+        },
+        {
+          "r": "50, 51, 20, 96"
+        },
+        {
+          "r": "30, 80, 50, 98, 10"
+        },
+        {
+          "r": "75, 50, 40"
+        }
+      ],
+      "mistakes": [
+        ["min(r + 5, 100)", "r + 5"],
+        ["print(len(boosted))", "print(len(readings))"],
+        ["sum(boosted) / len(boosted)", "sum(boosted) / len(readings)"],
+        ["r >= 50", "r > 50"]
+      ]
+    },
+    {
+      "id": "ft-order",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{n}}]\nprint([n * 2 for n in numbers if n > {{m}}])",
+      "values": [
+        {
+          "n": "1, 3, 5, 7",
+          "m": 4
+        },
+        {
+          "n": "2, 4, 6, 8",
+          "m": 5
+        },
+        {
+          "n": "10, 3, 8, 1",
+          "m": 5
+        },
+        {
+          "n": "4, 5, 6",
+          "m": 4
+        },
+        {
+          "n": "9, 2, 7, 4",
+          "m": 5
+        }
+      ],
+      "mistakes": [
+        ["if n > {{m}}", "if n * 2 > {{m}}"],
+        ["n * 2 for", "n for"],
+        ["n > {{m}}", "n < {{m}}"],
+        ["print([n * 2 for n in numbers if n > {{m}}])", "print([n > {{m}} for n in numbers])"]
+      ]
+    },
+    {
+      "id": "ft-strings",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "words = [{{w}}]\nprint([w.upper() for w in words if len(w) > {{k}}])",
+      "values": [
+        {
+          "w": "\"orbit\", \"sun\", \"galaxy\", \"moon\"",
+          "k": 4
+        },
+        {
+          "w": "\"Mars\", \"Venus\", \"Earth\", \"Io\"",
+          "k": 3
+        },
+        {
+          "w": "\"ship\", \"rocket\", \"crew\", \"pilot\"",
+          "k": 4
+        },
+        {
+          "w": "\"star\", \"comet\", \"sky\"",
+          "k": 3
+        },
+        {
+          "w": "\"dock\", \"launch\", \"fuel\", \"engine\"",
+          "k": 5
+        }
+      ],
+      "mistakes": [
+        ["w.upper() for", "w for"],
+        ["len(w) > {{k}}", "len(w) < {{k}}"],
+        [
+          "[w.upper() for w in words if len(w) > {{k}}]",
+          "[len(w) for w in words if len(w) > {{k}}]"
+        ],
+        ["len(w) > {{k}}", "len(w) >= {{k}}"]
+      ]
+    },
+    {
+      "id": "ft-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "scores = [{{s}}]\npassed = []\nfor s in scores:\n    if s >= {{m}}:\n        passed.append(s)\nprint(passed)",
+      "values": [
+        {
+          "s": "30, 70, 50, 90",
+          "m": 50
+        },
+        {
+          "s": "8, 3, 6, 9",
+          "m": 6
+        },
+        {
+          "s": "100, 20, 45, 60",
+          "m": 45
+        },
+        {
+          "s": "70, 35, 70, 10",
+          "m": 35
+        },
+        {
+          "s": "1, 5, 2, 4",
+          "m": 2
+        }
+      ],
+      "mistakes": [
+        ["s >= {{m}}", "s > {{m}}"],
+        ["        passed.append(s)", "    passed.append(s)"],
+        ["print(passed)", "    print(passed)"],
+        ["s >= {{m}}", "s <= {{m}}"]
+      ]
+    },
+    {
+      "id": "ft-gap-append",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "scores = [{{s}}]\npassed = []\nfor s in scores:\n    if s >= {{m}}:\n        ___\nprint(passed)",
+      "values": [
+        {
+          "s": "45, 82, 67, 91, 38",
+          "m": 50
+        },
+        {
+          "s": "12, 60, 75, 30",
+          "m": 60
+        },
+        {
+          "s": "90, 15, 70, 40",
+          "m": 40
+        },
+        {
+          "s": "5, 9, 7, 3, 10",
+          "m": 7
+        },
+        {
+          "s": "55, 49, 80",
+          "m": 50
+        }
+      ],
+      "answer": "passed.append(s)",
+      "wrong": ["passed.append(scores)", "passed = [s]", "passed.append({{m}})", "print(s)"]
+    },
+    {
+      "id": "ft-gap-cond",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [{{n}}]\nprint([n for n in numbers if n ___ {{m}}])",
+      "values": [
+        {
+          "n": "3, 8, 12, 5, 8",
+          "m": 8
+        },
+        {
+          "n": "10, 20, 30, 40",
+          "m": 20
+        },
+        {
+          "n": "7, 1, 7, 9",
+          "m": 7
+        },
+        {
+          "n": "50, 49, 51, 60",
+          "m": 50
+        },
+        {
+          "n": "2, 4, 6, 8, 10",
+          "m": 6
+        }
+      ],
+      "answer": ">=",
+      "wrong": [">", "<", "<=", "=="]
+    },
+    {
+      "id": "ft-gap-cap",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "grades = [{{g}}]\nprint([___(g + {{b}}, 100) for g in grades if g >= 50])",
+      "values": [
+        {
+          "g": "45, 82, 97, 38, 74",
+          "b": 5
+        },
+        {
+          "g": "90, 55, 30, 99",
+          "b": 10
+        },
+        {
+          "g": "60, 49, 50, 95",
+          "b": 8
+        },
+        {
+          "g": "85, 12, 98, 70",
+          "b": 4
+        },
+        {
+          "g": "51, 92, 20",
+          "b": 9
+        }
+      ],
+      "answer": "min",
+      "wrong": ["max", "round", "sum"]
+    },
+    {
+      "id": "ft-bad-cap",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "grades = [{{g}}]\nresult = []\nfor grade in grades:\n    if grade >= 50:\n        boosted = grade + {{b}}\n        if boosted > 100:\n            boosted = 100\n        result.append(boosted)\nprint(result)",
+      "values": [
+        {
+          "g": "45, 82, 97, 38",
+          "b": 5
+        },
+        {
+          "g": "90, 55, 30, 99",
+          "b": 10
+        },
+        {
+          "g": "60, 49, 95",
+          "b": 8
+        },
+        {
+          "g": "85, 12, 98, 70",
+          "b": 4
+        },
+        {
+          "g": "51, 92, 20",
+          "b": 9
+        }
+      ],
+      "bug": ["result.append(boosted)", "result.append(grade)"]
+    },
+    {
+      "id": "ft-bad-dicts",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "players = [\n    {\"name\": \"{{a}}\", \"online\": {{x}}},\n    {\"name\": \"{{b}}\", \"online\": {{y}}},\n    {\"name\": \"{{c}}\", \"online\": {{z}}}\n]\nonline_names = []\nfor player in players:\n    if player[\"online\"]:\n        online_names.append(player[\"name\"])\nprint(online_names)",
+      "values": [
+        {
+          "a": "Tommy",
+          "x": "True",
+          "b": "Lance",
+          "y": "False",
+          "c": "Cortez",
+          "z": "True"
+        },
+        {
+          "a": "Phil",
+          "x": "False",
+          "b": "Sonny",
+          "y": "True",
+          "c": "Ken",
+          "z": "False"
+        },
+        {
+          "a": "Mercedes",
+          "x": "True",
+          "b": "Kent",
+          "y": "True",
+          "c": "Victor",
+          "z": "False"
+        },
+        {
+          "a": "Avery",
+          "x": "False",
+          "b": "Diaz",
+          "y": "False",
+          "c": "Hilary",
+          "z": "True"
+        },
+        {
+          "a": "Ricardo",
+          "x": "True",
+          "b": "Lance",
+          "y": "False",
+          "c": "Tommy",
+          "z": "False"
+        }
+      ],
+      "bug": ["if player[\"online\"]:", "if player[\"name\"]:"]
+    }
+  ]
+}

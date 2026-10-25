@@ -1,0 +1,770 @@
+{
+  "note": "Made by npm run make:quiz from the templates in project-todo-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "td-board-9dc7f9",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "options": [
+        "0. [neterminat] Ruleaza diagnoza\n1. [terminat] Alimenteaza reactorul\n2. [neterminat] Traseaza cursul",
+        "0. [terminat] Ruleaza diagnoza\n1. [neterminat] Alimenteaza reactorul\n2. [terminat] Traseaza cursul",
+        "1. [neterminat] Ruleaza diagnoza\n2. [terminat] Alimenteaza reactorul\n3. [neterminat] Traseaza cursul",
+        "0. [neterminat] Ruleaza diagnoza\n1. [neterminat] Alimenteaza reactorul\n2. [neterminat] Traseaza cursul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-board-c51177",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "options": [
+        "0. [neterminat] Repara antena\n1. [neterminat] Hraneste echipajul\n2. [terminat] Scaneaza sectorul 7\n3. [neterminat] Noteaza zborul",
+        "0. [terminat] Repara antena\n1. [terminat] Hraneste echipajul\n2. [neterminat] Scaneaza sectorul 7\n3. [terminat] Noteaza zborul",
+        "1. [neterminat] Repara antena\n2. [neterminat] Hraneste echipajul\n3. [terminat] Scaneaza sectorul 7\n4. [neterminat] Noteaza zborul",
+        "0. [neterminat] Repara antena\n1. [neterminat] Hraneste echipajul\n2. [neterminat] Scaneaza sectorul 7\n3. [neterminat] Noteaza zborul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-board-0dfd15",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "options": [
+        "0. [terminat] Incarca scuturile\n1. [neterminat] Curata ecluza",
+        "0. [neterminat] Incarca scuturile\n1. [terminat] Curata ecluza",
+        "1. [terminat] Incarca scuturile\n2. [neterminat] Curata ecluza",
+        "0. [neterminat] Incarca scuturile\n1. [neterminat] Curata ecluza"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-board-3df0ad",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "options": [
+        "0. [neterminat] Testeaza radioul\n1. [terminat] Cartografiaza luna\n2. [neterminat] Impacheteaza proviziile",
+        "0. [terminat] Testeaza radioul\n1. [neterminat] Cartografiaza luna\n2. [terminat] Impacheteaza proviziile",
+        "1. [neterminat] Testeaza radioul\n2. [terminat] Cartografiaza luna\n3. [neterminat] Impacheteaza proviziile",
+        "0. [neterminat] Testeaza radioul\n1. [neterminat] Cartografiaza luna\n2. [neterminat] Impacheteaza proviziile"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-board-9649f9",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 3)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "options": [
+        "0. [neterminat] Verifica oxigenul\n1. [neterminat] Repara carena\n2. [neterminat] Actualizeaza harta stelara\n3. [terminat] Calibreaza senzorii",
+        "0. [terminat] Verifica oxigenul\n1. [terminat] Repara carena\n2. [terminat] Actualizeaza harta stelara\n3. [neterminat] Calibreaza senzorii",
+        "1. [neterminat] Verifica oxigenul\n2. [neterminat] Repara carena\n3. [neterminat] Actualizeaza harta stelara\n4. [terminat] Calibreaza senzorii",
+        "0. [neterminat] Verifica oxigenul\n1. [neterminat] Repara carena\n2. [neterminat] Actualizeaza harta stelara\n3. [neterminat] Calibreaza senzorii"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-remove-863081",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(index)\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "options": [
+        "0 Alimenteaza reactorul\n1 Traseaza cursul",
+        "0 Ruleaza diagnoza\n1 Alimenteaza reactorul",
+        "0 Ruleaza diagnoza\n1 Alimenteaza reactorul\n2 Traseaza cursul",
+        "1 Alimenteaza reactorul\n2 Traseaza cursul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-remove-aac1b8",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(index)\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "options": [
+        "0 Repara antena\n1 Scaneaza sectorul 7\n2 Noteaza zborul",
+        "0 Repara antena\n1 Hraneste echipajul\n2 Scaneaza sectorul 7",
+        "1 Repara antena\n2 Scaneaza sectorul 7\n3 Noteaza zborul",
+        "0 Hraneste echipajul\n1 Scaneaza sectorul 7\n2 Noteaza zborul"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-remove-3be47d",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(index)\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "options": [
+        "0 Curata ecluza",
+        "0 Incarca scuturile",
+        "0 Incarca scuturile\n1 Curata ecluza",
+        "1 Curata ecluza"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-remove-a6e714",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(index)\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "options": [
+        "0 Testeaza radioul\n1 Impacheteaza proviziile",
+        "0 Testeaza radioul\n1 Cartografiaza luna",
+        "1 Testeaza radioul\n2 Impacheteaza proviziile",
+        "0 Cartografiaza luna\n1 Impacheteaza proviziile"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-remove-53093c",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(index)\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "options": [
+        "0 Verifica oxigenul\n1 Repara carena\n2 Calibreaza senzorii",
+        "0 Verifica oxigenul\n1 Repara carena\n2 Actualizeaza harta stelara",
+        "1 Verifica oxigenul\n2 Repara carena\n3 Calibreaza senzorii",
+        "0 Verifica oxigenul\n1 Actualizeaza harta stelara\n2 Calibreaza senzorii"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bounds-8cd7de",
+      "text": "Ce afișează?",
+      "code": "def finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = [{\"nume\": \"Ruleaza diagnoza\", \"terminat\": False}, {\"nume\": \"Alimenteaza reactorul\", \"terminat\": False}, {\"nume\": \"Traseaza cursul\", \"terminat\": False}]\nfor index in [0, 5, 2, 1]:\n    finalizeaza_sarcina(sarcini, index)\nterminate = 0\nfor sarcina in sarcini:\n    if sarcina[\"terminat\"]:\n        terminate += 1\nprint(f\"Terminate: {terminate}/{len(sarcini)}\")",
+      "options": ["Terminate: 3/3", "Terminate: 2/3", "Terminate: 1/3", "Terminate: 0/3"],
+      "answer": 0
+    },
+    {
+      "id": "td-bounds-4c9514",
+      "text": "Ce afișează?",
+      "code": "def finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = [{\"nume\": \"Repara antena\", \"terminat\": False}, {\"nume\": \"Hraneste echipajul\", \"terminat\": False}, {\"nume\": \"Scaneaza sectorul 7\", \"terminat\": False}, {\"nume\": \"Noteaza zborul\", \"terminat\": False}]\nfor index in [3, 0, 4, 1]:\n    finalizeaza_sarcina(sarcini, index)\nterminate = 0\nfor sarcina in sarcini:\n    if sarcina[\"terminat\"]:\n        terminate += 1\nprint(f\"Terminate: {terminate}/{len(sarcini)}\")",
+      "options": ["Terminate: 3/4", "Terminate: 2/4", "Terminate: 1/4", "Terminate: 3/5"],
+      "answer": 0
+    },
+    {
+      "id": "td-bounds-2ef81f",
+      "text": "Ce afișează?",
+      "code": "def finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = [{\"nume\": \"Incarca scuturile\", \"terminat\": False}, {\"nume\": \"Curata ecluza\", \"terminat\": False}]\nfor index in [1, 0, 7]:\n    finalizeaza_sarcina(sarcini, index)\nterminate = 0\nfor sarcina in sarcini:\n    if sarcina[\"terminat\"]:\n        terminate += 1\nprint(f\"Terminate: {terminate}/{len(sarcini)}\")",
+      "options": ["Terminate: 2/2", "Terminate: 1/2", "Terminate: 0/2", "Terminate: 2/3"],
+      "answer": 0
+    },
+    {
+      "id": "td-bounds-61c356",
+      "text": "Ce afișează?",
+      "code": "def finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = [{\"nume\": \"Testeaza radioul\", \"terminat\": False}, {\"nume\": \"Cartografiaza luna\", \"terminat\": False}, {\"nume\": \"Impacheteaza proviziile\", \"terminat\": False}]\nfor index in [1, 9, 0, 2]:\n    finalizeaza_sarcina(sarcini, index)\nterminate = 0\nfor sarcina in sarcini:\n    if sarcina[\"terminat\"]:\n        terminate += 1\nprint(f\"Terminate: {terminate}/{len(sarcini)}\")",
+      "options": ["Terminate: 3/3", "Terminate: 2/3", "Terminate: 1/3", "Terminate: 0/3"],
+      "answer": 0
+    },
+    {
+      "id": "td-bounds-ea0432",
+      "text": "Ce afișează?",
+      "code": "def finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = [{\"nume\": \"Verifica oxigenul\", \"terminat\": False}, {\"nume\": \"Repara carena\", \"terminat\": False}, {\"nume\": \"Actualizeaza harta stelara\", \"terminat\": False}, {\"nume\": \"Calibreaza senzorii\", \"terminat\": False}]\nfor index in [4, 0, 2, 10, 3]:\n    finalizeaza_sarcina(sarcini, index)\nterminate = 0\nfor sarcina in sarcini:\n    if sarcina[\"terminat\"]:\n        terminate += 1\nprint(f\"Terminate: {terminate}/{len(sarcini)}\")",
+      "options": ["Terminate: 3/4", "Terminate: 2/4", "Terminate: 1/4", "Terminate: 3/5"],
+      "answer": 0
+    },
+    {
+      "id": "td-count-700e3a",
+      "text": "Ce afișează?",
+      "code": "def numara_finalizate(sarcini):\n    numar = 0\n    for sarcina in sarcini:\n        if sarcina[\"terminat\"]:\n            numar += 1\n    return numar\n\ndef numara_nefinalizate(sarcini):\n    return len(sarcini) - numara_finalizate(sarcini)\n\nsarcini = [{\"nume\": \"Ruleaza diagnoza\", \"terminat\": True}, {\"nume\": \"Alimenteaza reactorul\", \"terminat\": False}, {\"nume\": \"Traseaza cursul\", \"terminat\": False}]\nprint(f\"Terminate: {numara_finalizate(sarcini)}, ramase: {numara_nefinalizate(sarcini)}\")",
+      "options": [
+        "Terminate: 1, ramase: 2",
+        "Terminate: 1, ramase: 4",
+        "Terminate: 3, ramase: 0",
+        "Terminate: 1, ramase: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-count-8734c4",
+      "text": "Ce afișează?",
+      "code": "def numara_finalizate(sarcini):\n    numar = 0\n    for sarcina in sarcini:\n        if sarcina[\"terminat\"]:\n            numar += 1\n    return numar\n\ndef numara_nefinalizate(sarcini):\n    return len(sarcini) - numara_finalizate(sarcini)\n\nsarcini = [{\"nume\": \"Repara antena\", \"terminat\": False}, {\"nume\": \"Hraneste echipajul\", \"terminat\": True}, {\"nume\": \"Scaneaza sectorul 7\", \"terminat\": True}, {\"nume\": \"Noteaza zborul\", \"terminat\": True}]\nprint(f\"Terminate: {numara_finalizate(sarcini)}, ramase: {numara_nefinalizate(sarcini)}\")",
+      "options": [
+        "Terminate: 3, ramase: 1",
+        "Terminate: 3, ramase: 7",
+        "Terminate: 1, ramase: 3",
+        "Terminate: 4, ramase: 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-count-65bf6a",
+      "text": "Ce afișează?",
+      "code": "def numara_finalizate(sarcini):\n    numar = 0\n    for sarcina in sarcini:\n        if sarcina[\"terminat\"]:\n            numar += 1\n    return numar\n\ndef numara_nefinalizate(sarcini):\n    return len(sarcini) - numara_finalizate(sarcini)\n\nsarcini = [{\"nume\": \"Incarca scuturile\", \"terminat\": True}, {\"nume\": \"Curata ecluza\", \"terminat\": False}]\nprint(f\"Terminate: {numara_finalizate(sarcini)}, ramase: {numara_nefinalizate(sarcini)}\")",
+      "options": [
+        "Terminate: 1, ramase: 1",
+        "Terminate: 1, ramase: 3",
+        "Terminate: 2, ramase: 0",
+        "Terminate: 1, ramase: 2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-count-baaed6",
+      "text": "Ce afișează?",
+      "code": "def numara_finalizate(sarcini):\n    numar = 0\n    for sarcina in sarcini:\n        if sarcina[\"terminat\"]:\n            numar += 1\n    return numar\n\ndef numara_nefinalizate(sarcini):\n    return len(sarcini) - numara_finalizate(sarcini)\n\nsarcini = [{\"nume\": \"Testeaza radioul\", \"terminat\": False}, {\"nume\": \"Cartografiaza luna\", \"terminat\": True}, {\"nume\": \"Impacheteaza proviziile\", \"terminat\": False}]\nprint(f\"Terminate: {numara_finalizate(sarcini)}, ramase: {numara_nefinalizate(sarcini)}\")",
+      "options": [
+        "Terminate: 1, ramase: 2",
+        "Terminate: 1, ramase: 4",
+        "Terminate: 3, ramase: 0",
+        "Terminate: 1, ramase: 3"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-count-74aaca",
+      "text": "Ce afișează?",
+      "code": "def numara_finalizate(sarcini):\n    numar = 0\n    for sarcina in sarcini:\n        if sarcina[\"terminat\"]:\n            numar += 1\n    return numar\n\ndef numara_nefinalizate(sarcini):\n    return len(sarcini) - numara_finalizate(sarcini)\n\nsarcini = [{\"nume\": \"Verifica oxigenul\", \"terminat\": True}, {\"nume\": \"Repara carena\", \"terminat\": True}, {\"nume\": \"Actualizeaza harta stelara\", \"terminat\": False}, {\"nume\": \"Calibreaza senzorii\", \"terminat\": True}]\nprint(f\"Terminate: {numara_finalizate(sarcini)}, ramase: {numara_nefinalizate(sarcini)}\")",
+      "options": [
+        "Terminate: 3, ramase: 1",
+        "Terminate: 3, ramase: 7",
+        "Terminate: 1, ramase: 3",
+        "Terminate: 4, ramase: 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-split-33756b",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\ndef numara_finalizate(sarcini):\n    numar = 0\n    for sarcina in sarcini:\n        if sarcina[\"terminat\"]:\n            numar += 1\n    return numar\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nfor index in \"0 2\".split():\n    finalizeaza_sarcina(sarcini, int(index))\nprint(f\"Finalizat: {numara_finalizate(sarcini)}/{len(sarcini)}\")",
+      "options": ["Finalizat: 2/3", "Finalizat: 3/3", "Finalizat: 1/3", "Finalizat: 0/3"],
+      "answer": 0
+    },
+    {
+      "id": "td-split-6140bb",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\ndef numara_finalizate(sarcini):\n    numar = 0\n    for sarcina in sarcini:\n        if sarcina[\"terminat\"]:\n            numar += 1\n    return numar\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nfor index in \"1 3\".split():\n    finalizeaza_sarcina(sarcini, int(index))\nprint(f\"Finalizat: {numara_finalizate(sarcini)}/{len(sarcini)}\")",
+      "options": ["Finalizat: 2/4", "Finalizat: 4/4", "Finalizat: 1/4", "Finalizat: 0/4"],
+      "answer": 0
+    },
+    {
+      "id": "td-split-3917f1",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\ndef numara_finalizate(sarcini):\n    numar = 0\n    for sarcina in sarcini:\n        if sarcina[\"terminat\"]:\n            numar += 1\n    return numar\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nfor index in \"1\".split():\n    finalizeaza_sarcina(sarcini, int(index))\nprint(f\"Finalizat: {numara_finalizate(sarcini)}/{len(sarcini)}\")",
+      "options": ["Finalizat: 1/2", "Finalizat: 2/2", "Finalizat: 0/2", "Finalizat: 2/1"],
+      "answer": 0
+    },
+    {
+      "id": "td-split-d0605d",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\ndef numara_finalizate(sarcini):\n    numar = 0\n    for sarcina in sarcini:\n        if sarcina[\"terminat\"]:\n            numar += 1\n    return numar\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nfor index in \"0 2\".split():\n    finalizeaza_sarcina(sarcini, int(index))\nprint(f\"Finalizat: {numara_finalizate(sarcini)}/{len(sarcini)}\")",
+      "options": ["Finalizat: 2/3", "Finalizat: 3/3", "Finalizat: 1/3", "Finalizat: 0/3"],
+      "answer": 0
+    },
+    {
+      "id": "td-split-b1c9e8",
+      "text": "Ce afișează?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\ndef numara_finalizate(sarcini):\n    numar = 0\n    for sarcina in sarcini:\n        if sarcina[\"terminat\"]:\n            numar += 1\n    return numar\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nfor index in \"0 1 3\".split():\n    finalizeaza_sarcina(sarcini, int(index))\nprint(f\"Finalizat: {numara_finalizate(sarcini)}/{len(sarcini)}\")",
+      "options": ["Finalizat: 3/4", "Finalizat: 4/4", "Finalizat: 2/4", "Finalizat: 0/4"],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-append-8b5929",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    ___\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Ruleaza diagnoza\n1. [terminat] Alimenteaza reactorul\n2. [neterminat] Traseaza cursul",
+      "options": [
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "sarcini.append({\"nume\": nume, \"terminat\": True})",
+        "sarcini = [{\"nume\": nume, \"terminat\": False}]",
+        "sarcini.append(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-append-8a3c4c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    ___\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Repara antena\n1. [neterminat] Hraneste echipajul\n2. [terminat] Scaneaza sectorul 7\n3. [neterminat] Noteaza zborul",
+      "options": [
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "sarcini.append({\"nume\": nume, \"terminat\": True})",
+        "sarcini = [{\"nume\": nume, \"terminat\": False}]",
+        "sarcini.append(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-append-533f9c",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    ___\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [terminat] Incarca scuturile\n1. [neterminat] Curata ecluza",
+      "options": [
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "sarcini.append({\"nume\": nume, \"terminat\": True})",
+        "sarcini = [{\"nume\": nume, \"terminat\": False}]",
+        "sarcini.append(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-append-3ad52e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    ___\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Testeaza radioul\n1. [terminat] Cartografiaza luna\n2. [neterminat] Impacheteaza proviziile",
+      "options": [
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "sarcini.append({\"nume\": nume, \"terminat\": True})",
+        "sarcini = [{\"nume\": nume, \"terminat\": False}]",
+        "sarcini.append(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-append-db88c3",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    ___\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 3)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Verifica oxigenul\n1. [neterminat] Repara carena\n2. [neterminat] Actualizeaza harta stelara\n3. [terminat] Calibreaza senzorii",
+      "options": [
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "sarcini.append({\"nume\": nume, \"terminat\": True})",
+        "sarcini = [{\"nume\": nume, \"terminat\": False}]",
+        "sarcini.append(nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-status-7f8b6c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else ___\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Ruleaza diagnoza\n1. [terminat] Alimenteaza reactorul\n2. [neterminat] Traseaza cursul",
+      "options": ["\"neterminat\"", "\"terminat\"", "sarcina[\"nume\"]", "sarcina[\"terminat\"]"],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-status-15c86a",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else ___\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Repara antena\n1. [neterminat] Hraneste echipajul\n2. [terminat] Scaneaza sectorul 7\n3. [neterminat] Noteaza zborul",
+      "options": ["\"neterminat\"", "\"terminat\"", "sarcina[\"nume\"]", "sarcina[\"terminat\"]"],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-status-a961fc",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else ___\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [terminat] Incarca scuturile\n1. [neterminat] Curata ecluza",
+      "options": ["\"neterminat\"", "\"terminat\"", "sarcina[\"nume\"]", "sarcina[\"terminat\"]"],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-status-a2ff51",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else ___\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Testeaza radioul\n1. [terminat] Cartografiaza luna\n2. [neterminat] Impacheteaza proviziile",
+      "options": ["\"neterminat\"", "\"terminat\"", "sarcina[\"nume\"]", "sarcina[\"terminat\"]"],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-status-84e503",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 3)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else ___\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Verifica oxigenul\n1. [neterminat] Repara carena\n2. [neterminat] Actualizeaza harta stelara\n3. [terminat] Calibreaza senzorii",
+      "options": ["\"neterminat\"", "\"terminat\"", "sarcina[\"nume\"]", "sarcina[\"terminat\"]"],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-pop-f530f4",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(___)\n\ndef adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "output": "0 Ruleaza diagnoza\n1 Traseaza cursul",
+      "options": ["index", "0", "index + 1", "len(sarcini) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-pop-6a29f5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(___)\n\ndef adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "output": "0 Repara antena\n1 Hraneste echipajul\n2 Noteaza zborul",
+      "options": ["index", "0", "index + 1", "len(sarcini) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-pop-1c2b77",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(___)\n\ndef adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "output": "0 Curata ecluza",
+      "options": ["index", "index + 1", "len(sarcini) - 1", "1"],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-pop-5c2dab",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(___)\n\ndef adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "output": "0 Testeaza radioul\n1 Impacheteaza proviziile",
+      "options": ["index", "0", "index + 1", "len(sarcini) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "td-gap-pop-d29ce9",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(___)\n\ndef adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "output": "0 Verifica oxigenul\n1 Actualizeaza harta stelara\n2 Calibreaza senzorii",
+      "options": ["index", "0", "index + 1", "len(sarcini) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-done-902e10",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = False\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Ruleaza diagnoza\n1. [terminat] Alimenteaza reactorul\n2. [neterminat] Traseaza cursul",
+      "options": [
+        "sarcini[index][\"terminat\"] = False",
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "if 0 <= index < len(sarcini):",
+        "def finalizeaza_sarcina(sarcini, index):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-done-29320f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = False\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Repara antena\n1. [neterminat] Hraneste echipajul\n2. [terminat] Scaneaza sectorul 7\n3. [neterminat] Noteaza zborul",
+      "options": [
+        "sarcini[index][\"terminat\"] = False",
+        "sarcini = []",
+        "adauga_sarcina(sarcini, nume)",
+        "finalizeaza_sarcina(sarcini, 2)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-done-59e92e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = False\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [terminat] Incarca scuturile\n1. [neterminat] Curata ecluza",
+      "options": [
+        "sarcini[index][\"terminat\"] = False",
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "sarcini = []",
+        "adauga_sarcina(sarcini, nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-done-a51656",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = False\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Testeaza radioul\n1. [terminat] Cartografiaza luna\n2. [neterminat] Impacheteaza proviziile",
+      "options": [
+        "sarcini[index][\"terminat\"] = False",
+        "sarcini = []",
+        "adauga_sarcina(sarcini, nume)",
+        "finalizeaza_sarcina(sarcini, 1)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-done-f5bc56",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = False\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 3)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+      "output": "0. [neterminat] Verifica oxigenul\n1. [neterminat] Repara carena\n2. [neterminat] Actualizeaza harta stelara\n3. [terminat] Calibreaza senzorii",
+      "options": [
+        "sarcini[index][\"terminat\"] = False",
+        "sarcini = []",
+        "adauga_sarcina(sarcini, nume)",
+        "finalizeaza_sarcina(sarcini, 3)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-remove-80c746",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop()\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "output": "0 Alimenteaza reactorul\n1 Traseaza cursul",
+      "options": [
+        "sarcini.pop()",
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "sarcini = []",
+        "adauga_sarcina(sarcini, nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-remove-2b4f22",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop()\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "output": "0 Repara antena\n1 Scaneaza sectorul 7\n2 Noteaza zborul",
+      "options": [
+        "sarcini.pop()",
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "sarcini = []",
+        "adauga_sarcina(sarcini, nume)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-remove-912e99",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop()\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "output": "0 Curata ecluza",
+      "options": [
+        "sarcini.pop()",
+        "sarcini = []",
+        "adauga_sarcina(sarcini, nume)",
+        "elimina_sarcina(sarcini, 0)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-remove-036902",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop()\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "output": "0 Testeaza radioul\n1 Impacheteaza proviziile",
+      "options": [
+        "sarcini.pop()",
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "if 0 <= index < len(sarcini):",
+        "sarcini = []"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-remove-da5c75",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop()\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nelimina_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    print(i, sarcina[\"nume\"])",
+      "output": "0 Verifica oxigenul\n1 Repara carena\n2 Calibreaza senzorii",
+      "options": [
+        "sarcini.pop()",
+        "sarcini.append({\"nume\": nume, \"terminat\": False})",
+        "if 0 <= index < len(sarcini):",
+        "def elimina_sarcina(sarcini, index):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-bounds-b77c4f",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def finalizeaza_sarcina(sarcini, index):\n    if 0 < index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = [{\"nume\": \"Ruleaza diagnoza\", \"terminat\": False}, {\"nume\": \"Alimenteaza reactorul\", \"terminat\": False}, {\"nume\": \"Traseaza cursul\", \"terminat\": False}]\nfor index in [0, 2]:\n    finalizeaza_sarcina(sarcini, index)\nfor sarcina in sarcini:\n    print(sarcina[\"nume\"], sarcina[\"terminat\"])",
+      "output": "Ruleaza diagnoza True\nAlimenteaza reactorul False\nTraseaza cursul True",
+      "options": [
+        "if 0 < index < len(sarcini):",
+        "def finalizeaza_sarcina(sarcini, index):",
+        "for index in [0, 2]:",
+        "for sarcina in sarcini:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-bounds-d8e654",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def finalizeaza_sarcina(sarcini, index):\n    if 0 < index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = [{\"nume\": \"Repara antena\", \"terminat\": False}, {\"nume\": \"Hraneste echipajul\", \"terminat\": False}, {\"nume\": \"Scaneaza sectorul 7\", \"terminat\": False}, {\"nume\": \"Noteaza zborul\", \"terminat\": False}]\nfor index in [3, 0]:\n    finalizeaza_sarcina(sarcini, index)\nfor sarcina in sarcini:\n    print(sarcina[\"nume\"], sarcina[\"terminat\"])",
+      "output": "Repara antena True\nHraneste echipajul False\nScaneaza sectorul 7 False\nNoteaza zborul True",
+      "options": [
+        "if 0 < index < len(sarcini):",
+        "for index in [3, 0]:",
+        "for sarcina in sarcini:",
+        "sarcini[index][\"terminat\"] = True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-bounds-5a6213",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def finalizeaza_sarcina(sarcini, index):\n    if 0 < index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = [{\"nume\": \"Incarca scuturile\", \"terminat\": False}, {\"nume\": \"Curata ecluza\", \"terminat\": False}]\nfor index in [0]:\n    finalizeaza_sarcina(sarcini, index)\nfor sarcina in sarcini:\n    print(sarcina[\"nume\"], sarcina[\"terminat\"])",
+      "output": "Incarca scuturile True\nCurata ecluza False",
+      "options": [
+        "if 0 < index < len(sarcini):",
+        "def finalizeaza_sarcina(sarcini, index):",
+        "for index in [0]:",
+        "for sarcina in sarcini:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-bounds-005ba4",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def finalizeaza_sarcina(sarcini, index):\n    if 0 < index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = [{\"nume\": \"Testeaza radioul\", \"terminat\": False}, {\"nume\": \"Cartografiaza luna\", \"terminat\": False}, {\"nume\": \"Impacheteaza proviziile\", \"terminat\": False}]\nfor index in [2, 0]:\n    finalizeaza_sarcina(sarcini, index)\nfor sarcina in sarcini:\n    print(sarcina[\"nume\"], sarcina[\"terminat\"])",
+      "output": "Testeaza radioul True\nCartografiaza luna False\nImpacheteaza proviziile True",
+      "options": [
+        "if 0 < index < len(sarcini):",
+        "def finalizeaza_sarcina(sarcini, index):",
+        "for index in [2, 0]:",
+        "for sarcina in sarcini:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-bad-bounds-92d1cb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def finalizeaza_sarcina(sarcini, index):\n    if 0 < index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = [{\"nume\": \"Verifica oxigenul\", \"terminat\": False}, {\"nume\": \"Repara carena\", \"terminat\": False}, {\"nume\": \"Actualizeaza harta stelara\", \"terminat\": False}, {\"nume\": \"Calibreaza senzorii\", \"terminat\": False}]\nfor index in [0, 1]:\n    finalizeaza_sarcina(sarcini, index)\nfor sarcina in sarcini:\n    print(sarcina[\"nume\"], sarcina[\"terminat\"])",
+      "output": "Verifica oxigenul True\nRepara carena True\nActualizeaza harta stelara False\nCalibreaza senzorii False",
+      "options": [
+        "if 0 < index < len(sarcini):",
+        "for index in [0, 1]:",
+        "for sarcina in sarcini:",
+        "sarcini[index][\"terminat\"] = True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-which-show-884f04",
+      "text": "Care program afișează asta?",
+      "output": "0. [neterminat] Ruleaza diagnoza\n1. [terminat] Alimenteaza reactorul\n2. [neterminat] Traseaza cursul",
+      "options": [
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"neterminat\" if sarcina[\"terminat\"] else \"terminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i + 1}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = False\n\nsarcini = []\nfor nume in [\"Ruleaza diagnoza\", \"Alimenteaza reactorul\", \"Traseaza cursul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-which-show-11d8fb",
+      "text": "Care program afișează asta?",
+      "output": "0. [neterminat] Repara antena\n1. [neterminat] Hraneste echipajul\n2. [terminat] Scaneaza sectorul 7\n3. [neterminat] Noteaza zborul",
+      "options": [
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"neterminat\" if sarcina[\"terminat\"] else \"terminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i + 1}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = False\n\nsarcini = []\nfor nume in [\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 2)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-which-show-c58f58",
+      "text": "Care program afișează asta?",
+      "output": "0. [terminat] Incarca scuturile\n1. [neterminat] Curata ecluza",
+      "options": [
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"neterminat\" if sarcina[\"terminat\"] else \"terminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i + 1}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = False\n\nsarcini = []\nfor nume in [\"Incarca scuturile\", \"Curata ecluza\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 0)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-which-show-6d91eb",
+      "text": "Care program afișează asta?",
+      "output": "0. [neterminat] Testeaza radioul\n1. [terminat] Cartografiaza luna\n2. [neterminat] Impacheteaza proviziile",
+      "options": [
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"neterminat\" if sarcina[\"terminat\"] else \"terminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i + 1}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = False\n\nsarcini = []\nfor nume in [\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 1)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-which-show-52260c",
+      "text": "Care program afișează asta?",
+      "output": "0. [neterminat] Verifica oxigenul\n1. [neterminat] Repara carena\n2. [neterminat] Actualizeaza harta stelara\n3. [terminat] Calibreaza senzorii",
+      "options": [
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 3)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 3)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"neterminat\" if sarcina[\"terminat\"] else \"terminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = True\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 3)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i + 1}. [{stare}] {sarcina['nume']}\")",
+        "def adauga_sarcina(sarcini, nume):\n    sarcini.append({\"nume\": nume, \"terminat\": False})\n\ndef finalizeaza_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini[index][\"terminat\"] = False\n\nsarcini = []\nfor nume in [\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"]:\n    adauga_sarcina(sarcini, nume)\nfinalizeaza_sarcina(sarcini, 3)\nfor i, sarcina in enumerate(sarcini):\n    stare = \"terminat\" if sarcina[\"terminat\"] else \"neterminat\"\n    print(f\"{i}. [{stare}] {sarcina['nume']}\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-names-72dc51",
+      "text": "Ce afișează?",
+      "code": "sarcini = [{\"nume\": \"Ruleaza diagnoza\", \"terminat\": True}, {\"nume\": \"Alimenteaza reactorul\", \"terminat\": False}, {\"nume\": \"Traseaza cursul\", \"terminat\": True}]\nfor sarcina in sarcini:\n    if sarcina[\"terminat\"]:\n        print(sarcina[\"nume\"])",
+      "options": [
+        "Ruleaza diagnoza\nTraseaza cursul",
+        "Alimenteaza reactorul",
+        "True\nTrue",
+        "{'nume': 'Ruleaza diagnoza', 'terminat': True}\n{'nume': 'Traseaza cursul', 'terminat': True}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-names-8734c4",
+      "text": "Ce afișează?",
+      "code": "sarcini = [{\"nume\": \"Repara antena\", \"terminat\": False}, {\"nume\": \"Hraneste echipajul\", \"terminat\": True}, {\"nume\": \"Scaneaza sectorul 7\", \"terminat\": True}, {\"nume\": \"Noteaza zborul\", \"terminat\": True}]\nfor sarcina in sarcini:\n    if sarcina[\"terminat\"]:\n        print(sarcina[\"nume\"])",
+      "options": [
+        "Hraneste echipajul\nScaneaza sectorul 7\nNoteaza zborul",
+        "Repara antena",
+        "True\nTrue\nTrue",
+        "{'nume': 'Hraneste echipajul', 'terminat': True}\n{'nume': 'Scaneaza sectorul 7', 'terminat': True}\n{'nume': 'Noteaza zborul', 'terminat': True}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-names-65bf6a",
+      "text": "Ce afișează?",
+      "code": "sarcini = [{\"nume\": \"Incarca scuturile\", \"terminat\": True}, {\"nume\": \"Curata ecluza\", \"terminat\": False}]\nfor sarcina in sarcini:\n    if sarcina[\"terminat\"]:\n        print(sarcina[\"nume\"])",
+      "options": [
+        "Incarca scuturile",
+        "Curata ecluza",
+        "True",
+        "{'nume': 'Incarca scuturile', 'terminat': True}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-names-0009a6",
+      "text": "Ce afișează?",
+      "code": "sarcini = [{\"nume\": \"Testeaza radioul\", \"terminat\": False}, {\"nume\": \"Cartografiaza luna\", \"terminat\": False}, {\"nume\": \"Impacheteaza proviziile\", \"terminat\": True}]\nfor sarcina in sarcini:\n    if sarcina[\"terminat\"]:\n        print(sarcina[\"nume\"])",
+      "options": [
+        "Impacheteaza proviziile",
+        "Testeaza radioul\nCartografiaza luna",
+        "True",
+        "{'nume': 'Impacheteaza proviziile', 'terminat': True}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-names-74aaca",
+      "text": "Ce afișează?",
+      "code": "sarcini = [{\"nume\": \"Verifica oxigenul\", \"terminat\": True}, {\"nume\": \"Repara carena\", \"terminat\": True}, {\"nume\": \"Actualizeaza harta stelara\", \"terminat\": False}, {\"nume\": \"Calibreaza senzorii\", \"terminat\": True}]\nfor sarcina in sarcini:\n    if sarcina[\"terminat\"]:\n        print(sarcina[\"nume\"])",
+      "options": [
+        "Verifica oxigenul\nRepara carena\nCalibreaza senzorii",
+        "Actualizeaza harta stelara",
+        "True\nTrue\nTrue",
+        "{'nume': 'Verifica oxigenul', 'terminat': True}\n{'nume': 'Repara carena', 'terminat': True}\n{'nume': 'Calibreaza senzorii', 'terminat': True}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-pop-twice-2c596f",
+      "text": "Ce afișează?",
+      "code": "def elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(index)\n\nsarcini = [{\"nume\": \"Ruleaza diagnoza\", \"terminat\": False}, {\"nume\": \"Alimenteaza reactorul\", \"terminat\": False}, {\"nume\": \"Traseaza cursul\", \"terminat\": False}]\nelimina_sarcina(sarcini, 0)\nelimina_sarcina(sarcini, 0)\nprint([sarcina[\"nume\"] for sarcina in sarcini])",
+      "options": [
+        "['Traseaza cursul']",
+        "['Ruleaza diagnoza']",
+        "['Alimenteaza reactorul']",
+        "['Ruleaza diagnoza', 'Alimenteaza reactorul', 'Traseaza cursul']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-pop-twice-7881de",
+      "text": "Ce afișează?",
+      "code": "def elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(index)\n\nsarcini = [{\"nume\": \"Repara antena\", \"terminat\": False}, {\"nume\": \"Hraneste echipajul\", \"terminat\": False}, {\"nume\": \"Scaneaza sectorul 7\", \"terminat\": False}, {\"nume\": \"Noteaza zborul\", \"terminat\": False}]\nelimina_sarcina(sarcini, 1)\nelimina_sarcina(sarcini, 1)\nprint([sarcina[\"nume\"] for sarcina in sarcini])",
+      "options": [
+        "['Repara antena', 'Noteaza zborul']",
+        "['Repara antena', 'Hraneste echipajul']",
+        "['Repara antena', 'Scaneaza sectorul 7']",
+        "2"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-pop-twice-dc7af2",
+      "text": "Ce afișează?",
+      "code": "def elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(index)\n\nsarcini = [{\"nume\": \"Incarca scuturile\", \"terminat\": False}, {\"nume\": \"Curata ecluza\", \"terminat\": False}]\nelimina_sarcina(sarcini, 0)\nelimina_sarcina(sarcini, 0)\nprint([sarcina[\"nume\"] for sarcina in sarcini])",
+      "options": ["[]", "['Curata ecluza']", "['Incarca scuturile', 'Curata ecluza']", "0"],
+      "answer": 0
+    },
+    {
+      "id": "td-pop-twice-992f1e",
+      "text": "Ce afișează?",
+      "code": "def elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(index)\n\nsarcini = [{\"nume\": \"Testeaza radioul\", \"terminat\": False}, {\"nume\": \"Cartografiaza luna\", \"terminat\": False}, {\"nume\": \"Impacheteaza proviziile\", \"terminat\": False}]\nelimina_sarcina(sarcini, 2)\nelimina_sarcina(sarcini, 0)\nprint([sarcina[\"nume\"] for sarcina in sarcini])",
+      "options": [
+        "['Cartografiaza luna']",
+        "['Testeaza radioul']",
+        "['Testeaza radioul', 'Cartografiaza luna']",
+        "1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-pop-twice-faf1bd",
+      "text": "Ce afișează?",
+      "code": "def elimina_sarcina(sarcini, index):\n    if 0 <= index < len(sarcini):\n        sarcini.pop(index)\n\nsarcini = [{\"nume\": \"Verifica oxigenul\", \"terminat\": False}, {\"nume\": \"Repara carena\", \"terminat\": False}, {\"nume\": \"Actualizeaza harta stelara\", \"terminat\": False}, {\"nume\": \"Calibreaza senzorii\", \"terminat\": False}]\nelimina_sarcina(sarcini, 0)\nelimina_sarcina(sarcini, 2)\nprint([sarcina[\"nume\"] for sarcina in sarcini])",
+      "options": [
+        "['Repara carena', 'Actualizeaza harta stelara']",
+        "['Verifica oxigenul', 'Repara carena']",
+        "['Repara carena', 'Actualizeaza harta stelara', 'Calibreaza senzorii']",
+        "['Verifica oxigenul', 'Repara carena', 'Calibreaza senzorii']"
+      ],
+      "answer": 0
+    }
+  ]
+}

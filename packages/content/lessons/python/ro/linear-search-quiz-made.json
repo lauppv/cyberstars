@@ -1,0 +1,625 @@
+{
+  "note": "Made by npm run make:quiz from the templates in linear-search-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "ls-index-7b0637",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [4, 8, 15, 16, 23]\nprint(cautare_liniara(numere, 15))",
+      "options": ["2", "15", "0", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "ls-index-23fbaa",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [7, 3, 9, 1]\nprint(cautare_liniara(numere, 1))",
+      "options": ["3", "1", "0", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "ls-index-42f7f5",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [12, 5, 12, 8]\nprint(cautare_liniara(numere, 8))",
+      "options": ["3", "8", "0", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "ls-index-b15de1",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [6, 2, 6, 2]\nprint(cautare_liniara(numere, 2))",
+      "options": ["1", "2", "0", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "ls-index-f3e137",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [30, 10, 20]\nprint(cautare_liniara(numere, 30))",
+      "options": ["0", "30", "-1", "1"],
+      "answer": 0
+    },
+    {
+      "id": "ls-missing-43464b",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [4, 8, 15, 16]\nprint(cautare_liniara(numere, 16))\nprint(cautare_liniara(numere, 5))",
+      "options": ["3\n-1", "3\n0", "16\n-1", "3\n4"],
+      "answer": 0
+    },
+    {
+      "id": "ls-missing-fc6d7d",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [9, 1, 7]\nprint(cautare_liniara(numere, 2))\nprint(cautare_liniara(numere, 9))",
+      "options": ["-1\n0", "0\n0", "-1\n9", "3\n0"],
+      "answer": 0
+    },
+    {
+      "id": "ls-missing-85734f",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [3, 6, 9, 12]\nprint(cautare_liniara(numere, 9))\nprint(cautare_liniara(numere, 10))",
+      "options": ["2\n-1", "2\n0", "9\n-1", "2\n4"],
+      "answer": 0
+    },
+    {
+      "id": "ls-missing-dbd7ec",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [20, 40, 60]\nprint(cautare_liniara(numere, 50))\nprint(cautare_liniara(numere, 60))",
+      "options": ["-1\n2", "0\n2", "-1\n60", "3\n2"],
+      "answer": 0
+    },
+    {
+      "id": "ls-missing-d7ce0e",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [5, 5, 1, 2]\nprint(cautare_liniara(numere, 1))\nprint(cautare_liniara(numere, 3))",
+      "options": ["2\n-1", "2\n0", "1\n-1", "2\n4"],
+      "answer": 0
+    },
+    {
+      "id": "ls-names-3218e7",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"]\nprint(cautare_liniara(echipaj, \"Phil\"))",
+      "options": ["3", "Phil", "-1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "ls-names-0a9531",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Boris\", \"Cara\", \"Dmitri\"]\nprint(cautare_liniara(echipaj, \"Cara\"))",
+      "options": ["1", "Cara", "-1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "ls-names-72634f",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Rex\", \"Ana\", \"Ben\", \"Ana\"]\nprint(cautare_liniara(echipaj, \"Ana\"))",
+      "options": ["1", "Ana", "-1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "ls-names-4aa42f",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Kent\", \"Mercedes\", \"Victor\"]\nprint(cautare_liniara(echipaj, \"Victor\"))",
+      "options": ["2", "Victor", "-1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ls-names-7c0b67",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Sonny\", \"Lance\", \"Tommy\", \"Cortez\", \"Phil\"]\nprint(cautare_liniara(echipaj, \"Tommy\"))",
+      "options": ["2", "Tommy", "-1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ls-checks-c18b9c",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    verificari = 0\n    for i in range(len(elemente)):\n        verificari += 1\n        if elemente[i] == tinta:\n            return verificari\n    return verificari\n\nprint(cautare_liniara([5, 9, 2, 7, 4], 7))",
+      "options": ["4", "3", "8", "5"],
+      "answer": 0
+    },
+    {
+      "id": "ls-checks-f876d9",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    verificari = 0\n    for i in range(len(elemente)):\n        verificari += 1\n        if elemente[i] == tinta:\n            return verificari\n    return verificari\n\nprint(cautare_liniara([8, 3, 6], 6))",
+      "options": ["3", "2", "6", "4"],
+      "answer": 0
+    },
+    {
+      "id": "ls-checks-a9a945",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    verificari = 0\n    for i in range(len(elemente)):\n        verificari += 1\n        if elemente[i] == tinta:\n            return verificari\n    return verificari\n\nprint(cautare_liniara([2, 4, 6, 8, 10, 12], 12))",
+      "options": ["6", "5", "12", "7"],
+      "answer": 0
+    },
+    {
+      "id": "ls-checks-6942b1",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    verificari = 0\n    for i in range(len(elemente)):\n        verificari += 1\n        if elemente[i] == tinta:\n            return verificari\n    return verificari\n\nprint(cautare_liniara([11, 22, 33, 44], 33))",
+      "options": ["3", "2", "6", "4"],
+      "answer": 0
+    },
+    {
+      "id": "ls-checks-dba3c0",
+      "text": "Ce afișează?",
+      "code": "def cautare_liniara(elemente, tinta):\n    verificari = 0\n    for i in range(len(elemente)):\n        verificari += 1\n        if elemente[i] == tinta:\n            return verificari\n    return verificari\n\nprint(cautare_liniara([6, 7, 6, 7, 6], 7))",
+      "options": ["2", "1", "4", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ls-first-above-71cd33",
+      "text": "Ce afișează?",
+      "code": "scoruri = [65, 42, 95, 88, 99]\nfor i in range(len(scoruri)):\n    if scoruri[i] > 90:\n        print(f\"{scoruri[i]} la indexul {i}\")\n        break",
+      "options": [
+        "95 la indexul 2",
+        "95 la indexul 2\n99 la indexul 4",
+        "65 la indexul 0",
+        "2 la indexul 95"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-first-above-6f9b7e",
+      "text": "Ce afișează?",
+      "code": "scoruri = [10, 30, 20, 50, 40]\nfor i in range(len(scoruri)):\n    if scoruri[i] > 25:\n        print(f\"{scoruri[i]} la indexul {i}\")\n        break",
+      "options": [
+        "30 la indexul 1",
+        "30 la indexul 1\n50 la indexul 3\n40 la indexul 4",
+        "10 la indexul 0",
+        "1 la indexul 30"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-first-above-8b19b2",
+      "text": "Ce afișează?",
+      "code": "scoruri = [7, 4, 9, 12, 3]\nfor i in range(len(scoruri)):\n    if scoruri[i] > 8:\n        print(f\"{scoruri[i]} la indexul {i}\")\n        break",
+      "options": [
+        "9 la indexul 2",
+        "9 la indexul 2\n12 la indexul 3",
+        "7 la indexul 0",
+        "2 la indexul 9"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-first-above-5a599a",
+      "text": "Ce afișează?",
+      "code": "scoruri = [55, 60, 75, 80]\nfor i in range(len(scoruri)):\n    if scoruri[i] > 70:\n        print(f\"{scoruri[i]} la indexul {i}\")\n        break",
+      "options": [
+        "75 la indexul 2",
+        "75 la indexul 2\n80 la indexul 3",
+        "55 la indexul 0",
+        "2 la indexul 75"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-first-above-da1d7c",
+      "text": "Ce afișează?",
+      "code": "scoruri = [3, 8, 5, 9, 6]\nfor i in range(len(scoruri)):\n    if scoruri[i] > 4:\n        print(f\"{scoruri[i]} la indexul {i}\")\n        break",
+      "options": [
+        "8 la indexul 1",
+        "8 la indexul 1\n5 la indexul 2\n9 la indexul 3\n6 la indexul 4",
+        "3 la indexul 0",
+        "1 la indexul 8"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-find-all-d53244",
+      "text": "Ce afișează?",
+      "code": "def gaseste_toate(elemente, tinta):\n    locuri = []\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            locuri.append(i)\n    return locuri\n\nprint(gaseste_toate([3, 7, 3, 1, 3], 3))",
+      "options": ["[0, 2, 4]", "[3, 3, 3]", "[0]", "[1, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "ls-find-all-3a0cab",
+      "text": "Ce afișează?",
+      "code": "def gaseste_toate(elemente, tinta):\n    locuri = []\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            locuri.append(i)\n    return locuri\n\nprint(gaseste_toate([5, 2, 8, 2], 2))",
+      "options": ["[1, 3]", "[2, 2]", "[]", "[0, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "ls-find-all-e4c16a",
+      "text": "Ce afișează?",
+      "code": "def gaseste_toate(elemente, tinta):\n    locuri = []\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            locuri.append(i)\n    return locuri\n\nprint(gaseste_toate([9, 9, 4], 9))",
+      "options": ["[0, 1]", "[9, 9]", "[0]", "[2]"],
+      "answer": 0
+    },
+    {
+      "id": "ls-find-all-f4ce23",
+      "text": "Ce afișează?",
+      "code": "def gaseste_toate(elemente, tinta):\n    locuri = []\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            locuri.append(i)\n    return locuri\n\nprint(gaseste_toate([8, 1, 8], 8))",
+      "options": ["[0, 2]", "[8, 8]", "[0]", "[1]"],
+      "answer": 0
+    },
+    {
+      "id": "ls-find-all-3939e9",
+      "text": "Ce afișează?",
+      "code": "def gaseste_toate(elemente, tinta):\n    locuri = []\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            locuri.append(i)\n    return locuri\n\nprint(gaseste_toate([6, 0, 6, 0, 0], 0))",
+      "options": ["[1, 3, 4]", "[0, 0, 0]", "[]", "[0, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "ls-last-0c0267",
+      "text": "Ce afișează?",
+      "code": "def gaseste_ultimul(elemente, tinta):\n    ultim = -1\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ultim = i\n    return ultim\n\nprint(gaseste_ultimul([4, 1, 4, 2], 4))",
+      "options": ["2", "4", "0", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ls-last-8cbf94",
+      "text": "Ce afișează?",
+      "code": "def gaseste_ultimul(elemente, tinta):\n    ultim = -1\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ultim = i\n    return ultim\n\nprint(gaseste_ultimul([7, 7, 7], 7))",
+      "options": ["2", "7", "0", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ls-last-843ac0",
+      "text": "Ce afișează?",
+      "code": "def gaseste_ultimul(elemente, tinta):\n    ultim = -1\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ultim = i\n    return ultim\n\nprint(gaseste_ultimul([2, 5, 8, 5, 1], 5))",
+      "options": ["3", "5", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "ls-last-bd2f59",
+      "text": "Ce afișează?",
+      "code": "def gaseste_ultimul(elemente, tinta):\n    ultim = -1\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ultim = i\n    return ultim\n\nprint(gaseste_ultimul([3, 6, 9, 6], 6))",
+      "options": ["3", "6", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "ls-last-d75790",
+      "text": "Ce afișează?",
+      "code": "def gaseste_ultimul(elemente, tinta):\n    ultim = -1\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ultim = i\n    return ultim\n\nprint(gaseste_ultimul([0, 1, 0, 1, 0, 2], 1))",
+      "options": ["3", "1", "4", "5"],
+      "answer": 0
+    },
+    {
+      "id": "ls-report-40265a",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef gaseste_echipaj(echipaj, tinta):\n    for i in range(len(echipaj)):\n        if echipaj[i] == tinta:\n            return i\n    return -1\n\ntinta = \"Cara\"\nstatie = gaseste_echipaj(echipaj, tinta)\nif statie == -1:\n    print(f\"{tinta} nu este la bord\")\nelse:\n    print(f\"{tinta} este la statia {statie}\")",
+      "options": [
+        "Cara este la statia 2",
+        "Cara este la statia 3",
+        "Cara nu este la bord",
+        "Cara este la statia Cara"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-report-cc314a",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef gaseste_echipaj(echipaj, tinta):\n    for i in range(len(echipaj)):\n        if echipaj[i] == tinta:\n            return i\n    return -1\n\ntinta = \"Boris\"\nstatie = gaseste_echipaj(echipaj, tinta)\nif statie == -1:\n    print(f\"{tinta} nu este la bord\")\nelse:\n    print(f\"{tinta} este la statia {statie}\")",
+      "options": [
+        "Boris este la statia 1",
+        "Boris este la statia 2",
+        "Boris nu este la bord",
+        "Boris este la statia Boris"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-report-0725f1",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef gaseste_echipaj(echipaj, tinta):\n    for i in range(len(echipaj)):\n        if echipaj[i] == tinta:\n            return i\n    return -1\n\ntinta = \"Tommy\"\nstatie = gaseste_echipaj(echipaj, tinta)\nif statie == -1:\n    print(f\"{tinta} nu este la bord\")\nelse:\n    print(f\"{tinta} este la statia {statie}\")",
+      "options": [
+        "Tommy este la statia 0",
+        "Tommy nu este la bord",
+        "Tommy este la statia 1",
+        "Tommy este la statia Tommy"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-report-978d75",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef gaseste_echipaj(echipaj, tinta):\n    for i in range(len(echipaj)):\n        if echipaj[i] == tinta:\n            return i\n    return -1\n\ntinta = \"Cortez\"\nstatie = gaseste_echipaj(echipaj, tinta)\nif statie == -1:\n    print(f\"{tinta} nu este la bord\")\nelse:\n    print(f\"{tinta} este la statia {statie}\")",
+      "options": [
+        "Cortez este la statia 4",
+        "Cortez este la statia 5",
+        "Cortez nu este la bord",
+        "Cortez este la statia Cortez"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-report-0d4130",
+      "text": "Ce afișează?",
+      "code": "echipaj = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef gaseste_echipaj(echipaj, tinta):\n    for i in range(len(echipaj)):\n        if echipaj[i] == tinta:\n            return i\n    return -1\n\ntinta = \"Dmitri\"\nstatie = gaseste_echipaj(echipaj, tinta)\nif statie == -1:\n    print(f\"{tinta} nu este la bord\")\nelse:\n    print(f\"{tinta} este la statia {statie}\")",
+      "options": [
+        "Dmitri este la statia 3",
+        "Dmitri este la statia 4",
+        "Dmitri nu este la bord",
+        "Dmitri este la statia Dmitri"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-which-ca4ed2",
+      "text": "Care program afișează asta?",
+      "output": "2",
+      "options": [
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [2, 4, 6, 8]\nprint(cautare_liniara(numere, 6))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return elemente[i]\n    return -1\n\nnumere = [2, 4, 6, 8]\nprint(cautare_liniara(numere, 6))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nnumere = [2, 4, 6, 8]\nprint(cautare_liniara(numere, 6))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] != tinta:\n            return i\n    return -1\n\nnumere = [2, 4, 6, 8]\nprint(cautare_liniara(numere, 6))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-which-547bc0",
+      "text": "Care program afișează asta?",
+      "output": "3",
+      "options": [
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [9, 7, 5, 3]\nprint(cautare_liniara(numere, 3))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nnumere = [9, 7, 5, 3]\nprint(cautare_liniara(numere, 3))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente) - 1):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [9, 7, 5, 3]\nprint(cautare_liniara(numere, 3))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] != tinta:\n            return i\n    return -1\n\nnumere = [9, 7, 5, 3]\nprint(cautare_liniara(numere, 3))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-which-81e41d",
+      "text": "Care program afișează asta?",
+      "output": "1",
+      "options": [
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [1, 3, 1, 3]\nprint(cautare_liniara(numere, 3))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return elemente[i]\n    return -1\n\nnumere = [1, 3, 1, 3]\nprint(cautare_liniara(numere, 3))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nnumere = [1, 3, 1, 3]\nprint(cautare_liniara(numere, 3))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] != tinta:\n            return i\n    return -1\n\nnumere = [1, 3, 1, 3]\nprint(cautare_liniara(numere, 3))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-which-b07898",
+      "text": "Care program afișează asta?",
+      "output": "4",
+      "options": [
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [5, 10, 15, 20, 25]\nprint(cautare_liniara(numere, 25))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return elemente[i]\n    return -1\n\nnumere = [5, 10, 15, 20, 25]\nprint(cautare_liniara(numere, 25))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nnumere = [5, 10, 15, 20, 25]\nprint(cautare_liniara(numere, 25))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente) - 1):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [5, 10, 15, 20, 25]\nprint(cautare_liniara(numere, 25))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-which-0e6acb",
+      "text": "Care program afișează asta?",
+      "output": "5",
+      "options": [
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [1, 2, 3, 4, 5, 6]\nprint(cautare_liniara(numere, 6))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return elemente[i]\n    return -1\n\nnumere = [1, 2, 3, 4, 5, 6]\nprint(cautare_liniara(numere, 6))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nnumere = [1, 2, 3, 4, 5, 6]\nprint(cautare_liniara(numere, 6))",
+        "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente) - 1):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnumere = [1, 2, 3, 4, 5, 6]\nprint(cautare_liniara(numere, 6))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-return-c81abb",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ___\n    return -1\n\nnumere = [5, 10, 15, 20]\nprint(cautare_liniara(numere, 15))\nprint(cautare_liniara(numere, 4))",
+      "output": "2\n-1",
+      "options": ["return i", "return elemente[i]", "return -1", "print(i)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-return-5c0f83",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ___\n    return -1\n\nnumere = [8, 6, 7]\nprint(cautare_liniara(numere, 7))\nprint(cautare_liniara(numere, 8))",
+      "output": "2\n0",
+      "options": ["return i", "return elemente[i]", "return -1", "print(i)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-return-71ef64",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ___\n    return -1\n\nnumere = [3, 1, 4, 1]\nprint(cautare_liniara(numere, 4))\nprint(cautare_liniara(numere, 1))",
+      "output": "2\n1",
+      "options": ["return i", "return elemente[i]", "return -1", "print(i)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-return-d8d7cc",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ___\n    return -1\n\nnumere = [12, 24, 36]\nprint(cautare_liniara(numere, 36))\nprint(cautare_liniara(numere, 13))",
+      "output": "2\n-1",
+      "options": ["return i", "return elemente[i]", "return -1", "print(i)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-return-7eef84",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            ___\n    return -1\n\nnumere = [9, 0, 9]\nprint(cautare_liniara(numere, 0))\nprint(cautare_liniara(numere, 2))",
+      "output": "1\n-1",
+      "options": ["return i", "return elemente[i]", "return -1", "print(i)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-eq-c3befa",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] ___ tinta:\n            return i\n    return -1\n\nnumere = [3, 8, 5, 1]\nprint(cautare_liniara(numere, 5))",
+      "output": "2",
+      "options": ["==", "!=", ">", "<"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-eq-381365",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] ___ tinta:\n            return i\n    return -1\n\nnumere = [9, 2, 7]\nprint(cautare_liniara(numere, 7))",
+      "output": "2",
+      "options": ["==", "!=", ">", "<"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-eq-824fe6",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] ___ tinta:\n            return i\n    return -1\n\nnumere = [4, 6, 10, 2]\nprint(cautare_liniara(numere, 10))",
+      "output": "2",
+      "options": ["==", "!=", ">", "<"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-eq-5ae81d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] ___ tinta:\n            return i\n    return -1\n\nnumere = [1, 5, 3]\nprint(cautare_liniara(numere, 3))",
+      "output": "2",
+      "options": ["==", "!=", ">", "<"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-eq-b67766",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] ___ tinta:\n            return i\n    return -1\n\nnumere = [20, 30, 25]\nprint(cautare_liniara(numere, 25))",
+      "output": "2",
+      "options": ["==", "!=", ">", "<"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-notfound-3be240",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return ___\n\nnumere = [2, 4, 6]\nprint(cautare_liniara(numere, 4))\nprint(cautare_liniara(numere, 5))",
+      "output": "1\n-1",
+      "options": ["-1", "0", "i", "len(elemente)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-notfound-087403",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return ___\n\nnumere = [7, 1, 9, 3]\nprint(cautare_liniara(numere, 9))\nprint(cautare_liniara(numere, 8))",
+      "output": "2\n-1",
+      "options": ["-1", "0", "i", "len(elemente)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-notfound-e155f2",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return ___\n\nnumere = [5, 15, 25]\nprint(cautare_liniara(numere, 25))\nprint(cautare_liniara(numere, 35))",
+      "output": "2\n-1",
+      "options": ["-1", "0", "i", "len(elemente)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-notfound-b9b06d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return ___\n\nnumere = [6, 3, 6]\nprint(cautare_liniara(numere, 6))\nprint(cautare_liniara(numere, 1))",
+      "output": "0\n-1",
+      "options": ["-1", "0", "i", "len(elemente)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-gap-notfound-aa9485",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return ___\n\nnumere = [11, 13, 17, 19]\nprint(cautare_liniara(numere, 17))\nprint(cautare_liniara(numere, 12))",
+      "output": "2\n-1",
+      "options": ["-1", "0", "i", "len(elemente)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-bad-indent-4f310a",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nnumere = [4, 9, 2, 7]\nprint(numere)\nprint(cautare_liniara(numere, 7))",
+      "output": "[4, 9, 2, 7]\n3",
+      "options": ["return -1", "return i", "if elemente[i] == tinta:", "numere = [4, 9, 2, 7]"],
+      "answer": 0
+    },
+    {
+      "id": "ls-bad-indent-eaf42d",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nnumere = [5, 3, 8]\nprint(numere)\nprint(cautare_liniara(numere, 8))",
+      "output": "[5, 3, 8]\n2",
+      "options": ["return -1", "return i", "numere = [5, 3, 8]", "print(numere)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-bad-indent-d24c46",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nnumere = [1, 6, 3, 6]\nprint(numere)\nprint(cautare_liniara(numere, 3))",
+      "output": "[1, 6, 3, 6]\n2",
+      "options": [
+        "return -1",
+        "numere = [1, 6, 3, 6]",
+        "print(numere)",
+        "print(cautare_liniara(numere, 3))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-bad-indent-582c41",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nnumere = [10, 30, 50, 70]\nprint(numere)\nprint(cautare_liniara(numere, 50))",
+      "output": "[10, 30, 50, 70]\n2",
+      "options": [
+        "return -1",
+        "return i",
+        "if elemente[i] == tinta:",
+        "for i in range(len(elemente)):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-bad-indent-d9b10e",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n        return -1\n\nnumere = [8, 2, 4]\nprint(numere)\nprint(cautare_liniara(numere, 4))",
+      "output": "[8, 2, 4]\n2",
+      "options": [
+        "return -1",
+        "return i",
+        "if elemente[i] == tinta:",
+        "for i in range(len(elemente)):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-bad-return-f2ff86",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return elemente[i]\n    return -1\n\nnumere = [40, 10, 30, 20]\nprint(numere)\nprint(cautare_liniara(numere, 30))",
+      "output": "[40, 10, 30, 20]\n2",
+      "options": [
+        "return elemente[i]",
+        "if elemente[i] == tinta:",
+        "for i in range(len(elemente)):",
+        "def cautare_liniara(elemente, tinta):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-bad-return-00e3ae",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return elemente[i]\n    return -1\n\nnumere = [6, 7, 8, 9]\nprint(numere)\nprint(cautare_liniara(numere, 9))",
+      "output": "[6, 7, 8, 9]\n3",
+      "options": ["return elemente[i]", "return -1", "numere = [6, 7, 8, 9]", "print(numere)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-bad-return-6d2bf5",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return elemente[i]\n    return -1\n\nnumere = [15, 25, 35]\nprint(numere)\nprint(cautare_liniara(numere, 15))",
+      "output": "[15, 25, 35]\n0",
+      "options": [
+        "return elemente[i]",
+        "if elemente[i] == tinta:",
+        "for i in range(len(elemente)):",
+        "def cautare_liniara(elemente, tinta):"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ls-bad-return-812e82",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return elemente[i]\n    return -1\n\nnumere = [4, 5, 7, 11]\nprint(numere)\nprint(cautare_liniara(numere, 11))",
+      "output": "[4, 5, 7, 11]\n3",
+      "options": ["return elemente[i]", "return -1", "numere = [4, 5, 7, 11]", "print(numere)"],
+      "answer": 0
+    },
+    {
+      "id": "ls-bad-return-c50ebb",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return elemente[i]\n    return -1\n\nnumere = [2, 9, 4, 1]\nprint(numere)\nprint(cautare_liniara(numere, 1))",
+      "output": "[2, 9, 4, 1]\n3",
+      "options": [
+        "return elemente[i]",
+        "if elemente[i] == tinta:",
+        "return -1",
+        "numere = [2, 9, 4, 1]"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,691 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce două întrebări spune lecția să-ți pui despre orice funcție recursivă?",
+      "options": [
+        "De câte ori se cheamă și cât de repede e?",
+        "Care e cazul de bază și cum se micșorează problema?",
+        "Ce buclă înlocuiește și ce listă folosește?",
+        "Ce afișează prima dată și ce afișează la final?"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(6))",
+      "options": ["5", "13", "6", "8"],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "De ce are nevoie `fib` de două cazuri de bază, `fib(0)` și `fib(1)`?",
+      "options": [
+        "`fib(n)` cheamă și `fib(n - 1)`, și `fib(n - 2)`, așa că doar cu `fib(1)` un apel ar trece de el spre -1, -2...",
+        "Python cere ca orice funcție recursivă să aibă exact două cazuri de bază",
+        "Ca funcția să returneze o listă de două numere",
+        "Unul e pentru numerele pare, celălalt pentru cele impare"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "De ce spune lecția că acest `fib` nu e prea eficient?",
+      "options": [
+        "Pentru că adunarea a două numere e lentă în Python",
+        "Pentru că are două cazuri de bază în loc de unul",
+        "Calculează aceleași valori iar și iar: și `fib(5)`, și `fib(4)` calculează `fib(3)`",
+        "Pentru că face o listă cu fiecare număr găsit"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(6):\n    print(fib(i), end=\" \")",
+      "options": ["1 1 2 3 5 8", "0 1 1 2 3 5", "0 1 2 3 4 5", "0 1 1 2 3 5 8"],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"Mars\"))",
+      "options": ["Mars", "srMa", "s", "sraM"],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Cum construiește `inverseaza_sir` inversul lui \"Tommy\"?",
+      "options": [
+        "Inversul lui \"ommy\", urmat de \"T\"",
+        "\"T\", urmat de inversul lui \"ommy\"",
+        "Inversul lui \"Tomm\", urmat de \"y\"",
+        "Interschimbând o dată prima și ultima literă"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "def numara_caractere(text, tinta):\n    if len(text) == 0:\n        return 0\n    primul = 1 if text[0] == tinta else 0\n    return primul + numara_caractere(text[1:], tinta)\n\nprint(numara_caractere(\"banana\", \"n\"))",
+      "options": ["3", "1", "2", "6"],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "În `numara_caractere`, ce face `primul = 1 if text[0] == tinta else 0`?",
+      "options": [
+        "Sare la primul caracter care se potrivește",
+        "Face `primul` 1 când primul caracter e cel numărat și 0 altfel",
+        "Oprește funcția când primul caracter se potrivește",
+        "Numără deodată fiecare potrivire din tot textul"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "def aplatizeaza(lista):\n    rezultat = []\n    for element in lista:\n        if type(element) == list:\n            rezultat = rezultat + aplatizeaza(element)\n        else:\n            rezultat.append(element)\n    return rezultat\n\nprint(aplatizeaza([1, [2, [3]], 4]))",
+      "options": ["[1, [2, [3]], 4]", "[1, 2, [3], 4]", "[1, 4]", "[1, 2, 3, 4]"],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "De ce aplatizează lecția o listă imbricată cu recursivitate și nu doar cu o buclă?",
+      "options": [
+        "Nu știm cât de adânc merg listele, iar recursivitatea merge cât de adânc merg ele",
+        "Pentru că o buclă nu poate trece printr-o listă",
+        "Pentru că recursivitatea sortează și numerele",
+        "Doar o buclă e mai bine: recursivitatea poate aplatiza un singur nivel"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "print(type([1, 2]) == list)\nprint(type(7) == list)",
+      "options": ["False\nTrue", "True\nTrue", "True\nFalse", "list\nint"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "n = 4070\nprint(n % 10, n // 10)",
+      "options": ["4 070", "0 407", "407 0", "0 4070"],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nprint(suma_cifre(1234))",
+      "options": ["1234", "4", "24", "10"],
+      "answer": 3
+    },
+    {
+      "id": "q15",
+      "text": "Care e cazul de bază al lui `suma_cifre` din misiune?",
+      "options": [
+        "`n < 10`: o singură cifră e propria ei sumă, așa că returnează `n`",
+        "`n == 0`: returnează 0",
+        "`n % 10 == 0`: ultima cifră e 0",
+        "`n // 10`: restul numărului"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "În misiune, codurile sunt 1234, 999, 5, 4070 și 88. Care e cea mai mare sumă de control?",
+      "options": ["16", "999", "27", "11"],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def inverseaza_sir(s):\n    if len(s) == 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"\"))",
+      "options": [
+        "Afișează o linie goală",
+        "Se oprește cu RecursionError: \"\"[1:] e tot \"\", așa că lungimea nu ajunge niciodată la 1",
+        "Afișează None",
+        "Se oprește cu IndexError"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "def numara_caractere(text, tinta):\n    if len(text) == 0:\n        return 0\n    primul = 1 if text[0] == tinta else 0\n    return primul + numara_caractere(text[1:], tinta)\n\nprint(numara_caractere(\"\", \"a\"))",
+      "options": ["1", "None", "Nimic: se oprește cu IndexError", "0"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"a\"))",
+      "options": ["a", "None", "aa", "Nimic: se oprește cu RecursionError"],
+      "answer": 0
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "def aplatizeaza(lista):\n    rezultat = []\n    for element in lista:\n        if type(element) == list:\n            rezultat = rezultat + aplatizeaza(element)\n        else:\n            rezultat.append(element)\n    return rezultat\n\nprint(aplatizeaza([[1, 2], [3]]))",
+      "options": ["[[1, 2], [3]]", "[1, 2, [3]]", "[1, 2, 3]", "[3, 1, 2]"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "def aplatizeaza(lista):\n    rezultat = []\n    for element in lista:\n        if type(element) == list:\n            rezultat.append(aplatizeaza(element))\n        else:\n            rezultat.append(element)\n    return rezultat\n\nprint(aplatizeaza([[1, 2], [3]]))",
+      "options": ["[1, 2, 3]", "[[1, 2], [3]]", "[1, 2, [3]]", "[]"],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "De câte ori cheamă `fib(4)` pe `fib(2)`, cu toate apelurile de pe drum?",
+      "options": ["1", "3", "4", "2"],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nprint(suma_cifre(5))",
+      "options": ["5", "0", "Nimic: se oprește cu RecursionError", "50"],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\ncod = 999\nprint(f\"{cod}: {suma_cifre(cod)}\")",
+      "options": ["999: 9", "27: 999", "999: 27", "999: 999"],
+      "answer": 2
+    },
+    {
+      "id": "q25",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(-1))",
+      "options": [
+        "Afișează -1",
+        "Se oprește cu RecursionError: n merge -2, -3... și nu întâlnește niciun caz de bază",
+        "Afișează 0",
+        "Afișează 1"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(10))",
+      "options": ["34", "89", "10", "55"],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "Ce parte din `numara_caractere` micșorează problema la fiecare apel?",
+      "options": [
+        "`numara_caractere(text[1:], tinta)`: textul își pierde primul caracter",
+        "`primul = 1 if text[0] == tinta else 0`",
+        "`if len(text) == 0:`",
+        "`return 0`"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "def inverseaza_sir(s):\n    print(s)\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"abc\"))",
+      "options": ["abc\ncba", "c\nbc\nabc\ncba", "abc\nbc\nc\ncba", "abc\nbc\nc\nabc"],
+      "answer": 2
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "def numara_cifre(n):\n    if n < 10:\n        return 1\n    return 1 + numara_cifre(n // 10)\n\nprint(numara_cifre(4070))",
+      "options": ["3", "4", "11", "407"],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "În misiune, de ce poate `cea_mai_mare` să pornească de la 0?",
+      "options": [
+        "Pentru că primul cod e 0",
+        "Pentru că sumele de control pot fi negative",
+        "Nu poate: trebuie să pornească de la primul cod",
+        "Fiecare cod e un număr pozitiv, așa că suma lui e peste 0 și prima o înlocuiește"
+      ],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "rp-fib-row",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range({{k}}):\n    print(fib(i), end=\" \")",
+      "values": [
+        {
+          "k": 5
+        },
+        {
+          "k": 7
+        },
+        {
+          "k": 8
+        },
+        {
+          "k": 9
+        },
+        {
+          "k": 4
+        }
+      ],
+      "mistakes": [
+        ["    if n == 0:\n        return 0", "    if n == 0:\n        return 1"],
+        ["fib(n - 1) + fib(n - 2)", "fib(n - 1) + fib(n - 1)"],
+        ["range({{k}})", "range(1, {{k}})"],
+        ["fib(n - 1) + fib(n - 2)", "fib(n - 1) + n"]
+      ]
+    },
+    {
+      "id": "rp-fib",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib({{n}}))",
+      "values": [
+        {
+          "n": 5
+        },
+        {
+          "n": 7
+        },
+        {
+          "n": 8
+        },
+        {
+          "n": 9
+        },
+        {
+          "n": 11
+        }
+      ],
+      "mistakes": [
+        ["    if n == 0:\n        return 0", "    if n == 0:\n        return 1"],
+        ["fib(n - 1) + fib(n - 2)", "fib(n - 1) + 1"],
+        ["fib(n - 1) + fib(n - 2)", "fib(n - 1) + fib(n - 2) + 1"],
+        ["print(fib({{n}}))", "print(fib({{n}} - 1))"]
+      ]
+    },
+    {
+      "id": "rp-reverse",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"{{w}}\"))",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "orbita"
+        },
+        {
+          "w": "Lance"
+        },
+        {
+          "w": "cometa"
+        },
+        {
+          "w": "Vice"
+        }
+      ],
+      "mistakes": [
+        ["inverseaza_sir(s[1:]) + s[0]", "s[0] + inverseaza_sir(s[1:])"],
+        ["inverseaza_sir(s[1:]) + s[0]", "inverseaza_sir(s[2:]) + s[0]"],
+        ["        return s", "        return \"\""],
+        ["inverseaza_sir(s[1:]) + s[0]", "inverseaza_sir(s[1:])"]
+      ]
+    },
+    {
+      "id": "rp-count",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def numara_caractere(text, tinta):\n    if len(text) == 0:\n        return 0\n    primul = 1 if text[0] == tinta else 0\n    return primul + numara_caractere(text[1:], tinta)\n\nprint(numara_caractere(\"{{t}}\", \"{{c}}\"))",
+      "values": [
+        {
+          "t": "banana",
+          "c": "a"
+        },
+        {
+          "t": "mississippi",
+          "c": "s"
+        },
+        {
+          "t": "racheta",
+          "c": "a"
+        },
+        {
+          "t": "galaxie",
+          "c": "a"
+        },
+        {
+          "t": "cometele",
+          "c": "e"
+        }
+      ],
+      "mistakes": [
+        ["primul = 1 if text[0] == tinta else 0", "primul = 0 if text[0] == tinta else 1"],
+        ["return primul + numara_caractere(text[1:], tinta)", "return primul"],
+        ["        return 0", "        return 1"],
+        ["return primul + numara_caractere", "return 1 + numara_caractere"],
+        ["numara_caractere(text[1:], tinta)", "numara_caractere(text[2:], tinta)"]
+      ]
+    },
+    {
+      "id": "rp-flatten",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def aplatizeaza(lista):\n    rezultat = []\n    for element in lista:\n        if type(element) == list:\n            rezultat = rezultat + aplatizeaza(element)\n        else:\n            rezultat.append(element)\n    return rezultat\n\nprint(aplatizeaza({{l}}))",
+      "values": [
+        {
+          "l": "[1, [2, 3], [4, [5, 6]], 7]"
+        },
+        {
+          "l": "[[1, 2], [3, [4]]]"
+        },
+        {
+          "l": "[5, [6, [7, [8]]]]"
+        },
+        {
+          "l": "[[10], 20, [30, 40]]"
+        },
+        {
+          "l": "[1, [], [2, [3, []]]]"
+        }
+      ],
+      "mistakes": [
+        ["rezultat = rezultat + aplatizeaza(element)", "rezultat.append(element)"],
+        ["rezultat = rezultat + aplatizeaza(element)", "rezultat.append(aplatizeaza(element))"],
+        ["rezultat = rezultat + aplatizeaza(element)", "rezultat = aplatizeaza(element)"],
+        [
+          "            rezultat.append(element)",
+          "            rezultat = rezultat + [element, element]"
+        ]
+      ]
+    },
+    {
+      "id": "rp-digits",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nfor cod in [{{cs}}]:\n    print(f\"{cod}: {suma_cifre(cod)}\")",
+      "values": [
+        {
+          "cs": "1234, 56"
+        },
+        {
+          "cs": "999, 7"
+        },
+        {
+          "cs": "4070, 88"
+        },
+        {
+          "cs": "305, 61"
+        },
+        {
+          "cs": "2024, 13"
+        }
+      ],
+      "mistakes": [
+        ["        return n", "        return 0"],
+        ["n % 10 + suma_cifre(n // 10)", "n // 10 + suma_cifre(n % 10)"],
+        ["n % 10 + suma_cifre(n // 10)", "n % 10 * suma_cifre(n // 10)"],
+        ["if n < 10:", "if n < 100:"]
+      ]
+    },
+    {
+      "id": "rp-checksums",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\ncoduri = [{{cs}}]\ncea_mai_mare = 0\nfor cod in coduri:\n    suma = suma_cifre(cod)\n    if suma > cea_mai_mare:\n        cea_mai_mare = suma\nprint(f\"Cea mai mare suma de control: {cea_mai_mare}\")",
+      "values": [
+        {
+          "cs": "1234, 999, 5, 4070, 88"
+        },
+        {
+          "cs": "11, 505, 72"
+        },
+        {
+          "cs": "1000, 46, 333"
+        },
+        {
+          "cs": "19, 91, 60"
+        },
+        {
+          "cs": "250, 8, 1111"
+        }
+      ],
+      "mistakes": [
+        ["suma > cea_mai_mare", "suma < cea_mai_mare"],
+        ["        cea_mai_mare = suma", "        cea_mai_mare = cod"],
+        [
+          "print(f\"Cea mai mare suma de control: {cea_mai_mare}\")",
+          "    print(f\"Cea mai mare suma de control: {cea_mai_mare}\")"
+        ],
+        ["Cea mai mare suma de control: {cea_mai_mare}", "Cea mai mare suma de control: {suma}"]
+      ]
+    },
+    {
+      "id": "rp-count-digits",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def numara_cifre(n):\n    if n < 10:\n        return 1\n    return 1 + numara_cifre(n // 10)\n\nfor n in [{{nums}}]:\n    print(n, numara_cifre(n))",
+      "values": [
+        {
+          "nums": "7, 42, 4070"
+        },
+        {
+          "nums": "100, 9, 12345"
+        },
+        {
+          "nums": "88, 1000, 5"
+        }
+      ],
+      "mistakes": [
+        ["        return 1", "        return 0"],
+        ["return 1 + numara_cifre(n // 10)", "return 1 + numara_cifre(n // 100)"],
+        ["return 1 + numara_cifre(n // 10)", "return n % 10 + numara_cifre(n // 10)"],
+        ["if n < 10:", "if n < 100:"]
+      ]
+    },
+    {
+      "id": "rp-which-reverse",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"{{w}}\"))",
+      "values": [
+        {
+          "w": "stea"
+        },
+        {
+          "w": "Marte"
+        },
+        {
+          "w": "planeta"
+        }
+      ],
+      "mistakes": [
+        ["inverseaza_sir(s[1:]) + s[0]", "s[0] + inverseaza_sir(s[1:])"],
+        ["inverseaza_sir(s[1:]) + s[0]", "inverseaza_sir(s[1:]) + s[1]"],
+        ["        return s", "        return \"\""]
+      ]
+    },
+    {
+      "id": "rp-which-digits",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nprint(suma_cifre({{n}}))",
+      "values": [
+        {
+          "n": 1234
+        },
+        {
+          "n": 4070
+        },
+        {
+          "n": 305
+        }
+      ],
+      "mistakes": [
+        ["n % 10 + suma_cifre(n // 10)", "n // 10 + suma_cifre(n % 10)"],
+        ["        return n", "        return 0"],
+        ["n % 10 + suma_cifre(n // 10)", "n % 10 + n // 10"]
+      ]
+    },
+    {
+      "id": "rp-gap-rest",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    ___\n\nprint(inverseaza_sir(\"{{w}}\"))",
+      "values": [
+        {
+          "w": "Tommy"
+        },
+        {
+          "w": "orbita"
+        },
+        {
+          "w": "semnal"
+        },
+        {
+          "w": "Marte"
+        },
+        {
+          "w": "cometa"
+        }
+      ],
+      "answer": "return inverseaza_sir(s[1:]) + s[0]",
+      "wrong": [
+        "return s[0] + inverseaza_sir(s[1:])",
+        "return inverseaza_sir(s[1:])",
+        "return inverseaza_sir(s) + s[0]",
+        "return s[1:] + s[0]"
+      ]
+    },
+    {
+      "id": "rp-gap-base",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        ___\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range({{k}}):\n    print(fib(i), end=\" \")",
+      "values": [
+        {
+          "k": 5
+        },
+        {
+          "k": 6
+        },
+        {
+          "k": 7
+        },
+        {
+          "k": 8
+        },
+        {
+          "k": 9
+        }
+      ],
+      "answer": "return 1",
+      "wrong": ["return 0", "return 2", "return fib(n - 2)", "return fib(n - 1)"]
+    },
+    {
+      "id": "rp-val-digit",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n ___ 10 + suma_cifre(n // 10)\n\nprint(suma_cifre({{n}}))",
+      "values": [
+        {
+          "n": 1234
+        },
+        {
+          "n": 4070
+        },
+        {
+          "n": 999
+        },
+        {
+          "n": 88
+        },
+        {
+          "n": 516
+        }
+      ],
+      "answer": "%",
+      "wrong": ["//", "*", "+", "-"]
+    },
+    {
+      "id": "rp-val-ternary",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def numara_caractere(text, tinta):\n    if len(text) == 0:\n        return 0\n    primul = 1 if text[0] ___ tinta else 0\n    return primul + numara_caractere(text[1:], tinta)\n\nprint(numara_caractere(\"{{t}}\", \"{{c}}\"))",
+      "values": [
+        {
+          "t": "banana",
+          "c": "n"
+        },
+        {
+          "t": "racheta",
+          "c": "h"
+        },
+        {
+          "t": "mississippi",
+          "c": "p"
+        },
+        {
+          "t": "cometele",
+          "c": "l"
+        },
+        {
+          "t": "cometa",
+          "c": "m"
+        }
+      ],
+      "answer": "==",
+      "wrong": ["!=", "<", ">"]
+    },
+    {
+      "id": "rp-bad-flatten",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def aplatizeaza(lista):\n    rezultat = []\n    for element in lista:\n        if type(element) == list:\n            rezultat = rezultat + aplatizeaza(element)\n        else:\n            rezultat.append(element)\n    return rezultat\n\nfor lista in [{{a}}, {{b}}]:\n    print(aplatizeaza(lista))",
+      "values": [
+        {
+          "a": "[1, [2, 3]]",
+          "b": "[[4], 5]"
+        },
+        {
+          "a": "[[1, 2], 3]",
+          "b": "[4, [5, [6]]]"
+        },
+        {
+          "a": "[[1], [2]]",
+          "b": "[3, [4, 5]]"
+        }
+      ],
+      "bug": ["rezultat = rezultat + aplatizeaza(element)", "rezultat = rezultat + [element]"]
+    },
+    {
+      "id": "rp-bad-digits",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nfor cod in [{{cs}}]:\n    print(cod, suma_cifre(cod))",
+      "values": [
+        {
+          "cs": "1234, 56"
+        },
+        {
+          "cs": "999, 70"
+        },
+        {
+          "cs": "4070, 88"
+        }
+      ],
+      "bug": ["suma_cifre(n // 10)", "suma_cifre(n // 100)"]
+    }
+  ]
+}

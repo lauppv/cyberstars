@@ -1,0 +1,689 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Pentru ce întrebare e făcut un dicționar de frecvență?",
+      "options": [
+        "Unde este primul element?",
+        "Care e cel mai mare număr din listă?",
+        "Este lista sortată?",
+        "De câte ori apare fiecare element?"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q2",
+      "text": "Ce alt nume are un dicționar de frecvență?",
+      "options": ["Steag", "Căutare liniară", "Tuplu", "Histogramă"],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"mississippi\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\n\nprint(frecventa)",
+      "options": [
+        "{'i': 4, 's': 4, 'p': 2, 'm': 1}",
+        "{'m': 1, 'i': 1, 's': 1, 'p': 1}",
+        "{'m': 1, 'i': 4, 's': 4, 'p': 2}",
+        "{'m', 'i', 's', 'p'}"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "De ce verifică bucla `if litera in frecventa` înainte să adune 1?",
+      "options": [
+        "Ca fiecare literă să fie numărată o singură dată",
+        "Prima dată când apare o literă nu e încă o cheie, deci nu există un număr la care să aduni 1",
+        "Pentru că dicționarele pot ține doar litere",
+        "Ca dicționarul să rămână sortat"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "frecventa = {}\nfrecventa[\"a\"] += 1\nprint(frecventa)",
+      "options": [
+        "Afișează {'a': 1}",
+        "Un KeyError: „a” nu e încă o cheie în `frecventa`",
+        "Afișează {'a': 0}",
+        "Afișează {}"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "Un element nou e găsit prima dată. Ce număr primește?",
+      "options": ["0", "2", "1", "Poziția lui în listă"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Cum pornește dicționarul de frecvență, înainte de buclă?",
+      "options": [
+        "Cu fiecare literă la 0",
+        "Cu primul element la 1",
+        "Gol: `frecventa = {}`",
+        "Ca o listă goală `[]`"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"I like pizza and I like tacos\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
+      "options": [
+        "{'I': 1, 'like': 1, 'pizza': 1, 'and': 1, 'tacos': 1}",
+        "{'I': 2, 'like': 2, 'pizza': 1, 'and': 1}",
+        "{'I': 2, 'like': 2, 'pizza': 1, 'and': 1, 'tacos': 1}",
+        "7"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "frecventa = {\"a\": 2, \"b\": 5, \"c\": 3}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(f\"Cel mai comun: {cea_mai_buna_cheie} ({cel_mai_bun_numar} ori)\")",
+      "options": [
+        "Cel mai comun: c (3 ori)",
+        "Cel mai comun: a (2 ori)",
+        "Cel mai comun: b (5 ori)",
+        "Cel mai comun:  (0 ori)"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "frecventa = {\"x\": 3, \"y\": 3, \"z\": 1}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(cea_mai_buna_cheie)",
+      "options": ["y", "x\ny", "3", "x"],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "Două chei au la egalitate cel mai mare număr. Ce se schimbă dacă `contor > cel_mai_bun_numar` devine `contor >= cel_mai_bun_numar`?",
+      "options": [
+        "Câștigă ultima dintre cheile la egalitate, nu prima",
+        "Nu se schimbă niciodată nimic",
+        "Bucla se oprește la prima cheie",
+        "Câștigă cheia cu numărul cel mai mic"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "frecventa = {\"a\": 3, \"b\": 1, \"c\": 2, \"d\": 1}\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
+      "options": ["['b', 'd']", "['a', 'c']", "['b']", "[1, 1]"],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "Ce dă `for cheie, contor in frecventa.items():` la fiecare pas?",
+      "options": ["Doar cheile", "O cheie și numărul ei", "Doar numerele", "Tot dicționarul"],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Prin ce trece `for cheie in sorted(frecventa):`?",
+      "options": [
+        "Prin numere, de la cel mai mic la cel mai mare",
+        "Prin chei, în ordine alfabetică",
+        "Prin chei, în ordinea în care au fost adăugate",
+        "Prin perechi, de la cea mai comună"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "Ce afișează?",
+      "code": "frecventa = {\"c\": 3, \"a\": 2, \"b\": 1}\nfor cheie in sorted(frecventa):\n    print(f\"{cheie}: {frecventa[cheie]}\")",
+      "options": ["a: 2\nb: 1\nc: 3", "c: 3\na: 2\nb: 1", "b: 1\na: 2\nc: 3", "a\nb\nc"],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "În `sorted(frecventa.items(), key=lambda x: x[1])`, ce face `key=lambda x: x[1]`?",
+      "options": [
+        "Sortează după literă",
+        "Păstrează doar prima pereche",
+        "Transformă numerele în chei",
+        "Îi spune lui sorted() să sorteze perechile după număr"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Ce adaugă `reverse=True` când sortezi perechile după număr?",
+      "options": [
+        "Cele mai rare vin primele",
+        "Cheile sunt scrise invers",
+        "Se păstrează doar ultima pereche",
+        "Cele mai comune vin primele"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "frecventa = {\"python\": 2, \"java\": 4, \"c\": 1}\nfor curs, contor in sorted(frecventa.items(), key=lambda x: x[1], reverse=True):\n    print(f\"{curs}: {contor}\")",
+      "options": [
+        "java: 4\npython: 2\nc: 1",
+        "c: 1\npython: 2\njava: 4",
+        "python: 2\njava: 4\nc: 1",
+        "java\npython\nc"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"banana\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "options": [
+        "{'a': 3, 'b': 1, 'n': 2}",
+        "{'a': 3, 'n': 2, 'b': 1}",
+        "{'b': 1, 'a': 1, 'n': 1}",
+        "{'b': 1, 'a': 3, 'n': 2}"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"hello\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(len(frecventa))",
+      "options": ["5", "2", "4", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "Aduni toate numerele dintr-un dicționar de frecvență făcut dintr-o listă. Ce obții?",
+      "options": [
+        "Câte elemente are lista",
+        "Câte elemente diferite are",
+        "Cel mai mare număr",
+        "Mereu 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "În misiune, cum e afișat fiecare canal?",
+      "options": [
+        "Ca `numar: canal`, de la cel mai aglomerat",
+        "Ca `canal: numar`, în ordine alfabetică",
+        "Doar canalul cel mai aglomerat",
+        "Tot dicționarul pe un rând"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "În misiune, semnalele sunt B, A, C, B, A, B, D, A, B. Care canal e cel mai comun?",
+      "options": ["A", "B", "C", "D"],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"Aaa\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "options": ["{'a': 3}", "{'A': 1, 'a': 2}", "{'A': 3}", "{'A': 1, 'a': 1}"],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"a b a\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "options": [
+        "{'a': 2, 'b': 1}",
+        "{'a': 2, ' ': 1, 'b': 1}",
+        "{'a': 2, ' ': 2, 'b': 1}",
+        "{' ': 2}"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "De ce numărăm cu un dicționar și nu cu o listă?",
+      "options": [
+        "Listele nu pot ține numere",
+        "Dicționarul găsește numărul unui element după cheia lui, fără să-l caute",
+        "Un dicționar ține elementele sortate",
+        "O listă poate ține doar 10 elemente"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"rocket\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(\"z\" in frecventa)",
+      "options": ["True", "0", "False", "O eroare"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"mississippi\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa[\"s\"])",
+      "options": ["2", "1", "11", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce dă `propozitie.split(\" \")` înainte să numărăm cuvintele?",
+      "options": [
+        "O listă cu cuvintele, tăiate la fiecare spațiu",
+        "Numărul de cuvinte",
+        "Propoziția fără spații",
+        "Un dicționar cu cuvintele"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Ce îți spune `len(frecventa)` despre un dicționar de frecvență?",
+      "options": [
+        "Câte elemente diferite au fost numărate",
+        "Câte elemente avea lista",
+        "Cel mai mare număr",
+        "Elementul cel mai comun"
+      ],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "fd-letters",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"{{w}}\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "values": [
+        {
+          "w": "lalea"
+        },
+        {
+          "w": "cacao"
+        },
+        {
+          "w": "mama"
+        },
+        {
+          "w": "mere"
+        },
+        {
+          "w": "cocos"
+        }
+      ],
+      "mistakes": [
+        ["        frecventa[litera] += 1", "        frecventa[litera] = 1"],
+        ["        frecventa[litera] = 1", "        frecventa[litera] = 0"],
+        ["print(frecventa)", "print(len(frecventa))"],
+        ["        frecventa[litera] += 1", "        frecventa[litera] += 2"]
+      ]
+    },
+    {
+      "id": "fd-words",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "propozitie = \"{{s}}\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
+      "values": [
+        {
+          "s": "hai hai stop hai"
+        },
+        {
+          "s": "rosu albastru rosu verde albastru rosu"
+        },
+        {
+          "s": "sus jos sus"
+        },
+        {
+          "s": "scan sonda scan start"
+        },
+        {
+          "s": "da nu nu da da"
+        }
+      ],
+      "mistakes": [
+        ["        frecventa[cuvant] += 1", "        frecventa[cuvant] = 1"],
+        ["propozitie.split(\" \")", "propozitie"],
+        ["print(frecventa)", "print(len(frecventa))"],
+        ["        frecventa[cuvant] = 1", "        frecventa[cuvant] = 0"]
+      ]
+    },
+    {
+      "id": "fd-one-key",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "elemente = [{{L}}]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[{{k}}])",
+      "values": [
+        {
+          "L": "3, 1, 3, 2, 3",
+          "k": 3
+        },
+        {
+          "L": "7, 7, 5, 7, 5",
+          "k": 7
+        },
+        {
+          "L": "1, 2, 2, 2, 1, 2",
+          "k": 2
+        },
+        {
+          "L": "9, 4, 4, 9, 4, 4",
+          "k": 4
+        },
+        {
+          "L": "6, 8, 6, 8, 6, 6, 8",
+          "k": 6
+        }
+      ],
+      "mistakes": [
+        ["        frecventa[x] += 1", "        frecventa[x] = 1"],
+        ["        frecventa[x] = 1", "        frecventa[x] = 0"],
+        ["print(frecventa[{{k}}])", "print(len(frecventa))"],
+        ["        frecventa[x] += 1", "        frecventa[x] += 2"]
+      ]
+    },
+    {
+      "id": "fd-most",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "voturi = [{{L}}]\nfrecventa = {}\nfor vot in voturi:\n    if vot in frecventa:\n        frecventa[vot] += 1\n    else:\n        frecventa[vot] = 1\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(f\"Cel mai comun: {cel_mai_bun} ({cel_mai_mare})\")",
+      "values": [
+        {
+          "L": "\"B\", \"A\", \"C\", \"B\", \"A\", \"B\""
+        },
+        {
+          "L": "\"X\", \"Y\", \"Y\", \"Z\", \"Y\", \"X\""
+        },
+        {
+          "L": "\"D\", \"D\", \"E\", \"F\", \"F\", \"F\", \"F\""
+        },
+        {
+          "L": "\"M\", \"N\", \"N\", \"N\""
+        },
+        {
+          "L": "\"Q\", \"R\", \"S\", \"R\", \"S\", \"S\", \"Q\", \"S\""
+        }
+      ],
+      "mistakes": [
+        ["contor > cel_mai_mare", "contor < cel_mai_mare"],
+        ["        cel_mai_bun = cheie", "        cel_mai_bun = contor"],
+        ["        cel_mai_mare = contor\n", ""],
+        ["        frecventa[vot] += 1", "        frecventa[vot] = 1"]
+      ]
+    },
+    {
+      "id": "fd-unique",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"{{w}}\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
+      "values": [
+        {
+          "w": "banana"
+        },
+        {
+          "w": "racheta"
+        },
+        {
+          "w": "litere"
+        },
+        {
+          "w": "planeta"
+        },
+        {
+          "w": "cafea"
+        }
+      ],
+      "mistakes": [
+        ["contor == 1", "contor > 1"],
+        ["        unice.append(cheie)", "        unice.append(contor)"],
+        ["        frecventa[litera] += 1", "        frecventa[litera] = 1"],
+        ["print(unice)", "print(len(unice))"]
+      ]
+    },
+    {
+      "id": "fd-sorted",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "semnale = [{{L}}]\nfrecventa = {}\nfor semnal in semnale:\n    if semnal in frecventa:\n        frecventa[semnal] += 1\n    else:\n        frecventa[semnal] = 1\nfor canal in sorted(frecventa):\n    print(f\"{canal}: {frecventa[canal]}\")",
+      "values": [
+        {
+          "L": "\"B\", \"A\", \"C\", \"B\", \"A\", \"B\""
+        },
+        {
+          "L": "\"D\", \"C\", \"D\", \"A\""
+        },
+        {
+          "L": "\"C\", \"B\", \"A\", \"C\", \"C\""
+        },
+        {
+          "L": "\"Z\", \"X\", \"Y\", \"X\""
+        },
+        {
+          "L": "\"E\", \"A\", \"E\", \"B\", \"A\", \"E\""
+        }
+      ],
+      "mistakes": [
+        ["sorted(frecventa)", "frecventa"],
+        ["{canal}: {frecventa[canal]}", "{frecventa[canal]}: {canal}"],
+        ["        frecventa[semnal] += 1", "        frecventa[semnal] = 1"],
+        ["        frecventa[semnal] = 1", "        frecventa[semnal] = 0"]
+      ]
+    },
+    {
+      "id": "fd-len",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "elemente = [{{L}}]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
+      "values": [
+        {
+          "L": "1, 2, 1, 3, 1"
+        },
+        {
+          "L": "5, 5, 5, 5"
+        },
+        {
+          "L": "4, 8, 4, 8, 2, 6"
+        },
+        {
+          "L": "7, 3, 9"
+        },
+        {
+          "L": "2, 2, 3, 3, 3, 2, 2"
+        }
+      ],
+      "mistakes": [
+        ["print(len(elemente), len(frecventa))", "print(len(frecventa), len(elemente))"],
+        ["print(len(elemente), len(frecventa))", "print(len(elemente), frecventa)"],
+        ["        frecventa[x] = 1", "        frecventa[x] = 1\n        frecventa[0] = 1"],
+        ["for x in elemente:", "for x in elemente[1:]:"]
+      ]
+    },
+    {
+      "id": "fd-tie",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "frecventa = {{{d}}}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(cea_mai_buna_cheie, cel_mai_bun_numar)",
+      "values": [
+        {
+          "d": "\"a\": 2, \"b\": 4, \"c\": 4"
+        },
+        {
+          "d": "\"x\": 1, \"y\": 1, \"z\": 1"
+        },
+        {
+          "d": "\"p\": 5, \"q\": 2, \"r\": 5"
+        },
+        {
+          "d": "\"m\": 3, \"n\": 6, \"o\": 6, \"k\": 1"
+        },
+        {
+          "d": "\"s\": 7, \"t\": 7"
+        }
+      ],
+      "mistakes": [
+        ["contor > cel_mai_bun_numar", "contor >= cel_mai_bun_numar"],
+        ["        cea_mai_buna_cheie = cheie", "        cea_mai_buna_cheie = contor"],
+        ["contor > cel_mai_bun_numar", "contor < cel_mai_bun_numar"],
+        ["print(cea_mai_buna_cheie, cel_mai_bun_numar)", "print(cheie, contor)"]
+      ]
+    },
+    {
+      "id": "fd-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "cuvant = \"{{w}}\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "values": [
+        {
+          "w": "anna"
+        },
+        {
+          "w": "papa"
+        },
+        {
+          "w": "capac"
+        },
+        {
+          "w": "mere"
+        },
+        {
+          "w": "sasa"
+        }
+      ],
+      "mistakes": [
+        ["        frecventa[litera] += 1", "        frecventa[litera] = 1"],
+        ["        frecventa[litera] = 1", "        frecventa[litera] = 0"],
+        ["        frecventa[litera] += 1", "        frecventa[litera] += 2"],
+        ["for litera in cuvant:", "for litera in cuvant[1:]:"]
+      ]
+    },
+    {
+      "id": "fd-gap-add",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"{{w}}\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        ___\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "values": [
+        {
+          "w": "lalea"
+        },
+        {
+          "w": "banana"
+        },
+        {
+          "w": "mama"
+        },
+        {
+          "w": "cacao"
+        },
+        {
+          "w": "papa"
+        }
+      ],
+      "answer": "frecventa[litera] += 1",
+      "wrong": [
+        "frecventa[litera] = 1",
+        "frecventa[litera] = 0",
+        "frecventa[litera] += 2",
+        "frecventa = {}"
+      ]
+    },
+    {
+      "id": "fd-gap-new",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"{{w}}\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = ___\nprint(frecventa)",
+      "values": [
+        {
+          "w": "cojoc"
+        },
+        {
+          "w": "stele"
+        },
+        {
+          "w": "sapte"
+        },
+        {
+          "w": "ramura"
+        },
+        {
+          "w": "masa"
+        }
+      ],
+      "answer": "1",
+      "wrong": ["0", "2", "litera", "frecventa"]
+    },
+    {
+      "id": "fd-gap-best",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "frecventa = {{{d}}}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor ___ cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun, cel_mai_mare)",
+      "values": [
+        {
+          "d": "\"A\": 3, \"B\": 4, \"C\": 1"
+        },
+        {
+          "d": "\"x\": 2, \"y\": 5, \"z\": 3"
+        },
+        {
+          "d": "\"python\": 5, \"java\": 3, \"c\": 2"
+        },
+        {
+          "d": "\"rosu\": 1, \"albastru\": 6, \"verde\": 2"
+        },
+        {
+          "d": "\"D\": 2, \"E\": 2, \"F\": 7"
+        }
+      ],
+      "answer": ">",
+      "wrong": ["<", "==", "!=", "="]
+    },
+    {
+      "id": "fd-bad-new",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "cuvant = \"{{w}}\"\nprint(cuvant)\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
+      "values": [
+        {
+          "w": "piper"
+        },
+        {
+          "w": "racheta"
+        },
+        {
+          "w": "liliac"
+        },
+        {
+          "w": "balada"
+        },
+        {
+          "w": "sniff"
+        }
+      ],
+      "bug": ["        frecventa[litera] = 1", "        frecventa[litera] = 0"]
+    },
+    {
+      "id": "fd-bad-best",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "frecventa = {{{d}}}\nprint(frecventa)\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(cel_mai_bun)",
+      "values": [
+        {
+          "d": "\"A\": 3, \"B\": 4, \"C\": 1"
+        },
+        {
+          "d": "\"x\": 2, \"y\": 5, \"z\": 3"
+        },
+        {
+          "d": "\"Q\": 6, \"R\": 2, \"S\": 4"
+        },
+        {
+          "d": "\"m\": 1, \"n\": 8, \"o\": 3"
+        },
+        {
+          "d": "\"D\": 5, \"E\": 9, \"F\": 7"
+        }
+      ],
+      "bug": ["contor > cel_mai_mare", "contor < cel_mai_mare"]
+    }
+  ]
+}

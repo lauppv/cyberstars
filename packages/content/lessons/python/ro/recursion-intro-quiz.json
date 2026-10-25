@@ -1,0 +1,708 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce este recursivitatea?",
+      "options": [
+        "O funcție care se cheamă pe ea însăși",
+        "O buclă care rulează la nesfârșit",
+        "O funcție care cheamă altă funcție cu aceleași argumente",
+        "O listă care se conține pe ea însăși"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce este cazul de bază al unei funcții recursive?",
+      "options": [
+        "Primul apel, cel făcut din afara funcției",
+        "Cea mai mare valoare pe care o poate primi funcția",
+        "Cazul la care răspunde direct, fără să se mai cheme pe ea însăși",
+        "Linia în care funcția se cheamă pe ea însăși"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Ce afișează?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(3)",
+      "options": ["3\n2\n1\n0\nStart!", "3\n2\n1\nStart!", "Start!\n1\n2\n3", "3\nStart!"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def numaratoare_inversa(n):\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(5)",
+      "options": [
+        "Afișează 5 4 3 2 1 și se oprește",
+        "Afișează 5 4 3 2 1 0 și se oprește",
+        "Nu afișează nimic",
+        "Afișează 5, 4, 3 și tot așa sub zero până când Python o oprește cu RecursionError"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(4))",
+      "options": ["24", "10", "4", "6"],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "În urmărirea din lecție, factorial(5) = 5 × ... ce?",
+      "options": ["factorial(6)", "4", "factorial(4)", "factorial(1)"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([2, 4, 6]))",
+      "options": ["6", "12", "2", "[2, 4, 6]"],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "De ce își trimite `suma_lista` pe `numere[1:]`?",
+      "options": [
+        "Ca să sară peste primul număr, care e mereu 0",
+        "Pentru că `numere[0]` a fost scos din listă",
+        "Ca lista să fie copiată și originalul să rămână sortat",
+        "Restul listei e cu unul mai scurt la fiecare apel, până rămâne goală"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "În misiune, de câte ori e chemată `putere` în total pentru `putere(2, 3)`, cu primul apel cu tot?",
+      "options": [
+        "4: cu exponent 3, 2, 1 și 0",
+        "3: cu exponent 3, 2 și 1",
+        "8, cât rezultatul",
+        "1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(3, 2))",
+      "options": ["6", "8", "9", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q11",
+      "text": "De ce returnează `putere` din misiune 1 în cazul de bază, `exponent == 0`?",
+      "options": [
+        "Pentru că 1 e cel mai mic exponent",
+        "Orice număr la puterea 0 e 1, iar înmulțirea cu 1 nu schimbă nimic la întoarcere",
+        "Ca funcția să returneze True",
+        "Orice număr la puterea 0 e 0, dar 1 evită o împărțire la zero"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q12",
+      "text": "În șirul de oameni din lecție, cine știe răspunsul imediat?",
+      "options": [
+        "Persoana din spate, care a întrebat prima",
+        "Toată lumea, pentru că toți pun aceeași întrebare",
+        "Persoana din mijlocul șirului",
+        "Persoana din față, care nu are pe nimeni înainte"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce afișează?",
+      "code": "def numara_crescator(n):\n    if n == 0:\n        return\n    numara_crescator(n - 1)\n    print(n)\n\nnumara_crescator(3)",
+      "options": ["1\n2\n3", "3\n2\n1", "0\n1\n2\n3", "3"],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(0))",
+      "options": [
+        "Afișează 0",
+        "Afișează 1",
+        "Se oprește cu RecursionError: n merge 0, -1, -2... și nu ajunge niciodată la 1",
+        "Nu afișează nimic și se oprește"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "Când spune lecția că o buclă e de obicei mai bună decât recursivitatea?",
+      "options": [
+        "Pentru liste imbricate, oricât de adânci",
+        "Pentru lucruri simple, ca numărarea sau adunarea",
+        "Pentru orice problemă făcută din versiuni mai mici ale ei",
+        "Niciodată: recursivitatea e mereu mai clară"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(1))",
+      "options": ["0", "Nimic: se oprește cu RecursionError", "None", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([]))",
+      "options": ["0", "None", "Nimic: se oprește cu IndexError", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Care linie din `factorial` e apelul recursiv?",
+      "options": ["if n == 1:", "return 1", "return n * factorial(n - 1)", "def factorial(n):"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 2)\n\nnumaratoare_inversa(5)",
+      "options": [
+        "Afișează 5 3 1 Start!",
+        "Afișează 5, 3, 1, -1... și se oprește cu RecursionError: n sare peste 0",
+        "Afișează 5 3 1 0 Start!",
+        "Afișează 5 4 3 2 1 Start!"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "Misiunea interzice buclele și `**` în `putere`. Care linie urmează regula `baza^exponent = baza * baza^(exponent - 1)`?",
+      "options": [
+        "return baza * exponent",
+        "return putere(baza, exponent - 1)",
+        "return baza * putere(baza - 1, exponent)",
+        "return baza * putere(baza, exponent - 1)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "În urmărirea lui factorial, ce se întâmplă după ce factorial(1) returnează 1?",
+      "options": [
+        "Apelurile care așteaptă se termină unul câte unul: 2 × 1 = 2, apoi 3 × 2 = 6 și tot așa până la 120",
+        "Programul se oprește, pentru că s-a ajuns la cazul de bază",
+        "factorial(5) e chemat din nou de la început",
+        "Fiecare apel returnează 1, așa că factorial(5) e 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nbaza = 2\nfor exponent in range(3):\n    print(f\"{baza}^{exponent} = {putere(baza, exponent)}\")",
+      "options": [
+        "2^1 = 2\n2^2 = 4\n2^3 = 8",
+        "2^0 = 0\n2^1 = 2\n2^2 = 4",
+        "2^0 = 1\n2^1 = 2\n2^2 = 4",
+        "2^0 = 1\n2^1 = 2\n2^2 = 4\n2^3 = 8"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "def aduna(n):\n    if n == 0:\n        return 0\n    return n + aduna(n - 1)\n\nprint(aduna(4))",
+      "options": ["4", "10", "24", "9"],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "În `numaratoare_inversa`, cazul de bază afișează \"Start!\" și apoi are `return`. Ce face acel `return`?",
+      "options": [
+        "Trimite \"Start!\" înapoi apelului dinainte",
+        "Pornește numărătoarea de la capăt",
+        "Încheie toate apelurile care așteaptă, deodată",
+        "Încheie apelul acesta, așa că funcția nu mai trece la a se chema din nou"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "La ce probleme spune lecția că recursivitatea strălucește?",
+      "options": [
+        "Probleme făcute din versiuni mai mici ale lor, ca arborii și structurile imbricate",
+        "Probleme în care o valoare e numărată una câte una",
+        "Probleme care au nevoie de o listă sortată întâi",
+        "Probleme care citesc date de la utilizator"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(5, 0))",
+      "options": ["0", "5", "1", "Nimic: se oprește cu RecursionError"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    print(numere)\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([1, 2, 3]))",
+      "options": [
+        "[1, 2, 3]\n6",
+        "[1, 2, 3]\n[2, 3]\n[3]\n[]\n6",
+        "[]\n[3]\n[2, 3]\n[1, 2, 3]\n6",
+        "[1, 2, 3]\n[2, 3]\n[3]\n6"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "Câte apeluri ale lui `factorial` face `factorial(5)` în total, cu primul cu tot?",
+      "options": ["4", "6", "120", "5"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(3) + factorial(2))",
+      "options": ["8", "12", "6", "720"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "De ce nu poate o funcție recursivă să se cheme cu același argument primit, ca `numaratoare_inversa(n)` în `numaratoare_inversa`?",
+      "options": [
+        "Python nu lasă o funcție să-și folosească propriul nume",
+        "Argumentul s-ar pierde după primul apel",
+        "Problema nu se micșorează niciodată, așa că nu ajunge niciodată la cazul de bază",
+        "Poate: cazul de bază o oprește oricum"
+      ],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "ri-countdown",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa({{n}})",
+      "values": [
+        {
+          "n": 7
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 2
+        },
+        {
+          "n": 5
+        },
+        {
+          "n": 6
+        }
+      ],
+      "mistakes": [
+        [
+          "    print(n)\n    numaratoare_inversa(n - 1)",
+          "    numaratoare_inversa(n - 1)\n    print(n)"
+        ],
+        ["if n == 0:", "if n == 1:"],
+        [
+          "    print(n)\n    numaratoare_inversa(n - 1)",
+          "    print(n - 1)\n    numaratoare_inversa(n - 1)"
+        ],
+        ["        print(\"Start!\")\n        return", "        return"]
+      ]
+    },
+    {
+      "id": "ri-factorial",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial({{n}}))",
+      "values": [
+        {
+          "n": 3
+        },
+        {
+          "n": 8
+        },
+        {
+          "n": 5
+        },
+        {
+          "n": 6
+        },
+        {
+          "n": 7
+        }
+      ],
+      "mistakes": [
+        ["n * factorial(n - 1)", "n + factorial(n - 1)"],
+        ["if n == 1:", "if n == 2:"],
+        ["        return 1", "        return 0"],
+        ["n * factorial(n - 1)", "(n - 1) * factorial(n - 1)"]
+      ]
+    },
+    {
+      "id": "ri-sum-list",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([{{nums}}]))",
+      "values": [
+        {
+          "nums": "1, 2, 3, 4, 5"
+        },
+        {
+          "nums": "4, 7, 9"
+        },
+        {
+          "nums": "10, 20, 30, 40"
+        },
+        {
+          "nums": "6, 1, 8"
+        },
+        {
+          "nums": "5, 15, 2, 3"
+        }
+      ],
+      "mistakes": [
+        ["        return 0", "        return 1"],
+        ["return numere[0] + suma_lista(numere[1:])", "return numere[0]"],
+        ["numere[0] + suma_lista", "numere[0] * suma_lista"],
+        ["suma_lista(numere[1:])", "suma_lista(numere[2:])"]
+      ]
+    },
+    {
+      "id": "ri-power",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nbaza = {{b}}\nfor exponent in range({{k}}):\n    print(f\"{baza}^{exponent} = {putere(baza, exponent)}\")",
+      "values": [
+        {
+          "b": 2,
+          "k": 5
+        },
+        {
+          "b": 3,
+          "k": 4
+        },
+        {
+          "b": 10,
+          "k": 3
+        },
+        {
+          "b": 5,
+          "k": 3
+        },
+        {
+          "b": 4,
+          "k": 4
+        }
+      ],
+      "mistakes": [
+        ["        return 1", "        return baza"],
+        ["return baza * putere(baza, exponent - 1)", "return baza * exponent"],
+        ["range({{k}})", "range(1, {{k}})"],
+        ["        return 1", "        return 0"]
+      ]
+    },
+    {
+      "id": "ri-unwind",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def arata(n):\n    if n == 0:\n        print(\"caz de baza\")\n        return\n    print(\"intra\", n)\n    arata(n - 1)\n    print(\"iese\", n)\n\narata({{n}})",
+      "values": [
+        {
+          "n": 1
+        },
+        {
+          "n": 2
+        },
+        {
+          "n": 3
+        },
+        {
+          "n": 4
+        }
+      ],
+      "mistakes": [
+        ["    print(\"iese\", n)", ""],
+        ["    print(\"intra\", n)\n    arata(n - 1)", "    arata(n - 1)\n    print(\"intra\", n)"],
+        ["if n == 0:", "if n == 1:"],
+        ["arata(n - 1)", "arata(n - 2)"]
+      ]
+    },
+    {
+      "id": "ri-add-up",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def aduna(n):\n    if n == 0:\n        return 0\n    return n + aduna(n - 1)\n\nprint(aduna({{n}}))",
+      "values": [
+        {
+          "n": 5
+        },
+        {
+          "n": 6
+        },
+        {
+          "n": 10
+        }
+      ],
+      "mistakes": [
+        ["        return 0", "        return 1"],
+        ["return n + aduna(n - 1)", "return n + aduna(n - 2)"],
+        ["return n + aduna(n - 1)", "return 1 + aduna(n - 1)"],
+        ["return n + aduna(n - 1)", "return n * aduna(n - 1)"]
+      ]
+    },
+    {
+      "id": "ri-calls",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial({{n}}))",
+      "values": [
+        {
+          "n": 2
+        },
+        {
+          "n": 3
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 5
+        }
+      ],
+      "mistakes": [
+        ["if n == 1:", "if n == 2:"],
+        ["return n * factorial(n - 1)", "return n * (n - 1)"],
+        ["print(factorial({{n}}))", "factorial({{n}})"],
+        ["return n * factorial(n - 1)", "return n + factorial(n - 1)"]
+      ]
+    },
+    {
+      "id": "ri-which-fact",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, {{k}}):\n    print(n, factorial(n))",
+      "values": [
+        {
+          "k": 4
+        },
+        {
+          "k": 5
+        },
+        {
+          "k": 6
+        },
+        {
+          "k": 3
+        }
+      ],
+      "mistakes": [
+        ["n * factorial(n - 1)", "n + factorial(n - 1)"],
+        ["        return 1", "        return 0"],
+        ["range(1, {{k}})", "range(2, {{k}})"],
+        ["n * factorial(n - 1)", "n * (n - 1)"]
+      ]
+    },
+    {
+      "id": "ri-which-countdown",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa({{n}})",
+      "values": [
+        {
+          "n": 2
+        },
+        {
+          "n": 3
+        },
+        {
+          "n": 4
+        },
+        {
+          "n": 5
+        },
+        {
+          "n": 6
+        }
+      ],
+      "mistakes": [
+        [
+          "    print(n)\n    numaratoare_inversa(n - 1)",
+          "    numaratoare_inversa(n - 1)\n    print(n)"
+        ],
+        ["if n == 0:", "if n == 1:"],
+        ["        print(\"Start!\")\n        return", "        return"]
+      ]
+    },
+    {
+      "id": "ri-gap-call",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    ___\n\nfor n in range(1, {{k}}):\n    print(factorial(n))",
+      "values": [
+        {
+          "k": 4
+        },
+        {
+          "k": 5
+        },
+        {
+          "k": 6
+        },
+        {
+          "k": 7
+        },
+        {
+          "k": 3
+        }
+      ],
+      "answer": "return n * factorial(n - 1)",
+      "wrong": [
+        "return factorial(n - 1)",
+        "return n * (n - 1)",
+        "return n + factorial(n - 1)",
+        "return n * factorial(n)"
+      ]
+    },
+    {
+      "id": "ri-gap-base",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        ___\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([{{nums}}]))",
+      "values": [
+        {
+          "nums": "1, 2, 3"
+        },
+        {
+          "nums": "4, 5"
+        },
+        {
+          "nums": "10, 20, 30, 40"
+        },
+        {
+          "nums": "7, 8, 9"
+        },
+        {
+          "nums": "2, 4, 6, 8"
+        }
+      ],
+      "answer": "return 0",
+      "wrong": ["return 1", "return numere[0]", "return numere", "return 10"]
+    },
+    {
+      "id": "ri-val-step",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - ___)\n\nnumaratoare_inversa({{n}})",
+      "values": [
+        {
+          "n": 4
+        },
+        {
+          "n": 6
+        },
+        {
+          "n": 8
+        },
+        {
+          "n": 2
+        },
+        {
+          "n": 10
+        }
+      ],
+      "answer": "1",
+      "wrong": ["2", "n", "3", "4"]
+    },
+    {
+      "id": "ri-val-base",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return ___\n    return baza * putere(baza, exponent - 1)\n\nprint(putere({{b}}, {{e}}))",
+      "values": [
+        {
+          "b": 2,
+          "e": 3
+        },
+        {
+          "b": 3,
+          "e": 2
+        },
+        {
+          "b": 5,
+          "e": 2
+        },
+        {
+          "b": 2,
+          "e": 5
+        },
+        {
+          "b": 10,
+          "e": 2
+        }
+      ],
+      "answer": "1",
+      "wrong": ["0", "baza", "exponent", "2"]
+    },
+    {
+      "id": "ri-bad-fact",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nfor n in range(1, {{k}}):\n    print(n, factorial(n))",
+      "values": [
+        {
+          "k": 4
+        },
+        {
+          "k": 5
+        },
+        {
+          "k": 6
+        },
+        {
+          "k": 7
+        },
+        {
+          "k": 3
+        }
+      ],
+      "bug": ["n * factorial(n - 1)", "n + factorial(n - 1)"]
+    },
+    {
+      "id": "ri-bad-sum",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nfor numere in [[{{a}}], [{{b}}]]:\n    print(numere, suma_lista(numere))",
+      "values": [
+        {
+          "a": "1, 2, 3",
+          "b": "5, 5"
+        },
+        {
+          "a": "4, 6, 8",
+          "b": "2, 9"
+        },
+        {
+          "a": "10, 20",
+          "b": "3, 1, 4"
+        },
+        {
+          "a": "7, 7, 7",
+          "b": "1, 2"
+        },
+        {
+          "a": "6, 2",
+          "b": "5, 1, 9"
+        }
+      ],
+      "bug": ["        return 0", "        return 1"]
+    }
+  ]
+}

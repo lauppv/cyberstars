@@ -1,0 +1,732 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce păstrează `curata_text` din misiune dintr-un text?",
+      "options": [
+        "Doar literele, fiecare făcută mică",
+        "Fiecare caracter, făcut mic",
+        "Doar literele, așa cum au fost scrise",
+        "Literele și cifrele, făcute mici"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q2",
+      "text": "Ce afișează?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\nprint(curata_text(\"Semnal 5 OK!\"))",
+      "options": ["Semnal 5 OK!", "SemnalOK", "semnalok", "semnal ok"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "De ce cheamă misiunea `curata_text` înainte de `este_palindrom` pe \"Ele, fac cafele!\"?",
+      "options": [
+        "`este_palindrom` merge doar pe cuvinte de cel mult 10 litere",
+        "Spațiile, virgulele și majusculele ar face cele două capete să difere",
+        "Ca textul să fie mai scurt și bucla să meargă mai repede",
+        "Pentru că `este_palindrom` nu poate citi un semn de exclamare și se oprește cu o eroare"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Ce afișează?",
+      "code": "cuvant = \"level\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga < dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    if cuvant[stanga] != cuvant[dreapta]:\n        print(False)\n        break\n    stanga += 1\n    dreapta -= 1\nprint(True)",
+      "options": ["l l\ne e\nv v\nTrue", "l l\nTrue", "True", "l l\ne e\nTrue"],
+      "answer": 3
+    },
+    {
+      "id": "q5",
+      "text": "În verificarea de palindrom cu doi pointeri, de ce bucla e `while stanga < dreapta` și nu `while stanga <= dreapta`?",
+      "options": [
+        "Când amândoi arată spre litera din mijloc nu mai e nimic cu care s-o compari",
+        "Cu `<=` bucla nu s-ar opri niciodată",
+        "Cu `<=` orice cuvânt ar ieși palindrom",
+        "`<=` nu poate compara două numere"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q6",
+      "text": "Ce afișează?",
+      "code": "print(sorted(\"Roma!\") == sorted(\"Amor\"))",
+      "options": ["True", "False", "['!', 'R', 'a', 'm', 'o']", "Nimic: se oprește cu o eroare"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Ce afișează?",
+      "code": "def inverseaza_cuvinte(propozitie):\n    cuvinte = propozitie.split(\" \")\n    return \" \".join(cuvinte[::-1])\n\nprint(inverseaza_cuvinte(\"toate sistemele sunt pornite\"))",
+      "options": [
+        "etinrop tnus elemetsis etaot",
+        "toate sistemele sunt pornite",
+        "pornite sunt sistemele toate",
+        "etaot elemetsis tnus etinrop"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "`inverseaza_cuvinte` trebuie să facă din \"este pornit acum\" textul \"acum pornit este\". Care variantă face asta?",
+      "options": [
+        "return propozitie[::-1]",
+        "return \" \".join(propozitie[::-1])",
+        "return propozitie.split(\" \")[::-1]",
+        "return \" \".join(propozitie.split(\" \")[::-1])"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "print([caracter for caracter in \"R2D2\" if caracter.isalpha()])",
+      "options": ["['R', 'D']", "['2', '2']", "['r', 'd']", "RD"],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "`sunt_anagrame` din misiune primește \"Roma!\" și \"amor\". Ce returnează?",
+      "options": [
+        "False: primul are un !",
+        "True: odată curățate, amândouă au aceleași litere",
+        "False: unul începe cu R mare, celălalt nu",
+        "Se oprește cu o eroare, pentru că textele nu au aceeași lungime"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "De ce ne spune sortarea literelor dacă două cuvinte sunt anagrame?",
+      "options": [
+        "Sortarea pune cuvintele în ordine alfabetică, iar anagramele stau unul lângă altul",
+        "Sortarea scoate literele care se repetă",
+        "sorted() returnează True când cuvintele se potrivesc",
+        "Două cuvinte cu aceleași litere, în orice ordine, dau aceeași listă sortată"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "Ce afișează?",
+      "code": "def doua_numere(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            return (numere[stanga], numere[dreapta])\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return None\n\nprint(doua_numere([1, 2, 4, 5, 7], 9))",
+      "options": ["(1, 8)", "None", "(2, 7)", "(4, 5)"],
+      "answer": 2
+    },
+    {
+      "id": "q13",
+      "text": "Ce returnează `este_palindrom` din misiune pentru un cuvânt gol, \"\"?",
+      "options": [
+        "True: `dreapta` pornește de la -1, așa că bucla nu rulează deloc",
+        "False: un cuvânt gol nu are litere de potrivit",
+        "Se oprește cu IndexError la `cuvant[stanga]`",
+        "None, pentru că nu se returnează nimic"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q14",
+      "text": "Ce afișează?",
+      "code": "print(sorted(\"crab\"))",
+      "options": ["['c', 'r', 'a', 'b']", "abcr", "['r', 'c', 'b', 'a']", "['a', 'b', 'c', 'r']"],
+      "answer": 3
+    },
+    {
+      "id": "q15",
+      "text": "Pe care dintre aceste texte trusa din misiune îl numește palindrom, `este_palindrom(curata_text(text))`?",
+      "options": [
+        "\"Ene purta pene patru\"",
+        "\"Ene purta patru pene\"",
+        "\"Sistem pornit\"",
+        "\"Canal de navigatie\""
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"scaneaza tot sectorul urmator\".split(\" \")\nprint(len(cuvinte))",
+      "options": ["1", "3", "4", "19"],
+      "answer": 2
+    },
+    {
+      "id": "q17",
+      "text": "Ce afișează?",
+      "code": "cuvinte = \"sistemul de navigatie este pornit\".split(\" \")\nprint([c.upper() for c in cuvinte if len(c) > 2])",
+      "options": [
+        "['SISTEMUL', 'NAVIGATIE', 'ESTE', 'PORNIT']",
+        "['sistemul', 'navigatie', 'este', 'pornit']",
+        "['SISTEMUL', 'DE', 'NAVIGATIE', 'ESTE', 'PORNIT']",
+        "['DE']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q18",
+      "text": "Ce afișează?",
+      "code": "print(\"este pornit\"[::-1])",
+      "options": ["este pornit", "pornit este", "etse tinrop", "tinrop etse"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "Misiunea cere `este_palindrom` cu doi pointeri. Care corp e acela?",
+      "options": [
+        "`return cuvant == cuvant[::-1]`",
+        "Pornești `stanga` de la 0 și `dreapta` de la capăt, compari și îi muți unul spre altul",
+        "Sortezi literele și le compari cu cuvântul",
+        "Numeri fiecare literă într-un dicționar"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q20",
+      "text": "Ce afișează?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nprint(este_palindrom(curata_text(\"Ene purta patru pene\")))",
+      "options": ["True", "False", "enepurtapatrupene", "Ene purta patru pene"],
+      "answer": 0
+    },
+    {
+      "id": "q21",
+      "text": "Ce afișează?",
+      "code": "def perechi_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nprint(perechi_cu_suma([1, 2, 3, 4, 5, 6], 7))",
+      "options": ["[(1, 6)]", "[(1, 6), (2, 5), (3, 4), (4, 3)]", "[(1, 6), (2, 5), (3, 4)]", "3"],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "De ce căutarea de perechi cu doi pointeri are nevoie de lista sortată?",
+      "options": [
+        "Pentru că o listă nesortată nu poate fi indexată de la capăt",
+        "Ca perechile să iasă în ordine alfabetică",
+        "Nu are: doi pointeri merg la fel pe orice listă",
+        "Doar atunci mutarea lui `stanga` la dreapta face suma mai mare, iar a lui `dreapta` la stânga o face mai mică"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "cuvant = \"radar\"\nstanga = 0\ndreapta = len(cuvant)\nwhile stanga < dreapta:\n    if cuvant[stanga] != cuvant[dreapta]:\n        print(False)\n        break\n    stanga += 1\n    dreapta -= 1",
+      "options": [
+        "Afișează True",
+        "Se oprește cu IndexError: `dreapta` pornește cu una după ultima literă",
+        "Afișează False",
+        "Bucla nu se termină niciodată"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "De ce poate `este_palindrom` să returneze False la prima pereche diferită, fără să verifice restul?",
+      "options": [
+        "O singură pereche care nu se potrivește arată că acel cuvânt nu se citește la fel în ambele sensuri",
+        "Pentru că restul perechilor se potrivesc mereu",
+        "Pentru că `return` într-o buclă sare doar peste pasul acela",
+        "Nu poate: trebuie să verifice întâi fiecare pereche"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q25",
+      "text": "Ce afișează?",
+      "code": "citiri = [45, 82, 96, 38, 91]\nprint([min(r + 5, 100) for r in citiri if r >= 50])",
+      "options": ["[82, 95, 91]", "[87, 100, 101]", "[87, 100, 96]", "[50, 87, 100, 96]"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Care comprehension păstrează cuvintele mai lungi de 3 litere și le face cu litere mici?",
+      "options": [
+        "[c for c in cuvinte if len(c.lower()) > 3]",
+        "[c.lower() for c in cuvinte if len(c) >= 3]",
+        "[len(c) > 3 for c in cuvinte]",
+        "[c.lower() for c in cuvinte if len(c) > 3]"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "for caracter in sorted(\"cab\"):\n    print(caracter)",
+      "options": ["c\nb\na", "a\nb\nc", "abc", "a b c"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "În `sunt_anagrame`, ce ar merge prost fără `curata_text`, pentru \"Roma!\" și \"Amor\"?",
+      "options": [
+        "Ar returna False: ! și R-ul mare nu se potrivesc cu literele celuilalt cuvânt",
+        "Nimic: sorted() sare singur peste semnele de punctuație",
+        "S-ar opri cu o eroare la !",
+        "Ar returna True pentru oricare două cuvinte"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "Ce afișează?",
+      "code": "text = \"com\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
+      "options": ["com", "c\no\nm", "moc", "mo"],
+      "answer": 2
+    },
+    {
+      "id": "q30",
+      "text": "Ce afișează?",
+      "code": "coduri = [\"radar\", \"orbita\", \"cojoc\", \"soare\", \"rotor\"]\nvalide = [c for c in coduri if c == c[::-1]]\nprint(len(valide))",
+      "options": ["2", "5", "['radar', 'cojoc', 'rotor']", "3"],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "rps-clean",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\nprint(curata_text(\"{{t}}\"))",
+      "values": [
+        {
+          "t": "S3ct0r 7 l1b3r!"
+        },
+        {
+          "t": "Ab-C 12d"
+        },
+        {
+          "t": "Marte, Venus!"
+        },
+        {
+          "t": "R2-D2 Pornit"
+        },
+        {
+          "t": "Orbita 42 OK"
+        }
+      ],
+      "mistakes": [
+        ["rezultat += caracter.lower()", "rezultat += caracter"],
+        ["if caracter.isalpha():", "if not caracter.isalpha():"],
+        ["rezultat += caracter.lower()", "rezultat = caracter.lower()"],
+        [
+          "        if caracter.isalpha():\n            rezultat += caracter.lower()",
+          "        rezultat += caracter.lower()"
+        ]
+      ]
+    },
+    {
+      "id": "rps-pal-steps",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        print(cuvant[stanga], cuvant[dreapta])\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nprint(este_palindrom(\"{{w}}\"))",
+      "values": [
+        {
+          "w": "radar"
+        },
+        {
+          "w": "stres"
+        },
+        {
+          "w": "rotor"
+        },
+        {
+          "w": "tort"
+        },
+        {
+          "w": "capac"
+        }
+      ],
+      "mistakes": [
+        ["            return False", "            print(False)"],
+        ["        dreapta -= 1", "        dreapta -= 2"],
+        ["dreapta = len(cuvant) - 1", "dreapta = len(cuvant) - 2"],
+        ["        stanga += 1\n", ""],
+        ["    return True", "    return False"]
+      ]
+    },
+    {
+      "id": "rps-anagram",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef sunt_anagrame(a, b):\n    return sorted(curata_text(a)) == sorted(curata_text(b))\n\nprint(sunt_anagrame(\"{{a}}\", \"{{b}}\"))\nprint(sorted(curata_text(\"{{a}}\")))",
+      "values": [
+        {
+          "a": "Roma!",
+          "b": "Amor"
+        },
+        {
+          "a": "Mare",
+          "b": "rame"
+        },
+        {
+          "a": "Lac",
+          "b": "cal!"
+        },
+        {
+          "a": "Rac",
+          "b": "car!"
+        },
+        {
+          "a": "Sare",
+          "b": "rase"
+        }
+      ],
+      "mistakes": [
+        ["sorted(curata_text(a)) == sorted(curata_text(b))", "sorted(a) == sorted(b)"],
+        ["curata_text(a)) == sorted", "curata_text(a)) != sorted"],
+        ["sorted(curata_text(a)) == sorted(curata_text(b))", "curata_text(a) == curata_text(b)"],
+        ["print(sorted(curata_text(\"{{a}}\")))", "print(curata_text(\"{{a}}\"))"],
+        ["print(sorted(curata_text(\"{{a}}\")))", "print(sorted(\"{{a}}\"))"]
+      ]
+    },
+    {
+      "id": "rps-reverse-words",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def inverseaza_cuvinte(propozitie):\n    cuvinte = propozitie.split(\" \")\n    return \" \".join(cuvinte[::-1])\n\nprint(inverseaza_cuvinte(\"{{s}}\"))",
+      "values": [
+        {
+          "s": "sistemul de navigatie este pornit"
+        },
+        {
+          "s": "scaneaza sectorul urmator"
+        },
+        {
+          "s": "tot echipajul pe punte"
+        },
+        {
+          "s": "semnal pierdut din nou"
+        },
+        {
+          "s": "motoarele sunt gata"
+        }
+      ],
+      "mistakes": [
+        ["cuvinte[::-1]", "cuvinte"],
+        ["\" \".join(cuvinte[::-1])", "\"\".join(cuvinte[::-1])"],
+        ["return \" \".join(cuvinte[::-1])", "return propozitie[::-1]"],
+        ["\" \".join(cuvinte[::-1])", "cuvinte[::-1]"]
+      ]
+    },
+    {
+      "id": "rps-filter",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "citiri = [{{r}}]\namplificate = [min(r + {{b}}, 100) for r in citiri if r >= {{m}}]\nprint(amplificate)\nprint(len(amplificate))",
+      "values": [
+        {
+          "r": "45, 82, 96, 38, 91",
+          "b": 5,
+          "m": 50
+        },
+        {
+          "r": "70, 20, 99, 60",
+          "b": 10,
+          "m": 60
+        },
+        {
+          "r": "55, 49, 97, 30, 75",
+          "b": 5,
+          "m": 50
+        },
+        {
+          "r": "88, 92, 15, 40",
+          "b": 10,
+          "m": 40
+        },
+        {
+          "r": "65, 95, 35",
+          "b": 8,
+          "m": 65
+        }
+      ],
+      "mistakes": [
+        ["if r >= {{m}}", "if r > {{m}}"],
+        ["min(r + {{b}}, 100)", "r + {{b}}"],
+        ["if r >= {{m}}", "if r < {{m}}"],
+        ["min(r + {{b}}, 100)", "max(r + {{b}}, 100)"],
+        ["print(len(amplificate))", "print(len(citiri))"]
+      ]
+    },
+    {
+      "id": "rps-pairs",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def perechi_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nrezultat = perechi_cu_suma([{{n}}], {{t}})\nprint(rezultat)\nprint(len(rezultat))",
+      "values": [
+        {
+          "n": "1, 2, 3, 4, 5, 6",
+          "t": 7
+        },
+        {
+          "n": "1, 3, 4, 6, 8",
+          "t": 9
+        },
+        {
+          "n": "2, 4, 5, 6, 7, 9",
+          "t": 11
+        },
+        {
+          "n": "1, 2, 5, 8, 10",
+          "t": 10
+        },
+        {
+          "n": "3, 4, 5, 6, 7",
+          "t": 10
+        }
+      ],
+      "mistakes": [
+        ["    while stanga < dreapta:", "    while stanga <= dreapta:"],
+        ["(numere[stanga], numere[dreapta])", "numere[stanga]"],
+        [
+          "            stanga += 1\n            dreapta -= 1\n        elif",
+          "            stanga += 1\n            dreapta -= 2\n        elif"
+        ],
+        ["print(len(rezultat))", "print(len(rezultat) * 2)"],
+        ["suma_curenta == tinta", "suma_curenta >= tinta"]
+      ]
+    },
+    {
+      "id": "rps-toolkit",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\ntext = \"{{t}}\"\nprint(curata_text(text))\nprint(este_palindrom(curata_text(text)))",
+      "values": [
+        {
+          "t": "Ele fac cafele"
+        },
+        {
+          "t": "Ene purta patru pene"
+        },
+        {
+          "t": "Rara bara"
+        },
+        {
+          "t": "Sus, cu capac"
+        }
+      ],
+      "mistakes": [
+        ["print(este_palindrom(curata_text(text)))", "print(este_palindrom(text))"],
+        ["rezultat += caracter.lower()", "rezultat += caracter"],
+        ["print(curata_text(text))", "print(text)"],
+        ["if caracter.isalpha():", "if not caracter.isalpha():"]
+      ]
+    },
+    {
+      "id": "rps-which-clean",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "text = \"{{t}}\"\nrezultat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        rezultat += caracter.lower()\nprint(rezultat)",
+      "values": [
+        {
+          "t": "Cod 7B!"
+        },
+        {
+          "t": "R2 D2"
+        },
+        {
+          "t": "Marte 3X"
+        },
+        {
+          "t": "Hai 5 Ok"
+        },
+        {
+          "t": "Zona 51A"
+        }
+      ],
+      "mistakes": [
+        ["rezultat += caracter.lower()", "rezultat += caracter"],
+        ["if caracter.isalpha():", "if not caracter.isalpha():"],
+        ["caracter.isalpha()", "caracter.islower()"],
+        ["rezultat += caracter.lower()", "rezultat += caracter.upper()"]
+      ]
+    },
+    {
+      "id": "rps-which-reverse",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "propozitie = \"{{s}}\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
+      "values": [
+        {
+          "s": "alerta rosie acum"
+        },
+        {
+          "s": "corpul navei e intact"
+        },
+        {
+          "s": "combustibil putin"
+        },
+        {
+          "s": "andocare la poarta doi"
+        },
+        {
+          "s": "radioul tace"
+        }
+      ],
+      "mistakes": [
+        ["print(\" \".join(cuvinte[::-1]))", "print(propozitie[::-1])"],
+        ["print(\" \".join(cuvinte[::-1]))", "print(\" \".join(cuvinte))"],
+        ["print(\" \".join(cuvinte[::-1]))", "print(\"\".join(cuvinte[::-1]))"],
+        ["print(\" \".join(cuvinte[::-1]))", "print(cuvinte[::-1])"]
+      ]
+    },
+    {
+      "id": "rps-gap-move",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "cuvant = \"{{w}}\"\nstanga = 0\ndreapta = len(cuvant) - 1\nwhile stanga < dreapta:\n    print(cuvant[stanga], cuvant[dreapta])\n    if cuvant[stanga] != cuvant[dreapta]:\n        break\n    stanga += 1\n    ___",
+      "values": [
+        {
+          "w": "cojoc"
+        },
+        {
+          "w": "rotor"
+        },
+        {
+          "w": "potop"
+        },
+        {
+          "w": "elevele"
+        },
+        {
+          "w": "capac"
+        }
+      ],
+      "answer": "dreapta -= 1",
+      "wrong": ["stanga += 1", "dreapta = 0", "dreapta -= 2", "stanga = dreapta"]
+    },
+    {
+      "id": "rps-gap-join",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "def inverseaza_cuvinte(propozitie):\n    cuvinte = propozitie.split(\" \")\n    ___\n\nprint(inverseaza_cuvinte(\"{{s}}\"))",
+      "values": [
+        {
+          "s": "sistemul este pornit"
+        },
+        {
+          "s": "motoarele sunt calde"
+        },
+        {
+          "s": "echipaj pe punte"
+        },
+        {
+          "s": "semnal pierdut"
+        }
+      ],
+      "answer": "return \" \".join(cuvinte[::-1])",
+      "wrong": [
+        "return \" \".join(cuvinte)",
+        "return propozitie[::-1]",
+        "return \"\".join(cuvinte[::-1])",
+        "return cuvinte[::-1]"
+      ]
+    },
+    {
+      "id": "rps-val-right",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - ___\n    while stanga < dreapta:\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nfor cuvant in [{{ws}}]:\n    print(cuvant, este_palindrom(cuvant))",
+      "values": [
+        {
+          "ws": "\"radar\", \"orbita\""
+        },
+        {
+          "ws": "\"cojoc\", \"luna\""
+        },
+        {
+          "ws": "\"capac\", \"cometa\""
+        },
+        {
+          "ws": "\"sas\", \"soare\""
+        },
+        {
+          "ws": "\"rotor\", \"stea\""
+        }
+      ],
+      "answer": "1",
+      "wrong": ["0", "2", "len(cuvant)"]
+    },
+    {
+      "id": "rps-val-method",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "text = \"{{t}}\"\nrezultat = \"\"\nfor caracter in text:\n    if caracter.___():\n        rezultat += caracter\nprint(rezultat)",
+      "values": [
+        {
+          "t": "R2D2 go",
+          "m": "isalpha",
+          "w1": "isdigit",
+          "w2": "isupper",
+          "w3": "islower"
+        },
+        {
+          "t": "Area 51b",
+          "m": "isdigit",
+          "w1": "isalpha",
+          "w2": "isupper",
+          "w3": "islower"
+        },
+        {
+          "t": "Mars7x",
+          "m": "islower",
+          "w1": "isalpha",
+          "w2": "isdigit",
+          "w3": "isupper"
+        },
+        {
+          "t": "abC9De",
+          "m": "isupper",
+          "w1": "isalpha",
+          "w2": "isdigit",
+          "w3": "islower"
+        }
+      ],
+      "answer": "{{m}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "rps-bad-clean",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\nfor text in [{{ts}}]:\n    print(text, curata_text(text))",
+      "values": [
+        {
+          "ts": "\"Ab1\", \"C-d\""
+        },
+        {
+          "ts": "\"Du 7\", \"Hai!\""
+        },
+        {
+          "ts": "\"R2D2\", \"Ok\""
+        },
+        {
+          "ts": "\"Zx 9\", \"Mm\""
+        }
+      ],
+      "bug": ["rezultat += caracter.lower()", "rezultat += caracter"]
+    },
+    {
+      "id": "rps-bad-pairs",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [{{n}}]\ntinta = {{t}}\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga < dreapta:\n    suma_curenta = numere[stanga] + numere[dreapta]\n    print(numere[stanga], numere[dreapta], suma_curenta)\n    if suma_curenta == tinta:\n        break\n    elif suma_curenta < tinta:\n        stanga += 1\n    else:\n        dreapta -= 1",
+      "values": [
+        {
+          "n": "1, 3, 5, 7",
+          "t": 10
+        },
+        {
+          "n": "2, 3, 5, 8",
+          "t": 8
+        },
+        {
+          "n": "1, 2, 4, 7, 11",
+          "t": 9
+        },
+        {
+          "n": "2, 4, 6, 9",
+          "t": 10
+        }
+      ],
+      "bug": ["        stanga += 1", "        stanga += 2"]
+    }
+  ]
+}

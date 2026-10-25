@@ -1,0 +1,722 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "How does linear search look for a value in a list?",
+      "options": [
+        "It jumps straight to the middle of the list",
+        "It sorts the list first, then looks",
+        "It checks the elements one at a time, from the start to the end",
+        "It checks only the first and the last element"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q2",
+      "text": "What does the lesson's `linear_search` return when the target isn't in the list?",
+      "options": ["0", "None", "The length of the list", "-1"],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "Why does the lesson return -1 for \"not found\"?",
+      "options": [
+        "It's a convention: the indexes the search returns start at 0, so -1 stands out as no position",
+        "Python stops the function with an error otherwise",
+        "Because -1 is the index of the first element",
+        "Because the loop counts backwards"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nnames = [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\", \"Sonny\"]\nprint(linear_search(names, \"Cortez\"))",
+      "options": ["2", "3", "Cortez", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "q5",
+      "text": "A list has 1,000,000 elements and the target isn't in it. How many elements does linear search check?",
+      "options": ["About 20", "Half of them", "All 1,000,000", "Only the first one"],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "When does linear search make the most checks?",
+      "options": [
+        "When the target is the first element",
+        "When the target is not in the list",
+        "When the list is sorted",
+        "When the list has only numbers"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "Does linear search need the list to be sorted?",
+      "options": [
+        "No, it works on any list",
+        "Yes, from smallest to largest",
+        "Yes, but only for lists of text",
+        "Only when the list is longer than 10"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q8",
+      "text": "Which faster search, coming later in the course, works only on sorted lists?",
+      "options": ["Linear search", "Binary search", "Bubble Sort", "A frequency dictionary"],
+      "answer": 1
+    },
+    {
+      "id": "q9",
+      "text": "Why is `return i` inside the loop, under the `if`?",
+      "options": [
+        "So the loop runs one more time",
+        "So the function stops at the first match and gives back its index",
+        "So every index of the list is returned",
+        "Python doesn't allow return after a loop"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\ncrew = [\"Ana\", \"Ben\", \"Ana\", \"Cal\"]\nprint(linear_search(crew, \"Ana\"))",
+      "options": ["2", "0", "[0, 2]", "1"],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n        return -1\n\nprint(linear_search([4, 7, 9], 9))",
+      "options": ["2", "9", "0", "-1"],
+      "answer": 3
+    },
+    {
+      "id": "q12",
+      "text": "How many elements does linear search check to find \"Cortez\" in [\"Tommy\", \"Lance\", \"Cortez\", \"Phil\", \"Sonny\"]?",
+      "options": ["3", "2", "5", "1"],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "scores = [65, 42, 88, 95, 99]\n\nfor i in range(len(scores)):\n    if scores[i] > 90:\n        print(f\"Found a score above 90: {scores[i]} at index {i}\")\n        break",
+      "options": [
+        "Found a score above 90: 95 at index 4",
+        "Found a score above 90: 88 at index 2",
+        "Found a score above 90: 95 at index 3\nFound a score above 90: 99 at index 4",
+        "Found a score above 90: 95 at index 3"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q14",
+      "text": "In the search for a score above 90, what does `break` do?",
+      "options": [
+        "It skips the score that matches and goes on",
+        "It stops the loop at the first score that matches",
+        "It ends the whole program",
+        "It starts the loop again from index 0"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "scores = [65, 95, 42, 99]\nfor i in range(len(scores)):\n    if scores[i] > 90:\n        print(i)",
+      "options": ["1", "3", "1\n3", "95\n99"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "What numbers does `range(len(items))` go through when `items` has 5 elements?",
+      "options": ["1, 2, 3, 4, 5", "0, 1, 2, 3, 4", "0, 1, 2, 3, 4, 5", "5"],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "The target is the last of 10 elements. How many checks does linear search make?",
+      "options": ["9", "1", "5", "10"],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "The target is the first element. How many checks does linear search make?",
+      "options": ["0", "2", "As many as the list has elements", "1"],
+      "answer": 3
+    },
+    {
+      "id": "q19",
+      "text": "In the mission, what must `find_crew(crew, target)` return for a name that isn't on board?",
+      "options": ["0", "False", "The text \"not on board\"", "-1"],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nresult = linear_search([\"a\", \"b\"], \"c\")\nif result == -1:\n    print(\"Not found\")\nelse:\n    print(f\"Found at {result}\")",
+      "options": ["Found at -1", "Found at 2", "Not found\nFound at -1", "Not found"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What does `items[i] == target` check?",
+      "options": [
+        "Whether i is equal to the target",
+        "Whether the element at position i is the one we look for",
+        "Whether the list contains the target anywhere",
+        "Whether the list is as long as the target"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q22",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\ncrew = [\"Tommy\", \"Lance\"]\nprint(linear_search(crew, \"tommy\"))",
+      "options": ["0", "Tommy", "-1", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q23",
+      "text": "What is the difference between `return i` and `return items[i]` in a search?",
+      "options": [
+        "There is none, both give the position",
+        "`return items[i]` stops the loop, `return i` doesn't",
+        "`return i` gives the position, `return items[i]` gives the element itself",
+        "`return i` works only on lists of numbers"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q24",
+      "text": "How do you find the index of the last match instead of the first?",
+      "options": [
+        "Return -1 instead of i",
+        "Use `break` right after the first match",
+        "Start the loop at index 1",
+        "Go through the whole list without stopping and remember the index each time it matches"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    checks = 0\n    for i in range(len(items)):\n        checks += 1\n        if items[i] == target:\n            return checks\n    return checks\n\nprint(linear_search([3, 8, 1, 6], 6))",
+      "options": ["4", "3", "6", "1"],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "The list gets twice as long and the target isn't in it. What happens to the number of checks?",
+      "options": ["It doubles too", "It stays the same", "It goes up by one", "It halves"],
+      "answer": 0
+    },
+    {
+      "id": "q27",
+      "text": "How does the search know that the target isn't in the list?",
+      "options": [
+        "Python raises an error that the function catches",
+        "The first element is different from the target",
+        "The loop ends without finding it, so the line after the loop returns -1",
+        "The list gets empty"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nprint(linear_search([], 3))",
+      "options": ["0", "-1", "None", "An error"],
+      "answer": 1
+    },
+    {
+      "id": "q29",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nprint(linear_search([10, 20, 30], 20))",
+      "options": ["1", "2", "0", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "In the mission, the user types `Zane`, who isn't in the roster. What does the program print?",
+      "options": ["Zane is at station -1", "-1", "Zane is not on board", "Zane is at station 0"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "ls-index",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nnumbers = [{{L}}]\nprint(linear_search(numbers, {{t}}))",
+      "values": [
+        {
+          "L": "4, 8, 15, 16, 23",
+          "t": 15
+        },
+        {
+          "L": "7, 3, 9, 1",
+          "t": 1
+        },
+        {
+          "L": "12, 5, 12, 8",
+          "t": 8
+        },
+        {
+          "L": "6, 2, 6, 2",
+          "t": 2
+        },
+        {
+          "L": "30, 10, 20",
+          "t": 30
+        }
+      ],
+      "mistakes": [
+        ["            return i", "            return items[i]"],
+        ["    return -1", "    return 0"],
+        ["range(len(items))", "range(1, len(items))"],
+        ["items[i] == target", "items[i] != target"],
+        ["    return -1", "        return -1"]
+      ]
+    },
+    {
+      "id": "ls-missing",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nnumbers = [{{L}}]\nprint(linear_search(numbers, {{t}}))\nprint(linear_search(numbers, {{u}}))",
+      "values": [
+        {
+          "L": "4, 8, 15, 16",
+          "t": 16,
+          "u": 5
+        },
+        {
+          "L": "9, 1, 7",
+          "t": 2,
+          "u": 9
+        },
+        {
+          "L": "3, 6, 9, 12",
+          "t": 9,
+          "u": 10
+        },
+        {
+          "L": "20, 40, 60",
+          "t": 50,
+          "u": 60
+        },
+        {
+          "L": "5, 5, 1, 2",
+          "t": 1,
+          "u": 3
+        }
+      ],
+      "mistakes": [
+        ["    return -1", "    return 0"],
+        ["            return i", "            return items[i]"],
+        ["    return -1", "    return len(items)"],
+        ["items[i] == target", "items[i] > target"]
+      ]
+    },
+    {
+      "id": "ls-names",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\ncrew = [{{L}}]\nprint(linear_search(crew, \"{{t}}\"))",
+      "values": [
+        {
+          "L": "\"Tommy\", \"Lance\", \"Cortez\", \"Phil\"",
+          "t": "Phil"
+        },
+        {
+          "L": "\"Boris\", \"Cara\", \"Dmitri\"",
+          "t": "Cara"
+        },
+        {
+          "L": "\"Rex\", \"Ana\", \"Ben\", \"Ana\"",
+          "t": "Ana"
+        },
+        {
+          "L": "\"Kent\", \"Mercedes\", \"Victor\"",
+          "t": "Victor"
+        },
+        {
+          "L": "\"Sonny\", \"Lance\", \"Tommy\", \"Cortez\", \"Phil\"",
+          "t": "Tommy"
+        }
+      ],
+      "mistakes": [
+        ["            return i", "            return items[i]"],
+        ["    return -1", "        return -1"],
+        ["    return -1", "    return 0"],
+        ["            return i", "            return i + 1"],
+        ["items[i] == target", "items[i] != target"]
+      ]
+    },
+    {
+      "id": "ls-checks",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    checks = 0\n    for i in range(len(items)):\n        checks += 1\n        if items[i] == target:\n            return checks\n    return checks\n\nprint(linear_search([{{L}}], {{t}}))",
+      "values": [
+        {
+          "L": "5, 9, 2, 7, 4",
+          "t": 7
+        },
+        {
+          "L": "8, 3, 6",
+          "t": 6
+        },
+        {
+          "L": "2, 4, 6, 8, 10, 12",
+          "t": 12
+        },
+        {
+          "L": "11, 22, 33, 44",
+          "t": 33
+        },
+        {
+          "L": "6, 7, 6, 7, 6",
+          "t": 7
+        }
+      ],
+      "mistakes": [
+        [
+          "        checks += 1\n        if items[i] == target:\n            return checks",
+          "        if items[i] == target:\n            return checks\n        checks += 1"
+        ],
+        ["        checks += 1", "        checks += 2"],
+        ["    checks = 0", "    checks = 1"],
+        ["items[i] == target", "items[i] != target"]
+      ]
+    },
+    {
+      "id": "ls-first-above",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "scores = [{{L}}]\nfor i in range(len(scores)):\n    if scores[i] > {{m}}:\n        print(f\"{scores[i]} at index {i}\")\n        break",
+      "values": [
+        {
+          "L": "65, 42, 95, 88, 99",
+          "m": 90
+        },
+        {
+          "L": "10, 30, 20, 50, 40",
+          "m": 25
+        },
+        {
+          "L": "7, 4, 9, 12, 3",
+          "m": 8
+        },
+        {
+          "L": "55, 60, 75, 80",
+          "m": 70
+        },
+        {
+          "L": "3, 8, 5, 9, 6",
+          "m": 4
+        }
+      ],
+      "mistakes": [
+        ["        break", "        continue"],
+        ["scores[i] > {{m}}", "scores[i] < {{m}}"],
+        ["{scores[i]} at index {i}", "{i} at index {scores[i]}"],
+        ["for i in range(len(scores)):", "for i in range(1, len(scores)):"]
+      ]
+    },
+    {
+      "id": "ls-find-all",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def find_all(items, target):\n    places = []\n    for i in range(len(items)):\n        if items[i] == target:\n            places.append(i)\n    return places\n\nprint(find_all([{{L}}], {{t}}))",
+      "values": [
+        {
+          "L": "3, 7, 3, 1, 3",
+          "t": 3
+        },
+        {
+          "L": "5, 2, 8, 2",
+          "t": 2
+        },
+        {
+          "L": "9, 9, 4",
+          "t": 9
+        },
+        {
+          "L": "8, 1, 8",
+          "t": 8
+        },
+        {
+          "L": "6, 0, 6, 0, 0",
+          "t": 0
+        }
+      ],
+      "mistakes": [
+        ["            places.append(i)", "            places.append(items[i])"],
+        ["    return places", "        return places"],
+        ["items[i] == target", "items[i] != target"],
+        ["            places.append(i)", "            places = [i]"]
+      ]
+    },
+    {
+      "id": "ls-last",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def find_last(items, target):\n    last = -1\n    for i in range(len(items)):\n        if items[i] == target:\n            last = i\n    return last\n\nprint(find_last([{{L}}], {{t}}))",
+      "values": [
+        {
+          "L": "4, 1, 4, 2",
+          "t": 4
+        },
+        {
+          "L": "7, 7, 7",
+          "t": 7
+        },
+        {
+          "L": "2, 5, 8, 5, 1",
+          "t": 5
+        },
+        {
+          "L": "3, 6, 9, 6",
+          "t": 6
+        },
+        {
+          "L": "0, 1, 0, 1, 0, 2",
+          "t": 1
+        }
+      ],
+      "mistakes": [
+        ["            last = i", "            last = items[i]"],
+        ["            last = i", "            return i"],
+        ["            last = i", "            last = i + 1"],
+        ["items[i] == target", "items[i] != target"]
+      ]
+    },
+    {
+      "id": "ls-report",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "crew = [\"Tommy\", \"Boris\", \"Cara\", \"Dmitri\", \"Cortez\"]\n\ndef find_crew(crew, target):\n    for i in range(len(crew)):\n        if crew[i] == target:\n            return i\n    return -1\n\ntarget = \"{{t}}\"\nstation = find_crew(crew, target)\nif station == -1:\n    print(f\"{target} is not on board\")\nelse:\n    print(f\"{target} is at station {station}\")",
+      "values": [
+        {
+          "t": "Cara"
+        },
+        {
+          "t": "Boris"
+        },
+        {
+          "t": "Tommy"
+        },
+        {
+          "t": "Cortez"
+        },
+        {
+          "t": "Dmitri"
+        }
+      ],
+      "mistakes": [
+        ["station == -1", "station == 0"],
+        ["{target} is at station {station}", "{target} is at station {station + 1}"],
+        ["    return -1", "        return -1"],
+        ["            return i", "            return crew[i]"],
+        ["station == -1", "station != -1"]
+      ]
+    },
+    {
+      "id": "ls-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nnumbers = [{{L}}]\nprint(linear_search(numbers, {{t}}))",
+      "values": [
+        {
+          "L": "2, 4, 6, 8",
+          "t": 6
+        },
+        {
+          "L": "9, 7, 5, 3",
+          "t": 3
+        },
+        {
+          "L": "1, 3, 1, 3",
+          "t": 3
+        },
+        {
+          "L": "5, 10, 15, 20, 25",
+          "t": 25
+        },
+        {
+          "L": "1, 2, 3, 4, 5, 6",
+          "t": 6
+        }
+      ],
+      "mistakes": [
+        ["            return i", "            return items[i]"],
+        ["    return -1", "        return -1"],
+        ["range(len(items))", "range(len(items) - 1)"],
+        ["    return -1", "    return 0"],
+        ["items[i] == target", "items[i] != target"]
+      ]
+    },
+    {
+      "id": "ls-gap-return",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            ___\n    return -1\n\nnumbers = [{{L}}]\nprint(linear_search(numbers, {{t}}))\nprint(linear_search(numbers, {{u}}))",
+      "values": [
+        {
+          "L": "5, 10, 15, 20",
+          "t": 15,
+          "u": 4
+        },
+        {
+          "L": "8, 6, 7",
+          "t": 7,
+          "u": 8
+        },
+        {
+          "L": "3, 1, 4, 1",
+          "t": 4,
+          "u": 1
+        },
+        {
+          "L": "12, 24, 36",
+          "t": 36,
+          "u": 13
+        },
+        {
+          "L": "9, 0, 9",
+          "t": 0,
+          "u": 2
+        }
+      ],
+      "answer": "return i",
+      "wrong": ["return items[i]", "return -1", "print(i)", "return target"]
+    },
+    {
+      "id": "ls-gap-eq",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] ___ target:\n            return i\n    return -1\n\nnumbers = [{{L}}]\nprint(linear_search(numbers, {{t}}))",
+      "values": [
+        {
+          "L": "3, 8, 5, 1",
+          "t": 5
+        },
+        {
+          "L": "9, 2, 7",
+          "t": 7
+        },
+        {
+          "L": "4, 6, 10, 2",
+          "t": 10
+        },
+        {
+          "L": "1, 5, 3",
+          "t": 3
+        },
+        {
+          "L": "20, 30, 25",
+          "t": 25
+        }
+      ],
+      "answer": "==",
+      "wrong": ["!=", ">", "<", "="]
+    },
+    {
+      "id": "ls-gap-notfound",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return ___\n\nnumbers = [{{L}}]\nprint(linear_search(numbers, {{t}}))\nprint(linear_search(numbers, {{u}}))",
+      "values": [
+        {
+          "L": "2, 4, 6",
+          "t": 4,
+          "u": 5
+        },
+        {
+          "L": "7, 1, 9, 3",
+          "t": 9,
+          "u": 8
+        },
+        {
+          "L": "5, 15, 25",
+          "t": 25,
+          "u": 35
+        },
+        {
+          "L": "6, 3, 6",
+          "t": 6,
+          "u": 1
+        },
+        {
+          "L": "11, 13, 17, 19",
+          "t": 17,
+          "u": 12
+        }
+      ],
+      "answer": "-1",
+      "wrong": ["0", "i", "len(items)", "target"]
+    },
+    {
+      "id": "ls-bad-indent",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nnumbers = [{{L}}]\nprint(numbers)\nprint(linear_search(numbers, {{t}}))",
+      "values": [
+        {
+          "L": "4, 9, 2, 7",
+          "t": 7
+        },
+        {
+          "L": "5, 3, 8",
+          "t": 8
+        },
+        {
+          "L": "1, 6, 3, 6",
+          "t": 3
+        },
+        {
+          "L": "10, 30, 50, 70",
+          "t": 50
+        },
+        {
+          "L": "8, 2, 4",
+          "t": 4
+        }
+      ],
+      "bug": ["    return -1", "        return -1"]
+    },
+    {
+      "id": "ls-bad-return",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nnumbers = [{{L}}]\nprint(numbers)\nprint(linear_search(numbers, {{t}}))",
+      "values": [
+        {
+          "L": "40, 10, 30, 20",
+          "t": 30
+        },
+        {
+          "L": "6, 7, 8, 9",
+          "t": 9
+        },
+        {
+          "L": "15, 25, 35",
+          "t": 15
+        },
+        {
+          "L": "4, 5, 7, 11",
+          "t": 11
+        },
+        {
+          "L": "2, 9, 4, 1",
+          "t": 1
+        }
+      ],
+      "bug": ["            return i", "            return items[i]"]
+    }
+  ]
+}
