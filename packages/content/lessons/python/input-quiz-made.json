@@ -400,40 +400,40 @@
     {
       "id": "in-bad-store-250f8b",
       "text": "The user typed 14, so `age` holds what input() gave back. Which line stops this program from printing this?",
-      "code": "age = \"14\"\nint(age)\nnext_year = age + 1\nprint(next_year)",
-      "output": "15",
+      "code": "age = \"14\"\nint(age)\nnext_year = age + 1\nprint(next_year)\nprint(age * 2)",
+      "output": "15\n28",
       "options": ["int(age)", "age = \"14\"", "next_year = age + 1", "print(next_year)"],
       "answer": 0
     },
     {
       "id": "in-bad-store-8ac15a",
       "text": "The user typed 70, so `age` holds what input() gave back. Which line stops this program from printing this?",
-      "code": "age = \"70\"\nint(age)\nnext_year = age + 1\nprint(next_year)",
-      "output": "71",
+      "code": "age = \"70\"\nint(age)\nnext_year = age + 1\nprint(next_year)\nprint(age * 2)",
+      "output": "71\n140",
       "options": ["int(age)", "age = \"70\"", "next_year = age + 1", "print(next_year)"],
       "answer": 0
     },
     {
       "id": "in-bad-store-c72c4e",
       "text": "The user typed 6, so `score` holds what input() gave back. Which line stops this program from printing this?",
-      "code": "score = \"6\"\nint(score)\ntotal = score + 4\nprint(total)",
-      "output": "10",
-      "options": ["int(score)", "score = \"6\"", "total = score + 4", "print(total)"],
+      "code": "score = \"6\"\nint(score)\ntotal = score + 4\nprint(total)\nprint(score * 2)",
+      "output": "10\n12",
+      "options": ["int(score)", "total = score + 4", "print(total)", "print(score * 2)"],
       "answer": 0
     },
     {
       "id": "in-bad-store-f2abe1",
       "text": "The user typed 150, so `fuel` holds what input() gave back. Which line stops this program from printing this?",
-      "code": "fuel = \"150\"\nint(fuel)\ntotal = fuel + 50\nprint(total)",
-      "output": "200",
-      "options": ["int(fuel)", "fuel = \"150\"", "total = fuel + 50", "print(total)"],
+      "code": "fuel = \"150\"\nint(fuel)\ntotal = fuel + 50\nprint(total)\nprint(fuel * 2)",
+      "output": "200\n300",
+      "options": ["int(fuel)", "total = fuel + 50", "print(total)", "print(fuel * 2)"],
       "answer": 0
     },
     {
       "id": "in-bad-store-2c77fc",
       "text": "The user typed 4, so `level` holds what input() gave back. Which line stops this program from printing this?",
-      "code": "level = \"4\"\nint(level)\nnext_level = level + 1\nprint(next_level)",
-      "output": "5",
+      "code": "level = \"4\"\nint(level)\nnext_level = level + 1\nprint(next_level)\nprint(level * 2)",
+      "output": "5\n8",
       "options": ["int(level)", "level = \"4\"", "next_level = level + 1", "print(next_level)"],
       "answer": 0
     },
