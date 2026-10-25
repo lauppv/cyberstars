@@ -135,6 +135,41 @@
       "answer": 0
     },
     {
+      "id": "bs-count-swaps-7e1566",
+      "text": "What does this print?",
+      "code": "numbers = [4, 1, 3, 2]\nswaps = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n            swaps = swaps + 1\nprint(swaps)",
+      "options": ["4", "1", "[1, 2, 3, 4]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-swaps-b746db",
+      "text": "What does this print?",
+      "code": "numbers = [3, 2, 1]\nswaps = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n            swaps = swaps + 1\nprint(swaps)",
+      "options": ["3", "1", "[1, 2, 3]", "2"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-swaps-f49fc8",
+      "text": "What does this print?",
+      "code": "numbers = [5, 3, 8, 1, 2]\nswaps = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n            swaps = swaps + 1\nprint(swaps)",
+      "options": ["7", "1", "[1, 2, 3, 5, 8]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-swaps-902101",
+      "text": "What does this print?",
+      "code": "numbers = [6, 5, 1, 2]\nswaps = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n            swaps = swaps + 1\nprint(swaps)",
+      "options": ["5", "1", "[1, 2, 5, 6]", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-swaps-93333e",
+      "text": "What does this print?",
+      "code": "numbers = [4, 3, 2, 1]\nswaps = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n            swaps = swaps + 1\nprint(swaps)",
+      "options": ["6", "1", "[1, 2, 3, 4]", "3"],
+      "answer": 0
+    },
+    {
       "id": "bs-gap-up-7db866",
       "text": "What goes in the gap so the program prints this?",
       "code": "numbers = [5, 3, 8, 1, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
@@ -509,6 +544,34 @@
       "text": "What does this print?",
       "code": "a = 7\nb = 70\na, b = b, a\nprint(a, b)",
       "options": ["70 7", "70 70", "7 70", "a b"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-compares-1961c9",
+      "text": "What does this print?",
+      "code": "numbers = [3, 1, 2]\ncomparisons = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        comparisons = comparisons + 1\nprint(comparisons)",
+      "options": ["6", "9", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-compares-7e1566",
+      "text": "What does this print?",
+      "code": "numbers = [4, 1, 3, 2]\ncomparisons = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        comparisons = comparisons + 1\nprint(comparisons)",
+      "options": ["12", "16", "1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-compares-f49fc8",
+      "text": "What does this print?",
+      "code": "numbers = [5, 3, 8, 1, 2]\ncomparisons = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        comparisons = comparisons + 1\nprint(comparisons)",
+      "options": ["20", "25", "1", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bs-count-compares-f742db",
+      "text": "What does this print?",
+      "code": "numbers = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\ncomparisons = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        comparisons = comparisons + 1\nprint(comparisons)",
+      "options": ["90", "100", "1", "10"],
       "answer": 0
     }
   ]

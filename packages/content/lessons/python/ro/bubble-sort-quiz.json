@@ -382,6 +382,35 @@
       ]
     },
     {
+      "id": "bs-count-swaps",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{list}}]\nschimbari = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] > numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\n            schimbari = schimbari + 1\nprint(schimbari)",
+      "values": [
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "3, 2, 1"
+        },
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "6, 5, 1, 2"
+        },
+        {
+          "list": "4, 3, 2, 1"
+        }
+      ],
+      "mistakes": [
+        ["schimbari = schimbari + 1", "schimbari = 1"],
+        ["print(schimbari)", "print(numere)"],
+        ["for i in range(len(numere)):", "for i in range(1):"],
+        ["numere[j] > numere[j + 1]", "numere[j] < numere[j + 1]"]
+      ]
+    },
+    {
       "id": "bs-gap-up",
       "kind": "missing-value",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
@@ -626,6 +655,31 @@
         ["a, b = b, a\n", ""],
         ["print(a, b)", "print(\"a\", \"b\")"],
         ["a, b = b, a", "b = a\na = b"]
+      ]
+    },
+    {
+      "id": "bs-count-compares",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{list}}]\ncomparatii = 0\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        comparatii = comparatii + 1\nprint(comparatii)",
+      "values": [
+        {
+          "list": "3, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "10, 9, 8, 7, 6, 5, 4, 3, 2, 1"
+        }
+      ],
+      "mistakes": [
+        ["range(len(numere) - 1)", "range(len(numere))"],
+        ["comparatii = comparatii + 1", "comparatii = 1"],
+        ["print(comparatii)", "print(len(numere))"]
       ]
     }
   ]

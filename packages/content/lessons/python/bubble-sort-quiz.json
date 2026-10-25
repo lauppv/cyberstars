@@ -377,6 +377,35 @@
       ]
     },
     {
+      "id": "bs-count-swaps",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{list}}]\nswaps = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n            swaps = swaps + 1\nprint(swaps)",
+      "values": [
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "3, 2, 1"
+        },
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "6, 5, 1, 2"
+        },
+        {
+          "list": "4, 3, 2, 1"
+        }
+      ],
+      "mistakes": [
+        ["swaps = swaps + 1", "swaps = 1"],
+        ["print(swaps)", "print(numbers)"],
+        ["for i in range(len(numbers)):", "for i in range(1):"],
+        ["numbers[j] > numbers[j + 1]", "numbers[j] < numbers[j + 1]"]
+      ]
+    },
+    {
       "id": "bs-gap-up",
       "kind": "missing-value",
       "text": "What goes in the gap so the program prints this?",
@@ -621,6 +650,31 @@
         ["a, b = b, a\n", ""],
         ["print(a, b)", "print(\"a\", \"b\")"],
         ["a, b = b, a", "b = a\na = b"]
+      ]
+    },
+    {
+      "id": "bs-count-compares",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{list}}]\ncomparisons = 0\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        comparisons = comparisons + 1\nprint(comparisons)",
+      "values": [
+        {
+          "list": "3, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "10, 9, 8, 7, 6, 5, 4, 3, 2, 1"
+        }
+      ],
+      "mistakes": [
+        ["range(len(numbers) - 1)", "range(len(numbers))"],
+        ["comparisons = comparisons + 1", "comparisons = 1"],
+        ["print(comparisons)", "print(len(numbers))"]
       ]
     }
   ]
