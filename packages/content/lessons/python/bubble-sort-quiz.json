@@ -377,6 +377,56 @@
       ]
     },
     {
+      "id": "bs-gap-up",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [{{list}}]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "values": [
+        {
+          "list": "5, 3, 8, 1, 2"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        },
+        {
+          "list": "30, 10, 20"
+        },
+        {
+          "list": "7, 2, 5"
+        }
+      ],
+      "answer": ">",
+      "wrong": ["<", "==", "="]
+    },
+    {
+      "id": "bs-gap-down",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [{{list}}]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "values": [
+        {
+          "list": "3, 5, 1, 8"
+        },
+        {
+          "list": "1, 4, 2"
+        },
+        {
+          "list": "6, 2, 9, 4"
+        },
+        {
+          "list": "10, 40, 20, 30"
+        }
+      ],
+      "answer": "<",
+      "wrong": [">", "==", "="]
+    },
+    {
       "id": "bs-gap-swap",
       "kind": "missing-line",
       "text": "Which line goes in the gap so the program prints this?",
@@ -476,6 +526,38 @@
         ["range({{k}})", "range(len(numbers))"],
         ["range({{k}})", "range({{k2}})"],
         ["print(numbers)", "print(sorted(numbers, reverse=True))"]
+      ]
+    },
+    {
+      "id": "bs-function",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def bubble_sort(numbers):\n    for i in range(len(numbers)):\n        for j in range(len(numbers) - 1):\n            if numbers[j] > numbers[j + 1]:\n                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n    return numbers\n\nprint(bubble_sort([{{list}}]))",
+      "values": [
+        {
+          "list": "42, 17, 88, 9, 23"
+        },
+        {
+          "list": "5, 4, 3, 2, 1"
+        },
+        {
+          "list": "9, 7, 8"
+        },
+        {
+          "list": "2, 6, 1, 5"
+        },
+        {
+          "list": "30, 10, 20"
+        },
+        {
+          "list": "4, 1, 3, 2"
+        }
+      ],
+      "mistakes": [
+        ["return numbers", "return numbers[0]"],
+        ["return numbers", "return len(numbers)"],
+        ["return numbers", "print(numbers)"],
+        ["numbers[j] > numbers[j + 1]", "numbers[j] < numbers[j + 1]"]
       ]
     },
     {

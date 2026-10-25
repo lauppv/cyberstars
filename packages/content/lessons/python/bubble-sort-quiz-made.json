@@ -135,6 +135,86 @@
       "answer": 0
     },
     {
+      "id": "bs-gap-up-7db866",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [5, 3, 8, 1, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "output": "[1, 2, 3, 5, 8]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-7ba3f8",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [4, 1, 3, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "output": "[1, 2, 3, 4]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-5b4d58",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [9, 7, 8]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "output": "[7, 8, 9]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-75cf92",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [2, 6, 1, 5]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "output": "[1, 2, 5, 6]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-0e8ca0",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [30, 10, 20]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "output": "[10, 20, 30]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-up-a1c421",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [7, 2, 5]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "output": "[2, 5, 7]",
+      "options": [">", "<", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-down-652793",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [3, 5, 1, 8]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "output": "[8, 5, 3, 1]",
+      "options": ["<", ">", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-down-b196e9",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [1, 4, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "output": "[4, 2, 1]",
+      "options": ["<", ">", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-down-e67ac7",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [6, 2, 9, 4]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "output": "[9, 6, 4, 2]",
+      "options": ["<", ">", "==", "="],
+      "answer": 0
+    },
+    {
+      "id": "bs-gap-down-855b34",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "numbers = [10, 40, 20, 30]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] ___ numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "output": "[40, 30, 20, 10]",
+      "options": ["<", ">", "==", "="],
+      "answer": 0
+    },
+    {
       "id": "bs-gap-swap-b3f62d",
       "text": "Which line goes in the gap so the program prints this?",
       "code": "numbers = [5, 3, 8, 1, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            ___\nprint(numbers)",
@@ -297,6 +377,48 @@
       "text": "What does this print?",
       "code": "numbers = [7, 3, 9, 1]\nfor i in range(2):\n    for j in range(len(numbers) - 1):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
       "options": ["[3, 1, 7, 9]", "[9, 7, 3, 1]", "[1, 3, 7, 9]", "[3, 7, 1, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-65dd6e",
+      "text": "What does this print?",
+      "code": "def bubble_sort(numbers):\n    for i in range(len(numbers)):\n        for j in range(len(numbers) - 1):\n            if numbers[j] > numbers[j + 1]:\n                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n    return numbers\n\nprint(bubble_sort([42, 17, 88, 9, 23]))",
+      "options": ["[9, 17, 23, 42, 88]", "9", "5", "[9, 17, 23, 42, 88]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-a170d1",
+      "text": "What does this print?",
+      "code": "def bubble_sort(numbers):\n    for i in range(len(numbers)):\n        for j in range(len(numbers) - 1):\n            if numbers[j] > numbers[j + 1]:\n                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n    return numbers\n\nprint(bubble_sort([5, 4, 3, 2, 1]))",
+      "options": ["[1, 2, 3, 4, 5]", "1", "5", "[1, 2, 3, 4, 5]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-295bae",
+      "text": "What does this print?",
+      "code": "def bubble_sort(numbers):\n    for i in range(len(numbers)):\n        for j in range(len(numbers) - 1):\n            if numbers[j] > numbers[j + 1]:\n                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n    return numbers\n\nprint(bubble_sort([9, 7, 8]))",
+      "options": ["[7, 8, 9]", "7", "3", "[7, 8, 9]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-b8a3c8",
+      "text": "What does this print?",
+      "code": "def bubble_sort(numbers):\n    for i in range(len(numbers)):\n        for j in range(len(numbers) - 1):\n            if numbers[j] > numbers[j + 1]:\n                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n    return numbers\n\nprint(bubble_sort([2, 6, 1, 5]))",
+      "options": ["[1, 2, 5, 6]", "1", "4", "[1, 2, 5, 6]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-d4ac34",
+      "text": "What does this print?",
+      "code": "def bubble_sort(numbers):\n    for i in range(len(numbers)):\n        for j in range(len(numbers) - 1):\n            if numbers[j] > numbers[j + 1]:\n                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n    return numbers\n\nprint(bubble_sort([30, 10, 20]))",
+      "options": ["[10, 20, 30]", "10", "3", "[10, 20, 30]\nNone"],
+      "answer": 0
+    },
+    {
+      "id": "bs-function-7e1566",
+      "text": "What does this print?",
+      "code": "def bubble_sort(numbers):\n    for i in range(len(numbers)):\n        for j in range(len(numbers) - 1):\n            if numbers[j] > numbers[j + 1]:\n                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n    return numbers\n\nprint(bubble_sort([4, 1, 3, 2]))",
+      "options": ["[1, 2, 3, 4]", "1", "4", "[1, 2, 3, 4]\nNone"],
       "answer": 0
     },
     {
