@@ -1,0 +1,702 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ce face Selection Sort pentru fiecare poziție, de la prima încolo?",
+      "options": [
+        "Interschimbă fiecare pereche de vecini care nu sunt în ordine",
+        "Mută cel mai mare număr la început",
+        "Găsește cel mai mic număr dintre cele rămase și îl mută prin interschimbare pe acea poziție",
+        "Împarte lista în două"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q2",
+      "text": "Care e diferența principală dintre Selection Sort și Bubble Sort?",
+      "options": [
+        "Selection Sort nu face comparații",
+        "Selection Sort face o singură interschimbare pe trecere, în loc de, poate, mai multe",
+        "Selection Sort merge doar pe liste sortate",
+        "Bubble Sort găsește întâi cel mai mic număr"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q3",
+      "text": "Selection Sort lucrează pe [5, 3, 8, 1, 2]. Cum arată lista după primul pas?",
+      "options": ["[3, 5, 8, 1, 2]", "[1, 3, 8, 5, 2]", "[1, 5, 3, 8, 2]", "[1, 2, 3, 5, 8]"],
+      "answer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Lista este [1, 3, 8, 5, 2] după primul pas. Cum arată după al doilea?",
+      "options": ["[1, 2, 8, 5, 3]", "[1, 3, 5, 8, 2]", "[1, 2, 3, 5, 8]", "[1, 3, 2, 5, 8]"],
+      "answer": 0
+    },
+    {
+      "id": "q5",
+      "text": "Ce ține minte `index_minim` cât timp j parcurge lista?",
+      "options": [
+        "Cel mai mic număr în sine",
+        "Câte interschimbări s-au făcut",
+        "Unde e cel mai mic număr văzut până acum",
+        "Poziția la care s-a oprit j data trecută"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q6",
+      "text": "De ce pornește j de la `i + 1`?",
+      "options": [
+        "Pentru că listele încep de la indexul 1",
+        "Ca j să nu ajungă niciodată la ultimul element",
+        "Ca să sară peste fiecare al doilea element",
+        "`index_minim` pornește deja de la i, iar pozițiile dinainte de i sunt deja sortate"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q7",
+      "text": "Ce alege bucla din afară (i)?",
+      "options": [
+        "Cel mai mic număr",
+        "Perechea de vecini de comparat",
+        "Poziția de umplut următoarea",
+        "De câte ori rulează programul"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "În urmărirea din lecție, la i = 3 lista este [1, 2, 3, 5, 8]. Ce se întâmplă?",
+      "options": [
+        "5 și 8 se interschimbă",
+        "Bucla se oprește cu o eroare",
+        "5 e deja cel mai mic rămas, deci se interschimbă cu el însuși și nu se mișcă nimic",
+        "3 și 5 se interschimbă"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "Ce afișează?",
+      "code": "numere = [4, 2, 7, 1]\nfor i in range(len(numere)):\n    index_minim = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] < numere[index_minim]:\n            index_minim = j\n    numere[i], numere[index_minim] = numere[index_minim], numere[i]\nprint(numere)",
+      "options": ["[1, 2, 4, 7]", "[7, 4, 2, 1]", "[4, 2, 7, 1]", "[1, 4, 2, 7]"],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "De câte ori rulează codul din lecție linia de interschimbare pentru o listă de n elemente?",
+      "options": [
+        "O dată pentru fiecare comparație",
+        "De n ori, o dată pe poziție, chiar când un număr se interschimbă cu el însuși",
+        "Niciodată mai mult de o dată",
+        "De n × n ori"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q11",
+      "text": "Cam câte comparații face Selection Sort pentru n elemente?",
+      "options": ["Cam n × n, ca Bubble Sort", "Cam n", "Doar una", "Cam 2 × n"],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "Care face de obicei mai puține interschimbări?",
+      "options": [
+        "Bubble Sort",
+        "Fac mereu același număr",
+        "Niciunul nu interschimbă nimic",
+        "Selection Sort"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q13",
+      "text": "Ce spune lecția să folosim pentru sortare în programele reale?",
+      "options": [
+        "Selection Sort, pentru că interschimbă mai puțin",
+        "`sorted()`, care e de sute de ori mai rapid",
+        "Bubble Sort",
+        "Căutarea liniară"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "Cum faci Selection Sort să sorteze de la cel mai mare la cel mai mic?",
+      "options": [
+        "Pornești i de la sfârșitul listei",
+        "Cauți în schimb cel mai mare număr: compari cu `>`",
+        "Interschimbi doar când i e par",
+        "Scoți bucla din interior"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "După prima trecere a lui Selection Sort, ce e sigur la locul lui?",
+      "options": [
+        "Cel mai mare număr, la sfârșit",
+        "Toate numerele",
+        "Cel mai mic număr, pe poziția 0",
+        "Încă nimic"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Ce afișează?",
+      "code": "numere = [7, 4, 9, 2, 5]\nindex_minim = 0\nfor j in range(1, len(numere)):\n    if numere[j] < numere[index_minim]:\n        index_minim = j\nprint(index_minim)",
+      "options": ["2", "3", "0", "4"],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "Selection Sort din lecție schimbă lista primită sau face una nouă?",
+      "options": [
+        "Face o listă sortată nouă și o lasă pe cea veche",
+        "Face o copie la fiecare trecere",
+        "Golește lista",
+        "Schimbă aceeași listă, interschimbând în ea"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "În misiune, ce trebuie să facă `sortare_selectie(numere)` la final?",
+      "options": [
+        "Să afișeze fiecare număr",
+        "Să returneze lista sortată",
+        "Să returneze cel mai mic număr",
+        "Să returneze câte interschimbări a făcut"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q19",
+      "text": "În misiune, ce dă `sortare_selectie([9, 7, 5, 3, 1])`?",
+      "options": ["[9, 7, 5, 3, 1]", "[1, 7, 5, 3, 9]", "1", "[1, 3, 5, 7, 9]"],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "Ce face `numere[i], numere[index_minim] = numere[index_minim], numere[i]`?",
+      "options": [
+        "Copiază cel mai mic număr în ambele locuri",
+        "Compară cele două numere",
+        "Șterge numărul de la i",
+        "Interschimbă numărul de la i cu cel mai mic găsit"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "Câte comparații face bucla din interior în total pentru [3, 1, 2]?",
+      "options": ["9", "2", "3", "6"],
+      "answer": 2
+    },
+    {
+      "id": "q22",
+      "text": "Selection Sort primește o listă deja sortată. Ce face?",
+      "options": [
+        "Face totuși fiecare comparație, nu se oprește mai devreme",
+        "Se oprește după prima comparație",
+        "Inversează lista",
+        "Nu face nicio comparație"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q23",
+      "text": "Ce afișează?",
+      "code": "numere = [8, 3, 5, 1]\ncomparatii = 0\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        comparatii += 1\nprint(comparatii)",
+      "options": ["16", "4", "3", "6"],
+      "answer": 3
+    },
+    {
+      "id": "q24",
+      "text": "Două numere egale se întâlnesc în `numere[j] < numere[index_minim]`. Se mută index_minim?",
+      "options": [
+        "Da, se mută pe al doilea",
+        "Bucla se oprește",
+        "Ambele numere sunt scoase",
+        "Nu, un număr egal nu e mai mic, deci rămâne pe primul"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q25",
+      "text": "De ce ultima trecere nu mută niciodată nimic?",
+      "options": [
+        "A rămas un singur număr, și e deja cel mai mare",
+        "Acolo bucla din interior merge invers",
+        "Python sare peste ultima trecere",
+        "Ultimul număr e mereu 0"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q26",
+      "text": "La i = 2 în urmărirea din lecție lista este [1, 2, 8, 5, 3]. Unde ajunge index_minim?",
+      "options": ["2", "3", "4", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q27",
+      "text": "Ce afișează?",
+      "code": "numere = [7, 4, 9, 2, 5]\nindex_max = 0\nfor j in range(1, len(numere)):\n    if numere[j] > numere[index_max]:\n        index_max = j\nprint(index_max)",
+      "options": ["3", "2", "0", "9"],
+      "answer": 1
+    },
+    {
+      "id": "q28",
+      "text": "De ce învățăm Selection Sort când `sorted()` e mult mai rapid?",
+      "options": [
+        "Ca să învățăm să spargem o problemă în pași, să urmărim starea cu variabile și să folosim bucle imbricate",
+        "Pentru că `sorted()` nu merge pe numere",
+        "Pentru că programele reale folosesc Selection Sort",
+        "Pentru că e cea mai rapidă sortare care există"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q29",
+      "text": "Ce se întâmplă când rulează?",
+      "code": "numere = [3, 1, 2]\nfor i in range(len(numere)):\n    index_minim = i\n    for j in range(i + 1, len(numere) + 1):\n        if numere[j] < numere[index_minim]:\n            index_minim = j\n    numere[i], numere[index_minim] = numere[index_minim], numere[i]\nprint(numere)",
+      "options": [
+        "Un IndexError: j ajunge la `len(numere)`, după ultimul index",
+        "Afișează [1, 2, 3]",
+        "Afișează [3, 1, 2]",
+        "Rulează la nesfârșit"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "Selection Sort caută cel mai mic număr în [4, 1, 3, 1]. La ce index se oprește index_minim?",
+      "options": ["3", "0", "1", "2"],
+      "answer": 2
+    }
+  ],
+  "templates": [
+    {
+      "id": "ss-full",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{L}}]\nfor i in range(len(numere)):\n    index_minim = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] < numere[index_minim]:\n            index_minim = j\n    numere[i], numere[index_minim] = numere[index_minim], numere[i]\nprint(numere)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "64, 25, 12, 22, 11"
+        },
+        {
+          "L": "9, 4, 7, 1"
+        },
+        {
+          "L": "6, 2, 9, 3, 5"
+        },
+        {
+          "L": "30, 10, 20"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] < numere[index_minim]", "numere[j] > numere[index_minim]"],
+        ["            index_minim = j", "            index_minim = i"],
+        ["range(i + 1, len(numere))", "range(i + 1, len(numere) - 1)"],
+        [
+          "    numere[i], numere[index_minim] = numere[index_minim], numere[i]",
+          "    numere[i] = numere[index_minim]"
+        ]
+      ]
+    },
+    {
+      "id": "ss-passes",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{L}}]\nfor i in range({{k}}):\n    index_minim = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] < numere[index_minim]:\n            index_minim = j\n    numere[i], numere[index_minim] = numere[index_minim], numere[i]\nprint(numere)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2",
+          "k": 2
+        },
+        {
+          "L": "64, 25, 12, 22, 11",
+          "k": 1
+        },
+        {
+          "L": "7, 6, 5, 4, 3",
+          "k": 2
+        },
+        {
+          "L": "4, 9, 2, 8, 1",
+          "k": 3
+        },
+        {
+          "L": "8, 1, 6, 2, 7, 3",
+          "k": 2
+        }
+      ],
+      "mistakes": [
+        ["range({{k}})", "range(len(numere))"],
+        ["numere[j] < numere[index_minim]", "numere[j] > numere[index_minim]"],
+        ["range({{k}})", "range({{k}} - 1)"],
+        [
+          "    numere[i], numere[index_minim] = numere[index_minim], numere[i]",
+          "    numere[i] = numere[index_minim]"
+        ]
+      ]
+    },
+    {
+      "id": "ss-min-index",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{L}}]\nindex_minim = 0\nfor j in range(1, len(numere)):\n    if numere[j] < numere[index_minim]:\n        index_minim = j\nprint(index_minim)",
+      "values": [
+        {
+          "L": "12, 19, 15, 10, 11, 17"
+        },
+        {
+          "L": "16, 17, 8, 12, 14"
+        },
+        {
+          "L": "12, 15, 10, 11, 14"
+        },
+        {
+          "L": "14, 10, 7, 16, 19, 15"
+        },
+        {
+          "L": "6, 2, 4, 8, 3, 1"
+        }
+      ],
+      "mistakes": [
+        ["print(index_minim)", "print(numere[index_minim])"],
+        ["numere[j] < numere[index_minim]", "numere[j] > numere[index_minim]"],
+        ["print(index_minim)", "print(index_minim + 1)"],
+        ["range(1, len(numere))", "range(1, len(numere) - 1)"]
+      ]
+    },
+    {
+      "id": "ss-first-swap",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{L}}]\nindex_minim = 0\nfor j in range(1, len(numere)):\n    if numere[j] < numere[index_minim]:\n        index_minim = j\nnumere[0], numere[index_minim] = numere[index_minim], numere[0]\nprint(numere)",
+      "values": [
+        {
+          "L": "7, 4, 9, 2, 5"
+        },
+        {
+          "L": "3, 8, 1, 6"
+        },
+        {
+          "L": "12, 15, 10, 11, 14"
+        },
+        {
+          "L": "9, 5, 8, 6"
+        },
+        {
+          "L": "6, 2, 4, 8, 3, 1"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] < numere[index_minim]", "numere[j] > numere[index_minim]"],
+        [
+          "numere[0], numere[index_minim] = numere[index_minim], numere[0]",
+          "numere[0] = numere[index_minim]"
+        ],
+        ["print(numere)", "print(numere[0])"],
+        ["range(1, len(numere))", "range(1, len(numere) - 1)"]
+      ]
+    },
+    {
+      "id": "ss-function",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "def sortare_selectie(numere):\n    for i in range(len(numere)):\n        index_minim = i\n        for j in range(i + 1, len(numere)):\n            if numere[j] < numere[index_minim]:\n                index_minim = j\n        numere[i], numere[index_minim] = numere[index_minim], numere[i]\n    return numere\n\nprint(sortare_selectie([{{L}}]))",
+      "values": [
+        {
+          "L": "42, 17, 88, 9, 23"
+        },
+        {
+          "L": "8, 3, 9, 1, 5"
+        },
+        {
+          "L": "4, 1, 3, 2"
+        },
+        {
+          "L": "50, 40, 60, 10"
+        },
+        {
+          "L": "6, 8, 2, 4"
+        }
+      ],
+      "mistakes": [
+        ["    return numere", "        return numere"],
+        ["    return numere", "    return numere[0]"],
+        ["numere[j] < numere[index_minim]", "numere[j] > numere[index_minim]"],
+        ["for i in range(len(numere)):", "for i in range(1):"],
+        ["                index_minim = j", "                index_minim = i"]
+      ]
+    },
+    {
+      "id": "ss-desc",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{L}}]\nfor i in range(len(numere)):\n    index_max = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] > numere[index_max]:\n            index_max = j\n    numere[i], numere[index_max] = numere[index_max], numere[i]\nprint(numere)",
+      "values": [
+        {
+          "L": "3, 9, 1, 7"
+        },
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "10, 40, 20, 30"
+        },
+        {
+          "L": "2, 6, 4"
+        },
+        {
+          "L": "11, 25, 64, 12, 22"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] > numere[index_max]", "numere[j] < numere[index_max]"],
+        ["            index_max = j", "            index_max = i"],
+        ["for i in range(len(numere)):", "for i in range(1):"],
+        [
+          "    numere[i], numere[index_max] = numere[index_max], numere[i]",
+          "    numere[index_max] = numere[i]"
+        ]
+      ]
+    },
+    {
+      "id": "ss-count-compares",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{L}}]\ncomparatii = 0\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        comparatii += 1\nprint(comparatii)",
+      "values": [
+        {
+          "L": "3, 1, 2"
+        },
+        {
+          "L": "4, 1, 3, 2"
+        },
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "6, 5, 4, 3, 2, 1"
+        },
+        {
+          "L": "9, 8"
+        }
+      ],
+      "mistakes": [
+        ["range(i + 1, len(numere))", "range(len(numere))"],
+        ["range(i + 1, len(numere))", "range(i, len(numere))"],
+        ["        comparatii += 1", "        comparatii = 1"],
+        ["print(comparatii)", "print(len(numere))"]
+      ]
+    },
+    {
+      "id": "ss-real-swaps",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "numere = [{{L}}]\ninterschimbari = 0\nfor i in range(len(numere)):\n    index_minim = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] < numere[index_minim]:\n            index_minim = j\n    if index_minim != i:\n        numere[i], numere[index_minim] = numere[index_minim], numere[i]\n        interschimbari += 1\nprint(interschimbari)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "1, 3, 2, 4"
+        },
+        {
+          "L": "2, 1, 4, 3"
+        },
+        {
+          "L": "4, 3, 2, 1"
+        },
+        {
+          "L": "3, 1, 2"
+        }
+      ],
+      "mistakes": [
+        [
+          "    if index_minim != i:\n        numere[i], numere[index_minim] = numere[index_minim], numere[i]\n        interschimbari += 1",
+          "    numere[i], numere[index_minim] = numere[index_minim], numere[i]\n    interschimbari += 1"
+        ],
+        ["index_minim != i", "index_minim == i"],
+        ["print(interschimbari)", "print(numere)"],
+        ["        interschimbari += 1", "        interschimbari = 1"]
+      ]
+    },
+    {
+      "id": "ss-which",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "numere = [{{L}}]\nfor i in range(len(numere)):\n    index_minim = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] < numere[index_minim]:\n            index_minim = j\n    numere[i], numere[index_minim] = numere[index_minim], numere[i]\nprint(numere)",
+      "values": [
+        {
+          "L": "6, 1, 5, 2"
+        },
+        {
+          "L": "8, 3, 9, 4, 1"
+        },
+        {
+          "L": "7, 2, 5"
+        },
+        {
+          "L": "20, 50, 10, 40"
+        },
+        {
+          "L": "3, 6, 2, 9, 1, 4"
+        }
+      ],
+      "mistakes": [
+        ["numere[j] < numere[index_minim]", "numere[j] > numere[index_minim]"],
+        ["            index_minim = j", "            index_minim = i"],
+        ["for i in range(len(numere)):", "for i in range(1):"],
+        [
+          "    numere[i], numere[index_minim] = numere[index_minim], numere[i]",
+          "    numere[i] = numere[index_minim]"
+        ]
+      ]
+    },
+    {
+      "id": "ss-gap-start",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [{{L}}]\nfor i in range(len(numere)):\n    index_minim = i\n    for j in range(___, len(numere)):\n        if numere[j] < numere[index_minim]:\n            index_minim = j\n    numere[i], numere[index_minim] = numere[index_minim], numere[i]\nprint(numere)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "9, 4, 7, 1"
+        },
+        {
+          "L": "6, 2, 9, 3, 5"
+        },
+        {
+          "L": "30, 10, 20"
+        },
+        {
+          "L": "4, 8, 2, 6"
+        }
+      ],
+      "answer": "i + 1",
+      "wrong": ["0", "len(numere)", "i + 2", "i - 1"]
+    },
+    {
+      "id": "ss-gap-min",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [{{L}}]\nfor i in range(len(numere)):\n    index_minim = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] < numere[index_minim]:\n            ___\n    numere[i], numere[index_minim] = numere[index_minim], numere[i]\nprint(numere)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "64, 25, 12, 22, 11"
+        },
+        {
+          "L": "9, 4, 7, 1"
+        },
+        {
+          "L": "6, 2, 9, 3, 5"
+        },
+        {
+          "L": "8, 6, 7"
+        }
+      ],
+      "answer": "index_minim = j",
+      "wrong": [
+        "index_minim = i",
+        "index_minim = numere[j]",
+        "j = index_minim",
+        "index_minim = j + 1"
+      ]
+    },
+    {
+      "id": "ss-gap-cmp",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "numere = [{{L}}]\nfor i in range(len(numere)):\n    index_minim = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] ___ numere[index_minim]:\n            index_minim = j\n    numere[i], numere[index_minim] = numere[index_minim], numere[i]\nprint(numere)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "2, 7, 4, 9"
+        },
+        {
+          "L": "6, 2, 9, 3, 5"
+        },
+        {
+          "L": "30, 10, 20"
+        },
+        {
+          "L": "1, 5, 3"
+        }
+      ],
+      "answer": "<",
+      "wrong": [">", "==", "="]
+    },
+    {
+      "id": "ss-bad-start",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [{{L}}]\nprint(numere)\nfor i in range(len(numere)):\n    index_minim = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] < numere[index_minim]:\n            index_minim = j\n    numere[i], numere[index_minim] = numere[index_minim], numere[i]\nprint(numere)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "7, 3, 9, 5"
+        },
+        {
+          "L": "6, 2, 9, 3, 5"
+        },
+        {
+          "L": "3, 9, 4, 6"
+        },
+        {
+          "L": "4, 8, 2, 6"
+        }
+      ],
+      "bug": ["    index_minim = i", "    index_minim = 0"]
+    },
+    {
+      "id": "ss-bad-swap",
+      "kind": "wrong-line",
+      "text": "Care linie împiedică programul să afișeze asta?",
+      "code": "numere = [{{L}}]\nprint(numere)\nfor i in range(len(numere)):\n    index_minim = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] < numere[index_minim]:\n            index_minim = j\n    numere[i], numere[index_minim] = numere[index_minim], numere[i]\nprint(numere)",
+      "values": [
+        {
+          "L": "5, 3, 8, 1, 2"
+        },
+        {
+          "L": "64, 25, 12, 22, 11"
+        },
+        {
+          "L": "9, 4, 7, 1"
+        },
+        {
+          "L": "6, 2, 9, 3"
+        },
+        {
+          "L": "30, 10, 20"
+        }
+      ],
+      "bug": [
+        "    numere[i], numere[index_minim] = numere[index_minim], numere[i]",
+        "    numere[i] = numere[index_minim]"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,670 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "In the mission, which tool counts the wins of each crew member?",
+      "options": ["Bubble Sort", "A frequency dictionary", "Linear search", "A flag"],
+      "answer": 1
+    },
+    {
+      "id": "q2",
+      "text": "Finding the champion means going through every crew member once and keeping the best. Which idea is that?",
+      "options": ["Selection Sort", "A frequency dictionary", "Linear search", "Bubble Sort"],
+      "answer": 2
+    },
+    {
+      "id": "q3",
+      "text": "Why does the mission build `(wins, name)` tuples, with the wins first?",
+      "options": [
+        "So `[0]` is the number of wins, which the sort compares",
+        "Because tuples must start with a number",
+        "So the names come out in alphabetical order",
+        "Python can't put a text first in a tuple"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q4",
+      "text": "How does the mission sort the leaderboard?",
+      "options": [
+        "With Selection Sort, finding the most wins each pass and swapping it to the front",
+        "With Bubble Sort, swapping neighbours",
+        "With `sorted()`",
+        "It doesn't sort it"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q5",
+      "text": "To sort from most wins to fewest, which comparison does the Selection Sort use?",
+      "options": [
+        "`<`: it looks for the smallest",
+        "`>`: it looks for the biggest",
+        "`==`",
+        "`!=`"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "What does this print?",
+      "code": "pair = (3, \"Boris\")\nprint(pair[0], pair[1])",
+      "options": ["Boris 3", "3 Boris", "(3, 'Boris')", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q7",
+      "text": "What does this print?",
+      "code": "count, name = (4, \"Tommy\")\nprint(f\"{name} - {count} wins\")",
+      "options": ["4 - Tommy wins", "Tommy - 4 wins", "Tommy - Tommy wins", "(4, 'Tommy')"],
+      "answer": 1
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "wins = {\"Rex\": 1, \"Cara\": 3, \"Boris\": 2}\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = name\nprint(f\"Champion: {champion} ({highest} wins)\")",
+      "options": [
+        "Champion: Rex (1 wins)",
+        "Champion: Boris (2 wins)",
+        "Champion:  (0 wins)",
+        "Champion: Cara (3 wins)"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q9",
+      "text": "What is the first line the mission prints?",
+      "options": [
+        "Champion: Tommy (4 wins)",
+        "=== LEADERBOARD ===",
+        "1. Tommy - 4 wins",
+        "Champion: Boris (3 wins)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q10",
+      "text": "Why does the leaderboard print `i + 1` and not `i`?",
+      "options": [
+        "So the last crew member is left out",
+        "Because `i` is the number of wins",
+        "To skip the champion",
+        "Ranks start at 1, but indexes start at 0"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "In the mission, what is the last line of the leaderboard?",
+      "options": ["4. Rex - 1 wins", "1. Rex - 1 wins", "4. Tommy - 4 wins", "3. Rex - 1 wins"],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "The mission's results name 4 crew members, 10 times in all. How many lines come after `=== LEADERBOARD ===`?",
+      "options": ["4", "10", "1", "5"],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "What does this print?",
+      "code": "wins = {\"Rex\": 1, \"Tommy\": 2}\nleaderboard = []\nfor name, count in wins.items():\n    leaderboard.append((count, name))\nprint(leaderboard)",
+      "options": [
+        "[('Rex', 1), ('Tommy', 2)]",
+        "[(2, 'Tommy'), (1, 'Rex')]",
+        "[(1, 'Rex'), (2, 'Tommy')]",
+        "[1, 2]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q14",
+      "text": "What does this print?",
+      "code": "leaderboard = [(3, \"Ana\"), (1, \"Cal\"), (3, \"Ben\")]\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
+      "options": [
+        "[(3, 'Ben'), (3, 'Ana'), (1, 'Cal')]",
+        "[(1, 'Cal'), (3, 'Ana'), (3, 'Ben')]",
+        "[(3, 'Ana'), (3, 'Ben'), (1, 'Cal')]",
+        "[(3, 'Ana'), (1, 'Cal'), (3, 'Ben')]"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q15",
+      "text": "Which tool of this chapter answers \"where is this name in the list?\"",
+      "options": ["A frequency dictionary", "Bubble Sort", "Linear search", "Selection Sort"],
+      "answer": 2
+    },
+    {
+      "id": "q16",
+      "text": "Which tool of this chapter answers \"how many times does each name appear?\"",
+      "options": ["Linear search", "A frequency dictionary", "Bubble Sort", "Selection Sort"],
+      "answer": 1
+    },
+    {
+      "id": "q17",
+      "text": "Which sort of this chapter swaps neighbours that are out of order?",
+      "options": ["Selection Sort", "Both", "Bubble Sort", "Neither"],
+      "answer": 2
+    },
+    {
+      "id": "q18",
+      "text": "Which sort of this chapter finds the smallest (or biggest) and swaps it once per pass?",
+      "options": ["Bubble Sort", "Both", "Selection Sort", "Neither"],
+      "answer": 2
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "numbers = [1, 3, 2]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] < numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["[1, 2, 3]", "[3, 1, 2]", "[3, 2, 1]", "[2, 3, 1]"],
+      "answer": 2
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nresults = [\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\"]\nprint(linear_search(results, \"Boris\"))",
+      "options": ["5", "8", "-1", "2"],
+      "answer": 3
+    },
+    {
+      "id": "q21",
+      "text": "What does this print?",
+      "code": "results = [\"Rex\", \"Tommy\", \"Boris\", \"Tommy\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nprint(wins)",
+      "options": [
+        "{'Rex': 1, 'Tommy': 2, 'Boris': 1}",
+        "{'Tommy': 2, 'Rex': 1, 'Boris': 1}",
+        "{'Rex': 1, 'Tommy': 1, 'Boris': 1}",
+        "['Rex', 'Tommy', 'Boris']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "Why does the sort compare `leaderboard[j][0]`, the first part of each tuple?",
+      "options": [
+        "`[0]` is the crew member's name",
+        "Tuples have only one part",
+        "So the list gets shorter",
+        "`[0]` is the number of wins, the thing we rank by"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q23",
+      "text": "What does `leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]` swap?",
+      "options": [
+        "Two whole tuples, wins and name together",
+        "Only the wins of the two",
+        "Only the names",
+        "The first and the last element, always"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q24",
+      "text": "Why does the champion search start with `highest = 0`?",
+      "options": [
+        "Because the champion has 0 wins",
+        "Everyone in the dictionary has at least 1 win, so the first one replaces it",
+        "So the loop runs backwards",
+        "A dictionary can't hold 0"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "wins = {\"Ana\": 2, \"Ben\": 2}\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count >= highest:\n        highest = count\n        champion = name\nprint(champion)",
+      "options": ["Ana", "Ana\nBen", "Ben", "2"],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "After the mission sorts the leaderboard, what is `leaderboard[0]`?",
+      "options": ["('Tommy', 4)", "(1, 'Rex')", "4", "(4, 'Tommy')"],
+      "answer": 3
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "wins = {\"Rex\": 1, \"Ana\": 3}\nprint(sorted(wins))",
+      "options": ["['Ana', 'Rex']", "['Rex', 'Ana']", "[1, 3]", "[3, 1]"],
+      "answer": 0
+    },
+    {
+      "id": "q28",
+      "text": "What happens when this runs?",
+      "code": "pair = (3, \"Boris\")\npair[0] = 4\nprint(pair)",
+      "options": [
+        "It prints (4, 'Boris')",
+        "It prints (3, 'Boris')",
+        "It prints 4",
+        "A TypeError: a tuple can't be changed once it is made"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "How many comparisons does Selection Sort make on a leaderboard of 4 crew members?",
+      "options": ["4", "6", "16", "3"],
+      "answer": 1
+    },
+    {
+      "id": "q30",
+      "text": "What does `count, name = leaderboard[i]` do?",
+      "options": [
+        "It makes a new tuple from count and name",
+        "It compares count with name",
+        "It changes the tuple in the list",
+        "It takes the tuple apart: its wins go into `count` and its name into `name`"
+      ],
+      "answer": 3
+    }
+  ],
+  "templates": [
+    {
+      "id": "ra-freq",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "results = [{{r}}]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nprint(wins)",
+      "values": [
+        {
+          "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\""
+        },
+        {
+          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
+        },
+        {
+          "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\""
+        },
+        {
+          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\""
+        },
+        {
+          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\""
+        }
+      ],
+      "mistakes": [
+        ["        wins[name] += 1", "        wins[name] = 1"],
+        ["        wins[name] = 1", "        wins[name] = 0"],
+        ["print(wins)", "print(len(wins))"],
+        ["        wins[name] += 1", "        wins[name] += 2"]
+      ]
+    },
+    {
+      "id": "ra-champion",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "results = [{{r}}]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = name\nprint(f\"Champion: {champion} ({highest} wins)\")",
+      "values": [
+        {
+          "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\""
+        },
+        {
+          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
+        },
+        {
+          "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\""
+        },
+        {
+          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\""
+        },
+        {
+          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\""
+        }
+      ],
+      "mistakes": [
+        ["count > highest", "count < highest"],
+        ["        wins[name] += 1", "        wins[name] = 1"],
+        ["        champion = name", "        champion = count"],
+        ["({highest} wins)", "({len(wins)} wins)"]
+      ]
+    },
+    {
+      "id": "ra-tuples",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "wins = {{{d}}}\nleaderboard = []\nfor name, count in wins.items():\n    leaderboard.append((count, name))\nprint(leaderboard)",
+      "values": [
+        {
+          "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
+        },
+        {
+          "d": "\"Ana\": 3, \"Ben\": 1"
+        },
+        {
+          "d": "\"Cara\": 2, \"Phil\": 5, \"Lance\": 1"
+        },
+        {
+          "d": "\"Kent\": 3, \"Vic\": 1, \"Mia\": 2"
+        },
+        {
+          "d": "\"Zoe\": 4, \"Liv\": 2"
+        }
+      ],
+      "mistakes": [
+        ["leaderboard.append((count, name))", "leaderboard.append((name, count))"],
+        ["leaderboard.append((count, name))", "leaderboard.append(count)"],
+        ["leaderboard.append((count, name))", "leaderboard = [(count, name)]"],
+        ["print(leaderboard)", "print(len(leaderboard))"]
+      ]
+    },
+    {
+      "id": "ra-sort",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "leaderboard = [{{L}}]\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
+      "values": [
+        {
+          "L": "(1, \"Rex\"), (4, \"Tommy\"), (3, \"Boris\")"
+        },
+        {
+          "L": "(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\"), (3, \"Dan\")"
+        },
+        {
+          "L": "(1, \"Phil\"), (3, \"Cara\"), (2, \"Lance\")"
+        },
+        {
+          "L": "(2, \"Kent\"), (1, \"Vic\"), (3, \"Mia\"), (4, \"Ivy\")"
+        },
+        {
+          "L": "(4, \"Zoe\"), (6, \"Liv\"), (2, \"Max\"), (5, \"Ivy\")"
+        }
+      ],
+      "mistakes": [
+        [
+          "leaderboard[j][0] > leaderboard[max_index][0]",
+          "leaderboard[j][0] < leaderboard[max_index][0]"
+        ],
+        ["            max_index = j", "            max_index = i"],
+        ["for i in range(len(leaderboard)):", "for i in range(1):"],
+        ["range(i + 1, len(leaderboard))", "range(i + 1, len(leaderboard) - 1)"]
+      ]
+    },
+    {
+      "id": "ra-board",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "wins = {{{d}}}\nleaderboard = []\nfor name, count in wins.items():\n    leaderboard.append((count, name))\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nfor i in range(len(leaderboard)):\n    count, name = leaderboard[i]\n    print(f\"{i + 1}. {name} - {count} wins\")",
+      "values": [
+        {
+          "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3, \"Cara\": 2"
+        },
+        {
+          "d": "\"Ana\": 3, \"Ben\": 1, \"Cal\": 2"
+        },
+        {
+          "d": "\"Lance\": 1, \"Phil\": 3"
+        },
+        {
+          "d": "\"Kent\": 2, \"Vic\": 5, \"Mia\": 1"
+        },
+        {
+          "d": "\"Zoe\": 1, \"Liv\": 2, \"Max\": 4"
+        }
+      ],
+      "mistakes": [
+        ["{i + 1}. ", "{i}. "],
+        [
+          "leaderboard[j][0] > leaderboard[max_index][0]",
+          "leaderboard[j][0] < leaderboard[max_index][0]"
+        ],
+        ["    count, name = leaderboard[i]", "    name, count = leaderboard[i]"],
+        ["            max_index = j", "            max_index = i"]
+      ]
+    },
+    {
+      "id": "ra-linear",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nresults = [{{r}}]\nprint(linear_search(results, \"{{t}}\"))",
+      "values": [
+        {
+          "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\"",
+          "t": "Cara"
+        },
+        {
+          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"",
+          "t": "Cal"
+        },
+        {
+          "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\"",
+          "t": "Sonny"
+        },
+        {
+          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\"",
+          "t": "Vic"
+        },
+        {
+          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\"",
+          "t": "Liv"
+        }
+      ],
+      "mistakes": [
+        ["            return i", "            return items[i]"],
+        ["    return -1", "        return -1"],
+        ["            return i", "            return i + 1"],
+        ["items[i] == target", "items[i] != target"]
+      ]
+    },
+    {
+      "id": "ra-bubble-desc",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{L}}]\nfor i in range(len(numbers)):\n    for j in range(len(numbers) - 1):\n        if numbers[j] < numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "values": [
+        {
+          "L": "1, 4, 3, 2"
+        },
+        {
+          "L": "5, 3, 8, 1"
+        },
+        {
+          "L": "2, 7, 4"
+        },
+        {
+          "L": "10, 30, 20, 40"
+        },
+        {
+          "L": "6, 9, 2, 8, 5"
+        }
+      ],
+      "mistakes": [
+        ["numbers[j] < numbers[j + 1]", "numbers[j] > numbers[j + 1]"],
+        ["for i in range(len(numbers)):", "for i in range(1):"],
+        [
+          "            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]",
+          "            numbers[j] = numbers[j + 1]"
+        ],
+        ["print(numbers)", "print(numbers[0])"]
+      ]
+    },
+    {
+      "id": "ra-selection-max",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "numbers = [{{L}}]\nfor i in range(len(numbers)):\n    max_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] > numbers[max_index]:\n            max_index = j\n    numbers[i], numbers[max_index] = numbers[max_index], numbers[i]\n    print(numbers)",
+      "values": [
+        {
+          "L": "2, 5, 1, 4"
+        },
+        {
+          "L": "3, 1, 2"
+        },
+        {
+          "L": "1, 6, 3, 7"
+        },
+        {
+          "L": "4, 2, 9"
+        },
+        {
+          "L": "5, 8, 6, 7"
+        }
+      ],
+      "mistakes": [
+        ["numbers[j] > numbers[max_index]", "numbers[j] < numbers[max_index]"],
+        ["    print(numbers)", "print(numbers)"],
+        ["            max_index = j", "            max_index = i"],
+        ["range(i + 1, len(numbers))", "range(i + 1, len(numbers) - 1)"]
+      ]
+    },
+    {
+      "id": "ra-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "results = [{{r}}]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = name\nprint(champion, highest)",
+      "values": [
+        {
+          "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\""
+        },
+        {
+          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
+        },
+        {
+          "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\""
+        },
+        {
+          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\""
+        },
+        {
+          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\""
+        }
+      ],
+      "mistakes": [
+        ["count > highest", "count < highest"],
+        ["        wins[name] += 1", "        wins[name] = 1"],
+        ["        champion = name", "        champion = count"],
+        ["print(champion, highest)", "print(name, count)"]
+      ]
+    },
+    {
+      "id": "ra-gap-append",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "wins = {{{d}}}\nleaderboard = []\nfor name, count in wins.items():\n    ___\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
+      "values": [
+        {
+          "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
+        },
+        {
+          "d": "\"Ana\": 3, \"Ben\": 1, \"Cal\": 2"
+        },
+        {
+          "d": "\"Phil\": 2, \"Lance\": 5"
+        },
+        {
+          "d": "\"Kent\": 1, \"Vic\": 3, \"Mia\": 2"
+        },
+        {
+          "d": "\"Zoe\": 2, \"Liv\": 6, \"Max\": 4"
+        }
+      ],
+      "answer": "leaderboard.append((count, name))",
+      "wrong": [
+        "leaderboard.append((name, count))",
+        "leaderboard = [(count, name)]",
+        "leaderboard.append(name)",
+        "leaderboard.append(count)"
+      ]
+    },
+    {
+      "id": "ra-gap-cmp",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "leaderboard = [{{L}}]\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] ___ leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
+      "values": [
+        {
+          "L": "(1, \"Rex\"), (4, \"Tommy\"), (3, \"Boris\")"
+        },
+        {
+          "L": "(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")"
+        },
+        {
+          "L": "(3, \"Cara\"), (1, \"Phil\"), (2, \"Lance\")"
+        },
+        {
+          "L": "(1, \"Kent\"), (2, \"Vic\"), (3, \"Mia\")"
+        },
+        {
+          "L": "(4, \"Zoe\"), (6, \"Liv\"), (2, \"Max\")"
+        }
+      ],
+      "answer": ">",
+      "wrong": ["<", "==", "="]
+    },
+    {
+      "id": "ra-gap-rank",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "leaderboard = [{{L}}]\nfor i in range(len(leaderboard)):\n    count, name = leaderboard[i]\n    print(f\"{___}. {name} - {count} wins\")",
+      "values": [
+        {
+          "L": "(4, \"Tommy\"), (3, \"Boris\"), (1, \"Rex\")"
+        },
+        {
+          "L": "(5, \"Ben\"), (2, \"Ana\")"
+        },
+        {
+          "L": "(3, \"Cara\"), (2, \"Lance\"), (1, \"Phil\")"
+        },
+        {
+          "L": "(6, \"Liv\"), (4, \"Zoe\"), (2, \"Max\"), (1, \"Ivy\")"
+        },
+        {
+          "L": "(3, \"Mia\"), (2, \"Vic\")"
+        }
+      ],
+      "answer": "i + 1",
+      "wrong": ["i", "count", "len(leaderboard)", "i - 1"]
+    },
+    {
+      "id": "ra-bad-champ",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "wins = {{{d}}}\nprint(wins)\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = name\nprint(champion, highest)",
+      "values": [
+        {
+          "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
+        },
+        {
+          "d": "\"Ana\": 3, \"Ben\": 1, \"Cal\": 2"
+        },
+        {
+          "d": "\"Phil\": 2, \"Lance\": 5, \"Sonny\": 3"
+        },
+        {
+          "d": "\"Kent\": 1, \"Vic\": 3, \"Mia\": 2"
+        },
+        {
+          "d": "\"Zoe\": 2, \"Liv\": 6, \"Max\": 4"
+        }
+      ],
+      "bug": ["count > highest", "count < highest"]
+    },
+    {
+      "id": "ra-bad-sort",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "leaderboard = [{{L}}]\nprint(leaderboard)\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
+      "values": [
+        {
+          "L": "(1, \"Rex\"), (4, \"Tommy\"), (3, \"Boris\")"
+        },
+        {
+          "L": "(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")"
+        },
+        {
+          "L": "(3, \"Cara\"), (1, \"Phil\"), (4, \"Lance\")"
+        },
+        {
+          "L": "(1, \"Kent\"), (2, \"Vic\"), (3, \"Mia\")"
+        },
+        {
+          "L": "(4, \"Zoe\"), (6, \"Liv\"), (2, \"Max\")"
+        }
+      ],
+      "bug": ["            max_index = j", "            max_index = i"]
+    }
+  ]
+}

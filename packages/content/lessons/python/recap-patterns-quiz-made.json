@@ -1,0 +1,580 @@
+{
+  "note": "Made by npm run make:quiz from the templates in recap-patterns-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "rp-count-581b48",
+      "text": "What does this print?",
+      "code": "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"scan probe scan analyze probe scan boot\", \"scan\"))",
+      "options": ["3", "1", "4", "12"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-6f68a5",
+      "text": "What does this print?",
+      "code": "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"ping ping echo ping\", \"ping\"))",
+      "options": ["3", "1", "4", "12"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-d35aa6",
+      "text": "What does this print?",
+      "code": "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"boot scan probe scan\", \"probe\"))",
+      "options": ["1", "0", "3", "2"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-d6b93b",
+      "text": "What does this print?",
+      "code": "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"up down up down up\", \"down\"))",
+      "options": ["2", "1", "0", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-caa01a",
+      "text": "What does this print?",
+      "code": "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"alpha beta alpha gamma beta alpha\", \"beta\"))",
+      "options": ["2", "1", "0", "4"],
+      "answer": 0
+    },
+    {
+      "id": "rp-longest-c05a36",
+      "text": "What does this print?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"scan probe analyze boot\"))",
+      "options": ["analyze", "7", "scan", "scan probe analyze boot"],
+      "answer": 0
+    },
+    {
+      "id": "rp-longest-ac0dc4",
+      "text": "What does this print?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"go far away\"))",
+      "options": ["away", "4", "go", "go far away"],
+      "answer": 0
+    },
+    {
+      "id": "rp-longest-0828e6",
+      "text": "What does this print?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"red blue green gray\"))",
+      "options": ["green", "5", "red", "red blue green gray"],
+      "answer": 0
+    },
+    {
+      "id": "rp-longest-6ecfb3",
+      "text": "What does this print?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"mars venus earth pluto\"))",
+      "options": ["venus", "pluto", "5", "mars"],
+      "answer": 0
+    },
+    {
+      "id": "rp-longest-e57c13",
+      "text": "What does this print?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"ion orbit comet star\"))",
+      "options": ["orbit", "comet", "5", "ion"],
+      "answer": 0
+    },
+    {
+      "id": "rp-dup-7699b3",
+      "text": "What does this print?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return False\n\nprint(has_duplicate(\"scan probe scan\"), has_duplicate(\"boot ping echo\"))",
+      "options": ["True False", "scan False", "True 3", "True True"],
+      "answer": 0
+    },
+    {
+      "id": "rp-dup-4503f0",
+      "text": "What does this print?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return False\n\nprint(has_duplicate(\"red blue\"), has_duplicate(\"go up go\"))",
+      "options": ["False True", "False go", "2 True", "True True"],
+      "answer": 0
+    },
+    {
+      "id": "rp-dup-f8e0cb",
+      "text": "What does this print?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return False\n\nprint(has_duplicate(\"a b c d\"), has_duplicate(\"a b c a\"))",
+      "options": ["False True", "False a", "4 True", "True True"],
+      "answer": 0
+    },
+    {
+      "id": "rp-dup-fdbfaf",
+      "text": "What does this print?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return False\n\nprint(has_duplicate(\"mars mars\"), has_duplicate(\"venus earth\"))",
+      "options": ["True False", "mars False", "True 2", "True True"],
+      "answer": 0
+    },
+    {
+      "id": "rp-dup-447355",
+      "text": "What does this print?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return False\n\nprint(has_duplicate(\"one two three\"), has_duplicate(\"one one\"))",
+      "options": ["False True", "False one", "3 True", "True True"],
+      "answer": 0
+    },
+    {
+      "id": "rp-unique-02eb57",
+      "text": "What does this print?",
+      "code": "log = \"scan probe scan boot\"\nwords = log.split(\" \")\nprint(sorted(set(words)))",
+      "options": ["['boot', 'probe', 'scan']", "['boot', 'probe', 'scan', 'scan']", "3", "4"],
+      "answer": 0
+    },
+    {
+      "id": "rp-unique-9905d6",
+      "text": "What does this print?",
+      "code": "log = \"up down up\"\nwords = log.split(\" \")\nprint(sorted(set(words)))",
+      "options": ["['down', 'up']", "['down', 'up', 'up']", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-unique-be9d31",
+      "text": "What does this print?",
+      "code": "log = \"red blue green red blue\"\nwords = log.split(\" \")\nprint(sorted(set(words)))",
+      "options": ["['blue', 'green', 'red']", "['blue', 'blue', 'green', 'red', 'red']", "3", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rp-unique-8f4b9e",
+      "text": "What does this print?",
+      "code": "log = \"echo ping echo\"\nwords = log.split(\" \")\nprint(sorted(set(words)))",
+      "options": ["['echo', 'ping']", "['echo', 'echo', 'ping']", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-unique-b8a4b5",
+      "text": "What does this print?",
+      "code": "log = \"gamma alpha beta alpha\"\nwords = log.split(\" \")\nprint(sorted(set(words)))",
+      "options": ["['alpha', 'beta', 'gamma']", "['alpha', 'alpha', 'beta', 'gamma']", "3", "4"],
+      "answer": 0
+    },
+    {
+      "id": "rp-total-len-3f8ccf",
+      "text": "What does this print?",
+      "code": "log = \"scan boot ping\"\ntotal = 0\nfor w in log.split(\" \"):\n    total += len(w)\nprint(total)",
+      "options": ["12", "4", "3", "14"],
+      "answer": 0
+    },
+    {
+      "id": "rp-total-len-ac0dc4",
+      "text": "What does this print?",
+      "code": "log = \"go far away\"\ntotal = 0\nfor w in log.split(\" \"):\n    total += len(w)\nprint(total)",
+      "options": ["9", "4", "3", "11"],
+      "answer": 0
+    },
+    {
+      "id": "rp-total-len-ffaabd",
+      "text": "What does this print?",
+      "code": "log = \"alpha beta\"\ntotal = 0\nfor w in log.split(\" \"):\n    total += len(w)\nprint(total)",
+      "options": ["9", "4", "2", "10"],
+      "answer": 0
+    },
+    {
+      "id": "rp-total-len-9e225d",
+      "text": "What does this print?",
+      "code": "log = \"a bb ccc dddd\"\ntotal = 0\nfor w in log.split(\" \"):\n    total += len(w)\nprint(total)",
+      "options": ["10", "4", "13", "52"],
+      "answer": 0
+    },
+    {
+      "id": "rp-total-len-662d0c",
+      "text": "What does this print?",
+      "code": "log = \"probe orbit\"\ntotal = 0\nfor w in log.split(\" \"):\n    total += len(w)\nprint(total)",
+      "options": ["10", "5", "2", "11"],
+      "answer": 0
+    },
+    {
+      "id": "rp-report-581b48",
+      "text": "What does this print?",
+      "code": "log = \"scan probe scan analyze probe scan boot\"\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\ndef longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\nwords = log.split(\" \")\ncount = count_word(log, \"scan\")\nprint(f\"Total words: {len(words)}\")\nprint(f\"Count of scan: {count}\")\nprint(f\"Longest word: {longest_word(log)}\")",
+      "options": [
+        "Total words: 7\nCount of scan: 3\nLongest word: analyze",
+        "Total words: 39\nCount of scan: 3\nLongest word: analyze",
+        "Total words: 7\nCount of scan: 1\nLongest word: analyze",
+        "Total words: 7\nCount of scan: 3\nLongest word:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-report-6f68a5",
+      "text": "What does this print?",
+      "code": "log = \"ping ping echo ping\"\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\ndef longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\nwords = log.split(\" \")\ncount = count_word(log, \"ping\")\nprint(f\"Total words: {len(words)}\")\nprint(f\"Count of ping: {count}\")\nprint(f\"Longest word: {longest_word(log)}\")",
+      "options": [
+        "Total words: 4\nCount of ping: 3\nLongest word: ping",
+        "Total words: 19\nCount of ping: 3\nLongest word: ping",
+        "Total words: 4\nCount of ping: 1\nLongest word: ping",
+        "Total words: 4\nCount of ping: 3\nLongest word:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-report-d35aa6",
+      "text": "What does this print?",
+      "code": "log = \"boot scan probe scan\"\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\ndef longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\nwords = log.split(\" \")\ncount = count_word(log, \"probe\")\nprint(f\"Total words: {len(words)}\")\nprint(f\"Count of probe: {count}\")\nprint(f\"Longest word: {longest_word(log)}\")",
+      "options": [
+        "Total words: 4\nCount of probe: 1\nLongest word: probe",
+        "Total words: 20\nCount of probe: 1\nLongest word: probe",
+        "Total words: 4\nCount of probe: 1\nLongest word:",
+        "Total words: 4\nCount of probe: 1\nLongest word: 5"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-report-d6b93b",
+      "text": "What does this print?",
+      "code": "log = \"up down up down up\"\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\ndef longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\nwords = log.split(\" \")\ncount = count_word(log, \"down\")\nprint(f\"Total words: {len(words)}\")\nprint(f\"Count of down: {count}\")\nprint(f\"Longest word: {longest_word(log)}\")",
+      "options": [
+        "Total words: 5\nCount of down: 2\nLongest word: down",
+        "Total words: 18\nCount of down: 2\nLongest word: down",
+        "Total words: 5\nCount of down: 1\nLongest word: down",
+        "Total words: 5\nCount of down: 2\nLongest word:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-report-caa01a",
+      "text": "What does this print?",
+      "code": "log = \"alpha beta alpha gamma beta alpha\"\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\ndef longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            longest = w\n    return longest\nwords = log.split(\" \")\ncount = count_word(log, \"beta\")\nprint(f\"Total words: {len(words)}\")\nprint(f\"Count of beta: {count}\")\nprint(f\"Longest word: {longest_word(log)}\")",
+      "options": [
+        "Total words: 6\nCount of beta: 2\nLongest word: alpha",
+        "Total words: 33\nCount of beta: 2\nLongest word: alpha",
+        "Total words: 6\nCount of beta: 1\nLongest word: alpha",
+        "Total words: 6\nCount of beta: 2\nLongest word:"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-long-9b8962",
+      "text": "What does this print?",
+      "code": "words = \"go probe up radar scan\".split(\" \")\ncount = 0\nfor w in words:\n    if len(w) > 3:\n        count += 1\nprint(count)",
+      "options": ["3", "14", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-long-3a1ba8",
+      "text": "What does this print?",
+      "code": "words = \"a bb ccc dddd eeeee\".split(\" \")\ncount = 0\nfor w in words:\n    if len(w) > 2:\n        count += 1\nprint(count)",
+      "options": ["3", "4", "12", "1"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-long-4b3897",
+      "text": "What does this print?",
+      "code": "words = \"orbit ion comet sun\".split(\" \")\ncount = 0\nfor w in words:\n    if len(w) > 3:\n        count += 1\nprint(count)",
+      "options": ["2", "4", "10", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-long-58c19c",
+      "text": "What does this print?",
+      "code": "words = \"alpha beta gamma delta\".split(\" \")\ncount = 0\nfor w in words:\n    if len(w) > 4:\n        count += 1\nprint(count)",
+      "options": ["3", "4", "15", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rp-count-long-4ee5e0",
+      "text": "What does this print?",
+      "code": "words = \"red blue green\".split(\" \")\ncount = 0\nfor w in words:\n    if len(w) > 3:\n        count += 1\nprint(count)",
+      "options": ["2", "3", "9", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flag-ad2ce2",
+      "text": "What does this print?",
+      "code": "words = \"go up on\".split(\" \")\nall_short = True\nfor w in words:\n    if len(w) > 2:\n        all_short = False\nprint(all_short, w)",
+      "options": ["True on", "False on", "True ['go', 'up', 'on']", "True 2"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flag-313365",
+      "text": "What does this print?",
+      "code": "words = \"scan boot probe\".split(\" \")\nall_short = True\nfor w in words:\n    if len(w) > 4:\n        all_short = False\nprint(all_short, w)",
+      "options": ["False probe", "True probe", "False ['scan', 'boot', 'probe']", "False 5"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flag-d512cc",
+      "text": "What does this print?",
+      "code": "words = \"ion sun orbit\".split(\" \")\nall_short = True\nfor w in words:\n    if len(w) > 3:\n        all_short = False\nprint(all_short, w)",
+      "options": ["False orbit", "True orbit", "False ['ion', 'sun', 'orbit']", "False 5"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flag-7f4614",
+      "text": "What does this print?",
+      "code": "words = \"a bb ccc\".split(\" \")\nall_short = True\nfor w in words:\n    if len(w) > 3:\n        all_short = False\nprint(all_short, w)",
+      "options": ["True ccc", "False ccc", "True ['a', 'bb', 'ccc']", "True 3"],
+      "answer": 0
+    },
+    {
+      "id": "rp-flag-650021",
+      "text": "What does this print?",
+      "code": "words = \"mars venus earth\".split(\" \")\nall_short = True\nfor w in words:\n    if len(w) > 4:\n        all_short = False\nprint(all_short, w)",
+      "options": ["False earth", "True earth", "False ['mars', 'venus', 'earth']", "False 5"],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-f21e5f",
+      "text": "Which program shows this?",
+      "output": "3",
+      "options": [
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"ping ping echo ping\", \"ping\"))",
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count = 1\n    return count\n\nprint(count_word(\"ping ping echo ping\", \"ping\"))",
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w != word:\n            count += 1\n    return count\n\nprint(count_word(\"ping ping echo ping\", \"ping\"))",
+        "def count_word(log, word):\n    count = 1\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"ping ping echo ping\", \"ping\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-c6aa6a",
+      "text": "Which program shows this?",
+      "output": "1",
+      "options": [
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"go up go\", \"up\"))",
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w != word:\n            count += 1\n    return count\n\nprint(count_word(\"go up go\", \"up\"))",
+        "def count_word(log, word):\n    count = 1\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"go up go\", \"up\"))",
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n        return count\n\nprint(count_word(\"go up go\", \"up\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-e5ccae",
+      "text": "Which program shows this?",
+      "output": "2",
+      "options": [
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"a b a b\", \"b\"))",
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count = 1\n    return count\n\nprint(count_word(\"a b a b\", \"b\"))",
+        "def count_word(log, word):\n    count = 1\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"a b a b\", \"b\"))",
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n        return count\n\nprint(count_word(\"a b a b\", \"b\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-b0eb37",
+      "text": "Which program shows this?",
+      "output": "4",
+      "options": [
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"scan scan scan scan boot\", \"scan\"))",
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count = 1\n    return count\n\nprint(count_word(\"scan scan scan scan boot\", \"scan\"))",
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w != word:\n            count += 1\n    return count\n\nprint(count_word(\"scan scan scan scan boot\", \"scan\"))",
+        "def count_word(log, word):\n    count = 1\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"scan scan scan scan boot\", \"scan\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-which-cfcbda",
+      "text": "Which program shows this?",
+      "output": "5",
+      "options": [
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"go go go go go\", \"go\"))",
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count = 1\n    return count\n\nprint(count_word(\"go go go go go\", \"go\"))",
+        "def count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w != word:\n            count += 1\n    return count\n\nprint(count_word(\"go go go go go\", \"go\"))",
+        "def count_word(log, word):\n    count = 1\n    for w in log.split(\" \"):\n        if w == word:\n            count += 1\n    return count\n\nprint(count_word(\"go go go go go\", \"go\"))"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-acc-1c4adf",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            ___\n    return longest\n\nprint(longest_word(\"scan probe analyze boot\"))",
+      "output": "analyze",
+      "options": ["longest = w", "longest = len(w)", "w = longest", "longest = log"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-acc-cd0bac",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            ___\n    return longest\n\nprint(longest_word(\"go far away\"))",
+      "output": "away",
+      "options": ["longest = w", "longest = len(w)", "w = longest", "longest = log"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-acc-c220c4",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            ___\n    return longest\n\nprint(longest_word(\"red blue green\"))",
+      "output": "green",
+      "options": ["longest = w", "longest = len(w)", "w = longest", "longest = log"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-acc-6db276",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            ___\n    return longest\n\nprint(longest_word(\"ion orbit comet\"))",
+      "output": "orbit",
+      "options": ["longest = w", "longest = len(w)", "w = longest", "longest = log"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-acc-e4b2c2",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) > len(longest):\n            ___\n    return longest\n\nprint(longest_word(\"a bb ccc dd\"))",
+      "output": "ccc",
+      "options": ["longest = w", "longest = len(w)", "w = longest", "longest = log"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-cmp-f21fe9",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) ___ len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"bird cat dog\"))",
+      "output": "bird",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-cmp-82fe08",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) ___ len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"probe scan orbit\"))",
+      "output": "probe",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-cmp-166a06",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) ___ len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"red blue pink\"))",
+      "output": "blue",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-cmp-3049ad",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) ___ len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"away go up\"))",
+      "output": "away",
+      "options": [">", "<", "==", "!="],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-cmp-a09f59",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def longest_word(log):\n    longest = \"\"\n    for w in log.split(\" \"):\n        if len(w) ___ len(longest):\n            longest = w\n    return longest\n\nprint(longest_word(\"alpha beta gamma\"))",
+      "output": "alpha",
+      "options": [">", ">=", "<", "=="],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-false-2610c5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return ___\n\nprint(has_duplicate(\"scan probe scan\"))\nprint(has_duplicate(\"boot ping\"))",
+      "output": "True\nFalse",
+      "options": ["False", "True", "0", "w"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-false-91694c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return ___\n\nprint(has_duplicate(\"red blue\"))\nprint(has_duplicate(\"go up go\"))",
+      "output": "False\nTrue",
+      "options": ["False", "True", "0", "w"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-false-7a5062",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return ___\n\nprint(has_duplicate(\"a b c a\"))\nprint(has_duplicate(\"a b c d\"))",
+      "output": "True\nFalse",
+      "options": ["False", "True", "0", "w"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-false-9c837e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return ___\n\nprint(has_duplicate(\"venus earth\"))\nprint(has_duplicate(\"mars mars\"))",
+      "output": "False\nTrue",
+      "options": ["False", "True", "0", "w"],
+      "answer": 0
+    },
+    {
+      "id": "rp-gap-false-4b0368",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(w)\n    return ___\n\nprint(has_duplicate(\"one one\"))\nprint(has_duplicate(\"two three\"))",
+      "output": "True\nFalse",
+      "options": ["False", "True", "0", "w"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-count-c18263",
+      "text": "Which line stops this program from printing this?",
+      "code": "log = \"scan probe scan analyze probe scan boot\"\nprint(log)\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count = 1\n    return count\nprint(count_word(log, \"scan\"))",
+      "output": "scan probe scan analyze probe scan boot\n3",
+      "options": [
+        "count = 1",
+        "count = 0",
+        "print(log)",
+        "log = \"scan probe scan analyze probe scan boot\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-count-50e27d",
+      "text": "Which line stops this program from printing this?",
+      "code": "log = \"ping ping echo ping\"\nprint(log)\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count = 1\n    return count\nprint(count_word(log, \"ping\"))",
+      "output": "ping ping echo ping\n3",
+      "options": ["count = 1", "count = 0", "print(log)", "return count"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-count-b6b18c",
+      "text": "Which line stops this program from printing this?",
+      "code": "log = \"boot scan probe scan\"\nprint(log)\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count = 1\n    return count\nprint(count_word(log, \"scan\"))",
+      "output": "boot scan probe scan\n2",
+      "options": ["count = 1", "count = 0", "return count", "print(count_word(log, \"scan\"))"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-count-cbe233",
+      "text": "Which line stops this program from printing this?",
+      "code": "log = \"up down up down up\"\nprint(log)\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count = 1\n    return count\nprint(count_word(log, \"up\"))",
+      "output": "up down up down up\n3",
+      "options": ["count = 1", "count = 0", "print(log)", "log = \"up down up down up\""],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-count-eabceb",
+      "text": "Which line stops this program from printing this?",
+      "code": "log = \"alpha beta alpha gamma beta alpha\"\nprint(log)\ndef count_word(log, word):\n    count = 0\n    for w in log.split(\" \"):\n        if w == word:\n            count = 1\n    return count\nprint(count_word(log, \"alpha\"))",
+      "output": "alpha beta alpha gamma beta alpha\n3",
+      "options": [
+        "count = 1",
+        "count = 0",
+        "print(log)",
+        "log = \"alpha beta alpha gamma beta alpha\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-dup-03e8b1",
+      "text": "Which line stops this program from printing this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(log)\n    return False\n\nfor log in [\"scan probe scan\", \"boot ping\", \"up up\"]:\n    print(log, has_duplicate(log))",
+      "output": "scan probe scan True\nboot ping False\nup up True",
+      "options": ["seen.add(log)", "return True", "seen = set()", "if w in seen:"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-dup-69681c",
+      "text": "Which line stops this program from printing this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(log)\n    return False\n\nfor log in [\"red blue\", \"red blue red\", \"go far\"]:\n    print(log, has_duplicate(log))",
+      "output": "red blue False\nred blue red True\ngo far False",
+      "options": ["seen.add(log)", "return True", "seen = set()", "return False"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-dup-cedf97",
+      "text": "Which line stops this program from printing this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(log)\n    return False\n\nfor log in [\"a b c a\", \"a b c d\", \"x y x\"]:\n    print(log, has_duplicate(log))",
+      "output": "a b c a True\na b c d False\nx y x True",
+      "options": ["seen.add(log)", "return True", "seen = set()", "return False"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-dup-7d8192",
+      "text": "Which line stops this program from printing this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(log)\n    return False\n\nfor log in [\"mars venus mars\", \"earth moon\", \"sun sun sun\"]:\n    print(log, has_duplicate(log))",
+      "output": "mars venus mars True\nearth moon False\nsun sun sun True",
+      "options": ["seen.add(log)", "return True", "seen = set()", "return False"],
+      "answer": 0
+    },
+    {
+      "id": "rp-bad-dup-6a9dd6",
+      "text": "Which line stops this program from printing this?",
+      "code": "def has_duplicate(log):\n    seen = set()\n    for w in log.split(\" \"):\n        if w in seen:\n            return True\n        seen.add(log)\n    return False\n\nfor log in [\"one two\", \"up down up\", \"left right\"]:\n    print(log, has_duplicate(log))",
+      "output": "one two False\nup down up True\nleft right False",
+      "options": ["seen.add(log)", "return True", "seen = set()", "if w in seen:"],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,689 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Which question is a frequency dictionary made for?",
+      "options": [
+        "Where is the first element?",
+        "What is the biggest number in the list?",
+        "Is the list sorted?",
+        "How many times does each element appear?"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q2",
+      "text": "What is another name for a frequency dictionary?",
+      "options": ["A flag", "A linear search", "A tuple", "A histogram"],
+      "answer": 3
+    },
+    {
+      "id": "q3",
+      "text": "What does this print?",
+      "code": "word = \"mississippi\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\n\nprint(freq)",
+      "options": [
+        "{'i': 4, 's': 4, 'p': 2, 'm': 1}",
+        "{'m': 1, 'i': 1, 's': 1, 'p': 1}",
+        "{'m': 1, 'i': 4, 's': 4, 'p': 2}",
+        "{'m', 'i', 's', 'p'}"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q4",
+      "text": "Why does the loop check `if letter in freq` before adding 1?",
+      "options": [
+        "So each letter is counted only once",
+        "The first time a letter shows up it isn't a key yet, so there is no count to add 1 to",
+        "Because dictionaries can only hold letters",
+        "To keep the dictionary sorted"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q5",
+      "text": "What happens when this runs?",
+      "code": "freq = {}\nfreq[\"a\"] += 1\nprint(freq)",
+      "options": [
+        "It prints {'a': 1}",
+        "A KeyError: \"a\" isn't a key of `freq` yet",
+        "It prints {'a': 0}",
+        "It prints {}"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q6",
+      "text": "A new element is found for the first time. What count does it get?",
+      "options": ["0", "2", "1", "Its position in the list"],
+      "answer": 2
+    },
+    {
+      "id": "q7",
+      "text": "How does the frequency dictionary start, before the loop?",
+      "options": [
+        "With every letter at 0",
+        "With the first element at 1",
+        "Empty: `freq = {}`",
+        "As an empty list `[]`"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q8",
+      "text": "What does this print?",
+      "code": "sentence = \"I like pizza and I like tacos\"\nfreq = {}\nfor word in sentence.split(\" \"):\n    if word in freq:\n        freq[word] += 1\n    else:\n        freq[word] = 1\nprint(freq)",
+      "options": [
+        "{'I': 1, 'like': 1, 'pizza': 1, 'and': 1, 'tacos': 1}",
+        "{'I': 2, 'like': 2, 'pizza': 1, 'and': 1}",
+        "{'I': 2, 'like': 2, 'pizza': 1, 'and': 1, 'tacos': 1}",
+        "7"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q9",
+      "text": "What does this print?",
+      "code": "freq = {\"a\": 2, \"b\": 5, \"c\": 3}\nbest_key = \"\"\nbest_count = 0\nfor key, count in freq.items():\n    if count > best_count:\n        best_count = count\n        best_key = key\nprint(f\"Most common: {best_key} ({best_count} times)\")",
+      "options": [
+        "Most common: c (3 times)",
+        "Most common: a (2 times)",
+        "Most common: b (5 times)",
+        "Most common:  (0 times)"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q10",
+      "text": "What does this print?",
+      "code": "freq = {\"x\": 3, \"y\": 3, \"z\": 1}\nbest_key = \"\"\nbest_count = 0\nfor key, count in freq.items():\n    if count > best_count:\n        best_count = count\n        best_key = key\nprint(best_key)",
+      "options": ["y", "x\ny", "3", "x"],
+      "answer": 3
+    },
+    {
+      "id": "q11",
+      "text": "Two keys tie for the most. What changes if `count > best_count` becomes `count >= best_count`?",
+      "options": [
+        "The last of the tied keys wins instead of the first",
+        "Nothing ever changes",
+        "The loop stops at the first key",
+        "The key with the smallest count wins"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q12",
+      "text": "What does this print?",
+      "code": "freq = {\"a\": 3, \"b\": 1, \"c\": 2, \"d\": 1}\nunique = []\nfor key, count in freq.items():\n    if count == 1:\n        unique.append(key)\nprint(unique)",
+      "options": ["['b', 'd']", "['a', 'c']", "['b']", "[1, 1]"],
+      "answer": 0
+    },
+    {
+      "id": "q13",
+      "text": "What does `for key, count in freq.items():` give on each turn?",
+      "options": [
+        "Only the keys",
+        "One key and its count",
+        "Only the counts",
+        "The whole dictionary"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q14",
+      "text": "What does `for key in sorted(freq):` go through?",
+      "options": [
+        "The counts, from smallest to largest",
+        "The keys, in alphabetical order",
+        "The keys, in the order they were added",
+        "The pairs, from the most common"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q15",
+      "text": "What does this print?",
+      "code": "freq = {\"c\": 3, \"a\": 2, \"b\": 1}\nfor key in sorted(freq):\n    print(f\"{key}: {freq[key]}\")",
+      "options": ["a: 2\nb: 1\nc: 3", "c: 3\na: 2\nb: 1", "b: 1\na: 2\nc: 3", "a\nb\nc"],
+      "answer": 0
+    },
+    {
+      "id": "q16",
+      "text": "In `sorted(freq.items(), key=lambda x: x[1])`, what does `key=lambda x: x[1]` do?",
+      "options": [
+        "It sorts by the letter",
+        "It keeps only the first pair",
+        "It turns the counts into keys",
+        "It tells sorted() to sort the pairs by their count"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q17",
+      "text": "What does `reverse=True` add when sorting the pairs by count?",
+      "options": [
+        "The least common come first",
+        "The keys are written backwards",
+        "Only the last pair is kept",
+        "The most common come first"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q18",
+      "text": "What does this print?",
+      "code": "freq = {\"python\": 2, \"java\": 4, \"c\": 1}\nfor course, count in sorted(freq.items(), key=lambda x: x[1], reverse=True):\n    print(f\"{course}: {count}\")",
+      "options": [
+        "java: 4\npython: 2\nc: 1",
+        "c: 1\npython: 2\njava: 4",
+        "python: 2\njava: 4\nc: 1",
+        "java\npython\nc"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q19",
+      "text": "What does this print?",
+      "code": "word = \"banana\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "options": [
+        "{'a': 3, 'b': 1, 'n': 2}",
+        "{'a': 3, 'n': 2, 'b': 1}",
+        "{'b': 1, 'a': 1, 'n': 1}",
+        "{'b': 1, 'a': 3, 'n': 2}"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q20",
+      "text": "What does this print?",
+      "code": "word = \"hello\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(len(freq))",
+      "options": ["5", "2", "4", "1"],
+      "answer": 2
+    },
+    {
+      "id": "q21",
+      "text": "You add up every count in a frequency dictionary built from a list. What do you get?",
+      "options": [
+        "How many elements the list has",
+        "How many different elements it has",
+        "The biggest count",
+        "Always 1"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q22",
+      "text": "In the mission, how is each channel printed?",
+      "options": [
+        "As `count: channel`, from the busiest",
+        "As `channel: count`, in alphabetical order",
+        "Only the busiest channel",
+        "The whole dictionary on one line"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q23",
+      "text": "In the mission, the signals are B, A, C, B, A, B, D, A, B. Which channel is the most common?",
+      "options": ["A", "B", "C", "D"],
+      "answer": 1
+    },
+    {
+      "id": "q24",
+      "text": "What does this print?",
+      "code": "word = \"Aaa\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "options": ["{'a': 3}", "{'A': 1, 'a': 2}", "{'A': 3}", "{'A': 1, 'a': 1}"],
+      "answer": 1
+    },
+    {
+      "id": "q25",
+      "text": "What does this print?",
+      "code": "word = \"a b a\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "options": [
+        "{'a': 2, 'b': 1}",
+        "{'a': 2, ' ': 1, 'b': 1}",
+        "{'a': 2, ' ': 2, 'b': 1}",
+        "{' ': 2}"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q26",
+      "text": "Why count with a dictionary instead of a list?",
+      "options": [
+        "Lists can't hold numbers",
+        "The dictionary finds an element's count by its key, without searching for it",
+        "A dictionary keeps the elements sorted",
+        "A list can hold only 10 elements"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q27",
+      "text": "What does this print?",
+      "code": "word = \"rocket\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(\"z\" in freq)",
+      "options": ["True", "0", "False", "An error"],
+      "answer": 2
+    },
+    {
+      "id": "q28",
+      "text": "What does this print?",
+      "code": "word = \"mississippi\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq[\"s\"])",
+      "options": ["2", "1", "11", "4"],
+      "answer": 3
+    },
+    {
+      "id": "q29",
+      "text": "What does `sentence.split(\" \")` give before counting words?",
+      "options": [
+        "A list of the words, cut at every space",
+        "The number of words",
+        "The sentence without spaces",
+        "A dictionary of the words"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q30",
+      "text": "What does `len(freq)` tell you about a frequency dictionary?",
+      "options": [
+        "How many different elements were counted",
+        "How many elements the list had",
+        "The biggest count",
+        "The most common element"
+      ],
+      "answer": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "fd-letters",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "word = \"{{w}}\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "values": [
+        {
+          "w": "hello"
+        },
+        {
+          "w": "cocoa"
+        },
+        {
+          "w": "moon"
+        },
+        {
+          "w": "apple"
+        },
+        {
+          "w": "level"
+        }
+      ],
+      "mistakes": [
+        ["        freq[letter] += 1", "        freq[letter] = 1"],
+        ["        freq[letter] = 1", "        freq[letter] = 0"],
+        ["print(freq)", "print(len(freq))"],
+        ["        freq[letter] += 1", "        freq[letter] += 2"]
+      ]
+    },
+    {
+      "id": "fd-words",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "sentence = \"{{s}}\"\nfreq = {}\nfor word in sentence.split(\" \"):\n    if word in freq:\n        freq[word] += 1\n    else:\n        freq[word] = 1\nprint(freq)",
+      "values": [
+        {
+          "s": "go go stop go"
+        },
+        {
+          "s": "red blue red green blue red"
+        },
+        {
+          "s": "up down up"
+        },
+        {
+          "s": "scan probe scan boot"
+        },
+        {
+          "s": "yes no no yes yes"
+        }
+      ],
+      "mistakes": [
+        ["        freq[word] += 1", "        freq[word] = 1"],
+        ["sentence.split(\" \")", "sentence"],
+        ["print(freq)", "print(len(freq))"],
+        ["        freq[word] = 1", "        freq[word] = 0"]
+      ]
+    },
+    {
+      "id": "fd-one-key",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "items = [{{L}}]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(freq[{{k}}])",
+      "values": [
+        {
+          "L": "3, 1, 3, 2, 3",
+          "k": 3
+        },
+        {
+          "L": "7, 7, 5, 7, 5",
+          "k": 7
+        },
+        {
+          "L": "1, 2, 2, 2, 1, 2",
+          "k": 2
+        },
+        {
+          "L": "9, 4, 4, 9, 4, 4",
+          "k": 4
+        },
+        {
+          "L": "6, 8, 6, 8, 6, 6, 8",
+          "k": 6
+        }
+      ],
+      "mistakes": [
+        ["        freq[x] += 1", "        freq[x] = 1"],
+        ["        freq[x] = 1", "        freq[x] = 0"],
+        ["print(freq[{{k}}])", "print(len(freq))"],
+        ["        freq[x] += 1", "        freq[x] += 2"]
+      ]
+    },
+    {
+      "id": "fd-most",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "votes = [{{L}}]\nfreq = {}\nfor vote in votes:\n    if vote in freq:\n        freq[vote] += 1\n    else:\n        freq[vote] = 1\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count > highest:\n        highest = count\n        best = key\nprint(f\"Most common: {best} ({highest})\")",
+      "values": [
+        {
+          "L": "\"B\", \"A\", \"C\", \"B\", \"A\", \"B\""
+        },
+        {
+          "L": "\"X\", \"Y\", \"Y\", \"Z\", \"Y\", \"X\""
+        },
+        {
+          "L": "\"D\", \"D\", \"E\", \"F\", \"F\", \"F\", \"F\""
+        },
+        {
+          "L": "\"M\", \"N\", \"N\", \"N\""
+        },
+        {
+          "L": "\"Q\", \"R\", \"S\", \"R\", \"S\", \"S\", \"Q\", \"S\""
+        }
+      ],
+      "mistakes": [
+        ["count > highest", "count < highest"],
+        ["        best = key", "        best = count"],
+        ["        highest = count\n", ""],
+        ["        freq[vote] += 1", "        freq[vote] = 1"]
+      ]
+    },
+    {
+      "id": "fd-unique",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "word = \"{{w}}\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nunique = []\nfor key, count in freq.items():\n    if count == 1:\n        unique.append(key)\nprint(unique)",
+      "values": [
+        {
+          "w": "banana"
+        },
+        {
+          "w": "rocket"
+        },
+        {
+          "w": "letters"
+        },
+        {
+          "w": "planet"
+        },
+        {
+          "w": "coffee"
+        }
+      ],
+      "mistakes": [
+        ["count == 1", "count > 1"],
+        ["        unique.append(key)", "        unique.append(count)"],
+        ["        freq[letter] += 1", "        freq[letter] = 1"],
+        ["print(unique)", "print(len(unique))"]
+      ]
+    },
+    {
+      "id": "fd-sorted",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "signals = [{{L}}]\nfreq = {}\nfor signal in signals:\n    if signal in freq:\n        freq[signal] += 1\n    else:\n        freq[signal] = 1\nfor channel in sorted(freq):\n    print(f\"{channel}: {freq[channel]}\")",
+      "values": [
+        {
+          "L": "\"B\", \"A\", \"C\", \"B\", \"A\", \"B\""
+        },
+        {
+          "L": "\"D\", \"C\", \"D\", \"A\""
+        },
+        {
+          "L": "\"C\", \"B\", \"A\", \"C\", \"C\""
+        },
+        {
+          "L": "\"Z\", \"X\", \"Y\", \"X\""
+        },
+        {
+          "L": "\"E\", \"A\", \"E\", \"B\", \"A\", \"E\""
+        }
+      ],
+      "mistakes": [
+        ["sorted(freq)", "freq"],
+        ["{channel}: {freq[channel]}", "{freq[channel]}: {channel}"],
+        ["        freq[signal] += 1", "        freq[signal] = 1"],
+        ["        freq[signal] = 1", "        freq[signal] = 0"]
+      ]
+    },
+    {
+      "id": "fd-len",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "items = [{{L}}]\nfreq = {}\nfor x in items:\n    if x in freq:\n        freq[x] += 1\n    else:\n        freq[x] = 1\nprint(len(items), len(freq))",
+      "values": [
+        {
+          "L": "1, 2, 1, 3, 1"
+        },
+        {
+          "L": "5, 5, 5, 5"
+        },
+        {
+          "L": "4, 8, 4, 8, 2, 6"
+        },
+        {
+          "L": "7, 3, 9"
+        },
+        {
+          "L": "2, 2, 3, 3, 3, 2, 2"
+        }
+      ],
+      "mistakes": [
+        ["print(len(items), len(freq))", "print(len(freq), len(items))"],
+        ["print(len(items), len(freq))", "print(len(items), freq)"],
+        ["        freq[x] = 1", "        freq[x] = 1\n        freq[0] = 1"],
+        ["for x in items:", "for x in items[1:]:"]
+      ]
+    },
+    {
+      "id": "fd-tie",
+      "kind": "prints",
+      "text": "What does this print?",
+      "code": "freq = {{{d}}}\nbest_key = \"\"\nbest_count = 0\nfor key, count in freq.items():\n    if count > best_count:\n        best_count = count\n        best_key = key\nprint(best_key, best_count)",
+      "values": [
+        {
+          "d": "\"a\": 2, \"b\": 4, \"c\": 4"
+        },
+        {
+          "d": "\"x\": 1, \"y\": 1, \"z\": 1"
+        },
+        {
+          "d": "\"p\": 5, \"q\": 2, \"r\": 5"
+        },
+        {
+          "d": "\"m\": 3, \"n\": 6, \"o\": 6, \"k\": 1"
+        },
+        {
+          "d": "\"s\": 7, \"t\": 7"
+        }
+      ],
+      "mistakes": [
+        ["count > best_count", "count >= best_count"],
+        ["        best_key = key", "        best_key = count"],
+        ["count > best_count", "count < best_count"],
+        ["print(best_key, best_count)", "print(key, count)"]
+      ]
+    },
+    {
+      "id": "fd-which",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "word = \"{{w}}\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "values": [
+        {
+          "w": "noon"
+        },
+        {
+          "w": "puppy"
+        },
+        {
+          "w": "civic"
+        },
+        {
+          "w": "tree"
+        },
+        {
+          "w": "added"
+        }
+      ],
+      "mistakes": [
+        ["        freq[letter] += 1", "        freq[letter] = 1"],
+        ["        freq[letter] = 1", "        freq[letter] = 0"],
+        ["        freq[letter] += 1", "        freq[letter] += 2"],
+        ["for letter in word:", "for letter in word[1:]:"]
+      ]
+    },
+    {
+      "id": "fd-gap-add",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "word = \"{{w}}\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        ___\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "values": [
+        {
+          "w": "hello"
+        },
+        {
+          "w": "banana"
+        },
+        {
+          "w": "moon"
+        },
+        {
+          "w": "cocoa"
+        },
+        {
+          "w": "puppy"
+        }
+      ],
+      "answer": "freq[letter] += 1",
+      "wrong": ["freq[letter] = 1", "freq[letter] = 0", "freq[letter] += 2", "freq = {}"]
+    },
+    {
+      "id": "fd-gap-new",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "word = \"{{w}}\"\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = ___\nprint(freq)",
+      "values": [
+        {
+          "w": "kayak"
+        },
+        {
+          "w": "stars"
+        },
+        {
+          "w": "seven"
+        },
+        {
+          "w": "tooth"
+        },
+        {
+          "w": "array"
+        }
+      ],
+      "answer": "1",
+      "wrong": ["0", "2", "letter", "freq"]
+    },
+    {
+      "id": "fd-gap-best",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "freq = {{{d}}}\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count ___ highest:\n        highest = count\n        best = key\nprint(best, highest)",
+      "values": [
+        {
+          "d": "\"A\": 3, \"B\": 4, \"C\": 1"
+        },
+        {
+          "d": "\"x\": 2, \"y\": 5, \"z\": 3"
+        },
+        {
+          "d": "\"python\": 5, \"java\": 3, \"c\": 2"
+        },
+        {
+          "d": "\"red\": 1, \"blue\": 6, \"green\": 2"
+        },
+        {
+          "d": "\"D\": 2, \"E\": 2, \"F\": 7"
+        }
+      ],
+      "answer": ">",
+      "wrong": ["<", "==", "!=", "="]
+    },
+    {
+      "id": "fd-bad-new",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "word = \"{{w}}\"\nprint(word)\nfreq = {}\nfor letter in word:\n    if letter in freq:\n        freq[letter] += 1\n    else:\n        freq[letter] = 1\nprint(freq)",
+      "values": [
+        {
+          "w": "pepper"
+        },
+        {
+          "w": "rocket"
+        },
+        {
+          "w": "lilac"
+        },
+        {
+          "w": "ballad"
+        },
+        {
+          "w": "sniff"
+        }
+      ],
+      "bug": ["        freq[letter] = 1", "        freq[letter] = 0"]
+    },
+    {
+      "id": "fd-bad-best",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "freq = {{{d}}}\nprint(freq)\nbest = \"\"\nhighest = 0\nfor key, count in freq.items():\n    if count > highest:\n        highest = count\n        best = key\nprint(best)",
+      "values": [
+        {
+          "d": "\"A\": 3, \"B\": 4, \"C\": 1"
+        },
+        {
+          "d": "\"x\": 2, \"y\": 5, \"z\": 3"
+        },
+        {
+          "d": "\"Q\": 6, \"R\": 2, \"S\": 4"
+        },
+        {
+          "d": "\"m\": 1, \"n\": 8, \"o\": 3"
+        },
+        {
+          "d": "\"D\": 5, \"E\": 9, \"F\": 7"
+        }
+      ],
+      "bug": ["count > highest", "count < highest"]
+    }
+  ]
+}
