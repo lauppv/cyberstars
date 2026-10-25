@@ -184,6 +184,144 @@
       "answer": 0
     },
     {
+      "id": "ie-bad-colon-2a118b",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "temperatura = 1200\nif temperatura > 1000\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
+      "output": "Pericol",
+      "options": ["if temperatura > 1000", "temperatura = 1200", "print(\"Pericol\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-colon-f702ba",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "scor = 30\nif scor > 50\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "output": "Picat",
+      "options": ["if scor > 50", "scor = 30", "print(\"Trecut\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-colon-334a1e",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "viteza = 130\nif viteza > 100\n    print(\"Incetineste\")\nelse:\n    print(\"Viteza buna\")",
+      "output": "Incetineste",
+      "options": ["if viteza > 100", "viteza = 130", "print(\"Incetineste\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-colon-f3d06c",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "puncte = 90\nif puncte > 100\n    print(\"Record nou\")\nelse:\n    print(\"Mai incearca\")",
+      "output": "Mai incearca",
+      "options": ["if puncte > 100", "puncte = 90", "print(\"Record nou\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-indent-d24830",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "temperatura = 10\nif temperatura < 15:\n    print(\"Ia o bluza\")\nelse:\nprint(\"Un tricou e suficient\")",
+      "output": "Ia o bluza",
+      "options": [
+        "print(\"Un tricou e suficient\")",
+        "temperatura = 10",
+        "if temperatura < 15:",
+        "print(\"Ia o bluza\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-indent-aa3c01",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "scor = 70\nif scor < 50:\n    print(\"Picat\")\nelse:\nprint(\"Trecut\")",
+      "output": "Trecut",
+      "options": ["print(\"Trecut\")", "scor = 70", "if scor < 50:", "print(\"Picat\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-indent-5a5226",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "varsta = 9\nif varsta < 18:\n    print(\"Inca nu\")\nelse:\nprint(\"Poti vota\")",
+      "output": "Inca nu",
+      "options": ["print(\"Poti vota\")", "varsta = 9", "if varsta < 18:", "print(\"Inca nu\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-indent-7aeb33",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "viteza = 60\nif viteza < 100:\n    print(\"Viteza buna\")\nelse:\nprint(\"Incetineste\")",
+      "output": "Viteza buna",
+      "options": [
+        "print(\"Incetineste\")",
+        "viteza = 60",
+        "if viteza < 100:",
+        "print(\"Viteza buna\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-equal-53c798",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "x = 4\nif x = 4:\n    print(\"Bau\")\nelse:\n    print(\"Fara bau\")",
+      "output": "Bau",
+      "options": ["if x = 4:", "x = 4", "print(\"Bau\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-equal-b2cb08",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "vieti = 0\nif vieti = 0:\n    print(\"Joc terminat\")\nelse:\n    print(\"Joaca mai departe\")",
+      "output": "Joc terminat",
+      "options": ["if vieti = 0:", "vieti = 0", "print(\"Joc terminat\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-equal-3ce6cf",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "cod = 1234\nif cod = 1234:\n    print(\"Usa deschisa\")\nelse:\n    print(\"Usa incuiata\")",
+      "output": "Usa deschisa",
+      "options": ["if cod = 1234:", "cod = 1234", "print(\"Usa deschisa\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-equal-4db33c",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "nivel = 5\nif nivel = 10:\n    print(\"Lupta finala\")\nelse:\n    print(\"Mergi mai departe\")",
+      "output": "Mergi mai departe",
+      "options": ["if nivel = 10:", "nivel = 5", "print(\"Lupta finala\")", "else:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-else-d05305",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "scor = 40\nif scor >= 50:\n    print(\"Trecut\")\nelse\n    print(\"Picat\")",
+      "output": "Picat",
+      "options": ["else", "scor = 40", "if scor >= 50:", "print(\"Trecut\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-else-d8246e",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "varsta = 20\nif varsta >= 18:\n    print(\"Poti vota\")\nelse\n    print(\"Inca nu\")",
+      "output": "Poti vota",
+      "options": ["else", "varsta = 20", "if varsta >= 18:", "print(\"Poti vota\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-else-6ffcb7",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "combustibil = 500\nif combustibil >= 1000:\n    print(\"Pericol\")\nelse\n    print(\"Stabil\")",
+      "output": "Stabil",
+      "options": ["else", "combustibil = 500", "if combustibil >= 1000:", "print(\"Pericol\")"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-else-3ba632",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "viteza = 140\nif viteza >= 100:\n    print(\"Incetineste\")\nelse\n    print(\"Viteza buna\")",
+      "output": "Incetineste",
+      "options": ["else", "viteza = 140", "if viteza >= 100:", "print(\"Incetineste\")"],
+      "answer": 0
+    },
+    {
       "id": "ie-which-edge-c9b302",
       "text": "Care program afișează asta?",
       "output": "Trecut",
@@ -291,6 +429,45 @@
       "text": "Ce afișează?",
       "code": "puncte = 75\nprint(puncte == 75)",
       "options": ["True", "puncte == 75", "False", "75"],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-true-a70919",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "jucator = \"Tommy\"\nonline = true\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "output": "Tommy joaca",
+      "options": [
+        "online = true",
+        "jucator = \"Tommy\"",
+        "if online == True:",
+        "print(f\"{jucator} joaca\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-true-bfb8e3",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "jucator = \"Lance\"\nonline = false\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "output": "Lance este offline",
+      "options": [
+        "online = false",
+        "jucator = \"Lance\"",
+        "if online == True:",
+        "print(f\"{jucator} joaca\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-bad-true-b65c32",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "jucator = \"Ana\"\nonline = true\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "output": "Ana joaca",
+      "options": [
+        "online = true",
+        "jucator = \"Ana\"",
+        "if online == True:",
+        "print(f\"{jucator} joaca\")"
+      ],
       "answer": 0
     }
   ]

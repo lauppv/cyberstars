@@ -532,6 +532,166 @@
       "wrong": ["=", "<", ">", "<=", ">=", "=="]
     },
     {
+      "id": "ie-bad-colon",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 1200,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable"
+        },
+        {
+          "v": "score",
+          "x": 30,
+          "op": ">",
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail"
+        },
+        {
+          "v": "speed",
+          "x": 130,
+          "op": ">",
+          "limit": 100,
+          "yes": "Slow down",
+          "no": "Good speed"
+        },
+        {
+          "v": "points",
+          "x": 90,
+          "op": ">",
+          "limit": 100,
+          "yes": "New record",
+          "no": "Try again"
+        }
+      ],
+      "bug": ["if {{v}} > {{limit}}:", "if {{v}} > {{limit}}"]
+    },
+    {
+      "id": "ie-bad-indent",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} < {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 10,
+          "op": "<",
+          "limit": 15,
+          "yes": "Take a sweater",
+          "no": "A t-shirt is enough"
+        },
+        {
+          "v": "score",
+          "x": 70,
+          "op": "<",
+          "limit": 50,
+          "yes": "Fail",
+          "no": "Pass"
+        },
+        {
+          "v": "age",
+          "x": 9,
+          "op": "<",
+          "limit": 18,
+          "yes": "Not yet",
+          "no": "You can vote"
+        },
+        {
+          "v": "speed",
+          "x": 60,
+          "op": "<",
+          "limit": 100,
+          "yes": "Good speed",
+          "no": "Slow down"
+        }
+      ],
+      "bug": ["    print(\"{{no}}\")", "print(\"{{no}}\")"]
+    },
+    {
+      "id": "ie-bad-equal",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "x",
+          "x": 4,
+          "y": 4,
+          "yes": "Boo",
+          "no": "No boo"
+        },
+        {
+          "v": "lives",
+          "x": 0,
+          "y": 0,
+          "yes": "Game over",
+          "no": "Keep playing"
+        },
+        {
+          "v": "code",
+          "x": 1234,
+          "y": 1234,
+          "yes": "Door open",
+          "no": "Door locked"
+        },
+        {
+          "v": "level",
+          "x": 5,
+          "y": 10,
+          "yes": "Boss fight",
+          "no": "Keep going"
+        }
+      ],
+      "bug": ["if {{v}} == {{y}}:", "if {{v}} = {{y}}:"]
+    },
+    {
+      "id": "ie-bad-else",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "score",
+          "x": 40,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail"
+        },
+        {
+          "v": "age",
+          "x": 20,
+          "op": ">=",
+          "limit": 18,
+          "yes": "You can vote",
+          "no": "Not yet"
+        },
+        {
+          "v": "fuel",
+          "x": 500,
+          "op": ">=",
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable"
+        },
+        {
+          "v": "speed",
+          "x": 140,
+          "op": ">=",
+          "limit": 100,
+          "yes": "Slow down",
+          "no": "Good speed"
+        }
+      ],
+      "bug": ["else:", "else"]
+    },
+    {
       "id": "ie-which-edge",
       "kind": "which-program",
       "text": "Which program shows this?",
@@ -680,6 +840,30 @@
         ["{{op}}", "{{flip}}"],
         ["print({{v}} {{op}} {{limit}})", "print({{v}})"]
       ]
+    },
+    {
+      "id": "ie-bad-true",
+      "kind": "wrong-line",
+      "text": "Which line stops this program from printing this?",
+      "code": "user = \"{{user}}\"\nonline = {{b}}\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "values": [
+        {
+          "user": "Tommy",
+          "b": "True",
+          "bl": "true"
+        },
+        {
+          "user": "Lance",
+          "b": "False",
+          "bl": "false"
+        },
+        {
+          "user": "Ana",
+          "b": "True",
+          "bl": "true"
+        }
+      ],
+      "bug": ["online = {{b}}", "online = {{bl}}"]
     }
   ]
 }

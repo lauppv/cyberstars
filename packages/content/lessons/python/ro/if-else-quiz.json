@@ -522,6 +522,166 @@
       "wrong": ["=", "<", ">", "<=", ">=", "=="]
     },
     {
+      "id": "ie-bad-colon",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 1200,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil"
+        },
+        {
+          "v": "scor",
+          "x": 30,
+          "op": ">",
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat"
+        },
+        {
+          "v": "viteza",
+          "x": 130,
+          "op": ">",
+          "limit": 100,
+          "yes": "Incetineste",
+          "no": "Viteza buna"
+        },
+        {
+          "v": "puncte",
+          "x": 90,
+          "op": ">",
+          "limit": 100,
+          "yes": "Record nou",
+          "no": "Mai incearca"
+        }
+      ],
+      "bug": ["if {{v}} > {{limit}}:", "if {{v}} > {{limit}}"]
+    },
+    {
+      "id": "ie-bad-indent",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} < {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 10,
+          "op": "<",
+          "limit": 15,
+          "yes": "Ia o bluza",
+          "no": "Un tricou e suficient"
+        },
+        {
+          "v": "scor",
+          "x": 70,
+          "op": "<",
+          "limit": 50,
+          "yes": "Picat",
+          "no": "Trecut"
+        },
+        {
+          "v": "varsta",
+          "x": 9,
+          "op": "<",
+          "limit": 18,
+          "yes": "Inca nu",
+          "no": "Poti vota"
+        },
+        {
+          "v": "viteza",
+          "x": 60,
+          "op": "<",
+          "limit": 100,
+          "yes": "Viteza buna",
+          "no": "Incetineste"
+        }
+      ],
+      "bug": ["    print(\"{{no}}\")", "print(\"{{no}}\")"]
+    },
+    {
+      "id": "ie-bad-equal",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "x",
+          "x": 4,
+          "y": 4,
+          "yes": "Bau",
+          "no": "Fara bau"
+        },
+        {
+          "v": "vieti",
+          "x": 0,
+          "y": 0,
+          "yes": "Joc terminat",
+          "no": "Joaca mai departe"
+        },
+        {
+          "v": "cod",
+          "x": 1234,
+          "y": 1234,
+          "yes": "Usa deschisa",
+          "no": "Usa incuiata"
+        },
+        {
+          "v": "nivel",
+          "x": 5,
+          "y": 10,
+          "yes": "Lupta finala",
+          "no": "Mergi mai departe"
+        }
+      ],
+      "bug": ["if {{v}} == {{y}}:", "if {{v}} = {{y}}:"]
+    },
+    {
+      "id": "ie-bad-else",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "scor",
+          "x": 40,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat"
+        },
+        {
+          "v": "varsta",
+          "x": 20,
+          "op": ">=",
+          "limit": 18,
+          "yes": "Poti vota",
+          "no": "Inca nu"
+        },
+        {
+          "v": "combustibil",
+          "x": 500,
+          "op": ">=",
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil"
+        },
+        {
+          "v": "viteza",
+          "x": 140,
+          "op": ">=",
+          "limit": 100,
+          "yes": "Incetineste",
+          "no": "Viteza buna"
+        }
+      ],
+      "bug": ["else:", "else"]
+    },
+    {
       "id": "ie-which-edge",
       "kind": "which-program",
       "text": "Care program afișează asta?",
@@ -670,6 +830,30 @@
         ["{{op}}", "{{flip}}"],
         ["print({{v}} {{op}} {{limit}})", "print({{v}})"]
       ]
+    },
+    {
+      "id": "ie-bad-true",
+      "kind": "wrong-line",
+      "text": "Care linie oprește programul să afișeze asta?",
+      "code": "jucator = \"{{user}}\"\nonline = {{b}}\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "values": [
+        {
+          "user": "Tommy",
+          "b": "True",
+          "bl": "true"
+        },
+        {
+          "user": "Lance",
+          "b": "False",
+          "bl": "false"
+        },
+        {
+          "user": "Ana",
+          "b": "True",
+          "bl": "true"
+        }
+      ],
+      "bug": ["online = {{b}}", "online = {{bl}}"]
     }
   ]
 }
