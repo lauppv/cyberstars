@@ -146,6 +146,122 @@
       "answer": 0
     },
     {
+      "id": "ie-gap-op-84d0c7",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "temperature = 14\nif temperature ___ 15:\n    print(\"Take a sweater\")\nelse:\n    print(\"A t-shirt is enough\")",
+      "output": "Take a sweater",
+      "options": ["<", "=", ">", ">="],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-eee204",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "score = 50\nif score ___ 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "output": "Pass",
+      "options": [">=", "=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-7f1b3d",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "fuel = 1001\nif fuel ___ 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+      "output": "Danger",
+      "options": [">", "=", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-45c5e5",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "age = 18\nif age ___ 18:\n    print(\"Not yet\")\nelse:\n    print(\"You can vote\")",
+      "output": "You can vote",
+      "options": ["<", "=", "<=", ">="],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-0e5c2c",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "speed = 100\nif speed ___ 100:\n    print(\"Good speed\")\nelse:\n    print(\"Slow down\")",
+      "output": "Good speed",
+      "options": ["<=", "=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-96a66e",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "points = 75\nif points ___ 75:\n    print(\"New record\")\nelse:\n    print(\"Try again\")",
+      "output": "New record",
+      "options": ["==", "=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "ie-which-edge-c9b302",
+      "text": "Which program shows this?",
+      "output": "Pass",
+      "options": [
+        "score = 50\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 50\nif score > 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 50\nif score < 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+        "score = 50\nif score >= 50:\n    print(\"Fail\")\nelse:\n    print(\"Pass\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-which-edge-a4bfc1",
+      "text": "Which program shows this?",
+      "output": "You can vote",
+      "options": [
+        "age = 18\nif age >= 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+        "age = 18\nif age > 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+        "age = 18\nif age < 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+        "age = 18\nif age >= 18:\n    print(\"Not yet\")\nelse:\n    print(\"You can vote\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-which-edge-24bb6c",
+      "text": "Which program shows this?",
+      "output": "Danger",
+      "options": [
+        "fuel = 1000\nif fuel >= 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+        "fuel = 1000\nif fuel > 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+        "fuel = 1000\nif fuel < 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+        "fuel = 1000\nif fuel >= 1000:\n    print(\"Stable\")\nelse:\n    print(\"Danger\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-1a7e86",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "temperature = 20\nif temperature < 15:\n    print(\"Take a sweater\")\n___\n    print(\"A t-shirt is enough\")",
+      "output": "A t-shirt is enough",
+      "options": ["else:", "else", "if:", "else temperature < 15:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-444d88",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "score = 80\nif score < 50:\n    print(\"Fail\")\n___\n    print(\"Pass\")",
+      "output": "Pass",
+      "options": ["else:", "else", "if:", "else score < 50:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-182f0e",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "speed = 120\nif speed < 100:\n    print(\"Good speed\")\n___\n    print(\"Slow down\")",
+      "output": "Slow down",
+      "options": ["else:", "else", "if:", "else speed < 100:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-505ffc",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "age = 30\nif age < 18:\n    print(\"Not yet\")\n___\n    print(\"You can vote\")",
+      "output": "You can vote",
+      "options": ["else:", "else", "if:", "else age < 18:"],
+      "answer": 0
+    },
+    {
       "id": "ie-condition-91e030",
       "text": "What does this print?",
       "code": "temperature = 14\nprint(temperature < 15)",

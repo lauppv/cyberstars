@@ -464,6 +464,147 @@
       ]
     },
     {
+      "id": "ie-gap-op",
+      "kind": "missing-value",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} ___ {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 14,
+          "op": "<",
+          "limit": 15,
+          "yes": "Ia o bluza",
+          "no": "Un tricou e suficient"
+        },
+        {
+          "v": "scor",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat"
+        },
+        {
+          "v": "combustibil",
+          "x": 1001,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil"
+        },
+        {
+          "v": "varsta",
+          "x": 18,
+          "op": "<",
+          "limit": 18,
+          "yes": "Inca nu",
+          "no": "Poti vota"
+        },
+        {
+          "v": "viteza",
+          "x": 100,
+          "op": "<=",
+          "limit": 100,
+          "yes": "Viteza buna",
+          "no": "Incetineste"
+        },
+        {
+          "v": "puncte",
+          "x": 75,
+          "op": "==",
+          "limit": 75,
+          "yes": "Record nou",
+          "no": "Mai incearca"
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": ["=", "<", ">", "<=", ">=", "=="]
+    },
+    {
+      "id": "ie-which-edge",
+      "kind": "which-program",
+      "text": "Care program afișează asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "scor",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat"
+        },
+        {
+          "v": "varsta",
+          "x": 18,
+          "op": ">=",
+          "limit": 18,
+          "yes": "Poti vota",
+          "no": "Inca nu"
+        },
+        {
+          "v": "combustibil",
+          "x": 1000,
+          "op": ">=",
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} >= {{limit}}", "{{v}} > {{limit}}"],
+        ["{{v}} >= {{limit}}", "{{v}} < {{limit}}"],
+        ["{{v}} >= {{limit}}", "{{v}} <= {{limit}}"],
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "ie-gap-else",
+      "kind": "missing-line",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "{{v}} = {{x}}\nif {{v}} < {{limit}}:\n    print(\"{{yes}}\")\n___\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 20,
+          "op": "<",
+          "limit": 15,
+          "yes": "Ia o bluza",
+          "no": "Un tricou e suficient"
+        },
+        {
+          "v": "scor",
+          "x": 80,
+          "op": "<",
+          "limit": 50,
+          "yes": "Picat",
+          "no": "Trecut"
+        },
+        {
+          "v": "viteza",
+          "x": 120,
+          "op": "<",
+          "limit": 100,
+          "yes": "Viteza buna",
+          "no": "Incetineste"
+        },
+        {
+          "v": "varsta",
+          "x": 30,
+          "op": "<",
+          "limit": 18,
+          "yes": "Inca nu",
+          "no": "Poti vota"
+        }
+      ],
+      "answer": "else:",
+      "wrong": ["else", "if:", "else {{v}} < {{limit}}:", "if {{v}} > {{limit}}:"]
+    },
+    {
       "id": "ie-condition",
       "kind": "prints",
       "text": "Ce afișează?",

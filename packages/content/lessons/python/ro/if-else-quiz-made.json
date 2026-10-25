@@ -136,6 +136,122 @@
       "answer": 0
     },
     {
+      "id": "ie-gap-op-84d0c7",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "temperatura = 14\nif temperatura ___ 15:\n    print(\"Ia o bluza\")\nelse:\n    print(\"Un tricou e suficient\")",
+      "output": "Ia o bluza",
+      "options": ["<", "=", ">", ">="],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-eee204",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 50\nif scor ___ 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "output": "Trecut",
+      "options": [">=", "=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-7f1b3d",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "combustibil = 1001\nif combustibil ___ 1000:\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
+      "output": "Pericol",
+      "options": [">", "=", "<", "<="],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-45c5e5",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 18\nif varsta ___ 18:\n    print(\"Inca nu\")\nelse:\n    print(\"Poti vota\")",
+      "output": "Poti vota",
+      "options": ["<", "=", "<=", ">="],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-0e5c2c",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "viteza = 100\nif viteza ___ 100:\n    print(\"Viteza buna\")\nelse:\n    print(\"Incetineste\")",
+      "output": "Viteza buna",
+      "options": ["<=", "=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-op-96a66e",
+      "text": "Ce pui în locul liber ca programul să afișeze asta?",
+      "code": "puncte = 75\nif puncte ___ 75:\n    print(\"Record nou\")\nelse:\n    print(\"Mai incearca\")",
+      "output": "Record nou",
+      "options": ["==", "=", "<", ">"],
+      "answer": 0
+    },
+    {
+      "id": "ie-which-edge-c9b302",
+      "text": "Care program afișează asta?",
+      "output": "Trecut",
+      "options": [
+        "scor = 50\nif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "scor = 50\nif scor > 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "scor = 50\nif scor < 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+        "scor = 50\nif scor >= 50:\n    print(\"Picat\")\nelse:\n    print(\"Trecut\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-which-edge-a4bfc1",
+      "text": "Care program afișează asta?",
+      "output": "Poti vota",
+      "options": [
+        "varsta = 18\nif varsta >= 18:\n    print(\"Poti vota\")\nelse:\n    print(\"Inca nu\")",
+        "varsta = 18\nif varsta > 18:\n    print(\"Poti vota\")\nelse:\n    print(\"Inca nu\")",
+        "varsta = 18\nif varsta < 18:\n    print(\"Poti vota\")\nelse:\n    print(\"Inca nu\")",
+        "varsta = 18\nif varsta >= 18:\n    print(\"Inca nu\")\nelse:\n    print(\"Poti vota\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-which-edge-24bb6c",
+      "text": "Care program afișează asta?",
+      "output": "Pericol",
+      "options": [
+        "combustibil = 1000\nif combustibil >= 1000:\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
+        "combustibil = 1000\nif combustibil > 1000:\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
+        "combustibil = 1000\nif combustibil < 1000:\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
+        "combustibil = 1000\nif combustibil >= 1000:\n    print(\"Stabil\")\nelse:\n    print(\"Pericol\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-1a7e86",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "temperatura = 20\nif temperatura < 15:\n    print(\"Ia o bluza\")\n___\n    print(\"Un tricou e suficient\")",
+      "output": "Un tricou e suficient",
+      "options": ["else:", "else", "if:", "else temperatura < 15:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-444d88",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "scor = 80\nif scor < 50:\n    print(\"Picat\")\n___\n    print(\"Trecut\")",
+      "output": "Trecut",
+      "options": ["else:", "else", "if:", "else scor < 50:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-182f0e",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "viteza = 120\nif viteza < 100:\n    print(\"Viteza buna\")\n___\n    print(\"Incetineste\")",
+      "output": "Incetineste",
+      "options": ["else:", "else", "if:", "else viteza < 100:"],
+      "answer": 0
+    },
+    {
+      "id": "ie-gap-else-505ffc",
+      "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "varsta = 30\nif varsta < 18:\n    print(\"Inca nu\")\n___\n    print(\"Poti vota\")",
+      "output": "Poti vota",
+      "options": ["else:", "else", "if:", "else varsta < 18:"],
+      "answer": 0
+    },
+    {
       "id": "ie-condition-91e030",
       "text": "Ce afișează?",
       "code": "temperatura = 14\nprint(temperatura < 15)",

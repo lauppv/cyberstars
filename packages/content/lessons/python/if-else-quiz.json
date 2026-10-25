@@ -474,6 +474,147 @@
       ]
     },
     {
+      "id": "ie-gap-op",
+      "kind": "missing-value",
+      "text": "What goes in the gap so the program prints this?",
+      "code": "{{v}} = {{x}}\nif {{v}} ___ {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 14,
+          "op": "<",
+          "limit": 15,
+          "yes": "Take a sweater",
+          "no": "A t-shirt is enough"
+        },
+        {
+          "v": "score",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail"
+        },
+        {
+          "v": "fuel",
+          "x": 1001,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable"
+        },
+        {
+          "v": "age",
+          "x": 18,
+          "op": "<",
+          "limit": 18,
+          "yes": "Not yet",
+          "no": "You can vote"
+        },
+        {
+          "v": "speed",
+          "x": 100,
+          "op": "<=",
+          "limit": 100,
+          "yes": "Good speed",
+          "no": "Slow down"
+        },
+        {
+          "v": "points",
+          "x": 75,
+          "op": "==",
+          "limit": 75,
+          "yes": "New record",
+          "no": "Try again"
+        }
+      ],
+      "answer": "{{op}}",
+      "wrong": ["=", "<", ">", "<=", ">=", "=="]
+    },
+    {
+      "id": "ie-which-edge",
+      "kind": "which-program",
+      "text": "Which program shows this?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "score",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Pass",
+          "no": "Fail"
+        },
+        {
+          "v": "age",
+          "x": 18,
+          "op": ">=",
+          "limit": 18,
+          "yes": "You can vote",
+          "no": "Not yet"
+        },
+        {
+          "v": "fuel",
+          "x": 1000,
+          "op": ">=",
+          "limit": 1000,
+          "yes": "Danger",
+          "no": "Stable"
+        }
+      ],
+      "mistakes": [
+        ["{{v}} >= {{limit}}", "{{v}} > {{limit}}"],
+        ["{{v}} >= {{limit}}", "{{v}} < {{limit}}"],
+        ["{{v}} >= {{limit}}", "{{v}} <= {{limit}}"],
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ]
+      ]
+    },
+    {
+      "id": "ie-gap-else",
+      "kind": "missing-line",
+      "text": "Which line goes in the gap so the program prints this?",
+      "code": "{{v}} = {{x}}\nif {{v}} < {{limit}}:\n    print(\"{{yes}}\")\n___\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperature",
+          "x": 20,
+          "op": "<",
+          "limit": 15,
+          "yes": "Take a sweater",
+          "no": "A t-shirt is enough"
+        },
+        {
+          "v": "score",
+          "x": 80,
+          "op": "<",
+          "limit": 50,
+          "yes": "Fail",
+          "no": "Pass"
+        },
+        {
+          "v": "speed",
+          "x": 120,
+          "op": "<",
+          "limit": 100,
+          "yes": "Good speed",
+          "no": "Slow down"
+        },
+        {
+          "v": "age",
+          "x": 30,
+          "op": "<",
+          "limit": 18,
+          "yes": "Not yet",
+          "no": "You can vote"
+        }
+      ],
+      "answer": "else:",
+      "wrong": ["else", "if:", "else {{v}} < {{limit}}:", "if {{v}} > {{limit}}:"]
+    },
+    {
       "id": "ie-condition",
       "kind": "prints",
       "text": "What does this print?",
