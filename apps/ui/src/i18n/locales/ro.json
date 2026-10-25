@@ -62,6 +62,9 @@
     "lastMonths_other": "{{count}} de luni",
     "visitorsADay": "Vizitatori pe zi",
     "newAccountsADay": "Conturi noi pe zi",
+    "visitorsAWeek": "Vizitatori pe săptămână",
+    "newAccountsAWeek": "Conturi noi pe săptămână",
+    "weekOf": "Săptămâna de la {{day}}",
     "visitorsWord_one": "vizitator",
     "visitorsWord_few": "vizitatori",
     "visitorsWord_other": "de vizitatori",
@@ -72,6 +75,7 @@
     "newAccountsWord_few": "conturi noi",
     "newAccountsWord_other": "de conturi noi",
     "day": "Zi",
+    "week": "Săptămână",
     "topPages": "Cele mai vizitate pagini",
     "sources": "De unde vin vizitatorii",
     "source": {

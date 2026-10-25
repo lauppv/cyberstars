@@ -25,21 +25,28 @@ function useWidth(fallback: number) {
   return [ref, width] as const;
 }
 
-function shortDay(day: string, lang: string) {
-  return new Date(`${day}T12:00:00Z`).toLocaleDateString(lang, { day: 'numeric', month: 'short' });
+// A week's day comes with its year, since the weekly ranges span a year or two.
+function shortDay(day: string, lang: string, withYear = false) {
+  return new Date(`${day}T12:00:00Z`).toLocaleDateString(lang, {
+    day: 'numeric',
+    month: 'short',
+    ...(withYear && { year: 'numeric' }),
+  });
 }
 
-// One series a day over the range, as a 2px line over a faint wash. The
-// pointer or the arrow keys pick a day, and the readout shows both visitors and
-// new accounts for it, whichever chart you're on.
+// One series a day (or a week, with weekly) over the range, as a 2px line over
+// a faint wash. The pointer or the arrow keys pick a point, and the readout
+// shows both visitors and new accounts for it, whichever chart you're on.
 export function DailyChart({
   days,
   field,
   title,
+  weekly = false,
 }: {
   days: VisitDay[];
   field: 'visitors' | 'newAccounts';
   title: string;
+  weekly?: boolean;
 }) {
   const { t, i18n } = useTranslation();
   const [active, setActive] = useState<number | null>(null);
@@ -111,7 +118,7 @@ export function DailyChart({
             fontSize={10}
             fill="var(--text3)"
           >
-            {shortDay(days[i].day, i18n.language)}
+            {shortDay(days[i].day, i18n.language, weekly)}
           </text>
         ))}
         <polygon points={area} fill="var(--accent)" fillOpacity={0.1} />
@@ -160,7 +167,11 @@ export function DailyChart({
           }}
           role="status"
         >
-          <div className="text-[var(--text3)] mb-0.5">{shortDay(shown.day, i18n.language)}</div>
+          <div className="text-[var(--text3)] mb-0.5">
+            {weekly
+              ? t('admin.weekOf', { day: shortDay(shown.day, i18n.language, true) })
+              : shortDay(shown.day, i18n.language)}
+          </div>
           <div>
             <strong className="tabular-nums">{shown.visitors}</strong>{' '}
             <span className="text-[var(--text2)]">

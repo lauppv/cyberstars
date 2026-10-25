@@ -60,6 +60,9 @@
     "lastMonths_other": "{{count}} months",
     "visitorsADay": "Visitors a day",
     "newAccountsADay": "New accounts a day",
+    "visitorsAWeek": "Visitors a week",
+    "newAccountsAWeek": "New accounts a week",
+    "weekOf": "Week of {{day}}",
     "visitorsWord_one": "visitor",
     "visitorsWord_other": "visitors",
     "viewsWord_one": "view",
@@ -67,6 +70,7 @@
     "newAccountsWord_one": "new account",
     "newAccountsWord_other": "new accounts",
     "day": "Day",
+    "week": "Week",
     "topPages": "Most visited pages",
     "sources": "Where visitors come from",
     "source": {

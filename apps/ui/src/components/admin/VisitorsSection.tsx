@@ -10,6 +10,7 @@ import type {
 import { getVisits } from '../../services/visitsService';
 import { isCounted, setCounted } from '../../services/visitCounting';
 import { DailyChart } from './DailyChart';
+import { byWeek } from './byWeek';
 import { GuestVisits } from './GuestVisits';
 
 // The places CYB-64 posts to, by their own names; any other site shows as its
@@ -118,6 +119,10 @@ export function VisitorsSection({ className, reload }: { className: string; relo
       .catch(() => {});
   }, [range, reload]);
 
+  // Past 3 months a point a day is too many to read, so the charts go by week.
+  const weekly = data !== null && data.range > 90;
+  const points = data && weekly ? byWeek(data.days) : (data?.days ?? []);
+
   const sourceName = (key: string) =>
     SOURCE_NAMES[key] ?? (key === 'direct' || key === 'other' ? t(`admin.source.${key}`) : key);
 
@@ -148,21 +153,31 @@ export function VisitorsSection({ className, reload }: { className: string; relo
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <DailyChart days={data.days} field="visitors" title={t('admin.visitorsADay')} />
-            <DailyChart days={data.days} field="newAccounts" title={t('admin.newAccountsADay')} />
+            <DailyChart
+              days={points}
+              field="visitors"
+              title={t(weekly ? 'admin.visitorsAWeek' : 'admin.visitorsADay')}
+              weekly={weekly}
+            />
+            <DailyChart
+              days={points}
+              field="newAccounts"
+              title={t(weekly ? 'admin.newAccountsAWeek' : 'admin.newAccountsADay')}
+              weekly={weekly}
+            />
           </div>
           <table className="sr-only">
             <caption>{t('admin.visits')}</caption>
             <thead>
               <tr>
-                <th>{t('admin.day')}</th>
+                <th>{t(weekly ? 'admin.week' : 'admin.day')}</th>
                 <th>{t('admin.visitorsWord', { count: 2 })}</th>
                 <th>{t('admin.viewsWord', { count: 2 })}</th>
                 <th>{t('admin.newAccountsWord', { count: 2 })}</th>
               </tr>
             </thead>
             <tbody>
-              {data.days.map((d) => (
+              {points.map((d) => (
                 <tr key={d.day}>
                   <td>{d.day}</td>
                   <td>{d.visitors}</td>

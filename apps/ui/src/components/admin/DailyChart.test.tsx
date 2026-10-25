@@ -61,6 +61,13 @@ describe('DailyChart', () => {
     expect(screen.queryByRole('status')).not.toBeInTheDocument();
   });
 
+  it('names a week by its first day and year', () => {
+    render(<DailyChart days={days} field="visitors" title="Visitors a day" weekly />);
+    expect(screen.getByText(/Nov 1, 2026|1 Nov 2026/)).toBeInTheDocument();
+    fireEvent.keyDown(svg(), { key: 'ArrowLeft' });
+    expect(screen.getByRole('status')).toHaveTextContent(/Week of (Nov 2, 2026|2 Nov 2026)/);
+  });
+
   it('follows the pointer to the nearest day', () => {
     const { container } = render(<DailyChart days={days} field="newAccounts" title="New" />);
     const target = container.querySelector('rect')!;

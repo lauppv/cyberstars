@@ -72,6 +72,22 @@ describe('VisitorsSection', () => {
     expect(screen.getByText('5 presses · 2 visits')).toBeInTheDocument();
   });
 
+  it('charts a week a point past 3 months', async () => {
+    const days = Array.from({ length: 14 }, (_, i) => ({
+      day: `2026-${i < 7 ? '05' : '06'}-0${(i % 7) + 1}`,
+      visitors: 1,
+      views: 1,
+      newAccounts: 0,
+    }));
+    getVisits.mockResolvedValue({ ...dto, range: 182, days });
+    render(<VisitorsSection className="" reload={0} />);
+    expect(await screen.findByRole('img', { name: 'Visitors a week' })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'New accounts a week' })).toBeInTheDocument();
+    const table = screen.getByRole('table', { name: 'Visitors' });
+    expect(within(table).getAllByRole('row')).toHaveLength(3); // the header and two weeks
+    expect(within(table).getByText('2026-06-01')).toBeInTheDocument();
+  });
+
   it('lists the guest visits for the same range, filtered by the sources above', async () => {
     render(<VisitorsSection className="" reload={0} />);
     await screen.findByText('Guest visits');
