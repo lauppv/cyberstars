@@ -279,5 +279,256 @@
       "answer": 1
     }
   ],
-  "templates": []
+  "templates": [
+    {
+      "id": "ie-branch",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nif {{v}} {{op}} {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 14,
+          "op": "<",
+          "limit": 15,
+          "yes": "Ia o bluza",
+          "no": "Un tricou e suficient",
+          "flip": ">="
+        },
+        {
+          "v": "temperatura",
+          "x": 15,
+          "op": "<",
+          "limit": 15,
+          "yes": "Ia o bluza",
+          "no": "Un tricou e suficient",
+          "flip": ">="
+        },
+        {
+          "v": "scor",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat",
+          "flip": "<"
+        },
+        {
+          "v": "scor",
+          "x": 49,
+          "op": ">=",
+          "limit": 50,
+          "yes": "Trecut",
+          "no": "Picat",
+          "flip": "<"
+        },
+        {
+          "v": "combustibil",
+          "x": 1000,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil",
+          "flip": "<="
+        },
+        {
+          "v": "combustibil",
+          "x": 1200,
+          "op": ">",
+          "limit": 1000,
+          "yes": "Pericol",
+          "no": "Stabil",
+          "flip": "<="
+        },
+        {
+          "v": "varsta",
+          "x": 18,
+          "op": ">=",
+          "limit": 18,
+          "yes": "Poti vota",
+          "no": "Inca nu",
+          "flip": "<"
+        },
+        {
+          "v": "varsta",
+          "x": 12,
+          "op": ">=",
+          "limit": 18,
+          "yes": "Poti vota",
+          "no": "Inca nu",
+          "flip": "<"
+        }
+      ],
+      "mistakes": [
+        ["{{op}}", "{{flip}}"],
+        [
+          "if {{v}} {{op}} {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        [
+          "if {{v}} {{op}} {{limit}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{v}} {{op}} {{limit}})"
+        ]
+      ]
+    },
+    {
+      "id": "ie-equal",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nif {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "v": "x",
+          "x": 4,
+          "y": 4,
+          "yes": "Bau",
+          "no": "Fara bau"
+        },
+        {
+          "v": "vieti",
+          "x": 0,
+          "y": 0,
+          "yes": "Joc terminat",
+          "no": "Joaca mai departe"
+        },
+        {
+          "v": "vieti",
+          "x": 3,
+          "y": 0,
+          "yes": "Joc terminat",
+          "no": "Joaca mai departe"
+        },
+        {
+          "v": "cod",
+          "x": 1111,
+          "y": 1234,
+          "yes": "Usa deschisa",
+          "no": "Usa incuiata"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{no}}\")\nelse:\n    print(\"{{yes}}\")"
+        ],
+        [
+          "if {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print(\"{{yes}}\")\nprint(\"{{no}}\")"
+        ],
+        [
+          "if {{v}} == {{y}}:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+          "print({{v}} == {{y}})"
+        ]
+      ]
+    },
+    {
+      "id": "ie-online",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "jucator = \"{{user}}\"\nonline = {{b}}\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "values": [
+        {
+          "user": "Tommy",
+          "b": "True"
+        },
+        {
+          "user": "Lance",
+          "b": "False"
+        },
+        {
+          "user": "Ana",
+          "b": "True"
+        },
+        {
+          "user": "Ben",
+          "b": "False"
+        },
+        {
+          "user": "Cortez",
+          "b": "False"
+        }
+      ],
+      "mistakes": [
+        [
+          "print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+          "print(f\"{jucator} este offline\")\nelse:\n    print(f\"{jucator} joaca\")"
+        ],
+        [
+          "if online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+          "print(f\"{jucator} joaca\")\nprint(f\"{jucator} este offline\")"
+        ],
+        [
+          "if online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+          "print(online)"
+        ]
+      ]
+    },
+    {
+      "id": "ie-condition",
+      "kind": "prints",
+      "text": "Ce afișează?",
+      "code": "{{v}} = {{x}}\nprint({{v}} {{op}} {{limit}})",
+      "values": [
+        {
+          "v": "temperatura",
+          "x": 14,
+          "op": "<",
+          "limit": 15,
+          "yes": "",
+          "no": "",
+          "flip": ">="
+        },
+        {
+          "v": "temperatura",
+          "x": 15,
+          "op": "<",
+          "limit": 15,
+          "yes": "",
+          "no": "",
+          "flip": ">="
+        },
+        {
+          "v": "scor",
+          "x": 50,
+          "op": ">=",
+          "limit": 50,
+          "yes": "",
+          "no": "",
+          "flip": "<"
+        },
+        {
+          "v": "combustibil",
+          "x": 1000,
+          "op": ">",
+          "limit": 1000,
+          "yes": "",
+          "no": "",
+          "flip": "<="
+        },
+        {
+          "v": "varsta",
+          "x": 17,
+          "op": "<=",
+          "limit": 18,
+          "yes": "",
+          "no": "",
+          "flip": ">"
+        },
+        {
+          "v": "puncte",
+          "x": 75,
+          "op": "==",
+          "limit": 75,
+          "yes": "",
+          "no": "",
+          "flip": "<"
+        }
+      ],
+      "mistakes": [
+        ["print({{v}} {{op}} {{limit}})", "print(\"{{v}} {{op}} {{limit}}\")"],
+        ["{{op}}", "{{flip}}"],
+        ["print({{v}} {{op}} {{limit}})", "print({{v}})"]
+      ]
+    }
+  ]
 }

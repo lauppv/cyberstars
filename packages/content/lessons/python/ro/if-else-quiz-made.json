@@ -1,0 +1,181 @@
+{
+  "note": "Made by npm run make:quiz from the templates in if-else-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "ie-branch-66c7d7",
+      "text": "Ce afișează?",
+      "code": "temperatura = 14\nif temperatura < 15:\n    print(\"Ia o bluza\")\nelse:\n    print(\"Un tricou e suficient\")",
+      "options": [
+        "Ia o bluza",
+        "Un tricou e suficient",
+        "Ia o bluza\nUn tricou e suficient",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-eea487",
+      "text": "Ce afișează?",
+      "code": "temperatura = 15\nif temperatura < 15:\n    print(\"Ia o bluza\")\nelse:\n    print(\"Un tricou e suficient\")",
+      "options": [
+        "Un tricou e suficient",
+        "Ia o bluza",
+        "Ia o bluza\nUn tricou e suficient",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-b7a9a9",
+      "text": "Ce afișează?",
+      "code": "scor = 50\nif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "options": ["Trecut", "Picat", "Trecut\nPicat", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-c0bca8",
+      "text": "Ce afișează?",
+      "code": "scor = 49\nif scor >= 50:\n    print(\"Trecut\")\nelse:\n    print(\"Picat\")",
+      "options": ["Picat", "Trecut", "Trecut\nPicat", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-cc886f",
+      "text": "Ce afișează?",
+      "code": "combustibil = 1000\nif combustibil > 1000:\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
+      "options": ["Stabil", "Pericol", "Pericol\nStabil", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-c6d917",
+      "text": "Ce afișează?",
+      "code": "combustibil = 1200\nif combustibil > 1000:\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
+      "options": ["Pericol", "Stabil", "Pericol\nStabil", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-bbf3ee",
+      "text": "Ce afișează?",
+      "code": "varsta = 18\nif varsta >= 18:\n    print(\"Poti vota\")\nelse:\n    print(\"Inca nu\")",
+      "options": ["Poti vota", "Inca nu", "Poti vota\nInca nu", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-28db7d",
+      "text": "Ce afișează?",
+      "code": "varsta = 12\nif varsta >= 18:\n    print(\"Poti vota\")\nelse:\n    print(\"Inca nu\")",
+      "options": ["Inca nu", "Poti vota", "Poti vota\nInca nu", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-6a2dc8",
+      "text": "Ce afișează?",
+      "code": "x = 4\nif x == 4:\n    print(\"Bau\")\nelse:\n    print(\"Fara bau\")",
+      "options": ["Bau", "Fara bau", "Bau\nFara bau", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-583e93",
+      "text": "Ce afișează?",
+      "code": "vieti = 0\nif vieti == 0:\n    print(\"Joc terminat\")\nelse:\n    print(\"Joaca mai departe\")",
+      "options": ["Joc terminat", "Joaca mai departe", "Joc terminat\nJoaca mai departe", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-219b0a",
+      "text": "Ce afișează?",
+      "code": "vieti = 3\nif vieti == 0:\n    print(\"Joc terminat\")\nelse:\n    print(\"Joaca mai departe\")",
+      "options": ["Joaca mai departe", "Joc terminat", "Joc terminat\nJoaca mai departe", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-1f9621",
+      "text": "Ce afișează?",
+      "code": "cod = 1111\nif cod == 1234:\n    print(\"Usa deschisa\")\nelse:\n    print(\"Usa incuiata\")",
+      "options": ["Usa incuiata", "Usa deschisa", "Usa deschisa\nUsa incuiata", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-2cfab4",
+      "text": "Ce afișează?",
+      "code": "jucator = \"Tommy\"\nonline = True\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "options": ["Tommy joaca", "Tommy este offline", "Tommy joaca\nTommy este offline", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-f88f30",
+      "text": "Ce afișează?",
+      "code": "jucator = \"Lance\"\nonline = False\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "options": ["Lance este offline", "Lance joaca", "Lance joaca\nLance este offline", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-cbab11",
+      "text": "Ce afișează?",
+      "code": "jucator = \"Ana\"\nonline = True\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "options": ["Ana joaca", "Ana este offline", "Ana joaca\nAna este offline", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-7e20b4",
+      "text": "Ce afișează?",
+      "code": "jucator = \"Ben\"\nonline = False\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "options": ["Ben este offline", "Ben joaca", "Ben joaca\nBen este offline", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-7addfd",
+      "text": "Ce afișează?",
+      "code": "jucator = \"Cortez\"\nonline = False\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "options": [
+        "Cortez este offline",
+        "Cortez joaca",
+        "Cortez joaca\nCortez este offline",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-91e030",
+      "text": "Ce afișează?",
+      "code": "temperatura = 14\nprint(temperatura < 15)",
+      "options": ["True", "temperatura < 15", "False", "14"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-bd018d",
+      "text": "Ce afișează?",
+      "code": "temperatura = 15\nprint(temperatura < 15)",
+      "options": ["False", "temperatura < 15", "True", "15"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-0aba77",
+      "text": "Ce afișează?",
+      "code": "scor = 50\nprint(scor >= 50)",
+      "options": ["True", "scor >= 50", "False", "50"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-30fd6b",
+      "text": "Ce afișează?",
+      "code": "combustibil = 1000\nprint(combustibil > 1000)",
+      "options": ["False", "combustibil > 1000", "True", "1000"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-6a96a8",
+      "text": "Ce afișează?",
+      "code": "varsta = 17\nprint(varsta <= 18)",
+      "options": ["True", "varsta <= 18", "False", "17"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-bb1c00",
+      "text": "Ce afișează?",
+      "code": "puncte = 75\nprint(puncte == 75)",
+      "options": ["True", "puncte == 75", "False", "75"],
+      "answer": 0
+    }
+  ]
+}

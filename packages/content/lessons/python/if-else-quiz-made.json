@@ -1,0 +1,191 @@
+{
+  "note": "Made by npm run make:quiz from the templates in if-else-quiz.json; don't edit it by hand.",
+  "questions": [
+    {
+      "id": "ie-branch-66c7d7",
+      "text": "What does this print?",
+      "code": "temperature = 14\nif temperature < 15:\n    print(\"Take a sweater\")\nelse:\n    print(\"A t-shirt is enough\")",
+      "options": [
+        "Take a sweater",
+        "A t-shirt is enough",
+        "Take a sweater\nA t-shirt is enough",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-eea487",
+      "text": "What does this print?",
+      "code": "temperature = 15\nif temperature < 15:\n    print(\"Take a sweater\")\nelse:\n    print(\"A t-shirt is enough\")",
+      "options": [
+        "A t-shirt is enough",
+        "Take a sweater",
+        "Take a sweater\nA t-shirt is enough",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-b7a9a9",
+      "text": "What does this print?",
+      "code": "score = 50\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Pass", "Fail", "Pass\nFail", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-c0bca8",
+      "text": "What does this print?",
+      "code": "score = 49\nif score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "options": ["Fail", "Pass", "Pass\nFail", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-cc886f",
+      "text": "What does this print?",
+      "code": "fuel = 1000\nif fuel > 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+      "options": ["Stable", "Danger", "Danger\nStable", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-c6d917",
+      "text": "What does this print?",
+      "code": "fuel = 1200\nif fuel > 1000:\n    print(\"Danger\")\nelse:\n    print(\"Stable\")",
+      "options": ["Danger", "Stable", "Danger\nStable", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-bbf3ee",
+      "text": "What does this print?",
+      "code": "age = 18\nif age >= 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+      "options": ["You can vote", "Not yet", "You can vote\nNot yet", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-branch-28db7d",
+      "text": "What does this print?",
+      "code": "age = 12\nif age >= 18:\n    print(\"You can vote\")\nelse:\n    print(\"Not yet\")",
+      "options": ["Not yet", "You can vote", "You can vote\nNot yet", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-6a2dc8",
+      "text": "What does this print?",
+      "code": "x = 4\nif x == 4:\n    print(\"Boo\")\nelse:\n    print(\"No boo\")",
+      "options": ["Boo", "No boo", "Boo\nNo boo", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-583e93",
+      "text": "What does this print?",
+      "code": "lives = 0\nif lives == 0:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
+      "options": ["Game over", "Keep playing", "Game over\nKeep playing", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-219b0a",
+      "text": "What does this print?",
+      "code": "lives = 3\nif lives == 0:\n    print(\"Game over\")\nelse:\n    print(\"Keep playing\")",
+      "options": ["Keep playing", "Game over", "Game over\nKeep playing", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-equal-1f9621",
+      "text": "What does this print?",
+      "code": "code = 1111\nif code == 1234:\n    print(\"Door open\")\nelse:\n    print(\"Door locked\")",
+      "options": ["Door locked", "Door open", "Door open\nDoor locked", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-2cfab4",
+      "text": "What does this print?",
+      "code": "user = \"Tommy\"\nonline = True\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": [
+        "Tommy is playing",
+        "Tommy is offline",
+        "Tommy is playing\nTommy is offline",
+        "True"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-f88f30",
+      "text": "What does this print?",
+      "code": "user = \"Lance\"\nonline = False\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": [
+        "Lance is offline",
+        "Lance is playing",
+        "Lance is playing\nLance is offline",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-cbab11",
+      "text": "What does this print?",
+      "code": "user = \"Ana\"\nonline = True\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": ["Ana is playing", "Ana is offline", "Ana is playing\nAna is offline", "True"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-7e20b4",
+      "text": "What does this print?",
+      "code": "user = \"Ben\"\nonline = False\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": ["Ben is offline", "Ben is playing", "Ben is playing\nBen is offline", "False"],
+      "answer": 0
+    },
+    {
+      "id": "ie-online-7addfd",
+      "text": "What does this print?",
+      "code": "user = \"Cortez\"\nonline = False\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": [
+        "Cortez is offline",
+        "Cortez is playing",
+        "Cortez is playing\nCortez is offline",
+        "False"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-91e030",
+      "text": "What does this print?",
+      "code": "temperature = 14\nprint(temperature < 15)",
+      "options": ["True", "temperature < 15", "False", "14"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-bd018d",
+      "text": "What does this print?",
+      "code": "temperature = 15\nprint(temperature < 15)",
+      "options": ["False", "temperature < 15", "True", "15"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-0aba77",
+      "text": "What does this print?",
+      "code": "score = 50\nprint(score >= 50)",
+      "options": ["True", "score >= 50", "False", "50"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-30fd6b",
+      "text": "What does this print?",
+      "code": "fuel = 1000\nprint(fuel > 1000)",
+      "options": ["False", "fuel > 1000", "True", "1000"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-6a96a8",
+      "text": "What does this print?",
+      "code": "age = 17\nprint(age <= 18)",
+      "options": ["True", "age <= 18", "False", "17"],
+      "answer": 0
+    },
+    {
+      "id": "ie-condition-bb1c00",
+      "text": "What does this print?",
+      "code": "points = 75\nprint(points == 75)",
+      "options": ["True", "points == 75", "False", "75"],
+      "answer": 0
+    }
+  ]
+}
