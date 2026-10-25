@@ -564,43 +564,43 @@
     {
       "id": "sm-bad-index-08803f",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "cuvant = \"Nebuloasa\"\nprint(cuvant)\nprint(cuvant[3])\nprint(cuvant[0:3])",
-      "output": "Nebuloasa\nb\nNeb",
+      "code": "cuvant = \"Nebuloasa\"\nprint(cuvant)\nprint(cuvant[0:3])\nprint(cuvant[3])",
+      "output": "Nebuloasa\nNeb\nb",
       "options": [
         "print(cuvant[3])",
+        "print(cuvant[0:3])",
         "print(cuvant)",
-        "cuvant = \"Nebuloasa\"",
-        "print(cuvant[0:3])"
+        "cuvant = \"Nebuloasa\""
       ],
       "answer": 0
     },
     {
       "id": "sm-bad-index-976dc7",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "cuvant = \"Galaxie\"\nprint(cuvant)\nprint(cuvant[5])\nprint(cuvant[0:2])",
-      "output": "Galaxie\nx\nGa",
+      "code": "cuvant = \"Galaxie\"\nprint(cuvant)\nprint(cuvant[0:2])\nprint(cuvant[5])",
+      "output": "Galaxie\nGa\nx",
       "options": [
         "print(cuvant[5])",
+        "print(cuvant[0:2])",
         "print(cuvant)",
-        "cuvant = \"Galaxie\"",
-        "print(cuvant[0:2])"
+        "cuvant = \"Galaxie\""
       ],
       "answer": 0
     },
     {
       "id": "sm-bad-index-fc7c22",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "nume = \"Mercedes\"\nprint(nume)\nprint(nume[2])\nprint(nume[0:4])",
-      "output": "Mercedes\ne\nMerc",
-      "options": ["print(nume[2])", "print(nume)", "nume = \"Mercedes\"", "print(nume[0:4])"],
+      "code": "nume = \"Mercedes\"\nprint(nume)\nprint(nume[0:4])\nprint(nume[2])",
+      "output": "Mercedes\nMerc\ne",
+      "options": ["print(nume[2])", "print(nume[0:4])", "print(nume)", "nume = \"Mercedes\""],
       "answer": 0
     },
     {
       "id": "sm-bad-index-5d69f5",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "cod = \"QZ7RX\"\nprint(cod)\nprint(cod[4])\nprint(cod[0:2])",
-      "output": "QZ7RX\nR\nQZ",
-      "options": ["print(cod[4])", "print(cod)", "cod = \"QZ7RX\"", "print(cod[0:2])"],
+      "code": "cod = \"QZ7RX\"\nprint(cod)\nprint(cod[0:2])\nprint(cod[4])",
+      "output": "QZ7RX\nQZ\nR",
+      "options": ["print(cod[4])", "print(cod[0:2])", "print(cod)", "cod = \"QZ7RX\""],
       "answer": 0
     },
     {

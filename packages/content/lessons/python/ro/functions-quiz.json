@@ -897,7 +897,7 @@
           "b": "Kai"
         }
       ],
-      "bug": ["print(f\"", "print(\""]
+      "bug": ["def {{f}}({{p}}):", "def {{f}}():"]
     },
     {
       "id": "fn-bad-name",

@@ -791,7 +791,7 @@
       "id": "sm-bad-index",
       "kind": "wrong-line",
       "text": "Which line stops this program from printing this?",
-      "code": "{{v}} = \"{{s}}\"\nprint({{v}})\nprint({{v}}[{{i}}])\nprint({{v}}[0:{{b}}])",
+      "code": "{{v}} = \"{{s}}\"\nprint({{v}})\nprint({{v}}[0:{{b}}])\nprint({{v}}[{{i}}])",
       "values": [
         {
           "v": "word",

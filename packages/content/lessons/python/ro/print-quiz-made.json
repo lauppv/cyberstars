@@ -138,26 +138,26 @@
     {
       "id": "bad-line-8365eb",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "print(\"Numele meu este Ana\")\nprint(\"Am 12 ani\")\nprint(Imi place pizza)\nprint(\"CyberStars e cel mai tare\")",
+      "code": "print(\"Numele meu este Ana\")\nprint(\"Am 12 ani\")\nprint(\"Imi place pizza\")\nprint(CyberStars e cel mai tare)",
       "output": "Numele meu este Ana\nAm 12 ani\nImi place pizza\nCyberStars e cel mai tare",
       "options": [
-        "print(Imi place pizza)",
+        "print(CyberStars e cel mai tare)",
+        "print(\"Imi place pizza\")",
         "print(\"Am 12 ani\")",
-        "print(\"Numele meu este Ana\")",
-        "print(\"CyberStars e cel mai tare\")"
+        "print(\"Numele meu este Ana\")"
       ],
       "answer": 0
     },
     {
       "id": "bad-line-fd890b",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "print(\"Pe locuri\")\nprint(\"Fiti gata\")\nprint(Start)\nprint(\"Gata\")",
+      "code": "print(\"Pe locuri\")\nprint(\"Fiti gata\")\nprint(\"Start\")\nprint(Gata)",
       "output": "Pe locuri\nFiti gata\nStart\nGata",
       "options": [
-        "print(Start)",
+        "print(Gata)",
+        "print(\"Start\")",
         "print(\"Fiti gata\")",
-        "print(\"Pe locuri\")",
-        "print(\"Gata\")"
+        "print(\"Pe locuri\")"
       ],
       "answer": 0
     },

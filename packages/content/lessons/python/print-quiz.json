@@ -396,7 +396,7 @@
           "d": "Done"
         }
       ],
-      "bug": ["print(\"{{c}}\")", "print({{c}})"]
+      "bug": ["print(\"{{d}}\")", "print({{d}})"]
     },
     {
       "id": "three-lines",

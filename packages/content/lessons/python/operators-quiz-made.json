@@ -440,41 +440,41 @@
     {
       "id": "op-bad-div-368f0f",
       "text": "Which line stops this program from printing this?",
-      "code": "a = 9\nb = 2\nprint(a / b)\nprint(a % b)",
-      "output": "4\n1",
-      "options": ["print(a / b)", "b = 2", "a = 9", "print(a % b)"],
+      "code": "a = 9\nb = 2\nprint(a % b)\nprint(a / b)",
+      "output": "1\n4",
+      "options": ["print(a / b)", "print(a % b)", "b = 2", "a = 9"],
       "answer": 0
     },
     {
       "id": "op-bad-div-badadf",
       "text": "Which line stops this program from printing this?",
-      "code": "a = 13\nb = 4\nprint(a / b)\nprint(a % b)",
-      "output": "3\n1",
-      "options": ["print(a / b)", "b = 4", "a = 13", "print(a % b)"],
+      "code": "a = 13\nb = 4\nprint(a % b)\nprint(a / b)",
+      "output": "1\n3",
+      "options": ["print(a / b)", "print(a % b)", "b = 4", "a = 13"],
       "answer": 0
     },
     {
       "id": "op-bad-div-3e64f2",
       "text": "Which line stops this program from printing this?",
-      "code": "a = 22\nb = 5\nprint(a / b)\nprint(a % b)",
-      "output": "4\n2",
-      "options": ["print(a / b)", "b = 5", "a = 22", "print(a % b)"],
+      "code": "a = 22\nb = 5\nprint(a % b)\nprint(a / b)",
+      "output": "2\n4",
+      "options": ["print(a / b)", "print(a % b)", "b = 5", "a = 22"],
       "answer": 0
     },
     {
       "id": "op-bad-div-c0cde4",
       "text": "Which line stops this program from printing this?",
-      "code": "a = 11\nb = 3\nprint(a / b)\nprint(a % b)",
-      "output": "3\n2",
-      "options": ["print(a / b)", "b = 3", "a = 11", "print(a % b)"],
+      "code": "a = 11\nb = 3\nprint(a % b)\nprint(a / b)",
+      "output": "2\n3",
+      "options": ["print(a / b)", "print(a % b)", "b = 3", "a = 11"],
       "answer": 0
     },
     {
       "id": "op-bad-div-75d509",
       "text": "Which line stops this program from printing this?",
-      "code": "a = 17\nb = 4\nprint(a / b)\nprint(a % b)",
-      "output": "4\n1",
-      "options": ["print(a / b)", "b = 4", "a = 17", "print(a % b)"],
+      "code": "a = 17\nb = 4\nprint(a % b)\nprint(a / b)",
+      "output": "1\n4",
+      "options": ["print(a / b)", "print(a % b)", "b = 4", "a = 17"],
       "answer": 0
     },
     {

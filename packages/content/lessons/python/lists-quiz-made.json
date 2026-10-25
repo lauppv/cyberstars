@@ -453,12 +453,12 @@
     {
       "id": "list-bad-append-ccf421",
       "text": "Which line stops this program from printing this?",
-      "code": "cargo = []\ncargo.append(\"oxygen\")\ncargo.append[\"water\"]\nprint(cargo)",
+      "code": "cargo = ()\ncargo.append(\"oxygen\")\ncargo.append(\"water\")\nprint(cargo)",
       "output": "['oxygen', 'water']",
       "options": [
-        "cargo.append[\"water\"]",
+        "cargo = ()",
         "cargo.append(\"oxygen\")",
-        "cargo = []",
+        "cargo.append(\"water\")",
         "print(cargo)"
       ],
       "answer": 0
@@ -466,12 +466,12 @@
     {
       "id": "list-bad-append-f23f8d",
       "text": "Which line stops this program from printing this?",
-      "code": "names = []\nnames.append(\"Tommy\")\nnames.append[\"Lance\"]\nprint(names)",
+      "code": "names = ()\nnames.append(\"Tommy\")\nnames.append(\"Lance\")\nprint(names)",
       "output": "['Tommy', 'Lance']",
       "options": [
-        "names.append[\"Lance\"]",
+        "names = ()",
         "names.append(\"Tommy\")",
-        "names = []",
+        "names.append(\"Lance\")",
         "print(names)"
       ],
       "answer": 0
@@ -479,17 +479,17 @@
     {
       "id": "list-bad-append-335b05",
       "text": "Which line stops this program from printing this?",
-      "code": "ages = []\nages.append(42)\nages.append[35]\nprint(ages)",
+      "code": "ages = ()\nages.append(42)\nages.append(35)\nprint(ages)",
       "output": "[42, 35]",
-      "options": ["ages.append[35]", "ages.append(42)", "ages = []", "print(ages)"],
+      "options": ["ages = ()", "ages.append(42)", "ages.append(35)", "print(ages)"],
       "answer": 0
     },
     {
       "id": "list-bad-append-22b2b7",
       "text": "Which line stops this program from printing this?",
-      "code": "crew = []\ncrew.append(\"Shadow\")\ncrew.append[\"Jess\"]\nprint(crew)",
+      "code": "crew = ()\ncrew.append(\"Shadow\")\ncrew.append(\"Jess\")\nprint(crew)",
       "output": "['Shadow', 'Jess']",
-      "options": ["crew.append[\"Jess\"]", "crew.append(\"Shadow\")", "crew = []", "print(crew)"],
+      "options": ["crew = ()", "crew.append(\"Shadow\")", "crew.append(\"Jess\")", "print(crew)"],
       "answer": 0
     },
     {

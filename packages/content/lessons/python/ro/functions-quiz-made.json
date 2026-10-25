@@ -629,11 +629,11 @@
     {
       "id": "fn-bad-f-cc5860",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "def bravo(jucator):\n    print(\"Bravo, {jucator}!\")\n\nbravo(\"Ana\")\nbravo(\"Ben\")",
+      "code": "def bravo():\n    print(f\"Bravo, {jucator}!\")\n\nbravo(\"Ana\")\nbravo(\"Ben\")",
       "output": "Bravo, Ana!\nBravo, Ben!",
       "options": [
-        "print(\"Bravo, {jucator}!\")",
-        "def bravo(jucator):",
+        "def bravo():",
+        "print(f\"Bravo, {jucator}!\")",
         "bravo(\"Ana\")",
         "bravo(\"Ben\")"
       ],
@@ -642,24 +642,19 @@
     {
       "id": "fn-bad-f-d1a836",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "def hei(prieten):\n    print(\"Hei, {prieten}!\")\n\nhei(\"Cortez\")\nhei(\"Lance\")",
+      "code": "def hei():\n    print(f\"Hei, {prieten}!\")\n\nhei(\"Cortez\")\nhei(\"Lance\")",
       "output": "Hei, Cortez!\nHei, Lance!",
-      "options": [
-        "print(\"Hei, {prieten}!\")",
-        "def hei(prieten):",
-        "hei(\"Cortez\")",
-        "hei(\"Lance\")"
-      ],
+      "options": ["def hei():", "print(f\"Hei, {prieten}!\")", "hei(\"Cortez\")", "hei(\"Lance\")"],
       "answer": 0
     },
     {
       "id": "fn-bad-f-09f3ea",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "def noroc(pilot):\n    print(\"Succes, {pilot}!\")\n\nnoroc(\"Zoe\")\nnoroc(\"Kai\")",
+      "code": "def noroc():\n    print(f\"Succes, {pilot}!\")\n\nnoroc(\"Zoe\")\nnoroc(\"Kai\")",
       "output": "Succes, Zoe!\nSucces, Kai!",
       "options": [
-        "print(\"Succes, {pilot}!\")",
-        "def noroc(pilot):",
+        "def noroc():",
+        "print(f\"Succes, {pilot}!\")",
         "noroc(\"Zoe\")",
         "noroc(\"Kai\")"
       ],

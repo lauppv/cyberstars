@@ -673,7 +673,7 @@
       "id": "op-bad-div",
       "kind": "wrong-line",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "a = {{a}}\nb = {{b}}\nprint(a // b)\nprint(a % b)",
+      "code": "a = {{a}}\nb = {{b}}\nprint(a % b)\nprint(a // b)",
       "values": [
         {
           "a": 9,

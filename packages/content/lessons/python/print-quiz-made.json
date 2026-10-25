@@ -128,22 +128,22 @@
     {
       "id": "bad-line-8365eb",
       "text": "Which line stops this program from printing this?",
-      "code": "print(\"My name is Ana\")\nprint(\"I am 12 years old\")\nprint(I like pizza)\nprint(\"CyberStars is the coolest\")",
+      "code": "print(\"My name is Ana\")\nprint(\"I am 12 years old\")\nprint(\"I like pizza\")\nprint(CyberStars is the coolest)",
       "output": "My name is Ana\nI am 12 years old\nI like pizza\nCyberStars is the coolest",
       "options": [
-        "print(I like pizza)",
+        "print(CyberStars is the coolest)",
+        "print(\"I like pizza\")",
         "print(\"I am 12 years old\")",
-        "print(\"My name is Ana\")",
-        "print(\"CyberStars is the coolest\")"
+        "print(\"My name is Ana\")"
       ],
       "answer": 0
     },
     {
       "id": "bad-line-fd890b",
       "text": "Which line stops this program from printing this?",
-      "code": "print(\"Ready\")\nprint(\"Set\")\nprint(Go)\nprint(\"Done\")",
+      "code": "print(\"Ready\")\nprint(\"Set\")\nprint(\"Go\")\nprint(Done)",
       "output": "Ready\nSet\nGo\nDone",
-      "options": ["print(Go)", "print(\"Set\")", "print(\"Ready\")", "print(\"Done\")"],
+      "options": ["print(Done)", "print(\"Go\")", "print(\"Set\")", "print(\"Ready\")"],
       "answer": 0
     },
     {
