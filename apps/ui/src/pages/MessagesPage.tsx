@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useMessages } from '../context/MessagesContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { LoadError } from '../components/ui/LoadError';
 import { ConversationList } from '../components/messages/ConversationList';
 import { MessageThread } from '../components/messages/MessageThread';
 import { canAccessFeature } from '@cyberstars/shared/features';
@@ -14,7 +15,7 @@ export function MessagesPage() {
   const location = useLocation();
   const { t } = useTranslation();
   const { user, isLoading: authLoading } = useAuth();
-  const { conversations, loading } = useMessages();
+  const { conversations, loading, loadFailed, refresh } = useMessages();
   const canAccess = canAccessFeature('messaging', user?.role, import.meta.env.PROD);
 
   // Deep-link from a DM notification: /messages with { openConversationId }.
@@ -65,6 +66,10 @@ export function MessagesPage() {
             {loading && conversations.length === 0 ? (
               <div className="flex-1 flex items-center justify-center">
                 <LoadingSpinner />
+              </div>
+            ) : loadFailed && conversations.length === 0 ? (
+              <div className="p-3">
+                <LoadError text={t('messages.loadFailed')} onRetry={refresh} />
               </div>
             ) : (
               <ConversationList

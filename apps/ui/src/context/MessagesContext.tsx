@@ -20,6 +20,8 @@ interface MessagesContextValue {
   conversations: ConversationDTO[];
   totalUnread: number;
   loading: boolean;
+  // The last inbox load failed; the page shows it only when it has no list to keep
+  loadFailed: boolean;
   refresh: () => void;
   openWith: (recipientId: number) => Promise<ConversationDTO>;
   // The page marks which conversation is on screen so incoming messages for it
@@ -36,6 +38,7 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
 
   const [conversations, setConversations] = useState<ConversationDTO[]>([]);
   const [loading, setLoading] = useState(false);
+  const [loadFailed, setLoadFailed] = useState(false);
   const activeRef = useRef<number | null>(null);
   // Mirror of the known conversation ids, so a socket frame can decide whether a
   // conversation is new (→ refetch) without an impure read inside a state updater.
@@ -49,14 +52,18 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
     setLoading(true);
     messagesService
       .getConversations()
-      .then((res) => setConversations(res.conversations))
-      .catch(() => {})
+      .then((res) => {
+        setConversations(res.conversations);
+        setLoadFailed(false);
+      })
+      .catch(() => setLoadFailed(true))
       .finally(() => setLoading(false));
   }, [enabled]);
 
   useEffect(() => {
     if (!enabled) {
       setConversations([]); // eslint-disable-line react-hooks/set-state-in-effect
+      setLoadFailed(false);
       return;
     }
     load();
@@ -171,6 +178,7 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
         conversations,
         totalUnread,
         loading,
+        loadFailed,
         refresh: load,
         openWith,
         setActiveConversation,
