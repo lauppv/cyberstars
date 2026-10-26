@@ -114,16 +114,14 @@ describe('notifications.service notify', () => {
   it('never throws when the repository fails', async () => {
     mockRepo.create.mockRejectedValue(new Error('db down'));
     const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
-    await expect(
-      notify({ recipientIds: [10], type: 'FORUM_REPLY', entityId: 5 }),
-    ).resolves.toBeUndefined();
+    await expect(notify({ recipientIds: [10], type: 'FORUM_REPLY', entityId: 5 })).resolves.toBe(0);
     spy.mockRestore();
   });
 
   it('one recipient failing does not block the others', async () => {
     mockRepo.create.mockRejectedValueOnce(new Error('db down')).mockResolvedValue(row());
     const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
-    await notify({ recipientIds: [10, 11], type: 'FORUM_REPLY', entityId: 5 });
+    expect(await notify({ recipientIds: [10, 11], type: 'FORUM_REPLY', entityId: 5 })).toBe(1);
     expect(mockRepo.create).toHaveBeenCalledTimes(2);
     expect(mockWs.pushToUser).toHaveBeenCalledWith(11, expect.objectContaining({ type: 'new' }));
     spy.mockRestore();
