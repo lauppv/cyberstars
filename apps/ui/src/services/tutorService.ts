@@ -1,4 +1,4 @@
-import { api, ApiClientError } from './apiClient';
+import { api, errorOf, send } from './apiClient';
 import type {
   TutorConversationPage,
   TutorConversationSummary,
@@ -43,7 +43,7 @@ export async function streamChat(
   onEvent: (event: TutorStreamEvent) => void,
   signal?: AbortSignal,
 ): Promise<void> {
-  const res = await fetch(`${API_BASE}/api/tutor/chat`, {
+  const res = await send(`${API_BASE}/api/tutor/chat`, {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
@@ -51,16 +51,7 @@ export async function streamChat(
     signal,
   });
 
-  if (!res.ok || !res.body) {
-    let message = 'Something went wrong';
-    try {
-      const data = await res.json();
-      message = data.error || data.message || message;
-    } catch {
-      // response wasn't JSON
-    }
-    throw new ApiClientError(res.status, message);
-  }
+  if (!res.ok || !res.body) throw await errorOf(res);
 
   const reader = res.body.getReader();
   const decoder = new TextDecoder();

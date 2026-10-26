@@ -84,10 +84,19 @@ describe('streamChat', () => {
   });
 
   it('throws a general message when the error is not JSON', async () => {
+    fetchMock.mockResolvedValue(new Response('oops', { status: 500 }));
+    await expect(streamChat(REQUEST, () => {})).rejects.toMatchObject({
+      status: 500,
+      message: 'Something went wrong',
+    });
+  });
+
+  it('says CyberStars is unavailable on a bad gateway', async () => {
     fetchMock.mockResolvedValue(new Response('Bad gateway', { status: 502 }));
     await expect(streamChat(REQUEST, () => {})).rejects.toMatchObject({
       status: 502,
-      message: 'Something went wrong',
+      message:
+        'CyberStars is being updated or is unavailable right now. Try again in a few minutes.',
     });
   });
 });

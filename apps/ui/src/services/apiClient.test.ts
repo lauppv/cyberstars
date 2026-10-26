@@ -1,4 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import i18n from 'i18next';
 import { api, ApiClientError } from './apiClient';
 
 const mockFetch = vi.fn();
@@ -169,5 +170,85 @@ describe('apiClient', () => {
       '/api/test',
       expect.objectContaining({ method: 'PATCH', body: undefined }),
     );
+  });
+});
+
+describe('apiClient when the server says nothing the page can show', () => {
+  afterEach(async () => {
+    await i18n.changeLanguage('en');
+  });
+
+  async function failure(): Promise<ApiClientError> {
+    return api.post('/api/x', { a: 1 }).then(
+      () => expect.unreachable(),
+      (e: unknown) => e as ApiClientError,
+    );
+  }
+
+  it("says the server couldn't be reached, never the browser's words", async () => {
+    mockFetch.mockRejectedValue(new TypeError('Failed to fetch'));
+    const err = await failure();
+    expect(err).toBeInstanceOf(ApiClientError);
+    expect(err).toMatchObject({ status: 0, serverMessage: '' });
+    expect(err.message).toBe(
+      "Couldn't reach CyberStars. Check your internet connection and try again.",
+    );
+  });
+
+  it("says it in the page's language", async () => {
+    await i18n.changeLanguage('ro');
+    mockFetch.mockRejectedValue(new TypeError('Load failed'));
+    expect((await failure()).message).toBe(
+      'Nu am putut ajunge la CyberStars. Verifică-ți conexiunea la internet și încearcă din nou.',
+    );
+  });
+
+  it('lets an aborted request stay an abort', async () => {
+    const abort = new AbortController();
+    abort.abort();
+    const reason = new DOMException('Aborted', 'AbortError');
+    mockFetch.mockRejectedValue(reason);
+    await expect(api.post('/api/x', {}, { signal: abort.signal })).rejects.toBe(reason);
+  });
+
+  it("asks the student to slow down on a limiter's plain-text 429", async () => {
+    mockFetch.mockResolvedValue(
+      new Response('Too many requests, please try again later.', { status: 429 }),
+    );
+    const err = await failure();
+    expect(err.status).toBe(429);
+    expect(err.message).toBe("You're going too fast. Wait a minute, then try again.");
+  });
+
+  it('keeps the words of a 429 that gives them', async () => {
+    mockFetch.mockResolvedValue(
+      Response.json({ error: 'Too many attempts, try again later' }, { status: 429 }),
+    );
+    expect((await failure()).message).toBe('Too many attempts, try again later');
+  });
+
+  it.each([503, 502])('says CyberStars is unavailable on an HTML %i', async (status) => {
+    mockFetch.mockResolvedValue(
+      new Response('<!doctype html><title>Updating</title>', {
+        status,
+        headers: { 'content-type': 'text/html' },
+      }),
+    );
+    const err = await failure();
+    expect(err.status).toBe(status);
+    expect(err.message).toBe(
+      'CyberStars is being updated or is unavailable right now. Try again in a few minutes.',
+    );
+  });
+
+  it("keeps the words of the server's own 503", async () => {
+    const busy = 'The judge is busy right now, please try again in a moment';
+    mockFetch.mockResolvedValue(Response.json({ error: busy }, { status: 503 }));
+    expect(await failure()).toMatchObject({ status: 503, serverMessage: busy, message: busy });
+  });
+
+  it('keeps the general message for any other unreadable error', async () => {
+    mockFetch.mockResolvedValue(new Response('oops', { status: 500 }));
+    expect((await failure()).message).toBe('Something went wrong');
   });
 });
