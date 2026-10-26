@@ -407,7 +407,8 @@
     "xpReward": "+{{xp}} XP",
     "somethingWrong": "Ceva n-a mers. Încearcă din nou.",
     "back": "Înapoi",
-    "breadcrumb": "Unde te afli"
+    "breadcrumb": "Unde te afli",
+    "retry": "Încearcă din nou"
   },
   "leaderboard": {
     "you": "Tu",
@@ -680,8 +681,7 @@
     "replyPlaceholder": "Scrie un răspuns...",
     "send": "Trimite",
     "you": "Tu",
-    "admin": "admin",
-    "retry": "Încearcă din nou"
+    "admin": "admin"
   },
   "feedback": {
     "lesson": "Crezi că ar trebui să schimbăm ceva la lecția asta? Spune-ne și ajută comunitatea să crească",
