@@ -28,6 +28,7 @@ const ICONS: Record<NotificationType, string> = {
   SUPPORT_STATUS: '🔖',
   CONNECTION_REQUEST: '🤝',
   CONNECTION_ACCEPTED: '🌟',
+  LANIAKEA_RECAP: '🪐',
 };
 
 function describe(n: NotificationDTO): string {
@@ -55,6 +56,8 @@ function describe(n: NotificationDTO): string {
       return t('notif.connectionRequest', { name });
     case 'CONNECTION_ACCEPTED':
       return t('notif.connectionAccepted', { name });
+    case 'LANIAKEA_RECAP':
+      return t('notif.laniakeaRecap', { count });
   }
 }
 
@@ -90,6 +93,8 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
       case 'CONNECTION_REQUEST':
       case 'CONNECTION_ACCEPTED':
         return '/connections';
+      case 'LANIAKEA_RECAP':
+        return '/laniakea';
     }
   };
 

@@ -172,6 +172,24 @@ describe('planetView', () => {
   });
 });
 
+describe('onBoard', () => {
+  const quizzes = new Set(['print', 'lists']);
+
+  it('shows the recap of a planet the student can fly to', () => {
+    expect(service.onBoard('lists', new Set([...FIRST_STEPS, 'lists']), quizzes)).toBe(true);
+  });
+
+  it('hides it while the game is locked, the lesson undone or the questions missing', () => {
+    expect(service.onBoard('lists', new Set(['lists']), quizzes)).toBe(false);
+    expect(service.onBoard('lists', new Set(FIRST_STEPS), quizzes)).toBe(false);
+    expect(service.onBoard('print', new Set(FIRST_STEPS), new Set(['lists']))).toBe(false);
+  });
+
+  it('hides a lesson that is no longer a planet of its own', () => {
+    expect(service.onBoard('variables-str', new Set(FIRST_STEPS), quizzes)).toBe(false);
+  });
+});
+
 describe('getState', () => {
   it('opens the game once the six lessons of First steps are done, those and no others', async () => {
     mockProgress.getByCourse.mockResolvedValue([

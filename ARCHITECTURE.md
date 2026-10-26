@@ -183,7 +183,7 @@ The judge runs the student's code and the reference solution in the owner's cont
 | POST   | `/api/connections/:id/decline`         | Yes  | Decline (addressee only)                |
 | DELETE | `/api/connections/:id`                 | Yes  | Cancel a request or remove a connection |
 
-The actor never gets their own notification, and repeat replies or reactions collapse into one unread row.
+The actor never gets their own notification, and repeat replies, reactions or Laniakea recap counts collapse into one unread row.
 
 ### Profile, leaderboard and public profiles
 
@@ -221,6 +221,9 @@ The actor never gets their own notification, and repeat replies or reactions col
 | GET    | `/api/laniakea`                   | Yes  | Whether the game is open, and every planet's state     |
 | POST   | `/api/laniakea/:slug/quiz`        | Yes  | Open a 10-question test on a planet, or resume it      |
 | POST   | `/api/laniakea/:slug/quiz/answer` | Yes  | Answer the next question and get the right option back |
+| POST   | `/api/laniakea/seen`              | Yes  | The game opened: reads the recap notification          |
+
+Once an hour the server tells each student in the bell how many of their recaps are open, at most once a day and only when one opened since they last opened the game.
 
 ### Admin and visits
 
@@ -245,6 +248,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma), cam
 - **Conversation**, **DirectMessage**, **DmReaction**, **Connection**: messages and connections
 - **TutorConversation**, **TutorMessage**, **UsageWindow**: the tutor's conversations and the usage limits
 - **LaniakeaPlanet**: a student's planet: level, last pass, questions seen and the test going on
+- **LaniakeaPlayer**: when a student last opened the game and was last told of open recaps
 - **PageVisit**, **VisitSalt**, **VisitTotal**, **GuestVisit**, **VisitStep**: visitor counts
 
 ## Code execution

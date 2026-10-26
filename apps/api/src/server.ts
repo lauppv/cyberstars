@@ -4,6 +4,7 @@ import { destroyAllSessions } from './services/terminal-session.service.js';
 import { drainAll } from './services/code-container.service.js';
 import { attachRunWebSocket } from './services/ws-run.js';
 import { scheduleRollUp } from './services/visits.service.js';
+import { scheduleRecapBell } from './services/laniakea-recaps.service.js';
 import { removeStraySandboxes } from './services/docker-exec.js';
 
 // Before the first request, so only sandboxes of an earlier run are removed
@@ -21,6 +22,7 @@ const server = app.listen(config.port, () => {
 
 const wss = attachRunWebSocket(server);
 scheduleRollUp();
+scheduleRecapBell();
 
 function shutdown() {
   console.log('Shutting down, cleaning up containers...');

@@ -2,15 +2,21 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { Request, Response } from 'express';
 
 const mockService = { getState: vi.fn(), startQuiz: vi.fn(), answerQuiz: vi.fn() };
+const mockRecaps = { markSeen: vi.fn() };
 vi.mock('../services/laniakea.service.js', () => mockService);
+vi.mock('../services/laniakea-recaps.service.js', () => mockRecaps);
 
-const { answerQuiz, getState, startQuiz } = await import('./laniakea.controller.js');
+const { answerQuiz, getState, markSeen, startQuiz } = await import('./laniakea.controller.js');
 
 function req(params: Record<string, string> = {}, body: object = {}): Request {
   return { user: { id: 7 }, params, body } as unknown as Request;
 }
 function res(): Response {
-  return { json: vi.fn().mockReturnThis() } as unknown as Response;
+  return {
+    json: vi.fn().mockReturnThis(),
+    status: vi.fn().mockReturnThis(),
+    end: vi.fn(),
+  } as unknown as Response;
 }
 
 beforeEach(() => vi.clearAllMocks());
@@ -42,15 +48,26 @@ describe('laniakea controller', () => {
     expect(r.json).toHaveBeenCalledWith({ correct: true });
   });
 
+  it('marks the recaps seen with no body back', async () => {
+    mockRecaps.markSeen.mockResolvedValue(undefined);
+    const r = res();
+    await markSeen(req(), r, vi.fn());
+    expect(mockRecaps.markSeen).toHaveBeenCalledWith(7);
+    expect(r.status).toHaveBeenCalledWith(204);
+    expect(r.end).toHaveBeenCalled();
+  });
+
   it('passes every failure on', async () => {
     const boom = new Error('boom');
     mockService.getState.mockRejectedValue(boom);
     mockService.startQuiz.mockRejectedValue(boom);
     mockService.answerQuiz.mockRejectedValue(boom);
+    mockRecaps.markSeen.mockRejectedValue(boom);
     const next = vi.fn();
     await getState(req(), res(), next);
     await startQuiz(req({ slug: 'print' }), res(), next);
     await answerQuiz(req({ slug: 'print' }, { index: 0, choice: 0 }), res(), next);
-    expect(next.mock.calls).toEqual([[boom], [boom], [boom]]);
+    await markSeen(req(), res(), next);
+    expect(next.mock.calls).toEqual([[boom], [boom], [boom], [boom]]);
   });
 });

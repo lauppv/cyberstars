@@ -8,15 +8,18 @@ export type NotificationType =
   | 'SUPPORT_REPLY'
   | 'SUPPORT_STATUS'
   | 'CONNECTION_REQUEST'
-  | 'CONNECTION_ACCEPTED';
+  | 'CONNECTION_ACCEPTED'
+  | 'LANIAKEA_RECAP';
 
 // Repeat events on the same entity fold into one unread row instead of
 // spamming. Shared because both sides need the same rule: the server collapses
 // on insert, the client drops the superseded unread row when the replacement
-// arrives over the socket.
+// arrives over the socket. An event that carries its own count, like the open
+// Laniakea recaps, replaces the old count instead of adding one to it.
 export const COLLAPSIBLE_TYPES: ReadonlySet<NotificationType> = new Set([
   'FORUM_REPLY',
   'FORUM_REACTION',
+  'LANIAKEA_RECAP',
 ]);
 
 // Snapshot of the source entity, taken at creation time so the list renders
@@ -28,7 +31,7 @@ export interface NotificationData {
   title?: string; // thread title / ticket subject
   excerpt?: string;
   postId?: number; // forum post the excerpt was snapshotted from (redaction key)
-  count?: number; // collapsed count for COLLAPSIBLE_TYPES
+  count?: number; // collapsed count for COLLAPSIBLE_TYPES, open recaps for LANIAKEA_RECAP
   categorySlug?: string; // forum deep-link
   status?: string; // new ticket status for SUPPORT_STATUS
 }
@@ -41,7 +44,7 @@ interface NotificationActor {
 export interface NotificationDTO {
   id: number;
   type: NotificationType;
-  entityId: number; // threadId / conversationId / ticketId, interpreted by type
+  entityId: number; // threadId / conversationId / ticketId, interpreted by type; 0 for LANIAKEA_RECAP
   data: NotificationData | null;
   actor: NotificationActor | null;
   readAt: string | null;

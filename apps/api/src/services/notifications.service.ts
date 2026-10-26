@@ -37,7 +37,7 @@ async function upsertFor(userId: number, input: NotifyInput): Promise<repo.Notif
     const existing = await repo.findUnreadFor(userId, input.type, input.entityId);
     if (existing) {
       const prev = (existing.data as NotificationData | null) ?? {};
-      const count = (prev.count ?? 1) + 1;
+      const count = input.data?.count ?? (prev.count ?? 1) + 1;
       return repo.collapse(existing, input.actorId ?? null, { ...prev, ...input.data, count });
     }
   }
@@ -52,9 +52,11 @@ async function upsertFor(userId: number, input: NotifyInput): Promise<repo.Notif
 
 // Fan out a notification to each recipient (the actor is always excluded so no
 // one is notified of their own action). Fire-and-forget: never throws, so a
-// failure here can't fail the request that triggered it.
-export async function notify(input: NotifyInput): Promise<void> {
+// failure here can't fail the request that triggered it. Returns how many
+// recipients got it.
+export async function notify(input: NotifyInput): Promise<number> {
   const recipients = new Set(input.recipientIds.filter((id) => id !== input.actorId));
+  let delivered = 0;
   for (const userId of recipients) {
     // Per-recipient isolation: one failing insert must not starve the rest
     // (e.g. a support event fanned out to several admins).
@@ -68,10 +70,12 @@ export async function notify(input: NotifyInput): Promise<void> {
         type: 'unread-count',
         payload: { unreadCount },
       });
+      delivered++;
     } catch (err) {
       console.error(`[notifications] notify failed for user ${userId}:`, err);
     }
   }
+  return delivered;
 }
 
 // Redaction hook for source-entity soft-deletes (forum post delete): drop the

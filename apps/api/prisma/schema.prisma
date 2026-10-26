@@ -44,6 +44,7 @@ enum NotificationType {
   SUPPORT_STATUS
   CONNECTION_REQUEST
   CONNECTION_ACCEPTED
+  LANIAKEA_RECAP
 }
 
 // A connection between two users, modelled as a directed request that becomes
@@ -129,6 +130,7 @@ model User {
   tutorConversations TutorConversation[]
   usageWindows       UsageWindow[]
   laniakeaPlanets    LaniakeaPlanet[]
+  laniakeaPlayer     LaniakeaPlayer?
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
   notificationsSent     Notification[] @relation("NotificationsSent")
@@ -328,6 +330,18 @@ model LaniakeaPlanet {
 
   @@id([userId, courseKey, lessonSlug])
   @@map("laniakea_planets")
+}
+
+// When the student last opened the game and when the bell last told them of
+// open recaps: only recaps opened after both bring a new notification.
+model LaniakeaPlayer {
+  userId     Int       @id @map("user_id")
+  seenAt     DateTime? @map("seen_at")
+  notifiedAt DateTime? @map("notified_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("laniakea_players")
 }
 
 model SupportTicket {

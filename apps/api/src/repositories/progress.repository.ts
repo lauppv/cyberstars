@@ -8,6 +8,17 @@ export async function getByCourse(
   return prisma.userLessonProgress.findMany({ where: { userId, courseKey } });
 }
 
+// The lessons of the course each of the students completed.
+export function getCompletedOf(
+  userIds: number[],
+  courseKey: string,
+): Promise<{ userId: number; lessonSlug: string }[]> {
+  return prisma.userLessonProgress.findMany({
+    where: { userId: { in: userIds }, courseKey, completed: true },
+    select: { userId: true, lessonSlug: true },
+  });
+}
+
 export async function upsertProgress(
   userId: number,
   courseKey: string,

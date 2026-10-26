@@ -92,3 +92,49 @@ export function withPlanet<T>(
     return result;
   });
 }
+
+export interface RecapPlanet {
+  userId: number;
+  lessonSlug: string;
+  level: number;
+  passedAt: Date;
+}
+
+// Every planet of the course with a recap still ahead of it: conquered, not
+// kept for good.
+export async function listRecapPlanets(courseKey: string, below: number): Promise<RecapPlanet[]> {
+  const rows = await prisma.laniakeaPlanet.findMany({
+    where: { courseKey, level: { gte: 1, lt: below }, passedAt: { not: null } },
+    select: { userId: true, lessonSlug: true, level: true, passedAt: true },
+  });
+  return rows.map((r) => ({ ...r, passedAt: r.passedAt! }));
+}
+
+export interface PlayerRow {
+  userId: number;
+  seenAt: Date | null;
+  notifiedAt: Date | null;
+}
+
+export function listPlayers(userIds: number[]): Promise<PlayerRow[]> {
+  return prisma.laniakeaPlayer.findMany({
+    where: { userId: { in: userIds } },
+    select: { userId: true, seenAt: true, notifiedAt: true },
+  });
+}
+
+export async function markSeen(userId: number, at: Date): Promise<void> {
+  await prisma.laniakeaPlayer.upsert({
+    where: { userId },
+    create: { userId, seenAt: at },
+    update: { seenAt: at },
+  });
+}
+
+export async function markNotified(userId: number, at: Date): Promise<void> {
+  await prisma.laniakeaPlayer.upsert({
+    where: { userId },
+    create: { userId, notifiedAt: at },
+    update: { notifiedAt: at },
+  });
+}

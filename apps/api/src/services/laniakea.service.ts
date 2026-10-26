@@ -36,7 +36,7 @@ const FIRST_STEPS = PLANET_LIST[0].lessons;
 
 // A shorter day lets a recap be tried out on dev without waiting for it; prod
 // always counts real days.
-function dayMs(): number {
+export function dayMs(): number {
   const override = Number(process.env.LANIAKEA_DAY_MS);
   return !config.isProduction && override > 0 ? override : DAY_MS;
 }
@@ -163,6 +163,12 @@ function lessonsDone(slug: string, done: Set<string>): boolean {
 
 function unlocked(done: Set<string>): boolean {
   return FIRST_STEPS.every((lesson) => done.has(lesson));
+}
+
+// The board can show the planet's recap to the student: the game is open, the
+// slug is still a planet and the planet can be flown to.
+export function onBoard(slug: string, done: Set<string>, quizzes: Set<string>): boolean {
+  return PLANETS.has(slug) && unlocked(done) && lessonsDone(slug, done) && quizzes.has(slug);
 }
 
 export async function getState(userId: number, now = new Date()): Promise<LaniakeaState> {

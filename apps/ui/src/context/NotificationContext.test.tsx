@@ -51,6 +51,7 @@ function Probe() {
     loadMore,
     markAllRead,
     markOneRead,
+    noteRead,
   } = useNotifications();
   return (
     <div>
@@ -64,6 +65,8 @@ function Probe() {
       <button onClick={() => loadMore()}>more</button>
       <button onClick={() => markAllRead()}>all</button>
       <button onClick={() => markOneRead(100)}>one</button>
+      <button onClick={() => noteRead(100)}>note</button>
+      <span data-testid="read">{items.map((n) => n.readAt ?? 'unread').join(',')}</span>
     </div>
   );
 }
@@ -208,6 +211,21 @@ describe('NotificationContext', () => {
     });
     renderProvider();
     await screen.findByTestId('count');
+    fireEvent.click(screen.getByText('one'));
+    expect(h.service.markOneRead).not.toHaveBeenCalled();
+  });
+
+  it('noteRead shows one read and leaves the count and the server alone', async () => {
+    h.service.getNotifications.mockResolvedValue({
+      items: [notif({ id: 100 }), notif({ id: 99, readAt: '2026-07-17T12:00:00.000Z' })],
+      unreadCount: 1,
+    });
+    renderProvider();
+    await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('2'));
+    fireEvent.click(screen.getByText('note'));
+    expect(screen.getByTestId('read')).not.toHaveTextContent('unread');
+    expect(screen.getByTestId('read')).toHaveTextContent(/,2026-07-17T12:00:00.000Z$/);
+    expect(screen.getByTestId('unread')).toHaveTextContent('1');
     fireEvent.click(screen.getByText('one'));
     expect(h.service.markOneRead).not.toHaveBeenCalled();
   });

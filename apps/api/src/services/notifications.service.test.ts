@@ -90,6 +90,13 @@ describe('notifications.service notify', () => {
     expect(mockRepo.collapse).toHaveBeenCalledWith(existing, 4, { count: 2 });
   });
 
+  it('replaces the count of the unread row with one the event carries', async () => {
+    const existing = row({ id: 9, data: { count: 2 } });
+    mockRepo.findUnreadFor.mockResolvedValue(existing);
+    await notify({ recipientIds: [10], type: 'LANIAKEA_RECAP', entityId: 0, data: { count: 5 } });
+    expect(mockRepo.collapse).toHaveBeenCalledWith(existing, null, { count: 5 });
+  });
+
   it('collapses with a null actor when the event has no actorId', async () => {
     const existing = row({ id: 9, data: { title: 'Thread', count: 1 } });
     mockRepo.findUnreadFor.mockResolvedValue(existing);
@@ -107,16 +114,14 @@ describe('notifications.service notify', () => {
   it('never throws when the repository fails', async () => {
     mockRepo.create.mockRejectedValue(new Error('db down'));
     const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
-    await expect(
-      notify({ recipientIds: [10], type: 'FORUM_REPLY', entityId: 5 }),
-    ).resolves.toBeUndefined();
+    await expect(notify({ recipientIds: [10], type: 'FORUM_REPLY', entityId: 5 })).resolves.toBe(0);
     spy.mockRestore();
   });
 
   it('one recipient failing does not block the others', async () => {
     mockRepo.create.mockRejectedValueOnce(new Error('db down')).mockResolvedValue(row());
     const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
-    await notify({ recipientIds: [10, 11], type: 'FORUM_REPLY', entityId: 5 });
+    expect(await notify({ recipientIds: [10, 11], type: 'FORUM_REPLY', entityId: 5 })).toBe(1);
     expect(mockRepo.create).toHaveBeenCalledTimes(2);
     expect(mockWs.pushToUser).toHaveBeenCalledWith(11, expect.objectContaining({ type: 'new' }));
     spy.mockRestore();

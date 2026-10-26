@@ -418,7 +418,9 @@
     "ticketReply": "New reply on ticket \"{{title}}\"",
     "status": "Ticket \"{{title}}\" is now {{status}}",
     "connectionRequest": "{{name}} wants to connect with you",
-    "connectionAccepted": "{{name}} accepted your connection request"
+    "connectionAccepted": "{{name}} accepted your connection request",
+    "laniakeaRecap_one": "A Laniakea recap is open",
+    "laniakeaRecap_other": "{{count}} Laniakea recaps are open"
   },
   "courses": {
     "lessons_one": "lesson",
