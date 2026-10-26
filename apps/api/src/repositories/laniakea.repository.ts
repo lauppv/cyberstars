@@ -95,6 +95,7 @@ export function withPlanet<T>(
 
 export interface RecapPlanet {
   userId: number;
+  lessonSlug: string;
   level: number;
   passedAt: Date;
 }
@@ -104,9 +105,9 @@ export interface RecapPlanet {
 export async function listRecapPlanets(courseKey: string, below: number): Promise<RecapPlanet[]> {
   const rows = await prisma.laniakeaPlanet.findMany({
     where: { courseKey, level: { gte: 1, lt: below }, passedAt: { not: null } },
-    select: { userId: true, level: true, passedAt: true },
+    select: { userId: true, lessonSlug: true, level: true, passedAt: true },
   });
-  return rows.map((r) => ({ userId: r.userId, level: r.level, passedAt: r.passedAt! }));
+  return rows.map((r) => ({ ...r, passedAt: r.passedAt! }));
 }
 
 export interface PlayerRow {

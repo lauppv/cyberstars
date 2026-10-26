@@ -165,6 +165,12 @@ function unlocked(done: Set<string>): boolean {
   return FIRST_STEPS.every((lesson) => done.has(lesson));
 }
 
+// The board can show the planet's recap to the student: the game is open, the
+// slug is still a planet and the planet can be flown to.
+export function onBoard(slug: string, done: Set<string>, quizzes: Set<string>): boolean {
+  return PLANETS.has(slug) && unlocked(done) && lessonsDone(slug, done) && quizzes.has(slug);
+}
+
 export async function getState(userId: number, now = new Date()): Promise<LaniakeaState> {
   const [done, rows] = await Promise.all([
     completedLessons(userId),

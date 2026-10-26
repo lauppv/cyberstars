@@ -164,8 +164,11 @@ describe('Laniakea recaps in the bell', () => {
 
   const bell = async (agent: Agent) => (await agent.get('/api/notifications').expect(200)).body;
 
+  // A student who has done the lessons of every planet above
+  const doneAll = () => student([...FIRST_STEPS, 'lists', 'bubble-sort', 'if-else']);
+
   it('tells a student once a day how many recaps are open, and opening the game reads it', async () => {
-    const { agent, userId } = await student();
+    const { agent, userId } = await doneAll();
     const now = Date.now();
     await planets(userId, now);
 
@@ -195,7 +198,7 @@ describe('Laniakea recaps in the bell', () => {
   });
 
   it('tells nothing of recaps open when the student last opened the game', async () => {
-    const { agent, userId } = await student();
+    const { agent, userId } = await doneAll();
     const now = Date.now();
     await planets(userId, now);
     await agent.post('/api/laniakea/seen').expect(204);
@@ -205,7 +208,7 @@ describe('Laniakea recaps in the bell', () => {
   });
 
   it('replaces an unread notification from an earlier day instead of adding one', async () => {
-    const { agent, userId } = await student();
+    const { agent, userId } = await doneAll();
     const now = Date.now();
     await planets(userId, now);
 
@@ -217,8 +220,34 @@ describe('Laniakea recaps in the bell', () => {
     expect(page.items[0].data).toEqual({ count: 3 });
   });
 
+  it('leaves out a row whose lesson is no longer a planet', async () => {
+    const { agent, userId } = await doneAll();
+    const now = Date.now();
+    await planets(userId, now);
+    // Conquered before Variables joined First steps
+    await prisma.laniakeaPlanet.create({
+      data: {
+        userId,
+        courseKey: 'python',
+        lessonSlug: 'variables-str',
+        level: 1,
+        passedAt: new Date(now - 2 * DAY_MS),
+      },
+    });
+    expect(await tellOpenRecaps(new Date(now))).toBe(1);
+    expect((await bell(agent)).items[0].data).toEqual({ count: 2 });
+  });
+
+  it('tells nothing while the game is locked for the student', async () => {
+    const { agent, userId } = await student(['print', 'lists', 'bubble-sort']);
+    const now = Date.now();
+    await planets(userId, now);
+    expect(await tellOpenRecaps(new Date(now))).toBe(0);
+    expect((await bell(agent)).items).toHaveLength(0);
+  });
+
   it('tells nothing of a recap the student already passed', async () => {
-    const { agent, userId } = await student();
+    const { agent, userId } = await doneAll();
     const now = Date.now();
     // Passed its 1-day recap an hour ago, so the next opens in two days
     await prisma.laniakeaPlanet.create({

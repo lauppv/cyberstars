@@ -7,10 +7,14 @@ const mockRepo = {
   markSeen: vi.fn(),
   markNotified: vi.fn(),
 };
+const mockProgress = { getCompletedOf: vi.fn() };
 const mockNotifications = { notify: vi.fn(), markEntityRead: vi.fn() };
+const mockLaniakea = { dayMs: () => DAY_MS, onBoard: vi.fn() };
 vi.mock('../repositories/laniakea.repository.js', () => mockRepo);
+vi.mock('../repositories/progress.repository.js', () => mockProgress);
 vi.mock('./notifications.service.js', () => mockNotifications);
-vi.mock('./laniakea.service.js', () => ({ dayMs: () => DAY_MS }));
+vi.mock('./laniakea.service.js', () => mockLaniakea);
+vi.mock('./laniakea-quiz.js', () => ({ quizSlugs: () => ['print', 'lists'] }));
 vi.mock('./visits.service.js', async () => {
   const format = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Bucharest' });
   return { today: (now: Date) => format.format(now) };
@@ -23,8 +27,9 @@ const { recapsToTell, tellOpenRecaps, markSeen, scheduleRecapBell } =
 const NOW = new Date('2026-11-10T10:00:00Z');
 const hoursAgo = (h: number) => new Date(NOW.getTime() - h * 60 * 60 * 1000);
 // A planet at `level` whose recap opened `h` hours ago (negative: still to open)
-const openedAgo = (level: number, h: number, userId = 1) => ({
+const openedAgo = (level: number, h: number, userId = 1, lessonSlug = `planet-${level}`) => ({
   userId,
+  lessonSlug,
   level,
   passedAt: new Date(hoursAgo(h).getTime() - [1, 2, 4, 8, 16, 32, 64][level - 1] * DAY_MS),
 });
@@ -32,6 +37,9 @@ const openedAgo = (level: number, h: number, userId = 1) => ({
 beforeEach(() => {
   vi.clearAllMocks();
   mockRepo.listPlayers.mockResolvedValue([]);
+  mockProgress.getCompletedOf.mockResolvedValue([]);
+  mockLaniakea.onBoard.mockReturnValue(true);
+  mockNotifications.notify.mockResolvedValue(1);
 });
 
 describe('recapsToTell', () => {
@@ -110,6 +118,66 @@ describe('tellOpenRecaps', () => {
       entityId: 0,
       data: { count: 2 },
     });
+  });
+
+  it('reads the lessons only of the students who may have something to tell', async () => {
+    mockRepo.listRecapPlanets.mockResolvedValue([openedAgo(1, 2, 1), openedAgo(1, -2, 2)]);
+    await tellOpenRecaps(NOW);
+    expect(mockProgress.getCompletedOf).toHaveBeenCalledWith([1], 'python');
+  });
+
+  it('reads no lessons when nobody has a recap to tell of', async () => {
+    mockRepo.listRecapPlanets.mockResolvedValue([openedAgo(1, -2, 1)]);
+    expect(await tellOpenRecaps(NOW)).toBe(0);
+    expect(mockProgress.getCompletedOf).not.toHaveBeenCalled();
+  });
+
+  it('counts only the planets the board shows the student', async () => {
+    mockRepo.listRecapPlanets.mockResolvedValue([
+      openedAgo(1, 2, 1, 'print'),
+      openedAgo(2, 3, 1, 'variables'),
+      openedAgo(1, 4, 2, 'variables'),
+    ]);
+    mockProgress.getCompletedOf.mockResolvedValue([
+      { userId: 1, lessonSlug: 'print' },
+      { userId: 2, lessonSlug: 'lists' },
+    ]);
+    mockLaniakea.onBoard.mockImplementation((slug: string) => slug === 'print');
+    expect(await tellOpenRecaps(NOW)).toBe(1);
+    expect(mockLaniakea.onBoard).toHaveBeenCalledWith(
+      'print',
+      new Set(['print']),
+      new Set(['print', 'lists']),
+    );
+    expect(mockLaniakea.onBoard).toHaveBeenCalledWith(
+      'variables',
+      new Set(['lists']),
+      new Set(['print', 'lists']),
+    );
+    expect(mockNotifications.notify).toHaveBeenCalledTimes(1);
+    expect(mockNotifications.notify).toHaveBeenCalledWith(
+      expect.objectContaining({ recipientIds: [1], data: { count: 1 } }),
+    );
+  });
+
+  it('leaves a student untold when the notification did not go in, so the next hour tries again', async () => {
+    mockRepo.listRecapPlanets.mockResolvedValue([openedAgo(1, 2, 1)]);
+    mockNotifications.notify.mockResolvedValue(0);
+    expect(await tellOpenRecaps(NOW)).toBe(0);
+    expect(mockRepo.markNotified).not.toHaveBeenCalled();
+  });
+
+  it('goes on to the next student when one fails', async () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockRepo.listRecapPlanets.mockResolvedValue([openedAgo(1, 2, 1), openedAgo(1, 2, 2)]);
+    mockRepo.markNotified.mockRejectedValueOnce(new Error('user gone'));
+    expect(await tellOpenRecaps(NOW)).toBe(1);
+    expect(mockRepo.markNotified).toHaveBeenCalledWith(2, NOW);
+    expect(error).toHaveBeenCalledWith(
+      '[laniakea] recap bell failed for user 1:',
+      expect.any(Error),
+    );
+    error.mockRestore();
   });
 });
 
