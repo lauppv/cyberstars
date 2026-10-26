@@ -1335,7 +1335,8 @@
     "decline": "Refuză",
     "remove": "Elimină",
     "cancel": "Anulează",
-    "pending": "În așteptare"
+    "pending": "În așteptare",
+    "loadFailed": "Conexiunile tale nu s-au putut încărca."
   },
   "settings": {
     "preferences": "Preferințe",

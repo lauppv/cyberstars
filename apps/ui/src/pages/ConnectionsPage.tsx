@@ -1,17 +1,25 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { LoadError } from '../components/ui/LoadError';
 import { Avatar } from '../components/ui/Avatar';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as connectionsService from '../services/connectionsService';
+import { ApiClientError } from '../services/apiClient';
 import type {
   AcceptedConnection,
   ConnectionsOverview,
   PendingConnection,
 } from '@cyberstars/shared/connections';
+
+/** The server's reason in the page's language, else a general one. */
+function errMsg(err: unknown): string {
+  return err instanceof Error && err.message ? err.message : i18next.t('common.somethingWrong');
+}
 
 function Row({
   userId,
@@ -67,13 +75,18 @@ export function ConnectionsPage() {
 
   const [data, setData] = useState<ConnectionsOverview | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [busy, setBusy] = useState<number | null>(null);
+  const [actionError, setActionError] = useState<string | null>(null);
 
   const load = useCallback(() => {
     return connectionsService
       .getOverview()
-      .then(setData)
-      .catch(() => setData(null));
+      .then((overview) => {
+        setData(overview);
+        setLoadFailed(false);
+      })
+      .catch(() => setLoadFailed(true));
   }, []);
 
   useEffect(() => {
@@ -85,11 +98,23 @@ export function ConnectionsPage() {
     load().finally(() => setLoading(false));
   }, [authLoading, canAccess, navigate, load]);
 
+  const retry = () => {
+    setActionError(null);
+    setLoading(true);
+    load().finally(() => setLoading(false));
+  };
+
   const act = async (id: number, fn: (id: number) => Promise<unknown>) => {
     setBusy(id);
     try {
       await fn(id);
+      setActionError(null);
       await load();
+    } catch (err) {
+      setActionError(errMsg(err));
+      // 404: the request or connection is gone (withdrawn, already answered,
+      // removed by the other person), so the row on screen is stale
+      if (err instanceof ApiClientError && err.status === 404) await load();
     } finally {
       setBusy(null);
     }
@@ -107,10 +132,17 @@ export function ConnectionsPage() {
       <Topbar />
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[520px] flex flex-col gap-5">
+          {!loading && actionError && (
+            <div role="alert" className="panel px-6 py-3 text-[12px] text-[var(--error)]">
+              {actionError}
+            </div>
+          )}
           {loading ? (
             <div className="flex items-center justify-center py-16">
               <LoadingSpinner />
             </div>
+          ) : loadFailed ? (
+            <LoadError text={t('connections.loadFailed')} onRetry={retry} />
           ) : isEmpty ? (
             <div className="text-center text-[var(--text3)] py-16 panel px-6">
               {t('connections.empty')}

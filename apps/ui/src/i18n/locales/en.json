@@ -1285,7 +1285,8 @@
     "decline": "Decline",
     "remove": "Remove",
     "cancel": "Cancel",
-    "pending": "Pending"
+    "pending": "Pending",
+    "loadFailed": "Your connections couldn't be loaded."
   },
   "settings": {
     "preferences": "Preferences",
