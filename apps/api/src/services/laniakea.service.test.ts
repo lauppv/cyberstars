@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import type { PlanetRow, StoredQuiz } from '../repositories/laniakea.repository.js';
+import type { CountedAnswer, PlanetRow, StoredQuiz } from '../repositories/laniakea.repository.js';
 
 const mockProgress = { getByCourse: vi.fn() };
-const mockRepo = { listPlanets: vi.fn(), withPlanet: vi.fn() };
+const mockRepo = { listPlanets: vi.fn(), withPlanet: vi.fn(), listQuestionStats: vi.fn() };
 const mockQuiz = { loadQuiz: vi.fn(), quizSlugs: vi.fn() };
 
 vi.mock('../repositories/progress.repository.js', () => mockProgress);
@@ -60,14 +60,17 @@ function planet(over: Partial<PlanetRow> = {}): PlanetRow {
   };
 }
 
-// The planet the transaction sees, and what it decided to write
+// The planet the transaction sees, what it decided to write and the answers it
+// counted
 let row: PlanetRow;
 let written: Partial<PlanetRow> | null;
+let counted: CountedAnswer[];
 
 beforeEach(() => {
   vi.clearAllMocks();
   row = planet();
   written = null;
+  counted = [];
   mockProgress.getByCourse.mockResolvedValue(done(...FIRST_STEPS));
   mockQuiz.loadQuiz.mockImplementation((_slug: string, lang: string) => (lang === 'ro' ? RO : EN));
   mockQuiz.quizSlugs.mockReturnValue(['print', 'if-else']);
@@ -77,10 +80,15 @@ beforeEach(() => {
       _u: number,
       _c: string,
       _s: string,
-      decide: (r: PlanetRow) => { change: Partial<PlanetRow> | null; result: unknown },
+      decide: (r: PlanetRow) => {
+        change: Partial<PlanetRow> | null;
+        counted?: CountedAnswer;
+        result: unknown;
+      },
     ) => {
-      const { change, result } = decide(row);
+      const { change, counted: answer, result } = decide(row);
       written = change;
+      if (answer) counted.push(answer);
       if (change) row = { ...row, ...change };
       return result;
     },
@@ -384,6 +392,29 @@ describe('answerQuiz', () => {
 
     expect(again).toMatchObject({ choice: right[0], correct: true });
     expect(written).toBeNull();
+    expect(counted).toHaveLength(1);
+  });
+
+  it("counts each answer for its question by the option's place in the file", async () => {
+    const right = await started();
+    const { ids, orders } = row.quiz!;
+
+    await service.answerQuiz(4, 'print', 0, right[0], NOW);
+    await service.answerQuiz(4, 'print', 1, wrong(right[1]), NOW);
+
+    expect(counted).toEqual([
+      { questionId: ids[0], pick: 0, correct: true },
+      { questionId: ids[1], pick: orders[1][wrong(right[1])], correct: false },
+    ]);
+  });
+
+  it('counts the answer that ends the test too', async () => {
+    const right = await started();
+    for (let i = 0; i < 5; i++) await service.answerQuiz(4, 'print', i, wrong(right[i]), NOW);
+
+    expect(row.quiz).toBeNull();
+    expect(counted).toHaveLength(5);
+    expect(counted.every((c) => !c.correct)).toBe(true);
   });
 
   it('takes the questions in order only', async () => {
@@ -441,5 +472,110 @@ describe('answerQuiz', () => {
     await expect(service.answerQuiz(4, 'print', 0, 0, NOW)).rejects.toMatchObject({
       statusCode: 404,
     });
+  });
+});
+
+describe('missedQuestions', () => {
+  const stat = (lessonSlug: string, questionId: string, answered: number, wrong: number) => ({
+    lessonSlug,
+    questionId,
+    answered,
+    wrong,
+    picks: [answered - wrong, wrong, 0, 0],
+  });
+
+  it('reads the questions answered at least 20 times of the course', async () => {
+    mockRepo.listQuestionStats.mockResolvedValue([]);
+
+    expect(await service.missedQuestions('en')).toEqual([]);
+
+    expect(mockRepo.listQuestionStats).toHaveBeenCalledWith('python', 20);
+  });
+
+  it('puts the highest share wrong first, then the one answered more', async () => {
+    mockRepo.listQuestionStats.mockResolvedValue([
+      stat('print', 'q1', 40, 10),
+      stat('print', 'q2', 20, 15),
+      stat('print', 'q3', 20, 5),
+      stat('if-else', 'q1', 40, 30),
+    ]);
+
+    const list = await service.missedQuestions('en');
+
+    expect(list.map((q) => [q.slug, q.id])).toEqual([
+      ['if-else', 'q1'],
+      ['print', 'q2'],
+      ['print', 'q1'],
+      ['print', 'q3'],
+    ]);
+  });
+
+  it('shows each question in the page language, its options in the file order', async () => {
+    mockRepo.listQuestionStats.mockResolvedValue([stat('print', 'q1', 20, 12)]);
+
+    const [q] = await service.missedQuestions('ro');
+
+    expect(q).toEqual({
+      slug: 'print',
+      id: 'q1',
+      text: 'Intrebarea 1?',
+      code: 'print(1)',
+      output: null,
+      options: ['right-1', 'w1-1', 'w2-1', 'w3-1'],
+      answer: 0,
+      picks: [8, 12, 0, 0],
+      answered: 20,
+      wrong: 12,
+    });
+    expect(mockQuiz.loadQuiz).toHaveBeenCalledWith('print', 'ro');
+  });
+
+  it('shows in English a question the page language file lacks', async () => {
+    mockQuiz.loadQuiz.mockImplementation((_slug: string, lang: string) =>
+      lang === 'ro' ? spec('Intrebarea', 1) : EN,
+    );
+    mockRepo.listQuestionStats.mockResolvedValue([
+      stat('print', 'q1', 20, 12),
+      stat('print', 'q2', 20, 10),
+    ]);
+
+    const list = await service.missedQuestions('ro');
+
+    expect(list.map((q) => q.text)).toEqual(['Intrebarea 1?', 'Question 2?']);
+  });
+
+  it('reads each planet once and leaves out questions and planets that are gone', async () => {
+    mockRepo.listQuestionStats.mockResolvedValue([
+      stat('print', 'q1', 20, 1),
+      stat('print', 'q99', 20, 20),
+      stat('print', 'q2', 20, 2),
+      stat('no-such-planet', 'q1', 20, 20),
+    ]);
+
+    const list = await service.missedQuestions('en');
+
+    expect(list.map((q) => q.id)).toEqual(['q2', 'q1']);
+    expect(mockQuiz.loadQuiz).toHaveBeenCalledTimes(1);
+  });
+
+  it('leaves out a planet whose questions are gone', async () => {
+    mockQuiz.loadQuiz.mockReturnValue(null);
+    mockRepo.listQuestionStats.mockResolvedValue([stat('print', 'q1', 20, 20)]);
+
+    expect(await service.missedQuestions('en')).toEqual([]);
+  });
+
+  it('keeps the 50 missed most', async () => {
+    const pool = spec('Question', 60);
+    mockQuiz.loadQuiz.mockReturnValue(pool);
+    mockRepo.listQuestionStats.mockResolvedValue(
+      pool.questions.map((q, i) => stat('print', q.id, 60, i)),
+    );
+
+    const list = await service.missedQuestions('en');
+
+    expect(list).toHaveLength(50);
+    expect(list[0].id).toBe('q60');
+    expect(list[49].id).toBe('q11');
   });
 });

@@ -227,13 +227,14 @@ Once an hour the server tells each student in the bell how many of their recaps 
 
 ### Admin and visits
 
-| Method | Endpoint                   | Auth     | Description                                                   |
-| ------ | -------------------------- | -------- | ------------------------------------------------------------- |
-| GET    | `/api/admin/stats`         | Admin    | Platform stats (cached 5 min) and live code-execution metrics |
-| GET    | `/api/admin/visits`        | Admin    | Visitors a day, top pages, sources and clicks over a range    |
-| GET    | `/api/admin/visits/guests` | Admin    | Guest visits with their steps, paged                          |
-| POST   | `/api/visits`              | Optional | The app reports a page it showed; bots are left out           |
-| POST   | `/api/visits/steps`        | Optional | A guest's clicks and scrolls on the page they're on           |
+| Method | Endpoint                        | Auth     | Description                                                   |
+| ------ | ------------------------------- | -------- | ------------------------------------------------------------- |
+| GET    | `/api/admin/stats`              | Admin    | Platform stats (cached 5 min) and live code-execution metrics |
+| GET    | `/api/admin/visits`             | Admin    | Visitors a day, top pages, sources and clicks over a range    |
+| GET    | `/api/admin/visits/guests`      | Admin    | Guest visits with their steps, paged                          |
+| GET    | `/api/admin/laniakea/questions` | Admin    | The Laniakea questions students miss most                     |
+| POST   | `/api/visits`                   | Optional | The app reports a page it showed; bots are left out           |
+| POST   | `/api/visits/steps`             | Optional | A guest's clicks and scrolls on the page they're on           |
 
 Visits keep no IP and no guest id: a visitor is a hash of the day's salt, the IP and the user agent, and the salt is gone with its day.
 
@@ -249,6 +250,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma), cam
 - **TutorConversation**, **TutorMessage**, **UsageWindow**: the tutor's conversations and the usage limits
 - **LaniakeaPlanet**: a student's planet: level, last pass, questions seen and the test going on
 - **LaniakeaPlayer**: when a student last opened the game and was last told of open recaps
+- **LaniakeaQuestionStat**: how often each Laniakea question was answered, missed and each option picked, without who answered
 - **PageVisit**, **VisitSalt**, **VisitTotal**, **GuestVisit**, **VisitStep**: visitor counts
 
 ## Code execution

@@ -1,15 +1,21 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { Request, Response } from 'express';
 
-const mockService = { getState: vi.fn(), startQuiz: vi.fn(), answerQuiz: vi.fn() };
+const mockService = {
+  getState: vi.fn(),
+  startQuiz: vi.fn(),
+  answerQuiz: vi.fn(),
+  missedQuestions: vi.fn(),
+};
 const mockRecaps = { markSeen: vi.fn() };
 vi.mock('../services/laniakea.service.js', () => mockService);
 vi.mock('../services/laniakea-recaps.service.js', () => mockRecaps);
 
-const { answerQuiz, getState, markSeen, startQuiz } = await import('./laniakea.controller.js');
+const { answerQuiz, getMissedQuestions, getState, markSeen, startQuiz } =
+  await import('./laniakea.controller.js');
 
-function req(params: Record<string, string> = {}, body: object = {}): Request {
-  return { user: { id: 7 }, params, body } as unknown as Request;
+function req(params: Record<string, string> = {}, body: object = {}, query = {}): Request {
+  return { user: { id: 7 }, params, body, query } as unknown as Request;
 }
 function res(): Response {
   return {
@@ -57,17 +63,28 @@ describe('laniakea controller', () => {
     expect(r.end).toHaveBeenCalled();
   });
 
+  it('lists the most missed questions in the page language, English unless it is Romanian', async () => {
+    mockService.missedQuestions.mockResolvedValue([{ id: 'q1' }]);
+    const r = res();
+    await getMissedQuestions(req({}, {}, { lang: 'ro' }), r, vi.fn());
+    await getMissedQuestions(req({}, {}, { lang: 'fr' }), res(), vi.fn());
+    expect(mockService.missedQuestions.mock.calls).toEqual([['ro'], ['en']]);
+    expect(r.json).toHaveBeenCalledWith([{ id: 'q1' }]);
+  });
+
   it('passes every failure on', async () => {
     const boom = new Error('boom');
     mockService.getState.mockRejectedValue(boom);
     mockService.startQuiz.mockRejectedValue(boom);
     mockService.answerQuiz.mockRejectedValue(boom);
     mockRecaps.markSeen.mockRejectedValue(boom);
+    mockService.missedQuestions.mockRejectedValue(boom);
     const next = vi.fn();
     await getState(req(), res(), next);
     await startQuiz(req({ slug: 'print' }), res(), next);
     await answerQuiz(req({ slug: 'print' }, { index: 0, choice: 0 }), res(), next);
     await markSeen(req(), res(), next);
-    expect(next.mock.calls).toEqual([[boom], [boom], [boom], [boom]]);
+    await getMissedQuestions(req(), res(), next);
+    expect(next.mock.calls).toEqual([[boom], [boom], [boom], [boom], [boom]]);
   });
 });

@@ -344,6 +344,21 @@ model LaniakeaPlayer {
   @@map("laniakea_players")
 }
 
+// How a Laniakea question does, for the admin's list of the most missed ones:
+// its answers counted without who gave them. `picks` counts each option by its
+// place in the question's file, so the shuffle of each test doesn't matter.
+model LaniakeaQuestionStat {
+  courseKey  String @map("course_key") @db.VarChar(50)
+  lessonSlug String @map("lesson_slug") @db.VarChar(100)
+  questionId String @map("question_id") @db.VarChar(100)
+  answered   Int    @default(0)
+  wrong      Int    @default(0)
+  picks      Int[]  @default([0, 0, 0, 0])
+
+  @@id([courseKey, lessonSlug, questionId])
+  @@map("laniakea_question_stats")
+}
+
 model SupportTicket {
   id        Int          @id @default(autoincrement())
   userId    Int          @map("user_id")

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createAuthenticatedAgent, userIdFor } from './helpers.js';
+import { agent as guest, createAuthenticatedAgent, userIdFor } from './helpers.js';
 import { prisma } from '../../src/config/db.js';
 import { lessons } from '@cyberstars/content/curriculum';
 import { DAY_MS, LANIAKEA_COURSE, planetLessons } from '@cyberstars/shared/laniakea';
@@ -111,6 +111,53 @@ describe('Laniakea', () => {
     const row = await prisma.laniakeaPlanet.findFirstOrThrow({ where: { userId } });
     expect((row.quiz as unknown as StoredQuiz).answers).toHaveLength(1);
     expect(row.seen).toHaveLength(1);
+  });
+
+  it("counts each question's answers and picks without who gave them, a resent one once", async () => {
+    const one = await student();
+    const two = await student();
+    for (const s of [one, two]) {
+      await s.agent.post('/api/laniakea/print/quiz').send({ lang: 'en' }).expect(200);
+    }
+    // Both students answer a question the first student got first: the first
+    // right, twice over, the second with an option they didn't need
+    const [id] = (
+      (await prisma.laniakeaPlanet.findFirstOrThrow({ where: { userId: one.userId } }))
+        .quiz as unknown as StoredQuiz
+    ).ids;
+    const twoQuiz = (
+      await prisma.laniakeaPlanet.findFirstOrThrow({ where: { userId: two.userId } })
+    ).quiz as unknown as StoredQuiz;
+    await prisma.laniakeaPlanet.updateMany({
+      where: { userId: two.userId },
+      data: { quiz: { ...twoQuiz, ids: [id, ...twoQuiz.ids.filter((q) => q !== id).slice(0, 9)] } },
+    });
+    const right = answers.get(id)!;
+    const wrongPick = (right + 1) % 4;
+    const [oneRight] = await rightChoices(one.userId);
+    const twoOrder = (
+      (await prisma.laniakeaPlanet.findFirstOrThrow({ where: { userId: two.userId } }))
+        .quiz as unknown as StoredQuiz
+    ).orders[0];
+
+    await answer(one.agent, 0, oneRight).expect(200);
+    await answer(one.agent, 0, oneRight).expect(200);
+    await answer(two.agent, 0, twoOrder.indexOf(wrongPick)).expect(200);
+
+    const stat = await prisma.laniakeaQuestionStat.findUniqueOrThrow({
+      where: {
+        courseKey_lessonSlug_questionId: {
+          courseKey: 'python',
+          lessonSlug: 'print',
+          questionId: id,
+        },
+      },
+    });
+    const picks = [0, 0, 0, 0];
+    picks[right] = 1;
+    picks[wrongPick] = 1;
+    expect(stat).toMatchObject({ answered: 2, wrong: 1, picks });
+    expect(Object.keys(stat)).not.toContain('userId');
   });
 
   it('ends a test at the fifth wrong answer and holds the planet for five minutes', async () => {
@@ -261,5 +308,47 @@ describe('Laniakea recaps in the bell', () => {
     });
     expect(await tellOpenRecaps(new Date(now))).toBe(0);
     expect((await bell(agent)).items).toHaveLength(0);
+  });
+});
+
+describe('Most missed Laniakea questions', () => {
+  async function admin() {
+    const { agent, email } = await createAuthenticatedAgent();
+    await prisma.user.update({ where: { id: await userIdFor(email) }, data: { role: 'ADMIN' } });
+    return agent;
+  }
+  const [first, second] = loadQuiz('print', 'ro')!.questions;
+
+  it('lists to admins only the questions answered 20 times, the most missed first', async () => {
+    await prisma.laniakeaQuestionStat.createMany({
+      data: [
+        { courseKey: 'python', lessonSlug: 'print', questionId: first.id, answered: 20, wrong: 5 },
+        {
+          courseKey: 'python',
+          lessonSlug: 'print',
+          questionId: second.id,
+          answered: 25,
+          wrong: 20,
+        },
+        { courseKey: 'python', lessonSlug: 'if-else', questionId: 'q1', answered: 19, wrong: 19 },
+      ],
+    });
+
+    const res = await (await admin()).get('/api/admin/laniakea/questions?lang=ro').expect(200);
+
+    expect(res.body.map((q: { id: string }) => q.id)).toEqual([second.id, first.id]);
+    expect(res.body[0]).toMatchObject({
+      slug: 'print',
+      text: second.text,
+      options: second.options,
+      answer: second.answer,
+      answered: 25,
+      wrong: 20,
+      picks: [0, 0, 0, 0],
+    });
+
+    const { agent: student } = await createAuthenticatedAgent();
+    await student.get('/api/admin/laniakea/questions').expect(403);
+    await guest().get('/api/admin/laniakea/questions').expect(401);
   });
 });
