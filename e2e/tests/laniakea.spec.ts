@@ -44,8 +44,10 @@ async function openGame(page: Page, done: number) {
   return slugs;
 }
 
-// Through the intro, then First steps from the board, straight ahead of the ship
-async function flyToFirstSteps(page: Page) {
+// Through the intro, then First steps from the board, straight ahead of the
+// ship, landed on while still flying at it, since the ship passes through
+// planets; returns the test it opens
+async function landOnFirstSteps(page: Page, slug: string) {
   await page.getByRole('button', { name: 'Take the helm' }).click();
   const board = page.getByRole('region', { name: 'Board' });
   await board.getByRole('button', { name: /First steps/ }).click();
@@ -56,19 +58,19 @@ async function flyToFirstSteps(page: Page) {
   await page.keyboard.down('Shift');
   await page.keyboard.down('w');
   await expect(land).toBeVisible({ timeout: 60_000 });
+  const opened = page.waitForResponse(
+    (r) => r.url().endsWith(`/api/laniakea/${slug}/quiz`) && r.request().method() === 'POST',
+  );
+  await land.click();
   await page.keyboard.up('w');
   await page.keyboard.up('Shift');
-  return land;
+  return (await (await opened).json()) as { questions: Question[] };
 }
 
 // Lands and answers the test's questions, right ones while `right` says so
 async function takeTest(page: Page, slug: string, right: (index: number) => boolean) {
   const answers = rightOptions(slug);
-  const opened = page.waitForResponse(
-    (r) => r.url().endsWith(`/api/laniakea/${slug}/quiz`) && r.request().method() === 'POST',
-  );
-  await page.getByRole('button', { name: 'Land', exact: true }).click();
-  const { questions } = (await (await opened).json()) as { questions: Question[] };
+  const { questions } = await landOnFirstSteps(page, slug);
 
   const dialog = page.getByRole('dialog');
   for (let i = 0; ; i++) {
@@ -91,8 +93,6 @@ async function takeTest(page: Page, slug: string, right: (index: number) => bool
 
 test('conquers First steps with every answer right', async ({ page }) => {
   const [slug] = await openGame(page, 6);
-  await flyToFirstSteps(page);
-
   const dialog = await takeTest(page, slug, () => true);
   await expect(dialog.getByRole('heading', { name: 'Planet conquered' })).toBeVisible();
   await expect(dialog.getByText('10 right, 0 wrong')).toBeVisible();
@@ -104,8 +104,6 @@ test('conquers First steps with every answer right', async ({ page }) => {
 
 test('a test with five wrong answers holds the planet for another try', async ({ page }) => {
   const [slug] = await openGame(page, 6);
-  await flyToFirstSteps(page);
-
   const dialog = await takeTest(page, slug, () => false);
   await expect(dialog.getByRole('heading', { name: 'Not this time' })).toBeVisible();
   await expect(dialog.getByText('0 right, 5 wrong')).toBeVisible();

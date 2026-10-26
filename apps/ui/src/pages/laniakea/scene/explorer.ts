@@ -184,20 +184,6 @@ export function createExplorer(
     return { slug: best.slug, distance, inReach: distance < REACH };
   }
 
-  // A ship that flies at a planet stops outside its rings instead of passing
-  // through it, so the planet never fills the whole view.
-  function keepOutside() {
-    for (const p of planets) {
-      toPlanet.subVectors(camera.position, p.group.position);
-      const d = toPlanet.length();
-      const min = p.radius * 2.6;
-      if (d < min) {
-        camera.position.copy(p.group.position).addScaledVector(toPlanet.normalize(), min);
-        velocity.multiplyScalar(0.2);
-      }
-    }
-  }
-
   function updateArrow() {
     if (!target) {
       arrow.visible = false;
@@ -243,7 +229,6 @@ export function createExplorer(
     if (dir !== 0) targetVel.addScaledVector(fwd, dir * MAX_SPEED * (c.boost ? BOOST : 1));
     velocity.lerp(targetVel, 1 - Math.exp(-dtSec / (dir !== 0 ? ACCEL_TAU : DECEL_TAU)));
     if (velocity.lengthSq() > 1e-6) camera.position.addScaledVector(velocity, dtN);
-    keepOutside();
 
     skyStars.position.copy(camera.position);
     milkyGroup.position.copy(camera.position);
@@ -291,8 +276,11 @@ export function createExplorer(
     setTarget(slug) {
       target = slug ? (bySlug.get(slug) ?? null) : null;
     },
+    // the ship flies through planets, so it stops where it is while it doesn't
+    // fly: landed, paused or asked to leave
     setActive(active) {
       controls.setActive(active);
+      if (!active) velocity.set(0, 0, 0);
     },
     dispose() {
       destroyed = true;
