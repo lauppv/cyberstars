@@ -562,6 +562,12 @@
     "tutorPrivacyDesc": "When you chat with the tutor, your messages and the conversation so far, plus the page you're on, are sent to a third-party AI provider (Google Gemini) to write the answer. In a chat about a lesson or challenge, the statement, your code, the end of your last run and your last test result go with them. Don't paste personal or sensitive information into the chat or the editor. Your newest 50 conversations are saved, each with its newest 200 messages, until you delete them. The tutor works in 5-hour sessions worth between 15 and 30 messages. It's an optional aid: you can complete every lesson without it."
   },
   "profile": {
+    "laniakea": {
+      "conquered": "Planets conquered",
+      "forever": "Kept for good",
+      "keeper": "Keeper of {{planet}}",
+      "keeperHint": "You passed every recap of {{planet}}"
+    },
     "edit": "Edit",
     "avatarAlt": "Avatar",
     "removeAvatar": "Remove avatar",

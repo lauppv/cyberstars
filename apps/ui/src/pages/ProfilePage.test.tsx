@@ -23,6 +23,7 @@ vi.mock('../hooks/useGamification', () => ({
 }));
 vi.mock('../context/CurriculumContext', () => ({ useCurriculum: () => ({ courses: [] }) }));
 vi.mock('../context/ProgressContext', () => ({ useAllProgress: () => ({ progressMap: {} }) }));
+vi.mock('../services/laniakeaService', () => ({ getLaniakea: vi.fn().mockResolvedValue(null) }));
 vi.mock('../services/profileService', () => ({
   updateProfile: vi.fn(),
   uploadAvatar: vi.fn(),
