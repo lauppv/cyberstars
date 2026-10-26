@@ -224,14 +224,41 @@ describe('PublicProfilePage', () => {
     expect(mockGetPublicProfile).not.toHaveBeenCalled();
   });
 
-  it('resets the messaging state when opening a conversation fails', async () => {
+  it('says why opening a conversation failed and re-enables the button', async () => {
     loggedIn();
     mockOpenWith.mockRejectedValue(new Error('nope'));
     renderPage();
     const btn = (await screen.findByText('Send message')) as HTMLButtonElement;
     fireEvent.click(btn);
+    expect(await screen.findByRole('alert')).toHaveTextContent('nope');
     await waitFor(() => expect(btn).not.toBeDisabled());
     expect(mockNavigate).not.toHaveBeenCalledWith('/messages', expect.anything());
+  });
+
+  it('says something went wrong when opening a conversation fails with no reason', async () => {
+    loggedIn();
+    mockOpenWith.mockRejectedValue(new Error(''));
+    renderPage();
+    fireEvent.click(await screen.findByText('Send message'));
+    expect(await screen.findByRole('alert')).toHaveTextContent(
+      'Something went wrong. Please try again.',
+    );
+  });
+
+  it('clears the reason when the next try opens the conversation', async () => {
+    loggedIn();
+    mockOpenWith.mockRejectedValueOnce(new Error('nope'));
+    mockOpenWith.mockResolvedValueOnce({ id: 42 });
+    renderPage();
+    fireEvent.click(await screen.findByText('Send message'));
+    await screen.findByRole('alert');
+    fireEvent.click(screen.getByText('Send message'));
+    await waitFor(() =>
+      expect(mockNavigate).toHaveBeenCalledWith('/messages', {
+        state: { openConversationId: 42 },
+      }),
+    );
+    expect(screen.queryByRole('alert')).toBeNull();
   });
 
   it('sends a connection request and shows the pending state', async () => {
