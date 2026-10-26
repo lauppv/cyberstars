@@ -2,6 +2,7 @@
 import { addBackdrop } from './backdrop';
 import { addWonders } from './wonders';
 import { attachControls, type TouchParts } from './controls';
+import { createResolution } from './resolution';
 import {
   PLANET_LOOKS,
   addMarks,
@@ -105,9 +106,11 @@ export function createExplorer(
   camera.position.set(0, 0, 0);
   camera.rotation.order = 'YXZ';
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  // no antialiasing: it doubled the time of a frame without a GPU
+  const renderer = new THREE.WebGLRenderer({ antialias: false });
+  const resolution = createResolution(devicePixelRatio);
   renderer.setSize(innerWidth, innerHeight);
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setPixelRatio(resolution.ratio);
   renderer.setClearColor(0x05050d, 1);
   mount.appendChild(renderer.domElement);
 
@@ -214,6 +217,8 @@ export function createExplorer(
   function animate(now: number) {
     if (destroyed) return;
     rafId = requestAnimationFrame(animate);
+    const coarser = resolution.frame(now - lastT);
+    if (coarser !== null) renderer.setPixelRatio(coarser);
     const dt = Math.min(50, now - lastT);
     lastT = now;
     const dtN = dt / 16;
