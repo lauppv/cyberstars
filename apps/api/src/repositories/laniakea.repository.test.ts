@@ -3,6 +3,7 @@ import { Prisma } from '@prisma/client';
 
 const tx = {
   $queryRaw: vi.fn(),
+  $executeRaw: vi.fn(),
   laniakeaPlanet: { createMany: vi.fn(), update: vi.fn() },
 };
 
@@ -108,5 +109,41 @@ describe('withPlanet', () => {
 
     expect(tx.laniakeaPlanet.update.mock.calls[0][0].data).toEqual({ quiz: QUIZ, quizAt: NOW });
     expect(tx.laniakeaPlanet.update.mock.calls[1][0].data).toEqual({ retryAt: NOW });
+  });
+
+  it('counts an answer in the same transaction, each option in its own place', async () => {
+    tx.$queryRaw.mockResolvedValue([stored]);
+
+    await repo.withPlanet(4, 'python', 'print', () => ({
+      change: { quizAt: NOW },
+      counted: { questionId: 'q7', pick: 2, correct: false },
+      result: null,
+    }));
+
+    const [sql, ...values] = tx.$executeRaw.mock.calls[0] as [string[], ...unknown[]];
+    expect(sql.join('?')).toContain('ON CONFLICT (course_key, lesson_slug, question_id)');
+    expect(values).toEqual(['python', 'print', 'q7', 1, [0, 0, 1, 0], 3, 3]);
+  });
+
+  it('counts a right answer as not wrong, and nothing when there is no answer', async () => {
+    tx.$queryRaw.mockResolvedValue([stored]);
+
+    await repo.withPlanet(4, 'python', 'print', () => ({ change: null, result: null }));
+    await repo.withPlanet(4, 'python', 'print', () => ({
+      change: null,
+      counted: { questionId: 'q1', pick: 0, correct: true },
+      result: null,
+    }));
+
+    expect(tx.$executeRaw).toHaveBeenCalledTimes(1);
+    expect(tx.$executeRaw.mock.calls[0].slice(1)).toEqual([
+      'python',
+      'print',
+      'q1',
+      0,
+      [1, 0, 0, 0],
+      1,
+      1,
+    ]);
   });
 });

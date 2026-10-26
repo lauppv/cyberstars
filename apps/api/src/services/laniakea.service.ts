@@ -244,7 +244,8 @@ export async function startQuiz(
 // Answers the test's next question. The right answer comes back at once; the
 // test ends once QUIZ_OUT answers are wrong, a failure that holds the planet for
 // QUIZ_RETRY_MS, or after its last question, a pass. The same answer sent again
-// gets the same reply.
+// gets the same reply. Each new answer also counts for its question, for the
+// admin's list of the most missed ones.
 export async function answerQuiz(
   userId: number,
   slug: string,
@@ -272,12 +273,19 @@ export async function answerQuiz(
     const wrong = answers.filter((c, i) => !answerOf(quiz, i, c, spec).correct).length;
     const seen = row.seen.includes(quiz.ids[index]) ? row.seen : [...row.seen, quiz.ids[index]];
     const ended = { quiz: null, quizAt: null, seen };
+    // Counted once, here, since an answer sent again comes back above.
+    const counted = {
+      questionId: quiz.ids[index],
+      pick: quiz.orders[index][choice],
+      correct: answer.correct,
+    };
 
     if (wrong >= QUIZ_OUT) {
       const retryAt = new Date(now.getTime() + QUIZ_RETRY_MS);
       const planet = planetView(slug, { ...row, retryAt }, true, true, now, day);
       return {
         change: { ...ended, retryAt },
+        counted,
         result: { ...answer, status: 'failed', planet, leveledUp: false },
       };
     }
@@ -293,11 +301,13 @@ export async function answerQuiz(
       );
       return {
         change: { ...ended, level: moved.level, passedAt: moved.passedAt, retryAt: null },
+        counted,
         result: { ...answer, status: 'passed', planet, leveledUp: moved.leveledUp },
       };
     }
     return {
       change: { quiz: { ...quiz, answers }, quizAt: now, seen },
+      counted,
       result: { ...answer, status: 'active', planet: null, leveledUp: false },
     };
   });

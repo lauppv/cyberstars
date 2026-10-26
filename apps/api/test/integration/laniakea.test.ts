@@ -113,6 +113,53 @@ describe('Laniakea', () => {
     expect(row.seen).toHaveLength(1);
   });
 
+  it("counts each question's answers and picks without who gave them, a resent one once", async () => {
+    const one = await student();
+    const two = await student();
+    for (const s of [one, two]) {
+      await s.agent.post('/api/laniakea/print/quiz').send({ lang: 'en' }).expect(200);
+    }
+    // Both students answer a question the first student got first: the first
+    // right, twice over, the second with an option they didn't need
+    const [id] = (
+      (await prisma.laniakeaPlanet.findFirstOrThrow({ where: { userId: one.userId } }))
+        .quiz as unknown as StoredQuiz
+    ).ids;
+    const twoQuiz = (
+      await prisma.laniakeaPlanet.findFirstOrThrow({ where: { userId: two.userId } })
+    ).quiz as unknown as StoredQuiz;
+    await prisma.laniakeaPlanet.updateMany({
+      where: { userId: two.userId },
+      data: { quiz: { ...twoQuiz, ids: [id, ...twoQuiz.ids.filter((q) => q !== id).slice(0, 9)] } },
+    });
+    const right = answers.get(id)!;
+    const wrongPick = (right + 1) % 4;
+    const [oneRight] = await rightChoices(one.userId);
+    const twoOrder = (
+      (await prisma.laniakeaPlanet.findFirstOrThrow({ where: { userId: two.userId } }))
+        .quiz as unknown as StoredQuiz
+    ).orders[0];
+
+    await answer(one.agent, 0, oneRight).expect(200);
+    await answer(one.agent, 0, oneRight).expect(200);
+    await answer(two.agent, 0, twoOrder.indexOf(wrongPick)).expect(200);
+
+    const stat = await prisma.laniakeaQuestionStat.findUniqueOrThrow({
+      where: {
+        courseKey_lessonSlug_questionId: {
+          courseKey: 'python',
+          lessonSlug: 'print',
+          questionId: id,
+        },
+      },
+    });
+    const picks = [0, 0, 0, 0];
+    picks[right] = 1;
+    picks[wrongPick] = 1;
+    expect(stat).toMatchObject({ answered: 2, wrong: 1, picks });
+    expect(Object.keys(stat)).not.toContain('userId');
+  });
+
   it('ends a test at the fifth wrong answer and holds the planet for five minutes', async () => {
     const { agent, userId } = await student();
     await agent.post('/api/laniakea/print/quiz').send({ lang: 'en' }).expect(200);

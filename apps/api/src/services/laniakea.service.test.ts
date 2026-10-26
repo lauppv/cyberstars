@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import type { PlanetRow, StoredQuiz } from '../repositories/laniakea.repository.js';
+import type { CountedAnswer, PlanetRow, StoredQuiz } from '../repositories/laniakea.repository.js';
 
 const mockProgress = { getByCourse: vi.fn() };
 const mockRepo = { listPlanets: vi.fn(), withPlanet: vi.fn() };
@@ -60,14 +60,17 @@ function planet(over: Partial<PlanetRow> = {}): PlanetRow {
   };
 }
 
-// The planet the transaction sees, and what it decided to write
+// The planet the transaction sees, what it decided to write and the answers it
+// counted
 let row: PlanetRow;
 let written: Partial<PlanetRow> | null;
+let counted: CountedAnswer[];
 
 beforeEach(() => {
   vi.clearAllMocks();
   row = planet();
   written = null;
+  counted = [];
   mockProgress.getByCourse.mockResolvedValue(done(...FIRST_STEPS));
   mockQuiz.loadQuiz.mockImplementation((_slug: string, lang: string) => (lang === 'ro' ? RO : EN));
   mockQuiz.quizSlugs.mockReturnValue(['print', 'if-else']);
@@ -77,10 +80,15 @@ beforeEach(() => {
       _u: number,
       _c: string,
       _s: string,
-      decide: (r: PlanetRow) => { change: Partial<PlanetRow> | null; result: unknown },
+      decide: (r: PlanetRow) => {
+        change: Partial<PlanetRow> | null;
+        counted?: CountedAnswer;
+        result: unknown;
+      },
     ) => {
-      const { change, result } = decide(row);
+      const { change, counted: answer, result } = decide(row);
       written = change;
+      if (answer) counted.push(answer);
       if (change) row = { ...row, ...change };
       return result;
     },
@@ -384,6 +392,29 @@ describe('answerQuiz', () => {
 
     expect(again).toMatchObject({ choice: right[0], correct: true });
     expect(written).toBeNull();
+    expect(counted).toHaveLength(1);
+  });
+
+  it("counts each answer for its question by the option's place in the file", async () => {
+    const right = await started();
+    const { ids, orders } = row.quiz!;
+
+    await service.answerQuiz(4, 'print', 0, right[0], NOW);
+    await service.answerQuiz(4, 'print', 1, wrong(right[1]), NOW);
+
+    expect(counted).toEqual([
+      { questionId: ids[0], pick: 0, correct: true },
+      { questionId: ids[1], pick: orders[1][wrong(right[1])], correct: false },
+    ]);
+  });
+
+  it('counts the answer that ends the test too', async () => {
+    const right = await started();
+    for (let i = 0; i < 5; i++) await service.answerQuiz(4, 'print', i, wrong(right[i]), NOW);
+
+    expect(row.quiz).toBeNull();
+    expect(counted).toHaveLength(5);
+    expect(counted.every((c) => !c.correct)).toBe(true);
   });
 
   it('takes the questions in order only', async () => {

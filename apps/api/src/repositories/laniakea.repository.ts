@@ -1,4 +1,5 @@
 import { Prisma } from '@prisma/client';
+import { QUIZ_OPTIONS } from '@cyberstars/shared/laniakea';
 import { prisma } from '../config/db.js';
 
 // The test going on, as kept on the planet: its questions by id, each one's
@@ -22,6 +23,14 @@ export interface PlanetRow {
 
 export type PlanetChange = Partial<Omit<PlanetRow, 'lessonSlug'>>;
 
+// One new answer to a question of the planet, counted without who gave it:
+// `pick` is the option's place in the question's file.
+export interface CountedAnswer {
+  questionId: string;
+  pick: number;
+  correct: boolean;
+}
+
 const columns = {
   lessonSlug: true,
   level: true,
@@ -42,13 +51,17 @@ export async function listPlanets(userId: number, courseKey: string): Promise<Pl
 
 // Runs `decide` on the student's planet, made first if it is new, with the row
 // locked for the transaction, so two tabs answering at once take turns. It says
-// what to change, if anything, and what to hand back; it throws to change
-// nothing.
+// what to change, if anything, the answer to count, if any, and what to hand
+// back; it throws to change nothing.
 export function withPlanet<T>(
   userId: number,
   courseKey: string,
   lessonSlug: string,
-  decide: (row: PlanetRow) => { change: PlanetChange | null; result: T },
+  decide: (row: PlanetRow) => {
+    change: PlanetChange | null;
+    counted?: CountedAnswer;
+    result: T;
+  },
 ): Promise<T> {
   return prisma.$transaction(async (tx) => {
     await tx.laniakeaPlanet.createMany({
@@ -68,7 +81,7 @@ export function withPlanet<T>(
       SELECT level, passed_at, retry_at, seen, quiz, quiz_at FROM laniakea_planets
       WHERE user_id = ${userId} AND course_key = ${courseKey} AND lesson_slug = ${lessonSlug}
       FOR UPDATE`;
-    const { change, result } = decide({
+    const { change, counted, result } = decide({
       lessonSlug,
       level: row.level,
       passedAt: row.passed_at,
@@ -89,8 +102,28 @@ export function withPlanet<T>(
         },
       });
     }
+    if (counted) await countAnswer(tx, courseKey, lessonSlug, counted);
     return result;
   });
+}
+
+// Adds the answer to its question's counts, the question's row made by its
+// first answer. Postgres counts the array from 1.
+async function countAnswer(
+  tx: Prisma.TransactionClient,
+  courseKey: string,
+  lessonSlug: string,
+  { questionId, pick, correct }: CountedAnswer,
+): Promise<void> {
+  const picks = Array.from({ length: QUIZ_OPTIONS }, (_, k) => (k === pick ? 1 : 0));
+  const at = pick + 1;
+  await tx.$executeRaw`
+    INSERT INTO laniakea_question_stats (course_key, lesson_slug, question_id, answered, wrong, picks)
+    VALUES (${courseKey}, ${lessonSlug}, ${questionId}, 1, ${correct ? 0 : 1}, ${picks}::int[])
+    ON CONFLICT (course_key, lesson_slug, question_id) DO UPDATE SET
+      answered = laniakea_question_stats.answered + 1,
+      wrong = laniakea_question_stats.wrong + EXCLUDED.wrong,
+      picks[${at}::int] = laniakea_question_stats.picks[${at}::int] + 1`;
 }
 
 export interface RecapPlanet {
