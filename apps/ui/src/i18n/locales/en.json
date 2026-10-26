@@ -379,7 +379,8 @@
     "xpReward": "+{{xp}} XP",
     "somethingWrong": "Something went wrong. Please try again.",
     "back": "Back",
-    "breadcrumb": "Breadcrumb"
+    "breadcrumb": "Breadcrumb",
+    "retry": "Try again"
   },
   "leaderboard": {
     "you": "You",
@@ -647,8 +648,7 @@
     "replyPlaceholder": "Type a reply...",
     "send": "Send",
     "you": "You",
-    "admin": "admin",
-    "retry": "Try again"
+    "admin": "admin"
   },
   "feedback": {
     "lesson": "Think we should change something in this lesson? Tell us and help the community grow",
@@ -1285,7 +1285,8 @@
     "decline": "Decline",
     "remove": "Remove",
     "cancel": "Cancel",
-    "pending": "Pending"
+    "pending": "Pending",
+    "loadFailed": "Your connections couldn't be loaded."
   },
   "settings": {
     "preferences": "Preferences",

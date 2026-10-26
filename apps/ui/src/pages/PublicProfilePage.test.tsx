@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import type { PublicProfile } from '@cyberstars/shared/profile';
+import { ApiClientError } from '../services/apiClient';
 
 const mockNavigate = vi.fn();
 let mockParams: { userId?: string } = { userId: '7' };
@@ -245,14 +246,73 @@ describe('PublicProfilePage', () => {
     expect(await screen.findByText('Request sent')).toBeDefined();
   });
 
-  it('re-enables the connect button when the request fails', async () => {
+  it('says why the request failed and re-enables the connect button', async () => {
     loggedIn();
     mockSendRequest.mockRejectedValue(new Error('boom'));
     renderPage();
     const connect = (await screen.findByText('Connect')) as HTMLButtonElement;
     fireEvent.click(connect);
-    await waitFor(() => expect(mockSendRequest).toHaveBeenCalled());
-    expect(await screen.findByText('Connect')).not.toBeDisabled();
+    expect(await screen.findByRole('alert')).toHaveTextContent('boom');
+    expect(screen.getByText('Connect')).not.toBeDisabled();
+    // Only a 409 makes the page ask for the relation again
+    expect(mockGetPublicProfile).toHaveBeenCalledTimes(1);
+  });
+
+  it('says something went wrong when the failure has no reason', async () => {
+    mockSendRequest.mockRejectedValue(new Error(''));
+    renderPage();
+    fireEvent.click(await screen.findByText('Connect'));
+    expect(await screen.findByRole('alert')).toHaveTextContent(
+      'Something went wrong. Please try again.',
+    );
+  });
+
+  it('shows the respond button when the pending request is the other person’s', async () => {
+    mockSendRequest.mockRejectedValue(new ApiClientError(409, 'A request is already pending'));
+    renderPage();
+    const connect = await screen.findByText('Connect');
+    mockGetPublicProfile.mockResolvedValue({
+      ...fullProfile,
+      connectionRelation: 'pending_incoming',
+    });
+    fireEvent.click(connect);
+    expect(await screen.findByText('Respond to request')).toBeDefined();
+    expect(screen.getByRole('alert')).toHaveTextContent('A request is already pending');
+    expect(screen.queryByText('Request sent')).toBeNull();
+  });
+
+  it('shows the connected state when the two are already connected', async () => {
+    mockSendRequest.mockRejectedValue(new ApiClientError(409, 'Already connected'));
+    renderPage();
+    const connect = await screen.findByText('Connect');
+    mockGetPublicProfile.mockResolvedValue({ ...fullProfile, connectionRelation: 'connected' });
+    fireEvent.click(connect);
+    expect(await screen.findByText(/Connected ✓/)).toBeDefined();
+    expect(screen.getByRole('alert')).toHaveTextContent('Already connected');
+  });
+
+  it('keeps the connect button when the relation cannot be read again', async () => {
+    mockSendRequest.mockRejectedValue(new ApiClientError(409, 'Already connected'));
+    renderPage();
+    const connect = await screen.findByText('Connect');
+    mockGetPublicProfile.mockRejectedValue(new Error('down'));
+    fireEvent.click(connect);
+    expect(await screen.findByRole('alert')).toHaveTextContent('Already connected');
+    await waitFor(() => expect(mockGetPublicProfile).toHaveBeenCalledTimes(2));
+    expect(screen.getByText('Connect')).not.toBeDisabled();
+  });
+
+  it('clears the reason when the next request goes through', async () => {
+    mockSendRequest.mockRejectedValueOnce(new Error('boom'));
+    mockSendRequest.mockResolvedValueOnce(
+      undefined as unknown as Awaited<ReturnType<typeof connectionsService.sendRequest>>,
+    );
+    renderPage();
+    fireEvent.click(await screen.findByText('Connect'));
+    await screen.findByRole('alert');
+    fireEvent.click(screen.getByText('Connect'));
+    expect(await screen.findByText('Request sent')).toBeDefined();
+    expect(screen.queryByRole('alert')).toBeNull();
   });
 
   it('shows the respond button for an incoming request', async () => {
