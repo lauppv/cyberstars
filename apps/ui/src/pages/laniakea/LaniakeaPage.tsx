@@ -15,6 +15,7 @@ import { LOOK_COUNT, layoutPlanets } from './planetLayout';
 import { canFly, statusOf } from './planetStatus';
 import { markOf } from './colors';
 import { useNow } from './waitText';
+import { useRecapsSeen } from './useRecapsSeen';
 import type { ShipPose } from './navMath';
 import type { Aim, Explorer } from './scene/explorer';
 import type { PlanetMark } from './scene/planets';
@@ -68,6 +69,7 @@ export function LaniakeaPage() {
   useEffect(() => {
     load();
   }, [load]);
+  useRecapsSeen();
 
   const now = useNow(offset);
   const [started, setStarted] = useState(false);

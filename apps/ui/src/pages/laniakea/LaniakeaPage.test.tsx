@@ -9,6 +9,7 @@ const h = vi.hoisted(() => ({
   getLaniakea: vi.fn(),
   startQuiz: vi.fn(),
   answerQuiz: vi.fn(),
+  markSeen: vi.fn(),
   loadThree: vi.fn(),
   engine: {
     setMarks: vi.fn(),
@@ -24,8 +25,12 @@ vi.mock('../../services/laniakeaService', () => ({
   getLaniakea: h.getLaniakea,
   startQuiz: h.startQuiz,
   answerQuiz: h.answerQuiz,
+  markSeen: h.markSeen,
 }));
 vi.mock('./scene/loadThree', () => ({ loadThree: h.loadThree }));
+vi.mock('../../context/NotificationContext', () => ({
+  useNotifications: () => ({ items: [], markOneRead: vi.fn() }),
+}));
 vi.mock('./scene/explorer', () => ({ createExplorer: h.createExplorer }));
 vi.mock('../../context/CurriculumContext', () => ({
   useCurriculum: () => ({
@@ -94,6 +99,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   h.events = null;
   h.getLaniakea.mockResolvedValue(state());
+  h.markSeen.mockResolvedValue(undefined);
   h.loadThree.mockResolvedValue({});
   h.createExplorer.mockImplementation((_t, _m, _s, _touch, events: ExplorerEvents) => {
     h.events = events;
@@ -125,6 +131,12 @@ describe('LaniakeaPage', () => {
     fireEvent.click(next);
     expect(screen.getByText('A lesson')).toBeInTheDocument();
     expect(h.loadThree).not.toHaveBeenCalled();
+  });
+
+  it('tells the server the game is open, so the bell drops its recaps', async () => {
+    renderPage();
+    await screen.findByRole('button', { name: /Take the helm/ });
+    expect(h.markSeen).toHaveBeenCalledTimes(1);
   });
 
   it('offers to try again when the game cannot be read', async () => {
