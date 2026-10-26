@@ -5,6 +5,7 @@ import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 
 vi.mock('../components/layout/Topbar', () => ({ Topbar: () => <nav>Topbar</nav> }));
 vi.mock('../components/admin/VisitorsSection', () => ({ VisitorsSection: () => null }));
+vi.mock('../components/admin/MissedQuestions', () => ({ MissedQuestions: () => null }));
 vi.mock('../context/AuthContext', () => ({
   useAuth: () => ({ user: { role: 'ADMIN' }, isLoading: false }),
 }));

@@ -9,6 +9,7 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseTitle } from '../constants/courses';
 import * as adminService from '../services/adminService';
 import { VisitorsSection } from '../components/admin/VisitorsSection';
+import { MissedQuestions } from '../components/admin/MissedQuestions';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 
@@ -213,6 +214,8 @@ export function AdminPage() {
                   </div>
                 </div>
               </section>
+
+              <MissedQuestions className={CARD_CLS + ' @2xl:col-span-2'} reload={reloads} />
 
               {/* Forum & Support */}
               <section className={CARD_CLS + ' @2xl:col-span-2'}>
