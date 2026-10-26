@@ -530,6 +530,20 @@ describe('missedQuestions', () => {
     expect(mockQuiz.loadQuiz).toHaveBeenCalledWith('print', 'ro');
   });
 
+  it('shows in English a question the page language file lacks', async () => {
+    mockQuiz.loadQuiz.mockImplementation((_slug: string, lang: string) =>
+      lang === 'ro' ? spec('Intrebarea', 1) : EN,
+    );
+    mockRepo.listQuestionStats.mockResolvedValue([
+      stat('print', 'q1', 20, 12),
+      stat('print', 'q2', 20, 10),
+    ]);
+
+    const list = await service.missedQuestions('ro');
+
+    expect(list.map((q) => q.text)).toEqual(['Intrebarea 1?', 'Question 2?']);
+  });
+
   it('reads each planet once and leaves out questions and planets that are gone', async () => {
     mockRepo.listQuestionStats.mockResolvedValue([
       stat('print', 'q1', 20, 1),

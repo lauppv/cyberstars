@@ -318,18 +318,23 @@ export async function answerQuiz(
 
 // The questions students miss most, for the admin page, in the page's language:
 // the highest share of wrong answers first and, of two alike, the one answered
-// more. A question no longer in its planet's file is left out.
+// more. As in the game, a question the page's language file lacks shows in
+// English. A question no longer in its planet's file is left out.
 export async function missedQuestions(lang: 'en' | 'ro'): Promise<MissedQuestion[]> {
   const rows = await laniakeaRepo.listQuestionStats(LANIAKEA_COURSE, MISSED_MIN_ANSWERS);
-  const quizzes = new Map<string, QuizSpec | null>();
+  const quizzes = new Map<string, { spec: QuizSpec | null; shown: QuizSpec | null }>();
   const quizOf = (slug: string) => {
-    if (!quizzes.has(slug)) quizzes.set(slug, PLANETS.has(slug) ? loadQuiz(slug, lang) : null);
+    if (!quizzes.has(slug)) {
+      const spec = PLANETS.has(slug) ? loadQuiz(slug, 'en') : null;
+      quizzes.set(slug, { spec, shown: spec && lang !== 'en' ? loadQuiz(slug, lang) : spec });
+    }
     return quizzes.get(slug)!;
   };
   return rows
     .flatMap((row): MissedQuestion[] => {
-      const quiz = quizOf(row.lessonSlug);
-      const q = quiz && questionOf(quiz, row.questionId);
+      const { spec, shown } = quizOf(row.lessonSlug);
+      const q =
+        (shown && questionOf(shown, row.questionId)) ?? (spec && questionOf(spec, row.questionId));
       if (!q) return [];
       return [
         {
