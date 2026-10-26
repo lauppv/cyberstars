@@ -396,6 +396,7 @@
     "title": "Messages",
     "emptyInbox": "No conversations yet.",
     "loadFailed": "Your conversations couldn't be loaded.",
+    "historyFailed": "This conversation couldn't be loaded.",
     "selectPrompt": "Select a conversation to start chatting.",
     "noMessagesYet": "No messages yet",
     "deletedMessage": "Message deleted",

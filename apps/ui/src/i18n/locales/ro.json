@@ -425,6 +425,7 @@
     "title": "Mesaje",
     "emptyInbox": "Nicio conversație încă.",
     "loadFailed": "Conversațiile tale nu s-au putut încărca.",
+    "historyFailed": "Conversația nu s-a putut încărca.",
     "selectPrompt": "Alege o conversație ca să începi discuția.",
     "noMessagesYet": "Niciun mesaj încă",
     "deletedMessage": "Mesaj șters",
