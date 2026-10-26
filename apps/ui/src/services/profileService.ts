@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import type { Interest } from '@cyberstars/shared/interests';
 import type { CodeLanguage } from '@cyberstars/shared/constants';
-import { api, ApiClientError } from './apiClient';
+import { api, errorOf, send } from './apiClient';
 
 const API_BASE = import.meta.env.VITE_PROD_API_URL || '';
 
@@ -26,16 +26,13 @@ export function saveCodeLanguage(language: CodeLanguage) {
 export async function uploadAvatar(file: File): Promise<{ avatarUrl: string }> {
   const form = new FormData();
   form.append('avatar', file);
-  const res = await fetch(`${API_BASE}/api/profile/avatar`, {
+  const res = await send(`${API_BASE}/api/profile/avatar`, {
     method: 'POST',
     credentials: 'include',
     body: form,
   });
-  if (!res.ok) {
-    // Without the server's reason the page says the upload failed in its own words
-    const data = await res.json().catch(() => ({}));
-    throw new ApiClientError(res.status, data.error ?? '');
-  }
+  // Without a reason the page says the upload failed in its own words
+  if (!res.ok) throw await errorOf(res, '');
   return res.json();
 }
 
