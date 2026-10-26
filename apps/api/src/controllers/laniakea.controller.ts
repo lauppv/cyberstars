@@ -1,9 +1,20 @@
 import type { Request, Response, NextFunction } from 'express';
 import * as laniakeaService from '../services/laniakea.service.js';
+import * as recapsService from '../services/laniakea-recaps.service.js';
 
 export async function getState(req: Request, res: Response, next: NextFunction) {
   try {
     res.json(await laniakeaService.getState(req.user!.id));
+  } catch (err) {
+    next(err);
+  }
+}
+
+// The game page opened: reads the recap notification.
+export async function markSeen(req: Request, res: Response, next: NextFunction) {
+  try {
+    await recapsService.markSeen(req.user!.id);
+    res.status(204).end();
   } catch (err) {
     next(err);
   }

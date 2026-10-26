@@ -36,7 +36,7 @@ const FIRST_STEPS = PLANET_LIST[0].lessons;
 
 // A shorter day lets a recap be tried out on dev without waiting for it; prod
 // always counts real days.
-function dayMs(): number {
+export function dayMs(): number {
   const override = Number(process.env.LANIAKEA_DAY_MS);
   return !config.isProduction && override > 0 ? override : DAY_MS;
 }
