@@ -4,12 +4,11 @@ import { useNavigate } from 'react-router';
 import { Award, ChevronDown, ChevronUp, LogOut, Pause, PanelRight } from 'lucide-react';
 import {
   FOREVER_LEVEL,
-  planetLessons,
   type LaniakeaState,
   type QuizAnswerResult,
 } from '@cyberstars/shared/laniakea';
 import * as laniakeaService from '../../services/laniakeaService';
-import { useCurriculum } from '../../context/CurriculumContext';
+import { usePlanetNames } from '../../components/laniakea/usePlanetNames';
 import { createFeed } from './feed';
 import { LOOK_COUNT, layoutPlanets } from './planetLayout';
 import { canFly, statusOf } from './planetStatus';
@@ -50,7 +49,6 @@ const sameAim = (a: Aim | null, b: Aim | null) =>
 export function LaniakeaPage() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const { courses } = useCurriculum();
   const lang = i18n.language === 'ro' ? 'ro' : 'en';
   const [isTouch] = useState(touchScreen);
 
@@ -97,20 +95,7 @@ export function LaniakeaPage() {
   const throttleUp = useRef<HTMLButtonElement>(null);
   const throttleDown = useRef<HTMLButtonElement>(null);
 
-  // Each planet's name, its lesson's title but for First steps, which also says
-  // the lessons it covers
-  const { titles, covers } = useMemo(() => {
-    const course = courses.find((c) => c.key === state?.courseKey);
-    const lessons = course?.lessons ?? [];
-    const names = new Map(lessons.map((l) => [l.slug, l.title]));
-    const spans = new Map<string, string>();
-    for (const p of planetLessons(lessons.map((l) => l.slug))) {
-      if (p.lessons.length < 2) continue;
-      names.set(p.slug, t('laniakea.firstSteps.name'));
-      spans.set(p.slug, t('laniakea.firstSteps.covers', { count: p.lessons.length }));
-    }
-    return { titles: names, covers: spans };
-  }, [courses, state?.courseKey, t]);
+  const { titles, covers } = usePlanetNames(state?.courseKey);
 
   const slugKey = state?.planets.map((p) => p.slug).join(',') ?? '';
   const spots = useMemo(
