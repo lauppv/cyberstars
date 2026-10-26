@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { useGamification } from '../hooks/useGamification';
 import { Topbar } from '../components/layout/Topbar';
 import { Badge } from '../components/gamification/Badge';
+import { LaniakeaTrophies } from '../components/laniakea/LaniakeaTrophies';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { EmojiPicker } from '../components/ui/EmojiPicker';
 import { useCurriculum } from '../context/CurriculumContext';
@@ -336,6 +337,8 @@ export function ProfilePage() {
               ))}
             </div>
           </div>
+
+          <LaniakeaTrophies />
 
           {/* Settings link */}
           <div className="py-5">

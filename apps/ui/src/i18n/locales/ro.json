@@ -592,6 +592,12 @@
     "tutorPrivacyDesc": "Când vorbești cu tutorul, mesajele tale și conversația de până acum, plus pagina pe care ești, sunt trimise către un furnizor AI terț (Google Gemini) pentru a scrie răspunsul. Într-o conversație despre o lecție sau o provocare se trimit și enunțul, codul tău, finalul ultimei rulări și ultimul rezultat al testelor. Nu introduce informații personale sau sensibile în chat sau în editor. Ultimele tale 50 de conversații se păstrează, fiecare cu ultimele 200 de mesaje, până le ștergi. Tutorul funcționează în sesiuni de 5 ore, cu între 15 și 30 de mesaje. E un ajutor opțional: poți termina orice lecție și fără el."
   },
   "profile": {
+    "laniakea": {
+      "conquered": "Planete cucerite",
+      "forever": "Păstrate pentru totdeauna",
+      "keeper": "Păzitorul planetei {{planet}}",
+      "keeperHint": "Ai trecut toate recapitulările planetei {{planet}}"
+    },
     "edit": "Editează",
     "avatarAlt": "Avatar",
     "removeAvatar": "Elimină avatarul",
