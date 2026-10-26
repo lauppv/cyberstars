@@ -39,3 +39,13 @@ export async function answerQuiz(req: Request, res: Response, next: NextFunction
     next(err);
   }
 }
+
+// The admin page's list of the questions students miss most.
+export async function getMissedQuestions(req: Request, res: Response, next: NextFunction) {
+  try {
+    const lang = req.query.lang === 'ro' ? 'ro' : 'en';
+    res.json(await laniakeaService.missedQuestions(lang));
+  } catch (err) {
+    next(err);
+  }
+}

@@ -123,3 +123,25 @@ export interface QuizAnswerResult extends QuizAnswer {
   planet: LaniakeaPlanet | null;
   leveledUp: boolean;
 }
+
+// The admin's list of the questions students miss most: those answered at
+// least MISSED_MIN_ANSWERS times, the highest share wrong first, at most
+// MISSED_LIST of them. A question most students get wrong is usually a bad one.
+export const MISSED_MIN_ANSWERS = 20;
+export const MISSED_LIST = 50;
+
+export interface MissedQuestion {
+  // The planet's slug and the question's id in its file
+  slug: string;
+  id: string;
+  text: string;
+  code: string | null;
+  output: string | null;
+  // In the file's order, the right one at `answer`, and how often each was
+  // picked
+  options: string[];
+  answer: number;
+  picks: number[];
+  answered: number;
+  wrong: number;
+}

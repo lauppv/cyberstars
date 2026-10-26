@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createAuthenticatedAgent, userIdFor } from './helpers.js';
+import { agent as guest, createAuthenticatedAgent, userIdFor } from './helpers.js';
 import { prisma } from '../../src/config/db.js';
 import { lessons } from '@cyberstars/content/curriculum';
 import { DAY_MS, LANIAKEA_COURSE, planetLessons } from '@cyberstars/shared/laniakea';
@@ -308,5 +308,47 @@ describe('Laniakea recaps in the bell', () => {
     });
     expect(await tellOpenRecaps(new Date(now))).toBe(0);
     expect((await bell(agent)).items).toHaveLength(0);
+  });
+});
+
+describe('Most missed Laniakea questions', () => {
+  async function admin() {
+    const { agent, email } = await createAuthenticatedAgent();
+    await prisma.user.update({ where: { id: await userIdFor(email) }, data: { role: 'ADMIN' } });
+    return agent;
+  }
+  const [first, second] = loadQuiz('print', 'ro')!.questions;
+
+  it('lists to admins only the questions answered 20 times, the most missed first', async () => {
+    await prisma.laniakeaQuestionStat.createMany({
+      data: [
+        { courseKey: 'python', lessonSlug: 'print', questionId: first.id, answered: 20, wrong: 5 },
+        {
+          courseKey: 'python',
+          lessonSlug: 'print',
+          questionId: second.id,
+          answered: 25,
+          wrong: 20,
+        },
+        { courseKey: 'python', lessonSlug: 'if-else', questionId: 'q1', answered: 19, wrong: 19 },
+      ],
+    });
+
+    const res = await (await admin()).get('/api/admin/laniakea/questions?lang=ro').expect(200);
+
+    expect(res.body.map((q: { id: string }) => q.id)).toEqual([second.id, first.id]);
+    expect(res.body[0]).toMatchObject({
+      slug: 'print',
+      text: second.text,
+      options: second.options,
+      answer: second.answer,
+      answered: 25,
+      wrong: 20,
+      picks: [0, 0, 0, 0],
+    });
+
+    const { agent: student } = await createAuthenticatedAgent();
+    await student.get('/api/admin/laniakea/questions').expect(403);
+    await guest().get('/api/admin/laniakea/questions').expect(401);
   });
 });

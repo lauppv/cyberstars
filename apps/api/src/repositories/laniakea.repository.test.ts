@@ -10,6 +10,7 @@ const tx = {
 const mockPrisma = {
   $transaction: vi.fn((fn: (t: typeof tx) => unknown) => fn(tx)),
   laniakeaPlanet: { findMany: vi.fn() },
+  laniakeaQuestionStat: { findMany: vi.fn() },
 };
 
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
@@ -145,5 +146,24 @@ describe('withPlanet', () => {
       1,
       1,
     ]);
+  });
+});
+
+describe('listQuestionStats', () => {
+  it("reads the course's questions answered at least the given times", async () => {
+    const row = {
+      lessonSlug: 'print',
+      questionId: 'q1',
+      answered: 21,
+      wrong: 3,
+      picks: [18, 3, 0, 0],
+    };
+    mockPrisma.laniakeaQuestionStat.findMany.mockResolvedValue([row]);
+
+    expect(await repo.listQuestionStats('python', 20)).toEqual([row]);
+    expect(mockPrisma.laniakeaQuestionStat.findMany.mock.calls[0][0].where).toEqual({
+      courseKey: 'python',
+      answered: { gte: 20 },
+    });
   });
 });
