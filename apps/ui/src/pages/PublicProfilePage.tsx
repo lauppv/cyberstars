@@ -118,7 +118,7 @@ export function PublicProfilePage() {
   const [messaging, setMessaging] = useState(false);
   const [relation, setRelation] = useState<ConnectionRelation>('none');
   const [connecting, setConnecting] = useState(false);
-  const [connectError, setConnectError] = useState<string | null>(null);
+  const [actionError, setActionError] = useState<string | null>(null);
 
   // Client-side guard is UX only; the API is server-authoritative.
   useEffect(() => {
@@ -137,7 +137,7 @@ export function PublicProfilePage() {
     let cancelled = false;
     setLoading(true);
     setError(null);
-    setConnectError(null);
+    setActionError(null);
     userService
       .getPublicProfile(id)
       .then((p) => {
@@ -162,12 +162,16 @@ export function PublicProfilePage() {
   const startConversation = async () => {
     if (!profile) return;
     setMessaging(true);
+    setActionError(null);
     try {
       // Through the context (not the raw service) so a newly created
       // conversation lands in the inbox state before /messages renders it.
       const conversation = await openWith(profile.userId);
       navigate('/messages', { state: { openConversationId: conversation.id } });
-    } catch {
+    } catch (err) {
+      setActionError(
+        err instanceof Error && err.message ? err.message : t('common.somethingWrong'),
+      );
       setMessaging(false);
     }
   };
@@ -175,12 +179,12 @@ export function PublicProfilePage() {
   const sendConnectionRequest = async () => {
     if (!profile) return;
     setConnecting(true);
-    setConnectError(null);
+    setActionError(null);
     try {
       await connectionsService.sendRequest(profile.userId);
       setRelation('pending_outgoing');
     } catch (err) {
-      setConnectError(
+      setActionError(
         err instanceof Error && err.message ? err.message : t('common.somethingWrong'),
       );
       // 409: the two are already connected or a request is pending, maybe one
@@ -429,9 +433,9 @@ export function PublicProfilePage() {
                 </>
               )}
             </div>
-            {connectError && (
+            {actionError && (
               <p role="alert" className="pt-3 text-[12px] text-[var(--error)]">
-                {connectError}
+                {actionError}
               </p>
             )}
           </div>

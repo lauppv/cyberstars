@@ -56,10 +56,19 @@ function msg(over: Partial<MessageDTO> = {}): MessageDTO {
 }
 
 function Probe() {
-  const { conversations, totalUnread, openWith, setActiveConversation, markConversationRead } =
-    useMessages();
+  const {
+    conversations,
+    totalUnread,
+    loadFailed,
+    refresh,
+    openWith,
+    setActiveConversation,
+    markConversationRead,
+  } = useMessages();
   return (
     <div>
+      <span data-testid="failed">{String(loadFailed)}</span>
+      <button onClick={refresh}>refresh</button>
       <span data-testid="unread">{totalUnread}</span>
       <span data-testid="count">{conversations.length}</span>
       <span data-testid="ids">{conversations.map((c) => c.id).join(',')}</span>
@@ -106,6 +115,17 @@ describe('MessagesContext', () => {
     // '0'), so "found" doesn't mean the inbox fetch has resolved yet.
     await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('1'));
     expect(screen.getByTestId('unread')).toHaveTextContent('2');
+  });
+
+  it('marks the inbox as failed until a load goes through', async () => {
+    h.service.getConversations.mockRejectedValueOnce(new Error('down'));
+    renderProvider();
+    await waitFor(() => expect(screen.getByTestId('failed')).toHaveTextContent('true'));
+    expect(screen.getByTestId('count')).toHaveTextContent('0');
+
+    fireEvent.click(screen.getByText('refresh'));
+    await waitFor(() => expect(screen.getByTestId('failed')).toHaveTextContent('false'));
+    expect(screen.getByTestId('count')).toHaveTextContent('1');
   });
 
   it('clears conversations and skips loading when disabled', async () => {

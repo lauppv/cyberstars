@@ -7,6 +7,7 @@ import { useUserSocketFrames } from '../../context/UserSocketContext';
 import { MessageComposer } from './MessageComposer';
 import { MessageActions } from './MessageActions';
 import { UserLink } from '../ui/UserLink';
+import { LoadError } from '../ui/LoadError';
 import * as messagesService from '../../services/messagesService';
 import type { ConversationDTO, MessageDTO, MessageReactionDTO } from '@cyberstars/shared/messages';
 import type { UserSocketFrame } from '@cyberstars/shared/notifications';
@@ -26,6 +27,11 @@ function dateTimeLabel(iso: string): string {
     hour: '2-digit',
     minute: '2-digit',
   });
+}
+
+/** The server's reason in the page's language, else a general one. */
+function errMsg(err: unknown): string {
+  return err instanceof Error && err.message ? err.message : i18next.t('common.somethingWrong');
 }
 
 // The server ships raw per-user rows; group them per emoji here so `active`
@@ -57,8 +63,23 @@ export function MessageThread({
   const [messages, setMessages] = useState<MessageDTO[]>([]);
   const [hasMore, setHasMore] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [loadFailed, setLoadFailed] = useState(false);
+  // Bumped by Try again to load the history once more
+  const [attempt, setAttempt] = useState(0);
   // The message being edited inline, plus its working draft. null = not editing.
   const [editing, setEditing] = useState<{ id: number; draft: string } | null>(null);
+  // Why the last try failed, each shown next to what failed until it goes through
+  const [olderError, setOlderError] = useState<string | null>(null);
+  const [sendError, setSendError] = useState<string | null>(null);
+  const [editError, setEditError] = useState<string | null>(null);
+  const [actionError, setActionError] = useState<string | null>(null);
+  // Any action that goes through clears them all
+  const clearErrors = useCallback(() => {
+    setOlderError(null);
+    setSendError(null);
+    setEditError(null);
+    setActionError(null);
+  }, []);
   const scrollRef = useRef<HTMLDivElement>(null);
   // Scroll height before a load-older prepend, so the effect below can restore
   // the reading position instead of jumping to the bottom.
@@ -108,7 +129,9 @@ export function MessageThread({
         const newest = asc[asc.length - 1];
         if (newest) markReadUpTo(newest.id);
       })
-      .catch(() => {})
+      .catch(() => {
+        if (!cancelled) setLoadFailed(true);
+      })
       .finally(() => {
         if (!cancelled) setLoading(false);
       });
@@ -117,7 +140,12 @@ export function MessageThread({
       pendingReadRef.current = null; // a deferred read must not leak across conversations
       setActiveConversation(null);
     };
-  }, [conversationId, setActiveConversation, markReadUpTo]);
+  }, [conversationId, setActiveConversation, markReadUpTo, attempt]);
+
+  const retryLoad = () => {
+    setLoadFailed(false);
+    setAttempt((a) => a + 1);
+  };
 
   // Live frames for this conversation.
   const onFrame = useCallback(
@@ -178,17 +206,34 @@ export function MessageThread({
         if (el) prependRef.current = { height: el.scrollHeight, top: el.scrollTop };
         setMessages((prev) => [...[...res.messages].reverse(), ...prev]);
         setHasMore(res.hasMore);
+        clearErrors();
       })
-      .catch(() => {});
-  }, [conversationId, messages]);
+      .catch((err: unknown) => setOlderError(errMsg(err)));
+  }, [conversationId, messages, clearErrors]);
 
   const send = useCallback(
     async (content: string) => {
-      const { message } = await messagesService.sendMessage(conversationId, content);
-      setMessages((prev) => (prev.some((m) => m.id === message.id) ? prev : [...prev, message]));
+      try {
+        const { message } = await messagesService.sendMessage(conversationId, content);
+        setMessages((prev) => (prev.some((m) => m.id === message.id) ? prev : [...prev, message]));
+        clearErrors();
+      } catch (err) {
+        setSendError(errMsg(err));
+        throw err; // the composer keeps the text
+      }
     },
-    [conversationId],
+    [conversationId, clearErrors],
   );
+
+  const startEdit = (m: MessageDTO) => {
+    setEditError(null);
+    setEditing({ id: m.id, draft: m.content });
+  };
+
+  const closeEdit = () => {
+    setEditError(null);
+    setEditing(null);
+  };
 
   const saveEdit = useCallback(() => {
     if (!editing) return;
@@ -198,6 +243,7 @@ export function MessageThread({
     // Nothing to save on an empty draft; an unchanged draft just closes the
     // editor without a needless request (and without stamping editedAt).
     if (!content || content === current?.content) {
+      setEditError(null);
       setEditing(null);
       return;
     }
@@ -205,28 +251,38 @@ export function MessageThread({
       .editMessage(id, content)
       .then(({ message }) => {
         setMessages((prev) => prev.map((m) => (m.id === id ? message : m)));
+        clearErrors();
+        setEditing(null);
       })
-      .catch(() => {})
-      .finally(() => setEditing(null));
-  }, [editing, messages]);
+      // The editor stays open with the draft, so the change isn't lost
+      .catch((err: unknown) => setEditError(errMsg(err)));
+  }, [editing, messages, clearErrors]);
 
-  const remove = useCallback((id: number) => {
-    messagesService
-      .deleteMessage(id)
-      .then(({ message }) => {
-        setMessages((prev) => prev.map((m) => (m.id === id ? message : m)));
-      })
-      .catch(() => {});
-  }, []);
+  const remove = useCallback(
+    (id: number) => {
+      messagesService
+        .deleteMessage(id)
+        .then(({ message }) => {
+          setMessages((prev) => prev.map((m) => (m.id === id ? message : m)));
+          clearErrors();
+        })
+        .catch((err: unknown) => setActionError(errMsg(err)));
+    },
+    [clearErrors],
+  );
 
-  const react = useCallback((messageId: number, emoji: string) => {
-    messagesService
-      .toggleReaction(messageId, emoji)
-      .then(({ message }) => {
-        setMessages((prev) => prev.map((m) => (m.id === messageId ? message : m)));
-      })
-      .catch(() => {});
-  }, []);
+  const react = useCallback(
+    (messageId: number, emoji: string) => {
+      messagesService
+        .toggleReaction(messageId, emoji)
+        .then(({ message }) => {
+          setMessages((prev) => prev.map((m) => (m.id === messageId ? message : m)));
+          clearErrors();
+        })
+        .catch((err: unknown) => setActionError(errMsg(err)));
+    },
+    [clearErrors],
+  );
 
   return (
     <div className="flex flex-col h-full">
@@ -249,6 +305,8 @@ export function MessageThread({
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-2">
         {loading ? (
           <div className="text-center text-[13px] text-[var(--text3)] py-8">…</div>
+        ) : loadFailed ? (
+          <LoadError text={t('messages.historyFailed')} onRetry={retryLoad} />
         ) : (
           <>
             {hasMore && (
@@ -258,6 +316,11 @@ export function MessageThread({
               >
                 {t('messages.loadOlder')}
               </button>
+            )}
+            {hasMore && olderError && (
+              <p role="alert" className="self-center text-[12px] text-[var(--error)] mb-1">
+                {olderError}
+              </p>
             )}
             {messages.map((m) => {
               const mine = m.senderId === currentUserId;
@@ -278,7 +341,7 @@ export function MessageThread({
                             saveEdit();
                           } else if (e.key === 'Escape') {
                             e.preventDefault();
-                            setEditing(null);
+                            closeEdit();
                           }
                         }}
                         rows={1}
@@ -288,7 +351,7 @@ export function MessageThread({
                       <div className="flex items-center gap-2 text-[10px] text-[var(--text3)]">
                         <span>{t('messages.editHint')}</span>
                         <button
-                          onClick={() => setEditing(null)}
+                          onClick={closeEdit}
                           className="hover:text-[var(--text)] bg-transparent border-none cursor-pointer"
                         >
                           {t('messages.cancel')}
@@ -300,6 +363,11 @@ export function MessageThread({
                           {t('messages.save')}
                         </button>
                       </div>
+                      {editError && (
+                        <p role="alert" className="text-[12px] text-[var(--error)]">
+                          {editError}
+                        </p>
+                      )}
                     </div>
                   ) : (
                     <div
@@ -319,7 +387,7 @@ export function MessageThread({
                           align={mine ? 'left' : 'right'}
                           canModify={mine}
                           onReact={(emoji) => react(m.id, emoji)}
-                          onEdit={() => setEditing({ id: m.id, draft: m.content })}
+                          onEdit={() => startEdit(m)}
                           onDelete={() => remove(m.id)}
                         />
                       )}
@@ -377,7 +445,15 @@ export function MessageThread({
         )}
       </div>
 
-      <MessageComposer onSend={send} />
+      {actionError && (
+        <p
+          role="alert"
+          className="px-4 py-2 border-t border-[var(--border)] text-[12px] text-[var(--error)] flex-shrink-0"
+        >
+          {actionError}
+        </p>
+      )}
+      {!loadFailed && <MessageComposer onSend={send} error={sendError} />}
     </div>
   );
 }
