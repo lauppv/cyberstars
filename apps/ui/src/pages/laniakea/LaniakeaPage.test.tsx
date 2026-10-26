@@ -29,7 +29,7 @@ vi.mock('../../services/laniakeaService', () => ({
 }));
 vi.mock('./scene/loadThree', () => ({ loadThree: h.loadThree }));
 vi.mock('../../context/NotificationContext', () => ({
-  useNotifications: () => ({ items: [], markOneRead: vi.fn() }),
+  useNotifications: () => ({ items: [], noteRead: vi.fn() }),
 }));
 vi.mock('./scene/explorer', () => ({ createExplorer: h.createExplorer }));
 vi.mock('../../context/CurriculumContext', () => ({
@@ -131,6 +131,7 @@ describe('LaniakeaPage', () => {
     fireEvent.click(next);
     expect(screen.getByText('A lesson')).toBeInTheDocument();
     expect(h.loadThree).not.toHaveBeenCalled();
+    expect(h.markSeen).not.toHaveBeenCalled();
   });
 
   it('tells the server the game is open, so the bell drops its recaps', async () => {
@@ -139,11 +140,13 @@ describe('LaniakeaPage', () => {
     expect(h.markSeen).toHaveBeenCalledTimes(1);
   });
 
-  it('offers to try again when the game cannot be read', async () => {
+  it('offers to try again when the game cannot be read, and tells the server only once it shows', async () => {
     h.getLaniakea.mockRejectedValueOnce(new Error('down'));
     renderPage();
     fireEvent.click(await screen.findByRole('button', { name: 'Try again' }));
+    expect(h.markSeen).not.toHaveBeenCalled();
     expect(await screen.findByRole('button', { name: /Take the helm/ })).toBeInTheDocument();
+    expect(h.markSeen).toHaveBeenCalledTimes(1);
   });
 
   it('starts the ship from the intro and hands the scene the planets, their marks and the controls', async () => {

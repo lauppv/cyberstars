@@ -29,6 +29,9 @@ interface NotificationContextValue {
   loadMore: () => void;
   markAllRead: () => void;
   markOneRead: (id: number) => void;
+  // Shows one the server has read already as read; the server's push brings
+  // the count.
+  noteRead: (id: number) => void;
 }
 
 const NotificationContext = createContext<NotificationContextValue | null>(null);
@@ -158,6 +161,11 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
     [items],
   );
 
+  const noteRead = useCallback((id: number) => {
+    const now = new Date().toISOString();
+    setItems((prev) => prev.map((n) => (n.id === id && !n.readAt ? { ...n, readAt: now } : n)));
+  }, []);
+
   return (
     <NotificationContext
       value={{
@@ -172,6 +180,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
         loadMore,
         markAllRead,
         markOneRead,
+        noteRead,
       }}
     >
       {children}

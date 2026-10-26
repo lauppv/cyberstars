@@ -1,19 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNotifications } from '../../context/NotificationContext';
 import * as laniakeaService from '../../services/laniakeaService';
 
-// The board shows the recaps open, so while the game is open the bell has
-// nothing to tell about them. Opening it tells the server, which keeps the
-// visit and reads the recap notification; the bell's own list is read here
-// too, for the one it already holds and any that comes in during the game.
-export function useRecapsSeen(): void {
-  const { items, markOneRead } = useNotifications();
+// The board shows the recaps open, so while it is on screen the bell has
+// nothing to tell about them. Once the board shows, and again whenever a recap
+// notification comes in, the server is told: it keeps the visit, reads the
+// notification and pushes the count, so the bell's own copy is only shown read.
+export function useRecapsSeen(shown: boolean): void {
+  const { items, noteRead } = useNotifications();
+  const unread = items
+    .filter((n) => n.type === 'LANIAKEA_RECAP' && !n.readAt)
+    .map((n) => n.id)
+    .join(',');
+  const told = useRef(false);
   useEffect(() => {
+    if (!shown || (told.current && !unread)) return;
+    told.current = true;
     laniakeaService.markSeen().catch(() => {
       // the next visit tells it again
     });
-  }, []);
-  useEffect(() => {
-    for (const n of items) if (n.type === 'LANIAKEA_RECAP' && !n.readAt) markOneRead(n.id);
-  }, [items, markOneRead]);
+    for (const id of unread ? unread.split(',') : []) noteRead(Number(id));
+  }, [shown, unread, noteRead]);
 }

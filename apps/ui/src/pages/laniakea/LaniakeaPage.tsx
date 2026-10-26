@@ -69,7 +69,7 @@ export function LaniakeaPage() {
   useEffect(() => {
     load();
   }, [load]);
-  useRecapsSeen();
+  useRecapsSeen(state?.unlocked ?? false);
 
   const now = useNow(offset);
   const [started, setStarted] = useState(false);

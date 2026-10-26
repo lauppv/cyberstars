@@ -4,12 +4,12 @@ import type { NotificationDTO } from '@cyberstars/shared/notifications';
 
 const h = vi.hoisted(() => ({
   markSeen: vi.fn(),
-  markOneRead: vi.fn(),
+  noteRead: vi.fn(),
   items: [] as NotificationDTO[],
 }));
 vi.mock('../../services/laniakeaService', () => ({ markSeen: h.markSeen }));
 vi.mock('../../context/NotificationContext', () => ({
-  useNotifications: () => ({ items: h.items, markOneRead: h.markOneRead }),
+  useNotifications: () => ({ items: h.items, noteRead: h.noteRead }),
 }));
 
 import { useRecapsSeen } from './useRecapsSeen';
@@ -37,33 +37,49 @@ beforeEach(() => {
 });
 
 describe('useRecapsSeen', () => {
-  it('tells the server once when the game opens', () => {
-    const { rerender } = renderHook(() => useRecapsSeen());
+  it('tells the server once when the board shows', () => {
+    const { rerender } = renderHook(() => useRecapsSeen(true));
     rerender();
     expect(h.markSeen).toHaveBeenCalledTimes(1);
   });
 
-  it('reads the unread recap notification the bell holds, and only that one', () => {
+  it('tells nothing while the board is not on screen', () => {
+    h.items = [n(3, 'LANIAKEA_RECAP')];
+    const { rerender } = renderHook(({ shown }) => useRecapsSeen(shown), {
+      initialProps: { shown: false },
+    });
+    expect(h.markSeen).not.toHaveBeenCalled();
+    expect(h.noteRead).not.toHaveBeenCalled();
+    rerender({ shown: true });
+    expect(h.markSeen).toHaveBeenCalledTimes(1);
+    expect(h.noteRead).toHaveBeenCalledWith(3);
+  });
+
+  it('shows the unread recap notification read, and only that one', () => {
     h.items = [
       n(3, 'LANIAKEA_RECAP'),
       n(2, 'LANIAKEA_RECAP', '2026-10-25T10:00:00Z'),
       n(1, 'FORUM_REPLY'),
     ];
-    renderHook(() => useRecapsSeen());
-    expect(h.markOneRead.mock.calls).toEqual([[3]]);
+    renderHook(() => useRecapsSeen(true));
+    expect(h.noteRead.mock.calls).toEqual([[3]]);
+    expect(h.markSeen).toHaveBeenCalledTimes(1);
   });
 
-  it('reads one that comes in while the game is open', () => {
-    const { rerender } = renderHook(() => useRecapsSeen());
-    expect(h.markOneRead).not.toHaveBeenCalled();
+  it('tells the server again when one comes in while the board shows', () => {
+    const { rerender } = renderHook(() => useRecapsSeen(true));
     h.items = [n(4, 'LANIAKEA_RECAP')];
     rerender();
-    expect(h.markOneRead).toHaveBeenCalledWith(4);
+    expect(h.markSeen).toHaveBeenCalledTimes(2);
+    expect(h.noteRead).toHaveBeenCalledWith(4);
+    h.items = [n(4, 'LANIAKEA_RECAP', '2026-10-25T10:00:00Z')];
+    rerender();
+    expect(h.markSeen).toHaveBeenCalledTimes(2);
   });
 
   it('keeps the game going when the server cannot be told', async () => {
     h.markSeen.mockRejectedValue(new Error('offline'));
-    renderHook(() => useRecapsSeen());
+    renderHook(() => useRecapsSeen(true));
     await waitFor(() => expect(h.markSeen).toHaveBeenCalled());
   });
 });
