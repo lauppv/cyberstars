@@ -560,6 +560,8 @@ export function addWonders(THREE: any, scene: any, camera: any, placedPositions:
 
   // Moves everything one frame on; `dt` in ms, `dtSec` in seconds.
   function update(now: number, dt: number, dtSec: number) {
+    // the turns below are a frame's at 60 frames a second, scaled to this one
+    const dtN = dt / 16;
     for (const s of ships) {
       s.orbitPhase += s.orbitSpeed * dt;
       const arb =
@@ -582,19 +584,19 @@ export function addWonders(THREE: any, scene: any, camera: any, placedPositions:
     }
 
     for (const bh of blackHoles) {
-      bh.disk.rotation.z += bh.disk.userData.spin;
+      bh.disk.rotation.z += bh.disk.userData.spin * dtN;
       bh.photon.lookAt(camera.position);
       bh.halo.material.opacity = 0.85 + 0.15 * Math.sin(now * 0.002);
     }
 
     for (const q of quasars) {
-      q.group.rotation.z += 0.0006;
-      if (q.disk) q.disk.rotation.z += 0.005;
+      q.group.rotation.z += 0.0006 * dtN;
+      if (q.disk) q.disk.rotation.z += 0.005 * dtN;
       q.glow.material.opacity = 0.85 + 0.15 * Math.sin(now * 0.0015);
     }
 
     for (const d of dysonSpheres) {
-      d.group.rotation.y += 0.0006;
+      d.group.rotation.y += 0.0006 * dtN;
       d.lights.material.opacity = 0.6 + 0.4 * Math.sin(now * 0.002);
     }
 

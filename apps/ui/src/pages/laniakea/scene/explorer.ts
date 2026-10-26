@@ -2,6 +2,7 @@
 import { addBackdrop } from './backdrop';
 import { addWonders } from './wonders';
 import { attachControls, type TouchParts } from './controls';
+import { createResolution } from './resolution';
 import {
   PLANET_LOOKS,
   addMarks,
@@ -105,9 +106,11 @@ export function createExplorer(
   camera.position.set(0, 0, 0);
   camera.rotation.order = 'YXZ';
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  // no antialiasing: it doubled the time of a frame without a GPU
+  const renderer = new THREE.WebGLRenderer({ antialias: false });
+  const resolution = createResolution(devicePixelRatio);
   renderer.setSize(innerWidth, innerHeight);
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setPixelRatio(resolution.ratio);
   renderer.setClearColor(0x05050d, 1);
   mount.appendChild(renderer.domElement);
 
@@ -181,20 +184,6 @@ export function createExplorer(
     return { slug: best.slug, distance, inReach: distance < REACH };
   }
 
-  // A ship that flies at a planet stops outside its rings instead of passing
-  // through it, so the planet never fills the whole view.
-  function keepOutside() {
-    for (const p of planets) {
-      toPlanet.subVectors(camera.position, p.group.position);
-      const d = toPlanet.length();
-      const min = p.radius * 2.6;
-      if (d < min) {
-        camera.position.copy(p.group.position).addScaledVector(toPlanet.normalize(), min);
-        velocity.multiplyScalar(0.2);
-      }
-    }
-  }
-
   function updateArrow() {
     if (!target) {
       arrow.visible = false;
@@ -214,6 +203,8 @@ export function createExplorer(
   function animate(now: number) {
     if (destroyed) return;
     rafId = requestAnimationFrame(animate);
+    const coarser = resolution.frame(now - lastT);
+    if (coarser !== null) renderer.setPixelRatio(coarser);
     const dt = Math.min(50, now - lastT);
     lastT = now;
     const dtN = dt / 16;
@@ -238,7 +229,6 @@ export function createExplorer(
     if (dir !== 0) targetVel.addScaledVector(fwd, dir * MAX_SPEED * (c.boost ? BOOST : 1));
     velocity.lerp(targetVel, 1 - Math.exp(-dtSec / (dir !== 0 ? ACCEL_TAU : DECEL_TAU)));
     if (velocity.lengthSq() > 1e-6) camera.position.addScaledVector(velocity, dtN);
-    keepOutside();
 
     skyStars.position.copy(camera.position);
     milkyGroup.position.copy(camera.position);
@@ -247,14 +237,14 @@ export function createExplorer(
     milkyGroup.rotation.y = galaxySpin;
 
     for (const p of planets) {
-      p.planet.rotation.y += p.planet.userData.spin;
+      p.planet.rotation.y += p.planet.userData.spin * dtN;
       for (const moon of p.moons) {
         const o = moon.userData.orbit;
-        o.angle += o.speed;
+        o.angle += o.speed * dtN;
         moon.position.x = Math.cos(o.angle) * o.radius;
         moon.position.z = Math.sin(o.angle) * o.radius;
       }
-      animateMarks(p.marks, now);
+      animateMarks(p.marks, now, dtN);
     }
     wonders.update(now, dt, dtSec);
     updateArrow();
@@ -286,8 +276,11 @@ export function createExplorer(
     setTarget(slug) {
       target = slug ? (bySlug.get(slug) ?? null) : null;
     },
+    // the ship flies through planets, so it stops where it is while it doesn't
+    // fly: landed, paused or asked to leave
     setActive(active) {
       controls.setActive(active);
+      if (!active) velocity.set(0, 0, 0);
     },
     dispose() {
       destroyed = true;

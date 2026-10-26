@@ -373,11 +373,12 @@ export function setMark(marks: Marks, mark: PlanetMark): void {
   marks.halo.material.opacity = owned ? 0.55 : 0.18;
 }
 
-// Turns the rings slowly and makes an open recap pulse.
-export function animateMarks(marks: Marks, now: number): void {
+// Turns the rings slowly and makes an open recap pulse; `dtN` is the frame's
+// time in 16 ms steps.
+export function animateMarks(marks: Marks, now: number, dtN: number): void {
   if (marks.mark === 'none') return;
-  marks.ring.rotation.z += 0.002;
-  marks.gold.rotation.z -= 0.0015;
+  marks.ring.rotation.z += 0.002 * dtN;
+  marks.gold.rotation.z -= 0.0015 * dtN;
   if (marks.mark === 'recap') {
     const pulse = 0.5 + 0.5 * Math.sin(now * 0.004);
     marks.ring.material.opacity = 0.45 + 0.5 * pulse;
