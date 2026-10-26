@@ -37,7 +37,7 @@ async function upsertFor(userId: number, input: NotifyInput): Promise<repo.Notif
     const existing = await repo.findUnreadFor(userId, input.type, input.entityId);
     if (existing) {
       const prev = (existing.data as NotificationData | null) ?? {};
-      const count = (prev.count ?? 1) + 1;
+      const count = input.data?.count ?? (prev.count ?? 1) + 1;
       return repo.collapse(existing, input.actorId ?? null, { ...prev, ...input.data, count });
     }
   }

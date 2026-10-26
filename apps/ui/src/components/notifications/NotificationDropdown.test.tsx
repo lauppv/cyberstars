@@ -89,6 +89,15 @@ describe('NotificationDropdown copy', () => {
     expect(screen.getByText('New reply on ticket "Thread"')).toBeInTheDocument();
     expect(screen.getByText('Ticket "Thread" is now Resolved')).toBeInTheDocument();
   });
+
+  it('counts the open Laniakea recaps', () => {
+    renderWith([
+      n({ id: 1, type: 'LANIAKEA_RECAP', entityId: 0, actor: null, data: { count: 1 } }),
+      n({ id: 2, type: 'LANIAKEA_RECAP', entityId: 0, actor: null, data: { count: 3 } }),
+    ]);
+    expect(screen.getByText('A Laniakea recap is open')).toBeInTheDocument();
+    expect(screen.getByText('3 Laniakea recaps are open')).toBeInTheDocument();
+  });
 });
 
 describe('NotificationDropdown routing', () => {
@@ -124,6 +133,12 @@ describe('NotificationDropdown routing', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/support');
     fireEvent.click(items[1]);
     expect(mockNavigate).toHaveBeenCalledWith('/connections');
+  });
+
+  it('routes a Laniakea recap to the game', () => {
+    renderWith([n({ type: 'LANIAKEA_RECAP', entityId: 0, data: { count: 2 } })]);
+    fireEvent.click(screen.getByRole('menuitem'));
+    expect(mockNavigate).toHaveBeenCalledWith('/laniakea');
   });
 });
 

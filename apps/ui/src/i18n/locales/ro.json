@@ -445,7 +445,10 @@
     "ticketReply": "Răspuns nou la tichetul „{{title}}”",
     "status": "Tichetul „{{title}}” este acum {{status}}",
     "connectionRequest": "{{name}} vrea să se conecteze cu tine",
-    "connectionAccepted": "{{name}} ți-a acceptat cererea de conexiune"
+    "connectionAccepted": "{{name}} ți-a acceptat cererea de conexiune",
+    "laniakeaRecap_one": "Ai o recapitulare deschisă în Laniakea",
+    "laniakeaRecap_few": "Ai {{count}} recapitulări deschise în Laniakea",
+    "laniakeaRecap_other": "Ai {{count}} de recapitulări deschise în Laniakea"
   },
   "courses": {
     "lessons_one": "lecție",
