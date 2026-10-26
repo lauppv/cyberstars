@@ -247,14 +247,14 @@ export function createExplorer(
     milkyGroup.rotation.y = galaxySpin;
 
     for (const p of planets) {
-      p.planet.rotation.y += p.planet.userData.spin;
+      p.planet.rotation.y += p.planet.userData.spin * dtN;
       for (const moon of p.moons) {
         const o = moon.userData.orbit;
-        o.angle += o.speed;
+        o.angle += o.speed * dtN;
         moon.position.x = Math.cos(o.angle) * o.radius;
         moon.position.z = Math.sin(o.angle) * o.radius;
       }
-      animateMarks(p.marks, now);
+      animateMarks(p.marks, now, dtN);
     }
     wonders.update(now, dt, dtSec);
     updateArrow();
