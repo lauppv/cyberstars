@@ -12,6 +12,28 @@ export async function markOnboarded(email: string) {
   });
 }
 
+// Marks a course's first lessons completed for an account and returns their
+// slugs, in the course's order.
+export async function completeLessons(email: string, courseKey: string, count: number) {
+  const user = await prisma.user.findUniqueOrThrow({ where: { email } });
+  const lessons = await prisma.lesson.findMany({
+    where: { courseKey },
+    orderBy: { sortOrder: 'asc' },
+    take: count,
+  });
+  const now = new Date();
+  await prisma.userLessonProgress.createMany({
+    data: lessons.map((l) => ({
+      userId: user.id,
+      courseKey,
+      lessonSlug: l.slug,
+      completed: true,
+      completedAt: now,
+    })),
+  });
+  return lessons.map((l) => l.slug);
+}
+
 export async function resetDB() {
   await prisma.$executeRawUnsafe(`
     TRUNCATE
