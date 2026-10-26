@@ -15,6 +15,7 @@ import { badgeLabel, badgeDescription } from '../components/gamification/badgeMe
 import { courseTitle } from '../constants/courses';
 import * as userService from '../services/userService';
 import * as connectionsService from '../services/connectionsService';
+import { ApiClientError } from '../services/apiClient';
 import type { PublicProfile } from '@cyberstars/shared/profile';
 import type { ConnectionRelation } from '@cyberstars/shared/connections';
 import type { Course } from '@cyberstars/shared/lesson';
@@ -117,6 +118,7 @@ export function PublicProfilePage() {
   const [messaging, setMessaging] = useState(false);
   const [relation, setRelation] = useState<ConnectionRelation>('none');
   const [connecting, setConnecting] = useState(false);
+  const [connectError, setConnectError] = useState<string | null>(null);
 
   // Client-side guard is UX only; the API is server-authoritative.
   useEffect(() => {
@@ -135,6 +137,7 @@ export function PublicProfilePage() {
     let cancelled = false;
     setLoading(true);
     setError(null);
+    setConnectError(null);
     userService
       .getPublicProfile(id)
       .then((p) => {
@@ -172,11 +175,20 @@ export function PublicProfilePage() {
   const sendConnectionRequest = async () => {
     if (!profile) return;
     setConnecting(true);
+    setConnectError(null);
     try {
       await connectionsService.sendRequest(profile.userId);
       setRelation('pending_outgoing');
-    } catch {
-      // leave the relation as-is; the button re-enables so the user can retry
+    } catch (err) {
+      setConnectError(
+        err instanceof Error && err.message ? err.message : t('common.somethingWrong'),
+      );
+      // 409: the two are already connected or a request is pending, maybe one
+      // the other person sent, so ask which instead of guessing
+      if (err instanceof ApiClientError && err.status === 409) {
+        const fresh = await userService.getPublicProfile(profile.userId).catch(() => null);
+        if (fresh) setRelation(fresh.connectionRelation);
+      }
     } finally {
       setConnecting(false);
     }
@@ -417,6 +429,11 @@ export function PublicProfilePage() {
                 </>
               )}
             </div>
+            {connectError && (
+              <p role="alert" className="pt-3 text-[12px] text-[var(--error)]">
+                {connectError}
+              </p>
+            )}
           </div>
         )}
       </main>
