@@ -57,9 +57,12 @@
     "noData": "No data yet",
     "missed": {
       "title": "Laniakea questions missed most",
-      "hint": "Questions answered at least {{n}} times, the highest share of wrong answers first. One that most students miss is usually unclear or has a wrong answer.",
-      "none": "No question has been answered {{n}} times yet.",
-      "wrong": "{{wrong}} of {{answered}} wrong",
+      "hint_one": "Questions answered at least once, the highest share of wrong answers first. One that most students miss is usually unclear or has a wrong answer.",
+      "hint_other": "Questions answered at least {{count}} times, the highest share of wrong answers first. One that most students miss is usually unclear or has a wrong answer.",
+      "none_one": "No question has been answered yet.",
+      "none_other": "No question has been answered {{count}} times yet.",
+      "wrong_one": "{{count}} of {{answered}} wrong",
+      "wrong_other": "{{count}} of {{answered}} wrong",
       "right": "Right answer"
     },
     "visits": "Visitors",

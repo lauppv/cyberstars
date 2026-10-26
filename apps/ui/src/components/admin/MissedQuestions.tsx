@@ -28,7 +28,7 @@ function Question({ q, planet }: { q: MissedQuestion; planet: string }) {
           {planet} · {q.id}
         </span>
         <span className="text-[var(--error)] tabular-nums shrink-0">
-          {t('admin.missed.wrong', { wrong: q.wrong, answered: q.answered })} ·{' '}
+          {t('admin.missed.wrong', { count: q.wrong, answered: q.answered })} ·{' '}
           {share(q.wrong, q.answered)}
         </span>
       </div>
@@ -92,7 +92,7 @@ export function MissedQuestions({ className, reload }: { className: string; relo
     <section className={className}>
       <h2 className="text-[14px] font-semibold mb-1">{t('admin.missed.title')}</h2>
       <p className="mt-0 mb-4 text-[12px] text-[var(--text3)]">
-        {t('admin.missed.hint', { n: MISSED_MIN_ANSWERS })}
+        {t('admin.missed.hint', { count: MISSED_MIN_ANSWERS })}
       </p>
       {failed && (
         <p role="alert" className="mt-0 mb-4 text-[12px] text-[var(--error)]">
@@ -101,7 +101,7 @@ export function MissedQuestions({ className, reload }: { className: string; relo
       )}
       {list?.length === 0 && (
         <span className="text-[12px] text-[var(--text3)]">
-          {t('admin.missed.none', { n: MISSED_MIN_ANSWERS })}
+          {t('admin.missed.none', { count: MISSED_MIN_ANSWERS })}
         </span>
       )}
       {list && list.length > 0 && (

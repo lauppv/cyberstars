@@ -58,9 +58,15 @@
     "noData": "Încă nu sunt date",
     "missed": {
       "title": "Întrebările Laniakea greșite cel mai des",
-      "hint": "Întrebările la care s-a răspuns de cel puțin {{n}} de ori, întâi cele cu cel mai mare procent de răspunsuri greșite. Una pe care o greșesc majoritatea elevilor e de obicei neclară sau are un răspuns greșit.",
-      "none": "Încă nicio întrebare n-a primit {{n}} de răspunsuri.",
-      "wrong": "{{wrong}} greșite din {{answered}}",
+      "hint_one": "Întrebările la care s-a răspuns cel puțin o dată, întâi cele cu cel mai mare procent de răspunsuri greșite. Una pe care o greșesc majoritatea elevilor e de obicei neclară sau are un răspuns greșit.",
+      "hint_few": "Întrebările la care s-a răspuns de cel puțin {{count}} ori, întâi cele cu cel mai mare procent de răspunsuri greșite. Una pe care o greșesc majoritatea elevilor e de obicei neclară sau are un răspuns greșit.",
+      "hint_other": "Întrebările la care s-a răspuns de cel puțin {{count}} de ori, întâi cele cu cel mai mare procent de răspunsuri greșite. Una pe care o greșesc majoritatea elevilor e de obicei neclară sau are un răspuns greșit.",
+      "none_one": "Încă nicio întrebare n-a primit un răspuns.",
+      "none_few": "Încă nicio întrebare n-a primit {{count}} răspunsuri.",
+      "none_other": "Încă nicio întrebare n-a primit {{count}} de răspunsuri.",
+      "wrong_one": "{{count}} greșit din {{answered}}",
+      "wrong_few": "{{count}} greșite din {{answered}}",
+      "wrong_other": "{{count}} de greșite din {{answered}}",
       "right": "Răspunsul corect"
     },
     "visits": "Vizitatori",
