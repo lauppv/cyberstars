@@ -406,6 +406,9 @@
     "xpTotal": "{{xp}} XP",
     "xpReward": "+{{xp}} XP",
     "somethingWrong": "Ceva n-a mers. Încearcă din nou.",
+    "unreachable": "Nu am putut ajunge la CyberStars. Verifică-ți conexiunea la internet și încearcă din nou.",
+    "tooFast": "Mergi prea repede. Așteaptă un minut, apoi încearcă din nou.",
+    "unavailable": "CyberStars se actualizează sau nu e disponibil acum. Încearcă din nou peste câteva minute.",
     "back": "Înapoi",
     "breadcrumb": "Unde te afli",
     "retry": "Încearcă din nou"
