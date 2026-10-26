@@ -22,7 +22,7 @@ npm run test:watch        # Vitest in watch mode
 npm run test:coverage     # Vitest + v8 coverage (./coverage/); fails if below thresholds
 npm run test:integration  # Real-Postgres integration tests (apps/api/test/integration/, requires .env.test)
 npm run test:e2e          # Playwright (both projects: browser + docker)
-npm run test:e2e:browser  # Playwright browser-only (auth/forum/support/courses/profile)
+npm run test:e2e:browser  # Playwright browser-only (auth/forum/support/courses/profile/laniakea)
 npm run test:e2e:docker   # Playwright docker runners (Python/C/Java/terminal/ws-stdin)
 npm run test:e2e:ui       # Playwright UI mode
 npm run typecheck         # tsc on the UI, the server (+ scripts, integration tests, Prisma) and E2E
@@ -164,7 +164,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Coverage thresholds enforced in `vitest.config.ts`: **90% on all metrics** (lines/statements/functions/branches); `npm run test:coverage` fails if below
 - Code formatting via Prettier; config in `.prettierrc`, check with `npm run format:check`, fix with `npm run format`
 - **Integration tests** (`apps/api/test/integration/`) run against a real PostgreSQL DB (config in `apps/api/vitest.integration.config.ts`). `global-setup.ts` runs `prisma migrate deploy` + seed once; per-file `setup.ts` truncates app tables before each test and inserts a Sentinel ADMIN so `createAuthenticatedAgent()` returns regular USERs (first-registered-user auto-promotes to ADMIN). Tests are serial (`fileParallelism: false`) to avoid DB contention. Requires `.env.test`
-- **E2E tests** (`e2e/`) use Playwright with two projects: `browser` (auth/forum/support/courses/profile via `npm run dev` webserver) and `docker` (code execution paths; needs all runner Docker images plus `cyberstars-linux-sandbox` built locally). `e2e/global-setup.ts` migrates+seeds; `e2e/fixtures/test.ts` provides an `authedPage` fixture that resets the DB and signs up a fresh user via the API before each test. The webserver autostarts the dev stack when no server is running on :5173
+- **E2E tests** (`e2e/`) use Playwright with two projects: `browser` (auth/forum/support/courses/profile/laniakea via `npm run dev` webserver; `laniakea.spec.ts` flies to First steps in the real 3D scene, drawn without a GPU, and answers from the planet's question files) and `docker` (code execution paths; needs all runner Docker images plus `cyberstars-linux-sandbox` built locally). `e2e/global-setup.ts` migrates+seeds; `e2e/fixtures/test.ts` provides an `authedPage` fixture that resets the DB and signs up a fresh user via the API before each test. The webserver autostarts the dev stack when no server is running on :5173
 - CodeMirror auto-pairs `{`, `(`, `[`, `"`. In E2E tests, multi-line code typed with `keyboard.type` may produce duplicate `}`, so keep test code on a single line so the typed `}` skips over the auto-paired one
 
 ### Production (`cyberstars.app`)
