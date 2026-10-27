@@ -34,6 +34,7 @@ vi.stubGlobal('WebSocket', MockWebSocket);
 
 const { useCodeExecution } = await import('./useCodeExecution');
 const { useRunWait } = await import('./useRunWait');
+const { useMaintenance, setMaintenance } = await import('./useMaintenance');
 
 beforeEach(() => {
   wsInstances = [];
@@ -243,6 +244,25 @@ describe('useCodeExecution', () => {
     });
     expect(result.current.output).toContain('Connection error');
     expect(result.current.isRunning).toBe(false);
+  });
+
+  it('a socket refused by a deploy brings up the maintenance screen', async () => {
+    const fetchSpy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response('', { status: 503, headers: { 'X-Maintenance': '1' } }));
+    const { result } = renderHook(() => ({ run: useCodeExecution(), down: useMaintenance() }));
+    act(() => result.current.run.execute('code', 'python'));
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10));
+    });
+    await act(async () => {
+      wsInstances[0].onerror?.();
+      await new Promise((r) => setTimeout(r, 0));
+    });
+    expect(fetchSpy).toHaveBeenCalledWith('/api/time', { method: 'HEAD', cache: 'no-store' });
+    expect(result.current.down).toBe(true);
+    act(() => setMaintenance(false));
+    fetchSpy.mockRestore();
   });
 
   it('ws.onclose stops running', async () => {

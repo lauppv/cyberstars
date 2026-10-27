@@ -1136,6 +1136,10 @@
     "outputTruncated": "... (rezultat scurtat) ...",
     "connectionError": "Conexiunea s-a întrerupt."
   },
+  "maintenance": {
+    "title": "Aplicăm un update",
+    "body": "CyberStars se actualizează chiar acum. Durează 1-3 minute. Ce ai lucrat rămâne pe pagină, iar ecranul ăsta dispare singur când totul e gata."
+  },
   "runWait": {
     "waiting": "Serverul e foarte aglomerat acum. Nu e nevoie să reîncarci pagina: răspunsul vine imediat ce se eliberează un sandbox.",
     "busy": "Tot aglomerat: nu s-a eliberat niciun sandbox la timp.",
