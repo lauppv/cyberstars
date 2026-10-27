@@ -11,13 +11,18 @@ function slugs(courseKey: string, n: number): string[] {
   return Array.from({ length: n }, (_, i) => `${courseKey}-${i + 1}`);
 }
 const mockLeaderboardService = { getMyRank: vi.fn() };
+const mockLaniakeaRepo = { listPasses: vi.fn() };
 const mockActivityService = { computeStreak: vi.fn() };
 const mockConnectionsService = { relationTo: vi.fn(), publicConnections: vi.fn() };
 
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('../repositories/progress.repository.js', () => mockProgressRepo);
 vi.mock('./leaderboard.service.js', () => mockLeaderboardService);
-vi.mock('./activity.service.js', () => mockActivityService);
+vi.mock('../repositories/laniakea.repository.js', () => mockLaniakeaRepo);
+vi.mock('./activity.service.js', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('./activity.service.js')>()),
+  ...mockActivityService,
+}));
 vi.mock('./connections.service.js', () => mockConnectionsService);
 
 const { getPublicProfile } = await import('./public-profile.service.js');
@@ -43,6 +48,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   mockProgressRepo.getCompletedByCourse.mockResolvedValue([]);
   mockProgressRepo.getActivityDates.mockResolvedValue([]);
+  mockLaniakeaRepo.listPasses.mockResolvedValue([]);
   mockLeaderboardService.getMyRank.mockResolvedValue(null);
   mockActivityService.computeStreak.mockReturnValue(0);
   mockConnectionsService.relationTo.mockResolvedValue('none');
@@ -188,32 +194,50 @@ describe('getPublicProfile', () => {
     const p = await getPublicProfile(7, 42);
     expect(p.activity).toBeNull();
     expect(mockProgressRepo.getActivityDates).not.toHaveBeenCalled();
+    expect(mockLaniakeaRepo.listPasses).not.toHaveBeenCalled();
     expect(p.progress?.badgeList).toEqual([{ courseKey: 'python', level: 0 }]);
   });
 
-  it('returns the owner their recent completed-lesson timestamps, filtered to the window', async () => {
+  it('returns the owner their recent activity by kind, filtered to the window', async () => {
     mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false, showProgress: false }));
     const recent = new Date();
     const old = new Date(Date.now() - 200 * 86_400_000); // outside the ~150-day window
     mockProgressRepo.getActivityDates.mockResolvedValue([
-      { completedAt: recent, lastAccessedAt: recent },
-      { completedAt: old, lastAccessedAt: old },
-      { completedAt: null, lastAccessedAt: recent }, // accessed but never completed
+      { courseKey: 'python', completedAt: recent, lastAccessedAt: recent },
+      { courseKey: 'algo-c', completedAt: recent, lastAccessedAt: recent },
+      { courseKey: 'python', completedAt: old, lastAccessedAt: old },
+      { courseKey: 'java', completedAt: null, lastAccessedAt: recent }, // accessed but never completed
     ]);
+    mockLaniakeaRepo.listPasses.mockResolvedValue([recent, old]);
 
     const p = await getPublicProfile(7, 7);
-    expect(p.activity).toEqual([recent.toISOString()]);
+    expect(p.activity).toEqual([
+      { at: recent.toISOString(), kind: 'recap' },
+      { at: recent.toISOString(), kind: 'lesson' },
+      { at: recent.toISOString(), kind: 'algo' },
+    ]);
+  });
+
+  it('counts Laniakea passes in the streak shown to others', async () => {
+    mockUserRepo.findById.mockResolvedValue(makeUser({ showProgress: false }));
+    const passed = new Date();
+    mockLaniakeaRepo.listPasses.mockResolvedValue([passed]);
+
+    await getPublicProfile(7, 42);
+    expect(mockLaniakeaRepo.listPasses).toHaveBeenCalledWith(7);
+    expect(mockActivityService.computeStreak).toHaveBeenCalledWith([{ at: passed, kind: 'recap' }]);
   });
 
   it('never shows the heatmap to another viewer or a visitor', async () => {
     mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false, showProgress: false }));
     mockProgressRepo.getActivityDates.mockResolvedValue([
-      { completedAt: new Date(), lastAccessedAt: new Date() },
+      { courseKey: 'python', completedAt: new Date(), lastAccessedAt: new Date() },
     ]);
 
     expect((await getPublicProfile(7, 42)).activity).toBeNull();
     expect((await getPublicProfile(7, null)).activity).toBeNull();
     expect(mockProgressRepo.getActivityDates).not.toHaveBeenCalled();
+    expect(mockLaniakeaRepo.listPasses).not.toHaveBeenCalled();
   });
 
   it('reports rank as null and falls back to computed level for an unranked user', async () => {

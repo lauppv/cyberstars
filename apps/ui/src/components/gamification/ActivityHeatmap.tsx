@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
-import { localDateStr } from './heatmap-utils';
+import type { TFunction } from 'i18next';
+import type { ActivityKind } from '@cyberstars/shared/profile';
+import { localDateStr, type DayCounts } from './heatmap-utils';
 
 // Six purple steps, from an empty day to the brightest. Index 0 is a day
 // without activity, 1–5 are increasing activity.
@@ -13,10 +15,14 @@ const HEATMAP_COLORS = [
   '#cbb6ff',
 ];
 
+// The order a day's tooltip names them in
+const KINDS: ActivityKind[] = ['lesson', 'algo', 'recap'];
+
 interface HeatmapDay {
   date: string;
   level: number;
   count: number;
+  counts: DayCounts;
   // Before the period or after today: drawn as an empty slot, not a day
   outside: boolean;
   isFuture: boolean;
@@ -30,9 +36,20 @@ function countToLevel(count: number, max: number): number {
   return Math.ceil((count / max) * (HEATMAP_COLORS.length - 1));
 }
 
+// Like "2 lessons · 1 recap", each kind done that day
+function dayLabel(t: TFunction, counts: DayCounts): string {
+  const parts = KINDS.filter((k) => counts[k]).map((k) =>
+    t(`home.activityKinds.${k}`, { count: counts[k] }),
+  );
+  return parts.length ? parts.join(' · ') : t('home.noActivity');
+}
+
 // The weeks from the one holding the day `months` ago to the current one,
 // Monday to Sunday
-function buildHeatmapData(activityCounts: Record<string, number>, months: number): HeatmapDay[][] {
+function buildHeatmapData(
+  activityCounts: Record<string, DayCounts>,
+  months: number,
+): HeatmapDay[][] {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const todayStr = localDateStr(today);
@@ -55,8 +72,9 @@ function buildHeatmapData(activityCounts: Record<string, number>, months: number
     const dateStr = localDateStr(current);
     const isFuture = dateStr > todayStr;
     const outside = isFuture || dateStr < firstStr;
-    const count = outside ? 0 : (activityCounts[dateStr] ?? 0);
-    days.push({ date: dateStr, count, outside, isFuture });
+    const counts = outside ? {} : (activityCounts[dateStr] ?? {});
+    const count = KINDS.reduce((sum, k) => sum + (counts[k] ?? 0), 0);
+    days.push({ date: dateStr, count, counts, outside, isFuture });
     current.setDate(current.getDate() + 1);
   }
 
@@ -86,7 +104,7 @@ export function ActivityHeatmap({
   activityCounts,
   months = 3,
 }: {
-  activityCounts: Record<string, number>;
+  activityCounts: Record<string, DayCounts>;
   months?: number;
 }) {
   const { t, i18n } = useTranslation();
@@ -155,7 +173,7 @@ export function ActivityHeatmap({
                     border: day.isFuture ? '1px dashed rgba(102,102,128,0.15)' : 'none',
                     visibility: day.outside && !day.isFuture ? 'hidden' : undefined,
                   }}
-                  title={`${new Date(`${day.date}T00:00`).toLocaleDateString(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' })}: ${day.count === 0 ? t('home.noActivity') : t('home.lessonsCompleted', { count: day.count })}`}
+                  title={`${new Date(`${day.date}T00:00`).toLocaleDateString(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' })}: ${dayLabel(t, day.counts)}`}
                 />
               ))}
             </div>

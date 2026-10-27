@@ -4,7 +4,7 @@ import { CircleCheck, Flame } from 'lucide-react';
 import { Field } from '../judge/CaseFields';
 import { caseLabel } from '../judge/format';
 import { ActivityHeatmap } from '../gamification/ActivityHeatmap';
-import { localDateStr } from '../gamification/heatmap-utils';
+import { localDateStr, type DayCounts } from '../gamification/heatmap-utils';
 import { CodeStill } from './CodeStill';
 
 type Lang = 'en' | 'ro';
@@ -141,12 +141,12 @@ const STREAK = 12;
 // Three months, what the heatmap shows
 const DAYS = 92;
 
-function activity(): Record<string, number> {
-  const counts: Record<string, number> = {};
+function activity(): Record<string, DayCounts> {
+  const counts: Record<string, DayCounts> = {};
   const day = new Date();
   for (let i = 0; i < DAYS; i++) {
     const n = i < STREAK ? 1 + (i % 3) : (i * 7) % 5 < 2 ? 1 + (i % 4) : 0;
-    if (n) counts[localDateStr(day)] = n;
+    if (n) counts[localDateStr(day)] = { lesson: n };
     day.setDate(day.getDate() - 1);
   }
   return counts;

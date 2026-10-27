@@ -85,7 +85,11 @@ const fullProfile: PublicProfile = {
       { courseKey: 'algo-c', level: 0 },
     ],
   },
-  activity: ['2026-07-15T10:00:00.000Z', '2026-07-15T12:00:00.000Z', '2026-07-16T09:00:00.000Z'],
+  activity: [
+    { at: '2026-07-15T10:00:00.000Z', kind: 'lesson' },
+    { at: '2026-07-15T12:00:00.000Z', kind: 'recap' },
+    { at: '2026-07-16T09:00:00.000Z', kind: 'algo' },
+  ],
   connections: { users: [], count: 0 },
   connectionRelation: 'none',
 };

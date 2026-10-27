@@ -1,8 +1,9 @@
 import * as userRepo from '../repositories/user.repository.js';
 import * as progressRepo from '../repositories/progress.repository.js';
+import * as laniakeaRepo from '../repositories/laniakea.repository.js';
 import * as leaderboardService from './leaderboard.service.js';
 import * as connectionsService from './connections.service.js';
-import { computeStreak } from './activity.service.js';
+import { computeStreak, listDone, recentActivity } from './activity.service.js';
 import {
   levelFromXp,
   levelTitleKey,
@@ -13,11 +14,6 @@ import type { PublicProfile, PublicProfileBadge } from '@cyberstars/shared/profi
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 const ACTIVE_COURSE_KEYS = new Set<string>([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
-
-const MS_PER_DAY = 86_400_000;
-// A little over the heatmap's 20-week span, so days near the left edge still
-// fill in.
-const HEATMAP_WINDOW_DAYS = 150;
 
 // Earned badges from per-course completion counts, mirroring the client's
 // useGamification: "First Steps" at >=1 lesson (level 0), then one tier per 10
@@ -73,11 +69,13 @@ export async function getPublicProfile(
 
   if (!needStats && !needProgress && !needActivity) return profile;
 
-  const [rank, completed, activityRows] = await Promise.all([
+  const [rank, completed, activityRows, passes] = await Promise.all([
     needStats || needProgress ? leaderboardService.getMyRank(targetId) : Promise.resolve(null),
     needStats || needProgress ? progressRepo.getCompletedByCourse(targetId) : Promise.resolve([]),
     needStats || needActivity ? progressRepo.getActivityDates(targetId) : Promise.resolve([]),
+    needStats || needActivity ? laniakeaRepo.listPasses(targetId) : Promise.resolve([]),
   ]);
+  const done = listDone(activityRows, passes);
 
   const totalXp = rank?.totalXp ?? 0;
 
@@ -94,7 +92,7 @@ export async function getPublicProfile(
     profile.stats = {
       lessonsDone,
       activeCourses,
-      streak: computeStreak(activityRows),
+      streak: computeStreak(done),
       // Enumerate every course with completed lessons, most completed first, so
       // the profile can show expandable per-course lesson lists.
       courses: [...completed]
@@ -116,14 +114,7 @@ export async function getPublicProfile(
     };
   }
 
-  if (needActivity) {
-    // Only the recent window the heatmap renders (~20 weeks) plus a small buffer,
-    // to bound the payload. The client buckets these by its own local day.
-    const cutoff = new Date(now.getTime() - HEATMAP_WINDOW_DAYS * MS_PER_DAY);
-    profile.activity = activityRows
-      .filter((r) => r.completedAt && r.completedAt >= cutoff)
-      .map((r) => r.completedAt!.toISOString());
-  }
+  if (needActivity) profile.activity = recentActivity(done, now);
 
   return profile;
 }

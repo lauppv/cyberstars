@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router';
 import i18n from 'i18next';
 import { fetchAlmanacSlugs, fetchAlmanacArticle } from '../services/almanacService';
 import { fetchDaily } from '../services/dailyService';
+import { getActivity } from '../services/profileService';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router', async (importOriginal) => {
@@ -50,6 +51,9 @@ vi.mock('../components/laniakea/LaniakeaCard', () => ({
 }));
 vi.mock('../services/dailyService', () => ({
   fetchDaily: vi.fn(() => Promise.resolve(null)),
+}));
+vi.mock('../services/profileService', () => ({
+  getActivity: vi.fn(() => Promise.resolve({ streak: 0, lastActiveAt: null, activity: [] })),
 }));
 vi.mock('../services/almanacService', () => ({
   fetchAlmanacSlugs: vi.fn(() => Promise.resolve(['a', 'b', 'c', 'd'])),
@@ -354,48 +358,21 @@ describe('HomePage', () => {
     await waitFor(() => expect(screen.queryByText('From the Almanac')).not.toBeInTheDocument());
   });
 
-  it('renders heatmap activity for dates with multiple completions', () => {
+  it("counts the day's lessons, algorithms and recaps from the server on the heatmap", async () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
-    const sameDay = new Date().toISOString();
-    mockUseCurriculum.mockReturnValue({
-      courses: [
-        {
-          key: 'python',
-          title: 'Python',
-          description: 'Learn Python',
-          lessons: Array.from({ length: 5 }, (_, i) => ({
-            slug: `l${i}`,
-            title: `L${i}`,
-            sortOrder: i,
-          })),
-        },
+    const now = new Date().toISOString();
+    vi.mocked(getActivity).mockResolvedValueOnce({
+      streak: 1,
+      lastActiveAt: now,
+      activity: [
+        { at: now, kind: 'lesson' },
+        { at: now, kind: 'lesson' },
+        { at: now, kind: 'algo' },
+        { at: now, kind: 'recap' },
       ],
-      isLoading: false,
-      refresh: vi.fn(),
-    });
-    mockUseAllProgress.mockReturnValue({
-      progressMap: {
-        python: {
-          courseKey: 'python',
-          earnedXp: 0,
-          totalXp: 0,
-          completed: 5,
-          total: 5,
-          lessons: Array.from({ length: 5 }, (_, i) => ({
-            slug: `l${i}`,
-            title: `L${i}`,
-            completed: true,
-            completedAt: sameDay,
-            lastAccessedAt: sameDay,
-          })),
-        },
-      },
-      failedCourses: new Set(),
-      isLoading: false,
-      refresh: vi.fn(),
     });
     renderPage();
-    expect(screen.getByText('Activity')).toBeDefined();
+    expect(await screen.findByTitle(/: 2 lessons · 1 algorithm · 1 recap$/)).toBeDefined();
   });
 
   it('renders the lesson- and algo-of-the-day cards with XP and bonus', async () => {

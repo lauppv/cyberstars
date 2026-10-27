@@ -6,7 +6,8 @@ import { useAuth, wasSignedIn } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ActivityHeatmap } from '../components/gamification/ActivityHeatmap';
-import { bucketByLocalDay } from '../components/gamification/heatmap-utils';
+import { bucketByLocalDay, type DayCounts } from '../components/gamification/heatmap-utils';
+import * as profileService from '../services/profileService';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import type { Course } from '@cyberstars/shared/lesson';
@@ -25,18 +26,6 @@ import { fetchAlmanacSlugs, fetchAlmanacArticle } from '../services/almanacServi
 import type { AlmanacArticle } from '@cyberstars/shared/almanac';
 import { fetchDaily } from '../services/dailyService';
 import type { DailyResponse } from '@cyberstars/shared/daily';
-
-function extractActivityCounts(
-  progressMap: Record<string, import('@cyberstars/shared/progress').CourseProgress>,
-): Record<string, number> {
-  const timestamps: string[] = [];
-  for (const p of Object.values(progressMap)) {
-    for (const l of p.lessons) {
-      if (l.completedAt) timestamps.push(l.completedAt);
-    }
-  }
-  return bucketByLocalDay(timestamps);
-}
 
 const TODAY_SEED = Math.floor(Date.now() / 86400000);
 
@@ -80,10 +69,9 @@ export function HomePage() {
   const [almanacStory, setAlmanacStory] = useState<AlmanacArticle | null>(null);
   const [almanacHighlights, setAlmanacHighlights] = useState<AlmanacArticle[] | null>(null);
   const [daily, setDaily] = useState<DailyResponse | null>(null);
+  const [activityCounts, setActivityCounts] = useState<Record<string, DayCounts>>({});
   const { courses: allCourses } = useCurriculum();
   const { progressMap, refresh: refreshProgress } = useAllProgress();
-
-  const activityCounts = useMemo(() => extractActivityCounts(progressMap), [progressMap]);
 
   const allNonAlgoCourses = useMemo(() => {
     const keys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
@@ -156,6 +144,21 @@ export function HomePage() {
   useEffect(() => {
     if (isLoggedIn) refreshProgress();
   }, [isLoggedIn, refreshProgress]);
+
+  // Lessons, algorithms and Laniakea tests, counted by the server as on the profile
+  useEffect(() => {
+    if (!isLoggedIn) return;
+    let cancelled = false;
+    profileService
+      .getActivity()
+      .then((a) => {
+        if (!cancelled) setActivityCounts(bucketByLocalDay(a.activity));
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (!isLoggedIn) return;

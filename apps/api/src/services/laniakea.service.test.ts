@@ -60,17 +60,19 @@ function planet(over: Partial<PlanetRow> = {}): PlanetRow {
   };
 }
 
-// The planet the transaction sees, what it decided to write and the answers it
-// counted
+// The planet the transaction sees, what it decided to write, the answers it
+// counted and when the planet moved
 let row: PlanetRow;
 let written: Partial<PlanetRow> | null;
 let counted: CountedAnswer[];
+let passes: Date[];
 
 beforeEach(() => {
   vi.clearAllMocks();
   row = planet();
   written = null;
   counted = [];
+  passes = [];
   mockProgress.getByCourse.mockResolvedValue(done(...FIRST_STEPS));
   mockQuiz.loadQuiz.mockImplementation((_slug: string, lang: string) => (lang === 'ro' ? RO : EN));
   mockQuiz.quizSlugs.mockReturnValue(['print', 'if-else']);
@@ -83,12 +85,14 @@ beforeEach(() => {
       decide: (r: PlanetRow) => {
         change: Partial<PlanetRow> | null;
         counted?: CountedAnswer;
+        passedAt?: Date;
         result: unknown;
       },
     ) => {
-      const { change, counted: answer, result } = decide(row);
+      const { change, counted: answer, passedAt, result } = decide(row);
       written = change;
       if (answer) counted.push(answer);
+      if (passedAt) passes.push(passedAt);
       if (change) row = { ...row, ...change };
       return result;
     },
@@ -443,6 +447,7 @@ describe('answerQuiz', () => {
     expect(out.planet).toMatchObject({ level: 0, retryAt });
     expect(row).toMatchObject({ quiz: null, quizAt: null, level: 0 });
     expect(row.seen).toHaveLength(5);
+    expect(passes).toEqual([]);
   });
 
   it('conquers the planet with four wrong answers and six right', async () => {
@@ -455,6 +460,7 @@ describe('answerQuiz', () => {
     expect(last).toMatchObject({ status: 'passed', leveledUp: true });
     expect(last!.planet).toMatchObject({ level: 1, passedAt: NOW.toISOString(), retryAt: null });
     expect(row).toMatchObject({ level: 1, passedAt: NOW, quiz: null, retryAt: null });
+    expect(passes).toEqual([NOW]);
   });
 
   it('leaves the planet as it was after practice', async () => {
@@ -465,6 +471,7 @@ describe('answerQuiz', () => {
 
     expect(last).toMatchObject({ status: 'passed', leveledUp: false });
     expect(row).toMatchObject({ level: 1, passedAt });
+    expect(passes).toEqual([]);
   });
 
   it('refuses a lesson without questions', async () => {

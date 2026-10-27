@@ -114,7 +114,7 @@ describe('getActivityDates', () => {
     const result = await repo.getActivityDates(1);
     expect(mockPrisma.userLessonProgress.findMany).toHaveBeenCalledWith({
       where: { userId: 1 },
-      select: { completedAt: true, lastAccessedAt: true },
+      select: { courseKey: true, completedAt: true, lastAccessedAt: true },
     });
     expect(result).toBe(rows);
   });

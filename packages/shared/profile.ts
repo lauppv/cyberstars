@@ -33,6 +33,15 @@ interface PublicProfileProgress {
   badgeList: PublicProfileBadge[]; // the earned badges, for enumeration
 }
 
+// What the activity heatmap tells apart: a lesson, an algorithm, or a Laniakea
+// test that moved its planet
+export type ActivityKind = 'lesson' | 'algo' | 'recap';
+
+export interface ActivityItem {
+  at: string; // ISO
+  kind: ActivityKind;
+}
+
 export interface PublicProfile {
   userId: number;
   name: string;
@@ -43,9 +52,9 @@ export interface PublicProfile {
   bio: string | null; // null when hidden or unset
   stats: PublicProfileStats | null; // null when hidden
   progress: PublicProfileProgress | null; // null when hidden
-  // ISO timestamps of completed lessons in the recent window, for the activity
-  // heatmap. Null when hidden; the client buckets them by local day.
-  activity: string[] | null;
+  // What the student did in the recent window, for the activity heatmap. Null
+  // when hidden; the client buckets it by local day.
+  activity: ActivityItem[] | null;
   // The target's accepted connections. Null when hidden (showConnections off and
   // not self). `count` always reflects the true total even when the list is
   // truncated for display.
