@@ -130,6 +130,7 @@ model User {
   tutorConversations TutorConversation[]
   usageWindows       UsageWindow[]
   laniakeaPlanets    LaniakeaPlanet[]
+  laniakeaPasses     LaniakeaPass[]
   laniakeaPlayer     LaniakeaPlayer?
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
@@ -330,6 +331,21 @@ model LaniakeaPlanet {
 
   @@id([userId, courseKey, lessonSlug])
   @@map("laniakea_planets")
+}
+
+// Each test that moved a planet, its conquest or a recap, for the activity
+// heatmap and the streak: the planet itself keeps only the last one.
+model LaniakeaPass {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  courseKey  String   @map("course_key") @db.VarChar(50)
+  lessonSlug String   @map("lesson_slug") @db.VarChar(100)
+  passedAt   DateTime @map("passed_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("laniakea_passes")
 }
 
 // When the student last opened the game and when the bell last told them of

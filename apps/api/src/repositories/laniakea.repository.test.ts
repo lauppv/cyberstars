@@ -5,12 +5,14 @@ const tx = {
   $queryRaw: vi.fn(),
   $executeRaw: vi.fn(),
   laniakeaPlanet: { createMany: vi.fn(), update: vi.fn() },
+  laniakeaPass: { create: vi.fn() },
 };
 
 const mockPrisma = {
   $transaction: vi.fn((fn: (t: typeof tx) => unknown) => fn(tx)),
   laniakeaPlanet: { findMany: vi.fn() },
   laniakeaQuestionStat: { findMany: vi.fn() },
+  laniakeaPass: { findMany: vi.fn() },
 };
 
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
@@ -146,6 +148,31 @@ describe('withPlanet', () => {
       1,
       1,
     ]);
+  });
+
+  it('keeps a pass in the same transaction, and none when the planet did not move', async () => {
+    tx.$queryRaw.mockResolvedValue([stored]);
+
+    await repo.withPlanet(4, 'python', 'print', () => ({ change: null, result: null }));
+    await repo.withPlanet(4, 'python', 'print', () => ({
+      change: { level: 3, passedAt: NOW },
+      passedAt: NOW,
+      result: null,
+    }));
+
+    expect(tx.laniakeaPass.create).toHaveBeenCalledTimes(1);
+    expect(tx.laniakeaPass.create).toHaveBeenCalledWith({
+      data: { userId: 4, courseKey: 'python', lessonSlug: 'print', passedAt: NOW },
+    });
+  });
+});
+
+describe('listPasses', () => {
+  it("reads when each of the student's planets moved", async () => {
+    mockPrisma.laniakeaPass.findMany.mockResolvedValue([{ passedAt: NOW }]);
+
+    expect(await repo.listPasses(4)).toEqual([NOW]);
+    expect(mockPrisma.laniakeaPass.findMany.mock.calls[0][0].where).toEqual({ userId: 4 });
   });
 });
 

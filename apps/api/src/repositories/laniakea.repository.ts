@@ -51,8 +51,8 @@ export async function listPlanets(userId: number, courseKey: string): Promise<Pl
 
 // Runs `decide` on the student's planet, made first if it is new, with the row
 // locked for the transaction, so two tabs answering at once take turns. It says
-// what to change, if anything, the answer to count, if any, and what to hand
-// back; it throws to change nothing.
+// what to change, if anything, the answer to count, if any, when the planet
+// moved, if it did, and what to hand back; it throws to change nothing.
 export function withPlanet<T>(
   userId: number,
   courseKey: string,
@@ -60,6 +60,7 @@ export function withPlanet<T>(
   decide: (row: PlanetRow) => {
     change: PlanetChange | null;
     counted?: CountedAnswer;
+    passedAt?: Date;
     result: T;
   },
 ): Promise<T> {
@@ -81,7 +82,7 @@ export function withPlanet<T>(
       SELECT level, passed_at, retry_at, seen, quiz, quiz_at FROM laniakea_planets
       WHERE user_id = ${userId} AND course_key = ${courseKey} AND lesson_slug = ${lessonSlug}
       FOR UPDATE`;
-    const { change, counted, result } = decide({
+    const { change, counted, passedAt, result } = decide({
       lessonSlug,
       level: row.level,
       passedAt: row.passed_at,
@@ -103,6 +104,8 @@ export function withPlanet<T>(
       });
     }
     if (counted) await countAnswer(tx, courseKey, lessonSlug, counted);
+    if (passedAt)
+      await tx.laniakeaPass.create({ data: { userId, courseKey, lessonSlug, passedAt } });
     return result;
   });
 }
@@ -140,6 +143,15 @@ export function listQuestionStats(courseKey: string, min: number): Promise<Quest
     where: { courseKey, answered: { gte: min } },
     select: { lessonSlug: true, questionId: true, answered: true, wrong: true, picks: true },
   });
+}
+
+// When each of the student's planets moved, for the activity heatmap and the streak
+export async function listPasses(userId: number): Promise<Date[]> {
+  const rows = await prisma.laniakeaPass.findMany({
+    where: { userId },
+    select: { passedAt: true },
+  });
+  return rows.map((r) => r.passedAt);
 }
 
 export interface RecapPlanet {

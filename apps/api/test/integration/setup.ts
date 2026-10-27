@@ -15,6 +15,7 @@ beforeEach(async () => {
       "tutor_conversations",
       "usage_windows",
       "laniakea_planets",
+      "laniakea_passes",
       "laniakea_players",
       "laniakea_question_stats",
       "dm_reactions",

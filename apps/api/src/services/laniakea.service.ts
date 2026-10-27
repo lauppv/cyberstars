@@ -305,6 +305,8 @@ export async function answerQuiz(
       return {
         change: { ...ended, level: moved.level, passedAt: moved.passedAt, retryAt: null },
         counted,
+        // Practice moves nothing, so the activity doesn't count it
+        passedAt: moved.leveledUp ? now : undefined,
         result: { ...answer, status: 'passed', planet, leveledUp: moved.leveledUp },
       };
     }
