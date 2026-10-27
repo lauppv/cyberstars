@@ -13,6 +13,7 @@ import { LoadingSpinner } from './components/ui/LoadingSpinner';
 import { AppShell } from './components/layout/AppShell';
 import { TourGate } from './components/tour/TourGate';
 import { GuestGate } from './components/layout/GuestGate';
+import { MaintenanceScreen } from './components/layout/MaintenanceScreen';
 import { usePresence } from './hooks/usePresence';
 import { usePageViews } from './hooks/usePageViews';
 import { useGuestSteps } from './hooks/useGuestSteps';
@@ -94,6 +95,7 @@ function App() {
   usePresence();
   return (
     <BrowserRouter basename={basename}>
+      <MaintenanceScreen />
       <AuthProvider>
         <CurriculumProvider>
           <ProgressProvider>
