@@ -3,6 +3,7 @@ import i18next from 'i18next';
 import type { RunLesson } from '@cyberstars/shared/lesson';
 import { localizeRunOutput } from '../i18n/serverMessages';
 import { setRunWait } from './useRunWait';
+import { checkMaintenance } from './useMaintenance';
 
 function wsUrl(): string {
   const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -93,6 +94,7 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
         setOutput((prev) => `${prev}\n${i18next.t('code.connectionError')}\n`);
         setIsRunning(false);
         sendInputRef.current = null;
+        void checkMaintenance();
       };
 
       ws.onclose = () => {
