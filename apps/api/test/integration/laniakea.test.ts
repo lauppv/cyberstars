@@ -102,6 +102,24 @@ describe('Laniakea', () => {
     expect(again.body.mode).toBe('practice');
   });
 
+  it('counts a conquest in the activity and the streak, practice not', async () => {
+    const { agent, userId } = await student();
+    const pass = async () => {
+      await agent.post('/api/laniakea/print/quiz').send({ lang: 'en' }).expect(200);
+      const right = await rightChoices(userId);
+      for (let i = 0; i < 10; i++) await answer(agent, i, right[i]).expect(200);
+    };
+    await pass();
+    await pass();
+
+    expect(await prisma.laniakeaPass.count({ where: { userId } })).toBe(1);
+    const activity = await agent.get('/api/profile/activity').expect(200);
+    const kinds = activity.body.activity.map((a: { kind: string }) => a.kind);
+    expect(kinds.filter((k: string) => k === 'recap')).toHaveLength(1);
+    expect(kinds.filter((k: string) => k === 'lesson')).toHaveLength(FIRST_STEPS.length);
+    expect(activity.body.streak).toBe(1);
+  });
+
   it('counts an answer sent twice at once only once', async () => {
     const { agent, userId } = await student();
     await agent.post('/api/laniakea/print/quiz').send({ lang: 'en' }).expect(200);

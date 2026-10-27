@@ -1,6 +1,7 @@
 import i18next from 'i18next';
 import type { Interest } from '@cyberstars/shared/interests';
 import type { CodeLanguage } from '@cyberstars/shared/constants';
+import type { ActivityItem } from '@cyberstars/shared/profile';
 import { api, errorOf, send } from './apiClient';
 
 const API_BASE = import.meta.env.VITE_PROD_API_URL || '';
@@ -60,5 +61,7 @@ export function cancelEmailChange() {
 }
 
 export function getActivity() {
-  return api.get<{ streak: number; lastActiveAt: string | null }>('/api/profile/activity');
+  return api.get<{ streak: number; lastActiveAt: string | null; activity: ActivityItem[] }>(
+    '/api/profile/activity',
+  );
 }

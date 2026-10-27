@@ -20,6 +20,7 @@ const {
   mockFindByIdWithPassword,
   mockUpdatePassword,
   mockGetActivityDates,
+  mockListPasses,
   mockFindByEmail,
   mockSetPendingEmailChange,
   mockFindPendingEmailChange,
@@ -37,6 +38,7 @@ const {
   mockFindByIdWithPassword: vi.fn(),
   mockUpdatePassword: vi.fn(),
   mockGetActivityDates: vi.fn(),
+  mockListPasses: vi.fn(),
   mockFindByEmail: vi.fn(),
   mockSetPendingEmailChange: vi.fn(),
   mockFindPendingEmailChange: vi.fn(),
@@ -75,6 +77,10 @@ vi.mock('../repositories/progress.repository.js', () => ({
   getActivityDates: (...a: unknown[]) => mockGetActivityDates(...a),
 }));
 
+vi.mock('../repositories/laniakea.repository.js', () => ({
+  listPasses: (...a: unknown[]) => mockListPasses(...a),
+}));
+
 // email.service pulls in config -> env.ts (JWT_SECRET), same story as above.
 vi.mock('../services/email.service.js', () => ({
   sendResetCode: vi.fn(),
@@ -110,6 +116,7 @@ beforeEach(() => {
   mockUnlink.mockResolvedValue(undefined);
   mockFileType.mockResolvedValue({ mime: 'image/png', ext: 'png' });
   mockFindById.mockImplementation(async () => ({ avatarUrl: currentAvatar }));
+  mockListPasses.mockResolvedValue([]);
   mockUpdateProfile.mockImplementation(async (_id: number, data: { avatarUrl?: string | null }) => {
     if ('avatarUrl' in data) currentAvatar = data.avatarUrl ?? null;
   });
@@ -312,7 +319,7 @@ describe('getActivity', () => {
     mockGetActivityDates.mockResolvedValueOnce([]);
     const res = mkRes();
     await getActivity(mkActivityReq(), res, vi.fn());
-    expect(res.json).toHaveBeenCalledWith({ streak: 0, lastActiveAt: null });
+    expect(res.json).toHaveBeenCalledWith({ streak: 0, lastActiveAt: null, activity: [] });
   });
 
   it('counts consecutive days ending today as the streak', async () => {
@@ -320,9 +327,9 @@ describe('getActivity', () => {
     const y = utcDay(1);
     const d2 = utcDay(2);
     mockGetActivityDates.mockResolvedValueOnce([
-      { completedAt: today, lastAccessedAt: today },
-      { completedAt: y, lastAccessedAt: y },
-      { completedAt: d2, lastAccessedAt: d2 },
+      { courseKey: 'python', completedAt: today, lastAccessedAt: today },
+      { courseKey: 'python', completedAt: y, lastAccessedAt: y },
+      { courseKey: 'python', completedAt: d2, lastAccessedAt: d2 },
     ]);
     const res = mkRes();
     await getActivity(mkActivityReq(), res, vi.fn());
@@ -338,8 +345,8 @@ describe('getActivity', () => {
     const y = utcDay(1);
     const d2 = utcDay(2);
     mockGetActivityDates.mockResolvedValueOnce([
-      { completedAt: y, lastAccessedAt: y },
-      { completedAt: d2, lastAccessedAt: d2 },
+      { courseKey: 'python', completedAt: y, lastAccessedAt: y },
+      { courseKey: 'python', completedAt: d2, lastAccessedAt: d2 },
     ]);
     const res = mkRes();
     await getActivity(mkActivityReq(), res, vi.fn());
@@ -351,8 +358,8 @@ describe('getActivity', () => {
     const today = utcDay(0);
     const three = utcDay(3);
     mockGetActivityDates.mockResolvedValueOnce([
-      { completedAt: today, lastAccessedAt: today },
-      { completedAt: three, lastAccessedAt: three },
+      { courseKey: 'python', completedAt: today, lastAccessedAt: today },
+      { courseKey: 'python', completedAt: three, lastAccessedAt: three },
     ]);
     const res = mkRes();
     await getActivity(mkActivityReq(), res, vi.fn());
@@ -362,11 +369,33 @@ describe('getActivity', () => {
 
   it('returns streak 0 when last activity is older than yesterday', async () => {
     const three = utcDay(3);
-    mockGetActivityDates.mockResolvedValueOnce([{ completedAt: three, lastAccessedAt: three }]);
+    mockGetActivityDates.mockResolvedValueOnce([
+      { courseKey: 'python', completedAt: three, lastAccessedAt: three },
+    ]);
     const res = mkRes();
     await getActivity(mkActivityReq(), res, vi.fn());
     const payload = (res.json as ReturnType<typeof vi.fn>).mock.calls[0][0] as { streak: number };
     expect(payload.streak).toBe(0);
+  });
+
+  it('counts Laniakea passes in the streak and the heatmap, each by its kind', async () => {
+    const today = utcDay(0);
+    const y = utcDay(1);
+    mockGetActivityDates.mockResolvedValueOnce([
+      { courseKey: 'algo-python', completedAt: today, lastAccessedAt: today },
+    ]);
+    mockListPasses.mockResolvedValueOnce([y]);
+    const res = mkRes();
+    await getActivity(mkActivityReq(), res, vi.fn());
+    expect(mockListPasses).toHaveBeenCalledWith(7);
+    expect(res.json).toHaveBeenCalledWith({
+      streak: 2,
+      lastActiveAt: today.toISOString(),
+      activity: [
+        { at: y.toISOString(), kind: 'recap' },
+        { at: today.toISOString(), kind: 'algo' },
+      ],
+    });
   });
 
   it('ignores rows with no completedAt but still tracks lastAccessedAt', async () => {
@@ -379,7 +408,11 @@ describe('getActivity', () => {
     ]);
     const res = mkRes();
     await getActivity(mkActivityReq(), res, vi.fn());
-    expect(res.json).toHaveBeenCalledWith({ streak: 0, lastActiveAt: today.toISOString() });
+    expect(res.json).toHaveBeenCalledWith({
+      streak: 0,
+      lastActiveAt: today.toISOString(),
+      activity: [],
+    });
   });
 
   it('forwards repository errors to next', async () => {

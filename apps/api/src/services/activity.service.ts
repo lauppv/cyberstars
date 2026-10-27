@@ -1,19 +1,50 @@
+import type { ActivityItem, ActivityKind } from '@cyberstars/shared/profile';
+
 // Streak = consecutive days (ending at the most recent activity day) with at
-// least one completed lesson. UTC-based day boundaries so timezone drift
-// doesn't split a single session across two calendar days. Extracted so both
-// the self activity endpoint and the public profile compute it identically.
+// least one lesson, algorithm or Laniakea test done. UTC-based day boundaries so
+// timezone drift doesn't split a single session across two calendar days.
+// Extracted so both the self activity endpoint and the public profile compute
+// it identically.
 
 const MS_PER_DAY = 86_400_000;
+// A little over the heatmap's 20-week span, so days near the left edge still
+// fill in.
+const HEATMAP_WINDOW_DAYS = 150;
+
+export interface Done {
+  at: Date;
+  kind: ActivityKind;
+}
+
+// Every lesson and algorithm completed and every Laniakea test that moved its planet
+export function listDone(
+  lessons: { courseKey: string; completedAt: Date | null }[],
+  passes: Date[],
+): Done[] {
+  const done: Done[] = passes.map((at) => ({ at, kind: 'recap' }));
+  for (const l of lessons) {
+    if (!l.completedAt) continue;
+    done.push({ at: l.completedAt, kind: l.courseKey.startsWith('algo-') ? 'algo' : 'lesson' });
+  }
+  return done;
+}
+
+// Only the window the heatmap draws, to bound the payload. The client buckets
+// these by its own local day.
+export function recentActivity(done: Done[], now = new Date()): ActivityItem[] {
+  const cutoff = now.getTime() - HEATMAP_WINDOW_DAYS * MS_PER_DAY;
+  return done
+    .filter((d) => d.at.getTime() >= cutoff)
+    .map((d) => ({ at: d.at.toISOString(), kind: d.kind }));
+}
 
 function utcDay(d: Date): number {
   return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
 }
 
-export function computeStreak(rows: { completedAt: Date | null }[]): number {
+export function computeStreak(done: { at: Date }[]): number {
   const days = new Set<number>();
-  for (const r of rows) {
-    if (r.completedAt) days.add(utcDay(r.completedAt));
-  }
+  for (const d of done) days.add(utcDay(d.at));
   if (days.size === 0) return 0;
 
   const sortedDays = [...days].sort((a, b) => b - a);

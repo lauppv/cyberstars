@@ -6,9 +6,10 @@ import bcrypt from 'bcryptjs';
 import { fileTypeFromBuffer } from 'file-type';
 import * as userRepo from '../repositories/user.repository.js';
 import * as progressRepo from '../repositories/progress.repository.js';
+import * as laniakeaRepo from '../repositories/laniakea.repository.js';
 import * as emailService from '../services/email.service.js';
 import * as authService from '../services/auth.service.js';
-import { computeStreak } from '../services/activity.service.js';
+import { computeStreak, listDone, recentActivity } from '../services/activity.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { UPLOADS_DIR } from '../config/paths.js';
 import { config } from '../config/index.js';
@@ -283,7 +284,11 @@ export async function cancelEmailChange(
 export async function getActivity(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const userId = req.user!.id;
-    const rows = await progressRepo.getActivityDates(userId);
+    const [rows, passes] = await Promise.all([
+      progressRepo.getActivityDates(userId),
+      laniakeaRepo.listPasses(userId),
+    ]);
+    const done = listDone(rows, passes);
 
     let lastActiveAt: Date | null = null;
     for (const r of rows) {
@@ -293,8 +298,9 @@ export async function getActivity(req: Request, res: Response, next: NextFunctio
     }
 
     res.json({
-      streak: computeStreak(rows),
+      streak: computeStreak(done),
       lastActiveAt: lastActiveAt?.toISOString() ?? null,
+      activity: recentActivity(done),
     });
   } catch (err) {
     next(err);

@@ -114,12 +114,13 @@ export async function getByUser(userId: number): Promise<
 
 export async function getActivityDates(userId: number): Promise<
   {
+    courseKey: string;
     completedAt: Date | null;
     lastAccessedAt: Date;
   }[]
 > {
   return prisma.userLessonProgress.findMany({
     where: { userId },
-    select: { completedAt: true, lastAccessedAt: true },
+    select: { courseKey: true, completedAt: true, lastAccessedAt: true },
   });
 }

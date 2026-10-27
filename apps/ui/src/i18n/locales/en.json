@@ -139,8 +139,14 @@
     "less": "Less",
     "more": "More",
     "noActivity": "No activity",
-    "lessonsCompleted_one": "{{count}} lesson completed",
-    "lessonsCompleted_other": "{{count}} lessons completed",
+    "activityKinds": {
+      "lesson_one": "{{count}} lesson",
+      "lesson_other": "{{count}} lessons",
+      "algo_one": "{{count}} algorithm",
+      "algo_other": "{{count}} algorithms",
+      "recap_one": "{{count}} recap",
+      "recap_other": "{{count}} recaps"
+    },
     "minAgo": "{{count}}m ago",
     "hourAgo": "{{count}}h ago",
     "dayAgo": "{{count}}d ago",
