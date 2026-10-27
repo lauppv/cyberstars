@@ -1,5 +1,6 @@
 import i18next from 'i18next';
 import { localizeServerMessage } from '../i18n/serverMessages';
+import { isMaintenance, setMaintenance } from '../hooks/useMaintenance';
 
 const API_BASE = import.meta.env.VITE_PROD_API_URL || '';
 
@@ -12,10 +13,13 @@ const STATUS_WORDS: Record<number, string> = {
 };
 
 // Makes a request. One that never reached the server becomes an error the page
-// can show; an aborted one stays an abort.
+// can show; an aborted one stays an abort. One that ran into a deploy brings up
+// the maintenance screen.
 export async function send(url: string, init: RequestInit): Promise<Response> {
   try {
-    return await fetch(url, init);
+    const res = await fetch(url, init);
+    if (isMaintenance(res)) setMaintenance(true);
+    return res;
   } catch (err) {
     if (init.signal?.aborted) throw err;
     throw new ApiClientError(0, '', i18next.t('common.unreachable'));

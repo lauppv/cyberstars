@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import i18n from 'i18next';
+import { act, renderHook } from '@testing-library/react';
 import { api, ApiClientError } from './apiClient';
+import { setMaintenance, useMaintenance } from '../hooks/useMaintenance';
 
 const mockFetch = vi.fn();
 vi.stubGlobal('fetch', mockFetch);
@@ -245,6 +247,20 @@ describe('apiClient when the server says nothing the page can show', () => {
     const busy = 'The judge is busy right now, please try again in a moment';
     mockFetch.mockResolvedValue(Response.json({ error: busy }, { status: 503 }));
     expect(await failure()).toMatchObject({ status: 503, serverMessage: busy, message: busy });
+  });
+
+  it("brings up the maintenance screen on nginx's maintenance 503 only", async () => {
+    const { result } = renderHook(() => useMaintenance());
+    mockFetch.mockResolvedValue(Response.json({ error: 'The server is busy' }, { status: 503 }));
+    await act(() => failure());
+    expect(result.current).toBe(false);
+
+    mockFetch.mockResolvedValue(
+      new Response('<!doctype html>', { status: 503, headers: { 'X-Maintenance': '1' } }),
+    );
+    await act(() => failure());
+    expect(result.current).toBe(true);
+    act(() => setMaintenance(false));
   });
 
   it('keeps the general message for any other unreadable error', async () => {
