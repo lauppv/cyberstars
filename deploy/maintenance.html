@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="refresh" content="5" />
     <title>CyberStars · updating</title>
     <style>
       :root {
@@ -90,16 +89,25 @@
       <div class="orbit"></div>
       <h1>We're applying an update</h1>
       <p>
-        CyberStars is updating right now. It only takes a few seconds. This page reloads itself when
+        CyberStars is updating right now. It takes 1-3 minutes. This page reloads itself when
         everything is ready.
       </p>
       <div class="ro">
         <h1>Aplicăm un update</h1>
         <p>
-          CyberStars se actualizează chiar acum. Durează doar câteva secunde. Pagina se reîncarcă
-          singură când totul e gata.
+          CyberStars se actualizează chiar acum. Durează 1-3 minute. Pagina se reîncarcă singură
+          când totul e gata.
         </p>
       </div>
     </div>
+    <script>
+      // Asks quietly until the new backend answers, then reloads once
+      setInterval(async () => {
+        try {
+          const res = await fetch('/api/time', { cache: 'no-store' });
+          if (res.ok) location.reload();
+        } catch {}
+      }, 3000);
+    </script>
   </body>
 </html>
