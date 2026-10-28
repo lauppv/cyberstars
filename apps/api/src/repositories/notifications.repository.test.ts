@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockPrisma = {
+  user: { findMany: vi.fn() },
   notification: {
     findMany: vi.fn(),
     count: vi.fn(),
@@ -9,6 +10,7 @@ const mockPrisma = {
     update: vi.fn(),
     updateMany: vi.fn(),
     deleteMany: vi.fn(),
+    createManyAndReturn: vi.fn(),
   },
   $transaction: vi.fn((ops: Promise<unknown>[]) => Promise.all(ops)),
 };
@@ -179,5 +181,26 @@ describe('pruneOverCap', () => {
     mockPrisma.notification.findMany.mockResolvedValue([]);
     await repo.pruneOverCap(10, 100);
     expect(mockPrisma.notification.deleteMany).not.toHaveBeenCalled();
+  });
+});
+
+describe('createForEveryone', () => {
+  it('inserts one row per account but the sender, in one call', async () => {
+    mockPrisma.user.findMany.mockResolvedValue([{ id: 10 }, { id: 11 }]);
+    mockPrisma.notification.createManyAndReturn.mockResolvedValue([{ id: 1 }, { id: 2 }]);
+    const rows = await repo.createForEveryone(2, 'ANNOUNCEMENT', { text: 'Hi' });
+    expect(rows).toEqual([{ id: 1 }, { id: 2 }]);
+    expect(mockPrisma.user.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({ where: { id: { not: 2 } } }),
+    );
+    const row = { actorId: 2, type: 'ANNOUNCEMENT', entityId: 0, data: { text: 'Hi' } };
+    expect(mockPrisma.notification.createManyAndReturn).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: [
+          { userId: 10, ...row },
+          { userId: 11, ...row },
+        ],
+      }),
+    );
   });
 });

@@ -92,6 +92,8 @@ const RO: Record<string, string> = {
   'Request not found': 'Cererea nu există',
   'Connection not found': 'Conexiunea nu există',
   'Invalid notification ID': 'Notificare invalidă',
+  'Announcement text is required': 'Textul anunțului este obligatoriu',
+  'Announcement is too long (max 2000 chars)': 'Anunțul e prea lung (cel mult 2000 de caractere)',
   // support
   'Only admins can view all tickets': 'Doar adminii pot vedea toate tichetele',
   'Invalid ticket ID': 'Tichet invalid',

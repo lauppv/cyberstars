@@ -6,6 +6,7 @@ import {
   pushToUser,
   clearUserSockets,
   closeUserSockets,
+  isUserOnline,
 } from './ws-user.js';
 
 function fakeSocket(open = true) {
@@ -77,5 +78,16 @@ describe('ws-user registry', () => {
 
   it('closing a user with no sockets is a no-op', () => {
     expect(() => closeUserSockets(999)).not.toThrow();
+  });
+});
+
+describe('isUserOnline', () => {
+  it('is true only while the user has a socket registered', () => {
+    const a = fakeSocket();
+    expect(isUserOnline(1)).toBe(false);
+    registerUserSocket(1, a);
+    expect(isUserOnline(1)).toBe(true);
+    unregisterUserSocket(1, a);
+    expect(isUserOnline(1)).toBe(false);
   });
 });

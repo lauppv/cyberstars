@@ -59,6 +59,28 @@ export function create(input: CreateNotificationInput): Promise<NotificationRow>
   });
 }
 
+// A row for every account but the sender's, all in one insert
+export async function createForEveryone(
+  actorId: number,
+  type: NotificationType,
+  data: NotificationData,
+): Promise<NotificationRow[]> {
+  const users = await prisma.user.findMany({
+    where: { id: { not: actorId } },
+    select: { id: true },
+  });
+  return prisma.notification.createManyAndReturn({
+    data: users.map(({ id }) => ({
+      userId: id,
+      actorId,
+      type,
+      entityId: 0,
+      data: data as Prisma.InputJsonValue,
+    })),
+    include: actorInclude,
+  });
+}
+
 // Fold a repeat event into a REPLACEMENT of the existing unread notification:
 // the stale row is deleted and a fresh one inserted (newest actor wins, data
 // with bumped count). The replacement gets a NEW id, which keeps `id desc`

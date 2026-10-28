@@ -12,6 +12,9 @@ export type NotificationType =
   | 'LANIAKEA_RECAP'
   | 'ANNOUNCEMENT';
 
+// The longest official announcement an admin can send
+export const ANNOUNCEMENT_MAX_LENGTH = 2000;
+
 // Repeat events on the same entity fold into one unread row instead of
 // spamming. Shared because both sides need the same rule: the server collapses
 // on insert, the client drops the superseded unread row when the replacement

@@ -1,5 +1,5 @@
 import * as repo from '../repositories/notifications.repository.js';
-import { pushToUser } from './ws-user.js';
+import { isUserOnline, pushToUser } from './ws-user.js';
 import { COLLAPSIBLE_TYPES } from '@cyberstars/shared/notifications';
 import type {
   NotificationData,
@@ -76,6 +76,29 @@ export async function notify(input: NotifyInput): Promise<number> {
     }
   }
   return delivered;
+}
+
+// An official announcement for every account but the sender's: one insert
+// instead of notify()'s loop, and only those online get it live. It skips the
+// prune, the next notify() brings a user back under the cap. Unlike notify() it
+// throws when the insert fails, so the admin knows it didn't go out
+export async function announce(actorId: number, text: string): Promise<number> {
+  const rows = await repo.createForEveryone(actorId, 'ANNOUNCEMENT', { text });
+  for (const row of rows) {
+    if (!isUserOnline(row.userId)) continue;
+    try {
+      const unreadCount = await repo.countUnread(row.userId);
+      pushToUser(row.userId, { channel: 'notification', type: 'new', payload: shape(row) });
+      pushToUser(row.userId, {
+        channel: 'notification',
+        type: 'unread-count',
+        payload: { unreadCount },
+      });
+    } catch (err) {
+      console.error(`[notifications] announce push failed for user ${row.userId}:`, err);
+    }
+  }
+  return rows.length;
 }
 
 // Redaction hook for source-entity soft-deletes (forum post delete): drop the

@@ -57,3 +57,7 @@ export interface AdminStatsDTO {
   /** ISO time the cached aggregates were computed. */
   generatedAt: string;
 }
+
+export interface AnnouncementSentDTO {
+  sent: number; // accounts that got it in their bell
+}

@@ -33,6 +33,11 @@ export function pushToUser(userId: number, frame: UserSocketFrame): void {
   }
 }
 
+// Whether the user has a socket open, so a push to everyone can skip the rest
+export function isUserOnline(userId: number): boolean {
+  return registry.has(userId);
+}
+
 // A password change ended the sessions the sockets were opened with. Each tab
 // tries again in a moment (any code but 4401/4404), and only one whose cookie
 // holds the new token gets back in
