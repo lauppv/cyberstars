@@ -475,7 +475,11 @@
     "connectionAccepted": "{{name}} ți-a acceptat cererea de conexiune",
     "laniakeaRecap_one": "Ai o recapitulare deschisă în Laniakea",
     "laniakeaRecap_few": "Ai {{count}} recapitulări deschise în Laniakea",
-    "laniakeaRecap_other": "Ai {{count}} de recapitulări deschise în Laniakea"
+    "laniakeaRecap_other": "Ai {{count}} de recapitulări deschise în Laniakea",
+    "announcement": "Anunț oficial: {{text}}",
+    "announcementTitle": "Anunț oficial",
+    "view": "Vezi",
+    "close": "Închide"
   },
   "courses": {
     "lessons_one": "lecție",

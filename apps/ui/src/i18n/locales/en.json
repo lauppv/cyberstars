@@ -442,7 +442,11 @@
     "connectionRequest": "{{name}} wants to connect with you",
     "connectionAccepted": "{{name}} accepted your connection request",
     "laniakeaRecap_one": "A Laniakea recap is open",
-    "laniakeaRecap_other": "{{count}} Laniakea recaps are open"
+    "laniakeaRecap_other": "{{count}} Laniakea recaps are open",
+    "announcement": "Official announcement: {{text}}",
+    "announcementTitle": "Official announcement",
+    "view": "View",
+    "close": "Close"
   },
   "courses": {
     "lessons_one": "lesson",

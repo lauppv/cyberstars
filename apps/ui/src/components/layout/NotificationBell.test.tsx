@@ -1,5 +1,16 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
+import type { NotificationDTO } from '@cyberstars/shared/notifications';
+
+const announcement: NotificationDTO = {
+  id: 9,
+  type: 'ANNOUNCEMENT',
+  entityId: 0,
+  data: { text: 'A new course is out.\nGo try it.' },
+  actor: null,
+  readAt: null,
+  createdAt: '2026-10-28T10:00:00.000Z',
+};
 
 const h = vi.hoisted(() => ({
   auth: { user: { role: 'USER' } as { role: string } | null },
@@ -9,9 +20,23 @@ const h = vi.hoisted(() => ({
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
 vi.mock('../../context/NotificationContext', () => ({ useNotifications: () => h.notif }));
 vi.mock('../notifications/NotificationDropdown', () => ({
-  NotificationDropdown: ({ onClose }: { onClose: () => void }) => (
+  NotificationDropdown: ({
+    onClose,
+    onAnnouncement,
+  }: {
+    onClose: () => void;
+    onAnnouncement: (n: NotificationDTO) => void;
+  }) => (
     <div data-testid="dropdown">
       <button onClick={onClose}>close</button>
+      <button
+        onClick={() => {
+          onClose();
+          onAnnouncement(announcement);
+        }}
+      >
+        announcement
+      </button>
     </div>
   ),
 }));
@@ -73,6 +98,18 @@ describe('NotificationBell', () => {
     expect(screen.getByTestId('dropdown')).toBeInTheDocument();
     fireEvent.keyDown(document, { key: 'Escape' });
     expect(screen.queryByTestId('dropdown')).toBeNull();
+  });
+
+  it('opens an announcement from the dropdown in a window over the page', () => {
+    render(<NotificationBell />);
+    fireEvent.click(screen.getByLabelText('Notifications'));
+    fireEvent.click(screen.getByText('announcement'));
+    expect(screen.queryByTestId('dropdown')).toBeNull();
+    expect(screen.getByRole('dialog', { name: 'Official announcement' })).toHaveTextContent(
+      'A new course is out. Go try it.',
+    );
+    fireEvent.click(screen.getByLabelText('Close'));
+    expect(screen.queryByRole('dialog')).toBeNull();
   });
 
   it('closes on an outside mousedown', () => {

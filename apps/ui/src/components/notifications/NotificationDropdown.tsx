@@ -29,6 +29,7 @@ const ICONS: Record<NotificationType, string> = {
   CONNECTION_REQUEST: '🤝',
   CONNECTION_ACCEPTED: '🌟',
   LANIAKEA_RECAP: '🪐',
+  ANNOUNCEMENT: '📣',
 };
 
 function describe(n: NotificationDTO): string {
@@ -58,10 +59,51 @@ function describe(n: NotificationDTO): string {
       return t('notif.connectionAccepted', { name });
     case 'LANIAKEA_RECAP':
       return t('notif.laniakeaRecap', { count });
+    case 'ANNOUNCEMENT':
+      return t('notif.announcement', { text: n.data?.text ?? '' });
   }
 }
 
-export function NotificationDropdown({ onClose }: { onClose: () => void }) {
+// One row of the bell, also drawn as the admin's preview of an announcement
+function NotificationItem({ n, onClick }: { n: NotificationDTO; onClick: () => void }) {
+  const { t } = useTranslation();
+  const announcement = n.type === 'ANNOUNCEMENT';
+  return (
+    <button
+      role="menuitem"
+      onClick={onClick}
+      className={`w-full text-left px-4 py-3 flex items-start gap-3 border-b border-[var(--border)] last:border-b-0 hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-x-0 border-t-0 ${
+        n.readAt ? 'opacity-60' : ''
+      }`}
+    >
+      <span className="min-w-0 flex-1">
+        <span
+          className={`block text-[12.5px] text-[var(--text)] leading-snug ${announcement ? 'line-clamp-2' : ''}`}
+        >
+          {describe(n)}
+        </span>
+        <span className="block text-[11px] text-[var(--text3)] mt-0.5">{timeAgo(n.createdAt)}</span>
+      </span>
+      {announcement && (
+        // The whole row opens it, this just says there's more than two lines to read
+        <span className="flex-shrink-0 self-center px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[11px] font-semibold">
+          {t('notif.view')}
+        </span>
+      )}
+      {!n.readAt && (
+        <span className="w-2 h-2 rounded-full bg-[var(--accent)] flex-shrink-0 mt-1.5" />
+      )}
+    </button>
+  );
+}
+
+export function NotificationDropdown({
+  onClose,
+  onAnnouncement,
+}: {
+  onClose: () => void;
+  onAnnouncement: (n: NotificationDTO) => void;
+}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -78,7 +120,7 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
     markOneRead,
   } = useNotifications();
 
-  const targetFor = (n: NotificationDTO): string => {
+  const targetFor = (n: NotificationDTO): string | null => {
     switch (n.type) {
       case 'FORUM_REPLY':
       case 'FORUM_SOLUTION':
@@ -95,13 +137,18 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
         return '/connections';
       case 'LANIAKEA_RECAP':
         return '/laniakea';
+      case 'ANNOUNCEMENT':
+        return null;
     }
   };
 
   const onItemClick = (n: NotificationDTO) => {
     markOneRead(n.id);
     onClose();
-    navigate(targetFor(n));
+    const to = targetFor(n);
+    // An announcement has no page of its own, it opens in a window over this one
+    if (to) navigate(to);
+    else onAnnouncement(n);
   };
 
   return (
@@ -142,28 +189,7 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
                 {loading ? '…' : t('notif.empty')}
               </div>
             )
-          : items.map((n) => (
-              <button
-                key={n.id}
-                role="menuitem"
-                onClick={() => onItemClick(n)}
-                className={`w-full text-left px-4 py-3 flex items-start gap-3 border-b border-[var(--border)] last:border-b-0 hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-x-0 border-t-0 ${
-                  n.readAt ? 'opacity-60' : ''
-                }`}
-              >
-                <span className="min-w-0 flex-1">
-                  <span className="block text-[12.5px] text-[var(--text)] leading-snug">
-                    {describe(n)}
-                  </span>
-                  <span className="block text-[11px] text-[var(--text3)] mt-0.5">
-                    {timeAgo(n.createdAt)}
-                  </span>
-                </span>
-                {!n.readAt && (
-                  <span className="w-2 h-2 rounded-full bg-[var(--accent)] flex-shrink-0 mt-1.5" />
-                )}
-              </button>
-            ))}
+          : items.map((n) => <NotificationItem key={n.id} n={n} onClick={() => onItemClick(n)} />)}
         {moreError && (
           <p role="alert" className="px-4 pt-2.5 text-[12px] text-[var(--error)] text-center">
             {moreError}

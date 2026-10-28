@@ -20,6 +20,7 @@ const ctx = {
   markAllRead: vi.fn(),
   markOneRead: vi.fn(),
 };
+const onAnnouncement = vi.fn();
 vi.mock('../../context/NotificationContext', () => ({ useNotifications: () => ctx }));
 
 import { NotificationDropdown } from './NotificationDropdown';
@@ -51,7 +52,7 @@ function renderWith(items: NotificationDTO[], extra: Partial<typeof ctx> = {}) {
     markOneRead: vi.fn(),
     ...extra,
   });
-  return render(<NotificationDropdown onClose={vi.fn()} />);
+  return render(<NotificationDropdown onClose={vi.fn()} onAnnouncement={onAnnouncement} />);
 }
 
 beforeEach(() => {
@@ -139,6 +140,29 @@ describe('NotificationDropdown routing', () => {
     renderWith([n({ type: 'LANIAKEA_RECAP', entityId: 0, data: { count: 2 } })]);
     fireEvent.click(screen.getByRole('menuitem'));
     expect(mockNavigate).toHaveBeenCalledWith('/laniakea');
+  });
+
+  it('opens an announcement in a window instead of a page, and reads it', () => {
+    const item = n({ id: 4, type: 'ANNOUNCEMENT', entityId: 0, data: { text: 'New course' } });
+    renderWith([item]);
+    fireEvent.click(screen.getByRole('menuitem'));
+    expect(onAnnouncement).toHaveBeenCalledWith(item);
+    expect(ctx.markOneRead).toHaveBeenCalledWith(4);
+    expect(mockNavigate).not.toHaveBeenCalled();
+  });
+});
+
+describe('NotificationDropdown announcement', () => {
+  it('shows the text cut to two lines next to a View button', () => {
+    renderWith([n({ type: 'ANNOUNCEMENT', entityId: 0, data: { text: 'New course' } })]);
+    expect(screen.getByText('Official announcement: New course')).toHaveClass('line-clamp-2');
+    expect(screen.getByText('View')).toBeInTheDocument();
+  });
+
+  it('leaves the View button off every other row', () => {
+    renderWith([n()]);
+    expect(screen.getByText('Ada replied to "Thread"')).not.toHaveClass('line-clamp-2');
+    expect(screen.queryByText('View')).toBeNull();
   });
 });
 

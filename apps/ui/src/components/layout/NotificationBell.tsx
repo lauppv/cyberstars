@@ -4,14 +4,17 @@ import { Bell } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
 import { NotificationDropdown } from '../notifications/NotificationDropdown';
+import { AnnouncementModal } from '../notifications/AnnouncementModal';
 import { LockedIcon } from './LockedIcon';
 import { TopbarAction } from './TopbarAction';
+import type { NotificationDTO } from '@cyberstars/shared/notifications';
 
 export function NotificationBell() {
   const { t } = useTranslation();
   const { user } = useAuth();
   const { enabled, unreadCount } = useNotifications();
   const [open, setOpen] = useState(false);
+  const [announcement, setAnnouncement] = useState<NotificationDTO | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,7 +53,16 @@ export function NotificationBell() {
           </span>
         )}
       </TopbarAction>
-      {open && <NotificationDropdown onClose={() => setOpen(false)} />}
+      {open && (
+        <NotificationDropdown onClose={() => setOpen(false)} onAnnouncement={setAnnouncement} />
+      )}
+      {announcement && (
+        <AnnouncementModal
+          text={announcement.data?.text ?? ''}
+          createdAt={announcement.createdAt}
+          onClose={() => setAnnouncement(null)}
+        />
+      )}
     </div>
   );
 }

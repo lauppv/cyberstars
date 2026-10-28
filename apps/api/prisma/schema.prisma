@@ -45,6 +45,7 @@ enum NotificationType {
   CONNECTION_REQUEST
   CONNECTION_ACCEPTED
   LANIAKEA_RECAP
+  ANNOUNCEMENT
 }
 
 // A connection between two users, modelled as a directed request that becomes
