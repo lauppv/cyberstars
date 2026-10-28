@@ -7,10 +7,14 @@ import type {
   NotificationsPage,
   NotificationType,
 } from '@cyberstars/shared/notifications';
+import type { AnnouncementDTO } from '@cyberstars/shared/admin';
 
 // Deterministic per-user ceiling so the table cannot grow unbounded on the
 // 1GB VPS; enforced best-effort on every insert.
 const RETENTION_CAP = 100;
+
+// Announcements are rare, so the admin page's history is the last 50, unpaged
+const ANNOUNCEMENT_HISTORY = 50;
 
 function shape(row: repo.NotificationRow): NotificationDTO {
   return {
@@ -83,7 +87,7 @@ export async function notify(input: NotifyInput): Promise<number> {
 // prune, the next notify() brings a user back under the cap. Unlike notify() it
 // throws when the insert fails, so the admin knows it didn't go out
 export async function announce(actorId: number, text: string): Promise<number> {
-  const rows = await repo.createForEveryone(actorId, 'ANNOUNCEMENT', { text });
+  const rows = await repo.createAnnouncement(actorId, text);
   for (const row of rows) {
     if (!isUserOnline(row.userId)) continue;
     try {
@@ -99,6 +103,17 @@ export async function announce(actorId: number, text: string): Promise<number> {
     }
   }
   return rows.length;
+}
+
+// The latest announcements, newest first, for the admin page
+export async function listAnnouncements(): Promise<AnnouncementDTO[]> {
+  const rows = await repo.listAnnouncements(ANNOUNCEMENT_HISTORY);
+  return rows.map((row) => ({
+    id: row.id,
+    text: row.text,
+    authorName: row.author?.name ?? null,
+    createdAt: row.createdAt.toISOString(),
+  }));
 }
 
 // Redaction hook for source-entity soft-deletes (forum post delete): drop the

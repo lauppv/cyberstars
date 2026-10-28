@@ -136,6 +136,7 @@ model User {
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
   notificationsSent     Notification[] @relation("NotificationsSent")
+  announcements         Announcement[]
 
   conversationsA Conversation[]  @relation("ConvA")
   conversationsB Conversation[]  @relation("ConvB")
@@ -424,6 +425,19 @@ model Notification {
   @@index([userId, readAt])
   @@index([userId, createdAt])
   @@map("notifications")
+}
+
+// An official announcement an admin sent to every bell. Its notifications
+// carry the text too; this keeps the history once they're pruned
+model Announcement {
+  id        Int      @id @default(autoincrement())
+  authorId  Int?     @map("author_id")
+  text      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  author User? @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@map("announcements")
 }
 
 model Curriculum {

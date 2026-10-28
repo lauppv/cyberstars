@@ -61,3 +61,10 @@ export interface AdminStatsDTO {
 export interface AnnouncementSentDTO {
   sent: number; // accounts that got it in their bell
 }
+
+export interface AnnouncementDTO {
+  id: number;
+  text: string;
+  authorName: string | null; // null once the author's account is gone
+  createdAt: string;
+}

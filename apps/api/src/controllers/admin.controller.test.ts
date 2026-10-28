@@ -3,10 +3,10 @@ import type { Request, Response } from 'express';
 
 const mockService = { getStats: vi.fn() };
 vi.mock('../services/admin.service.js', () => mockService);
-const mockNotifications = { announce: vi.fn() };
+const mockNotifications = { announce: vi.fn(), listAnnouncements: vi.fn() };
 vi.mock('../services/notifications.service.js', () => mockNotifications);
 
-const { getStats, sendAnnouncement } = await import('./admin.controller.js');
+const { getStats, sendAnnouncement, getAnnouncements } = await import('./admin.controller.js');
 
 function mockReq(query: Record<string, unknown> = {}): Request {
   return { query } as unknown as Request;
@@ -59,6 +59,22 @@ describe('sendAnnouncement', () => {
     mockNotifications.announce.mockRejectedValue(new Error('boom'));
     const next = vi.fn();
     await sendAnnouncement(req(), mockRes(), next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
+  });
+});
+
+describe('getAnnouncements', () => {
+  it('returns the announcements sent so far', async () => {
+    mockNotifications.listAnnouncements.mockResolvedValue([{ id: 1 }]);
+    const res = mockRes();
+    await getAnnouncements(mockReq(), res, vi.fn());
+    expect(res.json).toHaveBeenCalledWith([{ id: 1 }]);
+  });
+
+  it('forwards errors to next', async () => {
+    mockNotifications.listAnnouncements.mockRejectedValue(new Error('boom'));
+    const next = vi.fn();
+    await getAnnouncements(mockReq(), mockRes(), next);
     expect(next).toHaveBeenCalledWith(expect.any(Error));
   });
 });

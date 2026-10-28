@@ -26,3 +26,15 @@ export async function sendAnnouncement(
     next(err);
   }
 }
+
+export async function getAnnouncements(
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    res.json(await notificationsService.listAnnouncements());
+  } catch (err) {
+    next(err);
+  }
+}

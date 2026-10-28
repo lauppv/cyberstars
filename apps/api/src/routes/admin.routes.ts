@@ -12,6 +12,7 @@ router.get('/stats', authenticateToken, requireAdmin, adminController.getStats);
 router.get('/visits', authenticateToken, requireAdmin, getVisits);
 router.get('/visits/guests', authenticateToken, requireAdmin, getGuestVisits);
 router.get('/laniakea/questions', authenticateToken, requireAdmin, getMissedQuestions);
+router.get('/announcements', authenticateToken, requireAdmin, adminController.getAnnouncements);
 router.post(
   '/announcements',
   authenticateToken,

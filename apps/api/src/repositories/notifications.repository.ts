@@ -59,25 +59,36 @@ export function create(input: CreateNotificationInput): Promise<NotificationRow>
   });
 }
 
-// A row for every account but the sender's, all in one insert
-export async function createForEveryone(
-  actorId: number,
-  type: NotificationType,
-  data: NotificationData,
-): Promise<NotificationRow[]> {
-  const users = await prisma.user.findMany({
-    where: { id: { not: actorId } },
-    select: { id: true },
+// The announcement and a bell row of it for every account but the author's, in
+// one insert and one transaction, so the history never lists one nobody got
+export function createAnnouncement(authorId: number, text: string): Promise<NotificationRow[]> {
+  return prisma.$transaction(async (tx) => {
+    const { id } = await tx.announcement.create({
+      data: { authorId, text },
+      select: { id: true },
+    });
+    const users = await tx.user.findMany({
+      where: { id: { not: authorId } },
+      select: { id: true },
+    });
+    return tx.notification.createManyAndReturn({
+      data: users.map((u) => ({
+        userId: u.id,
+        actorId: authorId,
+        type: 'ANNOUNCEMENT' as const,
+        entityId: id,
+        data: { text },
+      })),
+      include: actorInclude,
+    });
   });
-  return prisma.notification.createManyAndReturn({
-    data: users.map(({ id }) => ({
-      userId: id,
-      actorId,
-      type,
-      entityId: 0,
-      data: data as Prisma.InputJsonValue,
-    })),
-    include: actorInclude,
+}
+
+export function listAnnouncements(take: number) {
+  return prisma.announcement.findMany({
+    orderBy: { id: 'desc' },
+    take,
+    include: { author: { select: { name: true } } },
   });
 }
 
