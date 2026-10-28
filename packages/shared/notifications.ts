@@ -49,7 +49,7 @@ interface NotificationActor {
 export interface NotificationDTO {
   id: number;
   type: NotificationType;
-  entityId: number; // threadId / conversationId / ticketId, interpreted by type; 0 for LANIAKEA_RECAP and ANNOUNCEMENT
+  entityId: number; // threadId / conversationId / ticketId / announcement id, interpreted by type; 0 for LANIAKEA_RECAP
   data: NotificationData | null;
   actor: NotificationActor | null;
   readAt: string | null;
