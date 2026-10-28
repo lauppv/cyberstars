@@ -6,6 +6,9 @@ import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 vi.mock('../components/layout/Topbar', () => ({ Topbar: () => <nav>Topbar</nav> }));
 vi.mock('../components/admin/VisitorsSection', () => ({ VisitorsSection: () => null }));
 vi.mock('../components/admin/MissedQuestions', () => ({ MissedQuestions: () => null }));
+vi.mock('../components/admin/AnnouncementSection', () => ({
+  AnnouncementSection: () => <section>Announcement</section>,
+}));
 vi.mock('../context/AuthContext', () => ({
   useAuth: () => ({ user: { role: 'ADMIN' }, isLoading: false }),
 }));
@@ -50,6 +53,13 @@ function renderPage() {
 beforeEach(() => getStats.mockReset());
 
 describe('AdminPage', () => {
+  it('lets an admin write an announcement even when the stats fail', async () => {
+    getStats.mockRejectedValueOnce(new Error('500'));
+    renderPage();
+    expect(await screen.findByRole('alert')).toBeInTheDocument();
+    expect(screen.getByText('Announcement')).toBeInTheDocument();
+  });
+
   it('says the stats could not be loaded, and clears it once a refresh brings them', async () => {
     getStats.mockRejectedValueOnce(new Error('500')).mockResolvedValueOnce(stats);
     renderPage();

@@ -10,6 +10,7 @@ import { courseTitle } from '../constants/courses';
 import * as adminService from '../services/adminService';
 import { VisitorsSection } from '../components/admin/VisitorsSection';
 import { MissedQuestions } from '../components/admin/MissedQuestions';
+import { AnnouncementSection } from '../components/admin/AnnouncementSection';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 
@@ -95,6 +96,8 @@ export function AdminPage() {
               {refreshing ? t('admin.refreshing') : t('admin.refresh')}
             </button>
           </div>
+
+          <AnnouncementSection className={CARD_CLS + ' mb-5'} />
 
           {failed && (
             <p role="alert" className="mt-0 mb-5 text-[13px] text-[var(--error)]">

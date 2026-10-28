@@ -65,7 +65,7 @@ function describe(n: NotificationDTO): string {
 }
 
 // One row of the bell, also drawn as the admin's preview of an announcement
-function NotificationItem({ n, onClick }: { n: NotificationDTO; onClick: () => void }) {
+export function NotificationItem({ n, onClick }: { n: NotificationDTO; onClick: () => void }) {
   const { t } = useTranslation();
   const announcement = n.type === 'ANNOUNCEMENT';
   return (

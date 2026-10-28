@@ -118,7 +118,19 @@
     "completions_one": "completion",
     "completions_other": "completions",
     "learners_one": "learner",
-    "learners_other": "learners"
+    "learners_other": "learners",
+    "announcement": {
+      "title": "Announcement",
+      "placeholder": "Write something every user should know",
+      "send": "Send",
+      "confirmTitle": "Send to all users?",
+      "confirmHint": "This is how it shows in their bell. Press it to read it the way they will.",
+      "cancel": "Cancel",
+      "sending": "Sending…",
+      "sent_one": "Sent to {{count}} user",
+      "sent_other": "Sent to {{count}} users",
+      "failed": "The announcement couldn't be sent. Try again."
+    }
   },
   "lang": {
     "switch": "Switch language",
