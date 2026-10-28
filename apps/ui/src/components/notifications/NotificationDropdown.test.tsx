@@ -5,9 +5,6 @@ import type { NotificationDTO } from '@cyberstars/shared/notifications';
 const mockNavigate = vi.fn();
 vi.mock('react-router', () => ({ useNavigate: () => mockNavigate }));
 
-let role = 'USER';
-vi.mock('../../context/AuthContext', () => ({ useAuth: () => ({ user: { role } }) }));
-
 const ctx = {
   items: [] as NotificationDTO[],
   unreadCount: 0,
@@ -57,7 +54,6 @@ function renderWith(items: NotificationDTO[], extra: Partial<typeof ctx> = {}) {
 
 beforeEach(() => {
   vi.clearAllMocks();
-  role = 'USER';
 });
 
 describe('NotificationDropdown copy', () => {
@@ -108,31 +104,18 @@ describe('NotificationDropdown routing', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/forum/t/7');
   });
 
-  it('routes a support ticket to /admin', () => {
-    renderWith([n({ type: 'SUPPORT_TICKET_NEW' })]);
-    fireEvent.click(screen.getByRole('menuitem'));
-    expect(mockNavigate).toHaveBeenCalledWith('/admin');
-  });
+  it.each(['SUPPORT_TICKET_NEW', 'SUPPORT_REPLY', 'SUPPORT_STATUS'] as const)(
+    'opens the ticket of a %s',
+    (type) => {
+      renderWith([n({ type, entityId: 12 })]);
+      fireEvent.click(screen.getByRole('menuitem'));
+      expect(mockNavigate).toHaveBeenCalledWith('/support?ticket=12');
+    },
+  );
 
-  it('routes a support reply to /support for a regular user', () => {
-    renderWith([n({ type: 'SUPPORT_REPLY' })]);
+  it('routes a connection request to /connections', () => {
+    renderWith([n({ type: 'CONNECTION_REQUEST' })]);
     fireEvent.click(screen.getByRole('menuitem'));
-    expect(mockNavigate).toHaveBeenCalledWith('/support');
-  });
-
-  it('routes a support reply to /admin for an admin', () => {
-    role = 'ADMIN';
-    renderWith([n({ type: 'SUPPORT_REPLY' })]);
-    fireEvent.click(screen.getByRole('menuitem'));
-    expect(mockNavigate).toHaveBeenCalledWith('/admin');
-  });
-
-  it('routes a status change to /support and a connection request to /connections', () => {
-    renderWith([n({ id: 1, type: 'SUPPORT_STATUS' }), n({ id: 2, type: 'CONNECTION_REQUEST' })]);
-    const items = screen.getAllByRole('menuitem');
-    fireEvent.click(items[0]);
-    expect(mockNavigate).toHaveBeenCalledWith('/support');
-    fireEvent.click(items[1]);
     expect(mockNavigate).toHaveBeenCalledWith('/connections');
   });
 

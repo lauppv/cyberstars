@@ -1,11 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import i18next from 'i18next';
-import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
 import { forumRoutes } from '../../constants/forumRoutes';
 import type { NotificationDTO, NotificationType } from '@cyberstars/shared/notifications';
-import { isAdmin } from '@cyberstars/shared/auth';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -106,7 +104,6 @@ export function NotificationDropdown({
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { user } = useAuth();
   const {
     items,
     unreadCount,
@@ -127,11 +124,9 @@ export function NotificationDropdown({
       case 'FORUM_REACTION':
         return forumRoutes.thread(n.entityId);
       case 'SUPPORT_TICKET_NEW':
-        return '/admin';
       case 'SUPPORT_REPLY':
-        return isAdmin(user?.role) ? '/admin' : '/support';
       case 'SUPPORT_STATUS':
-        return '/support';
+        return `/support?ticket=${n.entityId}`;
       case 'CONNECTION_REQUEST':
       case 'CONNECTION_ACCEPTED':
         return '/connections';
