@@ -108,7 +108,9 @@ describe('AnnouncementSection history', () => {
   it('lists the ones sent before, cut to two lines, with when and who', async () => {
     getAnnouncements.mockResolvedValue(sentBefore);
     render(<AnnouncementSection className="" />);
-    expect(await screen.findByText('New course')).toHaveClass('line-clamp-2');
+    const text = await screen.findByText('New course');
+    expect(text).toHaveClass('line-clamp-2');
+    expect(text).not.toHaveClass('block');
     expect(screen.getByText('October 28, 2026 · Ada')).toBeInTheDocument();
     expect(screen.getByText('October 20, 2026 · Someone')).toBeInTheDocument();
   });

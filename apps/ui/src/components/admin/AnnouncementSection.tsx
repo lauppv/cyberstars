@@ -126,7 +126,7 @@ export function AnnouncementSection({ className }: { className: string }) {
                 onClick={() => setPast(a)}
                 className="w-full text-left px-2 py-2.5 bg-transparent border-none cursor-pointer hover:bg-[var(--surface)] transition"
               >
-                <span className="block text-[13px] text-[var(--text)] line-clamp-2">{a.text}</span>
+                <span className="text-[13px] text-[var(--text)] line-clamp-2">{a.text}</span>
                 <span className="block mt-0.5 text-[11px] text-[var(--text3)]">
                   {announcementDay(a.createdAt)} · {a.authorName ?? t('notif.someone')}
                 </span>

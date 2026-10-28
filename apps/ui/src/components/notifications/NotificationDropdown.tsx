@@ -75,8 +75,9 @@ export function NotificationItem({ n, onClick }: { n: NotificationDTO; onClick: 
       }`}
     >
       <span className="min-w-0 flex-1">
+        {/* line-clamp sets its own display, which block would override and undo */}
         <span
-          className={`block text-[12.5px] text-[var(--text)] leading-snug ${announcement ? 'line-clamp-2' : ''}`}
+          className={`text-[12.5px] text-[var(--text)] leading-snug ${announcement ? 'line-clamp-2' : 'block'}`}
         >
           {describe(n)}
         </span>

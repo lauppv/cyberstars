@@ -138,7 +138,10 @@ describe('NotificationDropdown routing', () => {
 describe('NotificationDropdown announcement', () => {
   it('shows the text cut to two lines next to a View button', () => {
     renderWith([n({ type: 'ANNOUNCEMENT', entityId: 0, data: { text: 'New course' } })]);
-    expect(screen.getByText('Official announcement: New course')).toHaveClass('line-clamp-2');
+    const text = screen.getByText('Official announcement: New course');
+    expect(text).toHaveClass('line-clamp-2');
+    // block comes later in the CSS and would undo the clamp's display
+    expect(text).not.toHaveClass('block');
     expect(screen.getByText('View')).toBeInTheDocument();
   });
 
