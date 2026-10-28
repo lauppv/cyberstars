@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import * as adminService from '../../services/adminService';
 import { NotificationItem } from '../notifications/NotificationDropdown';
 import { AnnouncementModal } from '../notifications/AnnouncementModal';
+import { announcementDay } from '../notifications/announcementDay';
 import { ANNOUNCEMENT_MAX_LENGTH, type NotificationDTO } from '@cyberstars/shared/notifications';
+import type { AnnouncementDTO } from '@cyberstars/shared/admin';
 
 // An official announcement for every user's bell, sent only after a look at how it shows there
 export function AnnouncementSection({ className }: { className: string }) {
@@ -15,6 +17,24 @@ export function AnnouncementSection({ className }: { className: string }) {
   const [sending, setSending] = useState(false);
   const [failed, setFailed] = useState(false);
   const [sent, setSent] = useState<number | null>(null);
+  // null until the history loads, so an empty one is only ever a real one
+  const [history, setHistory] = useState<AnnouncementDTO[] | null>(null);
+  const [historyFailed, setHistoryFailed] = useState(false);
+  const [past, setPast] = useState<AnnouncementDTO | null>(null);
+
+  const loadHistory = useCallback(() => {
+    adminService
+      .getAnnouncements()
+      .then((list) => {
+        setHistory(list);
+        setHistoryFailed(false);
+      })
+      .catch(() => setHistoryFailed(true));
+  }, []);
+
+  useEffect(() => {
+    loadHistory();
+  }, [loadHistory]);
 
   const close = () => {
     setPreview(null);
@@ -54,6 +74,7 @@ export function AnnouncementSection({ className }: { className: string }) {
       setSent(res.sent);
       setText('');
       setPreview(null);
+      loadHistory();
     } catch {
       setFailed(true);
     } finally {
@@ -87,6 +108,40 @@ export function AnnouncementSection({ className }: { className: string }) {
           {t('admin.announcement.send')}
         </button>
       </div>
+
+      <h3 className="mt-6 mb-2 text-[12px] font-semibold text-[var(--text2)]">
+        {t('admin.announcement.history')}
+      </h3>
+      {historyFailed ? (
+        <p className="m-0 text-[12px] text-[var(--error)]">
+          {t('admin.announcement.historyError')}
+        </p>
+      ) : history === null ? null : history.length === 0 ? (
+        <p className="m-0 text-[12px] text-[var(--text3)]">{t('admin.announcement.none')}</p>
+      ) : (
+        <ul className="m-0 p-0 list-none border-t border-[var(--border)]">
+          {history.map((a) => (
+            <li key={a.id} className="border-b border-[var(--border)]">
+              <button
+                onClick={() => setPast(a)}
+                className="w-full text-left px-2 py-2.5 bg-transparent border-none cursor-pointer hover:bg-[var(--surface)] transition"
+              >
+                <span className="block text-[13px] text-[var(--text)] line-clamp-2">{a.text}</span>
+                <span className="block mt-0.5 text-[11px] text-[var(--text3)]">
+                  {announcementDay(a.createdAt)} · {a.authorName ?? t('notif.someone')}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      {past && (
+        <AnnouncementModal
+          text={past.text}
+          createdAt={past.createdAt}
+          onClose={() => setPast(null)}
+        />
+      )}
 
       {preview &&
         createPortal(

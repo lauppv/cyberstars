@@ -129,7 +129,10 @@
       "sending": "Sending…",
       "sent_one": "Sent to {{count}} user",
       "sent_other": "Sent to {{count}} users",
-      "failed": "The announcement couldn't be sent. Try again."
+      "failed": "The announcement couldn't be sent. Try again.",
+      "history": "Sent before",
+      "none": "No announcement has been sent yet.",
+      "historyError": "The announcements sent before couldn't be loaded."
     }
   },
   "lang": {

@@ -142,7 +142,10 @@
       "sent_one": "Trimis către {{count}} utilizator",
       "sent_few": "Trimis către {{count}} utilizatori",
       "sent_other": "Trimis către {{count}} de utilizatori",
-      "failed": "Anunțul nu a putut fi trimis. Încearcă din nou."
+      "failed": "Anunțul nu a putut fi trimis. Încearcă din nou.",
+      "history": "Trimise până acum",
+      "none": "Încă nu s-a trimis niciun anunț.",
+      "historyError": "Anunțurile trimise până acum nu s-au putut încărca."
     }
   },
   "lang": {

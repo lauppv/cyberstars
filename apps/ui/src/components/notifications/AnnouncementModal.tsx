@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+import { announcementDay } from './announcementDay';
 
 // An official announcement read in full, over a dimmed and blurred page
 export function AnnouncementModal({
@@ -39,13 +39,7 @@ export function AnnouncementModal({
         <div className="flex items-center justify-between gap-3 px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[var(--bg2)]">
           <div className="min-w-0">
             <div className="text-base font-bold">{t('notif.announcementTitle')}</div>
-            <div className="text-[12px] text-[var(--text3)]">
-              {new Date(createdAt).toLocaleDateString(i18next.language, {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-              })}
-            </div>
+            <div className="text-[12px] text-[var(--text3)]">{announcementDay(createdAt)}</div>
           </div>
           <button
             onClick={onClose}
