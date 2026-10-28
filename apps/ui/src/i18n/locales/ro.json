@@ -130,7 +130,23 @@
     "completions_other": "de completări",
     "learners_one": "cursant",
     "learners_few": "cursanți",
-    "learners_other": "de cursanți"
+    "learners_other": "de cursanți",
+    "announcement": {
+      "title": "Anunț",
+      "placeholder": "Scrie ceva ce ar trebui să știe toți utilizatorii",
+      "send": "Trimite",
+      "confirmTitle": "Trimiți către toți utilizatorii?",
+      "confirmHint": "Așa apare în clopoțelul lor. Apasă pe el ca să-l citești cum îl vor citi ei.",
+      "cancel": "Anulează",
+      "sending": "Se trimite…",
+      "sent_one": "Trimis către {{count}} utilizator",
+      "sent_few": "Trimis către {{count}} utilizatori",
+      "sent_other": "Trimis către {{count}} de utilizatori",
+      "failed": "Anunțul nu a putut fi trimis. Încearcă din nou.",
+      "history": "Trimise până acum",
+      "none": "Încă nu s-a trimis niciun anunț.",
+      "historyError": "Anunțurile trimise până acum nu s-au putut încărca."
+    }
   },
   "lang": {
     "switch": "Schimbă limba",
@@ -475,7 +491,11 @@
     "connectionAccepted": "{{name}} ți-a acceptat cererea de conexiune",
     "laniakeaRecap_one": "Ai o recapitulare deschisă în Laniakea",
     "laniakeaRecap_few": "Ai {{count}} recapitulări deschise în Laniakea",
-    "laniakeaRecap_other": "Ai {{count}} de recapitulări deschise în Laniakea"
+    "laniakeaRecap_other": "Ai {{count}} de recapitulări deschise în Laniakea",
+    "announcement": "Anunț oficial: {{text}}",
+    "announcementTitle": "Anunț oficial",
+    "view": "Vezi",
+    "close": "Închide"
   },
   "courses": {
     "lessons_one": "lecție",

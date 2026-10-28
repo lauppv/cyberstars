@@ -4,6 +4,10 @@ import type { AuthenticatedUser } from '@cyberstars/shared/auth';
 import type { SupportTicketDTO, SupportMessageDTO } from '@cyberstars/shared/support';
 
 vi.mock('../context/AuthContext', () => ({ useAuth: vi.fn() }));
+const route = vi.hoisted(() => ({ search: '', setSearchParams: vi.fn() }));
+vi.mock('react-router', () => ({
+  useSearchParams: () => [new URLSearchParams(route.search), route.setSearchParams],
+}));
 vi.mock('../components/layout/Topbar', () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,
 }));
@@ -65,6 +69,7 @@ const GENERAL = 'Something went wrong. Please try again.';
 
 beforeEach(() => {
   vi.clearAllMocks();
+  route.search = '';
   signIn(student);
   mockGetMyTickets.mockResolvedValue([ticket]);
   mockGetAllTickets.mockResolvedValue([{ ...ticket, authorName: 'Nova' }]);
@@ -223,6 +228,35 @@ describe('SupportPage', () => {
         expect(await screen.findByRole('alert')).toHaveTextContent(GENERAL);
         expect(picker).toHaveValue('OPEN');
       });
+    });
+  });
+
+  describe('a ticket opened from its notification', () => {
+    it("opens the student's own ticket and drops the id from the address", async () => {
+      route.search = 'ticket=7';
+      render(<SupportPage />);
+      expect(await screen.findByText('Looking into it')).toBeInTheDocument();
+      expect(mockGetMessages).toHaveBeenCalledWith(7);
+      expect(route.setSearchParams).toHaveBeenCalledWith({}, { replace: true });
+    });
+
+    it("opens someone else's ticket for an admin once the full list is in", async () => {
+      signIn(admin);
+      mockGetMyTickets.mockResolvedValue([]);
+      route.search = 'ticket=7';
+      render(<SupportPage />);
+      expect(await screen.findByText('Looking into it')).toBeInTheDocument();
+      expect(mockGetAllTickets).toHaveBeenCalled();
+    });
+
+    it('shows the lists when the ticket is in none of them', async () => {
+      route.search = 'ticket=99';
+      render(<SupportPage />);
+      await waitFor(() =>
+        expect(route.setSearchParams).toHaveBeenCalledWith({}, { replace: true }),
+      );
+      expect(screen.getByText('Run is stuck')).toBeInTheDocument();
+      expect(mockGetMessages).not.toHaveBeenCalled();
     });
   });
 });

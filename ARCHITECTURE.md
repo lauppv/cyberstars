@@ -183,7 +183,7 @@ The judge runs the student's code and the reference solution in the owner's cont
 | POST   | `/api/connections/:id/decline`         | Yes  | Decline (addressee only)                |
 | DELETE | `/api/connections/:id`                 | Yes  | Cancel a request or remove a connection |
 
-The actor never gets their own notification, and repeat replies, reactions or Laniakea recap counts collapse into one unread row.
+The actor never gets their own notification, and repeat replies, reactions or Laniakea recap counts collapse into one unread row. An official announcement from the admin page lands in every bell but the sender's, and opens in a window over the page.
 
 ### Profile, leaderboard and public profiles
 
@@ -233,6 +233,8 @@ Once an hour the server tells each student in the bell how many of their recaps 
 | GET    | `/api/admin/visits`             | Admin    | Visitors a day, top pages, sources and clicks over a range    |
 | GET    | `/api/admin/visits/guests`      | Admin    | Guest visits with their steps, paged                          |
 | GET    | `/api/admin/laniakea/questions` | Admin    | The Laniakea questions students miss most                     |
+| GET    | `/api/admin/announcements`      | Admin    | The last 50 official announcements sent, newest first         |
+| POST   | `/api/admin/announcements`      | Admin    | Send an official announcement to every user's bell            |
 | POST   | `/api/visits`                   | Optional | The app reports a page it showed; bots are left out           |
 | POST   | `/api/visits/steps`             | Optional | A guest's clicks and scrolls on the page they're on           |
 
@@ -245,7 +247,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma), cam
 - **User**, **Curriculum**, **Lesson**: accounts, courses and lesson metadata (the content stays in files)
 - **UserLessonProgress**, **UserSavedCode**, **LessonSubmission**, **DailyPick**: completion, saved code, judge attempts (the newest 20 per lesson) and the daily picks
 - **ForumCategory**, **ForumThread**, **ForumPost**, **ForumReaction**, **ForumThreadView**: the forum
-- **SupportTicket**, **SupportMessage**, **Notification**: support and the bell
+- **SupportTicket**, **SupportMessage**, **Notification**, **Announcement**: support, the bell and the announcements sent
 - **Conversation**, **DirectMessage**, **DmReaction**, **Connection**: messages and connections
 - **TutorConversation**, **TutorMessage**, **UsageWindow**: the tutor's conversations and the usage limits
 - **LaniakeaPlanet**: a student's planet: level, last pass, questions seen and the test going on

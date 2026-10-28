@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockPrisma = {
+  user: { findMany: vi.fn() },
+  announcement: { create: vi.fn(), findMany: vi.fn() },
   notification: {
     findMany: vi.fn(),
     count: vi.fn(),
@@ -9,8 +11,12 @@ const mockPrisma = {
     update: vi.fn(),
     updateMany: vi.fn(),
     deleteMany: vi.fn(),
+    createManyAndReturn: vi.fn(),
   },
-  $transaction: vi.fn((ops: Promise<unknown>[]) => Promise.all(ops)),
+  // An array of queries, or a callback handed this same client as its transaction
+  $transaction: vi.fn((ops: Promise<unknown>[] | ((tx: unknown) => unknown)) =>
+    typeof ops === 'function' ? ops(mockPrisma) : Promise.all(ops),
+  ),
 };
 
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
@@ -179,5 +185,43 @@ describe('pruneOverCap', () => {
     mockPrisma.notification.findMany.mockResolvedValue([]);
     await repo.pruneOverCap(10, 100);
     expect(mockPrisma.notification.deleteMany).not.toHaveBeenCalled();
+  });
+});
+
+describe('createAnnouncement', () => {
+  it('keeps the announcement and inserts a row of it per account but the author, in one call', async () => {
+    mockPrisma.announcement.create.mockResolvedValue({ id: 4 });
+    mockPrisma.user.findMany.mockResolvedValue([{ id: 10 }, { id: 11 }]);
+    mockPrisma.notification.createManyAndReturn.mockResolvedValue([{ id: 1 }, { id: 2 }]);
+    const rows = await repo.createAnnouncement(2, 'Hi');
+    expect(rows).toEqual([{ id: 1 }, { id: 2 }]);
+    expect(mockPrisma.$transaction).toHaveBeenCalledWith(expect.any(Function));
+    expect(mockPrisma.announcement.create).toHaveBeenCalledWith(
+      expect.objectContaining({ data: { authorId: 2, text: 'Hi' } }),
+    );
+    expect(mockPrisma.user.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({ where: { id: { not: 2 } } }),
+    );
+    const row = { actorId: 2, type: 'ANNOUNCEMENT', entityId: 4, data: { text: 'Hi' } };
+    expect(mockPrisma.notification.createManyAndReturn).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: [
+          { userId: 10, ...row },
+          { userId: 11, ...row },
+        ],
+      }),
+    );
+  });
+});
+
+describe('listAnnouncements', () => {
+  it('lists the newest first with their author', async () => {
+    mockPrisma.announcement.findMany.mockResolvedValue([{ id: 2 }]);
+    expect(await repo.listAnnouncements(50)).toEqual([{ id: 2 }]);
+    expect(mockPrisma.announcement.findMany).toHaveBeenCalledWith({
+      orderBy: { id: 'desc' },
+      take: 50,
+      include: { author: { select: { name: true } } },
+    });
   });
 });

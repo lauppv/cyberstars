@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useSearchParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
@@ -53,6 +54,8 @@ export function SupportPage() {
   const [allTickets, setAllTickets] = useState<SupportTicketDTO[] | null>(null);
   const [allTicketsError, setAllTicketsError] = useState('');
   const [openTicket, setOpenTicket] = useState<SupportTicketDTO | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const wanted = Number(searchParams.get('ticket'));
 
   const refresh = useCallback(() => {
     supportService
@@ -75,6 +78,16 @@ export function SupportPage() {
   useEffect(() => {
     if (isLoggedIn) refresh();
   }, [isLoggedIn, refresh]);
+
+  // A ticket's notification links here with ?ticket=<id>: open it once a list
+  // that can hold it is in, then drop the id so Back shows the lists
+  useEffect(() => {
+    if (!wanted) return;
+    const tk = myTickets?.find((x) => x.id === wanted) ?? allTickets?.find((x) => x.id === wanted);
+    if (!tk && (myTickets === null || (isAdmin && allTickets === null))) return;
+    if (tk) setOpenTicket(tk); // eslint-disable-line react-hooks/set-state-in-effect
+    setSearchParams({}, { replace: true });
+  }, [wanted, myTickets, allTickets, isAdmin, setSearchParams]);
 
   const submit = async () => {
     if (!subject.trim() || !message.trim()) return;

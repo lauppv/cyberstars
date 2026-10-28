@@ -3,14 +3,19 @@ import type { Request, Response } from 'express';
 
 const mockService = { getStats: vi.fn() };
 vi.mock('../services/admin.service.js', () => mockService);
+const mockNotifications = { announce: vi.fn(), listAnnouncements: vi.fn() };
+vi.mock('../services/notifications.service.js', () => mockNotifications);
 
-const { getStats } = await import('./admin.controller.js');
+const { getStats, sendAnnouncement, getAnnouncements } = await import('./admin.controller.js');
 
 function mockReq(query: Record<string, unknown> = {}): Request {
   return { query } as unknown as Request;
 }
 function mockRes(): Response {
-  return { json: vi.fn().mockReturnThis() } as unknown as Response;
+  return {
+    json: vi.fn().mockReturnThis(),
+    status: vi.fn().mockReturnThis(),
+  } as unknown as Response;
 }
 
 beforeEach(() => vi.clearAllMocks());
@@ -34,6 +39,42 @@ describe('getStats', () => {
     mockService.getStats.mockRejectedValue(new Error('boom'));
     const next = vi.fn();
     await getStats(mockReq(), mockRes(), next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
+  });
+});
+
+describe('sendAnnouncement', () => {
+  const req = () => ({ user: { id: 2 }, body: { text: 'Hi' } }) as unknown as Request;
+
+  it('sends it from the admin and says how many got it', async () => {
+    mockNotifications.announce.mockResolvedValue(5);
+    const res = mockRes();
+    await sendAnnouncement(req(), res, vi.fn());
+    expect(mockNotifications.announce).toHaveBeenCalledWith(2, 'Hi');
+    expect(res.status).toHaveBeenCalledWith(201);
+    expect(res.json).toHaveBeenCalledWith({ sent: 5 });
+  });
+
+  it('forwards errors to next', async () => {
+    mockNotifications.announce.mockRejectedValue(new Error('boom'));
+    const next = vi.fn();
+    await sendAnnouncement(req(), mockRes(), next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
+  });
+});
+
+describe('getAnnouncements', () => {
+  it('returns the announcements sent so far', async () => {
+    mockNotifications.listAnnouncements.mockResolvedValue([{ id: 1 }]);
+    const res = mockRes();
+    await getAnnouncements(mockReq(), res, vi.fn());
+    expect(res.json).toHaveBeenCalledWith([{ id: 1 }]);
+  });
+
+  it('forwards errors to next', async () => {
+    mockNotifications.listAnnouncements.mockRejectedValue(new Error('boom'));
+    const next = vi.fn();
+    await getAnnouncements(mockReq(), mockRes(), next);
     expect(next).toHaveBeenCalledWith(expect.any(Error));
   });
 });

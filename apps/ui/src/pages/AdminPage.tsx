@@ -10,6 +10,7 @@ import { courseTitle } from '../constants/courses';
 import * as adminService from '../services/adminService';
 import { VisitorsSection } from '../components/admin/VisitorsSection';
 import { MissedQuestions } from '../components/admin/MissedQuestions';
+import { AnnouncementSection } from '../components/admin/AnnouncementSection';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 
@@ -242,6 +243,9 @@ export function AdminPage() {
               </p>
             </div>
           ) : null}
+
+          {/* Last, since announcements are rare; outside the stats so it works without them */}
+          <AnnouncementSection className={CARD_CLS + ' mt-5'} />
         </div>
       </main>
     </div>

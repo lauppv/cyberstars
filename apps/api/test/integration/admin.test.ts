@@ -73,3 +73,78 @@ describe('Admin stats', () => {
     await agent().get('/api/admin/stats').expect(401);
   });
 });
+
+describe('Admin announcements', () => {
+  it('a regular USER is forbidden (403)', async () => {
+    const { agent: user } = await createAuthenticatedAgent();
+    await user.post('/api/admin/announcements').send({ text: 'Hi' }).expect(403);
+    expect(await prisma.notification.count()).toBe(0);
+  });
+
+  it('a MODERATOR is forbidden too, only admins and the founder send one', async () => {
+    const { agent: mod, email } = await createAuthenticatedAgent();
+    await prisma.user.update({
+      where: { id: await userIdFor(email) },
+      data: { role: 'MODERATOR' },
+    });
+    await mod.post('/api/admin/announcements').send({ text: 'Hi' }).expect(403);
+  });
+
+  it("lands in every bell but the sender's, the text trimmed", async () => {
+    const { agent: user, email } = await createAuthenticatedAgent();
+    const a = await admin();
+    const res = await a
+      .post('/api/admin/announcements')
+      .send({ text: '  A new course is out.\nGo try it.  ' })
+      .expect(201);
+    // The sentinel ADMIN and the user above, not the sender
+    expect(res.body).toEqual({ sent: 2 });
+
+    const { body } = await user.get('/api/notifications').expect(200);
+    expect(body.unreadCount).toBe(1);
+    const [kept] = await prisma.announcement.findMany();
+    expect(kept.text).toBe('A new course is out.\nGo try it.');
+    expect(body.items[0]).toMatchObject({
+      type: 'ANNOUNCEMENT',
+      entityId: kept.id,
+      data: { text: 'A new course is out.\nGo try it.' },
+      actor: { name: expect.any(String) },
+    });
+    const own = await a.get('/api/notifications').expect(200);
+    expect(own.body.items).toEqual([]);
+
+    const rows = await prisma.notification.findMany({ where: { type: 'ANNOUNCEMENT' } });
+    expect(rows.map((r) => r.userId)).toContain(await userIdFor(email));
+  });
+
+  it('refuses an empty one', async () => {
+    const a = await admin();
+    await a.post('/api/admin/announcements').send({ text: '   ' }).expect(400);
+    expect(await prisma.notification.count()).toBe(0);
+    expect(await prisma.announcement.count()).toBe(0);
+  });
+
+  it('lists the ones sent, newest first, with who sent them', async () => {
+    const a = await admin();
+    await a.post('/api/admin/announcements').send({ text: 'First' }).expect(201);
+    await a.post('/api/admin/announcements').send({ text: 'Second' }).expect(201);
+    const { body } = await a.get('/api/admin/announcements').expect(200);
+    expect(body).toMatchObject([
+      { text: 'Second', authorName: expect.any(String), createdAt: expect.any(String) },
+      { text: 'First', authorName: expect.any(String) },
+    ]);
+  });
+
+  it('keeps the history from everyone but admins', async () => {
+    const { agent: user } = await createAuthenticatedAgent();
+    await user.get('/api/admin/announcements').expect(403);
+  });
+
+  it('refuses one past the length limit', async () => {
+    const a = await admin();
+    await a
+      .post('/api/admin/announcements')
+      .send({ text: 'x'.repeat(2001) })
+      .expect(400);
+  });
+});

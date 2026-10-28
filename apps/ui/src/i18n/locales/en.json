@@ -118,7 +118,22 @@
     "completions_one": "completion",
     "completions_other": "completions",
     "learners_one": "learner",
-    "learners_other": "learners"
+    "learners_other": "learners",
+    "announcement": {
+      "title": "Announcement",
+      "placeholder": "Write something every user should know",
+      "send": "Send",
+      "confirmTitle": "Send to all users?",
+      "confirmHint": "This is how it shows in their bell. Press it to read it the way they will.",
+      "cancel": "Cancel",
+      "sending": "Sending…",
+      "sent_one": "Sent to {{count}} user",
+      "sent_other": "Sent to {{count}} users",
+      "failed": "The announcement couldn't be sent. Try again.",
+      "history": "Sent before",
+      "none": "No announcement has been sent yet.",
+      "historyError": "The announcements sent before couldn't be loaded."
+    }
   },
   "lang": {
     "switch": "Switch language",
@@ -442,7 +457,11 @@
     "connectionRequest": "{{name}} wants to connect with you",
     "connectionAccepted": "{{name}} accepted your connection request",
     "laniakeaRecap_one": "A Laniakea recap is open",
-    "laniakeaRecap_other": "{{count}} Laniakea recaps are open"
+    "laniakeaRecap_other": "{{count}} Laniakea recaps are open",
+    "announcement": "Official announcement: {{text}}",
+    "announcementTitle": "Official announcement",
+    "view": "View",
+    "close": "Close"
   },
   "courses": {
     "lessons_one": "lesson",

@@ -59,6 +59,39 @@ export function create(input: CreateNotificationInput): Promise<NotificationRow>
   });
 }
 
+// The announcement and a bell row of it for every account but the author's, in
+// one insert and one transaction, so the history never lists one nobody got
+export function createAnnouncement(authorId: number, text: string): Promise<NotificationRow[]> {
+  return prisma.$transaction(async (tx) => {
+    const { id } = await tx.announcement.create({
+      data: { authorId, text },
+      select: { id: true },
+    });
+    const users = await tx.user.findMany({
+      where: { id: { not: authorId } },
+      select: { id: true },
+    });
+    return tx.notification.createManyAndReturn({
+      data: users.map((u) => ({
+        userId: u.id,
+        actorId: authorId,
+        type: 'ANNOUNCEMENT' as const,
+        entityId: id,
+        data: { text },
+      })),
+      include: actorInclude,
+    });
+  });
+}
+
+export function listAnnouncements(take: number) {
+  return prisma.announcement.findMany({
+    orderBy: { id: 'desc' },
+    take,
+    include: { author: { select: { name: true } } },
+  });
+}
+
 // Fold a repeat event into a REPLACEMENT of the existing unread notification:
 // the stale row is deleted and a fresh one inserted (newest actor wins, data
 // with bumped count). The replacement gets a NEW id, which keeps `id desc`

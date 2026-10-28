@@ -11,14 +11,24 @@ const mockRepo = {
   markOneRead: vi.fn(),
   markReadByEntity: vi.fn(),
   clearExcerpt: vi.fn(),
+  createAnnouncement: vi.fn(),
+  listAnnouncements: vi.fn(),
 };
-const mockWs = { pushToUser: vi.fn() };
+const mockWs = { pushToUser: vi.fn(), isUserOnline: vi.fn() };
 
 vi.mock('../repositories/notifications.repository.js', () => mockRepo);
 vi.mock('./ws-user.js', () => mockWs);
 
-const { notify, getPage, markRead, markOneRead, markEntityRead, redactExcerpt } =
-  await import('./notifications.service.js');
+const {
+  notify,
+  announce,
+  listAnnouncements,
+  getPage,
+  markRead,
+  markOneRead,
+  markEntityRead,
+  redactExcerpt,
+} = await import('./notifications.service.js');
 
 function row(over: Partial<Record<string, unknown>> = {}) {
   return {
@@ -220,5 +230,61 @@ describe('notifications.service mark helpers', () => {
     mockRepo.markReadByEntity.mockRejectedValue(new Error('db down'));
     await expect(markEntityRead(10, 'CONNECTION_REQUEST', 5)).resolves.toBeUndefined();
     spy.mockRestore();
+  });
+});
+
+describe('notifications.service announce', () => {
+  const sent = (userId: number) =>
+    row({ id: 100 + userId, userId, type: 'ANNOUNCEMENT', entityId: 0, data: { text: 'Hi' } });
+
+  it('inserts it for everyone at once and pushes it only to those online', async () => {
+    mockRepo.createAnnouncement.mockResolvedValue([sent(10), sent(11)]);
+    mockWs.isUserOnline.mockImplementation((id: number) => id === 11);
+    const count = await announce(2, 'Hi');
+    expect(count).toBe(2);
+    expect(mockRepo.createAnnouncement).toHaveBeenCalledWith(2, 'Hi');
+    expect(mockRepo.create).not.toHaveBeenCalled();
+    expect(mockRepo.countUnread).toHaveBeenCalledTimes(1);
+    expect(mockWs.pushToUser).not.toHaveBeenCalledWith(10, expect.anything());
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(11, {
+      channel: 'notification',
+      type: 'new',
+      payload: expect.objectContaining({ id: 111, type: 'ANNOUNCEMENT', data: { text: 'Hi' } }),
+    });
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(11, {
+      channel: 'notification',
+      type: 'unread-count',
+      payload: { unreadCount: 3 },
+    });
+  });
+
+  it('still counts it sent when a live push fails for one user', async () => {
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockRepo.createAnnouncement.mockResolvedValue([sent(10), sent(11)]);
+    mockWs.isUserOnline.mockReturnValue(true);
+    mockRepo.countUnread.mockRejectedValueOnce(new Error('boom'));
+    await expect(announce(2, 'Hi')).resolves.toBe(2);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(11, expect.anything());
+    spy.mockRestore();
+  });
+
+  it('throws when the insert fails, so the admin hears of it', async () => {
+    mockRepo.createAnnouncement.mockRejectedValue(new Error('db down'));
+    await expect(announce(2, 'Hi')).rejects.toThrow('db down');
+  });
+});
+
+describe('notifications.service listAnnouncements', () => {
+  it('lists the last 50, naming the author while their account is there', async () => {
+    const at = new Date('2026-10-28T10:00:00.000Z');
+    mockRepo.listAnnouncements.mockResolvedValue([
+      { id: 2, text: 'New course', createdAt: at, author: { name: 'Ada' } },
+      { id: 1, text: 'Hello', createdAt: at, author: null },
+    ]);
+    expect(await listAnnouncements()).toEqual([
+      { id: 2, text: 'New course', authorName: 'Ada', createdAt: '2026-10-28T10:00:00.000Z' },
+      { id: 1, text: 'Hello', authorName: null, createdAt: '2026-10-28T10:00:00.000Z' },
+    ]);
+    expect(mockRepo.listAnnouncements).toHaveBeenCalledWith(50);
   });
 });
