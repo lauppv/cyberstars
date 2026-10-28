@@ -97,8 +97,6 @@ export function AdminPage() {
             </button>
           </div>
 
-          <AnnouncementSection className={CARD_CLS + ' mb-5'} />
-
           {failed && (
             <p role="alert" className="mt-0 mb-5 text-[13px] text-[var(--error)]">
               {t('admin.loadError')}
@@ -245,6 +243,9 @@ export function AdminPage() {
               </p>
             </div>
           ) : null}
+
+          {/* Last, since announcements are rare; outside the stats so it works without them */}
+          <AnnouncementSection className={CARD_CLS + ' mt-5'} />
         </div>
       </main>
     </div>

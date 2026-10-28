@@ -60,6 +60,16 @@ describe('AdminPage', () => {
     expect(screen.getByText('Announcement')).toBeInTheDocument();
   });
 
+  it('keeps the announcement card at the foot, after the stats', async () => {
+    getStats.mockResolvedValue(stats);
+    renderPage();
+    const users = await screen.findByText('Total users');
+    expect(
+      users.compareDocumentPosition(screen.getByText('Announcement')) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
   it('says the stats could not be loaded, and clears it once a refresh brings them', async () => {
     getStats.mockRejectedValueOnce(new Error('500')).mockResolvedValueOnce(stats);
     renderPage();
