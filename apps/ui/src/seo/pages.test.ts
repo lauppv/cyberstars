@@ -54,7 +54,22 @@ describe('the pre-rendered pages', () => {
     expect(page('/ro/lesson/python/print').title).toBe(
       'print în Python: lecție gratuită, fără card | CyberStars',
     );
-    expect(page('/lesson/python/print').description).toBe('print in en');
+    expect(page('/lesson/python/print').description).toBe('Free, no card. print in en');
+  });
+
+  it('opens each course and challenge list description on free and no card', () => {
+    const python = page('/courses/python');
+    expect(python.description).toMatch(/^Free, no card\. The best place to start/);
+    expect(python.description.length).toBeLessThanOrEqual(155);
+    expect(page('/ro/courses/python').description).toMatch(/^Gratuit, fără card\. /);
+    expect(page('/algorithms/java').description).toMatch(/^Free, no card\. /);
+    expect(page('/ro/lesson/python/print').description).toBe('Gratuit, fără card. print in ro');
+  });
+
+  it('shows a course in its own words on its page and in the list', () => {
+    const own = expect.stringMatching(/^The best place to start/);
+    expect(page('/courses/python').view).toMatchObject({ description: own });
+    expect(page('/courses').view).toMatchObject({ courses: [{ description: own }] });
   });
 
   it('leaves the difficulty out of a challenge and files it under its language', () => {
