@@ -67,7 +67,7 @@ describe('Admin stats', () => {
     registerUserSocket(founder, {} as WebSocket);
     try {
       const res = await a.get('/api/admin/stats').expect(200);
-      expect(res.body.online).toBe(1);
+      expect(res.body.online.users).toBe(1);
     } finally {
       clearUserSockets();
     }

@@ -114,7 +114,8 @@ export function AdminPage() {
                 <div className="flex items-baseline justify-between mb-4">
                   <h2 className="text-[14px] font-semibold">{t('admin.users')}</h2>
                   <span className="text-[12px] text-[var(--text3)]">
-                    {t('admin.onlineNow')}: {stats.online}
+                    {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })} ·{' '}
+                    {t('admin.guestsOnline', { count: stats.online.guests })}
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 mb-4">

@@ -14,9 +14,12 @@ function codeExec() {
   return { ...codeContainer.liveMetrics(), ...sandboxSlots() };
 }
 
-// Signed-in users with the app open right now, read live too; the founder doesn't count
-function online(): Promise<number> {
-  return adminRepo.countNonFounders(onlineUserIds());
+// Who has the app open right now, read live too; the founder doesn't count
+async function online() {
+  return {
+    users: await adminRepo.countNonFounders(onlineUserIds()),
+    guests: codeContainer.onlineGuests(),
+  };
 }
 
 export async function getStats(force = false): Promise<AdminStatsDTO> {

@@ -39,7 +39,7 @@ const stats: AdminStatsDTO = {
     maxBusySlots: 2,
     openSessions: 0,
   },
-  online: 3,
+  online: { users: 3, guests: 5 },
   generatedAt: '2026-11-02T10:00:00Z',
 };
 
@@ -71,10 +71,10 @@ describe('AdminPage', () => {
     ).toBeTruthy();
   });
 
-  it('shows how many are online now in the users card', async () => {
+  it('shows how many users and guests are online now in the users card', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
-    expect(await screen.findByText('Online now: 3')).toBeInTheDocument();
+    expect(await screen.findByText('Online now: 3 signed in · 5 guests')).toBeInTheDocument();
   });
 
   it('says the stats could not be loaded, and clears it once a refresh brings them', async () => {

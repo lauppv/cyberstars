@@ -19,6 +19,7 @@ const mockAdminRepo = {
 
 const mockContainer = {
   liveMetrics: vi.fn(),
+  onlineGuests: vi.fn(),
 };
 
 vi.mock('../repositories/admin.repository.js', () => mockAdminRepo);
@@ -33,6 +34,7 @@ beforeEach(() => {
   clearCache();
   clearUserSockets();
   mockAdminRepo.countNonFounders.mockResolvedValue(0);
+  mockContainer.onlineGuests.mockReturnValue(0);
   mockAdminRepo.userStats.mockResolvedValue({
     total: 3,
     byRole: { USER: 2, MODERATOR: 0, ADMIN: 1 },
@@ -101,8 +103,9 @@ describe('admin.service getStats', () => {
     registerUserSocket(7, {} as WebSocket);
     registerUserSocket(9, {} as WebSocket);
     mockAdminRepo.countNonFounders.mockResolvedValue(1);
+    mockContainer.onlineGuests.mockReturnValue(4);
     const second = await getStats();
-    expect(second.online).toBe(1);
+    expect(second.online).toEqual({ users: 1, guests: 4 });
     expect(mockAdminRepo.countNonFounders).toHaveBeenLastCalledWith([7, 9]);
     expect(mockAdminRepo.userStats).toHaveBeenCalledTimes(1);
   });

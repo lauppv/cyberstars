@@ -19,6 +19,7 @@ const {
   activeCount,
   openSession,
   closeSession,
+  onlineGuests,
   isRunning,
 } = await import('./code-container.service.js');
 
@@ -241,6 +242,19 @@ describe('session ref-counting', () => {
     openSession('user:empty');
     expect(() => closeSession('user:empty')).not.toThrow();
     expect(() => closeSession('user:empty')).not.toThrow(); // already at zero
+  });
+
+  it('counts the guests with a tab open, once each, and no signed-in user', () => {
+    openSession('guest:a');
+    openSession('guest:a'); // two tabs, one browser
+    openSession('ip:1.2.3.4');
+    openSession('user:5');
+    expect(onlineGuests()).toBe(2);
+    closeSession('guest:a');
+    closeSession('guest:a');
+    closeSession('ip:1.2.3.4');
+    closeSession('user:5');
+    expect(onlineGuests()).toBe(0);
   });
 });
 

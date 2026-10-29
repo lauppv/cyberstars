@@ -204,6 +204,13 @@ export function openSession(ownerKey: string): void {
   sessionRefs.set(ownerKey, (sessionRefs.get(ownerKey) ?? 0) + 1);
 }
 
+// Browsers with a tab open and nobody signed in, so the admin page can count the guests online
+export function onlineGuests(): number {
+  let guests = 0;
+  for (const ownerKey of sessionRefs.keys()) if (!ownerKey.startsWith('user:')) guests++;
+  return guests;
+}
+
 export function closeSession(ownerKey: string): void {
   const remaining = (sessionRefs.get(ownerKey) ?? 0) - 1;
   if (remaining > 0) {
