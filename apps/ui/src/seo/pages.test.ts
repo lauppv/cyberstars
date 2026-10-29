@@ -49,17 +49,17 @@ const page = (path: string) => pages.find((p) => p.path === path) as Page;
 describe('the pre-rendered pages', () => {
   it('names a lesson from a template, in each language', () => {
     expect(page('/lesson/python/print').title).toBe(
-      'print in Python, free interactive lesson | CyberStars',
+      'print in Python: free lesson, no card | CyberStars',
     );
     expect(page('/ro/lesson/python/print').title).toBe(
-      'print în Python, lecție interactivă gratuită | CyberStars',
+      'print în Python: lecție gratuită, fără card | CyberStars',
     );
     expect(page('/lesson/python/print').description).toBe('print in en');
   });
 
   it('leaves the difficulty out of a challenge and files it under its language', () => {
     const gpa = page('/lesson/algo-java/gpa');
-    expect(gpa.title).toBe('Student GPA in Java, coding challenge | CyberStars');
+    expect(gpa.title).toBe('Student GPA in Java: free challenge, no card | CyberStars');
     expect(gpa.breadcrumb.map((l) => l.path)).toEqual([
       '/algorithms',
       '/algorithms/java',
@@ -106,7 +106,7 @@ describe('the pre-rendered pages', () => {
       expect(page(path).alternates).toEqual({ en: path, ro });
       expect(page(ro).lang).toBe('ro');
     }
-    expect(page('/ro').title).toBe('CyberStars: învață programare gratis, direct în browser');
+    expect(page('/ro').title).toBe('Învață programare gratis, fără card | CyberStars');
   });
 
   it('gives each Almanac article its own page, only where it is translated', () => {
