@@ -71,10 +71,14 @@ describe('AdminPage', () => {
     ).toBeTruthy();
   });
 
-  it('shows how many users and guests are online now in the users card', async () => {
+  it('shows how many users and guests are online now at the very foot, after the announcement card', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
-    expect(await screen.findByText('Online now: 3 signed in · 5 guests')).toBeInTheDocument();
+    const online = await screen.findByText('Online now: 3 signed in · 5 guests');
+    expect(
+      screen.getByText('Announcement').compareDocumentPosition(online) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
   });
 
   it('says the stats could not be loaded, and clears it once a refresh brings them', async () => {

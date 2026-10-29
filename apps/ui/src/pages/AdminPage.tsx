@@ -111,13 +111,7 @@ export function AdminPage() {
             <div className="grid grid-cols-1 @2xl:grid-cols-3 gap-5">
               {/* Users, in one row with the visitors charts */}
               <section className={CARD_CLS}>
-                <div className="flex items-baseline justify-between mb-4">
-                  <h2 className="text-[14px] font-semibold">{t('admin.users')}</h2>
-                  <span className="text-[12px] text-[var(--text3)]">
-                    {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })} ·{' '}
-                    {t('admin.guestsOnline', { count: stats.online.guests })}
-                  </span>
-                </div>
+                <h2 className="text-[14px] font-semibold mb-4">{t('admin.users')}</h2>
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <Stat label={t('admin.totalUsers')} value={stats.users.total} />
                   <Stat label={t('admin.active')} value={stats.users.active} />
@@ -254,8 +248,15 @@ export function AdminPage() {
             </div>
           ) : null}
 
-          {/* Last, since announcements are rare; outside the stats so it works without them */}
+          {/* After the stats, since announcements are rare; outside them so it works without them */}
           <AnnouncementSection className={CARD_CLS + ' mt-5'} />
+
+          {stats && (
+            <p className="mt-5 mb-0 text-[12px] text-[var(--text3)] text-center">
+              {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })} ·{' '}
+              {t('admin.guestsOnline', { count: stats.online.guests })}
+            </p>
+          )}
         </div>
       </main>
     </div>
