@@ -42,7 +42,7 @@ beforeEach(() => {
 
 describe('VisitorsSection', () => {
   it('lines up the placement test from opening it to Get started', async () => {
-    render(<VisitorsSection className="" reload={0} />);
+    render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     const funnel = (await screen.findByText('Placement test')).parentElement!;
     const rows = within(funnel)
       .getAllByRole('listitem')
@@ -56,7 +56,7 @@ describe('VisitorsSection', () => {
   });
 
   it('shows the charts, the pages, the sources and the split', async () => {
-    render(<VisitorsSection className="" reload={0} />);
+    render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     expect(await screen.findByText('/lesson/python/print')).toBeInTheDocument();
     expect(getVisits).toHaveBeenCalledWith(30);
     expect(screen.getByRole('img', { name: 'Visitors a day' })).toBeInTheDocument();
@@ -80,7 +80,7 @@ describe('VisitorsSection', () => {
       newAccounts: 0,
     }));
     getVisits.mockResolvedValue({ ...dto, range: 182, days });
-    render(<VisitorsSection className="" reload={0} />);
+    render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     expect(await screen.findByRole('img', { name: 'Visitors a week' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'New accounts a week' })).toBeInTheDocument();
     const table = screen.getByRole('table', { name: 'Visitors' });
@@ -89,7 +89,7 @@ describe('VisitorsSection', () => {
   });
 
   it('lists the guest visits for the same range, filtered by the sources above', async () => {
-    render(<VisitorsSection className="" reload={0} />);
+    render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     await screen.findByText('Guest visits');
     // The list is asked for from an effect, a moment after the heading shows
     await waitFor(() => expect(getGuestVisits).toHaveBeenCalledWith(30, undefined));
@@ -104,7 +104,7 @@ describe('VisitorsSection', () => {
 
   it('says whether this browser is counted and switches it', async () => {
     localStorage.setItem('cyberstars.counted', 'no');
-    render(<VisitorsSection className="" reload={0} />);
+    render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     expect(screen.getByText(/This browser isn't counted/)).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole('button', { name: 'Count it' }));
@@ -116,7 +116,7 @@ describe('VisitorsSection', () => {
   });
 
   it('offers 1 to 24 months and loads again on a refresh', async () => {
-    const { rerender } = render(<VisitorsSection className="" reload={0} />);
+    const { rerender } = render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     await screen.findByText('/lesson/python/print');
     const range = within(screen.getByRole('group', { name: 'Time range' }));
     expect(range.getAllByRole('button').map((b) => b.textContent)).toEqual([
@@ -131,7 +131,7 @@ describe('VisitorsSection', () => {
     expect(getVisits).toHaveBeenLastCalledWith(90);
     expect(range.getByRole('button', { name: '3 months' })).toHaveAttribute('aria-pressed', 'true');
 
-    rerender(<VisitorsSection className="" reload={1} />);
+    rerender(<VisitorsSection chartsClassName="" className="" reload={1} />);
     expect(getVisits).toHaveBeenCalledTimes(3);
   });
 
@@ -142,7 +142,7 @@ describe('VisitorsSection', () => {
       .mockReturnValueOnce(Promise.resolve(dto))
       .mockReturnValueOnce(new Promise((resolve) => (answer90 = resolve)))
       .mockReturnValueOnce(new Promise((resolve) => (answer30 = resolve)));
-    render(<VisitorsSection className="" reload={0} />);
+    render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     const page = await screen.findByText('/lesson/python/print');
     const range = within(screen.getByRole('group', { name: 'Time range' }));
 
@@ -161,13 +161,13 @@ describe('VisitorsSection', () => {
 
   it('says the numbers could not be loaded, and there is nothing yet when they are empty', async () => {
     getVisits.mockRejectedValueOnce(new Error('403'));
-    const { unmount } = render(<VisitorsSection className="" reload={0} />);
+    const { unmount } = render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     expect(await screen.findByRole('alert')).toHaveTextContent("Couldn't load these numbers.");
     expect(screen.queryByText('No data yet')).not.toBeInTheDocument();
     unmount();
 
     getVisits.mockResolvedValueOnce({ ...dto, pages: [], sources: [], clicks: [] });
-    render(<VisitorsSection className="" reload={0} />);
+    render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     await screen.findByText('Most visited pages');
     // pages, sources, buttons and the guest visits
     expect(await screen.findAllByText('No data yet')).toHaveLength(4);
