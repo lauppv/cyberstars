@@ -187,6 +187,7 @@
       "title": "Learn to code <1>for free</1>",
       "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> and <7>Linux</7>, right in your browser.",
       "startLearning": "Start learning",
+      "noInstall": "Nothing to install",
       "signIn": "Sign in"
     },
     "activeDays_one": "<0>{{count}}</0> active day in {{period}}",

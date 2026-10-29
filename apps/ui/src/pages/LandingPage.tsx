@@ -1,4 +1,5 @@
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
+import { Check } from 'lucide-react';
 import { LandingNav } from '../components/landing/LandingNav';
 import { LandingFooter } from '../components/landing/LandingFooter';
 import { Reveal } from '../components/landing/Reveal';
@@ -16,6 +17,7 @@ import { ChapterRail } from '../components/landing/ChapterRail';
 // What a visitor sees on the home address. A signed-in student gets the
 // dashboard there instead (HomePage decides).
 export function LandingPage() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <LandingNav />
@@ -48,6 +50,20 @@ export function LandingPage() {
               </Reveal>
               <Reveal delay={160}>
                 <StartButtons className="justify-center lg:justify-start" />
+                {/* What a visitor checks before anything else, said by the buttons */}
+                <ul className="m-0 mt-5 p-0 list-none flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-[var(--text2)]">
+                  {[t('landing.free.card'), t('home.marketing.noInstall')].map((item) => (
+                    <li key={item} className="flex items-center gap-1.5">
+                      <Check
+                        size={14}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                        className="text-[var(--accent)]"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </Reveal>
             </div>
 

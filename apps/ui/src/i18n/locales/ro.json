@@ -203,6 +203,7 @@
       "title": "Învață să programezi <1>gratuit</1>",
       "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> și <7>Linux</7>, direct în browser.",
       "startLearning": "Începe să înveți",
+      "noInstall": "Nimic de instalat",
       "signIn": "Conectare"
     },
     "activeDays_one": "<0>{{count}}</0> zi activă în {{period}}",
