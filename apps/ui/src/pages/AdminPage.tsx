@@ -111,7 +111,12 @@ export function AdminPage() {
             <div className="grid grid-cols-1 @2xl:grid-cols-2 gap-5">
               {/* Users */}
               <section className={CARD_CLS}>
-                <h2 className="text-[14px] font-semibold mb-4">{t('admin.users')}</h2>
+                <div className="flex items-baseline justify-between mb-4">
+                  <h2 className="text-[14px] font-semibold">{t('admin.users')}</h2>
+                  <span className="text-[12px] text-[var(--text3)]">
+                    {t('admin.onlineNow')}: {stats.online}
+                  </span>
+                </div>
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <Stat label={t('admin.totalUsers')} value={stats.users.total} />
                   <Stat label={t('admin.active')} value={stats.users.active} />

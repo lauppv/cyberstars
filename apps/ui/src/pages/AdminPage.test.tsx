@@ -39,6 +39,7 @@ const stats: AdminStatsDTO = {
     maxBusySlots: 2,
     openSessions: 0,
   },
+  online: 3,
   generatedAt: '2026-11-02T10:00:00Z',
 };
 
@@ -68,6 +69,12 @@ describe('AdminPage', () => {
       users.compareDocumentPosition(screen.getByText('Announcement')) &
         Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
+  });
+
+  it('shows how many are online now in the users card', async () => {
+    getStats.mockResolvedValue(stats);
+    renderPage();
+    expect(await screen.findByText('Online now: 3')).toBeInTheDocument();
   });
 
   it('says the stats could not be loaded, and clears it once a refresh brings them', async () => {
