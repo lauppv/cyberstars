@@ -203,6 +203,7 @@
       "title": "Învață să programezi <1>gratuit</1>",
       "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> și <7>Linux</7>, direct în browser.",
       "startLearning": "Începe să înveți",
+      "noInstall": "Nimic de instalat",
       "signIn": "Conectare"
     },
     "activeDays_one": "<0>{{count}}</0> zi activă în {{period}}",
@@ -1465,21 +1466,22 @@
     }
   },
   "seo": {
-    "landingTitle": "CyberStars: învață programare gratis, direct în browser",
-    "landingDescription": "Lecții scurte de Python, Java, C și Linux. Scrii cod în browser, îl treci prin teste și afli pe loc dacă merge. Gratuit și open source.",
-    "coursesTitle": "Cursuri gratuite de programare în Python, Java, C și Linux | CyberStars",
-    "coursesDescription": "Alege un curs și începe să scrii cod în browser: lecții scurte de Python, Java, C și Linux, fiecare cu teste care îți spun când codul tău merge.",
-    "courseTitle": "Învață {{course}} gratis, direct în browser | CyberStars",
-    "lessonTitle": "{{lesson}} în {{course}}, lecție interactivă gratuită | CyberStars",
-    "algorithmsTitle": "Probleme de programare în Python, Java și C | CyberStars",
-    "algorithmsDescription": "Probleme de algoritmi în Python, Java și C, de la ușor la greu. Scrii soluția în browser și o rulezi pe teste ascunse.",
-    "algorithmListTitle": "Probleme de programare în {{course}}, de la ușor la greu | CyberStars",
-    "challengeTitle": "{{lesson}} în {{course}}, problemă de programare | CyberStars",
+    "landingTitle": "Învață programare gratis, fără card | CyberStars",
+    "landingDescription": "Complet gratuit: fără card, fără plan plătit, nimic de instalat. Înveți Python, Java, C și Linux prin practică: scrii cod în browser și îl testezi pe loc.",
+    "coursesTitle": "Cursuri de programare gratuite, fără card | CyberStars",
+    "coursesDescription": "Complet gratuit, fără card: lecții scurte de Python, Java, C și Linux. Înveți prin practică: scrii cod în browser și îl rulezi pe teste.",
+    "courseTitle": "Învață {{course}} gratis, fără card | CyberStars",
+    "free": "Gratuit, fără card.",
+    "lessonTitle": "{{lesson}} în {{course}}: lecție gratuită, fără card | CyberStars",
+    "algorithmsTitle": "Probleme de programare gratuite, fără card | CyberStars",
+    "algorithmsDescription": "Gratuit, fără card: probleme de algoritmi în Python, Java și C, de la ușor la greu. Scrii soluția în browser și o rulezi pe teste ascunse.",
+    "algorithmListTitle": "Probleme gratuite de {{course}}, fără card | CyberStars",
+    "challengeTitle": "{{lesson}} în {{course}}: problemă gratuită, fără card | CyberStars",
     "almanacTitle": "Almanahul: povești din istoria informaticii | CyberStars",
     "almanacDescription": "Lecturi scurte despre oamenii, mașinile și ideile din spatele informaticii: legende, open source, internet, securitate, spațiu și AI.",
     "articleTitle": "{{title}} | Almanahul CyberStars",
     "home": "Acasă",
-    "imageAlt": "CyberStars: învață să programezi gratis. Python, Java, C și Linux, direct în browser."
+    "imageAlt": "CyberStars: învață să programezi gratis. Python, Java, C și Linux, direct în browser. Fără card, nimic de instalat."
   },
   "notFound": {
     "title": "Pagina nu există",

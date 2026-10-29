@@ -49,17 +49,32 @@ const page = (path: string) => pages.find((p) => p.path === path) as Page;
 describe('the pre-rendered pages', () => {
   it('names a lesson from a template, in each language', () => {
     expect(page('/lesson/python/print').title).toBe(
-      'print in Python, free interactive lesson | CyberStars',
+      'print in Python: free lesson, no card | CyberStars',
     );
     expect(page('/ro/lesson/python/print').title).toBe(
-      'print în Python, lecție interactivă gratuită | CyberStars',
+      'print în Python: lecție gratuită, fără card | CyberStars',
     );
-    expect(page('/lesson/python/print').description).toBe('print in en');
+    expect(page('/lesson/python/print').description).toBe('Free, no card. print in en');
+  });
+
+  it('opens each course and challenge list description on free and no card', () => {
+    const python = page('/courses/python');
+    expect(python.description).toMatch(/^Free, no card\. The best place to start/);
+    expect(python.description.length).toBeLessThanOrEqual(155);
+    expect(page('/ro/courses/python').description).toMatch(/^Gratuit, fără card\. /);
+    expect(page('/algorithms/java').description).toMatch(/^Free, no card\. /);
+    expect(page('/ro/lesson/python/print').description).toBe('Gratuit, fără card. print in ro');
+  });
+
+  it('shows a course in its own words on its page and in the list', () => {
+    const own = expect.stringMatching(/^The best place to start/);
+    expect(page('/courses/python').view).toMatchObject({ description: own });
+    expect(page('/courses').view).toMatchObject({ courses: [{ description: own }] });
   });
 
   it('leaves the difficulty out of a challenge and files it under its language', () => {
     const gpa = page('/lesson/algo-java/gpa');
-    expect(gpa.title).toBe('Student GPA in Java, coding challenge | CyberStars');
+    expect(gpa.title).toBe('Student GPA in Java: free challenge, no card | CyberStars');
     expect(gpa.breadcrumb.map((l) => l.path)).toEqual([
       '/algorithms',
       '/algorithms/java',
@@ -106,7 +121,7 @@ describe('the pre-rendered pages', () => {
       expect(page(path).alternates).toEqual({ en: path, ro });
       expect(page(ro).lang).toBe('ro');
     }
-    expect(page('/ro').title).toBe('CyberStars: învață programare gratis, direct în browser');
+    expect(page('/ro').title).toBe('Învață programare gratis, fără card | CyberStars');
   });
 
   it('gives each Almanac article its own page, only where it is translated', () => {

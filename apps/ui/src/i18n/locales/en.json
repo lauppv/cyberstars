@@ -187,6 +187,7 @@
       "title": "Learn to code <1>for free</1>",
       "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> and <7>Linux</7>, right in your browser.",
       "startLearning": "Start learning",
+      "noInstall": "Nothing to install",
       "signIn": "Sign in"
     },
     "activeDays_one": "<0>{{count}}</0> active day in {{period}}",
@@ -1410,21 +1411,22 @@
     }
   },
   "seo": {
-    "landingTitle": "CyberStars: learn to code for free, in your browser",
-    "landingDescription": "Short lessons in Python, Java, C and Linux. Write code in your browser, run it against tests, and know right away if it works. Free and open source.",
-    "coursesTitle": "Free coding courses in Python, Java, C and Linux | CyberStars",
-    "coursesDescription": "Pick a course and start coding in your browser: short lessons in Python, Java, C and Linux, each with tests that tell you when your code works.",
-    "courseTitle": "Learn {{course}} for free, in your browser | CyberStars",
-    "lessonTitle": "{{lesson}} in {{course}}, free interactive lesson | CyberStars",
-    "algorithmsTitle": "Coding challenges in Python, Java and C | CyberStars",
-    "algorithmsDescription": "Algorithm challenges in Python, Java and C, from easy to hard. Write your solution in the browser and run it against hidden tests.",
-    "algorithmListTitle": "{{course}} coding challenges, easy to hard | CyberStars",
-    "challengeTitle": "{{lesson}} in {{course}}, coding challenge | CyberStars",
+    "landingTitle": "Learn to code for free, no card needed | CyberStars",
+    "landingDescription": "Totally free: no card, no paid plan, nothing to install. Learn Python, Java, C and Linux by doing: write code in your browser and test it right away.",
+    "coursesTitle": "Free coding courses, no card needed | CyberStars",
+    "coursesDescription": "Totally free, no card: short lessons in Python, Java, C and Linux. Learn by doing: write code in your browser and run it against tests.",
+    "courseTitle": "Learn {{course}} for free, no card needed | CyberStars",
+    "free": "Free, no card.",
+    "lessonTitle": "{{lesson}} in {{course}}: free lesson, no card | CyberStars",
+    "algorithmsTitle": "Free coding challenges, no card needed | CyberStars",
+    "algorithmsDescription": "Free, no card: algorithm challenges in Python, Java and C, from easy to hard. Write your solution in the browser and run it against hidden tests.",
+    "algorithmListTitle": "Free {{course}} coding challenges, no card | CyberStars",
+    "challengeTitle": "{{lesson}} in {{course}}: free challenge, no card | CyberStars",
     "almanacTitle": "The Almanac: stories from the history of computing | CyberStars",
     "almanacDescription": "Short reads on the people, machines and ideas behind computing: legends, open source, the internet, security, space and AI.",
     "articleTitle": "{{title}} | CyberStars Almanac",
     "home": "Home",
-    "imageAlt": "CyberStars: learn to code for free. Python, Java, C and Linux, right in your browser."
+    "imageAlt": "CyberStars: learn to code for free. Python, Java, C and Linux, right in your browser. No card, nothing to install."
   },
   "notFound": {
     "title": "Page not found",

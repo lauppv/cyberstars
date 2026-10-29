@@ -65,9 +65,12 @@ interface Entry {
 
 const LANGS: Lang[] = ['en', 'ro'];
 
+// About what a search result shows of a description before it cuts it
+const DESCRIPTION_MAX = 155;
+
 // The first lines of a lesson or a challenge as plain text, short enough for
 // a search result
-export function summary(markdown: string, max = 155): string {
+export function summary(markdown: string, max = DESCRIPTION_MAX): string {
   const paragraph =
     markdown
       .split(/\n\s*\n/)
@@ -83,6 +86,13 @@ export function summary(markdown: string, max = 155): string {
   if (text.length <= max) return text;
   const cut = text.lastIndexOf(' ', max - 1);
   return `${text.slice(0, cut > 0 ? cut : max - 1)}…`;
+}
+
+// "Free, no card." first, what people choosing where to learn look for, then
+// as much of the page's own text as still fits
+function freeFirst(free: string, markdown: string): string {
+  const text = summary(markdown, DESCRIPTION_MAX - free.length - 1);
+  return text ? `${free} ${text}` : free;
 }
 
 // "Easy · Two Sum" names a challenge; the difficulty stays out of its title
@@ -152,7 +162,7 @@ export function buildPages(source: ContentSource): Page[] {
           lesson: link.label,
           course: label,
         }),
-        description: summary(content.text),
+        description: freeFirst(t('seo.free'), content.text),
         alternates: wherever(`/lesson/${courseKey}/${slug}`, (l) =>
           Boolean(source.lesson(courseKey, slug, l)),
         ),
@@ -199,7 +209,7 @@ export function buildPages(source: ContentSource): Page[] {
         path: link.path,
         lang,
         title: t('seo.courseTitle', { course: name }),
-        description,
+        description: freeFirst(t('seo.free'), description),
         alternates: everywhere(`/courses/${key}`),
         breadcrumb: [coursesLink, link],
         view: { kind: 'course', name, description, lessons: lessons.map((l) => l.link) },
@@ -215,7 +225,7 @@ export function buildPages(source: ContentSource): Page[] {
           provider: { '@id': `${ORIGIN}/#organization` },
         },
       };
-      return { page, link, lessons };
+      return { page, link, lessons, description };
     });
     pages.push({
       path: coursesLink.path,
@@ -226,7 +236,7 @@ export function buildPages(source: ContentSource): Page[] {
       breadcrumb: [coursesLink],
       view: {
         kind: 'courses',
-        courses: courses.map((c) => ({ ...c.link, description: c.page.description })),
+        courses: courses.map((c) => ({ ...c.link, description: c.description })),
       },
       lastmod: latest(courses.map((c) => c.page.lastmod)),
       jsonLd: {
@@ -252,13 +262,13 @@ export function buildPages(source: ContentSource): Page[] {
         path: link.path,
         lang,
         title: t('seo.algorithmListTitle', { course: courseLabel(key, t) }),
-        description,
+        description: freeFirst(t('seo.free'), description),
         alternates: everywhere(`/algorithms/${baseLanguage(key)}`),
         breadcrumb: [algorithmsLink, link],
         view: { kind: 'challenges', name, description, challenges: challenges.map((c) => c.link) },
         lastmod: latest(challenges.map((c) => c.page.lastmod)),
       };
-      return { page, link, challenges };
+      return { page, link, challenges, description };
     });
     pages.push({
       path: algorithmsLink.path,
@@ -269,7 +279,7 @@ export function buildPages(source: ContentSource): Page[] {
       breadcrumb: [algorithmsLink],
       view: {
         kind: 'algorithms',
-        courses: algorithms.map((a) => ({ ...a.link, description: a.page.description })),
+        courses: algorithms.map((a) => ({ ...a.link, description: a.description })),
       },
       lastmod: latest(algorithms.map((a) => a.page.lastmod)),
     });

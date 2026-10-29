@@ -54,6 +54,13 @@ describe('LandingPage', () => {
     expect(within(main()).getByRole('button', { name: 'Is it free?' })).toBeDefined();
   });
 
+  it('says no card and nothing to install by the hero buttons', () => {
+    renderPage();
+    const hero = within(main()).getByRole('heading', { level: 1 }).closest('section')!;
+    expect(within(hero).getByText('No card')).toBeDefined();
+    expect(within(hero).getByText('Nothing to install')).toBeDefined();
+  });
+
   it('shows the chapters of the page at its side', () => {
     renderPage();
     expect(screen.getByRole('navigation', { name: 'Chapters of the page' })).toBeDefined();
