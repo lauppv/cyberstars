@@ -102,7 +102,16 @@ function PlacementFunnelTable({ funnel }: { funnel: PlacementFunnel }) {
 
 // Who visits and where they come from, counted by our own API (CYB-65). It
 // loads on its own so the range switch doesn't redo the rest of the page.
-export function VisitorsSection({ className, reload }: { className: string; reload: number }) {
+// Two cards: the charts sit in the top row by the users card, the rest below.
+export function VisitorsSection({
+  chartsClassName,
+  className,
+  reload,
+}: {
+  chartsClassName: string;
+  className: string;
+  reload: number;
+}) {
   const { t } = useTranslation();
   const [range, setRange] = useState<VisitRange>(VISIT_RANGES[0]);
   const [data, setData] = useState<AdminVisitsDTO | null>(null);
@@ -142,134 +151,144 @@ export function VisitorsSection({ className, reload }: { className: string; relo
     SOURCE_NAMES[key] ?? (key === 'direct' || key === 'other' ? t(`admin.source.${key}`) : key);
 
   return (
-    <section className={className}>
-      <div className="flex items-center justify-between mb-4 gap-3">
-        <h2 className="text-[14px] font-semibold">{t('admin.visits')}</h2>
-        <div className="flex gap-1" role="group" aria-label={t('admin.range')}>
-          {VISIT_RANGES.map((r) => (
-            <button
-              key={r}
-              onClick={() => setRange(r)}
-              aria-pressed={range === r}
-              className={`px-2.5 py-1 rounded-[var(--radius-sm)] text-[12px] border cursor-pointer transition ${
-                range === r
-                  ? 'border-[var(--accent)] text-[var(--text)]'
-                  : 'border-[var(--border)] text-[var(--text3)] hover:text-[var(--text2)]'
-              }`}
-            >
-              {t('admin.lastMonths', { count: MONTHS[r] })}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {failed && (
-        <p role="alert" className="mt-0 mb-4 text-[12px] text-[var(--error)]">
-          {t('admin.loadError')}
-        </p>
-      )}
-
-      {!data ? (
-        !failed && <span className="text-[12px] text-[var(--text3)]">{t('admin.noData')}</span>
-      ) : (
-        <div aria-busy={loading} className={`transition-opacity ${loading ? 'opacity-50' : ''}`}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <DailyChart
-              days={points}
-              field="visitors"
-              title={t(weekly ? 'admin.visitorsAWeek' : 'admin.visitorsADay')}
-              weekly={weekly}
-            />
-            <DailyChart
-              days={points}
-              field="newAccounts"
-              title={t(weekly ? 'admin.newAccountsAWeek' : 'admin.newAccountsADay')}
-              weekly={weekly}
-            />
+    <>
+      <section className={chartsClassName}>
+        <div className="flex items-center justify-between mb-4 gap-3">
+          <h2 className="text-[14px] font-semibold">{t('admin.visits')}</h2>
+          <div className="flex gap-1" role="group" aria-label={t('admin.range')}>
+            {VISIT_RANGES.map((r) => (
+              <button
+                key={r}
+                onClick={() => setRange(r)}
+                aria-pressed={range === r}
+                className={`px-2.5 py-1 rounded-[var(--radius-sm)] text-[12px] border cursor-pointer transition ${
+                  range === r
+                    ? 'border-[var(--accent)] text-[var(--text)]'
+                    : 'border-[var(--border)] text-[var(--text3)] hover:text-[var(--text2)]'
+                }`}
+              >
+                {t('admin.lastMonths', { count: MONTHS[r] })}
+              </button>
+            ))}
           </div>
-          <table className="sr-only">
-            <caption>{t('admin.visits')}</caption>
-            <thead>
-              <tr>
-                <th>{t(weekly ? 'admin.week' : 'admin.day')}</th>
-                <th>{t('admin.visitorsWord', { count: 2 })}</th>
-                <th>{t('admin.viewsWord', { count: 2 })}</th>
-                <th>{t('admin.newAccountsWord', { count: 2 })}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {points.map((d) => (
-                <tr key={d.day}>
-                  <td>{d.day}</td>
-                  <td>{d.visitors}</td>
-                  <td>{d.views}</td>
-                  <td>{d.newAccounts}</td>
+        </div>
+
+        {failed && (
+          <p role="alert" className="mt-0 mb-4 text-[12px] text-[var(--error)]">
+            {t('admin.loadError')}
+          </p>
+        )}
+
+        {!data ? (
+          !failed && <span className="text-[12px] text-[var(--text3)]">{t('admin.noData')}</span>
+        ) : (
+          <div aria-busy={loading} className={`transition-opacity ${loading ? 'opacity-50' : ''}`}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <DailyChart
+                days={points}
+                field="visitors"
+                title={t(weekly ? 'admin.visitorsAWeek' : 'admin.visitorsADay')}
+                weekly={weekly}
+              />
+              <DailyChart
+                days={points}
+                field="newAccounts"
+                title={t(weekly ? 'admin.newAccountsAWeek' : 'admin.newAccountsADay')}
+                weekly={weekly}
+              />
+            </div>
+            <table className="sr-only">
+              <caption>{t('admin.visits')}</caption>
+              <thead>
+                <tr>
+                  <th>{t(weekly ? 'admin.week' : 'admin.day')}</th>
+                  <th>{t('admin.visitorsWord', { count: 2 })}</th>
+                  <th>{t('admin.viewsWord', { count: 2 })}</th>
+                  <th>{t('admin.newAccountsWord', { count: 2 })}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {points.map((d) => (
+                  <tr key={d.day}>
+                    <td>{d.day}</td>
+                    <td>{d.visitors}</td>
+                    <td>{d.views}</td>
+                    <td>{d.newAccounts}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 @3xl:grid-cols-3 gap-6 mb-4">
-            <Ranked
-              title={t('admin.topPages')}
-              rows={data.pages}
-              label={(key) => key}
-              value={(row) =>
-                `${row.views} ${t('admin.viewsWord', { count: row.views })} · ${row.visitors} ${t('admin.visitorsWord', { count: row.visitors })}`
-              }
-            />
-            <Ranked
-              title={t('admin.sources')}
-              rows={data.sources}
-              label={sourceName}
-              value={(row) => `${row.visitors} ${t('admin.visitorsWord', { count: row.visitors })}`}
-            />
-            <Ranked
-              title={t('admin.topClicks')}
-              rows={data.clicks}
-              label={(key) => key}
-              value={(row) =>
-                `${row.views} ${t('admin.pressesWord', { count: row.views })} · ${row.visitors} ${t('admin.visitsWord', { count: row.visitors })}`
-              }
+      <section className={className}>
+        {data && (
+          <div aria-busy={loading} className={`transition-opacity ${loading ? 'opacity-50' : ''}`}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 @3xl:grid-cols-3 gap-6 mb-4">
+              <Ranked
+                title={t('admin.topPages')}
+                rows={data.pages}
+                label={(key) => key}
+                value={(row) =>
+                  `${row.views} ${t('admin.viewsWord', { count: row.views })} · ${row.visitors} ${t('admin.visitorsWord', { count: row.visitors })}`
+                }
+              />
+              <Ranked
+                title={t('admin.sources')}
+                rows={data.sources}
+                label={sourceName}
+                value={(row) =>
+                  `${row.visitors} ${t('admin.visitorsWord', { count: row.visitors })}`
+                }
+              />
+              <Ranked
+                title={t('admin.topClicks')}
+                rows={data.clicks}
+                label={(key) => key}
+                value={(row) =>
+                  `${row.views} ${t('admin.pressesWord', { count: row.views })} · ${row.visitors} ${t('admin.visitsWord', { count: row.visitors })}`
+                }
+              />
+            </div>
+
+            <div className="pt-3 border-t border-[var(--border)] flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-[var(--text2)]">
+              <span>
+                {t('admin.guests')} {count(data.auth, 'guest')}
+              </span>
+              <span>
+                {t('admin.signedIn')} {count(data.auth, 'signedIn')}
+              </span>
+              <span>
+                {t('admin.english')} {count(data.lang, 'en')}
+              </span>
+              <span>
+                {t('admin.romanian')} {count(data.lang, 'ro')}
+              </span>
+            </div>
+            <p className="mt-3 text-[11px] text-[var(--text3)]">{t('admin.visitorDays')}</p>
+
+            <PlacementFunnelTable funnel={data.placement} />
+
+            <GuestVisits
+              range={range}
+              sources={data.sources.map((s) => s.key)}
+              sourceName={sourceName}
+              reload={reload}
             />
           </div>
+        )}
 
-          <div className="pt-3 border-t border-[var(--border)] flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-[var(--text2)]">
-            <span>
-              {t('admin.guests')} {count(data.auth, 'guest')}
-            </span>
-            <span>
-              {t('admin.signedIn')} {count(data.auth, 'signedIn')}
-            </span>
-            <span>
-              {t('admin.english')} {count(data.lang, 'en')}
-            </span>
-            <span>
-              {t('admin.romanian')} {count(data.lang, 'ro')}
-            </span>
-          </div>
-          <p className="mt-3 text-[11px] text-[var(--text3)]">{t('admin.visitorDays')}</p>
-
-          <PlacementFunnelTable funnel={data.placement} />
-
-          <GuestVisits
-            range={range}
-            sources={data.sources.map((s) => s.key)}
-            sourceName={sourceName}
-            reload={reload}
-          />
-        </div>
-      )}
-
-      <p className="mt-4 mb-0 text-[11px] text-[var(--text3)]">
-        {counted ? t('admin.browserCounted') : t('admin.browserNotCounted')}{' '}
-        <button
-          onClick={toggleCounted}
-          className="p-0 bg-transparent border-none text-[11px] text-[var(--accent)] underline cursor-pointer"
-        >
-          {counted ? t('admin.stopCounting') : t('admin.countBrowser')}
-        </button>
-      </p>
-    </section>
+        <p className="mt-4 mb-0 text-[11px] text-[var(--text3)]">
+          {counted ? t('admin.browserCounted') : t('admin.browserNotCounted')}{' '}
+          <button
+            onClick={toggleCounted}
+            className="p-0 bg-transparent border-none text-[11px] text-[var(--accent)] underline cursor-pointer"
+          >
+            {counted ? t('admin.stopCounting') : t('admin.countBrowser')}
+          </button>
+        </p>
+      </section>
+    </>
   );
 }

@@ -108,8 +108,8 @@ export function AdminPage() {
               <LoadingSpinner />
             </div>
           ) : stats ? (
-            <div className="grid grid-cols-1 @2xl:grid-cols-2 gap-5">
-              {/* Users */}
+            <div className="grid grid-cols-1 @2xl:grid-cols-3 gap-5">
+              {/* Users, in one row with the visitors charts */}
               <section className={CARD_CLS}>
                 <div className="flex items-baseline justify-between mb-4">
                   <h2 className="text-[14px] font-semibold">{t('admin.users')}</h2>
@@ -124,7 +124,7 @@ export function AdminPage() {
                   <Stat label={t('admin.new7')} value={stats.users.newLast7Days} />
                   <Stat label={t('admin.new30')} value={stats.users.newLast30Days} />
                 </div>
-                <div className="pt-3 border-t border-[var(--border)] flex gap-4 text-[12px] text-[var(--text2)]">
+                <div className="pt-3 border-t border-[var(--border)] flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-[var(--text2)]">
                   {(['FOUNDER', 'ADMIN', 'MODERATOR', 'USER'] as const).map((role) => (
                     <span key={role}>
                       {t(`forum.roles.${role}`)} {stats.users.byRole[role]}
@@ -133,10 +133,16 @@ export function AdminPage() {
                 </div>
               </section>
 
+              <VisitorsSection
+                chartsClassName={CARD_CLS + ' @2xl:col-span-2'}
+                className={CARD_CLS + ' @2xl:col-span-3'}
+                reload={reloads}
+              />
+
               {/* Code execution (live) */}
-              <section className={CARD_CLS}>
+              <section className={CARD_CLS + ' @2xl:col-span-3'}>
                 <h2 className="text-[14px] font-semibold mb-4">{t('admin.codeExec')}</h2>
-                <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                   <Stat
                     label={t('admin.activeContainers')}
                     value={`${stats.codeExec.activeContainers}/${stats.codeExec.maxContainers}`}
@@ -164,10 +170,8 @@ export function AdminPage() {
                 </div>
               </section>
 
-              <VisitorsSection className={CARD_CLS + ' @2xl:col-span-2'} reload={reloads} />
-
               {/* Progress */}
-              <section className={CARD_CLS + ' @2xl:col-span-2'}>
+              <section className={CARD_CLS + ' @2xl:col-span-3'}>
                 <div className="flex items-baseline justify-between mb-4">
                   <h2 className="text-[14px] font-semibold">{t('admin.progress')}</h2>
                   <span className="text-[12px] text-[var(--text3)]">
@@ -222,10 +226,10 @@ export function AdminPage() {
                 </div>
               </section>
 
-              <MissedQuestions className={CARD_CLS + ' @2xl:col-span-2'} reload={reloads} />
+              <MissedQuestions className={CARD_CLS + ' @2xl:col-span-3'} reload={reloads} />
 
               {/* Forum & Support */}
-              <section className={CARD_CLS + ' @2xl:col-span-2'}>
+              <section className={CARD_CLS + ' @2xl:col-span-3'}>
                 <h2 className="text-[14px] font-semibold mb-4">{t('admin.forum')}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                   <Stat label={t('admin.threads')} value={stats.forum.threads} />
@@ -242,7 +246,7 @@ export function AdminPage() {
                 </div>
               </section>
 
-              <p className="@2xl:col-span-2 text-[11px] text-[var(--text3)] text-center">
+              <p className="@2xl:col-span-3 text-[11px] text-[var(--text3)] text-center">
                 {t('admin.generatedAt', {
                   time: new Date(stats.generatedAt).toLocaleTimeString(i18next.language),
                 })}
