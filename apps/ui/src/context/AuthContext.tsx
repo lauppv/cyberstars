@@ -56,6 +56,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [user, isLoading]);
 
+  // Another tab signed in or out, so this one follows and its presence socket counts the right person
+  useEffect(() => {
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== STUDENT_KEY) return;
+      authService
+        .getMe()
+        .then(setUser)
+        .catch(() => setUser(null));
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, []);
+
   const login = useCallback(async (payload: LoginPayload) => {
     await authService.login(payload);
     const me = await authService.getMe();

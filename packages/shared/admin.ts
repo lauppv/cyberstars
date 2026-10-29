@@ -48,12 +48,18 @@ interface AdminCodeExecStats {
   maxBusySlots: number;
 }
 
+interface AdminOnline {
+  users: number; // signed in with the app open now, the founder left out
+  guests: number; // browsers with the app open and no account
+}
+
 export interface AdminStatsDTO {
   users: AdminUserStats;
   progress: AdminProgressStats;
   forum: AdminForumStats;
   support: AdminSupportStats;
   codeExec: AdminCodeExecStats;
+  online: AdminOnline;
   /** ISO time the cached aggregates were computed. */
   generatedAt: string;
 }

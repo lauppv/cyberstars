@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { CurriculumProvider } from './context/CurriculumContext';
 import { ProgressProvider } from './context/ProgressContext';
 import { NotificationProvider } from './context/NotificationContext';
@@ -87,16 +87,22 @@ function PageViews() {
   return null;
 }
 
+function Presence() {
+  const { user, isLoading } = useAuth();
+  usePresence(isLoading ? undefined : (user?.id ?? null));
+  return null;
+}
+
 // Romanian pages live under /ro. As the router's base it stays out of every
 // route and link in the app, which keep working in both languages unchanged
 const basename = langFromPath(window.location.pathname) === 'ro' ? '/ro' : undefined;
 
 function App() {
-  usePresence();
   return (
     <BrowserRouter basename={basename}>
       <MaintenanceScreen />
       <AuthProvider>
+        <Presence />
         <CurriculumProvider>
           <ProgressProvider>
             <UserSocketProvider>

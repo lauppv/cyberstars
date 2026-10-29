@@ -163,6 +163,40 @@ describe('the signed-in hint', () => {
   });
 });
 
+describe('another tab', () => {
+  const otherTab = (key: string, newValue: string | null) =>
+    fireEvent(window, new StorageEvent('storage', { key, newValue }));
+
+  it('signing in there signs this tab in too', async () => {
+    getMe.mockRejectedValueOnce(new Error('401')).mockResolvedValue(ADA);
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('out:-'));
+
+    otherTab('cyberstars.student', '1');
+
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+  });
+
+  it('signing out there signs this tab out too', async () => {
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+
+    getMe.mockRejectedValue(new Error('401'));
+    otherTab('cyberstars.student', null);
+
+    await waitFor(() => expect(state()).toBe('out:-'));
+  });
+
+  it('ignores the other keys it writes', async () => {
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+
+    otherTab('something.else', '1');
+
+    expect(getMe).toHaveBeenCalledOnce();
+  });
+});
+
 describe('useAuth', () => {
   it('refuses to run outside the provider', () => {
     vi.spyOn(console, 'error').mockImplementation(() => {});

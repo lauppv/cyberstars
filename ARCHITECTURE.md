@@ -229,7 +229,7 @@ Once an hour the server tells each student in the bell how many of their recaps 
 
 | Method | Endpoint                        | Auth     | Description                                                   |
 | ------ | ------------------------------- | -------- | ------------------------------------------------------------- |
-| GET    | `/api/admin/stats`              | Admin    | Platform stats (cached 5 min) and live code-execution metrics |
+| GET    | `/api/admin/stats`              | Admin    | Stats (cached 5 min), live code-exec metrics and users online |
 | GET    | `/api/admin/visits`             | Admin    | Visitors a day, top pages, sources and clicks over a range    |
 | GET    | `/api/admin/visits/guests`      | Admin    | Guest visits with their steps, paged                          |
 | GET    | `/api/admin/laniakea/questions` | Admin    | The Laniakea questions students miss most                     |

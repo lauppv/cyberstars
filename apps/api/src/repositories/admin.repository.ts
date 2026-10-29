@@ -98,3 +98,8 @@ export async function supportStats(): Promise<AdminSupportStats> {
   for (const g of statusGroups) byStatus[g.status] = g._count._all;
   return { total, byStatus };
 }
+
+// How many of these users aren't the founder
+export async function countNonFounders(ids: number[]): Promise<number> {
+  return prisma.user.count({ where: { id: { in: ids }, role: { not: 'FOUNDER' } } });
+}

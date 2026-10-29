@@ -1,5 +1,6 @@
 import os from 'os';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import type { WebSocket } from 'ws';
 
 process.env.JWT_SECRET = 'test-secret';
 process.env.DB_USER = 'test';
@@ -13,10 +14,12 @@ const mockAdminRepo = {
   progressStats: vi.fn(),
   forumStats: vi.fn(),
   supportStats: vi.fn(),
+  countNonFounders: vi.fn(),
 };
 
 const mockContainer = {
   liveMetrics: vi.fn(),
+  onlineGuests: vi.fn(),
 };
 
 vi.mock('../repositories/admin.repository.js', () => mockAdminRepo);
@@ -24,10 +27,14 @@ vi.mock('./code-container.service.js', () => mockContainer);
 
 const { getStats, clearCache } = await import('./admin.service.js');
 const { acquireSandboxSlot } = await import('./sandbox-slots.js');
+const { registerUserSocket, clearUserSockets } = await import('./ws-user.js');
 
 beforeEach(() => {
   vi.clearAllMocks();
   clearCache();
+  clearUserSockets();
+  mockAdminRepo.countNonFounders.mockResolvedValue(0);
+  mockContainer.onlineGuests.mockReturnValue(0);
   mockAdminRepo.userStats.mockResolvedValue({
     total: 3,
     byRole: { USER: 2, MODERATOR: 0, ADMIN: 1 },
@@ -88,6 +95,18 @@ describe('admin.service getStats', () => {
     expect(second.codeExec.activeContainers).toBe(4);
     expect(second.codeExec.busySlots).toBe(1);
     expect(mockContainer.liveMetrics).toHaveBeenCalledTimes(2);
+    expect(mockAdminRepo.userStats).toHaveBeenCalledTimes(1);
+  });
+
+  it('counts who is online live on every call, even when cached', async () => {
+    await getStats();
+    registerUserSocket(7, {} as WebSocket);
+    registerUserSocket(9, {} as WebSocket);
+    mockAdminRepo.countNonFounders.mockResolvedValue(1);
+    mockContainer.onlineGuests.mockReturnValue(4);
+    const second = await getStats();
+    expect(second.online).toEqual({ users: 1, guests: 4 });
+    expect(mockAdminRepo.countNonFounders).toHaveBeenLastCalledWith([7, 9]);
     expect(mockAdminRepo.userStats).toHaveBeenCalledTimes(1);
   });
 
