@@ -1,6 +1,7 @@
 import * as adminRepo from '../repositories/admin.repository.js';
 import * as codeContainer from './code-container.service.js';
 import { sandboxSlots } from './sandbox-slots.js';
+import { onlineUserIds } from './ws-user.js';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 
 const CACHE_TTL_MS = Number(process.env.ADMIN_STATS_CACHE_MS ?? 5 * 60 * 1000);
@@ -13,17 +14,23 @@ function codeExec() {
   return { ...codeContainer.liveMetrics(), ...sandboxSlots() };
 }
 
+// Signed-in users with the app open right now, read live too; the founder doesn't count
+function online(): Promise<number> {
+  return adminRepo.countNonFounders(onlineUserIds());
+}
+
 export async function getStats(force = false): Promise<AdminStatsDTO> {
   const now = Date.now();
   if (!force && cached && cached.expiresAt > now) {
-    return { ...cached.dto, codeExec: codeExec() };
+    return { ...cached.dto, codeExec: codeExec(), online: await online() };
   }
 
-  const [users, progress, forum, support] = await Promise.all([
+  const [users, progress, forum, support, onlineNow] = await Promise.all([
     adminRepo.userStats(),
     adminRepo.progressStats(),
     adminRepo.forumStats(),
     adminRepo.supportStats(),
+    online(),
   ]);
 
   const dto: AdminStatsDTO = {
@@ -32,6 +39,7 @@ export async function getStats(force = false): Promise<AdminStatsDTO> {
     forum,
     support,
     codeExec: codeExec(),
+    online: onlineNow,
     generatedAt: new Date().toISOString(),
   };
 

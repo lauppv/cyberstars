@@ -54,6 +54,7 @@ export interface AdminStatsDTO {
   forum: AdminForumStats;
   support: AdminSupportStats;
   codeExec: AdminCodeExecStats;
+  online: number; // signed-in users with the app open now, the founder left out
   /** ISO time the cached aggregates were computed. */
   generatedAt: string;
 }

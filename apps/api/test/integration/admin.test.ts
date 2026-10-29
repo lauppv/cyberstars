@@ -2,6 +2,8 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { agent, createAuthenticatedAgent, userIdFor } from './helpers.js';
 import { prisma } from '../../src/config/db.js';
 import { clearCache } from '../../src/services/admin.service.js';
+import { clearUserSockets, registerUserSocket } from '../../src/services/ws-user.js';
+import type { WebSocket } from 'ws';
 
 // Promote a freshly signed-up user to ADMIN. The JWT carries only { id } and the
 // role is read from the DB on every request, so the same cookie now passes
@@ -54,6 +56,21 @@ describe('Admin stats', () => {
     // Sentinel ADMIN + the promoted admin above = 2 users, one of them ADMIN.
     expect(res.body.users.total).toBe(2);
     expect(res.body.users.byRole.ADMIN).toBe(2);
+  });
+
+  it('counts the signed-in users online, the founder left out', async () => {
+    const a = await admin();
+    const student = await userIdFor((await createAuthenticatedAgent()).email);
+    const founder = await userIdFor((await createAuthenticatedAgent()).email);
+    await prisma.user.update({ where: { id: founder }, data: { role: 'FOUNDER' } });
+    registerUserSocket(student, {} as WebSocket);
+    registerUserSocket(founder, {} as WebSocket);
+    try {
+      const res = await a.get('/api/admin/stats').expect(200);
+      expect(res.body.online).toBe(1);
+    } finally {
+      clearUserSockets();
+    }
   });
 
   it('?fresh=1 recomputes past a stale cache', async () => {

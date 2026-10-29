@@ -7,6 +7,7 @@ import {
   clearUserSockets,
   closeUserSockets,
   isUserOnline,
+  onlineUserIds,
 } from './ws-user.js';
 
 function fakeSocket(open = true) {
@@ -89,5 +90,17 @@ describe('isUserOnline', () => {
     expect(isUserOnline(1)).toBe(true);
     unregisterUserSocket(1, a);
     expect(isUserOnline(1)).toBe(false);
+  });
+});
+
+describe('onlineUserIds', () => {
+  it('lists each user with a socket open once, however many tabs', () => {
+    const a = fakeSocket();
+    registerUserSocket(1, a);
+    registerUserSocket(1, fakeSocket());
+    registerUserSocket(2, fakeSocket());
+    expect(onlineUserIds()).toEqual([1, 2]);
+    unregisterUserSocket(1, a);
+    expect(onlineUserIds()).toEqual([1, 2]);
   });
 });

@@ -38,6 +38,11 @@ export function isUserOnline(userId: number): boolean {
   return registry.has(userId);
 }
 
+// Everyone with at least one socket open, so the admin page can count who's online
+export function onlineUserIds(): number[] {
+  return [...registry.keys()];
+}
+
 // A password change ended the sessions the sockets were opened with. Each tab
 // tries again in a moment (any code but 4401/4404), and only one whose cookie
 // holds the new token gets back in
