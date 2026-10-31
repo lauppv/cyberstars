@@ -14,7 +14,7 @@ const mockUserRepo = {
   findByEmail: vi.fn(),
   findById: vi.fn(),
   findByIdWithPassword: vi.fn(),
-  getRole: vi.fn(),
+  findRole: vi.fn(),
   getSessionVersion: vi.fn(),
   updatePassword: vi.fn(),
   setResetCode: vi.fn(),
@@ -126,10 +126,19 @@ describe('sessions', () => {
   });
 
   it.each(['ADMIN', 'FOUNDER'])('lets a %s through requireAdmin', async (role) => {
-    mockUserRepo.getRole.mockResolvedValue(role);
+    mockUserRepo.findRole.mockResolvedValue(role);
     const next = vi.fn() as unknown as NextFunction;
     await auth.requireAdmin({ user: { id: 1 } } as Request, {} as Response, next);
     expect(next).toHaveBeenCalledWith();
+  });
+
+  it('keeps a deleted account out of requireAdmin', async () => {
+    mockUserRepo.findRole.mockResolvedValue(null);
+    const next = vi.fn() as unknown as NextFunction;
+    const res = { status: vi.fn().mockReturnThis(), json: vi.fn() } as unknown as Response;
+    await auth.requireAdmin({ user: { id: 1 } } as Request, res, next);
+    expect(next).not.toHaveBeenCalled();
+    expect(res.status).toHaveBeenCalledWith(403);
   });
 
   it("checks the current password against the account's", async () => {

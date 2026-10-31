@@ -38,7 +38,7 @@ const store: UserStore<UserRole, Account, Signup> = {
     );
   },
   findById: (id) => userRepo.findById(id),
-  role: (id) => userRepo.getRole(id),
+  role: (id) => userRepo.findRole(id),
   sessionVersion: (id) => userRepo.getSessionVersion(id),
   async passwordHash(id) {
     return (await userRepo.findByIdWithPassword(id))?.password ?? null;

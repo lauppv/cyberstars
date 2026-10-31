@@ -61,6 +61,15 @@ describe('updateProfile', () => {
   });
 });
 
+describe('findRole', () => {
+  it('returns the stored role, or none for a missing user', async () => {
+    mockPrisma.user.findUnique.mockResolvedValueOnce({ role: 'ADMIN' });
+    mockPrisma.user.findUnique.mockResolvedValueOnce(null);
+    expect(await repo.findRole(1)).toBe('ADMIN');
+    expect(await repo.findRole(2)).toBeNull();
+  });
+});
+
 describe('getRole', () => {
   it('returns the stored role', async () => {
     mockPrisma.user.findUnique.mockResolvedValue({ role: 'ADMIN' });
