@@ -7,7 +7,7 @@
 # a health check. Users see the "we're updating" page for the whole window
 # instead of half-built assets, 500s, or an infinite spinner.
 #
-# nginx must be wired to the flag (see deploy/nginx-maintenance.conf).
+# nginx is wired to the flag in deploy/nginx.conf.
 #
 # Usage (on the VPS):  bash /opt/cyberstars/deploy/deploy.sh
 set -euo pipefail
