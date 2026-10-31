@@ -25,6 +25,8 @@ const RO: Record<string, string> = {
   'Name is required': 'Numele este obligatoriu',
   'Name must be at most 100 characters': 'Numele poate avea cel mult 100 de caractere',
   'Name has invalid characters': 'Numele conține caractere invalide',
+  'Name is too short, must have at least 4 characters besides spaces':
+    'Numele e prea scurt, trebuie să aibă cel puțin 4 caractere în afară de spații',
   'Please enter a valid email address': 'Scrie o adresă de email validă',
   'Email must be at most 255 characters': 'Emailul poate avea cel mult 255 de caractere',
   'Password is too short, must be at least 6 characters':
