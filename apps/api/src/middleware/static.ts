@@ -50,12 +50,24 @@ export function serveStatic(root: string): RequestHandler[] {
     for (const { encoding, extension } of COMPRESSED_COPIES) {
       if (req.acceptsEncodings(encoding) !== encoding) continue;
       if (!(await isFile(file + extension))) continue;
+      const before = new Set(res.getHeaderNames());
       res.setHeader('Content-Encoding', encoding);
       // The type of the file it stands for, not of a .br or .gz
       res.type(path.extname(file));
       setHeaders(res, file);
       // Under root, so a folder above it whose name starts with a dot doesn't count as a dotfile
-      res.sendFile(address + extension, { root });
+      res.sendFile(address + extension, { root }, (err) => {
+        if (!err || res.headersSent || (err as NodeJS.ErrnoException).code === 'ECONNABORTED') {
+          return;
+        }
+        // What the copy can't answer (a range past its end, an If-Match it
+        // fails) the file answers, as if there were no copy: without the
+        // copy's encoding, type, cache or ETag, which send keeps once set
+        for (const name of res.getHeaderNames()) {
+          if (!before.has(name)) res.removeHeader(name);
+        }
+        next();
+      });
       return;
     }
     next();

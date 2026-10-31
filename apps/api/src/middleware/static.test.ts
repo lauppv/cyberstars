@@ -138,6 +138,26 @@ describe('serveStatic', () => {
     expect(res.headers['content-length']).toBe(size('assets/index-abc.js.br'));
   });
 
+  it('answers what the copy cannot as the file alone would', async () => {
+    const copy = size('assets/index-abc.js.br');
+    for (const [header, value] of [
+      ['Range', `bytes=${copy}-`],
+      ['Range', `bytes=${script.length}-`],
+      ['If-Match', '"other"'],
+    ]) {
+      const get = (accepted: string) =>
+        request(app)
+          .get('/assets/index-abc.js')
+          .set('Accept-Encoding', accepted)
+          .set(header, value);
+      const [alone, res] = await Promise.all([get('identity'), get(CHROME)]);
+      expect(res.status, value).toBe(alone.status);
+      expect(res.headers['content-encoding'], value).toBeUndefined();
+      expect(res.headers.etag, value).toBe(alone.headers.etag);
+      expect(res.text, value).toBe(alone.text);
+    }
+  });
+
   it('answers 404 for a file that is not there, with no cache', async () => {
     const res = await request(app).get('/assets/index-gone.js').set('Accept-Encoding', CHROME);
     expect(res.status).toBe(404);
