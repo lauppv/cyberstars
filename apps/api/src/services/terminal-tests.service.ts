@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { contentDir } from './paths.js';
-import { dockerExec } from './docker-exec.js';
+import { dockerExec } from '@cyberstars-framework/sandbox/docker';
 import { getSessionView } from './terminal-session.service.js';
 import { compareOutputs } from './lesson-tests.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';

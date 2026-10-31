@@ -17,7 +17,7 @@ vi.mock('child_process', async (importOriginal) => {
 });
 
 const { dockerExec, dockerConverse, killLeftovers, removeStraySandboxes } =
-  await import('./docker-exec.js');
+  await import('./docker.js');
 
 type ExecCallback = (err: Error | null, stdout: string, stderr: string) => void;
 
@@ -72,16 +72,16 @@ describe('removeStraySandboxes', () => {
 
   it('removes every labelled sandbox an earlier run left behind', async () => {
     const calls = answer('aaa\nbbb\n', '');
-    await expect(removeStraySandboxes()).resolves.toBe(2);
+    await expect(removeStraySandboxes('app.sandbox')).resolves.toBe(2);
     expect(calls).toEqual([
-      ['ps', '-aq', '--filter', 'label=cyberstars.sandbox'],
+      ['ps', '-aq', '--filter', 'label=app.sandbox'],
       ['rm', '-f', 'aaa', 'bbb'],
     ]);
   });
 
   it('removes nothing when there is none', async () => {
     const calls = answer('');
-    await expect(removeStraySandboxes()).resolves.toBe(0);
+    await expect(removeStraySandboxes('app.sandbox')).resolves.toBe(0);
     expect(calls).toHaveLength(1);
   });
 });

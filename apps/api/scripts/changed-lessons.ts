@@ -52,7 +52,7 @@ export const ENGINE_FILES = [
   'apps/api/src/services/lesson-tests.service.ts',
   'apps/api/src/services/harness.ts',
   'apps/api/src/services/code-container.service.ts',
-  'apps/api/src/services/docker-exec.ts',
+  'framework/sandbox/src/docker.ts',
   'apps/api/src/services/judge-queue.ts',
   'apps/api/src/services/slot-queue.ts',
   'apps/api/src/services/sandbox-slots.ts',

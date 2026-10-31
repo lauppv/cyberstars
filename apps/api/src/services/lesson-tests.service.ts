@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { codeLanguageOf, isMultiLanguage } from '@cyberstars/shared/constants';
 import { contentDir } from './paths.js';
-import { dockerExec, dockerConverse, killLeftovers } from './docker-exec.js';
+import { dockerExec, dockerConverse, killLeftovers } from '@cyberstars-framework/sandbox/docker';
 import {
   acquireForRun,
   releaseAfterRun,

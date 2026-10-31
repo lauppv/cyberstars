@@ -1,5 +1,6 @@
 import { getRuntime } from '../runtimes/registry.js';
-import { dockerExec, SANDBOX_KEEPALIVE, SANDBOX_LABEL } from './docker-exec.js';
+import { dockerExec, SANDBOX_KEEPALIVE } from '@cyberstars-framework/sandbox/docker';
+import { SANDBOX_LABEL } from './sandbox.js';
 import { addGuestSandboxSource, makeRoomForGuest } from './guest-sandboxes.js';
 
 // One long-lived Docker container per owner (a logged-in user or a guest), on
@@ -59,7 +60,7 @@ function createContainer(image: string, memory?: string): Promise<string> {
       'run',
       '-d',
       '--rm',
-      SANDBOX_LABEL,
+      `--label=${SANDBOX_LABEL}`,
       '--network=none',
       `--memory=${memory ?? RUN_MEMORY}`,
       `--pids-limit=${RUN_PIDS}`,

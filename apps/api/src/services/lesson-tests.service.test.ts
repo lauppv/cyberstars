@@ -21,7 +21,7 @@ const { mockDockerExec, mockConverse, mockKillLeftovers } = vi.hoisted(() => ({
   mockConverse: vi.fn(),
   mockKillLeftovers: vi.fn(),
 }));
-vi.mock('./docker-exec.js', () => ({
+vi.mock('@cyberstars-framework/sandbox/docker', () => ({
   dockerExec: (...args: unknown[]) => mockDockerExec(...args),
   dockerConverse: (...args: unknown[]) => mockConverse(...args),
   killLeftovers: (...args: unknown[]) => mockKillLeftovers(...args),

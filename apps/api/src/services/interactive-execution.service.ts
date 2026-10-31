@@ -7,7 +7,7 @@ import {
   destroyOwner,
   isRunning,
 } from './code-container.service.js';
-import { killLeftovers } from './docker-exec.js';
+import { killLeftovers } from '@cyberstars-framework/sandbox/docker';
 import { acquireSandboxSlot } from './sandbox-slots.js';
 import type { WebSocket } from 'ws';
 
