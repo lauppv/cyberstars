@@ -100,7 +100,7 @@ const RUNNERS: Record<string, JudgeRunner> = {
     runCmd: ['sh', '-c', JAVA_BOOT],
     // Each case may compile user + solution in-process on top of the two runs;
     // the base covers the one-time runner bootstrap compile on a cold container.
-    // ~0.5 s per injected case (javac + 2 JVM starts), so 20 cases take ~10 s.
+    // ~0.3 s per injected case (javac + 2 JVM starts), so 20 cases take ~6 s.
     budgetMs: 45_000,
     caseBudgetMs: 26_000,
     baseTimeoutMs: 30_000,

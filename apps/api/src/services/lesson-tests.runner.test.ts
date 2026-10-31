@@ -405,6 +405,40 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
   const main = (members: string) =>
     `public class Main {\n${members}\n    public static void main(String[] args) {}\n}\n`;
 
+  it('compiles the timer once, beside its own classes, and again when its source changes', () => {
+    const payloadPath = path.join(dir, 'payload.json');
+    const program =
+      'public class Main {\n    public static void main(String[] args) { System.out.println("hi"); }\n}\n';
+    fs.writeFileSync(
+      payloadPath,
+      JSON.stringify({ userCode: program, solutionCode: program, structure: {}, cases: [{}] }),
+    );
+    const run = () => {
+      const result = spawnSync('java', ['-cp', classes, 'Runner', payloadPath], {
+        input: 'stop\n',
+        encoding: 'utf8',
+        timeout: 60_000,
+      });
+      expect(result.status).toBe(0);
+      const lines = result.stdout.trim().split('\n');
+      expect(JSON.parse(lines[1])).toMatchObject({
+        user: { stdout: 'hi\n', exit: 0, ms: expect.any(Number) },
+        solution: { stdout: 'hi\n' },
+      });
+    };
+    const timer = path.join(classes, 'timer', 'CyberstarsJudgeTimer');
+    run();
+    const compiled = fs.statSync(`${timer}.class`).mtimeMs;
+    run();
+    expect(fs.statSync(`${timer}.class`).mtimeMs).toBe(compiled);
+    // A deploy that changes the timer finds another source there.
+    const source = fs.readFileSync(`${timer}.java`, 'utf8');
+    fs.writeFileSync(`${timer}.java`, '// an older timer\n');
+    run();
+    expect(fs.readFileSync(`${timer}.java`, 'utf8')).toBe(source);
+    expect(fs.statSync(`${timer}.class`).mtimeMs).toBeGreaterThan(compiled);
+  });
+
   it('takes a method calling itself as recursion, not a same-named call on something else', () => {
     const recursion = { kind: 'recursion' };
     expect(
