@@ -16,7 +16,8 @@ cyberstars/
 │   │   │       ├── visual/        # Step-by-step visuals: parsers, frames, views, VisualPlayer
 │   │   │       └── landing/       # The visitor's page on /, its algorithm films in loopVisuals.ts
 │   │   ├── public/                # Static files; curriculum.json and lessons/ are generated here
-│   │   ├── scripts/               # Pre-renders every public page and the sitemap after the build
+│   │   ├── scripts/               # After the build: pre-renders every public page and the sitemap,
+│   │   │                          #   then compresses the text files
 │   │   └── index.html             # Page shell; Vite config sits next to it
 │   │
 │   └── api/                       # @cyberstars/api: the Express server
@@ -44,7 +45,7 @@ cyberstars/
 │
 ├── e2e/                           # Playwright tests that drive the UI and the API together
 ├── test/                          # Shared Vitest setup (jsdom, jest-dom matchers)
-├── deploy/                        # Deploy script, IndexNow ping and nginx maintenance page
+├── deploy/                        # Deploy script, IndexNow ping, nginx config and maintenance page
 └── scripts/                       # Rootless Podman helper
 ```
 
@@ -81,7 +82,7 @@ Auth is a JWT in an httpOnly cookie. In the tables, **Yes** is a signed-in stude
 
 ### Lessons and curriculum
 
-Not API routes: static files generated from `packages/content/` at build time into `apps/ui/public/` and fetched by `lessonService`, so they never touch the server or the database.
+Not API routes: static files generated from `packages/content/` at build time into `apps/ui/public/` and fetched by `lessonService`, so they never touch an API route or the database.
 
 | File                                | Description                                      |
 | ----------------------------------- | ------------------------------------------------ |
