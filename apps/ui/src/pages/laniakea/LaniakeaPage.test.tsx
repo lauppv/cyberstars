@@ -137,7 +137,7 @@ describe('LaniakeaPage', () => {
   it('tells the server the game is open, so the bell drops its recaps', async () => {
     renderPage();
     await screen.findByRole('button', { name: /Take the helm/ });
-    expect(h.markSeen).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(h.markSeen).toHaveBeenCalledTimes(1));
   });
 
   it('offers to try again when the game cannot be read, and tells the server only once it shows', async () => {
@@ -146,7 +146,7 @@ describe('LaniakeaPage', () => {
     fireEvent.click(await screen.findByRole('button', { name: 'Try again' }));
     expect(h.markSeen).not.toHaveBeenCalled();
     expect(await screen.findByRole('button', { name: /Take the helm/ })).toBeInTheDocument();
-    expect(h.markSeen).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(h.markSeen).toHaveBeenCalledTimes(1));
   });
 
   it('starts the ship from the intro and hands the scene the planets, their marks and the controls', async () => {
@@ -168,6 +168,9 @@ describe('LaniakeaPage', () => {
     renderPage();
     await screen.findByRole('button', { name: /Take the helm/ });
     expect(screen.queryByRole('note')).toBeNull();
+    // The page hears keys from an effect of the render that shows the intro,
+    // the same one that tells the server, which can run after the button shows
+    await waitFor(() => expect(h.markSeen).toHaveBeenCalled());
     key('Enter');
     await waitFor(() => expect(screen.queryByRole('button', { name: /Take the helm/ })).toBeNull());
   });
