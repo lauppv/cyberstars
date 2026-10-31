@@ -488,6 +488,7 @@ kbd.lnk-kbd {
 }
 .lnk-option.lnk-is-code .lnk-text {
   font-family: var(--mono);
+  font-feature-settings: var(--mono-features);
   font-size: 13px;
 }
 .lnk-option.lnk-right {

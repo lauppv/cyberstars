@@ -1,5 +1,12 @@
 import { test, expect } from '../fixtures/test.js';
-import { CODE_FONT, TEXT_FONT, firstFontOf, fontFaces, recordHosts } from '../helpers/fonts.js';
+import {
+  CODE_FONT,
+  TEXT_FONT,
+  drawsAsTyped,
+  firstFontOf,
+  fontFaces,
+  recordHosts,
+} from '../helpers/fonts.js';
 
 test('a lesson draws its code and text in the fonts that ship with the app', async ({
   authedPage: page,
@@ -23,6 +30,22 @@ test('a lesson draws its code and text in the fonts that ship with the app', asy
   }
 
   expect([...hosts].filter((h) => /fonts\.(googleapis|gstatic)\.com/.test(h))).toEqual([]);
+});
+
+test('code shows != and <= as typed, while text keeps its own arrows', async ({
+  authedPage: page,
+}) => {
+  await page.goto('/lesson/python/break-continue');
+
+  const editor = page.locator('[data-testid="editor"] .cm-content');
+  await expect(editor).toBeVisible({ timeout: 10_000 });
+  const lesson = page.getByTestId('lesson');
+  // The editor (its own theme), inline code (the element) and the output (font-mono).
+  expect(await drawsAsTyped(editor)).toBe(true);
+  expect(await drawsAsTyped(lesson.locator('p code').first())).toBe(true);
+  const output = page.getByTestId('code-output').last().getByText('Run your code to see');
+  expect(await drawsAsTyped(output)).toBe(true);
+  expect(await drawsAsTyped(lesson.locator('p').first())).toBe(false);
 });
 
 test('Romanian letters come from the app font, not a fallback', async ({ authedPage: page }) => {
