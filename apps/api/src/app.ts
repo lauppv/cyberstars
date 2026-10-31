@@ -7,6 +7,7 @@ import { config } from './config/index.js';
 import { UI_BUILD_DIR, UPLOADS_DIR } from './config/paths.js';
 import { errorHandler } from '@cyberstars-framework/server-kit/errors';
 import { servePages } from './middleware/pages.js';
+import { serveStatic } from './middleware/static.js';
 import authRoutes from './routes/auth.routes.js';
 import progressRoutes from './routes/progress.routes.js';
 import forumRoutes from './routes/forum.routes.js';
@@ -114,6 +115,6 @@ app.use('/uploads', express.static(UPLOADS_DIR));
 // translations and fall back to English.
 app.get(/^\/(?!api|auth)[^.]*$/, servePages(UI_BUILD_DIR));
 
-app.use(express.static(UI_BUILD_DIR));
+app.use(serveStatic(UI_BUILD_DIR));
 
 app.use(errorHandler);
