@@ -94,7 +94,7 @@ describe('acquireForRun', () => {
 
   it('rejects an unsupported language without touching state', async () => {
     await expect(pool.acquireForRun('user:5', 'cobol')).rejects.toThrow('not supported');
-    expect(pool.activeCount()).toBe(0);
+    expect(pool.liveMetrics().activeContainers).toBe(0);
   });
 
   it('propagates a docker failure and registers no container', async () => {
@@ -103,7 +103,7 @@ describe('acquireForRun', () => {
       else cb(null, '', '');
     });
     await expect(pool.acquireForRun('user:6', 'python')).rejects.toThrow();
-    expect(pool.activeCount()).toBe(0);
+    expect(pool.liveMetrics().activeContainers).toBe(0);
   });
 
   it('falls back to the error message when docker writes nothing to stderr', async () => {
@@ -166,7 +166,7 @@ describe('acquireForRun', () => {
     await pool.acquireForRun('user:busy1', 'python'); // busy, not released
     await pool.acquireForRun('user:busy2', 'python'); // busy, not released, at cap (2)
     await pool.acquireForRun('user:busy3', 'python'); // no idle to evict → grows to 3
-    expect(pool.activeCount()).toBe(3);
+    expect(pool.liveMetrics().activeContainers).toBe(3);
     expect(dockerCalls().filter((a) => a[0] === 'rm')).toHaveLength(0);
   });
 
@@ -180,7 +180,7 @@ describe('acquireForRun', () => {
     await pool.destroyOwner('user:catch'); // removes the reserved slot mid-creation
     failRun(); // now the create rejects
     await expect(pending).rejects.toThrow('boom');
-    expect(pool.activeCount()).toBe(0);
+    expect(pool.liveMetrics().activeContainers).toBe(0);
   });
 
   it('evicts the least-recently-used idle container at the global cap', async () => {
@@ -191,7 +191,7 @@ describe('acquireForRun', () => {
     // Cap is 2; a third owner evicts the LRU idle one (user:a).
     await pool.acquireForRun('user:c', 'python');
     pool.releaseAfterRun('user:c');
-    expect(pool.activeCount()).toBe(2);
+    expect(pool.liveMetrics().activeContainers).toBe(2);
     expect(dockerCalls().some((x) => x[0] === 'rm' && x.includes(a))).toBe(true);
   });
 
@@ -206,7 +206,7 @@ describe('acquireForRun', () => {
     finishRun();
     await expect(pending).rejects.toThrow('cancelled');
     expect(dockerCalls().some((a) => a[0] === 'rm' && a.includes('late-container'))).toBe(true);
-    expect(pool.activeCount()).toBe(0);
+    expect(pool.liveMetrics().activeContainers).toBe(0);
   });
 });
 
@@ -238,9 +238,9 @@ describe('session ref-counting', () => {
     pool.openSession('user:s');
     pool.openSession('user:s'); // two tabs open
     pool.closeSession('user:s'); // one tab closes
-    expect(pool.activeCount()).toBe(1); // container still alive for the other tab
+    expect(pool.liveMetrics().activeContainers).toBe(1); // container still alive for the other tab
     pool.closeSession('user:s'); // last tab closes
-    expect(pool.activeCount()).toBe(0);
+    expect(pool.liveMetrics().activeContainers).toBe(0);
     expect(dockerCalls().some((a) => a[0] === 'rm' && a.includes(id))).toBe(true);
   });
 
@@ -291,7 +291,7 @@ describe('groups', () => {
       },
     });
     await expect(pool.acquireForRun('guest:a', 'python', '1.2.3.4')).rejects.toThrow('too many');
-    expect(pool.activeCount()).toBe(0);
+    expect(pool.liveMetrics().activeContainers).toBe(0);
     expect(dockerCalls().some((a) => a[0] === 'run')).toBe(false);
   });
 
@@ -337,9 +337,9 @@ describe('idle GC', () => {
     try {
       await pool.acquireForRun('user:gc', 'python');
       pool.releaseAfterRun('user:gc');
-      expect(pool.activeCount()).toBe(1);
+      expect(pool.liveMetrics().activeContainers).toBe(1);
       vi.advanceTimersByTime(61_000); // GC ticks every 60s; idle TTL is 1s here
-      expect(pool.activeCount()).toBe(0);
+      expect(pool.liveMetrics().activeContainers).toBe(0);
     } finally {
       vi.useRealTimers();
     }
@@ -350,7 +350,7 @@ describe('idle GC', () => {
     try {
       await pool.acquireForRun('user:gc-busy', 'python'); // never released → stays busy
       vi.advanceTimersByTime(61_000);
-      expect(pool.activeCount()).toBe(1); // busy containers are skipped by the GC
+      expect(pool.liveMetrics().activeContainers).toBe(1); // busy containers are skipped by the GC
     } finally {
       vi.useRealTimers();
     }

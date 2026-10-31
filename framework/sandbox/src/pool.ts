@@ -258,10 +258,6 @@ export function createPool(options: PoolOptions) {
     await Promise.allSettled(ids.map((id) => removeContainer(id)));
   }
 
-  function activeCount(): number {
-    return containers.size;
-  }
-
   // Snapshot of the load right now, for an admin page. No run is kept, so
   // this reflects only the current instant.
   function liveMetrics() {
@@ -291,7 +287,6 @@ export function createPool(options: PoolOptions) {
     closeSession,
     sessionOwners,
     drainAll,
-    activeCount,
     liveMetrics,
   };
 }
