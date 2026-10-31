@@ -1,15 +1,26 @@
 import { spawn, execFile } from 'child_process';
-import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
-import {
-  acquireForRun,
-  releaseAfterRun,
-  destroyOwner,
-  isRunning,
-} from './code-container.service.js';
-import { killLeftovers } from '@cyberstars-framework/sandbox/docker';
-import { acquireSandboxSlot } from './sandbox-slots.js';
-import type { WebSocket } from 'ws';
+import { killLeftovers } from './docker.js';
+import type { Pool } from './pool.js';
+import type { SlotOptions } from './slots.js';
+
+// What a live run needs of a WebSocket; the `ws` package's fits
+export interface RunSocket {
+  readonly OPEN: number;
+  readonly readyState: number;
+  send(data: string): void;
+  on(event: 'close', listener: () => void): unknown;
+  on(event: 'message', listener: (data: Buffer | string) => void): unknown;
+}
+
+interface LiveRunOptions {
+  pool: Pick<
+    Pool,
+    'runtimeOf' | 'acquireForRun' | 'releaseAfterRun' | 'destroyOwner' | 'isRunning'
+  >;
+  // Takes one of the slots of busy sandboxes (slots.ts)
+  acquireSlot: (options: SlotOptions) => Promise<() => void>;
+}
 
 const TIMEOUT_MS = 20_000;
 const OUTPUT_FLUSH_MS = 50;
@@ -42,15 +53,26 @@ function compile(containerId: string, compileCmd: string): Promise<string | null
   });
 }
 
-export async function handleInteractiveRun(
-  ws: WebSocket,
+// A program run live over a WebSocket: the code goes into the owner's
+// container, its output streams back as it comes and the socket's `stdin`
+// messages go to it. The page hears `waiting` and `slot` while the run waits
+// for a sandbox, then `stdout`/`stderr` and one `exit`.
+export function liveRun(options: LiveRunOptions) {
+  return (ws: RunSocket, code: string, language: string, ownerKey: string, group?: string) =>
+    run(options, ws, code, language, ownerKey, group);
+}
+
+async function run(
+  { pool, acquireSlot }: LiveRunOptions,
+  ws: RunSocket,
   code: string,
   language: string,
   ownerKey: string,
-  // A guest's network, which a new container counts against (guest-sandboxes.ts)
-  guestIp?: string,
+  // The group the owner is in (a guest's network, say), which a new container
+  // counts against
+  group?: string,
 ) {
-  const runtime = getRuntime(language);
+  const runtime = pool.runtimeOf(language);
   if (!runtime) {
     ws.send(JSON.stringify({ type: 'stderr', data: 'Language not supported.\n' }));
     ws.send(JSON.stringify({ type: 'exit', code: 1 }));
@@ -59,19 +81,19 @@ export async function handleInteractiveRun(
 
   // Once the acquire starts we hold the owner's container reserved. Every exit
   // path below must settle it exactly once: keep it (release for reuse) or drop
-  // it (destroy). Settling also frees the run's sandbox slot (sandbox-slots.ts).
+  // it (destroy). Settling also frees the run's sandbox slot (slots.ts).
   let releaseSlot = () => {};
   let settled = false;
   const keepContainer = () => {
     if (settled) return;
     settled = true;
-    releaseAfterRun(ownerKey);
+    pool.releaseAfterRun(ownerKey);
     releaseSlot();
   };
   const dropContainer = () => {
     if (settled) return;
     settled = true;
-    void destroyOwner(ownerKey);
+    void pool.destroyOwner(ownerKey);
     releaseSlot();
   };
 
@@ -80,7 +102,7 @@ export async function handleInteractiveRun(
   // abandoned before its program starts drops the container at once; otherwise
   // the program would start with nobody watching and hold the owner's container
   // until the timeout, refusing their next run as "already in progress".
-  if (isRunning(ownerKey)) {
+  if (pool.isRunning(ownerKey)) {
     ws.send(JSON.stringify({ type: 'stderr', data: 'A run is already in progress.\n' }));
     ws.send(JSON.stringify({ type: 'exit', code: 1 }));
     return;
@@ -91,7 +113,7 @@ export async function handleInteractiveRun(
   let acquireFailed = false;
   let stopProgram: (() => void) | null = null;
   // Set once the program runs: stops it when the server is full and this run
-  // has held its slot too long (sandbox-slots.ts). Before that it can't be.
+  // has held its slot too long (slots.ts). Before that it can't be.
   let stopForRoom: (() => boolean) | null = null;
   // Leaving while in line takes the run out of the line
   const leaving = new AbortController();
@@ -104,11 +126,10 @@ export async function handleInteractiveRun(
     else if (!waitingForSlot && !acquireFailed) dropContainer();
   });
 
-  // The page tells the student while the run waits in line, and again once
-  // it has its slot
+  // The page hears when the run waits in line, and again once it has its slot
   let waited = false;
   try {
-    releaseSlot = await acquireSandboxSlot({
+    releaseSlot = await acquireSlot({
       signal: leaving.signal,
       stop: () => stopForRoom?.() ?? false,
       onWait: () => {
@@ -138,7 +159,7 @@ export async function handleInteractiveRun(
 
   let containerId: string;
   try {
-    containerId = await acquireForRun(ownerKey, language, guestIp);
+    containerId = await pool.acquireForRun(ownerKey, language, group);
   } catch (err) {
     acquireFailed = true;
     releaseSlot();

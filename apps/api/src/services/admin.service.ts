@@ -1,6 +1,5 @@
 import * as adminRepo from '../repositories/admin.repository.js';
-import * as codeContainer from './code-container.service.js';
-import { sandboxSlots } from './sandbox-slots.js';
+import { onlineGuests, sandbox } from './sandbox.js';
 import { onlineUserIds } from './ws-user.js';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 
@@ -11,14 +10,14 @@ let cached: { dto: AdminStatsDTO; expiresAt: number } | null = null;
 // The DB-heavy aggregates are cached for a few minutes to spare the small VPS;
 // the code-execution metrics are read live from memory on every call (cheap).
 function codeExec() {
-  return { ...codeContainer.liveMetrics(), ...sandboxSlots() };
+  return { ...sandbox.liveMetrics(), ...sandbox.slots() };
 }
 
 // Who has the app open right now, read live too; the founder doesn't count
 async function online() {
   return {
     users: await adminRepo.countNonFounders(onlineUserIds()),
-    guests: codeContainer.onlineGuests(),
+    guests: onlineGuests(),
   };
 }
 

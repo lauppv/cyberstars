@@ -16,8 +16,9 @@ const { acquireSlotMock, releaseSlotMock } = vi.hoisted(() => ({
   acquireSlotMock: vi.fn(),
   releaseSlotMock: vi.fn(),
 }));
-vi.mock('./sandbox-slots.js', () => ({
-  acquireSandboxSlot: (...a: unknown[]) => acquireSlotMock(...a),
+vi.mock('./sandbox.js', () => ({
+  SANDBOX_LABEL: 'cyberstars.sandbox',
+  sandbox: { acquireSlot: (...a: unknown[]) => acquireSlotMock(...a) },
 }));
 
 const { createSession, execCommand, getSessionView, activeCount, destroyAllSessions } =

@@ -33,19 +33,19 @@ const { mockAcquire, mockRelease, mockDestroy, mockIsRunning } = vi.hoisted(() =
   mockDestroy: vi.fn(),
   mockIsRunning: vi.fn(),
 }));
-vi.mock('./code-container.service.js', () => ({
-  acquireForRun: (...args: unknown[]) => mockAcquire(...args),
-  releaseAfterRun: (...args: unknown[]) => mockRelease(...args),
-  destroyOwner: (...args: unknown[]) => mockDestroy(...args),
-  isRunning: (...args: unknown[]) => mockIsRunning(...args),
-}));
 
 const { mockAcquireSandbox, mockReleaseSandbox } = vi.hoisted(() => ({
   mockAcquireSandbox: vi.fn(),
   mockReleaseSandbox: vi.fn(),
 }));
-vi.mock('./sandbox-slots.js', () => ({
-  acquireSandboxSlot: (...args: unknown[]) => mockAcquireSandbox(...args),
+vi.mock('./sandbox.js', () => ({
+  sandbox: {
+    acquireForRun: (...args: unknown[]) => mockAcquire(...args),
+    releaseAfterRun: (...args: unknown[]) => mockRelease(...args),
+    destroyOwner: (...args: unknown[]) => mockDestroy(...args),
+    isRunning: (...args: unknown[]) => mockIsRunning(...args),
+    acquireSlot: (...args: unknown[]) => mockAcquireSandbox(...args),
+  },
 }));
 
 // C does structure + injection on the server via web-tree-sitter, which can't

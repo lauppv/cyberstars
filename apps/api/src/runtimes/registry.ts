@@ -8,7 +8,7 @@ import {
 
 // The languages code runs in, by the name a run asks the sandbox for: the
 // sandbox's own presets. The only list of them on the server
-const LANGUAGES: Record<string, LanguageRuntime> = {
+export const LANGUAGES: Record<string, LanguageRuntime> = {
   python: pythonRuntime,
   java: javaRuntime,
   c: cRuntime,

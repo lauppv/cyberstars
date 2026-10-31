@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { EventEmitter } from 'node:events';
-import type { WebSocket } from 'ws';
+import { cRuntime, javaRuntime, pythonRuntime } from './languages/index.js';
 
 const {
   spawnMock,
@@ -28,18 +28,20 @@ vi.mock('child_process', () => {
   return { spawn, execFile, default: { spawn, execFile } };
 });
 
-vi.mock('./code-container.service.js', () => ({
-  acquireForRun: (...a: unknown[]) => acquireMock(...a),
-  releaseAfterRun: (...a: unknown[]) => releaseMock(...a),
-  destroyOwner: (...a: unknown[]) => destroyMock(...a),
-  isRunning: (...a: unknown[]) => isRunningMock(...a),
-}));
+const { liveRun } = await import('./live-run.js');
 
-vi.mock('./sandbox-slots.js', () => ({
-  acquireSandboxSlot: (...a: unknown[]) => acquireSlotMock(...a),
-}));
-
-const { handleInteractiveRun } = await import('./interactive-execution.service.js');
+// The pool and the line stand in for the real ones (pool.test.ts, slots.test.ts)
+const LANGUAGES = { python: pythonRuntime, java: javaRuntime, c: cRuntime };
+const runLive = liveRun({
+  pool: {
+    runtimeOf: (language: string) => LANGUAGES[language as keyof typeof LANGUAGES] ?? null,
+    acquireForRun: (...a: unknown[]) => acquireMock(...a),
+    releaseAfterRun: (...a: unknown[]) => releaseMock(...a),
+    destroyOwner: (...a: unknown[]) => destroyMock(...a),
+    isRunning: (...a: unknown[]) => isRunningMock(...a),
+  },
+  acquireSlot: (...a: unknown[]) => acquireSlotMock(...a),
+});
 
 // Minimal child_process stand-ins: only the surface the service touches.
 class FakeProc extends EventEmitter {
@@ -80,14 +82,26 @@ afterEach(() => {
   vi.useRealTimers();
 });
 
-describe('handleInteractiveRun', () => {
+describe('liveRun', () => {
+  it('refuses a language the pool does not run, taking no slot and no container', async () => {
+    const ws = new FakeWs();
+
+    await runLive(ws, 'print(1)', 'cobol', 'user:cobol');
+
+    expect(sent(ws)).toEqual([
+      { type: 'stderr', data: 'Language not supported.\n' },
+      { type: 'exit', code: 1 },
+    ]);
+    expect(acquireSlotMock).not.toHaveBeenCalled();
+    expect(acquireMock).not.toHaveBeenCalled();
+  });
   it('kills the run after exactly 20s, reports exit 124, and drops the container', async () => {
     vi.useFakeTimers();
     const proc = new FakeProc();
     spawnMock.mockReturnValue(proc);
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:1');
+    await runLive(ws, 'print(1)', 'python', 'user:1');
 
     vi.advanceTimersByTime(19_999);
     expect(proc.kill).not.toHaveBeenCalled();
@@ -107,7 +121,7 @@ describe('handleInteractiveRun', () => {
     spawnMock.mockReturnValue(proc);
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'input()', 'python', 'user:2');
+    await runLive(ws, 'input()', 'python', 'user:2');
 
     vi.advanceTimersByTime(19_000);
     ws.emit('message', JSON.stringify({ type: 'stdin', data: 'hi\n' }));
@@ -125,7 +139,7 @@ describe('handleInteractiveRun', () => {
     spawnMock.mockReturnValue(proc);
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:3');
+    await runLive(ws, 'print(1)', 'python', 'user:3');
     proc.emit('close', 0);
 
     await vi.waitFor(() => expect(releaseMock).toHaveBeenCalledWith('user:3'));
@@ -138,7 +152,7 @@ describe('handleInteractiveRun', () => {
     const proc = new FakeProc();
     spawnMock.mockReturnValue(proc);
     const ws = new FakeWs();
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:bg');
+    await runLive(ws, 'print(1)', 'python', 'user:bg');
 
     let finishKill: (() => void) | undefined;
     execFileMock.mockImplementationOnce((_cmd: string, args: string[], _opts, cb) => {
@@ -162,7 +176,7 @@ describe('handleInteractiveRun', () => {
     spawnMock.mockReturnValue(proc);
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print', 'python', 'user:burst');
+    await runLive(ws, 'print', 'python', 'user:burst');
     // ~49KB of output arriving within a single 50ms flush window.
     const lines = Array.from({ length: 10_000 }, (_, i) => `${i + 1}\n`);
     for (let i = 0; i < lines.length; i += 500) {
@@ -182,7 +196,7 @@ describe('handleInteractiveRun', () => {
     spawnMock.mockReturnValue(proc);
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'input()', 'python', 'user:4');
+    await runLive(ws, 'input()', 'python', 'user:4');
     ws.emit('close');
 
     expect(proc.kill).toHaveBeenCalledWith('SIGKILL');
@@ -204,7 +218,7 @@ describe('handleInteractiveRun', () => {
     });
     const ws = new FakeWs();
 
-    const run = handleInteractiveRun(ws as unknown as WebSocket, 'class Main {}', 'java', 'user:8');
+    const run = runLive(ws, 'class Main {}', 'java', 'user:8');
     await vi.waitFor(() => expect(finishCompile).toBeDefined());
     ws.readyState = 3;
     ws.emit('close');
@@ -224,7 +238,7 @@ describe('handleInteractiveRun', () => {
     acquireMock.mockReturnValueOnce(new Promise((r) => (resolveAcquire = r)));
     const ws = new FakeWs();
 
-    const run = handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:9');
+    const run = runLive(ws, 'print(1)', 'python', 'user:9');
     await vi.waitFor(() => expect(acquireMock).toHaveBeenCalled());
     ws.readyState = 3;
     ws.emit('close');
@@ -240,7 +254,7 @@ describe('handleInteractiveRun', () => {
     acquireMock.mockRejectedValueOnce(new Error('A run is already in progress'));
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:10');
+    await runLive(ws, 'print(1)', 'python', 'user:10');
     ws.emit('close');
 
     expect(destroyMock).not.toHaveBeenCalled();
@@ -251,7 +265,7 @@ describe('handleInteractiveRun', () => {
     spawnMock.mockReturnValue(proc);
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:err');
+    await runLive(ws, 'print(1)', 'python', 'user:err');
     proc.emit('error', new Error('spawn docker ENOENT'));
 
     expect(sent(ws).some((m) => m.type === 'stderr' && /Could not start/.test(m.data))).toBe(true);
@@ -264,7 +278,7 @@ describe('handleInteractiveRun', () => {
     acquireSlotMock.mockRejectedValueOnce(new Error('busy'));
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:busy');
+    await runLive(ws, 'print(1)', 'python', 'user:busy');
 
     expect(acquireMock).not.toHaveBeenCalled();
     expect(sent(ws)).toEqual([
@@ -281,7 +295,7 @@ describe('handleInteractiveRun', () => {
     });
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:wait');
+    await runLive(ws, 'print(1)', 'python', 'user:wait');
 
     expect(sent(ws).slice(0, 2)).toEqual([{ type: 'waiting' }, { type: 'slot' }]);
   });
@@ -289,7 +303,7 @@ describe('handleInteractiveRun', () => {
   it('says nothing about a line to a run that got its slot at once', async () => {
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:fast');
+    await runLive(ws, 'print(1)', 'python', 'user:fast');
 
     expect(sent(ws).some((m) => m.type === 'waiting' || m.type === 'slot')).toBe(false);
   });
@@ -305,7 +319,7 @@ describe('handleInteractiveRun', () => {
     );
     const ws = new FakeWs();
 
-    const run = handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:w');
+    const run = runLive(ws, 'print(1)', 'python', 'user:w');
     await vi.waitFor(() => expect(signal).toBeDefined());
     ws.readyState = 3;
     ws.emit('close');
@@ -330,7 +344,7 @@ describe('handleInteractiveRun', () => {
     spawnMock.mockReturnValue(proc);
     const ws = new FakeWs();
 
-    const run = handleInteractiveRun(ws as unknown as WebSocket, 'input()', 'python', 'user:room');
+    const run = runLive(ws, 'input()', 'python', 'user:room');
     await vi.waitFor(() => expect(startContainer).toBeDefined());
     // Still starting: it can't be stopped yet
     expect(stop!()).toBe(false);
@@ -362,7 +376,7 @@ describe('handleInteractiveRun', () => {
     spawnMock.mockReturnValue(proc);
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:done');
+    await runLive(ws, 'print(1)', 'python', 'user:done');
     proc.emit('close', 0);
     // Its slot frees up once the cleanup after it is done
     expect(stop!()).toBe(false);
@@ -374,7 +388,7 @@ describe('handleInteractiveRun', () => {
     isRunningMock.mockReturnValueOnce(true);
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:two');
+    await runLive(ws, 'print(1)', 'python', 'user:two');
 
     expect(isRunningMock).toHaveBeenCalledWith('user:two');
     expect(acquireSlotMock).not.toHaveBeenCalled();
@@ -396,13 +410,7 @@ describe('handleInteractiveRun', () => {
     );
     const ws = new FakeWs();
 
-    await handleInteractiveRun(
-      ws as unknown as WebSocket,
-      'print(1)',
-      'python',
-      'guest:g',
-      '1.2.3.4',
-    );
+    await runLive(ws, 'print(1)', 'python', 'guest:g', '1.2.3.4');
 
     expect(acquireMock).toHaveBeenCalledWith('guest:g', 'python', '1.2.3.4');
     expect(sent(ws)).toEqual([
@@ -418,7 +426,7 @@ describe('handleInteractiveRun', () => {
     acquireMock.mockRejectedValueOnce(new Error('docker daemon down'));
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:nod');
+    await runLive(ws, 'print(1)', 'python', 'user:nod');
 
     expect(releaseSlotMock).toHaveBeenCalled();
   });
@@ -427,7 +435,7 @@ describe('handleInteractiveRun', () => {
     acquireMock.mockRejectedValueOnce(new Error('A run is already in progress'));
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:5');
+    await runLive(ws, 'print(1)', 'python', 'user:5');
 
     expect(spawnMock).not.toHaveBeenCalled();
     expect(sent(ws).some((m) => m.type === 'stderr' && /already in progress/.test(m.data))).toBe(
@@ -450,7 +458,7 @@ describe('handleInteractiveRun', () => {
     });
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'class Main {}', 'java', 'user:6');
+    await runLive(ws, 'class Main {}', 'java', 'user:6');
 
     expect(spawnMock).not.toHaveBeenCalled();
     expect(sent(ws).some((m) => m.type === 'stderr' && /error/.test(m.data))).toBe(true);
@@ -466,7 +474,7 @@ describe('handleInteractiveRun', () => {
     });
     const ws = new FakeWs();
 
-    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:7');
+    await runLive(ws, 'print(1)', 'python', 'user:7');
 
     expect(spawnMock).not.toHaveBeenCalled();
     expect(destroyMock).toHaveBeenCalledWith('user:7');

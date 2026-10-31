@@ -3,10 +3,9 @@ import type { Duplex } from 'stream';
 import { WebSocketServer, type WebSocket } from 'ws';
 import { ipKeyGenerator } from 'express-rate-limit';
 import { config } from '../config/index.js';
-import { handleInteractiveRun } from './interactive-execution.service.js';
 import { programForRun } from './harness.js';
 import { languageOf } from '../runtimes/registry.js';
-import { openSession, closeSession } from './code-container.service.js';
+import { sandbox } from './sandbox.js';
 import { GUEST_RUN_BUDGET, guestRunsRemaining, recordGuestRun } from './guest-budget.service.js';
 import { registerUserSocket, unregisterUserSocket } from './ws-user.js';
 import { canAccessFeature } from '@cyberstars/shared/features';
@@ -183,7 +182,7 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage, userId: nu
     const program = programForRun(msg.code, msg.language, msg.lesson);
     // The page names a course or a language; the sandbox knows only languages
     const language = languageOf(msg.language);
-    handleInteractiveRun(ws, program, language, rateKey, guestIp).catch((err) => {
+    sandbox.run(ws, program, language, rateKey, guestIp).catch((err) => {
       console.error('[ws/run] execution error:', err);
       if (ws.readyState === ws.OPEN) {
         ws.send(JSON.stringify({ type: 'stderr', data: 'Internal error.\n' }));
@@ -210,8 +209,8 @@ export function handlePresenceConnection(
   userId: number | null,
 ): void {
   const { ownerKey } = resolveOwner(req, userId);
-  openSession(ownerKey);
-  ws.on('close', () => closeSession(ownerKey));
+  sandbox.openSession(ownerKey);
+  ws.on('close', () => sandbox.closeSession(ownerKey));
 }
 
 // The shared per-user event socket. Requires a logged-in user and passes the

@@ -1,12 +1,11 @@
 import { app } from './app.js';
 import { config } from './config/index.js';
 import { destroyAllSessions } from './services/terminal-session.service.js';
-import { drainAll } from './services/code-container.service.js';
 import { attachRunWebSocket } from './services/ws-run.js';
 import { scheduleRollUp } from './services/visits.service.js';
 import { scheduleRecapBell } from './services/laniakea-recaps.service.js';
 import { removeStraySandboxes } from '@cyberstars-framework/sandbox/docker';
-import { SANDBOX_LABEL } from './services/sandbox.js';
+import { sandbox, SANDBOX_LABEL } from './services/sandbox.js';
 
 // Before the first request, so only sandboxes of an earlier run are removed
 try {
@@ -27,7 +26,7 @@ scheduleRecapBell();
 
 function shutdown() {
   console.log('Shutting down, cleaning up containers...');
-  Promise.allSettled([destroyAllSessions(), drainAll()]).finally(() => {
+  Promise.allSettled([destroyAllSessions(), sandbox.drainAll()]).finally(() => {
     wss.close();
     server.close(() => process.exit(0));
     setTimeout(() => process.exit(1), 5000).unref();

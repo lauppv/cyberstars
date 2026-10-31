@@ -11,9 +11,6 @@ process.env.DB_NAME = 'test';
 process.env.DB_PASSWORD = 'test';
 
 const mockRun = vi.fn();
-vi.mock('./interactive-execution.service.js', () => ({
-  handleInteractiveRun: (...args: unknown[]) => mockRun(...args),
-}));
 
 // A run that names its lesson goes through the hidden part (harness.test.ts
 // covers the wrapping itself).
@@ -27,9 +24,12 @@ vi.mock('./harness.js', () => ({
 
 const openSessionMock = vi.fn();
 const closeSessionMock = vi.fn();
-vi.mock('./code-container.service.js', () => ({
-  openSession: (...args: unknown[]) => openSessionMock(...args),
-  closeSession: (...args: unknown[]) => closeSessionMock(...args),
+vi.mock('./sandbox.js', () => ({
+  sandbox: {
+    run: (...args: unknown[]) => mockRun(...args),
+    openSession: (...args: unknown[]) => openSessionMock(...args),
+    closeSession: (...args: unknown[]) => closeSessionMock(...args),
+  },
 }));
 
 const registerUserSocketMock = vi.fn();

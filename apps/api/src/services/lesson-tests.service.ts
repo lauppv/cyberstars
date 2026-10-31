@@ -3,18 +3,12 @@ import path from 'path';
 import { codeLanguageOf, isMultiLanguage } from '@cyberstars/shared/constants';
 import { contentDir } from './paths.js';
 import { dockerExec, dockerConverse, killLeftovers } from '@cyberstars-framework/sandbox/docker';
-import {
-  acquireForRun,
-  releaseAfterRun,
-  destroyOwner,
-  isRunning,
-} from './code-container.service.js';
+import { sandbox } from './sandbox.js';
 import { getRuntime, languageOf } from '../runtimes/registry.js';
 import { FAST_START, FAST_START_JAVAC } from '@cyberstars-framework/sandbox/languages';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
-import { acquireSandboxSlot } from './sandbox-slots.js';
 import { inLine } from './run-waits.js';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
 import { readHarness, studentHarness, studentLines, wrapCode } from './harness.js';
@@ -416,12 +410,12 @@ export async function runLessonTests(
   }
 
   // Refused at once rather than after waiting in line for a slot
-  if (isRunning(ownerKey)) throw new AppError(409, 'A run is already in progress');
+  if (sandbox.isRunning(ownerKey)) throw new AppError(409, 'A run is already in progress');
   const releaseSlot = await inLine(waitKey, (onWait) => acquireJudgeSlot({ onWait }));
   try {
     // A judge run is a busy sandbox too, so it also takes one of the slots
     // editor runs and terminal commands share.
-    const releaseSandbox = await inLine(waitKey, (onWait) => acquireSandboxSlot({ onWait }));
+    const releaseSandbox = await inLine(waitKey, (onWait) => sandbox.acquireSlot({ onWait }));
     try {
       const result = await runInContainer(
         ownerKey,
@@ -464,7 +458,7 @@ async function runInContainer(
 ): Promise<RunTestsResponse> {
   let containerId: string;
   try {
-    containerId = await acquireForRun(ownerKey, language, guestIp);
+    containerId = await sandbox.acquireForRun(ownerKey, language, guestIp);
   } catch (err) {
     // The guest's network holds as many sandboxes as it may, all busy
     if (err instanceof AppError) throw err;
@@ -551,7 +545,7 @@ async function runInContainer(
     if (keep) {
       // Nothing the student's program started outlives the run
       await killLeftovers(containerId);
-      releaseAfterRun(ownerKey);
-    } else void destroyOwner(ownerKey);
+      sandbox.releaseAfterRun(ownerKey);
+    } else void sandbox.destroyOwner(ownerKey);
   }
 }
