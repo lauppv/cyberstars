@@ -60,7 +60,7 @@ export const ENGINE_FILES = [
   'apps/api/src/services/code-container.service.ts',
   'framework/sandbox/src/docker.ts',
   'apps/api/src/services/judge-queue.ts',
-  'apps/api/src/services/slot-queue.ts',
+  'framework/sandbox/src/slots.ts',
   'apps/api/src/services/sandbox-slots.ts',
   'apps/api/src/services/guest-sandboxes.ts',
   'apps/api/src/services/reference-cache.ts',

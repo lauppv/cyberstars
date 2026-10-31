@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     "./docker": "./src/docker.ts",
-    "./languages": "./src/languages/index.ts"
+    "./languages": "./src/languages/index.ts",
+    "./slots": "./src/slots.ts"
   }
 }

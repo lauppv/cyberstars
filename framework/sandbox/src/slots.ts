@@ -1,5 +1,3 @@
-import type { AppError } from '@cyberstars-framework/server-kit/errors';
-
 interface Holder {
   since: number;
   // Stops the work holding the slot, which then releases it. Says false when
@@ -20,10 +18,11 @@ interface Waiter {
 
 // A cap on how many of something share the server at once. Past the cap they
 // wait their turn, first come first served, and give up with `busy()` after a
-// while. The judge and the sandboxes each keep one. With `stopAfterMs`, while
-// anyone waits, a holder that can be stopped and has held its slot that long
-// is stopped to make room, the longest-held first.
-export function slotQueue(busy: () => AppError, stopAfterMs = Infinity) {
+// while. The sandbox keeps one for its busy sandboxes; an app may keep more,
+// such as one for a judge. With `stopAfterMs`, while anyone waits, a holder
+// that can be stopped and has held its slot that long is stopped to make
+// room, the longest-held first.
+export function slotQueue(busy: () => Error, stopAfterMs = Infinity) {
   const holders = new Set<Holder>();
   const waiting: Waiter[] = [];
   let roomTimer: ReturnType<typeof setTimeout> | null = null;
