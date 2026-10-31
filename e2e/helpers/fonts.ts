@@ -13,6 +13,15 @@ export function firstFontOf(locator: Locator): Promise<string> {
   );
 }
 
+// Whether an element draws its symbols as typed: the code font's ligatures
+// ("liga") and contextual alternates ("calt"), which join != into ≠, both off.
+export function drawsAsTyped(locator: Locator): Promise<boolean> {
+  return locator.evaluate((el) => {
+    const features = getComputedStyle(el).fontFeatureSettings;
+    return features.includes('"liga" 0') && features.includes('"calt" 0');
+  });
+}
+
 type Face = { family: string; style: string; weight: string; status: string; range: string };
 
 // Every font face the page knows about, once the fonts it needs have loaded.
