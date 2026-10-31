@@ -49,7 +49,7 @@ if [ "${STEP:-}" = 1 ]; then files+=,/mnt/locust/step.py; fi
 
 # On cores 0-7, away from the box's core (BOX_CPU, 11 by default)
 docker run --rm --network host --cpuset-cpus "${LOCUST_CPUS:-0-7}" --user "$(id -u):$(id -g)" \
-  -e STEP_USERS -e STEP_SECONDS -e MAX_USERS \
+  -e STEP_USERS -e STEP_SECONDS -e MAX_USERS -e PYTHONDONTWRITEBYTECODE=1 \
   -v "$PWD/loadtest:/mnt/locust" -v "$PWD/packages/content:/content:ro" \
   cyberstars-loadtest-locust -f "$files" --headless --host "http://localhost:$PORT" \
   --csv "/mnt/locust/results/$NAME" --csv-full-history --html "/mnt/locust/results/$NAME.html" \
