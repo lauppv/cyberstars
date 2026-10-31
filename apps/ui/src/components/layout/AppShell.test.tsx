@@ -3,7 +3,11 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 
 const h = vi.hoisted(() => ({
-  auth: { isLoggedIn: true, isLoading: false },
+  auth: { isLoggedIn: true, isLoading: false } as {
+    isLoggedIn: boolean;
+    isLoading: boolean;
+    user?: { onboardedAt: string | null };
+  },
   tutor: null as null | { open: boolean; historyOpen?: boolean },
 }));
 
@@ -110,6 +114,13 @@ describe('AppShell', () => {
     h.auth = { isLoggedIn: false, isLoading: false };
     renderShell('/courses');
     expect(state()).toBe('wide');
+  });
+
+  it('gives a new account held on the tour lesson no sidebar', () => {
+    h.auth = { isLoggedIn: true, isLoading: false, user: { onboardedAt: null } };
+    renderShell('/lesson/python/print');
+    expect(state()).toBe('closed');
+    expect(screen.getByText(/toggle/).parentElement).not.toHaveClass('md:pl-[240px]');
   });
 
   it('starts unfolded where there is room when nothing is remembered', () => {

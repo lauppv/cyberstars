@@ -58,7 +58,7 @@ function isWide(): boolean {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
-  const { isLoggedIn, isLoading } = useAuth();
+  const { isLoggedIn, isLoading, user } = useAuth();
   const tutor = useTutor();
   const tutorOpen = tutor?.open ?? false;
   const [remembered] = useState(readRemembered);
@@ -67,8 +67,11 @@ export function AppShell({ children }: { children: ReactNode }) {
   // Until the button is used, a remembered sidebar only unfolds on a wide
   // screen. Leaving that to a media query rather than a measurement means a
   // phone opens on the page itself, with nothing sliding into place on load
-  const state: SidebarState =
+  const chosen: SidebarState =
     toggled === null ? (remembered ? 'wide' : 'closed') : toggled ? 'open' : 'closed';
+  // A new account held on the tour lesson (TourGate) gets no sidebar, so it
+  // has no way off it
+  const state: SidebarState = user && !user.onboardedAt ? 'closed' : chosen;
 
   function toggle() {
     const shown = state === 'open' || (state === 'wide' && isWide());
