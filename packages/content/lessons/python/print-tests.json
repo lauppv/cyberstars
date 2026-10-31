@@ -1,6 +1,5 @@
 {
-  "comparator": "template",
-  "template": "My name is <name>\nI am <age> years old\nCyberStars is the coolest",
+  "comparator": "trimmed",
   "structure": {
     "requires": [{ "kind": "call", "name": "print" }]
   },

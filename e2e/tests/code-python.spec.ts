@@ -41,7 +41,6 @@ test('Run Tests opens the verdict in the lesson panel, beside the editor', async
 });
 
 test('a near-miss output marks just the characters that differ', async ({ authedPage: page }) => {
-  // Not the first lesson: its blanks take any name, so it compares by template and marks nothing
   await page.goto('/lesson/python/variables-str');
 
   const editor = page.locator('[data-tour="editor"] .cm-content');
@@ -66,9 +65,7 @@ test('a passed course lesson lists its tests and shows no runtime', async ({
   const editor = page.locator('[data-tour="editor"] .cm-content');
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
-  await page.keyboard.type(
-    'print("My name is Cadet\\nI am 12 years old\\nCyberStars is the coolest")',
-  );
+  await page.keyboard.type('print("Hello, Stars!")');
   await page.getByRole('button', { name: 'Run Tests' }).click();
 
   const result = page.locator('[data-tour="result"]');
@@ -78,7 +75,7 @@ test('a passed course lesson lists its tests and shows no runtime', async ({
   await result.getByRole('button', { name: 'Passed tests (1)' }).click();
   await result.getByRole('button', { name: 'Test 1' }).click();
   await expect(result).toContainText('Expected output');
-  await expect(result).toContainText('My name is <name>');
+  await expect(result).toContainText('Hello, Stars!');
 });
 
 test('a passed algorithm shows its load-test runtime next to our solution', async ({

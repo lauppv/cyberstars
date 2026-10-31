@@ -35,16 +35,14 @@ Again, don't forget the quotes.
 
 ---
 
-## Mission: Introduce Yourself
+## Mission: Hello, Stars!
 
-Time to say hello to CyberStars. Write a program that uses **print()** to display these three lines:
+Time to say hello to CyberStars. Write a program that uses **print()** to display:
 
 ```text
-My name is <name>
-I am <age> years old
-CyberStars is the coolest
+Hello, Stars!
 ```
 
-Put your own name in place of `<name>` and your age in place of `<age>`, for example `My name is Ana` and `I am 12 years old`. Everything else has to match **exactly**, line by line.
+It has to match **exactly**: the capital letters, the comma and the exclamation mark.
 
 Psst, don't forget the **quotes** :)

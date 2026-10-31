@@ -35,16 +35,14 @@ Din nou, nu uita ghilimelele.
 
 ---
 
-## Misiune: Prezintă-te
+## Misiune: Hello, Stars!
 
-E timpul să saluți CyberStars. Scrie un program care folosește **print()** ca să afișeze aceste trei linii:
+E timpul să saluți CyberStars. Scrie un program care folosește **print()** ca să afișeze:
 
 ```text
-Numele meu este <nume>
-Am <varsta> ani
-CyberStars e cel mai tare
+Hello, Stars!
 ```
 
-Pune numele tău în locul lui `<nume>` și vârsta ta în locul lui `<varsta>`, de exemplu `Numele meu este Ana` și `Am 12 ani`. Restul trebuie să se potrivească **exact**, linie cu linie.
+Trebuie să se potrivească **exact**: literele mari, virgula și semnul exclamării.
 
 Psst, nu uita **ghilimelele** :)
