@@ -44,6 +44,9 @@
   --mono:
     'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono',
     monospace;
+  /* Code shows exactly what was typed. With its ligatures on, the code font
+     draws != as ≠, -> as an arrow and <= as ≤. Text keeps its own. */
+  --mono-features: 'liga' 0, 'calt' 0;
   --radius: 8px;
   --radius-sm: 6px;
   /* The panel surface: every card and container in the app (see .panel). */
@@ -66,10 +69,12 @@
 }
 
 /* Tailwind's font-sans and font-mono read their own variables. `inline` makes
-   them use ours, so every font-mono in the app follows --mono. */
+   them use ours, so every font-mono in the app follows --mono. The features
+   go with it to every font-mono and to code, pre, kbd and samp. */
 @theme inline {
   --font-sans: var(--font);
   --font-mono: var(--mono);
+  --font-mono--font-feature-settings: var(--mono-features);
 }
 
 html,
