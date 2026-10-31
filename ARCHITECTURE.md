@@ -41,7 +41,8 @@ cyberstars/
 │
 ├── framework/                     # @cyberstars-framework/*: the reusable parts, one package each
 │   ├── server-kit/                # Settings loader, AppError and its handler, validateBody, limiters
-│   └── sandbox/                   # Code in Docker: language presets, container pool, busy cap, live run
+│   ├── sandbox/                   # Code in Docker: language presets, container pool, busy cap, live run
+│   └── auth/                      # Sign-up, login, sessions, the password reset and the admin check
 │
 ├── e2e/                           # Playwright tests that drive the UI and the API together
 ├── test/                          # Shared Vitest setup (jsdom, jest-dom matchers)
@@ -67,7 +68,7 @@ Separate deploys don't need separate repos: workspaces already give each part it
 
 ## API endpoints
 
-Auth is a JWT in an httpOnly cookie. In the tables, **Yes** is a signed-in student, **Owner** a student or a guest (keyed by the per-browser `guestId` cookie), **Staff** a moderator or admin, **Admin** an admin or the founder. Roles are always read from the database, never from the token.
+Auth is a JWT in an httpOnly cookie. In the tables, **Yes** is a signed-in student, **Owner** a student or a guest (keyed by the per-browser `guestId` cookie), **Staff** a moderator or admin, **Admin** an admin or the founder. Roles are always read from the database, never from the token. The auth package (`framework/auth`) does it; the app creates it once with its user store, roles and sign-up form (`apps/api/src/services/auth.ts`).
 
 ### Auth
 
