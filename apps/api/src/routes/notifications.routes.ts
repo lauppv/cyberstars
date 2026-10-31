@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { authenticateToken, requireFeatureAccess } from '../middleware/auth.js';
+import { authenticateToken } from '../middleware/auth.js';
+import { requireFeatureAccess } from '../middleware/features.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import { markReadSchema } from '../schemas/notifications.schema.js';
 import * as notificationsController from '../controllers/notifications.controller.js';
