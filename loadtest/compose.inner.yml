@@ -1,0 +1,22 @@
+# Laid over the repo's docker-compose.yml inside the box (box.sh). The app is
+# the image box.sh built on this machine and loaded into the box, and the code
+# containers' images are loaded the same way, so the box never builds or
+# pulls on its one core. Every limit stays at the code's own default, as on
+# production.
+services:
+  setup:
+    # The app's image has the docker CLI too, so no other image is needed for this
+    image: cyberstars-loadtest-app
+    pull_policy: never
+    # Only checks that box.sh loaded every image a run needs
+    entrypoint: >
+      docker image inspect --format ok
+        gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine cyberstars-linux-sandbox
+
+  app:
+    image: cyberstars-loadtest-app
+    pull_policy: never
+    environment:
+      # The box's own address, so a browser opened on it (capture.mjs) gets its
+      # sockets, as one on cyberstars.app does
+      CORS_ORIGIN: http://localhost:${BOX_PORT:-8080}

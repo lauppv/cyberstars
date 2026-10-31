@@ -1,7 +1,8 @@
 import type { KnipConfig } from 'knip';
 
 const config: KnipConfig = {
-  ignore: ['e2e/**'],
+  // The load test's scripts run by hand (loadtest/README.md); nothing imports them
+  ignore: ['e2e/**', 'loadtest/**'],
   // boot.js is loaded by a script tag in index.html before the app's bundle.
   ignoreFiles: ['apps/ui/public/boot.js'],
   workspaces: {
