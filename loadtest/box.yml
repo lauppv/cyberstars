@@ -1,0 +1,29 @@
+# The droplet in a box: one core, 1 GB of memory and 2 GB of swap, like
+# production. The app, its database and every code container run inside it,
+# under its own Docker daemon, so they share that one core the way they share
+# the droplet's vCPU. Capping only the app would leave the code containers the
+# rest of this machine's cores, and the app sizes its pool of sandboxes from
+# the cores it sees.
+#
+# Started and filled by box.sh; not meant to be used on its own.
+name: cyberstars-loadtest
+
+services:
+  box:
+    image: docker:29.9.0-dind
+    privileged: true
+    cpuset: '${BOX_CPU:-11}'
+    mem_limit: 1g
+    memswap_limit: 3g
+    environment:
+      # Plain socket inside the box, no TLS: nothing outside it talks to this daemon
+      DOCKER_TLS_CERTDIR: ''
+    ports:
+      - '${BOX_PORT:-8080}:8080'
+    volumes:
+      - docker:/var/lib/docker
+      # The repo, for its docker-compose.yml and the linux sandbox's build context
+      - ..:/src:ro
+
+volumes:
+  docker:
