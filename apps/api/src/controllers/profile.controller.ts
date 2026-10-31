@@ -2,17 +2,15 @@ import type { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import crypto from 'node:crypto';
 import fs from 'fs/promises';
-import bcrypt from 'bcryptjs';
 import { fileTypeFromBuffer } from 'file-type';
 import * as userRepo from '../repositories/user.repository.js';
 import * as progressRepo from '../repositories/progress.repository.js';
 import * as laniakeaRepo from '../repositories/laniakea.repository.js';
 import * as emailService from '../services/email.service.js';
-import * as authService from '../services/auth.service.js';
+import { auth } from '../services/auth.js';
 import { computeStreak, listDone, recentActivity } from '../services/activity.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { UPLOADS_DIR } from '../config/paths.js';
-import { config } from '../config/index.js';
 
 const UPLOAD_DIR = path.join(UPLOADS_DIR, 'avatars');
 
@@ -152,14 +150,10 @@ export async function changePassword(
     const userId = req.user!.id;
     const { currentPassword, newPassword } = req.body;
 
-    const user = await userRepo.findByIdWithPassword(userId);
-    if (!user) throw new AppError(404, 'User not found');
-
-    const valid = bcrypt.compareSync(currentPassword, user.password);
-    if (!valid) throw new AppError(401, 'Current password is incorrect');
+    await auth.checkCurrentPassword(userId, currentPassword);
 
     // Every other session ends; this one stays signed in on a new token
-    res.cookie('token', await authService.setPassword(userId, newPassword), config.cookie);
+    auth.setSessionCookie(res, await auth.setPassword(userId, newPassword));
     res.json({ message: 'Password updated' });
   } catch (err) {
     next(err);
@@ -180,11 +174,7 @@ export async function requestEmailChange(
     };
     const normalized = newEmail.toLowerCase().trim();
 
-    const user = await userRepo.findByIdWithPassword(userId);
-    if (!user) throw new AppError(404, 'User not found');
-
-    const valid = bcrypt.compareSync(currentPassword, user.password);
-    if (!valid) throw new AppError(401, 'Current password is incorrect');
+    await auth.checkCurrentPassword(userId, currentPassword);
 
     const current = await userRepo.findById(userId);
     if (current && current.email.toLowerCase() === normalized) {

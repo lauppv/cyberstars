@@ -46,8 +46,8 @@ vi.mock('../repositories/user.repository.js', () => ({
 
 // The upgrade's session check; by default a token signs in whoever it names
 const sessionUserIdMock = vi.fn();
-vi.mock('./auth.service.js', () => ({
-  sessionUserId: (...args: unknown[]) => sessionUserIdMock(...args),
+vi.mock('./auth.js', () => ({
+  auth: { sessionUserId: (...args: unknown[]) => sessionUserIdMock(...args) },
 }));
 
 // A stand-in WebSocketServer that hands the upgrade straight to the connection

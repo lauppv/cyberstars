@@ -6,9 +6,10 @@ import helmet from 'helmet';
 import { config } from './config/index.js';
 import { UI_BUILD_DIR, UPLOADS_DIR } from './config/paths.js';
 import { errorHandler } from '@cyberstars-framework/server-kit/errors';
+import { SESSION_COOKIE } from '@cyberstars-framework/auth/auth';
 import { servePages } from './middleware/pages.js';
 import { serveStatic } from './middleware/static.js';
-import authRoutes from './routes/auth.routes.js';
+import { auth } from './services/auth.js';
 import progressRoutes from './routes/progress.routes.js';
 import forumRoutes from './routes/forum.routes.js';
 import terminalRoutes from './routes/terminal.routes.js';
@@ -67,7 +68,7 @@ app.use(cookieParser());
 // isolated per browser (not shared by IP) and the guest run budget can be
 // tracked. The WebSocket handshake reads this cookie back.
 app.use((req, res, next) => {
-  if (!req.cookies?.token && !req.cookies?.guestId) {
+  if (!req.cookies?.[SESSION_COOKIE] && !req.cookies?.guestId) {
     res.cookie('guestId', crypto.randomUUID(), {
       httpOnly: true,
       sameSite: 'lax',
@@ -78,7 +79,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/auth', authRoutes);
+app.use('/auth', auth.router);
 app.use('/api/progress', progressRoutes);
 app.use('/api/forum', forumRoutes);
 app.use('/api/terminal', terminalRoutes);
