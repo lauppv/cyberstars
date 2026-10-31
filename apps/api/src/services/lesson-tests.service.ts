@@ -88,8 +88,8 @@ const RUNNERS: Record<string, JudgeRunner> = {
     runnerPath: path.join(SERVICES_DIR, 'lesson-tests.runner.py'),
     containerFile: '/work/_runner.py',
     runCmd: ['python3', '/work/_runner.py', '/work/_payload.json'],
-    // ~0.1 s per case under the 0.5 CPU cap (two interpreter starts), so 50
-    // cases take ~5 s.
+    // ~30 ms per case under the 0.5 CPU cap (two programs forked from a warm
+    // interpreter), so 50 cases take ~1.5 s.
     budgetMs: 30_000,
     caseBudgetMs: 21_000,
     baseTimeoutMs: 15_000,

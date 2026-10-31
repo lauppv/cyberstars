@@ -313,6 +313,86 @@ describe.skipIf(!has('python3'))('python runner', () => {
     expect(user.ms).toBeGreaterThanOrEqual(0);
   });
 
+  // A program runs in a child forked from the runner, but the load test's in a
+  // fresh `python -u` (its time is what the student sees): both must behave
+  // alike, down to the streams, the exit and what the shutdown prints.
+  it.each([
+    ['a traceback from inside a function', 'def f():\n    return 1 / 0\nf()\n'],
+    [
+      'a chained exception',
+      'try:\n    {}["k"]\nexcept KeyError as e:\n    raise ValueError("v") from e\n',
+    ],
+    ['a compile error ast.parse lets through', 'print(1)\nreturn 5\n'],
+    ['sys.exit with a message', 'import sys\nprint("a")\nsys.exit("bye")\n'],
+    ['sys.exit with a code', 'import sys\nsys.exit(3)\n'],
+    [
+      'a thread still printing after the last line',
+      'import threading, time\ndef w():\n    time.sleep(0.1)\n    print("late")\nthreading.Thread(target=w).start()\nprint("main")\n',
+    ],
+    ['atexit hooks', 'import atexit\natexit.register(print, "bye")\nprint("hi")\n'],
+    [
+      'objects finalized at shutdown',
+      'class A:\n    def __del__(self):\n        print("del")\na = A()\nprint("end")\n',
+    ],
+    [
+      'the recursion room',
+      'def f(n):\n    try:\n        return f(n + 1)\n    except RecursionError:\n        return n\nprint(f(1))\n',
+    ],
+    [
+      'the streams, names and paths of a script',
+      'import sys\nfor s in (sys.stdin, sys.stdout, sys.stderr):\n    print(type(s.buffer).__name__, s.encoding, s.errors, s.write_through)\n' +
+        'print(__name__, __file__, sys.argv, sys.path[0], repr(sys.stdin.read()))\n',
+    ],
+  ])('runs %s as a fresh interpreter does', (_name, code) => {
+    const lines = runRunner(
+      'lesson-tests.runner.py',
+      {
+        userCode: code,
+        solutionCode: 'print(1)\n',
+        structure: {},
+        cases: [{ stdin: 'a\r\nb\n' }, { stdin: 'a\r\nb\n', load: true }],
+      },
+      ['next', 'next'],
+    ) as { user: { stdout: string; stderr: string; exit: number } }[];
+    const [forked, fresh] = [lines[1].user, lines[2].user];
+    expect(forked.stdout).toBe(fresh.stdout);
+    expect(forked.stderr).toBe(fresh.stderr);
+    expect(forked.exit).toBe(fresh.exit);
+  });
+
+  it("runs our solution with another hash seed than the student's program", () => {
+    // A set of strings comes out in the order of the seed: our solution run
+    // as the student's code must still print it differently (check:tests).
+    const words = Array.from({ length: 20 }, (_, i) => `w${i}`);
+    const code = `print(set(${JSON.stringify(words)}))\n`;
+    const lines = runRunner(
+      'lesson-tests.runner.py',
+      { userCode: code, solutionCode: code, structure: {}, cases: [{}] },
+      ['stop'],
+    );
+    const { user, solution } = lines[1] as {
+      user: { stdout: string };
+      solution: { stdout: string };
+    };
+    expect(user.stdout).not.toBe(solution.stdout);
+  });
+
+  it("leaves the program none of the runner's files, and takes an input larger than a pipe", () => {
+    const lines = runRunner(
+      'lesson-tests.runner.py',
+      {
+        userCode:
+          'import os, sys\ndef is_open(fd):\n    try:\n        os.fstat(fd)\n        return True\n    except OSError:\n        return False\n' +
+          'print([fd for fd in range(4, 256) if is_open(fd)], len(sys.stdin.read()))\n',
+        solutionCode: 'print(1)\n',
+        structure: {},
+        cases: [{ stdin: 'x'.repeat(1_000_000) }],
+      },
+      ['stop'],
+    );
+    expect(lines[1]).toMatchObject({ user: { stdout: '[] 1000000\n', exit: 0 } });
+  });
+
   it('keeps tracebacks on the same lines as without the timing preamble', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',
