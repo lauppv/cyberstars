@@ -253,6 +253,15 @@ describe('handleConnection', () => {
     ws.emit('close');
   });
 
+  it("runs an algorithm challenge's code in its set language, the hidden part by the challenge", () => {
+    const ws = new FakeWs();
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 2010);
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'algo-java' }));
+    expect(mockProgramForRun).toHaveBeenCalledWith('x', 'algo-java', undefined);
+    expect(mockRun).toHaveBeenCalledWith(ws, 'x', 'java', 'user:2010', undefined);
+    ws.emit('close');
+  });
+
   it("runs a challenge's function inside its hidden part when the run names the lesson", () => {
     const ws = new FakeWs();
     handleConnection(ws as unknown as WebSocket, fakeReq(), 2003);

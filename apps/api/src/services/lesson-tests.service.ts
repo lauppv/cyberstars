@@ -9,8 +9,8 @@ import {
   destroyOwner,
   isRunning,
 } from './code-container.service.js';
-import { getRuntime } from '../runtimes/registry.js';
-import { FAST_START, FAST_START_JAVAC } from '../runtimes/java.js';
+import { getRuntime, languageOf } from '../runtimes/registry.js';
+import { FAST_START, FAST_START_JAVAC } from '@cyberstars-framework/sandbox/languages';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
@@ -367,9 +367,10 @@ function finalResponse(
   };
 }
 
-// The runtime a run goes to, which also names the owner's container: the
-// course's own, or on a multi-language course the language picked, so a run
-// there shares the container of the editor's runs in that language.
+// The runtime a run goes to: the course's own, or on a multi-language course
+// the language picked. It keys the reference cache, and its language
+// (languageOf) names the owner's container, so a run shares the container of
+// the editor's runs in that language, an algorithm challenge's too.
 function runtimeKey(courseKey: string, language?: string): string {
   return isMultiLanguage(courseKey) ? codeLanguageOf(courseKey, language) : courseKey;
 }
@@ -425,7 +426,7 @@ export async function runLessonTests(
       const result = await runInContainer(
         ownerKey,
         guestIp,
-        runtime,
+        languageOf(runtime),
         judge,
         spec,
         program,
@@ -452,7 +453,8 @@ interface ReferenceReuse {
 async function runInContainer(
   ownerKey: string,
   guestIp: string | undefined,
-  runtime: string,
+  // The sandbox language, which names the owner's container
+  language: string,
   judge: JudgeRunner,
   spec: LessonTestsSpec,
   userCode: string,
@@ -462,7 +464,7 @@ async function runInContainer(
 ): Promise<RunTestsResponse> {
   let containerId: string;
   try {
-    containerId = await acquireForRun(ownerKey, runtime, guestIp);
+    containerId = await acquireForRun(ownerKey, language, guestIp);
   } catch (err) {
     // The guest's network holds as many sandboxes as it may, all busy
     if (err instanceof AppError) throw err;

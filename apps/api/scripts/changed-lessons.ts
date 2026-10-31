@@ -38,14 +38,20 @@ const COURSES: Record<Runtime, string[]> = {
 const WHOLE_SHARDS: Record<Runtime, number> = { python: 2, c: 1, java: 4 };
 
 export const RUNTIME_FILES: Record<Runtime, string[]> = {
-  python: ['apps/api/src/services/lesson-tests.runner.py', 'apps/api/src/runtimes/python.ts'],
+  python: [
+    'apps/api/src/services/lesson-tests.runner.py',
+    'framework/sandbox/src/languages/python.ts',
+  ],
   c: [
     'apps/api/src/services/lesson-tests.runner.c.py',
     'apps/api/src/services/c-analysis.ts',
     'apps/api/src/services/wasm/tree-sitter-c.wasm',
-    'apps/api/src/runtimes/c.ts',
+    'framework/sandbox/src/languages/c.ts',
   ],
-  java: ['apps/api/src/services/lesson-tests.runner.java', 'apps/api/src/runtimes/java.ts'],
+  java: [
+    'apps/api/src/services/lesson-tests.runner.java',
+    'framework/sandbox/src/languages/java.ts',
+  ],
 };
 
 export const ENGINE_FILES = [
@@ -61,7 +67,8 @@ export const ENGINE_FILES = [
   'apps/api/src/services/paths.ts',
   'packages/content/paths.ts',
   'apps/api/src/runtimes/registry.ts',
-  'apps/api/src/runtimes/types.ts',
+  'framework/sandbox/src/languages/types.ts',
+  'framework/sandbox/src/languages/index.ts',
   'packages/shared/tests.ts',
   'apps/api/scripts/check-tests.ts',
 ];

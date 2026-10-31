@@ -303,6 +303,21 @@ describe('runLessonTests', () => {
     expect(mockAcquire).toHaveBeenCalledWith('user:1', 'python', undefined);
   });
 
+  it("runs an algorithm challenge in its set language's container, the one the editor uses", async () => {
+    stubFiles();
+    stubVerdict({
+      syntaxError: null,
+      cases: [
+        { user: program(), solution: program() },
+        { user: program(), solution: program() },
+      ],
+    });
+
+    await runLessonTests('user:1', 'algo-java', 'two-sum', 'code');
+
+    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'java', undefined);
+  });
+
   it("tells the page how the lesson compares outputs, 'trimmed' when the spec doesn't say", async () => {
     stubFiles({ comparator: 'unordered', structure: {}, cases: [{ visible: true }] });
     stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });

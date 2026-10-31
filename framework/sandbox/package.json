@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./docker": "./src/docker.ts"
+    "./docker": "./src/docker.ts",
+    "./languages": "./src/languages/index.ts"
   }
 }
