@@ -191,7 +191,7 @@ describe('Visitor counts', () => {
     await visit(guest, { path: '/getstarted' }, 'Guest browser');
     await guest
       .post('/auth/signup')
-      .send({ name: 'Ana', email: 'ana@test.com', password: 'password123' })
+      .send({ name: 'Ana Maria', email: 'ana@test.com', password: 'password123' })
       .expect(200);
     await visit(
       guest,
