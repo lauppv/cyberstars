@@ -10,12 +10,19 @@
 # Expected outputs never enter this container: the server compares the two
 # stdouts on its side.
 import ast
+import builtins
+import gc
+import importlib.machinery
 import io
 import json
 import os
+import selectors
+import signal
 import subprocess
 import sys
+import time
 import tokenize
+import types
 
 # Room for a slow but working program on the load test.
 CASE_TIMEOUT = 10
@@ -427,13 +434,187 @@ def code_ms(read_fd):
         os.close(read_fd)
 
 
-def run_program(code, stdin=None):
-    path = "/tmp/_judged.py"
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(PREAMBLE + code)
-    read_fd, write_fd = os.pipe()
+# Every program but the load test's (see run_fresh) runs in a child forked
+# from this interpreter, as if it were `python -u /tmp/_judged.py`: a fresh
+# interpreter costs ~50 ms to start under the container's CPU cap, a forked
+# child ~8 ms, and a lesson runs two programs per case on up to 50 cases.
+# The child gets the streams, __main__ module, argv, path and recursion room a
+# fresh interpreter would, and leaves through SystemExit, so the interpreter's
+# own shutdown joins its threads, runs its atexit hooks, finalizes its objects
+# and flushes its output as before.
+JUDGED_PATH = "/tmp/_judged.py"
+# After killing a timed-out program, how long its output may still take to
+# arrive: a process it started can hold the pipes open.
+DRAIN_AFTER_KILL = 2
+
+
+def std_stream(fd, like, mode):
+    # The stream `python -u` opens on fd: unbuffered, but stdin read through a
+    # buffer, "\n" newlines untranslated, and the encoding and error handler
+    # this same environment gave the runner's own stream.
+    buffer = io.open(fd, mode + "b", buffering=-1 if mode == "r" else 0, closefd=False)
+    stream = io.TextIOWrapper(
+        buffer, encoding=like.encoding, errors=like.errors, newline="\n", write_through=True
+    )
+    stream.mode = mode
+    return stream
+
+
+def run_as_main(source):
+    # In the forked child, on fds 0, 1 and 2 of the program. Never returns.
+    sys.stdin = sys.__stdin__ = std_stream(0, sys.stdin, "r")
+    sys.stdout = sys.__stdout__ = std_stream(1, sys.stdout, "w")
+    sys.stderr = sys.__stderr__ = std_stream(2, sys.stderr, "w")
+    sys.argv = [JUDGED_PATH]
+    sys.path[0] = os.path.dirname(JUDGED_PATH)
+    main = types.ModuleType("__main__")
+    main.__file__ = JUDGED_PATH
+    main.__cached__ = None
+    main.__loader__ = importlib.machinery.SourceFileLoader("__main__", JUDGED_PATH)
+    main.__builtins__ = builtins
+    main.__annotations__ = {}
+    sys.modules["__main__"] = main
+    # The program's first line runs this many frames deep instead of at the
+    # bottom of the stack, so it gets them on top of the usual limit. Before
+    # 3.12 the limit also counts the call to exec, a builtin.
+    frame, depth = sys._getframe(), 1 if sys.version_info < (3, 12) else 0
+    while frame:
+        frame, depth = frame.f_back, depth + 1
+    sys.setrecursionlimit(sys.getrecursionlimit() + depth)
+    try:
+        exec(compile(source, JUDGED_PATH, "exec", dont_inherit=True), vars(main))
+    except SystemExit:
+        raise
+    except BaseException as e:
+        # Shown as the interpreter shows it, from the program's own first
+        # frame (none for a compile error): the hook prints the exception's
+        # own traceback, not the one it is handed. An uncaught
+        # KeyboardInterrupt exits with 1 here, not through SIGINT; the verdict
+        # is the same error.
+        e.__traceback__ = e.__traceback__.tb_next
+        sys.last_type, sys.last_value, sys.last_traceback = type(e), e, e.__traceback__
+        sys.excepthook(type(e), e, e.__traceback__)
+        raise SystemExit(1)
+    raise SystemExit(0)
+
+
+def communicate(pid, stdin_w, stdout_r, stderr_r, data):
+    # What subprocess's communicate(timeout=CASE_TIMEOUT) does for a child
+    # that isn't a Popen: feed its stdin, collect both outputs until it closes
+    # them, then wait for it, all within the case's time. Returns the outputs,
+    # the exit code (negative for a signal) and whether it timed out.
+    chunks = {stdout_r: [], stderr_r: []}
+    selector = selectors.DefaultSelector()
+    for fd in chunks:
+        selector.register(fd, selectors.EVENT_READ)
+    if data:
+        os.set_blocking(stdin_w, False)
+        selector.register(stdin_w, selectors.EVENT_WRITE)
+    else:
+        os.close(stdin_w)
+    sent = 0
+    poll = 0.0005
+    deadline = time.monotonic() + CASE_TIMEOUT
+    status = None
+    while status is None:
+        left = deadline - time.monotonic()
+        if left <= 0:
+            break
+        if not selector.get_map():
+            # Both outputs closed: wait for the exit, polling as Popen.wait
+            # does, from half a millisecond up.
+            reaped, raw = os.waitpid(pid, os.WNOHANG)
+            if reaped:
+                status = raw
+            else:
+                time.sleep(min(poll, left))
+                poll = min(poll * 2, 0.005)
+            continue
+        for key, _ in selector.select(left):
+            if key.fd == stdin_w:
+                try:
+                    sent += os.write(stdin_w, data[sent : sent + 65536])
+                except BlockingIOError:
+                    continue
+                except BrokenPipeError:
+                    # It exited without reading all its input, that's fine.
+                    sent = len(data)
+                if sent >= len(data):
+                    selector.unregister(stdin_w)
+                    os.close(stdin_w)
+                continue
+            chunk = os.read(key.fd, 65536)
+            if chunk:
+                chunks[key.fd].append(chunk)
+            else:
+                selector.unregister(key.fd)
+                os.close(key.fd)
+    timed_out = status is None
+    if timed_out:
+        os.kill(pid, signal.SIGKILL)
+        if stdin_w in selector.get_map():
+            selector.unregister(stdin_w)
+            os.close(stdin_w)
+        drain_until = time.monotonic() + DRAIN_AFTER_KILL
+        while selector.get_map() and time.monotonic() < drain_until:
+            for key, _ in selector.select(drain_until - time.monotonic()):
+                chunk = os.read(key.fd, 65536)
+                if chunk:
+                    chunks[key.fd].append(chunk)
+                else:
+                    selector.unregister(key.fd)
+                    os.close(key.fd)
+        for fd in list(selector.get_map()):
+            os.close(fd)
+        status = os.waitpid(pid, 0)[1]
+    selector.close()
+    return (
+        b"".join(chunks[stdout_r]),
+        b"".join(chunks[stderr_r]),
+        os.waitstatus_to_exitcode(status),
+        timed_out,
+    )
+
+
+def run_forked(source, write_fd, data):
+    stdin_r, stdin_w = os.pipe()
+    stdout_r, stdout_w = os.pipe()
+    stderr_r, stderr_w = os.pipe()
+    # Whatever our own streams still buffer would be flushed by the child.
+    sys.stdout.flush()
+    sys.stderr.flush()
+    # Our objects as they are now stay out of the child's garbage collection,
+    # which would otherwise walk them all, touching their memory: a child's
+    # write to a page it shares with us copies the page. Halves a run.
+    gc.freeze()
+    pid = os.fork()
+    if pid == 0:
+        try:
+            # The program's own fds, the time pipe as 3, and nothing else of ours.
+            os.dup2(stdin_r, 0)
+            os.dup2(stdout_w, 1)
+            os.dup2(stderr_w, 2)
+            os.dup2(write_fd, 3)
+            os.closerange(4, os.sysconf("SC_OPEN_MAX"))
+            os.environ["_JT_FD"] = "3"
+            run_as_main(source)
+        except SystemExit:
+            raise
+        except BaseException:
+            # Our own bug, never the program's: it must not go on as the runner.
+            os._exit(70)
+    # Only the child holds the write ends now, so the reads end at its exit.
+    for fd in (stdin_r, stdout_w, stderr_w, write_fd):
+        os.close(fd)
+    return communicate(pid, stdin_w, stdout_r, stderr_r, data)
+
+
+# The load test's programs still get an interpreter each: their time is the
+# runtime the student sees, and a forked child spends a few ms of it copying
+# the memory it shares with us (20 ms became 22 to 24 on fizzbuzz's).
+def run_fresh(write_fd, data):
     proc = subprocess.Popen(
-        [sys.executable, "-u", path],
+        [sys.executable, "-u", JUDGED_PATH],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -443,22 +624,85 @@ def run_program(code, stdin=None):
     # Only the child holds the write end now, so the read below ends at its exit.
     os.close(write_fd)
     try:
-        stdout, stderr = proc.communicate((stdin or "").encode("utf-8"), timeout=CASE_TIMEOUT)
+        stdout, stderr = proc.communicate(data, timeout=CASE_TIMEOUT)
         timed_out = False
     except subprocess.TimeoutExpired:
         proc.kill()
         stdout, stderr = proc.communicate()
         timed_out = True
+    return stdout, stderr, proc.returncode, timed_out
+
+
+def run_program(code, stdin=None, fresh=False):
+    with open(JUDGED_PATH, "w", encoding="utf-8") as f:
+        f.write(PREAMBLE + code)
+    read_fd, write_fd = os.pipe()
+    data = (stdin or "").encode("utf-8")
+    run = run_fresh(write_fd, data) if fresh else run_forked(PREAMBLE + code, write_fd, data)
+    stdout, stderr, exit_code, timed_out = run
     result = {
         "stdout": as_text(stdout)[:OUTPUT_CAP],
         "stderr": as_text(stderr)[:OUTPUT_CAP],
-        "exit": -1 if timed_out else proc.returncode,
+        "exit": -1 if timed_out else exit_code,
         "timedOut": timed_out,
     }
     ms = code_ms(read_fd)
     if ms is not None and not timed_out:
         result["ms"] = ms
     return result
+
+
+# The reference solution's programs fork from a second interpreter, started
+# fresh once per run: strings hash with another seed there, as they did when
+# each program had its own interpreter, so a solution whose output follows a
+# set's order still prints differently from the student's run of the same code
+# (check:tests catches it). Raw fds only, no file objects: a forked program
+# closes every fd of ours, and a file object would then fail to close at its
+# exit, onto its stderr.
+SOLUTIONS_FLAG = "--solutions"
+solutions = {}
+
+
+def run_solution(code, stdin):
+    if not solutions:
+        request_r, request_w = os.pipe()
+        reply_r, reply_w = os.pipe()
+        solutions["pid"] = os.posix_spawn(
+            sys.executable,
+            [sys.executable, os.path.abspath(__file__), SOLUTIONS_FLAG],
+            os.environ,
+            file_actions=[
+                (os.POSIX_SPAWN_DUP2, request_r, 0),
+                (os.POSIX_SPAWN_DUP2, reply_w, 1),
+            ],
+        )
+        os.close(request_r)
+        os.close(reply_w)
+        solutions.update(request=request_w, reply=reply_r, pending=b"")
+    request = (json.dumps({"code": code, "stdin": stdin}) + "\n").encode("utf-8")
+    while request:
+        request = request[os.write(solutions["request"], request) :]
+    while b"\n" not in solutions["pending"]:
+        chunk = os.read(solutions["reply"], 65536)
+        if not chunk:
+            raise RuntimeError("the solutions' interpreter quit")
+        solutions["pending"] += chunk
+    line, solutions["pending"] = solutions["pending"].split(b"\n", 1)
+    return json.loads(line)
+
+
+def stop_solutions():
+    if solutions:
+        os.close(solutions["request"])
+        os.waitpid(solutions["pid"], 0)
+
+
+def serve_solutions():
+    # The solutions' interpreter: one request per line, each answered with
+    # its run on one line.
+    for line in sys.stdin:
+        request = json.loads(line)
+        print(json.dumps(run_program(request["code"], request["stdin"])), flush=True)
 
 
 def emit(obj):
@@ -509,14 +753,26 @@ def main():
             # The server fails the whole run on it, so there is nothing after.
             emit({"injectError": True})
             break
-        user_run = run_program(user_src, stdin)
+        fresh = bool(case.get("load"))
+        user_run = run_program(user_src, stdin, fresh)
         if skip_solution:
             emit({"user": user_run})
         else:
-            emit({"user": user_run, "solution": run_program(solution_src, stdin)})
+            # A fresh interpreter hashes with its own seed, no need for the
+            # solutions' one.
+            solution_run = (
+                run_program(solution_src, stdin, True)
+                if fresh
+                else run_solution(solution_src, stdin)
+            )
+            emit({"user": user_run, "solution": solution_run})
         # A hung program would burn 5s on every remaining case too, so stop here.
         if user_run["timedOut"] or not proceed():
             break
+    stop_solutions()
 
 
-main()
+if sys.argv[1:] == [SOLUTIONS_FLAG]:
+    serve_solutions()
+else:
+    main()

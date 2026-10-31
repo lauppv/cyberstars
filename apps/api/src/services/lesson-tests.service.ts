@@ -10,6 +10,7 @@ import {
   isRunning,
 } from './code-container.service.js';
 import { getRuntime } from '../runtimes/registry.js';
+import { FAST_START, FAST_START_JAVAC } from '../runtimes/java.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
@@ -40,11 +41,13 @@ const WRITE_TIMEOUT_MS = 10_000;
 // The Java runner is compiled once per container into /tmp/_judge (only /work
 // is wiped between runs) and recompiled when the shipped source changes (a
 // deploy while the container is warm). `exec` keeps the verdict as the sole
-// stdout of the docker exec.
+// stdout of the docker exec. C1 only, as the programs: the full JIT kept
+// compiling javac in the background, on the same half core each program then
+// started on, and took 9.8 s where this takes 5.9 (12 cases, java/polymorphism).
 const JAVA_BOOT =
   'cmp -s /work/Runner.java /tmp/_judge/Runner.java 2>/dev/null || ' +
-  '{ mkdir -p /tmp/_judge && javac -d /tmp/_judge /work/Runner.java && cp /work/Runner.java /tmp/_judge/Runner.java; } && ' +
-  'exec java -XX:+UseSerialGC -Xmx96m -cp /tmp/_judge Runner /work/_payload.json';
+  `{ mkdir -p /tmp/_judge && javac ${FAST_START_JAVAC} -d /tmp/_judge /work/Runner.java && cp /work/Runner.java /tmp/_judge/Runner.java; } && ` +
+  `exec java ${FAST_START} -Xmx96m -cp /tmp/_judge Runner /work/_payload.json`;
 
 interface JudgeRunner {
   runnerPath: string;
@@ -84,8 +87,8 @@ const RUNNERS: Record<string, JudgeRunner> = {
     runnerPath: path.join(SERVICES_DIR, 'lesson-tests.runner.py'),
     containerFile: '/work/_runner.py',
     runCmd: ['python3', '/work/_runner.py', '/work/_payload.json'],
-    // ~0.1 s per case under the 0.5 CPU cap (two interpreter starts), so 50
-    // cases take ~5 s.
+    // ~30 ms per case under the 0.5 CPU cap (two programs forked from a warm
+    // interpreter), so 50 cases take ~1.5 s.
     budgetMs: 30_000,
     caseBudgetMs: 21_000,
     baseTimeoutMs: 15_000,
@@ -96,7 +99,7 @@ const RUNNERS: Record<string, JudgeRunner> = {
     runCmd: ['sh', '-c', JAVA_BOOT],
     // Each case may compile user + solution in-process on top of the two runs;
     // the base covers the one-time runner bootstrap compile on a cold container.
-    // ~0.5 s per injected case (javac + 2 JVM starts), so 20 cases take ~10 s.
+    // ~0.3 s per injected case (javac + 2 JVM starts), so 20 cases take ~6 s.
     budgetMs: 45_000,
     caseBudgetMs: 26_000,
     baseTimeoutMs: 30_000,

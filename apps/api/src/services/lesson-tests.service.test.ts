@@ -701,7 +701,13 @@ describe('runLessonTests', () => {
     // The run is a conversation: stdin stays attached for the server's replies.
     expect(runArgs.slice(0, 3)).toEqual(['exec', '-i', 'cid-1']);
     expect(runArgs).toContain('sh');
-    expect(runArgs.join(' ')).toContain('javac -d /tmp/_judge /work/Runner.java');
+    // The runner and its javac run on C1 alone, as the programs do.
+    expect(runArgs.join(' ')).toContain(
+      'javac -J-XX:TieredStopAtLevel=1 -J-XX:+UseSerialGC -d /tmp/_judge /work/Runner.java',
+    );
+    expect(runArgs.join(' ')).toContain(
+      'exec java -XX:TieredStopAtLevel=1 -XX:+UseSerialGC -Xmx96m -cp /tmp/_judge Runner',
+    );
   });
 
   it("reuses our solution's output on every case but the load test, which always runs it", async () => {

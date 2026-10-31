@@ -2,9 +2,10 @@ import type { LanguageRuntime } from './types.js';
 
 // Student programs are short-lived, so JVM startup dominates a run. C1-only JIT
 // and the serial GC start noticeably faster under the fractional CPU cap; the
-// lesson judge already runs programs with the same flags.
-const FAST_START = '-XX:TieredStopAtLevel=1 -XX:+UseSerialGC';
-const FAST_START_JAVAC = '-J-XX:TieredStopAtLevel=1 -J-XX:+UseSerialGC';
+// lesson judge runs its programs, its runner and the runner's javac with the
+// same flags.
+export const FAST_START = '-XX:TieredStopAtLevel=1 -XX:+UseSerialGC';
+export const FAST_START_JAVAC = '-J-XX:TieredStopAtLevel=1 -J-XX:+UseSerialGC';
 
 export const javaRuntime: LanguageRuntime = {
   name: 'java',

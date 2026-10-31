@@ -963,10 +963,40 @@ public class Runner {
   static class CompiledCache {
     final Map<String, Compiled> bySource = new LinkedHashMap<>();
     int next;
+    Compiled timer;
 
-    /** The timer, compiled once per run; see TIMER_SOURCE. */
+    /**
+     * The timer (see TIMER_SOURCE), compiled once per container: its classes
+     * sit next to the runner's own, which outlive a run, with its source
+     * beside them, written last, so a deploy that changes it compiles it again.
+     * A javac per run cost about a second on the first case.
+     */
     Compiled timer() {
-      return compile(new Injected(TIMER_SOURCE, TIMER_CLASS));
+      if (timer != null) return timer;
+      Path dir;
+      try {
+        dir = Path.of(Runner.class.getProtectionDomain().getCodeSource().getLocation().toURI())
+            .resolve("timer");
+      } catch (Exception e) {
+        return timer = compile(new Injected(TIMER_SOURCE, TIMER_CLASS));
+      }
+      Path source = dir.resolve(TIMER_CLASS + ".java");
+      try {
+        if (TIMER_SOURCE.equals(Files.readString(source, StandardCharsets.UTF_8))) {
+          return timer = new Compiled(dir, TIMER_CLASS, null);
+        }
+      } catch (IOException notYet) {
+        // compiled below
+      }
+      timer = compileInto(dir, new Injected(TIMER_SOURCE, TIMER_CLASS));
+      if (timer.error() == null) {
+        try {
+          Files.writeString(source, TIMER_SOURCE, StandardCharsets.UTF_8);
+        } catch (IOException ignored) {
+          // compiled again next run
+        }
+      }
+      return timer;
     }
 
     Compiled compile(Parsed parsed) {
@@ -976,13 +1006,12 @@ public class Runner {
     Compiled compile(Injected program) {
       Compiled cached = bySource.get(program.source());
       if (cached != null) return cached;
-      Compiled compiled = doCompile(program);
+      Compiled compiled = compileInto(WORK_ROOT.resolve("c" + next++), program);
       bySource.put(program.source(), compiled);
       return compiled;
     }
 
-    Compiled doCompile(Injected program) {
-      Path dir = WORK_ROOT.resolve("c" + next++);
+    Compiled compileInto(Path dir, Injected program) {
       try {
         Files.createDirectories(dir);
       } catch (IOException e) {
