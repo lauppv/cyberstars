@@ -4,6 +4,10 @@ How fast CyberStars answers, alone and under load, measured on a copy of
 production that runs on this machine. The numbers and what they mean are in
 [report.md](report.md).
 
+It needs Linux with cgroup v2 and Docker on the systemd cgroup driver (run.sh
+reads the box's CPU and memory from its cgroup), the repo's dependencies
+(`npm ci`) and Playwright's Chromium (`npx playwright install chromium`).
+
 ## The box
 
 Production is a droplet with one vCPU, 1 GB of memory and 2 GB of swap, where
