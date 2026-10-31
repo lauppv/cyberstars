@@ -5,21 +5,8 @@
 import type { CodeLanguage } from './constants.js';
 
 // 'masked' ignores integer runs (nondeterministic PIDs); 'unordered' compares
-// the set of lines (thread/process output whose line order is nondeterministic);
-// 'template' checks the output against the spec's `template`, whose blanks the
-// student fills with anything (their own name and age).
-export type TestComparator = 'exact' | 'trimmed' | 'masked' | 'unordered' | 'template';
-
-// A template's text has to match as written, while each `<word>` blank takes
-// any text on its line with at least one visible character. The judge holds
-// the output to it, and the result panel fills the blanks from it.
-export function templateRegex(template: string): RegExp {
-  const pattern = template
-    .split(/<\w+>/)
-    .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-    .join('[^\\n]*?\\S[^\\n]*?');
-  return new RegExp(`^${pattern}$`);
-}
+// the set of lines (thread/process output whose line order is nondeterministic).
+export type TestComparator = 'exact' | 'trimmed' | 'masked' | 'unordered';
 
 // Which language knows which kind lives in STRUCTURE_KINDS (validate-tests);
 // a runner treats a kind it doesn't know as present, so a spec must not use one.
@@ -140,12 +127,6 @@ interface LessonTestCase {
 
 export interface LessonTestsSpec {
   comparator?: TestComparator;
-  /**
-   * template: the expected output, where each `<word>` is a blank that any
-   * text of at least one character on that line fills. It is what the student
-   * sees as the expected output, in place of our solution's.
-   */
-  template?: string;
   structure?: {
     requires?: StructureRule[];
     forbids?: StructureRule[];
@@ -190,8 +171,7 @@ export interface RunTestsResponse {
   /**
    * How the lesson compares outputs. The page marks the difference between
    * expected and actual only when they were compared as text ('trimmed',
-   * 'exact', and 'template' once its blanks are filled from the student's
-   * output): a lesson that ignores numbers or line order would show a false one.
+   * 'exact'): a lesson that ignores numbers or line order would show a false one.
    */
   comparator: TestComparator;
   syntaxError?: string;

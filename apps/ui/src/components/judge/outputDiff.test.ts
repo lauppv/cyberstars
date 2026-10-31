@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { diffOutputs, fillTemplate, type Piece } from './outputDiff';
+import { diffOutputs, type Piece } from './outputDiff';
 
 // Marked runs in brackets, one string per output.
 function show(lines: Piece[][]): string {
@@ -48,34 +48,5 @@ describe('diffOutputs', () => {
   it('gives up on outputs too large to diff, or when out of time', () => {
     expect(diffOutputs('a'.repeat(30_000), 'b'.repeat(30_000))).toBeNull();
     expect(diffOutputs('a', 'b', 0)).toBeNull();
-  });
-});
-
-describe('fillTemplate', () => {
-  const template = 'My name is <name>\nI am <age> years old\nCyberStars is the coolest';
-
-  it('fills each blank with what the student wrote in its place', () => {
-    expect(
-      fillTemplate(template, 'my name is Lau\nI am 23years old\nCyberStars is the coolest'),
-    ).toBe('My name is Lau\nI am 23 years old\nCyberStars is the coolest');
-    expect(fillTemplate('Numele meu este <nume>', 'Numele meu e Lau')).toBe('Numele meu este Lau');
-  });
-
-  it("takes a line that already fits as the student's own", () => {
-    expect(fillTemplate(template, 'My name is Ana Maria\nI am twenty three years old')).toBe(
-      'My name is Ana Maria\nI am twenty three years old\nCyberStars is the coolest',
-    );
-  });
-
-  it('keeps a blank left empty, a line far from the template, and one never printed', () => {
-    expect(fillTemplate(template, 'My name is\nhello')).toBe(template);
-  });
-
-  it('marks only the fixed text the student missed', () => {
-    const actual = 'my name is Lau\nI am 23 years old\nCyberStars is the coolest';
-    const diff = diffOutputs(fillTemplate(template, actual), actual);
-    if (!diff) throw new Error('no diff');
-    expect(show(diff.expected).split('\n')[0]).toBe('[M]y name is Lau');
-    expect(show(diff.actual).split('\n')[0]).toBe('[m]y name is Lau');
   });
 });

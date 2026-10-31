@@ -183,47 +183,6 @@ describe('compareOutputs', () => {
     ).toBe(true);
     expect(compareOutputs('Ping\nPong\n', 'Ping\nPing\n', 'unordered')).toBe(false);
   });
-
-  it('template lets any visible text fill a blank and holds the rest as written', () => {
-    const template = 'My name is <name>\nI am <age> years old\nCyberStars is the best';
-    expect(
-      compareOutputs(
-        template,
-        'My name is Ana Maria\nI am 12 years old\nCyberStars is the best\n',
-        'template',
-      ),
-    ).toBe(true);
-    expect(
-      compareOutputs(
-        template,
-        'My name is Bob\nI am twelve years old\nCyberStars is the best',
-        'template',
-      ),
-    ).toBe(true);
-    // A blank left empty, or with spaces only, isn't filled
-    expect(
-      compareOutputs(template, 'My name is\nI am 12 years old\nCyberStars is the best', 'template'),
-    ).toBe(false);
-    expect(
-      compareOutputs(
-        template,
-        'My name is Ana\nI am   years old\nCyberStars is the best',
-        'template',
-      ),
-    ).toBe(false);
-    // A blank can't swallow a line, and the fixed text has to match
-    expect(compareOutputs('A <x>\nB', 'A 1\nC\nB', 'template')).toBe(false);
-    expect(
-      compareOutputs(
-        template,
-        'My name is Ana\nI am 12 years old\nCyberStars is the coolest',
-        'template',
-      ),
-    ).toBe(false);
-    // Text that means something in a regex is plain text in a template
-    expect(compareOutputs('(1+1) = <n>.', '(1+1) = 2.', 'template')).toBe(true);
-    expect(compareOutputs('(1+1) = <n>.', '11 = 2!', 'template')).toBe(false);
-  });
 });
 
 describe('runLessonTests', () => {
@@ -354,43 +313,6 @@ describe('runLessonTests', () => {
     stubFiles({ structure: {}, cases: [{ visible: true }] });
     stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
     expect((await runLessonTests('user:1', 'python', 'print', 'code')).comparator).toBe('trimmed');
-  });
-
-  it('holds a template lesson to its template and shows that as the expected output', async () => {
-    stubFiles({
-      comparator: 'template',
-      template: 'My name is <name>',
-      structure: {},
-      cases: [{ visible: true }],
-    });
-    stubVerdict({
-      syntaxError: null,
-      cases: [
-        {
-          user: program({ stdout: 'My name is Bob\n' }),
-          solution: program({ stdout: 'My name is Ana\n' }),
-        },
-      ],
-    });
-    const passed = await runLessonTests('user:1', 'python', 'print', 'code');
-    expect(passed.status).toBe('passed');
-    expect(passed.cases[0]).toMatchObject({
-      expected: 'My name is <name>',
-      actual: 'My name is Bob',
-    });
-
-    stubVerdict({
-      syntaxError: null,
-      cases: [
-        {
-          user: program({ stdout: 'My name\n' }),
-          solution: program({ stdout: 'My name is Ana\n' }),
-        },
-      ],
-    });
-    const failed = await runLessonTests('user:1', 'python', 'print', 'code');
-    expect(failed.status).toBe('failed');
-    expect(failed.cases[0]).toMatchObject({ expected: 'My name is <name>', actual: 'My name' });
   });
 
   it('rounds per-case timings to the microsecond and takes the runtime from the load test alone', async () => {

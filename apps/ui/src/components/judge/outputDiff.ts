@@ -1,5 +1,4 @@
 import { diffArrays, diffChars } from 'diff';
-import { templateRegex } from '@cyberstars/shared/tests';
 
 // A run of characters in one output line, marked when it differs from the
 // other output.
@@ -76,73 +75,4 @@ export function diffOutputs(
     }
   }
   return flush() ? out : null;
-}
-
-const BLANK = /<\w+>/g;
-// Stands for a blank while the template line is diffed, so a blank's own
-// letters (the a in <name>) can't line up with the student's
-const HOLE = '\u0000';
-
-// A template's blanks filled with what the student wrote in their place, so
-// the diff marks only where they missed the fixed text: `My name is <name>`
-// against `my name is Lau` becomes `My name is Lau`, and just the M differs.
-// Each template line takes the student's line at the same place. A line that
-// already fits its template is theirs as it is; a blank left empty, a line
-// that has little of the fixed text, or one never printed stays as written.
-export function fillTemplate(template: string, actual: string): string {
-  if (template.length + actual.length > MAX_CHARS) return template;
-  const got = actual.split('\n');
-  return template
-    .split('\n')
-    .map((line, i) => (got[i] === undefined ? line : fillLine(line, got[i])))
-    .join('\n');
-}
-
-// The character diff lines the fixed text up with the student's line; a
-// blank takes what lies between the fixed characters around it.
-function fillLine(line: string, got: string): string {
-  if (templateRegex(line).test(got)) return got;
-  const fixed = line.split(BLANK);
-  if (fixed.length === 1) return line;
-  const skeleton = fixed.join(HOLE);
-
-  const toGot: (number | undefined)[] = [];
-  let at = 0;
-  let gotAt = 0;
-  let kept = 0;
-  for (const part of diffChars(skeleton, got)) {
-    const n = part.value.length;
-    if (part.added) gotAt += n;
-    else if (part.removed) at += n;
-    else {
-      for (let j = 0; j < n; j++) toGot[at + j] = gotAt + j;
-      at += n;
-      gotAt += n;
-      kept += n;
-    }
-  }
-  if (kept * 2 < skeleton.length - (fixed.length - 1)) return line;
-
-  let hole = -1;
-  return line.replace(BLANK, (blank) => {
-    hole = skeleton.indexOf(HOLE, hole + 1);
-    let from = 0;
-    for (let i = hole - 1; i >= 0; i--) {
-      const mapped = toGot[i];
-      if (mapped !== undefined) {
-        from = mapped + 1;
-        break;
-      }
-    }
-    let to = got.length;
-    for (let i = hole + 1; i < skeleton.length; i++) {
-      const mapped = toGot[i];
-      if (mapped !== undefined) {
-        to = mapped;
-        break;
-      }
-    }
-    const fill = got.slice(from, to);
-    return fill.trim() ? fill : blank;
-  });
 }

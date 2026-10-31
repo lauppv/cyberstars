@@ -17,13 +17,12 @@ import { acquireSandboxSlot } from './sandbox-slots.js';
 import { inLine } from './run-waits.js';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
 import { readHarness, studentHarness, studentLines, wrapCode } from './harness.js';
-import {
-  templateRegex,
-  type LessonTestsSpec,
-  type RunTestsResponse,
-  type StructureFailure,
-  type TestCaseResult,
-  type TestComparator,
+import type {
+  LessonTestsSpec,
+  RunTestsResponse,
+  StructureFailure,
+  TestCaseResult,
+  TestComparator,
 } from '@cyberstars/shared/tests';
 
 // Server-side judge for lessons that ship a <slug>-tests.json. The heavy
@@ -179,7 +178,6 @@ export function compareOutputs(
   if (comparator === 'masked') return maskInts(normalize(expected)) === maskInts(normalize(actual));
   if (comparator === 'unordered')
     return sortLines(normalize(expected)) === sortLines(normalize(actual));
-  if (comparator === 'template') return templateRegex(normalize(expected)).test(normalize(actual));
   return normalize(expected) === normalize(actual);
 }
 
@@ -280,9 +278,6 @@ function judgeCase(
     expected = c.solution.stdout;
     if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
   }
-  // The student fills the template's blanks their own way, so the template is
-  // what they're held to and shown, not our solution's output.
-  if (spec.comparator === 'template' && spec.template !== undefined) expected = spec.template;
   if (c.user.ms !== undefined) base.userMs = roundMs(c.user.ms);
   if (c.user.timedOut) return { ...base, error: 'timeout' };
   const passed = compareOutputs(expected, c.user.stdout, spec.comparator ?? 'trimmed');
