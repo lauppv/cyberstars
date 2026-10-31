@@ -4,15 +4,24 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./auth": "./src/auth.ts"
+    "./auth": "./src/auth.ts",
+    "./schemas": "./src/schemas.ts"
   },
   "dependencies": {
     "@cyberstars-framework/server-kit": "0.0.0",
     "bcryptjs": "^3.0.3",
     "jsonwebtoken": "^9.0.2"
   },
+  "peerDependencies": {
+    "express": "^5.1.0",
+    "zod": "^4.4.3"
+  },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
-    "@types/jsonwebtoken": "^9.0.10"
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/supertest": "^7.2.0",
+    "cookie-parser": "^1.4.7",
+    "supertest": "^7.2.2"
   }
 }

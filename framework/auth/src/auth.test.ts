@@ -3,26 +3,43 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import type { Request, Response, NextFunction } from 'express';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
-import { createAuth, SESSION_COOKIE, type AuthOptions } from './auth.js';
+import { z } from 'zod';
+import { makeLimiter } from '@cyberstars-framework/server-kit/rate-limit';
+import { createAuth, SESSION_COOKIE, type AuthOptions, type AuthUser } from './auth.js';
+import { emailField, passwordField } from './schemas.js';
+
+// The sessions and the checks; the routes are in routes.test.ts
 
 type Role = 'USER' | 'MODERATOR' | 'ADMIN';
 
 const store = {
+  create: vi.fn(),
+  findLogin: vi.fn(),
+  findById: vi.fn(),
   role: vi.fn(),
   sessionVersion: vi.fn(),
   passwordHash: vi.fn(),
   setPassword: vi.fn(),
+  setResetCode: vi.fn(),
+  takeResetAttempt: vi.fn(),
+  findResetCode: vi.fn(),
 };
 
 const onSessionsEnded = vi.fn();
 
-const OPTIONS: AuthOptions<Role> = {
+const signupSchema = z.object({ name: z.string(), email: emailField, password: passwordField });
+
+const OPTIONS: AuthOptions<Role, AuthUser<Role>, z.infer<typeof signupSchema>, 'en'> = {
   store,
   isAdmin: (role) => role === 'ADMIN',
   secret: 'test-secret',
   maxAgeMs: 24 * 60 * 60 * 1000,
   secureCookie: false,
   onSessionsEnded,
+  signupSchema,
+  emailLanguages: ['en'],
+  sendResetCode: vi.fn(),
+  limiter: makeLimiter(() => true),
 };
 
 const auth = createAuth(OPTIONS);
