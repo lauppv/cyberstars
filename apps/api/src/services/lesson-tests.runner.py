@@ -475,9 +475,9 @@ def run_as_main(source):
     main.__annotations__ = {}
     sys.modules["__main__"] = main
     # The program's first line runs this many frames deep instead of at the
-    # bottom of the stack (one more for the call to exec), so it gets them on
-    # top of the usual limit.
-    frame, depth = sys._getframe(), 1
+    # bottom of the stack, so it gets them on top of the usual limit. Before
+    # 3.12 the limit also counts the call to exec, a builtin.
+    frame, depth = sys._getframe(), 1 if sys.version_info < (3, 12) else 0
     while frame:
         frame, depth = frame.f_back, depth + 1
     sys.setrecursionlimit(sys.getrecursionlimit() + depth)
