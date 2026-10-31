@@ -69,9 +69,6 @@ import {
   type CodeLanguage,
 } from '@cyberstars/shared/constants';
 import { BetaBadge } from '../components/ui/BetaBadge';
-import { switchLanguage } from '../i18n';
-
-const TOUR_LANGUAGE_KEY = 'cyberstars.tourLanguage';
 
 function parseDifficulty(title: string): {
   difficulty: 'Easy' | 'Medium' | 'Hard' | null;
@@ -185,29 +182,10 @@ export function LessonPage() {
   const [testsError, setTestsError] = useState<string | null>(null);
   const [terminalTestResult, setTerminalTestResult] = useState<TerminalTestResult | null>(null);
   const [isChecking, setIsChecking] = useState(false);
-  const [editorRuns, setEditorRuns] = useState(0);
   // Bumped on every blocked attempt to leave the tour, so the notice replays.
   const [tourNotice, setTourNotice] = useState(0);
   const hideTourNotice = useCallback(() => setTourNotice(0), []);
   const showTourNotice = useCallback(() => setTourNotice((n) => n + 1), []);
-  // Picking the other language reloads the page on its own address, so the
-  // choice survives the reload in this tab and the tour goes on from there
-  const [tourLanguagePicked, setTourLanguagePicked] = useState(() => {
-    try {
-      return sessionStorage.getItem(TOUR_LANGUAGE_KEY) !== null;
-    } catch {
-      return false;
-    }
-  });
-  const pickTourLanguage = useCallback((lang: 'ro' | 'en') => {
-    setTourLanguagePicked(true);
-    try {
-      sessionStorage.setItem(TOUR_LANGUAGE_KEY, lang);
-    } catch {
-      // storage blocked: the tour asks again after the reload
-    }
-    switchLanguage(lang);
-  }, []);
   const [terminalTestsError, setTerminalTestsError] = useState<string | null>(null);
 
   const menuRef = useRef<HTMLDivElement>(null);
@@ -235,7 +213,7 @@ export function LessonPage() {
   // on the left, the output low under the code
   const devModeChoice = useDevMode();
   // Only a lesson with an editor has the button, so only there can it be left
-  const devMode = devModeChoice.on && !isTerminal && !inTour;
+  const devMode = devModeChoice.on && !isTerminal;
   const devHSplit = useResizeSplit({
     axis: 'x',
     initial: 25,
@@ -477,7 +455,6 @@ export function LessonPage() {
   const handleRun = useCallback(() => {
     if (isRunning) return;
     setTestsError(null);
-    setEditorRuns((n) => n + 1);
     execute(userCode, editorLanguage, runLesson);
   }, [isRunning, execute, userCode, editorLanguage, runLesson]);
 
@@ -627,11 +604,6 @@ export function LessonPage() {
     }
   }, [view, activeTab]);
 
-  const showPanel = useCallback((panel: 'lesson' | 'workspace') => {
-    setActiveTab(panel);
-    if (panel === 'lesson') setLeftView('lesson');
-  }, []);
-
   // Loading an old attempt asks first when it would throw away code the
   // student has written since the lesson opened. On a multi-language lesson an
   // attempt in another language opens in that language, the code on screen
@@ -688,7 +660,9 @@ export function LessonPage() {
     <div
       className={`${devMode ? 'fixed inset-0 z-[60] @container bg-[var(--page-bg)]' : 'h-screen bg-transparent'} flex flex-col text-[var(--text)] overflow-hidden`}
     >
-      {!devMode && (
+      {/* A new account held on the tour lesson gets no way off it: no topbar
+          here and no sidebar in the shell */}
+      {!devMode && !inTour && (
         <Topbar
           breadcrumb={{
             course: course?.title,
@@ -704,7 +678,6 @@ export function LessonPage() {
           (less with the tutor beside it), not the window's; below that the
           panels are tabs that take the full width */}
       <PanelTabs
-        data-tour="tabs"
         className="@2xl:hidden bg-[var(--glass)]"
         fill
         tabs={[
@@ -734,7 +707,6 @@ export function LessonPage() {
           >
             {leftTabs.length > 1 && (
               <PanelTabs
-                data-tour="panel-tabs"
                 aria-label={t('lesson.panelTabs')}
                 className="hidden @2xl:flex shrink-0 px-3"
                 tabs={leftTabs}
@@ -744,7 +716,7 @@ export function LessonPage() {
             )}
             <div
               ref={contentRef}
-              data-tour="lesson"
+              data-testid="lesson"
               onScroll={(e) => {
                 lessonScrollRef.current = e.currentTarget.scrollTop;
               }}
@@ -853,12 +825,12 @@ export function LessonPage() {
               </div>
             </div>
             {view === 'result' && testResults && (
-              <div data-tour="result" className="flex-1 min-h-0 overflow-y-auto">
+              <div data-testid="result" className="flex-1 min-h-0 overflow-y-auto">
                 <ResultPanel results={testResults} showRuntime={isAlgo} next={nextAfterPass} />
               </div>
             )}
             {view === 'submissions' && (
-              <div data-tour="submissions" className="flex-1 min-h-0 overflow-y-auto">
+              <div className="flex-1 min-h-0 overflow-y-auto">
                 <SubmissionsPanel
                   showRuntime={isAlgo}
                   list={submissions.list}
@@ -939,8 +911,7 @@ export function LessonPage() {
                       {t('lesson.completed')}
                     </span>
                   )}
-                  {/* The tour walks the lesson on its own, so it gets no extra actions */}
-                  {!inTour && devMode && (
+                  {devMode && (
                     <button
                       type="button"
                       data-track="dev-mode-reset"
@@ -955,7 +926,7 @@ export function LessonPage() {
                       <RotateCcw size={14} aria-hidden="true" />
                     </button>
                   )}
-                  {!inTour && devModeChoice.available && (
+                  {devModeChoice.available && (
                     <button
                       type="button"
                       data-track="dev-mode"
@@ -970,7 +941,7 @@ export function LessonPage() {
                       {t(devMode ? 'lesson.devModeOn' : 'lesson.devModeOff')}
                     </button>
                   )}
-                  {!inTour && !devMode && (
+                  {!devMode && (
                     <div className="relative" ref={menuRef}>
                       <button
                         onClick={() => setMenuOpen((v) => !v)}
@@ -1076,11 +1047,7 @@ export function LessonPage() {
                 </div>
               </div>
 
-              <div
-                ref={workspaceRef}
-                data-tour="workspace"
-                className="flex-1 min-h-0 flex flex-col"
-              >
+              <div ref={workspaceRef} className="flex-1 min-h-0 flex flex-col">
                 {savedCodeUnknown && (
                   <div
                     role="alert"
@@ -1098,7 +1065,7 @@ export function LessonPage() {
                   </div>
                 )}
                 <div
-                  data-tour="editor"
+                  data-testid="editor"
                   className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)] max-h-[60%] @2xl:max-h-none @2xl:h-[var(--vsplit)]"
                   style={{ '--vsplit': `${vSplitShown.size}%` } as CSSProperties}
                 >
@@ -1190,7 +1157,7 @@ export function LessonPage() {
         visible={!!gamification.newBadge}
         onClose={gamification.dismissNewBadge}
       />
-      {tutor?.enabled && !inTour && !devMode && failedRuns >= 3 && !stuckClosed && (
+      {tutor?.enabled && !devMode && failedRuns >= 3 && !stuckClosed && (
         <TutorToast
           text={t('tutor.stuck.title')}
           mood="idle"
@@ -1227,18 +1194,7 @@ export function LessonPage() {
         />
       )}
       {inTour && user && (
-        <LessonTour
-          userName={user.name}
-          editorRuns={editorRuns}
-          isRunning={isRunning}
-          testStatus={testResults?.status ?? null}
-          completed={lessonCompleted}
-          languagePicked={tourLanguagePicked}
-          onLanguage={pickTourLanguage}
-          onPanel={showPanel}
-          onBlocked={showTourNotice}
-          onFinish={refreshUser}
-        />
+        <LessonTour userName={user.name} completed={lessonCompleted} onFinish={refreshUser} />
       )}
       <TourNotice key={tourNotice} visible={tourNotice > 0} onClose={hideTourNotice} />
       {showShareModal && (

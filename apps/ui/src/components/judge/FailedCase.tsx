@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { TestCaseResult, TestComparator } from '@cyberstars/shared/tests';
 import { CaseInput, Field } from './CaseFields';
 import { caseLabel } from './format';
-import { diffOutputs, fillTemplate, type Piece } from './outputDiff';
+import { diffOutputs, type Piece } from './outputDiff';
 
 // One output with its differing runs marked. A marked empty line (a blank line
 // the other output lacks) still shows as a sliver.
@@ -28,9 +28,7 @@ function MarkedLines({ lines, mark }: { lines: Piece[][]; mark: string }) {
 // out, never what was expected, so it can't be read off and hardcoded.
 // `comparator`: a visible test's outputs get their difference marked only when
 // the lesson compares them as text; one that ignores numbers or line order
-// would show a difference that didn't fail the test. A template is compared
-// with its blanks filled from the student's output, so only the fixed text
-// they missed is marked.
+// would show a difference that didn't fail the test.
 export function FailedCase({
   result,
   comparator,
@@ -42,12 +40,12 @@ export function FailedCase({
   const { visible, expected, actual, error } = result;
   const diff = useMemo(
     () =>
-      (comparator === 'trimmed' || comparator === 'exact' || comparator === 'template') &&
+      (comparator === 'trimmed' || comparator === 'exact') &&
       visible &&
       !error &&
       expected !== undefined &&
       actual !== undefined
-        ? diffOutputs(comparator === 'template' ? fillTemplate(expected, actual) : expected, actual)
+        ? diffOutputs(expected, actual)
         : null,
     [comparator, visible, error, expected, actual],
   );

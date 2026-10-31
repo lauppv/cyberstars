@@ -10,7 +10,6 @@ vi.mock('../../hooks/useCodeExecution', () => ({
 }));
 
 import { CodeCell } from './CodeCell';
-import { CELL_RUN_EVENT } from '../../constants/tour';
 import { RunLessonContext } from './runLesson';
 
 beforeEach(() => {
@@ -58,18 +57,5 @@ describe('CodeCell', () => {
     render(<CodeCell initialCode="puts 1" language="Ruby" />);
     fireEvent.click(screen.getByRole('button'));
     expect(execute).toHaveBeenCalledWith('puts 1', 'ruby', undefined);
-  });
-
-  it('announces the end of a run, and only the end', () => {
-    const onRun = vi.fn();
-    document.addEventListener(CELL_RUN_EVENT, onRun);
-    const { rerender } = render(<CodeCell initialCode="print(1)" language="py" />);
-    hookState = { output: '', isRunning: true };
-    rerender(<CodeCell initialCode="print(1)" language="py" />);
-    expect(onRun).not.toHaveBeenCalled();
-    hookState = { output: '1', isRunning: false };
-    rerender(<CodeCell initialCode="print(1)" language="py" />);
-    expect(onRun).toHaveBeenCalledTimes(1);
-    document.removeEventListener(CELL_RUN_EVENT, onRun);
   });
 });

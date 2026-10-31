@@ -9,7 +9,7 @@ test('a multi-language lesson passed in Java is ticked once, whatever language i
 }) => {
   await page.goto('/lesson/trees-graphs/trees');
   const languages = page.getByRole('group', { name: 'Programming language' });
-  const editor = page.locator('[data-tour="editor"] .cm-content');
+  const editor = page.locator('[data-testid="editor"] .cm-content');
 
   // Code typed in one language waits there while another is on screen.
   await editor.click();
@@ -22,7 +22,7 @@ test('a multi-language lesson passed in Java is ticked once, whatever language i
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type(JAVA_SOLUTION);
   await page.getByRole('button', { name: 'Run Tests' }).click();
-  const result = page.locator('[data-tour="result"]');
+  const result = page.locator('[data-testid="result"]');
   await expect(result).toContainText('Accepted', { timeout: 90_000 });
   await expect(result).toContainText('12 / 12');
 
@@ -30,7 +30,7 @@ test('a multi-language lesson passed in Java is ticked once, whatever language i
   await page.getByRole('tab', { name: 'Lesson', exact: true }).click();
   await languages.getByRole('button', { name: 'Python' }).click();
   await expect(editor).toContainText('# my python');
-  await expect(page.locator('[data-tour="lesson"]')).toContainText('Completed');
+  await expect(page.locator('[data-testid="lesson"]')).toContainText('Completed');
 
   // Saved on the account: after a reload the Python code is still there,
   // and the course counts the lesson once.

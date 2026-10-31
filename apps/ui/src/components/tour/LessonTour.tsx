@@ -1,445 +1,98 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import { CELL_RUN_EVENT } from '../../constants/tour';
-import {
-  holeFor,
-  mergeHoles,
-  placeCard,
-  RADIUS,
-  roundedRect,
-  tweenHoles,
-  type Rect,
-} from './geometry';
+import { switchLanguage } from '../../i18n';
 
-type Panel = 'lesson' | 'workspace';
+// Picking the other language reloads the page on its own address, so the
+// choice is kept in this tab and the tour goes on from there. The welcome is
+// kept too, so a reload or a trip back to the lesson doesn't bring it up again.
+const LANGUAGE_KEY = 'cyberstars.tourLanguage';
+const WELCOME_KEY = 'cyberstars.tourWelcome';
 
-// What lets the student past a step: the Next button, a run of the cell in
-// the spotlight, a run of their own code, or the lesson's tests passing.
-type Gate = 'next' | 'cellRun' | 'editorRun' | 'testsPass';
-
-interface Step {
-  copy: string;
-  vars?: Record<string, number>;
-  panel?: Panel;
-  // Each group of elements becomes one hole in the dimmed screen. Queried on
-  // every frame, so a re-render or a scroll never leaves a stale hole behind.
-  targets: () => Element[][];
-  gate: Gate;
-  // What the lesson scrolls to when the step opens
-  reveal?: () => Element[];
-}
-
-// How long the spotlight takes to move from one step's targets to the next
-const MOVE_MS = 300;
-
-const easeOut = (t: number) => 1 - (1 - t) ** 3;
-
-const SVG_NS = 'http://www.w3.org/2000/svg';
-
-const byTour = (name: string) => document.querySelector(`[data-tour="${name}"]`);
-
-// The rendered lesson's top-level blocks, in reading order: paragraphs,
-// headings, and the code cells, each inside its own <pre>.
-function blocks(): Element[] {
-  const prose = document.querySelector('[data-tour="lesson"] .lesson-body > *');
-  return prose ? Array.from(prose.children) : [];
-}
-
-// The mission is the lesson's last section: its heading and everything after it.
-function mission(): Element[] {
-  const headings = document.querySelectorAll('[data-tour="lesson"] .lesson-body h2');
-  const els: Element[] = [];
-  let el: Element | null = headings[headings.length - 1] ?? null;
-  for (; el; el = el.nextElementSibling) {
-    els.push(el);
+function stored(key: string): boolean {
+  try {
+    return sessionStorage.getItem(key) !== null;
+  } catch {
+    return false;
   }
-  return els;
 }
 
-function groups(...items: (Element | Element[] | null | undefined)[]): Element[][] {
-  return items
-    .map((item) => (Array.isArray(item) ? item : item ? [item] : []))
-    .filter((group) => group.length > 0);
-}
-
-// How far the lesson scrolls so the elements sit in the middle of it, or at
-// its top when they are taller than the lesson panel.
-function revealDelta(panel: Element, els: Element[]): number {
-  if (els.length === 0) return 0;
-  const box = panel.getBoundingClientRect();
-  const rects = els.map((el) => el.getBoundingClientRect());
-  const top = Math.min(...rects.map((r) => r.top));
-  const bottom = Math.max(...rects.map((r) => r.bottom));
-  return bottom - top > box.height - 32
-    ? top - box.top - 16
-    : (top + bottom) / 2 - (box.top + box.bottom) / 2;
-}
-
-interface Part {
-  kind: 'text' | 'cell';
-  at: number[];
-}
-
-// The lesson before its mission, cut into stretches of text and the code
-// cells between them. Parts point into blocks() by index, so a re-render
-// never leaves a step holding elements that are gone.
-function parts(): Part[] {
-  const all = blocks();
-  const missionAt = all.indexOf(mission()[0]);
-  const end = missionAt === -1 ? all.length : missionAt;
-  const out: Part[] = [];
-  for (let i = 0; i < end; i++) {
-    const el = all[i];
-    if (el.tagName === 'HR') continue;
-    if (el.querySelector('[data-code-cell]')) {
-      out.push({ kind: 'cell', at: [i] });
-    } else if (out.at(-1)?.kind === 'text') {
-      out.at(-1)!.at.push(i);
-    } else {
-      out.push({ kind: 'text', at: [i] });
-    }
+function store(key: string, value: string) {
+  try {
+    sessionStorage.setItem(key, value);
+  } catch {
+    // storage blocked: the tour asks again after a reload
   }
-  return out;
-}
-
-// Built once the lesson is on screen, so its parts can be counted. In the
-// tour lesson the second cell is the one that fails on purpose (print
-// without quotes); the copy assumes that order.
-function buildPlan(): Step[] {
-  const lessonParts = parts();
-  const cellTotal = lessonParts.filter((part) => part.kind === 'cell').length;
-  const plan: Step[] = [];
-  let textSeen = 0;
-  let cellSeen = 0;
-  for (const part of lessonParts) {
-    if (part.kind === 'text') {
-      const first = textSeen++ === 0;
-      // The opening stretch takes the lesson's title along with it.
-      const els = () =>
-        [
-          ...(first ? [document.querySelector('[data-tour="lesson"] h1')] : []),
-          ...part.at.map((i) => blocks()[i]),
-        ].filter((el): el is Element => !!el);
-      plan.push({
-        copy: first ? 'lesson' : 'text',
-        panel: 'lesson',
-        targets: () => groups(els()),
-        gate: 'next',
-        reveal: els,
-      });
-    } else {
-      const n = cellSeen++;
-      const cell = () => blocks()[part.at[0]]?.querySelector('[data-code-cell]');
-      plan.push({
-        copy: n === 0 ? 'cellFirst' : n === 1 ? 'cellError' : 'cellMore',
-        vars: { n: n + 1, total: cellTotal },
-        panel: 'lesson',
-        targets: () => groups(cell()),
-        gate: 'cellRun',
-        reveal: () => groups(cell()).flat(),
-      });
-    }
-  }
-  if (mission().length > 0) {
-    plan.push({
-      copy: 'mission',
-      panel: 'lesson',
-      targets: () => groups(mission()),
-      gate: 'next',
-      reveal: mission,
-    });
-  }
-  // While coding, the mission stays lit beside the editor. On a phone the
-  // panel tabs stay usable too, so the mission is one tap away. A test run
-  // opens its verdict in the lesson panel, so that stays lit with its tabs,
-  // which lead back to the mission.
-  const coding = () =>
-    groups(
-      byTour('workspace'),
-      mission(),
-      byTour('tabs'),
-      byTour('panel-tabs'),
-      byTour('result'),
-      byTour('submissions'),
-    );
-  plan.push(
-    {
-      copy: 'editor',
-      panel: 'workspace',
-      targets: () => groups(byTour('editor'), mission(), byTour('tabs')),
-      gate: 'next',
-    },
-    { copy: 'run', panel: 'workspace', targets: coding, gate: 'editorRun' },
-    { copy: 'tests', panel: 'workspace', targets: coding, gate: 'testsPass' },
-  );
-  return plan;
 }
 
 interface LessonTourProps {
   userName: string;
-  // Runs of the lesson's own editor so far, and whether one is going now.
-  editorRuns: number;
-  isRunning: boolean;
-  testStatus: 'passed' | 'failed' | null;
+  // The lesson's tests passed, which ends the tour.
   completed: boolean;
-  // The tour opens on a language choice; the page keeps the answer, since a
-  // language switch reloads the lesson and remounts the tour.
-  languagePicked: boolean;
-  onLanguage: (lang: 'ro' | 'en') => void;
-  onPanel: (panel: Panel) => void;
-  // A click on the dimmed part of the screen.
-  onBlocked: () => void;
   onFinish: () => void;
 }
 
-export function LessonTour({
-  userName,
-  editorRuns,
-  isRunning,
-  testStatus,
-  completed,
-  languagePicked,
-  onLanguage,
-  onPanel,
-  onBlocked,
-  onFinish,
-}: LessonTourProps) {
+// A new account's first lesson opens on a language choice and a word of
+// welcome over the dimmed page. Then the lesson is theirs to explore, until
+// its tests pass and the last card lets them out.
+export function LessonTour({ userName, completed, onFinish }: LessonTourProps) {
   const { t } = useTranslation();
-  const [plan, setPlan] = useState<Step[] | null>(null);
-  const [index, setIndex] = useState(0);
-  const [runsAtStep, setRunsAtStep] = useState(0);
-  const [cellRanAt, setCellRanAt] = useState(-1);
-  const [layout, setLayout] = useState({
-    holes: [] as Rect[],
-    vw: window.innerWidth,
-    vh: window.innerHeight,
-    cardW: 0,
-    cardH: 0,
-  });
-  const cardRef = useRef<HTMLDivElement>(null);
-  const dimRef = useRef<SVGPathElement>(null);
-  const ringsRef = useRef<SVGGElement>(null);
-  // The holes on screen right now, where the next step's move starts from
-  const shownRef = useRef<Rect[]>([]);
+  const [languagePicked, setLanguagePicked] = useState(() => stored(LANGUAGE_KEY));
+  const [welcomed, setWelcomed] = useState(() => stored(WELCOME_KEY));
 
-  // Passing the tests ends the tour from whatever step the student is on.
-  const done = plan !== null && completed;
-  const step = plan && !done ? plan[index] : null;
+  const card = completed ? 'done' : !languagePicked ? 'language' : !welcomed ? 'welcome' : null;
+  if (!card) return null;
 
-  const go = useCallback(
-    (steps: Step[], i: number) => {
-      const next = steps[i];
-      setIndex(i);
-      setRunsAtStep(editorRuns);
-      if (next.panel) onPanel(next.panel);
-    },
-    [editorRuns, onPanel],
-  );
-
-  const start = () => {
-    const steps = buildPlan();
-    setPlan(steps);
-    go(steps, 0);
+  const pickLanguage = (lang: 'ro' | 'en') => {
+    setLanguagePicked(true);
+    store(LANGUAGE_KEY, lang);
+    switchLanguage(lang);
+  };
+  const begin = () => {
+    setWelcomed(true);
+    store(WELCOME_KEY, '1');
   };
 
-  useEffect(() => {
-    if (!step || step.gate !== 'cellRun') return;
-    const onRun = (e: Event) => {
-      if (step.targets().some((group) => group.includes(e.target as Element))) {
-        setCellRanAt(index);
-      }
-    };
-    document.addEventListener(CELL_RUN_EVENT, onRun);
-    return () => document.removeEventListener(CELL_RUN_EVENT, onRun);
-  }, [step, index]);
-
-  // Follow the targets frame by frame: the lesson scrolls, the editor grows,
-  // output appears, the window resizes. The spotlight is drawn straight into
-  // the SVG in the same frame it is measured, so it never trails a scrolling
-  // block by a render. A new step scrolls the lesson to its targets and slides
-  // the spotlight from where it was to where they land, on the same curve, so
-  // a target still below the fold never shows cut off on the way. The card
-  // goes through state, which only changes when the targets move.
-  useLayoutEffect(() => {
-    let frame = 0;
-    let last = '';
-    const from = shownRef.current;
-    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    const duration = reduced ? 0 : MOVE_MS;
-    const startAt = performance.now();
-    const measure = () =>
-      step
-        ? mergeHoles(
-            step
-              .targets()
-              .map(holeFor)
-              .filter((r): r is Rect => r !== null),
-          )
-        : [];
-    // Where the targets land once the lesson has scrolled: scroll there and
-    // back before anything paints. The browser keeps the scroll in range.
-    const panel = step?.reveal ? (byTour('lesson') as HTMLElement | null) : null;
-    const scrollFrom = panel?.scrollTop ?? 0;
-    let scrollTo = scrollFrom;
-    let landing: Rect[] | null = null;
-    if (panel && step?.reveal) {
-      panel.scrollTop = scrollFrom + revealDelta(panel, step.reveal());
-      scrollTo = panel.scrollTop;
-      landing = measure();
-      panel.scrollTop = scrollFrom;
-    }
-    let moving = true;
-    const tick = (now: number) => {
-      const p = duration ? Math.min(Math.max((now - startAt) / duration, 0), 1) : 1;
-      if (moving && panel) panel.scrollTop = scrollFrom + (scrollTo - scrollFrom) * easeOut(p);
-      // Once in place the student may scroll the lesson as they like
-      if (p === 1) moving = false;
-      const target = measure();
-      const holes =
-        p < 1 && from.length > 0 ? tweenHoles(from, landing ?? target, easeOut(p)) : target;
-      shownRef.current = holes;
-      draw(holes);
-      const next = {
-        // The card waits beside where the targets land, not where they pass
-        holes: moving && landing ? landing : target,
-        vw: window.innerWidth,
-        vh: window.innerHeight,
-        cardW: cardRef.current?.offsetWidth ?? 0,
-        cardH: cardRef.current?.offsetHeight ?? 0,
-      };
-      const key = JSON.stringify(next);
-      if (key !== last) {
-        last = key;
-        setLayout(next);
-      }
-      frame = requestAnimationFrame(tick);
-    };
-    const draw = (holes: Rect[]) => {
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      dimRef.current?.setAttribute('d', `M0 0H${vw}V${vh}H0Z${holes.map(roundedRect).join('')}`);
-      const rings = ringsRef.current;
-      if (!rings) return;
-      while (rings.children.length > holes.length) rings.lastChild!.remove();
-      while (rings.children.length < holes.length) {
-        const ring = document.createElementNS(SVG_NS, 'rect');
-        ring.setAttribute('fill', 'none');
-        ring.setAttribute('stroke', 'var(--accent)');
-        ring.setAttribute('stroke-width', '2');
-        rings.appendChild(ring);
-      }
-      holes.forEach((r, i) => {
-        const ring = rings.children[i];
-        ring.setAttribute('x', String(r.x));
-        ring.setAttribute('y', String(r.y));
-        ring.setAttribute('width', String(r.w));
-        ring.setAttribute('height', String(r.h));
-        ring.setAttribute('rx', String(Math.min(RADIUS, r.w / 2, r.h / 2)));
-      });
-    };
-    tick(startAt);
-    return () => cancelAnimationFrame(frame);
-  }, [step]);
-
-  const open =
-    !step ||
-    step.gate === 'next' ||
-    (step.gate === 'cellRun' && cellRanAt === index) ||
-    (step.gate === 'editorRun' && editorRuns > runsAtStep && !isRunning);
-
-  const copy =
-    plan === null ? (languagePicked ? 'welcome' : 'language') : done ? 'done' : step!.copy;
-  const vars = { name: userName, ...step?.vars };
-  const { holes, vw, vh, cardW, cardH } = layout;
-  const pos = placeCard(holes, cardW, cardH, vw, vh);
-
   return createPortal(
-    <>
-      <svg
-        className="fixed inset-0 z-[90] pointer-events-none"
-        width={vw}
-        height={vh}
-        aria-hidden="true"
-      >
-        <path
-          ref={dimRef}
-          fillRule="evenodd"
-          fill="rgba(0, 0, 0, 0.6)"
-          className="pointer-events-auto"
-          onClick={done ? undefined : onBlocked}
-        />
-        <g ref={ringsRef} />
-      </svg>
+    <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in">
       <div
-        ref={cardRef}
         role="dialog"
+        aria-modal="true"
         aria-labelledby="lesson-tour-title"
-        className="fixed z-[91] w-[min(340px,calc(100vw-32px))] p-5 rounded-[var(--radius)] transition-[left,top] duration-300 ease-out motion-reduce:transition-none border border-[var(--border)] bg-[var(--popover)] shadow-[0_8px_32px_#0008]"
-        style={{ left: pos.x, top: pos.y, visibility: cardH ? 'visible' : 'hidden' }}
+        className="w-[min(360px,100%)] p-6 rounded-xl border border-[var(--border)] bg-[var(--bg2)] shadow-[0_8px_32px_#0008]"
       >
-        <h2 id="lesson-tour-title" className="text-[15px] font-semibold text-[var(--text)] mb-2">
-          {t(`tour.${copy}.title`, vars)}
+        <h2 id="lesson-tour-title" className="text-[16px] font-semibold text-[var(--text)] mb-2">
+          {t(`tour.${card}.title`, { name: userName })}
         </h2>
-        <p className="text-[13px] leading-relaxed text-[var(--text2)]">
-          {t(`tour.${copy}.body`, vars)}
-        </p>
-        {step?.gate === 'testsPass' && testStatus === 'failed' && (
-          <p className="mt-2 text-[13px] leading-relaxed text-[var(--warning)]">
-            {t('tour.testsFailed')}
-          </p>
-        )}
-        {copy === 'language' && (
-          <div className="flex gap-2 mt-4">
-            <TourButton onClick={() => onLanguage('ro')} wide>
+        <p className="text-[14px] leading-relaxed text-[var(--text2)]">{t(`tour.${card}.body`)}</p>
+        {card === 'language' ? (
+          <div className="flex gap-2 mt-5">
+            <TourButton onClick={() => pickLanguage('ro')} wide>
               {t('tour.language.ro')}
             </TourButton>
-            <TourButton onClick={() => onLanguage('en')} wide>
+            <TourButton onClick={() => pickLanguage('en')} wide>
               {t('tour.language.en')}
             </TourButton>
           </div>
-        )}
-        {copy !== 'language' && (
-          <div className="flex items-center gap-3 mt-4">
-            {plan && step && (
-              <span className="text-[11px] text-[var(--text3)] tabular-nums">
-                {t('tour.counter', { n: index + 1, total: plan.length })}
-              </span>
-            )}
-            {!open && step && (
-              <span className="text-[12px] text-[var(--text3)]">
-                {t(`tour.waitFor.${step.gate}`)}
-              </span>
-            )}
-            <div className="ml-auto">
-              {plan === null ? (
-                <TourButton onClick={start}>{t('tour.start')}</TourButton>
-              ) : done ? (
-                <TourButton onClick={onFinish}>{t('tour.finish')}</TourButton>
-              ) : (
-                step!.gate !== 'testsPass' && (
-                  <TourButton onClick={() => go(plan, index + 1)} disabled={!open}>
-                    {t('tour.next')}
-                  </TourButton>
-                )
-              )}
-            </div>
+        ) : (
+          <div className="flex justify-end mt-5">
+            <TourButton onClick={card === 'done' ? onFinish : begin}>
+              {t(card === 'done' ? 'tour.finish' : 'tour.start')}
+            </TourButton>
           </div>
         )}
       </div>
-    </>,
+    </div>,
     document.body,
   );
 }
 
 function TourButton({
   onClick,
-  disabled,
   wide,
   children,
 }: {
   onClick: () => void;
-  disabled?: boolean;
   wide?: boolean;
   children: string;
 }) {
@@ -447,8 +100,7 @@ function TourButton({
     <button
       type="button"
       onClick={onClick}
-      disabled={disabled}
-      className={`${wide ? 'flex-1 py-2' : 'py-1.5'} px-4 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer`}
+      className={`${wide ? 'flex-1 py-2' : 'py-1.5'} px-4 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer`}
     >
       {children}
     </button>

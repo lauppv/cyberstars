@@ -20,13 +20,13 @@ test('the Linux terminal shows commands and output in the app code font', async 
 test('a failed test shows the output in the app code font', async ({ authedPage: page }) => {
   await page.goto('/lesson/python/print');
 
-  const editor = page.locator('[data-tour="editor"] .cm-content');
+  const editor = page.locator('[data-testid="editor"] .cm-content');
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type('print("hello")');
   await page.getByRole('button', { name: 'Run Tests' }).click();
 
-  const result = page.locator('[data-tour="result"]');
+  const result = page.locator('[data-testid="result"]');
   await expect(result).toContainText('Wrong answer', { timeout: 60_000 });
   // The box under the label, whatever the diff marks inside it.
   const actual = result.getByText('Your output').locator('xpath=following-sibling::div[1]');

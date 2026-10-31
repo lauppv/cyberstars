@@ -5,7 +5,9 @@ test.beforeEach(async () => {
   await resetDB();
 });
 
-test('a new account walks the tour lesson and is let out once its tests pass', async ({ page }) => {
+test('a new account gets a welcome, then the tour lesson to itself until its tests pass', async ({
+  page,
+}) => {
   await page.goto('/getstarted');
   await page.getByRole('button', { name: 'Sign up', exact: true }).click();
   await page.getByPlaceholder('Choose a username').fill('Cadet');
@@ -15,53 +17,24 @@ test('a new account walks the tour lesson and is let out once its tests pass', a
   await expect(page).toHaveURL(/\/lesson\/python\/print$/, { timeout: 10_000 });
 
   const card = page.getByRole('dialog');
-  const next = card.getByRole('button', { name: 'Next' });
   await card.getByRole('button', { name: 'English' }).click();
+  await expect(card).toContainText('Be curious, learn, try and, most importantly, have fun.');
   await card.getByRole('button', { name: "Let's go" }).click();
-  await expect(card).toContainText('The lesson');
+  await expect(card).toHaveCount(0);
 
-  // The tour reads through the lesson: text steps open at once, and each
-  // code cell has to be run before the tour moves on.
-  const cells = page.locator('[data-code-cell]');
-  const cellCount = await cells.count();
-  expect(cellCount).toBeGreaterThan(0);
-  let ran = 0;
-  while (!(await card.textContent())?.includes('Your mission')) {
-    if (await next.isDisabled()) {
-      await cells.nth(ran++).getByRole('button', { name: '▶ Run' }).click();
-      await expect(next).toBeEnabled({ timeout: 30_000 });
-    }
-    await next.click();
-  }
-  expect(ran).toBe(cellCount);
-
-  // A click outside the lit area is refused with a notice.
-  await page.mouse.click(5, 5);
+  // The lesson is the student's to explore, with nothing that leads off it:
+  // no sidebar, no topbar, and the next lesson refused with a notice.
+  await expect(page.getByRole('complementary', { name: 'Main navigation' })).toBeHidden();
+  await expect(page.getByRole('banner')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Actions', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Next →' }).click();
   await expect(page.getByRole('alert')).toContainText('Finish this lesson first');
 
-  await next.click();
-  await expect(card).toContainText('Your editor');
-  // The editor's ⋯ menu stays out of the tour
-  await expect(page.getByRole('button', { name: 'Actions', exact: true })).toHaveCount(0);
-
-  await page.locator('[data-tour="editor"] .cm-content').click();
-  for (const line of ['My name is Cadet', 'I am 12 years old', 'CyberStars is the coolest']) {
-    await page.keyboard.type(`print("${line}")`);
-    await page.keyboard.press('Enter');
-  }
-  await next.click();
-
-  await expect(card).toContainText('Run it');
-  await expect(next).toBeDisabled();
-  await page.locator('[data-tour="workspace"]').getByRole('button', { name: '▶ Run' }).click();
-  await expect(next).toBeEnabled({ timeout: 30_000 });
-  await next.click();
-
-  await expect(card).toContainText('Check it with the tests');
+  await page.locator('[data-testid="editor"] .cm-content').click();
+  await page.keyboard.type('print("Hello, Stars!")');
   await page.getByRole('button', { name: 'Run Tests' }).click();
   await expect(card).toContainText('Lesson complete', { timeout: 60_000 });
-  // The verdict opens in the lesson panel, lit beside the card.
-  await expect(page.locator('[data-tour="result"]')).toContainText('Accepted');
+  await expect(page.locator('[data-testid="result"]')).toContainText('Accepted');
   await card.getByRole('button', { name: 'Start exploring' }).click();
   await expect(card).toHaveCount(0);
 

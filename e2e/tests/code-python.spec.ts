@@ -18,13 +18,13 @@ test('Run Tests opens the verdict in the lesson panel, beside the editor', async
 }) => {
   await page.goto('/lesson/python/print');
 
-  const editor = page.locator('[data-tour="editor"] .cm-content');
+  const editor = page.locator('[data-testid="editor"] .cm-content');
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type('print("hello")');
   await page.getByRole('button', { name: 'Run Tests' }).click();
 
-  const result = page.locator('[data-tour="result"]');
+  const result = page.locator('[data-testid="result"]');
   await expect(result).toContainText('Wrong answer', { timeout: 60_000 });
   await expect(result).toContainText('Stopped at test 1');
   await expect(result).toContainText('0 / 1');
@@ -34,17 +34,16 @@ test('Run Tests opens the verdict in the lesson panel, beside the editor', async
   await expect(page.getByTestId('code-output').last()).toBeVisible();
 
   await page.getByRole('tab', { name: 'Lesson', exact: true }).click();
-  await expect(page.locator('[data-tour="lesson"] h1')).toBeVisible();
+  await expect(page.locator('[data-testid="lesson"] h1')).toBeVisible();
   await expect(result).toHaveCount(0);
   await page.getByRole('tab', { name: 'Result' }).click();
   await expect(result).toContainText('Wrong answer');
 });
 
 test('a near-miss output marks just the characters that differ', async ({ authedPage: page }) => {
-  // Not the first lesson: its blanks take any name, so it compares by template and marks nothing
   await page.goto('/lesson/python/variables-str');
 
-  const editor = page.locator('[data-tour="editor"] .cm-content');
+  const editor = page.locator('[data-testid="editor"] .cm-content');
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type(
@@ -52,7 +51,7 @@ test('a near-miss output marks just the characters that differ', async ({ authed
   );
   await page.getByRole('button', { name: 'Run Tests' }).click();
 
-  const result = page.locator('[data-tour="result"]');
+  const result = page.locator('[data-testid="result"]');
   await expect(result).toContainText('Wrong answer', { timeout: 60_000 });
   // Jess against Jass: the e the student lost, the a they put in.
   await expect(result.locator('mark')).toHaveText(['e', 'a']);
@@ -63,22 +62,20 @@ test('a passed course lesson lists its tests and shows no runtime', async ({
 }) => {
   await page.goto('/lesson/python/print');
 
-  const editor = page.locator('[data-tour="editor"] .cm-content');
+  const editor = page.locator('[data-testid="editor"] .cm-content');
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
-  await page.keyboard.type(
-    'print("My name is Cadet\\nI am 12 years old\\nCyberStars is the coolest")',
-  );
+  await page.keyboard.type('print("Hello, Stars!")');
   await page.getByRole('button', { name: 'Run Tests' }).click();
 
-  const result = page.locator('[data-tour="result"]');
+  const result = page.locator('[data-testid="result"]');
   await expect(result).toContainText('Accepted', { timeout: 60_000 });
   await expect(result).not.toContainText('Runtime');
 
   await result.getByRole('button', { name: 'Passed tests (1)' }).click();
   await result.getByRole('button', { name: 'Test 1' }).click();
   await expect(result).toContainText('Expected output');
-  await expect(result).toContainText('My name is <name>');
+  await expect(result).toContainText('Hello, Stars!');
 });
 
 test('a passed algorithm shows its load-test runtime next to our solution', async ({
@@ -86,7 +83,7 @@ test('a passed algorithm shows its load-test runtime next to our solution', asyn
 }) => {
   await page.goto('/lesson/algo-python/palindrome');
 
-  const editor = page.locator('[data-tour="editor"] .cm-content');
+  const editor = page.locator('[data-testid="editor"] .cm-content');
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type(
@@ -94,7 +91,7 @@ test('a passed algorithm shows its load-test runtime next to our solution', asyn
   );
   await page.getByRole('button', { name: 'Run Tests' }).click();
 
-  const result = page.locator('[data-tour="result"]');
+  const result = page.locator('[data-testid="result"]');
   await expect(result).toContainText('Accepted', { timeout: 60_000 });
   await expect(result).toContainText('Runtime');
   await expect(result).toContainText('Our solution (not necessarily the fastest)');
@@ -105,13 +102,13 @@ test('a passed algorithm shows its load-test runtime next to our solution', asyn
 test('an algorithm without a load test shows no runtime', async ({ authedPage: page }) => {
   await page.goto('/lesson/algo-python/even-or-odd');
 
-  const editor = page.locator('[data-tour="editor"] .cm-content');
+  const editor = page.locator('[data-testid="editor"] .cm-content');
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type('print("Odd" if int(input()) % 2 else "Even")');
   await page.getByRole('button', { name: 'Run Tests' }).click();
 
-  const result = page.locator('[data-tour="result"]');
+  const result = page.locator('[data-testid="result"]');
   await expect(result).toContainText('Accepted', { timeout: 60_000 });
   await expect(result).not.toContainText('Runtime');
 });

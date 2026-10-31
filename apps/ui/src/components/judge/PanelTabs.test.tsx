@@ -10,10 +10,10 @@ const tabs = [
 describe('PanelTabs', () => {
   it('marks the active tab and reports a pick', () => {
     const onSelect = vi.fn();
-    render(<PanelTabs tabs={tabs} active="result" onSelect={onSelect} data-tour="tabs" />);
+    render(<PanelTabs tabs={tabs} active="result" onSelect={onSelect} aria-label="Panels" />);
     expect(screen.getByRole('tab', { name: 'Result' })).toHaveAttribute('aria-selected', 'true');
     expect(screen.getByRole('tab', { name: 'Lesson' })).toHaveAttribute('aria-selected', 'false');
-    expect(screen.getByRole('tablist')).toHaveAttribute('data-tour', 'tabs');
+    expect(screen.getByRole('tablist', { name: 'Panels' })).toBeInTheDocument();
     fireEvent.click(screen.getByRole('tab', { name: 'Lesson' }));
     expect(onSelect).toHaveBeenCalledWith('lesson');
   });

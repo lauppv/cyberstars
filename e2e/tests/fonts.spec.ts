@@ -7,12 +7,12 @@ test('a lesson draws its code and text in the fonts that ship with the app', asy
   const hosts = recordHosts(page);
   await page.goto('/lesson/python/print');
 
-  const editor = page.locator('[data-tour="editor"] .cm-scroller');
+  const editor = page.locator('[data-testid="editor"] .cm-scroller');
   await expect(editor).toBeVisible({ timeout: 10_000 });
   expect(await firstFontOf(editor)).toBe(CODE_FONT);
   const output = page.getByTestId('code-output').last().getByText('Run your code to see');
   expect(await firstFontOf(output)).toBe(CODE_FONT);
-  expect(await firstFontOf(page.locator('[data-tour="lesson"] h1'))).toBe(TEXT_FONT);
+  expect(await firstFontOf(page.locator('[data-testid="lesson"] h1'))).toBe(TEXT_FONT);
 
   const faces = await fontFaces(page);
   for (const family of [TEXT_FONT, CODE_FONT]) {

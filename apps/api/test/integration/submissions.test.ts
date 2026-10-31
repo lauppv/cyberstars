@@ -105,7 +105,7 @@ describe('Submission history', () => {
       structureFailures: [],
       failedCase: { index: 1, visible: true, passed: false, expected: 'b', actual: 'a' },
       // Read from the lesson's own tests file on disk.
-      comparator: 'template',
+      comparator: 'trimmed',
     });
   });
 
