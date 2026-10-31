@@ -45,3 +45,6 @@ indexnow-sent.xml
 .runs
 .direnv/
 
+
+# The load test's results and the page list capture.mjs writes for it
+loadtest/results/
