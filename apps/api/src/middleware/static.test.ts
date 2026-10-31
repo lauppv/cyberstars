@@ -17,6 +17,7 @@ const curriculum = JSON.stringify(
 );
 const size = (file: string) => String(fs.statSync(path.join(root, file)).size);
 const CHROME = 'gzip, deflate, br, zstd';
+const YEAR = 'public, max-age=31536000, immutable';
 const SECRET = 'outside the build';
 
 // A build as compress.ts leaves it: the main script with both copies,
@@ -109,6 +110,27 @@ describe('serveStatic', () => {
     }
   });
 
+  it('keeps the files under assets/ a year, copy or not', async () => {
+    for (const accepted of ['br', 'identity']) {
+      const res = await request(app).get('/assets/index-abc.js').set('Accept-Encoding', accepted);
+      expect(res.headers['cache-control'], accepted).toBe(YEAR);
+    }
+    const font = await request(app).get('/assets/inter-abc.woff2');
+    expect(font.headers['cache-control']).toBe(YEAR);
+  });
+
+  it('has the browser ask again for a file whose name outlives a deploy', async () => {
+    for (const accepted of ['gzip', 'identity']) {
+      const res = await request(app).get('/curriculum.json').set('Accept-Encoding', accepted);
+      expect(res.headers['cache-control'], accepted).toBe('public, max-age=0');
+      const again = await request(app)
+        .get('/curriculum.json')
+        .set('Accept-Encoding', accepted)
+        .set('If-None-Match', res.headers.etag);
+      expect(again.status, accepted).toBe(304);
+    }
+  });
+
   it('answers HEAD with the copy it would send', async () => {
     const res = await request(app).head('/assets/index-abc.js').set('Accept-Encoding', 'br');
     expect(res.status).toBe(200);
@@ -116,10 +138,11 @@ describe('serveStatic', () => {
     expect(res.headers['content-length']).toBe(size('assets/index-abc.js.br'));
   });
 
-  it('answers 404 for a file that is not there', async () => {
+  it('answers 404 for a file that is not there, with no cache', async () => {
     const res = await request(app).get('/assets/index-gone.js').set('Accept-Encoding', CHROME);
     expect(res.status).toBe(404);
     expect(res.headers['content-encoding']).toBeUndefined();
+    expect(res.headers['cache-control']).not.toBe(YEAR);
   });
 
   it('reaches nothing outside the build', async () => {

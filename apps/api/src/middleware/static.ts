@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import express, { type RequestHandler } from 'express';
+import express, { type RequestHandler, type Response } from 'express';
 import { COMPRESSED_COPIES, COMPRESSED_FILE } from '@cyberstars/shared/compression';
 
 const isFile = (file: string) =>
@@ -16,6 +16,17 @@ const isFile = (file: string) =>
 // through here: compressing a response that carries a secret next to something
 // the visitor sent is what BREACH reads.
 export function serveStatic(root: string): RequestHandler[] {
+  // Vite names every file under assets/ after what it holds, so a file there
+  // never changes and the browser keeps it a year without asking. The rest
+  // keep their names across deploys and stay asked for on every visit, which
+  // costs a 304 while they're unchanged.
+  const assets = path.join(root, 'assets') + path.sep;
+  const setHeaders = (res: Response, file: string) => {
+    if (file.startsWith(assets)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    }
+  };
+
   const sendCopy: RequestHandler = async (req, res, next) => {
     if ((req.method !== 'GET' && req.method !== 'HEAD') || !COMPRESSED_FILE.test(req.path)) {
       next();
@@ -42,6 +53,7 @@ export function serveStatic(root: string): RequestHandler[] {
       res.setHeader('Content-Encoding', encoding);
       // The type of the file it stands for, not of a .br or .gz
       res.type(path.extname(file));
+      setHeaders(res, file);
       // Under root, so a folder above it whose name starts with a dot doesn't count as a dotfile
       res.sendFile(address + extension, { root });
       return;
@@ -49,5 +61,5 @@ export function serveStatic(root: string): RequestHandler[] {
     next();
   };
 
-  return [sendCopy, express.static(root)];
+  return [sendCopy, express.static(root, { setHeaders })];
 }
