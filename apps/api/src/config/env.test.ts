@@ -31,7 +31,7 @@ describe('env config', () => {
     expect(env.isProduction).toBe(true);
     expect(env.port).toBe(9000);
     expect(env.allowedOrigins).toEqual(['https://example.com']);
-    expect(env.cookie.secure).toBe(true);
+    expect(env.session.secureCookie).toBe(true);
   });
 
   it('falls back to prod default CORS origin when CORS_ORIGIN is unset', async () => {
@@ -58,7 +58,7 @@ describe('env config', () => {
     expect(env.isProduction).toBe(false);
     expect(env.port).toBe(4000);
     expect(env.allowedOrigins).toEqual(['http://x']);
-    expect(env.cookie.secure).toBe(false);
+    expect(env.session.secureCookie).toBe(false);
   });
 
   it('falls back to dev defaults when EXPRESS_PORT and CORS_DEV_ORIGIN are unset', async () => {

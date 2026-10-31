@@ -26,9 +26,12 @@ export const env = {
       ? optional('CORS_ORIGIN', 'https://cyberstars.app')
       : optional('CORS_DEV_ORIGIN', 'http://localhost:5173'),
   ),
-  jwt: {
+  // The signed-in session: the key its tokens are signed with, how long a
+  // token and its cookie last, and the cookie over HTTPS only in production
+  session: {
     secret: required('JWT_SECRET'),
-    expiresIn: '24h' as const,
+    maxAgeMs: 24 * 60 * 60 * 1000,
+    secureCookie: isProduction,
   },
   db: {
     user: required('DB_USER'),
@@ -41,12 +44,6 @@ export const env = {
   },
   // The account that always signs up as the founder
   founderEmail: optional('FOUNDER_EMAIL', ''),
-  cookie: {
-    httpOnly: true,
-    secure: isProduction,
-    sameSite: 'lax' as const,
-    maxAge: 24 * 60 * 60 * 1000,
-  },
   resend: {
     apiKey: optional('RESEND_API_KEY', ''),
     from: optional('RESEND_FROM', 'CyberStars <noreply@cyberstars.app>'),

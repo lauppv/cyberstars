@@ -3,8 +3,14 @@ import { readFileSync, readdirSync } from 'fs';
 import path from 'path';
 import { localizeRunOutput, localizeServerMessage, translatedSentences } from './serverMessages';
 
-// Tests run from the repo's root
-const apiSrc = path.join(process.cwd(), 'apps/api/src');
+// Tests run from the repo's root. The API's code, and the framework packages
+// it runs on, which answer for it too
+const sources = [
+  path.join(process.cwd(), 'apps/api/src'),
+  ...readdirSync(path.join(process.cwd(), 'framework'), { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => path.join(process.cwd(), 'framework', d.name, 'src')),
+];
 
 // Every sentence the API writes in its errors and replies, read from its code:
 // AppError, { error }, { message } and a zod rule's message
@@ -15,13 +21,15 @@ function serverSentences(): string[] {
     /\.(?:min|max|email|regex|length|refine)\([^')]*'([^'\n]+)'/g,
     /throw new Error\('([^'\n]+)'\)/g,
   ];
-  const files = readdirSync(apiSrc, { recursive: true, encoding: 'utf8' }).filter(
-    (f) => f.endsWith('.ts') && !f.endsWith('.test.ts'),
-  );
   const found = new Set<string>();
-  for (const file of files) {
-    const code = readFileSync(path.join(apiSrc, file), 'utf8');
-    for (const shape of shapes) for (const m of code.matchAll(shape)) found.add(m[1]);
+  for (const dir of sources) {
+    const files = readdirSync(dir, { recursive: true, encoding: 'utf8' }).filter(
+      (f) => f.endsWith('.ts') && !f.endsWith('.test.ts'),
+    );
+    for (const file of files) {
+      const code = readFileSync(path.join(dir, file), 'utf8');
+      for (const shape of shapes) for (const m of code.matchAll(shape)) found.add(m[1]);
+    }
   }
   return [...found];
 }

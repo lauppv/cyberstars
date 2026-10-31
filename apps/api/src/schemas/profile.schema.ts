@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { emailField, passwordField } from '@cyberstars-framework/auth/schemas';
 import { INTERESTS } from '@cyberstars/shared/interests';
 import { CODE_LANGUAGES } from '@cyberstars/shared/constants';
 
@@ -25,17 +26,12 @@ export const saveCodeLanguageSchema = z.object({
 
 export const changePasswordSchema = z.object({
   currentPassword: z.string().min(1, 'Current password is required'),
-  newPassword: z
-    .string()
-    .min(6, 'Password is too short, must be at least 6 characters')
-    .max(255, 'Password must be at most 255 characters'),
+  newPassword: passwordField,
 });
 
 export const requestEmailChangeSchema = z.object({
   currentPassword: z.string().min(1, 'Current password is required'),
-  newEmail: z
-    .email('Please enter a valid email address')
-    .max(255, 'Email must be at most 255 characters'),
+  newEmail: emailField,
   // the page's language, which the email is written in
   lang: z.enum(['en', 'ro']).optional(),
 });

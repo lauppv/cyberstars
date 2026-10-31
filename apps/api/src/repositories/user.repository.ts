@@ -59,9 +59,14 @@ export async function updateProfile(
   await prisma.user.update({ where: { id }, data });
 }
 
-export async function getRole(id: number): Promise<Role> {
+// The account's role, null when the account is gone
+export async function findRole(id: number): Promise<Role | null> {
   const user = await prisma.user.findUnique({ where: { id }, select: { role: true } });
-  return user?.role ?? 'USER';
+  return user?.role ?? null;
+}
+
+export async function getRole(id: number): Promise<Role> {
+  return (await findRole(id)) ?? 'USER';
 }
 
 // What the tutor goes by about the student, besides their progress

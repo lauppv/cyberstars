@@ -10,7 +10,8 @@ import { GUEST_RUN_BUDGET, guestRunsRemaining, recordGuestRun } from './guest-bu
 import { registerUserSocket, unregisterUserSocket } from './ws-user.js';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as userRepo from '../repositories/user.repository.js';
-import { sessionUserId } from './auth.service.js';
+import { SESSION_COOKIE } from '@cyberstars-framework/auth/auth';
+import { auth } from './auth.js';
 
 // Reject oversized frames before they are buffered/parsed.
 const MAX_PAYLOAD_BYTES = 128 * 1024;
@@ -42,7 +43,7 @@ function parseCookie(cookieHeader: string | undefined, name: string): string | n
 }
 
 export function parseTokenCookie(cookieHeader: string | undefined): string | null {
-  return parseCookie(cookieHeader, 'token');
+  return parseCookie(cookieHeader, SESSION_COOKIE);
 }
 
 // The client's address, as seen by the one proxy (nginx) in front of the app in
@@ -281,7 +282,7 @@ export function attachRunWebSocket(server: HttpServer): { close: () => void } {
     // before the first message: an ended or expired one is a guest
     let userId: number | null;
     try {
-      userId = await sessionUserId(parseTokenCookie(req.headers.cookie));
+      userId = await auth.sessionUserId(parseTokenCookie(req.headers.cookie));
     } catch (err) {
       console.error('[ws] session check failed:', err);
       socket.destroy();

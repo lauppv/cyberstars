@@ -27,7 +27,6 @@ const {
   mockApplyPendingEmailChange,
   mockClearPendingEmailChange,
   mockSendEmailChangeCode,
-  mockSetPassword,
 } = vi.hoisted(() => ({
   mockMkdir: vi.fn(),
   mockWriteFile: vi.fn(),
@@ -45,7 +44,6 @@ const {
   mockApplyPendingEmailChange: vi.fn(),
   mockClearPendingEmailChange: vi.fn(),
   mockSendEmailChangeCode: vi.fn(),
-  mockSetPassword: vi.fn(),
 }));
 
 vi.mock('fs/promises', () => {
@@ -85,10 +83,6 @@ vi.mock('../repositories/laniakea.repository.js', () => ({
 vi.mock('../services/email.service.js', () => ({
   sendResetCode: vi.fn(),
   sendEmailChangeCode: (...a: unknown[]) => mockSendEmailChangeCode(...a),
-}));
-
-vi.mock('../services/auth.service.js', () => ({
-  setPassword: (...a: unknown[]) => mockSetPassword(...a),
 }));
 
 const {
@@ -262,7 +256,7 @@ describe('changePassword', () => {
     await changePassword(mkPwReq({ currentPassword: 'a', newPassword: 'b' }), mkRes(), next);
     expect(next).toHaveBeenCalledWith(expect.any(AppError));
     expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
-    expect(mockSetPassword).not.toHaveBeenCalled();
+    expect(mockUpdatePassword).not.toHaveBeenCalled();
   });
 
   it('rejects with 401 when the current password does not match', async () => {
@@ -277,22 +271,27 @@ describe('changePassword', () => {
     );
     expect(next).toHaveBeenCalledWith(expect.any(AppError));
     expect((next.mock.calls[0][0] as AppError).statusCode).toBe(401);
-    expect(mockSetPassword).not.toHaveBeenCalled();
+    expect(mockUpdatePassword).not.toHaveBeenCalled();
   });
 
   it('sets the new password and keeps this session on the token it gets back', async () => {
     const { default: bcrypt } = await import('bcryptjs');
     const hash = bcrypt.hashSync('right', 4);
     mockFindByIdWithPassword.mockResolvedValueOnce({ password: hash });
-    mockSetPassword.mockResolvedValueOnce('new-token');
+    mockUpdatePassword.mockResolvedValueOnce(4);
     const res = { json: vi.fn(), cookie: vi.fn() } as unknown as Response;
     await changePassword(
       mkPwReq({ currentPassword: 'right', newPassword: 'freshpass' }),
       res,
       vi.fn(),
     );
-    expect(mockSetPassword).toHaveBeenCalledWith(7, 'freshpass');
-    expect(res.cookie).toHaveBeenCalledWith('token', 'new-token', expect.any(Object));
+    const [id, newHash] = mockUpdatePassword.mock.calls[0] as [number, string];
+    expect(id).toBe(7);
+    expect(bcrypt.compareSync('freshpass', newHash)).toBe(true);
+    const { default: jwt } = await import('jsonwebtoken');
+    const [name, token] = vi.mocked(res.cookie).mock.calls[0] as [string, string];
+    expect(name).toBe('token');
+    expect(jwt.verify(token, 'test-secret')).toEqual(expect.objectContaining({ id: 7, v: 4 }));
     expect(res.json).toHaveBeenCalledWith({ message: 'Password updated' });
   });
 
