@@ -324,6 +324,7 @@ describe('POST /forgot-password', () => {
       const res = await request(app).post('/auth/forgot-password').send({ email });
       expect(res.status).toBe(429);
       expect(res.body).toEqual({ error: 'Too many codes asked for this email, try again later' });
+      expect(res.headers['ratelimit-policy']).toBe('3;w=3600');
     }
     // keyed by the email, not the address the requests came from
     await request(app).post('/auth/forgot-password').send({ email: 'other@test.com' }).expect(200);
@@ -407,7 +408,7 @@ describe('the sign-in limit', () => {
     const res = await request(app).post('/auth/signup').send(ADA);
     expect(res.status).toBe(429);
     expect(res.body).toEqual({ error: 'Too many attempts, try again later' });
-    expect(res.headers['ratelimit-limit']).toBe('10');
+    expect(res.headers['ratelimit-policy']).toBe('10;w=900');
   });
 
   it("follows the app's rule for tests", async () => {
