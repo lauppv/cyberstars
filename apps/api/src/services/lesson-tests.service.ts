@@ -10,6 +10,7 @@ import {
   isRunning,
 } from './code-container.service.js';
 import { getRuntime } from '../runtimes/registry.js';
+import { FAST_START, FAST_START_JAVAC } from '../runtimes/java.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
@@ -41,11 +42,13 @@ const WRITE_TIMEOUT_MS = 10_000;
 // The Java runner is compiled once per container into /tmp/_judge (only /work
 // is wiped between runs) and recompiled when the shipped source changes (a
 // deploy while the container is warm). `exec` keeps the verdict as the sole
-// stdout of the docker exec.
+// stdout of the docker exec. C1 only, as the programs: the full JIT kept
+// compiling javac in the background, on the same half core each program then
+// started on, and took 9.8 s where this takes 5.9 (12 cases, java/polymorphism).
 const JAVA_BOOT =
   'cmp -s /work/Runner.java /tmp/_judge/Runner.java 2>/dev/null || ' +
-  '{ mkdir -p /tmp/_judge && javac -d /tmp/_judge /work/Runner.java && cp /work/Runner.java /tmp/_judge/Runner.java; } && ' +
-  'exec java -XX:+UseSerialGC -Xmx96m -cp /tmp/_judge Runner /work/_payload.json';
+  `{ mkdir -p /tmp/_judge && javac ${FAST_START_JAVAC} -d /tmp/_judge /work/Runner.java && cp /work/Runner.java /tmp/_judge/Runner.java; } && ` +
+  `exec java ${FAST_START} -Xmx96m -cp /tmp/_judge Runner /work/_payload.json`;
 
 interface JudgeRunner {
   runnerPath: string;
