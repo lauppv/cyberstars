@@ -716,7 +716,7 @@ export function LessonPage() {
             )}
             <div
               ref={contentRef}
-              data-tour="lesson"
+              data-testid="lesson"
               onScroll={(e) => {
                 lessonScrollRef.current = e.currentTarget.scrollTop;
               }}
@@ -825,7 +825,7 @@ export function LessonPage() {
               </div>
             </div>
             {view === 'result' && testResults && (
-              <div data-tour="result" className="flex-1 min-h-0 overflow-y-auto">
+              <div data-testid="result" className="flex-1 min-h-0 overflow-y-auto">
                 <ResultPanel results={testResults} showRuntime={isAlgo} next={nextAfterPass} />
               </div>
             )}
@@ -1065,7 +1065,7 @@ export function LessonPage() {
                   </div>
                 )}
                 <div
-                  data-tour="editor"
+                  data-testid="editor"
                   className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)] max-h-[60%] @2xl:max-h-none @2xl:h-[var(--vsplit)]"
                   style={{ '--vsplit': `${vSplitShown.size}%` } as CSSProperties}
                 >

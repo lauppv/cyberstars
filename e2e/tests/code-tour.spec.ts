@@ -30,11 +30,11 @@ test('a new account gets a welcome, then the tour lesson to itself until its tes
   await page.getByRole('button', { name: 'Next →' }).click();
   await expect(page.getByRole('alert')).toContainText('Finish this lesson first');
 
-  await page.locator('[data-tour="editor"] .cm-content').click();
+  await page.locator('[data-testid="editor"] .cm-content').click();
   await page.keyboard.type('print("Hello, Stars!")');
   await page.getByRole('button', { name: 'Run Tests' }).click();
   await expect(card).toContainText('Lesson complete', { timeout: 60_000 });
-  await expect(page.locator('[data-tour="result"]')).toContainText('Accepted');
+  await expect(page.locator('[data-testid="result"]')).toContainText('Accepted');
   await card.getByRole('button', { name: 'Start exploring' }).click();
   await expect(card).toHaveCount(0);
 
