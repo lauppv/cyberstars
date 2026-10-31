@@ -1,0 +1,18 @@
+{
+  "name": "@cyberstars-framework/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./auth": "./src/auth.ts"
+  },
+  "dependencies": {
+    "@cyberstars-framework/server-kit": "0.0.0",
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10"
+  }
+}
