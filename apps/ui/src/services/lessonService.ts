@@ -5,8 +5,8 @@ import { courseTitle } from '../constants/courses';
 
 // Lesson content, starter code and the curriculum are static for the lifetime of
 // a deploy: generated into public/ at build time (scripts/generate-static-content.ts)
-// and served as plain files by nginx (prod) / Vite's publicDir (dev), never
-// touching the API server or the DB. We fetch only what is viewed and cache each
+// and served as plain files by the server's static files (prod) / Vite's publicDir
+// (dev), never touching an API route or the DB. We fetch only what is viewed and cache each
 // file for the session, so a revisit never re-fetches. Mirrors almanacService.ts.
 // Curriculum is intentionally not cached here; CurriculumProvider holds it and
 // exposes refresh().
@@ -30,7 +30,7 @@ async function getText(path: string): Promise<string> {
   // (200, text/html) instead of a 404, so a missing translation can't be
   // detected by status alone. Lessons are always markdown, so an HTML body means
   // the file isn't there, so treat it as a load failure (getLocalizedText then
-  // falls back to English). In prod nginx serves real .md and 404s the rest.
+  // falls back to English). In prod the server sends real .md and 404s the rest.
   if (res.headers?.get('content-type')?.includes('text/html')) {
     throw new Error(`Failed to load ${path}: got SPA fallback (not markdown)`);
   }

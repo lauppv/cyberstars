@@ -1,6 +1,6 @@
 // Build-time generator for the static lesson content the client fetches directly
 // (no API/DB round-trip). Mirrors the almanac approach: emit plain files under
-// the app's static files folder that nginx (prod) and Vite's publicDir (dev)
+// the app's static files folder that the server (prod) and Vite's publicDir (dev)
 // serve as-is.
 //
 //   <public>/curriculum.json      : same shape/order as the old GET /api/curriculum
