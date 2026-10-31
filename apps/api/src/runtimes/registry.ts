@@ -1,19 +1,26 @@
-import type { LanguageRuntime } from './types.js';
-import { pythonRuntime } from './python.js';
-import { cRuntime } from './c.js';
-import { javaRuntime } from './java.js';
+import { baseLanguage } from '@cyberstars/shared/constants';
+import {
+  cRuntime,
+  javaRuntime,
+  pythonRuntime,
+  type LanguageRuntime,
+} from '@cyberstars-framework/sandbox/languages';
 
-// Singurul loc care știe ce limbaje sunt suportate. Adaugi unul nou? Adaugi
-// un fișier <lang>.ts și îl înregistrezi aici, restul codului nu se atinge
-const runtimes: Record<string, LanguageRuntime> = {
+// The languages code runs in, by the name a run asks the sandbox for: the
+// sandbox's own presets. The only list of them on the server
+export const LANGUAGES: Record<string, LanguageRuntime> = {
   python: pythonRuntime,
-  'algo-python': pythonRuntime,
-  'algo-java': javaRuntime,
-  'algo-c': cRuntime,
-  c: cRuntime,
   java: javaRuntime,
+  c: cRuntime,
 };
 
-export function getRuntime(language: string): LanguageRuntime | null {
-  return runtimes[language.toLowerCase()] ?? null;
+// The language a run goes to, from a language or a course key: an algorithm
+// challenge runs in its set's language (algo-java in java)
+export function languageOf(key: string): string {
+  return baseLanguage(key.toLowerCase());
+}
+
+export function getRuntime(key: string): LanguageRuntime | null {
+  const language = languageOf(key);
+  return Object.hasOwn(LANGUAGES, language) ? LANGUAGES[language] : null;
 }

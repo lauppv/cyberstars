@@ -1,5 +1,5 @@
 import { AppError } from '@cyberstars-framework/server-kit/errors';
-import { slotQueue, type SlotOptions } from './slot-queue.js';
+import { slotQueue, type SlotOptions } from '@cyberstars-framework/sandbox/slots';
 
 // Caps how many judge runs (Run Tests) share the server at once. Each run is
 // capped at half a core, but a few slow load tests together would still take

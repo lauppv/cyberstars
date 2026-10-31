@@ -1,9 +1,8 @@
 import type { LanguageRuntime } from './types.js';
 
-// Student programs are short-lived, so JVM startup dominates a run. C1-only JIT
-// and the serial GC start noticeably faster under the fractional CPU cap; the
-// lesson judge runs its programs, its runner and the runner's javac with the
-// same flags.
+// Programs run here are short-lived, so JVM startup dominates a run. C1-only
+// JIT and the serial GC start noticeably faster under the fractional CPU cap;
+// a judge that starts Java programs, or a JVM of its own, can use them too.
 export const FAST_START = '-XX:TieredStopAtLevel=1 -XX:+UseSerialGC';
 export const FAST_START_JAVAC = '-J-XX:TieredStopAtLevel=1 -J-XX:+UseSerialGC';
 
@@ -13,7 +12,7 @@ export const javaRuntime: LanguageRuntime = {
   sourceFile: 'Main.java',
   compileCmd: `javac ${FAST_START_JAVAC} /work/Main.java -d /work`,
   runCmd: `stdbuf -o0 java ${FAST_START} -cp /work Main`,
-  // The lesson judge holds two JVMs at once (runner with in-process javac +
-  // the judged program); the 128m default gets the child OOM-killed.
+  // Room for two JVMs at once, a judge's runner (with javac in its process)
+  // and the program it runs: in 128m the program gets OOM-killed.
   memory: '256m',
 };

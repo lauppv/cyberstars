@@ -23,10 +23,18 @@ const mockContainer = {
 };
 
 vi.mock('../repositories/admin.repository.js', () => mockAdminRepo);
-vi.mock('./code-container.service.js', () => mockContainer);
+// The real sandbox, its line included, with the containers and guests faked
+vi.mock('./sandbox.js', async (importOriginal) => {
+  const real = await importOriginal<typeof import('./sandbox.js')>();
+  return {
+    ...real,
+    onlineGuests: mockContainer.onlineGuests,
+    sandbox: { ...real.sandbox, liveMetrics: mockContainer.liveMetrics },
+  };
+});
 
 const { getStats, clearCache } = await import('./admin.service.js');
-const { acquireSandboxSlot } = await import('./sandbox-slots.js');
+const { sandbox } = await import('./sandbox.js');
 const { registerUserSocket, clearUserSockets } = await import('./ws-user.js');
 
 beforeEach(() => {
@@ -89,7 +97,7 @@ describe('admin.service getStats', () => {
       openSessions: 3,
       perLanguage: { python: 4 },
     });
-    const release = await acquireSandboxSlot();
+    const release = await sandbox.acquireSlot();
     const second = await getStats();
     release();
     expect(second.codeExec.activeContainers).toBe(4);

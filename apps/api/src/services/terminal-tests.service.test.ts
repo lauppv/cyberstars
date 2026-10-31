@@ -7,7 +7,7 @@ const { mockDockerExec, mockGetSessionView } = vi.hoisted(() => ({
   mockGetSessionView: vi.fn(),
 }));
 
-vi.mock('./docker-exec.js', () => ({ dockerExec: mockDockerExec }));
+vi.mock('@cyberstars-framework/sandbox/docker', () => ({ dockerExec: mockDockerExec }));
 vi.mock('./terminal-session.service.js', () => ({ getSessionView: mockGetSessionView }));
 
 const { loadTerminalTestsSpec, runTerminalTests } = await import('./terminal-tests.service.js');

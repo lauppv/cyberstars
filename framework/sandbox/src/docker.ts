@@ -2,15 +2,11 @@ import { execFile, spawn } from 'child_process';
 
 // What a sandbox runs as its first process, while commands arrive via `docker
 // exec`. Unlike `sleep infinity` the shell collects finished processes, so
-// whatever a student leaves behind doesn't pile up against the pids limit
+// whatever a program leaves behind doesn't pile up against the pids limit
 export const SANDBOX_KEEPALIVE = ['sh', '-c', 'while :; do sleep 3600; done'];
 
-// Every sandbox carries it, so the server can find the ones it no longer tracks
-export const SANDBOX_LABEL = '--label=cyberstars.sandbox';
-
-// Shared wrapper around `docker` CLI calls used by the code-runner and terminal
-// sandbox services: buffers stdout (1MB cap), rejects with stderr on failure,
-// and optionally pipes `stdin` into the process.
+// One `docker` CLI call: buffers stdout (1MB cap), rejects with stderr on
+// failure, and optionally pipes `stdin` into the process.
 export function dockerExec(args: string[], timeout = 10_000, stdin?: string): Promise<string> {
   return new Promise((resolve, reject) => {
     const proc = execFile(
@@ -39,12 +35,12 @@ export function killLeftovers(containerId: string): Promise<void> {
   );
 }
 
-// Removes the sandboxes a previous run of the server left behind. A restart
-// that kills the server before its shutdown is through (pm2 gives it a moment)
-// leaves them running, and nothing tracks them any more: they hold memory and
-// a guest's place forever. Runs once at start, before any sandbox of its own
-export async function removeStraySandboxes(): Promise<number> {
-  const ids = (await dockerExec(['ps', '-aq', '--filter', 'label=cyberstars.sandbox']))
+// Removes the sandboxes carrying `label` that a previous run of the server
+// left behind. A restart that kills the server before its shutdown is through
+// leaves them running, and nothing tracks them any more: they hold memory
+// forever. Run it once at start, before any sandbox of its own
+export async function removeStraySandboxes(label: string): Promise<number> {
+  const ids = (await dockerExec(['ps', '-aq', '--filter', `label=${label}`]))
     .split('\n')
     .filter(Boolean);
   if (ids.length) await dockerExec(['rm', '-f', ...ids], 30_000);

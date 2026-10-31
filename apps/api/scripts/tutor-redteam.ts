@@ -32,7 +32,7 @@ import { TERMINAL_COURSE_KEYS } from '@cyberstars/shared/constants';
 import { askTutor, type LessonWork } from '../src/services/tutor.service.js';
 import { isGeminiConfigured } from '../src/services/gemini.service.js';
 import { runLessonTests } from '../src/services/lesson-tests.service.js';
-import { drainAll } from '../src/services/code-container.service.js';
+import { sandbox } from '../src/services/sandbox.js';
 import { contentDir } from '../src/services/paths.js';
 import { listPages } from '../src/services/tutor-tools.service.js';
 import { lessons } from '@cyberstars/content/curriculum';
@@ -333,12 +333,12 @@ async function main() {
   const text = report(outcomes);
   if (out) fs.writeFileSync(out, text);
   else console.log(`\n${text}`);
-  await drainAll();
+  await sandbox.drainAll();
   process.exit(outcomes.some((o) => o.problems.length) ? 1 : 0);
 }
 
 main().catch(async (err) => {
   console.error(err);
-  await drainAll();
+  await sandbox.drainAll();
   process.exit(1);
 });

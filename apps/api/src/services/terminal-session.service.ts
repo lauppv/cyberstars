@@ -7,16 +7,16 @@ import type {
   TerminalExecResult,
 } from '@cyberstars/shared/terminal';
 import { contentDir } from './paths.js';
-import { acquireSandboxSlot } from './sandbox-slots.js';
 import { inLine } from './run-waits.js';
 import { addGuestSandboxSource, makeRoomForGuest } from './guest-sandboxes.js';
-import { dockerExec, killLeftovers, SANDBOX_KEEPALIVE, SANDBOX_LABEL } from './docker-exec.js';
+import { dockerExec, killLeftovers, SANDBOX_KEEPALIVE } from '@cyberstars-framework/sandbox/docker';
+import { sandbox, SANDBOX_LABEL } from './sandbox.js';
 
 const IMAGE = 'cyberstars-linux-sandbox';
 const IDLE_TTL = 15 * 60 * 1000;
 const EXEC_TIMEOUT = 5;
 // Each session is a live 128 MB sandbox container, so the total must be bounded
-// or a burst of /session calls OOMs the box. Mirrors code-container's global cap.
+// or a burst of /session calls OOMs the box. Mirrors the code sandbox's global cap.
 const MAX_SESSIONS = Number(process.env.TERMINAL_MAX_SESSIONS ?? 50);
 // A student or guest has a session per open terminal tab; past a few, a new
 // one closes their oldest, so a script can't pile them up.
@@ -141,7 +141,7 @@ export async function createSession(
       'run',
       '-d',
       '--rm',
-      SANDBOX_LABEL,
+      `--label=${SANDBOX_LABEL}`,
       '--network=none',
       '--memory=128m',
       '--pids-limit=64',
@@ -212,7 +212,7 @@ export async function execCommand(
   try {
     // A command turned away for a busy server never ran, so it stays out of
     // the history the terminal judge reads
-    const releaseSlot = await inLine(waitKey, (onWait) => acquireSandboxSlot({ onWait }));
+    const releaseSlot = await inLine(waitKey, (onWait) => sandbox.acquireSlot({ onWait }));
     session.lastActivity = Date.now();
     session.history.push(command);
 

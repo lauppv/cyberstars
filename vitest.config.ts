@@ -31,7 +31,7 @@ export default defineConfig({
         'packages/content/lessons/**',
         'packages/content/algorithms/**',
         'apps/api/src/services/terminal-session.service.ts',
-        'apps/api/src/services/interactive-execution.service.ts',
+        'framework/sandbox/src/live-run.ts',
         'apps/api/src/config/index.ts',
       ],
       thresholds: {

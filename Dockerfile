@@ -11,6 +11,7 @@ COPY apps/ui/package.json ./apps/ui/
 COPY packages/content/package.json ./packages/content/
 COPY packages/shared/package.json ./packages/shared/
 COPY framework/server-kit/package.json ./framework/server-kit/
+COPY framework/sandbox/package.json ./framework/sandbox/
 RUN npm ci --ignore-scripts
 
 # It's run separately, not as postinstall, to take advantage of docker caching

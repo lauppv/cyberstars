@@ -21,7 +21,7 @@ const { mockDockerExec, mockConverse, mockKillLeftovers } = vi.hoisted(() => ({
   mockConverse: vi.fn(),
   mockKillLeftovers: vi.fn(),
 }));
-vi.mock('./docker-exec.js', () => ({
+vi.mock('@cyberstars-framework/sandbox/docker', () => ({
   dockerExec: (...args: unknown[]) => mockDockerExec(...args),
   dockerConverse: (...args: unknown[]) => mockConverse(...args),
   killLeftovers: (...args: unknown[]) => mockKillLeftovers(...args),
@@ -33,19 +33,19 @@ const { mockAcquire, mockRelease, mockDestroy, mockIsRunning } = vi.hoisted(() =
   mockDestroy: vi.fn(),
   mockIsRunning: vi.fn(),
 }));
-vi.mock('./code-container.service.js', () => ({
-  acquireForRun: (...args: unknown[]) => mockAcquire(...args),
-  releaseAfterRun: (...args: unknown[]) => mockRelease(...args),
-  destroyOwner: (...args: unknown[]) => mockDestroy(...args),
-  isRunning: (...args: unknown[]) => mockIsRunning(...args),
-}));
 
 const { mockAcquireSandbox, mockReleaseSandbox } = vi.hoisted(() => ({
   mockAcquireSandbox: vi.fn(),
   mockReleaseSandbox: vi.fn(),
 }));
-vi.mock('./sandbox-slots.js', () => ({
-  acquireSandboxSlot: (...args: unknown[]) => mockAcquireSandbox(...args),
+vi.mock('./sandbox.js', () => ({
+  sandbox: {
+    acquireForRun: (...args: unknown[]) => mockAcquire(...args),
+    releaseAfterRun: (...args: unknown[]) => mockRelease(...args),
+    destroyOwner: (...args: unknown[]) => mockDestroy(...args),
+    isRunning: (...args: unknown[]) => mockIsRunning(...args),
+    acquireSlot: (...args: unknown[]) => mockAcquireSandbox(...args),
+  },
 }));
 
 // C does structure + injection on the server via web-tree-sitter, which can't
@@ -301,6 +301,21 @@ describe('runLessonTests', () => {
       path.join('trees-graphs', 'python', 'trees-tests.json'),
     );
     expect(mockAcquire).toHaveBeenCalledWith('user:1', 'python', undefined);
+  });
+
+  it("runs an algorithm challenge in its set language's container, the one the editor uses", async () => {
+    stubFiles();
+    stubVerdict({
+      syntaxError: null,
+      cases: [
+        { user: program(), solution: program() },
+        { user: program(), solution: program() },
+      ],
+    });
+
+    await runLessonTests('user:1', 'algo-java', 'two-sum', 'code');
+
+    expect(mockAcquire).toHaveBeenCalledWith('user:1', 'java', undefined);
   });
 
   it("tells the page how the lesson compares outputs, 'trimmed' when the spec doesn't say", async () => {

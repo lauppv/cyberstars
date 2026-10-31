@@ -13,7 +13,7 @@ import fs from 'fs';
 import path from 'path';
 import { spawn } from 'child_process';
 import prettier from 'prettier';
-import { pythonRuntime } from '../src/runtimes/python.js';
+import { pythonRuntime } from '@cyberstars-framework/sandbox/languages';
 import {
   parseQuiz,
   quizFiles,

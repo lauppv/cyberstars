@@ -39,7 +39,8 @@ cyberstars/
 │       └── scripts/               # Static-content generator
 │
 ├── framework/                     # @cyberstars-framework/*: the reusable parts, one package each
-│   └── server-kit/                # Settings loader, AppError and its handler, validateBody, limiters
+│   ├── server-kit/                # Settings loader, AppError and its handler, validateBody, limiters
+│   └── sandbox/                   # Code in Docker: language presets, container pool, busy cap, live run
 │
 ├── e2e/                           # Playwright tests that drive the UI and the API together
 ├── test/                          # Shared Vitest setup (jsdom, jest-dom matchers)
@@ -259,12 +260,12 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma), cam
 
 Code runs in Docker on the server, never in the browser: `python:3.10-slim`, `gcc:latest` and `eclipse-temurin:21-jdk-alpine`, plus `cyberstars-linux-sandbox` for the terminal.
 
-- **One container per owner**, on the language they last ran, reused across runs and swapped on a language change, dropped after 15 minutes idle or when the global cap (`CODE_MAX_CONTAINERS`) needs room (`code-container.service.ts`).
+- **One container per owner**, on the language they last ran (a Java lesson and a Java challenge share it), reused across runs and swapped on a language change, dropped after 15 minutes idle or when the global cap (`CODE_MAX_CONTAINERS`) needs room. The sandbox package (`framework/sandbox`) does it; the app creates it once with its languages, label and limits (`apps/api/src/services/sandbox.ts`, limits in `config/sandbox.ts`).
 - **Locked down**: no network, 128 MB, 64 processes, no capabilities, a read-only root, an unprivileged uid (`SANDBOX_UID`), and tmpfs for `/work` and `/tmp`. Docker always gets an argument array, never a shell string.
 - **Limits**: 20 s per run (restarting with each line of input), 1 MB of output, 10 runs a minute per owner, and at most `SANDBOX_MAX_BUSY` sandboxes busy at once across the server; past it a run waits up to 30 s and the student sees a notice. Guests also get 10 runs in all and share limits per IP.
 - **Cleanup**: a timeout or an abandoned run destroys the container; a normal exit kills what the program left behind and keeps it. The server removes every labelled sandbox when it starts.
 
-To add a language, implement `LanguageRuntime` in `apps/api/src/runtimes/<lang>.ts` and register it in `registry.ts`.
+To add a language, describe it as a `LanguageRuntime` (the package ships Python, Java and C in `framework/sandbox/src/languages/`) and add it to `LANGUAGES` in `apps/api/src/runtimes/registry.ts`, where `languageOf` also maps a course key to its language (`algo-java` to `java`).
 
 ## Lesson format
 

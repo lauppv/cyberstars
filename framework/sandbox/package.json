@@ -1,0 +1,15 @@
+{
+  "name": "@cyberstars-framework/sandbox",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./docker": "./src/docker.ts",
+    "./languages": "./src/languages/index.ts",
+    "./sandbox": "./src/sandbox.ts",
+    "./slots": "./src/slots.ts"
+  },
+  "dependencies": {
+    "@cyberstars-framework/server-kit": "0.0.0"
+  }
+}

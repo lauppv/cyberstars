@@ -13,7 +13,8 @@ vi.mock('child_process', () => {
 
 const { createSession, getSessionView, activeCount, destroyAllSessions } =
   await import('./terminal-session.service.js');
-const { acquireForRun, releaseAfterRun, drainAll } = await import('./code-container.service.js');
+const { sandbox } = await import('./sandbox.js');
+const { acquireForRun, releaseAfterRun, drainAll } = sandbox;
 
 type DockerCb = (err: Error | null, stdout: string, stderr: string) => void;
 

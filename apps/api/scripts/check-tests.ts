@@ -29,7 +29,7 @@ import { CODE_LANGUAGES, isMultiLanguage } from '@cyberstars/shared/constants';
 import { VARIANTS_DIR } from '@cyberstars/content/paths';
 import { contentDir } from '../src/services/paths.js';
 import { runLessonTests } from '../src/services/lesson-tests.service.js';
-import { drainAll } from '../src/services/code-container.service.js';
+import { sandbox } from '../src/services/sandbox.js';
 
 const TESTS_SUFFIX = '-tests.json';
 
@@ -193,7 +193,7 @@ async function main() {
     }
   }
 
-  await drainAll();
+  await sandbox.drainAll();
   if (failures) {
     console.error(`\n${failures} lesson(s) failed`);
     process.exit(1);

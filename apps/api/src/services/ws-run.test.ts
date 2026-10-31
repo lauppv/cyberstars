@@ -11,9 +11,6 @@ process.env.DB_NAME = 'test';
 process.env.DB_PASSWORD = 'test';
 
 const mockRun = vi.fn();
-vi.mock('./interactive-execution.service.js', () => ({
-  handleInteractiveRun: (...args: unknown[]) => mockRun(...args),
-}));
 
 // A run that names its lesson goes through the hidden part (harness.test.ts
 // covers the wrapping itself).
@@ -27,9 +24,12 @@ vi.mock('./harness.js', () => ({
 
 const openSessionMock = vi.fn();
 const closeSessionMock = vi.fn();
-vi.mock('./code-container.service.js', () => ({
-  openSession: (...args: unknown[]) => openSessionMock(...args),
-  closeSession: (...args: unknown[]) => closeSessionMock(...args),
+vi.mock('./sandbox.js', () => ({
+  sandbox: {
+    run: (...args: unknown[]) => mockRun(...args),
+    openSession: (...args: unknown[]) => openSessionMock(...args),
+    closeSession: (...args: unknown[]) => closeSessionMock(...args),
+  },
 }));
 
 const registerUserSocketMock = vi.fn();
@@ -250,6 +250,15 @@ describe('handleConnection', () => {
     handleConnection(ws as unknown as WebSocket, fakeReq(), 2001);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
     expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'user:2001', undefined);
+    ws.emit('close');
+  });
+
+  it("runs an algorithm challenge's code in its set language, the hidden part by the challenge", () => {
+    const ws = new FakeWs();
+    handleConnection(ws as unknown as WebSocket, fakeReq(), 2010);
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'algo-java' }));
+    expect(mockProgramForRun).toHaveBeenCalledWith('x', 'algo-java', undefined);
+    expect(mockRun).toHaveBeenCalledWith(ws, 'x', 'java', 'user:2010', undefined);
     ws.emit('close');
   });
 
