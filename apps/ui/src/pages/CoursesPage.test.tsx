@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router';
 
 const mockNavigate = vi.fn();
@@ -427,5 +427,30 @@ describe('CoursesPage', () => {
     });
     renderPage('/courses/python');
     expect(screen.getByText('✓')).toBeDefined();
+  });
+
+  it("says a course's progress didn't load, so its card isn't taken for not started", () => {
+    const refresh = vi.fn();
+    mockUseAuth.mockReturnValue({ isLoggedIn: true, isLoading: false } as ReturnType<
+      typeof useAuth
+    >);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(['python']),
+      isLoading: false,
+      refresh,
+    });
+    renderPage();
+    const alert = screen.getByRole('alert');
+    expect(alert).toHaveTextContent(
+      "Your progress couldn't load, so some courses may look not started.",
+    );
+    fireEvent.click(within(alert).getByRole('button', { name: 'Try again' }));
+    expect(refresh).toHaveBeenCalledOnce();
   });
 });

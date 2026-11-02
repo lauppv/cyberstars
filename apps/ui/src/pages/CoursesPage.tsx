@@ -17,6 +17,7 @@ import {
   isMultiLanguage,
 } from '@cyberstars/shared/constants';
 import { BetaBadge } from '../components/ui/BetaBadge';
+import { LoadError } from '../components/ui/LoadError';
 
 interface CourseData {
   key: string;
@@ -39,7 +40,12 @@ export function CoursesPage() {
   const { t } = useTranslation();
   const { isLoggedIn } = useAuth();
   const { courses: serverCourses, isLoading: curriculumLoading } = useCurriculum();
-  const { progressMap, isLoading: progressLoading } = useAllProgress();
+  const {
+    progressMap,
+    failedCourses,
+    isLoading: progressLoading,
+    refresh: refreshProgress,
+  } = useAllProgress();
   // A course's syllabus is its own address, /courses/python, so it can be
   // linked and indexed. /courses?open=python is the old way to say it
   const { course: selectedKey } = useParams<{ course?: string }>();
@@ -117,6 +123,11 @@ export function CoursesPage() {
       <Topbar />
 
       <main className="flex-1 max-w-[1040px] mx-auto w-full px-4 sm:px-7 py-8 pb-16">
+        {failedCourses.size > 0 && (
+          <div className="mb-4">
+            <LoadError text={t('progress.loadFailed')} onRetry={refreshProgress} />
+          </div>
+        )}
         {/* Course grid */}
         <div className="grid grid-cols-1 @2xl:grid-cols-2 gap-4">
           {allCourses.map((c) => (
