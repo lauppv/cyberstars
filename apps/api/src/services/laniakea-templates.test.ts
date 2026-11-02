@@ -98,6 +98,7 @@ describe('parseTemplates', () => {
       },
       'add needs 3 wrong options',
     ],
+    [{ templates: [{ ...prints, kind: 'holds' }] }, 'add variable has no text'],
   ])('refuses a broken template (%#)', (raw, message) => {
     expect(() => parseTemplates(raw)).toThrow(message);
   });
@@ -336,6 +337,48 @@ describe('planTemplate', () => {
     ).toThrow('add repeats a set of values');
     expect(() => plans({ text: 'What is {{c}}?' })).toThrow(
       'add with {"a":"7","b":"3"}: the text has a blank with no value',
+    );
+  });
+
+  const holds = {
+    kind: 'holds',
+    text: 'What is in `{{v}}` at the end?',
+    code: '{{v}} = {{a}}\n{{v}} = {{v}} + 1',
+    values: [{ v: 'fuel', a: 7 }],
+    variable: '{{v}}',
+    mistakes: [
+      ['{{v}} = {{v}} + 1', 'print({{v}} + 1)'],
+      ['{{a}}', '"{{a}}"'],
+      ['{{v}} + 1', '{{v}} + 2'],
+      ['{{v}} + 1', '{{v}} * 2'],
+    ],
+  };
+
+  it('holds: the options are what the variable holds at the end, as Python shows it', () => {
+    const [plan] = plans(holds);
+    expect(plan.programs).toEqual([
+      'fuel = 7\nfuel = fuel + 1\nprint(repr(fuel))',
+      'fuel = 7\nprint(fuel + 1)\nprint(repr(fuel))',
+      'fuel = "7"\nfuel = fuel + 1\nprint(repr(fuel))',
+      'fuel = 7\nfuel = fuel + 2\nprint(repr(fuel))',
+      'fuel = 7\nfuel = fuel * 2\nprint(repr(fuel))',
+    ]);
+    // The first mistake prints 8 before the value it leaves, the second fails
+    expect(
+      plan.build([ok('8\n'), ok('8\n7\n'), fails('TypeError'), ok('9\n'), ok('14\n')]),
+    ).toEqual({
+      id: plan.id,
+      text: 'What is in `fuel` at the end?',
+      code: 'fuel = 7\nfuel = fuel + 1',
+      output: null,
+      options: ['8', '7', '9', '14'],
+      answer: 0,
+    });
+  });
+
+  it("holds: refuses a variable that isn't a name", () => {
+    expect(() => plans({ ...holds, variable: '{{v}}[0]' })).toThrow(
+      'add with {"v":"fuel","a":"7"}: fuel[0] isn\'t a variable\'s name',
     );
   });
 

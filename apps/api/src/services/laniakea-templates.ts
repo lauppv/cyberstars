@@ -29,6 +29,9 @@ import { QUIZ_ID, type QuizQuestionSpec } from './laniakea-quiz.js';
 //   shows the broken program and what `code` prints, and the options are the
 //   broken line and three others, those of its kind (opening a block with
 //   `:` or not) first, each nearest first.
+// - holds: the right option is what `variable` holds once `code` ends, as
+//   Python shows a value (repr, so "5" and 5 differ), and each mistake's
+//   program gives a wrong one the same way.
 //
 // A wrong option that gives the right output (or for prints, one that fails or
 // prints nothing) or repeats another option is passed over, so a template may
@@ -45,6 +48,7 @@ const TEMPLATE_KINDS = [
   'missing-line',
   'missing-value',
   'wrong-line',
+  'holds',
 ] as const;
 type TemplateKind = (typeof TEMPLATE_KINDS)[number];
 
@@ -57,13 +61,15 @@ export interface QuizTemplate {
   text: string;
   code: string;
   values: Record<string, string>[];
-  // prints and which-program
+  // prints, which-program and holds
   mistakes: Swap[];
   // missing-line and missing-value
   answer: string;
   wrong: string[];
   // wrong-line
   bug: Swap | null;
+  // holds
+  variable: string;
 }
 
 // What running one program gave: what it printed, or the error that stopped it.
@@ -82,6 +88,7 @@ const GAP = '___';
 const WRONG = QUIZ_OPTIONS - 1;
 const BLANK = /\{\{(\w+)\}\}/g;
 const NOT_ASCII = /[^\x20-\x7e\n]/;
+const NAME = /^[A-Za-z_]\w*$/;
 
 function str(value: unknown, where: string): string {
   if (typeof value !== 'string' || value.trim() === '') throw new Error(`${where} has no text`);
@@ -164,12 +171,14 @@ export function parseTemplates(raw: unknown): QuizTemplate[] {
       answer: '',
       wrong: [],
       bug: null,
+      variable: '',
     };
-    if (kind === 'prints' || kind === 'which-program') {
+    if (kind === 'prints' || kind === 'which-program' || kind === 'holds') {
       template.mistakes = list(t.mistakes, `${id} mistakes`).map((m, j) =>
         swapIn(code, m, `${id} mistake ${j + 1}`),
       );
       if (template.mistakes.length < WRONG) throw new Error(`${id} needs ${WRONG} mistakes`);
+      if (kind === 'holds') template.variable = str(t.variable, `${id} variable`);
     } else if (kind === 'wrong-line') {
       template.bug = swapIn(code, t.bug, `${id} bug`);
       if (template.bug.some((part) => part.includes('\n'))) {
@@ -199,6 +208,11 @@ function fill(text: string, values: Record<string, string>): string {
 
 function swapped(code: string, [what, instead]: Swap): string {
   return code.replace(what, () => instead);
+}
+
+// A program that prints, last, what `variable` holds once `code` ends.
+function showing(code: string, variable: string): string {
+  return `${code}\nprint(repr(${variable}))`;
 }
 
 // What a program prints as an option shows it: trailing spaces and the empty
@@ -323,6 +337,20 @@ export function planTemplate(
           const above = fewest + (seed % Math.max(1, most - fewest + 1));
           const others = [...up.slice(0, above), ...down, ...up.slice(above)];
           return question({ code: broken, output: out }, bad, pick(bad, others));
+        },
+      };
+    } else if (t.kind === 'holds') {
+      const variable = f(t.variable);
+      if (!NAME.test(variable)) throw new Error(`${where}: ${variable} isn't a variable's name`);
+      const mistaken = t.mistakes.map((m) => f(swapped(t.code, m)));
+      // What the program's last line printed: the variable's value
+      const held = (out: string) => out.split('\n').pop()!;
+      plan = {
+        programs: [code, ...mistaken].map((p) => showing(p, variable)),
+        build: ([run, ...runs]) => {
+          const value = held(printed(run));
+          const wrong = runs.map((r) => (r.ok && shown(r.out) !== '' ? held(shown(r.out)) : null));
+          return question({ code, output: null }, value, pick(value, wrong));
         },
       };
     } else {
