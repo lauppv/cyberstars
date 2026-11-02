@@ -4,6 +4,13 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./rules": "./src/rules.ts"
+    "./rules": "./src/rules.ts",
+    "./server": "./src/server.ts"
+  },
+  "dependencies": {
+    "@cyberstars-framework/server-kit": "0.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6"
   }
 }
