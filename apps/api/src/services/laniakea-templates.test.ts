@@ -109,17 +109,13 @@ describe('parseTemplates', () => {
     ],
     [
       {
-        templates: [
-          {
-            ...prints,
-            kind: 'which-input',
-            code: 'print(___)',
-            answer: 'a',
-            wrong: ['a', 'b', 'c'],
-          },
-        ],
+        templates: [{ ...prints, kind: 'which-error', code: 'print(___)', wrong: ['a', 'b', 'c'] }],
       },
       "add code has a ___, which its kind doesn't fill",
+    ],
+    [
+      { templates: [{ ...prints, kind: 'which-error', wrong: ['TypeError', ''] }] },
+      'add wrong 2 has no text',
     ],
   ])('refuses a broken template (%#)', (raw, message) => {
     expect(() => parseTemplates(raw)).toThrow(message);
@@ -435,6 +431,41 @@ describe('planTemplate', () => {
   it('which-input: types a line for each input()', () => {
     const [plan] = plans({ ...whichInput, answer: 'moon\nstar' });
     expect(plan.programs[0]).toMatch(/^__typed = iter\(\["moon","star"\]\)\n/);
+  });
+
+  const whichError = {
+    kind: 'which-error',
+    text: 'Which error stops this program?',
+    code: 'crew = {{crew}}\nprint(crew[3])',
+    values: [{ crew: '["Ana", "Ben"]' }],
+    wrong: ['IndexError', 'KeyError', 'TypeError', 'NameError'],
+  };
+
+  it('which-error: the right option is the error the program stops with', () => {
+    const [plan] = plans(whichError);
+    expect(plan.programs).toEqual(['crew = ["Ana", "Ben"]\nprint(crew[3])']);
+    expect(plan.build([fails('IndexError')])).toEqual({
+      id: plan.id,
+      text: 'Which error stops this program?',
+      code: 'crew = ["Ana", "Ben"]\nprint(crew[3])',
+      output: null,
+      options: ['IndexError', 'KeyError', 'TypeError', 'NameError'],
+      answer: 0,
+    });
+    expect(plan.build([fails('KeyError')]).options).toEqual([
+      'KeyError',
+      'IndexError',
+      'TypeError',
+      'NameError',
+    ]);
+  });
+
+  it("which-error: refuses a program that runs, or stops with no error of Python's", () => {
+    const [plan] = plans(whichError);
+    for (const run of [ok('Ana\n'), fails('TooLong')]) {
+      expect(() => plan.build([run])).toThrow("the program doesn't stop with an error");
+    }
+    expect(() => plan.build([fails('TypeError')])).not.toThrow();
   });
 
   it("refuses Romanian code that isn't ASCII", () => {

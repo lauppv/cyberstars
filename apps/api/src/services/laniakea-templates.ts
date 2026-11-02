@@ -37,6 +37,8 @@ import { QUIZ_ID, type QuizQuestionSpec } from './laniakea-quiz.js';
 //   type. The question shows `code` and what it prints with the answer typed:
 //   input() shows no prompt and the typed text doesn't show, so the output
 //   doesn't give the answer away.
+// - which-error: `code` stops with an error, and the right option is its name;
+//   the wrong ones come from `wrong`, other errors' names.
 //
 // A wrong option that gives the right output (or for prints, one that fails or
 // prints nothing) or repeats another option is passed over, so a template may
@@ -55,6 +57,7 @@ const TEMPLATE_KINDS = [
   'wrong-line',
   'holds',
   'which-input',
+  'which-error',
 ] as const;
 type TemplateKind = (typeof TEMPLATE_KINDS)[number];
 
@@ -69,7 +72,7 @@ export interface QuizTemplate {
   values: Record<string, string>[];
   // prints, which-program and holds
   mistakes: Swap[];
-  // missing-line, missing-value and which-input
+  // missing-line, missing-value and which-input (answer too), which-error
   answer: string;
   wrong: string[];
   // wrong-line
@@ -190,10 +193,10 @@ export function parseTemplates(raw: unknown): QuizTemplate[] {
       if (template.bug.some((part) => part.includes('\n'))) {
         throw new Error(`${id} bug changes more than one line`);
       }
-    } else if (kind === 'which-input') {
+    } else if (kind === 'which-input' || kind === 'which-error') {
       if (code.includes(GAP))
         throw new Error(`${id} code has a ${GAP}, which its kind doesn't fill`);
-      template.answer = str(t.answer, `${id} answer`);
+      if (kind === 'which-input') template.answer = str(t.answer, `${id} answer`);
       template.wrong = list(t.wrong, `${id} wrong`).map((w, j) => str(w, `${id} wrong ${j + 1}`));
       if (template.wrong.length < WRONG) throw new Error(`${id} needs ${WRONG} wrong options`);
     } else {
@@ -385,6 +388,17 @@ export function planTemplate(
           const out = printed(run);
           const options = wrong.map((w, i) => (gives(runs[i], out) ? null : w));
           return question({ code, output: out }, answer, pick(answer, options));
+        },
+      };
+    } else if (t.kind === 'which-error') {
+      plan = {
+        programs: [code],
+        build: ([run]) => {
+          // A timeout stops it too, but with no error of Python's to name
+          if (run.ok || !/Error$/.test(run.error)) {
+            throw new Error(`${where}: the program doesn't stop with an error`);
+          }
+          return question({ code, output: null }, run.error, pick(run.error, t.wrong.map(f)));
         },
       };
     } else {
