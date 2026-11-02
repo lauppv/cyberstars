@@ -42,7 +42,8 @@ cyberstars/
 ├── framework/                     # @cyberstars-framework/*: the reusable parts, one package each
 │   ├── server-kit/                # Settings loader, AppError and its handler, validateBody, limiters
 │   ├── sandbox/                   # Code in Docker: language presets, container pool, busy cap, live run
-│   └── auth/                      # Sign-up, login, sessions, the password reset and the admin check
+│   ├── auth/                      # Sign-up, login, sessions, the password reset and the admin check
+│   └── access/                    # Feature flags and usage limits over the app's own keys
 │
 ├── e2e/                           # Playwright tests that drive the UI and the API together
 ├── test/                          # Shared Vitest setup (jsdom, jest-dom matchers)
