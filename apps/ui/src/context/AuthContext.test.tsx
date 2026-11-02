@@ -269,6 +269,20 @@ describe('a session the server ended', () => {
     await waitFor(() => expect(state()).toBe('out:-'));
     expect(ended()).toBe('false');
   });
+
+  it("doesn't show when the student signed out in another tab", async () => {
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+
+    // This tab follows, and its check finds the cookie that sign-out cleared gone
+    getMe.mockImplementation(async () => {
+      throw await errorOf(Response.json({ error: 'No token provided' }, { status: 401 }));
+    });
+    fireEvent(window, new StorageEvent('storage', { key: 'cyberstars.student', newValue: null }));
+
+    await waitFor(() => expect(state()).toBe('out:-'));
+    expect(ended()).toBe('false');
+  });
 });
 
 describe('useAuth', () => {

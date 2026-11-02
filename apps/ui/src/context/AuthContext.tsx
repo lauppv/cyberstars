@@ -61,14 +61,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [user, isLoading]);
 
-  // Another tab signed in or out, so this one follows and its presence socket counts the right person
+  // Another tab signed in or out, so this one follows and its presence socket counts the right person.
+  // Following says nothing of a session that ended: the sign-out there may be the student's own
   useEffect(() => {
     const onStorage = (e: StorageEvent) => {
       if (e.key !== STUDENT_KEY) return;
       authService
         .getMe()
         .then(setUser)
-        .catch(() => setUser(null));
+        .catch(() => setUser(null))
+        .finally(() => setSessionEnded(false));
     };
     window.addEventListener('storage', onStorage);
     return () => window.removeEventListener('storage', onStorage);
