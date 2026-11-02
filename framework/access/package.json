@@ -1,0 +1,9 @@
+{
+  "name": "@cyberstars-framework/access",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./rules": "./src/rules.ts"
+  }
+}
