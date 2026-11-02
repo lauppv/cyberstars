@@ -6,11 +6,15 @@ import type {
   SignupPayload,
 } from '@cyberstars/shared/auth';
 import * as authService from '../services/authService';
+import { onSessionEnded } from '../services/apiClient';
 
 interface AuthContextType {
   user: User | null;
   isLoggedIn: boolean;
   isLoading: boolean;
+  // The server ended the session while the app still showed the student signed in
+  sessionEnded: boolean;
+  dismissSessionEnded: () => void;
   login: (payload: LoginPayload) => Promise<void>;
   signup: (payload: SignupPayload) => Promise<void>;
   logout: () => Promise<void>;
@@ -37,6 +41,7 @@ export function wasSignedIn(): boolean {
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [sessionEnded, setSessionEnded] = useState(false);
 
   useEffect(() => {
     authService
@@ -56,18 +61,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [user, isLoading]);
 
-  // Another tab signed in or out, so this one follows and its presence socket counts the right person
+  // Another tab signed in or out, so this one follows and its presence socket counts the right person.
+  // Following says nothing of a session that ended: the sign-out there may be the student's own
   useEffect(() => {
     const onStorage = (e: StorageEvent) => {
       if (e.key !== STUDENT_KEY) return;
       authService
         .getMe()
         .then(setUser)
-        .catch(() => setUser(null));
+        .catch(() => setUser(null))
+        .finally(() => setSessionEnded(false));
     };
     window.addEventListener('storage', onStorage);
     return () => window.removeEventListener('storage', onStorage);
   }, []);
+
+  // A tab left open past the session's 24 hours still shows the student; the
+  // first request that finds the session gone signs this tab out
+  useEffect(() => {
+    if (!user) return;
+    return onSessionEnded(() => {
+      setUser(null);
+      setSessionEnded(true);
+    });
+  }, [user]);
 
   const login = useCallback(async (payload: LoginPayload) => {
     await authService.login(payload);
@@ -84,7 +101,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = useCallback(async () => {
     await authService.logout();
     setUser(null);
+    setSessionEnded(false);
   }, []);
+
+  const dismissSessionEnded = useCallback(() => setSessionEnded(false), []);
 
   const refreshUser = useCallback(() => {
     authService
@@ -99,6 +119,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         isLoggedIn: !!user,
         isLoading,
+        // Signing in again, here or in another tab, puts it away
+        sessionEnded: sessionEnded && !user,
+        dismissSessionEnded,
         login,
         signup,
         logout,

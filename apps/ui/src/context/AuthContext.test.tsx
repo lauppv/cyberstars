@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import type { AuthenticatedUser } from '@cyberstars/shared/auth';
 
 const getMe = vi.fn();
@@ -14,17 +14,30 @@ vi.mock('../services/authService', () => ({
 }));
 
 const { AuthProvider, useAuth, wasSignedIn } = await import('./AuthContext');
+const { errorOf } = await import('../services/apiClient');
 
 const ADA = { id: 1, name: 'Ada', role: 'USER' } as AuthenticatedUser;
 const GRACE = { id: 2, name: 'Grace', role: 'ADMIN' } as AuthenticatedUser;
 
 function Probe() {
-  const { user, isLoggedIn, isLoading, login, signup, logout, refreshUser } = useAuth();
+  const {
+    user,
+    isLoggedIn,
+    isLoading,
+    sessionEnded,
+    dismissSessionEnded,
+    login,
+    signup,
+    logout,
+    refreshUser,
+  } = useAuth();
   return (
     <div>
       <span data-testid="state">
         {isLoading ? 'loading' : `${isLoggedIn ? 'in' : 'out'}:${user?.name ?? '-'}`}
       </span>
+      <span data-testid="ended">{String(sessionEnded)}</span>
+      <button onClick={dismissSessionEnded}>dismiss</button>
       <button onClick={() => void login({ email: 'a@b.c', password: 'pw' })}>login</button>
       <button onClick={() => void signup({ name: 'Ada', email: 'a@b.c', password: 'pw' })}>
         signup
@@ -194,6 +207,81 @@ describe('another tab', () => {
     otherTab('something.else', '1');
 
     expect(getMe).toHaveBeenCalledOnce();
+  });
+});
+
+describe('a session the server ended', () => {
+  const ended = () => screen.getByTestId('ended').textContent;
+  // A request's answer once the cookie expired
+  const requestFindsItGone = () =>
+    act(() => errorOf(Response.json({ error: 'No token provided' }, { status: 401 })));
+
+  it('signs out a student the app still showed signed in', async () => {
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+
+    await requestFindsItGone();
+
+    expect(state()).toBe('out:-');
+    expect(ended()).toBe('true');
+  });
+
+  it('says nothing to a guest', async () => {
+    getMe.mockRejectedValue(new Error('401'));
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('out:-'));
+
+    await requestFindsItGone();
+
+    expect(ended()).toBe('false');
+  });
+
+  it('goes away when dismissed', async () => {
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+    await requestFindsItGone();
+
+    fireEvent.click(screen.getByText('dismiss'));
+
+    expect(ended()).toBe('false');
+  });
+
+  it('goes away once the student signs in again', async () => {
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+    await requestFindsItGone();
+
+    fireEvent.click(screen.getByText('login'));
+
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+    expect(ended()).toBe('false');
+  });
+
+  it("doesn't come back after a sign out of the student's own", async () => {
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+    await requestFindsItGone();
+    fireEvent.click(screen.getByText('login'));
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+
+    fireEvent.click(screen.getByText('logout'));
+
+    await waitFor(() => expect(state()).toBe('out:-'));
+    expect(ended()).toBe('false');
+  });
+
+  it("doesn't show when the student signed out in another tab", async () => {
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+
+    // This tab follows, and its check finds the cookie that sign-out cleared gone
+    getMe.mockImplementation(async () => {
+      throw await errorOf(Response.json({ error: 'No token provided' }, { status: 401 }));
+    });
+    fireEvent(window, new StorageEvent('storage', { key: 'cyberstars.student', newValue: null }));
+
+    await waitFor(() => expect(state()).toBe('out:-'));
+    expect(ended()).toBe('false');
   });
 });
 

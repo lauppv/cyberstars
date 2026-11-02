@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import i18n from 'i18next';
 import { act, renderHook } from '@testing-library/react';
-import { api, ApiClientError } from './apiClient';
+import { api, ApiClientError, onSessionEnded } from './apiClient';
 import { setMaintenance, useMaintenance } from '../hooks/useMaintenance';
 
 const mockFetch = vi.fn();
@@ -266,5 +266,43 @@ describe('apiClient when the server says nothing the page can show', () => {
   it('keeps the general message for any other unreadable error', async () => {
     mockFetch.mockResolvedValue(new Response('oops', { status: 500 }));
     expect((await failure()).message).toBe('Something went wrong');
+  });
+});
+
+describe('apiClient when the session is gone', () => {
+  const answer = (status: number, error: string) =>
+    mockFetch.mockResolvedValue(Response.json({ error }, { status }));
+
+  it.each([
+    [401, 'No token provided'],
+    [403, 'Invalid token'],
+  ])('tells whoever listens on a %i %s', async (status, error) => {
+    const listener = vi.fn();
+    const stop = onSessionEnded(listener);
+    answer(status, error);
+    await expect(api.get('/api/progress/python')).rejects.toMatchObject({ status });
+    expect(listener).toHaveBeenCalledOnce();
+    stop();
+  });
+
+  it.each([
+    [401, 'Current password is incorrect'],
+    [401, 'Invalid email or password'],
+    [403, 'Admin access required'],
+  ])('stays quiet on a %i %s, which a signed-in student can get', async (status, error) => {
+    const listener = vi.fn();
+    const stop = onSessionEnded(listener);
+    answer(status, error);
+    await expect(api.get('/api/x')).rejects.toMatchObject({ status });
+    expect(listener).not.toHaveBeenCalled();
+    stop();
+  });
+
+  it('stops telling a listener once it stops listening', async () => {
+    const listener = vi.fn();
+    onSessionEnded(listener)();
+    answer(401, 'No token provided');
+    await expect(api.get('/api/x')).rejects.toMatchObject({ status: 401 });
+    expect(listener).not.toHaveBeenCalled();
   });
 });

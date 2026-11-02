@@ -26,6 +26,23 @@ export async function send(url: string, init: RequestInit): Promise<Response> {
   }
 }
 
+// What the API answers once the session is gone: the cookie expired, or a
+// password change ended it. A wrong password while signed in is another 401
+function sessionGone(status: number, words: string): boolean {
+  return (
+    (status === 401 && words === 'No token provided') ||
+    (status === 403 && words === 'Invalid token')
+  );
+}
+
+const sessionListeners = new Set<() => void>();
+
+// Lets the sign-in state hear that a request found the session gone
+export function onSessionEnded(listener: () => void): () => void {
+  sessionListeners.add(listener);
+  return () => sessionListeners.delete(listener);
+}
+
 // The error for an answer that isn't ok: the server's words when it gave any,
 // else what its status means, else `fallback`
 export async function errorOf(res: Response, fallback = 'Something went wrong') {
@@ -36,6 +53,7 @@ export async function errorOf(res: Response, fallback = 'Something went wrong') 
   } catch {
     // response wasn't JSON
   }
+  if (sessionGone(res.status, words)) for (const listener of sessionListeners) listener();
   if (words) return new ApiClientError(res.status, words);
   const meaning = STATUS_WORDS[res.status];
   if (meaning) return new ApiClientError(res.status, '', i18next.t(meaning));
