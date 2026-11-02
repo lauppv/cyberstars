@@ -45,6 +45,16 @@ describe('requireFeatureAccess (preview gate)', () => {
     expect(res.status).not.toHaveBeenCalled();
   });
 
+  it('lets anyone through to a launched feature on prod, without touching the DB', async () => {
+    Object.assign(config, { isProduction: true });
+    PREVIEW_FEATURES.messaging = false;
+    const { req, res, next } = makeReq({ id: 7 });
+    await requireFeatureAccess('messaging')(req, res, next);
+    expect(next).toHaveBeenCalledWith();
+    expect(getRole).not.toHaveBeenCalled();
+    expect(res.status).not.toHaveBeenCalled();
+  });
+
   it('404s a guest on prod (feature is hidden, no role lookup)', async () => {
     Object.assign(config, { isProduction: true });
     const { req, res, next } = makeReq();
