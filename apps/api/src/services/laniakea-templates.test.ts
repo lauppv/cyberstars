@@ -99,6 +99,28 @@ describe('parseTemplates', () => {
       'add needs 3 wrong options',
     ],
     [{ templates: [{ ...prints, kind: 'holds' }] }, 'add variable has no text'],
+    [
+      { templates: [{ ...prints, kind: 'which-input', wrong: ['a', 'b', 'c'] }] },
+      'add answer has no text',
+    ],
+    [
+      { templates: [{ ...prints, kind: 'which-input', answer: '7', wrong: ['a', 'b'] }] },
+      'add needs 3 wrong options',
+    ],
+    [
+      {
+        templates: [
+          {
+            ...prints,
+            kind: 'which-input',
+            code: 'print(___)',
+            answer: 'a',
+            wrong: ['a', 'b', 'c'],
+          },
+        ],
+      },
+      "add code has a ___, which its kind doesn't fill",
+    ],
   ])('refuses a broken template (%#)', (raw, message) => {
     expect(() => parseTemplates(raw)).toThrow(message);
   });
@@ -380,6 +402,39 @@ describe('planTemplate', () => {
     expect(() => plans({ ...holds, variable: '{{v}}[0]' })).toThrow(
       'add with {"v":"fuel","a":"7"}: fuel[0] isn\'t a variable\'s name',
     );
+  });
+
+  const whichInput = {
+    kind: 'which-input',
+    text: 'What did the user type?',
+    code: 'age = int(input("Age: "))\nif age >= {{limit}}:\n    print("In")\nelse:\n    print("Out")',
+    values: [{ limit: 18 }],
+    answer: '{{limit}}',
+    wrong: ['17', '12', '20', '"{{limit}}"'],
+  };
+
+  it('which-input: the user types each option, and only the right one prints the output', () => {
+    const [plan] = plans(whichInput);
+    const code = whichInput.code.replace('{{limit}}', '18');
+    const typed = (line: string) =>
+      `__typed = iter(${JSON.stringify([line])})\ndef input(prompt=""):\n    return next(__typed)\n${code}`;
+    expect(plan.programs).toEqual(['18', '17', '12', '20', '"18"'].map(typed));
+    // 20 prints In too, so it is passed over
+    expect(
+      plan.build([ok('In\n'), ok('Out\n'), ok('Out\n'), ok('In\n'), fails('ValueError')]),
+    ).toEqual({
+      id: plan.id,
+      text: 'What did the user type?',
+      code,
+      output: 'In',
+      options: ['18', '17', '12', '"18"'],
+      answer: 0,
+    });
+  });
+
+  it('which-input: types a line for each input()', () => {
+    const [plan] = plans({ ...whichInput, answer: 'moon\nstar' });
+    expect(plan.programs[0]).toMatch(/^__typed = iter\(\["moon","star"\]\)\n/);
   });
 
   it("refuses Romanian code that isn't ASCII", () => {

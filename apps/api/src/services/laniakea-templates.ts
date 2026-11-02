@@ -32,6 +32,11 @@ import { QUIZ_ID, type QuizQuestionSpec } from './laniakea-quiz.js';
 // - holds: the right option is what `variable` holds once `code` ends, as
 //   Python shows a value (repr, so "5" and 5 differ), and each mistake's
 //   program gives a wrong one the same way.
+// - which-input: `code` reads with input(); `answer` is what the user types,
+//   a line for each input(), and each of `wrong` is something else they might
+//   type. The question shows `code` and what it prints with the answer typed:
+//   input() shows no prompt and the typed text doesn't show, so the output
+//   doesn't give the answer away.
 //
 // A wrong option that gives the right output (or for prints, one that fails or
 // prints nothing) or repeats another option is passed over, so a template may
@@ -49,6 +54,7 @@ const TEMPLATE_KINDS = [
   'missing-value',
   'wrong-line',
   'holds',
+  'which-input',
 ] as const;
 type TemplateKind = (typeof TEMPLATE_KINDS)[number];
 
@@ -63,7 +69,7 @@ export interface QuizTemplate {
   values: Record<string, string>[];
   // prints, which-program and holds
   mistakes: Swap[];
-  // missing-line and missing-value
+  // missing-line, missing-value and which-input
   answer: string;
   wrong: string[];
   // wrong-line
@@ -184,6 +190,12 @@ export function parseTemplates(raw: unknown): QuizTemplate[] {
       if (template.bug.some((part) => part.includes('\n'))) {
         throw new Error(`${id} bug changes more than one line`);
       }
+    } else if (kind === 'which-input') {
+      if (code.includes(GAP))
+        throw new Error(`${id} code has a ${GAP}, which its kind doesn't fill`);
+      template.answer = str(t.answer, `${id} answer`);
+      template.wrong = list(t.wrong, `${id} wrong`).map((w, j) => str(w, `${id} wrong ${j + 1}`));
+      if (template.wrong.length < WRONG) throw new Error(`${id} needs ${WRONG} wrong options`);
     } else {
       if (count(code, GAP) !== 1) throw new Error(`${id} code needs one ${GAP}`);
       const line = code.split('\n').find((l) => l.includes(GAP))!;
@@ -213,6 +225,17 @@ function swapped(code: string, [what, instead]: Swap): string {
 // A program that prints, last, what `variable` holds once `code` ends.
 function showing(code: string, variable: string): string {
   return `${code}\nprint(repr(${variable}))`;
+}
+
+// A program where input() gives the lines `typed` one by one, without showing
+// a prompt or the line, and fails once they run out, as with no one typing.
+function typing(code: string, typed: string): string {
+  return [
+    `__typed = iter(${JSON.stringify(typed.split('\n'))})`,
+    'def input(prompt=""):',
+    '    return next(__typed)',
+    code,
+  ].join('\n');
 }
 
 // What a program prints as an option shows it: trailing spaces and the empty
@@ -351,6 +374,17 @@ export function planTemplate(
           const value = held(printed(run));
           const wrong = runs.map((r) => (r.ok && shown(r.out) !== '' ? held(shown(r.out)) : null));
           return question({ code, output: null }, value, pick(value, wrong));
+        },
+      };
+    } else if (t.kind === 'which-input') {
+      const answer = f(t.answer);
+      const wrong = t.wrong.map(f);
+      plan = {
+        programs: [answer, ...wrong].map((typed) => typing(code, typed)),
+        build: ([run, ...runs]) => {
+          const out = printed(run);
+          const options = wrong.map((w, i) => (gives(runs[i], out) ? null : w));
+          return question({ code, output: out }, answer, pick(answer, options));
         },
       };
     } else {
