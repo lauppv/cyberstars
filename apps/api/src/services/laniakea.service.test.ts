@@ -27,6 +27,7 @@ function spec(word: string, n = 12) {
       output: i === 1 ? '1' : null,
       options: ['right', 'w1', 'w2', 'w3'].map((o) => `${o}-${i + 1}`),
       answer: 0,
+      template: `q${i + 1}`,
     })),
   };
 }
@@ -105,7 +106,26 @@ afterEach(() => {
 });
 
 describe('drawQuestions', () => {
-  const pool = ['a', 'b', 'c', 'd', 'e', 'f'];
+  // Questions written by hand: each is its own template, with a text of its own
+  // unless one is given
+  const hand = (ids: string[], text?: string) =>
+    ids.map((id) => ({ id, template: id, text: text ?? `${id}?` }));
+  // `count` questions made from one template, each with a text of its own
+  const made = (template: string, count: number) =>
+    Array.from({ length: count }, (_, i) => ({
+      id: `${template}-${i}`,
+      template,
+      text: `${template} ${i}?`,
+    }));
+  const letters = (n: number) => Array.from({ length: n }, (_, i) => `h${i}`);
+  // A planet's pool as the game has it: 30 by hand and 70 made from 10 templates
+  const planet = [
+    ...hand(letters(30)),
+    ...Array.from({ length: 10 }, (_, t) => made(`t${t}`, 7)).flat(),
+  ];
+  const templatesIn = (pool: { id: string; template: string }[], ids: string[]) =>
+    ids.map((id) => pool.find((q) => q.id === id)!.template);
+  const pool = hand(['a', 'b', 'c', 'd', 'e', 'f']);
 
   it('draws only questions not seen in this round', () => {
     const drawn = service.drawQuestions(pool, ['a', 'b'], 3);
@@ -124,6 +144,84 @@ describe('drawQuestions', () => {
   it('forgets seen questions the lesson no longer has', () => {
     const drawn = service.drawQuestions(pool, ['a', 'gone'], 2);
     expect(drawn.seen).toEqual(['a']);
+  });
+
+  it('takes no two questions from one template', () => {
+    for (let i = 0; i < 200; i++) {
+      const templates = templatesIn(planet, service.drawQuestions(planet, [], 10).ids);
+      expect(new Set(templates).size).toBe(10);
+    }
+  });
+
+  it('takes at most three questions with the same text', () => {
+    const pool = [...hand(letters(12), 'What does this print?'), ...hand(['a', 'b', 'c'])];
+    const more = [...pool, ...hand(Array.from({ length: 25 }, (_, i) => `x${i}`))];
+    for (let i = 0; i < 200; i++) {
+      const ids = service.drawQuestions(more, [], 10).ids;
+      expect(ids.filter((id) => id.startsWith('h')).length).toBeLessThanOrEqual(3);
+    }
+  });
+
+  it('spreads a text that holds more of the pool than three a test over the round', () => {
+    // 20 of 40 share a text: four tests, five of them in each
+    const pool = [...hand(letters(20), 'What does this print?'), ...made('t', 20)];
+    for (let i = 0; i < 100; i++) {
+      const drawn = service.drawQuestions(pool, [], 10).ids;
+      expect(drawn.filter((id) => id.startsWith('h'))).toHaveLength(5);
+    }
+  });
+
+  it('lets the text rule give way first, then the template one', () => {
+    // 12 left: six from one template, six with one text
+    const pool = [...made('t', 6), ...hand(letters(6), 'Same?')];
+    const drawn = service.drawQuestions(pool, [], 10).ids;
+    expect(drawn.filter((id) => id.startsWith('h'))).toHaveLength(6);
+    expect(drawn.filter((id) => id.startsWith('t'))).toHaveLength(4);
+  });
+
+  it('fills the test from one template when nothing else is left', () => {
+    // Twelve left over two tests: the template rule alone would take six
+    const pool = made('t', 12);
+    expect(new Set(service.drawQuestions(pool, [], 10).ids).size).toBe(10);
+  });
+
+  it('asks every question once in a round before any again', () => {
+    let seen: string[] = [];
+    const asked: string[] = [];
+    for (let test = 0; test < 10; test++) {
+      const drawn = service.drawQuestions(planet, seen, 10);
+      expect(drawn.seen).toEqual(seen);
+      asked.push(...drawn.ids);
+      seen = [...seen, ...drawn.ids];
+    }
+    expect(new Set(asked).size).toBe(100);
+    expect(service.drawQuestions(planet, seen, 10).seen).toEqual([]);
+  });
+
+  it('draws a template with many questions early, so the round rarely ends with two of it', () => {
+    // Ten questions from one template among 90 by hand, over the ten tests of
+    // a round: drawn at random, about a fifth of the tests would get two of it
+    const pool = [...made('t', 10), ...hand(Array.from({ length: 90 }, (_, i) => `x${i}`))];
+    let twice = 0;
+    for (let round = 0; round < 50; round++) {
+      let seen: string[] = [];
+      for (let test = 0; test < 10; test++) {
+        const drawn = service.drawQuestions(pool, seen, 10);
+        if (drawn.ids.filter((id) => id.startsWith('t-')).length > 1) twice++;
+        seen = [...seen, ...drawn.ids];
+      }
+    }
+    expect(twice).toBeLessThan(25);
+  });
+
+  it('starts a new round under the template rule too', () => {
+    const pool = [...hand(letters(9)), ...made('t', 3)];
+    const seen = pool.map((q) => q.id).filter((id) => id !== 'h0' && id !== 'h1');
+    for (let i = 0; i < 100; i++) {
+      const ids = service.drawQuestions(pool, seen, 4).ids;
+      expect(ids).toEqual(expect.arrayContaining(['h0', 'h1']));
+      expect(ids.filter((id) => id.startsWith('t')).length).toBeLessThanOrEqual(1);
+    }
   });
 });
 

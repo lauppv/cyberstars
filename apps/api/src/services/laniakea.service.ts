@@ -24,7 +24,7 @@ import * as progressRepo from '../repositories/progress.repository.js';
 import * as laniakeaRepo from '../repositories/laniakea.repository.js';
 import type { PlanetRow, StoredQuiz } from '../repositories/laniakea.repository.js';
 import { config } from '../config/index.js';
-import { loadQuiz, quizSlugs, type QuizSpec } from './laniakea-quiz.js';
+import { loadQuiz, quizSlugs, type PoolQuestion, type QuizSpec } from './laniakea-quiz.js';
 
 // The game's planets in their lessons' order, each with the lessons it covers:
 // First steps, whose lessons open the game, then one for each lesson.
@@ -53,19 +53,80 @@ function shuffle<T>(items: T[]): T[] {
   return out;
 }
 
+// A test takes at most this many questions with the same text, when its
+// planet's pool lets it.
+const SAME_TEXT = 3;
+
+type Drawable = Pick<PoolQuestion, 'id' | 'template' | 'text'>;
+
+function counter(questions: Drawable[], key: (q: Drawable) => string) {
+  const counts = new Map<string, number>();
+  for (const q of questions) counts.set(key(q), (counts.get(key(q)) ?? 0) + 1);
+  return (q: Drawable) => counts.get(key(q)) ?? 0;
+}
+
+// Fills a test of `n` with questions of `from` after those `taken`: no two
+// from one template and at most SAME_TEXT with the same text. The limits are
+// spread over the `round` the questions belong to: a template or a text with
+// more questions in it than the round has tests takes its share of each one.
+// The questions whose template and text have the most in the round tend to
+// come first, so the round's last tests aren't left with several of one. When
+// the limits can't fill the test, the text one gives way, then the template one.
+function fillTest(from: Drawable[], taken: Drawable[], n: number, round: Drawable[]): Drawable[] {
+  const tests = Math.max(1, Math.ceil(round.length / n));
+  const inTemplate = counter(round, (q) => q.template);
+  const withText = counter(round, (q) => q.text);
+  // A random order, each question weighted by how much its template and its
+  // text hold (Efraimidis and Spirakis' weighted sampling)
+  const order = from
+    .map((q) => ({ q, key: Math.random() ** (1 / (inTemplate(q) * withText(q))) }))
+    .sort((a, b) => b.key - a.key)
+    .map(({ q }) => q);
+
+  const test: Drawable[] = [];
+  const templates = new Map<string, number>();
+  const texts = new Map<string, number>();
+  const add = (q: Drawable) => {
+    test.push(q);
+    templates.set(q.template, (templates.get(q.template) ?? 0) + 1);
+    texts.set(q.text, (texts.get(q.text) ?? 0) + 1);
+  };
+  taken.forEach(add);
+  const templateFull = (q: Drawable) =>
+    (templates.get(q.template) ?? 0) >= Math.ceil(inTemplate(q) / tests);
+  const textFull = (q: Drawable) =>
+    (texts.get(q.text) ?? 0) >= Math.max(SAME_TEXT, Math.ceil(withText(q) / tests));
+  for (const limits of [[templateFull, textFull], [templateFull], []]) {
+    for (const q of order) {
+      if (test.length >= n) break;
+      if (!test.includes(q) && !limits.some((full) => full(q))) add(q);
+    }
+  }
+  return test;
+}
+
 // The questions of a new test: `n` the student hasn't seen in this round of the
-// pool. When fewer are left, the round starts over: those left come first and
-// the rest are drawn from the others, so no question shows twice in a test.
+// pool, as fillTest chooses them. When fewer are left, the round starts over:
+// those left come first and the rest are drawn from the others, so no question
+// shows twice in a test.
 export function drawQuestions(
-  pool: string[],
+  pool: Drawable[],
   seen: string[],
   n: number,
 ): { ids: string[]; seen: string[] } {
-  const seenSet = new Set(seen.filter((id) => pool.includes(id)));
-  const unseen = pool.filter((id) => !seenSet.has(id));
-  if (unseen.length >= n) return { ids: shuffle(unseen).slice(0, n), seen: [...seenSet] };
-  const others = shuffle(pool.filter((id) => seenSet.has(id))).slice(0, n - unseen.length);
-  return { ids: shuffle([...unseen, ...others]), seen: [] };
+  const ids = new Set(pool.map((q) => q.id));
+  const seenSet = new Set(seen.filter((id) => ids.has(id)));
+  const unseen = pool.filter((q) => !seenSet.has(q.id));
+  const goesOn = unseen.length >= n;
+  const test = goesOn
+    ? fillTest(unseen, [], n, unseen)
+    : fillTest(
+        pool.filter((q) => seenSet.has(q.id)),
+        unseen,
+        n,
+        pool,
+      );
+  return { ids: shuffle(test).map((q) => q.id), seen: goesOn ? [...seenSet] : [] };
 }
 
 // Where a pass leaves the planet: conquered, a step up once its recap is open,
@@ -227,11 +288,7 @@ export async function startQuiz(
     if (row.retryAt && row.retryAt > now) {
       throw new AppError(409, 'This planet opens for another try soon');
     }
-    const drawn = drawQuestions(
-      spec.questions.map((q) => q.id),
-      row.seen,
-      QUIZ_LENGTH,
-    );
+    const drawn = drawQuestions(spec.questions, row.seen, QUIZ_LENGTH);
     const quiz: StoredQuiz = {
       ids: drawn.ids,
       orders: drawn.ids.map((id) => shuffle(questionOf(spec, id)!.options.map((_, k) => k))),
