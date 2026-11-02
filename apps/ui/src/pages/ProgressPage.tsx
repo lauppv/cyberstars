@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { BetaBadge } from '../components/ui/BetaBadge';
+import { LoadError } from '../components/ui/LoadError';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
@@ -51,19 +52,7 @@ export function ProgressPage() {
       <main className="flex-1 px-4 sm:px-6 py-8">
         <div className="max-w-[880px] mx-auto space-y-8">
           {failedCourses.size > 0 && (
-            <div
-              role="alert"
-              className="panel flex items-center gap-3 px-4 py-2.5 text-[13px] text-[var(--error)]"
-            >
-              <span className="flex-1 min-w-0">{t('progress.loadFailed')}</span>
-              <button
-                type="button"
-                onClick={refreshProgress}
-                className="shrink-0 px-3 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] font-semibold hover:bg-[var(--surface)] transition cursor-pointer"
-              >
-                {t('common.retry')}
-              </button>
-            </div>
+            <LoadError text={t('progress.loadFailed')} onRetry={refreshProgress} />
           )}
           <section>
             <SectionHeader>{t('progress.courses')}</SectionHeader>
