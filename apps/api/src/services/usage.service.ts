@@ -9,13 +9,7 @@ import { USAGE_RULES, type UsageAction } from '@cyberstars/shared/usage';
 // unlimited and never touch the table.
 const usage = createUsage({
   rules: USAGE_RULES,
-  store: {
-    list: (userId) => usageRepo.listForUser(userId),
-    take: (userId, action, want, limit, windowMs, now) =>
-      usageRepo.take(userId, action, want, limit, windowMs, now),
-    giveBack: (userId, action, windowStart, units) =>
-      usageRepo.giveBack(userId, action, windowStart, units),
-  },
+  store: { list: usageRepo.listForUser, take: usageRepo.take, giveBack: usageRepo.giveBack },
 });
 
 // Units taken before the work they pay for, to settle once it is done.
