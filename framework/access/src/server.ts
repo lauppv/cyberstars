@@ -3,7 +3,9 @@ import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { USAGE_LIMIT_ERROR, type UsageRules, type UsageState, type UsageSummary } from './rules.js';
 
 export interface FeatureGateOptions<Feature extends string, Role extends string> {
-  // The app's feature rule, with its environment already applied
+  // The app's feature rule, with its environment already applied. It must let
+  // every role in wherever it lets a guest in: the gate lets everyone through
+  // a feature open to guests without asking for the role
   canAccess: (feature: Feature, role: Role | undefined) => boolean;
   // The caller's role from the app's own records, never from the token;
   // undefined for a guest. Asked only when the answer depends on it
