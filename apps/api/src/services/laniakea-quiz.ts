@@ -30,8 +30,14 @@ export interface QuizQuestionSpec {
   answer: number;
 }
 
+// A question of a lesson's pool: as its file holds it, and the template that
+// made it, or its own id when it was written by hand.
+export interface PoolQuestion extends QuizQuestionSpec {
+  template: string;
+}
+
 export interface QuizSpec {
-  questions: QuizQuestionSpec[];
+  questions: PoolQuestion[];
 }
 
 const QUIZ_SUFFIX = '-quiz.json';
@@ -52,15 +58,20 @@ function questionsIn(raw: unknown): Record<string, unknown>[] {
   return list as Record<string, unknown>[];
 }
 
-// Reads a lesson's pool from its files' contents (the quiz file, then the made
-// questions), or throws saying what is wrong with it.
-export function parseQuiz(...files: unknown[]): QuizSpec {
-  const list = files.flatMap(questionsIn);
+// A made question's id is its template's id, a dash and a hash of its values
+// (madeId in laniakea-templates.ts).
+const templateOf = (madeId: string) => madeId.replace(/-[^-]*$/, '');
+
+// Reads a lesson's pool from its files' contents, the quiz file and the made
+// questions, or throws saying what is wrong with it.
+export function parseQuiz(quiz: unknown, made: unknown = {}): QuizSpec {
+  const hand = questionsIn(quiz);
+  const list = [...hand, ...questionsIn(made)];
   if (list.length < QUIZ_LENGTH) {
     throw new Error(`${list.length} questions, a test needs ${QUIZ_LENGTH}`);
   }
   const ids = new Set<string>();
-  const questions = list.map((q: Record<string, unknown>, i): QuizQuestionSpec => {
+  const questions = list.map((q: Record<string, unknown>, i): PoolQuestion => {
     const where = `question ${i + 1}`;
     if (typeof q?.id !== 'string' || !QUIZ_ID.test(q.id)) throw new Error(`${where} has a bad id`);
     if (ids.has(q.id)) throw new Error(`${where} repeats the id ${q.id}`);
@@ -89,6 +100,7 @@ export function parseQuiz(...files: unknown[]): QuizSpec {
       output: (q.output as string | undefined) ?? null,
       options: options as string[],
       answer: q.answer as number,
+      template: i < hand.length ? q.id : templateOf(q.id),
     };
   });
   return { questions };

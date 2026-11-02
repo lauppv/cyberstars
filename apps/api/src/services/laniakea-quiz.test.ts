@@ -27,6 +27,7 @@ describe('parseQuiz', () => {
       output: '1',
       options: ['a', 'b', 'c', 'd'],
       answer: 1,
+      template: 'q1',
     });
     expect(spec.questions[1].code).toBeNull();
     expect(spec.questions[1].output).toBeNull();
@@ -37,6 +38,15 @@ describe('parseQuiz', () => {
     expect(parseQuiz({ templates: [] }, { questions: made }).questions).toHaveLength(10);
     const both = parseQuiz({ questions: pool(2), templates: [] }, { questions: made });
     expect(both.questions.map((q) => q.id)).toEqual(pool(12).map((q) => q.id));
+  });
+
+  it("names each question's template: a made one's from its id, a hand-written one's its own", () => {
+    const made = pool(9).map((q, i) => ({ ...q, id: `ie-branch-${i}0c7d7` }));
+    const spec = parseQuiz({ questions: [question(1, { id: 'q1-v2' })] }, { questions: made });
+    expect(spec.questions.map((q) => q.template)).toEqual([
+      'q1-v2',
+      ...made.map(() => 'ie-branch'),
+    ]);
   });
 
   it.each([
