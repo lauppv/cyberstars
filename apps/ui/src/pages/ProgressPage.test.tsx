@@ -127,4 +127,26 @@ describe('ProgressPage', () => {
     fireEvent.click(card('Python Algorithms'));
     expect(mockNavigate).toHaveBeenCalledWith('/algorithms/python');
   });
+
+  it('says nothing went wrong while every course loaded', () => {
+    renderPage();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+  });
+
+  it("says a course's progress didn't load, so its 0% isn't taken for real", () => {
+    vi.mocked(useAllProgress).mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(['python']),
+      isLoading: false,
+      refresh: mockRefresh,
+    } as unknown as ReturnType<typeof useAllProgress>);
+    renderPage();
+    const alert = screen.getByRole('alert');
+    expect(alert).toHaveTextContent(
+      "Your progress couldn't load, so some courses may look not started.",
+    );
+    mockRefresh.mockClear();
+    fireEvent.click(within(alert).getByRole('button', { name: 'Try again' }));
+    expect(mockRefresh).toHaveBeenCalledOnce();
+  });
 });

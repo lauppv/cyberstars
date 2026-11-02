@@ -515,7 +515,8 @@
     "xp": "{{earned}} / {{total}} XP",
     "next": "Next: <0>{{title}}</0>",
     "notStarted": "Not started yet",
-    "completed": "Completed"
+    "completed": "Completed",
+    "loadFailed": "Your progress couldn't load, so some courses may look not started."
   },
   "algoList": {
     "courseNotFound": "Course not found.",

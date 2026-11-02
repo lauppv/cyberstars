@@ -33,7 +33,7 @@ export function ProgressPage() {
   const { t } = useTranslation();
   const { isLoggedIn } = useAuth();
   const { courses: allCourses } = useCurriculum();
-  const { progressMap, refresh: refreshProgress } = useAllProgress();
+  const { progressMap, failedCourses, refresh: refreshProgress } = useAllProgress();
 
   const [courses, algos] = useMemo(() => {
     const pick = (keys: readonly string[]) =>
@@ -50,6 +50,21 @@ export function ProgressPage() {
       <Topbar />
       <main className="flex-1 px-4 sm:px-6 py-8">
         <div className="max-w-[880px] mx-auto space-y-8">
+          {failedCourses.size > 0 && (
+            <div
+              role="alert"
+              className="panel flex items-center gap-3 px-4 py-2.5 text-[13px] text-[var(--error)]"
+            >
+              <span className="flex-1 min-w-0">{t('progress.loadFailed')}</span>
+              <button
+                type="button"
+                onClick={refreshProgress}
+                className="shrink-0 px-3 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] font-semibold hover:bg-[var(--surface)] transition cursor-pointer"
+              >
+                {t('common.retry')}
+              </button>
+            </div>
+          )}
           <section>
             <SectionHeader>{t('progress.courses')}</SectionHeader>
             <div className="grid grid-cols-1 @2xl:grid-cols-2 gap-4">

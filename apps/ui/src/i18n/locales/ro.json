@@ -552,7 +552,8 @@
     "xp": "{{earned}} / {{total}} XP",
     "next": "Urmează: <0>{{title}}</0>",
     "notStarted": "Încă neînceput",
-    "completed": "Terminat"
+    "completed": "Terminat",
+    "loadFailed": "Progresul tău nu s-a putut încărca, așa că unele cursuri pot părea neîncepute."
   },
   "algoList": {
     "courseNotFound": "Cursul nu a fost găsit.",
