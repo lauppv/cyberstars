@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
-import { USAGE_LIMITS, USAGE_WINDOWS_MS } from '@cyberstars/shared/usage';
+import { USAGE_RULES } from '@cyberstars/shared/usage';
 
-const DAY = USAGE_WINDOWS_MS.showSolution;
+const DAY = USAGE_RULES.showSolution.windowMs;
 
 const mockRepo = { listForUser: vi.fn(), take: vi.fn(), giveBack: vi.fn() };
 vi.mock('../repositories/usage.repository.js', () => mockRepo);
@@ -24,8 +24,8 @@ describe('getSummary', () => {
     const summary = await getSummary(1, false);
     expect(summary.showSolution).toEqual({
       used: 0,
-      limit: USAGE_LIMITS.showSolution,
-      remaining: USAGE_LIMITS.showSolution,
+      limit: USAGE_RULES.showSolution.limit,
+      remaining: USAGE_RULES.showSolution.limit,
       resetAt: null,
       unlimited: false,
     });
@@ -40,7 +40,7 @@ describe('getSummary', () => {
     expect(mockRepo.listForUser).toHaveBeenCalledWith(1);
     expect(summary.showSolution).toMatchObject({
       used: 2,
-      remaining: USAGE_LIMITS.showSolution - 2,
+      remaining: USAGE_RULES.showSolution.limit - 2,
       resetAt: new Date(windowStart.getTime() + DAY).toISOString(),
     });
     expect(summary.tutorMessage.used).toBe(0);
@@ -61,12 +61,12 @@ describe('getSummary', () => {
 
     const summary = await getSummary(1, false);
 
-    expect(USAGE_WINDOWS_MS.tutorMessage).toBe(5 * 60 * 60 * 1000);
+    expect(USAGE_RULES.tutorMessage.windowMs).toBe(5 * 60 * 60 * 1000);
     expect(summary.tutorMessage).toMatchObject({
       used: 27,
       limit: 30,
       remaining: 3,
-      resetAt: new Date(windowStart.getTime() + USAGE_WINDOWS_MS.tutorMessage).toISOString(),
+      resetAt: new Date(windowStart.getTime() + USAGE_RULES.tutorMessage.windowMs).toISOString(),
     });
   });
 
@@ -91,7 +91,7 @@ describe('hold', () => {
       2,
       'showSolution',
       1,
-      USAGE_LIMITS.showSolution,
+      USAGE_RULES.showSolution.limit,
       DAY,
       NOW,
     );
@@ -108,7 +108,7 @@ describe('hold', () => {
       'tutorMessage',
       2,
       30,
-      USAGE_WINDOWS_MS.tutorMessage,
+      USAGE_RULES.tutorMessage.windowMs,
       NOW,
     );
     expect(held?.units).toBe(1);
