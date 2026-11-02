@@ -14,6 +14,7 @@ import { AppShell } from './components/layout/AppShell';
 import { TourGate } from './components/tour/TourGate';
 import { GuestGate } from './components/layout/GuestGate';
 import { MaintenanceScreen } from './components/layout/MaintenanceScreen';
+import { SessionEndedNotice } from './components/layout/SessionEndedNotice';
 import { usePresence } from './hooks/usePresence';
 import { usePageViews } from './hooks/usePageViews';
 import { useGuestSteps } from './hooks/useGuestSteps';
@@ -103,6 +104,7 @@ function App() {
       <MaintenanceScreen />
       <AuthProvider>
         <Presence />
+        <SessionEndedNotice />
         <CurriculumProvider>
           <ProgressProvider>
             <UserSocketProvider>
