@@ -15,7 +15,4 @@ const usage = createUsage({
 // Units taken before the work they pay for, to settle once it is done.
 export type UsageHold = Hold<UsageAction>;
 
-// getSummary: every action's state. hold: takes up to `want` units at once, at
-// least one, or throws 429 with the refill time. release: gives back what the
-// work didn't cost. consume: spends one and returns the refreshed summary.
 export const { getSummary, hold, release, consume } = usage;
