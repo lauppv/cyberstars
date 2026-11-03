@@ -13,13 +13,13 @@
       "answer": 0
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "De ce are `valoare_implicita` valoarea implicită 0 în `int_sigur(text, valoare_implicita=0)`?",
       "options": [
         "Pentru că try are nevoie de o variabilă pusă pe 0",
         "Ca int() să nu dea niciodată greș",
         "Ca un apel s-o poată omite, iar o citire coruptă devine atunci 0",
-        "Pentru că orice valoare implicită trebuie să fie 0"
+        "Pentru că orice valoare implicită din Python trebuie să fie 0, dacă nu e text"
       ],
       "answer": 2
     },
@@ -54,11 +54,11 @@
       "answer": 1
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "De ce prinde `int_sigur` eroarea ValueError pe nume, în loc de un `except:` simplu?",
       "options": [
         "Un except: simplu nu merge într-o funcție",
-        "except: trebuie să numească mereu o eroare, altfel Python se oprește",
+        "except: trebuie să numească mereu o eroare, altfel Python se oprește cu SyntaxError",
         "ValueError e singura eroare din Python",
         "Știm ce eroare așteptăm: int() care nu reușește pe un text"
       ],
@@ -150,11 +150,11 @@
       "answer": 3
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "`sumeaza` returnează trei valori. Ce se întâmplă la `a, b = sumeaza([1, 2, 3])`?",
       "options": [
         "Se oprește cu o eroare: trei valori, două variabile",
-        "a primește 6, b primește 3, iar a treia valoare se pierde",
+        "a primește 6, b primește 3, iar a treia valoare, 1, se pierde",
         "a primește tot tuplul, iar b rămâne gol",
         "a primește 1 și b primește 2"
       ],
@@ -216,10 +216,10 @@
       "answer": 1
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Unde poate fi folosit parametrul `valoare_implicita` al lui `int_sigur`?",
       "options": [
-        "Oriunde în program, după ce int_sigur e definită",
+        "Oriunde în program, după ce int_sigur a fost definită",
         "Doar în int_sigur, unde e o variabilă locală",
         "Doar în programul principal, după apel",
         "Doar în blocul except"
@@ -257,12 +257,12 @@
       "answer": 2
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "De ce primește `sumeaza` lista ca parametru, în loc să citească `numere` din afară?",
       "options": [
         "Ca să poată rezuma orice listă primește, nu doar pe aceea",
         "Pentru că sum() nu poate primi o listă globală",
-        "Pentru că un parametru face funcția mai rapidă",
+        "Pentru că un parametru face funcția mai rapidă decât o globală",
         "Ca lista să nu se poată schimba niciodată"
       ],
       "answer": 0

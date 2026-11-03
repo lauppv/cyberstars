@@ -36,9 +36,9 @@
       "answer": 1
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "In `def create_player(name, health=100, city=\"Vice City\"):`, which argument does every call have to pass?",
-      "options": ["health", "city", "name", "None: all three have a default"],
+      "options": ["health", "city, the last one", "name", "None: all three have a default"],
       "answer": 2
     },
     {
@@ -146,9 +146,14 @@
       "answer": 0
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "With `def create_player(name, health=100, city=\"Vice City\"):`, how many arguments can a call pass?",
-      "options": ["Exactly 3", "Exactly 1", "0, 1, 2 or 3", "1, 2 or 3"],
+      "options": [
+        "Exactly 3, one per parameter",
+        "Exactly 1, only the name",
+        "0, 1, 2 or 3",
+        "1, 2 or 3"
+      ],
       "answer": 3
     },
     {
@@ -216,13 +221,13 @@
       "answer": 1
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "In `create_player(\"Phil\", 50)`, which parameter gets 50?",
       "options": [
         "city, since it is the one with a text default",
         "name, since it is the first one",
-        "None: 50 is left over",
-        "health, the second parameter, since 50 is the second argument"
+        "None: 50 is left over, unused",
+        "health, the second one"
       ],
       "answer": 3
     },

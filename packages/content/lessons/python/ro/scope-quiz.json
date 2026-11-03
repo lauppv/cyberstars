@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce este scope-ul unei variabile?",
       "options": [
-        "Zona de cod în care variabila există și poate fi folosită",
-        "Felul valorii pe care o ține",
-        "De câte ori i se poate schimba valoarea",
-        "Linia unde a fost scrisă prima oară"
+        "Zona de cod unde variabila poate fi folosită",
+        "Felul valorii pe care o ține variabila, de exemplu int",
+        "De câte ori i se poate schimba valoarea cât rulează",
+        "Linia unde a fost scrisă prima oară în program"
       ],
       "answer": 0
     },
@@ -70,13 +70,13 @@
       "answer": 3
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Când tratează Python o variabilă din interiorul unei funcții ca locală?",
       "options": [
         "Când funcția îi dă o valoare cu =, chiar dacă o globală are același nume",
         "Doar când nicio globală nu are numele ei",
         "Doar când e un parametru",
-        "Niciodată: într-o funcție Python folosește mereu globala"
+        "Niciodată: într-o funcție, Python folosește mereu globala cu același nume"
       ],
       "answer": 0
     },
@@ -88,13 +88,13 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Care e, după lecție, cel mai bun fel în care o funcție lucrează cu date?",
       "options": [
         "Să citească și să schimbe direct variabilele globale",
         "Să își afișeze rezultatele în loc să le returneze",
         "Să primească datele prin parametri și să trimită rezultatele înapoi cu return",
-        "Să dea fiecărei variabile din program alt nume"
+        "Să dea fiecărei variabile din program un alt nume, ca să nu se încurce între ele"
       ],
       "answer": 2
     },
@@ -106,13 +106,13 @@
       "answer": 2
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "`f` face `x = 5`, iar `g` face `x = 99`. De ce nu se încurcă cele două x?",
       "options": [
         "Fiecare e local în funcția lui, deci sunt două variabile diferite",
         "Python păstrează doar ultimul x pe care l-a văzut",
         "g rulează după f, așa că șterge întâi x-ul lui f",
-        "Ba se încurcă: al doilea x îl înlocuiește pe primul pentru totdeauna"
+        "Ba se încurcă: al doilea x îl înlocuiește pe primul pentru totdeauna, în ambele funcții"
       ],
       "answer": 0
     },
@@ -134,11 +134,11 @@
       "answer": 2
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "În misiunea Amplificare Scut, de ce lucrează amplifica doar cu parametrul ei, nu cu scut cel global?",
       "options": [
         "Ca să dubleze orice valoare primește și să nu schimbe pe neașteptate o globală",
-        "Pentru că o funcție nu poate citi o variabilă globală",
+        "Pentru că o funcție nu poate citi deloc o variabilă globală, doar parametrii ei",
         "Pentru că o variabilă globală nu poate fi înmulțită",
         "Ca funcția să ruleze mai repede"
       ],
@@ -219,7 +219,7 @@
       "answer": 0
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "def saluta(nume):\n    print(f\"Salut, {nume}\")\n\nsaluta(\"Lance\")\nprint(nume)",
       "options": [
@@ -231,12 +231,12 @@
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Parametrul unei funcții e local sau global?",
       "options": [
         "Global: tot programul îl poate citi",
         "Global, dar doar după primul apel",
-        "Local: există doar în interiorul funcției lui",
+        "Local: există doar în funcția lui",
         "Niciuna: e doar un nume în linia def"
       ],
       "answer": 2
@@ -268,13 +268,13 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "Unde e creată o variabilă globală?",
       "options": [
         "În parametrii unei funcții",
         "Într-o funcție, pe prima ei linie",
-        "Într-o buclă",
-        "În afara oricărei funcții, la nivelul cel mai de sus al programului"
+        "Într-o buclă, înainte de prima trecere",
+        "În afara oricărei funcții"
       ],
       "answer": 3
     },

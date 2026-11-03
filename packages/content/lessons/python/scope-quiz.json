@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What is a variable's scope?",
       "options": [
-        "The part of the code where the variable exists and can be used",
-        "The kind of value it holds",
-        "How many times its value can change",
-        "The line where it was first written"
+        "Where in the code the variable can be used",
+        "The kind of value the variable holds, like int",
+        "How many times its value can change while running",
+        "The line where it was first written in the program"
       ],
       "answer": 0
     },
@@ -70,13 +70,13 @@
       "answer": 3
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "When does Python treat a variable inside a function as local?",
       "options": [
-        "When the function gives it a value with =, even if a global has the same name",
+        "When the function gives it a value with =, even if a global has its name",
         "Only when no global has its name",
         "Only when it is a parameter",
-        "Never: inside a function Python always uses the global"
+        "Never: inside a function Python always uses the global with the same name"
       ],
       "answer": 0
     },
@@ -88,13 +88,13 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "What does the lesson call the best way for a function to work with data?",
       "options": [
         "Read and change the global variables directly",
         "Print its results instead of returning them",
         "Take data through parameters and send results back with return",
-        "Give every variable in the program a different name"
+        "Give every variable in the program a different name, so none clash"
       ],
       "answer": 2
     },
@@ -106,13 +106,13 @@
       "answer": 2
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "`f` sets `x = 5` and `g` sets `x = 99`. Why don't the two x get in each other's way?",
       "options": [
         "Each one is local to its own function, so they are two different variables",
         "Python keeps only the last x it saw",
         "g runs after f, so it erases f's x first",
-        "They do: the second x replaces the first one for good"
+        "They do: the second x replaces the first one for good, in both of the functions"
       ],
       "answer": 0
     },
@@ -134,11 +134,11 @@
       "answer": 2
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "In the Shield Boost mission, why does boost work only with its parameter, not with the global shield?",
       "options": [
         "So it doubles whatever value it gets and never changes a global by surprise",
-        "Because a function can't read a global variable",
+        "Because a function can't read a global variable at all, only its parameters",
         "Because a global variable can't be multiplied",
         "So the function runs faster"
       ],
@@ -214,19 +214,19 @@
       "answer": 0
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "What happens when this runs?",
       "code": "def greet(name):\n    print(f\"Hi, {name}\")\n\ngreet(\"Lance\")\nprint(name)",
       "options": [
         "It prints Hi, Lance twice: the parameter stays after the call",
         "It prints Hi, Lance, then Lance",
         "It prints Hi, Lance, then stops with a NameError: name exists only inside greet",
-        "It stops before printing anything: a parameter can't be used in an f-string"
+        "It stops before printing anything: a parameter can't be used inside an f-string"
       ],
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Is a function's parameter local or global?",
       "options": [
         "Global: the whole program can read it",
@@ -263,13 +263,13 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "Where is a global variable created?",
       "options": [
         "In a function's parameters",
         "Inside a function, on its first line",
-        "Inside a loop",
-        "Outside any function, at the top level of the program"
+        "Inside a loop, before its first pass",
+        "Outside any function"
       ],
       "answer": 3
     },

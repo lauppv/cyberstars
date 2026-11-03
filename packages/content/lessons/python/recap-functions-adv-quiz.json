@@ -13,13 +13,13 @@
       "answer": 0
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Why does `fallback` have a default of 0 in `safe_int(text, fallback=0)`?",
       "options": [
         "Because try needs a variable set to 0",
         "So that int() never fails",
         "So a call can leave it out, and a corrupted reading then becomes 0",
-        "Because every default value has to be 0"
+        "Because every default value in Python has to be 0, unless it is a text"
       ],
       "answer": 2
     },
@@ -54,11 +54,11 @@
       "answer": 1
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Why does `safe_int` catch ValueError by name, instead of a bare `except:`?",
       "options": [
         "A bare except: doesn't work inside a function",
-        "except: must always name an error, or Python stops",
+        "except: must always name an error, or Python stops with a SyntaxError",
         "ValueError is the only error Python has",
         "We know which error we expect: int() failing on a text"
       ],
@@ -150,11 +150,11 @@
       "answer": 3
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "`summarize` returns three values. What happens on `a, b = summarize([1, 2, 3])`?",
       "options": [
         "It stops with an error: three values, two variables",
-        "a gets 6, b gets 3, and the third value is dropped",
+        "a gets 6, b gets 3, and the third value, 1, is dropped",
         "a gets the whole tuple and b stays empty",
         "a gets 1 and b gets 2"
       ],
@@ -216,10 +216,10 @@
       "answer": 1
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Where can the parameter `fallback` of `safe_int` be used?",
       "options": [
-        "Anywhere in the program, once safe_int is defined",
+        "Anywhere in the program, once safe_int has been defined",
         "Only inside safe_int, where it is a local variable",
         "Only in the main program, after the call",
         "Only inside the except block"
@@ -257,12 +257,12 @@
       "answer": 2
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Why does `summarize` take the list as a parameter instead of reading `numbers` from outside?",
       "options": [
         "So it can sum up any list it is given, not only that one",
         "Because sum() can't take a global list",
-        "Because a parameter makes the function faster",
+        "Because a parameter makes the function run faster than a global",
         "So the list can never change"
       ],
       "answer": 0

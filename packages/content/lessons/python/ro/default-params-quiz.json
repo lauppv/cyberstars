@@ -36,9 +36,9 @@
       "answer": 1
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "În `def creaza_jucator(nume, viata=100, oras=\"Vice City\"):`, ce argument trebuie să transmită orice apel?",
-      "options": ["viata", "oras", "nume", "Niciunul: toți trei au o valoare implicită"],
+      "options": ["viata", "oras, ultimul", "nume", "Niciunul: toți trei au o valoare implicită"],
       "answer": 2
     },
     {
@@ -146,9 +146,14 @@
       "answer": 0
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "Cu `def creaza_jucator(nume, viata=100, oras=\"Vice City\"):`, câte argumente poate transmite un apel?",
-      "options": ["Exact 3", "Exact 1", "0, 1, 2 sau 3", "1, 2 sau 3"],
+      "options": [
+        "Exact 3, câte unul pe parametru",
+        "Exact 1, doar numele",
+        "0, 1, 2 sau 3",
+        "1, 2 sau 3"
+      ],
       "answer": 3
     },
     {
@@ -216,13 +221,13 @@
       "answer": 1
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "În `creaza_jucator(\"Phil\", 50)`, ce parametru primește 50?",
       "options": [
         "oras, pentru că el are o valoare implicită text",
         "nume, pentru că e primul",
         "Niciunul: 50 rămâne pe dinafară",
-        "viata, al doilea parametru, pentru că 50 e al doilea argument"
+        "viata, al doilea"
       ],
       "answer": 3
     },
