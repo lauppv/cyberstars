@@ -301,14 +301,6 @@
         {
           "v": "fanioane",
           "items": "True, False, True"
-        },
-        {
-          "v": "incarcatura",
-          "items": "\"oxigen\", \"apa\", \"mancare\", \"combustibil\""
-        },
-        {
-          "v": "planete",
-          "items": "\"Marte\", \"Venus\", \"Pamant\""
         }
       ],
       "mistakes": [
@@ -352,24 +344,6 @@
           "items": "\"oxigen\", \"apa\", \"mancare\", \"combustibil\"",
           "i": 1,
           "j": 2
-        },
-        {
-          "v": "echipaj",
-          "items": "\"Shadow\", \"Jess\", \"Quincy\"",
-          "i": 1,
-          "j": 2
-        },
-        {
-          "v": "fructe",
-          "items": "\"mar\", \"para\", \"pruna\", \"kiwi\"",
-          "i": 2,
-          "j": 3
-        },
-        {
-          "v": "preturi",
-          "items": "3.14, 9.99, 12.5",
-          "i": 0,
-          "j": 1
         }
       ],
       "mistakes": [
@@ -399,14 +373,6 @@
         {
           "v": "scoruri",
           "items": "7, 3"
-        },
-        {
-          "v": "planete",
-          "items": "\"Marte\", \"Venus\", \"Pamant\", \"Mercur\", \"Jupiter\""
-        },
-        {
-          "v": "preturi",
-          "items": "3.14, 9.99, 12.5"
         }
       ],
       "mistakes": [
@@ -441,16 +407,6 @@
           "v": "echipaj",
           "items": "\"Shadow\"",
           "new": "\"Jess\""
-        },
-        {
-          "v": "preturi",
-          "items": "3.14, 9.99",
-          "new": 12.5
-        },
-        {
-          "v": "fanioane",
-          "items": "True",
-          "new": "False"
         }
       ],
       "mistakes": [
@@ -492,20 +448,6 @@
           "i": 2,
           "j": 1,
           "new": "\"Ana\""
-        },
-        {
-          "v": "preturi",
-          "items": "3.14, 9.99, 12.5",
-          "i": 1,
-          "j": 0,
-          "new": 5.5
-        },
-        {
-          "v": "fructe",
-          "items": "\"mar\", \"para\", \"pruna\", \"kiwi\"",
-          "i": 0,
-          "j": 1,
-          "new": "\"lamaie\""
         }
       ],
       "mistakes": [
@@ -660,16 +602,6 @@
           "v": "varste",
           "a": 42,
           "b": 35
-        },
-        {
-          "v": "echipaj",
-          "a": "\"Shadow\"",
-          "b": "\"Jess\""
-        },
-        {
-          "v": "fanioane",
-          "a": "True",
-          "b": "False"
         }
       ],
       "mistakes": [
@@ -732,11 +664,6 @@
           "v": "echipaj",
           "items": "\"Shadow\"",
           "new": "\"Jess\""
-        },
-        {
-          "v": "preturi",
-          "items": "3.14, 9.99, 12.5, 1.5",
-          "new": 2.0
         }
       ],
       "mistakes": [
@@ -807,6 +734,150 @@
       ],
       "answer": "len({{v}})",
       "wrong": ["{{v}}", "len(\"{{v}}\")", "len({{v}}) - 1", "{{v}}[0]"]
+    },
+    {
+      "id": "list-holds-append",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "{{v}} = [{{items}}]\n{{v}}.append({{new}})",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\"",
+          "new": "\"Cortez\""
+        },
+        {
+          "v": "scoruri",
+          "items": "10, 20",
+          "new": 30
+        },
+        {
+          "v": "planete",
+          "items": "\"Marte\"",
+          "new": "\"Venus\""
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        [".append({{new}})", " = [{{new}}]"],
+        ["{{v}}.append({{new}})", "{{v}} + [{{new}}]"],
+        ["{{v}}.append({{new}})", "{{v}}.append([{{new}}])"],
+        ["{{v}}.append({{new}})", "{{v}} = {{v}} + {{new}}"]
+      ]
+    },
+    {
+      "id": "list-holds-change",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "{{v}} = [{{items}}]\n{{v}}[{{i}}] = {{new}}",
+      "values": [
+        {
+          "v": "niveluri",
+          "items": "1, 2, 3",
+          "i": 1,
+          "new": 9
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Ana\", \"Ben\", \"Cal\"",
+          "i": 0,
+          "new": "\"Zoe\""
+        },
+        {
+          "v": "viteze",
+          "items": "40, 50, 60, 70",
+          "i": 2,
+          "new": 0
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["[{{i}}] =", "[{{i}} + 1] ="],
+        ["{{v}}[{{i}}] = {{new}}", "{{v}}.append({{new}})"],
+        ["{{v}}[{{i}}] = {{new}}", "{{v}}[{{i}}] == {{new}}"]
+      ]
+    },
+    {
+      "id": "list-holds-last",
+      "kind": "holds",
+      "text": "Ce conține `ultimul` la final?",
+      "code": "{{v}} = [{{items}}]\nultimul = {{v}}[len({{v}}) - 1]",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "scoruri",
+          "items": "10, 20, 30, 40"
+        },
+        {
+          "v": "culori",
+          "items": "\"rosu\", \"verde\", \"albastru\", \"roz\", \"gri\""
+        }
+      ],
+      "variable": "ultimul",
+      "mistakes": [
+        ["{{v}}[len({{v}}) - 1]", "len({{v}}) - 1"],
+        ["{{v}}[len({{v}}) - 1]", "{{v}}[0]"],
+        ["len({{v}}) - 1", "len({{v}}) - 2"],
+        ["len({{v}}) - 1]", "len({{v}})]"]
+      ]
+    },
+    {
+      "id": "list-input-index",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "n = int(input())\n{{v}} = [{{items}}]\nprint({{v}}[n])",
+      "values": [
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Terra\", \"Jupiter\"",
+          "n": 2,
+          "up": 3,
+          "down": 1,
+          "name": "Terra",
+          "len": 4
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "n": 0,
+          "up": 1,
+          "down": 2,
+          "name": "Tommy",
+          "len": 3
+        },
+        {
+          "v": "scoruri",
+          "items": "40, 75, 90, 60",
+          "n": 3,
+          "up": 4,
+          "down": 2,
+          "name": 60,
+          "len": 1
+        },
+        {
+          "v": "culori",
+          "items": "\"rosu\", \"verde\", \"albastru\"",
+          "n": 1,
+          "up": 2,
+          "down": 0,
+          "name": "verde",
+          "len": 3
+        },
+        {
+          "v": "niveluri",
+          "items": "5, 10, 15, 20",
+          "n": 2,
+          "up": 3,
+          "down": 1,
+          "name": 15,
+          "len": 4
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{up}}", "{{down}}", "{{name}}", "{{len}}"]
     }
   ]
 }

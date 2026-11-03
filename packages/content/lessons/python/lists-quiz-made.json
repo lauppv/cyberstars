@@ -30,20 +30,6 @@
       "answer": 0
     },
     {
-      "id": "list-print-4c60ec",
-      "text": "What does this print?",
-      "code": "cargo = [\"oxygen\", \"water\", \"food\", \"fuel\"]\nprint(cargo)",
-      "options": ["['oxygen', 'water', 'food', 'fuel']", "cargo", "oxygen", "4"],
-      "answer": 0
-    },
-    {
-      "id": "list-print-2953b8",
-      "text": "What does this print?",
-      "code": "planets = [\"Mars\", \"Venus\", \"Earth\"]\nprint(planets)",
-      "options": ["['Mars', 'Venus', 'Earth']", "planets", "Mars", "3"],
-      "answer": 0
-    },
-    {
       "id": "list-index-f84b18",
       "text": "What does this print?",
       "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(names[0])",
@@ -79,27 +65,6 @@
       "answer": 0
     },
     {
-      "id": "list-index-15141a",
-      "text": "What does this print?",
-      "code": "crew = [\"Shadow\", \"Jess\", \"Quincy\"]\nprint(crew[1])",
-      "options": ["Jess", "Quincy", "['Shadow', 'Jess', 'Quincy']", "crew[1]"],
-      "answer": 0
-    },
-    {
-      "id": "list-index-e9ef59",
-      "text": "What does this print?",
-      "code": "fruit = [\"apple\", \"pear\", \"plum\", \"kiwi\"]\nprint(fruit[2])",
-      "options": ["plum", "kiwi", "['apple', 'pear', 'plum', 'kiwi']", "fruit[2]"],
-      "answer": 0
-    },
-    {
-      "id": "list-index-e12752",
-      "text": "What does this print?",
-      "code": "prices = [3.14, 9.99, 12.5]\nprint(prices[0])",
-      "options": ["3.14", "9.99", "[3.14, 9.99, 12.5]", "prices[0]"],
-      "answer": 0
-    },
-    {
       "id": "list-len-a3512d",
       "text": "What does this print?",
       "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(len(names))",
@@ -125,20 +90,6 @@
       "text": "What does this print?",
       "code": "scores = [7, 3]\nprint(len(scores))",
       "options": ["2", "[7, 3]", "1", "6"],
-      "answer": 0
-    },
-    {
-      "id": "list-len-3b6c59",
-      "text": "What does this print?",
-      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Mercury\", \"Jupiter\"]\nprint(len(planets))",
-      "options": ["5", "['Mars', 'Venus', 'Earth', 'Mercury', 'Jupiter']", "4", "7"],
-      "answer": 0
-    },
-    {
-      "id": "list-len-691941",
-      "text": "What does this print?",
-      "code": "prices = [3.14, 9.99, 12.5]\nprint(len(prices))",
-      "options": ["3", "[3.14, 9.99, 12.5]", "2", "6"],
       "answer": 0
     },
     {
@@ -177,20 +128,6 @@
       "text": "What does this print?",
       "code": "crew = [\"Shadow\"]\ncrew.append(\"Jess\")\nprint(crew)",
       "options": ["['Shadow', 'Jess']", "['Shadow']", "['Jess', 'Shadow']", "['Jess']"],
-      "answer": 0
-    },
-    {
-      "id": "list-append-c412b7",
-      "text": "What does this print?",
-      "code": "prices = [3.14, 9.99]\nprices.append(12.5)\nprint(prices)",
-      "options": ["[3.14, 9.99, 12.5]", "[3.14, 9.99]", "[12.5, 3.14, 9.99]", "[12.5]"],
-      "answer": 0
-    },
-    {
-      "id": "list-append-213203",
-      "text": "What does this print?",
-      "code": "flags = [True]\nflags.append(False)\nprint(flags)",
-      "options": ["[True, False]", "[True]", "[False, True]", "[False]"],
       "answer": 0
     },
     {
@@ -233,30 +170,6 @@
         "['Shadow', 'Ana', 'Quincy']",
         "['Shadow', 'Jess', 'Quincy', 'Ana']",
         "['Shadow', 'Jess', 'Quincy']"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "list-change-13650b",
-      "text": "What does this print?",
-      "code": "prices = [3.14, 9.99, 12.5]\nprices[1] = 5.5\nprint(prices)",
-      "options": [
-        "[3.14, 5.5, 12.5]",
-        "[5.5, 9.99, 12.5]",
-        "[3.14, 9.99, 12.5, 5.5]",
-        "[3.14, 9.99, 12.5]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "list-change-310dc3",
-      "text": "What does this print?",
-      "code": "fruit = [\"apple\", \"pear\", \"plum\", \"kiwi\"]\nfruit[0] = \"lemon\"\nprint(fruit)",
-      "options": [
-        "['lemon', 'pear', 'plum', 'kiwi']",
-        "['apple', 'lemon', 'plum', 'kiwi']",
-        "['apple', 'pear', 'plum', 'kiwi', 'lemon']",
-        "['apple', 'pear', 'plum', 'kiwi']"
       ],
       "answer": 0
     },
@@ -437,20 +350,6 @@
       "answer": 0
     },
     {
-      "id": "list-two-appends-00e5b5",
-      "text": "What does this print?",
-      "code": "crew = []\ncrew.append(\"Shadow\")\ncrew.append(\"Jess\")\nprint(crew)",
-      "options": ["['Shadow', 'Jess']", "['Jess', 'Shadow']", "2", "['Jess']"],
-      "answer": 0
-    },
-    {
-      "id": "list-two-appends-cb00f8",
-      "text": "What does this print?",
-      "code": "flags = []\nflags.append(True)\nflags.append(False)\nprint(flags)",
-      "options": ["[True, False]", "[False, True]", "2", "[False]"],
-      "answer": 0
-    },
-    {
       "id": "list-bad-append-ccf421",
       "text": "Which line stops this program from printing this?",
       "code": "cargo = ()\ncargo.append(\"oxygen\")\ncargo.append(\"water\")\nprint(cargo)",
@@ -518,13 +417,6 @@
       "text": "What does this print?",
       "code": "crew = [\"Shadow\"]\ncrew.append(\"Jess\")\nprint(len(crew))",
       "options": ["2", "1", "['Shadow', 'Jess']", "3"],
-      "answer": 0
-    },
-    {
-      "id": "list-len-append-b886ad",
-      "text": "What does this print?",
-      "code": "prices = [3.14, 9.99, 12.5, 1.5]\nprices.append(2)\nprint(len(prices))",
-      "options": ["5", "4", "[3.14, 9.99, 12.5, 1.5, 2]", "6"],
       "answer": 0
     },
     {
@@ -613,6 +505,119 @@
       "code": "prices = [3.14, 9.99, 12.5]\nprint(___)",
       "output": "3",
       "options": ["len(prices)", "prices", "len(\"prices\")", "len(prices) - 1"],
+      "answer": 0
+    },
+    {
+      "id": "list-holds-append-265dfd",
+      "text": "What is in `crew` at the end?",
+      "code": "crew = [\"Tommy\", \"Lance\"]\ncrew.append(\"Cortez\")",
+      "options": [
+        "['Tommy', 'Lance', 'Cortez']",
+        "['Cortez']",
+        "['Tommy', 'Lance']",
+        "['Tommy', 'Lance', ['Cortez']]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-holds-append-3f5ae5",
+      "text": "What is in `scores` at the end?",
+      "code": "scores = [10, 20]\nscores.append(30)",
+      "options": ["[10, 20, 30]", "[30]", "[10, 20]", "[10, 20, [30]]"],
+      "answer": 0
+    },
+    {
+      "id": "list-holds-append-1cf3eb",
+      "text": "What is in `planets` at the end?",
+      "code": "planets = [\"Mars\"]\nplanets.append(\"Venus\")",
+      "options": ["['Mars', 'Venus']", "['Venus']", "['Mars']", "['Mars', ['Venus']]"],
+      "answer": 0
+    },
+    {
+      "id": "list-holds-change-c4c45e",
+      "text": "What is in `levels` at the end?",
+      "code": "levels = [1, 2, 3]\nlevels[1] = 9",
+      "options": ["[1, 9, 3]", "[1, 2, 9]", "[1, 2, 3, 9]", "[1, 2, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "list-holds-change-e47404",
+      "text": "What is in `crew` at the end?",
+      "code": "crew = [\"Ana\", \"Ben\", \"Cal\"]\ncrew[0] = \"Zoe\"",
+      "options": [
+        "['Zoe', 'Ben', 'Cal']",
+        "['Ana', 'Zoe', 'Cal']",
+        "['Ana', 'Ben', 'Cal', 'Zoe']",
+        "['Ana', 'Ben', 'Cal']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "list-holds-change-b0912c",
+      "text": "What is in `speeds` at the end?",
+      "code": "speeds = [40, 50, 60, 70]\nspeeds[2] = 0",
+      "options": ["[40, 50, 0, 70]", "[40, 50, 60, 0]", "[40, 50, 60, 70, 0]", "[40, 50, 60, 70]"],
+      "answer": 0
+    },
+    {
+      "id": "list-holds-last-98cca5",
+      "text": "What is in `last` at the end?",
+      "code": "crew = [\"Tommy\", \"Lance\", \"Cortez\"]\nlast = crew[len(crew) - 1]",
+      "options": ["'Cortez'", "2", "'Tommy'", "'Lance'"],
+      "answer": 0
+    },
+    {
+      "id": "list-holds-last-4cdacc",
+      "text": "What is in `last` at the end?",
+      "code": "scores = [10, 20, 30, 40]\nlast = scores[len(scores) - 1]",
+      "options": ["40", "3", "10", "30"],
+      "answer": 0
+    },
+    {
+      "id": "list-holds-last-78209b",
+      "text": "What is in `last` at the end?",
+      "code": "colors = [\"red\", \"green\", \"blue\", \"pink\", \"gray\"]\nlast = colors[len(colors) - 1]",
+      "options": ["'gray'", "4", "'red'", "'pink'"],
+      "answer": 0
+    },
+    {
+      "id": "list-input-index-658965",
+      "text": "What did the user type?",
+      "code": "n = int(input())\nplanets = [\"Mars\", \"Venus\", \"Earth\", \"Jupiter\"]\nprint(planets[n])",
+      "output": "Earth",
+      "options": ["2", "3", "1", "Earth"],
+      "answer": 0
+    },
+    {
+      "id": "list-input-index-26431e",
+      "text": "What did the user type?",
+      "code": "n = int(input())\ncrew = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(crew[n])",
+      "output": "Tommy",
+      "options": ["0", "1", "2", "Tommy"],
+      "answer": 0
+    },
+    {
+      "id": "list-input-index-904eaf",
+      "text": "What did the user type?",
+      "code": "n = int(input())\nscores = [40, 75, 90, 60]\nprint(scores[n])",
+      "output": "60",
+      "options": ["3", "4", "2", "60"],
+      "answer": 0
+    },
+    {
+      "id": "list-input-index-7eeb1b",
+      "text": "What did the user type?",
+      "code": "n = int(input())\ncolors = [\"red\", \"green\", \"blue\"]\nprint(colors[n])",
+      "output": "green",
+      "options": ["1", "2", "0", "green"],
+      "answer": 0
+    },
+    {
+      "id": "list-input-index-d76862",
+      "text": "What did the user type?",
+      "code": "n = int(input())\nlevels = [5, 10, 15, 20]\nprint(levels[n])",
+      "output": "15",
+      "options": ["2", "3", "1", "15"],
       "answer": 0
     }
   ]

@@ -296,14 +296,6 @@
         {
           "v": "flags",
           "items": "True, False, True"
-        },
-        {
-          "v": "cargo",
-          "items": "\"oxygen\", \"water\", \"food\", \"fuel\""
-        },
-        {
-          "v": "planets",
-          "items": "\"Mars\", \"Venus\", \"Earth\""
         }
       ],
       "mistakes": [
@@ -347,24 +339,6 @@
           "items": "\"oxygen\", \"water\", \"food\", \"fuel\"",
           "i": 1,
           "j": 2
-        },
-        {
-          "v": "crew",
-          "items": "\"Shadow\", \"Jess\", \"Quincy\"",
-          "i": 1,
-          "j": 2
-        },
-        {
-          "v": "fruit",
-          "items": "\"apple\", \"pear\", \"plum\", \"kiwi\"",
-          "i": 2,
-          "j": 3
-        },
-        {
-          "v": "prices",
-          "items": "3.14, 9.99, 12.5",
-          "i": 0,
-          "j": 1
         }
       ],
       "mistakes": [
@@ -394,14 +368,6 @@
         {
           "v": "scores",
           "items": "7, 3"
-        },
-        {
-          "v": "planets",
-          "items": "\"Mars\", \"Venus\", \"Earth\", \"Mercury\", \"Jupiter\""
-        },
-        {
-          "v": "prices",
-          "items": "3.14, 9.99, 12.5"
         }
       ],
       "mistakes": [
@@ -436,16 +402,6 @@
           "v": "crew",
           "items": "\"Shadow\"",
           "new": "\"Jess\""
-        },
-        {
-          "v": "prices",
-          "items": "3.14, 9.99",
-          "new": 12.5
-        },
-        {
-          "v": "flags",
-          "items": "True",
-          "new": "False"
         }
       ],
       "mistakes": [
@@ -487,20 +443,6 @@
           "i": 2,
           "j": 1,
           "new": "\"Ana\""
-        },
-        {
-          "v": "prices",
-          "items": "3.14, 9.99, 12.5",
-          "i": 1,
-          "j": 0,
-          "new": 5.5
-        },
-        {
-          "v": "fruit",
-          "items": "\"apple\", \"pear\", \"plum\", \"kiwi\"",
-          "i": 0,
-          "j": 1,
-          "new": "\"lemon\""
         }
       ],
       "mistakes": [
@@ -655,16 +597,6 @@
           "v": "ages",
           "a": 42,
           "b": 35
-        },
-        {
-          "v": "crew",
-          "a": "\"Shadow\"",
-          "b": "\"Jess\""
-        },
-        {
-          "v": "flags",
-          "a": "True",
-          "b": "False"
         }
       ],
       "mistakes": [
@@ -727,11 +659,6 @@
           "v": "crew",
           "items": "\"Shadow\"",
           "new": "\"Jess\""
-        },
-        {
-          "v": "prices",
-          "items": "3.14, 9.99, 12.5, 1.5",
-          "new": 2.0
         }
       ],
       "mistakes": [
@@ -802,6 +729,150 @@
       ],
       "answer": "len({{v}})",
       "wrong": ["{{v}}", "len(\"{{v}}\")", "len({{v}}) - 1", "{{v}}[0]"]
+    },
+    {
+      "id": "list-holds-append",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{v}} = [{{items}}]\n{{v}}.append({{new}})",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\"",
+          "new": "\"Cortez\""
+        },
+        {
+          "v": "scores",
+          "items": "10, 20",
+          "new": 30
+        },
+        {
+          "v": "planets",
+          "items": "\"Mars\"",
+          "new": "\"Venus\""
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        [".append({{new}})", " = [{{new}}]"],
+        ["{{v}}.append({{new}})", "{{v}} + [{{new}}]"],
+        ["{{v}}.append({{new}})", "{{v}}.append([{{new}}])"],
+        ["{{v}}.append({{new}})", "{{v}} = {{v}} + {{new}}"]
+      ]
+    },
+    {
+      "id": "list-holds-change",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{v}} = [{{items}}]\n{{v}}[{{i}}] = {{new}}",
+      "values": [
+        {
+          "v": "levels",
+          "items": "1, 2, 3",
+          "i": 1,
+          "new": 9
+        },
+        {
+          "v": "crew",
+          "items": "\"Ana\", \"Ben\", \"Cal\"",
+          "i": 0,
+          "new": "\"Zoe\""
+        },
+        {
+          "v": "speeds",
+          "items": "40, 50, 60, 70",
+          "i": 2,
+          "new": 0
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["[{{i}}] =", "[{{i}} + 1] ="],
+        ["{{v}}[{{i}}] = {{new}}", "{{v}}.append({{new}})"],
+        ["{{v}}[{{i}}] = {{new}}", "{{v}}[{{i}}] == {{new}}"]
+      ]
+    },
+    {
+      "id": "list-holds-last",
+      "kind": "holds",
+      "text": "What is in `last` at the end?",
+      "code": "{{v}} = [{{items}}]\nlast = {{v}}[len({{v}}) - 1]",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\""
+        },
+        {
+          "v": "scores",
+          "items": "10, 20, 30, 40"
+        },
+        {
+          "v": "colors",
+          "items": "\"red\", \"green\", \"blue\", \"pink\", \"gray\""
+        }
+      ],
+      "variable": "last",
+      "mistakes": [
+        ["{{v}}[len({{v}}) - 1]", "len({{v}}) - 1"],
+        ["{{v}}[len({{v}}) - 1]", "{{v}}[0]"],
+        ["len({{v}}) - 1", "len({{v}}) - 2"],
+        ["len({{v}}) - 1]", "len({{v}})]"]
+      ]
+    },
+    {
+      "id": "list-input-index",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "n = int(input())\n{{v}} = [{{items}}]\nprint({{v}}[n])",
+      "values": [
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\", \"Jupiter\"",
+          "n": 2,
+          "up": 3,
+          "down": 1,
+          "name": "Earth",
+          "len": 4
+        },
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "n": 0,
+          "up": 1,
+          "down": 2,
+          "name": "Tommy",
+          "len": 3
+        },
+        {
+          "v": "scores",
+          "items": "40, 75, 90, 60",
+          "n": 3,
+          "up": 4,
+          "down": 2,
+          "name": 60,
+          "len": 1
+        },
+        {
+          "v": "colors",
+          "items": "\"red\", \"green\", \"blue\"",
+          "n": 1,
+          "up": 2,
+          "down": 0,
+          "name": "green",
+          "len": 3
+        },
+        {
+          "v": "levels",
+          "items": "5, 10, 15, 20",
+          "n": 2,
+          "up": 3,
+          "down": 1,
+          "name": 15,
+          "len": 4
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{up}}", "{{down}}", "{{name}}", "{{len}}"]
     }
   ]
 }
