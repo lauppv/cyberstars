@@ -304,18 +304,6 @@
         {
           "q": "{\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"D\"}, {\"answer\": \"A\"}",
           "a": "\"A\", \"B\", \"D\", \"D\", \"C\""
-        },
-        {
-          "q": "{\"answer\": \"C\"}, {\"answer\": \"C\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}",
-          "a": "\"C\", \"A\", \"B\", \"A\""
-        },
-        {
-          "q": "{\"answer\": \"D\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
-          "a": "\"D\", \"C\", \"B\", \"C\""
-        },
-        {
-          "q": "{\"answer\": \"B\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}, {\"answer\": \"A\"}, {\"answer\": \"C\"}",
-          "a": "\"B\", \"A\", \"A\", \"A\", \"C\""
         }
       ],
       "mistakes": [
@@ -339,18 +327,6 @@
         {
           "s": 1,
           "t": 3
-        },
-        {
-          "s": 5,
-          "t": 8
-        },
-        {
-          "s": 2,
-          "t": 5
-        },
-        {
-          "s": 7,
-          "t": 10
         }
       ],
       "mistakes": [
@@ -373,18 +349,6 @@
         {
           "q": "{\"answer\": \"A\"}, {\"answer\": \"D\"}, {\"answer\": \"C\"}, {\"answer\": \"B\"}",
           "a": "\"a\", \"d\", \"C\", \"C\""
-        },
-        {
-          "q": "{\"answer\": \"C\"}, {\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"D\"}",
-          "a": "\"c\", \"C\", \"b\", \"d\""
-        },
-        {
-          "q": "{\"answer\": \"D\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}, {\"answer\": \"C\"}",
-          "a": "\"D\", \"b\", \"a\", \"A\""
-        },
-        {
-          "q": "{\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"D\"}",
-          "a": "\"a\", \"b\", \"c\", \"B\""
         }
       ],
       "mistakes": [
@@ -405,15 +369,6 @@
         },
         {
           "q": "{\"text\": \"What does len() return?\"}, {\"text\": \"Which keyword defines a function?\"}, {\"text\": \"What does input() give back?\"}"
-        },
-        {
-          "q": "{\"text\": \"What is 7 // 2?\"}, {\"text\": \"What does break do?\"}"
-        },
-        {
-          "q": "{\"text\": \"Which loop repeats while a condition holds?\"}, {\"text\": \"What does .upper() do?\"}, {\"text\": \"What is a list?\"}"
-        },
-        {
-          "q": "{\"text\": \"What does return do?\"}, {\"text\": \"What is a dictionary?\"}"
         }
       ],
       "mistakes": [
@@ -443,14 +398,6 @@
         {
           "q": "{\"answer\": \"C\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}",
           "a": "\"C\", \"A\", \"D\""
-        },
-        {
-          "q": "{\"answer\": \"D\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
-          "a": "\"A\", \"B\", \"A\""
-        },
-        {
-          "q": "{\"answer\": \"B\"}, {\"answer\": \"A\"}, {\"answer\": \"C\"}",
-          "a": "\"C\", \"A\", \"A\""
         }
       ],
       "mistakes": [
@@ -477,14 +424,6 @@
         {
           "q": "{\"answer\": \"C\"}, {\"answer\": \"C\"}, {\"answer\": \"B\"}, {\"answer\": \"A\"}",
           "a": "\"C\", \"C\", \"B\", \"B\""
-        },
-        {
-          "q": "{\"answer\": \"D\"}, {\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}, {\"answer\": \"A\"}",
-          "a": "\"D\", \"C\", \"B\", \"C\", \"B\""
-        },
-        {
-          "q": "{\"answer\": \"A\"}, {\"answer\": \"B\"}, {\"answer\": \"C\"}",
-          "a": "\"B\", \"B\", \"C\""
         }
       ],
       "mistakes": [
@@ -511,14 +450,6 @@
         {
           "k": "\"C\", \"D\", \"B\", \"A\", \"C\"",
           "a": "\"C\", \"D\", \"C\", \"A\", \"A\""
-        },
-        {
-          "k": "\"D\", \"D\", \"A\"",
-          "a": "\"D\", \"C\", \"A\""
-        },
-        {
-          "k": "\"A\", \"B\", \"C\", \"D\"",
-          "a": "\"A\", \"B\", \"B\", \"D\""
         }
       ],
       "mistakes": [
@@ -736,6 +667,311 @@
           "    print(f\"Wrong! The answer was {q['answer']}\")"
         ]
       ]
+    },
+    {
+      "id": "pq-holds-score",
+      "kind": "holds",
+      "text": "What is in `{{s}}` at the end?",
+      "code": "{{k}} = [{{keys}}]\n{{a}} = [{{ans}}]\n{{s}} = 0\nfor i in range(len({{k}})):\n    if {{a}}[i].upper() == {{k}}[i]:\n        {{s}} += 1",
+      "values": [
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "keys": "\"A\", \"C\", \"B\", \"D\", \"C\"",
+          "ans": "\"a\", \"c\", \"b\", \"a\", \"d\""
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "keys": "\"B\", \"B\", \"A\", \"C\", \"D\"",
+          "ans": "\"b\", \"a\", \"a\", \"c\", \"a\""
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "keys": "\"A\", \"B\", \"C\", \"D\", \"A\", \"B\"",
+          "ans": "\"a\", \"b\", \"c\", \"d\", \"b\", \"c\""
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "keys": "\"C\", \"C\", \"C\", \"C\", \"C\"",
+          "ans": "\"c\", \"c\", \"c\", \"a\", \"b\""
+        }
+      ],
+      "variable": "{{s}}",
+      "mistakes": [
+        ["{{a}}[i].upper()", "{{a}}[i]"],
+        ["== {{k}}[i]", "!= {{k}}[i]"],
+        ["{{s}} += 1", "{{s}} = 1"]
+      ]
+    },
+    {
+      "id": "pq-holds-percent",
+      "kind": "holds",
+      "text": "What is in `{{p}}` at the end?",
+      "code": "{{s}} = {{x}}\ntotal = {{t}}\n{{p}} = round({{s}} / total * 100)",
+      "values": [
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "x": 3,
+          "t": 4
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "x": 2,
+          "t": 3
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "x": 7,
+          "t": 8
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "x": 5,
+          "t": 8
+        }
+      ],
+      "variable": "{{p}}",
+      "mistakes": [
+        ["round({{s}} / total * 100)", "{{s}} / total * 100"],
+        ["{{s}} / total", "{{s}} // total"],
+        ["{{s}} / total * 100", "{{s}} / total"]
+      ]
+    },
+    {
+      "id": "pq-input-answer",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{key}} = \"{{kv}}\"\n{{a}} = input()\nif {{a}}.upper() == {{key}}:\n    print(\"{{yes}}\")\nelse:\n    print(f\"{{no}} {{{key}}}\")",
+      "values": [
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "kv": "B",
+          "ans": "b",
+          "w1": "c",
+          "w2": "bb",
+          "w3": "a"
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "kv": "A",
+          "ans": "a",
+          "w1": "b",
+          "w2": "aa",
+          "w3": "d"
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "kv": "D",
+          "ans": "d",
+          "w1": "c",
+          "w2": "dd",
+          "w3": "b"
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "kv": "C",
+          "ans": "C",
+          "w1": "b",
+          "w2": "cc",
+          "w3": "d"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "pq-error-key",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{q}} = [{\"{{f}}\": \"B\"}, {\"{{f}}\": \"C\"}]\nfor item in {{q}}:\n    print(item[\"{{bad}}\"])",
+      "values": [
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "bad": "answr"
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "bad": "Answer"
+        }
+      ],
+      "wrong": ["IndexError", "NameError", "TypeError"]
+    },
+    {
+      "id": "pq-error-short",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{k}} = [{{keys}}]\n{{a}} = [{{ans}}]\n{{s}} = 0\nfor i in range(len({{k}})):\n    if {{a}}[i] == {{k}}[i]:\n        {{s}} += 1\nprint({{s}})",
+      "values": [
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "keys": "\"A\", \"B\", \"C\"",
+          "ans": "\"A\", \"B\""
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer",
+          "keys": "\"B\", \"D\", \"A\", \"C\"",
+          "ans": "\"B\", \"D\", \"A\""
+        }
+      ],
+      "wrong": ["KeyError", "ValueError", "TypeError"]
+    },
+    {
+      "id": "pq-error-zero",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{s}} = 0\ntotal = 0\nprint(round({{s}} / total * 100))",
+      "values": [
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "score",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer"
+        },
+        {
+          "k": "keys",
+          "a": "answers",
+          "s": "correct",
+          "p": "percent",
+          "key": "key",
+          "yes": "Correct!",
+          "no": "Wrong! The answer was",
+          "q": "quiz",
+          "f": "answer"
+        }
+      ],
+      "wrong": ["ValueError", "TypeError", "IndexError"]
     }
   ]
 }

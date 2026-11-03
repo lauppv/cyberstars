@@ -26,42 +26,6 @@
       "answer": 0
     },
     {
-      "id": "td-board-0dfd15",
-      "text": "What does this print?",
-      "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ntodos = []\nfor name in [\"Charge shields\", \"Clean the airlock\"]:\n    add_task(todos, name)\ncomplete_task(todos, 0)\nfor i, task in enumerate(todos):\n    status = \"done\" if task[\"done\"] else \"not done\"\n    print(f\"{i}. [{status}] {task['name']}\")",
-      "options": [
-        "0. [done] Charge shields\n1. [not done] Clean the airlock",
-        "0. [not done] Charge shields\n1. [done] Clean the airlock",
-        "1. [done] Charge shields\n2. [not done] Clean the airlock",
-        "0. [not done] Charge shields\n1. [not done] Clean the airlock"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "td-board-3df0ad",
-      "text": "What does this print?",
-      "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ntodos = []\nfor name in [\"Test the radio\", \"Map the moon\", \"Pack supplies\"]:\n    add_task(todos, name)\ncomplete_task(todos, 1)\nfor i, task in enumerate(todos):\n    status = \"done\" if task[\"done\"] else \"not done\"\n    print(f\"{i}. [{status}] {task['name']}\")",
-      "options": [
-        "0. [not done] Test the radio\n1. [done] Map the moon\n2. [not done] Pack supplies",
-        "0. [done] Test the radio\n1. [not done] Map the moon\n2. [done] Pack supplies",
-        "1. [not done] Test the radio\n2. [done] Map the moon\n3. [not done] Pack supplies",
-        "0. [not done] Test the radio\n1. [not done] Map the moon\n2. [not done] Pack supplies"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "td-board-9649f9",
-      "text": "What does this print?",
-      "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ntodos = []\nfor name in [\"Check oxygen\", \"Repair the hull\", \"Update star map\", \"Calibrate sensors\"]:\n    add_task(todos, name)\ncomplete_task(todos, 3)\nfor i, task in enumerate(todos):\n    status = \"done\" if task[\"done\"] else \"not done\"\n    print(f\"{i}. [{status}] {task['name']}\")",
-      "options": [
-        "0. [not done] Check oxygen\n1. [not done] Repair the hull\n2. [not done] Update star map\n3. [done] Calibrate sensors",
-        "0. [done] Check oxygen\n1. [done] Repair the hull\n2. [done] Update star map\n3. [not done] Calibrate sensors",
-        "1. [not done] Check oxygen\n2. [not done] Repair the hull\n3. [not done] Update star map\n4. [done] Calibrate sensors",
-        "0. [not done] Check oxygen\n1. [not done] Repair the hull\n2. [not done] Update star map\n3. [not done] Calibrate sensors"
-      ],
-      "answer": 0
-    },
-    {
       "id": "td-remove-863081",
       "text": "What does this print?",
       "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef remove_task(todos, index):\n    if 0 <= index < len(todos):\n        todos.pop(index)\n\ntodos = []\nfor name in [\"Run diagnostics\", \"Refuel reactor\", \"Chart course\"]:\n    add_task(todos, name)\nremove_task(todos, 0)\nfor i, task in enumerate(todos):\n    print(i, task[\"name\"])",
@@ -86,42 +50,6 @@
       "answer": 0
     },
     {
-      "id": "td-remove-3be47d",
-      "text": "What does this print?",
-      "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef remove_task(todos, index):\n    if 0 <= index < len(todos):\n        todos.pop(index)\n\ntodos = []\nfor name in [\"Charge shields\", \"Clean the airlock\"]:\n    add_task(todos, name)\nremove_task(todos, 0)\nfor i, task in enumerate(todos):\n    print(i, task[\"name\"])",
-      "options": [
-        "0 Clean the airlock",
-        "0 Charge shields",
-        "0 Charge shields\n1 Clean the airlock",
-        "1 Clean the airlock"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "td-remove-a6e714",
-      "text": "What does this print?",
-      "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef remove_task(todos, index):\n    if 0 <= index < len(todos):\n        todos.pop(index)\n\ntodos = []\nfor name in [\"Test the radio\", \"Map the moon\", \"Pack supplies\"]:\n    add_task(todos, name)\nremove_task(todos, 1)\nfor i, task in enumerate(todos):\n    print(i, task[\"name\"])",
-      "options": [
-        "0 Test the radio\n1 Pack supplies",
-        "0 Test the radio\n1 Map the moon",
-        "1 Test the radio\n2 Pack supplies",
-        "0 Map the moon\n1 Pack supplies"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "td-remove-53093c",
-      "text": "What does this print?",
-      "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef remove_task(todos, index):\n    if 0 <= index < len(todos):\n        todos.pop(index)\n\ntodos = []\nfor name in [\"Check oxygen\", \"Repair the hull\", \"Update star map\", \"Calibrate sensors\"]:\n    add_task(todos, name)\nremove_task(todos, 2)\nfor i, task in enumerate(todos):\n    print(i, task[\"name\"])",
-      "options": [
-        "0 Check oxygen\n1 Repair the hull\n2 Calibrate sensors",
-        "0 Check oxygen\n1 Repair the hull\n2 Update star map",
-        "1 Check oxygen\n2 Repair the hull\n3 Calibrate sensors",
-        "0 Check oxygen\n1 Update star map\n2 Calibrate sensors"
-      ],
-      "answer": 0
-    },
-    {
       "id": "td-bounds-8cd7de",
       "text": "What does this print?",
       "code": "def complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ntodos = [{\"name\": \"Run diagnostics\", \"done\": False}, {\"name\": \"Refuel reactor\", \"done\": False}, {\"name\": \"Chart course\", \"done\": False}]\nfor index in [0, 5, 2, 1]:\n    complete_task(todos, index)\ndone = 0\nfor task in todos:\n    if task[\"done\"]:\n        done += 1\nprint(f\"Done: {done}/{len(todos)}\")",
@@ -132,27 +60,6 @@
       "id": "td-bounds-4c9514",
       "text": "What does this print?",
       "code": "def complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ntodos = [{\"name\": \"Fix the antenna\", \"done\": False}, {\"name\": \"Feed the crew\", \"done\": False}, {\"name\": \"Scan sector 7\", \"done\": False}, {\"name\": \"Log the flight\", \"done\": False}]\nfor index in [3, 0, 4, 1]:\n    complete_task(todos, index)\ndone = 0\nfor task in todos:\n    if task[\"done\"]:\n        done += 1\nprint(f\"Done: {done}/{len(todos)}\")",
-      "options": ["Done: 3/4", "Done: 2/4", "Done: 1/4", "Done: 3/5"],
-      "answer": 0
-    },
-    {
-      "id": "td-bounds-2ef81f",
-      "text": "What does this print?",
-      "code": "def complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ntodos = [{\"name\": \"Charge shields\", \"done\": False}, {\"name\": \"Clean the airlock\", \"done\": False}]\nfor index in [1, 0, 7]:\n    complete_task(todos, index)\ndone = 0\nfor task in todos:\n    if task[\"done\"]:\n        done += 1\nprint(f\"Done: {done}/{len(todos)}\")",
-      "options": ["Done: 2/2", "Done: 1/2", "Done: 0/2", "Done: 2/3"],
-      "answer": 0
-    },
-    {
-      "id": "td-bounds-61c356",
-      "text": "What does this print?",
-      "code": "def complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ntodos = [{\"name\": \"Test the radio\", \"done\": False}, {\"name\": \"Map the moon\", \"done\": False}, {\"name\": \"Pack supplies\", \"done\": False}]\nfor index in [1, 9, 0, 2]:\n    complete_task(todos, index)\ndone = 0\nfor task in todos:\n    if task[\"done\"]:\n        done += 1\nprint(f\"Done: {done}/{len(todos)}\")",
-      "options": ["Done: 3/3", "Done: 2/3", "Done: 1/3", "Done: 0/3"],
-      "answer": 0
-    },
-    {
-      "id": "td-bounds-ea0432",
-      "text": "What does this print?",
-      "code": "def complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ntodos = [{\"name\": \"Check oxygen\", \"done\": False}, {\"name\": \"Repair the hull\", \"done\": False}, {\"name\": \"Update star map\", \"done\": False}, {\"name\": \"Calibrate sensors\", \"done\": False}]\nfor index in [4, 0, 2, 10, 3]:\n    complete_task(todos, index)\ndone = 0\nfor task in todos:\n    if task[\"done\"]:\n        done += 1\nprint(f\"Done: {done}/{len(todos)}\")",
       "options": ["Done: 3/4", "Done: 2/4", "Done: 1/4", "Done: 3/5"],
       "answer": 0
     },
@@ -171,27 +78,6 @@
       "answer": 0
     },
     {
-      "id": "td-count-65bf6a",
-      "text": "What does this print?",
-      "code": "def count_done(todos):\n    count = 0\n    for task in todos:\n        if task[\"done\"]:\n            count += 1\n    return count\n\ndef count_not_done(todos):\n    return len(todos) - count_done(todos)\n\ntodos = [{\"name\": \"Charge shields\", \"done\": True}, {\"name\": \"Clean the airlock\", \"done\": False}]\nprint(f\"Done: {count_done(todos)}, left: {count_not_done(todos)}\")",
-      "options": ["Done: 1, left: 1", "Done: 1, left: 3", "Done: 2, left: 0", "Done: 1, left: 2"],
-      "answer": 0
-    },
-    {
-      "id": "td-count-baaed6",
-      "text": "What does this print?",
-      "code": "def count_done(todos):\n    count = 0\n    for task in todos:\n        if task[\"done\"]:\n            count += 1\n    return count\n\ndef count_not_done(todos):\n    return len(todos) - count_done(todos)\n\ntodos = [{\"name\": \"Test the radio\", \"done\": False}, {\"name\": \"Map the moon\", \"done\": True}, {\"name\": \"Pack supplies\", \"done\": False}]\nprint(f\"Done: {count_done(todos)}, left: {count_not_done(todos)}\")",
-      "options": ["Done: 1, left: 2", "Done: 1, left: 4", "Done: 3, left: 0", "Done: 1, left: 3"],
-      "answer": 0
-    },
-    {
-      "id": "td-count-74aaca",
-      "text": "What does this print?",
-      "code": "def count_done(todos):\n    count = 0\n    for task in todos:\n        if task[\"done\"]:\n            count += 1\n    return count\n\ndef count_not_done(todos):\n    return len(todos) - count_done(todos)\n\ntodos = [{\"name\": \"Check oxygen\", \"done\": True}, {\"name\": \"Repair the hull\", \"done\": True}, {\"name\": \"Update star map\", \"done\": False}, {\"name\": \"Calibrate sensors\", \"done\": True}]\nprint(f\"Done: {count_done(todos)}, left: {count_not_done(todos)}\")",
-      "options": ["Done: 3, left: 1", "Done: 3, left: 7", "Done: 1, left: 3", "Done: 4, left: 0"],
-      "answer": 0
-    },
-    {
       "id": "td-split-33756b",
       "text": "What does this print?",
       "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ndef count_done(todos):\n    count = 0\n    for task in todos:\n        if task[\"done\"]:\n            count += 1\n    return count\n\ntasks = []\nfor name in [\"Run diagnostics\", \"Refuel reactor\", \"Chart course\"]:\n    add_task(tasks, name)\nfor index in \"0 2\".split():\n    complete_task(tasks, int(index))\nprint(f\"Completed: {count_done(tasks)}/{len(tasks)}\")",
@@ -203,27 +89,6 @@
       "text": "What does this print?",
       "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ndef count_done(todos):\n    count = 0\n    for task in todos:\n        if task[\"done\"]:\n            count += 1\n    return count\n\ntasks = []\nfor name in [\"Fix the antenna\", \"Feed the crew\", \"Scan sector 7\", \"Log the flight\"]:\n    add_task(tasks, name)\nfor index in \"1 3\".split():\n    complete_task(tasks, int(index))\nprint(f\"Completed: {count_done(tasks)}/{len(tasks)}\")",
       "options": ["Completed: 2/4", "Completed: 4/4", "Completed: 1/4", "Completed: 0/4"],
-      "answer": 0
-    },
-    {
-      "id": "td-split-3917f1",
-      "text": "What does this print?",
-      "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ndef count_done(todos):\n    count = 0\n    for task in todos:\n        if task[\"done\"]:\n            count += 1\n    return count\n\ntasks = []\nfor name in [\"Charge shields\", \"Clean the airlock\"]:\n    add_task(tasks, name)\nfor index in \"1\".split():\n    complete_task(tasks, int(index))\nprint(f\"Completed: {count_done(tasks)}/{len(tasks)}\")",
-      "options": ["Completed: 1/2", "Completed: 2/2", "Completed: 0/2", "Completed: 2/1"],
-      "answer": 0
-    },
-    {
-      "id": "td-split-d0605d",
-      "text": "What does this print?",
-      "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ndef count_done(todos):\n    count = 0\n    for task in todos:\n        if task[\"done\"]:\n            count += 1\n    return count\n\ntasks = []\nfor name in [\"Test the radio\", \"Map the moon\", \"Pack supplies\"]:\n    add_task(tasks, name)\nfor index in \"0 2\".split():\n    complete_task(tasks, int(index))\nprint(f\"Completed: {count_done(tasks)}/{len(tasks)}\")",
-      "options": ["Completed: 2/3", "Completed: 3/3", "Completed: 1/3", "Completed: 0/3"],
-      "answer": 0
-    },
-    {
-      "id": "td-split-b1c9e8",
-      "text": "What does this print?",
-      "code": "def add_task(todos, name):\n    todos.append({\"name\": name, \"done\": False})\n\ndef complete_task(todos, index):\n    if 0 <= index < len(todos):\n        todos[index][\"done\"] = True\n\ndef count_done(todos):\n    count = 0\n    for task in todos:\n        if task[\"done\"]:\n            count += 1\n    return count\n\ntasks = []\nfor name in [\"Check oxygen\", \"Repair the hull\", \"Update star map\", \"Calibrate sensors\"]:\n    add_task(tasks, name)\nfor index in \"0 1 3\".split():\n    complete_task(tasks, int(index))\nprint(f\"Completed: {count_done(tasks)}/{len(tasks)}\")",
-      "options": ["Completed: 3/4", "Completed: 4/4", "Completed: 2/4", "Completed: 0/4"],
       "answer": 0
     },
     {
@@ -658,30 +523,6 @@
       "answer": 0
     },
     {
-      "id": "td-names-0009a6",
-      "text": "What does this print?",
-      "code": "todos = [{\"name\": \"Test the radio\", \"done\": False}, {\"name\": \"Map the moon\", \"done\": False}, {\"name\": \"Pack supplies\", \"done\": True}]\nfor task in todos:\n    if task[\"done\"]:\n        print(task[\"name\"])",
-      "options": [
-        "Pack supplies",
-        "Test the radio\nMap the moon",
-        "True",
-        "{'name': 'Pack supplies', 'done': True}"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "td-names-74aaca",
-      "text": "What does this print?",
-      "code": "todos = [{\"name\": \"Check oxygen\", \"done\": True}, {\"name\": \"Repair the hull\", \"done\": True}, {\"name\": \"Update star map\", \"done\": False}, {\"name\": \"Calibrate sensors\", \"done\": True}]\nfor task in todos:\n    if task[\"done\"]:\n        print(task[\"name\"])",
-      "options": [
-        "Check oxygen\nRepair the hull\nCalibrate sensors",
-        "Update star map",
-        "True\nTrue\nTrue",
-        "{'name': 'Check oxygen', 'done': True}\n{'name': 'Repair the hull', 'done': True}\n{'name': 'Calibrate sensors', 'done': True}"
-      ],
-      "answer": 0
-    },
-    {
       "id": "td-pop-twice-2c596f",
       "text": "What does this print?",
       "code": "def remove_task(todos, index):\n    if 0 <= index < len(todos):\n        todos.pop(index)\n\ntodos = [{\"name\": \"Run diagnostics\", \"done\": False}, {\"name\": \"Refuel reactor\", \"done\": False}, {\"name\": \"Chart course\", \"done\": False}]\nremove_task(todos, 0)\nremove_task(todos, 0)\nprint([task[\"name\"] for task in todos])",
@@ -713,27 +554,185 @@
       "answer": 0
     },
     {
-      "id": "td-pop-twice-992f1e",
-      "text": "What does this print?",
-      "code": "def remove_task(todos, index):\n    if 0 <= index < len(todos):\n        todos.pop(index)\n\ntodos = [{\"name\": \"Test the radio\", \"done\": False}, {\"name\": \"Map the moon\", \"done\": False}, {\"name\": \"Pack supplies\", \"done\": False}]\nremove_task(todos, 2)\nremove_task(todos, 0)\nprint([task[\"name\"] for task in todos])",
+      "id": "td-holds-board-cb0077",
+      "text": "What is in `todos` at the end?",
+      "code": "todos = []\ntodos.append({\"name\": \"Scan\", \"done\": False})\ntodos.append({\"name\": \"Refuel\", \"done\": False})\ntodos.append({\"name\": \"Dock\", \"done\": False})\ntodos[0][\"done\"] = True",
       "options": [
-        "['Map the moon']",
-        "['Test the radio']",
-        "['Test the radio', 'Map the moon']",
-        "1"
+        "[{'name': 'Scan', 'done': True}, {'name': 'Refuel', 'done': False}, {'name': 'Dock', 'done': False}]",
+        "[{'name': 'Scan', 'done': False}, {'name': 'Refuel', 'done': True}, {'name': 'Dock', 'done': False}]",
+        "[True, {'name': 'Refuel', 'done': False}, {'name': 'Dock', 'done': False}]",
+        "[{'name': 'Scan', 'done': False}, {'name': 'Refuel', 'done': False}, {'name': 'Dock', 'done': False}]"
       ],
       "answer": 0
     },
     {
-      "id": "td-pop-twice-faf1bd",
-      "text": "What does this print?",
-      "code": "def remove_task(todos, index):\n    if 0 <= index < len(todos):\n        todos.pop(index)\n\ntodos = [{\"name\": \"Check oxygen\", \"done\": False}, {\"name\": \"Repair the hull\", \"done\": False}, {\"name\": \"Update star map\", \"done\": False}, {\"name\": \"Calibrate sensors\", \"done\": False}]\nremove_task(todos, 0)\nremove_task(todos, 2)\nprint([task[\"name\"] for task in todos])",
+      "id": "td-holds-board-5feafa",
+      "text": "What is in `todos` at the end?",
+      "code": "todos = []\ntodos.append({\"name\": \"Scan\", \"done\": False})\ntodos.append({\"name\": \"Refuel\", \"done\": False})\ntodos.append({\"name\": \"Dock\", \"done\": False})\ntodos[1][\"done\"] = True",
       "options": [
-        "['Repair the hull', 'Update star map']",
-        "['Check oxygen', 'Repair the hull']",
-        "['Repair the hull', 'Update star map', 'Calibrate sensors']",
-        "['Check oxygen', 'Repair the hull', 'Calibrate sensors']"
+        "[{'name': 'Scan', 'done': False}, {'name': 'Refuel', 'done': True}, {'name': 'Dock', 'done': False}]",
+        "[{'name': 'Scan', 'done': False}, {'name': 'Refuel', 'done': False}, {'name': 'Dock', 'done': True}]",
+        "[{'name': 'Scan', 'done': False}, True, {'name': 'Dock', 'done': False}]",
+        "[{'name': 'Scan', 'done': False}, {'name': 'Refuel', 'done': False}, {'name': 'Dock', 'done': False}]"
       ],
+      "answer": 0
+    },
+    {
+      "id": "td-holds-board-a2d6bf",
+      "text": "What is in `todos` at the end?",
+      "code": "todos = []\ntodos.append({\"name\": \"Fix hull\", \"done\": False})\ntodos.append({\"name\": \"Call home\", \"done\": False})\ntodos.append({\"name\": \"Eat\", \"done\": False})\ntodos[0][\"done\"] = True",
+      "options": [
+        "[{'name': 'Fix hull', 'done': True}, {'name': 'Call home', 'done': False}, {'name': 'Eat', 'done': False}]",
+        "[{'name': 'Fix hull', 'done': False}, {'name': 'Call home', 'done': True}, {'name': 'Eat', 'done': False}]",
+        "[True, {'name': 'Call home', 'done': False}, {'name': 'Eat', 'done': False}]",
+        "[{'name': 'Fix hull', 'done': False}, {'name': 'Call home', 'done': False}, {'name': 'Eat', 'done': False}]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-holds-board-b44004",
+      "text": "What is in `todos` at the end?",
+      "code": "todos = []\ntodos.append({\"name\": \"Fix hull\", \"done\": False})\ntodos.append({\"name\": \"Call home\", \"done\": False})\ntodos.append({\"name\": \"Eat\", \"done\": False})\ntodos[1][\"done\"] = True",
+      "options": [
+        "[{'name': 'Fix hull', 'done': False}, {'name': 'Call home', 'done': True}, {'name': 'Eat', 'done': False}]",
+        "[{'name': 'Fix hull', 'done': False}, {'name': 'Call home', 'done': False}, {'name': 'Eat', 'done': True}]",
+        "[{'name': 'Fix hull', 'done': False}, True, {'name': 'Eat', 'done': False}]",
+        "[{'name': 'Fix hull', 'done': False}, {'name': 'Call home', 'done': False}, {'name': 'Eat', 'done': False}]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-holds-board-0a655b",
+      "text": "What is in `todos` at the end?",
+      "code": "todos = []\ntodos.append({\"name\": \"Map\", \"done\": False})\ntodos.append({\"name\": \"Land\", \"done\": False})\ntodos.append({\"name\": \"Rest\", \"done\": False})\ntodos[1][\"done\"] = True",
+      "options": [
+        "[{'name': 'Map', 'done': False}, {'name': 'Land', 'done': True}, {'name': 'Rest', 'done': False}]",
+        "[{'name': 'Map', 'done': False}, {'name': 'Land', 'done': False}, {'name': 'Rest', 'done': True}]",
+        "[{'name': 'Map', 'done': False}, True, {'name': 'Rest', 'done': False}]",
+        "[{'name': 'Map', 'done': False}, {'name': 'Land', 'done': False}, {'name': 'Rest', 'done': False}]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-holds-pop-cae7bb",
+      "text": "What is in `todos` at the end?",
+      "code": "todos = [\"Scan\", \"Refuel\", \"Dock\", \"Repair\"]\ntodos.pop(0)\ntodos.pop(1)",
+      "options": [
+        "['Refuel', 'Repair']",
+        "['Dock', 'Repair']",
+        "['Scan', 'Dock']",
+        "['Refuel', 'Dock', 'Repair']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-holds-pop-142cb3",
+      "text": "What is in `todos` at the end?",
+      "code": "todos = [\"Scan\", \"Refuel\", \"Dock\", \"Repair\"]\ntodos.pop(1)\ntodos.pop(0)",
+      "options": [
+        "['Dock', 'Repair']",
+        "['Refuel', 'Repair']",
+        "['Refuel', 'Dock']",
+        "['Scan', 'Dock', 'Repair']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-holds-pop-b64595",
+      "text": "What is in `todos` at the end?",
+      "code": "todos = [\"Scan\", \"Refuel\", \"Dock\", \"Repair\"]\ntodos.pop(0)\ntodos.pop(2)",
+      "options": [
+        "['Refuel', 'Dock']",
+        "['Refuel', 'Repair']",
+        "['Scan', 'Refuel']",
+        "['Refuel', 'Dock', 'Repair']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-holds-pop-618db8",
+      "text": "What is in `todos` at the end?",
+      "code": "todos = [\"Scan\", \"Refuel\", \"Dock\", \"Repair\"]\ntodos.pop(1)\ntodos.pop(2)",
+      "options": [
+        "['Scan', 'Dock']",
+        "['Scan', 'Repair']",
+        "['Scan', 'Refuel']",
+        "['Scan', 'Dock', 'Repair']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "td-input-show-d16207",
+      "text": "What did the user type?",
+      "code": "todos = [\"Scan\", \"Refuel\", \"Dock\"]\nindex = int(input())\nif 0 <= index < len(todos):\n    print(todos[index])\nelse:\n    print(\"No such task\")",
+      "output": "Refuel",
+      "options": ["1", "2", "-1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "td-input-show-545cfe",
+      "text": "What did the user type?",
+      "code": "todos = [\"Scan\", \"Refuel\", \"Dock\"]\nindex = int(input())\nif 0 <= index < len(todos):\n    print(todos[index])\nelse:\n    print(\"No such task\")",
+      "output": "Scan",
+      "options": ["0", "1", "3", "-1"],
+      "answer": 0
+    },
+    {
+      "id": "td-input-show-ac0ac1",
+      "text": "What did the user type?",
+      "code": "todos = [\"Scan\", \"Refuel\", \"Dock\"]\nindex = int(input())\nif 0 <= index < len(todos):\n    print(todos[index])\nelse:\n    print(\"No such task\")",
+      "output": "Dock",
+      "options": ["2", "3", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "td-input-show-163209",
+      "text": "What did the user type?",
+      "code": "todos = [\"Scan\", \"Refuel\", \"Dock\"]\nindex = int(input())\nif 0 <= index < len(todos):\n    print(todos[index])\nelse:\n    print(\"No such task\")",
+      "output": "No such task",
+      "options": ["3", "2", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "td-error-false-0df490",
+      "text": "Which error stops this program?",
+      "code": "todos = [{\"name\": \"Scan\", \"done\": false}]\nprint(todos)",
+      "options": ["NameError", "SyntaxError", "KeyError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "td-error-false-c57cf4",
+      "text": "Which error stops this program?",
+      "code": "todos = [{\"name\": \"Dock\", \"done\": false}]\nprint(todos)",
+      "options": ["NameError", "SyntaxError", "KeyError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "td-error-false-6e22f6",
+      "text": "Which error stops this program?",
+      "code": "todos = [{\"name\": \"Refuel\", \"done\": false}]\nprint(todos)",
+      "options": ["NameError", "SyntaxError", "KeyError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "td-error-key-ba98ba",
+      "text": "Which error stops this program?",
+      "code": "todos = [{\"name\": \"Scan\", \"done\": True}]\nprint(todos[0][\"Done\"])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "td-error-key-d671fa",
+      "text": "Which error stops this program?",
+      "code": "todos = [{\"name\": \"Dock\", \"done\": True}]\nprint(todos[0][\"title\"])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "td-error-key-911692",
+      "text": "Which error stops this program?",
+      "code": "todos = [{\"name\": \"Refuel\", \"done\": True}]\nprint(todos[0][\"Name\"])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
       "answer": 0
     }
   ]
