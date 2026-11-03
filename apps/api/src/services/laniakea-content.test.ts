@@ -100,16 +100,18 @@ describe('Laniakea questions', () => {
   it.each(slugs)('%s asks only about what its lessons and the ones before teach', (slug) => {
     const taught = (lesson: string) => planetOrder.indexOf(lesson) <= planetOrder.indexOf(slug);
     const off: string[] = [];
+    const made = (['en', 'ro'] as const).map(
+      (lang) =>
+        (read(quizFiles(slug, lang).made) as { questions?: QuizQuestionSpec[] }).questions ?? [],
+    );
     // The Romanian twins have the same kinds and the English ids
     for (const t of parseTemplates(read(quizFiles(slug, 'en').quiz))) {
       const from = KIND_FROM[t.kind];
       if (from && !taught(from)) off.push(`${t.id}: ${t.kind} comes with ${from}`);
       if (t.kind !== 'which-error') continue;
       const ids = new Set(t.values.map((values) => madeId(t, values)));
-      for (const lang of ['en', 'ro'] as const) {
-        const made = (read(quizFiles(slug, lang).made) as { questions?: QuizQuestionSpec[] })
-          .questions;
-        for (const q of (made ?? []).filter((q) => ids.has(q.id))) {
+      for (const questions of made) {
+        for (const q of questions.filter((q) => ids.has(q.id))) {
           for (const name of q.options) {
             if (!(name in ERROR_FROM)) off.push(`${q.id}: ${name} isn't taught`);
             else if (!taught(ERROR_FROM[name]))
