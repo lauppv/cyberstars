@@ -115,7 +115,7 @@ describe('Voting in a poll', () => {
     expect(body).toEqual({
       id: poll.id,
       question: 'Which course next?',
-      options: poll.options.map((o) => ({ id: o.id, text: o.text })),
+      options: poll.options.map((o) => ({ id: o.id, text: o.text, writeIn: false })),
       voted: false,
     });
   });
