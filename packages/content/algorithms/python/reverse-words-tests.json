@@ -8,7 +8,9 @@
       { "kind": "call", "name": "reverse" },
       { "kind": "call", "name": "eval" },
       { "kind": "call", "name": "exec" },
-      { "kind": "call", "name": "getattr" }
+      { "kind": "call", "name": "getattr" },
+      { "kind": "call", "name": "slice" },
+      { "kind": "call", "name": "extendleft" }
     ]
   },
   "cases": [
