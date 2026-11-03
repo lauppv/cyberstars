@@ -7,32 +7,32 @@
       "answer": 1
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "In the mission, which pattern does `longest_word(log)` use?",
       "options": [
         "The counter",
         "The accumulator: it keeps the longest word so far",
         "The flag",
-        "A frequency dictionary"
+        "A frequency dictionary that counts every word of the log"
       ],
       "answer": 1
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "In the mission, which pattern does `has_duplicate(log)` use?",
       "options": [
         "The counter",
-        "The accumulator",
+        "The accumulator: it builds a list of the repeated words",
         "Sorting",
         "The flag: True as soon as a word shows up again"
       ],
       "answer": 3
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "Why does the mission split the work into three functions?",
       "options": [
-        "Python allows at most ten lines in a function",
+        "Python allows at most ten lines in one function, so it has to split them",
         "Each one does one small job, so it's easier to write, read and check",
         "So the program runs three times faster",
         "Because a log can only be read once"
@@ -54,13 +54,13 @@
       "answer": 2
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Why does `longest_word` compare with `>` and not `>=`?",
       "options": [
-        "With `>` the first of several equally long words stays, as the mission asks",
-        "`>=` doesn't work on numbers",
-        "With `>` the last one wins",
-        "There is no difference"
+        "So the first of equally long words stays",
+        "`>=` doesn't work on numbers like word lengths",
+        "With `>` the last of the longest words wins instead",
+        "There is no difference between the two here"
       ],
       "answer": 0
     },
@@ -72,10 +72,10 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "What does `seen` hold in `has_duplicate`?",
       "options": [
-        "Every word that appears twice",
+        "Every word that appears twice or more",
         "How many words there are",
         "The words already met in the loop",
         "The longest word so far"
@@ -101,11 +101,11 @@
       "answer": 3
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "Why does the mission write `sorted(set(words))` and not just `set(words)`?",
       "options": [
         "A set keeps no fixed order; sorted() turns it into a list in alphabetical order",
-        "set() alone doesn't drop repeated words",
+        "set() on its own doesn't drop the repeated words, so sorted() has to drop them",
         "sorted() removes the repeated words",
         "set() works only on numbers"
       ],
@@ -119,24 +119,24 @@
       "answer": 3
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "What does `log.split(\" \")` give?",
       "options": [
-        "The number of words",
-        "The first word",
+        "The number of words in the log",
+        "The first word of the log only",
         "A list of the log's words",
-        "The log without spaces"
+        "The log, but without the spaces between words"
       ],
       "answer": 2
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "Why does `longest` start as an empty text, `\"\"`?",
       "options": [
-        "Every word is longer than it, so the first word replaces it",
-        "Python needs every text to start empty",
-        "So the function returns nothing",
-        "Because the log may have no spaces"
+        "Any word is longer, so the first replaces it",
+        "Python needs every text variable to start empty",
+        "So the function returns nothing when the log is empty",
+        "Because the log may have no spaces in it at all"
       ],
       "answer": 0
     },
@@ -216,29 +216,29 @@
       "answer": 3
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "Which built-in function gives how many words the list `words` has?",
-      "options": ["`sum(words)`", "`max(words)`", "`sorted(words)`", "`len(words)`"],
+      "options": ["`count(words)`", "`words.count()`", "`sorted(words)`", "`len(words)`"],
       "answer": 3
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "Why is it `'scan'`, with single quotes, inside `f\"Count of scan: {count_word(log, 'scan')}\"`?",
       "options": [
         "Double quotes would end the f-string too early",
         "Single quotes make it a number",
-        "Python counts only words in single quotes",
+        "Python counts only the words written in single quotes",
         "So the word is printed in capitals"
       ],
       "answer": 0
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "Why does each function get the log as a parameter instead of using the variable `log` from outside?",
       "options": [
         "Parameters make the program faster",
         "So it works on any log it is given, not just one",
-        "A function can't see any variable from outside",
+        "A function can't see any variable from outside it, not even log",
         "So the log is changed for good"
       ],
       "answer": 1

@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Prin ce se deosebește tiparul acumulator de tiparul contor?",
       "options": [
-        "Acumulatorul merge doar cu liste",
-        "Contorul adună 1 de fiecare dată, acumulatorul construiește un rezultat, ca o sumă, un șir sau o listă",
-        "Acumulatorul nu are nevoie de o buclă",
-        "Sunt două nume pentru același lucru"
+        "Acumulatorul merge doar cu liste, niciodată cu numere întregi",
+        "Contorul adună 1; acumulatorul construiește un rezultat",
+        "Acumulatorul nu are nevoie de o buclă ca să-și construiască rezultatul",
+        "Sunt două nume pentru același lucru, folosite în același fel"
       ],
       "answer": 1
     },
@@ -25,9 +25,9 @@
       "answer": 0
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "Vrem să construim o propoziție cuvânt cu cuvânt. Cu ce pornește acumulatorul?",
-      "options": ["0", "[]", "\"\" (un șir gol)", "1"],
+      "options": ["0", "[]", "\"\"", "1"],
       "answer": 2
     },
     {
@@ -44,9 +44,9 @@
       "answer": 2
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "De la ce valoare pornește un acumulator de tip listă?",
-      "options": ["[] (o listă goală)", "0", "\"\"", "[0]"],
+      "options": ["[]", "0", "\"\"", "[0]"],
       "answer": 0
     },
     {
@@ -57,11 +57,11 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "De ce pornește un produs de la 1 și nu de la 0?",
       "options": [
         "Pentru că Python nu poate înmulți cu 0",
-        "Pentru că 0 înmulțit cu orice număr dă 0, așa că produsul ar rămâne 0 pentru totdeauna",
+        "0 înmulțit cu orice număr dă 0",
         "Pentru că primul număr din listă e mereu 1",
         "Nu e niciun motiv, 0 merge la fel de bine"
       ],
@@ -198,10 +198,10 @@
       "answer": 0
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "În misiune, unde ajunge fiecare caracter nou al cuvântului în șirul inversat?",
       "options": [
-        "La sfârșit, după cele deja puse",
+        "La sfârșit, după caracterele deja puse",
         "La mijloc",
         "În față, înaintea celor deja puse",
         "Înlocuiește tot șirul"

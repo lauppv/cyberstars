@@ -1,10 +1,10 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce două întrebări spune lecția să-ți pui despre orice funcție recursivă?",
       "options": [
-        "De câte ori se cheamă și cât de repede e?",
+        "De câte ori se cheamă pe ea însăși și cât de repede rulează?",
         "Care e cazul de bază și cum se micșorează problema?",
         "Ce buclă înlocuiește și ce listă folosește?",
         "Ce afișează prima dată și ce afișează la final?"
@@ -30,12 +30,12 @@
       "answer": 0
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "De ce spune lecția că acest `fib` nu e prea eficient?",
       "options": [
         "Pentru că adunarea a două numere e lentă în Python",
         "Pentru că are două cazuri de bază în loc de unul",
-        "Calculează aceleași valori iar și iar: și `fib(5)`, și `fib(4)` calculează `fib(3)`",
+        "Calculează aceleași valori iar și iar",
         "Pentru că face o listă cu fiecare număr găsit"
       ],
       "answer": 2
@@ -73,11 +73,11 @@
       "answer": 2
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "În `numara_caractere`, ce face `primul = 1 if text[0] == tinta else 0`?",
       "options": [
         "Sare la primul caracter care se potrivește",
-        "Face `primul` 1 când primul caracter e cel numărat și 0 altfel",
+        "Face `primul` 1 la potrivire, altfel 0",
         "Oprește funcția când primul caracter se potrivește",
         "Numără deodată fiecare potrivire din tot textul"
       ],
@@ -91,13 +91,13 @@
       "answer": 3
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "De ce aplatizează lecția o listă imbricată cu recursivitate și nu doar cu o buclă?",
       "options": [
         "Nu știm cât de adânc merg listele, iar recursivitatea merge cât de adânc merg ele",
         "Pentru că o buclă nu poate trece printr-o listă",
         "Pentru că recursivitatea sortează și numerele",
-        "Doar o buclă e mai bine: recursivitatea poate aplatiza un singur nivel"
+        "Doar o buclă e mai bine aici: recursivitatea poate aplatiza un singur nivel de imbricare"
       ],
       "answer": 0
     },
@@ -123,12 +123,12 @@
       "answer": 3
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "Care e cazul de bază al lui `suma_cifre` din misiune?",
       "options": [
         "`n < 10`: o singură cifră e propria ei sumă, așa că returnează `n`",
         "`n == 0`: returnează 0",
-        "`n % 10 == 0`: ultima cifră e 0",
+        "`n % 10 == 0`: ultima cifră e 0, așa că funcția se oprește chiar acolo",
         "`n // 10`: restul numărului"
       ],
       "answer": 0
@@ -244,13 +244,13 @@
       "answer": 1
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "În misiune, de ce poate `cea_mai_mare` să pornească de la 0?",
       "options": [
-        "Pentru că primul cod e 0",
+        "Pentru că primul cod din listă e 0",
         "Pentru că sumele de control pot fi negative",
         "Nu poate: trebuie să pornească de la primul cod",
-        "Fiecare cod e un număr pozitiv, așa că suma lui e peste 0 și prima o înlocuiește"
+        "Orice sumă de control e peste 0"
       ],
       "answer": 3
     }

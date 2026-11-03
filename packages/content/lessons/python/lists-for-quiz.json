@@ -1,11 +1,11 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "In `for i in names:`, what is i on each pass?",
       "options": [
         "One element of names, the next one each time",
-        "The position of an element, 0, 1, 2 and so on",
+        "The position of an element, 0, 1, 2 and so on, in turn",
         "The whole list names",
         "How many elements names has"
       ],
@@ -31,35 +31,35 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "In `for i in range(len(names)):`, what is i?",
       "options": [
         "An index, a position in the list",
-        "A name from the list",
-        "The length of the list",
-        "The list itself"
+        "A name from the list, the next each time",
+        "The length of the list, the same on each pass",
+        "The whole list, given again on each pass"
       ],
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Why does the lesson print `i + 1` next to each hero?",
       "options": [
-        "Because range() starts from 1",
-        "So the loop skips the first hero",
-        "We count from 0 in code, but people count from 1",
-        "Because i + 1 is the next hero's name"
+        "Because range() starts from 1, not from 0",
+        "So the loop skips the first hero of the list",
+        "In code we count from 0, people from 1",
+        "Because i + 1 is the next hero's name, printed next to this one"
       ],
       "answer": 2
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "When do you need `for i in range(len(names)):` and not `for n in names:`?",
       "options": [
-        "When you need the position of each element too",
-        "Always, the second one doesn't work on lists",
-        "When the list holds numbers",
-        "When the list is empty"
+        "When you need each element's position too",
+        "Always: the second one doesn't work on lists at all",
+        "When the list holds numbers instead of names",
+        "When the list is empty, so there's nothing to loop over"
       ],
       "answer": 0
     },
@@ -71,23 +71,23 @@
       "answer": 1
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "What happens when this runs?",
       "code": "names = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i in range(len(names)):\n    print(names[i + 1])",
       "options": [
         "It prints Lance, then Cortez, then stops with an error",
         "It prints Tommy, Lance and Cortez",
         "It prints Lance and Cortez, with no error",
-        "It stops with an error before printing anything"
+        "It stops with an error at the first pass, before printing anything"
       ],
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "In the lesson's sum, why is `total = 0` written before the loop?",
       "options": [
         "So the loop runs 0 times",
-        "So total goes back to 0 for every price",
+        "So that total goes back to 0 each time the loop reaches a new price",
         "Because every list starts with 0",
         "So the total starts from 0 and each price is added to it"
       ],
@@ -210,13 +210,13 @@
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Which line goes through the positions of names, from the first to the last?",
       "options": [
         "for i in names:",
         "for i in range(len(names)):",
         "for i in range(names):",
-        "for i in len(names):"
+        "for i in range(1, len(names)):"
       ],
       "answer": 1
     },
@@ -244,24 +244,24 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "The lesson says a while loop could go through a list too. Why does it pick for?",
       "options": [
         "A while loop can't read a list",
         "A for loop gives us each element by itself, with no counter to keep",
         "A for loop is the only loop with a condition",
-        "A while loop would skip the first element"
+        "A while loop would skip the first element, since it checks before it runs"
       ],
       "answer": 1
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Does it matter whether we write `for i in names:` or `for n in names:`?",
       "options": [
-        "Yes, only i works in a for loop",
-        "Yes, n gives the positions and i the names",
-        "No, the name is our choice: either way it holds each element",
-        "Yes, n works only on lists of numbers"
+        "Yes, only i works as the variable of a for loop",
+        "Yes, n gives the positions and i the elements",
+        "No: we pick the name, it holds each element",
+        "Yes, n works only on lists that hold whole numbers"
       ],
       "answer": 2
     },

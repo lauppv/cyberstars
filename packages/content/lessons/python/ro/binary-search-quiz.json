@@ -12,10 +12,10 @@
       "answer": 1
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Căutarea binară se uită la elementul din mijloc, iar acesta e mai mare decât ținta. Unde caută mai departe?",
       "options": [
-        "În jumătatea dreaptă, după mijloc",
+        "În jumătatea dreaptă, adică după mijloc",
         "Din nou de la începutul listei",
         "Lângă mijloc, câte un element",
         "În jumătatea stângă, înainte de mijloc"
@@ -108,13 +108,13 @@
       "answer": 2
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Care e cazul de bază al lui `cautare_binara_recursiva`?",
       "options": [
         "`numere[mijloc] == tinta`: singura dată când se oprește",
-        "`stanga > dreapta`: nu mai e nimic de căutat, așa că returnează -1",
-        "`stanga == 0`: începutul listei",
-        "`mijloc == dreapta`: ultimul element"
+        "`stanga > dreapta`: nu mai e nimic de căutat",
+        "`stanga == 0`: când ajunge la începutul listei",
+        "`mijloc == dreapta`: când ajunge la ultimul element"
       ],
       "answer": 1
     },
@@ -132,9 +132,14 @@
       "answer": 0
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "În misiune, ce se afișează pentru interogarea 50?",
-      "options": ["50 -> index -1", "50 -> index 7", "50 -> negasit", "Nimic pentru ea"],
+      "options": [
+        "50 -> index -1",
+        "50 -> index 7",
+        "50 -> negasit",
+        "Nimic deloc pentru acea interogare"
+      ],
       "answer": 2
     },
     {
@@ -201,10 +206,10 @@
       "answer": 2
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "De ce primește `cautare_binara_recursiva` pe `stanga` și `dreapta` ca argumente?",
       "options": [
-        "Pentru că o funcție recursivă trebuie să primească patru argumente",
+        "Pentru că o funcție recursivă trebuie să primească mereu exact patru argumente",
         "Ca fiecare apel să știe ce parte a listei se mai caută",
         "Ca să poată sorta lista întâi",
         "Ca să numere câte apeluri s-au făcut"

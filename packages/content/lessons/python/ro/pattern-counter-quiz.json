@@ -19,22 +19,22 @@
       "answer": 2
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "De ce pornește un contor de la 0?",
       "options": [
         "Python cere ca orice variabilă să pornească de la 0",
-        "Înainte de buclă n-am găsit încă nimic",
-        "Ca bucla să mai ruleze o dată",
+        "Încă n-am găsit nimic",
+        "Ca bucla să mai ruleze o dată la final",
         "0 îi spune lui Python că variabila e un contor"
       ],
       "answer": 1
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "Ce face `x += 1`?",
       "options": [
-        "Îl face pe x egal cu 1",
-        "Verifică dacă x e 1",
+        "Îl face pe x egal cu 1, orice ar fi ținut",
+        "Verifică dacă x e egal cu 1",
         "Adună 1 la x, dar doar într-o buclă",
         "Același lucru ca x = x + 1"
       ],
@@ -183,24 +183,24 @@
       "answer": 0
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "Unde se pune linia `contor = 0` în tiparul contor?",
       "options": [
-        "În buclă, înainte de if",
-        "În if, înainte de +=",
+        "În buclă, înainte de if, la fiecare trecere",
+        "În if, chiar înainte de linia cu +=",
         "Înainte de buclă, o singură dată",
-        "După buclă, înainte de print"
+        "După buclă, chiar înainte de print"
       ],
       "answer": 2
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "Vrem să afișăm doar numărul final. Unde se pune `print(contor)`?",
       "options": [
-        "În if, sub +=",
-        "După buclă, neindentat sub ea",
-        "În buclă, după if",
-        "Înainte de buclă"
+        "În if, chiar sub linia cu +=",
+        "După buclă, neindentat",
+        "În buclă, imediat după if",
+        "Înainte de buclă, după contor = 0"
       ],
       "answer": 1
     },

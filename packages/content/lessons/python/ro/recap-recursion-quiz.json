@@ -1,34 +1,34 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Cum se uită `numara_balize` din recapitulare la fiecare celulă a sectorului?",
       "options": [
         "Cu câte un apel recursiv pentru fiecare celulă",
         "Cu bucle imbricate: una peste rânduri, una peste celulele fiecărui rând",
         "Cu căutare binară peste grilă",
-        "Cu o singură buclă peste `sector`, care dă celulele una câte una"
+        "Cu o singură buclă peste `sector`, care dă celulele una câte una, rând după rând"
       ],
       "answer": 1
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "De ce verifică `aplatizeaza_sortat` `if celula not in valori` înainte să adauge?",
       "options": [
-        "Ca bucla să sară peste primul rând",
+        "Ca bucla să sară peste primul rând al grilei",
         "Pentru că `append` dă eroare pe o valoare care e deja acolo",
-        "Ca valorile să iasă sortate",
-        "Ca fiecare valoare să intre o singură dată și lista să păstreze doar valorile unice"
+        "Ca valorile să iasă la final deja sortate crescător",
+        "Ca fiecare valoare să intre o singură dată"
       ],
       "answer": 3
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "De ce are nevoie `gaseste_valoare` de o listă sortată?",
       "options": [
-        "Aruncă jumătate din listă după o privire la mijloc, ceea ce merge doar când valorile sunt în ordine",
+        "Aruncă jumătate din listă la fiecare privire",
         "O funcție recursivă merge doar pe liste sortate",
-        "`len()` numără doar listele sortate",
+        "`len()` numără doar valorile listelor sortate",
         "Nu are: căutarea binară găsește o valoare în orice listă"
       ],
       "answer": 0
@@ -107,12 +107,12 @@
       "answer": 2
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "De ce întoarce căutarea binară recursivă din lecție -1 când `stanga > dreapta`?",
       "options": [
         "-1 este indexul ultimei valori",
         "Partea care mai trebuie căutată e goală, deci ținta nu e în listă",
-        "Ca să o ia de la capăt cu căutarea",
+        "Ca să reia căutarea de la început, din nou pe toată lista de la capăt",
         "Pentru că a găsit ținta la indexul -1"
       ],
       "answer": 1
@@ -132,12 +132,12 @@
       "answer": 0
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "Ce face o funcție recursivă să se cheme la nesfârșit?",
       "options": [
         "Un `return` în cazul de bază",
-        "Două cazuri de bază, cum are `fib`",
-        "Un apel care nu se apropie de cazul de bază, ca `numaratoare_inversa(n)` în loc de `numaratoare_inversa(n - 1)`",
+        "Două cazuri de bază, cum are `fib`, așa că nu știe la care să se oprească",
+        "Un apel care nu se apropie de cazul de bază, ca `numaratoare_inversa(n)`",
         "Un `print` înainte de apelul recursiv"
       ],
       "answer": 2
@@ -162,13 +162,13 @@
       "answer": 3
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "Ce face diferit `print(celula, end=\" \")` față de `print(celula)`?",
       "options": [
-        "Se termină cu un spațiu în loc de un rând nou, deci următorul print continuă pe același rând",
-        "Afișează celula de două ori",
-        "Afișează și indexul celulei",
-        "Pune celula între ghilimele"
+        "Se termină cu un spațiu, nu cu un rând nou",
+        "Afișează celula de două ori, una lângă alta",
+        "Afișează și indexul celulei, imediat după ea",
+        "Pune celula între ghilimele când o afișează"
       ],
       "answer": 0
     },
@@ -180,12 +180,12 @@
       "answer": 2
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "De ce pornește lecția `cel_mai_mare` de la `matrice[0][0]` și nu de la 0?",
       "options": [
         "Pentru că o variabilă nu poate porni de la 0",
         "Ca să pornească de la o valoare reală și să meargă și când toate valorile sunt negative",
-        "Pentru că `matrice[0][0]` e mereu cea mai mare valoare",
+        "Pentru că `matrice[0][0]` e mereu cea mai mare valoare din toată matricea, orice ar ține",
         "Ca bucla să meargă mai repede"
       ],
       "answer": 1
@@ -247,12 +247,12 @@
       "answer": 2
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "De ce e lent `fib(30)` din lecție?",
       "options": [
-        "Orice funcție recursivă e lentă",
-        "Calculează aceleași valori iar și iar: și `fib(5)`, și `fib(4)` cheamă `fib(3)`",
-        "30 e un număr prea mare pentru Python",
+        "Orice funcție recursivă e lentă, orice ar face",
+        "Calculează aceleași valori iar și iar",
+        "30 e un număr prea mare ca Python să lucreze cu el",
         "Afișarea rezultatului ia cel mai mult timp"
       ],
       "answer": 1

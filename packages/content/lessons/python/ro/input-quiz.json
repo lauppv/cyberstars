@@ -1,23 +1,23 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce face input()?",
       "options": [
-        "Oprește programul și așteaptă ca utilizatorul să tasteze ceva și să apese Enter",
-        "Afișează un mesaj pe ecran și merge mai departe",
+        "Așteaptă ca utilizatorul să tasteze ceva și să apese Enter",
+        "Afișează un mesaj pe ecran și merge mai departe cu programul",
         "Citește următoarea linie din program",
-        "Inventează o valoare pentru variabilă"
+        "Citește valoarea pusă deja într-o variabilă și o returnează"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Ce returnează input() când utilizatorul tastează un număr?",
       "options": [
-        "Un întreg",
-        "Un șir de caractere (string), text ca \"18\"",
-        "Un număr cu zecimale",
+        "Un întreg, numărul 18",
+        "Un string, text ca \"18\"",
+        "Un număr cu zecimale, ca 18.0",
         "True sau False"
       ],
       "answer": 1
@@ -52,34 +52,34 @@
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Care e promptul în `nume = input(\"Cum te cheama? \")`?",
       "options": [
-        "Numele pe care îl tastează utilizatorul",
+        "Numele pe care îl tastează utilizatorul, pe care input() îl dă apoi înapoi",
         "Mesajul Cum te cheama?, afișat înainte ca programul să aștepte",
-        "Variabila nume",
+        "Variabila nume, în care se pune textul tastat",
         "Ce afișează programul la final"
       ],
       "answer": 1
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Când vede utilizatorul promptul?",
       "options": [
-        "După ce apasă Enter",
-        "Doar când apare o eroare",
+        "După ce apasă Enter, lângă textul pe care l-au tastat",
+        "Doar când apare o eroare în textul pe care îl tastează",
         "Înainte ca programul să aștepte să tasteze",
-        "La finalul programului"
+        "La finalul programului, după ultimul print()"
       ],
       "answer": 2
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Ce face int() cu textul \"42\"?",
       "options": [
-        "Pune ghilimele în jurul lui",
-        "Îl transformă în 42.0",
-        "Îl afișează",
+        "Îl lasă text, dar îi scoate ghilimelele",
+        "Îl transformă în 42.0, un număr cu zecimale",
+        "Îl afișează pe ecran sub forma 42",
         "Îl transformă în întregul 42"
       ],
       "answer": 3
@@ -102,13 +102,13 @@
       "answer": 1
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Când merge programul mai departe după un input()?",
       "options": [
-        "Imediat",
-        "După câteva secunde",
+        "Imediat, cât timp utilizatorul tastează",
+        "După câteva secunde, fie că tastează sau nu",
         "După ce utilizatorul apasă Enter",
-        "După următorul print()"
+        "După următorul print() din program"
       ],
       "answer": 2
     },
@@ -131,12 +131,12 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "De ce folosim input() în loc să scriem `nume = \"Tommy\"` în cod?",
       "options": [
         "Face programul mai rapid",
-        "Ca utilizatorul să aleagă valoarea de fiecare dată când rulează programul",
-        "Python are nevoie de input() pentru orice string",
+        "Ca utilizatorul să aleagă valoarea la fiecare rulare",
+        "Python are nevoie de input() ca să facă orice string dintr-un program",
         "Ca valoarea să nu se schimbe niciodată"
       ],
       "answer": 1

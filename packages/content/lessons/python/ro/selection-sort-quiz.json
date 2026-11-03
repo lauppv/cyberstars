@@ -1,24 +1,24 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce face Selection Sort pentru fiecare poziție, de la prima încolo?",
       "options": [
-        "Interschimbă fiecare pereche de vecini care nu sunt în ordine",
+        "Interschimbă fiecare pereche de vecini care nu sunt în ordine, ca Bubble Sort",
         "Mută cel mai mare număr la început",
-        "Găsește cel mai mic număr dintre cele rămase și îl mută prin interschimbare pe acea poziție",
+        "Găsește cel mai mic număr dintre cele rămase și îl mută pe acea poziție",
         "Împarte lista în două"
       ],
       "answer": 2
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Care e diferența principală dintre Selection Sort și Bubble Sort?",
       "options": [
-        "Selection Sort nu face comparații",
-        "Selection Sort face o singură interschimbare pe trecere, în loc de, poate, mai multe",
-        "Selection Sort merge doar pe liste sortate",
-        "Bubble Sort găsește întâi cel mai mic număr"
+        "Selection Sort nu face nicio comparație între numere",
+        "Selection Sort interschimbă o dată pe trecere",
+        "Selection Sort merge doar pe liste deja sortate",
+        "Bubble Sort găsește întâi cel mai mic număr din listă"
       ],
       "answer": 1
     },
@@ -35,7 +35,7 @@
       "answer": 0
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "Ce ține minte `index_minim` cât timp j parcurge lista?",
       "options": [
         "Cel mai mic număr în sine",
@@ -57,10 +57,10 @@
       "answer": 3
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Ce alege bucla din afară (i)?",
       "options": [
-        "Cel mai mic număr",
+        "Cel mai mic număr din toată lista",
         "Perechea de vecini de comparat",
         "Poziția de umplut următoarea",
         "De câte ori rulează programul"
@@ -86,10 +86,10 @@
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "De câte ori rulează codul din lecție linia de interschimbare pentru o listă de n elemente?",
       "options": [
-        "O dată pentru fiecare comparație",
+        "O dată pentru fiecare comparație, de fiecare dată când bucla din interior compară două numere",
         "De n ori, o dată pe poziție, chiar când un număr se interschimbă cu el însuși",
         "Niciodată mai mult de o dată",
         "De n × n ori"
@@ -97,9 +97,14 @@
       "answer": 1
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Cam câte comparații face Selection Sort pentru n elemente?",
-      "options": ["Cam n × n, ca Bubble Sort", "Cam n", "Doar una", "Cam 2 × n"],
+      "options": [
+        "Cam n × n, ca Bubble Sort",
+        "Cam n",
+        "Doar una",
+        "Cam 2 × n, câte două pe element"
+      ],
       "answer": 0
     },
     {
@@ -114,10 +119,10 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Ce spune lecția să folosim pentru sortare în programele reale?",
       "options": [
-        "Selection Sort, pentru că interschimbă mai puțin",
+        "Selection Sort, pentru că interschimbă mai puțin decât Bubble Sort",
         "`sorted()`, care e de sute de ori mai rapid",
         "Bubble Sort",
         "Căutarea liniară"
@@ -125,21 +130,21 @@
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Cum faci Selection Sort să sorteze de la cel mai mare la cel mai mic?",
       "options": [
-        "Pornești i de la sfârșitul listei",
-        "Cauți în schimb cel mai mare număr: compari cu `>`",
-        "Interschimbi doar când i e par",
-        "Scoți bucla din interior"
+        "Pornești i de la sfârșitul listei, nu de la început",
+        "Compari cu `>` ca să găsești cel mai mare",
+        "Interschimbi doar când i e par, sari peste impare",
+        "Scoți bucla din interior și o păstrezi pe cea din afară"
       ],
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "După prima trecere a lui Selection Sort, ce e sigur la locul lui?",
       "options": [
-        "Cel mai mare număr, la sfârșit",
+        "Cel mai mare număr, mutat la sfârșit",
         "Toate numerele",
         "Cel mai mic număr, pe poziția 0",
         "Încă nimic"
@@ -182,13 +187,13 @@
       "answer": 3
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "Ce face `numere[i], numere[index_minim] = numere[index_minim], numere[i]`?",
       "options": [
         "Copiază cel mai mic număr în ambele locuri",
-        "Compară cele două numere",
-        "Șterge numărul de la i",
-        "Interschimbă numărul de la i cu cel mai mic găsit"
+        "Compară cele două numere între ele",
+        "Șterge numărul de la poziția i",
+        "Interschimbă cele două numere"
       ],
       "answer": 3
     },
@@ -199,11 +204,11 @@
       "answer": 2
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "Selection Sort primește o listă deja sortată. Ce face?",
       "options": [
         "Face totuși fiecare comparație, nu se oprește mai devreme",
-        "Se oprește după prima comparație",
+        "Se oprește după prima comparație, pentru că nu trebuie mutat nimic",
         "Inversează lista",
         "Nu face nicio comparație"
       ],
@@ -228,11 +233,11 @@
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "De ce ultima trecere nu mută niciodată nimic?",
       "options": [
         "A rămas un singur număr, și e deja cel mai mare",
-        "Acolo bucla din interior merge invers",
+        "Bucla din interior merge invers la ultima trecere, deci nu găsește nimic",
         "Python sare peste ultima trecere",
         "Ultimul număr e mereu 0"
       ],

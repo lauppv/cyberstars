@@ -12,33 +12,33 @@
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "In the mission, why are team B's names put into a set before team A is checked?",
       "options": [
         "So the names come out sorted",
         "So the set holds the scores as well",
-        "Because a for loop can't go through a list of tuples",
+        "Because a for loop can't go through a list of tuples, only a set",
         "So `in` checks a name quickly, with each name kept once"
       ],
       "answer": 3
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "In the mission, why does the program go through team A to print the names in both teams, instead of printing the set?",
       "options": [
         "A set can't be printed",
         "Team A keeps its order, while a set's order can change",
         "The set holds the scores, not the names",
-        "print() shows only the first element of a set"
+        "print() shows only the first element of a set, not all of them"
       ],
       "answer": 1
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "What happens on each pass of `for name, score in team_a:`?",
       "options": [
         "name gets the whole tuple and score stays empty",
-        "The loop runs twice, once for the names and once for the scores",
+        "The loop runs twice over team_a: once for the names, then once for the scores",
         "The tuple is unpacked: its first value goes into name, its second into score",
         "It stops with an error, since a for loop takes one variable"
       ],
@@ -95,10 +95,10 @@
       "answer": 3
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "A `break` runs in the inner loop of two nested loops. What does it stop?",
       "options": [
-        "Both loops",
+        "Both loops: the inner one and the outer one, so the program goes on after them",
         "Only the inner loop, and the outer one goes on with its next value",
         "Only the outer loop",
         "The whole program"
@@ -113,13 +113,13 @@
       "answer": 0
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "What is the difference between a list and a tuple?",
       "options": [
-        "A tuple can't be changed once it's made, a list can",
-        "A tuple can hold only numbers",
-        "A list can't be looped over",
-        "A tuple keeps each value only once"
+        "A tuple can't be changed, a list can",
+        "A tuple can hold only numbers, a list anything",
+        "A list can't be looped over, a tuple can",
+        "A tuple keeps each value only once, like a set"
       ],
       "answer": 0
     },
@@ -172,12 +172,12 @@
       "answer": 2
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "In the mission, why is \"Lance and Quinn both scored 72\" printed before \"Cortez and Tommy both scored 91\"?",
       "options": [
         "Because 72 is smaller than 91",
         "Because Quinn comes before Tommy in team B",
-        "Because pairs are printed in alphabetical order",
+        "Because the pairs are printed in alphabetical order of the names",
         "Because Lance comes before Cortez in team A, the outer loop"
       ],
       "answer": 3
@@ -190,13 +190,13 @@
       "answer": 0
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "Why check whether a name was already seen with a set, not a list?",
       "options": [
         "A set can hold more names",
         "`in` is much faster on a set, and a set keeps each name once",
         "Only a set can be checked with `in`",
-        "A list forgets its elements at the end of a loop"
+        "A list forgets its elements at the end of a loop, so it can't remember names"
       ],
       "answer": 1
     },

@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce este o excepție în Python?",
       "options": [
-        "O eroare care apare cât rulează programul și îl oprește, dacă nu o gestionăm",
-        "O linie peste care Python sare intenționat",
+        "O eroare care oprește programul, dacă nu e gestionată",
+        "O linie peste care Python sare intenționat, fără s-o ruleze",
         "Un avertisment pe care Python îl arată, apoi îl ignoră",
-        "Un fel special de variabilă pentru erori"
+        "Un fel special de variabilă în care sunt ținute erorile"
       ],
       "answer": 0
     },
@@ -18,11 +18,11 @@
       "answer": 1
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "nume = [\"Tommy\", \"Lance\"]\nprint(nume[5])",
       "options": [
-        "Afișează Lance, ultimul nume",
+        "Afișează Lance, ultimul nume, pentru că indexul 5 trece de capătul listei",
         "Nu afișează nimic",
         "Se oprește cu un IndexError: nu există niciun element la indexul 5",
         "Afișează None"
@@ -55,23 +55,23 @@
       "answer": 1
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Într-un bloc `try`, ce se întâmplă cu liniile de după cea care eșuează?",
       "options": [
         "Rulează după blocul except",
         "Rulează înaintea blocului except",
         "Nu mai rulează: Python iese din blocul try la linia care eșuează",
-        "Rulează doar când blocul try e într-o buclă"
+        "Rulează doar când blocul try e într-o buclă, la trecerea următoare"
       ],
       "answer": 2
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "De ce e adesea mai bun `except ValueError:` decât un `except:` gol?",
       "options": [
         "Rulează mai repede decât un except gol",
         "Un except gol prinde doar ValueError",
-        "Doar except ValueError poate fi folosit într-o buclă",
+        "Doar except ValueError poate fi folosit într-o buclă, un except gol nu",
         "Știm exact ce a mers prost, iar fiecare eroare poate primi mesajul ei"
       ],
       "answer": 3
@@ -89,22 +89,22 @@
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "try:\n    print(10 / 0)\nexcept ValueError:\n    print(\"Nu e un numar\")",
       "options": [
-        "Afișează Nu e un numar",
-        "Se oprește cu un ZeroDivisionError: except ValueError nu îl prinde",
-        "Nu afișează nimic și merge mai departe",
-        "Afișează 0"
+        "Afișează Nu e un numar, pentru că except prinde eroarea",
+        "Se oprește cu un ZeroDivisionError",
+        "Nu afișează nimic și merge mai departe cu linia următoare",
+        "Afișează 0, pentru că 10 împărțit la 0 dă 0"
       ],
       "answer": 1
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Când rulează codul de sub `else:`, după `try` și `except`?",
       "options": [
-        "Doar când a apărut o eroare în blocul try",
+        "Doar când a apărut o eroare în blocul try, la orice linie",
         "Mereu, după blocul except",
         "Doar când nu a apărut nicio eroare în blocul try",
         "Niciodată: else merge doar cu if"
@@ -112,11 +112,11 @@
       "answer": 2
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "Când rulează codul de sub `finally:`?",
       "options": [
-        "Indiferent de situație: cu eroare sau fără",
-        "Doar când a apărut o eroare",
+        "Mereu: cu eroare sau fără",
+        "Doar când a apărut o eroare în try",
         "Doar când nu a apărut nicio eroare",
         "Doar la sfârșitul programului"
       ],
@@ -135,13 +135,13 @@
       "answer": 3
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "În bucla `while True` din lecție care cere vârsta, ce oprește bucla?",
       "options": [
         "Blocul except, după ce își afișează mesajul",
         "break-ul de imediat după int(), așa că iese doar un număr valid",
         "Python o oprește după trei încercări",
-        "Bucla se termină singură când utilizatorul apasă Enter"
+        "Bucla se termină singură când utilizatorul apasă Enter fără să tasteze"
       ],
       "answer": 1
     },
@@ -163,12 +163,12 @@
       "answer": 0
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "În misiune, `total = total + int(citire)` eșuează pentru `\"rau\"`. Ce se întâmplă cu total?",
       "options": [
         "Devine 0",
         "I se adaugă textul \"rau\"",
-        "Programul se oprește, așa că total se pierde",
+        "Programul se oprește la citirea aceea, așa că totalul de până atunci se pierde",
         "Rămâne cum era: int() eșuează înainte să se pună ceva în total"
       ],
       "answer": 3
@@ -215,13 +215,13 @@
       "answer": 1
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "În misiune, de ce stă `try` în bucla for și nu în jurul ei?",
       "options": [
         "Un bloc try nu poate conține o buclă for",
         "Ca bucla să ruleze de două ori",
         "În jurul ei, prima citire coruptă ar opri toată bucla",
-        "Ca citirile corupte să fie adunate ca 0"
+        "Ca citirile corupte să fie adunate totuși la total, dar ca 0"
       ],
       "answer": 2
     },
@@ -263,13 +263,13 @@
       "answer": 3
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "Ce prinde un `except:` gol, fără numele unei erori?",
       "options": [
         "Doar ValueError",
         "Orice eroare care apare în blocul try",
         "Doar erorile ultimei linii",
-        "Nimic: are nevoie de numele unei erori"
+        "Nimic: un except gol are nevoie de numele unei erori"
       ],
       "answer": 1
     },
@@ -281,13 +281,13 @@
       "answer": 0
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Un program fără try se oprește cu o eroare la a treia linie. Ce se întâmplă cu liniile de după?",
       "options": [
         "Rulează totuși, una câte una",
         "Rulează după ce eroarea e afișată",
         "Rulează doar liniile cu print dintre ele",
-        "Nu mai rulează: programul se oprește la eroare"
+        "Nu mai rulează"
       ],
       "answer": 3
     },

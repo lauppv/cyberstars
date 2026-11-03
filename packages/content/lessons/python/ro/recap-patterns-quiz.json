@@ -7,33 +7,33 @@
       "answer": 1
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "În misiune, ce tipar folosește `cel_mai_lung_cuvant(jurnal)`?",
       "options": [
         "Contorul",
         "Acumulatorul: ține cel mai lung cuvânt de până acum",
         "Steagul",
-        "Un dicționar de frecvență"
+        "Un dicționar de frecvență care numără fiecare cuvânt din jurnal"
       ],
       "answer": 1
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "În misiune, ce tipar folosește `are_duplicate(jurnal)`?",
       "options": [
         "Contorul",
-        "Acumulatorul",
+        "Acumulatorul: construiește o listă cu cuvintele repetate",
         "Sortarea",
         "Steagul: True de îndată ce un cuvânt apare din nou"
       ],
       "answer": 3
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "De ce împarte misiunea munca în trei funcții?",
       "options": [
-        "Python permite cel mult zece linii într-o funcție",
-        "Fiecare face o singură treabă mică, deci e mai ușor de scris, citit și verificat",
+        "Python permite cel mult zece linii într-o funcție, așa că trebuie să le împartă",
+        "Fiecare face o treabă mică, deci e mai ușor de scris, citit și verificat",
         "Ca programul să ruleze de trei ori mai repede",
         "Pentru că un jurnal poate fi citit o singură dată"
       ],
@@ -54,13 +54,13 @@
       "answer": 2
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "De ce compară `cel_mai_lung_cuvant` cu `>` și nu cu `>=`?",
       "options": [
-        "Cu `>` rămâne primul dintre mai multe cuvinte la fel de lungi, cum cere misiunea",
-        "`>=` nu merge pe numere",
-        "Cu `>` câștigă ultimul",
-        "Nu e nicio diferență"
+        "Ca primul dintre cuvintele la fel de lungi să rămână",
+        "`>=` nu merge pe numere, cum sunt lungimile cuvintelor",
+        "Cu `>` câștigă în schimb ultimul dintre cele mai lungi",
+        "Nu e nicio diferență între cele două comparații în cazul ăsta"
       ],
       "answer": 0
     },
@@ -72,10 +72,10 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Ce ține `vazute` în `are_duplicate`?",
       "options": [
-        "Fiecare cuvânt care apare de două ori",
+        "Fiecare cuvânt care apare de două ori sau mai mult",
         "Câte cuvinte sunt",
         "Cuvintele deja întâlnite în buclă",
         "Cel mai lung cuvânt de până acum"
@@ -101,11 +101,11 @@
       "answer": 3
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "De ce scrie misiunea `sorted(set(cuvinte))` și nu doar `set(cuvinte)`?",
       "options": [
         "Un set nu are o ordine fixă; sorted() îl face o listă în ordine alfabetică",
-        "set() singur nu scoate cuvintele repetate",
+        "set() singur nu scoate cuvintele repetate, așa că sorted() trebuie să le scoată după",
         "sorted() scoate cuvintele repetate",
         "set() merge doar pe numere"
       ],
@@ -119,24 +119,24 @@
       "answer": 3
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Ce dă `jurnal.split(\" \")`?",
       "options": [
-        "Numărul de cuvinte",
-        "Primul cuvânt",
+        "Numărul de cuvinte din jurnal, ca întreg",
+        "Doar primul cuvânt din jurnal, fără restul",
         "O listă cu cuvintele jurnalului",
-        "Jurnalul fără spații"
+        "Jurnalul, dar fără spațiile dintre cuvinte"
       ],
       "answer": 2
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "De ce pornește `cel_mai_lung` ca text gol, `\"\"`?",
       "options": [
-        "Orice cuvânt e mai lung decât el, deci primul cuvânt îl înlocuiește",
-        "Python cere ca orice text să pornească gol",
-        "Ca funcția să nu returneze nimic",
-        "Pentru că jurnalul poate să nu aibă spații"
+        "Orice cuvânt e mai lung, deci primul îl înlocuiește",
+        "Python cere ca orice variabilă text să pornească goală",
+        "Ca funcția să nu returneze nimic când jurnalul e gol",
+        "Pentru că jurnalul poate să nu aibă deloc spații între cuvinte"
       ],
       "answer": 0
     },
@@ -216,29 +216,29 @@
       "answer": 3
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "Ce funcție predefinită dă câte cuvinte are lista `cuvinte`?",
-      "options": ["`sum(cuvinte)`", "`max(cuvinte)`", "`sorted(cuvinte)`", "`len(cuvinte)`"],
+      "options": ["`count(cuvinte)`", "`cuvinte.count()`", "`sorted(cuvinte)`", "`len(cuvinte)`"],
       "answer": 3
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "De ce e `'citire'`, cu ghilimele simple, în `f\"Aparitii citire: {contor_cuvant(jurnal, 'citire')}\"`?",
       "options": [
         "Ghilimelele duble ar închide f-string-ul prea devreme",
         "Ghilimelele simple îl fac număr",
-        "Python numără doar cuvinte în ghilimele simple",
+        "Python numără doar cuvintele scrise între ghilimele simple",
         "Ca să fie afișat cu majuscule"
       ],
       "answer": 0
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "De ce primește fiecare funcție jurnalul ca parametru în loc să folosească variabila `jurnal` de afară?",
       "options": [
         "Parametrii fac programul mai rapid",
         "Ca să meargă pe orice jurnal primește, nu doar pe unul",
-        "O funcție nu vede nicio variabilă de afară",
+        "O funcție nu vede nicio variabilă de afară, nici măcar jurnal",
         "Ca jurnalul să fie schimbat pentru totdeauna"
       ],
       "answer": 1

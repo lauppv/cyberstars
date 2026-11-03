@@ -1,23 +1,23 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does break do inside a loop?",
       "options": [
         "It stops the loop completely, however many iterations were left",
-        "It skips the rest of this iteration and goes to the next one",
+        "It skips the rest of this iteration and goes straight to the next one",
         "It stops the whole program",
         "It pauses the loop until the user presses Enter"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "What does continue do inside a loop?",
       "options": [
         "It stops the loop completely",
         "It skips the rest of the current iteration and jumps to the next one",
-        "It runs the current iteration again from the top",
+        "It runs the current iteration again from the top, with the same value",
         "It goes on with the line after the loop"
       ],
       "answer": 1
@@ -75,13 +75,13 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "What happens to an odd i here?",
       "code": "for i in range(0, 11):\n    if i % 2 != 0:\n        continue\n    print(i)",
       "options": [
         "continue skips its print(i), and the loop goes on with the next i",
         "continue stops the loop at the first odd number",
-        "It is printed, since continue means go on",
+        "It is printed as well, since continue just means go on to the next line",
         "Python stops with an error"
       ],
       "answer": 0
@@ -109,11 +109,11 @@
       "answer": 2
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "In the lesson's command loop, the user types Stop. What happens?",
       "code": "while True:\n    command = input(\"Command: \")\n    if command == \"stop\":\n        break\n    print(f\"Running: {command}\")\nprint(\"System stopped\")",
       "options": [
-        "The loop stops and System stopped is printed",
+        "The loop stops and System stopped is printed, since case doesn't matter",
         "Python stops with an error",
         "Nothing is printed and it asks again",
         "It prints Running: Stop and asks again, since \"Stop\" is not \"stop\""
@@ -121,13 +121,13 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "When is `command == \"stop\"` true?",
       "options": [
-        "Only when command holds exactly the word stop",
+        "Only when command is exactly stop",
         "When command holds stop, Stop or STOP",
-        "When command starts with stop",
-        "Never, == works only with numbers"
+        "When command starts with stop, like stop now",
+        "Never: == can only compare numbers, not text"
       ],
       "answer": 0
     },
@@ -188,10 +188,10 @@
       "answer": 1
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "After continue in a for loop, what is i on the next iteration?",
       "options": [
-        "The same value, the iteration runs again",
+        "The same value: the iteration runs again from the top",
         "The first value of range() again",
         "The next value of range(), as usual",
         "Nothing: the loop ends"
@@ -218,10 +218,10 @@
       "answer": 1
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "A for loop has a break whose if is never true. What happens?",
       "options": [
-        "The loop stops at its first iteration",
+        "The loop stops at its very first iteration, when it reaches break",
         "Python stops with an error",
         "The loop runs to the end as if the break weren't there",
         "The loop never ends"
@@ -246,13 +246,13 @@
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "A continue is the last line of a loop's block. What does it change?",
       "options": [
         "The loop stops after this iteration",
-        "Nothing: there is nothing left in the iteration to skip",
-        "The next iteration is skipped",
-        "The iteration runs twice"
+        "Nothing: nothing is left to skip",
+        "The next iteration is skipped instead",
+        "The current iteration runs once more"
       ],
       "answer": 1
     },
@@ -275,12 +275,12 @@
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Where does continue jump to?",
       "options": [
         "Back to the top of the loop, for the next iteration",
         "To the first line after the loop",
-        "To the start of the program",
+        "To the start of the program, to run it again from line one",
         "To the line right under it"
       ],
       "answer": 0

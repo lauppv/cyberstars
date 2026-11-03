@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce este un palindrom?",
       "options": [
-        "Un cuvânt fără litere repetate",
-        "Un cuvânt care se citește la fel de la stânga la dreapta și invers",
-        "Un cuvânt cu literele în ordine alfabetică",
-        "Un cuvânt cu un număr par de litere"
+        "Un cuvânt în care nicio literă nu apare de două ori",
+        "Un cuvânt care se citește la fel în ambele sensuri",
+        "Un cuvânt care are toate literele în ordine alfabetică",
+        "Un cuvânt care are mereu un număr par de litere, nu impar"
       ],
       "answer": 1
     },
@@ -19,12 +19,12 @@
       "answer": 0
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Cum verifică `cuvant == cuvant[::-1]` dacă e palindrom?",
       "options": [
-        "Numără literele cuvântului",
+        "Numără literele cuvântului și compară",
         "Verifică dacă cuvântul nu are spații",
-        "Sortează literele și compară",
+        "Sortează literele, apoi le compară",
         "Compară cuvântul cu inversul lui"
       ],
       "answer": 3
@@ -75,12 +75,12 @@
       "answer": 0
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "De ce vine `return True` după buclă, nu în ea?",
       "options": [
-        "Python nu permite `return True` într-o buclă",
-        "Ca funcția să iasă înainte să verifice ceva",
-        "Știm că e palindrom doar după ce s-au potrivit toate perechile",
+        "Python nu permite `return True` în interiorul unei bucle",
+        "Ca funcția să iasă înainte să apuce să verifice ceva",
+        "Abia după ce s-au potrivit toate perechile știm",
         "Pentru că `return False` trebuie să fie ultima linie"
       ],
       "answer": 2
@@ -110,11 +110,11 @@
       "answer": 0
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "De ce poate rămâne neverificată litera din mijloc a lui „rotitor”?",
       "options": [
         "E mereu o vocală",
-        "Bucla nu poate ajunge la mijloc",
+        "Bucla nu poate ajunge la mijlocul unui cuvânt impar",
         "Este propria ei oglindă, deci se potrivește mereu",
         "Python sare peste pozițiile impare"
       ],
@@ -133,13 +133,13 @@
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "De ce păstrează verificarea propoziției doar caracterele cu `caracter.isalpha()`?",
       "options": [
         "Ca propoziția să fie mai scurtă, pentru viteză",
         "Ca cifrele să fie comparate primele",
         "Pentru că `[::-1]` nu poate inversa spații",
-        "Ca spațiile și semnele de punctuație să nu conteze"
+        "Ca spațiile și punctuația să nu conteze"
       ],
       "answer": 3
     },
@@ -194,9 +194,9 @@
       "answer": 2
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "Câte comparații face varianta cu buclă pentru „salut” înainte să returneze False?",
-      "options": ["2", "1: s și t diferă deja", "5", "Niciuna, iese imediat"],
+      "options": ["2", "1: s și t diferă deja", "5", "Niciuna, returnează False imediat"],
       "answer": 1
     },
     {
@@ -255,10 +255,10 @@
       "answer": 0
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "În „Ele fac cafele”, ce face ca simplul `text == text[::-1]` să spună False?",
       "options": [
-        "Propoziția e prea lungă",
+        "Propoziția e prea lungă ca s-o inverseze",
         "Litera e apare de mai multe ori",
         "Spațiile și litera mare",
         "Propozițiile nu pot fi niciodată palindroame"

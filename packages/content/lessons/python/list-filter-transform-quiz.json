@@ -1,21 +1,21 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does filtering a list mean?",
       "options": [
-        "Keeping only the elements that match a condition",
-        "Changing every element in some way",
-        "Sorting the list",
-        "Removing the list's first element"
+        "Keeping only the matching elements",
+        "Changing every element of the list in some way",
+        "Sorting the list from the smallest to the biggest",
+        "Removing the first element of the list"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "What does transforming a list mean?",
       "options": [
-        "Keeping only some elements",
+        "Keeping only some elements, the ones that match",
         "Reversing the list",
         "Applying an operation to every element",
         "Counting the elements"
@@ -55,10 +55,10 @@
       "answer": 2
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "What does `round(price * 1.19, 2)` do to the price?",
       "options": [
-        "Multiplies by 1.19 and doubles it",
+        "Multiplies the price by 1.19, then doubles the result",
         "Adds 19% and keeps two digits after the point",
         "Rounds the price to the nearest 2",
         "Adds 1.19 and 2 to the price"
@@ -101,11 +101,11 @@
       "answer": 2
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Why does `min(g + 5, 100)` cap the grade at 100?",
       "options": [
-        "It always gives 100",
-        "It gives the smaller of the two, so anything over 100 becomes 100",
+        "It always gives 100, whatever g is",
+        "It gives the smaller of the two",
         "It removes grades over 100 from the list",
         "It rounds the grade to the nearest hundred"
       ],
@@ -131,10 +131,10 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "In the mission, why filter before working out the average?",
       "options": [
-        "Because `sum()` can't add small numbers",
+        "Because `sum()` can't add up small numbers, like those below 50",
         "So the list is sorted",
         "So only the stable reactors' boosted readings count",
         "Because `round()` needs a filtered list"
@@ -236,13 +236,13 @@
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "Why does the comprehension version write `min(g + 5, 100)` instead of the two `if` lines of the loop?",
       "options": [
         "Comprehensions can't use `+`",
         "`min()` also filters the grades",
         "`min()` does the cap in one expression, which fits inside a comprehension",
-        "The loop version gives a different result"
+        "The loop version would give a different result whenever a grade goes over 100"
       ],
       "answer": 2
     },
@@ -254,11 +254,11 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "Does the order of filter and transform matter in `[n * 2 for n in numbers if n > 5]`?",
       "options": [
         "No, it never matters",
-        "Yes: the condition looks at `n * 2`",
+        "Yes: the condition looks at `n * 2`, after it is doubled",
         "Only when the list is sorted",
         "Yes: the condition looks at `n`, before it is doubled"
       ],

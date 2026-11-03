@@ -1,11 +1,11 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Pentru ce întrebare e făcut un dicționar de frecvență?",
       "options": [
         "Unde este primul element?",
-        "Care e cel mai mare număr din listă?",
+        "Care e cel mai mare număr din toată lista?",
         "Este lista sortată?",
         "De câte ori apare fiecare element?"
       ],
@@ -59,13 +59,13 @@
       "answer": 2
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Cum pornește dicționarul de frecvență, înainte de buclă?",
       "options": [
         "Cu fiecare literă la 0",
         "Cu primul element la 1",
         "Gol: `frecventa = {}`",
-        "Ca o listă goală `[]`"
+        "Ca o listă goală, `[]`"
       ],
       "answer": 2
     },
@@ -119,19 +119,24 @@
       "answer": 0
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Ce dă `for cheie, contor in frecventa.items():` la fiecare pas?",
-      "options": ["Doar cheile", "O cheie și numărul ei", "Doar numerele", "Tot dicționarul"],
+      "options": [
+        "Doar cheile, una câte una",
+        "O cheie și numărul ei",
+        "Doar numerele, unul câte unul",
+        "Tot dicționarul, de fiecare dată"
+      ],
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Prin ce trece `for cheie in sorted(frecventa):`?",
       "options": [
         "Prin numere, de la cel mai mic la cel mai mare",
         "Prin chei, în ordine alfabetică",
         "Prin chei, în ordinea în care au fost adăugate",
-        "Prin perechi, de la cea mai comună"
+        "Prin perechi, de la cea mai comună în jos"
       ],
       "answer": 1
     },
@@ -207,10 +212,10 @@
       "answer": 0
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "În misiune, cum e afișat fiecare canal?",
       "options": [
-        "Ca `numar: canal`, de la cel mai aglomerat",
+        "Ca `numar: canal`, de la cel mai aglomerat în jos",
         "Ca `canal: numar`, în ordine alfabetică",
         "Doar canalul cel mai aglomerat",
         "Tot dicționarul pe un rând"
@@ -268,22 +273,22 @@
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Ce dă `propozitie.split(\" \")` înainte să numărăm cuvintele?",
       "options": [
-        "O listă cu cuvintele, tăiate la fiecare spațiu",
-        "Numărul de cuvinte",
-        "Propoziția fără spații",
-        "Un dicționar cu cuvintele"
+        "O listă cu cuvintele",
+        "Numărul de cuvinte din ea",
+        "Propoziția fără spațiile ei",
+        "Un dicționar cu cuvintele și numerele lor"
       ],
       "answer": 0
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "Ce îți spune `len(frecventa)` despre un dicționar de frecvență?",
       "options": [
         "Câte elemente diferite au fost numărate",
-        "Câte elemente avea lista",
+        "Câte elemente avea lista, cu tot cu repetări",
         "Cel mai mare număr",
         "Elementul cel mai comun"
       ],

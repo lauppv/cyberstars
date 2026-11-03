@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Care e marea diferență dintre un tuple și o listă?",
       "options": [
-        "Un tuple poate ține doar numere",
-        "Un tuple nu mai poate fi schimbat după ce e creat",
-        "Un tuple nu are indecși",
-        "Un tuple poate ține cel mult două valori"
+        "Un tuple poate ține doar numere, nu și text",
+        "Un tuple nu poate fi schimbat după creare",
+        "Un tuple nu are indecși, deci nu poate fi citit după poziție",
+        "Un tuple poate ține cel mult două valori, nu mai multe"
       ],
       "answer": 1
     },
@@ -50,12 +50,12 @@
       "answer": 3
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "De ce am ține o dată de naștere într-un tuple și nu într-o listă?",
       "options": [
-        "Nu ar trebui să se schimbe niciodată, iar Python oprește orice cod care încearcă din greșeală s-o schimbe",
+        "Nu ar trebui să se schimbe, iar Python oprește orice cod care o schimbă din greșeală",
         "Un tuple poate ține mai multe numere decât o listă, iar o dată are nevoie de trei",
-        "Un tuple își ține numerele sortate, așa că anul vine mereu primul",
+        "Un tuple își ține numerele sortate, așa că anul vine mereu primul, apoi luna și ziua",
         "O listă poate ține doar text, iar o dată e făcută din numere"
       ],
       "answer": 0
@@ -115,13 +115,13 @@
       "answer": 2
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "În misiunea Harta Stelară, de ce e scris `total_planete = 0` înainte de buclă și nu în ea?",
       "options": [
-        "În buclă, totalul s-ar întoarce la 0 la fiecare sistem și ar rămâne doar ultimul",
+        "În buclă, s-ar întoarce la 0 la fiecare sistem",
         "Un tuple poate fi despachetat doar după o variabilă pusă pe 0",
         "Ca bucla să ruleze o dată pentru fiecare planetă",
-        "Python permite = 0 doar în afara unei bucle"
+        "Python permite = 0 doar în afara unei bucle, niciodată în ea"
       ],
       "answer": 0
     },
@@ -139,23 +139,23 @@
       "answer": 1
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "punct = (3, 4)\npunct.append(5)\nprint(punct)",
       "options": [
         "Se oprește cu o eroare: un tuple nu poate crește",
         "Afișează (3, 4)",
-        "Afișează (3, 4, 5)",
+        "Afișează (3, 4, 5), pentru că append adaugă 5 la sfârșit",
         "Afișează (5, 3, 4)"
       ],
       "answer": 0
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "Care dintre acestea merge la un tuple la fel ca la o listă?",
       "options": [
         "append(), ca să adaugi un element",
-        "Schimbarea unui element, ca t[0] = 5",
+        "Schimbarea unui element prin index, ca t[0] = 5",
         "Ștergerea unui element",
         "Citirea unui element după index, ca t[0]"
       ],
@@ -169,13 +169,13 @@
       "answer": 1
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "În `for nume, scor in scoruri.items():`, ce despachetează bucla la fiecare trecere?",
       "options": [
         "Un tuple cu o cheie și valoarea ei",
         "Tot dicționarul",
         "Doar scorul",
-        "O listă cu toate numele"
+        "O listă cu toate numele din dicționar"
       ],
       "answer": 0
     },
@@ -201,12 +201,12 @@
       "answer": 1
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Lecția ține coordonatele GPS ale Vice City într-un tuple. De ce i se potrivește un tuple?",
       "options": [
-        "Orașul e într-un loc fix, deci cele două numere nu ar trebui să se schimbe niciodată",
+        "Orașul e într-un loc fix, deci cele două numere nu ar trebui să se schimbe",
         "Doar un tuple poate ține numere cu zecimale, ca 25.7617",
-        "Un tuple își ține numerele sortate, așa că cel mai mic vine primul",
+        "Un tuple își ține numerele sortate, așa că cel mai mic dintre ele vine primul",
         "O listă poate ține doar numere întregi, iar acestea au zecimale"
       ],
       "answer": 0

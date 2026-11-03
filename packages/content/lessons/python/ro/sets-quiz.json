@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce face o mulțime diferită de o listă?",
       "options": [
-        "Fiecare valoare e în ea o singură dată: duplicatele dispar",
-        "Își ține valorile sortate",
-        "Valorile ei se citesc după cheie",
-        "Nu se mai poate schimba după ce e făcută"
+        "Fiecare valoare e în ea o singură dată",
+        "Își ține valorile sortate, de la mic la mare",
+        "Valorile ei se citesc după cheie, ca la un dicționar",
+        "Nu se mai poate schimba după ce e făcută, ca un tuple"
       ],
       "answer": 0
     },
@@ -47,13 +47,13 @@
       "answer": 3
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "De ce folosește o mulțime `.add()` și nu `.append()`, ca o listă?",
       "options": [
-        "O mulțime n-are ordine, deci adăugarea la final n-are sens",
-        "append() merge doar cu numere",
-        "add() ține valorile sortate",
-        "O mulțime poate primi o singură valoare nouă"
+        "O mulțime n-are ordine, deci n-are un final",
+        "append() merge doar cu numere, nu și cu text",
+        "add() ține valorile sortate, pe când append() nu",
+        "O mulțime poate primi o singură valoare nouă odată"
       ],
       "answer": 0
     },
@@ -112,21 +112,21 @@
       "answer": 2
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "În `list(set(nume))`, la ce folosește mulțimea din mijloc?",
       "options": [
         "Elimină duplicatele, apoi list() o face din nou listă",
-        "Sortează numele, apoi list() le păstrează în ordinea asta",
+        "Sortează numele, apoi list() le păstrează în ordinea asta sortată",
         "list() nu poate primi o listă, deci are nevoie întâi de o mulțime",
         "Face o copie a lui nume care nu se mai poate schimba"
       ],
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "După `nume_unice = list(set(nume))`, sunt numele sigur în ordinea pe care o aveau în nume?",
       "options": [
-        "Da: o mulțime păstrează ordinea în care au fost adăugate",
+        "Da: o mulțime păstrează mereu numele în ordinea în care au fost adăugate",
         "Nu: o mulțime nu păstrează ordinea, deci pot ieși în altă ordine",
         "Nu: ies mereu sortate de la A la Z",
         "Da, dar doar când numele sunt text"
@@ -152,13 +152,13 @@
       "answer": 0
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "În misiunea Jurnalul de Semnale, `\"D4\" in semnale` l-ar găsi și el pe D4. De ce verificăm în mulțime?",
       "options": [
         "in nu merge pe o listă",
         "Lista ar spune D4 lipseste, pentru că D4 e spre final",
-        "Mulțimea îl ține pe D4 primul, deci îl găsește mai repede",
-        "Amândouă dau același răspuns, dar verificarea într-o mulțime e mult mai rapidă"
+        "Mulțimea îl ține pe D4 primul, deci îl găsește mult mai repede decât lista",
+        "Răspunsul e același, dar verificarea într-o mulțime e mult mai rapidă"
       ],
       "answer": 3
     },
@@ -187,13 +187,13 @@
       "answer": 3
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "Ce face `.add()` cu o valoare care e deja în mulțime?",
       "options": [
-        "Se oprește cu o eroare",
+        "Se oprește cu o eroare: valoarea există deja",
         "Nimic: mulțimea rămâne cum era",
-        "Adaugă a doua copie",
-        "Scoate valoarea"
+        "Adaugă încă o copie a valorii în mulțime",
+        "Scoate valoarea din mulțime, ca remove()"
       ],
       "answer": 1
     },
@@ -211,11 +211,11 @@
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Scriem `oaspeti = {\"Tommy\", \"Lance\", \"Cortez\"}` și îl afișăm. Ce poate ieși altfel decât l-am scris?",
       "options": [
         "Ordinea numelor",
-        "Câte nume arată",
+        "Câte nume se afișează",
         "Literele numelor, care ies cu majuscule",
         "Nimic: o mulțime se afișează exact cum a fost scrisă"
       ],
@@ -266,13 +266,13 @@
       "answer": 0
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "În misiunea Jurnalul de Semnale, A1 apare de trei ori în semnale. De câte ori e în mulțimea unice?",
       "options": [
         "De trei ori: mulțimea copiază lista",
         "O dată: o mulțime ține fiecare valoare o singură dată",
         "De două ori: doar prima copie dispare",
-        "Deloc: o valoare care se repetă dispare"
+        "Deloc: o valoare care se repetă dispare cu totul din mulțime"
       ],
       "answer": 1
     }

@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "In `for k in scores:`, what is k on each pass?",
       "options": [
         "A key of scores, the next one each time",
         "A value of scores, the next one each time",
-        "A whole key: value pair",
-        "How many pairs scores has"
+        "A whole key: value pair, the next one each time",
+        "How many pairs scores has, counted on each pass"
       ],
       "answer": 0
     },
@@ -30,13 +30,13 @@
       "answer": 3
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "What does `.items()` give a for loop on each pass?",
       "options": [
         "Only the key",
         "The key and its value, together",
         "Only the value",
-        "The position of the pair in the dictionary"
+        "The position of the pair in the dictionary, as an index"
       ],
       "answer": 1
     },
@@ -93,12 +93,12 @@
       "answer": 2
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "In the letter counter, why does a letter seen for the first time get `counter[letter] = 1`?",
       "options": [
-        "Because counter[letter] + 1 would fail: the letter isn't a key in counter yet",
+        "Because counter[letter] + 1 would fail: the letter isn't a key yet",
         "So that letter is counted twice",
-        "Because every dictionary starts from 1",
+        "Because every dictionary has to start counting its keys from 1, not 0",
         "So the loop skips that letter"
       ],
       "answer": 0
@@ -128,12 +128,12 @@
       "answer": 2
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Why does the sum of a dictionary's scores loop over `.values()` and not over the dictionary itself?",
       "options": [
         "Looping over the dictionary gives the keys, the names, not the scores",
         "A loop over a dictionary works only with .values()",
-        "So it gets the scores from the largest to the smallest",
+        "So it gets the scores in order, going from the largest down to the smallest",
         ".values() adds the scores up by itself"
       ],
       "answer": 0
@@ -146,13 +146,13 @@
       "answer": 2
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "In the Crew Scores mission, why does the loop that finds the top go through the names, not through `.values()`?",
       "options": [
-        "With .values() the loop would skip the last member",
-        "It needs the name of the best member, and from a name it can get the score too",
-        ".values() doesn't work on a dictionary of numbers",
-        "So it prints the names in order"
+        "With .values() the loop would skip the last member of the dictionary",
+        "It needs the best member's name, and a name gives the score too",
+        ".values() doesn't work on a dictionary whose values are numbers",
+        "So it prints the names in the order they were added"
       ],
       "answer": 1
     },
@@ -174,11 +174,11 @@
       "answer": 0
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "In what order does `for k in d:` give the keys?",
       "options": [
         "From A to Z",
-        "In a random order, another one on each run",
+        "In a random order, which changes from one run to the next",
         "In the order they were put into the dictionary",
         "From the smallest value to the largest"
       ],
@@ -192,14 +192,14 @@
       "answer": 1
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "Which loop prints the same as this one?",
       "code": "for v in player.values():\n    print(v)",
       "options": [
         "for k in player:\n    print(k)",
         "for k in player:\n    print(player[k])",
-        "for k in player.keys():\n    print(k)",
-        "print(player)"
+        "for k in player.items():\n    print(k)",
+        "for v in player.values():\n    print(player[v])"
       ],
       "answer": 1
     },
@@ -228,13 +228,13 @@
       "answer": 0
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "scores is `{\"Tommy\": 88}`. What does `88 in scores` give?",
       "options": [
-        "True, since 88 is in the dictionary",
-        "\"Tommy\"",
-        "It stops with an error",
-        "False, since in looks only at the keys"
+        "True, since 88 is in the dictionary as a value",
+        "\"Tommy\", the key whose value is 88",
+        "It stops with an error: 88 is not a key",
+        "False: in looks only at the keys"
       ],
       "answer": 3
     },
@@ -277,12 +277,12 @@
       "answer": 2
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "With a dictionary, you count how many times each word shows up in a list. What are its keys and its values?",
       "options": [
         "The keys are the counts and the values are the words",
         "The keys are the words and the values are how many times each one shows up",
-        "The keys are the positions 0, 1, 2 and the values are the words",
+        "The keys are the positions 0, 1, 2 of the list, and the values are the words",
         "The keys and the values are both the words"
       ],
       "answer": 1

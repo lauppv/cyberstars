@@ -19,9 +19,14 @@
       "answer": 0
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Where does counting the positions of a string start?",
-      "options": ["At 1", "At the last character", "At the first space", "At 0"],
+      "options": [
+        "At 1, like counting by hand",
+        "At the last character",
+        "At the first space",
+        "At 0"
+      ],
       "answer": 3
     },
     {
@@ -55,21 +60,21 @@
       "answer": 3
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "What is a method, like `upper()` in `name.upper()`?",
       "options": [
         "A variable kept inside a string",
         "A keyword, like if",
         "A function that belongs to something, called after a dot",
-        "A comment written after a line"
+        "A loop that goes through each character"
       ],
       "answer": 2
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "What does `+` do between two strings?",
       "options": [
-        "It adds up their lengths",
+        "It adds up their lengths, like len() does",
         "It glues them into one string",
         "It puts a space between them and prints them",
         "It stops with an error: + is only for numbers"
@@ -107,12 +112,12 @@
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Why doesn't `name[0:5]` take the character at position 5?",
       "options": [
         "The end is left out, as with range()",
         "Python always skips the last letter of a word",
-        "Position 5 is always a space",
+        "The slice counts from 1, so it stops at 4",
         "It does take it: name[0:5] has 6 characters"
       ],
       "answer": 0
@@ -142,10 +147,10 @@
       "answer": 0
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "Does a space count in `len()`?",
       "options": [
-        "No: len(\"a b\") is 2",
+        "No: len(\"a b\") is 2, spaces aren't counted",
         "Only a space at the end",
         "Only inside an f-string",
         "Yes: len(\"a b\") is 3"

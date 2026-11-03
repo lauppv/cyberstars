@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce dă înapoi `return a, b`?",
       "options": [
         "Doar a, prima valoare",
-        "O tuplă care îi ține pe a și pe b",
-        "Doar b, ultima valoare",
-        "Două liste separate"
+        "O tuplă cu a și b",
+        "Doar b, ultima valoare scrisă",
+        "Două liste separate, câte una pentru fiecare"
       ],
       "answer": 1
     },
@@ -32,10 +32,10 @@
       "answer": 0
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "E vreo diferență între `return a, b` și `return (a, b)`?",
       "options": [
-        "Da: prima dă înapoi două valori, a doua o tuplă",
+        "Da: prima dă înapoi două valori separate, pe când a doua dă înapoi o singură tuplă",
         "Da: a doua se oprește cu o eroare",
         "Nu: amândouă dau înapoi aceeași tuplă, Python doar ne lasă să sărim parantezele",
         "Da: prima dă înapoi doar a"
@@ -66,13 +66,13 @@
       "answer": 3
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Ce dă înapoi `.split(\" \")`?",
       "options": [
         "O listă cu părțile dintre spații",
-        "O tuplă cu părțile dintre spații",
-        "Același text, fără spații",
-        "Câte spații are textul"
+        "O tuplă cu părțile dintre spații, în ordine",
+        "Același text, din care s-au scos spațiile",
+        "Câte spații are textul, sub formă de număr"
       ],
       "answer": 0
     },
@@ -118,11 +118,11 @@
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "În misiune, `total, cel_mai_mare, cel_mai_mic = analizeaza(citire)`. Cum își primește fiecare nume valoarea?",
       "options": [
         "După nume: Python caută în analizeaza valoarea numită total",
-        "Python sortează mai întâi valorile de la cea mai mică la cea mai mare",
+        "Python sortează mai întâi valorile de la cea mai mică la cea mai mare, apoi le împarte",
         "După poziție: primul nume ia prima valoare din return, și tot așa",
         "Toate trei numele primesc toată tupla"
       ],
@@ -162,13 +162,13 @@
       "answer": 0
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "Avem nevoie de cea mai mică și de cea mai mare valoare dintr-o listă. De ce o singură funcție care le returnează pe amândouă?",
       "options": [
-        "Python permite o singură funcție pentru fiecare listă",
+        "Python permite o singură funcție pentru fiecare listă, deci ambele trebuie să vină din ea",
         "Două funcții nu pot primi niciodată aceeași listă",
         "Un program poate avea un singur return",
-        "Un singur apel dă ambele valori înrudite, iar lucrul cu lista stă într-un singur loc"
+        "Un apel le dă pe amândouă, iar lucrul cu lista stă într-un loc"
       ],
       "answer": 3
     },
@@ -187,10 +187,10 @@
       "answer": 0
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "Câte valori poate da înapoi un singur `return`?",
       "options": [
-        "Doar una",
+        "Doar una: a doua valoare cere un al doilea return",
         "Cel mult două",
         "Câte scriem, separate prin virgule",
         "Cel mult trei"
@@ -216,12 +216,12 @@
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "Lecția spune că Python „creează o tuplă și apoi o despachetează”. Ce înseamnă asta?",
       "options": [
-        "Python transformă funcția într-o tuplă",
-        "return a, b pune ambele valori într-o tuplă, iar x, y = le scoate în două nume",
-        "Valorile sunt puse într-o listă și sortate",
+        "Python transformă funcția însăși într-o tuplă cu liniile ei",
+        "return a, b face o tuplă; x, y = o desface",
+        "Valorile sunt puse într-o listă și apoi sortate",
         "Funcția rulează de două ori, câte o dată pentru fiecare valoare"
       ],
       "answer": 1

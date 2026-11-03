@@ -8,12 +8,12 @@
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Într-un slice `[start:stop:step]`, ce face un pas de -1?",
       "options": [
-        "Scoate ultimul caracter",
-        "Ia un caracter da, unul nu",
-        "Parcurge textul invers, de la sfârșit la început",
+        "Scoate ultimul caracter din text",
+        "Ia un caracter da, unul nu, pe rând",
+        "Parcurge textul invers",
         "Pornește de la indexul -1 și se oprește imediat"
       ],
       "answer": 2
@@ -43,13 +43,13 @@
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "De ce oprirea din `range(len(nume) - 1, -1, -1)` e -1, nu 0?",
       "options": [
-        "Indexul -1 este ultimul caracter",
-        "Cu 0 bucla nu s-ar mai termina",
-        "Oprirea nu e inclusă, așa că -1 lasă și indexul 0 să intre",
-        "Un pas de -1 cere o oprire de -1"
+        "Indexul -1 este ultimul caracter al textului",
+        "Cu o oprire de 0, bucla nu s-ar mai termina",
+        "Oprirea nu e inclusă, deci intră și 0",
+        "Un pas de -1 cere mereu și o oprire de -1"
       ],
       "answer": 2
     },
@@ -85,13 +85,13 @@
       "answer": 2
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Ce dă înapoi `propozitie.split(\" \")`?",
       "options": [
-        "Propoziția fără spații",
+        "Propoziția, dar fără spațiile dintre cuvinte",
         "O listă cu cuvintele propoziției",
-        "Numărul de cuvinte",
-        "Propoziția inversată"
+        "Numărul de cuvinte din propoziție",
+        "Propoziția inversată, cuvânt cu cuvânt"
       ],
       "answer": 1
     },
@@ -103,13 +103,13 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "De ce pornește `sir_inversat` ca `\"\"` înainte de buclă?",
       "options": [
-        "E un text gol pe care bucla construiește rezultatul",
+        "Bucla construiește rezultatul pe el",
         "Python cere ca orice text să pornească gol",
         "Ca bucla să sară peste primul caracter",
-        "Ca rezultatul să fie afișat invers"
+        "Ca rezultatul să fie afișat invers la final"
       ],
       "answer": 0
     },

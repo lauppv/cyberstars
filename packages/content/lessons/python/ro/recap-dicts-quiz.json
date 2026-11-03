@@ -1,10 +1,10 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "În Raportul de la Centrul de Control, ce returnează `analizeaza(scoruri)`?",
       "options": [
-        "Nimic: afișează ea raportul",
+        "Nimic: afișează ea însăși raportul întreg pe ecran, fără să returneze",
         "O listă cu numele celor promovați",
         "Un dicționar cu cheile medie, cel_mai_bun și promovati",
         "Doar scorul mediu"
@@ -12,44 +12,44 @@
       "answer": 2
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "De ce returnează `analizeaza` un dicționar în loc să afișeze ea raportul?",
       "options": [
         "Ca codul care o apelează să poată folosi cele trei rezultate cum are nevoie",
         "print() nu poate fi folosit într-o funcție",
-        "Un dicționar se afișează mai repede decât trei linii",
+        "Un dicționar se afișează mai repede decât ar face-o trei linii separate cu print()",
         "Orice funcție trebuie să returneze un dicționar"
       ],
       "answer": 0
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "În soluție, de ce poate `maxim` să pornească de la 0 înainte de bucla care caută cel mai bun membru?",
       "options": [
         "Valorile unui dicționar pornesc mereu de la 0",
         "Ca bucla să ruleze de zero ori",
-        "Python cere ca orice variabilă numerică să pornească de la 0",
+        "Python cere ca orice variabilă care ține un număr să pornească întâi de la 0",
         "Toate scorurile sunt peste 0, așa că scorul primului membru îl înlocuiește"
       ],
       "answer": 3
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "În `total / len(scoruri)`, ce este `len(scoruri)`?",
       "options": [
         "Suma tuturor scorurilor",
-        "Câți membri sunt, câte unul pentru fiecare pereche cheie-valoare",
-        "Lungimea celui mai lung nume",
+        "Câți membri sunt, câte unul pe pereche cheie-valoare",
+        "Lungimea celui mai lung nume dintre cheile din scoruri",
         "Cel mai mare scor"
       ],
       "answer": 1
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "După `raport = analizeaza(scoruri)`, ce conține `raport[\"promovati\"]`?",
       "options": [
-        "Câți membri au promovat",
-        "O listă cu numele celor care au 50 sau mai mult",
+        "Câți membri au promovat, sub formă de număr",
+        "O listă cu numele celor care au minim 50",
         "True sau False",
         "Textul \"promovati\""
       ],
@@ -76,12 +76,12 @@
       "answer": 2
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Ce se întâmplă la `scoruri[\"Sonny\"]` când Sonny nu e o cheie din `scoruri`?",
       "options": [
         "Programul se oprește cu o eroare KeyError",
         "Dă înapoi 0",
-        "Sonny e adăugat cu scorul 0",
+        "Sonny e adăugat automat în scoruri, cu scorul 0",
         "Dă înapoi None"
       ],
       "answer": 0
@@ -279,11 +279,11 @@
       "answer": 1
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "Tommy e primul în `scoruri`. De ce nu dă `scoruri[0]` scorul lui?",
       "options": [
         "Ba da: scoruri[0] dă scorul lui Tommy",
-        "Un dicționar numără de la 1, deci e scoruri[1]",
+        "Un dicționar își numără pozițiile de la 1, deci scorul lui Tommy e la scoruri[1]",
         "0 nu e o cheie din scoruri: un dicționar se citește după chei, nu după poziție",
         "Doar listele pot folosi paranteze drepte"
       ],

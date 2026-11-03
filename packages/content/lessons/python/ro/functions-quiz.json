@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce face `def`?",
       "options": [
-        "Definește o funcție: o bucată de cod cu nume pe care o putem rula din nou și din nou",
-        "Rulează o funcție imediat",
-        "Afișează o dată liniile de sub el",
-        "Face o variabilă numită def"
+        "Definește o funcție pe care o putem apela oricând",
+        "Rulează o funcție imediat, în clipa în care Python o citește",
+        "Afișează o singură dată liniile de sub el, exact cum sunt scrise",
+        "Face o variabilă numită def, în care pune liniile de sub el"
       ],
       "answer": 0
     },
@@ -36,10 +36,10 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "În `def functia_mea(nume, varsta):`, ce sunt `nume` și `varsta`?",
       "options": [
-        "Două variabile care trebuie să existe înainte de funcție",
+        "Două variabile care trebuie să existe în program înainte de funcție",
         "Numele funcției, din două bucăți",
         "Parametrii funcției: țin valorile cu care e apelată",
         "Două texte pe care funcția le afișează așa cum sunt"
@@ -53,12 +53,12 @@
       "answer": 0
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Putem numi parametrii unei funcții cum vrem?",
       "options": [
         "Nu: trebuie să fie nume și varsta",
         "Da: funcția folosește acele nume în interiorul ei, oricare ar fi ele",
-        "Nu: trebuie să fie la fel ca variabilele din afara funcției",
+        "Nu: trebuie să poarte aceleași nume ca variabilele din afara funcției",
         "Doar dintr-o literă, ca n și a"
       ],
       "answer": 1
@@ -71,13 +71,13 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "De ce pune lecția bucla for într-o funcție în loc s-o copieze?",
       "options": [
-        "O funcție rulează mai repede decât o buclă for",
-        "O buclă for poate rula doar într-o funcție",
-        "O scriem o dată și o apelăm de câte ori vrem, cu alte valori",
-        "Ca bucla să ruleze o singură dată"
+        "O funcție rulează mai repede decât aceeași buclă copiată",
+        "O buclă for poate rula doar în blocul unei funcții",
+        "O scriem o dată și o apelăm de câte ori vrem",
+        "Ca bucla să ruleze o singură dată, oricât ar fi copiată"
       ],
       "answer": 2
     },
@@ -101,12 +101,12 @@
       "answer": 1
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "def aduna(a, b):\n    print(a + b)\n\naduna(5)",
       "options": [
         "Afișează 5",
-        "Afișează 5 + b",
+        "Afișează 5 + b, pentru că b încă nu are nicio valoare",
         "Nu afișează nimic",
         "Se oprește cu o eroare: b nu primește nicio valoare"
       ],
@@ -142,13 +142,13 @@
       "answer": 3
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "În `def functia_mea(nume, varsta):`, ce este `functia_mea`?",
       "options": [
-        "Numele funcției, pe care îl folosim ca s-o apelăm",
-        "Primul ei parametru",
-        "Un text pe care îl afișează funcția",
-        "Un cuvânt cheie din Python, ca def"
+        "Numele ei, pe care îl folosim ca s-o apelăm",
+        "Primul ei parametru, prima valoare pe care o primește",
+        "Un text pe care funcția îl afișează când e apelată",
+        "Un cuvânt cheie din Python, ca def sau print"
       ],
       "answer": 0
     },
@@ -171,11 +171,11 @@
       "answer": 3
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "În misiunea Calculatorul de la Bord, de ce trec a și b prin int(), dar operatorul nu?",
       "options": [
         "Cu a și b calculăm, iar operatorul e un semn ca + pe care îl comparăm ca text",
-        "int() merge doar de două ori într-un program",
+        "Operatorul e transformat în număr mai târziu, în funcție",
         "Operatorul e deja un număr",
         "O funcție poate primi un singur text"
       ],
@@ -242,9 +242,14 @@
       "answer": 2
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "Câți parametri poate avea o funcție?",
-      "options": ["Exact doi", "Măcar unul", "Cel mult trei", "Câți îi trebuie, chiar niciunul"],
+      "options": [
+        "Exact doi",
+        "Măcar unul, altfel nu poate fi apelată",
+        "Cel mult trei",
+        "Câți îi trebuie, chiar niciunul"
+      ],
       "answer": 3
     },
     {

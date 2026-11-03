@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce păstrează `curata_text` din misiune dintr-un text?",
       "options": [
         "Doar literele, fiecare făcută mică",
-        "Fiecare caracter, făcut mic",
+        "Fiecare caracter din text, făcut mic",
         "Doar literele, așa cum au fost scrise",
-        "Literele și cifrele, făcute mici"
+        "Literele și cifrele din text, făcute mici"
       ],
       "answer": 0
     },
@@ -37,12 +37,12 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "În verificarea de palindrom cu doi pointeri, de ce bucla e `while stanga < dreapta` și nu `while stanga <= dreapta`?",
       "options": [
-        "Când amândoi arată spre litera din mijloc nu mai e nimic cu care s-o compari",
+        "Amândoi ar arăta spre litera din mijloc, fără nimic de comparat",
         "Cu `<=` bucla nu s-ar opri niciodată",
-        "Cu `<=` orice cuvânt ar ieși palindrom",
+        "Cu `<=` orice cuvânt ar ieși palindrom, chiar și unul ca salut sau masa",
         "`<=` nu poate compara două numere"
       ],
       "answer": 0
@@ -217,10 +217,10 @@
       "answer": 1
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "De ce poate `este_palindrom` să returneze False la prima pereche diferită, fără să verifice restul?",
       "options": [
-        "O singură pereche care nu se potrivește arată că acel cuvânt nu se citește la fel în ambele sensuri",
+        "O singură nepotrivire o dovedește deja",
         "Pentru că restul perechilor se potrivesc mereu",
         "Pentru că `return` într-o buclă sare doar peste pasul acela",
         "Nu poate: trebuie să verifice întâi fiecare pereche"
@@ -253,10 +253,10 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "În `sunt_anagrame`, ce ar merge prost fără `curata_text`, pentru \"Roma!\" și \"Amor\"?",
       "options": [
-        "Ar returna False: ! și R-ul mare nu se potrivesc cu literele celuilalt cuvânt",
+        "Ar returna False",
         "Nimic: sorted() sare singur peste semnele de punctuație",
         "S-ar opri cu o eroare la !",
         "Ar returna True pentru oricare două cuvinte"

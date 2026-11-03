@@ -108,23 +108,23 @@
       "answer": 1
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "Când dă `all(s >= 50 for s in scoruri)` True?",
       "options": [
         "Când cel puțin un scor e 50 sau mai mult",
         "Când scorurile adunate fac 50 sau mai mult",
         "Când fiecare scor e 50 sau mai mult",
-        "Când primul scor e 50 sau mai mult"
+        "Când primul scor din listă e 50 sau mai mult"
       ],
       "answer": 2
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Când dă `any(s < 50 for s in scoruri)` True?",
       "options": [
-        "Doar când fiecare scor e sub 50",
+        "Doar când fiecare scor, fără excepție, e sub 50",
         "Când cel puțin un scor e sub 50",
-        "Când lista are cel puțin un scor",
+        "Când lista are cel puțin un scor în ea",
         "Doar când exact un scor e sub 50"
       ],
       "answer": 1
@@ -156,13 +156,13 @@
       "answer": 3
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "În `round(x, 1)`, ce spune 1?",
       "options": [
         "Rotunjește în sus, niciodată în jos",
         "Câte zecimale să păstreze",
         "De câte ori să rotunjească",
-        "Ce cifră să taie"
+        "Ce cifră să taie de la final"
       ],
       "answer": 1
     },
@@ -173,11 +173,11 @@
       "answer": 2
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "În misiune, de ce afișează `Toti au trecut:` False?",
       "options": [
         "Boris are 100, mai mult de 50",
-        "Media e sub 80",
+        "Media scorurilor e sub 80",
         "all() e True doar când fiecare scor e 100",
         "Cara are 47, sub 50"
       ],

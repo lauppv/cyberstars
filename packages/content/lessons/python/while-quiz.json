@@ -12,10 +12,10 @@
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "When does a while loop check its condition?",
       "options": [
-        "Only once, before the first pass",
+        "Only once, before the first pass of the loop",
         "Before every pass, the first one too",
         "After every pass, so its lines always run at least once",
         "Only when the variable in the condition changes"
@@ -30,12 +30,12 @@
       "answer": 2
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "Why doesn't `while i < 10:` print 10, when i grows by 1 from 0?",
       "options": [
-        "Python always skips the last number of a loop",
-        "10 is printed too, but after the loop",
-        "The loop stops one pass early to save time",
+        "Python always skips the last number a loop reaches",
+        "10 is printed too, but only after the loop has ended",
+        "The loop stops one pass early, before i reaches its end",
         "When i is 10, i < 10 is false, so the loop stops"
       ],
       "answer": 3
@@ -47,7 +47,7 @@
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "What happens when this runs?",
       "code": "i = 0\nwhile i <= 100:\n    print(i)",
       "options": [
@@ -59,62 +59,62 @@
       "answer": 1
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "What do we call a loop whose condition never becomes false?",
-      "options": ["A for loop", "An empty loop", "An infinite loop", "A nested loop"],
+      "options": ["A for loop", "An empty loop", "An infinite loop", "A repeating loop"],
       "answer": 2
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Which line keeps `while i < 5:` from running forever, when i starts at 0?",
       "options": [
         "i = 0, before the loop",
-        "print(i), inside the loop",
+        "print(i), inside the loop's block",
         "i = i + 1, after the loop",
         "i = i + 1, inside the loop"
       ],
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "How many times does this print Hi?",
       "code": "i = 10\nwhile i < 5:\n    print(\"Hi\")\n    i = i + 1",
       "options": [
         "Never: 10 < 5 is false from the start",
-        "Once: the lines run before the check",
+        "Once: the lines run once before the first check",
         "5 times",
         "Forever"
       ],
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "When does a while loop fit better than a for loop?",
       "options": [
         "When we count from 1 to 10",
         "When we don't know up front how many times to repeat",
         "When the loop has a print() in it",
-        "Never: a for loop can always do it more simply"
+        "Never: a for loop can always do the same thing more simply"
       ],
       "answer": 1
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Why does the lesson write `password = \"\"` before the loop?",
       "options": [
         "So the password is empty at the end",
-        "Because input() needs an empty variable",
+        "Because input() needs an empty variable to store the text in",
         "So the condition has something to check on the first pass",
         "So the loop runs only once"
       ],
       "answer": 2
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "`password` was never made. What happens when Python reaches `while password != \"starlet\":`?",
       "options": [
-        "Python skips the loop",
-        "The loop runs forever",
+        "Python skips the loop and goes on",
+        "The loop runs forever, since nothing matches",
         "password becomes \"\" by itself",
         "It stops with an error"
       ],
@@ -220,12 +220,12 @@
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "In `while i < 10:`, what is `i < 10`?",
       "options": [
-        "How many times the loop runs",
-        "The value i starts from",
-        "A comment for the loop",
+        "How many times the loop runs before it stops",
+        "The value i starts from, before the loop's first pass",
+        "The step i grows by on every pass",
         "The condition: the loop runs as long as it is true"
       ],
       "answer": 3
@@ -262,12 +262,12 @@
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "For a while loop to stop, which variable has to change inside it?",
       "options": [
-        "The one printed in the loop",
+        "The one that print() shows in the loop",
         "One that its condition checks",
-        "Any variable of the program",
+        "Any variable of the program at all",
         "None: a while loop stops by itself after a while"
       ],
       "answer": 1
