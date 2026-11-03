@@ -193,6 +193,11 @@ class Names:
             if scope.kind == "class" and not scope.ran:
                 self.run_class(scope)
         self.all_bound = set().union(*(s.bound for s in self.scopes))
+        self.aliases = [n for n in ast.walk(tree) if isinstance(n, ast.alias)]
+        self.keys = [
+            n for n in ast.walk(tree) if isinstance(n, ast.Subscript) and isinstance(n.slice, ast.Constant)
+        ]
+        self.dynamic = None
         self.mark_inert_leaves()
         self.collect_classes()
 
@@ -584,29 +589,35 @@ class Names:
         args = call.args[1:2] if getattr(node, "id", None) == "getattr" else call.args
         return not args or any(not isinstance(a, ast.Constant) or a.value == name for a in args)
 
+    def any_function(self):
+        # What reaches any function at all, the same for every forbidden one.
+        if self.dynamic is None:
+            self.dynamic = []
+            for node in ast.walk(self.module.node):
+                if isinstance(node, ast.alias) and node.name.split(".")[-1] in PROCESS_CALLS:
+                    self.dynamic.append(node)
+                elif isinstance(node, (ast.Import, ast.ImportFrom)):
+                    modules = [a.name for a in node.names] if isinstance(node, ast.Import) else [node.module or ""]
+                    if any(m.split(".")[0] in DYNAMIC_MODULES for m in modules):
+                        self.dynamic.append(node)
+            for dynamic in DYNAMIC_NAMES:
+                self.dynamic += self.foreign_reads(dynamic)
+            for attr in DYNAMIC_ATTRIBUTES | PROCESS_CALLS:
+                self.dynamic += self.attributes.get(attr, [])
+            self.lookups = [n for lookup in BY_NAME for n in self.foreign_reads(lookup)]
+            self.lookups += [n for lookup in BY_NAME for n in self.attributes.get(lookup, [])]
+        return self.dynamic
+
     def forbidden(self, name):
         # Every node that reaches the library's `name`.
-        found = list(self.foreign_reads(name))
+        found = list(self.foreign_reads(name)) + self.any_function()
         for node in self.attributes.get(name, []):
             classes = self.receiver_classes(node.value)
             if not classes or any(name not in self.class_attrs.get(c, ()) for c in classes):
                 found.append(node)
-        for node in ast.walk(self.module.node):
-            if isinstance(node, ast.alias) and node.name.split(".")[-1] in (name, *PROCESS_CALLS):
-                found.append(node)
-            elif isinstance(node, (ast.Import, ast.ImportFrom)):
-                modules = [a.name for a in node.names] if isinstance(node, ast.Import) else [node.module or ""]
-                if any(m.split(".")[0] in DYNAMIC_MODULES for m in modules):
-                    found.append(node)
-            elif isinstance(node, ast.Subscript) and isinstance(node.slice, ast.Constant) and node.slice.value == name:
-                found.append(node)
-        for dynamic in DYNAMIC_NAMES:
-            found += self.foreign_reads(dynamic)
-        for attr in DYNAMIC_ATTRIBUTES | PROCESS_CALLS:
-            found += self.attributes.get(attr, [])
-        for lookup in BY_NAME:
-            found += [n for n in self.foreign_reads(lookup) if self.by_name_lookup(n, name)]
-            found += [n for n in self.attributes.get(lookup, []) if self.by_name_lookup(n, name)]
+        found += [n for n in self.aliases if n.name.split(".")[-1] == name]
+        found += [n for n in self.keys if n.slice.value == name]
+        found += [n for n in self.lookups if self.by_name_lookup(n, name)]
         return found
 
 
