@@ -59,49 +59,6 @@
       "answer": 0
     },
     {
-      "id": "iee-chain-5bc5b4",
-      "text": "Ce afișează?",
-      "code": "baterie = 100\nif baterie >= 60:\n    print(\"Baterie buna\")\nelif baterie >= 20:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
-      "options": [
-        "Baterie buna",
-        "Baterie slaba",
-        "Baterie buna\nBaterie slaba",
-        "Baterie buna\nIncarca acum"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "iee-chain-00a578",
-      "text": "Ce afișează?",
-      "code": "baterie = 20\nif baterie >= 60:\n    print(\"Baterie buna\")\nelif baterie >= 20:\n    print(\"Baterie slaba\")\nelse:\n    print(\"Incarca acum\")",
-      "options": ["Baterie slaba", "Baterie buna", "Baterie slaba\nIncarca acum", "Incarca acum"],
-      "answer": 0
-    },
-    {
-      "id": "iee-chain-e42546",
-      "text": "Ce afișează?",
-      "code": "combustibil = 10\nif combustibil >= 70:\n    print(\"Rezervor plin\")\nelif combustibil >= 30:\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
-      "options": [
-        "Alimenteaza acum",
-        "Rezervor plin",
-        "Rezervor pe jumatate",
-        "Rezervor plin\nRezervor pe jumatate\nAlimenteaza acum"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "iee-chain-b6a32c",
-      "text": "Ce afișează?",
-      "code": "combustibil = 69\nif combustibil >= 70:\n    print(\"Rezervor plin\")\nelif combustibil >= 30:\n    print(\"Rezervor pe jumatate\")\nelse:\n    print(\"Alimenteaza acum\")",
-      "options": [
-        "Rezervor pe jumatate",
-        "Rezervor plin",
-        "Rezervor pe jumatate\nAlimenteaza acum",
-        "Alimenteaza acum"
-      ],
-      "answer": 0
-    },
-    {
       "id": "iee-first-wins-d35991",
       "text": "Ce afișează?",
       "code": "viteza = 120\nif viteza > 50:\n    print(\"Rapid\")\nelif viteza > 100:\n    print(\"Prea rapid\")\nelse:\n    print(\"Incet\")",
@@ -220,13 +177,6 @@
         "Duminica",
         "Incepe saptamana\nSambata\nDuminica\nO zi de lucru"
       ],
-      "answer": 0
-    },
-    {
-      "id": "iee-countdown-7e48fd",
-      "text": "Ce afișează?",
-      "code": "nivel = 5\nif nivel == 1:\n    print(\"Tutorial\")\nelif nivel == 5:\n    print(\"Mini boss\")\nelif nivel == 10:\n    print(\"Boss final\")\nelse:\n    print(\"Nivel normal\")",
-      "options": ["Mini boss", "Mini boss\nNivel normal", "Boss final", "Tutorial"],
       "answer": 0
     },
     {
@@ -706,6 +656,41 @@
         "else:",
         "print(\"Rezervor pe jumatate\")"
       ],
+      "answer": 0
+    },
+    {
+      "id": "iee-holds-bonus-ea57e9",
+      "text": "Ce conține `scor` la final?",
+      "code": "scor = 95\nif scor >= 90:\n    scor = scor + 30\nelif scor >= 50:\n    scor = scor + 20\nelse:\n    scor = scor + 10",
+      "options": ["125", "145", "115", "30"],
+      "answer": 0
+    },
+    {
+      "id": "iee-holds-bonus-94f2aa",
+      "text": "Ce conține `combustibil` la final?",
+      "code": "combustibil = 60\nif combustibil >= 80:\n    combustibil = combustibil + 5\nelif combustibil >= 40:\n    combustibil = combustibil + 15\nelse:\n    combustibil = combustibil + 30",
+      "options": ["75", "65", "90", "15"],
+      "answer": 0
+    },
+    {
+      "id": "iee-holds-bonus-4dfeb8",
+      "text": "Ce conține `viteza` la final?",
+      "code": "viteza = 20\nif viteza >= 100:\n    viteza = viteza + 10\nelif viteza >= 50:\n    viteza = viteza + 20\nelse:\n    viteza = viteza + 35",
+      "options": ["55", "30", "40", "35"],
+      "answer": 0
+    },
+    {
+      "id": "iee-holds-label-c460a7",
+      "text": "Ce conține `grupa` la final?",
+      "code": "scor = 72\ngrupa = \"Grupa \"\nif scor >= 90:\n    grupa = grupa + \"A\"\nelif scor >= 60:\n    grupa = grupa + \"B\"\nelse:\n    grupa = grupa + \"C\"",
+      "options": ["'Grupa B'", "'Grupa A'", "'Grupa C'", "'B'"],
+      "answer": 0
+    },
+    {
+      "id": "iee-holds-label-20c6d2",
+      "text": "Ce conține `stare` la final?",
+      "code": "oxigen = 85\nstare = \"Oxigen \"\nif oxigen >= 80:\n    stare = stare + \"nominal\"\nelif oxigen >= 50:\n    stare = stare + \"scazut\"\nelse:\n    stare = stare + \"critic\"",
+      "options": ["'Oxigen nominal'", "'Oxigen nominalscazut'", "'Oxigen scazut'", "'nominal'"],
       "answer": 0
     }
   ]

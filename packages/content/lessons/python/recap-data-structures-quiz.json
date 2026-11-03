@@ -279,14 +279,6 @@
         {
           "a": "[(\"Ana\", 60), (\"Rex\", 75), (\"Kai\", 90)]",
           "b": "[(\"Kai\", 70), (\"Zoe\", 80), (\"Ana\", 55)]"
-        },
-        {
-          "a": "[(\"Phil\", 40), (\"Sonny\", 95), (\"Mia\", 66)]",
-          "b": "[(\"Mia\", 81), (\"Ken\", 77), (\"Nova\", 59)]"
-        },
-        {
-          "a": "[(\"Zoe\", 88), (\"Ben\", 52), (\"Cara\", 73)]",
-          "b": "[(\"Cara\", 91), (\"Ben\", 64), (\"Max\", 70)]"
         }
       ],
       "mistakes": [
@@ -309,14 +301,6 @@
         {
           "t": "[(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95), (\"Zoe\", 70)]",
           "lim": 65
-        },
-        {
-          "t": "[(\"Mia\", 50), (\"Ben\", 99), (\"Cara\", 75), (\"Max\", 81)]",
-          "lim": 75
-        },
-        {
-          "t": "[(\"Nova\", 33), (\"Ken\", 90), (\"Sonny\", 67), (\"Mira\", 88)]",
-          "lim": 60
         }
       ],
       "mistakes": [
@@ -341,16 +325,6 @@
           "n": "Alpha",
           "d": 4,
           "p": 3
-        },
-        {
-          "n": "Vega",
-          "d": 25,
-          "p": 5
-        },
-        {
-          "n": "Sirius",
-          "d": 9,
-          "p": 2
         }
       ],
       "mistakes": [
@@ -375,16 +349,6 @@
           "n": 5,
           "m": 4,
           "s": 6
-        },
-        {
-          "n": 4,
-          "m": 6,
-          "s": 7
-        },
-        {
-          "n": 6,
-          "m": 6,
-          "s": 8
         }
       ],
       "mistakes": [
@@ -411,16 +375,6 @@
           "r": 3,
           "c": 2,
           "ch": "*"
-        },
-        {
-          "r": 2,
-          "c": 3,
-          "ch": "@"
-        },
-        {
-          "r": 4,
-          "c": 1,
-          "ch": "+"
         }
       ],
       "mistakes": [
@@ -441,12 +395,6 @@
         },
         {
           "l": "\"X\", \"Y\", \"X\", \"Y\""
-        },
-        {
-          "l": "\"D4\", \"D4\", \"E5\", \"F6\", \"G7\", \"E5\""
-        },
-        {
-          "l": "\"K9\", \"L1\", \"K9\""
         }
       ],
       "mistakes": [
@@ -488,15 +436,6 @@
           "x": "Rex",
           "y": "Zoe",
           "z": "Ana"
-        },
-        {
-          "a": "Ben",
-          "b": "Cara",
-          "c": "Max",
-          "d": "Nova",
-          "x": "Max",
-          "y": "Ben",
-          "z": "Nova"
         }
       ],
       "mistakes": [
@@ -532,13 +471,6 @@
           "k": 1,
           "cmp": ">=",
           "lim": 15
-        },
-        {
-          "l": "7, 14, 21, 28",
-          "op": "-",
-          "k": 7,
-          "cmp": ">",
-          "lim": 10
         }
       ],
       "mistakes": [
@@ -840,6 +772,158 @@
       ],
       "bug": ["[name for", "[score for"],
       "text": "Which line stops this program from printing this?"
+    },
+    {
+      "id": "rds-holds-high",
+      "kind": "holds",
+      "text": "What is in `{{o}}` at the end?",
+      "code": "{{t}} = {{d}}\n{{o}} = [name for name, score in {{t}} if score > {{lim}}]",
+      "values": [
+        {
+          "t": "team",
+          "d": "[(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91), (\"Phil\", 80)]",
+          "o": "best",
+          "lim": 80
+        },
+        {
+          "t": "team",
+          "d": "[(\"Ana\", 55), (\"Rex\", 30), (\"Kai\", 50), (\"Zoe\", 90)]",
+          "o": "passed",
+          "lim": 50
+        },
+        {
+          "t": "fleet",
+          "d": "[(\"Nova\", 80), (\"Orion\", 45), (\"Vega\", 60)]",
+          "o": "full",
+          "lim": 60
+        }
+      ],
+      "variable": "{{o}}",
+      "mistakes": [
+        ["[name for", "[score for"],
+        ["score > {{lim}}", "score >= {{lim}}"],
+        ["[name for", "[(name, score) for"]
+      ]
+    },
+    {
+      "id": "rds-holds-tally",
+      "kind": "holds",
+      "text": "What is in `{{c}}` at the end?",
+      "code": "{{t}} = {{d}}\n{{c}} = {}\nfor name, {{k}} in {{t}}:\n    if {{k}} in {{c}}:\n        {{c}}[{{k}}] = {{c}}[{{k}}] + 1\n    else:\n        {{c}}[{{k}}] = 1",
+      "values": [
+        {
+          "t": "crew",
+          "d": "[(\"Tommy\", \"Vice\"), (\"Lance\", \"Vice\"), (\"Phil\", \"Liberty\"), (\"Ken\", \"Liberty\"), (\"Mia\", \"San\")]",
+          "c": "per_city",
+          "k": "city"
+        },
+        {
+          "t": "crew",
+          "d": "[(\"Ana\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]",
+          "c": "per_role",
+          "k": "role"
+        },
+        {
+          "t": "fleet",
+          "d": "[(\"Nova\", \"red\"), (\"Orion\", \"blue\"), (\"Vega\", \"red\"), (\"Lyra\", \"green\")]",
+          "c": "per_color",
+          "k": "color"
+        },
+        {
+          "t": "planets",
+          "d": "[(\"Mars\", \"rock\"), (\"Venus\", \"rock\"), (\"Jupiter\", \"gas\"), (\"Saturn\", \"gas\"), (\"Earth\", \"rock\")]",
+          "c": "per_kind",
+          "k": "kind"
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["{{c}}[{{k}}] = {{c}}[{{k}}] + 1", "{{c}}[{{k}}] = 1"],
+        ["    else:\n        {{c}}[{{k}}] = 1", "    else:\n        {{c}}[{{k}}] = 0"],
+        ["for name, {{k}} in", "for {{k}}, name in"]
+      ]
+    },
+    {
+      "id": "rds-holds-firsts",
+      "kind": "holds",
+      "text": "What is in `{{w}}` at the end?",
+      "code": "{{t}} = {{d}}\n{{seen}} = set()\n{{w}} = []\nfor name, {{k}} in {{t}}:\n    if {{k}} in {{seen}}:\n        continue\n    {{seen}}.add({{k}})\n    {{w}}.append(name)",
+      "values": [
+        {
+          "t": "crew",
+          "d": "[(\"Tommy\", \"Vice\"), (\"Lance\", \"Vice\"), (\"Phil\", \"Liberty\"), (\"Ken\", \"Liberty\"), (\"Mia\", \"San\")]",
+          "seen": "cities",
+          "w": "first",
+          "k": "city"
+        },
+        {
+          "t": "crew",
+          "d": "[(\"Ana\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]",
+          "seen": "roles",
+          "w": "first",
+          "k": "role"
+        },
+        {
+          "t": "fleet",
+          "d": "[(\"Nova\", \"red\"), (\"Orion\", \"blue\"), (\"Vega\", \"red\"), (\"Lyra\", \"green\")]",
+          "seen": "colors",
+          "w": "leaders",
+          "k": "color"
+        },
+        {
+          "t": "planets",
+          "d": "[(\"Mars\", \"rock\"), (\"Venus\", \"rock\"), (\"Jupiter\", \"gas\"), (\"Saturn\", \"gas\"), (\"Earth\", \"rock\")]",
+          "seen": "kinds",
+          "w": "first",
+          "k": "kind"
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["continue", "break"],
+        ["{{w}}.append(name)", "{{w}}.append({{k}})"],
+        ["{{seen}}.add({{k}})", "{{seen}}.add(name)"]
+      ]
+    },
+    {
+      "id": "rds-input-look",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{v}} = {{d}}\nname = input()\n{{x}}, {{y}} = {{v}}[name]\nprint({{x}} + {{y}})",
+      "values": [
+        {
+          "v": "ships",
+          "d": "{\"Nova\": (3, 4), \"Orion\": (5, 1)}",
+          "x": "crew",
+          "y": "robots",
+          "a": "Nova",
+          "sum": 7,
+          "other": "Orion",
+          "low": "nova"
+        },
+        {
+          "v": "teams",
+          "d": "{\"Sharks\": (12, 9), \"Bears\": (8, 10)}",
+          "x": "wins",
+          "y": "draws",
+          "a": "Bears",
+          "sum": 18,
+          "other": "Sharks",
+          "low": "bears"
+        },
+        {
+          "v": "bags",
+          "d": "{\"Ana\": (2, 5), \"Rex\": (4, 3), \"Kai\": (6, 2)}",
+          "x": "apples",
+          "y": "pears",
+          "a": "Kai",
+          "sum": 8,
+          "other": "Rex",
+          "low": "kai"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{sum}}", "{{other}}", "{{low}}"]
     }
   ]
 }

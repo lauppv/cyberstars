@@ -98,6 +98,25 @@ describe('parseTemplates', () => {
       },
       'add needs 3 wrong options',
     ],
+    [{ templates: [{ ...prints, kind: 'holds' }] }, 'add variable has no text'],
+    [
+      { templates: [{ ...prints, kind: 'which-input', wrong: ['a', 'b', 'c'] }] },
+      'add answer has no text',
+    ],
+    [
+      { templates: [{ ...prints, kind: 'which-input', answer: '7', wrong: ['a', 'b'] }] },
+      'add needs 3 wrong options',
+    ],
+    [
+      {
+        templates: [{ ...prints, kind: 'which-error', code: 'print(___)', wrong: ['a', 'b', 'c'] }],
+      },
+      "add code has a ___, which its kind doesn't fill",
+    ],
+    [
+      { templates: [{ ...prints, kind: 'which-error', wrong: ['TypeError', ''] }] },
+      'add wrong 2 has no text',
+    ],
   ])('refuses a broken template (%#)', (raw, message) => {
     expect(() => parseTemplates(raw)).toThrow(message);
   });
@@ -325,7 +344,7 @@ describe('planTemplate', () => {
     expect(() => plan.build([ok('1'), ok('1')])).toThrow('the bug changes nothing');
   });
 
-  it('refuses a value set twice and a blank the text has no value for', () => {
+  it('refuses a value set twice and a blank with no value, in any part', () => {
     expect(() =>
       plans({
         values: [
@@ -334,9 +353,128 @@ describe('planTemplate', () => {
         ],
       }),
     ).toThrow('add repeats a set of values');
-    expect(() => plans({ text: 'What is {{c}}?' })).toThrow(
-      'add with {"a":"7","b":"3"}: the text has a blank with no value',
+    const noValue = 'add with {"a":"7","b":"3"}: {{c}} has no value';
+    expect(() => plans({ text: 'What is {{c}}?' })).toThrow(noValue);
+    expect(() => plans({ code: 'x = {{a}}\nprint(x + {{b}} + {{c}})' })).toThrow(noValue);
+    // A mistake's program would only stop with a SyntaxError and be dropped
+    expect(() =>
+      plans({ mistakes: [...prints.mistakes.slice(0, 3), ['x + {{b}}', 'x - {{c}}']] }),
+    ).toThrow(noValue);
+    // Not a value a blank's name could find on any object
+    expect(() => plans({ text: 'What is {{constructor}}?' })).toThrow(
+      'add with {"a":"7","b":"3"}: {{constructor}} has no value',
     );
+  });
+
+  const holds = {
+    kind: 'holds',
+    text: 'What is in `{{v}}` at the end?',
+    code: '{{v}} = {{a}}\n{{v}} = {{v}} + 1',
+    values: [{ v: 'fuel', a: 7 }],
+    variable: '{{v}}',
+    mistakes: [
+      ['{{v}} = {{v}} + 1', 'print({{v}} + 1)'],
+      ['{{a}}', '"{{a}}"'],
+      ['{{v}} + 1', '{{v}} + 2'],
+      ['{{v}} + 1', '{{v}} * 2'],
+    ],
+  };
+
+  it('holds: the options are what the variable holds at the end, as Python shows it', () => {
+    const [plan] = plans(holds);
+    const shows = 'print()\nprint(repr(fuel))';
+    expect(plan.programs).toEqual([
+      `fuel = 7\nfuel = fuel + 1\n${shows}`,
+      `fuel = 7\nprint(fuel + 1)\n${shows}`,
+      `fuel = "7"\nfuel = fuel + 1\n${shows}`,
+      `fuel = 7\nfuel = fuel + 2\n${shows}`,
+      `fuel = 7\nfuel = fuel * 2\n${shows}`,
+    ]);
+    // The first mistake prints 8 before the value it leaves, the second fails
+    expect(
+      plan.build([ok('\n8\n'), ok('8\n\n7\n'), fails('TypeError'), ok('\n9\n'), ok('\n14\n')]),
+    ).toEqual({
+      id: plan.id,
+      text: 'What is in `fuel` at the end?',
+      code: 'fuel = 7\nfuel = fuel + 1',
+      output: null,
+      options: ['8', '7', '9', '14'],
+      answer: 0,
+    });
+  });
+
+  it("holds: refuses a variable that isn't a name", () => {
+    expect(() => plans({ ...holds, variable: '{{v}}[0]' })).toThrow(
+      'add with {"v":"fuel","a":"7"}: fuel[0] isn\'t a variable\'s name',
+    );
+  });
+
+  const whichInput = {
+    kind: 'which-input',
+    text: 'What did the user type?',
+    code: 'age = int(input("Age: "))\nif age >= {{limit}}:\n    print("In")\nelse:\n    print("Out")',
+    values: [{ limit: 18 }],
+    answer: '{{limit}}',
+    wrong: ['17', '12', '20', '"{{limit}}"'],
+  };
+
+  it('which-input: the user types each option, and only the right one prints the output', () => {
+    const [plan] = plans(whichInput);
+    const code = whichInput.code.replace('{{limit}}', '18');
+    const typed = (line: string) =>
+      `__typed = iter(${JSON.stringify([line])})\ndef input(prompt=""):\n    return next(__typed)\n${code}`;
+    expect(plan.programs).toEqual(['18', '17', '12', '20', '"18"'].map(typed));
+    // 20 prints In too, so it is passed over
+    expect(
+      plan.build([ok('In\n'), ok('Out\n'), ok('Out\n'), ok('In\n'), fails('ValueError')]),
+    ).toEqual({
+      id: plan.id,
+      text: 'What did the user type?',
+      code,
+      output: 'In',
+      options: ['18', '17', '12', '"18"'],
+      answer: 0,
+    });
+  });
+
+  it('which-input: types a line for each input()', () => {
+    const [plan] = plans({ ...whichInput, answer: 'moon\nstar' });
+    expect(plan.programs[0]).toMatch(/^__typed = iter\(\["moon","star"\]\)\n/);
+  });
+
+  const whichError = {
+    kind: 'which-error',
+    text: 'Which error stops this program?',
+    code: 'crew = {{crew}}\nprint(crew[3])',
+    values: [{ crew: '["Ana", "Ben"]' }],
+    wrong: ['IndexError', 'KeyError', 'TypeError', 'NameError'],
+  };
+
+  it('which-error: the right option is the error the program stops with', () => {
+    const [plan] = plans(whichError);
+    expect(plan.programs).toEqual(['crew = ["Ana", "Ben"]\nprint(crew[3])']);
+    expect(plan.build([fails('IndexError')])).toEqual({
+      id: plan.id,
+      text: 'Which error stops this program?',
+      code: 'crew = ["Ana", "Ben"]\nprint(crew[3])',
+      output: null,
+      options: ['IndexError', 'KeyError', 'TypeError', 'NameError'],
+      answer: 0,
+    });
+    expect(plan.build([fails('KeyError')]).options).toEqual([
+      'KeyError',
+      'IndexError',
+      'TypeError',
+      'NameError',
+    ]);
+  });
+
+  it("which-error: refuses a program that runs, or stops with no error of Python's", () => {
+    const [plan] = plans(whichError);
+    for (const run of [ok('Ana\n'), fails('TooLong')]) {
+      expect(() => plan.build([run])).toThrow("the program doesn't stop with an error");
+    }
+    expect(() => plan.build([fails('TypeError')])).not.toThrow();
   });
 
   it("refuses Romanian code that isn't ASCII", () => {

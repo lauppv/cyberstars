@@ -38,30 +38,6 @@
       "answer": 0
     },
     {
-      "id": "nl-pairs-219ee4",
-      "text": "Ce afișează?",
-      "code": "camere = [\"A1\", \"B2\"]\npaznici = [\"Lance\", \"Phil\"]\nfor camera in camere:\n    for paznic in paznici:\n        print(f\"{paznic} verifica {camera}\")",
-      "options": [
-        "Lance verifica A1\nPhil verifica A1\nLance verifica B2\nPhil verifica B2",
-        "Lance verifica A1\nLance verifica B2\nPhil verifica A1\nPhil verifica B2",
-        "A1 verifica Lance\nA1 verifica Phil\nB2 verifica Lance\nB2 verifica Phil",
-        "{paznic} verifica {camera}\n{paznic} verifica {camera}\n{paznic} verifica {camera}\n{paznic} verifica {camera}"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "nl-pairs-1d792e",
-      "text": "Ce afișează?",
-      "code": "niveluri = [\"usor\", \"greu\"]\njucatori = [\"Tommy\", \"Lance\", \"Phil\"]\nfor nivel in niveluri:\n    for jucator in jucatori:\n        print(f\"{jucator} joaca pe {nivel}\")",
-      "options": [
-        "Tommy joaca pe usor\nLance joaca pe usor\nPhil joaca pe usor\nTommy joaca pe greu\nLance joaca pe greu\nPhil joaca pe greu",
-        "Tommy joaca pe usor\nTommy joaca pe greu\nLance joaca pe usor\nLance joaca pe greu\nPhil joaca pe usor\nPhil joaca pe greu",
-        "usor joaca pe Tommy\nusor joaca pe Lance\nusor joaca pe Phil\ngreu joaca pe Tommy\ngreu joaca pe Lance\ngreu joaca pe Phil",
-        "{jucator} joaca pe {nivel}\n{jucator} joaca pe {nivel}\n{jucator} joaca pe {nivel}\n{jucator} joaca pe {nivel}\n{jucator} joaca pe {nivel}\n{jucator} joaca pe {nivel}"
-      ],
-      "answer": 0
-    },
-    {
       "id": "nl-count-09dc32",
       "text": "Ce afișează?",
       "code": "contor = 0\nfor i in range(3):\n    for j in range(4):\n        contor = contor + 1\nprint(contor)",
@@ -80,20 +56,6 @@
       "text": "Ce afișează?",
       "code": "mutari = 0\nfor i in range(4):\n    for j in range(6):\n        mutari = mutari + 1\nprint(mutari)",
       "options": ["24", "60", "6\n12\n18\n24", "18"],
-      "answer": 0
-    },
-    {
-      "id": "nl-count-988b60",
-      "text": "Ce afișează?",
-      "code": "pasi = 0\nfor i in range(5):\n    for j in range(3):\n        pasi = pasi + 1\nprint(pasi)",
-      "options": ["15", "3\n6\n9\n12\n15", "12", "16"],
-      "answer": 0
-    },
-    {
-      "id": "nl-count-81cdea",
-      "text": "Ce afișează?",
-      "code": "total = 0\nfor i in range(6):\n    for j in range(2):\n        total = total + 1\nprint(total)",
-      "options": ["12", "6", "2\n4\n6\n8\n10\n12", "10"],
       "answer": 0
     },
     {
@@ -125,30 +87,6 @@
       "text": "Ce afișează?",
       "code": "for i in range(1, 3):\n    for j in range(1, 5):\n        if j == 2:\n            break\n        print(f\"{i} {j}\")",
       "options": ["1 1\n2 1", "1 1\n1 3\n1 4\n2 1\n2 3\n2 4", "1 1\n1 2\n1 3\n1 4", "1 2\n2 2"],
-      "answer": 0
-    },
-    {
-      "id": "nl-break-4a2cc4",
-      "text": "Ce afișează?",
-      "code": "for i in range(1, 5):\n    for j in range(1, 4):\n        if j == 2:\n            break\n        print(f\"{i} {j}\")",
-      "options": [
-        "1 1\n2 1\n3 1\n4 1",
-        "1 1\n1 3\n2 1\n2 3\n3 1\n3 3\n4 1\n4 3",
-        "1 1\n1 2\n1 3\n3 1\n3 2\n3 3\n4 1\n4 2\n4 3",
-        "1 2\n2 2\n3 2\n4 2"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "nl-break-b99830",
-      "text": "Ce afișează?",
-      "code": "for i in range(1, 3):\n    for j in range(1, 5):\n        if j == 3:\n            break\n        print(f\"{i} {j}\")",
-      "options": [
-        "1 1\n1 2\n2 1\n2 2",
-        "1 1\n1 2\n1 4\n2 1\n2 2\n2 4",
-        "1 1\n1 2\n1 3\n1 4\n2 1\n2 2\n2 3\n2 4",
-        "1 3\n2 3"
-      ],
       "answer": 0
     },
     {
@@ -188,25 +126,6 @@
       "answer": 0
     },
     {
-      "id": "nl-rect-d8ac62",
-      "text": "Ce afișează?",
-      "code": "for rand in range(2):\n    for col in range(3):\n        print(\"o\", end=\"\")\n    print()",
-      "options": ["ooo\nooo", "o\no\no\n\no\no\no", "o\no\no\no\no\no", "oo\noo"],
-      "answer": 0
-    },
-    {
-      "id": "nl-rect-b5167d",
-      "text": "Ce afișează?",
-      "code": "for linie in range(3):\n    for col in range(6):\n        print(\"-\", end=\"\")\n    print()",
-      "options": [
-        "------\n------\n------",
-        "-\n-\n-\n-\n-\n-\n\n-\n-\n-\n-\n-\n-\n\n-\n-\n-\n-\n-\n-",
-        "-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-",
-        "---\n---\n---"
-      ],
-      "answer": 0
-    },
-    {
       "id": "nl-triangle-9e7b70",
       "text": "Ce afișează?",
       "code": "for rand in range(1, 4):\n    for stea in range(rand):\n        print(\"*\", end=\"\")\n    print()",
@@ -230,30 +149,6 @@
       "text": "Ce afișează?",
       "code": "for rand in range(1, 3):\n    for col in range(rand):\n        print(\"o\", end=\"\")\n    print()",
       "options": ["o\noo", "ooo\nooo", "oo", "oo\nooo"],
-      "answer": 0
-    },
-    {
-      "id": "nl-triangle-895796",
-      "text": "Ce afișează?",
-      "code": "for nivel in range(1, 6):\n    for col in range(nivel):\n        print(\"+\", end=\"\")\n    print()",
-      "options": [
-        "+\n++\n+++\n++++\n+++++",
-        "++++++\n++++++\n++++++\n++++++\n++++++",
-        "++\n+++\n++++\n+++++",
-        "++\n+++\n++++\n+++++\n++++++"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "nl-triangle-59eef0",
-      "text": "Ce afișează?",
-      "code": "for rand in range(1, 5):\n    for col in range(rand):\n        print(\"^\", end=\"\")\n    print()",
-      "options": [
-        "^\n^^\n^^^\n^^^^",
-        "^^^^^\n^^^^^\n^^^^^\n^^^^^",
-        "^^\n^^^\n^^^^",
-        "^^\n^^^\n^^^^\n^^^^^"
-      ],
       "answer": 0
     },
     {
@@ -301,18 +196,6 @@
         "Lance-Tommy",
         "Tommy-Tommy\nLance-Lance",
         "Tommy-Lance\nLance-Lance"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "nl-match-671834",
-      "text": "Ce afișează?",
-      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\"]\nfor a in planete:\n    for b in planete:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
-      "options": [
-        "Marte-Venus\nMarte-Pamant\nVenus-Marte\nVenus-Pamant\nPamant-Marte\nPamant-Venus",
-        "Venus-Marte\nPamant-Marte\nPamant-Venus",
-        "Marte-Marte\nVenus-Venus\nPamant-Pamant",
-        "Marte-Pamant\nVenus-Pamant\nPamant-Pamant"
       ],
       "answer": 0
     },
@@ -716,6 +599,97 @@
       "code": "for i in range(1, 5):\n    for j in range(1, 4):\n        if i == 3:\n            break\n        print(f\"{i} {j}\")",
       "output": "1 1\n1 2\n2 1\n2 2\n3 1\n3 2\n4 1\n4 2",
       "options": ["if i == 3:", "for j in range(1, 4):", "for i in range(1, 5):", "break"],
+      "answer": 0
+    },
+    {
+      "id": "nl-holds-products-30fbb2",
+      "text": "Ce conține `tabel` la final?",
+      "code": "tabel = []\nfor i in range(2):\n    for j in range(3):\n        tabel.append(i * j)",
+      "options": ["[0, 0, 0, 0, 1, 2]", "[0, 1, 2]", "[0, 1, 2, 1, 2, 3]", "[0, 0, 1, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "nl-holds-products-9c3955",
+      "text": "Ce conține `tabel` la final?",
+      "code": "tabel = []\nfor i in range(3):\n    for j in range(2):\n        tabel.append(i * j)",
+      "options": ["[0, 0, 0, 1, 0, 2]", "[0, 2]", "[0, 1, 1, 2, 2, 3]", "[0, 1, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "nl-holds-products-375ece",
+      "text": "Ce conține `grila` la final?",
+      "code": "grila = []\nfor i in range(2):\n    for j in range(4):\n        grila.append(i * j)",
+      "options": [
+        "[0, 0, 0, 0, 0, 1, 2, 3]",
+        "[0, 1, 2, 3]",
+        "[0, 1, 2, 3, 1, 2, 3, 4]",
+        "[0, 0, 0, 1, 2, 3]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-holds-products-e4f37b",
+      "text": "Ce conține `grila` la final?",
+      "code": "grila = []\nfor i in range(4):\n    for j in range(2):\n        grila.append(i * j)",
+      "options": ["[0, 0, 0, 1, 0, 2, 0, 3]", "[0, 3]", "[0, 1, 1, 2, 2, 3, 3, 4]", "[0, 1, 2, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "nl-holds-stairs-4d0a43",
+      "text": "Ce conține `model` la final?",
+      "code": "model = \"\"\nfor rand in range(1, 4):\n    for col in range(rand):\n        model = model + \"*\"\n    model = model + \"-\"",
+      "options": ["'*-**-***-'", "'****-****-****-'", "'*-*-*-*-*-*-'", "'-*-**-***-'"],
+      "answer": 0
+    },
+    {
+      "id": "nl-holds-stairs-64f248",
+      "text": "Ce conține `model` la final?",
+      "code": "model = \"\"\nfor rand in range(1, 3):\n    for col in range(rand):\n        model = model + \"#\"\n    model = model + \"-\"",
+      "options": ["'#-##-'", "'###-###-'", "'#-#-#-'", "'-#-##-'"],
+      "answer": 0
+    },
+    {
+      "id": "nl-holds-stairs-186118",
+      "text": "Ce conține `trepte` la final?",
+      "code": "trepte = \"\"\nfor treapta in range(1, 5):\n    for bloc in range(treapta):\n        trepte = trepte + \"o\"\n    trepte = trepte + \"-\"",
+      "options": [
+        "'o-oo-ooo-oooo-'",
+        "'ooooo-ooooo-ooooo-ooooo-'",
+        "'o-o-o-o-o-o-o-o-o-o-'",
+        "'-o-oo-ooo-oooo-'"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "nl-input-rect-8f7c95",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "randuri = int(input())\nfor rand in range(randuri):\n    for col in range(5):\n        print(\"#\", end=\"\")\n    print()",
+      "output": "#####\n#####",
+      "options": ["2", "5", "10", "3"],
+      "answer": 0
+    },
+    {
+      "id": "nl-input-rect-1185c9",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "randuri = int(input())\nfor rand in range(randuri):\n    for col in range(3):\n        print(\"*\", end=\"\")\n    print()",
+      "output": "***\n***\n***\n***",
+      "options": ["4", "3", "12", "5"],
+      "answer": 0
+    },
+    {
+      "id": "nl-input-rect-920aba",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "inaltime = int(input())\nfor rand in range(inaltime):\n    for col in range(4):\n        print(\"+\", end=\"\")\n    print()",
+      "output": "++++\n++++\n++++",
+      "options": ["3", "4", "12", "2"],
+      "answer": 0
+    },
+    {
+      "id": "nl-input-rect-2e78c3",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "inaltime = int(input())\nfor rand in range(inaltime):\n    for col in range(2):\n        print(\"o\", end=\"\")\n    print()",
+      "output": "oo\noo\noo\noo\noo",
+      "options": ["5", "2", "10", "6"],
       "answer": 0
     }
   ]

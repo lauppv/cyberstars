@@ -9,34 +9,6 @@
       "answer": 0
     },
     {
-      "id": "rr-cell-551e55",
-      "text": "Ce afișează?",
-      "code": "grila = [\n    [0, 1, 0],\n    [1, 2, 1],\n    [5, 4, 3],\n]\nprint(grila[2][1])",
-      "options": ["4", "1", "[5, 4, 3]", "5"],
-      "answer": 0
-    },
-    {
-      "id": "rr-cell-fe1832",
-      "text": "Ce afișează?",
-      "code": "grila = [\n    [5, 10, 15],\n    [20, 25, 30],\n    [35, 40, 45],\n]\nprint(grila[0][1])",
-      "options": ["10", "20", "[5, 10, 15]", "5"],
-      "answer": 0
-    },
-    {
-      "id": "rr-cell-bccd58",
-      "text": "Ce afișează?",
-      "code": "grila = [\n    [9, 8, 7],\n    [6, 5, 4],\n    [3, 2, 1],\n]\nprint(grila[1][0])",
-      "options": ["6", "8", "[6, 5, 4]", "9"],
-      "answer": 0
-    },
-    {
-      "id": "rr-cell-c489c7",
-      "text": "Ce afișează?",
-      "code": "grila = [\n    [12, 4, 6],\n    [1, 7, 11],\n    [2, 10, 13],\n]\nprint(grila[2][1])",
-      "options": ["10", "11", "[2, 10, 13]", "2"],
-      "answer": 0
-    },
-    {
       "id": "rr-count-c01055",
       "text": "Ce afișează?",
       "code": "def numara_balize(sector):\n    total = 0\n    for rand in sector:\n        for celula in rand:\n            if celula == 2:\n                total += 1\n    return total\n\nsector = [\n    [0, 2, 1, 2],\n    [1, 0, 0, 2],\n    [2, 1, 0, 0],\n]\nprint(numara_balize(sector))",
@@ -48,20 +20,6 @@
       "text": "Ce afișează?",
       "code": "def numara_balize(sector):\n    total = 0\n    for rand in sector:\n        for celula in rand:\n            if celula == 3:\n                total += 1\n    return total\n\nsector = [\n    [3, 1, 0],\n    [0, 3, 3],\n    [2, 0, 1],\n]\nprint(numara_balize(sector))",
       "options": ["3", "6", "1", "9"],
-      "answer": 0
-    },
-    {
-      "id": "rr-count-2130be",
-      "text": "Ce afișează?",
-      "code": "def numara_balize(sector):\n    total = 0\n    for rand in sector:\n        for celula in rand:\n            if celula == 2:\n                total += 1\n    return total\n\nsector = [\n    [0, 0, 1],\n    [2, 1, 0],\n    [0, 1, 0],\n]\nprint(numara_balize(sector))",
-      "options": ["1", "8", "2", "0"],
-      "answer": 0
-    },
-    {
-      "id": "rr-count-49ac22",
-      "text": "Ce afișează?",
-      "code": "def numara_balize(sector):\n    total = 0\n    for rand in sector:\n        for celula in rand:\n            if celula == 1:\n                total += 1\n    return total\n\nsector = [\n    [0, 1, 2, 1],\n    [1, 1, 0, 0],\n    [2, 1, 1, 0],\n]\nprint(numara_balize(sector))",
-      "options": ["6", "1", "0", "2"],
       "answer": 0
     },
     {
@@ -79,20 +37,6 @@
       "answer": 0
     },
     {
-      "id": "rr-unique-d76721",
-      "text": "Ce afișează?",
-      "code": "def aplatizeaza_sortat(sector):\n    valori = []\n    for rand in sector:\n        for celula in rand:\n            if celula not in valori:\n                valori.append(celula)\n    return sorted(valori)\n\nsector = [\n    [1, 0, 0, 1],\n    [0, 2, 1, 0],\n]\nprint(aplatizeaza_sortat(sector))",
-      "options": ["[0, 1, 2]", "[1, 0, 2]", "[]", "[0]"],
-      "answer": 0
-    },
-    {
-      "id": "rr-unique-c3faff",
-      "text": "Ce afișează?",
-      "code": "def aplatizeaza_sortat(sector):\n    valori = []\n    for rand in sector:\n        for celula in rand:\n            if celula not in valori:\n                valori.append(celula)\n    return sorted(valori)\n\nsector = [\n    [5, 2, 5],\n    [9, 2, 4],\n]\nprint(aplatizeaza_sortat(sector))",
-      "options": ["[2, 4, 5, 9]", "[5, 2, 9, 4]", "[]", "[4]"],
-      "answer": 0
-    },
-    {
       "id": "rr-bs-index-f2cc9c",
       "text": "Ce afișează?",
       "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [1, 3, 5, 7, 9, 11, 13]\nprint(cautare_binara(numere, 11))",
@@ -104,27 +48,6 @@
       "text": "Ce afișează?",
       "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [2, 5, 8, 12, 16, 23, 38]\nprint(cautare_binara(numere, 5))",
       "options": ["1", "5", "2", "-1"],
-      "answer": 0
-    },
-    {
-      "id": "rr-bs-index-52a77f",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [4, 8, 15, 16, 23, 42]\nprint(cautare_binara(numere, 42))",
-      "options": ["5", "42", "6", "-1"],
-      "answer": 0
-    },
-    {
-      "id": "rr-bs-index-277828",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [10, 20, 30, 40, 50]\nprint(cautare_binara(numere, 10))",
-      "options": ["0", "10", "1", "-1"],
-      "answer": 0
-    },
-    {
-      "id": "rr-bs-index-49acb8",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [3, 6, 9, 12, 15, 18, 21, 24]\nprint(cautare_binara(numere, 18))",
-      "options": ["5", "18", "6", "-1"],
       "answer": 0
     },
     {
@@ -142,27 +65,6 @@
       "answer": 0
     },
     {
-      "id": "rr-bs-steps-08a08d",
-      "text": "Ce afișează?",
-      "code": "numere = [5, 10, 15, 20, 25, 30, 35, 40]\ntinta = 35\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    print(numere[mijloc])\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
-      "options": ["20\n30\n35", "3\n5\n6", "25\n35", "20\n10\n5"],
-      "answer": 0
-    },
-    {
-      "id": "rr-bs-steps-0c92f1",
-      "text": "Ce afișează?",
-      "code": "numere = [1, 2, 3, 4, 5, 6, 7, 8, 9]\ntinta = 8\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    print(numere[mijloc])\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
-      "options": ["5\n7\n8", "4\n6\n7", "5\n8", "5\n2\n1"],
-      "answer": 0
-    },
-    {
-      "id": "rr-bs-steps-34ec2e",
-      "text": "Ce afișează?",
-      "code": "numere = [11, 22, 33, 44, 55, 66, 77]\ntinta = 20\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    print(numere[mijloc])\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
-      "options": ["44\n22\n11", "3\n1\n0", "44\n66\n77", "22\n11"],
-      "answer": 0
-    },
-    {
       "id": "rr-fact-9a2b7a",
       "text": "Ce afișează?",
       "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(7))",
@@ -177,20 +79,6 @@
       "answer": 0
     },
     {
-      "id": "rr-fact-7dc437",
-      "text": "Ce afișează?",
-      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(6))",
-      "options": ["720", "0", "21", "360"],
-      "answer": 0
-    },
-    {
-      "id": "rr-fact-1951a8",
-      "text": "Ce afișează?",
-      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(4))",
-      "options": ["24", "0", "10", "12"],
-      "answer": 0
-    },
-    {
       "id": "rr-sum-list-7e9201",
       "text": "Ce afișează?",
       "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([3, 5, 2]))",
@@ -202,20 +90,6 @@
       "text": "Ce afișează?",
       "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([10, 20, 30, 40]))",
       "options": ["100", "101", "60", "0"],
-      "answer": 0
-    },
-    {
-      "id": "rr-sum-list-760e22",
-      "text": "Ce afișează?",
-      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([7, 1, 4, 6]))",
-      "options": ["18", "19", "12", "0"],
-      "answer": 0
-    },
-    {
-      "id": "rr-sum-list-41d0f8",
-      "text": "Ce afișează?",
-      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([8, 9]))",
-      "options": ["17", "18", "8", "0"],
       "answer": 0
     },
     {
@@ -243,30 +117,6 @@
       "answer": 0
     },
     {
-      "id": "rr-power-2f54cd",
-      "text": "Ce afișează?",
-      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nfor exponent in range(3):\n    rezultat = putere(5, exponent)\n    print(f\"5^{exponent} = {rezultat}\")",
-      "options": [
-        "5^0 = 1\n5^1 = 5\n5^2 = 25",
-        "5^0 = 5\n5^1 = 25\n5^2 = 125",
-        "5^0 = 1\n5^1 = 6\n5^2 = 11",
-        "5^1 = 5\n5^2 = 25"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rr-power-832d30",
-      "text": "Ce afișează?",
-      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nfor exponent in range(4):\n    rezultat = putere(10, exponent)\n    print(f\"10^{exponent} = {rezultat}\")",
-      "options": [
-        "10^0 = 1\n10^1 = 10\n10^2 = 100\n10^3 = 1000",
-        "10^0 = 10\n10^1 = 100\n10^2 = 1000\n10^3 = 10000",
-        "10^0 = 1\n10^1 = 11\n10^2 = 21\n10^3 = 31",
-        "10^1 = 10\n10^2 = 100\n10^3 = 1000"
-      ],
-      "answer": 0
-    },
-    {
       "id": "rr-digits-63dbef",
       "text": "Ce afișează?",
       "code": "def suma_cifrelor(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifrelor(n // 10)\n\nfor cod in [1234, 88]:\n    print(f\"{cod}: {suma_cifrelor(cod)}\")",
@@ -278,20 +128,6 @@
       "text": "Ce afișează?",
       "code": "def suma_cifrelor(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifrelor(n // 10)\n\nfor cod in [999, 5]:\n    print(f\"{cod}: {suma_cifrelor(cod)}\")",
       "options": ["999: 27\n5: 5", "999: 117\n5: 5", "999: 18\n5: 0", "999: 108\n5: 5"],
-      "answer": 0
-    },
-    {
-      "id": "rr-digits-6b653b",
-      "text": "Ce afișează?",
-      "code": "def suma_cifrelor(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifrelor(n // 10)\n\nfor cod in [4070, 31]:\n    print(f\"{cod}: {suma_cifrelor(cod)}\")",
-      "options": ["4070: 11\n31: 4", "4070: 455\n31: 6", "4070: 7\n31: 1", "4070: 47\n31: 31"],
-      "answer": 0
-    },
-    {
-      "id": "rr-digits-e96dab",
-      "text": "Ce afișează?",
-      "code": "def suma_cifrelor(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifrelor(n // 10)\n\nfor cod in [56, 702]:\n    print(f\"{cod}: {suma_cifrelor(cod)}\")",
-      "options": ["56: 11\n702: 9", "56: 10\n702: 84", "56: 6\n702: 2", "56: 56\n702: 72"],
       "answer": 0
     },
     {
@@ -609,10 +445,169 @@
       "answer": 0
     },
     {
-      "id": "rr-reverse-ae26a3",
-      "text": "Ce afișează?",
-      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"Marte\"))",
-      "options": ["etraM", "Marte", "traM", "eetra"],
+      "id": "rr-holds-count-539054",
+      "text": "Ce conține `balize` la final?",
+      "code": "def numara_balize(sector):\n    total = 0\n    for rand in sector:\n        for celula in rand:\n            if celula == 1:\n                total += 1\n    return total\n\nbalize = numara_balize([[1, 0, 1], [1, 1, 1], [0, 0, 1]])",
+      "options": ["6", "3", "1", "2"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-count-1a7a96",
+      "text": "Ce conține `balize` la final?",
+      "code": "def numara_balize(sector):\n    total = 0\n    for rand in sector:\n        for celula in rand:\n            if celula == 7:\n                total += 1\n    return total\n\nbalize = numara_balize([[7, 7, 7], [3, 7, 1], [1, 1, 7]])",
+      "options": ["5", "4", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-count-b9c321",
+      "text": "Ce conține `balize` la final?",
+      "code": "def numara_balize(sector):\n    total = 0\n    for rand in sector:\n        for celula in rand:\n            if celula == 5:\n                total += 1\n    return total\n\nbalize = numara_balize([[2, 5, 5], [5, 5, 5], [9, 2, 1]])",
+      "options": ["5", "4", "0", "2"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-count-829008",
+      "text": "Ce conține `balize` la final?",
+      "code": "def numara_balize(sector):\n    total = 0\n    for rand in sector:\n        for celula in rand:\n            if celula == 0:\n                total += 1\n    return total\n\nbalize = numara_balize([[0, 0, 0], [0, 1, 0]])",
+      "options": ["5", "1", "2", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-count-249d2c",
+      "text": "Ce conține `balize` la final?",
+      "code": "def numara_balize(sector):\n    total = 0\n    for rand in sector:\n        for celula in rand:\n            if celula == 3:\n                total += 1\n    return total\n\nbalize = numara_balize([[3, 3, 3], [3, 1, 1]])",
+      "options": ["4", "2", "1", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-sum-9e61e0",
+      "text": "Ce conține `total` la final?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\ntotal = suma_lista([3, 5, 2])",
+      "options": ["10", "5", "11", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-sum-7000e4",
+      "text": "Ce conține `total` la final?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\ntotal = suma_lista([10, 20, 30, 40])",
+      "options": ["100", "40", "101", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-sum-f84698",
+      "text": "Ce conține `total` la final?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\ntotal = suma_lista([7, 1, 4, 2, 6])",
+      "options": ["20", "17", "21", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-sum-af6363",
+      "text": "Ce conține `total` la final?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\ntotal = suma_lista([9, 9])",
+      "options": ["18", "9", "19", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-sum-404253",
+      "text": "Ce conține `total` la final?",
+      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\ntotal = suma_lista([1, 1, 1, 1, 1, 1])",
+      "options": ["6", "3", "7", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rr-input-power-0dd9bc",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(2, int(input())))",
+      "output": "32",
+      "options": ["5", "6", "4", "2"],
+      "answer": 0
+    },
+    {
+      "id": "rr-input-power-70608d",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(3, int(input())))",
+      "output": "81",
+      "options": ["4", "5", "3", "12"],
+      "answer": 0
+    },
+    {
+      "id": "rr-input-power-d955f7",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(10, int(input())))",
+      "output": "1000",
+      "options": ["3", "4", "2", "10"],
+      "answer": 0
+    },
+    {
+      "id": "rr-input-power-a12ca4",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(5, int(input())))",
+      "output": "25",
+      "options": ["2", "3", "1", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rr-input-power-550ee2",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nprint(putere(4, int(input())))",
+      "output": "64",
+      "options": ["3", "4", "2", "12"],
+      "answer": 0
+    },
+    {
+      "id": "rr-error-number-13a64f",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(12345))",
+      "options": ["TypeError", "ValueError", "IndexError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "rr-error-number-2661af",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(2026))",
+      "options": ["TypeError", "ValueError", "IndexError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "rr-error-grid-c70a27",
+      "text": "Ce eroare oprește acest program?",
+      "code": "grila = [[4, 7, 1], [2, 9, 5]]\nprint(grila[2][0])",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "rr-error-grid-47c246",
+      "text": "Ce eroare oprește acest program?",
+      "code": "grila = [[1, 2], [3, 4], [5, 6]]\nprint(grila[1][2])",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-flat-5afabc",
+      "text": "Ce conține `plat` la final?",
+      "code": "grila = [[4, 7, 1], [2, 9, 5]]\nplat = []\nfor rand in grila:\n    for celula in rand:\n        plat.append(celula)",
+      "options": ["[4, 7, 1, 2, 9, 5]", "[4, 7, 1, 4, 7, 1]", "[2, 9, 5]", "[5]"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-flat-7e0578",
+      "text": "Ce conține `plat` la final?",
+      "code": "grila = [[1, 2], [3, 4], [5, 6]]\nplat = []\nfor rand in grila:\n    for celula in rand:\n        plat.append(celula)",
+      "options": ["[1, 2, 3, 4, 5, 6]", "[1, 2, 1, 2, 1, 2]", "[5, 6]", "[6]"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-flat-73410d",
+      "text": "Ce conține `plat` la final?",
+      "code": "grila = [[8, 1], [3], [6, 2]]\nplat = []\nfor rand in grila:\n    for celula in rand:\n        plat.append(celula)",
+      "options": ["[8, 1, 3, 6, 2]", "[8, 1, 8, 1, 8, 1]", "[6, 2]", "[2]"],
+      "answer": 0
+    },
+    {
+      "id": "rr-holds-flat-7994d1",
+      "text": "Ce conține `plat` la final?",
+      "code": "grila = [[5, 5], [1, 2]]\nplat = []\nfor rand in grila:\n    for celula in rand:\n        plat.append(celula)",
+      "options": ["[5, 5, 1, 2]", "[5, 5, 5, 5]", "[1, 2]", "[2]"],
       "answer": 0
     }
   ]

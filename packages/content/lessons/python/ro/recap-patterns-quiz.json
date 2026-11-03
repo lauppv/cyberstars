@@ -277,18 +277,6 @@
         {
           "s": "ping ping ecou ping",
           "w": "ping"
-        },
-        {
-          "s": "start citire sonda citire",
-          "w": "sonda"
-        },
-        {
-          "s": "sus jos sus jos sus",
-          "w": "jos"
-        },
-        {
-          "s": "alfa beta alfa gama beta alfa",
-          "w": "beta"
         }
       ],
       "mistakes": [
@@ -311,15 +299,6 @@
         },
         {
           "s": "hai mai departe"
-        },
-        {
-          "s": "rosu gri albastru verde"
-        },
-        {
-          "s": "marte venus terra pluto"
-        },
-        {
-          "s": "ion orbita cometa stea"
         }
       ],
       "mistakes": [
@@ -344,18 +323,6 @@
         {
           "a": "rosu albastru",
           "b": "hai sus hai"
-        },
-        {
-          "a": "a b c d",
-          "b": "a b c a"
-        },
-        {
-          "a": "marte marte",
-          "b": "venus terra"
-        },
-        {
-          "a": "unu doi trei",
-          "b": "unu unu"
         }
       ],
       "mistakes": [
@@ -376,15 +343,6 @@
         },
         {
           "s": "sus jos sus"
-        },
-        {
-          "s": "rosu albastru verde rosu albastru"
-        },
-        {
-          "s": "ecou ping ecou"
-        },
-        {
-          "s": "gama alfa beta alfa"
         }
       ],
       "mistakes": [
@@ -405,15 +363,6 @@
         },
         {
           "s": "hai mai sus"
-        },
-        {
-          "s": "alfa beta"
-        },
-        {
-          "s": "a bb ccc dddd"
-        },
-        {
-          "s": "sonda orbit"
         }
       ],
       "mistakes": [
@@ -440,14 +389,6 @@
         {
           "s": "start citire sonda citire",
           "w": "sonda"
-        },
-        {
-          "s": "sus jos sus jos sus",
-          "w": "jos"
-        },
-        {
-          "s": "alfa beta alfa gama beta alfa",
-          "w": "beta"
         }
       ],
       "mistakes": [
@@ -473,14 +414,6 @@
         },
         {
           "s": "orbita ion cometa sol",
-          "n": 3
-        },
-        {
-          "s": "alfa beta gama delta",
-          "n": 4
-        },
-        {
-          "s": "gri roz verde",
           "n": 3
         }
       ],
@@ -508,14 +441,6 @@
         {
           "s": "ion sol orbita",
           "n": 3
-        },
-        {
-          "s": "a bb ccc",
-          "n": 3
-        },
-        {
-          "s": "marte venus terra",
-          "n": 4
         }
       ],
       "mistakes": [
@@ -703,6 +628,180 @@
         }
       ],
       "bug": ["        vazute.add(w)", "        vazute.add(jurnal)"]
+    },
+    {
+      "id": "rp-holds-count",
+      "kind": "holds",
+      "text": "Ce conține `{{c}}` la final?",
+      "code": "{{c}} = 0\nfor w in \"{{s}}\".split(\" \"):\n    if w == \"{{t}}\":\n        {{c}} += 1",
+      "values": [
+        {
+          "c": "numar",
+          "s": "scan scanner scan boot",
+          "t": "scan"
+        },
+        {
+          "c": "numar",
+          "s": "ping ping pinging ping",
+          "t": "ping"
+        },
+        {
+          "c": "numar",
+          "s": "go go gone stop",
+          "t": "go"
+        },
+        {
+          "c": "numar",
+          "s": "ok sos ok okay",
+          "t": "ok"
+        },
+        {
+          "c": "numar",
+          "s": "up up update up",
+          "t": "up"
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["w == \"{{t}}\"", "\"{{t}}\" in w"],
+        ["\"{{s}}\".split(\" \")", "\"{{s}}\""],
+        ["{{c}} += 1", "{{c}} = 1"]
+      ]
+    },
+    {
+      "id": "rp-holds-longest",
+      "kind": "holds",
+      "text": "Ce conține `{{b}}` la final?",
+      "code": "{{b}} = \"\"\nfor w in \"{{s}}\".split(\" \"):\n    if len(w) > len({{b}}):\n        {{b}} = w",
+      "values": [
+        {
+          "b": "cel_mai_lung",
+          "s": "scan probe radar boot"
+        },
+        {
+          "b": "cel_mai_lung",
+          "s": "go up on"
+        },
+        {
+          "b": "cel_mai_lung",
+          "s": "boot ping scan zap"
+        },
+        {
+          "b": "cel_mai_lung",
+          "s": "sos ok help ping"
+        }
+      ],
+      "variable": "{{b}}",
+      "mistakes": [
+        ["len(w) > len({{b}})", "len(w) >= len({{b}})"],
+        ["len(w) > len({{b}})", "w > {{b}}"],
+        ["len(w) > len({{b}})", "len(w) < len({{b}})"]
+      ]
+    },
+    {
+      "id": "rp-holds-dups",
+      "kind": "holds",
+      "text": "Ce conține `{{d}}` la final?",
+      "code": "{{seen}} = set()\n{{d}} = []\nfor w in \"{{s}}\".split(\" \"):\n    if w in {{seen}}:\n        {{d}}.append(w)\n    {{seen}}.add(w)",
+      "values": [
+        {
+          "seen": "vazute",
+          "d": "repetate",
+          "s": "scan probe scan boot probe"
+        },
+        {
+          "seen": "vazute",
+          "d": "repetate",
+          "s": "ping ping pong ping"
+        },
+        {
+          "seen": "vazute",
+          "d": "repetate",
+          "s": "go up go up go"
+        },
+        {
+          "seen": "vazute",
+          "d": "repetate",
+          "s": "ok sos ok help sos"
+        }
+      ],
+      "variable": "{{d}}",
+      "mistakes": [
+        ["\n    {{seen}}.add(w)", "\n        {{seen}}.add(w)"],
+        ["{{d}}.append(w)", "{{d}} = [w]"],
+        ["if w in {{seen}}", "if w not in {{seen}}"]
+      ]
+    },
+    {
+      "id": "rp-error-counter",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{c}} = {}\nfor w in \"{{s}}\".split(\" \"):\n    {{c}}[w] += 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "numarari",
+          "s": "scan boot scan"
+        },
+        {
+          "c": "numarari",
+          "s": "ping pong"
+        },
+        {
+          "c": "frecv",
+          "s": "ok sos ok"
+        },
+        {
+          "c": "frecv",
+          "s": "go up"
+        }
+      ],
+      "wrong": ["IndexError", "NameError", "TypeError"]
+    },
+    {
+      "id": "rp-input-long",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{log}} = input()\n{{c}} = 0\nfor w in {{log}}.split(\" \"):\n    if len(w) > {{n}}:\n        {{c}} += 1\nprint({{c}})",
+      "values": [
+        {
+          "log": "jurnal",
+          "c": "lungi",
+          "n": 3,
+          "a": "scan probe ok",
+          "w1": "scan ok",
+          "w2": "scan probe radar",
+          "w3": "ok up go"
+        },
+        {
+          "log": "jurnal",
+          "c": "lungi",
+          "n": 4,
+          "a": "probe radar scan",
+          "w1": "probe scan",
+          "w2": "probe radar beacon",
+          "w3": "scan boot"
+        },
+        {
+          "log": "jurnal",
+          "c": "lungi",
+          "n": 2,
+          "a": "go sos ok help",
+          "w1": "sos go",
+          "w2": "sos help ping",
+          "w3": "go up"
+        },
+        {
+          "log": "jurnal",
+          "c": "lungi",
+          "n": 3,
+          "a": "ping sync beam ok",
+          "w1": "ping ok",
+          "w2": "ping sync",
+          "w3": "ok up go"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
     }
   ]
 }

@@ -33,13 +33,6 @@
       "answer": 0
     },
     {
-      "id": "bc-break-0ae17e",
-      "text": "Ce afișează?",
-      "code": "for i in range(2, 9):\n    if i == 7:\n        break\n    print(i)",
-      "options": ["2\n3\n4\n5\n6", "2\n3\n4\n5\n6\n8", "2\n3\n4\n5\n6\n7", "2\n3\n4\n5\n6\n7\n8"],
-      "answer": 0
-    },
-    {
       "id": "bc-continue-78bfc7",
       "text": "Ce afișează?",
       "code": "for i in range(0, 6):\n    if i == 3:\n        continue\n    print(i)",
@@ -58,13 +51,6 @@
       "text": "Ce afișează?",
       "code": "for i in range(4, 9):\n    if i == 6:\n        continue\n    print(i)",
       "options": ["4\n5\n7\n8", "4\n5", "4\n5\n6\n7\n8", "6"],
-      "answer": 0
-    },
-    {
-      "id": "bc-continue-07bc92",
-      "text": "Ce afișează?",
-      "code": "for i in range(2, 8):\n    if i == 5:\n        continue\n    print(i)",
-      "options": ["2\n3\n4\n6\n7", "2\n3\n4", "2\n3\n4\n5\n6\n7", "5"],
       "answer": 0
     },
     {
@@ -614,6 +600,20 @@
       "code": "n = 0\nwhile true:\n    n = n + 1\n    if n == 6:\n        break\n    print(n)",
       "output": "1\n2\n3\n4\n5",
       "options": ["while true:", "n = 0", "if n == 6:", "n = n + 1"],
+      "answer": 0
+    },
+    {
+      "id": "bc-holds-finish-3bb467",
+      "text": "Ce conține `tura_finala` la final?",
+      "code": "tura_finala = 0\nfor tura in range(1, 10):\n    if tura * 30 > 100:\n        tura_finala = tura\n        break",
+      "options": ["4", "9", "1", "120"],
+      "answer": 0
+    },
+    {
+      "id": "bc-holds-finish-2ce1ec",
+      "text": "Ce conține `sosire` la final?",
+      "code": "sosire = 0\nfor ora in range(1, 8):\n    if ora * 25 > 100:\n        sosire = ora\n        break",
+      "options": ["5", "7", "1", "4"],
       "answer": 0
     }
   ]

@@ -335,33 +335,6 @@
           "yes": "Pericol",
           "no": "Stabil",
           "flip": "<="
-        },
-        {
-          "v": "combustibil",
-          "x": 1200,
-          "op": ">",
-          "limit": 1000,
-          "yes": "Pericol",
-          "no": "Stabil",
-          "flip": "<="
-        },
-        {
-          "v": "varsta",
-          "x": 18,
-          "op": ">=",
-          "limit": 18,
-          "yes": "Poti vota",
-          "no": "Inca nu",
-          "flip": "<"
-        },
-        {
-          "v": "varsta",
-          "x": 12,
-          "op": ">=",
-          "limit": 18,
-          "yes": "Poti vota",
-          "no": "Inca nu",
-          "flip": "<"
         }
       ],
       "mistakes": [
@@ -443,14 +416,6 @@
         {
           "user": "Ana",
           "b": "True"
-        },
-        {
-          "user": "Ben",
-          "b": "False"
-        },
-        {
-          "user": "Cortez",
-          "b": "False"
         }
       ],
       "mistakes": [
@@ -798,12 +763,6 @@
         },
         {
           "t": 1000
-        },
-        {
-          "t": 1001
-        },
-        {
-          "t": 999
         }
       ],
       "mistakes": [
@@ -853,20 +812,6 @@
           "op": ">",
           "limit": 1000,
           "flip": "<="
-        },
-        {
-          "v": "varsta",
-          "x": 17,
-          "op": "<=",
-          "limit": 18,
-          "flip": ">"
-        },
-        {
-          "v": "puncte",
-          "x": 75,
-          "op": "==",
-          "limit": 75,
-          "flip": "<"
         }
       ],
       "mistakes": [
@@ -945,13 +890,6 @@
           "limit": 100,
           "yes": "Record nou",
           "after": "Joc terminat"
-        },
-        {
-          "v": "puncte",
-          "x": 40,
-          "limit": 100,
-          "yes": "Record nou",
-          "after": "Joc terminat"
         }
       ],
       "mistakes": [
@@ -984,6 +922,108 @@
         }
       ],
       "bug": ["online = {{b}}", "online = {{bl}}"]
+    },
+    {
+      "id": "ie-holds-branch",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    {{v}} = {{v}} - {{a}}\nelse:\n    {{v}} = {{v}} + {{b}}\n{{v}} = {{v}} * 2",
+      "values": [
+        {
+          "v": "combustibil",
+          "x": 80,
+          "limit": 50,
+          "a": 10,
+          "b": 5
+        },
+        {
+          "v": "combustibil",
+          "x": 30,
+          "limit": 50,
+          "a": 10,
+          "b": 5
+        },
+        {
+          "v": "scor",
+          "x": 12,
+          "limit": 10,
+          "a": 2,
+          "b": 3
+        },
+        {
+          "v": "scor",
+          "x": 6,
+          "limit": 10,
+          "a": 2,
+          "b": 3
+        },
+        {
+          "v": "viteza",
+          "x": 90,
+          "limit": 60,
+          "a": 20,
+          "b": 10
+        },
+        {
+          "v": "viteza",
+          "x": 40,
+          "limit": 60,
+          "a": 20,
+          "b": 10
+        },
+        {
+          "v": "nivel",
+          "x": 7,
+          "limit": 5,
+          "a": 1,
+          "b": 2
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["> {{limit}}", "< {{limit}}"],
+        ["{{v}} = {{v}} * 2", "print({{v}} * 2)"],
+        ["else:\n    {{v}} = {{v}} + {{b}}", "{{v}} = {{v}} + {{b}}"],
+        ["{{v}} = {{v}} + {{b}}", "{{v}} = {{b}}"]
+      ]
+    },
+    {
+      "id": "ie-holds-message",
+      "kind": "holds",
+      "text": "Ce conține `mesaj` la final?",
+      "code": "{{v}} = {{x}}\nmesaj = \"{{start}}\"\nif {{v}} > {{limit}}:\n    mesaj = mesaj + \"{{yes}}\"\nelse:\n    mesaj = mesaj + \"{{no}}\"",
+      "values": [
+        {
+          "v": "combustibil",
+          "x": 80,
+          "limit": 50,
+          "start": "Combustibil ",
+          "yes": "OK",
+          "no": "putin"
+        },
+        {
+          "v": "temperatura",
+          "x": 1200,
+          "limit": 1000,
+          "start": "Reactor ",
+          "yes": "fierbinte",
+          "no": "stabil"
+        },
+        {
+          "v": "scor",
+          "x": 95,
+          "limit": 50,
+          "start": "Rezultat: ",
+          "yes": "trecut",
+          "no": "picat"
+        }
+      ],
+      "variable": "mesaj",
+      "mistakes": [
+        ["> {{limit}}", "< {{limit}}"],
+        ["mesaj = mesaj + \"{{yes}}\"", "mesaj = \"{{yes}}\""],
+        ["else:\n    mesaj = mesaj + \"{{no}}\"", "mesaj = mesaj + \"{{no}}\""]
+      ]
     }
   ]
 }

@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "pd-split-len-4f49cc",
-      "text": "What does this print?",
-      "code": "message = \"dock at gate four\"\nwords = message.split(\" \")\nprint(len(words))\nprint(words[1])",
-      "options": ["4\nat", "17\nat", "4\ngate", "at"],
-      "answer": 0
-    },
-    {
-      "id": "pd-split-len-25f7c3",
-      "text": "What does this print?",
-      "code": "names = \"Tommy Lance Ken\"\nwords = names.split(\" \")\nprint(len(words))\nprint(words[0])",
-      "options": ["3\nTommy", "15\nTommy", "3\nLance", "Tommy"],
-      "answer": 0
-    },
-    {
       "id": "pd-count-70a130",
       "text": "What does this print?",
       "code": "counter = {}\nfor word in \"ok sos ok\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
@@ -41,25 +27,6 @@
       "text": "What does this print?",
       "code": "counter = {}\nfor word in \"red blue red red\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
       "options": ["{'red': 3, 'blue': 1}", "{'red': 1, 'blue': 1}", "{'red': 2, 'blue': 0}", "2"],
-      "answer": 0
-    },
-    {
-      "id": "pd-count-90953b",
-      "text": "What does this print?",
-      "code": "counter = {}\nfor word in \"go stop go wait\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
-      "options": [
-        "{'go': 2, 'stop': 1, 'wait': 1}",
-        "{'go': 1, 'stop': 1, 'wait': 1}",
-        "{'go': 1, 'stop': 0, 'wait': 0}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-count-1713b5",
-      "text": "What does this print?",
-      "code": "counter = {}\nfor word in \"up down up up down\".split(\" \"):\n    if word in counter:\n        counter[word] = counter[word] + 1\n    else:\n        counter[word] = 1\nprint(counter)",
-      "options": ["{'up': 3, 'down': 2}", "{'up': 1, 'down': 1}", "{'up': 2, 'down': 1}", "2"],
       "answer": 0
     },
     {
@@ -87,30 +54,6 @@
       "answer": 0
     },
     {
-      "id": "pd-best-f28853",
-      "text": "What does this print?",
-      "code": "counts = {\"x\": 2, \"y\": 2, \"z\": 1}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
-      "options": [
-        "Most common: x (2)",
-        "Most common:  (0)",
-        "Most common: y (2)",
-        "Most common: 2 (2)"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-best-713aa0",
-      "text": "What does this print?",
-      "code": "counts = {\"dock\": 1, \"boot\": 4, \"sync\": 6}\nbest = \"\"\nhighest = 0\nfor code, count in counts.items():\n    if count > highest:\n        highest = count\n        best = code\nprint(f\"Most common: {best} ({highest})\")",
-      "options": [
-        "Most common: sync (6)",
-        "Most common:  (0)",
-        "Most common: 6 (6)",
-        "Most common: sync (0)"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pd-pairs-42da49",
       "text": "What does this print?",
       "code": "numbers = [2, 4, 6, 3]\ntarget = 7\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
@@ -126,30 +69,6 @@
         "5 + 1 = 6\n1 + 5 = 6\n4 + 2 = 6\n2 + 4 = 6",
         "5 + 4 = 6\n5 + 2 = 6",
         "5 1\n4 2"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-pairs-ba29dc",
-      "text": "What does this print?",
-      "code": "numbers = [3, 3, 4, 2]\ntarget = 6\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
-      "options": [
-        "3 + 3 = 6\n4 + 2 = 6",
-        "3 + 3 = 6\n3 + 3 = 6\n3 + 3 = 6\n3 + 3 = 6\n4 + 2 = 6\n2 + 4 = 6",
-        "3 + 3 = 6\n3 + 3 = 6\n3 + 3 = 6\n4 + 2 = 6",
-        "3 + 4 = 6\n3 + 4 = 6"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-pairs-717ca5",
-      "text": "What does this print?",
-      "code": "numbers = [1, 6, 3, 4, 5]\ntarget = 9\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == target:\n            print(f\"{numbers[i]} + {numbers[j]} = {target}\")",
-      "options": [
-        "6 + 3 = 9\n4 + 5 = 9",
-        "6 + 3 = 9\n3 + 6 = 9\n4 + 5 = 9\n5 + 4 = 9",
-        "6 + 4 = 9\n6 + 5 = 9",
-        "6 3\n4 5"
       ],
       "answer": 0
     },
@@ -178,30 +97,6 @@
       "answer": 0
     },
     {
-      "id": "pd-funcs-5e46b7",
-      "text": "What does this print?",
-      "code": "def split_codes(log):\n    return log.split(\" \")\n\ndef count_codes(codes):\n    counts = {}\n    for code in codes:\n        if code in counts:\n            counts[code] = counts[code] + 1\n        else:\n            counts[code] = 1\n    return counts\n\ncodes = split_codes(\"dock dock undock dock\")\ncounts = count_codes(codes)\nprint(f\"Codes: {len(codes)}\")\nfor code, count in counts.items():\n    print(f\"{code}: {count}\")",
-      "options": [
-        "Codes: 4\ndock: 3\nundock: 1",
-        "Codes: 2\ndock: 3\nundock: 1",
-        "Codes: 4\nd: 4\no: 4\nc: 4\nk: 4\n : 3\nu: 1\nn: 1",
-        "Codes: 4\ndock: 1\nundock: 1"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-funcs-38cb13",
-      "text": "What does this print?",
-      "code": "def split_codes(log):\n    return log.split(\" \")\n\ndef count_codes(codes):\n    counts = {}\n    for code in codes:\n        if code in counts:\n            counts[code] = counts[code] + 1\n        else:\n            counts[code] = 1\n    return counts\n\ncodes = split_codes(\"boot sync boot\")\ncounts = count_codes(codes)\nprint(f\"Codes: {len(codes)}\")\nfor code, count in counts.items():\n    print(f\"{code}: {count}\")",
-      "options": [
-        "Codes: 3\nboot: 2\nsync: 1",
-        "Codes: 2\nboot: 2\nsync: 1",
-        "Codes: 3\nb: 2\no: 4\nt: 2\n : 2\ns: 1\ny: 1\nn: 1\nc: 1",
-        "Codes: 3\nboot: 1\nsync: 1"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pd-longest-238e54",
       "text": "What does this print?",
       "code": "def get_words(text):\n    return text.split(\" \")\n\ndef longest(words):\n    best = \"\"\n    for w in words:\n        if len(w) > len(best):\n            best = w\n    return best\n\nprint(longest(get_words(\"red green blue black\")))",
@@ -213,20 +108,6 @@
       "text": "What does this print?",
       "code": "def get_words(text):\n    return text.split(\" \")\n\ndef longest(words):\n    best = \"\"\n    for w in words:\n        if len(w) > len(best):\n            best = w\n    return best\n\nprint(longest(get_words(\"sun moon star comet\")))",
       "options": ["comet", "sun", "5", "s"],
-      "answer": 0
-    },
-    {
-      "id": "pd-longest-51e55f",
-      "text": "What does this print?",
-      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef longest(words):\n    best = \"\"\n    for w in words:\n        if len(w) > len(best):\n            best = w\n    return best\n\nprint(longest(get_words(\"go stop wait jump\")))",
-      "options": ["stop", "wait", "jump", "4"],
-      "answer": 0
-    },
-    {
-      "id": "pd-longest-e10287",
-      "text": "What does this print?",
-      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef longest(words):\n    best = \"\"\n    for w in words:\n        if len(w) > len(best):\n            best = w\n    return best\n\nprint(longest(get_words(\"alpha beta delta pi\")))",
-      "options": ["alpha", "pi", "delta", "5"],
       "answer": 0
     },
     {
@@ -730,6 +611,114 @@
         "highest = 0",
         "best = \"\"",
         "counts = {\"dock\": 6, \"boot\": 4}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pipeline-1b6df5",
+      "text": "What is in `sizes` at the end?",
+      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef lengths(words):\n    return [len(w) for w in words]\n\nsizes = lengths(get_words(\"go to Mars\"))",
+      "options": ["[2, 2, 4]", "3", "['go', 'to', 'Mars']", "[3, 3, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pipeline-df61e7",
+      "text": "What is in `sizes` at the end?",
+      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef lengths(words):\n    return [len(w) for w in words]\n\nsizes = lengths(get_words(\"Vice City Stories\"))",
+      "options": ["[4, 4, 7]", "3", "['Vice', 'City', 'Stories']", "[3, 3, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pipeline-55edca",
+      "text": "What is in `sizes` at the end?",
+      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef lengths(words):\n    return [len(w) for w in words]\n\nsizes = lengths(get_words(\"Tommy is back home\"))",
+      "options": ["[5, 2, 4, 4]", "4", "['Tommy', 'is', 'back', 'home']", "[4, 4, 4, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pipeline-fc248e",
+      "text": "What is in `sizes` at the end?",
+      "code": "def get_words(text):\n    return text.split(\" \")\n\ndef lengths(words):\n    return [len(w) for w in words]\n\nsizes = lengths(get_words(\"sos ok\"))",
+      "options": ["[3, 2]", "2", "['sos', 'ok']", "[2, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "pd-input-words-dff398",
+      "text": "What did the user type?",
+      "code": "text = input()\nwords = text.split(\" \")\nprint(len(words))\nprint(words[0])",
+      "output": "3\nthe",
+      "options": ["the cat sat", "the", "3 the", "thecatsat"],
+      "answer": 0
+    },
+    {
+      "id": "pd-input-words-a87062",
+      "text": "What did the user type?",
+      "code": "text = input()\nwords = text.split(\" \")\nprint(len(words))\nprint(words[0])",
+      "output": "3\ngo",
+      "options": ["go to Mars", "go", "3 go", "gotoMars"],
+      "answer": 0
+    },
+    {
+      "id": "pd-input-words-5bcea8",
+      "text": "What did the user type?",
+      "code": "log = input()\ncodes = log.split(\" \")\nprint(len(codes))\nprint(codes[0])",
+      "output": "3\nok",
+      "options": ["ok sos ok", "ok", "3 ok", "oksosok"],
+      "answer": 0
+    },
+    {
+      "id": "pd-input-words-af2ec5",
+      "text": "What did the user type?",
+      "code": "text = input()\nwords = text.split(\" \")\nprint(len(words))\nprint(words[0])",
+      "output": "2\nVice",
+      "options": ["Vice City", "Vice", "2 Vice", "ViceCity"],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pairs-62754a",
+      "text": "What is in `pairs` at the end?",
+      "code": "numbers = [2, 7, 4, 5]\npairs = []\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == 9:\n            pairs.append((numbers[i], numbers[j]))",
+      "options": [
+        "[(2, 7), (4, 5)]",
+        "[(2, 7), (7, 2), (4, 5), (5, 4)]",
+        "[(0, 1), (2, 3)]",
+        "[(2, 7), (7, 4), (7, 5), (4, 5)]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pairs-fc781c",
+      "text": "What is in `pairs` at the end?",
+      "code": "numbers = [1, 5, 3, 7]\npairs = []\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        if numbers[i] + numbers[j] == 8:\n            pairs.append((numbers[i], numbers[j]))",
+      "options": [
+        "[(1, 7), (5, 3)]",
+        "[(1, 7), (5, 3), (3, 5), (7, 1)]",
+        "[(0, 3), (1, 2)]",
+        "[(1, 7), (5, 3), (5, 7), (3, 7)]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pairs-044bbc",
+      "text": "What is in `deals` at the end?",
+      "code": "prices = [10, 30, 20, 40]\ndeals = []\nfor i in range(len(prices)):\n    for j in range(i + 1, len(prices)):\n        if prices[i] + prices[j] == 50:\n            deals.append((prices[i], prices[j]))",
+      "options": [
+        "[(10, 40), (30, 20)]",
+        "[(10, 40), (30, 20), (20, 30), (40, 10)]",
+        "[(0, 3), (1, 2)]",
+        "[(10, 40), (30, 20), (30, 40), (20, 40)]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pairs-f020c8",
+      "text": "What is in `pairs` at the end?",
+      "code": "weights = [6, 1, 4, 3]\npairs = []\nfor i in range(len(weights)):\n    for j in range(i + 1, len(weights)):\n        if weights[i] + weights[j] == 7:\n            pairs.append((weights[i], weights[j]))",
+      "options": [
+        "[(6, 1), (4, 3)]",
+        "[(6, 1), (1, 6), (4, 3), (3, 4)]",
+        "[(0, 1), (2, 3)]",
+        "[(6, 1), (6, 4), (6, 3), (4, 3)]"
       ],
       "answer": 0
     }

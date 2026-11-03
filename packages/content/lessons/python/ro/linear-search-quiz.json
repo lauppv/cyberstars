@@ -265,18 +265,6 @@
         {
           "L": "7, 3, 9, 1",
           "t": 1
-        },
-        {
-          "L": "12, 5, 12, 8",
-          "t": 8
-        },
-        {
-          "L": "6, 2, 6, 2",
-          "t": 2
-        },
-        {
-          "L": "30, 10, 20",
-          "t": 30
         }
       ],
       "mistakes": [
@@ -302,21 +290,6 @@
           "L": "9, 1, 7",
           "t": 2,
           "u": 9
-        },
-        {
-          "L": "3, 6, 9, 12",
-          "t": 9,
-          "u": 10
-        },
-        {
-          "L": "20, 40, 60",
-          "t": 50,
-          "u": 60
-        },
-        {
-          "L": "5, 5, 1, 2",
-          "t": 1,
-          "u": 3
         }
       ],
       "mistakes": [
@@ -339,18 +312,6 @@
         {
           "L": "\"Boris\", \"Cara\", \"Dmitri\"",
           "t": "Cara"
-        },
-        {
-          "L": "\"Rex\", \"Ana\", \"Ben\", \"Ana\"",
-          "t": "Ana"
-        },
-        {
-          "L": "\"Kent\", \"Mercedes\", \"Victor\"",
-          "t": "Victor"
-        },
-        {
-          "L": "\"Sonny\", \"Lance\", \"Tommy\", \"Cortez\", \"Phil\"",
-          "t": "Tommy"
         }
       ],
       "mistakes": [
@@ -374,18 +335,6 @@
         {
           "L": "8, 3, 6",
           "t": 6
-        },
-        {
-          "L": "2, 4, 6, 8, 10, 12",
-          "t": 12
-        },
-        {
-          "L": "11, 22, 33, 44",
-          "t": 33
-        },
-        {
-          "L": "6, 7, 6, 7, 6",
-          "t": 7
         }
       ],
       "mistakes": [
@@ -415,14 +364,6 @@
         {
           "L": "7, 4, 9, 12, 3",
           "m": 8
-        },
-        {
-          "L": "55, 60, 75, 80",
-          "m": 70
-        },
-        {
-          "L": "3, 8, 5, 9, 6",
-          "m": 4
         }
       ],
       "mistakes": [
@@ -449,14 +390,6 @@
         {
           "L": "9, 9, 4",
           "t": 9
-        },
-        {
-          "L": "8, 1, 8",
-          "t": 8
-        },
-        {
-          "L": "6, 0, 6, 0, 0",
-          "t": 0
         }
       ],
       "mistakes": [
@@ -483,14 +416,6 @@
         {
           "L": "2, 5, 8, 5, 1",
           "t": 5
-        },
-        {
-          "L": "3, 6, 9, 6",
-          "t": 6
-        },
-        {
-          "L": "0, 1, 0, 1, 0, 2",
-          "t": 1
         }
       ],
       "mistakes": [
@@ -514,12 +439,6 @@
         },
         {
           "t": "Tommy"
-        },
-        {
-          "t": "Cortez"
-        },
-        {
-          "t": "Dmitri"
         }
       ],
       "mistakes": [
@@ -722,6 +641,194 @@
         }
       ],
       "bug": ["            return i", "            return elemente[i]"]
+    },
+    {
+      "id": "ls-input-target",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\n{{v}} = [{{L}}]\nprint(cautare_liniara({{v}}, int(input())))",
+      "values": [
+        {
+          "v": "numere",
+          "L": "4, 8, 15, 16, 23, 42",
+          "a": 16,
+          "w1": 3,
+          "w2": 23,
+          "w3": 15
+        },
+        {
+          "v": "numere",
+          "L": "7, 2, 9, 5",
+          "a": 9,
+          "w1": 2,
+          "w2": 5,
+          "w3": 7
+        },
+        {
+          "v": "coduri",
+          "L": "10, 20, 30, 40",
+          "a": 10,
+          "w1": 0,
+          "w2": 20,
+          "w3": 1
+        },
+        {
+          "v": "scoruri",
+          "L": "5, 3, 8, 3",
+          "a": 3,
+          "w1": 1,
+          "w2": 8,
+          "w3": 5
+        },
+        {
+          "v": "niveluri",
+          "L": "12, 7, 19, 4, 25",
+          "a": 25,
+          "w1": 4,
+          "w2": 19,
+          "w3": 5
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "ls-error-range",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def {{f}}(elemente, tinta):\n    for i in range(len(elemente) + 1):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nprint({{f}}([{{L}}], {{t}}))",
+      "values": [
+        {
+          "f": "cautare_liniara",
+          "L": "4, 8, 15",
+          "t": 99
+        },
+        {
+          "f": "gaseste",
+          "L": "7, 2, 9, 5",
+          "t": 1
+        },
+        {
+          "f": "cauta",
+          "L": "10, 20",
+          "t": 30
+        }
+      ],
+      "wrong": ["KeyError", "ValueError", "TypeError"]
+    },
+    {
+      "id": "ls-error-type",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{v}} = [{{L}}]\n{{l}} = \"{{m}}\"\nfor s in {{v}}:\n    if s > {{l}}:\n        print(s)",
+      "values": [
+        {
+          "v": "scoruri",
+          "L": "65, 42, 95",
+          "l": "limita",
+          "m": 50
+        },
+        {
+          "v": "viteze",
+          "L": "90, 120, 60",
+          "l": "limita",
+          "m": 100
+        }
+      ],
+      "wrong": ["ValueError", "NameError", "IndexError"]
+    },
+    {
+      "id": "ls-holds-last",
+      "kind": "holds",
+      "text": "Ce conține `{{last}}` la final?",
+      "code": "{{v}} = [{{L}}]\n{{last}} = -1\nfor i in range(len({{v}})):\n    if {{v}}[i] == {{t}}:\n        {{last}} = i",
+      "values": [
+        {
+          "v": "echipaj",
+          "L": "\"Tommy\", \"Cara\", \"Tommy\", \"Boris\"",
+          "last": "ultimul",
+          "t": "\"Tommy\""
+        },
+        {
+          "v": "numere",
+          "L": "6, 8, 9, 8, 1",
+          "last": "ultimul",
+          "t": 8
+        },
+        {
+          "v": "citiri",
+          "L": "2, 8, 4, 8, 6, 8",
+          "last": "ultimul",
+          "t": 8
+        },
+        {
+          "v": "coduri",
+          "L": "\"A1\", \"B2\", \"A1\"",
+          "last": "ultimul",
+          "t": "\"A1\""
+        },
+        {
+          "v": "numere",
+          "L": "9, 9, 2",
+          "last": "ultimul",
+          "t": 9
+        }
+      ],
+      "variable": "{{last}}",
+      "mistakes": [
+        ["        {{last}} = i", "        {{last}} = i\n        break"],
+        ["{{last}} = i", "{{last}} = {{v}}[i]"],
+        ["== {{t}}", "!= {{t}}"]
+      ]
+    },
+    {
+      "id": "ls-holds-pos",
+      "kind": "holds",
+      "text": "Ce conține `{{pos}}` la final?",
+      "code": "{{w}} = \"{{s}}\"\n{{pos}} = -1\nfor i in range(len({{w}})):\n    if {{w}}[i] == \"{{ch}}\":\n        {{pos}} = i\n        break",
+      "values": [
+        {
+          "w": "cuvant",
+          "s": "banana",
+          "pos": "poz",
+          "ch": "n",
+          "CH": "N"
+        },
+        {
+          "w": "cuvant",
+          "s": "galaxie",
+          "pos": "poz",
+          "ch": "a",
+          "CH": "A"
+        },
+        {
+          "w": "cuvant",
+          "s": "mississippi",
+          "pos": "poz",
+          "ch": "s",
+          "CH": "S"
+        },
+        {
+          "w": "cuvant",
+          "s": "level",
+          "pos": "poz",
+          "ch": "e",
+          "CH": "E"
+        },
+        {
+          "w": "cuvant",
+          "s": "cosmos",
+          "pos": "poz",
+          "ch": "o",
+          "CH": "O"
+        }
+      ],
+      "variable": "{{pos}}",
+      "mistakes": [
+        ["\n        break", ""],
+        ["{{pos}} = i", "{{pos}} = {{w}}[i]"],
+        ["== \"{{ch}}\"", "== \"{{CH}}\""]
+      ]
     }
   ]
 }

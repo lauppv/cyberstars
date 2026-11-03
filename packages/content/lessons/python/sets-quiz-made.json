@@ -23,20 +23,6 @@
       "answer": 0
     },
     {
-      "id": "st-dedupe-3bf71e",
-      "text": "What does this print?",
-      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Mars\", \"Venus\"]\nprint(len(planets))\nprint(len(set(planets)))",
-      "options": ["5\n3", "5\n5", "3\n5", "3"],
-      "answer": 0
-    },
-    {
-      "id": "st-dedupe-eb25bd",
-      "text": "What does this print?",
-      "code": "rolls = [6, 2, 6, 6, 3, 2, 1, 6]\nprint(len(rolls))\nprint(len(set(rolls)))",
-      "options": ["8\n4", "8\n8", "4\n8", "4"],
-      "answer": 0
-    },
-    {
       "id": "st-add-3420ef",
       "text": "What does this print?",
       "code": "crew = {\"Tommy\", \"Lance\", \"Phil\"}\ncrew.add(\"Lance\")\ncrew.add(\"Ken\")\nprint(len(crew))",
@@ -58,20 +44,6 @@
       "answer": 0
     },
     {
-      "id": "st-add-f80ba5",
-      "text": "What does this print?",
-      "code": "badges = {\"gold\", \"silver\", \"bronze\"}\nbadges.add(\"silver\")\nbadges.add(\"platinum\")\nprint(len(badges))",
-      "options": ["4", "5", "3", "2"],
-      "answer": 0
-    },
-    {
-      "id": "st-add-b106db",
-      "text": "What does this print?",
-      "code": "codes = {\"A1\", \"B2\", \"C3\"}\ncodes.add(\"A1\")\ncodes.add(\"D4\")\nprint(len(codes))",
-      "options": ["4", "5", "3", "2"],
-      "answer": 0
-    },
-    {
       "id": "st-remove-838964",
       "text": "What does this print?",
       "code": "weapons = {\"bat\", \"pistol\", \"knife\"}\nweapons.remove(\"bat\")\nprint(\"bat\" in weapons)\nprint(len(weapons))",
@@ -90,20 +62,6 @@
       "text": "What does this print?",
       "code": "guests = {\"Ana\", \"Rex\"}\nguests.remove(\"Rex\")\nprint(\"Rex\" in guests)\nprint(len(guests))",
       "options": ["False\n1", "True\n2", "True\n1", "1\nFalse"],
-      "answer": 0
-    },
-    {
-      "id": "st-remove-084c97",
-      "text": "What does this print?",
-      "code": "targets = {\"A\", \"B\", \"C\", \"D\", \"E\"}\ntargets.remove(\"C\")\nprint(\"C\" in targets)\nprint(len(targets))",
-      "options": ["False\n4", "True\n5", "True\n4", "4\nFalse"],
-      "answer": 0
-    },
-    {
-      "id": "st-remove-4203a1",
-      "text": "What does this print?",
-      "code": "moons = {\"Io\", \"Europa\", \"Titan\"}\nmoons.remove(\"Titan\")\nprint(\"Titan\" in moons)\nprint(len(moons))",
-      "options": ["False\n2", "True\n3", "True\n2", "2\nFalse"],
       "answer": 0
     },
     {
@@ -143,18 +101,6 @@
       "answer": 0
     },
     {
-      "id": "st-check-2b29b0",
-      "text": "What does this print?",
-      "code": "sold = {\"tea\", \"cake\", \"jam\"}\nfor item in [\"cake\", \"milk\"]:\n    if item in sold:\n        print(f\"{item} is sold out\")\n    else:\n        print(f\"{item} is in stock\")",
-      "options": [
-        "cake is sold out\nmilk is in stock",
-        "cake is in stock\nmilk is sold out",
-        "cake is sold out",
-        "cake is in stock\nmilk is in stock"
-      ],
-      "answer": 0
-    },
-    {
       "id": "st-repeats-a2dd78",
       "text": "What does this print?",
       "code": "seen = set()\nrepeats = 0\nfor c in [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\", \"A1\"]:\n    if c in seen:\n        repeats = repeats + 1\n    else:\n        seen.add(c)\nprint(f\"Repeats: {repeats}\")",
@@ -190,18 +136,6 @@
       "text": "What does this print?",
       "code": "heard = set()\nechoes = 0\nfor w in [\"hey\", \"ho\", \"hey\", \"hey\"]:\n    if w in heard:\n        echoes = echoes + 1\n    else:\n        heard.add(w)\nprint(f\"Echoes: {echoes}\")",
       "options": ["Echoes: 2", "hey\nho\nhey\nhey\nEchoes: 0", "Echoes: 4", "Echoes: 1"],
-      "answer": 0
-    },
-    {
-      "id": "st-repeats-08bcbe",
-      "text": "What does this print?",
-      "code": "used = set()\nagain = 0\nfor n in [4, 8, 4, 15, 8, 4]:\n    if n in used:\n        again = again + 1\n    else:\n        used.add(n)\nprint(f\"Used again: {again}\")",
-      "options": [
-        "Used again: 3",
-        "4\n8\n4\n15\n8\n4\nUsed again: 0",
-        "Used again: 6",
-        "Used again: 1"
-      ],
       "answer": 0
     },
     {
@@ -249,18 +183,6 @@
         "Total: 4\nUnique: 4\nT4 missing",
         "Total: 4\nUnique: 3\nT4 detected",
         "Total: 3\nUnique: 3\nT4 missing"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "st-log-0b5d70",
-      "text": "What does this print?",
-      "code": "codes = [\"D4\", \"D4\", \"D4\"]\nprint(f\"Total: {len(codes)}\")\nunique = set(codes)\nprint(f\"Unique: {len(unique)}\")\nif \"D4\" in unique:\n    print(\"D4 detected\")\nelse:\n    print(\"D4 missing\")",
-      "options": [
-        "Total: 3\nUnique: 1\nD4 detected",
-        "Total: 3\nUnique: 3\nD4 detected",
-        "Total: 3\nUnique: 1\nD4 missing",
-        "Total: 1\nUnique: 1\nD4 detected"
       ],
       "answer": 0
     },
@@ -721,6 +643,77 @@
         "moons.add(\"Luna\")",
         "print(\"Titan\" in moons)"
       ],
+      "answer": 0
+    },
+    {
+      "id": "st-holds-firsts-573a43",
+      "text": "What is in `signals` at the end?",
+      "code": "seen = set()\nsignals = []\nfor code in [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\"]:\n    if code in seen:\n        continue\n    seen.add(code)\n    signals.append(code)",
+      "options": ["['A1', 'B2', 'C3']", "['A1', 'B2']", "['A1', 'B2', 'A1', 'C3', 'B2']", "['C3']"],
+      "answer": 0
+    },
+    {
+      "id": "st-holds-firsts-b6f394",
+      "text": "What is in `guests` at the end?",
+      "code": "seen = set()\nguests = []\nfor name in [\"Tommy\", \"Lance\", \"Tommy\", \"Ken\"]:\n    if name in seen:\n        continue\n    seen.add(name)\n    guests.append(name)",
+      "options": [
+        "['Tommy', 'Lance', 'Ken']",
+        "['Tommy', 'Lance']",
+        "['Tommy', 'Lance', 'Tommy', 'Ken']",
+        "['Ken']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "st-holds-firsts-1622d4",
+      "text": "What is in `levels` at the end?",
+      "code": "seen = set()\nlevels = []\nfor n in [3, 5, 3, 3, 8]:\n    if n in seen:\n        continue\n    seen.add(n)\n    levels.append(n)",
+      "options": ["[3, 5, 8]", "[3, 5]", "[3, 5, 3, 3, 8]", "[8]"],
+      "answer": 0
+    },
+    {
+      "id": "st-holds-common-e5b6d5",
+      "text": "What is in `both` at the end?",
+      "code": "crew = {\"Tommy\", \"Lance\", \"Phil\"}\nboth = []\nfor name in [\"Lance\", \"Ken\", \"Phil\", \"Mia\"]:\n    if name in crew:\n        both.append(name)",
+      "options": ["['Lance', 'Phil']", "['Ken', 'Mia']", "['Phil']", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "st-holds-common-d6d35c",
+      "text": "What is in `again` at the end?",
+      "code": "visited = {\"Mars\", \"Venus\"}\nagain = []\nfor planet in [\"Earth\", \"Venus\", \"Mars\"]:\n    if planet in visited:\n        again.append(planet)",
+      "options": ["['Venus', 'Mars']", "['Earth']", "['Mars']", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "st-holds-common-cc10a0",
+      "text": "What is in `lucky` at the end?",
+      "code": "winners = {3, 7, 9}\nlucky = []\nfor n in [1, 3, 5, 7]:\n    if n in winners:\n        lucky.append(n)",
+      "options": ["[3, 7]", "[1, 5]", "[7]", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "st-input-check-0e4025",
+      "text": "What did the user type?",
+      "code": "banned = {\"Sonny\", \"Diaz\"}\nname = input()\nif name in banned:\n    print(\"Access denied\")\nelse:\n    print(\"Welcome\")",
+      "output": "Access denied",
+      "options": ["Diaz", "diaz", "Tommy", "banned"],
+      "answer": 0
+    },
+    {
+      "id": "st-input-check-7d0ddd",
+      "text": "What did the user type?",
+      "code": "visited = {\"Mars\", \"Venus\"}\nplanet = input()\nif planet in visited:\n    print(\"Already visited\")\nelse:\n    print(\"New planet\")",
+      "output": "Already visited",
+      "options": ["Venus", "venus", "Earth", "visited"],
+      "answer": 0
+    },
+    {
+      "id": "st-input-check-ed9ebd",
+      "text": "What did the user type?",
+      "code": "used = {\"A1\", \"B2\"}\ncode = input()\nif code in used:\n    print(\"Code already used\")\nelse:\n    print(\"Code accepted\")",
+      "output": "Code already used",
+      "options": ["B2", "b2", "C3", "used"],
       "answer": 0
     }
   ]

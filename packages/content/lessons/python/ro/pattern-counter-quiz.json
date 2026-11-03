@@ -276,14 +276,6 @@
         {
           "v": "scoruri",
           "nums": "10, 7, 4, 9"
-        },
-        {
-          "v": "varste",
-          "nums": "21, 34, 18, 40, 15, 22"
-        },
-        {
-          "v": "niveluri",
-          "nums": "1, 3, 5, 2"
         }
       ],
       "mistakes": [
@@ -308,11 +300,6 @@
           "v": "temperaturi",
           "nums": "12, 30, 25, 30, 8",
           "t": 25
-        },
-        {
-          "v": "combustibil",
-          "nums": "5, 50, 20, 15, 35",
-          "t": 15
         }
       ],
       "mistakes": [
@@ -335,10 +322,6 @@
         {
           "v": "cod",
           "s": "NASA Baza 7"
-        },
-        {
-          "v": "nava",
-          "s": "USS Orbit"
         }
       ],
       "mistakes": [
@@ -359,9 +342,6 @@
         },
         {
           "s": "Agent 47"
-        },
-        {
-          "s": "X1Y22Z"
         }
       ],
       "mistakes": [
@@ -382,9 +362,6 @@
         },
         {
           "s": "Sala 101"
-        },
-        {
-          "s": "Poarta 3 la 9 PM"
         }
       ],
       "mistakes": [
@@ -407,14 +384,6 @@
         {
           "v": "niveluri",
           "nums": "50, 99, 100, 49, 130, 140, 160"
-        },
-        {
-          "v": "semnale",
-          "nums": "10, 50, 100, 100, 60, 70"
-        },
-        {
-          "v": "scanari",
-          "nums": "100, 20, 50, 150, 80, 35, 5"
         }
       ],
       "mistakes": [
@@ -441,12 +410,6 @@
           "a": 7,
           "b": 3,
           "c": 4
-        },
-        {
-          "v": "monede",
-          "a": 20,
-          "b": 10,
-          "c": 5
         }
       ],
       "mistakes": [
@@ -470,11 +433,6 @@
           "v": "nume",
           "words": "\"Tommy\", \"Lance\", \"Ken\", \"Cortez\"",
           "k": 5
-        },
-        {
-          "v": "planete",
-          "words": "\"Marte\", \"Venus\", \"Terra\", \"Jupiter\"",
-          "k": 4
         }
       ],
       "mistakes": [
@@ -826,6 +784,91 @@
         }
       ],
       "bug": ["mari += 1", "mari = 1"]
+    },
+    {
+      "id": "pc-holds-bands",
+      "kind": "holds",
+      "text": "Ce conține `{{hi}}` la final?",
+      "code": "{{lo}} = 0\n{{hi}} = 0\nfor r in [{{nums}}]:\n    if r < {{t}}:\n        {{lo}} += 1\n    else:\n        {{hi}} += 1",
+      "values": [
+        {
+          "lo": "jos",
+          "hi": "sus",
+          "nums": "42, 75, 100, 30, 88",
+          "t": 75
+        },
+        {
+          "lo": "jos",
+          "hi": "sus",
+          "nums": "10, 50, 60, 70",
+          "t": 50
+        },
+        {
+          "lo": "scurte",
+          "hi": "lungi",
+          "nums": "5, 9, 12, 7, 9, 15",
+          "t": 9
+        },
+        {
+          "lo": "reci",
+          "hi": "calde",
+          "nums": "100, 20, 45, 80",
+          "t": 45
+        }
+      ],
+      "variable": "{{hi}}",
+      "mistakes": [
+        ["{{hi}} += 1", "{{hi}} = 1"],
+        ["r < {{t}}", "r <= {{t}}"],
+        ["{{lo}} += 1", "{{hi}} += 1"]
+      ]
+    },
+    {
+      "id": "pc-holds-upper",
+      "kind": "holds",
+      "text": "Ce conține `{{c}}` la final?",
+      "code": "{{c}} = 0\nfor ch in \"{{s}}\":\n    if ch.isupper():\n        {{c}} += 1",
+      "values": [
+        {
+          "c": "majuscule",
+          "s": "Tommy Vercetti"
+        },
+        {
+          "c": "majuscule",
+          "s": "R2D2 Droid"
+        },
+        {
+          "c": "majuscule",
+          "s": "NASA Base"
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["ch.isupper()", "ch.isalpha()"],
+        ["{{c}} += 1", "{{c}} = 1"],
+        ["ch.isupper()", "ch.upper()"]
+      ]
+    },
+    {
+      "id": "pc-error-init",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "for n in [{{nums}}]:\n    if n % 2 == 0:\n        {{c}} += 1\nprint({{c}})",
+      "values": [
+        {
+          "nums": "3, 8, 12, 5",
+          "c": "numar"
+        },
+        {
+          "nums": "4, 7, 10",
+          "c": "pare"
+        },
+        {
+          "nums": "1, 2, 3",
+          "c": "total"
+        }
+      ],
+      "wrong": ["TypeError", "ValueError", "IndexError"]
     }
   ]
 }

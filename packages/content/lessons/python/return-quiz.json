@@ -297,20 +297,6 @@
           "x": 6,
           "y": 7,
           "r": "product"
-        },
-        {
-          "f": "divide",
-          "op": "/",
-          "x": 9,
-          "y": 3,
-          "r": "share"
-        },
-        {
-          "f": "power",
-          "op": "**",
-          "x": 2,
-          "y": 5,
-          "r": "big"
         }
       ],
       "mistakes": [
@@ -348,22 +334,6 @@
           "op": "-",
           "k": 1,
           "a": 5,
-          "m": 2
-        },
-        {
-          "f": "half",
-          "p": "n",
-          "op": "/",
-          "k": 2,
-          "a": 10,
-          "m": 3
-        },
-        {
-          "f": "square",
-          "p": "side",
-          "op": "**",
-          "k": 2,
-          "a": 3,
           "m": 2
         }
       ],
@@ -412,28 +382,6 @@
           "no": "Fail",
           "a": 50,
           "b": 49
-        },
-        {
-          "f": "speed_check",
-          "p": "speed",
-          "cmp": ">",
-          "ncmp": "<=",
-          "lim": 100,
-          "yes": "Too fast",
-          "no": "OK",
-          "a": 80,
-          "b": 120
-        },
-        {
-          "f": "can_vote",
-          "p": "age",
-          "cmp": ">=",
-          "ncmp": "<",
-          "lim": 18,
-          "yes": "Yes",
-          "no": "No",
-          "a": 18,
-          "b": 17
         }
       ],
       "mistakes": [
@@ -466,12 +414,6 @@
           "x": "Launch",
           "n": 10,
           "y": "Abort"
-        },
-        {
-          "f": "ping",
-          "x": "Ping",
-          "n": 0,
-          "y": "Pong"
         }
       ],
       "mistakes": [
@@ -510,14 +452,6 @@
           "k": 2,
           "a": 9,
           "r": "part"
-        },
-        {
-          "f": "triple",
-          "p": "t",
-          "op": "*",
-          "k": 3,
-          "a": 7,
-          "r": "out"
         }
       ],
       "mistakes": [
@@ -562,26 +496,6 @@
           "a": 80,
           "yes": "Shields up",
           "no": "Shields low"
-        },
-        {
-          "f": "can_enter",
-          "p": "level",
-          "cmp": ">=",
-          "ncmp": "<",
-          "lim": 3,
-          "a": 5,
-          "yes": "Door opens",
-          "no": "Access denied"
-        },
-        {
-          "f": "is_cold",
-          "p": "temp",
-          "cmp": "<",
-          "ncmp": ">=",
-          "lim": 10,
-          "a": 4,
-          "yes": "Wear a coat",
-          "no": "No coat needed"
         }
       ],
       "mistakes": [
@@ -1031,6 +945,117 @@
         }
       ],
       "bug": ["    return {{t}}", "    return {{p}}"]
+    },
+    {
+      "id": "rv-holds-kept",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} + {{k}}\n\n{{v}} = {{a}}\n{{f}}({{v}})\n{{v}} = {{f}}({{v}})",
+      "values": [
+        {
+          "f": "add_fuel",
+          "p": "fuel",
+          "k": 10,
+          "v": "tank",
+          "a": 30
+        },
+        {
+          "f": "level_up",
+          "p": "level",
+          "k": 1,
+          "v": "hero",
+          "a": 4
+        },
+        {
+          "f": "add_points",
+          "p": "points",
+          "k": 25,
+          "v": "score",
+          "a": 50
+        },
+        {
+          "f": "heal",
+          "p": "hp",
+          "k": 15,
+          "v": "health",
+          "a": 60
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["{{v}} = {{f}}({{v}})", "{{f}}({{v}})"],
+        ["{{f}}({{v}})\n{{v}} = {{f}}({{v}})", "{{v}} = {{f}}({{v}})\n{{v}} = {{f}}({{v}})"],
+        ["return {{p}} + {{k}}", "print({{p}} + {{k}})"]
+      ]
+    },
+    {
+      "id": "rv-holds-max",
+      "kind": "holds",
+      "text": "What is in `{{r}}` at the end?",
+      "code": "def {{f}}({{p}}):\n    {{b}} = {{p}}[0]\n    for n in {{p}}:\n        if n > {{b}}:\n            {{b}} = n\n    return {{b}}\n\n{{r}} = {{f}}([{{items}}])",
+      "values": [
+        {
+          "f": "highest",
+          "p": "numbers",
+          "b": "best",
+          "r": "top_score",
+          "items": "9, 15, 7"
+        },
+        {
+          "f": "highest",
+          "p": "numbers",
+          "b": "best",
+          "r": "top_speed",
+          "items": "60, 120, 40, 85"
+        },
+        {
+          "f": "highest",
+          "p": "numbers",
+          "b": "best",
+          "r": "top_level",
+          "items": "3, 8, 5, 1"
+        }
+      ],
+      "variable": "{{r}}",
+      "mistakes": [
+        ["            {{b}} = n\n    return {{b}}", "            {{b}} = n\n        return {{b}}"],
+        ["n > {{b}}", "n < {{b}}"],
+        ["return {{b}}", "print({{b}})"]
+      ]
+    },
+    {
+      "id": "rv-input-times",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} * {{k}}\n\nprint({{f}}(int(input())))",
+      "values": [
+        {
+          "f": "triple",
+          "p": "x",
+          "k": 3,
+          "n": 4,
+          "out": 12,
+          "add": 9
+        },
+        {
+          "f": "double",
+          "p": "x",
+          "k": 2,
+          "n": 7,
+          "out": 14,
+          "add": 12
+        },
+        {
+          "f": "times_ten",
+          "p": "x",
+          "k": 10,
+          "n": 5,
+          "out": 50,
+          "add": 40
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{out}}", "{{add}}", "{{k}}"]
     }
   ]
 }

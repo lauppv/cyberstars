@@ -310,15 +310,6 @@
         },
         {
           "w": "comet"
-        },
-        {
-          "w": "star"
-        },
-        {
-          "w": "moon"
-        },
-        {
-          "w": "Mars"
         }
       ],
       "mistakes": [
@@ -345,24 +336,6 @@
           "b": "thing",
           "c": "Dusty",
           "d": "Study"
-        },
-        {
-          "a": "star",
-          "b": "rats",
-          "c": "Below",
-          "d": "Elbow"
-        },
-        {
-          "a": "earth",
-          "b": "heart",
-          "c": "Lemon",
-          "d": "Melon"
-        },
-        {
-          "a": "arc",
-          "b": "car",
-          "c": "Inch",
-          "d": "Chin"
         }
       ],
       "mistakes": [
@@ -383,15 +356,6 @@
         },
         {
           "w": "balloon"
-        },
-        {
-          "w": "level"
-        },
-        {
-          "w": "moon"
-        },
-        {
-          "w": "coffee"
         }
       ],
       "mistakes": [
@@ -422,30 +386,6 @@
           "d": "mono",
           "e": "comet",
           "f": "comic"
-        },
-        {
-          "a": "earth",
-          "b": "hearts",
-          "c": "below",
-          "d": "elbow",
-          "e": "lemon",
-          "f": "lemur"
-        },
-        {
-          "a": "cat",
-          "b": "cats",
-          "c": "inch",
-          "d": "chin",
-          "e": "star",
-          "f": "stir"
-        },
-        {
-          "a": "melon",
-          "b": "melons",
-          "c": "heart",
-          "d": "earth",
-          "e": "night",
-          "f": "might"
         }
       ],
       "mistakes": [
@@ -466,15 +406,6 @@
         },
         {
           "words": "\"Night\", \"Thing\""
-        },
-        {
-          "words": "\"Star\", \"Rats\""
-        },
-        {
-          "words": "\"Earth\", \"Heart\""
-        },
-        {
-          "words": "\"Below\", \"Elbow\""
         }
       ],
       "mistakes": [
@@ -495,15 +426,6 @@
         },
         {
           "words": "\"star\", \"rats\", \"arts\", \"moon\""
-        },
-        {
-          "words": "\"earth\", \"heart\", \"comet\""
-        },
-        {
-          "words": "\"night\", \"sun\", \"thing\""
-        },
-        {
-          "words": "\"act\", \"tac\", \"cat\""
         }
       ],
       "mistakes": [
@@ -526,18 +448,6 @@
         {
           "t": "star",
           "words": "\"rats\", \"tsar\", \"stars\", \"start\""
-        },
-        {
-          "t": "night",
-          "words": "\"thing\", \"night\", \"nights\""
-        },
-        {
-          "t": "earth",
-          "words": "\"heart\", \"hater\", \"heard\", \"eart\""
-        },
-        {
-          "t": "melon",
-          "words": "\"lemon\", \"solo\", \"melon\", \"lemons\""
         }
       ],
       "mistakes": [
@@ -786,6 +696,310 @@
         }
       ],
       "bug": ["sorted(word) == sorted(target)", "sorted(word) == target"]
+    },
+    {
+      "id": "an-holds-key",
+      "kind": "holds",
+      "text": "What is in `{{k}}` at the end?",
+      "code": "{{w}} = \"{{s}}\"\n{{k}} = \"\".join(sorted({{w}}.lower()))",
+      "values": [
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "s": "Listen"
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "s": "Silent"
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "s": "Orbit"
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "s": "Tommy"
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "s": "Mars"
+        }
+      ],
+      "variable": "{{k}}",
+      "mistakes": [
+        ["\"\".join(sorted({{w}}.lower()))", "sorted({{w}}.lower())"],
+        ["{{w}}.lower()", "{{w}}"],
+        ["\"\".join", "\" \".join"]
+      ]
+    },
+    {
+      "id": "an-holds-groups",
+      "kind": "holds",
+      "text": "What is in `{{g}}` at the end?",
+      "code": "{{g}} = {}\nfor {{w}} in [{{words}}]:\n    {{k}} = \"\".join(sorted({{w}}))\n    if {{k}} in {{g}}:\n        {{g}}[{{k}}].append({{w}})\n    else:\n        {{g}}[{{k}}] = [{{w}}]",
+      "values": [
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "words": "\"listen\", \"silent\", \"enlist\", \"rat\""
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "words": "\"tar\", \"rat\", \"art\""
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "words": "\"dusty\", \"study\", \"night\", \"thing\""
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "words": "\"evil\", \"vile\", \"live\", \"veil\""
+        }
+      ],
+      "variable": "{{g}}",
+      "mistakes": [
+        ["{{g}}[{{k}}].append({{w}})", "{{g}}[{{k}}] = [{{w}}]"],
+        ["sorted({{w}})", "{{w}}"],
+        ["{{g}}[{{k}}].append({{w}})", "{{g}}[{{k}}].append({{k}})"]
+      ]
+    },
+    {
+      "id": "an-input-check",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{a}} = input()\nprint(sorted({{a}}.lower()) == sorted(\"{{t}}\"))",
+      "values": [
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "t": "listen",
+          "ans": "Silent",
+          "w1": "Silence",
+          "w2": "Listed",
+          "w3": "lists"
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "t": "night",
+          "ans": "Thing",
+          "w1": "Things",
+          "w2": "Nights",
+          "w3": "Think"
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "t": "race",
+          "ans": "Cars",
+          "w1": "Care",
+          "w2": "acre",
+          "w3": "RACE"
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "t": "dusty",
+          "ans": "Dust",
+          "w1": "Study",
+          "w2": "stUdy",
+          "w3": "tydus"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "an-error-int",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{v}} = {{n}}\nprint(\"\".join(sorted({{v}})))",
+      "values": [
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "n": 12345
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "n": 987
+        }
+      ],
+      "wrong": ["ValueError", "IndexError", "NameError"]
+    },
+    {
+      "id": "an-error-index",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{a}} = \"{{x}}\"\n{{b}} = \"{{y}}\"\n{{same}} = True\nfor i in range(len({{a}})):\n    if sorted({{a}})[i] != sorted({{b}})[i]:\n        {{same}} = False\nprint({{same}})",
+      "values": [
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "first",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "b": "second",
+          "x": "listen",
+          "y": "silen"
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "first",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "b": "second",
+          "x": "race",
+          "y": "car"
+        }
+      ],
+      "wrong": ["KeyError", "ValueError", "TypeError"]
+    },
+    {
+      "id": "an-holds-count",
+      "kind": "holds",
+      "text": "What is in `{{c}}` at the end?",
+      "code": "{{c}} = 0\nfor {{w}} in [{{words}}]:\n    if sorted({{w}}) == sorted(\"{{t}}\"):\n        {{c}} += 1",
+      "values": [
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "t": "race",
+          "words": "\"race\", \"care\", \"race\", \"acre\", \"cars\""
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "t": "listen",
+          "words": "\"silent\", \"listen\", \"enlist\", \"listen\", \"tinsel\""
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "t": "tar",
+          "words": "\"rat\", \"tar\", \"art\", \"tar\", \"car\""
+        },
+        {
+          "w": "word",
+          "k": "key",
+          "g": "groups",
+          "a": "guess",
+          "v": "code",
+          "c": "count",
+          "same": "same",
+          "t": "evil",
+          "words": "\"vile\", \"evil\", \"live\", \"evil\", \"veil\", \"even\""
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["sorted({{w}}) == sorted(\"{{t}}\")", "{{w}} == \"{{t}}\""],
+        ["sorted(\"{{t}}\")", "\"{{t}}\""],
+        ["{{c}} += 1", "{{c}} = 1"]
+      ]
     }
   ]
 }

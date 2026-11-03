@@ -288,34 +288,6 @@
           "r2": "8, 3, 6",
           "i": 1,
           "j": 2
-        },
-        {
-          "r0": "0, 1, 0",
-          "r1": "1, 2, 1",
-          "r2": "5, 4, 3",
-          "i": 2,
-          "j": 1
-        },
-        {
-          "r0": "5, 10, 15",
-          "r1": "20, 25, 30",
-          "r2": "35, 40, 45",
-          "i": 0,
-          "j": 1
-        },
-        {
-          "r0": "9, 8, 7",
-          "r1": "6, 5, 4",
-          "r2": "3, 2, 1",
-          "i": 1,
-          "j": 0
-        },
-        {
-          "r0": "12, 4, 6",
-          "r1": "1, 7, 11",
-          "r2": "2, 10, 13",
-          "i": 2,
-          "j": 1
         }
       ],
       "mistakes": [
@@ -342,18 +314,6 @@
           "r0": "3, 1, 0",
           "r1": "0, 3, 3",
           "r2": "2, 0, 1"
-        },
-        {
-          "v": 2,
-          "r0": "0, 0, 1",
-          "r1": "2, 1, 0",
-          "r2": "0, 1, 0"
-        },
-        {
-          "v": 1,
-          "r0": "0, 1, 2, 1",
-          "r1": "1, 1, 0, 0",
-          "r2": "2, 1, 1, 0"
         }
       ],
       "mistakes": [
@@ -377,14 +337,6 @@
         {
           "r0": "3, 3, 1",
           "r1": "0, 1, 2"
-        },
-        {
-          "r0": "1, 0, 0, 1",
-          "r1": "0, 2, 1, 0"
-        },
-        {
-          "r0": "5, 2, 5",
-          "r1": "9, 2, 4"
         }
       ],
       "mistakes": [
@@ -407,18 +359,6 @@
         {
           "list": "2, 5, 8, 12, 16, 23, 38",
           "t": 5
-        },
-        {
-          "list": "4, 8, 15, 16, 23, 42",
-          "t": 42
-        },
-        {
-          "list": "10, 20, 30, 40, 50",
-          "t": 10
-        },
-        {
-          "list": "3, 6, 9, 12, 15, 18, 21, 24",
-          "t": 18
         }
       ],
       "mistakes": [
@@ -441,18 +381,6 @@
         {
           "list": "2, 4, 6, 8, 10, 12, 14",
           "t": 4
-        },
-        {
-          "list": "5, 10, 15, 20, 25, 30, 35, 40",
-          "t": 35
-        },
-        {
-          "list": "1, 2, 3, 4, 5, 6, 7, 8, 9",
-          "t": 8
-        },
-        {
-          "list": "11, 22, 33, 44, 55, 66, 77",
-          "t": 20
         }
       ],
       "mistakes": [
@@ -473,12 +401,6 @@
         },
         {
           "n": 5
-        },
-        {
-          "n": 6
-        },
-        {
-          "n": 4
         }
       ],
       "mistakes": [
@@ -499,12 +421,6 @@
         },
         {
           "list": "10, 20, 30, 40"
-        },
-        {
-          "list": "7, 1, 4, 6"
-        },
-        {
-          "list": "8, 9"
         }
       ],
       "mistakes": [
@@ -527,14 +443,6 @@
         {
           "b": 3,
           "n": 4
-        },
-        {
-          "b": 5,
-          "n": 3
-        },
-        {
-          "b": 10,
-          "n": 4
         }
       ],
       "mistakes": [
@@ -555,12 +463,6 @@
         },
         {
           "codes": "999, 5"
-        },
-        {
-          "codes": "4070, 31"
-        },
-        {
-          "codes": "56, 702"
         }
       ],
       "mistakes": [
@@ -768,9 +670,6 @@
         },
         {
           "w": "orbit"
-        },
-        {
-          "w": "Mars"
         }
       ],
       "mistakes": [
@@ -778,6 +677,182 @@
         ["        return s", "        return \"\""],
         ["+ s[0]", "+ s[1]"],
         ["reverse_str(s[1:]) + s[0]", "s[1:] + s[0]"]
+      ]
+    },
+    {
+      "id": "rr-holds-count",
+      "kind": "holds",
+      "text": "What is in `beacons` at the end?",
+      "code": "def count_beacons(sector):\n    total = 0\n    for row in sector:\n        for cell in row:\n            if cell == {{v}}:\n                total += 1\n    return total\n\nbeacons = count_beacons([{{rows}}])",
+      "values": [
+        {
+          "rows": "[1, 0, 1], [1, 1, 1], [0, 0, 1]",
+          "v": 1
+        },
+        {
+          "rows": "[7, 7, 7], [3, 7, 1], [1, 1, 7]",
+          "v": 7
+        },
+        {
+          "rows": "[2, 5, 5], [5, 5, 5], [9, 2, 1]",
+          "v": 5
+        },
+        {
+          "rows": "[0, 0, 0], [0, 1, 0]",
+          "v": 0
+        },
+        {
+          "rows": "[3, 3, 3], [3, 1, 1]",
+          "v": 3
+        }
+      ],
+      "variable": "beacons",
+      "mistakes": [
+        ["cell == {{v}}", "cell != {{v}}"],
+        ["    total = 0\n    for row in sector:", "    for row in sector:\n        total = 0"],
+        [
+          "                total += 1\n    return total",
+          "                total += 1\n        return total"
+        ]
+      ]
+    },
+    {
+      "id": "rr-holds-sum",
+      "kind": "holds",
+      "text": "What is in `total` at the end?",
+      "code": "def sum_list(numbers):\n    if len(numbers) == 0:\n        return 0\n    return numbers[0] + sum_list(numbers[1:])\n\ntotal = sum_list([{{list}}])",
+      "values": [
+        {
+          "list": "3, 5, 2"
+        },
+        {
+          "list": "10, 20, 30, 40"
+        },
+        {
+          "list": "7, 1, 4, 2, 6"
+        },
+        {
+          "list": "9, 9"
+        },
+        {
+          "list": "1, 1, 1, 1, 1, 1"
+        }
+      ],
+      "variable": "total",
+      "mistakes": [
+        ["sum_list(numbers[1:])", "sum_list(numbers[2:])"],
+        ["        return 0", "        return 1"],
+        ["return numbers[0] + sum_list(numbers[1:])", "return sum_list(numbers[1:])"]
+      ]
+    },
+    {
+      "id": "rr-input-power",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "def power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nprint(power({{b}}, int(input())))",
+      "values": [
+        {
+          "b": 2,
+          "a": 5,
+          "w1": 6,
+          "w2": 4,
+          "w3": 2,
+          "w4": 10
+        },
+        {
+          "b": 3,
+          "a": 4,
+          "w1": 5,
+          "w2": 3,
+          "w3": 12,
+          "w4": 2
+        },
+        {
+          "b": 10,
+          "a": 3,
+          "w1": 4,
+          "w2": 2,
+          "w3": 10,
+          "w4": 30
+        },
+        {
+          "b": 5,
+          "a": 2,
+          "w1": 3,
+          "w2": 1,
+          "w3": 5,
+          "w4": 10
+        },
+        {
+          "b": 4,
+          "a": 3,
+          "w1": 4,
+          "w2": 2,
+          "w3": 12,
+          "w4": 5
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}", "{{w4}}"]
+    },
+    {
+      "id": "rr-error-number",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def reverse_str(s):\n    if len(s) <= 1:\n        return s\n    return reverse_str(s[1:]) + s[0]\n\nprint(reverse_str({{n}}))",
+      "values": [
+        {
+          "n": 12345
+        },
+        {
+          "n": 2026
+        }
+      ],
+      "wrong": ["ValueError", "IndexError", "NameError"]
+    },
+    {
+      "id": "rr-error-grid",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "grid = [{{rows}}]\nprint(grid[{{i}}][{{j}}])",
+      "values": [
+        {
+          "rows": "[4, 7, 1], [2, 9, 5]",
+          "i": 2,
+          "j": 0
+        },
+        {
+          "rows": "[1, 2], [3, 4], [5, 6]",
+          "i": 1,
+          "j": 2
+        }
+      ],
+      "wrong": ["KeyError", "TypeError", "ValueError"]
+    },
+    {
+      "id": "rr-holds-flat",
+      "kind": "holds",
+      "text": "What is in `flat` at the end?",
+      "code": "grid = [{{rows}}]\nflat = []\nfor row in grid:\n    for cell in row:\n        flat.append(cell)",
+      "values": [
+        {
+          "rows": "[4, 7, 1], [2, 9, 5]"
+        },
+        {
+          "rows": "[1, 2], [3, 4], [5, 6]"
+        },
+        {
+          "rows": "[8, 1], [3], [6, 2]"
+        },
+        {
+          "rows": "[5, 5], [1, 2]"
+        }
+      ],
+      "variable": "flat",
+      "mistakes": [
+        ["for cell in row", "for cell in grid[0]"],
+        ["flat = []\nfor row in grid:", "for row in grid:\n    flat = []"],
+        ["flat.append(cell)", "flat = [cell]"]
       ]
     }
   ]

@@ -308,20 +308,6 @@
           "o": "tripled",
           "x": "p",
           "k": 3
-        },
-        {
-          "v": "scores",
-          "data": "6, 9",
-          "o": "points",
-          "x": "s",
-          "k": 3
-        },
-        {
-          "v": "levels",
-          "data": "2, 7",
-          "o": "boosted",
-          "x": "l",
-          "k": 5
         }
       ],
       "mistakes": [
@@ -350,13 +336,6 @@
           "o": "fast",
           "x": "s",
           "lim": 100
-        },
-        {
-          "v": "ages",
-          "data": "12, 18, 25, 17",
-          "o": "adults",
-          "x": "a",
-          "lim": 17
         }
       ],
       "mistakes": [
@@ -383,12 +362,6 @@
           "data": "\"rome\", \"Oslo\", \"riga\"",
           "o": "signs",
           "x": "c"
-        },
-        {
-          "v": "planets",
-          "data": "\"mars\", \"Venus\", \"earth\"",
-          "o": "labels",
-          "x": "p"
         }
       ],
       "mistakes": [
@@ -419,14 +392,6 @@
           "x": "s",
           "r": 1,
           "w": 0
-        },
-        {
-          "v": "ids",
-          "data": "21, 14, 5, 30",
-          "o": "evens",
-          "x": "i",
-          "r": 0,
-          "w": 1
         }
       ],
       "mistakes": [
@@ -531,13 +496,6 @@
           "o": "adults",
           "x": "a",
           "lim": 18
-        },
-        {
-          "v": "speeds",
-          "data": "90, 120, 100, 80",
-          "o": "fast",
-          "x": "s",
-          "lim": 100
         }
       ],
       "mistakes": [
@@ -1029,6 +987,73 @@
         }
       ],
       "bug": ["for {{x}} in {{v}}]", "for {{x}} in {{h}}]"]
+    },
+    {
+      "id": "lc-holds-squares",
+      "kind": "holds",
+      "text": "What is in `{{o}}` at the end?",
+      "code": "{{o}} = [{{x}} * {{x}} for {{x}} in range({{a}}, {{b}})]",
+      "values": [
+        {
+          "o": "squares",
+          "x": "n",
+          "a": 1,
+          "b": 5
+        },
+        {
+          "o": "squares",
+          "x": "n",
+          "a": 2,
+          "b": 6
+        },
+        {
+          "o": "areas",
+          "x": "side",
+          "a": 3,
+          "b": 6
+        }
+      ],
+      "variable": "{{o}}",
+      "mistakes": [
+        ["{{x}} * {{x}} for", "{{x}} * 2 for"],
+        ["range({{a}}, {{b}})", "range({{b}})"],
+        ["[{{x}} * {{x}} for", "[{{x}} for"]
+      ]
+    },
+    {
+      "id": "lc-holds-short",
+      "kind": "holds",
+      "text": "What is in `{{o}}` at the end?",
+      "code": "{{v}} = [{{items}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if len({{x}}) <= {{n}}]",
+      "values": [
+        {
+          "v": "words",
+          "items": "\"sun\", \"moon\", \"planet\", \"star\"",
+          "o": "short",
+          "x": "w",
+          "n": 4
+        },
+        {
+          "v": "names",
+          "items": "\"Tommy\", \"Ken\", \"Mia\"",
+          "o": "short",
+          "x": "n",
+          "n": 3
+        },
+        {
+          "v": "worlds",
+          "items": "\"Moon\", \"Venus\", \"Earth\", \"Io\"",
+          "o": "small",
+          "x": "w",
+          "n": 4
+        }
+      ],
+      "variable": "{{o}}",
+      "mistakes": [
+        ["<= {{n}}", "< {{n}}"],
+        ["len({{x}})", "len({{v}})"],
+        ["[{{x}} for", "[len({{x}}) for"]
+      ]
     }
   ]
 }

@@ -292,15 +292,6 @@
         },
         {
           "w": "orbita"
-        },
-        {
-          "w": "radar"
-        },
-        {
-          "w": "Ana"
-        },
-        {
-          "w": "sas"
         }
       ],
       "mistakes": [
@@ -325,12 +316,6 @@
         },
         {
           "words": "\"cojoc\", \"cuib\", \"civic\""
-        },
-        {
-          "words": "\"rotitor\", \"rapir\", \"potop\""
-        },
-        {
-          "words": "\"elevele\", \"mars\", \"sas\""
         }
       ],
       "mistakes": [
@@ -358,12 +343,6 @@
         },
         {
           "w": "rotitor"
-        },
-        {
-          "w": "galaxie"
-        },
-        {
-          "w": "cometa"
         }
       ],
       "mistakes": [
@@ -387,12 +366,6 @@
         },
         {
           "t": "Salut Lume"
-        },
-        {
-          "t": "Ana are mere"
-        },
-        {
-          "t": "Rara bara"
         }
       ],
       "mistakes": [
@@ -419,12 +392,6 @@
         },
         {
           "codes": "\"sas\", \"rotor\", \"racheta\", \"potop\""
-        },
-        {
-          "codes": "\"solar\", \"rotor\", \"ele\", \"cometa\", \"elevele\""
-        },
-        {
-          "codes": "\"aerisirea\", \"Marte\", \"cojoc\""
         }
       ],
       "mistakes": [
@@ -448,12 +415,6 @@
         },
         {
           "w": "aerisirea"
-        },
-        {
-          "w": "elevele"
-        },
-        {
-          "w": "rotor"
         }
       ],
       "mistakes": [
@@ -678,6 +639,129 @@
         }
       ],
       "bug": ["    return True", "        return True"]
+    },
+    {
+      "id": "pal-holds-clean",
+      "kind": "holds",
+      "text": "Ce conține `{{c}}` la final?",
+      "code": "{{t}} = \"{{s}}\"\n{{c}} = \"\"\nfor {{ch}} in {{t}}:\n    if {{ch}}.isalpha():\n        {{c}} += {{ch}}.lower()",
+      "values": [
+        {
+          "t": "text",
+          "c": "curatat",
+          "ch": "caracter",
+          "s": "Ele fac cafele"
+        },
+        {
+          "t": "text",
+          "c": "curatat",
+          "ch": "caracter",
+          "s": "Ion a luat luana noi"
+        },
+        {
+          "t": "text",
+          "c": "curatat",
+          "ch": "caracter",
+          "s": "Salut Lume"
+        },
+        {
+          "t": "text",
+          "c": "curatat",
+          "ch": "caracter",
+          "s": "A Toyota"
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["{{ch}}.lower()", "{{ch}}"],
+        ["if {{ch}}.isalpha()", "if not {{ch}}.isalpha()"],
+        ["{{c}} += {{ch}}.lower()", "{{c}} = {{ch}}.lower()"]
+      ]
+    },
+    {
+      "id": "pal-holds-pairs",
+      "kind": "holds",
+      "text": "Ce conține `{{bad}}` la final?",
+      "code": "{{w}} = \"{{s}}\"\n{{bad}} = 0\nfor i in range(len({{w}}) // 2):\n    if {{w}}[i] != {{w}}[len({{w}}) - 1 - i]:\n        {{bad}} += 1",
+      "values": [
+        {
+          "w": "cuvant",
+          "bad": "nepotriviri",
+          "s": "racheta"
+        },
+        {
+          "w": "cuvant",
+          "bad": "nepotriviri",
+          "s": "radio"
+        },
+        {
+          "w": "cuvant",
+          "bad": "nepotriviri",
+          "s": "abcd"
+        },
+        {
+          "w": "cuvant",
+          "bad": "nepotriviri",
+          "s": "planeta"
+        },
+        {
+          "w": "cuvant",
+          "bad": "nepotriviri",
+          "s": "Marte"
+        }
+      ],
+      "variable": "{{bad}}",
+      "mistakes": [
+        ["range(len({{w}}) // 2)", "range(len({{w}}))"],
+        ["{{w}}[i] != {{w}}", "{{w}}[i] == {{w}}"],
+        ["{{bad}} += 1", "{{bad}} = 1"]
+      ]
+    },
+    {
+      "id": "pal-input-check",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{w}} = input()\nif {{w}} == {{w}}[::-1]:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "yes": "Palindrom!",
+          "no": "Nu e palindrom",
+          "w": "cuvant",
+          "a": "capac",
+          "w1": "Capac",
+          "w2": "capace",
+          "w3": "capat"
+        },
+        {
+          "w": "nume",
+          "yes": "La fel invers",
+          "no": "Altfel invers",
+          "a": "radar",
+          "w1": "Radar",
+          "w2": "radare",
+          "w3": "rada"
+        },
+        {
+          "w": "cod",
+          "yes": "Cuvant oglinda",
+          "no": "Nu e cuvant oglinda",
+          "a": "ele",
+          "w1": "Ele",
+          "w2": "elev",
+          "w3": "ea"
+        },
+        {
+          "yes": "Palindrom!",
+          "no": "Nu e palindrom",
+          "w": "cuvant",
+          "a": "racheta",
+          "w1": "capac",
+          "w2": "radar",
+          "w3": "ele"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
     }
   ]
 }

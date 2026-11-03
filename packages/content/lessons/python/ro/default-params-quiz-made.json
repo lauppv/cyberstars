@@ -38,30 +38,6 @@
       "answer": 0
     },
     {
-      "id": "dp-word-868ab1",
-      "text": "Ce afișează?",
-      "code": "def vopseste(masina, culoare=\"rosu\"):\n    print(culoare, masina)\n\nvopseste(\"Infernus\")\nvopseste(\"Sabre\", \"albastru\")",
-      "options": [
-        "rosu Infernus\nalbastru Sabre",
-        "rosu Infernus\nSabre albastru",
-        "Infernus rosu\nSabre albastru",
-        "albastru Infernus\nalbastru Sabre"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "dp-word-2cb99b",
-      "text": "Ce afișează?",
-      "code": "def aterizeaza(planeta, nava=\"Nova\"):\n    print(nava, planeta)\n\naterizeaza(\"Marte\")\naterizeaza(\"Titan\", \"Orion\")",
-      "options": [
-        "Nova Marte\nOrion Titan",
-        "Nova Marte\nTitan Orion",
-        "Marte Nova\nTitan Orion",
-        "Orion Marte\nOrion Titan"
-      ],
-      "answer": 0
-    },
-    {
       "id": "dp-num-d2471b",
       "text": "Ce afișează?",
       "code": "def putere(baza, exp=2):\n    return baza ** exp\n\nprint(putere(5))\nprint(putere(5, 3))",
@@ -80,20 +56,6 @@
       "text": "Ce afișează?",
       "code": "def ori(n, k=10):\n    return n * k\n\nprint(ori(4))\nprint(ori(4, 3))",
       "options": ["40\n12", "12\n12", "40\n30", "12"],
-      "answer": 0
-    },
-    {
-      "id": "dp-num-536904",
-      "text": "Ce afișează?",
-      "code": "def reducere(pret, minus=10):\n    return pret - minus\n\nprint(reducere(50))\nprint(reducere(50, 20))",
-      "options": ["40\n30", "30\n30", "40\n10", "-40\n-30"],
-      "answer": 0
-    },
-    {
-      "id": "dp-num-f15455",
-      "text": "Ce afișează?",
-      "code": "def urca_nivel(nivel, pas=1):\n    return nivel + pas\n\nprint(urca_nivel(5))\nprint(urca_nivel(5, 3))",
-      "options": ["6\n8", "8\n8", "6\n4", "8"],
       "answer": 0
     },
     {
@@ -133,18 +95,6 @@
       "answer": 0
     },
     {
-      "id": "dp-keyword-cd29aa",
-      "text": "Ce afișează?",
-      "code": "def vopseste(masina, culoare=\"rosu\", finisaj=\"mat\"):\n    print(f\"{masina} vopsita {culoare} ({finisaj})\")\n\nvopseste(\"Infernus\", finisaj=\"lucios\")",
-      "options": [
-        "Infernus vopsita rosu (lucios)",
-        "Infernus vopsita lucios (mat)",
-        "Infernus vopsita rosu (rosu)",
-        "{masina} vopsita {culoare} ({finisaj})"
-      ],
-      "answer": 0
-    },
-    {
       "id": "dp-later-687a5e",
       "text": "Ce afișează?",
       "code": "def porneste(nivel=1):\n    print(\"Nivel\", nivel)\n\nporneste()\nporneste(3)\nporneste()",
@@ -177,18 +127,6 @@
         "Viteza 50\nViteza 120\nViteza 120",
         "Viteza 50\nViteza 50\nViteza 50",
         "Viteza 120\nViteza 120\nViteza 120"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "dp-later-50d18d",
-      "text": "Ce afișează?",
-      "code": "def joc_nou(vieti=3):\n    print(\"Vieti\", vieti)\n\njoc_nou()\njoc_nou(1)\njoc_nou()",
-      "options": [
-        "Vieti 3\nVieti 1\nVieti 3",
-        "Vieti 3\nVieti 1\nVieti 1",
-        "Vieti 3\nVieti 3\nVieti 3",
-        "Vieti 1\nVieti 1\nVieti 1"
       ],
       "answer": 0
     },
@@ -760,6 +698,48 @@
         "return vieti - lovituri",
         "def pierde_vieti(vieti, lovituri=1):"
       ],
+      "answer": 0
+    },
+    {
+      "id": "dp-error-order-538ef2",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def porneste(nivel=1, vieti):\n    print(nivel, vieti)\n\nporneste(2, 3)",
+      "options": ["SyntaxError", "TypeError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "dp-error-order-7da409",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def andocheaza(hangar=\"A1\", nava):\n    print(hangar, nava)\n\nandocheaza(\"B2\", \"Nova\")",
+      "options": ["SyntaxError", "TypeError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "dp-error-missing-1bb9ee",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def adauga_bonus(scor, bonus=10):\n    return scor + bonus\n\nprint(adauga_bonus())",
+      "options": ["TypeError", "SyntaxError", "NameError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "dp-error-missing-ca2774",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def alimenteaza(combustibil, extra=5):\n    return combustibil + extra\n\nprint(alimenteaza())",
+      "options": ["TypeError", "SyntaxError", "NameError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "dp-holds-label-852856",
+      "text": "Ce conține `panou` la final?",
+      "code": "def eticheta(text, semn=\"!\"):\n    return text + semn\n\npanou = eticheta(\"Hai\")\npanou = eticheta(panou, \"?\")",
+      "options": ["'Hai!?'", "'Hai!'", "'Hai?'", "'?!Hai'"],
+      "answer": 0
+    },
+    {
+      "id": "dp-holds-label-a8b822",
+      "text": "Ce conține `nota` la final?",
+      "code": "def marcaj(nume, final=\".\"):\n    return nume + final\n\nnota = marcaj(\"Ana\")\nnota = marcaj(nota, \"!\")",
+      "options": ["'Ana.!'", "'Ana.'", "'Ana!'", "'!.Ana'"],
       "answer": 0
     }
   ]

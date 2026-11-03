@@ -31,6 +31,11 @@ const QUIZ_PASS = 6;
 export const QUIZ_OUT = QUIZ_LENGTH - QUIZ_PASS + 1;
 export const QUIZ_OPTIONS = 4;
 
+// A test takes at most QUIZ_SAME_TEXT questions with the same text, when its
+// planet's pool lets it. So a pool holds no text on more than that share of
+// it, 30 of 100, and every test of a round can keep the limit.
+export const QUIZ_SAME_TEXT = 3;
+
 // A failed test opens the next try this much later. A test left untouched this
 // long is dropped, so it never holds the planet.
 export const QUIZ_RETRY_MS = 5 * 60 * 1000;

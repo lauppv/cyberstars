@@ -301,13 +301,6 @@
           "word": "Hi",
           "a": "Tommy",
           "b": "Mia"
-        },
-        {
-          "f": "wave",
-          "p": "pilot",
-          "word": "Good luck",
-          "a": "Nova",
-          "b": "Rex"
         }
       ],
       "mistakes": [
@@ -358,15 +351,6 @@
           "end": "stars",
           "a": "Orion",
           "n": 4
-        },
-        {
-          "f": "crew_age",
-          "p": "pilot",
-          "q": "age",
-          "mid": "is",
-          "end": "years old",
-          "a": "Lance",
-          "n": 35
         }
       ],
       "mistakes": [
@@ -437,12 +421,6 @@
           "p": "waves",
           "word": "Wave",
           "n": 3
-        },
-        {
-          "f": "check_doors",
-          "p": "doors",
-          "word": "Door",
-          "n": 5
         }
       ],
       "mistakes": [
@@ -492,15 +470,6 @@
           "off": "is open",
           "who": "Bridge",
           "b": "False"
-        },
-        {
-          "f": "engine",
-          "p": "ship",
-          "s": "ready",
-          "on": "is ready",
-          "off": "needs repairs",
-          "who": "Nova",
-          "b": "True"
         }
       ],
       "mistakes": [
@@ -978,6 +947,54 @@
         }
       ],
       "bug": ["{{f}}(\"{{c}}\", {{m}})", "{{f}}(\"{{c}}\")"]
+    },
+    {
+      "id": "fn-input-greet",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "def {{f}}({{p}}):\n    print(f\"{{word}}, {{{p}}}!\")\n\n{{f}}(input())",
+      "values": [
+        {
+          "f": "greet",
+          "p": "name",
+          "word": "Hello",
+          "a": "Ana"
+        },
+        {
+          "f": "cheer",
+          "p": "player",
+          "word": "Well done",
+          "a": "Ben"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{word}}, {{a}}!", "{{p}}", "{{a}}!"]
+    },
+    {
+      "id": "fn-input-laps",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "def {{f}}({{p}}):\n    for i in range(1, {{p}} + 1):\n        print(f\"{{word}} {i}\")\n\n{{f}}(int(input()))",
+      "values": [
+        {
+          "f": "count_laps",
+          "p": "laps",
+          "word": "Lap",
+          "n": 3,
+          "up": 4,
+          "down": 2
+        },
+        {
+          "f": "show_levels",
+          "p": "levels",
+          "word": "Level",
+          "n": 4,
+          "up": 5,
+          "down": 3
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{up}}", "{{down}}", "{{word}} {{n}}"]
     }
   ]
 }

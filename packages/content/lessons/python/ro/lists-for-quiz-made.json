@@ -26,30 +26,6 @@
       "answer": 0
     },
     {
-      "id": "lf-each-b951e2",
-      "text": "Ce afișează?",
-      "code": "nume = [\"Tommy\", \"Phil\", \"Sonny\", \"Ken\"]\nfor n in nume:\n    print(f\"Salut, {n}!\")",
-      "options": [
-        "Salut, Tommy!\nSalut, Phil!\nSalut, Sonny!\nSalut, Ken!",
-        "Salut, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nSalut, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nSalut, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nSalut, ['Tommy', 'Phil', 'Sonny', 'Ken']!",
-        "Salut, {n}!\nSalut, {n}!\nSalut, {n}!\nSalut, {n}!",
-        "Salut, 0!\nSalut, 1!\nSalut, 2!\nSalut, 3!"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "lf-each-8bd748",
-      "text": "Ce afișează?",
-      "code": "jucatori = [\"Ana\", \"Rex\"]\nfor i in jucatori:\n    print(f\"Succes, {i}!\")",
-      "options": [
-        "Succes, Ana!\nSucces, Rex!",
-        "Succes, ['Ana', 'Rex']!\nSucces, ['Ana', 'Rex']!",
-        "Succes, {i}!\nSucces, {i}!",
-        "Succes, 0!\nSucces, 1!"
-      ],
-      "answer": 0
-    },
-    {
       "id": "lf-index-edff32",
       "text": "Ce afișează?",
       "code": "planete = [\"Marte\", \"Venus\", \"Pamant\"]\nfor i in range(len(planete)):\n    print(f\"Planeta {i + 1}: {planete[i]}\")",
@@ -74,18 +50,6 @@
       "answer": 0
     },
     {
-      "id": "lf-index-6a1ced",
-      "text": "Ce afișează?",
-      "code": "jucatori = [\"Ana\", \"Rex\", \"Kai\", \"Zoe\"]\nfor i in range(len(jucatori)):\n    print(f\"Jucatorul {i + 1}: {jucatori[i]}\")",
-      "options": [
-        "Jucatorul 1: Ana\nJucatorul 2: Rex\nJucatorul 3: Kai\nJucatorul 4: Zoe",
-        "Jucatorul 0: Ana\nJucatorul 1: Rex\nJucatorul 2: Kai\nJucatorul 3: Zoe",
-        "Jucatorul 2: Rex\nJucatorul 3: Kai\nJucatorul 4: Zoe",
-        "Jucatorul 1: 0\nJucatorul 2: 1\nJucatorul 3: 2\nJucatorul 4: 3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "lf-sum-9d0c99",
       "text": "Ce afișează?",
       "code": "preturi = [5, 15, 25]\ntotal = 0\nfor pret in preturi:\n    total = total + pret\nprint(total)",
@@ -97,34 +61,6 @@
       "text": "Ce afișează?",
       "code": "scoruri = [7, 3, 9, 1]\npuncte = 0\nfor s in scoruri:\n    puncte = puncte + s\nprint(puncte)",
       "options": ["20", "1", "4", "7\n10\n19\n20"],
-      "answer": 0
-    },
-    {
-      "id": "lf-sum-bab618",
-      "text": "Ce afișează?",
-      "code": "rezervoare = [40, 60]\ncombustibil = 0\nfor rezervor in rezervoare:\n    combustibil = combustibil + rezervor\nprint(combustibil)",
-      "options": ["100", "60", "2", "40\n100"],
-      "answer": 0
-    },
-    {
-      "id": "lf-sum-24598e",
-      "text": "Ce afișează?",
-      "code": "varste = [12, 30, 8]\ntotal = 0\nfor varsta in varste:\n    total = total + varsta\nprint(total)",
-      "options": ["50", "8", "3", "12\n42\n50"],
-      "answer": 0
-    },
-    {
-      "id": "lf-sum-b37b23",
-      "text": "Ce afișează?",
-      "code": "pasi = [100, 250, 150, 500]\nparcurs = 0\nfor p in pasi:\n    parcurs = parcurs + p\nprint(parcurs)",
-      "options": ["1000", "500", "4", "100\n350\n500\n1000"],
-      "answer": 0
-    },
-    {
-      "id": "lf-sum-94c2d8",
-      "text": "Ce afișează?",
-      "code": "monede = [2, 2, 2, 2, 2]\ntotal = 0\nfor m in monede:\n    total = total + m\nprint(total)",
-      "options": ["10", "2", "5", "2\n4\n6\n8\n10"],
       "answer": 0
     },
     {
@@ -149,13 +85,6 @@
       "answer": 0
     },
     {
-      "id": "lf-count-515285",
-      "text": "Ce afișează?",
-      "code": "viteze = [90, 120, 130, 100]\nsigure = 0\nfor n in viteze:\n    if n <= 100:\n        sigure = sigure + 1\nprint(sigure)",
-      "options": ["2", "190", "1", "1\n1\n1\n2"],
-      "answer": 0
-    },
-    {
       "id": "lf-max-2cf89a",
       "text": "Ce afișează?",
       "code": "scoruri = [7, 15, 9]\nmaxim = scoruri[0]\nfor n in scoruri:\n    if n > maxim:\n        maxim = n\nprint(maxim)",
@@ -177,13 +106,6 @@
       "answer": 0
     },
     {
-      "id": "lf-max-3147fd",
-      "text": "Ce afișează?",
-      "code": "combustibil = [40, 70, 20, 55]\ncel_mai_mult = combustibil[0]\nfor n in combustibil:\n    if n > cel_mai_mult:\n        cel_mai_mult = n\nprint(cel_mai_mult)",
-      "options": ["70", "20", "55", "40\n70\n70\n70"],
-      "answer": 0
-    },
-    {
       "id": "lf-build-02efbc",
       "text": "Ce afișează?",
       "code": "numere = [6, 14, 3, 25]\nmari = []\nfor n in numere:\n    if n > 10:\n        mari.append(n)\nprint(mari)",
@@ -202,13 +124,6 @@
       "text": "Ce afișează?",
       "code": "scoruri = [50, 75, 90, 40]\ntrecute = []\nfor n in scoruri:\n    if n >= 50:\n        trecute.append(n)\nprint(trecute)",
       "options": ["[50, 75, 90]", "[40]", "[90]", "[50]\n[50, 75]\n[50, 75, 90]\n[50, 75, 90]"],
-      "answer": 0
-    },
-    {
-      "id": "lf-build-d8e95c",
-      "text": "Ce afișează?",
-      "code": "preturi = [3, 15, 7, 22]\nieftine = []\nfor n in preturi:\n    if n <= 7:\n        ieftine.append(n)\nprint(ieftine)",
-      "options": ["[3, 7]", "[15, 22]", "[7]", "[3]\n[3]\n[3, 7]\n[3, 7]"],
       "answer": 0
     },
     {
@@ -681,6 +596,84 @@
       "code": "niveluri = [2, 9, 4]\nmaxim = niveluri[0]\nfor n in niveluri:\n    if n < maxim:\n        maxim = n\nprint(f\"Nivelul maxim din {niveluri}: {maxim}\")",
       "output": "Nivelul maxim din [2, 9, 4]: 9",
       "options": ["if n < maxim:", "for n in niveluri:", "maxim = niveluri[0]", "maxim = n"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-raise-2c43a2",
+      "text": "Ce conține `scoruri` la final?",
+      "code": "scoruri = [4, 9, 2, 7, 3]\nfor i in range(len(scoruri)):\n    if scoruri[i] < 5:\n        scoruri[i] = 5",
+      "options": ["[5, 9, 5, 7, 5]", "[4, 5, 2, 5, 3]", "[4, 9, 2, 7, 3]", "[5, 9, 5, 7, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-raise-25e3eb",
+      "text": "Ce conține `niveluri` la final?",
+      "code": "niveluri = [12, 8, 30, 5]\nfor i in range(len(niveluri)):\n    if niveluri[i] < 10:\n        niveluri[i] = 10",
+      "options": ["[12, 10, 30, 10]", "[10, 8, 10, 5]", "[12, 8, 30, 5]", "[12, 10, 30, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-raise-437416",
+      "text": "Ce conține `viteze` la final?",
+      "code": "viteze = [60, 45, 80, 30]\nfor i in range(len(viteze)):\n    if viteze[i] < 50:\n        viteze[i] = 50",
+      "options": ["[60, 50, 80, 50]", "[50, 45, 50, 30]", "[60, 45, 80, 30]", "[60, 50, 80, 30]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-raise-d0738c",
+      "text": "Ce conține `temperaturi` la final?",
+      "code": "temperaturi = [18, 25, 15, 30, 10]\nfor i in range(len(temperaturi)):\n    if temperaturi[i] < 20:\n        temperaturi[i] = 20",
+      "options": [
+        "[20, 25, 20, 30, 20]",
+        "[18, 20, 15, 20, 10]",
+        "[18, 25, 15, 30, 10]",
+        "[20, 25, 20, 30, 10]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-longest-0c1f4a",
+      "text": "Ce conține `cel_mai_lung` la final?",
+      "code": "planete = [\"Marte\", \"Saturn\", \"Venus\", \"Uranus\"]\ncel_mai_lung = \"\"\nfor w in planete:\n    if len(w) > len(cel_mai_lung):\n        cel_mai_lung = w",
+      "options": ["'Saturn'", "'Uranus'", "'Venus'", "''"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-longest-329bc5",
+      "text": "Ce conține `cel_mai_lung` la final?",
+      "code": "echipaj = [\"Zoe\", \"Lance\", \"Tommy\", \"Ben\"]\ncel_mai_lung = \"\"\nfor w in echipaj:\n    if len(w) > len(cel_mai_lung):\n        cel_mai_lung = w",
+      "options": ["'Lance'", "'Tommy'", "'Zoe'", "''"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-longest-a08583",
+      "text": "Ce conține `cel_mai_lung` la final?",
+      "code": "opriri = [\"Marte\", \"Terra\", \"Venus\", \"Pluto\"]\ncel_mai_lung = \"\"\nfor w in opriri:\n    if len(w) > len(cel_mai_lung):\n        cel_mai_lung = w",
+      "options": ["'Marte'", "'Pluto'", "'Venus'", "''"],
+      "answer": 0
+    },
+    {
+      "id": "lf-input-limit-8cc208",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "limita = int(input())\nvarste = [12, 18, 30, 15]\nfor n in varste:\n    if n > limita:\n        print(n)",
+      "output": "18\n30",
+      "options": ["15", "18", "12", "30"],
+      "answer": 0
+    },
+    {
+      "id": "lf-input-limit-393f06",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "limita = int(input())\nscoruri = [7, 15, 9, 21]\nfor n in scoruri:\n    if n > limita:\n        print(n)",
+      "output": "15\n21",
+      "options": ["9", "15", "7", "21"],
+      "answer": 0
+    },
+    {
+      "id": "lf-input-limit-1f6e63",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "limita = int(input())\nviteze = [40, 90, 65, 120]\nfor n in viteze:\n    if n > limita:\n        print(n)",
+      "output": "90\n120",
+      "options": ["65", "90", "40", "120"],
       "answer": 0
     }
   ]

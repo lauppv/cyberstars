@@ -278,22 +278,6 @@
           "w": "pastrate",
           "pre": "vechi",
           "k": 5
-        },
-        {
-          "v": "coduri",
-          "items": "\"a7\", \"x1\", \"b2\", \"x9\"",
-          "x": "c",
-          "w": "bune",
-          "pre": "x",
-          "k": 1
-        },
-        {
-          "v": "sarcini",
-          "items": "\"repara motorul\", \"gata: spalare\", \"lansare\", \"gata: alimentare\"",
-          "x": "s",
-          "w": "de_facut",
-          "pre": "gata:",
-          "k": 5
         }
       ],
       "mistakes": [
@@ -322,13 +306,6 @@
           "x": "p",
           "w": "vizitate",
           "stop": "Venus"
-        },
-        {
-          "v": "melodii",
-          "items": "\"Intro\", \"Val\", \"Ploaie\", \"Final\", \"Bonus\"",
-          "x": "m",
-          "w": "cantate",
-          "stop": "Ploaie"
         }
       ],
       "mistakes": [
@@ -358,12 +335,6 @@
           "word": "racheta",
           "k": 1,
           "k1": 2
-        },
-        {
-          "v": "cod",
-          "word": "planeta",
-          "k": 4,
-          "k1": 5
         }
       ],
       "mistakes": [
@@ -390,18 +361,6 @@
           "items": "\"Tommy\", \"Ken\", \"Cortez\", \"Lance\", \"Phil\"",
           "c": "lungi",
           "n": 4
-        },
-        {
-          "v": "orase",
-          "items": "\"Roma\", \"Oslo\", \"Berlin\", \"Paris\"",
-          "c": "mari",
-          "n": 5
-        },
-        {
-          "v": "unelte",
-          "items": "\"cui\", \"ciocan\", \"clesti\", \"surub\"",
-          "c": "contor",
-          "n": 5
         }
       ],
       "mistakes": [
@@ -430,20 +389,6 @@
           "x": "m",
           "t": "Tommy",
           "found": "Capitanul e la bord"
-        },
-        {
-          "v": "usi",
-          "items": "\"rosu\", \"verde\", \"albastru\"",
-          "x": "u",
-          "t": "verde",
-          "found": "Usa deschisa"
-        },
-        {
-          "v": "lazi",
-          "items": "\"gem\", \"lapte\", \"ceai\", \"aur\", \"orez\"",
-          "x": "l",
-          "t": "aur",
-          "found": "Comoara!"
         }
       ],
       "mistakes": [
@@ -471,11 +416,6 @@
           "v": "echipaj",
           "items": "\"Tommy\", \"Victor\", \"Lance\", \"Ken\"",
           "s": "echipa"
-        },
-        {
-          "v": "planete",
-          "items": "\"Marte\", \"Pamant\", \"Venus\"",
-          "s": "traseu"
         }
       ],
       "mistakes": [
@@ -504,20 +444,6 @@
           "k": 1,
           "pre": "x",
           "rep": "liber"
-        },
-        {
-          "v": "fisiere",
-          "items": "\"plan\", \"tmp-a\", \"note\", \"tmp-b\"",
-          "k": 4,
-          "pre": "tmp-",
-          "rep": "sters"
-        },
-        {
-          "v": "semnale",
-          "items": "\"ok\", \"err1\", \"ok\", \"err2\"",
-          "k": 3,
-          "pre": "err",
-          "rep": "pierdut"
         }
       ],
       "mistakes": [
@@ -546,20 +472,6 @@
           "t": "greutate",
           "op": ">",
           "lim": 50
-        },
-        {
-          "v": "scoruri",
-          "items": "8, 6, 0, 9, 7",
-          "t": "puncte",
-          "op": "<",
-          "lim": 1
-        },
-        {
-          "v": "pasi",
-          "items": "100, 200, 999, 300",
-          "t": "parcurs",
-          "op": ">=",
-          "lim": 999
         }
       ],
       "mistakes": [
@@ -988,6 +900,154 @@
         }
       ],
       "bug": ["print({{w}})", "print({{v}})"]
+    },
+    {
+      "id": "col-holds-long",
+      "kind": "holds",
+      "text": "Ce conține `{{w}}` la final?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    if len({{x}}) > {{n}}:\n        {{w}}.append({{x}}.upper())",
+      "values": [
+        {
+          "v": "cuvinte",
+          "items": "\"nor\", \"luna\", \"planeta\", \"stea\"",
+          "x": "cuvant",
+          "w": "lungi",
+          "n": 4
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\", \"Ken\"",
+          "x": "nume",
+          "w": "lungi",
+          "n": 4
+        },
+        {
+          "v": "lumi",
+          "items": "\"Luna\", \"Venus\", \"Terra\", \"Jupiter\", \"Io\"",
+          "x": "lume",
+          "w": "mari",
+          "n": 5
+        },
+        {
+          "v": "produse",
+          "items": "\"orez\", \"paine\", \"sare\", \"branza\"",
+          "x": "produs",
+          "w": "lungi",
+          "n": 4
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["> {{n}}", ">= {{n}}"],
+        ["{{x}}.upper()", "{{x}}"],
+        ["len({{x}})", "len({{v}})"],
+        ["{{w}}.append({{x}}.upper())", "{{w}} = [{{x}}.upper()]"]
+      ]
+    },
+    {
+      "id": "col-holds-count",
+      "kind": "holds",
+      "text": "Ce conține `{{c}}` la final?",
+      "code": "{{v}} = \"{{s}}\"\n{{c}} = 0\nfor i in range(len({{v}})):\n    if {{v}}[i] == \"{{t}}\":\n        {{c}} = {{c}} + 1",
+      "values": [
+        {
+          "v": "cuvant",
+          "s": "banana",
+          "c": "numar",
+          "t": "a",
+          "T": "A"
+        },
+        {
+          "v": "cuvant",
+          "s": "Mississippi",
+          "c": "numar",
+          "t": "s",
+          "T": "S"
+        },
+        {
+          "v": "nume",
+          "s": "Lance Vance",
+          "c": "numar",
+          "t": "e",
+          "T": "E"
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["==", "!="],
+        ["{{c}} = {{c}} + 1", "{{c}} = 1"],
+        ["\"{{t}}\"", "\"{{T}}\""],
+        ["range(len({{v}}))", "range(len({{v}}) - 1)"]
+      ]
+    },
+    {
+      "id": "col-holds-join",
+      "kind": "holds",
+      "text": "Ce conține `{{s}}` la final?",
+      "code": "{{v}} = [{{items}}]\n{{s}} = \"\"\nfor w in {{v}}:\n    {{s}} = {{s}} + w + \"-\"",
+      "values": [
+        {
+          "v": "parti",
+          "items": "\"A\", \"B\", \"C\"",
+          "s": "cod"
+        },
+        {
+          "v": "culori",
+          "items": "\"rosu\", \"albastru\"",
+          "s": "steag"
+        },
+        {
+          "v": "opriri",
+          "items": "\"Marte\", \"Luna\", \"Soare\"",
+          "s": "traseu"
+        }
+      ],
+      "variable": "{{s}}",
+      "mistakes": [
+        ["{{s}} = {{s}} + w + \"-\"", "{{s}} = w + \"-\""],
+        ["{{s}} + w + \"-\"", "{{s}} + \"-\" + w"],
+        ["{{s}} + w + \"-\"", "{{s}} + w"]
+      ]
+    },
+    {
+      "id": "col-input-find",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{t}} = input()\n{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    if {{v}}[i] == {{t}}:\n        print(f\"{{found}} {i}\")",
+      "values": [
+        {
+          "t": "tinta",
+          "v": "sectoare",
+          "items": "\"A1\", \"B4\", \"C7\", \"D2\"",
+          "found": "Gasit la",
+          "a": "C7",
+          "i": 2,
+          "low": "c7",
+          "other": "B4"
+        },
+        {
+          "t": "tinta",
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "found": "Gasit la",
+          "a": "Lance",
+          "i": 1,
+          "low": "lance",
+          "other": "Tommy"
+        },
+        {
+          "t": "tinta",
+          "v": "planete",
+          "items": "\"Marte\", \"Venus\", \"Terra\", \"Jupiter\"",
+          "found": "Gasit la",
+          "a": "Jupiter",
+          "i": 3,
+          "low": "jupiter",
+          "other": "Terra"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{i}}", "{{low}}", "{{other}}"]
     }
   ]
 }

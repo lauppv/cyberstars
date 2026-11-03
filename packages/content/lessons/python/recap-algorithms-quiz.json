@@ -274,15 +274,6 @@
         },
         {
           "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
-        },
-        {
-          "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\""
-        },
-        {
-          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\""
-        },
-        {
-          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\""
         }
       ],
       "mistakes": [
@@ -303,15 +294,6 @@
         },
         {
           "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
-        },
-        {
-          "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\""
-        },
-        {
-          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\""
-        },
-        {
-          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\""
         }
       ],
       "mistakes": [
@@ -332,15 +314,6 @@
         },
         {
           "d": "\"Ana\": 3, \"Ben\": 1"
-        },
-        {
-          "d": "\"Cara\": 2, \"Phil\": 5, \"Lance\": 1"
-        },
-        {
-          "d": "\"Kent\": 3, \"Vic\": 1, \"Mia\": 2"
-        },
-        {
-          "d": "\"Zoe\": 4, \"Liv\": 2"
         }
       ],
       "mistakes": [
@@ -361,15 +334,6 @@
         },
         {
           "L": "(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\"), (3, \"Dan\")"
-        },
-        {
-          "L": "(1, \"Phil\"), (3, \"Cara\"), (2, \"Lance\")"
-        },
-        {
-          "L": "(2, \"Kent\"), (1, \"Vic\"), (3, \"Mia\"), (4, \"Ivy\")"
-        },
-        {
-          "L": "(4, \"Zoe\"), (6, \"Liv\"), (2, \"Max\"), (5, \"Ivy\")"
         }
       ],
       "mistakes": [
@@ -396,12 +360,6 @@
         },
         {
           "d": "\"Lance\": 1, \"Phil\": 3"
-        },
-        {
-          "d": "\"Kent\": 2, \"Vic\": 5, \"Mia\": 1"
-        },
-        {
-          "d": "\"Zoe\": 1, \"Liv\": 2, \"Max\": 4"
         }
       ],
       "mistakes": [
@@ -431,14 +389,6 @@
         {
           "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\"",
           "t": "Sonny"
-        },
-        {
-          "r": "\"Kent\", \"Vic\", \"Kent\", \"Kent\"",
-          "t": "Vic"
-        },
-        {
-          "r": "\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\"",
-          "t": "Liv"
         }
       ],
       "mistakes": [
@@ -462,12 +412,6 @@
         },
         {
           "L": "2, 7, 4"
-        },
-        {
-          "L": "10, 30, 20, 40"
-        },
-        {
-          "L": "6, 9, 2, 8, 5"
         }
       ],
       "mistakes": [
@@ -494,12 +438,6 @@
         },
         {
           "L": "1, 6, 3, 7"
-        },
-        {
-          "L": "4, 2, 9"
-        },
-        {
-          "L": "5, 8, 6, 7"
         }
       ],
       "mistakes": [
@@ -665,6 +603,186 @@
         }
       ],
       "bug": ["            max_index = j", "            max_index = i"]
+    },
+    {
+      "id": "ra-holds-pairs",
+      "kind": "holds",
+      "text": "What is in `{{b}}` at the end?",
+      "code": "{{w}} = {{{d}}}\n{{b}} = []\nfor {{n}}, {{c}} in {{w}}.items():\n    {{b}}.append(({{c}}, {{n}}))",
+      "values": [
+        {
+          "w": "wins",
+          "b": "leaderboard",
+          "n": "name",
+          "c": "count",
+          "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
+        },
+        {
+          "w": "wins",
+          "b": "leaderboard",
+          "n": "name",
+          "c": "count",
+          "d": "\"Ana\": 3, \"Ben\": 1"
+        },
+        {
+          "w": "wins",
+          "b": "leaderboard",
+          "n": "name",
+          "c": "count",
+          "d": "\"Cara\": 2, \"Phil\": 5, \"Lance\": 1"
+        },
+        {
+          "w": "wins",
+          "b": "leaderboard",
+          "n": "name",
+          "c": "count",
+          "d": "\"Kai\": 6, \"Zoe\": 2, \"Mia\": 4"
+        },
+        {
+          "w": "wins",
+          "b": "leaderboard",
+          "n": "name",
+          "c": "count",
+          "d": "\"Sonny\": 2, \"Ken\": 2, \"Diaz\": 7"
+        }
+      ],
+      "variable": "{{b}}",
+      "mistakes": [
+        ["({{c}}, {{n}})", "({{n}}, {{c}})"],
+        ["{{b}}.append(({{c}}, {{n}}))", "{{b}} = [({{c}}, {{n}})]"],
+        ["{{b}}.append(({{c}}, {{n}}))", "{{b}}.append({{c}})"]
+      ]
+    },
+    {
+      "id": "ra-holds-desc",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{v}} = [{{L}}]\nfor j in range(len({{v}}) - 1):\n    if {{v}}[j] < {{v}}[j + 1]:\n        {{v}}[j], {{v}}[j + 1] = {{v}}[j + 1], {{v}}[j]",
+      "values": [
+        {
+          "v": "numbers",
+          "L": "3, 8, 1, 9, 4"
+        },
+        {
+          "v": "numbers",
+          "L": "5, 2, 7, 6"
+        },
+        {
+          "v": "scores",
+          "L": "10, 30, 20, 40"
+        },
+        {
+          "v": "scores",
+          "L": "4, 1, 6, 2"
+        },
+        {
+          "v": "levels",
+          "L": "6, 9, 2, 8, 7"
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["{{v}}[j] < {{v}}[j + 1]", "{{v}}[j] > {{v}}[j + 1]"],
+        ["{{v}}[j], {{v}}[j + 1] = {{v}}[j + 1], {{v}}[j]", "{{v}}[j] = {{v}}[j + 1]"],
+        [
+          "{{v}}[j], {{v}}[j + 1] = {{v}}[j + 1], {{v}}[j]",
+          "{{v}}[j], {{v}}[j + 1] = {{v}}[j], {{v}}[j + 1]"
+        ]
+      ]
+    },
+    {
+      "id": "ra-input-search",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\n{{v}} = [{{r}}]\nprint(linear_search({{v}}, input()))",
+      "values": [
+        {
+          "v": "results",
+          "r": "\"Rex\", \"Tommy\", \"Boris\", \"Cara\"",
+          "a": "Boris",
+          "i": 2,
+          "low": "boris",
+          "other": "Cara"
+        },
+        {
+          "v": "results",
+          "r": "\"Ana\", \"Ben\", \"Cal\"",
+          "a": "Ana",
+          "i": 0,
+          "low": "ana",
+          "other": "Ben"
+        },
+        {
+          "v": "crew",
+          "r": "\"Lance\", \"Phil\", \"Sonny\"",
+          "a": "Sonny",
+          "i": 2,
+          "low": "sonny",
+          "other": "Phil"
+        },
+        {
+          "v": "crew",
+          "r": "\"Kai\", \"Zoe\", \"Mia\", \"Rex\"",
+          "a": "Mia",
+          "i": 2,
+          "low": "mia",
+          "other": "Zoe"
+        },
+        {
+          "v": "ships",
+          "r": "\"Nova\", \"Orion\", \"Vega\"",
+          "a": "Orion",
+          "i": 1,
+          "low": "orion",
+          "other": "Nova"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{i}}", "{{low}}", "{{other}}"]
+    },
+    {
+      "id": "ra-error-bubble",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{v}} = [{{L}}]\nfor j in range(len({{v}})):\n    if {{v}}[j] < {{v}}[j + 1]:\n        {{v}}[j], {{v}}[j + 1] = {{v}}[j + 1], {{v}}[j]",
+      "values": [
+        {
+          "v": "numbers",
+          "L": "3, 8, 1"
+        },
+        {
+          "v": "scores",
+          "L": "10, 30, 20, 40"
+        },
+        {
+          "v": "levels",
+          "L": "6, 2"
+        }
+      ],
+      "wrong": ["KeyError", "TypeError", "ValueError"]
+    },
+    {
+      "id": "ra-error-append",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{w}} = {{{d}}}\n{{b}} = []\nfor {{n}}, {{c}} in {{w}}.items():\n    {{b}}.append({{c}}, {{n}})",
+      "values": [
+        {
+          "w": "wins",
+          "b": "leaderboard",
+          "n": "name",
+          "c": "count",
+          "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
+        },
+        {
+          "w": "wins",
+          "b": "leaderboard",
+          "n": "name",
+          "c": "count",
+          "d": "\"Cara\": 2, \"Phil\": 5, \"Lance\": 1"
+        }
+      ],
+      "wrong": ["ValueError", "KeyError", "IndexError"]
     }
   ]
 }

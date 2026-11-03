@@ -16,32 +16,6 @@
       "answer": 0
     },
     {
-      "id": "say-138eb1",
-      "text": "What does this print?",
-      "code": "print(\"10 + 5\")",
-      "options": ["10 + 5", "\"10 + 5\"", "print 10 + 5", "15"],
-      "answer": 0
-    },
-    {
-      "id": "say-5fe966",
-      "text": "What does this print?",
-      "code": "print(\"Python is fun\")",
-      "options": ["Python is fun", "\"Python is fun\"", "print Python is fun", "(Python is fun)"],
-      "answer": 0
-    },
-    {
-      "id": "say-0c9176",
-      "text": "What does this print?",
-      "code": "print(\"See you tomorrow\")",
-      "options": [
-        "See you tomorrow",
-        "\"See you tomorrow\"",
-        "print See you tomorrow",
-        "(See you tomorrow)"
-      ],
-      "answer": 0
-    },
-    {
       "id": "two-lines-65dd40",
       "text": "Which program shows this?",
       "output": "Ready\nGo",
@@ -175,13 +149,6 @@
         "Red\nGreen\nYellow",
         "Yellow\nGreen"
       ],
-      "answer": 0
-    },
-    {
-      "id": "three-lines-a0aba9",
-      "text": "What does this program show?",
-      "code": "print(\"Ana\")\nprint(\"Ben\")\nprint(\"Cris\")",
-      "options": ["Ana\nBen\nCris", "Ben\nAna\nCris", "Ana\nCris\nBen", "Ben\nCris"],
       "answer": 0
     },
     {
@@ -368,13 +335,6 @@
       "answer": 0
     },
     {
-      "id": "var-kent-e43ce6",
-      "text": "What does this print?",
-      "code": "Paul = \"Pizza time\"\nname = Paul\nprint(name)",
-      "options": ["Pizza time", "Paul", "name", "Paul Pizza time"],
-      "answer": 0
-    },
-    {
       "id": "var-again-1d0c78",
       "text": "What does this print?",
       "code": "name = \"Tommy\"\nname = \"Lance\"\nprint(name)",
@@ -419,13 +379,6 @@
       "answer": 0
     },
     {
-      "id": "int-sum-f36ece",
-      "text": "What does this print?",
-      "code": "a = 7\nb = 3\nc = a + b\nprint(c)",
-      "options": ["10", "c", "a + b", "73"],
-      "answer": 0
-    },
-    {
       "id": "int-plus-one-f56b08",
       "text": "What does this print?",
       "code": "n = 10\nn = n + 1\nprint(n)",
@@ -437,13 +390,6 @@
       "text": "What does this print?",
       "code": "n = 4\nn = n + 1\nprint(n)",
       "options": ["5", "4", "n + 1", "n"],
-      "answer": 0
-    },
-    {
-      "id": "int-plus-one-2b2bc6",
-      "text": "What does this print?",
-      "code": "n = 99\nn = n + 1\nprint(n)",
-      "options": ["100", "99", "n + 1", "n"],
       "answer": 0
     },
     {
@@ -507,18 +453,6 @@
         "My name is {name} and I am {age}",
         "My name is name and I am 12",
         "My name is Ana and I am Ana"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "fstring-no-f-63a7c5",
-      "text": "What does this print?",
-      "code": "name = \"Paul\"\nage = 40\nprint(f\"My name is {name} and I am {age}\")",
-      "options": [
-        "My name is Paul and I am 40",
-        "My name is {name} and I am {age}",
-        "My name is name and I am 40",
-        "My name is Paul and I am Paul"
       ],
       "answer": 0
     },
@@ -629,13 +563,6 @@
       "answer": 0
     },
     {
-      "id": "comment-skip-a7ede8",
-      "text": "What does this print?",
-      "code": "a = 2\na = a + 3\n# a = a + 4\nprint(a)",
-      "options": ["5", "9", "2", "a"],
-      "answer": 0
-    },
-    {
       "id": "comment-which-27149b",
       "text": "Which program shows this?",
       "output": "Ship ready\nLaunch",
@@ -657,6 +584,69 @@
         "print(\"Good night\")\n# print(\"Secret\")\n# print(\"See you\")",
         "# print(\"Good night\")\n# print(\"Secret\")\nprint(\"See you\")"
       ],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-join-ed1d9d",
+      "text": "What is in `greeting` at the end?",
+      "code": "greeting = \"Hello\"\ngreeting = greeting + \", Tommy\"",
+      "options": ["'Hello, Tommy'", "'Hello'", "', TommyHello'", "', Tommy'"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-join-f87dc2",
+      "text": "What is in `label` at the end?",
+      "code": "label = \"Level \"\nlabel = label + \"3\"",
+      "options": ["'Level 3'", "'Level '", "'3Level '", "'3'"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-join-c0fc0e",
+      "text": "What is in `code` at the end?",
+      "code": "code = \"AB\"\ncode = code + \"12\"",
+      "options": ["'AB12'", "'AB'", "'12AB'", "'12'"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-steps-e1ee28",
+      "text": "What is in `score` at the end?",
+      "code": "score = 3\nscore = score + 4\nscore = score * 2",
+      "options": ["14", "7", "10", "8"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-steps-51a9fd",
+      "text": "What is in `lives` at the end?",
+      "code": "lives = 5\nlives = lives + 1\nlives = lives * 2",
+      "options": ["12", "6", "11", "2"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-steps-770f80",
+      "text": "What is in `coins` at the end?",
+      "code": "coins = 10\ncoins = coins + 5\ncoins = coins * 2",
+      "options": ["30", "15", "25", "10"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-fstring-8cce70",
+      "text": "What is in `line` at the end?",
+      "code": "name = \"Tommy\"\nage = 42\nline = f\"{name} is {age}\"",
+      "options": ["'Tommy is 42'", "'{name} is {age}'", "'Tommy is age'", "'name is 42'"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-fstring-07d9c0",
+      "text": "What is in `line` at the end?",
+      "code": "name = \"Lance\"\nage = 35\nline = f\"{name} is {age}\"",
+      "options": ["'Lance is 35'", "'{name} is {age}'", "'Lance is age'", "'name is 35'"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-fstring-440038",
+      "text": "What is in `card` at the end?",
+      "code": "name = \"Cortez\"\nage = 60\ncard = f\"{name} is {age}\"",
+      "options": ["'Cortez is 60'", "'{name} is {age}'", "'Cortez is age'", "'name is 60'"],
       "answer": 0
     }
   ]

@@ -16,27 +16,6 @@
       "answer": 0
     },
     {
-      "id": "bs-find-9a3b3a",
-      "text": "What does this print?",
-      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnumbers = [3, 6, 9, 12, 15, 18]\nprint(binary_search(numbers, 18))",
-      "options": ["5", "18", "-1", "6"],
-      "answer": 0
-    },
-    {
-      "id": "bs-find-14afa8",
-      "text": "What does this print?",
-      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnumbers = [10, 20, 30, 40, 50, 60, 70, 80]\nprint(binary_search(numbers, 70))",
-      "options": ["6", "70", "-1", "7"],
-      "answer": 0
-    },
-    {
-      "id": "bs-find-611bc1",
-      "text": "What does this print?",
-      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnumbers = [5, 7, 11, 13, 17, 19, 23]\nprint(binary_search(numbers, 11))",
-      "options": ["2", "11", "-1", "3"],
-      "answer": 0
-    },
-    {
       "id": "bs-missing-7c7d50",
       "text": "What does this print?",
       "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnumbers = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]\nfor target in [13, 6]:\n    print(target, binary_search(numbers, target))",
@@ -55,20 +34,6 @@
       "text": "What does this print?",
       "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnumbers = [10, 20, 30, 40, 50]\nfor target in [10, 35]:\n    print(target, binary_search(numbers, target))",
       "options": ["10 0\n35 -1", "10 0\n35 0", "10 10\n35 -1", "10 -1\n35 -1"],
-      "answer": 0
-    },
-    {
-      "id": "bs-missing-f89b36",
-      "text": "What does this print?",
-      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnumbers = [5, 15, 25, 35, 45, 55, 65]\nfor target in [50, 65]:\n    print(target, binary_search(numbers, target))",
-      "options": ["50 -1\n65 6", "50 0\n65 6", "50 -1\n65 65", "50 -1\n65 -1"],
-      "answer": 0
-    },
-    {
-      "id": "bs-missing-bc4000",
-      "text": "What does this print?",
-      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnumbers = [1, 2, 4, 8, 16, 32]\nfor target in [8, 3]:\n    print(target, binary_search(numbers, target))",
-      "options": ["8 3\n3 -1", "8 3\n3 0", "8 8\n3 -1", "8 -1\n3 -1"],
       "answer": 0
     },
     {
@@ -103,25 +68,6 @@
       "answer": 0
     },
     {
-      "id": "bs-trace-f113f3",
-      "text": "What does this print?",
-      "code": "numbers = [10, 20, 30, 40, 50, 60, 70]\ntarget = 50\nleft = 0\nright = len(numbers) - 1\nwhile left <= right:\n    mid = (left + right) // 2\n    print(left, mid, right)\n    if numbers[mid] == target:\n        break\n    elif numbers[mid] < target:\n        left = mid + 1\n    else:\n        right = mid - 1",
-      "options": ["0 3 6\n4 5 6\n4 4 4", "0 3 6\n5 5 6", "0 3 6\n4 5 6", "0 6\n4 6\n4 4"],
-      "answer": 0
-    },
-    {
-      "id": "bs-trace-a26eb5",
-      "text": "What does this print?",
-      "code": "numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]\ntarget = 4\nleft = 0\nright = len(numbers) - 1\nwhile left <= right:\n    mid = (left + right) // 2\n    print(left, mid, right)\n    if numbers[mid] == target:\n        break\n    elif numbers[mid] < target:\n        left = mid + 1\n    else:\n        right = mid - 1",
-      "options": [
-        "0 4 8\n0 1 3\n2 2 3\n3 3 3",
-        "0 4 8\n0 1 3\n3 3 3",
-        "0 4 8\n0 1 2\n2 2 2",
-        "0 8\n0 3\n2 3\n3 3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "bs-checks-7c1106",
       "text": "What does this print?",
       "code": "numbers = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]\ntarget = 19\nleft = 0\nright = len(numbers) - 1\nchecks = 0\nwhile left <= right:\n    mid = (left + right) // 2\n    checks += 1\n    if numbers[mid] == target:\n        break\n    elif numbers[mid] < target:\n        left = mid + 1\n    else:\n        right = mid - 1\nprint(f\"Checked: {checks}\")",
@@ -139,20 +85,6 @@
       "id": "bs-checks-434d74",
       "text": "What does this print?",
       "code": "numbers = [5, 10, 15, 20, 25, 30, 35]\ntarget = 35\nleft = 0\nright = len(numbers) - 1\nchecks = 0\nwhile left <= right:\n    mid = (left + right) // 2\n    checks += 1\n    if numbers[mid] == target:\n        break\n    elif numbers[mid] < target:\n        left = mid + 1\n    else:\n        right = mid - 1\nprint(f\"Checked: {checks}\")",
-      "options": ["Checked: 3", "Checked: 1", "Checked: 6", "Checked: 4"],
-      "answer": 0
-    },
-    {
-      "id": "bs-checks-e6d28f",
-      "text": "What does this print?",
-      "code": "numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]\ntarget = 15\nleft = 0\nright = len(numbers) - 1\nchecks = 0\nwhile left <= right:\n    mid = (left + right) // 2\n    checks += 1\n    if numbers[mid] == target:\n        break\n    elif numbers[mid] < target:\n        left = mid + 1\n    else:\n        right = mid - 1\nprint(f\"Checked: {checks}\")",
-      "options": ["Checked: 4", "Checked: 1", "Checked: 8", "Checked: 14"],
-      "answer": 0
-    },
-    {
-      "id": "bs-checks-352724",
-      "text": "What does this print?",
-      "code": "numbers = [3, 6, 9, 12, 15]\ntarget = 6\nleft = 0\nright = len(numbers) - 1\nchecks = 0\nwhile left <= right:\n    mid = (left + right) // 2\n    checks += 1\n    if numbers[mid] == target:\n        break\n    elif numbers[mid] < target:\n        left = mid + 1\n    else:\n        right = mid - 1\nprint(f\"Checked: {checks}\")",
       "options": ["Checked: 3", "Checked: 1", "Checked: 6", "Checked: 4"],
       "answer": 0
     },
@@ -175,20 +107,6 @@
       "text": "What does this print?",
       "code": "def binary_search_recursive(numbers, target, left, right):\n    if left > right:\n        return -1\n    mid = (left + right) // 2\n    if numbers[mid] == target:\n        return mid\n    elif numbers[mid] < target:\n        return binary_search_recursive(numbers, target, mid + 1, right)\n    else:\n        return binary_search_recursive(numbers, target, left, mid - 1)\n\nnumbers = [10, 20, 30, 40, 50, 60]\nprint(binary_search_recursive(numbers, 20, 0, len(numbers) - 1))",
       "options": ["1", "20", "-1", "2"],
-      "answer": 0
-    },
-    {
-      "id": "bs-recursive-10896b",
-      "text": "What does this print?",
-      "code": "def binary_search_recursive(numbers, target, left, right):\n    if left > right:\n        return -1\n    mid = (left + right) // 2\n    if numbers[mid] == target:\n        return mid\n    elif numbers[mid] < target:\n        return binary_search_recursive(numbers, target, mid + 1, right)\n    else:\n        return binary_search_recursive(numbers, target, left, mid - 1)\n\nnumbers = [7, 14, 21, 28, 35, 42, 49]\nprint(binary_search_recursive(numbers, 49, 0, len(numbers) - 1))",
-      "options": ["6", "49", "-1", "7"],
-      "answer": 0
-    },
-    {
-      "id": "bs-recursive-b26010",
-      "text": "What does this print?",
-      "code": "def binary_search_recursive(numbers, target, left, right):\n    if left > right:\n        return -1\n    mid = (left + right) // 2\n    if numbers[mid] == target:\n        return mid\n    elif numbers[mid] < target:\n        return binary_search_recursive(numbers, target, mid + 1, right)\n    else:\n        return binary_search_recursive(numbers, target, left, mid - 1)\n\nnumbers = [1, 4, 9, 16, 25]\nprint(binary_search_recursive(numbers, 16, 0, len(numbers) - 1))",
-      "options": ["3", "16", "-1", "4"],
       "answer": 0
     },
     {
@@ -224,30 +142,6 @@
         "70 -> index 6\n15 -> index -1\n10 -> not found\n45 -> index -1\nFound: 3",
         "70 -> index 6\n15 -> not found\n10 -> index 0\n45 -> not found\nFound: 0",
         "70 -> index 70\n15 -> not found\n10 -> index 10\n45 -> not found\nFound: 2"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bs-mission-bd3e26",
-      "text": "What does this print?",
-      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nids = [1, 5, 9, 13, 17]\nqueries = [6, 13]\nfound = 0\nfor query in queries:\n    index = binary_search(ids, query)\n    if index == -1:\n        print(f\"{query} -> not found\")\n    else:\n        print(f\"{query} -> index {index}\")\n        found += 1\nprint(f\"Found: {found}\")",
-      "options": [
-        "6 -> not found\n13 -> index 3\nFound: 1",
-        "6 -> index -1\n13 -> index 3\nFound: 2",
-        "6 -> not found\n13 -> index 3\nFound: 0",
-        "6 -> not found\n13 -> index 13\nFound: 1"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bs-mission-50dda4",
-      "text": "What does this print?",
-      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nids = [4, 8, 12, 16, 20, 24, 28, 32]\nqueries = [28, 4, 30]\nfound = 0\nfor query in queries:\n    index = binary_search(ids, query)\n    if index == -1:\n        print(f\"{query} -> not found\")\n    else:\n        print(f\"{query} -> index {index}\")\n        found += 1\nprint(f\"Found: {found}\")",
-      "options": [
-        "28 -> index 6\n4 -> index 0\n30 -> not found\nFound: 2",
-        "28 -> index 6\n4 -> not found\n30 -> index -1\nFound: 2",
-        "28 -> index 6\n4 -> index 0\n30 -> not found\nFound: 0",
-        "28 -> index 28\n4 -> index 4\n30 -> not found\nFound: 2"
       ],
       "answer": 0
     },
@@ -654,6 +548,102 @@
       "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return numbers[mid]\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnumbers = [4, 8, 12, 16, 20, 24, 28]\nfor target in [28, 8]:\n    print(target, binary_search(numbers, target))",
       "output": "28 6\n8 1",
       "options": ["return numbers[mid]", "left = mid + 1", "right = mid - 1", "return -1"],
+      "answer": 0
+    },
+    {
+      "id": "bin-holds-index-b954bd",
+      "text": "What is in `index` at the end?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nindex = binary_search([1, 3, 5, 7, 9, 11, 13], 13)",
+      "options": ["6", "13", "-1", "7"],
+      "answer": 0
+    },
+    {
+      "id": "bin-holds-index-5267c6",
+      "text": "What is in `index` at the end?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nindex = binary_search([2, 4, 6, 8, 10], 10)",
+      "options": ["4", "10", "-1", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bin-holds-index-4d2baf",
+      "text": "What is in `index` at the end?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nindex = binary_search([10, 20, 30, 40, 50, 60, 70], 10)",
+      "options": ["0", "10", "-1", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bin-holds-index-7a29b3",
+      "text": "What is in `index` at the end?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nindex = binary_search([5, 15, 25, 35], 35)",
+      "options": ["3", "35", "-1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "bin-input-target-033de9",
+      "text": "What did the user type?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nprint(binary_search([1, 3, 5, 7, 9, 11, 13], int(input())))",
+      "output": "4",
+      "options": ["9", "4", "11", "8"],
+      "answer": 0
+    },
+    {
+      "id": "bin-input-target-1e7f19",
+      "text": "What did the user type?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nprint(binary_search([2, 4, 6, 8, 10], int(input())))",
+      "output": "1",
+      "options": ["4", "1", "6", "2"],
+      "answer": 0
+    },
+    {
+      "id": "bin-input-target-2f8176",
+      "text": "What did the user type?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nprint(binary_search([10, 20, 30, 40, 50], int(input())))",
+      "output": "0",
+      "options": ["10", "0", "20", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bin-input-target-3dc7ad",
+      "text": "What did the user type?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nprint(binary_search([5, 15, 25, 35], int(input())))",
+      "output": "3",
+      "options": ["35", "3", "25", "36"],
+      "answer": 0
+    },
+    {
+      "id": "bin-input-target-ea7c9e",
+      "text": "What did the user type?",
+      "code": "def binary_search(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if numbers[mid] == target:\n            return mid\n        elif numbers[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nprint(binary_search([3, 6, 9, 12, 15, 18], int(input())))",
+      "output": "2",
+      "options": ["9", "2", "12", "6"],
+      "answer": 0
+    },
+    {
+      "id": "bin-error-float-f48cec",
+      "text": "Which error stops this program?",
+      "code": "numbers = [1, 3, 5, 7]\nleft = 0\nright = len(numbers) - 1\nmid = (left + right) / 2\nprint(numbers[mid])",
+      "options": ["TypeError", "IndexError", "ValueError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "bin-error-float-c9b3b0",
+      "text": "Which error stops this program?",
+      "code": "numbers = [2, 4, 6, 8, 10, 12]\nleft = 0\nright = len(numbers) - 1\nmid = (left + right) / 2\nprint(numbers[mid])",
+      "options": ["TypeError", "IndexError", "ValueError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "bin-error-right-1f0d90",
+      "text": "Which error stops this program?",
+      "code": "numbers = [1, 3, 5]\ntarget = 9\nleft = 0\nright = len(numbers)\nwhile left <= right:\n    mid = (left + right) // 2\n    if numbers[mid] == target:\n        print(mid)\n        break\n    elif numbers[mid] < target:\n        left = mid + 1\n    else:\n        right = mid - 1",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "bin-error-right-aa9402",
+      "text": "Which error stops this program?",
+      "code": "numbers = [10, 20, 30, 40]\ntarget = 50\nleft = 0\nright = len(numbers)\nwhile left <= right:\n    mid = (left + right) // 2\n    if numbers[mid] == target:\n        print(mid)\n        break\n    elif numbers[mid] < target:\n        left = mid + 1\n    else:\n        right = mid - 1",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
       "answer": 0
     }
   ]

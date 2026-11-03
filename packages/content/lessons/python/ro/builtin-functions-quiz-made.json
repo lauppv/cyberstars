@@ -14,42 +14,6 @@
       "answer": 0
     },
     {
-      "id": "bi-sum-20fc97",
-      "text": "Ce afișează?",
-      "code": "preturi = [10, 20, 30]\ntotal = sum(preturi)\nprint(f\"Total: {total}\")\nprint(f\"Medie: {total / len(preturi)}\")",
-      "options": [
-        "Total: 60\nMedie: 20.0",
-        "Total: 30\nMedie: 10.0",
-        "Total: 3\nMedie: 1.0",
-        "Total: 60\nMedie: 20"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bi-sum-112b2b",
-      "text": "Ce afișează?",
-      "code": "puncte = [12, 7, 5, 8]\ntotal = sum(puncte)\nprint(f\"Total: {total}\")\nprint(f\"Medie: {total / len(puncte)}\")",
-      "options": [
-        "Total: 32\nMedie: 8.0",
-        "Total: 12\nMedie: 3.0",
-        "Total: 4\nMedie: 1.0",
-        "Total: 32\nMedie: 8"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bi-sum-375443",
-      "text": "Ce afișează?",
-      "code": "combustibil = [15, 25, 40, 20]\ntotal = sum(combustibil)\nprint(f\"Total: {total}\")\nprint(f\"Medie: {total / len(combustibil)}\")",
-      "options": [
-        "Total: 100\nMedie: 25.0",
-        "Total: 40\nMedie: 10.0",
-        "Total: 4\nMedie: 1.0",
-        "Total: 100\nMedie: 25"
-      ],
-      "answer": 0
-    },
-    {
       "id": "bi-sorted-copy-743746",
       "text": "Ce afișează?",
       "code": "numere = [5, 2, 8, 1]\nordonate = sorted(numere)\nprint(ordonate)\nprint(numere)",
@@ -74,18 +38,6 @@
       "answer": 0
     },
     {
-      "id": "bi-sorted-copy-def2da",
-      "text": "Ce afișează?",
-      "code": "coduri = [9, 4, 6]\nordonate = sorted(coduri)\nprint(ordonate)\nprint(coduri)",
-      "options": [
-        "[4, 6, 9]\n[9, 4, 6]",
-        "[9, 6, 4]\n[9, 4, 6]",
-        "[4, 6, 9]\n[4, 6, 9]",
-        "[9, 4, 6]\n[4, 6, 9]"
-      ],
-      "answer": 0
-    },
-    {
       "id": "bi-reverse-39f491",
       "text": "Ce afișează?",
       "code": "scoruri = [88, 100, 47, 73]\nprint(sorted(scoruri, reverse=True))",
@@ -101,25 +53,6 @@
         "['Cortez', 'Lance', 'Phil', 'Tommy']",
         "['Tommy', 'Lance', 'Cortez', 'Phil']",
         "Tommy"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bi-reverse-def005",
-      "text": "Ce afișează?",
-      "code": "inaltimi = [3, 9, 1, 6]\nprint(sorted(inaltimi, reverse=True))",
-      "options": ["[9, 6, 3, 1]", "[1, 3, 6, 9]", "[3, 9, 1, 6]", "9"],
-      "answer": 0
-    },
-    {
-      "id": "bi-reverse-2953b8",
-      "text": "Ce afișează?",
-      "code": "planete = [\"Marte\", \"Venus\", \"Pamant\"]\nprint(sorted(planete, reverse=True))",
-      "options": [
-        "['Venus', 'Pamant', 'Marte']",
-        "['Marte', 'Pamant', 'Venus']",
-        "['Marte', 'Venus', 'Pamant']",
-        "Venus"
       ],
       "answer": 0
     },
@@ -148,18 +81,6 @@
       "answer": 0
     },
     {
-      "id": "bi-enum-a480e5",
-      "text": "Ce afișează?",
-      "code": "masini = [\"Cheetah\", \"Sabre\", \"Infernus\", \"Banshee\"]\nfor i, nume in enumerate(masini):\n    print(f\"{i}: {nume}\")",
-      "options": [
-        "0: Cheetah\n1: Sabre\n2: Infernus\n3: Banshee",
-        "Cheetah: 0\nSabre: 1\nInfernus: 2\nBanshee: 3",
-        "1: Cheetah\n2: Sabre\n3: Infernus\n4: Banshee",
-        "Cheetah\nSabre\nInfernus\nBanshee"
-      ],
-      "answer": 0
-    },
-    {
       "id": "bi-zip-3aa132",
       "text": "Ce afișează?",
       "code": "echipaj = [\"Tommy\", \"Boris\", \"Cara\"]\nscoruri = [88, 100, 47]\nfor membru, scor in zip(echipaj, scoruri):\n    print(f\"{membru}: {scor}\")",
@@ -184,25 +105,6 @@
       "answer": 0
     },
     {
-      "id": "bi-zip-df3d88",
-      "text": "Ce afișează?",
-      "code": "echipaj = [\"Ana\", \"Bo\", \"Kai\"]\nscoruri = [50, 49]\nfor membru, scor in zip(echipaj, scoruri):\n    print(f\"{membru}: {scor}\")",
-      "options": ["Ana: 50\nBo: 49", "50: Ana\n49: Bo", "Ana: [50, 49]\nBo: [50, 49]", "Ana\nBo"],
-      "answer": 0
-    },
-    {
-      "id": "bi-zip-959581",
-      "text": "Ce afișează?",
-      "code": "echipaj = [\"Dmitri\", \"Cortez\", \"Tommy\", \"Lance\"]\nscoruri = [73, 61, 90, 84]\nfor membru, scor in zip(echipaj, scoruri):\n    print(f\"{membru}: {scor}\")",
-      "options": [
-        "Dmitri: 73\nCortez: 61\nTommy: 90\nLance: 84",
-        "73: Dmitri\n61: Cortez\n90: Tommy\n84: Lance",
-        "Dmitri: [73, 61, 90, 84]\nCortez: [73, 61, 90, 84]\nTommy: [73, 61, 90, 84]\nLance: [73, 61, 90, 84]",
-        "Dmitri\nCortez\nTommy\nLance"
-      ],
-      "answer": 0
-    },
-    {
       "id": "bi-anyall-c2a6f6",
       "text": "Ce afișează?",
       "code": "scoruri = [88, 100, 47, 73]\nprint(any(s == 100 for s in scoruri))\nprint(all(s >= 50 for s in scoruri))",
@@ -213,20 +115,6 @@
       "id": "bi-anyall-964221",
       "text": "Ce afișează?",
       "code": "rezultate = [60, 75, 90]\nprint(any(s == 100 for s in rezultate))\nprint(all(s >= 50 for s in rezultate))",
-      "options": ["False\nTrue", "True\nFalse", "True\nTrue", "False\nFalse"],
-      "answer": 0
-    },
-    {
-      "id": "bi-anyall-08ff8d",
-      "text": "Ce afișează?",
-      "code": "teste = [100, 30, 55]\nprint(any(s == 100 for s in teste))\nprint(all(s >= 50 for s in teste))",
-      "options": ["True\nFalse", "False\nFalse", "True\nTrue", "False\nTrue"],
-      "answer": 0
-    },
-    {
-      "id": "bi-anyall-7f6695",
-      "text": "Ce afișează?",
-      "code": "note = [51, 99, 64, 50]\nprint(any(s == 100 for s in note))\nprint(all(s >= 50 for s in note))",
       "options": ["False\nTrue", "True\nFalse", "True\nTrue", "False\nFalse"],
       "answer": 0
     },
@@ -245,13 +133,6 @@
       "answer": 0
     },
     {
-      "id": "bi-abs-776267",
-      "text": "Ce afișează?",
-      "code": "temperaturi = [-10, 7, -2]\nprint(sum(temperaturi))\nprint(sum([abs(n) for n in temperaturi]))",
-      "options": ["-5\n19", "-5\n-5", "-5\n5", "19"],
-      "answer": 0
-    },
-    {
       "id": "bi-round-d69f1d",
       "text": "Ce afișează?",
       "code": "pi = 3.14159\nprint(round(pi))\nprint(round(pi, 2))",
@@ -263,20 +144,6 @@
       "text": "Ce afișează?",
       "code": "raport = 2.71828\nprint(round(raport))\nprint(round(raport, 3))",
       "options": ["3\n2.718", "3\n3", "2.71828\n2.718", "3\n2.7"],
-      "answer": 0
-    },
-    {
-      "id": "bi-round-63006a",
-      "text": "Ce afișează?",
-      "code": "combustibil = 9.876\nprint(round(combustibil))\nprint(round(combustibil, 2))",
-      "options": ["10\n9.88", "10\n10", "9.876\n9.88", "10\n9.9"],
-      "answer": 0
-    },
-    {
-      "id": "bi-round-ae4f3f",
-      "text": "Ce afișează?",
-      "code": "distanta = 4.4444\nprint(round(distanta))\nprint(round(distanta, 3))",
-      "options": ["4\n4.444", "4\n4", "4.4444\n4.444", "4\n4.4"],
       "answer": 0
     },
     {
@@ -300,30 +167,6 @@
         "Sortate: [47, 73, 88, 100]\nTotal: 308\nMedie: 77.0",
         "Sortate: [100, 88, 73, 47]\nTotal: 4\nMedie: 77.0",
         "Sortate: [100, 88, 73, 47]\nTotal: 308\nMedie: 77"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bi-mission-7c2713",
-      "text": "Ce afișează?",
-      "code": "scoruri = [55, 81, 64]\nprint(f\"Sortate: {sorted(scoruri, reverse=True)}\")\nprint(f\"Total: {sum(scoruri)}\")\nprint(f\"Medie: {round(sum(scoruri) / len(scoruri), 1)}\")",
-      "options": [
-        "Sortate: [81, 64, 55]\nTotal: 200\nMedie: 66.7",
-        "Sortate: [55, 64, 81]\nTotal: 200\nMedie: 66.7",
-        "Sortate: [81, 64, 55]\nTotal: 3\nMedie: 66.7",
-        "Sortate: [81, 64, 55]\nTotal: 200\nMedie: 67"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bi-mission-de66d2",
-      "text": "Ce afișează?",
-      "code": "scoruri = [90, 72, 85, 66, 79]\nprint(f\"Sortate: {sorted(scoruri, reverse=True)}\")\nprint(f\"Total: {sum(scoruri)}\")\nprint(f\"Medie: {round(sum(scoruri) / len(scoruri), 1)}\")",
-      "options": [
-        "Sortate: [90, 85, 79, 72, 66]\nTotal: 392\nMedie: 78.4",
-        "Sortate: [66, 72, 79, 85, 90]\nTotal: 392\nMedie: 78.4",
-        "Sortate: [90, 85, 79, 72, 66]\nTotal: 5\nMedie: 78.4",
-        "Sortate: [90, 85, 79, 72, 66]\nTotal: 392\nMedie: 78"
       ],
       "answer": 0
     },
@@ -750,6 +593,138 @@
         "combustibil = [15, 25, 40, 20]",
         "print(f\"Total: {total}\")"
       ],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-top-7d73cc",
+      "text": "Ce conține `podium` la final?",
+      "code": "scoruri = [88, 100, 47, 73]\npodium = sorted(scoruri, reverse=True)[0:2]",
+      "options": ["[100, 88]", "[47, 73]", "73", "[88, 73]"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-top-9b8ec6",
+      "text": "Ce conține `top` la final?",
+      "code": "timpi = [12, 9, 15, 7, 11]\ntop = sorted(timpi, reverse=True)[0:3]",
+      "options": ["[15, 12, 11]", "[7, 9, 11]", "9", "[12, 11, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-top-02ec12",
+      "text": "Ce conține `cele_mai_bune` la final?",
+      "code": "niveluri = [3, 8, 5, 1]\ncele_mai_bune = sorted(niveluri, reverse=True)[0:2]",
+      "options": ["[8, 5]", "[1, 3]", "3", "[5, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-top-c11c91",
+      "text": "Ce conține `cele_mai_rapide` la final?",
+      "code": "viteze = [60, 120, 40, 85]\ncele_mai_rapide = sorted(viteze, reverse=True)[0:3]",
+      "options": ["[120, 85, 60]", "[40, 60, 85]", "40", "[85, 60, 40]"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-abs-230052",
+      "text": "Ce conține `distanta` la final?",
+      "code": "schimbari = [-3, 5, -8]\ndistanta = sum([abs(n) for n in schimbari])",
+      "options": ["16", "-6", "6", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-abs-2c76e6",
+      "text": "Ce conține `pasi` la final?",
+      "code": "mutari = [4, -2, -7, 1]\npasi = sum([abs(n) for n in mutari])",
+      "options": ["14", "-4", "4", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-abs-ae173e",
+      "text": "Ce conține `distanta` la final?",
+      "code": "schimbari = [-10, 6, 2]\ndistanta = sum([abs(n) for n in schimbari])",
+      "options": ["18", "-2", "2", "8"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-zip-7ef44c",
+      "text": "Ce conține `tabela` la final?",
+      "code": "echipaj = [\"Tommy\", \"Boris\", \"Cara\"]\nscoruri = [88, 100, 47]\ntabela = {}\nfor nume, scor in zip(echipaj, scoruri):\n    tabela[nume] = scor",
+      "options": [
+        "{'Tommy': 88, 'Boris': 100, 'Cara': 47}",
+        "{88: 'Tommy', 100: 'Boris', 47: 'Cara'}",
+        "{'Cara': 47}",
+        "{'nume': 47}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-zip-8b29f5",
+      "text": "Ce conține `rezervoare` la final?",
+      "code": "nave = [\"Nova\", \"Orion\", \"Vega\"]\ncombustibil = [80, 45, 60]\nrezervoare = {}\nfor nava, litri in zip(nave, combustibil):\n    rezervoare[nava] = litri",
+      "options": [
+        "{'Nova': 80, 'Orion': 45, 'Vega': 60}",
+        "{80: 'Nova', 45: 'Orion', 60: 'Vega'}",
+        "{'Vega': 60}",
+        "{'nava': 60}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-zip-2a1c69",
+      "text": "Ce conține `meniu` la final?",
+      "code": "produse = [\"ceai\", \"tort\"]\npreturi = [4, 6]\nmeniu = {}\nfor produs, pret in zip(produse, preturi):\n    meniu[produs] = pret",
+      "options": [
+        "{'ceai': 4, 'tort': 6}",
+        "{4: 'ceai', 6: 'tort'}",
+        "{'tort': 6}",
+        "{'produs': 6}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-zip-d0d9a9",
+      "text": "Ce conține `nr_luni` la final?",
+      "code": "planete = [\"Marte\", \"Venus\"]\nluni = [2, 0]\nnr_luni = {}\nfor planeta, n in zip(planete, luni):\n    nr_luni[planeta] = n",
+      "options": [
+        "{'Marte': 2, 'Venus': 0}",
+        "{2: 'Marte', 0: 'Venus'}",
+        "{'Venus': 0}",
+        "{'planeta': 0}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bi-error-mix-eabe71",
+      "text": "Ce eroare oprește acest program?",
+      "code": "citiri = [\"5\", \"3\", \"2\"]\nprint(sum(citiri))",
+      "options": ["TypeError", "ValueError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "bi-error-mix-018f75",
+      "text": "Ce eroare oprește acest program?",
+      "code": "coduri = [3, \"a\", 1]\nprint(sorted(coduri))",
+      "options": ["TypeError", "ValueError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "bi-error-mix-03e249",
+      "text": "Ce eroare oprește acest program?",
+      "code": "scoruri = [\"7\", 9, 4]\nprint(max(scoruri))",
+      "options": ["TypeError", "ValueError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "bi-error-zero-23597d",
+      "text": "Ce eroare oprește acest program?",
+      "code": "scoruri = []\ntotal = sum(scoruri)\nprint(total / len(scoruri))",
+      "options": ["ZeroDivisionError", "IndexError", "ValueError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "bi-error-zero-4930eb",
+      "text": "Ce eroare oprește acest program?",
+      "code": "ture = []\ntimp = sum(ture)\nprint(timp / len(ture))",
+      "options": ["ZeroDivisionError", "IndexError", "ValueError", "TypeError"],
       "answer": 0
     }
   ]

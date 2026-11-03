@@ -301,16 +301,6 @@
           "v": "nave",
           "items": "\"Pioneer\", \"Voyager\", \"Apollo\", \"Juno\"",
           "t": "Apollo"
-        },
-        {
-          "v": "planete",
-          "items": "\"Marte\", \"Venus\", \"Terra\"",
-          "t": "Venus"
-        },
-        {
-          "v": "echipaj",
-          "items": "\"Ken\", \"Mercedes\", \"Phil\", \"Kent\", \"Victor\"",
-          "t": "Kent"
         }
       ],
       "mistakes": [
@@ -337,14 +327,6 @@
         {
           "s": "60, 75, 90",
           "m": 50
-        },
-        {
-          "s": "55, 49, 72, 88",
-          "m": 50
-        },
-        {
-          "s": "7, 9, 6, 10",
-          "m": 5
         }
       ],
       "mistakes": [
@@ -369,12 +351,6 @@
         },
         {
           "p": "vice99"
-        },
-        {
-          "p": "Lance7"
-        },
-        {
-          "p": "Orbit"
         }
       ],
       "mistakes": [
@@ -402,12 +378,6 @@
         },
         {
           "c": "A1bcd"
-        },
-        {
-          "c": "rocket77"
-        },
-        {
-          "c": "ZX9qwe"
         }
       ],
       "mistakes": [
@@ -438,14 +408,6 @@
         {
           "r": "7, 10, 15, 3",
           "lim": 10
-        },
-        {
-          "r": "100, 80, 120, 95",
-          "lim": 100
-        },
-        {
-          "r": "5, 25, 40, 26, 8",
-          "lim": 25
         }
       ],
       "mistakes": [
@@ -469,9 +431,6 @@
         },
         {
           "nums": "1, 7, 9"
-        },
-        {
-          "nums": "10, 12, 13, 14"
         }
       ],
       "mistakes": [
@@ -501,10 +460,6 @@
         {
           "r": "0, 0, 60, 50",
           "lim": 50
-        },
-        {
-          "r": "14, 9, 0, 25, 15",
-          "lim": 15
         }
       ],
       "mistakes": [
@@ -528,9 +483,6 @@
         },
         {
           "words": "\"Apollo11\", \"9lives\", \"Juno\""
-        },
-        {
-          "words": "\"Phil\", \"Tommy\", \"B52\""
         }
       ],
       "mistakes": [
@@ -826,6 +778,140 @@
         }
       ],
       "bug": ["are_majuscula and are_cifra", "are_majuscula or are_cifra"]
+    },
+    {
+      "id": "pf-holds-first",
+      "kind": "holds",
+      "text": "Ce conține `{{first}}` la final?",
+      "code": "{{v}} = [{{items}}]\n{{first}} = -1\nfor r in {{v}}:\n    if r > {{lim}}:\n        {{first}} = r\n        break",
+      "values": [
+        {
+          "v": "citiri",
+          "items": "12, 50, 64, 30, 90",
+          "first": "alarma",
+          "lim": 50
+        },
+        {
+          "v": "citiri",
+          "items": "5, 7, 8, 3, 9",
+          "first": "alarma",
+          "lim": 7
+        },
+        {
+          "v": "viteze",
+          "items": "100, 120, 95, 130",
+          "first": "prea_rapid",
+          "lim": 100
+        },
+        {
+          "v": "temperaturi",
+          "items": "20, 35, 40, 15, 60",
+          "first": "cald",
+          "lim": 35
+        },
+        {
+          "v": "scoruri",
+          "items": "3, 6, 9, 2, 12",
+          "first": "castigator",
+          "lim": 6
+        }
+      ],
+      "variable": "{{first}}",
+      "mistakes": [
+        ["\n        break", ""],
+        ["r > {{lim}}", "r >= {{lim}}"],
+        ["r > {{lim}}", "r < {{lim}}"]
+      ]
+    },
+    {
+      "id": "pf-holds-after",
+      "kind": "holds",
+      "text": "Ce conține `{{n}}` la final?",
+      "code": "{{n}} = 0\n{{seen}} = False\nfor x in [{{items}}]:\n    if x == {{t}}:\n        {{seen}} = True\n    if {{seen}}:\n        {{n}} += 1",
+      "values": [
+        {
+          "n": "dupa",
+          "seen": "alarma",
+          "items": "3, 7, 2, 7, 5",
+          "t": 7
+        },
+        {
+          "n": "dupa",
+          "seen": "alarma",
+          "items": "1, 9, 4, 6, 9, 2",
+          "t": 9
+        },
+        {
+          "n": "numarate",
+          "seen": "pornit",
+          "items": "5, 1, 3, 4",
+          "t": 1
+        },
+        {
+          "n": "numarate",
+          "seen": "pornit",
+          "items": "0, 20, 30, 20, 40, 50, 60",
+          "t": 20
+        }
+      ],
+      "variable": "{{n}}",
+      "mistakes": [
+        [
+          "        {{seen}} = True\n    if {{seen}}:\n        {{n}} += 1",
+          "        {{seen}} = True\n        {{n}} += 1"
+        ],
+        [
+          "    if x == {{t}}:\n        {{seen}} = True\n    if {{seen}}:\n        {{n}} += 1",
+          "    if {{seen}}:\n        {{n}} += 1\n    if x == {{t}}:\n        {{seen}} = True"
+        ],
+        ["x == {{t}}", "x != {{t}}"]
+      ]
+    },
+    {
+      "id": "pf-input-password",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{p}} = input()\n{{u}} = False\n{{d}} = False\nfor ch in {{p}}:\n    if ch.isupper():\n        {{u}} = True\n    elif ch.isdigit():\n        {{d}} = True\nprint({{u}}, {{d}})",
+      "values": [
+        {
+          "p": "parola",
+          "u": "are_mare",
+          "d": "are_cifra",
+          "a": "Racheta",
+          "w1": "racheta7",
+          "w2": "RACHETA7",
+          "w3": "racheta"
+        },
+        {
+          "p": "parola",
+          "u": "are_mare",
+          "d": "are_cifra",
+          "a": "agent007",
+          "w1": "Agent007",
+          "w2": "agent",
+          "w3": "AGENT"
+        },
+        {
+          "p": "cod",
+          "u": "are_mare",
+          "d": "are_cifra",
+          "a": "R2D2",
+          "w1": "r2d2",
+          "w2": "RD",
+          "w3": "22"
+        },
+        {
+          "p": "cod",
+          "u": "are_mare",
+          "d": "are_cifra",
+          "a": "orbita",
+          "w1": "Orbita",
+          "w2": "orbita9",
+          "w3": "O9"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
     }
   ]
 }

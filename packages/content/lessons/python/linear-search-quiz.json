@@ -260,18 +260,6 @@
         {
           "L": "7, 3, 9, 1",
           "t": 1
-        },
-        {
-          "L": "12, 5, 12, 8",
-          "t": 8
-        },
-        {
-          "L": "6, 2, 6, 2",
-          "t": 2
-        },
-        {
-          "L": "30, 10, 20",
-          "t": 30
         }
       ],
       "mistakes": [
@@ -297,21 +285,6 @@
           "L": "9, 1, 7",
           "t": 2,
           "u": 9
-        },
-        {
-          "L": "3, 6, 9, 12",
-          "t": 9,
-          "u": 10
-        },
-        {
-          "L": "20, 40, 60",
-          "t": 50,
-          "u": 60
-        },
-        {
-          "L": "5, 5, 1, 2",
-          "t": 1,
-          "u": 3
         }
       ],
       "mistakes": [
@@ -334,18 +307,6 @@
         {
           "L": "\"Boris\", \"Cara\", \"Dmitri\"",
           "t": "Cara"
-        },
-        {
-          "L": "\"Rex\", \"Ana\", \"Ben\", \"Ana\"",
-          "t": "Ana"
-        },
-        {
-          "L": "\"Kent\", \"Mercedes\", \"Victor\"",
-          "t": "Victor"
-        },
-        {
-          "L": "\"Sonny\", \"Lance\", \"Tommy\", \"Cortez\", \"Phil\"",
-          "t": "Tommy"
         }
       ],
       "mistakes": [
@@ -369,18 +330,6 @@
         {
           "L": "8, 3, 6",
           "t": 6
-        },
-        {
-          "L": "2, 4, 6, 8, 10, 12",
-          "t": 12
-        },
-        {
-          "L": "11, 22, 33, 44",
-          "t": 33
-        },
-        {
-          "L": "6, 7, 6, 7, 6",
-          "t": 7
         }
       ],
       "mistakes": [
@@ -410,14 +359,6 @@
         {
           "L": "7, 4, 9, 12, 3",
           "m": 8
-        },
-        {
-          "L": "55, 60, 75, 80",
-          "m": 70
-        },
-        {
-          "L": "3, 8, 5, 9, 6",
-          "m": 4
         }
       ],
       "mistakes": [
@@ -444,14 +385,6 @@
         {
           "L": "9, 9, 4",
           "t": 9
-        },
-        {
-          "L": "8, 1, 8",
-          "t": 8
-        },
-        {
-          "L": "6, 0, 6, 0, 0",
-          "t": 0
         }
       ],
       "mistakes": [
@@ -478,14 +411,6 @@
         {
           "L": "2, 5, 8, 5, 1",
           "t": 5
-        },
-        {
-          "L": "3, 6, 9, 6",
-          "t": 6
-        },
-        {
-          "L": "0, 1, 0, 1, 0, 2",
-          "t": 1
         }
       ],
       "mistakes": [
@@ -509,12 +434,6 @@
         },
         {
           "t": "Tommy"
-        },
-        {
-          "t": "Cortez"
-        },
-        {
-          "t": "Dmitri"
         }
       ],
       "mistakes": [
@@ -717,6 +636,194 @@
         }
       ],
       "bug": ["            return i", "            return items[i]"]
+    },
+    {
+      "id": "ls-input-target",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\n{{v}} = [{{L}}]\nprint(linear_search({{v}}, int(input())))",
+      "values": [
+        {
+          "v": "numbers",
+          "L": "4, 8, 15, 16, 23, 42",
+          "a": 16,
+          "w1": 3,
+          "w2": 23,
+          "w3": 15
+        },
+        {
+          "v": "numbers",
+          "L": "7, 2, 9, 5",
+          "a": 9,
+          "w1": 2,
+          "w2": 5,
+          "w3": 7
+        },
+        {
+          "v": "codes",
+          "L": "10, 20, 30, 40",
+          "a": 10,
+          "w1": 0,
+          "w2": 20,
+          "w3": 1
+        },
+        {
+          "v": "scores",
+          "L": "5, 3, 8, 3",
+          "a": 3,
+          "w1": 1,
+          "w2": 8,
+          "w3": 5
+        },
+        {
+          "v": "levels",
+          "L": "12, 7, 19, 4, 25",
+          "a": 25,
+          "w1": 4,
+          "w2": 19,
+          "w3": 5
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "ls-error-range",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def {{f}}(items, target):\n    for i in range(len(items) + 1):\n        if items[i] == target:\n            return i\n    return -1\n\nprint({{f}}([{{L}}], {{t}}))",
+      "values": [
+        {
+          "f": "linear_search",
+          "L": "4, 8, 15",
+          "t": 99
+        },
+        {
+          "f": "find",
+          "L": "7, 2, 9, 5",
+          "t": 1
+        },
+        {
+          "f": "search",
+          "L": "10, 20",
+          "t": 30
+        }
+      ],
+      "wrong": ["KeyError", "ValueError", "TypeError"]
+    },
+    {
+      "id": "ls-error-type",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{v}} = [{{L}}]\n{{l}} = \"{{m}}\"\nfor s in {{v}}:\n    if s > {{l}}:\n        print(s)",
+      "values": [
+        {
+          "v": "scores",
+          "L": "65, 42, 95",
+          "l": "limit",
+          "m": 50
+        },
+        {
+          "v": "speeds",
+          "L": "90, 120, 60",
+          "l": "limit",
+          "m": 100
+        }
+      ],
+      "wrong": ["ValueError", "NameError", "IndexError"]
+    },
+    {
+      "id": "ls-holds-last",
+      "kind": "holds",
+      "text": "What is in `{{last}}` at the end?",
+      "code": "{{v}} = [{{L}}]\n{{last}} = -1\nfor i in range(len({{v}})):\n    if {{v}}[i] == {{t}}:\n        {{last}} = i",
+      "values": [
+        {
+          "v": "crew",
+          "L": "\"Tommy\", \"Cara\", \"Tommy\", \"Boris\"",
+          "last": "last",
+          "t": "\"Tommy\""
+        },
+        {
+          "v": "numbers",
+          "L": "6, 8, 9, 8, 1",
+          "last": "last",
+          "t": 8
+        },
+        {
+          "v": "readings",
+          "L": "2, 8, 4, 8, 6, 8",
+          "last": "last",
+          "t": 8
+        },
+        {
+          "v": "codes",
+          "L": "\"A1\", \"B2\", \"A1\"",
+          "last": "last",
+          "t": "\"A1\""
+        },
+        {
+          "v": "numbers",
+          "L": "9, 9, 2",
+          "last": "last",
+          "t": 9
+        }
+      ],
+      "variable": "{{last}}",
+      "mistakes": [
+        ["        {{last}} = i", "        {{last}} = i\n        break"],
+        ["{{last}} = i", "{{last}} = {{v}}[i]"],
+        ["== {{t}}", "!= {{t}}"]
+      ]
+    },
+    {
+      "id": "ls-holds-pos",
+      "kind": "holds",
+      "text": "What is in `{{pos}}` at the end?",
+      "code": "{{w}} = \"{{s}}\"\n{{pos}} = -1\nfor i in range(len({{w}})):\n    if {{w}}[i] == \"{{ch}}\":\n        {{pos}} = i\n        break",
+      "values": [
+        {
+          "w": "word",
+          "s": "banana",
+          "pos": "pos",
+          "ch": "n",
+          "CH": "N"
+        },
+        {
+          "w": "word",
+          "s": "galaxy",
+          "pos": "pos",
+          "ch": "a",
+          "CH": "A"
+        },
+        {
+          "w": "word",
+          "s": "mississippi",
+          "pos": "pos",
+          "ch": "s",
+          "CH": "S"
+        },
+        {
+          "w": "word",
+          "s": "level",
+          "pos": "pos",
+          "ch": "e",
+          "CH": "E"
+        },
+        {
+          "w": "word",
+          "s": "cosmos",
+          "pos": "pos",
+          "ch": "o",
+          "CH": "O"
+        }
+      ],
+      "variable": "{{pos}}",
+      "mistakes": [
+        ["\n        break", ""],
+        ["{{pos}} = i", "{{pos}} = {{w}}[i]"],
+        ["== \"{{ch}}\"", "== \"{{CH}}\""]
+      ]
     }
   ]
 }

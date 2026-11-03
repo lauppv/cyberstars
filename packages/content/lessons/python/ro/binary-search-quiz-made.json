@@ -16,27 +16,6 @@
       "answer": 0
     },
     {
-      "id": "bs-find-9a3b3a",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [3, 6, 9, 12, 15, 18]\nprint(cautare_binara(numere, 18))",
-      "options": ["5", "18", "-1", "6"],
-      "answer": 0
-    },
-    {
-      "id": "bs-find-14afa8",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [10, 20, 30, 40, 50, 60, 70, 80]\nprint(cautare_binara(numere, 70))",
-      "options": ["6", "70", "-1", "7"],
-      "answer": 0
-    },
-    {
-      "id": "bs-find-611bc1",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [5, 7, 11, 13, 17, 19, 23]\nprint(cautare_binara(numere, 11))",
-      "options": ["2", "11", "-1", "3"],
-      "answer": 0
-    },
-    {
       "id": "bs-missing-7c7d50",
       "text": "Ce afișează?",
       "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]\nfor tinta in [13, 6]:\n    print(tinta, cautare_binara(numere, tinta))",
@@ -55,20 +34,6 @@
       "text": "Ce afișează?",
       "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [10, 20, 30, 40, 50]\nfor tinta in [10, 35]:\n    print(tinta, cautare_binara(numere, tinta))",
       "options": ["10 0\n35 -1", "10 0\n35 0", "10 10\n35 -1", "10 -1\n35 -1"],
-      "answer": 0
-    },
-    {
-      "id": "bs-missing-f89b36",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [5, 15, 25, 35, 45, 55, 65]\nfor tinta in [50, 65]:\n    print(tinta, cautare_binara(numere, tinta))",
-      "options": ["50 -1\n65 6", "50 0\n65 6", "50 -1\n65 65", "50 -1\n65 -1"],
-      "answer": 0
-    },
-    {
-      "id": "bs-missing-bc4000",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nnumere = [1, 2, 4, 8, 16, 32]\nfor tinta in [8, 3]:\n    print(tinta, cautare_binara(numere, tinta))",
-      "options": ["8 3\n3 -1", "8 3\n3 0", "8 8\n3 -1", "8 -1\n3 -1"],
       "answer": 0
     },
     {
@@ -103,25 +68,6 @@
       "answer": 0
     },
     {
-      "id": "bs-trace-f113f3",
-      "text": "Ce afișează?",
-      "code": "numere = [10, 20, 30, 40, 50, 60, 70]\ntinta = 50\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    print(stanga, mijloc, dreapta)\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
-      "options": ["0 3 6\n4 5 6\n4 4 4", "0 3 6\n5 5 6", "0 3 6\n4 5 6", "0 6\n4 6\n4 4"],
-      "answer": 0
-    },
-    {
-      "id": "bs-trace-a26eb5",
-      "text": "Ce afișează?",
-      "code": "numere = [1, 2, 3, 4, 5, 6, 7, 8, 9]\ntinta = 4\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    print(stanga, mijloc, dreapta)\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
-      "options": [
-        "0 4 8\n0 1 3\n2 2 3\n3 3 3",
-        "0 4 8\n0 1 3\n3 3 3",
-        "0 4 8\n0 1 2\n2 2 2",
-        "0 8\n0 3\n2 3\n3 3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "bs-checks-7c1106",
       "text": "Ce afișează?",
       "code": "numere = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]\ntinta = 19\nstanga = 0\ndreapta = len(numere) - 1\nverificari = 0\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    verificari += 1\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1\nprint(f\"Verificari: {verificari}\")",
@@ -139,20 +85,6 @@
       "id": "bs-checks-434d74",
       "text": "Ce afișează?",
       "code": "numere = [5, 10, 15, 20, 25, 30, 35]\ntinta = 35\nstanga = 0\ndreapta = len(numere) - 1\nverificari = 0\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    verificari += 1\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1\nprint(f\"Verificari: {verificari}\")",
-      "options": ["Verificari: 3", "Verificari: 1", "Verificari: 6", "Verificari: 4"],
-      "answer": 0
-    },
-    {
-      "id": "bs-checks-e6d28f",
-      "text": "Ce afișează?",
-      "code": "numere = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]\ntinta = 15\nstanga = 0\ndreapta = len(numere) - 1\nverificari = 0\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    verificari += 1\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1\nprint(f\"Verificari: {verificari}\")",
-      "options": ["Verificari: 4", "Verificari: 1", "Verificari: 8", "Verificari: 14"],
-      "answer": 0
-    },
-    {
-      "id": "bs-checks-352724",
-      "text": "Ce afișează?",
-      "code": "numere = [3, 6, 9, 12, 15]\ntinta = 6\nstanga = 0\ndreapta = len(numere) - 1\nverificari = 0\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    verificari += 1\n    if numere[mijloc] == tinta:\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1\nprint(f\"Verificari: {verificari}\")",
       "options": ["Verificari: 3", "Verificari: 1", "Verificari: 6", "Verificari: 4"],
       "answer": 0
     },
@@ -175,20 +107,6 @@
       "text": "Ce afișează?",
       "code": "def cautare_binara_recursiva(numere, tinta, stanga, dreapta):\n    if stanga > dreapta:\n        return -1\n    mijloc = (stanga + dreapta) // 2\n    if numere[mijloc] == tinta:\n        return mijloc\n    elif numere[mijloc] < tinta:\n        return cautare_binara_recursiva(numere, tinta, mijloc + 1, dreapta)\n    else:\n        return cautare_binara_recursiva(numere, tinta, stanga, mijloc - 1)\n\nnumere = [10, 20, 30, 40, 50, 60]\nprint(cautare_binara_recursiva(numere, 20, 0, len(numere) - 1))",
       "options": ["1", "20", "-1", "2"],
-      "answer": 0
-    },
-    {
-      "id": "bs-recursive-10896b",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara_recursiva(numere, tinta, stanga, dreapta):\n    if stanga > dreapta:\n        return -1\n    mijloc = (stanga + dreapta) // 2\n    if numere[mijloc] == tinta:\n        return mijloc\n    elif numere[mijloc] < tinta:\n        return cautare_binara_recursiva(numere, tinta, mijloc + 1, dreapta)\n    else:\n        return cautare_binara_recursiva(numere, tinta, stanga, mijloc - 1)\n\nnumere = [7, 14, 21, 28, 35, 42, 49]\nprint(cautare_binara_recursiva(numere, 49, 0, len(numere) - 1))",
-      "options": ["6", "49", "-1", "7"],
-      "answer": 0
-    },
-    {
-      "id": "bs-recursive-b26010",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara_recursiva(numere, tinta, stanga, dreapta):\n    if stanga > dreapta:\n        return -1\n    mijloc = (stanga + dreapta) // 2\n    if numere[mijloc] == tinta:\n        return mijloc\n    elif numere[mijloc] < tinta:\n        return cautare_binara_recursiva(numere, tinta, mijloc + 1, dreapta)\n    else:\n        return cautare_binara_recursiva(numere, tinta, stanga, mijloc - 1)\n\nnumere = [1, 4, 9, 16, 25]\nprint(cautare_binara_recursiva(numere, 16, 0, len(numere) - 1))",
-      "options": ["3", "16", "-1", "4"],
       "answer": 0
     },
     {
@@ -224,30 +142,6 @@
         "70 -> index 6\n15 -> index -1\n10 -> negasit\n45 -> index -1\nGasite: 3",
         "70 -> index 6\n15 -> negasit\n10 -> index 0\n45 -> negasit\nGasite: 0",
         "70 -> index 70\n15 -> negasit\n10 -> index 10\n45 -> negasit\nGasite: 2"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bs-mission-bd3e26",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\ncoduri = [1, 5, 9, 13, 17]\ninterogari = [6, 13]\ngasite = 0\nfor interogare in interogari:\n    index = cautare_binara(coduri, interogare)\n    if index == -1:\n        print(f\"{interogare} -> negasit\")\n    else:\n        print(f\"{interogare} -> index {index}\")\n        gasite += 1\nprint(f\"Gasite: {gasite}\")",
-      "options": [
-        "6 -> negasit\n13 -> index 3\nGasite: 1",
-        "6 -> index -1\n13 -> index 3\nGasite: 2",
-        "6 -> negasit\n13 -> index 3\nGasite: 0",
-        "6 -> negasit\n13 -> index 13\nGasite: 1"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bs-mission-50dda4",
-      "text": "Ce afișează?",
-      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\ncoduri = [4, 8, 12, 16, 20, 24, 28, 32]\ninterogari = [28, 4, 30]\ngasite = 0\nfor interogare in interogari:\n    index = cautare_binara(coduri, interogare)\n    if index == -1:\n        print(f\"{interogare} -> negasit\")\n    else:\n        print(f\"{interogare} -> index {index}\")\n        gasite += 1\nprint(f\"Gasite: {gasite}\")",
-      "options": [
-        "28 -> index 6\n4 -> index 0\n30 -> negasit\nGasite: 2",
-        "28 -> index 6\n4 -> negasit\n30 -> index -1\nGasite: 2",
-        "28 -> index 6\n4 -> index 0\n30 -> negasit\nGasite: 0",
-        "28 -> index 28\n4 -> index 4\n30 -> negasit\nGasite: 2"
       ],
       "answer": 0
     },
@@ -684,6 +578,102 @@
         "dreapta = mijloc - 1",
         "return -1"
       ],
+      "answer": 0
+    },
+    {
+      "id": "bin-holds-index-b954bd",
+      "text": "Ce conține `pozitie` la final?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\npozitie = cautare_binara([1, 3, 5, 7, 9, 11, 13], 13)",
+      "options": ["6", "13", "-1", "7"],
+      "answer": 0
+    },
+    {
+      "id": "bin-holds-index-5267c6",
+      "text": "Ce conține `pozitie` la final?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\npozitie = cautare_binara([2, 4, 6, 8, 10], 10)",
+      "options": ["4", "10", "-1", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bin-holds-index-4d2baf",
+      "text": "Ce conține `pozitie` la final?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\npozitie = cautare_binara([10, 20, 30, 40, 50, 60, 70], 10)",
+      "options": ["0", "10", "-1", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bin-holds-index-7a29b3",
+      "text": "Ce conține `pozitie` la final?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\npozitie = cautare_binara([5, 15, 25, 35], 35)",
+      "options": ["3", "35", "-1", "4"],
+      "answer": 0
+    },
+    {
+      "id": "bin-input-target-033de9",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([1, 3, 5, 7, 9, 11, 13], int(input())))",
+      "output": "4",
+      "options": ["9", "4", "11", "8"],
+      "answer": 0
+    },
+    {
+      "id": "bin-input-target-1e7f19",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([2, 4, 6, 8, 10], int(input())))",
+      "output": "1",
+      "options": ["4", "1", "6", "2"],
+      "answer": 0
+    },
+    {
+      "id": "bin-input-target-2f8176",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([10, 20, 30, 40, 50], int(input())))",
+      "output": "0",
+      "options": ["10", "0", "20", "1"],
+      "answer": 0
+    },
+    {
+      "id": "bin-input-target-3dc7ad",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([5, 15, 25, 35], int(input())))",
+      "output": "3",
+      "options": ["35", "3", "25", "36"],
+      "answer": 0
+    },
+    {
+      "id": "bin-input-target-ea7c9e",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([3, 6, 9, 12, 15, 18], int(input())))",
+      "output": "2",
+      "options": ["9", "2", "12", "6"],
+      "answer": 0
+    },
+    {
+      "id": "bin-error-float-f48cec",
+      "text": "Ce eroare oprește acest program?",
+      "code": "numere = [1, 3, 5, 7]\nstanga = 0\ndreapta = len(numere) - 1\nmijloc = (stanga + dreapta) / 2\nprint(numere[mijloc])",
+      "options": ["TypeError", "IndexError", "ValueError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "bin-error-float-c9b3b0",
+      "text": "Ce eroare oprește acest program?",
+      "code": "numere = [2, 4, 6, 8, 10, 12]\nstanga = 0\ndreapta = len(numere) - 1\nmijloc = (stanga + dreapta) / 2\nprint(numere[mijloc])",
+      "options": ["TypeError", "IndexError", "ValueError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "bin-error-right-1f0d90",
+      "text": "Ce eroare oprește acest program?",
+      "code": "numere = [1, 3, 5]\ntinta = 9\nstanga = 0\ndreapta = len(numere)\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    if numere[mijloc] == tinta:\n        print(mijloc)\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "bin-error-right-aa9402",
+      "text": "Ce eroare oprește acest program?",
+      "code": "numere = [10, 20, 30, 40]\ntinta = 50\nstanga = 0\ndreapta = len(numere)\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    if numere[mijloc] == tinta:\n        print(mijloc)\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
       "answer": 0
     }
   ]

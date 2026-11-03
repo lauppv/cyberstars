@@ -341,24 +341,6 @@
           "a": "pizza",
           "b": "soup",
           "c": "large"
-        },
-        {
-          "f": "paint",
-          "p": "car",
-          "q": "color",
-          "d": "red",
-          "a": "Infernus",
-          "b": "Sabre",
-          "c": "blue"
-        },
-        {
-          "f": "land",
-          "p": "planet",
-          "q": "ship",
-          "d": "Nova",
-          "a": "Mars",
-          "b": "Titan",
-          "c": "Orion"
         }
       ],
       "mistakes": [
@@ -399,24 +381,6 @@
           "d": 10,
           "op": "*",
           "a": 4,
-          "b": 3
-        },
-        {
-          "f": "discount",
-          "p": "price",
-          "q": "off",
-          "d": 10,
-          "op": "-",
-          "a": 50,
-          "b": 20
-        },
-        {
-          "f": "level_up",
-          "p": "level",
-          "q": "step",
-          "d": 1,
-          "op": "+",
-          "a": 5,
           "b": 3
         }
       ],
@@ -465,17 +429,6 @@
           "w": "launched from",
           "a": "Orion",
           "x": "live"
-        },
-        {
-          "f": "paint",
-          "p": "car",
-          "q": "color",
-          "r": "finish",
-          "dq": "red",
-          "dr": "matte",
-          "w": "painted",
-          "a": "Infernus",
-          "x": "gloss"
         }
       ],
       "mistakes": [
@@ -511,13 +464,6 @@
           "d": 50,
           "v": 120,
           "label": "Speed"
-        },
-        {
-          "f": "new_game",
-          "p": "lives",
-          "d": 3,
-          "v": 1,
-          "label": "Lives"
         }
       ],
       "mistakes": [
@@ -1183,6 +1129,84 @@
         }
       ],
       "bug": ["print({{f}}({{b}}, {{c}}))", "print({{f}}({{c}}, {{b}}))"]
+    },
+    {
+      "id": "dp-error-order",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def {{f}}({{p}}={{d}}, {{q}}):\n    print({{p}}, {{q}})\n\n{{f}}({{a}}, {{b}})",
+      "values": [
+        {
+          "f": "start",
+          "p": "level",
+          "d": 1,
+          "q": "lives",
+          "a": 2,
+          "b": 3
+        },
+        {
+          "f": "dock",
+          "p": "bay",
+          "d": "\"A1\"",
+          "q": "ship",
+          "a": "\"B2\"",
+          "b": "\"Nova\""
+        }
+      ],
+      "wrong": ["TypeError", "NameError", "IndexError"]
+    },
+    {
+      "id": "dp-error-missing",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def {{f}}({{p}}, {{q}}={{d}}):\n    return {{p}} + {{q}}\n\nprint({{f}}())",
+      "values": [
+        {
+          "f": "add_bonus",
+          "p": "score",
+          "q": "bonus",
+          "d": 10
+        },
+        {
+          "f": "refuel",
+          "p": "fuel",
+          "q": "extra",
+          "d": 5
+        }
+      ],
+      "wrong": ["SyntaxError", "NameError", "KeyError"]
+    },
+    {
+      "id": "dp-holds-label",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{d}}\"):\n    return {{p}} + {{q}}\n\n{{v}} = {{f}}(\"{{a}}\")\n{{v}} = {{f}}({{v}}, \"{{b}}\")",
+      "values": [
+        {
+          "f": "label",
+          "p": "text",
+          "q": "mark",
+          "d": "!",
+          "a": "Go",
+          "b": "?",
+          "v": "sign"
+        },
+        {
+          "f": "tag",
+          "p": "name",
+          "q": "end",
+          "d": ".",
+          "a": "Ana",
+          "b": "!",
+          "v": "note"
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["{{v}} = {{f}}({{v}}, \"{{b}}\")", "{{f}}({{v}}, \"{{b}}\")"],
+        ["{{v}} = {{f}}({{v}}, \"{{b}}\")", "{{v}} = {{f}}(\"{{a}}\", \"{{b}}\")"],
+        ["return {{p}} + {{q}}", "return {{q}} + {{p}}"]
+      ]
     }
   ]
 }

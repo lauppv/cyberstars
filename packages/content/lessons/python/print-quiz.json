@@ -290,15 +290,6 @@
         },
         {
           "text": "I have 3 cats"
-        },
-        {
-          "text": "10 + 5"
-        },
-        {
-          "text": "Python is fun"
-        },
-        {
-          "text": "See you tomorrow"
         }
       ],
       "mistakes": [
@@ -418,11 +409,6 @@
           "a": "Red",
           "b": "Yellow",
           "c": "Green"
-        },
-        {
-          "a": "Ana",
-          "b": "Ben",
-          "c": "Cris"
         }
       ],
       "mistakes": [
@@ -570,10 +556,6 @@
         {
           "v": "Lance",
           "text": "Hello there"
-        },
-        {
-          "v": "Paul",
-          "text": "Pizza time"
         }
       ],
       "mistakes": [
@@ -634,10 +616,6 @@
         {
           "a": 10,
           "b": 5
-        },
-        {
-          "a": 7,
-          "b": 3
         }
       ],
       "mistakes": [
@@ -657,9 +635,6 @@
         },
         {
           "n": 4
-        },
-        {
-          "n": 99
         }
       ],
       "mistakes": [
@@ -721,10 +696,6 @@
         {
           "name": "Ana",
           "age": 12
-        },
-        {
-          "name": "Paul",
-          "age": 40
         }
       ],
       "mistakes": [
@@ -818,11 +789,6 @@
           "a": 5,
           "b": 10,
           "c": 100
-        },
-        {
-          "a": 2,
-          "b": 3,
-          "c": 4
         }
       ],
       "mistakes": [
@@ -852,6 +818,95 @@
         ["# print(\"{{b}}\")", "print(\"{{b}}\")"],
         ["print(\"{{c}}\")", "# print(\"{{c}}\")"],
         ["print(\"{{a}}\")\n", "# print(\"{{a}}\")\n"]
+      ]
+    },
+    {
+      "id": "fs-holds-join",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{v}} = \"{{a}}\"\n{{v}} = {{v}} + \"{{b}}\"",
+      "values": [
+        {
+          "v": "greeting",
+          "a": "Hello",
+          "b": ", Tommy"
+        },
+        {
+          "v": "label",
+          "a": "Level ",
+          "b": "3"
+        },
+        {
+          "v": "code",
+          "a": "AB",
+          "b": "12"
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["{{v}} = {{v}} + \"{{b}}\"", "{{v}} + \"{{b}}\""],
+        ["{{v}} + \"{{b}}\"", "\"{{b}}\" + {{v}}"],
+        ["{{v}} + \"{{b}}\"", "\"{{b}}\""],
+        ["{{v}} + \"{{b}}\"", "\"{{v}}\" + \"{{b}}\""]
+      ]
+    },
+    {
+      "id": "fs-holds-steps",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{v}} = {{a}}\n{{v}} = {{v}} + {{b}}\n{{v}} = {{v}} * 2",
+      "values": [
+        {
+          "v": "score",
+          "a": 3,
+          "b": 4
+        },
+        {
+          "v": "lives",
+          "a": 5,
+          "b": 1
+        },
+        {
+          "v": "coins",
+          "a": 10,
+          "b": 5
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["{{v}} = {{v}} * 2", "{{v}} * 2"],
+        ["{{v}} = {{v}} + {{b}}\n{{v}} = {{v}} * 2", "{{v}} = {{v}} * 2\n{{v}} = {{v}} + {{b}}"],
+        ["{{v}} = {{v}} + {{b}}", "{{v}} = {{b}}"],
+        ["{{a}}", "\"{{a}}\""]
+      ]
+    },
+    {
+      "id": "fs-holds-fstring",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "name = \"{{n}}\"\nage = {{a}}\n{{v}} = f\"{name} is {age}\"",
+      "values": [
+        {
+          "v": "line",
+          "n": "Tommy",
+          "a": 42
+        },
+        {
+          "v": "line",
+          "n": "Lance",
+          "a": 35
+        },
+        {
+          "v": "card",
+          "n": "Cortez",
+          "a": 60
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["f\"{name} is {age}\"", "\"{name} is {age}\""],
+        ["{age}", "age"],
+        ["{name}", "name"]
       ]
     }
   ]

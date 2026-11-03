@@ -16,27 +16,6 @@
       "answer": 0
     },
     {
-      "id": "rps-clean-2ec7d0",
-      "text": "Ce afișează?",
-      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\nprint(curata_text(\"Marte, Venus!\"))",
-      "options": ["martevenus", "MarteVenus", ", !", "s"],
-      "answer": 0
-    },
-    {
-      "id": "rps-clean-65553b",
-      "text": "Ce afișează?",
-      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\nprint(curata_text(\"R2-D2 Pornit\"))",
-      "options": ["rdpornit", "RDPornit", "2-2", "t"],
-      "answer": 0
-    },
-    {
-      "id": "rps-clean-1ae19e",
-      "text": "Ce afișează?",
-      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\nprint(curata_text(\"Orbita 42 OK\"))",
-      "options": ["orbitaok", "OrbitaOK", " 42", "k"],
-      "answer": 0
-    },
-    {
       "id": "rps-pal-steps-276d4d",
       "text": "Ce afișează?",
       "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        print(cuvant[stanga], cuvant[dreapta])\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nprint(este_palindrom(\"radar\"))",
@@ -48,27 +27,6 @@
       "text": "Ce afișează?",
       "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        print(cuvant[stanga], cuvant[dreapta])\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nprint(este_palindrom(\"stres\"))",
       "options": ["s s\nt e\nFalse", "s s\nt e\nFalse\nTrue", "s s\nt r\nFalse", "s e\nFalse"],
-      "answer": 0
-    },
-    {
-      "id": "rps-pal-steps-86a1d1",
-      "text": "Ce afișează?",
-      "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        print(cuvant[stanga], cuvant[dreapta])\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nprint(este_palindrom(\"rotor\"))",
-      "options": ["r r\no o\nTrue", "r r\no t\nFalse", "r o\nFalse", "r r\nr o\nFalse"],
-      "answer": 0
-    },
-    {
-      "id": "rps-pal-steps-803aa6",
-      "text": "Ce afișează?",
-      "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        print(cuvant[stanga], cuvant[dreapta])\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nprint(este_palindrom(\"tort\"))",
-      "options": ["t t\no r\nFalse", "t t\no r\nFalse\nTrue", "t t\nTrue", "t r\nFalse"],
-      "answer": 0
-    },
-    {
-      "id": "rps-pal-steps-44fa06",
-      "text": "Ce afișează?",
-      "code": "def este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        print(cuvant[stanga], cuvant[dreapta])\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nprint(este_palindrom(\"capac\"))",
-      "options": ["c c\na a\nTrue", "c c\na p\nFalse", "c a\nFalse", "c c\nc a\nFalse"],
       "answer": 0
     },
     {
@@ -92,42 +50,6 @@
         "False\n['a', 'e', 'm', 'r']",
         "True\nmare",
         "True\n['M', 'a', 'e', 'r']"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rps-anagram-697a6f",
-      "text": "Ce afișează?",
-      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef sunt_anagrame(a, b):\n    return sorted(curata_text(a)) == sorted(curata_text(b))\n\nprint(sunt_anagrame(\"Lac\", \"cal!\"))\nprint(sorted(curata_text(\"Lac\")))",
-      "options": [
-        "True\n['a', 'c', 'l']",
-        "False\n['a', 'c', 'l']",
-        "True\nlac",
-        "True\n['L', 'a', 'c']"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rps-anagram-1b20d9",
-      "text": "Ce afișează?",
-      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef sunt_anagrame(a, b):\n    return sorted(curata_text(a)) == sorted(curata_text(b))\n\nprint(sunt_anagrame(\"Rac\", \"car!\"))\nprint(sorted(curata_text(\"Rac\")))",
-      "options": [
-        "True\n['a', 'c', 'r']",
-        "False\n['a', 'c', 'r']",
-        "True\nrac",
-        "True\n['R', 'a', 'c']"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rps-anagram-5ec897",
-      "text": "Ce afișează?",
-      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef sunt_anagrame(a, b):\n    return sorted(curata_text(a)) == sorted(curata_text(b))\n\nprint(sunt_anagrame(\"Sare\", \"rase\"))\nprint(sorted(curata_text(\"Sare\")))",
-      "options": [
-        "True\n['a', 'e', 'r', 's']",
-        "False\n['a', 'e', 'r', 's']",
-        "True\nsare",
-        "True\n['S', 'a', 'e', 'r']"
       ],
       "answer": 0
     },
@@ -156,42 +78,6 @@
       "answer": 0
     },
     {
-      "id": "rps-reverse-words-8aaff9",
-      "text": "Ce afișează?",
-      "code": "def inverseaza_cuvinte(propozitie):\n    cuvinte = propozitie.split(\" \")\n    return \" \".join(cuvinte[::-1])\n\nprint(inverseaza_cuvinte(\"tot echipajul pe punte\"))",
-      "options": [
-        "punte pe echipajul tot",
-        "tot echipajul pe punte",
-        "puntepeechipajultot",
-        "etnup ep lujapihce tot"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rps-reverse-words-e7b497",
-      "text": "Ce afișează?",
-      "code": "def inverseaza_cuvinte(propozitie):\n    cuvinte = propozitie.split(\" \")\n    return \" \".join(cuvinte[::-1])\n\nprint(inverseaza_cuvinte(\"semnal pierdut din nou\"))",
-      "options": [
-        "nou din pierdut semnal",
-        "semnal pierdut din nou",
-        "noudinpierdutsemnal",
-        "uon nid tudreip lanmes"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rps-reverse-words-c941dd",
-      "text": "Ce afișează?",
-      "code": "def inverseaza_cuvinte(propozitie):\n    cuvinte = propozitie.split(\" \")\n    return \" \".join(cuvinte[::-1])\n\nprint(inverseaza_cuvinte(\"motoarele sunt gata\"))",
-      "options": [
-        "gata sunt motoarele",
-        "motoarele sunt gata",
-        "gatasuntmotoarele",
-        "atag tnus eleraotom"
-      ],
-      "answer": 0
-    },
-    {
       "id": "rps-filter-bf1a2d",
       "text": "Ce afișează?",
       "code": "citiri = [45, 82, 96, 38, 91]\namplificate = [min(r + 5, 100) for r in citiri if r >= 50]\nprint(amplificate)\nprint(len(amplificate))",
@@ -203,27 +89,6 @@
       "text": "Ce afișează?",
       "code": "citiri = [70, 20, 99, 60]\namplificate = [min(r + 10, 100) for r in citiri if r >= 60]\nprint(amplificate)\nprint(len(amplificate))",
       "options": ["[80, 100, 70]\n3", "[80, 100]\n2", "[80, 109, 70]\n3", "[30]\n1"],
-      "answer": 0
-    },
-    {
-      "id": "rps-filter-c131a2",
-      "text": "Ce afișează?",
-      "code": "citiri = [55, 49, 97, 30, 75]\namplificate = [min(r + 5, 100) for r in citiri if r >= 50]\nprint(amplificate)\nprint(len(amplificate))",
-      "options": ["[60, 100, 80]\n3", "[60, 102, 80]\n3", "[54, 35]\n2", "[100, 102, 100]\n3"],
-      "answer": 0
-    },
-    {
-      "id": "rps-filter-7a7352",
-      "text": "Ce afișează?",
-      "code": "citiri = [88, 92, 15, 40]\namplificate = [min(r + 10, 100) for r in citiri if r >= 40]\nprint(amplificate)\nprint(len(amplificate))",
-      "options": ["[98, 100, 50]\n3", "[98, 100]\n2", "[98, 102, 50]\n3", "[25]\n1"],
-      "answer": 0
-    },
-    {
-      "id": "rps-filter-9b1f0a",
-      "text": "Ce afișează?",
-      "code": "citiri = [65, 95, 35]\namplificate = [min(r + 8, 100) for r in citiri if r >= 65]\nprint(amplificate)\nprint(len(amplificate))",
-      "options": ["[73, 100]\n2", "[100]\n1", "[73, 103]\n2", "[43]\n1"],
       "answer": 0
     },
     {
@@ -243,32 +108,6 @@
       "text": "Ce afișează?",
       "code": "def perechi_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nrezultat = perechi_cu_suma([1, 3, 4, 6, 8], 9)\nprint(rezultat)\nprint(len(rezultat))",
       "options": ["[(1, 8), (3, 6)]\n2", "[1, 3]\n2", "[(1, 8)]\n1", "[(1, 8), (3, 6)]\n4"],
-      "answer": 0
-    },
-    {
-      "id": "rps-pairs-ed39d3",
-      "text": "Ce afișează?",
-      "code": "def perechi_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nrezultat = perechi_cu_suma([2, 4, 5, 6, 7, 9], 11)\nprint(rezultat)\nprint(len(rezultat))",
-      "options": [
-        "[(2, 9), (4, 7), (5, 6)]\n3",
-        "[2, 4, 5]\n3",
-        "[(2, 9), (5, 6)]\n2",
-        "[(2, 9), (4, 7), (5, 6)]\n6"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rps-pairs-91a93e",
-      "text": "Ce afișează?",
-      "code": "def perechi_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nrezultat = perechi_cu_suma([1, 2, 5, 8, 10], 10)\nprint(rezultat)\nprint(len(rezultat))",
-      "options": ["[(2, 8)]\n1", "[(2, 8), (5, 5)]\n2", "[2]\n1", "[(2, 8)]\n2"],
-      "answer": 0
-    },
-    {
-      "id": "rps-pairs-60df96",
-      "text": "Ce afișează?",
-      "code": "def perechi_cu_suma(numere, tinta):\n    perechi = []\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga < dreapta:\n        suma_curenta = numere[stanga] + numere[dreapta]\n        if suma_curenta == tinta:\n            perechi.append((numere[stanga], numere[dreapta]))\n            stanga += 1\n            dreapta -= 1\n        elif suma_curenta < tinta:\n            stanga += 1\n        else:\n            dreapta -= 1\n    return perechi\n\nrezultat = perechi_cu_suma([3, 4, 5, 6, 7], 10)\nprint(rezultat)\nprint(len(rezultat))",
-      "options": ["[(3, 7), (4, 6)]\n2", "[(3, 7), (4, 6), (5, 5)]\n3", "[3, 4]\n2", "[(3, 7)]\n1"],
       "answer": 0
     },
     {
@@ -293,20 +132,6 @@
         "Enepurtapatrupene\nFalse",
         "Ene purta patru pene\nTrue"
       ],
-      "answer": 0
-    },
-    {
-      "id": "rps-toolkit-20c0ee",
-      "text": "Ce afișează?",
-      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\ntext = \"Rara bara\"\nprint(curata_text(text))\nprint(este_palindrom(curata_text(text)))",
-      "options": ["rarabara\nFalse", "Rarabara\nFalse", "Rara bara\nFalse", "\nTrue"],
-      "answer": 0
-    },
-    {
-      "id": "rps-toolkit-c97a99",
-      "text": "Ce afișează?",
-      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\ntext = \"Sus, cu capac\"\nprint(curata_text(text))\nprint(este_palindrom(curata_text(text)))",
-      "options": ["suscucapac\nFalse", "Suscucapac\nFalse", "Sus, cu capac\nFalse", ",\nFalse"],
       "answer": 0
     },
     {
@@ -690,6 +515,170 @@
         "print(numere[stanga], numere[dreapta], suma_curenta)",
         "suma_curenta = numere[stanga] + numere[dreapta]"
       ],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-clean-8437ac",
+      "text": "Ce conține `curatat` la final?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ncuratat = curata_text(\"Salut, Lume!\")",
+      "options": ["'salutlume'", "'s'", "'SalutLume'", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-clean-ddcfb6",
+      "text": "Ce conține `curatat` la final?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ncuratat = curata_text(\"Ele fac\")",
+      "options": ["'elefac'", "'e'", "'Elefac'", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-clean-a44b7b",
+      "text": "Ce conține `curatat` la final?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ncuratat = curata_text(\"A1 B2\")",
+      "options": ["'ab'", "'a'", "'AB'", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-clean-5b9a66",
+      "text": "Ce conține `curatat` la final?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ncuratat = curata_text(\"Vice City 86\")",
+      "options": ["'vicecity'", "'v'", "'ViceCity'", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-reverse-3257c2",
+      "text": "Ce conține `invers` la final?",
+      "code": "cuvinte = \"sistemul este pornit\".split(\" \")\ninvers = \" \".join(cuvinte[::-1])",
+      "options": [
+        "'pornit este sistemul'",
+        "'sistemul este pornit'",
+        "'pornitestesistemul'",
+        "['pornit', 'este', 'sistemul']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-reverse-e18311",
+      "text": "Ce conține `invers` la final?",
+      "code": "cuvinte = \"mergi spre Marte\".split(\" \")\ninvers = \" \".join(cuvinte[::-1])",
+      "options": [
+        "'Marte spre mergi'",
+        "'mergi spre Marte'",
+        "'Martespremergi'",
+        "['Marte', 'spre', 'mergi']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-reverse-7d554a",
+      "text": "Ce conține `invers` la final?",
+      "code": "cuvinte = \"tot echipajul pe punte\".split(\" \")\ninvers = \" \".join(cuvinte[::-1])",
+      "options": [
+        "'punte pe echipajul tot'",
+        "'tot echipajul pe punte'",
+        "'puntepeechipajultot'",
+        "['punte', 'pe', 'echipajul', 'tot']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-reverse-3dd99c",
+      "text": "Ce conține `invers` la final?",
+      "code": "cuvinte = \"combustibil putin acum\".split(\" \")\ninvers = \" \".join(cuvinte[::-1])",
+      "options": [
+        "'acum putin combustibil'",
+        "'combustibil putin acum'",
+        "'acumputincombustibil'",
+        "['acum', 'putin', 'combustibil']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-pairs-2fa9fe",
+      "text": "Ce conține `perechi` la final?",
+      "code": "numere = [1, 2, 4, 6, 7]\nperechi = []\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga < dreapta:\n    suma = numere[stanga] + numere[dreapta]\n    if suma == 8:\n        perechi.append((numere[stanga], numere[dreapta]))\n        stanga += 1\n        dreapta -= 1\n    elif suma < 8:\n        stanga += 1\n    else:\n        dreapta -= 1",
+      "options": ["[(1, 7), (2, 6)]", "[(0, 4), (1, 3)]", "[(1, 7), (2, 6), (4, 4)]", "[(2, 6)]"],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-pairs-e025a9",
+      "text": "Ce conține `perechi` la final?",
+      "code": "numere = [1, 3, 5, 7, 9]\nperechi = []\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga < dreapta:\n    suma = numere[stanga] + numere[dreapta]\n    if suma == 10:\n        perechi.append((numere[stanga], numere[dreapta]))\n        stanga += 1\n        dreapta -= 1\n    elif suma < 10:\n        stanga += 1\n    else:\n        dreapta -= 1",
+      "options": ["[(1, 9), (3, 7)]", "[(0, 4), (1, 3)]", "[(1, 9), (3, 7), (5, 5)]", "[(3, 7)]"],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-pairs-9064c1",
+      "text": "Ce conține `perechi` la final?",
+      "code": "numere = [2, 3, 4, 5, 6]\nperechi = []\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga < dreapta:\n    suma = numere[stanga] + numere[dreapta]\n    if suma == 8:\n        perechi.append((numere[stanga], numere[dreapta]))\n        stanga += 1\n        dreapta -= 1\n    elif suma < 8:\n        stanga += 1\n    else:\n        dreapta -= 1",
+      "options": ["[(2, 6), (3, 5)]", "[(0, 4), (1, 3)]", "[(2, 6), (3, 5), (4, 4)]", "[(3, 5)]"],
+      "answer": 0
+    },
+    {
+      "id": "rps-holds-pairs-e532db",
+      "text": "Ce conține `perechi` la final?",
+      "code": "numere = [1, 4, 5, 6, 9]\nperechi = []\nstanga = 0\ndreapta = len(numere) - 1\nwhile stanga < dreapta:\n    suma = numere[stanga] + numere[dreapta]\n    if suma == 10:\n        perechi.append((numere[stanga], numere[dreapta]))\n        stanga += 1\n        dreapta -= 1\n    elif suma < 10:\n        stanga += 1\n    else:\n        dreapta -= 1",
+      "options": ["[(1, 9), (4, 6)]", "[(0, 4), (1, 3)]", "[(1, 9), (4, 6), (5, 5)]", "[(4, 6)]"],
+      "answer": 0
+    },
+    {
+      "id": "rps-input-pal-9fcf79",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "text = input()\ncuratat = \"\"\nfor ch in text:\n    if ch.isalpha():\n        curatat += ch.lower()\nprint(curatat == curatat[::-1])",
+      "output": "True",
+      "options": ["Ele fac cafele", "Ele fac cafea", "Ele fac", "Elefanti"],
+      "answer": 0
+    },
+    {
+      "id": "rps-input-pal-e054d9",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "rand = input()\nlitere = \"\"\nfor ch in rand:\n    if ch.isalpha():\n        litere += ch.lower()\nprint(litere == litere[::-1])",
+      "output": "True",
+      "options": ["Capac", "Capace", "Capat", "Cap"],
+      "answer": 0
+    },
+    {
+      "id": "rps-input-pal-feb360",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "text = input()\ncuratat = \"\"\nfor ch in text:\n    if ch.isalpha():\n        curatat += ch.lower()\nprint(curatat == curatat[::-1])",
+      "output": "False",
+      "options": ["Salut", "Radar", "Ele!", "Cojoc"],
+      "answer": 0
+    },
+    {
+      "id": "rps-input-pal-4d5d86",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "rand = input()\nlitere = \"\"\nfor ch in rand:\n    if ch.isalpha():\n        litere += ch.lower()\nprint(litere == litere[::-1])",
+      "output": "False",
+      "options": ["Vice City", "Ana", "Rotitor", "Ele fac cafele"],
+      "answer": 0
+    },
+    {
+      "id": "rps-error-split-e08065",
+      "text": "Ce eroare oprește acest program?",
+      "code": "cuvinte = \"sistemul este pornit\".split(\" \")\nprint(cuvinte[3])",
+      "options": ["IndexError", "KeyError", "ValueError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "rps-error-split-9bf792",
+      "text": "Ce eroare oprește acest program?",
+      "code": "cuvinte = \"mergi spre Marte\".split(\" \")\nprint(cuvinte[5])",
+      "options": ["IndexError", "KeyError", "ValueError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "rps-error-int-f4d9a3",
+      "text": "Ce eroare oprește acest program?",
+      "code": "citire = \"4.5\"\nprint(int(citire) + 1)",
+      "options": ["ValueError", "TypeError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "rps-error-int-7fe434",
+      "text": "Ce eroare oprește acest program?",
+      "code": "citire = \"abc\"\nprint(int(citire) + 1)",
+      "options": ["ValueError", "TypeError", "NameError", "IndexError"],
       "answer": 0
     }
   ]

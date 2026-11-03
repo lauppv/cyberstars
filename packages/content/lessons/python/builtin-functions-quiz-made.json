@@ -14,42 +14,6 @@
       "answer": 0
     },
     {
-      "id": "bi-sum-20fc97",
-      "text": "What does this print?",
-      "code": "prices = [10, 20, 30]\ntotal = sum(prices)\nprint(f\"Total: {total}\")\nprint(f\"Average: {total / len(prices)}\")",
-      "options": [
-        "Total: 60\nAverage: 20.0",
-        "Total: 30\nAverage: 10.0",
-        "Total: 3\nAverage: 1.0",
-        "Total: 60\nAverage: 20"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bi-sum-112b2b",
-      "text": "What does this print?",
-      "code": "points = [12, 7, 5, 8]\ntotal = sum(points)\nprint(f\"Total: {total}\")\nprint(f\"Average: {total / len(points)}\")",
-      "options": [
-        "Total: 32\nAverage: 8.0",
-        "Total: 12\nAverage: 3.0",
-        "Total: 4\nAverage: 1.0",
-        "Total: 32\nAverage: 8"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bi-sum-375443",
-      "text": "What does this print?",
-      "code": "fuel = [15, 25, 40, 20]\ntotal = sum(fuel)\nprint(f\"Total: {total}\")\nprint(f\"Average: {total / len(fuel)}\")",
-      "options": [
-        "Total: 100\nAverage: 25.0",
-        "Total: 40\nAverage: 10.0",
-        "Total: 4\nAverage: 1.0",
-        "Total: 100\nAverage: 25"
-      ],
-      "answer": 0
-    },
-    {
       "id": "bi-sorted-copy-743746",
       "text": "What does this print?",
       "code": "numbers = [5, 2, 8, 1]\nordered = sorted(numbers)\nprint(ordered)\nprint(numbers)",
@@ -74,18 +38,6 @@
       "answer": 0
     },
     {
-      "id": "bi-sorted-copy-def2da",
-      "text": "What does this print?",
-      "code": "codes = [9, 4, 6]\nordered = sorted(codes)\nprint(ordered)\nprint(codes)",
-      "options": [
-        "[4, 6, 9]\n[9, 4, 6]",
-        "[9, 6, 4]\n[9, 4, 6]",
-        "[4, 6, 9]\n[4, 6, 9]",
-        "[9, 4, 6]\n[4, 6, 9]"
-      ],
-      "answer": 0
-    },
-    {
       "id": "bi-reverse-39f491",
       "text": "What does this print?",
       "code": "scores = [88, 100, 47, 73]\nprint(sorted(scores, reverse=True))",
@@ -101,25 +53,6 @@
         "['Cortez', 'Lance', 'Phil', 'Tommy']",
         "['Tommy', 'Lance', 'Cortez', 'Phil']",
         "Tommy"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bi-reverse-def005",
-      "text": "What does this print?",
-      "code": "heights = [3, 9, 1, 6]\nprint(sorted(heights, reverse=True))",
-      "options": ["[9, 6, 3, 1]", "[1, 3, 6, 9]", "[3, 9, 1, 6]", "9"],
-      "answer": 0
-    },
-    {
-      "id": "bi-reverse-2953b8",
-      "text": "What does this print?",
-      "code": "planets = [\"Mars\", \"Venus\", \"Earth\"]\nprint(sorted(planets, reverse=True))",
-      "options": [
-        "['Venus', 'Mars', 'Earth']",
-        "['Earth', 'Mars', 'Venus']",
-        "['Mars', 'Venus', 'Earth']",
-        "Venus"
       ],
       "answer": 0
     },
@@ -148,18 +81,6 @@
       "answer": 0
     },
     {
-      "id": "bi-enum-a480e5",
-      "text": "What does this print?",
-      "code": "cars = [\"Cheetah\", \"Sabre\", \"Infernus\", \"Banshee\"]\nfor i, name in enumerate(cars):\n    print(f\"{i}: {name}\")",
-      "options": [
-        "0: Cheetah\n1: Sabre\n2: Infernus\n3: Banshee",
-        "Cheetah: 0\nSabre: 1\nInfernus: 2\nBanshee: 3",
-        "1: Cheetah\n2: Sabre\n3: Infernus\n4: Banshee",
-        "Cheetah\nSabre\nInfernus\nBanshee"
-      ],
-      "answer": 0
-    },
-    {
       "id": "bi-zip-3aa132",
       "text": "What does this print?",
       "code": "crew = [\"Tommy\", \"Boris\", \"Cara\"]\nscores = [88, 100, 47]\nfor name, score in zip(crew, scores):\n    print(f\"{name}: {score}\")",
@@ -184,25 +105,6 @@
       "answer": 0
     },
     {
-      "id": "bi-zip-df3d88",
-      "text": "What does this print?",
-      "code": "crew = [\"Ana\", \"Bo\", \"Kai\"]\nscores = [50, 49]\nfor name, score in zip(crew, scores):\n    print(f\"{name}: {score}\")",
-      "options": ["Ana: 50\nBo: 49", "50: Ana\n49: Bo", "Ana: [50, 49]\nBo: [50, 49]", "Ana\nBo"],
-      "answer": 0
-    },
-    {
-      "id": "bi-zip-959581",
-      "text": "What does this print?",
-      "code": "crew = [\"Dmitri\", \"Cortez\", \"Tommy\", \"Lance\"]\nscores = [73, 61, 90, 84]\nfor name, score in zip(crew, scores):\n    print(f\"{name}: {score}\")",
-      "options": [
-        "Dmitri: 73\nCortez: 61\nTommy: 90\nLance: 84",
-        "73: Dmitri\n61: Cortez\n90: Tommy\n84: Lance",
-        "Dmitri: [73, 61, 90, 84]\nCortez: [73, 61, 90, 84]\nTommy: [73, 61, 90, 84]\nLance: [73, 61, 90, 84]",
-        "Dmitri\nCortez\nTommy\nLance"
-      ],
-      "answer": 0
-    },
-    {
       "id": "bi-anyall-c2a6f6",
       "text": "What does this print?",
       "code": "scores = [88, 100, 47, 73]\nprint(any(s == 100 for s in scores))\nprint(all(s >= 50 for s in scores))",
@@ -213,20 +115,6 @@
       "id": "bi-anyall-964221",
       "text": "What does this print?",
       "code": "results = [60, 75, 90]\nprint(any(s == 100 for s in results))\nprint(all(s >= 50 for s in results))",
-      "options": ["False\nTrue", "True\nFalse", "True\nTrue", "False\nFalse"],
-      "answer": 0
-    },
-    {
-      "id": "bi-anyall-08ff8d",
-      "text": "What does this print?",
-      "code": "tests = [100, 30, 55]\nprint(any(s == 100 for s in tests))\nprint(all(s >= 50 for s in tests))",
-      "options": ["True\nFalse", "False\nFalse", "True\nTrue", "False\nTrue"],
-      "answer": 0
-    },
-    {
-      "id": "bi-anyall-7f6695",
-      "text": "What does this print?",
-      "code": "grades = [51, 99, 64, 50]\nprint(any(s == 100 for s in grades))\nprint(all(s >= 50 for s in grades))",
       "options": ["False\nTrue", "True\nFalse", "True\nTrue", "False\nFalse"],
       "answer": 0
     },
@@ -245,13 +133,6 @@
       "answer": 0
     },
     {
-      "id": "bi-abs-776267",
-      "text": "What does this print?",
-      "code": "temps = [-10, 7, -2]\nprint(sum(temps))\nprint(sum([abs(n) for n in temps]))",
-      "options": ["-5\n19", "-5\n-5", "-5\n5", "19"],
-      "answer": 0
-    },
-    {
       "id": "bi-round-d69f1d",
       "text": "What does this print?",
       "code": "pi = 3.14159\nprint(round(pi))\nprint(round(pi, 2))",
@@ -263,20 +144,6 @@
       "text": "What does this print?",
       "code": "ratio = 2.71828\nprint(round(ratio))\nprint(round(ratio, 3))",
       "options": ["3\n2.718", "3\n3", "2.71828\n2.718", "3\n2.7"],
-      "answer": 0
-    },
-    {
-      "id": "bi-round-63006a",
-      "text": "What does this print?",
-      "code": "fuel = 9.876\nprint(round(fuel))\nprint(round(fuel, 2))",
-      "options": ["10\n9.88", "10\n10", "9.876\n9.88", "10\n9.9"],
-      "answer": 0
-    },
-    {
-      "id": "bi-round-ae4f3f",
-      "text": "What does this print?",
-      "code": "distance = 4.4444\nprint(round(distance))\nprint(round(distance, 3))",
-      "options": ["4\n4.444", "4\n4", "4.4444\n4.444", "4\n4.4"],
       "answer": 0
     },
     {
@@ -300,30 +167,6 @@
         "Sorted: [47, 73, 88, 100]\nTotal: 308\nAverage: 77.0",
         "Sorted: [100, 88, 73, 47]\nTotal: 4\nAverage: 77.0",
         "Sorted: [100, 88, 73, 47]\nTotal: 308\nAverage: 77"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bi-mission-7c2713",
-      "text": "What does this print?",
-      "code": "scores = [55, 81, 64]\nprint(f\"Sorted: {sorted(scores, reverse=True)}\")\nprint(f\"Total: {sum(scores)}\")\nprint(f\"Average: {round(sum(scores) / len(scores), 1)}\")",
-      "options": [
-        "Sorted: [81, 64, 55]\nTotal: 200\nAverage: 66.7",
-        "Sorted: [55, 64, 81]\nTotal: 200\nAverage: 66.7",
-        "Sorted: [81, 64, 55]\nTotal: 3\nAverage: 66.7",
-        "Sorted: [81, 64, 55]\nTotal: 200\nAverage: 67"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "bi-mission-de66d2",
-      "text": "What does this print?",
-      "code": "scores = [90, 72, 85, 66, 79]\nprint(f\"Sorted: {sorted(scores, reverse=True)}\")\nprint(f\"Total: {sum(scores)}\")\nprint(f\"Average: {round(sum(scores) / len(scores), 1)}\")",
-      "options": [
-        "Sorted: [90, 85, 79, 72, 66]\nTotal: 392\nAverage: 78.4",
-        "Sorted: [66, 72, 79, 85, 90]\nTotal: 392\nAverage: 78.4",
-        "Sorted: [90, 85, 79, 72, 66]\nTotal: 5\nAverage: 78.4",
-        "Sorted: [90, 85, 79, 72, 66]\nTotal: 392\nAverage: 78"
       ],
       "answer": 0
     },
@@ -740,6 +583,133 @@
         "fuel = [15, 25, 40, 20]",
         "print(f\"Total: {total}\")"
       ],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-top-7d73cc",
+      "text": "What is in `podium` at the end?",
+      "code": "scores = [88, 100, 47, 73]\npodium = sorted(scores, reverse=True)[0:2]",
+      "options": ["[100, 88]", "[47, 73]", "73", "[88, 73]"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-top-9b8ec6",
+      "text": "What is in `top` at the end?",
+      "code": "times = [12, 9, 15, 7, 11]\ntop = sorted(times, reverse=True)[0:3]",
+      "options": ["[15, 12, 11]", "[7, 9, 11]", "9", "[12, 11, 9]"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-top-02ec12",
+      "text": "What is in `best` at the end?",
+      "code": "levels = [3, 8, 5, 1]\nbest = sorted(levels, reverse=True)[0:2]",
+      "options": ["[8, 5]", "[1, 3]", "3", "[5, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-top-c11c91",
+      "text": "What is in `fastest` at the end?",
+      "code": "speeds = [60, 120, 40, 85]\nfastest = sorted(speeds, reverse=True)[0:3]",
+      "options": ["[120, 85, 60]", "[40, 60, 85]", "40", "[85, 60, 40]"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-abs-230052",
+      "text": "What is in `distance` at the end?",
+      "code": "changes = [-3, 5, -8]\ndistance = sum([abs(n) for n in changes])",
+      "options": ["16", "-6", "6", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-abs-2c76e6",
+      "text": "What is in `steps` at the end?",
+      "code": "moves = [4, -2, -7, 1]\nsteps = sum([abs(n) for n in moves])",
+      "options": ["14", "-4", "4", "5"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-abs-ae173e",
+      "text": "What is in `distance` at the end?",
+      "code": "changes = [-10, 6, 2]\ndistance = sum([abs(n) for n in changes])",
+      "options": ["18", "-2", "2", "8"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-zip-7ef44c",
+      "text": "What is in `board` at the end?",
+      "code": "crew = [\"Tommy\", \"Boris\", \"Cara\"]\nscores = [88, 100, 47]\nboard = {}\nfor name, score in zip(crew, scores):\n    board[name] = score",
+      "options": [
+        "{'Tommy': 88, 'Boris': 100, 'Cara': 47}",
+        "{88: 'Tommy', 100: 'Boris', 47: 'Cara'}",
+        "{'Cara': 47}",
+        "{'name': 47}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-zip-8b29f5",
+      "text": "What is in `tanks` at the end?",
+      "code": "ships = [\"Nova\", \"Orion\", \"Vega\"]\nfuel = [80, 45, 60]\ntanks = {}\nfor ship, liters in zip(ships, fuel):\n    tanks[ship] = liters",
+      "options": [
+        "{'Nova': 80, 'Orion': 45, 'Vega': 60}",
+        "{80: 'Nova', 45: 'Orion', 60: 'Vega'}",
+        "{'Vega': 60}",
+        "{'ship': 60}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-zip-2a1c69",
+      "text": "What is in `menu` at the end?",
+      "code": "items = [\"tea\", \"cake\"]\nprices = [4, 6]\nmenu = {}\nfor item, price in zip(items, prices):\n    menu[item] = price",
+      "options": ["{'tea': 4, 'cake': 6}", "{4: 'tea', 6: 'cake'}", "{'cake': 6}", "{'item': 6}"],
+      "answer": 0
+    },
+    {
+      "id": "bi-holds-zip-d0d9a9",
+      "text": "What is in `moon_count` at the end?",
+      "code": "planets = [\"Mars\", \"Venus\"]\nmoons = [2, 0]\nmoon_count = {}\nfor planet, n in zip(planets, moons):\n    moon_count[planet] = n",
+      "options": [
+        "{'Mars': 2, 'Venus': 0}",
+        "{2: 'Mars', 0: 'Venus'}",
+        "{'Venus': 0}",
+        "{'planet': 0}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "bi-error-mix-eabe71",
+      "text": "Which error stops this program?",
+      "code": "readings = [\"5\", \"3\", \"2\"]\nprint(sum(readings))",
+      "options": ["TypeError", "ValueError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "bi-error-mix-018f75",
+      "text": "Which error stops this program?",
+      "code": "codes = [3, \"a\", 1]\nprint(sorted(codes))",
+      "options": ["TypeError", "ValueError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "bi-error-mix-03e249",
+      "text": "Which error stops this program?",
+      "code": "scores = [\"7\", 9, 4]\nprint(max(scores))",
+      "options": ["TypeError", "ValueError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "bi-error-zero-23597d",
+      "text": "Which error stops this program?",
+      "code": "scores = []\ntotal = sum(scores)\nprint(total / len(scores))",
+      "options": ["ZeroDivisionError", "IndexError", "ValueError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "bi-error-zero-4930eb",
+      "text": "Which error stops this program?",
+      "code": "laps = []\ntime = sum(laps)\nprint(time / len(laps))",
+      "options": ["ZeroDivisionError", "IndexError", "ValueError", "TypeError"],
       "answer": 0
     }
   ]

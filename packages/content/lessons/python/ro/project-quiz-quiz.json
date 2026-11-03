@@ -304,18 +304,6 @@
         {
           "q": "{\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"A\"}",
           "a": "\"A\", \"B\", \"D\", \"D\", \"C\""
-        },
-        {
-          "q": "{\"raspuns\": \"C\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}",
-          "a": "\"C\", \"A\", \"B\", \"A\""
-        },
-        {
-          "q": "{\"raspuns\": \"D\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}",
-          "a": "\"D\", \"C\", \"B\", \"C\""
-        },
-        {
-          "q": "{\"raspuns\": \"B\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}",
-          "a": "\"B\", \"A\", \"A\", \"A\", \"C\""
         }
       ],
       "mistakes": [
@@ -342,18 +330,6 @@
         {
           "s": 1,
           "t": 3
-        },
-        {
-          "s": 5,
-          "t": 8
-        },
-        {
-          "s": 2,
-          "t": 5
-        },
-        {
-          "s": 7,
-          "t": 10
         }
       ],
       "mistakes": [
@@ -376,18 +352,6 @@
         {
           "q": "{\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"B\"}",
           "a": "\"a\", \"d\", \"C\", \"C\""
-        },
-        {
-          "q": "{\"raspuns\": \"C\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"D\"}",
-          "a": "\"c\", \"C\", \"b\", \"d\""
-        },
-        {
-          "q": "{\"raspuns\": \"D\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}",
-          "a": "\"D\", \"b\", \"a\", \"A\""
-        },
-        {
-          "q": "{\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"D\"}",
-          "a": "\"a\", \"b\", \"c\", \"B\""
         }
       ],
       "mistakes": [
@@ -408,15 +372,6 @@
         },
         {
           "q": "{\"text\": \"Ce returneaza len()?\"}, {\"text\": \"Ce cuvant-cheie defineste o functie?\"}, {\"text\": \"Ce da inapoi input()?\"}"
-        },
-        {
-          "q": "{\"text\": \"Cat face 7 // 2?\"}, {\"text\": \"Ce face break?\"}"
-        },
-        {
-          "q": "{\"text\": \"Ce bucla se repeta cat timp o conditie e adevarata?\"}, {\"text\": \"Ce face .upper()?\"}, {\"text\": \"Ce este o lista?\"}"
-        },
-        {
-          "q": "{\"text\": \"Ce face return?\"}, {\"text\": \"Ce este un dictionar?\"}"
         }
       ],
       "mistakes": [
@@ -446,14 +401,6 @@
         {
           "q": "{\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}",
           "a": "\"C\", \"A\", \"D\""
-        },
-        {
-          "q": "{\"raspuns\": \"D\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}",
-          "a": "\"A\", \"B\", \"A\""
-        },
-        {
-          "q": "{\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"C\"}",
-          "a": "\"C\", \"A\", \"A\""
         }
       ],
       "mistakes": [
@@ -480,14 +427,6 @@
         {
           "q": "{\"raspuns\": \"C\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"A\"}",
           "a": "\"C\", \"C\", \"B\", \"B\""
-        },
-        {
-          "q": "{\"raspuns\": \"D\"}, {\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}, {\"raspuns\": \"A\"}",
-          "a": "\"D\", \"C\", \"B\", \"C\", \"B\""
-        },
-        {
-          "q": "{\"raspuns\": \"A\"}, {\"raspuns\": \"B\"}, {\"raspuns\": \"C\"}",
-          "a": "\"B\", \"B\", \"C\""
         }
       ],
       "mistakes": [
@@ -514,14 +453,6 @@
         {
           "k": "\"C\", \"D\", \"B\", \"A\", \"C\"",
           "a": "\"C\", \"D\", \"C\", \"A\", \"A\""
-        },
-        {
-          "k": "\"D\", \"D\", \"A\"",
-          "a": "\"D\", \"C\", \"A\""
-        },
-        {
-          "k": "\"A\", \"B\", \"C\", \"D\"",
-          "a": "\"A\", \"B\", \"B\", \"D\""
         }
       ],
       "mistakes": [
@@ -742,6 +673,311 @@
           "    print(f\"Gresit! Raspunsul era {q['raspuns']}\")"
         ]
       ]
+    },
+    {
+      "id": "pq-holds-score",
+      "kind": "holds",
+      "text": "Ce conține `{{s}}` la final?",
+      "code": "{{k}} = [{{keys}}]\n{{a}} = [{{ans}}]\n{{s}} = 0\nfor i in range(len({{k}})):\n    if {{a}}[i].upper() == {{k}}[i]:\n        {{s}} += 1",
+      "values": [
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "keys": "\"A\", \"C\", \"B\", \"D\", \"C\"",
+          "ans": "\"a\", \"c\", \"b\", \"a\", \"d\""
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "keys": "\"B\", \"B\", \"A\", \"C\", \"D\"",
+          "ans": "\"b\", \"a\", \"a\", \"c\", \"a\""
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "keys": "\"A\", \"B\", \"C\", \"D\", \"A\", \"B\"",
+          "ans": "\"a\", \"b\", \"c\", \"d\", \"b\", \"c\""
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "keys": "\"C\", \"C\", \"C\", \"C\", \"C\"",
+          "ans": "\"c\", \"c\", \"c\", \"a\", \"b\""
+        }
+      ],
+      "variable": "{{s}}",
+      "mistakes": [
+        ["{{a}}[i].upper()", "{{a}}[i]"],
+        ["== {{k}}[i]", "!= {{k}}[i]"],
+        ["{{s}} += 1", "{{s}} = 1"]
+      ]
+    },
+    {
+      "id": "pq-holds-percent",
+      "kind": "holds",
+      "text": "Ce conține `{{p}}` la final?",
+      "code": "{{s}} = {{x}}\ntotal = {{t}}\n{{p}} = round({{s}} / total * 100)",
+      "values": [
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "x": 3,
+          "t": 4
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "x": 2,
+          "t": 3
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "x": 7,
+          "t": 8
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "x": 5,
+          "t": 8
+        }
+      ],
+      "variable": "{{p}}",
+      "mistakes": [
+        ["round({{s}} / total * 100)", "{{s}} / total * 100"],
+        ["{{s}} / total", "{{s}} // total"],
+        ["{{s}} / total * 100", "{{s}} / total"]
+      ]
+    },
+    {
+      "id": "pq-input-answer",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{key}} = \"{{kv}}\"\n{{a}} = input()\nif {{a}}.upper() == {{key}}:\n    print(\"{{yes}}\")\nelse:\n    print(f\"{{no}} {{{key}}}\")",
+      "values": [
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "kv": "B",
+          "ans": "b",
+          "w1": "c",
+          "w2": "bb",
+          "w3": "a"
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "kv": "A",
+          "ans": "a",
+          "w1": "b",
+          "w2": "aa",
+          "w3": "d"
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "kv": "D",
+          "ans": "d",
+          "w1": "c",
+          "w2": "dd",
+          "w3": "b"
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "kv": "C",
+          "ans": "C",
+          "w1": "b",
+          "w2": "cc",
+          "w3": "d"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "pq-error-key",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{q}} = [{\"{{f}}\": \"B\"}, {\"{{f}}\": \"C\"}]\nfor item in {{q}}:\n    print(item[\"{{bad}}\"])",
+      "values": [
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "bad": "raspus"
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "bad": "Raspuns"
+        }
+      ],
+      "wrong": ["IndexError", "NameError", "TypeError"]
+    },
+    {
+      "id": "pq-error-short",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{k}} = [{{keys}}]\n{{a}} = [{{ans}}]\n{{s}} = 0\nfor i in range(len({{k}})):\n    if {{a}}[i] == {{k}}[i]:\n        {{s}} += 1\nprint({{s}})",
+      "values": [
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "keys": "\"A\", \"B\", \"C\"",
+          "ans": "\"A\", \"B\""
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns",
+          "keys": "\"B\", \"D\", \"A\", \"C\"",
+          "ans": "\"B\", \"D\", \"A\""
+        }
+      ],
+      "wrong": ["KeyError", "ValueError", "TypeError"]
+    },
+    {
+      "id": "pq-error-zero",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{s}} = 0\ntotal = 0\nprint(round({{s}} / total * 100))",
+      "values": [
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "scor",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns"
+        },
+        {
+          "k": "chei",
+          "a": "raspunsuri",
+          "s": "corecte",
+          "p": "procent",
+          "key": "cheie",
+          "yes": "Corect!",
+          "no": "Gresit! Raspunsul era",
+          "q": "quiz",
+          "f": "raspuns"
+        }
+      ],
+      "wrong": ["ValueError", "TypeError", "IndexError"]
     }
   ]
 }

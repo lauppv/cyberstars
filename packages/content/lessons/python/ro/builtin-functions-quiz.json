@@ -280,18 +280,6 @@
         {
           "v": "scoruri",
           "nums": "88, 100, 47, 73"
-        },
-        {
-          "v": "preturi",
-          "nums": "10, 20, 30"
-        },
-        {
-          "v": "puncte",
-          "nums": "12, 7, 5, 8"
-        },
-        {
-          "v": "combustibil",
-          "nums": "15, 25, 40, 20"
         }
       ],
       "mistakes": [
@@ -314,10 +302,6 @@
         {
           "v": "varste",
           "nums": "30, 12, 45, 7"
-        },
-        {
-          "v": "coduri",
-          "nums": "9, 4, 6"
         }
       ],
       "mistakes": [
@@ -340,14 +324,6 @@
         {
           "v": "nume",
           "items": "\"Tommy\", \"Lance\", \"Cortez\", \"Phil\""
-        },
-        {
-          "v": "inaltimi",
-          "items": "3, 9, 1, 6"
-        },
-        {
-          "v": "planete",
-          "items": "\"Marte\", \"Venus\", \"Pamant\""
         }
       ],
       "mistakes": [
@@ -370,10 +346,6 @@
         {
           "v": "planete",
           "items": "\"Marte\", \"Venus\", \"Pamant\""
-        },
-        {
-          "v": "masini",
-          "items": "\"Cheetah\", \"Sabre\", \"Infernus\", \"Banshee\""
         }
       ],
       "mistakes": [
@@ -396,14 +368,6 @@
         {
           "names": "\"Lance\", \"Phil\"",
           "nums": "95, 80, 70"
-        },
-        {
-          "names": "\"Ana\", \"Bo\", \"Kai\"",
-          "nums": "50, 49"
-        },
-        {
-          "names": "\"Dmitri\", \"Cortez\", \"Tommy\", \"Lance\"",
-          "nums": "73, 61, 90, 84"
         }
       ],
       "mistakes": [
@@ -426,14 +390,6 @@
         {
           "v": "rezultate",
           "nums": "60, 75, 90"
-        },
-        {
-          "v": "teste",
-          "nums": "100, 30, 55"
-        },
-        {
-          "v": "note",
-          "nums": "51, 99, 64, 50"
         }
       ],
       "mistakes": [
@@ -460,10 +416,6 @@
         {
           "v": "miscari",
           "nums": "4, -6, 2, -1"
-        },
-        {
-          "v": "temperaturi",
-          "nums": "-10, 7, -2"
         }
       ],
       "mistakes": [
@@ -488,16 +440,6 @@
           "v": "raport",
           "x": 2.71828,
           "d": 3
-        },
-        {
-          "v": "combustibil",
-          "x": 9.876,
-          "d": 2
-        },
-        {
-          "v": "distanta",
-          "x": 4.4444,
-          "d": 3
         }
       ],
       "mistakes": [
@@ -518,12 +460,6 @@
         },
         {
           "nums": "88, 100, 47, 73"
-        },
-        {
-          "nums": "55, 81, 64"
-        },
-        {
-          "nums": "90, 72, 85, 66, 79"
         }
       ],
       "mistakes": [
@@ -824,6 +760,171 @@
         }
       ],
       "bug": ["total = sum({{v}})", "total = max({{v}})"]
+    },
+    {
+      "id": "bi-holds-top",
+      "kind": "holds",
+      "text": "Ce conține `{{o}}` la final?",
+      "code": "{{v}} = [{{nums}}]\n{{o}} = sorted({{v}}, reverse=True)[0:{{k}}]",
+      "values": [
+        {
+          "v": "scoruri",
+          "nums": "88, 100, 47, 73",
+          "o": "podium",
+          "k": 2,
+          "k1": 3
+        },
+        {
+          "v": "timpi",
+          "nums": "12, 9, 15, 7, 11",
+          "o": "top",
+          "k": 3,
+          "k1": 4
+        },
+        {
+          "v": "niveluri",
+          "nums": "3, 8, 5, 1",
+          "o": "cele_mai_bune",
+          "k": 2,
+          "k1": 3
+        },
+        {
+          "v": "viteze",
+          "nums": "60, 120, 40, 85",
+          "o": "cele_mai_rapide",
+          "k": 3,
+          "k1": 4
+        }
+      ],
+      "variable": "{{o}}",
+      "mistakes": [
+        ["sorted({{v}}, reverse=True)", "sorted({{v}})"],
+        ["[0:{{k}}]", "[{{k}}]"],
+        ["[0:{{k}}]", "[1:{{k1}}]"]
+      ]
+    },
+    {
+      "id": "bi-holds-abs",
+      "kind": "holds",
+      "text": "Ce conține `{{t}}` la final?",
+      "code": "{{v}} = [{{nums}}]\n{{t}} = sum([abs(n) for n in {{v}}])",
+      "values": [
+        {
+          "v": "schimbari",
+          "nums": "-3, 5, -8",
+          "t": "distanta"
+        },
+        {
+          "v": "mutari",
+          "nums": "4, -2, -7, 1",
+          "t": "pasi"
+        },
+        {
+          "v": "schimbari",
+          "nums": "-10, 6, 2",
+          "t": "distanta"
+        }
+      ],
+      "variable": "{{t}}",
+      "mistakes": [
+        ["sum([abs(n) for n in {{v}}])", "sum({{v}})"],
+        ["sum([abs(n) for n in {{v}}])", "abs(sum({{v}}))"],
+        ["[abs(n) for n in {{v}}]", "[n for n in {{v}} if n > 0]"]
+      ]
+    },
+    {
+      "id": "bi-holds-zip",
+      "kind": "holds",
+      "text": "Ce conține `{{d}}` la final?",
+      "code": "{{a}} = [{{names}}]\n{{b}} = [{{nums}}]\n{{d}} = {}\nfor {{x}}, {{y}} in zip({{a}}, {{b}}):\n    {{d}}[{{x}}] = {{y}}",
+      "values": [
+        {
+          "a": "echipaj",
+          "names": "\"Tommy\", \"Boris\", \"Cara\"",
+          "b": "scoruri",
+          "nums": "88, 100, 47",
+          "d": "tabela",
+          "x": "nume",
+          "y": "scor"
+        },
+        {
+          "a": "nave",
+          "names": "\"Nova\", \"Orion\", \"Vega\"",
+          "b": "combustibil",
+          "nums": "80, 45, 60",
+          "d": "rezervoare",
+          "x": "nava",
+          "y": "litri"
+        },
+        {
+          "a": "produse",
+          "names": "\"ceai\", \"tort\"",
+          "b": "preturi",
+          "nums": "4, 6",
+          "d": "meniu",
+          "x": "produs",
+          "y": "pret"
+        },
+        {
+          "a": "planete",
+          "names": "\"Marte\", \"Venus\"",
+          "b": "luni",
+          "nums": "2, 0",
+          "d": "nr_luni",
+          "x": "planeta",
+          "y": "n"
+        }
+      ],
+      "variable": "{{d}}",
+      "mistakes": [
+        ["zip({{a}}, {{b}})", "zip({{b}}, {{a}})"],
+        [
+          "{{d}} = {}\nfor {{x}}, {{y}} in zip({{a}}, {{b}}):\n",
+          "for {{x}}, {{y}} in zip({{a}}, {{b}}):\n    {{d}} = {}\n"
+        ],
+        ["{{d}}[{{x}}] = {{y}}", "{{d}}[\"{{x}}\"] = {{y}}"]
+      ]
+    },
+    {
+      "id": "bi-error-mix",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{v}} = [{{items}}]\nprint({{call}}({{v}}))",
+      "values": [
+        {
+          "v": "citiri",
+          "items": "\"5\", \"3\", \"2\"",
+          "call": "sum"
+        },
+        {
+          "v": "coduri",
+          "items": "3, \"a\", 1",
+          "call": "sorted"
+        },
+        {
+          "v": "scoruri",
+          "items": "\"7\", 9, 4",
+          "call": "max"
+        }
+      ],
+      "wrong": ["ValueError", "NameError", "IndexError"]
+    },
+    {
+      "id": "bi-error-zero",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{v}} = []\n{{t}} = sum({{v}})\nprint({{t}} / len({{v}}))",
+      "values": [
+        {
+          "v": "scoruri",
+          "t": "total"
+        },
+        {
+          "v": "ture",
+          "t": "timp"
+        }
+      ],
+      "wrong": ["IndexError", "ValueError", "TypeError"]
     }
   ]
 }

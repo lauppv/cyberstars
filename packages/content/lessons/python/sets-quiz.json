@@ -290,14 +290,6 @@
         {
           "v": "colors",
           "items": "\"red\", \"red\", \"blue\", \"red\", \"green\", \"blue\", \"red\""
-        },
-        {
-          "v": "planets",
-          "items": "\"Mars\", \"Venus\", \"Earth\", \"Mars\", \"Venus\""
-        },
-        {
-          "v": "rolls",
-          "items": "6, 2, 6, 6, 3, 2, 1, 6"
         }
       ],
       "mistakes": [
@@ -329,18 +321,6 @@
           "start": "\"Mars\", \"Venus\", \"Earth\", \"Pluto\"",
           "old": "Pluto",
           "new": "Titan"
-        },
-        {
-          "v": "badges",
-          "start": "\"gold\", \"silver\", \"bronze\"",
-          "old": "silver",
-          "new": "platinum"
-        },
-        {
-          "v": "codes",
-          "start": "\"A1\", \"B2\", \"C3\"",
-          "old": "A1",
-          "new": "D4"
         }
       ],
       "mistakes": [
@@ -369,16 +349,6 @@
           "v": "guests",
           "items": "\"Ana\", \"Rex\"",
           "r": "Rex"
-        },
-        {
-          "v": "targets",
-          "items": "\"A\", \"B\", \"C\", \"D\", \"E\"",
-          "r": "C"
-        },
-        {
-          "v": "moons",
-          "items": "\"Io\", \"Europa\", \"Titan\"",
-          "r": "Titan"
         }
       ],
       "mistakes": [
@@ -419,14 +389,6 @@
           "people": "\"Mars\", \"Venus\"",
           "no": "is full",
           "ok": "has room"
-        },
-        {
-          "s": "sold",
-          "bad": "\"tea\", \"cake\", \"jam\"",
-          "x": "item",
-          "people": "\"cake\", \"milk\"",
-          "no": "is sold out",
-          "ok": "is in stock"
         }
       ],
       "mistakes": [
@@ -468,13 +430,6 @@
           "x": "w",
           "items": "\"hey\", \"ho\", \"hey\", \"hey\"",
           "label": "Echoes"
-        },
-        {
-          "s": "used",
-          "r": "again",
-          "x": "n",
-          "items": "4, 8, 4, 15, 8, 4",
-          "label": "Used again"
         }
       ],
       "mistakes": [
@@ -509,11 +464,6 @@
           "v": "pings",
           "items": "\"Q1\", \"R2\", \"S3\", \"Q1\"",
           "c": "T4"
-        },
-        {
-          "v": "codes",
-          "items": "\"D4\", \"D4\", \"D4\"",
-          "c": "D4"
         }
       ],
       "mistakes": [
@@ -901,6 +851,113 @@
         }
       ],
       "bug": ["{{v}}.remove(\"{{r}}\")", "{{v}}.remove(\"{{keep}}\")"]
+    },
+    {
+      "id": "st-holds-firsts",
+      "kind": "holds",
+      "text": "What is in `{{w}}` at the end?",
+      "code": "{{s}} = set()\n{{w}} = []\nfor {{x}} in [{{items}}]:\n    if {{x}} in {{s}}:\n        continue\n    {{s}}.add({{x}})\n    {{w}}.append({{x}})",
+      "values": [
+        {
+          "s": "seen",
+          "w": "signals",
+          "x": "code",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\""
+        },
+        {
+          "s": "seen",
+          "w": "guests",
+          "x": "name",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Ken\""
+        },
+        {
+          "s": "seen",
+          "w": "levels",
+          "x": "n",
+          "items": "3, 5, 3, 3, 8"
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["continue", "break"],
+        ["{{s}}.add({{x}})", "{{s}}.add(\"{{x}}\")"],
+        ["{{w}}.append({{x}})", "{{w}} = [{{x}}]"]
+      ]
+    },
+    {
+      "id": "st-holds-common",
+      "kind": "holds",
+      "text": "What is in `{{w}}` at the end?",
+      "code": "{{a}} = {{{xs}}}\n{{w}} = []\nfor {{x}} in [{{ys}}]:\n    if {{x}} in {{a}}:\n        {{w}}.append({{x}})",
+      "values": [
+        {
+          "a": "crew",
+          "xs": "\"Tommy\", \"Lance\", \"Phil\"",
+          "ys": "\"Lance\", \"Ken\", \"Phil\", \"Mia\"",
+          "w": "both",
+          "x": "name"
+        },
+        {
+          "a": "visited",
+          "xs": "\"Mars\", \"Venus\"",
+          "ys": "\"Earth\", \"Venus\", \"Mars\"",
+          "w": "again",
+          "x": "planet"
+        },
+        {
+          "a": "winners",
+          "xs": "3, 7, 9",
+          "ys": "1, 3, 5, 7",
+          "w": "lucky",
+          "x": "n"
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["{{x}} in {{a}}", "{{x}} not in {{a}}"],
+        ["{{w}}.append({{x}})", "{{w}} = [{{x}}]"],
+        ["{{w}}.append({{x}})", "{{a}}.add({{x}})"]
+      ]
+    },
+    {
+      "id": "st-input-check",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{s}} = {{{bad}}}\n{{x}} = input()\nif {{x}} in {{s}}:\n    print(\"{{no}}\")\nelse:\n    print(\"{{ok}}\")",
+      "values": [
+        {
+          "s": "banned",
+          "bad": "\"Sonny\", \"Diaz\"",
+          "x": "name",
+          "no": "Access denied",
+          "ok": "Welcome",
+          "a": "Diaz",
+          "low": "diaz",
+          "other": "Tommy"
+        },
+        {
+          "s": "visited",
+          "bad": "\"Mars\", \"Venus\"",
+          "x": "planet",
+          "no": "Already visited",
+          "ok": "New planet",
+          "a": "Venus",
+          "low": "venus",
+          "other": "Earth"
+        },
+        {
+          "s": "used",
+          "bad": "\"A1\", \"B2\"",
+          "x": "code",
+          "no": "Code already used",
+          "ok": "Code accepted",
+          "a": "B2",
+          "low": "b2",
+          "other": "C3"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{low}}", "{{other}}", "{{s}}"]
     }
   ]
 }

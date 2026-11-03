@@ -297,15 +297,6 @@
         },
         {
           "w": "orbit"
-        },
-        {
-          "w": "radar"
-        },
-        {
-          "w": "Anna"
-        },
-        {
-          "w": "stats"
         }
       ],
       "mistakes": [
@@ -330,12 +321,6 @@
         },
         {
           "words": "\"noon\", \"night\", \"civic\""
-        },
-        {
-          "words": "\"refer\", \"rider\", \"kayak\""
-        },
-        {
-          "words": "\"madam\", \"mars\", \"solos\""
         }
       ],
       "mistakes": [
@@ -363,12 +348,6 @@
         },
         {
           "w": "racecar"
-        },
-        {
-          "w": "galaxy"
-        },
-        {
-          "w": "comet"
         }
       ],
       "mistakes": [
@@ -392,12 +371,6 @@
         },
         {
           "t": "Hello World"
-        },
-        {
-          "t": "Was it a car"
-        },
-        {
-          "t": "Top spot"
         }
       ],
       "mistakes": [
@@ -421,12 +394,6 @@
         },
         {
           "codes": "\"stats\", \"kayak\", \"rocket\", \"refer\""
-        },
-        {
-          "codes": "\"solar\", \"rotor\", \"wow\", \"comet\", \"madam\""
-        },
-        {
-          "codes": "\"tenet\", \"Mars\", \"pop\""
         }
       ],
       "mistakes": [
@@ -450,12 +417,6 @@
         },
         {
           "w": "repaper"
-        },
-        {
-          "w": "reviver"
-        },
-        {
-          "w": "redder"
         }
       ],
       "mistakes": [
@@ -677,6 +638,129 @@
         }
       ],
       "bug": ["    return True", "        return True"]
+    },
+    {
+      "id": "pal-holds-clean",
+      "kind": "holds",
+      "text": "What is in `{{c}}` at the end?",
+      "code": "{{t}} = \"{{s}}\"\n{{c}} = \"\"\nfor {{ch}} in {{t}}:\n    if {{ch}}.isalpha():\n        {{c}} += {{ch}}.lower()",
+      "values": [
+        {
+          "t": "text",
+          "c": "cleaned",
+          "ch": "char",
+          "s": "Never odd or even"
+        },
+        {
+          "t": "text",
+          "c": "cleaned",
+          "ch": "char",
+          "s": "Race car"
+        },
+        {
+          "t": "text",
+          "c": "cleaned",
+          "ch": "char",
+          "s": "Step on no pets"
+        },
+        {
+          "t": "text",
+          "c": "cleaned",
+          "ch": "char",
+          "s": "A Toyota"
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["{{ch}}.lower()", "{{ch}}"],
+        ["if {{ch}}.isalpha()", "if not {{ch}}.isalpha()"],
+        ["{{c}} += {{ch}}.lower()", "{{c}} = {{ch}}.lower()"]
+      ]
+    },
+    {
+      "id": "pal-holds-pairs",
+      "kind": "holds",
+      "text": "What is in `{{bad}}` at the end?",
+      "code": "{{w}} = \"{{s}}\"\n{{bad}} = 0\nfor i in range(len({{w}}) // 2):\n    if {{w}}[i] != {{w}}[len({{w}}) - 1 - i]:\n        {{bad}} += 1",
+      "values": [
+        {
+          "w": "word",
+          "bad": "mismatches",
+          "s": "rocket"
+        },
+        {
+          "w": "word",
+          "bad": "mismatches",
+          "s": "radio"
+        },
+        {
+          "w": "word",
+          "bad": "mismatches",
+          "s": "abcd"
+        },
+        {
+          "w": "word",
+          "bad": "mismatches",
+          "s": "planet"
+        },
+        {
+          "w": "word",
+          "bad": "mismatches",
+          "s": "Mars"
+        }
+      ],
+      "variable": "{{bad}}",
+      "mistakes": [
+        ["range(len({{w}}) // 2)", "range(len({{w}}))"],
+        ["{{w}}[i] != {{w}}", "{{w}}[i] == {{w}}"],
+        ["{{bad}} += 1", "{{bad}} = 1"]
+      ]
+    },
+    {
+      "id": "pal-input-check",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{w}} = input()\nif {{w}} == {{w}}[::-1]:\n    print(\"{{yes}}\")\nelse:\n    print(\"{{no}}\")",
+      "values": [
+        {
+          "yes": "Palindrome!",
+          "no": "Not a palindrome",
+          "w": "word",
+          "a": "level",
+          "w1": "Level",
+          "w2": "levels",
+          "w3": "lever"
+        },
+        {
+          "w": "name",
+          "yes": "Same both ways",
+          "no": "Different backwards",
+          "a": "racecar",
+          "w1": "Racecar",
+          "w2": "race car",
+          "w3": "racecars"
+        },
+        {
+          "w": "code",
+          "yes": "Mirror word",
+          "no": "Not a mirror word",
+          "a": "noon",
+          "w1": "Noon",
+          "w2": "noone",
+          "w3": "moon"
+        },
+        {
+          "yes": "Palindrome!",
+          "no": "Not a palindrome",
+          "w": "word",
+          "a": "rocket",
+          "w1": "radar",
+          "w2": "wow",
+          "w3": "kayak"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
     }
   ]
 }

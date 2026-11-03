@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "pd-split-len-4f49cc",
-      "text": "Ce afișează?",
-      "code": "mesaj = \"andocare la poarta patru\"\ncuvinte = mesaj.split(\" \")\nprint(len(cuvinte))\nprint(cuvinte[1])",
-      "options": ["4\nla", "24\nla", "4\npoarta", "la"],
-      "answer": 0
-    },
-    {
-      "id": "pd-split-len-25f7c3",
-      "text": "Ce afișează?",
-      "code": "nume = \"Tommy Lance Ken\"\ncuvinte = nume.split(\" \")\nprint(len(cuvinte))\nprint(cuvinte[0])",
-      "options": ["3\nTommy", "15\nTommy", "3\nLance", "Tommy"],
-      "answer": 0
-    },
-    {
       "id": "pd-count-70a130",
       "text": "Ce afișează?",
       "code": "contor = {}\nfor cuvant in \"ok sos ok\".split(\" \"):\n    if cuvant in contor:\n        contor[cuvant] = contor[cuvant] + 1\n    else:\n        contor[cuvant] = 1\nprint(contor)",
@@ -46,25 +32,6 @@
         "{'rosu': 2, 'albastru': 0}",
         "2"
       ],
-      "answer": 0
-    },
-    {
-      "id": "pd-count-90953b",
-      "text": "Ce afișează?",
-      "code": "contor = {}\nfor cuvant in \"mergi stai mergi asteapta\".split(\" \"):\n    if cuvant in contor:\n        contor[cuvant] = contor[cuvant] + 1\n    else:\n        contor[cuvant] = 1\nprint(contor)",
-      "options": [
-        "{'mergi': 2, 'stai': 1, 'asteapta': 1}",
-        "{'mergi': 1, 'stai': 1, 'asteapta': 1}",
-        "{'mergi': 1, 'stai': 0, 'asteapta': 0}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-count-1713b5",
-      "text": "Ce afișează?",
-      "code": "contor = {}\nfor cuvant in \"sus jos sus sus jos\".split(\" \"):\n    if cuvant in contor:\n        contor[cuvant] = contor[cuvant] + 1\n    else:\n        contor[cuvant] = 1\nprint(contor)",
-      "options": ["{'sus': 3, 'jos': 2}", "{'sus': 1, 'jos': 1}", "{'sus': 2, 'jos': 1}", "2"],
       "answer": 0
     },
     {
@@ -92,30 +59,6 @@
       "answer": 0
     },
     {
-      "id": "pd-best-f28853",
-      "text": "Ce afișează?",
-      "code": "contor = {\"x\": 2, \"y\": 2, \"z\": 1}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cod, numar in contor.items():\n    if numar > cel_mai_mare:\n        cel_mai_mare = numar\n        cel_mai_bun = cod\nprint(f\"Cel mai frecvent: {cel_mai_bun} ({cel_mai_mare})\")",
-      "options": [
-        "Cel mai frecvent: x (2)",
-        "Cel mai frecvent:  (0)",
-        "Cel mai frecvent: y (2)",
-        "Cel mai frecvent: 2 (2)"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-best-713aa0",
-      "text": "Ce afișează?",
-      "code": "contor = {\"dock\": 1, \"boot\": 4, \"sync\": 6}\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cod, numar in contor.items():\n    if numar > cel_mai_mare:\n        cel_mai_mare = numar\n        cel_mai_bun = cod\nprint(f\"Cel mai frecvent: {cel_mai_bun} ({cel_mai_mare})\")",
-      "options": [
-        "Cel mai frecvent: sync (6)",
-        "Cel mai frecvent:  (0)",
-        "Cel mai frecvent: 6 (6)",
-        "Cel mai frecvent: sync (0)"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pd-pairs-42da49",
       "text": "Ce afișează?",
       "code": "numere = [2, 4, 6, 3]\ntinta = 7\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == tinta:\n            print(f\"{numere[i]} + {numere[j]} = {tinta}\")",
@@ -131,30 +74,6 @@
         "5 + 1 = 6\n1 + 5 = 6\n4 + 2 = 6\n2 + 4 = 6",
         "5 + 4 = 6\n5 + 2 = 6",
         "5 1\n4 2"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-pairs-ba29dc",
-      "text": "Ce afișează?",
-      "code": "numere = [3, 3, 4, 2]\ntinta = 6\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == tinta:\n            print(f\"{numere[i]} + {numere[j]} = {tinta}\")",
-      "options": [
-        "3 + 3 = 6\n4 + 2 = 6",
-        "3 + 3 = 6\n3 + 3 = 6\n3 + 3 = 6\n3 + 3 = 6\n4 + 2 = 6\n2 + 4 = 6",
-        "3 + 3 = 6\n3 + 3 = 6\n3 + 3 = 6\n4 + 2 = 6",
-        "3 + 4 = 6\n3 + 4 = 6"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-pairs-717ca5",
-      "text": "Ce afișează?",
-      "code": "numere = [1, 6, 3, 4, 5]\ntinta = 9\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == tinta:\n            print(f\"{numere[i]} + {numere[j]} = {tinta}\")",
-      "options": [
-        "6 + 3 = 9\n4 + 5 = 9",
-        "6 + 3 = 9\n3 + 6 = 9\n4 + 5 = 9\n5 + 4 = 9",
-        "6 + 4 = 9\n6 + 5 = 9",
-        "6 3\n4 5"
       ],
       "answer": 0
     },
@@ -183,30 +102,6 @@
       "answer": 0
     },
     {
-      "id": "pd-funcs-5e46b7",
-      "text": "Ce afișează?",
-      "code": "def desparte_coduri(jurnal):\n    return jurnal.split(\" \")\n\ndef numara_coduri(coduri):\n    contor = {}\n    for cod in coduri:\n        if cod in contor:\n            contor[cod] = contor[cod] + 1\n        else:\n            contor[cod] = 1\n    return contor\n\ncoduri = desparte_coduri(\"dock dock undock dock\")\ncontor = numara_coduri(coduri)\nprint(f\"Coduri: {len(coduri)}\")\nfor cod, numar in contor.items():\n    print(f\"{cod}: {numar}\")",
-      "options": [
-        "Coduri: 4\ndock: 3\nundock: 1",
-        "Coduri: 2\ndock: 3\nundock: 1",
-        "Coduri: 4\nd: 4\no: 4\nc: 4\nk: 4\n : 3\nu: 1\nn: 1",
-        "Coduri: 4\ndock: 1\nundock: 1"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-funcs-38cb13",
-      "text": "Ce afișează?",
-      "code": "def desparte_coduri(jurnal):\n    return jurnal.split(\" \")\n\ndef numara_coduri(coduri):\n    contor = {}\n    for cod in coduri:\n        if cod in contor:\n            contor[cod] = contor[cod] + 1\n        else:\n            contor[cod] = 1\n    return contor\n\ncoduri = desparte_coduri(\"boot sync boot\")\ncontor = numara_coduri(coduri)\nprint(f\"Coduri: {len(coduri)}\")\nfor cod, numar in contor.items():\n    print(f\"{cod}: {numar}\")",
-      "options": [
-        "Coduri: 3\nboot: 2\nsync: 1",
-        "Coduri: 2\nboot: 2\nsync: 1",
-        "Coduri: 3\nb: 2\no: 4\nt: 2\n : 2\ns: 1\ny: 1\nn: 1\nc: 1",
-        "Coduri: 3\nboot: 1\nsync: 1"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pd-longest-238e54",
       "text": "Ce afișează?",
       "code": "def ia_cuvinte(text):\n    return text.split(\" \")\n\ndef cel_mai_lung(cuvinte):\n    cel_mai_bun = \"\"\n    for w in cuvinte:\n        if len(w) > len(cel_mai_bun):\n            cel_mai_bun = w\n    return cel_mai_bun\n\nprint(cel_mai_lung(ia_cuvinte(\"rosu verde alb negru\")))",
@@ -218,20 +113,6 @@
       "text": "Ce afișează?",
       "code": "def ia_cuvinte(text):\n    return text.split(\" \")\n\ndef cel_mai_lung(cuvinte):\n    cel_mai_bun = \"\"\n    for w in cuvinte:\n        if len(w) > len(cel_mai_bun):\n            cel_mai_bun = w\n    return cel_mai_bun\n\nprint(cel_mai_lung(ia_cuvinte(\"soare luna stea cometa\")))",
       "options": ["cometa", "stea", "6", "s"],
-      "answer": 0
-    },
-    {
-      "id": "pd-longest-51e55f",
-      "text": "Ce afișează?",
-      "code": "def ia_cuvinte(text):\n    return text.split(\" \")\n\ndef cel_mai_lung(cuvinte):\n    cel_mai_bun = \"\"\n    for w in cuvinte:\n        if len(w) > len(cel_mai_bun):\n            cel_mai_bun = w\n    return cel_mai_bun\n\nprint(cel_mai_lung(ia_cuvinte(\"du stai asteapta sari\")))",
-      "options": ["asteapta", "stai", "8", "d"],
-      "answer": 0
-    },
-    {
-      "id": "pd-longest-e10287",
-      "text": "Ce afișează?",
-      "code": "def ia_cuvinte(text):\n    return text.split(\" \")\n\ndef cel_mai_lung(cuvinte):\n    cel_mai_bun = \"\"\n    for w in cuvinte:\n        if len(w) > len(cel_mai_bun):\n            cel_mai_bun = w\n    return cel_mai_bun\n\nprint(cel_mai_lung(ia_cuvinte(\"alpha beta delta pi\")))",
-      "options": ["alpha", "pi", "delta", "5"],
       "answer": 0
     },
     {
@@ -750,6 +631,114 @@
         "cel_mai_mare = 0",
         "cel_mai_bun = \"\"",
         "contor = {\"dock\": 6, \"boot\": 4}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pipeline-1b6df5",
+      "text": "Ce conține `marimi` la final?",
+      "code": "def ia_cuvinte(text):\n    return text.split(\" \")\n\ndef lungimi(cuvinte):\n    return [len(w) for w in cuvinte]\n\nmarimi = lungimi(ia_cuvinte(\"spre Marte acum\"))",
+      "options": ["[4, 5, 4]", "3", "['spre', 'Marte', 'acum']", "[3, 3, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pipeline-df61e7",
+      "text": "Ce conține `marimi` la final?",
+      "code": "def ia_cuvinte(text):\n    return text.split(\" \")\n\ndef lungimi(cuvinte):\n    return [len(w) for w in cuvinte]\n\nmarimi = lungimi(ia_cuvinte(\"Vice City Stories\"))",
+      "options": ["[4, 4, 7]", "3", "['Vice', 'City', 'Stories']", "[3, 3, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pipeline-55edca",
+      "text": "Ce conține `marimi` la final?",
+      "code": "def ia_cuvinte(text):\n    return text.split(\" \")\n\ndef lungimi(cuvinte):\n    return [len(w) for w in cuvinte]\n\nmarimi = lungimi(ia_cuvinte(\"Tommy e iar acasa\"))",
+      "options": ["[5, 1, 3, 5]", "4", "['Tommy', 'e', 'iar', 'acasa']", "[4, 4, 4, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pipeline-fc248e",
+      "text": "Ce conține `marimi` la final?",
+      "code": "def ia_cuvinte(text):\n    return text.split(\" \")\n\ndef lungimi(cuvinte):\n    return [len(w) for w in cuvinte]\n\nmarimi = lungimi(ia_cuvinte(\"sos ok\"))",
+      "options": ["[3, 2]", "2", "['sos', 'ok']", "[2, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "pd-input-words-dff398",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "text = input()\ncuvinte = text.split(\" \")\nprint(len(cuvinte))\nprint(cuvinte[0])",
+      "output": "3\npisica",
+      "options": ["pisica sta jos", "pisica", "3 pisica", "pisicastajos"],
+      "answer": 0
+    },
+    {
+      "id": "pd-input-words-a87062",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "text = input()\ncuvinte = text.split(\" \")\nprint(len(cuvinte))\nprint(cuvinte[0])",
+      "output": "3\nspre",
+      "options": ["spre Marte acum", "spre", "3 spre", "spreMarteacum"],
+      "answer": 0
+    },
+    {
+      "id": "pd-input-words-5bcea8",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "jurnal = input()\ncoduri = jurnal.split(\" \")\nprint(len(coduri))\nprint(coduri[0])",
+      "output": "3\nok",
+      "options": ["ok sos ok", "ok", "3 ok", "oksosok"],
+      "answer": 0
+    },
+    {
+      "id": "pd-input-words-af2ec5",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "text = input()\ncuvinte = text.split(\" \")\nprint(len(cuvinte))\nprint(cuvinte[0])",
+      "output": "2\nVice",
+      "options": ["Vice City", "Vice", "2 Vice", "ViceCity"],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pairs-62754a",
+      "text": "Ce conține `perechi` la final?",
+      "code": "numere = [2, 7, 4, 5]\nperechi = []\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == 9:\n            perechi.append((numere[i], numere[j]))",
+      "options": [
+        "[(2, 7), (4, 5)]",
+        "[(2, 7), (7, 2), (4, 5), (5, 4)]",
+        "[(0, 1), (2, 3)]",
+        "[(2, 7), (7, 4), (7, 5), (4, 5)]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pairs-fc781c",
+      "text": "Ce conține `perechi` la final?",
+      "code": "numere = [1, 5, 3, 7]\nperechi = []\nfor i in range(len(numere)):\n    for j in range(i + 1, len(numere)):\n        if numere[i] + numere[j] == 8:\n            perechi.append((numere[i], numere[j]))",
+      "options": [
+        "[(1, 7), (5, 3)]",
+        "[(1, 7), (5, 3), (3, 5), (7, 1)]",
+        "[(0, 3), (1, 2)]",
+        "[(1, 7), (5, 3), (5, 7), (3, 7)]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pairs-044bbc",
+      "text": "Ce conține `oferte` la final?",
+      "code": "preturi = [10, 30, 20, 40]\noferte = []\nfor i in range(len(preturi)):\n    for j in range(i + 1, len(preturi)):\n        if preturi[i] + preturi[j] == 50:\n            oferte.append((preturi[i], preturi[j]))",
+      "options": [
+        "[(10, 40), (30, 20)]",
+        "[(10, 40), (30, 20), (20, 30), (40, 10)]",
+        "[(0, 3), (1, 2)]",
+        "[(10, 40), (30, 20), (30, 40), (20, 40)]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "pd-holds-pairs-f020c8",
+      "text": "Ce conține `perechi` la final?",
+      "code": "greutati = [6, 1, 4, 3]\nperechi = []\nfor i in range(len(greutati)):\n    for j in range(i + 1, len(greutati)):\n        if greutati[i] + greutati[j] == 7:\n            perechi.append((greutati[i], greutati[j]))",
+      "options": [
+        "[(6, 1), (4, 3)]",
+        "[(6, 1), (1, 6), (4, 3), (3, 4)]",
+        "[(0, 1), (2, 3)]",
+        "[(6, 1), (6, 4), (6, 3), (4, 3)]"
       ],
       "answer": 0
     }

@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "rfa-safe-ae42c4",
-      "text": "Ce afișează?",
-      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nnumere = []\nfor citire in [\"40\", \"4O\", \"12\"]:\n    numere.append(int_sigur(citire))\nprint(numere)",
-      "options": ["[40, 0, 12]", "[40, '4O', 12]", "[40, -1, 12]", "['40', '4O', '12']"],
-      "answer": 0
-    },
-    {
-      "id": "rfa-safe-3b159d",
-      "text": "Ce afișează?",
-      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nnumere = []\nfor citire in [\"5\", \"\", \"8\"]:\n    numere.append(int_sigur(citire))\nprint(numere)",
-      "options": ["[5, 0, 8]", "[5, '', 8]", "[5, -1, 8]", "['5', '', '8']"],
-      "answer": 0
-    },
-    {
       "id": "rfa-fallback-ee4924",
       "text": "Ce afișează?",
       "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"12\"))\nprint(int_sigur(\"doisprezece\"))\nprint(int_sigur(\"doisprezece\", -1))",
@@ -41,13 +27,6 @@
       "text": "Ce afișează?",
       "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"300\"))\nprint(int_sigur(\"3OO\"))\nprint(int_sigur(\"3OO\", 99))",
       "options": ["300\n0\n99", "300\n1\n99", "300\n0\n0", "300\n3OO\n3OO"],
-      "answer": 0
-    },
-    {
-      "id": "rfa-fallback-ab5921",
-      "text": "Ce afișează?",
-      "code": "def int_sigur(text, valoare_implicita=0):\n    try:\n        return int(text)\n    except ValueError:\n        return valoare_implicita\n\nprint(int_sigur(\"5\"))\nprint(int_sigur(\"cinci\"))\nprint(int_sigur(\"cinci\", 1))",
-      "options": ["5\n0\n1", "5\n1\n1", "5\n0\n0", "5\ncinci\ncinci"],
       "answer": 0
     },
     {
@@ -75,30 +54,6 @@
       "answer": 0
     },
     {
-      "id": "rfa-summary-5bbcb2",
-      "text": "Ce afișează?",
-      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([6, 3, 8, 1])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mic}\")",
-      "options": [
-        "Total: 18\nCel mai mare: 8\nCel mai mic: 1",
-        "Total: 18\nCel mai mare: 1\nCel mai mic: 8",
-        "Total: 4\nCel mai mare: 8\nCel mai mic: 1",
-        "Total: 18\nCel mai mare: 8\nCel mai mic: 8"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rfa-summary-b5e21a",
-      "text": "Ce afișează?",
-      "code": "def sumeaza(numere):\n    return sum(numere), max(numere), min(numere)\n\ntotal, cel_mai_mare, cel_mai_mic = sumeaza([12, 5, 20])\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mic}\")",
-      "options": [
-        "Total: 37\nCel mai mare: 20\nCel mai mic: 5",
-        "Total: 37\nCel mai mare: 5\nCel mai mic: 20",
-        "Total: 3\nCel mai mare: 20\nCel mai mic: 5",
-        "Total: 37\nCel mai mare: 20\nCel mai mic: 20"
-      ],
-      "answer": 0
-    },
-    {
       "id": "rfa-tuple-d1b7cc",
       "text": "Ce afișează?",
       "code": "def statistici(numere):\n    return max(numere), min(numere)\n\nprint(statistici([3, 8, 5]))",
@@ -110,13 +65,6 @@
       "text": "Ce afișează?",
       "code": "def statistici(numere):\n    return max(numere), min(numere)\n\nprint(statistici([15, 4, 9, 11]))",
       "options": ["(15, 4)", "[15, 4]", "15", "(4, 15)"],
-      "answer": 0
-    },
-    {
-      "id": "rfa-tuple-a53618",
-      "text": "Ce afișează?",
-      "code": "def statistici(numere):\n    return max(numere), min(numere)\n\nprint(statistici([7, 2]))",
-      "options": ["(7, 2)", "[7, 2]", "7", "(2, 7)"],
       "answer": 0
     },
     {
@@ -144,30 +92,6 @@
       "answer": 0
     },
     {
-      "id": "rfa-scope-8d40f2",
-      "text": "Ce afișează?",
-      "code": "putere = 12\nprint(f\"Inainte: {putere}\")\n\ndef amplifica(p):\n    p = p * 2\n    return p\n\namplifica(putere)\nprint(f\"Ignorat: {putere}\")\nputere = amplifica(putere)\nprint(f\"Dupa: {putere}\")",
-      "options": [
-        "Inainte: 12\nIgnorat: 12\nDupa: 24",
-        "Inainte: 12\nIgnorat: 12\nDupa: 12",
-        "Inainte: 12\nIgnorat: 12\nDupa: 14",
-        "Inainte: 12\nIgnorat: 24\nDupa: 48"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rfa-scope-8ee82f",
-      "text": "Ce afișează?",
-      "code": "viteza = 60\nprint(f\"Inainte: {viteza}\")\n\ndef amplifica(x):\n    x = x * 2\n    return x\n\namplifica(viteza)\nprint(f\"Ignorat: {viteza}\")\nviteza = amplifica(viteza)\nprint(f\"Dupa: {viteza}\")",
-      "options": [
-        "Inainte: 60\nIgnorat: 60\nDupa: 120",
-        "Inainte: 60\nIgnorat: 60\nDupa: 60",
-        "Inainte: 60\nIgnorat: 60\nDupa: 62",
-        "Inainte: 60\nIgnorat: 120\nDupa: 240"
-      ],
-      "answer": 0
-    },
-    {
       "id": "rfa-default-571dc5",
       "text": "Ce afișează?",
       "code": "def andocheaza(nava, doc=\"A1\"):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"Voyager\")\nandocheaza(\"Odyssey\", \"B7\")\nandocheaza(\"Voyager\", doc=\"C3\")",
@@ -188,18 +112,6 @@
         "Falcon andocat la A2\nNova andocat la A2\nFalcon andocat la B5",
         "Falcon andocat la D4\nA2 andocat la Nova\nFalcon andocat la B5",
         "D4 andocat la Falcon\nA2 andocat la Nova\nB5 andocat la Falcon"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rfa-default-3a8b80",
-      "text": "Ce afișează?",
-      "code": "def andocheaza(nava, doc=\"C1\"):\n    print(f\"{nava} andocat la {doc}\")\n\nandocheaza(\"Pioneer\")\nandocheaza(\"Atlas\", \"D8\")\nandocheaza(\"Pioneer\", doc=\"A6\")",
-      "options": [
-        "Pioneer andocat la C1\nAtlas andocat la D8\nPioneer andocat la A6",
-        "Pioneer andocat la D8\nAtlas andocat la D8\nPioneer andocat la A6",
-        "Pioneer andocat la C1\nD8 andocat la Atlas\nPioneer andocat la A6",
-        "C1 andocat la Pioneer\nD8 andocat la Atlas\nA6 andocat la Pioneer"
       ],
       "answer": 0
     },
@@ -735,6 +647,69 @@
       "code": "putere = 15\nprint(\"Inainte:\", putere)\n\ndef amplifica(p):\n    p = p * 2\n    return p\n\namplifica(putere)\nprint(\"Dupa:\", putere)\nprint(\"Plus 5:\", putere + 5)",
       "output": "Inainte: 15\nDupa: 30\nPlus 5: 35",
       "options": ["amplifica(putere)", "return p", "p = p * 2", "print(\"Inainte:\", putere)"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-error-int-ce1b40",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def dublu(text):\n    return int(text) * 2\n\nprint(dublu(\"x7\"))",
+      "options": ["ValueError", "TypeError", "NameError", "ZeroDivisionError"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-error-int-d8e29d",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def dublu(text):\n    return int(text) * 2\n\nprint(dublu(\"4.5\"))",
+      "options": ["ValueError", "TypeError", "NameError", "ZeroDivisionError"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-error-int-0c6745",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def de_doua_ori(citire):\n    return int(citire) * 2\n\nprint(de_doua_ori(\"sapte\"))",
+      "options": ["ValueError", "TypeError", "NameError", "ZeroDivisionError"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-error-call-2fce23",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def andocheaza(nava, hangar=\"A1\"):\n    print(f\"{nava} {hangar}\")\n\nandocheaza(\"Nova\", \"B2\", \"acum\")",
+      "options": ["TypeError", "SyntaxError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-error-call-79067b",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def saluta(nume, cuvant=\"Salut\"):\n    print(f\"{nume} {cuvant}\")\n\nsaluta(\"Ana\", \"Hei\", \"!\")",
+      "options": ["TypeError", "SyntaxError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-error-call-b2f1b9",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def raport(nava, stare=\"ok\"):\n    print(f\"{nava} {stare}\")\n\nraport(\"Vega\", \"intarziata\", \"rapid\")",
+      "options": ["TypeError", "SyntaxError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-holds-safe-40509e",
+      "text": "Ce conține `bune` la final?",
+      "code": "bune = []\nfor citire in [\"8\", \"x\", \"3\"]:\n    try:\n        bune.append(int(citire))\n    except ValueError:\n        bune.append(0)",
+      "options": ["[8, 0, 3]", "['8', 'x', '3']", "[8, 3]", "[3]"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-holds-safe-fa62c3",
+      "text": "Ce conține `bune` la final?",
+      "code": "bune = []\nfor citire in [\"12\", \"4.5\", \"7\"]:\n    try:\n        bune.append(int(citire))\n    except ValueError:\n        bune.append(-1)",
+      "options": ["[12, -1, 7]", "['12', '4.5', '7']", "[12, 7]", "[7]"],
+      "answer": 0
+    },
+    {
+      "id": "rfa-holds-safe-c1994e",
+      "text": "Ce conține `valori` la final?",
+      "code": "valori = []\nfor text in [\"cinci\", \"2\", \"9\", \"?\"]:\n    try:\n        valori.append(int(text))\n    except ValueError:\n        valori.append(0)",
+      "options": ["[0, 2, 9, 0]", "['cinci', '2', '9', '?']", "[2, 9]", "[9, 0]"],
       "answer": 0
     }
   ]

@@ -16,27 +16,6 @@
       "answer": 0
     },
     {
-      "id": "mr-minmax-72d8f8",
-      "text": "Ce afișează?",
-      "code": "def minim_maxim(numere):\n    return min(numere), max(numere)\n\nmic, mare = minim_maxim([3, 3, 6])\nprint(mic)\nprint(mare)",
-      "options": ["3\n6", "6\n3", "3 6", "(3, 6)"],
-      "answer": 0
-    },
-    {
-      "id": "mr-minmax-d259c3",
-      "text": "Ce afișează?",
-      "code": "def minim_maxim(numere):\n    return min(numere), max(numere)\n\nmic, mare = minim_maxim([40, 15, 22, 18])\nprint(mic)\nprint(mare)",
-      "options": ["15\n40", "40\n15", "15 40", "(15, 40)"],
-      "answer": 0
-    },
-    {
-      "id": "mr-minmax-65bae8",
-      "text": "Ce afișează?",
-      "code": "def minim_maxim(numere):\n    return min(numere), max(numere)\n\nmic, mare = minim_maxim([9, 14, 2, 11])\nprint(mic)\nprint(mare)",
-      "options": ["2\n14", "14\n2", "2 14", "(2, 14)"],
-      "answer": 0
-    },
-    {
       "id": "mr-tuple-053388",
       "text": "Ce afișează?",
       "code": "def suma_si_diferenta(a, b):\n    return a + b, a - b\n\nrezultat = suma_si_diferenta(8, 3)\nprint(rezultat)",
@@ -48,20 +27,6 @@
       "text": "Ce afișează?",
       "code": "def amandoua(a, b):\n    return a + b, a - b\n\nrezultat = amandoua(10, 4)\nprint(rezultat)",
       "options": ["(14, 6)", "14", "14 6", "(14, -6)"],
-      "answer": 0
-    },
-    {
-      "id": "mr-tuple-3c26dc",
-      "text": "Ce afișează?",
-      "code": "def plus_minus(a, b):\n    return a + b, a - b\n\nrezultat = plus_minus(7, 2)\nprint(rezultat)",
-      "options": ["(9, 5)", "9", "9 5", "(9, -5)"],
-      "answer": 0
-    },
-    {
-      "id": "mr-tuple-fe0aed",
-      "text": "Ce afișează?",
-      "code": "def calcul(a, b):\n    return a + b, a - b\n\nrezultat = calcul(15, 6)\nprint(rezultat)",
-      "options": ["(21, 9)", "21", "21 9", "(21, -9)"],
       "answer": 0
     },
     {
@@ -89,42 +54,6 @@
       "answer": 0
     },
     {
-      "id": "mr-stats-69b20f",
-      "text": "Ce afișează?",
-      "code": "def statistici(scoruri):\n    total = sum(scoruri)\n    maxim = max(scoruri)\n    return total, maxim\n\nt, m = statistici([7, 7, 3])\nprint(f\"Total: {t}\")\nprint(f\"Maxim: {m}\")",
-      "options": [
-        "Total: 17\nMaxim: 7",
-        "Total: 17\nMaxim: 3",
-        "Total: 7\nMaxim: 17",
-        "Total: 3\nMaxim: 7"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "mr-stats-ca2e23",
-      "text": "Ce afișează?",
-      "code": "def statistici(scoruri):\n    total = sum(scoruri)\n    maxim = max(scoruri)\n    return total, maxim\n\nt, m = statistici([50, 20, 80])\nprint(f\"Total: {t}\")\nprint(f\"Maxim: {m}\")",
-      "options": [
-        "Total: 150\nMaxim: 80",
-        "Total: 150\nMaxim: 20",
-        "Total: 80\nMaxim: 150",
-        "Total: 3\nMaxim: 80"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "mr-stats-55214b",
-      "text": "Ce afișează?",
-      "code": "def statistici(scoruri):\n    total = sum(scoruri)\n    maxim = max(scoruri)\n    return total, maxim\n\nt, m = statistici([11, 6, 1, 8])\nprint(f\"Total: {t}\")\nprint(f\"Maxim: {m}\")",
-      "options": [
-        "Total: 26\nMaxim: 11",
-        "Total: 26\nMaxim: 1",
-        "Total: 11\nMaxim: 26",
-        "Total: 4\nMaxim: 11"
-      ],
-      "answer": 0
-    },
-    {
       "id": "mr-avg-bb001b",
       "text": "Ce afișează?",
       "code": "def raport(scoruri):\n    total = sum(scoruri)\n    medie = total / len(scoruri)\n    return total, medie\n\nt, m = raport([80, 90, 70])\nprint(t)\nprint(m)",
@@ -143,13 +72,6 @@
       "text": "Ce afișează?",
       "code": "def raport(scoruri):\n    total = sum(scoruri)\n    medie = total / len(scoruri)\n    return total, medie\n\nt, m = raport([10, 20, 30, 40])\nprint(t)\nprint(m)",
       "options": ["100\n25.0", "100\n25", "25.0\n100", "100 25.0"],
-      "answer": 0
-    },
-    {
-      "id": "mr-avg-253260",
-      "text": "Ce afișează?",
-      "code": "def raport(scoruri):\n    total = sum(scoruri)\n    medie = total / len(scoruri)\n    return total, medie\n\nt, m = raport([5, 8, 11])\nprint(t)\nprint(m)",
-      "options": ["24\n8.0", "24\n8", "8.0\n24", "24 8.0"],
       "answer": 0
     },
     {
@@ -189,30 +111,6 @@
       "answer": 0
     },
     {
-      "id": "mr-split-b29927",
-      "text": "Ce afișează?",
-      "code": "def nume_impartit(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nprenume, nume = nume_impartit(\"Mercedes Cortez\")\nprint(f\"Nume: {nume}\")\nprint(f\"Prenume: {prenume}\")",
-      "options": [
-        "Nume: Cortez\nPrenume: Mercedes",
-        "Nume: Mercedes\nPrenume: Cortez",
-        "Nume: Mercedes\nPrenume: Mercedes",
-        "Nume: Cortez\nPrenume: Mercedes Cortez"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "mr-split-608bae",
-      "text": "Ce afișează?",
-      "code": "def nume_impartit(nume_complet):\n    parti = nume_complet.split(\" \")\n    return parti[0], parti[1]\n\nprenume, nume = nume_impartit(\"Ricardo Diaz\")\nprint(f\"Nume: {nume}\")\nprint(f\"Prenume: {prenume}\")",
-      "options": [
-        "Nume: Diaz\nPrenume: Ricardo",
-        "Nume: Ricardo\nPrenume: Diaz",
-        "Nume: Ricardo\nPrenume: Ricardo",
-        "Nume: Diaz\nPrenume: Ricardo Diaz"
-      ],
-      "answer": 0
-    },
-    {
       "id": "mr-parse-5abfdb",
       "text": "Ce afișează?",
       "code": "def analizeaza(citire):\n    parti = citire.split(\" \")\n    a = int(parti[0])\n    b = int(parti[1])\n    c = int(parti[2])\n    return a + b + c, max(a, b, c), min(a, b, c)\n\ntotal, cel_mai_mare, cel_mai_mic = analizeaza(\"10 40 25\")\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mic}\")",
@@ -245,18 +143,6 @@
         "Total: 75\nCel mai mare: 60\nCel mai mic: 15",
         "Total: 105\nCel mai mare: 15\nCel mai mic: 60",
         "Total: 90\nCel mai mare: 60\nCel mai mic: 15"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "mr-parse-44b424",
-      "text": "Ce afișează?",
-      "code": "def analizeaza(citire):\n    parti = citire.split(\" \")\n    a = int(parti[0])\n    b = int(parti[1])\n    c = int(parti[2])\n    return a + b + c, max(a, b, c), min(a, b, c)\n\ntotal, cel_mai_mare, cel_mai_mic = analizeaza(\"8 8 2\")\nprint(f\"Total: {total}\")\nprint(f\"Cel mai mare: {cel_mai_mare}\")\nprint(f\"Cel mai mic: {cel_mai_mic}\")",
-      "options": [
-        "Total: 18\nCel mai mare: 8\nCel mai mic: 2",
-        "Total: 16\nCel mai mare: 8\nCel mai mic: 2",
-        "Total: 18\nCel mai mare: 2\nCel mai mic: 8",
-        "Total: 24\nCel mai mare: 8\nCel mai mic: 8"
       ],
       "answer": 0
     },
@@ -766,6 +652,93 @@
         "print(f\"Total: {t}\")",
         "print(f\"Medie: {m}\")"
       ],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-sum-d19924",
+      "text": "Ce conține `total` la final?",
+      "code": "def statistici(scoruri):\n    return sum(scoruri), max(scoruri)\n\ntotal, maxim = statistici([4, 9, 2])",
+      "options": ["15", "9", "(15, 9)", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-sum-f563d7",
+      "text": "Ce conține `total` la final?",
+      "code": "def statistici(scoruri):\n    return sum(scoruri), max(scoruri)\n\ntotal, maxim = statistici([6, 3, 10, 7])",
+      "options": ["26", "10", "(26, 10)", "4"],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-sum-74d106",
+      "text": "Ce conține `timp` la final?",
+      "code": "def raport(ture):\n    return sum(ture), max(ture)\n\ntimp, cea_mai_lenta = raport([5, 5, 1])",
+      "options": ["11", "5", "(11, 5)", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-split-49768a",
+      "text": "Ce conține `nume` la final?",
+      "code": "def imparte_nume(complet):\n    parti = complet.split(\" \")\n    return parti[0], parti[1]\n\nprenume, nume = imparte_nume(\"Phil Cassidy\")",
+      "options": ["'Cassidy'", "'Phil'", "('Phil', 'Cassidy')", "'h'"],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-split-42c60f",
+      "text": "Ce conține `nume` la final?",
+      "code": "def imparte_nume(complet):\n    parti = complet.split(\" \")\n    return parti[0], parti[1]\n\nprenume, nume = imparte_nume(\"Sonny Forelli\")",
+      "options": ["'Forelli'", "'Sonny'", "('Sonny', 'Forelli')", "'o'"],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-split-9c4a87",
+      "text": "Ce conține `nume` la final?",
+      "code": "def imparte_nume(complet):\n    parti = complet.split(\" \")\n    return parti[0], parti[1]\n\nprenume, nume = imparte_nume(\"Mercedes Cortez\")",
+      "options": ["'Cortez'", "'Mercedes'", "('Mercedes', 'Cortez')", "'e'"],
+      "answer": 0
+    },
+    {
+      "id": "mr-input-grow-7f52be",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def creste(x):\n    return x * 2, x * 3\n\ndublu, triplu = creste(int(input()))\nprint(triplu)",
+      "output": "12",
+      "options": ["4", "12", "6", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mr-input-grow-4d7389",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def creste(x):\n    return x * 2, x * 3\n\ndublu, triplu = creste(int(input()))\nprint(triplu)",
+      "output": "18",
+      "options": ["6", "18", "9", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mr-input-grow-eb166a",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def creste(x):\n    return x * 2, x * 3\n\ndublu, triplu = creste(int(input()))\nprint(triplu)",
+      "output": "24",
+      "options": ["8", "24", "12", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mr-error-none-d84960",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def min_max(numere):\n    print(min(numere), max(numere))\n\nmic, mare = min_max([6, 3, 10])",
+      "options": ["TypeError", "NameError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "mr-error-none-d24d32",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def min_max(numere):\n    print(min(numere), max(numere))\n\nmic, mare = min_max([4, 9, 2, 7])",
+      "options": ["TypeError", "NameError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "mr-error-none-76e951",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def interval(scoruri):\n    print(min(scoruri), max(scoruri))\n\nslab, bun = interval([55, 90, 70])",
+      "options": ["TypeError", "NameError", "IndexError", "KeyError"],
       "answer": 0
     }
   ]

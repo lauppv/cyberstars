@@ -50,18 +50,6 @@
       "answer": 0
     },
     {
-      "id": "fn-greet-2a4633",
-      "text": "Ce afișează?",
-      "code": "def noroc(pilot):\n    print(f\"Succes, {pilot}!\")\n\nnoroc(\"Nova\")\nnoroc(\"Rex\")",
-      "options": [
-        "Succes, Nova!\nSucces, Rex!",
-        "Succes, {pilot}!\nSucces, {pilot}!",
-        "Succes, pilot!\nSucces, pilot!",
-        "Succes, Rex!\nSucces, Nova!"
-      ],
-      "answer": 0
-    },
-    {
       "id": "fn-two-9d1533",
       "text": "Ce afișează?",
       "code": "def arata_varsta(nume, varsta):\n    print(f\"{nume} are {varsta} de ani\")\n\narata_varsta(\"Tommy\", 42)",
@@ -106,18 +94,6 @@
         "4 are Orion stele",
         "{hotel} are {stele} stele",
         "Orion are stele stele"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "fn-two-ef6efb",
-      "text": "Ce afișează?",
-      "code": "def varsta_echipaj(pilot, varsta):\n    print(f\"{pilot} are {varsta} de ani\")\n\nvarsta_echipaj(\"Lance\", 35)",
-      "options": [
-        "Lance are 35 de ani",
-        "35 are Lance de ani",
-        "{pilot} are {varsta} de ani",
-        "Lance are varsta de ani"
       ],
       "answer": 0
     },
@@ -208,18 +184,6 @@
       "answer": 0
     },
     {
-      "id": "fn-loop-7aabe6",
-      "text": "Ce afișează?",
-      "code": "def verifica_usi(usi):\n    for i in range(1, usi + 1):\n        print(f\"Usa {i}\")\n\nverifica_usi(5)",
-      "options": [
-        "Usa 1\nUsa 2\nUsa 3\nUsa 4\nUsa 5",
-        "Usa 1\nUsa 2\nUsa 3\nUsa 4",
-        "Usa 0\nUsa 1\nUsa 2\nUsa 3\nUsa 4",
-        "Usa {i}\nUsa {i}\nUsa {i}\nUsa {i}\nUsa {i}"
-      ],
-      "answer": 0
-    },
-    {
       "id": "fn-status-61a784",
       "text": "Ce afișează?",
       "code": "def f(nume, stare):\n    if stare == True:\n        print(f\"{nume} este online\")\n    else:\n        print(f\"{nume} este offline\")\n\nf(\"Admin\", True)",
@@ -265,13 +229,6 @@
         "False e deschisa",
         "camera e deschisa"
       ],
-      "answer": 0
-    },
-    {
-      "id": "fn-status-e971ec",
-      "text": "Ce afișează?",
-      "code": "def motor(nava, gata):\n    if gata == True:\n        print(f\"{nava} e gata\")\n    else:\n        print(f\"{nava} trebuie reparata\")\n\nmotor(\"Nova\", True)",
-      "options": ["Nova e gata", "Nova trebuie reparata", "True trebuie reparata", "nava e gata"],
       "answer": 0
     },
     {
@@ -736,6 +693,38 @@
         "print(f\"{hotel} are {stele} stele\")",
         "def nota(hotel, stele):"
       ],
+      "answer": 0
+    },
+    {
+      "id": "fn-input-greet-eafb72",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def saluta(nume):\n    print(f\"Salut, {nume}!\")\n\nsaluta(input())",
+      "output": "Salut, Ana!",
+      "options": ["Ana", "Salut, Ana!", "nume", "Ana!"],
+      "answer": 0
+    },
+    {
+      "id": "fn-input-greet-bf89da",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def bravo(jucator):\n    print(f\"Bravo, {jucator}!\")\n\nbravo(input())",
+      "output": "Bravo, Ben!",
+      "options": ["Ben", "Bravo, Ben!", "jucator", "Ben!"],
+      "answer": 0
+    },
+    {
+      "id": "fn-input-laps-816a03",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def numara_ture(ture):\n    for i in range(1, ture + 1):\n        print(f\"Tura {i}\")\n\nnumara_ture(int(input()))",
+      "output": "Tura 1\nTura 2\nTura 3",
+      "options": ["3", "4", "2", "Tura 3"],
+      "answer": 0
+    },
+    {
+      "id": "fn-input-laps-1e919e",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def arata_niveluri(niveluri):\n    for i in range(1, niveluri + 1):\n        print(f\"Nivelul {i}\")\n\narata_niveluri(int(input()))",
+      "output": "Nivelul 1\nNivelul 2\nNivelul 3\nNivelul 4",
+      "options": ["4", "5", "3", "Nivelul 4"],
       "answer": 0
     }
   ]

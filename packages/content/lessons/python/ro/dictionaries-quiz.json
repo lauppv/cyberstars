@@ -332,15 +332,6 @@
           "v2": 2,
           "k3": "lapte",
           "v3": 4
-        },
-        {
-          "d": "stoc",
-          "k1": "suruburi",
-          "v1": 120,
-          "k2": "rotite",
-          "v2": 35,
-          "k3": "fire",
-          "v3": 70
         }
       ],
       "mistakes": [
@@ -395,16 +386,6 @@
           "k3": "lapte",
           "v3": 4,
           "n": 5
-        },
-        {
-          "d": "vieti",
-          "k1": "Kai",
-          "v1": 3,
-          "k2": "Mia",
-          "v2": 1,
-          "k3": "Rex",
-          "v3": 5,
-          "n": 2
         }
       ],
       "mistakes": [
@@ -455,15 +436,6 @@
           "v2": 1,
           "k3": "doc",
           "v3": 7
-        },
-        {
-          "d": "viteza",
-          "k1": "Nova",
-          "v1": 300,
-          "k2": "Orion",
-          "v2": 250,
-          "k3": "Vega",
-          "v3": 280
         }
       ],
       "mistakes": [
@@ -518,16 +490,6 @@
           "a": "lapte",
           "b": "paine",
           "none": "Nu se vinde"
-        },
-        {
-          "d": "vieti",
-          "k1": "Kai",
-          "v1": 3,
-          "k2": "Mia",
-          "v2": 1,
-          "a": "Rex",
-          "b": "Kai",
-          "none": "Necunoscut"
         }
       ],
       "mistakes": [
@@ -578,15 +540,6 @@
           "v2": 30,
           "op": "+",
           "n": 5
-        },
-        {
-          "d": "vieti",
-          "k1": "Rex",
-          "v1": 5,
-          "k2": "Zoe",
-          "v2": 3,
-          "op": "-",
-          "n": 1
         }
       ],
       "mistakes": [
@@ -641,16 +594,6 @@
           "i3": "fierastrau",
           "i": 1,
           "j": 0
-        },
-        {
-          "d": "statie",
-          "who": "Laniakea",
-          "lk": "camere",
-          "i1": "laborator",
-          "i2": "punte",
-          "i3": "doc",
-          "i": 2,
-          "j": 1
         }
       ],
       "mistakes": [
@@ -1139,6 +1082,100 @@
         }
       ],
       "bug": ["del {{d}}[\"{{k2}}\"]", "delete {{d}}[\"{{k2}}\"]"]
+    },
+    {
+      "id": "dc-holds-update",
+      "kind": "holds",
+      "text": "Ce conține `{{d}}` la final?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{d}}[\"{{k1}}\"] = {{d}}[\"{{k1}}\"] + {{n}}\n{{d}}[\"{{k3}}\"] = {{v3}}",
+      "values": [
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "n": 20,
+          "k3": "Vega",
+          "v3": 60,
+          "K1": "nova"
+        },
+        {
+          "d": "varste",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "n": 1,
+          "k3": "Cortez",
+          "v3": 60,
+          "K1": "tommy"
+        },
+        {
+          "d": "marfa",
+          "k1": "mancare",
+          "v1": 10,
+          "k2": "apa",
+          "v2": 6,
+          "n": 5,
+          "k3": "unelte",
+          "v3": 8,
+          "K1": "Mancare"
+        }
+      ],
+      "variable": "{{d}}",
+      "mistakes": [
+        ["{{d}}[\"{{k1}}\"] = {{d}}[\"{{k1}}\"] + {{n}}", "{{d}}[\"{{k1}}\"] = {{n}}"],
+        ["{{d}}[\"{{k3}}\"] = {{v3}}", "{{d}} = {\"{{k3}}\": {{v3}}}"],
+        [
+          "{{d}}[\"{{k1}}\"] = {{d}}[\"{{k1}}\"] + {{n}}",
+          "{{d}}[\"{{K1}}\"] = {{d}}[\"{{k1}}\"] + {{n}}"
+        ]
+      ]
+    },
+    {
+      "id": "dc-holds-in",
+      "kind": "holds",
+      "text": "Ce conține `{{x}}` la final?",
+      "code": "{{d}} = {\"{{k1}}\": {{v1}}, \"{{k2}}\": {{v2}}}\n{{x}} = 0\nif \"{{a}}\" in {{d}}:\n    {{x}} = {{d}}[\"{{a}}\"]",
+      "values": [
+        {
+          "d": "varste",
+          "k1": "Tommy",
+          "v1": 42,
+          "k2": "Lance",
+          "v2": 35,
+          "x": "varsta",
+          "a": "Lance",
+          "o": "Tommy"
+        },
+        {
+          "d": "preturi",
+          "k1": "ceai",
+          "v1": 4,
+          "k2": "tort",
+          "v2": 6,
+          "x": "pret",
+          "a": "tort",
+          "o": "ceai"
+        },
+        {
+          "d": "combustibil",
+          "k1": "Nova",
+          "v1": 80,
+          "k2": "Orion",
+          "v2": 45,
+          "x": "nivel",
+          "a": "Nova",
+          "o": "Orion"
+        }
+      ],
+      "variable": "{{x}}",
+      "mistakes": [
+        ["\"{{a}}\" in", "\"{{a}}\" not in"],
+        ["{{x}} = {{d}}[\"{{a}}\"]", "{{x}} = \"{{a}}\""],
+        ["{{x}} = {{d}}[\"{{a}}\"]", "{{x}} = {{d}}[\"{{o}}\"]"]
+      ]
     }
   ]
 }

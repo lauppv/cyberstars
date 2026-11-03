@@ -23,20 +23,6 @@
       "answer": 0
     },
     {
-      "id": "sc-local-3ab0ec",
-      "text": "Ce afișează?",
-      "code": "munitie = 12\n\ndef reincarca():\n    munitie = 6\n    print(munitie)\n\nreincarca()\nprint(munitie)",
-      "options": ["6\n12", "12\n6", "12\n12", "6"],
-      "answer": 0
-    },
-    {
-      "id": "sc-local-716233",
-      "text": "Ce afișează?",
-      "code": "scor = 0\n\ndef bonus():\n    scor = 10\n    print(scor)\n\nbonus()\nprint(scor)",
-      "options": ["10\n0", "0\n10", "0\n0", "10"],
-      "answer": 0
-    },
-    {
       "id": "sc-read-a4e001",
       "text": "Ce afișează?",
       "code": "scut = 100\n\ndef arata_scut():\n    print(f\"Scut: {scut}\")\n\narata_scut()\nscut = 40\narata_scut()",
@@ -73,18 +59,6 @@
       "answer": 0
     },
     {
-      "id": "sc-read-364ed1",
-      "text": "Ce afișează?",
-      "code": "munitie = 8\n\ndef arata_munitie():\n    print(f\"Munitie: {munitie}\")\n\narata_munitie()\nmunitie = 3\narata_munitie()",
-      "options": [
-        "Munitie: 8\nMunitie: 3",
-        "Munitie: 8\nMunitie: 8",
-        "Munitie: {munitie}\nMunitie: {munitie}",
-        "Munitie: 3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "sc-store-c16390",
       "text": "Ce afișează?",
       "code": "def amplifica(nivel):\n    return nivel * 2\n\nscut = 100\namplifica(scut)\nprint(scut)\nscut = amplifica(scut)\nprint(scut)",
@@ -103,13 +77,6 @@
       "text": "Ce afișează?",
       "code": "def cheltuie(monede):\n    return monede - 30\n\nbani = 100\ncheltuie(bani)\nprint(bani)\nbani = cheltuie(bani)\nprint(bani)",
       "options": ["100\n70", "70\n40", "100\n100", "100\n40"],
-      "answer": 0
-    },
-    {
-      "id": "sc-store-562ca7",
-      "text": "Ce afișează?",
-      "code": "def reincarca(incarcator):\n    return incarcator + 6\n\nmunitie = 4\nreincarca(munitie)\nprint(munitie)\nmunitie = reincarca(munitie)\nprint(munitie)",
-      "options": ["4\n10", "10\n16", "4\n4", "4\n16"],
       "answer": 0
     },
     {
@@ -134,13 +101,6 @@
       "answer": 0
     },
     {
-      "id": "sc-fresh-19af76",
-      "text": "Ce afișează?",
-      "code": "def stivuieste():\n    cutii = 0\n    for i in range(3):\n        cutii = cutii + 4\n    return cutii\n\nprint(stivuieste())\nprint(stivuieste())",
-      "options": ["12\n12", "12\nNone\n12\nNone", "4\n4", "16\n16"],
-      "answer": 0
-    },
-    {
       "id": "sc-param-ee99ca",
       "text": "Ce afișează?",
       "code": "def dublu(n):\n    n = n * 2\n    return n\n\nn = 3\nrezultat = dublu(n)\nprint(n)\nprint(rezultat)",
@@ -159,20 +119,6 @@
       "text": "Ce afișează?",
       "code": "def jumatate(n):\n    n = n / 2\n    return n\n\nn = 9\nparte = jumatate(n)\nprint(n)\nprint(parte)",
       "options": ["9\n4.5", "4.5\n9", "9\n9", "9\n2"],
-      "answer": 0
-    },
-    {
-      "id": "sc-param-8e918e",
-      "text": "Ce afișează?",
-      "code": "def pierde_viata(vieti):\n    vieti = vieti - 1\n    return vieti\n\nvieti = 3\nramase = pierde_viata(vieti)\nprint(vieti)\nprint(ramase)",
-      "options": ["3\n2", "2\n3", "3\n3", "3\n1"],
-      "answer": 0
-    },
-    {
-      "id": "sc-param-54216e",
-      "text": "Ce afișează?",
-      "code": "def triplu(x):\n    x = x * 3\n    return x\n\nx = 4\nmare = triplu(x)\nprint(x)\nprint(mare)",
-      "options": ["4\n12", "12\n4", "4\n4", "4\n3"],
       "answer": 0
     },
     {
@@ -650,6 +596,55 @@
       "code": "def numar_aur():\n    aur = 120\n    return aur\n\ndef numar_pietre():\n    pietre = 8\n    return pietre\n\nprint(numar_aur())\nprint(pietre)",
       "output": "120\n8",
       "options": ["print(pietre)", "print(numar_aur())", "return pietre", "pietre = 8"],
+      "answer": 0
+    },
+    {
+      "id": "sc-error-local-5de243",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def fa_scut():\n    scut = 100\n    print(scut)\n\nfa_scut()\nprint(scut)",
+      "options": ["NameError", "IndexError", "KeyError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "sc-error-local-2725b7",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def umple_rezervor():\n    combustibil = 50\n    print(combustibil)\n\numple_rezervor()\nprint(combustibil)",
+      "options": ["NameError", "IndexError", "KeyError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "sc-error-local-510344",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def incarca():\n    marfa = 7\n    print(marfa)\n\nincarca()\nprint(marfa)",
+      "options": ["NameError", "IndexError", "KeyError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "sc-error-args-fb015f",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def aduna(a, b):\n    return a + b\n\nprint(aduna(5))",
+      "options": ["TypeError", "NameError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "sc-error-args-1d1faa",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def total_combustibil(stanga, dreapta):\n    return stanga + dreapta\n\nprint(total_combustibil(40))",
+      "options": ["TypeError", "NameError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "sc-holds-read-9bed46",
+      "text": "Ce conține `total` la final?",
+      "code": "bonus = 5\n\ndef scor():\n    return bonus + 10\n\ntotal = scor()\nbonus = 50",
+      "options": ["15", "60", "None", "5"],
+      "answer": 0
+    },
+    {
+      "id": "sc-holds-read-4b6056",
+      "text": "Ce conține `maxim` la final?",
+      "code": "viteza = 60\n\ndef accelerat():\n    return viteza + 20\n\nmaxim = accelerat()\nviteza = 0",
+      "options": ["80", "20", "None", "60"],
       "answer": 0
     }
   ]

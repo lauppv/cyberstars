@@ -316,11 +316,6 @@
           "v": "scoruri",
           "d": "{\"Ana\": 7, \"Rex\": 9}",
           "k": "nume"
-        },
-        {
-          "v": "preturi",
-          "d": "{\"ceai\": 4, \"tort\": 6, \"suc\": 5}",
-          "k": "produs"
         }
       ],
       "mistakes": [
@@ -345,11 +340,6 @@
           "v": "varste",
           "d": "{\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}",
           "x": "varsta"
-        },
-        {
-          "v": "capitale",
-          "d": "{\"Franta\": \"Paris\", \"Italia\": \"Roma\"}",
-          "x": "oras"
         }
       ],
       "mistakes": [
@@ -378,20 +368,6 @@
           "k": "nume",
           "x": "scor",
           "sep": ": "
-        },
-        {
-          "v": "stoc",
-          "d": "{\"mere\": 5, \"pere\": 0, \"prune\": 12}",
-          "k": "fruct",
-          "x": "bucati",
-          "sep": " - "
-        },
-        {
-          "v": "niveluri",
-          "d": "{\"Ana\": 3, \"Rex\": 7}",
-          "k": "jucator",
-          "x": "nivel",
-          "sep": " e la nivelul "
         }
       ],
       "mistakes": [
@@ -417,18 +393,6 @@
           "v": "preturi",
           "d": "{\"paine\": 3, \"lapte\": 2, \"branza\": 10}",
           "t": "plata",
-          "x": "p"
-        },
-        {
-          "v": "combustibil",
-          "d": "{\"stanga\": 40, \"dreapta\": 60}",
-          "t": "total",
-          "x": "c"
-        },
-        {
-          "v": "pasi",
-          "d": "{\"luni\": 1200, \"marti\": 800, \"miercuri\": 1500}",
-          "t": "parcurs",
           "x": "p"
         }
       ],
@@ -458,11 +422,6 @@
           "c": "contor",
           "l": "litera",
           "word": "mamaie"
-        },
-        {
-          "c": "contor",
-          "l": "litera",
-          "word": "ananas"
         }
       ],
       "mistakes": [
@@ -494,12 +453,6 @@
           "d": "{\"mate\": 9, \"desen\": 10, \"muzica\": 6, \"sport\": 10}",
           "t": "puncte",
           "x": "n"
-        },
-        {
-          "v": "viteze",
-          "d": "{\"Nova\": 90, \"Comet\": 75}",
-          "t": "total",
-          "x": "v"
         }
       ],
       "mistakes": [
@@ -534,13 +487,6 @@
           "n": "nume",
           "v": "vizite",
           "d": "{\"Marte\": 6, \"Venus\": 3, \"Pamant\": 5, \"Luna\": 4, \"Pluto\": 1}"
-        },
-        {
-          "tp": "cel_mai_bun",
-          "b": "maxim",
-          "n": "nume",
-          "v": "voturi",
-          "d": "{\"rosu\": 12, \"albastru\": 30, \"verde\": 8, \"negru\": 20, \"alb\": 10}"
         }
       ],
       "mistakes": [
@@ -942,6 +888,119 @@
         }
       ],
       "bug": ["{{c}} = {}", "{{c}} = []"]
+    },
+    {
+      "id": "dl-holds-raise",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "{{v}} = {{d}}\nfor {{k}} in {{v}}:\n    if {{v}}[{{k}}] < {{lim}}:\n        {{v}}[{{k}}] = {{v}}[{{k}}] + {{n}}",
+      "values": [
+        {
+          "v": "scoruri",
+          "d": "{\"Ana\": 7, \"Rex\": 5}",
+          "k": "nume",
+          "n": 2,
+          "lim": 6
+        },
+        {
+          "v": "combustibil",
+          "d": "{\"stanga\": 40, \"dreapta\": 25}",
+          "k": "rezervor",
+          "n": 10,
+          "lim": 30
+        },
+        {
+          "v": "preturi",
+          "d": "{\"ceai\": 4, \"tort\": 6, \"suc\": 5}",
+          "k": "produs",
+          "n": 1,
+          "lim": 5
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["{{v}}[{{k}}] = {{v}}[{{k}}] + {{n}}", "{{v}}[{{k}}] = {{n}}"],
+        ["{{v}}[{{k}}] = {{v}}[{{k}}] + {{n}}", "{{k}} = {{v}}[{{k}}] + {{n}}"],
+        ["< {{lim}}", "> {{lim}}"]
+      ]
+    },
+    {
+      "id": "dl-holds-sum",
+      "kind": "holds",
+      "text": "Ce conține `{{t}}` la final?",
+      "code": "{{v}} = {{d}}\n{{t}} = 0\nfor {{k}}, {{x}} in {{v}}.items():\n    if {{x}} > {{lim}}:\n        {{t}} = {{t}} + {{x}}",
+      "values": [
+        {
+          "v": "marfa",
+          "d": "{\"mancare\": 12, \"apa\": 8, \"combustibil\": 20, \"unelte\": 5}",
+          "t": "greu",
+          "k": "produs",
+          "x": "kg",
+          "lim": 8
+        },
+        {
+          "v": "scoruri",
+          "d": "{\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
+          "t": "total",
+          "k": "nume",
+          "x": "scor",
+          "lim": 50
+        },
+        {
+          "v": "preturi",
+          "d": "{\"ceai\": 4, \"tort\": 6, \"suc\": 5, \"placinta\": 6}",
+          "t": "plata",
+          "k": "produs",
+          "x": "pret",
+          "lim": 5
+        }
+      ],
+      "variable": "{{t}}",
+      "mistakes": [
+        ["{{x}} > {{lim}}", "{{x}} >= {{lim}}"],
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{t}} + 1"],
+        ["{{t}} = {{t}} + {{x}}", "{{t}} = {{x}}"]
+      ]
+    },
+    {
+      "id": "dl-input-above",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{v}} = {{d}}\n{{l}} = int(input())\nfor {{k}} in {{v}}:\n    if {{v}}[{{k}}] > {{l}}:\n        print({{k}})",
+      "values": [
+        {
+          "v": "scoruri",
+          "d": "{\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
+          "l": "limita",
+          "k": "nume",
+          "n": 50,
+          "first": 55,
+          "low": 30,
+          "high": 90
+        },
+        {
+          "v": "preturi",
+          "d": "{\"ceai\": 4, \"tort\": 6, \"suc\": 5}",
+          "l": "limita",
+          "k": "produs",
+          "n": 4,
+          "first": 5,
+          "low": 3,
+          "high": 6
+        },
+        {
+          "v": "combustibil",
+          "d": "{\"Nova\": 80, \"Orion\": 45, \"Vega\": 60}",
+          "l": "limita",
+          "k": "nava",
+          "n": 50,
+          "first": 60,
+          "low": 40,
+          "high": 80
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{first}}", "{{low}}", "{{high}}"]
     }
   ]
 }

@@ -273,22 +273,6 @@
           "w": "keep",
           "pre": "old-",
           "k": 4
-        },
-        {
-          "v": "codes",
-          "items": "\"a7\", \"x1\", \"b2\", \"x9\"",
-          "x": "c",
-          "w": "good",
-          "pre": "x",
-          "k": 1
-        },
-        {
-          "v": "tasks",
-          "items": "\"fix engine\", \"done: wash\", \"launch\", \"done: refuel\"",
-          "x": "t",
-          "w": "todo",
-          "pre": "done:",
-          "k": 5
         }
       ],
       "mistakes": [
@@ -317,13 +301,6 @@
           "x": "p",
           "w": "visited",
           "stop": "Venus"
-        },
-        {
-          "v": "songs",
-          "items": "\"Intro\", \"Wave\", \"Rain\", \"Outro\", \"Bonus\"",
-          "x": "s",
-          "w": "played",
-          "stop": "Rain"
         }
       ],
       "mistakes": [
@@ -353,12 +330,6 @@
           "word": "rocket",
           "k": 1,
           "k1": 2
-        },
-        {
-          "v": "code",
-          "word": "planet",
-          "k": 4,
-          "k1": 5
         }
       ],
       "mistakes": [
@@ -385,18 +356,6 @@
           "items": "\"Tommy\", \"Ken\", \"Cortez\", \"Lance\", \"Phil\"",
           "c": "long",
           "n": 4
-        },
-        {
-          "v": "cities",
-          "items": "\"Rome\", \"Oslo\", \"Berlin\", \"Paris\"",
-          "c": "big",
-          "n": 5
-        },
-        {
-          "v": "tools",
-          "items": "\"saw\", \"hammer\", \"drill\", \"wrench\"",
-          "c": "count",
-          "n": 5
         }
       ],
       "mistakes": [
@@ -425,20 +384,6 @@
           "x": "m",
           "t": "Tommy",
           "found": "Captain on board"
-        },
-        {
-          "v": "doors",
-          "items": "\"red\", \"green\", \"blue\"",
-          "x": "d",
-          "t": "green",
-          "found": "Door open"
-        },
-        {
-          "v": "crates",
-          "items": "\"jam\", \"milk\", \"tea\", \"gold\", \"rice\"",
-          "x": "c",
-          "t": "gold",
-          "found": "Treasure!"
         }
       ],
       "mistakes": [
@@ -466,11 +411,6 @@
           "v": "crew",
           "items": "\"Tommy\", \"Victor\", \"Lance\", \"Ken\"",
           "s": "team"
-        },
-        {
-          "v": "planets",
-          "items": "\"Mars\", \"Earth\", \"Venus\"",
-          "s": "route"
         }
       ],
       "mistakes": [
@@ -499,20 +439,6 @@
           "k": 1,
           "pre": "x",
           "rep": "free"
-        },
-        {
-          "v": "files",
-          "items": "\"plan\", \"tmp-a\", \"notes\", \"tmp-b\"",
-          "k": 4,
-          "pre": "tmp-",
-          "rep": "deleted"
-        },
-        {
-          "v": "signals",
-          "items": "\"ok\", \"err1\", \"ok\", \"err2\"",
-          "k": 3,
-          "pre": "err",
-          "rep": "lost"
         }
       ],
       "mistakes": [
@@ -541,20 +467,6 @@
           "t": "weight",
           "op": ">",
           "lim": 50
-        },
-        {
-          "v": "scores",
-          "items": "8, 6, 0, 9, 7",
-          "t": "points",
-          "op": "<",
-          "lim": 1
-        },
-        {
-          "v": "steps",
-          "items": "100, 200, 999, 300",
-          "t": "walked",
-          "op": ">=",
-          "lim": 999
         }
       ],
       "mistakes": [
@@ -983,6 +895,154 @@
         }
       ],
       "bug": ["print({{w}})", "print({{v}})"]
+    },
+    {
+      "id": "col-holds-long",
+      "kind": "holds",
+      "text": "What is in `{{w}}` at the end?",
+      "code": "{{v}} = [{{items}}]\n{{w}} = []\nfor {{x}} in {{v}}:\n    if len({{x}}) > {{n}}:\n        {{w}}.append({{x}}.upper())",
+      "values": [
+        {
+          "v": "words",
+          "items": "\"sun\", \"moon\", \"planet\", \"star\"",
+          "x": "word",
+          "w": "long",
+          "n": 4
+        },
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\", \"Ken\"",
+          "x": "name",
+          "w": "long",
+          "n": 4
+        },
+        {
+          "v": "worlds",
+          "items": "\"Moon\", \"Venus\", \"Earth\", \"Jupiter\", \"Io\"",
+          "x": "world",
+          "w": "big",
+          "n": 5
+        },
+        {
+          "v": "items",
+          "items": "\"milk\", \"bread\", \"eggs\", \"butter\"",
+          "x": "item",
+          "w": "long",
+          "n": 4
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["> {{n}}", ">= {{n}}"],
+        ["{{x}}.upper()", "{{x}}"],
+        ["len({{x}})", "len({{v}})"],
+        ["{{w}}.append({{x}}.upper())", "{{w}} = [{{x}}.upper()]"]
+      ]
+    },
+    {
+      "id": "col-holds-count",
+      "kind": "holds",
+      "text": "What is in `{{c}}` at the end?",
+      "code": "{{v}} = \"{{s}}\"\n{{c}} = 0\nfor i in range(len({{v}})):\n    if {{v}}[i] == \"{{t}}\":\n        {{c}} = {{c}} + 1",
+      "values": [
+        {
+          "v": "word",
+          "s": "banana",
+          "c": "count",
+          "t": "a",
+          "T": "A"
+        },
+        {
+          "v": "word",
+          "s": "Mississippi",
+          "c": "count",
+          "t": "s",
+          "T": "S"
+        },
+        {
+          "v": "name",
+          "s": "Lance Vance",
+          "c": "count",
+          "t": "e",
+          "T": "E"
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["==", "!="],
+        ["{{c}} = {{c}} + 1", "{{c}} = 1"],
+        ["\"{{t}}\"", "\"{{T}}\""],
+        ["range(len({{v}}))", "range(len({{v}}) - 1)"]
+      ]
+    },
+    {
+      "id": "col-holds-join",
+      "kind": "holds",
+      "text": "What is in `{{s}}` at the end?",
+      "code": "{{v}} = [{{items}}]\n{{s}} = \"\"\nfor w in {{v}}:\n    {{s}} = {{s}} + w + \"-\"",
+      "values": [
+        {
+          "v": "parts",
+          "items": "\"A\", \"B\", \"C\"",
+          "s": "code"
+        },
+        {
+          "v": "colors",
+          "items": "\"red\", \"blue\"",
+          "s": "flag"
+        },
+        {
+          "v": "stops",
+          "items": "\"Mars\", \"Moon\", \"Sun\"",
+          "s": "route"
+        }
+      ],
+      "variable": "{{s}}",
+      "mistakes": [
+        ["{{s}} = {{s}} + w + \"-\"", "{{s}} = w + \"-\""],
+        ["{{s}} + w + \"-\"", "{{s}} + \"-\" + w"],
+        ["{{s}} + w + \"-\"", "{{s}} + w"]
+      ]
+    },
+    {
+      "id": "col-input-find",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{t}} = input()\n{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    if {{v}}[i] == {{t}}:\n        print(f\"{{found}} {i}\")",
+      "values": [
+        {
+          "t": "target",
+          "v": "sectors",
+          "items": "\"A1\", \"B4\", \"C7\", \"D2\"",
+          "found": "Found at",
+          "a": "C7",
+          "i": 2,
+          "low": "c7",
+          "other": "B4"
+        },
+        {
+          "t": "target",
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "found": "Found at",
+          "a": "Lance",
+          "i": 1,
+          "low": "lance",
+          "other": "Tommy"
+        },
+        {
+          "t": "target",
+          "v": "planets",
+          "items": "\"Mars\", \"Venus\", \"Earth\", \"Jupiter\"",
+          "found": "Found at",
+          "a": "Jupiter",
+          "i": 3,
+          "low": "jupiter",
+          "other": "Earth"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{i}}", "{{low}}", "{{other}}"]
     }
   ]
 }

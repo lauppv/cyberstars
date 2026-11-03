@@ -47,27 +47,6 @@
       "answer": 0
     },
     {
-      "id": "ie-branch-c6d917",
-      "text": "Ce afișează?",
-      "code": "combustibil = 1200\nif combustibil > 1000:\n    print(\"Pericol\")\nelse:\n    print(\"Stabil\")",
-      "options": ["Pericol", "Stabil", "Pericol\nStabil", "True"],
-      "answer": 0
-    },
-    {
-      "id": "ie-branch-bbf3ee",
-      "text": "Ce afișează?",
-      "code": "varsta = 18\nif varsta >= 18:\n    print(\"Poti vota\")\nelse:\n    print(\"Inca nu\")",
-      "options": ["Poti vota", "Inca nu", "Poti vota\nInca nu", "True"],
-      "answer": 0
-    },
-    {
-      "id": "ie-branch-28db7d",
-      "text": "Ce afișează?",
-      "code": "varsta = 12\nif varsta >= 18:\n    print(\"Poti vota\")\nelse:\n    print(\"Inca nu\")",
-      "options": ["Inca nu", "Poti vota", "Poti vota\nInca nu", "False"],
-      "answer": 0
-    },
-    {
       "id": "ie-equal-86192f",
       "text": "Ce afișează?",
       "code": "stele = 3\nif stele == 3:\n    print(\"Punctaj maxim\")\nelse:\n    print(\"Inca nu\")",
@@ -114,25 +93,6 @@
       "text": "Ce afișează?",
       "code": "jucator = \"Ana\"\nonline = True\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
       "options": ["Ana joaca", "Ana este offline", "Ana joaca\nAna este offline", "True"],
-      "answer": 0
-    },
-    {
-      "id": "ie-online-7e20b4",
-      "text": "Ce afișează?",
-      "code": "jucator = \"Ben\"\nonline = False\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
-      "options": ["Ben este offline", "Ben joaca", "Ben joaca\nBen este offline", "False"],
-      "answer": 0
-    },
-    {
-      "id": "ie-online-7addfd",
-      "text": "Ce afișează?",
-      "code": "jucator = \"Cortez\"\nonline = False\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
-      "options": [
-        "Cortez este offline",
-        "Cortez joaca",
-        "Cortez joaca\nCortez este offline",
-        "False"
-      ],
       "answer": 0
     },
     {
@@ -442,30 +402,6 @@
       "answer": 0
     },
     {
-      "id": "ie-reactor-7cd450",
-      "text": "Ce afișează?",
-      "code": "temperatura = 1001\nif temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
-      "options": [
-        "Pericol: reactor la 1001 grade - oprire",
-        "Pericol: reactor la {temperatura} grade - oprire",
-        "Pericol: reactor la 1001 grade - oprire\nReactor stabil la 1001 grade",
-        "Reactor stabil la 1001 grade"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ie-reactor-aadb24",
-      "text": "Ce afișează?",
-      "code": "temperatura = 999\nif temperatura > 1000:\n    print(f\"Pericol: reactor la {temperatura} grade - oprire\")\nelse:\n    print(f\"Reactor stabil la {temperatura} grade\")",
-      "options": [
-        "Reactor stabil la 999 grade",
-        "Reactor stabil la {temperatura} grade",
-        "Pericol: reactor la 999 grade - oprire\nReactor stabil la 999 grade",
-        "Pericol: reactor la 999 grade - oprire"
-      ],
-      "answer": 0
-    },
-    {
       "id": "ie-condition-19c784",
       "text": "Ce afișează?",
       "code": "temperatura = 14\nprint(temperatura < 15)",
@@ -491,20 +427,6 @@
       "text": "Ce afișează?",
       "code": "combustibil = 1000\nprint(combustibil > 1000)",
       "options": ["False", "combustibil > 1000", "True", "1000"],
-      "answer": 0
-    },
-    {
-      "id": "ie-condition-531767",
-      "text": "Ce afișează?",
-      "code": "varsta = 17\nprint(varsta <= 18)",
-      "options": ["True", "varsta <= 18", "False", "17"],
-      "answer": 0
-    },
-    {
-      "id": "ie-condition-44ed3f",
-      "text": "Ce afișează?",
-      "code": "puncte = 75\nprint(puncte == 75)",
-      "options": ["True", "puncte == 75", "False", "75"],
       "answer": 0
     },
     {
@@ -565,18 +487,6 @@
       "answer": 0
     },
     {
-      "id": "ie-no-else-a4f099",
-      "text": "Ce afișează?",
-      "code": "puncte = 40\nif puncte > 100:\n    print(\"Record nou\")\nprint(\"Joc terminat\")",
-      "options": [
-        "Joc terminat",
-        "Record nou\nJoc terminat",
-        "Record nou",
-        "Joc terminat\nRecord nou"
-      ],
-      "answer": 0
-    },
-    {
       "id": "ie-bad-true-a70919",
       "text": "Care linie împiedică programul să afișeze asta?",
       "code": "jucator = \"Tommy\"\nonline = true\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
@@ -613,6 +523,81 @@
         "print(f\"{jucator} joaca\")",
         "print(f\"{jucator} este offline\")"
       ],
+      "answer": 0
+    },
+    {
+      "id": "ie-holds-branch-3bcb2f",
+      "text": "Ce conține `combustibil` la final?",
+      "code": "combustibil = 80\nif combustibil > 50:\n    combustibil = combustibil - 10\nelse:\n    combustibil = combustibil + 5\ncombustibil = combustibil * 2",
+      "options": ["140", "170", "70", "150"],
+      "answer": 0
+    },
+    {
+      "id": "ie-holds-branch-5abb16",
+      "text": "Ce conține `combustibil` la final?",
+      "code": "combustibil = 30\nif combustibil > 50:\n    combustibil = combustibil - 10\nelse:\n    combustibil = combustibil + 5\ncombustibil = combustibil * 2",
+      "options": ["70", "40", "35", "10"],
+      "answer": 0
+    },
+    {
+      "id": "ie-holds-branch-cff50b",
+      "text": "Ce conține `scor` la final?",
+      "code": "scor = 12\nif scor > 10:\n    scor = scor - 2\nelse:\n    scor = scor + 3\nscor = scor * 2",
+      "options": ["20", "30", "10", "26"],
+      "answer": 0
+    },
+    {
+      "id": "ie-holds-branch-704cbd",
+      "text": "Ce conține `scor` la final?",
+      "code": "scor = 6\nif scor > 10:\n    scor = scor - 2\nelse:\n    scor = scor + 3\nscor = scor * 2",
+      "options": ["18", "8", "9", "6"],
+      "answer": 0
+    },
+    {
+      "id": "ie-holds-branch-9bc7e6",
+      "text": "Ce conține `viteza` la final?",
+      "code": "viteza = 90\nif viteza > 60:\n    viteza = viteza - 20\nelse:\n    viteza = viteza + 10\nviteza = viteza * 2",
+      "options": ["140", "200", "70", "160"],
+      "answer": 0
+    },
+    {
+      "id": "ie-holds-branch-3f4803",
+      "text": "Ce conține `viteza` la final?",
+      "code": "viteza = 40\nif viteza > 60:\n    viteza = viteza - 20\nelse:\n    viteza = viteza + 10\nviteza = viteza * 2",
+      "options": ["100", "40", "50", "20"],
+      "answer": 0
+    },
+    {
+      "id": "ie-holds-branch-275798",
+      "text": "Ce conține `nivel` la final?",
+      "code": "nivel = 7\nif nivel > 5:\n    nivel = nivel - 1\nelse:\n    nivel = nivel + 2\nnivel = nivel * 2",
+      "options": ["12", "18", "6", "16"],
+      "answer": 0
+    },
+    {
+      "id": "ie-holds-message-94f447",
+      "text": "Ce conține `mesaj` la final?",
+      "code": "combustibil = 80\nmesaj = \"Combustibil \"\nif combustibil > 50:\n    mesaj = mesaj + \"OK\"\nelse:\n    mesaj = mesaj + \"putin\"",
+      "options": ["'Combustibil OK'", "'Combustibil putin'", "'OK'", "'Combustibil OKputin'"],
+      "answer": 0
+    },
+    {
+      "id": "ie-holds-message-6664d8",
+      "text": "Ce conține `mesaj` la final?",
+      "code": "temperatura = 1200\nmesaj = \"Reactor \"\nif temperatura > 1000:\n    mesaj = mesaj + \"fierbinte\"\nelse:\n    mesaj = mesaj + \"stabil\"",
+      "options": [
+        "'Reactor fierbinte'",
+        "'Reactor stabil'",
+        "'fierbinte'",
+        "'Reactor fierbintestabil'"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ie-holds-message-9b1688",
+      "text": "Ce conține `mesaj` la final?",
+      "code": "scor = 95\nmesaj = \"Rezultat: \"\nif scor > 50:\n    mesaj = mesaj + \"trecut\"\nelse:\n    mesaj = mesaj + \"picat\"",
+      "options": ["'Rezultat: trecut'", "'Rezultat: picat'", "'trecut'", "'Rezultat: trecutpicat'"],
       "answer": 0
     }
   ]

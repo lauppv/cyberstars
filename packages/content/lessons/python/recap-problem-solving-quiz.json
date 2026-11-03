@@ -295,15 +295,6 @@
         },
         {
           "t": "Ab-C 12d"
-        },
-        {
-          "t": "Mars, Venus!"
-        },
-        {
-          "t": "R2-D2 Online"
-        },
-        {
-          "t": "Orbit 42 OK"
         }
       ],
       "mistakes": [
@@ -327,15 +318,6 @@
         },
         {
           "w": "stars"
-        },
-        {
-          "w": "rotor"
-        },
-        {
-          "w": "trust"
-        },
-        {
-          "w": "noon"
         }
       ],
       "mistakes": [
@@ -359,18 +341,6 @@
         {
           "a": "Evil",
           "b": "vile"
-        },
-        {
-          "a": "Note",
-          "b": "Tone!"
-        },
-        {
-          "a": "Act",
-          "b": "cat!"
-        },
-        {
-          "a": "Earth",
-          "b": "heart"
         }
       ],
       "mistakes": [
@@ -392,15 +362,6 @@
         },
         {
           "s": "scan the next sector"
-        },
-        {
-          "s": "all crew on deck"
-        },
-        {
-          "s": "signal lost again"
-        },
-        {
-          "s": "engines are ready"
         }
       ],
       "mistakes": [
@@ -425,21 +386,6 @@
           "r": "70, 20, 99, 60",
           "b": 10,
           "m": 60
-        },
-        {
-          "r": "55, 49, 97, 30, 75",
-          "b": 5,
-          "m": 50
-        },
-        {
-          "r": "88, 92, 15, 40",
-          "b": 10,
-          "m": 40
-        },
-        {
-          "r": "65, 95, 35",
-          "b": 8,
-          "m": 65
         }
       ],
       "mistakes": [
@@ -463,18 +409,6 @@
         {
           "n": "1, 3, 4, 6, 8",
           "t": 9
-        },
-        {
-          "n": "2, 4, 5, 6, 7, 9",
-          "t": 11
-        },
-        {
-          "n": "1, 2, 5, 8, 10",
-          "t": 10
-        },
-        {
-          "n": "3, 4, 5, 6, 7",
-          "t": 10
         }
       ],
       "mistakes": [
@@ -499,12 +433,6 @@
         },
         {
           "t": "Was it a car?"
-        },
-        {
-          "t": "Step on no pets!"
-        },
-        {
-          "t": "Top spot"
         }
       ],
       "mistakes": [
@@ -732,6 +660,201 @@
         }
       ],
       "bug": ["        left += 1", "        left += 2"]
+    },
+    {
+      "id": "rps-holds-clean",
+      "kind": "holds",
+      "text": "What is in `{{c}}` at the end?",
+      "code": "def clean_text(text):\n    result = \"\"\n    for char in text:\n        if char.isalpha():\n            result += char.lower()\n    return result\n\n{{c}} = clean_text(\"{{t}}\")",
+      "values": [
+        {
+          "c": "cleaned",
+          "t": "Hello, World!"
+        },
+        {
+          "c": "cleaned",
+          "t": "Race car"
+        },
+        {
+          "c": "cleaned",
+          "t": "A1 B2"
+        },
+        {
+          "c": "cleaned",
+          "t": "Vice City 86"
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        [
+          "            result += char.lower()\n    return result",
+          "            result += char.lower()\n        return result"
+        ],
+        ["char.lower()", "char"],
+        ["return result", "print(result)"]
+      ]
+    },
+    {
+      "id": "rps-holds-reverse",
+      "kind": "holds",
+      "text": "What is in `{{r}}` at the end?",
+      "code": "{{w}} = \"{{s}}\".split(\" \")\n{{r}} = \" \".join({{w}}[::-1])",
+      "values": [
+        {
+          "w": "words",
+          "r": "backwards",
+          "s": "system is on"
+        },
+        {
+          "w": "words",
+          "r": "backwards",
+          "s": "go to Mars"
+        },
+        {
+          "w": "words",
+          "r": "backwards",
+          "s": "I love Vice City"
+        },
+        {
+          "w": "words",
+          "r": "backwards",
+          "s": "fuel low now"
+        }
+      ],
+      "variable": "{{r}}",
+      "mistakes": [
+        ["{{w}}[::-1]", "{{w}}"],
+        ["\" \".join", "\"\".join"],
+        ["\" \".join({{w}}[::-1])", "{{w}}[::-1]"]
+      ]
+    },
+    {
+      "id": "rps-holds-pairs",
+      "kind": "holds",
+      "text": "What is in `{{p}}` at the end?",
+      "code": "{{v}} = [{{n}}]\n{{p}} = []\n{{l}} = 0\n{{r}} = len({{v}}) - 1\nwhile {{l}} < {{r}}:\n    {{s}} = {{v}}[{{l}}] + {{v}}[{{r}}]\n    if {{s}} == {{t}}:\n        {{p}}.append(({{v}}[{{l}}], {{v}}[{{r}}]))\n        {{l}} += 1\n        {{r}} -= 1\n    elif {{s}} < {{t}}:\n        {{l}} += 1\n    else:\n        {{r}} -= 1",
+      "values": [
+        {
+          "v": "numbers",
+          "p": "pairs",
+          "l": "left",
+          "r": "right",
+          "s": "total",
+          "n": "1, 2, 4, 6, 7",
+          "t": 8
+        },
+        {
+          "v": "numbers",
+          "p": "pairs",
+          "l": "left",
+          "r": "right",
+          "s": "total",
+          "n": "1, 3, 5, 7, 9",
+          "t": 10
+        },
+        {
+          "v": "numbers",
+          "p": "pairs",
+          "l": "left",
+          "r": "right",
+          "s": "total",
+          "n": "2, 3, 4, 5, 6",
+          "t": 8
+        },
+        {
+          "v": "numbers",
+          "p": "pairs",
+          "l": "left",
+          "r": "right",
+          "s": "total",
+          "n": "1, 4, 5, 6, 9",
+          "t": 10
+        }
+      ],
+      "variable": "{{p}}",
+      "mistakes": [
+        ["({{v}}[{{l}}], {{v}}[{{r}}])", "({{l}}, {{r}})"],
+        ["while {{l}} < {{r}}", "while {{l}} <= {{r}}"],
+        ["{{p}}.append(({{v}}[{{l}}], {{v}}[{{r}}]))", "{{p}} = [({{v}}[{{l}}], {{v}}[{{r}}])]"]
+      ]
+    },
+    {
+      "id": "rps-input-pal",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{x}} = input()\n{{c}} = \"\"\nfor ch in {{x}}:\n    if ch.isalpha():\n        {{c}} += ch.lower()\nprint({{c}} == {{c}}[::-1])",
+      "values": [
+        {
+          "x": "text",
+          "c": "cleaned",
+          "a": "Race car",
+          "w1": "Race cars",
+          "w2": "Racecat",
+          "w3": "Ace car"
+        },
+        {
+          "x": "line",
+          "c": "letters",
+          "a": "Never odd or even",
+          "w1": "Never odd or evens",
+          "w2": "Never even or odd",
+          "w3": "Never odd"
+        },
+        {
+          "x": "text",
+          "c": "cleaned",
+          "a": "Hello",
+          "w1": "Level",
+          "w2": "Wow!",
+          "w3": "No, on"
+        },
+        {
+          "x": "line",
+          "c": "letters",
+          "a": "Vice City",
+          "w1": "Anna",
+          "w2": "A Toyota",
+          "w3": "Step on no pets"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "rps-error-split",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{w}} = \"{{s}}\".split(\" \")\nprint({{w}}[{{i}}])",
+      "values": [
+        {
+          "w": "words",
+          "s": "system is on",
+          "i": 3
+        },
+        {
+          "w": "words",
+          "s": "go to Mars",
+          "i": 5
+        }
+      ],
+      "wrong": ["KeyError", "ValueError", "TypeError"]
+    },
+    {
+      "id": "rps-error-int",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{x}} = \"{{s}}\"\nprint(int({{x}}) + 1)",
+      "values": [
+        {
+          "x": "reading",
+          "s": "4.5"
+        },
+        {
+          "x": "reading",
+          "s": "abc"
+        }
+      ],
+      "wrong": ["TypeError", "NameError", "IndexError"]
     }
   ]
 }

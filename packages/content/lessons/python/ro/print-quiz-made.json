@@ -21,37 +21,6 @@
       "answer": 0
     },
     {
-      "id": "say-138eb1",
-      "text": "Ce afișează?",
-      "code": "print(\"10 + 5\")",
-      "options": ["10 + 5", "\"10 + 5\"", "print 10 + 5", "15"],
-      "answer": 0
-    },
-    {
-      "id": "say-5fe966",
-      "text": "Ce afișează?",
-      "code": "print(\"Python e distractiv\")",
-      "options": [
-        "Python e distractiv",
-        "\"Python e distractiv\"",
-        "print Python e distractiv",
-        "(Python e distractiv)"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "say-0c9176",
-      "text": "Ce afișează?",
-      "code": "print(\"Ne vedem maine\")",
-      "options": [
-        "Ne vedem maine",
-        "\"Ne vedem maine\"",
-        "print Ne vedem maine",
-        "(Ne vedem maine)"
-      ],
-      "answer": 0
-    },
-    {
       "id": "two-lines-65dd40",
       "text": "Care program afișează asta?",
       "output": "Pe locuri\nStart",
@@ -190,13 +159,6 @@
         "Rosu\nVerde\nGalben",
         "Galben\nVerde"
       ],
-      "answer": 0
-    },
-    {
-      "id": "three-lines-a0aba9",
-      "text": "Ce afișează programul?",
-      "code": "print(\"Ana\")\nprint(\"Ben\")\nprint(\"Cris\")",
-      "options": ["Ana\nBen\nCris", "Ben\nAna\nCris", "Ana\nCris\nBen", "Ben\nCris"],
       "answer": 0
     },
     {
@@ -383,13 +345,6 @@
       "answer": 0
     },
     {
-      "id": "var-kent-e43ce6",
-      "text": "Ce afișează?",
-      "code": "Paul = \"Ora de pizza\"\nnume = Paul\nprint(nume)",
-      "options": ["Ora de pizza", "Paul", "nume", "Paul Ora de pizza"],
-      "answer": 0
-    },
-    {
       "id": "var-again-1d0c78",
       "text": "Ce afișează?",
       "code": "nume = \"Tommy\"\nnume = \"Lance\"\nprint(nume)",
@@ -434,13 +389,6 @@
       "answer": 0
     },
     {
-      "id": "int-sum-f36ece",
-      "text": "Ce afișează?",
-      "code": "a = 7\nb = 3\nc = a + b\nprint(c)",
-      "options": ["10", "c", "a + b", "73"],
-      "answer": 0
-    },
-    {
       "id": "int-plus-one-f56b08",
       "text": "Ce afișează?",
       "code": "n = 10\nn = n + 1\nprint(n)",
@@ -452,13 +400,6 @@
       "text": "Ce afișează?",
       "code": "n = 4\nn = n + 1\nprint(n)",
       "options": ["5", "4", "n + 1", "n"],
-      "answer": 0
-    },
-    {
-      "id": "int-plus-one-2b2bc6",
-      "text": "Ce afișează?",
-      "code": "n = 99\nn = n + 1\nprint(n)",
-      "options": ["100", "99", "n + 1", "n"],
       "answer": 0
     },
     {
@@ -522,18 +463,6 @@
         "Numele meu este {nume} si varsta mea e {varsta}",
         "Numele meu este nume si varsta mea e 12",
         "Numele meu este Ana si varsta mea e Ana"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "fstring-no-f-63a7c5",
-      "text": "Ce afișează?",
-      "code": "nume = \"Paul\"\nvarsta = 40\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
-      "options": [
-        "Numele meu este Paul si varsta mea e 40",
-        "Numele meu este {nume} si varsta mea e {varsta}",
-        "Numele meu este nume si varsta mea e 40",
-        "Numele meu este Paul si varsta mea e Paul"
       ],
       "answer": 0
     },
@@ -654,13 +583,6 @@
       "answer": 0
     },
     {
-      "id": "comment-skip-a7ede8",
-      "text": "Ce afișează?",
-      "code": "a = 2\na = a + 3\n# a = a + 4\nprint(a)",
-      "options": ["5", "9", "2", "a"],
-      "answer": 0
-    },
-    {
       "id": "comment-which-27149b",
       "text": "Care program afișează asta?",
       "output": "Nava e gata\nLansare",
@@ -681,6 +603,84 @@
         "print(\"Noapte buna\")\nprint(\"Secret\")\nprint(\"Ne vedem\")",
         "print(\"Noapte buna\")\n# print(\"Secret\")\n# print(\"Ne vedem\")",
         "# print(\"Noapte buna\")\n# print(\"Secret\")\nprint(\"Ne vedem\")"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-join-ed1d9d",
+      "text": "Ce conține `salut` la final?",
+      "code": "salut = \"Salut\"\nsalut = salut + \", Tommy\"",
+      "options": ["'Salut, Tommy'", "'Salut'", "', TommySalut'", "', Tommy'"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-join-f87dc2",
+      "text": "Ce conține `eticheta` la final?",
+      "code": "eticheta = \"Nivel \"\neticheta = eticheta + \"3\"",
+      "options": ["'Nivel 3'", "'Nivel '", "'3Nivel '", "'3'"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-join-c0fc0e",
+      "text": "Ce conține `cod` la final?",
+      "code": "cod = \"AB\"\ncod = cod + \"12\"",
+      "options": ["'AB12'", "'AB'", "'12AB'", "'12'"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-steps-e1ee28",
+      "text": "Ce conține `scor` la final?",
+      "code": "scor = 3\nscor = scor + 4\nscor = scor * 2",
+      "options": ["14", "7", "10", "8"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-steps-51a9fd",
+      "text": "Ce conține `vieti` la final?",
+      "code": "vieti = 5\nvieti = vieti + 1\nvieti = vieti * 2",
+      "options": ["12", "6", "11", "2"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-steps-770f80",
+      "text": "Ce conține `monede` la final?",
+      "code": "monede = 10\nmonede = monede + 5\nmonede = monede * 2",
+      "options": ["30", "15", "25", "10"],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-fstring-8cce70",
+      "text": "Ce conține `linie` la final?",
+      "code": "nume = \"Tommy\"\nvarsta = 42\nlinie = f\"{nume} are {varsta} de ani\"",
+      "options": [
+        "'Tommy are 42 de ani'",
+        "'{nume} are {varsta} de ani'",
+        "'Tommy are varsta de ani'",
+        "'nume are 42 de ani'"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-fstring-07d9c0",
+      "text": "Ce conține `linie` la final?",
+      "code": "nume = \"Lance\"\nvarsta = 35\nlinie = f\"{nume} are {varsta} de ani\"",
+      "options": [
+        "'Lance are 35 de ani'",
+        "'{nume} are {varsta} de ani'",
+        "'Lance are varsta de ani'",
+        "'nume are 35 de ani'"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fs-holds-fstring-440038",
+      "text": "Ce conține `card` la final?",
+      "code": "nume = \"Cortez\"\nvarsta = 60\ncard = f\"{nume} are {varsta} de ani\"",
+      "options": [
+        "'Cortez are 60 de ani'",
+        "'{nume} are {varsta} de ani'",
+        "'Cortez are varsta de ani'",
+        "'nume are 60 de ani'"
       ],
       "answer": 0
     }

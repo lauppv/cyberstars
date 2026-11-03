@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "te-ok-a50717",
-      "text": "Ce afișează?",
-      "code": "vieti = \"3\"\ntry:\n    n = int(vieti)\n    print(n * 5)\nexcept ValueError:\n    print(\"Vietile trebuie sa fie un numar\")",
-      "options": ["15", "8", "33333", "Vietile trebuie sa fie un numar"],
-      "answer": 0
-    },
-    {
-      "id": "te-ok-c18b48",
-      "text": "Ce afișează?",
-      "code": "viteza = \"25\"\ntry:\n    n = int(viteza)\n    print(n * 4)\nexcept ValueError:\n    print(\"Viteza necunoscuta\")",
-      "options": ["100", "29", "25252525", "Viteza necunoscuta"],
-      "answer": 0
-    },
-    {
       "id": "te-bad-bfb5ea",
       "text": "Ce afișează?",
       "code": "text = \"abc\"\ntry:\n    n = int(text)\n    print(\"Numar:\", n)\nexcept ValueError:\n    print(\"Nu e un numar\")\nprint(\"Gata\")",
@@ -50,18 +36,6 @@
         "Numar: zece\nScrie cifre, nu cuvinte\nPa",
         "Scrie cifre, nu cuvinte",
         "zece\nPa"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "te-bad-fc3d0e",
-      "text": "Ce afișează?",
-      "code": "cod = \"4x2\"\ntry:\n    n = int(cod)\n    print(\"Numar:\", n)\nexcept ValueError:\n    print(\"Cod gresit\")\nprint(\"Urmatorul\")",
-      "options": [
-        "Cod gresit\nUrmatorul",
-        "Numar: 4x2\nCod gresit\nUrmatorul",
-        "Cod gresit",
-        "4x2\nUrmatorul"
       ],
       "answer": 0
     },
@@ -90,18 +64,6 @@
       "answer": 0
     },
     {
-      "id": "te-lines-b1382d",
-      "text": "Ce afișează?",
-      "code": "try:\n    print(\"Se incarca\")\n    n = int(\"3.5\")\n    print(\"Incarcat\")\nexcept ValueError:\n    print(\"Nu e un numar intreg\")\nprint(\"Meniu\")",
-      "options": [
-        "Se incarca\nNu e un numar intreg\nMeniu",
-        "Se incarca\nIncarcat\nMeniu",
-        "Nu e un numar intreg\nMeniu",
-        "Se incarca\nNu e un numar intreg"
-      ],
-      "answer": 0
-    },
-    {
       "id": "te-zero-b71cd1",
       "text": "Ce afișează?",
       "code": "echipaj = \"0\"\ntry:\n    n = int(echipaj)\n    print(100 / n)\nexcept ValueError:\n    print(\"Nu e un numar\")\nexcept ZeroDivisionError:\n    print(\"Nu e nimeni cu care sa imparti\")",
@@ -116,13 +78,6 @@
       "answer": 0
     },
     {
-      "id": "te-zero-2285df",
-      "text": "Ce afișează?",
-      "code": "zile = \"0\"\ntry:\n    n = int(zile)\n    print(90 / n)\nexcept ValueError:\n    print(\"Intrare gresita\")\nexcept ZeroDivisionError:\n    print(\"Zero zile?\")",
-      "options": ["Zero zile?", "Intrare gresita", "0.0", "90.0"],
-      "answer": 0
-    },
-    {
       "id": "te-notnum-fa209c",
       "text": "Ce afișează?",
       "code": "echipaj = \"patru\"\ntry:\n    n = int(echipaj)\n    print(100 / n)\nexcept ValueError:\n    print(\"Nu e un numar\")\nexcept ZeroDivisionError:\n    print(\"Nu e nimeni cu care sa imparti\")",
@@ -134,13 +89,6 @@
       "text": "Ce afișează?",
       "code": "jucatori = \"sase\"\ntry:\n    n = int(jucatori)\n    print(60 / n)\nexcept ValueError:\n    print(\"Scrie un numar\")\nexcept ZeroDivisionError:\n    print(\"Nu poti imparti la zero\")",
       "options": ["Scrie un numar", "Nu poti imparti la zero", "15.0", "sase"],
-      "answer": 0
-    },
-    {
-      "id": "te-notnum-247d98",
-      "text": "Ce afișează?",
-      "code": "zile = \"2x\"\ntry:\n    n = int(zile)\n    print(90 / n)\nexcept ValueError:\n    print(\"Intrare gresita\")\nexcept ZeroDivisionError:\n    print(\"Zero zile?\")",
-      "options": ["Intrare gresita", "Zero zile?", "45.0", "2x"],
       "answer": 0
     },
     {
@@ -164,42 +112,6 @@
         "Total: 41\nCorupte: 1",
         "Total: 1\nCorupte: 2",
         "Total: 41\nCorupte: 3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "te-sum-1a6a43",
-      "text": "Ce afișează?",
-      "code": "scoruri = [\"10\", \"zece\", \"30\", \"\", \"-\"]\ntotal = 0\ncorupte = 0\nfor c in scoruri:\n    try:\n        total = total + int(c)\n    except ValueError:\n        corupte = corupte + 1\nprint(f\"Total: {total}\")\nprint(f\"Corupte: {corupte}\")",
-      "options": [
-        "Total: 40\nCorupte: 3",
-        "Total: 40\nCorupte: 1",
-        "Total: 30\nCorupte: 3",
-        "Total: 40\nCorupte: 4"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "te-sum-61db50",
-      "text": "Ce afișează?",
-      "code": "niveluri = [\"3\", \"4\", \"max\", \"jos\", \"8\"]\ntotal = 0\ncorupte = 0\nfor c in niveluri:\n    try:\n        total = total + int(c)\n    except ValueError:\n        corupte = corupte + 1\nprint(f\"Total: {total}\")\nprint(f\"Corupte: {corupte}\")",
-      "options": [
-        "Total: 15\nCorupte: 2",
-        "Total: 15\nCorupte: 1",
-        "Total: 8\nCorupte: 2",
-        "Total: 15\nCorupte: 3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "te-sum-d8a413",
-      "text": "Ce afișează?",
-      "code": "temperaturi = [\"21\", \"19\", \"cald\", \"24\", \"n/a\"]\ntotal = 0\ncorupte = 0\nfor c in temperaturi:\n    try:\n        total = total + int(c)\n    except ValueError:\n        corupte = corupte + 1\nprint(f\"Total: {total}\")\nprint(f\"Corupte: {corupte}\")",
-      "options": [
-        "Total: 64\nCorupte: 2",
-        "Total: 64\nCorupte: 1",
-        "Total: 24\nCorupte: 2",
-        "Total: 64\nCorupte: 3"
       ],
       "answer": 0
     },
@@ -228,18 +140,6 @@
       "answer": 0
     },
     {
-      "id": "te-around-8340de",
-      "text": "Ce afișează?",
-      "code": "ture = [\"30\", \"25\", \"28\", \"DNF\", \"31\"]\ntotal = 0\ntry:\n    for c in ture:\n        total = total + int(c)\nexcept ValueError:\n    print(\"Cursa oprita\")\nprint(total)",
-      "options": [
-        "Cursa oprita\n83",
-        "Cursa oprita\n114",
-        "Cursa oprita\n28",
-        "Cursa oprita\nCursa oprita"
-      ],
-      "answer": 0
-    },
-    {
       "id": "te-else-75bffb",
       "text": "Ce afișează?",
       "code": "try:\n    n = int(\"12\")\nexcept ValueError:\n    print(\"Eroare!\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Verificat\")",
@@ -251,13 +151,6 @@
       "text": "Ce afișează?",
       "code": "try:\n    n = int(\"35\")\nexcept ValueError:\n    print(\"Nu e un numar\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Ruleaza mereu\")",
       "options": ["70\nRuleaza mereu", "37\nRuleaza mereu", "70\n35", "3535\nRuleaza mereu"],
-      "answer": 0
-    },
-    {
-      "id": "te-else-1210ce",
-      "text": "Ce afișează?",
-      "code": "try:\n    n = int(\"8\")\nexcept ValueError:\n    print(\"Valoare gresita\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Gata\")",
-      "options": ["16\nGata", "10\nGata", "16\n8", "88\nGata"],
       "answer": 0
     },
     {
@@ -281,18 +174,6 @@
         "7 7\nVerificat",
         "Doar un numar",
         "Doar un numar\nVerificat\nVerificat"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "te-finally-8dded2",
-      "text": "Ce afișează?",
-      "code": "try:\n    n = int(\"zero\")\n    print(n)\nexcept ValueError:\n    print(\"Cifre, te rog\")\nfinally:\n    print(\"Gata\")",
-      "options": [
-        "Cifre, te rog\nGata",
-        "zero\nGata",
-        "Cifre, te rog",
-        "Cifre, te rog\nGata\nGata"
       ],
       "answer": 0
     },
@@ -701,6 +582,90 @@
       "code": "total = 0\nfor c in [\"5\", \"5\", \"?\", \"1\"]:\n    try:\n        total = total + c\n    except ValueError:\n        print(\"Sar peste\", c)\nprint(f\"Total: {total}\")",
       "output": "Sar peste ?\nTotal: 11",
       "options": ["total = total + c", "try:", "except ValueError:", "print(\"Sar peste\", c)"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-int-06c907",
+      "text": "Ce eroare oprește acest program?",
+      "code": "combustibil = \"12.5\"\nn = int(combustibil)\nprint(n + 1)",
+      "options": ["ValueError", "TypeError", "NameError", "ZeroDivisionError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-int-5e7062",
+      "text": "Ce eroare oprește acest program?",
+      "code": "vieti = \"sapte\"\nn = int(vieti)\nprint(n + 1)",
+      "options": ["ValueError", "TypeError", "NameError", "ZeroDivisionError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-divide-98076c",
+      "text": "Ce eroare oprește acest program?",
+      "code": "total = 10\nparti = 0\nprint(total / parti)",
+      "options": ["ZeroDivisionError", "ValueError", "TypeError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-divide-889659",
+      "text": "Ce eroare oprește acest program?",
+      "code": "combustibil = 50\nparti = \"5\"\nprint(combustibil / parti)",
+      "options": ["TypeError", "ValueError", "ZeroDivisionError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-divide-5f44f2",
+      "text": "Ce eroare oprește acest program?",
+      "code": "viteza = 90\nparti = 3 - 3\nprint(viteza / parti)",
+      "options": ["ZeroDivisionError", "ValueError", "TypeError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-index-50ad3a",
+      "text": "Ce eroare oprește acest program?",
+      "code": "echipaj = [\"Tommy\", \"Lance\"]\nprint(echipaj[2])",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-index-91ef83",
+      "text": "Ce eroare oprește acest program?",
+      "code": "scoruri = [10, 20, 30]\nprint(scoruri[3])",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-index-04eccf",
+      "text": "Ce eroare oprește acest program?",
+      "code": "echipaj = [\"Ana\", \"Ben\"]\nprint(echipaj[\"1\"])",
+      "options": ["TypeError", "KeyError", "IndexError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-key-4d1f81",
+      "text": "Ce eroare oprește acest program?",
+      "code": "varste = {\"Tommy\": 42, \"Lance\": 35}\nprint(varste[\"Cortez\"])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-key-17d199",
+      "text": "Ce eroare oprește acest program?",
+      "code": "preturi = {\"paine\": 3, \"lapte\": 2}\nprint(preturi[\"ceai\"])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-name-a84902",
+      "text": "Ce eroare oprește acest program?",
+      "code": "scor = 10\nprint(Scor + 1)",
+      "options": ["NameError", "ValueError", "TypeError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-name-99994a",
+      "text": "Ce eroare oprește acest program?",
+      "code": "vieti = 3\nprint(viata + 1)",
+      "options": ["NameError", "ValueError", "TypeError", "KeyError"],
       "answer": 0
     }
   ]

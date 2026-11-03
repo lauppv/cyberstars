@@ -277,18 +277,6 @@
         {
           "s": "ping ping echo ping",
           "w": "ping"
-        },
-        {
-          "s": "boot scan probe scan",
-          "w": "probe"
-        },
-        {
-          "s": "up down up down up",
-          "w": "down"
-        },
-        {
-          "s": "alpha beta alpha gamma beta alpha",
-          "w": "beta"
         }
       ],
       "mistakes": [
@@ -311,15 +299,6 @@
         },
         {
           "s": "go far away"
-        },
-        {
-          "s": "red blue green gray"
-        },
-        {
-          "s": "mars venus earth pluto"
-        },
-        {
-          "s": "ion orbit comet star"
         }
       ],
       "mistakes": [
@@ -344,18 +323,6 @@
         {
           "a": "red blue",
           "b": "go up go"
-        },
-        {
-          "a": "a b c d",
-          "b": "a b c a"
-        },
-        {
-          "a": "mars mars",
-          "b": "venus earth"
-        },
-        {
-          "a": "one two three",
-          "b": "one one"
         }
       ],
       "mistakes": [
@@ -376,15 +343,6 @@
         },
         {
           "s": "up down up"
-        },
-        {
-          "s": "red blue green red blue"
-        },
-        {
-          "s": "echo ping echo"
-        },
-        {
-          "s": "gamma alpha beta alpha"
         }
       ],
       "mistakes": [
@@ -405,15 +363,6 @@
         },
         {
           "s": "go far away"
-        },
-        {
-          "s": "alpha beta"
-        },
-        {
-          "s": "a bb ccc dddd"
-        },
-        {
-          "s": "probe orbit"
         }
       ],
       "mistakes": [
@@ -440,14 +389,6 @@
         {
           "s": "boot scan probe scan",
           "w": "probe"
-        },
-        {
-          "s": "up down up down up",
-          "w": "down"
-        },
-        {
-          "s": "alpha beta alpha gamma beta alpha",
-          "w": "beta"
         }
       ],
       "mistakes": [
@@ -473,14 +414,6 @@
         },
         {
           "s": "orbit ion comet sun",
-          "n": 3
-        },
-        {
-          "s": "alpha beta gamma delta",
-          "n": 4
-        },
-        {
-          "s": "red blue green",
           "n": 3
         }
       ],
@@ -508,14 +441,6 @@
         {
           "s": "ion sun orbit",
           "n": 3
-        },
-        {
-          "s": "a bb ccc",
-          "n": 3
-        },
-        {
-          "s": "mars venus earth",
-          "n": 4
         }
       ],
       "mistakes": [
@@ -703,6 +628,180 @@
         }
       ],
       "bug": ["        seen.add(w)", "        seen.add(log)"]
+    },
+    {
+      "id": "rp-holds-count",
+      "kind": "holds",
+      "text": "What is in `{{c}}` at the end?",
+      "code": "{{c}} = 0\nfor w in \"{{s}}\".split(\" \"):\n    if w == \"{{t}}\":\n        {{c}} += 1",
+      "values": [
+        {
+          "c": "count",
+          "s": "scan scanner scan boot",
+          "t": "scan"
+        },
+        {
+          "c": "count",
+          "s": "ping ping pinging ping",
+          "t": "ping"
+        },
+        {
+          "c": "count",
+          "s": "go go gone stop",
+          "t": "go"
+        },
+        {
+          "c": "count",
+          "s": "ok sos ok okay",
+          "t": "ok"
+        },
+        {
+          "c": "count",
+          "s": "up up update up",
+          "t": "up"
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["w == \"{{t}}\"", "\"{{t}}\" in w"],
+        ["\"{{s}}\".split(\" \")", "\"{{s}}\""],
+        ["{{c}} += 1", "{{c}} = 1"]
+      ]
+    },
+    {
+      "id": "rp-holds-longest",
+      "kind": "holds",
+      "text": "What is in `{{b}}` at the end?",
+      "code": "{{b}} = \"\"\nfor w in \"{{s}}\".split(\" \"):\n    if len(w) > len({{b}}):\n        {{b}} = w",
+      "values": [
+        {
+          "b": "longest",
+          "s": "scan probe radar boot"
+        },
+        {
+          "b": "longest",
+          "s": "go up on"
+        },
+        {
+          "b": "longest",
+          "s": "boot ping scan zap"
+        },
+        {
+          "b": "longest",
+          "s": "sos ok help ping"
+        }
+      ],
+      "variable": "{{b}}",
+      "mistakes": [
+        ["len(w) > len({{b}})", "len(w) >= len({{b}})"],
+        ["len(w) > len({{b}})", "w > {{b}}"],
+        ["len(w) > len({{b}})", "len(w) < len({{b}})"]
+      ]
+    },
+    {
+      "id": "rp-holds-dups",
+      "kind": "holds",
+      "text": "What is in `{{d}}` at the end?",
+      "code": "{{seen}} = set()\n{{d}} = []\nfor w in \"{{s}}\".split(\" \"):\n    if w in {{seen}}:\n        {{d}}.append(w)\n    {{seen}}.add(w)",
+      "values": [
+        {
+          "seen": "seen",
+          "d": "repeats",
+          "s": "scan probe scan boot probe"
+        },
+        {
+          "seen": "seen",
+          "d": "repeats",
+          "s": "ping ping pong ping"
+        },
+        {
+          "seen": "seen",
+          "d": "repeats",
+          "s": "go up go up go"
+        },
+        {
+          "seen": "seen",
+          "d": "repeats",
+          "s": "ok sos ok help sos"
+        }
+      ],
+      "variable": "{{d}}",
+      "mistakes": [
+        ["\n    {{seen}}.add(w)", "\n        {{seen}}.add(w)"],
+        ["{{d}}.append(w)", "{{d}} = [w]"],
+        ["if w in {{seen}}", "if w not in {{seen}}"]
+      ]
+    },
+    {
+      "id": "rp-error-counter",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{c}} = {}\nfor w in \"{{s}}\".split(\" \"):\n    {{c}}[w] += 1\nprint({{c}})",
+      "values": [
+        {
+          "c": "counts",
+          "s": "scan boot scan"
+        },
+        {
+          "c": "counts",
+          "s": "ping pong"
+        },
+        {
+          "c": "freq",
+          "s": "ok sos ok"
+        },
+        {
+          "c": "freq",
+          "s": "go up"
+        }
+      ],
+      "wrong": ["IndexError", "NameError", "TypeError"]
+    },
+    {
+      "id": "rp-input-long",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{log}} = input()\n{{c}} = 0\nfor w in {{log}}.split(\" \"):\n    if len(w) > {{n}}:\n        {{c}} += 1\nprint({{c}})",
+      "values": [
+        {
+          "log": "log",
+          "c": "long",
+          "n": 3,
+          "a": "scan probe ok",
+          "w1": "scan ok",
+          "w2": "scan probe radar",
+          "w3": "ok up go"
+        },
+        {
+          "log": "log",
+          "c": "long",
+          "n": 4,
+          "a": "probe radar scan",
+          "w1": "probe scan",
+          "w2": "probe radar beacon",
+          "w3": "scan boot"
+        },
+        {
+          "log": "log",
+          "c": "long",
+          "n": 2,
+          "a": "go sos ok help",
+          "w1": "sos go",
+          "w2": "sos help ping",
+          "w3": "go up"
+        },
+        {
+          "log": "log",
+          "c": "long",
+          "n": 3,
+          "a": "ping sync beam ok",
+          "w1": "ping ok",
+          "w2": "ping sync",
+          "w3": "ok up go"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
     }
   ]
 }

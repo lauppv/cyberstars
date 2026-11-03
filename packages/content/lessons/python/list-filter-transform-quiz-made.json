@@ -14,39 +14,6 @@
       "answer": 0
     },
     {
-      "id": "ft-filter-e15775",
-      "text": "What does this print?",
-      "code": "scores = [12, 60, 60, 75, 30]\npassed = []\nfor s in scores:\n    if s >= 60:\n        passed.append(s)\nprint(passed)",
-      "options": [
-        "[60, 60, 75]",
-        "[75]",
-        "[]\n[60]\n[60, 60]\n[60, 60, 75]\n[60, 60, 75]",
-        "[12, 60, 60, 30]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ft-filter-63c0e4",
-      "text": "What does this print?",
-      "code": "scores = [90, 15, 70, 40]\npassed = []\nfor s in scores:\n    if s >= 40:\n        passed.append(s)\nprint(passed)",
-      "options": ["[90, 70, 40]", "[90, 70]", "[40]", "[90]\n[90]\n[90, 70]\n[90, 70, 40]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-filter-fda2ea",
-      "text": "What does this print?",
-      "code": "scores = [5, 9, 7, 3, 10]\npassed = []\nfor s in scores:\n    if s >= 7:\n        passed.append(s)\nprint(passed)",
-      "options": ["[9, 7, 10]", "[9, 10]", "[10]", "[]\n[9]\n[9, 7]\n[9, 7]\n[9, 7, 10]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-filter-e30a6b",
-      "text": "What does this print?",
-      "code": "scores = [55, 50, 49, 80]\npassed = []\nfor s in scores:\n    if s >= 50:\n        passed.append(s)\nprint(passed)",
-      "options": ["[55, 50, 80]", "[55, 80]", "[80]", "[55]\n[55, 50]\n[55, 50]\n[55, 50, 80]"],
-      "answer": 0
-    },
-    {
       "id": "ft-comp-ab4d32",
       "text": "What does this print?",
       "code": "numbers = [3, 8, 12, 5, 20]\nprint([n for n in numbers if n > 6])",
@@ -54,71 +21,10 @@
       "answer": 0
     },
     {
-      "id": "ft-comp-180303",
-      "text": "What does this print?",
-      "code": "numbers = [1, 2, 3, 4, 5, 6]\nprint([n for n in numbers if n % 2 == 0])",
-      "options": ["[2, 4, 6]", "[1, 3, 5]", "[4, 8, 12]", "[1, 2, 3, 4, 5, 6]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-comp-04dda5",
-      "text": "What does this print?",
-      "code": "numbers = [15, 7, 22, 9, 30]\nprint([n for n in numbers if n < 10])",
-      "options": ["[7, 9]", "[15, 22, 30]", "[14, 18]", "[15, 7, 22, 9, 30]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-comp-d1367f",
-      "text": "What does this print?",
-      "code": "numbers = [4, 9, 16, 25]\nprint([n for n in numbers if n % 3 == 1])",
-      "options": ["[4, 16, 25]", "[9]", "[8, 32, 50]", "[4, 9, 16, 25]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-comp-6bdc13",
-      "text": "What does this print?",
-      "code": "numbers = [10, 20, 30, 40]\nprint([n for n in numbers if n != 30])",
-      "options": ["[10, 20, 40]", "[30]", "[20, 40, 80]", "[10, 20, 30, 40]"],
-      "answer": 0
-    },
-    {
       "id": "ft-transform-d78d88",
       "text": "What does this print?",
       "code": "scores = [45, 82, 67]\nwith_bonus = []\nfor s in scores:\n    with_bonus.append(s + 5)\nprint(with_bonus)",
       "options": ["[50, 87, 72]", "[5, 5, 5]", "[225, 410, 335]", "[45, 82, 67]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-transform-ff527b",
-      "text": "What does this print?",
-      "code": "scores = [10, 20, 30, 40]\nwith_bonus = []\nfor s in scores:\n    with_bonus.append(s + 3)\nprint(with_bonus)",
-      "options": ["[13, 23, 33, 43]", "[3, 3, 3, 3]", "[30, 60, 90, 120]", "[10, 20, 30, 40]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-transform-2a9a21",
-      "text": "What does this print?",
-      "code": "scores = [7, 1, 9]\nwith_bonus = []\nfor s in scores:\n    with_bonus.append(s + 10)\nprint(with_bonus)",
-      "options": ["[17, 11, 19]", "[10, 10, 10]", "[70, 10, 90]", "[7, 1, 9]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-transform-402d1a",
-      "text": "What does this print?",
-      "code": "scores = [50, 60]\nwith_bonus = []\nfor s in scores:\n    with_bonus.append(s + 15)\nprint(with_bonus)",
-      "options": ["[65, 75]", "[15, 15]", "[750, 900]", "[50, 60]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-transform-3eb03d",
-      "text": "What does this print?",
-      "code": "scores = [99, 0, 50, 25]\nwith_bonus = []\nfor s in scores:\n    with_bonus.append(s + 1)\nprint(with_bonus)",
-      "options": [
-        "[100, 1, 51, 26]",
-        "[1, 1, 1, 1]",
-        "[99, 0, 50, 25]",
-        "[100]\n[100, 1]\n[100, 1, 51]\n[100, 1, 51, 26]"
-      ],
       "answer": 0
     },
     {
@@ -136,27 +42,6 @@
       "answer": 0
     },
     {
-      "id": "ft-cap-ae054e",
-      "text": "What does this print?",
-      "code": "grades = [60, 49, 50, 95]\nprint([min(g + 8, 100) for g in grades if g >= 50])",
-      "options": ["[68, 58, 100]", "[100, 100, 103]", "[57]", "[68, 58, 103]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-cap-c122bf",
-      "text": "What does this print?",
-      "code": "grades = [85, 12, 98, 70]\nprint([min(g + 4, 100) for g in grades if g >= 50])",
-      "options": ["[89, 100, 74]", "[100, 102, 100]", "[16]", "[89, 102, 74]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-cap-a70dcd",
-      "text": "What does this print?",
-      "code": "grades = [51, 92, 20]\nprint([min(g + 9, 100) for g in grades if g >= 50])",
-      "options": ["[60, 100]", "[100, 101]", "[29]", "[60, 101]"],
-      "answer": 0
-    },
-    {
       "id": "ft-dicts-cc5e6c",
       "text": "What does this print?",
       "code": "players = [\n    {\"name\": \"Tommy\", \"score\": 95},\n    {\"name\": \"Lance\", \"score\": 42},\n    {\"name\": \"Cortez\", \"score\": 88}\n]\nprint([p[\"name\"] for p in players if p[\"score\"] >= 50])",
@@ -168,27 +53,6 @@
       "text": "What does this print?",
       "code": "players = [\n    {\"name\": \"Phil\", \"score\": 71},\n    {\"name\": \"Sonny\", \"score\": 33},\n    {\"name\": \"Ken\", \"score\": 60}\n]\nprint([p[\"name\"] for p in players if p[\"score\"] >= 60])",
       "options": ["['Phil', 'Ken']", "[71, 60]", "['Sonny']", "2"],
-      "answer": 0
-    },
-    {
-      "id": "ft-dicts-5c4490",
-      "text": "What does this print?",
-      "code": "players = [\n    {\"name\": \"Mercedes\", \"score\": 50},\n    {\"name\": \"Kent\", \"score\": 75},\n    {\"name\": \"Victor\", \"score\": 49}\n]\nprint([p[\"name\"] for p in players if p[\"score\"] >= 50])",
-      "options": ["['Mercedes', 'Kent']", "[50, 75]", "['Victor']", "2"],
-      "answer": 0
-    },
-    {
-      "id": "ft-dicts-115a04",
-      "text": "What does this print?",
-      "code": "players = [\n    {\"name\": \"Avery\", \"score\": 20},\n    {\"name\": \"Diaz\", \"score\": 90},\n    {\"name\": \"Hilary\", \"score\": 85}\n]\nprint([p[\"name\"] for p in players if p[\"score\"] >= 80])",
-      "options": ["['Diaz', 'Hilary']", "[90, 85]", "['Avery']", "2"],
-      "answer": 0
-    },
-    {
-      "id": "ft-dicts-74fbfe",
-      "text": "What does this print?",
-      "code": "players = [\n    {\"name\": \"Ricardo\", \"score\": 66},\n    {\"name\": \"Lance\", \"score\": 99},\n    {\"name\": \"Tommy\", \"score\": 12}\n]\nprint([p[\"name\"] for p in players if p[\"score\"] >= 65])",
-      "options": ["['Ricardo', 'Lance']", "[66, 99]", "['Tommy']", "2"],
       "answer": 0
     },
     {
@@ -206,27 +70,6 @@
       "answer": 0
     },
     {
-      "id": "ft-avg-9527ea",
-      "text": "What does this print?",
-      "code": "readings = [50, 51, 20, 96]\nboosted = []\nfor r in readings:\n    if r >= 50:\n        boosted.append(min(r + 5, 100))\nprint(len(boosted))\nprint(round(sum(boosted) / len(boosted)))",
-      "options": ["3\n70", "3\n71", "4\n70", "3\n53"],
-      "answer": 0
-    },
-    {
-      "id": "ft-avg-ce636d",
-      "text": "What does this print?",
-      "code": "readings = [30, 80, 50, 98, 10]\nboosted = []\nfor r in readings:\n    if r >= 50:\n        boosted.append(min(r + 5, 100))\nprint(len(boosted))\nprint(round(sum(boosted) / len(boosted)))",
-      "options": ["3\n80", "3\n81", "5\n80", "3\n48"],
-      "answer": 0
-    },
-    {
-      "id": "ft-avg-d980f6",
-      "text": "What does this print?",
-      "code": "readings = [75, 50, 40]\nboosted = []\nfor r in readings:\n    if r >= 50:\n        boosted.append(min(r + 5, 100))\nprint(len(boosted))\nprint(round(sum(boosted) / len(boosted)))",
-      "options": ["2\n68", "3\n68", "2\n45", "1\n80"],
-      "answer": 0
-    },
-    {
       "id": "ft-order-ea80c4",
       "text": "What does this print?",
       "code": "numbers = [1, 3, 5, 7]\nprint([n * 2 for n in numbers if n > 4])",
@@ -238,27 +81,6 @@
       "text": "What does this print?",
       "code": "numbers = [2, 4, 6, 8]\nprint([n * 2 for n in numbers if n > 5])",
       "options": ["[12, 16]", "[8, 12, 16]", "[6, 8]", "[4, 8]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-order-820a9c",
-      "text": "What does this print?",
-      "code": "numbers = [10, 3, 8, 1]\nprint([n * 2 for n in numbers if n > 5])",
-      "options": ["[20, 16]", "[20, 6, 16]", "[10, 8]", "[6, 2]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-order-d7a1dc",
-      "text": "What does this print?",
-      "code": "numbers = [4, 5, 6]\nprint([n * 2 for n in numbers if n > 4])",
-      "options": ["[10, 12]", "[8, 10, 12]", "[5, 6]", "[]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-order-78eb32",
-      "text": "What does this print?",
-      "code": "numbers = [9, 2, 7, 4]\nprint([n * 2 for n in numbers if n > 5])",
-      "options": ["[18, 14]", "[18, 14, 8]", "[9, 7]", "[4, 8]"],
       "answer": 0
     },
     {
@@ -278,27 +100,6 @@
         "['IO']",
         "[4, 5, 5]"
       ],
-      "answer": 0
-    },
-    {
-      "id": "ft-strings-9a51db",
-      "text": "What does this print?",
-      "code": "words = [\"ship\", \"rocket\", \"crew\", \"pilot\"]\nprint([w.upper() for w in words if len(w) > 4])",
-      "options": ["['ROCKET', 'PILOT']", "['rocket', 'pilot']", "[]", "[6, 5]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-strings-257275",
-      "text": "What does this print?",
-      "code": "words = [\"star\", \"comet\", \"sky\"]\nprint([w.upper() for w in words if len(w) > 3])",
-      "options": ["['STAR', 'COMET']", "['star', 'comet']", "[]", "[4, 5]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-strings-17e5b9",
-      "text": "What does this print?",
-      "code": "words = [\"dock\", \"launch\", \"fuel\", \"engine\"]\nprint([w.upper() for w in words if len(w) > 5])",
-      "options": ["['LAUNCH', 'ENGINE']", "['launch', 'engine']", "['DOCK', 'FUEL']", "[6, 6]"],
       "answer": 0
     },
     {
@@ -579,6 +380,219 @@
         "online_names = []",
         "online_names.append(player[\"name\"])"
       ],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-filter-b41427",
+      "text": "What is in `passed` at the end?",
+      "code": "scores = [45, 82, 50, 91, 38]\npassed = [x for x in scores if x >= 50]",
+      "options": ["[82, 50, 91]", "[82, 91]", "[45, 82, 50, 91, 38]", "[45, 50, 38]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-filter-52b33c",
+      "text": "What is in `hot` at the end?",
+      "code": "temps = [18, 30, 33, 25, 31]\nhot = [x for x in temps if x >= 30]",
+      "options": ["[30, 33, 31]", "[33, 31]", "[18, 30, 33, 25, 31]", "[18, 30, 25]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-filter-2b0073",
+      "text": "What is in `adults` at the end?",
+      "code": "ages = [12, 18, 30, 15]\nadults = [x for x in ages if x >= 18]",
+      "options": ["[18, 30]", "[30]", "[12, 18, 30, 15]", "[12, 18, 15]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-filter-5d3af2",
+      "text": "What is in `fast` at the end?",
+      "code": "speeds = [60, 120, 90, 45]\nfast = [x for x in speeds if x >= 90]",
+      "options": ["[120, 90]", "[120]", "[60, 120, 90, 45]", "[60, 90, 45]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-filter-a6583d",
+      "text": "What is in `high` at the end?",
+      "code": "levels = [3, 7, 5, 9, 2]\nhigh = [x for x in levels if x >= 5]",
+      "options": ["[7, 5, 9]", "[7, 9]", "[3, 7, 5, 9, 2]", "[3, 5, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-cap-6ac81a",
+      "text": "What is in `boosted` at the end?",
+      "code": "scores = [45, 98, 67]\nboosted = []\nfor x in scores:\n    boosted.append(min(x + 5, 100))",
+      "options": ["[50, 100, 72]", "[100, 103, 100]", "[50, 103, 72]", "[72]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-cap-325eb5",
+      "text": "What is in `boosted` at the end?",
+      "code": "scores = [90, 70, 99]\nboosted = []\nfor x in scores:\n    boosted.append(min(x + 10, 100))",
+      "options": ["[100, 80, 100]", "[100, 100, 109]", "[100, 80, 109]", "[100]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-cap-9a11dd",
+      "text": "What is in `final` at the end?",
+      "code": "grades = [82, 97, 38]\nfinal = []\nfor x in grades:\n    final.append(min(x + 5, 100))",
+      "options": ["[87, 100, 43]", "[100, 102, 100]", "[87, 102, 43]", "[43]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-cap-37cf54",
+      "text": "What is in `healed` at the end?",
+      "code": "health = [60, 95, 100]\nhealed = []\nfor x in health:\n    healed.append(min(x + 20, 100))",
+      "options": ["[80, 100, 100]", "[100, 115, 120]", "[80, 115, 120]", "[100]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-cap-25c850",
+      "text": "What is in `refilled` at the end?",
+      "code": "fuel = [50, 85, 92]\nrefilled = []\nfor x in fuel:\n    refilled.append(min(x + 15, 100))",
+      "options": ["[65, 100, 100]", "[100, 100, 107]", "[65, 100, 107]", "[100]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-names-194783",
+      "text": "What is in `winners` at the end?",
+      "code": "players = [{\"name\": \"Tommy\", \"score\": 95}, {\"name\": \"Lance\", \"score\": 42}, {\"name\": \"Cortez\", \"score\": 88}]\nwinners = [p[\"name\"] for p in players if p[\"score\"] > 88]",
+      "options": ["['Tommy']", "[95]", "[{'name': 'Tommy', 'score': 95}]", "['Tommy', 'Cortez']"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-names-dfddef",
+      "text": "What is in `winners` at the end?",
+      "code": "players = [{\"name\": \"Phil\", \"score\": 71}, {\"name\": \"Sonny\", \"score\": 60}, {\"name\": \"Ken\", \"score\": 60}]\nwinners = [p[\"name\"] for p in players if p[\"score\"] > 60]",
+      "options": [
+        "['Phil']",
+        "[71]",
+        "[{'name': 'Phil', 'score': 71}]",
+        "['Phil', 'Sonny', 'Ken']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-names-678c37",
+      "text": "What is in `best` at the end?",
+      "code": "players = [{\"name\": \"Ana\", \"score\": 50}, {\"name\": \"Rex\", \"score\": 75}, {\"name\": \"Kai\", \"score\": 90}]\nbest = [p[\"name\"] for p in players if p[\"score\"] > 50]",
+      "options": [
+        "['Rex', 'Kai']",
+        "[75, 90]",
+        "[{'name': 'Rex', 'score': 75}, {'name': 'Kai', 'score': 90}]",
+        "['Ana', 'Rex', 'Kai']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-names-4f50b4",
+      "text": "What is in `best` at the end?",
+      "code": "players = [{\"name\": \"Zoe\", \"score\": 30}, {\"name\": \"Mia\", \"score\": 80}, {\"name\": \"Ben\", \"score\": 80}]\nbest = [p[\"name\"] for p in players if p[\"score\"] > 30]",
+      "options": [
+        "['Mia', 'Ben']",
+        "[80, 80]",
+        "[{'name': 'Mia', 'score': 80}, {'name': 'Ben', 'score': 80}]",
+        "['Zoe', 'Mia', 'Ben']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-names-5f1ff3",
+      "text": "What is in `top` at the end?",
+      "code": "players = [{\"name\": \"Nova\", \"score\": 12}, {\"name\": \"Vega\", \"score\": 7}, {\"name\": \"Orion\", \"score\": 9}]\ntop = [p[\"name\"] for p in players if p[\"score\"] > 7]",
+      "options": [
+        "['Nova', 'Orion']",
+        "[12, 9]",
+        "[{'name': 'Nova', 'score': 12}, {'name': 'Orion', 'score': 9}]",
+        "['Nova', 'Vega', 'Orion']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-input-limit-660ac4",
+      "text": "What did the user type?",
+      "code": "limit = int(input())\nscores = [45, 82, 67, 91, 38]\nprint([x for x in scores if x >= limit])",
+      "output": "[82, 91]",
+      "options": ["70", "91", "45", "100"],
+      "answer": 0
+    },
+    {
+      "id": "ft-input-limit-8c51fe",
+      "text": "What did the user type?",
+      "code": "limit = int(input())\ntemps = [18, 30, 33, 25]\nprint([x for x in temps if x >= limit])",
+      "output": "[30, 33]",
+      "options": ["26", "33", "18", "40"],
+      "answer": 0
+    },
+    {
+      "id": "ft-input-limit-47ea88",
+      "text": "What did the user type?",
+      "code": "limit = int(input())\nages = [12, 18, 30, 15]\nprint([x for x in ages if x >= limit])",
+      "output": "[18, 30]",
+      "options": ["16", "30", "12", "31"],
+      "answer": 0
+    },
+    {
+      "id": "ft-input-limit-b59fbb",
+      "text": "What did the user type?",
+      "code": "limit = int(input())\nlevels = [3, 7, 5, 9]\nprint([x for x in levels if x >= limit])",
+      "output": "[7, 9]",
+      "options": ["6", "9", "3", "10"],
+      "answer": 0
+    },
+    {
+      "id": "ft-error-key-165f6c",
+      "text": "Which error stops this program?",
+      "code": "players = [{\"name\": \"Tommy\", \"score\": 95}, {\"name\": \"Lance\", \"score\": 42}]\nprint([p[\"points\"] for p in players])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "ft-error-key-dd85bd",
+      "text": "Which error stops this program?",
+      "code": "players = [{\"name\": \"Ana\", \"score\": 50}, {\"name\": \"Rex\", \"score\": 75}]\nprint([p[\"Name\"] for p in players])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "ft-error-type-12b0ce",
+      "text": "Which error stops this program?",
+      "code": "scores = [45, 82, 67]\nprint([x + \"5\" for x in scores])",
+      "options": ["TypeError", "ValueError", "KeyError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "ft-error-type-ac7c6f",
+      "text": "Which error stops this program?",
+      "code": "prices = [10, 20]\nprint([x + \"1\" for x in prices])",
+      "options": ["TypeError", "ValueError", "KeyError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-lens-dcc8fa",
+      "text": "What is in `sizes` at the end?",
+      "code": "words = [\"moon\", \"mars\", \"sun\", \"drum\"]\nsizes = [len(w) for w in words if w[0] == \"m\"]",
+      "options": ["[4, 4]", "['moon', 'mars']", "[]", "[4]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-lens-7cfde0",
+      "text": "What is in `sizes` at the end?",
+      "code": "foods = [\"apple\", \"avocado\", \"banana\", \"pizza\"]\nsizes = [len(w) for w in foods if w[0] == \"a\"]",
+      "options": ["[5, 7]", "['apple', 'avocado']", "[]", "[6, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-lens-253854",
+      "text": "What is in `sizes` at the end?",
+      "code": "menu = [\"tea\", \"toast\", \"cake\", \"tart\"]\nsizes = [len(w) for w in menu if w[0] == \"t\"]",
+      "options": ["[3, 5, 4]", "['tea', 'toast', 'tart']", "[]", "[5, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-lens-a6f2fe",
+      "text": "What is in `sizes` at the end?",
+      "code": "codes = [\"ping\", \"pong\", \"zap\", \"pip\"]\nsizes = [len(w) for w in codes if w[0] == \"p\"]",
+      "options": ["[4, 4, 3]", "['ping', 'pong', 'pip']", "[]", "[3, 3]"],
       "answer": 0
     }
   ]

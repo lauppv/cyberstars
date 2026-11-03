@@ -275,15 +275,6 @@
         },
         {
           "w": "Orbit"
-        },
-        {
-          "w": "Lance"
-        },
-        {
-          "w": "rocket"
-        },
-        {
-          "w": "Vercetti"
         }
       ],
       "mistakes": [
@@ -307,12 +298,6 @@
         },
         {
           "w": "Vice"
-        },
-        {
-          "w": "Phil"
-        },
-        {
-          "w": "star"
         }
       ],
       "mistakes": [
@@ -339,14 +324,6 @@
         {
           "w": "Lance",
           "s": "1:"
-        },
-        {
-          "w": "Cortez",
-          "s": "::-2"
-        },
-        {
-          "w": "Orbit",
-          "s": ":3"
         }
       ],
       "mistakes": [
@@ -370,12 +347,6 @@
         },
         {
           "w": "Lance"
-        },
-        {
-          "w": "rocket"
-        },
-        {
-          "w": "Vercetti"
         }
       ],
       "mistakes": [
@@ -399,12 +370,6 @@
         },
         {
           "s": "mission control online"
-        },
-        {
-          "s": "Mars is red"
-        },
-        {
-          "s": "launch at dawn"
         }
       ],
       "mistakes": [
@@ -646,6 +611,109 @@
         }
       ],
       "bug": ["words[::-1]", "words[::1]"]
+    },
+    {
+      "id": "sr-holds-acc",
+      "kind": "holds",
+      "text": "What is in `{{r}}` at the end?",
+      "code": "{{t}} = \"{{w}}\"\n{{r}} = \"\"\nfor {{ch}} in {{t}}:\n    {{r}} = {{ch}} + {{r}}",
+      "values": [
+        {
+          "t": "text",
+          "r": "result",
+          "ch": "char",
+          "w": "Tommy"
+        },
+        {
+          "t": "text",
+          "r": "result",
+          "ch": "char",
+          "w": "Mars"
+        },
+        {
+          "t": "text",
+          "r": "result",
+          "ch": "char",
+          "w": "rocket"
+        },
+        {
+          "t": "text",
+          "r": "result",
+          "ch": "char",
+          "w": "Vice"
+        }
+      ],
+      "variable": "{{r}}",
+      "mistakes": [
+        ["{{ch}} + {{r}}", "{{r}} + {{ch}}"],
+        ["{{r}} = {{ch}} + {{r}}", "{{r}} = {{ch}}"],
+        ["{{r}} = \"\"", "{{r}} = {{t}}"]
+      ]
+    },
+    {
+      "id": "sr-holds-slice",
+      "kind": "holds",
+      "text": "What is in `{{r}}` at the end?",
+      "code": "{{t}} = \"{{w}}\"\n{{r}} = {{t}}[::-1]",
+      "values": [
+        {
+          "t": "word",
+          "r": "backwards",
+          "w": "Tommy"
+        },
+        {
+          "t": "word",
+          "r": "backwards",
+          "w": "orbit"
+        },
+        {
+          "t": "word",
+          "r": "backwards",
+          "w": "Lance"
+        },
+        {
+          "t": "word",
+          "r": "backwards",
+          "w": "planet"
+        }
+      ],
+      "variable": "{{r}}",
+      "mistakes": [
+        ["[::-1]", "[:-1]"],
+        ["[::-1]", "[-1]"],
+        ["[::-1]", "[::]"]
+      ]
+    },
+    {
+      "id": "sr-input-reverse",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{t}} = input()\nprint({{t}}[::-1])",
+      "values": [
+        {
+          "t": "text",
+          "a": "Tommy",
+          "out": "ymmoT",
+          "low": "tommy",
+          "short": "Tomy"
+        },
+        {
+          "t": "text",
+          "a": "Mars",
+          "out": "sraM",
+          "low": "mars",
+          "short": "Mar"
+        },
+        {
+          "t": "word",
+          "a": "rocket",
+          "out": "tekcor",
+          "low": "Rocket",
+          "short": "rocke"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{out}}", "{{low}}", "{{short}}"]
     }
   ]
 }

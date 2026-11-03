@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "lc-double-4d6c88",
-      "text": "Ce afișează?",
-      "code": "scoruri = [6, 9]\npuncte = [s * 3 for s in scoruri]\nprint(puncte)",
-      "options": ["[18, 27]", "[9, 12]", "[6, 9, 6, 9, 6, 9]", "[6, 9]"],
-      "answer": 0
-    },
-    {
-      "id": "lc-double-dee8fb",
-      "text": "Ce afișează?",
-      "code": "niveluri = [2, 7]\ncrescute = [l * 5 for l in niveluri]\nprint(crescute)",
-      "options": ["[10, 35]", "[7, 12]", "[2, 7, 2, 7, 2, 7, 2, 7, 2, 7]", "[2, 7]"],
-      "answer": 0
-    },
-    {
       "id": "lc-filter-d30fd9",
       "text": "Ce afișează?",
       "code": "temperaturi = [18, 30, 33, 25, 31]\ncalde = [t for t in temperaturi if t > 30]\nprint(calde)",
@@ -41,13 +27,6 @@
       "text": "Ce afișează?",
       "code": "viteze = [120, 90, 100, 140]\nrapide = [s for s in viteze if s > 100]\nprint(rapide)",
       "options": ["[120, 140]", "[120, 100, 140]", "[90]", "[True, False, False, True]"],
-      "answer": 0
-    },
-    {
-      "id": "lc-filter-eeb7c3",
-      "text": "Ce afișează?",
-      "code": "varste = [12, 18, 25, 17]\nadulti = [a for a in varste if a > 17]\nprint(adulti)",
-      "options": ["[18, 25]", "[18, 25, 17]", "[12]", "[False, True, True, False]"],
       "answer": 0
     },
     {
@@ -75,18 +54,6 @@
       "answer": 0
     },
     {
-      "id": "lc-upper-ace990",
-      "text": "Ce afișează?",
-      "code": "planete = [\"marte\", \"Venus\", \"pamant\"]\netichete = [p.upper() for p in planete]\nprint(etichete)",
-      "options": [
-        "['MARTE', 'VENUS', 'PAMANT']",
-        "['marte', 'venus', 'pamant']",
-        "['M', 'V', 'P']",
-        "['marte', 'Venus', 'pamant']"
-      ],
-      "answer": 0
-    },
-    {
       "id": "lc-even-391b2d",
       "text": "Ce afișează?",
       "code": "numere = [4, 7, 10, 3, 8]\npare = [n for n in numere if n % 2 == 0]\nprint(pare)",
@@ -98,13 +65,6 @@
       "text": "Ce afișează?",
       "code": "locuri = [1, 6, 9, 12]\nimpare = [s for s in locuri if s % 2 == 1]\nprint(impare)",
       "options": ["[1, 9]", "[6, 12]", "[1, 1]", "[1, 6, 9, 12]"],
-      "answer": 0
-    },
-    {
-      "id": "lc-even-54adcf",
-      "text": "Ce afișează?",
-      "code": "ids = [21, 14, 5, 30]\npare = [i for i in ids if i % 2 == 0]\nprint(pare)",
-      "options": ["[14, 30]", "[21, 5]", "[0, 0]", "[21, 14, 5, 30]"],
       "answer": 0
     },
     {
@@ -168,13 +128,6 @@
       "text": "Ce afișează?",
       "code": "varste = [17, 18, 30, 12, 18, 65]\nadulti = [a for a in varste if a >= 18]\nprint(len(adulti))",
       "options": ["4", "2", "[18, 30, 18, 65]", "6"],
-      "answer": 0
-    },
-    {
-      "id": "lc-count-81141d",
-      "text": "Ce afișează?",
-      "code": "viteze = [90, 120, 100, 80]\nrapide = [s for s in viteze if s >= 100]\nprint(len(rapide))",
-      "options": ["2", "1", "[120, 100]", "4"],
       "answer": 0
     },
     {
@@ -715,6 +668,53 @@
         "print(calde)",
         "print(dublu)"
       ],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-squares-46db70",
+      "text": "Ce conține `patrate` la final?",
+      "code": "patrate = [n * n for n in range(1, 5)]",
+      "options": ["[1, 4, 9, 16]", "[2, 4, 6, 8]", "[0, 1, 4, 9, 16]", "[1, 2, 3, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-squares-0e28fe",
+      "text": "Ce conține `patrate` la final?",
+      "code": "patrate = [n * n for n in range(2, 6)]",
+      "options": ["[4, 9, 16, 25]", "[4, 6, 8, 10]", "[0, 1, 4, 9, 16, 25]", "[2, 3, 4, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-squares-bedfa7",
+      "text": "Ce conține `arii` la final?",
+      "code": "arii = [latura * latura for latura in range(3, 6)]",
+      "options": ["[9, 16, 25]", "[6, 8, 10]", "[0, 1, 4, 9, 16, 25]", "[3, 4, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-short-0195c0",
+      "text": "Ce conține `scurte` la final?",
+      "code": "cuvinte = [\"nor\", \"luna\", \"planeta\", \"stea\"]\nscurte = [c for c in cuvinte if len(c) <= 4]",
+      "options": [
+        "['nor', 'luna', 'stea']",
+        "['nor']",
+        "['nor', 'luna', 'planeta', 'stea']",
+        "[3, 4, 4]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-short-843b6a",
+      "text": "Ce conține `scurte` la final?",
+      "code": "nume = [\"Tommy\", \"Ken\", \"Mia\"]\nscurte = [n for n in nume if len(n) <= 3]",
+      "options": ["['Ken', 'Mia']", "[]", "['Tommy', 'Ken', 'Mia']", "[3, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-short-0fe67d",
+      "text": "Ce conține `mici` la final?",
+      "code": "lumi = [\"Luna\", \"Venus\", \"Terra\", \"Io\"]\nmici = [l for l in lumi if len(l) <= 4]",
+      "options": ["['Luna', 'Io']", "['Io']", "['Luna', 'Venus', 'Terra', 'Io']", "[4, 2]"],
       "answer": 0
     }
   ]

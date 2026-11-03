@@ -9,6 +9,7 @@ import {
   QUIZ_LENGTH,
   QUIZ_OUT,
   QUIZ_RETRY_MS,
+  QUIZ_SAME_TEXT,
   nextRecapAt,
   planetLessons,
   type LaniakeaPlanet,
@@ -53,10 +54,6 @@ function shuffle<T>(items: T[]): T[] {
   return out;
 }
 
-// A test takes at most this many questions with the same text, when its
-// planet's pool lets it.
-const SAME_TEXT = 3;
-
 type Drawable = Pick<PoolQuestion, 'id' | 'template' | 'text'>;
 
 function counter(questions: Drawable[], key: (q: Drawable) => string) {
@@ -66,7 +63,7 @@ function counter(questions: Drawable[], key: (q: Drawable) => string) {
 }
 
 // Fills a test of `n` with questions of `from` after those `taken`: no two
-// from one template and at most SAME_TEXT with the same text. The limits are
+// from one template and at most QUIZ_SAME_TEXT with the same text. The limits are
 // spread over the `round` the questions belong to: a template or a text with
 // more questions in it than the round has tests takes its share of each one.
 // The questions whose template and text have the most in the round tend to
@@ -95,7 +92,7 @@ function fillTest(from: Drawable[], taken: Drawable[], n: number, round: Drawabl
   const templateFull = (q: Drawable) =>
     (templates.get(q.template) ?? 0) >= Math.ceil(inTemplate(q) / tests);
   const textFull = (q: Drawable) =>
-    (texts.get(q.text) ?? 0) >= Math.max(SAME_TEXT, Math.ceil(withText(q) / tests));
+    (texts.get(q.text) ?? 0) >= Math.max(QUIZ_SAME_TEXT, Math.ceil(withText(q) / tests));
   for (const limits of [[templateFull, textFull], [templateFull], []]) {
     for (const q of order) {
       if (test.length >= n) break;

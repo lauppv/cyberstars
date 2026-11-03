@@ -340,33 +340,6 @@
           "yes": "Danger",
           "no": "Stable",
           "flip": "<="
-        },
-        {
-          "v": "fuel",
-          "x": 1200,
-          "op": ">",
-          "limit": 1000,
-          "yes": "Danger",
-          "no": "Stable",
-          "flip": "<="
-        },
-        {
-          "v": "age",
-          "x": 18,
-          "op": ">=",
-          "limit": 18,
-          "yes": "You can vote",
-          "no": "Not yet",
-          "flip": "<"
-        },
-        {
-          "v": "age",
-          "x": 12,
-          "op": ">=",
-          "limit": 18,
-          "yes": "You can vote",
-          "no": "Not yet",
-          "flip": "<"
         }
       ],
       "mistakes": [
@@ -448,14 +421,6 @@
         {
           "user": "Ana",
           "b": "True"
-        },
-        {
-          "user": "Ben",
-          "b": "False"
-        },
-        {
-          "user": "Cortez",
-          "b": "False"
         }
       ],
       "mistakes": [
@@ -803,12 +768,6 @@
         },
         {
           "t": 1000
-        },
-        {
-          "t": 1001
-        },
-        {
-          "t": 999
         }
       ],
       "mistakes": [
@@ -858,20 +817,6 @@
           "op": ">",
           "limit": 1000,
           "flip": "<="
-        },
-        {
-          "v": "age",
-          "x": 17,
-          "op": "<=",
-          "limit": 18,
-          "flip": ">"
-        },
-        {
-          "v": "points",
-          "x": 75,
-          "op": "==",
-          "limit": 75,
-          "flip": "<"
         }
       ],
       "mistakes": [
@@ -950,13 +895,6 @@
           "limit": 100,
           "yes": "New record",
           "after": "Game over"
-        },
-        {
-          "v": "points",
-          "x": 40,
-          "limit": 100,
-          "yes": "New record",
-          "after": "Game over"
         }
       ],
       "mistakes": [
@@ -989,6 +927,108 @@
         }
       ],
       "bug": ["online = {{b}}", "online = {{bl}}"]
+    },
+    {
+      "id": "ie-holds-branch",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{v}} = {{x}}\nif {{v}} > {{limit}}:\n    {{v}} = {{v}} - {{a}}\nelse:\n    {{v}} = {{v}} + {{b}}\n{{v}} = {{v}} * 2",
+      "values": [
+        {
+          "v": "fuel",
+          "x": 80,
+          "limit": 50,
+          "a": 10,
+          "b": 5
+        },
+        {
+          "v": "fuel",
+          "x": 30,
+          "limit": 50,
+          "a": 10,
+          "b": 5
+        },
+        {
+          "v": "score",
+          "x": 12,
+          "limit": 10,
+          "a": 2,
+          "b": 3
+        },
+        {
+          "v": "score",
+          "x": 6,
+          "limit": 10,
+          "a": 2,
+          "b": 3
+        },
+        {
+          "v": "speed",
+          "x": 90,
+          "limit": 60,
+          "a": 20,
+          "b": 10
+        },
+        {
+          "v": "speed",
+          "x": 40,
+          "limit": 60,
+          "a": 20,
+          "b": 10
+        },
+        {
+          "v": "level",
+          "x": 7,
+          "limit": 5,
+          "a": 1,
+          "b": 2
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["> {{limit}}", "< {{limit}}"],
+        ["{{v}} = {{v}} * 2", "print({{v}} * 2)"],
+        ["else:\n    {{v}} = {{v}} + {{b}}", "{{v}} = {{v}} + {{b}}"],
+        ["{{v}} = {{v}} + {{b}}", "{{v}} = {{b}}"]
+      ]
+    },
+    {
+      "id": "ie-holds-message",
+      "kind": "holds",
+      "text": "What is in `message` at the end?",
+      "code": "{{v}} = {{x}}\nmessage = \"{{start}}\"\nif {{v}} > {{limit}}:\n    message = message + \"{{yes}}\"\nelse:\n    message = message + \"{{no}}\"",
+      "values": [
+        {
+          "v": "fuel",
+          "x": 80,
+          "limit": 50,
+          "start": "Fuel ",
+          "yes": "OK",
+          "no": "low"
+        },
+        {
+          "v": "temperature",
+          "x": 1200,
+          "limit": 1000,
+          "start": "Reactor ",
+          "yes": "hot",
+          "no": "stable"
+        },
+        {
+          "v": "score",
+          "x": 95,
+          "limit": 50,
+          "start": "Result: ",
+          "yes": "pass",
+          "no": "fail"
+        }
+      ],
+      "variable": "message",
+      "mistakes": [
+        ["> {{limit}}", "< {{limit}}"],
+        ["message = message + \"{{yes}}\"", "message = \"{{yes}}\""],
+        ["else:\n    message = message + \"{{no}}\"", "message = message + \"{{no}}\""]
+      ]
     }
   ]
 }

@@ -264,18 +264,6 @@
       "values": [
         {
           "k": 5
-        },
-        {
-          "k": 7
-        },
-        {
-          "k": 8
-        },
-        {
-          "k": 9
-        },
-        {
-          "k": 4
         }
       ],
       "mistakes": [
@@ -293,18 +281,6 @@
       "values": [
         {
           "n": 5
-        },
-        {
-          "n": 7
-        },
-        {
-          "n": 8
-        },
-        {
-          "n": 9
-        },
-        {
-          "n": 11
         }
       ],
       "mistakes": [
@@ -322,18 +298,6 @@
       "values": [
         {
           "w": "Tommy"
-        },
-        {
-          "w": "orbit"
-        },
-        {
-          "w": "Lance"
-        },
-        {
-          "w": "comet"
-        },
-        {
-          "w": "Vice"
         }
       ],
       "mistakes": [
@@ -356,18 +320,6 @@
         {
           "t": "mississippi",
           "c": "s"
-        },
-        {
-          "t": "rocket",
-          "c": "o"
-        },
-        {
-          "t": "galaxy",
-          "c": "a"
-        },
-        {
-          "t": "level",
-          "c": "e"
         }
       ],
       "mistakes": [
@@ -389,15 +341,6 @@
         },
         {
           "l": "[[1, 2], [3, [4]]]"
-        },
-        {
-          "l": "[5, [6, [7, [8]]]]"
-        },
-        {
-          "l": "[[10], 20, [30, 40]]"
-        },
-        {
-          "l": "[1, [], [2, [3, []]]]"
         }
       ],
       "mistakes": [
@@ -418,15 +361,6 @@
         },
         {
           "cs": "999, 7"
-        },
-        {
-          "cs": "4070, 88"
-        },
-        {
-          "cs": "305, 61"
-        },
-        {
-          "cs": "2024, 13"
         }
       ],
       "mistakes": [
@@ -447,15 +381,6 @@
         },
         {
           "cs": "11, 505, 72"
-        },
-        {
-          "cs": "1000, 46, 333"
-        },
-        {
-          "cs": "19, 91, 60"
-        },
-        {
-          "cs": "250, 8, 1111"
         }
       ],
       "mistakes": [
@@ -476,9 +401,6 @@
         },
         {
           "nums": "100, 9, 12345"
-        },
-        {
-          "nums": "88, 1000, 5"
         }
       ],
       "mistakes": [
@@ -680,6 +602,201 @@
         }
       ],
       "bug": ["sum_digits(n // 10)", "sum_digits(n // 100)"]
+    },
+    {
+      "id": "rpr-holds-fib",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\n{{v}} = fib({{n}})",
+      "values": [
+        {
+          "v": "term",
+          "n": 5
+        },
+        {
+          "v": "term",
+          "n": 6
+        },
+        {
+          "v": "term",
+          "n": 7
+        },
+        {
+          "v": "term",
+          "n": 4
+        },
+        {
+          "v": "term",
+          "n": 8
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["    if n == 1:\n        return 1", "    if n == 1:\n        return 0"],
+        ["fib(n - 1) + fib(n - 2)", "fib(n - 1) + fib(n - 1)"],
+        ["    if n == 0:\n        return 0", "    if n == 0:\n        return 1"]
+      ]
+    },
+    {
+      "id": "rpr-holds-digits",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "def {{f}}(n):\n    if n < 10:\n        return n\n    return n % 10 + {{f}}(n // 10)\n\n{{v}} = {{f}}({{n}})",
+      "values": [
+        {
+          "f": "sum_digits",
+          "v": "checksum",
+          "n": 482
+        },
+        {
+          "f": "sum_digits",
+          "v": "checksum",
+          "n": 1234
+        },
+        {
+          "f": "sum_digits",
+          "v": "checksum",
+          "n": 905
+        },
+        {
+          "f": "sum_digits",
+          "v": "checksum",
+          "n": 76
+        },
+        {
+          "f": "sum_digits",
+          "v": "checksum",
+          "n": 3333
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["n % 10 +", "n // 10 +"],
+        ["        return n", "        return 0"],
+        ["n % 10 + {{f}}", "n % 10 * {{f}}"]
+      ]
+    },
+    {
+      "id": "rpr-holds-reverse",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "def {{f}}(s):\n    if len(s) <= 1:\n        return s\n    return {{f}}(s[1:]) + s[0]\n\n{{v}} = {{f}}(\"{{w}}\")",
+      "values": [
+        {
+          "f": "reverse_str",
+          "v": "backwards",
+          "w": "Tommy"
+        },
+        {
+          "f": "reverse_str",
+          "v": "backwards",
+          "w": "Mars"
+        },
+        {
+          "f": "reverse_str",
+          "v": "backwards",
+          "w": "rocket"
+        },
+        {
+          "f": "reverse_str",
+          "v": "backwards",
+          "w": "Vice"
+        },
+        {
+          "f": "reverse_str",
+          "v": "backwards",
+          "w": "orbit"
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["{{f}}(s[1:]) + s[0]", "s[0] + {{f}}(s[1:])"],
+        ["{{f}}(s[1:]) + s[0]", "{{f}}(s[1:])"],
+        ["        return s\n", "        return \"\"\n"]
+      ]
+    },
+    {
+      "id": "rpr-input-fib",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(int(input())))",
+      "values": [
+        {
+          "a": 6,
+          "w1": 8,
+          "w2": 7,
+          "w3": 5,
+          "w4": 4
+        },
+        {
+          "a": 7,
+          "w1": 13,
+          "w2": 8,
+          "w3": 6,
+          "w4": 9
+        },
+        {
+          "a": 4,
+          "w1": 3,
+          "w2": 5,
+          "w3": 6,
+          "w4": 2
+        },
+        {
+          "a": 8,
+          "w1": 21,
+          "w2": 9,
+          "w3": 7,
+          "w4": 10
+        },
+        {
+          "a": 3,
+          "w1": 2,
+          "w2": 4,
+          "w3": 5,
+          "w4": 1
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}", "{{w4}}"]
+    },
+    {
+      "id": "rpr-error-base",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def {{f}}(items):\n    return items[0] + {{f}}(items[1:])\n\nprint({{f}}([{{L}}]))",
+      "values": [
+        {
+          "f": "total",
+          "L": "1, 2, 3"
+        },
+        {
+          "f": "add_all",
+          "L": "5, 5"
+        },
+        {
+          "f": "join_all",
+          "L": "\"a\", \"b\""
+        }
+      ],
+      "wrong": ["TypeError", "KeyError", "ValueError"]
+    },
+    {
+      "id": "rpr-error-text",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def {{f}}(n):\n    if n < 10:\n        return n\n    return n % 10 + {{f}}(n // 10)\n\nprint({{f}}(\"{{n}}\"))",
+      "values": [
+        {
+          "f": "sum_digits",
+          "n": 482
+        },
+        {
+          "f": "sum_digits",
+          "n": 1234
+        }
+      ],
+      "wrong": ["ValueError", "NameError", "IndexError"]
     }
   ]
 }

@@ -295,14 +295,6 @@
         {
           "v": "culori",
           "items": "\"rosu\", \"rosu\", \"albastru\", \"rosu\", \"verde\", \"albastru\", \"rosu\""
-        },
-        {
-          "v": "planete",
-          "items": "\"Marte\", \"Venus\", \"Terra\", \"Marte\", \"Venus\""
-        },
-        {
-          "v": "zaruri",
-          "items": "6, 2, 6, 6, 3, 2, 1, 6"
         }
       ],
       "mistakes": [
@@ -334,18 +326,6 @@
           "start": "\"Marte\", \"Venus\", \"Terra\", \"Pluto\"",
           "old": "Pluto",
           "new": "Titan"
-        },
-        {
-          "v": "medalii",
-          "start": "\"aur\", \"argint\", \"bronz\"",
-          "old": "argint",
-          "new": "platina"
-        },
-        {
-          "v": "coduri",
-          "start": "\"A1\", \"B2\", \"C3\"",
-          "old": "A1",
-          "new": "D4"
         }
       ],
       "mistakes": [
@@ -374,16 +354,6 @@
           "v": "oaspeti",
           "items": "\"Ana\", \"Rex\"",
           "r": "Rex"
-        },
-        {
-          "v": "tinte",
-          "items": "\"A\", \"B\", \"C\", \"D\", \"E\"",
-          "r": "C"
-        },
-        {
-          "v": "luni",
-          "items": "\"Io\", \"Europa\", \"Titan\"",
-          "r": "Titan"
         }
       ],
       "mistakes": [
@@ -424,14 +394,6 @@
           "people": "\"Marte\", \"Venus\"",
           "no": "e plina",
           "ok": "are loc"
-        },
-        {
-          "s": "vandute",
-          "bad": "\"ceai\", \"tort\", \"gem\"",
-          "x": "produs",
-          "people": "\"tort\", \"lapte\"",
-          "no": "s-a terminat",
-          "ok": "e pe stoc"
         }
       ],
       "mistakes": [
@@ -473,13 +435,6 @@
           "x": "c",
           "items": "\"hei\", \"ho\", \"hei\", \"hei\"",
           "label": "Ecouri"
-        },
-        {
-          "s": "folosite",
-          "r": "iar",
-          "x": "n",
-          "items": "4, 8, 4, 15, 8, 4",
-          "label": "Folosite iar"
         }
       ],
       "mistakes": [
@@ -514,11 +469,6 @@
           "v": "pinguri",
           "items": "\"Q1\", \"R2\", \"S3\", \"Q1\"",
           "c": "T4"
-        },
-        {
-          "v": "coduri",
-          "items": "\"D4\", \"D4\", \"D4\"",
-          "c": "D4"
         }
       ],
       "mistakes": [
@@ -906,6 +856,113 @@
         }
       ],
       "bug": ["{{v}}.remove(\"{{r}}\")", "{{v}}.remove(\"{{keep}}\")"]
+    },
+    {
+      "id": "st-holds-firsts",
+      "kind": "holds",
+      "text": "Ce conține `{{w}}` la final?",
+      "code": "{{s}} = set()\n{{w}} = []\nfor {{x}} in [{{items}}]:\n    if {{x}} in {{s}}:\n        continue\n    {{s}}.add({{x}})\n    {{w}}.append({{x}})",
+      "values": [
+        {
+          "s": "vazute",
+          "w": "semnale",
+          "x": "cod",
+          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\""
+        },
+        {
+          "s": "vazuti",
+          "w": "oaspeti",
+          "x": "nume",
+          "items": "\"Tommy\", \"Lance\", \"Tommy\", \"Ken\""
+        },
+        {
+          "s": "vazute",
+          "w": "niveluri",
+          "x": "n",
+          "items": "3, 5, 3, 3, 8"
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["continue", "break"],
+        ["{{s}}.add({{x}})", "{{s}}.add(\"{{x}}\")"],
+        ["{{w}}.append({{x}})", "{{w}} = [{{x}}]"]
+      ]
+    },
+    {
+      "id": "st-holds-common",
+      "kind": "holds",
+      "text": "Ce conține `{{w}}` la final?",
+      "code": "{{a}} = {{{xs}}}\n{{w}} = []\nfor {{x}} in [{{ys}}]:\n    if {{x}} in {{a}}:\n        {{w}}.append({{x}})",
+      "values": [
+        {
+          "a": "echipaj",
+          "xs": "\"Tommy\", \"Lance\", \"Phil\"",
+          "ys": "\"Lance\", \"Ken\", \"Phil\", \"Mia\"",
+          "w": "comuni",
+          "x": "nume"
+        },
+        {
+          "a": "vizitate",
+          "xs": "\"Marte\", \"Venus\"",
+          "ys": "\"Terra\", \"Venus\", \"Marte\"",
+          "w": "iar",
+          "x": "planeta"
+        },
+        {
+          "a": "castigatori",
+          "xs": "3, 7, 9",
+          "ys": "1, 3, 5, 7",
+          "w": "norocosi",
+          "x": "n"
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["{{x}} in {{a}}", "{{x}} not in {{a}}"],
+        ["{{w}}.append({{x}})", "{{w}} = [{{x}}]"],
+        ["{{w}}.append({{x}})", "{{a}}.add({{x}})"]
+      ]
+    },
+    {
+      "id": "st-input-check",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{s}} = {{{bad}}}\n{{x}} = input()\nif {{x}} in {{s}}:\n    print(\"{{no}}\")\nelse:\n    print(\"{{ok}}\")",
+      "values": [
+        {
+          "s": "interzisi",
+          "bad": "\"Sonny\", \"Diaz\"",
+          "x": "nume",
+          "no": "Acces interzis",
+          "ok": "Bine ai venit",
+          "a": "Diaz",
+          "low": "diaz",
+          "other": "Tommy"
+        },
+        {
+          "s": "vizitate",
+          "bad": "\"Marte\", \"Venus\"",
+          "x": "planeta",
+          "no": "Deja vizitata",
+          "ok": "Planeta noua",
+          "a": "Venus",
+          "low": "venus",
+          "other": "Terra"
+        },
+        {
+          "s": "folosite",
+          "bad": "\"A1\", \"B2\"",
+          "x": "cod",
+          "no": "Cod deja folosit",
+          "ok": "Cod acceptat",
+          "a": "B2",
+          "low": "b2",
+          "other": "C3"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{low}}", "{{other}}", "{{s}}"]
     }
   ]
 }

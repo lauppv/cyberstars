@@ -293,15 +293,6 @@
         },
         {
           "n": 4
-        },
-        {
-          "n": 2
-        },
-        {
-          "n": 5
-        },
-        {
-          "n": 6
         }
       ],
       "mistakes": [
@@ -322,15 +313,6 @@
         },
         {
           "n": 8
-        },
-        {
-          "n": 5
-        },
-        {
-          "n": 6
-        },
-        {
-          "n": 7
         }
       ],
       "mistakes": [
@@ -351,15 +333,6 @@
         },
         {
           "nums": "4, 7, 9"
-        },
-        {
-          "nums": "10, 20, 30, 40"
-        },
-        {
-          "nums": "6, 1, 8"
-        },
-        {
-          "nums": "5, 15, 2, 3"
         }
       ],
       "mistakes": [
@@ -386,14 +359,6 @@
         {
           "b": 10,
           "k": 3
-        },
-        {
-          "b": 5,
-          "k": 3
-        },
-        {
-          "b": 4,
-          "k": 4
         }
       ],
       "mistakes": [
@@ -417,9 +382,6 @@
         },
         {
           "n": 3
-        },
-        {
-          "n": 4
         }
       ],
       "mistakes": [
@@ -466,9 +428,6 @@
         },
         {
           "n": 4
-        },
-        {
-          "n": 5
         }
       ],
       "mistakes": [
@@ -694,6 +653,135 @@
         }
       ],
       "bug": ["        return 0", "        return 1"]
+    },
+    {
+      "id": "ri-holds-power",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "def {{f}}({{b}}, {{e}}):\n    if {{e}} == 0:\n        return 1\n    return {{b}} * {{f}}({{b}}, {{e}} - 1)\n\n{{v}} = {{f}}({{x}}, {{y}})",
+      "values": [
+        {
+          "f": "power",
+          "b": "base",
+          "e": "exp",
+          "v": "cells",
+          "x": 2,
+          "y": 5
+        },
+        {
+          "f": "power",
+          "b": "base",
+          "e": "exp",
+          "v": "cubes",
+          "x": 3,
+          "y": 3
+        },
+        {
+          "f": "power",
+          "b": "base",
+          "e": "exp",
+          "v": "area",
+          "x": 5,
+          "y": 2
+        },
+        {
+          "f": "power",
+          "b": "base",
+          "e": "exp",
+          "v": "big",
+          "x": 10,
+          "y": 3
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["        return 1", "        return 0"],
+        ["{{b}} * {{f}}", "{{b}} + {{f}}"],
+        ["if {{e}} == 0", "if {{e}} == 1"]
+      ]
+    },
+    {
+      "id": "ri-holds-sum",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "def {{f}}(n):\n    if n == 0:\n        return 0\n    return n + {{f}}(n - 1)\n\n{{v}} = {{f}}({{n}})",
+      "values": [
+        {
+          "f": "add_up",
+          "v": "total",
+          "n": 4
+        },
+        {
+          "f": "add_up",
+          "v": "total",
+          "n": 6
+        },
+        {
+          "f": "add_up",
+          "v": "total",
+          "n": 8
+        },
+        {
+          "f": "add_up",
+          "v": "total",
+          "n": 10
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["        return 0", "        return 1"],
+        ["return n + {{f}}(n - 1)", "return {{f}}(n - 1)"],
+        ["{{f}}(n - 1)", "{{f}}(n - 2)"]
+      ]
+    },
+    {
+      "id": "ri-input-countdown",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "def {{f}}(n):\n    if n == 0:\n        print(\"{{go}}\")\n        return\n    print(n)\n    {{f}}(n - 1)\n\n{{f}}(int(input()))",
+      "values": [
+        {
+          "f": "countdown",
+          "go": "Go!",
+          "a": 3,
+          "up": 4,
+          "down": 2,
+          "zero": 0
+        },
+        {
+          "f": "countdown",
+          "go": "Go!",
+          "a": 5,
+          "up": 6,
+          "down": 4,
+          "zero": 0
+        },
+        {
+          "f": "countdown",
+          "go": "Go!",
+          "a": 2,
+          "up": 3,
+          "down": 1,
+          "zero": 0
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{up}}", "{{down}}", "{{zero}}"]
+    },
+    {
+      "id": "ri-error-text",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(\"{{s}}\"))",
+      "values": [
+        {
+          "s": "5"
+        },
+        {
+          "s": "3"
+        }
+      ],
+      "wrong": ["ValueError", "NameError", "IndexError"]
     }
   ]
 }

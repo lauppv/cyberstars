@@ -310,18 +310,6 @@
         {
           "names": "\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"",
           "c": 2
-        },
-        {
-          "names": "\"Incarca scuturile\", \"Curata ecluza\"",
-          "c": 0
-        },
-        {
-          "names": "\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"",
-          "c": 1
-        },
-        {
-          "names": "\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"",
-          "c": 3
         }
       ],
       "mistakes": [
@@ -347,18 +335,6 @@
         {
           "names": "\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"",
           "r": 1
-        },
-        {
-          "names": "\"Incarca scuturile\", \"Curata ecluza\"",
-          "r": 0
-        },
-        {
-          "names": "\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"",
-          "r": 1
-        },
-        {
-          "names": "\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"",
-          "r": 2
         }
       ],
       "mistakes": [
@@ -381,18 +357,6 @@
         {
           "tt": "{\"nume\": \"Repara antena\", \"terminat\": False}, {\"nume\": \"Hraneste echipajul\", \"terminat\": False}, {\"nume\": \"Scaneaza sectorul 7\", \"terminat\": False}, {\"nume\": \"Noteaza zborul\", \"terminat\": False}",
           "idx": "3, 0, 4, 1"
-        },
-        {
-          "tt": "{\"nume\": \"Incarca scuturile\", \"terminat\": False}, {\"nume\": \"Curata ecluza\", \"terminat\": False}",
-          "idx": "1, 0, 7"
-        },
-        {
-          "tt": "{\"nume\": \"Testeaza radioul\", \"terminat\": False}, {\"nume\": \"Cartografiaza luna\", \"terminat\": False}, {\"nume\": \"Impacheteaza proviziile\", \"terminat\": False}",
-          "idx": "1, 9, 0, 2"
-        },
-        {
-          "tt": "{\"nume\": \"Verifica oxigenul\", \"terminat\": False}, {\"nume\": \"Repara carena\", \"terminat\": False}, {\"nume\": \"Actualizeaza harta stelara\", \"terminat\": False}, {\"nume\": \"Calibreaza senzorii\", \"terminat\": False}",
-          "idx": "4, 0, 2, 10, 3"
         }
       ],
       "mistakes": [
@@ -413,15 +377,6 @@
         },
         {
           "tt": "{\"nume\": \"Repara antena\", \"terminat\": False}, {\"nume\": \"Hraneste echipajul\", \"terminat\": True}, {\"nume\": \"Scaneaza sectorul 7\", \"terminat\": True}, {\"nume\": \"Noteaza zborul\", \"terminat\": True}"
-        },
-        {
-          "tt": "{\"nume\": \"Incarca scuturile\", \"terminat\": True}, {\"nume\": \"Curata ecluza\", \"terminat\": False}"
-        },
-        {
-          "tt": "{\"nume\": \"Testeaza radioul\", \"terminat\": False}, {\"nume\": \"Cartografiaza luna\", \"terminat\": True}, {\"nume\": \"Impacheteaza proviziile\", \"terminat\": False}"
-        },
-        {
-          "tt": "{\"nume\": \"Verifica oxigenul\", \"terminat\": True}, {\"nume\": \"Repara carena\", \"terminat\": True}, {\"nume\": \"Actualizeaza harta stelara\", \"terminat\": False}, {\"nume\": \"Calibreaza senzorii\", \"terminat\": True}"
         }
       ],
       "mistakes": [
@@ -444,18 +399,6 @@
         {
           "names": "\"Repara antena\", \"Hraneste echipajul\", \"Scaneaza sectorul 7\", \"Noteaza zborul\"",
           "idx": "1 3"
-        },
-        {
-          "names": "\"Incarca scuturile\", \"Curata ecluza\"",
-          "idx": "1"
-        },
-        {
-          "names": "\"Testeaza radioul\", \"Cartografiaza luna\", \"Impacheteaza proviziile\"",
-          "idx": "0 2"
-        },
-        {
-          "names": "\"Verifica oxigenul\", \"Repara carena\", \"Actualizeaza harta stelara\", \"Calibreaza senzorii\"",
-          "idx": "0 1 3"
         }
       ],
       "mistakes": [
@@ -700,12 +643,6 @@
         },
         {
           "tt": "{\"nume\": \"Incarca scuturile\", \"terminat\": True}, {\"nume\": \"Curata ecluza\", \"terminat\": False}"
-        },
-        {
-          "tt": "{\"nume\": \"Testeaza radioul\", \"terminat\": False}, {\"nume\": \"Cartografiaza luna\", \"terminat\": False}, {\"nume\": \"Impacheteaza proviziile\", \"terminat\": True}"
-        },
-        {
-          "tt": "{\"nume\": \"Verifica oxigenul\", \"terminat\": True}, {\"nume\": \"Repara carena\", \"terminat\": True}, {\"nume\": \"Actualizeaza harta stelara\", \"terminat\": False}, {\"nume\": \"Calibreaza senzorii\", \"terminat\": True}"
         }
       ],
       "mistakes": [
@@ -738,16 +675,6 @@
           "tt": "{\"nume\": \"Incarca scuturile\", \"terminat\": False}, {\"nume\": \"Curata ecluza\", \"terminat\": False}",
           "a": 0,
           "b": 0
-        },
-        {
-          "tt": "{\"nume\": \"Testeaza radioul\", \"terminat\": False}, {\"nume\": \"Cartografiaza luna\", \"terminat\": False}, {\"nume\": \"Impacheteaza proviziile\", \"terminat\": False}",
-          "a": 2,
-          "b": 0
-        },
-        {
-          "tt": "{\"nume\": \"Verifica oxigenul\", \"terminat\": False}, {\"nume\": \"Repara carena\", \"terminat\": False}, {\"nume\": \"Actualizeaza harta stelara\", \"terminat\": False}, {\"nume\": \"Calibreaza senzorii\", \"terminat\": False}",
-          "a": 0,
-          "b": 2
         }
       ],
       "mistakes": [
@@ -756,6 +683,273 @@
         ["if 0 <= index < len(sarcini):", "if 0 < index < len(sarcini):"],
         ["print([sarcina[\"nume\"] for sarcina in sarcini])", "print(len(sarcini))"]
       ]
+    },
+    {
+      "id": "td-holds-board",
+      "kind": "holds",
+      "text": "Ce conține `{{t}}` la final?",
+      "code": "{{t}} = []\n{{t}}.append({\"{{nm}}\": \"{{a}}\", \"{{dn}}\": False})\n{{t}}.append({\"{{nm}}\": \"{{b}}\", \"{{dn}}\": False})\n{{t}}.append({\"{{nm}}\": \"{{c}}\", \"{{dn}}\": False})\n{{t}}[{{i}}][\"{{dn}}\"] = True",
+      "values": [
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Scaneaza",
+          "b": "Alimenteaza",
+          "c": "Andocheaza",
+          "i": 0,
+          "i1": 1
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Scaneaza",
+          "b": "Alimenteaza",
+          "c": "Andocheaza",
+          "i": 1,
+          "i1": 2
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Repara",
+          "b": "Suna acasa",
+          "c": "Mananca",
+          "i": 0,
+          "i1": 1
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Repara",
+          "b": "Suna acasa",
+          "c": "Mananca",
+          "i": 1,
+          "i1": 2
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Harta",
+          "b": "Aterizeaza",
+          "c": "Odihna",
+          "i": 1,
+          "i1": 2
+        }
+      ],
+      "variable": "{{t}}",
+      "mistakes": [
+        ["{{t}}[{{i}}][", "{{t}}[{{i1}}]["],
+        ["{{t}}[{{i}}][\"{{dn}}\"] = True", "{{t}}[{{i}}] = True"],
+        ["{{t}}[{{i}}][\"{{dn}}\"] = True", "{{t}}[{{i}}][\"{{dn}}\"] == True"]
+      ]
+    },
+    {
+      "id": "td-holds-pop",
+      "kind": "holds",
+      "text": "Ce conține `{{t}}` la final?",
+      "code": "{{t}} = [\"{{a}}\", \"{{b}}\", \"{{c}}\", \"{{d}}\"]\n{{t}}.pop({{i}})\n{{t}}.pop({{j}})",
+      "values": [
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Scaneaza",
+          "b": "Alimenteaza",
+          "c": "Andocheaza",
+          "d": "Repara",
+          "i": 0,
+          "j": 1
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Scaneaza",
+          "b": "Alimenteaza",
+          "c": "Andocheaza",
+          "d": "Repara",
+          "i": 1,
+          "j": 0
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Scaneaza",
+          "b": "Alimenteaza",
+          "c": "Andocheaza",
+          "d": "Repara",
+          "i": 0,
+          "j": 2
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Scaneaza",
+          "b": "Alimenteaza",
+          "c": "Andocheaza",
+          "d": "Repara",
+          "i": 1,
+          "j": 2
+        }
+      ],
+      "variable": "{{t}}",
+      "mistakes": [
+        ["{{t}}.pop({{i}})\n{{t}}.pop({{j}})", "{{t}}.pop({{j}})\n{{t}}.pop({{i}})"],
+        ["{{t}}.pop({{i}})\n", "{{t}}.pop()\n"],
+        ["{{t}}.pop({{i}})\n{{t}}.pop({{j}})", "{{t}}.pop({{i}})"]
+      ]
+    },
+    {
+      "id": "td-input-show",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{t}} = [{{tasks}}]\n{{x}} = int(input())\nif 0 <= {{x}} < len({{t}}):\n    print({{t}}[{{x}}])\nelse:\n    print(\"{{bad}}\")",
+      "values": [
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "tasks": "\"Scaneaza\", \"Alimenteaza\", \"Andocheaza\"",
+          "a": 1,
+          "w1": 2,
+          "w2": -1,
+          "w3": 3
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "tasks": "\"Scaneaza\", \"Alimenteaza\", \"Andocheaza\"",
+          "a": 0,
+          "w1": 1,
+          "w2": 3,
+          "w3": -1
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "tasks": "\"Scaneaza\", \"Alimenteaza\", \"Andocheaza\"",
+          "a": 2,
+          "w1": 3,
+          "w2": 1,
+          "w3": 0
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "tasks": "\"Scaneaza\", \"Alimenteaza\", \"Andocheaza\"",
+          "a": 3,
+          "w1": 2,
+          "w2": 0,
+          "w3": 1
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "td-error-false",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{t}} = [{\"{{nm}}\": \"{{a}}\", \"{{dn}}\": false}]\nprint({{t}})",
+      "values": [
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Scaneaza"
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Andocheaza"
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Alimenteaza"
+        }
+      ],
+      "wrong": ["SyntaxError", "KeyError", "TypeError"]
+    },
+    {
+      "id": "td-error-key",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{t}} = [{\"{{nm}}\": \"{{a}}\", \"{{dn}}\": True}]\nprint({{t}}[0][\"{{badk}}\"])",
+      "values": [
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Scaneaza",
+          "badk": "Terminat"
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Andocheaza",
+          "badk": "titlu"
+        },
+        {
+          "t": "sarcini",
+          "nm": "nume",
+          "dn": "terminat",
+          "x": "index",
+          "bad": "Nu exista sarcina",
+          "a": "Alimenteaza",
+          "badk": "Nume"
+        }
+      ],
+      "wrong": ["IndexError", "NameError", "ValueError"]
     }
   ]
 }

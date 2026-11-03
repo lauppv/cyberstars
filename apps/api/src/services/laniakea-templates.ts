@@ -29,6 +29,16 @@ import { QUIZ_ID, type QuizQuestionSpec } from './laniakea-quiz.js';
 //   shows the broken program and what `code` prints, and the options are the
 //   broken line and three others, those of its kind (opening a block with
 //   `:` or not) first, each nearest first.
+// - holds: the right option is what `variable` holds once `code` ends, as
+//   Python shows a value (repr, so "5" and 5 differ), and each mistake's
+//   program gives a wrong one the same way.
+// - which-input: `code` reads with input(); `answer` is what the user types,
+//   a line for each input(), and each of `wrong` is something else they might
+//   type. The question shows `code` and what it prints with the answer typed:
+//   input() shows no prompt and the typed text doesn't show, so the output
+//   doesn't give the answer away.
+// - which-error: `code` stops with an error, and the right option is its name;
+//   the wrong ones come from `wrong`, other errors' names.
 //
 // A wrong option that gives the right output (or for prints, one that fails or
 // prints nothing) or repeats another option is passed over, so a template may
@@ -45,6 +55,9 @@ const TEMPLATE_KINDS = [
   'missing-line',
   'missing-value',
   'wrong-line',
+  'holds',
+  'which-input',
+  'which-error',
 ] as const;
 type TemplateKind = (typeof TEMPLATE_KINDS)[number];
 
@@ -57,13 +70,16 @@ export interface QuizTemplate {
   text: string;
   code: string;
   values: Record<string, string>[];
-  // prints and which-program
+  // prints, which-program and holds
   mistakes: Swap[];
-  // missing-line and missing-value
+  // missing-line, missing-value and which-input
   answer: string;
+  // those three and which-error, whose right option is the error its code stops with
   wrong: string[];
   // wrong-line
   bug: Swap | null;
+  // holds
+  variable: string;
 }
 
 // What running one program gave: what it printed, or the error that stopped it.
@@ -82,6 +98,7 @@ const GAP = '___';
 const WRONG = QUIZ_OPTIONS - 1;
 const BLANK = /\{\{(\w+)\}\}/g;
 const NOT_ASCII = /[^\x20-\x7e\n]/;
+const NAME = /^[A-Za-z_]\w*$/;
 
 function str(value: unknown, where: string): string {
   if (typeof value !== 'string' || value.trim() === '') throw new Error(`${where} has no text`);
@@ -164,17 +181,25 @@ export function parseTemplates(raw: unknown): QuizTemplate[] {
       answer: '',
       wrong: [],
       bug: null,
+      variable: '',
     };
-    if (kind === 'prints' || kind === 'which-program') {
+    if (kind === 'prints' || kind === 'which-program' || kind === 'holds') {
       template.mistakes = list(t.mistakes, `${id} mistakes`).map((m, j) =>
         swapIn(code, m, `${id} mistake ${j + 1}`),
       );
       if (template.mistakes.length < WRONG) throw new Error(`${id} needs ${WRONG} mistakes`);
+      if (kind === 'holds') template.variable = str(t.variable, `${id} variable`);
     } else if (kind === 'wrong-line') {
       template.bug = swapIn(code, t.bug, `${id} bug`);
       if (template.bug.some((part) => part.includes('\n'))) {
         throw new Error(`${id} bug changes more than one line`);
       }
+    } else if (kind === 'which-input' || kind === 'which-error') {
+      if (code.includes(GAP))
+        throw new Error(`${id} code has a ${GAP}, which its kind doesn't fill`);
+      if (kind === 'which-input') template.answer = str(t.answer, `${id} answer`);
+      template.wrong = list(t.wrong, `${id} wrong`).map((w, j) => str(w, `${id} wrong ${j + 1}`));
+      if (template.wrong.length < WRONG) throw new Error(`${id} needs ${WRONG} wrong options`);
     } else {
       if (count(code, GAP) !== 1) throw new Error(`${id} code needs one ${GAP}`);
       const line = code.split('\n').find((l) => l.includes(GAP))!;
@@ -193,12 +218,37 @@ export function parseTemplates(raw: unknown): QuizTemplate[] {
   });
 }
 
-function fill(text: string, values: Record<string, string>): string {
-  return text.replace(BLANK, (blank, name: string) => values[name] ?? blank);
+// Puts each blank's value in `text`. A blank with no value throws, wherever it
+// is: left in a program it stops it with a SyntaxError, which drops a mistake
+// without a word or becomes a which-error question's right answer, and left in
+// an option it shows as `{{name}}`.
+function fill(text: string, values: Record<string, string>, where: string): string {
+  return text.replace(BLANK, (blank, name: string) => {
+    if (!Object.hasOwn(values, name)) throw new Error(`${where}: ${blank} has no value`);
+    return values[name];
+  });
 }
 
 function swapped(code: string, [what, instead]: Swap): string {
   return code.replace(what, () => instead);
+}
+
+// A program that prints, last and on a line of its own, what `variable` holds
+// once `code` ends: the empty print() ends a last line the code left open with
+// `end=""`, which shows as an empty line otherwise.
+function showing(code: string, variable: string): string {
+  return `${code}\nprint()\nprint(repr(${variable}))`;
+}
+
+// A program where input() gives the lines `typed` one by one, without showing
+// a prompt or the line, and fails once they run out, as with no one typing.
+function typing(code: string, typed: string): string {
+  return [
+    `__typed = iter(${JSON.stringify(typed.split('\n'))})`,
+    'def input(prompt=""):',
+    '    return next(__typed)',
+    code,
+  ].join('\n');
 }
 
 // What a program prints as an option shows it: trailing spaces and the empty
@@ -234,9 +284,8 @@ export function planTemplate(
   if (new Set(ids).size !== ids.length) throw new Error(`${t.id} repeats a set of values`);
   return t.values.map((values, k): QuestionPlan => {
     const where = `${t.id} with ${JSON.stringify(values)}`;
-    const f = (text: string) => fill(text, values);
+    const f = (text: string) => fill(text, values, where);
     const text = f(t.text);
-    if (/\{\{\w+\}\}/.test(text)) throw new Error(`${where}: the text has a blank with no value`);
     const code = f(t.code);
 
     // What the program the question is about prints: it has to run and print.
@@ -325,12 +374,40 @@ export function planTemplate(
           return question({ code: broken, output: out }, bad, pick(bad, others));
         },
       };
+    } else if (t.kind === 'holds') {
+      const variable = f(t.variable);
+      if (!NAME.test(variable)) throw new Error(`${where}: ${variable} isn't a variable's name`);
+      const mistaken = t.mistakes.map((m) => f(swapped(t.code, m)));
+      // What the program's last line printed: the variable's value
+      const held = (out: string) => out.split('\n').pop()!;
+      plan = {
+        programs: [code, ...mistaken].map((p) => showing(p, variable)),
+        build: ([run, ...runs]) => {
+          const value = held(printed(run));
+          const wrong = runs.map((r) => (r.ok && shown(r.out) !== '' ? held(shown(r.out)) : null));
+          return question({ code, output: null }, value, pick(value, wrong));
+        },
+      };
+    } else if (t.kind === 'which-error') {
+      plan = {
+        programs: [code],
+        build: ([run]) => {
+          // A timeout stops it too, but with no error of Python's to name
+          if (run.ok || !/Error$/.test(run.error)) {
+            throw new Error(`${where}: the program doesn't stop with an error`);
+          }
+          return question({ code, output: null }, run.error, pick(run.error, t.wrong.map(f)));
+        },
+      };
     } else {
+      // missing-line, missing-value and which-input: the program with each
+      // option in it, typed for which-input and in the ___ for the others
       const answer = f(t.answer);
       const wrong = t.wrong.map(f);
-      const filled = (part: string) => code.replace(GAP, () => part);
+      const withOption = (option: string) =>
+        t.kind === 'which-input' ? typing(code, option) : code.replace(GAP, () => option);
       plan = {
-        programs: [filled(answer), ...wrong.map(filled)],
+        programs: [answer, ...wrong].map(withOption),
         build: ([run, ...runs]) => {
           const out = printed(run);
           const options = wrong.map((w, i) => (gives(runs[i], out) ? null : w));

@@ -272,15 +272,6 @@
         },
         {
           "nums": "[12, 7, 30, 4]"
-        },
-        {
-          "nums": "[3, 3, 6]"
-        },
-        {
-          "nums": "[40, 15, 22, 18]"
-        },
-        {
-          "nums": "[9, 14, 2, 11]"
         }
       ],
       "mistakes": [
@@ -308,16 +299,6 @@
           "f": "both",
           "x": 10,
           "y": 4
-        },
-        {
-          "f": "plus_minus",
-          "x": 7,
-          "y": 2
-        },
-        {
-          "f": "calc",
-          "x": 15,
-          "y": 6
         }
       ],
       "mistakes": [
@@ -338,15 +319,6 @@
         },
         {
           "s": "[15, 30, 25, 10]"
-        },
-        {
-          "s": "[7, 7, 3]"
-        },
-        {
-          "s": "[50, 20, 80]"
-        },
-        {
-          "s": "[11, 6, 1, 8]"
         }
       ],
       "mistakes": [
@@ -370,9 +342,6 @@
         },
         {
           "s": "[10, 20, 30, 40]"
-        },
-        {
-          "s": "[5, 8, 11]"
         }
       ],
       "mistakes": [
@@ -396,12 +365,6 @@
         },
         {
           "name": "Phil Cassidy"
-        },
-        {
-          "name": "Mercedes Cortez"
-        },
-        {
-          "name": "Ricardo Diaz"
         }
       ],
       "mistakes": [
@@ -424,9 +387,6 @@
         },
         {
           "r": "60 15 30"
-        },
-        {
-          "r": "8 8 2"
         }
       ],
       "mistakes": [
@@ -742,6 +702,149 @@
         }
       ],
       "bug": ["return total, average", "return total, total"]
+    },
+    {
+      "id": "mr-holds-sum",
+      "kind": "holds",
+      "text": "What is in `{{t}}` at the end?",
+      "code": "def {{f}}({{p}}):\n    return sum({{p}}), max({{p}})\n\n{{t}}, {{m}} = {{f}}([{{nums}}])",
+      "values": [
+        {
+          "f": "stats",
+          "p": "scores",
+          "t": "total",
+          "m": "best",
+          "nums": "4, 9, 2"
+        },
+        {
+          "f": "stats",
+          "p": "scores",
+          "t": "total",
+          "m": "best",
+          "nums": "6, 3, 10, 7"
+        },
+        {
+          "f": "report",
+          "p": "laps",
+          "t": "time",
+          "m": "slowest",
+          "nums": "5, 5, 1"
+        }
+      ],
+      "variable": "{{t}}",
+      "mistakes": [
+        ["{{t}}, {{m}} =", "{{m}}, {{t}} ="],
+        ["{{t}}, {{m}} =", "{{t}} ="],
+        ["sum({{p}})", "len({{p}})"]
+      ]
+    },
+    {
+      "id": "mr-holds-split",
+      "kind": "holds",
+      "text": "What is in `{{b}}` at the end?",
+      "code": "def {{f}}({{p}}):\n    parts = {{p}}.split(\" \")\n    return parts[0], parts[1]\n\n{{a}}, {{b}} = {{f}}(\"{{s}}\")",
+      "values": [
+        {
+          "f": "split_name",
+          "p": "full",
+          "a": "first",
+          "b": "last",
+          "s": "Phil Cassidy"
+        },
+        {
+          "f": "split_name",
+          "p": "full",
+          "a": "first",
+          "b": "last",
+          "s": "Sonny Forelli"
+        },
+        {
+          "f": "split_name",
+          "p": "full",
+          "a": "first",
+          "b": "last",
+          "s": "Mercedes Cortez"
+        }
+      ],
+      "variable": "{{b}}",
+      "mistakes": [
+        ["parts[0], parts[1]", "parts[1], parts[0]"],
+        ["{{a}}, {{b}} =", "{{b}} ="],
+        ["parts = {{p}}.split(\" \")", "parts = {{p}}"]
+      ]
+    },
+    {
+      "id": "mr-input-grow",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "def {{f}}({{p}}):\n    return {{p}} * 2, {{p}} * 3\n\n{{a}}, {{b}} = {{f}}(int(input()))\nprint({{b}})",
+      "values": [
+        {
+          "f": "grow",
+          "p": "x",
+          "a": "double",
+          "b": "triple",
+          "n": 4,
+          "out": 12,
+          "half": 6,
+          "k": 3,
+          "up": 5
+        },
+        {
+          "f": "grow",
+          "p": "x",
+          "a": "double",
+          "b": "triple",
+          "n": 6,
+          "out": 18,
+          "half": 9,
+          "k": 3,
+          "up": 7
+        },
+        {
+          "f": "grow",
+          "p": "x",
+          "a": "double",
+          "b": "triple",
+          "n": 8,
+          "out": 24,
+          "half": 12,
+          "k": 3,
+          "up": 9
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{out}}", "{{half}}", "{{k}}", "{{up}}"]
+    },
+    {
+      "id": "mr-error-none",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def {{f}}({{p}}):\n    print(min({{p}}), max({{p}}))\n\n{{lo}}, {{hi}} = {{f}}([{{nums}}])",
+      "values": [
+        {
+          "f": "min_max",
+          "p": "numbers",
+          "lo": "low",
+          "hi": "high",
+          "nums": "6, 3, 10"
+        },
+        {
+          "f": "min_max",
+          "p": "numbers",
+          "lo": "low",
+          "hi": "high",
+          "nums": "4, 9, 2, 7"
+        },
+        {
+          "f": "range_of",
+          "p": "scores",
+          "lo": "worst",
+          "hi": "best",
+          "nums": "55, 90, 70"
+        }
+      ],
+      "wrong": ["NameError", "IndexError", "KeyError"]
     }
   ]
 }

@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "pc-even-7f6f3f",
-      "text": "What does this print?",
-      "code": "ages = [21, 34, 18, 40, 15, 22]\ncount = 0\nfor n in ages:\n    if n % 2 == 0:\n        count += 1\nprint(f\"Even: {count}\")",
-      "options": ["Even: 4", "Even: 2", "Even: 114", "Even: 5"],
-      "answer": 0
-    },
-    {
-      "id": "pc-even-40afe3",
-      "text": "What does this print?",
-      "code": "levels = [1, 3, 5, 2]\ncount = 0\nfor n in levels:\n    if n % 2 == 0:\n        count += 1\nprint(f\"Even: {count}\")",
-      "options": ["Even: 1", "Even: 3", "Even: 2", "Even: 0\nEven: 0\nEven: 0\nEven: 1"],
-      "answer": 0
-    },
-    {
       "id": "pc-above-1d9a5e",
       "text": "What does this print?",
       "code": "readings = [42, 75, 100, 30, 88]\nabove = 0\nfor r in readings:\n    if r > 75:\n        above += 1\nprint(above)",
@@ -41,13 +27,6 @@
       "text": "What does this print?",
       "code": "temps = [12, 30, 25, 30, 8]\nabove = 0\nfor r in temps:\n    if r > 25:\n        above += 1\nprint(above)",
       "options": ["2", "3", "1", "60"],
-      "answer": 0
-    },
-    {
-      "id": "pc-above-c47657",
-      "text": "What does this print?",
-      "code": "fuel = [5, 50, 20, 15, 35]\nabove = 0\nfor r in fuel:\n    if r > 15:\n        above += 1\nprint(above)",
-      "options": ["3", "4", "1", "105"],
       "answer": 0
     },
     {
@@ -65,18 +44,6 @@
       "answer": 0
     },
     {
-      "id": "pc-upper-a4b7ce",
-      "text": "What does this print?",
-      "code": "ship = \"USS Orbit\"\nupper = 0\nfor char in ship:\n    if char.isupper():\n        upper += 1\nprint(f\"Uppercase: {upper}\")",
-      "options": [
-        "Uppercase: 4",
-        "Uppercase: 8",
-        "Uppercase: 1",
-        "Uppercase: 1\nUppercase: 2\nUppercase: 3\nUppercase: 3\nUppercase: 4\nUppercase: 4\nUppercase: 4\nUppercase: 4\nUppercase: 4"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pc-digits-b2cf56",
       "text": "What does this print?",
       "code": "code = \"R2D2\"\ndigits = 0\nfor char in code:\n    if char.isdigit():\n        digits += 1\nprint(digits)",
@@ -88,13 +55,6 @@
       "text": "What does this print?",
       "code": "code = \"Agent 47\"\ndigits = 0\nfor char in code:\n    if char.isdigit():\n        digits += 1\nprint(digits)",
       "options": ["2", "5", "1", "3"],
-      "answer": 0
-    },
-    {
-      "id": "pc-digits-5f9d0a",
-      "text": "What does this print?",
-      "code": "code = \"X1Y22Z\"\ndigits = 0\nfor char in code:\n    if char.isdigit():\n        digits += 1\nprint(digits)",
-      "options": ["3", "1", "4", "0\n1\n1\n2\n3\n3"],
       "answer": 0
     },
     {
@@ -118,18 +78,6 @@
         "Letters: 7, Digits: 0, Spaces: 1",
         "Letters: 4, Digits: 3, Spaces: 0",
         "Letters: 5, Digits: 3, Spaces: 1"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pc-multi-53fabc",
-      "text": "What does this print?",
-      "code": "text = \"Gate 3 at 9 PM\"\nletters = 0\ndigits = 0\nspaces = 0\nfor char in text:\n    if char.isalpha():\n        letters += 1\n    elif char.isdigit():\n        digits += 1\n    elif char == \" \":\n        spaces += 1\nprint(f\"Letters: {letters}, Digits: {digits}, Spaces: {spaces}\")",
-      "options": [
-        "Letters: 8, Digits: 2, Spaces: 4",
-        "Letters: 10, Digits: 0, Spaces: 4",
-        "Letters: 8, Digits: 2, Spaces: 0",
-        "Letters: 8, Digits: 2, Spaces: 1"
       ],
       "answer": 0
     },
@@ -158,30 +106,6 @@
       "answer": 0
     },
     {
-      "id": "pc-bands-aa0753",
-      "text": "What does this print?",
-      "code": "signals = [10, 50, 100, 100, 60, 70]\nlow = 0\nmid = 0\nhigh = 0\nfor r in signals:\n    if r < 50:\n        low += 1\n    elif r < 100:\n        mid += 1\n    else:\n        high += 1\nprint(f\"Low: {low}\")\nprint(f\"Mid: {mid}\")\nprint(f\"High: {high}\")",
-      "options": [
-        "Low: 1\nMid: 3\nHigh: 2",
-        "Low: 1\nMid: 5\nHigh: 0",
-        "Low: 2\nMid: 2\nHigh: 2",
-        "Low: 1\nMid: 0\nHigh: 5"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pc-bands-d56475",
-      "text": "What does this print?",
-      "code": "scans = [100, 20, 50, 150, 80, 35, 5]\nlow = 0\nmid = 0\nhigh = 0\nfor r in scans:\n    if r < 50:\n        low += 1\n    elif r < 100:\n        mid += 1\n    else:\n        high += 1\nprint(f\"Low: {low}\")\nprint(f\"Mid: {mid}\")\nprint(f\"High: {high}\")",
-      "options": [
-        "Low: 3\nMid: 2\nHigh: 2",
-        "Low: 3\nMid: 3\nHigh: 1",
-        "Low: 4\nMid: 1\nHigh: 2",
-        "Low: 3\nMid: 0\nHigh: 4"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pc-shortcut-7e77d2",
       "text": "What does this print?",
       "code": "fuel = 10\nfuel += 5\nfuel -= 3\nfuel *= 2\nprint(fuel)",
@@ -196,13 +120,6 @@
       "answer": 0
     },
     {
-      "id": "pc-shortcut-24bf6c",
-      "text": "What does this print?",
-      "code": "coins = 20\ncoins += 10\ncoins -= 5\ncoins *= 2\nprint(coins)",
-      "options": ["50", "10", "-10", "27"],
-      "answer": 0
-    },
-    {
       "id": "pc-long-fe3547",
       "text": "What does this print?",
       "code": "words = [\"Vice\", \"City\", \"Stories\", \"Ocean\"]\nlong = 0\nfor w in words:\n    if len(w) > 4:\n        long += 1\nprint(f\"Long words: {long}\")",
@@ -214,13 +131,6 @@
       "text": "What does this print?",
       "code": "names = [\"Tommy\", \"Lance\", \"Ken\", \"Cortez\"]\nlong = 0\nfor w in names:\n    if len(w) > 5:\n        long += 1\nprint(f\"Long words: {long}\")",
       "options": ["Long words: 1", "Long words: 3", "Long words: 6", "Long words: 2"],
-      "answer": 0
-    },
-    {
-      "id": "pc-long-b50404",
-      "text": "What does this print?",
-      "code": "planets = [\"Mars\", \"Venus\", \"Earth\", \"Jupiter\"]\nlong = 0\nfor w in planets:\n    if len(w) > 4:\n        long += 1\nprint(f\"Long words: {long}\")",
-      "options": ["Long words: 3", "Long words: 4", "Long words: 17", "Long words: 0"],
       "answer": 0
     },
     {
@@ -640,6 +550,76 @@
       "code": "signals = [7, 3, 9, 10, 1, 6]\nlow = 0\nhigh = 0\nfor r in signals:\n    if r < 5:\n        low += 1\n    else:\n        high = 1\nprint(f\"Low: {low}\")\nprint(f\"High: {high}\")",
       "output": "Low: 2\nHigh: 4",
       "options": ["high = 1", "low += 1", "high = 0", "low = 0"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-bands-1ea7e6",
+      "text": "What is in `high` at the end?",
+      "code": "low = 0\nhigh = 0\nfor r in [42, 75, 100, 30, 88]:\n    if r < 75:\n        low += 1\n    else:\n        high += 1",
+      "options": ["3", "1", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-bands-380477",
+      "text": "What is in `high` at the end?",
+      "code": "low = 0\nhigh = 0\nfor r in [10, 50, 60, 70]:\n    if r < 50:\n        low += 1\n    else:\n        high += 1",
+      "options": ["3", "1", "2", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-bands-624188",
+      "text": "What is in `long` at the end?",
+      "code": "short = 0\nlong = 0\nfor r in [5, 9, 12, 7, 9, 15]:\n    if r < 9:\n        short += 1\n    else:\n        long += 1",
+      "options": ["4", "1", "2", "6"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-bands-f61399",
+      "text": "What is in `hot` at the end?",
+      "code": "cold = 0\nhot = 0\nfor r in [100, 20, 45, 80]:\n    if r < 45:\n        cold += 1\n    else:\n        hot += 1",
+      "options": ["3", "1", "2", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-upper-6db14d",
+      "text": "What is in `capitals` at the end?",
+      "code": "capitals = 0\nfor ch in \"Tommy Vercetti\":\n    if ch.isupper():\n        capitals += 1",
+      "options": ["2", "13", "1", "14"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-upper-b374df",
+      "text": "What is in `capitals` at the end?",
+      "code": "capitals = 0\nfor ch in \"R2D2 Droid\":\n    if ch.isupper():\n        capitals += 1",
+      "options": ["3", "7", "1", "10"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-upper-2875a3",
+      "text": "What is in `capitals` at the end?",
+      "code": "capitals = 0\nfor ch in \"NASA Base\":\n    if ch.isupper():\n        capitals += 1",
+      "options": ["5", "8", "1", "9"],
+      "answer": 0
+    },
+    {
+      "id": "pc-error-init-efa009",
+      "text": "Which error stops this program?",
+      "code": "for n in [3, 8, 12, 5]:\n    if n % 2 == 0:\n        count += 1\nprint(count)",
+      "options": ["NameError", "TypeError", "ValueError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "pc-error-init-c0445b",
+      "text": "Which error stops this program?",
+      "code": "for n in [4, 7, 10]:\n    if n % 2 == 0:\n        evens += 1\nprint(evens)",
+      "options": ["NameError", "TypeError", "ValueError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "pc-error-init-ae211f",
+      "text": "Which error stops this program?",
+      "code": "for n in [1, 2, 3]:\n    if n % 2 == 0:\n        total += 1\nprint(total)",
+      "options": ["NameError", "TypeError", "ValueError", "IndexError"],
       "answer": 0
     }
   ]

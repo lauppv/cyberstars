@@ -23,20 +23,6 @@
       "answer": 0
     },
     {
-      "id": "rv-add-b8a46e",
-      "text": "What does this print?",
-      "code": "def divide(a, b):\n    return a / b\n\nshare = divide(9, 3)\nprint(share)",
-      "options": ["3.0", "3.0\nNone", "share", "1.0"],
-      "answer": 0
-    },
-    {
-      "id": "rv-add-3b8c3d",
-      "text": "What does this print?",
-      "code": "def power(a, b):\n    return a ** b\n\nbig = power(2, 5)\nprint(big)",
-      "options": ["32", "32\nNone", "big", "4"],
-      "answer": 0
-    },
-    {
       "id": "rv-chain-9e04f8",
       "text": "What does this print?",
       "code": "def add_five(x):\n    return x + 5\n\nprint(add_five(3) * 10)",
@@ -55,20 +41,6 @@
       "text": "What does this print?",
       "code": "def lose_life(lives):\n    return lives - 1\n\nprint(lose_life(5) * 2)",
       "options": ["8", "9", "10", "6"],
-      "answer": 0
-    },
-    {
-      "id": "rv-chain-7072d0",
-      "text": "What does this print?",
-      "code": "def half(n):\n    return n / 2\n\nprint(half(10) * 3)",
-      "options": ["15.0", "30", "8.0", "5.0"],
-      "answer": 0
-    },
-    {
-      "id": "rv-chain-6027ff",
-      "text": "What does this print?",
-      "code": "def square(side):\n    return side ** 2\n\nprint(square(3) * 2)",
-      "options": ["18", "36", "6", "11"],
       "answer": 0
     },
     {
@@ -93,20 +65,6 @@
       "answer": 0
     },
     {
-      "id": "rv-early-d00223",
-      "text": "What does this print?",
-      "code": "def speed_check(speed):\n    if speed > 100:\n        return \"Too fast\"\n    return \"OK\"\n\nprint(speed_check(80))\nprint(speed_check(120))",
-      "options": ["OK\nToo fast", "OK\nToo fast\nOK", "OK\nNone\nToo fast", "Too fast\nOK"],
-      "answer": 0
-    },
-    {
-      "id": "rv-early-09aac9",
-      "text": "What does this print?",
-      "code": "def can_vote(age):\n    if age >= 18:\n        return \"Yes\"\n    return \"No\"\n\nprint(can_vote(18))\nprint(can_vote(17))",
-      "options": ["Yes\nNo", "Yes\nNo\nNo", "Yes\nNo\nNone", "No\nYes"],
-      "answer": 0
-    },
-    {
       "id": "rv-dead-3ed32f",
       "text": "What does this print?",
       "code": "def start():\n    print(\"Engines on\")\n    return 1\n    print(\"Engines off\")\n\nprint(start())",
@@ -125,13 +83,6 @@
       "text": "What does this print?",
       "code": "def launch():\n    print(\"Launch\")\n    return 10\n    print(\"Abort\")\n\nprint(launch())",
       "options": ["Launch\n10", "Launch\nAbort\nNone", "10", "Launch"],
-      "answer": 0
-    },
-    {
-      "id": "rv-dead-36d34e",
-      "text": "What does this print?",
-      "code": "def ping():\n    print(\"Ping\")\n    return 0\n    print(\"Pong\")\n\nprint(ping())",
-      "options": ["Ping\n0", "Ping\nPong\nNone", "0", "Ping"],
       "answer": 0
     },
     {
@@ -156,13 +107,6 @@
       "answer": 0
     },
     {
-      "id": "rv-none-3c09fe",
-      "text": "What does this print?",
-      "code": "def triple(t):\n    print(t * 3)\n\nout = triple(7)\nprint(out)",
-      "options": ["21\nNone", "21", "21\nout", "7\nNone"],
-      "answer": 0
-    },
-    {
       "id": "rv-if-357ece",
       "text": "What does this print?",
       "code": "def is_adult(age):\n    return age >= 18\n\nif is_adult(20):\n    print(\"Welcome\")\nelse:\n    print(\"Sorry, too young\")",
@@ -181,20 +125,6 @@
       "text": "What does this print?",
       "code": "def has_shield(shield):\n    return shield > 50\n\nif has_shield(80):\n    print(\"Shields up\")\nelse:\n    print(\"Shields low\")",
       "options": ["Shields up", "Shields low", "True\nShields low", "True\nShields up"],
-      "answer": 0
-    },
-    {
-      "id": "rv-if-a02589",
-      "text": "What does this print?",
-      "code": "def can_enter(level):\n    return level >= 3\n\nif can_enter(5):\n    print(\"Door opens\")\nelse:\n    print(\"Access denied\")",
-      "options": ["Door opens", "Access denied", "True\nAccess denied", "True\nDoor opens"],
-      "answer": 0
-    },
-    {
-      "id": "rv-if-7eab45",
-      "text": "What does this print?",
-      "code": "def is_cold(temp):\n    return temp < 10\n\nif is_cold(4):\n    print(\"Wear a coat\")\nelse:\n    print(\"No coat needed\")",
-      "options": ["Wear a coat", "No coat needed", "True\nNo coat needed", "True\nWear a coat"],
       "answer": 0
     },
     {
@@ -591,6 +521,79 @@
       "code": "def half(n):\n    part = n / 2\n    print(\"Got:\", n)\n    return n\n\nprint(half(9))",
       "output": "Got: 9\n4.5",
       "options": ["return n", "print(\"Got:\", n)", "part = n / 2", "print(half(9))"],
+      "answer": 0
+    },
+    {
+      "id": "rv-holds-kept-a0c476",
+      "text": "What is in `tank` at the end?",
+      "code": "def add_fuel(fuel):\n    return fuel + 10\n\ntank = 30\nadd_fuel(tank)\ntank = add_fuel(tank)",
+      "options": ["40", "30", "50", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rv-holds-kept-949ffb",
+      "text": "What is in `hero` at the end?",
+      "code": "def level_up(level):\n    return level + 1\n\nhero = 4\nlevel_up(hero)\nhero = level_up(hero)",
+      "options": ["5", "4", "6", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rv-holds-kept-a80fc3",
+      "text": "What is in `score` at the end?",
+      "code": "def add_points(points):\n    return points + 25\n\nscore = 50\nadd_points(score)\nscore = add_points(score)",
+      "options": ["75", "50", "100", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rv-holds-kept-97aa03",
+      "text": "What is in `health` at the end?",
+      "code": "def heal(hp):\n    return hp + 15\n\nhealth = 60\nheal(health)\nhealth = heal(health)",
+      "options": ["75", "60", "90", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rv-holds-max-95b660",
+      "text": "What is in `top_score` at the end?",
+      "code": "def highest(numbers):\n    best = numbers[0]\n    for n in numbers:\n        if n > best:\n            best = n\n    return best\n\ntop_score = highest([9, 15, 7])",
+      "options": ["15", "9", "7", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rv-holds-max-2505af",
+      "text": "What is in `top_speed` at the end?",
+      "code": "def highest(numbers):\n    best = numbers[0]\n    for n in numbers:\n        if n > best:\n            best = n\n    return best\n\ntop_speed = highest([60, 120, 40, 85])",
+      "options": ["120", "60", "40", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rv-holds-max-128fb1",
+      "text": "What is in `top_level` at the end?",
+      "code": "def highest(numbers):\n    best = numbers[0]\n    for n in numbers:\n        if n > best:\n            best = n\n    return best\n\ntop_level = highest([3, 8, 5, 1])",
+      "options": ["8", "3", "1", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rv-input-times-48a576",
+      "text": "What did the user type?",
+      "code": "def triple(x):\n    return x * 3\n\nprint(triple(int(input())))",
+      "output": "12",
+      "options": ["4", "12", "9", "3"],
+      "answer": 0
+    },
+    {
+      "id": "rv-input-times-73522d",
+      "text": "What did the user type?",
+      "code": "def double(x):\n    return x * 2\n\nprint(double(int(input())))",
+      "output": "14",
+      "options": ["7", "14", "12", "2"],
+      "answer": 0
+    },
+    {
+      "id": "rv-input-times-706444",
+      "text": "What did the user type?",
+      "code": "def times_ten(x):\n    return x * 10\n\nprint(times_ten(int(input())))",
+      "output": "50",
+      "options": ["5", "50", "40", "10"],
       "answer": 0
     }
   ]

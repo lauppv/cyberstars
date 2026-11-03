@@ -307,15 +307,6 @@
         },
         {
           "w": "cacao"
-        },
-        {
-          "w": "mama"
-        },
-        {
-          "w": "mere"
-        },
-        {
-          "w": "cocos"
         }
       ],
       "mistakes": [
@@ -336,15 +327,6 @@
         },
         {
           "s": "rosu albastru rosu verde albastru rosu"
-        },
-        {
-          "s": "sus jos sus"
-        },
-        {
-          "s": "scan sonda scan start"
-        },
-        {
-          "s": "da nu nu da da"
         }
       ],
       "mistakes": [
@@ -367,18 +349,6 @@
         {
           "L": "7, 7, 5, 7, 5",
           "k": 7
-        },
-        {
-          "L": "1, 2, 2, 2, 1, 2",
-          "k": 2
-        },
-        {
-          "L": "9, 4, 4, 9, 4, 4",
-          "k": 4
-        },
-        {
-          "L": "6, 8, 6, 8, 6, 6, 8",
-          "k": 6
         }
       ],
       "mistakes": [
@@ -399,15 +369,6 @@
         },
         {
           "L": "\"X\", \"Y\", \"Y\", \"Z\", \"Y\", \"X\""
-        },
-        {
-          "L": "\"D\", \"D\", \"E\", \"F\", \"F\", \"F\", \"F\""
-        },
-        {
-          "L": "\"M\", \"N\", \"N\", \"N\""
-        },
-        {
-          "L": "\"Q\", \"R\", \"S\", \"R\", \"S\", \"S\", \"Q\", \"S\""
         }
       ],
       "mistakes": [
@@ -428,15 +389,6 @@
         },
         {
           "w": "racheta"
-        },
-        {
-          "w": "litere"
-        },
-        {
-          "w": "planeta"
-        },
-        {
-          "w": "cafea"
         }
       ],
       "mistakes": [
@@ -457,15 +409,6 @@
         },
         {
           "L": "\"D\", \"C\", \"D\", \"A\""
-        },
-        {
-          "L": "\"C\", \"B\", \"A\", \"C\", \"C\""
-        },
-        {
-          "L": "\"Z\", \"X\", \"Y\", \"X\""
-        },
-        {
-          "L": "\"E\", \"A\", \"E\", \"B\", \"A\", \"E\""
         }
       ],
       "mistakes": [
@@ -486,15 +429,6 @@
         },
         {
           "L": "5, 5, 5, 5"
-        },
-        {
-          "L": "4, 8, 4, 8, 2, 6"
-        },
-        {
-          "L": "7, 3, 9"
-        },
-        {
-          "L": "2, 2, 3, 3, 3, 2, 2"
         }
       ],
       "mistakes": [
@@ -518,12 +452,6 @@
         },
         {
           "d": "\"p\": 5, \"q\": 2, \"r\": 5"
-        },
-        {
-          "d": "\"m\": 3, \"n\": 6, \"o\": 6, \"k\": 1"
-        },
-        {
-          "d": "\"s\": 7, \"t\": 7"
         }
       ],
       "mistakes": [
@@ -689,6 +617,194 @@
         }
       ],
       "bug": ["contor > cel_mai_mare", "contor < cel_mai_mare"]
+    },
+    {
+      "id": "fd-holds-most",
+      "kind": "holds",
+      "text": "Ce conține `{{best}}` la final?",
+      "code": "{{d}} = {{{pairs}}}\n{{best}} = \"\"\n{{hi}} = 0\nfor key, count in {{d}}.items():\n    if count > {{hi}}:\n        {{hi}} = count\n        {{best}} = key",
+      "values": [
+        {
+          "d": "semnale",
+          "pairs": "\"A1\": 3, \"B2\": 5, \"C3\": 5, \"D4\": 1",
+          "best": "cel_mai_des",
+          "hi": "maxim"
+        },
+        {
+          "d": "voturi",
+          "pairs": "\"Tommy\": 4, \"Lance\": 2, \"Cara\": 4, \"Ken\": 1",
+          "best": "castigator",
+          "hi": "maxim"
+        },
+        {
+          "d": "culori",
+          "pairs": "\"rosu\": 2, \"albastru\": 7, \"verde\": 7, \"roz\": 3",
+          "best": "preferata",
+          "hi": "maxim"
+        },
+        {
+          "d": "litere",
+          "pairs": "\"x\": 1, \"y\": 9, \"z\": 9, \"w\": 2",
+          "best": "top",
+          "hi": "maxim"
+        },
+        {
+          "d": "coduri",
+          "pairs": "\"ping\": 6, \"scan\": 6, \"boot\": 2",
+          "best": "top",
+          "hi": "maxim"
+        }
+      ],
+      "variable": "{{best}}",
+      "mistakes": [
+        ["count > {{hi}}", "count >= {{hi}}"],
+        ["{{best}} = key", "{{best}} = count"],
+        ["        {{hi}} = count\n", ""]
+      ]
+    },
+    {
+      "id": "fd-input-word",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{w}} = input()\n{{f}} = {}\nfor ch in {{w}}:\n    if ch in {{f}}:\n        {{f}}[ch] += 1\n    else:\n        {{f}}[ch] = 1\nprint(len({{f}}), len({{w}}))",
+      "values": [
+        {
+          "w": "cuvant",
+          "f": "frecv",
+          "a": "level",
+          "w1": "lever",
+          "w2": "eve",
+          "w3": "levels"
+        },
+        {
+          "w": "cuvant",
+          "f": "frecv",
+          "a": "banana",
+          "w1": "bandana",
+          "w2": "nana",
+          "w3": "banan"
+        },
+        {
+          "w": "cuvant",
+          "f": "frecv",
+          "a": "moon",
+          "w1": "moo",
+          "w2": "moons",
+          "w3": "noon"
+        },
+        {
+          "w": "cuvant",
+          "f": "frecv",
+          "a": "aaa",
+          "w1": "aa",
+          "w2": "aab",
+          "w3": "a"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "fd-error-missing",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{f}} = {}\nfor x in [{{L}}]:\n    if x in {{f}}:\n        {{f}}[x] += 1\n    else:\n        {{f}}[x] = 1\nprint({{f}}[{{k}}])",
+      "values": [
+        {
+          "f": "frecv",
+          "L": "3, 1, 3, 2",
+          "k": 5
+        },
+        {
+          "f": "frecv",
+          "L": "\"a\", \"b\", \"a\"",
+          "k": "\"c\""
+        },
+        {
+          "f": "voturi",
+          "L": "\"Tommy\", \"Cara\", \"Tommy\"",
+          "k": "\"Lance\""
+        },
+        {
+          "f": "vazute",
+          "L": "7, 7, 7",
+          "k": 8
+        }
+      ],
+      "wrong": ["IndexError", "ValueError", "NameError"]
+    },
+    {
+      "id": "fd-holds-repeated",
+      "kind": "holds",
+      "text": "Ce conține `{{rep}}` la final?",
+      "code": "{{f}} = {{{pairs}}}\n{{rep}} = []\nfor key, count in {{f}}.items():\n    if count > 1:\n        {{rep}}.append(key)",
+      "values": [
+        {
+          "f": "frecv",
+          "pairs": "\"a\": 1, \"b\": 3, \"c\": 2, \"d\": 1",
+          "rep": "repetate"
+        },
+        {
+          "f": "frecv",
+          "pairs": "\"ping\": 2, \"scan\": 1, \"boot\": 4",
+          "rep": "repetate"
+        },
+        {
+          "f": "voturi",
+          "pairs": "\"Tommy\": 3, \"Cara\": 1, \"Ken\": 2, \"Lance\": 1",
+          "rep": "populari"
+        },
+        {
+          "f": "culori",
+          "pairs": "\"rosu\": 5, \"albastru\": 2, \"roz\": 1",
+          "rep": "comune"
+        },
+        {
+          "f": "frecv",
+          "pairs": "\"x\": 2, \"y\": 1, \"z\": 2",
+          "rep": "repetate"
+        }
+      ],
+      "variable": "{{rep}}",
+      "mistakes": [
+        ["count > 1", "count >= 1"],
+        ["{{rep}}.append(key)", "{{rep}}.append(count)"],
+        ["{{rep}}.append(key)", "{{rep}} = [key]"]
+      ]
+    },
+    {
+      "id": "fd-holds-words",
+      "kind": "holds",
+      "text": "Ce conține `{{f}}` la final?",
+      "code": "{{f}} = {}\nfor w in \"{{s}}\".split(\" \"):\n    if w in {{f}}:\n        {{f}}[w] += 1\n    else:\n        {{f}}[w] = 1",
+      "values": [
+        {
+          "f": "frecv",
+          "s": "go go up"
+        },
+        {
+          "f": "frecv",
+          "s": "ok sos ok ok"
+        },
+        {
+          "f": "frecv",
+          "s": "ping pong ping"
+        },
+        {
+          "f": "frecv",
+          "s": "da nu da"
+        },
+        {
+          "f": "frecv",
+          "s": "up up up"
+        }
+      ],
+      "variable": "{{f}}",
+      "mistakes": [
+        ["{{f}}[w] += 1", "{{f}}[w] = 1"],
+        ["        {{f}}[w] = 1", "        {{f}}[w] = 0"],
+        ["\"{{s}}\".split(\" \")", "\"{{s}}\""]
+      ]
     }
   ]
 }
