@@ -74,8 +74,10 @@ describe('Laniakea questions', () => {
     expect(madeIds(ro.made)).toEqual(plan.ro.map((p) => p.id));
   });
 
-  // A test takes at most QUIZ_SAME_TEXT questions with one text, so a pool
-  // holds no text on more than that share of it: 30 of 100 (CYB-106)
+  // A test takes at most QUIZ_SAME_TEXT questions with one text, or the text's
+  // share of the tests left in the round when that is more (drawQuestions). A
+  // pool with no text on more than 3 of every 10, 30 of 100, keeps that share
+  // at 3 unless the round's earlier tests took fewer of it (CYB-106)
   it.each(slugs)('%s has no text on more than its share of a test', (slug) => {
     const over: string[] = [];
     for (const lang of ['en', 'ro'] as const) {
