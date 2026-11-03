@@ -504,7 +504,18 @@
     "announcementTitle": "Anunț oficial",
     "poll": "Sondaj: {{text}}",
     "view": "Vezi",
+    "vote": "Votează",
     "close": "Închide"
+  },
+  "poll": {
+    "title": "Sondaj",
+    "hint": "Bifează oricâte vrei. Votul tău e anonim.",
+    "vote": "Votează",
+    "voting": "Se trimite…",
+    "thanks": "Mulțumim, votul tău a fost înregistrat.",
+    "voted": "Ai votat deja la acest sondaj.",
+    "loadFailed": "Sondajul nu s-a putut încărca.",
+    "failed": "Votul nu a putut fi trimis. Încearcă din nou."
   },
   "courses": {
     "lessons_one": "lecție",

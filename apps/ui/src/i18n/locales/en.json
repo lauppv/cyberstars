@@ -468,7 +468,18 @@
     "announcementTitle": "Official announcement",
     "poll": "Poll: {{text}}",
     "view": "View",
+    "vote": "Vote",
     "close": "Close"
+  },
+  "poll": {
+    "title": "Poll",
+    "hint": "Tick as many as you like. Your vote is anonymous.",
+    "vote": "Vote",
+    "voting": "Voting…",
+    "thanks": "Thanks, your vote is in.",
+    "voted": "You've already voted in this poll.",
+    "loadFailed": "This poll couldn't be loaded.",
+    "failed": "Your vote couldn't be sent. Try again."
   },
   "courses": {
     "lessons_one": "lesson",
