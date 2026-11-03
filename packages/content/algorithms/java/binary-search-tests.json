@@ -5,7 +5,13 @@
       { "kind": "call", "name": "Arrays.binarySearch" },
       { "kind": "call", "name": "Collections.binarySearch" },
       { "kind": "call", "name": "indexOf" },
-      { "kind": "call", "name": "contains" }
+      { "kind": "call", "name": "contains" },
+      { "kind": "call", "name": "lastIndexOf" },
+      { "kind": "call", "name": "indexOfSubList" },
+      { "kind": "call", "name": "TreeSet" },
+      { "kind": "call", "name": "TreeMap" },
+      { "kind": "call", "name": "ConcurrentSkipListSet" },
+      { "kind": "call", "name": "ConcurrentSkipListMap" }
     ]
   },
   "cases": [

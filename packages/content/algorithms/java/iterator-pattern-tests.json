@@ -12,7 +12,8 @@
     ],
     "forbids": [
       { "kind": "call", "name": "rangeClosed" },
-      { "kind": "call", "name": "range" }
+      { "kind": "call", "name": "range" },
+      { "kind": "call", "name": "iterate" }
     ]
   },
   "cases": [

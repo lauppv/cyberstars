@@ -7,7 +7,11 @@
       { "kind": "call", "name": "sorted" },
       { "kind": "call", "name": "parallelSort" },
       { "kind": "call", "name": "PriorityQueue" },
-      { "kind": "call", "name": "TreeMap" }
+      { "kind": "call", "name": "TreeMap" },
+      { "kind": "call", "name": "TreeSet" },
+      { "kind": "call", "name": "ConcurrentSkipListMap" },
+      { "kind": "call", "name": "ConcurrentSkipListSet" },
+      { "kind": "call", "name": "PriorityBlockingQueue" }
     ]
   },
   "cases": [
