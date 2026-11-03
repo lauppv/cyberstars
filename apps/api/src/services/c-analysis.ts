@@ -189,6 +189,10 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
     case 'int_literal': {
       const values = new Set(rule.values ?? []);
       for (const node of walk(root)) {
+        // A forbidden constant can't hide in a string either: "58 64".
+        if (node.type === 'string_literal') {
+          for (const run of node.text.match(/\d+/g) ?? []) if (values.has(Number(run))) return true;
+        }
         if (node.type !== 'number_literal') continue;
         const value = parseIntLiteral(node.text);
         if (value !== null && values.has(value)) return true;

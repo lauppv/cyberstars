@@ -16,6 +16,7 @@ import importlib.machinery
 import io
 import json
 import os
+import re
 import selectors
 import signal
 import subprocess
@@ -153,10 +154,15 @@ def has_fstring(tree):
 
 
 def int_literals(tree, values):
+    # A forbidden constant can't hide in a string either: print("58 64").
     found = set()
     for node in ast.walk(tree):
-        if isinstance(node, ast.Constant) and type(node.value) is int and node.value in values:
+        if not isinstance(node, ast.Constant):
+            continue
+        if type(node.value) is int and node.value in values:
             found.add(node.value)
+        elif isinstance(node.value, str):
+            found.update(n for n in map(int, re.findall(r"\d+", node.value)) if n in values)
     return found
 
 

@@ -283,6 +283,23 @@ describe.skipIf(!has('python3'))('python runner', () => {
     });
   });
 
+  it('finds a forbidden constant inside a string too', () => {
+    const rule = { kind: 'int_literal', values: [58, 64] };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: [rule] }, cases: [] },
+        [],
+      )[0];
+    for (const code of ['print("58 64")\n', 'print(f"{1} 64")\n', 'print(58)\n']) {
+      expect(header(code)).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'forbid', rule }],
+      });
+    }
+    expect(header('print("580 6.4")\n')).toEqual({ syntaxError: null, structureFailures: [] });
+  });
+
   it('streams one line per case and stops on the server reply', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',
@@ -577,6 +594,18 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
         [deque],
       ),
     ).toEqual(passes);
+  });
+
+  it('finds a constant inside a string too', () => {
+    const rule = { kind: 'int_literal', values: [64] };
+    expect(header(main('    static String s = "58 64";'), [rule])).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+    expect(header(main('    static String s = "640";'), [rule])).toEqual({
+      syntaxError: null,
+      structureFailures: [{ type: 'require', rule }],
+    });
   });
 
   it('takes a method calling itself as recursion, not a same-named call on something else', () => {

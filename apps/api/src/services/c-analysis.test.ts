@@ -214,6 +214,14 @@ describe('checkStructure', () => {
     expect(checkStructure(own, { forbids: [rule] })).toHaveLength(0);
   });
 
+  it('fires a forbidden int literal hidden in a string', async () => {
+    const rule: StructureFailure['rule'] = { kind: 'int_literal', values: [64] };
+    const inString = await parseC('#include <stdio.h>\nint main(void){ puts("58 64"); return 0; }');
+    expect(checkStructure(inString, { forbids: [rule] })).toEqual([{ type: 'forbid', rule }]);
+    const longer = await parseC('#include <stdio.h>\nint main(void){ puts("640"); return 0; }');
+    expect(checkStructure(longer, { forbids: [rule] })).toHaveLength(0);
+  });
+
   it('fires a forbidden int literal (hardcode smell)', async () => {
     const root = await parseC('int main(void){ printf("%d", 42); return 0; }');
     const failures = checkStructure(root, {

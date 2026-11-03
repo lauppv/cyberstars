@@ -531,6 +531,14 @@ public class Runner {
         public Void visitLiteral(LiteralTree node, Void unused) {
           if (node.getValue() instanceof Integer i) intLiterals.add(i.longValue());
           if (node.getValue() instanceof Long l) intLiterals.add(l);
+          // A forbidden constant can't hide in a string either: "58 64".
+          if (node.getValue() instanceof String text) {
+            java.util.regex.Matcher digits = java.util.regex.Pattern.compile("\\d+").matcher(text);
+            while (digits.find()) {
+              String run = digits.group();
+              if (run.length() <= 18) intLiterals.add(Long.parseLong(run));
+            }
+          }
           return super.visitLiteral(node, unused);
         }
 
