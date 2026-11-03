@@ -1,3 +1,4 @@
+import type { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
 import { actorInclude, type NotificationRow } from './notifications.repository.js';
 
@@ -60,6 +61,22 @@ export async function joinedAt(userId: number): Promise<Date | null> {
   return user?.createdAt ?? null;
 }
 
+// An account opening a poll counts once in its viewers, however often it opens
+// it. The vote does it too, so a voter is always among them
+async function view(tx: Prisma.TransactionClient, pollId: number, userId: number) {
+  const { count } = await tx.pollViewer.createMany({
+    data: [{ pollId, userId }],
+    skipDuplicates: true,
+  });
+  if (count > 0) {
+    await tx.poll.update({ where: { id: pollId }, data: { viewers: { increment: 1 } } });
+  }
+}
+
+export function noteView(pollId: number, userId: number): Promise<void> {
+  return prisma.$transaction((tx) => view(tx, pollId, userId));
+}
+
 // One anonymous vote: the voter goes in poll_voters so they can't vote again,
 // and each option picked counts one more, with nothing tying the two, nor to
 // what they wrote under Other. False when they had voted already, from another
@@ -76,6 +93,7 @@ export function vote(
       skipDuplicates: true,
     });
     if (count === 0) return false;
+    await view(tx, pollId, userId);
     await tx.pollOption.updateMany({
       where: { pollId, id: { in: optionIds } },
       data: { votes: { increment: 1 } },

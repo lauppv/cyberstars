@@ -141,6 +141,7 @@ model User {
   announcements         Announcement[]
   polls                 Poll[]
   pollVotes             PollVoter[]
+  pollViews             PollViewer[]
 
   conversationsA Conversation[]  @relation("ConvA")
   conversationsB Conversation[]  @relation("ConvB")
@@ -450,16 +451,20 @@ model Announcement {
 // votes, so nothing says who picked what. voters is a count of its own, so it
 // still matches the options' counts after a voter's account is deleted
 model Poll {
-  id         Int      @id @default(autoincrement())
-  authorId   Int?     @map("author_id")
-  question   String
-  recipients Int // accounts that got it in their bell
-  voters     Int      @default(0)
-  createdAt  DateTime @default(now()) @map("created_at")
+  id            Int      @id @default(autoincrement())
+  authorId      Int?     @map("author_id")
+  question      String
+  recipients    Int // accounts that got it in their bell
+  voters        Int      @default(0)
+  viewers       Int      @default(0) // accounts that opened it, voters among them
+  // False on the polls sent before opening one was counted, so their viewers mean nothing
+  countsViewers Boolean  @default(true) @map("counts_viewers")
+  createdAt     DateTime @default(now()) @map("created_at")
 
   author  User?        @relation(fields: [authorId], references: [id], onDelete: SetNull)
   options PollOption[]
   voted   PollVoter[]
+  viewed  PollViewer[]
   answers PollAnswer[]
 
   @@map("polls")
@@ -499,6 +504,18 @@ model PollVoter {
 
   @@id([pollId, userId])
   @@map("poll_voters")
+}
+
+// Who opened a poll, only so each account counts once in polls.viewers
+model PollViewer {
+  pollId Int @map("poll_id")
+  userId Int @map("user_id")
+
+  poll Poll @relation(fields: [pollId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([pollId, userId])
+  @@map("poll_viewers")
 }
 
 model Curriculum {

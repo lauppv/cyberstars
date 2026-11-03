@@ -5,6 +5,7 @@ const mockPrisma = {
   poll: { create: vi.fn(), findUnique: vi.fn(), findMany: vi.fn(), update: vi.fn() },
   pollOption: { updateMany: vi.fn() },
   pollVoter: { createMany: vi.fn() },
+  pollViewer: { createMany: vi.fn() },
   pollAnswer: { create: vi.fn() },
   notification: { createManyAndReturn: vi.fn() },
   // A callback handed this same client as its transaction
@@ -94,7 +95,32 @@ describe('joinedAt', () => {
   });
 });
 
+describe('noteView', () => {
+  it('counts an account the first time it opens the poll', async () => {
+    mockPrisma.pollViewer.createMany.mockResolvedValue({ count: 1 });
+    await repo.noteView(4, 10);
+    expect(mockPrisma.$transaction).toHaveBeenCalledWith(expect.any(Function));
+    expect(mockPrisma.pollViewer.createMany).toHaveBeenCalledWith({
+      data: [{ pollId: 4, userId: 10 }],
+      skipDuplicates: true,
+    });
+    expect(mockPrisma.poll.update).toHaveBeenCalledWith({
+      where: { id: 4 },
+      data: { viewers: { increment: 1 } },
+    });
+  });
+
+  it('counts nothing when it opens it again, from another tab too', async () => {
+    mockPrisma.pollViewer.createMany.mockResolvedValue({ count: 0 });
+    await repo.noteView(4, 10);
+    expect(mockPrisma.poll.update).not.toHaveBeenCalled();
+  });
+});
+
 describe('vote', () => {
+  // Opened already, so the vote adds no viewer, unless a test says otherwise
+  beforeEach(() => mockPrisma.pollViewer.createMany.mockResolvedValue({ count: 0 }));
+
   it('marks the voter and counts each option picked once more, with nothing tying the two', async () => {
     mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 1 });
     expect(await repo.vote(4, 10, [7, 9])).toBe(true);
@@ -105,6 +131,24 @@ describe('vote', () => {
     expect(mockPrisma.pollOption.updateMany).toHaveBeenCalledWith({
       where: { pollId: 4, id: { in: [7, 9] } },
       data: { votes: { increment: 1 } },
+    });
+    expect(mockPrisma.poll.update).toHaveBeenCalledWith({
+      where: { id: 4 },
+      data: { voters: { increment: 1 } },
+    });
+  });
+
+  it('counts a voter that never opened it among its viewers too', async () => {
+    mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 1 });
+    mockPrisma.pollViewer.createMany.mockResolvedValue({ count: 1 });
+    expect(await repo.vote(4, 10, [7])).toBe(true);
+    expect(mockPrisma.pollViewer.createMany).toHaveBeenCalledWith({
+      data: [{ pollId: 4, userId: 10 }],
+      skipDuplicates: true,
+    });
+    expect(mockPrisma.poll.update).toHaveBeenCalledWith({
+      where: { id: 4 },
+      data: { viewers: { increment: 1 } },
     });
     expect(mockPrisma.poll.update).toHaveBeenCalledWith({
       where: { id: 4 },
@@ -126,6 +170,7 @@ describe('vote', () => {
   it('counts nothing when the user had voted already', async () => {
     mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 0 });
     expect(await repo.vote(4, 10, [9], 'More C')).toBe(false);
+    expect(mockPrisma.pollViewer.createMany).not.toHaveBeenCalled();
     expect(mockPrisma.pollOption.updateMany).not.toHaveBeenCalled();
     expect(mockPrisma.poll.update).not.toHaveBeenCalled();
     expect(mockPrisma.pollAnswer.create).not.toHaveBeenCalled();
