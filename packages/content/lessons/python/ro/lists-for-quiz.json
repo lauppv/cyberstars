@@ -291,18 +291,6 @@
           "items": "\"Lance\", \"Cortez\"",
           "x": "membru",
           "greet": "Bun venit"
-        },
-        {
-          "v": "nume",
-          "items": "\"Tommy\", \"Phil\", \"Sonny\", \"Ken\"",
-          "x": "n",
-          "greet": "Salut"
-        },
-        {
-          "v": "jucatori",
-          "items": "\"Ana\", \"Rex\"",
-          "x": "i",
-          "greet": "Succes"
         }
       ],
       "mistakes": [
@@ -327,11 +315,6 @@
           "v": "sarcini",
           "items": "\"Alimentare\", \"Verificare motoare\", \"Lansare\"",
           "label": "Pasul"
-        },
-        {
-          "v": "jucatori",
-          "items": "\"Ana\", \"Rex\", \"Kai\", \"Zoe\"",
-          "label": "Jucatorul"
         }
       ],
       "mistakes": [
@@ -358,30 +341,6 @@
           "items": "7, 3, 9, 1",
           "t": "puncte",
           "x": "s"
-        },
-        {
-          "v": "rezervoare",
-          "items": "40, 60",
-          "t": "combustibil",
-          "x": "rezervor"
-        },
-        {
-          "v": "varste",
-          "items": "12, 30, 8",
-          "t": "total",
-          "x": "varsta"
-        },
-        {
-          "v": "pasi",
-          "items": "100, 250, 150, 500",
-          "t": "parcurs",
-          "x": "p"
-        },
-        {
-          "v": "monede",
-          "items": "2, 2, 2, 2, 2",
-          "t": "total",
-          "x": "m"
         }
       ],
       "mistakes": [
@@ -419,14 +378,6 @@
           "op": "<",
           "lim": 5,
           "flip": "<="
-        },
-        {
-          "v": "viteze",
-          "items": "90, 120, 130, 100",
-          "c": "sigure",
-          "op": "<=",
-          "lim": 100,
-          "flip": "<"
         }
       ],
       "mistakes": [
@@ -455,11 +406,6 @@
           "v": "niveluri",
           "items": "3, 8, 2, 5",
           "b": "maxim"
-        },
-        {
-          "v": "combustibil",
-          "items": "40, 70, 20, 55",
-          "b": "cel_mai_mult"
         }
       ],
       "mistakes": [
@@ -497,14 +443,6 @@
           "op": ">=",
           "lim": 50,
           "neg": "<"
-        },
-        {
-          "v": "preturi",
-          "items": "3, 15, 7, 22",
-          "w": "ieftine",
-          "op": "<=",
-          "lim": 7,
-          "neg": ">"
         }
       ],
       "mistakes": [
@@ -919,6 +857,109 @@
         }
       ],
       "bug": ["n > {{b}}", "n < {{b}}"]
+    },
+    {
+      "id": "lf-holds-raise",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    if {{v}}[i] < {{lim}}:\n        {{v}}[i] = {{lim}}",
+      "values": [
+        {
+          "v": "scoruri",
+          "items": "4, 9, 2, 7, 3",
+          "lim": 5
+        },
+        {
+          "v": "niveluri",
+          "items": "12, 8, 30, 5",
+          "lim": 10
+        },
+        {
+          "v": "viteze",
+          "items": "60, 45, 80, 30",
+          "lim": 50
+        },
+        {
+          "v": "temperaturi",
+          "items": "18, 25, 15, 30, 10",
+          "lim": 20
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["< {{lim}}", "> {{lim}}"],
+        [
+          "for i in range(len({{v}})):\n    if {{v}}[i] < {{lim}}:\n        {{v}}[i] = {{lim}}",
+          "for n in {{v}}:\n    if n < {{lim}}:\n        n = {{lim}}"
+        ],
+        ["range(len({{v}}))", "range(len({{v}}) - 1)"]
+      ]
+    },
+    {
+      "id": "lf-holds-longest",
+      "kind": "holds",
+      "text": "Ce conține `{{b}}` la final?",
+      "code": "{{v}} = [{{items}}]\n{{b}} = \"\"\nfor w in {{v}}:\n    if len(w) > len({{b}}):\n        {{b}} = w",
+      "values": [
+        {
+          "v": "planete",
+          "items": "\"Marte\", \"Saturn\", \"Venus\", \"Uranus\"",
+          "b": "cel_mai_lung"
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Zoe\", \"Lance\", \"Tommy\", \"Ben\"",
+          "b": "cel_mai_lung"
+        },
+        {
+          "v": "opriri",
+          "items": "\"Marte\", \"Terra\", \"Venus\", \"Pluto\"",
+          "b": "cel_mai_lung"
+        }
+      ],
+      "variable": "{{b}}",
+      "mistakes": [
+        ["len(w) > len({{b}})", "len(w) >= len({{b}})"],
+        ["len(w) > len({{b}})", "w > {{b}}"],
+        ["len(w) > len({{b}})", "len(w) < len({{b}})"]
+      ]
+    },
+    {
+      "id": "lf-input-limit",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{l}} = int(input())\n{{v}} = [{{items}}]\nfor n in {{v}}:\n    if n > {{l}}:\n        print(n)",
+      "values": [
+        {
+          "l": "limita",
+          "v": "varste",
+          "items": "12, 18, 30, 15",
+          "n": 15,
+          "first": 18,
+          "low": 12,
+          "high": 30
+        },
+        {
+          "l": "limita",
+          "v": "scoruri",
+          "items": "7, 15, 9, 21",
+          "n": 9,
+          "first": 15,
+          "low": 7,
+          "high": 21
+        },
+        {
+          "l": "limita",
+          "v": "viteze",
+          "items": "40, 90, 65, 120",
+          "n": 65,
+          "first": 90,
+          "low": 40,
+          "high": 120
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{first}}", "{{low}}", "{{high}}"]
     }
   ]
 }

@@ -30,13 +30,6 @@
       "answer": 0
     },
     {
-      "id": "sm-len-a949fe",
-      "text": "Ce afișează?",
-      "code": "echipaj = \"Ana si Ben\"\nprint(len(echipaj))",
-      "options": ["10", "Ana si Ben", "7", "9"],
-      "answer": 0
-    },
-    {
       "id": "sm-upper-lost-1ebc3b",
       "text": "Ce afișează?",
       "code": "nume = \"lance vance\"\nnume.upper()\nprint(nume)",
@@ -121,13 +114,6 @@
       "answer": 0
     },
     {
-      "id": "sm-index-aea7c5",
-      "text": "Ce afișează?",
-      "code": "cod = \"Orbital\"\nprint(cod[5])",
-      "options": ["a", "t", "l", "Orbit"],
-      "answer": 0
-    },
-    {
       "id": "sm-slice-cc932f",
       "text": "Ce afișează?",
       "code": "cuvant = \"Stelar\"\nprint(cuvant[0:4])",
@@ -156,13 +142,6 @@
       "answer": 0
     },
     {
-      "id": "sm-slice-3799b4",
-      "text": "Ce afișează?",
-      "code": "cod = \"ZX81Alfa\"\nprint(cod[2:4])",
-      "options": ["81", "81A", "Alfa", "8"],
-      "answer": 0
-    },
-    {
       "id": "sm-concat-fb2bde",
       "text": "Ce afișează?",
       "code": "prenume = \"Lance\"\nnume_familie = \"Vance\"\nprint(prenume + \" \" + nume_familie)",
@@ -188,13 +167,6 @@
       "text": "Ce afișează?",
       "code": "nava = \"Nova\"\nport = \"Prima\"\nprint(nava + \" \" + port)",
       "options": ["Nova Prima", "NovaPrima", "nava port", "Prima Nova"],
-      "answer": 0
-    },
-    {
-      "id": "sm-concat-2618a6",
-      "text": "Ce afișează?",
-      "code": "oras = \"Vice\"\nzona = \"Plaja\"\nprint(oras + \" \" + zona)",
-      "options": ["Vice Plaja", "VicePlaja", "oras zona", "Plaja Vice"],
       "answer": 0
     },
     {
@@ -643,6 +615,34 @@
       "code": "nume = \"Rosenberg\"\nprint(nume)\nprint(nume[0])\nprint(nume[4:8])",
       "output": "Rosenberg\nR\nnberg",
       "options": ["print(nume[4:8])", "print(nume[0])", "print(nume)", "nume = \"Rosenberg\""],
+      "answer": 0
+    },
+    {
+      "id": "sm-holds-shout-7b0df1",
+      "text": "Ce conține `alarma` la final?",
+      "code": "apel = \"Mayday\"\nalarma = apel.upper() + \"!\"",
+      "options": ["'MAYDAY!'", "'Mayday!'", "'mayday!'", "'APEL!'"],
+      "answer": 0
+    },
+    {
+      "id": "sm-holds-shout-9412b8",
+      "text": "Ce conține `strigat` la final?",
+      "code": "nume = \"Lance\"\nstrigat = nume.upper() + \"!\"",
+      "options": ["'LANCE!'", "'Lance!'", "'lance!'", "'NUME!'"],
+      "answer": 0
+    },
+    {
+      "id": "sm-holds-slice-af8c0c",
+      "text": "Ce conține `inceput` la final?",
+      "code": "cuvant = \"Galaxie\"\ninceput = cuvant[0:3]",
+      "options": ["'Gal'", "'Ga'", "'a'", "'ala'"],
+      "answer": 0
+    },
+    {
+      "id": "sm-holds-slice-835fc9",
+      "text": "Ce conține `mijloc` la final?",
+      "code": "cuvant = \"Asteroid\"\nmijloc = cuvant[2:6]",
+      "options": ["'tero'", "'ter'", "'i'", "'eroi'"],
       "answer": 0
     }
   ]

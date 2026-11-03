@@ -21,25 +21,6 @@
       "answer": 0
     },
     {
-      "id": "col-skip-496455",
-      "text": "What does this print?",
-      "code": "codes = [\"a7\", \"x1\", \"b2\", \"x9\"]\ngood = []\nfor c in codes:\n    if c[0:1] == \"x\":\n        continue\n    good.append(c)\nprint(good)",
-      "options": ["['a7', 'b2']", "['a7']", "['x1', 'x9']", "[]"],
-      "answer": 0
-    },
-    {
-      "id": "col-skip-b45dd3",
-      "text": "What does this print?",
-      "code": "tasks = [\"fix engine\", \"done: wash\", \"launch\", \"done: refuel\"]\ntodo = []\nfor t in tasks:\n    if t[0:5] == \"done:\":\n        continue\n    todo.append(t)\nprint(todo)",
-      "options": [
-        "['fix engine', 'launch']",
-        "['fix engine']",
-        "['done: wash', 'done: refuel']",
-        "[]"
-      ],
-      "answer": 0
-    },
-    {
       "id": "col-stop-66b005",
       "text": "What does this print?",
       "code": "items = [\"milk\", \"bread\", \"butter\", \"jam\"]\nbay = []\nfor item in items:\n    bay.append(item)\n    if item == \"butter\":\n        break\nprint(bay)",
@@ -64,18 +45,6 @@
       "answer": 0
     },
     {
-      "id": "col-stop-25894a",
-      "text": "What does this print?",
-      "code": "songs = [\"Intro\", \"Wave\", \"Rain\", \"Outro\", \"Bonus\"]\nplayed = []\nfor s in songs:\n    played.append(s)\n    if s == \"Rain\":\n        break\nprint(played)",
-      "options": [
-        "['Intro', 'Wave', 'Rain']",
-        "['Intro', 'Wave', 'Rain', 'Outro', 'Bonus']",
-        "['Intro', 'Wave']",
-        "['Intro']\n['Intro', 'Wave']"
-      ],
-      "answer": 0
-    },
-    {
       "id": "col-cap-b568cc",
       "text": "What does this print?",
       "code": "word = \"station\"\nprint(word[0:3].upper() + word[3:])",
@@ -90,13 +59,6 @@
       "answer": 0
     },
     {
-      "id": "col-cap-cdb9ba",
-      "text": "What does this print?",
-      "code": "code = \"planet\"\nprint(code[0:4].upper() + code[4:])",
-      "options": ["PLANet", "planet", "PLANEet", "PLAN et"],
-      "answer": 0
-    },
-    {
       "id": "col-long-158b34",
       "text": "What does this print?",
       "code": "words = [\"sun\", \"moon\", \"planet\", \"star\"]\ncount = 0\nfor w in words:\n    if len(w) > 4:\n        count = count + 1\nprint(count)",
@@ -108,20 +70,6 @@
       "text": "What does this print?",
       "code": "names = [\"Tommy\", \"Ken\", \"Cortez\", \"Lance\", \"Phil\"]\nlong = 0\nfor w in names:\n    if len(w) > 4:\n        long = long + 1\nprint(long)",
       "options": ["3", "4", "16", "1"],
-      "answer": 0
-    },
-    {
-      "id": "col-long-aaa7f2",
-      "text": "What does this print?",
-      "code": "cities = [\"Rome\", \"Oslo\", \"Berlin\", \"Paris\"]\nbig = 0\nfor w in cities:\n    if len(w) > 5:\n        big = big + 1\nprint(big)",
-      "options": ["1", "2", "6", "0\n0\n1\n1"],
-      "answer": 0
-    },
-    {
-      "id": "col-long-8a6234",
-      "text": "What does this print?",
-      "code": "tools = [\"saw\", \"hammer\", \"drill\", \"wrench\"]\ncount = 0\nfor w in tools:\n    if len(w) > 5:\n        count = count + 1\nprint(count)",
-      "options": ["2", "3", "12", "1"],
       "answer": 0
     },
     {
@@ -144,25 +92,6 @@
       "answer": 0
     },
     {
-      "id": "col-find-5e0beb",
-      "text": "What does this print?",
-      "code": "doors = [\"red\", \"green\", \"blue\"]\nfor d in doors:\n    if d == \"green\":\n        print(\"Door open\")\n        break\n    print(d)",
-      "options": ["red\nDoor open", "red\nDoor open\nblue", "Door open", "red"],
-      "answer": 0
-    },
-    {
-      "id": "col-find-a6fe31",
-      "text": "What does this print?",
-      "code": "crates = [\"jam\", \"milk\", \"tea\", \"gold\", \"rice\"]\nfor c in crates:\n    if c == \"gold\":\n        print(\"Treasure!\")\n        break\n    print(c)",
-      "options": [
-        "jam\nmilk\ntea\nTreasure!",
-        "jam\nmilk\ntea\nTreasure!\nrice",
-        "Treasure!",
-        "jam\nmilk\ntea"
-      ],
-      "answer": 0
-    },
-    {
       "id": "col-initials-ca0fbb",
       "text": "What does this print?",
       "code": "words = [\"Never\", \"Ever\", \"Stop\"]\ncode = \"\"\nfor w in words:\n    code = code + w[0]\nprint(code)",
@@ -174,13 +103,6 @@
       "text": "What does this print?",
       "code": "crew = [\"Tommy\", \"Victor\", \"Lance\", \"Ken\"]\nteam = \"\"\nfor w in crew:\n    team = team + w[0]\nprint(team)",
       "options": ["TVLK", "TommyVictorLanceKen", "KLVT", "oiae"],
-      "answer": 0
-    },
-    {
-      "id": "col-initials-fa0f85",
-      "text": "What does this print?",
-      "code": "planets = [\"Mars\", \"Earth\", \"Venus\"]\nroute = \"\"\nfor w in planets:\n    route = route + w[0]\nprint(route)",
-      "options": ["MEV", "MarsEarthVenus", "VEM", "aae"],
       "answer": 0
     },
     {
@@ -208,30 +130,6 @@
       "answer": 0
     },
     {
-      "id": "col-replace-82a22f",
-      "text": "What does this print?",
-      "code": "files = [\"plan\", \"tmp-a\", \"notes\", \"tmp-b\"]\nfor i in range(len(files)):\n    if files[i][0:4] == \"tmp-\":\n        files[i] = \"deleted\"\nprint(files)",
-      "options": [
-        "['plan', 'deleted', 'notes', 'deleted']",
-        "['plan', 'tmp-a', 'notes', 'tmp-b', 'deleted', 'deleted']",
-        "['deleted', 'tmp-a', 'deleted', 'tmp-b']",
-        "['plan', 'deleted', 'notes', 'tmp-b']"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "col-replace-1b5d1a",
-      "text": "What does this print?",
-      "code": "signals = [\"ok\", \"err1\", \"ok\", \"err2\"]\nfor i in range(len(signals)):\n    if signals[i][0:3] == \"err\":\n        signals[i] = \"lost\"\nprint(signals)",
-      "options": [
-        "['ok', 'lost', 'ok', 'lost']",
-        "['ok', 'err1', 'ok', 'err2', 'lost', 'lost']",
-        "['lost', 'err1', 'lost', 'err2']",
-        "['ok', 'lost', 'ok', 'err2']"
-      ],
-      "answer": 0
-    },
-    {
       "id": "col-sum-stop-9a020b",
       "text": "What does this print?",
       "code": "prices = [5, 10, 20, 40, 1]\ntotal = 0\nfor n in prices:\n    if n == 20:\n        break\n    total = total + n\nprint(total)",
@@ -243,20 +141,6 @@
       "text": "What does this print?",
       "code": "loads = [30, 25, 90, 10]\nweight = 0\nfor n in loads:\n    if n > 50:\n        break\n    weight = weight + n\nprint(weight)",
       "options": ["55", "65", "0", "30\n55"],
-      "answer": 0
-    },
-    {
-      "id": "col-sum-stop-ab275d",
-      "text": "What does this print?",
-      "code": "scores = [8, 6, 0, 9, 7]\npoints = 0\nfor n in scores:\n    if n < 1:\n        break\n    points = points + n\nprint(points)",
-      "options": ["14", "30", "0", "8\n14"],
-      "answer": 0
-    },
-    {
-      "id": "col-sum-stop-7f749d",
-      "text": "What does this print?",
-      "code": "steps = [100, 200, 999, 300]\nwalked = 0\nfor n in steps:\n    if n >= 999:\n        break\n    walked = walked + n\nprint(walked)",
-      "options": ["300", "600", "0", "100\n300"],
       "answer": 0
     },
     {
@@ -659,6 +543,110 @@
         "big = []",
         "cities = [\"Rome\", \"Berlin\", \"Oslo\", \"Madrid\"]"
       ],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-long-e051bf",
+      "text": "What is in `long` at the end?",
+      "code": "words = [\"sun\", \"moon\", \"planet\", \"star\"]\nlong = []\nfor word in words:\n    if len(word) > 4:\n        long.append(word.upper())",
+      "options": ["['PLANET']", "['MOON', 'PLANET', 'STAR']", "['planet']", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-long-3692ce",
+      "text": "What is in `long` at the end?",
+      "code": "crew = [\"Tommy\", \"Lance\", \"Cortez\", \"Ken\"]\nlong = []\nfor name in crew:\n    if len(name) > 4:\n        long.append(name.upper())",
+      "options": [
+        "['TOMMY', 'LANCE', 'CORTEZ']",
+        "['Tommy', 'Lance', 'Cortez']",
+        "[]",
+        "['CORTEZ']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-long-05011c",
+      "text": "What is in `big` at the end?",
+      "code": "worlds = [\"Moon\", \"Venus\", \"Earth\", \"Jupiter\", \"Io\"]\nbig = []\nfor world in worlds:\n    if len(world) > 5:\n        big.append(world.upper())",
+      "options": ["['JUPITER']", "['VENUS', 'EARTH', 'JUPITER']", "['Jupiter']", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-long-daaac0",
+      "text": "What is in `long` at the end?",
+      "code": "items = [\"milk\", \"bread\", \"eggs\", \"butter\"]\nlong = []\nfor item in items:\n    if len(item) > 4:\n        long.append(item.upper())",
+      "options": [
+        "['BREAD', 'BUTTER']",
+        "['MILK', 'BREAD', 'EGGS', 'BUTTER']",
+        "['bread', 'butter']",
+        "[]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-count-4547a9",
+      "text": "What is in `count` at the end?",
+      "code": "word = \"banana\"\ncount = 0\nfor i in range(len(word)):\n    if word[i] == \"a\":\n        count = count + 1",
+      "options": ["3", "1", "0", "2"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-count-e36920",
+      "text": "What is in `count` at the end?",
+      "code": "word = \"Mississippi\"\ncount = 0\nfor i in range(len(word)):\n    if word[i] == \"s\":\n        count = count + 1",
+      "options": ["4", "7", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-count-29c825",
+      "text": "What is in `count` at the end?",
+      "code": "name = \"Lance Vance\"\ncount = 0\nfor i in range(len(name)):\n    if name[i] == \"e\":\n        count = count + 1",
+      "options": ["2", "9", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-join-d04597",
+      "text": "What is in `code` at the end?",
+      "code": "parts = [\"A\", \"B\", \"C\"]\ncode = \"\"\nfor w in parts:\n    code = code + w + \"-\"",
+      "options": ["'A-B-C-'", "'C-'", "'-A-B-C'", "'ABC'"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-join-e3684c",
+      "text": "What is in `flag` at the end?",
+      "code": "colors = [\"red\", \"blue\"]\nflag = \"\"\nfor w in colors:\n    flag = flag + w + \"-\"",
+      "options": ["'red-blue-'", "'blue-'", "'-red-blue'", "'redblue'"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-join-0d7d40",
+      "text": "What is in `route` at the end?",
+      "code": "stops = [\"Mars\", \"Moon\", \"Sun\"]\nroute = \"\"\nfor w in stops:\n    route = route + w + \"-\"",
+      "options": ["'Mars-Moon-Sun-'", "'Sun-'", "'-Mars-Moon-Sun'", "'MarsMoonSun'"],
+      "answer": 0
+    },
+    {
+      "id": "col-input-find-f40a75",
+      "text": "What did the user type?",
+      "code": "target = input()\nsectors = [\"A1\", \"B4\", \"C7\", \"D2\"]\nfor i in range(len(sectors)):\n    if sectors[i] == target:\n        print(f\"Found at {i}\")",
+      "output": "Found at 2",
+      "options": ["C7", "2", "c7", "B4"],
+      "answer": 0
+    },
+    {
+      "id": "col-input-find-bc1406",
+      "text": "What did the user type?",
+      "code": "target = input()\ncrew = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i in range(len(crew)):\n    if crew[i] == target:\n        print(f\"Found at {i}\")",
+      "output": "Found at 1",
+      "options": ["Lance", "1", "lance", "Tommy"],
+      "answer": 0
+    },
+    {
+      "id": "col-input-find-54c4df",
+      "text": "What did the user type?",
+      "code": "target = input()\nplanets = [\"Mars\", \"Venus\", \"Earth\", \"Jupiter\"]\nfor i in range(len(planets)):\n    if planets[i] == target:\n        print(f\"Found at {i}\")",
+      "output": "Found at 3",
+      "options": ["Jupiter", "3", "jupiter", "Earth"],
       "answer": 0
     }
   ]

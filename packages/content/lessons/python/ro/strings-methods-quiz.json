@@ -254,10 +254,6 @@
         {
           "v": "oras",
           "s": "Vice City"
-        },
-        {
-          "v": "echipaj",
-          "s": "Ana si Ben"
         }
       ],
       "mistakes": [
@@ -366,13 +362,6 @@
           "i": 3,
           "im": 2,
           "ip": 4
-        },
-        {
-          "v": "cod",
-          "s": "Orbital",
-          "i": 5,
-          "im": 4,
-          "ip": 6
         }
       ],
       "mistakes": [
@@ -415,13 +404,6 @@
           "a": 0,
           "b": 4,
           "bp": 5
-        },
-        {
-          "v": "cod",
-          "s": "ZX81Alfa",
-          "a": 2,
-          "b": 4,
-          "bp": 5
         }
       ],
       "mistakes": [
@@ -460,12 +442,6 @@
           "b": "port",
           "x": "Nova",
           "y": "Prima"
-        },
-        {
-          "a": "oras",
-          "b": "zona",
-          "x": "Vice",
-          "y": "Plaja"
         }
       ],
       "mistakes": [
@@ -860,6 +836,64 @@
         }
       ],
       "bug": ["{{a}}:{{b}}", "{{a}}:{{bm}}"]
+    },
+    {
+      "id": "sm-holds-shout",
+      "kind": "holds",
+      "text": "Ce conține `{{w}}` la final?",
+      "code": "{{v}} = \"{{s}}\"\n{{w}} = {{v}}.upper() + \"!\"",
+      "values": [
+        {
+          "v": "apel",
+          "s": "Mayday",
+          "w": "alarma"
+        },
+        {
+          "v": "nume",
+          "s": "Lance",
+          "w": "strigat"
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["{{v}}.upper() + \"!\"", "{{v}} + \"!\""],
+        [".upper()", ".lower()"],
+        ["{{v}}.upper() + \"!\"", "\"{{v}}\".upper() + \"!\""]
+      ]
+    },
+    {
+      "id": "sm-holds-slice",
+      "kind": "holds",
+      "text": "Ce conține `{{w}}` la final?",
+      "code": "{{v}} = \"{{s}}\"\n{{w}} = {{v}}[{{a}}:{{b}}]",
+      "values": [
+        {
+          "v": "cuvant",
+          "s": "Galaxie",
+          "w": "inceput",
+          "a": 0,
+          "b": 3,
+          "bm": 2,
+          "ap": 1,
+          "bp": 4
+        },
+        {
+          "v": "cuvant",
+          "s": "Asteroid",
+          "w": "mijloc",
+          "a": 2,
+          "b": 6,
+          "bm": 5,
+          "ap": 3,
+          "bp": 7
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["[{{a}}:{{b}}]", "[{{a}}:{{bm}}]"],
+        ["[{{a}}:{{b}}]", "[{{b}}]"],
+        ["[{{a}}:{{b}}]", "[{{ap}}:{{bp}}]"]
+      ]
     }
   ]
 }

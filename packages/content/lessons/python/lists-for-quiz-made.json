@@ -26,30 +26,6 @@
       "answer": 0
     },
     {
-      "id": "lf-each-b951e2",
-      "text": "What does this print?",
-      "code": "names = [\"Tommy\", \"Phil\", \"Sonny\", \"Ken\"]\nfor n in names:\n    print(f\"Hello, {n}!\")",
-      "options": [
-        "Hello, Tommy!\nHello, Phil!\nHello, Sonny!\nHello, Ken!",
-        "Hello, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nHello, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nHello, ['Tommy', 'Phil', 'Sonny', 'Ken']!\nHello, ['Tommy', 'Phil', 'Sonny', 'Ken']!",
-        "Hello, {n}!\nHello, {n}!\nHello, {n}!\nHello, {n}!",
-        "Hello, 0!\nHello, 1!\nHello, 2!\nHello, 3!"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "lf-each-8bd748",
-      "text": "What does this print?",
-      "code": "players = [\"Ana\", \"Rex\"]\nfor i in players:\n    print(f\"Good luck, {i}!\")",
-      "options": [
-        "Good luck, Ana!\nGood luck, Rex!",
-        "Good luck, ['Ana', 'Rex']!\nGood luck, ['Ana', 'Rex']!",
-        "Good luck, {i}!\nGood luck, {i}!",
-        "Good luck, 0!\nGood luck, 1!"
-      ],
-      "answer": 0
-    },
-    {
       "id": "lf-index-edff32",
       "text": "What does this print?",
       "code": "planets = [\"Mars\", \"Venus\", \"Earth\"]\nfor i in range(len(planets)):\n    print(f\"Planet {i + 1}: {planets[i]}\")",
@@ -74,18 +50,6 @@
       "answer": 0
     },
     {
-      "id": "lf-index-6a1ced",
-      "text": "What does this print?",
-      "code": "players = [\"Ana\", \"Rex\", \"Kai\", \"Zoe\"]\nfor i in range(len(players)):\n    print(f\"Player {i + 1}: {players[i]}\")",
-      "options": [
-        "Player 1: Ana\nPlayer 2: Rex\nPlayer 3: Kai\nPlayer 4: Zoe",
-        "Player 0: Ana\nPlayer 1: Rex\nPlayer 2: Kai\nPlayer 3: Zoe",
-        "Player 2: Rex\nPlayer 3: Kai\nPlayer 4: Zoe",
-        "Player 1: 0\nPlayer 2: 1\nPlayer 3: 2\nPlayer 4: 3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "lf-sum-9d0c99",
       "text": "What does this print?",
       "code": "prices = [5, 15, 25]\ntotal = 0\nfor price in prices:\n    total = total + price\nprint(total)",
@@ -97,34 +61,6 @@
       "text": "What does this print?",
       "code": "scores = [7, 3, 9, 1]\npoints = 0\nfor s in scores:\n    points = points + s\nprint(points)",
       "options": ["20", "1", "4", "7\n10\n19\n20"],
-      "answer": 0
-    },
-    {
-      "id": "lf-sum-bab618",
-      "text": "What does this print?",
-      "code": "tanks = [40, 60]\nfuel = 0\nfor tank in tanks:\n    fuel = fuel + tank\nprint(fuel)",
-      "options": ["100", "60", "2", "40\n100"],
-      "answer": 0
-    },
-    {
-      "id": "lf-sum-24598e",
-      "text": "What does this print?",
-      "code": "ages = [12, 30, 8]\ntotal = 0\nfor age in ages:\n    total = total + age\nprint(total)",
-      "options": ["50", "8", "3", "12\n42\n50"],
-      "answer": 0
-    },
-    {
-      "id": "lf-sum-b37b23",
-      "text": "What does this print?",
-      "code": "steps = [100, 250, 150, 500]\nwalked = 0\nfor s in steps:\n    walked = walked + s\nprint(walked)",
-      "options": ["1000", "500", "4", "100\n350\n500\n1000"],
-      "answer": 0
-    },
-    {
-      "id": "lf-sum-94c2d8",
-      "text": "What does this print?",
-      "code": "coins = [2, 2, 2, 2, 2]\ntotal = 0\nfor c in coins:\n    total = total + c\nprint(total)",
-      "options": ["10", "2", "5", "2\n4\n6\n8\n10"],
       "answer": 0
     },
     {
@@ -149,13 +85,6 @@
       "answer": 0
     },
     {
-      "id": "lf-count-515285",
-      "text": "What does this print?",
-      "code": "speeds = [90, 120, 130, 100]\nsafe = 0\nfor n in speeds:\n    if n <= 100:\n        safe = safe + 1\nprint(safe)",
-      "options": ["2", "190", "1", "1\n1\n1\n2"],
-      "answer": 0
-    },
-    {
       "id": "lf-max-2cf89a",
       "text": "What does this print?",
       "code": "scores = [7, 15, 9]\nbest = scores[0]\nfor n in scores:\n    if n > best:\n        best = n\nprint(best)",
@@ -177,13 +106,6 @@
       "answer": 0
     },
     {
-      "id": "lf-max-3147fd",
-      "text": "What does this print?",
-      "code": "fuel = [40, 70, 20, 55]\nmost = fuel[0]\nfor n in fuel:\n    if n > most:\n        most = n\nprint(most)",
-      "options": ["70", "20", "55", "40\n70\n70\n70"],
-      "answer": 0
-    },
-    {
       "id": "lf-build-02efbc",
       "text": "What does this print?",
       "code": "numbers = [6, 14, 3, 25]\nbig = []\nfor n in numbers:\n    if n > 10:\n        big.append(n)\nprint(big)",
@@ -202,13 +124,6 @@
       "text": "What does this print?",
       "code": "scores = [50, 75, 90, 40]\npassed = []\nfor n in scores:\n    if n >= 50:\n        passed.append(n)\nprint(passed)",
       "options": ["[50, 75, 90]", "[40]", "[90]", "[50]\n[50, 75]\n[50, 75, 90]\n[50, 75, 90]"],
-      "answer": 0
-    },
-    {
-      "id": "lf-build-d8e95c",
-      "text": "What does this print?",
-      "code": "prices = [3, 15, 7, 22]\ncheap = []\nfor n in prices:\n    if n <= 7:\n        cheap.append(n)\nprint(cheap)",
-      "options": ["[3, 7]", "[15, 22]", "[7]", "[3]\n[3]\n[3, 7]\n[3, 7]"],
       "answer": 0
     },
     {
@@ -671,6 +586,84 @@
       "code": "levels = [2, 9, 4]\ntop = levels[0]\nfor n in levels:\n    if n < top:\n        top = n\nprint(f\"Top level of {levels}: {top}\")",
       "output": "Top level of [2, 9, 4]: 9",
       "options": ["if n < top:", "for n in levels:", "top = levels[0]", "top = n"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-raise-2c43a2",
+      "text": "What is in `scores` at the end?",
+      "code": "scores = [4, 9, 2, 7, 3]\nfor i in range(len(scores)):\n    if scores[i] < 5:\n        scores[i] = 5",
+      "options": ["[5, 9, 5, 7, 5]", "[4, 5, 2, 5, 3]", "[4, 9, 2, 7, 3]", "[5, 9, 5, 7, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-raise-25e3eb",
+      "text": "What is in `levels` at the end?",
+      "code": "levels = [12, 8, 30, 5]\nfor i in range(len(levels)):\n    if levels[i] < 10:\n        levels[i] = 10",
+      "options": ["[12, 10, 30, 10]", "[10, 8, 10, 5]", "[12, 8, 30, 5]", "[12, 10, 30, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-raise-437416",
+      "text": "What is in `speeds` at the end?",
+      "code": "speeds = [60, 45, 80, 30]\nfor i in range(len(speeds)):\n    if speeds[i] < 50:\n        speeds[i] = 50",
+      "options": ["[60, 50, 80, 50]", "[50, 45, 50, 30]", "[60, 45, 80, 30]", "[60, 50, 80, 30]"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-raise-d0738c",
+      "text": "What is in `temps` at the end?",
+      "code": "temps = [18, 25, 15, 30, 10]\nfor i in range(len(temps)):\n    if temps[i] < 20:\n        temps[i] = 20",
+      "options": [
+        "[20, 25, 20, 30, 20]",
+        "[18, 20, 15, 20, 10]",
+        "[18, 25, 15, 30, 10]",
+        "[20, 25, 20, 30, 10]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-longest-0c1f4a",
+      "text": "What is in `longest` at the end?",
+      "code": "planets = [\"Mars\", \"Saturn\", \"Venus\", \"Uranus\"]\nlongest = \"\"\nfor w in planets:\n    if len(w) > len(longest):\n        longest = w",
+      "options": ["'Saturn'", "'Uranus'", "'Venus'", "''"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-longest-329bc5",
+      "text": "What is in `longest` at the end?",
+      "code": "crew = [\"Zoe\", \"Lance\", \"Tommy\", \"Ben\"]\nlongest = \"\"\nfor w in crew:\n    if len(w) > len(longest):\n        longest = w",
+      "options": ["'Lance'", "'Tommy'", "'Zoe'", "''"],
+      "answer": 0
+    },
+    {
+      "id": "lf-holds-longest-a08583",
+      "text": "What is in `longest` at the end?",
+      "code": "stops = [\"Mars\", \"Earth\", \"Venus\", \"Pluto\"]\nlongest = \"\"\nfor w in stops:\n    if len(w) > len(longest):\n        longest = w",
+      "options": ["'Earth'", "'Pluto'", "'Venus'", "''"],
+      "answer": 0
+    },
+    {
+      "id": "lf-input-limit-8cc208",
+      "text": "What did the user type?",
+      "code": "limit = int(input())\nages = [12, 18, 30, 15]\nfor n in ages:\n    if n > limit:\n        print(n)",
+      "output": "18\n30",
+      "options": ["15", "18", "12", "30"],
+      "answer": 0
+    },
+    {
+      "id": "lf-input-limit-393f06",
+      "text": "What did the user type?",
+      "code": "limit = int(input())\nscores = [7, 15, 9, 21]\nfor n in scores:\n    if n > limit:\n        print(n)",
+      "output": "15\n21",
+      "options": ["9", "15", "7", "21"],
+      "answer": 0
+    },
+    {
+      "id": "lf-input-limit-1f6e63",
+      "text": "What did the user type?",
+      "code": "limit = int(input())\nspeeds = [40, 90, 65, 120]\nfor n in speeds:\n    if n > limit:\n        print(n)",
+      "output": "90\n120",
+      "options": ["65", "90", "40", "120"],
       "answer": 0
     }
   ]

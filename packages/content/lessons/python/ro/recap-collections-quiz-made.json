@@ -21,25 +21,6 @@
       "answer": 0
     },
     {
-      "id": "col-skip-496455",
-      "text": "Ce afișează?",
-      "code": "coduri = [\"a7\", \"x1\", \"b2\", \"x9\"]\nbune = []\nfor c in coduri:\n    if c[0:1] == \"x\":\n        continue\n    bune.append(c)\nprint(bune)",
-      "options": ["['a7', 'b2']", "['a7']", "['x1', 'x9']", "[]"],
-      "answer": 0
-    },
-    {
-      "id": "col-skip-b45dd3",
-      "text": "Ce afișează?",
-      "code": "sarcini = [\"repara motorul\", \"gata: spalare\", \"lansare\", \"gata: alimentare\"]\nde_facut = []\nfor s in sarcini:\n    if s[0:5] == \"gata:\":\n        continue\n    de_facut.append(s)\nprint(de_facut)",
-      "options": [
-        "['repara motorul', 'lansare']",
-        "['repara motorul']",
-        "['gata: spalare', 'gata: alimentare']",
-        "[]"
-      ],
-      "answer": 0
-    },
-    {
       "id": "col-stop-66b005",
       "text": "Ce afișează?",
       "code": "elemente = [\"lapte\", \"paine\", \"unt\", \"gem\"]\ndepozit = []\nfor element in elemente:\n    depozit.append(element)\n    if element == \"unt\":\n        break\nprint(depozit)",
@@ -64,18 +45,6 @@
       "answer": 0
     },
     {
-      "id": "col-stop-25894a",
-      "text": "Ce afișează?",
-      "code": "melodii = [\"Intro\", \"Val\", \"Ploaie\", \"Final\", \"Bonus\"]\ncantate = []\nfor m in melodii:\n    cantate.append(m)\n    if m == \"Ploaie\":\n        break\nprint(cantate)",
-      "options": [
-        "['Intro', 'Val', 'Ploaie']",
-        "['Intro', 'Val', 'Ploaie', 'Final', 'Bonus']",
-        "['Intro', 'Val']",
-        "['Intro']\n['Intro', 'Val']"
-      ],
-      "answer": 0
-    },
-    {
       "id": "col-cap-b568cc",
       "text": "Ce afișează?",
       "code": "cuvant = \"statie\"\nprint(cuvant[0:3].upper() + cuvant[3:])",
@@ -90,13 +59,6 @@
       "answer": 0
     },
     {
-      "id": "col-cap-cdb9ba",
-      "text": "Ce afișează?",
-      "code": "cod = \"planeta\"\nprint(cod[0:4].upper() + cod[4:])",
-      "options": ["PLANeta", "planeta", "PLANEeta", "PLAN eta"],
-      "answer": 0
-    },
-    {
       "id": "col-long-158b34",
       "text": "Ce afișează?",
       "code": "cuvinte = [\"cer\", \"luna\", \"planeta\", \"stea\"]\ncontor = 0\nfor w in cuvinte:\n    if len(w) > 4:\n        contor = contor + 1\nprint(contor)",
@@ -108,20 +70,6 @@
       "text": "Ce afișează?",
       "code": "nume = [\"Tommy\", \"Ken\", \"Cortez\", \"Lance\", \"Phil\"]\nlungi = 0\nfor w in nume:\n    if len(w) > 4:\n        lungi = lungi + 1\nprint(lungi)",
       "options": ["3", "4", "16", "1"],
-      "answer": 0
-    },
-    {
-      "id": "col-long-aaa7f2",
-      "text": "Ce afișează?",
-      "code": "orase = [\"Roma\", \"Oslo\", \"Berlin\", \"Paris\"]\nmari = 0\nfor w in orase:\n    if len(w) > 5:\n        mari = mari + 1\nprint(mari)",
-      "options": ["1", "2", "6", "0\n0\n1\n1"],
-      "answer": 0
-    },
-    {
-      "id": "col-long-8a6234",
-      "text": "Ce afișează?",
-      "code": "unelte = [\"cui\", \"ciocan\", \"clesti\", \"surub\"]\ncontor = 0\nfor w in unelte:\n    if len(w) > 5:\n        contor = contor + 1\nprint(contor)",
-      "options": ["2", "3", "12", "1"],
       "answer": 0
     },
     {
@@ -144,25 +92,6 @@
       "answer": 0
     },
     {
-      "id": "col-find-5e0beb",
-      "text": "Ce afișează?",
-      "code": "usi = [\"rosu\", \"verde\", \"albastru\"]\nfor u in usi:\n    if u == \"verde\":\n        print(\"Usa deschisa\")\n        break\n    print(u)",
-      "options": ["rosu\nUsa deschisa", "rosu\nUsa deschisa\nalbastru", "Usa deschisa", "rosu"],
-      "answer": 0
-    },
-    {
-      "id": "col-find-a6fe31",
-      "text": "Ce afișează?",
-      "code": "lazi = [\"gem\", \"lapte\", \"ceai\", \"aur\", \"orez\"]\nfor l in lazi:\n    if l == \"aur\":\n        print(\"Comoara!\")\n        break\n    print(l)",
-      "options": [
-        "gem\nlapte\nceai\nComoara!",
-        "gem\nlapte\nceai\nComoara!\norez",
-        "Comoara!",
-        "gem\nlapte\nceai"
-      ],
-      "answer": 0
-    },
-    {
       "id": "col-initials-ca0fbb",
       "text": "Ce afișează?",
       "code": "cuvinte = [\"Nu\", \"Uita\", \"Stelele\"]\ncod = \"\"\nfor w in cuvinte:\n    cod = cod + w[0]\nprint(cod)",
@@ -174,13 +103,6 @@
       "text": "Ce afișează?",
       "code": "echipaj = [\"Tommy\", \"Victor\", \"Lance\", \"Ken\"]\nechipa = \"\"\nfor w in echipaj:\n    echipa = echipa + w[0]\nprint(echipa)",
       "options": ["TVLK", "TommyVictorLanceKen", "KLVT", "oiae"],
-      "answer": 0
-    },
-    {
-      "id": "col-initials-fa0f85",
-      "text": "Ce afișează?",
-      "code": "planete = [\"Marte\", \"Pamant\", \"Venus\"]\ntraseu = \"\"\nfor w in planete:\n    traseu = traseu + w[0]\nprint(traseu)",
-      "options": ["MPV", "MartePamantVenus", "VPM", "aae"],
       "answer": 0
     },
     {
@@ -208,30 +130,6 @@
       "answer": 0
     },
     {
-      "id": "col-replace-82a22f",
-      "text": "Ce afișează?",
-      "code": "fisiere = [\"plan\", \"tmp-a\", \"note\", \"tmp-b\"]\nfor i in range(len(fisiere)):\n    if fisiere[i][0:4] == \"tmp-\":\n        fisiere[i] = \"sters\"\nprint(fisiere)",
-      "options": [
-        "['plan', 'sters', 'note', 'sters']",
-        "['plan', 'tmp-a', 'note', 'tmp-b', 'sters', 'sters']",
-        "['sters', 'tmp-a', 'sters', 'tmp-b']",
-        "['plan', 'sters', 'note', 'tmp-b']"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "col-replace-1b5d1a",
-      "text": "Ce afișează?",
-      "code": "semnale = [\"ok\", \"err1\", \"ok\", \"err2\"]\nfor i in range(len(semnale)):\n    if semnale[i][0:3] == \"err\":\n        semnale[i] = \"pierdut\"\nprint(semnale)",
-      "options": [
-        "['ok', 'pierdut', 'ok', 'pierdut']",
-        "['ok', 'err1', 'ok', 'err2', 'pierdut', 'pierdut']",
-        "['pierdut', 'err1', 'pierdut', 'err2']",
-        "['ok', 'pierdut', 'ok', 'err2']"
-      ],
-      "answer": 0
-    },
-    {
       "id": "col-sum-stop-9a020b",
       "text": "Ce afișează?",
       "code": "preturi = [5, 10, 20, 40, 1]\ntotal = 0\nfor n in preturi:\n    if n == 20:\n        break\n    total = total + n\nprint(total)",
@@ -243,20 +141,6 @@
       "text": "Ce afișează?",
       "code": "incarcaturi = [30, 25, 90, 10]\ngreutate = 0\nfor n in incarcaturi:\n    if n > 50:\n        break\n    greutate = greutate + n\nprint(greutate)",
       "options": ["55", "65", "0", "30\n55"],
-      "answer": 0
-    },
-    {
-      "id": "col-sum-stop-ab275d",
-      "text": "Ce afișează?",
-      "code": "scoruri = [8, 6, 0, 9, 7]\npuncte = 0\nfor n in scoruri:\n    if n < 1:\n        break\n    puncte = puncte + n\nprint(puncte)",
-      "options": ["14", "30", "0", "8\n14"],
-      "answer": 0
-    },
-    {
-      "id": "col-sum-stop-7f749d",
-      "text": "Ce afișează?",
-      "code": "pasi = [100, 200, 999, 300]\nparcurs = 0\nfor n in pasi:\n    if n >= 999:\n        break\n    parcurs = parcurs + n\nprint(parcurs)",
-      "options": ["300", "600", "0", "100\n300"],
       "answer": 0
     },
     {
@@ -669,6 +553,110 @@
         "mari = []",
         "orase = [\"Roma\", \"Berlin\", \"Oslo\", \"Madrid\"]"
       ],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-long-e051bf",
+      "text": "Ce conține `lungi` la final?",
+      "code": "cuvinte = [\"nor\", \"luna\", \"planeta\", \"stea\"]\nlungi = []\nfor cuvant in cuvinte:\n    if len(cuvant) > 4:\n        lungi.append(cuvant.upper())",
+      "options": ["['PLANETA']", "['LUNA', 'PLANETA', 'STEA']", "['planeta']", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-long-3692ce",
+      "text": "Ce conține `lungi` la final?",
+      "code": "echipaj = [\"Tommy\", \"Lance\", \"Cortez\", \"Ken\"]\nlungi = []\nfor nume in echipaj:\n    if len(nume) > 4:\n        lungi.append(nume.upper())",
+      "options": [
+        "['TOMMY', 'LANCE', 'CORTEZ']",
+        "['Tommy', 'Lance', 'Cortez']",
+        "[]",
+        "['CORTEZ']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-long-05011c",
+      "text": "Ce conține `mari` la final?",
+      "code": "lumi = [\"Luna\", \"Venus\", \"Terra\", \"Jupiter\", \"Io\"]\nmari = []\nfor lume in lumi:\n    if len(lume) > 5:\n        mari.append(lume.upper())",
+      "options": ["['JUPITER']", "['VENUS', 'TERRA', 'JUPITER']", "['Jupiter']", "[]"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-long-daaac0",
+      "text": "Ce conține `lungi` la final?",
+      "code": "produse = [\"orez\", \"paine\", \"sare\", \"branza\"]\nlungi = []\nfor produs in produse:\n    if len(produs) > 4:\n        lungi.append(produs.upper())",
+      "options": [
+        "['PAINE', 'BRANZA']",
+        "['OREZ', 'PAINE', 'SARE', 'BRANZA']",
+        "['paine', 'branza']",
+        "[]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-count-4547a9",
+      "text": "Ce conține `numar` la final?",
+      "code": "cuvant = \"banana\"\nnumar = 0\nfor i in range(len(cuvant)):\n    if cuvant[i] == \"a\":\n        numar = numar + 1",
+      "options": ["3", "1", "0", "2"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-count-e36920",
+      "text": "Ce conține `numar` la final?",
+      "code": "cuvant = \"Mississippi\"\nnumar = 0\nfor i in range(len(cuvant)):\n    if cuvant[i] == \"s\":\n        numar = numar + 1",
+      "options": ["4", "7", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-count-29c825",
+      "text": "Ce conține `numar` la final?",
+      "code": "nume = \"Lance Vance\"\nnumar = 0\nfor i in range(len(nume)):\n    if nume[i] == \"e\":\n        numar = numar + 1",
+      "options": ["2", "9", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-join-d04597",
+      "text": "Ce conține `cod` la final?",
+      "code": "parti = [\"A\", \"B\", \"C\"]\ncod = \"\"\nfor w in parti:\n    cod = cod + w + \"-\"",
+      "options": ["'A-B-C-'", "'C-'", "'-A-B-C'", "'ABC'"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-join-e3684c",
+      "text": "Ce conține `steag` la final?",
+      "code": "culori = [\"rosu\", \"albastru\"]\nsteag = \"\"\nfor w in culori:\n    steag = steag + w + \"-\"",
+      "options": ["'rosu-albastru-'", "'albastru-'", "'-rosu-albastru'", "'rosualbastru'"],
+      "answer": 0
+    },
+    {
+      "id": "col-holds-join-0d7d40",
+      "text": "Ce conține `traseu` la final?",
+      "code": "opriri = [\"Marte\", \"Luna\", \"Soare\"]\ntraseu = \"\"\nfor w in opriri:\n    traseu = traseu + w + \"-\"",
+      "options": ["'Marte-Luna-Soare-'", "'Soare-'", "'-Marte-Luna-Soare'", "'MarteLunaSoare'"],
+      "answer": 0
+    },
+    {
+      "id": "col-input-find-f40a75",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "tinta = input()\nsectoare = [\"A1\", \"B4\", \"C7\", \"D2\"]\nfor i in range(len(sectoare)):\n    if sectoare[i] == tinta:\n        print(f\"Gasit la {i}\")",
+      "output": "Gasit la 2",
+      "options": ["C7", "2", "c7", "B4"],
+      "answer": 0
+    },
+    {
+      "id": "col-input-find-bc1406",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "tinta = input()\nechipaj = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i in range(len(echipaj)):\n    if echipaj[i] == tinta:\n        print(f\"Gasit la {i}\")",
+      "output": "Gasit la 1",
+      "options": ["Lance", "1", "lance", "Tommy"],
+      "answer": 0
+    },
+    {
+      "id": "col-input-find-54c4df",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "tinta = input()\nplanete = [\"Marte\", \"Venus\", \"Terra\", \"Jupiter\"]\nfor i in range(len(planete)):\n    if planete[i] == tinta:\n        print(f\"Gasit la {i}\")",
+      "output": "Gasit la 3",
+      "options": ["Jupiter", "3", "jupiter", "Terra"],
       "answer": 0
     }
   ]

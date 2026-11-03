@@ -291,18 +291,6 @@
           "items": "\"Lance\", \"Cortez\"",
           "x": "member",
           "greet": "Welcome"
-        },
-        {
-          "v": "names",
-          "items": "\"Tommy\", \"Phil\", \"Sonny\", \"Ken\"",
-          "x": "n",
-          "greet": "Hello"
-        },
-        {
-          "v": "players",
-          "items": "\"Ana\", \"Rex\"",
-          "x": "i",
-          "greet": "Good luck"
         }
       ],
       "mistakes": [
@@ -327,11 +315,6 @@
           "v": "tasks",
           "items": "\"Refuel\", \"Check engines\", \"Launch\"",
           "label": "Step"
-        },
-        {
-          "v": "players",
-          "items": "\"Ana\", \"Rex\", \"Kai\", \"Zoe\"",
-          "label": "Player"
         }
       ],
       "mistakes": [
@@ -358,30 +341,6 @@
           "items": "7, 3, 9, 1",
           "t": "points",
           "x": "s"
-        },
-        {
-          "v": "tanks",
-          "items": "40, 60",
-          "t": "fuel",
-          "x": "tank"
-        },
-        {
-          "v": "ages",
-          "items": "12, 30, 8",
-          "t": "total",
-          "x": "age"
-        },
-        {
-          "v": "steps",
-          "items": "100, 250, 150, 500",
-          "t": "walked",
-          "x": "s"
-        },
-        {
-          "v": "coins",
-          "items": "2, 2, 2, 2, 2",
-          "t": "total",
-          "x": "c"
         }
       ],
       "mistakes": [
@@ -419,14 +378,6 @@
           "op": "<",
           "lim": 5,
           "flip": "<="
-        },
-        {
-          "v": "speeds",
-          "items": "90, 120, 130, 100",
-          "c": "safe",
-          "op": "<=",
-          "lim": 100,
-          "flip": "<"
         }
       ],
       "mistakes": [
@@ -455,11 +406,6 @@
           "v": "levels",
           "items": "3, 8, 2, 5",
           "b": "top"
-        },
-        {
-          "v": "fuel",
-          "items": "40, 70, 20, 55",
-          "b": "most"
         }
       ],
       "mistakes": [
@@ -497,14 +443,6 @@
           "op": ">=",
           "lim": 50,
           "neg": "<"
-        },
-        {
-          "v": "prices",
-          "items": "3, 15, 7, 22",
-          "w": "cheap",
-          "op": "<=",
-          "lim": 7,
-          "neg": ">"
         }
       ],
       "mistakes": [
@@ -919,6 +857,109 @@
         }
       ],
       "bug": ["n > {{b}}", "n < {{b}}"]
+    },
+    {
+      "id": "lf-holds-raise",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{v}} = [{{items}}]\nfor i in range(len({{v}})):\n    if {{v}}[i] < {{lim}}:\n        {{v}}[i] = {{lim}}",
+      "values": [
+        {
+          "v": "scores",
+          "items": "4, 9, 2, 7, 3",
+          "lim": 5
+        },
+        {
+          "v": "levels",
+          "items": "12, 8, 30, 5",
+          "lim": 10
+        },
+        {
+          "v": "speeds",
+          "items": "60, 45, 80, 30",
+          "lim": 50
+        },
+        {
+          "v": "temps",
+          "items": "18, 25, 15, 30, 10",
+          "lim": 20
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["< {{lim}}", "> {{lim}}"],
+        [
+          "for i in range(len({{v}})):\n    if {{v}}[i] < {{lim}}:\n        {{v}}[i] = {{lim}}",
+          "for n in {{v}}:\n    if n < {{lim}}:\n        n = {{lim}}"
+        ],
+        ["range(len({{v}}))", "range(len({{v}}) - 1)"]
+      ]
+    },
+    {
+      "id": "lf-holds-longest",
+      "kind": "holds",
+      "text": "What is in `{{b}}` at the end?",
+      "code": "{{v}} = [{{items}}]\n{{b}} = \"\"\nfor w in {{v}}:\n    if len(w) > len({{b}}):\n        {{b}} = w",
+      "values": [
+        {
+          "v": "planets",
+          "items": "\"Mars\", \"Saturn\", \"Venus\", \"Uranus\"",
+          "b": "longest"
+        },
+        {
+          "v": "crew",
+          "items": "\"Zoe\", \"Lance\", \"Tommy\", \"Ben\"",
+          "b": "longest"
+        },
+        {
+          "v": "stops",
+          "items": "\"Mars\", \"Earth\", \"Venus\", \"Pluto\"",
+          "b": "longest"
+        }
+      ],
+      "variable": "{{b}}",
+      "mistakes": [
+        ["len(w) > len({{b}})", "len(w) >= len({{b}})"],
+        ["len(w) > len({{b}})", "w > {{b}}"],
+        ["len(w) > len({{b}})", "len(w) < len({{b}})"]
+      ]
+    },
+    {
+      "id": "lf-input-limit",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{l}} = int(input())\n{{v}} = [{{items}}]\nfor n in {{v}}:\n    if n > {{l}}:\n        print(n)",
+      "values": [
+        {
+          "l": "limit",
+          "v": "ages",
+          "items": "12, 18, 30, 15",
+          "n": 15,
+          "first": 18,
+          "low": 12,
+          "high": 30
+        },
+        {
+          "l": "limit",
+          "v": "scores",
+          "items": "7, 15, 9, 21",
+          "n": 9,
+          "first": 15,
+          "low": 7,
+          "high": 21
+        },
+        {
+          "l": "limit",
+          "v": "speeds",
+          "items": "40, 90, 65, 120",
+          "n": 65,
+          "first": 90,
+          "low": 40,
+          "high": 120
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{first}}", "{{low}}", "{{high}}"]
     }
   ]
 }
