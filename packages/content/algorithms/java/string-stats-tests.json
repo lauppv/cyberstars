@@ -1,5 +1,14 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "StringAnalyzer" },
+      { "kind": "function", "name": "vowelCount" },
+      { "kind": "function", "name": "consonantCount" },
+      { "kind": "function", "name": "wordCount" },
+      { "kind": "call", "name": "StringAnalyzer" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "Hello World\n" },
     { "visible": true, "stdin": "Java is fun\n" },

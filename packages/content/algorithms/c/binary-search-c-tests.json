@@ -1,7 +1,14 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "forbids": [{ "kind": "call", "name": "bsearch" }]
+    "forbids": [
+      { "kind": "call", "name": "bsearch" },
+      { "kind": "call", "name": "lfind" },
+      { "kind": "call", "name": "lsearch" },
+      { "kind": "call", "name": "tsearch" },
+      { "kind": "call", "name": "tfind" },
+      { "kind": "call", "name": "hsearch" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "5\n1\n3\n5\n7\n9\n5\n" },

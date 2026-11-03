@@ -36,11 +36,15 @@ import com.sun.source.tree.ExpressionStatementTree;
 import com.sun.source.tree.ExpressionTree;
 import com.sun.source.tree.ForLoopTree;
 import com.sun.source.tree.IdentifierTree;
+import com.sun.source.tree.LambdaExpressionTree;
+import com.sun.source.tree.ImportTree;
 import com.sun.source.tree.LiteralTree;
+import com.sun.source.tree.MemberReferenceTree;
 import com.sun.source.tree.MemberSelectTree;
 import com.sun.source.tree.MethodInvocationTree;
 import com.sun.source.tree.MethodTree;
 import com.sun.source.tree.NewClassTree;
+import com.sun.source.tree.ParameterizedTypeTree;
 import com.sun.source.tree.Tree;
 import com.sun.source.tree.VariableTree;
 import com.sun.source.tree.WhileLoopTree;
@@ -230,7 +234,13 @@ public class Runner {
     String error; // first parse error, or null
     String mainClass = "Main";
     final List<InjectPoint> points = new ArrayList<>();
+    // A call counts by its bare name and by its class's, Arrays.sort as both sort and
+    // Arrays.sort. A forbid reads what javac resolves instead (Structure.Reached).
     final java.util.Set<String> callNames = new java.util.HashSet<>();
+    // Bare-name calls, and the classes a static import brings every member of (import static
+    // java.util.Arrays.*): such a call to a method the student doesn't define is that class's.
+    final java.util.Set<String> bareCalls = new java.util.HashSet<>();
+    final java.util.Set<String> staticOwners = new java.util.HashSet<>();
     final java.util.Set<String> variableNames = new java.util.HashSet<>();
     final java.util.Set<String> methodNames = new java.util.HashSet<>();
     // A method that calls itself somewhere in its own body.
@@ -362,8 +372,15 @@ public class Runner {
         @Override
         public Void visitMethodInvocation(MethodInvocationTree node, Void unused) {
           ExpressionTree select = node.getMethodSelect();
-          if (select instanceof IdentifierTree id) callNames.add(id.getName().toString());
-          if (select instanceof MemberSelectTree ms) callNames.add(ms.getIdentifier().toString());
+          if (select instanceof IdentifierTree id) {
+            callNames.add(id.getName().toString());
+            bareCalls.add(id.getName().toString());
+          }
+          if (select instanceof MemberSelectTree ms) {
+            callNames.add(ms.getIdentifier().toString());
+            String owner = lastName(ms.getExpression());
+            if (owner != null) callNames.add(owner + "." + ms.getIdentifier());
+          }
           // A method calls itself by its bare name or through this., with as
           // many arguments as it takes: name.equals(...) on a field or an
           // overload with another arity is a different method, and with an
@@ -379,6 +396,35 @@ public class Runner {
           String key = called + "/" + node.getArguments().size();
           if (called != null && key.equals(enclosingMethods.peek())) selfCalls.add(key);
           return super.visitMethodInvocation(node, unused);
+        }
+
+        @Override
+        public Void visitMemberReference(MemberReferenceTree node, Void unused) {
+          // Arrays::sort and ArrayDeque::new hand a method or a constructor out to be called
+          // elsewhere, so they count as calls to it.
+          // ArrayDeque<Integer>::new names its type with the generics, like new ArrayDeque<>().
+          ExpressionTree qualifier = node.getQualifierExpression();
+          String owner =
+              qualifier instanceof ParameterizedTypeTree ? simpleType(qualifier) : lastName(qualifier);
+          String name = node.getName().toString();
+          if (name.equals("<init>")) {
+            if (owner != null) callNames.add(owner);
+          } else {
+            callNames.add(name);
+            if (owner != null) callNames.add(owner + "." + name);
+          }
+          return super.visitMemberReference(node, unused);
+        }
+
+        @Override
+        public Void visitImport(ImportTree node, Void unused) {
+          // import static java.util.Arrays.sort makes a bare sort(a) Arrays.sort.
+          if (node.isStatic() && node.getQualifiedIdentifier() instanceof MemberSelectTree ms) {
+            String owner = lastName(ms.getExpression());
+            if (owner != null && ms.getIdentifier().contentEquals("*")) staticOwners.add(owner);
+            else if (owner != null) callNames.add(owner + "." + ms.getIdentifier());
+          }
+          return super.visitImport(node, unused);
         }
 
         @Override
@@ -490,6 +536,14 @@ public class Runner {
         public Void visitLiteral(LiteralTree node, Void unused) {
           if (node.getValue() instanceof Integer i) intLiterals.add(i.longValue());
           if (node.getValue() instanceof Long l) intLiterals.add(l);
+          // A forbidden constant can't hide in a string either: "58 64".
+          if (node.getValue() instanceof String text) {
+            java.util.regex.Matcher digits = java.util.regex.Pattern.compile("\\d+").matcher(text);
+            while (digits.find()) {
+              String run = digits.group();
+              if (run.length() <= 18) intLiterals.add(Long.parseLong(run));
+            }
+          }
           return super.visitLiteral(node, unused);
         }
 
@@ -497,10 +551,22 @@ public class Runner {
         public Void visitCompilationUnit(CompilationUnitTree node, Void unused) {
           super.visitCompilationUnit(node, unused);
           for (String key : selfCalls) if (methodsByArity.get(key) == 1) hasRecursion = true;
+          for (String owner : staticOwners) {
+            for (String call : bareCalls) {
+              if (!methodNames.contains(call)) callNames.add(owner + "." + call);
+            }
+          }
           return null;
         }
       }.scan(unit, null);
       points.sort(Comparator.comparingLong(InjectPoint::start));
+    }
+
+    // The simple name a qualifier ends in: Arrays and java.util.Arrays are both Arrays.
+    static String lastName(Tree qualifier) {
+      if (qualifier instanceof IdentifierTree id) return id.getName().toString();
+      if (qualifier instanceof MemberSelectTree ms) return ms.getIdentifier().toString();
+      return null;
     }
 
     static String simpleType(Tree type) {
@@ -704,10 +770,186 @@ public class Runner {
       for (Object rule : asList(structure.getOrDefault("requires", new ArrayList<>()))) {
         if (!holds(parsed, asMap(rule))) failures.add(failure("require", rule));
       }
-      for (Object rule : asList(structure.getOrDefault("forbids", new ArrayList<>()))) {
-        if (holds(parsed, asMap(rule))) failures.add(failure("forbid", rule));
+      Reached reached = null;
+      for (Object raw : asList(structure.getOrDefault("forbids", new ArrayList<>()))) {
+        Map<String, Object> rule = asMap(raw);
+        boolean holds;
+        if ("call".equals(rule.get("kind")) && rule.get("name") instanceof String name) {
+          // Resolved once per program, for every call it forbids. A program that doesn't
+          // compile stops on its compile error, whatever its structure.
+          if (reached == null) reached = Reached.of(parsed);
+          holds = reached.compiled ? reached.dynamic || reached.names.contains(name) : holds(parsed, rule);
+        } else {
+          holds = holds(parsed, rule);
+        }
+        if (holds) failures.add(failure("forbid", rule));
       }
       return failures;
+    }
+
+    // What the program reaches of the library, as javac itself resolves every name: a method by
+    // its name and its class's (sort and Arrays.sort), a class it builds, extends or names
+    // (LinkedList). A name that resolves to the student's own method or class is theirs from
+    // wherever it is called (bare, through this, an object, a static import of the same name
+    // elsewhere); one their class inherits from the library, or a static import brings in, is
+    // the library's.
+    static final class Reached {
+      boolean compiled;
+      final java.util.Set<String> names = new java.util.HashSet<>();
+      // Reflection, another program or code compiled at run time can reach any method by a name
+      // built as the program runs.
+      boolean dynamic;
+
+      static final List<String> DYNAMIC_PACKAGES =
+          List.of(
+              "java.lang.reflect.",
+              "java.lang.invoke.",
+              "java.lang.classfile.",
+              "jdk.jshell.",
+              "jdk.internal.",
+              "javax.tools.",
+              "javax.script.",
+              "sun.misc.");
+      static final java.util.Set<String> DYNAMIC_CLASSES =
+          java.util.Set.of(
+              "java.lang.ClassLoader",
+              "java.net.URLClassLoader",
+              "java.lang.ProcessBuilder",
+              "java.lang.Process",
+              "java.lang.ProcessHandle");
+      static final java.util.Set<String> CLASS_LOOKUPS =
+          java.util.Set.of(
+              "forName",
+              "getMethod",
+              "getMethods",
+              "getDeclaredMethod",
+              "getDeclaredMethods",
+              "getConstructor",
+              "getConstructors",
+              "getDeclaredConstructor",
+              "getDeclaredConstructors",
+              "newInstance",
+              "getClassLoader");
+
+      static Reached of(Parsed parsed) {
+        Reached reached = new Reached();
+        DiagnosticCollector<JavaFileObject> diags = new DiagnosticCollector<>();
+        JavacTask task =
+            (JavacTask)
+                COMPILER.getTask(
+                    new StringWriter(),
+                    null,
+                    diags,
+                    List.of("-proc:none"),
+                    null,
+                    List.of(new StringSource(parsed.mainClass, parsed.source)));
+        Iterable<? extends CompilationUnitTree> units;
+        try {
+          units = task.parse();
+          task.analyze();
+        } catch (Exception e) {
+          return reached;
+        }
+        for (Diagnostic<? extends JavaFileObject> d : diags.getDiagnostics()) {
+          if (d.getKind() == Diagnostic.Kind.ERROR) return reached;
+        }
+        reached.compiled = true;
+        Trees trees = Trees.instance(task);
+        reached.trees = trees;
+        for (CompilationUnitTree unit : units) {
+          new TreePathScanner<Void, Void>() {
+            // An import alone reaches nothing; what it brings in is resolved where it is used.
+            @Override
+            public Void visitImport(ImportTree node, Void unused) {
+              return null;
+            }
+
+            @Override
+            public Void visitIdentifier(IdentifierTree node, Void unused) {
+              reached.note(trees.getElement(getCurrentPath()));
+              return super.visitIdentifier(node, unused);
+            }
+
+            @Override
+            public Void visitMemberSelect(MemberSelectTree node, Void unused) {
+              reached.note(trees.getElement(getCurrentPath()));
+              return super.visitMemberSelect(node, unused);
+            }
+
+            @Override
+            public Void visitMemberReference(MemberReferenceTree node, Void unused) {
+              reached.note(trees.getElement(getCurrentPath()));
+              reached.noteType(trees.getTypeMirror(getCurrentPath()));
+              return super.visitMemberReference(node, unused);
+            }
+
+            @Override
+            public Void visitNewClass(NewClassTree node, Void unused) {
+              reached.note(trees.getElement(getCurrentPath()));
+              return super.visitNewClass(node, unused);
+            }
+
+            // A lambda is an object of the interface it is handed out as: (a, b) -> a - b given
+            // to sort is a Comparator, though the word appears nowhere.
+            @Override
+            public Void visitLambdaExpression(LambdaExpressionTree node, Void unused) {
+              reached.noteType(trees.getTypeMirror(getCurrentPath()));
+              return super.visitLambdaExpression(node, unused);
+            }
+          }.scan(unit, null);
+        }
+        return reached;
+      }
+
+      Trees trees;
+
+      void note(javax.lang.model.element.Element element) {
+        // The student's own code has a tree here; the library's doesn't.
+        if (element == null || trees.getPath(element) != null) return;
+        javax.lang.model.element.ElementKind kind = element.getKind();
+        if (kind == javax.lang.model.element.ElementKind.METHOD
+            || kind == javax.lang.model.element.ElementKind.CONSTRUCTOR) {
+          if (!(element.getEnclosingElement()
+              instanceof javax.lang.model.element.TypeElement owner)) {
+            return;
+          }
+          String type = owner.getSimpleName().toString();
+          String method = element.getSimpleName().toString();
+          if (kind == javax.lang.model.element.ElementKind.CONSTRUCTOR) {
+            noteClass(owner);
+          } else {
+            names.add(method);
+            names.add(type + "." + method);
+          }
+          dynamic |= dynamic(owner.getQualifiedName().toString(), method);
+        } else if (element instanceof javax.lang.model.element.TypeElement type) {
+          noteClass(type);
+        }
+      }
+
+      // A library class counts with every class above it: a Stack is a Vector.
+      void noteClass(javax.lang.model.element.TypeElement type) {
+        if (!names.add(type.getSimpleName().toString())) return;
+        dynamic |= dynamic(type.getQualifiedName().toString(), null);
+        noteType(type.getSuperclass());
+        for (javax.lang.model.type.TypeMirror parent : type.getInterfaces()) noteType(parent);
+      }
+
+      void noteType(javax.lang.model.type.TypeMirror type) {
+        if (type instanceof javax.lang.model.type.DeclaredType declared
+            && declared.asElement() instanceof javax.lang.model.element.TypeElement element
+            && trees.getPath(element) == null) {
+          noteClass(element);
+        }
+      }
+
+      static boolean dynamic(String type, String method) {
+        if (DYNAMIC_PACKAGES.stream().anyMatch(type::startsWith)) return true;
+        if (DYNAMIC_CLASSES.contains(type)) return true;
+        return method != null
+            && ((type.equals("java.lang.Class") && CLASS_LOOKUPS.contains(method))
+                || (type.equals("java.lang.Runtime") && method.equals("exec")));
+      }
     }
 
     static Map<String, Object> failure(String type, Object rule) {

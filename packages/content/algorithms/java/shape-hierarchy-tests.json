@@ -1,5 +1,18 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "Shape" },
+      { "kind": "class", "name": "Circle" },
+      { "kind": "class", "name": "Rectangle" },
+      { "kind": "modifier", "name": "abstract" },
+      { "kind": "extends" },
+      { "kind": "override" },
+      { "kind": "function", "name": "getArea" },
+      { "kind": "call", "name": "Circle" },
+      { "kind": "call", "name": "Rectangle" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "3\ncircle\n5\nrectangle\n4\n6\ncircle\n3\n" },
     { "visible": true, "stdin": "1\nrectangle\n10\n10\n" },

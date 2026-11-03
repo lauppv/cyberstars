@@ -1,7 +1,12 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "call", "name": "pthread_create" }]
+    "requires": [
+      { "kind": "call", "name": "pthread_create" },
+      { "kind": "call", "name": "pthread_join" },
+      { "kind": "call", "name": "pthread_mutex_lock" },
+      { "kind": "call", "name": "pthread_mutex_unlock" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "hello world\nthe code is clean\n" },

@@ -1,5 +1,8 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "class" }, { "kind": "object" }, { "kind": "function" }]
+  },
   "cases": [
     { "visible": true, "stdin": "hello\n42\n" },
     { "visible": true, "stdin": "Java\n100\n" },

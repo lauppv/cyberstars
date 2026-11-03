@@ -1,5 +1,12 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class" },
+      { "kind": "object" },
+      { "kind": "function", "name": "getTotal" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "2\nApple\n1.50\n3\nBread\n2.00\n2\n" },
     { "visible": true, "stdin": "3\nMilk\n3.99\n1\nEggs\n2.50\n2\nButter\n4.00\n1\n" },

@@ -1,5 +1,8 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "struct" }]
+  },
   "cases": [
     { "visible": true, "stdin": "3\nAlice\n85\nBob\n72\nCharlie\n90\n" },
     { "visible": true, "stdin": "2\nDan\n50\nEve\n50\n" },

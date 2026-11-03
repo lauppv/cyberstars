@@ -1,7 +1,11 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "call", "name": "pthread_create" }]
+    "requires": [
+      { "kind": "call", "name": "pthread_create" },
+      { "kind": "call", "name": "pthread_join" },
+      { "kind": "struct" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "6\n5\n3\n8\n1\n7\n4\n" },

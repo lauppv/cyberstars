@@ -1,5 +1,14 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "Counter" },
+      { "kind": "function", "name": "increment" },
+      { "kind": "function", "name": "decrement" },
+      { "kind": "function", "name": "getValue" },
+      { "kind": "call", "name": "Counter" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "5\ninc\ninc\nget\ndec\nget\n" },
     { "visible": true, "stdin": "4\ndec\ndec\ndec\nget\n" },

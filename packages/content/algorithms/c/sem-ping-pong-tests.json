@@ -1,7 +1,12 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "call", "name": "sem_wait" }]
+    "requires": [
+      { "kind": "call", "name": "pthread_create" },
+      { "kind": "call", "name": "sem_init" },
+      { "kind": "call", "name": "sem_wait" },
+      { "kind": "call", "name": "sem_post" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "3\n" },

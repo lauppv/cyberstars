@@ -1,5 +1,13 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "struct" },
+      { "kind": "pointer" },
+      { "kind": "deref" },
+      { "kind": "call", "name": "malloc" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "5\ninsert\n10\ninsert\n20\ninsert\n30\nprint\ninsert\n40\n" },
     { "visible": true, "stdin": "3\nprint\ninsert\n5\nprint\n" },

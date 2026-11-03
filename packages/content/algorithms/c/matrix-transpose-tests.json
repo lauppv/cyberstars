@@ -1,7 +1,7 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "loop" }]
+    "requires": [{ "kind": "nested_loop" }]
   },
   "cases": [{ "visible": true, "stdin": "" }]
 }

@@ -1,7 +1,12 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "call", "name": "fork" }]
+    "requires": [
+      { "kind": "call", "name": "fork" },
+      { "kind": "call", "name": "pipe" },
+      { "kind": "call", "name": "write" },
+      { "kind": "call", "name": "read" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "4\n10\n20\n30\n40\n" },

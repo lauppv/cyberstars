@@ -61,15 +61,21 @@ function callName(node: Node): string | null {
   return fn && fn.type === 'identifier' ? fn.text : null;
 }
 
-// Innermost identifier under a declarator (unwraps pointer_declarator /
-// array_declarator / function_declarator wrappers).
-function declaratorName(declarator: Node | null): string | null {
-  let node: Node | null = declarator;
-  while (node) {
-    if (node.type === 'identifier') return node.text;
-    node = node.childForFieldName('declarator');
+// The identifier a declarator declares, through pointers, arrays, function
+// declarators, initializers and parentheses: `*p`, `a[3]`, `(*len)(void)`.
+function declaredIdentifier(declarator: Node | null): Node | null {
+  let node = declarator;
+  while (node && node.type !== 'identifier') {
+    node =
+      node.type === 'parenthesized_declarator'
+        ? node.namedChild(0)
+        : node.childForFieldName('declarator');
   }
-  return null;
+  return node;
+}
+
+function declaratorName(declarator: Node | null): string | null {
+  return declaredIdentifier(declarator)?.text ?? null;
 }
 
 function declaredNames(root: Node): Set<string> {
@@ -186,15 +192,10 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
       for (const node of walk(root)) if (types.includes(node.type)) return true;
       return false;
     }
-    case 'int_literal': {
-      const values = new Set(rule.values ?? []);
-      for (const node of walk(root)) {
-        if (node.type !== 'number_literal') continue;
-        const value = parseIntLiteral(node.text);
-        if (value !== null && values.has(value)) return true;
-      }
-      return false;
-    }
+    case 'int_literal':
+      // A forbidden constant can't hide in a string or a sum of constants
+      // either: "58 64", 57 + 1.
+      return hasIntLiteral(root, new Set(rule.values ?? []));
     case 'comment': {
       // Whitespace-insensitive so `// printf( "..." );` still matches.
       const needle = (rule.contains ?? '').replace(/\s+/g, '');
@@ -238,6 +239,261 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
   }
 }
 
+// Whether the identifier names a function rather than a variable: in C the
+// declarator closest to the name decides, so `int *f(void)` is a function and
+// `int (*f)(void)` a pointer to one.
+function namesFunction(identifier: Node): boolean {
+  let up = identifier.parent;
+  while (up?.type === 'parenthesized_declarator') up = up.parent;
+  return up?.type === 'function_declarator';
+}
+
+const BLOCKS = new Set(['compound_statement', 'for_statement', 'translation_unit']);
+
+function enclosingBlock(node: Node): Node | null {
+  let up = node.parent;
+  while (up && !BLOCKS.has(up.type)) up = up.parent;
+  return up;
+}
+
+const SIMPLE_ESCAPES: Record<string, string> = {
+  n: '\n',
+  t: '\t',
+  r: '\r',
+  a: '\x07',
+  b: '\b',
+  f: '\f',
+  v: '\v',
+  e: '\x1b',
+};
+
+// What a string literal holds once its escapes are read ("\x35\x38" is "58"),
+// adjacent literals ("5" "8") joined as the compiler joins them.
+function stringValue(node: Node): string {
+  if (node.type === 'concatenated_string') {
+    return node.namedChildren
+      .filter((c) => c?.type === 'string_literal')
+      .map((c) => stringValue(c as Node))
+      .join('');
+  }
+  const body = node.text.replace(/^[LuU8]*"/, '').replace(/"$/, '');
+  return body.replace(
+    /\\(x[0-9a-fA-F]+|[0-7]{1,3}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|[\s\S])/g,
+    (_, esc: string) => {
+      if (/^[0-7]/.test(esc)) return String.fromCharCode(parseInt(esc, 8));
+      if (/^[xuU][0-9a-fA-F]/.test(esc)) {
+        return String.fromCodePoint(Math.min(parseInt(esc.slice(1, 9), 16), 0x10ffff));
+      }
+      return SIMPLE_ESCAPES[esc] ?? esc;
+    },
+  );
+}
+
+// A printf conversion: its width and precision only pad, so "%58d" never
+// prints 58.
+const FORMAT_SPEC = /%[-+ #0,(']*(?:\d+|\*)?(?:\.(?:\d+|\*))?(?:hh|h|ll|l|L|q|j|z|t)?[a-zA-Z%]/g;
+
+function digitRuns(text: string): number[] {
+  // Past 15 digits a run is no answer, and no longer an exact number.
+  return (text.replace(FORMAT_SPEC, ' ').match(/\d+/g) ?? [])
+    .filter((run) => run.length <= 15)
+    .map(Number);
+}
+
+function numberValue(text: string): number | null {
+  if (!/^0[xX]/.test(text) && /[.eE]/.test(text)) {
+    const value = parseFloat(text.replace(/[fFlL]+$/, ''));
+    return Number.isInteger(value) ? value : null;
+  }
+  return parseIntLiteral(text);
+}
+
+// The value of an expression made only of constants (57 + 1, "5" "8"), or null.
+function folded(node: Node): number | string | null {
+  switch (node.type) {
+    case 'number_literal':
+      return numberValue(node.text);
+    case 'string_literal':
+    case 'concatenated_string':
+      return stringValue(node);
+    case 'parenthesized_expression':
+      return node.namedChild(0) ? folded(node.namedChild(0) as Node) : null;
+    case 'unary_expression': {
+      const operator = node.childForFieldName('operator')?.type;
+      const argument = node.childForFieldName('argument');
+      const value = argument ? folded(argument) : null;
+      if (typeof value !== 'number' || (operator !== '-' && operator !== '+')) return null;
+      return operator === '-' ? -value : value;
+    }
+    case 'binary_expression': {
+      const operator = node.childForFieldName('operator')?.type;
+      const left = node.childForFieldName('left');
+      const right = node.childForFieldName('right');
+      const a = left ? folded(left) : null;
+      const b = right ? folded(right) : null;
+      if (typeof a !== 'number' || typeof b !== 'number') return null;
+      if (operator === '+') return a + b;
+      if (operator === '-') return a - b;
+      return operator === '*' ? a * b : null;
+    }
+    default:
+      return null;
+  }
+}
+
+function hasIntLiteral(root: Node, values: Set<number>): boolean {
+  for (const node of walk(root)) {
+    // A piece of "5" "8" is read with the whole.
+    if (node.type === 'string_literal' && node.parent?.type === 'concatenated_string') continue;
+    const value = folded(node);
+    if (typeof value === 'number' && values.has(value)) return true;
+    if (typeof value === 'string' && digitRuns(value).some((v) => values.has(v))) return true;
+  }
+  return false;
+}
+
+interface Binding {
+  block: Node;
+  start: number;
+}
+
+// Calls that look a function up by a name built at run time, or run another
+// program (sort, a second binary): whoever uses one can reach the forbidden
+// one too.
+const DYNAMIC_LOOKUPS = new Set([
+  'dlsym',
+  'dlvsym',
+  'dlopen',
+  'system',
+  'popen',
+  'execv',
+  'execve',
+  'execvp',
+  'execvpe',
+  'execl',
+  'execle',
+  'execlp',
+  'fexecve',
+  'posix_spawn',
+  'posix_spawnp',
+]);
+
+// Built once per program for every call it forbids: where the student's own
+// code declares each name, every identifier used, the macro bodies and the
+// strings. A variable, a parameter of a function they define or an enum
+// constant is seen in its block from where it starts; a function they define
+// in the whole file, since a call finds it wherever it stands (main may come
+// first, after a prototype). A prototype or an extern declaration names the
+// library's own, so it binds nothing; the identifiers that declare count as
+// no use either way.
+function cNames(root: Node) {
+  const bindings = new Map<string, Binding[]>();
+  const declaring = new Set<number>();
+  const identifiers = new Map<string, Node[]>();
+  const macros: string[] = [];
+  const strings: { value: string; inAsm: boolean }[] = [];
+  const bind = (identifier: Node | null, block: Node | null, own: boolean, start?: number) => {
+    if (!identifier) return;
+    declaring.add(identifier.id);
+    if (!own || !block) return;
+    const list = bindings.get(identifier.text) ?? [];
+    list.push({ block, start: start ?? identifier.startIndex });
+    bindings.set(identifier.text, list);
+  };
+  for (const node of walk(root)) {
+    if (node.type === 'identifier') {
+      const list = identifiers.get(node.text) ?? [];
+      list.push(node);
+      identifiers.set(node.text, list);
+    } else if (node.type === 'preproc_arg') {
+      macros.push(node.text);
+    } else if (
+      node.type === 'concatenated_string' ||
+      (node.type === 'string_literal' && node.parent?.type !== 'concatenated_string')
+    ) {
+      let inAsm = false;
+      for (let up = node.parent; up && !inAsm; up = up.parent) {
+        inAsm = /asm|attribute|declspec/.test(up.type);
+      }
+      strings.push({ value: stringValue(node), inAsm });
+    } else if (node.type === 'declaration') {
+      const extern = node.children.some(
+        (c) => c?.type === 'storage_class_specifier' && c.text === 'extern',
+      );
+      for (const declarator of node.childrenForFieldName('declarator')) {
+        const identifier = declaredIdentifier(declarator);
+        bind(
+          identifier,
+          enclosingBlock(node),
+          !extern && !!identifier && !namesFunction(identifier),
+        );
+      }
+    } else if (node.type === 'function_definition') {
+      const declarator = node.childForFieldName('declarator');
+      bind(declaredIdentifier(declarator), enclosingBlock(node), true, 0);
+      // Its parameters are seen in its body.
+      let fn: Node | null = declarator;
+      while (fn && fn.type !== 'function_declarator') {
+        fn =
+          fn.type === 'parenthesized_declarator'
+            ? fn.namedChild(0)
+            : fn.childForFieldName('declarator');
+      }
+      for (const param of fn?.childForFieldName('parameters')?.namedChildren ?? []) {
+        if (param?.type === 'parameter_declaration') {
+          bind(
+            declaredIdentifier(param.childForFieldName('declarator')),
+            node.childForFieldName('body'),
+            true,
+          );
+        }
+      }
+    } else if (node.type === 'parameter_declaration') {
+      // A prototype's parameter names nothing past it.
+      bind(declaredIdentifier(node.childForFieldName('declarator')), null, false);
+    } else if (node.type === 'enumerator') {
+      bind(node.childForFieldName('name'), enclosingBlock(node), true);
+    }
+  }
+  return { bindings, declaring, identifiers, macros, strings };
+}
+
+type CNames = ReturnType<typeof cNames>;
+
+// A forbidden function is forbidden in any use, not only a direct call: a
+// pointer to it (`size_t (*len)(const char *) = strlen;`), a macro that
+// expands to it (`#define LEN strlen`) or pastes it together (`a##b`), its
+// compiler builtin (`__builtin_strlen`), a name the linker is told to bind to
+// it (`__asm__("strlen")`, `weakref("strlen")`, `#pragma redefine_extname`)
+// or a lookup by name (`dlsym`). A name the student declares themselves
+// (`int pow = 1;`, their own `strlen`) is theirs where it is seen.
+function refersTo(names: CNames, name: string): boolean {
+  const bare = name.replace(/\W/g, '');
+  const word = new RegExp(`\\b(?:__builtin_)?${bare}\\b`);
+  if (names.macros.some((body) => body.includes('##') || word.test(body))) return true;
+  if (names.strings.some((s) => s.value === name || (s.inAsm && word.test(s.value)))) return true;
+  const used = (identifier: Node) => {
+    if (names.declaring.has(identifier.id)) return false;
+    const seen = new Set(
+      (names.bindings.get(identifier.text) ?? [])
+        .filter((b) => b.start < identifier.startIndex)
+        .map((b) => b.block.id),
+    );
+    let up = identifier.parent;
+    while (up && !seen.has(up.id)) up = up.parent;
+    return !up;
+  };
+  for (const spelling of [
+    name,
+    `__builtin_${name}`,
+    `__builtin___${name}_chk`,
+    ...DYNAMIC_LOOKUPS,
+  ]) {
+    if ((names.identifiers.get(spelling) ?? []).some(used)) return true;
+  }
+  return false;
+}
+
 export function checkStructure(
   root: Node,
   structure: LessonTestsSpec['structure'],
@@ -245,8 +501,14 @@ export function checkStructure(
   const failures: StructureFailure[] = [];
   for (const rule of structure?.requires ?? [])
     if (!ruleHolds(root, rule)) failures.push({ type: 'require', rule });
-  for (const rule of structure?.forbids ?? [])
-    if (ruleHolds(root, rule)) failures.push({ type: 'forbid', rule });
+  let names: CNames | null = null;
+  for (const rule of structure?.forbids ?? []) {
+    const holds =
+      rule.kind === 'call' && rule.name
+        ? refersTo((names ??= cNames(root)), rule.name)
+        : ruleHolds(root, rule);
+    if (holds) failures.push({ type: 'forbid', rule });
+  }
   return failures;
 }
 

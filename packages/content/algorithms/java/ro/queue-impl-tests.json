@@ -1,5 +1,26 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "Coada" },
+      { "kind": "function", "name": "adauga" },
+      { "kind": "function", "name": "scoate" },
+      { "kind": "function", "name": "varf" },
+      { "kind": "call", "name": "ArrayList" }
+    ],
+    "forbids": [
+      { "kind": "call", "name": "ArrayDeque" },
+      { "kind": "call", "name": "LinkedList" },
+      { "kind": "call", "name": "Vector" },
+      { "kind": "call", "name": "PriorityQueue" },
+      { "kind": "call", "name": "ConcurrentLinkedQueue" },
+      { "kind": "call", "name": "ConcurrentLinkedDeque" },
+      { "kind": "call", "name": "LinkedBlockingQueue" },
+      { "kind": "call", "name": "LinkedBlockingDeque" },
+      { "kind": "call", "name": "ArrayBlockingQueue" },
+      { "kind": "call", "name": "PriorityBlockingQueue" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "6\nadauga\n10\nadauga\n20\nvarf\nscoate\nscoate\nscoate\n" },
     { "visible": true, "stdin": "4\nadauga\n5\nadauga\n15\nscoate\nvarf\n" },

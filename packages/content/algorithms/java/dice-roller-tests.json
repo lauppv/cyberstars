@@ -1,5 +1,14 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class" },
+      { "kind": "object" },
+      { "kind": "function" },
+      { "kind": "call", "name": "Random" },
+      { "kind": "call", "name": "nextInt" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "6\n42\n1\n" },
     { "visible": true, "stdin": "6\n1\n3\n" },
@@ -20,9 +29,6 @@
     { "stdin": "6\n987654321\n200\n", "generated": true },
     { "stdin": "3\n-77\n25\n", "generated": true },
     { "stdin": "12\n555\n40\n", "generated": true },
-    {
-      "stdin": "1073741825\n20261010\n20000\n",
-      "load": true
-    }
+    { "stdin": "1073741825\n20261010\n20000\n", "load": true }
   ]
 }

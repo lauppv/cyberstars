@@ -1,5 +1,18 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "Forma" },
+      { "kind": "class", "name": "Cerc" },
+      { "kind": "class", "name": "Dreptunghi" },
+      { "kind": "modifier", "name": "abstract" },
+      { "kind": "extends" },
+      { "kind": "override" },
+      { "kind": "function", "name": "getArie" },
+      { "kind": "call", "name": "Cerc" },
+      { "kind": "call", "name": "Dreptunghi" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "3\ncerc\n5\ndreptunghi\n4\n6\ncerc\n3\n" },
     { "visible": true, "stdin": "1\ndreptunghi\n10\n10\n" },

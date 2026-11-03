@@ -1,5 +1,14 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "ContBancar" },
+      { "kind": "variable", "name": "sold" },
+      { "kind": "function", "name": "depune" },
+      { "kind": "function", "name": "retrage" },
+      { "kind": "call", "name": "ContBancar" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "100\n3\ndepune\n50\nretrage\n30\nretrage\n200\n" },
     { "visible": true, "stdin": "0\n2\ndepune\n500\nretrage\n500\n" },

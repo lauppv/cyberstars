@@ -19,6 +19,30 @@
       {
         "kind": "call",
         "name": "qsort"
+      },
+      {
+        "kind": "call",
+        "name": "qsort_r"
+      },
+      {
+        "kind": "call",
+        "name": "tsearch"
+      },
+      {
+        "kind": "call",
+        "name": "tfind"
+      },
+      {
+        "kind": "call",
+        "name": "tdelete"
+      },
+      {
+        "kind": "call",
+        "name": "twalk"
+      },
+      {
+        "kind": "call",
+        "name": "twalk_r"
       }
     ]
   },

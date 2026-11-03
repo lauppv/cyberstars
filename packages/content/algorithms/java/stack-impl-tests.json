@@ -1,5 +1,22 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "Stack" },
+      { "kind": "function", "name": "push" },
+      { "kind": "function", "name": "pop" },
+      { "kind": "function", "name": "peek" },
+      { "kind": "call", "name": "ArrayList" }
+    ],
+    "forbids": [
+      { "kind": "call", "name": "ArrayDeque" },
+      { "kind": "call", "name": "LinkedList" },
+      { "kind": "call", "name": "Vector" },
+      { "kind": "call", "name": "Stack" },
+      { "kind": "call", "name": "ConcurrentLinkedDeque" },
+      { "kind": "call", "name": "LinkedBlockingDeque" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "6\npush\n10\npush\n20\npeek\npop\npop\npop\n" },
     { "visible": true, "stdin": "3\npush\n5\npush\n15\npeek\n" },

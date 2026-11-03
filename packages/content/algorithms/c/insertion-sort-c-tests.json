@@ -1,7 +1,16 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "forbids": [{ "kind": "call", "name": "qsort" }]
+    "requires": [{ "kind": "nested_loop" }],
+    "forbids": [
+      { "kind": "call", "name": "qsort" },
+      { "kind": "call", "name": "qsort_r" },
+      { "kind": "call", "name": "tsearch" },
+      { "kind": "call", "name": "tfind" },
+      { "kind": "call", "name": "tdelete" },
+      { "kind": "call", "name": "twalk" },
+      { "kind": "call", "name": "twalk_r" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "5\n12\n11\n13\n5\n6\n" },

@@ -1,5 +1,8 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "function" }, { "kind": "pointer" }, { "kind": "deref" }]
+  },
   "cases": [
     { "visible": true, "stdin": "3\n7\n" },
     { "visible": true, "stdin": "10\n10\n" },

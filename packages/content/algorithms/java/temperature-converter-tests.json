@@ -1,5 +1,8 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "class" }, { "kind": "object" }, { "kind": "function" }]
+  },
   "cases": [
     { "visible": true, "stdin": "100.0\nC\n" },
     { "visible": true, "stdin": "32.0\nF\n" },

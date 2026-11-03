@@ -1,5 +1,19 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "forbids": [
+      { "kind": "call", "name": "Arrays.binarySearch" },
+      { "kind": "call", "name": "Collections.binarySearch" },
+      { "kind": "call", "name": "indexOf" },
+      { "kind": "call", "name": "contains" },
+      { "kind": "call", "name": "lastIndexOf" },
+      { "kind": "call", "name": "indexOfSubList" },
+      { "kind": "call", "name": "TreeSet" },
+      { "kind": "call", "name": "TreeMap" },
+      { "kind": "call", "name": "ConcurrentSkipListSet" },
+      { "kind": "call", "name": "ConcurrentSkipListMap" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "5\n1\n3\n5\n7\n9\n5\n" },
     { "visible": true, "stdin": "4\n2\n4\n6\n8\n5\n" },

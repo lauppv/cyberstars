@@ -1,7 +1,17 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "loop" }]
+    "requires": [{ "kind": "loop" }],
+    "forbids": [
+      { "kind": "slice" },
+      { "kind": "call", "name": "reversed" },
+      { "kind": "call", "name": "reverse" },
+      { "kind": "call", "name": "eval" },
+      { "kind": "call", "name": "exec" },
+      { "kind": "call", "name": "getattr" },
+      { "kind": "call", "name": "slice" },
+      { "kind": "call", "name": "extendleft" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "hello world\n" },

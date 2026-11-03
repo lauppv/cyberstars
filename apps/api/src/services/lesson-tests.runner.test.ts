@@ -254,6 +254,188 @@ describe.skipIf(!has('python3'))('python runner', () => {
     });
   });
 
+  it('forbids a call in any use, but not a variable of the same name', () => {
+    const rule = { kind: 'call', name: 'nsmallest' };
+    const max = { kind: 'call', name: 'max' };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: [rule, max] }, cases: [] },
+        [],
+      )[0];
+    const forbidden = (which: unknown) => ({
+      syntaxError: null,
+      structureFailures: [{ type: 'forbid', rule: which }],
+    });
+    for (const code of [
+      'from heapq import nsmallest as pick\nprint(pick(1, [2]))\n',
+      'import heapq\npick = heapq.nsmallest\nprint(pick(1, [2]))\n',
+    ]) {
+      expect(header(code)).toEqual(forbidden(rule));
+    }
+    expect(header('pick = max\nprint(pick([1, 2]))\n')).toEqual(forbidden(max));
+    expect(header('print(sorted([1, 2], key=max))\n')).toEqual(forbidden(max));
+    expect(
+      header('max = 0\nfor x in [1, 2]:\n    if x > max:\n        max = x\nprint(max)\n'),
+    ).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+  });
+
+  it("takes a name as the student's own only where their binding has surely run", () => {
+    const max = { kind: 'call', name: 'max' };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: [max] }, cases: [] },
+        [],
+      )[0];
+    const passes = { syntaxError: null, structureFailures: [] };
+    for (const code of [
+      'def best(nums):\n    for x in nums:\n        if x > max:\n            max = x\n    return max\n',
+      'max = 0\nfor x in [1, 2]:\n    max = x if x > max else max\nprint(max)\n',
+      'for max in [1, 2]:\n    print(max)\n',
+      'def show(max):\n    print(max)\nshow(1)\n',
+      'max = 0\ndef show():\n    print(max)\nshow()\n',
+    ]) {
+      expect(header(code)).toEqual(passes);
+    }
+    for (const code of [
+      // A parameter of another function, a binding after the read or one that may never run.
+      'def show(max):\n    print(max)\npick = max\nprint(pick([1, 2]))\n',
+      'pick = max\nmax = 0\nprint(pick([1, 2]))\n',
+      'if False:\n    max = 0\npick = max\nprint(pick([1, 2]))\n',
+      'max = 0\ndel max\npick = max\nprint(pick([1, 2]))\n',
+      'try:\n    pass\nexcept Exception as max:\n    pass\npick = max\nprint(pick([1, 2]))\n',
+      // A class body is not seen from its methods.
+      'class Box:\n    max = 0\n    def get(self):\n        return max\nprint(Box().get()([1, 2]))\n',
+      'pick = [max for max in [1]] and max\nprint(pick([1, 2]))\n',
+    ]) {
+      expect(header(code)).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'forbid', rule: max }],
+      });
+    }
+  });
+
+  it("sees the student's binding only on the paths where it has run", () => {
+    const max = { kind: 'call', name: 'max' };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: [max] }, cases: [] },
+        [],
+      )[0];
+    const forbidden = { syntaxError: null, structureFailures: [{ type: 'forbid', rule: max }] };
+    for (const code of [
+      // Bound in one branch, read in another.
+      'nums = [3, 1]\nif len(nums) < 0:\n    max = 0\nelse:\n    pick = max\nprint(pick(nums))\n',
+      "try:\n    int('x')\n    max = 0\nexcept ValueError:\n    pick = max\nprint(pick([3, 1]))\n",
+      'x = False and (max := 0)\npick = max\nprint(pick([3, 1]))\n',
+      // A function runs before the module binds the name.
+      'def get():\n    return max\nprint(get()([3, 1]))\nmax = 0\n',
+      'def get():\n    return max\nfs = []\nfs.append(get)\nprint(fs[0]()([3, 1]))\nmax = 0\n',
+      'class A:\n    def f():\n        return max\n    x = f()([3, 1])\nmax = 0\nprint(A.x)\n',
+      'def f():\n    global max\n    pick = max\n    max = 0\n    return pick\n',
+    ]) {
+      expect(header(code)).toEqual(forbidden);
+    }
+    const passes = { syntaxError: null, structureFailures: [] };
+    for (const code of [
+      // Read only where it is compared or printed, the builtin there would fail.
+      'nums = [3, 1]\nfor i, x in enumerate(nums):\n    if i == 0 or x > max:\n        max = x\nprint(max)\n',
+      // Their own max, defined after the function that calls it, before the call runs.
+      'def solve(nums):\n    m = nums[0]\n    for x in nums:\n        m = max(m, x)\n    return m\n' +
+        'def max(a, b):\n    return a if a > b else b\nnums = list(map(int, input().split()))\nprint(solve(nums))\n',
+    ]) {
+      expect(header(code)).toEqual(passes);
+    }
+    // A class whose operators may be handed the builtin keeps every read in sight.
+    expect(
+      header('class P:\n    def __lt__(self, o):\n        return o([1])\nprint(P() < max)\n'),
+    ).toEqual(forbidden);
+  });
+
+  it("takes the student's own function or attribute of a forbidden name as theirs", () => {
+    const rules = ['heappush', 'max', 'sort'].map((name) => ({ kind: 'call', name }));
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: rules }, cases: [] },
+        [],
+      )[0] as { structureFailures: { rule: { name: string } }[] };
+    const fired = (code: string) => header(code).structureFailures.map((f) => f.rule.name);
+    for (const code of [
+      'def heappush(h, x):\n    h.append(x)\nh = []\nheappush(h, 1)\n',
+      'class Box:\n    def __init__(self):\n        self.max = 0\n    def get(self):\n        return self.max\n',
+      'class Heap:\n    def heappush(self, x):\n        pass\nh = Heap()\nh.heappush(1)\n',
+    ]) {
+      expect(fired(code)).toEqual([]);
+    }
+    expect(fired('import heapq\nh = []\nheapq.heappush(h, 1)\n')).toEqual(['heappush']);
+    // Inherited from list, not the student's own.
+    expect(fired('class L(list):\n    def go(self):\n        self.sort()\n')).toEqual(['sort']);
+  });
+
+  it('forbids a call reached by a name built at run time or another program', () => {
+    const rule = { kind: 'call', name: 'max' };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: [rule] }, cases: [] },
+        [],
+      )[0];
+    for (const code of [
+      "print(getattr(__builtins__, 'm' + 'ax')([1]))\n",
+      "print(vars(__builtins__)['max']([1]))\n",
+      "import operator\nprint(operator.methodcaller('max')(x))\n",
+      "import os\nos.system('sort -n')\n",
+      'import subprocess\n',
+    ]) {
+      expect(header(code)).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'forbid', rule }],
+      });
+    }
+    expect(header("print(getattr(obj, 'value'))\n")).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+  });
+
+  it('finds a forbidden constant inside a string too', () => {
+    const rule = { kind: 'int_literal', values: [58, 64] };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: [rule] }, cases: [] },
+        [],
+      )[0];
+    for (const code of ['print("58 64")\n', 'print(f"{1} 64")\n', 'print(58)\n']) {
+      expect(header(code)).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'forbid', rule }],
+      });
+    }
+    expect(header('print("580 6.4")\n')).toEqual({ syntaxError: null, structureFailures: [] });
+    // A sum of constants or bytes say it as well; a width only pads.
+    for (const code of ['print(57 + 1)\n', 'print("5" + "8")\n', 'print(b"58".decode())\n']) {
+      expect(header(code)).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'forbid', rule }],
+      });
+    }
+    for (const code of ['print(f"{1:58}")\n', 'print("%58d" % 1)\n']) {
+      expect(header(code)).toEqual({ syntaxError: null, structureFailures: [] });
+    }
+    // A run too long to be an answer is skipped, not handed to int().
+    expect(header(`print("${'9'.repeat(5000)}")\n`)).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+  });
+
   it('streams one line per case and stops on the server reply', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',
@@ -468,11 +650,11 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
   }, 120_000);
 
   // The structure header only: no cases, so nothing is compiled or run.
-  function header(userCode: string, requires: unknown[]): unknown {
+  function header(userCode: string, requires: unknown[], forbids: unknown[] = []): unknown {
     const payloadPath = path.join(dir, 'payload.json');
     fs.writeFileSync(
       payloadPath,
-      JSON.stringify({ userCode, solutionCode: '', structure: { requires }, cases: [] }),
+      JSON.stringify({ userCode, solutionCode: '', structure: { requires, forbids }, cases: [] }),
     );
     const result = spawnSync('java', ['-cp', classes, 'Runner', payloadPath], {
       encoding: 'utf8',
@@ -517,6 +699,159 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
     run();
     expect(fs.readFileSync(`${timer}.java`, 'utf8')).toBe(source);
     expect(fs.statSync(`${timer}.class`).mtimeMs).toBeGreaterThan(compiled);
+  });
+
+  it("counts a library call by its class's name too, and a method reference as a call", () => {
+    const passes = { syntaxError: null, structureFailures: [] };
+    const sort = { kind: 'call', name: 'Arrays.sort' };
+    for (const code of [
+      'import java.util.*;\n' + main('    static void f(int[] a) { Arrays.sort(a); }'),
+      main('    static void f(int[] a) { java.util.Arrays.sort(a); }'),
+      'import java.util.*;\nimport java.util.function.*;\n' +
+        main('    static Consumer<int[]> f = Arrays::sort;'),
+      'import static java.util.Arrays.sort;\n' + main('    static void f(int[] a) { sort(a); }'),
+      'import static java.util.Arrays.*;\n' + main('    static void f(int[] a) { sort(a); }'),
+    ]) {
+      expect(header(code, [sort])).toEqual(passes);
+    }
+    // The student's own sort is not the library's, even with every member of Arrays imported.
+    expect(
+      header(
+        'import static java.util.Arrays.*;\n' +
+          main('    static void sort(int[] a) {}\n    static void f(int[] a) { sort(a); }'),
+        [sort],
+      ),
+    ).toEqual({ syntaxError: null, structureFailures: [{ type: 'require', rule: sort }] });
+    const deque = { kind: 'call', name: 'ArrayDeque' };
+    expect(
+      header(
+        'import java.util.*;\nimport java.util.function.*;\n' +
+          main('    static Supplier<ArrayDeque<Integer>> make = ArrayDeque::new;'),
+        [deque],
+      ),
+    ).toEqual(passes);
+  });
+
+  it("forbids a bare name only where the student's own code can't be making the call", () => {
+    const passes = { syntaxError: null, structureFailures: [] };
+    const indexOf = { kind: 'call', name: 'indexOf' };
+    const deque = { kind: 'call', name: 'ArrayDeque' };
+    const own = 'class Searcher { int indexOf(int[] a, int t) { return 0; } }\n';
+    const ownStatic = '    static int indexOf(int[] a, int t) { return 0; }\n';
+    // Their own method called bare, through their class or an object of it, their own class built.
+    for (const code of [
+      main(ownStatic + '    static int f(int[] a) { return indexOf(a, 1); }'),
+      main(ownStatic + '    static int f(int[] a) { return Main.indexOf(a, 1); }'),
+      own +
+        main('    static int f(int[] a) { Searcher s = new Searcher(); return s.indexOf(a, 1); }'),
+      own + main('    static int f(int[] a) { var s = new Searcher(); return s.indexOf(a, 1); }'),
+      'class ArrayDeque {}\n' + main('    static Object f() { return new ArrayDeque(); }'),
+    ]) {
+      expect(header(code, [], [indexOf, deque])).toEqual(passes);
+    }
+    // The library's, next to a method or a class of the same name too.
+    for (const [code, rule] of [
+      [
+        'import java.util.*;\n' +
+          main(ownStatic + '    static int f(List<Integer> l) { return l.indexOf(1); }'),
+        indexOf,
+      ],
+      [
+        'import java.util.*;\nimport java.util.function.*;\n' +
+          main('    static Supplier<Deque<Integer>> make = ArrayDeque<Integer>::new;'),
+        deque,
+      ],
+      [
+        'class ArrayDeque {}\n' +
+          main('    static Object f() { return new java.util.ArrayDeque<Integer>(); }'),
+        deque,
+      ],
+    ] as const) {
+      expect(header(code, [], [indexOf, deque])).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'forbid', rule }],
+      });
+    }
+  });
+
+  it('resolves a forbidden call to the method javac picks', () => {
+    const passes = { syntaxError: null, structureFailures: [] };
+    const fires = (rule: unknown) => ({
+      syntaxError: null,
+      structureFailures: [{ type: 'forbid', rule }],
+    });
+    const search = { kind: 'call', name: 'Arrays.binarySearch' };
+    const sort = { kind: 'call', name: 'sort' };
+    const comparator = { kind: 'call', name: 'Comparator' };
+    const vector = { kind: 'call', name: 'Vector' };
+    // A method of the same name elsewhere doesn't hide the library's.
+    expect(
+      header(
+        'import static java.util.Arrays.*;\n' +
+          main('    static int f(int[] a) { return binarySearch(a, 2); }') +
+          'class Helper { static int binarySearch() { return 0; } }\n',
+        [],
+        [search],
+      ),
+    ).toEqual(fires(search));
+    // Inherited from the library, not the student's own.
+    expect(
+      header(
+        'import java.util.*;\n' +
+          main('    static void sort(int[] a) {}\n    static void f(L l) { l.sort(null); }') +
+          'class L extends ArrayList<Integer> {}\n',
+        [],
+        [sort],
+      ),
+    ).toEqual(fires(sort));
+    // A lambda handed to sort is a Comparator; a Stack is a Vector.
+    expect(
+      header(
+        'import java.util.*;\n' +
+          main('    static void f(List<Integer> l) { l.sort((a, b) -> a - b); }'),
+        [],
+        [comparator],
+      ),
+    ).toEqual(fires(comparator));
+    expect(
+      header(
+        'import java.util.*;\n' + main('    static Object f() { return new Stack<Integer>(); }'),
+        [],
+        [vector],
+      ),
+    ).toEqual(fires(vector));
+    // Reflection can reach any method.
+    expect(
+      header(
+        main(
+          '    static Object f() throws Exception { return Class.forName("java.util.Arrays"); }',
+        ),
+        [],
+        [sort],
+      ),
+    ).toEqual(fires(sort));
+    // The student's own Stack, sort and Runnable lambda stay theirs.
+    expect(
+      header(
+        main(
+          '    static void sort(int[] a) {}\n    static void f(int[] a) { sort(a); Runnable r = () -> {}; new Stack(); }',
+        ) + 'class Stack {}\n',
+        [],
+        [sort, comparator, vector, { kind: 'call', name: 'Stack' }],
+      ),
+    ).toEqual(passes);
+  });
+
+  it('finds a constant inside a string too', () => {
+    const rule = { kind: 'int_literal', values: [64] };
+    expect(header(main('    static String s = "58 64";'), [rule])).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+    expect(header(main('    static String s = "640";'), [rule])).toEqual({
+      syntaxError: null,
+      structureFailures: [{ type: 'require', rule }],
+    });
   });
 
   it('takes a method calling itself as recursion, not a same-named call on something else', () => {

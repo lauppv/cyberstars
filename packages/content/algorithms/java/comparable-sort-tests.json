@@ -1,5 +1,19 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class" },
+      { "kind": "object" },
+      { "kind": "implements" },
+      { "kind": "function", "name": "compareTo" }
+    ],
+    "forbids": [
+      { "kind": "call", "name": "Comparator" },
+      { "kind": "call", "name": "comparing" },
+      { "kind": "call", "name": "comparingDouble" },
+      { "kind": "call", "name": "thenComparing" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "3\nAlice\n3.8\nBob\n3.9\nCarol\n3.8\n" },
     { "visible": true, "stdin": "2\nZoe\n4.0\nAmy\n4.0\n" },
