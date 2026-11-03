@@ -16,27 +16,6 @@
       "answer": 0
     },
     {
-      "id": "pd-slice-276d4d",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"radar\"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
-      "options": ["Palindrom!", "Nu e palindrom", "Palindrom! radar", "radar"],
-      "answer": 0
-    },
-    {
-      "id": "pd-slice-fdab90",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"Ana\"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
-      "options": ["Nu e palindrom", "Palindrom!", "Nu e palindrom Ana", "anA"],
-      "answer": 0
-    },
-    {
-      "id": "pd-slice-d2c62e",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"sas\"\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
-      "options": ["Palindrom!", "Nu e palindrom", "Palindrom! sas", "sas"],
-      "answer": 0
-    },
-    {
       "id": "pd-func-d57cd0",
       "text": "Ce afișează?",
       "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"capac\", \"cerc\", \"rotor\"]:\n    print(cuvant, este_palindrom(cuvant))",
@@ -68,30 +47,6 @@
         "cojoc True\ncuib False\ncivic True",
         "cojoc True\ncuib True\ncivic True",
         "cojoc False\ncuib False\ncivic False",
-        "True\nFalse\nTrue"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-func-f0dc42",
-      "text": "Ce afișează?",
-      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"rotitor\", \"rapir\", \"potop\"]:\n    print(cuvant, este_palindrom(cuvant))",
-      "options": [
-        "rotitor True\nrapir False\npotop True",
-        "rotitor True\nrapir True\npotop True",
-        "rotitor False\nrapir False\npotop False",
-        "True\nFalse\nTrue"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-func-857a1d",
-      "text": "Ce afișează?",
-      "code": "def este_palindrom(cuvant):\n    for i in range(len(cuvant) // 2):\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return False\n    return True\n\nfor cuvant in [\"elevele\", \"mars\", \"sas\"]:\n    print(cuvant, este_palindrom(cuvant))",
-      "options": [
-        "elevele True\nmars False\nsas True",
-        "elevele True\nmars True\nsas True",
-        "elevele False\nmars False\nsas True",
         "True\nFalse\nTrue"
       ],
       "answer": 0
@@ -133,30 +88,6 @@
       "answer": 0
     },
     {
-      "id": "pd-pairs-88f259",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"galaxie\"\nfor i in range(len(cuvant) // 2):\n    print(cuvant[i], cuvant[len(cuvant) - 1 - i])",
-      "options": [
-        "g e\na i\nl x",
-        "g e\na i\nl x\na a\nx l\ni a\ne g",
-        "g a\na l\nl a",
-        "0 6\n1 5\n2 4"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-pairs-66b27b",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"cometa\"\nfor i in range(len(cuvant) // 2):\n    print(cuvant[i], cuvant[len(cuvant) - 1 - i])",
-      "options": [
-        "c a\no t\nm e",
-        "c a\no t\nm e\ne m\nt o\na c",
-        "c o\no m\nm e",
-        "0 5\n1 4\n2 3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pd-clean-17690e",
       "text": "Ce afișează?",
       "code": "text = \"Ele fac cafele\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
@@ -185,20 +116,6 @@
       "text": "Ce afișează?",
       "code": "text = \"Salut Lume\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
       "options": ["salutlume\nFalse", "SalutLume\nFalse", "salut lume\nFalse", "e\nTrue"],
-      "answer": 0
-    },
-    {
-      "id": "pd-clean-a48228",
-      "text": "Ce afișează?",
-      "code": "text = \"Ana are mere\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
-      "options": ["anaaremere\nFalse", "Anaaremere\nFalse", "ana are mere\nFalse", "e\nTrue"],
-      "answer": 0
-    },
-    {
-      "id": "pd-clean-c97a99",
-      "text": "Ce afișează?",
-      "code": "text = \"Rara bara\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
-      "options": ["rarabara\nFalse", "Rarabara\nFalse", "rara bara\nFalse", "a\nTrue"],
       "answer": 0
     },
     {
@@ -238,30 +155,6 @@
       "answer": 0
     },
     {
-      "id": "pd-count-0cad9d",
-      "text": "Ce afișează?",
-      "code": "coduri = [\"solar\", \"rotor\", \"ele\", \"cometa\", \"elevele\"]\nvalide = 0\nfor cod in coduri:\n    if cod == cod[::-1]:\n        valide += 1\nprint(f\"Semnale valide: {valide}\")",
-      "options": [
-        "Semnale valide: 3",
-        "Semnale valide: 2",
-        "Semnale valide: 1",
-        "Semnale valide: 0\nSemnale valide: 1\nSemnale valide: 2\nSemnale valide: 2\nSemnale valide: 3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-count-eda0af",
-      "text": "Ce afișează?",
-      "code": "coduri = [\"aerisirea\", \"Marte\", \"cojoc\"]\nvalide = 0\nfor cod in coduri:\n    if cod == cod[::-1]:\n        valide += 1\nprint(f\"Semnale valide: {valide}\")",
-      "options": [
-        "Semnale valide: 2",
-        "Semnale valide: 1",
-        "Semnale valide: 1\nSemnale valide: 1\nSemnale valide: 2",
-        "Semnale valide: 3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pd-checks-b32d07",
       "text": "Ce afișează?",
       "code": "def numara_verificari(cuvant):\n    verificari = 0\n    for i in range(len(cuvant) // 2):\n        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n    return verificari\n\nprint(numara_verificari(\"rotitor\"))",
@@ -280,20 +173,6 @@
       "text": "Ce afișează?",
       "code": "def numara_verificari(cuvant):\n    verificari = 0\n    for i in range(len(cuvant) // 2):\n        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n    return verificari\n\nprint(numara_verificari(\"aerisirea\"))",
       "options": ["4", "9", "5", "1"],
-      "answer": 0
-    },
-    {
-      "id": "pd-checks-6a01d6",
-      "text": "Ce afișează?",
-      "code": "def numara_verificari(cuvant):\n    verificari = 0\n    for i in range(len(cuvant) // 2):\n        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n    return verificari\n\nprint(numara_verificari(\"elevele\"))",
-      "options": ["3", "7", "4", "1"],
-      "answer": 0
-    },
-    {
-      "id": "pd-checks-6abad3",
-      "text": "Ce afișează?",
-      "code": "def numara_verificari(cuvant):\n    verificari = 0\n    for i in range(len(cuvant) // 2):\n        verificari += 1\n        if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n            return verificari\n    return verificari\n\nprint(numara_verificari(\"rotor\"))",
-      "options": ["2", "5", "3", "1"],
       "answer": 0
     },
     {
@@ -709,6 +588,101 @@
         "if cuvant[i] != cuvant[len(cuvant) - 1 - i]:",
         "for i in range(len(cuvant) // 2):"
       ],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-clean-db95bc",
+      "text": "Ce conține `curatat` la final?",
+      "code": "text = \"Ele fac cafele\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()",
+      "options": ["'elefaccafele'", "'Elefaccafele'", "'  '", "'e'"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-clean-f6b9ad",
+      "text": "Ce conține `curatat` la final?",
+      "code": "text = \"Ion a luat luana noi\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()",
+      "options": ["'ionaluatluananoi'", "'Ionaluatluananoi'", "'    '", "'i'"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-clean-e6181c",
+      "text": "Ce conține `curatat` la final?",
+      "code": "text = \"Salut Lume\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()",
+      "options": ["'salutlume'", "'SalutLume'", "' '", "'e'"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-clean-bf856b",
+      "text": "Ce conține `curatat` la final?",
+      "code": "text = \"A Toyota\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()",
+      "options": ["'atoyota'", "'AToyota'", "' '", "'a'"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-pairs-f2a956",
+      "text": "Ce conține `nepotriviri` la final?",
+      "code": "cuvant = \"racheta\"\nnepotriviri = 0\nfor i in range(len(cuvant) // 2):\n    if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n        nepotriviri += 1",
+      "options": ["3", "6", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-pairs-2345e1",
+      "text": "Ce conține `nepotriviri` la final?",
+      "code": "cuvant = \"radio\"\nnepotriviri = 0\nfor i in range(len(cuvant) // 2):\n    if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n        nepotriviri += 1",
+      "options": ["2", "4", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-pairs-f315de",
+      "text": "Ce conține `nepotriviri` la final?",
+      "code": "cuvant = \"abcd\"\nnepotriviri = 0\nfor i in range(len(cuvant) // 2):\n    if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n        nepotriviri += 1",
+      "options": ["2", "4", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-pairs-222a8e",
+      "text": "Ce conține `nepotriviri` la final?",
+      "code": "cuvant = \"planeta\"\nnepotriviri = 0\nfor i in range(len(cuvant) // 2):\n    if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n        nepotriviri += 1",
+      "options": ["3", "6", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-pairs-618316",
+      "text": "Ce conține `nepotriviri` la final?",
+      "code": "cuvant = \"Marte\"\nnepotriviri = 0\nfor i in range(len(cuvant) // 2):\n    if cuvant[i] != cuvant[len(cuvant) - 1 - i]:\n        nepotriviri += 1",
+      "options": ["2", "4", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pal-input-check-537893",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "cuvant = input()\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
+      "output": "Palindrom!",
+      "options": ["capac", "Capac", "capace", "capat"],
+      "answer": 0
+    },
+    {
+      "id": "pal-input-check-e98551",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "nume = input()\nif nume == nume[::-1]:\n    print(\"La fel invers\")\nelse:\n    print(\"Altfel invers\")",
+      "output": "La fel invers",
+      "options": ["radar", "Radar", "radare", "rada"],
+      "answer": 0
+    },
+    {
+      "id": "pal-input-check-e2e551",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "cod = input()\nif cod == cod[::-1]:\n    print(\"Cuvant oglinda\")\nelse:\n    print(\"Nu e cuvant oglinda\")",
+      "output": "Cuvant oglinda",
+      "options": ["ele", "Ele", "elev", "ea"],
+      "answer": 0
+    },
+    {
+      "id": "pal-input-check-59964a",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "cuvant = input()\nif cuvant == cuvant[::-1]:\n    print(\"Palindrom!\")\nelse:\n    print(\"Nu e palindrom\")",
+      "output": "Nu e palindrom",
+      "options": ["racheta", "capac", "radar", "ele"],
       "answer": 0
     }
   ]

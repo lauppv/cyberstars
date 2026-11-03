@@ -16,27 +16,6 @@
       "answer": 0
     },
     {
-      "id": "pd-slice-276d4d",
-      "text": "What does this print?",
-      "code": "word = \"radar\"\nif word == word[::-1]:\n    print(\"Palindrome!\")\nelse:\n    print(\"Not a palindrome\")",
-      "options": ["Palindrome!", "Not a palindrome", "Palindrome! radar", "radar"],
-      "answer": 0
-    },
-    {
-      "id": "pd-slice-fdab90",
-      "text": "What does this print?",
-      "code": "word = \"Anna\"\nif word == word[::-1]:\n    print(\"Palindrome!\")\nelse:\n    print(\"Not a palindrome\")",
-      "options": ["Not a palindrome", "Palindrome!", "Not a palindrome Anna", "annA"],
-      "answer": 0
-    },
-    {
-      "id": "pd-slice-d2c62e",
-      "text": "What does this print?",
-      "code": "word = \"stats\"\nif word == word[::-1]:\n    print(\"Palindrome!\")\nelse:\n    print(\"Not a palindrome\")",
-      "options": ["Palindrome!", "Not a palindrome", "Palindrome! stats", "stats"],
-      "answer": 0
-    },
-    {
       "id": "pd-func-d57cd0",
       "text": "What does this print?",
       "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n    return True\n\nfor word in [\"level\", \"noun\", \"rotor\"]:\n    print(word, is_palindrome(word))",
@@ -68,30 +47,6 @@
         "noon True\nnight False\ncivic True",
         "noon True\nnight True\ncivic True",
         "noon False\nnight False\ncivic False",
-        "True\nFalse\nTrue"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-func-f0dc42",
-      "text": "What does this print?",
-      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n    return True\n\nfor word in [\"refer\", \"rider\", \"kayak\"]:\n    print(word, is_palindrome(word))",
-      "options": [
-        "refer True\nrider False\nkayak True",
-        "refer True\nrider True\nkayak True",
-        "refer False\nrider False\nkayak False",
-        "True\nFalse\nTrue"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-func-857a1d",
-      "text": "What does this print?",
-      "code": "def is_palindrome(word):\n    for i in range(len(word) // 2):\n        if word[i] != word[len(word) - 1 - i]:\n            return False\n    return True\n\nfor word in [\"madam\", \"mars\", \"solos\"]:\n    print(word, is_palindrome(word))",
-      "options": [
-        "madam True\nmars False\nsolos True",
-        "madam True\nmars True\nsolos True",
-        "madam False\nmars False\nsolos False",
         "True\nFalse\nTrue"
       ],
       "answer": 0
@@ -133,25 +88,6 @@
       "answer": 0
     },
     {
-      "id": "pd-pairs-88f259",
-      "text": "What does this print?",
-      "code": "word = \"galaxy\"\nfor i in range(len(word) // 2):\n    print(word[i], word[len(word) - 1 - i])",
-      "options": [
-        "g y\na x\nl a",
-        "g y\na x\nl a\na l\nx a\ny g",
-        "g a\na l\nl a",
-        "0 5\n1 4\n2 3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-pairs-66b27b",
-      "text": "What does this print?",
-      "code": "word = \"comet\"\nfor i in range(len(word) // 2):\n    print(word[i], word[len(word) - 1 - i])",
-      "options": ["c t\no e", "c t\no e\nm m\ne o\nt c", "c o\no m", "0 4\n1 3"],
-      "answer": 0
-    },
-    {
       "id": "pd-clean-17690e",
       "text": "What does this print?",
       "code": "text = \"Never odd or even\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()\nprint(cleaned)\nprint(cleaned == cleaned[::-1])",
@@ -180,20 +116,6 @@
       "text": "What does this print?",
       "code": "text = \"Hello World\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()\nprint(cleaned)\nprint(cleaned == cleaned[::-1])",
       "options": ["helloworld\nFalse", "HelloWorld\nFalse", "hello world\nFalse", "d\nTrue"],
-      "answer": 0
-    },
-    {
-      "id": "pd-clean-a48228",
-      "text": "What does this print?",
-      "code": "text = \"Was it a car\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()\nprint(cleaned)\nprint(cleaned == cleaned[::-1])",
-      "options": ["wasitacar\nFalse", "Wasitacar\nFalse", "was it a car\nFalse", "r\nTrue"],
-      "answer": 0
-    },
-    {
-      "id": "pd-clean-c97a99",
-      "text": "What does this print?",
-      "code": "text = \"Top spot\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()\nprint(cleaned)\nprint(cleaned == cleaned[::-1])",
-      "options": ["topspot\nTrue", "Topspot\nFalse", "top spot\nFalse", "topspot\nFalse"],
       "answer": 0
     },
     {
@@ -233,30 +155,6 @@
       "answer": 0
     },
     {
-      "id": "pd-count-0cad9d",
-      "text": "What does this print?",
-      "code": "codes = [\"solar\", \"rotor\", \"wow\", \"comet\", \"madam\"]\nvalid = 0\nfor code in codes:\n    if code == code[::-1]:\n        valid += 1\nprint(f\"Valid signals: {valid}\")",
-      "options": [
-        "Valid signals: 3",
-        "Valid signals: 2",
-        "Valid signals: 1",
-        "Valid signals: 0\nValid signals: 1\nValid signals: 2\nValid signals: 2\nValid signals: 3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pd-count-eda0af",
-      "text": "What does this print?",
-      "code": "codes = [\"tenet\", \"Mars\", \"pop\"]\nvalid = 0\nfor code in codes:\n    if code == code[::-1]:\n        valid += 1\nprint(f\"Valid signals: {valid}\")",
-      "options": [
-        "Valid signals: 2",
-        "Valid signals: 1",
-        "Valid signals: 1\nValid signals: 1\nValid signals: 2",
-        "Valid signals: 3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pd-checks-b32d07",
       "text": "What does this print?",
       "code": "def count_checks(word):\n    checks = 0\n    for i in range(len(word) // 2):\n        checks += 1\n        if word[i] != word[len(word) - 1 - i]:\n            return checks\n    return checks\n\nprint(count_checks(\"racecar\"))",
@@ -275,20 +173,6 @@
       "text": "What does this print?",
       "code": "def count_checks(word):\n    checks = 0\n    for i in range(len(word) // 2):\n        checks += 1\n        if word[i] != word[len(word) - 1 - i]:\n            return checks\n    return checks\n\nprint(count_checks(\"repaper\"))",
       "options": ["3", "7", "4", "1"],
-      "answer": 0
-    },
-    {
-      "id": "pd-checks-6a01d6",
-      "text": "What does this print?",
-      "code": "def count_checks(word):\n    checks = 0\n    for i in range(len(word) // 2):\n        checks += 1\n        if word[i] != word[len(word) - 1 - i]:\n            return checks\n    return checks\n\nprint(count_checks(\"reviver\"))",
-      "options": ["3", "7", "4", "1"],
-      "answer": 0
-    },
-    {
-      "id": "pd-checks-6abad3",
-      "text": "What does this print?",
-      "code": "def count_checks(word):\n    checks = 0\n    for i in range(len(word) // 2):\n        checks += 1\n        if word[i] != word[len(word) - 1 - i]:\n            return checks\n    return checks\n\nprint(count_checks(\"redder\"))",
-      "options": ["3", "6", "4", "1"],
       "answer": 0
     },
     {
@@ -699,6 +583,101 @@
         "if word[i] != word[len(word) - 1 - i]:",
         "for i in range(len(word) // 2):"
       ],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-clean-db95bc",
+      "text": "What is in `cleaned` at the end?",
+      "code": "text = \"Never odd or even\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()",
+      "options": ["'neveroddoreven'", "'Neveroddoreven'", "'   '", "'n'"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-clean-f6b9ad",
+      "text": "What is in `cleaned` at the end?",
+      "code": "text = \"Race car\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()",
+      "options": ["'racecar'", "'Racecar'", "' '", "'r'"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-clean-e6181c",
+      "text": "What is in `cleaned` at the end?",
+      "code": "text = \"Step on no pets\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()",
+      "options": ["'steponnopets'", "'Steponnopets'", "'   '", "'s'"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-clean-bf856b",
+      "text": "What is in `cleaned` at the end?",
+      "code": "text = \"A Toyota\"\ncleaned = \"\"\nfor char in text:\n    if char.isalpha():\n        cleaned += char.lower()",
+      "options": ["'atoyota'", "'AToyota'", "' '", "'a'"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-pairs-f2a956",
+      "text": "What is in `mismatches` at the end?",
+      "code": "word = \"rocket\"\nmismatches = 0\nfor i in range(len(word) // 2):\n    if word[i] != word[len(word) - 1 - i]:\n        mismatches += 1",
+      "options": ["3", "6", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-pairs-2345e1",
+      "text": "What is in `mismatches` at the end?",
+      "code": "word = \"radio\"\nmismatches = 0\nfor i in range(len(word) // 2):\n    if word[i] != word[len(word) - 1 - i]:\n        mismatches += 1",
+      "options": ["2", "4", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-pairs-f315de",
+      "text": "What is in `mismatches` at the end?",
+      "code": "word = \"abcd\"\nmismatches = 0\nfor i in range(len(word) // 2):\n    if word[i] != word[len(word) - 1 - i]:\n        mismatches += 1",
+      "options": ["2", "4", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-pairs-222a8e",
+      "text": "What is in `mismatches` at the end?",
+      "code": "word = \"planet\"\nmismatches = 0\nfor i in range(len(word) // 2):\n    if word[i] != word[len(word) - 1 - i]:\n        mismatches += 1",
+      "options": ["3", "6", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pal-holds-pairs-618316",
+      "text": "What is in `mismatches` at the end?",
+      "code": "word = \"Mars\"\nmismatches = 0\nfor i in range(len(word) // 2):\n    if word[i] != word[len(word) - 1 - i]:\n        mismatches += 1",
+      "options": ["2", "4", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "pal-input-check-537893",
+      "text": "What did the user type?",
+      "code": "word = input()\nif word == word[::-1]:\n    print(\"Palindrome!\")\nelse:\n    print(\"Not a palindrome\")",
+      "output": "Palindrome!",
+      "options": ["level", "Level", "levels", "lever"],
+      "answer": 0
+    },
+    {
+      "id": "pal-input-check-e98551",
+      "text": "What did the user type?",
+      "code": "name = input()\nif name == name[::-1]:\n    print(\"Same both ways\")\nelse:\n    print(\"Different backwards\")",
+      "output": "Same both ways",
+      "options": ["racecar", "Racecar", "race car", "racecars"],
+      "answer": 0
+    },
+    {
+      "id": "pal-input-check-e2e551",
+      "text": "What did the user type?",
+      "code": "code = input()\nif code == code[::-1]:\n    print(\"Mirror word\")\nelse:\n    print(\"Not a mirror word\")",
+      "output": "Mirror word",
+      "options": ["noon", "Noon", "noone", "moon"],
+      "answer": 0
+    },
+    {
+      "id": "pal-input-check-59964a",
+      "text": "What did the user type?",
+      "code": "word = input()\nif word == word[::-1]:\n    print(\"Palindrome!\")\nelse:\n    print(\"Not a palindrome\")",
+      "output": "Not a palindrome",
+      "options": ["rocket", "radar", "wow", "kayak"],
       "answer": 0
     }
   ]

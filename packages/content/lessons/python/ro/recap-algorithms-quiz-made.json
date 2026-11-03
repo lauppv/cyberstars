@@ -26,37 +26,6 @@
       "answer": 0
     },
     {
-      "id": "ra-freq-36a5eb",
-      "text": "Ce afișează?",
-      "code": "rezultate = [\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\nprint(victorii)",
-      "options": [
-        "{'Lance': 1, 'Phil': 3, 'Sonny': 2}",
-        "{'Lance': 1, 'Phil': 1, 'Sonny': 1}",
-        "{'Lance': 0, 'Phil': 2, 'Sonny': 1}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-freq-e428f3",
-      "text": "Ce afișează?",
-      "code": "rezultate = [\"Kent\", \"Vic\", \"Kent\", \"Kent\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\nprint(victorii)",
-      "options": ["{'Kent': 3, 'Vic': 1}", "{'Kent': 1, 'Vic': 1}", "{'Kent': 2, 'Vic': 0}", "2"],
-      "answer": 0
-    },
-    {
-      "id": "ra-freq-4f1692",
-      "text": "Ce afișează?",
-      "code": "rezultate = [\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\nprint(victorii)",
-      "options": [
-        "{'Mia': 2, 'Zoe': 4, 'Liv': 1}",
-        "{'Mia': 1, 'Zoe': 1, 'Liv': 1}",
-        "{'Mia': 1, 'Zoe': 3, 'Liv': 0}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "ra-champion-2decc6",
       "text": "Ce afișează?",
       "code": "rezultate = [\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(f\"Campion: {campion} ({cel_mai_mare} victorii)\")",
@@ -81,42 +50,6 @@
       "answer": 0
     },
     {
-      "id": "ra-champion-36a5eb",
-      "text": "Ce afișează?",
-      "code": "rezultate = [\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(f\"Campion: {campion} ({cel_mai_mare} victorii)\")",
-      "options": [
-        "Campion: Phil (3 victorii)",
-        "Campion:  (0 victorii)",
-        "Campion: Lance (1 victorii)",
-        "Campion: 3 (3 victorii)"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-champion-e428f3",
-      "text": "Ce afișează?",
-      "code": "rezultate = [\"Kent\", \"Vic\", \"Kent\", \"Kent\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(f\"Campion: {campion} ({cel_mai_mare} victorii)\")",
-      "options": [
-        "Campion: Kent (3 victorii)",
-        "Campion:  (0 victorii)",
-        "Campion: Kent (1 victorii)",
-        "Campion: 3 (3 victorii)"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-champion-4f1692",
-      "text": "Ce afișează?",
-      "code": "rezultate = [\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(f\"Campion: {campion} ({cel_mai_mare} victorii)\")",
-      "options": [
-        "Campion: Zoe (4 victorii)",
-        "Campion:  (0 victorii)",
-        "Campion: Mia (1 victorii)",
-        "Campion: 4 (4 victorii)"
-      ],
-      "answer": 0
-    },
-    {
       "id": "ra-tuples-6c5f6f",
       "text": "Ce afișează?",
       "code": "victorii = {\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nprint(clasament)",
@@ -133,37 +66,6 @@
       "text": "Ce afișează?",
       "code": "victorii = {\"Ana\": 3, \"Ben\": 1}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nprint(clasament)",
       "options": ["[(3, 'Ana'), (1, 'Ben')]", "[('Ana', 3), ('Ben', 1)]", "[3, 1]", "[(1, 'Ben')]"],
-      "answer": 0
-    },
-    {
-      "id": "ra-tuples-d65e3f",
-      "text": "Ce afișează?",
-      "code": "victorii = {\"Cara\": 2, \"Phil\": 5, \"Lance\": 1}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nprint(clasament)",
-      "options": [
-        "[(2, 'Cara'), (5, 'Phil'), (1, 'Lance')]",
-        "[('Cara', 2), ('Phil', 5), ('Lance', 1)]",
-        "[2, 5, 1]",
-        "[(1, 'Lance')]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-tuples-51c2c9",
-      "text": "Ce afișează?",
-      "code": "victorii = {\"Kent\": 3, \"Vic\": 1, \"Mia\": 2}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nprint(clasament)",
-      "options": [
-        "[(3, 'Kent'), (1, 'Vic'), (2, 'Mia')]",
-        "[('Kent', 3), ('Vic', 1), ('Mia', 2)]",
-        "[3, 1, 2]",
-        "[(2, 'Mia')]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-tuples-f20af3",
-      "text": "Ce afișează?",
-      "code": "victorii = {\"Zoe\": 4, \"Liv\": 2}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nprint(clasament)",
-      "options": ["[(4, 'Zoe'), (2, 'Liv')]", "[('Zoe', 4), ('Liv', 2)]", "[4, 2]", "[(2, 'Liv')]"],
       "answer": 0
     },
     {
@@ -187,42 +89,6 @@
         "[(1, 'Cal'), (2, 'Ana'), (3, 'Dan'), (5, 'Ben')]",
         "[(2, 'Ana'), (5, 'Ben'), (1, 'Cal'), (3, 'Dan')]",
         "[(5, 'Ben'), (2, 'Ana'), (1, 'Cal'), (3, 'Dan')]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-sort-38b4c7",
-      "text": "Ce afișează?",
-      "code": "clasament = [(1, \"Phil\"), (3, \"Cara\"), (2, \"Lance\")]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
-      "options": [
-        "[(3, 'Cara'), (2, 'Lance'), (1, 'Phil')]",
-        "[(1, 'Phil'), (2, 'Lance'), (3, 'Cara')]",
-        "[(1, 'Phil'), (3, 'Cara'), (2, 'Lance')]",
-        "[(3, 'Cara'), (1, 'Phil'), (2, 'Lance')]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-sort-7b2f21",
-      "text": "Ce afișează?",
-      "code": "clasament = [(2, \"Kent\"), (1, \"Vic\"), (3, \"Mia\"), (4, \"Ivy\")]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
-      "options": [
-        "[(4, 'Ivy'), (3, 'Mia'), (2, 'Kent'), (1, 'Vic')]",
-        "[(1, 'Vic'), (2, 'Kent'), (3, 'Mia'), (4, 'Ivy')]",
-        "[(2, 'Kent'), (1, 'Vic'), (3, 'Mia'), (4, 'Ivy')]",
-        "[(4, 'Ivy'), (1, 'Vic'), (3, 'Mia'), (2, 'Kent')]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-sort-552c37",
-      "text": "Ce afișează?",
-      "code": "clasament = [(4, \"Zoe\"), (6, \"Liv\"), (2, \"Max\"), (5, \"Ivy\")]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
-      "options": [
-        "[(6, 'Liv'), (5, 'Ivy'), (4, 'Zoe'), (2, 'Max')]",
-        "[(2, 'Max'), (4, 'Zoe'), (5, 'Ivy'), (6, 'Liv')]",
-        "[(4, 'Zoe'), (6, 'Liv'), (2, 'Max'), (5, 'Ivy')]",
-        "[(6, 'Liv'), (4, 'Zoe'), (2, 'Max'), (5, 'Ivy')]"
       ],
       "answer": 0
     },
@@ -263,30 +129,6 @@
       "answer": 0
     },
     {
-      "id": "ra-board-b181b6",
-      "text": "Ce afișează?",
-      "code": "victorii = {\"Kent\": 2, \"Vic\": 5, \"Mia\": 1}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nfor i in range(len(clasament)):\n    contor, nume = clasament[i]\n    print(f\"{i + 1}. {nume} - {contor} victorii\")",
-      "options": [
-        "1. Vic - 5 victorii\n2. Kent - 2 victorii\n3. Mia - 1 victorii",
-        "0. Vic - 5 victorii\n1. Kent - 2 victorii\n2. Mia - 1 victorii",
-        "1. Mia - 1 victorii\n2. Kent - 2 victorii\n3. Vic - 5 victorii",
-        "1. 5 - Vic victorii\n2. 2 - Kent victorii\n3. 1 - Mia victorii"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-board-602a38",
-      "text": "Ce afișează?",
-      "code": "victorii = {\"Zoe\": 1, \"Liv\": 2, \"Max\": 4}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nfor i in range(len(clasament)):\n    contor, nume = clasament[i]\n    print(f\"{i + 1}. {nume} - {contor} victorii\")",
-      "options": [
-        "1. Max - 4 victorii\n2. Liv - 2 victorii\n3. Zoe - 1 victorii",
-        "0. Max - 4 victorii\n1. Liv - 2 victorii\n2. Zoe - 1 victorii",
-        "1. Zoe - 1 victorii\n2. Liv - 2 victorii\n3. Max - 4 victorii",
-        "1. 4 - Max victorii\n2. 2 - Liv victorii\n3. 1 - Zoe victorii"
-      ],
-      "answer": 0
-    },
-    {
       "id": "ra-linear-85059e",
       "text": "Ce afișează?",
       "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\"]\nprint(cautare_liniara(rezultate, \"Cara\"))",
@@ -308,20 +150,6 @@
       "answer": 0
     },
     {
-      "id": "ra-linear-6e250b",
-      "text": "Ce afișează?",
-      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [\"Kent\", \"Vic\", \"Kent\", \"Kent\"]\nprint(cautare_liniara(rezultate, \"Vic\"))",
-      "options": ["1", "Vic", "-1", "2"],
-      "answer": 0
-    },
-    {
-      "id": "ra-linear-e00192",
-      "text": "Ce afișează?",
-      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [\"Mia\", \"Zoe\", \"Zoe\", \"Liv\", \"Mia\", \"Zoe\", \"Zoe\"]\nprint(cautare_liniara(rezultate, \"Liv\"))",
-      "options": ["3", "Liv", "-1", "4"],
-      "answer": 0
-    },
-    {
       "id": "ra-bubble-desc-485955",
       "text": "Ce afișează?",
       "code": "numere = [1, 4, 3, 2]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] < numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
@@ -340,20 +168,6 @@
       "text": "Ce afișează?",
       "code": "numere = [2, 7, 4]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] < numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
       "options": ["[7, 4, 2]", "[2, 4, 7]", "[7, 7, 4]", "7"],
-      "answer": 0
-    },
-    {
-      "id": "ra-bubble-desc-2911b2",
-      "text": "Ce afișează?",
-      "code": "numere = [10, 30, 20, 40]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] < numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
-      "options": ["[40, 30, 20, 10]", "[10, 20, 30, 40]", "[30, 20, 40, 10]", "[40, 40, 40, 40]"],
-      "answer": 0
-    },
-    {
-      "id": "ra-bubble-desc-028ac5",
-      "text": "Ce afișează?",
-      "code": "numere = [6, 9, 2, 8, 5]\nfor i in range(len(numere)):\n    for j in range(len(numere) - 1):\n        if numere[j] < numere[j + 1]:\n            numere[j], numere[j + 1] = numere[j + 1], numere[j]\nprint(numere)",
-      "options": ["[9, 8, 6, 5, 2]", "[2, 5, 6, 8, 9]", "[9, 6, 8, 5, 2]", "[9, 9, 8, 8, 5]"],
       "answer": 0
     },
     {
@@ -389,30 +203,6 @@
         "[1, 6, 3, 7]\n[1, 3, 6, 7]\n[1, 3, 6, 7]\n[1, 3, 6, 7]",
         "[7, 6, 3, 1]",
         "[1, 6, 3, 7]\n[1, 6, 3, 7]\n[1, 6, 3, 7]\n[1, 6, 3, 7]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-selection-max-4cb532",
-      "text": "Ce afișează?",
-      "code": "numere = [4, 2, 9]\nfor i in range(len(numere)):\n    index_max = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] > numere[index_max]:\n            index_max = j\n    numere[i], numere[index_max] = numere[index_max], numere[i]\n    print(numere)",
-      "options": [
-        "[9, 2, 4]\n[9, 4, 2]\n[9, 4, 2]",
-        "[2, 4, 9]\n[2, 4, 9]\n[2, 4, 9]",
-        "[9, 4, 2]",
-        "[4, 2, 9]\n[4, 2, 9]\n[4, 2, 9]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ra-selection-max-7719bb",
-      "text": "Ce afișează?",
-      "code": "numere = [5, 8, 6, 7]\nfor i in range(len(numere)):\n    index_max = i\n    for j in range(i + 1, len(numere)):\n        if numere[j] > numere[index_max]:\n            index_max = j\n    numere[i], numere[index_max] = numere[index_max], numere[i]\n    print(numere)",
-      "options": [
-        "[8, 5, 6, 7]\n[8, 7, 6, 5]\n[8, 7, 6, 5]\n[8, 7, 6, 5]",
-        "[5, 8, 6, 7]\n[5, 6, 8, 7]\n[5, 6, 7, 8]\n[5, 6, 7, 8]",
-        "[8, 7, 6, 5]",
-        "[5, 8, 6, 7]\n[5, 8, 6, 7]\n[5, 8, 6, 7]\n[5, 8, 6, 7]"
       ],
       "answer": 0
     },
@@ -749,6 +539,171 @@
         "clasament[i], clasament[index_max] = clasament[index_max], clasament[i]",
         "clasament = [(4, \"Zoe\"), (6, \"Liv\"), (2, \"Max\")]"
       ],
+      "answer": 0
+    },
+    {
+      "id": "ra-holds-pairs-f91130",
+      "text": "Ce conține `clasament` la final?",
+      "code": "victorii = {\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))",
+      "options": [
+        "[(1, 'Rex'), (4, 'Tommy'), (3, 'Boris')]",
+        "[('Rex', 1), ('Tommy', 4), ('Boris', 3)]",
+        "[(3, 'Boris')]",
+        "[1, 4, 3]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ra-holds-pairs-4c2d56",
+      "text": "Ce conține `clasament` la final?",
+      "code": "victorii = {\"Ana\": 3, \"Ben\": 1}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))",
+      "options": ["[(3, 'Ana'), (1, 'Ben')]", "[('Ana', 3), ('Ben', 1)]", "[(1, 'Ben')]", "[3, 1]"],
+      "answer": 0
+    },
+    {
+      "id": "ra-holds-pairs-06fa88",
+      "text": "Ce conține `clasament` la final?",
+      "code": "victorii = {\"Cara\": 2, \"Phil\": 5, \"Lance\": 1}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))",
+      "options": [
+        "[(2, 'Cara'), (5, 'Phil'), (1, 'Lance')]",
+        "[('Cara', 2), ('Phil', 5), ('Lance', 1)]",
+        "[(1, 'Lance')]",
+        "[2, 5, 1]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ra-holds-pairs-aac4ce",
+      "text": "Ce conține `clasament` la final?",
+      "code": "victorii = {\"Kai\": 6, \"Zoe\": 2, \"Mia\": 4}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))",
+      "options": [
+        "[(6, 'Kai'), (2, 'Zoe'), (4, 'Mia')]",
+        "[('Kai', 6), ('Zoe', 2), ('Mia', 4)]",
+        "[(4, 'Mia')]",
+        "[6, 2, 4]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ra-holds-pairs-03acb7",
+      "text": "Ce conține `clasament` la final?",
+      "code": "victorii = {\"Sonny\": 2, \"Ken\": 2, \"Diaz\": 7}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))",
+      "options": [
+        "[(2, 'Sonny'), (2, 'Ken'), (7, 'Diaz')]",
+        "[('Sonny', 2), ('Ken', 2), ('Diaz', 7)]",
+        "[(7, 'Diaz')]",
+        "[2, 2, 7]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ra-holds-desc-fedacd",
+      "text": "Ce conține `numere` la final?",
+      "code": "numere = [3, 8, 1, 9, 4]\nfor j in range(len(numere) - 1):\n    if numere[j] < numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]",
+      "options": ["[8, 3, 9, 4, 1]", "[3, 1, 8, 4, 9]", "[8, 8, 9, 9, 4]", "[3, 8, 1, 9, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "ra-holds-desc-3d5cb2",
+      "text": "Ce conține `numere` la final?",
+      "code": "numere = [5, 2, 7, 6]\nfor j in range(len(numere) - 1):\n    if numere[j] < numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]",
+      "options": ["[5, 7, 6, 2]", "[2, 5, 6, 7]", "[5, 7, 7, 6]", "[5, 2, 7, 6]"],
+      "answer": 0
+    },
+    {
+      "id": "ra-holds-desc-015981",
+      "text": "Ce conține `scoruri` la final?",
+      "code": "scoruri = [10, 30, 20, 40]\nfor j in range(len(scoruri) - 1):\n    if scoruri[j] < scoruri[j + 1]:\n        scoruri[j], scoruri[j + 1] = scoruri[j + 1], scoruri[j]",
+      "options": ["[30, 20, 40, 10]", "[10, 20, 30, 40]", "[30, 30, 40, 40]", "[10, 30, 20, 40]"],
+      "answer": 0
+    },
+    {
+      "id": "ra-holds-desc-1e415b",
+      "text": "Ce conține `scoruri` la final?",
+      "code": "scoruri = [4, 1, 6, 2]\nfor j in range(len(scoruri) - 1):\n    if scoruri[j] < scoruri[j + 1]:\n        scoruri[j], scoruri[j + 1] = scoruri[j + 1], scoruri[j]",
+      "options": ["[4, 6, 2, 1]", "[1, 4, 2, 6]", "[4, 6, 6, 2]", "[4, 1, 6, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "ra-holds-desc-76f206",
+      "text": "Ce conține `niveluri` la final?",
+      "code": "niveluri = [6, 9, 2, 8, 7]\nfor j in range(len(niveluri) - 1):\n    if niveluri[j] < niveluri[j + 1]:\n        niveluri[j], niveluri[j + 1] = niveluri[j + 1], niveluri[j]",
+      "options": ["[9, 6, 8, 7, 2]", "[6, 2, 8, 7, 9]", "[9, 9, 8, 8, 7]", "[6, 9, 2, 8, 7]"],
+      "answer": 0
+    },
+    {
+      "id": "ra-input-search-4a0114",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [\"Rex\", \"Tommy\", \"Boris\", \"Cara\"]\nprint(cautare_liniara(rezultate, input()))",
+      "output": "2",
+      "options": ["Boris", "2", "boris", "Cara"],
+      "answer": 0
+    },
+    {
+      "id": "ra-input-search-133720",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [\"Ana\", \"Ben\", \"Cal\"]\nprint(cautare_liniara(rezultate, input()))",
+      "output": "0",
+      "options": ["Ana", "0", "ana", "Ben"],
+      "answer": 0
+    },
+    {
+      "id": "ra-input-search-daf943",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Lance\", \"Phil\", \"Sonny\"]\nprint(cautare_liniara(echipaj, input()))",
+      "output": "2",
+      "options": ["Sonny", "2", "sonny", "Phil"],
+      "answer": 0
+    },
+    {
+      "id": "ra-input-search-653343",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Kai\", \"Zoe\", \"Mia\", \"Rex\"]\nprint(cautare_liniara(echipaj, input()))",
+      "output": "2",
+      "options": ["Mia", "2", "mia", "Zoe"],
+      "answer": 0
+    },
+    {
+      "id": "ra-input-search-01d9d3",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nnave = [\"Nova\", \"Orion\", \"Vega\"]\nprint(cautare_liniara(nave, input()))",
+      "output": "1",
+      "options": ["Orion", "1", "orion", "Nova"],
+      "answer": 0
+    },
+    {
+      "id": "ra-error-bubble-89c4a5",
+      "text": "Ce eroare oprește acest program?",
+      "code": "numere = [3, 8, 1]\nfor j in range(len(numere)):\n    if numere[j] < numere[j + 1]:\n        numere[j], numere[j + 1] = numere[j + 1], numere[j]",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "ra-error-bubble-36684e",
+      "text": "Ce eroare oprește acest program?",
+      "code": "scoruri = [10, 30, 20, 40]\nfor j in range(len(scoruri)):\n    if scoruri[j] < scoruri[j + 1]:\n        scoruri[j], scoruri[j + 1] = scoruri[j + 1], scoruri[j]",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "ra-error-bubble-bf572c",
+      "text": "Ce eroare oprește acest program?",
+      "code": "niveluri = [6, 2]\nfor j in range(len(niveluri)):\n    if niveluri[j] < niveluri[j + 1]:\n        niveluri[j], niveluri[j + 1] = niveluri[j + 1], niveluri[j]",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "ra-error-append-7e903c",
+      "text": "Ce eroare oprește acest program?",
+      "code": "victorii = {\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append(contor, nume)",
+      "options": ["TypeError", "ValueError", "KeyError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "ra-error-append-a866c0",
+      "text": "Ce eroare oprește acest program?",
+      "code": "victorii = {\"Cara\": 2, \"Phil\": 5, \"Lance\": 1}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append(contor, nume)",
+      "options": ["TypeError", "ValueError", "KeyError", "IndexError"],
       "answer": 0
     }
   ]

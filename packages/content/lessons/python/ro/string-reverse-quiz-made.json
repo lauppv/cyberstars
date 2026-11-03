@@ -16,37 +16,6 @@
       "answer": 0
     },
     {
-      "id": "sr-acc-e4ee51",
-      "text": "Ce afișează?",
-      "code": "text = \"Lance\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
-      "options": ["ecnaL", "Lance", "L\naL\nnaL\ncnaL\necnaL", "ecnaLLance"],
-      "answer": 0
-    },
-    {
-      "id": "sr-acc-5d770b",
-      "text": "Ce afișează?",
-      "code": "text = \"racheta\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
-      "options": [
-        "atehcar",
-        "racheta",
-        "r\nar\ncar\nhcar\nehcar\ntehcar\natehcar",
-        "atehcarracheta"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "sr-acc-249df7",
-      "text": "Ce afișează?",
-      "code": "text = \"Vercetti\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\nprint(rezultat)",
-      "options": [
-        "ittecreV",
-        "Vercetti",
-        "V\neV\nreV\ncreV\necreV\ntecreV\nttecreV\nittecreV",
-        "ittecreVVercetti"
-      ],
-      "answer": 0
-    },
-    {
       "id": "sr-acc-steps-ae26a3",
       "text": "Ce afișează?",
       "code": "text = \"Marte\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
@@ -65,20 +34,6 @@
       "text": "Ce afișează?",
       "code": "text = \"Vice\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
       "options": ["V\niV\nciV\neciV", "V\nVi\nVic\nVice", "eciV", "V\ni\nc\ne"],
-      "answer": 0
-    },
-    {
-      "id": "sr-acc-steps-711692",
-      "text": "Ce afișează?",
-      "code": "text = \"Phil\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
-      "options": ["P\nhP\nihP\nlihP", "P\nPh\nPhi\nPhil", "lihP", "P\nh\ni\nl"],
-      "answer": 0
-    },
-    {
-      "id": "sr-acc-steps-f9327b",
-      "text": "Ce afișează?",
-      "code": "text = \"stea\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat\n    print(rezultat)",
-      "options": ["s\nts\nets\naets", "s\nst\nste\nstea", "aets", "s\nt\ne\na"],
       "answer": 0
     },
     {
@@ -103,20 +58,6 @@
       "answer": 0
     },
     {
-      "id": "sr-slice-faeafe",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"Cortez\"\nprint(cuvant[::-2])",
-      "options": ["zto", "Cortez", "zetroC", "ortez"],
-      "answer": 0
-    },
-    {
-      "id": "sr-slice-5d950d",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"Orbit\"\nprint(cuvant[:3])",
-      "options": ["Orb", "Orbit", "tibrO", "rbit"],
-      "answer": 0
-    },
-    {
       "id": "sr-index-e87b69",
       "text": "Ce afișează?",
       "code": "nume = \"Tommy\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
@@ -135,20 +76,6 @@
       "text": "Ce afișează?",
       "code": "nume = \"Lance\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
       "options": ["ecnaL", "ecna", "L", "Lance"],
-      "answer": 0
-    },
-    {
-      "id": "sr-index-5d770b",
-      "text": "Ce afișează?",
-      "code": "nume = \"racheta\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
-      "options": ["atehcar", "atehca", "r", "racheta"],
-      "answer": 0
-    },
-    {
-      "id": "sr-index-249df7",
-      "text": "Ce afișează?",
-      "code": "nume = \"Vercetti\"\nrezultat = \"\"\nfor i in range(len(nume) - 1, -1, -1):\n    rezultat += nume[i]\nprint(rezultat)",
-      "options": ["ittecreV", "ittecre", "V", "Vercetti"],
       "answer": 0
     },
     {
@@ -180,20 +107,6 @@
         "enilno iinuisim lulortnoc",
         "onlinemisiuniicontrolul"
       ],
-      "answer": 0
-    },
-    {
-      "id": "sr-words-761e07",
-      "text": "Ce afișează?",
-      "code": "propozitie = \"Marte este rosie\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
-      "options": ["rosie este Marte", "Marte este rosie", "eisor etse etraM", "rosieesteMarte"],
-      "answer": 0
-    },
-    {
-      "id": "sr-words-c9d28a",
-      "text": "Ce afișează?",
-      "code": "propozitie = \"lansare in zori\"\ncuvinte = propozitie.split(\" \")\nprint(\" \".join(cuvinte[::-1]))",
-      "options": ["zori in lansare", "lansare in zori", "iroz ni erasnal", "zoriinlansare"],
       "answer": 0
     },
     {
@@ -694,6 +607,86 @@
         "propozitie = \"aterizeaza pe Marte\"",
         "print(\" \".join(cuvinte_inversate))"
       ],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-acc-22c5eb",
+      "text": "Ce conține `rezultat` la final?",
+      "code": "text = \"Tommy\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat",
+      "options": ["'ymmoT'", "'Tommy'", "'y'", "'ymmoTTommy'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-acc-b02ed1",
+      "text": "Ce conține `rezultat` la final?",
+      "code": "text = \"Marte\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat",
+      "options": ["'etraM'", "'Marte'", "'e'", "'etraMMarte'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-acc-e92c22",
+      "text": "Ce conține `rezultat` la final?",
+      "code": "text = \"racheta\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat",
+      "options": ["'atehcar'", "'racheta'", "'a'", "'atehcarracheta'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-acc-21b39f",
+      "text": "Ce conține `rezultat` la final?",
+      "code": "text = \"Vice\"\nrezultat = \"\"\nfor caracter in text:\n    rezultat = caracter + rezultat",
+      "options": ["'eciV'", "'Vice'", "'e'", "'eciVVice'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-slice-5275d0",
+      "text": "Ce conține `invers` la final?",
+      "code": "cuvant = \"Tommy\"\ninvers = cuvant[::-1]",
+      "options": ["'ymmoT'", "'Tomm'", "'y'", "'Tommy'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-slice-64a54b",
+      "text": "Ce conține `invers` la final?",
+      "code": "cuvant = \"orbita\"\ninvers = cuvant[::-1]",
+      "options": ["'atibro'", "'orbit'", "'a'", "'orbita'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-slice-3ba68a",
+      "text": "Ce conține `invers` la final?",
+      "code": "cuvant = \"Lance\"\ninvers = cuvant[::-1]",
+      "options": ["'ecnaL'", "'Lanc'", "'e'", "'Lance'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-slice-f6e130",
+      "text": "Ce conține `invers` la final?",
+      "code": "cuvant = \"planeta\"\ninvers = cuvant[::-1]",
+      "options": ["'atenalp'", "'planet'", "'a'", "'planeta'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-input-reverse-84e92f",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "text = input()\nprint(text[::-1])",
+      "output": "ymmoT",
+      "options": ["Tommy", "ymmoT", "tommy", "Tomy"],
+      "answer": 0
+    },
+    {
+      "id": "sr-input-reverse-808564",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "text = input()\nprint(text[::-1])",
+      "output": "etraM",
+      "options": ["Marte", "etraM", "marte", "Mart"],
+      "answer": 0
+    },
+    {
+      "id": "sr-input-reverse-551831",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "cuvant = input()\nprint(cuvant[::-1])",
+      "output": "atehcar",
+      "options": ["racheta", "atehcar", "Racheta", "rachet"],
       "answer": 0
     }
   ]

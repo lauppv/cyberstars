@@ -28,20 +28,6 @@
       "answer": 0
     },
     {
-      "id": "ss-full-80199c",
-      "text": "What does this print?",
-      "code": "numbers = [6, 2, 9, 3, 5]\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
-      "options": ["[2, 3, 5, 6, 9]", "[9, 6, 5, 3, 2]", "[6, 2, 9, 3, 5]", "[2, 3, 6, 9, 5]"],
-      "answer": 0
-    },
-    {
-      "id": "ss-full-951704",
-      "text": "What does this print?",
-      "code": "numbers = [30, 10, 20]\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
-      "options": ["[10, 20, 30]", "[30, 20, 10]", "[30, 10, 20]", "[10, 30, 20]"],
-      "answer": 0
-    },
-    {
       "id": "ss-passes-fdf064",
       "text": "What does this print?",
       "code": "numbers = [5, 3, 8, 1, 2]\nfor i in range(2):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
@@ -68,25 +54,6 @@
       "answer": 0
     },
     {
-      "id": "ss-passes-e7f0b0",
-      "text": "What does this print?",
-      "code": "numbers = [4, 9, 2, 8, 1]\nfor i in range(3):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
-      "options": ["[1, 2, 4, 8, 9]", "[9, 8, 4, 2, 1]", "[1, 2, 9, 8, 4]", "[1, 1, 1, 8, 1]"],
-      "answer": 0
-    },
-    {
-      "id": "ss-passes-f5a4f7",
-      "text": "What does this print?",
-      "code": "numbers = [8, 1, 6, 2, 7, 3]\nfor i in range(2):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
-      "options": [
-        "[1, 2, 6, 8, 7, 3]",
-        "[1, 2, 3, 6, 7, 8]",
-        "[8, 7, 6, 2, 1, 3]",
-        "[1, 8, 6, 2, 7, 3]"
-      ],
-      "answer": 0
-    },
-    {
       "id": "ss-min-index-76a816",
       "text": "What does this print?",
       "code": "numbers = [12, 19, 15, 10, 11, 17]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nprint(min_index)",
@@ -105,20 +72,6 @@
       "text": "What does this print?",
       "code": "numbers = [12, 15, 10, 11, 14]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nprint(min_index)",
       "options": ["2", "10", "1", "3"],
-      "answer": 0
-    },
-    {
-      "id": "ss-min-index-a25afd",
-      "text": "What does this print?",
-      "code": "numbers = [14, 10, 7, 16, 19, 15]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nprint(min_index)",
-      "options": ["2", "7", "4", "3"],
-      "answer": 0
-    },
-    {
-      "id": "ss-min-index-0350c4",
-      "text": "What does this print?",
-      "code": "numbers = [6, 2, 4, 8, 3, 1]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nprint(min_index)",
-      "options": ["5", "1", "3", "6"],
       "answer": 0
     },
     {
@@ -143,20 +96,6 @@
       "answer": 0
     },
     {
-      "id": "ss-first-swap-d14d45",
-      "text": "What does this print?",
-      "code": "numbers = [9, 5, 8, 6]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nnumbers[0], numbers[min_index] = numbers[min_index], numbers[0]\nprint(numbers)",
-      "options": ["[5, 9, 8, 6]", "[9, 5, 8, 6]", "[5, 5, 8, 6]", "5"],
-      "answer": 0
-    },
-    {
-      "id": "ss-first-swap-0350c4",
-      "text": "What does this print?",
-      "code": "numbers = [6, 2, 4, 8, 3, 1]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nnumbers[0], numbers[min_index] = numbers[min_index], numbers[0]\nprint(numbers)",
-      "options": ["[1, 2, 4, 8, 3, 6]", "[8, 2, 4, 6, 3, 1]", "[1, 2, 4, 8, 3, 1]", "1"],
-      "answer": 0
-    },
-    {
       "id": "ss-function-71bdec",
       "text": "What does this print?",
       "code": "def selection_sort(numbers):\n    for i in range(len(numbers)):\n        min_index = i\n        for j in range(i + 1, len(numbers)):\n            if numbers[j] < numbers[min_index]:\n                min_index = j\n        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n    return numbers\n\nprint(selection_sort([42, 17, 88, 9, 23]))",
@@ -178,20 +117,6 @@
       "answer": 0
     },
     {
-      "id": "ss-function-79e6f0",
-      "text": "What does this print?",
-      "code": "def selection_sort(numbers):\n    for i in range(len(numbers)):\n        min_index = i\n        for j in range(i + 1, len(numbers)):\n            if numbers[j] < numbers[min_index]:\n                min_index = j\n        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n    return numbers\n\nprint(selection_sort([50, 40, 60, 10]))",
-      "options": ["[10, 40, 50, 60]", "[10, 40, 60, 50]", "10", "[60, 50, 40, 10]"],
-      "answer": 0
-    },
-    {
-      "id": "ss-function-be6b18",
-      "text": "What does this print?",
-      "code": "def selection_sort(numbers):\n    for i in range(len(numbers)):\n        min_index = i\n        for j in range(i + 1, len(numbers)):\n            if numbers[j] < numbers[min_index]:\n                min_index = j\n        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n    return numbers\n\nprint(selection_sort([6, 8, 2, 4]))",
-      "options": ["[2, 4, 6, 8]", "[2, 8, 6, 4]", "2", "[8, 6, 4, 2]"],
-      "answer": 0
-    },
-    {
       "id": "ss-desc-b596bf",
       "text": "What does this print?",
       "code": "numbers = [3, 9, 1, 7]\nfor i in range(len(numbers)):\n    max_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] > numbers[max_index]:\n            max_index = j\n    numbers[i], numbers[max_index] = numbers[max_index], numbers[i]\nprint(numbers)",
@@ -210,25 +135,6 @@
       "text": "What does this print?",
       "code": "numbers = [10, 40, 20, 30]\nfor i in range(len(numbers)):\n    max_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] > numbers[max_index]:\n            max_index = j\n    numbers[i], numbers[max_index] = numbers[max_index], numbers[i]\nprint(numbers)",
       "options": ["[40, 30, 20, 10]", "[10, 20, 30, 40]", "[10, 40, 20, 30]", "[40, 10, 20, 30]"],
-      "answer": 0
-    },
-    {
-      "id": "ss-desc-f1783e",
-      "text": "What does this print?",
-      "code": "numbers = [2, 6, 4]\nfor i in range(len(numbers)):\n    max_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] > numbers[max_index]:\n            max_index = j\n    numbers[i], numbers[max_index] = numbers[max_index], numbers[i]\nprint(numbers)",
-      "options": ["[6, 4, 2]", "[2, 4, 6]", "[2, 6, 4]", "[6, 2, 4]"],
-      "answer": 0
-    },
-    {
-      "id": "ss-desc-ece267",
-      "text": "What does this print?",
-      "code": "numbers = [11, 25, 64, 12, 22]\nfor i in range(len(numbers)):\n    max_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] > numbers[max_index]:\n            max_index = j\n    numbers[i], numbers[max_index] = numbers[max_index], numbers[i]\nprint(numbers)",
-      "options": [
-        "[64, 25, 22, 12, 11]",
-        "[11, 12, 22, 25, 64]",
-        "[11, 25, 64, 12, 22]",
-        "[64, 25, 11, 12, 22]"
-      ],
       "answer": 0
     },
     {
@@ -260,13 +166,6 @@
       "answer": 0
     },
     {
-      "id": "ss-count-compares-b69414",
-      "text": "What does this print?",
-      "code": "numbers = [9, 8]\ncomparisons = 0\nfor i in range(len(numbers)):\n    for j in range(i + 1, len(numbers)):\n        comparisons += 1\nprint(comparisons)",
-      "options": ["1", "4", "3", "2"],
-      "answer": 0
-    },
-    {
       "id": "ss-real-swaps-fa5b02",
       "text": "What does this print?",
       "code": "numbers = [5, 3, 8, 1, 2]\nswaps = 0\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    if min_index != i:\n        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n        swaps += 1\nprint(swaps)",
@@ -292,13 +191,6 @@
       "text": "What does this print?",
       "code": "numbers = [4, 3, 2, 1]\nswaps = 0\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    if min_index != i:\n        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n        swaps += 1\nprint(swaps)",
       "options": ["2", "4", "1", "[1, 2, 3, 4]"],
-      "answer": 0
-    },
-    {
-      "id": "ss-real-swaps-df1b9e",
-      "text": "What does this print?",
-      "code": "numbers = [3, 1, 2]\nswaps = 0\nfor i in range(len(numbers)):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    if min_index != i:\n        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n        swaps += 1\nprint(swaps)",
-      "options": ["2", "3", "[1, 2, 3]", "1"],
       "answer": 0
     },
     {
@@ -604,6 +496,115 @@
         "min_index = i",
         "print(numbers)"
       ],
+      "answer": 0
+    },
+    {
+      "id": "ss-holds-pass-7d9dba",
+      "text": "What is in `numbers` at the end?",
+      "code": "numbers = [12, 19, 15, 11, 10]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nnumbers[0], numbers[min_index] = numbers[min_index], numbers[0]",
+      "options": [
+        "[10, 19, 15, 11, 12]",
+        "[19, 12, 15, 11, 10]",
+        "[10, 19, 15, 11, 10]",
+        "[11, 19, 15, 12, 10]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ss-holds-pass-fb8d16",
+      "text": "What is in `numbers` at the end?",
+      "code": "numbers = [5, 3, 8, 1]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j\nnumbers[0], numbers[min_index] = numbers[min_index], numbers[0]",
+      "options": ["[1, 3, 8, 5]", "[8, 3, 5, 1]", "[1, 3, 8, 1]", "[3, 5, 8, 1]"],
+      "answer": 0
+    },
+    {
+      "id": "ss-holds-pass-82f0b1",
+      "text": "What is in `scores` at the end?",
+      "code": "scores = [9, 4, 7, 6, 2]\nmin_index = 0\nfor j in range(1, len(scores)):\n    if scores[j] < scores[min_index]:\n        min_index = j\nscores[0], scores[min_index] = scores[min_index], scores[0]",
+      "options": ["[2, 4, 7, 6, 9]", "[9, 4, 7, 6, 2]", "[2, 4, 7, 6, 2]", "[4, 9, 7, 6, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "ss-holds-pass-23b0e1",
+      "text": "What is in `prices` at the end?",
+      "code": "prices = [20, 15, 30, 5]\nmin_index = 0\nfor j in range(1, len(prices)):\n    if prices[j] < prices[min_index]:\n        min_index = j\nprices[0], prices[min_index] = prices[min_index], prices[0]",
+      "options": ["[5, 15, 30, 20]", "[30, 15, 20, 5]", "[5, 15, 30, 5]", "[15, 20, 30, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "ss-holds-pass-fc9242",
+      "text": "What is in `levels` at the end?",
+      "code": "levels = [7, 3, 1]\nmin_index = 0\nfor j in range(1, len(levels)):\n    if levels[j] < levels[min_index]:\n        min_index = j\nlevels[0], levels[min_index] = levels[min_index], levels[0]",
+      "options": ["[1, 3, 7]", "[7, 3, 1]", "[1, 3, 1]", "[3, 7, 1]"],
+      "answer": 0
+    },
+    {
+      "id": "ss-holds-min-9280d2",
+      "text": "What is in `min_index` at the end?",
+      "code": "numbers = [12, 10, 15, 10, 11]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j",
+      "options": ["1", "2", "3", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ss-holds-min-fb8d16",
+      "text": "What is in `min_index` at the end?",
+      "code": "numbers = [5, 3, 8, 1]\nmin_index = 0\nfor j in range(1, len(numbers)):\n    if numbers[j] < numbers[min_index]:\n        min_index = j",
+      "options": ["3", "2", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ss-holds-min-b8e3a9",
+      "text": "What is in `min_index` at the end?",
+      "code": "scores = [4, 2, 9, 2, 6]\nmin_index = 0\nfor j in range(1, len(scores)):\n    if scores[j] < scores[min_index]:\n        min_index = j",
+      "options": ["1", "2", "3", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ss-input-passes-b7ff4f",
+      "text": "What did the user type?",
+      "code": "passes = int(input())\nnumbers = [6, 5, 4, 3, 2, 1]\nfor i in range(passes):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "output": "[1, 5, 4, 3, 2, 6]",
+      "options": ["1", "2", "0", "6"],
+      "answer": 0
+    },
+    {
+      "id": "ss-input-passes-7cdf27",
+      "text": "What did the user type?",
+      "code": "passes = int(input())\nnumbers = [6, 5, 4, 3, 2, 1]\nfor i in range(passes):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "output": "[1, 2, 4, 3, 5, 6]",
+      "options": ["2", "1", "3", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ss-input-passes-2b5dd3",
+      "text": "What did the user type?",
+      "code": "passes = int(input())\nnumbers = [4, 9, 2, 7, 1]\nfor i in range(passes):\n    min_index = i\n    for j in range(i + 1, len(numbers)):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\nprint(numbers)",
+      "output": "[1, 2, 9, 7, 4]",
+      "options": ["2", "1", "3", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ss-input-passes-70e4ac",
+      "text": "What did the user type?",
+      "code": "passes = int(input())\nscores = [30, 10, 20]\nfor i in range(passes):\n    min_index = i\n    for j in range(i + 1, len(scores)):\n        if scores[j] < scores[min_index]:\n            min_index = j\n    scores[i], scores[min_index] = scores[min_index], scores[i]\nprint(scores)",
+      "output": "[10, 30, 20]",
+      "options": ["1", "2", "0", "3"],
+      "answer": 0
+    },
+    {
+      "id": "ss-input-passes-3c5f6d",
+      "text": "What did the user type?",
+      "code": "passes = int(input())\nlevels = [3, 3, 1, 2]\nfor i in range(passes):\n    min_index = i\n    for j in range(i + 1, len(levels)):\n        if levels[j] < levels[min_index]:\n            min_index = j\n    levels[i], levels[min_index] = levels[min_index], levels[i]\nprint(levels)",
+      "output": "[1, 3, 3, 2]",
+      "options": ["1", "2", "0", "4"],
+      "answer": 0
+    },
+    {
+      "id": "ss-input-passes-5ddf6e",
+      "text": "What did the user type?",
+      "code": "passes = int(input())\nspeeds = [5, 9, 1, 7]\nfor i in range(passes):\n    min_index = i\n    for j in range(i + 1, len(speeds)):\n        if speeds[j] < speeds[min_index]:\n            min_index = j\n    speeds[i], speeds[min_index] = speeds[min_index], speeds[i]\nprint(speeds)",
+      "output": "[1, 9, 5, 7]",
+      "options": ["1", "2", "0", "3"],
       "answer": 0
     }
   ]

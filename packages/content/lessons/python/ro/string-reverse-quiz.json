@@ -275,15 +275,6 @@
         },
         {
           "w": "Orbita"
-        },
-        {
-          "w": "Lance"
-        },
-        {
-          "w": "racheta"
-        },
-        {
-          "w": "Vercetti"
         }
       ],
       "mistakes": [
@@ -307,12 +298,6 @@
         },
         {
           "w": "Vice"
-        },
-        {
-          "w": "Phil"
-        },
-        {
-          "w": "stea"
         }
       ],
       "mistakes": [
@@ -339,14 +324,6 @@
         {
           "w": "Lance",
           "s": "1:"
-        },
-        {
-          "w": "Cortez",
-          "s": "::-2"
-        },
-        {
-          "w": "Orbit",
-          "s": ":3"
         }
       ],
       "mistakes": [
@@ -370,12 +347,6 @@
         },
         {
           "w": "Lance"
-        },
-        {
-          "w": "racheta"
-        },
-        {
-          "w": "Vercetti"
         }
       ],
       "mistakes": [
@@ -399,12 +370,6 @@
         },
         {
           "s": "controlul misiunii online"
-        },
-        {
-          "s": "Marte este rosie"
-        },
-        {
-          "s": "lansare in zori"
         }
       ],
       "mistakes": [
@@ -646,6 +611,109 @@
         }
       ],
       "bug": ["cuvinte[::-1]", "cuvinte[::1]"]
+    },
+    {
+      "id": "sr-holds-acc",
+      "kind": "holds",
+      "text": "Ce conține `{{r}}` la final?",
+      "code": "{{t}} = \"{{w}}\"\n{{r}} = \"\"\nfor {{ch}} in {{t}}:\n    {{r}} = {{ch}} + {{r}}",
+      "values": [
+        {
+          "t": "text",
+          "r": "rezultat",
+          "ch": "caracter",
+          "w": "Tommy"
+        },
+        {
+          "t": "text",
+          "r": "rezultat",
+          "ch": "caracter",
+          "w": "Marte"
+        },
+        {
+          "t": "text",
+          "r": "rezultat",
+          "ch": "caracter",
+          "w": "racheta"
+        },
+        {
+          "t": "text",
+          "r": "rezultat",
+          "ch": "caracter",
+          "w": "Vice"
+        }
+      ],
+      "variable": "{{r}}",
+      "mistakes": [
+        ["{{ch}} + {{r}}", "{{r}} + {{ch}}"],
+        ["{{r}} = {{ch}} + {{r}}", "{{r}} = {{ch}}"],
+        ["{{r}} = \"\"", "{{r}} = {{t}}"]
+      ]
+    },
+    {
+      "id": "sr-holds-slice",
+      "kind": "holds",
+      "text": "Ce conține `{{r}}` la final?",
+      "code": "{{t}} = \"{{w}}\"\n{{r}} = {{t}}[::-1]",
+      "values": [
+        {
+          "t": "cuvant",
+          "r": "invers",
+          "w": "Tommy"
+        },
+        {
+          "t": "cuvant",
+          "r": "invers",
+          "w": "orbita"
+        },
+        {
+          "t": "cuvant",
+          "r": "invers",
+          "w": "Lance"
+        },
+        {
+          "t": "cuvant",
+          "r": "invers",
+          "w": "planeta"
+        }
+      ],
+      "variable": "{{r}}",
+      "mistakes": [
+        ["[::-1]", "[:-1]"],
+        ["[::-1]", "[-1]"],
+        ["[::-1]", "[::]"]
+      ]
+    },
+    {
+      "id": "sr-input-reverse",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{t}} = input()\nprint({{t}}[::-1])",
+      "values": [
+        {
+          "t": "text",
+          "a": "Tommy",
+          "out": "ymmoT",
+          "low": "tommy",
+          "short": "Tomy"
+        },
+        {
+          "t": "text",
+          "a": "Marte",
+          "out": "etraM",
+          "low": "marte",
+          "short": "Mart"
+        },
+        {
+          "t": "cuvant",
+          "a": "racheta",
+          "out": "atehcar",
+          "low": "Racheta",
+          "short": "rachet"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{out}}", "{{low}}", "{{short}}"]
     }
   ]
 }

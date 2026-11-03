@@ -16,32 +16,6 @@
       "answer": 0
     },
     {
-      "id": "sr-acc-e4ee51",
-      "text": "What does this print?",
-      "code": "text = \"Lance\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
-      "options": ["ecnaL", "Lance", "L\naL\nnaL\ncnaL\necnaL", "ecnaLLance"],
-      "answer": 0
-    },
-    {
-      "id": "sr-acc-5d770b",
-      "text": "What does this print?",
-      "code": "text = \"rocket\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
-      "options": ["tekcor", "rocket", "r\nor\ncor\nkcor\nekcor\ntekcor", "tekcorrocket"],
-      "answer": 0
-    },
-    {
-      "id": "sr-acc-249df7",
-      "text": "What does this print?",
-      "code": "text = \"Vercetti\"\nresult = \"\"\nfor char in text:\n    result = char + result\nprint(result)",
-      "options": [
-        "ittecreV",
-        "Vercetti",
-        "V\neV\nreV\ncreV\necreV\ntecreV\nttecreV\nittecreV",
-        "ittecreVVercetti"
-      ],
-      "answer": 0
-    },
-    {
       "id": "sr-acc-steps-ae26a3",
       "text": "What does this print?",
       "code": "text = \"Mars\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
@@ -60,20 +34,6 @@
       "text": "What does this print?",
       "code": "text = \"Vice\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
       "options": ["V\niV\nciV\neciV", "V\nVi\nVic\nVice", "eciV", "V\ni\nc\ne"],
-      "answer": 0
-    },
-    {
-      "id": "sr-acc-steps-711692",
-      "text": "What does this print?",
-      "code": "text = \"Phil\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
-      "options": ["P\nhP\nihP\nlihP", "P\nPh\nPhi\nPhil", "lihP", "P\nh\ni\nl"],
-      "answer": 0
-    },
-    {
-      "id": "sr-acc-steps-f9327b",
-      "text": "What does this print?",
-      "code": "text = \"star\"\nresult = \"\"\nfor char in text:\n    result = char + result\n    print(result)",
-      "options": ["s\nts\nats\nrats", "s\nst\nsta\nstar", "rats", "s\nt\na\nr"],
       "answer": 0
     },
     {
@@ -98,20 +58,6 @@
       "answer": 0
     },
     {
-      "id": "sr-slice-faeafe",
-      "text": "What does this print?",
-      "code": "word = \"Cortez\"\nprint(word[::-2])",
-      "options": ["zto", "Cortez", "zetroC", "ortez"],
-      "answer": 0
-    },
-    {
-      "id": "sr-slice-5d950d",
-      "text": "What does this print?",
-      "code": "word = \"Orbit\"\nprint(word[:3])",
-      "options": ["Orb", "Orbit", "tibrO", "rbit"],
-      "answer": 0
-    },
-    {
       "id": "sr-index-e87b69",
       "text": "What does this print?",
       "code": "name = \"Tommy\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
@@ -130,20 +76,6 @@
       "text": "What does this print?",
       "code": "name = \"Lance\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
       "options": ["ecnaL", "ecna", "L", "Lance"],
-      "answer": 0
-    },
-    {
-      "id": "sr-index-5d770b",
-      "text": "What does this print?",
-      "code": "name = \"rocket\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
-      "options": ["tekcor", "tekco", "r", "rocket"],
-      "answer": 0
-    },
-    {
-      "id": "sr-index-249df7",
-      "text": "What does this print?",
-      "code": "name = \"Vercetti\"\nresult = \"\"\nfor i in range(len(name) - 1, -1, -1):\n    result += name[i]\nprint(result)",
-      "options": ["ittecreV", "ittecre", "V", "Vercetti"],
       "answer": 0
     },
     {
@@ -170,20 +102,6 @@
         "enilno lortnoc noissim",
         "onlinecontrolmission"
       ],
-      "answer": 0
-    },
-    {
-      "id": "sr-words-761e07",
-      "text": "What does this print?",
-      "code": "sentence = \"Mars is red\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
-      "options": ["red is Mars", "Mars is red", "der si sraM", "redisMars"],
-      "answer": 0
-    },
-    {
-      "id": "sr-words-c9d28a",
-      "text": "What does this print?",
-      "code": "sentence = \"launch at dawn\"\nwords = sentence.split(\" \")\nprint(\" \".join(words[::-1]))",
-      "options": ["dawn at launch", "launch at dawn", "nwad ta hcnual", "dawnatlaunch"],
       "answer": 0
     },
     {
@@ -669,6 +587,86 @@
         "sentence = \"land on Mars\"",
         "print(\" \".join(reversed_words))"
       ],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-acc-22c5eb",
+      "text": "What is in `result` at the end?",
+      "code": "text = \"Tommy\"\nresult = \"\"\nfor char in text:\n    result = char + result",
+      "options": ["'ymmoT'", "'Tommy'", "'y'", "'ymmoTTommy'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-acc-b02ed1",
+      "text": "What is in `result` at the end?",
+      "code": "text = \"Mars\"\nresult = \"\"\nfor char in text:\n    result = char + result",
+      "options": ["'sraM'", "'Mars'", "'s'", "'sraMMars'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-acc-e92c22",
+      "text": "What is in `result` at the end?",
+      "code": "text = \"rocket\"\nresult = \"\"\nfor char in text:\n    result = char + result",
+      "options": ["'tekcor'", "'rocket'", "'t'", "'tekcorrocket'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-acc-21b39f",
+      "text": "What is in `result` at the end?",
+      "code": "text = \"Vice\"\nresult = \"\"\nfor char in text:\n    result = char + result",
+      "options": ["'eciV'", "'Vice'", "'e'", "'eciVVice'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-slice-5275d0",
+      "text": "What is in `backwards` at the end?",
+      "code": "word = \"Tommy\"\nbackwards = word[::-1]",
+      "options": ["'ymmoT'", "'Tomm'", "'y'", "'Tommy'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-slice-64a54b",
+      "text": "What is in `backwards` at the end?",
+      "code": "word = \"orbit\"\nbackwards = word[::-1]",
+      "options": ["'tibro'", "'orbi'", "'t'", "'orbit'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-slice-3ba68a",
+      "text": "What is in `backwards` at the end?",
+      "code": "word = \"Lance\"\nbackwards = word[::-1]",
+      "options": ["'ecnaL'", "'Lanc'", "'e'", "'Lance'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-holds-slice-f6e130",
+      "text": "What is in `backwards` at the end?",
+      "code": "word = \"planet\"\nbackwards = word[::-1]",
+      "options": ["'tenalp'", "'plane'", "'t'", "'planet'"],
+      "answer": 0
+    },
+    {
+      "id": "sr-input-reverse-84e92f",
+      "text": "What did the user type?",
+      "code": "text = input()\nprint(text[::-1])",
+      "output": "ymmoT",
+      "options": ["Tommy", "ymmoT", "tommy", "Tomy"],
+      "answer": 0
+    },
+    {
+      "id": "sr-input-reverse-808564",
+      "text": "What did the user type?",
+      "code": "text = input()\nprint(text[::-1])",
+      "output": "sraM",
+      "options": ["Mars", "sraM", "mars", "Mar"],
+      "answer": 0
+    },
+    {
+      "id": "sr-input-reverse-551831",
+      "text": "What did the user type?",
+      "code": "word = input()\nprint(word[::-1])",
+      "output": "tekcor",
+      "options": ["rocket", "tekcor", "Rocket", "rocke"],
       "answer": 0
     }
   ]
