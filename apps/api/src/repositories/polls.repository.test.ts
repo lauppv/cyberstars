@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockPrisma = {
-  user: { findMany: vi.fn() },
+  user: { findMany: vi.fn(), findUnique: vi.fn() },
   poll: { create: vi.fn(), findUnique: vi.fn(), findMany: vi.fn(), update: vi.fn() },
   pollOption: { updateMany: vi.fn() },
   pollVoter: { createMany: vi.fn() },
@@ -60,6 +60,20 @@ describe('findPoll', () => {
         voted: { where: { userId: 10 }, select: { userId: true } },
       },
     });
+  });
+});
+
+describe('joinedAt', () => {
+  it("reads when the account was made, null once it's gone", async () => {
+    const at = new Date('2026-11-01T10:00:00.000Z');
+    mockPrisma.user.findUnique.mockResolvedValue({ createdAt: at });
+    expect(await repo.joinedAt(10)).toBe(at);
+    expect(mockPrisma.user.findUnique).toHaveBeenCalledWith({
+      where: { id: 10 },
+      select: { createdAt: true },
+    });
+    mockPrisma.user.findUnique.mockResolvedValue(null);
+    expect(await repo.joinedAt(10)).toBeNull();
   });
 });
 

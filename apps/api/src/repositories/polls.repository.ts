@@ -47,6 +47,12 @@ export function findPoll(id: number, userId: number) {
   });
 }
 
+// When this account was made, null once it's gone
+export async function joinedAt(userId: number): Promise<Date | null> {
+  const user = await prisma.user.findUnique({ where: { id: userId }, select: { createdAt: true } });
+  return user?.createdAt ?? null;
+}
+
 // One anonymous vote: the voter goes in poll_voters so they can't vote again,
 // and each option picked counts one more, with nothing tying the two. False
 // when they had voted already, from another tab too

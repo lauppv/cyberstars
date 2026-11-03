@@ -14,10 +14,19 @@ export async function send(authorId: number, question: string, options: string[]
   return rows.length;
 }
 
+// Only an account it went to opens it: everyone but the author who was here
+// when it was sent, so voters never outgrow recipients
+async function received(id: number, userId: number) {
+  const [poll, joined] = await Promise.all([repo.findPoll(id, userId), repo.joinedAt(userId)]);
+  if (!poll || poll.authorId === userId || !joined || joined > poll.createdAt) {
+    throw new AppError(404, 'Poll not found');
+  }
+  return poll;
+}
+
 // The poll as a student opens it, no counts
 export async function get(id: number, userId: number): Promise<PollDTO> {
-  const poll = await repo.findPoll(id, userId);
-  if (!poll) throw new AppError(404, 'Poll not found');
+  const poll = await received(id, userId);
   return {
     id: poll.id,
     question: poll.question,
@@ -27,8 +36,7 @@ export async function get(id: number, userId: number): Promise<PollDTO> {
 }
 
 export async function vote(id: number, userId: number, optionIds: number[]): Promise<void> {
-  const poll = await repo.findPoll(id, userId);
-  if (!poll) throw new AppError(404, 'Poll not found');
+  const poll = await received(id, userId);
   const own = new Set(poll.options.map((o) => o.id));
   if (!optionIds.every((o) => own.has(o))) throw new AppError(400, 'Pick options from this poll');
   if (!(await repo.vote(id, userId, optionIds))) {

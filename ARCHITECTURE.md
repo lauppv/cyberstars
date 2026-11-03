@@ -173,7 +173,7 @@ The judge runs the student's code and the reference solution in the owner's cont
 | POST   | `/api/notifications/read`              | Yes  | Mark read up to an id                   |
 | POST   | `/api/notifications/:id/read`          | Yes  | Mark one read                           |
 | WS     | `/ws/user`                             | Yes  | Pushes new notifications and messages   |
-| GET    | `/api/polls/:id`                       | Yes  | A poll, no counts, and whether I voted  |
+| GET    | `/api/polls/:id`                       | Yes  | A poll I got, no counts, and if I voted |
 | POST   | `/api/polls/:id/vote`                  | Yes  | Vote once, anonymously                  |
 | GET    | `/api/messages/conversations`          | Yes  | Inbox with unread counts                |
 | POST   | `/api/messages/conversations`          | Yes  | Open (or find) a conversation           |

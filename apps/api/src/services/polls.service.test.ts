@@ -3,6 +3,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const mockRepo = {
   createPoll: vi.fn(),
   findPoll: vi.fn(),
+  joinedAt: vi.fn(),
   vote: vi.fn(),
   listPolls: vi.fn(),
 };
@@ -13,8 +14,11 @@ vi.mock('./notifications.service.js', () => mockNotifications);
 
 const { send, get, vote, list } = await import('./polls.service.js');
 
+const sentAt = new Date('2026-11-03T10:00:00.000Z');
 const stored = {
   id: 4,
+  authorId: 2,
+  createdAt: sentAt,
   question: 'Next?',
   options: [
     { id: 7, text: 'Rust' },
@@ -23,7 +27,11 @@ const stored = {
   voted: [] as { userId: number }[],
 };
 
-beforeEach(() => vi.clearAllMocks());
+beforeEach(() => {
+  vi.clearAllMocks();
+  // Signed up before the poll went out, so it got it
+  mockRepo.joinedAt.mockResolvedValue(new Date('2026-11-01T10:00:00.000Z'));
+});
 
 describe('polls.service send', () => {
   it('inserts it for everyone, pushes it live and says how many got it', async () => {
@@ -60,6 +68,22 @@ describe('polls.service get', () => {
     mockRepo.findPoll.mockResolvedValue(null);
     await expect(get(99, 10)).rejects.toMatchObject({ statusCode: 404, message: 'Poll not found' });
   });
+
+  it('is a 404 for the author and for an account made after it went out', async () => {
+    mockRepo.findPoll.mockResolvedValue(stored);
+    await expect(get(4, 2)).rejects.toMatchObject({ statusCode: 404, message: 'Poll not found' });
+    mockRepo.joinedAt.mockResolvedValue(new Date('2026-11-03T10:00:00.001Z'));
+    await expect(get(4, 10)).rejects.toMatchObject({ statusCode: 404, message: 'Poll not found' });
+    mockRepo.joinedAt.mockResolvedValue(null);
+    await expect(get(4, 10)).rejects.toMatchObject({ statusCode: 404, message: 'Poll not found' });
+    expect(mockRepo.joinedAt).toHaveBeenCalledWith(10);
+  });
+
+  it('opens it for an account made in the same moment it went out', async () => {
+    mockRepo.findPoll.mockResolvedValue(stored);
+    mockRepo.joinedAt.mockResolvedValue(sentAt);
+    expect((await get(4, 10)).id).toBe(4);
+  });
 });
 
 describe('polls.service vote', () => {
@@ -73,6 +97,14 @@ describe('polls.service vote', () => {
   it('is a 404 for a poll that does not exist', async () => {
     mockRepo.findPoll.mockResolvedValue(null);
     await expect(vote(99, 10, [7])).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.vote).not.toHaveBeenCalled();
+  });
+
+  it("is a 404 for an account the poll didn't go to, counting nothing", async () => {
+    mockRepo.findPoll.mockResolvedValue(stored);
+    await expect(vote(4, 2, [7])).rejects.toMatchObject({ statusCode: 404 });
+    mockRepo.joinedAt.mockResolvedValue(new Date('2026-11-04T10:00:00.000Z'));
+    await expect(vote(4, 10, [7])).rejects.toMatchObject({ statusCode: 404 });
     expect(mockRepo.vote).not.toHaveBeenCalled();
   });
 

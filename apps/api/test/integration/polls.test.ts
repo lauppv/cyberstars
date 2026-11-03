@@ -109,8 +109,8 @@ describe('Voting in a poll', () => {
   });
 
   it('shows a student the question and options, no counts, and whether they voted', async () => {
-    const { poll } = await sendPoll();
     const { agent: user } = await createAuthenticatedAgent();
+    const { poll } = await sendPoll();
     const { body } = await user.get(`/api/polls/${poll.id}`).expect(200);
     expect(body).toEqual({
       id: poll.id,
@@ -121,10 +121,10 @@ describe('Voting in a poll', () => {
   });
 
   it('counts a vote once, with every option picked, and never says who picked what', async () => {
-    const { admin: a, poll } = await sendPoll();
-    const [rust, go, sql] = poll.options;
     const { agent: ana, email } = await createAuthenticatedAgent();
     const { agent: bob } = await createAuthenticatedAgent();
+    const { admin: a, poll } = await sendPoll();
+    const [rust, go, sql] = poll.options;
 
     await ana
       .post(`/api/polls/${poll.id}/vote`)
@@ -153,8 +153,8 @@ describe('Voting in a poll', () => {
   });
 
   it("keeps the counts once a voter's account is gone", async () => {
-    const { admin: a, poll } = await sendPoll();
     const { agent: user, email } = await createAuthenticatedAgent();
+    const { admin: a, poll } = await sendPoll();
     await user
       .post(`/api/polls/${poll.id}/vote`)
       .send({ optionIds: [poll.options[1].id] })
@@ -168,8 +168,8 @@ describe('Voting in a poll', () => {
   });
 
   it("refuses no option, another poll's option and a poll that doesn't exist", async () => {
-    const { poll } = await sendPoll();
     const { agent: user } = await createAuthenticatedAgent();
+    const { poll } = await sendPoll();
     await user.post(`/api/polls/${poll.id}/vote`).send({ optionIds: [] }).expect(400);
     await user
       .post(`/api/polls/${poll.id}/vote`)
@@ -182,5 +182,20 @@ describe('Voting in a poll', () => {
     await user.get(`/api/polls/${poll.id + 100}`).expect(404);
     await user.get('/api/polls/abc').expect(400);
     expect(await prisma.pollVoter.count()).toBe(0);
+  });
+
+  it("is a 404 for its author and an account made after it went out, so they can't vote", async () => {
+    const { admin: a, poll } = await sendPoll();
+    const { agent: late } = await createAuthenticatedAgent();
+    for (const who of [a, late]) {
+      await who.get(`/api/polls/${poll.id}`).expect(404);
+      await who
+        .post(`/api/polls/${poll.id}/vote`)
+        .send({ optionIds: [poll.options[0].id] })
+        .expect(404);
+    }
+    expect(await prisma.pollVoter.count()).toBe(0);
+    const [results] = (await a.get('/api/admin/polls').expect(200)).body;
+    expect(results).toMatchObject({ recipients: 1, voters: 0 });
   });
 });
