@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { NOTICES_MAX } from '@cyberstars/shared/notifications';
 import type { NotificationDTO, UserSocketFrame } from '@cyberstars/shared/notifications';
 
 const h = vi.hoisted(() => ({
@@ -218,6 +219,23 @@ describe('DashboardNotices', () => {
     await frame(notice(9, { type: 'FORUM_REPLY' }));
     await frame(notice(10, { type: 'POLL_ANSWER' }));
     expect(h.service.getNotices).toHaveBeenCalledTimes(1);
+  });
+
+  it('marks a window grown past the limit shown in slices the server takes', async () => {
+    const first = Array.from({ length: NOTICES_MAX }, (_, i) => notice(i + 1));
+    h.service.getNotices.mockResolvedValue(first);
+    renderNotices();
+    await dialog();
+
+    // The first one is read now, so the server leaves it out; the live one goes last
+    const late = notice(NOTICES_MAX + 1);
+    h.service.getNotices.mockResolvedValue([...first.slice(1), late]);
+    await frame(late);
+    expect(await screen.findByText(`1 of ${NOTICES_MAX + 1}`)).toBeInTheDocument();
+
+    fireEvent.click(button('Close'));
+    fireEvent.click(screen.getAllByRole('button', { name: 'Close' })[1]);
+    expect(h.service.markShown.mock.calls).toEqual([[first.map((n) => n.id)], [[NOTICES_MAX + 1]]]);
   });
 
   it('never brings back the ones it closed, even from a load that missed the shown mark', async () => {

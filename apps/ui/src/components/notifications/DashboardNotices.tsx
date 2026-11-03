@@ -6,7 +6,7 @@ import { useUserSocketFrames } from '../../context/UserSocketContext';
 import * as notificationsService from '../../services/notificationsService';
 import { announcementDay } from './announcementDay';
 import { PollVote } from './PollVote';
-import { NOTICE_TYPES } from '@cyberstars/shared/notifications';
+import { NOTICE_TYPES, NOTICES_MAX } from '@cyberstars/shared/notifications';
 import type { NotificationDTO, UserSocketFrame } from '@cyberstars/shared/notifications';
 
 const secondary =
@@ -76,7 +76,10 @@ export function DashboardNotices({ held = false }: { held?: boolean }) {
   const close = useCallback(() => {
     const ids = notices.map((n) => n.id);
     for (const id of ids) closed.current.add(id);
-    notificationsService.markShown(ids).catch(() => {});
+    // Live ones can grow it past what one shown mark takes, so in slices
+    for (let i = 0; i < ids.length; i += NOTICES_MAX) {
+      notificationsService.markShown(ids.slice(i, i + NOTICES_MAX)).catch(() => {});
+    }
     setNotices([]);
     setAt(0);
     setReached(0);
