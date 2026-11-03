@@ -687,18 +687,70 @@ def has_fstring(tree):
     return any(isinstance(node, ast.JoinedStr) for node in ast.walk(tree))
 
 
+# A printf-style conversion: its width and precision only pad, so "%58d" never
+# prints 58.
+FORMAT_SPEC = re.compile(r"%[-+ #0,(']*(?:\d+|\*)?(?:\.(?:\d+|\*))?(?:hh|h|ll|l|L|q|j|z|t)?[a-zA-Z%]")
+
+
+def digit_runs(text):
+    # A run past 18 digits is no answer, and int() refuses one past 4300.
+    runs = re.findall(r"\d+", FORMAT_SPEC.sub(" ", text))
+    return {int(run) for run in runs if len(run) <= 18}
+
+
+def folded(node):
+    # The value of an expression made only of constants (57 + 1, "5" + "8",
+    # f"5{8}"), or None.
+    if isinstance(node, ast.Constant):
+        value = node.value
+        return value.decode("latin-1") if isinstance(value, bytes) else value
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, (ast.USub, ast.UAdd)):
+        value = folded(node.operand)
+        if isinstance(value, (int, float)):
+            return -value if isinstance(node.op, ast.USub) else value
+    if isinstance(node, ast.BinOp) and isinstance(node.op, (ast.Add, ast.Sub, ast.Mult)):
+        left, right = folded(node.left), folded(node.right)
+        numbers = all(isinstance(v, (int, float)) and abs(v) < 10**18 for v in (left, right))
+        if numbers:
+            if isinstance(node.op, ast.Add):
+                return left + right
+            return left - right if isinstance(node.op, ast.Sub) else left * right
+        if isinstance(node.op, ast.Add) and isinstance(left, str) and isinstance(right, str):
+            return left + right
+    if isinstance(node, ast.JoinedStr):
+        parts = []
+        for part in node.values:
+            value = folded(part.value) if isinstance(part, ast.FormattedValue) else folded(part)
+            if value is None or (isinstance(part, ast.FormattedValue) and part.format_spec):
+                return None
+            parts.append(str(value))
+        return "".join(parts)
+    return None
+
+
 def int_literals(tree, values):
-    # A forbidden constant can't hide in a string either: print("58 64").
+    # A forbidden constant can't hide in a string or a sum of constants
+    # either: print("58 64"), print(57 + 1), print("5" + "8").
     found = set()
+    # An f-string's format spec ({x:58}) only pads.
+    specs = {
+        id(n)
+        for v in ast.walk(tree)
+        if isinstance(v, ast.FormattedValue) and v.format_spec
+        for n in ast.walk(v.format_spec)
+    }
     for node in ast.walk(tree):
-        if not isinstance(node, ast.Constant):
+        if id(node) in specs:
             continue
-        if type(node.value) is int and node.value in values:
-            found.add(node.value)
-        elif isinstance(node.value, str):
-            # A run past 18 digits is no answer, and int() refuses one past 4300.
-            runs = (run for run in re.findall(r"\d+", node.value) if len(run) <= 18)
-            found.update(n for n in map(int, runs) if n in values)
+        value = folded(node)
+        if isinstance(value, bool) or value is None:
+            continue
+        if isinstance(value, float) and value.is_integer() and abs(value) < 10**18:
+            value = int(value)
+        if isinstance(value, int) and value in values:
+            found.add(value)
+        elif isinstance(value, str):
+            found.update(digit_runs(value) & values)
     return found
 
 

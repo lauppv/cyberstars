@@ -419,6 +419,16 @@ describe.skipIf(!has('python3'))('python runner', () => {
       });
     }
     expect(header('print("580 6.4")\n')).toEqual({ syntaxError: null, structureFailures: [] });
+    // A sum of constants or bytes say it as well; a width only pads.
+    for (const code of ['print(57 + 1)\n', 'print("5" + "8")\n', 'print(b"58".decode())\n']) {
+      expect(header(code)).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'forbid', rule }],
+      });
+    }
+    for (const code of ['print(f"{1:58}")\n', 'print("%58d" % 1)\n']) {
+      expect(header(code)).toEqual({ syntaxError: null, structureFailures: [] });
+    }
     // A run too long to be an answer is skipped, not handed to int().
     expect(header(`print("${'9'.repeat(5000)}")\n`)).toEqual({
       syntaxError: null,
