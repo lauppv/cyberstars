@@ -334,6 +334,11 @@ describe.skipIf(!has('python3'))('python runner', () => {
       });
     }
     expect(header('print("580 6.4")\n')).toEqual({ syntaxError: null, structureFailures: [] });
+    // A run too long to be an answer is skipped, not handed to int().
+    expect(header(`print("${'9'.repeat(5000)}")\n`)).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
   });
 
   it('streams one line per case and stops on the server reply', () => {

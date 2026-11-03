@@ -283,7 +283,9 @@ def int_literals(tree, values):
         if type(node.value) is int and node.value in values:
             found.add(node.value)
         elif isinstance(node.value, str):
-            found.update(n for n in map(int, re.findall(r"\d+", node.value)) if n in values)
+            # A run past 18 digits is no answer, and int() refuses one past 4300.
+            runs = (run for run in re.findall(r"\d+", node.value) if len(run) <= 18)
+            found.update(n for n in map(int, runs) if n in values)
     return found
 
 
