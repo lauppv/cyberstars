@@ -545,17 +545,10 @@
       "answer": 0
     },
     {
-      "id": "bs-error-unpack-364d71",
+      "id": "bs-error-past-end-2e4bef",
       "text": "Which error stops this program?",
-      "code": "numbers = [5, 3, 8]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1]\nprint(numbers)",
-      "options": ["TypeError", "ValueError", "IndexError", "NameError"],
-      "answer": 0
-    },
-    {
-      "id": "bs-error-unpack-1f5453",
-      "text": "Which error stops this program?",
-      "code": "numbers = [1, 4, 2, 6]\nfor j in range(len(numbers) - 1):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1]\nprint(numbers)",
-      "options": ["TypeError", "ValueError", "IndexError", "NameError"],
+      "code": "numbers = [3, 7, 2, 6]\nfor j in range(len(numbers)):\n    if numbers[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
       "answer": 0
     },
     {
@@ -569,6 +562,13 @@
       "id": "bs-error-name-6d2e0b",
       "text": "Which error stops this program?",
       "code": "numbers = [8, 6, 1, 3]\nfor j in range(len(numbers) - 1):\n    if number[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+      "options": ["NameError", "IndexError", "KeyError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "bs-error-name-814dac",
+      "text": "Which error stops this program?",
+      "code": "numbers = [9, 5, 2]\nfor j in range(len(numbers) - 1):\n    if number[j] > numbers[j + 1]:\n        numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
       "options": ["NameError", "IndexError", "KeyError", "TypeError"],
       "answer": 0
     }
