@@ -12,10 +12,10 @@
       "answer": 1
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Binary search looks at the middle element and it is bigger than the target. Where does it search next?",
       "options": [
-        "In the right half, after the middle",
+        "In the right half, the part after the middle",
         "From the start of the list again",
         "Next to the middle, one element at a time",
         "In the left half, before the middle"
@@ -108,13 +108,13 @@
       "answer": 2
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "What is the base case of the recursive `binary_search_recursive`?",
       "options": [
         "`numbers[mid] == target`: the only time it stops",
-        "`left > right`: nothing is left to search, so it returns -1",
-        "`left == 0`: the start of the list",
-        "`mid == right`: the last element"
+        "`left > right`: nothing is left to search",
+        "`left == 0`: when it reaches the start of the list",
+        "`mid == right`: when it reaches the last element"
       ],
       "answer": 1
     },
@@ -132,9 +132,14 @@
       "answer": 0
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "In the mission, what is printed for the query 50?",
-      "options": ["50 -> index -1", "50 -> index 7", "50 -> not found", "Nothing for it"],
+      "options": [
+        "50 -> index -1",
+        "50 -> index 7",
+        "50 -> not found",
+        "Nothing at all for that query"
+      ],
       "answer": 2
     },
     {
@@ -201,10 +206,10 @@
       "answer": 2
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Why does `binary_search_recursive` take `left` and `right` as arguments?",
       "options": [
-        "Because a recursive function must take four arguments",
+        "Because a recursive function must always take exactly four arguments",
         "So each call knows which part of the list is still searched",
         "So it can sort the list first",
         "To count how many calls were made"
