@@ -18,14 +18,14 @@
       "answer": 1
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "În lanțul de mai jos, de ce nu verifică `elif varsta <= 12:` și că vârsta e cel puțin 6?",
       "code": "if varsta < 6:\n    reducere = 10\nelif varsta <= 12:\n    reducere = 5",
       "options": [
         "Ar trebui, altfel un copil de 4 ani primește 5 EUR reducere",
         "Pentru că elif verifică singur fiecare număr de la 6 la 12",
         "Pentru că Python ajunge la elif doar când varsta < 6 a fost falsă",
-        "Pentru că 6 e valoarea de pornire a vârstei"
+        "Pentru că vârsta pornește de la 6 dacă programul nu îi dă altă valoare"
       ],
       "answer": 2
     },
@@ -41,23 +41,23 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "Ce face Python mai întâi în `total = pret - reducere`?",
       "options": [
         "Calculează pret - reducere, apoi pune rezultatul în total",
         "Pune pret în total, apoi scade reducere din pret",
-        "Verifică dacă total e egal cu pret - reducere",
+        "Verifică dacă total e egal cu pret - reducere, cum ar face ==",
         "Pune textul pret - reducere în total"
       ],
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Ce face `total = total + 2`?",
       "options": [
         "Verifică dacă total e cu 2 mai mare decât înainte",
         "Adună 2 la total și pune noua valoare înapoi în total",
-        "Se oprește cu o eroare: total nu poate fi în ambele părți",
+        "Se oprește cu o eroare: total nu poate fi în ambele părți ale lui =",
         "Face o a doua variabilă numită total"
       ],
       "answer": 1
@@ -131,10 +131,10 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Când rulează else-ul de la capătul unui lanț if / elif / else?",
       "options": [
-        "Mereu, după celelalte ramuri",
+        "Mereu, după ce au rulat toate celelalte ramuri ale lanțului",
         "Doar când nicio condiție de deasupra lui nu e adevărată",
         "Doar când ultimul elif e adevărat",
         "Doar când if-ul e adevărat"
@@ -142,13 +142,13 @@
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "Câte ramuri dintr-un lanț if / elif / else rulează?",
       "options": [
-        "Toate cele a căror condiție e adevărată",
-        "Două: if-ul și else-ul",
-        "Exact una: prima a cărei condiție e adevărată, sau else dacă niciuna nu e",
-        "Niciuna, dacă nu are print"
+        "Toate cele a căror condiție e adevărată, de sus în jos",
+        "Două: blocul if-ului și apoi blocul else-ului",
+        "Exact una: prima adevărată, sau else-ul",
+        "If-ul și fiecare elif a cărui condiție e adevărată"
       ],
       "answer": 2
     },
@@ -159,13 +159,13 @@
       "answer": 3
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "Poate un program să înceapă un lanț cu elif, fără un if înainte?",
       "options": [
         "Nu: un elif continuă mereu un if de deasupra lui",
-        "Da, elif și if înseamnă același lucru",
-        "Da, dar doar o dată într-un program",
-        "Doar când lanțul are un else"
+        "Da, elif și if înseamnă la fel, deci oricare poate începe",
+        "Da, dar doar o dată, pentru primul lanț din program",
+        "Doar când lanțul are la final un else care să-l închidă"
       ],
       "answer": 0
     },
@@ -176,13 +176,13 @@
       "answer": 1
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "De ce folosește grupa 13-17 ani `varsta <= 17` și nu `varsta < 17`?",
       "options": [
-        "Pentru că < nu merge într-un elif",
-        "Pentru că <= e mai rapid",
+        "Pentru că < poate fi folosit doar în primul if al lanțului, nu într-un elif",
+        "Pentru că <= îl numără și pe 18, prima vârstă din grupa următoare",
         "Pentru că `varsta < 17` ar lăsa în afara grupei pe cei de 17 ani",
-        "Nu e nicio diferență între ele"
+        "Nu e nicio diferență: ambele pun 17 în grupa 13-17"
       ],
       "answer": 2
     },
@@ -210,48 +210,48 @@
       "answer": 1
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "Filmul nu e 3D. Ce afișează?",
       "code": "total = 10\neste_3d = False\nif este_3d == True:\n    total = total + 2\n    print(f\"Total: {total} EUR\")",
       "options": [
         "Total: 10 EUR",
         "Total: 12 EUR",
         "Nimic: print-ul e în if, care nu rulează",
-        "Se oprește cu o eroare"
+        "Se oprește cu o eroare, pentru că if-ul nu are un else după el"
       ],
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "De ce ține soluția prețul standard într-o variabilă, `pret = 10`?",
       "options": [
         "Pentru că Python nu poate scădea dintr-un 10 simplu",
         "Pentru că un număr trebuie pus într-o variabilă înainte să fie afișat",
         "Ca programul să ruleze mai repede",
-        "Ca numele să spună ce e 10, iar schimbarea prețului să însemne o singură linie"
+        "Ca numele să spună ce e 10 și prețul să se schimbe dintr-o linie"
       ],
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Ce face Python cu partea de după # aici?",
       "code": "pret = 10  # pretul intreg, fara reducere",
       "options": [
         "O sare: e un comentariu pentru cei care citesc codul",
-        "O afișează",
-        "O pune și pe ea în pret",
-        "Se oprește cu o eroare"
+        "O afișează pe ecran când rulează linia",
+        "O pune și pe ea în pret, ca text după 10",
+        "Se oprește cu o eroare: o linie nu se poate termina cu astfel de cuvinte"
       ],
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "`este_3d` e False. E adevărat `este_3d == True`?",
       "options": [
-        "Da, o comparație e mereu adevărată",
-        "Nu, False nu e egal cu True, deci blocul if-ului e sărit",
+        "Da, o comparație cu == e mereu adevărată",
+        "Nu: False nu e egal cu True",
         "Se oprește cu o eroare: False nu poate fi comparat",
-        "Da, pentru că este_3d are o valoare"
+        "Da, pentru că este_3d are o valoare, deci contează"
       ],
       "answer": 1
     },
@@ -262,13 +262,13 @@
       "answer": 2
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "varsta = 8\nif varsta < 6:\n    reducere = 10\nelif varsta <= 12\n    reducere = 5",
       "options": [
-        "reducere devine 5",
-        "reducere devine 10",
-        "Nimic: nicio condiție nu e adevărată",
+        "reducere devine 5, pentru că 8 <= 12 e adevărat",
+        "reducere devine 10, de la if-ul de deasupra",
+        "Nimic: nicio condiție nu e adevărată pentru 8, deci nu se schimbă nimic",
         "Se oprește cu o eroare: linia cu elif are nevoie de :"
       ],
       "answer": 3

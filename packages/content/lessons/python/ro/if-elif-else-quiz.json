@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce adaugă elif după un if?",
       "options": [
         "Încă o condiție, verificată doar când cele de deasupra ei sunt false",
-        "Un bloc care rulează mereu după if",
-        "Un al doilea program care rulează în același timp",
-        "O condiție verificată înaintea if-ului"
+        "Un bloc care rulează după blocul if-ului, oricare ar fi condiția",
+        "Încă o condiție, verificată mereu, chiar dacă if-ul de deasupra a fost adevărat",
+        "Încă o condiție, verificată înaintea condiției if-ului"
       ],
       "answer": 0
     },
@@ -23,46 +23,46 @@
       "answer": 2
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Mai multe condiții dintr-un lanț sunt adevărate. Ce bloc rulează?",
       "options": [
-        "Ultimul adevărat",
+        "Ultimul adevărat, pentru că e verificat ultimul",
         "Primul adevărat, de sus",
         "Toate cele adevărate, unul după altul",
-        "Niciunul: Python se oprește cu o eroare"
+        "Niciunul: două condiții adevărate dau o eroare"
       ],
       "answer": 1
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "După ce a rulat un bloc din lanț, ce face programul?",
       "options": [
-        "Verifică și următorul elif",
-        "Rulează și else-ul",
-        "Reia lanțul de la început",
-        "Iese din lanț și merge mai departe cu linia de după el"
+        "Verifică și următorul elif, în caz că e și el adevărat",
+        "Rulează și blocul else-ului, înainte să meargă mai departe",
+        "Reia lanțul de la început, de la if-ul de sus",
+        "Merge mai departe cu linia de după lanț"
       ],
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "Când rulează else-ul de la sfârșitul unui lanț?",
       "options": [
-        "Când niciun if sau elif de deasupra lui nu e adevărat",
-        "De fiecare dată, după celelalte blocuri",
+        "Când nicio condiție de deasupra nu e adevărată",
+        "De fiecare dată, după ce au rulat celelalte blocuri",
         "Doar când if-ul e fals, orice ar spune elif-urile",
         "Când ultimul elif e fals, chiar dacă if-ul a fost adevărat"
       ],
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Când spune lecția să înlănțuim if / elif / else?",
       "options": [
         "Oricând un program are mai mult de două condiții",
         "Când vrem ca fiecare condiție să fie verificată",
         "Când testăm aceeași variabilă pentru mai multe cazuri",
-        "Doar când condițiile folosesc =="
+        "Doar când fiecare condiție compară cu ==, nu cu < sau >"
       ],
       "answer": 2
     },
@@ -78,24 +78,24 @@
       "answer": 1
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Unde se poate pune un elif?",
       "options": [
-        "Oriunde în program, singur",
-        "După else",
-        "Înainte de if",
+        "Oriunde în program, chiar și fără un if deasupra lui",
+        "După else, ca încă un caz la final",
+        "Înainte de if, ca să fie verificat primul",
         "Imediat după blocul unui if sau al altui elif"
       ],
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Un lanț are nevoie de un else la sfârșit?",
       "options": [
-        "Nu, dar fără el nu rulează nimic când nicio condiție nu e adevărată",
-        "Da, fără el Python se oprește cu o eroare",
-        "Da, altfel liniile cu elif sunt sărite",
-        "Nu, iar fără el rulează blocul fiecărui elif"
+        "Nu, dar fără el poate să nu ruleze niciun bloc",
+        "Da, fără el Python se oprește cu o eroare la elif",
+        "Da, altfel Python sare peste liniile cu elif ale lanțului",
+        "Nu, iar fără el rulează blocul fiecărui elif, adevărat sau nu"
       ],
       "answer": 0
     },
@@ -106,13 +106,13 @@
       "answer": 2
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "De ce afișează două linii?",
       "code": "secunde = 60\nif secunde == 100:\n    print(\"Pornesc calculatoarele\")\nif secunde == 60:\n    print(\"Verific turnul\")\nif secunde < 10:\n    print(\"Decolez\")\nelse:\n    print(\"Fara efect\")",
       "options": [
-        "Un else rulează mereu la sfârșitul programului",
+        "Un else rulează mereu la sfârșit, orice ar face if-urile de deasupra",
         "Else-ul ține doar de ultimul if, iar secunde < 10 e fals",
-        "secunde == 60 e verificat de două ori",
+        "Else-ul ține de toate cele trei if-uri, iar primul, secunde == 100, e fals",
         "Fiecare if își rulează blocul, adevărat sau nu"
       ],
       "answer": 1
@@ -141,24 +141,24 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Care e diferența dintre trei if-uri unul după altul și un lanț if / elif / elif?",
       "options": [
-        "Niciuna, afișează mereu la fel",
+        "Niciuna: trei if-uri și un lanț afișează mereu aceleași linii",
         "If-urile separate sunt verificate toate; un lanț se oprește la prima condiție adevărată",
-        "Într-un lanț, elif-urile sunt verificate înaintea if-ului",
-        "If-urile separate se opresc la prima condiție adevărată"
+        "Într-un lanț, elif-urile sunt verificate primele, apoi if-ul de sus",
+        "If-urile separate se opresc la prima condiție adevărată, iar un lanț le verifică pe toate"
       ],
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "În racheta din lecție, cu secunde = 60, ce condiții verifică Python?",
       "options": [
-        "Doar secunde == 60",
-        "Toate, apoi îl alege pe secunde == 60",
+        "Doar secunde == 60, condiția care se potrivește cu valoarea",
+        "Toate condițiile lanțului, apoi îl alege pe secunde == 60",
         "secunde == 100, apoi secunde == 60, apoi iese din lanț",
-        "secunde == 60, apoi toate cele de sub el"
+        "secunde == 60, apoi toate condițiile de sub el"
       ],
       "answer": 2
     },
@@ -191,10 +191,10 @@
       "answer": 2
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "Cât de indentat e blocul unui if imbricat?",
       "options": [
-        "La fel de la stânga ca if-ul din afară",
+        "La fel de la stânga ca if-ul din afară, ca restul blocului lui",
         "Cu un nivel mai mult decât linia if-ului imbricat",
         "La fel ca linia if-ului imbricat",
         "Deloc, e deja în interiorul unui bloc"
@@ -246,11 +246,11 @@
       "answer": 1
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Se ajunge la else când x e 5?",
       "code": "x = 5\nif x > 10:\n    print(\"Mare\")\nelif x > 0:\n    print(\"Mic\")\nelse:\n    print(\"Zero sau mai putin\")",
       "options": [
-        "Da, else-ul rulează mereu la sfârșit",
+        "Da, else-ul rulează mereu la sfârșit, după celelalte blocuri",
         "Da, pentru că x > 10 e fals",
         "Nu: x > 0 e adevărat, deci lanțul se oprește acolo",
         "Nu, Python se oprește înainte cu o eroare"
@@ -258,25 +258,25 @@
       "answer": 2
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "x = 3\nelif x > 0:\n    print(\"Pozitiv\")",
       "options": [
         "Se oprește cu o eroare: un elif are nevoie de un if înaintea lui",
-        "Afișează Pozitiv",
-        "Nu afișează nimic",
-        "Afișează 3"
+        "Afișează Pozitiv, pentru că 3 > 0 e adevărat",
+        "Nu afișează nimic, pentru că nu există un if care să înceapă lanțul",
+        "Sare peste elif și nu afișează nimic, fără nicio eroare"
       ],
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "x = 3\nif x > 5:\n    print(\"Mare\")\nelse:\n    print(\"Mic\")\nelif x > 0:\n    print(\"Pozitiv\")",
       "options": [
-        "Afișează Mic",
-        "Afișează Mic, apoi Pozitiv",
-        "Afișează Pozitiv",
+        "Afișează Mic, pentru că 3 > 5 e fals și rulează else-ul",
+        "Afișează Mic, apoi Pozitiv, pentru că ambele blocuri se potrivesc",
+        "Afișează Pozitiv și sare peste else-ul care vine înaintea lui",
         "Se oprește cu o eroare: un elif nu poate veni după else"
       ],
       "answer": 3
@@ -293,13 +293,13 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "În `elif secunde < 10:  # ultimele 10 secunde`, ce face comentariul?",
       "options": [
         "Nimic pentru Python, doar explică linia celui care o citește",
-        "Face elif-ul să verifice ultimele 10 secunde",
-        "Se afișează când rulează elif-ul",
-        "Așteaptă 10 secunde înainte de elif"
+        "Face elif-ul să verifice doar ultimele 10 secunde ale numărătorii",
+        "Se afișează pe ecran când rulează blocul elif-ului",
+        "Face Python să aștepte 10 secunde înainte să verifice elif-ul"
       ],
       "answer": 0
     },
