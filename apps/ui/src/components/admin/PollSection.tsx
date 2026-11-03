@@ -20,6 +20,8 @@ export function PollSection({ className }: { className: string }) {
   const { t } = useTranslation();
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState<string[]>(Array(POLL_MIN_OPTIONS).fill(''));
+  // An Other after the options, where each voter writes their own answer
+  const [other, setOther] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [sending, setSending] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -70,10 +72,11 @@ export function PollSection({ className }: { className: string }) {
     setSending(true);
     setFailed(false);
     try {
-      const res = await adminService.sendPoll(question.trim(), filled);
+      const res = await adminService.sendPoll(question.trim(), filled, other);
       setSent(res.sent);
       setQuestion('');
       setOptions(Array(POLL_MIN_OPTIONS).fill(''));
+      setOther(false);
       setConfirming(false);
       loadHistory();
     } catch {
@@ -121,6 +124,15 @@ export function PollSection({ className }: { className: string }) {
       {repeated && (
         <p className="mt-2 mb-0 text-[12px] text-[var(--error)]">{t('admin.poll.repeated')}</p>
       )}
+      <label className="mt-3 flex items-center gap-2 text-[13px] text-[var(--text2)] cursor-pointer">
+        <input
+          type="checkbox"
+          checked={other}
+          onChange={(e) => setOther(e.target.checked)}
+          className="accent-[var(--accent)] w-4 h-4"
+        />
+        {t('admin.poll.addOther')}
+      </label>
       <div className="mt-3 flex items-center justify-end gap-3">
         {sent !== null && (
           <span role="status" className="mr-auto text-[12px] text-[var(--text3)]">
@@ -172,7 +184,9 @@ export function PollSection({ className }: { className: string }) {
                   return (
                     <li key={o.id}>
                       <div className="flex items-baseline justify-between gap-3 text-[12px]">
-                        <span className="text-[var(--text2)] break-words min-w-0">{o.text}</span>
+                        <span className="text-[var(--text2)] break-words min-w-0">
+                          {o.writeIn ? t('admin.poll.other') : o.text}
+                        </span>
                         <span className="flex-shrink-0 tabular-nums text-[var(--text3)]">
                           {o.votes} · {pct}%
                         </span>
@@ -186,6 +200,21 @@ export function PollSection({ className }: { className: string }) {
                           style={{ width: `${pct}%` }}
                         />
                       </div>
+                      {o.writeIn && p.answers.length > 0 && (
+                        <ul
+                          aria-label={t('admin.poll.answers')}
+                          className="mt-2 mb-0 p-0 list-none flex flex-col gap-1.5"
+                        >
+                          {p.answers.map((a, i) => (
+                            <li
+                              key={i}
+                              className="px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--surface)] text-[12px] text-[var(--text2)] whitespace-pre-wrap break-words"
+                            >
+                              {a}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </li>
                   );
                 })}
@@ -221,6 +250,7 @@ export function PollSection({ className }: { className: string }) {
                     {o}
                   </li>
                 ))}
+                {other && <li>{t('admin.poll.otherOption')}</li>}
               </ul>
               {failed && (
                 <p role="alert" className="mt-4 mb-0 text-[13px] text-[var(--error)]">
