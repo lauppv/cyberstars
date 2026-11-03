@@ -7,24 +7,24 @@
       "answer": 1
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "In the Launch Console, what happens to a negative reading?",
       "options": [
-        "It prints Critical system",
-        "It ends the input",
-        "It is ignored: nothing is printed for it",
-        "It aborts the launch at once"
+        "It prints Critical system, since it is below 50",
+        "It ends the input, the same as typing 0",
+        "It is skipped: nothing is printed",
+        "It aborts the launch at once, before any other reading"
       ],
       "answer": 2
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Why does the Launch Console read the levels with `while True` and not with a for over a range?",
       "options": [
         "We don't know up front how many readings the operator will type",
         "A for loop can't call input()",
         "while True runs faster than for",
-        "A for loop can't use break"
+        "A for loop can't use break, so it couldn't stop at the 0 reading"
       ],
       "answer": 0
     },
@@ -40,21 +40,21 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "In the solution, what does `continue` do when the operator types -5?",
       "options": [
-        "It ends the loop",
-        "It skips the rest of this pass and the loop asks for the next reading",
+        "It ends the loop, and the program goes on with the if after it",
+        "The loop skips the rest and asks for the next reading",
         "It sets launch_ok to False",
         "It prints -5 and goes on"
       ],
       "answer": 1
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "In the solution, what does `break` do when the operator types 0?",
       "options": [
-        "It ends the whole program at once, printing nothing more",
+        "It ends the whole program at once, without printing anything more",
         "It skips this reading and asks for the next one",
         "It leaves the loop, and the program goes on with the if after it",
         "It sets launch_ok to False"
@@ -214,10 +214,10 @@
       "answer": 2
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "In `while True:`, what is True?",
       "options": [
-        "A variable we have to make before the loop",
+        "A variable we have to make and set to True before the loop",
         "The loop's condition, which never turns false by itself",
         "The text \"True\"",
         "How many times the loop runs"
@@ -225,13 +225,13 @@
       "answer": 1
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "When is `level >= 50 and launch_ok` True?",
       "options": [
-        "When at least one of the two is True",
-        "Only when level is exactly 50",
-        "Whenever launch_ok is True",
-        "Only when level is 50 or more and launch_ok is True"
+        "When at least one of the two parts is True",
+        "Only when level is exactly 50, not more",
+        "Whenever launch_ok is True, whatever level is",
+        "Only when both parts are True"
       ],
       "answer": 3
     },
@@ -260,13 +260,13 @@
       "answer": 1
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "Why does the solution write `level == 0` and not `level = 0`?",
       "options": [
-        "= puts a value in a variable, == compares two values",
-        "== is faster than =",
-        "They do the same, == is only the newer way",
-        "= works only with text"
+        "= stores a value, == compares two values",
+        "= compares numbers, == compares pieces of text",
+        "They do the same; == is only the newer way to write it",
+        "== puts the value in level, and = checks it"
       ],
       "answer": 0
     },

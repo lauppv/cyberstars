@@ -1,11 +1,11 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does a for loop let you do?",
       "options": [
         "Repeat lines without writing them again",
-        "Write a text on the screen",
+        "Write a text on the screen, like print() does",
         "Check a condition once",
         "Keep a value in a variable"
       ],
@@ -47,13 +47,13 @@
       "answer": 1
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Which lines belong to a for loop?",
       "options": [
         "Every line after it, to the end of the program",
         "Only the first line under it",
         "The indented lines under it",
-        "The lines above it"
+        "Every line under it, indented or not"
       ],
       "answer": 2
     },
@@ -70,11 +70,11 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Why do we write `total = 0` before the loop?",
       "options": [
         "So the total starts from 0 and the loop keeps adding to it",
-        "Because every loop needs a variable equal to 0",
+        "Because every loop needs a variable equal to 0 before it starts",
         "So the loop runs 0 times",
         "So total goes back to 0 on every iteration"
       ],
@@ -111,13 +111,13 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "What is `range()`?",
       "options": [
-        "A variable we make before the loop",
-        "A function that already exists in Python",
-        "A keyword, like if",
-        "A comment for the loop"
+        "A variable we have to make before the loop",
+        "A function Python already has",
+        "A keyword of Python, like if or for",
+        "Another name for the for loop, nothing more"
       ],
       "answer": 1
     },
@@ -141,13 +141,13 @@
       "answer": 0
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "Why write a for loop instead of a print() for every number?",
       "options": [
-        "for prints faster than print()",
+        "The loop runs faster than the same print() lines written out",
         "We don't repeat the code: the loop does the repetition for us",
-        "A program can't have more than 100 print() lines",
-        "A for loop needs no indentation"
+        "Python allows only a few print() lines in a program, not one per number",
+        "A for loop needs no indentation, so it's easier to write"
       ],
       "answer": 1
     },
@@ -182,13 +182,13 @@
       "answer": 1
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "In the Energy Collector mission, why does the loop use `range(1, cells + 1)`?",
       "options": [
-        "So it starts from cell 2",
-        "So it skips the first cell",
+        "So it starts from cell 2, skipping cell 1",
+        "So it skips the first cell and starts with the second",
         "So the last cell is counted too",
-        "Because range() can't take a variable"
+        "Because range() can't take a variable on its own"
       ],
       "answer": 2
     },
@@ -222,12 +222,12 @@
       "answer": 2
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "What does `total = total + i` do on each iteration?",
       "options": [
         "It puts i in total, in place of what was there",
         "It adds total and i, then throws the result away",
-        "It doubles total",
+        "It doubles what total held, on each iteration",
         "It adds i to what total held before"
       ],
       "answer": 3

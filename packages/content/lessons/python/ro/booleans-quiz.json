@@ -42,10 +42,10 @@
       "answer": 1
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "Ce este de fapt o condiție ca `x == 5`?",
       "options": [
-        "Un număr",
+        "Un număr: 1 când e adevărată, 0 când e falsă",
         "Un text",
         "O linie care pune 5 în x",
         "Un boolean: e True sau False"
@@ -132,12 +132,12 @@
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "Ce face `not` cu un boolean?",
       "options": [
         "Îl inversează: True devine False, iar False devine True",
         "Îl face False, orice ar fi fost",
-        "Șterge variabila",
+        "Îl inversează doar când e True, iar un False rămâne cum e",
         "Verifică dacă variabila există"
       ],
       "answer": 0
@@ -154,9 +154,9 @@
       "answer": 2
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "Cum se numește o variabilă boolean care ține o buclă pornită, ca `ruleaza`?",
-      "options": ["Un contor", "Un range", "Un comentariu", "Un steag (flag)"],
+      "options": ["Un contor", "O constantă", "Un cuvânt cheie", "Un steag (flag)"],
       "answer": 3
     },
     {
@@ -235,13 +235,13 @@
       "answer": 3
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "În misiunea Consola de comenzi, de ce pornește `pornit` cu True?",
       "options": [
         "Ca bucla while să ruleze și să ceară prima comandă",
         "Ca programul să afișeze întâi True",
-        "Orice variabilă trebuie să pornească cu True",
-        "Ca oprire să fie tastat singur"
+        "Pentru că orice variabilă dintr-un program trebuie să pornească cu True",
+        "Ca bucla să se oprească imediat după prima comandă"
       ],
       "answer": 0
     },
