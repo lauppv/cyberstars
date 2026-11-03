@@ -12,7 +12,13 @@
       { "kind": "call", "name": "ArrayDeque" },
       { "kind": "call", "name": "LinkedList" },
       { "kind": "call", "name": "Vector" },
-      { "kind": "call", "name": "PriorityQueue" }
+      { "kind": "call", "name": "PriorityQueue" },
+      { "kind": "call", "name": "ConcurrentLinkedQueue" },
+      { "kind": "call", "name": "ConcurrentLinkedDeque" },
+      { "kind": "call", "name": "LinkedBlockingQueue" },
+      { "kind": "call", "name": "LinkedBlockingDeque" },
+      { "kind": "call", "name": "ArrayBlockingQueue" },
+      { "kind": "call", "name": "PriorityBlockingQueue" }
     ]
   },
   "cases": [

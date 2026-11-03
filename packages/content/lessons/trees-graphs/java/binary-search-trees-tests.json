@@ -36,6 +36,22 @@
       {
         "kind": "call",
         "name": "binarySearch"
+      },
+      {
+        "kind": "call",
+        "name": "TreeSet"
+      },
+      {
+        "kind": "call",
+        "name": "TreeMap"
+      },
+      {
+        "kind": "call",
+        "name": "ConcurrentSkipListSet"
+      },
+      {
+        "kind": "call",
+        "name": "ConcurrentSkipListMap"
       }
     ]
   },

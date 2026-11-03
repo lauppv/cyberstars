@@ -11,7 +11,10 @@
     "forbids": [
       { "kind": "call", "name": "ArrayDeque" },
       { "kind": "call", "name": "LinkedList" },
-      { "kind": "call", "name": "Vector" }
+      { "kind": "call", "name": "Vector" },
+      { "kind": "call", "name": "Stack" },
+      { "kind": "call", "name": "ConcurrentLinkedDeque" },
+      { "kind": "call", "name": "LinkedBlockingDeque" }
     ]
   },
   "cases": [

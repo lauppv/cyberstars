@@ -25,6 +25,26 @@
       {
         "kind": "call",
         "name": "sorted"
+      },
+      {
+        "kind": "call",
+        "name": "TreeMap"
+      },
+      {
+        "kind": "call",
+        "name": "TreeSet"
+      },
+      {
+        "kind": "call",
+        "name": "PriorityBlockingQueue"
+      },
+      {
+        "kind": "call",
+        "name": "ConcurrentSkipListMap"
+      },
+      {
+        "kind": "call",
+        "name": "ConcurrentSkipListSet"
       }
     ]
   },
