@@ -278,6 +278,9 @@ export function planTemplate(
     const text = f(t.text);
     if (/\{\{\w+\}\}/.test(text)) throw new Error(`${where}: the text has a blank with no value`);
     const code = f(t.code);
+    // A blank left in the code would stop it with a SyntaxError, which a
+    // which-error question would take for its right answer.
+    if (/\{\{\w+\}\}/.test(code)) throw new Error(`${where}: the code has a blank with no value`);
 
     // What the program the question is about prints: it has to run and print.
     const printed = (run: ProgramRun): string => {

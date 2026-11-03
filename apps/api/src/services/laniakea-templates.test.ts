@@ -344,7 +344,7 @@ describe('planTemplate', () => {
     expect(() => plan.build([ok('1'), ok('1')])).toThrow('the bug changes nothing');
   });
 
-  it('refuses a value set twice and a blank the text has no value for', () => {
+  it('refuses a value set twice and a blank the text or the code has no value for', () => {
     expect(() =>
       plans({
         values: [
@@ -355,6 +355,9 @@ describe('planTemplate', () => {
     ).toThrow('add repeats a set of values');
     expect(() => plans({ text: 'What is {{c}}?' })).toThrow(
       'add with {"a":"7","b":"3"}: the text has a blank with no value',
+    );
+    expect(() => plans({ code: 'x = {{a}}\nprint(x + {{b}} + {{c}})' })).toThrow(
+      'add with {"a":"7","b":"3"}: the code has a blank with no value',
     );
   });
 
