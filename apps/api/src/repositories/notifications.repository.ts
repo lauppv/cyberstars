@@ -34,22 +34,22 @@ export function list(userId: number, take: number, before?: number): Promise<Not
 
 // The announcements and polls this user hasn't read and the dashboard hasn't
 // shown, the oldest first and at most NOTICES_MAX, but a poll they voted in
-// already, from another device too
+// already, from another device too. Those are left out by the query, before
+// the limit, so they can't fill it and hold back the newer ones
 export async function listNotices(userId: number): Promise<NotificationRow[]> {
-  const rows = await prisma.notification.findMany({
-    where: { userId, readAt: null, shownAt: null, type: { in: [...NOTICE_TYPES] } },
+  const voted = await prisma.pollVoter.findMany({ where: { userId }, select: { pollId: true } });
+  return prisma.notification.findMany({
+    where: {
+      userId,
+      readAt: null,
+      shownAt: null,
+      type: { in: [...NOTICE_TYPES] },
+      NOT: { type: 'POLL', entityId: { in: voted.map((v) => v.pollId) } },
+    },
     orderBy: { id: 'asc' },
     take: NOTICES_MAX,
     include: actorInclude,
   });
-  const polls = rows.filter((r) => r.type === 'POLL').map((r) => r.entityId);
-  if (polls.length === 0) return rows;
-  const voted = await prisma.pollVoter.findMany({
-    where: { userId, pollId: { in: polls } },
-    select: { pollId: true },
-  });
-  const done = new Set(voted.map((v) => v.pollId));
-  return rows.filter((r) => r.type !== 'POLL' || !done.has(r.entityId));
 }
 
 // The dashboard's window showed these, so it doesn't open with them again.

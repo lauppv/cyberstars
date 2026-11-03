@@ -46,42 +46,40 @@ describe('list', () => {
 });
 
 describe('listNotices', () => {
-  const where = {
-    userId: 10,
-    readAt: null,
-    shownAt: null,
-    type: { in: ['ANNOUNCEMENT', 'POLL'] },
-  };
-
-  it('lists the unread announcements and polls not shown yet, oldest first', async () => {
-    const rows = [
-      { id: 3, type: 'ANNOUNCEMENT', entityId: 1 },
-      { id: 5, type: 'ANNOUNCEMENT', entityId: 2 },
-    ];
+  it('lists the unread announcements and polls not shown yet, oldest first, at most 100', async () => {
+    const rows = [{ id: 3 }, { id: 5 }];
+    mockPrisma.pollVoter.findMany.mockResolvedValue([]);
     mockPrisma.notification.findMany.mockResolvedValue(rows);
     expect(await repo.listNotices(10)).toEqual(rows);
     expect(mockPrisma.notification.findMany).toHaveBeenCalledWith(
-      expect.objectContaining({ where, orderBy: { id: 'asc' }, take: 100 }),
+      expect.objectContaining({
+        where: {
+          userId: 10,
+          readAt: null,
+          shownAt: null,
+          type: { in: ['ANNOUNCEMENT', 'POLL'] },
+          NOT: { type: 'POLL', entityId: { in: [] } },
+        },
+        orderBy: { id: 'asc' },
+        take: 100,
+      }),
     );
-    // No poll among them, so nothing to check votes against
-    expect(mockPrisma.pollVoter.findMany).not.toHaveBeenCalled();
   });
 
-  it('leaves out a poll this user voted in already', async () => {
-    mockPrisma.notification.findMany.mockResolvedValue([
-      { id: 3, type: 'POLL', entityId: 7 },
-      { id: 4, type: 'ANNOUNCEMENT', entityId: 8 },
-      { id: 5, type: 'POLL', entityId: 9 },
-    ]);
-    mockPrisma.pollVoter.findMany.mockResolvedValue([{ pollId: 7 }]);
-    expect(await repo.listNotices(10)).toEqual([
-      { id: 4, type: 'ANNOUNCEMENT', entityId: 8 },
-      { id: 5, type: 'POLL', entityId: 9 },
-    ]);
+  it('leaves out the polls this user voted in, in the query, before the limit', async () => {
+    mockPrisma.pollVoter.findMany.mockResolvedValue([{ pollId: 7 }, { pollId: 9 }]);
+    mockPrisma.notification.findMany.mockResolvedValue([]);
+    await repo.listNotices(10);
     expect(mockPrisma.pollVoter.findMany).toHaveBeenCalledWith({
-      where: { userId: 10, pollId: { in: [7, 9] } },
+      where: { userId: 10 },
       select: { pollId: true },
     });
+    expect(mockPrisma.notification.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({ NOT: { type: 'POLL', entityId: { in: [7, 9] } } }),
+        take: 100,
+      }),
+    );
   });
 });
 
