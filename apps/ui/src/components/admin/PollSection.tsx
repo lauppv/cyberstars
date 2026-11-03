@@ -177,6 +177,15 @@ export function PollSection({ className }: { className: string }) {
                 {announcementDay(p.createdAt)} · {p.authorName ?? t('notif.someone')} ·{' '}
                 {t('admin.poll.voters', { voters: p.voters, recipients: p.recipients })}
               </span>
+              {/* Counts only, never who. The polls sent before opening one was counted have no line */}
+              {p.viewers !== null && (
+                <span className="block mt-0.5 text-[11px] text-[var(--text3)]">
+                  {t('admin.poll.ignored', {
+                    ignored: p.viewers - p.voters,
+                    unopened: p.recipients - p.viewers,
+                  })}
+                </span>
+              )}
               <ul className="mt-2.5 mb-0 p-0 list-none flex flex-col gap-2">
                 {p.options.map((o) => {
                   // A share of the voters, so with several picks each the shares add up past 100%

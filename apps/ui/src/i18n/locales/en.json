@@ -161,7 +161,8 @@
       "history": "Sent before",
       "none": "No poll has been sent yet.",
       "historyError": "The polls sent before couldn't be loaded.",
-      "voters": "{{voters}} of {{recipients}} voted"
+      "voters": "{{voters}} of {{recipients}} voted",
+      "ignored": "Seen, no vote: {{ignored}} · Not opened yet: {{unopened}}"
     }
   },
   "lang": {
