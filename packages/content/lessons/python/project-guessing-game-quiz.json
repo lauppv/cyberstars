@@ -83,7 +83,7 @@
       "id": "q8-v2",
       "text": "Why does the complete version leave with `return` on a correct guess, not `break`?",
       "options": [
-        "`break` doesn't work inside a for loop, only inside a while loop like this one",
+        "`break` doesn't work inside a for loop, only inside a while loop like the one before",
         "`return` prints the secret number",
         "`return` starts a new game",
         "`return` leaves the whole function, so the Game over line isn't printed"
