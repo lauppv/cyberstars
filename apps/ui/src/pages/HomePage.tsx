@@ -21,6 +21,7 @@ import {
 } from '@cyberstars/shared/constants';
 import { StoryModal } from './StoryModal';
 import { LaniakeaCard } from '../components/laniakea/LaniakeaCard';
+import { DashboardNotices } from '../components/notifications/DashboardNotices';
 import { LandingPage } from './LandingPage';
 import { fetchAlmanacSlugs, fetchAlmanacArticle } from '../services/almanacService';
 import type { AlmanacArticle } from '@cyberstars/shared/almanac';
@@ -363,6 +364,8 @@ export function HomePage() {
         </main>
 
         {almanacStory && <StoryModal story={almanacStory} onClose={() => setAlmanacStory(null)} />}
+        {/* The admins' announcements and polls, once a story read here is closed */}
+        <DashboardNotices held={!!almanacStory} />
       </div>
     );
   }
