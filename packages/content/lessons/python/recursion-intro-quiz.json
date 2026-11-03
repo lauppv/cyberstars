@@ -1,24 +1,24 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What is recursion?",
       "options": [
         "A function that calls itself",
-        "A loop that runs forever",
+        "A loop that runs forever, with no end",
         "A function that calls another function with the same arguments",
-        "A list that holds itself"
+        "A list that holds itself as an element"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "What is the base case of a recursive function?",
       "options": [
         "The first call, the one made from outside the function",
-        "The biggest value the function can take",
-        "The case it answers directly, without calling itself again",
-        "The line where the function calls itself"
+        "The biggest value the function can take as input",
+        "The case it answers without calling itself",
+        "The line where the function calls itself again"
       ],
       "answer": 2
     },
@@ -62,12 +62,12 @@
       "answer": 1
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Why does `sum_list` pass `numbers[1:]` to itself?",
       "options": [
         "To skip the first number, which is always 0",
         "Because `numbers[0]` was removed from the list",
-        "So the list is copied and the original stays sorted",
+        "So the list is copied and the original one stays sorted the whole time",
         "The rest of the list is one shorter each call, until it is empty"
       ],
       "answer": 3
@@ -91,22 +91,22 @@
       "answer": 2
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Why does the mission's `power` return 1 in its base case, `exp == 0`?",
       "options": [
         "Because 1 is the smallest exponent",
         "Any number to the power 0 is 1, and multiplying by 1 changes nothing on the way back",
         "So the function returns True",
-        "Any number to the power 0 is 0, but 1 avoids a division by zero"
+        "Any number to the power 0 is 0, but returning 1 instead avoids a division by zero later"
       ],
       "answer": 1
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "In the lesson's line of people, who knows the answer straight away?",
       "options": [
         "The person at the back, who asked first",
-        "Everyone, since they all ask the same question",
+        "Everyone, since they all ask the person in front the same question",
         "The person in the middle of the line",
         "The person at the very front, with nobody in front of them"
       ],
@@ -186,13 +186,13 @@
       "answer": 3
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "In the factorial trace, what happens once factorial(1) returns 1?",
       "options": [
-        "The calls waiting finish one by one: 2 × 1 = 2, then 3 × 2 = 6, and so on up to 120",
+        "The waiting calls finish one by one, up to 120",
         "The program stops, since the base case was reached",
-        "factorial(5) is called again from the start",
-        "Each call returns 1, so factorial(5) is 1"
+        "factorial(5) is called again from the very start",
+        "Each call returns 1, so factorial(5) is also 1"
       ],
       "answer": 0
     },
@@ -216,22 +216,22 @@
       "answer": 1
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "In `countdown`, the base case prints \"Go!\" and then has `return`. What does that `return` do?",
       "options": [
         "It sends \"Go!\" back to the call before",
         "It starts the countdown over",
-        "It ends every call waiting, all at once",
+        "It ends every call that is waiting, all at once, and the program stops",
         "It ends this call, so the function doesn't go on to call itself again"
       ],
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Which problems does the lesson say recursion shines on?",
       "options": [
-        "Problems made of smaller versions of themselves, like trees and nested structures",
-        "Problems where a value is counted one by one",
+        "Problems made of smaller versions of themselves, like trees",
+        "Problems where a value is counted up one by one, from start to end",
         "Problems that need a list sorted first",
         "Problems that read input from the user"
       ],
@@ -270,10 +270,10 @@
       "answer": 0
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "Why can't a recursive function call itself with the same argument it got, as in `countdown(n)` inside `countdown`?",
       "options": [
-        "Python doesn't allow a function to use its own name",
+        "Python doesn't allow a function to use its own name inside its body",
         "The argument would be lost after the first call",
         "The problem never gets smaller, so it never reaches the base case",
         "It can: the base case stops it anyway"

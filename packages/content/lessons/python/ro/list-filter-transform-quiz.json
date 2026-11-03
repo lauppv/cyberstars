@@ -1,21 +1,21 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce înseamnă să filtrezi o listă?",
       "options": [
-        "Să păstrezi doar elementele care îndeplinesc o condiție",
-        "Să schimbi fiecare element într-un fel",
-        "Să sortezi lista",
-        "Să scoți primul element al listei"
+        "Să păstrezi doar elementele potrivite",
+        "Să schimbi fiecare element al listei într-un fel",
+        "Să sortezi lista de la cel mai mic la cel mai mare",
+        "Să scoți primul element din listă, de la început"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Ce înseamnă să transformi o listă?",
       "options": [
-        "Să păstrezi doar unele elemente",
+        "Să păstrezi doar unele elemente, pe cele potrivite",
         "Să inversezi lista",
         "Să aplici o operație fiecărui element",
         "Să numeri elementele"
@@ -55,10 +55,10 @@
       "answer": 2
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Ce face `round(pret * 1.19, 2)` cu prețul?",
       "options": [
-        "Înmulțește cu 1.19 și dublează rezultatul",
+        "Înmulțește prețul cu 1.19, apoi dublează rezultatul",
         "Adaugă 19% și păstrează două zecimale",
         "Rotunjește prețul la cel mai apropiat 2",
         "Adaugă 1.19 și 2 la preț"
@@ -101,11 +101,11 @@
       "answer": 2
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "De ce plafonează `min(n + 5, 100)` nota la 100?",
       "options": [
-        "Dă mereu 100",
-        "Dă cel mai mic dintre cele două, deci orice peste 100 devine 100",
+        "Dă mereu 100, orice valoare ar avea n",
+        "Dă cel mai mic dintre cele două",
         "Scoate din listă notele de peste 100",
         "Rotunjește nota la cea mai apropiată sută"
       ],
@@ -131,10 +131,10 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "În misiune, de ce filtrăm înainte să calculăm media?",
       "options": [
-        "Pentru că `sum()` nu poate aduna numere mici",
+        "Pentru că `sum()` nu poate aduna numere mici, cum sunt cele sub 50",
         "Ca lista să fie sortată",
         "Ca să conteze doar citirile cu impuls ale reactoarelor stabile",
         "Pentru că `round()` cere o listă filtrată"
@@ -236,13 +236,13 @@
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "De ce scrie varianta cu comprehension `min(n + 5, 100)` în locul celor două linii `if` din buclă?",
       "options": [
         "Comprehension-urile nu pot folosi `+`",
         "`min()` filtrează și notele",
         "`min()` face plafonarea într-o singură expresie, care încape într-un comprehension",
-        "Varianta cu buclă dă alt rezultat"
+        "Varianta cu buclă ar da un rezultat diferit de fiecare dată când o notă trece de 100"
       ],
       "answer": 2
     },
@@ -254,11 +254,11 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "Contează ordinea filtrării și transformării în `[n * 2 for n in numere if n > 5]`?",
       "options": [
         "Nu, nu contează niciodată",
-        "Da: condiția se uită la `n * 2`",
+        "Da: condiția se uită la `n * 2`, adică după ce e dublat",
         "Doar când lista e sortată",
         "Da: condiția se uită la `n`, înainte să fie dublat"
       ],

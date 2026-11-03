@@ -1,23 +1,23 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "When are two words anagrams?",
       "options": [
-        "When they read the same backwards",
-        "When they have the same length",
-        "When they have exactly the same letters, maybe in another order",
-        "When they start with the same letter"
+        "When they read the same forwards and backwards",
+        "When they have the same number of letters",
+        "When they use exactly the same letters",
+        "When they start and end with the same letter"
       ],
       "answer": 2
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Why does sorting the letters tell us if two words are anagrams?",
       "options": [
         "Words with the same letters give the same sorted letters",
         "Sorting removes the letters that differ",
-        "Sorting puts the words in alphabetical order in a list",
+        "Sorting puts the two words in alphabetical order in a list",
         "Sorting counts the vowels"
       ],
       "answer": 0
@@ -65,10 +65,10 @@
       "answer": 1
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "In the frequency approach, when are two words anagrams?",
       "options": [
-        "When both dictionaries have the same number of keys",
+        "When both dictionaries have the same number of keys, whatever their counts",
         "When both words have the same first letter",
         "When one dictionary is bigger than the other",
         "When every letter appears the same number of times in both"
@@ -117,12 +117,12 @@
       "answer": 3
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "Which approach takes fewer steps on very long words?",
       "options": [
         "Counting letters in a frequency dictionary",
         "Sorting the letters",
-        "Both always take exactly the same steps",
+        "Both always take exactly the same number of steps, however long",
         "Reversing both words"
       ],
       "answer": 0
@@ -142,13 +142,13 @@
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "What does `sorted(\"orbit\")` give back?",
       "options": [
         "The word with its letters sorted, as text",
-        "The word reversed",
-        "The number of letters",
-        "A list of the letters in alphabetical order"
+        "The word reversed, from the end",
+        "The number of letters in the word",
+        "A list of the sorted letters"
       ],
       "answer": 3
     },
@@ -160,13 +160,13 @@
       "answer": 0
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "Are \"night\" and \"thing\" anagrams?",
       "options": [
         "No, they start with different letters",
-        "No, one of them is a palindrome",
+        "No, one of the two is a palindrome word",
         "Yes, they have the same five letters",
-        "Only if we lower them first"
+        "Only if we turn both into small letters first"
       ],
       "answer": 2
     },
@@ -225,13 +225,13 @@
       "answer": 1
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "Is every word an anagram of itself by the sorting check?",
       "options": [
-        "No, an anagram needs another order",
-        "Only if it has no repeated letters",
-        "Only if it is a palindrome",
-        "Yes, sorting the same letters gives the same list"
+        "No, an anagram needs another order of letters",
+        "Only if it has no repeated letters in it",
+        "Only if the word is a palindrome as well",
+        "Yes, the sorted letters are the same"
       ],
       "answer": 3
     },
@@ -243,10 +243,10 @@
       "answer": 0
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Why are \"moon starer\" and \"astronomer\" not anagrams for `sorted(a) == sorted(b)`?",
       "options": [
-        "Sorting can't handle long words",
+        "Sorting can't handle long words or sentences",
         "They have different letters",
         "The space counts as a character too",
         "`sorted()` drops the spaces"

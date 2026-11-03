@@ -19,22 +19,22 @@
       "answer": 2
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Why does a counter start at 0?",
       "options": [
         "Python needs every variable to start at 0",
-        "Before the loop we haven't found anything yet",
-        "So the loop runs one more time",
+        "Nothing has been found yet",
+        "So the loop runs one more time at the end",
         "0 tells Python the variable is a counter"
       ],
       "answer": 1
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "What does `x += 1` do?",
       "options": [
-        "It sets x to 1",
-        "It checks whether x is 1",
+        "It sets x to 1, whatever it held",
+        "It checks whether x is equal to 1",
         "It adds 1 to x, but only inside a loop",
         "The same as x = x + 1"
       ],
@@ -183,24 +183,24 @@
       "answer": 0
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "Where does the line `count = 0` go in the counter pattern?",
       "options": [
-        "Inside the loop, before the if",
-        "Inside the if, before the +=",
+        "Inside the loop, before the if, on every pass",
+        "Inside the if, right before the += line",
         "Before the loop, once",
-        "After the loop, before the print"
+        "After the loop, right before the print"
       ],
       "answer": 2
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "We want to print only the final count. Where does the `print(count)` go?",
       "options": [
         "Inside the if, under the +=",
-        "After the loop, not indented under it",
+        "After the loop, unindented",
         "Inside the loop, after the if",
-        "Before the loop"
+        "Before the loop, after count = 0"
       ],
       "answer": 1
     },

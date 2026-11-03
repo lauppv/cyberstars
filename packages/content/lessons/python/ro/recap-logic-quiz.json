@@ -7,24 +7,24 @@
       "answer": 1
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "În Consola de lansare, ce se întâmplă cu o citire negativă?",
       "options": [
-        "Afișează Sistem critic",
-        "Încheie introducerea",
-        "Se ignoră: nu se afișează nimic pentru ea",
-        "Anulează lansarea pe loc"
+        "Afișează Sistem critic, pentru că e sub 50",
+        "Încheie introducerea, la fel ca atunci când tastează 0",
+        "Se sare peste ea: nu se afișează nimic",
+        "Anulează lansarea pe loc, înainte de orice altă citire"
       ],
       "answer": 2
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "De ce citește Consola de lansare nivelurile cu `while True` și nu cu un for pe un range?",
       "options": [
         "Nu știm dinainte câte citiri va tasta operatorul",
         "O buclă for nu poate apela input()",
         "while True rulează mai repede decât for",
-        "O buclă for nu poate folosi break"
+        "O buclă for nu poate folosi break, deci nu s-ar opri la citirea 0"
       ],
       "answer": 0
     },
@@ -40,21 +40,21 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "În soluție, ce face `continue` când operatorul tastează -5?",
       "options": [
-        "Încheie bucla",
-        "Sare peste restul acestei iterații, iar bucla cere următoarea citire",
+        "Încheie bucla, iar programul merge mai departe cu if-ul de după ea",
+        "Bucla sare peste rest și cere următoarea citire",
         "Face lansare_ok False",
         "Afișează -5 și merge mai departe"
       ],
       "answer": 1
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "În soluție, ce face `break` când operatorul tastează 0?",
       "options": [
-        "Oprește tot programul pe loc, fără să mai afișeze ceva",
+        "Oprește imediat tot programul, fără să mai afișeze vreun rând după aceea",
         "Sare peste această citire și o cere pe următoarea",
         "Iese din buclă, iar programul merge mai departe cu if-ul de după ea",
         "Face lansare_ok False"
@@ -214,10 +214,10 @@
       "answer": 2
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "În `while True:`, ce este True?",
       "options": [
-        "O variabilă pe care trebuie s-o facem înainte de buclă",
+        "O variabilă pe care trebuie s-o facem și s-o punem pe True înainte de buclă",
         "Condiția buclei, care nu devine niciodată falsă de la sine",
         "Textul \"True\"",
         "De câte ori rulează bucla"
@@ -225,13 +225,13 @@
       "answer": 1
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "Când e `nivel >= 50 and lansare_ok` True?",
       "options": [
-        "Când măcar una dintre cele două e True",
-        "Doar când nivel e exact 50",
-        "Oricând lansare_ok e True",
-        "Doar când nivel e cel puțin 50 și lansare_ok e True"
+        "Când măcar una dintre cele două părți e True",
+        "Doar când nivel e exact 50, nu mai mult",
+        "Oricând lansare_ok e True, oricât ar fi nivel",
+        "Doar când ambele părți sunt True"
       ],
       "answer": 3
     },
@@ -260,13 +260,13 @@
       "answer": 1
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "De ce scrie soluția `nivel == 0` și nu `nivel = 0`?",
       "options": [
-        "= pune o valoare într-o variabilă, == compară două valori",
-        "== e mai rapid decât =",
-        "Fac același lucru, == e doar varianta mai nouă",
-        "= merge doar cu text"
+        "= pune o valoare, == compară două valori",
+        "= compară numere, == compară bucăți de text",
+        "Fac același lucru; == e doar varianta mai nouă de scriere",
+        "== pune valoarea în nivel, iar = o verifică"
       ],
       "answer": 0
     },

@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Cum ține Python o matrice?",
       "options": [
         "Ca o singură listă lungă, citită câte trei",
         "Ca un dicționar de la numărul rândului la valori",
-        "Ca o listă de liste, fiecare listă interioară fiind un rând",
-        "Ca un text cu câte o linie pe rând"
+        "Ca o listă de liste, câte una pe rând",
+        "Ca un text cu câte o linie pentru fiecare rând"
       ],
       "answer": 2
     },
@@ -46,13 +46,13 @@
       "answer": 0
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "În buclele imbricate din lecție, ce face `print()` de după bucla interioară?",
       "options": [
         "Afișează din nou tot rândul",
         "Afișează o matrice goală",
         "Oprește bucla exterioară",
-        "Începe o linie nouă după ce un rând e afișat"
+        "Începe o linie nouă"
       ],
       "answer": 3
     },
@@ -122,13 +122,13 @@
       "answer": 3
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "În misiunea Grila de Senzori, de ce afișează fiecare linie `i + 1` și nu `i`?",
       "options": [
         "Pentru că primul rând e sărit",
         "Rândurile sunt numerotate de la 1 pentru oameni, dar indicii lor pornesc de la 0",
         "Pentru că `i` e suma rândului",
-        "Ca ultimul rând să nu fie afișat de două ori"
+        "Ca ultimul rând să nu fie afișat de două ori, o dată cu `i` și o dată cu `i + 1`"
       ],
       "answer": 1
     },
@@ -172,12 +172,12 @@
       "answer": 2
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "În `for rand in matrice:` cu `for element in rand:` înăuntru, care buclă trece prin rânduri?",
       "options": [
         "Cea exterioară, `for rand in matrice:`",
-        "Cea interioară, `for element in rand:`",
-        "Amândouă, câte un rând fiecare",
+        "Cea interioară, adică `for element in rand:`",
+        "Amândouă, fiecare trecând printr-un rând",
         "Niciuna: rândurile sunt citite de `print()`"
       ],
       "answer": 0

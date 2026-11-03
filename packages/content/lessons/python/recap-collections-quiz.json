@@ -18,22 +18,22 @@
       "answer": 1
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "In the Supply Run mission, why does `break` come after `clean.append(item)` and not before it?",
       "options": [
-        "So the loop skips butter",
+        "So the loop skips butter and goes straight on to jam",
         "Because break must always be the last line of a loop",
-        "So butter is added to clean before the loop stops",
-        "So jam is added too"
+        "So butter gets into clean before the loop stops",
+        "So jam is added to clean too, right after butter"
       ],
       "answer": 2
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "In the Supply Run mission, why does `jam` never end up in clean?",
       "options": [
         "Its name starts with con-",
-        "It is the last element, and a loop skips the last element",
+        "It is the last element, which a loop skips",
         "clean can hold only 4 elements",
         "The loop stopped with break at butter, before it reached jam"
       ],
@@ -67,13 +67,13 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "What is the difference between `name.upper()` and `names.append(\"Kai\")`?",
       "options": [
-        "upper() gives a new string and leaves name as it was; append() changes the list itself",
-        "Both change the variable they are used on",
+        "upper() leaves name as it was; append() changes the list",
+        "Both change the variable they are used on, in the same way",
         "Neither changes anything: you have to write names = names.append(\"Kai\")",
-        "upper() changes name; append() makes a new list"
+        "upper() changes name for good, while append() makes a new list"
       ],
       "answer": 0
     },
@@ -190,13 +190,13 @@
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Why is `clean = []` written before the loop and not inside it?",
       "options": [
-        "Because a list can be empty only before a loop",
-        "So clean holds only the first crate",
-        "So the loop skips the empty crates",
-        "Inside the loop, clean would be emptied again for every crate"
+        "Because a list can be empty only before a loop starts",
+        "So clean holds only the first crate it is given",
+        "So the loop skips the empty crates of the list",
+        "Inside, it would be emptied for every crate"
       ],
       "answer": 3
     },

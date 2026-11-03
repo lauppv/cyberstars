@@ -19,9 +19,14 @@
       "answer": 0
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "De unde începe numărarea pozițiilor dintr-un string?",
-      "options": ["De la 1", "De la ultimul caracter", "De la primul spațiu", "De la 0"],
+      "options": [
+        "De la 1, ca atunci când numărăm",
+        "De la ultimul caracter",
+        "De la primul spațiu",
+        "De la 0"
+      ],
       "answer": 3
     },
     {
@@ -55,21 +60,21 @@
       "answer": 3
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Ce este o metodă, ca `upper()` din `nume.upper()`?",
       "options": [
         "O variabilă ținută într-un string",
         "Un cuvânt cheie, ca if",
         "O funcție care ține de ceva, apelată după un punct",
-        "Un comentariu scris după o linie"
+        "O buclă care trece prin fiecare caracter"
       ],
       "answer": 2
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Ce face `+` între două string-uri?",
       "options": [
-        "Adună lungimile lor",
+        "Adună lungimile lor, cum face len()",
         "Le lipește într-un singur string",
         "Pune un spațiu între ele și le afișează",
         "Se oprește cu o eroare: + e doar pentru numere"
@@ -107,13 +112,13 @@
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "De ce nu ia `nume[0:5]` și caracterul de pe poziția 5?",
       "options": [
         "Sfârșitul nu e inclus, ca la range()",
         "Python sare mereu peste ultima literă a unui cuvânt",
-        "Pe poziția 5 e mereu un spațiu",
-        "Îl ia: nume[0:5] are 6 caractere"
+        "Felia numără de la 1, deci se oprește la 4",
+        "Îl ia: nume[0:5] are de fapt 6 caractere"
       ],
       "answer": 0
     },
@@ -142,12 +147,12 @@
       "answer": 0
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "Contează un spațiu în `len()`?",
       "options": [
-        "Nu: len(\"a b\") este 2",
+        "Nu: len(\"a b\") este 2, spațiile nu se numără",
         "Doar un spațiu de la sfârșit",
-        "Doar într-un f-string",
+        "Doar când stringul e într-un f-string",
         "Da: len(\"a b\") este 3"
       ],
       "answer": 3

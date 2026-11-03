@@ -1,12 +1,12 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Cum caută căutarea liniară o valoare într-o listă?",
       "options": [
-        "Sare direct la mijlocul listei",
-        "Sortează întâi lista, apoi caută",
-        "Verifică elementele unul câte unul, de la început până la sfârșit",
+        "Sare direct la mijlocul listei, apoi caută",
+        "Sortează întâi lista, apoi caută în ea",
+        "Verifică elementele unul câte unul",
         "Verifică doar primul și ultimul element"
       ],
       "answer": 2
@@ -36,9 +36,9 @@
       "answer": 0
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "O listă are 1.000.000 de elemente și ținta nu e în ea. Câte elemente verifică căutarea liniară?",
-      "options": ["Cam 20", "Jumătate dintre ele", "Toate cele 1.000.000", "Doar primul"],
+      "options": ["Cam 20", "Jumătate dintre ele, în medie", "Toate cele 1.000.000", "Doar primul"],
       "answer": 2
     },
     {
@@ -75,12 +75,12 @@
       "answer": 1
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "De ce este `return i` în buclă, sub `if`?",
       "options": [
         "Ca bucla să mai ruleze o dată",
         "Ca funcția să se oprească la prima potrivire și să-i dea înapoi indexul",
-        "Ca să fie returnat fiecare index al listei",
+        "Ca să fie returnate deodată toate indexurile din listă la care apare ținta",
         "Python nu permite return după o buclă"
       ],
       "answer": 1
@@ -118,7 +118,7 @@
       "answer": 3
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "În căutarea unui scor peste 90, ce face `break`?",
       "options": [
         "Sare peste scorul care se potrivește și merge mai departe",
@@ -167,11 +167,11 @@
       "answer": 3
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "Ce verifică `elemente[i] == tinta`?",
       "options": [
-        "Dacă i este egal cu ținta",
-        "Dacă elementul de pe poziția i e cel căutat",
+        "Dacă i însuși, nu elementul, e egal cu ținta",
+        "Dacă elementul de la i e ținta",
         "Dacă lista conține ținta undeva",
         "Dacă lista e la fel de lungă ca ținta"
       ],
@@ -185,11 +185,11 @@
       "answer": 2
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "Care e diferența dintre `return i` și `return elemente[i]` într-o căutare?",
       "options": [
         "Niciuna, amândouă dau poziția",
-        "`return elemente[i]` oprește bucla, `return i` nu",
+        "`return elemente[i]` oprește bucla, pe când `return i` o lasă să meargă până la capăt",
         "`return i` dă poziția, `return elemente[i]` dă elementul însuși",
         "`return i` merge doar pe liste de numere"
       ],
@@ -214,9 +214,9 @@
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "Lista devine de două ori mai lungă și ținta nu e în ea. Ce se întâmplă cu numărul de verificări?",
-      "options": ["Se dublează și el", "Rămâne la fel", "Crește cu unu", "Se înjumătățește"],
+      "options": ["Se dublează și el", "Rămâne la fel", "Crește cu unu", "Scade la jumătate"],
       "answer": 0
     },
     {

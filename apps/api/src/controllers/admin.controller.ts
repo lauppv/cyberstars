@@ -1,7 +1,9 @@
 import type { Request, Response, NextFunction } from 'express';
 import * as adminService from '../services/admin.service.js';
 import * as notificationsService from '../services/notifications.service.js';
+import * as pollsService from '../services/polls.service.js';
 import type { AnnouncementSentDTO } from '@cyberstars/shared/admin';
+import type { PollSentDTO } from '@cyberstars/shared/polls';
 
 export async function getStats(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
@@ -34,6 +36,25 @@ export async function getAnnouncements(
 ): Promise<void> {
   try {
     res.json(await notificationsService.listAnnouncements());
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function sendPoll(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const { question, options, other } = req.body;
+    const sent = await pollsService.send(req.user!.id, question, options, other);
+    const body: PollSentDTO = { sent };
+    res.status(201).json(body);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function getPolls(_req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    res.json(await pollsService.list());
   } catch (err) {
     next(err);
   }

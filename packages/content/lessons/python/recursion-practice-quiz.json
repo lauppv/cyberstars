@@ -1,10 +1,10 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Which two questions does the lesson say to ask about every recursive function?",
       "options": [
-        "How many times does it call itself, and how fast is it?",
+        "How many times does it call itself, and how fast does it run?",
         "What's the base case, and how does the problem get smaller?",
         "Which loop does it replace, and which list does it use?",
         "What does it print first, and what does it print last?"
@@ -30,12 +30,12 @@
       "answer": 0
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "Why does the lesson call this `fib` not very efficient?",
       "options": [
-        "Because adding two numbers is slow in Python",
-        "Because it has two base cases instead of one",
-        "It works out the same values again and again: `fib(5)` and `fib(4)` both compute `fib(3)`",
+        "Because adding two numbers is slow in Python itself",
+        "Because it has two base cases instead of only one",
+        "It works out the same values again and again",
         "Because it builds a list of every number it finds"
       ],
       "answer": 2
@@ -73,11 +73,11 @@
       "answer": 2
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "In `count_char`, what does `first = 1 if text[0] == target else 0` do?",
       "options": [
-        "It moves to the first character that matches",
-        "It makes `first` 1 when the first character is the one counted, and 0 otherwise",
+        "It moves straight to the first character that matches",
+        "It makes `first` 1 for a match, 0 otherwise",
         "It stops the function when the first character matches",
         "It counts every match in the whole text at once"
       ],
@@ -91,13 +91,13 @@
       "answer": 3
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Why does the lesson flatten a nested list with recursion rather than a loop alone?",
       "options": [
         "We don't know how deep the lists go, and recursion goes as deep as they do",
         "Because a loop can't go through a list",
         "Because recursion sorts the numbers too",
-        "A loop alone is better: recursion can only flatten one level"
+        "A loop alone is better here: recursion can only flatten one level of nesting"
       ],
       "answer": 0
     },
@@ -123,12 +123,12 @@
       "answer": 3
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "What is the base case of the mission's `sum_digits`?",
       "options": [
         "`n < 10`: a single digit is its own sum, so it returns `n`",
         "`n == 0`: it returns 0",
-        "`n % 10 == 0`: the last digit is 0",
+        "`n % 10 == 0`: the last digit is 0, so the function stops there",
         "`n // 10`: the rest of the number"
       ],
       "answer": 0
@@ -244,13 +244,13 @@
       "answer": 1
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "In the mission, why may `largest` start at 0?",
       "options": [
         "Because the first code is 0",
         "Because checksums can be negative",
         "It can't: it has to start at the first code",
-        "Every code is a positive number, so its checksum is above 0 and the first one replaces it"
+        "Every checksum is above 0"
       ],
       "answer": 3
     }

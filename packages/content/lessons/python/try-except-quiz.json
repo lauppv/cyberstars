@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What is an exception in Python?",
       "options": [
-        "An error that happens while the program runs and stops it, unless we handle it",
-        "A line that Python skips on purpose",
-        "A warning that Python shows but then ignores",
-        "A special kind of variable for errors"
+        "An error that stops the program, unless handled",
+        "A line that Python skips on purpose, without running it",
+        "A warning that Python shows but then ignores and goes on",
+        "A special kind of variable that holds the errors"
       ],
       "answer": 0
     },
@@ -18,11 +18,11 @@
       "answer": 1
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "What happens when this runs?",
       "code": "names = [\"Tommy\", \"Lance\"]\nprint(names[5])",
       "options": [
-        "It prints Lance, the last name",
+        "It prints Lance, the last name, since index 5 is past the end",
         "It prints nothing",
         "It stops with an IndexError: there is no element at index 5",
         "It prints None"
@@ -55,23 +55,23 @@
       "answer": 1
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "In a `try` block, what happens to the lines after the one that fails?",
       "options": [
         "They run after the except block",
         "They run before the except block",
         "They never run: Python leaves the try block at the failing line",
-        "They run only when the try block is inside a loop"
+        "They run only when the try block is inside a loop, on the next pass"
       ],
       "answer": 2
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Why is `except ValueError:` often better than a bare `except:`?",
       "options": [
         "It runs faster than a bare except",
         "A bare except catches only ValueError",
-        "Only except ValueError can be used inside a loop",
+        "Only except ValueError can be used inside a loop; a bare except can't be",
         "We know exactly what went wrong, and each error can get its own message"
       ],
       "answer": 3
@@ -89,22 +89,22 @@
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "What happens when this runs?",
       "code": "try:\n    print(10 / 0)\nexcept ValueError:\n    print(\"Not a number\")",
       "options": [
-        "It prints Not a number",
-        "It stops with a ZeroDivisionError: except ValueError doesn't catch it",
-        "It prints nothing and goes on",
-        "It prints 0"
+        "It prints Not a number, since except catches the error",
+        "It stops with a ZeroDivisionError",
+        "It prints nothing and goes on with the next line",
+        "It prints 0, since 10 divided by 0 gives 0"
       ],
       "answer": 1
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "When does the code under `else:` run, after `try` and `except`?",
       "options": [
-        "Only when an error happened in the try block",
+        "Only when an error happened in the try block, at any line",
         "Always, after the except block",
         "Only when no error happened in the try block",
         "Never: else works only with if"
@@ -112,12 +112,12 @@
       "answer": 2
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "When does the code under `finally:` run?",
       "options": [
-        "No matter what: with an error or without one",
-        "Only when an error happened",
-        "Only when no error happened",
+        "Always: with an error or without",
+        "Only when an error happened in try",
+        "Only when no error happened in try",
         "Only at the very end of the program"
       ],
       "answer": 0
@@ -130,13 +130,13 @@
       "answer": 3
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "In the lesson's `while True` loop that asks for the age, what ends the loop?",
       "options": [
         "The except block, once it prints its message",
         "The break right after int() works, so only a valid number gets out",
         "Python stops it after three tries",
-        "The loop ends by itself when the user presses Enter"
+        "The loop ends by itself when the user presses Enter without typing anything"
       ],
       "answer": 1
     },
@@ -158,12 +158,12 @@
       "answer": 0
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "In the mission, `total = total + int(reading)` fails for `\"bad\"`. What happens to total?",
       "options": [
         "It becomes 0",
         "It gets the text \"bad\" added to it",
-        "The program stops, so total is lost",
+        "The program stops at that reading, so the total built so far is lost for good",
         "It stays as it was: int() fails before anything is stored in total"
       ],
       "answer": 3
@@ -205,13 +205,13 @@
       "answer": 1
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "In the mission, why does the `try` go inside the for loop and not around it?",
       "options": [
         "A try block can't hold a for loop",
         "So the loop runs twice",
         "Around it, the first corrupted reading would stop the whole loop",
-        "So the corrupted readings are added as 0"
+        "So the corrupted readings are still added to the total, but as 0"
       ],
       "answer": 2
     },
@@ -253,13 +253,13 @@
       "answer": 3
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "What does a bare `except:`, with no error name, catch?",
       "options": [
         "Only ValueError",
         "Any error that happens in the try block",
         "Only the errors of the last line",
-        "Nothing: it needs an error name"
+        "Nothing: a bare except needs an error name to work"
       ],
       "answer": 1
     },
@@ -271,13 +271,13 @@
       "answer": 0
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "A program without try crashes on its third line. What happens to the lines after it?",
       "options": [
         "They still run, one by one",
         "They run once the error is printed",
         "Only the print lines among them run",
-        "They never run: the program stops at the error"
+        "They never run"
       ],
       "answer": 3
     },

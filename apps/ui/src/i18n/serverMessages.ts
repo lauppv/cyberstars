@@ -96,6 +96,26 @@ const RO: Record<string, string> = {
   'Invalid notification ID': 'Notificare invalidă',
   'Announcement text is required': 'Textul anunțului este obligatoriu',
   'Announcement is too long (max 2000 chars)': 'Anunțul e prea lung (cel mult 2000 de caractere)',
+  'Poll question is required': 'Întrebarea sondajului este obligatorie',
+  'Poll question is too long (max 300 chars)':
+    'Întrebarea sondajului e prea lungă (cel mult 300 de caractere)',
+  'A poll option cannot be empty': 'O variantă a sondajului nu poate fi goală',
+  'A poll option is too long (max 200 chars)':
+    'O variantă a sondajului e prea lungă (cel mult 200 de caractere)',
+  'A poll needs at least 2 options': 'Un sondaj are nevoie de cel puțin 2 variante',
+  'A poll takes at most 10 options': 'Un sondaj are cel mult 10 variante',
+  'Each poll option only once': 'Fiecare variantă o singură dată',
+  'Invalid poll ID': 'Sondaj invalid',
+  'Poll not found': 'Sondajul nu există',
+  'Pick at least one option': 'Alege cel puțin o variantă',
+  'Pick options from this poll': 'Alege variante din acest sondaj',
+  'You already voted in this poll': 'Ai votat deja la acest sondaj',
+  'A poll takes at most 10 options and Other': 'Un sondaj are cel mult 10 variante și Altceva',
+  'Your answer cannot be empty': 'Răspunsul tău nu poate fi gol',
+  'Your answer is too long (max 500 chars)':
+    'Răspunsul tău e prea lung (cel mult 500 de caractere)',
+  'Write your answer under Other': 'Scrie-ți răspunsul la Altceva',
+  'Tick Other to write your own answer': 'Bifează Altceva ca să scrii propriul răspuns',
   // support
   'Only admins can view all tickets': 'Doar adminii pot vedea toate tichetele',
   'Invalid ticket ID': 'Tichet invalid',

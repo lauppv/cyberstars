@@ -1,12 +1,12 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does `return` do in a function?",
       "options": [
-        "It gives a value back to the place where the function was called",
-        "It prints the value on the screen",
-        "It runs the function again from the top",
+        "It sends a value back to the call",
+        "It prints the value on the screen for the user",
+        "It runs the function again from the top, with new values",
         "It saves the value in a variable called return"
       ],
       "answer": 0
@@ -31,12 +31,12 @@
       "answer": 2
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "What is the difference between a function that prints its result and one that returns it?",
       "options": [
         "None: they do the same thing",
         "A returned value can be kept and used further, a printed one only shows on the screen",
-        "A printed value can go into a calculation, a returned one can't",
+        "A printed value can still be used in a calculation afterwards, while a returned one can't",
         "Only a function that prints can take parameters"
       ],
       "answer": 1
@@ -49,24 +49,24 @@
       "answer": 3
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "What happens to the lines written after `return` in the same block?",
       "options": [
         "They run after the value is given back",
-        "They run only the second time the function is called",
+        "They run only the second time the function is called, not the first",
         "Python stops with an error",
         "They never run: the function ends as soon as it reaches return"
       ],
       "answer": 3
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "What does a function without `return` give back?",
       "options": [
-        "0",
-        "An empty text",
-        "None, Python's way of saying \"nothing\"",
-        "The last value it printed"
+        "0, since nothing was computed",
+        "An empty text, since nothing was written",
+        "None, which means nothing",
+        "The last value it printed, if any"
       ],
       "answer": 2
     },
@@ -92,13 +92,13 @@
       "answer": 0
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "What can a function give back with `return`?",
       "options": [
         "Only numbers",
         "Only numbers and texts",
         "Any value: a number, a text, a boolean, a list",
-        "Only True or False, for use in an if"
+        "Only True or False, so the call can be used in an if"
       ],
       "answer": 2
     },
@@ -109,11 +109,11 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Where can we use a call like `is_adult(20)`, a function that returns a value?",
       "options": [
         "Only on a line of its own",
-        "Anywhere a value fits: inside print(), in an if, in a calculation",
+        "Anywhere a value fits",
         "Only after we store it in a variable",
         "Only inside another function"
       ],
@@ -144,23 +144,23 @@
       "answer": 3
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "In the Atlas of Galaxies mission, what does `longest_star` return?",
       "options": [
         "The name of the star with the most letters in the galaxy it gets",
-        "How many letters the longest star has",
+        "How many letters the longest star in the galaxy it gets has, as a number",
         "The last star in the list",
         "The galaxy with the most stars"
       ],
       "answer": 0
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "In the Atlas of Galaxies mission, why one function called five times instead of five copies of the loop?",
       "options": [
         "Five loops would print the stars in the wrong order",
         "A list can be looped over only inside a function",
-        "The logic is written once and reused for every galaxy, without repeating the body",
+        "The logic is written once and reused for every galaxy",
         "The function goes through all five galaxies in one call"
       ],
       "answer": 2
@@ -172,13 +172,13 @@
       "answer": 3
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "In the Atlas of Galaxies mission, `longest_star` goes through the galaxy with a for loop. Where does its `return longest` go?",
       "options": [
-        "Inside the loop, under the if",
-        "After the loop, lined up with the for line, so it runs once every star was checked",
-        "Before the loop",
-        "Outside the function, after the five calls"
+        "Inside the loop, under the if, so it returns each longer star",
+        "After the loop, lined up with for, so it runs once all stars are checked",
+        "Before the loop, so the value is ready when the loop starts",
+        "Outside the function, after the five calls, so all five can use the same value"
       ],
       "answer": 1
     },

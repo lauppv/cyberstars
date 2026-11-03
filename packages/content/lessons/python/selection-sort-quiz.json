@@ -1,10 +1,10 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does Selection Sort do for each position, from the first one on?",
       "options": [
-        "It swaps every pair of neighbours that are out of order",
+        "It swaps every pair of neighbours that are out of order, as Bubble Sort does",
         "It moves the biggest number to the start",
         "It finds the smallest number of those left and swaps it into that position",
         "It splits the list in half"
@@ -12,12 +12,12 @@
       "answer": 2
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "What is the key difference between Selection Sort and Bubble Sort?",
       "options": [
-        "Selection Sort makes no comparisons",
-        "Selection Sort makes one swap per pass instead of possibly many",
-        "Selection Sort works only on sorted lists",
+        "Selection Sort makes no comparisons at all",
+        "Selection Sort swaps once per pass",
+        "Selection Sort works only on lists already sorted",
         "Bubble Sort finds the smallest number first"
       ],
       "answer": 1
@@ -35,13 +35,13 @@
       "answer": 0
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "What does `min_index` remember while j walks the list?",
       "options": [
         "The smallest number itself",
         "How many swaps were made",
         "Where the smallest number seen so far is",
-        "The position j stopped at last time"
+        "The position j stopped at the last time round"
       ],
       "answer": 2
     },
@@ -57,10 +57,10 @@
       "answer": 3
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "What does the outer loop (i) pick?",
       "options": [
-        "The smallest number",
+        "The smallest number of the list",
         "The pair of neighbours to compare",
         "The position to fill next",
         "How many times to run the program"
@@ -86,10 +86,10 @@
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "How many times does the lesson's code run the swap line for a list of n elements?",
       "options": [
-        "Once for every comparison",
+        "Once for every comparison, each time the inner loop compares two numbers",
         "n times, once per position, even when a number swaps with itself",
         "Never more than once",
         "n × n times"
@@ -97,9 +97,14 @@
       "answer": 1
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Roughly how many comparisons does Selection Sort make for n elements?",
-      "options": ["About n × n, like Bubble Sort", "About n", "Only one", "About 2 × n"],
+      "options": [
+        "About n × n, like Bubble Sort",
+        "About n",
+        "Only one",
+        "About 2 × n, two for each element"
+      ],
       "answer": 0
     },
     {
@@ -114,10 +119,10 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "What does the lesson say to use for sorting in real programs?",
       "options": [
-        "Selection Sort, since it swaps less",
+        "Selection Sort, since it makes fewer swaps than Bubble Sort",
         "`sorted()`, which is hundreds of times faster",
         "Bubble Sort",
         "Linear search"
@@ -125,21 +130,21 @@
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "How do you make Selection Sort sort from largest to smallest?",
       "options": [
-        "Start i at the end of the list",
-        "Look for the biggest number instead: compare with `>`",
-        "Swap only when i is even",
-        "Remove the inner loop"
+        "Start i at the end of the list instead",
+        "Compare with `>` to find the biggest",
+        "Only swap when i is even, skip the odd ones",
+        "Remove the inner loop and keep the outer one"
       ],
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "After the first pass of Selection Sort, what is surely in place?",
       "options": [
-        "The biggest number, at the end",
+        "The biggest number, moved to the end",
         "Every number",
         "The smallest number, at position 0",
         "Nothing yet"
@@ -182,13 +187,13 @@
       "answer": 3
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "What does `numbers[i], numbers[min_index] = numbers[min_index], numbers[i]` do?",
       "options": [
         "It copies the smallest number over both places",
         "It compares the two numbers",
         "It deletes the number at i",
-        "It swaps the number at i with the smallest one found"
+        "It swaps the two numbers"
       ],
       "answer": 3
     },
@@ -199,11 +204,11 @@
       "answer": 2
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "Selection Sort gets a list that is already sorted. What does it do?",
       "options": [
         "It still makes every comparison, it doesn't stop early",
-        "It stops after the first comparison",
+        "It stops after the first comparison, since nothing needs to move",
         "It reverses the list",
         "It makes no comparisons"
       ],
@@ -228,11 +233,11 @@
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Why does the last pass never move anything?",
       "options": [
         "Only one number is left, and it's already the biggest",
-        "The inner loop runs backwards there",
+        "The inner loop runs backwards on the last pass, so it finds nothing",
         "Python skips the last pass",
         "The last number is always 0"
       ],

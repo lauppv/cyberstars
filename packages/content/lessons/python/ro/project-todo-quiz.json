@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Cum ține lecția o sarcină?",
       "options": [
-        "Un text cu numele sarcinii",
-        "Un dicționar cu un nume și o stare terminat",
-        "O listă de două texte",
-        "Un număr, locul ei pe tablă"
+        "Un text care ține doar numele sarcinii",
+        "Un dicționar cu nume și terminat",
+        "O listă de două texte, nume și stare",
+        "Un număr, care e locul ei pe tablă"
       ],
       "answer": 1
     },
@@ -30,21 +30,21 @@
       "answer": 0
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "De ce verifică întâi `finalizeaza_sarcina` `0 <= index < len(sarcini)`?",
       "options": [
         "Ca prima sarcină să nu poată fi terminată niciodată",
-        "Ca sarcinile să rămână sortate",
-        "Ca un index din afara listei să fie ignorat în loc să oprească programul cu o eroare",
+        "Ca sarcinile să rămână sortate după index",
+        "Ca un index greșit să fie sărit",
         "Ca să numere sarcinile terminate"
       ],
       "answer": 2
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "Ce face `sarcini.pop(index)`?",
       "options": [
-        "Scoate mereu ultimul element",
+        "Scoate mereu ultimul element, orice ar spune indexul",
         "Scoate din listă elementul de pe acea poziție",
         "Dă înapoi lungimea listei",
         "Marchează sarcina aceea ca terminată"
@@ -66,13 +66,13 @@
       "answer": 0
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Ce dă `\"terminat\" if sarcina[\"terminat\"] else \"neterminat\"`?",
       "options": [
         "Mereu \"terminat\"",
         "Ambele cuvinte, unul după altul",
         "\"terminat\" când `\"terminat\"` al sarcinii e True, \"neterminat\" când e False",
-        "O eroare: `if` nu poate sta în mijlocul unei linii"
+        "O eroare: `if` nu poate sta în mijlocul unei linii, ci doar la începutul ei"
       ],
       "answer": 2
     },
@@ -89,13 +89,13 @@
       "answer": 1
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "De ce merge `afiseaza_sarcini` cu bucla peste `enumerate(sarcini)`?",
       "options": [
-        "Ca să sorteze sarcinile după nume",
+        "Ca să sorteze întâi sarcinile după nume, ca să fie afișate în ordine alfabetică",
         "Ca să numere sarcinile terminate",
         "Ca să scoată sarcinile terminate",
-        "Ca să afișeze lângă fiecare sarcină indexul ei, numărul pe care îl primesc `finalizeaza_sarcina` și `elimina_sarcina`"
+        "Ca să afișeze indexul fiecărei sarcini, numărul primit de celelalte funcții"
       ],
       "answer": 3
     },
@@ -107,11 +107,11 @@
       "answer": 2
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "Cum lucrează `numara_nefinalizate` din lecție?",
       "options": [
-        "Întoarce `len(sarcini) - numara_finalizate(sarcini)`: fiecare sarcină care nu e terminată",
-        "Trece iar prin sarcini și le numără pe cele False una câte una",
+        "Întoarce `len(sarcini) - numara_finalizate(sarcini)`: sarcinile neterminate",
+        "Trece din nou prin toate sarcinile și le numără pe cele cu False, una câte una",
         "Întoarce `numara_finalizate(sarcini) - len(sarcini)`",
         "Scoate sarcinile terminate și numără ce rămâne"
       ],
@@ -149,13 +149,13 @@
       "answer": 2
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "De ce termină misiunea fiecare sarcină cu `int(index)`?",
       "options": [
-        "`.split()` dă bucăți de text ca \"0\", iar un index de listă trebuie să fie număr",
-        "`int` sortează indicii",
-        "`int` verifică dacă indexul e în listă",
-        "Ca numele sarcinii să devină un număr"
+        "Un index de listă trebuie să fie număr",
+        "`int` sortează indicii înainte să fie folosiți",
+        "`int` verifică dacă indexul e în interiorul listei",
+        "Ca numele sarcinii să fie transformat într-un număr"
       ],
       "answer": 0
     },
@@ -179,11 +179,11 @@
       "answer": 3
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "Lecția dă fiecărei treburi funcția ei mică. Ce câștigăm?",
       "options": [
         "Programul merge mai repede",
-        "Python permite o singură linie pe funcție",
+        "Python permite o singură linie pe funcție, așa că fiecare treabă trebuie separată",
         "Fiecare funcție e mică, ușor de înțeles și ușor de testat separat",
         "Programul nu mai are nevoie de variabile"
       ],
@@ -208,10 +208,10 @@
       "answer": 1
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "`adauga_sarcina(sarcini, nume)` nu întoarce nimic. Cum crește totuși lista celui care o cheamă?",
       "options": [
-        "Funcția face o copie, iar Python o pune în loc mai târziu",
+        "Funcția face o copie a listei, iar Python o pune în loc după ce se întoarce apelul",
         "Nu crește: lista rămâne goală",
         "`append` dă înapoi o listă nouă",
         "`append` schimbă chiar lista primită, adică `sarcini` al celui care cheamă"
@@ -262,13 +262,13 @@
       "answer": 2
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "În misiune, ce citește `input()`-ul de după cele N nume de sarcini?",
       "options": [
         "Numărul N din nou",
         "Linia cu indicii sarcinilor de terminat, de exemplu 0 2",
         "Numele încă unei sarcini",
-        "Nimic: doar așteaptă Enter"
+        "Nimic: doar așteaptă ca jucătorul să apese Enter ca să continue"
       ],
       "answer": 1
     },

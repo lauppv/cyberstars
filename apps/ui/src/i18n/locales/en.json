@@ -138,6 +138,30 @@
       "history": "Sent before",
       "none": "No announcement has been sent yet.",
       "historyError": "The announcements sent before couldn't be loaded."
+    },
+    "poll": {
+      "title": "Poll",
+      "question": "Ask every user something",
+      "option": "Option {{n}}",
+      "removeOption": "Remove option {{n}}",
+      "addOption": "Add option",
+      "addOther": "Add Other, where each voter writes their own answer",
+      "otherOption": "Other (each voter writes their own answer)",
+      "other": "Other",
+      "answers": "What they wrote under Other",
+      "repeated": "Two options say the same thing.",
+      "send": "Send",
+      "confirmTitle": "Send this poll to all users?",
+      "confirmHint": "They can tick as many options as they like, and the vote is anonymous. It can't be changed once sent.",
+      "cancel": "Cancel",
+      "sending": "Sending…",
+      "sent_one": "Sent to {{count}} user",
+      "sent_other": "Sent to {{count}} users",
+      "failed": "The poll couldn't be sent. Try again.",
+      "history": "Sent before",
+      "none": "No poll has been sent yet.",
+      "historyError": "The polls sent before couldn't be loaded.",
+      "voters": "{{voters}} of {{recipients}} voted"
     }
   },
   "lang": {
@@ -466,8 +490,24 @@
     "laniakeaRecap_other": "{{count}} Laniakea recaps are open",
     "announcement": "Official announcement: {{text}}",
     "announcementTitle": "Official announcement",
+    "poll": "Poll: {{text}}",
+    "pollAnswer": "Answer to \"{{title}}\": {{text}}",
     "view": "View",
+    "vote": "Vote",
     "close": "Close"
+  },
+  "poll": {
+    "title": "Poll",
+    "hint": "Tick as many as you like. Your vote is anonymous.",
+    "hintOther": "Tick as many as you like. Your vote and what you write are anonymous.",
+    "other": "Other",
+    "answer": "Write your answer",
+    "vote": "Vote",
+    "voting": "Voting…",
+    "thanks": "Thanks, your vote is in.",
+    "voted": "You've already voted in this poll.",
+    "loadFailed": "This poll couldn't be loaded.",
+    "failed": "Your vote couldn't be sent. Try again."
   },
   "courses": {
     "lessons_one": "lesson",

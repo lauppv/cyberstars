@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does print() do?",
       "options": [
         "It shows something on the screen",
         "It sends the code to a printer",
         "It saves the code in a file",
-        "It deletes the last line of code"
+        "It puts the text into a variable"
       ],
       "answer": 0
     },
@@ -42,16 +42,16 @@
       "answer": 2
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "What does this print?",
       "code": "print(\"5\")",
-      "options": ["\"5\"", "five", "5", "An error"],
+      "options": ["\"5\"", "(\"5\")", "5", "An error"],
       "answer": 2
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "What must go around the text we give to print()?",
-      "options": ["Quotes", "Square brackets", "A colon", "Nothing at all"],
+      "options": ["Quotes", "Square brackets", "Curly brackets {}", "Nothing at all"],
       "answer": 0
     },
     {
@@ -117,20 +117,20 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "What does this print?",
       "code": "print(\"Pizza\")",
-      "options": ["pizza", "Pizza", "\"Pizza\"", "P"],
+      "options": ["pizza", "Pizza", "\"Pizza\"", "An error"],
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "What does the lesson call print()?",
       "options": [
-        "A function, an instruction that tells the computer to show something",
-        "A variable that holds text",
-        "A file where the program is saved",
-        "A comment the computer skips"
+        "A function, an instruction to show something",
+        "A variable, a name that holds the text to show",
+        "A string, the text that goes between quotes",
+        "A comment, a note that explains the code"
       ],
       "answer": 0
     },
@@ -158,21 +158,21 @@
       "answer": 1
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "What is the best way to find out what a piece of code does?",
       "options": [
         "Run it and see what happens",
-        "Never change it",
-        "Guess and move on",
-        "Delete it and write it again"
+        "Read it and guess what it shows",
+        "Learn all of Python first",
+        "Wait for a lesson to explain it"
       ],
       "answer": 0
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "What does this print?",
       "code": "print(\"2 + 2 = 4\")",
-      "options": ["4", "2 + 2 = 4", "True", "2 + 2"],
+      "options": ["4", "2 + 2 = 4", "\"2 + 2 = 4\"", "An error"],
       "answer": 1
     },
     {
@@ -182,24 +182,24 @@
       "answer": 0
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "Why does `print(hey, I like pizza)` stop with an error?",
       "options": [
         "The text has no quotes around it",
-        "print() can't show commas",
-        "The line is too long",
-        "The word pizza isn't allowed"
+        "Commas aren't allowed inside print()",
+        "Text in print() can't have spaces",
+        "It should use square brackets [ ]"
       ],
       "answer": 0
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "What do the quotes in `print(\"Hi\")` tell Python?",
       "options": [
         "Where the text to show starts and ends",
-        "To show the text with quotes around it",
+        "To show the quotes around the text",
         "That the line should be skipped",
-        "That Hi is a number"
+        "That Hi is the name of a variable"
       ],
       "answer": 0
     },
@@ -210,25 +210,25 @@
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "In what order does Python run the lines of a program?",
       "options": [
         "From the top down, one after another",
-        "From the bottom up",
-        "All at the same time",
-        "The shortest line first"
+        "From the bottom line up to the top",
+        "All of the lines at the same time",
+        "Lines with = first, then the print() lines"
       ],
       "answer": 0
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Why doesn't this program work?",
       "code": "name = Paul\nprint(name)",
       "options": [
-        "Paul has no quotes, so Python looks for a variable called Paul",
-        "print needs a capital P",
-        "A variable can't be called name",
-        "It should be print(\"name\")"
+        "Without quotes, Python thinks Paul is a variable",
+        "print must be written with a capital P",
+        "The word name can't be used for a variable",
+        "It should be print(\"name\"), with quotes"
       ],
       "answer": 0
     },
@@ -239,13 +239,13 @@
       "answer": 1
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "What does Python do with `x = 23 + 22`?",
       "options": [
-        "It stores 23 in x and skips the rest",
+        "It stores only the 23 in x",
         "It stores the text 23 + 22 in x",
-        "It works out 23 + 22, then stores 45 in x",
-        "It prints 45"
+        "It adds 23 + 22, then stores 45 in x",
+        "It prints 45 and doesn't store it"
       ],
       "answer": 2
     },
@@ -256,24 +256,24 @@
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "What does the f in `f\"Hi {name}\"` tell Python?",
       "options": [
-        "To put each variable's value in place of its {}",
-        "To print the text in bold",
-        "To turn the text into a number",
-        "Nothing, it's only there for looks"
+        "To replace {name} with the value of name",
+        "To show {name} exactly as it is written",
+        "To make the text a number with decimals",
+        "Nothing, the f is only there for looks"
       ],
       "answer": 0
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "What does Python do with a line that starts with #?",
       "options": [
-        "It prints it",
+        "It prints the text after the #",
         "It skips it: the line is a comment",
-        "It stops with an error",
-        "It runs it twice"
+        "It stops with an error at that line",
+        "It runs it like any other line"
       ],
       "answer": 1
     }

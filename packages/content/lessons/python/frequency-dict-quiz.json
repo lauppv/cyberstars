@@ -1,11 +1,11 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Which question is a frequency dictionary made for?",
       "options": [
         "Where is the first element?",
-        "What is the biggest number in the list?",
+        "What is the biggest number in the whole list?",
         "Is the list sorted?",
         "How many times does each element appear?"
       ],
@@ -59,13 +59,13 @@
       "answer": 2
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "How does the frequency dictionary start, before the loop?",
       "options": [
         "With every letter at 0",
         "With the first element at 1",
         "Empty: `freq = {}`",
-        "As an empty list `[]`"
+        "As an empty list, `[]`"
       ],
       "answer": 2
     },
@@ -119,24 +119,24 @@
       "answer": 0
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "What does `for key, count in freq.items():` give on each turn?",
       "options": [
-        "Only the keys",
+        "Only the keys, one at a time",
         "One key and its count",
-        "Only the counts",
-        "The whole dictionary"
+        "Only the counts, one at a time",
+        "The whole dictionary, each time"
       ],
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "What does `for key in sorted(freq):` go through?",
       "options": [
         "The counts, from smallest to largest",
         "The keys, in alphabetical order",
         "The keys, in the order they were added",
-        "The pairs, from the most common"
+        "The pairs, from the most common one"
       ],
       "answer": 1
     },
@@ -212,10 +212,10 @@
       "answer": 0
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "In the mission, how is each channel printed?",
       "options": [
-        "As `count: channel`, from the busiest",
+        "As `count: channel`, from the busiest one down",
         "As `channel: count`, in alphabetical order",
         "Only the busiest channel",
         "The whole dictionary on one line"
@@ -273,22 +273,22 @@
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "What does `sentence.split(\" \")` give before counting words?",
       "options": [
-        "A list of the words, cut at every space",
-        "The number of words",
-        "The sentence without spaces",
-        "A dictionary of the words"
+        "A list of the words",
+        "The number of words in it",
+        "The sentence without its spaces",
+        "A dictionary of the words and counts"
       ],
       "answer": 0
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "What does `len(freq)` tell you about a frequency dictionary?",
       "options": [
         "How many different elements were counted",
-        "How many elements the list had",
+        "How many elements the list had, repeats included",
         "The biggest count",
         "The most common element"
       ],

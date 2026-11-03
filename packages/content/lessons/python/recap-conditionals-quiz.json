@@ -18,14 +18,14 @@
       "answer": 1
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "In the chain below, why doesn't `elif age <= 12:` also check that age is at least 6?",
       "code": "if age < 6:\n    discount = 10\nelif age <= 12:\n    discount = 5",
       "options": [
-        "It should, or a 4-year-old gets 5 EUR off",
+        "It should, or a 4-year-old would get 5 EUR off as well",
         "Because elif checks every number from 6 to 12 by itself",
         "Because Python only reaches the elif when age < 6 was false",
-        "Because 6 is the default value of age"
+        "Because age starts at 6 unless the program gives it another value"
       ],
       "answer": 2
     },
@@ -41,23 +41,23 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "What does Python do first in `total = price - discount`?",
       "options": [
         "It works out price - discount, then stores the result in total",
         "It stores price in total, then subtracts discount from price",
-        "It checks whether total equals price - discount",
+        "It checks whether total is equal to price - discount, as == would",
         "It stores the text price - discount in total"
       ],
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "What does `total = total + 2` do?",
       "options": [
         "It checks whether total is 2 more than before",
         "It adds 2 to total and stores the new value back in total",
-        "It stops with an error: total can't be on both sides",
+        "It stops with an error: total can't be on both sides of =",
         "It makes a second variable called total"
       ],
       "answer": 1
@@ -131,10 +131,10 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "When does the else at the end of an if / elif / else chain run?",
       "options": [
-        "Always, after the other branches",
+        "Always, once the other branches of the chain have run",
         "Only when none of the conditions above it is true",
         "Only when the last elif is true",
         "Only when the if is true"
@@ -142,13 +142,13 @@
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "How many branches of an if / elif / else chain run?",
       "options": [
-        "All the ones whose condition is true",
-        "Two: the if and the else",
-        "Exactly one: the first whose condition is true, or else if none is",
-        "None, unless there is a print"
+        "All the ones whose condition is true, from top to bottom",
+        "Two: the if's block and then the else's block",
+        "Exactly one: the first true one, or the else",
+        "Exactly one: the last one whose condition is true"
       ],
       "answer": 2
     },
@@ -164,13 +164,13 @@
       "answer": 3
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "Can a program start a chain with elif, with no if before it?",
       "options": [
         "No: an elif always goes on from an if above it",
-        "Yes, elif and if mean the same",
-        "Yes, but only once in a program",
-        "Only when the chain has an else"
+        "Yes, elif and if mean the same, so either can start it",
+        "Yes, but only once, for the first chain of a program",
+        "Only when the chain has an else at the end to close it"
       ],
       "answer": 0
     },
@@ -181,13 +181,13 @@
       "answer": 1
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "Why does the 13 to 17 group use `age <= 17` and not `age < 17`?",
       "options": [
-        "Because < doesn't work in an elif",
-        "Because <= is faster",
+        "Because < can only be used in the first if of a chain, not in an elif",
+        "Because <= also counts 18, the first age of the next group",
         "Because `age < 17` would leave the 17-year-olds out of the group",
-        "There is no difference between the two"
+        "There is no difference: both put 17 in the 13 to 17 group"
       ],
       "answer": 2
     },
@@ -215,48 +215,48 @@
       "answer": 1
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "The movie is not 3D. What does this print?",
       "code": "total = 10\nis_3d = False\nif is_3d == True:\n    total = total + 2\n    print(f\"Total: {total} EUR\")",
       "options": [
         "Total: 10 EUR",
         "Total: 12 EUR",
         "Nothing: the print is inside the if, which doesn't run",
-        "It stops with an error"
+        "It stops with an error, since the if has no else after it"
       ],
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Why does the solution keep the standard price in a variable, `price = 10`?",
       "options": [
         "Because Python can't subtract from a plain 10",
         "Because a number has to be in a variable before it can be printed",
         "So the program runs faster",
-        "So the name says what 10 is, and changing the price means changing one line"
+        "So the name says what 10 is, and the price changes in one line"
       ],
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "What does Python do with the part after # here?",
       "code": "price = 10  # the full price, without any discount",
       "options": [
         "It skips it: it's a comment for the people reading the code",
-        "It prints it",
-        "It stores it in price as well",
-        "It stops with an error"
+        "It prints it on the screen when the line runs",
+        "It stores it in price too, as text after the 10",
+        "It stops with an error: a line can't end with words like these"
       ],
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "`is_3d` is False. Is `is_3d == True` true?",
       "options": [
-        "Yes, a comparison is always true",
-        "No, False is not equal to True, so the if's block is skipped",
+        "Yes, a comparison with == is always true",
+        "No: False is not equal to True",
         "It stops with an error: False can't be compared",
-        "Yes, because is_3d has a value"
+        "Yes, because is_3d holds a value, so it counts"
       ],
       "answer": 1
     },
@@ -267,13 +267,13 @@
       "answer": 2
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "What happens when this runs?",
       "code": "age = 8\nif age < 6:\n    discount = 10\nelif age <= 12\n    discount = 5",
       "options": [
-        "discount becomes 5",
-        "discount becomes 10",
-        "Nothing: no condition is true",
+        "discount becomes 5, since 8 <= 12 is true",
+        "discount becomes 10, from the if above it",
+        "Nothing: no condition is true for 8, so nothing changes",
         "It stops with an error: the elif line needs :"
       ],
       "answer": 3

@@ -1,35 +1,35 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does a list comprehension do?",
       "options": [
-        "It builds a new list from another one, in a single line",
-        "It sorts a list in place",
-        "It prints every element of a list",
-        "It turns a list into a dictionary"
+        "It builds a new list from another one",
+        "It sorts a list in place, from small to big",
+        "It prints every element of a list, one per line",
+        "It turns a list into a dictionary of its elements"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "In `[n * 2 for n in numbers]`, what is `n * 2`?",
       "options": [
         "The loop that goes through numbers",
         "The expression: what we do with each element",
-        "The condition that filters the elements",
+        "The condition that filters which elements go in",
         "The name of the new list"
       ],
       "answer": 1
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "What do the square brackets around a list comprehension do?",
       "options": [
-        "They pick one element by its index",
-        "They make the loop run twice",
-        "They tell Python to put the results in a new list",
-        "They change the original list"
+        "They pick one element of the list by its index",
+        "They make the loop run twice over the list",
+        "They put the results in a new list",
+        "They change the original list instead of a copy"
       ],
       "answer": 2
     },
@@ -41,13 +41,13 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "Which loop builds the same list as `squares = [n * n for n in nums]`?",
       "options": [
         "squares = []\nfor n in nums:\n    squares.append(n * n)",
         "squares = []\nfor n in nums:\n    squares.append(n)",
         "squares = []\nfor n in nums:\n    print(n * n)",
-        "squares = []\nfor n in nums:\n    squares = n * n"
+        "squares = []\nfor n in nums:\n    squares = squares + n * n"
       ],
       "answer": 0
     },
@@ -86,10 +86,10 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "In `[p * 0.9 for p in prices if p > 20]`, which prices get the 10% discount?",
       "options": [
-        "Only those above 20: the if picks the elements first, then the expression changes them",
+        "Only those above 20",
         "All of them: the if only decides the order",
         "Only those of 20 or less",
         "Only the first price above 20"
@@ -97,10 +97,10 @@
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "When is a regular for loop a better choice than a list comprehension?",
       "options": [
-        "Never: a comprehension can do everything a loop does, just as clearly",
+        "Never: a comprehension can do anything a loop can do, and just as clearly",
         "When the logic gets complicated, with nested ifs or several lines of work",
         "When the list has more than 10 elements",
         "When the new list holds text, not numbers"
@@ -120,24 +120,24 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "In the Data Filter mission, why is 75 in `passing` but not in `high`?",
       "options": [
-        "passing keeps 50 or more and high keeps only above 80, and 75 is between them",
-        "high skips the first reading",
-        "passing is built before high",
-        "75 is changed by doubled"
+        "75 is passing but not above 80",
+        "high skips the first reading of the list",
+        "passing is built before high, so it gets 75 first",
+        "75 is changed by doubled, so high doesn't see it"
       ],
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "In the Data Filter mission, how many elements does `doubled` have?",
       "options": [
         "3, only the high ones",
         "6, one for each reading: without an if, every element goes in",
         "4, only the passing ones",
-        "12, twice as many as readings"
+        "12, twice as many as there are readings, since each one is doubled"
       ],
       "answer": 1
     },
@@ -222,10 +222,10 @@
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Where does the `if` go in a list comprehension that filters?",
       "options": [
-        "At the start, before the expression",
+        "At the start, before the expression and the for",
         "Outside the brackets",
         "Between for and in",
         "At the end, after the for ... in ... part"
@@ -251,11 +251,11 @@
       "answer": 1
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "A list comprehension with an if goes through a list of 8 elements. How many elements can the new list have?",
       "options": [
         "Always 8",
-        "Always fewer than 8",
+        "Always fewer than 8, since the if always drops at least one of them",
         "Any number from 0 to 8, depending on how many pass the condition",
         "Always at least 1"
       ],

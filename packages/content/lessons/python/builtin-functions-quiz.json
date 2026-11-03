@@ -108,23 +108,23 @@
       "answer": 1
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "When does `all(s >= 50 for s in scores)` give True?",
       "options": [
         "When at least one score is 50 or more",
         "When the scores add up to 50 or more",
         "When every score is 50 or more",
-        "When the first score is 50 or more"
+        "When the first score in the list is 50 or more"
       ],
       "answer": 2
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "When does `any(s < 50 for s in scores)` give True?",
       "options": [
-        "Only when every score is below 50",
+        "Only when every single score is below 50",
         "When at least one score is below 50",
-        "When the list has at least one score",
+        "When the list has at least one score in it",
         "Only when exactly one score is below 50"
       ],
       "answer": 1
@@ -156,13 +156,13 @@
       "answer": 3
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "In `round(x, 1)`, what does the 1 say?",
       "options": [
         "Round up, never down",
         "How many decimal places to keep",
         "How many times to round",
-        "Which digit to drop"
+        "Which digit to drop from the end"
       ],
       "answer": 1
     },
@@ -173,11 +173,11 @@
       "answer": 2
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "In the mission, why does `All passed:` print False?",
       "options": [
         "Boris has 100, more than 50",
-        "The average is below 80",
+        "The average of the scores is below 80",
         "all() is True only when every score is 100",
         "Cara has 47, below 50"
       ],

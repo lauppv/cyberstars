@@ -1,11 +1,11 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "În `for i in nume:`, ce este i la fiecare trecere?",
       "options": [
         "Un element din nume, de fiecare dată următorul",
-        "Poziția unui element, 0, 1, 2 și tot așa",
+        "Poziția unui element, 0, 1, 2 și tot așa, pe rând",
         "Toată lista nume",
         "Câte elemente are nume"
       ],
@@ -31,35 +31,35 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "În `for i in range(len(nume)):`, ce este i?",
       "options": [
         "Un index, o poziție din listă",
-        "Un nume din listă",
-        "Lungimea listei",
-        "Lista însăși"
+        "Un nume din listă, de fiecare dată următorul",
+        "Lungimea listei, aceeași la fiecare trecere",
+        "Toată lista, dată din nou la fiecare trecere"
       ],
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "De ce afișează lecția `i + 1` lângă fiecare erou?",
       "options": [
-        "Pentru că range() pornește de la 1",
-        "Ca bucla să sară peste primul erou",
-        "În cod numărăm de la 0, dar oamenii numără de la 1",
-        "Pentru că i + 1 e numele eroului următor"
+        "Pentru că range() pornește de la 1, nu de la 0",
+        "Ca bucla să sară peste primul erou din listă",
+        "În cod numărăm de la 0, oamenii de la 1",
+        "Pentru că i + 1 e numele eroului următor, afișat lângă acesta"
       ],
       "answer": 2
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Când ai nevoie de `for i in range(len(nume)):` și nu de `for n in nume:`?",
       "options": [
         "Când ai nevoie și de poziția fiecărui element",
-        "Mereu, al doilea nu merge pe liste",
-        "Când lista ține numere",
-        "Când lista e goală"
+        "Mereu: al doilea nu merge deloc pe liste de nume",
+        "Când lista ține numere, nu nume sau alte texte",
+        "Când lista e goală, deci nu are prin ce să treacă"
       ],
       "answer": 0
     },
@@ -71,23 +71,23 @@
       "answer": 1
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nfor i in range(len(nume)):\n    print(nume[i + 1])",
       "options": [
         "Afișează Lance, apoi Cortez, apoi se oprește cu o eroare",
         "Afișează Tommy, Lance și Cortez",
         "Afișează Lance și Cortez, fără eroare",
-        "Se oprește cu o eroare înainte să afișeze ceva"
+        "Se oprește cu o eroare la prima trecere, înainte să afișeze ceva"
       ],
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "La suma din lecție, de ce e scris `total = 0` înainte de buclă?",
       "options": [
         "Ca bucla să ruleze de 0 ori",
-        "Ca total să revină la 0 la fiecare preț",
+        "Ca total să revină la 0 de fiecare dată când bucla ajunge la un preț nou",
         "Pentru că orice listă începe cu 0",
         "Ca totalul să pornească de la 0 și fiecare preț să se adune la el"
       ],
@@ -210,13 +210,13 @@
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Ce linie parcurge pozițiile din nume, de la prima la ultima?",
       "options": [
         "for i in nume:",
         "for i in range(len(nume)):",
         "for i in range(nume):",
-        "for i in len(nume):"
+        "for i in range(1, len(nume)):"
       ],
       "answer": 1
     },
@@ -244,24 +244,24 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "Lecția spune că și o buclă while ar putea parcurge o listă. De ce alege for?",
       "options": [
         "O buclă while nu poate citi o listă",
         "O buclă for ne dă singură fiecare element, fără un contor de ținut",
         "O buclă for e singura buclă cu o condiție",
-        "O buclă while ar sări peste primul element"
+        "O buclă while ar sări peste primul element, pentru că verifică înainte să ruleze"
       ],
       "answer": 1
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Contează dacă scriem `for i in nume:` sau `for n in nume:`?",
       "options": [
-        "Da, doar i merge într-o buclă for",
-        "Da, n dă pozițiile, iar i numele",
-        "Nu, numele îl alegem noi: în ambele cazuri ține fiecare element",
-        "Da, n merge doar pe liste de numere"
+        "Da, doar i poate fi folosit ca variabilă într-un for",
+        "Da, n dă pozițiile din listă, iar i dă elementele",
+        "Nu: numele îl alegem noi, ține fiecare element",
+        "Da, n merge doar pe listele care țin numere întregi"
       ],
       "answer": 2
     },

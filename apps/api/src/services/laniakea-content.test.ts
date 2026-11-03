@@ -48,6 +48,10 @@ const ERROR_FROM: Record<string, string> = {
   ValueError: 'try-except',
   ZeroDivisionError: 'try-except',
 };
+// Of a planet's hand-written questions, how many may have the right option as
+// the longest of the four, and as the shortest: about what chance gives, so
+// neither picking the longest nor ruling it out helps (CYB-105)
+const BY_LENGTH = { min: 3, max: 7 };
 
 describe('Laniakea questions', () => {
   const slugs = quizSlugs();
@@ -64,6 +68,26 @@ describe('Laniakea questions', () => {
     expect(pairProblems(en, ro)).toEqual([]);
     const notAscii = ro.questions.filter((q) => q.code !== null && /[^\x20-\x7e\n]/.test(q.code));
     expect(notAscii.map((q) => q.id)).toEqual([]);
+  });
+
+  it.each(slugs)("%s doesn't give its right options away by their length", (slug) => {
+    const off = (['en', 'ro'] as const).flatMap((lang) => {
+      const hand = (read(quizFiles(slug, lang).quiz) as { questions: QuizQuestionSpec[] })
+        .questions;
+      let longest = 0;
+      let shortest = 0;
+      for (const q of hand) {
+        const right = q.options[q.answer].length;
+        const others = q.options.filter((_, i) => i !== q.answer).map((o) => o.length);
+        if (right > Math.max(...others)) longest++;
+        if (right < Math.min(...others)) shortest++;
+      }
+      const outside = (n: number) => n < BY_LENGTH.min || n > BY_LENGTH.max;
+      return outside(longest) || outside(shortest)
+        ? [`${lang}: longest in ${longest}, shortest in ${shortest} of ${hand.length}`]
+        : [];
+    });
+    expect(off).toEqual([]);
   });
 
   it.each(slugs)('%s has the made questions its templates make', (slug) => {

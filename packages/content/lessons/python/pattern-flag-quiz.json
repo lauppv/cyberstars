@@ -1,12 +1,12 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What is a flag in the flag pattern?",
       "options": [
         "A counter that goes up by 1 each time something matches",
-        "A boolean variable that starts True or False and flips when a condition is met",
-        "A list that collects every match",
+        "A boolean that flips when a condition is met",
+        "A list that collects every match the loop finds",
         "A string that holds the last value the loop saw"
       ],
       "answer": 1
@@ -24,24 +24,24 @@
       "answer": 3
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Why does `all_even` start as True in the lesson?",
       "options": [
         "We start optimistic: it stays True unless one number proves it wrong",
-        "Python needs every flag to start as True",
+        "Python needs every flag to start as True, otherwise the loop won't run",
         "Because the list's first number is even",
         "So the loop runs one more time"
       ],
       "answer": 0
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "Why does `found` start as False when we search a list for a name?",
       "options": [
-        "A flag can only start as False",
-        "So the loop skips the first name",
-        "We start pessimistic: only finding the name turns it True",
-        "Because the name is never in the list"
+        "A flag can only start as False, never True",
+        "So the loop skips the first name of the list",
+        "Only finding the name turns it True",
+        "Because the name is never in the list at first"
       ],
       "answer": 2
     },
@@ -53,10 +53,10 @@
       "answer": 1
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Why does a flag loop usually have no `else` that sets the flag back?",
       "options": [
-        "An else after an if isn't allowed inside a loop",
+        "An else after an if isn't allowed inside a loop's body, only outside of it",
         "The flag would turn into a number",
         "The loop would never end",
         "A later item that doesn't match would undo what an earlier one found"
@@ -76,13 +76,13 @@
       "answer": 0
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "What does `break` add to a search with a flag?",
       "options": [
-        "It sets the flag to True by itself",
+        "It sets the flag to True by itself, without =",
         "It starts the loop again from the first item",
-        "It stops the loop once the target is found, so the rest isn't checked",
-        "It sets the flag back to False"
+        "It stops the loop once the target is found",
+        "It sets the flag back to False when it runs"
       ],
       "answer": 2
     },
@@ -111,13 +111,13 @@
       "answer": 3
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "In the mission, why isn't `long_enough` a flag flipped inside the loop?",
       "options": [
         "A loop can't look at a string's characters",
         "Every flag's name has to start with has_",
         "`len(code) >= 6` already gives True or False, with no loop needed",
-        "Because 6 is a digit, and digits are checked in the loop"
+        "Because 6 is a digit, and digits are already checked inside the loop"
       ],
       "answer": 2
     },
@@ -129,13 +129,13 @@
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "The mission's loop checks `char.isupper()` and then `elif char.isdigit()`. Can that elif miss a digit?",
       "options": [
         "No: a character is never both an uppercase letter and a digit",
         "Yes: an uppercase digit sets only has_upper",
         "Yes: the last character is never checked by elif",
-        "No, because elif stops the loop at the first digit"
+        "No, because elif stops the loop as soon as it finds the first digit"
       ],
       "answer": 0
     },

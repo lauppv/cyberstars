@@ -1,12 +1,12 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce este tehnica celor doi pointeri?",
       "options": [
         "Păstrarea a două copii ale listei",
         "Parcurgerea listei de două ori",
-        "Compararea fiecărui element cu toate celelalte",
+        "Compararea fiecărui element din listă cu toate celelalte, pereche cu pereche",
         "Parcurgerea datelor cu două variabile, adesea câte una de la fiecare capăt"
       ],
       "answer": 3
@@ -23,13 +23,13 @@
       "answer": 0
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Când se oprește `while stanga < dreapta` în verificarea de palindrom?",
       "options": [
-        "Când `stanga` ajunge la ultimul index",
-        "După o comparație",
-        "Când pointerii se întâlnesc sau se încrucișează la mijloc",
-        "Niciodată, are nevoie de break"
+        "Când `stanga` ajunge la ultimul index al cuvântului",
+        "După prima comparație, oricare ar fi rezultatul ei",
+        "Când pointerii se întâlnesc sau se încrucișează",
+        "Niciodată: are nevoie de un break în interior ca să se oprească"
       ],
       "answer": 2
     },
@@ -48,21 +48,21 @@
       "answer": 3
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "La suma a două numere, suma e prea mică. Ce pointer se mută și de ce?",
       "options": [
         "`stanga` se mută la dreapta, spre un număr mai mare",
-        "`dreapta` se mută la stânga, spre un număr mai mic",
+        "`dreapta` se mută la stânga, spre un număr mai mic decât el",
         "Amândoi se mută spre mijloc",
         "Niciunul, căutarea se oprește"
       ],
       "answer": 0
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "La suma a două numere, suma e prea mare. Ce pointer se mută?",
       "options": [
-        "`stanga` se mută la dreapta, spre un număr mai mare",
+        "`stanga` se mută la dreapta, spre un număr mai mare decât el",
         "`stanga` se întoarce la 0",
         "`dreapta` se mută la stânga, spre un număr mai mic",
         "Amândoi se mută un pas la dreapta"
@@ -129,24 +129,24 @@
       "answer": 3
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "În `elimina_duplicatele`, de ce poate fi comparat fiecare element doar cu cel dinaintea lui?",
       "options": [
         "Lista e sortată, deci valorile egale stau una lângă alta",
         "Pentru că primul element e mereu unic",
-        "Compararea cu toate celelalte ar da un răspuns greșit",
+        "Compararea cu toate celelalte ar da aici un răspuns greșit",
         "Pentru că `range(1, ...)` sare peste duplicate"
       ],
       "answer": 0
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "De ce pornește `elimina_duplicatele` cu `rezultat` ca `[numere[0]]`?",
       "options": [
-        "Ca primul element să fie scos",
-        "Pentru că `rezultat` nu poate porni gol",
-        "Primul element nu are nimic înainte, deci e mereu păstrat",
-        "Ca să marcheze de unde pornește bucla"
+        "Ca primul element să fie scos din rezultatul final",
+        "Pentru că `rezultat` nu poate porni ca listă goală",
+        "Nu are nimic înainte, deci e mereu păstrat",
+        "Ca să marcheze indexul de la care pornește bucla"
       ],
       "answer": 2
     },
@@ -193,10 +193,10 @@
       "answer": 2
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "De ce e condiția buclei `stanga < dreapta` și nu `stanga <= dreapta` la suma a două numere?",
       "options": [
-        "Cu `<=` bucla nu pornește deloc",
+        "Cu `<=` bucla n-ar porni deloc, nici măcar pentru o trecere",
         "Cu `<=` un număr ar putea fi împerecheat cu el însuși",
         "`<=` nu merge cu numere",
         "Nu e nicio diferență"
@@ -231,10 +231,10 @@
       "answer": 1
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "Ce dă înapoi suma a două numere când găsește o pereche?",
       "options": [
-        "O listă cu toate perechile",
+        "O listă cu toate perechile potrivite",
         "Cei doi indecși",
         "True",
         "Un tuplu cu cele două numere"
@@ -242,13 +242,13 @@
       "answer": 3
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "Prin ce se deosebesc doi pointeri pe o listă de o buclă imbricată peste ea?",
       "options": [
-        "Doi pointeri se mută puțin la fiecare pas și nu verifică niciodată o pereche de două ori",
+        "Doi pointeri se mută puțin la fiecare pas și nu verifică o pereche de două ori",
         "Doi pointeri au nevoie de două liste",
         "O buclă imbricată nu poate folosi `while`",
-        "Doi pointeri merg doar pe texte"
+        "Doi pointeri merg doar pe texte, pe când o buclă imbricată merge doar pe liste de numere"
       ],
       "answer": 0
     },
@@ -267,13 +267,13 @@
       "answer": 1
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "De ce pornește `range(1, len(numere))` din `elimina_duplicatele` de la 1?",
       "options": [
-        "Indexul 0 e mereu un duplicat",
-        "Listele din Python încep de la 1",
-        "Ca să sară peste ultimul element",
-        "Indexul 0 nu are niciun element înainte cu care să fie comparat"
+        "Indexul 0 e mereu un duplicat al următorului",
+        "Pentru că listele din Python încep de la 1",
+        "Ca să sară peste ultimul element din listă",
+        "Indexul 0 nu are nimic înainte"
       ],
       "answer": 3
     },

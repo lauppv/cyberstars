@@ -12,33 +12,33 @@
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "În misiune, de ce sunt puse numele din echipa B într-un set înainte să fie verificată echipa A?",
       "options": [
         "Ca numele să iasă sortate",
         "Ca setul să țină și scorurile",
-        "Pentru că o buclă for nu poate parcurge o listă de tuple",
-        "Ca `in` să verifice repede un nume, cu fiecare nume păstrat o singură dată"
+        "Pentru că o buclă for nu poate parcurge o listă de tuple, doar un set",
+        "Ca `in` să verifice repede un nume, păstrat o singură dată"
       ],
       "answer": 3
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "În misiune, de ce parcurge programul echipa A ca să afișeze numele din ambele echipe, în loc să afișeze setul?",
       "options": [
         "Un set nu poate fi afișat",
-        "Echipa A își păstrează ordinea, pe când ordinea unui set se poate schimba",
+        "Echipa A își ține ordinea, pe când a unui set se poate schimba",
         "Setul ține scorurile, nu numele",
-        "print() arată doar primul element al unui set"
+        "print() arată doar primul element al unui set, nu și pe celelalte"
       ],
       "answer": 1
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "Ce se întâmplă la fiecare trecere prin `for nume, scor in echipa_a:`?",
       "options": [
         "nume primește tot tuple-ul, iar scor rămâne gol",
-        "Bucla rulează de două ori, o dată pentru nume și o dată pentru scoruri",
+        "Bucla rulează de două ori prin echipa_a: o dată pentru nume, apoi pentru scoruri",
         "Tuple-ul e despachetat: prima lui valoare ajunge în nume, a doua în scor",
         "Se oprește cu o eroare, pentru că o buclă for primește o singură variabilă"
       ],
@@ -95,10 +95,10 @@
       "answer": 3
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Un `break` rulează în bucla interioară a două bucle imbricate. Ce oprește?",
       "options": [
-        "Ambele bucle",
+        "Ambele bucle: și pe cea interioară, și pe cea exterioară, iar programul merge mai departe",
         "Doar bucla interioară, iar cea exterioară trece la următoarea valoare",
         "Doar bucla exterioară",
         "Tot programul"
@@ -113,13 +113,13 @@
       "answer": 0
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Care e diferența dintre o listă și un tuple?",
       "options": [
-        "Un tuple nu mai poate fi schimbat după ce e creat, o listă da",
-        "Un tuple poate ține doar numere",
-        "O listă nu poate fi parcursă cu o buclă",
-        "Un tuple păstrează fiecare valoare o singură dată"
+        "Un tuple nu poate fi schimbat, o listă da",
+        "Un tuple poate ține doar numere, o listă orice",
+        "O listă nu poate fi parcursă cu o buclă, un tuple da",
+        "Un tuple păstrează fiecare valoare o singură dată, ca un set"
       ],
       "answer": 0
     },
@@ -172,12 +172,12 @@
       "answer": 2
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "În misiune, de ce e afișat „Lance si Quinn au amandoi scorul 72” înainte de „Cortez si Tommy au amandoi scorul 91”?",
       "options": [
         "Pentru că 72 e mai mic decât 91",
         "Pentru că Quinn vine înaintea lui Tommy în echipa B",
-        "Pentru că perechile sunt afișate în ordine alfabetică",
+        "Pentru că perechile sunt afișate în ordinea alfabetică a numelor din echipe",
         "Pentru că Lance vine înaintea lui Cortez în echipa A, bucla exterioară"
       ],
       "answer": 3
@@ -190,13 +190,13 @@
       "answer": 0
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "De ce verificăm cu un set, nu cu o listă, dacă un nume a mai fost văzut?",
       "options": [
         "Un set poate ține mai multe nume",
-        "`in` e mult mai rapid pe un set, iar un set păstrează fiecare nume o singură dată",
+        "`in` e mult mai rapid pe un set, care ține fiecare nume o dată",
         "Doar un set poate fi verificat cu `in`",
-        "O listă își uită elementele la sfârșitul unei bucle"
+        "O listă își uită elementele la sfârșitul unei bucle, deci nu ține minte numele"
       ],
       "answer": 1
     },

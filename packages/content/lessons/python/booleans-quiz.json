@@ -42,10 +42,10 @@
       "answer": 1
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "What is a condition like `x == 5` really?",
       "options": [
-        "A number",
+        "A number: 1 when it's true, 0 when it's false",
         "A piece of text",
         "A line that puts 5 in x",
         "A boolean: it is True or False"
@@ -132,12 +132,12 @@
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "What does `not` do to a boolean?",
       "options": [
         "It flips it: True becomes False and False becomes True",
         "It makes it False, whatever it was",
-        "It deletes the variable",
+        "It flips it only when it is False, and leaves a True as it is",
         "It checks that the variable exists"
       ],
       "answer": 0
@@ -154,9 +154,9 @@
       "answer": 2
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "What do we call a boolean variable that keeps a loop going, like `running`?",
-      "options": ["A counter", "A range", "A comment", "A flag"],
+      "options": ["A counter", "A constant", "A keyword", "A flag"],
       "answer": 3
     },
     {
@@ -235,13 +235,13 @@
       "answer": 3
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "In the Command Console mission, why does `powered_on` start as True?",
       "options": [
         "So the while loop runs and asks for the first command",
         "So the program prints True first",
-        "Every variable has to start as True",
-        "So shutdown is typed by itself"
+        "Because every variable in a program has to start as True",
+        "So the loop stops right after the first command"
       ],
       "answer": 0
     },

@@ -12,10 +12,10 @@
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Când verifică o buclă while condiția?",
       "options": [
-        "O singură dată, înainte de prima trecere",
+        "O singură dată, înainte de prima trecere a buclei",
         "Înainte de fiecare trecere, și de prima",
         "După fiecare trecere, deci liniile ei rulează măcar o dată",
         "Doar când se schimbă variabila din condiție"
@@ -30,12 +30,12 @@
       "answer": 2
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "De ce nu afișează `while i < 10:` și 10, când i crește cu 1 de la 0?",
       "options": [
-        "Python sare mereu peste ultimul număr dintr-o buclă",
-        "10 se afișează și el, dar după buclă",
-        "Bucla se oprește cu o trecere mai devreme, ca să fie mai rapidă",
+        "Python sare mereu peste ultimul număr la care ajunge o buclă",
+        "10 se afișează și el, dar doar după ce se termină bucla",
+        "Bucla se oprește cu o trecere mai devreme, înainte ca i să ajungă la capăt",
         "Când i e 10, i < 10 e fals, deci bucla se oprește"
       ],
       "answer": 3
@@ -47,48 +47,48 @@
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "i = 0\nwhile i <= 100:\n    print(i)",
       "options": [
         "Afișează toate numerele de la 0 la 100",
-        "Afișează 0 la nesfârșit, pentru că i nu se schimbă niciodată",
+        "Afișează 0 la nesfârșit: i nu se schimbă",
         "Afișează 0 o dată, apoi se oprește",
         "Se oprește cu o eroare: bucla nu are i = i + 1"
       ],
       "answer": 1
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Cum se numește o buclă a cărei condiție nu devine niciodată falsă?",
-      "options": ["O buclă for", "O buclă goală", "O buclă infinită", "O buclă imbricată"],
+      "options": ["O buclă for", "O buclă goală", "O buclă infinită", "O buclă care se repetă"],
       "answer": 2
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Ce linie împiedică `while i < 5:` să ruleze la nesfârșit, când i pornește de la 0?",
       "options": [
         "i = 0, înainte de buclă",
-        "print(i), în interiorul buclei",
+        "print(i), în interiorul blocului buclei",
         "i = i + 1, după buclă",
         "i = i + 1, în interiorul buclei"
       ],
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "De câte ori afișează Salut?",
       "code": "i = 10\nwhile i < 5:\n    print(\"Salut\")\n    i = i + 1",
       "options": [
         "Niciodată: 10 < 5 e fals de la început",
-        "O dată: liniile rulează înainte de verificare",
+        "O dată: liniile rulează o dată înainte de prima verificare",
         "De 5 ori",
         "La nesfârșit"
       ],
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "Când se potrivește mai bine o buclă while decât una for?",
       "options": [
         "Când numărăm de la 1 la 10",
@@ -99,22 +99,22 @@
       "answer": 1
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "De ce scrie lecția `parola = \"\"` înainte de buclă?",
       "options": [
         "Ca parola să fie goală la final",
-        "Pentru că input() are nevoie de o variabilă goală",
+        "Pentru că input() are nevoie de o variabilă goală în care să pună textul",
         "Ca condiția să aibă ce verifica la prima trecere",
         "Ca bucla să ruleze o singură dată"
       ],
       "answer": 2
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "`parola` nu a fost făcută niciodată. Ce se întâmplă când Python ajunge la `while parola != \"steluta\":`?",
       "options": [
-        "Python sare peste buclă",
-        "Bucla rulează la nesfârșit",
+        "Python sare peste buclă și merge mai departe",
+        "Bucla rulează la nesfârșit, pentru că nimic nu se potrivește",
         "parola devine \"\" de la sine",
         "Se oprește cu o eroare"
       ],
@@ -225,12 +225,12 @@
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "În `while i < 10:`, ce este `i < 10`?",
       "options": [
-        "De câte ori rulează bucla",
-        "Valoarea de la care pornește i",
-        "Un comentariu pentru buclă",
+        "De câte ori rulează bucla înainte să se oprească",
+        "Valoarea de la care pornește i, înainte de prima trecere",
+        "Pasul cu care crește i la fiecare trecere",
         "Condiția: bucla rulează cât timp e adevărată"
       ],
       "answer": 3
@@ -267,12 +267,12 @@
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Ca o buclă while să se oprească, ce variabilă trebuie să se schimbe în ea?",
       "options": [
-        "Cea afișată în buclă",
+        "Cea pe care o afișează print() în buclă",
         "Una pe care o verifică condiția ei",
-        "Orice variabilă din program",
+        "Orice variabilă din program, nu contează care",
         "Niciuna: o buclă while se oprește singură după un timp"
       ],
       "answer": 1

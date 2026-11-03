@@ -1,46 +1,46 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce face `import random`?",
       "options": [
-        "Aduce modulul random al lui Python, ca programul să-i poată folosi funcțiile",
-        "Alege un număr aleatoriu",
+        "Încarcă modulul random pentru program",
+        "Alege un număr aleatoriu și îl păstrează pentru mai târziu",
         "Face ca liniile programului să ruleze într-o ordine aleatorie",
-        "Citește un număr tastat de jucător"
+        "Citește un număr tastat de jucător la tastatură"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Ce numere poate da `random.randint(1, 100)`?",
       "options": [
         "Orice număr întreg de la 1 la 99",
         "Orice număr întreg de la 0 la 100",
         "Orice număr întreg de la 1 la 100, inclusiv amândouă",
-        "Orice număr cu zecimale între 1 și 100"
+        "Orice număr cu zecimale între 1 și 100, de exemplu 42.5"
       ],
       "answer": 2
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "De ce reia misiunea o listă fixă de ghiciri în loc să folosească `input()` și `random`?",
       "options": [
         "Pentru că `random` nu poate fi folosit într-o funcție",
-        "Ca programul să afișeze același lucru la fiecare rulare și rezultatul să poată fi verificat",
+        "Ca programul să afișeze la fel la fiecare rulare, iar rezultatul să fie verificabil",
         "Pentru că `input()` merge doar într-o buclă while",
-        "Pentru că o listă e mai rapidă decât un număr aleatoriu"
+        "Pentru că o listă de ghiciri e citită mult mai repede decât e ales un număr aleatoriu"
       ],
       "answer": 1
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "De ce citește jocul o ghicire cu `int(input(...))` și nu doar cu `input(...)`?",
       "options": [
         "`input()` dă înapoi un număr cu zecimale",
         "`int()` îi arată jucătorului mesajul",
         "`int()` alege numărul secret",
-        "`input()` dă înapoi text, iar jocul compară ghicirea cu un număr"
+        "`input()` dă înapoi text"
       ],
       "answer": 3
     },
@@ -80,33 +80,33 @@
       "answer": 1
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "De ce iese versiunea completă cu `return` la o ghicire corectă, și nu cu `break`?",
       "options": [
-        "`break` nu merge într-o buclă for",
+        "`break` nu merge într-o buclă for, ci doar într-o buclă while, ca aceea de dinainte",
         "`return` afișează numărul secret",
         "`return` pornește un joc nou",
-        "`return` iese din toată funcția, deci linia Joc terminat de după buclă nu se mai afișează"
+        "`return` iese din toată funcția, deci linia Joc terminat nu se mai afișează"
       ],
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Ce prinde `except ValueError:` în versiunea completă?",
       "options": [
-        "O ghicire care nu e număr, ca abc, pe care `int()` nu o poate transforma",
-        "O ghicire mai mare de 100",
-        "O ghicire greșită",
+        "O ghicire care nu e număr, ca abc",
+        "O ghicire mai mare de 100, în afara intervalului",
+        "O ghicire greșită, prea mică sau prea mare",
         "Orice eroare de oriunde din program"
       ],
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "De ce folosește versiunea completă `continue` după ce afișează Asta nu e un numar!?",
       "options": [
         "Ca să termine jocul",
-        "Ca să-i dea jucătorului aceeași încercare din nou",
+        "Ca să-i dea jucătorului aceeași încercare din nou, fără s-o numere pe cea greșită",
         "Ca să treacă la încercarea următoare fără să compare o ghicire pe care nu o are",
         "Ca să afișeze mesajul a doua oară"
       ],
@@ -131,11 +131,11 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "De ce pornește `incercari` de la 0 înainte de buclă?",
       "options": [
         "Încă nu s-a făcut nicio ghicire; prima trecere prin buclă o face 1",
-        "Python cere ca orice contor să pornească de la 0",
+        "Python cere ca orice variabilă contor să pornească de la 0, altfel nu poate aduna la ea",
         "Ca prima ghicire să fie încercarea 0",
         "Ca `random` să o poată schimba"
       ],
@@ -160,11 +160,11 @@
       "answer": 1
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "Numărul secret e între 1 și 100. Care primă ghicire îi spune jucătorului cel mai mult?",
       "options": [
         "1: pornește de la cel mai mic",
-        "100: pornește de la cel mai mare",
+        "100: pornește de la cel mai mare număr și apoi coboară câte unul",
         "99: puține numere sunt mai mari",
         "50: oricare ar fi răspunsul, elimină cam jumătate din numere"
       ],
@@ -242,23 +242,23 @@
       "answer": 1
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Ce poate reprezenta `random.randint(1, 6)` într-un joc?",
       "options": [
         "Un număr de la 0 la 5",
         "Numărul 6 de fiecare dată",
-        "Un număr cu zecimale până la 6",
+        "Un număr cu zecimale până la 6, de exemplu 3.5",
         "Aruncarea unui zar: un număr de la 1 la 6"
       ],
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "De ce are nevoie `verifica_ghicirea(numar_secret, ghicire)` ca să dea răspunsul?",
       "options": [
-        "Doar de cei doi parametri ai ei, numărul secret și ghicirea",
-        "Doar de ghicire",
-        "De toată lista de ghiciri",
+        "Doar de cei doi parametri ai ei",
+        "Doar de ghicire, de nimic altceva",
+        "De toată lista de ghiciri, de la început",
         "De numărul de încercări de până acum"
       ],
       "answer": 0
@@ -277,13 +277,13 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "De ce afișează misiunea linia ghicirii înainte să verifice `\"corect\"`?",
       "options": [
-        "Pentru că `print` trebuie să vină primul într-o buclă",
+        "Pentru că `print` trebuie să fie mereu prima linie din corpul unei bucle",
         "Ca bucla să se oprească cu o ghicire mai devreme",
         "Nu contează unde e print-ul",
-        "Ca și ghicirea corectă să-și primească linia, înainte de Spart in N incercari!"
+        "Ca și ghicirea corectă să-și primească linia, înainte de rândul Spart"
       ],
       "answer": 3
     },

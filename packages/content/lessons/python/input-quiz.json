@@ -1,23 +1,23 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does input() do?",
       "options": [
-        "It stops the program and waits for the user to type something and press Enter",
-        "It prints a message on the screen and goes on",
+        "It waits for the user to type something and press Enter",
+        "It prints a message on the screen and goes on with the program",
         "It reads the next line of the program",
-        "It makes up a value for the variable"
+        "It reads the value already stored in a variable and returns it"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "What does input() give back when the user types a number?",
       "options": [
-        "An integer",
+        "An integer, the number 18",
         "A string, text like \"18\"",
-        "A number with decimals",
+        "A number with decimals, like 18.0",
         "True or False"
       ],
       "answer": 1
@@ -57,34 +57,34 @@
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "What is the prompt in `name = input(\"What's your name? \")`?",
       "options": [
-        "The name the user types",
+        "The name the user types, which input() then gives back to name",
         "The message What's your name?, shown before the program waits",
-        "The variable name",
+        "The variable name, where the typed text is stored",
         "What the program prints at the end"
       ],
       "answer": 1
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "When does the user see the prompt?",
       "options": [
-        "After pressing Enter",
-        "Only when there is an error",
+        "After pressing Enter, next to what they typed",
+        "Only when there is an error in what they type",
         "Before the program waits for them to type",
-        "At the end of the program"
+        "At the end of the program, after the last print()"
       ],
       "answer": 2
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "What does int() do with the text \"42\"?",
       "options": [
-        "It puts quotes around it",
-        "It turns it into 42.0",
-        "It prints it",
+        "It keeps it as text but removes the quotes",
+        "It turns it into 42.0, a number with decimals",
+        "It prints it on the screen as 42",
         "It turns it into the integer 42"
       ],
       "answer": 3
@@ -107,13 +107,13 @@
       "answer": 1
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "When does the program go on after an input()?",
       "options": [
-        "Right away",
-        "After a few seconds",
+        "Right away, while the user is typing",
+        "After a few seconds, typed or not",
         "Once the user presses Enter",
-        "After the next print()"
+        "After the next print() in the program"
       ],
       "answer": 2
     },
@@ -136,12 +136,12 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Why use input() instead of writing `name = \"Tommy\"` in the code?",
       "options": [
         "It makes the program faster",
         "So the user picks the value each time the program runs",
-        "Python needs input() for every string",
+        "Python needs input() to make any string that a program uses",
         "So the value never changes"
       ],
       "answer": 1

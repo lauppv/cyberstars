@@ -82,12 +82,9 @@ export async function notify(input: NotifyInput): Promise<number> {
   return delivered;
 }
 
-// An official announcement for every account but the sender's: one insert
-// instead of notify()'s loop, and only those online get it live. It skips the
-// prune, the next notify() brings a user back under the cap. Unlike notify() it
-// throws when the insert fails, so the admin knows it didn't go out
-export async function announce(actorId: number, text: string): Promise<number> {
-  const rows = await repo.createAnnouncement(actorId, text);
+// Rows inserted for everyone at once reach only those online live, the rest
+// see them when the bell loads. A failed push only costs that user the live one
+export async function pushLive(rows: repo.NotificationRow[]): Promise<void> {
   for (const row of rows) {
     if (!isUserOnline(row.userId)) continue;
     try {
@@ -99,9 +96,18 @@ export async function announce(actorId: number, text: string): Promise<number> {
         payload: { unreadCount },
       });
     } catch (err) {
-      console.error(`[notifications] announce push failed for user ${row.userId}:`, err);
+      console.error(`[notifications] live push failed for user ${row.userId}:`, err);
     }
   }
+}
+
+// An official announcement for every account but the sender's: one insert
+// instead of notify()'s loop, and only those online get it live. It skips the
+// prune, the next notify() brings a user back under the cap. Unlike notify() it
+// throws when the insert fails, so the admin knows it didn't go out
+export async function announce(actorId: number, text: string): Promise<number> {
+  const rows = await repo.createAnnouncement(actorId, text);
+  await pushLive(rows);
   return rows.length;
 }
 

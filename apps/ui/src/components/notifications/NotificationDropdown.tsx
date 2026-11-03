@@ -28,6 +28,8 @@ const ICONS: Record<NotificationType, string> = {
   CONNECTION_ACCEPTED: '🌟',
   LANIAKEA_RECAP: '🪐',
   ANNOUNCEMENT: '📣',
+  POLL: '📊',
+  POLL_ANSWER: '📝',
 };
 
 function describe(n: NotificationDTO): string {
@@ -59,13 +61,21 @@ function describe(n: NotificationDTO): string {
       return t('notif.laniakeaRecap', { count });
     case 'ANNOUNCEMENT':
       return t('notif.announcement', { text: n.data?.text ?? '' });
+    case 'POLL':
+      return t('notif.poll', { text: n.data?.text ?? '' });
+    case 'POLL_ANSWER':
+      return t('notif.pollAnswer', { title, text: n.data?.text ?? '' });
   }
 }
 
 // One row of the bell, also drawn as the admin's preview of an announcement
 export function NotificationItem({ n, onClick }: { n: NotificationDTO; onClick: () => void }) {
   const { t } = useTranslation();
-  const announcement = n.type === 'ANNOUNCEMENT';
+  const poll = n.type === 'POLL';
+  // Both open in a window, so the row shows two lines and a button
+  const windowed = n.type === 'ANNOUNCEMENT' || poll;
+  // A written answer can run long too, but its whole text waits on the admin page
+  const clamped = windowed || n.type === 'POLL_ANSWER';
   return (
     <button
       role="menuitem"
@@ -77,16 +87,16 @@ export function NotificationItem({ n, onClick }: { n: NotificationDTO; onClick: 
       <span className="min-w-0 flex-1">
         {/* line-clamp sets its own display, which block would override and undo */}
         <span
-          className={`text-[12.5px] text-[var(--text)] leading-snug ${announcement ? 'line-clamp-2' : 'block'}`}
+          className={`text-[12.5px] text-[var(--text)] leading-snug ${clamped ? 'line-clamp-2' : 'block'}`}
         >
           {describe(n)}
         </span>
         <span className="block text-[11px] text-[var(--text3)] mt-0.5">{timeAgo(n.createdAt)}</span>
       </span>
-      {announcement && (
+      {windowed && (
         // The whole row opens it, this just says there's more than two lines to read
         <span className="flex-shrink-0 self-center px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[11px] font-semibold">
-          {t('notif.view')}
+          {poll ? t('notif.vote') : t('notif.view')}
         </span>
       )}
       {!n.readAt && (
@@ -99,9 +109,11 @@ export function NotificationItem({ n, onClick }: { n: NotificationDTO; onClick: 
 export function NotificationDropdown({
   onClose,
   onAnnouncement,
+  onPoll,
 }: {
   onClose: () => void;
   onAnnouncement: (n: NotificationDTO) => void;
+  onPoll: (n: NotificationDTO) => void;
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -133,7 +145,10 @@ export function NotificationDropdown({
         return '/connections';
       case 'LANIAKEA_RECAP':
         return '/laniakea';
+      case 'POLL_ANSWER':
+        return '/admin';
       case 'ANNOUNCEMENT':
+      case 'POLL':
         return null;
     }
   };
@@ -142,8 +157,9 @@ export function NotificationDropdown({
     markOneRead(n.id);
     onClose();
     const to = targetFor(n);
-    // An announcement has no page of its own, it opens in a window over this one
+    // An announcement or a poll has no page of its own, it opens in a window over this one
     if (to) navigate(to);
+    else if (n.type === 'POLL') onPoll(n);
     else onAnnouncement(n);
   };
 

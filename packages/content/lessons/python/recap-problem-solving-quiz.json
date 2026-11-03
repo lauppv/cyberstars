@@ -1,11 +1,11 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does the mission's `clean_text` keep from a text?",
       "options": [
         "Only the letters, each made lowercase",
-        "Every character, made lowercase",
+        "Every character of the text, made lowercase",
         "Only the letters, as they were written",
         "The letters and the digits, made lowercase"
       ],
@@ -37,12 +37,12 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "In the two pointers palindrome check, why is the loop `while left < right` and not `while left <= right`?",
       "options": [
-        "When both point at the middle letter there is nothing left to compare it with",
+        "Both would point at the middle letter, with nothing to compare",
         "With `<=` the loop would never stop",
-        "With `<=` every word would come out a palindrome",
+        "With `<=` every word would come out a palindrome, even ones like hello",
         "`<=` can't compare two numbers"
       ],
       "answer": 0
@@ -222,10 +222,10 @@
       "answer": 1
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Why can `is_palindrome` return False at the first pair that differs, without checking the rest?",
       "options": [
-        "One mismatched pair is enough to show the word doesn't read the same both ways",
+        "One mismatch already proves it",
         "Because the rest of the pairs always match",
         "Because `return` inside a loop only skips that turn",
         "It can't: it has to check every pair first"
@@ -258,10 +258,10 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "In `are_anagrams`, what would go wrong without `clean_text`, for \"Listen!\" and \"Silent\"?",
       "options": [
-        "It would return False: the ! and the capital L don't match the other word's letters",
+        "It would return False",
         "Nothing: sorted() skips punctuation by itself",
         "It would stop with an error on the !",
         "It would return True for any two words"

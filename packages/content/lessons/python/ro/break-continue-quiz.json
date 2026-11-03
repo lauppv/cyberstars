@@ -1,23 +1,23 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce face break într-o buclă?",
       "options": [
         "Oprește bucla complet, indiferent câte iterații mai rămăseseră",
-        "Sare peste restul iterației curente și trece la următoarea",
+        "Sare peste restul iterației curente și trece direct la următoarea",
         "Oprește tot programul",
         "Pune bucla pe pauză până când utilizatorul apasă Enter"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Ce face continue într-o buclă?",
       "options": [
         "Oprește bucla complet",
         "Sare peste restul iterației curente și trece la următoarea",
-        "Rulează iterația curentă din nou, de la început",
+        "Rulează iterația curentă din nou, de la început, cu aceeași valoare",
         "Merge mai departe cu linia de după buclă"
       ],
       "answer": 1
@@ -75,13 +75,13 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Ce se întâmplă cu un i impar aici?",
       "code": "for i in range(0, 11):\n    if i % 2 != 0:\n        continue\n    print(i)",
       "options": [
-        "continue sare peste print(i)-ul lui, iar bucla merge mai departe cu următorul i",
+        "continue sare peste print(i), iar bucla trece la următorul i",
         "continue oprește bucla la primul număr impar",
-        "Se afișează, pentru că continue înseamnă mergi mai departe",
+        "Se afișează și el, pentru că continue înseamnă doar treci la linia următoare",
         "Python se oprește cu o eroare"
       ],
       "answer": 0
@@ -109,11 +109,11 @@
       "answer": 2
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "În bucla de comenzi din lecție, utilizatorul tastează Stop. Ce se întâmplă?",
       "code": "while True:\n    comanda = input(\"Comanda: \")\n    if comanda == \"stop\":\n        break\n    print(f\"Execut: {comanda}\")\nprint(\"Sistem oprit\")",
       "options": [
-        "Bucla se oprește și se afișează Sistem oprit",
+        "Bucla se oprește și se afișează Sistem oprit, pentru că literele mari nu contează",
         "Python se oprește cu o eroare",
         "Nu se afișează nimic și întreabă din nou",
         "Afișează Execut: Stop și întreabă din nou, pentru că \"Stop\" nu e \"stop\""
@@ -121,13 +121,13 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Când e adevărat `comanda == \"stop\"`?",
       "options": [
-        "Doar când comanda ține exact cuvântul stop",
+        "Doar când comanda e exact stop",
         "Când comanda ține stop, Stop sau STOP",
-        "Când comanda începe cu stop",
-        "Niciodată, == merge doar cu numere"
+        "Când comanda începe cu stop, ca stop acum",
+        "Niciodată: == poate compara doar numere, nu text"
       ],
       "answer": 0
     },
@@ -188,10 +188,10 @@
       "answer": 1
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "După continue într-o buclă for, cât e i la iterația următoare?",
       "options": [
-        "Aceeași valoare, iterația rulează din nou",
+        "Aceeași valoare: iterația rulează din nou de la început",
         "Din nou prima valoare din range()",
         "Următoarea valoare din range(), ca de obicei",
         "Nimic: bucla se termină"
@@ -218,10 +218,10 @@
       "answer": 1
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "O buclă for are un break al cărui if nu e niciodată adevărat. Ce se întâmplă?",
       "options": [
-        "Bucla se oprește la prima iterație",
+        "Bucla se oprește chiar la prima iterație, când ajunge la break",
         "Python se oprește cu o eroare",
         "Bucla rulează până la capăt, ca și cum break n-ar fi acolo",
         "Bucla nu se mai termină"
@@ -246,13 +246,13 @@
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "Un continue e ultima linie din blocul unei bucle. Ce schimbă?",
       "options": [
         "Bucla se oprește după iterația asta",
-        "Nimic: nu mai e nimic de sărit în iterație",
-        "Iterația următoare e sărită",
-        "Iterația rulează de două ori"
+        "Nimic: nu mai e nimic de sărit",
+        "Iterația următoare e sărită în locul ei",
+        "Iterația curentă mai rulează o dată"
       ],
       "answer": 1
     },
@@ -275,12 +275,12 @@
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Unde sare continue?",
       "options": [
         "Înapoi la începutul buclei, pentru iterația următoare",
         "La prima linie de după buclă",
-        "La începutul programului",
+        "La începutul programului, ca să-l ruleze din nou de la prima linie",
         "La linia de imediat sub el"
       ],
       "answer": 0

@@ -8,12 +8,12 @@
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "In a slice `[start:stop:step]`, what does a step of -1 do?",
       "options": [
-        "It drops the last character",
-        "It takes every other character",
-        "It walks the text backwards, from the end to the start",
+        "It drops the last character of the text",
+        "It takes every other character, skipping one",
+        "It walks the text backwards",
         "It starts from index -1 and stops at once"
       ],
       "answer": 2
@@ -43,13 +43,13 @@
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Why is the stop of `range(len(name) - 1, -1, -1)` -1 and not 0?",
       "options": [
-        "Index -1 is the last character",
-        "With 0 the loop would never end",
-        "The stop is left out, so -1 lets index 0 in",
-        "A step of -1 needs a stop of -1"
+        "Index -1 is the last character of the text",
+        "With a stop of 0 the loop would never end",
+        "The stop is left out, so 0 gets in",
+        "A step of -1 always needs a stop of -1 too"
       ],
       "answer": 2
     },
@@ -85,13 +85,13 @@
       "answer": 2
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "What does `sentence.split(\" \")` give back?",
       "options": [
-        "The sentence without spaces",
+        "The sentence without its spaces",
         "A list of the sentence's words",
-        "The number of words",
-        "The sentence reversed"
+        "The number of words in the sentence",
+        "The sentence reversed, word by word"
       ],
       "answer": 1
     },
@@ -103,13 +103,13 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Why does `reversed_str` start as `\"\"` before the loop?",
       "options": [
-        "It is an empty string the loop builds the result onto",
+        "The loop builds the result onto it",
         "Python needs every string to start empty",
         "So the loop skips the first character",
-        "So the result is printed backwards"
+        "So the result is printed backwards at the end"
       ],
       "answer": 0
     },

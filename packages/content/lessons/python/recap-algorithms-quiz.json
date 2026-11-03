@@ -13,32 +13,32 @@
       "answer": 2
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Why does the mission build `(wins, name)` tuples, with the wins first?",
       "options": [
-        "So `[0]` is the number of wins, which the sort compares",
-        "Because tuples must start with a number",
-        "So the names come out in alphabetical order",
-        "Python can't put a text first in a tuple"
+        "So `[0]` is the wins, which the sort compares",
+        "Because a tuple must always start with a number",
+        "So the names come out sorted in alphabetical order",
+        "Because Python can't put a text first inside a tuple"
       ],
       "answer": 0
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "How does the mission sort the leaderboard?",
       "options": [
-        "With Selection Sort, finding the most wins each pass and swapping it to the front",
+        "With Selection Sort, by most wins",
         "With Bubble Sort, swapping neighbours",
-        "With `sorted()`",
-        "It doesn't sort it"
+        "With `sorted()`, from most to fewest",
+        "It doesn't sort it at all, it only prints it"
       ],
       "answer": 0
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "To sort from most wins to fewest, which comparison does the Selection Sort use?",
       "options": [
-        "`<`: it looks for the smallest",
+        "`<`: it looks for the smallest one",
         "`>`: it looks for the biggest",
         "`==`",
         "`!=`"
@@ -83,10 +83,10 @@
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "Why does the leaderboard print `i + 1` and not `i`?",
       "options": [
-        "So the last crew member is left out",
+        "So the last crew member is left out of the list",
         "Because `i` is the number of wins",
         "To skip the champion",
         "Ranks start at 1, but indexes start at 0"
@@ -180,35 +180,35 @@
       "answer": 0
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "Why does the sort compare `leaderboard[j][0]`, the first part of each tuple?",
       "options": [
-        "`[0]` is the crew member's name",
-        "Tuples have only one part",
-        "So the list gets shorter",
-        "`[0]` is the number of wins, the thing we rank by"
+        "`[0]` is the crew member's name, its first part",
+        "Tuples have only one part to compare",
+        "So the list gets shorter with each pass",
+        "`[0]` is the wins, which we rank by"
       ],
       "answer": 3
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "What does `leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]` swap?",
       "options": [
         "Two whole tuples, wins and name together",
         "Only the wins of the two",
         "Only the names",
-        "The first and the last element, always"
+        "The first and the last element of the list, whatever i is"
       ],
       "answer": 0
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Why does the champion search start with `highest = 0`?",
       "options": [
         "Because the champion has 0 wins",
-        "Everyone in the dictionary has at least 1 win, so the first one replaces it",
-        "So the loop runs backwards",
-        "A dictionary can't hold 0"
+        "Everyone has at least 1 win",
+        "So the loop runs backwards, from the end",
+        "A dictionary can't hold 0 as a value"
       ],
       "answer": 1
     },
@@ -251,10 +251,10 @@
       "answer": 1
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "What does `count, name = leaderboard[i]` do?",
       "options": [
-        "It makes a new tuple from count and name",
+        "It makes a new tuple out of count and name, then puts it into the leaderboard",
         "It compares count with name",
         "It changes the tuple in the list",
         "It takes the tuple apart: its wins go into `count` and its name into `name`"

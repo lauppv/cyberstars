@@ -13,31 +13,31 @@
       "answer": 2
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "De ce face misiunea tupluri `(victorii, nume)`, cu victoriile primele?",
       "options": [
-        "Ca `[0]` să fie numărul de victorii, pe care îl compară sortarea",
-        "Pentru că tuplurile trebuie să înceapă cu un număr",
-        "Ca numele să iasă în ordine alfabetică",
-        "Python nu poate pune un text primul într-un tuplu"
+        "Ca `[0]` să fie victoriile, pe care le compară sortarea",
+        "Pentru că orice tuplu trebuie să înceapă mereu cu un număr",
+        "Ca numele să iasă sortate, în ordine alfabetică, de la A la Z",
+        "Pentru că Python nu poate pune un text primul într-un tuplu"
       ],
       "answer": 0
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "Cum sortează misiunea clasamentul?",
       "options": [
-        "Cu Selection Sort, găsind cele mai multe victorii la fiecare trecere și mutându-le în față",
+        "Cu Selection Sort, după victorii",
         "Cu Bubble Sort, interschimbând vecini",
-        "Cu `sorted()`",
-        "Nu îl sortează"
+        "Cu `sorted()`, de la cele mai multe la cele mai puține",
+        "Nu îl sortează deloc, doar îl afișează"
       ],
       "answer": 0
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "Ca să sorteze de la cele mai multe victorii la cele mai puține, ce comparație folosește Selection Sort?",
-      "options": ["`<`: caută cel mai mic", "`>`: caută cel mai mare", "`==`", "`!=`"],
+      "options": ["`<`: caută cel mai mic număr", "`>`: caută cel mai mare", "`==`", "`!=`"],
       "answer": 1
     },
     {
@@ -83,10 +83,10 @@
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "De ce afișează clasamentul `i + 1` și nu `i`?",
       "options": [
-        "Ca ultimul membru al echipajului să fie lăsat afară",
+        "Ca ultimul membru al echipajului să fie lăsat afară din listă",
         "Pentru că `i` e numărul de victorii",
         "Ca să sară peste campion",
         "Locurile încep de la 1, dar indexurile de la 0"
@@ -185,35 +185,35 @@
       "answer": 0
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "De ce compară sortarea `clasament[j][0]`, prima parte a fiecărui tuplu?",
       "options": [
-        "`[0]` e numele membrului echipajului",
-        "Tuplurile au o singură parte",
-        "Ca lista să devină mai scurtă",
-        "`[0]` e numărul de victorii, după care facem clasamentul"
+        "`[0]` e numele membrului echipajului, prima lui parte",
+        "Tuplurile au o singură parte, pe care o compară sortarea",
+        "Ca lista să devină tot mai scurtă la fiecare trecere a buclei",
+        "`[0]` sunt victoriile, după care facem clasamentul"
       ],
       "answer": 3
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "Ce interschimbă `clasament[i], clasament[index_max] = clasament[index_max], clasament[i]`?",
       "options": [
         "Două tupluri întregi, victorii și nume împreună",
         "Doar victoriile celor doi",
         "Doar numele",
-        "Mereu primul și ultimul element"
+        "Mereu primul și ultimul element din listă, oricare ar fi i"
       ],
       "answer": 0
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "De ce pornește căutarea campionului cu `cel_mai_mare = 0`?",
       "options": [
         "Pentru că campionul are 0 victorii",
-        "Oricine e în dicționar are cel puțin o victorie, deci primul îl înlocuiește",
-        "Ca bucla să meargă invers",
-        "Un dicționar nu poate ține 0"
+        "Oricine are cel puțin o victorie",
+        "Ca bucla să meargă invers, de la capăt",
+        "Un dicționar nu poate ține 0 ca valoare"
       ],
       "answer": 1
     },
@@ -256,10 +256,10 @@
       "answer": 1
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "Ce face `contor, nume = clasament[i]`?",
       "options": [
-        "Face un tuplu nou din contor și nume",
+        "Face un tuplu nou din contor și nume, apoi îl pune la finalul clasamentului",
         "Compară contor cu nume",
         "Schimbă tuplul din listă",
         "Desface tuplul: victoriile lui ajung în `contor` și numele în `nume`"

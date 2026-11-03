@@ -25,9 +25,9 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "What does the lesson call the `%` operator?",
-      "options": ["Modulo", "Percent", "Integer division", "Power"],
+      "options": ["Modulo", "Percent", "Integer division", "Exponent"],
       "answer": 0
     },
     {
@@ -82,13 +82,13 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Why does the lesson call `%` extremely useful?",
       "options": [
-        "It tells whether a number divides by another with no remainder, like an even number by 2",
-        "It prints a number as a percent",
+        "It tells if a division leaves a remainder",
+        "It turns a number into a percent, like 0.5 into 50%",
         "It rounds a number to the nearest whole one",
-        "It makes a division faster"
+        "It gives the result of a division without decimals"
       ],
       "answer": 0
     },
@@ -146,11 +146,11 @@
       "answer": 3
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "In `10 - 2 * 3`, what does Python do first?",
       "options": [
         "2 * 3, then 10 - 6",
-        "10 - 2, then 8 * 3",
+        "10 - 2 first, then 8 * 3",
         "Whatever comes first from the left",
         "It stops with an error: it needs parentheses"
       ],
@@ -188,10 +188,10 @@
       "answer": 1
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "Why may the Calculation Panel mission assume that `b` is not 0?",
       "options": [
-        "0 is not a whole number",
+        "0 is not a whole number, so int() can't read it",
         "input() can't read a 0",
         "Dividing by 0 stops the program with an error",
         "Every operation with 0 gives 0"

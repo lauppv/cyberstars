@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "How does Python store a matrix?",
       "options": [
         "As one long list, read three at a time",
         "As a dictionary from row numbers to values",
-        "As a list of lists, each inner list being a row",
-        "As a string with a line per row"
+        "As a list of lists, one per row",
+        "As a string with one line for every row"
       ],
       "answer": 2
     },
@@ -46,13 +46,13 @@
       "answer": 0
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "In the lesson's nested loops, what does the `print()` after the inner loop do?",
       "options": [
         "It prints the whole row again",
         "It prints an empty matrix",
         "It stops the outer loop",
-        "It starts a new line once a row is printed"
+        "It starts a new line"
       ],
       "answer": 3
     },
@@ -122,13 +122,13 @@
       "answer": 3
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "In the Sensor Grid mission, why does each line print `i + 1` and not `i`?",
       "options": [
         "Because the first row is skipped",
         "The rows are numbered from 1 for people, but their indexes start at 0",
         "Because `i` is the row's sum",
-        "So the last row isn't printed twice"
+        "So the last row isn't printed twice, once with `i` and once with `i + 1`"
       ],
       "answer": 1
     },
@@ -172,12 +172,12 @@
       "answer": 2
     },
     {
-      "id": "q22",
+      "id": "q22-v2",
       "text": "In `for row in matrix:` with `for element in row:` inside it, which loop goes through the rows?",
       "options": [
         "The outer one, `for row in matrix:`",
         "The inner one, `for element in row:`",
-        "Both, one row each",
+        "Both of them, each one going through one row",
         "Neither: the rows are read by `print()`"
       ],
       "answer": 0

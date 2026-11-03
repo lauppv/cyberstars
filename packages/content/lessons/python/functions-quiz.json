@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does `def` do?",
       "options": [
-        "It defines a function: a named block of code we can run again and again",
-        "It runs a function right away",
-        "It prints the lines under it once",
-        "It makes a variable called def"
+        "It defines a function we can call again and again",
+        "It runs a function right away, the moment Python reads it",
+        "It prints the lines under it once, as they are written",
+        "It makes a variable called def that holds the lines under it"
       ],
       "answer": 0
     },
@@ -36,10 +36,10 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "In `def my_function(name, age):`, what are `name` and `age`?",
       "options": [
-        "Two variables that have to exist before the function",
+        "Two variables that have to exist in the program before the function",
         "The function's name, in two parts",
         "The function's parameters: they hold the values it is called with",
         "Two texts the function prints as they are"
@@ -53,12 +53,12 @@
       "answer": 0
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Can we name a function's parameters as we like?",
       "options": [
         "No: they have to be name and age",
         "Yes: the function uses those names inside it, whatever they are",
-        "No: they have to match variables outside the function",
+        "No: they have to match the names of variables outside the function",
         "Only with one letter, like n and a"
       ],
       "answer": 1
@@ -71,13 +71,13 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Why does the lesson put the for loop in a function instead of copying it?",
       "options": [
-        "A function runs faster than a for loop",
-        "A for loop can only run inside a function",
-        "We write it once and call it as often as we like, with other values",
-        "So the loop runs only once"
+        "A function runs faster than the same for loop copied out",
+        "A for loop can only run inside a function's block",
+        "We write it once and call it as often as we like",
+        "So the loop runs only once, however often it's copied"
       ],
       "answer": 2
     },
@@ -101,12 +101,12 @@
       "answer": 1
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "What happens when this runs?",
       "code": "def add(a, b):\n    print(a + b)\n\nadd(5)",
       "options": [
         "It prints 5",
-        "It prints 5 + b",
+        "It prints 5 + b, since b has no value yet",
         "It prints nothing",
         "It stops with an error: b gets no value"
       ],
@@ -142,13 +142,13 @@
       "answer": 3
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "In `def my_function(name, age):`, what is `my_function`?",
       "options": [
-        "The function's name, which we use to call it",
-        "Its first parameter",
-        "A text the function prints",
-        "A keyword of Python, like def"
+        "Its name, which we use to call it",
+        "Its first parameter, the first value it gets",
+        "A text the function prints when it is called",
+        "A keyword of Python, like def or print"
       ],
       "answer": 0
     },
@@ -171,11 +171,11 @@
       "answer": 3
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "In the Onboard Calculator mission, why do a and b go through int() but the operator doesn't?",
       "options": [
         "We compute with a and b, while the operator is a sign like + that we compare as text",
-        "int() only works twice in a program",
+        "The operator is turned into a number later, inside the function",
         "The operator is a number already",
         "A function can take only one text"
       ],
@@ -242,9 +242,14 @@
       "answer": 2
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "How many parameters can a function have?",
-      "options": ["Exactly two", "At least one", "At most three", "As many as it needs, even none"],
+      "options": [
+        "Exactly two",
+        "At least one, or it can't be called",
+        "At most three",
+        "As many as it needs, even none"
+      ],
       "answer": 3
     },
     {

@@ -1,12 +1,12 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce este un dicționar?",
       "options": [
-        "Perechi cheie: valoare, în care căutăm o valoare după cheia ei",
-        "O listă ale cărei elemente stau sortate",
-        "O variabilă care ține exact un nume",
+        "Perechi cheie: valoare, căutate după cheie",
+        "O listă ale cărei elemente stau mereu sortate",
+        "O variabilă care poate ține doar un nume odată",
         "O listă de valori pe care le citim după poziție"
       ],
       "answer": 0
@@ -47,11 +47,11 @@
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "agenda îl are deja pe Lance. Ce face `agenda[\"Lance\"] = \"555-1111\"`?",
       "options": [
-        "Adaugă un al doilea Lance, așa că rămâne și numărul vechi",
-        "Înlocuiește numărul lui Lance: o cheie apare o singură dată într-un dicționar",
+        "Adaugă un al doilea Lance, așa că rămâne în dicționar și numărul vechi",
+        "Înlocuiește numărul lui Lance: o cheie apare o singură dată",
         "Se oprește cu o eroare: Lance există deja",
         "Nu face nimic, rămâne numărul vechi"
       ],
@@ -80,24 +80,24 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Ce afișează?",
       "code": "agenda = {\"Cortez\": \"555-1234\"}\nprint(\"555-1234\" in agenda)",
       "options": [
         "False: in se uită la chei, iar 555-1234 e o valoare",
-        "True: 555-1234 e în dicționar",
+        "True: 555-1234 e în dicționar, ca valoare a lui Cortez",
         "Cortez",
         "Se oprește cu KeyError"
       ],
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "Când e un dicționar o alegere mai bună decât o listă?",
       "options": [
-        "Când valorile trebuie să stea sortate",
-        "Când căutăm valorile după un nume, nu după poziția lor",
-        "Când avem doar numere",
+        "Când valorile trebuie să stea mereu sortate",
+        "Când căutăm valorile după un nume",
+        "Când toate valorile pe care le ținem sunt numere",
         "Când valorile nu trebuie să se schimbe niciodată"
       ],
       "answer": 1
@@ -133,11 +133,11 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "agenda = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(agenda[0])",
       "options": [
-        "Afișează 555-1234, primul număr",
+        "Afișează 555-1234, numărul de la prima cheie din dicționar, Cortez",
         "Se oprește cu KeyError: 0 nu e una dintre cheile dicționarului",
         "Afișează Cortez",
         "Nu afișează nimic"
@@ -178,13 +178,13 @@
       "answer": 0
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "În misiune, `echipaj = {\"nume\": nume}`. Care e diferența dintre `\"nume\"` și `nume`?",
       "options": [
         "Niciuna, amândouă sunt același text",
-        "\"nume\" e cheia, un text; nume e variabila care ține valoarea, de exemplu Tommy",
+        "\"nume\" e cheia, un text; nume e o variabilă care ține o valoare",
         "nume e cheia, iar \"nume\" e valoarea",
-        "Ghilimelele fac cheia ascunsă"
+        "Cu ghilimele e numele unei variabile, iar fără ghilimele e un text"
       ],
       "answer": 1
     },
@@ -195,9 +195,9 @@
       "answer": 2
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "Ce se pune între două perechi cheie: valoare?",
-      "options": ["Două puncte", "Punct și virgulă", "Cuvântul și", "O virgulă"],
+      "options": ["Două puncte, ca după o cheie", "Punct și virgulă", "Cuvântul și", "O virgulă"],
       "answer": 3
     },
     {
@@ -273,12 +273,12 @@
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "E `{\"Tommy\": 90, \"Lance\": 90}` un dicționar valid?",
       "options": [
         "Da: cheile trebuie să difere, dar valorile se pot repeta",
         "Nu: două valori nu pot fi la fel",
-        "Da, dar print() arată doar una dintre ele",
+        "Da, dar print() arată doar una dintre ele, pentru că sunt egale",
         "Nu: valorile trebuie să fie text"
       ],
       "answer": 0

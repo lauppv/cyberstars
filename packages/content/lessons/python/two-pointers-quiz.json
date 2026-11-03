@@ -1,12 +1,12 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What is the two pointers technique?",
       "options": [
         "Keeping two copies of the list",
         "Looping over the list twice",
-        "Comparing every element with every other one",
+        "Comparing every element of the list with every other one, pair by pair",
         "Scanning the data with two variables, often one from each end"
       ],
       "answer": 3
@@ -23,13 +23,13 @@
       "answer": 0
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "When does `while left < right` stop in the palindrome check?",
       "options": [
-        "When `left` reaches the last index",
-        "After one comparison",
-        "When the pointers meet or cross in the middle",
-        "Never, it needs a break"
+        "When `left` reaches the last index of the word",
+        "After one comparison, whatever it gives",
+        "When the pointers meet or cross",
+        "Never: it needs a break inside to stop"
       ],
       "answer": 2
     },
@@ -48,21 +48,21 @@
       "answer": 3
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "In two sum, the sum is too small. Which pointer moves, and why?",
       "options": [
         "`left` moves right, to a bigger number",
-        "`right` moves left, to a smaller number",
+        "`right` moves left, to a smaller number than before",
         "Both move towards the middle",
         "Neither, the search stops"
       ],
       "answer": 0
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "In two sum, the sum is too big. Which pointer moves?",
       "options": [
-        "`left` moves right, to a bigger number",
+        "`left` moves right, to a bigger number than before",
         "`left` moves back to 0",
         "`right` moves left, to a smaller number",
         "Both move one step right"
@@ -129,24 +129,24 @@
       "answer": 3
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "In `remove_duplicates`, why can each element be compared only with the one before it?",
       "options": [
         "The list is sorted, so equal values sit next to each other",
         "Because the first element is always unique",
-        "Comparing with all the others would give a wrong answer",
+        "Comparing it with all the others would give a wrong answer here",
         "Because `range(1, ...)` skips the duplicates"
       ],
       "answer": 0
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "Why does `remove_duplicates` start `result` as `[numbers[0]]`?",
       "options": [
-        "So the first element is removed",
-        "Because `result` can't start empty",
-        "The first element has nothing before it, so it is always kept",
-        "To mark where the loop starts"
+        "So the first element is removed from the result",
+        "Because `result` can't start as an empty list",
+        "It has nothing before it, so it's always kept",
+        "To mark the index from which the loop has to start"
       ],
       "answer": 2
     },
@@ -193,10 +193,10 @@
       "answer": 2
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "Why is the loop condition `left < right` and not `left <= right` in two sum?",
       "options": [
-        "With `<=` the loop never starts",
+        "With `<=` the loop would never start, even once",
         "With `<=` a number could be paired with itself",
         "`<=` doesn't work with numbers",
         "There is no difference"
@@ -231,10 +231,10 @@
       "answer": 1
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "What does two sum give back when a pair is found?",
       "options": [
-        "A list of every pair",
+        "A list of every pair that matches",
         "The two indexes",
         "True",
         "A tuple with the two numbers"
@@ -242,13 +242,13 @@
       "answer": 3
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "Which tells two pointers on one list apart from a nested loop over it?",
       "options": [
         "Two pointers move a little each step and never check a pair twice",
         "Two pointers need two lists",
         "A nested loop can't use `while`",
-        "Two pointers only work on strings"
+        "Two pointers only work on strings, while a nested loop works on lists"
       ],
       "answer": 0
     },
@@ -267,13 +267,13 @@
       "answer": 1
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Why does `range(1, len(numbers))` in `remove_duplicates` start at 1?",
       "options": [
-        "Index 0 is always a duplicate",
-        "Python lists start at 1",
-        "To skip the last element",
-        "Index 0 has no element before it to compare with"
+        "Index 0 is always a duplicate of the next",
+        "Because Python lists start at index 1",
+        "To skip the last element of the list",
+        "Index 0 has nothing before it"
       ],
       "answer": 3
     },

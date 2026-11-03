@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does `return a, b` give back?",
       "options": [
         "Only a, the first value",
-        "One tuple that holds a and b",
-        "Only b, the last value",
-        "Two separate lists"
+        "One tuple with a and b",
+        "Only b, the last value written",
+        "Two separate lists, one for each"
       ],
       "answer": 1
     },
@@ -32,10 +32,10 @@
       "answer": 0
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "Is there a difference between `return a, b` and `return (a, b)`?",
       "options": [
-        "Yes: the first gives back two values, the second one tuple",
+        "Yes: the first gives back two separate values, the second gives back one tuple",
         "Yes: the second one stops with an error",
         "No: both give back the same tuple, Python just lets us skip the parentheses",
         "Yes: the first gives back only a"
@@ -66,13 +66,13 @@
       "answer": 3
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "What does `.split(\" \")` give back?",
       "options": [
-        "A list of the parts between the spaces",
+        "A list of the parts between spaces",
         "A tuple of the parts between the spaces",
-        "The same text without its spaces",
-        "How many spaces the text has"
+        "The same text, with its spaces taken out",
+        "How many spaces the text has, as a number"
       ],
       "answer": 0
     },
@@ -118,11 +118,11 @@
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "In the mission, `total, largest, smallest = parse(reading)`. How does each name get its value?",
       "options": [
         "By name: Python finds the value called total in parse",
-        "Python sorts the values from the smallest to the largest first",
+        "Python first sorts the values from the smallest to the largest, then hands them out",
         "By position: the first name takes the first value of the return, and so on",
         "All three names get the whole tuple"
       ],
@@ -162,13 +162,13 @@
       "answer": 0
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "We need the smallest and the largest value of a list. Why one function that returns both?",
       "options": [
-        "Python allows only one function for each list",
+        "Python allows only one function for each list, so both must come from it",
         "Two functions can never take the same list",
         "A program can have only one return",
-        "One call gives both related values, and the work on the list stays in one place"
+        "One call gives both, and the list work stays in one place"
       ],
       "answer": 3
     },
@@ -187,10 +187,10 @@
       "answer": 0
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "How many values can one `return` give back?",
       "options": [
-        "Only one",
+        "Only one: a second value needs a second return",
         "At most two",
         "As many as we write, separated by commas",
         "At most three"
@@ -216,13 +216,13 @@
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "The lesson says Python \"creates a tuple and then unpacks it\". What does that mean?",
       "options": [
-        "Python turns the function into a tuple",
-        "return a, b puts both values in one tuple, and x, y = takes them out into two names",
-        "The values are packed into a list and sorted",
-        "The function runs twice, once for each value"
+        "Python turns the function itself into a tuple of its lines",
+        "return a, b makes one tuple; x, y = splits it",
+        "The values are packed into a list and then sorted",
+        "The function runs twice, once for each value it gives back"
       ],
       "answer": 1
     },

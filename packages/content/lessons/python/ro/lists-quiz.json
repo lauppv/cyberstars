@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce este o listă?",
       "options": [
-        "Mai multe valori ținute într-o singură variabilă",
-        "O variabilă care ține exact o valoare",
-        "Un fel de buclă",
-        "Un fel de comentariu"
+        "Mai multe valori într-o variabilă",
+        "Mai multe variabile create pe o linie",
+        "O buclă care trece prin mai multe valori",
+        "Un text cu valorile despărțite prin virgulă"
       ],
       "answer": 0
     },
@@ -18,9 +18,9 @@
       "answer": 1
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Ce se pune între elementele unei liste?",
-      "options": ["Un punct", "Punct și virgulă", "O virgulă", "Cuvântul și"],
+      "options": ["Un punct", "Punct și virgulă", "O virgulă", "Un spațiu"],
       "answer": 2
     },
     {
@@ -36,25 +36,25 @@
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Ce se întâmplă când rulează?",
       "code": "nume = [\"Tommy\", \"Lance\", \"Cortez\"]\nprint(nume[10])",
       "options": [
-        "Afișează Cortez, ultimul",
-        "Se oprește cu IndexError: nu există element la 10",
-        "Nu afișează nimic",
-        "Afișează 10"
+        "Afișează Cortez, ultimul element",
+        "Se oprește cu un IndexError",
+        "Nu afișează nimic și continuă",
+        "Afișează 10, numărul din paranteze"
       ],
       "answer": 1
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Ce îți spune len() despre o listă?",
       "options": [
-        "Cel mai lung element",
-        "Ultimul index",
-        "Câte elemente are",
-        "Suma numerelor din ea"
+        "Câte litere au elementele ei",
+        "Indexul ultimului ei element",
+        "Câte elemente are lista",
+        "Suma numerelor din listă"
       ],
       "answer": 2
     },
@@ -70,13 +70,13 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "După `nume.append(\"Cortez\")`, ce e nume?",
       "options": [
-        "Aceeași listă, schimbată: Cortez e acum în ea",
-        "Lista veche; append a dat înapoi una nouă",
-        "O listă goală",
-        "Doar \"Cortez\""
+        "Aceeași listă, cu Cortez la sfârșit",
+        "Neschimbată, append dă înapoi o listă nouă",
+        "O listă nouă care are doar \"Cortez\"",
+        "Aceeași listă, cu Cortez la început"
       ],
       "answer": 0
     },
@@ -93,24 +93,19 @@
       "answer": 1
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Care dintre acestea e o listă de numere?",
-      "options": [
-        "[\"42\", \"35\", \"60\"]",
-        "\"42, 35, 60\"",
-        "[42, 35, 60]",
-        "[patruzeci, treizeci]"
-      ],
+      "options": ["[\"42\", \"35\", \"60\"]", "\"42, 35, 60\"", "[42, 35, 60]", "[42 35 60]"],
       "answer": 2
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "Poate o listă să țină True și False?",
       "options": [
-        "Nu, doar text",
-        "Nu, doar numere",
-        "Doar pe unul dintre ele",
-        "Da, o listă poate ține orice fel de valoare"
+        "Nu, o listă ține doar text sau numere",
+        "Da, dar doar dacă sunt între ghilimele",
+        "Nu, True și False merg doar într-un if",
+        "Da, o listă ține orice fel de valoare"
       ],
       "answer": 3
     },
@@ -121,13 +116,13 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "De ce e o listă mai bună decât nume1, nume2, ... nume100?",
       "options": [
-        "Python nu permite cifre în nume",
-        "O singură variabilă le ține pe toate, oricâte ar fi",
-        "Fiecare nume se scrie mai repede",
-        "O listă rulează o singură dată"
+        "Numele de variabile nu pot avea cifre",
+        "O variabilă le ține pe toate, oricâte ar fi",
+        "O listă face programul mult mai rapid",
+        "Într-o listă, numele nu pot fi schimbate"
       ],
       "answer": 1
     },
@@ -160,41 +155,41 @@
       "answer": 0
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "Cum se numește 2-ul din `nume[2]`?",
-      "options": ["Lungimea", "Indexul", "Elementul", "Append-ul"],
+      "options": ["Lungimea", "Indexul", "Elementul", "Parametrul"],
       "answer": 1
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "Prin ce se deosebește .append() pe o listă de .upper() pe un string?",
       "options": [
-        "append dă înapoi o listă nouă și o lasă pe cea veche neatinsă",
-        "Nu e nicio diferență",
-        "append schimbă lista însăși, upper dă înapoi un string nou",
-        "upper schimbă string-ul însuși"
+        "append dă înapoi o listă nouă, upper schimbă string-ul",
+        "Ambele schimbă chiar variabila, nu dau nimic nou",
+        "append schimbă lista, upper dă înapoi un string nou",
+        "Ambele dau înapoi ceva nou și lasă originalul neatins"
       ],
       "answer": 2
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "Poate o listă să amestece numere, text și True?",
       "options": [
-        "Nu, Python se oprește cu o eroare",
-        "Doar când lista e goală",
-        "Da, și trebuie să faci asta mereu",
-        "Da, dar e rar și adesea semn de proiectare încâlcită"
+        "Nu, Python se oprește cu eroare când le amesteci",
+        "Numere și text da, dar True nu poate sta cu ele",
+        "Da, și așa se folosește de obicei o listă",
+        "Da, dar e rar și de obicei un semn de design prost"
       ],
       "answer": 3
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "E len(nume) indexul ultimului element?",
       "options": [
         "Nu, ultimul index e len(nume) - 1",
-        "Da, mereu",
-        "Nu, e len(nume) + 1",
-        "N-au nicio legătură"
+        "Da, ultimul index e len(nume)",
+        "Nu, ultimul index e len(nume) + 1",
+        "Nu au nicio legătură între ele"
       ],
       "answer": 0
     },
@@ -216,13 +211,13 @@
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "Ce se întâmplă cu Lance după `nume[1] = \"Ken\"` în `[\"Tommy\", \"Lance\"]`?",
       "options": [
-        "Se mută la sfârșit",
-        "Se mută la început",
-        "Python se oprește cu o eroare",
-        "Dispare: Ken i-a luat locul"
+        "Se mută un loc mai la dreapta, după Ken",
+        "Rămâne, iar Ken e adăugat la sfârșit",
+        "Python se oprește: indexul 1 e deja ocupat",
+        "Dispare: Ken i-a luat locul la indexul 1"
       ],
       "answer": 3
     },
@@ -240,41 +235,41 @@
       "answer": 1
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "O listă are 3 elemente. Poți citi elementul de la indexul 3?",
       "options": [
-        "Da, e ultimul",
-        "Da, e primul",
-        "Nu, indexurile ei sunt 0, 1 și 2",
-        "Da, e un string gol"
+        "Da, al treilea element e la indexul 3",
+        "Da, o ia de la capăt și dă primul",
+        "Nu, indexurile ei sunt doar 0, 1 și 2",
+        "Da, primești înapoi un string gol"
       ],
       "answer": 2
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "În ce ordine sunt elementele după mai multe append-uri?",
       "options": [
-        "Sortate",
-        "În ordine întâmplătoare",
-        "Ultimul adăugat primul",
-        "În ordinea în care au fost adăugate"
+        "Cel mai nou primul, append pune în față",
+        "În ordinea aleasă de Python, poate varia",
+        "În ordine alfabetică, orice ai adăuga",
+        "În aceeași ordine în care au fost adăugate"
       ],
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Ce dă `len([])`?",
-      "options": ["0", "1", "O eroare", "None"],
+      "options": ["0", "1", "O eroare", "2"],
       "answer": 0
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "Cum arată Python o listă de texte când afișează toată lista?",
       "options": [
-        "Fiecare text pe linia lui",
-        "Cu paranteze și ghilimele, ca ['Ana', 'Ben']",
-        "Doar primul text",
-        "Lipite fără spații, ca AnaBen"
+        "Fiecare pe linia lui: Ana, apoi Ben",
+        "Cu paranteze și ghilimele: ['Ana', 'Ben']",
+        "Cu virgule, fără paranteze: Ana, Ben",
+        "Lipite, fără spații între ele: AnaBen"
       ],
       "answer": 1
     }

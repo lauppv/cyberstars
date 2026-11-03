@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "How is the accumulator pattern different from the counter pattern?",
       "options": [
-        "The accumulator only works with lists",
-        "The counter adds 1 each time, the accumulator builds up a result such as a sum, a string or a list",
-        "The accumulator doesn't need a loop",
-        "They are two names for the same thing"
+        "The accumulator only works with lists, never with numbers",
+        "The counter adds 1; the accumulator builds a result",
+        "The accumulator doesn't need a loop to build its result",
+        "They are two names for the same thing, used the same way"
       ],
       "answer": 1
     },
@@ -25,9 +25,9 @@
       "answer": 0
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "We want to build a sentence word by word. What does the accumulator start as?",
-      "options": ["0", "[]", "\"\" (an empty string)", "1"],
+      "options": ["0", "[]", "\"\"", "1"],
       "answer": 2
     },
     {
@@ -44,9 +44,9 @@
       "answer": 2
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Which value does a list accumulator start from?",
-      "options": ["[] (an empty list)", "0", "\"\"", "[0]"],
+      "options": ["[]", "0", "\"\"", "[0]"],
       "answer": 0
     },
     {
@@ -57,11 +57,11 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Why does a product start at 1 and not at 0?",
       "options": [
         "Because Python can't multiply by 0",
-        "Because 0 times any number is 0, so the product would stay 0 forever",
+        "0 times any number is 0",
         "Because the first number of the list is always 1",
         "There is no reason, 0 works just as well"
       ],
@@ -198,10 +198,10 @@
       "answer": 0
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "In the mission, where does each new character of the code word go in the reversed string?",
       "options": [
-        "At the end, after the ones already there",
+        "At the end, after the characters already there",
         "In the middle",
         "At the front, before the ones already there",
         "It replaces the whole string"

@@ -1,12 +1,12 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "How does linear search look for a value in a list?",
       "options": [
         "It jumps straight to the middle of the list",
-        "It sorts the list first, then looks",
-        "It checks the elements one at a time, from the start to the end",
+        "It sorts the list first, then looks in it",
+        "It checks the elements one by one",
         "It checks only the first and the last element"
       ],
       "answer": 2
@@ -36,9 +36,9 @@
       "answer": 0
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "A list has 1,000,000 elements and the target isn't in it. How many elements does linear search check?",
-      "options": ["About 20", "Half of them", "All 1,000,000", "Only the first one"],
+      "options": ["About 20", "Half of them, on average", "All 1,000,000", "Only the first one"],
       "answer": 2
     },
     {
@@ -70,12 +70,12 @@
       "answer": 1
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Why is `return i` inside the loop, under the `if`?",
       "options": [
         "So the loop runs one more time",
         "So the function stops at the first match and gives back its index",
-        "So every index of the list is returned",
+        "So every index of the list where the target appears is returned at once",
         "Python doesn't allow return after a loop"
       ],
       "answer": 1
@@ -113,10 +113,10 @@
       "answer": 3
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "In the search for a score above 90, what does `break` do?",
       "options": [
-        "It skips the score that matches and goes on",
+        "It skips the score that matches and goes on with the next one",
         "It stops the loop at the first score that matches",
         "It ends the whole program",
         "It starts the loop again from index 0"
@@ -162,11 +162,11 @@
       "answer": 3
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "What does `items[i] == target` check?",
       "options": [
-        "Whether i is equal to the target",
-        "Whether the element at position i is the one we look for",
+        "Whether i itself is equal to the target",
+        "Whether the element at i is the target",
         "Whether the list contains the target anywhere",
         "Whether the list is as long as the target"
       ],
@@ -180,11 +180,11 @@
       "answer": 2
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "What is the difference between `return i` and `return items[i]` in a search?",
       "options": [
         "There is none, both give the position",
-        "`return items[i]` stops the loop, `return i` doesn't",
+        "`return items[i]` stops the loop while `return i` lets it go on to the end",
         "`return i` gives the position, `return items[i]` gives the element itself",
         "`return i` works only on lists of numbers"
       ],
@@ -209,7 +209,7 @@
       "answer": 0
     },
     {
-      "id": "q26",
+      "id": "q26-v2",
       "text": "The list gets twice as long and the target isn't in it. What happens to the number of checks?",
       "options": ["It doubles too", "It stays the same", "It goes up by one", "It halves"],
       "answer": 0

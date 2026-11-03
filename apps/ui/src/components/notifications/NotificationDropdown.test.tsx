@@ -18,6 +18,7 @@ const ctx = {
   markOneRead: vi.fn(),
 };
 const onAnnouncement = vi.fn();
+const onPoll = vi.fn();
 vi.mock('../../context/NotificationContext', () => ({ useNotifications: () => ctx }));
 
 import { NotificationDropdown } from './NotificationDropdown';
@@ -49,7 +50,9 @@ function renderWith(items: NotificationDTO[], extra: Partial<typeof ctx> = {}) {
     markOneRead: vi.fn(),
     ...extra,
   });
-  return render(<NotificationDropdown onClose={vi.fn()} onAnnouncement={onAnnouncement} />);
+  return render(
+    <NotificationDropdown onClose={vi.fn()} onAnnouncement={onAnnouncement} onPoll={onPoll} />,
+  );
 }
 
 beforeEach(() => {
@@ -133,6 +136,30 @@ describe('NotificationDropdown routing', () => {
     expect(ctx.markOneRead).toHaveBeenCalledWith(4);
     expect(mockNavigate).not.toHaveBeenCalled();
   });
+
+  it('opens a poll in its own window', () => {
+    const item = n({ id: 6, type: 'POLL', entityId: 3, data: { text: 'Next course?' } });
+    renderWith([item]);
+    fireEvent.click(screen.getByRole('menuitem'));
+    expect(onPoll).toHaveBeenCalledWith(item);
+    expect(onAnnouncement).not.toHaveBeenCalled();
+    expect(ctx.markOneRead).toHaveBeenCalledWith(6);
+    expect(mockNavigate).not.toHaveBeenCalled();
+  });
+
+  it("takes an answer written under a poll's Other to the admin page, where the poll lists it", () => {
+    renderWith([
+      n({
+        type: 'POLL_ANSWER',
+        entityId: 3,
+        actor: null,
+        data: { title: 'Next?', text: 'More C' },
+      }),
+    ]);
+    fireEvent.click(screen.getByRole('menuitem'));
+    expect(mockNavigate).toHaveBeenCalledWith('/admin');
+    expect(onPoll).not.toHaveBeenCalled();
+  });
 });
 
 describe('NotificationDropdown announcement', () => {
@@ -143,6 +170,27 @@ describe('NotificationDropdown announcement', () => {
     // block comes later in the CSS and would undo the clamp's display
     expect(text).not.toHaveClass('block');
     expect(screen.getByText('View')).toBeInTheDocument();
+  });
+
+  it('shows a poll the same way, with a Vote button', () => {
+    renderWith([n({ type: 'POLL', entityId: 3, data: { text: 'Next course?' } })]);
+    expect(screen.getByText('Poll: Next course?')).toHaveClass('line-clamp-2');
+    expect(screen.getByText('Vote')).toBeInTheDocument();
+    expect(screen.queryByText('View')).toBeNull();
+  });
+
+  it('cuts a written answer to two lines too, with no button', () => {
+    renderWith([
+      n({
+        type: 'POLL_ANSWER',
+        entityId: 3,
+        actor: null,
+        data: { title: 'Next?', text: 'More C' },
+      }),
+    ]);
+    expect(screen.getByText('Answer to "Next?": More C')).toHaveClass('line-clamp-2');
+    expect(screen.queryByText('View')).toBeNull();
+    expect(screen.queryByText('Vote')).toBeNull();
   });
 
   it('leaves the View button off every other row', () => {

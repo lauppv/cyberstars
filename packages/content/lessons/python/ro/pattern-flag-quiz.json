@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce este un steag în tiparul steag?",
       "options": [
         "Un contor care crește cu 1 de fiecare dată când ceva se potrivește",
-        "O variabilă booleană care pornește True sau False și se schimbă când o condiție e îndeplinită",
-        "O listă care strânge fiecare potrivire",
-        "Un text care ține ultima valoare văzută de buclă"
+        "Un boolean care se schimbă când o condiție e îndeplinită",
+        "O listă care strânge fiecare potrivire pe care o găsește bucla",
+        "Un text care ține ultima valoare pe care a văzut-o bucla"
       ],
       "answer": 1
     },
@@ -24,24 +24,24 @@
       "answer": 3
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "De ce pornește `toate_pare` ca True în lecție?",
       "options": [
         "Pornim optimist: rămâne True dacă niciun număr nu ne contrazice",
-        "Python cere ca orice steag să pornească True",
+        "Python cere ca orice steag să pornească True, altfel bucla nu rulează",
         "Pentru că primul număr din listă e par",
         "Ca bucla să mai ruleze o dată"
       ],
       "answer": 0
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "De ce pornește `gasit` ca False când căutăm un nume într-o listă?",
       "options": [
-        "Un steag poate porni doar ca False",
-        "Ca bucla să sară peste primul nume",
-        "Pornim pesimist: doar găsirea numelui îl face True",
-        "Pentru că numele nu e niciodată în listă"
+        "Un steag poate porni doar ca False, niciodată True",
+        "Ca bucla să sară peste primul nume din listă",
+        "Doar găsirea numelui îl face True",
+        "Pentru că la început numele nu e niciodată în listă"
       ],
       "answer": 2
     },
@@ -53,13 +53,13 @@
       "answer": 1
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "De ce o buclă cu steag nu are de obicei un `else` care pune steagul înapoi?",
       "options": [
-        "Un else după un if nu e permis într-o buclă",
+        "Un else după un if nu e permis în corpul unei bucle, doar în afara ei",
         "Steagul s-ar transforma într-un număr",
         "Bucla nu s-ar mai termina",
-        "Un element de mai târziu care nu se potrivește ar șterge ce a găsit unul de dinainte"
+        "Un element de mai târziu care nu se potrivește ar anula ce s-a găsit"
       ],
       "answer": 3
     },
@@ -76,13 +76,13 @@
       "answer": 0
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Ce adaugă `break` unei căutări cu steag?",
       "options": [
-        "Pune singur steagul pe True",
+        "Pune singur steagul pe True, fără să scriem =",
         "Pornește bucla din nou de la primul element",
-        "Oprește bucla imediat ce ținta e găsită, așa că restul nu mai e verificat",
-        "Pune steagul înapoi pe False"
+        "Oprește bucla imediat ce ținta e găsită",
+        "Pune steagul înapoi pe False când rulează"
       ],
       "answer": 2
     },
@@ -111,13 +111,13 @@
       "answer": 3
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "În misiune, de ce nu e `suficient_de_lung` un steag schimbat în buclă?",
       "options": [
         "O buclă nu poate trece prin caracterele unui text",
         "Numele oricărui steag trebuie să înceapă cu are_",
         "`len(cod) >= 6` dă deja True sau False, fără nicio buclă",
-        "Pentru că 6 e o cifră, iar cifrele sunt verificate în buclă"
+        "Pentru că 6 e o cifră, iar cifrele sunt verificate deja în buclă"
       ],
       "answer": 2
     },
@@ -129,13 +129,13 @@
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Bucla din misiune verifică `caracter.isupper()` și apoi `elif caracter.isdigit()`. Poate elif-ul să rateze o cifră?",
       "options": [
         "Nu: un caracter nu e niciodată și majusculă, și cifră",
         "Da: o cifră majusculă pune doar are_majuscula",
         "Da: ultimul caracter nu e verificat niciodată de elif",
-        "Nu, pentru că elif oprește bucla la prima cifră"
+        "Nu, pentru că elif oprește bucla imediat ce găsește prima cifră"
       ],
       "answer": 0
     },

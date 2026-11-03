@@ -1,24 +1,24 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce este recursivitatea?",
       "options": [
         "O funcție care se cheamă pe ea însăși",
-        "O buclă care rulează la nesfârșit",
+        "O buclă care rulează la nesfârșit, fără capăt",
         "O funcție care cheamă altă funcție cu aceleași argumente",
-        "O listă care se conține pe ea însăși"
+        "O listă care se conține pe ea însăși ca element"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Ce este cazul de bază al unei funcții recursive?",
       "options": [
-        "Primul apel, cel făcut din afara funcției",
+        "Primul apel, cel care e făcut din afara funcției",
         "Cea mai mare valoare pe care o poate primi funcția",
-        "Cazul la care răspunde direct, fără să se mai cheme pe ea însăși",
-        "Linia în care funcția se cheamă pe ea însăși"
+        "Cazul la care răspunde fără să se cheme din nou",
+        "Linia în care funcția se cheamă din nou pe ea însăși"
       ],
       "answer": 2
     },
@@ -62,12 +62,12 @@
       "answer": 1
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "De ce își trimite `suma_lista` pe `numere[1:]`?",
       "options": [
         "Ca să sară peste primul număr, care e mereu 0",
         "Pentru că `numere[0]` a fost scos din listă",
-        "Ca lista să fie copiată și originalul să rămână sortat",
+        "Ca lista să fie copiată, iar cea originală să rămână sortată tot timpul",
         "Restul listei e cu unul mai scurt la fiecare apel, până rămâne goală"
       ],
       "answer": 3
@@ -91,22 +91,22 @@
       "answer": 2
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "De ce returnează `putere` din misiune 1 în cazul de bază, `exponent == 0`?",
       "options": [
         "Pentru că 1 e cel mai mic exponent",
         "Orice număr la puterea 0 e 1, iar înmulțirea cu 1 nu schimbă nimic la întoarcere",
         "Ca funcția să returneze True",
-        "Orice număr la puterea 0 e 0, dar 1 evită o împărțire la zero"
+        "Orice număr la puterea 0 e 0, dar dacă returnează 1 evită mai târziu o împărțire la zero"
       ],
       "answer": 1
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "În șirul de oameni din lecție, cine știe răspunsul imediat?",
       "options": [
         "Persoana din spate, care a întrebat prima",
-        "Toată lumea, pentru că toți pun aceeași întrebare",
+        "Toată lumea, pentru că toți pun aceeași întrebare celui din față",
         "Persoana din mijlocul șirului",
         "Persoana din față, care nu are pe nimeni înainte"
       ],
@@ -186,13 +186,13 @@
       "answer": 3
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "În urmărirea lui factorial, ce se întâmplă după ce factorial(1) returnează 1?",
       "options": [
-        "Apelurile care așteaptă se termină unul câte unul: 2 × 1 = 2, apoi 3 × 2 = 6 și tot așa până la 120",
+        "Apelurile care așteaptă se termină pe rând, până la 120",
         "Programul se oprește, pentru că s-a ajuns la cazul de bază",
-        "factorial(5) e chemat din nou de la început",
-        "Fiecare apel returnează 1, așa că factorial(5) e 1"
+        "factorial(5) e chemat din nou, chiar de la primul lui pas",
+        "Fiecare apel returnează 1, așa că și factorial(5) dă tot 1"
       ],
       "answer": 0
     },
@@ -216,22 +216,22 @@
       "answer": 1
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "În `numaratoare_inversa`, cazul de bază afișează \"Start!\" și apoi are `return`. Ce face acel `return`?",
       "options": [
         "Trimite \"Start!\" înapoi apelului dinainte",
         "Pornește numărătoarea de la capăt",
-        "Încheie toate apelurile care așteaptă, deodată",
+        "Încheie toate apelurile care așteaptă, deodată, iar programul se oprește",
         "Încheie apelul acesta, așa că funcția nu mai trece la a se chema din nou"
       ],
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "La ce probleme spune lecția că recursivitatea strălucește?",
       "options": [
-        "Probleme făcute din versiuni mai mici ale lor, ca arborii și structurile imbricate",
-        "Probleme în care o valoare e numărată una câte una",
+        "Probleme făcute din versiuni mai mici ale lor, ca arborii",
+        "Probleme în care o valoare e numărată una câte una, de la început la sfârșit",
         "Probleme care au nevoie de o listă sortată întâi",
         "Probleme care citesc date de la utilizator"
       ],
@@ -270,10 +270,10 @@
       "answer": 0
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "De ce nu poate o funcție recursivă să se cheme cu același argument primit, ca `numaratoare_inversa(n)` în `numaratoare_inversa`?",
       "options": [
-        "Python nu lasă o funcție să-și folosească propriul nume",
+        "Python nu lasă o funcție să-și folosească propriul nume în interiorul corpului ei",
         "Argumentul s-ar pierde după primul apel",
         "Problema nu se micșorează niciodată, așa că nu ajunge niciodată la cazul de bază",
         "Poate: cazul de bază o oprește oricum"
