@@ -72,8 +72,9 @@ export interface QuizTemplate {
   values: Record<string, string>[];
   // prints, which-program and holds
   mistakes: Swap[];
-  // missing-line, missing-value and which-input (answer too), which-error
+  // missing-line, missing-value and which-input
   answer: string;
+  // those three and which-error, whose right option is the error its code stops with
   wrong: string[];
   // wrong-line
   bug: Swap | null;
