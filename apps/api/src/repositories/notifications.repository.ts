@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
-import { NOTICE_TYPES } from '@cyberstars/shared/notifications';
+import { NOTICE_TYPES, NOTICES_MAX } from '@cyberstars/shared/notifications';
 import type { NotificationData, NotificationType } from '@cyberstars/shared/notifications';
 
 export const actorInclude = { actor: { select: { name: true, avatarUrl: true } } };
@@ -33,11 +33,13 @@ export function list(userId: number, take: number, before?: number): Promise<Not
 }
 
 // The announcements and polls this user hasn't read and the dashboard hasn't
-// shown, oldest first, but a poll they voted in already, from another device too
+// shown, the oldest first and at most NOTICES_MAX, but a poll they voted in
+// already, from another device too
 export async function listNotices(userId: number): Promise<NotificationRow[]> {
   const rows = await prisma.notification.findMany({
     where: { userId, readAt: null, shownAt: null, type: { in: [...NOTICE_TYPES] } },
     orderBy: { id: 'asc' },
+    take: NOTICES_MAX,
     include: actorInclude,
   });
   const polls = rows.filter((r) => r.type === 'POLL').map((r) => r.entityId);

@@ -61,7 +61,7 @@ describe('listNotices', () => {
     mockPrisma.notification.findMany.mockResolvedValue(rows);
     expect(await repo.listNotices(10)).toEqual(rows);
     expect(mockPrisma.notification.findMany).toHaveBeenCalledWith(
-      expect.objectContaining({ where, orderBy: { id: 'asc' } }),
+      expect.objectContaining({ where, orderBy: { id: 'asc' }, take: 100 }),
     );
     // No poll among them, so nothing to check votes against
     expect(mockPrisma.pollVoter.findMany).not.toHaveBeenCalled();

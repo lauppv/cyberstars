@@ -185,7 +185,7 @@ describe('Dashboard notices', () => {
     expect(await notices(user)).toHaveLength(1);
   });
 
-  it('refuses a list of ids that is empty or not ids (400)', async () => {
+  it('refuses a list of ids that is empty, too long or not ids (400)', async () => {
     const { agent: user } = await createAuthenticatedAgent();
     await user.post('/api/notifications/notices/shown').send({ ids: [] }).expect(400);
     await user
@@ -193,6 +193,9 @@ describe('Dashboard notices', () => {
       .send({ ids: ['x'] })
       .expect(400);
     await user.post('/api/notifications/notices/shown').send({}).expect(400);
+    // More than the window ever opens with
+    const ids = Array.from({ length: 101 }, (_, i) => i + 1);
+    await user.post('/api/notifications/notices/shown').send({ ids }).expect(400);
   });
 
   it('unauthenticated requests are rejected', async () => {
