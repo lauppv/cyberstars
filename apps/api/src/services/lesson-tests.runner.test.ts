@@ -837,7 +837,7 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
           '    static void sort(int[] a) {}\n    static void f(int[] a) { sort(a); Runnable r = () -> {}; new Stack(); }',
         ) + 'class Stack {}\n',
         [],
-        [sort, comparator, vector],
+        [sort, comparator, vector, { kind: 'call', name: 'Stack' }],
       ),
     ).toEqual(passes);
   });
