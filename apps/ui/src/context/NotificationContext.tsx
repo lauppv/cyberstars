@@ -32,6 +32,10 @@ interface NotificationContextValue {
   // Shows one the server has read already as read; the server's push brings
   // the count.
   noteRead: (id: number) => void;
+  // An announcement or a poll opened from the bell is on screen, so the
+  // dashboard's window waits for it
+  bellWindow: boolean;
+  noteBellWindow: (open: boolean) => void;
 }
 
 const NotificationContext = createContext<NotificationContextValue | null>(null);
@@ -46,6 +50,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
   const [hasMore, setHasMore] = useState(false);
   const [loadFailed, setLoadFailed] = useState(false);
   const [moreError, setMoreError] = useState<string | null>(null);
+  const [bellWindow, setBellWindow] = useState(false);
   // Bumped by each first-page load and by its cancel, so only the latest
   // load's answer lands.
   const loads = useRef(0);
@@ -181,6 +186,8 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
         markAllRead,
         markOneRead,
         noteRead,
+        bellWindow,
+        noteBellWindow: setBellWindow,
       }}
     >
       {children}

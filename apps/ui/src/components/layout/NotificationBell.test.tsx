@@ -23,10 +23,13 @@ const poll: NotificationDTO = {
 const h = vi.hoisted(() => ({
   auth: { user: { role: 'USER' } as { role: string } | null },
   notif: { enabled: true, unreadCount: 0 },
+  noteBellWindow: vi.fn(),
 }));
 
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
-vi.mock('../../context/NotificationContext', () => ({ useNotifications: () => h.notif }));
+vi.mock('../../context/NotificationContext', () => ({
+  useNotifications: () => ({ ...h.notif, noteBellWindow: h.noteBellWindow }),
+}));
 vi.mock('../notifications/NotificationDropdown', () => ({
   NotificationDropdown: ({
     onClose,
@@ -123,13 +126,17 @@ describe('NotificationBell', () => {
   it('opens an announcement from the dropdown in a window over the page', () => {
     render(<NotificationBell />);
     fireEvent.click(screen.getByLabelText('Notifications'));
+    expect(h.noteBellWindow).not.toHaveBeenCalled();
     fireEvent.click(screen.getByText('announcement'));
     expect(screen.queryByTestId('dropdown')).toBeNull();
     expect(screen.getByRole('dialog', { name: 'Official announcement' })).toHaveTextContent(
       'A new course is out. Go try it.',
     );
+    // So the dashboard's window waits for it
+    expect(h.noteBellWindow).toHaveBeenLastCalledWith(true);
     fireEvent.click(screen.getByLabelText('Close'));
     expect(screen.queryByRole('dialog')).toBeNull();
+    expect(h.noteBellWindow).toHaveBeenLastCalledWith(false);
   });
 
   it('opens a poll from the dropdown in a window over the page', async () => {
@@ -141,8 +148,10 @@ describe('NotificationBell', () => {
     expect(screen.getByRole('dialog', { name: 'Poll' })).toBeInTheDocument();
     expect(await screen.findByText('Next course?')).toBeInTheDocument();
     expect(getPoll).toHaveBeenCalledWith(3);
+    expect(h.noteBellWindow).toHaveBeenLastCalledWith(true);
     fireEvent.click(screen.getByLabelText('Close'));
     expect(screen.queryByRole('dialog')).toBeNull();
+    expect(h.noteBellWindow).toHaveBeenLastCalledWith(false);
   });
 
   it('closes on an outside mousedown', () => {

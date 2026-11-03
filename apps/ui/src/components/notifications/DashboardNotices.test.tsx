@@ -26,7 +26,7 @@ vi.mock('../../hooks/useUserSocket', () => ({
 }));
 
 import { UserSocketProvider } from '../../context/UserSocketContext';
-import { NotificationProvider } from '../../context/NotificationContext';
+import { NotificationProvider, useNotifications } from '../../context/NotificationContext';
 import { DashboardNotices } from './DashboardNotices';
 
 function notice(id: number, over: Partial<NotificationDTO> = {}): NotificationDTO {
@@ -49,6 +49,17 @@ function renderNotices(held = false) {
         <DashboardNotices held={held} />
       </NotificationProvider>
     </UserSocketProvider>,
+  );
+}
+
+// Stands in for the bell opening an announcement or a poll in its own window
+function BellWindow() {
+  const { noteBellWindow } = useNotifications();
+  return (
+    <>
+      <button onClick={() => noteBellWindow(true)}>open from the bell</button>
+      <button onClick={() => noteBellWindow(false)}>close the bell's</button>
+    </>
   );
 }
 
@@ -269,5 +280,32 @@ describe('DashboardNotices', () => {
     );
     await dialog();
     expect(h.service.markOneRead).toHaveBeenCalledWith(3);
+  });
+
+  it('waits while an announcement or a poll from the bell is open', async () => {
+    render(
+      <UserSocketProvider>
+        <NotificationProvider>
+          <BellWindow />
+          <DashboardNotices />
+        </NotificationProvider>
+      </UserSocketProvider>,
+    );
+    await waitFor(() => expect(h.service.getNotices).toHaveBeenCalledTimes(1));
+    fireEvent.click(button('open from the bell'));
+
+    h.service.getNotices.mockResolvedValue([notice(9)]);
+    await frame(notice(9));
+    await waitFor(() => expect(h.service.getNotices).toHaveBeenCalledTimes(2));
+    await act(async () => {});
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(h.service.markOneRead).not.toHaveBeenCalled();
+    // Escape belongs to the bell's window alone
+    fireEvent.keyDown(document, { key: 'Escape' });
+
+    fireEvent.click(button("close the bell's"));
+    await dialog();
+    expect(h.service.markOneRead).toHaveBeenCalledWith(9);
+    expect(screen.queryByRole('status')).toBeNull();
   });
 });

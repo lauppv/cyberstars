@@ -19,10 +19,10 @@ const primary =
 // comes in while the student is on it. Each one on screen is read. Closing the
 // window marks the whole set shown, so it never opens with them again and the
 // ones skipped wait unread in the bell. `held` keeps it shut while another
-// window is open on the dashboard.
+// window is open on the dashboard, and so does one opened from the bell.
 export function DashboardNotices({ held = false }: { held?: boolean }) {
   const { t } = useTranslation();
-  const { enabled, noteRead } = useNotifications();
+  const { enabled, noteRead, bellWindow } = useNotifications();
   const [notices, setNotices] = useState<NotificationDTO[]>([]);
   const [at, setAt] = useState(0);
   // The furthest one shown, so the rest count as not seen yet
@@ -63,7 +63,7 @@ export function DashboardNotices({ held = false }: { held?: boolean }) {
   );
   useUserSocketFrames(onFrame);
 
-  const open = notices.length > 0 && !held;
+  const open = notices.length > 0 && !held && !bellWindow;
   const current = open ? notices[at] : undefined;
 
   useEffect(() => {
