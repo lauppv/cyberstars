@@ -25,9 +25,9 @@
       "answer": 3
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "Cum numește lecția operatorul `%`?",
-      "options": ["Modulo", "Procent", "Împărțire întreagă", "Putere"],
+      "options": ["Modulo", "Procent", "Împărțire întreagă", "Exponent"],
       "answer": 0
     },
     {
@@ -82,13 +82,13 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "De ce spune lecția că `%` e extrem de util?",
       "options": [
-        "Ne spune dacă un număr se împarte la altul fără rest, ca un număr par la 2",
-        "Afișează un număr ca procent",
+        "Ne spune dacă o împărțire lasă rest",
+        "Transformă un număr în procent, ca 0.5 în 50%",
         "Rotunjește un număr la cel mai apropiat întreg",
-        "Face o împărțire mai rapidă"
+        "Dă rezultatul unei împărțiri fără zecimale"
       ],
       "answer": 0
     },
@@ -146,11 +146,11 @@
       "answer": 3
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "În `10 - 2 * 3`, ce face Python mai întâi?",
       "options": [
         "2 * 3, apoi 10 - 6",
-        "10 - 2, apoi 8 * 3",
+        "Întâi 10 - 2, apoi 8 * 3",
         "Ce vine primul din stânga",
         "Se oprește cu o eroare: are nevoie de paranteze"
       ],
@@ -188,10 +188,10 @@
       "answer": 1
     },
     {
-      "id": "q27",
+      "id": "q27-v2",
       "text": "De ce poate presupune misiunea Panoul de calcul că `b` nu e 0?",
       "options": [
-        "0 nu e un număr întreg",
+        "0 nu e un număr întreg, deci int() nu-l poate citi",
         "input() nu poate citi un 0",
         "Împărțirea la 0 oprește programul cu o eroare",
         "Orice operație cu 0 dă 0"

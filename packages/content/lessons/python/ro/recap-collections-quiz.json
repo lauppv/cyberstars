@@ -18,22 +18,22 @@
       "answer": 1
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "În misiunea Aprovizionarea, de ce vine `break` după `curate.append(element)` și nu înainte?",
       "options": [
-        "Ca bucla să sară peste unt",
+        "Ca bucla să sară peste unt și să treacă direct la gem",
         "Pentru că break trebuie să fie mereu ultima linie din buclă",
-        "Ca untul să ajungă în curate înainte ca bucla să se oprească",
-        "Ca să fie adăugat și gemul"
+        "Ca untul să intre în curate înainte de oprire",
+        "Ca să fie adăugat și gemul în curate, imediat după unt"
       ],
       "answer": 2
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "În misiunea Aprovizionarea, de ce nu ajunge niciodată `gem` în curate?",
       "options": [
         "Numele lui începe cu con-",
-        "E ultimul element, iar o buclă sare peste ultimul element",
+        "E ultimul element, peste care bucla sare",
         "curate poate ține doar 4 elemente",
         "Bucla s-a oprit cu break la unt, înainte să ajungă la gem"
       ],
@@ -72,13 +72,13 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Ce diferență e între `nume.upper()` și `echipaj.append(\"Kai\")`?",
       "options": [
-        "upper() dă un string nou și lasă nume cum era; append() schimbă chiar lista",
-        "Amândouă schimbă variabila pe care sunt folosite",
+        "upper() lasă nume cum era; append() schimbă chiar lista",
+        "Amândouă schimbă variabila pe care sunt folosite, la fel",
         "Niciuna nu schimbă nimic: trebuie scris echipaj = echipaj.append(\"Kai\")",
-        "upper() schimbă nume; append() face o listă nouă"
+        "upper() schimbă nume pentru totdeauna; append() face o listă nouă"
       ],
       "answer": 0
     },
@@ -195,13 +195,13 @@
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "De ce e scris `curate = []` înainte de buclă și nu în ea?",
       "options": [
         "Pentru că o listă poate fi goală doar înainte de o buclă",
-        "Ca curate să țină doar prima ladă",
-        "Ca bucla să sară peste lăzile goale",
-        "În buclă, curate s-ar goli din nou la fiecare ladă"
+        "Ca curate să țină doar prima ladă pe care o primește",
+        "Ca bucla să sară peste lăzile goale din listă",
+        "În buclă, s-ar goli la fiecare ladă"
       ],
       "answer": 3
     },
