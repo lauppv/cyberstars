@@ -1,7 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import { lessons } from '@cyberstars/content/curriculum';
-import { LANIAKEA_COURSE, planetLessons } from '@cyberstars/shared/laniakea';
+import {
+  LANIAKEA_COURSE,
+  QUIZ_LENGTH,
+  QUIZ_SAME_TEXT,
+  planetLessons,
+} from '@cyberstars/shared/laniakea';
 import { contentDir } from './paths.js';
 import {
   loadQuiz,
@@ -67,6 +72,22 @@ describe('Laniakea questions', () => {
     const plan = planLesson(parseTemplates(read(en.quiz)), parseTemplates(read(ro.quiz)));
     expect(madeIds(en.made)).toEqual(plan.en.map((p) => p.id));
     expect(madeIds(ro.made)).toEqual(plan.ro.map((p) => p.id));
+  });
+
+  // A test takes at most QUIZ_SAME_TEXT questions with one text, so a pool
+  // holds no text on more than that share of it: 30 of 100 (CYB-106)
+  it.each(slugs)('%s has no text on more than its share of a test', (slug) => {
+    const over: string[] = [];
+    for (const lang of ['en', 'ro'] as const) {
+      const pool = loadQuiz(slug, lang)!.questions;
+      const limit = Math.floor((QUIZ_SAME_TEXT * pool.length) / QUIZ_LENGTH);
+      const counts = new Map<string, number>();
+      for (const q of pool) counts.set(q.text, (counts.get(q.text) ?? 0) + 1);
+      for (const [text, n] of counts) {
+        if (n > limit) over.push(`${lang}: "${text}" on ${n} of ${pool.length}, at most ${limit}`);
+      }
+    }
+    expect(over).toEqual([]);
   });
 
   it.each(slugs)('%s asks only about what its lessons and the ones before teach', (slug) => {
