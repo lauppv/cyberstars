@@ -14,39 +14,6 @@
       "answer": 0
     },
     {
-      "id": "ft-filter-e15775",
-      "text": "Ce afișează?",
-      "code": "scoruri = [12, 60, 60, 75, 30]\npromovate = []\nfor s in scoruri:\n    if s >= 60:\n        promovate.append(s)\nprint(promovate)",
-      "options": [
-        "[60, 60, 75]",
-        "[75]",
-        "[]\n[60]\n[60, 60]\n[60, 60, 75]\n[60, 60, 75]",
-        "[12, 60, 60, 30]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ft-filter-63c0e4",
-      "text": "Ce afișează?",
-      "code": "scoruri = [90, 15, 70, 40]\npromovate = []\nfor s in scoruri:\n    if s >= 40:\n        promovate.append(s)\nprint(promovate)",
-      "options": ["[90, 70, 40]", "[90, 70]", "[40]", "[90]\n[90]\n[90, 70]\n[90, 70, 40]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-filter-fda2ea",
-      "text": "Ce afișează?",
-      "code": "scoruri = [5, 9, 7, 3, 10]\npromovate = []\nfor s in scoruri:\n    if s >= 7:\n        promovate.append(s)\nprint(promovate)",
-      "options": ["[9, 7, 10]", "[9, 10]", "[10]", "[]\n[9]\n[9, 7]\n[9, 7]\n[9, 7, 10]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-filter-e30a6b",
-      "text": "Ce afișează?",
-      "code": "scoruri = [55, 50, 49, 80]\npromovate = []\nfor s in scoruri:\n    if s >= 50:\n        promovate.append(s)\nprint(promovate)",
-      "options": ["[55, 50, 80]", "[55, 80]", "[80]", "[55]\n[55, 50]\n[55, 50]\n[55, 50, 80]"],
-      "answer": 0
-    },
-    {
       "id": "ft-comp-ab4d32",
       "text": "Ce afișează?",
       "code": "numere = [3, 8, 12, 5, 20]\nprint([n for n in numere if n > 6])",
@@ -54,71 +21,10 @@
       "answer": 0
     },
     {
-      "id": "ft-comp-180303",
-      "text": "Ce afișează?",
-      "code": "numere = [1, 2, 3, 4, 5, 6]\nprint([n for n in numere if n % 2 == 0])",
-      "options": ["[2, 4, 6]", "[1, 3, 5]", "[4, 8, 12]", "[1, 2, 3, 4, 5, 6]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-comp-04dda5",
-      "text": "Ce afișează?",
-      "code": "numere = [15, 7, 22, 9, 30]\nprint([n for n in numere if n < 10])",
-      "options": ["[7, 9]", "[15, 22, 30]", "[14, 18]", "[15, 7, 22, 9, 30]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-comp-d1367f",
-      "text": "Ce afișează?",
-      "code": "numere = [4, 9, 16, 25]\nprint([n for n in numere if n % 3 == 1])",
-      "options": ["[4, 16, 25]", "[9]", "[8, 32, 50]", "[4, 9, 16, 25]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-comp-6bdc13",
-      "text": "Ce afișează?",
-      "code": "numere = [10, 20, 30, 40]\nprint([n for n in numere if n != 30])",
-      "options": ["[10, 20, 40]", "[30]", "[20, 40, 80]", "[10, 20, 30, 40]"],
-      "answer": 0
-    },
-    {
       "id": "ft-transform-d78d88",
       "text": "Ce afișează?",
       "code": "scoruri = [45, 82, 67]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + 5)\nprint(cu_bonus)",
       "options": ["[50, 87, 72]", "[5, 5, 5]", "[225, 410, 335]", "[45, 82, 67]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-transform-ff527b",
-      "text": "Ce afișează?",
-      "code": "scoruri = [10, 20, 30, 40]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + 3)\nprint(cu_bonus)",
-      "options": ["[13, 23, 33, 43]", "[3, 3, 3, 3]", "[30, 60, 90, 120]", "[10, 20, 30, 40]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-transform-2a9a21",
-      "text": "Ce afișează?",
-      "code": "scoruri = [7, 1, 9]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + 10)\nprint(cu_bonus)",
-      "options": ["[17, 11, 19]", "[10, 10, 10]", "[70, 10, 90]", "[7, 1, 9]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-transform-402d1a",
-      "text": "Ce afișează?",
-      "code": "scoruri = [50, 60]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + 15)\nprint(cu_bonus)",
-      "options": ["[65, 75]", "[15, 15]", "[750, 900]", "[50, 60]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-transform-3eb03d",
-      "text": "Ce afișează?",
-      "code": "scoruri = [99, 0, 50, 25]\ncu_bonus = []\nfor s in scoruri:\n    cu_bonus.append(s + 1)\nprint(cu_bonus)",
-      "options": [
-        "[100, 1, 51, 26]",
-        "[1, 1, 1, 1]",
-        "[99, 0, 50, 25]",
-        "[100]\n[100, 1]\n[100, 1, 51]\n[100, 1, 51, 26]"
-      ],
       "answer": 0
     },
     {
@@ -136,27 +42,6 @@
       "answer": 0
     },
     {
-      "id": "ft-cap-ae054e",
-      "text": "Ce afișează?",
-      "code": "note = [60, 49, 50, 95]\nprint([min(g + 8, 100) for g in note if g >= 50])",
-      "options": ["[68, 58, 100]", "[100, 100, 103]", "[57]", "[68, 58, 103]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-cap-c122bf",
-      "text": "Ce afișează?",
-      "code": "note = [85, 12, 98, 70]\nprint([min(g + 4, 100) for g in note if g >= 50])",
-      "options": ["[89, 100, 74]", "[100, 102, 100]", "[16]", "[89, 102, 74]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-cap-a70dcd",
-      "text": "Ce afișează?",
-      "code": "note = [51, 92, 20]\nprint([min(g + 9, 100) for g in note if g >= 50])",
-      "options": ["[60, 100]", "[100, 101]", "[29]", "[60, 101]"],
-      "answer": 0
-    },
-    {
       "id": "ft-dicts-cc5e6c",
       "text": "Ce afișează?",
       "code": "jucatori = [\n    {\"nume\": \"Tommy\", \"scor\": 95},\n    {\"nume\": \"Lance\", \"scor\": 42},\n    {\"nume\": \"Cortez\", \"scor\": 88}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= 50])",
@@ -168,27 +53,6 @@
       "text": "Ce afișează?",
       "code": "jucatori = [\n    {\"nume\": \"Phil\", \"scor\": 71},\n    {\"nume\": \"Sonny\", \"scor\": 33},\n    {\"nume\": \"Ken\", \"scor\": 60}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= 60])",
       "options": ["['Phil', 'Ken']", "[71, 60]", "['Sonny']", "2"],
-      "answer": 0
-    },
-    {
-      "id": "ft-dicts-5c4490",
-      "text": "Ce afișează?",
-      "code": "jucatori = [\n    {\"nume\": \"Mercedes\", \"scor\": 50},\n    {\"nume\": \"Kent\", \"scor\": 75},\n    {\"nume\": \"Victor\", \"scor\": 49}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= 50])",
-      "options": ["['Mercedes', 'Kent']", "[50, 75]", "['Victor']", "2"],
-      "answer": 0
-    },
-    {
-      "id": "ft-dicts-115a04",
-      "text": "Ce afișează?",
-      "code": "jucatori = [\n    {\"nume\": \"Avery\", \"scor\": 20},\n    {\"nume\": \"Diaz\", \"scor\": 90},\n    {\"nume\": \"Hilary\", \"scor\": 85}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= 80])",
-      "options": ["['Diaz', 'Hilary']", "[90, 85]", "['Avery']", "2"],
-      "answer": 0
-    },
-    {
-      "id": "ft-dicts-74fbfe",
-      "text": "Ce afișează?",
-      "code": "jucatori = [\n    {\"nume\": \"Ricardo\", \"scor\": 66},\n    {\"nume\": \"Lance\", \"scor\": 99},\n    {\"nume\": \"Tommy\", \"scor\": 12}\n]\nprint([p[\"nume\"] for p in jucatori if p[\"scor\"] >= 65])",
-      "options": ["['Ricardo', 'Lance']", "[66, 99]", "['Tommy']", "2"],
       "answer": 0
     },
     {
@@ -206,27 +70,6 @@
       "answer": 0
     },
     {
-      "id": "ft-avg-9527ea",
-      "text": "Ce afișează?",
-      "code": "citiri = [50, 51, 20, 96]\namplificat = []\nfor r in citiri:\n    if r >= 50:\n        amplificat.append(min(r + 5, 100))\nprint(len(amplificat))\nprint(round(sum(amplificat) / len(amplificat)))",
-      "options": ["3\n70", "3\n71", "4\n70", "3\n53"],
-      "answer": 0
-    },
-    {
-      "id": "ft-avg-ce636d",
-      "text": "Ce afișează?",
-      "code": "citiri = [30, 80, 50, 98, 10]\namplificat = []\nfor r in citiri:\n    if r >= 50:\n        amplificat.append(min(r + 5, 100))\nprint(len(amplificat))\nprint(round(sum(amplificat) / len(amplificat)))",
-      "options": ["3\n80", "3\n81", "5\n80", "3\n48"],
-      "answer": 0
-    },
-    {
-      "id": "ft-avg-d980f6",
-      "text": "Ce afișează?",
-      "code": "citiri = [75, 50, 40]\namplificat = []\nfor r in citiri:\n    if r >= 50:\n        amplificat.append(min(r + 5, 100))\nprint(len(amplificat))\nprint(round(sum(amplificat) / len(amplificat)))",
-      "options": ["2\n68", "3\n68", "2\n45", "1\n80"],
-      "answer": 0
-    },
-    {
       "id": "ft-order-ea80c4",
       "text": "Ce afișează?",
       "code": "numere = [1, 3, 5, 7]\nprint([n * 2 for n in numere if n > 4])",
@@ -238,27 +81,6 @@
       "text": "Ce afișează?",
       "code": "numere = [2, 4, 6, 8]\nprint([n * 2 for n in numere if n > 5])",
       "options": ["[12, 16]", "[8, 12, 16]", "[6, 8]", "[4, 8]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-order-820a9c",
-      "text": "Ce afișează?",
-      "code": "numere = [10, 3, 8, 1]\nprint([n * 2 for n in numere if n > 5])",
-      "options": ["[20, 16]", "[20, 6, 16]", "[10, 8]", "[6, 2]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-order-d7a1dc",
-      "text": "Ce afișează?",
-      "code": "numere = [4, 5, 6]\nprint([n * 2 for n in numere if n > 4])",
-      "options": ["[10, 12]", "[8, 10, 12]", "[5, 6]", "[]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-order-78eb32",
-      "text": "Ce afișează?",
-      "code": "numere = [9, 2, 7, 4]\nprint([n * 2 for n in numere if n > 5])",
-      "options": ["[18, 14]", "[18, 14, 8]", "[9, 7]", "[4, 8]"],
       "answer": 0
     },
     {
@@ -278,27 +100,6 @@
         "['IO']",
         "[5, 5, 5]"
       ],
-      "answer": 0
-    },
-    {
-      "id": "ft-strings-9a51db",
-      "text": "Ce afișează?",
-      "code": "cuvinte = [\"nava\", \"racheta\", \"echipaj\", \"pilot\"]\nprint([c.upper() for c in cuvinte if len(c) > 5])",
-      "options": ["['RACHETA', 'ECHIPAJ']", "['racheta', 'echipaj']", "['NAVA']", "[7, 7]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-strings-257275",
-      "text": "Ce afișează?",
-      "code": "cuvinte = [\"stea\", \"cometa\", \"cer\"]\nprint([c.upper() for c in cuvinte if len(c) > 3])",
-      "options": ["['STEA', 'COMETA']", "['stea', 'cometa']", "[]", "[4, 6]"],
-      "answer": 0
-    },
-    {
-      "id": "ft-strings-17e5b9",
-      "text": "Ce afișează?",
-      "code": "cuvinte = [\"doc\", \"lansare\", \"motor\", \"combustibil\"]\nprint([c.upper() for c in cuvinte if len(c) > 5])",
-      "options": ["['LANSARE', 'COMBUSTIBIL']", "['lansare', 'combustibil']", "['DOC']", "[7, 11]"],
       "answer": 0
     },
     {
@@ -629,6 +430,214 @@
         "nume_conectati = []",
         "nume_conectati.append(jucator[\"nume\"])"
       ],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-filter-b41427",
+      "text": "Ce conține `promovati` la final?",
+      "code": "scoruri = [45, 82, 50, 91, 38]\npromovati = [x for x in scoruri if x >= 50]",
+      "options": ["[82, 50, 91]", "[82, 91]", "[45, 82, 50, 91, 38]", "[45, 50, 38]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-filter-52b33c",
+      "text": "Ce conține `calde` la final?",
+      "code": "temperaturi = [18, 30, 33, 25, 31]\ncalde = [x for x in temperaturi if x >= 30]",
+      "options": ["[30, 33, 31]", "[33, 31]", "[18, 30, 33, 25, 31]", "[18, 30, 25]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-filter-2b0073",
+      "text": "Ce conține `adulti` la final?",
+      "code": "varste = [12, 18, 30, 15]\nadulti = [x for x in varste if x >= 18]",
+      "options": ["[18, 30]", "[30]", "[12, 18, 30, 15]", "[12, 18, 15]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-filter-5d3af2",
+      "text": "Ce conține `rapide` la final?",
+      "code": "viteze = [60, 120, 90, 45]\nrapide = [x for x in viteze if x >= 90]",
+      "options": ["[120, 90]", "[120]", "[60, 120, 90, 45]", "[60, 90, 45]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-filter-a6583d",
+      "text": "Ce conține `mari` la final?",
+      "code": "niveluri = [3, 7, 5, 9, 2]\nmari = [x for x in niveluri if x >= 5]",
+      "options": ["[7, 5, 9]", "[7, 9]", "[3, 7, 5, 9, 2]", "[3, 5, 2]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-cap-6ac81a",
+      "text": "Ce conține `marite` la final?",
+      "code": "scoruri = [45, 98, 67]\nmarite = []\nfor x in scoruri:\n    marite.append(min(x + 5, 100))",
+      "options": ["[50, 100, 72]", "[100, 103, 100]", "[50, 103, 72]", "[72]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-cap-325eb5",
+      "text": "Ce conține `marite` la final?",
+      "code": "scoruri = [90, 70, 99]\nmarite = []\nfor x in scoruri:\n    marite.append(min(x + 10, 100))",
+      "options": ["[100, 80, 100]", "[100, 100, 109]", "[100, 80, 109]", "[100]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-cap-9a11dd",
+      "text": "Ce conține `finale` la final?",
+      "code": "note = [82, 97, 38]\nfinale = []\nfor x in note:\n    finale.append(min(x + 5, 100))",
+      "options": ["[87, 100, 43]", "[100, 102, 100]", "[87, 102, 43]", "[43]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-cap-37cf54",
+      "text": "Ce conține `vindecat` la final?",
+      "code": "viata = [60, 95, 100]\nvindecat = []\nfor x in viata:\n    vindecat.append(min(x + 20, 100))",
+      "options": ["[80, 100, 100]", "[100, 115, 120]", "[80, 115, 120]", "[100]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-cap-25c850",
+      "text": "Ce conține `realimentat` la final?",
+      "code": "combustibil = [50, 85, 92]\nrealimentat = []\nfor x in combustibil:\n    realimentat.append(min(x + 15, 100))",
+      "options": ["[65, 100, 100]", "[100, 100, 107]", "[65, 100, 107]", "[100]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-names-194783",
+      "text": "Ce conține `castigatori` la final?",
+      "code": "jucatori = [{\"nume\": \"Tommy\", \"scor\": 95}, {\"nume\": \"Lance\", \"scor\": 42}, {\"nume\": \"Cortez\", \"scor\": 88}]\ncastigatori = [p[\"nume\"] for p in jucatori if p[\"scor\"] > 88]",
+      "options": ["['Tommy']", "[95]", "[{'nume': 'Tommy', 'scor': 95}]", "['Tommy', 'Cortez']"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-names-dfddef",
+      "text": "Ce conține `castigatori` la final?",
+      "code": "jucatori = [{\"nume\": \"Phil\", \"scor\": 71}, {\"nume\": \"Sonny\", \"scor\": 60}, {\"nume\": \"Ken\", \"scor\": 60}]\ncastigatori = [p[\"nume\"] for p in jucatori if p[\"scor\"] > 60]",
+      "options": ["['Phil']", "[71]", "[{'nume': 'Phil', 'scor': 71}]", "['Phil', 'Sonny', 'Ken']"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-names-678c37",
+      "text": "Ce conține `cei_mai_buni` la final?",
+      "code": "jucatori = [{\"nume\": \"Ana\", \"scor\": 50}, {\"nume\": \"Rex\", \"scor\": 75}, {\"nume\": \"Kai\", \"scor\": 90}]\ncei_mai_buni = [p[\"nume\"] for p in jucatori if p[\"scor\"] > 50]",
+      "options": [
+        "['Rex', 'Kai']",
+        "[75, 90]",
+        "[{'nume': 'Rex', 'scor': 75}, {'nume': 'Kai', 'scor': 90}]",
+        "['Ana', 'Rex', 'Kai']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-names-4f50b4",
+      "text": "Ce conține `cei_mai_buni` la final?",
+      "code": "jucatori = [{\"nume\": \"Zoe\", \"scor\": 30}, {\"nume\": \"Mia\", \"scor\": 80}, {\"nume\": \"Ben\", \"scor\": 80}]\ncei_mai_buni = [p[\"nume\"] for p in jucatori if p[\"scor\"] > 30]",
+      "options": [
+        "['Mia', 'Ben']",
+        "[80, 80]",
+        "[{'nume': 'Mia', 'scor': 80}, {'nume': 'Ben', 'scor': 80}]",
+        "['Zoe', 'Mia', 'Ben']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-names-5f1ff3",
+      "text": "Ce conține `top` la final?",
+      "code": "jucatori = [{\"nume\": \"Nova\", \"scor\": 12}, {\"nume\": \"Vega\", \"scor\": 7}, {\"nume\": \"Orion\", \"scor\": 9}]\ntop = [p[\"nume\"] for p in jucatori if p[\"scor\"] > 7]",
+      "options": [
+        "['Nova', 'Orion']",
+        "[12, 9]",
+        "[{'nume': 'Nova', 'scor': 12}, {'nume': 'Orion', 'scor': 9}]",
+        "['Nova', 'Vega', 'Orion']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "ft-input-limit-660ac4",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "limita = int(input())\nscoruri = [45, 82, 67, 91, 38]\nprint([x for x in scoruri if x >= limita])",
+      "output": "[82, 91]",
+      "options": ["70", "91", "45", "100"],
+      "answer": 0
+    },
+    {
+      "id": "ft-input-limit-8c51fe",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "limita = int(input())\ntemperaturi = [18, 30, 33, 25]\nprint([x for x in temperaturi if x >= limita])",
+      "output": "[30, 33]",
+      "options": ["26", "33", "18", "40"],
+      "answer": 0
+    },
+    {
+      "id": "ft-input-limit-47ea88",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "limita = int(input())\nvarste = [12, 18, 30, 15]\nprint([x for x in varste if x >= limita])",
+      "output": "[18, 30]",
+      "options": ["16", "30", "12", "31"],
+      "answer": 0
+    },
+    {
+      "id": "ft-input-limit-b59fbb",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "limita = int(input())\nniveluri = [3, 7, 5, 9]\nprint([x for x in niveluri if x >= limita])",
+      "output": "[7, 9]",
+      "options": ["6", "9", "3", "10"],
+      "answer": 0
+    },
+    {
+      "id": "ft-error-key-165f6c",
+      "text": "Ce eroare oprește acest program?",
+      "code": "jucatori = [{\"nume\": \"Tommy\", \"scor\": 95}, {\"nume\": \"Lance\", \"scor\": 42}]\nprint([p[\"puncte\"] for p in jucatori])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "ft-error-key-dd85bd",
+      "text": "Ce eroare oprește acest program?",
+      "code": "jucatori = [{\"nume\": \"Ana\", \"scor\": 50}, {\"nume\": \"Rex\", \"scor\": 75}]\nprint([p[\"Nume\"] for p in jucatori])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "ft-error-type-12b0ce",
+      "text": "Ce eroare oprește acest program?",
+      "code": "scoruri = [45, 82, 67]\nprint([x + \"5\" for x in scoruri])",
+      "options": ["TypeError", "ValueError", "KeyError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "ft-error-type-ac7c6f",
+      "text": "Ce eroare oprește acest program?",
+      "code": "preturi = [10, 20]\nprint([x + \"1\" for x in preturi])",
+      "options": ["TypeError", "ValueError", "KeyError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-lens-dcc8fa",
+      "text": "Ce conține `marimi` la final?",
+      "code": "cuvinte = [\"mare\", \"munte\", \"soare\", \"film\"]\nmarimi = [len(w) for w in cuvinte if w[0] == \"m\"]",
+      "options": ["[4, 5]", "['mare', 'munte']", "[]", "[4]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-lens-7cfde0",
+      "text": "Ce conține `marimi` la final?",
+      "code": "mancaruri = [\"apa\", \"avion\", \"banana\", \"pizza\"]\nmarimi = [len(w) for w in mancaruri if w[0] == \"a\"]",
+      "options": ["[3, 5]", "['apa', 'avion']", "[]", "[3, 6, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-lens-253854",
+      "text": "Ce conține `marimi` la final?",
+      "code": "meniu = [\"tort\", \"tren\", \"cafea\", \"test\"]\nmarimi = [len(w) for w in meniu if w[0] == \"t\"]",
+      "options": ["[4, 4, 4]", "['tort', 'tren', 'test']", "[]", "[4, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "ft-holds-lens-a6f2fe",
+      "text": "Ce conține `marimi` la final?",
+      "code": "coduri = [\"paine\", \"pod\", \"zap\", \"pop\"]\nmarimi = [len(w) for w in coduri if w[0] == \"p\"]",
+      "options": ["[5, 3, 3]", "['paine', 'pod', 'pop']", "[]", "[3, 3]"],
       "answer": 0
     }
   ]

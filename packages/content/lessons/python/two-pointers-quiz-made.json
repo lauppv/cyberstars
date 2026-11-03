@@ -23,20 +23,6 @@
       "answer": 0
     },
     {
-      "id": "tp-two-sum-69b9f4",
-      "text": "What does this print?",
-      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([3, 5, 7, 9], 12))",
-      "options": ["(3, 9)", "(0, 3)", "12", "None"],
-      "answer": 0
-    },
-    {
-      "id": "tp-two-sum-362bb6",
-      "text": "What does this print?",
-      "code": "def two_sum(numbers, target):\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            return (numbers[left], numbers[right])\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum([1, 2, 3, 10, 20], 22))",
-      "options": ["(2, 20)", "None", "(1, 4)", "22"],
-      "answer": 0
-    },
-    {
       "id": "tp-trace-5a56e3",
       "text": "What does this print?",
       "code": "numbers = [1, 2, 4, 7, 11, 15]\ntarget = 9\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    print(left, right, current_sum)\n    if current_sum == target:\n        break\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1",
@@ -68,30 +54,6 @@
       "answer": 0
     },
     {
-      "id": "tp-trace-2c2e5c",
-      "text": "What does this print?",
-      "code": "numbers = [4, 5, 6, 9]\ntarget = 11\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    print(left, right, current_sum)\n    if current_sum == target:\n        break\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1",
-      "options": [
-        "0 3 13\n0 2 10\n1 2 11",
-        "0 3 13\n1 3 14\n2 3 15",
-        "4 9\n4 6\n5 6",
-        "0 2 10\n1 2 11"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "tp-trace-b185ae",
-      "text": "What does this print?",
-      "code": "numbers = [2, 4, 7, 9, 12]\ntarget = 13\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    print(left, right, current_sum)\n    if current_sum == target:\n        break\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1",
-      "options": [
-        "0 4 14\n0 3 11\n1 3 13",
-        "0 4 14\n1 4 16\n2 4 19\n3 4 21",
-        "2 12\n2 9\n4 9",
-        "0 3 11\n1 3 13"
-      ],
-      "answer": 0
-    },
-    {
       "id": "tp-pal-b32d07",
       "text": "What does this print?",
       "code": "word = \"racecar\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    right -= 1",
@@ -110,20 +72,6 @@
       "text": "What does this print?",
       "code": "word = \"level\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    right -= 1",
       "options": ["l l\ne e", "l l\ne e\nv v", "l e", "0 4\n1 3"],
-      "answer": 0
-    },
-    {
-      "id": "tp-pal-ced543",
-      "text": "What does this print?",
-      "code": "word = \"radio\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    right -= 1",
-      "options": ["r o", "r o\nd i", "r i", "0 4"],
-      "answer": 0
-    },
-    {
-      "id": "tp-pal-641a66",
-      "text": "What does this print?",
-      "code": "word = \"rotator\"\nleft = 0\nright = len(word) - 1\nwhile left < right:\n    print(word[left], word[right])\n    if word[left] != word[right]:\n        break\n    left += 1\n    right -= 1",
-      "options": ["r r\no o\nt t", "r r\no o\nt t\na a", "r o", "0 6\n1 5\n2 4"],
       "answer": 0
     },
     {
@@ -152,13 +100,6 @@
       "text": "What does this print?",
       "code": "def remove_duplicates(numbers):\n    if len(numbers) == 0:\n        return []\n    result = [numbers[0]]\n    for i in range(1, len(numbers)):\n        if numbers[i] != numbers[i - 1]:\n            result.append(numbers[i])\n    return result\n\nprint(remove_duplicates([7, 7, 9, 9, 9, 10]))",
       "options": ["[7, 9, 10]", "[7, 7, 9, 9]", "[9, 10]", "[7, 9, 9, 9, 10]"],
-      "answer": 0
-    },
-    {
-      "id": "tp-dedup-cb5b2b",
-      "text": "What does this print?",
-      "code": "def remove_duplicates(numbers):\n    if len(numbers) == 0:\n        return []\n    result = [numbers[0]]\n    for i in range(1, len(numbers)):\n        if numbers[i] != numbers[i - 1]:\n            result.append(numbers[i])\n    return result\n\nprint(remove_duplicates([1, 2, 2, 2, 5, 5]))",
-      "options": ["[1, 2, 5]", "[1, 2, 2, 5]", "[1, 5]", "[2, 5]"],
       "answer": 0
     },
     {
@@ -202,13 +143,6 @@
       "text": "What does this print?",
       "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nresult = pair_with_sum([1, 2, 5, 6, 9, 10], 10)\nprint(result)\nprint(len(result))",
       "options": ["[(1, 9)]\n1", "[10]\n1", "[(1, 9), (5, 5)]\n2", "[(0, 4)]\n1"],
-      "answer": 0
-    },
-    {
-      "id": "tp-all-pairs-41da5b",
-      "text": "What does this print?",
-      "code": "def pair_with_sum(numbers, target):\n    pairs = []\n    left = 0\n    right = len(numbers) - 1\n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        if current_sum == target:\n            pairs.append((numbers[left], numbers[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return pairs\n\nresult = pair_with_sum([3, 4, 6, 7, 9], 12)\nprint(result)\nprint(len(result))",
-      "options": ["[(3, 9)]\n1", "[12]\n1", "[(3, 9), (6, 6)]\n2", "[(0, 4)]\n1"],
       "answer": 0
     },
     {
@@ -684,6 +618,66 @@
         "left += 1",
         "right -= 1"
       ],
+      "answer": 0
+    },
+    {
+      "id": "tp-input-target-28253c",
+      "text": "What did the user type?",
+      "code": "numbers = [1, 3, 5, 7, 9]\ntarget = int(input())\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    if current_sum == target:\n        print(left, right)\n        break\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1",
+      "output": "0 4",
+      "options": ["10", "12", "8", "4"],
+      "answer": 0
+    },
+    {
+      "id": "tp-input-target-ef1165",
+      "text": "What did the user type?",
+      "code": "numbers = [2, 4, 6, 8]\ntarget = int(input())\nleft = 0\nright = len(numbers) - 1\nwhile left < right:\n    current_sum = numbers[left] + numbers[right]\n    if current_sum == target:\n        print(left, right)\n        break\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1",
+      "output": "1 3",
+      "options": ["12", "10", "14", "4"],
+      "answer": 0
+    },
+    {
+      "id": "tp-input-target-1c5039",
+      "text": "What did the user type?",
+      "code": "prices = [1, 2, 4, 7, 11]\ntarget = int(input())\nleft = 0\nright = len(prices) - 1\nwhile left < right:\n    current_sum = prices[left] + prices[right]\n    if current_sum == target:\n        print(left, right)\n        break\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1",
+      "output": "1 3",
+      "options": ["9", "8", "12", "4"],
+      "answer": 0
+    },
+    {
+      "id": "tp-input-target-d00748",
+      "text": "What did the user type?",
+      "code": "weights = [3, 5, 8, 10]\ntarget = int(input())\nleft = 0\nright = len(weights) - 1\nwhile left < right:\n    current_sum = weights[left] + weights[right]\n    if current_sum == target:\n        print(left, right)\n        break\n    elif current_sum < target:\n        left += 1\n    else:\n        right -= 1",
+      "output": "0 3",
+      "options": ["13", "15", "11", "3"],
+      "answer": 0
+    },
+    {
+      "id": "tp-error-end-4361a5",
+      "text": "Which error stops this program?",
+      "code": "numbers = [1, 3, 5, 7]\nleft = 0\nright = len(numbers)\nwhile left < right:\n    print(numbers[left], numbers[right])\n    left += 1\n    right -= 1",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "tp-error-end-3ee8e5",
+      "text": "Which error stops this program?",
+      "code": "letters = [\"a\", \"b\", \"c\"]\nleft = 0\nright = len(letters)\nwhile left < right:\n    print(letters[left], letters[right])\n    left += 1\n    right -= 1",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "tp-error-middle-8eca2c",
+      "text": "Which error stops this program?",
+      "code": "word = \"radar\"\nmiddle = len(word) / 2\nprint(word[middle])",
+      "options": ["TypeError", "IndexError", "ValueError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "tp-error-middle-c5b8d3",
+      "text": "Which error stops this program?",
+      "code": "word = \"level\"\nmiddle = len(word) / 2\nprint(word[middle])",
+      "options": ["TypeError", "IndexError", "ValueError", "KeyError"],
       "answer": 0
     }
   ]

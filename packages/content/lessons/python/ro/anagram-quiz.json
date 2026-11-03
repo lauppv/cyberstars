@@ -305,15 +305,6 @@
         },
         {
           "w": "cometa"
-        },
-        {
-          "w": "stea"
-        },
-        {
-          "w": "luna"
-        },
-        {
-          "w": "Marte"
         }
       ],
       "mistakes": [
@@ -340,24 +331,6 @@
           "b": "mirat",
           "c": "Lac",
           "d": "Cal"
-        },
-        {
-          "a": "rac",
-          "b": "car",
-          "c": "Pod",
-          "d": "Dop"
-        },
-        {
-          "a": "sare",
-          "b": "rase",
-          "c": "Rost",
-          "d": "Tors"
-        },
-        {
-          "a": "cer",
-          "b": "rec",
-          "c": "Ton",
-          "d": "Not"
         }
       ],
       "mistakes": [
@@ -384,15 +357,6 @@
         },
         {
           "w": "racheta"
-        },
-        {
-          "w": "capac"
-        },
-        {
-          "w": "lalea"
-        },
-        {
-          "w": "cafea"
         }
       ],
       "mistakes": [
@@ -423,30 +387,6 @@
           "d": "rase",
           "e": "cometa",
           "f": "comoda"
-        },
-        {
-          "a": "roma",
-          "b": "amorul",
-          "c": "lac",
-          "d": "cal",
-          "e": "luna",
-          "f": "lume"
-        },
-        {
-          "a": "pod",
-          "b": "podul",
-          "c": "ton",
-          "d": "not",
-          "e": "mare",
-          "f": "mere"
-        },
-        {
-          "a": "cer",
-          "b": "ceruri",
-          "c": "rost",
-          "d": "tors",
-          "e": "sac",
-          "f": "sat"
         }
       ],
       "mistakes": [
@@ -467,15 +407,6 @@
         },
         {
           "words": "\"Marti\", \"Mirat\""
-        },
-        {
-          "words": "\"Rac\", \"Car\""
-        },
-        {
-          "words": "\"Sare\", \"Rase\""
-        },
-        {
-          "words": "\"Lapte\", \"Paleta\""
         }
       ],
       "mistakes": [
@@ -496,15 +427,6 @@
         },
         {
           "words": "\"roma\", \"amor\", \"mora\", \"luna\""
-        },
-        {
-          "words": "\"sare\", \"rase\", \"cometa\""
-        },
-        {
-          "words": "\"marti\", \"soare\", \"mirat\""
-        },
-        {
-          "words": "\"cer\", \"rec\", \"pod\""
         }
       ],
       "mistakes": [
@@ -527,18 +449,6 @@
         {
           "t": "rac",
           "words": "\"car\", \"arc\", \"rece\", \"cart\""
-        },
-        {
-          "t": "marti",
-          "words": "\"mirat\", \"marti\", \"martie\""
-        },
-        {
-          "t": "sare",
-          "words": "\"rase\", \"ares\", \"sarea\", \"sar\""
-        },
-        {
-          "t": "cer",
-          "words": "\"rec\", \"cere\", \"cer\", \"ceri\""
         }
       ],
       "mistakes": [
@@ -798,6 +708,310 @@
         }
       ],
       "bug": ["sorted(cuvant) == sorted(tinta)", "sorted(cuvant) == tinta"]
+    },
+    {
+      "id": "an-holds-key",
+      "kind": "holds",
+      "text": "Ce conține `{{k}}` la final?",
+      "code": "{{w}} = \"{{s}}\"\n{{k}} = \"\".join(sorted({{w}}.lower()))",
+      "values": [
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "s": "Roma"
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "s": "Amor"
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "s": "Orbita"
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "s": "Tommy"
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "s": "Marte"
+        }
+      ],
+      "variable": "{{k}}",
+      "mistakes": [
+        ["\"\".join(sorted({{w}}.lower()))", "sorted({{w}}.lower())"],
+        ["{{w}}.lower()", "{{w}}"],
+        ["\"\".join", "\" \".join"]
+      ]
+    },
+    {
+      "id": "an-holds-groups",
+      "kind": "holds",
+      "text": "Ce conține `{{g}}` la final?",
+      "code": "{{g}} = {}\nfor {{w}} in [{{words}}]:\n    {{k}} = \"\".join(sorted({{w}}))\n    if {{k}} in {{g}}:\n        {{g}}[{{k}}].append({{w}})\n    else:\n        {{g}}[{{k}}] = [{{w}}]",
+      "values": [
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "words": "\"roma\", \"amor\", \"mora\", \"luna\""
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "words": "\"rac\", \"car\", \"arc\""
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "words": "\"sare\", \"rase\", \"pod\", \"dop\""
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "words": "\"mare\", \"rame\", \"arme\""
+        }
+      ],
+      "variable": "{{g}}",
+      "mistakes": [
+        ["{{g}}[{{k}}].append({{w}})", "{{g}}[{{k}}] = [{{w}}]"],
+        ["sorted({{w}})", "{{w}}"],
+        ["{{g}}[{{k}}].append({{w}})", "{{g}}[{{k}}].append({{k}})"]
+      ]
+    },
+    {
+      "id": "an-input-check",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{a}} = input()\nprint(sorted({{a}}.lower()) == sorted(\"{{t}}\"))",
+      "values": [
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "t": "roma",
+          "ans": "Amor",
+          "w1": "Amar",
+          "w2": "Rom",
+          "w3": "Romb"
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "t": "marti",
+          "ans": "Mirat",
+          "w1": "Mirare",
+          "w2": "Marte",
+          "w3": "Mari"
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "t": "mare",
+          "ans": "Mere",
+          "w1": "Rame",
+          "w2": "arme",
+          "w3": "MARE"
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "t": "rac",
+          "ans": "Rece",
+          "w1": "Car",
+          "w2": "arc",
+          "w3": "RAC"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "an-error-int",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{v}} = {{n}}\nprint(\"\".join(sorted({{v}})))",
+      "values": [
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "n": 12345
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "n": 987
+        }
+      ],
+      "wrong": ["ValueError", "IndexError", "NameError"]
+    },
+    {
+      "id": "an-error-index",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{a}} = \"{{x}}\"\n{{b}} = \"{{y}}\"\n{{same}} = True\nfor i in range(len({{a}})):\n    if sorted({{a}})[i] != sorted({{b}})[i]:\n        {{same}} = False\nprint({{same}})",
+      "values": [
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "primul",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "b": "al_doilea",
+          "x": "roma",
+          "y": "amo"
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "primul",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "b": "al_doilea",
+          "x": "rac",
+          "y": "ca"
+        }
+      ],
+      "wrong": ["KeyError", "ValueError", "TypeError"]
+    },
+    {
+      "id": "an-holds-count",
+      "kind": "holds",
+      "text": "Ce conține `{{c}}` la final?",
+      "code": "{{c}} = 0\nfor {{w}} in [{{words}}]:\n    if sorted({{w}}) == sorted(\"{{t}}\"):\n        {{c}} += 1",
+      "values": [
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "t": "mare",
+          "words": "\"rame\", \"mare\", \"arme\", \"mare\", \"mere\""
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "t": "rac",
+          "words": "\"car\", \"rac\", \"arc\", \"rac\", \"rece\""
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "t": "roma",
+          "words": "\"amor\", \"roma\", \"mora\", \"roma\", \"ramo\", \"luna\""
+        },
+        {
+          "w": "cuvant",
+          "k": "cheie",
+          "g": "grupuri",
+          "a": "incercare",
+          "v": "cod",
+          "c": "numar",
+          "same": "la_fel",
+          "t": "sare",
+          "words": "\"rase\", \"sare\", \"sera\", \"sare\", \"soare\""
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["sorted({{w}}) == sorted(\"{{t}}\")", "{{w}} == \"{{t}}\""],
+        ["sorted(\"{{t}}\")", "\"{{t}}\""],
+        ["{{c}} += 1", "{{c}} = 1"]
+      ]
     }
   ]
 }

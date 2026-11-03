@@ -16,27 +16,6 @@
       "answer": 0
     },
     {
-      "id": "an-sorted-f9327b",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"stea\"\nprint(sorted(cuvant))",
-      "options": ["['a', 'e', 's', 't']", "stea", "a", "4"],
-      "answer": 0
-    },
-    {
-      "id": "an-sorted-efa722",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"luna\"\nprint(sorted(cuvant))",
-      "options": ["['a', 'l', 'n', 'u']", "luna", "a", "4"],
-      "answer": 0
-    },
-    {
-      "id": "an-sorted-ae26a3",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"Marte\"\nprint(sorted(cuvant))",
-      "options": ["['M', 'a', 'e', 'r', 't']", "Marte", "M", "5"],
-      "answer": 0
-    },
-    {
       "id": "an-check-0b90d2",
       "text": "Ce afișează?",
       "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"roma\", \"amor\"))\nprint(este_anagrama(\"Mare\", \"Rame\"))\nprint(este_anagrama(\"roma\", \"Mare\"))",
@@ -52,42 +31,6 @@
       "id": "an-check-f6beec",
       "text": "Ce afișează?",
       "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"marti\", \"mirat\"))\nprint(este_anagrama(\"Lac\", \"Cal\"))\nprint(este_anagrama(\"marti\", \"Lac\"))",
-      "options": [
-        "True\nTrue\nFalse",
-        "True\nFalse\nFalse",
-        "False\nFalse\nFalse",
-        "False\nFalse\nTrue"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-check-f35b14",
-      "text": "Ce afișează?",
-      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"rac\", \"car\"))\nprint(este_anagrama(\"Pod\", \"Dop\"))\nprint(este_anagrama(\"rac\", \"Pod\"))",
-      "options": [
-        "True\nTrue\nFalse",
-        "True\nFalse\nFalse",
-        "False\nFalse\nFalse",
-        "False\nFalse\nTrue"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-check-6ac6ad",
-      "text": "Ce afișează?",
-      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"sare\", \"rase\"))\nprint(este_anagrama(\"Rost\", \"Tors\"))\nprint(este_anagrama(\"sare\", \"Rost\"))",
-      "options": [
-        "True\nTrue\nFalse",
-        "True\nFalse\nFalse",
-        "False\nFalse\nFalse",
-        "False\nFalse\nTrue"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-check-6a44ef",
-      "text": "Ce afișează?",
-      "code": "def este_anagrama(cuvant1, cuvant2):\n    return sorted(cuvant1.lower()) == sorted(cuvant2.lower())\n\nprint(este_anagrama(\"cer\", \"rec\"))\nprint(este_anagrama(\"Ton\", \"Not\"))\nprint(este_anagrama(\"cer\", \"Ton\"))",
       "options": [
         "True\nTrue\nFalse",
         "True\nFalse\nFalse",
@@ -121,42 +64,6 @@
       "answer": 0
     },
     {
-      "id": "an-freq-f6c98e",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"capac\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
-      "options": [
-        "{'c': 2, 'a': 2, 'p': 1}",
-        "{'c': 1, 'a': 1, 'p': 1}",
-        "{'c': 1, 'a': 1, 'p': 0}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-freq-efa722",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"lalea\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
-      "options": [
-        "{'l': 2, 'a': 2, 'e': 1}",
-        "{'l': 1, 'a': 1, 'e': 1}",
-        "{'l': 1, 'a': 1, 'e': 0}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-freq-12f7c6",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"cafea\"\nfrecventa = {}\nfor caracter in cuvant:\n    if caracter in frecventa:\n        frecventa[caracter] += 1\n    else:\n        frecventa[caracter] = 1\nprint(frecventa)",
-      "options": [
-        "{'c': 1, 'a': 2, 'f': 1, 'e': 1}",
-        "{'c': 1, 'a': 1, 'f': 1, 'e': 1}",
-        "{'c': 0, 'a': 1, 'f': 0, 'e': 0}",
-        "4"
-      ],
-      "answer": 0
-    },
-    {
       "id": "an-len-ea3340",
       "text": "Ce afișează?",
       "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"stea\", \"stele\"))\nprint(este_anagrama(\"marti\", \"mirat\"))\nprint(este_anagrama(\"orbita\", \"robota\"))",
@@ -172,42 +79,6 @@
       "id": "an-len-760494",
       "text": "Ce afișează?",
       "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"racheta\", \"rac\"))\nprint(este_anagrama(\"sare\", \"rase\"))\nprint(este_anagrama(\"cometa\", \"comoda\"))",
-      "options": [
-        "Lungimi diferite\nFalse\nTrue\nFalse",
-        "False\nLungimi diferite\nFalse\nLungimi diferite\nFalse",
-        "Lungimi diferite\nFalse\nTrue\nTrue",
-        "Lungimi diferite\nTrue\nTrue\nFalse"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-len-395294",
-      "text": "Ce afișează?",
-      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"roma\", \"amorul\"))\nprint(este_anagrama(\"lac\", \"cal\"))\nprint(este_anagrama(\"luna\", \"lume\"))",
-      "options": [
-        "Lungimi diferite\nFalse\nTrue\nFalse",
-        "False\nLungimi diferite\nFalse\nLungimi diferite\nFalse",
-        "Lungimi diferite\nFalse\nTrue\nTrue",
-        "Lungimi diferite\nTrue\nTrue\nFalse"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-len-4960ff",
-      "text": "Ce afișează?",
-      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"pod\", \"podul\"))\nprint(este_anagrama(\"ton\", \"not\"))\nprint(este_anagrama(\"mare\", \"mere\"))",
-      "options": [
-        "Lungimi diferite\nFalse\nTrue\nFalse",
-        "False\nLungimi diferite\nFalse\nLungimi diferite\nFalse",
-        "Lungimi diferite\nFalse\nTrue\nTrue",
-        "Lungimi diferite\nTrue\nTrue\nFalse"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-len-80fed8",
-      "text": "Ce afișează?",
-      "code": "def este_anagrama(cuvant1, cuvant2):\n    if len(cuvant1) != len(cuvant2):\n        print(\"Lungimi diferite\")\n        return False\n    return sorted(cuvant1) == sorted(cuvant2)\n\nprint(este_anagrama(\"cer\", \"ceruri\"))\nprint(este_anagrama(\"rost\", \"tors\"))\nprint(este_anagrama(\"sac\", \"sat\"))",
       "options": [
         "Lungimi diferite\nFalse\nTrue\nFalse",
         "False\nLungimi diferite\nFalse\nLungimi diferite\nFalse",
@@ -241,42 +112,6 @@
       "answer": 0
     },
     {
-      "id": "an-join-9acf06",
-      "text": "Ce afișează?",
-      "code": "for cuvant in [\"Rac\", \"Car\"]:\n    print(cuvant, \"\".join(sorted(cuvant.lower())))",
-      "options": [
-        "Rac acr\nCar acr",
-        "Rac Rac\nCar Car",
-        "Rac ['a', 'c', 'r']\nCar ['a', 'c', 'r']",
-        "acr\nacr"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-join-b096f4",
-      "text": "Ce afișează?",
-      "code": "for cuvant in [\"Sare\", \"Rase\"]:\n    print(cuvant, \"\".join(sorted(cuvant.lower())))",
-      "options": [
-        "Sare aers\nRase aers",
-        "Sare Saer\nRase Raes",
-        "Sare ['a', 'e', 'r', 's']\nRase ['a', 'e', 'r', 's']",
-        "aers\naers"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-join-b7c528",
-      "text": "Ce afișează?",
-      "code": "for cuvant in [\"Lapte\", \"Paleta\"]:\n    print(cuvant, \"\".join(sorted(cuvant.lower())))",
-      "options": [
-        "Lapte aelpt\nPaleta aaelpt",
-        "Lapte Laept\nPaleta Paaelt",
-        "Lapte ['a', 'e', 'l', 'p', 't']\nPaleta ['a', 'a', 'e', 'l', 'p', 't']",
-        "aelpt\naaelpt"
-      ],
-      "answer": 0
-    },
-    {
       "id": "an-group-96d08b",
       "text": "Ce afișează?",
       "code": "grupuri = {}\nfor cuvant in [\"rac\", \"car\", \"pod\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
@@ -301,42 +136,6 @@
       "answer": 0
     },
     {
-      "id": "an-group-a870ad",
-      "text": "Ce afișează?",
-      "code": "grupuri = {}\nfor cuvant in [\"sare\", \"rase\", \"cometa\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
-      "options": [
-        "{'aers': ['sare', 'rase'], 'acemot': ['cometa']}",
-        "{'aers': ['rase'], 'acemot': ['cometa']}",
-        "{'sare': ['sare'], 'rase': ['rase'], 'cometa': ['cometa']}",
-        "2"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-group-f34436",
-      "text": "Ce afișează?",
-      "code": "grupuri = {}\nfor cuvant in [\"marti\", \"soare\", \"mirat\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
-      "options": [
-        "{'aimrt': ['marti', 'mirat'], 'aeors': ['soare']}",
-        "{'aimrt': ['mirat'], 'aeors': ['soare']}",
-        "{'marti': ['marti'], 'soare': ['soare'], 'mirat': ['mirat']}",
-        "2"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-group-93433d",
-      "text": "Ce afișează?",
-      "code": "grupuri = {}\nfor cuvant in [\"cer\", \"rec\", \"pod\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]\nprint(grupuri)",
-      "options": [
-        "{'cer': ['cer', 'rec'], 'dop': ['pod']}",
-        "{'cer': ['rec'], 'dop': ['pod']}",
-        "{'cer': ['cer'], 'rec': ['rec'], 'pod': ['pod']}",
-        "2"
-      ],
-      "answer": 0
-    },
-    {
       "id": "an-count-3c99fc",
       "text": "Ce afișează?",
       "code": "tinta = \"mare\"\nnumar = 0\nfor cuvant in [\"rame\", \"arme\", \"marea\", \"mere\"]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
@@ -348,27 +147,6 @@
       "text": "Ce afișează?",
       "code": "tinta = \"rac\"\nnumar = 0\nfor cuvant in [\"car\", \"arc\", \"rece\", \"cart\"]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
       "options": ["car\narc\n2", "0", "car\narc\n1", "2"],
-      "answer": 0
-    },
-    {
-      "id": "an-count-56e619",
-      "text": "Ce afișează?",
-      "code": "tinta = \"marti\"\nnumar = 0\nfor cuvant in [\"mirat\", \"marti\", \"martie\"]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
-      "options": ["mirat\nmarti\n2", "marti\n1", "mirat\nmarti\n1", "2"],
-      "answer": 0
-    },
-    {
-      "id": "an-count-9f02ce",
-      "text": "Ce afișează?",
-      "code": "tinta = \"sare\"\nnumar = 0\nfor cuvant in [\"rase\", \"ares\", \"sarea\", \"sar\"]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
-      "options": ["rase\nares\n2", "0", "rase\nares\n1", "2"],
-      "answer": 0
-    },
-    {
-      "id": "an-count-4f8e66",
-      "text": "Ce afișează?",
-      "code": "tinta = \"cer\"\nnumar = 0\nfor cuvant in [\"rec\", \"cere\", \"cer\", \"ceri\"]:\n    if sorted(cuvant) == sorted(tinta):\n        print(cuvant)\n        numar += 1\nprint(numar)",
-      "options": ["rec\ncer\n2", "cer\n1", "rec\ncer\n1", "2"],
       "answer": 0
     },
     {
@@ -749,6 +527,177 @@
       "code": "tinta = \"cer\"\nnumar = 0\nfor cuvant in [\"rec\", \"cer\", \"ceri\"]:\n    if sorted(cuvant) == tinta:\n        print(cuvant)\n        numar += 1\nprint(numar)",
       "output": "rec\ncer\n2",
       "options": ["if sorted(cuvant) == tinta:", "print(cuvant)", "numar += 1", "print(numar)"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-key-cd2d5f",
+      "text": "Ce conține `cheie` la final?",
+      "code": "cuvant = \"Roma\"\ncheie = \"\".join(sorted(cuvant.lower()))",
+      "options": ["'amor'", "['a', 'm', 'o', 'r']", "'Ramo'", "'a m o r'"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-key-44eefe",
+      "text": "Ce conține `cheie` la final?",
+      "code": "cuvant = \"Amor\"\ncheie = \"\".join(sorted(cuvant.lower()))",
+      "options": ["'amor'", "['a', 'm', 'o', 'r']", "'Amor'", "'a m o r'"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-key-5e113f",
+      "text": "Ce conține `cheie` la final?",
+      "code": "cuvant = \"Orbita\"\ncheie = \"\".join(sorted(cuvant.lower()))",
+      "options": ["'abiort'", "['a', 'b', 'i', 'o', 'r', 't']", "'Oabirt'", "'a b i o r t'"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-key-054c11",
+      "text": "Ce conține `cheie` la final?",
+      "code": "cuvant = \"Tommy\"\ncheie = \"\".join(sorted(cuvant.lower()))",
+      "options": ["'mmoty'", "['m', 'm', 'o', 't', 'y']", "'Tmmoy'", "'m m o t y'"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-key-6d53d2",
+      "text": "Ce conține `cheie` la final?",
+      "code": "cuvant = \"Marte\"\ncheie = \"\".join(sorted(cuvant.lower()))",
+      "options": ["'aemrt'", "['a', 'e', 'm', 'r', 't']", "'Maert'", "'a e m r t'"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-groups-0b85ab",
+      "text": "Ce conține `grupuri` la final?",
+      "code": "grupuri = {}\nfor cuvant in [\"roma\", \"amor\", \"mora\", \"luna\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]",
+      "options": [
+        "{'amor': ['roma', 'amor', 'mora'], 'alnu': ['luna']}",
+        "{'amor': ['mora'], 'alnu': ['luna']}",
+        "{'roma': ['roma'], 'amor': ['amor'], 'mora': ['mora'], 'luna': ['luna']}",
+        "{'amor': ['roma', 'amor', 'amor'], 'alnu': ['luna']}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-groups-684834",
+      "text": "Ce conține `grupuri` la final?",
+      "code": "grupuri = {}\nfor cuvant in [\"rac\", \"car\", \"arc\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]",
+      "options": [
+        "{'acr': ['rac', 'car', 'arc']}",
+        "{'acr': ['arc']}",
+        "{'rac': ['rac'], 'car': ['car'], 'arc': ['arc']}",
+        "{'acr': ['rac', 'acr', 'acr']}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-groups-1b3d7e",
+      "text": "Ce conține `grupuri` la final?",
+      "code": "grupuri = {}\nfor cuvant in [\"sare\", \"rase\", \"pod\", \"dop\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]",
+      "options": [
+        "{'aers': ['sare', 'rase'], 'dop': ['pod', 'dop']}",
+        "{'aers': ['rase'], 'dop': ['dop']}",
+        "{'sare': ['sare'], 'rase': ['rase'], 'pod': ['pod'], 'dop': ['dop']}",
+        "{'aers': ['sare', 'aers'], 'dop': ['pod', 'dop']}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-groups-7b486e",
+      "text": "Ce conține `grupuri` la final?",
+      "code": "grupuri = {}\nfor cuvant in [\"mare\", \"rame\", \"arme\"]:\n    cheie = \"\".join(sorted(cuvant))\n    if cheie in grupuri:\n        grupuri[cheie].append(cuvant)\n    else:\n        grupuri[cheie] = [cuvant]",
+      "options": [
+        "{'aemr': ['mare', 'rame', 'arme']}",
+        "{'aemr': ['arme']}",
+        "{'mare': ['mare'], 'rame': ['rame'], 'arme': ['arme']}",
+        "{'aemr': ['mare', 'aemr', 'aemr']}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-input-check-62fa12",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "incercare = input()\nprint(sorted(incercare.lower()) == sorted(\"roma\"))",
+      "output": "True",
+      "options": ["Amor", "Amar", "Rom", "Romb"],
+      "answer": 0
+    },
+    {
+      "id": "an-input-check-38a5d2",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "incercare = input()\nprint(sorted(incercare.lower()) == sorted(\"marti\"))",
+      "output": "True",
+      "options": ["Mirat", "Mirare", "Marte", "Mari"],
+      "answer": 0
+    },
+    {
+      "id": "an-input-check-4b788c",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "incercare = input()\nprint(sorted(incercare.lower()) == sorted(\"mare\"))",
+      "output": "False",
+      "options": ["Mere", "Rame", "arme", "MARE"],
+      "answer": 0
+    },
+    {
+      "id": "an-input-check-186d9c",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "incercare = input()\nprint(sorted(incercare.lower()) == sorted(\"rac\"))",
+      "output": "False",
+      "options": ["Rece", "Car", "arc", "RAC"],
+      "answer": 0
+    },
+    {
+      "id": "an-error-int-2dbf17",
+      "text": "Ce eroare oprește acest program?",
+      "code": "cod = 12345\nprint(\"\".join(sorted(cod)))",
+      "options": ["TypeError", "ValueError", "IndexError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "an-error-int-5ef122",
+      "text": "Ce eroare oprește acest program?",
+      "code": "cod = 987\nprint(\"\".join(sorted(cod)))",
+      "options": ["TypeError", "ValueError", "IndexError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "an-error-index-806c4f",
+      "text": "Ce eroare oprește acest program?",
+      "code": "primul = \"roma\"\nal_doilea = \"amo\"\nla_fel = True\nfor i in range(len(primul)):\n    if sorted(primul)[i] != sorted(al_doilea)[i]:\n        la_fel = False\nprint(la_fel)",
+      "options": ["IndexError", "KeyError", "ValueError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "an-error-index-695127",
+      "text": "Ce eroare oprește acest program?",
+      "code": "primul = \"rac\"\nal_doilea = \"ca\"\nla_fel = True\nfor i in range(len(primul)):\n    if sorted(primul)[i] != sorted(al_doilea)[i]:\n        la_fel = False\nprint(la_fel)",
+      "options": ["IndexError", "KeyError", "ValueError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-count-0ac100",
+      "text": "Ce conține `numar` la final?",
+      "code": "numar = 0\nfor cuvant in [\"rame\", \"mare\", \"arme\", \"mare\", \"mere\"]:\n    if sorted(cuvant) == sorted(\"mare\"):\n        numar += 1",
+      "options": ["4", "2", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-count-c236e0",
+      "text": "Ce conține `numar` la final?",
+      "code": "numar = 0\nfor cuvant in [\"car\", \"rac\", \"arc\", \"rac\", \"rece\"]:\n    if sorted(cuvant) == sorted(\"rac\"):\n        numar += 1",
+      "options": ["4", "2", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-count-beb112",
+      "text": "Ce conține `numar` la final?",
+      "code": "numar = 0\nfor cuvant in [\"amor\", \"roma\", \"mora\", \"roma\", \"ramo\", \"luna\"]:\n    if sorted(cuvant) == sorted(\"roma\"):\n        numar += 1",
+      "options": ["5", "2", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-count-3944eb",
+      "text": "Ce conține `numar` la final?",
+      "code": "numar = 0\nfor cuvant in [\"rase\", \"sare\", \"sera\", \"sare\", \"soare\"]:\n    if sorted(cuvant) == sorted(\"sare\"):\n        numar += 1",
+      "options": ["4", "2", "0", "1"],
       "answer": 0
     }
   ]

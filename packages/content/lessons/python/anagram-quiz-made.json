@@ -16,27 +16,6 @@
       "answer": 0
     },
     {
-      "id": "an-sorted-f9327b",
-      "text": "What does this print?",
-      "code": "word = \"star\"\nprint(sorted(word))",
-      "options": ["['a', 'r', 's', 't']", "star", "a", "4"],
-      "answer": 0
-    },
-    {
-      "id": "an-sorted-efa722",
-      "text": "What does this print?",
-      "code": "word = \"moon\"\nprint(sorted(word))",
-      "options": ["['m', 'n', 'o', 'o']", "moon", "m", "4"],
-      "answer": 0
-    },
-    {
-      "id": "an-sorted-ae26a3",
-      "text": "What does this print?",
-      "code": "word = \"Mars\"\nprint(sorted(word))",
-      "options": ["['M', 'a', 'r', 's']", "Mars", "M", "4"],
-      "answer": 0
-    },
-    {
       "id": "an-check-0b90d2",
       "text": "What does this print?",
       "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"listen\", \"silent\"))\nprint(is_anagram(\"Evil\", \"Vile\"))\nprint(is_anagram(\"listen\", \"Evil\"))",
@@ -52,42 +31,6 @@
       "id": "an-check-f6beec",
       "text": "What does this print?",
       "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"night\", \"thing\"))\nprint(is_anagram(\"Dusty\", \"Study\"))\nprint(is_anagram(\"night\", \"Dusty\"))",
-      "options": [
-        "True\nTrue\nFalse",
-        "True\nFalse\nFalse",
-        "False\nFalse\nFalse",
-        "False\nFalse\nTrue"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-check-f35b14",
-      "text": "What does this print?",
-      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"star\", \"rats\"))\nprint(is_anagram(\"Below\", \"Elbow\"))\nprint(is_anagram(\"star\", \"Below\"))",
-      "options": [
-        "True\nTrue\nFalse",
-        "True\nFalse\nFalse",
-        "False\nFalse\nFalse",
-        "False\nFalse\nTrue"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-check-6ac6ad",
-      "text": "What does this print?",
-      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"earth\", \"heart\"))\nprint(is_anagram(\"Lemon\", \"Melon\"))\nprint(is_anagram(\"earth\", \"Lemon\"))",
-      "options": [
-        "True\nTrue\nFalse",
-        "True\nFalse\nFalse",
-        "False\nFalse\nFalse",
-        "False\nFalse\nTrue"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-check-6a44ef",
-      "text": "What does this print?",
-      "code": "def is_anagram(word1, word2):\n    return sorted(word1.lower()) == sorted(word2.lower())\n\nprint(is_anagram(\"arc\", \"car\"))\nprint(is_anagram(\"Inch\", \"Chin\"))\nprint(is_anagram(\"arc\", \"Inch\"))",
       "options": [
         "True\nTrue\nFalse",
         "True\nFalse\nFalse",
@@ -121,42 +64,6 @@
       "answer": 0
     },
     {
-      "id": "an-freq-f6c98e",
-      "text": "What does this print?",
-      "code": "word = \"level\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
-      "options": [
-        "{'l': 2, 'e': 2, 'v': 1}",
-        "{'l': 1, 'e': 1, 'v': 1}",
-        "{'l': 1, 'e': 1, 'v': 0}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-freq-efa722",
-      "text": "What does this print?",
-      "code": "word = \"moon\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
-      "options": [
-        "{'m': 1, 'o': 2, 'n': 1}",
-        "{'m': 1, 'o': 1, 'n': 1}",
-        "{'m': 0, 'o': 1, 'n': 0}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-freq-12f7c6",
-      "text": "What does this print?",
-      "code": "word = \"coffee\"\nfreq = {}\nfor char in word:\n    if char in freq:\n        freq[char] += 1\n    else:\n        freq[char] = 1\nprint(freq)",
-      "options": [
-        "{'c': 1, 'o': 1, 'f': 2, 'e': 2}",
-        "{'c': 1, 'o': 1, 'f': 1, 'e': 1}",
-        "{'c': 0, 'o': 0, 'f': 1, 'e': 1}",
-        "4"
-      ],
-      "answer": 0
-    },
-    {
       "id": "an-len-ea3340",
       "text": "What does this print?",
       "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"star\", \"stars\"))\nprint(is_anagram(\"night\", \"thing\"))\nprint(is_anagram(\"orbit\", \"robot\"))",
@@ -172,42 +79,6 @@
       "id": "an-len-760494",
       "text": "What does this print?",
       "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"rocket\", \"rock\"))\nprint(is_anagram(\"moon\", \"mono\"))\nprint(is_anagram(\"comet\", \"comic\"))",
-      "options": [
-        "Different lengths\nFalse\nTrue\nFalse",
-        "False\nDifferent lengths\nFalse\nDifferent lengths\nFalse",
-        "Different lengths\nFalse\nTrue\nTrue",
-        "Different lengths\nTrue\nTrue\nFalse"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-len-395294",
-      "text": "What does this print?",
-      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"earth\", \"hearts\"))\nprint(is_anagram(\"below\", \"elbow\"))\nprint(is_anagram(\"lemon\", \"lemur\"))",
-      "options": [
-        "Different lengths\nFalse\nTrue\nFalse",
-        "False\nDifferent lengths\nFalse\nDifferent lengths\nFalse",
-        "Different lengths\nFalse\nTrue\nTrue",
-        "Different lengths\nTrue\nTrue\nFalse"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-len-4960ff",
-      "text": "What does this print?",
-      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"cat\", \"cats\"))\nprint(is_anagram(\"inch\", \"chin\"))\nprint(is_anagram(\"star\", \"stir\"))",
-      "options": [
-        "Different lengths\nFalse\nTrue\nFalse",
-        "False\nDifferent lengths\nFalse\nDifferent lengths\nFalse",
-        "Different lengths\nFalse\nTrue\nTrue",
-        "Different lengths\nTrue\nTrue\nFalse"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-len-80fed8",
-      "text": "What does this print?",
-      "code": "def is_anagram(word1, word2):\n    if len(word1) != len(word2):\n        print(\"Different lengths\")\n        return False\n    return sorted(word1) == sorted(word2)\n\nprint(is_anagram(\"melon\", \"melons\"))\nprint(is_anagram(\"heart\", \"earth\"))\nprint(is_anagram(\"night\", \"might\"))",
       "options": [
         "Different lengths\nFalse\nTrue\nFalse",
         "False\nDifferent lengths\nFalse\nDifferent lengths\nFalse",
@@ -241,42 +112,6 @@
       "answer": 0
     },
     {
-      "id": "an-join-9acf06",
-      "text": "What does this print?",
-      "code": "for word in [\"Star\", \"Rats\"]:\n    print(word, \"\".join(sorted(word.lower())))",
-      "options": [
-        "Star arst\nRats arst",
-        "Star Sart\nRats Rast",
-        "Star ['a', 'r', 's', 't']\nRats ['a', 'r', 's', 't']",
-        "arst\narst"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-join-b096f4",
-      "text": "What does this print?",
-      "code": "for word in [\"Earth\", \"Heart\"]:\n    print(word, \"\".join(sorted(word.lower())))",
-      "options": [
-        "Earth aehrt\nHeart aehrt",
-        "Earth Eahrt\nHeart Haert",
-        "Earth ['a', 'e', 'h', 'r', 't']\nHeart ['a', 'e', 'h', 'r', 't']",
-        "aehrt\naehrt"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-join-b7c528",
-      "text": "What does this print?",
-      "code": "for word in [\"Below\", \"Elbow\"]:\n    print(word, \"\".join(sorted(word.lower())))",
-      "options": [
-        "Below below\nElbow below",
-        "Below Below\nElbow Eblow",
-        "Below ['b', 'e', 'l', 'o', 'w']\nElbow ['b', 'e', 'l', 'o', 'w']",
-        "below\nbelow"
-      ],
-      "answer": 0
-    },
-    {
       "id": "an-group-96d08b",
       "text": "What does this print?",
       "code": "groups = {}\nfor word in [\"dog\", \"god\", \"cat\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
@@ -301,42 +136,6 @@
       "answer": 0
     },
     {
-      "id": "an-group-a870ad",
-      "text": "What does this print?",
-      "code": "groups = {}\nfor word in [\"earth\", \"heart\", \"comet\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
-      "options": [
-        "{'aehrt': ['earth', 'heart'], 'cemot': ['comet']}",
-        "{'aehrt': ['heart'], 'cemot': ['comet']}",
-        "{'earth': ['earth'], 'heart': ['heart'], 'comet': ['comet']}",
-        "2"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-group-f34436",
-      "text": "What does this print?",
-      "code": "groups = {}\nfor word in [\"night\", \"sun\", \"thing\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
-      "options": [
-        "{'ghint': ['night', 'thing'], 'nsu': ['sun']}",
-        "{'ghint': ['thing'], 'nsu': ['sun']}",
-        "{'night': ['night'], 'sun': ['sun'], 'thing': ['thing']}",
-        "2"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "an-group-93433d",
-      "text": "What does this print?",
-      "code": "groups = {}\nfor word in [\"act\", \"tac\", \"cat\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]\nprint(groups)",
-      "options": [
-        "{'act': ['act', 'tac', 'cat']}",
-        "{'act': ['cat']}",
-        "{'act': ['act'], 'tac': ['tac'], 'cat': ['cat']}",
-        "1"
-      ],
-      "answer": 0
-    },
-    {
       "id": "an-count-3c99fc",
       "text": "What does this print?",
       "code": "target = \"race\"\ncount = 0\nfor word in [\"care\", \"acre\", \"racer\", \"cart\"]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
@@ -348,27 +147,6 @@
       "text": "What does this print?",
       "code": "target = \"star\"\ncount = 0\nfor word in [\"rats\", \"tsar\", \"stars\", \"start\"]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
       "options": ["rats\ntsar\n2", "0", "rats\ntsar\n1", "2"],
-      "answer": 0
-    },
-    {
-      "id": "an-count-56e619",
-      "text": "What does this print?",
-      "code": "target = \"night\"\ncount = 0\nfor word in [\"thing\", \"night\", \"nights\"]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
-      "options": ["thing\nnight\n2", "night\n1", "thing\nnight\n1", "2"],
-      "answer": 0
-    },
-    {
-      "id": "an-count-9f02ce",
-      "text": "What does this print?",
-      "code": "target = \"earth\"\ncount = 0\nfor word in [\"heart\", \"hater\", \"heard\", \"eart\"]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
-      "options": ["heart\nhater\n2", "0", "heart\nhater\nheard\n3", "heart\nhater\n1"],
-      "answer": 0
-    },
-    {
-      "id": "an-count-4f8e66",
-      "text": "What does this print?",
-      "code": "target = \"melon\"\ncount = 0\nfor word in [\"lemon\", \"solo\", \"melon\", \"lemons\"]:\n    if sorted(word) == sorted(target):\n        print(word)\n        count += 1\nprint(count)",
-      "options": ["lemon\nmelon\n2", "melon\n1", "lemon\nmelon\n1", "2"],
       "answer": 0
     },
     {
@@ -699,6 +477,177 @@
       "code": "target = \"melon\"\ncount = 0\nfor word in [\"lemon\", \"solo\", \"melon\"]:\n    if sorted(word) == target:\n        print(word)\n        count += 1\nprint(count)",
       "output": "lemon\nmelon\n2",
       "options": ["if sorted(word) == target:", "print(word)", "count += 1", "print(count)"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-key-cd2d5f",
+      "text": "What is in `key` at the end?",
+      "code": "word = \"Listen\"\nkey = \"\".join(sorted(word.lower()))",
+      "options": ["'eilnst'", "['e', 'i', 'l', 'n', 's', 't']", "'Leinst'", "'e i l n s t'"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-key-44eefe",
+      "text": "What is in `key` at the end?",
+      "code": "word = \"Silent\"\nkey = \"\".join(sorted(word.lower()))",
+      "options": ["'eilnst'", "['e', 'i', 'l', 'n', 's', 't']", "'Seilnt'", "'e i l n s t'"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-key-5e113f",
+      "text": "What is in `key` at the end?",
+      "code": "word = \"Orbit\"\nkey = \"\".join(sorted(word.lower()))",
+      "options": ["'biort'", "['b', 'i', 'o', 'r', 't']", "'Obirt'", "'b i o r t'"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-key-054c11",
+      "text": "What is in `key` at the end?",
+      "code": "word = \"Tommy\"\nkey = \"\".join(sorted(word.lower()))",
+      "options": ["'mmoty'", "['m', 'm', 'o', 't', 'y']", "'Tmmoy'", "'m m o t y'"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-key-6d53d2",
+      "text": "What is in `key` at the end?",
+      "code": "word = \"Mars\"\nkey = \"\".join(sorted(word.lower()))",
+      "options": ["'amrs'", "['a', 'm', 'r', 's']", "'Mars'", "'a m r s'"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-groups-0b85ab",
+      "text": "What is in `groups` at the end?",
+      "code": "groups = {}\nfor word in [\"listen\", \"silent\", \"enlist\", \"rat\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]",
+      "options": [
+        "{'eilnst': ['listen', 'silent', 'enlist'], 'art': ['rat']}",
+        "{'eilnst': ['enlist'], 'art': ['rat']}",
+        "{'listen': ['listen'], 'silent': ['silent'], 'enlist': ['enlist'], 'rat': ['rat']}",
+        "{'eilnst': ['listen', 'eilnst', 'eilnst'], 'art': ['rat']}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-groups-684834",
+      "text": "What is in `groups` at the end?",
+      "code": "groups = {}\nfor word in [\"tar\", \"rat\", \"art\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]",
+      "options": [
+        "{'art': ['tar', 'rat', 'art']}",
+        "{'art': ['art']}",
+        "{'tar': ['tar'], 'rat': ['rat'], 'art': ['art']}",
+        "{'art': ['tar', 'art', 'art']}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-groups-1b3d7e",
+      "text": "What is in `groups` at the end?",
+      "code": "groups = {}\nfor word in [\"dusty\", \"study\", \"night\", \"thing\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]",
+      "options": [
+        "{'dstuy': ['dusty', 'study'], 'ghint': ['night', 'thing']}",
+        "{'dstuy': ['study'], 'ghint': ['thing']}",
+        "{'dusty': ['dusty'], 'study': ['study'], 'night': ['night'], 'thing': ['thing']}",
+        "{'dstuy': ['dusty', 'dstuy'], 'ghint': ['night', 'ghint']}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-groups-7b486e",
+      "text": "What is in `groups` at the end?",
+      "code": "groups = {}\nfor word in [\"evil\", \"vile\", \"live\", \"veil\"]:\n    key = \"\".join(sorted(word))\n    if key in groups:\n        groups[key].append(word)\n    else:\n        groups[key] = [word]",
+      "options": [
+        "{'eilv': ['evil', 'vile', 'live', 'veil']}",
+        "{'eilv': ['veil']}",
+        "{'evil': ['evil'], 'vile': ['vile'], 'live': ['live'], 'veil': ['veil']}",
+        "{'eilv': ['evil', 'eilv', 'eilv', 'eilv']}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "an-input-check-62fa12",
+      "text": "What did the user type?",
+      "code": "guess = input()\nprint(sorted(guess.lower()) == sorted(\"listen\"))",
+      "output": "True",
+      "options": ["Silent", "Silence", "Listed", "lists"],
+      "answer": 0
+    },
+    {
+      "id": "an-input-check-38a5d2",
+      "text": "What did the user type?",
+      "code": "guess = input()\nprint(sorted(guess.lower()) == sorted(\"night\"))",
+      "output": "True",
+      "options": ["Thing", "Things", "Nights", "Think"],
+      "answer": 0
+    },
+    {
+      "id": "an-input-check-4b788c",
+      "text": "What did the user type?",
+      "code": "guess = input()\nprint(sorted(guess.lower()) == sorted(\"race\"))",
+      "output": "False",
+      "options": ["Cars", "Care", "acre", "RACE"],
+      "answer": 0
+    },
+    {
+      "id": "an-input-check-186d9c",
+      "text": "What did the user type?",
+      "code": "guess = input()\nprint(sorted(guess.lower()) == sorted(\"dusty\"))",
+      "output": "False",
+      "options": ["Dust", "Study", "stUdy", "tydus"],
+      "answer": 0
+    },
+    {
+      "id": "an-error-int-2dbf17",
+      "text": "Which error stops this program?",
+      "code": "code = 12345\nprint(\"\".join(sorted(code)))",
+      "options": ["TypeError", "ValueError", "IndexError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "an-error-int-5ef122",
+      "text": "Which error stops this program?",
+      "code": "code = 987\nprint(\"\".join(sorted(code)))",
+      "options": ["TypeError", "ValueError", "IndexError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "an-error-index-806c4f",
+      "text": "Which error stops this program?",
+      "code": "first = \"listen\"\nsecond = \"silen\"\nsame = True\nfor i in range(len(first)):\n    if sorted(first)[i] != sorted(second)[i]:\n        same = False\nprint(same)",
+      "options": ["IndexError", "KeyError", "ValueError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "an-error-index-695127",
+      "text": "Which error stops this program?",
+      "code": "first = \"race\"\nsecond = \"car\"\nsame = True\nfor i in range(len(first)):\n    if sorted(first)[i] != sorted(second)[i]:\n        same = False\nprint(same)",
+      "options": ["IndexError", "KeyError", "ValueError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-count-0ac100",
+      "text": "What is in `count` at the end?",
+      "code": "count = 0\nfor word in [\"race\", \"care\", \"race\", \"acre\", \"cars\"]:\n    if sorted(word) == sorted(\"race\"):\n        count += 1",
+      "options": ["4", "2", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-count-c236e0",
+      "text": "What is in `count` at the end?",
+      "code": "count = 0\nfor word in [\"silent\", \"listen\", \"enlist\", \"listen\", \"tinsel\"]:\n    if sorted(word) == sorted(\"listen\"):\n        count += 1",
+      "options": ["5", "2", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-count-beb112",
+      "text": "What is in `count` at the end?",
+      "code": "count = 0\nfor word in [\"rat\", \"tar\", \"art\", \"tar\", \"car\"]:\n    if sorted(word) == sorted(\"tar\"):\n        count += 1",
+      "options": ["4", "2", "0", "1"],
+      "answer": 0
+    },
+    {
+      "id": "an-holds-count-3944eb",
+      "text": "What is in `count` at the end?",
+      "code": "count = 0\nfor word in [\"vile\", \"evil\", \"live\", \"evil\", \"veil\", \"even\"]:\n    if sorted(word) == sorted(\"evil\"):\n        count += 1",
+      "options": ["5", "2", "0", "1"],
       "answer": 0
     }
   ]

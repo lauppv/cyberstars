@@ -289,22 +289,6 @@
         {
           "s": "45, 82, 67, 91, 38",
           "m": 50
-        },
-        {
-          "s": "12, 60, 60, 75, 30",
-          "m": 60
-        },
-        {
-          "s": "90, 15, 70, 40",
-          "m": 40
-        },
-        {
-          "s": "5, 9, 7, 3, 10",
-          "m": 7
-        },
-        {
-          "s": "55, 50, 49, 80",
-          "m": 50
         }
       ],
       "mistakes": [
@@ -323,22 +307,6 @@
         {
           "n": "3, 8, 12, 5, 20",
           "c": "> 6"
-        },
-        {
-          "n": "1, 2, 3, 4, 5, 6",
-          "c": "% 2 == 0"
-        },
-        {
-          "n": "15, 7, 22, 9, 30",
-          "c": "< 10"
-        },
-        {
-          "n": "4, 9, 16, 25",
-          "c": "% 3 == 1"
-        },
-        {
-          "n": "10, 20, 30, 40",
-          "c": "!= 30"
         }
       ],
       "mistakes": [
@@ -357,22 +325,6 @@
         {
           "s": "45, 82, 67",
           "b": 5
-        },
-        {
-          "s": "10, 20, 30, 40",
-          "b": 3
-        },
-        {
-          "s": "7, 1, 9",
-          "b": 10
-        },
-        {
-          "s": "50, 60",
-          "b": 15
-        },
-        {
-          "s": "99, 0, 50, 25",
-          "b": 1
         }
       ],
       "mistakes": [
@@ -395,18 +347,6 @@
         {
           "g": "90, 55, 30, 99",
           "b": 10
-        },
-        {
-          "g": "60, 49, 50, 95",
-          "b": 8
-        },
-        {
-          "g": "85, 12, 98, 70",
-          "b": 4
-        },
-        {
-          "g": "51, 92, 20",
-          "b": 9
         }
       ],
       "mistakes": [
@@ -439,33 +379,6 @@
           "c": "Ken",
           "z": 60,
           "m": 60
-        },
-        {
-          "a": "Mercedes",
-          "x": 50,
-          "b": "Kent",
-          "y": 75,
-          "c": "Victor",
-          "z": 49,
-          "m": 50
-        },
-        {
-          "a": "Avery",
-          "x": 20,
-          "b": "Diaz",
-          "y": 90,
-          "c": "Hilary",
-          "z": 85,
-          "m": 80
-        },
-        {
-          "a": "Ricardo",
-          "x": 66,
-          "b": "Lance",
-          "y": 99,
-          "c": "Tommy",
-          "z": 12,
-          "m": 65
         }
       ],
       "mistakes": [
@@ -489,15 +402,6 @@
         },
         {
           "r": "60, 12, 99, 70"
-        },
-        {
-          "r": "50, 51, 20, 96"
-        },
-        {
-          "r": "30, 80, 50, 98, 10"
-        },
-        {
-          "r": "75, 50, 40"
         }
       ],
       "mistakes": [
@@ -519,18 +423,6 @@
         },
         {
           "n": "2, 4, 6, 8",
-          "m": 5
-        },
-        {
-          "n": "10, 3, 8, 1",
-          "m": 5
-        },
-        {
-          "n": "4, 5, 6",
-          "m": 4
-        },
-        {
-          "n": "9, 2, 7, 4",
           "m": 5
         }
       ],
@@ -554,18 +446,6 @@
         {
           "w": "\"Marte\", \"Venus\", \"Terra\", \"Io\"",
           "k": 3
-        },
-        {
-          "w": "\"nava\", \"racheta\", \"echipaj\", \"pilot\"",
-          "k": 5
-        },
-        {
-          "w": "\"stea\", \"cometa\", \"cer\"",
-          "k": 3
-        },
-        {
-          "w": "\"doc\", \"lansare\", \"motor\", \"combustibil\"",
-          "k": 5
         }
       ],
       "mistakes": [
@@ -784,6 +664,328 @@
         }
       ],
       "bug": ["if jucator[\"online\"]:", "if jucator[\"nume\"]:"]
+    },
+    {
+      "id": "ft-holds-filter",
+      "kind": "holds",
+      "text": "Ce conține `{{o}}` la final?",
+      "code": "{{v}} = [{{s}}]\n{{o}} = [x for x in {{v}} if x >= {{m}}]",
+      "values": [
+        {
+          "v": "scoruri",
+          "o": "promovati",
+          "s": "45, 82, 50, 91, 38",
+          "m": 50
+        },
+        {
+          "v": "temperaturi",
+          "o": "calde",
+          "s": "18, 30, 33, 25, 31",
+          "m": 30
+        },
+        {
+          "v": "varste",
+          "o": "adulti",
+          "s": "12, 18, 30, 15",
+          "m": 18
+        },
+        {
+          "v": "viteze",
+          "o": "rapide",
+          "s": "60, 120, 90, 45",
+          "m": 90
+        },
+        {
+          "v": "niveluri",
+          "o": "mari",
+          "s": "3, 7, 5, 9, 2",
+          "m": 5
+        }
+      ],
+      "variable": "{{o}}",
+      "mistakes": [
+        ["x >= {{m}}", "x > {{m}}"],
+        ["[x for x in {{v}} if x >= {{m}}]", "[x for x in {{v}}]"],
+        ["x >= {{m}}", "x <= {{m}}"]
+      ]
+    },
+    {
+      "id": "ft-holds-cap",
+      "kind": "holds",
+      "text": "Ce conține `{{o}}` la final?",
+      "code": "{{v}} = [{{s}}]\n{{o}} = []\nfor x in {{v}}:\n    {{o}}.append(min(x + {{b}}, 100))",
+      "values": [
+        {
+          "v": "scoruri",
+          "o": "marite",
+          "s": "45, 98, 67",
+          "b": 5
+        },
+        {
+          "v": "scoruri",
+          "o": "marite",
+          "s": "90, 70, 99",
+          "b": 10
+        },
+        {
+          "v": "note",
+          "o": "finale",
+          "s": "82, 97, 38",
+          "b": 5
+        },
+        {
+          "v": "viata",
+          "o": "vindecat",
+          "s": "60, 95, 100",
+          "b": 20
+        },
+        {
+          "v": "combustibil",
+          "o": "realimentat",
+          "s": "50, 85, 92",
+          "b": 15
+        }
+      ],
+      "variable": "{{o}}",
+      "mistakes": [
+        ["min(", "max("],
+        ["min(x + {{b}}, 100)", "x + {{b}}"],
+        ["{{o}}.append(min(x + {{b}}, 100))", "{{o}} = [min(x + {{b}}, 100)]"]
+      ]
+    },
+    {
+      "id": "ft-holds-names",
+      "kind": "holds",
+      "text": "Ce conține `{{o}}` la final?",
+      "code": "{{ps}} = [{\"{{nk}}\": \"{{a}}\", \"{{sk}}\": {{x}}}, {\"{{nk}}\": \"{{b}}\", \"{{sk}}\": {{y}}}, {\"{{nk}}\": \"{{c}}\", \"{{sk}}\": {{z}}}]\n{{o}} = [p[\"{{nk}}\"] for p in {{ps}} if p[\"{{sk}}\"] > {{m}}]",
+      "values": [
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "o": "castigatori",
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "c": "Cortez",
+          "z": 88,
+          "m": 88
+        },
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "o": "castigatori",
+          "a": "Phil",
+          "x": 71,
+          "b": "Sonny",
+          "y": 60,
+          "c": "Ken",
+          "z": 60,
+          "m": 60
+        },
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "o": "cei_mai_buni",
+          "a": "Ana",
+          "x": 50,
+          "b": "Rex",
+          "y": 75,
+          "c": "Kai",
+          "z": 90,
+          "m": 50
+        },
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "o": "cei_mai_buni",
+          "a": "Zoe",
+          "x": 30,
+          "b": "Mia",
+          "y": 80,
+          "c": "Ben",
+          "z": 80,
+          "m": 30
+        },
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "o": "top",
+          "a": "Nova",
+          "x": 12,
+          "b": "Vega",
+          "y": 7,
+          "c": "Orion",
+          "z": 9,
+          "m": 7
+        }
+      ],
+      "variable": "{{o}}",
+      "mistakes": [
+        ["[p[\"{{nk}}\"] for", "[p[\"{{sk}}\"] for"],
+        ["[p[\"{{nk}}\"] for", "[p for"],
+        ["> {{m}}", ">= {{m}}"]
+      ]
+    },
+    {
+      "id": "ft-input-limit",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{l}} = int(input())\n{{v}} = [{{s}}]\nprint([x for x in {{v}} if x >= {{l}}])",
+      "values": [
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "v": "scoruri",
+          "s": "45, 82, 67, 91, 38",
+          "a": 70,
+          "w1": 91,
+          "w2": 45,
+          "w3": 100
+        },
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "v": "temperaturi",
+          "s": "18, 30, 33, 25",
+          "a": 26,
+          "w1": 33,
+          "w2": 18,
+          "w3": 40
+        },
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "v": "varste",
+          "s": "12, 18, 30, 15",
+          "a": 16,
+          "w1": 30,
+          "w2": 12,
+          "w3": 31
+        },
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "v": "niveluri",
+          "s": "3, 7, 5, 9",
+          "a": 6,
+          "w1": 9,
+          "w2": 3,
+          "w3": 10
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "ft-error-key",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{ps}} = [{\"{{nk}}\": \"{{a}}\", \"{{sk}}\": {{x}}}, {\"{{nk}}\": \"{{b}}\", \"{{sk}}\": {{y}}}]\nprint([p[\"{{bad}}\"] for p in {{ps}}])",
+      "values": [
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "a": "Tommy",
+          "x": 95,
+          "b": "Lance",
+          "y": 42,
+          "bad": "puncte"
+        },
+        {
+          "ps": "jucatori",
+          "nk": "nume",
+          "sk": "scor",
+          "l": "limita",
+          "a": "Ana",
+          "x": 50,
+          "b": "Rex",
+          "y": 75,
+          "bad": "Nume"
+        }
+      ],
+      "wrong": ["IndexError", "NameError", "ValueError"]
+    },
+    {
+      "id": "ft-error-type",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{v}} = [{{s}}]\nprint([x + \"{{b}}\" for x in {{v}}])",
+      "values": [
+        {
+          "v": "scoruri",
+          "s": "45, 82, 67",
+          "b": "5"
+        },
+        {
+          "v": "preturi",
+          "s": "10, 20",
+          "b": "1"
+        }
+      ],
+      "wrong": ["ValueError", "KeyError", "IndexError"]
+    },
+    {
+      "id": "ft-holds-lens",
+      "kind": "holds",
+      "text": "Ce conține `{{o}}` la final?",
+      "code": "{{v}} = [{{s}}]\n{{o}} = [len(w) for w in {{v}} if w[0] == \"{{c}}\"]",
+      "values": [
+        {
+          "v": "cuvinte",
+          "o": "marimi",
+          "s": "\"mare\", \"munte\", \"soare\", \"film\"",
+          "c": "m",
+          "C": "M"
+        },
+        {
+          "v": "mancaruri",
+          "o": "marimi",
+          "s": "\"apa\", \"avion\", \"banana\", \"pizza\"",
+          "c": "a",
+          "C": "A"
+        },
+        {
+          "v": "meniu",
+          "o": "marimi",
+          "s": "\"tort\", \"tren\", \"cafea\", \"test\"",
+          "c": "t",
+          "C": "T"
+        },
+        {
+          "v": "coduri",
+          "o": "marimi",
+          "s": "\"paine\", \"pod\", \"zap\", \"pop\"",
+          "c": "p",
+          "C": "P"
+        }
+      ],
+      "variable": "{{o}}",
+      "mistakes": [
+        ["[len(w) for", "[w for"],
+        ["w[0] == \"{{c}}\"", "w[0] == \"{{C}}\""],
+        ["w[0] == \"{{c}}\"", "w[-1] == \"{{c}}\""]
+      ]
     }
   ]
 }

@@ -290,15 +290,6 @@
         },
         {
           "t": "Ab-C 12d"
-        },
-        {
-          "t": "Marte, Venus!"
-        },
-        {
-          "t": "R2-D2 Pornit"
-        },
-        {
-          "t": "Orbita 42 OK"
         }
       ],
       "mistakes": [
@@ -322,15 +313,6 @@
         },
         {
           "w": "stres"
-        },
-        {
-          "w": "rotor"
-        },
-        {
-          "w": "tort"
-        },
-        {
-          "w": "capac"
         }
       ],
       "mistakes": [
@@ -354,18 +336,6 @@
         {
           "a": "Mare",
           "b": "rame"
-        },
-        {
-          "a": "Lac",
-          "b": "cal!"
-        },
-        {
-          "a": "Rac",
-          "b": "car!"
-        },
-        {
-          "a": "Sare",
-          "b": "rase"
         }
       ],
       "mistakes": [
@@ -387,15 +357,6 @@
         },
         {
           "s": "scaneaza sectorul urmator"
-        },
-        {
-          "s": "tot echipajul pe punte"
-        },
-        {
-          "s": "semnal pierdut din nou"
-        },
-        {
-          "s": "motoarele sunt gata"
         }
       ],
       "mistakes": [
@@ -420,21 +381,6 @@
           "r": "70, 20, 99, 60",
           "b": 10,
           "m": 60
-        },
-        {
-          "r": "55, 49, 97, 30, 75",
-          "b": 5,
-          "m": 50
-        },
-        {
-          "r": "88, 92, 15, 40",
-          "b": 10,
-          "m": 40
-        },
-        {
-          "r": "65, 95, 35",
-          "b": 8,
-          "m": 65
         }
       ],
       "mistakes": [
@@ -458,18 +404,6 @@
         {
           "n": "1, 3, 4, 6, 8",
           "t": 9
-        },
-        {
-          "n": "2, 4, 5, 6, 7, 9",
-          "t": 11
-        },
-        {
-          "n": "1, 2, 5, 8, 10",
-          "t": 10
-        },
-        {
-          "n": "3, 4, 5, 6, 7",
-          "t": 10
         }
       ],
       "mistakes": [
@@ -494,12 +428,6 @@
         },
         {
           "t": "Ene purta patru pene"
-        },
-        {
-          "t": "Rara bara"
-        },
-        {
-          "t": "Sus, cu capac"
         }
       ],
       "mistakes": [
@@ -727,6 +655,201 @@
         }
       ],
       "bug": ["        stanga += 1", "        stanga += 2"]
+    },
+    {
+      "id": "rps-holds-clean",
+      "kind": "holds",
+      "text": "Ce conține `{{c}}` la final?",
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\n{{c}} = curata_text(\"{{t}}\")",
+      "values": [
+        {
+          "c": "curatat",
+          "t": "Salut, Lume!"
+        },
+        {
+          "c": "curatat",
+          "t": "Ele fac"
+        },
+        {
+          "c": "curatat",
+          "t": "A1 B2"
+        },
+        {
+          "c": "curatat",
+          "t": "Vice City 86"
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        [
+          "            rezultat += caracter.lower()\n    return rezultat",
+          "            rezultat += caracter.lower()\n        return rezultat"
+        ],
+        ["caracter.lower()", "caracter"],
+        ["return rezultat", "print(rezultat)"]
+      ]
+    },
+    {
+      "id": "rps-holds-reverse",
+      "kind": "holds",
+      "text": "Ce conține `{{r}}` la final?",
+      "code": "{{w}} = \"{{s}}\".split(\" \")\n{{r}} = \" \".join({{w}}[::-1])",
+      "values": [
+        {
+          "w": "cuvinte",
+          "r": "invers",
+          "s": "sistemul este pornit"
+        },
+        {
+          "w": "cuvinte",
+          "r": "invers",
+          "s": "mergi spre Marte"
+        },
+        {
+          "w": "cuvinte",
+          "r": "invers",
+          "s": "tot echipajul pe punte"
+        },
+        {
+          "w": "cuvinte",
+          "r": "invers",
+          "s": "combustibil putin acum"
+        }
+      ],
+      "variable": "{{r}}",
+      "mistakes": [
+        ["{{w}}[::-1]", "{{w}}"],
+        ["\" \".join", "\"\".join"],
+        ["\" \".join({{w}}[::-1])", "{{w}}[::-1]"]
+      ]
+    },
+    {
+      "id": "rps-holds-pairs",
+      "kind": "holds",
+      "text": "Ce conține `{{p}}` la final?",
+      "code": "{{v}} = [{{n}}]\n{{p}} = []\n{{l}} = 0\n{{r}} = len({{v}}) - 1\nwhile {{l}} < {{r}}:\n    {{s}} = {{v}}[{{l}}] + {{v}}[{{r}}]\n    if {{s}} == {{t}}:\n        {{p}}.append(({{v}}[{{l}}], {{v}}[{{r}}]))\n        {{l}} += 1\n        {{r}} -= 1\n    elif {{s}} < {{t}}:\n        {{l}} += 1\n    else:\n        {{r}} -= 1",
+      "values": [
+        {
+          "v": "numere",
+          "p": "perechi",
+          "l": "stanga",
+          "r": "dreapta",
+          "s": "suma",
+          "n": "1, 2, 4, 6, 7",
+          "t": 8
+        },
+        {
+          "v": "numere",
+          "p": "perechi",
+          "l": "stanga",
+          "r": "dreapta",
+          "s": "suma",
+          "n": "1, 3, 5, 7, 9",
+          "t": 10
+        },
+        {
+          "v": "numere",
+          "p": "perechi",
+          "l": "stanga",
+          "r": "dreapta",
+          "s": "suma",
+          "n": "2, 3, 4, 5, 6",
+          "t": 8
+        },
+        {
+          "v": "numere",
+          "p": "perechi",
+          "l": "stanga",
+          "r": "dreapta",
+          "s": "suma",
+          "n": "1, 4, 5, 6, 9",
+          "t": 10
+        }
+      ],
+      "variable": "{{p}}",
+      "mistakes": [
+        ["({{v}}[{{l}}], {{v}}[{{r}}])", "({{l}}, {{r}})"],
+        ["while {{l}} < {{r}}", "while {{l}} <= {{r}}"],
+        ["{{p}}.append(({{v}}[{{l}}], {{v}}[{{r}}]))", "{{p}} = [({{v}}[{{l}}], {{v}}[{{r}}])]"]
+      ]
+    },
+    {
+      "id": "rps-input-pal",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{x}} = input()\n{{c}} = \"\"\nfor ch in {{x}}:\n    if ch.isalpha():\n        {{c}} += ch.lower()\nprint({{c}} == {{c}}[::-1])",
+      "values": [
+        {
+          "x": "text",
+          "c": "curatat",
+          "a": "Ele fac cafele",
+          "w1": "Ele fac cafea",
+          "w2": "Ele fac",
+          "w3": "Elefanti"
+        },
+        {
+          "x": "rand",
+          "c": "litere",
+          "a": "Capac",
+          "w1": "Capace",
+          "w2": "Capat",
+          "w3": "Cap"
+        },
+        {
+          "x": "text",
+          "c": "curatat",
+          "a": "Salut",
+          "w1": "Radar",
+          "w2": "Ele!",
+          "w3": "Cojoc"
+        },
+        {
+          "x": "rand",
+          "c": "litere",
+          "a": "Vice City",
+          "w1": "Ana",
+          "w2": "Rotitor",
+          "w3": "Ele fac cafele"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "rps-error-split",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{w}} = \"{{s}}\".split(\" \")\nprint({{w}}[{{i}}])",
+      "values": [
+        {
+          "w": "cuvinte",
+          "s": "sistemul este pornit",
+          "i": 3
+        },
+        {
+          "w": "cuvinte",
+          "s": "mergi spre Marte",
+          "i": 5
+        }
+      ],
+      "wrong": ["KeyError", "ValueError", "TypeError"]
+    },
+    {
+      "id": "rps-error-int",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{x}} = \"{{s}}\"\nprint(int({{x}}) + 1)",
+      "values": [
+        {
+          "x": "citire",
+          "s": "4.5"
+        },
+        {
+          "x": "citire",
+          "s": "abc"
+        }
+      ],
+      "wrong": ["TypeError", "NameError", "IndexError"]
     }
   ]
 }
