@@ -50,18 +50,6 @@
       "answer": 0
     },
     {
-      "id": "fn-greet-2a4633",
-      "text": "What does this print?",
-      "code": "def wave(pilot):\n    print(f\"Good luck, {pilot}!\")\n\nwave(\"Nova\")\nwave(\"Rex\")",
-      "options": [
-        "Good luck, Nova!\nGood luck, Rex!",
-        "Good luck, {pilot}!\nGood luck, {pilot}!",
-        "Good luck, pilot!\nGood luck, pilot!",
-        "Good luck, Rex!\nGood luck, Nova!"
-      ],
-      "answer": 0
-    },
-    {
       "id": "fn-two-9d1533",
       "text": "What does this print?",
       "code": "def show_age(name, age):\n    print(f\"{name} is {age} years old\")\n\nshow_age(\"Tommy\", 42)",
@@ -106,18 +94,6 @@
         "4 has Orion stars",
         "{hotel} has {stars} stars",
         "Orion has stars stars"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "fn-two-ef6efb",
-      "text": "What does this print?",
-      "code": "def crew_age(pilot, age):\n    print(f\"{pilot} is {age} years old\")\n\ncrew_age(\"Lance\", 35)",
-      "options": [
-        "Lance is 35 years old",
-        "35 is Lance years old",
-        "{pilot} is {age} years old",
-        "Lance is age years old"
       ],
       "answer": 0
     },
@@ -213,18 +189,6 @@
       "answer": 0
     },
     {
-      "id": "fn-loop-7aabe6",
-      "text": "What does this print?",
-      "code": "def check_doors(doors):\n    for i in range(1, doors + 1):\n        print(f\"Door {i}\")\n\ncheck_doors(5)",
-      "options": [
-        "Door 1\nDoor 2\nDoor 3\nDoor 4\nDoor 5",
-        "Door 1\nDoor 2\nDoor 3\nDoor 4",
-        "Door 0\nDoor 1\nDoor 2\nDoor 3\nDoor 4",
-        "Door {i}\nDoor {i}\nDoor {i}\nDoor {i}\nDoor {i}"
-      ],
-      "answer": 0
-    },
-    {
       "id": "fn-status-61a784",
       "text": "What does this print?",
       "code": "def f(name, status):\n    if status == True:\n        print(f\"{name} is online\")\n    else:\n        print(f\"{name} is offline\")\n\nf(\"Admin\", True)",
@@ -250,13 +214,6 @@
       "text": "What does this print?",
       "code": "def door(room, locked):\n    if locked == True:\n        print(f\"{room} is locked\")\n    else:\n        print(f\"{room} is open\")\n\ndoor(\"Bridge\", False)",
       "options": ["Bridge is open", "Bridge is locked", "False is open", "room is open"],
-      "answer": 0
-    },
-    {
-      "id": "fn-status-e971ec",
-      "text": "What does this print?",
-      "code": "def engine(ship, ready):\n    if ready == True:\n        print(f\"{ship} is ready\")\n    else:\n        print(f\"{ship} needs repairs\")\n\nengine(\"Nova\", True)",
-      "options": ["Nova is ready", "Nova needs repairs", "True needs repairs", "ship is ready"],
       "answer": 0
     },
     {
@@ -711,6 +668,38 @@
         "print(f\"{hotel} has {stars} stars\")",
         "def rating(hotel, stars):"
       ],
+      "answer": 0
+    },
+    {
+      "id": "fn-input-greet-eafb72",
+      "text": "What did the user type?",
+      "code": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(input())",
+      "output": "Hello, Ana!",
+      "options": ["Ana", "Hello, Ana!", "name", "Ana!"],
+      "answer": 0
+    },
+    {
+      "id": "fn-input-greet-bf89da",
+      "text": "What did the user type?",
+      "code": "def cheer(player):\n    print(f\"Well done, {player}!\")\n\ncheer(input())",
+      "output": "Well done, Ben!",
+      "options": ["Ben", "Well done, Ben!", "player", "Ben!"],
+      "answer": 0
+    },
+    {
+      "id": "fn-input-laps-816a03",
+      "text": "What did the user type?",
+      "code": "def count_laps(laps):\n    for i in range(1, laps + 1):\n        print(f\"Lap {i}\")\n\ncount_laps(int(input()))",
+      "output": "Lap 1\nLap 2\nLap 3",
+      "options": ["3", "4", "2", "Lap 3"],
+      "answer": 0
+    },
+    {
+      "id": "fn-input-laps-1e919e",
+      "text": "What did the user type?",
+      "code": "def show_levels(levels):\n    for i in range(1, levels + 1):\n        print(f\"Level {i}\")\n\nshow_levels(int(input()))",
+      "output": "Level 1\nLevel 2\nLevel 3\nLevel 4",
+      "options": ["4", "5", "3", "Level 4"],
       "answer": 0
     }
   ]

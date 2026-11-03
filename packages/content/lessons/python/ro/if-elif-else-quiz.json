@@ -381,42 +381,6 @@
           "ta": "Excelent",
           "tb": "Trecut",
           "tc": "Picat"
-        },
-        {
-          "v": "baterie",
-          "x": 100,
-          "a": 60,
-          "b": 20,
-          "ta": "Baterie buna",
-          "tb": "Baterie slaba",
-          "tc": "Incarca acum"
-        },
-        {
-          "v": "baterie",
-          "x": 20,
-          "a": 60,
-          "b": 20,
-          "ta": "Baterie buna",
-          "tb": "Baterie slaba",
-          "tc": "Incarca acum"
-        },
-        {
-          "v": "combustibil",
-          "x": 10,
-          "a": 70,
-          "b": 30,
-          "ta": "Rezervor plin",
-          "tb": "Rezervor pe jumatate",
-          "tc": "Alimenteaza acum"
-        },
-        {
-          "v": "combustibil",
-          "x": 69,
-          "a": 70,
-          "b": 30,
-          "ta": "Rezervor plin",
-          "tb": "Rezervor pe jumatate",
-          "tc": "Alimenteaza acum"
         }
       ],
       "mistakes": [
@@ -597,19 +561,6 @@
           "tb": "Sambata",
           "tc": "Duminica",
           "td": "O zi de lucru"
-        },
-        {
-          "v": "nivel",
-          "x": 5,
-          "y": 10,
-          "z": 1,
-          "a": 1,
-          "b": 5,
-          "c": 10,
-          "ta": "Tutorial",
-          "tb": "Mini boss",
-          "tc": "Boss final",
-          "td": "Nivel normal"
         }
       ],
       "mistakes": [
@@ -1266,6 +1217,92 @@
         }
       ],
       "bug": ["elif {{v}} >= {{b}}:", "elif {{v}} <= {{b}}:"]
+    },
+    {
+      "id": "iee-holds-bonus",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "{{v}} = {{x}}\nif {{v}} >= {{a}}:\n    {{v}} = {{v}} + {{pa}}\nelif {{v}} >= {{b}}:\n    {{v}} = {{v}} + {{pb}}\nelse:\n    {{v}} = {{v}} + {{pc}}",
+      "values": [
+        {
+          "v": "scor",
+          "x": 95,
+          "a": 90,
+          "b": 50,
+          "pa": 30,
+          "pb": 20,
+          "pc": 10
+        },
+        {
+          "v": "combustibil",
+          "x": 60,
+          "a": 80,
+          "b": 40,
+          "pa": 5,
+          "pb": 15,
+          "pc": 30
+        },
+        {
+          "v": "viteza",
+          "x": 20,
+          "a": 100,
+          "b": 50,
+          "pa": 10,
+          "pb": 20,
+          "pc": 35
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["elif", "if"],
+        [
+          "if {{v}} >= {{a}}:\n    {{v}} = {{v}} + {{pa}}\nelif {{v}} >= {{b}}:\n    {{v}} = {{v}} + {{pb}}",
+          "if {{v}} >= {{b}}:\n    {{v}} = {{v}} + {{pb}}\nelif {{v}} >= {{a}}:\n    {{v}} = {{v}} + {{pa}}"
+        ],
+        [">= {{a}}", "<= {{a}}"],
+        [">= {{b}}", "<= {{b}}"],
+        ["{{v}} = {{v}} + {{pa}}", "{{v}} = {{pa}}"],
+        ["{{v}} = {{v}} + {{pb}}", "{{v}} = {{pb}}"],
+        ["{{v}} = {{v}} + {{pc}}", "{{v}} = {{pc}}"]
+      ]
+    },
+    {
+      "id": "iee-holds-label",
+      "kind": "holds",
+      "text": "Ce conține `{{w}}` la final?",
+      "code": "{{v}} = {{x}}\n{{w}} = \"{{start}}\"\nif {{v}} >= {{a}}:\n    {{w}} = {{w}} + \"{{ta}}\"\nelif {{v}} >= {{b}}:\n    {{w}} = {{w}} + \"{{tb}}\"\nelse:\n    {{w}} = {{w}} + \"{{tc}}\"",
+      "values": [
+        {
+          "v": "scor",
+          "w": "grupa",
+          "x": 72,
+          "a": 90,
+          "b": 60,
+          "start": "Grupa ",
+          "ta": "A",
+          "tb": "B",
+          "tc": "C"
+        },
+        {
+          "v": "oxigen",
+          "w": "stare",
+          "x": 85,
+          "a": 80,
+          "b": 50,
+          "start": "Oxigen ",
+          "ta": "nominal",
+          "tb": "scazut",
+          "tc": "critic"
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["elif", "if"],
+        [">= {{a}}", "<= {{a}}"],
+        [">= {{b}}", "<= {{b}}"],
+        ["{{w}} = {{w}} + \"{{ta}}\"", "{{w}} = \"{{ta}}\""],
+        ["{{w}} = {{w}} + \"{{tb}}\"", "{{w}} = \"{{tb}}\""]
+      ]
     }
   ]
 }

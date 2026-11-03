@@ -314,11 +314,6 @@
           "a": 3,
           "b": 12,
           "s": 6
-        },
-        {
-          "a": 2,
-          "b": 9,
-          "s": 7
         }
       ],
       "mistakes": [
@@ -350,11 +345,6 @@
           "a": 4,
           "b": 9,
           "s": 6
-        },
-        {
-          "a": 2,
-          "b": 8,
-          "s": 5
         }
       ],
       "mistakes": [
@@ -918,6 +908,35 @@
         }
       ],
       "bug": ["while True:", "while true:"]
+    },
+    {
+      "id": "bc-holds-finish",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{v}} = 0\nfor {{lap}} in range(1, {{b}}):\n    if {{lap}} * {{speed}} > {{goal}}:\n        {{v}} = {{lap}}\n        break",
+      "values": [
+        {
+          "v": "finish",
+          "lap": "lap",
+          "b": 10,
+          "speed": 30,
+          "goal": 100
+        },
+        {
+          "v": "arrival",
+          "lap": "hour",
+          "b": 8,
+          "speed": 25,
+          "goal": 100
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["break", "continue"],
+        ["> {{goal}}", "< {{goal}}"],
+        ["> {{goal}}", ">= {{goal}}"],
+        ["{{v}} = {{lap}}", "{{v}} = {{lap}} * {{speed}}"]
+      ]
     }
   ]
 }

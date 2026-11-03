@@ -237,10 +237,6 @@
         {
           "a": 12,
           "b": 4
-        },
-        {
-          "a": 10,
-          "b": 4
         }
       ],
       "mistakes": [
@@ -267,10 +263,6 @@
         {
           "a": 22,
           "b": 5
-        },
-        {
-          "a": 11,
-          "b": 4
         }
       ],
       "mistakes": [
@@ -297,10 +289,6 @@
         {
           "a": 19,
           "b": 4
-        },
-        {
-          "a": 30,
-          "b": 6
         }
       ],
       "mistakes": [
@@ -327,14 +315,6 @@
         {
           "a": 4,
           "b": 3
-        },
-        {
-          "a": 5,
-          "b": 3
-        },
-        {
-          "a": 10,
-          "b": 2
         }
       ],
       "mistakes": [
@@ -363,11 +343,6 @@
           "a": 5,
           "b": 5,
           "c": 2
-        },
-        {
-          "a": 3,
-          "b": 4,
-          "c": 10
         }
       ],
       "mistakes": [
@@ -765,6 +740,86 @@
         }
       ],
       "bug": ["hours = minutes // 60", "hours = minutes / 60"]
+    },
+    {
+      "id": "op-holds-share",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{t}} = {{a}}\n{{p}} = {{b}}\n{{v}} = {{t}} // {{p}}",
+      "values": [
+        {
+          "t": "coins",
+          "a": 17,
+          "p": "players",
+          "b": 5,
+          "v": "each"
+        },
+        {
+          "t": "fuel",
+          "a": 50,
+          "p": "ships",
+          "b": 4,
+          "v": "per_ship"
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["{{t}} // {{p}}", "{{t}} / {{p}}"],
+        ["{{t}} // {{p}}", "{{t}} % {{p}}"],
+        ["{{t}} // {{p}}", "{{p}} // {{t}}"]
+      ]
+    },
+    {
+      "id": "op-holds-left",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{t}} = {{a}}\n{{p}} = {{b}}\n{{v}} = {{t}} % {{p}}",
+      "values": [
+        {
+          "t": "cookies",
+          "a": 26,
+          "p": "crew",
+          "b": 8,
+          "v": "left"
+        },
+        {
+          "t": "crystals",
+          "a": 14,
+          "p": "boxes",
+          "b": 4,
+          "v": "rest"
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["{{t}} % {{p}}", "{{t}} // {{p}}"],
+        ["{{t}} % {{p}}", "{{t}} / {{p}}"],
+        ["{{t}} % {{p}}", "{{p}} % {{t}}"]
+      ]
+    },
+    {
+      "id": "op-holds-power",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "{{v}} = {{a}} ** {{b}}",
+      "values": [
+        {
+          "v": "cells",
+          "a": 2,
+          "b": 5
+        },
+        {
+          "v": "size",
+          "a": 3,
+          "b": 4
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["**", "*"],
+        ["**", "^"],
+        ["{{a}} ** {{b}}", "{{b}} ** {{a}}"]
+      ]
     }
   ]
 }

@@ -54,39 +54,6 @@
       "answer": 0
     },
     {
-      "id": "iee-chain-5bc5b4",
-      "text": "What does this print?",
-      "code": "battery = 100\nif battery >= 60:\n    print(\"Battery good\")\nelif battery >= 20:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
-      "options": [
-        "Battery good",
-        "Battery low",
-        "Battery good\nBattery low",
-        "Battery good\nCharge now"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "iee-chain-00a578",
-      "text": "What does this print?",
-      "code": "battery = 20\nif battery >= 60:\n    print(\"Battery good\")\nelif battery >= 20:\n    print(\"Battery low\")\nelse:\n    print(\"Charge now\")",
-      "options": ["Battery low", "Battery good", "Battery low\nCharge now", "Charge now"],
-      "answer": 0
-    },
-    {
-      "id": "iee-chain-e42546",
-      "text": "What does this print?",
-      "code": "fuel = 10\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel >= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
-      "options": ["Refuel now", "Full tank", "Half tank", "Full tank\nHalf tank\nRefuel now"],
-      "answer": 0
-    },
-    {
-      "id": "iee-chain-b6a32c",
-      "text": "What does this print?",
-      "code": "fuel = 69\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel >= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
-      "options": ["Half tank", "Full tank", "Half tank\nRefuel now", "Refuel now"],
-      "answer": 0
-    },
-    {
       "id": "iee-first-wins-d35991",
       "text": "What does this print?",
       "code": "speed = 120\nif speed > 50:\n    print(\"Fast\")\nelif speed > 100:\n    print(\"Too fast\")\nelse:\n    print(\"Slow\")",
@@ -205,13 +172,6 @@
         "Sunday",
         "The week starts\nSaturday\nSunday\nA work day"
       ],
-      "answer": 0
-    },
-    {
-      "id": "iee-countdown-7e48fd",
-      "text": "What does this print?",
-      "code": "level = 5\nif level == 1:\n    print(\"Tutorial\")\nelif level == 5:\n    print(\"Mini boss\")\nelif level == 10:\n    print(\"Final boss\")\nelse:\n    print(\"Normal level\")",
-      "options": ["Mini boss", "Mini boss\nNormal level", "Final boss", "Tutorial"],
       "answer": 0
     },
     {
@@ -671,6 +631,41 @@
       "code": "fuel = 55\nif fuel >= 70:\n    print(\"Full tank\")\nelif fuel <= 30:\n    print(\"Half tank\")\nelse:\n    print(\"Refuel now\")",
       "output": "Half tank",
       "options": ["elif fuel <= 30:", "if fuel >= 70:", "else:", "print(\"Half tank\")"],
+      "answer": 0
+    },
+    {
+      "id": "iee-holds-bonus-ea57e9",
+      "text": "What is in `score` at the end?",
+      "code": "score = 95\nif score >= 90:\n    score = score + 30\nelif score >= 50:\n    score = score + 20\nelse:\n    score = score + 10",
+      "options": ["125", "145", "115", "30"],
+      "answer": 0
+    },
+    {
+      "id": "iee-holds-bonus-94f2aa",
+      "text": "What is in `fuel` at the end?",
+      "code": "fuel = 60\nif fuel >= 80:\n    fuel = fuel + 5\nelif fuel >= 40:\n    fuel = fuel + 15\nelse:\n    fuel = fuel + 30",
+      "options": ["75", "65", "90", "15"],
+      "answer": 0
+    },
+    {
+      "id": "iee-holds-bonus-4dfeb8",
+      "text": "What is in `speed` at the end?",
+      "code": "speed = 20\nif speed >= 100:\n    speed = speed + 10\nelif speed >= 50:\n    speed = speed + 20\nelse:\n    speed = speed + 35",
+      "options": ["55", "30", "40", "35"],
+      "answer": 0
+    },
+    {
+      "id": "iee-holds-label-c460a7",
+      "text": "What is in `grade` at the end?",
+      "code": "score = 72\ngrade = \"Grade \"\nif score >= 90:\n    grade = grade + \"A\"\nelif score >= 60:\n    grade = grade + \"B\"\nelse:\n    grade = grade + \"C\"",
+      "options": ["'Grade B'", "'Grade A'", "'Grade C'", "'B'"],
+      "answer": 0
+    },
+    {
+      "id": "iee-holds-label-20c6d2",
+      "text": "What is in `status` at the end?",
+      "code": "oxygen = 85\nstatus = \"Oxygen \"\nif oxygen >= 80:\n    status = status + \"nominal\"\nelif oxygen >= 50:\n    status = status + \"low\"\nelse:\n    status = status + \"critical\"",
+      "options": ["'Oxygen nominal'", "'Oxygen nominallow'", "'Oxygen low'", "'nominal'"],
       "answer": 0
     }
   ]
