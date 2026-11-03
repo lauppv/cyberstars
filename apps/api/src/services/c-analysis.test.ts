@@ -193,6 +193,27 @@ describe('checkStructure', () => {
     expect(failures).toEqual([{ type: 'require', rule: { kind: 'variable', name: 'missing' } }]);
   });
 
+  it('forbids a call in any use: a direct call, a pointer to it, a macro for it', async () => {
+    const rule: StructureFailure['rule'] = { kind: 'call', name: 'strlen' };
+    for (const body of [
+      'return (int)strlen(s);',
+      'size_t (*len)(const char *) = strlen; return (int)len(s);',
+    ]) {
+      const root = await parseC(
+        `#include <string.h>\nint main(void){ const char *s = "ab"; ${body} }`,
+      );
+      expect(checkStructure(root, { forbids: [rule] })).toEqual([{ type: 'forbid', rule }]);
+    }
+    const macro = await parseC(
+      '#include <string.h>\n#define LEN strlen\nint main(void){ return (int)LEN("ab"); }',
+    );
+    expect(checkStructure(macro, { forbids: [rule] })).toEqual([{ type: 'forbid', rule }]);
+    const own = await parseC(
+      'int main(void){ const char *s = "ab"; int n = 0; while (s[n]) n++; /* no strlen */ return n; }',
+    );
+    expect(checkStructure(own, { forbids: [rule] })).toHaveLength(0);
+  });
+
   it('fires a forbidden int literal (hardcode smell)', async () => {
     const root = await parseC('int main(void){ printf("%d", 42); return 0; }');
     const failures = checkStructure(root, {

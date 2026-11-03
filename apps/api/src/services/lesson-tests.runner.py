@@ -41,6 +41,40 @@ def has_call(tree, name):
     return False
 
 
+def bound_names(tree):
+    # Every name the student's own code binds: variables, loop targets,
+    # parameters, functions and classes.
+    names = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Name) and isinstance(node.ctx, (ast.Store, ast.Del)):
+            names.add(node.id)
+        elif isinstance(node, ast.arg):
+            names.add(node.arg)
+        elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            names.add(node.name)
+    return names
+
+
+def refers_to(tree, name):
+    # A forbidden call is forbidden in any use, since a function handed out
+    # under another name is called all the same: f = sorted, key=max,
+    # heapq.nsmallest without the call, from heapq import nsmallest as pick.
+    # A name the student binds themselves (max = nums[0]) is their own
+    # variable, not the builtin.
+    if has_call(tree, name):
+        return True
+    own = name in bound_names(tree)
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load):
+            if node.id == name and not own:
+                return True
+        elif isinstance(node, ast.Attribute) and node.attr == name:
+            return True
+        elif isinstance(node, ast.alias) and node.name.split(".")[-1] == name:
+            return True
+    return False
+
+
 def assigned_names(node):
     if isinstance(node, ast.Assign):
         for target in node.targets:
@@ -226,10 +260,10 @@ STATEMENT_KINDS = {
 }
 
 
-def rule_holds(tree, source, rule):
+def rule_holds(tree, source, rule, forbid=False):
     kind = rule.get("kind")
     if kind == "call":
-        return has_call(tree, rule["name"])
+        return (refers_to if forbid else has_call)(tree, rule["name"])
     if kind == "variable":
         return has_variable(tree, rule["name"])
     if kind == "function":
@@ -285,15 +319,15 @@ def reachable_functions(tree, name):
     return found
 
 
-def scoped_holds(tree, source, rule):
+def scoped_holds(tree, source, rule, forbid=False):
     # A rule with "in" looks only inside that function and the helpers it
     # calls (forbid [::-1] in reverse_text, also when it hands the slice to a
     # helper, while the rest of the program may slice). No such function: a
     # require fails and a forbid has nothing to fire on.
     scope = rule.get("in")
     if not scope:
-        return rule_holds(tree, source, rule)
-    return any(rule_holds(fn, source, rule) for fn in reachable_functions(tree, scope))
+        return rule_holds(tree, source, rule, forbid)
+    return any(rule_holds(fn, source, rule, forbid) for fn in reachable_functions(tree, scope))
 
 
 def check_structure(tree, source, structure):
@@ -302,7 +336,7 @@ def check_structure(tree, source, structure):
         if not scoped_holds(tree, source, rule):
             failures.append({"type": "require", "rule": rule})
     for rule in structure.get("forbids", []):
-        if scoped_holds(tree, source, rule):
+        if scoped_holds(tree, source, rule, forbid=True):
             failures.append({"type": "forbid", "rule": rule})
     return failures
 

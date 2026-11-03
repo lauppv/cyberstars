@@ -36,7 +36,9 @@ import com.sun.source.tree.ExpressionStatementTree;
 import com.sun.source.tree.ExpressionTree;
 import com.sun.source.tree.ForLoopTree;
 import com.sun.source.tree.IdentifierTree;
+import com.sun.source.tree.ImportTree;
 import com.sun.source.tree.LiteralTree;
+import com.sun.source.tree.MemberReferenceTree;
 import com.sun.source.tree.MemberSelectTree;
 import com.sun.source.tree.MethodInvocationTree;
 import com.sun.source.tree.MethodTree;
@@ -230,7 +232,13 @@ public class Runner {
     String error; // first parse error, or null
     String mainClass = "Main";
     final List<InjectPoint> points = new ArrayList<>();
+    // A library call counts by its bare name and by its class's, Arrays.sort as both sort and
+    // Arrays.sort, so a spec can forbid the library's sort while the student writes their own.
     final java.util.Set<String> callNames = new java.util.HashSet<>();
+    // Bare-name calls, and the classes a static import brings every member of (import static
+    // java.util.Arrays.*): such a call to a method the student doesn't define is that class's.
+    final java.util.Set<String> bareCalls = new java.util.HashSet<>();
+    final java.util.Set<String> staticOwners = new java.util.HashSet<>();
     final java.util.Set<String> variableNames = new java.util.HashSet<>();
     final java.util.Set<String> methodNames = new java.util.HashSet<>();
     // A method that calls itself somewhere in its own body.
@@ -362,8 +370,15 @@ public class Runner {
         @Override
         public Void visitMethodInvocation(MethodInvocationTree node, Void unused) {
           ExpressionTree select = node.getMethodSelect();
-          if (select instanceof IdentifierTree id) callNames.add(id.getName().toString());
-          if (select instanceof MemberSelectTree ms) callNames.add(ms.getIdentifier().toString());
+          if (select instanceof IdentifierTree id) {
+            callNames.add(id.getName().toString());
+            bareCalls.add(id.getName().toString());
+          }
+          if (select instanceof MemberSelectTree ms) {
+            callNames.add(ms.getIdentifier().toString());
+            String owner = lastName(ms.getExpression());
+            if (owner != null) callNames.add(owner + "." + ms.getIdentifier());
+          }
           // A method calls itself by its bare name or through this., with as
           // many arguments as it takes: name.equals(...) on a field or an
           // overload with another arity is a different method, and with an
@@ -379,6 +394,32 @@ public class Runner {
           String key = called + "/" + node.getArguments().size();
           if (called != null && key.equals(enclosingMethods.peek())) selfCalls.add(key);
           return super.visitMethodInvocation(node, unused);
+        }
+
+        @Override
+        public Void visitMemberReference(MemberReferenceTree node, Void unused) {
+          // Arrays::sort and ArrayDeque::new hand a method or a constructor out to be called
+          // elsewhere, so they count as calls to it.
+          String owner = lastName(node.getQualifierExpression());
+          String name = node.getName().toString();
+          if (name.equals("<init>")) {
+            if (owner != null) callNames.add(owner);
+          } else {
+            callNames.add(name);
+            if (owner != null) callNames.add(owner + "." + name);
+          }
+          return super.visitMemberReference(node, unused);
+        }
+
+        @Override
+        public Void visitImport(ImportTree node, Void unused) {
+          // import static java.util.Arrays.sort makes a bare sort(a) Arrays.sort.
+          if (node.isStatic() && node.getQualifiedIdentifier() instanceof MemberSelectTree ms) {
+            String owner = lastName(ms.getExpression());
+            if (owner != null && ms.getIdentifier().contentEquals("*")) staticOwners.add(owner);
+            else if (owner != null) callNames.add(owner + "." + ms.getIdentifier());
+          }
+          return super.visitImport(node, unused);
         }
 
         @Override
@@ -497,10 +538,22 @@ public class Runner {
         public Void visitCompilationUnit(CompilationUnitTree node, Void unused) {
           super.visitCompilationUnit(node, unused);
           for (String key : selfCalls) if (methodsByArity.get(key) == 1) hasRecursion = true;
+          for (String owner : staticOwners) {
+            for (String call : bareCalls) {
+              if (!methodNames.contains(call)) callNames.add(owner + "." + call);
+            }
+          }
           return null;
         }
       }.scan(unit, null);
       points.sort(Comparator.comparingLong(InjectPoint::start));
+    }
+
+    // The simple name a qualifier ends in: Arrays and java.util.Arrays are both Arrays.
+    static String lastName(Tree qualifier) {
+      if (qualifier instanceof IdentifierTree id) return id.getName().toString();
+      if (qualifier instanceof MemberSelectTree ms) return ms.getIdentifier().toString();
+      return null;
     }
 
     static String simpleType(Tree type) {

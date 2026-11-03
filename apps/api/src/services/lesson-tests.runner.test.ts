@@ -254,6 +254,35 @@ describe.skipIf(!has('python3'))('python runner', () => {
     });
   });
 
+  it('forbids a call in any use, but not a variable of the same name', () => {
+    const rule = { kind: 'call', name: 'nsmallest' };
+    const max = { kind: 'call', name: 'max' };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: [rule, max] }, cases: [] },
+        [],
+      )[0];
+    const forbidden = (which: unknown) => ({
+      syntaxError: null,
+      structureFailures: [{ type: 'forbid', rule: which }],
+    });
+    for (const code of [
+      'from heapq import nsmallest as pick\nprint(pick(1, [2]))\n',
+      'import heapq\npick = heapq.nsmallest\nprint(pick(1, [2]))\n',
+    ]) {
+      expect(header(code)).toEqual(forbidden(rule));
+    }
+    expect(header('pick = max\nprint(pick([1, 2]))\n')).toEqual(forbidden(max));
+    expect(header('print(sorted([1, 2], key=max))\n')).toEqual(forbidden(max));
+    expect(
+      header('max = 0\nfor x in [1, 2]:\n    if x > max:\n        max = x\nprint(max)\n'),
+    ).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+  });
+
   it('streams one line per case and stops on the server reply', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',
@@ -517,6 +546,37 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
     run();
     expect(fs.readFileSync(`${timer}.java`, 'utf8')).toBe(source);
     expect(fs.statSync(`${timer}.class`).mtimeMs).toBeGreaterThan(compiled);
+  });
+
+  it("counts a library call by its class's name too, and a method reference as a call", () => {
+    const passes = { syntaxError: null, structureFailures: [] };
+    const sort = { kind: 'call', name: 'Arrays.sort' };
+    for (const code of [
+      'import java.util.*;\n' + main('    static void f(int[] a) { Arrays.sort(a); }'),
+      main('    static void f(int[] a) { java.util.Arrays.sort(a); }'),
+      'import java.util.*;\nimport java.util.function.*;\n' +
+        main('    static Consumer<int[]> f = Arrays::sort;'),
+      'import static java.util.Arrays.sort;\n' + main('    static void f(int[] a) { sort(a); }'),
+      'import static java.util.Arrays.*;\n' + main('    static void f(int[] a) { sort(a); }'),
+    ]) {
+      expect(header(code, [sort])).toEqual(passes);
+    }
+    // The student's own sort is not the library's, even with every member of Arrays imported.
+    expect(
+      header(
+        'import static java.util.Arrays.*;\n' +
+          main('    static void sort(int[] a) {}\n    static void f(int[] a) { sort(a); }'),
+        [sort],
+      ),
+    ).toEqual({ syntaxError: null, structureFailures: [{ type: 'require', rule: sort }] });
+    const deque = { kind: 'call', name: 'ArrayDeque' };
+    expect(
+      header(
+        'import java.util.*;\nimport java.util.function.*;\n' +
+          main('    static Supplier<ArrayDeque<Integer>> make = ArrayDeque::new;'),
+        [deque],
+      ),
+    ).toEqual(passes);
   });
 
   it('takes a method calling itself as recursion, not a same-named call on something else', () => {

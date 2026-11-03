@@ -238,6 +238,18 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
   }
 }
 
+// A forbidden function is forbidden in any use, not only a direct call: a
+// pointer to it (`size_t (*len)(const char *) = strlen;`) or a macro that
+// expands to it (`#define LEN strlen`) calls it all the same.
+function refersTo(root: Node, name: string): boolean {
+  const word = new RegExp(`\\b${name.replace(/\W/g, '')}\\b`);
+  for (const node of walk(root)) {
+    if (node.type === 'identifier' && node.text === name) return true;
+    if (node.type === 'preproc_arg' && word.test(node.text)) return true;
+  }
+  return false;
+}
+
 export function checkStructure(
   root: Node,
   structure: LessonTestsSpec['structure'],
@@ -245,8 +257,11 @@ export function checkStructure(
   const failures: StructureFailure[] = [];
   for (const rule of structure?.requires ?? [])
     if (!ruleHolds(root, rule)) failures.push({ type: 'require', rule });
-  for (const rule of structure?.forbids ?? [])
-    if (ruleHolds(root, rule)) failures.push({ type: 'forbid', rule });
+  for (const rule of structure?.forbids ?? []) {
+    const holds =
+      rule.kind === 'call' && rule.name ? refersTo(root, rule.name) : ruleHolds(root, rule);
+    if (holds) failures.push({ type: 'forbid', rule });
+  }
   return failures;
 }
 
