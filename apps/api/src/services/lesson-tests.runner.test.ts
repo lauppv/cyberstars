@@ -319,6 +319,91 @@ describe.skipIf(!has('python3'))('python runner', () => {
     }
   });
 
+  it("sees the student's binding only on the paths where it has run", () => {
+    const max = { kind: 'call', name: 'max' };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: [max] }, cases: [] },
+        [],
+      )[0];
+    const forbidden = { syntaxError: null, structureFailures: [{ type: 'forbid', rule: max }] };
+    for (const code of [
+      // Bound in one branch, read in another.
+      'nums = [3, 1]\nif len(nums) < 0:\n    max = 0\nelse:\n    pick = max\nprint(pick(nums))\n',
+      "try:\n    int('x')\n    max = 0\nexcept ValueError:\n    pick = max\nprint(pick([3, 1]))\n",
+      'x = False and (max := 0)\npick = max\nprint(pick([3, 1]))\n',
+      // A function runs before the module binds the name.
+      'def get():\n    return max\nprint(get()([3, 1]))\nmax = 0\n',
+      'def get():\n    return max\nfs = []\nfs.append(get)\nprint(fs[0]()([3, 1]))\nmax = 0\n',
+      'class A:\n    def f():\n        return max\n    x = f()([3, 1])\nmax = 0\nprint(A.x)\n',
+      'def f():\n    global max\n    pick = max\n    max = 0\n    return pick\n',
+    ]) {
+      expect(header(code)).toEqual(forbidden);
+    }
+    const passes = { syntaxError: null, structureFailures: [] };
+    for (const code of [
+      // Read only where it is compared or printed, the builtin there would fail.
+      'nums = [3, 1]\nfor i, x in enumerate(nums):\n    if i == 0 or x > max:\n        max = x\nprint(max)\n',
+      // Their own max, defined after the function that calls it, before the call runs.
+      'def solve(nums):\n    m = nums[0]\n    for x in nums:\n        m = max(m, x)\n    return m\n' +
+        'def max(a, b):\n    return a if a > b else b\nnums = list(map(int, input().split()))\nprint(solve(nums))\n',
+    ]) {
+      expect(header(code)).toEqual(passes);
+    }
+    // A class whose operators may be handed the builtin keeps every read in sight.
+    expect(
+      header('class P:\n    def __lt__(self, o):\n        return o([1])\nprint(P() < max)\n'),
+    ).toEqual(forbidden);
+  });
+
+  it("takes the student's own function or attribute of a forbidden name as theirs", () => {
+    const rules = ['heappush', 'max', 'sort'].map((name) => ({ kind: 'call', name }));
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: rules }, cases: [] },
+        [],
+      )[0] as { structureFailures: { rule: { name: string } }[] };
+    const fired = (code: string) => header(code).structureFailures.map((f) => f.rule.name);
+    for (const code of [
+      'def heappush(h, x):\n    h.append(x)\nh = []\nheappush(h, 1)\n',
+      'class Box:\n    def __init__(self):\n        self.max = 0\n    def get(self):\n        return self.max\n',
+      'class Heap:\n    def heappush(self, x):\n        pass\nh = Heap()\nh.heappush(1)\n',
+    ]) {
+      expect(fired(code)).toEqual([]);
+    }
+    expect(fired('import heapq\nh = []\nheapq.heappush(h, 1)\n')).toEqual(['heappush']);
+    // Inherited from list, not the student's own.
+    expect(fired('class L(list):\n    def go(self):\n        self.sort()\n')).toEqual(['sort']);
+  });
+
+  it('forbids a call reached by a name built at run time or another program', () => {
+    const rule = { kind: 'call', name: 'max' };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: [rule] }, cases: [] },
+        [],
+      )[0];
+    for (const code of [
+      "print(getattr(__builtins__, 'm' + 'ax')([1]))\n",
+      "print(vars(__builtins__)['max']([1]))\n",
+      "import operator\nprint(operator.methodcaller('max')(x))\n",
+      "import os\nos.system('sort -n')\n",
+      'import subprocess\n',
+    ]) {
+      expect(header(code)).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'forbid', rule }],
+      });
+    }
+    expect(header("print(getattr(obj, 'value'))\n")).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+  });
+
   it('finds a forbidden constant inside a string too', () => {
     const rule = { kind: 'int_literal', values: [58, 64] };
     const header = (userCode: string) =>

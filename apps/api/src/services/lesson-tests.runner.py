@@ -42,159 +42,572 @@ def has_call(tree, name):
     return False
 
 
-FUNCTION_SCOPES = (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)
+# Whose name a read is. A forbidden call (max, sorted, heapq.nsmallest) is
+# forbidden in any use, since a function handed out under another name is
+# called all the same: f = sorted, key=max, from heapq import nsmallest as
+# pick. A read is the student's own only where Python would surely find their
+# binding (max = nums[0]), never the library's, so Names follows the program
+# the way Python resolves names: each scope (the module, a class body, a
+# function or lambda, a comprehension) and, in the module and class bodies,
+# which names are surely bound at each statement as it runs.
+
 COMPREHENSIONS = (ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp)
-BLOCK_STATEMENTS = tuple(
-    getattr(ast, kind)
-    for kind in ("If", "For", "AsyncFor", "While", "Try", "TryStar", "With", "AsyncWith", "Match")
-    if hasattr(ast, kind)
-)
+FUNCTION_NODES = (ast.FunctionDef, ast.AsyncFunctionDef)
+# Code that runs later, when called or iterated, not where it is written.
+DEFERRED_NODES = FUNCTION_NODES + (ast.Lambda, ast.GeneratorExp)
+TRY_STATEMENTS = tuple(getattr(ast, kind) for kind in ("Try", "TryStar") if hasattr(ast, kind))
+MATCH_STATEMENT = getattr(ast, "Match", None)
+# Methods that never get another value handed to them by an operator, so a
+# class with only these can't catch the builtin through x > max.
+SAFE_DUNDERS = {"__init__", "__str__", "__repr__", "__len__", "__iter__", "__next__", "__hash__", "__bool__"}
+# Builtins that only print, show or test a value: the builtin function handed
+# to one of them is never called.
+SHOWING_CALLS = {"print", "str", "repr", "format", "bool", "type", "id", "isinstance", "callable"}
+# Ways to reach any function by a name built at run time, or to run another
+# program: whoever uses one can reach the forbidden one too.
+DYNAMIC_NAMES = {"eval", "exec", "compile", "vars", "globals", "locals", "__import__", "__builtins__", "breakpoint"}
+DYNAMIC_ATTRIBUTES = {
+    "__dict__", "__builtins__", "__globals__", "__getattribute__", "__subclasses__", "__closure__",
+    "__code__", "f_globals", "f_builtins", "f_locals", "import_module", "get_objects",
+    "get_referents", "getmembers", "modules",
+}
+DYNAMIC_MODULES = {"importlib", "inspect", "ctypes", "gc", "subprocess", "pty"}
+# Another program (sort, a second python) does the work as surely as the call.
+PROCESS_CALLS = {
+    "system", "popen", "execv", "execve", "execvp", "execvpe", "execl", "execle", "execlp",
+    "execlpe", "spawnv", "spawnve", "spawnvp", "spawnvpe", "spawnl", "spawnle", "spawnlp",
+    "spawnlpe", "posix_spawn", "posix_spawnp",
+}
+# Look an attribute up by a string: fine with a fixed one that isn't the name.
+BY_NAME = {"getattr", "methodcaller", "attrgetter"}
 
 
 class Scope:
-    # One of Python's name scopes: the module, a class body, a function, a
-    # lambda or a comprehension. bound maps each name it binds to the
-    # (line, block) of every binding, block being the innermost if, loop, try
-    # or with statement around it in this scope (None outside all of them);
-    # loads are the (name, line, blocks around it) it reads.
-    def __init__(self, parent, is_class=False):
+    def __init__(self, node, parent, kind):
+        self.node = node
         self.parent = parent
-        self.is_class = is_class
-        # The module and a class body run once, top to bottom, and a name
-        # they don't bind (yet) falls through to the builtin.
-        self.ordered = parent is None or is_class
-        self.bound = {}
-        self.deleted = set()
-        self.loads = []
+        self.kind = kind  # "module", "class", "function" or "comprehension"
+        self.deferred = isinstance(node, DEFERRED_NODES)
+        self.bound = set()
+        self.globals = set()
+        self.nonlocals = set()
+        # Every value a name is bound to here: the assigned expression, or
+        # None for any other binding (a parameter, a loop, an import).
+        self.values = {}
+        self.params = []
+        # The statement of the parent's run that makes or runs this scope's code.
+        self.anchor = None
+        self.leaves = []
+        self.ran = False
 
-    def bind(self, name, line, blocks):
-        self.bound.setdefault(name, []).append((line, blocks[-1] if blocks else None))
+    def bind(self, name, value=None):
+        self.bound.add(name)
+        self.values.setdefault(name, []).append(value)
 
-    def sees(self, name, line=None, blocks=()):
-        # A function's name is its own anywhere in it: read before it is
-        # bound, it is an error, never the builtin. The module and a class
-        # body see only a binding that has surely run by then: on an earlier
-        # line, outside any if or loop, or inside one that also holds the
-        # read; a del or an except alias can leave the name unbound again.
-        if not self.ordered:
-            return name in self.bound
-        if name in self.deleted:
+
+class Leaf:
+    # One statement (or the head of a compound one) of a module or class body,
+    # as it runs: the names surely bound when it starts and the loops around it.
+    def __init__(self, scope, node, defined, loops):
+        self.scope = scope
+        self.node = node
+        self.defined = frozenset(defined)
+        self.loops = loops
+        self.index = len(scope.leaves)
+        self.may_run = True
+        scope.leaves.append(self)
+
+
+def bound_by(target):
+    if isinstance(target, ast.Name):
+        return {target.id}
+    if isinstance(target, (ast.Tuple, ast.List)):
+        return set().union(*map(bound_by, target.elts)) if target.elts else set()
+    if isinstance(target, ast.Starred):
+        return bound_by(target.value)
+    return set()
+
+
+def pattern_names(pattern):
+    names = set()
+    for node in ast.walk(pattern):
+        name = getattr(node, "name", None) if not isinstance(node, ast.MatchMapping) else node.rest
+        if isinstance(name, str):
+            names.add(name)
+    return names
+
+
+def surely_bound(stmt):
+    # The names a simple statement binds once it ran (a walrus may not run).
+    if isinstance(stmt, ast.Assign):
+        return set().union(*map(bound_by, stmt.targets))
+    if isinstance(stmt, ast.AugAssign) or (isinstance(stmt, ast.AnnAssign) and stmt.value):
+        return bound_by(stmt.target)
+    if isinstance(stmt, (ast.Import, ast.ImportFrom)):
+        return {(a.asname or a.name).split(".")[0] for a in stmt.names if a.name != "*"}
+    return set()
+
+
+def plain(node):
+    # A value that runs no code when made: a constant, a name, a lambda, or a
+    # list, tuple, set or dict of those.
+    if node is None or isinstance(node, (ast.Constant, ast.Name, ast.Lambda)):
+        return True
+    if isinstance(node, (ast.List, ast.Tuple, ast.Set)):
+        return all(plain(e) for e in node.elts)
+    if isinstance(node, ast.Dict):
+        return all(plain(k) and plain(v) for k, v in zip(node.keys, node.values))
+    return False
+
+
+def inert(stmt):
+    # A statement that can't call any of the student's code.
+    if isinstance(stmt, (ast.Import, ast.ImportFrom, ast.Pass, ast.Global, ast.Nonlocal)):
+        return True
+    if isinstance(stmt, (ast.Assign, ast.AnnAssign)):
+        targets = stmt.targets if isinstance(stmt, ast.Assign) else [stmt.target]
+        return all(isinstance(t, ast.Name) for t in targets) and plain(stmt.value)
+    if isinstance(stmt, FUNCTION_NODES):
+        a = stmt.args
+        annotations = [x.annotation for x in a.posonlyargs + a.args + a.kwonlyargs] + [stmt.returns]
+        return not stmt.decorator_list and all(
+            plain(n) for n in a.defaults + a.kw_defaults + annotations
+        )
+    return False
+
+
+class Names:
+    def __init__(self, tree):
+        self.parent_of = {}
+        for node in ast.walk(tree):
+            for child in ast.iter_child_nodes(node):
+                self.parent_of[id(child)] = node
+        self.scope_of = {}
+        self.scope_by_node = {}
+        self.loads = {}
+        self.attributes = {}
+        self.leaf_of = {}
+        self.module = self.build(tree)
+        self.end = self.run(self.module, tree.body, set(), (), True)
+        for scope in self.scopes:
+            if scope.kind == "class" and not scope.ran:
+                self.run_class(scope)
+        self.all_bound = set().union(*(s.bound for s in self.scopes))
+        self.mark_inert_leaves()
+        self.collect_classes()
+
+    # -- scopes ------------------------------------------------------------
+
+    def build(self, tree):
+        module = Scope(tree, None, "module")
+        self.scopes = [module]
+        stack = [(tree, module)]
+
+        def inner(node, scope, kind):
+            new = Scope(node, scope, kind)
+            self.scopes.append(new)
+            self.scope_by_node[id(node)] = new
+            return new
+
+        def params(args, scope):
+            for arg in args.posonlyargs + args.args + args.kwonlyargs + [args.vararg, args.kwarg]:
+                if arg:
+                    scope.bind(arg.arg)
+                    scope.params.append(arg.arg)
+
+        while stack:
+            node, scope = stack.pop()
+            self.scope_of[id(node)] = scope
+            if node is not tree and isinstance(node, FUNCTION_NODES + (ast.Lambda,)):
+                a = node.args
+                outside = [d for d in a.defaults + a.kw_defaults if d]
+                if not isinstance(node, ast.Lambda):
+                    scope.bind(node.name)
+                    outside += node.decorator_list + [node.returns]
+                    outside += [x.annotation for x in a.posonlyargs + a.args + a.kwonlyargs]
+                    outside += [x.annotation for x in (a.vararg, a.kwarg) if x]
+                body = inner(node, scope, "function")
+                params(a, body)
+                stack += [(child, scope) for child in outside if child]
+                stack += [(child, body) for child in (node.body if isinstance(node.body, list) else [node.body])]
+                continue
+            if isinstance(node, ast.ClassDef):
+                scope.bind(node.name)
+                body = inner(node, scope, "class")
+                outside = node.decorator_list + node.bases + [k.value for k in node.keywords]
+                stack += [(child, scope) for child in outside]
+                stack += [(child, body) for child in node.body]
+                continue
+            if isinstance(node, COMPREHENSIONS):
+                # The first iterable is read outside; everything else inside.
+                body = inner(node, scope, "comprehension")
+                stack.append((node.generators[0].iter, scope))
+                for i, gen in enumerate(node.generators):
+                    stack.append((gen.target, body))
+                    if i:
+                        stack.append((gen.iter, body))
+                    stack += [(cond, body) for cond in gen.ifs]
+                parts = [node.key, node.value] if isinstance(node, ast.DictComp) else [node.elt]
+                stack += [(part, body) for part in parts]
+                continue
+            if isinstance(node, ast.Name):
+                if isinstance(node.ctx, ast.Load):
+                    self.loads.setdefault(node.id, []).append(node)
+                else:
+                    parent = self.parent_of.get(id(node))
+                    value = parent.value if isinstance(parent, ast.Assign) and len(parent.targets) == 1 else None
+                    scope.bind(node.id, value)
+            elif isinstance(node, ast.Attribute) and isinstance(node.ctx, ast.Load):
+                self.attributes.setdefault(node.attr, []).append(node)
+            elif isinstance(node, ast.Global):
+                scope.globals.update(node.names)
+            elif isinstance(node, ast.Nonlocal):
+                scope.nonlocals.update(node.names)
+            elif isinstance(node, ast.alias):
+                if node.name != "*":
+                    scope.bind((node.asname or node.name).split(".")[0])
+            elif isinstance(node, ast.ExceptHandler) and node.name:
+                scope.bind(node.name)
+            elif isinstance(node, getattr(ast, "match_case", ())):
+                for name in pattern_names(node.pattern):
+                    scope.bind(name)
+            stack += [(child, scope) for child in ast.iter_child_nodes(node)]
+        return module
+
+    # -- running a module or class body ----------------------------------
+
+    def leaf(self, scope, node, defined, loops, record):
+        if not record or node is None:
+            return None
+        made = Leaf(scope, node, defined, loops)
+        for sub in ast.walk(node):
+            if isinstance(sub, ast.Name) and self.scope_of.get(id(sub)) is scope:
+                self.leaf_of[id(sub)] = made
+            inner = self.scope_by_node.get(id(sub))
+            if inner and inner.parent is scope:
+                inner.anchor = made
+        return made
+
+    def run(self, scope, stmts, defined, loops, record):
+        for stmt in stmts:
+            defined = self.statement(scope, stmt, set(defined), loops, record)
+        return defined
+
+    def run_class(self, scope):
+        scope.ran = True
+        self.run(scope, scope.node.body, set(), (), True)
+
+    def statement(self, scope, stmt, d, loops, record):
+        def leaf(node, defined=d, around=loops):
+            return self.leaf(scope, node, defined, around, record)
+
+        def run(stmts, defined, around=loops, rec=record):
+            return self.run(scope, stmts, defined, around, rec)
+
+        if isinstance(stmt, ast.If):
+            leaf(stmt.test)
+            return run(stmt.body, d) & run(stmt.orelse, d)
+        if isinstance(stmt, (ast.For, ast.AsyncFor, ast.While)):
+            # A name is surely bound at a turn's start only if it is before the
+            # loop and still at the end of a turn; after the loop, the same.
+            inside = loops + (stmt,)
+            target = bound_by(stmt.target) if not isinstance(stmt, ast.While) else set()
+            if not isinstance(stmt, ast.While):
+                leaf(stmt.iter)
+            head = d & run(stmt.body, d | target, inside, False)
+            leaf(stmt.test if isinstance(stmt, ast.While) else stmt.target, head, inside)
+            run(stmt.body, head | target, inside)
+            return head & run(stmt.orelse, head)
+        if isinstance(stmt, TRY_STATEMENTS):
+            body = run(stmt.body, d)
+            deleted = {n.id for s in stmt.body for n in ast.walk(s) if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Del)}
+            entry = d - deleted
+            ends = [run(stmt.orelse, body)]
+            for handler in stmt.handlers:
+                leaf(handler.type, entry)
+                caught = run(handler.body, entry | ({handler.name} if handler.name else set()))
+                ends.append(caught - {handler.name})
+            out = set.intersection(*ends)
+            if stmt.finalbody:
+                run(stmt.finalbody, out & entry)
+                out = run(stmt.finalbody, out, loops, False)
+            return out
+        if isinstance(stmt, (ast.With, ast.AsyncWith)):
+            for item in stmt.items:
+                leaf(item, d)
+                d = d | bound_by(item.optional_vars)
+            return run(stmt.body, d)
+        if MATCH_STATEMENT and isinstance(stmt, MATCH_STATEMENT):
+            leaf(stmt.subject)
+            out = set(d)
+            for case in stmt.cases:
+                leaf(case.pattern)
+                caught = d | pattern_names(case.pattern)
+                leaf(case.guard, caught)
+                out &= run(case.body, caught)
+            return out
+        made = leaf(stmt)
+        if isinstance(stmt, ast.ClassDef) and made:
+            self.run_class(self.scope_by_node[id(stmt)])
+        if isinstance(stmt, FUNCTION_NODES + (ast.ClassDef,)):
+            return d | {stmt.name}
+        if isinstance(stmt, ast.Delete):
+            return d - set().union(*map(bound_by, stmt.targets))
+        return d | surely_bound(stmt)
+
+    # -- which module statements can call the student's code --------------
+
+    def evaluated(self, leaf):
+        # The module names a statement reads as it runs: its own reads and
+        # those of a class body or comprehension in it, not of a function's body.
+        names = set()
+        for sub in ast.walk(leaf.node):
+            if not isinstance(sub, ast.Name):
+                continue
+            scope = self.scope_of[id(sub)]
+            while scope is not self.module and not scope.deferred:
+                scope = scope.parent
+            if scope is self.module:
+                names.add(sub.id)
+        return names
+
+    def mark_inert_leaves(self):
+        # A statement can call a function of the student's only through a
+        # name that may hold one: a def or class, a name that code holding
+        # one reads or binds (fs.append(get) makes fs one), or a name a
+        # function's body uses. One that reads none of them, or only builds a
+        # plain value, runs none of their code.
+        module = self.module
+        tainted = set()
+        for scope in self.scopes:
+            if scope.kind == "class" and scope.parent is module:
+                tainted.add(scope.node.name)
+            if scope.deferred:
+                for sub in ast.walk(scope.node):
+                    if isinstance(sub, ast.Name) and sub.id in module.bound:
+                        tainted.add(sub.id)
+                if isinstance(scope.node, FUNCTION_NODES) and scope.parent is module:
+                    tainted.add(scope.node.name)
+        reads = {leaf.index: self.evaluated(leaf) for leaf in module.leaves}
+        binds = {
+            leaf.index: {
+                n.id for n in ast.walk(leaf.node) if isinstance(n, ast.Name) and not isinstance(n.ctx, ast.Load)
+            }
+            for leaf in module.leaves
+        }
+        for leaf in module.leaves:
+            if any(isinstance(n, DEFERRED_NODES) for n in ast.walk(leaf.node)):
+                tainted |= binds[leaf.index]
+        changed = True
+        while changed:
+            changed = False
+            for leaf in module.leaves:
+                if reads[leaf.index] & tainted and not (reads[leaf.index] | binds[leaf.index]) <= tainted:
+                    tainted |= reads[leaf.index] | binds[leaf.index]
+                    changed = True
+        for leaf in module.leaves:
+            node = leaf.node
+            if isinstance(node, ast.ClassDef):
+                # Its body runs now: a call in it may reach one of its methods.
+                body = [n for s in node.body if not isinstance(s, FUNCTION_NODES) for n in ast.walk(s)]
+                leaf.may_run = bool(
+                    node.decorator_list
+                    or any(isinstance(n, ast.Call) for n in body)
+                    or reads[leaf.index] & tainted
+                )
+            else:
+                leaf.may_run = bool(reads[leaf.index] & tainted) and not inert(node)
+
+    # -- classes ----------------------------------------------------------
+
+    def collect_classes(self):
+        # Each class of the student's: the attributes it defines (its body's
+        # names, self.x = ... in its methods, and its own parent classes'),
+        # and whether any defines an operator that a builtin could be handed to.
+        self.class_attrs = {}
+        self.risky_dunders = False
+        bases = {}
+        for scope in self.scopes:
+            if scope.kind != "class":
+                continue
+            node = scope.node
+            attrs = set(scope.bound)
+            for method in self.scopes:
+                if method.parent is scope and isinstance(method.node, FUNCTION_NODES):
+                    me = self.self_name(method)
+                    for sub in ast.walk(method.node):
+                        if (
+                            isinstance(sub, ast.Attribute)
+                            and not isinstance(sub.ctx, ast.Load)
+                            and isinstance(sub.value, ast.Name)
+                            and sub.value.id == me
+                        ):
+                            attrs.add(sub.attr)
+            if any(n.startswith("__") and n.endswith("__") and n not in SAFE_DUNDERS for n in scope.bound):
+                self.risky_dunders = True
+            self.class_attrs.setdefault(node.name, set()).update(attrs)
+            bases.setdefault(node.name, []).extend(b.id for b in node.bases if isinstance(b, ast.Name))
+        changed = True
+        while changed:
+            changed = False
+            for name, parents in bases.items():
+                for parent in parents:
+                    extra = self.class_attrs.get(parent, set()) - self.class_attrs[name]
+                    if extra:
+                        self.class_attrs[name] |= extra
+                        changed = True
+
+    @staticmethod
+    def self_name(method):
+        # The first parameter of a method (self, cls), unless it is static
+        # or the method rebinds it.
+        node = method.node
+        if any(isinstance(d, ast.Name) and d.id == "staticmethod" for d in node.decorator_list):
+            return None
+        args = node.args.posonlyargs + node.args.args
+        if not args:
+            return None
+        name = args[0].arg
+        return name if method.values.get(name) == [None] else None
+
+    def binding_scope(self, node):
+        # The scope a function-level read of this name resolves to, or None
+        # for the module and builtins.
+        scope = self.scope_of[id(node)]
+        while scope.kind != "module":
+            if scope.kind != "class" and node.id in scope.bound and node.id not in scope.globals | scope.nonlocals:
+                return scope
+            scope = scope.parent
+        return None
+
+    def receiver_classes(self, receiver):
+        # The student's classes an attribute's object surely is one of: self
+        # in a method, an own class named, or a name bound only to new objects
+        # of the student's classes. None when it may be anything else.
+        if not isinstance(receiver, ast.Name):
+            return None
+        scope = self.binding_scope(receiver)
+        if scope is None:
+            if not self.own_read(receiver):
+                return None
+            if receiver.id in self.class_attrs:
+                return {receiver.id}
+            values = self.module.values.get(receiver.id, [])
+        else:
+            method = isinstance(scope.node, FUNCTION_NODES) and scope.parent.kind == "class"
+            if method and self.self_name(scope) == receiver.id:
+                return {scope.parent.node.name}
+            values = scope.values.get(receiver.id, [])
+        made = set()
+        for value in values:
+            if not (
+                isinstance(value, ast.Call)
+                and isinstance(value.func, ast.Name)
+                and value.func.id in self.class_attrs
+            ):
+                return None
+            made.add(value.func.id)
+        return made or None
+
+    # -- reads ------------------------------------------------------------
+
+    def own_read(self, node):
+        # Whether this read of a name surely finds a binding of the student's.
+        name = node.id
+        scope = self.scope_of[id(node)]
+        point = self.leaf_of.get(id(node))
+        deferred = skip_classes = global_only = False
+        while scope:
+            if scope.kind == "module":
+                return self.module_has(name, point, deferred)
+            if scope.kind == "class":
+                # Seen only by its own body, never by its methods.
+                if not skip_classes and not global_only and point and name in point.defined:
+                    return True
+            else:
+                if name in scope.globals:
+                    global_only = True
+                elif name not in scope.nonlocals and not global_only and name in scope.bound:
+                    # Read before it is bound, a local is an error, never the builtin.
+                    return True
+                deferred = deferred or scope.deferred
+                skip_classes = True
+            point = scope.anchor
+            scope = scope.parent
+        return False
+
+    def module_has(self, name, point, deferred):
+        if point is None:
             return False
-        return any(
-            (line is None or at < line) and (block is None or block in blocks)
-            for at, block in self.bound.get(name, [])
+        if not deferred:
+            return name in point.defined
+        # Code that runs later finds the module's binding only if it is there
+        # at every statement from where the code is made on (in a loop around
+        # it, the earlier ones too) that may call it, and at the program's end.
+        if name not in self.end:
+            return False
+        for leaf in self.module.leaves:
+            later = leaf.index >= point.index or set(leaf.loops) & set(point.loops)
+            if later and leaf.may_run and name not in leaf.defined:
+                return False
+        return True
+
+    def harmless(self, node):
+        # A read whose value is only compared, computed with, tested or shown:
+        # the builtin function there can't be called (x > max is a TypeError).
+        if self.risky_dunders:
+            return False
+        parent = self.parent_of.get(id(node))
+        if isinstance(parent, (ast.Compare, ast.UnaryOp, ast.BinOp)):
+            return True
+        if isinstance(parent, (ast.If, ast.While, ast.IfExp, ast.Assert)) and parent.test is node:
+            return True
+        if isinstance(parent, (ast.FormattedValue, ast.AugAssign)) and parent.value is node:
+            return True
+        return (
+            isinstance(parent, ast.Call)
+            and node in parent.args
+            and isinstance(parent.func, ast.Name)
+            and parent.func.id in SHOWING_CALLS
+            and parent.func.id not in self.all_bound
         )
 
+    def foreign_reads(self, name):
+        return [n for n in self.loads.get(name, []) if not self.harmless(n) and not self.own_read(n)]
 
-def scopes(tree):
-    # Walks the program the way Python resolves names: a function's
-    # parameters and assignments are its own, a class body's are not seen by
-    # its methods, defaults and decorators run in the scope around them.
-    root = Scope(None)
-    found = [root]
-    stack = [(tree, root, ())]
-
-    def inner(scope, is_class=False):
-        new = Scope(scope, is_class)
-        found.append(new)
-        return new
-
-    def bind_args(args, scope, line):
-        for arg in args.posonlyargs + args.args + args.kwonlyargs + [args.vararg, args.kwarg]:
-            if arg:
-                scope.bind(arg.arg, line, ())
-
-    def defaults(args):
-        return args.defaults + [d for d in args.kw_defaults if d]
-
-    while stack:
-        node, scope, blocks = stack.pop()
-        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and node is not tree:
-            scope.bind(node.name, node.lineno, blocks)
-            outside = list(node.decorator_list)
-            if isinstance(node, ast.ClassDef):
-                outside += node.bases + node.keywords
-                body = inner(scope, is_class=True)
-            else:
-                outside += defaults(node.args)
-                body = inner(scope)
-                bind_args(node.args, body, node.lineno)
-            stack += [(child, scope, blocks) for child in outside]
-            stack += [(child, body, ()) for child in node.body]
-            continue
-        if isinstance(node, ast.Lambda):
-            body = inner(scope)
-            bind_args(node.args, body, node.lineno)
-            stack += [(d, scope, blocks) for d in defaults(node.args)]
-            stack.append((node.body, body, ()))
-            continue
-        if isinstance(node, COMPREHENSIONS):
-            # The first iterable is read outside; everything else inside.
-            body = inner(scope)
-            stack.append((node.generators[0].iter, scope, blocks))
-            for i, gen in enumerate(node.generators):
-                stack.append((gen.target, body, ()))
-                if i:
-                    stack.append((gen.iter, body, ()))
-                stack += [(cond, body, ()) for cond in gen.ifs]
-            parts = [node.key, node.value] if isinstance(node, ast.DictComp) else [node.elt]
-            stack += [(part, body, ()) for part in parts]
-            continue
-        if isinstance(node, ast.Name):
-            if isinstance(node.ctx, ast.Load):
-                scope.loads.append((node.id, node.lineno, blocks))
-            elif isinstance(node.ctx, ast.Del):
-                scope.deleted.add(node.id)
-            else:
-                scope.bind(node.id, node.lineno, blocks)
-        elif isinstance(node, ast.ExceptHandler) and node.name:
-            # Unbound again once the handler ends.
-            if scope.ordered:
-                scope.deleted.add(node.name)
-            else:
-                scope.bind(node.name, node.lineno, blocks)
-        elif isinstance(node, ast.alias):
-            scope.bind((node.asname or node.name).split(".")[0], node.lineno, blocks)
-        if isinstance(node, FUNCTION_SCOPES) and node is tree:
-            bind_args(node.args, scope, node.lineno)
-        if isinstance(node, BLOCK_STATEMENTS):
-            blocks = blocks + (node,)
-        stack += [(child, scope, blocks) for child in ast.iter_child_nodes(node)]
-    return found
-
-
-def reads_own_name(scope, name, line, blocks):
-    # Whether the name read here is one the student bound: in this scope,
-    # or in a function around it or the module (never a class body), where
-    # it has surely been bound whenever the read runs.
-    if scope.sees(name, line, blocks):
-        return True
-    outer = scope.parent
-    while outer:
-        if not outer.is_class and outer.sees(name):
+    def by_name_lookup(self, node, name):
+        # getattr(x, "sort") looks sort up as surely as x.sort does; one with
+        # a name built at run time may look up anything.
+        call = self.parent_of.get(id(node))
+        if not isinstance(call, ast.Call) or call.func is not node:
             return True
-        outer = outer.parent
-    return False
+        args = call.args[1:2] if getattr(node, "id", None) == "getattr" else call.args
+        return not args or any(not isinstance(a, ast.Constant) or a.value == name for a in args)
 
-
-def refers_to(tree, name):
-    # A forbidden call is forbidden in any use, since a function handed out
-    # under another name is called all the same: f = sorted, key=max,
-    # heapq.nsmallest without the call, from heapq import nsmallest as pick.
-    # A name the student binds themselves (max = nums[0]) is their own
-    # variable where it can be seen, not the builtin.
-    if has_call(tree, name):
-        return True
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Attribute) and node.attr == name:
-            return True
-        if isinstance(node, ast.alias) and node.name.split(".")[-1] == name:
-            return True
-    for scope in scopes(tree):
-        for read, line, blocks in scope.loads:
-            if read == name and not reads_own_name(scope, name, line, blocks):
-                return True
-    return False
+    def forbidden(self, name):
+        # Every node that reaches the library's `name`.
+        found = list(self.foreign_reads(name))
+        for node in self.attributes.get(name, []):
+            classes = self.receiver_classes(node.value)
+            if not classes or any(name not in self.class_attrs.get(c, ()) for c in classes):
+                found.append(node)
+        for node in ast.walk(self.module.node):
+            if isinstance(node, ast.alias) and node.name.split(".")[-1] in (name, *PROCESS_CALLS):
+                found.append(node)
+            elif isinstance(node, (ast.Import, ast.ImportFrom)):
+                modules = [a.name for a in node.names] if isinstance(node, ast.Import) else [node.module or ""]
+                if any(m.split(".")[0] in DYNAMIC_MODULES for m in modules):
+                    found.append(node)
+            elif isinstance(node, ast.Subscript) and isinstance(node.slice, ast.Constant) and node.slice.value == name:
+                found.append(node)
+        for dynamic in DYNAMIC_NAMES:
+            found += self.foreign_reads(dynamic)
+        for attr in DYNAMIC_ATTRIBUTES | PROCESS_CALLS:
+            found += self.attributes.get(attr, [])
+        for lookup in BY_NAME:
+            found += [n for n in self.foreign_reads(lookup) if self.by_name_lookup(n, name)]
+            found += [n for n in self.attributes.get(lookup, []) if self.by_name_lookup(n, name)]
+        return found
 
 
 def assigned_names(node):
@@ -389,10 +802,10 @@ STATEMENT_KINDS = {
 }
 
 
-def rule_holds(tree, source, rule, forbid=False):
+def rule_holds(tree, source, rule):
     kind = rule.get("kind")
     if kind == "call":
-        return (refers_to if forbid else has_call)(tree, rule["name"])
+        return has_call(tree, rule["name"])
     if kind == "variable":
         return has_variable(tree, rule["name"])
     if kind == "function":
@@ -448,15 +861,26 @@ def reachable_functions(tree, name):
     return found
 
 
-def scoped_holds(tree, source, rule, forbid=False):
+def scoped_holds(tree, source, rule):
     # A rule with "in" looks only inside that function and the helpers it
     # calls (forbid [::-1] in reverse_text, also when it hands the slice to a
     # helper, while the rest of the program may slice). No such function: a
     # require fails and a forbid has nothing to fire on.
     scope = rule.get("in")
     if not scope:
-        return rule_holds(tree, source, rule, forbid)
-    return any(rule_holds(fn, source, rule, forbid) for fn in reachable_functions(tree, scope))
+        return rule_holds(tree, source, rule)
+    return any(rule_holds(fn, source, rule) for fn in reachable_functions(tree, scope))
+
+
+def forbidden_call(tree, names, rule):
+    # A forbidden call fires on any use of the library's name (see Names),
+    # with "in" only inside that function and the helpers it calls.
+    found = names.forbidden(rule["name"])
+    scope = rule.get("in")
+    if not scope:
+        return bool(found)
+    inside = {id(n) for fn in reachable_functions(tree, scope) for n in ast.walk(fn)}
+    return any(id(n) in inside for n in found)
 
 
 def check_structure(tree, source, structure):
@@ -464,8 +888,15 @@ def check_structure(tree, source, structure):
     for rule in structure.get("requires", []):
         if not scoped_holds(tree, source, rule):
             failures.append({"type": "require", "rule": rule})
+    names = None
     for rule in structure.get("forbids", []):
-        if scoped_holds(tree, source, rule, forbid=True):
+        if rule.get("kind") == "call" and rule.get("name"):
+            # Built once per program, for every call it forbids.
+            names = names or Names(tree)
+            holds = forbidden_call(tree, names, rule)
+        else:
+            holds = scoped_holds(tree, source, rule)
+        if holds:
             failures.append({"type": "forbid", "rule": rule})
     return failures
 
