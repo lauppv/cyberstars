@@ -2,7 +2,15 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [{ "kind": "recursion" }],
-    "forbids": [{ "kind": "call", "name": "qsort" }]
+    "forbids": [
+      { "kind": "call", "name": "qsort" },
+      { "kind": "call", "name": "qsort_r" },
+      { "kind": "call", "name": "tsearch" },
+      { "kind": "call", "name": "tfind" },
+      { "kind": "call", "name": "tdelete" },
+      { "kind": "call", "name": "twalk" },
+      { "kind": "call", "name": "twalk_r" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "5\n38\n27\n43\n3\n9\n" },
