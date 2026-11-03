@@ -1,5 +1,14 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "AnalizatorText" },
+      { "kind": "function", "name": "numarVocale" },
+      { "kind": "function", "name": "numarConsoane" },
+      { "kind": "function", "name": "numarCuvinte" },
+      { "kind": "call", "name": "AnalizatorText" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "Salut lume\n" },
     { "visible": true, "stdin": "Java e fain\n" },
