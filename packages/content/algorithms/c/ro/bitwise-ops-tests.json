@@ -1,5 +1,18 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "operator", "name": "&" }],
+    "forbids": [
+      { "kind": "operator", "name": "%" },
+      { "kind": "operator", "name": "/" },
+      { "kind": "call", "name": "__builtin_popcount" },
+      { "kind": "call", "name": "__builtin_popcountl" },
+      { "kind": "call", "name": "__builtin_ctz" },
+      { "kind": "call", "name": "log2" },
+      { "kind": "call", "name": "log" },
+      { "kind": "call", "name": "pow" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "4\n1\n2\n3\n4\n" },
     { "visible": true, "stdin": "3\n16\n15\n1024\n" },
