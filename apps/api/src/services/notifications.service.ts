@@ -84,7 +84,7 @@ export async function notify(input: NotifyInput): Promise<number> {
 
 // Rows inserted for everyone at once reach only those online live, the rest
 // see them when the bell loads. A failed push only costs that user the live one
-async function pushLive(rows: repo.NotificationRow[]): Promise<void> {
+export async function pushLive(rows: repo.NotificationRow[]): Promise<void> {
   for (const row of rows) {
     if (!isUserOnline(row.userId)) continue;
     try {

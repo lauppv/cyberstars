@@ -2,7 +2,7 @@ import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
 import type { NotificationData, NotificationType } from '@cyberstars/shared/notifications';
 
-const actorInclude = { actor: { select: { name: true, avatarUrl: true } } };
+export const actorInclude = { actor: { select: { name: true, avatarUrl: true } } };
 
 export type NotificationRow = Prisma.NotificationGetPayload<{
   include: { actor: { select: { name: true; avatarUrl: true } } };

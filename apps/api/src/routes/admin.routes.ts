@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { authenticateToken, requireAdmin } from '../middleware/auth.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
-import { announcementSchema } from '../schemas/admin.schema.js';
+import { announcementSchema, pollSchema } from '../schemas/admin.schema.js';
 import * as adminController from '../controllers/admin.controller.js';
 import { getGuestVisits, getVisits } from '../controllers/visits.controller.js';
 import { getMissedQuestions } from '../controllers/laniakea.controller.js';
@@ -19,6 +19,14 @@ router.post(
   requireAdmin,
   validateBody(announcementSchema),
   adminController.sendAnnouncement,
+);
+router.get('/polls', authenticateToken, requireAdmin, adminController.getPolls);
+router.post(
+  '/polls',
+  authenticateToken,
+  requireAdmin,
+  validateBody(pollSchema),
+  adminController.sendPoll,
 );
 
 export default router;
