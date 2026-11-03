@@ -104,7 +104,7 @@
       "id": "q11-v2",
       "text": "De ce plafonează `min(n + 5, 100)` nota la 100?",
       "options": [
-        "Dă mereu 100, oricât de mare ar fi g",
+        "Dă mereu 100, orice valoare ar avea n",
         "Dă cel mai mic dintre cele două",
         "Scoate din listă notele de peste 100",
         "Rotunjește nota la cea mai apropiată sută"
