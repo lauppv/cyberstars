@@ -26,6 +26,9 @@ export interface PollResultsDTO {
   createdAt: string;
   recipients: number;
   voters: number; // each voter once, however many options they picked
+  // Accounts that opened it, the voters among them; null on the polls sent
+  // before opening one was counted
+  viewers: number | null;
   options: { id: number; text: string; votes: number; writeIn: boolean }[];
   answers: string[]; // written under Other, newest first, with no voter
 }

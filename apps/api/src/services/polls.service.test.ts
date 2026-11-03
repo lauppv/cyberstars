@@ -4,6 +4,7 @@ const mockRepo = {
   createPoll: vi.fn(),
   findPoll: vi.fn(),
   joinedAt: vi.fn(),
+  noteView: vi.fn(),
   vote: vi.fn(),
   listPolls: vi.fn(),
 };
@@ -75,6 +76,21 @@ describe('polls.service get', () => {
 
     mockRepo.findPoll.mockResolvedValue({ ...stored, voted: [{ userId: 10 }] });
     expect((await get(4, 10)).voted).toBe(true);
+  });
+
+  it('counts this user among the ones who opened it', async () => {
+    mockRepo.findPoll.mockResolvedValue(stored);
+    await get(4, 10);
+    expect(mockRepo.noteView).toHaveBeenCalledWith(4, 10);
+  });
+
+  it('still opens the poll when the view is not counted, and logs it', async () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockRepo.findPoll.mockResolvedValue(stored);
+    mockRepo.noteView.mockRejectedValue(new Error('db down'));
+    expect((await get(4, 10)).question).toBe('Next?');
+    expect(error).toHaveBeenCalled();
+    error.mockRestore();
   });
 
   it('is a 404 for a poll that does not exist', async () => {
@@ -195,7 +211,7 @@ describe('polls.service vote', () => {
 });
 
 describe('polls.service list', () => {
-  it('lists each poll with its counts, naming the author while their account is there', async () => {
+  it('lists each poll with its counts, naming the author while their account is there, and no viewers on one sent before they were counted', async () => {
     const at = new Date('2026-11-03T10:00:00.000Z');
     mockRepo.listPolls.mockResolvedValue([
       {
@@ -204,6 +220,8 @@ describe('polls.service list', () => {
         createdAt: at,
         recipients: 40,
         voters: 4,
+        viewers: 9,
+        countsViewers: true,
         author: { name: 'Ada' },
         options: [
           { id: 7, pollId: 2, text: 'Rust', votes: 3, writeIn: false },
@@ -217,6 +235,8 @@ describe('polls.service list', () => {
         createdAt: at,
         recipients: 30,
         voters: 0,
+        viewers: 2,
+        countsViewers: false,
         author: null,
         options: [],
         answers: [],
@@ -230,6 +250,7 @@ describe('polls.service list', () => {
         createdAt: '2026-11-03T10:00:00.000Z',
         recipients: 40,
         voters: 4,
+        viewers: 9,
         options: [
           { id: 7, text: 'Rust', votes: 3, writeIn: false },
           { id: 8, text: 'Other', votes: 2, writeIn: true },
@@ -243,6 +264,7 @@ describe('polls.service list', () => {
         createdAt: '2026-11-03T10:00:00.000Z',
         recipients: 30,
         voters: 0,
+        viewers: null,
         options: [],
         answers: [],
       },
