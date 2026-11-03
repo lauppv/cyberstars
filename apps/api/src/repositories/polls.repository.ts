@@ -1,12 +1,14 @@
 import { prisma } from '../config/db.js';
 import { actorInclude, type NotificationRow } from './notifications.repository.js';
 
-// The poll, its options and a bell row of it for every account but the
-// author's, in one transaction, so the history never lists one nobody got
+// The poll, its options (Other last, when asked for) and a bell row of it for
+// every account but the author's, in one transaction, so the history never
+// lists one nobody got
 export function createPoll(
   authorId: number,
   question: string,
   options: string[],
+  other: boolean,
 ): Promise<NotificationRow[]> {
   return prisma.$transaction(async (tx) => {
     const users = await tx.user.findMany({
@@ -18,7 +20,12 @@ export function createPoll(
         authorId,
         question,
         recipients: users.length,
-        options: { create: options.map((text) => ({ text })) },
+        options: {
+          create: [
+            ...options.map((text) => ({ text })),
+            ...(other ? [{ text: 'Other', writeIn: true }] : []),
+          ],
+        },
       },
       select: { id: true },
     });
@@ -41,7 +48,7 @@ export function findPoll(id: number, userId: number) {
   return prisma.poll.findUnique({
     where: { id },
     include: {
-      options: { orderBy: { id: 'asc' }, select: { id: true, text: true } },
+      options: { orderBy: { id: 'asc' }, select: { id: true, text: true, writeIn: true } },
       voted: { where: { userId }, select: { userId: true } },
     },
   });
@@ -54,9 +61,15 @@ export async function joinedAt(userId: number): Promise<Date | null> {
 }
 
 // One anonymous vote: the voter goes in poll_voters so they can't vote again,
-// and each option picked counts one more, with nothing tying the two. False
-// when they had voted already, from another tab too
-export function vote(pollId: number, userId: number, optionIds: number[]): Promise<boolean> {
+// and each option picked counts one more, with nothing tying the two, nor to
+// what they wrote under Other. False when they had voted already, from another
+// tab too
+export function vote(
+  pollId: number,
+  userId: number,
+  optionIds: number[],
+  answer?: string,
+): Promise<boolean> {
   return prisma.$transaction(async (tx) => {
     const { count } = await tx.pollVoter.createMany({
       data: [{ pollId, userId }],
@@ -68,6 +81,7 @@ export function vote(pollId: number, userId: number, optionIds: number[]): Promi
       data: { votes: { increment: 1 } },
     });
     await tx.poll.update({ where: { id: pollId }, data: { voters: { increment: 1 } } });
+    if (answer) await tx.pollAnswer.create({ data: { pollId, text: answer } });
     return true;
   });
 }
@@ -76,6 +90,10 @@ export function listPolls(take: number) {
   return prisma.poll.findMany({
     orderBy: { id: 'desc' },
     take,
-    include: { author: { select: { name: true } }, options: { orderBy: { id: 'asc' } } },
+    include: {
+      author: { select: { name: true } },
+      options: { orderBy: { id: 'asc' } },
+      answers: { orderBy: { id: 'desc' }, select: { text: true } },
+    },
   });
 }

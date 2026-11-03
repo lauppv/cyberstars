@@ -86,14 +86,14 @@ describe('sendPoll', () => {
   const req = () =>
     ({
       user: { id: 2 },
-      body: { question: 'Next?', options: ['Rust', 'Go'] },
+      body: { question: 'Next?', options: ['Rust', 'Go'], other: true },
     }) as unknown as Request;
 
   it('sends it from the admin and says how many got it', async () => {
     mockPolls.send.mockResolvedValue(5);
     const res = mockRes();
     await sendPoll(req(), res, vi.fn());
-    expect(mockPolls.send).toHaveBeenCalledWith(2, 'Next?', ['Rust', 'Go']);
+    expect(mockPolls.send).toHaveBeenCalledWith(2, 'Next?', ['Rust', 'Go'], true);
     expect(res.status).toHaveBeenCalledWith(201);
     expect(res.json).toHaveBeenCalledWith({ sent: 5 });
   });

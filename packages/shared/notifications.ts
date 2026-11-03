@@ -11,7 +11,8 @@ export type NotificationType =
   | 'CONNECTION_ACCEPTED'
   | 'LANIAKEA_RECAP'
   | 'ANNOUNCEMENT'
-  | 'POLL';
+  | 'POLL'
+  | 'POLL_ANSWER';
 
 // The longest official announcement an admin can send
 export const ANNOUNCEMENT_MAX_LENGTH = 2000;
@@ -33,13 +34,13 @@ export const COLLAPSIBLE_TYPES: ReadonlySet<NotificationType> = new Set([
 // `actor` relation (single source of truth), which SetNulls to null if the
 // actor is later deleted.
 export interface NotificationData {
-  title?: string; // thread title / ticket subject
+  title?: string; // thread title / ticket subject / the poll's question for POLL_ANSWER
   excerpt?: string;
   postId?: number; // forum post the excerpt was snapshotted from (redaction key)
   count?: number; // collapsed count for COLLAPSIBLE_TYPES, open recaps for LANIAKEA_RECAP
   categorySlug?: string; // forum deep-link
   status?: string; // new ticket status for SUPPORT_STATUS
-  text?: string; // the whole announcement for ANNOUNCEMENT, the question for POLL
+  text?: string; // the whole announcement for ANNOUNCEMENT, the question for POLL, what was written for POLL_ANSWER
 }
 
 interface NotificationActor {
@@ -50,7 +51,7 @@ interface NotificationActor {
 export interface NotificationDTO {
   id: number;
   type: NotificationType;
-  entityId: number; // threadId / conversationId / ticketId / announcement id / poll id, interpreted by type; 0 for LANIAKEA_RECAP
+  entityId: number; // threadId / conversationId / ticketId / announcement id / poll id (POLL, POLL_ANSWER), interpreted by type; 0 for LANIAKEA_RECAP
   data: NotificationData | null;
   actor: NotificationActor | null;
   readAt: string | null;

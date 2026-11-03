@@ -43,7 +43,8 @@ export async function getAnnouncements(
 
 export async function sendPoll(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const sent = await pollsService.send(req.user!.id, req.body.question, req.body.options);
+    const { question, options, other } = req.body;
+    const sent = await pollsService.send(req.user!.id, question, options, other);
     const body: PollSentDTO = { sent };
     res.status(201).json(body);
   } catch (err) {

@@ -47,6 +47,7 @@ enum NotificationType {
   LANIAKEA_RECAP
   ANNOUNCEMENT
   POLL
+  POLL_ANSWER
 }
 
 // A connection between two users, modelled as a directed request that becomes
@@ -458,20 +459,34 @@ model Poll {
   author  User?        @relation(fields: [authorId], references: [id], onDelete: SetNull)
   options PollOption[]
   voted   PollVoter[]
+  answers PollAnswer[]
 
   @@map("polls")
 }
 
 model PollOption {
-  id     Int    @id @default(autoincrement())
-  pollId Int    @map("poll_id")
-  text   String
-  votes  Int    @default(0)
+  id      Int     @id @default(autoincrement())
+  pollId  Int     @map("poll_id")
+  text    String
+  votes   Int     @default(0)
+  writeIn Boolean @default(false) @map("write_in") // Other: its voters write their own answer
 
   poll Poll @relation(fields: [pollId], references: [id], onDelete: Cascade)
 
   @@index([pollId])
   @@map("poll_options")
+}
+
+// What voters wrote under a poll's Other, with no voter and no time, so none leads back to them
+model PollAnswer {
+  id     Int    @id @default(autoincrement())
+  pollId Int    @map("poll_id")
+  text   String
+
+  poll Poll @relation(fields: [pollId], references: [id], onDelete: Cascade)
+
+  @@index([pollId])
+  @@map("poll_answers")
 }
 
 model PollVoter {

@@ -19,4 +19,13 @@ describe('pollsService', () => {
     await vote(3, [7, 9]);
     expect(mockApi.post).toHaveBeenCalledWith('/api/polls/3/vote', { optionIds: [7, 9] });
   });
+
+  it('sends what was written under Other with the vote', async () => {
+    mockApi.post.mockResolvedValue('');
+    await vote(3, [9], 'More C');
+    expect(mockApi.post).toHaveBeenCalledWith('/api/polls/3/vote', {
+      optionIds: [9],
+      answer: 'More C',
+    });
+  });
 });

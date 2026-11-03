@@ -146,6 +146,20 @@ describe('NotificationDropdown routing', () => {
     expect(ctx.markOneRead).toHaveBeenCalledWith(6);
     expect(mockNavigate).not.toHaveBeenCalled();
   });
+
+  it("takes an answer written under a poll's Other to the admin page, where the poll lists it", () => {
+    renderWith([
+      n({
+        type: 'POLL_ANSWER',
+        entityId: 3,
+        actor: null,
+        data: { title: 'Next?', text: 'More C' },
+      }),
+    ]);
+    fireEvent.click(screen.getByRole('menuitem'));
+    expect(mockNavigate).toHaveBeenCalledWith('/admin');
+    expect(onPoll).not.toHaveBeenCalled();
+  });
 });
 
 describe('NotificationDropdown announcement', () => {
@@ -163,6 +177,20 @@ describe('NotificationDropdown announcement', () => {
     expect(screen.getByText('Poll: Next course?')).toHaveClass('line-clamp-2');
     expect(screen.getByText('Vote')).toBeInTheDocument();
     expect(screen.queryByText('View')).toBeNull();
+  });
+
+  it('cuts a written answer to two lines too, with no button', () => {
+    renderWith([
+      n({
+        type: 'POLL_ANSWER',
+        entityId: 3,
+        actor: null,
+        data: { title: 'Next?', text: 'More C' },
+      }),
+    ]);
+    expect(screen.getByText('Answer to "Next?": More C')).toHaveClass('line-clamp-2');
+    expect(screen.queryByText('View')).toBeNull();
+    expect(screen.queryByText('Vote')).toBeNull();
   });
 
   it('leaves the View button off every other row', () => {

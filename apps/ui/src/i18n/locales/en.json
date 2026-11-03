@@ -145,6 +145,10 @@
       "option": "Option {{n}}",
       "removeOption": "Remove option {{n}}",
       "addOption": "Add option",
+      "addOther": "Add Other, where each voter writes their own answer",
+      "otherOption": "Other (each voter writes their own answer)",
+      "other": "Other",
+      "answers": "What they wrote under Other",
       "repeated": "Two options say the same thing.",
       "send": "Send",
       "confirmTitle": "Send this poll to all users?",
@@ -487,6 +491,7 @@
     "announcement": "Official announcement: {{text}}",
     "announcementTitle": "Official announcement",
     "poll": "Poll: {{text}}",
+    "pollAnswer": "Answer to \"{{title}}\": {{text}}",
     "view": "View",
     "vote": "Vote",
     "close": "Close"
@@ -494,6 +499,9 @@
   "poll": {
     "title": "Poll",
     "hint": "Tick as many as you like. Your vote is anonymous.",
+    "hintOther": "Tick as many as you like. Your vote and what you write are anonymous.",
+    "other": "Other",
+    "answer": "Write your answer",
     "vote": "Vote",
     "voting": "Voting…",
     "thanks": "Thanks, your vote is in.",

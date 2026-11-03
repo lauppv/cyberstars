@@ -42,8 +42,8 @@ describe('vote', () => {
   it('votes with the options picked and answers with no body', async () => {
     mockService.vote.mockResolvedValue(undefined);
     const res = mockRes();
-    await vote(req('4', { optionIds: [7, 9] }), res, vi.fn());
-    expect(mockService.vote).toHaveBeenCalledWith(4, 10, [7, 9]);
+    await vote(req('4', { optionIds: [7, 9], answer: 'More C' }), res, vi.fn());
+    expect(mockService.vote).toHaveBeenCalledWith(4, 10, [7, 9], 'More C');
     expect(res.status).toHaveBeenCalledWith(204);
     expect(res.end).toHaveBeenCalled();
   });

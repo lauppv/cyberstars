@@ -38,9 +38,10 @@ const sentBefore: PollResultsDTO[] = [
     recipients: 40,
     voters: 4,
     options: [
-      { id: 7, text: 'Rust', votes: 3 },
-      { id: 8, text: 'Go', votes: 2 },
+      { id: 7, text: 'Rust', votes: 3, writeIn: false },
+      { id: 8, text: 'Go', votes: 2, writeIn: false },
     ],
+    answers: [],
   },
   {
     id: 1,
@@ -50,9 +51,10 @@ const sentBefore: PollResultsDTO[] = [
     recipients: 30,
     voters: 0,
     options: [
-      { id: 1, text: 'Yes', votes: 0 },
-      { id: 2, text: 'No', votes: 0 },
+      { id: 1, text: 'Yes', votes: 0, writeIn: false },
+      { id: 2, text: 'No', votes: 0, writeIn: false },
     ],
+    answers: [],
   },
 ];
 
@@ -127,11 +129,28 @@ describe('PollSection', () => {
     fireEvent.click(send());
     fireEvent.click(within(confirm()).getByRole('button', { name: 'Send' }));
     expect(await screen.findByRole('status')).toHaveTextContent('Sent to 3 users');
-    expect(sendPoll).toHaveBeenCalledWith('Which course next?', ['Rust', 'Go']);
+    expect(sendPoll).toHaveBeenCalledWith('Which course next?', ['Rust', 'Go'], false);
     expect(screen.queryByRole('dialog')).toBeNull();
     expect(question()).toHaveValue('');
     expect(option(1)).toHaveValue('');
     expect(screen.queryByLabelText('Option 3')).toBeNull();
+  });
+
+  it('adds an Other where each voter writes, shown in the last look and sent with the poll', async () => {
+    sendPoll.mockResolvedValue({ sent: 3 });
+    write('What gets in your way?', 'Too hard', 'Too easy');
+    const box = screen.getByRole('checkbox', {
+      name: 'Add Other, where each voter writes their own answer',
+    });
+    expect(box).not.toBeChecked();
+    fireEvent.click(box);
+    fireEvent.click(send());
+    expect(confirm()).toHaveTextContent('Other (each voter writes their own answer)');
+    fireEvent.click(within(confirm()).getByRole('button', { name: 'Send' }));
+    await screen.findByRole('status');
+    expect(sendPoll).toHaveBeenCalledWith('What gets in your way?', ['Too hard', 'Too easy'], true);
+    // The next poll starts without one
+    expect(box).not.toBeChecked();
   });
 
   it('says so when it fails and keeps what was written', async () => {
@@ -155,6 +174,36 @@ describe('PollSection results', () => {
     expect(screen.getByText('November 3, 2026 · Ada · 4 of 40 voted')).toBeInTheDocument();
     expect(screen.getByText('3 · 75%')).toBeInTheDocument();
     expect(screen.getByText('2 · 50%')).toBeInTheDocument();
+  });
+
+  it("names Other in the page's language and lists what was written under it", async () => {
+    getPolls.mockResolvedValue([
+      {
+        ...sentBefore[0],
+        options: [...sentBefore[0].options, { id: 9, text: 'Other', writeIn: true, votes: 2 }],
+        answers: ['The tests', 'Not enough time'],
+      },
+    ]);
+    render(<PollSection className="" />);
+    expect(await screen.findByText('Other')).toBeInTheDocument();
+    const answers = screen.getByRole('list', { name: 'What they wrote under Other' });
+    expect(
+      within(answers)
+        .getAllByRole('listitem')
+        .map((li) => li.textContent),
+    ).toEqual(['The tests', 'Not enough time']);
+  });
+
+  it('lists no answers under an Other nobody wrote in yet', async () => {
+    getPolls.mockResolvedValue([
+      {
+        ...sentBefore[0],
+        options: [...sentBefore[0].options, { id: 9, text: 'Other', writeIn: true, votes: 0 }],
+      },
+    ]);
+    render(<PollSection className="" />);
+    expect(await screen.findByText('Other')).toBeInTheDocument();
+    expect(screen.queryByRole('list', { name: 'What they wrote under Other' })).toBeNull();
   });
 
   it('shows 0% before anyone voted, with no one named once the author is gone', async () => {

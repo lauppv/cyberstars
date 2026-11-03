@@ -189,7 +189,7 @@ The judge runs the student's code and the reference solution in the owner's cont
 | POST   | `/api/connections/:id/decline`         | Yes  | Decline (addressee only)                |
 | DELETE | `/api/connections/:id`                 | Yes  | Cancel a request or remove a connection |
 
-The actor never gets their own notification, and repeat replies, reactions or Laniakea recap counts collapse into one unread row. An official announcement from the admin page lands in every bell but the sender's, and opens in a window over the page. So does a poll, where each student ticks one or more options and votes once; who voted is kept only so no one votes twice, never what they picked, and only the admin page shows the counts.
+The actor never gets their own notification, and repeat replies, reactions or Laniakea recap counts collapse into one unread row. An official announcement from the admin page lands in every bell but the sender's, and opens in a window over the page. So does a poll, where each student ticks one or more options and votes once; who voted is kept only so no one votes twice, never what they picked, and only the admin page shows the counts. A poll can end on an Other where the student writes their own answer, kept without their name; it reaches the admins' bells and lists under the poll on the admin page.
 
 ### Profile, leaderboard and public profiles
 
@@ -255,7 +255,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma), cam
 - **User**, **Curriculum**, **Lesson**: accounts, courses and lesson metadata (the content stays in files)
 - **UserLessonProgress**, **UserSavedCode**, **LessonSubmission**, **DailyPick**: completion, saved code, judge attempts (the newest 20 per lesson) and the daily picks
 - **ForumCategory**, **ForumThread**, **ForumPost**, **ForumReaction**, **ForumThreadView**: the forum
-- **SupportTicket**, **SupportMessage**, **Notification**, **Announcement**, **Poll**, **PollOption**, **PollVoter**: support, the bell, and the announcements and polls sent
+- **SupportTicket**, **SupportMessage**, **Notification**, **Announcement**, **Poll**, **PollOption**, **PollVoter**, **PollAnswer**: support, the bell, and the announcements and polls sent
 - **Conversation**, **DirectMessage**, **DmReaction**, **Connection**: messages and connections
 - **TutorConversation**, **TutorMessage**, **UsageWindow**: the tutor's conversations and the usage limits
 - **LaniakeaPlanet**: a student's planet: level, last pass, questions seen and the test going on

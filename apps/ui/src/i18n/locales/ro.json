@@ -160,6 +160,10 @@
       "option": "Varianta {{n}}",
       "removeOption": "Șterge varianta {{n}}",
       "addOption": "Adaugă variantă",
+      "addOther": "Adaugă Altceva, unde fiecare își scrie singur răspunsul",
+      "otherOption": "Altceva (fiecare își scrie singur răspunsul)",
+      "other": "Altceva",
+      "answers": "Ce au scris la Altceva",
       "repeated": "Două variante spun același lucru.",
       "send": "Trimite",
       "confirmTitle": "Trimiți sondajul către toți utilizatorii?",
@@ -524,6 +528,7 @@
     "announcement": "Anunț oficial: {{text}}",
     "announcementTitle": "Anunț oficial",
     "poll": "Sondaj: {{text}}",
+    "pollAnswer": "Răspuns la „{{title}}”: {{text}}",
     "view": "Vezi",
     "vote": "Votează",
     "close": "Închide"
@@ -531,6 +536,9 @@
   "poll": {
     "title": "Sondaj",
     "hint": "Bifează oricâte vrei. Votul tău e anonim.",
+    "hintOther": "Bifează oricâte vrei. Votul tău și ce scrii sunt anonime.",
+    "other": "Altceva",
+    "answer": "Scrie-ți răspunsul",
     "vote": "Votează",
     "voting": "Se trimite…",
     "thanks": "Mulțumim, votul tău a fost înregistrat.",
