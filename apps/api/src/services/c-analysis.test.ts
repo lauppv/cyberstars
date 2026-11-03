@@ -236,6 +236,44 @@ describe('checkStructure', () => {
     }
   });
 
+  it('finds the library function behind a pasted name, a builtin, a linker name or a lookup', async () => {
+    const rule: StructureFailure['rule'] = { kind: 'call', name: 'strlen' };
+    for (const code of [
+      '#define CAT(a, b) a##b\nint main(void){ return (int)CAT(str, len)("ab"); }',
+      'unsigned long mylen(const char *) __asm__("strlen");\nint main(void){ return (int)mylen("ab"); }',
+      'static unsigned long f(const char *) __attribute__((weakref("strlen")));',
+      '#pragma redefine_extname mylen strlen\nint main(void){ return 0; }',
+      'int main(void){ return (int)__builtin_strlen("ab"); }',
+      '#include <dlfcn.h>\nint main(void){ void *f = dlsym(RTLD_DEFAULT, "str" "len"); return f != 0; }',
+      '#include <stdlib.h>\nint main(void){ return system("wc -c"); }',
+    ]) {
+      expect(checkStructure(await parseC(code), { forbids: [rule] })).toEqual([
+        { type: 'forbid', rule },
+      ]);
+    }
+  });
+
+  it('takes a function the student defines after main, behind a prototype, as theirs', async () => {
+    const rule: StructureFailure['rule'] = { kind: 'call', name: 'pow' };
+    const root = await parseC(
+      'int pow(int, int);\nint main(void){ return pow(2, 3); }\nint pow(int b, int e){ int r = 1; while (e--) r *= b; return r; }',
+    );
+    expect(checkStructure(root, { forbids: [rule] })).toHaveLength(0);
+  });
+
+  it('reads a string literal as the compiler does and skips a printf width', async () => {
+    const rule = (values: number[]): StructureFailure['rule'] => ({ kind: 'int_literal', values });
+    const fires = async (body: string, values: number[]) =>
+      checkStructure(await parseC(`#include <stdio.h>\nint main(void){ ${body} return 0; }`), {
+        forbids: [rule(values)],
+      }).length > 0;
+    expect(await fires('puts("\\x35\\x38");', [58])).toBe(true);
+    expect(await fires('puts("5" "8");', [58])).toBe(true);
+    expect(await fires('printf("%d", 57 + 1);', [58])).toBe(true);
+    expect(await fires('printf("%2d\\033[0m", 1);', [33])).toBe(false);
+    expect(await fires('printf("%5d", 1);', [5])).toBe(false);
+  });
+
   it('fires a forbidden int literal hidden in a string', async () => {
     const rule: StructureFailure['rule'] = { kind: 'int_literal', values: [64] };
     const inString = await parseC('#include <stdio.h>\nint main(void){ puts("58 64"); return 0; }');
