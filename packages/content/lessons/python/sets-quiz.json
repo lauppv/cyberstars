@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What makes a set different from a list?",
       "options": [
-        "Each value is in it only once: duplicates are dropped",
-        "It keeps its values sorted",
-        "Its values are read by key",
-        "It can't change after it's made"
+        "Each value is in it only once",
+        "It keeps its values sorted from small to big",
+        "Its values are read by key, like a dictionary's",
+        "It can't change after it's made, like a tuple"
       ],
       "answer": 0
     },
@@ -47,13 +47,13 @@
       "answer": 3
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Why does a set use `.add()` and not `.append()`, as a list does?",
       "options": [
-        "A set has no order, so adding at the end means nothing",
-        "append() works only on numbers",
-        "add() keeps the values sorted",
-        "A set can take only one new value"
+        "A set has no order, so it has no end",
+        "append() works only on numbers, not on text",
+        "add() keeps the values sorted, append() doesn't",
+        "A set can take only one new value at a time"
       ],
       "answer": 0
     },
@@ -112,21 +112,21 @@
       "answer": 2
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "In `list(set(names))`, what is the set in the middle for?",
       "options": [
         "It drops the duplicates, then list() turns it back into a list",
-        "It sorts the names, then list() keeps them in that order",
+        "It sorts the names, then list() keeps them in that sorted order",
         "list() can't take a list, so it needs a set first",
         "It makes a copy of names that can't change"
       ],
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "After `unique_names = list(set(names))`, are the names surely in the order they had in names?",
       "options": [
-        "Yes: a set keeps the order they were added in",
+        "Yes: a set always keeps the names in the same order they were added in",
         "No: a set doesn't keep order, so they may come out in another order",
         "No: they always come out sorted from A to Z",
         "Yes, but only when the names are text"
@@ -152,11 +152,11 @@
       "answer": 0
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "In the Signal Log mission, `\"D4\" in signals` would also find D4. Why check in the set?",
       "options": [
         "in doesn't work on a list",
-        "The list would say D4 missing, since D4 is near the end",
+        "The list would say D4 missing, since D4 is near the end of the list",
         "The set keeps D4 first, so it is found sooner",
         "Both give the same answer, but checking in a set is much faster"
       ],
@@ -182,13 +182,13 @@
       "answer": 3
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "What does `.add()` do with a value that is already in the set?",
       "options": [
-        "It stops with an error",
+        "It stops with an error: the value is already there",
         "Nothing: the set stays as it was",
-        "It adds a second copy",
-        "It takes the value out"
+        "It adds a second copy of the value",
+        "It takes the value out, like remove() does"
       ],
       "answer": 1
     },
@@ -206,7 +206,7 @@
       "answer": 2
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "We write `guests = {\"Tommy\", \"Lance\", \"Cortez\"}` and print it. What may come out different from how we wrote it?",
       "options": [
         "The order of the names",
@@ -261,13 +261,13 @@
       "answer": 0
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "In the Signal Log mission, A1 is three times in signals. How many times is it in the set unique?",
       "options": [
         "Three times: the set copies the list",
         "Once: a set keeps each value only once",
         "Twice: only the first copy is dropped",
-        "Not at all: a value that repeats is dropped"
+        "Not at all: a value that repeats is dropped from the set entirely"
       ],
       "answer": 1
     }

@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What is a nested loop?",
       "options": [
-        "A loop that runs twice as fast",
-        "A loop written inside the body of another loop",
-        "Two loops written one after the other",
-        "A loop that runs only once"
+        "A loop whose body has an if written inside it",
+        "A loop inside the body of another loop",
+        "Two loops written one after the other, not inside",
+        "A loop that runs only once, inside a function"
       ],
       "answer": 1
     },
@@ -18,13 +18,13 @@
       "answer": 2
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "In the dice example, what does the inner loop do while die1 is 1?",
       "options": [
         "It runs all the way, die2 from 1 to 6",
         "It runs once, with die2 = 1",
         "It waits until die1 reaches 6",
-        "It runs only when die1 equals die2"
+        "It runs only when die1 is equal to die2"
       ],
       "answer": 0
     },
@@ -94,11 +94,11 @@
       "answer": 0
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "`break` runs inside the inner loop. Where does the program go on?",
       "options": [
         "After both loops, at the end of the program",
-        "At the first line of the inner loop, from the start",
+        "At the first line of the inner loop, which starts over from the beginning",
         "After the inner loop: the outer loop goes on with its next value",
         "At the inner loop's next value, as with continue"
       ],
@@ -112,13 +112,13 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "What does `end=\"\"` change in `print(\"a\", end=\"\")`?",
       "options": [
-        "The next print goes on the same line instead of a new one",
-        "print shows nothing",
-        "print adds an empty line after a",
-        "print ends the program"
+        "The next print stays on the same line",
+        "print shows nothing at all, not even the a",
+        "print adds an extra empty line after the a",
+        "print ends the program right after the a"
       ],
       "answer": 0
     },
@@ -130,13 +130,13 @@
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "What does an empty `print()` do after the inner loop that draws a row?",
       "options": [
-        "It prints the word None",
-        "It erases the row it drew",
-        "It moves to a new line, so the next row starts on its own line",
-        "It stops the outer loop"
+        "It prints the word None on a line",
+        "It erases the row it just drew",
+        "It moves on to a new line",
+        "It stops the outer loop after this row"
       ],
       "answer": 2
     },
@@ -160,23 +160,23 @@
       "answer": 1
     },
     {
-      "id": "q19",
+      "id": "q19-v2",
       "text": "In the Signal Tower solution, why does the outer loop use `range(1, rows + 1)` and not `range(rows)`?",
       "options": [
         "range(rows) would draw one row too many",
-        "range can't start at 0 in a nested loop",
+        "range can't start at 0 when it is inside a nested loop, so it starts at 1",
         "row then goes from 1 to rows, the number of stars each row needs",
         "So the tower comes out upside down"
       ],
       "answer": 2
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "In the Signal Tower solution, which part decides how many stars a row gets?",
       "options": [
         "The outer loop's range(1, rows + 1)",
         "The print() after the inner loop",
-        "The input() line",
+        "The input() line, which reads rows",
         "The inner loop's range(row)"
       ],
       "answer": 3
@@ -209,11 +209,11 @@
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "A nested loop draws a rectangle of stars, row by row. Where does the empty `print()` go?",
       "options": [
         "In the outer loop, after the inner loop",
-        "In the inner loop, after each star",
+        "In the inner loop, right after each star it prints",
         "Before the outer loop",
         "After both loops, at the very end"
       ],
@@ -245,11 +245,11 @@
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Can the inner loop use the outer loop's variable, as in `for star in range(row):`?",
       "options": [
-        "Yes: it takes the variable's value at that pass, so each row can be different",
-        "No: the inner loop can't see the outer loop's variable",
+        "Yes: it takes the value it has at that pass, so each row can differ",
+        "No: the inner loop can't see the outer loop's variable, only its own",
         "Only when the variable holds a list",
         "Yes, but only inside a function"
       ],

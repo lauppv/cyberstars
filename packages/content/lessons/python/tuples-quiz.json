@@ -1,13 +1,13 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What is the big difference between a tuple and a list?",
       "options": [
-        "A tuple can hold only numbers",
-        "A tuple can't be changed once it is made",
-        "A tuple has no indexes",
-        "A tuple can hold at most two values"
+        "A tuple can hold only numbers, not text",
+        "A tuple can't be changed once made",
+        "A tuple has no indexes, so it can't be read by position",
+        "A tuple can hold at most two values, no more"
       ],
       "answer": 1
     },
@@ -50,12 +50,12 @@
       "answer": 3
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Why would we keep a date of birth in a tuple and not in a list?",
       "options": [
-        "It should never change, and Python stops any code that tries to change it by mistake",
+        "It should never change, and Python stops any code that changes it by mistake",
         "A tuple can hold more numbers than a list, and a date needs three",
-        "A tuple keeps its numbers sorted, so the year always comes first",
+        "A tuple keeps its numbers sorted, so the year always comes first, then month and day",
         "A list can hold only text, and a date is made of numbers"
       ],
       "answer": 0
@@ -115,13 +115,13 @@
       "answer": 2
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "In the Star Chart mission, why is `total_planets = 0` written before the loop and not inside it?",
       "options": [
-        "Inside, the total would go back to 0 for every system and keep only the last one",
+        "Inside, it would go back to 0 for each system",
         "A tuple can be unpacked only after a variable set to 0",
-        "So the loop runs once for each planet",
-        "Python allows = 0 only outside a loop"
+        "So the loop runs once for each planet of a system",
+        "Python allows = 0 only outside a loop, never inside"
       ],
       "answer": 0
     },
@@ -139,23 +139,23 @@
       "answer": 1
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "What happens when this runs?",
       "code": "point = (3, 4)\npoint.append(5)\nprint(point)",
       "options": [
         "It stops with an error: a tuple can't grow",
         "It prints (3, 4)",
-        "It prints (3, 4, 5)",
+        "It prints (3, 4, 5), since append adds 5 at the end",
         "It prints (5, 3, 4)"
       ],
       "answer": 0
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "Which of these works on a tuple just as on a list?",
       "options": [
         "append(), to add an element",
-        "Changing an element, like t[0] = 5",
+        "Changing an element through its index, like t[0] = 5",
         "Removing an element",
         "Reading an element by its index, like t[0]"
       ],
@@ -169,13 +169,13 @@
       "answer": 1
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "In `for name, score in scores.items():`, what does the loop unpack on each pass?",
       "options": [
         "A tuple of a key and its value",
         "The whole dictionary",
         "Only the score",
-        "A list of all the names"
+        "A list of all the names in the dictionary"
       ],
       "answer": 0
     },
@@ -201,12 +201,12 @@
       "answer": 1
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "The lesson keeps the GPS coordinates of Vice City in a tuple. Why does a tuple fit them?",
       "options": [
         "The city is at a fixed place, so the two numbers should never change",
         "Only a tuple can hold numbers with a decimal point, like 25.7617",
-        "A tuple keeps its numbers sorted, so the smaller one comes first",
+        "A tuple keeps its numbers sorted, so the smaller one always comes first",
         "A list can hold only whole numbers, and these have decimals"
       ],
       "answer": 0
