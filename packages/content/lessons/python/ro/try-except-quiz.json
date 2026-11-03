@@ -872,7 +872,7 @@
       "id": "te-error-divide",
       "kind": "which-error",
       "text": "Ce eroare oprește acest program?",
-      "code": "{{v}} = {{a}}\nparts = {{b}}\nprint({{v}} / parts)",
+      "code": "{{v}} = {{a}}\nparti = {{b}}\nprint({{v}} / parti)",
       "values": [
         {
           "v": "total",

@@ -608,21 +608,21 @@
     {
       "id": "te-error-divide-98076c",
       "text": "Ce eroare oprește acest program?",
-      "code": "total = 10\nparts = 0\nprint(total / parts)",
+      "code": "total = 10\nparti = 0\nprint(total / parti)",
       "options": ["ZeroDivisionError", "ValueError", "TypeError", "NameError"],
       "answer": 0
     },
     {
       "id": "te-error-divide-889659",
       "text": "Ce eroare oprește acest program?",
-      "code": "combustibil = 50\nparts = \"5\"\nprint(combustibil / parts)",
+      "code": "combustibil = 50\nparti = \"5\"\nprint(combustibil / parti)",
       "options": ["TypeError", "ValueError", "ZeroDivisionError", "NameError"],
       "answer": 0
     },
     {
       "id": "te-error-divide-5f44f2",
       "text": "Ce eroare oprește acest program?",
-      "code": "viteza = 90\nparts = 3 - 3\nprint(viteza / parts)",
+      "code": "viteza = 90\nparti = 3 - 3\nprint(viteza / parti)",
       "options": ["ZeroDivisionError", "ValueError", "TypeError", "NameError"],
       "answer": 0
     },
