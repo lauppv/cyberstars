@@ -466,6 +466,7 @@
     "laniakeaRecap_other": "{{count}} Laniakea recaps are open",
     "announcement": "Official announcement: {{text}}",
     "announcementTitle": "Official announcement",
+    "poll": "Poll: {{text}}",
     "view": "View",
     "close": "Close"
   },

@@ -28,6 +28,7 @@ const ICONS: Record<NotificationType, string> = {
   CONNECTION_ACCEPTED: '🌟',
   LANIAKEA_RECAP: '🪐',
   ANNOUNCEMENT: '📣',
+  POLL: '📊',
 };
 
 function describe(n: NotificationDTO): string {
@@ -59,6 +60,8 @@ function describe(n: NotificationDTO): string {
       return t('notif.laniakeaRecap', { count });
     case 'ANNOUNCEMENT':
       return t('notif.announcement', { text: n.data?.text ?? '' });
+    case 'POLL':
+      return t('notif.poll', { text: n.data?.text ?? '' });
   }
 }
 
@@ -134,6 +137,7 @@ export function NotificationDropdown({
       case 'LANIAKEA_RECAP':
         return '/laniakea';
       case 'ANNOUNCEMENT':
+      case 'POLL':
         return null;
     }
   };

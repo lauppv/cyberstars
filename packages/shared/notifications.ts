@@ -10,7 +10,8 @@ export type NotificationType =
   | 'CONNECTION_REQUEST'
   | 'CONNECTION_ACCEPTED'
   | 'LANIAKEA_RECAP'
-  | 'ANNOUNCEMENT';
+  | 'ANNOUNCEMENT'
+  | 'POLL';
 
 // The longest official announcement an admin can send
 export const ANNOUNCEMENT_MAX_LENGTH = 2000;
@@ -38,7 +39,7 @@ export interface NotificationData {
   count?: number; // collapsed count for COLLAPSIBLE_TYPES, open recaps for LANIAKEA_RECAP
   categorySlug?: string; // forum deep-link
   status?: string; // new ticket status for SUPPORT_STATUS
-  text?: string; // the whole announcement for ANNOUNCEMENT
+  text?: string; // the whole announcement for ANNOUNCEMENT, the question for POLL
 }
 
 interface NotificationActor {
@@ -49,7 +50,7 @@ interface NotificationActor {
 export interface NotificationDTO {
   id: number;
   type: NotificationType;
-  entityId: number; // threadId / conversationId / ticketId / announcement id, interpreted by type; 0 for LANIAKEA_RECAP
+  entityId: number; // threadId / conversationId / ticketId / announcement id / poll id, interpreted by type; 0 for LANIAKEA_RECAP
   data: NotificationData | null;
   actor: NotificationActor | null;
   readAt: string | null;

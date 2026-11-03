@@ -502,6 +502,7 @@
     "laniakeaRecap_other": "Ai {{count}} de recapitulări deschise în Laniakea",
     "announcement": "Anunț oficial: {{text}}",
     "announcementTitle": "Anunț oficial",
+    "poll": "Sondaj: {{text}}",
     "view": "Vezi",
     "close": "Închide"
   },

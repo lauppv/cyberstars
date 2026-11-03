@@ -6,6 +6,9 @@ beforeEach(async () => {
     TRUNCATE
       "notifications",
       "announcements",
+      "poll_voters",
+      "poll_options",
+      "polls",
       "page_visits",
       "visit_salts",
       "visit_totals",
