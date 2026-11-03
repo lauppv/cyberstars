@@ -46,6 +46,7 @@ enum NotificationType {
   CONNECTION_ACCEPTED
   LANIAKEA_RECAP
   ANNOUNCEMENT
+  POLL
 }
 
 // A connection between two users, modelled as a directed request that becomes
@@ -137,6 +138,8 @@ model User {
   notificationsReceived Notification[] @relation("NotificationsReceived")
   notificationsSent     Notification[] @relation("NotificationsSent")
   announcements         Announcement[]
+  polls                 Poll[]
+  pollVotes             PollVoter[]
 
   conversationsA Conversation[]  @relation("ConvA")
   conversationsB Conversation[]  @relation("ConvB")
@@ -438,6 +441,48 @@ model Announcement {
   author User? @relation(fields: [authorId], references: [id], onDelete: SetNull)
 
   @@map("announcements")
+}
+
+// A poll an admin sent to every bell. Votes are anonymous: poll_voters keeps
+// who voted, only so no one votes twice, and each option just counts its
+// votes, so nothing says who picked what. voters is a count of its own, so it
+// still matches the options' counts after a voter's account is deleted
+model Poll {
+  id         Int      @id @default(autoincrement())
+  authorId   Int?     @map("author_id")
+  question   String
+  recipients Int // accounts that got it in their bell
+  voters     Int      @default(0)
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  author  User?        @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  options PollOption[]
+  voted   PollVoter[]
+
+  @@map("polls")
+}
+
+model PollOption {
+  id     Int    @id @default(autoincrement())
+  pollId Int    @map("poll_id")
+  text   String
+  votes  Int    @default(0)
+
+  poll Poll @relation(fields: [pollId], references: [id], onDelete: Cascade)
+
+  @@index([pollId])
+  @@map("poll_options")
+}
+
+model PollVoter {
+  pollId Int @map("poll_id")
+  userId Int @map("user_id")
+
+  poll Poll @relation(fields: [pollId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([pollId, userId])
+  @@map("poll_voters")
 }
 
 model Curriculum {

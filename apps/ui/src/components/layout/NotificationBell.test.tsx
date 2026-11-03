@@ -12,6 +12,14 @@ const announcement: NotificationDTO = {
   createdAt: '2026-10-28T10:00:00.000Z',
 };
 
+const poll: NotificationDTO = {
+  ...announcement,
+  id: 10,
+  type: 'POLL',
+  entityId: 3,
+  data: { text: 'Next course?' },
+};
+
 const h = vi.hoisted(() => ({
   auth: { user: { role: 'USER' } as { role: string } | null },
   notif: { enabled: true, unreadCount: 0 },
@@ -23,9 +31,11 @@ vi.mock('../notifications/NotificationDropdown', () => ({
   NotificationDropdown: ({
     onClose,
     onAnnouncement,
+    onPoll,
   }: {
     onClose: () => void;
     onAnnouncement: (n: NotificationDTO) => void;
+    onPoll: (n: NotificationDTO) => void;
   }) => (
     <div data-testid="dropdown">
       <button onClick={onClose}>close</button>
@@ -37,9 +47,19 @@ vi.mock('../notifications/NotificationDropdown', () => ({
       >
         announcement
       </button>
+      <button
+        onClick={() => {
+          onClose();
+          onPoll(poll);
+        }}
+      >
+        poll
+      </button>
     </div>
   ),
 }));
+const { getPoll } = vi.hoisted(() => ({ getPoll: vi.fn() }));
+vi.mock('../../services/pollsService', () => ({ getPoll, vote: vi.fn() }));
 vi.mock('./LockedIcon', () => ({
   LockedIcon: ({ label }: { label: string }) => <div data-testid="locked">{label}</div>,
 }));
@@ -108,6 +128,19 @@ describe('NotificationBell', () => {
     expect(screen.getByRole('dialog', { name: 'Official announcement' })).toHaveTextContent(
       'A new course is out. Go try it.',
     );
+    fireEvent.click(screen.getByLabelText('Close'));
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
+  it('opens a poll from the dropdown in a window over the page', async () => {
+    getPoll.mockResolvedValue({ id: 3, question: 'Next course?', options: [], voted: true });
+    render(<NotificationBell />);
+    fireEvent.click(screen.getByLabelText('Notifications'));
+    fireEvent.click(screen.getByText('poll'));
+    expect(screen.queryByTestId('dropdown')).toBeNull();
+    expect(screen.getByRole('dialog', { name: 'Poll' })).toBeInTheDocument();
+    expect(await screen.findByText('Next course?')).toBeInTheDocument();
+    expect(getPoll).toHaveBeenCalledWith(3);
     fireEvent.click(screen.getByLabelText('Close'));
     expect(screen.queryByRole('dialog')).toBeNull();
   });

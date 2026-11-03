@@ -153,6 +153,27 @@
       "history": "Trimise până acum",
       "none": "Încă nu s-a trimis niciun anunț.",
       "historyError": "Anunțurile trimise până acum nu s-au putut încărca."
+    },
+    "poll": {
+      "title": "Sondaj",
+      "question": "Întreabă ceva toți utilizatorii",
+      "option": "Varianta {{n}}",
+      "removeOption": "Șterge varianta {{n}}",
+      "addOption": "Adaugă variantă",
+      "repeated": "Două variante spun același lucru.",
+      "send": "Trimite",
+      "confirmTitle": "Trimiți sondajul către toți utilizatorii?",
+      "confirmHint": "Pot bifa oricâte variante, iar votul e anonim. După ce pleacă nu se mai poate schimba.",
+      "cancel": "Anulează",
+      "sending": "Se trimite…",
+      "sent_one": "Trimis către {{count}} utilizator",
+      "sent_few": "Trimis către {{count}} utilizatori",
+      "sent_other": "Trimis către {{count}} de utilizatori",
+      "failed": "Sondajul nu a putut fi trimis. Încearcă din nou.",
+      "history": "Trimise până acum",
+      "none": "Încă nu s-a trimis niciun sondaj.",
+      "historyError": "Sondajele trimise până acum nu s-au putut încărca.",
+      "voters": "Au votat {{voters}} din {{recipients}}"
     }
   },
   "lang": {
@@ -502,8 +523,20 @@
     "laniakeaRecap_other": "Ai {{count}} de recapitulări deschise în Laniakea",
     "announcement": "Anunț oficial: {{text}}",
     "announcementTitle": "Anunț oficial",
+    "poll": "Sondaj: {{text}}",
     "view": "Vezi",
+    "vote": "Votează",
     "close": "Închide"
+  },
+  "poll": {
+    "title": "Sondaj",
+    "hint": "Bifează oricâte vrei. Votul tău e anonim.",
+    "vote": "Votează",
+    "voting": "Se trimite…",
+    "thanks": "Mulțumim, votul tău a fost înregistrat.",
+    "voted": "Ai votat deja la acest sondaj.",
+    "loadFailed": "Sondajul nu s-a putut încărca.",
+    "failed": "Votul nu a putut fi trimis. Încearcă din nou."
   },
   "courses": {
     "lessons_one": "lecție",

@@ -9,6 +9,9 @@ vi.mock('../components/admin/MissedQuestions', () => ({ MissedQuestions: () => n
 vi.mock('../components/admin/AnnouncementSection', () => ({
   AnnouncementSection: () => <section>Announcement</section>,
 }));
+vi.mock('../components/admin/PollSection', () => ({
+  PollSection: () => <section>Poll</section>,
+}));
 vi.mock('../context/AuthContext', () => ({
   useAuth: () => ({ user: { role: 'ADMIN' }, isLoading: false }),
 }));
@@ -69,6 +72,25 @@ describe('AdminPage', () => {
       users.compareDocumentPosition(screen.getByText('Announcement')) &
         Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
+  });
+
+  it('puts the poll card after the announcement card and before the online line', async () => {
+    getStats.mockResolvedValue(stats);
+    renderPage();
+    const online = await screen.findByText('Online now: 3 signed in · 5 guests');
+    const poll = screen.getByText('Poll');
+    expect(
+      screen.getByText('Announcement').compareDocumentPosition(poll) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(poll.compareDocumentPosition(online) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it('lets an admin send a poll even when the stats fail', async () => {
+    getStats.mockRejectedValueOnce(new Error('500'));
+    renderPage();
+    expect(await screen.findByRole('alert')).toBeInTheDocument();
+    expect(screen.getByText('Poll')).toBeInTheDocument();
   });
 
   it('shows how many users and guests are online now at the very foot, after the announcement card', async () => {

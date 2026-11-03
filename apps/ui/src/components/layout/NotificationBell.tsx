@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
 import { NotificationDropdown } from '../notifications/NotificationDropdown';
 import { AnnouncementModal } from '../notifications/AnnouncementModal';
+import { PollModal } from '../notifications/PollModal';
 import { LockedIcon } from './LockedIcon';
 import { TopbarAction } from './TopbarAction';
 import type { NotificationDTO } from '@cyberstars/shared/notifications';
@@ -15,6 +16,7 @@ export function NotificationBell() {
   const { enabled, unreadCount } = useNotifications();
   const [open, setOpen] = useState(false);
   const [announcement, setAnnouncement] = useState<NotificationDTO | null>(null);
+  const [pollId, setPollId] = useState<number | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -54,7 +56,11 @@ export function NotificationBell() {
         )}
       </TopbarAction>
       {open && (
-        <NotificationDropdown onClose={() => setOpen(false)} onAnnouncement={setAnnouncement} />
+        <NotificationDropdown
+          onClose={() => setOpen(false)}
+          onAnnouncement={setAnnouncement}
+          onPoll={(n) => setPollId(n.entityId)}
+        />
       )}
       {announcement && (
         <AnnouncementModal
@@ -63,6 +69,7 @@ export function NotificationBell() {
           onClose={() => setAnnouncement(null)}
         />
       )}
+      {pollId !== null && <PollModal pollId={pollId} onClose={() => setPollId(null)} />}
     </div>
   );
 }

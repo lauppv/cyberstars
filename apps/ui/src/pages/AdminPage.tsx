@@ -11,6 +11,7 @@ import * as adminService from '../services/adminService';
 import { VisitorsSection } from '../components/admin/VisitorsSection';
 import { MissedQuestions } from '../components/admin/MissedQuestions';
 import { AnnouncementSection } from '../components/admin/AnnouncementSection';
+import { PollSection } from '../components/admin/PollSection';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 
@@ -250,6 +251,7 @@ export function AdminPage() {
 
           {/* After the stats, since announcements are rare; outside them so it works without them */}
           <AnnouncementSection className={CARD_CLS + ' mt-5'} />
+          <PollSection className={CARD_CLS + ' mt-5'} />
 
           {stats && (
             <p className="mt-5 mb-0 text-[12px] text-[var(--text3)] text-center">
