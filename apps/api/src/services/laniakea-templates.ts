@@ -387,17 +387,6 @@ export function planTemplate(
           return question({ code, output: null }, value, pick(value, wrong));
         },
       };
-    } else if (t.kind === 'which-input') {
-      const answer = f(t.answer);
-      const wrong = t.wrong.map(f);
-      plan = {
-        programs: [answer, ...wrong].map((typed) => typing(code, typed)),
-        build: ([run, ...runs]) => {
-          const out = printed(run);
-          const options = wrong.map((w, i) => (gives(runs[i], out) ? null : w));
-          return question({ code, output: out }, answer, pick(answer, options));
-        },
-      };
     } else if (t.kind === 'which-error') {
       plan = {
         programs: [code],
@@ -410,11 +399,14 @@ export function planTemplate(
         },
       };
     } else {
+      // missing-line, missing-value and which-input: the program with each
+      // option in it, typed for which-input and in the ___ for the others
       const answer = f(t.answer);
       const wrong = t.wrong.map(f);
-      const filled = (part: string) => code.replace(GAP, () => part);
+      const withOption = (option: string) =>
+        t.kind === 'which-input' ? typing(code, option) : code.replace(GAP, () => option);
       plan = {
-        programs: [filled(answer), ...wrong.map(filled)],
+        programs: [answer, ...wrong].map(withOption),
         build: ([run, ...runs]) => {
           const out = printed(run);
           const options = wrong.map((w, i) => (gives(runs[i], out) ? null : w));
