@@ -128,6 +128,7 @@ describe('collapse', () => {
       entityId: 5,
       data: { title: 'T', count: 1 },
       readAt: null,
+      shownAt: null,
       createdAt: new Date('2026-07-17T10:00:00.000Z'),
       actor: { name: 'Ada', avatarUrl: null },
     } as Parameters<typeof repo.collapse>[0];
