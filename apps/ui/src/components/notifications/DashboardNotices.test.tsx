@@ -100,7 +100,8 @@ describe('DashboardNotices', () => {
     expect(screen.getByText('November 2, 2026')).toBeInTheDocument();
     expect(screen.queryByText('1 of 1')).toBeNull();
     expect(screen.queryByRole('button', { name: 'Next' })).toBeNull();
-    expect(h.service.markOneRead).toHaveBeenCalledWith(3);
+    // Read in an effect, a moment after the window is on screen
+    await waitFor(() => expect(h.service.markOneRead).toHaveBeenCalledWith(3));
 
     fireEvent.click(button('Done'));
     expect(screen.queryByRole('dialog')).toBeNull();
@@ -114,7 +115,7 @@ describe('DashboardNotices', () => {
     expect(screen.getByText('Announcement 3')).toBeInTheDocument();
     expect(screen.getByText('1 of 3')).toBeInTheDocument();
     expect(button('Back')).toBeDisabled();
-    expect(h.service.markOneRead.mock.calls).toEqual([[3]]);
+    await waitFor(() => expect(h.service.markOneRead.mock.calls).toEqual([[3]]));
 
     fireEvent.click(button('Next'));
     expect(screen.getByText('Announcement 5')).toBeInTheDocument();
@@ -172,6 +173,8 @@ describe('DashboardNotices', () => {
     h.service.getNotices.mockResolvedValue([notice(3)]);
     renderNotices();
     await dialog();
+    // The Escape listener comes in the same effects as the read, a moment after the window
+    await waitFor(() => expect(h.service.markOneRead).toHaveBeenCalledWith(3));
     fireEvent.keyDown(document, { key: 'Escape' });
     expect(screen.getByRole('status')).toBeInTheDocument();
     fireEvent.keyDown(document, { key: 'Escape' });
