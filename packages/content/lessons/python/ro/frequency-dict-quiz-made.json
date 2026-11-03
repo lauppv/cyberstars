@@ -26,37 +26,6 @@
       "answer": 0
     },
     {
-      "id": "fd-letters-efa722",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"mama\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
-      "options": ["{'m': 2, 'a': 2}", "{'m': 1, 'a': 1}", "2", "{'m': 3, 'a': 3}"],
-      "answer": 0
-    },
-    {
-      "id": "fd-letters-083a3f",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"mere\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
-      "options": [
-        "{'m': 1, 'e': 2, 'r': 1}",
-        "{'m': 1, 'e': 1, 'r': 1}",
-        "{'m': 0, 'e': 1, 'r': 0}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "fd-letters-f6c98e",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"cocos\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nprint(frecventa)",
-      "options": [
-        "{'c': 2, 'o': 2, 's': 1}",
-        "{'c': 1, 'o': 1, 's': 1}",
-        "{'c': 1, 'o': 1, 's': 0}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "fd-words-0c823b",
       "text": "Ce afișează?",
       "code": "propozitie = \"hai hai stop hai\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
@@ -81,42 +50,6 @@
       "answer": 0
     },
     {
-      "id": "fd-words-9905d6",
-      "text": "Ce afișează?",
-      "code": "propozitie = \"sus jos sus\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
-      "options": [
-        "{'sus': 2, 'jos': 1}",
-        "{'sus': 1, 'jos': 1}",
-        "{'s': 5, 'u': 2, ' ': 2, 'j': 1, 'o': 1}",
-        "2"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "fd-words-02eb57",
-      "text": "Ce afișează?",
-      "code": "propozitie = \"scan sonda scan start\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
-      "options": [
-        "{'scan': 2, 'sonda': 1, 'start': 1}",
-        "{'scan': 1, 'sonda': 1, 'start': 1}",
-        "{'s': 4, 'c': 2, 'a': 4, 'n': 3, ' ': 3, 'o': 1, 'd': 1, 't': 2, 'r': 1}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "fd-words-2fed32",
-      "text": "Ce afișează?",
-      "code": "propozitie = \"da nu nu da da\"\nfrecventa = {}\nfor cuvant in propozitie.split(\" \"):\n    if cuvant in frecventa:\n        frecventa[cuvant] += 1\n    else:\n        frecventa[cuvant] = 1\nprint(frecventa)",
-      "options": [
-        "{'da': 3, 'nu': 2}",
-        "{'da': 1, 'nu': 1}",
-        "{'d': 3, 'a': 3, ' ': 4, 'n': 2, 'u': 2}",
-        "2"
-      ],
-      "answer": 0
-    },
-    {
       "id": "fd-one-key-4f9717",
       "text": "Ce afișează?",
       "code": "elemente = [3, 1, 3, 2, 3]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[3])",
@@ -128,27 +61,6 @@
       "text": "Ce afișează?",
       "code": "elemente = [7, 7, 5, 7, 5]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[7])",
       "options": ["3", "1", "2", "5"],
-      "answer": 0
-    },
-    {
-      "id": "fd-one-key-49230a",
-      "text": "Ce afișează?",
-      "code": "elemente = [1, 2, 2, 2, 1, 2]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[2])",
-      "options": ["4", "1", "3", "2"],
-      "answer": 0
-    },
-    {
-      "id": "fd-one-key-51e1e9",
-      "text": "Ce afișează?",
-      "code": "elemente = [9, 4, 4, 9, 4, 4]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[4])",
-      "options": ["4", "1", "3", "2"],
-      "answer": 0
-    },
-    {
-      "id": "fd-one-key-dd56e0",
-      "text": "Ce afișează?",
-      "code": "elemente = [6, 8, 6, 8, 6, 6, 8]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(frecventa[6])",
-      "options": ["4", "1", "3", "2"],
       "answer": 0
     },
     {
@@ -176,42 +88,6 @@
       "answer": 0
     },
     {
-      "id": "fd-most-d5e616",
-      "text": "Ce afișează?",
-      "code": "voturi = [\"D\", \"D\", \"E\", \"F\", \"F\", \"F\", \"F\"]\nfrecventa = {}\nfor vot in voturi:\n    if vot in frecventa:\n        frecventa[vot] += 1\n    else:\n        frecventa[vot] = 1\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(f\"Cel mai comun: {cel_mai_bun} ({cel_mai_mare})\")",
-      "options": [
-        "Cel mai comun: F (4)",
-        "Cel mai comun:  (0)",
-        "Cel mai comun: 4 (4)",
-        "Cel mai comun: F (0)"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "fd-most-90dcd4",
-      "text": "Ce afișează?",
-      "code": "voturi = [\"M\", \"N\", \"N\", \"N\"]\nfrecventa = {}\nfor vot in voturi:\n    if vot in frecventa:\n        frecventa[vot] += 1\n    else:\n        frecventa[vot] = 1\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(f\"Cel mai comun: {cel_mai_bun} ({cel_mai_mare})\")",
-      "options": [
-        "Cel mai comun: N (3)",
-        "Cel mai comun:  (0)",
-        "Cel mai comun: 3 (3)",
-        "Cel mai comun: N (0)"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "fd-most-9b1b7a",
-      "text": "Ce afișează?",
-      "code": "voturi = [\"Q\", \"R\", \"S\", \"R\", \"S\", \"S\", \"Q\", \"S\"]\nfrecventa = {}\nfor vot in voturi:\n    if vot in frecventa:\n        frecventa[vot] += 1\n    else:\n        frecventa[vot] = 1\ncel_mai_bun = \"\"\ncel_mai_mare = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        cel_mai_bun = cheie\nprint(f\"Cel mai comun: {cel_mai_bun} ({cel_mai_mare})\")",
-      "options": [
-        "Cel mai comun: S (4)",
-        "Cel mai comun:  (0)",
-        "Cel mai comun: 4 (4)",
-        "Cel mai comun: S (0)"
-      ],
-      "answer": 0
-    },
-    {
       "id": "fd-unique-4fe22d",
       "text": "Ce afișează?",
       "code": "cuvant = \"banana\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
@@ -231,32 +107,6 @@
       "answer": 0
     },
     {
-      "id": "fd-unique-e2d4e1",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"litere\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
-      "options": ["['l', 'i', 't', 'r']", "['e']", "[1, 1, 1, 1]", "['l', 'i', 't', 'e', 'r']"],
-      "answer": 0
-    },
-    {
-      "id": "fd-unique-06f61b",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"planeta\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
-      "options": [
-        "['p', 'l', 'n', 'e', 't']",
-        "['a']",
-        "[1, 1, 1, 1, 1]",
-        "['p', 'l', 'a', 'n', 'e', 't']"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "fd-unique-12f7c6",
-      "text": "Ce afișează?",
-      "code": "cuvant = \"cafea\"\nfrecventa = {}\nfor litera in cuvant:\n    if litera in frecventa:\n        frecventa[litera] += 1\n    else:\n        frecventa[litera] = 1\nunice = []\nfor cheie, contor in frecventa.items():\n    if contor == 1:\n        unice.append(cheie)\nprint(unice)",
-      "options": ["['c', 'f', 'e']", "['a']", "[1, 1, 1]", "['c', 'a', 'f', 'e']"],
-      "answer": 0
-    },
-    {
       "id": "fd-sorted-26cb84",
       "text": "Ce afișează?",
       "code": "semnale = [\"B\", \"A\", \"C\", \"B\", \"A\", \"B\"]\nfrecventa = {}\nfor semnal in semnale:\n    if semnal in frecventa:\n        frecventa[semnal] += 1\n    else:\n        frecventa[semnal] = 1\nfor canal in sorted(frecventa):\n    print(f\"{canal}: {frecventa[canal]}\")",
@@ -271,27 +121,6 @@
       "answer": 0
     },
     {
-      "id": "fd-sorted-f23b4c",
-      "text": "Ce afișează?",
-      "code": "semnale = [\"C\", \"B\", \"A\", \"C\", \"C\"]\nfrecventa = {}\nfor semnal in semnale:\n    if semnal in frecventa:\n        frecventa[semnal] += 1\n    else:\n        frecventa[semnal] = 1\nfor canal in sorted(frecventa):\n    print(f\"{canal}: {frecventa[canal]}\")",
-      "options": ["A: 1\nB: 1\nC: 3", "C: 3\nB: 1\nA: 1", "1: A\n1: B\n3: C", "A: 1\nB: 1\nC: 1"],
-      "answer": 0
-    },
-    {
-      "id": "fd-sorted-b21f11",
-      "text": "Ce afișează?",
-      "code": "semnale = [\"Z\", \"X\", \"Y\", \"X\"]\nfrecventa = {}\nfor semnal in semnale:\n    if semnal in frecventa:\n        frecventa[semnal] += 1\n    else:\n        frecventa[semnal] = 1\nfor canal in sorted(frecventa):\n    print(f\"{canal}: {frecventa[canal]}\")",
-      "options": ["X: 2\nY: 1\nZ: 1", "Z: 1\nX: 2\nY: 1", "2: X\n1: Y\n1: Z", "X: 1\nY: 1\nZ: 1"],
-      "answer": 0
-    },
-    {
-      "id": "fd-sorted-f5c3b6",
-      "text": "Ce afișează?",
-      "code": "semnale = [\"E\", \"A\", \"E\", \"B\", \"A\", \"E\"]\nfrecventa = {}\nfor semnal in semnale:\n    if semnal in frecventa:\n        frecventa[semnal] += 1\n    else:\n        frecventa[semnal] = 1\nfor canal in sorted(frecventa):\n    print(f\"{canal}: {frecventa[canal]}\")",
-      "options": ["A: 2\nB: 1\nE: 3", "E: 3\nA: 2\nB: 1", "2: A\n1: B\n3: E", "A: 1\nB: 1\nE: 1"],
-      "answer": 0
-    },
-    {
       "id": "fd-len-c3c61a",
       "text": "Ce afișează?",
       "code": "elemente = [1, 2, 1, 3, 1]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
@@ -303,27 +132,6 @@
       "text": "Ce afișează?",
       "code": "elemente = [5, 5, 5, 5]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
       "options": ["4 1", "1 4", "4 {5: 4}", "4 2"],
-      "answer": 0
-    },
-    {
-      "id": "fd-len-e395ca",
-      "text": "Ce afișează?",
-      "code": "elemente = [4, 8, 4, 8, 2, 6]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
-      "options": ["6 4", "4 6", "6 {4: 2, 8: 2, 2: 1, 6: 1}", "6 5"],
-      "answer": 0
-    },
-    {
-      "id": "fd-len-8fbba6",
-      "text": "Ce afișează?",
-      "code": "elemente = [7, 3, 9]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
-      "options": ["3 3", "3 {7: 1, 3: 1, 9: 1}", "3 4", "3 2"],
-      "answer": 0
-    },
-    {
-      "id": "fd-len-3ba871",
-      "text": "Ce afișează?",
-      "code": "elemente = [2, 2, 3, 3, 3, 2, 2]\nfrecventa = {}\nfor x in elemente:\n    if x in frecventa:\n        frecventa[x] += 1\n    else:\n        frecventa[x] = 1\nprint(len(elemente), len(frecventa))",
-      "options": ["7 2", "2 7", "7 {2: 4, 3: 3}", "7 3"],
       "answer": 0
     },
     {
@@ -345,20 +153,6 @@
       "text": "Ce afișează?",
       "code": "frecventa = {\"p\": 5, \"q\": 2, \"r\": 5}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(cea_mai_buna_cheie, cel_mai_bun_numar)",
       "options": ["p 5", "r 5", "5 5", " 0"],
-      "answer": 0
-    },
-    {
-      "id": "fd-tie-efdb59",
-      "text": "Ce afișează?",
-      "code": "frecventa = {\"m\": 3, \"n\": 6, \"o\": 6, \"k\": 1}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(cea_mai_buna_cheie, cel_mai_bun_numar)",
-      "options": ["n 6", "o 6", "6 6", " 0"],
-      "answer": 0
-    },
-    {
-      "id": "fd-tie-69d372",
-      "text": "Ce afișează?",
-      "code": "frecventa = {\"s\": 7, \"t\": 7}\ncea_mai_buna_cheie = \"\"\ncel_mai_bun_numar = 0\nfor cheie, contor in frecventa.items():\n    if contor > cel_mai_bun_numar:\n        cel_mai_bun_numar = contor\n        cea_mai_buna_cheie = cheie\nprint(cea_mai_buna_cheie, cel_mai_bun_numar)",
-      "options": ["s 7", "t 7", "7 7", " 0"],
       "answer": 0
     },
     {
@@ -694,6 +488,191 @@
         "cel_mai_bun = cheie",
         "print(cel_mai_bun)"
       ],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-most-7d5874",
+      "text": "Ce conține `cel_mai_des` la final?",
+      "code": "semnale = {\"A1\": 3, \"B2\": 5, \"C3\": 5, \"D4\": 1}\ncel_mai_des = \"\"\nmaxim = 0\nfor key, count in semnale.items():\n    if count > maxim:\n        maxim = count\n        cel_mai_des = key",
+      "options": ["'B2'", "'C3'", "5", "'D4'"],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-most-f12f89",
+      "text": "Ce conține `castigator` la final?",
+      "code": "voturi = {\"Tommy\": 4, \"Lance\": 2, \"Cara\": 4, \"Ken\": 1}\ncastigator = \"\"\nmaxim = 0\nfor key, count in voturi.items():\n    if count > maxim:\n        maxim = count\n        castigator = key",
+      "options": ["'Tommy'", "'Cara'", "4", "'Ken'"],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-most-ca5015",
+      "text": "Ce conține `preferata` la final?",
+      "code": "culori = {\"rosu\": 2, \"albastru\": 7, \"verde\": 7, \"roz\": 3}\npreferata = \"\"\nmaxim = 0\nfor key, count in culori.items():\n    if count > maxim:\n        maxim = count\n        preferata = key",
+      "options": ["'albastru'", "'verde'", "7", "'roz'"],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-most-4d78e6",
+      "text": "Ce conține `top` la final?",
+      "code": "litere = {\"x\": 1, \"y\": 9, \"z\": 9, \"w\": 2}\ntop = \"\"\nmaxim = 0\nfor key, count in litere.items():\n    if count > maxim:\n        maxim = count\n        top = key",
+      "options": ["'y'", "'z'", "9", "'w'"],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-most-e6472b",
+      "text": "Ce conține `top` la final?",
+      "code": "coduri = {\"ping\": 6, \"scan\": 6, \"boot\": 2}\ntop = \"\"\nmaxim = 0\nfor key, count in coduri.items():\n    if count > maxim:\n        maxim = count\n        top = key",
+      "options": ["'ping'", "'scan'", "6", "'boot'"],
+      "answer": 0
+    },
+    {
+      "id": "fd-input-word-077d34",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "cuvant = input()\nfrecv = {}\nfor ch in cuvant:\n    if ch in frecv:\n        frecv[ch] += 1\n    else:\n        frecv[ch] = 1\nprint(len(frecv), len(cuvant))",
+      "output": "3 5",
+      "options": ["level", "lever", "eve", "levels"],
+      "answer": 0
+    },
+    {
+      "id": "fd-input-word-2eafca",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "cuvant = input()\nfrecv = {}\nfor ch in cuvant:\n    if ch in frecv:\n        frecv[ch] += 1\n    else:\n        frecv[ch] = 1\nprint(len(frecv), len(cuvant))",
+      "output": "3 6",
+      "options": ["banana", "bandana", "nana", "banan"],
+      "answer": 0
+    },
+    {
+      "id": "fd-input-word-930f0e",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "cuvant = input()\nfrecv = {}\nfor ch in cuvant:\n    if ch in frecv:\n        frecv[ch] += 1\n    else:\n        frecv[ch] = 1\nprint(len(frecv), len(cuvant))",
+      "output": "3 4",
+      "options": ["moon", "moo", "moons", "noon"],
+      "answer": 0
+    },
+    {
+      "id": "fd-input-word-fcea9e",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "cuvant = input()\nfrecv = {}\nfor ch in cuvant:\n    if ch in frecv:\n        frecv[ch] += 1\n    else:\n        frecv[ch] = 1\nprint(len(frecv), len(cuvant))",
+      "output": "1 3",
+      "options": ["aaa", "aa", "aab", "a"],
+      "answer": 0
+    },
+    {
+      "id": "fd-error-missing-83601c",
+      "text": "Ce eroare oprește acest program?",
+      "code": "frecv = {}\nfor x in [3, 1, 3, 2]:\n    if x in frecv:\n        frecv[x] += 1\n    else:\n        frecv[x] = 1\nprint(frecv[5])",
+      "options": ["KeyError", "IndexError", "ValueError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "fd-error-missing-fe489c",
+      "text": "Ce eroare oprește acest program?",
+      "code": "frecv = {}\nfor x in [\"a\", \"b\", \"a\"]:\n    if x in frecv:\n        frecv[x] += 1\n    else:\n        frecv[x] = 1\nprint(frecv[\"c\"])",
+      "options": ["KeyError", "IndexError", "ValueError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "fd-error-missing-d17962",
+      "text": "Ce eroare oprește acest program?",
+      "code": "voturi = {}\nfor x in [\"Tommy\", \"Cara\", \"Tommy\"]:\n    if x in voturi:\n        voturi[x] += 1\n    else:\n        voturi[x] = 1\nprint(voturi[\"Lance\"])",
+      "options": ["KeyError", "IndexError", "ValueError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "fd-error-missing-d6c4d7",
+      "text": "Ce eroare oprește acest program?",
+      "code": "vazute = {}\nfor x in [7, 7, 7]:\n    if x in vazute:\n        vazute[x] += 1\n    else:\n        vazute[x] = 1\nprint(vazute[8])",
+      "options": ["KeyError", "IndexError", "ValueError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-repeated-456f98",
+      "text": "Ce conține `repetate` la final?",
+      "code": "frecv = {\"a\": 1, \"b\": 3, \"c\": 2, \"d\": 1}\nrepetate = []\nfor key, count in frecv.items():\n    if count > 1:\n        repetate.append(key)",
+      "options": ["['b', 'c']", "['a', 'b', 'c', 'd']", "[3, 2]", "['c']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-repeated-249c39",
+      "text": "Ce conține `repetate` la final?",
+      "code": "frecv = {\"ping\": 2, \"scan\": 1, \"boot\": 4}\nrepetate = []\nfor key, count in frecv.items():\n    if count > 1:\n        repetate.append(key)",
+      "options": ["['ping', 'boot']", "['ping', 'scan', 'boot']", "[2, 4]", "['boot']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-repeated-eec21b",
+      "text": "Ce conține `populari` la final?",
+      "code": "voturi = {\"Tommy\": 3, \"Cara\": 1, \"Ken\": 2, \"Lance\": 1}\npopulari = []\nfor key, count in voturi.items():\n    if count > 1:\n        populari.append(key)",
+      "options": ["['Tommy', 'Ken']", "['Tommy', 'Cara', 'Ken', 'Lance']", "[3, 2]", "['Ken']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-repeated-535255",
+      "text": "Ce conține `comune` la final?",
+      "code": "culori = {\"rosu\": 5, \"albastru\": 2, \"roz\": 1}\ncomune = []\nfor key, count in culori.items():\n    if count > 1:\n        comune.append(key)",
+      "options": ["['rosu', 'albastru']", "['rosu', 'albastru', 'roz']", "[5, 2]", "['albastru']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-repeated-b77df9",
+      "text": "Ce conține `repetate` la final?",
+      "code": "frecv = {\"x\": 2, \"y\": 1, \"z\": 2}\nrepetate = []\nfor key, count in frecv.items():\n    if count > 1:\n        repetate.append(key)",
+      "options": ["['x', 'z']", "['x', 'y', 'z']", "[2, 2]", "['z']"],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-words-e12a34",
+      "text": "Ce conține `frecv` la final?",
+      "code": "frecv = {}\nfor w in \"go go up\".split(\" \"):\n    if w in frecv:\n        frecv[w] += 1\n    else:\n        frecv[w] = 1",
+      "options": [
+        "{'go': 2, 'up': 1}",
+        "{'go': 1, 'up': 1}",
+        "{'go': 1, 'up': 0}",
+        "{'g': 2, 'o': 2, ' ': 2, 'u': 1, 'p': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-words-c5a6a2",
+      "text": "Ce conține `frecv` la final?",
+      "code": "frecv = {}\nfor w in \"ok sos ok ok\".split(\" \"):\n    if w in frecv:\n        frecv[w] += 1\n    else:\n        frecv[w] = 1",
+      "options": [
+        "{'ok': 3, 'sos': 1}",
+        "{'ok': 1, 'sos': 1}",
+        "{'ok': 2, 'sos': 0}",
+        "{'o': 4, 'k': 3, ' ': 3, 's': 2}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-words-f729c8",
+      "text": "Ce conține `frecv` la final?",
+      "code": "frecv = {}\nfor w in \"ping pong ping\".split(\" \"):\n    if w in frecv:\n        frecv[w] += 1\n    else:\n        frecv[w] = 1",
+      "options": [
+        "{'ping': 2, 'pong': 1}",
+        "{'ping': 1, 'pong': 1}",
+        "{'ping': 1, 'pong': 0}",
+        "{'p': 3, 'i': 2, 'n': 3, 'g': 3, ' ': 2, 'o': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-words-76a534",
+      "text": "Ce conține `frecv` la final?",
+      "code": "frecv = {}\nfor w in \"da nu da\".split(\" \"):\n    if w in frecv:\n        frecv[w] += 1\n    else:\n        frecv[w] = 1",
+      "options": [
+        "{'da': 2, 'nu': 1}",
+        "{'da': 1, 'nu': 1}",
+        "{'da': 1, 'nu': 0}",
+        "{'d': 2, 'a': 2, ' ': 2, 'n': 1, 'u': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "fd-holds-words-8f01fb",
+      "text": "Ce conține `frecv` la final?",
+      "code": "frecv = {}\nfor w in \"up up up\".split(\" \"):\n    if w in frecv:\n        frecv[w] += 1\n    else:\n        frecv[w] = 1",
+      "options": ["{'up': 3}", "{'up': 1}", "{'up': 2}", "{'u': 3, 'p': 3, ' ': 2}"],
       "answer": 0
     }
   ]

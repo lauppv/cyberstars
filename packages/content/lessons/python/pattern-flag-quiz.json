@@ -301,16 +301,6 @@
           "v": "ships",
           "items": "\"Pioneer\", \"Voyager\", \"Apollo\", \"Juno\"",
           "t": "Apollo"
-        },
-        {
-          "v": "planets",
-          "items": "\"Mars\", \"Venus\", \"Earth\"",
-          "t": "Venus"
-        },
-        {
-          "v": "crew",
-          "items": "\"Ken\", \"Mercedes\", \"Phil\", \"Kent\", \"Victor\"",
-          "t": "Kent"
         }
       ],
       "mistakes": [
@@ -337,14 +327,6 @@
         {
           "s": "60, 75, 90",
           "m": 50
-        },
-        {
-          "s": "55, 49, 72, 88",
-          "m": 50
-        },
-        {
-          "s": "7, 9, 6, 10",
-          "m": 5
         }
       ],
       "mistakes": [
@@ -366,12 +348,6 @@
         },
         {
           "p": "vice99"
-        },
-        {
-          "p": "Lance7"
-        },
-        {
-          "p": "Orbit"
         }
       ],
       "mistakes": [
@@ -393,12 +369,6 @@
         },
         {
           "c": "A1bcd"
-        },
-        {
-          "c": "rocket77"
-        },
-        {
-          "c": "ZX9qwe"
         }
       ],
       "mistakes": [
@@ -423,14 +393,6 @@
         {
           "r": "7, 10, 15, 3",
           "lim": 10
-        },
-        {
-          "r": "100, 80, 120, 95",
-          "lim": 100
-        },
-        {
-          "r": "5, 25, 40, 26, 8",
-          "lim": 25
         }
       ],
       "mistakes": [
@@ -454,9 +416,6 @@
         },
         {
           "nums": "1, 7, 9"
-        },
-        {
-          "nums": "10, 12, 13, 14"
         }
       ],
       "mistakes": [
@@ -486,10 +445,6 @@
         {
           "r": "0, 0, 60, 50",
           "lim": 50
-        },
-        {
-          "r": "14, 9, 0, 25, 15",
-          "lim": 15
         }
       ],
       "mistakes": [
@@ -513,9 +468,6 @@
         },
         {
           "words": "\"Apollo11\", \"9lives\", \"Juno\""
-        },
-        {
-          "words": "\"Phil\", \"Tommy\", \"B52\""
         }
       ],
       "mistakes": [
@@ -811,6 +763,140 @@
         }
       ],
       "bug": ["has_upper and has_digit", "has_upper or has_digit"]
+    },
+    {
+      "id": "pf-holds-first",
+      "kind": "holds",
+      "text": "What is in `{{first}}` at the end?",
+      "code": "{{v}} = [{{items}}]\n{{first}} = -1\nfor r in {{v}}:\n    if r > {{lim}}:\n        {{first}} = r\n        break",
+      "values": [
+        {
+          "v": "readings",
+          "items": "12, 50, 64, 30, 90",
+          "first": "alarm",
+          "lim": 50
+        },
+        {
+          "v": "readings",
+          "items": "5, 7, 8, 3, 9",
+          "first": "alarm",
+          "lim": 7
+        },
+        {
+          "v": "speeds",
+          "items": "100, 120, 95, 130",
+          "first": "too_fast",
+          "lim": 100
+        },
+        {
+          "v": "temps",
+          "items": "20, 35, 40, 15, 60",
+          "first": "hot",
+          "lim": 35
+        },
+        {
+          "v": "scores",
+          "items": "3, 6, 9, 2, 12",
+          "first": "winner",
+          "lim": 6
+        }
+      ],
+      "variable": "{{first}}",
+      "mistakes": [
+        ["\n        break", ""],
+        ["r > {{lim}}", "r >= {{lim}}"],
+        ["r > {{lim}}", "r < {{lim}}"]
+      ]
+    },
+    {
+      "id": "pf-holds-after",
+      "kind": "holds",
+      "text": "What is in `{{n}}` at the end?",
+      "code": "{{n}} = 0\n{{seen}} = False\nfor x in [{{items}}]:\n    if x == {{t}}:\n        {{seen}} = True\n    if {{seen}}:\n        {{n}} += 1",
+      "values": [
+        {
+          "n": "after",
+          "seen": "alarm",
+          "items": "3, 7, 2, 7, 5",
+          "t": 7
+        },
+        {
+          "n": "after",
+          "seen": "alarm",
+          "items": "1, 9, 4, 6, 9, 2",
+          "t": 9
+        },
+        {
+          "n": "counted",
+          "seen": "started",
+          "items": "5, 1, 3, 4",
+          "t": 1
+        },
+        {
+          "n": "counted",
+          "seen": "started",
+          "items": "0, 20, 30, 20, 40, 50, 60",
+          "t": 20
+        }
+      ],
+      "variable": "{{n}}",
+      "mistakes": [
+        [
+          "        {{seen}} = True\n    if {{seen}}:\n        {{n}} += 1",
+          "        {{seen}} = True\n        {{n}} += 1"
+        ],
+        [
+          "    if x == {{t}}:\n        {{seen}} = True\n    if {{seen}}:\n        {{n}} += 1",
+          "    if {{seen}}:\n        {{n}} += 1\n    if x == {{t}}:\n        {{seen}} = True"
+        ],
+        ["x == {{t}}", "x != {{t}}"]
+      ]
+    },
+    {
+      "id": "pf-input-password",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{p}} = input()\n{{u}} = False\n{{d}} = False\nfor ch in {{p}}:\n    if ch.isupper():\n        {{u}} = True\n    elif ch.isdigit():\n        {{d}} = True\nprint({{u}}, {{d}})",
+      "values": [
+        {
+          "p": "password",
+          "u": "has_upper",
+          "d": "has_digit",
+          "a": "Rocket",
+          "w1": "rocket7",
+          "w2": "ROCKET7",
+          "w3": "rocket"
+        },
+        {
+          "p": "password",
+          "u": "has_upper",
+          "d": "has_digit",
+          "a": "agent007",
+          "w1": "Agent007",
+          "w2": "agent",
+          "w3": "AGENT"
+        },
+        {
+          "p": "code",
+          "u": "has_upper",
+          "d": "has_digit",
+          "a": "R2D2",
+          "w1": "r2d2",
+          "w2": "RD",
+          "w3": "22"
+        },
+        {
+          "p": "code",
+          "u": "has_upper",
+          "d": "has_digit",
+          "a": "orbit",
+          "w1": "Orbit",
+          "w2": "orbit9",
+          "w3": "O9"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
     }
   ]
 }
