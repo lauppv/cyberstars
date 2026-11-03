@@ -33,6 +33,42 @@
       {
         "kind": "call",
         "name": "sort"
+      },
+      {
+        "kind": "call",
+        "name": "nsmallest"
+      },
+      {
+        "kind": "call",
+        "name": "nlargest"
+      },
+      {
+        "kind": "call",
+        "name": "heappushpop"
+      },
+      {
+        "kind": "call",
+        "name": "heapreplace"
+      },
+      {
+        "kind": "call",
+        "name": "merge"
+      },
+      {
+        "kind": "call",
+        "name": "insort"
+      },
+      {
+        "kind": "call",
+        "name": "insort_left"
+      },
+      {
+        "kind": "call",
+        "name": "insort_right"
+      },
+      {
+        "kind": "call",
+        "name": "PriorityQueue"
       }
     ]
   },
