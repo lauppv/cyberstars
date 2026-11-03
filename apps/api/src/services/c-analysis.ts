@@ -242,14 +242,106 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
   }
 }
 
+// The identifier a declarator declares, through pointers, arrays, function
+// declarators, initializers and parentheses: `*p`, `a[3]`, `(*len)(void)`.
+function declaredIdentifier(declarator: Node | null): Node | null {
+  let node = declarator;
+  while (node && node.type !== 'identifier') {
+    node =
+      node.type === 'parenthesized_declarator'
+        ? node.namedChild(0)
+        : node.childForFieldName('declarator');
+  }
+  return node;
+}
+
+// Whether the identifier names a function rather than a variable: in C the
+// declarator closest to the name decides, so `int *f(void)` is a function and
+// `int (*f)(void)` a pointer to one.
+function namesFunction(identifier: Node): boolean {
+  let up = identifier.parent;
+  while (up?.type === 'parenthesized_declarator') up = up.parent;
+  return up?.type === 'function_declarator';
+}
+
+const BLOCKS = new Set(['compound_statement', 'for_statement', 'translation_unit']);
+
+function enclosingBlock(node: Node): Node | null {
+  let up = node.parent;
+  while (up && !BLOCKS.has(up.type)) up = up.parent;
+  return up;
+}
+
+// Where the student's own code declares this name: a variable, a parameter
+// of a function they define, an enum constant or a function with a body,
+// each with the block it is seen in and where it starts. A prototype or an
+// extern declaration names the library's own, so it binds nothing; the
+// identifiers that declare count as no use either way.
+function ownBindings(root: Node, name: string) {
+  const bindings: { block: Node; start: number }[] = [];
+  const declaring = new Set<number>();
+  const bind = (identifier: Node | null, block: Node | null, own: boolean) => {
+    if (!identifier || identifier.text !== name) return;
+    declaring.add(identifier.id);
+    if (own && block) bindings.push({ block, start: identifier.startIndex });
+  };
+  for (const node of walk(root)) {
+    if (node.type === 'declaration') {
+      const extern = node.children.some(
+        (c) => c?.type === 'storage_class_specifier' && c.text === 'extern',
+      );
+      for (const declarator of node.childrenForFieldName('declarator')) {
+        const identifier = declaredIdentifier(declarator);
+        bind(
+          identifier,
+          enclosingBlock(node),
+          !extern && !!identifier && !namesFunction(identifier),
+        );
+      }
+    } else if (node.type === 'function_definition') {
+      const declarator = node.childForFieldName('declarator');
+      bind(declaredIdentifier(declarator), enclosingBlock(node), true);
+      // Its parameters are seen in its body.
+      let fn: Node | null = declarator;
+      while (fn && fn.type !== 'function_declarator') {
+        fn =
+          fn.type === 'parenthesized_declarator'
+            ? fn.namedChild(0)
+            : fn.childForFieldName('declarator');
+      }
+      for (const param of fn?.childForFieldName('parameters')?.namedChildren ?? []) {
+        if (param?.type === 'parameter_declaration') {
+          bind(
+            declaredIdentifier(param.childForFieldName('declarator')),
+            node.childForFieldName('body'),
+            true,
+          );
+        }
+      }
+    } else if (node.type === 'parameter_declaration') {
+      // A prototype's parameter names nothing past it.
+      bind(declaredIdentifier(node.childForFieldName('declarator')), null, false);
+    } else if (node.type === 'enumerator') {
+      bind(node.childForFieldName('name'), enclosingBlock(node), true);
+    }
+  }
+  return { bindings, declaring };
+}
+
 // A forbidden function is forbidden in any use, not only a direct call: a
 // pointer to it (`size_t (*len)(const char *) = strlen;`) or a macro that
-// expands to it (`#define LEN strlen`) calls it all the same.
+// expands to it (`#define LEN strlen`) calls it all the same. A name the
+// student declares themselves (`int pow = 1;`) is theirs where it is seen.
 function refersTo(root: Node, name: string): boolean {
   const word = new RegExp(`\\b${name.replace(/\W/g, '')}\\b`);
+  const { bindings, declaring } = ownBindings(root, name);
   for (const node of walk(root)) {
-    if (node.type === 'identifier' && node.text === name) return true;
     if (node.type === 'preproc_arg' && word.test(node.text)) return true;
+    if (node.type !== 'identifier' || node.text !== name || declaring.has(node.id)) continue;
+    const seen = new Set(bindings.filter((b) => b.start < node.startIndex).map((b) => b.block.id));
+    let up = node.parent;
+    while (up && !seen.has(up.id)) up = up.parent;
+    if (!up) return true;
   }
   return false;
 }

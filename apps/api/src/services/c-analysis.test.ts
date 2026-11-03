@@ -214,6 +214,28 @@ describe('checkStructure', () => {
     expect(checkStructure(own, { forbids: [rule] })).toHaveLength(0);
   });
 
+  it("takes a name the student declares as theirs where it is seen, not a prototype's", async () => {
+    const rule: StructureFailure['rule'] = { kind: 'call', name: 'pow' };
+    for (const code of [
+      'int main(void){ int pow = 1; pow <<= 3; return pow; }',
+      'int twice(int pow){ return pow * 2; }\nint main(void){ return twice(3); }',
+      'int pow(int b, int e){ int r = 1; while (e--) r *= b; return r; }\nint main(void){ return pow(2, 3); }',
+    ]) {
+      expect(checkStructure(await parseC(code), { forbids: [rule] })).toHaveLength(0);
+    }
+    for (const code of [
+      // Their own pow is out of sight where the library's is used.
+      '#include <math.h>\nint twice(int pow){ return pow * 2; }\nint main(void){ double (*p)(double, double) = pow; return (int)p(2, 3); }',
+      '#include <math.h>\nint main(void){ { int pow = 1; } return (int)pow(2, 3); }',
+      'double pow(double, double);\nint main(void){ return (int)pow(2, 3); }',
+      'int main(void){ double r = pow(2, 3); int pow = 0; return (int)r + pow; }',
+    ]) {
+      expect(checkStructure(await parseC(code), { forbids: [rule] })).toEqual([
+        { type: 'forbid', rule },
+      ]);
+    }
+  });
+
   it('fires a forbidden int literal hidden in a string', async () => {
     const rule: StructureFailure['rule'] = { kind: 'int_literal', values: [64] };
     const inString = await parseC('#include <stdio.h>\nint main(void){ puts("58 64"); return 0; }');
