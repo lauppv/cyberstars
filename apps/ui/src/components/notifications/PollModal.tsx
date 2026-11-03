@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Check } from 'lucide-react';
 import * as pollsService from '../../services/pollsService';
 import { ApiClientError } from '../../services/apiClient';
-import type { PollDTO } from '@cyberstars/shared/polls';
+import { POLL_ANSWER_MAX_LENGTH, type PollDTO } from '@cyberstars/shared/polls';
 
 // A poll opened from the bell: tick one or more options and vote, once and anonymously
 export function PollModal({ pollId, onClose }: { pollId: number; onClose: () => void }) {
@@ -12,6 +12,7 @@ export function PollModal({ pollId, onClose }: { pollId: number; onClose: () => 
   const [poll, setPoll] = useState<PollDTO | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
   const [picked, setPicked] = useState<number[]>([]);
+  const [answer, setAnswer] = useState('');
   const [sending, setSending] = useState(false);
   const [failed, setFailed] = useState(false);
   const [thanked, setThanked] = useState(false);
@@ -38,11 +39,15 @@ export function PollModal({ pollId, onClose }: { pollId: number; onClose: () => 
   const toggle = (id: number) =>
     setPicked((list) => (list.includes(id) ? list.filter((o) => o !== id) : [...list, id]));
 
+  // Other ticked asks for the voter's own words before the vote can go
+  const other = poll?.options.find((o) => o.writeIn);
+  const writing = !!other && picked.includes(other.id);
+
   const vote = async () => {
     setSending(true);
     setFailed(false);
     try {
-      await pollsService.vote(pollId, picked);
+      await pollsService.vote(pollId, picked, writing ? answer.trim() : undefined);
       setThanked(true);
     } catch (err) {
       // Voted from another tab in the meantime
@@ -124,13 +129,27 @@ export function PollModal({ pollId, onClose }: { pollId: number; onClose: () => 
                             {on && <Check size={14} />}
                           </span>
                           <span className="text-[13px] text-[var(--text)] break-words min-w-0">
-                            {o.text}
+                            {o.writeIn ? t('poll.other') : o.text}
                           </span>
                         </button>
                       );
                     })}
                   </div>
-                  <p className="mt-3 mb-0 text-[12px] text-[var(--text3)]">{t('poll.hint')}</p>
+                  {writing && (
+                    <textarea
+                      value={answer}
+                      onChange={(e) => setAnswer(e.target.value)}
+                      rows={3}
+                      maxLength={POLL_ANSWER_MAX_LENGTH}
+                      autoFocus
+                      aria-label={t('poll.answer')}
+                      placeholder={t('poll.answer')}
+                      className="mt-2 w-full px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[13px] text-[var(--text)] outline-none focus:border-[var(--accent)]/60 transition resize-y"
+                    />
+                  )}
+                  <p className="mt-3 mb-0 text-[12px] text-[var(--text3)]">
+                    {other ? t('poll.hintOther') : t('poll.hint')}
+                  </p>
                   {failed && (
                     <p role="alert" className="mt-3 mb-0 text-[13px] text-[var(--error)]">
                       {t('poll.failed')}
@@ -139,7 +158,7 @@ export function PollModal({ pollId, onClose }: { pollId: number; onClose: () => 
                   <div className="mt-5 flex justify-end">
                     <button
                       onClick={vote}
-                      disabled={!picked.length || sending}
+                      disabled={!picked.length || (writing && !answer.trim()) || sending}
                       className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold hover:brightness-110 transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       {sending ? t('poll.voting') : t('poll.vote')}

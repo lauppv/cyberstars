@@ -495,6 +495,9 @@
   "poll": {
     "title": "Poll",
     "hint": "Tick as many as you like. Your vote is anonymous.",
+    "hintOther": "Tick as many as you like. Your vote and what you write are anonymous.",
+    "other": "Other",
+    "answer": "Write your answer",
     "vote": "Vote",
     "voting": "Voting…",
     "thanks": "Thanks, your vote is in.",

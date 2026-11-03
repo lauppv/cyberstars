@@ -532,6 +532,9 @@
   "poll": {
     "title": "Sondaj",
     "hint": "Bifează oricâte vrei. Votul tău e anonim.",
+    "hintOther": "Bifează oricâte vrei. Votul tău și ce scrii sunt anonime.",
+    "other": "Altceva",
+    "answer": "Scrie-ți răspunsul",
     "vote": "Votează",
     "voting": "Se trimite…",
     "thanks": "Mulțumim, votul tău a fost înregistrat.",

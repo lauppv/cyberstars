@@ -61,8 +61,50 @@ describe('PollModal', () => {
 
     fireEvent.click(voteButton());
     expect(await screen.findByRole('status')).toHaveTextContent('Thanks, your vote is in.');
-    expect(vote).toHaveBeenCalledWith(3, [7, 9]);
+    expect(vote).toHaveBeenCalledWith(3, [7, 9], undefined);
     expect(screen.queryByRole('button', { name: 'Vote' })).toBeNull();
+  });
+
+  it("asks for the voter's own words under Other and sends them trimmed", async () => {
+    vote.mockResolvedValue('');
+    await open({
+      ...poll,
+      options: [...poll.options, { id: 10, text: 'Other', writeIn: true }],
+    });
+    expect(
+      screen.getByText('Tick as many as you like. Your vote and what you write are anonymous.'),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('textbox', { name: 'Write your answer' })).toBeNull();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Other' }));
+    const box = screen.getByRole('textbox', { name: 'Write your answer' });
+    expect(box).toHaveAttribute('maxLength', '500');
+    expect(voteButton()).toBeDisabled();
+    fireEvent.change(box, { target: { value: '   ' } });
+    expect(voteButton()).toBeDisabled();
+    fireEvent.change(box, { target: { value: '  More C  ' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Rust' }));
+    fireEvent.click(voteButton());
+    expect(await screen.findByRole('status')).toHaveTextContent('Thanks, your vote is in.');
+    expect(vote).toHaveBeenCalledWith(3, [10, 7], 'More C');
+  });
+
+  it('sends no answer once Other is unticked', async () => {
+    vote.mockResolvedValue('');
+    await open({
+      ...poll,
+      options: [...poll.options, { id: 10, text: 'Other', writeIn: true }],
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Other' }));
+    fireEvent.change(screen.getByRole('textbox', { name: 'Write your answer' }), {
+      target: { value: 'More C' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Other' }));
+    expect(screen.queryByRole('textbox', { name: 'Write your answer' })).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Go' }));
+    fireEvent.click(voteButton());
+    await screen.findByRole('status');
+    expect(vote).toHaveBeenCalledWith(3, [8], undefined);
   });
 
   it('says so when this account already voted', async () => {
