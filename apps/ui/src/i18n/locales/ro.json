@@ -177,7 +177,8 @@
       "history": "Trimise până acum",
       "none": "Încă nu s-a trimis niciun sondaj.",
       "historyError": "Sondajele trimise până acum nu s-au putut încărca.",
-      "voters": "Au votat {{voters}} din {{recipients}}"
+      "voters": "Au votat {{voters}} din {{recipients}}",
+      "ignored": "Văzut, fără vot: {{ignored}} · Nedeschis încă: {{unopened}}"
     }
   },
   "lang": {

@@ -88,6 +88,7 @@ describe('Admin polls', () => {
         authorName: expect.any(String),
         recipients: 1,
         voters: 0,
+        viewers: 0,
         options: [
           { text: 'A', votes: 0 },
           { text: 'B', votes: 0 },
@@ -165,6 +166,40 @@ describe('Voting in a poll', () => {
     expect(results.voters).toBe(1);
     expect(results.options[1].votes).toBe(1);
     expect(await prisma.pollVoter.count()).toBe(0);
+  });
+
+  it('counts each account that opened it once, a vote included, and never says who', async () => {
+    const { agent: ana } = await createAuthenticatedAgent();
+    const { agent: bob } = await createAuthenticatedAgent();
+    const { agent: cara } = await createAuthenticatedAgent();
+    const { admin: a, poll } = await sendPoll();
+    const results = async () => (await a.get('/api/admin/polls').expect(200)).body[0];
+
+    // Ana opens it twice and doesn't vote, Bob opens it and votes, Cara votes
+    // without opening it first
+    await ana.get(`/api/polls/${poll.id}`).expect(200);
+    await ana.get(`/api/polls/${poll.id}`).expect(200);
+    await bob.get(`/api/polls/${poll.id}`).expect(200);
+    expect(await results()).toMatchObject({ viewers: 2, voters: 0 });
+    await bob
+      .post(`/api/polls/${poll.id}/vote`)
+      .send({ optionIds: [poll.options[0].id] })
+      .expect(204);
+    await cara
+      .post(`/api/polls/${poll.id}/vote`)
+      .send({ optionIds: [poll.options[1].id] })
+      .expect(204);
+    expect(await results()).toMatchObject({ viewers: 3, voters: 2 });
+
+    const viewers = await prisma.pollViewer.findMany();
+    expect(viewers).toHaveLength(3);
+    expect(Object.keys(viewers[0]).sort()).toEqual(['pollId', 'userId']);
+  });
+
+  it('gives no viewers for a poll sent before opening one was counted', async () => {
+    const { admin: a, poll } = await sendPoll();
+    await prisma.poll.update({ where: { id: poll.id }, data: { countsViewers: false } });
+    expect((await a.get('/api/admin/polls').expect(200)).body[0].viewers).toBeNull();
   });
 
   it("refuses no option, another poll's option and a poll that doesn't exist", async () => {

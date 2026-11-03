@@ -25,9 +25,15 @@ async function received(id: number, userId: number) {
   return poll;
 }
 
-// The poll as a student opens it, no counts
+// The poll as a student opens it, no counts. Opening it counts them among its
+// viewers, and a failure there is only logged, the poll still opens
 export async function get(id: number, userId: number): Promise<PollDTO> {
   const poll = await received(id, userId);
+  try {
+    await repo.noteView(id, userId);
+  } catch (err) {
+    console.error(`[polls] poll ${id} opened without counting the view:`, err);
+  }
   return {
     id: poll.id,
     question: poll.question,
@@ -82,6 +88,7 @@ export async function list(): Promise<PollResultsDTO[]> {
     createdAt: p.createdAt.toISOString(),
     recipients: p.recipients,
     voters: p.voters,
+    viewers: p.countsViewers ? p.viewers : null,
     options: p.options.map((o) => ({ id: o.id, text: o.text, votes: o.votes, writeIn: o.writeIn })),
     answers: p.answers.map((a) => a.text),
   }));

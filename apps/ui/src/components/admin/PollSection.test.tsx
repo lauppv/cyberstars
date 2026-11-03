@@ -37,6 +37,7 @@ const sentBefore: PollResultsDTO[] = [
     createdAt: '2026-11-03T10:00:00.000Z',
     recipients: 40,
     voters: 4,
+    viewers: 9,
     options: [
       { id: 7, text: 'Rust', votes: 3, writeIn: false },
       { id: 8, text: 'Go', votes: 2, writeIn: false },
@@ -50,6 +51,7 @@ const sentBefore: PollResultsDTO[] = [
     createdAt: '2026-10-20T10:00:00.000Z',
     recipients: 30,
     voters: 0,
+    viewers: null,
     options: [
       { id: 1, text: 'Yes', votes: 0, writeIn: false },
       { id: 2, text: 'No', votes: 0, writeIn: false },
@@ -174,6 +176,14 @@ describe('PollSection results', () => {
     expect(screen.getByText('November 3, 2026 · Ada · 4 of 40 voted')).toBeInTheDocument();
     expect(screen.getByText('3 · 75%')).toBeInTheDocument();
     expect(screen.getByText('2 · 50%')).toBeInTheDocument();
+  });
+
+  it('counts who saw a poll without voting and who never opened it, never naming them', async () => {
+    getPolls.mockResolvedValue(sentBefore);
+    render(<PollSection className="" />);
+    expect(await screen.findByText('Seen, no vote: 5 · Not opened yet: 31')).toBeInTheDocument();
+    // The poll sent before opening one was counted has no such line
+    expect(screen.getAllByText(/Seen, no vote/)).toHaveLength(1);
   });
 
   it("names Other in the page's language and lists what was written under it", async () => {
