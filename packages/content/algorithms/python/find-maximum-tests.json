@@ -2,7 +2,15 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [{ "kind": "loop" }],
-    "forbids": [{ "kind": "call", "name": "max" }]
+    "forbids": [
+      { "kind": "call", "name": "max" },
+      { "kind": "call", "name": "sorted" },
+      { "kind": "call", "name": "sort" },
+      { "kind": "call", "name": "nlargest" },
+      { "kind": "call", "name": "eval" },
+      { "kind": "call", "name": "exec" },
+      { "kind": "call", "name": "getattr" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "5\n3 1 7 2 5\n" },
