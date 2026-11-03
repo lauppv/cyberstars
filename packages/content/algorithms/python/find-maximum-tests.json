@@ -9,7 +9,19 @@
       { "kind": "call", "name": "nlargest" },
       { "kind": "call", "name": "eval" },
       { "kind": "call", "name": "exec" },
-      { "kind": "call", "name": "getattr" }
+      { "kind": "call", "name": "getattr" },
+      { "kind": "call", "name": "min" },
+      { "kind": "call", "name": "nsmallest" },
+      { "kind": "call", "name": "heapify" },
+      { "kind": "call", "name": "heappush" },
+      { "kind": "call", "name": "heappop" },
+      { "kind": "call", "name": "heappushpop" },
+      { "kind": "call", "name": "heapreplace" },
+      { "kind": "call", "name": "merge" },
+      { "kind": "call", "name": "insort" },
+      { "kind": "call", "name": "insort_left" },
+      { "kind": "call", "name": "insort_right" },
+      { "kind": "call", "name": "PriorityQueue" }
     ]
   },
   "cases": [
