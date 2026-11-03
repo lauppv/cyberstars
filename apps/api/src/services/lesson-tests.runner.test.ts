@@ -774,6 +774,74 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
     }
   });
 
+  it('resolves a forbidden call to the method javac picks', () => {
+    const passes = { syntaxError: null, structureFailures: [] };
+    const fires = (rule: unknown) => ({
+      syntaxError: null,
+      structureFailures: [{ type: 'forbid', rule }],
+    });
+    const search = { kind: 'call', name: 'Arrays.binarySearch' };
+    const sort = { kind: 'call', name: 'sort' };
+    const comparator = { kind: 'call', name: 'Comparator' };
+    const vector = { kind: 'call', name: 'Vector' };
+    // A method of the same name elsewhere doesn't hide the library's.
+    expect(
+      header(
+        'import static java.util.Arrays.*;\n' +
+          main('    static int f(int[] a) { return binarySearch(a, 2); }') +
+          'class Helper { static int binarySearch() { return 0; } }\n',
+        [],
+        [search],
+      ),
+    ).toEqual(fires(search));
+    // Inherited from the library, not the student's own.
+    expect(
+      header(
+        'import java.util.*;\n' +
+          main('    static void sort(int[] a) {}\n    static void f(L l) { l.sort(null); }') +
+          'class L extends ArrayList<Integer> {}\n',
+        [],
+        [sort],
+      ),
+    ).toEqual(fires(sort));
+    // A lambda handed to sort is a Comparator; a Stack is a Vector.
+    expect(
+      header(
+        'import java.util.*;\n' +
+          main('    static void f(List<Integer> l) { l.sort((a, b) -> a - b); }'),
+        [],
+        [comparator],
+      ),
+    ).toEqual(fires(comparator));
+    expect(
+      header(
+        'import java.util.*;\n' + main('    static Object f() { return new Stack<Integer>(); }'),
+        [],
+        [vector],
+      ),
+    ).toEqual(fires(vector));
+    // Reflection can reach any method.
+    expect(
+      header(
+        main(
+          '    static Object f() throws Exception { return Class.forName("java.util.Arrays"); }',
+        ),
+        [],
+        [sort],
+      ),
+    ).toEqual(fires(sort));
+    // The student's own Stack, sort and Runnable lambda stay theirs.
+    expect(
+      header(
+        main(
+          '    static void sort(int[] a) {}\n    static void f(int[] a) { sort(a); Runnable r = () -> {}; new Stack(); }',
+        ) + 'class Stack {}\n',
+        [],
+        [sort, comparator, vector],
+      ),
+    ).toEqual(passes);
+  });
+
   it('finds a constant inside a string too', () => {
     const rule = { kind: 'int_literal', values: [64] };
     expect(header(main('    static String s = "58 64";'), [rule])).toEqual({

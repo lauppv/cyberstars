@@ -36,6 +36,7 @@ import com.sun.source.tree.ExpressionStatementTree;
 import com.sun.source.tree.ExpressionTree;
 import com.sun.source.tree.ForLoopTree;
 import com.sun.source.tree.IdentifierTree;
+import com.sun.source.tree.LambdaExpressionTree;
 import com.sun.source.tree.ImportTree;
 import com.sun.source.tree.LiteralTree;
 import com.sun.source.tree.MemberReferenceTree;
@@ -233,21 +234,13 @@ public class Runner {
     String error; // first parse error, or null
     String mainClass = "Main";
     final List<InjectPoint> points = new ArrayList<>();
-    // A library call counts by its bare name and by its class's, Arrays.sort as both sort and
-    // Arrays.sort, so a spec can forbid the library's sort while the student writes their own.
+    // A call counts by its bare name and by its class's, Arrays.sort as both sort and
+    // Arrays.sort. A forbid reads what javac resolves instead (Structure.Reached).
     final java.util.Set<String> callNames = new java.util.HashSet<>();
     // Bare-name calls, and the classes a static import brings every member of (import static
     // java.util.Arrays.*): such a call to a method the student doesn't define is that class's.
     final java.util.Set<String> bareCalls = new java.util.HashSet<>();
     final java.util.Set<String> staticOwners = new java.util.HashSet<>();
-    // For a forbid by a bare name (indexOf, sort, LinkedList), the calls that can't be the
-    // student's own: a method called on an expression (java.util.Arrays.sort, a.b().indexOf), a
-    // method reference on one, a constructor named with its package. A method called on a name
-    // (list.indexOf, Searcher.indexOf, this.indexOf) waits in namedCalls until the student's own
-    // classes and each variable's declared types are known.
-    final java.util.Set<String> foreignCalls = new java.util.HashSet<>();
-    final List<String[]> namedCalls = new ArrayList<>();
-    final Map<String, java.util.Set<String>> variableTypes = new java.util.HashMap<>();
     final java.util.Set<String> variableNames = new java.util.HashSet<>();
     final java.util.Set<String> methodNames = new java.util.HashSet<>();
     // A method that calls itself somewhere in its own body.
@@ -387,7 +380,6 @@ public class Runner {
             callNames.add(ms.getIdentifier().toString());
             String owner = lastName(ms.getExpression());
             if (owner != null) callNames.add(owner + "." + ms.getIdentifier());
-            calledOn(ms.getExpression(), ms.getIdentifier().toString());
           }
           // A method calls itself by its bare name or through this., with as
           // many arguments as it takes: name.equals(...) on a field or an
@@ -417,21 +409,11 @@ public class Runner {
           String name = node.getName().toString();
           if (name.equals("<init>")) {
             if (owner != null) callNames.add(owner);
-            if (owner != null && packageQualified(qualifier)) foreignCalls.add(owner);
           } else {
             callNames.add(name);
             if (owner != null) callNames.add(owner + "." + name);
-            calledOn(qualifier, name);
           }
           return super.visitMemberReference(node, unused);
-        }
-
-        void calledOn(ExpressionTree receiver, String name) {
-          if (receiver instanceof IdentifierTree id) {
-            namedCalls.add(new String[] {id.getName().toString(), name});
-          } else {
-            foreignCalls.add(name);
-          }
         }
 
         @Override
@@ -454,7 +436,6 @@ public class Runner {
             String type = simpleType(node.getIdentifier());
             callNames.add(type);
             newTypes.add(type);
-            if (packageQualified(node.getIdentifier())) foreignCalls.add(type);
           }
           return super.visitNewClass(node, unused);
         }
@@ -468,15 +449,6 @@ public class Runner {
           // `var` declarations have a null type tree.
           String type = node.getType() == null ? "" : node.getType().toString();
           declaredTypes.put(name, type);
-          // var s = new Searcher() takes its type from the initializer.
-          String simple =
-              node.getType() != null
-                  ? simpleType(node.getType())
-                  : node.getInitializer() instanceof NewClassTree created
-                          && created.getIdentifier() != null
-                      ? simpleType(created.getIdentifier())
-                      : "";
-          variableTypes.computeIfAbsent(name, k -> new java.util.HashSet<>()).add(simple);
           if (node.getInitializer() != null && isEligible(parent)) {
             long start = positions.getStartPosition(unit, node.getInitializer());
             long end = positions.getEndPosition(unit, node.getInitializer());
@@ -595,23 +567,6 @@ public class Runner {
       if (qualifier instanceof IdentifierTree id) return id.getName().toString();
       if (qualifier instanceof MemberSelectTree ms) return ms.getIdentifier().toString();
       return null;
-    }
-
-    // java.util.LinkedList, with or without generics, as against a bare LinkedList.
-    static boolean packageQualified(Tree type) {
-      Tree base = type instanceof ParameterizedTypeTree generic ? generic.getType() : type;
-      return base instanceof MemberSelectTree;
-    }
-
-    // Whether a call through this receiver name can be the student's own method: this, their own
-    // class (main's included) or a variable whose every declaration has one of their classes.
-    boolean ownReceiver(String receiver) {
-      if (receiver.equals("this") || receiver.equals(mainClass) || ownClasses.contains(receiver)) {
-        return true;
-      }
-      java.util.Set<String> types = variableTypes.get(receiver);
-      return types != null
-          && types.stream().allMatch(t -> t.equals(mainClass) || ownClasses.contains(t));
     }
 
     static String simpleType(Tree type) {
@@ -815,27 +770,186 @@ public class Runner {
       for (Object rule : asList(structure.getOrDefault("requires", new ArrayList<>()))) {
         if (!holds(parsed, asMap(rule))) failures.add(failure("require", rule));
       }
-      for (Object rule : asList(structure.getOrDefault("forbids", new ArrayList<>()))) {
-        if (forbidHolds(parsed, asMap(rule))) failures.add(failure("forbid", rule));
+      Reached reached = null;
+      for (Object raw : asList(structure.getOrDefault("forbids", new ArrayList<>()))) {
+        Map<String, Object> rule = asMap(raw);
+        boolean holds;
+        if ("call".equals(rule.get("kind")) && rule.get("name") instanceof String name) {
+          // Resolved once per program, for every call it forbids. A program that doesn't
+          // compile stops on its compile error, whatever its structure.
+          if (reached == null) reached = Reached.of(parsed);
+          holds = reached.compiled ? reached.dynamic || reached.names.contains(name) : holds(parsed, rule);
+        } else {
+          holds = holds(parsed, rule);
+        }
+        if (holds) failures.add(failure("forbid", rule));
       }
       return failures;
     }
 
-    // A forbidden call by a bare name (indexOf, sort, LinkedList) is the library's unless the
-    // student's own code makes it: a method of their own called bare, through this, their class
-    // or an object of it, or a class of their own constructed. Arrays.sort names the library.
-    static boolean forbidHolds(Parsed parsed, Map<String, Object> rule) {
-      String name = rule.get("name") instanceof String s ? s : "";
-      if (!"call".equals(rule.get("kind")) || name.isEmpty() || name.contains(".")) {
-        return holds(parsed, rule);
+    // What the program reaches of the library, as javac itself resolves every name: a method by
+    // its name and its class's (sort and Arrays.sort), a class it builds, extends or names
+    // (LinkedList). A name that resolves to the student's own method or class is theirs from
+    // wherever it is called (bare, through this, an object, a static import of the same name
+    // elsewhere); one their class inherits from the library, or a static import brings in, is
+    // the library's.
+    static final class Reached {
+      boolean compiled;
+      final java.util.Set<String> names = new java.util.HashSet<>();
+      // Reflection, another program or code compiled at run time can reach any method by a name
+      // built as the program runs.
+      boolean dynamic;
+
+      static final List<String> DYNAMIC_PACKAGES =
+          List.of(
+              "java.lang.reflect.",
+              "java.lang.invoke.",
+              "java.lang.classfile.",
+              "jdk.jshell.",
+              "jdk.internal.",
+              "javax.tools.",
+              "javax.script.",
+              "sun.misc.");
+      static final java.util.Set<String> DYNAMIC_CLASSES =
+          java.util.Set.of(
+              "java.lang.ClassLoader",
+              "java.net.URLClassLoader",
+              "java.lang.ProcessBuilder",
+              "java.lang.Process",
+              "java.lang.ProcessHandle");
+      static final java.util.Set<String> CLASS_LOOKUPS =
+          java.util.Set.of(
+              "forName",
+              "getMethod",
+              "getMethods",
+              "getDeclaredMethod",
+              "getDeclaredMethods",
+              "getConstructor",
+              "getConstructors",
+              "getDeclaredConstructor",
+              "getDeclaredConstructors",
+              "newInstance",
+              "getClassLoader");
+
+      static Reached of(Parsed parsed) {
+        Reached reached = new Reached();
+        DiagnosticCollector<JavaFileObject> diags = new DiagnosticCollector<>();
+        JavacTask task =
+            (JavacTask)
+                COMPILER.getTask(
+                    new StringWriter(),
+                    null,
+                    diags,
+                    List.of("-proc:none"),
+                    null,
+                    List.of(new StringSource(parsed.mainClass, parsed.source)));
+        Iterable<? extends CompilationUnitTree> units;
+        try {
+          units = task.parse();
+          task.analyze();
+        } catch (Exception e) {
+          return reached;
+        }
+        for (Diagnostic<? extends JavaFileObject> d : diags.getDiagnostics()) {
+          if (d.getKind() == Diagnostic.Kind.ERROR) return reached;
+        }
+        reached.compiled = true;
+        Trees trees = Trees.instance(task);
+        reached.trees = trees;
+        for (CompilationUnitTree unit : units) {
+          new TreePathScanner<Void, Void>() {
+            // An import alone reaches nothing; what it brings in is resolved where it is used.
+            @Override
+            public Void visitImport(ImportTree node, Void unused) {
+              return null;
+            }
+
+            @Override
+            public Void visitIdentifier(IdentifierTree node, Void unused) {
+              reached.note(trees.getElement(getCurrentPath()));
+              return super.visitIdentifier(node, unused);
+            }
+
+            @Override
+            public Void visitMemberSelect(MemberSelectTree node, Void unused) {
+              reached.note(trees.getElement(getCurrentPath()));
+              return super.visitMemberSelect(node, unused);
+            }
+
+            @Override
+            public Void visitMemberReference(MemberReferenceTree node, Void unused) {
+              reached.note(trees.getElement(getCurrentPath()));
+              reached.noteType(trees.getTypeMirror(getCurrentPath()));
+              return super.visitMemberReference(node, unused);
+            }
+
+            @Override
+            public Void visitNewClass(NewClassTree node, Void unused) {
+              reached.note(trees.getElement(getCurrentPath()));
+              return super.visitNewClass(node, unused);
+            }
+
+            // A lambda is an object of the interface it is handed out as: (a, b) -> a - b given
+            // to sort is a Comparator, though the word appears nowhere.
+            @Override
+            public Void visitLambdaExpression(LambdaExpressionTree node, Void unused) {
+              reached.noteType(trees.getTypeMirror(getCurrentPath()));
+              return super.visitLambdaExpression(node, unused);
+            }
+          }.scan(unit, null);
+        }
+        return reached;
       }
-      if (parsed.foreignCalls.contains(name)) return true;
-      for (String[] call : parsed.namedCalls) {
-        if (call[1].equals(name) && !parsed.ownReceiver(call[0])) return true;
+
+      Trees trees;
+
+      void note(javax.lang.model.element.Element element) {
+        // The student's own code has a tree here; the library's doesn't.
+        if (element == null || trees.getPath(element) != null) return;
+        javax.lang.model.element.ElementKind kind = element.getKind();
+        if (kind == javax.lang.model.element.ElementKind.METHOD
+            || kind == javax.lang.model.element.ElementKind.CONSTRUCTOR) {
+          if (!(element.getEnclosingElement()
+              instanceof javax.lang.model.element.TypeElement owner)) {
+            return;
+          }
+          String type = owner.getSimpleName().toString();
+          String method = element.getSimpleName().toString();
+          if (kind == javax.lang.model.element.ElementKind.CONSTRUCTOR) {
+            noteClass(owner);
+          } else {
+            names.add(method);
+            names.add(type + "." + method);
+          }
+          dynamic |= dynamic(owner.getQualifiedName().toString(), method);
+        } else if (element instanceof javax.lang.model.element.TypeElement type) {
+          noteClass(type);
+        }
       }
-      return parsed.callNames.contains(name)
-          && !parsed.methodNames.contains(name)
-          && !parsed.ownClasses.contains(name);
+
+      // A library class counts with every class above it: a Stack is a Vector.
+      void noteClass(javax.lang.model.element.TypeElement type) {
+        if (!names.add(type.getSimpleName().toString())) return;
+        dynamic |= dynamic(type.getQualifiedName().toString(), null);
+        noteType(type.getSuperclass());
+        for (javax.lang.model.type.TypeMirror parent : type.getInterfaces()) noteType(parent);
+      }
+
+      void noteType(javax.lang.model.type.TypeMirror type) {
+        if (type instanceof javax.lang.model.type.DeclaredType declared
+            && declared.asElement() instanceof javax.lang.model.element.TypeElement element
+            && trees.getPath(element) == null) {
+          noteClass(element);
+        }
+      }
+
+      static boolean dynamic(String type, String method) {
+        if (DYNAMIC_PACKAGES.stream().anyMatch(type::startsWith)) return true;
+        if (DYNAMIC_CLASSES.contains(type)) return true;
+        return method != null
+            && ((type.equals("java.lang.Class") && CLASS_LOOKUPS.contains(method))
+                || (type.equals("java.lang.Runtime") && method.equals("exec")));
+      }
     }
 
     static Map<String, Object> failure(String type, Object rule) {
