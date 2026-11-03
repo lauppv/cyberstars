@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "rds-both-859de7",
-      "text": "Ce afișează?",
-      "code": "echipa_a = [(\"Phil\", 40), (\"Sonny\", 95), (\"Mia\", 66)]\nechipa_b = [(\"Mia\", 81), (\"Ken\", 77), (\"Nova\", 59)]\nnume_b = set()\nfor nume, scor in echipa_b:\n    nume_b.add(nume)\nfor nume, scor in echipa_a:\n    if nume in nume_b:\n        print(nume)",
-      "options": ["Mia", "Phil\nSonny", "66", "Mia\nKen\nNova"],
-      "answer": 0
-    },
-    {
-      "id": "rds-both-612e98",
-      "text": "Ce afișează?",
-      "code": "echipa_a = [(\"Zoe\", 88), (\"Ben\", 52), (\"Cara\", 73)]\nechipa_b = [(\"Cara\", 91), (\"Ben\", 64), (\"Max\", 70)]\nnume_b = set()\nfor nume, scor in echipa_b:\n    nume_b.add(nume)\nfor nume, scor in echipa_a:\n    if nume in nume_b:\n        print(nume)",
-      "options": ["Ben\nCara", "Zoe", "52\n73", "Cara\nBen\nMax"],
-      "answer": 0
-    },
-    {
       "id": "rds-high-c392a4",
       "text": "Ce afișează?",
       "code": "echipa = [(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91), (\"Phil\", 60)]\nmari = [scor for nume, scor in echipa if scor > 80]\nprint(mari)",
@@ -41,20 +27,6 @@
       "text": "Ce afișează?",
       "code": "echipa = [(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95), (\"Zoe\", 70)]\nmari = [scor for nume, scor in echipa if scor > 65]\nprint(mari)",
       "options": ["[70, 95, 70]", "['Rex', 'Kai', 'Zoe']", "[64, 70, 95, 70]", "[64]"],
-      "answer": 0
-    },
-    {
-      "id": "rds-high-71d106",
-      "text": "Ce afișează?",
-      "code": "echipa = [(\"Mia\", 50), (\"Ben\", 99), (\"Cara\", 75), (\"Max\", 81)]\nmari = [scor for nume, scor in echipa if scor > 75]\nprint(mari)",
-      "options": ["[99, 81]", "['Ben', 'Max']", "[50, 99, 75, 81]", "[50]"],
-      "answer": 0
-    },
-    {
-      "id": "rds-high-0e9972",
-      "text": "Ce afișează?",
-      "code": "echipa = [(\"Nova\", 33), (\"Ken\", 90), (\"Sonny\", 67), (\"Mira\", 88)]\nmari = [scor for nume, scor in echipa if scor > 60]\nprint(mari)",
-      "options": ["[90, 67, 88]", "['Ken', 'Sonny', 'Mira']", "[33, 90, 67, 88]", "[33]"],
       "answer": 0
     },
     {
@@ -82,30 +54,6 @@
       "answer": 0
     },
     {
-      "id": "rds-system-659fef",
-      "text": "Ce afișează?",
-      "code": "sistem = (\"Vega\", 25, 5)\nnume, distanta, planete = sistem\nprint(f\"{nume}: {distanta} ani lumina, {planete} planete\")",
-      "options": [
-        "Vega: 25 ani lumina, 5 planete",
-        "Vega: 5 ani lumina, 25 planete",
-        "('Vega', 25, 5)",
-        "Vega: 3 ani lumina, 5 planete"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rds-system-ca1f39",
-      "text": "Ce afișează?",
-      "code": "sistem = (\"Sirius\", 9, 2)\nnume, distanta, planete = sistem\nprint(f\"{nume}: {distanta} ani lumina, {planete} planete\")",
-      "options": [
-        "Sirius: 9 ani lumina, 2 planete",
-        "Sirius: 2 ani lumina, 9 planete",
-        "('Sirius', 9, 2)",
-        "Sirius: 3 ani lumina, 2 planete"
-      ],
-      "answer": 0
-    },
-    {
       "id": "rds-pairs-0e3051",
       "text": "Ce afișează?",
       "code": "numar = 0\nfor a in range(1, 4):\n    for b in range(1, 4):\n        if a + b == 5:\n            numar = numar + 1\nprint(numar)",
@@ -117,20 +65,6 @@
       "text": "Ce afișează?",
       "code": "numar = 0\nfor a in range(1, 5):\n    for b in range(1, 4):\n        if a + b == 6:\n            numar = numar + 1\nprint(numar)",
       "options": ["2", "1", "3", "10"],
-      "answer": 0
-    },
-    {
-      "id": "rds-pairs-0060dd",
-      "text": "Ce afișează?",
-      "code": "numar = 0\nfor a in range(1, 4):\n    for b in range(1, 6):\n        if a + b == 7:\n            numar = numar + 1\nprint(numar)",
-      "options": ["2", "1", "3", "13"],
-      "answer": 0
-    },
-    {
-      "id": "rds-pairs-712183",
-      "text": "Ce afișează?",
-      "code": "numar = 0\nfor a in range(1, 6):\n    for b in range(1, 6):\n        if a + b == 8:\n            numar = numar + 1\nprint(numar)",
-      "options": ["3", "1", "2", "5"],
       "answer": 0
     },
     {
@@ -148,20 +82,6 @@
       "answer": 0
     },
     {
-      "id": "rds-rect-b2f306",
-      "text": "Ce afișează?",
-      "code": "for rand in range(2):\n    for coloana in range(3):\n        print(\"@\", end=\"\")\n    print()",
-      "options": ["@@@\n@@@", "@\n@@", "@\n@\n@\n@\n@\n@", "@\n@\n@\n\n@\n@\n@"],
-      "answer": 0
-    },
-    {
-      "id": "rds-rect-aa5d68",
-      "text": "Ce afișează?",
-      "code": "for rand in range(4):\n    for coloana in range(1):\n        print(\"+\", end=\"\")\n    print()",
-      "options": ["+\n+\n+\n+", "+\n++\n+++\n++++", "+\n\n+\n\n+\n\n+", "+"],
-      "answer": 0
-    },
-    {
       "id": "rds-set-len-e10199",
       "text": "Ce afișează?",
       "code": "semnale = [\"A1\", \"B2\", \"A1\", \"C3\", \"A1\"]\nunice = set(semnale)\nprint(f\"Total: {len(semnale)}\")\nprint(f\"Unice: {len(unice)}\")",
@@ -173,20 +93,6 @@
       "text": "Ce afișează?",
       "code": "semnale = [\"X\", \"Y\", \"X\", \"Y\"]\nunice = set(semnale)\nprint(f\"Total: {len(semnale)}\")\nprint(f\"Unice: {len(unice)}\")",
       "options": ["Total: 4\nUnice: 2", "Total: 4\nUnice: 4", "Unice: 2", "Total: 2\nUnice: 2"],
-      "answer": 0
-    },
-    {
-      "id": "rds-set-len-0368f5",
-      "text": "Ce afișează?",
-      "code": "semnale = [\"D4\", \"D4\", \"E5\", \"F6\", \"G7\", \"E5\"]\nunice = set(semnale)\nprint(f\"Total: {len(semnale)}\")\nprint(f\"Unice: {len(unice)}\")",
-      "options": ["Total: 6\nUnice: 4", "Total: 6\nUnice: 6", "Unice: 4", "Total: 2\nUnice: 4"],
-      "answer": 0
-    },
-    {
-      "id": "rds-set-len-a9eb4c",
-      "text": "Ce afișează?",
-      "code": "semnale = [\"K9\", \"L1\", \"K9\"]\nunice = set(semnale)\nprint(f\"Total: {len(semnale)}\")\nprint(f\"Unice: {len(unice)}\")",
-      "options": ["Total: 3\nUnice: 2", "Total: 3\nUnice: 3", "Unice: 2", "Total: 1\nUnice: 2"],
       "answer": 0
     },
     {
@@ -226,18 +132,6 @@
       "answer": 0
     },
     {
-      "id": "rds-remove-b8e631",
-      "text": "Ce afișează?",
-      "code": "echipaj = {\"Ben\", \"Cara\", \"Max\"}\nechipaj.add(\"Nova\")\nechipaj.remove(\"Ben\")\nfor nume in [\"Max\", \"Ben\", \"Nova\"]:\n    print(nume in echipaj)",
-      "options": [
-        "True\nFalse\nTrue",
-        "True\nTrue\nTrue",
-        "True\nFalse\nFalse",
-        "False\nTrue\nFalse"
-      ],
-      "answer": 0
-    },
-    {
       "id": "rds-comp-350731",
       "text": "Ce afișează?",
       "code": "numere = [3, 8, 12, 5, 20]\nrezultat = [n * 2 for n in numere if n > 6]\nprint(rezultat)",
@@ -256,13 +150,6 @@
       "text": "Ce afișează?",
       "code": "numere = [10, 25, 5, 40, 15]\nrezultat = [n + 1 for n in numere if n >= 15]\nprint(rezultat)",
       "options": ["[26, 41, 16]", "[11, 26, 6, 41, 16]", "[25, 40, 15]", "[16]"],
-      "answer": 0
-    },
-    {
-      "id": "rds-comp-94ea2b",
-      "text": "Ce afișează?",
-      "code": "numere = [7, 14, 21, 28]\nrezultat = [n - 7 for n in numere if n > 10]\nprint(rezultat)",
-      "options": ["[7, 14, 21]", "[0, 7, 14, 21]", "[14, 21, 28]", "[]"],
       "answer": 0
     },
     {
@@ -671,6 +558,157 @@
         "print(len(nume_alese))",
         "print(nume_alese)"
       ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-high-dedb48",
+      "text": "Ce conține `cei_mai_buni` la final?",
+      "code": "echipa = [(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91), (\"Phil\", 80)]\ncei_mai_buni = [name for name, score in echipa if score > 80]",
+      "options": [
+        "['Tommy', 'Cortez']",
+        "[85, 91]",
+        "['Tommy', 'Cortez', 'Phil']",
+        "[('Tommy', 85), ('Cortez', 91)]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-high-91a7c2",
+      "text": "Ce conține `promovati` la final?",
+      "code": "echipa = [(\"Ana\", 55), (\"Rex\", 30), (\"Kai\", 50), (\"Zoe\", 90)]\npromovati = [name for name, score in echipa if score > 50]",
+      "options": [
+        "['Ana', 'Zoe']",
+        "[55, 90]",
+        "['Ana', 'Kai', 'Zoe']",
+        "[('Ana', 55), ('Zoe', 90)]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-high-09a33c",
+      "text": "Ce conține `pline` la final?",
+      "code": "flota = [(\"Nova\", 80), (\"Orion\", 45), (\"Vega\", 60)]\npline = [name for name, score in flota if score > 60]",
+      "options": ["['Nova']", "[80]", "['Nova', 'Vega']", "[('Nova', 80)]"],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-tally-2acfb0",
+      "text": "Ce conține `pe_oras` la final?",
+      "code": "echipaj = [(\"Tommy\", \"Vice\"), (\"Lance\", \"Vice\"), (\"Phil\", \"Liberty\"), (\"Ken\", \"Liberty\"), (\"Mia\", \"San\")]\npe_oras = {}\nfor name, oras in echipaj:\n    if oras in pe_oras:\n        pe_oras[oras] = pe_oras[oras] + 1\n    else:\n        pe_oras[oras] = 1",
+      "options": [
+        "{'Vice': 2, 'Liberty': 2, 'San': 1}",
+        "{'Vice': 1, 'Liberty': 1, 'San': 1}",
+        "{'Vice': 1, 'Liberty': 1, 'San': 0}",
+        "{'Tommy': 1, 'Lance': 1, 'Phil': 1, 'Ken': 1, 'Mia': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-tally-04533b",
+      "text": "Ce conține `pe_rol` la final?",
+      "code": "echipaj = [(\"Ana\", \"pilot\"), (\"Rex\", \"bucatar\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"bucatar\")]\npe_rol = {}\nfor name, rol in echipaj:\n    if rol in pe_rol:\n        pe_rol[rol] = pe_rol[rol] + 1\n    else:\n        pe_rol[rol] = 1",
+      "options": [
+        "{'pilot': 2, 'bucatar': 2, 'medic': 1}",
+        "{'pilot': 1, 'bucatar': 1, 'medic': 1}",
+        "{'pilot': 1, 'bucatar': 1, 'medic': 0}",
+        "{'Ana': 1, 'Rex': 1, 'Kai': 1, 'Zoe': 1, 'Ben': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-tally-9532a9",
+      "text": "Ce conține `pe_culoare` la final?",
+      "code": "flota = [(\"Nova\", \"rosu\"), (\"Orion\", \"albastru\"), (\"Vega\", \"rosu\"), (\"Lyra\", \"verde\")]\npe_culoare = {}\nfor name, culoare in flota:\n    if culoare in pe_culoare:\n        pe_culoare[culoare] = pe_culoare[culoare] + 1\n    else:\n        pe_culoare[culoare] = 1",
+      "options": [
+        "{'rosu': 2, 'albastru': 1, 'verde': 1}",
+        "{'rosu': 1, 'albastru': 1, 'verde': 1}",
+        "{'rosu': 1, 'albastru': 0, 'verde': 0}",
+        "{'Nova': 1, 'Orion': 1, 'Vega': 1, 'Lyra': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-tally-1521f9",
+      "text": "Ce conține `pe_tip` la final?",
+      "code": "planete = [(\"Marte\", \"stanca\"), (\"Venus\", \"stanca\"), (\"Jupiter\", \"gaz\"), (\"Saturn\", \"gaz\"), (\"Terra\", \"stanca\")]\npe_tip = {}\nfor name, tip in planete:\n    if tip in pe_tip:\n        pe_tip[tip] = pe_tip[tip] + 1\n    else:\n        pe_tip[tip] = 1",
+      "options": [
+        "{'stanca': 3, 'gaz': 2}",
+        "{'stanca': 1, 'gaz': 1}",
+        "{'stanca': 2, 'gaz': 1}",
+        "{'Marte': 1, 'Venus': 1, 'Jupiter': 1, 'Saturn': 1, 'Terra': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-firsts-772d0a",
+      "text": "Ce conține `primii` la final?",
+      "code": "echipaj = [(\"Tommy\", \"Vice\"), (\"Lance\", \"Vice\"), (\"Phil\", \"Liberty\"), (\"Ken\", \"Liberty\"), (\"Mia\", \"San\")]\norase = set()\nprimii = []\nfor name, oras in echipaj:\n    if oras in orase:\n        continue\n    orase.add(oras)\n    primii.append(name)",
+      "options": [
+        "['Tommy', 'Phil', 'Mia']",
+        "['Tommy']",
+        "['Vice', 'Liberty', 'San']",
+        "['Tommy', 'Lance', 'Phil', 'Ken', 'Mia']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-firsts-a45339",
+      "text": "Ce conține `primii` la final?",
+      "code": "echipaj = [(\"Ana\", \"pilot\"), (\"Rex\", \"bucatar\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"bucatar\")]\nroluri = set()\nprimii = []\nfor name, rol in echipaj:\n    if rol in roluri:\n        continue\n    roluri.add(rol)\n    primii.append(name)",
+      "options": [
+        "['Ana', 'Rex', 'Zoe']",
+        "['Ana', 'Rex']",
+        "['pilot', 'bucatar', 'medic']",
+        "['Ana', 'Rex', 'Kai', 'Zoe', 'Ben']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-firsts-af9610",
+      "text": "Ce conține `lideri` la final?",
+      "code": "flota = [(\"Nova\", \"rosu\"), (\"Orion\", \"albastru\"), (\"Vega\", \"rosu\"), (\"Lyra\", \"verde\")]\nculori = set()\nlideri = []\nfor name, culoare in flota:\n    if culoare in culori:\n        continue\n    culori.add(culoare)\n    lideri.append(name)",
+      "options": [
+        "['Nova', 'Orion', 'Lyra']",
+        "['Nova', 'Orion']",
+        "['rosu', 'albastru', 'verde']",
+        "['Nova', 'Orion', 'Vega', 'Lyra']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-firsts-f91eae",
+      "text": "Ce conține `primele` la final?",
+      "code": "planete = [(\"Marte\", \"stanca\"), (\"Venus\", \"stanca\"), (\"Jupiter\", \"gaz\"), (\"Saturn\", \"gaz\"), (\"Terra\", \"stanca\")]\ntipuri = set()\nprimele = []\nfor name, tip in planete:\n    if tip in tipuri:\n        continue\n    tipuri.add(tip)\n    primele.append(name)",
+      "options": [
+        "['Marte', 'Jupiter']",
+        "['Marte']",
+        "['stanca', 'gaz']",
+        "['Marte', 'Venus', 'Jupiter', 'Saturn', 'Terra']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-input-look-ae1293",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "nave = {\"Nova\": (3, 4), \"Orion\": (5, 1)}\nname = input()\nechipaj, roboti = nave[name]\nprint(echipaj + roboti)",
+      "output": "7",
+      "options": ["Nova", "7", "Orion", "nova"],
+      "answer": 0
+    },
+    {
+      "id": "rds-input-look-f988bb",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "echipe = {\"Rechini\": (12, 9), \"Ursi\": (8, 10)}\nname = input()\nvictorii, egaluri = echipe[name]\nprint(victorii + egaluri)",
+      "output": "18",
+      "options": ["Ursi", "18", "Rechini", "ursi"],
+      "answer": 0
+    },
+    {
+      "id": "rds-input-look-8cc1c7",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "cosuri = {\"Ana\": (2, 5), \"Rex\": (4, 3), \"Kai\": (6, 2)}\nname = input()\nmere, pere = cosuri[name]\nprint(mere + pere)",
+      "output": "8",
+      "options": ["Kai", "8", "Rex", "kai"],
       "answer": 0
     }
   ]

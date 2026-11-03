@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "rds-both-859de7",
-      "text": "What does this print?",
-      "code": "team_a = [(\"Phil\", 40), (\"Sonny\", 95), (\"Mia\", 66)]\nteam_b = [(\"Mia\", 81), (\"Ken\", 77), (\"Nova\", 59)]\nnames_b = set()\nfor name, score in team_b:\n    names_b.add(name)\nfor name, score in team_a:\n    if name in names_b:\n        print(name)",
-      "options": ["Mia", "Phil\nSonny", "66", "Mia\nKen\nNova"],
-      "answer": 0
-    },
-    {
-      "id": "rds-both-612e98",
-      "text": "What does this print?",
-      "code": "team_a = [(\"Zoe\", 88), (\"Ben\", 52), (\"Cara\", 73)]\nteam_b = [(\"Cara\", 91), (\"Ben\", 64), (\"Max\", 70)]\nnames_b = set()\nfor name, score in team_b:\n    names_b.add(name)\nfor name, score in team_a:\n    if name in names_b:\n        print(name)",
-      "options": ["Ben\nCara", "Zoe", "52\n73", "Cara\nBen\nMax"],
-      "answer": 0
-    },
-    {
       "id": "rds-high-c392a4",
       "text": "What does this print?",
       "code": "team = [(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91), (\"Phil\", 60)]\nhigh = [score for name, score in team if score > 80]\nprint(high)",
@@ -41,20 +27,6 @@
       "text": "What does this print?",
       "code": "team = [(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95), (\"Zoe\", 70)]\nhigh = [score for name, score in team if score > 65]\nprint(high)",
       "options": ["[70, 95, 70]", "['Rex', 'Kai', 'Zoe']", "[64, 70, 95, 70]", "[64]"],
-      "answer": 0
-    },
-    {
-      "id": "rds-high-71d106",
-      "text": "What does this print?",
-      "code": "team = [(\"Mia\", 50), (\"Ben\", 99), (\"Cara\", 75), (\"Max\", 81)]\nhigh = [score for name, score in team if score > 75]\nprint(high)",
-      "options": ["[99, 81]", "['Ben', 'Max']", "[50, 99, 75, 81]", "[50]"],
-      "answer": 0
-    },
-    {
-      "id": "rds-high-0e9972",
-      "text": "What does this print?",
-      "code": "team = [(\"Nova\", 33), (\"Ken\", 90), (\"Sonny\", 67), (\"Mira\", 88)]\nhigh = [score for name, score in team if score > 60]\nprint(high)",
-      "options": ["[90, 67, 88]", "['Ken', 'Sonny', 'Mira']", "[33, 90, 67, 88]", "[33]"],
       "answer": 0
     },
     {
@@ -82,30 +54,6 @@
       "answer": 0
     },
     {
-      "id": "rds-system-659fef",
-      "text": "What does this print?",
-      "code": "system = (\"Vega\", 25, 5)\nname, distance, planets = system\nprint(f\"{name}: {distance} ly, {planets} planets\")",
-      "options": [
-        "Vega: 25 ly, 5 planets",
-        "Vega: 5 ly, 25 planets",
-        "('Vega', 25, 5)",
-        "Vega: 3 ly, 5 planets"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rds-system-ca1f39",
-      "text": "What does this print?",
-      "code": "system = (\"Sirius\", 9, 2)\nname, distance, planets = system\nprint(f\"{name}: {distance} ly, {planets} planets\")",
-      "options": [
-        "Sirius: 9 ly, 2 planets",
-        "Sirius: 2 ly, 9 planets",
-        "('Sirius', 9, 2)",
-        "Sirius: 3 ly, 2 planets"
-      ],
-      "answer": 0
-    },
-    {
       "id": "rds-pairs-0e3051",
       "text": "What does this print?",
       "code": "count = 0\nfor a in range(1, 4):\n    for b in range(1, 4):\n        if a + b == 5:\n            count = count + 1\nprint(count)",
@@ -117,20 +65,6 @@
       "text": "What does this print?",
       "code": "count = 0\nfor a in range(1, 5):\n    for b in range(1, 4):\n        if a + b == 6:\n            count = count + 1\nprint(count)",
       "options": ["2", "1", "3", "10"],
-      "answer": 0
-    },
-    {
-      "id": "rds-pairs-0060dd",
-      "text": "What does this print?",
-      "code": "count = 0\nfor a in range(1, 4):\n    for b in range(1, 6):\n        if a + b == 7:\n            count = count + 1\nprint(count)",
-      "options": ["2", "1", "3", "13"],
-      "answer": 0
-    },
-    {
-      "id": "rds-pairs-712183",
-      "text": "What does this print?",
-      "code": "count = 0\nfor a in range(1, 6):\n    for b in range(1, 6):\n        if a + b == 8:\n            count = count + 1\nprint(count)",
-      "options": ["3", "1", "2", "5"],
       "answer": 0
     },
     {
@@ -148,20 +82,6 @@
       "answer": 0
     },
     {
-      "id": "rds-rect-b2f306",
-      "text": "What does this print?",
-      "code": "for row in range(2):\n    for col in range(3):\n        print(\"@\", end=\"\")\n    print()",
-      "options": ["@@@\n@@@", "@\n@@", "@\n@\n@\n@\n@\n@", "@\n@\n@\n\n@\n@\n@"],
-      "answer": 0
-    },
-    {
-      "id": "rds-rect-aa5d68",
-      "text": "What does this print?",
-      "code": "for row in range(4):\n    for col in range(1):\n        print(\"+\", end=\"\")\n    print()",
-      "options": ["+\n+\n+\n+", "+\n++\n+++\n++++", "+\n\n+\n\n+\n\n+", "+"],
-      "answer": 0
-    },
-    {
       "id": "rds-set-len-e10199",
       "text": "What does this print?",
       "code": "signals = [\"A1\", \"B2\", \"A1\", \"C3\", \"A1\"]\nunique = set(signals)\nprint(f\"Total: {len(signals)}\")\nprint(f\"Unique: {len(unique)}\")",
@@ -173,20 +93,6 @@
       "text": "What does this print?",
       "code": "signals = [\"X\", \"Y\", \"X\", \"Y\"]\nunique = set(signals)\nprint(f\"Total: {len(signals)}\")\nprint(f\"Unique: {len(unique)}\")",
       "options": ["Total: 4\nUnique: 2", "Total: 4\nUnique: 4", "Unique: 2", "Total: 2\nUnique: 2"],
-      "answer": 0
-    },
-    {
-      "id": "rds-set-len-0368f5",
-      "text": "What does this print?",
-      "code": "signals = [\"D4\", \"D4\", \"E5\", \"F6\", \"G7\", \"E5\"]\nunique = set(signals)\nprint(f\"Total: {len(signals)}\")\nprint(f\"Unique: {len(unique)}\")",
-      "options": ["Total: 6\nUnique: 4", "Total: 6\nUnique: 6", "Unique: 4", "Total: 2\nUnique: 4"],
-      "answer": 0
-    },
-    {
-      "id": "rds-set-len-a9eb4c",
-      "text": "What does this print?",
-      "code": "signals = [\"K9\", \"L1\", \"K9\"]\nunique = set(signals)\nprint(f\"Total: {len(signals)}\")\nprint(f\"Unique: {len(unique)}\")",
-      "options": ["Total: 3\nUnique: 2", "Total: 3\nUnique: 3", "Unique: 2", "Total: 1\nUnique: 2"],
       "answer": 0
     },
     {
@@ -226,18 +132,6 @@
       "answer": 0
     },
     {
-      "id": "rds-remove-b8e631",
-      "text": "What does this print?",
-      "code": "crew = {\"Ben\", \"Cara\", \"Max\"}\ncrew.add(\"Nova\")\ncrew.remove(\"Ben\")\nfor name in [\"Max\", \"Ben\", \"Nova\"]:\n    print(name in crew)",
-      "options": [
-        "True\nFalse\nTrue",
-        "True\nTrue\nTrue",
-        "True\nFalse\nFalse",
-        "False\nTrue\nFalse"
-      ],
-      "answer": 0
-    },
-    {
       "id": "rds-comp-350731",
       "text": "What does this print?",
       "code": "nums = [3, 8, 12, 5, 20]\nresult = [n * 2 for n in nums if n > 6]\nprint(result)",
@@ -256,13 +150,6 @@
       "text": "What does this print?",
       "code": "nums = [10, 25, 5, 40, 15]\nresult = [n + 1 for n in nums if n >= 15]\nprint(result)",
       "options": ["[26, 41, 16]", "[11, 26, 6, 41, 16]", "[25, 40, 15]", "[16]"],
-      "answer": 0
-    },
-    {
-      "id": "rds-comp-94ea2b",
-      "text": "What does this print?",
-      "code": "nums = [7, 14, 21, 28]\nresult = [n - 7 for n in nums if n > 10]\nprint(result)",
-      "options": ["[7, 14, 21]", "[0, 7, 14, 21]", "[14, 21, 28]", "[]"],
       "answer": 0
     },
     {
@@ -671,6 +558,157 @@
         "print(len(names))",
         "print(names)"
       ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-high-dedb48",
+      "text": "What is in `best` at the end?",
+      "code": "team = [(\"Tommy\", 85), (\"Lance\", 72), (\"Cortez\", 91), (\"Phil\", 80)]\nbest = [name for name, score in team if score > 80]",
+      "options": [
+        "['Tommy', 'Cortez']",
+        "[85, 91]",
+        "['Tommy', 'Cortez', 'Phil']",
+        "[('Tommy', 85), ('Cortez', 91)]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-high-91a7c2",
+      "text": "What is in `passed` at the end?",
+      "code": "team = [(\"Ana\", 55), (\"Rex\", 30), (\"Kai\", 50), (\"Zoe\", 90)]\npassed = [name for name, score in team if score > 50]",
+      "options": [
+        "['Ana', 'Zoe']",
+        "[55, 90]",
+        "['Ana', 'Kai', 'Zoe']",
+        "[('Ana', 55), ('Zoe', 90)]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-high-09a33c",
+      "text": "What is in `full` at the end?",
+      "code": "fleet = [(\"Nova\", 80), (\"Orion\", 45), (\"Vega\", 60)]\nfull = [name for name, score in fleet if score > 60]",
+      "options": ["['Nova']", "[80]", "['Nova', 'Vega']", "[('Nova', 80)]"],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-tally-2acfb0",
+      "text": "What is in `per_city` at the end?",
+      "code": "crew = [(\"Tommy\", \"Vice\"), (\"Lance\", \"Vice\"), (\"Phil\", \"Liberty\"), (\"Ken\", \"Liberty\"), (\"Mia\", \"San\")]\nper_city = {}\nfor name, city in crew:\n    if city in per_city:\n        per_city[city] = per_city[city] + 1\n    else:\n        per_city[city] = 1",
+      "options": [
+        "{'Vice': 2, 'Liberty': 2, 'San': 1}",
+        "{'Vice': 1, 'Liberty': 1, 'San': 1}",
+        "{'Vice': 1, 'Liberty': 1, 'San': 0}",
+        "{'Tommy': 1, 'Lance': 1, 'Phil': 1, 'Ken': 1, 'Mia': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-tally-04533b",
+      "text": "What is in `per_role` at the end?",
+      "code": "crew = [(\"Ana\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]\nper_role = {}\nfor name, role in crew:\n    if role in per_role:\n        per_role[role] = per_role[role] + 1\n    else:\n        per_role[role] = 1",
+      "options": [
+        "{'pilot': 2, 'cook': 2, 'medic': 1}",
+        "{'pilot': 1, 'cook': 1, 'medic': 1}",
+        "{'pilot': 1, 'cook': 1, 'medic': 0}",
+        "{'Ana': 1, 'Rex': 1, 'Kai': 1, 'Zoe': 1, 'Ben': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-tally-9532a9",
+      "text": "What is in `per_color` at the end?",
+      "code": "fleet = [(\"Nova\", \"red\"), (\"Orion\", \"blue\"), (\"Vega\", \"red\"), (\"Lyra\", \"green\")]\nper_color = {}\nfor name, color in fleet:\n    if color in per_color:\n        per_color[color] = per_color[color] + 1\n    else:\n        per_color[color] = 1",
+      "options": [
+        "{'red': 2, 'blue': 1, 'green': 1}",
+        "{'red': 1, 'blue': 1, 'green': 1}",
+        "{'red': 1, 'blue': 0, 'green': 0}",
+        "{'Nova': 1, 'Orion': 1, 'Vega': 1, 'Lyra': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-tally-1521f9",
+      "text": "What is in `per_kind` at the end?",
+      "code": "planets = [(\"Mars\", \"rock\"), (\"Venus\", \"rock\"), (\"Jupiter\", \"gas\"), (\"Saturn\", \"gas\"), (\"Earth\", \"rock\")]\nper_kind = {}\nfor name, kind in planets:\n    if kind in per_kind:\n        per_kind[kind] = per_kind[kind] + 1\n    else:\n        per_kind[kind] = 1",
+      "options": [
+        "{'rock': 3, 'gas': 2}",
+        "{'rock': 1, 'gas': 1}",
+        "{'rock': 2, 'gas': 1}",
+        "{'Mars': 1, 'Venus': 1, 'Jupiter': 1, 'Saturn': 1, 'Earth': 1}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-firsts-772d0a",
+      "text": "What is in `first` at the end?",
+      "code": "crew = [(\"Tommy\", \"Vice\"), (\"Lance\", \"Vice\"), (\"Phil\", \"Liberty\"), (\"Ken\", \"Liberty\"), (\"Mia\", \"San\")]\ncities = set()\nfirst = []\nfor name, city in crew:\n    if city in cities:\n        continue\n    cities.add(city)\n    first.append(name)",
+      "options": [
+        "['Tommy', 'Phil', 'Mia']",
+        "['Tommy']",
+        "['Vice', 'Liberty', 'San']",
+        "['Tommy', 'Lance', 'Phil', 'Ken', 'Mia']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-firsts-a45339",
+      "text": "What is in `first` at the end?",
+      "code": "crew = [(\"Ana\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]\nroles = set()\nfirst = []\nfor name, role in crew:\n    if role in roles:\n        continue\n    roles.add(role)\n    first.append(name)",
+      "options": [
+        "['Ana', 'Rex', 'Zoe']",
+        "['Ana', 'Rex']",
+        "['pilot', 'cook', 'medic']",
+        "['Ana', 'Rex', 'Kai', 'Zoe', 'Ben']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-firsts-af9610",
+      "text": "What is in `leaders` at the end?",
+      "code": "fleet = [(\"Nova\", \"red\"), (\"Orion\", \"blue\"), (\"Vega\", \"red\"), (\"Lyra\", \"green\")]\ncolors = set()\nleaders = []\nfor name, color in fleet:\n    if color in colors:\n        continue\n    colors.add(color)\n    leaders.append(name)",
+      "options": [
+        "['Nova', 'Orion', 'Lyra']",
+        "['Nova', 'Orion']",
+        "['red', 'blue', 'green']",
+        "['Nova', 'Orion', 'Vega', 'Lyra']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-holds-firsts-f91eae",
+      "text": "What is in `first` at the end?",
+      "code": "planets = [(\"Mars\", \"rock\"), (\"Venus\", \"rock\"), (\"Jupiter\", \"gas\"), (\"Saturn\", \"gas\"), (\"Earth\", \"rock\")]\nkinds = set()\nfirst = []\nfor name, kind in planets:\n    if kind in kinds:\n        continue\n    kinds.add(kind)\n    first.append(name)",
+      "options": [
+        "['Mars', 'Jupiter']",
+        "['Mars']",
+        "['rock', 'gas']",
+        "['Mars', 'Venus', 'Jupiter', 'Saturn', 'Earth']"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rds-input-look-ae1293",
+      "text": "What did the user type?",
+      "code": "ships = {\"Nova\": (3, 4), \"Orion\": (5, 1)}\nname = input()\ncrew, robots = ships[name]\nprint(crew + robots)",
+      "output": "7",
+      "options": ["Nova", "7", "Orion", "nova"],
+      "answer": 0
+    },
+    {
+      "id": "rds-input-look-f988bb",
+      "text": "What did the user type?",
+      "code": "teams = {\"Sharks\": (12, 9), \"Bears\": (8, 10)}\nname = input()\nwins, draws = teams[name]\nprint(wins + draws)",
+      "output": "18",
+      "options": ["Bears", "18", "Sharks", "bears"],
+      "answer": 0
+    },
+    {
+      "id": "rds-input-look-8cc1c7",
+      "text": "What did the user type?",
+      "code": "bags = {\"Ana\": (2, 5), \"Rex\": (4, 3), \"Kai\": (6, 2)}\nname = input()\napples, pears = bags[name]\nprint(apples + pears)",
+      "output": "8",
+      "options": ["Kai", "8", "Rex", "kai"],
       "answer": 0
     }
   ]

@@ -301,24 +301,6 @@
           "x": "planeta",
           "y": "nava",
           "word": "aterizeaza pe"
-        },
-        {
-          "a": "camere",
-          "xs": "\"A1\", \"B2\"",
-          "b": "paznici",
-          "ys": "\"Lance\", \"Phil\"",
-          "x": "camera",
-          "y": "paznic",
-          "word": "verifica"
-        },
-        {
-          "a": "niveluri",
-          "xs": "\"usor\", \"greu\"",
-          "b": "jucatori",
-          "ys": "\"Tommy\", \"Lance\", \"Phil\"",
-          "x": "nivel",
-          "y": "jucator",
-          "word": "joaca pe"
         }
       ],
       "mistakes": [
@@ -351,16 +333,6 @@
           "c": "mutari",
           "n": 4,
           "m": 6
-        },
-        {
-          "c": "pasi",
-          "n": 5,
-          "m": 3
-        },
-        {
-          "c": "total",
-          "n": 6,
-          "m": 2
         }
       ],
       "mistakes": [
@@ -390,16 +362,6 @@
           "n": 3,
           "m": 5,
           "k": 2
-        },
-        {
-          "n": 5,
-          "m": 4,
-          "k": 2
-        },
-        {
-          "n": 3,
-          "m": 5,
-          "k": 3
         }
       ],
       "mistakes": [
@@ -438,20 +400,6 @@
           "h": 4,
           "w": 2,
           "ch": "="
-        },
-        {
-          "r": "rand",
-          "s": "col",
-          "h": 2,
-          "w": 3,
-          "ch": "o"
-        },
-        {
-          "r": "linie",
-          "s": "col",
-          "h": 3,
-          "w": 6,
-          "ch": "-"
         }
       ],
       "mistakes": [
@@ -484,18 +432,6 @@
           "s": "col",
           "n": 3,
           "ch": "o"
-        },
-        {
-          "r": "nivel",
-          "s": "col",
-          "n": 6,
-          "ch": "+"
-        },
-        {
-          "r": "rand",
-          "s": "col",
-          "n": 5,
-          "ch": "^"
         }
       ],
       "mistakes": [
@@ -526,10 +462,6 @@
         {
           "v": "echipaj",
           "xs": "\"Tommy\", \"Lance\""
-        },
-        {
-          "v": "planete",
-          "xs": "\"Marte\", \"Venus\", \"Pamant\""
         }
       ],
       "mistakes": [
@@ -915,6 +847,132 @@
         }
       ],
       "bug": ["j == {{k}}", "i == {{k}}"]
+    },
+    {
+      "id": "nl-holds-products",
+      "kind": "holds",
+      "text": "Ce conține `{{w}}` la final?",
+      "code": "{{w}} = []\nfor i in range({{n}}):\n    for j in range({{m}}):\n        {{w}}.append(i * j)",
+      "values": [
+        {
+          "w": "tabel",
+          "n": 2,
+          "m": 3
+        },
+        {
+          "w": "tabel",
+          "n": 3,
+          "m": 2
+        },
+        {
+          "w": "grila",
+          "n": 2,
+          "m": 4
+        },
+        {
+          "w": "grila",
+          "n": 4,
+          "m": 2
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["{{w}} = []\nfor i in range({{n}}):", "for i in range({{n}}):\n    {{w}} = []"],
+        ["i * j", "i + j"],
+        ["range({{m}})", "range(1, {{m}})"]
+      ]
+    },
+    {
+      "id": "nl-holds-stairs",
+      "kind": "holds",
+      "text": "Ce conține `{{s}}` la final?",
+      "code": "{{s}} = \"\"\nfor {{r}} in range(1, {{n}}):\n    for {{c}} in range({{r}}):\n        {{s}} = {{s}} + \"{{ch}}\"\n    {{s}} = {{s}} + \"-\"",
+      "values": [
+        {
+          "s": "model",
+          "r": "rand",
+          "c": "col",
+          "n": 4,
+          "ch": "*"
+        },
+        {
+          "s": "model",
+          "r": "rand",
+          "c": "col",
+          "n": 3,
+          "ch": "#"
+        },
+        {
+          "s": "trepte",
+          "r": "treapta",
+          "c": "bloc",
+          "n": 5,
+          "ch": "o"
+        }
+      ],
+      "variable": "{{s}}",
+      "mistakes": [
+        ["range({{r}})", "range({{n}})"],
+        [
+          "        {{s}} = {{s}} + \"{{ch}}\"\n    {{s}} = {{s}} + \"-\"",
+          "        {{s}} = {{s}} + \"{{ch}}\"\n        {{s}} = {{s}} + \"-\""
+        ],
+        ["range(1, {{n}})", "range({{n}})"]
+      ]
+    },
+    {
+      "id": "nl-input-rect",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{h}} = int(input())\nfor {{r}} in range({{h}}):\n    for {{c}} in range({{wd}}):\n        print(\"{{ch}}\", end=\"\")\n    print()",
+      "values": [
+        {
+          "h": "randuri",
+          "r": "rand",
+          "c": "col",
+          "wd": 5,
+          "ch": "#",
+          "n": 2,
+          "up": 3,
+          "down": 1,
+          "all": 10
+        },
+        {
+          "h": "randuri",
+          "r": "rand",
+          "c": "col",
+          "wd": 3,
+          "ch": "*",
+          "n": 4,
+          "up": 5,
+          "down": 3,
+          "all": 12
+        },
+        {
+          "h": "inaltime",
+          "r": "rand",
+          "c": "col",
+          "wd": 4,
+          "ch": "+",
+          "n": 3,
+          "up": 4,
+          "down": 2,
+          "all": 12
+        },
+        {
+          "h": "inaltime",
+          "r": "rand",
+          "c": "col",
+          "wd": 2,
+          "ch": "o",
+          "n": 5,
+          "up": 6,
+          "down": 4,
+          "all": 10
+        }
+      ],
+      "answer": "{{n}}",
+      "wrong": ["{{wd}}", "{{all}}", "{{up}}", "{{down}}"]
     }
   ]
 }

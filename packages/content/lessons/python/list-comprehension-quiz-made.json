@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "lc-double-4d6c88",
-      "text": "What does this print?",
-      "code": "scores = [6, 9]\npoints = [s * 3 for s in scores]\nprint(points)",
-      "options": ["[18, 27]", "[9, 12]", "[6, 9, 6, 9, 6, 9]", "[6, 9]"],
-      "answer": 0
-    },
-    {
-      "id": "lc-double-dee8fb",
-      "text": "What does this print?",
-      "code": "levels = [2, 7]\nboosted = [l * 5 for l in levels]\nprint(boosted)",
-      "options": ["[10, 35]", "[7, 12]", "[2, 7, 2, 7, 2, 7, 2, 7, 2, 7]", "[2, 7]"],
-      "answer": 0
-    },
-    {
       "id": "lc-filter-d30fd9",
       "text": "What does this print?",
       "code": "temps = [18, 30, 33, 25, 31]\nhot = [t for t in temps if t > 30]\nprint(hot)",
@@ -41,13 +27,6 @@
       "text": "What does this print?",
       "code": "speeds = [120, 90, 100, 140]\nfast = [s for s in speeds if s > 100]\nprint(fast)",
       "options": ["[120, 140]", "[120, 100, 140]", "[90]", "[True, False, False, True]"],
-      "answer": 0
-    },
-    {
-      "id": "lc-filter-eeb7c3",
-      "text": "What does this print?",
-      "code": "ages = [12, 18, 25, 17]\nadults = [a for a in ages if a > 17]\nprint(adults)",
-      "options": ["[18, 25]", "[18, 25, 17]", "[12]", "[False, True, True, False]"],
       "answer": 0
     },
     {
@@ -75,18 +54,6 @@
       "answer": 0
     },
     {
-      "id": "lc-upper-ace990",
-      "text": "What does this print?",
-      "code": "planets = [\"mars\", \"Venus\", \"earth\"]\nlabels = [p.upper() for p in planets]\nprint(labels)",
-      "options": [
-        "['MARS', 'VENUS', 'EARTH']",
-        "['mars', 'venus', 'earth']",
-        "['M', 'V', 'E']",
-        "['mars', 'Venus', 'earth']"
-      ],
-      "answer": 0
-    },
-    {
       "id": "lc-even-391b2d",
       "text": "What does this print?",
       "code": "nums = [4, 7, 10, 3, 8]\nevens = [n for n in nums if n % 2 == 0]\nprint(evens)",
@@ -98,13 +65,6 @@
       "text": "What does this print?",
       "code": "seats = [1, 6, 9, 12]\nodds = [s for s in seats if s % 2 == 1]\nprint(odds)",
       "options": ["[1, 9]", "[6, 12]", "[1, 1]", "[1, 6, 9, 12]"],
-      "answer": 0
-    },
-    {
-      "id": "lc-even-54adcf",
-      "text": "What does this print?",
-      "code": "ids = [21, 14, 5, 30]\nevens = [i for i in ids if i % 2 == 0]\nprint(evens)",
-      "options": ["[14, 30]", "[21, 5]", "[0, 0]", "[21, 14, 5, 30]"],
       "answer": 0
     },
     {
@@ -168,13 +128,6 @@
       "text": "What does this print?",
       "code": "ages = [17, 18, 30, 12, 18, 65]\nadults = [a for a in ages if a >= 18]\nprint(len(adults))",
       "options": ["4", "2", "[18, 30, 18, 65]", "6"],
-      "answer": 0
-    },
-    {
-      "id": "lc-count-81141d",
-      "text": "What does this print?",
-      "code": "speeds = [90, 120, 100, 80]\nfast = [s for s in speeds if s >= 100]\nprint(len(fast))",
-      "options": ["2", "1", "[120, 100]", "4"],
       "answer": 0
     },
     {
@@ -715,6 +668,53 @@
         "print(hot)",
         "print(twice)"
       ],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-squares-46db70",
+      "text": "What is in `squares` at the end?",
+      "code": "squares = [n * n for n in range(1, 5)]",
+      "options": ["[1, 4, 9, 16]", "[2, 4, 6, 8]", "[0, 1, 4, 9, 16]", "[1, 2, 3, 4]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-squares-0e28fe",
+      "text": "What is in `squares` at the end?",
+      "code": "squares = [n * n for n in range(2, 6)]",
+      "options": ["[4, 9, 16, 25]", "[4, 6, 8, 10]", "[0, 1, 4, 9, 16, 25]", "[2, 3, 4, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-squares-bedfa7",
+      "text": "What is in `areas` at the end?",
+      "code": "areas = [side * side for side in range(3, 6)]",
+      "options": ["[9, 16, 25]", "[6, 8, 10]", "[0, 1, 4, 9, 16, 25]", "[3, 4, 5]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-short-0195c0",
+      "text": "What is in `short` at the end?",
+      "code": "words = [\"sun\", \"moon\", \"planet\", \"star\"]\nshort = [w for w in words if len(w) <= 4]",
+      "options": [
+        "['sun', 'moon', 'star']",
+        "['sun']",
+        "['sun', 'moon', 'planet', 'star']",
+        "[3, 4, 4]"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-short-843b6a",
+      "text": "What is in `short` at the end?",
+      "code": "names = [\"Tommy\", \"Ken\", \"Mia\"]\nshort = [n for n in names if len(n) <= 3]",
+      "options": ["['Ken', 'Mia']", "[]", "['Tommy', 'Ken', 'Mia']", "[3, 3]"],
+      "answer": 0
+    },
+    {
+      "id": "lc-holds-short-0fe67d",
+      "text": "What is in `small` at the end?",
+      "code": "worlds = [\"Moon\", \"Venus\", \"Earth\", \"Io\"]\nsmall = [w for w in worlds if len(w) <= 4]",
+      "options": ["['Moon', 'Io']", "['Io']", "['Moon', 'Venus', 'Earth', 'Io']", "[4, 2]"],
       "answer": 0
     }
   ]

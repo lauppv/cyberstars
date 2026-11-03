@@ -313,20 +313,6 @@
           "o": "triplat",
           "x": "p",
           "k": 3
-        },
-        {
-          "v": "scoruri",
-          "data": "6, 9",
-          "o": "puncte",
-          "x": "s",
-          "k": 3
-        },
-        {
-          "v": "niveluri",
-          "data": "2, 7",
-          "o": "crescute",
-          "x": "l",
-          "k": 5
         }
       ],
       "mistakes": [
@@ -355,13 +341,6 @@
           "o": "rapide",
           "x": "s",
           "lim": 100
-        },
-        {
-          "v": "varste",
-          "data": "12, 18, 25, 17",
-          "o": "adulti",
-          "x": "a",
-          "lim": 17
         }
       ],
       "mistakes": [
@@ -388,12 +367,6 @@
           "data": "\"roma\", \"Oslo\", \"riga\"",
           "o": "panouri",
           "x": "c"
-        },
-        {
-          "v": "planete",
-          "data": "\"marte\", \"Venus\", \"pamant\"",
-          "o": "etichete",
-          "x": "p"
         }
       ],
       "mistakes": [
@@ -424,14 +397,6 @@
           "x": "s",
           "r": 1,
           "w": 0
-        },
-        {
-          "v": "ids",
-          "data": "21, 14, 5, 30",
-          "o": "pare",
-          "x": "i",
-          "r": 0,
-          "w": 1
         }
       ],
       "mistakes": [
@@ -536,13 +501,6 @@
           "o": "adulti",
           "x": "a",
           "lim": 18
-        },
-        {
-          "v": "viteze",
-          "data": "90, 120, 100, 80",
-          "o": "rapide",
-          "x": "s",
-          "lim": 100
         }
       ],
       "mistakes": [
@@ -1034,6 +992,73 @@
         }
       ],
       "bug": ["for {{x}} in {{v}}]", "for {{x}} in {{h}}]"]
+    },
+    {
+      "id": "lc-holds-squares",
+      "kind": "holds",
+      "text": "Ce conține `{{o}}` la final?",
+      "code": "{{o}} = [{{x}} * {{x}} for {{x}} in range({{a}}, {{b}})]",
+      "values": [
+        {
+          "o": "patrate",
+          "x": "n",
+          "a": 1,
+          "b": 5
+        },
+        {
+          "o": "patrate",
+          "x": "n",
+          "a": 2,
+          "b": 6
+        },
+        {
+          "o": "arii",
+          "x": "latura",
+          "a": 3,
+          "b": 6
+        }
+      ],
+      "variable": "{{o}}",
+      "mistakes": [
+        ["{{x}} * {{x}} for", "{{x}} * 2 for"],
+        ["range({{a}}, {{b}})", "range({{b}})"],
+        ["[{{x}} * {{x}} for", "[{{x}} for"]
+      ]
+    },
+    {
+      "id": "lc-holds-short",
+      "kind": "holds",
+      "text": "Ce conține `{{o}}` la final?",
+      "code": "{{v}} = [{{items}}]\n{{o}} = [{{x}} for {{x}} in {{v}} if len({{x}}) <= {{n}}]",
+      "values": [
+        {
+          "v": "cuvinte",
+          "items": "\"nor\", \"luna\", \"planeta\", \"stea\"",
+          "o": "scurte",
+          "x": "c",
+          "n": 4
+        },
+        {
+          "v": "nume",
+          "items": "\"Tommy\", \"Ken\", \"Mia\"",
+          "o": "scurte",
+          "x": "n",
+          "n": 3
+        },
+        {
+          "v": "lumi",
+          "items": "\"Luna\", \"Venus\", \"Terra\", \"Io\"",
+          "o": "mici",
+          "x": "l",
+          "n": 4
+        }
+      ],
+      "variable": "{{o}}",
+      "mistakes": [
+        ["<= {{n}}", "< {{n}}"],
+        ["len({{x}})", "len({{v}})"],
+        ["[{{x}} for", "[len({{x}}) for"]
+      ]
     }
   ]
 }
