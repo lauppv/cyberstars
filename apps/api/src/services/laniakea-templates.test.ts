@@ -382,16 +382,17 @@ describe('planTemplate', () => {
 
   it('holds: the options are what the variable holds at the end, as Python shows it', () => {
     const [plan] = plans(holds);
+    const shows = 'print()\nprint(repr(fuel))';
     expect(plan.programs).toEqual([
-      'fuel = 7\nfuel = fuel + 1\nprint(repr(fuel))',
-      'fuel = 7\nprint(fuel + 1)\nprint(repr(fuel))',
-      'fuel = "7"\nfuel = fuel + 1\nprint(repr(fuel))',
-      'fuel = 7\nfuel = fuel + 2\nprint(repr(fuel))',
-      'fuel = 7\nfuel = fuel * 2\nprint(repr(fuel))',
+      `fuel = 7\nfuel = fuel + 1\n${shows}`,
+      `fuel = 7\nprint(fuel + 1)\n${shows}`,
+      `fuel = "7"\nfuel = fuel + 1\n${shows}`,
+      `fuel = 7\nfuel = fuel + 2\n${shows}`,
+      `fuel = 7\nfuel = fuel * 2\n${shows}`,
     ]);
     // The first mistake prints 8 before the value it leaves, the second fails
     expect(
-      plan.build([ok('8\n'), ok('8\n7\n'), fails('TypeError'), ok('9\n'), ok('14\n')]),
+      plan.build([ok('\n8\n'), ok('8\n\n7\n'), fails('TypeError'), ok('\n9\n'), ok('\n14\n')]),
     ).toEqual({
       id: plan.id,
       text: 'What is in `fuel` at the end?',

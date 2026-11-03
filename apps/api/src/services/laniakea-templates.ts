@@ -232,9 +232,11 @@ function swapped(code: string, [what, instead]: Swap): string {
   return code.replace(what, () => instead);
 }
 
-// A program that prints, last, what `variable` holds once `code` ends.
+// A program that prints, last and on a line of its own, what `variable` holds
+// once `code` ends: the empty print() ends a last line the code left open with
+// `end=""`, which shows as an empty line otherwise.
 function showing(code: string, variable: string): string {
-  return `${code}\nprint(repr(${variable}))`;
+  return `${code}\nprint()\nprint(repr(${variable}))`;
 }
 
 // A program where input() gives the lines `typed` one by one, without showing
