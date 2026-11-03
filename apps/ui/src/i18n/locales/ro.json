@@ -524,6 +524,7 @@
     "announcement": "Anunț oficial: {{text}}",
     "announcementTitle": "Anunț oficial",
     "poll": "Sondaj: {{text}}",
+    "pollAnswer": "Răspuns la „{{title}}”: {{text}}",
     "view": "Vezi",
     "vote": "Votează",
     "close": "Închide"

@@ -47,6 +47,7 @@ enum NotificationType {
   LANIAKEA_RECAP
   ANNOUNCEMENT
   POLL
+  POLL_ANSWER
 }
 
 // A connection between two users, modelled as a directed request that becomes

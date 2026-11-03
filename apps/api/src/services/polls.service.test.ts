@@ -7,9 +7,11 @@ const mockRepo = {
   vote: vi.fn(),
   listPolls: vi.fn(),
 };
-const mockNotifications = { pushLive: vi.fn() };
+const mockNotifications = { pushLive: vi.fn(), notify: vi.fn() };
+const mockUserRepo = { getAdminIds: vi.fn() };
 
 vi.mock('../repositories/polls.repository.js', () => mockRepo);
+vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('./notifications.service.js', () => mockNotifications);
 
 const { send, get, vote, list } = await import('./polls.service.js');
@@ -110,6 +112,38 @@ describe('polls.service vote', () => {
     mockRepo.vote.mockResolvedValue(true);
     await expect(vote(4, 10, [7, 9], 'More C')).resolves.toBeUndefined();
     expect(mockRepo.vote).toHaveBeenCalledWith(4, 10, [7, 9], 'More C');
+  });
+
+  it("brings the answer to every admin's bell with no actor, the writer left out", async () => {
+    mockRepo.findPoll.mockResolvedValue(withOther);
+    mockRepo.vote.mockResolvedValue(true);
+    mockUserRepo.getAdminIds.mockResolvedValue([1, 10, 2]);
+    await vote(4, 10, [9], 'More C');
+    expect(mockNotifications.notify).toHaveBeenCalledWith({
+      recipientIds: [1, 2],
+      type: 'POLL_ANSWER',
+      entityId: 4,
+      data: { text: 'More C', title: 'Next?' },
+    });
+  });
+
+  it('tells no admin about a vote without an answer, nor about a second vote', async () => {
+    mockRepo.findPoll.mockResolvedValue(withOther);
+    mockRepo.vote.mockResolvedValue(true);
+    await vote(4, 10, [7]);
+    mockRepo.vote.mockResolvedValue(false);
+    await expect(vote(4, 10, [9], 'More C')).rejects.toMatchObject({ statusCode: 409 });
+    expect(mockNotifications.notify).not.toHaveBeenCalled();
+  });
+
+  it("keeps the vote when the admins' bells can't be reached", async () => {
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockRepo.findPoll.mockResolvedValue(withOther);
+    mockRepo.vote.mockResolvedValue(true);
+    mockUserRepo.getAdminIds.mockRejectedValue(new Error('db down'));
+    await expect(vote(4, 10, [9], 'More C')).resolves.toBeUndefined();
+    expect(log).toHaveBeenCalled();
+    log.mockRestore();
   });
 
   it('wants an answer with Other ticked, and none without it', async () => {

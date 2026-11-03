@@ -29,6 +29,7 @@ const ICONS: Record<NotificationType, string> = {
   LANIAKEA_RECAP: '🪐',
   ANNOUNCEMENT: '📣',
   POLL: '📊',
+  POLL_ANSWER: '📝',
 };
 
 function describe(n: NotificationDTO): string {
@@ -62,6 +63,8 @@ function describe(n: NotificationDTO): string {
       return t('notif.announcement', { text: n.data?.text ?? '' });
     case 'POLL':
       return t('notif.poll', { text: n.data?.text ?? '' });
+    case 'POLL_ANSWER':
+      return t('notif.pollAnswer', { title, text: n.data?.text ?? '' });
   }
 }
 
@@ -71,6 +74,8 @@ export function NotificationItem({ n, onClick }: { n: NotificationDTO; onClick: 
   const poll = n.type === 'POLL';
   // Both open in a window, so the row shows two lines and a button
   const windowed = n.type === 'ANNOUNCEMENT' || poll;
+  // A written answer can run long too, but its whole text waits on the admin page
+  const clamped = windowed || n.type === 'POLL_ANSWER';
   return (
     <button
       role="menuitem"
@@ -82,7 +87,7 @@ export function NotificationItem({ n, onClick }: { n: NotificationDTO; onClick: 
       <span className="min-w-0 flex-1">
         {/* line-clamp sets its own display, which block would override and undo */}
         <span
-          className={`text-[12.5px] text-[var(--text)] leading-snug ${windowed ? 'line-clamp-2' : 'block'}`}
+          className={`text-[12.5px] text-[var(--text)] leading-snug ${clamped ? 'line-clamp-2' : 'block'}`}
         >
           {describe(n)}
         </span>
@@ -140,6 +145,8 @@ export function NotificationDropdown({
         return '/connections';
       case 'LANIAKEA_RECAP':
         return '/laniakea';
+      case 'POLL_ANSWER':
+        return '/admin';
       case 'ANNOUNCEMENT':
       case 'POLL':
         return null;

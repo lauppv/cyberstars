@@ -487,6 +487,7 @@
     "announcement": "Official announcement: {{text}}",
     "announcementTitle": "Official announcement",
     "poll": "Poll: {{text}}",
+    "pollAnswer": "Answer to \"{{title}}\": {{text}}",
     "view": "View",
     "vote": "Vote",
     "close": "Close"

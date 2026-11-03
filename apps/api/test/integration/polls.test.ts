@@ -250,5 +250,24 @@ describe('Voting in a poll', () => {
     // Nothing ties an answer to who wrote it
     const rows = await prisma.pollAnswer.findMany();
     expect(Object.keys(rows[0]).sort()).toEqual(['id', 'pollId', 'text']);
+
+    // Each lands in the admins' bells with no one named, never in a student's
+    const bell = (await a.get('/api/notifications').expect(200)).body.items;
+    expect(bell).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          type: 'POLL_ANSWER',
+          entityId: poll.id,
+          actor: null,
+          data: { text: 'The tests', title: 'What gets in your way?' },
+        }),
+        expect.objectContaining({
+          type: 'POLL_ANSWER',
+          data: expect.objectContaining({ text: 'Not enough time' }),
+        }),
+      ]),
+    );
+    const anas = (await ana.get('/api/notifications').expect(200)).body.items;
+    expect(anas.map((n: { type: string }) => n.type)).toEqual(['POLL']);
   });
 });

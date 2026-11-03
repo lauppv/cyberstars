@@ -1,6 +1,7 @@
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import * as repo from '../repositories/polls.repository.js';
-import { pushLive } from './notifications.service.js';
+import * as userRepo from '../repositories/user.repository.js';
+import { notify, pushLive } from './notifications.service.js';
 import type { PollDTO, PollResultsDTO } from '@cyberstars/shared/polls';
 
 // Polls are rare, so the admin page's history is the last 50, unpaged
@@ -35,6 +36,22 @@ export async function get(id: number, userId: number): Promise<PollDTO> {
   };
 }
 
+// What was written under Other reaches the admins' and the founder's bells
+// with no actor, so the row doesn't say who wrote it, and never fails the vote
+async function tellAdmins(pollId: number, question: string, answer: string, writer: number) {
+  try {
+    const admins = await userRepo.getAdminIds();
+    await notify({
+      recipientIds: admins.filter((id) => id !== writer),
+      type: 'POLL_ANSWER',
+      entityId: pollId,
+      data: { text: answer, title: question },
+    });
+  } catch (err) {
+    console.error(`[polls] the answer to poll ${pollId} reached no bell:`, err);
+  }
+}
+
 // An answer goes with Other ticked and only then
 export async function vote(
   id: number,
@@ -52,6 +69,7 @@ export async function vote(
   if (!(await repo.vote(id, userId, optionIds, answer))) {
     throw new AppError(409, 'You already voted in this poll');
   }
+  if (answer) await tellAdmins(id, poll.question, answer, userId);
 }
 
 // The latest polls with their counts, newest first, for the admin page
