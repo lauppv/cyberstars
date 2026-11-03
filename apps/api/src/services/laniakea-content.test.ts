@@ -90,6 +90,13 @@ describe('Laniakea questions', () => {
     expect(over).toEqual([]);
   });
 
+  // A lesson that isn't a planet has no place in planetOrder, and indexOf's -1
+  // would count it as taught everywhere
+  it('names only planets as the lessons that teach a kind or an error', () => {
+    const named = [...Object.values(KIND_FROM), ...Object.values(ERROR_FROM)];
+    expect(named.filter((lesson) => !planets.has(lesson))).toEqual([]);
+  });
+
   it.each(slugs)('%s asks only about what its lessons and the ones before teach', (slug) => {
     const taught = (lesson: string) => planetOrder.indexOf(lesson) <= planetOrder.indexOf(slug);
     const off: string[] = [];
