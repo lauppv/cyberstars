@@ -317,18 +317,6 @@
           "s": "40",
           "k": 3,
           "msg": "Citire gresita"
-        },
-        {
-          "v": "vieti",
-          "s": "3",
-          "k": 5,
-          "msg": "Vietile trebuie sa fie un numar"
-        },
-        {
-          "v": "viteza",
-          "s": "25",
-          "k": 4,
-          "msg": "Viteza necunoscuta"
         }
       ],
       "mistakes": [
@@ -355,12 +343,6 @@
           "s": "zece",
           "msg": "Scrie cifre, nu cuvinte",
           "end": "Pa"
-        },
-        {
-          "v": "cod",
-          "s": "4x2",
-          "msg": "Cod gresit",
-          "end": "Urmatorul"
         }
       ],
       "mistakes": [
@@ -391,13 +373,6 @@
           "b": "Am citit",
           "c": "Corupt",
           "d": "Senzorul urmator"
-        },
-        {
-          "a": "Se incarca",
-          "s": "3.5",
-          "b": "Incarcat",
-          "c": "Nu e un numar intreg",
-          "d": "Meniu"
         }
       ],
       "mistakes": [
@@ -424,12 +399,6 @@
           "t": 60,
           "m1": "Scrie un numar",
           "m2": "Nu poti imparti la zero"
-        },
-        {
-          "v": "zile",
-          "t": 90,
-          "m1": "Intrare gresita",
-          "m2": "Zero zile?"
         }
       ],
       "mistakes": [
@@ -460,13 +429,6 @@
           "t": 60,
           "m1": "Scrie un numar",
           "m2": "Nu poti imparti la zero"
-        },
-        {
-          "v": "zile",
-          "s": "2x",
-          "t": 90,
-          "m1": "Intrare gresita",
-          "m2": "Zero zile?"
         }
       ],
       "mistakes": [
@@ -491,18 +453,6 @@
         {
           "v": "senzori",
           "items": "\"5\", \"err\", \"15\", \"?\", \"20\", \"1\""
-        },
-        {
-          "v": "scoruri",
-          "items": "\"10\", \"zece\", \"30\", \"\", \"-\""
-        },
-        {
-          "v": "niveluri",
-          "items": "\"3\", \"4\", \"max\", \"jos\", \"8\""
-        },
-        {
-          "v": "temperaturi",
-          "items": "\"21\", \"19\", \"cald\", \"24\", \"n/a\""
         }
       ],
       "mistakes": [
@@ -527,11 +477,6 @@
           "v": "preturi",
           "items": "\"12\", \"7\", \"gratis\", \"8\"",
           "msg": "Nu e un pret"
-        },
-        {
-          "v": "ture",
-          "items": "\"30\", \"25\", \"28\", \"DNF\", \"31\"",
-          "msg": "Cursa oprita"
         }
       ],
       "mistakes": [
@@ -558,11 +503,6 @@
           "s": "35",
           "bad": "Nu e un numar",
           "end": "Ruleaza mereu"
-        },
-        {
-          "s": "8",
-          "bad": "Valoare gresita",
-          "end": "Gata"
         }
       ],
       "mistakes": [
@@ -587,11 +527,6 @@
           "s": "7 7",
           "bad": "Doar un numar",
           "end": "Verificat"
-        },
-        {
-          "s": "zero",
-          "bad": "Cifre, te rog",
-          "end": "Gata"
         }
       ],
       "mistakes": [
@@ -911,6 +846,108 @@
         }
       ],
       "bug": ["total = total + int(c)", "total = total + c"]
+    },
+    {
+      "id": "te-error-int",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{v}} = \"{{s}}\"\nn = int({{v}})\nprint(n + 1)",
+      "values": [
+        {
+          "v": "text",
+          "s": "abc"
+        },
+        {
+          "v": "combustibil",
+          "s": "12.5"
+        },
+        {
+          "v": "vieti",
+          "s": "sapte"
+        }
+      ],
+      "wrong": ["TypeError", "NameError", "ZeroDivisionError"]
+    },
+    {
+      "id": "te-error-divide",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{v}} = {{a}}\nparts = {{b}}\nprint({{v}} / parts)",
+      "values": [
+        {
+          "v": "total",
+          "a": 10,
+          "b": 0
+        },
+        {
+          "v": "combustibil",
+          "a": 50,
+          "b": "\"5\""
+        },
+        {
+          "v": "viteza",
+          "a": 90,
+          "b": "3 - 3"
+        }
+      ],
+      "wrong": ["ValueError", "TypeError", "ZeroDivisionError", "NameError"]
+    },
+    {
+      "id": "te-error-index",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}}[{{i}}])",
+      "values": [
+        {
+          "v": "echipaj",
+          "items": "\"Tommy\", \"Lance\"",
+          "i": 2
+        },
+        {
+          "v": "scoruri",
+          "items": "10, 20, 30",
+          "i": 3
+        },
+        {
+          "v": "echipaj",
+          "items": "\"Ana\", \"Ben\"",
+          "i": "\"1\""
+        }
+      ],
+      "wrong": ["KeyError", "TypeError", "IndexError", "ValueError"]
+    },
+    {
+      "id": "te-error-key",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{v}} = {{d}}\nprint({{v}}[\"{{k}}\"])",
+      "values": [
+        {
+          "v": "varste",
+          "d": "{\"Tommy\": 42, \"Lance\": 35}",
+          "k": "Cortez"
+        },
+        {
+          "v": "preturi",
+          "d": "{\"paine\": 3, \"lapte\": 2}",
+          "k": "ceai"
+        }
+      ],
+      "wrong": ["IndexError", "NameError", "ValueError"]
+    },
+    {
+      "id": "te-error-name",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "{{v}} = {{x}}\nprint({{w}} + 1)",
+      "values": [
+        {
+          "v": "scor",
+          "x": 10,
+          "w": "Scor"
+        }
+      ],
+      "wrong": ["ValueError", "TypeError", "KeyError"]
     }
   ]
 }

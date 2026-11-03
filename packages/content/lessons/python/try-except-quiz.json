@@ -307,18 +307,6 @@
           "s": "40",
           "k": 3,
           "msg": "Bad fuel reading"
-        },
-        {
-          "v": "lives",
-          "s": "3",
-          "k": 5,
-          "msg": "Lives must be a number"
-        },
-        {
-          "v": "speed",
-          "s": "25",
-          "k": 4,
-          "msg": "Speed unknown"
         }
       ],
       "mistakes": [
@@ -345,12 +333,6 @@
           "s": "ten",
           "msg": "Type digits, not words",
           "end": "Bye"
-        },
-        {
-          "v": "code",
-          "s": "4x2",
-          "msg": "Bad code",
-          "end": "Next"
         }
       ],
       "mistakes": [
@@ -381,13 +363,6 @@
           "b": "Got it",
           "c": "Corrupted",
           "d": "Next sensor"
-        },
-        {
-          "a": "Loading",
-          "s": "3.5",
-          "b": "Loaded",
-          "c": "Not a whole number",
-          "d": "Menu"
         }
       ],
       "mistakes": [
@@ -414,12 +389,6 @@
           "t": 60,
           "m1": "Type a number",
           "m2": "Can't divide by zero"
-        },
-        {
-          "v": "days",
-          "t": 90,
-          "m1": "Bad input",
-          "m2": "Zero days?"
         }
       ],
       "mistakes": [
@@ -450,13 +419,6 @@
           "t": 60,
           "m1": "Type a number",
           "m2": "Can't divide by zero"
-        },
-        {
-          "v": "days",
-          "s": "2x",
-          "t": 90,
-          "m1": "Bad input",
-          "m2": "Zero days?"
         }
       ],
       "mistakes": [
@@ -481,18 +443,6 @@
         {
           "v": "sensors",
           "items": "\"5\", \"err\", \"15\", \"?\", \"20\", \"1\""
-        },
-        {
-          "v": "scores",
-          "items": "\"10\", \"ten\", \"30\", \"\", \"-\""
-        },
-        {
-          "v": "levels",
-          "items": "\"3\", \"4\", \"max\", \"low\", \"8\""
-        },
-        {
-          "v": "temps",
-          "items": "\"21\", \"19\", \"hot\", \"24\", \"n/a\""
         }
       ],
       "mistakes": [
@@ -517,11 +467,6 @@
           "v": "prices",
           "items": "\"12\", \"7\", \"free\", \"8\"",
           "msg": "Not a price"
-        },
-        {
-          "v": "laps",
-          "items": "\"30\", \"25\", \"28\", \"DNF\", \"31\"",
-          "msg": "Race stopped"
         }
       ],
       "mistakes": [
@@ -548,11 +493,6 @@
           "s": "35",
           "bad": "Not a number",
           "end": "Always runs"
-        },
-        {
-          "s": "8",
-          "bad": "Bad value",
-          "end": "Done"
         }
       ],
       "mistakes": [
@@ -577,11 +517,6 @@
           "s": "7 7",
           "bad": "One number only",
           "end": "Checked"
-        },
-        {
-          "s": "zero",
-          "bad": "Digits, please",
-          "end": "Done"
         }
       ],
       "mistakes": [
@@ -901,6 +836,108 @@
         }
       ],
       "bug": ["total = total + int(r)", "total = total + r"]
+    },
+    {
+      "id": "te-error-int",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{v}} = \"{{s}}\"\nn = int({{v}})\nprint(n + 1)",
+      "values": [
+        {
+          "v": "text",
+          "s": "abc"
+        },
+        {
+          "v": "fuel",
+          "s": "12.5"
+        },
+        {
+          "v": "lives",
+          "s": "seven"
+        }
+      ],
+      "wrong": ["TypeError", "NameError", "ZeroDivisionError"]
+    },
+    {
+      "id": "te-error-divide",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{v}} = {{a}}\nparts = {{b}}\nprint({{v}} / parts)",
+      "values": [
+        {
+          "v": "total",
+          "a": 10,
+          "b": 0
+        },
+        {
+          "v": "fuel",
+          "a": 50,
+          "b": "\"5\""
+        },
+        {
+          "v": "speed",
+          "a": 90,
+          "b": "3 - 3"
+        }
+      ],
+      "wrong": ["ValueError", "TypeError", "ZeroDivisionError", "NameError"]
+    },
+    {
+      "id": "te-error-index",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{v}} = [{{items}}]\nprint({{v}}[{{i}}])",
+      "values": [
+        {
+          "v": "crew",
+          "items": "\"Tommy\", \"Lance\"",
+          "i": 2
+        },
+        {
+          "v": "scores",
+          "items": "10, 20, 30",
+          "i": 3
+        },
+        {
+          "v": "crew",
+          "items": "\"Ana\", \"Ben\"",
+          "i": "\"1\""
+        }
+      ],
+      "wrong": ["KeyError", "TypeError", "IndexError", "ValueError"]
+    },
+    {
+      "id": "te-error-key",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{v}} = {{d}}\nprint({{v}}[\"{{k}}\"])",
+      "values": [
+        {
+          "v": "ages",
+          "d": "{\"Tommy\": 42, \"Lance\": 35}",
+          "k": "Cortez"
+        },
+        {
+          "v": "prices",
+          "d": "{\"bread\": 3, \"milk\": 2}",
+          "k": "tea"
+        }
+      ],
+      "wrong": ["IndexError", "NameError", "ValueError"]
+    },
+    {
+      "id": "te-error-name",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "{{v}} = {{x}}\nprint({{w}} + 1)",
+      "values": [
+        {
+          "v": "score",
+          "x": 10,
+          "w": "Score"
+        }
+      ],
+      "wrong": ["ValueError", "TypeError", "KeyError"]
     }
   ]
 }

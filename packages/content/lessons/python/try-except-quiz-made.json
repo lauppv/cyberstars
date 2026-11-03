@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "te-ok-a50717",
-      "text": "What does this print?",
-      "code": "lives = \"3\"\ntry:\n    n = int(lives)\n    print(n * 5)\nexcept ValueError:\n    print(\"Lives must be a number\")",
-      "options": ["15", "8", "33333", "Lives must be a number"],
-      "answer": 0
-    },
-    {
-      "id": "te-ok-c18b48",
-      "text": "What does this print?",
-      "code": "speed = \"25\"\ntry:\n    n = int(speed)\n    print(n * 4)\nexcept ValueError:\n    print(\"Speed unknown\")",
-      "options": ["100", "29", "25252525", "Speed unknown"],
-      "answer": 0
-    },
-    {
       "id": "te-bad-bfb5ea",
       "text": "What does this print?",
       "code": "text = \"abc\"\ntry:\n    n = int(text)\n    print(\"Number:\", n)\nexcept ValueError:\n    print(\"Not a number\")\nprint(\"Done\")",
@@ -54,13 +40,6 @@
       "answer": 0
     },
     {
-      "id": "te-bad-fc3d0e",
-      "text": "What does this print?",
-      "code": "code = \"4x2\"\ntry:\n    n = int(code)\n    print(\"Number:\", n)\nexcept ValueError:\n    print(\"Bad code\")\nprint(\"Next\")",
-      "options": ["Bad code\nNext", "Number: 4x2\nBad code\nNext", "Bad code", "4x2\nNext"],
-      "answer": 0
-    },
-    {
       "id": "te-lines-3ff035",
       "text": "What does this print?",
       "code": "try:\n    print(\"Start\")\n    n = int(\"x7\")\n    print(\"Converted\")\nexcept ValueError:\n    print(\"Failed\")\nprint(\"End\")",
@@ -80,18 +59,6 @@
       "answer": 0
     },
     {
-      "id": "te-lines-b1382d",
-      "text": "What does this print?",
-      "code": "try:\n    print(\"Loading\")\n    n = int(\"3.5\")\n    print(\"Loaded\")\nexcept ValueError:\n    print(\"Not a whole number\")\nprint(\"Menu\")",
-      "options": [
-        "Loading\nNot a whole number\nMenu",
-        "Loading\nLoaded\nMenu",
-        "Not a whole number\nMenu",
-        "Loading\nNot a whole number"
-      ],
-      "answer": 0
-    },
-    {
       "id": "te-zero-b71cd1",
       "text": "What does this print?",
       "code": "crew = \"0\"\ntry:\n    n = int(crew)\n    print(100 / n)\nexcept ValueError:\n    print(\"Not a number\")\nexcept ZeroDivisionError:\n    print(\"No crew to share with\")",
@@ -106,13 +73,6 @@
       "answer": 0
     },
     {
-      "id": "te-zero-2285df",
-      "text": "What does this print?",
-      "code": "days = \"0\"\ntry:\n    n = int(days)\n    print(90 / n)\nexcept ValueError:\n    print(\"Bad input\")\nexcept ZeroDivisionError:\n    print(\"Zero days?\")",
-      "options": ["Zero days?", "Bad input", "0.0", "90.0"],
-      "answer": 0
-    },
-    {
       "id": "te-notnum-fa209c",
       "text": "What does this print?",
       "code": "crew = \"four\"\ntry:\n    n = int(crew)\n    print(100 / n)\nexcept ValueError:\n    print(\"Not a number\")\nexcept ZeroDivisionError:\n    print(\"No crew to share with\")",
@@ -124,13 +84,6 @@
       "text": "What does this print?",
       "code": "players = \"six\"\ntry:\n    n = int(players)\n    print(60 / n)\nexcept ValueError:\n    print(\"Type a number\")\nexcept ZeroDivisionError:\n    print(\"Can't divide by zero\")",
       "options": ["Type a number", "Can't divide by zero", "20.0", "six"],
-      "answer": 0
-    },
-    {
-      "id": "te-notnum-247d98",
-      "text": "What does this print?",
-      "code": "days = \"2x\"\ntry:\n    n = int(days)\n    print(90 / n)\nexcept ValueError:\n    print(\"Bad input\")\nexcept ZeroDivisionError:\n    print(\"Zero days?\")",
-      "options": ["Bad input", "Zero days?", "45.0", "2x"],
       "answer": 0
     },
     {
@@ -154,42 +107,6 @@
         "Total: 41\nCorrupted: 1",
         "Total: 1\nCorrupted: 2",
         "Total: 41\nCorrupted: 3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "te-sum-1a6a43",
-      "text": "What does this print?",
-      "code": "scores = [\"10\", \"ten\", \"30\", \"\", \"-\"]\ntotal = 0\nbad = 0\nfor r in scores:\n    try:\n        total = total + int(r)\n    except ValueError:\n        bad = bad + 1\nprint(f\"Total: {total}\")\nprint(f\"Corrupted: {bad}\")",
-      "options": [
-        "Total: 40\nCorrupted: 3",
-        "Total: 40\nCorrupted: 1",
-        "Total: 30\nCorrupted: 3",
-        "Total: 40\nCorrupted: 4"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "te-sum-61db50",
-      "text": "What does this print?",
-      "code": "levels = [\"3\", \"4\", \"max\", \"low\", \"8\"]\ntotal = 0\nbad = 0\nfor r in levels:\n    try:\n        total = total + int(r)\n    except ValueError:\n        bad = bad + 1\nprint(f\"Total: {total}\")\nprint(f\"Corrupted: {bad}\")",
-      "options": [
-        "Total: 15\nCorrupted: 2",
-        "Total: 15\nCorrupted: 1",
-        "Total: 8\nCorrupted: 2",
-        "Total: 15\nCorrupted: 3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "te-sum-d8a413",
-      "text": "What does this print?",
-      "code": "temps = [\"21\", \"19\", \"hot\", \"24\", \"n/a\"]\ntotal = 0\nbad = 0\nfor r in temps:\n    try:\n        total = total + int(r)\n    except ValueError:\n        bad = bad + 1\nprint(f\"Total: {total}\")\nprint(f\"Corrupted: {bad}\")",
-      "options": [
-        "Total: 64\nCorrupted: 2",
-        "Total: 64\nCorrupted: 1",
-        "Total: 24\nCorrupted: 2",
-        "Total: 64\nCorrupted: 3"
       ],
       "answer": 0
     },
@@ -218,18 +135,6 @@
       "answer": 0
     },
     {
-      "id": "te-around-8340de",
-      "text": "What does this print?",
-      "code": "laps = [\"30\", \"25\", \"28\", \"DNF\", \"31\"]\ntotal = 0\ntry:\n    for r in laps:\n        total = total + int(r)\nexcept ValueError:\n    print(\"Race stopped\")\nprint(total)",
-      "options": [
-        "Race stopped\n83",
-        "Race stopped\n114",
-        "Race stopped\n28",
-        "Race stopped\nRace stopped"
-      ],
-      "answer": 0
-    },
-    {
       "id": "te-else-75bffb",
       "text": "What does this print?",
       "code": "try:\n    n = int(\"12\")\nexcept ValueError:\n    print(\"Error!\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Checked\")",
@@ -241,13 +146,6 @@
       "text": "What does this print?",
       "code": "try:\n    n = int(\"35\")\nexcept ValueError:\n    print(\"Not a number\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Always runs\")",
       "options": ["70\nAlways runs", "37\nAlways runs", "70\n35", "3535\nAlways runs"],
-      "answer": 0
-    },
-    {
-      "id": "te-else-1210ce",
-      "text": "What does this print?",
-      "code": "try:\n    n = int(\"8\")\nexcept ValueError:\n    print(\"Bad value\")\nelse:\n    print(n * 2)\nfinally:\n    print(\"Done\")",
-      "options": ["16\nDone", "10\nDone", "16\n8", "88\nDone"],
       "answer": 0
     },
     {
@@ -271,18 +169,6 @@
         "7 7\nChecked",
         "One number only",
         "One number only\nChecked\nChecked"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "te-finally-8dded2",
-      "text": "What does this print?",
-      "code": "try:\n    n = int(\"zero\")\n    print(n)\nexcept ValueError:\n    print(\"Digits, please\")\nfinally:\n    print(\"Done\")",
-      "options": [
-        "Digits, please\nDone",
-        "zero\nDone",
-        "Digits, please",
-        "Digits, please\nDone\nDone"
       ],
       "answer": 0
     },
@@ -691,6 +577,90 @@
       "code": "total = 0\nfor r in [\"5\", \"5\", \"?\", \"1\"]:\n    try:\n        total = total + r\n    except ValueError:\n        print(\"Skip\", r)\nprint(f\"Total: {total}\")",
       "output": "Skip ?\nTotal: 11",
       "options": ["total = total + r", "try:", "except ValueError:", "print(\"Skip\", r)"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-int-faa5d9",
+      "text": "Which error stops this program?",
+      "code": "text = \"abc\"\nn = int(text)\nprint(n + 1)",
+      "options": ["ValueError", "TypeError", "NameError", "ZeroDivisionError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-int-06c907",
+      "text": "Which error stops this program?",
+      "code": "fuel = \"12.5\"\nn = int(fuel)\nprint(n + 1)",
+      "options": ["ValueError", "TypeError", "NameError", "ZeroDivisionError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-int-5e7062",
+      "text": "Which error stops this program?",
+      "code": "lives = \"seven\"\nn = int(lives)\nprint(n + 1)",
+      "options": ["ValueError", "TypeError", "NameError", "ZeroDivisionError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-divide-98076c",
+      "text": "Which error stops this program?",
+      "code": "total = 10\nparts = 0\nprint(total / parts)",
+      "options": ["ZeroDivisionError", "ValueError", "TypeError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-divide-889659",
+      "text": "Which error stops this program?",
+      "code": "fuel = 50\nparts = \"5\"\nprint(fuel / parts)",
+      "options": ["TypeError", "ValueError", "ZeroDivisionError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-divide-5f44f2",
+      "text": "Which error stops this program?",
+      "code": "speed = 90\nparts = 3 - 3\nprint(speed / parts)",
+      "options": ["ZeroDivisionError", "ValueError", "TypeError", "NameError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-index-50ad3a",
+      "text": "Which error stops this program?",
+      "code": "crew = [\"Tommy\", \"Lance\"]\nprint(crew[2])",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-index-91ef83",
+      "text": "Which error stops this program?",
+      "code": "scores = [10, 20, 30]\nprint(scores[3])",
+      "options": ["IndexError", "KeyError", "TypeError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-index-04eccf",
+      "text": "Which error stops this program?",
+      "code": "crew = [\"Ana\", \"Ben\"]\nprint(crew[\"1\"])",
+      "options": ["TypeError", "KeyError", "IndexError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-key-4d1f81",
+      "text": "Which error stops this program?",
+      "code": "ages = {\"Tommy\": 42, \"Lance\": 35}\nprint(ages[\"Cortez\"])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-key-17d199",
+      "text": "Which error stops this program?",
+      "code": "prices = {\"bread\": 3, \"milk\": 2}\nprint(prices[\"tea\"])",
+      "options": ["KeyError", "IndexError", "NameError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-name-a84902",
+      "text": "Which error stops this program?",
+      "code": "score = 10\nprint(Score + 1)",
+      "options": ["NameError", "ValueError", "TypeError", "KeyError"],
       "answer": 0
     }
   ]
