@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
+import { NOTICE_TYPES } from '@cyberstars/shared/notifications';
 import type { NotificationData, NotificationType } from '@cyberstars/shared/notifications';
 
 export const actorInclude = { actor: { select: { name: true, avatarUrl: true } } };
@@ -29,6 +30,34 @@ export function list(userId: number, take: number, before?: number): Promise<Not
     take,
     include: actorInclude,
   });
+}
+
+// The announcements and polls this user hasn't read and the dashboard hasn't
+// shown, oldest first, but a poll they voted in already, from another device too
+export async function listNotices(userId: number): Promise<NotificationRow[]> {
+  const rows = await prisma.notification.findMany({
+    where: { userId, readAt: null, shownAt: null, type: { in: [...NOTICE_TYPES] } },
+    orderBy: { id: 'asc' },
+    include: actorInclude,
+  });
+  const polls = rows.filter((r) => r.type === 'POLL').map((r) => r.entityId);
+  if (polls.length === 0) return rows;
+  const voted = await prisma.pollVoter.findMany({
+    where: { userId, pollId: { in: polls } },
+    select: { pollId: true },
+  });
+  const done = new Set(voted.map((v) => v.pollId));
+  return rows.filter((r) => r.type !== 'POLL' || !done.has(r.entityId));
+}
+
+// The dashboard's window showed these, so it doesn't open with them again.
+// Scoped by userId, and to announcements and polls
+export async function markShown(userId: number, ids: number[]): Promise<number> {
+  const res = await prisma.notification.updateMany({
+    where: { userId, id: { in: ids }, type: { in: [...NOTICE_TYPES] }, shownAt: null },
+    data: { shownAt: new Date() },
+  });
+  return res.count;
 }
 
 export function countUnread(userId: number): Promise<number> {

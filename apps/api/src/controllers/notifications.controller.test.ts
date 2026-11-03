@@ -6,10 +6,13 @@ const mockService = {
   getPage: vi.fn(),
   markRead: vi.fn(),
   markOneRead: vi.fn(),
+  getNotices: vi.fn(),
+  markShown: vi.fn(),
 };
 vi.mock('../services/notifications.service.js', () => mockService);
 
-const { getNotifications, markRead, markOneRead } = await import('./notifications.controller.js');
+const { getNotifications, markRead, markOneRead, getNotices, markShown } =
+  await import('./notifications.controller.js');
 
 function mockReq(overrides: Partial<Request> = {}): Request {
   return { params: {}, body: {}, query: {}, user: { id: 10 }, ...overrides } as unknown as Request;
@@ -18,6 +21,7 @@ function mockRes(): Response {
   return {
     status: vi.fn().mockReturnThis(),
     json: vi.fn().mockReturnThis(),
+    end: vi.fn().mockReturnThis(),
   } as unknown as Response;
 }
 
@@ -72,5 +76,40 @@ describe('markOneRead', () => {
     await markOneRead(mockReq({ params: { id: 'abc' } }), mockRes(), next);
     expect(next).toHaveBeenCalledWith(expect.any(AppError));
     expect(mockService.markOneRead).not.toHaveBeenCalled();
+  });
+});
+
+describe('getNotices', () => {
+  it("returns the user's notices", async () => {
+    mockService.getNotices.mockResolvedValue([{ id: 3 }]);
+    const res = mockRes();
+    await getNotices(mockReq(), res, vi.fn());
+    expect(mockService.getNotices).toHaveBeenCalledWith(10);
+    expect(res.json).toHaveBeenCalledWith([{ id: 3 }]);
+  });
+
+  it('forwards errors to next', async () => {
+    mockService.getNotices.mockRejectedValue(new Error('boom'));
+    const next = vi.fn();
+    await getNotices(mockReq(), mockRes(), next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
+  });
+});
+
+describe('markShown', () => {
+  it('marks the ids shown and answers 204', async () => {
+    mockService.markShown.mockResolvedValue(undefined);
+    const res = mockRes();
+    await markShown(mockReq({ body: { ids: [3, 5] } }), res, vi.fn());
+    expect(mockService.markShown).toHaveBeenCalledWith(10, [3, 5]);
+    expect(res.status).toHaveBeenCalledWith(204);
+    expect(res.end).toHaveBeenCalled();
+  });
+
+  it('forwards errors to next', async () => {
+    mockService.markShown.mockRejectedValue(new Error('boom'));
+    const next = vi.fn();
+    await markShown(mockReq({ body: { ids: [3] } }), mockRes(), next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
   });
 });

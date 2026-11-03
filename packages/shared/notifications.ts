@@ -28,6 +28,10 @@ export const COLLAPSIBLE_TYPES: ReadonlySet<NotificationType> = new Set([
   'LANIAKEA_RECAP',
 ]);
 
+// What the admins and the founder send to everyone, which the dashboard opens
+// in a window as well as listing it in the bell
+export const NOTICE_TYPES: readonly NotificationType[] = ['ANNOUNCEMENT', 'POLL'];
+
 // Snapshot of the source entity, taken at creation time so the list renders
 // without N+1 joins and survives deletion of that entity (forum soft-delete, DM
 // cascade). The actor's name/avatar are NOT snapshotted; they come from the

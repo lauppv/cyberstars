@@ -14,3 +14,8 @@ export const notificationsQuerySchema = z.object({
 export const markReadSchema = z.object({
   upToId: z.number().int().positive(),
 });
+
+// What the dashboard's window showed, at most a full bell
+export const markShownSchema = z.object({
+  ids: z.array(z.number().int().positive()).min(1).max(100),
+});

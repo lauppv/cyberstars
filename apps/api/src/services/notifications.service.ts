@@ -151,6 +151,16 @@ export async function getPage(
   return { items: rows.map(shape), unreadCount };
 }
 
+// The announcements and polls the dashboard's window still has to show, oldest first
+export async function getNotices(userId: number): Promise<NotificationDTO[]> {
+  const rows = await repo.listNotices(userId);
+  return rows.map(shape);
+}
+
+export async function markShown(userId: number, ids: number[]): Promise<void> {
+  await repo.markShown(userId, ids);
+}
+
 // Push the authoritative unread count after a read mutation, so every tab of
 // the user (including the one that made the request, whose optimistic zero may
 // be wrong if it missed rows) converges on the true badge value.

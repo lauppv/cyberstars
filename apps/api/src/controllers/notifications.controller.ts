@@ -17,6 +17,23 @@ export async function getNotifications(
   }
 }
 
+export async function getNotices(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    res.json(await notificationsService.getNotices(req.user!.id));
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function markShown(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    await notificationsService.markShown(req.user!.id, req.body.ids);
+    res.status(204).end();
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function markRead(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     await notificationsService.markRead(req.user!.id, req.body.upToId);
