@@ -10,7 +10,15 @@
       { "kind": "call", "name": "memchr" },
       { "kind": "call", "name": "rawmemchr" },
       { "kind": "call", "name": "strcspn" },
-      { "kind": "call", "name": "strspn" }
+      { "kind": "call", "name": "strspn" },
+      { "kind": "call", "name": "strchrnul" },
+      { "kind": "call", "name": "__builtin_strlen" },
+      { "kind": "call", "name": "__builtin_strnlen" },
+      { "kind": "call", "name": "__builtin_strchr" },
+      { "kind": "call", "name": "__builtin_strrchr" },
+      { "kind": "call", "name": "__builtin_memchr" },
+      { "kind": "call", "name": "__builtin_strcspn" },
+      { "kind": "call", "name": "__builtin_strspn" }
     ]
   },
   "cases": [
