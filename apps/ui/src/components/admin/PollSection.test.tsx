@@ -38,9 +38,10 @@ const sentBefore: PollResultsDTO[] = [
     recipients: 40,
     voters: 4,
     options: [
-      { id: 7, text: 'Rust', votes: 3 },
-      { id: 8, text: 'Go', votes: 2 },
+      { id: 7, text: 'Rust', votes: 3, writeIn: false },
+      { id: 8, text: 'Go', votes: 2, writeIn: false },
     ],
+    answers: [],
   },
   {
     id: 1,
@@ -50,9 +51,10 @@ const sentBefore: PollResultsDTO[] = [
     recipients: 30,
     voters: 0,
     options: [
-      { id: 1, text: 'Yes', votes: 0 },
-      { id: 2, text: 'No', votes: 0 },
+      { id: 1, text: 'Yes', votes: 0, writeIn: false },
+      { id: 2, text: 'No', votes: 0, writeIn: false },
     ],
+    answers: [],
   },
 ];
 

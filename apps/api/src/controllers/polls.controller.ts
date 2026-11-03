@@ -18,7 +18,7 @@ export async function getPoll(req: Request, res: Response, next: NextFunction): 
 
 export async function vote(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    await pollsService.vote(pollId(req), req.user!.id, req.body.optionIds);
+    await pollsService.vote(pollId(req), req.user!.id, req.body.optionIds, req.body.answer);
     res.status(204).end();
   } catch (err) {
     next(err);

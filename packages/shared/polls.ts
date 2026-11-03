@@ -3,12 +3,14 @@ export const POLL_QUESTION_MAX_LENGTH = 300;
 export const POLL_OPTION_MAX_LENGTH = 200;
 export const POLL_MIN_OPTIONS = 2;
 export const POLL_MAX_OPTIONS = 10;
+// And how long an answer written under Other can be
+export const POLL_ANSWER_MAX_LENGTH = 500;
 
 // A poll as a student opens it from the bell: no counts, only whether they voted
 export interface PollDTO {
   id: number;
   question: string;
-  options: { id: number; text: string }[];
+  options: { id: number; text: string; writeIn: boolean }[]; // writeIn: Other, last
   voted: boolean;
 }
 
@@ -24,5 +26,6 @@ export interface PollResultsDTO {
   createdAt: string;
   recipients: number;
   voters: number; // each voter once, however many options they picked
-  options: { id: number; text: string; votes: number }[];
+  options: { id: number; text: string; votes: number; writeIn: boolean }[];
+  answers: string[]; // written under Other, newest first, with no voter
 }

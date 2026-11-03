@@ -15,7 +15,7 @@ export const announcementSchema = z.object({
     .max(ANNOUNCEMENT_MAX_LENGTH, 'Announcement is too long (max 2000 chars)'),
 });
 
-// A question and 2 to 10 options, each written once
+// A question and 2 to 10 options, each written once, and maybe an Other to write in
 export const pollSchema = z.object({
   question: z
     .string()
@@ -35,4 +35,5 @@ export const pollSchema = z.object({
     .refine((list) => new Set(list).size === list.length, {
       message: 'Each poll option only once',
     }),
+  other: z.boolean().optional(),
 });

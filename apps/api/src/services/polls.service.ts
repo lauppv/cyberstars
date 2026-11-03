@@ -8,8 +8,8 @@ const POLL_HISTORY = 50;
 
 // A poll for every account but the sender's, sent like an announcement: one
 // insert, live only to those online, and it throws when the insert fails
-export async function send(authorId: number, question: string, options: string[]) {
-  const rows = await repo.createPoll(authorId, question, options);
+export async function send(authorId: number, question: string, options: string[], other = false) {
+  const rows = await repo.createPoll(authorId, question, options, other);
   await pushLive(rows);
   return rows.length;
 }
@@ -35,11 +35,21 @@ export async function get(id: number, userId: number): Promise<PollDTO> {
   };
 }
 
-export async function vote(id: number, userId: number, optionIds: number[]): Promise<void> {
+// An answer goes with Other ticked and only then
+export async function vote(
+  id: number,
+  userId: number,
+  optionIds: number[],
+  answer?: string,
+): Promise<void> {
   const poll = await received(id, userId);
   const own = new Set(poll.options.map((o) => o.id));
   if (!optionIds.every((o) => own.has(o))) throw new AppError(400, 'Pick options from this poll');
-  if (!(await repo.vote(id, userId, optionIds))) {
+  const other = poll.options.find((o) => o.writeIn);
+  const writes = !!other && optionIds.includes(other.id);
+  if (writes && !answer) throw new AppError(400, 'Write your answer under Other');
+  if (!writes && answer) throw new AppError(400, 'Tick Other to write your own answer');
+  if (!(await repo.vote(id, userId, optionIds, answer))) {
     throw new AppError(409, 'You already voted in this poll');
   }
 }
@@ -54,6 +64,7 @@ export async function list(): Promise<PollResultsDTO[]> {
     createdAt: p.createdAt.toISOString(),
     recipients: p.recipients,
     voters: p.voters,
-    options: p.options.map((o) => ({ id: o.id, text: o.text, votes: o.votes })),
+    options: p.options.map((o) => ({ id: o.id, text: o.text, votes: o.votes, writeIn: o.writeIn })),
+    answers: p.answers.map((a) => a.text),
   }));
 }

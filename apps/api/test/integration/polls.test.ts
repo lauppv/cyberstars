@@ -198,4 +198,57 @@ describe('Voting in a poll', () => {
     const [results] = (await a.get('/api/admin/polls').expect(200)).body;
     expect(results).toMatchObject({ recipients: 1, voters: 0 });
   });
+
+  it('takes an answer under Other, kept with no voter, and lists it for the admin only', async () => {
+    const { agent: ana } = await createAuthenticatedAgent();
+    const { agent: bob } = await createAuthenticatedAgent();
+    const a = await admin();
+    await a
+      .post('/api/admin/polls')
+      .send({ question: 'What gets in your way?', options: ['Too hard', 'Too easy'], other: true })
+      .expect(201);
+    const poll = await prisma.poll.findFirstOrThrow({
+      include: { options: { orderBy: { id: 'asc' } } },
+    });
+    const [hard, , write] = poll.options;
+    expect(write).toMatchObject({ text: 'Other', writeIn: true });
+
+    const { body } = await ana.get(`/api/polls/${poll.id}`).expect(200);
+    expect(body.options.map((o: { writeIn: boolean }) => o.writeIn)).toEqual([false, false, true]);
+    expect(body).not.toHaveProperty('answers');
+
+    const url = `/api/polls/${poll.id}/vote`;
+    await ana
+      .post(url)
+      .send({ optionIds: [write.id] })
+      .expect(400);
+    await ana
+      .post(url)
+      .send({ optionIds: [hard.id], answer: 'More C' })
+      .expect(400);
+    await ana
+      .post(url)
+      .send({ optionIds: [write.id], answer: '   ' })
+      .expect(400);
+    await ana
+      .post(url)
+      .send({ optionIds: [write.id], answer: 'x'.repeat(501) })
+      .expect(400);
+    await ana
+      .post(url)
+      .send({ optionIds: [hard.id, write.id], answer: '  Not enough time  ' })
+      .expect(204);
+    await bob
+      .post(url)
+      .send({ optionIds: [write.id], answer: 'The tests' })
+      .expect(204);
+
+    const [results] = (await a.get('/api/admin/polls').expect(200)).body;
+    expect(results.voters).toBe(2);
+    expect(results.options.map((o: { votes: number }) => o.votes)).toEqual([1, 0, 2]);
+    expect(results.answers).toEqual(['The tests', 'Not enough time']);
+    // Nothing ties an answer to who wrote it
+    const rows = await prisma.pollAnswer.findMany();
+    expect(Object.keys(rows[0]).sort()).toEqual(['id', 'pollId', 'text']);
+  });
 });

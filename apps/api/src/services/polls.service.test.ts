@@ -21,10 +21,15 @@ const stored = {
   createdAt: sentAt,
   question: 'Next?',
   options: [
-    { id: 7, text: 'Rust' },
-    { id: 8, text: 'Go' },
+    { id: 7, text: 'Rust', writeIn: false },
+    { id: 8, text: 'Go', writeIn: false },
   ],
   voted: [] as { userId: number }[],
+};
+// The same poll with an Other to write in
+const withOther = {
+  ...stored,
+  options: [...stored.options, { id: 9, text: 'Other', writeIn: true }],
 };
 
 beforeEach(() => {
@@ -38,8 +43,14 @@ describe('polls.service send', () => {
     const rows = [{ id: 1 }, { id: 2 }];
     mockRepo.createPoll.mockResolvedValue(rows);
     expect(await send(2, 'Next?', ['Rust', 'Go'])).toBe(2);
-    expect(mockRepo.createPoll).toHaveBeenCalledWith(2, 'Next?', ['Rust', 'Go']);
+    expect(mockRepo.createPoll).toHaveBeenCalledWith(2, 'Next?', ['Rust', 'Go'], false);
     expect(mockNotifications.pushLive).toHaveBeenCalledWith(rows);
+  });
+
+  it('asks for an Other when the admin wants one', async () => {
+    mockRepo.createPoll.mockResolvedValue([]);
+    await send(2, 'Next?', ['Rust', 'Go'], true);
+    expect(mockRepo.createPoll).toHaveBeenCalledWith(2, 'Next?', ['Rust', 'Go'], true);
   });
 
   it('throws when the insert fails, so the admin hears of it', async () => {
@@ -91,7 +102,29 @@ describe('polls.service vote', () => {
     mockRepo.findPoll.mockResolvedValue(stored);
     mockRepo.vote.mockResolvedValue(true);
     await expect(vote(4, 10, [7, 8])).resolves.toBeUndefined();
-    expect(mockRepo.vote).toHaveBeenCalledWith(4, 10, [7, 8]);
+    expect(mockRepo.vote).toHaveBeenCalledWith(4, 10, [7, 8], undefined);
+  });
+
+  it('keeps what was written under Other', async () => {
+    mockRepo.findPoll.mockResolvedValue(withOther);
+    mockRepo.vote.mockResolvedValue(true);
+    await expect(vote(4, 10, [7, 9], 'More C')).resolves.toBeUndefined();
+    expect(mockRepo.vote).toHaveBeenCalledWith(4, 10, [7, 9], 'More C');
+  });
+
+  it('wants an answer with Other ticked, and none without it', async () => {
+    mockRepo.findPoll.mockResolvedValue(withOther);
+    await expect(vote(4, 10, [9])).rejects.toMatchObject({
+      statusCode: 400,
+      message: 'Write your answer under Other',
+    });
+    await expect(vote(4, 10, [7], 'More C')).rejects.toMatchObject({
+      statusCode: 400,
+      message: 'Tick Other to write your own answer',
+    });
+    mockRepo.findPoll.mockResolvedValue(stored);
+    await expect(vote(4, 10, [7], 'More C')).rejects.toMatchObject({ statusCode: 400 });
+    expect(mockRepo.vote).not.toHaveBeenCalled();
   });
 
   it('is a 404 for a poll that does not exist', async () => {
@@ -138,7 +171,11 @@ describe('polls.service list', () => {
         recipients: 40,
         voters: 4,
         author: { name: 'Ada' },
-        options: [{ id: 7, pollId: 2, text: 'Rust', votes: 3 }],
+        options: [
+          { id: 7, pollId: 2, text: 'Rust', votes: 3, writeIn: false },
+          { id: 8, pollId: 2, text: 'Other', votes: 2, writeIn: true },
+        ],
+        answers: [{ text: 'More C' }, { text: 'SQL' }],
       },
       {
         id: 1,
@@ -148,6 +185,7 @@ describe('polls.service list', () => {
         voters: 0,
         author: null,
         options: [],
+        answers: [],
       },
     ]);
     expect(await list()).toEqual([
@@ -158,7 +196,11 @@ describe('polls.service list', () => {
         createdAt: '2026-11-03T10:00:00.000Z',
         recipients: 40,
         voters: 4,
-        options: [{ id: 7, text: 'Rust', votes: 3 }],
+        options: [
+          { id: 7, text: 'Rust', votes: 3, writeIn: false },
+          { id: 8, text: 'Other', votes: 2, writeIn: true },
+        ],
+        answers: ['More C', 'SQL'],
       },
       {
         id: 1,
@@ -168,6 +210,7 @@ describe('polls.service list', () => {
         recipients: 30,
         voters: 0,
         options: [],
+        answers: [],
       },
     ]);
     expect(mockRepo.listPolls).toHaveBeenCalledWith(50);

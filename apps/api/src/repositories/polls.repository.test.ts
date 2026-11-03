@@ -5,6 +5,7 @@ const mockPrisma = {
   poll: { create: vi.fn(), findUnique: vi.fn(), findMany: vi.fn(), update: vi.fn() },
   pollOption: { updateMany: vi.fn() },
   pollVoter: { createMany: vi.fn() },
+  pollAnswer: { create: vi.fn() },
   notification: { createManyAndReturn: vi.fn() },
   // A callback handed this same client as its transaction
   $transaction: vi.fn((fn: (tx: unknown) => unknown) => fn(mockPrisma)),
@@ -21,7 +22,7 @@ describe('createPoll', () => {
     mockPrisma.user.findMany.mockResolvedValue([{ id: 10 }, { id: 11 }]);
     mockPrisma.poll.create.mockResolvedValue({ id: 4 });
     mockPrisma.notification.createManyAndReturn.mockResolvedValue([{ id: 1 }, { id: 2 }]);
-    const rows = await repo.createPoll(2, 'Next?', ['Rust', 'Go']);
+    const rows = await repo.createPoll(2, 'Next?', ['Rust', 'Go'], false);
     expect(rows).toEqual([{ id: 1 }, { id: 2 }]);
     expect(mockPrisma.$transaction).toHaveBeenCalledWith(expect.any(Function));
     expect(mockPrisma.user.findMany).toHaveBeenCalledWith(
@@ -47,6 +48,22 @@ describe('createPoll', () => {
       }),
     );
   });
+
+  it('puts Other after the options when asked for', async () => {
+    mockPrisma.user.findMany.mockResolvedValue([{ id: 10 }]);
+    mockPrisma.poll.create.mockResolvedValue({ id: 4 });
+    mockPrisma.notification.createManyAndReturn.mockResolvedValue([{ id: 1 }]);
+    await repo.createPoll(2, 'Next?', ['Rust', 'Go'], true);
+    expect(mockPrisma.poll.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({
+          options: {
+            create: [{ text: 'Rust' }, { text: 'Go' }, { text: 'Other', writeIn: true }],
+          },
+        }),
+      }),
+    );
+  });
 });
 
 describe('findPoll', () => {
@@ -56,7 +73,7 @@ describe('findPoll', () => {
     expect(mockPrisma.poll.findUnique).toHaveBeenCalledWith({
       where: { id: 4 },
       include: {
-        options: { orderBy: { id: 'asc' }, select: { id: true, text: true } },
+        options: { orderBy: { id: 'asc' }, select: { id: true, text: true, writeIn: true } },
         voted: { where: { userId: 10 }, select: { userId: true } },
       },
     });
@@ -95,22 +112,38 @@ describe('vote', () => {
     });
   });
 
+  it('keeps what was written under Other on its own, and nothing without it', async () => {
+    mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 1 });
+    expect(await repo.vote(4, 10, [9], 'More C')).toBe(true);
+    expect(mockPrisma.pollAnswer.create).toHaveBeenCalledWith({
+      data: { pollId: 4, text: 'More C' },
+    });
+    mockPrisma.pollAnswer.create.mockClear();
+    await repo.vote(4, 11, [7]);
+    expect(mockPrisma.pollAnswer.create).not.toHaveBeenCalled();
+  });
+
   it('counts nothing when the user had voted already', async () => {
     mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 0 });
-    expect(await repo.vote(4, 10, [7])).toBe(false);
+    expect(await repo.vote(4, 10, [9], 'More C')).toBe(false);
     expect(mockPrisma.pollOption.updateMany).not.toHaveBeenCalled();
     expect(mockPrisma.poll.update).not.toHaveBeenCalled();
+    expect(mockPrisma.pollAnswer.create).not.toHaveBeenCalled();
   });
 });
 
 describe('listPolls', () => {
-  it('lists the newest first with their author and options in order', async () => {
+  it('lists the newest first with their author, options in order and answers newest first', async () => {
     mockPrisma.poll.findMany.mockResolvedValue([{ id: 2 }]);
     expect(await repo.listPolls(50)).toEqual([{ id: 2 }]);
     expect(mockPrisma.poll.findMany).toHaveBeenCalledWith({
       orderBy: { id: 'desc' },
       take: 50,
-      include: { author: { select: { name: true } }, options: { orderBy: { id: 'asc' } } },
+      include: {
+        author: { select: { name: true } },
+        options: { orderBy: { id: 'asc' } },
+        answers: { orderBy: { id: 'desc' }, select: { text: true } },
+      },
     });
   });
 });

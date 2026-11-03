@@ -13,9 +13,9 @@ const poll: PollDTO = {
   id: 3,
   question: 'Which course next?',
   options: [
-    { id: 7, text: 'Rust' },
-    { id: 8, text: 'Go' },
-    { id: 9, text: 'SQL' },
+    { id: 7, text: 'Rust', writeIn: false },
+    { id: 8, text: 'Go', writeIn: false },
+    { id: 9, text: 'SQL', writeIn: false },
   ],
   voted: false,
 };
