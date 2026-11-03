@@ -1,5 +1,14 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "Contor" },
+      { "kind": "function", "name": "creste" },
+      { "kind": "function", "name": "scade" },
+      { "kind": "function", "name": "getValoare" },
+      { "kind": "call", "name": "Contor" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "5\ncreste\ncreste\narata\nscade\narata\n" },
     { "visible": true, "stdin": "4\nscade\nscade\nscade\narata\n" },
