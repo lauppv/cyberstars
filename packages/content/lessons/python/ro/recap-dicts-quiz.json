@@ -320,22 +320,6 @@
           "y": 81,
           "c": "Cara",
           "z": 60
-        },
-        {
-          "a": "Kai",
-          "x": 30,
-          "b": "Zoe",
-          "y": 72,
-          "c": "Rex",
-          "z": 93
-        },
-        {
-          "a": "Mia",
-          "x": 66,
-          "b": "Nova",
-          "y": 54,
-          "c": "Ken",
-          "z": 90
         }
       ],
       "mistakes": [
@@ -374,22 +358,6 @@
           "y": 64,
           "c": "Cara",
           "z": 77
-        },
-        {
-          "a": "Kai",
-          "x": 52,
-          "b": "Zoe",
-          "y": 68,
-          "c": "Rex",
-          "z": 99
-        },
-        {
-          "a": "Mia",
-          "x": 45,
-          "b": "Nova",
-          "y": 83,
-          "c": "Ken",
-          "z": 61
         }
       ],
       "mistakes": [
@@ -425,20 +393,6 @@
           "m": 75,
           "p": 30,
           "limit": 75
-        },
-        {
-          "t": 45,
-          "l": 80,
-          "m": 80,
-          "p": 66,
-          "limit": 80
-        },
-        {
-          "t": 99,
-          "l": 20,
-          "m": 55,
-          "p": 61,
-          "limit": 60
         }
       ],
       "mistakes": [
@@ -465,9 +419,6 @@
         },
         {
           "items": "[\"A\", \"B\", \"C\", \"A\"]"
-        },
-        {
-          "items": "[\"Marte\", \"Venus\", \"Marte\", \"Marte\"]"
         }
       ],
       "mistakes": [
@@ -518,15 +469,6 @@
           "c": "Rex",
           "z": 58,
           "bonus": 9
-        },
-        {
-          "a": "Mia",
-          "x": 90,
-          "b": "Nova",
-          "y": 39,
-          "c": "Ken",
-          "z": 47,
-          "bonus": 11
         }
       ],
       "mistakes": [
@@ -577,15 +519,6 @@
           "c": "Rex",
           "z": 20,
           "limit": 50
-        },
-        {
-          "a": "Mia",
-          "x": 81,
-          "b": "Nova",
-          "y": 77,
-          "c": "Ken",
-          "z": 66,
-          "limit": 70
         }
       ],
       "mistakes": [
@@ -968,6 +901,143 @@
         }
       ],
       "bug": ["    return lista", "    return nume"]
+    },
+    {
+      "id": "rd-holds-bonus",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "def {{f}}({{p}}, {{n}}):\n    for name in {{p}}:\n        {{p}}[name] = {{p}}[name] + {{n}}\n    return {{p}}\n\n{{v}} = {{f}}({\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}, {{k}})",
+      "values": [
+        {
+          "f": "adauga_bonus",
+          "p": "scoruri",
+          "n": "bonus",
+          "v": "echipaj",
+          "a": "Tommy",
+          "x": 80,
+          "b": "Lance",
+          "y": 60,
+          "k": 10
+        },
+        {
+          "f": "alimenteaza",
+          "p": "rezervoare",
+          "n": "litri",
+          "v": "flota",
+          "a": "Nova",
+          "x": 40,
+          "b": "Orion",
+          "y": 25,
+          "k": 15
+        },
+        {
+          "f": "creste_nivel",
+          "p": "niveluri",
+          "n": "pasi",
+          "v": "eroi",
+          "a": "Ana",
+          "x": 3,
+          "b": "Kai",
+          "y": 5,
+          "k": 2
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        [
+          "        {{p}}[name] = {{p}}[name] + {{n}}\n    return {{p}}",
+          "        {{p}}[name] = {{p}}[name] + {{n}}\n        return {{p}}"
+        ],
+        ["{{p}}[name] = {{p}}[name] + {{n}}", "{{p}}[name] = {{n}}"],
+        ["return {{p}}", "print({{p}})"]
+      ]
+    },
+    {
+      "id": "rd-input-look",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{v}} = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}, \"{{c}}\": {{z}}}\nname = input()\nif name in {{v}}:\n    print({{v}}[name])\nelse:\n    print(\"{{none}}\")",
+      "values": [
+        {
+          "v": "varste",
+          "a": "Tommy",
+          "x": 42,
+          "b": "Lance",
+          "y": 35,
+          "c": "Cortez",
+          "z": 60,
+          "none": "Nu e la bord",
+          "low": "lance"
+        },
+        {
+          "v": "preturi",
+          "a": "ceai",
+          "x": 4,
+          "b": "suc",
+          "y": 5,
+          "c": "tort",
+          "z": 6,
+          "none": "Epuizat",
+          "low": "Suc"
+        },
+        {
+          "v": "combustibil",
+          "a": "Nova",
+          "x": 80,
+          "b": "Vega",
+          "y": 60,
+          "c": "Orion",
+          "z": 45,
+          "none": "Nu exista nava",
+          "low": "vega"
+        }
+      ],
+      "answer": "{{b}}",
+      "wrong": ["{{y}}", "{{low}}", "{{a}}"]
+    },
+    {
+      "id": "rd-holds-copy",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "{{v}} = {\"{{a}}\": {{x}}, \"{{b}}\": {{y}}}\n{{v}}[\"{{c}}\"] = {{v}}[\"{{a}}\"]\n{{v}}[\"{{a}}\"] = {{z}}",
+      "values": [
+        {
+          "v": "echipaj",
+          "a": "Tommy",
+          "x": 80,
+          "b": "Lance",
+          "y": 60,
+          "c": "Mira",
+          "z": 75
+        },
+        {
+          "v": "nave",
+          "a": "Nova",
+          "x": 3,
+          "b": "Orion",
+          "y": 5,
+          "c": "Vega",
+          "z": 1
+        },
+        {
+          "v": "preturi",
+          "a": "ceai",
+          "x": 4,
+          "b": "tort",
+          "y": 6,
+          "c": "placinta",
+          "z": 5
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        [
+          "{{v}}[\"{{c}}\"] = {{v}}[\"{{a}}\"]\n{{v}}[\"{{a}}\"] = {{z}}",
+          "{{v}}[\"{{a}}\"] = {{z}}\n{{v}}[\"{{c}}\"] = {{v}}[\"{{a}}\"]"
+        ],
+        ["{{v}}[\"{{c}}\"] = {{v}}[\"{{a}}\"]", "{{v}}[\"{{c}}\"] = \"{{a}}\""],
+        ["{{v}}[\"{{a}}\"] = {{z}}", "{{v}}[\"{{a}}\"] == {{z}}"]
+      ]
     }
   ]
 }

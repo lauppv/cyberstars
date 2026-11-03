@@ -23,20 +23,6 @@
       "answer": 0
     },
     {
-      "id": "rd-average-8ea744",
-      "text": "What does this print?",
-      "code": "def total_of(scores):\n    total = 0\n    for score in scores.values():\n        total = total + score\n    return total\n\ncrew = {\"Kai\": 30, \"Zoe\": 72, \"Rex\": 93}\nprint(total_of(crew) / len(crew))",
-      "options": ["65.0", "31.0", "65", "10.0"],
-      "answer": 0
-    },
-    {
-      "id": "rd-average-647903",
-      "text": "What does this print?",
-      "code": "def total_of(scores):\n    total = 0\n    for score in scores.values():\n        total = total + score\n    return total\n\ncrew = {\"Mia\": 66, \"Nova\": 54, \"Ken\": 90}\nprint(total_of(crew) / len(crew))",
-      "options": ["70.0", "30.0", "70", "22.0"],
-      "answer": 0
-    },
-    {
       "id": "rd-top-6722b4",
       "text": "What does this print?",
       "code": "scores = {\"Tommy\": 80, \"Lance\": 95, \"Mira\": 70}\ntop = \"\"\nhighest = 0\nfor name in scores:\n    if scores[name] > highest:\n        highest = scores[name]\n        top = name\nprint(f\"Top: {top}\")",
@@ -58,20 +44,6 @@
       "answer": 0
     },
     {
-      "id": "rd-top-e000fd",
-      "text": "What does this print?",
-      "code": "scores = {\"Kai\": 52, \"Zoe\": 68, \"Rex\": 99}\ntop = \"\"\nhighest = 0\nfor name in scores:\n    if scores[name] > highest:\n        highest = scores[name]\n        top = name\nprint(f\"Top: {top}\")",
-      "options": ["Top: Rex", "Top:", "Top: 99", "Top: Kai"],
-      "answer": 0
-    },
-    {
-      "id": "rd-top-8c0de4",
-      "text": "What does this print?",
-      "code": "scores = {\"Mia\": 45, \"Nova\": 83, \"Ken\": 61}\ntop = \"\"\nhighest = 0\nfor name in scores:\n    if scores[name] > highest:\n        highest = scores[name]\n        top = name\nprint(f\"Top: {top}\")",
-      "options": ["Top: Nova", "Top:", "Top: Ken", "Top: 83"],
-      "answer": 0
-    },
-    {
       "id": "rd-passing-cfe0b3",
       "text": "What does this print?",
       "code": "def passing(scores, limit):\n    names = []\n    for name, score in scores.items():\n        if score >= limit:\n            names.append(name)\n    return names\n\nresult = passing({\"Tommy\": 95, \"Lance\": 42, \"Mira\": 88, \"Phil\": 50}, 50)\nprint(len(result))\nfor name in result:\n    print(name)",
@@ -90,20 +62,6 @@
       "text": "What does this print?",
       "code": "def passing(scores, limit):\n    names = []\n    for name, score in scores.items():\n        if score >= limit:\n            names.append(name)\n    return names\n\nresult = passing({\"Tommy\": 60, \"Lance\": 90, \"Mira\": 75, \"Phil\": 30}, 75)\nprint(len(result))\nfor name in result:\n    print(name)",
       "options": ["2\nLance\nMira", "1\nLance", "2\n90\n75", "0"],
-      "answer": 0
-    },
-    {
-      "id": "rd-passing-b2ef18",
-      "text": "What does this print?",
-      "code": "def passing(scores, limit):\n    names = []\n    for name, score in scores.items():\n        if score >= limit:\n            names.append(name)\n    return names\n\nresult = passing({\"Tommy\": 45, \"Lance\": 80, \"Mira\": 80, \"Phil\": 66}, 80)\nprint(len(result))\nfor name in result:\n    print(name)",
-      "options": ["2\nLance\nMira", "0", "2\n80\n80", "Lance\nMira"],
-      "answer": 0
-    },
-    {
-      "id": "rd-passing-536b9c",
-      "text": "What does this print?",
-      "code": "def passing(scores, limit):\n    names = []\n    for name, score in scores.items():\n        if score >= limit:\n            names.append(name)\n    return names\n\nresult = passing({\"Tommy\": 99, \"Lance\": 20, \"Mira\": 55, \"Phil\": 61}, 60)\nprint(len(result))\nfor name in result:\n    print(name)",
-      "options": ["2\nTommy\nPhil", "2\n99\n61", "1\nTommy", "Tommy\nPhil"],
       "answer": 0
     },
     {
@@ -141,18 +99,6 @@
         "{'A': 1, 'B': 1, 'C': 1}",
         "{'A': 1, 'B': 0, 'C': 0}",
         "3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rd-count-96c284",
-      "text": "What does this print?",
-      "code": "counts = {}\nfor item in [\"Mars\", \"Venus\", \"Mars\", \"Mars\"]:\n    if item in counts:\n        counts[item] = counts[item] + 1\n    else:\n        counts[item] = 1\nprint(counts)",
-      "options": [
-        "{'Mars': 3, 'Venus': 1}",
-        "{'Mars': 1, 'Venus': 1}",
-        "{'Mars': 2, 'Venus': 0}",
-        "2"
       ],
       "answer": 0
     },
@@ -205,18 +151,6 @@
       "answer": 0
     },
     {
-      "id": "rd-update-287183",
-      "text": "What does this print?",
-      "code": "crew = {\"Mia\": 90, \"Nova\": 39}\ncrew[\"Nova\"] = crew[\"Nova\"] + 11\ncrew[\"Ken\"] = 47\ndel crew[\"Mia\"]\nprint(crew)",
-      "options": [
-        "{'Nova': 50, 'Ken': 47}",
-        "{'Mia': 90, 'Nova': 50, 'Ken': 47}",
-        "{'Nova': 11, 'Ken': 47}",
-        "{'Nova': 50}"
-      ],
-      "answer": 0
-    },
-    {
       "id": "rd-first-low-f12dbb",
       "text": "What does this print?",
       "code": "def first_low(scores):\n    for name, score in scores.items():\n        if score < 50:\n            return name\n    return \"Nobody\"\n\nprint(first_low({\"Tommy\": 95, \"Lance\": 42, \"Phil\": 37}))",
@@ -242,13 +176,6 @@
       "text": "What does this print?",
       "code": "def first_low(scores):\n    for name, score in scores.items():\n        if score < 50:\n            return name\n    return \"Nobody\"\n\nprint(first_low({\"Kai\": 49, \"Zoe\": 90, \"Rex\": 20}))",
       "options": ["Kai", "Kai\nRex\nNobody", "Zoe", "49"],
-      "answer": 0
-    },
-    {
-      "id": "rd-first-low-67aef3",
-      "text": "What does this print?",
-      "code": "def first_low(scores):\n    for name, score in scores.items():\n        if score < 70:\n            return name\n    return \"Nobody\"\n\nprint(first_low({\"Mia\": 81, \"Nova\": 77, \"Ken\": 66}))",
-      "options": ["Ken", "Ken\nNobody", "Nobody", "Mia"],
       "answer": 0
     },
     {
@@ -679,6 +606,97 @@
       "code": "def passing(scores):\n    names = []\n    for name in scores:\n        if scores[name] >= 50:\n            names.append(name)\n    return name\n\nprint(passing({\"Cortez\": 88, \"Phil\": 37, \"Sonny\": 50}))",
       "output": "['Cortez', 'Sonny']",
       "options": ["return name", "names.append(name)", "names = []", "if scores[name] >= 50:"],
+      "answer": 0
+    },
+    {
+      "id": "rd-holds-bonus-57ce80",
+      "text": "What is in `crew` at the end?",
+      "code": "def add_bonus(scores, bonus):\n    for name in scores:\n        scores[name] = scores[name] + bonus\n    return scores\n\ncrew = add_bonus({\"Tommy\": 80, \"Lance\": 60}, 10)",
+      "options": [
+        "{'Tommy': 90, 'Lance': 70}",
+        "{'Tommy': 90, 'Lance': 60}",
+        "{'Tommy': 10, 'Lance': 10}",
+        "None"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-holds-bonus-445043",
+      "text": "What is in `fleet` at the end?",
+      "code": "def refuel(tanks, liters):\n    for name in tanks:\n        tanks[name] = tanks[name] + liters\n    return tanks\n\nfleet = refuel({\"Nova\": 40, \"Orion\": 25}, 15)",
+      "options": [
+        "{'Nova': 55, 'Orion': 40}",
+        "{'Nova': 55, 'Orion': 25}",
+        "{'Nova': 15, 'Orion': 15}",
+        "None"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-holds-bonus-bd1d69",
+      "text": "What is in `heroes` at the end?",
+      "code": "def level_up(levels, steps):\n    for name in levels:\n        levels[name] = levels[name] + steps\n    return levels\n\nheroes = level_up({\"Ana\": 3, \"Kai\": 5}, 2)",
+      "options": ["{'Ana': 5, 'Kai': 7}", "{'Ana': 5, 'Kai': 5}", "{'Ana': 2, 'Kai': 2}", "None"],
+      "answer": 0
+    },
+    {
+      "id": "rd-input-look-541bb6",
+      "text": "What did the user type?",
+      "code": "ages = {\"Tommy\": 42, \"Lance\": 35, \"Cortez\": 60}\nname = input()\nif name in ages:\n    print(ages[name])\nelse:\n    print(\"Not on board\")",
+      "output": "35",
+      "options": ["Lance", "35", "lance", "Tommy"],
+      "answer": 0
+    },
+    {
+      "id": "rd-input-look-5a6946",
+      "text": "What did the user type?",
+      "code": "prices = {\"tea\": 4, \"juice\": 5, \"cake\": 6}\nname = input()\nif name in prices:\n    print(prices[name])\nelse:\n    print(\"Sold out\")",
+      "output": "5",
+      "options": ["juice", "5", "Juice", "tea"],
+      "answer": 0
+    },
+    {
+      "id": "rd-input-look-03b234",
+      "text": "What did the user type?",
+      "code": "fuel = {\"Nova\": 80, \"Vega\": 60, \"Orion\": 45}\nname = input()\nif name in fuel:\n    print(fuel[name])\nelse:\n    print(\"No such ship\")",
+      "output": "60",
+      "options": ["Vega", "60", "vega", "Nova"],
+      "answer": 0
+    },
+    {
+      "id": "rd-holds-copy-3980c2",
+      "text": "What is in `crew` at the end?",
+      "code": "crew = {\"Tommy\": 80, \"Lance\": 60}\ncrew[\"Mira\"] = crew[\"Tommy\"]\ncrew[\"Tommy\"] = 75",
+      "options": [
+        "{'Tommy': 75, 'Lance': 60, 'Mira': 80}",
+        "{'Tommy': 75, 'Lance': 60, 'Mira': 75}",
+        "{'Tommy': 75, 'Lance': 60, 'Mira': 'Tommy'}",
+        "{'Tommy': 80, 'Lance': 60, 'Mira': 80}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-holds-copy-1f91b8",
+      "text": "What is in `ships` at the end?",
+      "code": "ships = {\"Nova\": 3, \"Orion\": 5}\nships[\"Vega\"] = ships[\"Nova\"]\nships[\"Nova\"] = 1",
+      "options": [
+        "{'Nova': 1, 'Orion': 5, 'Vega': 3}",
+        "{'Nova': 1, 'Orion': 5, 'Vega': 1}",
+        "{'Nova': 1, 'Orion': 5, 'Vega': 'Nova'}",
+        "{'Nova': 3, 'Orion': 5, 'Vega': 3}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "rd-holds-copy-409167",
+      "text": "What is in `prices` at the end?",
+      "code": "prices = {\"tea\": 4, \"cake\": 6}\nprices[\"pie\"] = prices[\"tea\"]\nprices[\"tea\"] = 5",
+      "options": [
+        "{'tea': 5, 'cake': 6, 'pie': 4}",
+        "{'tea': 5, 'cake': 6, 'pie': 5}",
+        "{'tea': 5, 'cake': 6, 'pie': 'tea'}",
+        "{'tea': 4, 'cake': 6, 'pie': 4}"
+      ],
       "answer": 0
     }
   ]

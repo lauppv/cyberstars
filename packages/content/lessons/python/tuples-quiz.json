@@ -278,16 +278,6 @@
           "v": "date",
           "d": "(1986, 5, 30)",
           "i": 1
-        },
-        {
-          "v": "ship",
-          "d": "(\"Nova\", \"red\", 4, 90)",
-          "i": 0
-        },
-        {
-          "v": "colors",
-          "d": "(\"pink\", \"teal\", \"gold\")",
-          "i": 1
         }
       ],
       "mistakes": [
@@ -317,27 +307,6 @@
           "x": "year",
           "y": "month",
           "z": "day"
-        },
-        {
-          "v": "car",
-          "d": "(\"Infernus\", \"white\", 240)",
-          "x": "model",
-          "y": "color",
-          "z": "speed"
-        },
-        {
-          "v": "star",
-          "d": "(\"Vega\", 25, 5)",
-          "x": "name",
-          "y": "distance",
-          "z": "planets"
-        },
-        {
-          "v": "point",
-          "d": "(3, 8, 1)",
-          "x": "x",
-          "y": "y",
-          "z": "z"
         }
       ],
       "mistakes": [
@@ -362,16 +331,6 @@
           "v": "days",
           "d": "(\"Mon\", \"Tue\", \"Wed\", \"Thu\")",
           "x": "day"
-        },
-        {
-          "v": "levels",
-          "d": "(5, 10, 15)",
-          "x": "level"
-        },
-        {
-          "v": "crew",
-          "d": "(\"Tommy\", \"Lance\")",
-          "x": "name"
         }
       ],
       "mistakes": [
@@ -404,12 +363,6 @@
           "d": "(1200, 800)",
           "t": "walked",
           "x": "s"
-        },
-        {
-          "v": "lives",
-          "d": "(3, 3, 2)",
-          "t": "total",
-          "x": "n"
         }
       ],
       "mistakes": [
@@ -451,15 +404,6 @@
           "sep": " - ",
           "unit": " km/h",
           "d": "[(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]"
-        },
-        {
-          "v": "pets",
-          "s": "pet",
-          "a": "name",
-          "b": "legs",
-          "sep": " has ",
-          "unit": " legs",
-          "d": "[(\"Rex\", 4), (\"Polly\", 2)]"
         }
       ],
       "mistakes": [
@@ -501,15 +445,6 @@
           "t": "distance",
           "label": "Km",
           "d": "[(\"Mon\", 5), (\"Wed\", 7)]"
-        },
-        {
-          "v": "crew",
-          "s": "member",
-          "a": "name",
-          "b": "score",
-          "t": "points",
-          "label": "Points",
-          "d": "[(\"Tommy\", 40), (\"Lance\", 25), (\"Mia\", 30), (\"Ken\", 5)]"
         }
       ],
       "mistakes": [
@@ -541,18 +476,6 @@
           "v": "cars",
           "d": "[(\"Cheetah\", 230), (\"Sabre\", 180)]",
           "i": 0,
-          "j": 1
-        },
-        {
-          "v": "points",
-          "d": "[(3, 8), (6, 1), (9, 4)]",
-          "i": 2,
-          "j": 1
-        },
-        {
-          "v": "flights",
-          "d": "[(\"Rome\", \"Oslo\", 3), (\"Paris\", \"Riga\", 4)]",
-          "i": 1,
           "j": 1
         }
       ],
@@ -948,6 +871,153 @@
         }
       ],
       "bug": ["print({{v}}[{{i}}])", "print({{v}}[{{bad}}])"]
+    },
+    {
+      "id": "tp-holds-pick",
+      "kind": "holds",
+      "text": "What is in `{{best}}` at the end?",
+      "code": "{{v}} = {{d}}\n{{best}} = {{v}}[0]\nfor {{s}} in {{v}}:\n    if {{s}}[1] > {{best}}[1]:\n        {{best}} = {{s}}",
+      "values": [
+        {
+          "v": "systems",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5), (\"Kepler\", 8)]",
+          "best": "biggest",
+          "s": "system"
+        },
+        {
+          "v": "crew",
+          "d": "[(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60), (\"Ken\", 60)]",
+          "best": "oldest",
+          "s": "member"
+        },
+        {
+          "v": "cars",
+          "d": "[(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240), (\"Banshee\", 240)]",
+          "best": "fastest",
+          "s": "car"
+        }
+      ],
+      "variable": "{{best}}",
+      "mistakes": [
+        ["{{s}}[1] > {{best}}[1]", "{{s}}[0] > {{best}}[0]"],
+        ["{{s}}[1] > {{best}}[1]", "{{s}}[1] < {{best}}[1]"],
+        ["{{s}}[1] > {{best}}[1]", "{{s}}[1] >= {{best}}[1]"]
+      ]
+    },
+    {
+      "id": "tp-input-find",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{v}} = {{d}}\n{{n}} = input()\nfor {{a}}, {{b}} in {{v}}:\n    if {{a}} == {{n}}:\n        print({{b}})",
+      "values": [
+        {
+          "v": "systems",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]",
+          "n": "wanted",
+          "a": "name",
+          "b": "planets",
+          "ans": "Vega",
+          "val": 5,
+          "low": "vega",
+          "other": "Sol"
+        },
+        {
+          "v": "crew",
+          "d": "[(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60)]",
+          "n": "wanted",
+          "a": "name",
+          "b": "age",
+          "ans": "Cortez",
+          "val": 60,
+          "low": "cortez",
+          "other": "Lance"
+        },
+        {
+          "v": "cars",
+          "d": "[(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240)]",
+          "n": "wanted",
+          "a": "name",
+          "b": "speed",
+          "ans": "Cheetah",
+          "val": 180,
+          "low": "cheetah",
+          "other": "Infernus"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{val}}", "{{low}}", "{{other}}"]
+    },
+    {
+      "id": "tp-holds-count",
+      "kind": "holds",
+      "text": "What is in `{{c}}` at the end?",
+      "code": "{{v}} = {{d}}\n{{c}} = 0\nfor {{a}}, {{b}} in {{v}}:\n    if {{b}} > {{lim}}:\n        {{c}} = {{c}} + 1",
+      "values": [
+        {
+          "v": "systems",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5), (\"Kepler\", 8)]",
+          "c": "big",
+          "a": "name",
+          "b": "planets",
+          "lim": 5
+        },
+        {
+          "v": "crew",
+          "d": "[(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60), (\"Ken\", 18)]",
+          "c": "older",
+          "a": "name",
+          "b": "age",
+          "lim": 35
+        },
+        {
+          "v": "cars",
+          "d": "[(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240), (\"Banshee\", 200)]",
+          "c": "fast",
+          "a": "name",
+          "b": "speed",
+          "lim": 200
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["{{c}} = {{c}} + 1", "{{c}} = {{c}} + {{b}}"],
+        ["{{b}} > {{lim}}", "{{b}} >= {{lim}}"],
+        ["{{c}} = {{c}} + 1", "{{c}} = 1"]
+      ]
+    },
+    {
+      "id": "tp-input-index",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{v}} = {{d}}\ni = int(input())\nprint({{v}}[i][0])",
+      "values": [
+        {
+          "v": "systems",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]",
+          "i": 2,
+          "up": 3,
+          "down": 1,
+          "name": "Vega"
+        },
+        {
+          "v": "crew",
+          "d": "[(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60)]",
+          "i": 1,
+          "up": 2,
+          "down": 0,
+          "name": "Lance"
+        },
+        {
+          "v": "cars",
+          "d": "[(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240), (\"Banshee\", 200)]",
+          "i": 0,
+          "up": 1,
+          "down": -1,
+          "name": "Sabre"
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["{{up}}", "{{down}}", "{{name}}"]
     }
   ]
 }

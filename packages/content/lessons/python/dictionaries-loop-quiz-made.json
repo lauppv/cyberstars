@@ -21,18 +21,6 @@
       "answer": 0
     },
     {
-      "id": "dl-keys-16b724",
-      "text": "What does this print?",
-      "code": "prices = {\"tea\": 4, \"cake\": 6, \"juice\": 5}\nfor item in prices:\n    print(item)",
-      "options": [
-        "tea\ncake\njuice",
-        "4\n6\n5",
-        "{'tea': 4, 'cake': 6, 'juice': 5}\n{'tea': 4, 'cake': 6, 'juice': 5}\n{'tea': 4, 'cake': 6, 'juice': 5}",
-        "3\n3\n3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "dl-values-387901",
       "text": "What does this print?",
       "code": "fuel = {\"left\": 40, \"right\": 25}\nfor f in fuel.values():\n    print(f)",
@@ -53,18 +41,6 @@
         "Ana\nRex\nKai",
         "{'Ana': 12, 'Rex': 30, 'Kai': 9}\n{'Ana': 12, 'Rex': 30, 'Kai': 9}\n{'Ana': 12, 'Rex': 30, 'Kai': 9}",
         "3\n3\n3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "dl-values-a31ff3",
-      "text": "What does this print?",
-      "code": "capitals = {\"France\": \"Paris\", \"Italy\": \"Rome\"}\nfor city in capitals.values():\n    print(city)",
-      "options": [
-        "Paris\nRome",
-        "France\nItaly",
-        "{'France': 'Paris', 'Italy': 'Rome'}\n{'France': 'Paris', 'Italy': 'Rome'}",
-        "2\n2"
       ],
       "answer": 0
     },
@@ -93,30 +69,6 @@
       "answer": 0
     },
     {
-      "id": "dl-items-33ce37",
-      "text": "What does this print?",
-      "code": "stock = {\"apples\": 5, \"pears\": 0, \"plums\": 12}\nfor fruit, count in stock.items():\n    print(f\"{fruit} - {count}\")",
-      "options": [
-        "apples - 5\npears - 0\nplums - 12",
-        "5 - apples\n0 - pears\n12 - plums",
-        "{fruit} - {count}\n{fruit} - {count}\n{fruit} - {count}",
-        "apples - {'apples': 5, 'pears': 0, 'plums': 12}\npears - {'apples': 5, 'pears': 0, 'plums': 12}\nplums - {'apples': 5, 'pears': 0, 'plums': 12}"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "dl-items-d21bfa",
-      "text": "What does this print?",
-      "code": "levels = {\"Ana\": 3, \"Rex\": 7}\nfor player, level in levels.items():\n    print(f\"{player} is on level {level}\")",
-      "options": [
-        "Ana is on level 3\nRex is on level 7",
-        "3 is on level Ana\n7 is on level Rex",
-        "{player} is on level {level}\n{player} is on level {level}",
-        "Ana is on level {'Ana': 3, 'Rex': 7}\nRex is on level {'Ana': 3, 'Rex': 7}"
-      ],
-      "answer": 0
-    },
-    {
       "id": "dl-total-9abe4e",
       "text": "What does this print?",
       "code": "scores = {\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total)",
@@ -128,20 +80,6 @@
       "text": "What does this print?",
       "code": "prices = {\"bread\": 3, \"milk\": 2, \"cheese\": 10}\nbill = 0\nfor p in prices.values():\n    bill = bill + p\nprint(bill)",
       "options": ["15", "10", "3", "3\n5\n15"],
-      "answer": 0
-    },
-    {
-      "id": "dl-total-fadca2",
-      "text": "What does this print?",
-      "code": "fuel = {\"left\": 40, \"right\": 60}\ntotal = 0\nfor f in fuel.values():\n    total = total + f\nprint(total)",
-      "options": ["100", "60", "2", "40\n100"],
-      "answer": 0
-    },
-    {
-      "id": "dl-total-bd2198",
-      "text": "What does this print?",
-      "code": "steps = {\"Mon\": 1200, \"Tue\": 800, \"Wed\": 1500}\nwalked = 0\nfor s in steps.values():\n    walked = walked + s\nprint(walked)",
-      "options": ["3500", "1500", "3", "1200\n2000\n3500"],
       "answer": 0
     },
     {
@@ -181,18 +119,6 @@
       "answer": 0
     },
     {
-      "id": "dl-count-5f4969",
-      "text": "What does this print?",
-      "code": "counter = {}\nfor letter in \"pepper\":\n    if letter in counter:\n        counter[letter] = counter[letter] + 1\n    else:\n        counter[letter] = 1\nprint(counter)",
-      "options": [
-        "{'p': 3, 'e': 2, 'r': 1}",
-        "{'p': 1, 'e': 1, 'r': 1}",
-        "{'p': 2, 'e': 1, 'r': 0}",
-        "3"
-      ],
-      "answer": 0
-    },
-    {
       "id": "dl-average-69ad1d",
       "text": "What does this print?",
       "code": "scores = {\"Ana\": 7, \"Rex\": 8}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total / len(scores))",
@@ -214,13 +140,6 @@
       "answer": 0
     },
     {
-      "id": "dl-average-b28089",
-      "text": "What does this print?",
-      "code": "speeds = {\"Nova\": 90, \"Comet\": 75}\ntotal = 0\nfor s in speeds.values():\n    total = total + s\nprint(total / len(speeds))",
-      "options": ["82.5", "165", "82", "37.5"],
-      "answer": 0
-    },
-    {
       "id": "dl-top-549814",
       "text": "What does this print?",
       "code": "scores = {\"Ana\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}\ntop = \"\"\nbest = 0\nfor name in scores:\n    if scores[name] > best:\n        best = scores[name]\n        top = name\nprint(f\"{top}: {best}\")",
@@ -239,13 +158,6 @@
       "text": "What does this print?",
       "code": "visits = {\"Mars\": 6, \"Venus\": 3, \"Earth\": 5, \"Moon\": 4, \"Pluto\": 1}\ntop = \"\"\nbest = 0\nfor name in visits:\n    if visits[name] > best:\n        best = visits[name]\n        top = name\nprint(f\"{top}: {best}\")",
       "options": ["Mars: 6", "Pluto: 6", ": 6", ": 0"],
-      "answer": 0
-    },
-    {
-      "id": "dl-top-c7a12a",
-      "text": "What does this print?",
-      "code": "votes = {\"red\": 12, \"blue\": 30, \"green\": 8, \"black\": 20, \"white\": 10}\ntop = \"\"\nbest = 0\nfor name in votes:\n    if votes[name] > best:\n        best = votes[name]\n        top = name\nprint(f\"{top}: {best}\")",
-      "options": ["blue: 30", "white: 30", ": 30", ": 0"],
       "answer": 0
     },
     {
@@ -719,6 +631,87 @@
         "counter[letter] = 1",
         "print(counter)"
       ],
+      "answer": 0
+    },
+    {
+      "id": "dl-holds-raise-262074",
+      "text": "What is in `scores` at the end?",
+      "code": "scores = {\"Ana\": 7, \"Rex\": 5}\nfor name in scores:\n    if scores[name] < 6:\n        scores[name] = scores[name] + 2",
+      "options": [
+        "{'Ana': 7, 'Rex': 7}",
+        "{'Ana': 7, 'Rex': 2}",
+        "{'Ana': 7, 'Rex': 5}",
+        "{'Ana': 9, 'Rex': 5}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-holds-raise-7e27b0",
+      "text": "What is in `fuel` at the end?",
+      "code": "fuel = {\"left\": 40, \"right\": 25}\nfor tank in fuel:\n    if fuel[tank] < 30:\n        fuel[tank] = fuel[tank] + 10",
+      "options": [
+        "{'left': 40, 'right': 35}",
+        "{'left': 40, 'right': 10}",
+        "{'left': 40, 'right': 25}",
+        "{'left': 50, 'right': 25}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-holds-raise-9ec570",
+      "text": "What is in `prices` at the end?",
+      "code": "prices = {\"tea\": 4, \"cake\": 6, \"juice\": 5}\nfor item in prices:\n    if prices[item] < 5:\n        prices[item] = prices[item] + 1",
+      "options": [
+        "{'tea': 5, 'cake': 6, 'juice': 5}",
+        "{'tea': 1, 'cake': 6, 'juice': 5}",
+        "{'tea': 4, 'cake': 6, 'juice': 5}",
+        "{'tea': 4, 'cake': 7, 'juice': 5}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dl-holds-sum-1fc8f7",
+      "text": "What is in `heavy` at the end?",
+      "code": "cargo = {\"food\": 12, \"water\": 8, \"fuel\": 20, \"tools\": 5}\nheavy = 0\nfor item, kg in cargo.items():\n    if kg > 8:\n        heavy = heavy + kg",
+      "options": ["32", "40", "2", "20"],
+      "answer": 0
+    },
+    {
+      "id": "dl-holds-sum-1b882d",
+      "text": "What is in `total` at the end?",
+      "code": "scores = {\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\ntotal = 0\nfor name, score in scores.items():\n    if score > 50:\n        total = total + score",
+      "options": ["145", "195", "2", "90"],
+      "answer": 0
+    },
+    {
+      "id": "dl-holds-sum-989eb6",
+      "text": "What is in `bill` at the end?",
+      "code": "prices = {\"tea\": 4, \"cake\": 6, \"juice\": 5, \"pie\": 6}\nbill = 0\nfor item, price in prices.items():\n    if price > 5:\n        bill = bill + price",
+      "options": ["12", "17", "2", "6"],
+      "answer": 0
+    },
+    {
+      "id": "dl-input-above-f0cc55",
+      "text": "What did the user type?",
+      "code": "scores = {\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\nlimit = int(input())\nfor name in scores:\n    if scores[name] > limit:\n        print(name)",
+      "output": "Ana\nZoe",
+      "options": ["50", "55", "30", "90"],
+      "answer": 0
+    },
+    {
+      "id": "dl-input-above-bd8fee",
+      "text": "What did the user type?",
+      "code": "prices = {\"tea\": 4, \"cake\": 6, \"juice\": 5}\nlimit = int(input())\nfor item in prices:\n    if prices[item] > limit:\n        print(item)",
+      "output": "cake\njuice",
+      "options": ["4", "5", "3", "6"],
+      "answer": 0
+    },
+    {
+      "id": "dl-input-above-25ee12",
+      "text": "What did the user type?",
+      "code": "fuel = {\"Nova\": 80, \"Orion\": 45, \"Vega\": 60}\nlimit = int(input())\nfor ship in fuel:\n    if fuel[ship] > limit:\n        print(ship)",
+      "output": "Nova\nVega",
+      "options": ["50", "60", "40", "80"],
       "answer": 0
     }
   ]

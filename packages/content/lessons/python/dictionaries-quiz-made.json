@@ -30,13 +30,6 @@
       "answer": 0
     },
     {
-      "id": "dc-get-177f35",
-      "text": "What does this print?",
-      "code": "stock = {\"bolts\": 120, \"gears\": 35, \"wires\": 70}\nprint(stock[\"gears\"])",
-      "options": ["35", "120", "gears", "{'bolts': 120, 'gears': 35, 'wires': 70}"],
-      "answer": 0
-    },
-    {
       "id": "dc-set-a10820",
       "text": "What does this print?",
       "code": "ages = {\"Tommy\": 42, \"Lance\": 35}\nages[\"Cortez\"] = 60\nages[\"Tommy\"] = 43\nprint(ages)",
@@ -81,18 +74,6 @@
         "{'apples': 3, 'bread': 2, 'milk': 4}",
         "{'apples': 3, 'bread': 5, 'milk': 4}",
         "{'apples': 5, 'bread': 2}"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "dc-set-8976eb",
-      "text": "What does this print?",
-      "code": "lives = {\"Kai\": 3, \"Mia\": 1}\nlives[\"Rex\"] = 5\nlives[\"Kai\"] = 2\nprint(lives)",
-      "options": [
-        "{'Kai': 2, 'Mia': 1, 'Rex': 5}",
-        "{'Kai': 3, 'Mia': 1, 'Rex': 5}",
-        "{'Kai': 3, 'Mia': 2, 'Rex': 5}",
-        "{'Kai': 2, 'Mia': 1}"
       ],
       "answer": 0
     },
@@ -145,18 +126,6 @@
       "answer": 0
     },
     {
-      "id": "dc-del-3e57d4",
-      "text": "What does this print?",
-      "code": "speed = {\"Nova\": 300, \"Orion\": 250, \"Vega\": 280}\ndel speed[\"Orion\"]\nprint(speed)",
-      "options": [
-        "{'Nova': 300, 'Vega': 280}",
-        "{'Orion': 250, 'Vega': 280}",
-        "{'Nova': 300, 'Orion': 0, 'Vega': 280}",
-        "{'Nova': 300, 'Orion': 250, 'Vega': 280}"
-      ],
-      "answer": 0
-    },
-    {
       "id": "dc-check-cf6576",
       "text": "What does this print?",
       "code": "ages = {\"Tommy\": 42, \"Lance\": 35}\nfor name in [\"Lance\", \"Sonny\"]:\n    if name in ages:\n        print(ages[name])\n    else:\n        print(\"Not found\")",
@@ -205,13 +174,6 @@
       "answer": 0
     },
     {
-      "id": "dc-check-f01b23",
-      "text": "What does this print?",
-      "code": "lives = {\"Kai\": 3, \"Mia\": 1}\nfor name in [\"Rex\", \"Kai\"]:\n    if name in lives:\n        print(lives[name])\n    else:\n        print(\"Unknown\")",
-      "options": ["Unknown\n3", "Unknown\nKai", "3\nUnknown", "Unknown\n{'Kai': 3, 'Mia': 1}"],
-      "answer": 0
-    },
-    {
       "id": "dc-grow-ee0ca1",
       "text": "What does this print?",
       "code": "fuel = {\"Nova\": 80, \"Orion\": 45}\nfuel[\"Orion\"] = fuel[\"Orion\"] + 30\nprint(fuel[\"Orion\"])",
@@ -240,13 +202,6 @@
       "answer": 0
     },
     {
-      "id": "dc-grow-137f9e",
-      "text": "What does this print?",
-      "code": "lives = {\"Rex\": 5, \"Zoe\": 3}\nlives[\"Zoe\"] = lives[\"Zoe\"] - 1\nprint(lives[\"Zoe\"])",
-      "options": ["2", "1", "4", "5"],
-      "answer": 0
-    },
-    {
       "id": "dc-list-e3539b",
       "text": "What does this print?",
       "code": "garage = {\"name\": \"Tommy\", \"cars\": [\"Cheetah\", \"Infernus\", \"Sabre\"]}\nprint(garage[\"cars\"][1])",
@@ -272,13 +227,6 @@
       "text": "What does this print?",
       "code": "robot = {\"name\": \"R2\", \"tools\": [\"wrench\", \"drill\", \"saw\"]}\nprint(robot[\"tools\"][1])",
       "options": ["drill", "wrench", "['wrench', 'drill', 'saw']", "3"],
-      "answer": 0
-    },
-    {
-      "id": "dc-list-547f86",
-      "text": "What does this print?",
-      "code": "station = {\"name\": \"Laniakea\", \"rooms\": [\"lab\", \"bridge\", \"dock\"]}\nprint(station[\"rooms\"][2])",
-      "options": ["dock", "bridge", "['lab', 'bridge', 'dock']", "3"],
       "answer": 0
     },
     {
@@ -716,6 +664,63 @@
         "rooms[\"hangar\"] = 2",
         "print(rooms)"
       ],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-update-d19329",
+      "text": "What is in `fuel` at the end?",
+      "code": "fuel = {\"Nova\": 80, \"Orion\": 45}\nfuel[\"Nova\"] = fuel[\"Nova\"] + 20\nfuel[\"Vega\"] = 60",
+      "options": [
+        "{'Nova': 100, 'Orion': 45, 'Vega': 60}",
+        "{'Nova': 20, 'Orion': 45, 'Vega': 60}",
+        "{'Vega': 60}",
+        "{'Nova': 80, 'Orion': 45, 'nova': 100, 'Vega': 60}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-update-f03454",
+      "text": "What is in `ages` at the end?",
+      "code": "ages = {\"Tommy\": 42, \"Lance\": 35}\nages[\"Tommy\"] = ages[\"Tommy\"] + 1\nages[\"Cortez\"] = 60",
+      "options": [
+        "{'Tommy': 43, 'Lance': 35, 'Cortez': 60}",
+        "{'Tommy': 1, 'Lance': 35, 'Cortez': 60}",
+        "{'Cortez': 60}",
+        "{'Tommy': 42, 'Lance': 35, 'tommy': 43, 'Cortez': 60}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-update-2e4d4c",
+      "text": "What is in `cargo` at the end?",
+      "code": "cargo = {\"food\": 10, \"water\": 6}\ncargo[\"food\"] = cargo[\"food\"] + 5\ncargo[\"tools\"] = 8",
+      "options": [
+        "{'food': 15, 'water': 6, 'tools': 8}",
+        "{'food': 5, 'water': 6, 'tools': 8}",
+        "{'tools': 8}",
+        "{'food': 10, 'water': 6, 'Food': 15, 'tools': 8}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-in-a683c4",
+      "text": "What is in `age` at the end?",
+      "code": "ages = {\"Tommy\": 42, \"Lance\": 35}\nage = 0\nif \"Lance\" in ages:\n    age = ages[\"Lance\"]",
+      "options": ["35", "0", "'Lance'", "42"],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-in-52fd7a",
+      "text": "What is in `price` at the end?",
+      "code": "prices = {\"tea\": 4, \"cake\": 6}\nprice = 0\nif \"cake\" in prices:\n    price = prices[\"cake\"]",
+      "options": ["6", "0", "'cake'", "4"],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-in-af9a97",
+      "text": "What is in `level` at the end?",
+      "code": "fuel = {\"Nova\": 80, \"Orion\": 45}\nlevel = 0\nif \"Nova\" in fuel:\n    level = fuel[\"Nova\"]",
+      "options": ["80", "0", "'Nova'", "45"],
       "answer": 0
     }
   ]

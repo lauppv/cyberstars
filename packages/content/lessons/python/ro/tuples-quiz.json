@@ -278,16 +278,6 @@
           "v": "data",
           "d": "(1986, 5, 30)",
           "i": 1
-        },
-        {
-          "v": "nava",
-          "d": "(\"Nova\", \"rosu\", 4, 90)",
-          "i": 0
-        },
-        {
-          "v": "culori",
-          "d": "(\"roz\", \"turcoaz\", \"auriu\")",
-          "i": 1
         }
       ],
       "mistakes": [
@@ -317,27 +307,6 @@
           "x": "an",
           "y": "luna",
           "z": "zi"
-        },
-        {
-          "v": "masina",
-          "d": "(\"Infernus\", \"alba\", 240)",
-          "x": "model",
-          "y": "culoare",
-          "z": "viteza"
-        },
-        {
-          "v": "stea",
-          "d": "(\"Vega\", 25, 5)",
-          "x": "nume",
-          "y": "distanta",
-          "z": "planete"
-        },
-        {
-          "v": "punct",
-          "d": "(3, 8, 1)",
-          "x": "x",
-          "y": "y",
-          "z": "z"
         }
       ],
       "mistakes": [
@@ -362,16 +331,6 @@
           "v": "zile",
           "d": "(\"Lu\", \"Ma\", \"Mi\", \"Jo\")",
           "x": "zi"
-        },
-        {
-          "v": "niveluri",
-          "d": "(5, 10, 15)",
-          "x": "nivel"
-        },
-        {
-          "v": "echipaj",
-          "d": "(\"Tommy\", \"Lance\")",
-          "x": "nume"
         }
       ],
       "mistakes": [
@@ -404,12 +363,6 @@
           "d": "(1200, 800)",
           "t": "parcurs",
           "x": "p"
-        },
-        {
-          "v": "vieti",
-          "d": "(3, 3, 2)",
-          "t": "total",
-          "x": "n"
         }
       ],
       "mistakes": [
@@ -451,15 +404,6 @@
           "sep": " - ",
           "unit": " km/h",
           "d": "[(\"Cheetah\", 230), (\"Sabre\", 180), (\"Stinger\", 210)]"
-        },
-        {
-          "v": "animale",
-          "s": "animal",
-          "a": "nume",
-          "b": "picioare",
-          "sep": " are ",
-          "unit": " picioare",
-          "d": "[(\"Rex\", 4), (\"Polly\", 2)]"
         }
       ],
       "mistakes": [
@@ -501,15 +445,6 @@
           "t": "distanta",
           "label": "Km",
           "d": "[(\"luni\", 5), (\"miercuri\", 7)]"
-        },
-        {
-          "v": "echipaj",
-          "s": "membru",
-          "a": "nume",
-          "b": "scor",
-          "t": "puncte",
-          "label": "Puncte",
-          "d": "[(\"Tommy\", 40), (\"Lance\", 25), (\"Mia\", 30), (\"Ken\", 5)]"
         }
       ],
       "mistakes": [
@@ -541,18 +476,6 @@
           "v": "masini",
           "d": "[(\"Cheetah\", 230), (\"Sabre\", 180)]",
           "i": 0,
-          "j": 1
-        },
-        {
-          "v": "puncte",
-          "d": "[(3, 8), (6, 1), (9, 4)]",
-          "i": 2,
-          "j": 1
-        },
-        {
-          "v": "zboruri",
-          "d": "[(\"Roma\", \"Oslo\", 3), (\"Paris\", \"Riga\", 4)]",
-          "i": 1,
           "j": 1
         }
       ],
@@ -948,6 +871,153 @@
         }
       ],
       "bug": ["print({{v}}[{{i}}])", "print({{v}}[{{bad}}])"]
+    },
+    {
+      "id": "tp-holds-pick",
+      "kind": "holds",
+      "text": "Ce conține `{{best}}` la final?",
+      "code": "{{v}} = {{d}}\n{{best}} = {{v}}[0]\nfor {{s}} in {{v}}:\n    if {{s}}[1] > {{best}}[1]:\n        {{best}} = {{s}}",
+      "values": [
+        {
+          "v": "sisteme",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5), (\"Kepler\", 8)]",
+          "best": "cel_mai_mare",
+          "s": "sistem"
+        },
+        {
+          "v": "echipaj",
+          "d": "[(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60), (\"Ken\", 60)]",
+          "best": "cel_mai_batran",
+          "s": "membru"
+        },
+        {
+          "v": "masini",
+          "d": "[(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240), (\"Banshee\", 240)]",
+          "best": "cea_mai_rapida",
+          "s": "masina"
+        }
+      ],
+      "variable": "{{best}}",
+      "mistakes": [
+        ["{{s}}[1] > {{best}}[1]", "{{s}}[0] > {{best}}[0]"],
+        ["{{s}}[1] > {{best}}[1]", "{{s}}[1] < {{best}}[1]"],
+        ["{{s}}[1] > {{best}}[1]", "{{s}}[1] >= {{best}}[1]"]
+      ]
+    },
+    {
+      "id": "tp-input-find",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{v}} = {{d}}\n{{n}} = input()\nfor {{a}}, {{b}} in {{v}}:\n    if {{a}} == {{n}}:\n        print({{b}})",
+      "values": [
+        {
+          "v": "sisteme",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]",
+          "n": "cautat",
+          "a": "nume",
+          "b": "planete",
+          "ans": "Vega",
+          "val": 5,
+          "low": "vega",
+          "other": "Sol"
+        },
+        {
+          "v": "echipaj",
+          "d": "[(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60)]",
+          "n": "cautat",
+          "a": "nume",
+          "b": "varsta",
+          "ans": "Cortez",
+          "val": 60,
+          "low": "cortez",
+          "other": "Lance"
+        },
+        {
+          "v": "masini",
+          "d": "[(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240)]",
+          "n": "cautat",
+          "a": "nume",
+          "b": "viteza",
+          "ans": "Cheetah",
+          "val": 180,
+          "low": "cheetah",
+          "other": "Infernus"
+        }
+      ],
+      "answer": "{{ans}}",
+      "wrong": ["{{val}}", "{{low}}", "{{other}}"]
+    },
+    {
+      "id": "tp-holds-count",
+      "kind": "holds",
+      "text": "Ce conține `{{c}}` la final?",
+      "code": "{{v}} = {{d}}\n{{c}} = 0\nfor {{a}}, {{b}} in {{v}}:\n    if {{b}} > {{lim}}:\n        {{c}} = {{c}} + 1",
+      "values": [
+        {
+          "v": "sisteme",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5), (\"Kepler\", 8)]",
+          "c": "mari",
+          "a": "nume",
+          "b": "planete",
+          "lim": 5
+        },
+        {
+          "v": "echipaj",
+          "d": "[(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60), (\"Ken\", 18)]",
+          "c": "mai_batrani",
+          "a": "nume",
+          "b": "varsta",
+          "lim": 35
+        },
+        {
+          "v": "masini",
+          "d": "[(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240), (\"Banshee\", 200)]",
+          "c": "rapide",
+          "a": "nume",
+          "b": "viteza",
+          "lim": 200
+        }
+      ],
+      "variable": "{{c}}",
+      "mistakes": [
+        ["{{c}} = {{c}} + 1", "{{c}} = {{c}} + {{b}}"],
+        ["{{b}} > {{lim}}", "{{b}} >= {{lim}}"],
+        ["{{c}} = {{c}} + 1", "{{c}} = 1"]
+      ]
+    },
+    {
+      "id": "tp-input-index",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{v}} = {{d}}\ni = int(input())\nprint({{v}}[i][0])",
+      "values": [
+        {
+          "v": "sisteme",
+          "d": "[(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]",
+          "i": 2,
+          "up": 3,
+          "down": 1,
+          "name": "Vega"
+        },
+        {
+          "v": "echipaj",
+          "d": "[(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60)]",
+          "i": 1,
+          "up": 2,
+          "down": 0,
+          "name": "Lance"
+        },
+        {
+          "v": "masini",
+          "d": "[(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240), (\"Banshee\", 200)]",
+          "i": 0,
+          "up": 1,
+          "down": -1,
+          "name": "Sabre"
+        }
+      ],
+      "answer": "{{i}}",
+      "wrong": ["{{up}}", "{{down}}", "{{name}}"]
     }
   ]
 }

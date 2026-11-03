@@ -30,13 +30,6 @@
       "answer": 0
     },
     {
-      "id": "dc-get-177f35",
-      "text": "Ce afișează?",
-      "code": "stoc = {\"suruburi\": 120, \"rotite\": 35, \"fire\": 70}\nprint(stoc[\"rotite\"])",
-      "options": ["35", "120", "rotite", "{'suruburi': 120, 'rotite': 35, 'fire': 70}"],
-      "answer": 0
-    },
-    {
       "id": "dc-set-a10820",
       "text": "Ce afișează?",
       "code": "varste = {\"Tommy\": 42, \"Lance\": 35}\nvarste[\"Cortez\"] = 60\nvarste[\"Tommy\"] = 43\nprint(varste)",
@@ -81,18 +74,6 @@
         "{'mere': 3, 'paine': 2, 'lapte': 4}",
         "{'mere': 3, 'paine': 5, 'lapte': 4}",
         "{'mere': 5, 'paine': 2}"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "dc-set-8976eb",
-      "text": "Ce afișează?",
-      "code": "vieti = {\"Kai\": 3, \"Mia\": 1}\nvieti[\"Rex\"] = 5\nvieti[\"Kai\"] = 2\nprint(vieti)",
-      "options": [
-        "{'Kai': 2, 'Mia': 1, 'Rex': 5}",
-        "{'Kai': 3, 'Mia': 1, 'Rex': 5}",
-        "{'Kai': 3, 'Mia': 2, 'Rex': 5}",
-        "{'Kai': 2, 'Mia': 1}"
       ],
       "answer": 0
     },
@@ -145,18 +126,6 @@
       "answer": 0
     },
     {
-      "id": "dc-del-3e57d4",
-      "text": "Ce afișează?",
-      "code": "viteza = {\"Nova\": 300, \"Orion\": 250, \"Vega\": 280}\ndel viteza[\"Orion\"]\nprint(viteza)",
-      "options": [
-        "{'Nova': 300, 'Vega': 280}",
-        "{'Orion': 250, 'Vega': 280}",
-        "{'Nova': 300, 'Orion': 0, 'Vega': 280}",
-        "{'Nova': 300, 'Orion': 250, 'Vega': 280}"
-      ],
-      "answer": 0
-    },
-    {
       "id": "dc-check-cf6576",
       "text": "Ce afișează?",
       "code": "varste = {\"Tommy\": 42, \"Lance\": 35}\nfor nume in [\"Lance\", \"Sonny\"]:\n    if nume in varste:\n        print(varste[nume])\n    else:\n        print(\"Nu am gasit\")",
@@ -205,18 +174,6 @@
       "answer": 0
     },
     {
-      "id": "dc-check-f01b23",
-      "text": "Ce afișează?",
-      "code": "vieti = {\"Kai\": 3, \"Mia\": 1}\nfor nume in [\"Rex\", \"Kai\"]:\n    if nume in vieti:\n        print(vieti[nume])\n    else:\n        print(\"Necunoscut\")",
-      "options": [
-        "Necunoscut\n3",
-        "Necunoscut\nKai",
-        "3\nNecunoscut",
-        "Necunoscut\n{'Kai': 3, 'Mia': 1}"
-      ],
-      "answer": 0
-    },
-    {
       "id": "dc-grow-ee0ca1",
       "text": "Ce afișează?",
       "code": "combustibil = {\"Nova\": 80, \"Orion\": 45}\ncombustibil[\"Orion\"] = combustibil[\"Orion\"] + 30\nprint(combustibil[\"Orion\"])",
@@ -245,13 +202,6 @@
       "answer": 0
     },
     {
-      "id": "dc-grow-137f9e",
-      "text": "Ce afișează?",
-      "code": "vieti = {\"Rex\": 5, \"Zoe\": 3}\nvieti[\"Zoe\"] = vieti[\"Zoe\"] - 1\nprint(vieti[\"Zoe\"])",
-      "options": ["2", "1", "4", "5"],
-      "answer": 0
-    },
-    {
       "id": "dc-list-e3539b",
       "text": "Ce afișează?",
       "code": "garaj = {\"nume\": \"Tommy\", \"masini\": [\"Cheetah\", \"Infernus\", \"Sabre\"]}\nprint(garaj[\"masini\"][1])",
@@ -277,13 +227,6 @@
       "text": "Ce afișează?",
       "code": "robot = {\"nume\": \"R2\", \"unelte\": [\"cheie\", \"bormasina\", \"fierastrau\"]}\nprint(robot[\"unelte\"][1])",
       "options": ["bormasina", "cheie", "['cheie', 'bormasina', 'fierastrau']", "3"],
-      "answer": 0
-    },
-    {
-      "id": "dc-list-547f86",
-      "text": "Ce afișează?",
-      "code": "statie = {\"nume\": \"Laniakea\", \"camere\": [\"laborator\", \"punte\", \"doc\"]}\nprint(statie[\"camere\"][2])",
-      "options": ["doc", "punte", "['laborator', 'punte', 'doc']", "3"],
       "answer": 0
     },
     {
@@ -736,6 +679,63 @@
         "camere[\"hangar\"] = 2",
         "print(camere)"
       ],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-update-d19329",
+      "text": "Ce conține `combustibil` la final?",
+      "code": "combustibil = {\"Nova\": 80, \"Orion\": 45}\ncombustibil[\"Nova\"] = combustibil[\"Nova\"] + 20\ncombustibil[\"Vega\"] = 60",
+      "options": [
+        "{'Nova': 100, 'Orion': 45, 'Vega': 60}",
+        "{'Nova': 20, 'Orion': 45, 'Vega': 60}",
+        "{'Vega': 60}",
+        "{'Nova': 80, 'Orion': 45, 'nova': 100, 'Vega': 60}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-update-f03454",
+      "text": "Ce conține `varste` la final?",
+      "code": "varste = {\"Tommy\": 42, \"Lance\": 35}\nvarste[\"Tommy\"] = varste[\"Tommy\"] + 1\nvarste[\"Cortez\"] = 60",
+      "options": [
+        "{'Tommy': 43, 'Lance': 35, 'Cortez': 60}",
+        "{'Tommy': 1, 'Lance': 35, 'Cortez': 60}",
+        "{'Cortez': 60}",
+        "{'Tommy': 42, 'Lance': 35, 'tommy': 43, 'Cortez': 60}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-update-2e4d4c",
+      "text": "Ce conține `marfa` la final?",
+      "code": "marfa = {\"mancare\": 10, \"apa\": 6}\nmarfa[\"mancare\"] = marfa[\"mancare\"] + 5\nmarfa[\"unelte\"] = 8",
+      "options": [
+        "{'mancare': 15, 'apa': 6, 'unelte': 8}",
+        "{'mancare': 5, 'apa': 6, 'unelte': 8}",
+        "{'unelte': 8}",
+        "{'mancare': 10, 'apa': 6, 'Mancare': 15, 'unelte': 8}"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-in-a683c4",
+      "text": "Ce conține `varsta` la final?",
+      "code": "varste = {\"Tommy\": 42, \"Lance\": 35}\nvarsta = 0\nif \"Lance\" in varste:\n    varsta = varste[\"Lance\"]",
+      "options": ["35", "0", "'Lance'", "42"],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-in-52fd7a",
+      "text": "Ce conține `pret` la final?",
+      "code": "preturi = {\"ceai\": 4, \"tort\": 6}\npret = 0\nif \"tort\" in preturi:\n    pret = preturi[\"tort\"]",
+      "options": ["6", "0", "'tort'", "4"],
+      "answer": 0
+    },
+    {
+      "id": "dc-holds-in-af9a97",
+      "text": "Ce conține `nivel` la final?",
+      "code": "combustibil = {\"Nova\": 80, \"Orion\": 45}\nnivel = 0\nif \"Nova\" in combustibil:\n    nivel = combustibil[\"Nova\"]",
+      "options": ["80", "0", "'Nova'", "45"],
       "answer": 0
     }
   ]

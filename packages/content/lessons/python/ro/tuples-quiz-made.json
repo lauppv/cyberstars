@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "tp-index-b8d6e3",
-      "text": "Ce afișează?",
-      "code": "nava = (\"Nova\", \"rosu\", 4, 90)\nprint(nava[0])",
-      "options": ["Nova", "('Nova', 'rosu', 4, 90)", "rosu", "4"],
-      "answer": 0
-    },
-    {
-      "id": "tp-index-0c67b2",
-      "text": "Ce afișează?",
-      "code": "culori = (\"roz\", \"turcoaz\", \"auriu\")\nprint(culori[1])",
-      "options": ["turcoaz", "('roz', 'turcoaz', 'auriu')", "auriu", "3"],
-      "answer": 0
-    },
-    {
       "id": "tp-unpack-4ffdb8",
       "text": "Ce afișează?",
       "code": "jucator = (\"Tommy\", 100, \"Vice City\")\nnume, viata, oras = jucator\nprint(viata)",
@@ -41,27 +27,6 @@
       "text": "Ce afișează?",
       "code": "lansare = (2002, 10, 29)\nan, luna, zi = lansare\nprint(luna)",
       "options": ["10", "2002", "(2002, 10, 29)", "29"],
-      "answer": 0
-    },
-    {
-      "id": "tp-unpack-42924b",
-      "text": "Ce afișează?",
-      "code": "masina = (\"Infernus\", \"alba\", 240)\nmodel, culoare, viteza = masina\nprint(culoare)",
-      "options": ["alba", "Infernus", "('Infernus', 'alba', 240)", "240"],
-      "answer": 0
-    },
-    {
-      "id": "tp-unpack-16711a",
-      "text": "Ce afișează?",
-      "code": "stea = (\"Vega\", 25, 5)\nnume, distanta, planete = stea\nprint(distanta)",
-      "options": ["25", "Vega", "('Vega', 25, 5)", "5"],
-      "answer": 0
-    },
-    {
-      "id": "tp-unpack-cf7ecc",
-      "text": "Ce afișează?",
-      "code": "punct = (3, 8, 1)\nx, y, z = punct\nprint(y)",
-      "options": ["8", "3", "(3, 8, 1)", "1"],
       "answer": 0
     },
     {
@@ -89,20 +54,6 @@
       "answer": 0
     },
     {
-      "id": "tp-loop-c459a9",
-      "text": "Ce afișează?",
-      "code": "niveluri = (5, 10, 15)\nfor nivel in niveluri:\n    print(nivel)",
-      "options": ["5\n10\n15", "(5, 10, 15)\n(5, 10, 15)\n(5, 10, 15)", "3\n3\n3", "5\n5\n5"],
-      "answer": 0
-    },
-    {
-      "id": "tp-loop-c4c876",
-      "text": "Ce afișează?",
-      "code": "echipaj = (\"Tommy\", \"Lance\")\nfor nume in echipaj:\n    print(nume)",
-      "options": ["Tommy\nLance", "('Tommy', 'Lance')\n('Tommy', 'Lance')", "2\n2", "Tommy\nTommy"],
-      "answer": 0
-    },
-    {
       "id": "tp-sum-565c0e",
       "text": "Ce afișează?",
       "code": "preturi = (4, 6, 5)\nplata = 0\nfor p in preturi:\n    plata = plata + p\nprint(plata)",
@@ -121,13 +72,6 @@
       "text": "Ce afișează?",
       "code": "pasi = (1200, 800)\nparcurs = 0\nfor p in pasi:\n    parcurs = parcurs + p\nprint(parcurs)",
       "options": ["2000", "800", "2", "1200\n2000"],
-      "answer": 0
-    },
-    {
-      "id": "tp-sum-e53784",
-      "text": "Ce afișează?",
-      "code": "vieti = (3, 3, 2)\ntotal = 0\nfor n in vieti:\n    total = total + n\nprint(total)",
-      "options": ["8", "2", "3", "3\n6\n8"],
       "answer": 0
     },
     {
@@ -167,18 +111,6 @@
       "answer": 0
     },
     {
-      "id": "tp-chart-6f5f6c",
-      "text": "Ce afișează?",
-      "code": "animale = [(\"Rex\", 4), (\"Polly\", 2)]\nfor animal in animale:\n    nume, picioare = animal\n    print(f\"{nume} are {picioare} picioare\")",
-      "options": [
-        "Rex are 4 picioare\nPolly are 2 picioare",
-        "4 are Rex picioare\n2 are Polly picioare",
-        "{nume} are {picioare} picioare\n{nume} are {picioare} picioare",
-        "Polly are 2 picioare"
-      ],
-      "answer": 0
-    },
-    {
       "id": "tp-total-871538",
       "text": "Ce afișează?",
       "code": "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\ntotal = 0\nfor sistem in sisteme:\n    nume, planete = sistem\n    total = total + planete\nprint(f\"Total planete: {total}\")",
@@ -210,18 +142,6 @@
       "answer": 0
     },
     {
-      "id": "tp-total-7c4e71",
-      "text": "Ce afișează?",
-      "code": "echipaj = [(\"Tommy\", 40), (\"Lance\", 25), (\"Mia\", 30), (\"Ken\", 5)]\npuncte = 0\nfor membru in echipaj:\n    nume, scor = membru\n    puncte = puncte + scor\nprint(f\"Puncte: {puncte}\")",
-      "options": [
-        "Puncte: 100",
-        "Puncte: 5",
-        "Puncte: 4",
-        "Puncte: 40\nPuncte: 65\nPuncte: 95\nPuncte: 100"
-      ],
-      "answer": 0
-    },
-    {
       "id": "tp-nested-0e3adb",
       "text": "Ce afișează?",
       "code": "sisteme = [(\"Sol\", 0, 8), (\"Alpha\", 4, 3), (\"Vega\", 25, 5)]\nprint(sisteme[1][2])",
@@ -240,20 +160,6 @@
       "text": "Ce afișează?",
       "code": "masini = [(\"Cheetah\", 230), (\"Sabre\", 180)]\nprint(masini[0][1])",
       "options": ["230", "('Cheetah', 230)", "Sabre", "Cheetah"],
-      "answer": 0
-    },
-    {
-      "id": "tp-nested-cd44bb",
-      "text": "Ce afișează?",
-      "code": "puncte = [(3, 8), (6, 1), (9, 4)]\nprint(puncte[2][1])",
-      "options": ["4", "(9, 4)", "9", "8"],
-      "answer": 0
-    },
-    {
-      "id": "tp-nested-d92b53",
-      "text": "Ce afișează?",
-      "code": "zboruri = [(\"Roma\", \"Oslo\", 3), (\"Paris\", \"Riga\", 4)]\nprint(zboruri[1][1])",
-      "options": ["Riga", "('Paris', 'Riga', 4)", "Paris", "Oslo"],
       "answer": 0
     },
     {
@@ -691,6 +597,96 @@
         "eroi = (\"Shrek\", \"Fiona\", \"Donkey\")",
         "print(len(eroi))"
       ],
+      "answer": 0
+    },
+    {
+      "id": "tp-holds-pick-b35fd1",
+      "text": "Ce conține `cel_mai_mare` la final?",
+      "code": "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5), (\"Kepler\", 8)]\ncel_mai_mare = sisteme[0]\nfor sistem in sisteme:\n    if sistem[1] > cel_mai_mare[1]:\n        cel_mai_mare = sistem",
+      "options": ["('Sol', 8)", "('Vega', 5)", "('Alpha', 3)", "('Kepler', 8)"],
+      "answer": 0
+    },
+    {
+      "id": "tp-holds-pick-e5ae5f",
+      "text": "Ce conține `cel_mai_batran` la final?",
+      "code": "echipaj = [(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60), (\"Ken\", 60)]\ncel_mai_batran = echipaj[0]\nfor membru in echipaj:\n    if membru[1] > cel_mai_batran[1]:\n        cel_mai_batran = membru",
+      "options": ["('Cortez', 60)", "('Tommy', 42)", "('Lance', 35)", "('Ken', 60)"],
+      "answer": 0
+    },
+    {
+      "id": "tp-holds-pick-47c9c8",
+      "text": "Ce conține `cea_mai_rapida` la final?",
+      "code": "masini = [(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240), (\"Banshee\", 240)]\ncea_mai_rapida = masini[0]\nfor masina in masini:\n    if masina[1] > cea_mai_rapida[1]:\n        cea_mai_rapida = masina",
+      "options": ["('Infernus', 240)", "('Sabre', 220)", "('Cheetah', 180)", "('Banshee', 240)"],
+      "answer": 0
+    },
+    {
+      "id": "tp-input-find-76e21b",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\ncautat = input()\nfor nume, planete in sisteme:\n    if nume == cautat:\n        print(planete)",
+      "output": "5",
+      "options": ["Vega", "5", "vega", "Sol"],
+      "answer": 0
+    },
+    {
+      "id": "tp-input-find-aee114",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "echipaj = [(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60)]\ncautat = input()\nfor nume, varsta in echipaj:\n    if nume == cautat:\n        print(varsta)",
+      "output": "60",
+      "options": ["Cortez", "60", "cortez", "Lance"],
+      "answer": 0
+    },
+    {
+      "id": "tp-input-find-6297e5",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "masini = [(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240)]\ncautat = input()\nfor nume, viteza in masini:\n    if nume == cautat:\n        print(viteza)",
+      "output": "180",
+      "options": ["Cheetah", "180", "cheetah", "Infernus"],
+      "answer": 0
+    },
+    {
+      "id": "tp-holds-count-b1151d",
+      "text": "Ce conține `mari` la final?",
+      "code": "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5), (\"Kepler\", 8)]\nmari = 0\nfor nume, planete in sisteme:\n    if planete > 5:\n        mari = mari + 1",
+      "options": ["2", "16", "3", "1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-holds-count-f53272",
+      "text": "Ce conține `mai_batrani` la final?",
+      "code": "echipaj = [(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60), (\"Ken\", 18)]\nmai_batrani = 0\nfor nume, varsta in echipaj:\n    if varsta > 35:\n        mai_batrani = mai_batrani + 1",
+      "options": ["2", "102", "3", "1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-holds-count-ebb88a",
+      "text": "Ce conține `rapide` la final?",
+      "code": "masini = [(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240), (\"Banshee\", 200)]\nrapide = 0\nfor nume, viteza in masini:\n    if viteza > 200:\n        rapide = rapide + 1",
+      "options": ["2", "460", "3", "1"],
+      "answer": 0
+    },
+    {
+      "id": "tp-input-index-8ef41c",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "sisteme = [(\"Sol\", 8), (\"Alpha\", 3), (\"Vega\", 5)]\ni = int(input())\nprint(sisteme[i][0])",
+      "output": "Vega",
+      "options": ["2", "3", "1", "Vega"],
+      "answer": 0
+    },
+    {
+      "id": "tp-input-index-ce574b",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "echipaj = [(\"Tommy\", 42), (\"Lance\", 35), (\"Cortez\", 60)]\ni = int(input())\nprint(echipaj[i][0])",
+      "output": "Lance",
+      "options": ["1", "2", "0", "Lance"],
+      "answer": 0
+    },
+    {
+      "id": "tp-input-index-e99693",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "masini = [(\"Sabre\", 220), (\"Cheetah\", 180), (\"Infernus\", 240), (\"Banshee\", 200)]\ni = int(input())\nprint(masini[i][0])",
+      "output": "Sabre",
+      "options": ["0", "1", "-1", "Sabre"],
       "answer": 0
     }
   ]
