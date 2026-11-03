@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
+import { NOTICE_TYPES, NOTICES_MAX } from '@cyberstars/shared/notifications';
 import type { NotificationData, NotificationType } from '@cyberstars/shared/notifications';
 
 export const actorInclude = { actor: { select: { name: true, avatarUrl: true } } };
@@ -29,6 +30,36 @@ export function list(userId: number, take: number, before?: number): Promise<Not
     take,
     include: actorInclude,
   });
+}
+
+// The announcements and polls this user hasn't read and the dashboard hasn't
+// shown, the oldest first and at most NOTICES_MAX, but a poll they voted in
+// already, from another device too. Those are left out by the query, before
+// the limit, so they can't fill it and hold back the newer ones
+export async function listNotices(userId: number): Promise<NotificationRow[]> {
+  const voted = await prisma.pollVoter.findMany({ where: { userId }, select: { pollId: true } });
+  return prisma.notification.findMany({
+    where: {
+      userId,
+      readAt: null,
+      shownAt: null,
+      type: { in: [...NOTICE_TYPES] },
+      NOT: { type: 'POLL', entityId: { in: voted.map((v) => v.pollId) } },
+    },
+    orderBy: { id: 'asc' },
+    take: NOTICES_MAX,
+    include: actorInclude,
+  });
+}
+
+// The dashboard's window showed these, so it doesn't open with them again.
+// Scoped by userId, and to announcements and polls
+export async function markShown(userId: number, ids: number[]): Promise<number> {
+  const res = await prisma.notification.updateMany({
+    where: { userId, id: { in: ids }, type: { in: [...NOTICE_TYPES] }, shownAt: null },
+    data: { shownAt: new Date() },
+  });
+  return res.count;
 }
 
 export function countUnread(userId: number): Promise<number> {

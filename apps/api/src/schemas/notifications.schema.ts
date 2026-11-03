@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { NOTICES_MAX } from '@cyberstars/shared/notifications';
 
 // Lenient query params (like the leaderboard): bad values fall back to defaults
 // and take is clamped, so a hand-edited URL can't 400 the list.
@@ -13,4 +14,9 @@ export const notificationsQuerySchema = z.object({
 
 export const markReadSchema = z.object({
   upToId: z.number().int().positive(),
+});
+
+// What the dashboard's window showed, as many as it opens with at most
+export const markShownSchema = z.object({
+  ids: z.array(z.number().int().positive()).min(1).max(NOTICES_MAX),
 });

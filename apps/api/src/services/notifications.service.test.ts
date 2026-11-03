@@ -13,6 +13,8 @@ const mockRepo = {
   clearExcerpt: vi.fn(),
   createAnnouncement: vi.fn(),
   listAnnouncements: vi.fn(),
+  listNotices: vi.fn(),
+  markShown: vi.fn(),
 };
 const mockWs = { pushToUser: vi.fn(), isUserOnline: vi.fn() };
 
@@ -28,6 +30,8 @@ const {
   markOneRead,
   markEntityRead,
   redactExcerpt,
+  getNotices,
+  markShown,
 } = await import('./notifications.service.js');
 
 function row(over: Partial<Record<string, unknown>> = {}) {
@@ -173,6 +177,29 @@ describe('notifications.service getPage', () => {
     expect(page.items[1].actor).toBeNull();
     expect(page.items[1].data).toBeNull();
     expect(page.items[1].readAt).toBe('2026-07-17T09:00:00.000Z');
+  });
+});
+
+describe('notifications.service notices', () => {
+  it('shapes the rows the dashboard still has to show, in their order', async () => {
+    mockRepo.listNotices.mockResolvedValue([
+      row({ id: 3, type: 'ANNOUNCEMENT', entityId: 1, data: { text: 'Hi' } }),
+      row({ id: 5, type: 'POLL', entityId: 2, data: { text: 'Which?' } }),
+    ]);
+    const notices = await getNotices(10);
+    expect(mockRepo.listNotices).toHaveBeenCalledWith(10);
+    expect(notices.map((n) => [n.id, n.type, n.data])).toEqual([
+      [3, 'ANNOUNCEMENT', { text: 'Hi' }],
+      [5, 'POLL', { text: 'Which?' }],
+    ]);
+    expect(notices[0].createdAt).toBe('2026-07-17T10:00:00.000Z');
+  });
+
+  it('markShown stamps the ids and pushes nothing, the unread count stays', async () => {
+    mockRepo.markShown.mockResolvedValue(2);
+    await markShown(10, [3, 5]);
+    expect(mockRepo.markShown).toHaveBeenCalledWith(10, [3, 5]);
+    expect(mockWs.pushToUser).not.toHaveBeenCalled();
   });
 });
 

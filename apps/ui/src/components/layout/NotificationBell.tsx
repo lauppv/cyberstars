@@ -13,11 +13,19 @@ import type { NotificationDTO } from '@cyberstars/shared/notifications';
 export function NotificationBell() {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const { enabled, unreadCount } = useNotifications();
+  const { enabled, unreadCount, noteBellWindow } = useNotifications();
   const [open, setOpen] = useState(false);
   const [announcement, setAnnouncement] = useState<NotificationDTO | null>(null);
   const [pollId, setPollId] = useState<number | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+
+  // While one is open here, the dashboard's window waits for it
+  const windowOpen = announcement !== null || pollId !== null;
+  useEffect(() => {
+    if (!windowOpen) return;
+    noteBellWindow(true);
+    return () => noteBellWindow(false);
+  }, [windowOpen, noteBellWindow]);
 
   useEffect(() => {
     if (!open) return;

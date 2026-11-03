@@ -3,7 +3,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const mockApi = { get: vi.fn(), post: vi.fn() };
 vi.mock('./apiClient', () => ({ api: mockApi }));
 
-const { getNotifications, markRead, markOneRead } = await import('./notificationsService');
+const { getNotifications, markRead, markOneRead, getNotices, markShown } =
+  await import('./notificationsService');
 
 beforeEach(() => vi.clearAllMocks());
 
@@ -30,5 +31,17 @@ describe('notificationsService', () => {
     mockApi.post.mockResolvedValue({ ok: true });
     await markOneRead(7);
     expect(mockApi.post).toHaveBeenCalledWith('/api/notifications/7/read');
+  });
+
+  it("asks for the dashboard's notices", async () => {
+    mockApi.get.mockResolvedValue([]);
+    await getNotices();
+    expect(mockApi.get).toHaveBeenCalledWith('/api/notifications/notices');
+  });
+
+  it('posts the ids the dashboard showed', async () => {
+    mockApi.post.mockResolvedValue('');
+    await markShown([3, 5]);
+    expect(mockApi.post).toHaveBeenCalledWith('/api/notifications/notices/shown', { ids: [3, 5] });
   });
 });

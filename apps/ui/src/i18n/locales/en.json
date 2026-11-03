@@ -509,6 +509,18 @@
     "loadFailed": "This poll couldn't be loaded.",
     "failed": "Your vote couldn't be sent. Try again."
   },
+  "notices": {
+    "counter": "{{at}} of {{total}}",
+    "back": "Back",
+    "next": "Next",
+    "done": "Done",
+    "closeQuestion": "Close?",
+    "unseen_one": "There's one more you haven't seen.",
+    "unseen_other": "There are {{count}} more you haven't seen.",
+    "inBell_one": "You'll find it any time in the bell at the top right.",
+    "inBell_other": "You'll find them any time in the bell at the top right.",
+    "stay": "Stay"
+  },
   "courses": {
     "lessons_one": "lesson",
     "lessons_other": "lessons",

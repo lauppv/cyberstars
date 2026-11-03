@@ -49,6 +49,11 @@ vi.mock('../components/ui/LoadingSpinner', () => ({
 vi.mock('../components/laniakea/LaniakeaCard', () => ({
   LaniakeaCard: () => <div>Laniakea card</div>,
 }));
+vi.mock('../components/notifications/DashboardNotices', () => ({
+  DashboardNotices: ({ held }: { held?: boolean }) => (
+    <div data-testid="notices" data-held={String(!!held)} />
+  ),
+}));
 vi.mock('../services/dailyService', () => ({
   fetchDaily: vi.fn(() => Promise.resolve(null)),
 }));
@@ -353,6 +358,23 @@ describe('HomePage', () => {
     const cards = await screen.findAllByText(/^Story /);
     fireEvent.click(cards[0].closest('button')!);
     expect(await screen.findByText('✕')).toBeInTheDocument();
+  });
+
+  it("opens the admins' announcements and polls on the dashboard, after a story read there", async () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    renderPage();
+    expect(screen.getByTestId('notices')).toHaveAttribute('data-held', 'false');
+    const cards = await screen.findAllByText(/^Story /);
+    fireEvent.click(cards[0].closest('button')!);
+    expect(screen.getByTestId('notices')).toHaveAttribute('data-held', 'true');
+    fireEvent.click(await screen.findByText('✕'));
+    expect(screen.getByTestId('notices')).toHaveAttribute('data-held', 'false');
+  });
+
+  it('opens no announcements on the landing page', () => {
+    mockUseAuth.mockReturnValue(loggedOutAuth);
+    renderPage();
+    expect(screen.queryByTestId('notices')).toBeNull();
   });
 
   it('hides the almanac section when highlights fail to load', async () => {

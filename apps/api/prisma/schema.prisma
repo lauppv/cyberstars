@@ -421,6 +421,7 @@ model Notification {
   entityId  Int              @map("entity_id")
   data      Json?
   readAt    DateTime?        @map("read_at")
+  shownAt   DateTime?        @map("shown_at") // an announcement or a poll the dashboard's window showed
   createdAt DateTime         @default(now()) @map("created_at")
 
   user  User  @relation("NotificationsReceived", fields: [userId], references: [id], onDelete: Cascade)

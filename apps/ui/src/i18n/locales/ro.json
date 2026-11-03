@@ -546,6 +546,20 @@
     "loadFailed": "Sondajul nu s-a putut încărca.",
     "failed": "Votul nu a putut fi trimis. Încearcă din nou."
   },
+  "notices": {
+    "counter": "{{at}} din {{total}}",
+    "back": "Înapoi",
+    "next": "Următorul",
+    "done": "Gata",
+    "closeQuestion": "Închizi?",
+    "unseen_one": "Mai ai unul nevăzut.",
+    "unseen_few": "Mai ai {{count}} nevăzute.",
+    "unseen_other": "Mai ai {{count}} de nevăzute.",
+    "inBell_one": "Îl găsești oricând în clopoțelul din dreapta sus.",
+    "inBell_few": "Le găsești oricând în clopoțelul din dreapta sus.",
+    "inBell_other": "Le găsești oricând în clopoțelul din dreapta sus.",
+    "stay": "Rămân"
+  },
   "courses": {
     "lessons_one": "lecție",
     "lessons_other": "de lecții",

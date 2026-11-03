@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { agent, createAuthenticatedAgent, userIdFor } from './helpers.js';
+import { prisma } from '../../src/config/db.js';
 
 type Notification = {
   id: number;
@@ -111,5 +112,97 @@ describe('Notifications flow', () => {
 
   it('unauthenticated requests are rejected', async () => {
     await agent().get('/api/notifications').expect(401);
+  });
+});
+
+describe('Dashboard notices', () => {
+  async function admin() {
+    const { agent: a, email } = await createAuthenticatedAgent();
+    await prisma.user.update({ where: { id: await userIdFor(email) }, data: { role: 'ADMIN' } });
+    return a;
+  }
+
+  async function notices(who: ReturnType<typeof agent>): Promise<Notification[]> {
+    return (await who.get('/api/notifications/notices').expect(200)).body as Notification[];
+  }
+
+  it('lists the unread announcements and polls oldest first, and nothing else', async () => {
+    const { a, b, idB } = await twoUsers();
+    const boss = await admin();
+    await boss.post('/api/admin/announcements').send({ text: 'First' }).expect(201);
+    await boss
+      .post('/api/admin/polls')
+      .send({ question: 'Which course next?', options: ['Rust', 'Go'] })
+      .expect(201);
+    await boss.post('/api/admin/announcements').send({ text: 'Third' }).expect(201);
+    await a.post('/api/connections').send({ addresseeId: idB }).expect(201);
+    await waitForType(b, 'CONNECTION_REQUEST');
+
+    const list = await notices(b);
+    expect(list.map((n) => n.type)).toEqual(['ANNOUNCEMENT', 'POLL', 'ANNOUNCEMENT']);
+    expect(list.map((n) => n.id)).toEqual([...list.map((n) => n.id)].sort((x, y) => x - y));
+  });
+
+  it('leaves out one read, one voted in and the ones shown', async () => {
+    const { agent: user } = await createAuthenticatedAgent();
+    const boss = await admin();
+    await boss.post('/api/admin/announcements').send({ text: 'Read in the bell' }).expect(201);
+    await boss
+      .post('/api/admin/polls')
+      .send({ question: 'Voted from the phone?', options: ['Yes', 'No'] })
+      .expect(201);
+    await boss.post('/api/admin/announcements').send({ text: 'Shown' }).expect(201);
+    await boss.post('/api/admin/announcements').send({ text: 'Still to show' }).expect(201);
+
+    const [read, poll, shown, left] = await notices(user);
+    await user.post(`/api/notifications/${read.id}/read`).expect(200);
+    const options = (await user.get(`/api/polls/${poll.entityId}`).expect(200)).body.options;
+    await user
+      .post(`/api/polls/${poll.entityId}/vote`)
+      .send({ optionIds: [options[0].id] })
+      .expect(204);
+    await user
+      .post('/api/notifications/notices/shown')
+      .send({ ids: [shown.id] })
+      .expect(204);
+
+    expect((await notices(user)).map((n) => n.id)).toEqual([left.id]);
+    // Shown is not read: it stays unread in the bell
+    expect((await page(user)).unreadCount).toBe(3);
+  });
+
+  it("marks only the caller's own shown", async () => {
+    const { agent: user } = await createAuthenticatedAgent();
+    const { agent: other } = await createAuthenticatedAgent();
+    const boss = await admin();
+    await boss.post('/api/admin/announcements').send({ text: 'Hi' }).expect(201);
+    const [mine] = await notices(user);
+
+    await other
+      .post('/api/notifications/notices/shown')
+      .send({ ids: [mine.id] })
+      .expect(204);
+    expect(await notices(user)).toHaveLength(1);
+  });
+
+  it('refuses a list of ids that is empty, too long or not ids (400)', async () => {
+    const { agent: user } = await createAuthenticatedAgent();
+    await user.post('/api/notifications/notices/shown').send({ ids: [] }).expect(400);
+    await user
+      .post('/api/notifications/notices/shown')
+      .send({ ids: ['x'] })
+      .expect(400);
+    await user.post('/api/notifications/notices/shown').send({}).expect(400);
+    // More than the window ever opens with
+    const ids = Array.from({ length: 101 }, (_, i) => i + 1);
+    await user.post('/api/notifications/notices/shown').send({ ids }).expect(400);
+  });
+
+  it('unauthenticated requests are rejected', async () => {
+    await agent().get('/api/notifications/notices').expect(401);
+    await agent()
+      .post('/api/notifications/notices/shown')
+      .send({ ids: [1] })
+      .expect(401);
   });
 });

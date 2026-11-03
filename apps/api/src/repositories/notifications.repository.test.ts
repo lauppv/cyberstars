@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockPrisma = {
   user: { findMany: vi.fn() },
+  pollVoter: { findMany: vi.fn() },
   announcement: { create: vi.fn(), findMany: vi.fn() },
   notification: {
     findMany: vi.fn(),
@@ -41,6 +42,60 @@ describe('list', () => {
     expect(mockPrisma.notification.findMany).toHaveBeenCalledWith(
       expect.objectContaining({ where: { userId: 10, id: { lt: 50 } } }),
     );
+  });
+});
+
+describe('listNotices', () => {
+  it('lists the unread announcements and polls not shown yet, oldest first, at most 100', async () => {
+    const rows = [{ id: 3 }, { id: 5 }];
+    mockPrisma.pollVoter.findMany.mockResolvedValue([]);
+    mockPrisma.notification.findMany.mockResolvedValue(rows);
+    expect(await repo.listNotices(10)).toEqual(rows);
+    expect(mockPrisma.notification.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: {
+          userId: 10,
+          readAt: null,
+          shownAt: null,
+          type: { in: ['ANNOUNCEMENT', 'POLL'] },
+          NOT: { type: 'POLL', entityId: { in: [] } },
+        },
+        orderBy: { id: 'asc' },
+        take: 100,
+      }),
+    );
+  });
+
+  it('leaves out the polls this user voted in, in the query, before the limit', async () => {
+    mockPrisma.pollVoter.findMany.mockResolvedValue([{ pollId: 7 }, { pollId: 9 }]);
+    mockPrisma.notification.findMany.mockResolvedValue([]);
+    await repo.listNotices(10);
+    expect(mockPrisma.pollVoter.findMany).toHaveBeenCalledWith({
+      where: { userId: 10 },
+      select: { pollId: true },
+    });
+    expect(mockPrisma.notification.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({ NOT: { type: 'POLL', entityId: { in: [7, 9] } } }),
+        take: 100,
+      }),
+    );
+  });
+});
+
+describe('markShown', () => {
+  it("stamps only this user's announcements and polls not shown yet", async () => {
+    mockPrisma.notification.updateMany.mockResolvedValue({ count: 2 });
+    expect(await repo.markShown(10, [3, 5])).toBe(2);
+    expect(mockPrisma.notification.updateMany).toHaveBeenCalledWith({
+      where: {
+        userId: 10,
+        id: { in: [3, 5] },
+        type: { in: ['ANNOUNCEMENT', 'POLL'] },
+        shownAt: null,
+      },
+      data: { shownAt: expect.any(Date) },
+    });
   });
 });
 
@@ -128,6 +183,7 @@ describe('collapse', () => {
       entityId: 5,
       data: { title: 'T', count: 1 },
       readAt: null,
+      shownAt: null,
       createdAt: new Date('2026-07-17T10:00:00.000Z'),
       actor: { name: 'Ada', avatarUrl: null },
     } as Parameters<typeof repo.collapse>[0];

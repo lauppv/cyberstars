@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { authenticateToken } from '../middleware/auth.js';
 import { requireFeatureAccess } from '../middleware/features.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
-import { markReadSchema } from '../schemas/notifications.schema.js';
+import { markReadSchema, markShownSchema } from '../schemas/notifications.schema.js';
 import * as notificationsController from '../controllers/notifications.controller.js';
 
 const router = Router();
@@ -12,6 +12,8 @@ const router = Router();
 router.use(authenticateToken, requireFeatureAccess('notifications'));
 
 router.get('/', notificationsController.getNotifications);
+router.get('/notices', notificationsController.getNotices);
+router.post('/notices/shown', validateBody(markShownSchema), notificationsController.markShown);
 router.post('/read', validateBody(markReadSchema), notificationsController.markRead);
 router.post('/:id/read', notificationsController.markOneRead);
 
