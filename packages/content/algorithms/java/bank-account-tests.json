@@ -1,5 +1,14 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "BankAccount" },
+      { "kind": "variable", "name": "balance" },
+      { "kind": "function", "name": "deposit" },
+      { "kind": "function", "name": "withdraw" },
+      { "kind": "call", "name": "BankAccount" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "100\n3\ndeposit\n50\nwithdraw\n30\nwithdraw\n200\n" },
     { "visible": true, "stdin": "0\n2\ndeposit\n500\nwithdraw\n500\n" },

@@ -1,9 +1,13 @@
 {
   "comparator": "trimmed",
   "structure": {
+    "requires": [{ "kind": "nested_loop" }],
     "forbids": [
       { "kind": "call", "name": "sort" },
-      { "kind": "call", "name": "sorted" }
+      { "kind": "call", "name": "sorted" },
+      { "kind": "call", "name": "parallelSort" },
+      { "kind": "call", "name": "PriorityQueue" },
+      { "kind": "call", "name": "TreeMap" }
     ]
   },
   "cases": [

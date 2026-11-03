@@ -1,5 +1,13 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "forbids": [
+      { "kind": "call", "name": "Arrays.binarySearch" },
+      { "kind": "call", "name": "Collections.binarySearch" },
+      { "kind": "call", "name": "indexOf" },
+      { "kind": "call", "name": "contains" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "5\n1\n3\n5\n7\n9\n5\n" },
     { "visible": true, "stdin": "4\n2\n4\n6\n8\n5\n" },
