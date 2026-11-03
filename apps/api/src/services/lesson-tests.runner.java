@@ -43,6 +43,7 @@ import com.sun.source.tree.MemberSelectTree;
 import com.sun.source.tree.MethodInvocationTree;
 import com.sun.source.tree.MethodTree;
 import com.sun.source.tree.NewClassTree;
+import com.sun.source.tree.ParameterizedTypeTree;
 import com.sun.source.tree.Tree;
 import com.sun.source.tree.VariableTree;
 import com.sun.source.tree.WhileLoopTree;
@@ -239,6 +240,14 @@ public class Runner {
     // java.util.Arrays.*): such a call to a method the student doesn't define is that class's.
     final java.util.Set<String> bareCalls = new java.util.HashSet<>();
     final java.util.Set<String> staticOwners = new java.util.HashSet<>();
+    // For a forbid by a bare name (indexOf, sort, LinkedList), the calls that can't be the
+    // student's own: a method called on an expression (java.util.Arrays.sort, a.b().indexOf), a
+    // method reference on one, a constructor named with its package. A method called on a name
+    // (list.indexOf, Searcher.indexOf, this.indexOf) waits in namedCalls until the student's own
+    // classes and each variable's declared types are known.
+    final java.util.Set<String> foreignCalls = new java.util.HashSet<>();
+    final List<String[]> namedCalls = new ArrayList<>();
+    final Map<String, java.util.Set<String>> variableTypes = new java.util.HashMap<>();
     final java.util.Set<String> variableNames = new java.util.HashSet<>();
     final java.util.Set<String> methodNames = new java.util.HashSet<>();
     // A method that calls itself somewhere in its own body.
@@ -378,6 +387,7 @@ public class Runner {
             callNames.add(ms.getIdentifier().toString());
             String owner = lastName(ms.getExpression());
             if (owner != null) callNames.add(owner + "." + ms.getIdentifier());
+            calledOn(ms.getExpression(), ms.getIdentifier().toString());
           }
           // A method calls itself by its bare name or through this., with as
           // many arguments as it takes: name.equals(...) on a field or an
@@ -400,15 +410,28 @@ public class Runner {
         public Void visitMemberReference(MemberReferenceTree node, Void unused) {
           // Arrays::sort and ArrayDeque::new hand a method or a constructor out to be called
           // elsewhere, so they count as calls to it.
-          String owner = lastName(node.getQualifierExpression());
+          // ArrayDeque<Integer>::new names its type with the generics, like new ArrayDeque<>().
+          ExpressionTree qualifier = node.getQualifierExpression();
+          String owner =
+              qualifier instanceof ParameterizedTypeTree ? simpleType(qualifier) : lastName(qualifier);
           String name = node.getName().toString();
           if (name.equals("<init>")) {
             if (owner != null) callNames.add(owner);
+            if (owner != null && packageQualified(qualifier)) foreignCalls.add(owner);
           } else {
             callNames.add(name);
             if (owner != null) callNames.add(owner + "." + name);
+            calledOn(qualifier, name);
           }
           return super.visitMemberReference(node, unused);
+        }
+
+        void calledOn(ExpressionTree receiver, String name) {
+          if (receiver instanceof IdentifierTree id) {
+            namedCalls.add(new String[] {id.getName().toString(), name});
+          } else {
+            foreignCalls.add(name);
+          }
         }
 
         @Override
@@ -431,6 +454,7 @@ public class Runner {
             String type = simpleType(node.getIdentifier());
             callNames.add(type);
             newTypes.add(type);
+            if (packageQualified(node.getIdentifier())) foreignCalls.add(type);
           }
           return super.visitNewClass(node, unused);
         }
@@ -444,6 +468,15 @@ public class Runner {
           // `var` declarations have a null type tree.
           String type = node.getType() == null ? "" : node.getType().toString();
           declaredTypes.put(name, type);
+          // var s = new Searcher() takes its type from the initializer.
+          String simple =
+              node.getType() != null
+                  ? simpleType(node.getType())
+                  : node.getInitializer() instanceof NewClassTree created
+                          && created.getIdentifier() != null
+                      ? simpleType(created.getIdentifier())
+                      : "";
+          variableTypes.computeIfAbsent(name, k -> new java.util.HashSet<>()).add(simple);
           if (node.getInitializer() != null && isEligible(parent)) {
             long start = positions.getStartPosition(unit, node.getInitializer());
             long end = positions.getEndPosition(unit, node.getInitializer());
@@ -562,6 +595,23 @@ public class Runner {
       if (qualifier instanceof IdentifierTree id) return id.getName().toString();
       if (qualifier instanceof MemberSelectTree ms) return ms.getIdentifier().toString();
       return null;
+    }
+
+    // java.util.LinkedList, with or without generics, as against a bare LinkedList.
+    static boolean packageQualified(Tree type) {
+      Tree base = type instanceof ParameterizedTypeTree generic ? generic.getType() : type;
+      return base instanceof MemberSelectTree;
+    }
+
+    // Whether a call through this receiver name can be the student's own method: this, their own
+    // class (main's included) or a variable whose every declaration has one of their classes.
+    boolean ownReceiver(String receiver) {
+      if (receiver.equals("this") || receiver.equals(mainClass) || ownClasses.contains(receiver)) {
+        return true;
+      }
+      java.util.Set<String> types = variableTypes.get(receiver);
+      return types != null
+          && types.stream().allMatch(t -> t.equals(mainClass) || ownClasses.contains(t));
     }
 
     static String simpleType(Tree type) {
@@ -766,9 +816,26 @@ public class Runner {
         if (!holds(parsed, asMap(rule))) failures.add(failure("require", rule));
       }
       for (Object rule : asList(structure.getOrDefault("forbids", new ArrayList<>()))) {
-        if (holds(parsed, asMap(rule))) failures.add(failure("forbid", rule));
+        if (forbidHolds(parsed, asMap(rule))) failures.add(failure("forbid", rule));
       }
       return failures;
+    }
+
+    // A forbidden call by a bare name (indexOf, sort, LinkedList) is the library's unless the
+    // student's own code makes it: a method of their own called bare, through this, their class
+    // or an object of it, or a class of their own constructed. Arrays.sort names the library.
+    static boolean forbidHolds(Parsed parsed, Map<String, Object> rule) {
+      String name = rule.get("name") instanceof String s ? s : "";
+      if (!"call".equals(rule.get("kind")) || name.isEmpty() || name.contains(".")) {
+        return holds(parsed, rule);
+      }
+      if (parsed.foreignCalls.contains(name)) return true;
+      for (String[] call : parsed.namedCalls) {
+        if (call[1].equals(name) && !parsed.ownReceiver(call[0])) return true;
+      }
+      return parsed.callNames.contains(name)
+          && !parsed.methodNames.contains(name)
+          && !parsed.ownClasses.contains(name);
     }
 
     static Map<String, Object> failure(String type, Object rule) {

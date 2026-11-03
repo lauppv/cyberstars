@@ -514,11 +514,11 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
   }, 120_000);
 
   // The structure header only: no cases, so nothing is compiled or run.
-  function header(userCode: string, requires: unknown[]): unknown {
+  function header(userCode: string, requires: unknown[], forbids: unknown[] = []): unknown {
     const payloadPath = path.join(dir, 'payload.json');
     fs.writeFileSync(
       payloadPath,
-      JSON.stringify({ userCode, solutionCode: '', structure: { requires }, cases: [] }),
+      JSON.stringify({ userCode, solutionCode: '', structure: { requires, forbids }, cases: [] }),
     );
     const result = spawnSync('java', ['-cp', classes, 'Runner', payloadPath], {
       encoding: 'utf8',
@@ -594,6 +594,48 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
         [deque],
       ),
     ).toEqual(passes);
+  });
+
+  it("forbids a bare name only where the student's own code can't be making the call", () => {
+    const passes = { syntaxError: null, structureFailures: [] };
+    const indexOf = { kind: 'call', name: 'indexOf' };
+    const deque = { kind: 'call', name: 'ArrayDeque' };
+    const own = 'class Searcher { int indexOf(int[] a, int t) { return 0; } }\n';
+    const ownStatic = '    static int indexOf(int[] a, int t) { return 0; }\n';
+    // Their own method called bare, through their class or an object of it, their own class built.
+    for (const code of [
+      main(ownStatic + '    static int f(int[] a) { return indexOf(a, 1); }'),
+      main(ownStatic + '    static int f(int[] a) { return Main.indexOf(a, 1); }'),
+      own +
+        main('    static int f(int[] a) { Searcher s = new Searcher(); return s.indexOf(a, 1); }'),
+      own + main('    static int f(int[] a) { var s = new Searcher(); return s.indexOf(a, 1); }'),
+      'class ArrayDeque {}\n' + main('    static Object f() { return new ArrayDeque(); }'),
+    ]) {
+      expect(header(code, [], [indexOf, deque])).toEqual(passes);
+    }
+    // The library's, next to a method or a class of the same name too.
+    for (const [code, rule] of [
+      [
+        'import java.util.*;\n' +
+          main(ownStatic + '    static int f(List<Integer> l) { return l.indexOf(1); }'),
+        indexOf,
+      ],
+      [
+        'import java.util.*;\nimport java.util.function.*;\n' +
+          main('    static Supplier<Deque<Integer>> make = ArrayDeque<Integer>::new;'),
+        deque,
+      ],
+      [
+        'class ArrayDeque {}\n' +
+          main('    static Object f() { return new java.util.ArrayDeque<Integer>(); }'),
+        deque,
+      ],
+    ] as const) {
+      expect(header(code, [], [indexOf, deque])).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'forbid', rule }],
+      });
+    }
   });
 
   it('finds a constant inside a string too', () => {
