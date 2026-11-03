@@ -97,7 +97,10 @@ export function DashboardNotices({ held = false }: { held?: boolean }) {
   const total = notices.length;
   const last = at === total - 1;
   const unseen = total - 1 - reached;
-  const title = current.type === 'POLL' ? t('poll.title') : t('notif.announcementTitle');
+  const poll = current.type === 'POLL';
+  const title = poll ? t('poll.title') : t('notif.announcementTitle');
+  // On a poll its Vote is the one to press, so Next and Done step back
+  const onward = poll ? secondary : primary;
   const go = (to: number) => {
     setAt(to);
     setReached((r) => Math.max(r, to));
@@ -130,7 +133,7 @@ export function DashboardNotices({ held = false }: { held?: boolean }) {
         </div>
 
         <div className="min-h-0 overflow-y-auto">
-          {current.type === 'POLL' ? (
+          {poll ? (
             <PollVote key={current.id} pollId={current.entityId} />
           ) : (
             <p className="m-0 px-6 py-5 text-[14px] leading-relaxed text-[var(--text)] whitespace-pre-wrap break-words">
@@ -162,7 +165,7 @@ export function DashboardNotices({ held = false }: { held?: boolean }) {
             </>
           ) : total === 1 ? (
             <div className="flex justify-end">
-              <button onClick={close} className={primary}>
+              <button onClick={close} className={onward}>
                 {t('notices.done')}
               </button>
             </div>
@@ -175,11 +178,11 @@ export function DashboardNotices({ held = false }: { held?: boolean }) {
                 {t('notices.counter', { at: at + 1, total })}
               </span>
               {last ? (
-                <button onClick={close} className={primary}>
+                <button onClick={close} className={onward}>
                   {t('notices.done')}
                 </button>
               ) : (
-                <button onClick={() => go(at + 1)} className={primary}>
+                <button onClick={() => go(at + 1)} className={onward}>
                   {t('notices.next')}
                 </button>
               )}
