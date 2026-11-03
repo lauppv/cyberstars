@@ -53,7 +53,7 @@
         "Every line after it, to the end of the program",
         "Only the first line under it",
         "The indented lines under it",
-        "Every line under it, indented or not"
+        "Every line under it, up to the next empty line"
       ],
       "answer": 2
     },
@@ -186,7 +186,7 @@
       "text": "In the Energy Collector mission, why does the loop use `range(1, cells + 1)`?",
       "options": [
         "So it starts from cell 2, skipping cell 1",
-        "So it skips the first cell and starts with the second",
+        "So it runs one extra time, past the last cell",
         "So the last cell is counted too",
         "Because range() can't take a variable on its own"
       ],

@@ -148,7 +148,7 @@
         "All the ones whose condition is true, from top to bottom",
         "Two: the if's block and then the else's block",
         "Exactly one: the first true one, or the else",
-        "The if and every elif whose condition is true"
+        "Exactly one: the last one whose condition is true"
       ],
       "answer": 2
     },

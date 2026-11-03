@@ -137,7 +137,7 @@
       "options": [
         "Îl inversează: True devine False, iar False devine True",
         "Îl face False, orice ar fi fost",
-        "Îl inversează doar când e True, iar un False rămâne cum e",
+        "Îl inversează doar când e False, iar un True rămâne cum e",
         "Verifică dacă variabila există"
       ],
       "answer": 0

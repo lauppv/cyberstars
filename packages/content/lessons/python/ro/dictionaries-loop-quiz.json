@@ -198,7 +198,7 @@
       "options": [
         "for c in jucator:\n    print(c)",
         "for c in jucator:\n    print(jucator[c])",
-        "for c in jucator.keys():\n    print(c)",
+        "for c in jucator.items():\n    print(c)",
         "for v in jucator.values():\n    print(jucator[v])"
       ],
       "answer": 1

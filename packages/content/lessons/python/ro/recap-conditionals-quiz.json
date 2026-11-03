@@ -148,7 +148,7 @@
         "Toate cele a căror condiție e adevărată, de sus în jos",
         "Două: blocul if-ului și apoi blocul else-ului",
         "Exact una: prima adevărată, sau else-ul",
-        "If-ul și fiecare elif a cărui condiție e adevărată"
+        "Exact una: ultima a cărei condiție e adevărată"
       ],
       "answer": 2
     },

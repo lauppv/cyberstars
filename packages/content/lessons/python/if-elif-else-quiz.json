@@ -270,7 +270,7 @@
         "It stops with an error: an elif needs an if before it",
         "It prints Positive, since 3 > 0 is true",
         "It prints nothing, since there is no if to start the chain",
-        "It skips the elif and prints nothing, with no error"
+        "It stops with an error: an elif needs an else after it"
       ],
       "answer": 0
     },

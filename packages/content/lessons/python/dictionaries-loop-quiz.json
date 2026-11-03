@@ -198,7 +198,7 @@
       "options": [
         "for k in player:\n    print(k)",
         "for k in player:\n    print(player[k])",
-        "for k in player.keys():\n    print(k)",
+        "for k in player.items():\n    print(k)",
         "for v in player.values():\n    print(player[v])"
       ],
       "answer": 1

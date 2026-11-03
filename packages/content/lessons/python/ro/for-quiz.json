@@ -53,7 +53,7 @@
         "Toate liniile de după ea, până la sfârșitul programului",
         "Doar prima linie indentată de sub ea",
         "Liniile indentate de sub ea",
-        "Toate liniile de sub ea, indentate sau nu"
+        "Liniile de sub ea, până la prima linie goală"
       ],
       "answer": 2
     },
@@ -181,7 +181,7 @@
       "text": "În misiunea Colectorul de Energie, de ce folosește bucla `range(1, celule + 1)`?",
       "options": [
         "Ca să pornească de la celula 2, sărind peste 1",
-        "Ca să sară peste prima celulă și să înceapă cu a doua",
+        "Ca să mai ruleze o dată, după ultima celulă",
         "Ca să fie numărată și ultima celulă",
         "Pentru că range() nu poate primi singur o variabilă"
       ],

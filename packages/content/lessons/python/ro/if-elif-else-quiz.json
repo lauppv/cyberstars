@@ -265,7 +265,7 @@
         "Se oprește cu o eroare: un elif are nevoie de un if înaintea lui",
         "Afișează Pozitiv, pentru că 3 > 0 e adevărat",
         "Nu afișează nimic, pentru că nu există un if care să înceapă lanțul",
-        "Sare peste elif și nu afișează nimic, fără nicio eroare"
+        "Se oprește cu o eroare: un elif are nevoie de un else după el"
       ],
       "answer": 0
     },

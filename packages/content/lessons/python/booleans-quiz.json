@@ -137,7 +137,7 @@
       "options": [
         "It flips it: True becomes False and False becomes True",
         "It makes it False, whatever it was",
-        "It flips it only when it is True, and leaves a False as it is",
+        "It flips it only when it is False, and leaves a True as it is",
         "It checks that the variable exists"
       ],
       "answer": 0
