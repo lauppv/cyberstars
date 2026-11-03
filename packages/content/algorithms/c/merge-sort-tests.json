@@ -1,6 +1,7 @@
 {
   "comparator": "trimmed",
   "structure": {
+    "requires": [{ "kind": "recursion" }],
     "forbids": [{ "kind": "call", "name": "qsort" }]
   },
   "cases": [

@@ -1,5 +1,13 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "struct" },
+      { "kind": "pointer" },
+      { "kind": "deref" },
+      { "kind": "call", "name": "malloc" }
+    ]
+  },
   "cases": [
     {
       "visible": true,

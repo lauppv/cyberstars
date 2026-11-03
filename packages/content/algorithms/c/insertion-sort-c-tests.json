@@ -1,6 +1,7 @@
 {
   "comparator": "trimmed",
   "structure": {
+    "requires": [{ "kind": "nested_loop" }],
     "forbids": [{ "kind": "call", "name": "qsort" }]
   },
   "cases": [

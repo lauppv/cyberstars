@@ -1,7 +1,11 @@
 {
   "comparator": "unordered",
   "structure": {
-    "requires": [{ "kind": "call", "name": "fork" }]
+    "requires": [
+      { "kind": "call", "name": "fork" },
+      { "kind": "call", "name": "wait" },
+      { "kind": "loop" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "4\n" },
