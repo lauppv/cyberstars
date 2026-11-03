@@ -1,5 +1,22 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "Nod" },
+      { "kind": "class", "name": "ListaInlantuita" },
+      { "kind": "variable", "name": "valoare" },
+      { "kind": "variable", "name": "urmator" },
+      { "kind": "function", "name": "adauga" },
+      { "kind": "function", "name": "elimina" },
+      { "kind": "function", "name": "afiseaza" },
+      { "kind": "call", "name": "Nod" }
+    ],
+    "forbids": [
+      { "kind": "call", "name": "ArrayList" },
+      { "kind": "call", "name": "ArrayDeque" },
+      { "kind": "call", "name": "Vector" }
+    ]
+  },
   "cases": [
     {
       "visible": true,

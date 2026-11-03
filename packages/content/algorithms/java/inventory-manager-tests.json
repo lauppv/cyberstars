@@ -1,5 +1,13 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "call", "name": "HashMap" }],
+    "forbids": [
+      { "kind": "call", "name": "TreeMap" },
+      { "kind": "call", "name": "LinkedHashMap" },
+      { "kind": "call", "name": "Hashtable" }
+    ]
+  },
   "cases": [
     {
       "visible": true,
