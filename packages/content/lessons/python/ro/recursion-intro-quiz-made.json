@@ -26,37 +26,6 @@
       "answer": 0
     },
     {
-      "id": "ri-countdown-e3797b",
-      "text": "Ce afișează?",
-      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(2)",
-      "options": ["2\n1\nStart!", "Start!\n1\n2", "2\nStart!", "1\n0\nStart!"],
-      "answer": 0
-    },
-    {
-      "id": "ri-countdown-f63f4d",
-      "text": "Ce afișează?",
-      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(5)",
-      "options": [
-        "5\n4\n3\n2\n1\nStart!",
-        "Start!\n1\n2\n3\n4\n5",
-        "5\n4\n3\n2\nStart!",
-        "4\n3\n2\n1\n0\nStart!"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ri-countdown-7dc437",
-      "text": "Ce afișează?",
-      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(6)",
-      "options": [
-        "6\n5\n4\n3\n2\n1\nStart!",
-        "Start!\n1\n2\n3\n4\n5\n6",
-        "6\n5\n4\n3\n2\nStart!",
-        "5\n4\n3\n2\n1\n0\nStart!"
-      ],
-      "answer": 0
-    },
-    {
       "id": "ri-factorial-67f157",
       "text": "Ce afișează?",
       "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(3))",
@@ -71,27 +40,6 @@
       "answer": 0
     },
     {
-      "id": "ri-factorial-f63f4d",
-      "text": "Ce afișează?",
-      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))",
-      "options": ["120", "15", "60", "0"],
-      "answer": 0
-    },
-    {
-      "id": "ri-factorial-7dc437",
-      "text": "Ce afișează?",
-      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(6))",
-      "options": ["720", "21", "360", "0"],
-      "answer": 0
-    },
-    {
-      "id": "ri-factorial-9a2b7a",
-      "text": "Ce afișează?",
-      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(7))",
-      "options": ["5040", "28", "2520", "0"],
-      "answer": 0
-    },
-    {
       "id": "ri-sum-list-a78a94",
       "text": "Ce afișează?",
       "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([1, 2, 3, 4, 5]))",
@@ -103,27 +51,6 @@
       "text": "Ce afișează?",
       "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([4, 7, 9]))",
       "options": ["20", "21", "4", "0"],
-      "answer": 0
-    },
-    {
-      "id": "ri-sum-list-766f8d",
-      "text": "Ce afișează?",
-      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([10, 20, 30, 40]))",
-      "options": ["100", "101", "10", "0"],
-      "answer": 0
-    },
-    {
-      "id": "ri-sum-list-8da3ba",
-      "text": "Ce afișează?",
-      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([6, 1, 8]))",
-      "options": ["15", "16", "6", "0"],
-      "answer": 0
-    },
-    {
-      "id": "ri-sum-list-9b7323",
-      "text": "Ce afișează?",
-      "code": "def suma_lista(numere):\n    if len(numere) == 0:\n        return 0\n    return numere[0] + suma_lista(numere[1:])\n\nprint(suma_lista([5, 15, 2, 3]))",
-      "options": ["25", "26", "5", "0"],
       "answer": 0
     },
     {
@@ -163,30 +90,6 @@
       "answer": 0
     },
     {
-      "id": "ri-power-7bccf7",
-      "text": "Ce afișează?",
-      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nbaza = 5\nfor exponent in range(3):\n    print(f\"{baza}^{exponent} = {putere(baza, exponent)}\")",
-      "options": [
-        "5^0 = 1\n5^1 = 5\n5^2 = 25",
-        "5^0 = 5\n5^1 = 25\n5^2 = 125",
-        "5^0 = 1\n5^1 = 5\n5^2 = 10",
-        "5^1 = 5\n5^2 = 25"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ri-power-163102",
-      "text": "Ce afișează?",
-      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nbaza = 4\nfor exponent in range(4):\n    print(f\"{baza}^{exponent} = {putere(baza, exponent)}\")",
-      "options": [
-        "4^0 = 1\n4^1 = 4\n4^2 = 16\n4^3 = 64",
-        "4^0 = 4\n4^1 = 16\n4^2 = 64\n4^3 = 256",
-        "4^0 = 1\n4^1 = 4\n4^2 = 8\n4^3 = 12",
-        "4^1 = 4\n4^2 = 16\n4^3 = 64"
-      ],
-      "answer": 0
-    },
-    {
       "id": "ri-unwind-05672d",
       "text": "Ce afișează?",
       "code": "def arata(n):\n    if n == 0:\n        print(\"caz de baza\")\n        return\n    print(\"intra\", n)\n    arata(n - 1)\n    print(\"iese\", n)\n\narata(1)",
@@ -219,18 +122,6 @@
         "intra 3\nintra 2\nintra 1\ncaz de baza",
         "caz de baza\nintra 1\niese 1\nintra 2\niese 2\nintra 3\niese 3",
         "intra 3\nintra 2\ncaz de baza\niese 2\niese 3"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ri-unwind-1951a8",
-      "text": "Ce afișează?",
-      "code": "def arata(n):\n    if n == 0:\n        print(\"caz de baza\")\n        return\n    print(\"intra\", n)\n    arata(n - 1)\n    print(\"iese\", n)\n\narata(4)",
-      "options": [
-        "intra 4\nintra 3\nintra 2\nintra 1\ncaz de baza\niese 1\niese 2\niese 3\niese 4",
-        "intra 4\nintra 3\nintra 2\nintra 1\ncaz de baza",
-        "caz de baza\nintra 1\niese 1\nintra 2\niese 2\nintra 3\niese 3\nintra 4\niese 4",
-        "intra 4\nintra 3\nintra 2\ncaz de baza\niese 2\niese 3\niese 4"
       ],
       "answer": 0
     },
@@ -288,18 +179,6 @@
         "factorial(4)\nfactorial(3)\nfactorial(2)\n12",
         "factorial(4)\n12",
         "factorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "ri-calls-f63f4d",
-      "text": "Ce afișează?",
-      "code": "def factorial(n):\n    print(f\"factorial({n})\")\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))",
-      "options": [
-        "factorial(5)\nfactorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)\n120",
-        "factorial(5)\nfactorial(4)\nfactorial(3)\nfactorial(2)\n60",
-        "factorial(5)\n20",
-        "factorial(5)\nfactorial(4)\nfactorial(3)\nfactorial(2)\nfactorial(1)"
       ],
       "answer": 0
     },
@@ -704,6 +583,100 @@
         "return numere[0] + suma_lista(numere[1:])",
         "print(numere, suma_lista(numere))"
       ],
+      "answer": 0
+    },
+    {
+      "id": "ri-holds-power-f44b84",
+      "text": "Ce conține `celule` la final?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\ncelule = putere(2, 5)",
+      "options": ["32", "0", "11", "16"],
+      "answer": 0
+    },
+    {
+      "id": "ri-holds-power-a922e5",
+      "text": "Ce conține `cuburi` la final?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\ncuburi = putere(3, 3)",
+      "options": ["27", "0", "10", "9"],
+      "answer": 0
+    },
+    {
+      "id": "ri-holds-power-43be2e",
+      "text": "Ce conține `arie` la final?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\narie = putere(5, 2)",
+      "options": ["25", "0", "11", "5"],
+      "answer": 0
+    },
+    {
+      "id": "ri-holds-power-599e07",
+      "text": "Ce conține `mare` la final?",
+      "code": "def putere(baza, exponent):\n    if exponent == 0:\n        return 1\n    return baza * putere(baza, exponent - 1)\n\nmare = putere(10, 3)",
+      "options": ["1000", "0", "31", "100"],
+      "answer": 0
+    },
+    {
+      "id": "ri-holds-sum-c731e4",
+      "text": "Ce conține `total` la final?",
+      "code": "def aduna(n):\n    if n == 0:\n        return 0\n    return n + aduna(n - 1)\n\ntotal = aduna(4)",
+      "options": ["10", "11", "0", "6"],
+      "answer": 0
+    },
+    {
+      "id": "ri-holds-sum-b4b69a",
+      "text": "Ce conține `total` la final?",
+      "code": "def aduna(n):\n    if n == 0:\n        return 0\n    return n + aduna(n - 1)\n\ntotal = aduna(6)",
+      "options": ["21", "22", "0", "12"],
+      "answer": 0
+    },
+    {
+      "id": "ri-holds-sum-962c66",
+      "text": "Ce conține `total` la final?",
+      "code": "def aduna(n):\n    if n == 0:\n        return 0\n    return n + aduna(n - 1)\n\ntotal = aduna(8)",
+      "options": ["36", "37", "0", "20"],
+      "answer": 0
+    },
+    {
+      "id": "ri-holds-sum-cd3366",
+      "text": "Ce conține `total` la final?",
+      "code": "def aduna(n):\n    if n == 0:\n        return 0\n    return n + aduna(n - 1)\n\ntotal = aduna(10)",
+      "options": ["55", "56", "0", "30"],
+      "answer": 0
+    },
+    {
+      "id": "ri-input-countdown-e77329",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(int(input()))",
+      "output": "3\n2\n1\nStart!",
+      "options": ["3", "4", "2", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-input-countdown-c95793",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(int(input()))",
+      "output": "5\n4\n3\n2\n1\nStart!",
+      "options": ["5", "6", "4", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-input-countdown-a686ff",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def numaratoare_inversa(n):\n    if n == 0:\n        print(\"Start!\")\n        return\n    print(n)\n    numaratoare_inversa(n - 1)\n\nnumaratoare_inversa(int(input()))",
+      "output": "2\n1\nStart!",
+      "options": ["2", "3", "1", "0"],
+      "answer": 0
+    },
+    {
+      "id": "ri-error-text-93d2f2",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(\"5\"))",
+      "options": ["TypeError", "ValueError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "ri-error-text-ff45c7",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(\"3\"))",
+      "options": ["TypeError", "ValueError", "NameError", "IndexError"],
       "answer": 0
     }
   ]

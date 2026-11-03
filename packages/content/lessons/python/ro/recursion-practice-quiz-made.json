@@ -9,39 +9,6 @@
       "answer": 0
     },
     {
-      "id": "rp-fib-row-8d9cc0",
-      "text": "Ce afișează?",
-      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(7):\n    print(fib(i), end=\" \")",
-      "options": ["0 1 1 2 3 5 8", "1 1 2 3 5 8 13", "0 1 2 4 8 16 32", "1 1 2 3 5 8"],
-      "answer": 0
-    },
-    {
-      "id": "rp-fib-row-6385ac",
-      "text": "Ce afișează?",
-      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(8):\n    print(fib(i), end=\" \")",
-      "options": ["0 1 1 2 3 5 8 13", "1 1 2 3 5 8 13 21", "0 1 2 4 8 16 32 64", "1 1 2 3 5 8 13"],
-      "answer": 0
-    },
-    {
-      "id": "rp-fib-row-27a86e",
-      "text": "Ce afișează?",
-      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(9):\n    print(fib(i), end=\" \")",
-      "options": [
-        "0 1 1 2 3 5 8 13 21",
-        "1 1 2 3 5 8 13 21 34",
-        "0 1 2 4 8 16 32 64 128",
-        "1 1 2 3 5 8 13 21"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rp-fib-row-af4693",
-      "text": "Ce afișează?",
-      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nfor i in range(4):\n    print(fib(i), end=\" \")",
-      "options": ["0 1 1 2", "1 1 2 3", "0 1 2 4", "1 1 2"],
-      "answer": 0
-    },
-    {
       "id": "rp-fib-f63f4d",
       "text": "Ce afișează?",
       "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(5))",
@@ -49,66 +16,10 @@
       "answer": 0
     },
     {
-      "id": "rp-fib-9a2b7a",
-      "text": "Ce afișează?",
-      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(7))",
-      "options": ["13", "21", "7", "33"],
-      "answer": 0
-    },
-    {
-      "id": "rp-fib-799f78",
-      "text": "Ce afișează?",
-      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(8))",
-      "options": ["21", "34", "8", "54"],
-      "answer": 0
-    },
-    {
-      "id": "rp-fib-6fcf6e",
-      "text": "Ce afișează?",
-      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(9))",
-      "options": ["34", "55", "9", "88"],
-      "answer": 0
-    },
-    {
-      "id": "rp-fib-0a08a0",
-      "text": "Ce afișează?",
-      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(11))",
-      "options": ["89", "144", "11", "232"],
-      "answer": 0
-    },
-    {
       "id": "rp-reverse-e87b69",
       "text": "Ce afișează?",
       "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"Tommy\"))",
       "options": ["ymmoT", "Tommy", "ymT", "mmoT"],
-      "answer": 0
-    },
-    {
-      "id": "rp-reverse-112aa5",
-      "text": "Ce afișează?",
-      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"orbita\"))",
-      "options": ["atibro", "orbita", "tbo", "tibro"],
-      "answer": 0
-    },
-    {
-      "id": "rp-reverse-e4ee51",
-      "text": "Ce afișează?",
-      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"Lance\"))",
-      "options": ["ecnaL", "Lance", "enL", "cnaL"],
-      "answer": 0
-    },
-    {
-      "id": "rp-reverse-66b27b",
-      "text": "Ce afișează?",
-      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"cometa\"))",
-      "options": ["atemoc", "cometa", "tmc", "temoc"],
-      "answer": 0
-    },
-    {
-      "id": "rp-reverse-01dff3",
-      "text": "Ce afișează?",
-      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\nprint(inverseaza_sir(\"Vice\"))",
-      "options": ["eciV", "Vice", "cV", "ciV"],
       "answer": 0
     },
     {
@@ -123,27 +34,6 @@
       "text": "Ce afișează?",
       "code": "def numara_caractere(text, tinta):\n    if len(text) == 0:\n        return 0\n    primul = 1 if text[0] == tinta else 0\n    return primul + numara_caractere(text[1:], tinta)\n\nprint(numara_caractere(\"mississippi\", \"s\"))",
       "options": ["4", "7", "0", "5"],
-      "answer": 0
-    },
-    {
-      "id": "rp-count-7778f4",
-      "text": "Ce afișează?",
-      "code": "def numara_caractere(text, tinta):\n    if len(text) == 0:\n        return 0\n    primul = 1 if text[0] == tinta else 0\n    return primul + numara_caractere(text[1:], tinta)\n\nprint(numara_caractere(\"racheta\", \"a\"))",
-      "options": ["2", "5", "0", "3"],
-      "answer": 0
-    },
-    {
-      "id": "rp-count-94b79c",
-      "text": "Ce afișează?",
-      "code": "def numara_caractere(text, tinta):\n    if len(text) == 0:\n        return 0\n    primul = 1 if text[0] == tinta else 0\n    return primul + numara_caractere(text[1:], tinta)\n\nprint(numara_caractere(\"galaxie\", \"a\"))",
-      "options": ["2", "5", "0", "3"],
-      "answer": 0
-    },
-    {
-      "id": "rp-count-54a079",
-      "text": "Ce afișează?",
-      "code": "def numara_caractere(text, tinta):\n    if len(text) == 0:\n        return 0\n    primul = 1 if text[0] == tinta else 0\n    return primul + numara_caractere(text[1:], tinta)\n\nprint(numara_caractere(\"cometele\", \"e\"))",
-      "options": ["3", "5", "0", "4"],
       "answer": 0
     },
     {
@@ -166,32 +56,6 @@
       "answer": 0
     },
     {
-      "id": "rp-flatten-17587f",
-      "text": "Ce afișează?",
-      "code": "def aplatizeaza(lista):\n    rezultat = []\n    for element in lista:\n        if type(element) == list:\n            rezultat = rezultat + aplatizeaza(element)\n        else:\n            rezultat.append(element)\n    return rezultat\n\nprint(aplatizeaza([5, [6, [7, [8]]]]))",
-      "options": ["[5, 6, 7, 8]", "[5, [6, [7, [8]]]]", "[8]", "[5, 5, 6, 6, 7, 7, 8, 8]"],
-      "answer": 0
-    },
-    {
-      "id": "rp-flatten-5a62f9",
-      "text": "Ce afișează?",
-      "code": "def aplatizeaza(lista):\n    rezultat = []\n    for element in lista:\n        if type(element) == list:\n            rezultat = rezultat + aplatizeaza(element)\n        else:\n            rezultat.append(element)\n    return rezultat\n\nprint(aplatizeaza([[10], 20, [30, 40]]))",
-      "options": [
-        "[10, 20, 30, 40]",
-        "[[10], 20, [30, 40]]",
-        "[30, 40]",
-        "[10, 10, 20, 20, 30, 30, 40, 40]"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rp-flatten-ece78c",
-      "text": "Ce afișează?",
-      "code": "def aplatizeaza(lista):\n    rezultat = []\n    for element in lista:\n        if type(element) == list:\n            rezultat = rezultat + aplatizeaza(element)\n        else:\n            rezultat.append(element)\n    return rezultat\n\nprint(aplatizeaza([1, [], [2, [3, []]]]))",
-      "options": ["[1, 2, 3]", "[1, [], [2, [3, []]]]", "[]", "[1, 1, 2, 2, 3, 3]"],
-      "answer": 0
-    },
-    {
       "id": "rp-digits-aeab7f",
       "text": "Ce afișează?",
       "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nfor cod in [1234, 56]:\n    print(f\"{cod}: {suma_cifre(cod)}\")",
@@ -203,27 +67,6 @@
       "text": "Ce afișează?",
       "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nfor cod in [999, 7]:\n    print(f\"{cod}: {suma_cifre(cod)}\")",
       "options": ["999: 27\n7: 7", "999: 18\n7: 0", "999: 108\n7: 7", "999: 729\n7: 7"],
-      "answer": 0
-    },
-    {
-      "id": "rp-digits-2d58c7",
-      "text": "Ce afișează?",
-      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nfor cod in [4070, 88]:\n    print(f\"{cod}: {suma_cifre(cod)}\")",
-      "options": ["4070: 11\n88: 16", "4070: 7\n88: 8", "4070: 407\n88: 16", "4070: 0\n88: 64"],
-      "answer": 0
-    },
-    {
-      "id": "rp-digits-dae719",
-      "text": "Ce afișează?",
-      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nfor cod in [305, 61]:\n    print(f\"{cod}: {suma_cifre(cod)}\")",
-      "options": ["305: 8\n61: 7", "305: 5\n61: 1", "305: 35\n61: 7", "305: 0\n61: 6"],
-      "answer": 0
-    },
-    {
-      "id": "rp-digits-b755dc",
-      "text": "Ce afișează?",
-      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nfor cod in [2024, 13]:\n    print(f\"{cod}: {suma_cifre(cod)}\")",
-      "options": ["2024: 8\n13: 4", "2024: 6\n13: 3", "2024: 206\n13: 4", "2024: 0\n13: 3"],
       "answer": 0
     },
     {
@@ -251,42 +94,6 @@
       "answer": 0
     },
     {
-      "id": "rp-checksums-23d523",
-      "text": "Ce afișează?",
-      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\ncoduri = [1000, 46, 333]\ncea_mai_mare = 0\nfor cod in coduri:\n    suma = suma_cifre(cod)\n    if suma > cea_mai_mare:\n        cea_mai_mare = suma\nprint(f\"Cea mai mare suma de control: {cea_mai_mare}\")",
-      "options": [
-        "Cea mai mare suma de control: 10",
-        "Cea mai mare suma de control: 0",
-        "Cea mai mare suma de control: 1000",
-        "Cea mai mare suma de control: 1\nCea mai mare suma de control: 10\nCea mai mare suma de control: 10"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rp-checksums-d94170",
-      "text": "Ce afișează?",
-      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\ncoduri = [19, 91, 60]\ncea_mai_mare = 0\nfor cod in coduri:\n    suma = suma_cifre(cod)\n    if suma > cea_mai_mare:\n        cea_mai_mare = suma\nprint(f\"Cea mai mare suma de control: {cea_mai_mare}\")",
-      "options": [
-        "Cea mai mare suma de control: 10",
-        "Cea mai mare suma de control: 0",
-        "Cea mai mare suma de control: 19",
-        "Cea mai mare suma de control: 10\nCea mai mare suma de control: 10\nCea mai mare suma de control: 10"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rp-checksums-3f8251",
-      "text": "Ce afișează?",
-      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\ncoduri = [250, 8, 1111]\ncea_mai_mare = 0\nfor cod in coduri:\n    suma = suma_cifre(cod)\n    if suma > cea_mai_mare:\n        cea_mai_mare = suma\nprint(f\"Cea mai mare suma de control: {cea_mai_mare}\")",
-      "options": [
-        "Cea mai mare suma de control: 8",
-        "Cea mai mare suma de control: 0",
-        "Cea mai mare suma de control: 250",
-        "Cea mai mare suma de control: 7\nCea mai mare suma de control: 8\nCea mai mare suma de control: 8"
-      ],
-      "answer": 0
-    },
-    {
       "id": "rp-count-digits-439feb",
       "text": "Ce afișează?",
       "code": "def numara_cifre(n):\n    if n < 10:\n        return 1\n    return 1 + numara_cifre(n // 10)\n\nfor n in [7, 42, 4070]:\n    print(n, numara_cifre(n))",
@@ -307,18 +114,6 @@
         "100 2\n9 0\n12345 4",
         "100 2\n9 1\n12345 3",
         "100 1\n9 1\n12345 15"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "rp-count-digits-d376c9",
-      "text": "Ce afișează?",
-      "code": "def numara_cifre(n):\n    if n < 10:\n        return 1\n    return 1 + numara_cifre(n // 10)\n\nfor n in [88, 1000, 5]:\n    print(n, numara_cifre(n))",
-      "options": [
-        "88 2\n1000 4\n5 1",
-        "88 1\n1000 3\n5 0",
-        "88 2\n1000 3\n5 1",
-        "88 9\n1000 1\n5 1"
       ],
       "answer": 0
     },
@@ -655,6 +450,186 @@
         "if n < 10:",
         "def suma_cifre(n):"
       ],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-fib-7fb21d",
+      "text": "Ce conține `termen` la final?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\ntermen = fib(5)",
+      "options": ["5", "0", "16", "8"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-fib-5918c4",
+      "text": "Ce conține `termen` la final?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\ntermen = fib(6)",
+      "options": ["8", "0", "32", "13"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-fib-7d034a",
+      "text": "Ce conține `termen` la final?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\ntermen = fib(7)",
+      "options": ["13", "0", "64", "21"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-fib-927de3",
+      "text": "Ce conține `termen` la final?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\ntermen = fib(4)",
+      "options": ["3", "0", "8", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-fib-f720a1",
+      "text": "Ce conține `termen` la final?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\ntermen = fib(8)",
+      "options": ["21", "0", "128", "34"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-digits-5987cb",
+      "text": "Ce conține `control` la final?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\ncontrol = suma_cifre(482)",
+      "options": ["14", "56", "10", "64"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-digits-30630c",
+      "text": "Ce conține `control` la final?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\ncontrol = suma_cifre(1234)",
+      "options": ["10", "137", "9", "24"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-digits-95a9eb",
+      "text": "Ce conține `control` la final?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\ncontrol = suma_cifre(905)",
+      "options": ["14", "108", "5", "0"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-digits-93d11f",
+      "text": "Ce conține `control` la final?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\ncontrol = suma_cifre(76)",
+      "options": ["13", "14", "6", "42"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-digits-131465",
+      "text": "Ce conține `control` la final?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\ncontrol = suma_cifre(3333)",
+      "options": ["12", "372", "9", "81"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-reverse-e7c8a4",
+      "text": "Ce conține `invers` la final?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\ninvers = inverseaza_sir(\"Tommy\")",
+      "options": ["'ymmoT'", "'Tommy'", "'y'", "'mmoT'"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-reverse-25c55b",
+      "text": "Ce conține `invers` la final?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\ninvers = inverseaza_sir(\"Marte\")",
+      "options": ["'etraM'", "'Marte'", "'e'", "'traM'"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-reverse-98960d",
+      "text": "Ce conține `invers` la final?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\ninvers = inverseaza_sir(\"racheta\")",
+      "options": ["'atehcar'", "'racheta'", "'a'", "'tehcar'"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-reverse-90a0e2",
+      "text": "Ce conține `invers` la final?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\ninvers = inverseaza_sir(\"Vice\")",
+      "options": ["'eciV'", "'Vice'", "'e'", "'ciV'"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-holds-reverse-7afd69",
+      "text": "Ce conține `invers` la final?",
+      "code": "def inverseaza_sir(s):\n    if len(s) <= 1:\n        return s\n    return inverseaza_sir(s[1:]) + s[0]\n\ninvers = inverseaza_sir(\"orbita\")",
+      "options": ["'atibro'", "'orbita'", "'a'", "'tibro'"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-input-fib-081393",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(int(input())))",
+      "output": "8",
+      "options": ["6", "8", "7", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-input-fib-d1d312",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(int(input())))",
+      "output": "13",
+      "options": ["7", "13", "8", "6"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-input-fib-135b3e",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(int(input())))",
+      "output": "3",
+      "options": ["4", "3", "5", "6"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-input-fib-caaa77",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(int(input())))",
+      "output": "21",
+      "options": ["8", "21", "9", "7"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-input-fib-757fc6",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(int(input())))",
+      "output": "2",
+      "options": ["3", "2", "4", "5"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-error-base-260a87",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def total(items):\n    return items[0] + total(items[1:])\n\nprint(total([1, 2, 3]))",
+      "options": ["IndexError", "TypeError", "KeyError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-error-base-88fdc1",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def aduna_tot(items):\n    return items[0] + aduna_tot(items[1:])\n\nprint(aduna_tot([5, 5]))",
+      "options": ["IndexError", "TypeError", "KeyError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-error-base-88ef03",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def lipeste_tot(items):\n    return items[0] + lipeste_tot(items[1:])\n\nprint(lipeste_tot([\"a\", \"b\"]))",
+      "options": ["IndexError", "TypeError", "KeyError", "ValueError"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-error-text-7c769e",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nprint(suma_cifre(\"482\"))",
+      "options": ["TypeError", "ValueError", "NameError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "rpr-error-text-998ebd",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def suma_cifre(n):\n    if n < 10:\n        return n\n    return n % 10 + suma_cifre(n // 10)\n\nprint(suma_cifre(\"1234\"))",
+      "options": ["TypeError", "ValueError", "NameError", "IndexError"],
       "answer": 0
     }
   ]

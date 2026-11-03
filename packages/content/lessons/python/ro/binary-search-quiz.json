@@ -269,18 +269,6 @@
         {
           "nums": "1, 4, 9, 16, 25, 36, 49",
           "t": 4
-        },
-        {
-          "nums": "3, 6, 9, 12, 15, 18",
-          "t": 18
-        },
-        {
-          "nums": "10, 20, 30, 40, 50, 60, 70, 80",
-          "t": 70
-        },
-        {
-          "nums": "5, 7, 11, 13, 17, 19, 23",
-          "t": 11
         }
       ],
       "mistakes": [
@@ -312,16 +300,6 @@
           "nums": "10, 20, 30, 40, 50",
           "a": 10,
           "b": 35
-        },
-        {
-          "nums": "5, 15, 25, 35, 45, 55, 65",
-          "a": 50,
-          "b": 65
-        },
-        {
-          "nums": "1, 2, 4, 8, 16, 32",
-          "a": 8,
-          "b": 3
         }
       ],
       "mistakes": [
@@ -348,14 +326,6 @@
         {
           "nums": "4, 8, 15, 16, 23, 42",
           "t": 42
-        },
-        {
-          "nums": "10, 20, 30, 40, 50, 60, 70",
-          "t": 50
-        },
-        {
-          "nums": "1, 2, 3, 4, 5, 6, 7, 8, 9",
-          "t": 4
         }
       ],
       "mistakes": [
@@ -385,14 +355,6 @@
         {
           "nums": "5, 10, 15, 20, 25, 30, 35",
           "t": 35
-        },
-        {
-          "nums": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15",
-          "t": 15
-        },
-        {
-          "nums": "3, 6, 9, 12, 15",
-          "t": 6
         }
       ],
       "mistakes": [
@@ -419,14 +381,6 @@
         {
           "nums": "10, 20, 30, 40, 50, 60",
           "t": 20
-        },
-        {
-          "nums": "7, 14, 21, 28, 35, 42, 49",
-          "t": 49
-        },
-        {
-          "nums": "1, 4, 9, 16, 25",
-          "t": 16
         }
       ],
       "mistakes": [
@@ -457,14 +411,6 @@
         {
           "xs": "10, 20, 30, 40, 50, 60, 70",
           "q": "70, 15, 10, 45"
-        },
-        {
-          "xs": "1, 5, 9, 13, 17",
-          "q": "6, 13"
-        },
-        {
-          "xs": "4, 8, 12, 16, 20, 24, 28, 32",
-          "q": "28, 4, 30"
         }
       ],
       "mistakes": [
@@ -739,6 +685,117 @@
         }
       ],
       "bug": ["            return mijloc", "            return numere[mijloc]"]
+    },
+    {
+      "id": "bin-holds-index",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\n{{v}} = cautare_binara([{{nums}}], {{t}})",
+      "values": [
+        {
+          "v": "pozitie",
+          "nums": "1, 3, 5, 7, 9, 11, 13",
+          "t": 13
+        },
+        {
+          "v": "pozitie",
+          "nums": "2, 4, 6, 8, 10",
+          "t": 10
+        },
+        {
+          "v": "pozitie",
+          "nums": "10, 20, 30, 40, 50, 60, 70",
+          "t": 10
+        },
+        {
+          "v": "pozitie",
+          "nums": "5, 15, 25, 35",
+          "t": 35
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["return mijloc\n", "return numere[mijloc]\n"],
+        ["while stanga <= dreapta", "while stanga < dreapta"],
+        ["return mijloc\n", "return mijloc + 1\n"]
+      ]
+    },
+    {
+      "id": "bin-input-target",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "def cautare_binara(numere, tinta):\n    stanga = 0\n    dreapta = len(numere) - 1\n    while stanga <= dreapta:\n        mijloc = (stanga + dreapta) // 2\n        if numere[mijloc] == tinta:\n            return mijloc\n        elif numere[mijloc] < tinta:\n            stanga = mijloc + 1\n        else:\n            dreapta = mijloc - 1\n    return -1\n\nprint(cautare_binara([{{nums}}], int(input())))",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7, 9, 11, 13",
+          "a": 9,
+          "w1": 4,
+          "w2": 11,
+          "w3": 8
+        },
+        {
+          "nums": "2, 4, 6, 8, 10",
+          "a": 4,
+          "w1": 1,
+          "w2": 6,
+          "w3": 2
+        },
+        {
+          "nums": "10, 20, 30, 40, 50",
+          "a": 10,
+          "w1": 0,
+          "w2": 20,
+          "w3": 1
+        },
+        {
+          "nums": "5, 15, 25, 35",
+          "a": 35,
+          "w1": 3,
+          "w2": 25,
+          "w3": 36
+        },
+        {
+          "nums": "3, 6, 9, 12, 15, 18",
+          "a": 9,
+          "w1": 2,
+          "w2": 12,
+          "w3": 6
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{w1}}", "{{w2}}", "{{w3}}"]
+    },
+    {
+      "id": "bin-error-float",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "numere = [{{nums}}]\nstanga = 0\ndreapta = len(numere) - 1\nmijloc = (stanga + dreapta) / 2\nprint(numere[mijloc])",
+      "values": [
+        {
+          "nums": "1, 3, 5, 7"
+        },
+        {
+          "nums": "2, 4, 6, 8, 10, 12"
+        }
+      ],
+      "wrong": ["IndexError", "ValueError", "KeyError"]
+    },
+    {
+      "id": "bin-error-right",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "numere = [{{nums}}]\ntinta = {{t}}\nstanga = 0\ndreapta = len(numere)\nwhile stanga <= dreapta:\n    mijloc = (stanga + dreapta) // 2\n    if numere[mijloc] == tinta:\n        print(mijloc)\n        break\n    elif numere[mijloc] < tinta:\n        stanga = mijloc + 1\n    else:\n        dreapta = mijloc - 1",
+      "values": [
+        {
+          "nums": "1, 3, 5",
+          "t": 9
+        },
+        {
+          "nums": "10, 20, 30, 40",
+          "t": 50
+        }
+      ],
+      "wrong": ["KeyError", "TypeError", "ValueError"]
     }
   ]
 }
