@@ -42,18 +42,139 @@ def has_call(tree, name):
     return False
 
 
-def bound_names(tree):
-    # Every name the student's own code binds: variables, loop targets,
-    # parameters, functions and classes.
-    names = set()
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Name) and isinstance(node.ctx, (ast.Store, ast.Del)):
-            names.add(node.id)
-        elif isinstance(node, ast.arg):
-            names.add(node.arg)
-        elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
-            names.add(node.name)
-    return names
+FUNCTION_SCOPES = (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)
+COMPREHENSIONS = (ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp)
+BLOCK_STATEMENTS = tuple(
+    getattr(ast, kind)
+    for kind in ("If", "For", "AsyncFor", "While", "Try", "TryStar", "With", "AsyncWith", "Match")
+    if hasattr(ast, kind)
+)
+
+
+class Scope:
+    # One of Python's name scopes: the module, a class body, a function, a
+    # lambda or a comprehension. bound maps each name it binds to the
+    # (line, block) of every binding, block being the innermost if, loop, try
+    # or with statement around it in this scope (None outside all of them);
+    # loads are the (name, line, blocks around it) it reads.
+    def __init__(self, parent, is_class=False):
+        self.parent = parent
+        self.is_class = is_class
+        # The module and a class body run once, top to bottom, and a name
+        # they don't bind (yet) falls through to the builtin.
+        self.ordered = parent is None or is_class
+        self.bound = {}
+        self.deleted = set()
+        self.loads = []
+
+    def bind(self, name, line, blocks):
+        self.bound.setdefault(name, []).append((line, blocks[-1] if blocks else None))
+
+    def sees(self, name, line=None, blocks=()):
+        # A function's name is its own anywhere in it: read before it is
+        # bound, it is an error, never the builtin. The module and a class
+        # body see only a binding that has surely run by then: on an earlier
+        # line, outside any if or loop, or inside one that also holds the
+        # read; a del or an except alias can leave the name unbound again.
+        if not self.ordered:
+            return name in self.bound
+        if name in self.deleted:
+            return False
+        return any(
+            (line is None or at < line) and (block is None or block in blocks)
+            for at, block in self.bound.get(name, [])
+        )
+
+
+def scopes(tree):
+    # Walks the program the way Python resolves names: a function's
+    # parameters and assignments are its own, a class body's are not seen by
+    # its methods, defaults and decorators run in the scope around them.
+    root = Scope(None)
+    found = [root]
+    stack = [(tree, root, ())]
+
+    def inner(scope, is_class=False):
+        new = Scope(scope, is_class)
+        found.append(new)
+        return new
+
+    def bind_args(args, scope, line):
+        for arg in args.posonlyargs + args.args + args.kwonlyargs + [args.vararg, args.kwarg]:
+            if arg:
+                scope.bind(arg.arg, line, ())
+
+    def defaults(args):
+        return args.defaults + [d for d in args.kw_defaults if d]
+
+    while stack:
+        node, scope, blocks = stack.pop()
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and node is not tree:
+            scope.bind(node.name, node.lineno, blocks)
+            outside = list(node.decorator_list)
+            if isinstance(node, ast.ClassDef):
+                outside += node.bases + node.keywords
+                body = inner(scope, is_class=True)
+            else:
+                outside += defaults(node.args)
+                body = inner(scope)
+                bind_args(node.args, body, node.lineno)
+            stack += [(child, scope, blocks) for child in outside]
+            stack += [(child, body, ()) for child in node.body]
+            continue
+        if isinstance(node, ast.Lambda):
+            body = inner(scope)
+            bind_args(node.args, body, node.lineno)
+            stack += [(d, scope, blocks) for d in defaults(node.args)]
+            stack.append((node.body, body, ()))
+            continue
+        if isinstance(node, COMPREHENSIONS):
+            # The first iterable is read outside; everything else inside.
+            body = inner(scope)
+            stack.append((node.generators[0].iter, scope, blocks))
+            for i, gen in enumerate(node.generators):
+                stack.append((gen.target, body, ()))
+                if i:
+                    stack.append((gen.iter, body, ()))
+                stack += [(cond, body, ()) for cond in gen.ifs]
+            parts = [node.key, node.value] if isinstance(node, ast.DictComp) else [node.elt]
+            stack += [(part, body, ()) for part in parts]
+            continue
+        if isinstance(node, ast.Name):
+            if isinstance(node.ctx, ast.Load):
+                scope.loads.append((node.id, node.lineno, blocks))
+            elif isinstance(node.ctx, ast.Del):
+                scope.deleted.add(node.id)
+            else:
+                scope.bind(node.id, node.lineno, blocks)
+        elif isinstance(node, ast.ExceptHandler) and node.name:
+            # Unbound again once the handler ends.
+            if scope.ordered:
+                scope.deleted.add(node.name)
+            else:
+                scope.bind(node.name, node.lineno, blocks)
+        elif isinstance(node, ast.alias):
+            scope.bind((node.asname or node.name).split(".")[0], node.lineno, blocks)
+        if isinstance(node, FUNCTION_SCOPES) and node is tree:
+            bind_args(node.args, scope, node.lineno)
+        if isinstance(node, BLOCK_STATEMENTS):
+            blocks = blocks + (node,)
+        stack += [(child, scope, blocks) for child in ast.iter_child_nodes(node)]
+    return found
+
+
+def reads_own_name(scope, name, line, blocks):
+    # Whether the name read here is one the student bound: in this scope,
+    # or in a function around it or the module (never a class body), where
+    # it has surely been bound whenever the read runs.
+    if scope.sees(name, line, blocks):
+        return True
+    outer = scope.parent
+    while outer:
+        if not outer.is_class and outer.sees(name):
+            return True
+        outer = outer.parent
+    return False
 
 
 def refers_to(tree, name):
@@ -61,18 +182,18 @@ def refers_to(tree, name):
     # under another name is called all the same: f = sorted, key=max,
     # heapq.nsmallest without the call, from heapq import nsmallest as pick.
     # A name the student binds themselves (max = nums[0]) is their own
-    # variable, not the builtin.
+    # variable where it can be seen, not the builtin.
     if has_call(tree, name):
         return True
-    own = name in bound_names(tree)
     for node in ast.walk(tree):
-        if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load):
-            if node.id == name and not own:
+        if isinstance(node, ast.Attribute) and node.attr == name:
+            return True
+        if isinstance(node, ast.alias) and node.name.split(".")[-1] == name:
+            return True
+    for scope in scopes(tree):
+        for read, line, blocks in scope.loads:
+            if read == name and not reads_own_name(scope, name, line, blocks):
                 return True
-        elif isinstance(node, ast.Attribute) and node.attr == name:
-            return True
-        elif isinstance(node, ast.alias) and node.name.split(".")[-1] == name:
-            return True
     return False
 
 

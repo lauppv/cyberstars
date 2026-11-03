@@ -283,6 +283,42 @@ describe.skipIf(!has('python3'))('python runner', () => {
     });
   });
 
+  it("takes a name as the student's own only where their binding has surely run", () => {
+    const max = { kind: 'call', name: 'max' };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { forbids: [max] }, cases: [] },
+        [],
+      )[0];
+    const passes = { syntaxError: null, structureFailures: [] };
+    for (const code of [
+      'def best(nums):\n    for x in nums:\n        if x > max:\n            max = x\n    return max\n',
+      'max = 0\nfor x in [1, 2]:\n    max = x if x > max else max\nprint(max)\n',
+      'for max in [1, 2]:\n    print(max)\n',
+      'def show(max):\n    print(max)\nshow(1)\n',
+      'max = 0\ndef show():\n    print(max)\nshow()\n',
+    ]) {
+      expect(header(code)).toEqual(passes);
+    }
+    for (const code of [
+      // A parameter of another function, a binding after the read or one that may never run.
+      'def show(max):\n    print(max)\npick = max\nprint(pick([1, 2]))\n',
+      'pick = max\nmax = 0\nprint(pick([1, 2]))\n',
+      'if False:\n    max = 0\npick = max\nprint(pick([1, 2]))\n',
+      'max = 0\ndel max\npick = max\nprint(pick([1, 2]))\n',
+      'try:\n    pass\nexcept Exception as max:\n    pass\npick = max\nprint(pick([1, 2]))\n',
+      // A class body is not seen from its methods.
+      'class Box:\n    max = 0\n    def get(self):\n        return max\nprint(Box().get()([1, 2]))\n',
+      'pick = [max for max in [1]] and max\nprint(pick([1, 2]))\n',
+    ]) {
+      expect(header(code)).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'forbid', rule: max }],
+      });
+    }
+  });
+
   it('finds a forbidden constant inside a string too', () => {
     const rule = { kind: 'int_literal', values: [58, 64] };
     const header = (userCode: string) =>
