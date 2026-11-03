@@ -1,10 +1,10 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Why does the lesson keep a question in a dictionary?",
       "options": [
-        "A dictionary is the only thing that can hold strings",
+        "A dictionary is the only thing in Python that can hold strings",
         "So the questions come out in a random order",
         "Each part gets a name: its text, its options and its answer",
         "So Python checks the answer by itself"
@@ -12,13 +12,13 @@
       "answer": 2
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "How does the lesson store a whole quiz?",
       "options": [
-        "A list of dictionaries, one dictionary per question",
+        "A list of dictionaries",
         "A dictionary of lists, one list per answer",
         "One long string with every question in it",
-        "A set of answers"
+        "A set holding the right answers"
       ],
       "answer": 0
     },
@@ -49,13 +49,13 @@
       "answer": 2
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Why does the game call `.upper()` on the player's answer?",
       "options": [
         "So b counts as B: the right answers are stored as capital letters",
         "So the answer turns into a number",
         "To take the spaces out of the answer",
-        "To print the answer in capitals"
+        "To print the player's answer back in capitals, so it looks the same"
       ],
       "answer": 0
     },
@@ -67,22 +67,22 @@
       "answer": 3
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "What does `enumerate(quiz)` give the loop at each pass?",
       "options": [
-        "Only the question",
-        "The position of the question and the question itself",
-        "Only the position",
-        "The question's right answer"
+        "Only the question, without its position",
+        "The position and the question",
+        "Only the position, without the question",
+        "The question's right answer, as a letter"
       ],
       "answer": 1
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "Why does the game print `{i + 1}` and not `{i}` before each question?",
       "options": [
         "`i` is the score so far",
-        "`i + 1` is the number of questions left",
+        "`i + 1` is the number of questions the player still has left to answer",
         "`enumerate` counts from 0, and people number questions from 1",
         "Without `+ 1` it stops with an error"
       ],
@@ -133,16 +133,21 @@
       "answer": 0
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "Which pattern does `score += 1` on every right answer use?",
-      "options": ["The flag pattern", "Binary search", "Recursion", "The counter pattern"],
+      "options": [
+        "The flag pattern",
+        "Binary search",
+        "The accumulator pattern",
+        "The counter pattern"
+      ],
       "answer": 3
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "Why does `grade_quiz` loop over `range(len(questions))`?",
       "options": [
-        "A list of dictionaries can't be looped over directly",
+        "A list of dictionaries can't be looped over directly with a for loop",
         "The same index `i` gives a question and the player's answer to it",
         "`range` sorts the questions first",
         "So the loop skips the first question"
@@ -162,10 +167,10 @@
       "answer": 2
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "Why does the mission pass with `percentage >= 50` and not `percentage > 50`?",
       "options": [
-        "So a candidate with exactly 50% still passes",
+        "So exactly 50% still passes",
         "They give the same result for every score",
         "`>` doesn't work on numbers from `round`",
         "So a candidate with 49% passes too"
@@ -185,21 +190,21 @@
       "answer": 3
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "Where does the lesson print You scored, with the final score?",
       "options": [
         "Inside the loop, after each question",
         "After the loop, once every question has been asked",
-        "Before the loop, so the player knows the total",
+        "Before the loop, so the player knows the total from the start",
         "Inside the `else`, after a wrong answer"
       ],
       "answer": 1
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "What does the `\\n` at the start of `print(f\"\\nQuestion {i + 1}: ...\")` do?",
       "options": [
-        "It prints a backslash and an n",
+        "It prints a backslash and the letter n before the word Question",
         "It ends the program",
         "It prints an empty line first, so each question stands apart",
         "It numbers the question"
@@ -268,10 +273,10 @@
       "answer": 1
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "In a list of question dictionaries, what does `len(quiz)` count?",
       "options": [
-        "Every key of every dictionary",
+        "Every key of every dictionary in the list",
         "The letters of every question",
         "The questions, one per dictionary",
         "The right answers"

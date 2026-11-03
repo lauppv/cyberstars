@@ -1,10 +1,10 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "De ce ține lecția o întrebare într-un dicționar?",
       "options": [
-        "Un dicționar e singurul care poate ține texte",
+        "Un dicționar e singurul lucru din Python care poate ține mai multe texte",
         "Ca întrebările să iasă într-o ordine aleatorie",
         "Fiecare parte primește un nume: textul, opțiunile și răspunsul ei",
         "Ca Python să verifice singur răspunsul"
@@ -12,13 +12,13 @@
       "answer": 2
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Cum ține lecția un quiz întreg?",
       "options": [
-        "O listă de dicționare, câte un dicționar pentru fiecare întrebare",
+        "O listă de dicționare",
         "Un dicționar de liste, câte o listă pentru fiecare răspuns",
         "Un singur text lung cu toate întrebările",
-        "O mulțime de răspunsuri"
+        "O mulțime cu răspunsurile corecte"
       ],
       "answer": 0
     },
@@ -49,13 +49,13 @@
       "answer": 2
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "De ce cheamă jocul `.upper()` pe răspunsul jucătorului?",
       "options": [
         "Ca b să conteze ca B: răspunsurile corecte sunt păstrate cu litere mari",
         "Ca răspunsul să devină un număr",
         "Ca să scoată spațiile din răspuns",
-        "Ca să afișeze răspunsul cu majuscule"
+        "Ca să afișeze din nou răspunsul jucătorului cu majuscule, ca să arate la fel"
       ],
       "answer": 0
     },
@@ -67,22 +67,22 @@
       "answer": 3
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Ce îi dă `enumerate(quiz)` buclei la fiecare trecere?",
       "options": [
-        "Doar întrebarea",
-        "Poziția întrebării și întrebarea însăși",
-        "Doar poziția",
+        "Doar întrebarea, fără poziția ei",
+        "Poziția și întrebarea",
+        "Doar poziția, fără întrebare",
         "Răspunsul corect al întrebării"
       ],
       "answer": 1
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "De ce afișează jocul `{i + 1}` și nu `{i}` înainte de fiecare întrebare?",
       "options": [
         "`i` e scorul de până acum",
-        "`i + 1` e numărul de întrebări rămase",
+        "`i + 1` e numărul de întrebări la care jucătorul mai are de răspuns până la final",
         "`enumerate` numără de la 0, iar oamenii numerotează întrebările de la 1",
         "Fără `+ 1` se oprește cu o eroare"
       ],
@@ -133,16 +133,16 @@
       "answer": 0
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "Ce tipar folosește `scor += 1` la fiecare răspuns corect?",
-      "options": ["Tiparul steag", "Căutarea binară", "Recursivitatea", "Tiparul contor"],
+      "options": ["Tiparul steag", "Căutarea binară", "Tiparul acumulator", "Tiparul contor"],
       "answer": 3
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "De ce merge `noteaza_test` cu bucla peste `range(len(intrebari))`?",
       "options": [
-        "Peste o listă de dicționare nu se poate merge direct cu bucla",
+        "Peste o listă de dicționare nu se poate merge direct cu o buclă for",
         "Același index `i` dă o întrebare și răspunsul jucătorului la ea",
         "`range` sortează întâi întrebările",
         "Ca bucla să sară peste prima întrebare"
@@ -162,10 +162,10 @@
       "answer": 2
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "De ce trece misiunea cu `procent >= 50` și nu cu `procent > 50`?",
       "options": [
-        "Ca un candidat cu exact 50% să treacă și el",
+        "Ca exact 50% să treacă și el",
         "Dau același rezultat pentru orice scor",
         "`>` nu merge pe numere date de `round`",
         "Ca să treacă și un candidat cu 49%"
@@ -185,21 +185,21 @@
       "answer": 3
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "Unde afișează lecția Ai obtinut, cu scorul final?",
       "options": [
         "În buclă, după fiecare întrebare",
         "După buclă, după ce toate întrebările au fost puse",
-        "Înainte de buclă, ca jucătorul să știe totalul",
+        "Înainte de buclă, ca jucătorul să știe totalul de la început",
         "În `else`, după un răspuns greșit"
       ],
       "answer": 1
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "Ce face `\\n` de la începutul lui `print(f\"\\nIntrebarea {i + 1}: ...\")`?",
       "options": [
-        "Afișează un backslash și un n",
+        "Afișează un backslash și litera n chiar înaintea cuvântului Intrebarea",
         "Oprește programul",
         "Afișează întâi un rând gol, ca fiecare întrebare să stea separat",
         "Numerotează întrebarea"
@@ -268,10 +268,10 @@
       "answer": 1
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Într-o listă de dicționare cu întrebări, ce numără `len(quiz)`?",
       "options": [
-        "Toate cheile tuturor dicționarelor",
+        "Toate cheile tuturor dicționarelor din listă, adunate",
         "Literele tuturor întrebărilor",
         "Întrebările, câte una pentru fiecare dicționar",
         "Răspunsurile corecte"

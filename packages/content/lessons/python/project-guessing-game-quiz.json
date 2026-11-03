@@ -1,46 +1,46 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What does `import random` do?",
       "options": [
-        "It brings in Python's random module, so the program can use its functions",
-        "It picks a random number",
+        "It loads the random module for the program",
+        "It picks a random number and stores it for later",
         "It makes every line of the program run in a random order",
-        "It reads a number the player types"
+        "It reads a number the player types on the keyboard"
       ],
       "answer": 0
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Which numbers can `random.randint(1, 100)` give?",
       "options": [
         "Any whole number from 1 to 99",
         "Any whole number from 0 to 100",
         "Any whole number from 1 to 100, both included",
-        "Any number with decimals between 1 and 100"
+        "Any number with decimals between 1 and 100, like 42.5"
       ],
       "answer": 2
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "Why does the mission replay a fixed list of guesses instead of using `input()` and `random`?",
       "options": [
         "Because `random` can't be used inside a function",
-        "So the program prints the same every time it runs, and its output can be checked",
+        "So the program prints the same every run, and its output can be checked",
         "Because `input()` only works in a while loop",
-        "Because a list is faster than a random number"
+        "Because a list of guesses is read faster than a random number is picked"
       ],
       "answer": 1
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "Why does the game read a guess with `int(input(...))` and not just `input(...)`?",
       "options": [
         "`input()` gives back a number with decimals",
         "`int()` shows the prompt to the player",
         "`int()` picks the secret number",
-        "`input()` gives back text, and the game compares the guess with a number"
+        "`input()` gives back text"
       ],
       "answer": 3
     },
@@ -80,33 +80,33 @@
       "answer": 1
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Why does the complete version leave with `return` on a correct guess, not `break`?",
       "options": [
-        "`break` doesn't work inside a for loop",
+        "`break` doesn't work inside a for loop, only inside a while loop like this one",
         "`return` prints the secret number",
         "`return` starts a new game",
-        "`return` leaves the whole function, so the Game over line after the loop isn't printed"
+        "`return` leaves the whole function, so the Game over line isn't printed"
       ],
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "What does `except ValueError:` catch in the complete version?",
       "options": [
-        "A guess that isn't a number, like abc, which `int()` can't turn into one",
-        "A guess bigger than 100",
-        "A wrong guess",
-        "Any error anywhere in the program"
+        "A guess that isn't a number, like abc",
+        "A guess bigger than 100, out of the range",
+        "A wrong guess, one that is too low or too high",
+        "Any error that happens anywhere in the program"
       ],
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "Why does the complete version use `continue` after printing That's not a number!?",
       "options": [
         "To end the game",
-        "To give the player the same attempt again",
+        "To give the player the same attempt again, without counting the bad one",
         "To go on to the next attempt without comparing a guess it doesn't have",
         "To print the message a second time"
       ],
@@ -131,11 +131,11 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Why does `attempts` start at 0 before the loop?",
       "options": [
         "No guess has been made yet; the first pass of the loop makes it 1",
-        "Python needs every counter to start at 0",
+        "Python needs every counter variable to start at 0, or it can't add to it",
         "So the first guess counts as attempt 0",
         "So `random` can change it"
       ],
@@ -160,11 +160,11 @@
       "answer": 1
     },
     {
-      "id": "q16",
+      "id": "q16-v2",
       "text": "The secret is between 1 and 100. Which first guess tells the player the most?",
       "options": [
         "1: it starts from the smallest",
-        "100: it starts from the biggest",
+        "100: it starts from the biggest number and then goes down one by one",
         "99: few numbers are bigger",
         "50: whatever the answer, it rules out about half the numbers"
       ],
@@ -242,22 +242,22 @@
       "answer": 1
     },
     {
-      "id": "q24",
+      "id": "q24-v2",
       "text": "What can `random.randint(1, 6)` stand for in a game?",
       "options": [
         "A number from 0 to 5",
         "The number 6 every time",
-        "A number with decimals up to 6",
+        "A number with decimals up to 6, like 3.5",
         "Rolling a die: a number from 1 to 6"
       ],
       "answer": 3
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "What does `check_guess(secret, guess)` need to give its answer?",
       "options": [
-        "Only its two parameters, the secret and the guess",
-        "Only the guess",
+        "Only its two parameters",
+        "Only the guess, nothing else",
         "The whole list of guesses",
         "The number of attempts so far"
       ],
@@ -277,13 +277,13 @@
       "answer": 1
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "Why does the mission print the guess's line before it checks for `\"correct\"`?",
       "options": [
-        "Because `print` has to come first in a loop",
+        "Because `print` always has to be the very first line inside a loop's body",
         "So the loop stops one guess early",
         "It makes no difference where the print goes",
-        "So the correct guess gets its own line too, before Cracked in N attempts!"
+        "So the correct guess gets its own line too, before the Cracked line"
       ],
       "answer": 3
     },
