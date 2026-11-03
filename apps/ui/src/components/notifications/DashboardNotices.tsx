@@ -28,8 +28,9 @@ export function DashboardNotices({ held = false }: { held?: boolean }) {
   // The furthest one shown, so the rest count as not seen yet
   const [reached, setReached] = useState(0);
   const [confirming, setConfirming] = useState(false);
-  // Those this window marked read or shown, so a load still on its way, or one
-  // a live notice starts while the shown mark is, never brings them back
+  // The ones it marked read, so each is marked once, and the ones it closed, so
+  // a load still on its way, or one a live notice starts before the shown mark
+  // lands, never brings them back
   const read = useRef(new Set<number>());
   const closed = useRef(new Set<number>());
 
