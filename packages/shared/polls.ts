@@ -4,6 +4,14 @@ export const POLL_OPTION_MAX_LENGTH = 200;
 export const POLL_MIN_OPTIONS = 2;
 export const POLL_MAX_OPTIONS = 10;
 
+// A poll as a student opens it from the bell: no counts, only whether they voted
+export interface PollDTO {
+  id: number;
+  question: string;
+  options: { id: number; text: string }[];
+  voted: boolean;
+}
+
 export interface PollSentDTO {
   sent: number; // accounts that got it in their bell
 }

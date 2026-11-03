@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createAuthenticatedAgent, userIdFor } from './helpers.js';
+import { agent, createAuthenticatedAgent, userIdFor } from './helpers.js';
 import { prisma } from '../../src/config/db.js';
 
 async function admin() {
@@ -7,6 +7,14 @@ async function admin() {
   const id = await userIdFor(email);
   await prisma.user.update({ where: { id }, data: { role: 'ADMIN' } });
   return a;
+}
+
+// A poll sent by a fresh admin, and its id
+async function sendPoll(options = ['Rust', 'Go', 'SQL']) {
+  const a = await admin();
+  await a.post('/api/admin/polls').send({ question: 'Which course next?', options }).expect(201);
+  const poll = await prisma.poll.findFirstOrThrow({ include: { options: true } });
+  return { admin: a, poll };
 }
 
 describe('Admin polls', () => {
@@ -87,5 +95,92 @@ describe('Admin polls', () => {
       },
       { question: 'First?' },
     ]);
+  });
+});
+
+describe('Voting in a poll', () => {
+  it('keeps guests out', async () => {
+    const { poll } = await sendPoll();
+    await agent().get(`/api/polls/${poll.id}`).expect(401);
+    await agent()
+      .post(`/api/polls/${poll.id}/vote`)
+      .send({ optionIds: [poll.options[0].id] })
+      .expect(401);
+  });
+
+  it('shows a student the question and options, no counts, and whether they voted', async () => {
+    const { poll } = await sendPoll();
+    const { agent: user } = await createAuthenticatedAgent();
+    const { body } = await user.get(`/api/polls/${poll.id}`).expect(200);
+    expect(body).toEqual({
+      id: poll.id,
+      question: 'Which course next?',
+      options: poll.options.map((o) => ({ id: o.id, text: o.text })),
+      voted: false,
+    });
+  });
+
+  it('counts a vote once, with every option picked, and never says who picked what', async () => {
+    const { admin: a, poll } = await sendPoll();
+    const [rust, go, sql] = poll.options;
+    const { agent: ana, email } = await createAuthenticatedAgent();
+    const { agent: bob } = await createAuthenticatedAgent();
+
+    await ana
+      .post(`/api/polls/${poll.id}/vote`)
+      .send({ optionIds: [rust.id, sql.id] })
+      .expect(204);
+    await bob
+      .post(`/api/polls/${poll.id}/vote`)
+      .send({ optionIds: [rust.id] })
+      .expect(204);
+    await ana
+      .post(`/api/polls/${poll.id}/vote`)
+      .send({ optionIds: [go.id] })
+      .expect(409);
+
+    expect((await ana.get(`/api/polls/${poll.id}`).expect(200)).body.voted).toBe(true);
+    const [results] = (await a.get('/api/admin/polls').expect(200)).body;
+    expect(results.voters).toBe(2);
+    expect(results.options.map((o: { votes: number }) => o.votes)).toEqual([2, 0, 1]);
+
+    // Who voted is kept, never next to what they picked
+    const voters = await prisma.pollVoter.findMany();
+    expect(voters).toEqual(
+      expect.arrayContaining([{ pollId: poll.id, userId: await userIdFor(email) }]),
+    );
+    expect(Object.keys(voters[0]).sort()).toEqual(['pollId', 'userId']);
+  });
+
+  it("keeps the counts once a voter's account is gone", async () => {
+    const { admin: a, poll } = await sendPoll();
+    const { agent: user, email } = await createAuthenticatedAgent();
+    await user
+      .post(`/api/polls/${poll.id}/vote`)
+      .send({ optionIds: [poll.options[1].id] })
+      .expect(204);
+    await prisma.user.delete({ where: { id: await userIdFor(email) } });
+
+    const [results] = (await a.get('/api/admin/polls').expect(200)).body;
+    expect(results.voters).toBe(1);
+    expect(results.options[1].votes).toBe(1);
+    expect(await prisma.pollVoter.count()).toBe(0);
+  });
+
+  it("refuses no option, another poll's option and a poll that doesn't exist", async () => {
+    const { poll } = await sendPoll();
+    const { agent: user } = await createAuthenticatedAgent();
+    await user.post(`/api/polls/${poll.id}/vote`).send({ optionIds: [] }).expect(400);
+    await user
+      .post(`/api/polls/${poll.id}/vote`)
+      .send({ optionIds: [poll.options[0].id + 100] })
+      .expect(400);
+    await user
+      .post(`/api/polls/${poll.id + 100}/vote`)
+      .send({ optionIds: [poll.options[0].id] })
+      .expect(404);
+    await user.get(`/api/polls/${poll.id + 100}`).expect(404);
+    await user.get('/api/polls/abc').expect(400);
+    expect(await prisma.pollVoter.count()).toBe(0);
   });
 });

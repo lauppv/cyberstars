@@ -105,6 +105,11 @@ const RO: Record<string, string> = {
   'A poll needs at least 2 options': 'Un sondaj are nevoie de cel puțin 2 variante',
   'A poll takes at most 10 options': 'Un sondaj are cel mult 10 variante',
   'Each poll option only once': 'Fiecare variantă o singură dată',
+  'Invalid poll ID': 'Sondaj invalid',
+  'Poll not found': 'Sondajul nu există',
+  'Pick at least one option': 'Alege cel puțin o variantă',
+  'Pick options from this poll': 'Alege variante din acest sondaj',
+  'You already voted in this poll': 'Ai votat deja la acest sondaj',
   // support
   'Only admins can view all tickets': 'Doar adminii pot vedea toate tichetele',
   'Invalid ticket ID': 'Tichet invalid',

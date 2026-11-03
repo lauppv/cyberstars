@@ -1,6 +1,7 @@
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import * as repo from '../repositories/polls.repository.js';
 import { pushLive } from './notifications.service.js';
-import type { PollResultsDTO } from '@cyberstars/shared/polls';
+import type { PollDTO, PollResultsDTO } from '@cyberstars/shared/polls';
 
 // Polls are rare, so the admin page's history is the last 50, unpaged
 const POLL_HISTORY = 50;
@@ -11,6 +12,28 @@ export async function send(authorId: number, question: string, options: string[]
   const rows = await repo.createPoll(authorId, question, options);
   await pushLive(rows);
   return rows.length;
+}
+
+// The poll as a student opens it, no counts
+export async function get(id: number, userId: number): Promise<PollDTO> {
+  const poll = await repo.findPoll(id, userId);
+  if (!poll) throw new AppError(404, 'Poll not found');
+  return {
+    id: poll.id,
+    question: poll.question,
+    options: poll.options,
+    voted: poll.voted.length > 0,
+  };
+}
+
+export async function vote(id: number, userId: number, optionIds: number[]): Promise<void> {
+  const poll = await repo.findPoll(id, userId);
+  if (!poll) throw new AppError(404, 'Poll not found');
+  const own = new Set(poll.options.map((o) => o.id));
+  if (!optionIds.every((o) => own.has(o))) throw new AppError(400, 'Pick options from this poll');
+  if (!(await repo.vote(id, userId, optionIds))) {
+    throw new AppError(409, 'You already voted in this poll');
+  }
 }
 
 // The latest polls with their counts, newest first, for the admin page

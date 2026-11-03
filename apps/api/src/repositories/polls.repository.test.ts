@@ -2,7 +2,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockPrisma = {
   user: { findMany: vi.fn() },
-  poll: { create: vi.fn(), findMany: vi.fn() },
+  poll: { create: vi.fn(), findUnique: vi.fn(), findMany: vi.fn(), update: vi.fn() },
+  pollOption: { updateMany: vi.fn() },
+  pollVoter: { createMany: vi.fn() },
   notification: { createManyAndReturn: vi.fn() },
   // A callback handed this same client as its transaction
   $transaction: vi.fn((fn: (tx: unknown) => unknown) => fn(mockPrisma)),
@@ -44,6 +46,46 @@ describe('createPoll', () => {
         ],
       }),
     );
+  });
+});
+
+describe('findPoll', () => {
+  it('reads the options in order without their counts, and only this user as a voter', async () => {
+    mockPrisma.poll.findUnique.mockResolvedValue({ id: 4 });
+    expect(await repo.findPoll(4, 10)).toEqual({ id: 4 });
+    expect(mockPrisma.poll.findUnique).toHaveBeenCalledWith({
+      where: { id: 4 },
+      include: {
+        options: { orderBy: { id: 'asc' }, select: { id: true, text: true } },
+        voted: { where: { userId: 10 }, select: { userId: true } },
+      },
+    });
+  });
+});
+
+describe('vote', () => {
+  it('marks the voter and counts each option picked once more, with nothing tying the two', async () => {
+    mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 1 });
+    expect(await repo.vote(4, 10, [7, 9])).toBe(true);
+    expect(mockPrisma.pollVoter.createMany).toHaveBeenCalledWith({
+      data: [{ pollId: 4, userId: 10 }],
+      skipDuplicates: true,
+    });
+    expect(mockPrisma.pollOption.updateMany).toHaveBeenCalledWith({
+      where: { pollId: 4, id: { in: [7, 9] } },
+      data: { votes: { increment: 1 } },
+    });
+    expect(mockPrisma.poll.update).toHaveBeenCalledWith({
+      where: { id: 4 },
+      data: { voters: { increment: 1 } },
+    });
+  });
+
+  it('counts nothing when the user had voted already', async () => {
+    mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 0 });
+    expect(await repo.vote(4, 10, [7])).toBe(false);
+    expect(mockPrisma.pollOption.updateMany).not.toHaveBeenCalled();
+    expect(mockPrisma.poll.update).not.toHaveBeenCalled();
   });
 });
 

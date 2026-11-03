@@ -2,6 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockRepo = {
   createPoll: vi.fn(),
+  findPoll: vi.fn(),
+  vote: vi.fn(),
   listPolls: vi.fn(),
 };
 const mockNotifications = { pushLive: vi.fn() };
@@ -9,7 +11,17 @@ const mockNotifications = { pushLive: vi.fn() };
 vi.mock('../repositories/polls.repository.js', () => mockRepo);
 vi.mock('./notifications.service.js', () => mockNotifications);
 
-const { send, list } = await import('./polls.service.js');
+const { send, get, vote, list } = await import('./polls.service.js');
+
+const stored = {
+  id: 4,
+  question: 'Next?',
+  options: [
+    { id: 7, text: 'Rust' },
+    { id: 8, text: 'Go' },
+  ],
+  voted: [] as { userId: number }[],
+};
 
 beforeEach(() => vi.clearAllMocks());
 
@@ -26,6 +38,60 @@ describe('polls.service send', () => {
     mockRepo.createPoll.mockRejectedValue(new Error('db down'));
     await expect(send(2, 'Next?', ['Rust', 'Go'])).rejects.toThrow('db down');
     expect(mockNotifications.pushLive).not.toHaveBeenCalled();
+  });
+});
+
+describe('polls.service get', () => {
+  it('gives the question and options, and whether this user voted', async () => {
+    mockRepo.findPoll.mockResolvedValue(stored);
+    expect(await get(4, 10)).toEqual({
+      id: 4,
+      question: 'Next?',
+      options: stored.options,
+      voted: false,
+    });
+    expect(mockRepo.findPoll).toHaveBeenCalledWith(4, 10);
+
+    mockRepo.findPoll.mockResolvedValue({ ...stored, voted: [{ userId: 10 }] });
+    expect((await get(4, 10)).voted).toBe(true);
+  });
+
+  it('is a 404 for a poll that does not exist', async () => {
+    mockRepo.findPoll.mockResolvedValue(null);
+    await expect(get(99, 10)).rejects.toMatchObject({ statusCode: 404, message: 'Poll not found' });
+  });
+});
+
+describe('polls.service vote', () => {
+  it('counts the vote', async () => {
+    mockRepo.findPoll.mockResolvedValue(stored);
+    mockRepo.vote.mockResolvedValue(true);
+    await expect(vote(4, 10, [7, 8])).resolves.toBeUndefined();
+    expect(mockRepo.vote).toHaveBeenCalledWith(4, 10, [7, 8]);
+  });
+
+  it('is a 404 for a poll that does not exist', async () => {
+    mockRepo.findPoll.mockResolvedValue(null);
+    await expect(vote(99, 10, [7])).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.vote).not.toHaveBeenCalled();
+  });
+
+  it("refuses an option of another poll's", async () => {
+    mockRepo.findPoll.mockResolvedValue(stored);
+    await expect(vote(4, 10, [7, 12])).rejects.toMatchObject({
+      statusCode: 400,
+      message: 'Pick options from this poll',
+    });
+    expect(mockRepo.vote).not.toHaveBeenCalled();
+  });
+
+  it('is a 409 for a second vote', async () => {
+    mockRepo.findPoll.mockResolvedValue(stored);
+    mockRepo.vote.mockResolvedValue(false);
+    await expect(vote(4, 10, [7])).rejects.toMatchObject({
+      statusCode: 409,
+      message: 'You already voted in this poll',
+    });
   });
 });
 
