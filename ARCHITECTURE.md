@@ -172,6 +172,8 @@ The judge runs the student's code and the reference solution in the owner's cont
 | GET    | `/api/notifications`                   | Yes  | Notifications and the unread count      |
 | POST   | `/api/notifications/read`              | Yes  | Mark read up to an id                   |
 | POST   | `/api/notifications/:id/read`          | Yes  | Mark one read                           |
+| GET    | `/api/notifications/notices`           | Yes  | Announcements and polls still to show   |
+| POST   | `/api/notifications/notices/shown`     | Yes  | The dashboard showed these              |
 | WS     | `/ws/user`                             | Yes  | Pushes new notifications and messages   |
 | GET    | `/api/polls/:id`                       | Yes  | A poll I got, no counts, and if I voted |
 | POST   | `/api/polls/:id/vote`                  | Yes  | Vote once, anonymously                  |
@@ -189,7 +191,7 @@ The judge runs the student's code and the reference solution in the owner's cont
 | POST   | `/api/connections/:id/decline`         | Yes  | Decline (addressee only)                |
 | DELETE | `/api/connections/:id`                 | Yes  | Cancel a request or remove a connection |
 
-The actor never gets their own notification, and repeat replies, reactions or Laniakea recap counts collapse into one unread row. An official announcement from the admin page lands in every bell but the sender's, and opens in a window over the page. So does a poll, where each student ticks one or more options and votes once; who voted is kept only so no one votes twice, never what they picked, and only the admin page shows the counts. A poll can end on an Other where the student writes their own answer, kept without their name; it reaches the admins' bells and lists under the poll on the admin page.
+The actor never gets their own notification, and repeat replies, reactions or Laniakea recap counts collapse into one unread row. An official announcement from the admin page lands in every bell but the sender's, and opens in a window over the page. So does a poll, where each student ticks one or more options and votes once; who voted is kept only so no one votes twice, never what they picked, and only the admin page shows the counts. A poll can end on an Other where the student writes their own answer, kept without their name; it reaches the admins' bells and lists under the poll on the admin page. The dashboard also opens the announcements and polls a student hasn't read in a window, one at a time and oldest first, on arrival there or at once when one comes in while they are on it; closing it marks them all shown, so it never opens with them again, and the bell keeps any skipped.
 
 ### Profile, leaderboard and public profiles
 
