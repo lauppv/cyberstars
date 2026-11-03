@@ -1,23 +1,23 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Când sunt două cuvinte anagrame?",
       "options": [
         "Când se citesc la fel de la coadă la cap",
-        "Când au aceeași lungime",
-        "Când au exact aceleași litere, poate în altă ordine",
-        "Când încep cu aceeași literă"
+        "Când au exact același număr de litere",
+        "Când folosesc exact aceleași litere",
+        "Când încep și se termină cu aceeași literă"
       ],
       "answer": 2
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "De ce ne spune sortarea literelor dacă două cuvinte sunt anagrame?",
       "options": [
         "Cuvintele cu aceleași litere dau aceleași litere sortate",
         "Sortarea scoate literele care diferă",
-        "Sortarea pune cuvintele în ordine alfabetică într-o listă",
+        "Sortarea pune cele două cuvinte în ordine alfabetică într-o listă",
         "Sortarea numără vocalele"
       ],
       "answer": 0
@@ -60,10 +60,10 @@
       "answer": 1
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "În metoda cu frecvențe, când sunt două cuvinte anagrame?",
       "options": [
-        "Când ambele dicționare au același număr de chei",
+        "Când ambele dicționare au același număr de chei, oricare ar fi numerele",
         "Când ambele cuvinte au aceeași primă literă",
         "Când un dicționar e mai mare decât celălalt",
         "Când fiecare literă apare de același număr de ori în ambele"
@@ -112,12 +112,12 @@
       "answer": 3
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "Ce metodă face mai puțini pași pe cuvinte foarte lungi?",
       "options": [
         "Numărarea literelor într-un dicționar de frecvențe",
         "Sortarea literelor",
-        "Amândouă fac mereu exact aceiași pași",
+        "Amândouă fac mereu exact același număr de pași, oricât de lungi",
         "Inversarea ambelor cuvinte"
       ],
       "answer": 0
@@ -137,13 +137,13 @@
       "answer": 1
     },
     {
-      "id": "q15",
+      "id": "q15-v2",
       "text": "Ce dă înapoi `sorted(\"orbita\")`?",
       "options": [
         "Cuvântul cu literele sortate, ca text",
-        "Cuvântul inversat",
-        "Numărul de litere",
-        "O listă cu literele în ordine alfabetică"
+        "Cuvântul inversat, de la capăt",
+        "Numărul de litere din cuvânt",
+        "O listă cu literele sortate"
       ],
       "answer": 3
     },
@@ -155,10 +155,10 @@
       "answer": 0
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "Sunt „mare” și „rame” anagrame?",
       "options": [
-        "Nu, încep cu litere diferite",
+        "Nu, încep cu două litere diferite",
         "Nu, unul dintre ele e palindrom",
         "Da, au aceleași patru litere",
         "Doar dacă le facem întâi cu litere mici"
@@ -220,13 +220,13 @@
       "answer": 1
     },
     {
-      "id": "q23",
+      "id": "q23-v2",
       "text": "După verificarea cu sortare, e orice cuvânt anagrama lui însuși?",
       "options": [
-        "Nu, o anagramă cere altă ordine",
-        "Doar dacă nu are litere repetate",
-        "Doar dacă e palindrom",
-        "Da, aceleași litere sortate dau aceeași listă"
+        "Nu, o anagramă cere altă ordine a literelor",
+        "Doar dacă nu are litere repetate în el",
+        "Doar dacă e și palindrom, pe deasupra",
+        "Da, literele sortate sunt aceleași"
       ],
       "answer": 3
     },
@@ -238,10 +238,10 @@
       "answer": 0
     },
     {
-      "id": "q25",
+      "id": "q25-v2",
       "text": "De ce nu sunt „moon starer” și „astronomer” anagrame pentru `sorted(a) == sorted(b)`?",
       "options": [
-        "Sortarea nu poate lucra cu cuvinte lungi",
+        "Sortarea nu poate lucra cu cuvinte lungi sau propoziții",
         "Au litere diferite",
         "Spațiul contează și el ca un caracter",
         "`sorted()` scoate spațiile"

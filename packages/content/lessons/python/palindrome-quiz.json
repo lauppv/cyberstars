@@ -1,11 +1,11 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What is a palindrome?",
       "options": [
-        "A word with no repeated letters",
-        "A word that reads the same forwards and backwards",
+        "A word with no repeated letters in it",
+        "A word that reads the same both ways",
         "A word whose letters are in alphabetical order",
         "A word with an even number of letters"
       ],
@@ -19,12 +19,12 @@
       "answer": 0
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "How does `word == word[::-1]` check for a palindrome?",
       "options": [
-        "It counts the word's letters",
-        "It checks that the word has no spaces",
-        "It sorts the letters and compares",
+        "It counts the word's letters and compares",
+        "It checks that the word has no spaces in it",
+        "It sorts the letters, then compares them",
         "It compares the word with its reverse"
       ],
       "answer": 3
@@ -75,12 +75,12 @@
       "answer": 0
     },
     {
-      "id": "q8",
+      "id": "q8-v2",
       "text": "Why does `return True` come after the loop, not inside it?",
       "options": [
         "Python doesn't allow `return True` inside a loop",
         "So the function returns before checking anything",
-        "We only know it's a palindrome once every pair has matched",
+        "Only after every pair matched do we know",
         "Because `return False` must be the last line"
       ],
       "answer": 2
@@ -110,11 +110,11 @@
       "answer": 0
     },
     {
-      "id": "q12",
+      "id": "q12-v2",
       "text": "Why can the middle letter of \"racecar\" be left unchecked?",
       "options": [
         "It is always a vowel",
-        "The loop can't reach the middle",
+        "The loop can't reach the middle of an odd word",
         "It is its own mirror, so it always matches",
         "Python skips odd positions"
       ],
@@ -133,7 +133,7 @@
       "answer": 1
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "Why does the sentence check keep only `char.isalpha()` characters?",
       "options": [
         "So the sentence gets shorter for speed",
@@ -199,9 +199,9 @@
       "answer": 2
     },
     {
-      "id": "q21",
+      "id": "q21-v2",
       "text": "How many comparisons does the loop version make for \"hello\" before it returns False?",
-      "options": ["2", "1: h and o already differ", "5", "None, it returns at once"],
+      "options": ["2", "1: h and o already differ", "5", "None, it returns False at once"],
       "answer": 1
     },
     {
@@ -260,13 +260,13 @@
       "answer": 0
     },
     {
-      "id": "q28",
+      "id": "q28-v2",
       "text": "In \"A man a plan a canal Panama\", what makes the plain `text == text[::-1]` say False?",
       "options": [
-        "The sentence is too long",
-        "The letter m appears twice",
+        "The sentence is too long to reverse",
+        "The letter m appears more than once",
         "The spaces and the capital letters",
-        "Sentences can never be palindromes"
+        "A sentence can never be a palindrome at all"
       ],
       "answer": 2
     },
