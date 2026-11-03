@@ -1,10 +1,10 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "In the Mission Control Report, what does `analyze(scores)` give back?",
       "options": [
-        "Nothing: it prints the report itself",
+        "Nothing: it prints the whole report on the screen itself",
         "A list of the passing names",
         "A dictionary with the keys average, top and passing",
         "Only the average score"
@@ -12,43 +12,43 @@
       "answer": 2
     },
     {
-      "id": "q2",
+      "id": "q2-v2",
       "text": "Why does `analyze` return a dictionary instead of printing the report itself?",
       "options": [
         "So the code that calls it can use the three results however it needs",
         "print() can't be used inside a function",
-        "A dictionary prints faster than three lines",
+        "A dictionary is printed faster than three separate print() lines would be",
         "Every function has to return a dictionary"
       ],
       "answer": 0
     },
     {
-      "id": "q3",
+      "id": "q3-v2",
       "text": "In the solution, why can `highest` start at 0 before the loop that finds the top member?",
       "options": [
         "A dictionary's values always start at 0",
         "So the loop runs zero times",
-        "Python needs every number variable to start at 0",
+        "Python needs every variable that holds a number to start at 0 first",
         "Every score is above 0, so the first member's score replaces it"
       ],
       "answer": 3
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "In `total / len(scores)`, what is `len(scores)`?",
       "options": [
         "The sum of all the scores",
         "How many members there are, one per key-value pair",
-        "The length of the longest name",
+        "The length of the longest name among the keys of scores",
         "The highest score"
       ],
       "answer": 1
     },
     {
-      "id": "q5",
+      "id": "q5-v2",
       "text": "After `report = analyze(scores)`, what does `report[\"passing\"]` hold?",
       "options": [
-        "How many members passed",
+        "How many members passed, as a number",
         "A list of the names with 50 or more",
         "True or False",
         "The text \"passing\""
@@ -76,12 +76,12 @@
       "answer": 2
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "What happens on `scores[\"Sonny\"]` when Sonny isn't a key of `scores`?",
       "options": [
         "The program stops with a KeyError",
         "It gives back 0",
-        "Sonny is added with the score 0",
+        "Sonny is added to scores by itself, with the score 0",
         "It gives back None"
       ],
       "answer": 0
@@ -279,11 +279,11 @@
       "answer": 1
     },
     {
-      "id": "q30",
+      "id": "q30-v2",
       "text": "Tommy comes first in `scores`. Why doesn't `scores[0]` give his score?",
       "options": [
         "It does: scores[0] gives Tommy's score",
-        "A dictionary counts from 1, so it's scores[1]",
+        "A dictionary counts its positions from 1, so Tommy's score is found at scores[1]",
         "0 isn't a key of scores: a dictionary is read by its keys, not by position",
         "Only lists can use square brackets"
       ],

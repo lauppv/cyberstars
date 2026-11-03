@@ -1,12 +1,12 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "What is a dictionary?",
       "options": [
-        "Pairs of key: value, where we look a value up by its key",
-        "A list whose elements are kept sorted",
-        "A variable that holds exactly one name",
+        "Pairs of key: value, looked up by key",
+        "A list whose elements are always kept sorted",
+        "A variable that can hold only one name at a time",
         "A list of values we read by their position"
       ],
       "answer": 0
@@ -47,10 +47,10 @@
       "answer": 0
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "phone_book already has Lance. What does `phone_book[\"Lance\"] = \"555-1111\"` do?",
       "options": [
-        "It adds a second Lance, so the old number stays too",
+        "It adds a second Lance, so the old number stays in the dictionary too",
         "It replaces Lance's number: a key is in a dictionary only once",
         "It stops with an error: Lance is already there",
         "It does nothing, the old number stays"
@@ -80,25 +80,25 @@
       "answer": 3
     },
     {
-      "id": "q9",
+      "id": "q9-v2",
       "text": "What does this print?",
       "code": "phone_book = {\"Cortez\": \"555-1234\"}\nprint(\"555-1234\" in phone_book)",
       "options": [
         "False: in looks at the keys, and 555-1234 is a value",
-        "True: 555-1234 is in the dictionary",
+        "True: 555-1234 is in the dictionary, as Cortez's value",
         "Cortez",
         "It stops with a KeyError"
       ],
       "answer": 0
     },
     {
-      "id": "q10",
+      "id": "q10-v2",
       "text": "When is a dictionary a better choice than a list?",
       "options": [
-        "When the values have to stay sorted",
-        "When we look values up by a name, not by their position",
-        "When we have only numbers",
-        "When the values must never change"
+        "When the values have to stay sorted all the time",
+        "When values are looked up by a name",
+        "When all the values we keep are numbers",
+        "When the values must never change once stored"
       ],
       "answer": 1
     },
@@ -133,11 +133,11 @@
       "answer": 0
     },
     {
-      "id": "q14",
+      "id": "q14-v2",
       "text": "What happens when this runs?",
       "code": "phone_book = {\"Cortez\": \"555-1234\", \"Lance\": \"555-5678\"}\nprint(phone_book[0])",
       "options": [
-        "It prints 555-1234, the first number",
+        "It prints 555-1234, the number of the first key in the dictionary",
         "It stops with a KeyError: 0 is not one of its keys",
         "It prints Cortez",
         "It prints nothing"
@@ -178,13 +178,13 @@
       "answer": 0
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "In the mission, `crew = {\"name\": name}`. What is the difference between `\"name\"` and `name`?",
       "options": [
         "None, both are the same text",
-        "\"name\" is the key, a text; name is the variable that holds the value, like Tommy",
+        "\"name\" is the key, a text; name is a variable holding a value",
         "name is the key and \"name\" is the value",
-        "The quotes make the key hidden"
+        "With quotes it's a variable's name; without them, a piece of text"
       ],
       "answer": 1
     },
@@ -195,9 +195,9 @@
       "answer": 2
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "What goes between two key: value pairs?",
-      "options": ["A colon", "A semicolon", "The word and", "A comma"],
+      "options": ["A colon, like after a key", "A semicolon", "The word and", "A comma"],
       "answer": 3
     },
     {
@@ -273,12 +273,12 @@
       "answer": 3
     },
     {
-      "id": "q29",
+      "id": "q29-v2",
       "text": "Is `{\"Tommy\": 90, \"Lance\": 90}` a valid dictionary?",
       "options": [
         "Yes: keys have to differ, but values may repeat",
         "No: two values can't be the same",
-        "Yes, but print() shows only one of them",
+        "Yes, but print() shows only one of them, since they are equal",
         "No: the values have to be text"
       ],
       "answer": 0

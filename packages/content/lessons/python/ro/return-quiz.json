@@ -1,12 +1,12 @@
 {
   "questions": [
     {
-      "id": "q1",
+      "id": "q1-v2",
       "text": "Ce face `return` într-o funcție?",
       "options": [
-        "Dă o valoare înapoi, în locul unde a fost apelată funcția",
-        "Afișează valoarea pe ecran",
-        "Rulează funcția din nou de la început",
+        "Trimite o valoare înapoi la apel",
+        "Afișează valoarea pe ecran pentru utilizator",
+        "Rulează funcția din nou de la început, cu alte valori",
         "Salvează valoarea într-o variabilă numită return"
       ],
       "answer": 0
@@ -31,12 +31,12 @@
       "answer": 2
     },
     {
-      "id": "q4",
+      "id": "q4-v2",
       "text": "Care e diferența dintre o funcție care își afișează rezultatul și una care îl returnează?",
       "options": [
         "Niciuna: fac același lucru",
         "O valoare returnată poate fi păstrată și folosită mai departe, una afișată doar apare pe ecran",
-        "O valoare afișată poate intra într-un calcul, una returnată nu",
+        "O valoare afișată poate fi folosită și după aceea într-un calcul, pe când una returnată nu poate",
         "Doar o funcție care afișează poate primi parametri"
       ],
       "answer": 1
@@ -54,23 +54,23 @@
       "answer": 3
     },
     {
-      "id": "q6",
+      "id": "q6-v2",
       "text": "Ce se întâmplă cu liniile scrise după `return` în același bloc?",
       "options": [
         "Rulează după ce valoarea e dată înapoi",
-        "Rulează doar a doua oară când e apelată funcția",
+        "Rulează doar a doua oară când e apelată funcția, nu și la primul apel",
         "Python se oprește cu o eroare",
         "Nu rulează niciodată: funcția se termină imediat ce ajunge la return"
       ],
       "answer": 3
     },
     {
-      "id": "q7",
+      "id": "q7-v2",
       "text": "Ce dă înapoi o funcție fără `return`?",
       "options": [
-        "0",
-        "Un text gol",
-        "None, felul lui Python de a spune „nimic”",
+        "0, pentru că nu s-a calculat nimic",
+        "Un text gol, pentru că nu s-a scris nimic",
+        "None, adică nimic",
         "Ultima valoare pe care a afișat-o"
       ],
       "answer": 2
@@ -97,13 +97,13 @@
       "answer": 0
     },
     {
-      "id": "q11",
+      "id": "q11-v2",
       "text": "Ce poate da înapoi o funcție cu `return`?",
       "options": [
         "Doar numere",
         "Doar numere și texte",
         "Orice valoare: un număr, un text, un boolean, o listă",
-        "Doar True sau False, ca să le folosim într-un if"
+        "Doar True sau False, ca apelul să poată fi folosit într-un if"
       ],
       "answer": 2
     },
@@ -114,11 +114,11 @@
       "answer": 3
     },
     {
-      "id": "q13",
+      "id": "q13-v2",
       "text": "Unde putem folosi un apel ca `este_adult(20)`, al unei funcții care returnează o valoare?",
       "options": [
-        "Doar singur, pe o linie",
-        "Oriunde merge o valoare: în print(), într-un if, într-un calcul",
+        "Doar singur, pe o linie a lui",
+        "Oriunde merge o valoare",
         "Doar după ce îl punem într-o variabilă",
         "Doar în interiorul altei funcții"
       ],
@@ -149,23 +149,23 @@
       "answer": 3
     },
     {
-      "id": "q17",
+      "id": "q17-v2",
       "text": "În misiunea Atlasul Galaxiilor, ce returnează `cea_mai_lunga_stea`?",
       "options": [
         "Numele stelei cu cele mai multe litere din galaxia pe care o primește",
-        "Câte litere are cea mai lungă stea",
+        "Câte litere are cea mai lungă stea din galaxia pe care o primește, ca număr",
         "Ultima stea din listă",
         "Galaxia cu cele mai multe stele"
       ],
       "answer": 0
     },
     {
-      "id": "q18",
+      "id": "q18-v2",
       "text": "În misiunea Atlasul Galaxiilor, de ce o funcție apelată de cinci ori în loc de cinci copii ale buclei?",
       "options": [
         "Cinci bucle ar afișa stelele în ordinea greșită",
         "O listă poate fi parcursă doar într-o funcție",
-        "Logica e scrisă o dată și refolosită pentru fiecare galaxie, fără să repetăm corpul",
+        "Logica e scrisă o dată și refolosită pentru fiecare galaxie",
         "Funcția trece prin toate cele cinci galaxii la un singur apel"
       ],
       "answer": 2
@@ -177,13 +177,13 @@
       "answer": 3
     },
     {
-      "id": "q20",
+      "id": "q20-v2",
       "text": "În misiunea Atlasul Galaxiilor, `cea_mai_lunga_stea` trece prin galaxie cu o buclă for. Unde merge `return cea_mai_lunga`?",
       "options": [
-        "În buclă, sub if",
-        "După buclă, aliniat cu linia for, ca să ruleze după ce toate stelele au fost verificate",
-        "Înainte de buclă",
-        "În afara funcției, după cele cinci apeluri"
+        "În buclă, sub if, ca să returneze fiecare stea mai lungă",
+        "După buclă, aliniat cu for, ca să ruleze după ce toate stelele au fost verificate",
+        "Înainte de buclă, ca valoarea să fie gata când pornește bucla",
+        "În afara funcției, după cele cinci apeluri, ca toate cinci să folosească aceeași valoare"
       ],
       "answer": 1
     },
