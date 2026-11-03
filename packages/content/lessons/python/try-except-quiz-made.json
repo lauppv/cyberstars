@@ -580,13 +580,6 @@
       "answer": 0
     },
     {
-      "id": "te-error-int-faa5d9",
-      "text": "Which error stops this program?",
-      "code": "text = \"abc\"\nn = int(text)\nprint(n + 1)",
-      "options": ["ValueError", "TypeError", "NameError", "ZeroDivisionError"],
-      "answer": 0
-    },
-    {
       "id": "te-error-int-06c907",
       "text": "Which error stops this program?",
       "code": "fuel = \"12.5\"\nn = int(fuel)\nprint(n + 1)",
@@ -660,6 +653,13 @@
       "id": "te-error-name-a84902",
       "text": "Which error stops this program?",
       "code": "score = 10\nprint(Score + 1)",
+      "options": ["NameError", "ValueError", "TypeError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-name-99994a",
+      "text": "Which error stops this program?",
+      "code": "lives = 3\nprint(live + 1)",
       "options": ["NameError", "ValueError", "TypeError", "KeyError"],
       "answer": 0
     }

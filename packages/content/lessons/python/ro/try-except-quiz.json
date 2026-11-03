@@ -854,10 +854,6 @@
       "code": "{{v}} = \"{{s}}\"\nn = int({{v}})\nprint(n + 1)",
       "values": [
         {
-          "v": "text",
-          "s": "abc"
-        },
-        {
           "v": "combustibil",
           "s": "12.5"
         },
@@ -945,6 +941,11 @@
           "v": "scor",
           "x": 10,
           "w": "Scor"
+        },
+        {
+          "v": "vieti",
+          "x": 3,
+          "w": "viata"
         }
       ],
       "wrong": ["ValueError", "TypeError", "KeyError"]

@@ -585,13 +585,6 @@
       "answer": 0
     },
     {
-      "id": "te-error-int-faa5d9",
-      "text": "Ce eroare oprește acest program?",
-      "code": "text = \"abc\"\nn = int(text)\nprint(n + 1)",
-      "options": ["ValueError", "TypeError", "NameError", "ZeroDivisionError"],
-      "answer": 0
-    },
-    {
       "id": "te-error-int-06c907",
       "text": "Ce eroare oprește acest program?",
       "code": "combustibil = \"12.5\"\nn = int(combustibil)\nprint(n + 1)",
@@ -665,6 +658,13 @@
       "id": "te-error-name-a84902",
       "text": "Ce eroare oprește acest program?",
       "code": "scor = 10\nprint(Scor + 1)",
+      "options": ["NameError", "ValueError", "TypeError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "te-error-name-99994a",
+      "text": "Ce eroare oprește acest program?",
+      "code": "vieti = 3\nprint(viata + 1)",
       "options": ["NameError", "ValueError", "TypeError", "KeyError"],
       "answer": 0
     }
