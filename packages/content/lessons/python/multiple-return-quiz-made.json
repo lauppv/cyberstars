@@ -16,27 +16,6 @@
       "answer": 0
     },
     {
-      "id": "mr-minmax-72d8f8",
-      "text": "What does this print?",
-      "code": "def min_max(numbers):\n    return min(numbers), max(numbers)\n\nlow, high = min_max([3, 3, 6])\nprint(low)\nprint(high)",
-      "options": ["3\n6", "6\n3", "3 6", "(3, 6)"],
-      "answer": 0
-    },
-    {
-      "id": "mr-minmax-d259c3",
-      "text": "What does this print?",
-      "code": "def min_max(numbers):\n    return min(numbers), max(numbers)\n\nlow, high = min_max([40, 15, 22, 18])\nprint(low)\nprint(high)",
-      "options": ["15\n40", "40\n15", "15 40", "(15, 40)"],
-      "answer": 0
-    },
-    {
-      "id": "mr-minmax-65bae8",
-      "text": "What does this print?",
-      "code": "def min_max(numbers):\n    return min(numbers), max(numbers)\n\nlow, high = min_max([9, 14, 2, 11])\nprint(low)\nprint(high)",
-      "options": ["2\n14", "14\n2", "2 14", "(2, 14)"],
-      "answer": 0
-    },
-    {
       "id": "mr-tuple-053388",
       "text": "What does this print?",
       "code": "def sum_and_diff(a, b):\n    return a + b, a - b\n\nresult = sum_and_diff(8, 3)\nprint(result)",
@@ -48,20 +27,6 @@
       "text": "What does this print?",
       "code": "def both(a, b):\n    return a + b, a - b\n\nresult = both(10, 4)\nprint(result)",
       "options": ["(14, 6)", "14", "14 6", "(14, -6)"],
-      "answer": 0
-    },
-    {
-      "id": "mr-tuple-3c26dc",
-      "text": "What does this print?",
-      "code": "def plus_minus(a, b):\n    return a + b, a - b\n\nresult = plus_minus(7, 2)\nprint(result)",
-      "options": ["(9, 5)", "9", "9 5", "(9, -5)"],
-      "answer": 0
-    },
-    {
-      "id": "mr-tuple-fe0aed",
-      "text": "What does this print?",
-      "code": "def calc(a, b):\n    return a + b, a - b\n\nresult = calc(15, 6)\nprint(result)",
-      "options": ["(21, 9)", "21", "21 9", "(21, -9)"],
       "answer": 0
     },
     {
@@ -89,42 +54,6 @@
       "answer": 0
     },
     {
-      "id": "mr-stats-69b20f",
-      "text": "What does this print?",
-      "code": "def stats(scores):\n    total = sum(scores)\n    best = max(scores)\n    return total, best\n\nt, m = stats([7, 7, 3])\nprint(f\"Total: {t}\")\nprint(f\"Best: {m}\")",
-      "options": [
-        "Total: 17\nBest: 7",
-        "Total: 17\nBest: 3",
-        "Total: 7\nBest: 17",
-        "Total: 3\nBest: 7"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "mr-stats-ca2e23",
-      "text": "What does this print?",
-      "code": "def stats(scores):\n    total = sum(scores)\n    best = max(scores)\n    return total, best\n\nt, m = stats([50, 20, 80])\nprint(f\"Total: {t}\")\nprint(f\"Best: {m}\")",
-      "options": [
-        "Total: 150\nBest: 80",
-        "Total: 150\nBest: 20",
-        "Total: 80\nBest: 150",
-        "Total: 3\nBest: 80"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "mr-stats-55214b",
-      "text": "What does this print?",
-      "code": "def stats(scores):\n    total = sum(scores)\n    best = max(scores)\n    return total, best\n\nt, m = stats([11, 6, 1, 8])\nprint(f\"Total: {t}\")\nprint(f\"Best: {m}\")",
-      "options": [
-        "Total: 26\nBest: 11",
-        "Total: 26\nBest: 1",
-        "Total: 11\nBest: 26",
-        "Total: 4\nBest: 11"
-      ],
-      "answer": 0
-    },
-    {
       "id": "mr-avg-bb001b",
       "text": "What does this print?",
       "code": "def report(scores):\n    total = sum(scores)\n    average = total / len(scores)\n    return total, average\n\nt, m = report([80, 90, 70])\nprint(t)\nprint(m)",
@@ -143,13 +72,6 @@
       "text": "What does this print?",
       "code": "def report(scores):\n    total = sum(scores)\n    average = total / len(scores)\n    return total, average\n\nt, m = report([10, 20, 30, 40])\nprint(t)\nprint(m)",
       "options": ["100\n25.0", "100\n25", "25.0\n100", "100 25.0"],
-      "answer": 0
-    },
-    {
-      "id": "mr-avg-253260",
-      "text": "What does this print?",
-      "code": "def report(scores):\n    total = sum(scores)\n    average = total / len(scores)\n    return total, average\n\nt, m = report([5, 8, 11])\nprint(t)\nprint(m)",
-      "options": ["24\n8.0", "24\n8", "8.0\n24", "24 8.0"],
       "answer": 0
     },
     {
@@ -189,30 +111,6 @@
       "answer": 0
     },
     {
-      "id": "mr-split-b29927",
-      "text": "What does this print?",
-      "code": "def split_name(full):\n    parts = full.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Mercedes Cortez\")\nprint(f\"Last: {last}\")\nprint(f\"First: {first}\")",
-      "options": [
-        "Last: Cortez\nFirst: Mercedes",
-        "Last: Mercedes\nFirst: Cortez",
-        "Last: Mercedes\nFirst: Mercedes",
-        "Last: Cortez\nFirst: Mercedes Cortez"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "mr-split-608bae",
-      "text": "What does this print?",
-      "code": "def split_name(full):\n    parts = full.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Ricardo Diaz\")\nprint(f\"Last: {last}\")\nprint(f\"First: {first}\")",
-      "options": [
-        "Last: Diaz\nFirst: Ricardo",
-        "Last: Ricardo\nFirst: Diaz",
-        "Last: Ricardo\nFirst: Ricardo",
-        "Last: Diaz\nFirst: Ricardo Diaz"
-      ],
-      "answer": 0
-    },
-    {
       "id": "mr-parse-5abfdb",
       "text": "What does this print?",
       "code": "def parse(reading):\n    parts = reading.split(\" \")\n    a = int(parts[0])\n    b = int(parts[1])\n    c = int(parts[2])\n    return a + b + c, max(a, b, c), min(a, b, c)\n\ntotal, largest, smallest = parse(\"10 40 25\")\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {smallest}\")",
@@ -245,18 +143,6 @@
         "Total: 75\nLargest: 60\nSmallest: 15",
         "Total: 105\nLargest: 15\nSmallest: 60",
         "Total: 90\nLargest: 60\nSmallest: 15"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "mr-parse-44b424",
-      "text": "What does this print?",
-      "code": "def parse(reading):\n    parts = reading.split(\" \")\n    a = int(parts[0])\n    b = int(parts[1])\n    c = int(parts[2])\n    return a + b + c, max(a, b, c), min(a, b, c)\n\ntotal, largest, smallest = parse(\"8 8 2\")\nprint(f\"Total: {total}\")\nprint(f\"Largest: {largest}\")\nprint(f\"Smallest: {smallest}\")",
-      "options": [
-        "Total: 18\nLargest: 8\nSmallest: 2",
-        "Total: 16\nLargest: 8\nSmallest: 2",
-        "Total: 18\nLargest: 2\nSmallest: 8",
-        "Total: 24\nLargest: 8\nSmallest: 8"
       ],
       "answer": 0
     },
@@ -766,6 +652,93 @@
         "print(f\"Total: {t}\")",
         "print(f\"Average: {m}\")"
       ],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-sum-d19924",
+      "text": "What is in `total` at the end?",
+      "code": "def stats(scores):\n    return sum(scores), max(scores)\n\ntotal, best = stats([4, 9, 2])",
+      "options": ["15", "9", "(15, 9)", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-sum-f563d7",
+      "text": "What is in `total` at the end?",
+      "code": "def stats(scores):\n    return sum(scores), max(scores)\n\ntotal, best = stats([6, 3, 10, 7])",
+      "options": ["26", "10", "(26, 10)", "4"],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-sum-74d106",
+      "text": "What is in `time` at the end?",
+      "code": "def report(laps):\n    return sum(laps), max(laps)\n\ntime, slowest = report([5, 5, 1])",
+      "options": ["11", "5", "(11, 5)", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-split-49768a",
+      "text": "What is in `last` at the end?",
+      "code": "def split_name(full):\n    parts = full.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Phil Cassidy\")",
+      "options": ["'Cassidy'", "'Phil'", "('Phil', 'Cassidy')", "'h'"],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-split-42c60f",
+      "text": "What is in `last` at the end?",
+      "code": "def split_name(full):\n    parts = full.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Sonny Forelli\")",
+      "options": ["'Forelli'", "'Sonny'", "('Sonny', 'Forelli')", "'o'"],
+      "answer": 0
+    },
+    {
+      "id": "mr-holds-split-9c4a87",
+      "text": "What is in `last` at the end?",
+      "code": "def split_name(full):\n    parts = full.split(\" \")\n    return parts[0], parts[1]\n\nfirst, last = split_name(\"Mercedes Cortez\")",
+      "options": ["'Cortez'", "'Mercedes'", "('Mercedes', 'Cortez')", "'e'"],
+      "answer": 0
+    },
+    {
+      "id": "mr-input-grow-7f52be",
+      "text": "What did the user type?",
+      "code": "def grow(x):\n    return x * 2, x * 3\n\ndouble, triple = grow(int(input()))\nprint(triple)",
+      "output": "12",
+      "options": ["4", "12", "6", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mr-input-grow-4d7389",
+      "text": "What did the user type?",
+      "code": "def grow(x):\n    return x * 2, x * 3\n\ndouble, triple = grow(int(input()))\nprint(triple)",
+      "output": "18",
+      "options": ["6", "18", "9", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mr-input-grow-eb166a",
+      "text": "What did the user type?",
+      "code": "def grow(x):\n    return x * 2, x * 3\n\ndouble, triple = grow(int(input()))\nprint(triple)",
+      "output": "24",
+      "options": ["8", "24", "12", "3"],
+      "answer": 0
+    },
+    {
+      "id": "mr-error-none-d84960",
+      "text": "Which error stops this program?",
+      "code": "def min_max(numbers):\n    print(min(numbers), max(numbers))\n\nlow, high = min_max([6, 3, 10])",
+      "options": ["TypeError", "NameError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "mr-error-none-d24d32",
+      "text": "Which error stops this program?",
+      "code": "def min_max(numbers):\n    print(min(numbers), max(numbers))\n\nlow, high = min_max([4, 9, 2, 7])",
+      "options": ["TypeError", "NameError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "mr-error-none-76e951",
+      "text": "Which error stops this program?",
+      "code": "def range_of(scores):\n    print(min(scores), max(scores))\n\nworst, best = range_of([55, 90, 70])",
+      "options": ["TypeError", "NameError", "IndexError", "KeyError"],
       "answer": 0
     }
   ]

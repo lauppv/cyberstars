@@ -336,24 +336,6 @@
           "a": "pizza",
           "b": "supa",
           "c": "mare"
-        },
-        {
-          "f": "vopseste",
-          "p": "masina",
-          "q": "culoare",
-          "d": "rosu",
-          "a": "Infernus",
-          "b": "Sabre",
-          "c": "albastru"
-        },
-        {
-          "f": "aterizeaza",
-          "p": "planeta",
-          "q": "nava",
-          "d": "Nova",
-          "a": "Marte",
-          "b": "Titan",
-          "c": "Orion"
         }
       ],
       "mistakes": [
@@ -394,24 +376,6 @@
           "d": 10,
           "op": "*",
           "a": 4,
-          "b": 3
-        },
-        {
-          "f": "reducere",
-          "p": "pret",
-          "q": "minus",
-          "d": 10,
-          "op": "-",
-          "a": 50,
-          "b": 20
-        },
-        {
-          "f": "urca_nivel",
-          "p": "nivel",
-          "q": "pas",
-          "d": 1,
-          "op": "+",
-          "a": 5,
           "b": 3
         }
       ],
@@ -460,17 +424,6 @@
           "w": "lansata de pe",
           "a": "Orion",
           "x": "real"
-        },
-        {
-          "f": "vopseste",
-          "p": "masina",
-          "q": "culoare",
-          "r": "finisaj",
-          "dq": "rosu",
-          "dr": "mat",
-          "w": "vopsita",
-          "a": "Infernus",
-          "x": "lucios"
         }
       ],
       "mistakes": [
@@ -506,13 +459,6 @@
           "d": 50,
           "v": 120,
           "label": "Viteza"
-        },
-        {
-          "f": "joc_nou",
-          "p": "vieti",
-          "d": 3,
-          "v": 1,
-          "label": "Vieti"
         }
       ],
       "mistakes": [
@@ -1178,6 +1124,84 @@
         }
       ],
       "bug": ["print({{f}}({{b}}, {{c}}))", "print({{f}}({{c}}, {{b}}))"]
+    },
+    {
+      "id": "dp-error-order",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def {{f}}({{p}}={{d}}, {{q}}):\n    print({{p}}, {{q}})\n\n{{f}}({{a}}, {{b}})",
+      "values": [
+        {
+          "f": "porneste",
+          "p": "nivel",
+          "d": 1,
+          "q": "vieti",
+          "a": 2,
+          "b": 3
+        },
+        {
+          "f": "andocheaza",
+          "p": "hangar",
+          "d": "\"A1\"",
+          "q": "nava",
+          "a": "\"B2\"",
+          "b": "\"Nova\""
+        }
+      ],
+      "wrong": ["TypeError", "NameError", "IndexError"]
+    },
+    {
+      "id": "dp-error-missing",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def {{f}}({{p}}, {{q}}={{d}}):\n    return {{p}} + {{q}}\n\nprint({{f}}())",
+      "values": [
+        {
+          "f": "adauga_bonus",
+          "p": "scor",
+          "q": "bonus",
+          "d": 10
+        },
+        {
+          "f": "alimenteaza",
+          "p": "combustibil",
+          "q": "extra",
+          "d": 5
+        }
+      ],
+      "wrong": ["SyntaxError", "NameError", "KeyError"]
+    },
+    {
+      "id": "dp-holds-label",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{d}}\"):\n    return {{p}} + {{q}}\n\n{{v}} = {{f}}(\"{{a}}\")\n{{v}} = {{f}}({{v}}, \"{{b}}\")",
+      "values": [
+        {
+          "f": "eticheta",
+          "p": "text",
+          "q": "semn",
+          "d": "!",
+          "a": "Hai",
+          "b": "?",
+          "v": "panou"
+        },
+        {
+          "f": "marcaj",
+          "p": "nume",
+          "q": "final",
+          "d": ".",
+          "a": "Ana",
+          "b": "!",
+          "v": "nota"
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["{{v}} = {{f}}({{v}}, \"{{b}}\")", "{{f}}({{v}}, \"{{b}}\")"],
+        ["{{v}} = {{f}}({{v}}, \"{{b}}\")", "{{v}} = {{f}}(\"{{a}}\", \"{{b}}\")"],
+        ["return {{p}} + {{q}}", "return {{q}} + {{p}}"]
+      ]
     }
   ]
 }

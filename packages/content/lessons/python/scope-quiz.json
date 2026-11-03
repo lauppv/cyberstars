@@ -312,18 +312,6 @@
           "a": "30",
           "b": "90",
           "f": "refuel"
-        },
-        {
-          "v": "ammo",
-          "a": "12",
-          "b": "6",
-          "f": "reload"
-        },
-        {
-          "v": "score",
-          "a": "0",
-          "b": "10",
-          "f": "bonus"
         }
       ],
       "mistakes": [
@@ -359,13 +347,6 @@
           "b": "75",
           "f": "show_fuel",
           "label": "Fuel"
-        },
-        {
-          "v": "ammo",
-          "a": "8",
-          "b": "3",
-          "f": "show_ammo",
-          "label": "Ammo"
         }
       ],
       "mistakes": [
@@ -404,14 +385,6 @@
           "k": "30",
           "v": "money",
           "a": "100"
-        },
-        {
-          "f": "reload",
-          "p": "clip",
-          "op": "+",
-          "k": "6",
-          "v": "ammo",
-          "a": "4"
         }
       ],
       "mistakes": [
@@ -444,12 +417,6 @@
           "c": "distance",
           "n": "5",
           "k": "2"
-        },
-        {
-          "f": "stack",
-          "c": "boxes",
-          "n": "3",
-          "k": "4"
         }
       ],
       "mistakes": [
@@ -488,22 +455,6 @@
           "k": "2",
           "a": "9",
           "w": "part"
-        },
-        {
-          "f": "lose_life",
-          "v": "lives",
-          "op": "-",
-          "k": "1",
-          "a": "3",
-          "w": "left"
-        },
-        {
-          "f": "triple",
-          "v": "x",
-          "op": "*",
-          "k": "3",
-          "a": "4",
-          "w": "big"
         }
       ],
       "mistakes": [
@@ -991,6 +942,81 @@
         }
       ],
       "bug": ["print({{g}}())", "print({{w}})"]
+    },
+    {
+      "id": "sc-error-local",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def {{f}}():\n    {{v}} = {{a}}\n    print({{v}})\n\n{{f}}()\nprint({{v}})",
+      "values": [
+        {
+          "f": "make_shield",
+          "v": "shield",
+          "a": 100
+        },
+        {
+          "f": "fill_tank",
+          "v": "fuel",
+          "a": 50
+        },
+        {
+          "f": "load",
+          "v": "cargo",
+          "a": 7
+        }
+      ],
+      "wrong": ["IndexError", "KeyError", "TypeError"]
+    },
+    {
+      "id": "sc-error-args",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def {{f}}({{p}}, {{q}}):\n    return {{p}} + {{q}}\n\nprint({{f}}({{a}}))",
+      "values": [
+        {
+          "f": "add",
+          "p": "a",
+          "q": "b",
+          "a": 5
+        },
+        {
+          "f": "total_fuel",
+          "p": "left",
+          "q": "right",
+          "a": 40
+        }
+      ],
+      "wrong": ["NameError", "IndexError", "KeyError"]
+    },
+    {
+      "id": "sc-holds-read",
+      "kind": "holds",
+      "text": "What is in `{{w}}` at the end?",
+      "code": "{{v}} = {{a}}\n\ndef {{f}}():\n    return {{v}} + {{k}}\n\n{{w}} = {{f}}()\n{{v}} = {{b}}",
+      "values": [
+        {
+          "v": "bonus",
+          "a": 5,
+          "f": "score",
+          "k": 10,
+          "w": "total",
+          "b": 50
+        },
+        {
+          "v": "speed",
+          "a": 60,
+          "f": "boosted",
+          "k": 20,
+          "w": "top",
+          "b": 0
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["{{w}} = {{f}}()\n{{v}} = {{b}}", "{{v}} = {{b}}\n{{w}} = {{f}}()"],
+        ["return {{v}} + {{k}}", "print({{v}} + {{k}})"],
+        ["{{w}} = {{f}}()", "{{f}}()\n{{w}} = {{v}}"]
+      ]
     }
   ]
 }

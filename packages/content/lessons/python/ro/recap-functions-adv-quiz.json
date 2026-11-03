@@ -293,12 +293,6 @@
         },
         {
           "readings": "\"7\", \"x\", \"3\", \"?\""
-        },
-        {
-          "readings": "\"40\", \"4O\", \"12\""
-        },
-        {
-          "readings": "\"5\", \"\", \"8\""
         }
       ]
     },
@@ -323,11 +317,6 @@
           "a": "300",
           "b": "3OO",
           "f": 99
-        },
-        {
-          "a": "5",
-          "b": "cinci",
-          "f": 1
         }
       ]
     },
@@ -348,12 +337,6 @@
         },
         {
           "nums": "10, 0, 25, 7, 0"
-        },
-        {
-          "nums": "6, 3, 8, 1"
-        },
-        {
-          "nums": "12, 5, 20"
         }
       ]
     },
@@ -374,9 +357,6 @@
         },
         {
           "nums": "15, 4, 9, 11"
-        },
-        {
-          "nums": "7, 2"
         }
       ]
     },
@@ -400,16 +380,6 @@
           "v": "combustibil",
           "p": "f",
           "a": 35
-        },
-        {
-          "v": "putere",
-          "p": "p",
-          "a": 12
-        },
-        {
-          "v": "viteza",
-          "p": "x",
-          "a": 60
         }
       ]
     },
@@ -437,13 +407,6 @@
           "b": "Nova",
           "c": "A2",
           "e": "B5"
-        },
-        {
-          "d": "C1",
-          "a": "Pioneer",
-          "b": "Atlas",
-          "c": "D8",
-          "e": "A6"
         }
       ]
     },
@@ -801,6 +764,98 @@
           "p": "p",
           "a": 15
         }
+      ]
+    },
+    {
+      "id": "rfa-error-int",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def {{f}}({{p}}):\n    return int({{p}}) * 2\n\nprint({{f}}(\"{{s}}\"))",
+      "values": [
+        {
+          "f": "dublu",
+          "p": "text",
+          "s": "x7"
+        },
+        {
+          "f": "dublu",
+          "p": "text",
+          "s": "4.5"
+        },
+        {
+          "f": "de_doua_ori",
+          "p": "citire",
+          "s": "sapte"
+        }
+      ],
+      "wrong": ["TypeError", "NameError", "ZeroDivisionError"]
+    },
+    {
+      "id": "rfa-error-call",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{d}}\"):\n    print(f\"{{{p}}} {{{q}}}\")\n\n{{f}}(\"{{a}}\", \"{{b}}\", \"{{c}}\")",
+      "values": [
+        {
+          "f": "andocheaza",
+          "p": "nava",
+          "q": "hangar",
+          "d": "A1",
+          "a": "Nova",
+          "b": "B2",
+          "c": "acum"
+        },
+        {
+          "f": "saluta",
+          "p": "nume",
+          "q": "cuvant",
+          "d": "Salut",
+          "a": "Ana",
+          "b": "Hei",
+          "c": "!"
+        },
+        {
+          "f": "raport",
+          "p": "nava",
+          "q": "stare",
+          "d": "ok",
+          "a": "Vega",
+          "b": "intarziata",
+          "c": "rapid"
+        }
+      ],
+      "wrong": ["SyntaxError", "NameError", "ValueError"]
+    },
+    {
+      "id": "rfa-holds-safe",
+      "kind": "holds",
+      "text": "Ce conține `{{g}}` la final?",
+      "code": "{{g}} = []\nfor {{r}} in [{{readings}}]:\n    try:\n        {{g}}.append(int({{r}}))\n    except ValueError:\n        {{g}}.append({{fb}})",
+      "values": [
+        {
+          "g": "bune",
+          "r": "citire",
+          "readings": "\"8\", \"x\", \"3\"",
+          "fb": 0
+        },
+        {
+          "g": "bune",
+          "r": "citire",
+          "readings": "\"12\", \"4.5\", \"7\"",
+          "fb": -1
+        },
+        {
+          "g": "valori",
+          "r": "text",
+          "readings": "\"cinci\", \"2\", \"9\", \"?\"",
+          "fb": 0
+        }
+      ],
+      "variable": "{{g}}",
+      "mistakes": [
+        ["int({{r}}))", "{{r}})"],
+        ["{{g}}.append({{fb}})", "continue"],
+        ["{{g}}.append(int({{r}}))", "{{g}} = [int({{r}})]"]
       ]
     }
   ]

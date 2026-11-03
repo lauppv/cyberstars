@@ -23,20 +23,6 @@
       "answer": 0
     },
     {
-      "id": "sc-local-3ab0ec",
-      "text": "What does this print?",
-      "code": "ammo = 12\n\ndef reload():\n    ammo = 6\n    print(ammo)\n\nreload()\nprint(ammo)",
-      "options": ["6\n12", "12\n6", "12\n12", "6"],
-      "answer": 0
-    },
-    {
-      "id": "sc-local-716233",
-      "text": "What does this print?",
-      "code": "score = 0\n\ndef bonus():\n    score = 10\n    print(score)\n\nbonus()\nprint(score)",
-      "options": ["10\n0", "0\n10", "0\n0", "10"],
-      "answer": 0
-    },
-    {
       "id": "sc-read-a4e001",
       "text": "What does this print?",
       "code": "shield = 100\n\ndef show_shield():\n    print(f\"Shield: {shield}\")\n\nshow_shield()\nshield = 40\nshow_shield()",
@@ -73,13 +59,6 @@
       "answer": 0
     },
     {
-      "id": "sc-read-364ed1",
-      "text": "What does this print?",
-      "code": "ammo = 8\n\ndef show_ammo():\n    print(f\"Ammo: {ammo}\")\n\nshow_ammo()\nammo = 3\nshow_ammo()",
-      "options": ["Ammo: 8\nAmmo: 3", "Ammo: 8\nAmmo: 8", "Ammo: {ammo}\nAmmo: {ammo}", "Ammo: 3"],
-      "answer": 0
-    },
-    {
       "id": "sc-store-c16390",
       "text": "What does this print?",
       "code": "def boost(level):\n    return level * 2\n\nshield = 100\nboost(shield)\nprint(shield)\nshield = boost(shield)\nprint(shield)",
@@ -98,13 +77,6 @@
       "text": "What does this print?",
       "code": "def spend(coins):\n    return coins - 30\n\nmoney = 100\nspend(money)\nprint(money)\nmoney = spend(money)\nprint(money)",
       "options": ["100\n70", "70\n40", "100\n100", "100\n40"],
-      "answer": 0
-    },
-    {
-      "id": "sc-store-562ca7",
-      "text": "What does this print?",
-      "code": "def reload(clip):\n    return clip + 6\n\nammo = 4\nreload(ammo)\nprint(ammo)\nammo = reload(ammo)\nprint(ammo)",
-      "options": ["4\n10", "10\n16", "4\n4", "4\n16"],
       "answer": 0
     },
     {
@@ -129,13 +101,6 @@
       "answer": 0
     },
     {
-      "id": "sc-fresh-19af76",
-      "text": "What does this print?",
-      "code": "def stack():\n    boxes = 0\n    for i in range(3):\n        boxes = boxes + 4\n    return boxes\n\nprint(stack())\nprint(stack())",
-      "options": ["12\n12", "12\nNone\n12\nNone", "4\n4", "16\n16"],
-      "answer": 0
-    },
-    {
       "id": "sc-param-ee99ca",
       "text": "What does this print?",
       "code": "def double(n):\n    n = n * 2\n    return n\n\nn = 3\nresult = double(n)\nprint(n)\nprint(result)",
@@ -154,20 +119,6 @@
       "text": "What does this print?",
       "code": "def half(n):\n    n = n / 2\n    return n\n\nn = 9\npart = half(n)\nprint(n)\nprint(part)",
       "options": ["9\n4.5", "4.5\n9", "9\n9", "9\n2"],
-      "answer": 0
-    },
-    {
-      "id": "sc-param-8e918e",
-      "text": "What does this print?",
-      "code": "def lose_life(lives):\n    lives = lives - 1\n    return lives\n\nlives = 3\nleft = lose_life(lives)\nprint(lives)\nprint(left)",
-      "options": ["3\n2", "2\n3", "3\n3", "3\n1"],
-      "answer": 0
-    },
-    {
-      "id": "sc-param-54216e",
-      "text": "What does this print?",
-      "code": "def triple(x):\n    x = x * 3\n    return x\n\nx = 4\nbig = triple(x)\nprint(x)\nprint(big)",
-      "options": ["4\n12", "12\n4", "4\n4", "4\n3"],
       "answer": 0
     },
     {
@@ -625,6 +576,55 @@
       "code": "def gold_count():\n    gold = 120\n    return gold\n\ndef gem_count():\n    gems = 8\n    return gems\n\nprint(gold_count())\nprint(gems)",
       "output": "120\n8",
       "options": ["print(gems)", "print(gold_count())", "return gems", "gems = 8"],
+      "answer": 0
+    },
+    {
+      "id": "sc-error-local-5de243",
+      "text": "Which error stops this program?",
+      "code": "def make_shield():\n    shield = 100\n    print(shield)\n\nmake_shield()\nprint(shield)",
+      "options": ["NameError", "IndexError", "KeyError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "sc-error-local-2725b7",
+      "text": "Which error stops this program?",
+      "code": "def fill_tank():\n    fuel = 50\n    print(fuel)\n\nfill_tank()\nprint(fuel)",
+      "options": ["NameError", "IndexError", "KeyError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "sc-error-local-510344",
+      "text": "Which error stops this program?",
+      "code": "def load():\n    cargo = 7\n    print(cargo)\n\nload()\nprint(cargo)",
+      "options": ["NameError", "IndexError", "KeyError", "TypeError"],
+      "answer": 0
+    },
+    {
+      "id": "sc-error-args-fb015f",
+      "text": "Which error stops this program?",
+      "code": "def add(a, b):\n    return a + b\n\nprint(add(5))",
+      "options": ["TypeError", "NameError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "sc-error-args-1d1faa",
+      "text": "Which error stops this program?",
+      "code": "def total_fuel(left, right):\n    return left + right\n\nprint(total_fuel(40))",
+      "options": ["TypeError", "NameError", "IndexError", "KeyError"],
+      "answer": 0
+    },
+    {
+      "id": "sc-holds-read-9bed46",
+      "text": "What is in `total` at the end?",
+      "code": "bonus = 5\n\ndef score():\n    return bonus + 10\n\ntotal = score()\nbonus = 50",
+      "options": ["15", "60", "None", "5"],
+      "answer": 0
+    },
+    {
+      "id": "sc-holds-read-4b6056",
+      "text": "What is in `top` at the end?",
+      "code": "speed = 60\n\ndef boosted():\n    return speed + 20\n\ntop = boosted()\nspeed = 0",
+      "options": ["80", "20", "None", "60"],
       "answer": 0
     }
   ]

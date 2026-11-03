@@ -317,18 +317,6 @@
           "a": "30",
           "b": "90",
           "f": "alimenteaza"
-        },
-        {
-          "v": "munitie",
-          "a": "12",
-          "b": "6",
-          "f": "reincarca"
-        },
-        {
-          "v": "scor",
-          "a": "0",
-          "b": "10",
-          "f": "bonus"
         }
       ],
       "mistakes": [
@@ -364,13 +352,6 @@
           "b": "75",
           "f": "arata_combustibil",
           "label": "Combustibil"
-        },
-        {
-          "v": "munitie",
-          "a": "8",
-          "b": "3",
-          "f": "arata_munitie",
-          "label": "Munitie"
         }
       ],
       "mistakes": [
@@ -409,14 +390,6 @@
           "k": "30",
           "v": "bani",
           "a": "100"
-        },
-        {
-          "f": "reincarca",
-          "p": "incarcator",
-          "op": "+",
-          "k": "6",
-          "v": "munitie",
-          "a": "4"
         }
       ],
       "mistakes": [
@@ -449,12 +422,6 @@
           "c": "distanta",
           "n": "5",
           "k": "2"
-        },
-        {
-          "f": "stivuieste",
-          "c": "cutii",
-          "n": "3",
-          "k": "4"
         }
       ],
       "mistakes": [
@@ -493,22 +460,6 @@
           "k": "2",
           "a": "9",
           "w": "parte"
-        },
-        {
-          "f": "pierde_viata",
-          "v": "vieti",
-          "op": "-",
-          "k": "1",
-          "a": "3",
-          "w": "ramase"
-        },
-        {
-          "f": "triplu",
-          "v": "x",
-          "op": "*",
-          "k": "3",
-          "a": "4",
-          "w": "mare"
         }
       ],
       "mistakes": [
@@ -996,6 +947,81 @@
         }
       ],
       "bug": ["print({{g}}())", "print({{w}})"]
+    },
+    {
+      "id": "sc-error-local",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def {{f}}():\n    {{v}} = {{a}}\n    print({{v}})\n\n{{f}}()\nprint({{v}})",
+      "values": [
+        {
+          "f": "fa_scut",
+          "v": "scut",
+          "a": 100
+        },
+        {
+          "f": "umple_rezervor",
+          "v": "combustibil",
+          "a": 50
+        },
+        {
+          "f": "incarca",
+          "v": "marfa",
+          "a": 7
+        }
+      ],
+      "wrong": ["IndexError", "KeyError", "TypeError"]
+    },
+    {
+      "id": "sc-error-args",
+      "kind": "which-error",
+      "text": "Ce eroare oprește acest program?",
+      "code": "def {{f}}({{p}}, {{q}}):\n    return {{p}} + {{q}}\n\nprint({{f}}({{a}}))",
+      "values": [
+        {
+          "f": "aduna",
+          "p": "a",
+          "q": "b",
+          "a": 5
+        },
+        {
+          "f": "total_combustibil",
+          "p": "stanga",
+          "q": "dreapta",
+          "a": 40
+        }
+      ],
+      "wrong": ["NameError", "IndexError", "KeyError"]
+    },
+    {
+      "id": "sc-holds-read",
+      "kind": "holds",
+      "text": "Ce conține `{{w}}` la final?",
+      "code": "{{v}} = {{a}}\n\ndef {{f}}():\n    return {{v}} + {{k}}\n\n{{w}} = {{f}}()\n{{v}} = {{b}}",
+      "values": [
+        {
+          "v": "bonus",
+          "a": 5,
+          "f": "scor",
+          "k": 10,
+          "w": "total",
+          "b": 50
+        },
+        {
+          "v": "viteza",
+          "a": 60,
+          "f": "accelerat",
+          "k": 20,
+          "w": "maxim",
+          "b": 0
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["{{w}} = {{f}}()\n{{v}} = {{b}}", "{{v}} = {{b}}\n{{w}} = {{f}}()"],
+        ["return {{v}} + {{k}}", "print({{v}} + {{k}})"],
+        ["{{w}} = {{f}}()", "{{f}}()\n{{w}} = {{v}}"]
+      ]
     }
   ]
 }

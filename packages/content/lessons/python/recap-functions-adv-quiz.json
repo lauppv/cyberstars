@@ -293,12 +293,6 @@
         },
         {
           "readings": "\"7\", \"x\", \"3\", \"?\""
-        },
-        {
-          "readings": "\"40\", \"4O\", \"12\""
-        },
-        {
-          "readings": "\"5\", \"\", \"8\""
         }
       ]
     },
@@ -323,11 +317,6 @@
           "a": "300",
           "b": "3OO",
           "f": 99
-        },
-        {
-          "a": "5",
-          "b": "five",
-          "f": 1
         }
       ]
     },
@@ -348,12 +337,6 @@
         },
         {
           "nums": "10, 0, 25, 7, 0"
-        },
-        {
-          "nums": "6, 3, 8, 1"
-        },
-        {
-          "nums": "12, 5, 20"
         }
       ]
     },
@@ -374,9 +357,6 @@
         },
         {
           "nums": "15, 4, 9, 11"
-        },
-        {
-          "nums": "7, 2"
         }
       ]
     },
@@ -400,16 +380,6 @@
           "v": "fuel",
           "p": "f",
           "a": 35
-        },
-        {
-          "v": "power",
-          "p": "p",
-          "a": 12
-        },
-        {
-          "v": "speed",
-          "p": "x",
-          "a": 60
         }
       ]
     },
@@ -437,13 +407,6 @@
           "b": "Nova",
           "c": "A2",
           "e": "B5"
-        },
-        {
-          "d": "C1",
-          "a": "Pioneer",
-          "b": "Atlas",
-          "c": "D8",
-          "e": "A6"
         }
       ]
     },
@@ -801,6 +764,98 @@
           "p": "p",
           "a": 15
         }
+      ]
+    },
+    {
+      "id": "rfa-error-int",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def {{f}}({{p}}):\n    return int({{p}}) * 2\n\nprint({{f}}(\"{{s}}\"))",
+      "values": [
+        {
+          "f": "double",
+          "p": "text",
+          "s": "x7"
+        },
+        {
+          "f": "double",
+          "p": "text",
+          "s": "4.5"
+        },
+        {
+          "f": "twice",
+          "p": "reading",
+          "s": "seven"
+        }
+      ],
+      "wrong": ["TypeError", "NameError", "ZeroDivisionError"]
+    },
+    {
+      "id": "rfa-error-call",
+      "kind": "which-error",
+      "text": "Which error stops this program?",
+      "code": "def {{f}}({{p}}, {{q}}=\"{{d}}\"):\n    print(f\"{{{p}}} {{{q}}}\")\n\n{{f}}(\"{{a}}\", \"{{b}}\", \"{{c}}\")",
+      "values": [
+        {
+          "f": "dock",
+          "p": "ship",
+          "q": "bay",
+          "d": "A1",
+          "a": "Nova",
+          "b": "B2",
+          "c": "now"
+        },
+        {
+          "f": "greet",
+          "p": "name",
+          "q": "word",
+          "d": "Hello",
+          "a": "Ana",
+          "b": "Hi",
+          "c": "!"
+        },
+        {
+          "f": "report",
+          "p": "ship",
+          "q": "status",
+          "d": "ok",
+          "a": "Vega",
+          "b": "late",
+          "c": "fast"
+        }
+      ],
+      "wrong": ["SyntaxError", "NameError", "ValueError"]
+    },
+    {
+      "id": "rfa-holds-safe",
+      "kind": "holds",
+      "text": "What is in `{{g}}` at the end?",
+      "code": "{{g}} = []\nfor {{r}} in [{{readings}}]:\n    try:\n        {{g}}.append(int({{r}}))\n    except ValueError:\n        {{g}}.append({{fb}})",
+      "values": [
+        {
+          "g": "good",
+          "r": "reading",
+          "readings": "\"8\", \"x\", \"3\"",
+          "fb": 0
+        },
+        {
+          "g": "good",
+          "r": "reading",
+          "readings": "\"12\", \"4.5\", \"7\"",
+          "fb": -1
+        },
+        {
+          "g": "values",
+          "r": "text",
+          "readings": "\"five\", \"2\", \"9\", \"?\"",
+          "fb": 0
+        }
+      ],
+      "variable": "{{g}}",
+      "mistakes": [
+        ["int({{r}}))", "{{r}})"],
+        ["{{g}}.append({{fb}})", "continue"],
+        ["{{g}}.append(int({{r}}))", "{{g}} = [int({{r}})]"]
       ]
     }
   ]
