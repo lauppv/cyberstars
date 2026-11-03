@@ -344,7 +344,7 @@ describe('planTemplate', () => {
     expect(() => plan.build([ok('1'), ok('1')])).toThrow('the bug changes nothing');
   });
 
-  it('refuses a value set twice and a blank the text or the code has no value for', () => {
+  it('refuses a value set twice and a blank with no value, in any part', () => {
     expect(() =>
       plans({
         values: [
@@ -353,11 +353,16 @@ describe('planTemplate', () => {
         ],
       }),
     ).toThrow('add repeats a set of values');
-    expect(() => plans({ text: 'What is {{c}}?' })).toThrow(
-      'add with {"a":"7","b":"3"}: the text has a blank with no value',
-    );
-    expect(() => plans({ code: 'x = {{a}}\nprint(x + {{b}} + {{c}})' })).toThrow(
-      'add with {"a":"7","b":"3"}: the code has a blank with no value',
+    const noValue = 'add with {"a":"7","b":"3"}: {{c}} has no value';
+    expect(() => plans({ text: 'What is {{c}}?' })).toThrow(noValue);
+    expect(() => plans({ code: 'x = {{a}}\nprint(x + {{b}} + {{c}})' })).toThrow(noValue);
+    // A mistake's program would only stop with a SyntaxError and be dropped
+    expect(() =>
+      plans({ mistakes: [...prints.mistakes.slice(0, 3), ['x + {{b}}', 'x - {{c}}']] }),
+    ).toThrow(noValue);
+    // Not a value a blank's name could find on any object
+    expect(() => plans({ text: 'What is {{constructor}}?' })).toThrow(
+      'add with {"a":"7","b":"3"}: {{constructor}} has no value',
     );
   });
 

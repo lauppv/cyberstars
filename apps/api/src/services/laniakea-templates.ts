@@ -217,8 +217,15 @@ export function parseTemplates(raw: unknown): QuizTemplate[] {
   });
 }
 
-function fill(text: string, values: Record<string, string>): string {
-  return text.replace(BLANK, (blank, name: string) => values[name] ?? blank);
+// Puts each blank's value in `text`. A blank with no value throws, wherever it
+// is: left in a program it stops it with a SyntaxError, which drops a mistake
+// without a word or becomes a which-error question's right answer, and left in
+// an option it shows as `{{name}}`.
+function fill(text: string, values: Record<string, string>, where: string): string {
+  return text.replace(BLANK, (blank, name: string) => {
+    if (!Object.hasOwn(values, name)) throw new Error(`${where}: ${blank} has no value`);
+    return values[name];
+  });
 }
 
 function swapped(code: string, [what, instead]: Swap): string {
@@ -274,13 +281,9 @@ export function planTemplate(
   if (new Set(ids).size !== ids.length) throw new Error(`${t.id} repeats a set of values`);
   return t.values.map((values, k): QuestionPlan => {
     const where = `${t.id} with ${JSON.stringify(values)}`;
-    const f = (text: string) => fill(text, values);
+    const f = (text: string) => fill(text, values, where);
     const text = f(t.text);
-    if (/\{\{\w+\}\}/.test(text)) throw new Error(`${where}: the text has a blank with no value`);
     const code = f(t.code);
-    // A blank left in the code would stop it with a SyntaxError, which a
-    // which-error question would take for its right answer.
-    if (/\{\{\w+\}\}/.test(code)) throw new Error(`${where}: the code has a blank with no value`);
 
     // What the program the question is about prints: it has to run and print.
     const printed = (run: ProgramRun): string => {
