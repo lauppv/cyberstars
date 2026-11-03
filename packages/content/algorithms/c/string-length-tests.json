@@ -1,5 +1,18 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }],
+    "forbids": [
+      { "kind": "call", "name": "strlen" },
+      { "kind": "call", "name": "strnlen" },
+      { "kind": "call", "name": "strchr" },
+      { "kind": "call", "name": "strrchr" },
+      { "kind": "call", "name": "memchr" },
+      { "kind": "call", "name": "rawmemchr" },
+      { "kind": "call", "name": "strcspn" },
+      { "kind": "call", "name": "strspn" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "hello\n" },
     { "visible": true, "stdin": "C\n" },

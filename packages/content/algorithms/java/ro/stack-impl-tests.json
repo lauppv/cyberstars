@@ -1,5 +1,19 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "Stiva" },
+      { "kind": "function", "name": "pune" },
+      { "kind": "function", "name": "scoate" },
+      { "kind": "function", "name": "varf" },
+      { "kind": "call", "name": "ArrayList" }
+    ],
+    "forbids": [
+      { "kind": "call", "name": "ArrayDeque" },
+      { "kind": "call", "name": "LinkedList" },
+      { "kind": "call", "name": "Vector" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "6\npune\n10\npune\n20\nvarf\nscoate\nscoate\nscoate\n" },
     { "visible": true, "stdin": "3\npune\n5\npune\n15\nvarf\n" },

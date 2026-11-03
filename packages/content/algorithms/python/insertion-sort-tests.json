@@ -1,10 +1,21 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "loop" }],
+    "requires": [{ "kind": "nested_loop" }],
     "forbids": [
       { "kind": "call", "name": "sorted" },
-      { "kind": "call", "name": "sort" }
+      { "kind": "call", "name": "sort" },
+      { "kind": "call", "name": "nsmallest" },
+      { "kind": "call", "name": "nlargest" },
+      { "kind": "call", "name": "heapify" },
+      { "kind": "call", "name": "heappop" },
+      { "kind": "call", "name": "heappush" },
+      { "kind": "call", "name": "insort" },
+      { "kind": "call", "name": "min" },
+      { "kind": "call", "name": "max" },
+      { "kind": "call", "name": "eval" },
+      { "kind": "call", "name": "exec" },
+      { "kind": "call", "name": "getattr" }
     ]
   },
   "cases": [
