@@ -1,5 +1,15 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "Dreptunghi" },
+      { "kind": "variable", "name": "latime" },
+      { "kind": "variable", "name": "inaltime" },
+      { "kind": "function", "name": "getArie" },
+      { "kind": "function", "name": "getPerimetru" },
+      { "kind": "call", "name": "Dreptunghi" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "5\n3\n" },
     { "visible": true, "stdin": "10\n10\n" },

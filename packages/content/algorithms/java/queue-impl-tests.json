@@ -1,5 +1,20 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "class", "name": "Queue" },
+      { "kind": "function", "name": "enqueue" },
+      { "kind": "function", "name": "dequeue" },
+      { "kind": "function", "name": "peek" },
+      { "kind": "call", "name": "ArrayList" }
+    ],
+    "forbids": [
+      { "kind": "call", "name": "ArrayDeque" },
+      { "kind": "call", "name": "LinkedList" },
+      { "kind": "call", "name": "Vector" },
+      { "kind": "call", "name": "PriorityQueue" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "6\nenqueue\n10\nenqueue\n20\npeek\ndequeue\ndequeue\ndequeue\n" },
     { "visible": true, "stdin": "4\nenqueue\n5\nenqueue\n15\ndequeue\npeek\n" },
