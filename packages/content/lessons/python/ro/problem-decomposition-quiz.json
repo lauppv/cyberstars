@@ -285,16 +285,6 @@
           "v": "jurnal",
           "s": "boot sync boot dock",
           "i": 3
-        },
-        {
-          "v": "mesaj",
-          "s": "andocare la poarta patru",
-          "i": 1
-        },
-        {
-          "v": "nume",
-          "s": "Tommy Lance Ken",
-          "i": 0
         }
       ],
       "mistakes": [
@@ -315,12 +305,6 @@
         },
         {
           "s": "rosu albastru rosu rosu"
-        },
-        {
-          "s": "mergi stai mergi asteapta"
-        },
-        {
-          "s": "sus jos sus sus jos"
         }
       ],
       "mistakes": [
@@ -341,12 +325,6 @@
         },
         {
           "d": "{\"sos\": 2, \"ok\": 4, \"pa\": 1}"
-        },
-        {
-          "d": "{\"x\": 2, \"y\": 2, \"z\": 1}"
-        },
-        {
-          "d": "{\"dock\": 1, \"boot\": 4, \"sync\": 6}"
         }
       ],
       "mistakes": [
@@ -370,14 +348,6 @@
         {
           "n": "[5, 1, 4, 2]",
           "t": 6
-        },
-        {
-          "n": "[3, 3, 4, 2]",
-          "t": 6
-        },
-        {
-          "n": "[1, 6, 3, 4, 5]",
-          "t": 9
         }
       ],
       "mistakes": [
@@ -398,12 +368,6 @@
         },
         {
           "log": "x y y z"
-        },
-        {
-          "log": "dock dock undock dock"
-        },
-        {
-          "log": "boot sync boot"
         }
       ],
       "mistakes": [
@@ -424,12 +388,6 @@
         },
         {
           "s": "soare luna stea cometa"
-        },
-        {
-          "s": "du stai asteapta sari"
-        },
-        {
-          "s": "alpha beta delta pi"
         }
       ],
       "mistakes": [
@@ -769,6 +727,132 @@
         }
       ],
       "bug": ["cel_mai_mare = numar", "numar = cel_mai_mare"]
+    },
+    {
+      "id": "pd-holds-pipeline",
+      "kind": "holds",
+      "text": "Ce conține `{{v}}` la final?",
+      "code": "def {{f}}({{p}}):\n    return {{p}}.split(\" \")\n\ndef {{g}}({{q}}):\n    return [len(w) for w in {{q}}]\n\n{{v}} = {{g}}({{f}}(\"{{s}}\"))",
+      "values": [
+        {
+          "f": "ia_cuvinte",
+          "p": "text",
+          "g": "lungimi",
+          "q": "cuvinte",
+          "v": "marimi",
+          "s": "spre Marte acum"
+        },
+        {
+          "f": "ia_cuvinte",
+          "p": "text",
+          "g": "lungimi",
+          "q": "cuvinte",
+          "v": "marimi",
+          "s": "Vice City Stories"
+        },
+        {
+          "f": "ia_cuvinte",
+          "p": "text",
+          "g": "lungimi",
+          "q": "cuvinte",
+          "v": "marimi",
+          "s": "Tommy e iar acasa"
+        },
+        {
+          "f": "ia_cuvinte",
+          "p": "text",
+          "g": "lungimi",
+          "q": "cuvinte",
+          "v": "marimi",
+          "s": "sos ok"
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["return [len(w) for w in {{q}}]", "return len({{q}})"],
+        ["[len(w) for w in {{q}}]", "[w for w in {{q}}]"],
+        ["[len(w) for w in {{q}}]", "[len({{q}}) for w in {{q}}]"]
+      ]
+    },
+    {
+      "id": "pd-input-words",
+      "kind": "which-input",
+      "text": "Ce a tastat utilizatorul?",
+      "code": "{{t}} = input()\n{{w}} = {{t}}.split(\" \")\nprint(len({{w}}))\nprint({{w}}[0])",
+      "values": [
+        {
+          "t": "text",
+          "w": "cuvinte",
+          "a": "pisica sta jos",
+          "first": "pisica",
+          "n": 3,
+          "joined": "pisicastajos"
+        },
+        {
+          "t": "text",
+          "w": "cuvinte",
+          "a": "spre Marte acum",
+          "first": "spre",
+          "n": 3,
+          "joined": "spreMarteacum"
+        },
+        {
+          "t": "jurnal",
+          "w": "coduri",
+          "a": "ok sos ok",
+          "first": "ok",
+          "n": 3,
+          "joined": "oksosok"
+        },
+        {
+          "t": "text",
+          "w": "cuvinte",
+          "a": "Vice City",
+          "first": "Vice",
+          "n": 2,
+          "joined": "ViceCity"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{first}}", "{{n}} {{first}}", "{{joined}}"]
+    },
+    {
+      "id": "pd-holds-pairs",
+      "kind": "holds",
+      "text": "Ce conține `{{w}}` la final?",
+      "code": "{{v}} = [{{nums}}]\n{{w}} = []\nfor i in range(len({{v}})):\n    for j in range(i + 1, len({{v}})):\n        if {{v}}[i] + {{v}}[j] == {{t}}:\n            {{w}}.append(({{v}}[i], {{v}}[j]))",
+      "values": [
+        {
+          "v": "numere",
+          "nums": "2, 7, 4, 5",
+          "w": "perechi",
+          "t": 9
+        },
+        {
+          "v": "numere",
+          "nums": "1, 5, 3, 7",
+          "w": "perechi",
+          "t": 8
+        },
+        {
+          "v": "preturi",
+          "nums": "10, 30, 20, 40",
+          "w": "oferte",
+          "t": 50
+        },
+        {
+          "v": "greutati",
+          "nums": "6, 1, 4, 3",
+          "w": "perechi",
+          "t": 7
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["range(i + 1, len({{v}}))", "range(len({{v}}))"],
+        ["({{v}}[i], {{v}}[j])", "(i, j)"],
+        ["== {{t}}", ">= {{t}}"]
+      ]
     }
   ]
 }

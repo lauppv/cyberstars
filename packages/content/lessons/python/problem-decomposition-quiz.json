@@ -285,16 +285,6 @@
           "v": "log",
           "s": "boot sync boot dock",
           "i": 3
-        },
-        {
-          "v": "message",
-          "s": "dock at gate four",
-          "i": 1
-        },
-        {
-          "v": "names",
-          "s": "Tommy Lance Ken",
-          "i": 0
         }
       ],
       "mistakes": [
@@ -315,12 +305,6 @@
         },
         {
           "s": "red blue red red"
-        },
-        {
-          "s": "go stop go wait"
-        },
-        {
-          "s": "up down up up down"
         }
       ],
       "mistakes": [
@@ -341,12 +325,6 @@
         },
         {
           "d": "{\"sos\": 2, \"ok\": 4, \"bye\": 1}"
-        },
-        {
-          "d": "{\"x\": 2, \"y\": 2, \"z\": 1}"
-        },
-        {
-          "d": "{\"dock\": 1, \"boot\": 4, \"sync\": 6}"
         }
       ],
       "mistakes": [
@@ -370,14 +348,6 @@
         {
           "n": "[5, 1, 4, 2]",
           "t": 6
-        },
-        {
-          "n": "[3, 3, 4, 2]",
-          "t": 6
-        },
-        {
-          "n": "[1, 6, 3, 4, 5]",
-          "t": 9
         }
       ],
       "mistakes": [
@@ -398,12 +368,6 @@
         },
         {
           "log": "x y y z"
-        },
-        {
-          "log": "dock dock undock dock"
-        },
-        {
-          "log": "boot sync boot"
         }
       ],
       "mistakes": [
@@ -424,12 +388,6 @@
         },
         {
           "s": "sun moon star comet"
-        },
-        {
-          "s": "go stop wait jump"
-        },
-        {
-          "s": "alpha beta delta pi"
         }
       ],
       "mistakes": [
@@ -756,6 +714,132 @@
         }
       ],
       "bug": ["highest = count", "count = highest"]
+    },
+    {
+      "id": "pd-holds-pipeline",
+      "kind": "holds",
+      "text": "What is in `{{v}}` at the end?",
+      "code": "def {{f}}({{p}}):\n    return {{p}}.split(\" \")\n\ndef {{g}}({{q}}):\n    return [len(w) for w in {{q}}]\n\n{{v}} = {{g}}({{f}}(\"{{s}}\"))",
+      "values": [
+        {
+          "f": "get_words",
+          "p": "text",
+          "g": "lengths",
+          "q": "words",
+          "v": "sizes",
+          "s": "go to Mars"
+        },
+        {
+          "f": "get_words",
+          "p": "text",
+          "g": "lengths",
+          "q": "words",
+          "v": "sizes",
+          "s": "Vice City Stories"
+        },
+        {
+          "f": "get_words",
+          "p": "text",
+          "g": "lengths",
+          "q": "words",
+          "v": "sizes",
+          "s": "Tommy is back home"
+        },
+        {
+          "f": "get_words",
+          "p": "text",
+          "g": "lengths",
+          "q": "words",
+          "v": "sizes",
+          "s": "sos ok"
+        }
+      ],
+      "variable": "{{v}}",
+      "mistakes": [
+        ["return [len(w) for w in {{q}}]", "return len({{q}})"],
+        ["[len(w) for w in {{q}}]", "[w for w in {{q}}]"],
+        ["[len(w) for w in {{q}}]", "[len({{q}}) for w in {{q}}]"]
+      ]
+    },
+    {
+      "id": "pd-input-words",
+      "kind": "which-input",
+      "text": "What did the user type?",
+      "code": "{{t}} = input()\n{{w}} = {{t}}.split(\" \")\nprint(len({{w}}))\nprint({{w}}[0])",
+      "values": [
+        {
+          "t": "text",
+          "w": "words",
+          "a": "the cat sat",
+          "first": "the",
+          "n": 3,
+          "joined": "thecatsat"
+        },
+        {
+          "t": "text",
+          "w": "words",
+          "a": "go to Mars",
+          "first": "go",
+          "n": 3,
+          "joined": "gotoMars"
+        },
+        {
+          "t": "log",
+          "w": "codes",
+          "a": "ok sos ok",
+          "first": "ok",
+          "n": 3,
+          "joined": "oksosok"
+        },
+        {
+          "t": "text",
+          "w": "words",
+          "a": "Vice City",
+          "first": "Vice",
+          "n": 2,
+          "joined": "ViceCity"
+        }
+      ],
+      "answer": "{{a}}",
+      "wrong": ["{{first}}", "{{n}} {{first}}", "{{joined}}"]
+    },
+    {
+      "id": "pd-holds-pairs",
+      "kind": "holds",
+      "text": "What is in `{{w}}` at the end?",
+      "code": "{{v}} = [{{nums}}]\n{{w}} = []\nfor i in range(len({{v}})):\n    for j in range(i + 1, len({{v}})):\n        if {{v}}[i] + {{v}}[j] == {{t}}:\n            {{w}}.append(({{v}}[i], {{v}}[j]))",
+      "values": [
+        {
+          "v": "numbers",
+          "nums": "2, 7, 4, 5",
+          "w": "pairs",
+          "t": 9
+        },
+        {
+          "v": "numbers",
+          "nums": "1, 5, 3, 7",
+          "w": "pairs",
+          "t": 8
+        },
+        {
+          "v": "prices",
+          "nums": "10, 30, 20, 40",
+          "w": "deals",
+          "t": 50
+        },
+        {
+          "v": "weights",
+          "nums": "6, 1, 4, 3",
+          "w": "pairs",
+          "t": 7
+        }
+      ],
+      "variable": "{{w}}",
+      "mistakes": [
+        ["range(i + 1, len({{v}}))", "range(len({{v}}))"],
+        ["({{v}}[i], {{v}}[j])", "(i, j)"],
+        ["== {{t}}", ">= {{t}}"]
+      ]
     }
   ]
 }

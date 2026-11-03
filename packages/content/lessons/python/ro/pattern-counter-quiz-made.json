@@ -16,20 +16,6 @@
       "answer": 0
     },
     {
-      "id": "pc-even-7f6f3f",
-      "text": "Ce afișează?",
-      "code": "varste = [21, 34, 18, 40, 15, 22]\ncontor = 0\nfor n in varste:\n    if n % 2 == 0:\n        contor += 1\nprint(f\"Pare: {contor}\")",
-      "options": ["Pare: 4", "Pare: 2", "Pare: 114", "Pare: 5"],
-      "answer": 0
-    },
-    {
-      "id": "pc-even-40afe3",
-      "text": "Ce afișează?",
-      "code": "niveluri = [1, 3, 5, 2]\ncontor = 0\nfor n in niveluri:\n    if n % 2 == 0:\n        contor += 1\nprint(f\"Pare: {contor}\")",
-      "options": ["Pare: 1", "Pare: 3", "Pare: 2", "Pare: 0\nPare: 0\nPare: 0\nPare: 1"],
-      "answer": 0
-    },
-    {
       "id": "pc-above-1d9a5e",
       "text": "Ce afișează?",
       "code": "citiri = [42, 75, 100, 30, 88]\npeste = 0\nfor c in citiri:\n    if c > 75:\n        peste += 1\nprint(peste)",
@@ -41,13 +27,6 @@
       "text": "Ce afișează?",
       "code": "temperaturi = [12, 30, 25, 30, 8]\npeste = 0\nfor c in temperaturi:\n    if c > 25:\n        peste += 1\nprint(peste)",
       "options": ["2", "3", "1", "60"],
-      "answer": 0
-    },
-    {
-      "id": "pc-above-c47657",
-      "text": "Ce afișează?",
-      "code": "combustibil = [5, 50, 20, 15, 35]\npeste = 0\nfor c in combustibil:\n    if c > 15:\n        peste += 1\nprint(peste)",
-      "options": ["3", "4", "1", "105"],
       "answer": 0
     },
     {
@@ -65,18 +44,6 @@
       "answer": 0
     },
     {
-      "id": "pc-upper-a4b7ce",
-      "text": "Ce afișează?",
-      "code": "nava = \"USS Orbit\"\nmajuscule = 0\nfor caracter in nava:\n    if caracter.isupper():\n        majuscule += 1\nprint(f\"Majuscule: {majuscule}\")",
-      "options": [
-        "Majuscule: 4",
-        "Majuscule: 8",
-        "Majuscule: 1",
-        "Majuscule: 1\nMajuscule: 2\nMajuscule: 3\nMajuscule: 3\nMajuscule: 4\nMajuscule: 4\nMajuscule: 4\nMajuscule: 4\nMajuscule: 4"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pc-digits-b2cf56",
       "text": "Ce afișează?",
       "code": "cod = \"R2D2\"\ncifre = 0\nfor caracter in cod:\n    if caracter.isdigit():\n        cifre += 1\nprint(cifre)",
@@ -88,13 +55,6 @@
       "text": "Ce afișează?",
       "code": "cod = \"Agent 47\"\ncifre = 0\nfor caracter in cod:\n    if caracter.isdigit():\n        cifre += 1\nprint(cifre)",
       "options": ["2", "5", "1", "3"],
-      "answer": 0
-    },
-    {
-      "id": "pc-digits-5f9d0a",
-      "text": "Ce afișează?",
-      "code": "cod = \"X1Y22Z\"\ncifre = 0\nfor caracter in cod:\n    if caracter.isdigit():\n        cifre += 1\nprint(cifre)",
-      "options": ["3", "1", "4", "0\n1\n1\n2\n3\n3"],
       "answer": 0
     },
     {
@@ -118,18 +78,6 @@
         "Litere: 7, Cifre: 0, Spatii: 1",
         "Litere: 4, Cifre: 3, Spatii: 0",
         "Litere: 5, Cifre: 3, Spatii: 1"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pc-multi-53fabc",
-      "text": "Ce afișează?",
-      "code": "text = \"Poarta 3 la 9 PM\"\nlitere = 0\ncifre = 0\nspatii = 0\nfor caracter in text:\n    if caracter.isalpha():\n        litere += 1\n    elif caracter.isdigit():\n        cifre += 1\n    elif caracter == \" \":\n        spatii += 1\nprint(f\"Litere: {litere}, Cifre: {cifre}, Spatii: {spatii}\")",
-      "options": [
-        "Litere: 10, Cifre: 2, Spatii: 4",
-        "Litere: 12, Cifre: 0, Spatii: 4",
-        "Litere: 10, Cifre: 2, Spatii: 0",
-        "Litere: 10, Cifre: 2, Spatii: 1"
       ],
       "answer": 0
     },
@@ -158,30 +106,6 @@
       "answer": 0
     },
     {
-      "id": "pc-bands-aa0753",
-      "text": "Ce afișează?",
-      "code": "semnale = [10, 50, 100, 100, 60, 70]\nmici = 0\nmedii = 0\nmari = 0\nfor c in semnale:\n    if c < 50:\n        mici += 1\n    elif c < 100:\n        medii += 1\n    else:\n        mari += 1\nprint(f\"Mici: {mici}\")\nprint(f\"Medii: {medii}\")\nprint(f\"Mari: {mari}\")",
-      "options": [
-        "Mici: 1\nMedii: 3\nMari: 2",
-        "Mici: 1\nMedii: 5\nMari: 0",
-        "Mici: 2\nMedii: 2\nMari: 2",
-        "Mici: 1\nMedii: 0\nMari: 5"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "pc-bands-d56475",
-      "text": "Ce afișează?",
-      "code": "scanari = [100, 20, 50, 150, 80, 35, 5]\nmici = 0\nmedii = 0\nmari = 0\nfor c in scanari:\n    if c < 50:\n        mici += 1\n    elif c < 100:\n        medii += 1\n    else:\n        mari += 1\nprint(f\"Mici: {mici}\")\nprint(f\"Medii: {medii}\")\nprint(f\"Mari: {mari}\")",
-      "options": [
-        "Mici: 3\nMedii: 2\nMari: 2",
-        "Mici: 3\nMedii: 3\nMari: 1",
-        "Mici: 4\nMedii: 1\nMari: 2",
-        "Mici: 3\nMedii: 0\nMari: 4"
-      ],
-      "answer": 0
-    },
-    {
       "id": "pc-shortcut-7e77d2",
       "text": "Ce afișează?",
       "code": "combustibil = 10\ncombustibil += 5\ncombustibil -= 3\ncombustibil *= 2\nprint(combustibil)",
@@ -196,13 +120,6 @@
       "answer": 0
     },
     {
-      "id": "pc-shortcut-24bf6c",
-      "text": "Ce afișează?",
-      "code": "monede = 20\nmonede += 10\nmonede -= 5\nmonede *= 2\nprint(monede)",
-      "options": ["50", "10", "-10", "27"],
-      "answer": 0
-    },
-    {
       "id": "pc-long-fe3547",
       "text": "Ce afișează?",
       "code": "cuvinte = [\"Vice\", \"City\", \"Stories\", \"Ocean\"]\nlungi = 0\nfor w in cuvinte:\n    if len(w) > 4:\n        lungi += 1\nprint(f\"Cuvinte lungi: {lungi}\")",
@@ -214,13 +131,6 @@
       "text": "Ce afișează?",
       "code": "nume = [\"Tommy\", \"Lance\", \"Ken\", \"Cortez\"]\nlungi = 0\nfor w in nume:\n    if len(w) > 5:\n        lungi += 1\nprint(f\"Cuvinte lungi: {lungi}\")",
       "options": ["Cuvinte lungi: 1", "Cuvinte lungi: 3", "Cuvinte lungi: 6", "Cuvinte lungi: 2"],
-      "answer": 0
-    },
-    {
-      "id": "pc-long-b50404",
-      "text": "Ce afișează?",
-      "code": "planete = [\"Marte\", \"Venus\", \"Terra\", \"Jupiter\"]\nlungi = 0\nfor w in planete:\n    if len(w) > 4:\n        lungi += 1\nprint(f\"Cuvinte lungi: {lungi}\")",
-      "options": ["Cuvinte lungi: 4", "Cuvinte lungi: 22", "Cuvinte lungi: 5", "Cuvinte lungi: 0"],
       "answer": 0
     },
     {
@@ -650,6 +560,76 @@
       "code": "semnale = [7, 3, 9, 10, 1, 6]\nmici = 0\nmari = 0\nfor c in semnale:\n    if c < 5:\n        mici += 1\n    else:\n        mari = 1\nprint(f\"Mici: {mici}\")\nprint(f\"Mari: {mari}\")",
       "output": "Mici: 2\nMari: 4",
       "options": ["mari = 1", "mici += 1", "mari = 0", "mici = 0"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-bands-1ea7e6",
+      "text": "Ce conține `sus` la final?",
+      "code": "jos = 0\nsus = 0\nfor r in [42, 75, 100, 30, 88]:\n    if r < 75:\n        jos += 1\n    else:\n        sus += 1",
+      "options": ["3", "1", "2", "5"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-bands-380477",
+      "text": "Ce conține `sus` la final?",
+      "code": "jos = 0\nsus = 0\nfor r in [10, 50, 60, 70]:\n    if r < 50:\n        jos += 1\n    else:\n        sus += 1",
+      "options": ["3", "1", "2", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-bands-624188",
+      "text": "Ce conține `lungi` la final?",
+      "code": "scurte = 0\nlungi = 0\nfor r in [5, 9, 12, 7, 9, 15]:\n    if r < 9:\n        scurte += 1\n    else:\n        lungi += 1",
+      "options": ["4", "1", "2", "6"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-bands-f61399",
+      "text": "Ce conține `calde` la final?",
+      "code": "reci = 0\ncalde = 0\nfor r in [100, 20, 45, 80]:\n    if r < 45:\n        reci += 1\n    else:\n        calde += 1",
+      "options": ["3", "1", "2", "4"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-upper-6db14d",
+      "text": "Ce conține `majuscule` la final?",
+      "code": "majuscule = 0\nfor ch in \"Tommy Vercetti\":\n    if ch.isupper():\n        majuscule += 1",
+      "options": ["2", "13", "1", "14"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-upper-b374df",
+      "text": "Ce conține `majuscule` la final?",
+      "code": "majuscule = 0\nfor ch in \"R2D2 Droid\":\n    if ch.isupper():\n        majuscule += 1",
+      "options": ["3", "7", "1", "10"],
+      "answer": 0
+    },
+    {
+      "id": "pc-holds-upper-2875a3",
+      "text": "Ce conține `majuscule` la final?",
+      "code": "majuscule = 0\nfor ch in \"NASA Base\":\n    if ch.isupper():\n        majuscule += 1",
+      "options": ["5", "8", "1", "9"],
+      "answer": 0
+    },
+    {
+      "id": "pc-error-init-efa009",
+      "text": "Ce eroare oprește acest program?",
+      "code": "for n in [3, 8, 12, 5]:\n    if n % 2 == 0:\n        numar += 1\nprint(numar)",
+      "options": ["NameError", "TypeError", "ValueError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "pc-error-init-c0445b",
+      "text": "Ce eroare oprește acest program?",
+      "code": "for n in [4, 7, 10]:\n    if n % 2 == 0:\n        pare += 1\nprint(pare)",
+      "options": ["NameError", "TypeError", "ValueError", "IndexError"],
+      "answer": 0
+    },
+    {
+      "id": "pc-error-init-ae211f",
+      "text": "Ce eroare oprește acest program?",
+      "code": "for n in [1, 2, 3]:\n    if n % 2 == 0:\n        total += 1\nprint(total)",
+      "options": ["NameError", "TypeError", "ValueError", "IndexError"],
       "answer": 0
     }
   ]
