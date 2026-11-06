@@ -37,6 +37,22 @@ describe('AchievementToast', () => {
     expect(xp).not.toBe(badge);
   });
 
+  it('draws the badge it announces, and none for XP', () => {
+    const { container, rerender } = render(
+      <AchievementToast title="+10 XP" visible onClose={vi.fn()} />,
+    );
+    expect(container.ownerDocument.querySelector('#corner svg')).toBeNull();
+    rerender(
+      <AchievementToast
+        title="Badge earned: Python Gold"
+        visible
+        onClose={vi.fn()}
+        badge={{ courseKey: 'python', level: 3 }}
+      />,
+    );
+    expect(container.ownerDocument.querySelector('#corner svg')).not.toBeNull();
+  });
+
   it('keeps its timer when the page renders again with a new onClose', () => {
     vi.useFakeTimers();
     const onClose = vi.fn();

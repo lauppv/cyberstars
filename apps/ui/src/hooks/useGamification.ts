@@ -4,10 +4,9 @@ import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { levelFromXp, xpForLevel, levelTitleKey, xpForCourse } from '@cyberstars/shared/constants';
-import { badgeIcon, badgeLabel, badgeDescription } from '../components/gamification/badgeMeta';
+import { badgeLabel, badgeDescription } from '../components/gamification/badgeMeta';
 
 interface BadgeDef {
-  icon: string;
   label: string;
   description: string;
   courseKey: string;
@@ -92,10 +91,8 @@ export function useGamification(): Gamification {
     for (const c of courses) {
       const { done, total } = perCourse[c.key] ?? { done: 0, total: 0 };
       const maxLevel = Math.max(1, Math.floor(total / 10));
-      const icon = badgeIcon(c.key);
 
       result.push({
-        icon,
         label: badgeLabel(t, c.title, 0),
         description: badgeDescription(t, c.title, 0),
         courseKey: c.key,
@@ -106,7 +103,6 @@ export function useGamification(): Gamification {
 
       for (let lvl = 1; lvl <= maxLevel; lvl++) {
         result.push({
-          icon,
           label: badgeLabel(t, c.title, lvl),
           description: badgeDescription(t, c.title, lvl),
           courseKey: c.key,

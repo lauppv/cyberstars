@@ -1,16 +1,19 @@
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Corner } from '../layout/Corner';
+import { BadgeEmblem } from './BadgeEmblem';
 
 interface AchievementToastProps {
   title: string;
   visible: boolean;
   onClose: () => void;
+  // the badge just earned, drawn before the title
+  badge?: { courseKey: string; level: number };
 }
 
 // In the bottom-right corner with the other toasts, so a lesson's XP and the
 // badge it earns, which come together, stack instead of covering each other.
-export function AchievementToast({ title, visible, onClose }: AchievementToastProps) {
+export function AchievementToast({ title, visible, onClose, badge }: AchievementToastProps) {
   const { t } = useTranslation();
   // The page renders again while the toast is up (the student keeps typing),
   // often with a new onClose, so the timer reads the latest without starting over.
@@ -36,6 +39,7 @@ export function AchievementToast({ title, visible, onClose }: AchievementToastPr
           animation: 'toast-in 0.4s cubic-bezier(.22,1,.36,1)',
         }}
       >
+        {badge && <BadgeEmblem courseKey={badge.courseKey} level={badge.level} size={36} />}
         <span className="text-sm font-bold text-[var(--text)]">{title}</span>
         <button
           onClick={onClose}
