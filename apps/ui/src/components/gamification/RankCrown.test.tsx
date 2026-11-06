@@ -6,21 +6,22 @@ import { CROWNS } from './crowns';
 const svg = (rank: number) => render(<RankCrown rank={rank} />).container.querySelector('svg')!;
 
 describe('RankCrown', () => {
-  it('crowns ten places, from wood and laurels up to the crown of stars', () => {
-    expect(CROWNS).toHaveLength(10);
-    const kinds = CROWNS.map((_, i) => svg(i + 1).dataset.crown);
-    expect(kinds).toEqual([
-      'star',
-      'crystal',
-      'crystal',
-      'crystal',
-      'metal',
-      'metal',
-      'metal',
-      'plain',
+  it('gives each of the ten places a crown of its own shape', () => {
+    const designs = CROWNS.map((_, i) => svg(i + 1).dataset.crown);
+    expect(designs).toEqual([
+      'stars',
+      'fleur',
+      'tiara',
+      'petals',
+      'imperial',
+      'radiant',
+      'balls',
+      'mural',
       'laurel',
-      'plain',
+      'wood',
     ]);
+    const drawings = CROWNS.map((_, i) => svg(i + 1).innerHTML.replace(/crown[a-zA-Z0-9]+/g, ''));
+    expect(new Set(drawings).size).toBe(10);
   });
 
   it('grows a little with each place up', () => {
