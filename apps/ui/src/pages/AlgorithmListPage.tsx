@@ -102,7 +102,7 @@ export function AlgorithmListPage() {
             className="px-6 pt-6 pb-4 border-b border-[var(--border)]"
             style={{ backgroundImage: courseWash(courseKey) }}
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
               <CourseMark courseKey={courseKey} size={40} />
               <div className="flex-1 min-w-0">
                 <h1 className="text-xl font-bold flex items-center gap-2">
@@ -115,7 +115,7 @@ export function AlgorithmListPage() {
               </div>
               {badge && (
                 <span
-                  className="flex items-center gap-1.5 min-w-0 max-w-[45%] text-[11px] text-[var(--text3)]"
+                  className="flex items-center gap-1.5 min-w-0 w-full @xl:w-auto @xl:max-w-[45%] text-[11px] text-[var(--text3)]"
                   title={badgeDescription(t, courseTitle(courseKey, t), badge.level)}
                 >
                   <BadgeEmblem courseKey={courseKey} level={badge.level} size={28} />
