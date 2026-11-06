@@ -566,7 +566,7 @@
     "lessons_other": "de lecții",
     "percentComplete": "{{pct}}% finalizat",
     "continue": "Continuă",
-    "viewSyllabus": "Vezi programa →",
+    "viewSyllabus": "Vezi programa",
     "chapters": "Capitole",
     "descriptions": {
       "python": "Cel mai bun început dacă n-ai mai programat. De la print și variabile la funcții, liste și dicționare, apoi căutare, sortare și recursivitate, cu trei proiecte mici la final.",
@@ -590,7 +590,9 @@
       "algo-java": "Algoritmi Java",
       "algo-c": "Algoritmi C",
       "algo-trees-graphs": "Algoritmi pe arbori și grafuri"
-    }
+    },
+    "subtitle": "Alege un limbaj și învață-l scriind cod adevărat, direct în browser.",
+    "nextBadge": "Următoarea insignă: {{badge}}"
   },
   "algorithms": {
     "desc": {
@@ -598,7 +600,8 @@
       "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, tipuri generice și iteratori, plus căutare și sortare.",
       "algo-c": "Probleme de C aproape de hardware: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
       "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele."
-    }
+    },
+    "subtitle": "Exersează pe probleme de la ușor la greu, în limbajul pe care îl înveți."
   },
   "progress": {
     "courses": "Cursuri",

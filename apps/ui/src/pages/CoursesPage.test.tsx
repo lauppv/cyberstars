@@ -346,7 +346,7 @@ describe('CoursesPage', () => {
       refresh: vi.fn(),
     });
     renderPage();
-    fireEvent.click(screen.getByText('View Syllabus →'));
+    fireEvent.click(screen.getByText('View Syllabus'));
     expect(mockNavigate).toHaveBeenCalledWith('/courses/python');
   });
 
@@ -452,5 +452,84 @@ describe('CoursesPage', () => {
     );
     fireEvent.click(within(alert).getByRole('button', { name: 'Try again' }));
     expect(refresh).toHaveBeenCalledOnce();
+    // a badge read from no progress would be a wrong one
+    expect(screen.queryByText(/Next badge/)).toBeNull();
+  });
+
+  it('heads the page with its name and a line on what it holds', () => {
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    expect(screen.getByRole('heading', { level: 1, name: 'Courses' })).toBeInTheDocument();
+    expect(screen.getByText(/Pick a language and learn it/)).toBeInTheDocument();
+  });
+
+  it('shows on each card the badge a student is working towards', () => {
+    mockUseAuth.mockReturnValue({ isLoggedIn: true, isLoading: false } as ReturnType<
+      typeof useAuth
+    >);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse, javaCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: {
+          courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
+          completed: 1,
+          total: 2,
+          lessons: [],
+        },
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    expect(screen.getByText('Next badge: Python Bronze')).toBeInTheDocument();
+    expect(screen.getByText('Next badge: Java First Steps')).toBeInTheDocument();
+  });
+
+  it('names the last badge plainly once a student has them all', () => {
+    mockUseAuth.mockReturnValue({ isLoggedIn: true, isLoading: false } as ReturnType<
+      typeof useAuth
+    >);
+    const longCourse = {
+      ...pythonCourse,
+      lessons: Array.from({ length: 10 }, (_, i) => ({
+        slug: `l${i}`,
+        title: `L${i}`,
+        sortOrder: i + 1,
+      })),
+    };
+    mockUseCurriculum.mockReturnValue({
+      courses: [longCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: {
+          courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
+          completed: 10,
+          total: 10,
+          lessons: [],
+        },
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    expect(screen.getByText('Python Bronze')).toBeInTheDocument();
+    expect(screen.queryByText(/Next badge/)).toBeNull();
   });
 });

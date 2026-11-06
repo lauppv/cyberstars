@@ -1,11 +1,13 @@
-import { useMemo } from 'react';
+import { useMemo, type CSSProperties } from 'react';
 import { Link, Navigate, useNavigate, useParams, useSearchParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { ArrowRight } from 'lucide-react';
 import { Topbar } from '../components/layout/Topbar';
+import { PageHeader } from '../components/layout/PageHeader';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
-import { courseMeta } from '../constants/courses';
+import { courseMeta, courseWash } from '../constants/courses';
 import {
   progressPct,
   xpForCourse,
@@ -18,6 +20,9 @@ import {
 } from '@cyberstars/shared/constants';
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { LoadError } from '../components/ui/LoadError';
+import { CourseMark } from '../components/ui/CourseMark';
+import { BadgeEmblem } from '../components/gamification/BadgeEmblem';
+import { badgeDescription, badgeLabel, nextBadge } from '../components/gamification/badgeMeta';
 
 interface CourseData {
   key: string;
@@ -33,6 +38,8 @@ interface CourseData {
   desc: string;
   chapters: { name: string; slug: string; sortOrder: number; xp: number; done: boolean }[];
   continueSlug?: string;
+  // The badge being worked towards, left out when the course's progress didn't load
+  badge: { level: number; earned: boolean; label: string; desc: string } | null;
 }
 
 export function CoursesPage() {
@@ -78,6 +85,7 @@ export function CoursesPage() {
           lastAccessed?.slug ??
           course.lessons.find((l) => !doneSet.has(l.slug))?.slug ??
           course.lessons[0]?.slug;
+        const next = nextBadge(p?.completed ?? 0, p?.total ?? course.lessons.length);
         return {
           key: course.key,
           icon: courseMeta(course.key).icon,
@@ -99,9 +107,16 @@ export function CoursesPage() {
             done: doneSet.has(l.slug),
           })),
           continueSlug,
+          badge: failedCourses.has(course.key)
+            ? null
+            : {
+                ...next,
+                label: badgeLabel(t, course.title, next.level),
+                desc: badgeDescription(t, course.title, next.level),
+              },
         };
       });
-  }, [serverCourses, progressMap, t]);
+  }, [serverCourses, progressMap, failedCourses, t]);
 
   const syllabus = selectedKey ? allCourses.find((c) => c.key === selectedKey) : null;
 
@@ -128,17 +143,20 @@ export function CoursesPage() {
             <LoadError text={t('progress.loadFailed')} onRetry={refreshProgress} />
           </div>
         )}
+        <PageHeader title={t('nav.courses')} subtitle={t('courses.subtitle')} />
         {/* Course grid */}
         <div className="grid grid-cols-1 @2xl:grid-cols-2 gap-4">
           {allCourses.map((c) => (
             <div
               key={c.key}
               onClick={() => openCourse(c.key)}
-              className="panel rounded-xl overflow-hidden cursor-pointer transition-all hover:border-[var(--accent)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_#0004]"
+              className="group panel rounded-xl overflow-hidden cursor-pointer transition-all hover:border-[var(--course)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_#0004]"
+              style={{ '--course': c.color, backgroundImage: courseWash(c.key) } as CSSProperties}
             >
               <div className="h-1.5 w-full" style={{ background: c.color }} />
               <div className="p-5">
                 <div className="flex items-center gap-3.5 mb-3.5">
+                  <CourseMark courseKey={c.key} />
                   <div className="flex-1 min-w-0">
                     <div
                       className="text-base font-bold mb-0.5 flex items-center gap-2"
@@ -159,11 +177,24 @@ export function CoursesPage() {
                   </span>
                 </div>
                 <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">{c.desc}</p>
-                <div className="mb-4">
-                  <span className="text-[11px] text-[var(--text3)]">
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  <span className="text-[11px] text-[var(--text3)] flex-shrink-0">
                     <strong className="text-[var(--text2)]">{c.lessonCount}</strong>{' '}
                     {t('courses.lessons', { count: c.lessonCount })}
                   </span>
+                  {c.badge && (
+                    <span
+                      className="flex items-center gap-1.5 min-w-0 text-[11px] text-[var(--text3)]"
+                      title={c.badge.desc}
+                    >
+                      <BadgeEmblem courseKey={c.key} level={c.badge.level} size={22} />
+                      <span className="truncate">
+                        {c.badge.earned
+                          ? c.badge.label
+                          : t('courses.nextBadge', { badge: c.badge.label })}
+                      </span>
+                    </span>
+                  )}
                 </div>
                 <div className="flex items-center justify-between">
                   {c.progress > 0 ? (
@@ -197,9 +228,14 @@ export function CoursesPage() {
                         e.stopPropagation();
                         openCourse(c.key);
                       }}
-                      className="px-4 py-[7px] rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text)] text-xs font-semibold cursor-pointer hover:border-[var(--accent)] hover:text-[var(--accent)] transition"
+                      className="inline-flex items-center gap-1.5 px-4 py-[7px] rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text)] text-xs font-semibold cursor-pointer hover:border-[var(--accent)] hover:text-[var(--accent)] transition"
                     >
                       {t('courses.viewSyllabus')}
+                      <ArrowRight
+                        size={13}
+                        aria-hidden="true"
+                        className="transition-transform group-hover:translate-x-0.5"
+                      />
                     </button>
                   )}
                 </div>
@@ -220,7 +256,11 @@ export function CoursesPage() {
             className="fixed right-0 top-0 bottom-0 w-[440px] max-w-full bg-[var(--bg2)] border-l border-[var(--border)] overflow-y-auto z-[101]"
             style={{ animation: 'slideIn 0.3s cubic-bezier(.22,1,.36,1)' }}
           >
-            <div className="flex items-start gap-3.5 p-6 pb-5 border-b border-[var(--border)]">
+            <div
+              className="flex items-start gap-3.5 p-6 pb-5 border-b border-[var(--border)]"
+              style={{ backgroundImage: courseWash(syllabus.key) }}
+            >
+              <CourseMark courseKey={syllabus.key} size={40} />
               <div className="flex-1 min-w-0">
                 <div className="text-xl font-bold mb-1 flex items-center gap-2">
                   {syllabus.name}

@@ -527,7 +527,7 @@
     "lessons_other": "lessons",
     "percentComplete": "{{pct}}% complete",
     "continue": "Continue",
-    "viewSyllabus": "View Syllabus →",
+    "viewSyllabus": "View Syllabus",
     "chapters": "Chapters",
     "descriptions": {
       "python": "The best place to start if you've never coded. From print and variables to functions, lists and dictionaries, then searching, sorting and recursion, ending with three small projects.",
@@ -550,7 +550,9 @@
       "algo-java": "Java Algorithms",
       "algo-c": "C Algorithms",
       "algo-trees-graphs": "Trees and Graphs Algorithms"
-    }
+    },
+    "subtitle": "Pick a language and learn it by writing real code, right in your browser.",
+    "nextBadge": "Next badge: {{badge}}"
   },
   "algorithms": {
     "desc": {
@@ -558,7 +560,8 @@
       "algo-java": "Java problems where you design the classes yourself: a bank account, a shape hierarchy, your own stack, queue and linked list, generics and iterators, plus searching and sorting.",
       "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.",
       "algo-trees-graphs": "Tree problems from easy to hard, in Python, Java or C: depth, mirror images, binary search trees, levels and paths. Every challenge comes in all three, and you can switch language on any of them."
-    }
+    },
+    "subtitle": "Practise on problems from easy to hard, in the language you're learning."
   },
   "progress": {
     "courses": "Courses",
