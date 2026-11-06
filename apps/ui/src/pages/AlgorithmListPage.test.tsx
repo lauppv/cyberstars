@@ -25,14 +25,14 @@ const { useAuth } = await import('../context/AuthContext');
 const { useAllProgress } = await import('../context/ProgressContext');
 const { AlgorithmListPage } = await import('./AlgorithmListPage');
 
-function progress(failed = false) {
+function progress(failed = false, completed = 1) {
   vi.mocked(useAllProgress).mockReturnValue({
     progressMap: failed
       ? {}
       : {
           'algo-python': {
             courseKey: 'algo-python',
-            completed: 1,
+            completed,
             total: 2,
             earnedXp: 10,
             totalXp: 21,
@@ -76,6 +76,13 @@ describe('AlgorithmListPage', () => {
     expect(screen.getByRole('heading', { name: 'Python Algorithms' })).toBeInTheDocument();
     expect(screen.getByText('Solved: 1 of 2')).toBeInTheDocument();
     expect(screen.getByText('Next badge: Python Algorithms Bronze')).toBeInTheDocument();
+  });
+
+  it('counts solved from the same progress as the badge', () => {
+    // A completed challenge that left the curriculum still counts on the server
+    progress(false, 2);
+    renderPage();
+    expect(screen.getByText('Solved: 2 of 2')).toBeInTheDocument();
   });
 
   it('shows a guest the first badge and no progress', () => {

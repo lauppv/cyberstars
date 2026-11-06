@@ -60,7 +60,6 @@ export function AlgorithmListPage() {
   );
 
   const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
-  const solved = lessons.filter((l) => l.completed).length;
   // No badge from progress that didn't load: it would be the wrong one
   const badge = failedCourses.has(courseKey)
     ? null
@@ -130,16 +129,17 @@ export function AlgorithmListPage() {
               )}
             </div>
 
+            {/* Counted as the badge is, so the two never disagree */}
             {isLoggedIn && progress && (
               <div className="mb-4">
                 <div className="text-[11px] text-[var(--text3)] mb-1">
-                  {t('progress.solved', { done: solved, total: lessons.length })}
+                  {t('progress.solved', { done: progress.completed, total: progress.total })}
                 </div>
                 <div className="h-1 bg-[var(--bg3)] rounded-sm overflow-hidden">
                   <div
                     className="h-full rounded-sm transition-[width] duration-400"
                     style={{
-                      width: `${progressPct(solved, lessons.length)}%`,
+                      width: `${progressPct(progress.completed, progress.total)}%`,
                       background: courseMeta(courseKey).color,
                     }}
                   />
