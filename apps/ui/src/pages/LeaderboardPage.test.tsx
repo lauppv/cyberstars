@@ -77,7 +77,7 @@ describe('LeaderboardPage', () => {
     expect(screen.getByText('220 XP')).toBeDefined();
   });
 
-  it('crowns the first three places', async () => {
+  it('crowns the top places', async () => {
     renderPage();
     const ada = (await screen.findByText('Ada')).closest('a')!;
     const bo = screen.getByText('Bo').closest('a')!;
@@ -116,7 +116,7 @@ describe('LeaderboardPage', () => {
     renderPage();
     expect(await screen.findByText('Your rank')).toBeDefined();
     expect(screen.getByText('Zed')).toBeDefined();
-    // past the podium a place is its number, no crown
+    // past the top ten a place is its number, no crown
     const zed = screen.getByText('Zed').closest('a')!;
     expect(zed.querySelector('[title="Place 40"]')).toHaveTextContent('40');
     expect(zed.querySelector('svg')).toBeNull();
