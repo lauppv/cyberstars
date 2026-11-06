@@ -554,8 +554,7 @@
       "algo-trees-graphs": "Trees and Graphs Algorithms",
       "web": "Web Development"
     },
-    "subtitle": "Pick a language and learn it by writing real code, right in your browser.",
-    "nextBadge": "Next badge: {{badge}}"
+    "subtitle": "Pick a language and learn it by writing real code, right in your browser."
   },
   "algorithms": {
     "desc": {
