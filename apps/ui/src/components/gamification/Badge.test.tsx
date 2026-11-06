@@ -10,7 +10,7 @@ const { Badge } = await import('./Badge');
 describe('Badge', () => {
   it('uses the description as tooltip when earned', () => {
     render(
-      <Badge courseKey="python" level={1} label="Gold" earned description="Finish 30 lessons" />,
+      <Badge courseKey="python" level={3} label="Gold" earned description="Finish 30 lessons" />,
     );
     const badge = screen.getByText('Gold').closest('div') as HTMLElement;
     expect(badge).toHaveAttribute('title', 'Finish 30 lessons');
@@ -27,7 +27,7 @@ describe('Badge', () => {
     render(
       <Badge
         courseKey="python"
-        level={1}
+        level={2}
         label="Silver"
         earned={false}
         description="Finish 20 lessons"
@@ -39,7 +39,7 @@ describe('Badge', () => {
   });
 
   it('appends the not-earned suffix to the label when locked without a description', () => {
-    render(<Badge courseKey="python" level={1} label="First Steps" earned={false} />);
+    render(<Badge courseKey="python" level={0} label="First Steps" earned={false} />);
     const badge = screen.getByText('First Steps').closest('div') as HTMLElement;
     expect(badge).toHaveAttribute('title', 'First Steps (locked)');
   });
