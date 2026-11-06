@@ -9,7 +9,7 @@ import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import type { Course } from '@cyberstars/shared/lesson';
 import type { CourseProgress } from '@cyberstars/shared/progress';
-import { courseMeta, courseTitle } from '../constants/courses';
+import { courseMeta, courseTitle, courseWash } from '../constants/courses';
 import {
   ALGO_COURSE_KEYS,
   MAIN_COURSE_KEYS,
@@ -107,7 +107,7 @@ function Card({
       type="button"
       onClick={onClick}
       className="panel w-full p-5 flex gap-4 text-left cursor-pointer transition hover:-translate-y-0.5 hover:border-[var(--accent)]"
-      style={{ backgroundImage: `linear-gradient(135deg, ${color}26, transparent 60%)` }}
+      style={{ backgroundImage: courseWash(course.key) }}
     >
       <Ring pct={pct} color={color} />
       <div className="flex-1 min-w-0">
