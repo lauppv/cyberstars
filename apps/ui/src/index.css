@@ -59,8 +59,8 @@
   /* Sticky app chrome (the topbar). */
   --chrome: #0b0b0e;
   --page-bg: #0b0b0e;
-  /* The landing page's purple: a wash for its bands and glows. The app
-     itself stays flat; only the presentation page carries colour. */
+  /* The landing page's purple: a wash for its bands and glows. Inside the
+     app it only breathes behind a page's header (.page-glow). */
   --accent-wash: rgba(108, 92, 231, 0.16);
   --accent-glow-strong: rgba(108, 92, 231, 0.32);
   /* Charts: the student's own series in the accent, the context it is read
@@ -114,6 +114,10 @@ body {
     var(--accent-glow-strong) 65%,
     var(--page-bg)
   );
+}
+/* The same purple, fainter, behind a page's title inside the app */
+.page-glow {
+  background: radial-gradient(ellipse 30% 45% at 30% 50%, var(--accent-wash), transparent);
 }
 .landing-gradient-text {
   background: linear-gradient(180deg, var(--text) 10%, #a99cf5 90%);

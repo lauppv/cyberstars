@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import i18next from 'i18next';
-import { courseLabel, courseMeta, courseTitle } from './courses';
+import { courseLabel, courseMeta, courseTitle, courseWash } from './courses';
 
 describe('courseMeta', () => {
   it('resolves base languages', () => {
@@ -42,5 +42,13 @@ describe('courseTitle', () => {
     expect(courseTitle('algo-trees-graphs', ro)).toBe('Algoritmi pe arbori și grafuri');
     expect(courseLabel('algo-trees-graphs', ro)).toBe('Arbori și grafuri');
     expect(courseLabel('algo-java', ro)).toBe('Java');
+  });
+});
+
+describe('courseWash', () => {
+  it("fades the course's colour into the card", () => {
+    expect(courseWash('algo-java')).toBe(
+      `linear-gradient(135deg, ${courseMeta('java').color}26, transparent 60%)`,
+    );
   });
 });

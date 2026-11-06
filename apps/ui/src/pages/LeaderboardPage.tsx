@@ -5,6 +5,9 @@ import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Avatar } from '../components/ui/Avatar';
+import { RankCrown } from '../components/gamification/RankCrown';
+import { RankRegalia } from '../components/gamification/RankRegalia';
+import { CROWNS } from '../components/gamification/crowns';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as leaderboardService from '../services/leaderboardService';
 import type { LeaderboardEntry } from '@cyberstars/shared/leaderboard';
@@ -20,6 +23,8 @@ function Row({
   isMe: boolean;
   t: (k: string, o?: Record<string, unknown>) => string;
 }) {
+  // A crown and the podium's insignia have to be earned, so a place at 0 XP shows its number
+  const crowned = entry.rank <= CROWNS.length && entry.totalXp > 0;
   return (
     <Link
       to={`/u/${entry.userId}`}
@@ -27,8 +32,21 @@ function Row({
         isMe ? 'bg-[var(--accent)]/10' : ''
       }`}
     >
-      <span className="w-8 sm:w-10 text-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0">
-        {entry.rank}
+      {/* As tall as the avatar, so the podium's insignia overhangs into the padding */}
+      <span
+        className="w-12 h-9 flex justify-center items-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0"
+        title={t('leaderboard.place', { rank: entry.rank })}
+      >
+        {crowned ? (
+          <>
+            <RankRegalia rank={entry.rank}>
+              <RankCrown rank={entry.rank} />
+            </RankRegalia>
+            <span className="sr-only">{entry.rank}</span>
+          </>
+        ) : (
+          entry.rank
+        )}
       </span>
       <Avatar url={entry.avatarUrl} name={entry.name} size={36} />
       <div className="min-w-0 flex-1">

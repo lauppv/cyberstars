@@ -77,6 +77,28 @@ describe('LeaderboardPage', () => {
     expect(screen.getByText('220 XP')).toBeDefined();
   });
 
+  it('crowns the top places', async () => {
+    renderPage();
+    const ada = (await screen.findByText('Ada')).closest('a')!;
+    const bo = screen.getByText('Bo').closest('a')!;
+    expect(ada.querySelector('svg linearGradient')).not.toBeNull();
+    expect(ada.querySelector('[title="Place 1"]')).toHaveTextContent('1');
+    expect(bo.querySelector('[title="Place 2"] svg')).not.toBeNull();
+    expect(ada.querySelector('[title="Place 1"] [data-regalia="1"]')).not.toBeNull();
+  });
+
+  it('keeps the crowns for places that earned XP, so a tie at 0 XP gets none', async () => {
+    const cy = { ...bo, userId: 3, name: 'Cy', rank: 3, totalXp: 0, lessonsDone: 0 };
+    const di = { ...cy, userId: 4, name: 'Di' };
+    mockGetLeaderboard.mockResolvedValue({ entries: [ada, bo, cy, di], total: 4 });
+    renderPage();
+    for (const name of ['Cy', 'Di']) {
+      const row = (await screen.findByText(name)).closest('a')!;
+      expect(row.querySelector('[title="Place 3"]')).toHaveTextContent('3');
+      expect(row.querySelector('svg')).toBeNull();
+    }
+  });
+
   it('redirects a guest away and does not fetch', async () => {
     mockUseAuth.mockReturnValue({ user: null, isLoggedIn: false, isLoading: false } as ReturnType<
       typeof useAuth
@@ -107,6 +129,10 @@ describe('LeaderboardPage', () => {
     renderPage();
     expect(await screen.findByText('Your rank')).toBeDefined();
     expect(screen.getByText('Zed')).toBeDefined();
+    // past the top ten a place is its number, no crown
+    const zed = screen.getByText('Zed').closest('a')!;
+    expect(zed.querySelector('[title="Place 40"]')).toHaveTextContent('40');
+    expect(zed.querySelector('svg')).toBeNull();
   });
 
   it('loads more entries on demand', async () => {

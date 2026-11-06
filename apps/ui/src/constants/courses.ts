@@ -33,6 +33,11 @@ export function courseMeta(key: string): CourseMeta {
   );
 }
 
+// A soft corner of the course's colour, the wash its cards carry
+export function courseWash(key: string): string {
+  return `linear-gradient(135deg, ${courseMeta(key).color}26, transparent 60%)`;
+}
+
 // What a course or challenge set is about, in the page's language: a
 // language's own name, or a topic such as Trees and Graphs translated.
 export function courseLabel(key: string, t: TFunction = i18next.t): string {

@@ -2,6 +2,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Avatar } from '../components/ui/Avatar';
+import { RankCrown } from '../components/gamification/RankCrown';
+import { RankRegalia } from '../components/gamification/RankRegalia';
+import { CROWNS } from '../components/gamification/crowns';
 import { useAuth } from '../context/AuthContext';
 import { useMessages } from '../context/MessagesContext';
 import { Topbar } from '../components/layout/Topbar';
@@ -263,6 +266,18 @@ export function PublicProfilePage() {
                   <p className="text-[11px] text-[var(--accent)] mt-1">{profile.status}</p>
                 )}
               </div>
+              {/* A top ten place wears its leaderboard crown; rank is null at 0 XP or with progress hidden */}
+              {profile.progress?.rank != null && profile.progress.rank <= CROWNS.length && (
+                <span
+                  className="flex-shrink-0"
+                  title={t('leaderboard.place', { rank: profile.progress.rank })}
+                  data-testid="profile-crown"
+                >
+                  <RankRegalia rank={profile.progress.rank}>
+                    <RankCrown rank={profile.progress.rank} />
+                  </RankRegalia>
+                </span>
+              )}
             </div>
 
             {profile.bio && (
