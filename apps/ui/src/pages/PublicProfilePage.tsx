@@ -328,6 +328,8 @@ export function PublicProfilePage() {
                   {profile.progress.badgeList.map((b) => (
                     <Badge
                       key={`${b.courseKey}-${b.level}`}
+                      courseKey={b.courseKey}
+                      level={b.level}
                       label={badgeLabel(t, courseTitle(b.courseKey), b.level)}
                       earned
                       description={badgeDescription(t, courseTitle(b.courseKey), b.level)}

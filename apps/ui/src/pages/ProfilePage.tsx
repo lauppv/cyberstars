@@ -330,6 +330,8 @@ export function ProfilePage() {
               {g.badges.map((b) => (
                 <Badge
                   key={`${b.courseKey}-${b.level}`}
+                  courseKey={b.courseKey}
+                  level={b.level}
                   label={b.label}
                   earned={b.earned}
                   description={b.description}
