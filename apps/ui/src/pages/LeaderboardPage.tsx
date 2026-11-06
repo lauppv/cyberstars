@@ -33,7 +33,7 @@ function Row({
         className="w-8 sm:w-10 flex justify-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0"
         title={t('leaderboard.place', { rank: entry.rank })}
       >
-        {entry.rank <= CROWNS.length ? (
+        {entry.rank <= CROWNS.length && entry.totalXp > 0 ? (
           <>
             <RankCrown rank={entry.rank} />
             <span className="sr-only">{entry.rank}</span>

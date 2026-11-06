@@ -86,6 +86,18 @@ describe('LeaderboardPage', () => {
     expect(bo.querySelector('[title="Place 2"] svg')).not.toBeNull();
   });
 
+  it('keeps the crowns for places that earned XP, so a tie at 0 XP gets none', async () => {
+    const cy = { ...bo, userId: 3, name: 'Cy', rank: 3, totalXp: 0, lessonsDone: 0 };
+    const di = { ...cy, userId: 4, name: 'Di' };
+    mockGetLeaderboard.mockResolvedValue({ entries: [ada, bo, cy, di], total: 4 });
+    renderPage();
+    for (const name of ['Cy', 'Di']) {
+      const row = (await screen.findByText(name)).closest('a')!;
+      expect(row.querySelector('[title="Place 3"]')).toHaveTextContent('3');
+      expect(row.querySelector('svg')).toBeNull();
+    }
+  });
+
   it('redirects a guest away and does not fetch', async () => {
     mockUseAuth.mockReturnValue({ user: null, isLoggedIn: false, isLoading: false } as ReturnType<
       typeof useAuth
