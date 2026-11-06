@@ -445,7 +445,8 @@
     "lessons_other": "{{count}} lessons",
     "loadMore": "Load more",
     "empty": "No one has earned XP yet. Complete a lesson to claim the top spot!",
-    "error": "Could not load the leaderboard. Please try again later."
+    "error": "Could not load the leaderboard. Please try again later.",
+    "place": "Place {{rank}}"
   },
   "messages": {
     "title": "Messages",

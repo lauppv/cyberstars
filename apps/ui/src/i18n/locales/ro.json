@@ -480,7 +480,8 @@
     "lessons_other": "{{count}} de lecții",
     "loadMore": "Încarcă mai multe",
     "empty": "Nimeni nu a câștigat XP încă. Termină o lecție ca să ocupi primul loc!",
-    "error": "Clasamentul nu a putut fi încărcat. Încearcă din nou mai târziu."
+    "error": "Clasamentul nu a putut fi încărcat. Încearcă din nou mai târziu.",
+    "place": "Locul {{rank}}"
   },
   "messages": {
     "title": "Mesaje",

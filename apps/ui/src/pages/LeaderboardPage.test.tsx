@@ -77,6 +77,15 @@ describe('LeaderboardPage', () => {
     expect(screen.getByText('220 XP')).toBeDefined();
   });
 
+  it('crowns the first three places', async () => {
+    renderPage();
+    const ada = (await screen.findByText('Ada')).closest('a')!;
+    const bo = screen.getByText('Bo').closest('a')!;
+    expect(ada.querySelector('svg linearGradient')).not.toBeNull();
+    expect(ada.querySelector('[title="Place 1"]')).toHaveTextContent('1');
+    expect(bo.querySelector('[title="Place 2"] svg')).not.toBeNull();
+  });
+
   it('redirects a guest away and does not fetch', async () => {
     mockUseAuth.mockReturnValue({ user: null, isLoggedIn: false, isLoading: false } as ReturnType<
       typeof useAuth
@@ -107,6 +116,10 @@ describe('LeaderboardPage', () => {
     renderPage();
     expect(await screen.findByText('Your rank')).toBeDefined();
     expect(screen.getByText('Zed')).toBeDefined();
+    // past the podium a place is its number, no crown
+    const zed = screen.getByText('Zed').closest('a')!;
+    expect(zed.querySelector('[title="Place 40"]')).toHaveTextContent('40');
+    expect(zed.querySelector('svg')).toBeNull();
   });
 
   it('loads more entries on demand', async () => {

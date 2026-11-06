@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Avatar } from '../components/ui/Avatar';
+import { RankCrown } from '../components/gamification/RankCrown';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as leaderboardService from '../services/leaderboardService';
 import type { LeaderboardEntry } from '@cyberstars/shared/leaderboard';
@@ -27,8 +28,18 @@ function Row({
         isMe ? 'bg-[var(--accent)]/10' : ''
       }`}
     >
-      <span className="w-8 sm:w-10 text-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0">
-        {entry.rank}
+      <span
+        className="w-8 sm:w-10 flex justify-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0"
+        title={t('leaderboard.place', { rank: entry.rank })}
+      >
+        {entry.rank <= 3 ? (
+          <>
+            <RankCrown rank={entry.rank} />
+            <span className="sr-only">{entry.rank}</span>
+          </>
+        ) : (
+          entry.rank
+        )}
       </span>
       <Avatar url={entry.avatarUrl} name={entry.name} size={36} />
       <div className="min-w-0 flex-1">
