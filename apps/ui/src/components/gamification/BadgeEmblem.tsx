@@ -1,4 +1,5 @@
 import { useId, type ReactNode } from 'react';
+import { baseLanguage } from '@cyberstars/shared/constants';
 
 // Frame metal per badge level: 0 First Steps, then Bronze, Silver, Gold, Platinum, Diamond, Legend
 const TIERS = [
@@ -73,7 +74,7 @@ export function BadgeEmblem({ courseKey, level, size = 56 }: BadgeEmblemProps) {
   const gradientId = `badge${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   const tier = TIERS[Math.min(level, TIERS.length - 1)];
   const algo = courseKey.startsWith('algo-');
-  const glyph = GLYPHS[algo ? courseKey.slice(5) : courseKey] ?? FALLBACK_GLYPH;
+  const glyph = GLYPHS[baseLanguage(courseKey)] ?? FALLBACK_GLYPH;
   const metal = `url(#${gradientId})`;
 
   return (
