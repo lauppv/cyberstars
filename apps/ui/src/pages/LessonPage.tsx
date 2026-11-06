@@ -1155,6 +1155,7 @@ export function LessonPage() {
       <AchievementToast
         title={t('lesson.badgeEarned', { label: gamification.newBadge?.label ?? '' })}
         visible={!!gamification.newBadge}
+        badge={gamification.newBadge ?? undefined}
         onClose={gamification.dismissNewBadge}
       />
       {tutor?.enabled && !devMode && failedRuns >= 3 && !stuckClosed && (
