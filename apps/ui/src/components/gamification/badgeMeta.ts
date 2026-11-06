@@ -15,3 +15,18 @@ export function badgeDescription(t: TFunction, courseTitle: string, level: numbe
   if (level === 0) return t('gamification.firstStepsDesc', { course: courseTitle });
   return t('gamification.tierDesc', { course: courseTitle, count: level * 10 });
 }
+
+// A course has First Steps, then one badge per full 10 lessons (at least one)
+export function badgeMaxLevel(total: number): number {
+  return Math.max(1, Math.floor(total / 10));
+}
+
+// The badge a student is working towards on a course, or its last one once they have them all
+export function nextBadge(done: number, total: number): { level: number; earned: boolean } {
+  if (done < 1) return { level: 0, earned: false };
+  const max = badgeMaxLevel(total);
+  for (let level = 1; level <= max; level++) {
+    if (done < level * 10) return { level, earned: false };
+  }
+  return { level: max, earned: true };
+}
