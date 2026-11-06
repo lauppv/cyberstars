@@ -20,7 +20,18 @@ const LANGUAGE_META: Record<string, CourseMeta> = {
     label: 'Trees and Graphs',
     langLabel: 'Python · Java · C',
   },
+  // Not built yet: the Courses page shows it as coming soon (COMING_SOON_COURSE_KEYS)
+  web: {
+    icon: '🌐',
+    color: '#EC4899',
+    label: 'Web Development',
+    langLabel: 'HTML · CSS · JavaScript',
+  },
 };
+
+// Courses announced on the Courses page before they have any lessons: a card
+// that leads nowhere, with no route, seed row or progress behind it
+export const COMING_SOON_COURSE_KEYS = ['web'] as const;
 
 export function courseMeta(key: string): CourseMeta {
   return (

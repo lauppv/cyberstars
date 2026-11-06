@@ -96,6 +96,23 @@ describe('CoursesPage', () => {
     expect(screen.getAllByText('Beta')).toHaveLength(3);
   });
 
+  it('shows Web Development as coming soon, with nothing to open', () => {
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockNavigate.mockClear();
+    renderPage();
+    const card = screen.getByText('Web Development').closest('[aria-disabled="true"]')!;
+    expect(within(card as HTMLElement).getByText('HTML · CSS · JavaScript')).toBeInTheDocument();
+    expect(within(card as HTMLElement).getByText('Coming soon')).toBeInTheDocument();
+    expect(within(card as HTMLElement).queryByRole('button')).toBeNull();
+    expect(within(card as HTMLElement).queryByRole('link')).toBeNull();
+    fireEvent.click(card);
+    expect(mockNavigate).not.toHaveBeenCalled();
+  });
+
   it('shows loading state when curriculum is loading', () => {
     mockUseCurriculum.mockReturnValue({ courses: [], isLoading: true, refresh: vi.fn() });
     renderPage();

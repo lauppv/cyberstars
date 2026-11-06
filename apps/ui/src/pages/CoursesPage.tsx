@@ -7,7 +7,7 @@ import { PageHeader } from '../components/layout/PageHeader';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
-import { courseMeta, courseWash } from '../constants/courses';
+import { COMING_SOON_COURSE_KEYS, courseMeta, courseTitle, courseWash } from '../constants/courses';
 import {
   progressPct,
   xpForCourse,
@@ -239,6 +239,39 @@ export function CoursesPage() {
                     </button>
                   )}
                 </div>
+              </div>
+            </div>
+          ))}
+          {COMING_SOON_COURSE_KEYS.map((key) => (
+            <div
+              key={key}
+              aria-disabled="true"
+              title={t('common.comingSoonHint')}
+              className="panel rounded-xl overflow-hidden cursor-default opacity-70"
+              style={{ backgroundImage: courseWash(key) }}
+            >
+              <div className="h-1.5 w-full" style={{ background: courseMeta(key).color }} />
+              <div className="p-5">
+                <div className="flex items-center gap-3.5 mb-3.5">
+                  <CourseMark courseKey={key} />
+                  <div className="flex-1 min-w-0">
+                    <div
+                      className="text-base font-bold mb-0.5 flex items-center gap-2"
+                      style={{ letterSpacing: '-0.2px' }}
+                    >
+                      {courseTitle(key, t)}
+                    </div>
+                    <div className="text-[12px] text-[var(--text3)]">
+                      {courseMeta(key).langLabel}
+                    </div>
+                  </div>
+                  <span className="flex-shrink-0 self-start text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] text-[var(--text2)]">
+                    {t('common.comingSoon')}
+                  </span>
+                </div>
+                <p className="text-[13px] text-[var(--text2)] leading-relaxed">
+                  {t(`courses.descriptions.${key}`)}
+                </p>
               </div>
             </div>
           ))}

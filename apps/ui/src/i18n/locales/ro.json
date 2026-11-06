@@ -578,7 +578,8 @@
       "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, tipuri generice și iteratori, plus căutare și sortare.",
       "algo-c": "Probleme de C aproape de hardware: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
       "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele.",
-      "trees-graphs": "Structurile din spatele folderelor, hărților și rețelelor, predate în Python, Java sau C: fiecare lecție există în toate trei și poți schimba limbajul la oricare dintre ele."
+      "trees-graphs": "Structurile din spatele folderelor, hărților și rețelelor, predate în Python, Java sau C: fiecare lecție există în toate trei și poți schimba limbajul la oricare dintre ele.",
+      "web": "Construiești pagini web de la zero: structura cu HTML, aspectul cu CSS, apoi le dai viață cu JavaScript."
     },
     "lessons_few": "lecții",
     "names": {
@@ -590,7 +591,8 @@
       "algo-python": "Algoritmi Python",
       "algo-java": "Algoritmi Java",
       "algo-c": "Algoritmi C",
-      "algo-trees-graphs": "Algoritmi pe arbori și grafuri"
+      "algo-trees-graphs": "Algoritmi pe arbori și grafuri",
+      "web": "Dezvoltare web"
     },
     "subtitle": "Alege un limbaj și învață-l scriind cod adevărat, direct în browser.",
     "nextBadge": "Următoarea insignă: {{badge}}"
