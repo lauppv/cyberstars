@@ -10,9 +10,11 @@ export interface LeaderboardRow {
   rank: number;
 }
 
-// Every user ranked by total XP, highest first. RANK() leaves gaps on ties
-// (§7.4). Secondary order by id keeps pagination stable within a tie. The full
-// list is cached in the service, so this runs at most once per cache window.
+// Every user ranked by total XP, highest first, each on a place of their own.
+// A tie goes to whoever got there first, the one whose latest counted lesson
+// was completed earlier; id settles the rest (no XP, or no completion time)
+// and keeps pagination stable. The full list is cached in the service, so this
+// runs at most once per cache window.
 //
 // XP is DERIVED, never stored (see shared/constants.ts). We recompute the exact
 // same amount as progress.service.getCourseProgress, but in one aggregate query
@@ -41,7 +43,8 @@ export async function getRanked(): Promise<LeaderboardRow[]> {
               AND dp.bonus_awarded = true
           ) THEN round((10 + (l.sort_order - 1)) * 0.2) ELSE 0 END
       ), 0)::int AS total_xp,
-      COUNT(l.id)::int AS lessons_done
+      COUNT(l.id)::int AS lessons_done,
+      MAX(CASE WHEN l.id IS NOT NULL THEN p.completed_at END) AS reached_at
     FROM users u
     LEFT JOIN user_lesson_progress p ON p.user_id = u.id AND p.completed = true
     LEFT JOIN lessons l ON l.course_key = p.course_key AND l.slug = p.lesson_slug
@@ -49,8 +52,8 @@ export async function getRanked(): Promise<LeaderboardRow[]> {
   `;
   return prisma.$queryRaw<LeaderboardRow[]>(Prisma.sql`
     SELECT id, name, avatar_url, total_xp, lessons_done,
-      CAST(RANK() OVER (ORDER BY total_xp DESC) AS int) AS rank
+      CAST(ROW_NUMBER() OVER (ORDER BY total_xp DESC, reached_at ASC NULLS LAST, id) AS int) AS rank
     FROM (${ranked}) ranked
-    ORDER BY rank, id
+    ORDER BY rank
   `);
 }
