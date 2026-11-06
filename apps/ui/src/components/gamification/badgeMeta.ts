@@ -11,8 +11,8 @@ const COURSE_BADGE_ICONS: Record<string, string> = {
   'algo-c': '🧩',
 };
 
-// Tier names for levels 1..3; beyond that the level, as the page's language shortens it.
-const TIER_KEYS = ['bronze', 'silver', 'gold'];
+// Tier names for levels 1..6, one per frame in BadgeEmblem; beyond that the level, as the page's language shortens it.
+const TIER_KEYS = ['bronze', 'silver', 'gold', 'platinum', 'diamond', 'legend'];
 
 export function badgeIcon(courseKey: string): string {
   return COURSE_BADGE_ICONS[courseKey] ?? '⭐';

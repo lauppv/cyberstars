@@ -1207,6 +1207,9 @@
     "bronze": "Bronze",
     "silver": "Silver",
     "gold": "Gold",
+    "platinum": "Platinum",
+    "diamond": "Diamond",
+    "legend": "Legend",
     "notEarned": " (not yet earned)"
   },
   "level": {
