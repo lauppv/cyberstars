@@ -60,24 +60,26 @@ describe('Leaderboard', () => {
     expect(last.lessonsDone).toBe(0);
   });
 
-  it('uses RANK() with gaps on ties', async () => {
+  it('gives a tie to whoever reached the XP first, each on a place of their own', async () => {
     const [l0] = await twoPythonLessons();
     const { agent: aA, email: emailA } = await createAuthenticatedAgent();
     const { email: emailB } = await createAuthenticatedAgent();
+    const [idA, idB] = [await userIdFor(emailA), await userIdFor(emailB)];
 
-    await markComplete(await userIdFor(emailA), 'python', l0.slug);
-    await markComplete(await userIdFor(emailB), 'python', l0.slug);
+    await markComplete(idA, 'python', l0.slug);
+    await markComplete(idB, 'python', l0.slug);
+    // B, the newer account, got there first, so the tie isn't settled by id
+    await prisma.userLessonProgress.updateMany({
+      where: { userId: idB },
+      data: { completedAt: new Date(Date.now() - 60_000) },
+    });
 
     const board = await fetchBoard(aA);
-    const tied = board.entries.filter(
-      (e: LeaderboardEntry) => e.totalXp === xpForLesson(l0.sortOrder),
-    );
-    expect(tied).toHaveLength(2);
-    expect(tied.every((e) => e.rank === 1)).toBe(true);
-
-    // Gap: the next distinct score (Sentinel, 0 XP) is rank 3, not 2.
-    const sentinel = board.entries.find((e) => e.totalXp === 0);
-    expect(sentinel?.rank).toBe(3);
+    expect(board.entries.map((e: LeaderboardEntry) => [e.userId, e.rank])).toEqual([
+      [idB, 1],
+      [idA, 2],
+      [expect.any(Number), 3],
+    ]);
   });
 
   it('GET /me returns the caller rank; 401 without auth', async () => {

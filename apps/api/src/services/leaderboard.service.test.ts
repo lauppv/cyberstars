@@ -15,11 +15,11 @@ vi.mock('../repositories/leaderboard.repository.js', () => mockRepo);
 
 const { getPage, getMyRank, clearCache } = await import('./leaderboard.service.js');
 
-// Three users, one tie: RANK() with gaps means the two 200-XP users share rank
-// 1 and the next is rank 3 (§7.4). 220 XP → level 2 (levelFromXp).
+// Three users, one tie: the repository already gave each a place of their own,
+// so the two 220-XP users are 1 and 2. 220 XP → level 2 (levelFromXp).
 const rows = [
   { id: 1, name: 'Ada', avatar_url: '/a.png', total_xp: 220, lessons_done: 12, rank: 1 },
-  { id: 2, name: 'Bo', avatar_url: null, total_xp: 220, lessons_done: 12, rank: 1 },
+  { id: 2, name: 'Bo', avatar_url: null, total_xp: 220, lessons_done: 12, rank: 2 },
   { id: 3, name: 'Cy', avatar_url: null, total_xp: 50, lessons_done: 5, rank: 3 },
 ];
 

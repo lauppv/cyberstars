@@ -1,5 +1,5 @@
 export interface LeaderboardEntry {
-  rank: number; // 1-based, RANK() with gaps on ties (2 users at 1 → next is 3)
+  rank: number; // 1-based, one place per user; a tie goes to whoever reached the XP first
   userId: number;
   name: string;
   avatarUrl: string | null;
