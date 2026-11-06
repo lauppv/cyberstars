@@ -1,5 +1,6 @@
 import { useId, type ReactNode } from 'react';
 import { CROWNS, type CrownDesign, type Tone } from './crowns';
+import { metalGradient } from './metalGradient';
 
 // What a design paints with: its own tones and the gradients made of them
 interface Paint {
@@ -37,16 +38,6 @@ const STARDUST = [
   [16.5, 20.5, 0.4],
   [8, 15.5, 0.35],
 ];
-
-function gradient(id: string, tone: Tone) {
-  return (
-    <linearGradient id={id} x1="0" y1="0" x2="0.6" y2="1">
-      <stop offset="0" stopColor={tone.light} />
-      <stop offset="0.5" stopColor={tone.mid} />
-      <stop offset="1" stopColor={tone.dark} />
-    </linearGradient>
-  );
-}
 
 function gem(x: number, y: number, r: number) {
   return `M${x} ${y - r} L${x + r * 0.8} ${y} L${x} ${y + r} L${x - r * 0.8} ${y} Z`;
@@ -505,8 +496,8 @@ export function RankCrown({ rank }: { rank: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" data-crown={design}>
       <defs>
-        {gradient(`${id}b`, tone)}
-        {gradient(`${id}g`, bandTone ?? tone)}
+        {metalGradient(`${id}b`, tone)}
+        {metalGradient(`${id}g`, bandTone ?? tone)}
         <radialGradient id={`${id}h`}>
           <stop offset="0" stopColor={tone.mid} stopOpacity="0.55" />
           <stop offset="1" stopColor={tone.mid} stopOpacity="0" />

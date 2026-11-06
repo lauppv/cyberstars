@@ -6,6 +6,7 @@ import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Avatar } from '../components/ui/Avatar';
 import { RankCrown } from '../components/gamification/RankCrown';
+import { RankRegalia } from '../components/gamification/RankRegalia';
 import { CROWNS } from '../components/gamification/crowns';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as leaderboardService from '../services/leaderboardService';
@@ -22,6 +23,8 @@ function Row({
   isMe: boolean;
   t: (k: string, o?: Record<string, unknown>) => string;
 }) {
+  // A crown and the podium's insignia have to be earned, so a place at 0 XP shows its number
+  const crowned = entry.rank <= CROWNS.length && entry.totalXp > 0;
   return (
     <Link
       to={`/u/${entry.userId}`}
@@ -30,12 +33,14 @@ function Row({
       }`}
     >
       <span
-        className="w-8 sm:w-10 flex justify-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0"
+        className="w-12 flex justify-center items-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0"
         title={t('leaderboard.place', { rank: entry.rank })}
       >
-        {entry.rank <= CROWNS.length && entry.totalXp > 0 ? (
+        {crowned ? (
           <>
-            <RankCrown rank={entry.rank} />
+            <RankRegalia rank={entry.rank}>
+              <RankCrown rank={entry.rank} />
+            </RankRegalia>
             <span className="sr-only">{entry.rank}</span>
           </>
         ) : (
