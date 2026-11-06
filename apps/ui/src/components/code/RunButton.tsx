@@ -25,6 +25,7 @@ export function RunButton({ onClick, isRunning, onStop, className = '' }: RunBut
       </button>
     );
   }
+  // A tint of the output's blue, a step below Run Tests, the lesson's main move
   return (
     <button
       key="run"
@@ -32,11 +33,11 @@ export function RunButton({ onClick, isRunning, onStop, className = '' }: RunBut
       onClick={onClick}
       disabled={isRunning}
       title={t('code.runTitle')}
-      className={`px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--output)] text-black font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer ${className}`}
+      className={`px-[15px] py-[5px] rounded-[var(--radius-sm)] border border-[var(--output)]/45 bg-[var(--output)]/15 text-[var(--output)] font-semibold text-[13px] flex items-center gap-1.5 hover:bg-[var(--output)]/25 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer ${className}`}
     >
       {isRunning ? (
         <>
-          <span className="inline-block w-3 h-3 border-2 border-black border-t-transparent rounded-full animate-spin" />
+          <span className="inline-block w-3 h-3 border-2 border-current border-t-transparent rounded-full animate-spin" />
           {t('code.running')}
         </>
       ) : (

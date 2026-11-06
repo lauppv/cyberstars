@@ -77,7 +77,7 @@ export function WritePicture() {
     <Frame label={t('landing.how.write.picture')}>
       <Bar>
         <span>main.py</span>
-        <span className="px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[11px] font-semibold">
+        <span className="px-[9px] py-[3px] rounded-[var(--radius-sm)] border border-[var(--output)]/45 bg-[var(--output)]/15 text-[var(--output)] text-[11px] font-semibold">
           {t('code.run')}
         </span>
       </Bar>
