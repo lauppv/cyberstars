@@ -21,8 +21,6 @@ import {
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { LoadError } from '../components/ui/LoadError';
 import { CourseMark } from '../components/ui/CourseMark';
-import { BadgeEmblem } from '../components/gamification/BadgeEmblem';
-import { badgeDescription, badgeLabel, nextBadge } from '../components/gamification/badgeMeta';
 
 interface CourseData {
   key: string;
@@ -38,8 +36,6 @@ interface CourseData {
   desc: string;
   chapters: { name: string; slug: string; sortOrder: number; xp: number; done: boolean }[];
   continueSlug?: string;
-  // The badge being worked towards, left out when the course's progress didn't load
-  badge: { level: number; earned: boolean; label: string; desc: string } | null;
 }
 
 export function CoursesPage() {
@@ -85,7 +81,6 @@ export function CoursesPage() {
           lastAccessed?.slug ??
           course.lessons.find((l) => !doneSet.has(l.slug))?.slug ??
           course.lessons[0]?.slug;
-        const next = nextBadge(p?.completed ?? 0, p?.total ?? course.lessons.length);
         return {
           key: course.key,
           icon: courseMeta(course.key).icon,
@@ -107,16 +102,9 @@ export function CoursesPage() {
             done: doneSet.has(l.slug),
           })),
           continueSlug,
-          badge: failedCourses.has(course.key)
-            ? null
-            : {
-                ...next,
-                label: badgeLabel(t, course.title, next.level),
-                desc: badgeDescription(t, course.title, next.level),
-              },
         };
       });
-  }, [serverCourses, progressMap, failedCourses, t]);
+  }, [serverCourses, progressMap, t]);
 
   const syllabus = selectedKey ? allCourses.find((c) => c.key === selectedKey) : null;
 
@@ -177,24 +165,11 @@ export function CoursesPage() {
                   </span>
                 </div>
                 <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">{c.desc}</p>
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <span className="text-[11px] text-[var(--text3)] flex-shrink-0">
+                <div className="mb-4">
+                  <span className="text-[11px] text-[var(--text3)]">
                     <strong className="text-[var(--text2)]">{c.lessonCount}</strong>{' '}
                     {t('courses.lessons', { count: c.lessonCount })}
                   </span>
-                  {c.badge && (
-                    <span
-                      className="flex items-center gap-1.5 min-w-0 text-[11px] text-[var(--text3)]"
-                      title={c.badge.desc}
-                    >
-                      <BadgeEmblem courseKey={c.key} level={c.badge.level} size={22} />
-                      <span className="truncate">
-                        {c.badge.earned
-                          ? c.badge.label
-                          : t('courses.nextBadge', { badge: c.badge.label })}
-                      </span>
-                    </span>
-                  )}
                 </div>
                 <div className="flex items-center justify-between">
                   {c.progress > 0 ? (

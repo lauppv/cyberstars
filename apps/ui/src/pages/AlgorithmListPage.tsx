@@ -11,8 +11,6 @@ import { courseMeta, courseTitle, courseWash } from '../constants/courses';
 import { isBeta, progressPct, xpForLesson } from '@cyberstars/shared/constants';
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { CourseMark } from '../components/ui/CourseMark';
-import { BadgeEmblem } from '../components/gamification/BadgeEmblem';
-import { badgeDescription, badgeLabel, nextBadge } from '../components/gamification/badgeMeta';
 
 const DIFF_FILTERS = ['all', 'easy', 'medium', 'hard'] as const;
 
@@ -34,7 +32,7 @@ export function AlgorithmListPage() {
   const { t } = useTranslation();
   const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
-  const { progressMap, failedCourses, isLoading: progressLoading } = useAllProgress();
+  const { progressMap, isLoading: progressLoading } = useAllProgress();
   const [filter, setFilter] = useState<string>('all');
 
   const courseKey = `algo-${lang}`;
@@ -60,10 +58,6 @@ export function AlgorithmListPage() {
   );
 
   const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
-  // No badge from progress that didn't load: it would be the wrong one
-  const badge = failedCourses.has(courseKey)
-    ? null
-    : nextBadge(progress?.completed ?? 0, progress?.total ?? lessons.length);
 
   if (isLoading) {
     return (
@@ -101,7 +95,7 @@ export function AlgorithmListPage() {
             className="px-6 pt-6 pb-4 border-b border-[var(--border)]"
             style={{ backgroundImage: courseWash(courseKey) }}
           >
-            <div className="flex flex-wrap items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-4">
               <CourseMark courseKey={courseKey} size={40} />
               <div className="flex-1 min-w-0">
                 <h1 className="text-xl font-bold flex items-center gap-2">
@@ -112,24 +106,9 @@ export function AlgorithmListPage() {
                   {t('algoList.challenges', { count: lessons.length })}
                 </p>
               </div>
-              {badge && (
-                <span
-                  className="flex items-center gap-1.5 min-w-0 w-full @xl:w-auto @xl:max-w-[45%] text-[11px] text-[var(--text3)]"
-                  title={badgeDescription(t, courseTitle(courseKey, t), badge.level)}
-                >
-                  <BadgeEmblem courseKey={courseKey} level={badge.level} size={28} />
-                  <span className="truncate">
-                    {badge.earned
-                      ? badgeLabel(t, courseTitle(courseKey, t), badge.level)
-                      : t('courses.nextBadge', {
-                          badge: badgeLabel(t, courseTitle(courseKey, t), badge.level),
-                        })}
-                  </span>
-                </span>
-              )}
             </div>
 
-            {/* Counted as the badge is, so the two never disagree */}
+            {/* Counted on the server, so a solved challenge that left the curriculum still counts */}
             {isLoggedIn && progress && (
               <div className="mb-4">
                 <div className="text-[11px] text-[var(--text3)] mb-1">

@@ -594,8 +594,7 @@
       "algo-trees-graphs": "Algoritmi pe arbori și grafuri",
       "web": "Dezvoltare web"
     },
-    "subtitle": "Alege un limbaj și învață-l scriind cod adevărat, direct în browser.",
-    "nextBadge": "Următoarea insignă: {{badge}}"
+    "subtitle": "Alege un limbaj și învață-l scriind cod adevărat, direct în browser."
   },
   "algorithms": {
     "desc": {

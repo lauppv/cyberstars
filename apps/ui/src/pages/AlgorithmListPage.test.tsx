@@ -25,29 +25,27 @@ const { useAuth } = await import('../context/AuthContext');
 const { useAllProgress } = await import('../context/ProgressContext');
 const { AlgorithmListPage } = await import('./AlgorithmListPage');
 
-function progress(failed = false, completed = 1) {
+function progress(completed = 1) {
   vi.mocked(useAllProgress).mockReturnValue({
-    progressMap: failed
-      ? {}
-      : {
-          'algo-python': {
-            courseKey: 'algo-python',
-            completed,
-            total: 2,
-            earnedXp: 10,
-            totalXp: 21,
-            lessons: [
-              {
-                slug: 'reverse',
-                title: 'Reverse',
-                completed: true,
-                completedAt: null,
-                lastAccessedAt: null,
-              },
-            ],
+    progressMap: {
+      'algo-python': {
+        courseKey: 'algo-python',
+        completed,
+        total: 2,
+        earnedXp: 10,
+        totalXp: 21,
+        lessons: [
+          {
+            slug: 'reverse',
+            title: 'Reverse',
+            completed: true,
+            completedAt: null,
+            lastAccessedAt: null,
           },
-        },
-    failedCourses: new Set(failed ? ['algo-python'] : []),
+        ],
+      },
+    },
+    failedCourses: new Set(),
     isLoading: false,
     refresh: vi.fn(),
   } as unknown as ReturnType<typeof useAllProgress>);
@@ -70,22 +68,21 @@ describe('AlgorithmListPage', () => {
     >);
   });
 
-  it('shows a signed-in student how many are solved and the badge they work towards', () => {
+  it('shows a signed-in student how many are solved', () => {
     progress();
     renderPage();
     expect(screen.getByRole('heading', { name: 'Python Algorithms' })).toBeInTheDocument();
     expect(screen.getByText('Solved: 1 of 2')).toBeInTheDocument();
-    expect(screen.getByText('Next badge: Python Algorithms Bronze')).toBeInTheDocument();
   });
 
-  it('counts solved from the same progress as the badge', () => {
+  it('counts solved as the server does', () => {
     // A completed challenge that left the curriculum still counts on the server
-    progress(false, 2);
+    progress(2);
     renderPage();
     expect(screen.getByText('Solved: 2 of 2')).toBeInTheDocument();
   });
 
-  it('shows a guest the first badge and no progress', () => {
+  it('shows a guest no progress', () => {
     vi.mocked(useAuth).mockReturnValue({ isLoggedIn: false, isLoading: false } as ReturnType<
       typeof useAuth
     >);
@@ -96,13 +93,6 @@ describe('AlgorithmListPage', () => {
       refresh: vi.fn(),
     } as unknown as ReturnType<typeof useAllProgress>);
     renderPage();
-    expect(screen.getByText('Next badge: Python Algorithms First Steps')).toBeInTheDocument();
     expect(screen.queryByText(/Solved/)).toBeNull();
-  });
-
-  it("leaves the badge out when the progress didn't load", () => {
-    progress(true);
-    renderPage();
-    expect(screen.queryByText(/Next badge/)).toBeNull();
   });
 });
