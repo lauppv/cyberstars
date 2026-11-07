@@ -1,0 +1,34 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "cat novel/contents.txt",
+      "expected": "Chapter 1: The Lighthouse\nChapter 2: The Harbour\nChapter 3: The Storm\nChapter 4: The Rescue\nChapter 5: The Morning After\nChapter 6: The Keeper"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -c '  ' novel/chapter-*.txt",
+      "expected": "novel/chapter-01.txt:0\nnovel/chapter-02.txt:0\nnovel/chapter-03.txt:0\nnovel/chapter-04.txt:0\nnovel/chapter-05.txt:0\nnovel/chapter-06.txt:0"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -oh 'Ion[a-z]*\\|Petru' novel/chapter-*.txt | sort | uniq -c | awk '{print $1, $2}'",
+      "expected": "3 Ionescu\n8 Petru"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat novel/chapter-*.txt | cmp -s - the-keeper.txt && echo same",
+      "expected": "same"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "sed"
+    },
+    {
+      "kind": "command",
+      "name": "head"
+    }
+  ]
+}

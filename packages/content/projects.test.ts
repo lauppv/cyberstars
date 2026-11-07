@@ -71,6 +71,30 @@ describe.each(PROJECTS.map((p) => [`${p.language}/${p.slug}`, p] as const))('%s'
     }
   });
 
+  // Only passing the judge finishes a project, so every project needs its
+  // tests, and a code project the reference program its tests compare against
+  it('has its tests, and a code project its reference solution', () => {
+    const tests = JSON.parse(
+      fs.readFileSync(
+        path.join(PROJECTS_DIR, project.language, `${project.slug}-tests.json`),
+        'utf8',
+      ),
+    );
+    if (project.language === 'linux') {
+      expect(tests.checks.length).toBeGreaterThan(0);
+      for (const check of tests.checks) expect(check.expected).not.toBe('AUTO');
+    } else {
+      expect(tests.cases.length).toBeGreaterThanOrEqual(3);
+      for (const testCase of tests.cases) expect(typeof testCase.stdin).toBe('string');
+      expect(tests.cases.filter((c: { visible?: boolean }) => c.visible).length).toBeGreaterThan(0);
+      const solution = fs.readFileSync(
+        path.join(PROJECTS_DIR, project.language, `${project.slug}-solution.md`),
+        'utf8',
+      );
+      expect(solution).toMatch(/^```(python|c|java)\n[\s\S]+\n```\n$/);
+    }
+  });
+
   it('names each step once, in a form the database keeps', () => {
     const ids = project.steps.map((s) => s.id);
     expect(new Set(ids).size).toBe(ids.length);

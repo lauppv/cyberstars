@@ -2,7 +2,7 @@ A small company runs three web apps: a shop, a blog and an invoicing tool. Tonig
 
 You do it one step at a time, in the terminal on the right. Tick a step off once the files look like it asks; you can always come back and untick it.
 
-The terminal starts fresh every time you open the page or press Reset, with the config files back as they were. Each step is a command or two, so redo the ones you had done.
+When every step is done, press **Run Tests**: it checks the files in this terminal, so do the steps in one go. The terminal starts fresh every time you open the page or press Reset, with the starting files back, so after a reset run the earlier steps again (each is a command or two). Passing the tests finishes the project.
 
 `grep -r` and `find` list files in the order their folder keeps them, which isn't always alphabetical, so your lines may come in another order than here.
 

@@ -2,7 +2,7 @@ Mrs. Dobre teaches programming to a class of six, and her students upload their 
 
 You do it one step at a time, in the terminal on the right. Tick a step off once you get its answer, or its file holds what the step asks; you can always come back and untick it.
 
-The terminal starts fresh every time you open the page or press Reset, with the uploads back in one folder. Each step is a command or two, so redo the ones you had done.
+When every step is done, press **Run Tests**: it checks the files in this terminal, so do the steps in one go. The terminal starts fresh every time you open the page or press Reset, with the starting files back, so after a reset run the earlier steps again (each is a command or two). Passing the tests finishes the project.
 
 ## What came in
 

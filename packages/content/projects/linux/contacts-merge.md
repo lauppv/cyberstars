@@ -2,7 +2,7 @@ Your dad finally has a new phone, and his contacts came over in two exports: one
 
 You do it one step at a time, in the terminal on the right. Each step writes a file the next one reads. Tick a step off once its file holds what the step asks; you can always come back and untick it.
 
-The terminal starts fresh every time you open the page or press Reset, with only the two exports. Each step is a command or two, so redo the ones you had done.
+When every step is done, press **Run Tests**: it checks the files in this terminal, so do the steps in one go. The terminal starts fresh every time you open the page or press Reset, with the starting files back, so after a reset run the earlier steps again (each is a command or two). Passing the tests finishes the project.
 
 ## Look at both exports
 

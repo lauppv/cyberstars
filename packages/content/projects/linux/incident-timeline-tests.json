@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "md5sum < incident/timeline.txt",
+      "expected": "948de28f7023a2f4da94902135d1ca7d  -"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "ls incident",
+      "expected": "cause.txt\ndb.log\npayments.log\npostmortem.txt\ntimeline.txt\nweb.log\nwindow.txt"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "md5sum < incident/window.txt",
+      "expected": "62d3ae2d29d399f93214b5c8b1dc9347  -"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat incident/cause.txt",
+      "expected": "2026-11-05 14:03:12 ERROR disk full, cannot write to orders table [db]"
+    },
+    {
+      "kind": "file_contains",
+      "path": "incident/postmortem.txt",
+      "text": "14:03:12"
+    },
+    {
+      "kind": "file_contains",
+      "path": "incident/postmortem.txt",
+      "text": "14:19:02"
+    },
+    {
+      "kind": "file_contains",
+      "path": "incident/postmortem.txt",
+      "text": "14:21:40"
+    },
+    {
+      "kind": "file_contains",
+      "path": "incident/postmortem.txt",
+      "text": "Errors: 24"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "sed"
+    },
+    {
+      "kind": "command",
+      "name": "sort"
+    },
+    {
+      "kind": "command",
+      "name": "awk"
+    }
+  ]
+}
