@@ -4,16 +4,11 @@ import * as laniakeaRepo from '../repositories/laniakea.repository.js';
 import * as leaderboardService from './leaderboard.service.js';
 import * as connectionsService from './connections.service.js';
 import { computeStreak, listDone, recentActivity } from './activity.service.js';
-import {
-  levelFromXp,
-  levelTitleKey,
-  MAIN_COURSE_KEYS,
-  TERMINAL_COURSE_KEYS,
-} from '@cyberstars/shared/constants';
+import { levelFromXp, levelTitleKey, LISTED_COURSE_KEYS } from '@cyberstars/shared/constants';
 import type { PublicProfile, PublicProfileBadge } from '@cyberstars/shared/profile';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 
-const ACTIVE_COURSE_KEYS = new Set<string>([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
+const ACTIVE_COURSE_KEYS = new Set<string>(LISTED_COURSE_KEYS);
 
 // Earned badges from per-course completion counts, mirroring the client's
 // useGamification: "First Steps" at >=1 lesson (level 0), then one tier per 10

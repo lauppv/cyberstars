@@ -1,10 +1,5 @@
 import type { Course } from '@cyberstars/shared/lesson';
-import {
-  ALGO_COURSE_KEYS,
-  MAIN_COURSE_KEYS,
-  TERMINAL_COURSE_KEYS,
-  isBeta,
-} from '@cyberstars/shared/constants';
+import { ALGO_COURSE_KEYS, LISTED_COURSE_KEYS, isBeta } from '@cyberstars/shared/constants';
 import { courseMeta } from '../../constants/courses';
 
 export interface CurriculumCounts {
@@ -24,7 +19,7 @@ export function curriculumCounts(all: Course[]): CurriculumCounts {
       .filter((key) => !isBeta(key))
       .map((key) => all.find((c) => c.key === key))
       .filter((c): c is Course => !!c);
-  const courses = live([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
+  const courses = live(LISTED_COURSE_KEYS);
   const lessons = (list: Course[]) => list.reduce((n, c) => n + c.lessons.length, 0);
   return {
     languages: courses.map((c) => courseMeta(c.key).label),

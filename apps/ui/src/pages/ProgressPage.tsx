@@ -12,8 +12,7 @@ import type { CourseProgress } from '@cyberstars/shared/progress';
 import { courseMeta, courseTitle, courseWash } from '../constants/courses';
 import {
   ALGO_COURSE_KEYS,
-  MAIN_COURSE_KEYS,
-  TERMINAL_COURSE_KEYS,
+  LISTED_COURSE_KEYS,
   isBeta,
   progressPct,
 } from '@cyberstars/shared/constants';
@@ -39,7 +38,7 @@ export function ProgressPage() {
   const [courses, algos] = useMemo(() => {
     const pick = (keys: readonly string[]) =>
       keys.map((key) => allCourses.find((c) => c.key === key)).filter((c): c is Course => !!c);
-    return [pick([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]), pick(ALGO_COURSE_KEYS)];
+    return [pick(LISTED_COURSE_KEYS), pick(ALGO_COURSE_KEYS)];
   }, [allCourses]);
 
   useEffect(() => {
