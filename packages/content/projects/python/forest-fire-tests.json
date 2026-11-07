@@ -1,0 +1,28 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "6 10 10\nwind: east\nTTTT.TTTTT\nTFTT.TT#TT\nTTTT..T#TT\nTT.TTTT#TT\nTT.TT.TTTT\nTTTTT.TTT.\n"
+    },
+    {
+      "visible": true,
+      "stdin": "3 5 5\nwind: none\nTTTTT\nTTFTT\nTTTTT\n"
+    },
+    {
+      "stdin": "5 9 3\nwind: west\nTTTT#TTTT\nTTTT#TTTF\nTT.T#TTTT\nTTTT#.TTT\nTTTT#TTTT\n"
+    },
+    {
+      "stdin": "4 6 20\nwind: south\n.TF..T\n.T.T.T\nTT#TTT\nT.TT.T\n"
+    },
+    {
+      "stdin": "2 3 4\nwind: north\nTTT\nT.T\n"
+    },
+    {
+      "stdin": "5 5 6\nwind: north\nTTTTT\nTTTTT\nTT#TT\nTTTTT\nTTFTT\n"
+    },
+    {
+      "stdin": "1 1 1\nwind: east\n.\n"
+    }
+  ]
+}

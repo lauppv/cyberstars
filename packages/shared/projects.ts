@@ -121,6 +121,87 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    slug: 'bank-statement',
+    language: 'python',
+    title: 'Bank Statement',
+    difficulty: 'medium',
+    summary:
+      "Sort a bank's CSV export by your own keyword rules and report where the money went, month by month, with the subscriptions that hide in it.",
+    steps: [
+      { id: 'read', title: 'Read the rules and the statement' },
+      { id: 'commas', title: 'Commas inside a description' },
+      { id: 'rules', title: 'Sort by the rules' },
+      { id: 'categories', title: 'Where the money went' },
+      { id: 'months', title: 'Month by month' },
+      { id: 'biggest', title: 'The biggest ones' },
+      { id: 'subscriptions', title: 'Subscriptions' },
+    ],
+  },
+  {
+    slug: 'markdown-html',
+    language: 'python',
+    title: 'Markdown to HTML',
+    difficulty: 'medium',
+    summary:
+      'Convert a club newsletter written in plain text with a few marks into HTML: paragraphs, headings, bold, links, lists and blocks of code.',
+    steps: [
+      { id: 'paragraphs', title: 'Paragraphs' },
+      { id: 'headings', title: 'Headings' },
+      { id: 'inline', title: 'Bold, italic and links' },
+      { id: 'lists', title: 'Lists' },
+      { id: 'escape', title: 'Safe characters' },
+      { id: 'code', title: 'Code' },
+    ],
+  },
+  {
+    slug: 'forest-fire',
+    language: 'python',
+    title: 'Forest Fire',
+    difficulty: 'medium',
+    summary:
+      'Simulate a fire spreading through a forest map step by step, every cell changing at once, with wind carrying sparks and water stopping them.',
+    steps: [
+      { id: 'map', title: 'The map' },
+      { id: 'step', title: 'One step' },
+      { id: 'steps', title: 'Step after step' },
+      { id: 'wind', title: 'The wind' },
+      { id: 'water', title: 'Water' },
+      { id: 'report', title: "The rangers' report" },
+    ],
+  },
+  {
+    slug: 'sudoku',
+    language: 'python',
+    title: 'Sudoku Helper',
+    difficulty: 'hard',
+    summary:
+      'A helper for the Sunday sudoku: show the grid, find the clashes, fill in the sure cells and solve the rest by trying digits and taking them back.',
+    steps: [
+      { id: 'grid', title: 'Read and show the grid' },
+      { id: 'mistakes', title: 'Find the mistakes' },
+      { id: 'candidates', title: 'What could go here' },
+      { id: 'sure', title: 'The sure cells' },
+      { id: 'backtracking', title: 'Try and take back' },
+      { id: 'impossible', title: 'No way out' },
+    ],
+  },
+  {
+    slug: 'mini-spreadsheet',
+    language: 'python',
+    title: 'Mini Spreadsheet',
+    difficulty: 'hard',
+    summary:
+      'A small spreadsheet for the class treasurer: cells with numbers, text and formulas that use other cells, ranges, errors and circles caught.',
+    steps: [
+      { id: 'table', title: 'Cells and the table' },
+      { id: 'arithmetic', title: 'Arithmetic' },
+      { id: 'references', title: 'Cells that use cells' },
+      { id: 'ranges', title: 'Ranges' },
+      { id: 'errors', title: "When something's wrong" },
+      { id: 'cycles', title: 'Going round in circles' },
+    ],
+  },
+  {
     slug: 'downloads-cleanup',
     language: 'linux',
     title: 'Downloads Cleanup',
