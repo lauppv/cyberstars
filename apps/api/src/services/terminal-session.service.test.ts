@@ -142,6 +142,35 @@ describe('execCommand', () => {
     expect(zombies.output.trim()).toBe('0');
   });
 
+  itDocker('runs the setup’s programs and spares them, but not the leftovers', async () => {
+    mockExistsSync.mockReturnValue(true);
+    mockReadFileSync.mockReturnValue(
+      JSON.stringify({
+        cwd: '/home/student',
+        dirs: [],
+        files: [],
+        processes: [
+          { cmd: '/usr/bin/reactor-monitor --port=7700', memoryMb: 8 },
+          { cmd: '/usr/bin/nav-computer --frozen' },
+        ],
+      }),
+    );
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
+    sessionsToClean.push(sessionId);
+
+    await execCommand(sessionId, 'sleep 299 &', 'user:1');
+    const listed = await execCommand(sessionId, 'ps -eo args= --sort=-rss', 'user:1');
+    expect(listed.output.split('\n')[0]).toBe('/usr/bin/reactor-monitor --port=7700');
+    expect(listed.output).toContain('/usr/bin/nav-computer --frozen');
+    expect(listed.output).not.toContain('sleep 299');
+
+    // The student can stop one of them, and it stays stopped
+    await execCommand(sessionId, 'kill -9 $(pgrep -f nav-computer)', 'user:1');
+    const after = await execCommand(sessionId, 'ps -eo args=', 'user:1');
+    expect(after.output).not.toContain('nav-computer');
+    expect(after.output).toContain('reactor-monitor');
+  });
+
   itDocker('rejects a command from a different user', async () => {
     mockExistsSync.mockReturnValue(false);
     const { sessionId } = await createSession('linux', 'test', 'user:1');

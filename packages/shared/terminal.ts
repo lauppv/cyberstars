@@ -5,11 +5,19 @@ interface TerminalFile {
   content: string;
 }
 
+// A program that runs in the sandbox from the start, for the process lessons:
+// `cmd` is what ps shows, `memoryMb` how much memory it holds.
+interface TerminalProcess {
+  cmd: string;
+  memoryMb?: number;
+}
+
 // The starting filesystem materialised into a fresh sandbox container.
 export interface TerminalSetup {
   cwd: string;
   files: TerminalFile[];
   dirs: string[];
+  processes?: TerminalProcess[];
   intro?: string;
 }
 

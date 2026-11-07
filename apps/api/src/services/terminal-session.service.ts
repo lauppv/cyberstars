@@ -36,6 +36,8 @@ interface Session {
   guestIp?: string;
   // The Linux project the session was started for, whose judge it answers to
   project?: string;
+  // The pids of the setup's programs, spared when a command's leftovers go
+  keep: string[];
 }
 
 const sessions = new Map<string, Session>();
@@ -164,6 +166,7 @@ async function startSession(
     lastActivity: Date.now(),
     guestIp,
     project,
+    keep: [],
   };
   sessions.set(sessionId, session);
   executing.add(sessionId);
@@ -212,6 +215,10 @@ async function startSession(
       }
     }
 
+    for (const [i, program] of (setup?.processes ?? []).entries()) {
+      session.keep.push(await startProgram(containerId, i, program));
+    }
+
     await dockerExec(['exec', '-i', containerId, 'bash', '-c', 'cat > /tmp/.cwd'], 10_000, cwd);
   } catch (err) {
     void destroySession(sessionId);
@@ -223,6 +230,50 @@ async function startSession(
   startGC();
 
   return { sessionId, cwd, intro: setup?.intro };
+}
+
+function shellQuote(text: string): string {
+  return `'${text.replace(/'/g, "'\\''")}'`;
+}
+
+// Starts one of the setup's programs: a shell named after `cmd`, so ps shows
+// that, waiting on a pipe of its own forever. Its memory is a string it builds,
+// sent down that pipe. Returns its pid.
+async function startProgram(
+  containerId: string,
+  i: number,
+  program: { cmd: string; memoryMb?: number },
+): Promise<string> {
+  const pipe = `/tmp/.program${i}`;
+  const pid = await dockerExec([
+    'exec',
+    containerId,
+    'bash',
+    '-c',
+    `mkfifo ${pipe} && { exec -a ${shellQuote(program.cmd)} bash 0<>${pipe} >/dev/null 2>&1 & } && echo $!`,
+  ]);
+  if (program.memoryMb) {
+    const bytes = Math.round(program.memoryMb * 1024 * 1024);
+    await dockerExec([
+      'exec',
+      containerId,
+      'bash',
+      '-c',
+      `echo ${shellQuote(`x=$(head -c ${bytes} /dev/zero | tr '\\0' a)`)} > ${pipe}`,
+    ]);
+  }
+  return pid.trim();
+}
+
+// Like killLeftovers, but sparing the setup's programs: everything else of the
+// student's is stopped first, so nothing can fork while the rest is killed.
+function killLeftoversBut(containerId: string, keep: string[]): Promise<void> {
+  const others = `ps -o pid= -u student | while read -r p; do case " 1 $$ ${keep.join(' ')} " in *" $p "*) ;; *) echo "$p" ;; esac; done`;
+  const script = `for i in 1 2 3; do kill -STOP $(${others}) 2>/dev/null; done; kill -9 $(${others}) 2>/dev/null; true`;
+  return dockerExec(['exec', containerId, 'sh', '-c', script], 5_000).then(
+    () => {},
+    () => {},
+  );
 }
 
 export async function execCommand(
@@ -260,7 +311,9 @@ export async function execCommand(
       output = e instanceof Error ? e.message : 'Command failed';
     } finally {
       // The 5s limit stops the command, not what it sent to the background
-      await killLeftovers(session.containerId);
+      await (session.keep.length
+        ? killLeftoversBut(session.containerId, session.keep)
+        : killLeftovers(session.containerId));
       releaseSlot();
     }
 
