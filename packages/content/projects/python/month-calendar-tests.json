@@ -1,0 +1,25 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "2026 11 3\n5\nB 14.11 Mama\nB 23.11 Ana\nH 30.11 Saint Andrew\nH 1.12 National Day\nB 2.11 Bunica Ana\n"
+    },
+    {
+      "visible": true,
+      "stdin": "2024 2 1\n0\n"
+    },
+    {
+      "stdin": "2023 12 3\n4\nB 29.2 Leap Lucy\nH 1.1 New Year\nH 2.1 New Year 2\nH 24.2 Union Day\n"
+    },
+    {
+      "stdin": "1900 2 2\n1\nB 29.2 Nobody\n"
+    },
+    {
+      "stdin": "2000 2 1\n2\nB 29.2 Leap Leo\nH 26.2 Saturday holiday\n"
+    },
+    {
+      "stdin": "2031 6 1\n3\nB 5.6 Ana\nB 5.6 Dan\nH 1.6 Children's Day\n"
+    }
+  ]
+}

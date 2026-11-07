@@ -1,0 +1,25 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "5\nkitchen|Kitchen\nFlour covers every table. The oven is still warm.\nexits: north=hall, east=pantry\nitems: none\npantry|Pantry\nShelves of jam jars, and a lamp on a hook.\nexits: west=kitchen\nitems: lamp\nhall|Hall\nA long hall with portraits of old bakers.\nexits: south=kitchen, down=cellar, west=shop\nitems: key\ncellar|Cellar\nSacks of flour, and a dusty recipe book on a barrel.\nexits: up=hall\nitems: recipe\nshop|Shop\nThe front of the bakery. The street door is right here.\nexits: east=hall\nitems: none\n1\nhall down key\ndark: cellar\ngoal: recipe shop\nstart kitchen\nlook\ngo west\ngo north\ngo down\nunlock down\ntake key\nunlock down\ngo down\ntake recipe\ngo up\ngo south\ngo east\ntake lamp\ninventory\ngo west\ngo north\ngo down\ntake recipe\ndrop key\nlook\ngo up\ngo west\n"
+    },
+    {
+      "visible": true,
+      "stdin": "5\nkitchen|Kitchen\nFlour covers every table. The oven is still warm.\nexits: north=hall, east=pantry\nitems: none\npantry|Pantry\nShelves of jam jars, and a lamp on a hook.\nexits: west=kitchen\nitems: lamp\nhall|Hall\nA long hall with portraits of old bakers.\nexits: south=kitchen, down=cellar, west=shop\nitems: key\ncellar|Cellar\nSacks of flour, and a dusty recipe book on a barrel.\nexits: up=hall\nitems: recipe\nshop|Shop\nThe front of the bakery. The street door is right here.\nexits: east=hall\nitems: none\n1\nhall down key\ndark: cellar\ngoal: recipe shop\nstart kitchen\ninventory\ntake lamp\ngo east\ntake lamp\ntake lamp\ndrop lamp\ndrop lamp\nlook\nunlock west\ndance\n\ngo west\ngo north\nunlock south\nquit\n"
+    },
+    {
+      "stdin": "4\ngate|Castle Gate\nA heavy wooden gate under a stone arch.\nexits: north=yard\nitems: torch, rope\nyard|Courtyard\nGrass grows between the stones. A well stands in the middle.\nexits: south=gate, east=tower\nitems: coin\ntower|Tower\nA narrow stair winds up into the dark.\nexits: west=yard, up=top\nitems: none\ntop|Tower Top\nWind and a view over the whole valley. A crown glints on the floor.\nexits: down=tower\nitems: crown\n2\nyard east coin\ntower up rope\ndark: none\ngoal: crown gate\nstart gate\ntake torch\ngo north\ngo east\nunlock east\ntake coin\nunlock east\ngo east\ngo up\nunlock up\ngo west\ngo south\ntake rope\ngo north\ngo east\nunlock up\ngo up\ntake crown\ninventory\ngo down\ngo west\ngo south\n"
+    },
+    {
+      "stdin": "4\ngate|Castle Gate\nA heavy wooden gate under a stone arch.\nexits: north=yard\nitems: torch, rope\nyard|Courtyard\nGrass grows between the stones. A well stands in the middle.\nexits: south=gate, east=tower\nitems: coin\ntower|Tower\nA narrow stair winds up into the dark.\nexits: west=yard, up=top\nitems: none\ntop|Tower Top\nWind and a view over the whole valley. A crown glints on the floor.\nexits: down=tower\nitems: crown\n2\nyard east coin\ntower up rope\ndark: none\ngoal: crown gate\nstart gate\ngo north\ngo west\nlook\ngo east\ntake coin\ndrop coin\ngo south\nlook\nquit\n"
+    },
+    {
+      "stdin": "2\ncell|Cell\nA small cell with a straw bed.\nexits: none\nitems: spoon\ncorridor|Corridor\nA cold corridor.\nexits: north=cell\nitems: none\n0\ndark: cell\ngoal: spoon corridor\nstart cell\nlook\ntake spoon\ninventory\ngo north\nquit\n"
+    },
+    {
+      "stdin": "5\nkitchen|Kitchen\nFlour covers every table. The oven is still warm.\nexits: north=hall, east=pantry\nitems: none\npantry|Pantry\nShelves of jam jars, and a lamp on a hook.\nexits: west=kitchen\nitems: lamp\nhall|Hall\nA long hall with portraits of old bakers.\nexits: south=kitchen, down=cellar, west=shop\nitems: key\ncellar|Cellar\nSacks of flour, and a dusty recipe book on a barrel.\nexits: up=hall\nitems: recipe\nshop|Shop\nThe front of the bakery. The street door is right here.\nexits: east=hall\nitems: none\n1\nhall down key\ndark: cellar\ngoal: recipe shop\nstart kitchen\ngo north\ntake key\ndrop key\nunlock down\ntake key\nunlock down\ngo down\ngo up\ngo west\ngo east\ngo south\ngo east\ntake lamp\ngo west\ngo north\ngo down\ntake recipe\ngo up\ngo west\n"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 The library on Maple Street still runs its front desk from a paper notebook. You'll replace it with a program the librarian types commands into: it knows every book on the shelves, who borrowed what, when it is due back and who owes a late fee.
 
-You build it one step at a time, in one file. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it.
+You build it one step at a time, in one file. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it. When you think the desk is ready, press **Run Tests**: the tests run a day at the library your program has never seen. Passing them finishes the project.
 
 Everything the program reads comes from `input()`, and everything it says goes through `print()`. Run it, then type the lines of an example yourself to see what it answers.
 

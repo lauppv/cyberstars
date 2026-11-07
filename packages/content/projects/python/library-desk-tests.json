@@ -1,0 +1,25 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "3\nB01|Dune|Frank Herbert|2\nB02|Emma|Jane Austen|1\nB03|Matilda|Roald Dahl|3\nlist\nfind an\nfind DAHL\nfind zzz\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "3\nB01|Dune|Frank Herbert|2\nB02|Emma|Jane Austen|1\nB03|Matilda|Roald Dahl|3\nborrow Ana B01 3\nborrow Ana B09 3\nborrow Leo B02 4\nborrow Ana B02 5\nborrow Ana B01 5\nborrow Ana B03 6\nborrow Ana B02 6\nlist\nreturn Ana B01 10\nreturn Ana B01 11\nreturn Ana B09 11\nmember Ana\nmember Bob\nquit\n"
+    },
+    {
+      "stdin": "4\nB01|Dune|Frank Herbert|2\nB02|Emma|Jane Austen|1\nB03|Matilda|Roald Dahl|3\nB04|The Hobbit|J. R. R. Tolkien|1\nborrow Ana B01 3\nborrow Ana B03 7\nborrow Ana B04 7\nborrow Ana B02 8\nreturn Ana B01 20\nreturn Ana B03 22\nmember Ana\npay Ana 10\npay Ana 2\npay Bob 1\nborrow Leo B01 1\nreturn Leo B01 30\nborrow Leo B03 31\npay Leo 5\nborrow Leo B03 31\nreport 40\nquit\n"
+    },
+    {
+      "stdin": "3\nB01|Dune|Frank Herbert|2\nB02|Emma|Jane Austen|1\nB03|Matilda|Roald Dahl|3\nreport 1\nborrow Ana B01 3\nborrow Leo B01 4\nborrow Leo B02 4\nreturn Ana B01 18\nborrow Mia B01 19\nreport 20\nquit\n"
+    },
+    {
+      "stdin": "2\nB01|Dune|Frank Herbert|2\nB02|Emma|Jane Austen|1\n\nborow Ana B01 3\nborrow Ana B01\nborrow Ana B01 three\nfind\nfind a b\nreturn Ana B01 x\npay Ana lots\npay Ana\nmember\nreport\nreport soon\nlist\nquit\n"
+    },
+    {
+      "stdin": "5\nC1|The Little Prince|Antoine de Saint-Exupery|2\nC2|Pippi Longstocking|Astrid Lindgren|1\nC3|Charlie and the Chocolate Factory|Roald Dahl|2\nC4|The BFG|Roald Dahl|1\nC5|Heidi|Johanna Spyri|1\nfind dahl\nborrow Ana C3 1\nborrow Dan C3 2\nborrow Eva C3 3\nborrow Ana C4 3\nborrow Ana C5 3\nborrow Ana C1 4\nreturn Dan C3 40\nmember Dan\nborrow Dan C1 41\npay Dan 13.00\nborrow Dan C1 41\nreport 41\nquit\n"
+    }
+  ]
+}
