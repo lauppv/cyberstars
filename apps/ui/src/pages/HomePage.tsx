@@ -222,9 +222,7 @@ export function HomePage() {
             <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
               {continueTo && (
                 <div className="p-5 panel rounded-[var(--radius)] flex flex-col">
-                  <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
-                    {t('home.continueWhereLeftOff')}
-                  </h3>
+                  <h3 className="section-label mb-3.5">{t('home.continueWhereLeftOff')}</h3>
                   <button
                     onClick={() => navigate(`/lesson/${continueTo.course.key}/${continueTo.slug}`)}
                     className="w-full text-left flex items-center gap-3 p-3 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer group"
@@ -378,13 +376,7 @@ export function HomePage() {
 /* ── Helper Components ── */
 
 function SectionHeader({ children, noMargin }: { children: React.ReactNode; noMargin?: boolean }) {
-  return (
-    <h2
-      className={`text-[11px] font-semibold tracking-[1px] text-[var(--text3)] ${noMargin ? '' : 'mb-3'}`}
-    >
-      {children}
-    </h2>
-  );
+  return <h2 className={`section-label ${noMargin ? '' : 'mb-3'}`}>{children}</h2>;
 }
 
 function formatTimeAgo(iso: string, t: TFunction): string {
@@ -429,7 +421,7 @@ function OfTheDayCard({
   return (
     <div className="p-5 panel rounded-[var(--radius)] flex flex-col flex-1">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
+        <h3 className="section-label">
           {heading}
           <span aria-hidden> · </span>
           <span style={{ color: courseMeta(courseKey).color }}>{courseTitle}</span>

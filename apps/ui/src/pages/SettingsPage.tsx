@@ -219,9 +219,7 @@ export function SettingsPage() {
         <div className="flex flex-col gap-5">
           {/* Preferences */}
           <section className="rounded-[var(--radius)] panel px-6 py-5">
-            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-4">
-              {t('settings.preferences')}
-            </h2>
+            <h2 className="section-label mb-4">{t('settings.preferences')}</h2>
             <div className="flex items-center justify-between gap-4 py-2">
               <span className="text-[13px] text-[var(--text)]">{t('settings.language')}</span>
               <Segmented
@@ -236,9 +234,7 @@ export function SettingsPage() {
 
           {/* Privacy */}
           <section className="rounded-[var(--radius)] panel px-6 py-5">
-            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-1">
-              {t('settings.privacy')}
-            </h2>
+            <h2 className="section-label mb-1">{t('settings.privacy')}</h2>
             <p className="text-[11px] text-[var(--text3)] mb-2">{t('settings.privacyHint')}</p>
             <div className="divide-y divide-[var(--border)]">
               <Toggle
@@ -278,9 +274,7 @@ export function SettingsPage() {
 
           {/* Account */}
           <section className="rounded-[var(--radius)] panel px-6 py-5">
-            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-4">
-              {t('settings.account')}
-            </h2>
+            <h2 className="section-label mb-4">{t('settings.account')}</h2>
 
             {/* Email change */}
             <div className="pb-5 border-b border-[var(--border)]">

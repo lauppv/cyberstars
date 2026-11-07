@@ -61,7 +61,7 @@ function Section({
 }) {
   return (
     <section className="rounded-[var(--radius)] panel px-6 py-5">
-      <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-2">
+      <h2 className="section-label mb-2">
         {title} <span className="text-[var(--accent)] tabular-nums">({count})</span>
       </h2>
       <div className="divide-y divide-[var(--border)]">{children}</div>

@@ -313,9 +313,7 @@ export function ProfilePage() {
 
           {/* Badges */}
           <div className="py-5 border-b border-[var(--border)]">
-            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
-              {t('profile.badges')}
-            </h2>
+            <h2 className="section-label mb-3.5">{t('profile.badges')}</h2>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2.5">
               {g.badges.map((b) => (
                 <Badge

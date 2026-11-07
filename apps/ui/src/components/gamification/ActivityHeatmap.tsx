@@ -117,9 +117,7 @@ export function ActivityHeatmap({
   return (
     <div className="p-5 panel rounded-[var(--radius)]">
       <div className="flex items-center justify-between mb-3.5">
-        <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
-          {t('home.activity')}
-        </h3>
+        <h3 className="section-label">{t('home.activity')}</h3>
         <span className="text-xs text-[var(--text2)]">
           <Trans
             i18nKey="home.activeDays"

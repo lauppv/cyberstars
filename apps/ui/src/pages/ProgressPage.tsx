@@ -79,11 +79,7 @@ export function ProgressPage() {
 }
 
 function SectionHeader({ children }: { children: string }) {
-  return (
-    <h2 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3">
-      {children}
-    </h2>
-  );
+  return <h2 className="section-label mb-3">{children}</h2>;
 }
 
 function completedSlugs(progress: CourseProgress | undefined): Set<string> {

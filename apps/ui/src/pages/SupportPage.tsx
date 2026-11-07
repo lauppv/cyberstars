@@ -206,9 +206,7 @@ export function SupportPage() {
 
           {/* My tickets */}
           <div className="mb-8">
-            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3">
-              {t('support.yourTickets')}
-            </h2>
+            <h2 className="section-label mb-3">{t('support.yourTickets')}</h2>
             {myTicketsError ? (
               <LoadError text={myTicketsError} onRetry={refresh} />
             ) : myTickets === null ? null : myTickets.length === 0 ? (
@@ -225,9 +223,7 @@ export function SupportPage() {
           {/* Admin view */}
           {isAdmin && (
             <div>
-              <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--accent)] mb-3">
-                {t('support.allTickets')}
-              </h2>
+              <h2 className="section-label text-[var(--accent)] mb-3">{t('support.allTickets')}</h2>
               {allTicketsError ? (
                 <LoadError text={allTicketsError} onRetry={refresh} />
               ) : allTickets === null ? null : allTickets.length === 0 ? (
