@@ -16,7 +16,8 @@ describe('securityHeaders', () => {
   it("gives a web lesson's preview a policy of its own, sandboxed", async () => {
     const preview = await policyOf('/web-preview.html');
     expect(preview).toContain("default-src 'none'");
-    expect(preview).toContain("script-src 'unsafe-inline' 'unsafe-eval' blob: data: https:;");
+    expect(preview).toContain("script-src 'unsafe-inline' blob: data: https:;");
+    expect(preview).not.toContain('unsafe-eval');
     expect(preview).toContain('connect-src https:;');
     expect(preview).toContain("form-action 'none'");
     expect(preview).toContain("frame-ancestors 'self'");

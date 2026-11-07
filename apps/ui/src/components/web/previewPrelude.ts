@@ -9,7 +9,8 @@
 // * turns a link to another page of the site into a message, so the IDE
 //   shows that page, and keeps the page from leaving for another site or
 //   sending a form somewhere;
-// * sends what the page logs, and the errors it throws, to the IDE's console;
+// * sends what the page logs, and the errors it throws, to the IDE's console,
+//   and says so when it runs code in a string, which the preview refuses;
 // * holds the clock behind the loop guards (scriptGuard.ts).
 //
 // `previewPrelude` is written into the page as its source text, so it may use
@@ -33,6 +34,8 @@ export interface PreludeConfig {
   loopMessage: string;
   // How long a loop may run, in ms
   loopLimitMs: number;
+  // What the console says when the page runs code in a string (eval)
+  evalMessage: string;
 }
 
 // What the page tells the IDE
@@ -153,6 +156,12 @@ export function previewPrelude(config: PreludeConfig): void {
       file: file ?? (event.filename === window.location.href ? config.page : undefined),
       line: file ? event.lineno || undefined : undefined,
     });
+  });
+  // The preview's policy refuses code in a string; setTimeout("…") would
+  // otherwise just not run
+  window.addEventListener('securitypolicyviolation', (event) => {
+    if (event.blockedURI === 'eval')
+      post({ type: 'console', level: 'error', text: config.evalMessage });
   });
   window.addEventListener('unhandledrejection', (event) => {
     post({ type: 'console', level: 'error', text: line([event.reason]) });

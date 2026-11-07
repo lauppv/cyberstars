@@ -1734,6 +1734,7 @@
       "clear": "Clear",
       "empty": "What your page logs and the errors it throws show here.",
       "loopStopped": "Stopped a loop that ran too long, on line {{line}} of {{file}}.",
+      "evalBlocked": "Code in a string (eval, new Function, setTimeout with a string) doesn't run in the preview. Pass a function instead.",
       "missingFile": "{{from}} asks for {{file}}, which isn't in your site.",
       "noPage": "There is no page {{page}} in your site.",
       "outsideLink": "Links to other sites don't open in the preview: {{href}}",

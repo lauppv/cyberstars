@@ -7,6 +7,7 @@ const prelude = {
   storage: {},
   loopMessage: 'Stopped a loop on line {line} of {file}',
   loopLimitMs: 2000,
+  evalMessage: 'No code in strings',
 };
 
 function build(files: WebFile[], page = 'index.html', images: Record<string, string> = {}) {

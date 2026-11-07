@@ -23,6 +23,7 @@ beforeAll(() => {
     storage: { theme: 'dark' },
     loopMessage: 'Stopped the loop on line {line} of {file}',
     loopLimitMs: 2000,
+    evalMessage: 'No code in strings',
   });
   atStart = [...sent];
 });
@@ -120,6 +121,16 @@ describe('previewPrelude', () => {
     expect((await fetch('/data/none.json')).status).toBe(404);
     await fetch('https://api.example/ships');
     expect(realFetch).toHaveBeenCalledWith('https://api.example/ships', undefined);
+  });
+
+  it('says so when the page runs code in a string, which the preview refuses', () => {
+    const refused = (blockedURI: string) =>
+      window.dispatchEvent(Object.assign(new Event('securitypolicyviolation'), { blockedURI }));
+    refused('eval');
+    expect(last()).toMatchObject({ type: 'console', level: 'error', text: 'No code in strings' });
+    sent.length = 0;
+    refused('https://far.example/x.js');
+    expect(sent).toEqual([]);
   });
 
   it('turns links into the page to show, or a note for another site', () => {

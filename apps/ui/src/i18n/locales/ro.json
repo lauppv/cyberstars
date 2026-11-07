@@ -1762,6 +1762,7 @@
       "clear": "Golește",
       "empty": "Aici apare ce afișează pagina ta și erorile pe care le aruncă.",
       "loopStopped": "Am oprit o buclă care a rulat prea mult, pe linia {{line}} din {{file}}.",
+      "evalBlocked": "Codul dintr-un șir (eval, new Function, setTimeout cu un șir) nu rulează în previzualizare. Dă-i o funcție în loc.",
       "missingFile": "{{from}} cere {{file}}, dar fișierul nu e în site-ul tău.",
       "noPage": "Nu există pagina {{page}} în site-ul tău.",
       "outsideLink": "Linkurile spre alte site-uri nu se deschid în previzualizare: {{href}}",

@@ -26,13 +26,15 @@ const siteHeaders = helmet({
 // policy above and refuse them, so the preview is a file of its own with a
 // policy of its own: open for the page's code, sandboxed so the page has an
 // origin of its own (never ours, even opened on its own), and framed only by
-// our pages. The lesson's iframe sandboxes it the same way.
+// our pages. The lesson's iframe sandboxes it the same way. Code in a string
+// (eval, new Function, setTimeout("…")) is refused: the preview guards the
+// loops of the code it is given, and can't guard code made while it runs.
 const previewHeaders = helmet({
   contentSecurityPolicy: {
     useDefaults: false,
     directives: {
       defaultSrc: ["'none'"],
-      scriptSrc: ["'unsafe-inline'", "'unsafe-eval'", 'blob:', 'data:', 'https:'],
+      scriptSrc: ["'unsafe-inline'", 'blob:', 'data:', 'https:'],
       styleSrc: ["'unsafe-inline'", 'data:', 'blob:', 'https:'],
       imgSrc: ['data:', 'blob:', 'https:'],
       mediaSrc: ['data:', 'blob:', 'https:'],

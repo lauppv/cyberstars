@@ -160,6 +160,7 @@ export function useWebPreview({ files, courseKey, lessonSlug }: Options) {
         storage: readStorage(storageKey(course, slug)),
         loopMessage: tr('web.console.loopStopped', { line: '{line}', file: '{file}' }),
         loopLimitMs: LOOP_LIMIT_MS,
+        evalMessage: tr('web.console.evalBlocked'),
       },
     });
     built.current = out;
