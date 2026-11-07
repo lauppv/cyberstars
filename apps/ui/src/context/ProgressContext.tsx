@@ -20,6 +20,10 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   const [progressMap, setProgressMap] = useState<Record<string, CourseProgress>>({});
   const [failedCourses, setFailedCourses] = useState<ReadonlySet<string>>(new Set());
   const [isLoading, setIsLoading] = useState(true);
+  // Whether progressMap is the settled answer for a signed-in student. Right
+  // after sign-in there is one render before the effect below marks the fetch
+  // as loading; this keeps that render from passing the empty map as settled
+  const [settledSignedIn, setSettledSignedIn] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
   const hasDataRef = useRef(false);
 
@@ -31,6 +35,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       setProgressMap({}); // eslint-disable-line react-hooks/set-state-in-effect
       setFailedCourses(new Set());
       setIsLoading(false);
+      setSettledSignedIn(isLoggedIn);
       hasDataRef.current = false;
       return;
     }
@@ -66,6 +71,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         setProgressMap(map);
         setFailedCourses(failed);
         setIsLoading(false);
+        setSettledSignedIn(true);
         hasDataRef.current = true;
       }
     })();
@@ -75,7 +81,14 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   }, [courses, curriculumLoading, isLoggedIn, refreshKey]);
 
   return (
-    <ProgressContext value={{ progressMap, failedCourses, isLoading, refresh }}>
+    <ProgressContext
+      value={{
+        progressMap,
+        failedCourses,
+        isLoading: isLoading || (isLoggedIn && !settledSignedIn),
+        refresh,
+      }}
+    >
       {children}
     </ProgressContext>
   );

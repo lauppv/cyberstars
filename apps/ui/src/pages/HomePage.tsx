@@ -224,7 +224,10 @@ export function HomePage() {
   // the same one the pre-rendered HTML already shows
   if (isLoading && !wasSignedIn()) return <LandingPage />;
 
-  if (isLoading) {
+  // A student's dashboard waits for their progress, so it shows up whole: no
+  // first lesson standing in for the one they left off at, no level 1 and
+  // zeros counted from nothing
+  if (isLoading || (isLoggedIn && progressLoading)) {
     return <PageLoading />;
   }
 
@@ -255,13 +258,13 @@ export function HomePage() {
                   recent={recentLessons}
                 />
               )}
-              <StatsCard streak={streak} loading={progressLoading} />
+              <StatsCard streak={streak} />
             </div>
 
             {/* ── Today's picks and Laniakea ── */}
             <div
               className={`grid grid-cols-1 ${
-                ROW_COLS[[lessonOfTheDay, algoOfTheDay, !progressLoading].filter(Boolean).length]
+                ROW_COLS[[lessonOfTheDay, algoOfTheDay].filter(Boolean).length + 1]
               } gap-5`}
             >
               {lessonOfTheDay && (
@@ -468,18 +471,17 @@ function ContinueCard({
 
 // The level as a ring that fills toward the next one, its title and the XP
 // still to go, then the days in a row, the lessons done and the badges on one
-// line; the whole picture is on Progress. Until the progress is in it shows
-// dashes, not the level 1 and zeros it would count from nothing
-function StatsCard({ streak, loading }: { streak: number | null; loading: boolean }) {
+// line; the whole picture is on Progress
+function StatsCard({ streak }: { streak: number | null }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const g = useGamification();
   const stats = [
     { icon: Flame, value: streak ?? '-', label: t('profile.streak') },
-    { icon: BookCheck, value: loading ? '-' : g.totalCompleted, label: t('profile.lessonsDone') },
+    { icon: BookCheck, value: g.totalCompleted, label: t('profile.lessonsDone') },
     {
       icon: Award,
-      value: loading ? '-' : g.badges.filter((b) => b.earned).length,
+      value: g.badges.filter((b) => b.earned).length,
       label: t('profile.badges'),
     },
   ];
@@ -500,19 +502,15 @@ function StatsCard({ streak, loading }: { streak: number | null; loading: boolea
         </button>
       </div>
       <div className="flex-1 flex items-center gap-4 py-2">
-        <LevelRing level={loading ? null : g.xp.level} pct={loading ? 0 : g.xp.xpPct} />
+        <LevelRing level={g.xp.level} pct={g.xp.xpPct} />
         <div className="min-w-0">
-          <div className="text-[16px] font-bold tracking-[-0.2px] truncate">
-            {loading ? '-' : t(g.xp.titleKey)}
-          </div>
+          <div className="text-[16px] font-bold tracking-[-0.2px] truncate">{t(g.xp.titleKey)}</div>
           <div className="mt-0.5 text-[12px] text-[var(--text3)]">
-            {loading
-              ? t('common.loading')
-              : t('profile.levelProgress', {
-                  current: g.xp.xpIntoLevel,
-                  needed: g.xp.xpForLevelSpan,
-                  next: g.xp.level + 1,
-                })}
+            {t('profile.levelProgress', {
+              current: g.xp.xpIntoLevel,
+              needed: g.xp.xpForLevelSpan,
+              next: g.xp.level + 1,
+            })}
           </div>
         </div>
       </div>
@@ -537,8 +535,8 @@ function StatsCard({ streak, loading }: { streak: number | null; loading: boolea
 }
 
 // A ring around the level's number, filled as far as the student is toward
-// the next level; empty, with a dash, while the level isn't known yet
-function LevelRing({ level, pct }: { level: number | null; pct: number }) {
+// the next level
+function LevelRing({ level, pct }: { level: number; pct: number }) {
   const { t } = useTranslation();
   const r = 27;
   const c = 2 * Math.PI * r;
@@ -546,9 +544,7 @@ function LevelRing({ level, pct }: { level: number | null; pct: number }) {
     <div
       className="relative w-[72px] h-[72px] flex-shrink-0"
       role="img"
-      aria-label={
-        level === null ? t('common.loading') : `${t('level.label', { n: level })}, ${pct}%`
-      }
+      aria-label={`${t('level.label', { n: level })}, ${pct}%`}
     >
       <svg viewBox="0 0 64 64" className="w-full h-full -rotate-90" aria-hidden="true">
         <circle cx="32" cy="32" r={r} fill="none" stroke="var(--surface2)" strokeWidth="5" />
@@ -569,7 +565,7 @@ function LevelRing({ level, pct }: { level: number | null; pct: number }) {
         className="absolute inset-0 flex flex-col items-center justify-center"
         aria-hidden="true"
       >
-        <span className="text-[20px] font-bold leading-none">{level ?? '-'}</span>
+        <span className="text-[20px] font-bold leading-none">{level}</span>
         <span className="mt-0.5 text-[8px] font-semibold tracking-[0.5px] text-[var(--text3)]">
           {t('home.levelShort')}
         </span>

@@ -218,8 +218,13 @@ describe('HomePage', () => {
     ).toBeInTheDocument();
   });
 
-  it('shows the level only once the progress is in', () => {
+  it('shows the spinner, not the first lesson, until the progress is in', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
     mockUseAllProgress.mockReturnValue({
       progressMap: {},
       failedCourses: new Set(),
@@ -227,11 +232,36 @@ describe('HomePage', () => {
       refresh: vi.fn(),
     });
     const { rerender } = renderPage();
-    expect(screen.queryByRole('img', { name: 'Level 1, 40%' })).toBeNull();
-    expect(screen.queryByText('Cadet')).toBeNull();
+    expect(screen.getByText('Loading...')).toBeDefined();
+    expect(screen.queryByText('Continue where you left off')).toBeNull();
+    expect(screen.queryByText('Intro')).toBeNull();
 
     mockUseAllProgress.mockReturnValue({
-      progressMap: {},
+      progressMap: {
+        python: {
+          courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
+          completed: 1,
+          total: 2,
+          lessons: [
+            {
+              slug: 'intro',
+              title: 'Intro',
+              completed: true,
+              completedAt: null,
+              lastAccessedAt: null,
+            },
+            {
+              slug: 'booleans',
+              title: 'Booleans',
+              completed: false,
+              completedAt: null,
+              lastAccessedAt: '2025-01-01T00:00:00Z',
+            },
+          ],
+        },
+      },
       failedCourses: new Set(),
       isLoading: false,
       refresh: vi.fn(),
@@ -241,8 +271,11 @@ describe('HomePage', () => {
         <HomePage />
       </MemoryRouter>,
     );
+    expect(screen.queryByText('Loading...')).toBeNull();
+    const card = screen.getByText('Continue where you left off').parentElement!;
+    expect(within(card).getByText('Booleans')).toBeInTheDocument();
+    expect(within(card).queryByText('Intro')).toBeNull();
     expect(screen.getByRole('img', { name: 'Level 1, 40%' })).toBeInTheDocument();
-    expect(screen.getByText('Cadet')).toBeInTheDocument();
   });
 
   it('welcomes a new account, not back, on its first day', () => {
