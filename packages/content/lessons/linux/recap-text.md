@@ -1,15 +1,6 @@
-Chapter 6 armed you with a full text-processing toolkit:
+Chapter 6 was about turning raw text into answers: putting lines in order, counting repeats, taking out columns, replacing words and adding numbers up.
 
-| Command | Superpower                                |
-| ------- | ----------------------------------------- |
-| `sort`  | Reorder lines (alpha, numeric, by column) |
-| `uniq`  | Remove/count duplicates (after sorting)   |
-| `cut`   | Extract columns by delimiter or position  |
-| `sed`   | Find & replace in a stream                |
-| `awk`   | Field processing, calculations, filtering |
-
-These commands **compose** beautifully through pipes. A single pipeline can transform
-raw data into a clean report.
+Most real questions need several of these joined together, and this mission is no different.
 
 ---
 

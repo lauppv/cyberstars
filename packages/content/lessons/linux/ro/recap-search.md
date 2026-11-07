@@ -1,15 +1,6 @@
-Capitolul 4 te-a transformat într-un detectiv al stației. Trei unelte de căutare,
-trei întrebări diferite:
+Capitolul 4 a fost despre căutare: linii în fișiere, fișiere în foldere, programe în sistem.
 
-| Comandă | Întrebare                               |
-| ------- | --------------------------------------- |
-| `grep`  | „Care **linii** conțin acest cuvânt?”   |
-| `find`  | „Unde se află acest **fișier**?”        |
-| `which` | „Unde este instalat acest **program**?” |
-
-Reține opțiunile puternice: `grep -r` caută în arbori întregi, `grep -i` ignoră
-majusculele/minusculele, `grep -v` inversează; `find -name` potrivește după nume,
-`find -type` filtrează între fișiere și foldere.
+O căutare după felul greșit de lucru nu găsește nimic, așa că înainte de fiecare pas întreabă-te ce cauți.
 
 ---
 

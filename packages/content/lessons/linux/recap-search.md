@@ -1,14 +1,6 @@
-Chapter 4 turned you into a station detective. Three search tools, three different
-questions:
+Chapter 4 was about finding things: lines inside files, files inside folders, programs on the system.
 
-| Command | Question                               |
-| ------- | -------------------------------------- |
-| `grep`  | "Which **lines** contain this word?"   |
-| `find`  | "Where is this **file**?"              |
-| `which` | "Where is this **program** installed?" |
-
-Remember the power options: `grep -r` searches whole trees, `grep -i` ignores case,
-`grep -v` inverts; `find -name` matches names, `find -type` filters files vs folders.
+A search for the wrong kind of thing finds nothing, so before each step ask yourself what you are looking for.
 
 ---
 

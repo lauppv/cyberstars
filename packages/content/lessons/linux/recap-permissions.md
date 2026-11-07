@@ -1,15 +1,6 @@
-Chapter 7 taught you the security layer of the station's file system:
+Chapter 7 was about who may do what with a file: reading its permissions, changing them by name or by number, and knowing who you are on the system.
 
-| Command     | Purpose                               |
-| ----------- | ------------------------------------- |
-| `ls -l`     | View permissions and ownership        |
-| `chmod u+x` | Add/remove permissions (symbolic)     |
-| `chmod 755` | Set all permissions at once (numeric) |
-| `whoami`    | Show your username                    |
-| `id`        | Show uid, gid, and groups             |
-
-Remember the permission triad: **user → group → others**, each with `r`, `w`, `x`.
-Numeric: r=4, w=2, x=1. Add them up per group.
+Look at a file's permissions before you change them, and again after.
 
 ---
 

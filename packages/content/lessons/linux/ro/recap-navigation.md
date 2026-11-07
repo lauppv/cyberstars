@@ -1,27 +1,6 @@
-Este momentul să punem cap la cap primul capitol. Acum ai trei unelte de încredere
-pentru a te deplasa într-un sistem Linux:
+E timpul să pui cap la cap primul capitol: să afli unde ești, să vezi ce e în jur și să te muți din folder în folder. Nimic din capitolul acesta nu schimbă și nu șterge vreun fișier, așa că explorează cât vrei.
 
-- **pwd**: îți spune _unde_ te afli
-- **ls**: îți spune _ce_ se află în jurul tău
-- **cd**: _te mută_ într-un alt director
-
-Niciuna dintre aceste comenzi nu modifică sau șterge ceva, așa că poți explora în
-voie. Obiceiul de aur al oricărui cadet:
-
-```bash
-pwd            # confirma unde te afli
-ls             # priveste ce se afla aici
-cd undeva      # mergi mai departe
-```
-
-Repetă această buclă și nu te vei rătăci niciodată. Iar dacă totuși se întâmplă,
-`cd ~` te aduce direct acasă.
-
-### Cum citești ce-ți arată `ls`
-
-Ține minte că `ls -l` pune un `d` în fața directoarelor și un `-` în fața
-fișierelor. Folosește-l ori de câte ori trebuie să știi în ce nume poți intra cu
-`cd`.
+De data asta nimeni nu-ți spune ce folder să deschizi. Te uiți, hotărăști, mergi.
 
 ---
 

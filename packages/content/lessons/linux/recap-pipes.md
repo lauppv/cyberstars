@@ -1,18 +1,6 @@
-Chapter 5 gave you the plumbing of the station. Here is your toolbox:
+Chapter 5 was about where a command's output goes: into a file, onto the end of one, away from the screen, or straight into the next command.
 
-| Symbol | Purpose                             |
-| ------ | ----------------------------------- |
-| `>`    | Redirect output to file (overwrite) |
-| `>>`   | Redirect output to file (append)    |
-| `<`    | Feed file as input                  |
-| `\|`   | Pipe output to next command         |
-| `2>`   | Redirect errors only                |
-| `2>&1` | Merge errors into stdout            |
-
-Pipes and redirection let you build **data pipelines**: take raw data, filter it,
-transform it, and save the result, all in one line.
-
-The golden rule: **each command does one job**. Pipes connect the jobs into a workflow.
+With those you can build a whole report from raw data without typing a line of it yourself. Each command does one job; connecting them is your part.
 
 ---
 

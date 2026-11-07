@@ -1,15 +1,6 @@
-Capitolul 6 te-a înarmat cu un set complet de unelte pentru procesarea textului:
+Capitolul 6 a fost despre cum transformi textul brut în răspunsuri: pui liniile în ordine, numeri repetările, scoți coloane, înlocuiești cuvinte și aduni numere.
 
-| Comandă | Superputere                                          |
-| ------- | ---------------------------------------------------- |
-| `sort`  | Reordonează linii (alfabetic, numeric, după coloană) |
-| `uniq`  | Elimină/numără duplicate (după sortare)              |
-| `cut`   | Extrage coloane după delimitator sau poziție         |
-| `sed`   | Caută și înlocuiește într-un flux                    |
-| `awk`   | Procesare de câmpuri, calcule, filtrare              |
-
-Aceste comenzi **se combină** frumos prin pipe-uri. Un singur pipeline poate
-transforma date brute într-un raport curat.
+Cele mai multe întrebări reale au nevoie de mai multe dintre ele legate între ele, iar misiunea asta nu face excepție.
 
 ---
 

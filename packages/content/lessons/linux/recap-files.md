@@ -1,17 +1,6 @@
-Chapter 2 gave you the full file-management toolkit. Time to use all of it in one
-build.
+Chapter 2 was about building and tidying: making folders and files, copying, moving, renaming and deleting them.
 
-| Command              | Job                      |
-| -------------------- | ------------------------ |
-| `mkdir` (`-p`)       | create folders           |
-| `touch`              | create empty files       |
-| `cp` (`-r`)          | copy files and folders   |
-| `mv`                 | move and rename          |
-| `rm` (`-r`), `rmdir` | delete files and folders |
-
-A project folder almost always starts the same way: make the directories, then put
-files into them. Plan the structure first, then build it step by step. Use `ls` and
-`tree` between steps to check your work.
+Plan the structure before you build it, and look at your work between steps. Which command makes each part is up to you.
 
 ---
 

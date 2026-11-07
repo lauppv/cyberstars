@@ -1,16 +1,6 @@
-Chapter 3 gave you the file-inspection toolkit. Each command answers a different
-question:
+Chapter 3 was about reading files without changing them: a whole file, its start, its end, its size.
 
-| Command | Answers                                |
-| ------- | -------------------------------------- |
-| `cat`   | "Show me the whole (short) file."      |
-| `head`  | "Show me the _start_."                 |
-| `tail`  | "Show me the _latest_ events."         |
-| `less`  | "Let me _scroll_ through a long file." |
-| `wc`    | "How big is it, how many lines/words?" |
-
-A common workflow when inspecting logs: `wc -l` to size the file, `head` to see how it
-begins, `tail` to see the newest entries.
+Each question in this mission needs one of those. Picking which is the exercise.
 
 ---
 

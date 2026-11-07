@@ -1,15 +1,6 @@
-Capitolul 7 te-a învățat stratul de securitate al sistemului de fișiere al stației:
+Capitolul 7 a fost despre cine ce are voie să facă cu un fișier: să-i citești permisiunile, să le schimbi prin litere sau prin numere și să știi cine ești în sistem.
 
-| Comandă     | Scop                                         |
-| ----------- | -------------------------------------------- |
-| `ls -l`     | Vezi permisiunile și proprietarul            |
-| `chmod u+x` | Adaugă/elimină permisiuni (simbolic)         |
-| `chmod 755` | Setează toate permisiunile deodată (numeric) |
-| `whoami`    | Afișează numele tău de utilizator            |
-| `id`        | Afișează uid, gid și grupurile               |
-
-Reține triada de permisiuni: **user → group → others**, fiecare cu `r`, `w`, `x`.
-Numeric: r=4, w=2, x=1. Adună-le pe grup.
+Uită-te la permisiunile unui fișier înainte să le schimbi, și încă o dată după.
 
 ---
 

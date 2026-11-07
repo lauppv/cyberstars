@@ -1,26 +1,6 @@
-Time to put the first chapter together. You now have three trusty tools for moving
-around a Linux system:
+Time to put the first chapter together: finding out where you are, seeing what is around you and moving from folder to folder. Nothing in this chapter changes or deletes a file, so explore as much as you like.
 
-- **pwd**: tells you _where_ you are
-- **ls**: tells you _what_ is around you
-- **cd**: _moves_ you to a new directory
-
-None of these change or delete anything, so you can explore freely. The golden habit
-of every cadet:
-
-```bash
-pwd    # confirm where you are
-ls     # look at what is here
-cd somewhere   # move on
-```
-
-Repeat that loop and you will never get lost. If you ever do, `cd ~` brings you
-straight home.
-
-### Reading what `ls` shows you
-
-Remember `ls -l` puts a `d` in front of directories and a `-` in front of files. Use
-it whenever you need to know which names you can `cd` into.
+This time nobody tells you which folder to open. Look, decide, move.
 
 ---
 

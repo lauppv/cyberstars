@@ -1,17 +1,6 @@
-Capitolul 2 ți-a oferit întreg setul de unelte pentru gestionarea fișierelor. E
-timpul să le folosești pe toate într-o singură construcție.
+Capitolul 2 a fost despre construit și făcut ordine: foldere și fișiere noi, copiat, mutat, redenumit și șters.
 
-| Comandă              | Rol                        |
-| -------------------- | -------------------------- |
-| `mkdir` (`-p`)       | creează foldere            |
-| `touch`              | creează fișiere goale      |
-| `cp` (`-r`)          | copiază fișiere și foldere |
-| `mv`                 | mută și redenumește        |
-| `rm` (`-r`), `rmdir` | șterge fișiere și foldere  |
-
-Un folder de proiect începe aproape întotdeauna la fel: creezi directoarele, apoi pui
-fișierele în ele. Planifică structura mai întâi, apoi construiește-o pas cu pas.
-Folosește `ls` și `tree` între pași pentru a-ți verifica munca.
+Plănuiește structura înainte s-o construiești și uită-te la ce ai făcut între pași. Ce comandă face fiecare parte hotărăști tu.
 
 ---
 
