@@ -1,6 +1,5 @@
-// Runs the web judge's runner on the host (Node and Playwright's headless
-// Chromium, skipped when the browser isn't installed: `npx playwright install
-// --only-shell chromium`) against small sites, and judges what it reports the
+// Runs the web judge's runner on the host (Node and Playwright's Chromium,
+// skipped when it isn't installed: `npx playwright install chromium`) against small sites, and judges what it reports the
 // way the server does. The service tests mock the sandbox away; this covers
 // what only a real browser shows: layout, clicks, links, data, a stuck page.
 import { spawnSync } from 'child_process';
@@ -17,7 +16,8 @@ function hasBrowser(): boolean {
   const dir =
     process.env.PLAYWRIGHT_BROWSERS_PATH ?? path.join(os.homedir(), '.cache', 'ms-playwright');
   try {
-    return fs.readdirSync(dir).some((name) => name.startsWith('chromium_headless_shell-'));
+    // The headless shell, or the full browser where there is no shell for the OS
+    return fs.readdirSync(dir).some((name) => /^chromium(_headless_shell)?-\d+$/.test(name));
   } catch {
     return false;
   }

@@ -73,8 +73,10 @@ jobs:
           path: node_modules
           key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
 
-      # The web judge's runner tests drive a real headless Chromium
-      - run: npx playwright install --only-shell chromium
+      # The web judge's runner tests drive a real headless Chromium. The full
+      # one, as the e2e jobs: Playwright has no headless shell for this runner's
+      # Ubuntu, and launches the full one headless instead
+      - run: npx playwright install chromium
       - name: Run tests with coverage
         run: npm run test:coverage
 

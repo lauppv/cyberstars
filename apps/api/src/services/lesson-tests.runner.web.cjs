@@ -281,15 +281,20 @@ async function runCase(browser, files, testCase, limits) {
 
 async function main() {
   const payload = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
+  // The container is the sandbox: Chromium's own needs privileges it hasn't
+  const args = ['--no-sandbox', `--js-flags=--max-old-space-size=${payload.heapMb}`];
   let browser;
   try {
-    browser = await chromium.launch({
-      // The container is the sandbox: Chromium's own needs privileges it hasn't
-      args: ['--no-sandbox', `--js-flags=--max-old-space-size=${payload.heapMb}`],
-    });
-  } catch (err) {
-    print({ launchError: String(err && err.message) });
-    return;
+    browser = await chromium.launch({ args });
+  } catch {
+    // The headless shell (the image's) or, where an OS has none, the full
+    // browser in its headless mode
+    try {
+      browser = await chromium.launch({ args, channel: 'chromium' });
+    } catch (err) {
+      print({ launchError: String(err && err.message) });
+      return;
+    }
   }
   print({ ready: true });
   for (const testCase of payload.cases) {
