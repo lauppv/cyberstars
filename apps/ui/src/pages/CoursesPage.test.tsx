@@ -491,7 +491,25 @@ describe('CoursesPage', () => {
       refresh: vi.fn(),
     });
     renderPage('/courses/python');
-    fireEvent.click(screen.getByText('×'));
+    fireEvent.click(screen.getByRole('button', { name: 'Close' }));
+    expect(mockNavigate).toHaveBeenCalledWith('/courses');
+  });
+
+  it('Escape closes the syllabus too', () => {
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage('/courses/python');
+    expect(screen.getByRole('dialog', { name: /Python/ })).toBeInTheDocument();
+    fireEvent.keyDown(window, { key: 'Escape' });
     expect(mockNavigate).toHaveBeenCalledWith('/courses');
   });
 

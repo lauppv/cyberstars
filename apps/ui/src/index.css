@@ -47,6 +47,9 @@
   /* Code shows exactly what was typed. With its ligatures on, the code font
      draws != as ≠, -> as an arrow and <= as ≤. Text keeps its own. */
   --mono-features: 'liga' 0, 'calt' 0;
+  /* Three corners: --radius-lg for cards, drawers and windows, --radius for
+     panels and rows, --radius-sm for buttons, inputs and small chips */
+  --radius-lg: 12px;
   --radius: 8px;
   --radius-sm: 6px;
   /* The panel surface: every card and container in the app (see .panel). */
@@ -467,6 +470,88 @@ body {
   animation: spin 0.6s linear infinite;
 }
 
+/* A set's drawer (SetDrawer): it slides in from the right and its rows come in
+   one after another; a course's next lesson pulses and its track fills */
+@keyframes drawerIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.animate-drawer-in {
+  animation: drawerIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes rowIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.set-row {
+  opacity: 0;
+  transform: translateX(-6px);
+  animation: rowIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.set-row-done {
+  box-shadow:
+    0 0 0 2px var(--bg2),
+    0 0 12px color-mix(in srgb, var(--success) 40%, transparent);
+}
+@keyframes nextPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 2px var(--bg2),
+      0 0 0 0 var(--accent-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px var(--bg2),
+      0 0 0 6px transparent,
+      0 0 16px var(--accent-glow);
+  }
+}
+.ch-next-pulse {
+  animation: nextPulse 2s ease-in-out infinite;
+}
+@keyframes segIn {
+  to {
+    transform: scaleY(1);
+  }
+}
+.seg {
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: segIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.seg-filled {
+  background: linear-gradient(180deg, var(--success), var(--accent));
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+.seg-half {
+  background: linear-gradient(
+    180deg,
+    var(--success) 0%,
+    var(--success) 45%,
+    var(--bg3) 55%,
+    var(--bg3) 100%
+  );
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-drawer-in,
+  .ch-next-pulse {
+    animation: none;
+  }
+  .set-row,
+  .seg {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
 /* Surfaces live in the components layer so Tailwind utilities (hover borders,
    per-element rounded-*, etc.) still override them where needed. */
 @layer components {
@@ -476,5 +561,74 @@ body {
     background: var(--panel-bg);
     border: 1px solid var(--panel-border);
     border-radius: var(--radius);
+  }
+
+  /* ===== Buttons: one shape for every action. .btn-primary for the page's
+     main action, .btn-secondary beside it; .btn-sm and .btn-lg change only the
+     size ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.25;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      color 0.15s,
+      background-color 0.15s,
+      border-color 0.15s,
+      filter 0.15s;
+  }
+  .btn:disabled,
+  .btn[aria-disabled='true'] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  .btn-lg {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    color: #fff;
+  }
+  .btn-primary:not(:disabled):hover {
+    filter: brightness(1.1);
+  }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-secondary:not(:disabled):hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ===== A section's small heading: over a group of cards, inside a panel,
+     over a drawer's list ===== */
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text3);
+  }
+
+  /* ===== What a window or a drawer lies on: the page dimmed and blurred ===== */
+  .overlay {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease;
   }
 }
