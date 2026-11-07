@@ -586,7 +586,8 @@
       "algo-c": "Probleme de C aproape de hardware: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
       "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele.",
       "trees-graphs": "Structurile din spatele folderelor, hărților și rețelelor, predate în Python, Java sau C: fiecare lecție există în toate trei și poți schimba limbajul la oricare dintre ele.",
-      "web": "Construiești pagini web de la zero: structura cu HTML, aspectul cu CSS, apoi le dai viață cu JavaScript."
+      "web": "Construiești pagini web de la zero: structura cu HTML, aspectul cu CSS, apoi le dai viață cu JavaScript.",
+      "web-dev": "Construiești un site al tău, pagină cu pagină: scrii fiecare pagină în HTML, îi dai aspect cu CSS, apoi îi dai viață cu JavaScript și o vezi cum se schimbă pe măsură ce scrii."
     },
     "lessons_few": "lecții",
     "names": {
@@ -599,7 +600,8 @@
       "algo-java": "Algoritmi Java",
       "algo-c": "Algoritmi C",
       "algo-trees-graphs": "Algoritmi pe arbori și grafuri",
-      "web": "Dezvoltare web"
+      "web": "Dezvoltare web",
+      "web-dev": "Dezvoltare web"
     }
   },
   "algorithms": {
@@ -1723,5 +1725,49 @@
     },
     "later": "Poate mai târziu",
     "signUp": "Creează cont gratuit"
+  },
+  "web": {
+    "files": "Fișiere",
+    "code": "Cod",
+    "newFile": "Fișier nou",
+    "newFolder": "Folder nou",
+    "rename": "Redenumește {{name}}",
+    "delete": "Șterge {{name}}",
+    "fileName": "Numele fișierului nou, cu folderul lui",
+    "folderName": "Numele folderului nou",
+    "newName": "Numele nou pentru {{name}}",
+    "fileExample": "de ex. css/style.css",
+    "folderExample": "de ex. css",
+    "confirmDelete": "Ștergi {{name}}?",
+    "confirmDeleteFolder": "Ștergi folderul {{name}} și tot ce e în el?",
+    "errors": {
+      "invalidFile": "Folosește litere, cifre, puncte, cratime și underscore, iar la final .html, .css, .js, .json sau .txt.",
+      "invalidFolder": "Folosește litere, cifre, puncte, cratime și underscore.",
+      "taken": "Site-ul tău are deja un fișier sau un folder acolo.",
+      "image": "Imaginea vine cu lecția și rămâne cum e.",
+      "fileLimit": "Un site are cel mult {{max}} de fișiere.",
+      "sizeLimit": "Site-ul tău a ajuns la mărimea maximă de aici. Fă puțin loc înainte să adaugi altceva."
+    },
+    "noFiles": "Încă nu ai fișiere. Adaugă unul cu Fișier nou.",
+    "noFileOpen": "Deschide un fișier din listă ca să-l editezi.",
+    "closeTab": "Închide {{name}}",
+    "imageReadOnly": "O imagine a lecției: o poți folosi în pagini, dar nu o poți edita.",
+    "paused": "Pe pauză: o buclă a rulat prea mult.",
+    "site": "Site",
+    "side": "Ce arată partea din stânga",
+    "showAgain": "Arată pagina din nou",
+    "noPage": "Site-ul tău n-are încă nicio pagină. Adaugă un fișier .html ca s-o vezi aici.",
+    "previewTitle": "Previzualizarea paginii {{page}}",
+    "console": {
+      "title": "Consolă",
+      "clear": "Golește",
+      "empty": "Aici apare ce afișează pagina ta și erorile pe care le aruncă.",
+      "loopStopped": "Am oprit o buclă care a rulat prea mult, pe linia {{line}} din {{file}}.",
+      "evalBlocked": "Codul dintr-un șir (eval, new Function, setTimeout cu un șir) nu rulează în previzualizare. Dă-i o funcție în loc.",
+      "missingFile": "{{from}} cere {{file}}, dar fișierul nu e în site-ul tău.",
+      "noPage": "Nu există pagina {{page}} în site-ul tău.",
+      "outsideLink": "Linkurile spre alte site-uri nu se deschid în previzualizare: {{href}}",
+      "formSent": "Formularul a fost trimis: {{fields}}"
+    }
   }
 }

@@ -986,6 +986,24 @@ describe('askTutor: a lesson chat', () => {
     });
   });
 
+  it("sends a web lesson's site as markdown, a block per file inside it", async () => {
+    const site = '```html index.html\n<h1>Hi</h1>\n```';
+    const { turn } = await lastTurn({
+      ...ask,
+      page: '/lesson/web-dev/first-page',
+      lesson: {
+        courseKey: 'web-dev',
+        lessonSlug: 'first-page',
+        code: site,
+        runOutput: 'log: hello',
+        verdict: null,
+      },
+    });
+    const work = turn.parts[0].text as string;
+    expect(work).toContain(`\`\`\`\`markdown\n${site}\n\`\`\`\``);
+    expect(work).toContain('```\nlog: hello\n```');
+  });
+
   it('refuses a lesson it cannot read before calling the model', async () => {
     tools.lessonStatement.mockReturnValue(null);
 

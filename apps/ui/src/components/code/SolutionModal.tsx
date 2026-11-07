@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { RunLesson } from '@cyberstars/shared/lesson';
+import { extensionOf, parseWebFiles } from '@cyberstars/shared/webFiles';
 import { MarkdownRenderer } from '../markdown/MarkdownRenderer';
 import { CodeEditor } from './CodeEditor';
 import { RunLessonContext } from './runLesson';
@@ -15,6 +16,7 @@ export function SolutionModal({
   currentCode,
   language,
   runLesson = null,
+  web = false,
   onClose,
 }: {
   solution: string;
@@ -22,6 +24,8 @@ export function SolutionModal({
   language?: string;
   /** The lesson the solution's Run belongs to. */
   runLesson?: RunLesson | null;
+  /** A web lesson's solution: the files of a site, each shown read-only */
+  web?: boolean;
   onClose: () => void;
 }) {
   const { t } = useTranslation();
@@ -99,6 +103,26 @@ export function SolutionModal({
                 <CodeEditor value={solutionCode} language={editorLang} fontSize="13px" readOnly />
               </div>
             </div>
+          </div>
+        ) : web ? (
+          <div className="px-6 py-4 flex flex-col gap-4">
+            {parseWebFiles(solution)
+              .filter((file) => !file.image)
+              .map((file) => (
+                <section key={file.path}>
+                  <h3 className="m-0 mb-2 text-[13px] font-mono font-semibold text-[var(--text2)]">
+                    {file.path}
+                  </h3>
+                  <div className="border border-[var(--border)] rounded-[var(--radius-sm)] overflow-hidden bg-[rgba(13,17,23,0.3)]">
+                    <CodeEditor
+                      value={file.content}
+                      language={extensionOf(file.path)}
+                      fontSize="13px"
+                      readOnly
+                    />
+                  </div>
+                </section>
+              ))}
           </div>
         ) : (
           <div className="px-6 py-4 lesson-body">

@@ -16,7 +16,7 @@ export default defineConfig({
     {
       name: 'browser',
       use: { ...devices['Desktop Chrome'] },
-      testMatch: /\/(auth|forum|support|courses|profile|fonts|laniakea)\.spec\.ts$/,
+      testMatch: /\/(auth|forum|support|courses|profile|fonts|laniakea|web-lesson)\.spec\.ts$/,
     },
     {
       name: 'docker',

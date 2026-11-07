@@ -46,9 +46,10 @@ export const ALL_COURSE_KEYS = [...MAIN_COURSE_KEYS, ...ALGO_COURSE_KEYS] as con
 // Terminal courses run in a Linux sandbox, not the /api/code editor pipeline.
 export const TERMINAL_COURSE_KEYS = ['linux'] as const;
 
-// The courses under the Web Development card on the Courses page, each added
-// by the ticket that starts it.
-export const WEB_COURSE_KEYS: readonly string[] = [];
+// The courses under the Web Development card on the Courses page. Their
+// lessons are web lessons: a site of several files in an IDE with a live
+// preview (packages/shared/webFiles.ts) instead of one file of code.
+export const WEB_COURSE_KEYS: readonly string[] = ['web-dev'];
 
 // A web course while Web Development is in preview (PREVIEW_FEATURES): only
 // admins and the founder open its card, and its courses are listed nowhere

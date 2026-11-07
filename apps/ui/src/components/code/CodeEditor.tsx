@@ -3,6 +3,9 @@ import { oneDark } from '@uiw/react-codemirror';
 import { cpp } from '@codemirror/lang-cpp';
 import { python } from '@codemirror/lang-python';
 import { java } from '@codemirror/lang-java';
+import { html } from '@codemirror/lang-html';
+import { css } from '@codemirror/lang-css';
+import { javascript } from '@codemirror/lang-javascript';
 import { indentUnit } from '@codemirror/language';
 import { EditorView, keymap } from '@codemirror/view';
 import { Prec, type Extension } from '@codemirror/state';
@@ -52,6 +55,15 @@ function getExtensions(language: string): Extension[] {
     case 'java':
     case 'algo-java':
       return [...base, java()];
+    // A web lesson's files: HTML closes its tags as they are typed
+    case 'html':
+      return [...base, html()];
+    case 'css':
+      return [...base, css()];
+    case 'js':
+    case 'javascript':
+    case 'json':
+      return [...base, javascript()];
     default:
       return base;
   }

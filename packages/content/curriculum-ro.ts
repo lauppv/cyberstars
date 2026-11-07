@@ -335,4 +335,7 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'course-order': 'Medium · O ordine pentru cursuri',
     'signal-time': 'Hard · În cât timp ajunge semnalul la toate turnurile',
   },
+  'web-dev': {
+    'first-page': 'Prima ta pagină web',
+  },
 };

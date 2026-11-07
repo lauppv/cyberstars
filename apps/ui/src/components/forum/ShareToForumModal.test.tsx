@@ -170,4 +170,18 @@ describe('ShareToForumModal', () => {
     );
     await waitFor(() => expect(screen.getByText('Could not load categories.')).toBeInTheDocument());
   });
+
+  it("posts a web lesson's site as a block per file, each under its name", async () => {
+    const site =
+      '```html index.html\n<h1>Hi</h1>\n```\n\n```image img/a.png\n\n```\n\n```js app.js\nlet a;\n```';
+    render(
+      <ShareToForumModal code={site} language="web-dev" lessonTitle="Site" onClose={vi.fn()} />,
+    );
+    await waitFor(() => expect(screen.getByText('General')).toBeInTheDocument());
+    fireEvent.click(screen.getByText('Post'));
+    await waitFor(() => expect(createThread).toHaveBeenCalledTimes(1));
+    expect(createThread.mock.calls[0][0].content).toBe(
+      '**index.html**\n\n```html index.html\n<h1>Hi</h1>\n```\n\n**app.js**\n\n```js app.js\nlet a;\n```',
+    );
+  });
 });
