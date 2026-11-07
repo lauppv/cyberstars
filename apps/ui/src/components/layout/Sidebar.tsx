@@ -346,19 +346,18 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
             onNavigate={onNavigate}
           />
           {/* Coming soon for everyone until every language has its projects;
-              the admins and the founder already open it */}
-          {user &&
-            (isAdmin(user.role) ? (
-              <NavItem
-                to="/projects"
-                icon={FolderKanban}
-                label={t('nav.projects')}
-                tag={<ComingSoonTag />}
-                onNavigate={onNavigate}
-              />
-            ) : (
-              <LockedItem icon={FolderKanban} label={t('nav.projects')} />
-            ))}
+              whoever the feature rule lets in already opens it */}
+          {canAccessFeature('projects', user?.role, isProd) ? (
+            <NavItem
+              to="/projects"
+              icon={FolderKanban}
+              label={t('nav.projects')}
+              tag={<ComingSoonTag />}
+              onNavigate={onNavigate}
+            />
+          ) : (
+            <LockedItem icon={FolderKanban} label={t('nav.projects')} />
+          )}
           <NavItem to="/almanac" icon={Library} label={t('nav.almanac')} onNavigate={onNavigate} />
           {user && <LaniakeaItem onNavigate={onNavigate} />}
         </Section>
