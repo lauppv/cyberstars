@@ -148,7 +148,7 @@ export function GuestVisits({
           value={source}
           onChange={(e) => setSource(e.target.value)}
           aria-label={t('admin.sources')}
-          className="px-2 py-1 rounded-[var(--radius-sm)] text-[12px] border border-[var(--border)] bg-[var(--glass)] text-[var(--text2)] cursor-pointer"
+          className="select pl-2 pr-7 py-1 rounded-[var(--radius-sm)] text-[12px] border border-[var(--border)] bg-[var(--glass)] text-[var(--text2)]"
         >
           <option value="">{t('admin.allSources')}</option>
           {options.map((key) => (

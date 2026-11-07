@@ -123,7 +123,7 @@ export function ShareToForumModal({
             <select
               value={categorySlug}
               onChange={(e) => setCategorySlug(e.target.value)}
-              className="w-full px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[14px] text-[var(--text)] outline-none focus:border-[var(--accent)]/60 transition cursor-pointer"
+              className="select w-full pl-3 pr-8 py-2 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[14px] text-[var(--text)] outline-none focus:border-[var(--accent)]/60 transition cursor-pointer"
             >
               {categories.map((c) => (
                 <option key={c.slug} value={c.slug}>

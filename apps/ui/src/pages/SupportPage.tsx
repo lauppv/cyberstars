@@ -151,7 +151,7 @@ export function SupportPage() {
         <div>
           {/* New ticket form */}
           <div className="panel p-5 mb-8">
-            <h2 className="text-[14px] font-semibold mb-4">{t('support.newTicket')}</h2>
+            <h2 className="section-label mb-4">{t('support.newTicket')}</h2>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -162,7 +162,7 @@ export function SupportPage() {
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value as TicketType)}
-                className={INPUT_CLS + ' cursor-pointer'}
+                className={`${INPUT_CLS} select pr-8`}
               >
                 {TICKET_TYPE_VALUES.map((v) => (
                   <option key={v} value={v}>
@@ -371,7 +371,7 @@ function TicketConversation({
           <select
             value={ticket.status}
             onChange={(e) => void changeStatus(e.target.value as TicketStatus)}
-            className="text-[11px] font-semibold bg-[var(--bg2)] border border-[var(--border)] rounded px-2 py-1 outline-none cursor-pointer"
+            className="select text-[11px] font-semibold bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-sm)] pl-2 pr-7 py-1 outline-none"
             style={{ color: statusColor }}
           >
             {(Object.keys(STATUS_COLOR) as TicketStatus[]).map((s) => (

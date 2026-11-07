@@ -18,9 +18,7 @@ export function EmptyState({
   framed?: boolean;
 }) {
   return (
-    <div
-      className={`flex flex-col items-center text-center px-6 ${framed ? 'panel py-12' : 'py-10'}`}
-    >
+    <div className={`flex flex-col items-center text-center px-6 py-10 ${framed ? 'panel' : ''}`}>
       <div className="w-10 h-10 mb-3.5 rounded-[var(--radius)] flex items-center justify-center bg-[var(--accent)]/10 border border-[var(--accent)]/20 text-[var(--accent)]">
         <Icon size={18} aria-hidden="true" />
       </div>
