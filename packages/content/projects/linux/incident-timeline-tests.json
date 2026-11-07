@@ -44,15 +44,7 @@
   "requires": [
     {
       "kind": "command",
-      "name": "sed"
-    },
-    {
-      "kind": "command",
       "name": "sort"
-    },
-    {
-      "kind": "command",
-      "name": "awk"
     }
   ]
 }

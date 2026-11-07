@@ -44,15 +44,7 @@
   "requires": [
     {
       "kind": "command",
-      "name": "find"
-    },
-    {
-      "kind": "command",
       "name": "grep"
-    },
-    {
-      "kind": "command",
-      "name": "mv"
     }
   ]
 }

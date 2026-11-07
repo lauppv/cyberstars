@@ -6,16 +6,7 @@ When every step is done, press **Run Tests**: it checks the files in this termin
 
 ## Look at the logs
 
-You start in `~/incident`, next to `web.log`, `payments.log` and `db.log`. Count their lines with one `wc -l`:
-
-```text
-  20 db.log
-  26 payments.log
-  32 web.log
-  78 total
-```
-
-Every line starts the same way, with the date, the time and a level (`INFO`, `WARN` or `ERROR`):
+You start in `~/incident`, next to `web.log`, `payments.log` and `db.log`. How many lines does each have? Every line starts the same way, with the date, the time and a level, `INFO`, `WARN` or `ERROR`:
 
 ```text
 2026-11-05 13:40:28 INFO GET /checkout 200
@@ -23,101 +14,45 @@ Every line starts the same way, with the date, the time and a level (`INFO`, `WA
 
 ## Errors per service
 
-Count the `ERROR` lines in each log with one `grep -c`:
-
-```text
-db.log:6
-payments.log:9
-web.log:9
-```
-
-The website and payments have the most, but that doesn't make them the cause. You need to see the order things happened in.
+How many `ERROR` lines does each log have? The services with the most errors aren't necessarily the cause: you'll need the order things happened in.
 
 ## Say where each line came from
 
-Once the three logs are mixed, you won't know which service wrote a line. Add the service's name at the end of every line, with `sed` and the pattern `$`, which matches the end of a line:
+Once the three logs are mixed, you won't know which service wrote a line. Add the service's name at the end of every line, after a space and in square brackets, so a line of `web.log` ends in ` [web]`, one of `payments.log` in ` [payments]` and one of `db.log` in ` [db]`.
 
-```bash
-sed 's/$/ [web]/' web.log > web.tagged
-```
-
-Do the same for `payments.log` and `db.log`, with `[payments]` and `[db]`. `head -2 db.tagged` shows:
-
-```text
-2026-11-05 13:40:05 INFO checkpoint done, disk 91% used [db]
-2026-11-05 13:44:05 INFO checkpoint done, disk 91% used [db]
-```
+New idea: in a `sed` pattern, `$` matches the end of a line, as it does in `grep`.
 
 ## One timeline
 
-Every line starts with its date and time, written so that earlier sorts first. So `sort` on the three tagged files together puts them in time order. Save the result as `timeline.txt` (78 lines, the three logs together), then remove the `.tagged` files.
+Every line starts with its date and time, written so that earlier sorts first. Put the three tagged logs together in time order in `timeline.txt`.
+
+Keep the folder tidy: when you're done, `incident` holds the three logs and the files the steps ask for, and no helper files.
 
 ## The half hour that matters
 
-The trouble was between 14:00 and 14:30. The time is field 2, and written as `14:03:12` it compares like text, so `awk` can keep the lines between two times:
-
-```bash
-awk '$2 >= "14:00:00" && $2 < "14:30:00"' timeline.txt > window.txt
-```
-
-`window.txt` has 42 lines. Its first lines already look different from the rest:
-
-```text
-2026-11-05 14:00:20 INFO GET /checkout 200 [web]
-2026-11-05 14:00:30 WARN disk 96% used [db]
-2026-11-05 14:00:50 INFO payment accepted [payments]
-```
+The trouble was between 14:00 and 14:30. Save the lines of the timeline from `14:00:00` up to, but not including, `14:30:00` to `window.txt`. A time written as `14:03:12` compares like text.
 
 ## What broke first
 
-Hide the routine lines, `grep -v INFO`, and look at the first few that are left:
-
-```text
-2026-11-05 14:00:30 WARN disk 96% used [db]
-2026-11-05 14:01:30 WARN disk 97% used [db]
-2026-11-05 14:02:30 WARN disk 98% used [db]
-2026-11-05 14:03:12 ERROR disk full, cannot write to orders table [db]
-2026-11-05 14:04:15 ERROR payment not saved: database error [payments]
-2026-11-05 14:05:40 ERROR write failed: no space left on device [db]
-```
-
-The database warned three times that its disk was filling up, and at 14:03:12 the disk was full. A minute later payments started failing, and right after that the checkout page. `grep -m 1 ERROR` prints only the first match, the line that started it all. Save it to `cause.txt`.
+Hide the routine lines and look at the first ones left. Which service warned first, and about what? Save the first `ERROR` line of the window, the one that started it all, to `cause.txt`.
 
 ## How far it spread
 
-Take the `ERROR` lines of the window and count them per service. The service is the last field of every line now, and `awk` calls the last field `$NF`:
+How many `ERROR` lines does the window have for each service? The service is the last field of every line now.
 
-```text
-      6 [db]
-      9 [payments]
-      9 [web]
-```
-
-24 errors, all from one full disk.
+New idea: `awk` calls the last field of a line `$NF`, however many fields the line has.
 
 ## When it was over
 
-The first `ERROR` of the window and its last (`head -1` and `tail -1`) give the outage's start and end:
+When did the outage start and end? The first and the last `ERROR` of the window tell you. Then find what fixed it: search the window for something being removed or resumed.
+
+Write the post-mortem to `postmortem.txt`, one line each, with what you found:
 
 ```text
-2026-11-05 14:03:12 ERROR disk full, cannot write to orders table [db]
-2026-11-05 14:21:40 ERROR GET /checkout 500 [web]
-```
-
-Search the window for `removed` or `resumed` (`grep -n "removed\|resumed"`) to find the fix:
-
-```text
-32:2026-11-05 14:19:02 INFO old backups removed, disk 64% used [db]
-33:2026-11-05 14:19:30 INFO writes resumed [db]
-```
-
-Someone removed old backups at 14:19, and two minutes later the website had caught up. Write the post-mortem to `postmortem.txt` with `echo` and `>>`, one line each:
-
-```text
-Start: 14:03:12, database disk full
-Spread: payments from 14:04, checkout page from 14:06
-Fix: 14:19:02, old backups removed
-End: 14:21:40, last checkout error
-Errors: 24
-Next time: alert when the database disk passes 90%
+Start: <time>, <what failed>
+Spread: <which services failed next, and from when>
+Fix: <time>, <what fixed it>
+End: <time>, <the last error>
+Errors: <how many ERROR lines the window has>
+Next time: <what would have warned the team in time>
 ```

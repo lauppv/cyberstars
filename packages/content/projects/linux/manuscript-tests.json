@@ -25,10 +25,6 @@
     {
       "kind": "command",
       "name": "sed"
-    },
-    {
-      "kind": "command",
-      "name": "head"
     }
   ]
 }
