@@ -306,11 +306,7 @@ export default function WebWorkspace({
           className="shrink-0 flex items-center gap-3 px-3 py-1.5 text-[12px] text-[var(--warning)] border-b border-[var(--border)]"
         >
           <span className="flex-1 min-w-0">{t('web.paused')}</span>
-          <button
-            type="button"
-            onClick={run}
-            className="btn btn-secondary btn-sm shrink-0 py-0.5"
-          >
+          <button type="button" onClick={run} className="btn btn-secondary btn-sm shrink-0 py-0.5">
             {t('web.showAgain')}
           </button>
         </div>
