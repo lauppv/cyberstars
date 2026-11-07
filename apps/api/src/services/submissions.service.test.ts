@@ -172,6 +172,23 @@ describe('getForUser', () => {
     expect(await service.getForUser(7, 9)).not.toHaveProperty('comparator');
   });
 
+  it("opens a web lesson's attempt, whose language picks no folder", async () => {
+    mockRepo.findOwned.mockResolvedValue({
+      ...summaryRow,
+      lang: 'en',
+      language: 'web-dev',
+      courseKey: 'web-dev',
+      lessonSlug: 'first-page',
+      code: '```html index.html\n<h1>Hi</h1>\n```',
+      syntaxError: null,
+      structureFailures: [],
+      failedCase: null,
+    });
+    mockLoadTestsSpec.mockReturnValue({ cases: [] });
+    expect((await service.getForUser(7, 9)).language).toBe('web-dev');
+    expect(mockLoadTestsSpec).toHaveBeenCalledWith('web-dev', 'first-page', 'en', undefined);
+  });
+
   it('404s a missing or foreign attempt', async () => {
     mockRepo.findOwned.mockResolvedValue(null);
 

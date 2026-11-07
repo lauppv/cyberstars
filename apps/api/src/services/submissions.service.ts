@@ -3,7 +3,7 @@ import * as repo from '../repositories/submissions.repository.js';
 import { assertValidCourse } from './paths.js';
 import { loadTestsSpec } from './lesson-tests.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
-import type { CodeLanguage } from '@cyberstars/shared/constants';
+import { isCodeLanguage, type CodeLanguage } from '@cyberstars/shared/constants';
 import type {
   RunTestsResponse,
   StructureFailure,
@@ -33,7 +33,9 @@ function toSummary(row: repo.SubmissionSummaryRow): SubmissionSummary {
 // The comparator comes from the lesson as it is now, not from the stored row,
 // so attempts saved before the page needed it carry it too.
 function toDetail(row: LessonSubmission): SubmissionDetail {
-  const spec = loadTestsSpec(row.courseKey, row.lessonSlug, row.lang, row.language);
+  // A web lesson's attempt ran in no code language (web-dev), which picks no folder
+  const language = isCodeLanguage(row.language) ? row.language : undefined;
+  const spec = loadTestsSpec(row.courseKey, row.lessonSlug, row.lang, language);
   return {
     ...toSummary(row),
     code: row.code,
