@@ -39,7 +39,8 @@ const previewHeaders = helmet({
       imgSrc: ['data:', 'blob:', 'https:'],
       mediaSrc: ['data:', 'blob:', 'https:'],
       fontSrc: ['data:', 'https:'],
-      connectSrc: ['https:'],
+      // blob: for a request the page makes of one of the site's own files
+      connectSrc: ['blob:', 'https:'],
       formAction: ["'none'"],
       baseUri: ["'none'"],
       frameAncestors: ["'self'"],

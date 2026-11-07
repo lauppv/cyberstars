@@ -5,7 +5,8 @@
 //
 // * keeps localStorage (and sessionStorage) in a stand-in with the same
 //   methods, whose data the IDE saves;
-// * answers fetch() of the site's own files from the files themselves;
+// * answers fetch() and XMLHttpRequest of the site's own files from the
+//   files themselves;
 // * turns a link to another page of the site into a message, so the IDE
 //   shows that page, and keeps the page from leaving for another site or
 //   sending a form somewhere;
@@ -239,23 +240,63 @@ export function previewPrelude(config: PreludeConfig): void {
     json: 'application/json',
     txt: 'text/plain',
   };
+  // The path of the site a request names, or null for another site. A URL
+  // or a Request was made against the preview's own address, which isn't
+  // the page's: a path in it is first the page's folder's, then the site's.
+  const requested = (target: unknown): string | null => {
+    if (typeof target === 'string') return resolve(target);
+    const href =
+      target instanceof URL ? target.href : target instanceof Request ? target.url : null;
+    if (href === null) return null;
+    const url = new URL(href);
+    if (url.origin !== new URL(window.location.href).origin) return null;
+    const near = resolve(url.pathname.slice(1));
+    return near !== null && config.files[near] !== undefined ? near : resolve(url.pathname);
+  };
+  // What the site answers a request with, or null when it's for another site
+  const answer = (target: unknown) => {
+    const path = requested(target);
+    if (path === null) return null;
+    const content = config.files[path];
+    if (content === undefined) return { status: 404, body: 'Not found', type: 'text/plain' };
+    const ext = path.slice(path.lastIndexOf('.') + 1).toLowerCase();
+    return { status: 200, body: content, type: TYPES[ext] ?? 'text/plain' };
+  };
   const realFetch = window.fetch.bind(window);
   window.fetch = (input: RequestInfo | URL, init?: RequestInit) => {
-    if (typeof input === 'string') {
-      const path = resolve(input);
-      if (path !== null) {
-        const content = config.files[path];
-        if (content === undefined) {
-          return Promise.resolve(new Response('Not found', { status: 404 }));
-        }
-        const ext = path.slice(path.lastIndexOf('.') + 1).toLowerCase();
-        return Promise.resolve(
-          new Response(content, { headers: { 'Content-Type': TYPES[ext] ?? 'text/plain' } }),
-        );
-      }
-    }
-    return realFetch(input, init);
+    const own = answer(input);
+    if (own === null) return realFetch(input, init);
+    return Promise.resolve(
+      new Response(own.body, { status: own.status, headers: { 'Content-Type': own.type } }),
+    );
   };
+  // An XMLHttpRequest for a file of the site reads it from a blob: URL
+  // made of it, so the request runs as the browser's own
+  const realOpen = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function open(
+    this: XMLHttpRequest,
+    method: string,
+    url: string | URL,
+    ...rest: unknown[]
+  ) {
+    delete (this as unknown as Record<string, unknown>).status;
+    delete (this as unknown as Record<string, unknown>).statusText;
+    const own = answer(url);
+    if (own !== null && own.status !== 200) {
+      // A blob: answers 200; a file the site lacks is a 404, as on a server
+      Object.defineProperty(this, 'status', {
+        configurable: true,
+        get: () => (this.readyState >= 2 ? own.status : 0),
+      });
+      Object.defineProperty(this, 'statusText', {
+        configurable: true,
+        get: () => (this.readyState >= 2 ? 'Not Found' : ''),
+      });
+    }
+    const target =
+      own === null ? url : URL.createObjectURL(new Blob([own.body], { type: own.type }));
+    return (realOpen as (...args: unknown[]) => void).call(this, method, target, ...rest);
+  } as typeof XMLHttpRequest.prototype.open;
 
   // ── Links and forms ──────────────────────────────────────────────────────
   // Last in line, so a page that handles the click or the submit itself

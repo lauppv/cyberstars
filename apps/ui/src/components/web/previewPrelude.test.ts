@@ -6,6 +6,7 @@ import { previewPrelude, PREVIEW_SOURCE } from './previewPrelude';
 const sent: Record<string, unknown>[] = [];
 let atStart: Record<string, unknown>[] = [];
 const realFetch = vi.fn(async () => new Response('real'));
+const realOpen = vi.fn();
 
 beforeAll(() => {
   vi.spyOn(window, 'postMessage').mockImplementation((message: unknown, origin: unknown) => {
@@ -13,6 +14,8 @@ beforeAll(() => {
     sent.push(message as Record<string, unknown>);
   });
   window.fetch = realFetch as unknown as typeof fetch;
+  XMLHttpRequest.prototype.open = realOpen;
+  URL.createObjectURL = vi.fn(() => 'blob:null/file');
   vi.spyOn(console, 'log').mockImplementation(() => {});
   vi.spyOn(console, 'error').mockImplementation(() => {});
   previewPrelude({
@@ -121,6 +124,36 @@ describe('previewPrelude', () => {
     expect((await fetch('/data/none.json')).status).toBe(404);
     await fetch('https://api.example/ships');
     expect(realFetch).toHaveBeenCalledWith('https://api.example/ships', undefined);
+  });
+
+  it('answers a URL or a Request for a file of the site the same way', async () => {
+    const here = window.location.href;
+    // Made against the preview's address: the page's folder first, then the site's
+    expect(await (await fetch(new URL('crew.html', here))).text()).toBe('<p></p>');
+    expect(await (await fetch(new URL('../data/crew.json', here))).json()).toEqual(['Ana']);
+    expect(await (await fetch(new Request(new URL('/data/crew.json', here)))).json()).toEqual([
+      'Ana',
+    ]);
+    expect((await fetch(new URL('nope.json', here))).status).toBe(404);
+    realFetch.mockClear();
+    const far = new URL('https://api.example/ships');
+    await fetch(far);
+    expect(realFetch).toHaveBeenCalledWith(far, undefined);
+  });
+
+  it("reads an XMLHttpRequest of the site's files from them, a missing one a 404", () => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '../data/crew.json');
+    expect(realOpen).toHaveBeenLastCalledWith('GET', 'blob:null/file');
+    const blob = vi.mocked(URL.createObjectURL).mock.calls.at(-1)![0] as Blob;
+    expect(blob.type).toBe('application/json');
+    xhr.open('GET', 'https://api.example/ships', true);
+    expect(realOpen).toHaveBeenLastCalledWith('GET', 'https://api.example/ships', true);
+    const missing = new XMLHttpRequest();
+    missing.open('GET', 'none.json');
+    Object.defineProperty(missing, 'readyState', { get: () => 4 });
+    expect(missing.status).toBe(404);
+    expect(missing.statusText).toBe('Not Found');
   });
 
   it('says so when the page runs code in a string, which the preview refuses', () => {
