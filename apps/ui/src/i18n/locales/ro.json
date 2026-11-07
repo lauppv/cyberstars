@@ -13,21 +13,8 @@
   "pages": {
     "homeTitle": "Bine ai revenit, {{name}}",
     "homeTitleNoName": "Bine ai revenit",
-    "home": "Continuă de unde ai rămas sau încearcă azi ceva nou.",
     "homeNewTitle": "Bun venit, {{name}}",
-    "homeNewTitleNoName": "Bun venit",
-    "homeNew": "Lecția următoare, recomandările zilei și progresul tău, toate într-un singur loc.",
-    "progress": "Cât de departe ai ajuns în fiecare curs și set de provocări.",
-    "leaderboard": "Toți studenții, în ordinea XP-ului câștigat.",
-    "settings": "Limba, ce văd alții despre tine și contul tău.",
-    "support": "Întreabă-ne orice sau spune-ne ce nu merge. Îți răspundem chiar aici.",
-    "rules": "Cum păstrăm CyberStars un loc bun pentru învățat.",
-    "connections": "Oamenii cu care ești conectat și cererile care așteaptă un răspuns.",
-    "profile": "Poza ta, numele și insignele pe care le-ai câștigat.",
-    "messages": "Vorbește în privat cu oamenii cu care ești conectat.",
-    "admin": "Cum merge platforma și ce le trimiți tuturor.",
-    "forum": "Întrebări, răspunsuri și idei de la toți cei care învață aici.",
-    "almanac": "Lecturi scurte despre istoria, oamenii și ideile din spatele informaticii."
+    "homeNewTitleNoName": "Bun venit"
   },
   "sidebar": {
     "label": "Navigare principală",
@@ -616,8 +603,7 @@
       "algo-c": "Algoritmi C",
       "algo-trees-graphs": "Algoritmi pe arbori și grafuri",
       "web": "Dezvoltare web"
-    },
-    "subtitle": "Alege un limbaj și învață-l scriind cod adevărat, direct în browser."
+    }
   },
   "algorithms": {
     "desc": {
@@ -625,8 +611,7 @@
       "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, tipuri generice și iteratori, plus căutare și sortare.",
       "algo-c": "Probleme de C aproape de hardware: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
       "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele."
-    },
-    "subtitle": "Exersează pe probleme de la ușor la greu, în limbajul pe care îl înveți."
+    }
   },
   "progress": {
     "courses": "Cursuri",
@@ -1093,8 +1078,6 @@
   },
   "usage": {
     "title": "Utilizare",
-    "pageTitle": "Utilizare",
-    "pageSubtitle": "Cât ai folosit din fiecare alocare în fereastra ei curentă și când se reîncarcă.",
     "about": "Fiecare alocare se reîncarcă toată odată, când i se termină fereastra. O fereastră începe prima dată când folosești funcția după ce s-a încheiat cea dinainte: 24 de ore pentru Arată soluția, 5 ore pentru tutore. Un mesaj către tutore contează dublu când răspunsul e lung, așa că o sesiune are între 15 și 30 de mesaje. Sunt ajutoare opționale; poți termina orice lecție și fără ele.",
     "signInPrompt": "Autentifică-te ca să-ți vezi utilizarea.",
     "solution": "Arată soluția",

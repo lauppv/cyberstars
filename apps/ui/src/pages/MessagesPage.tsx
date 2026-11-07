@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useMessages } from '../context/MessagesContext';
 import { Topbar } from '../components/layout/Topbar';
-import { PageHeader } from '../components/layout/PageHeader';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { LoadError } from '../components/ui/LoadError';
 import { ConversationList } from '../components/messages/ConversationList';
@@ -56,11 +55,6 @@ export function MessagesPage() {
     <div className="h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <main className="flex-1 min-h-0 max-w-[1040px] w-full mx-auto px-0 sm:px-7 pt-0 sm:pt-8 pb-0 sm:pb-6 flex flex-col">
-        {/* The page's title above the inbox, as on every page; a phone keeps
-            the room for the conversations */}
-        <div className="hidden sm:block">
-          <PageHeader title={t('messages.title')} subtitle={t('pages.messages')} />
-        </div>
         <div className="panel flex-1 min-h-0 flex rounded-none sm:rounded-[var(--radius-lg)] border-x-0 sm:border-x overflow-hidden">
           {/* Conversation list, full width on mobile until one is picked. */}
           <div

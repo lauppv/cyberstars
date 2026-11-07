@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer, PageLoading } from '../components/layout/PageContainer';
-import { PageHeader } from '../components/layout/PageHeader';
 import { Segmented } from '../components/ui/Segmented';
 import { SUPPORTED_LANGS, switchLanguage } from '../i18n';
 import * as profileService from '../services/profileService';
@@ -215,7 +214,6 @@ export function SettingsPage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <PageContainer width="narrow">
-        <PageHeader title={t('topbar.settings')} subtitle={t('pages.settings')} />
         <div className="flex flex-col gap-5">
           {/* Preferences */}
           <section className="rounded-[var(--radius)] panel px-6 py-5">

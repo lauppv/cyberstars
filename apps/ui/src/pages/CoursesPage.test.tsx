@@ -205,7 +205,6 @@ describe('CoursesPage', () => {
     });
     mockNavigate.mockClear();
     const { unmount } = renderPage('/courses/web');
-    expect(screen.getByRole('heading', { name: 'Web Development' })).toBeInTheDocument();
     expect(screen.getByText('JavaScript')).toBeInTheDocument();
     expect(screen.queryByText('Python')).toBeNull();
     expect(screen.queryByText('Coming soon')).toBeNull();
@@ -600,14 +599,13 @@ describe('CoursesPage', () => {
     expect(refresh).toHaveBeenCalledOnce();
   });
 
-  it('heads the page with its name and a line on what it holds', () => {
+  it('puts no title over the cards, since the sidebar already says where the student is', () => {
     mockUseCurriculum.mockReturnValue({
       courses: [pythonCourse],
       isLoading: false,
       refresh: vi.fn(),
     });
     renderPage();
-    expect(screen.getByRole('heading', { level: 1, name: 'Courses' })).toBeInTheDocument();
-    expect(screen.getByText(/Pick a language and learn it/)).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { level: 1 })).toBeNull();
   });
 });

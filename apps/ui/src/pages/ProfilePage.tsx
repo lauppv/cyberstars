@@ -6,7 +6,6 @@ import { useAuth } from '../context/AuthContext';
 import { useGamification } from '../hooks/useGamification';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer, PageLoading } from '../components/layout/PageContainer';
-import { PageHeader } from '../components/layout/PageHeader';
 import { Badge } from '../components/gamification/Badge';
 import { LaniakeaTrophies } from '../components/laniakea/LaniakeaTrophies';
 import { EmojiPicker } from '../components/ui/EmojiPicker';
@@ -155,7 +154,6 @@ export function ProfilePage() {
       <Topbar />
 
       <PageContainer width="narrow">
-        <PageHeader title={t('topbar.profile')} subtitle={t('pages.profile')} />
         <div className="rounded-[var(--radius)] panel px-6 py-6">
           {/* Header with avatar */}
           <div className="flex items-center gap-5 pb-5 border-b border-[var(--border)]">

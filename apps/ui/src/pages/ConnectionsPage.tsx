@@ -5,7 +5,6 @@ import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer } from '../components/layout/PageContainer';
-import { PageHeader } from '../components/layout/PageHeader';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { LoadError } from '../components/ui/LoadError';
 import { Avatar } from '../components/ui/Avatar';
@@ -135,7 +134,6 @@ export function ConnectionsPage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <PageContainer width="narrow">
-        <PageHeader title={t('connections.title')} subtitle={t('pages.connections')} />
         <div className="flex flex-col gap-5">
           {!loading && actionError && (
             <div role="alert" className="panel px-6 py-3 text-[12px] text-[var(--error)]">

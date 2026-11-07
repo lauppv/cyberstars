@@ -6,7 +6,6 @@ import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer, PageLoading } from '../components/layout/PageContainer';
-import { PageHeader } from '../components/layout/PageHeader';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseTitle } from '../constants/courses';
 import * as adminService from '../services/adminService';
@@ -82,7 +81,6 @@ export function AdminPage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <PageContainer>
-        <PageHeader title={t('topbar.admin')} subtitle={t('pages.admin')} />
         <div>
           <div className="mb-8 flex justify-end">
             <button onClick={refresh} disabled={refreshing} className="btn btn-primary">

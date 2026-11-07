@@ -78,10 +78,9 @@ describe('AlgorithmsPage', () => {
     >);
   });
 
-  it('heads the page and opens a challenge set from its card', () => {
+  it('opens a challenge set from its card', () => {
     noProgress();
     renderPage();
-    expect(screen.getByRole('heading', { level: 1, name: 'Algorithms' })).toBeInTheDocument();
     expect(screen.queryByRole('dialog')).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: /View Challenges/ }));
     expect(mockNavigate).toHaveBeenCalledWith('/algorithms/python');
@@ -106,7 +105,6 @@ describe('AlgorithmsPage', () => {
     noProgress();
     renderPage('/algorithms/python');
     const drawer = screen.getByRole('dialog', { name: /Python Algorithms/ });
-    expect(screen.getByRole('heading', { level: 1, name: 'Algorithms' })).toBeInTheDocument();
     expect(within(drawer).getByRole('link', { name: /Reverse a String/ })).toHaveAttribute(
       'href',
       '/lesson/algo-python/reverse',

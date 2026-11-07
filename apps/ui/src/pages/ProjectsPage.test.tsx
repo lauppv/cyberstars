@@ -85,7 +85,6 @@ beforeEach(() => {
 describe('ProjectsPage', () => {
   it('shows a card per language, as Algorithms does, each opening its projects', () => {
     renderPage();
-    expect(screen.getByRole('heading', { level: 1, name: 'Projects' })).toBeInTheDocument();
     for (const name of ['Python', 'C', 'Java', 'Linux']) {
       expect(screen.getByRole('heading', { level: 2, name: new RegExp(`^${name}`) })).toBeVisible();
     }
@@ -149,7 +148,7 @@ describe('ProjectsPage', () => {
   it('shows only the cards for a language it doesn’t know', () => {
     renderPage('/projects/rust');
     expect(screen.queryByRole('dialog')).toBeNull();
-    expect(screen.getByRole('heading', { level: 1, name: 'Projects' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /^Python/ })).toBeInTheDocument();
   });
 
   it('is a page that doesn’t exist for someone the gate keeps out', () => {

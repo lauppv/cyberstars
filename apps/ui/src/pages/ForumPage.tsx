@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link, Navigate, useNavigate, useParams } from 'react-router';
 import i18next from 'i18next';
 import { Topbar } from '../components/layout/Topbar';
-import { PageHeader } from '../components/layout/PageHeader';
 import { UserLink } from '../components/ui/UserLink';
 import { ForumPostContent } from '../components/forum/ForumPostContent';
 import { CategoryModal } from '../components/forum/CategoryModal';
@@ -203,7 +202,6 @@ function ForumIndex({
 
   return (
     <main className="forum-page">
-      <PageHeader title={t('nav.forum')} subtitle={t('pages.forum')} />
       <div className="forum-content">
         <div>
           {Object.entries(groups).map(([groupName, cats]) => (

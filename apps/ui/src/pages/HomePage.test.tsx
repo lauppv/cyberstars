@@ -216,7 +216,6 @@ describe('HomePage', () => {
     });
     renderPage();
     expect(screen.getByRole('heading', { level: 1, name: 'Welcome, Alice' })).toBeInTheDocument();
-    expect(screen.getByText(/today's picks and your progress/)).toBeInTheDocument();
   });
 
   it('shows continue where you left off section', () => {

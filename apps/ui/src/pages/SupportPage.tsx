@@ -5,7 +5,6 @@ import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer, PageLoading } from '../components/layout/PageContainer';
-import { PageHeader } from '../components/layout/PageHeader';
 import { LoadError } from '../components/ui/LoadError';
 import * as supportService from '../services/supportService';
 import type {
@@ -147,7 +146,6 @@ export function SupportPage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <PageContainer width="narrow">
-        <PageHeader title={t('topbar.support')} subtitle={t('pages.support')} />
         <div>
           {/* New ticket form */}
           <div className="panel p-5 mb-8">

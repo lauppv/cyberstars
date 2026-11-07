@@ -14,21 +14,8 @@
   "pages": {
     "homeTitle": "Welcome back, {{name}}",
     "homeTitleNoName": "Welcome back",
-    "home": "Pick up where you left off, or try something new today.",
     "homeNewTitle": "Welcome, {{name}}",
-    "homeNewTitleNoName": "Welcome",
-    "homeNew": "Your next lesson, today's picks and your progress, all in one place.",
-    "progress": "How far along you are in every course and challenge set.",
-    "leaderboard": "Every student, ranked by the XP they've earned.",
-    "settings": "Your language, what others see of you, and your account.",
-    "support": "Ask us anything or tell us about a problem. We answer right here.",
-    "rules": "How we keep CyberStars a good place to learn.",
-    "connections": "The people you're connected with, and the requests waiting for an answer.",
-    "profile": "Your picture, your name and the badges you've earned.",
-    "messages": "Talk one to one with the people you're connected with.",
-    "admin": "How the platform is doing, and what to send to everyone.",
-    "forum": "Questions, answers and ideas from everyone learning here.",
-    "almanac": "Short reads on the history, the people and the ideas behind computing."
+    "homeNewTitleNoName": "Welcome"
   },
   "sidebar": {
     "label": "Main navigation",
@@ -577,11 +564,9 @@
       "algo-c": "C Algorithms",
       "algo-trees-graphs": "Trees and Graphs Algorithms",
       "web": "Web Development"
-    },
-    "subtitle": "Pick a language and learn it by writing real code, right in your browser."
+    }
   },
   "projects": {
-    "subtitle": "Small real programs you build step by step, in the language you're learning. Tick each requirement off as your program does it.",
     "betaHint": "Still being built: more projects for every language are on the way",
     "setTitle": "{{language}} Projects",
     "count": "Projects: {{count}}",
@@ -614,8 +599,7 @@
       "algo-java": "Java problems where you design the classes yourself: a bank account, a shape hierarchy, your own stack, queue and linked list, generics and iterators, plus searching and sorting.",
       "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.",
       "algo-trees-graphs": "Tree problems from easy to hard, in Python, Java or C: depth, mirror images, binary search trees, levels and paths. Every challenge comes in all three, and you can switch language on any of them."
-    },
-    "subtitle": "Practise on problems from easy to hard, in the language you're learning."
+    }
   },
   "progress": {
     "courses": "Courses",
@@ -1068,8 +1052,6 @@
   },
   "usage": {
     "title": "Usage",
-    "pageTitle": "Usage",
-    "pageSubtitle": "How much of each allowance you've used in its current window, and when it refills.",
     "about": "Each allowance refills all at once when its window ends. A window opens the first time you use the feature after the last one ended: 24 hours for Show Solution, 5 hours for the tutor. A tutor message counts double when its answer is long, so a session holds between 15 and 30 messages. These are optional aids; you can complete every lesson without them.",
     "signInPrompt": "Sign in to see your usage.",
     "solution": "Show Solution",

@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { SearchX } from 'lucide-react';
 import { Topbar } from '../components/layout/Topbar';
 import { EmptyState } from '../components/ui/EmptyState';
-import { PageHeader } from '../components/layout/PageHeader';
 import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { SetCard } from '../components/sets/SetCard';
 import { SetDrawer } from '../components/sets/SetDrawer';
@@ -59,7 +58,6 @@ export function AlgorithmsPage() {
       <Topbar />
 
       <PageContainer>
-        <PageHeader title={t('nav.algorithms')} subtitle={t('algorithms.subtitle')} />
         <SetGrid>
           {sets.map((course) => {
             const progress = progressMap[course.key];

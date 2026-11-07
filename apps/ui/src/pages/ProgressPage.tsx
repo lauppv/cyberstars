@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer } from '../components/layout/PageContainer';
-import { PageHeader } from '../components/layout/PageHeader';
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { LoadError } from '../components/ui/LoadError';
 import { useAuth } from '../context/AuthContext';
@@ -51,7 +50,6 @@ export function ProgressPage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <PageContainer>
-        <PageHeader title={t('nav.progress')} subtitle={t('pages.progress')} />
         <div className="space-y-8">
           {failedCourses.size > 0 && (
             <LoadError text={t('progress.loadFailed')} onRetry={refreshProgress} />

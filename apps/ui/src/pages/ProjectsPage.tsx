@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { FolderOpen, SearchX } from 'lucide-react';
 import { Topbar } from '../components/layout/Topbar';
 import { EmptyState } from '../components/ui/EmptyState';
-import { PageHeader } from '../components/layout/PageHeader';
 import { PageContainer } from '../components/layout/PageContainer';
 import { SetCard } from '../components/sets/SetCard';
 import { SetDrawer } from '../components/sets/SetDrawer';
@@ -98,7 +97,6 @@ export function ProjectsPage() {
             <LoadError text={t('projects.checksFailed')} onRetry={retry} />
           </div>
         )}
-        <PageHeader title={t('nav.projects')} subtitle={t('projects.subtitle')} />
         <SetGrid>
           {byLanguage.map((l) => {
             const count = l.projects.length;

@@ -5,7 +5,6 @@ import type { TFunction } from 'i18next';
 import { useAuth, wasSignedIn } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer, PageLoading } from '../components/layout/PageContainer';
-import { PageHeader } from '../components/layout/PageHeader';
 import { ActivityHeatmap } from '../components/gamification/ActivityHeatmap';
 import { bucketByLocalDay, type DayCounts } from '../components/gamification/heatmap-utils';
 import * as profileService from '../services/profileService';
@@ -220,14 +219,11 @@ export function HomePage() {
         <Topbar />
 
         <PageContainer>
-          <PageHeader
-            title={
-              firstName
-                ? t(`pages.${greeting}Title`, { name: firstName })
-                : t(`pages.${greeting}TitleNoName`)
-            }
-            subtitle={t(`pages.${greeting}`)}
-          />
+          <h1 className="m-0 mb-6 text-2xl font-bold tracking-[-0.4px]">
+            {firstName
+              ? t(`pages.${greeting}Title`, { name: firstName })
+              : t(`pages.${greeting}TitleNoName`)}
+          </h1>
           <div className="space-y-6">
             {/* ── Continue Where You Left Off + Activity ── */}
             <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">

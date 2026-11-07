@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
-import { PageHeader } from '../components/layout/PageHeader';
 import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { SetCard } from '../components/sets/SetCard';
 import { SetDrawer } from '../components/sets/SetDrawer';
@@ -124,14 +123,6 @@ export function CoursesPage() {
           <div className="mb-4">
             <LoadError text={t('progress.loadFailed')} onRetry={refreshProgress} />
           </div>
-        )}
-        {inWeb ? (
-          <PageHeader
-            title={courseTitle(WEB_DEVELOPMENT, t)}
-            subtitle={t(`courses.descriptions.${WEB_DEVELOPMENT}`)}
-          />
-        ) : (
-          <PageHeader title={t('nav.courses')} subtitle={t('courses.subtitle')} />
         )}
         <SetGrid>
           {allCourses.map((c) => (

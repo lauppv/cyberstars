@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer } from '../components/layout/PageContainer';
-import { PageHeader } from '../components/layout/PageHeader';
 
 export function RulesPage() {
   const { t } = useTranslation();
@@ -10,7 +9,6 @@ export function RulesPage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <PageContainer width="narrow">
-        <PageHeader title={t('topbar.rules')} subtitle={t('pages.rules')} />
         <div>
           <div className="flex flex-col gap-4">
             {rules.map((rule, i) => (

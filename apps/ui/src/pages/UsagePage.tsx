@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer } from '../components/layout/PageContainer';
-import { PageHeader } from '../components/layout/PageHeader';
 import { UsageMeter } from '../components/usage/UsageMeter';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { useAuth } from '../context/AuthContext';
@@ -26,7 +25,6 @@ export function UsagePage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <PageContainer width="narrow">
-        <PageHeader title={t('usage.pageTitle')} subtitle={t('usage.pageSubtitle')} />
         <div>
           {!isLoggedIn ? (
             <div className="panel p-4 text-[13px] text-[var(--text2)]">

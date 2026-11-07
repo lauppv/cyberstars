@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer } from '../components/layout/PageContainer';
-import { PageHeader } from '../components/layout/PageHeader';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Avatar } from '../components/ui/Avatar';
 import { RankCrown } from '../components/gamification/RankCrown';
@@ -159,7 +158,6 @@ export function LeaderboardPage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <PageContainer width="narrow">
-        <PageHeader title={t('nav.leaderboard')} subtitle={t('pages.leaderboard')} />
         {loading ? (
           <div className="flex justify-center py-16">
             <LoadingSpinner />
