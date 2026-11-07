@@ -215,12 +215,19 @@ describe('a session the server ended', () => {
   // A request's answer once the cookie expired
   const requestFindsItGone = () =>
     act(() => errorOf(Response.json({ error: 'No token provided' }, { status: 401 })));
+  // The app listens for it from an effect after the render that shows the
+  // student, which a slow run can check before; a later request finds it gone too
+  const sessionEnds = () =>
+    waitFor(async () => {
+      await errorOf(Response.json({ error: 'No token provided' }, { status: 401 }));
+      expect(ended()).toBe('true');
+    });
 
   it('signs out a student the app still showed signed in', async () => {
     renderProvider();
     await waitFor(() => expect(state()).toBe('in:Ada'));
 
-    await requestFindsItGone();
+    await sessionEnds();
 
     expect(state()).toBe('out:-');
     expect(ended()).toBe('true');
@@ -239,7 +246,7 @@ describe('a session the server ended', () => {
   it('goes away when dismissed', async () => {
     renderProvider();
     await waitFor(() => expect(state()).toBe('in:Ada'));
-    await requestFindsItGone();
+    await sessionEnds();
 
     fireEvent.click(screen.getByText('dismiss'));
 
@@ -249,7 +256,7 @@ describe('a session the server ended', () => {
   it('goes away once the student signs in again', async () => {
     renderProvider();
     await waitFor(() => expect(state()).toBe('in:Ada'));
-    await requestFindsItGone();
+    await sessionEnds();
 
     fireEvent.click(screen.getByText('login'));
 
@@ -260,7 +267,7 @@ describe('a session the server ended', () => {
   it("doesn't come back after a sign out of the student's own", async () => {
     renderProvider();
     await waitFor(() => expect(state()).toBe('in:Ada'));
-    await requestFindsItGone();
+    await sessionEnds();
     fireEvent.click(screen.getByText('login'));
     await waitFor(() => expect(state()).toBe('in:Ada'));
 
