@@ -75,3 +75,17 @@ test('a web lesson previews a site of several files, sealed off from the lesson'
   await page.keyboard.insertText('<!-- still here -->');
   await expect(page.locator('.cm-content').first()).toContainText('still here');
 });
+
+test('Run says once what it is for, then draws the page again', async ({ page }) => {
+  await page.goto('/lesson/web-dev/first-page');
+  await expect(page.getByTitle('Preview of index.html')).toBeVisible({ timeout: 10_000 });
+  await page.getByRole('button', { name: '▶ Run' }).click();
+  const card = page.getByRole('dialog', { name: 'Your page updates by itself' });
+  await expect(card).toContainText('Press Run only when the page didn');
+  await card.getByRole('button', { name: 'Got it' }).click();
+  await expect(card).toHaveCount(0);
+  // Once is enough on this device
+  await page.getByRole('button', { name: '▶ Run' }).click();
+  await expect(card).toHaveCount(0);
+  await expect(page.getByTitle('Preview of index.html')).toBeVisible();
+});
