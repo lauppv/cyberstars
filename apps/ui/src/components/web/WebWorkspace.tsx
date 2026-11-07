@@ -309,7 +309,7 @@ export default function WebWorkspace({
           <button
             type="button"
             onClick={run}
-            className="shrink-0 px-2 py-0.5 rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text)] font-semibold hover:bg-[var(--surface)] cursor-pointer"
+            className="btn btn-secondary btn-sm shrink-0 py-0.5"
           >
             {t('web.showAgain')}
           </button>
@@ -344,7 +344,7 @@ export default function WebWorkspace({
           type="button"
           onClick={clear}
           disabled={entries.length === 0}
-          className="text-[12px] px-2 py-0.5 rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] disabled:opacity-50 disabled:cursor-default cursor-pointer"
+          className="btn btn-secondary btn-sm py-0.5"
         >
           {t('web.console.clear')}
         </button>
