@@ -18,22 +18,16 @@ Acestea sunt trusa ta de diagnoză a sistemului. Când ceva merge prost, începi
 
 ---
 
-## Misiune: Inspecție de sănătate a sistemului
+## Misiune: Inspecția Stării Sistemelor
 
-Stația se apropie de un câmp de resturi și căpitanul vrea o verificare completă
-a sistemelor înregistrată înainte de intrare. Parcurge secvența standard de
-diagnoză.
+Stația se apropie de un câmp de resturi, iar căpitanul vrea o verificare a sistemelor înregistrată înainte de intrare. Verifică cât spațiu pe disc mai are stația, apoi scrie `inspectie.txt`:
 
-1. Inspectează toate procesele active. Confirmă că monitorul reactorului și
-   suportul vital rulează.
-2. Verifică spațiul disponibil pe toate sistemele de fișiere.
-3. Măsoară cât de mult a crescut directorul `jurnale/`.
-4. Marchează temporal această inspecție cu data și ora curentă.
-5. Revizuiește lista completă a comenzilor înregistrate în această sesiune pentru
-   a confirma jurnalul de audit.
+1. data și ora inspecției, pe prima linie;
+2. liniile de proces ale monitorului reactorului și ale suportului vital, ca dovadă că amândouă rulează;
+3. cât spațiu ocupă folderul `jurnale`, în total și ușor de citit, pe ultima linie.
+
+Fiecare linie vine direct din sistem, nu scrisă de mână.
 
 **Rezultat așteptat**
 
-Ar trebui să vezi procesele `reactor-monitor` și `life-support` active,
-statisticile de utilizare a discului pentru toate punctele de montare,
-dimensiunea lui `jurnale/`, data curentă și istoricul complet al comenzilor tale.
+`inspectie.txt` începe cu ora, arată că monitorul reactorului și suportul vital rulează și se termină cu mărimea lui `jurnale`.

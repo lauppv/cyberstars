@@ -16,9 +16,15 @@
   ],
   "dirs": ["jurnale"],
   "processes": [
-    { "user": "root", "pid": "1", "cmd": "/sbin/init" },
-    { "user": "root", "pid": "42", "cmd": "/usr/bin/reactor-monitor" },
-    { "user": "root", "pid": "305", "cmd": "/usr/sbin/life-support" },
-    { "user": "student", "pid": "1201", "cmd": "bash" }
+    {
+      "cmd": "/usr/bin/reactor-monitor --port=7700",
+      "memoryMb": 4
+    },
+    {
+      "cmd": "/usr/sbin/life-support"
+    },
+    {
+      "cmd": "/usr/bin/nav-computer"
+    }
   ]
 }

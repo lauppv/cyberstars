@@ -44,19 +44,10 @@ răspunde la „cât de mare este folderul ăsta?”.
 
 ---
 
-## Misiune: Audit de stocare
+## Misiune: Auditul Spațiului de Stocare
 
-Inginerii stației suspectează că `depozit/` mănâncă din rezervele limitate de
-disc. Înainte să aprobe următoarea arhivă de date, vor un raport depus la dosar
-atât despre situația generală a discului, cât și despre amprenta folderului.
-
-1. Afișează cât spațiu este liber pe sistemele de fișiere ale stației.
-2. Măsoară dimensiunea totală a directorului `depozit/` și salvează acea măsurătoare
-   într-un fișier numit `raport-stocare.txt`.
-3. Creează un folder numit `audit` și mută `raport-stocare.txt` în el.
-4. Afișează raportul salvat pentru a-l confirma.
+Inginerii bănuiesc că `depozit` mănâncă din rezervele de disc ale stației. Înainte să aprobe următoarea arhivă, uită-te cât spațiu mai au sistemele de fișiere ale stației, apoi păstrează o singură linie în `audit/raport-stocare.txt`: mărimea totală a lui `depozit`, cu tot ce e în el, în unități pe care un om le citește dintr-o privire.
 
 **Rezultat așteptat**
 
-`audit/raport-stocare.txt` conține dimensiunea în format ușor de citit a
-directorului `depozit/`.
+`audit/raport-stocare.txt` ține o singură linie: o mărime ca `12K` urmată de `depozit`.

@@ -1,15 +1,6 @@
 ```bash
-date > shift-log.txt
-uptime >> shift-log.txt
 mkdir shift-records
-mv shift-log.txt shift-records/
+date > shift-records/shift-log.txt
+uptime >> shift-records/shift-log.txt
 history
-```
-
-```text
-    1  date
-    2  uptime
-    3  mkdir shift-records
-    4  mv shift-log.txt shift-records/
-    5  history
 ```

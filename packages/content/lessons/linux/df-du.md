@@ -45,13 +45,8 @@ big is this folder?"
 
 ## Mission: Storage Audit
 
-The station engineers suspect `cargo-bay/` is eating into the limited disk reserves. Before they approve the next data archive, they want a filed report of both the overall disk situation and the folder's footprint.
-
-1. Display how much space is free on the station's filesystems.
-2. Measure the total size of the `cargo-bay/` directory and save that measurement into a file called `storage-report.txt`.
-3. Create a folder called `audit` and move `storage-report.txt` into it.
-4. Display the saved report to confirm it.
+The engineers suspect `cargo-bay` is eating into the station's disk reserves. Before they approve the next archive, look at how much space the station's filesystems have left, then file one line in `audit/storage-report.txt`: the total size of `cargo-bay`, everything inside it counted, in units a person reads at a glance.
 
 **Expected result**
 
-`audit/storage-report.txt` holds the human-readable size of `cargo-bay/`.
+`audit/storage-report.txt` holds a single line: a size like `12K` followed by `cargo-bay`.
