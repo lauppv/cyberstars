@@ -46,6 +46,93 @@ export const PROJECTS: Project[] = [
       { id: 'bad-input', title: 'Survive bad input' },
     ],
   },
+  {
+    slug: 'downloads-cleanup',
+    language: 'linux',
+    title: 'Downloads Cleanup',
+    difficulty: 'easy',
+    summary:
+      'Sort a cluttered Downloads folder into shelves by file type, throw out the junk and the duplicate, and spot the files that take up the room.',
+    steps: [
+      { id: 'stock', title: 'Take stock' },
+      { id: 'junk', title: 'Throw out the junk' },
+      { id: 'shelves', title: 'Make the shelves' },
+      { id: 'sort', title: 'Sort by type' },
+      { id: 'copy', title: 'Remove the copy' },
+      { id: 'big', title: 'Find the space hogs' },
+      { id: 'after', title: 'Before and after' },
+    ],
+  },
+  {
+    slug: 'photo-archive',
+    language: 'linux',
+    title: 'Photo Archive',
+    difficulty: 'easy',
+    summary:
+      "Turn a phone's photo dump into an archive: screenshots aside, a folder per year, a summer album, an index and folders nobody can change by mistake.",
+    steps: [
+      { id: 'look', title: 'Look at what came off the phone' },
+      { id: 'screenshots', title: 'Set the screenshots aside' },
+      { id: 'years', title: 'A folder per year' },
+      { id: 'album', title: 'The summer album' },
+      { id: 'index', title: 'The index' },
+      { id: 'lock', title: 'Lock the archive' },
+    ],
+  },
+  {
+    slug: 'mailing-list',
+    language: 'linux',
+    title: 'Mailing List',
+    difficulty: 'easy',
+    summary:
+      'Clean a year of newsletter sign-ups into a list to send to: no blanks, no capitals, no repeats, no broken addresses and no one who unsubscribed.',
+    steps: [
+      { id: 'look', title: 'Look at the sign-ups' },
+      { id: 'blank', title: 'Drop the empty lines' },
+      { id: 'lower', title: 'One way of writing' },
+      { id: 'once', title: 'Everyone once' },
+      { id: 'valid', title: 'Real addresses only' },
+      { id: 'unsub', title: 'Respect the unsubscribes' },
+      { id: 'domains', title: 'Who reads it' },
+      { id: 'tidy', title: 'Tidy up' },
+    ],
+  },
+  {
+    slug: 'web-log-detective',
+    language: 'linux',
+    title: 'Web Log Detective',
+    difficulty: 'medium',
+    summary:
+      "Read a pizzeria's web server log to find the missing pages, the busiest hours and the visitor trying passwords at three in the morning.",
+    steps: [
+      { id: 'meet', title: 'Meet the log' },
+      { id: 'not-found', title: "Pages that weren't there" },
+      { id: 'visitors', title: 'The most frequent visitors' },
+      { id: 'broken', title: 'Broken links' },
+      { id: 'hours', title: 'The busiest hours' },
+      { id: 'intruder', title: 'The night visitor' },
+      { id: 'bytes', title: 'How much was sent' },
+      { id: 'report', title: 'The report' },
+    ],
+  },
+  {
+    slug: 'sales-report',
+    language: 'linux',
+    title: 'Sales Report',
+    difficulty: 'medium',
+    summary:
+      'Turn a month of plant shop orders in a CSV file into a sales report with awk: revenue, best cities, best sellers and the biggest orders.',
+    steps: [
+      { id: 'look', title: 'Look at the export' },
+      { id: 'data', title: 'Only the orders' },
+      { id: 'typo', title: 'Fix the typo' },
+      { id: 'revenue', title: 'What came in' },
+      { id: 'biggest', title: 'The biggest orders' },
+      { id: 'cities', title: 'Money per city' },
+      { id: 'products', title: 'Plants that sell' },
+      { id: 'halves', title: 'First half, second half' },
+    ],
+  },
 ];
 
 export function findProject(language: string, slug: string): Project | undefined {

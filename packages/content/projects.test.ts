@@ -56,6 +56,21 @@ describe.each(PROJECTS.map((p) => [`${p.language}/${p.slug}`, p] as const))('%s'
     for (const step of steps) expect(step.body, step.title).not.toBe('');
   });
 
+  // The terminal writes each file with a docker exec of its own, so a project
+  // keeps to a handful, in the folder it starts in
+  it.runIf(project.language === 'linux')('starts its terminal with its own files', () => {
+    const setup = JSON.parse(
+      fs.readFileSync(path.join(PROJECTS_DIR, 'linux', `${project.slug}-setup.json`), 'utf8'),
+    );
+    expect(setup.cwd).toMatch(/^\/home\/student(\/|$)/);
+    expect(setup.files.length).toBeGreaterThan(0);
+    expect(setup.files.length).toBeLessThanOrEqual(20);
+    for (const file of setup.files) {
+      expect(file.path).toMatch(/^[\w.-]+(\/[\w.-]+)*$/);
+      expect(typeof file.content).toBe('string');
+    }
+  });
+
   it('names each step once, in a form the database keeps', () => {
     const ids = project.steps.map((s) => s.id);
     expect(new Set(ids).size).toBe(ids.length);

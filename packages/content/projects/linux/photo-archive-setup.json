@@ -1,0 +1,71 @@
+{
+  "cwd": "/home/student",
+  "dirs": ["phone"],
+  "files": [
+    {
+      "path": "phone/IMG_20220611_174402.jpg",
+      "content": "photo taken 20220611\n"
+    },
+    {
+      "path": "phone/IMG_20220612_090115.jpg",
+      "content": "photo taken 20220612\n"
+    },
+    {
+      "path": "phone/IMG_20221224_201933.jpg",
+      "content": "photo taken 20221224\n"
+    },
+    {
+      "path": "phone/IMG_20230402_121010.jpg",
+      "content": "photo taken 20230402\n"
+    },
+    {
+      "path": "phone/IMG_20230715_183040.jpg",
+      "content": "photo taken 20230715\n"
+    },
+    {
+      "path": "phone/IMG_20230716_101522.jpg",
+      "content": "photo taken 20230716\n"
+    },
+    {
+      "path": "phone/IMG_20230803_095847.jpg",
+      "content": "photo taken 20230803\n"
+    },
+    {
+      "path": "phone/PXL_20230806_160212.jpg",
+      "content": "photo taken 20230806\n"
+    },
+    {
+      "path": "phone/PXL_20231031_190455.jpg",
+      "content": "photo taken 20231031\n"
+    },
+    {
+      "path": "phone/PXL_20240101_000312.jpg",
+      "content": "photo taken 20240101\n"
+    },
+    {
+      "path": "phone/PXL_20240214_131700.jpg",
+      "content": "photo taken 20240214\n"
+    },
+    {
+      "path": "phone/PXL_20240722_082236.jpg",
+      "content": "photo taken 20240722\n"
+    },
+    {
+      "path": "phone/PXL_20240723_154410.jpg",
+      "content": "photo taken 20240723\n"
+    },
+    {
+      "path": "phone/Screenshot_20230520_224501.png",
+      "content": "photo taken 20230520\n"
+    },
+    {
+      "path": "phone/Screenshot_20240305_081233.png",
+      "content": "photo taken 20240305\n"
+    },
+    {
+      "path": "phone/Screenshot_20240611_140027.png",
+      "content": "photo taken 20240611\n"
+    }
+  ],
+  "intro": "Grandma's phone photos are in ~/phone."
+}
