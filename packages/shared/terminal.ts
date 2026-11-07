@@ -5,11 +5,21 @@ interface TerminalFile {
   content: string;
 }
 
+// A program that runs in the sandbox from the start, for the process lessons:
+// `cmd` is what ps shows, `memoryMb` how much memory it holds, and a
+// `stubborn` one ignores a polite stop, so only a forced kill ends it.
+interface TerminalProcess {
+  cmd: string;
+  memoryMb?: number;
+  stubborn?: boolean;
+}
+
 // The starting filesystem materialised into a fresh sandbox container.
 export interface TerminalSetup {
   cwd: string;
   files: TerminalFile[];
   dirs: string[];
+  processes?: TerminalProcess[];
   intro?: string;
 }
 
@@ -47,6 +57,8 @@ export type TerminalCheck =
 /**
  * Command-trace rule matched against session.history: `name` matches a command
  * used as a word; `pattern` is a raw regex on a history line (pin the args).
+ * With both, the pattern decides and `name` is the command the student is told
+ * to use: needed when the pattern doesn't open with that command.
  */
 export interface TerminalCommandRule {
   kind: 'command';

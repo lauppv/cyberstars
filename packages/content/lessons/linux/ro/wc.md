@@ -44,20 +44,10 @@ rezultatele automat.
 
 ---
 
-## Misiune: Numără și depune inventarul
+## Misiune: Numără și Arhivează Inventarul
 
-`inventar.txt` listează fiecare articol din cala de marfă, câte unul pe linie.
-Logisticianul are nevoie de un număr exact înainte ca naveta de reaprovizionare să
-sosească, plus o copie depusă a manifestului.
-
-1. Numără **câte linii** sunt în `inventar.txt`. Acela este numărul de articole.
-2. Rulează o măsurătoare completă a lui `inventar.txt` ca să vezi liniile, cuvintele și
-   caracterele împreună.
-3. Creează un folder numit `manifest` și copiază `inventar.txt` în el sub numele
-   `inventar-verificat.txt`.
-4. Confirmă că fișierul depus are același număr de articole numărând și liniile lui.
+`inventar.txt` listează fiecare obiect din cală, câte unul pe linie. Intendentul vrea doar numărul de obiecte, nu cuvintele sau caracterele, iar manifestul arhivat ca `manifest/inventar-verificat.txt`. Apoi arată că și copia arhivată are tot atâtea obiecte cât originalul.
 
 **Rezultat așteptat**
 
-Vezi numărul de articole și măsurătoarea completă, iar folderul `manifest` conține o
-copie al cărei număr de linii se potrivește cu originalul.
+Știi câte obiecte sunt, iar numărătoarea copiei arhivate dă același număr.

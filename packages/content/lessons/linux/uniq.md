@@ -40,13 +40,8 @@ The `sort | uniq` combo is so common it deserves its own muscle memory.
 
 ## Mission: Door Access Audit
 
-Security flagged unusual activity on Deck 7. The file `door_access.log` records every crew member who swiped through the door. Find out who has been coming and going the most, and file the tally.
-
-1. Combine `sort` and `uniq -c` through a pipe on `door_access.log` to count how many times each crew member accessed the door, and display it.
-2. Save that tally into a new file called `access-tally.txt`.
-3. Create a folder called `security` and move `access-tally.txt` into it.
-4. Search the tally for `Voss` to confirm the crew member with the most entries.
+Security flagged unusual activity on Deck 7. `door_access.log` records every crew member who swiped through the door, one name per swipe. Security wants a tally in `security/access-tally.txt`: each name once with how many times it swiped, the busiest first.
 
 **Expected result**
 
-`security/access-tally.txt` holds each name once, prefixed by its access count; `Voss` has the most (3).
+`security/access-tally.txt` has one line per crew member, a count before each name, ordered from the most swipes to the fewest.

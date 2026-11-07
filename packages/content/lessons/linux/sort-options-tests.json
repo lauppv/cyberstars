@@ -5,13 +5,16 @@
       "cmd": "cat engineering/diagnostics.txt",
       "expected": "epsilon 5\ngamma 50\nbeta 120\nalpha 300\ndelta 800"
     },
-    { "kind": "dir_exists", "path": "engineering" }
+    {
+      "kind": "command_output",
+      "cmd": "cat engineering/weakest.txt",
+      "expected": "epsilon 5"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "sort\\b.*-k\\s*2.*power_readings\\.txt" },
-    { "kind": "command", "pattern": "sort\\b.*-n.*power_readings\\.txt" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "head" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bsort\\b)(?=.*power_readings\\.txt)"
+    }
   ]
 }

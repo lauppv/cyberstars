@@ -1,16 +1,23 @@
 {
+  "checks": [
+    {
+      "kind": "files_equal",
+      "a": "statie/comunicatii/releu/pericol.log",
+      "b": "salvare/semnal.log"
+    }
+  ],
   "requires": [
     {
       "kind": "command",
-      "pattern": "find\\b.*statie.*pericol\\.log"
+      "pattern": "^(?=.*\\bfind\\b)(?=.*statie)(?=.*pericol\\.log)"
     },
     {
       "kind": "command",
-      "pattern": "grep\\b.*-r\\b.*SOS.*statie"
+      "pattern": "^(?=.*\\bgrep\\b)(?=.* -\\S*r)(?=.*SOS)(?=.*statie)"
     },
     {
       "kind": "command",
-      "pattern": "which\\b.*grep"
+      "pattern": "^(?=.*\\bwhich\\b)(?=.*\\bgrep\\b)"
     }
   ]
 }

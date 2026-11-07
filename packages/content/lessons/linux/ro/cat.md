@@ -35,20 +35,10 @@ La fel ca `ls` și `pwd`, `cat` doar citește. Nu modifică niciodată fișierul
 
 ---
 
-## Misiune: Citește și arhivează briefing-ul
+## Misiune: Citește și Arhivează Instructajul
 
-Un nou briefing a sosit împărțit în două fișiere din directorul tău home: ordinul
-principal în `instructaj.txt` și o `anexa.txt` cu detalii de ultim moment. Citește-le,
-apoi pune deoparte o copie a instructajului principal pentru arhivă.
-
-1. Afișează `instructaj.txt` ca să vezi ordinul principal.
-2. Afișează **ambele** fișiere lipite împreună într-o singură comandă, ca să ai
-   briefing-ul complet dintr-o privire.
-3. Creează un folder numit `arhiva` și copiază `instructaj.txt` în el sub numele
-   `instructaj-vechi.txt`.
-4. Confirmă arhiva afișând conținutul lui `arhiva/instructaj-vechi.txt`.
+A sosit un instructaj nou în două părți: ordinul principal în `instructaj.txt` și detaliile de ultim moment în `anexa.txt`. Citește tot instructajul ca un singur text, ambele părți într-o singură comandă, apoi păstrează ordinul principal pentru registru ca `arhiva/instructaj-vechi.txt`.
 
 **Rezultat așteptat**
 
-Ambele briefing-uri apar în terminal. Folderul `arhiva` conține o copie fidelă a
-instructajului, iar afișarea ei arată exact același text ca originalul.
+Ai citit ambele părți una după alta, iar copia arhivată spune exact ce spune ordinul principal.

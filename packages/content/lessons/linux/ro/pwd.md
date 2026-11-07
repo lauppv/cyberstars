@@ -35,10 +35,8 @@ fără niciun risc.
 
 ## Misiune: Localizează-ți Poziția
 
-Tocmai ai ajuns la stație și ai deschis un terminal nou. Înainte de orice altceva, trebuie să confirmi poziția ta în sistemul de fișiere.
-
-Rulează `pwd` pentru a afla în ce director te găsești în acest moment.
+Tocmai ai ajuns la stație și ai deschis un terminal nou. Înainte de orice altceva, află calea completă a folderului în care te afli.
 
 **Rezultat așteptat**
 
-Terminalul afișează calea ta absolută, arătând că te afli în `/home/student`.
+Terminalul afișează o cale care pornește de la rădăcina `/` și se termină cu folderul tău.

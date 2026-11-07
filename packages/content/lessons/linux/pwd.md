@@ -34,10 +34,8 @@ often as you like.
 
 ## Mission: Locate Your Position
 
-You have just arrived at the station and opened a fresh terminal. Before doing anything else, you need to confirm your position in the file system.
-
-Run `pwd` to find out which directory you are currently in.
+You have just arrived at the station and opened a fresh terminal. Before doing anything else, find out the full path of the folder you are standing in.
 
 **Expected result**
 
-The terminal displays your absolute path, showing you are in `/home/student`.
+The terminal shows a path that starts at the root `/` and ends with your own folder.

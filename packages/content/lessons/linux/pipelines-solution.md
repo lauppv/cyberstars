@@ -1,13 +1,10 @@
 ```bash
-cat events.log | grep alert | sort | head -2
-cat events.log | grep alert | sort | head -2 > briefing.txt
 mkdir bridge
-mv briefing.txt bridge/
-cat events.log | grep alert | wc -l
+grep alert events.log | sort | head -n 2 > bridge/briefing.txt
+cat bridge/briefing.txt
 ```
 
 ```text
 alert: breach sector 8
 alert: fire deck 2
-4
 ```

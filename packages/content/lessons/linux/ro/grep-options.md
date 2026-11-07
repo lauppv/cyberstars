@@ -51,20 +51,16 @@ insensibilă la majuscule _și_ numerotată.
 
 ---
 
-## Misiune: Raport de final de tură
+## Misiune: Rezumatul de Final de Tură
 
-Înainte de a preda schimbul echipajului de noapte, trebuie să pregătești un rezumat
-al fișierului `sistem.log`: câte avertismente s-au înregistrat, ce evenimente
-neobișnuite au avut loc și o copie depusă pentru tura următoare.
+Înainte să predai tura echipei de noapte, rezumă `sistem.log` în trei căutări:
 
-1. Numără câte linii conțin `warning`, doar numărul, nu și liniile în sine.
-2. Afișează fiecare linie care **nu** conține `info`: evenimentele neobișnuite.
-3. Afișează liniile cu `error` cu un număr de linie în față, ca echipajul de noapte să
-   sară direct la ele.
-4. Creează un folder numit `predare` și copiază `sistem.log` în el sub numele
-   `brief-noapte.log`.
+1. Câte linii de rutină `info` s-au înregistrat? Doar numărul, nu liniile.
+2. Tot ce nu e un `warning`, ca echipa de noapte să vadă restul dintr-o privire.
+3. Liniile `warning`, fiecare cu poziția ei în fișier, ca echipa să sară direct la ele.
+
+Apoi păstrează o copie a jurnalului pentru tura următoare ca `predare/brief-noapte.log`.
 
 **Rezultat așteptat**
 
-Vezi numărul de avertismente, liniile neobișnuite filtrate, linia de eroare numerotată
-și o copie a jurnalului care așteaptă în `predare`.
+Vezi un singur număr, apoi liniile fără avertismente, apoi avertismentele cu numerele lor de linie, iar copia așteaptă în `predare`.

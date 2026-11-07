@@ -1,11 +1,15 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "investigation" },
-    { "kind": "files_equal", "a": "logs/january.log", "b": "investigation/evidence.log" }
+    {
+      "kind": "files_equal",
+      "a": "logs/january.log",
+      "b": "investigation/evidence.log"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "grep\\b.*-r\\b.*failure.*logs" },
-    { "kind": "command", "name": "cp" },
-    { "kind": "command", "pattern": "cat\\b.*evidence\\.log" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bgrep\\b)(?=.* -\\S*r)(?=.*failure)(?=.*logs)"
+    }
   ]
 }

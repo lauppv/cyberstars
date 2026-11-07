@@ -1,11 +1,15 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "investigatie" },
-    { "kind": "files_equal", "a": "jurnale/ianuarie.log", "b": "investigatie/dovada.log" }
+    {
+      "kind": "files_equal",
+      "a": "jurnale/ianuarie.log",
+      "b": "investigatie/dovada.log"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "grep\\b.*-r\\b.*failure.*jurnale" },
-    { "kind": "command", "name": "cp" },
-    { "kind": "command", "pattern": "cat\\b.*dovada\\.log" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bgrep\\b)(?=.* -\\S*r)(?=.*failure)(?=.*jurnale)"
+    }
   ]
 }

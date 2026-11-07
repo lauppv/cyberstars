@@ -38,19 +38,10 @@ să citești mijlocul.
 
 ---
 
-## Misiune: Eșantionează și arhivează alerta
+## Misiune: Eșantionează și Arhivează Alerta
 
-Ceva a declanșat o alertă pe stație. Înainte de a completa raportul de incident, vrei
-să eșantionezi log-ul de la ambele capete și să păstrezi o copie.
-
-1. Uită-te doar la **primele 3 linii** din `sistem.log` ca să vezi cum a început după
-   pornire.
-2. Citește **ultimele 4 linii** din `sistem.log`: cele mai recente evenimente care au
-   declanșat alerta.
-3. Creează un folder numit `alerte` și copiază `sistem.log` în el sub numele
-   `incident.log` pentru raport.
+Ceva a declanșat o alertă. Înainte să completezi raportul de incident, eșantionează `sistem.log` de la ambele capete: cele trei linii cu care a început după pornire și cele mai recente patru linii, care au dus la alertă. Apoi păstrează o copie a jurnalului ca `alerte/incident.log`.
 
 **Rezultat așteptat**
 
-Vezi primele linii de pornire, apoi cele mai recente 4 linii de alertă. Folderul
-`alerte` conține o copie a log-ului pentru evidența incidentului.
+Vezi primele trei linii, apoi ultimele patru, iar copia din `alerte` spune ce spune originalul.

@@ -36,6 +36,8 @@ interface Session {
   guestIp?: string;
   // The Linux project the session was started for, whose judge it answers to
   project?: string;
+  // The pids of the setup's programs, spared when a command's leftovers go
+  keep: string[];
 }
 
 const sessions = new Map<string, Session>();
@@ -164,6 +166,7 @@ async function startSession(
     lastActivity: Date.now(),
     guestIp,
     project,
+    keep: [],
   };
   sessions.set(sessionId, session);
   executing.add(sessionId);
@@ -212,6 +215,10 @@ async function startSession(
       }
     }
 
+    for (const [i, program] of (setup?.processes ?? []).entries()) {
+      session.keep.push(await startProgram(containerId, i, program));
+    }
+
     await dockerExec(['exec', '-i', containerId, 'bash', '-c', 'cat > /tmp/.cwd'], 10_000, cwd);
   } catch (err) {
     void destroySession(sessionId);
@@ -223,6 +230,66 @@ async function startSession(
   startGC();
 
   return { sessionId, cwd, intro: setup?.intro };
+}
+
+// How many of the session's commands `history` lists, the newest ones
+const HISTORY_SHOWN = 100;
+
+function shellQuote(text: string): string {
+  return `'${text.replace(/'/g, "'\\''")}'`;
+}
+
+// Starts one of the setup's programs: a shell reading its script from a pipe
+// of its own. It runs through a link named after `cmd`'s program, so the
+// process is called that (`pgrep`, `pkill`, `ps -e` and `top` go by it), and
+// `exec -a` gives it `cmd` as its command line (`ps aux`). The script ignores a
+// polite stop when the program is stubborn, builds a string that holds its
+// memory, then reads the pipe forever and throws every line away: the student
+// can write to the pipe too, and nothing they write there may run in a
+// process the cleanup spares. Returns its pid.
+async function startProgram(
+  containerId: string,
+  i: number,
+  program: { cmd: string; memoryMb?: number; stubborn?: boolean },
+): Promise<string> {
+  const dir = `/tmp/.program${i}`;
+  const base = program.cmd.trim().split(/\s+/)[0].split('/').pop() ?? '';
+  const name = /^[\w.-]+$/.test(base) ? base : 'program';
+  const script = [
+    ...(program.stubborn ? ["trap '' TERM INT HUP"] : []),
+    ...(program.memoryMb
+      ? [`x=$(head -c ${Math.round(program.memoryMb * 1024 * 1024)} /dev/zero | tr '\\0' a)`]
+      : []),
+    'while :; do read -r _; done',
+  ];
+  // One exec: make the link and the pipe, start the program, print its pid,
+  // then hand it its script (this exec's stdin) through the pipe
+  const pid = await dockerExec(
+    [
+      'exec',
+      '-i',
+      containerId,
+      'bash',
+      '-c',
+      `mkdir ${dir} && ln -s /bin/bash ${dir}/${name} && mkfifo ${dir}/pipe && ` +
+        `{ exec -a ${shellQuote(program.cmd)} ${dir}/${name} 0<>${dir}/pipe >/dev/null 2>&1 & } && ` +
+        `echo $! && cat > ${dir}/pipe`,
+    ],
+    10_000,
+    script.join('\n') + '\n',
+  );
+  return pid.trim();
+}
+
+// Like killLeftovers, but sparing the setup's programs: everything else of the
+// student's is stopped first, so nothing can fork while the rest is killed.
+function killLeftoversBut(containerId: string, keep: string[]): Promise<void> {
+  const others = `ps -o pid= -u student | while read -r p; do case " 1 $$ ${keep.join(' ')} " in *" $p "*) ;; *) echo "$p" ;; esac; done`;
+  const script = `for i in 1 2 3; do kill -STOP $(${others}) 2>/dev/null; done; kill -9 $(${others}) 2>/dev/null; true`;
+  return dockerExec(['exec', containerId, 'sh', '-c', script], 5_000).then(
+    () => {},
+    () => {},
+  );
 }
 
 export async function execCommand(
@@ -248,19 +315,30 @@ export async function execCommand(
     session.lastActivity = Date.now();
     session.history.push(command);
 
-    const script = `cd "$(cat /tmp/.cwd)" && { ${command}; } 2>&1; echo $? > /tmp/.exit; pwd > /tmp/.cwd`;
+    // A shell started for one command keeps no history, so the session's is
+    // handed to it first, for `history` to list
+    const past = session.history
+      .slice(-HISTORY_SHOWN)
+      .map((line) => `history -s ${shellQuote(line)}`)
+      .join('\n');
+    const script = `${past}\ncd "$(cat /tmp/.cwd)" && { ${command}; } 2>&1; echo $? > /tmp/.exit; pwd > /tmp/.cwd`;
 
     let output: string;
     try {
+      // The script goes in on stdin, not as an argument, so ps shows the
+      // student `bash -s` rather than their command wrapped in ours
       output = await dockerExec(
-        ['exec', session.containerId, 'timeout', String(EXEC_TIMEOUT), 'bash', '-c', script],
+        ['exec', '-i', session.containerId, 'timeout', String(EXEC_TIMEOUT), 'bash', '-s'],
         (EXEC_TIMEOUT + 2) * 1000,
+        script + '\n',
       );
     } catch (e: unknown) {
       output = e instanceof Error ? e.message : 'Command failed';
     } finally {
       // The 5s limit stops the command, not what it sent to the background
-      await killLeftovers(session.containerId);
+      await (session.keep.length
+        ? killLeftoversBut(session.containerId, session.keep)
+        : killLeftovers(session.containerId));
       releaseSlot();
     }
 

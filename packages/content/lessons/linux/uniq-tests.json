@@ -1,13 +1,15 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "security" },
-    { "kind": "file_contains", "path": "security/access-tally.txt", "text": "Voss" }
+    {
+      "kind": "command_output",
+      "cmd": "awk '{print $2, $1}' security/access-tally.txt",
+      "expected": "Voss 4\nTanaka 3\nChen 2"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "sort\\b.*door_access\\.log" },
-    { "kind": "command", "pattern": "uniq\\b.*-c" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "grep\\b.*Voss" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\buniq\\b)(?=.* -\\S*c)"
+    }
   ]
 }

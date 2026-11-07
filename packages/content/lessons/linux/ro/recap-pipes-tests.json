@@ -2,14 +2,20 @@
   "checks": [
     {
       "kind": "command_output",
-      "cmd": "cat avertismente_sortat.txt",
-      "expected": "WARN: antena dezaliniata\nWARN: celula de combustibil B scazuta\nWARN: presiune agent de racire in scadere\n-- sfarsit de raport --"
+      "cmd": "cat raport.txt",
+      "expected": "RAPORT TELEMETRIE\nWARN: antena dezaliniata\nWARN: celula de combustibil B scazuta\nWARN: presiune agent de racire in scadere\nERR: alimentare de rezerva offline\nERR: defect giroscop\n-- sfarsit de raport --"
     }
   ],
   "requires": [
     {
       "kind": "command",
-      "pattern": ">>"
+      "name": "sort",
+      "pattern": "^(?=.*\\bWARN\\b)(?=.*telemetrie\\.raw)(?=.*\\|\\s*sort\\b)(?=.*>\\s*raport\\.txt)"
+    },
+    {
+      "kind": "command",
+      "name": "sort",
+      "pattern": "^(?=.*\\bERR\\b)(?=.*telemetrie\\.raw)(?=.*\\|\\s*sort\\b)(?=.*>\\s*raport\\.txt)"
     }
   ]
 }

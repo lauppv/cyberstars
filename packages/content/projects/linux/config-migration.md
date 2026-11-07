@@ -8,105 +8,43 @@ When every step is done, press **Run Tests**: it checks the files in this termin
 
 ## Map the config files
 
-Everything is under `~/apps`. Find every file whose name ends in `.conf` with `find` and `-name` (put the pattern in quotes, so the shell leaves the `*` to `find`):
-
-```text
-apps/invoices/config/mail.conf
-apps/invoices/config/db.conf
-apps/blog/config/db.conf
-apps/blog/config/app.conf
-apps/shop/config/db.conf
-apps/shop/config/app.conf
-```
-
-Six files, two per app. Look at a few with `cat`: each line is a `name=value` setting.
+Everything is under `~/apps`. Find every configuration file, the ones whose name ends in `.conf`. How many are there, and how many per app? Look at a few: each line is a `name=value` setting.
 
 ## Find the old server
 
-Search every file under `apps` for `db-old.lan`, the old database server, with `grep -r`, and `-n` for the line numbers:
-
-```text
-apps/invoices/NOTES.txt:1:2024-03: moved invoices from db-old.lan's first disk to its second.
-apps/invoices/config/db.conf:1:db_host=db-old.lan
-apps/blog/config/db.conf:1:db_host=db-old.lan
-apps/blog/config/db.conf:4:replica_host=db-old.lan
-apps/shop/config/db.conf:1:db_host=db-old.lan
-```
-
-Four settings in three files must change. The first line is Radu's note about the past: that one stays as it is.
+Find every line under `apps` that mentions `db-old.lan`, the old database server, with its file and its line number. Decide which of them are settings that must change: a note about the past stays as it is.
 
 ## Back up first
 
-Before you change a single file, copy the whole `apps` folder to `apps-backup` with `cp -r`. If anything goes wrong tonight, the company is one `cp` away from how it was. `ls` shows both folders.
+Before you change a single file, copy the whole `apps` folder to `apps-backup`. If anything goes wrong tonight, the company is one command away from how it was.
 
 ## Try the change without making it
 
-`sed` without `-i` prints the changed file and leaves the file itself alone, which makes it the safe way to check a replacement:
-
-```bash
-sed 's/db-old.lan/db.internal/' apps/blog/config/db.conf
-```
-
-```text
-db_host=db.internal
-db_port=5432
-db_name=blog
-replica_host=db.internal
-```
-
-`cat` the same file afterwards: it still says `db-old.lan`.
+Show what one of the `db.conf` files would look like with `db-old.lan` replaced by `db.internal`, without changing the file. Then check that the file itself still says `db-old.lan`.
 
 ## Move to the new server
 
-Now make the change for real, in every config file at once. `sed -i` writes the result back into the file, and it takes many files, so a wildcard path such as `apps/*/config/*.conf` hands it all six (and never the note, which isn't a `.conf`). Two details:
+Now make the change for real, in every configuration file at once, and in nothing else. Two traps:
 
-- in a pattern a `.` means any character, so write `db-old\.lan` to match only a real dot
-- add `g` after the last `/`, so a line naming the server twice changes both times
+- in a pattern a `.` means any character, so match only a real dot
+- a line can name the server twice, and both must change
 
-Then search the whole of `apps` for `db-old.lan` again. Only the note is left:
+Then search the whole of `apps` for `db-old.lan` again: only the note should be left.
 
-```text
-apps/invoices/NOTES.txt:2024-03: moved invoices from db-old.lan's first disk to its second.
-```
+New idea: `sed` can write its result back into the file it read, instead of printing it. `sed --help` tells you how.
 
 ## The new port
 
-Search for `5432`:
+The database moves to port `6432`. Find every `5432` under `apps` first: not all of them are the database's. Change only the `db_port` settings, in every configuration file, and leave every other `5432` as it is. Then search for both numbers to check.
 
-```text
-apps/invoices/config/db.conf:2:db_port=5432
-apps/blog/config/app.conf:4:upload_port=5432
-apps/blog/config/db.conf:2:db_port=5432
-apps/shop/config/db.conf:2:db_port=5432
-```
-
-The blog's `upload_port` has nothing to do with the database: replacing every 5432 would break the blog's uploads. `sed` can pick the lines it works on: `/^db_port=/s/5432/6432/` replaces only on lines that start with `db_port=`. Apply it to all six files with `-i`, then search for both numbers (`grep -rn "5432\|6432" apps`): the three `db_port` lines say 6432 and `upload_port` still says 5432.
+New idea: a `sed` command can be limited to the lines that match a pattern, written between slashes in front of it.
 
 ## Switch off the cache
 
-The old cache server is gone tomorrow. Find the `cache_server` settings, then turn them off without deleting them, by putting `# ` in front: a line starting with `#` is a comment the apps skip, and Radu can still see what was there. Anchor the pattern with `^`, so it only matches at the start of a line:
-
-```text
-apps/invoices/config/mail.conf:3:# cache_server=cache-old.lan
-apps/shop/config/app.conf:3:# cache_server=cache-old.lan
-```
+The old cache server is gone tomorrow. Find the `cache_server` settings and switch them off without deleting them: put `# ` (a hash and a space) at the start of each line. A line starting with `#` is a comment the apps skip, and Radu can still see what was there. Only a setting at the start of a line may change.
 
 ## Check the work
 
-Compare an app before and after: `cat apps/shop/config/db.conf` and then `cat apps-backup/shop/config/db.conf`.
+Compare an app before and after, its configuration against the backup's. Then count how many times the old server's name appears in each backed-up configuration file: the counts must add up to the settings you changed.
 
-```text
-db_host=db.internal
-db_port=6432
-db_name=shop
-db_user=shop
-```
-
-```text
-db_host=db-old.lan
-db_port=5432
-db_name=shop
-db_user=shop
-```
-
-Count the old name in every backed-up config file, `grep -rc` with `--include="*.conf"`, and you get 1, 2 and 1 for the three `db.conf` files and 0 for the rest: the four settings you changed. Leave Radu a line in `apps/CHANGES.txt` saying what you did, with `echo` and `>>`, one line per change.
+Leave Radu `apps/CHANGES.txt` saying what you did, one line per change.

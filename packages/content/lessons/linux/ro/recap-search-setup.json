@@ -1,12 +1,22 @@
 {
   "cwd": "/home/student",
   "files": [
-    { "path": "statie/jurnal.txt", "content": "patrula de rutina\n" },
     {
-      "path": "statie/comunicatii/pericol.log",
-      "content": "transmisie primita\nSOS din capsula de salvare 4\npozitie necunoscuta\n"
+      "path": "statie/jurnal.txt",
+      "content": "patrula de rutina\n"
     },
-    { "path": "statie/comunicatii/vechi.log", "content": "semnal SOS de test arhivat\n" }
+    {
+      "path": "statie/motor/note.txt",
+      "content": "presiune normala\n"
+    },
+    {
+      "path": "statie/comunicatii/vechi.log",
+      "content": "semnal SOS de test arhivat\n"
+    },
+    {
+      "path": "statie/comunicatii/releu/pericol.log",
+      "content": "transmisie primita\nSOS din capsula de salvare 4\npozitie necunoscuta\n"
+    }
   ],
-  "dirs": ["statie", "statie/comunicatii"]
+  "dirs": ["statie", "statie/motor", "statie/comunicatii", "statie/comunicatii/releu"]
 }

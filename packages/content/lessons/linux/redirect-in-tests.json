@@ -1,11 +1,15 @@
 {
   "checks": [
-    { "kind": "command_output", "cmd": "cat life-support/headcount.txt", "expected": "6" },
-    { "kind": "dir_exists", "path": "life-support" }
+    {
+      "kind": "command_output",
+      "cmd": "cat life-support/headcount.txt",
+      "expected": "6"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "wc\\b.*-l.*<.*crew\\.txt" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bwc\\b)(?=.*<\\s*crew\\.txt)"
+    }
   ]
 }

@@ -1,31 +1,17 @@
-Capitolul 3 ți-a dat trusa de unelte pentru inspectarea fișierelor. Fiecare comandă
-răspunde la o întrebare diferită:
+Capitolul 3 a fost despre citirea fișierelor fără să le schimbi: un fișier întreg, începutul lui, sfârșitul lui, mărimea lui.
 
-| Comandă | Răspunde la                                   |
-| ------- | --------------------------------------------- |
-| `cat`   | „Arată-mi întregul fișier (scurt).”           |
-| `head`  | „Arată-mi _începutul_.”                       |
-| `tail`  | „Arată-mi _ultimele_ evenimente.”             |
-| `less`  | „Lasă-mă să _derulez_ printr-un fișier lung.” |
-| `wc`    | „Cât de mare este, câte linii/cuvinte?”       |
-
-Un flux comun când inspectezi log-uri: `wc -l` pentru a vedea dimensiunea fișierului,
-`head` pentru a vedea cum începe, `tail` pentru a vedea cele mai noi intrări.
+Fiecare întrebare din misiunea asta are nevoie de unul dintre ele. Să alegi care e exercițiul.
 
 ---
 
-## Misiune: Triaj al log-urilor stației
+## Misiune: Triajul Jurnalelor
 
-Echipajul anterior a evacuat în grabă și a lăsat în urmă trei fișiere de log.
-Centrul de comandă are nevoie de un raport de stare rapid înainte să putem reocupa
-stația.
+Echipajul anterior a evacuat în grabă și a lăsat trei jurnale în urmă. Înainte să se mute cineva înapoi, comanda vrea răspunsuri:
 
-1. Citește `rezumat.log` integral.
-2. Vezi **primele 3 linii** din `evenimente.log`.
-3. Vezi **ultimele 3 linii** din `evenimente.log`.
-4. Numără liniile din `erori.log`.
+- Ce spune scurtul `rezumat.log`? Citește-l tot.
+- Cum a început ziua din `evenimente.log` și cum s-a terminat? Câte trei evenimente de la fiecare capăt, nimic din mijloc.
+- Câte erori s-au înregistrat în `erori.log`, câte una pe linie? Numărul, nu erorile.
 
 **Rezultat așteptat**
 
-Vezi sumarul complet, primele și ultimele trei evenimente și numărul de erori
-(3 linii).
+Poți răspunde la toate trei întrebările din ce ai văzut.

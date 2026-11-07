@@ -29,15 +29,10 @@ necesar. Devine valoros atunci când:
 
 ---
 
-## Misiune: Numărătoarea echipajului
+## Misiune: Numărătoarea Echipajului
 
-Sistemul de menținere a vieții are nevoie de un număr exact al echipajului ca să calibreze nivelurile de oxigen. Lista este stocată în `echipaj.txt`, câte un nume pe linie.
-
-1. Numără echipajul din `echipaj.txt` folosind redirecționarea intrării, ca să apară doar numărul, fără nume de fișier lângă el.
-2. Salvează acea numărătoare curată într-un fișier nou numit `numar-echipaj.txt`, combinând redirecționarea intrării și a ieșirii într-o singură comandă.
-3. Creează un folder numit `suport-viata` și mută `numar-echipaj.txt` în el.
-4. Afișează fișierul stocat ca să confirmi că are doar numărul.
+Suportul vital are nevoie de numărul exact de oameni ca să calibreze oxigenul. Manifestul echipajului e `echipaj.txt`, câte un nume pe linie. Salvează numărul în `suport-viata/numar-echipaj.txt`: doar numărul, fără numele fișierului lângă el, făcut de o comandă care citește manifestul ca intrare.
 
 **Rezultat așteptat**
 
-`suport-viata/numar-echipaj.txt` conține doar numărul `6`.
+`suport-viata/numar-echipaj.txt` ține un singur număr și nimic altceva.

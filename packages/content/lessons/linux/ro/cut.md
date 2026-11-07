@@ -37,15 +37,13 @@ Extrage a doua coloană separată prin virgulă dintr-un flux CSV.
 
 ---
 
-## Misiune: Listă rapidă din manifestul de cargo
+## Misiune: Lista Rapidă din Manifest
 
-Naveta de aprovizionare andochează în câteva minute, iar ofițerul de punte are nevoie de o listă simplă cu numele articolelor din `manifest.csv`: fără cantități, fără destinații, doar articolele.
+Naveta de aprovizionare andochează în câteva minute. Uită-te cum e așezat `manifest.csv`, apoi fă două liste pentru ofițerul de punte într-un folder nou `birou-punte`:
 
-1. Folosește `cut` ca să extragi **doar numele articolelor** (câmpul 1) din `manifest.csv`, care este delimitat prin virgulă, și afișează-le.
-2. Salvează acea listă de articole într-un fișier nou numit `lista-articole.txt`.
-3. Creează un folder numit `birou-punte` și mută `lista-articole.txt` în el.
-4. Numără câte articole au ajuns pe listă.
+- `lista-articole.txt` doar cu numele articolelor, câte unul pe linie;
+- `destinatii.txt` cu fiecare articol și locul unde merge, așa cum le scrie manifestul, dar fără cantități.
 
 **Rezultat așteptat**
 
-`birou-punte/lista-articole.txt` conține cele cinci nume de articole, câte unul pe linie, fără alte coloane.
+`birou-punte/lista-articole.txt` ține doar numele articolelor, iar `birou-punte/destinatii.txt` articolele cu destinațiile lor, fără nimic între ele.

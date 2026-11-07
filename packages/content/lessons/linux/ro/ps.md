@@ -34,19 +34,10 @@ de diagnoză.
 
 ---
 
-## Misiune: Verificare medicală a inginerilor
+## Misiune: Verificarea Stării Reactorului
 
-Inginerii tocmai au transmis prin radio: au nevoie de o dovadă scrisă că daemonul
-de monitorizare a reactorului încă rulează. Fără el, citirile de temperatură nu mai
-ajung la punte.
-
-1. Listează toate procesele care rulează pe computerul stației.
-2. Filtrează acea listare doar la liniile care menționează reactorul și salvează-le
-   într-un fișier numit `stare-reactor.txt`.
-3. Creează un folder numit `verificare-stare` și mută `stare-reactor.txt` în el.
-4. Numără câte procese de reactor au fost găsite.
+Ingineria tocmai a transmis prin radio: are nevoie de o dovadă scrisă că programul care monitorizează reactorul încă rulează, altfel puntea nu mai primește citirile de temperatură. Salvează linia reactorului din lista completă de procese ale stației, și doar pe a reactorului, ca `verificare-stare/stare-reactor.txt`, direct din listă, nu scrisă de mână.
 
 **Rezultat așteptat**
 
-`verificare-stare/stare-reactor.txt` conține linia pentru `/usr/bin/reactor-monitor`,
-confirmând că daemonul este activ.
+`verificare-stare/stare-reactor.txt` ține linia monitorului reactorului din lista de procese, cu utilizatorul, id-ul procesului și comanda lui completă.

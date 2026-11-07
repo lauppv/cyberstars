@@ -1,8 +1,22 @@
 {
-  "checks": [{ "kind": "cwd_is", "path": "rapoarte" }],
+  "checks": [
+    {
+      "kind": "cwd_is",
+      "path": "rapoarte"
+    }
+  ],
   "requires": [
-    { "kind": "command", "name": "tree" },
-    { "kind": "command", "name": "cd" },
-    { "kind": "command", "pattern": "ls\\b.*unelte" }
+    {
+      "kind": "command",
+      "name": "tree"
+    },
+    {
+      "kind": "command",
+      "name": "cd"
+    },
+    {
+      "kind": "command",
+      "pattern": "ls\\b.*\\.\\./unelte"
+    }
   ]
 }

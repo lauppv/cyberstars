@@ -5,13 +5,16 @@
       "cmd": "cat inginerie/diagnostic.txt",
       "expected": "epsilon 5\ngamma 50\nbeta 120\nalpha 300\ndelta 800"
     },
-    { "kind": "dir_exists", "path": "inginerie" }
+    {
+      "kind": "command_output",
+      "cmd": "cat inginerie/cel-mai-slab.txt",
+      "expected": "epsilon 5"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "sort\\b.*-k\\s*2.*citiri_putere\\.txt" },
-    { "kind": "command", "pattern": "sort\\b.*-n.*citiri_putere\\.txt" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "head" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bsort\\b)(?=.*citiri_putere\\.txt)"
+    }
   ]
 }

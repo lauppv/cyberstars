@@ -1392,11 +1392,12 @@
       "dir_exists": "The folder {{path}} exists",
       "path_exists": "{{path}} exists",
       "path_absent": "{{path}} no longer exists",
-      "files_equal": "{{b}} has the same contents as {{a}}",
+      "files_equal": "{{b}} has the contents the mission asks for",
       "dirs_equal": "{{b}} is a full copy of {{a}}",
-      "file_contains": "{{path}} contains \"{{text}}\"",
-      "file_mode": "{{path}} has permissions {{mode}}",
-      "command_output": "Running {{cmd}} gives the expected result",
+      "file_contains": "{{path}} holds what the mission asks for",
+      "file_mode": "{{path}} has the permissions the mission asks for",
+      "command_output": "{{path}} is as the mission asks",
+      "command_output_plain": "The result is what the mission asks for",
       "cwd_is": "You are in {{path}}"
     },
     "require": {

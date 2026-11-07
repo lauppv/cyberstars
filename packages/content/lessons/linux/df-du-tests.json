@@ -1,12 +1,29 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "audit" },
-    { "kind": "file_contains", "path": "audit/storage-report.txt", "text": "cargo-bay" }
+    {
+      "kind": "command_output",
+      "cmd": "wc -l < audit/storage-report.txt",
+      "expected": "1"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -c '^[0-9.,]*[KMG]' audit/storage-report.txt",
+      "expected": "1"
+    },
+    {
+      "kind": "file_contains",
+      "path": "audit/storage-report.txt",
+      "text": "cargo-bay"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "df\\b.*-h" },
-    { "kind": "command", "pattern": "du\\b.*-s.*cargo-bay" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "name": "df"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bdu\\b)(?=.*cargo-bay)(?=.*>)"
+    }
   ]
 }

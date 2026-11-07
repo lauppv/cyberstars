@@ -1,7 +1,20 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "incident-log" },
-    { "kind": "file_exists", "path": "incident-log/after-kill.txt" },
+    {
+      "kind": "command_output",
+      "cmd": "ps -eo args= | grep -c '^/usr/bin/nav-computer'",
+      "expected": "0"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "ps -eo args= | grep -c -e '^/usr/bin/reactor-monitor' -e '^/usr/sbin/life-support'",
+      "expected": "2"
+    },
+    {
+      "kind": "file_contains",
+      "path": "incident-log/after-kill.txt",
+      "text": "reactor-monitor"
+    },
     {
       "kind": "command_output",
       "cmd": "grep -c nav-computer incident-log/after-kill.txt",
@@ -9,8 +22,9 @@
     }
   ],
   "requires": [
-    { "kind": "command", "pattern": "kill\\b.*-9\\b.*510" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bkill\\b)(?=.*(-9|-(SIG)?KILL|-[sn]\\s*(9|(SIG)?KILL)|--signal[=\\s]\\s*(9|(SIG)?KILL))\\b)"
+    }
   ]
 }

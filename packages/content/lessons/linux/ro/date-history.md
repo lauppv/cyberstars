@@ -38,23 +38,16 @@ history
     4  history
 ```
 
-Poți rerula o comandă anterioară tastând `!NUMĂR`; de exemplu, `!3` ar rula din
-nou `grep error sistem.log`. Asta economisește timp atunci când repeți comenzi
-complexe.
+Ca să rulezi din nou o comandă anterioară, apasă săgeata în sus: fiecare apăsare
+aduce comanda dinainte, gata de modificat sau de rulat cu Enter. Asta economisește
+timp atunci când repeți comenzi complexe.
 
 ---
 
-## Misiune: Înregistrează marca temporală
+## Misiune: Înregistrează Ora
 
-Protocolul stației cere un jurnal de schimb scris la începutul fiecărei ture: ora
-curentă, de cât timp este online stația și o revizuire a activității din terminal.
-
-1. Înregistrează data și ora curentă într-un fișier nou numit `jurnal-schimb.txt`.
-2. Adaugă la același fișier de cât timp rulează stația.
-3. Creează un folder numit `evidente-schimb` și mută `jurnal-schimb.txt` în el.
-4. Revizuiește lista numerotată cu comenzile pe care le-ai tastat în această sesiune.
+Protocolul stației cere un jurnal de tură scris la începutul fiecărei gărzi. Scrie `evidente-schimb/jurnal-schimb.txt` cu data și ora curentă pe prima linie și de cât timp funcționează stația pe a doua. Apoi revezi lista numerotată a comenzilor pe care le-ai tastat în sesiunea asta.
 
 **Rezultat așteptat**
 
-`evidente-schimb/jurnal-schimb.txt` conține marca temporală urmată de timpul de
-funcționare al stației.
+`evidente-schimb/jurnal-schimb.txt` are două linii, ora și apoi timpul de funcționare al stației, iar tu ți-ai văzut comenzile numerotate.

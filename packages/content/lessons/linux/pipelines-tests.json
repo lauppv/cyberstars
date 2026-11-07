@@ -4,13 +4,13 @@
       "kind": "command_output",
       "cmd": "cat bridge/briefing.txt",
       "expected": "alert: breach sector 8\nalert: fire deck 2"
-    },
-    { "kind": "dir_exists", "path": "bridge" }
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "events\\.log.*\\|.*grep.*alert.*\\|.*sort.*\\|.*head" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "wc\\b.*-l" }
+    {
+      "kind": "command",
+      "name": "sort",
+      "pattern": "^(?=.*events\\.log)(?=.*\\balert\\b)(?=.*\\|\\s*sort\\b)(?=.*\\|\\s*head\\b)(?=.*>)"
+    }
   ]
 }

@@ -11,20 +11,18 @@ commanding officer needs the directory organized and a final report generated
 
 ## Mission: Mission Control Overhaul
 
-A previous shift officer left the Mission Control directory in chaos: incoming files dumped in `inbox/`, nothing sorted, permissions wide open, and no status report for command. The captain wants this fixed before the next crew rotation. You have the tools. Get it done.
+A previous shift officer left Mission Control in chaos: everything dumped in `inbox/`, nothing sorted, the security settings open to anyone, and no report for command. The captain wants it fixed before the next crew rotation. Nobody will tell you how; you have the tools.
 
-1. **Sort the inbox.** Move all `.log` files from `inbox/` into `logs/`. Move all `.conf` files from `inbox/` into `config/`.
+The captain's orders:
 
-2. **Hunt for critical issues.** Use `grep -r` to search the entire `logs/` directory for the word `CRITICAL`. Redirect the matching lines into `reports/critical-issues.txt`.
+- Logs belong in `logs/` and configuration files in `config/`. The officer's personal notes stay in `inbox/`, alone.
+- `reports/critical-issues.txt`: every `CRITICAL` line from all the logs, each with the log it came from.
+- `reports/sorted-config.txt`: every setting from all the configuration files, in one alphabetical list.
+- `config/security.conf` holds access credentials: only its owner may read or change it, and nobody else gets anything.
+- `reports/mission-summary.txt`: the current date and time on the first line, `STATUS: COMPLETE` on the second.
 
-3. **Build a configuration manifest.** Use `cat` to combine all `.conf` files in `config/` and pipe through `sort` into `reports/sorted-config.txt`.
-
-4. **Lock down security.** The file `config/security.conf` contains sensitive access credentials. Set its permissions so only the owner can read and write it, no group or other access. Use `chmod 600`.
-
-5. **File the final report.** Create `reports/mission-summary.txt` containing the current date on the first line (use `date >`) and the text `STATUS: COMPLETE` on the second line (use `echo >>` to append).
-
-6. **Verify your work.** Run `ls reports/` to confirm all three report files are in place.
+Everything in the reports comes straight from the files and the system, not typed by hand, except the status line.
 
 **Expected result**
 
-The `inbox/` should contain only `old-notes.txt`. The `logs/` directory holds the three `.log` files, `config/` holds the three `.conf` files (with `security.conf` locked to `600`), and `reports/` contains `critical-issues.txt`, `sorted-config.txt`, and `mission-summary.txt`. The station is counting on you, cadet.
+`inbox/` holds only the notes, every log and configuration file is in its folder, `security.conf` is locked to its owner, and the three reports say what the captain asked for. The station is counting on you, cadet.

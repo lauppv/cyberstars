@@ -2,20 +2,18 @@
   "checks": [
     {
       "kind": "command_output",
-      "cmd": "stat -c %A deploy.sh | cut -c4",
-      "expected": "x"
+      "cmd": "stat -c %A deploy.sh",
+      "expected": "-rwxr-----"
     },
     {
-      "kind": "command_output",
-      "cmd": "stat -c %A deploy.sh | cut -c10",
-      "expected": "-"
-    },
-    { "kind": "dir_exists", "path": "deploy-ready" },
-    { "kind": "file_exists", "path": "deploy-ready/deploy.sh" }
+      "kind": "file_exists",
+      "path": "deploy-ready/deploy.sh"
+    }
   ],
   "requires": [
-    { "kind": "command", "name": "chmod" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "cp" }
+    {
+      "kind": "command",
+      "name": "chmod"
+    }
   ]
 }

@@ -1,38 +1,13 @@
-Time to put the first chapter together. You now have three trusty tools for moving
-around a Linux system:
+Time to put the first chapter together: finding out where you are, seeing what is around you and moving from folder to folder. Nothing in this chapter changes or deletes a file, so explore as much as you like.
 
-- **pwd**: tells you _where_ you are
-- **ls**: tells you _what_ is around you
-- **cd**: _moves_ you to a new directory
-
-None of these change or delete anything, so you can explore freely. The golden habit
-of every cadet:
-
-```bash
-pwd    # confirm where you are
-ls     # look at what is here
-cd somewhere   # move on
-```
-
-Repeat that loop and you will never get lost. If you ever do, `cd ~` brings you
-straight home.
-
-### Reading what `ls` shows you
-
-Remember `ls -l` puts a `d` in front of directories and a `-` in front of files. Use
-it whenever you need to know which names you can `cd` into.
+This time nobody tells you which folder to open. Look, decide, move.
 
 ---
 
 ## Mission: The Hidden Vault
 
-Station intelligence reports a hidden vault somewhere deep in the `station` directory. Your job is to navigate the folder structure and find it. Rumor has it the vault is invisible to a basic `ls`.
-
-1. Look at what is in your home directory.
-2. Move into the `station` folder.
-3. From there, move into the `archive` folder.
-4. Inside `archive`, a hidden directory is waiting. Reveal the hidden entries, then move into it.
+Station intelligence reports a vault hidden somewhere inside the `station` directory. The vault is a folder, and a plain listing won't show it. Search the structure folder by folder and finish standing inside the vault.
 
 **Expected result**
 
-Your current location is `/home/student/station/archive/.vault`. You found the vault.
+You stand in the vault, and listing it shows what it keeps.

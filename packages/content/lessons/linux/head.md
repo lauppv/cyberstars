@@ -41,12 +41,8 @@ Like `cat`, `head` only reads. It changes nothing.
 
 ## Mission: Check and Archive the Boot Sequence
 
-The station's `system.log` records everything since the last reboot. Engineering wants to verify the boot sequence and keep a copy of the log for the diagnostics folder.
-
-1. Print only the **first 5 lines** of `system.log`: the earliest boot events.
-2. Create a folder called `diagnostics` and copy `system.log` into it as `boot.log`.
-3. Verify the copy by printing just the **first 3 lines** of `diagnostics/boot.log`.
+`system.log` records everything since the last reboot, oldest first. Engineering wants the first five boot events and nothing after them, and a copy of the whole log kept as `diagnostics/boot.log`.
 
 **Expected result**
 
-The first boot events appear, then a shorter 3-line sample of the archived copy. The `diagnostics` folder holds a faithful copy of the log.
+You see exactly five lines, the earliest of the log, and the copy in `diagnostics` reads like the original.

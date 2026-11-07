@@ -38,20 +38,15 @@ history
     4  history
 ```
 
-You can re-run a previous command by typing `!NUMBER`, for example `!3` would re-run
-`grep error system.log`. This saves time when repeating complex commands.
+To run a previous command again, press the up arrow: each press brings back the one
+before, ready to edit or run with Enter. This saves time when repeating complex commands.
 
 ---
 
 ## Mission: Log the Timestamp
 
-Station protocol requires a written shift log at the start of every watch: the current time, how long the station has been online, and a review of terminal activity.
-
-1. Record the current date and time into a new file called `shift-log.txt`.
-2. Append the station's uptime to that same file.
-3. Create a folder called `shift-records` and move `shift-log.txt` into it.
-4. Review the numbered list of commands you have typed this session.
+Station protocol requires a written shift log at the start of every watch. Write `shift-records/shift-log.txt` with the current date and time on its first line and how long the station has been running on its second. Then review the numbered list of commands you typed this session.
 
 **Expected result**
 
-`shift-records/shift-log.txt` holds the timestamp followed by the station's uptime.
+`shift-records/shift-log.txt` has two lines, the timestamp and then the station's uptime, and you have seen your numbered commands.

@@ -2,14 +2,20 @@
   "checks": [
     {
       "kind": "command_output",
-      "cmd": "cat warnings_sorted.txt",
-      "expected": "WARN: antenna misaligned\nWARN: coolant pressure dropping\nWARN: fuel cell B low\n-- end of report --"
+      "cmd": "cat report.txt",
+      "expected": "TELEMETRY REPORT\nWARN: antenna misaligned\nWARN: coolant pressure dropping\nWARN: fuel cell B low\nERR: backup power offline\nERR: gyroscope fault\n-- end of report --"
     }
   ],
   "requires": [
     {
       "kind": "command",
-      "pattern": ">>"
+      "name": "sort",
+      "pattern": "^(?=.*\\bWARN\\b)(?=.*telemetry\\.raw)(?=.*\\|\\s*sort\\b)(?=.*>\\s*report\\.txt)"
+    },
+    {
+      "kind": "command",
+      "name": "sort",
+      "pattern": "^(?=.*\\bERR\\b)(?=.*telemetry\\.raw)(?=.*\\|\\s*sort\\b)(?=.*>\\s*report\\.txt)"
     }
   ]
 }

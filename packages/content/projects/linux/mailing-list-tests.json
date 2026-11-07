@@ -23,10 +23,6 @@
     },
     {
       "kind": "command",
-      "name": "awk"
-    },
-    {
-      "kind": "command",
       "name": "sort"
     }
   ]

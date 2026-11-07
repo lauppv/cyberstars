@@ -47,12 +47,12 @@ That finds every file larger than 1 KB.
 
 ## Mission: Station Directory Scan
 
-The chief engineer needs a structural overview of the `station` folder before reorganising the file system, and the text notes gathered in one place.
+The chief engineer is reorganising the `station` folder and needs an overview first:
 
-1. List **only the directories** inside `station`.
-2. List **only the `.txt` files** inside `station` (files, not folders).
-3. Gather the text notes you found: create a folder called `txt-index` and copy `station/notes.txt` and `station/bay/manifest.txt` into it.
+1. Every folder inside `station`, and nothing that is a file.
+2. Every text note in `station`, the files ending in `.txt`, wherever they sit.
+3. All those notes gathered in a new `txt-index` folder, each under its own name.
 
 **Expected result**
 
-You see the directory paths, then the `.txt` file paths, and the `txt-index` folder holds copies of both text notes.
+You see the folder paths, then the paths of the text notes, and `txt-index` holds a copy of each note.

@@ -142,6 +142,60 @@ describe('execCommand', () => {
     expect(zombies.output.trim()).toBe('0');
   });
 
+  itDocker('runs the setup’s programs and spares them, but not the leftovers', async () => {
+    mockExistsSync.mockReturnValue(true);
+    mockReadFileSync.mockReturnValue(
+      JSON.stringify({
+        cwd: '/home/student',
+        dirs: [],
+        files: [],
+        processes: [
+          { cmd: '/usr/bin/reactor-monitor --port=7700', memoryMb: 8 },
+          { cmd: '/usr/bin/nav-computer --frozen', stubborn: true },
+        ],
+      }),
+    );
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
+    sessionsToClean.push(sessionId);
+
+    await execCommand(sessionId, 'sleep 299 &', 'user:1');
+    const listed = await execCommand(sessionId, 'ps -eo args= --sort=-rss', 'user:1');
+    expect(listed.output.split('\n')[0]).toBe('/usr/bin/reactor-monitor --port=7700');
+    expect(listed.output).toContain('/usr/bin/nav-computer --frozen');
+    expect(listed.output).not.toContain('sleep 299');
+    // The student's own command shows as a plain shell, not wrapped in ours
+    expect(listed.output).not.toContain('/tmp/.cwd');
+
+    // The tools that go by a process's name find it by the program's name
+    const named = await execCommand(sessionId, 'ps -eo comm=; pidof reactor-monitor', 'user:1');
+    expect(named.output).toContain('nav-computer');
+    expect(named.output).toMatch(/^\d+$/m);
+
+    // What the student writes to a program's pipe never runs
+    await execCommand(sessionId, "echo 'touch /tmp/ran' > /tmp/.program1/pipe", 'user:1');
+    const ran = await execCommand(sessionId, 'ls /tmp/ran', 'user:1');
+    expect(ran.output).toContain('No such file');
+
+    // A stubborn one ignores a polite stop, but not a forced one, and stays stopped
+    await execCommand(sessionId, 'pkill nav-computer', 'user:1');
+    const asked = await execCommand(sessionId, 'ps -eo args=', 'user:1');
+    expect(asked.output).toContain('/usr/bin/nav-computer --frozen');
+    await execCommand(sessionId, 'kill -9 $(pgrep nav-computer)', 'user:1');
+    const after = await execCommand(sessionId, 'ps -eo args=', 'user:1');
+    expect(after.output).not.toContain('nav-computer');
+    expect(after.output).toContain('reactor-monitor');
+  });
+
+  itDocker('lists the session’s commands in history', async () => {
+    mockExistsSync.mockReturnValue(false);
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
+    sessionsToClean.push(sessionId);
+
+    await execCommand(sessionId, "echo 'it''s me'", 'user:1');
+    const result = await execCommand(sessionId, 'history', 'user:1');
+    expect(result.output).toMatch(/1\s+echo 'it''s me'\n\s+2\s+history$/);
+  });
+
   itDocker('rejects a command from a different user', async () => {
     mockExistsSync.mockReturnValue(false);
     const { sessionId } = await createSession('linux', 'test', 'user:1');

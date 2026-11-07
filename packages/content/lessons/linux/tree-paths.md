@@ -54,12 +54,8 @@ Use `pwd` to see your absolute location, and `tree` to see the structure below y
 
 ## Mission: Map the Station
 
-Before starting repairs, you need a complete map of the station's file system and then to walk one of its branches to reach the reports archive.
-
-1. See the full directory structure at a glance.
-2. Using a relative path, move into `reports`, then confirm you landed in `/home/student/reports`.
-3. From there, list the neighbouring `tools` folder without moving, using a relative path that steps back up one level.
+Before starting repairs you need a map. Draw the whole structure under your home directory, then walk into the reports archive with a relative path. From there, without moving, list the folder that holds the deploy script, with a path that starts from where you stand.
 
 **Expected result**
 
-The tree map shows every file and folder, your position confirms you are inside `reports`, and the final listing reveals `deploy.sh` living over in `tools`.
+You end up inside the reports archive, and your last listing shows the deploy script in its own folder.

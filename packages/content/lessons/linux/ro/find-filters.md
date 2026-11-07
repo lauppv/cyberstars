@@ -45,18 +45,14 @@ Asta găsește fiecare fișier mai mare de 1 KB.
 
 ---
 
-## Misiune: Scanarea directorului stației
+## Misiune: Scanarea Directoarelor Stației
 
-Inginerul-șef are nevoie de o privire de ansamblu asupra structurii folderului
-`statie` înainte de a reorganiza sistemul de fișiere, și de notițele text strânse
-într-un singur loc.
+Inginerul-șef reorganizează folderul `statie` și are nevoie mai întâi de o privire de ansamblu:
 
-1. Listează **doar directoarele** din `statie`.
-2. Listează **doar fișierele `.txt`** din `statie` (fișiere, nu foldere).
-3. Strânge notițele text pe care le-ai găsit: creează un folder numit `index-txt` și
-   copiază `statie/notite.txt` și `statie/hangar/manifest.txt` în el.
+1. Fiecare folder din `statie` și nimic din ce e fișier.
+2. Fiecare notiță text din `statie`, fișierele care se termină în `.txt`, oriunde ar sta.
+3. Toate aceste notițe adunate într-un folder nou `index-txt`, fiecare cu numele ei.
 
 **Rezultat așteptat**
 
-Vezi căile directoarelor, apoi căile fișierelor `.txt`, iar folderul `index-txt`
-conține copii ale ambelor notițe text.
+Vezi căile folderelor, apoi căile notițelor text, iar `index-txt` ține o copie a fiecărei notițe.

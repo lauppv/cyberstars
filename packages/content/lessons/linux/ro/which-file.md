@@ -56,22 +56,15 @@ sau este greșită.
 
 ---
 
-## Misiune: Sondarea datelor necunoscute
+## Misiune: Sonda pentru Date Necunoscute
 
-O scanare de rutină a găsit un fișier numit `mister.dat` în directorul tău
-personal. Extensia este necunoscută și nimeni nu știe ce conține. Investighează-l,
-apoi arhivează-l cum se cuvine.
+O scanare de rutină a găsit `mister.dat` în directorul tău personal. Nimeni nu știe ce ține, iar numele lui nu spune nimic.
 
-1. Confirmă că unealta de bază pentru listare (`ls`) este chiar instalată pe acest
-   sistem.
-2. Identifică ce fel de date se află de fapt în `mister.dat`.
-3. Se dovedește a fi text simplu, lizibil. Afișează-i conținutul ca să vezi
-   mesajul.
-4. Creează un folder numit `identificat` și copiază fișierul în el sub numele mai
-   clar `readme.txt`.
+1. Înainte să ai încredere în unelte, află unde e instalat programul care numără liniile.
+2. Află ce fel de date ține de fapt `mister.dat`, fără să-l deschizi.
+3. Dacă se dovedește că se poate citi, citește-l.
+4. Arhivează-l sub un nume care are sens: o copie într-un folder nou `identificat` ca `readme.txt`.
 
 **Rezultat așteptat**
 
-Vezi unde se află `ls`, inspecția dezvăluie că `mister.dat` este text ASCII simplu
-în ciuda numelui său suspect, citești mesajul, iar o copie stă în
-`identificat/readme.txt` sub un nume care în sfârșit are sens.
+Vezi unde stă numărătorul de linii, ce fel de fișier e `mister.dat` și mesajul lui, iar `identificat/readme.txt` e o copie a lui.

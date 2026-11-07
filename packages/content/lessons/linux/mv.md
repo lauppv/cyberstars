@@ -47,13 +47,17 @@ names carefully.
 
 ## Mission: File Relocation
 
-The station's filing system is being reorganised. A draft needs finalising, loose notes need archiving, and the archive folder itself is getting a new name. Your home directory contains `draft.txt`, `notes.txt` and an `archive` folder.
+The station's filing system is being reorganised. Look at what your home directory holds, then leave it like this, without copying anything: every file must be the original, moved.
 
-1. Rename `draft.txt` to `report.txt`.
-2. Move `report.txt` into the `archive` folder.
-3. Move `notes.txt` into `archive` and rename it to `notes-2026.txt` in a **single** command.
-4. Rename the `archive` folder itself to `records`.
+```text
+.
+└── records
+    ├── notes-2026.txt
+    └── report.txt
+```
+
+`records` is the old `archive` folder under its new name, `report.txt` is the finished draft and `notes-2026.txt` the loose notes.
 
 **Expected result**
 
-The `records` folder holds `report.txt` and `notes-2026.txt`; the old `draft.txt`, `notes.txt` and `archive` names are gone.
+Your home directory holds only `records`, with the two files above in it, and none of the old names are left.

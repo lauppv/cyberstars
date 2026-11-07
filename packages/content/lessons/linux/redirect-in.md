@@ -32,13 +32,8 @@ becomes valuable when:
 
 ## Mission: Crew Headcount
 
-Life support needs an exact headcount to calibrate oxygen levels. The manifest is stored in `crew.txt`, one name per line.
-
-1. Count the crew from `crew.txt` using input redirection, so only the number appears, no filename beside it.
-2. Save that clean count into a new file called `headcount.txt`, combining input and output redirection in a single command.
-3. Create a folder called `life-support` and move `headcount.txt` into it.
-4. Display the stored file to confirm it holds only the number.
+Life support needs an exact headcount to calibrate the oxygen. The crew manifest is `crew.txt`, one name per line. Save the count to `life-support/headcount.txt`: the number alone, with no file name beside it, made by a command that reads the manifest as its input.
 
 **Expected result**
 
-`life-support/headcount.txt` contains just the number `6`.
+`life-support/headcount.txt` holds a single number and nothing else.

@@ -1,39 +1,19 @@
-Capitolul 8 ți-a dat uneltele pentru a inspecta și administra însuși sistemul de
-operare al stației:
+Capitolul 8 a fost despre sistemul însuși: ce programe rulează, cum oprești unul, cât disc e folosit și când s-au întâmplat lucrurile.
 
-| Comandă               | Scop                                                   |
-| --------------------- | ------------------------------------------------------ |
-| `ps aux`              | Listează toate procesele active                        |
-| `ps aux --sort=-%cpu` | Sortează după consumul de CPU (cel mai mare întâi)     |
-| `kill PID`            | Oprește politicos un proces                            |
-| `kill -9 PID`         | Forțează oprirea unui proces încăpățânat               |
-| `df -h`               | Arată spațiul pe disc pentru fiecare sistem de fișiere |
-| `du -sh DIR`          | Arată dimensiunea totală a unui director               |
-| `date`                | Afișează data și ora curentă                           |
-| `history`             | Arată comenzile anterioare                             |
-
-Acestea sunt trusa ta de diagnoză a sistemului. Când ceva merge prost, începi cu
-`ps aux` pentru a vedea ce rulează, `df -h` pentru a verifica spațiul pe disc și
-`date` pentru a marca temporal incidentul.
+Când ceva merge prost pe o mașină reală, de aici începi să cauți.
 
 ---
 
-## Misiune: Inspecție de sănătate a sistemului
+## Misiune: Inspecția Stării Sistemelor
 
-Stația se apropie de un câmp de resturi și căpitanul vrea o verificare completă
-a sistemelor înregistrată înainte de intrare. Parcurge secvența standard de
-diagnoză.
+Stația se apropie de un câmp de resturi, iar căpitanul vrea o verificare a sistemelor înregistrată înainte de intrare. Verifică cât spațiu pe disc mai are stația, apoi scrie `inspectie.txt`:
 
-1. Inspectează toate procesele active. Confirmă că monitorul reactorului și
-   suportul vital rulează.
-2. Verifică spațiul disponibil pe toate sistemele de fișiere.
-3. Măsoară cât de mult a crescut directorul `jurnale/`.
-4. Marchează temporal această inspecție cu data și ora curentă.
-5. Revizuiește lista completă a comenzilor înregistrate în această sesiune pentru
-   a confirma jurnalul de audit.
+1. data și ora inspecției, pe prima linie;
+2. liniile de proces ale monitorului reactorului și ale suportului vital, ca dovadă că amândouă rulează;
+3. cât spațiu ocupă folderul `jurnale`, în total și ușor de citit, pe ultima linie.
+
+Fiecare linie vine direct din sistem, nu scrisă de mână.
 
 **Rezultat așteptat**
 
-Ar trebui să vezi procesele `reactor-monitor` și `life-support` active,
-statisticile de utilizare a discului pentru toate punctele de montare,
-dimensiunea lui `jurnale/`, data curentă și istoricul complet al comenzilor tale.
+`inspectie.txt` începe cu ora, arată că monitorul reactorului și suportul vital rulează și se termină cu mărimea lui `jurnale`.

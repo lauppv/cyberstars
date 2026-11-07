@@ -1,6 +1,6 @@
 ```bash
 grep warning system.log
-grep error system.log
+grep sensor system.log
 mkdir scan
 cp system.log scan/shift.log
 ```

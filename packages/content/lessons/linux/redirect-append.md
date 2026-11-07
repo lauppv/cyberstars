@@ -33,19 +33,8 @@ over time, like a station log that grows with each shift.
 
 ## Mission: Shift Log Update
 
-The outgoing watch officer recorded the launch sequence in `mission.log`. Your shift is starting and you need to update the record, then file a backup.
-
-1. Add `status: shields nominal` to the end of `mission.log` without erasing the existing entry.
-2. Add `status: crew ready` to the end of `mission.log` the same way.
-3. Count the lines in `mission.log` to confirm it now holds three entries.
-4. Create a folder called `archive` and copy `mission.log` into it under the name `mission-backup.log`.
+The outgoing watch officer started `mission.log` with the launch sequence. Your shift adds two entries after it, `status: shields nominal` and then `status: crew ready`, and the first entry must survive. Then file a backup as `archive/mission-backup.log`.
 
 **Expected result**
 
-`mission.log` holds all three status lines, and `archive/mission-backup.log` is an identical backup:
-
-```text
-status: launch sequence initiated
-status: shields nominal
-status: crew ready
-```
+`mission.log` holds the three status lines in order, and the backup is identical to it.

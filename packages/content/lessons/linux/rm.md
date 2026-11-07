@@ -42,12 +42,8 @@ deleting anything you are unsure about.
 
 ## Mission: Purge Junk Data
 
-A routine maintenance scan flagged leftover junk cluttering the station workspace. Before you delete anything, secure the one file that matters. There is no undo for `rm`.
-
-1. Create a `keep` folder and copy `mission.txt` into it as a safety backup.
-2. Review the workspace before deleting anything.
-3. Delete the three junk files `junk.txt`, `temp.log` and `cache.tmp` in a **single** command.
+A maintenance scan flagged junk cluttering your home directory. Only the mission file matters, and there is no undo for deleting, so first put a copy of it in a new `keep` folder. Then clear out every other file in your home directory.
 
 **Expected result**
 
-The junk files are gone, `mission.txt` is still in your home directory, and a safety copy sits in `keep`.
+Your home directory holds the mission file and `keep` with its copy, and nothing else.

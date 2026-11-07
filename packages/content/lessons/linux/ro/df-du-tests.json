@@ -1,12 +1,29 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "audit" },
-    { "kind": "file_contains", "path": "audit/raport-stocare.txt", "text": "depozit" }
+    {
+      "kind": "command_output",
+      "cmd": "wc -l < audit/raport-stocare.txt",
+      "expected": "1"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -c '^[0-9.,]*[KMG]' audit/raport-stocare.txt",
+      "expected": "1"
+    },
+    {
+      "kind": "file_contains",
+      "path": "audit/raport-stocare.txt",
+      "text": "depozit"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "df\\b.*-h" },
-    { "kind": "command", "pattern": "du\\b.*-s.*depozit" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "name": "df"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bdu\\b)(?=.*depozit)(?=.*>)"
+    }
   ]
 }

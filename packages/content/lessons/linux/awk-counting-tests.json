@@ -5,12 +5,20 @@
       "cmd": "cat flight-deck/total-weight.txt",
       "expected": "610"
     },
-    { "kind": "dir_exists", "path": "flight-deck" }
+    {
+      "kind": "command_output",
+      "cmd": "cat flight-deck/heavy.txt",
+      "expected": "oxygen 120\nfuel 300"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "awk\\b.*\\$2.*cargo_weight\\.txt" },
-    { "kind": "command", "pattern": "awk\\b.*\\$2\\s*>\\s*100" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bawk\\b)(?=.*END)(?=.*cargo_weight\\.txt)"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bawk\\b)(?=.*100)(?=.*cargo_weight\\.txt)"
+    }
   ]
 }

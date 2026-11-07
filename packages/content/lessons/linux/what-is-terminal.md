@@ -46,10 +46,8 @@ Try a command, see what happens, try another.
 
 ## Mission: First Transmission
 
-The station's communication array just came online and needs a signal test. Your job is to send the first message from this terminal.
-
-Use the `echo` command to transmit the exact message: `Mission control online`
+The station's communication array just came online and needs a signal test. Send the first message from this terminal: the terminal has to print back exactly `Mission control online`.
 
 **Expected result**
 
-The terminal prints back `Mission control online`, confirming your transmission was received.
+The line `Mission control online` appears under your command, word for word.

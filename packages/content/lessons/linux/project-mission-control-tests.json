@@ -1,12 +1,39 @@
 {
   "checks": [
     {
-      "kind": "file_exists",
-      "path": "logs/reactor.log"
+      "kind": "command_output",
+      "cmd": "ls inbox",
+      "expected": "old-notes.txt"
     },
     {
-      "kind": "file_exists",
-      "path": "config/security.conf"
+      "kind": "command_output",
+      "cmd": "ls logs",
+      "expected": "comms.log\nnavigation.log\nreactor.log"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "ls config",
+      "expected": "life-support.conf\nnetwork.conf\nsecurity.conf"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -c CRITICAL reports/critical-issues.txt",
+      "expected": "2"
+    },
+    {
+      "kind": "file_contains",
+      "path": "reports/critical-issues.txt",
+      "text": "reactor.log"
+    },
+    {
+      "kind": "file_contains",
+      "path": "reports/critical-issues.txt",
+      "text": "navigation.log"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat reports/sorted-config.txt",
+      "expected": "access_level=restricted\nauth_method=biometric\nbandwidth=1000Mbps\nco2_scrubber=active\ndns=10.0.0.2\nencryption=AES256\nfirewall=enabled\ngateway=10.0.0.1\nhumidity=45%\noxygen_target=21%\nprotocol=TCP\ntemperature=22C"
     },
     {
       "kind": "file_mode",
@@ -14,36 +41,28 @@
       "mode": "600"
     },
     {
-      "kind": "file_contains",
-      "path": "reports/critical-issues.txt",
-      "text": "CRITICAL"
+      "kind": "command_output",
+      "cmd": "head -n 1 reports/mission-summary.txt | grep -c ' 20[0-9][0-9]$'",
+      "expected": "1"
     },
     {
-      "kind": "file_exists",
-      "path": "reports/sorted-config.txt"
-    },
-    {
-      "kind": "file_contains",
-      "path": "reports/mission-summary.txt",
-      "text": "STATUS: COMPLETE"
-    },
-    {
-      "kind": "file_exists",
-      "path": "inbox/old-notes.txt"
-    },
-    {
-      "kind": "path_absent",
-      "path": "inbox/reactor.log"
+      "kind": "command_output",
+      "cmd": "tail -n 1 reports/mission-summary.txt",
+      "expected": "STATUS: COMPLETE"
     }
   ],
   "requires": [
     {
       "kind": "command",
-      "name": "chmod"
+      "pattern": "^(?=.*\\bgrep\\b)(?=.* -\\S*r)(?=.*CRITICAL)"
     },
     {
       "kind": "command",
-      "pattern": "grep\\b.*-r"
+      "pattern": "^(?=.*\\bsort\\b)(?=.*>)"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bdate\\b)(?=.*>)"
     }
   ]
 }

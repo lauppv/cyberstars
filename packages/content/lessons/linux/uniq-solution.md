@@ -1,14 +1,11 @@
 ```bash
-sort door_access.log | uniq -c
-sort door_access.log | uniq -c > access-tally.txt
 mkdir security
-mv access-tally.txt security/
-grep Voss security/access-tally.txt
+sort door_access.log | uniq -c | sort -rn > security/access-tally.txt
+cat security/access-tally.txt
 ```
 
 ```text
-      2 Chen
+      4 Voss
       3 Tanaka
-      3 Voss
-      3 Voss
+      2 Chen
 ```

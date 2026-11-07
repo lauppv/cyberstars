@@ -36,13 +36,13 @@ replace the entire set.
 
 ## Mission: Lock Down the Thruster Script
 
-The `engine_control.sh` script fires the main thruster and ships with a `readme.txt`. Station security policy sets strict access levels for both.
+`engine_control.sh` fires the main thruster and ships with `readme.txt`. Station security sets each file's access in a single step, all three groups at once:
 
-1. Set the permissions on `engine_control.sh` so the owner has full access, the group can read and run it, and others get nothing at all.
-2. Set the permissions on `readme.txt` so the owner can read and write it, while the group and others can only read it.
-3. Create a folder called `engine-bay` and move both files into it.
-4. Display the detailed listing of the folder to confirm the permissions.
+- `engine_control.sh`: the owner can do everything, the group can read and run it, others get nothing.
+- `readme.txt`: the owner can read and change it, the group can only read it, others get nothing.
+
+Then move both into a new `engine-bay` folder.
 
 **Expected result**
 
-Inside `engine-bay`, `engine_control.sh` is `-rwxr-x---` and `readme.txt` is `-rw-r--r--`.
+Both files sit in `engine-bay` with exactly the access above.

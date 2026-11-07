@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterAll } from 'vitest';
 import fs from 'fs';
 import path from 'path';
+import type { TerminalTestsSpec } from '@cyberstars/shared/terminal';
 
 const { mockDockerExec, mockGetSessionView } = vi.hoisted(() => ({
   mockDockerExec: vi.fn(),
@@ -10,9 +11,35 @@ const { mockDockerExec, mockGetSessionView } = vi.hoisted(() => ({
 vi.mock('@cyberstars-framework/sandbox/docker', () => ({ dockerExec: mockDockerExec }));
 vi.mock('./terminal-session.service.js', () => ({ getSessionView: mockGetSessionView }));
 
-const { loadTerminalTestsSpec, runTerminalTests, runProjectTerminalTests } =
-  await import('./terminal-tests.service.js');
+const {
+  loadTerminalTestsSpec,
+  runTerminalTests,
+  runProjectTerminalTests,
+  ruleLabel,
+  checkMessage,
+  probedFile,
+} = await import('./terminal-tests.service.js');
 const { contentDir } = await import('./paths.js');
+const { PROJECTS_DIR } = await import('@cyberstars/content/paths');
+
+// Every Linux lesson's tests, EN and RO, and every Linux project's (the
+// fixtures the tests below write for a moment left out)
+function linuxSpecs(): { file: string; spec: TerminalTestsSpec }[] {
+  const dirs = [
+    contentDir('linux'),
+    path.join(contentDir('linux'), 'ro'),
+    path.join(PROJECTS_DIR, 'linux'),
+  ];
+  return dirs.flatMap((dir) =>
+    fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith('-tests.json') && !f.startsWith('zz-'))
+      .map((f) => ({
+        file: path.join(dir, f),
+        spec: JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) as TerminalTestsSpec,
+      })),
+  );
+}
 
 const b64 = (s: string) => Buffer.from(s, 'utf8').toString('base64');
 
@@ -120,29 +147,30 @@ describe('runTerminalTests', () => {
   });
 
   it('compares command_output on the server (decoding base64)', async () => {
-    const expected =
-      'warning: hull temperature rising\nwarning: fuel reserve low\nwarning: comms latency high';
+    const alerts = 'critical: pressure drop deck 7\ncritical: radiation spike lab 3';
+    const healthy = 'ok: oxygen normal\nok: temperature stable\nok: gravity nominal';
     mockGetSessionView.mockReturnValue(
       view({
         history: [
-          'grep warning system.log',
-          'grep error system.log',
-          'cp system.log scan/shift.log',
+          'mkdir report',
+          'grep critical sensors.log > report/alerts.txt',
+          'grep ok sensors.log > report/healthy.txt',
         ],
       }),
     );
-    mockDockerExec.mockResolvedValue(`0 O ${b64(expected + '\n')}\n1 P\n2 P\n`);
-    const res = await runTerminalTests('user:1', 'sid', 'linux', 'grep');
+    mockDockerExec.mockResolvedValue(`0 O ${b64(alerts + '\n')}\n1 O ${b64(healthy + '\n')}\n`);
+    const res = await runTerminalTests('user:1', 'sid', 'linux', 'redirect-out');
     expect(res.status).toBe('passed');
-    expect(
-      res.checks.find((c) => c.messageKey === 'terminalTests.check.command_output')?.passed,
-    ).toBe(true);
+    const outputs = res.checks.filter((c) => c.messageKey === 'terminalTests.check.command_output');
+    expect(outputs.map((c) => c.passed)).toEqual([true, true]);
   });
 
   it('fails command_output when the produced output differs', async () => {
-    mockGetSessionView.mockReturnValue(view({ history: ['grep warning system.log'] }));
+    mockGetSessionView.mockReturnValue(
+      view({ history: ['grep critical sensors.log > report/alerts.txt'] }),
+    );
     mockDockerExec.mockResolvedValue(`0 O ${b64('nothing here')}\n`);
-    const res = await runTerminalTests('user:1', 'sid', 'linux', 'grep');
+    const res = await runTerminalTests('user:1', 'sid', 'linux', 'redirect-out');
     expect(res.status).toBe('failed');
   });
 
@@ -180,7 +208,10 @@ describe('runTerminalTests', () => {
     mockDockerExec.mockResolvedValue('0 P\n1 P\n2 P\n');
     const res = await runTerminalTests('user:1', 'sid', 'linux', 'chmod-numeric');
     expect(res.status).toBe('passed');
-    expect(res.checks.some((c) => c.messageKey === 'terminalTests.check.file_mode')).toBe(true);
+    const shown = res.checks.filter((c) => c.messageKey === 'terminalTests.check.file_mode');
+    expect(shown.length).toBeGreaterThan(0);
+    // The path only: the expected value can be the mission's answer.
+    for (const c of shown) expect(Object.keys(c.params ?? {})).toEqual(['path']);
   });
 
   it('covers the file_contains check message (stderr)', async () => {
@@ -197,7 +228,10 @@ describe('runTerminalTests', () => {
     mockDockerExec.mockResolvedValue('0 P\n1 P\n');
     const res = await runTerminalTests('user:1', 'sid', 'linux', 'stderr');
     expect(res.status).toBe('passed');
-    expect(res.checks.some((c) => c.messageKey === 'terminalTests.check.file_contains')).toBe(true);
+    const shown = res.checks.filter((c) => c.messageKey === 'terminalTests.check.file_contains');
+    expect(shown.length).toBeGreaterThan(0);
+    // The path only: the expected value can be the mission's answer.
+    for (const c of shown) expect(Object.keys(c.params ?? {})).toEqual(['path']);
   });
 
   it('covers dir_exists (mkdir) and path_absent (rm) checks', async () => {
@@ -259,6 +293,7 @@ describe('runTerminalTests', () => {
             { kind: 'command_output', cmd: 'true', expected: '' },
           ],
           forbids: [{ kind: 'command', pattern: 'rm\\s' }],
+          requires: [{ kind: 'command', pattern: '^(?=.*\\bls\\b)(?=.*-l)' }],
         }),
       );
     });
@@ -267,13 +302,16 @@ describe('runTerminalTests', () => {
     });
 
     it('handles an absolute path, an empty-data O verdict, and a pattern-only forbid', async () => {
-      mockGetSessionView.mockReturnValue(view({ history: ['ls'] }));
+      mockGetSessionView.mockReturnValue(view({ history: ['ls -l'] }));
       // Index 1 is an O verdict with no base64 payload -> decodes to ''.
       mockDockerExec.mockResolvedValue('0 P\n1 O\n');
       const res = await runTerminalTests('user:1', 'sid', 'linux', slug);
       expect(res.status).toBe('passed');
       const forbid = res.checks.find((c) => c.messageKey === 'terminalTests.forbid.command');
-      expect(forbid?.params?.name).toBe('rm\\s');
+      // Only the command's name, never the pattern that pins it.
+      expect(forbid?.params?.name).toBe('rm');
+      const require = res.checks.find((c) => c.messageKey === 'terminalTests.require.command');
+      expect(require).toMatchObject({ passed: true, params: { name: 'ls' } });
     });
   });
 
@@ -328,6 +366,73 @@ describe('runTerminalTests', () => {
         false,
       );
     });
+  });
+});
+
+describe('what a command rule shows', () => {
+  it('names a command, never a file or a word the pattern searches for', () => {
+    const wrong: string[] = [];
+    for (const { file, spec } of linuxSpecs()) {
+      for (const rule of [...(spec.requires ?? []), ...(spec.forbids ?? [])]) {
+        const label = ruleLabel(rule);
+        const command = /^[a-z][\w-]*$/.test(label) || label === '>' || label === '>>';
+        const fileName = rule.pattern?.includes(`${label}\\.`);
+        if (!command || fileName) wrong.push(`${path.basename(file)}: ${label}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+});
+
+describe('the kill lesson', () => {
+  it('takes every way of sending SIGKILL, and nothing politer', () => {
+    for (const lang of ['en', 'ro'] as const) {
+      const rule = loadTerminalTestsSpec('linux', 'kill', lang)!.requires![0];
+      const re = new RegExp(rule.pattern!);
+      for (const ok of [
+        'kill -9 31',
+        'kill -KILL 31',
+        'kill -SIGKILL 31',
+        'kill -s KILL 31',
+        'kill -s SIGKILL 31',
+        'kill -s 9 31',
+        'kill -n 9 31',
+        '/bin/kill --signal KILL 31',
+      ]) {
+        expect(re.test(ok), ok).toBe(true);
+      }
+      for (const no of ['kill 31', 'kill -15 31', 'kill -s TERM 31', 'pkill -9 nav-computer']) {
+        expect(re.test(no), no).toBe(false);
+      }
+    }
+  });
+});
+
+describe('what a check shows', () => {
+  it('shows a probe only by the one file it reads, never its search or count', () => {
+    expect(probedFile("grep -vc '^45.9.148.3 ' report/intruder.txt")).toBe('report/intruder.txt');
+    expect(probedFile('grep -c Fikus shop/clean.csv')).toBe('shop/clean.csv');
+    expect(probedFile('wc -l < report/not-found.txt')).toBe('report/not-found.txt');
+    expect(probedFile("tail -n 1 x/top.txt | awk '{print $11}'")).toBe('x/top.txt');
+    // Several paths can be what the student had to find
+    expect(probedFile('ls phone/2022 phone/2023 phone/2024')).toBeNull();
+    expect(probedFile("ps -eo args= | grep -c '^/usr/bin/nav-computer'")).toBeNull();
+  });
+
+  it('never hands over a probe or the original a copy is checked against', () => {
+    const leaks: string[] = [];
+    for (const { file, spec } of linuxSpecs()) {
+      for (const check of spec.checks ?? []) {
+        const shown = Object.values(checkMessage(check).params ?? {});
+        if (check.kind === 'command_output' && shown.some((v) => v === check.cmd)) {
+          leaks.push(`${path.basename(file)}: ${check.cmd}`);
+        }
+        if (check.kind === 'files_equal' && shown.includes(check.a)) {
+          leaks.push(`${path.basename(file)}: ${check.a}`);
+        }
+      }
+    }
+    expect(leaks).toEqual([]);
   });
 });
 

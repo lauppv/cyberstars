@@ -86,21 +86,54 @@ function scriptLine(check: TerminalCheck, i: number): string | null {
   }
 }
 
-function checkMessage(check: TerminalCheck): Omit<TerminalCheckResult, 'passed'> {
+// The file a command_output probe reads, when it reads exactly one: the first
+// command's words that look like a path, quoted text (a search) left out. A
+// probe of several paths can list what the student had to find (the years of
+// the photos), so it names none.
+export function probedFile(cmd: string): string | null {
+  const first = cmd.split(/\||&&|;/)[0].replace(/'[^']*'|"[^"]*"/g, ' ');
+  const paths = first
+    .split(/\s+/)
+    .slice(1)
+    .map((w) => w.replace(/^</, ''))
+    .filter((w) => w && !w.startsWith('-') && (w.includes('/') || /\.\w+$/.test(w)));
+  return paths.length === 1 ? paths[0] : null;
+}
+
+export function checkMessage(check: TerminalCheck): Omit<TerminalCheckResult, 'passed'> {
   const key = `terminalTests.check.${check.kind}`;
   switch (check.kind) {
+    // The copy only: the original can be the file the mission asks to find
     case 'files_equal':
+      return { messageKey: key, params: { b: check.b } };
     case 'dirs_equal':
       return { messageKey: key, params: { a: check.a, b: check.b } };
+    // The text a file must hold and the mode it must have stay out of the
+    // message: either can be the answer the mission asks the student to find.
     case 'file_contains':
-      return { messageKey: key, params: { path: check.path, text: check.text } };
     case 'file_mode':
-      return { messageKey: key, params: { path: check.path, mode: check.mode } };
-    case 'command_output':
-      return { messageKey: key, params: { cmd: check.cmd } };
+      return { messageKey: key, params: { path: check.path } };
+    // Never the probe itself, whose search, count or field can be the answer
+    case 'command_output': {
+      const file = probedFile(check.cmd);
+      return file
+        ? { messageKey: key, params: { path: file } }
+        : { messageKey: `${key}_plain`, params: {} };
+    }
     default:
       return { messageKey: key, params: { path: check.path } };
   }
+}
+
+// What a command rule shows the student: the command's name only, never the
+// pattern that pins its options and files, which would hand over the answer.
+// A pattern that doesn't open with its command carries it as `name`.
+export function ruleLabel(rule: TerminalCommandRule): string {
+  if (rule.name) return rule.name;
+  // A pattern may open with lookaheads that take the arguments in any order,
+  // `^(?=.*\bhead\b)(?=.*\b5\b)`: the first word it asks for is the command.
+  const pattern = (rule.pattern ?? '').replace(/^\^?(\(\?=\.\*)?(\\b)?/, '');
+  return pattern.match(/^[a-z][\w-]*/i)?.[0] ?? pattern.replace(/\\/g, '');
 }
 
 function ruleMatches(rule: TerminalCommandRule, history: string[]): boolean {
@@ -206,14 +239,14 @@ async function checkSession(
     results.push({
       passed: ruleMatches(rule, session.history),
       messageKey: 'terminalTests.require.command',
-      params: { name: rule.name ?? rule.pattern ?? '' },
+      params: { name: ruleLabel(rule) },
     });
   }
   for (const rule of spec.forbids ?? []) {
     results.push({
       passed: !ruleMatches(rule, session.history),
       messageKey: 'terminalTests.forbid.command',
-      params: { name: rule.name ?? rule.pattern ?? '' },
+      params: { name: ruleLabel(rule) },
     });
   }
 

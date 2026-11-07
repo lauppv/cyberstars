@@ -1,17 +1,14 @@
 ```bash
-find station -name "distress.log"
-grep -r "SOS" station
+find station -name distress.log
+grep -r SOS station
+mkdir rescue
+cp station/comms/relay/distress.log rescue/signal.log
 which grep
 ```
 
 ```text
-$ find station -name "distress.log"
-station/comms/distress.log
-
-$ grep -r "SOS" station
+station/comms/relay/distress.log
 station/comms/old.log:SOS test signal archived
-station/comms/distress.log:SOS from escape pod 4
-
-$ which grep
+station/comms/relay/distress.log:SOS from escape pod 4
 /usr/bin/grep
 ```

@@ -57,13 +57,13 @@ wrong.
 
 ## Mission: Unknown Data Probe
 
-A routine scan found a file called `mystery.dat` in your home directory. The extension is unfamiliar and nobody knows what it contains. Investigate it, then file it away properly.
+A routine scan found `mystery.dat` in your home directory. Nobody knows what it holds, and its name says nothing.
 
-1. Confirm that the basic listing tool (`ls`) is actually installed on this system.
-2. Identify what kind of data is really inside `mystery.dat`.
-3. It turns out to be plain readable text. Display its contents to see the message.
-4. Create a folder called `identified` and copy the file into it under the clearer name `readme.txt`.
+1. Before you trust the tools, find where the program that counts lines is installed.
+2. Find out what kind of data `mystery.dat` really holds, without opening it.
+3. If it turns out to be readable, read it.
+4. File it under a name that makes sense: a copy in a new `identified` folder as `readme.txt`.
 
 **Expected result**
 
-You see where `ls` lives, the inspection reveals `mystery.dat` is plain ASCII text despite its suspicious name, you read the message, and a copy sits in `identified/readme.txt` under a name that finally makes sense.
+You see where the line counter lives, what kind of file `mystery.dat` is and its message, and `identified/readme.txt` is a copy of it.

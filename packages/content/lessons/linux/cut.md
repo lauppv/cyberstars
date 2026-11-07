@@ -38,13 +38,11 @@ Extracts the second comma-separated column from a CSV stream.
 
 ## Mission: Cargo Manifest Quick-List
 
-The supply shuttle is docking in minutes and the deck officer needs a plain list of item names from `manifest.csv`: no quantities, no destinations, just the items.
+The supply shuttle docks in minutes. Look at how `manifest.csv` is laid out, then make two lists for the deck officer in a new `deck-office` folder:
 
-1. Use `cut` to extract **only the item names** (field 1) from the comma-delimited `manifest.csv`, and display them.
-2. Save that item list into a new file called `item-list.txt`.
-3. Create a folder called `deck-office` and move `item-list.txt` into it.
-4. Count how many items ended up on the list.
+- `item-list.txt` with only the item names, one per line;
+- `destinations.txt` with each item and where it goes, as the manifest writes them, but without the quantities.
 
 **Expected result**
 
-`deck-office/item-list.txt` holds the five item names, one per line, with no other columns.
+`deck-office/item-list.txt` holds the item names alone, and `deck-office/destinations.txt` the items with their destinations, nothing in between.

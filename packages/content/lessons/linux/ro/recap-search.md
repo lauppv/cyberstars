@@ -1,32 +1,18 @@
-Capitolul 4 te-a transformat într-un detectiv al stației. Trei unelte de căutare,
-trei întrebări diferite:
+Capitolul 4 a fost despre căutare: linii în fișiere, fișiere în foldere, programe în sistem.
 
-| Comandă | Întrebare                               |
-| ------- | --------------------------------------- |
-| `grep`  | „Care **linii** conțin acest cuvânt?”   |
-| `find`  | „Unde se află acest **fișier**?”        |
-| `which` | „Unde este instalat acest **program**?” |
-
-Reține opțiunile puternice: `grep -r` caută în arbori întregi, `grep -i` ignoră
-majusculele/minusculele, `grep -v` inversează; `find -name` potrivește după nume,
-`find -type` filtrează între fișiere și foldere.
+O căutare după felul greșit de lucru nu găsește nimic, așa că înainte de fiecare pas întreabă-te ce cauți.
 
 ---
 
-## Misiune: Urmărirea semnalului de salvare
+## Misiune: Urmărirea Semnalului de Salvare
 
-Un semnal de SOS slab vine de undeva din structura de directoare `statie`.
-Centrul de comandă are nevoie de tine ca să identifici sursa și să extragi fiecare
-transmisiune SOS.
+Un semnal de pericol slab vine de undeva din directorul `statie`. Comanda are nevoie să-l urmărești:
 
-1. Localizează fișierul numit `pericol.log` undeva în arborele de directoare `statie`.
-2. Caută în fiecare fișier din `statie`, în tot arborele, liniile care menționează
-   `SOS`.
-3. Confirmă unde este instalat programul `grep` pe sistem.
+1. Găsește fișierul numit `pericol.log`, oriunde ar sta în arborele `statie`.
+2. Găsește fiecare linie care pomenește `SOS` în orice fișier de sub `statie`, cu fișierul din care vine fiecare. Nu orice SOS e real: unul e un semnal vechi de test.
+3. Predă apelul real echipei de salvare: copiază jurnalul care ține SOS-ul real în `salvare/semnal.log`.
+4. Echipa de salvare vrea să ruleze aceeași căutare pe calculatorul ei: arată-le unde e instalat programul cu care ai căutat textul.
 
 **Rezultat așteptat**
 
-Fișierul de pericol se dovedește a fi `statie/comunicatii/pericol.log`. Căutarea
-recursivă arată două linii cu SOS distribuite în două fișiere din
-`statie/comunicatii/`, iar tu vezi calea către binarul `grep`. Coordonatele de
-salvare confirmate.
+Știi unde e `pericol.log` și care SOS e real, `salvare/semnal.log` e o copie a jurnalului cu apelul real, iar tu vezi calea programului de căutare.

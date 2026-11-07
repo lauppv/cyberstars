@@ -1,11 +1,12 @@
 ```bash
 find . -name secret.txt
-find . -name "*.log"
+find . -name "*.txt"
 mkdir copie-seif
 cp date/seif/secret.txt copie-seif/secret-backup.txt
 ```
 
 ```text
 ./date/seif/secret.txt
-./date/jurnale/rulare.log
+./documente/citeste-ma.txt
+./date/seif/secret.txt
 ```

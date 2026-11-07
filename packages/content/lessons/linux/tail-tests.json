@@ -1,11 +1,19 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "alerts" },
-    { "kind": "files_equal", "a": "system.log", "b": "alerts/incident.log" }
+    {
+      "kind": "files_equal",
+      "a": "system.log",
+      "b": "alerts/incident.log"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "head\\b.*\\b3\\b.*system\\.log" },
-    { "kind": "command", "pattern": "tail\\b.*\\b4\\b.*system\\.log" },
-    { "kind": "command", "name": "cp" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bhead\\b)(?=.*(^|\\D)3(\\D|$))(?=.*system\\.log)"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\btail\\b)(?=.*(^|\\D)4(\\D|$))(?=.*system\\.log)"
+    }
   ]
 }

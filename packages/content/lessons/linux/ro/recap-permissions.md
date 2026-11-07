@@ -1,28 +1,20 @@
-Capitolul 7 te-a învățat stratul de securitate al sistemului de fișiere al stației:
+Capitolul 7 a fost despre cine ce are voie să facă cu un fișier: să-i citești permisiunile, să le schimbi prin litere sau prin numere și să știi cine ești în sistem.
 
-| Comandă     | Scop                                         |
-| ----------- | -------------------------------------------- |
-| `ls -l`     | Vezi permisiunile și proprietarul            |
-| `chmod u+x` | Adaugă/elimină permisiuni (simbolic)         |
-| `chmod 755` | Setează toate permisiunile deodată (numeric) |
-| `whoami`    | Afișează numele tău de utilizator            |
-| `id`        | Afișează uid, gid și grupurile               |
-
-Reține triada de permisiuni: **user → group → others**, fiecare cu `r`, `w`, `x`.
-Numeric: r=4, w=2, x=1. Adună-le pe grup.
+Uită-te la permisiunile unui fișier înainte să le schimbi, și încă o dată după.
 
 ---
 
-## Misiune: Protocol de izolare
+## Misiune: Protocol de Izolare
 
-A fost detectată o breșă de securitate pe puntea 3. Căpitanul a emis un ordin de izolare: trei fișiere din directorul tău trebuie să aibă permisiunile restrânse imediat.
+A fost detectată o breșă de securitate pe puntea 3, iar căpitanul a ordonat izolarea fiecărui fișier din directorul tău personal. Protocolul împarte fișierele în patru feluri:
 
-1. `coduri_lansare.txt`: Strict secret. Doar proprietarul poate citi și scrie; grupul și ceilalți nu au niciun acces.
-2. `status_raport.sh`: Script operațional. Proprietarul primește acces complet, grupul poate citi și executa, iar ceilalți nimic.
-3. `public_buletin.txt`: Buletin pentru întreaga stație. Toți pot citi, dar doar proprietarul poate scrie.
+- **Secret**: doar proprietarul îl citește și îl scrie; nimeni altcineva nu primește nimic.
+- **Script**: proprietarul poate face orice, grupul îl poate citi și rula, ceilalți nimic.
+- **Intern**: proprietarul îl citește și îl scrie, grupul îl poate citi, ceilalți nimic.
+- **Public**: toată lumea îl poate citi, doar proprietarul îl poate scrie.
 
-Setează permisiunile fiecărui fișier în consecință, apoi confirmă rezultatul.
+Uită-te la fiecare fișier, hotărăște de ce fel e și dă-i accesul acela.
 
 **Rezultat așteptat**
 
-Cele trei fișiere ajung să fie `-rw-------` pentru `coduri_lansare.txt`, `-rwxr-x---` pentru `status_raport.sh` și `-rw-r--r--` pentru `public_buletin.txt`. Izolare completă.
+Fiecare fișier din directorul tău personal are exact accesul felului său.

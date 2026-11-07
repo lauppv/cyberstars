@@ -32,13 +32,8 @@ patterns can be regex (`/word/`) or conditions (`$2 == "alpha"`).
 
 ## Mission: Cargo Weight Report
 
-The station is approaching a gravity-assist manoeuvre and the pilot needs a full cargo mass report. The file `cargo_weight.txt` lists each item and its weight in column 2.
-
-1. Add up every weight in column 2 and print the combined total.
-2. Save that total into a new file called `total-weight.txt`.
-3. List only the heavy items (those with a weight above 100), showing the name and the weight.
-4. Create a folder called `flight-deck` and move `total-weight.txt` into it.
+The station is approaching a gravity-assist manoeuvre and the pilot needs the cargo mass. `cargo_weight.txt` lists each item with its weight. In a new `flight-deck` folder, save the combined weight of all the cargo, the number alone, as `total-weight.txt`, and every item heavier than 100 with its weight as `heavy.txt`.
 
 **Expected result**
 
-`flight-deck/total-weight.txt` holds the combined weight of all cargo items (`610`).
+`flight-deck/total-weight.txt` holds one number, and `flight-deck/heavy.txt` only the items over 100, each with its weight.

@@ -36,12 +36,8 @@ mentioned?" `grep` answers it instantly.
 
 ## Mission: Warning Scan
 
-The station commander wants a quick briefing on the warnings logged during this shift, and a copy of the log filed for the record. The event log is in `system.log`.
-
-1. Print only the lines that contain the word `warning`.
-2. Run a second search for the lines that contain `error`.
-3. Create a folder called `scan` and copy `system.log` into it as `shift.log` for the record.
+The station commander wants a quick briefing from this shift's event log, `system.log`: every line that is a `warning`, and, in a second search, everything the log says about the sensors. File a copy of the log for the record as `scan/shift.log`.
 
 **Expected result**
 
-The warning lines appear, then the error line, and the `scan` folder holds a copy of the shift log.
+You see only the warning lines, then only the lines about sensors, and the copy in `scan` reads like the original.

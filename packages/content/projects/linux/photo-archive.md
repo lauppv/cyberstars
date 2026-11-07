@@ -8,82 +8,26 @@ Every photo's name says when it was taken: `IMG_20230715_183040.jpg` is from 202
 
 ## Look at what came off the phone
 
-The photos are in `~/phone`. Go there and count them with `ls` and `wc -l`: there are 16.
-
-The first three letters of a name tell which app made it: `IMG` the old camera app, `PXL` the camera app after an update, `Scr` a screenshot. Count how many of each with `cut -c1-3`, `sort` and `uniq -c`:
-
-```text
-      7 IMG
-      6 PXL
-      3 Scr
-```
+The photos are in `~/phone`. How many are there? The first three letters of a name tell which app made it: `IMG` the old camera app, `PXL` the camera app after an update, `Scr` a screenshot. Find out how many photos each app made, without counting by hand.
 
 ## Set the screenshots aside
 
-Screenshots aren't memories: they are bus tickets and recipes. Make a folder `~/screenshots` next to `phone` (not inside it) and move all three there with one `mv` and a wildcard. `ls | wc -l` in `phone` now prints `13`.
+Screenshots aren't memories: they are bus tickets and recipes. Move all of them, in one command, to a folder `~/screenshots` next to `phone`, not inside it.
 
 ## A folder per year
 
-In `phone`, make the folders `2022`, `2023` and `2024` with one `mkdir`. Then move each photo into its year: a wildcard such as `*_2023*` matches every name with `_2023` in it, whatever the app. Three `mv` commands do it all.
-
-`ls` shows only the three folders, and `ls 2023` the six photos of that year:
-
-```text
-IMG_20230402_121010.jpg
-IMG_20230715_183040.jpg
-IMG_20230716_101522.jpg
-IMG_20230803_095847.jpg
-PXL_20230806_160212.jpg
-PXL_20231031_190455.jpg
-```
+The names also hold the date each photo was taken. In `phone`, make a folder for every year the photos cover, named after the year, and move each photo into its year. Nothing stays loose in `phone`.
 
 ## The summer album
 
-Grandma wants the seaside holiday of July and August 2023 in an album of its own, to show her friends. Make `~/albums/summer-2023` with one `mkdir` (its `-p` makes `albums` too), then **copy** the photos of those two months into it, so they stay in `2023` as well. A wildcard such as `2023/*_202307*` picks July.
-
-```text
-IMG_20230715_183040.jpg
-IMG_20230716_101522.jpg
-IMG_20230803_095847.jpg
-PXL_20230806_160212.jpg
-```
+Grandma wants the seaside holiday of July and August 2023 in an album of its own, `~/albums/summer-2023`; the `albums` folder doesn't exist yet. Put the photos of those two months in it, and keep them in `2023` as well.
 
 ## The index
 
-Write a list of every photo in the archive to `~/index.txt`, so grandma can print it: `find` with `-type f` from inside `phone`, sorted.
-
-```text
-./2022/IMG_20220611_174402.jpg
-./2022/IMG_20220612_090115.jpg
-./2022/IMG_20221224_201933.jpg
-./2023/IMG_20230402_121010.jpg
-./2023/IMG_20230715_183040.jpg
-./2023/IMG_20230716_101522.jpg
-./2023/IMG_20230803_095847.jpg
-./2023/PXL_20230806_160212.jpg
-./2023/PXL_20231031_190455.jpg
-./2024/PXL_20240101_000312.jpg
-./2024/PXL_20240214_131700.jpg
-./2024/PXL_20240722_082236.jpg
-./2024/PXL_20240723_154410.jpg
-```
-
-Then check that nothing got lost on the way: `find . -type f | wc -l` counts 13, the 16 from the phone minus the 3 screenshots.
+Write a list of every photo in the archive to `~/index.txt`, so grandma can print it: one path per line as seen from inside `phone`, so each starts with `./`, in alphabetical order. Then check that nothing got lost on the way: the archive holds every photo from the phone except the screenshots.
 
 ## Lock the archive
 
-The year folders should never change again. Take away everyone's right to write to them and to everything inside, with `chmod` and its `-R` option: `a-w` takes write away from all three groups.
+The year folders should never change again. Take away everyone's right to write to them and to everything inside them, and leave every other permission as it was. Then try to delete a photo by mistake, and check that it is still there.
 
-`ls -ld 2023` shows the folder without its `w`:
-
-```text
-dr-xr-xr-x 2 student student 4096 Nov  7 09:38 2023
-```
-
-Now try to delete a photo by mistake:
-
-```text
-rm: cannot remove '2023/IMG_20230402_121010.jpg': Permission denied
-```
-
-Without write permission on the folder, nothing can be removed from it, added to it or renamed in it. `ls 2023 | wc -l` still prints `6`. The album isn't locked, so grandma can still add to it.
+The album isn't locked, so grandma can still add to it.

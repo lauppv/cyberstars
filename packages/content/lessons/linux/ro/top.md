@@ -34,18 +34,10 @@ practic.
 
 ---
 
-## Misiune: Vânătoare după procesul scăpat de sub control
+## Misiune: Vânătoarea Procesului Scăpat de Sub Control
 
-Computerul principal al stației se încălzește, iar puntea vrea un raport scris
-despre vinovat înainte ca alarmele termice să se declanșeze.
-
-1. Listează toate procesele sortate după consumul de CPU, cu cel mai mare primul.
-2. Capturează vârful acelei liste sortate (linia de antet plus singurul proces cel
-   mai lacom) într-un fișier numit `vinovat-principal.txt`.
-3. Creează un folder numit `raport-cpu` și mută `vinovat-principal.txt` în el.
-4. Afișează fișierul salvat pentru a confirma care program este vinovatul.
+Calculatorul principal al stației rămâne fără memorie, iar puntea vrea un raport scris despre vinovat înainte să pornească alarmele. Salvează linia de titlu a listei de procese și singurul proces care ține cea mai multă memorie, nimic altceva, ca `raport-memorie/vinovat-principal.txt`.
 
 **Rezultat așteptat**
 
-`raport-cpu/vinovat-principal.txt` indică `/usr/bin/reactor-monitor` drept cel mai
-mare consumator de CPU.
+`raport-memorie/vinovat-principal.txt` are două linii: titlul listei de procese și procesul care ține cea mai multă memorie.

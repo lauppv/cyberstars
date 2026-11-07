@@ -1,13 +1,25 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "evidente-schimb" },
-    { "kind": "file_exists", "path": "evidente-schimb/jurnal-schimb.txt" }
+    {
+      "kind": "command_output",
+      "cmd": "wc -l < evidente-schimb/jurnal-schimb.txt",
+      "expected": "2"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "head -n 1 evidente-schimb/jurnal-schimb.txt | grep -c ' 20[0-9][0-9]$'",
+      "expected": "1"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "tail -n 1 evidente-schimb/jurnal-schimb.txt | grep -c 'load average'",
+      "expected": "1"
+    }
   ],
   "requires": [
-    { "kind": "command", "name": "date" },
-    { "kind": "command", "name": "uptime" },
-    { "kind": "command", "name": "history" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "name": "history"
+    }
   ]
 }

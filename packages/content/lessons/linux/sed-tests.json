@@ -3,14 +3,13 @@
     {
       "kind": "command_output",
       "cmd": "cat records/report-clean.txt",
-      "expected": "Test 1: PASS\nTest 2: PASS\nTest 3: PASS\nTest 4: PASS\nTest 5: PASS"
-    },
-    { "kind": "dir_exists", "path": "records" }
+      "expected": "Test 1: PASS\nTest 2: PASS (retest)\nTest 3: PASS\nTest 4: PASS (retest)\nTest 5: PASS (retest)"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "sed\\b.*s/FAIL/PASS/g.*report\\.txt" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "grep\\b.*-c\\b.*PASS" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bsed\\b)(?=.*FAIL)(?=.*report\\.txt)"
+    }
   ]
 }

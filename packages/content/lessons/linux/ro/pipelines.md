@@ -43,15 +43,10 @@ Dacă ceva nu merge, scoate ultimul pipe și inspectează rezultatul intermediar
 
 ---
 
-## Misiune: Briefing-ul alertelor prioritare
+## Misiune: Briefing cu Alertele Prioritare
 
-Echipajul de pe punte are nevoie de un briefing rapid: doar cele mai urgente două alerte din jurnalul de evenimente al zilei, sortate alfabetic, ca să le poată confrunta cu lista de tură.
-
-1. Construiește un pipeline care citește `evenimente.log`, păstrează doar liniile care conțin `alert`, le sortează alfabetic și afișează doar **primele 2** rezultate. Înlănțuie cel puțin 3 pipe-uri.
-2. Trimite acel briefing de două linii într-un fișier numit `briefing.txt`.
-3. Creează un folder numit `punte` și mută `briefing.txt` în el.
-4. Într-un pipeline separat, numără câte linii `alert` conține jurnalul complet.
+Echipajul de pe punte are nevoie de un briefing din `evenimente.log` de azi: doar liniile `alert`, în ordine alfabetică, și doar primele două dintre ele. Salvează-l ca `punte/briefing.txt`, făcut într-o singură linie direct din jurnal, fără nimic salvat între pași.
 
 **Rezultat așteptat**
 
-`punte/briefing.txt` conține cele două linii `alert`, sortate.
+`punte/briefing.txt` ține două linii de alertă, primele două în ordine alfabetică.

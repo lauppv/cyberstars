@@ -1,14 +1,10 @@
 ```bash
-cat transmisii.log | grep mayday
-cat transmisii.log | grep mayday > pericol.txt
 mkdir centru-comanda
-mv pericol.txt centru-comanda/
-wc -l centru-comanda/pericol.txt
+grep mayday transmisii.log > centru-comanda/pericol.txt
+cat transmisii.log | grep mayday | wc -l > centru-comanda/numar.txt
+cat centru-comanda/numar.txt
 ```
 
 ```text
-mayday: defectiune motor pod 9
-mayday: scurgere de oxigen sectorul 4
-mayday: avertizare coliziune centura de asteroizi
-3 centru-comanda/pericol.txt
+3
 ```

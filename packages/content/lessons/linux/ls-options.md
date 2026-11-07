@@ -53,11 +53,8 @@ You can write it as `ls -la`, `ls -al`, or `ls -l -a`: all the same.
 
 ## Mission: Uncover Hidden Files
 
-Station security has flagged a hidden file somewhere in your home directory, and they also want a detailed look inside the `reports` folder. Regular scans missed the hidden file because hidden files do not show up in a plain listing.
-
-1. List **all** items here (including hidden ones) in **long** format, in a single command.
-2. Then inspect just the `reports` folder in long format.
+Station security says a file is hiding in your home directory, where a plain listing doesn't show it. They want a single command that lists your home directory with every item, the hidden ones too, and tells the files from the folders. Then they want the same details for what is inside `reports`, without you going in.
 
 **Expected result**
 
-You see every item (including the hidden file starting with `.`) with details showing which entries are files and which are directories, plus a detailed listing of what lives inside `reports`.
+You can name the hidden file, say which entries are folders, and give the size of the file kept in `reports`.

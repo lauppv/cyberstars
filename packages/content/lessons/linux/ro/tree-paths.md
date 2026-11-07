@@ -52,14 +52,10 @@ Folosește `pwd` pentru a vedea locația ta absolută și `tree` pentru a vedea 
 
 ---
 
-## Misiune: Cartografiază Stația
+## Misiune: Harta Stației
 
-Înainte de a începe reparațiile, ai nevoie de o hartă completă a sistemului de fișiere, apoi să parcurgi una dintre ramurile lui pentru a ajunge la arhiva de rapoarte.
-
-1. Vezi întreaga structură de directoare dintr-o privire.
-2. Folosind o cale relativă, intră în `rapoarte`, apoi confirmă că ai ajuns în `/home/student/rapoarte`.
-3. De acolo, listează folderul vecin `unelte` fără să te muți, printr-o cale relativă care urcă un nivel.
+Înainte de reparații ai nevoie de o hartă. Desenează toată structura de sub directorul tău personal, apoi intră în arhiva de rapoarte cu o cale relativă. De acolo, fără să te muți, listează folderul care ține scriptul de lansare, cu o cale care pornește de unde stai.
 
 **Rezultat așteptat**
 
-Harta arborescentă arată fiecare fișier și folder, poziția ta confirmă că ești în `rapoarte`, iar ultima listare scoate la iveală `lansare.sh` din `unelte`.
+Termini în arhiva de rapoarte, iar ultima ta listare arată scriptul de lansare în folderul lui.

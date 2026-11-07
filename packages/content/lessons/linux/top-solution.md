@@ -1,12 +1,10 @@
 ```bash
-ps aux --sort=-%cpu
-ps aux --sort=-%cpu | head -n 2 > top-offender.txt
-mkdir cpu-report
-mv top-offender.txt cpu-report/
-cat cpu-report/top-offender.txt
+mkdir memory-report
+ps aux --sort=-%mem | head -n 2 > memory-report/top-offender.txt
+cat memory-report/top-offender.txt
 ```
 
 ```text
-USER       PID %CPU %MEM  ...  COMMAND
-root        42  8.2  1.4  ...  /usr/bin/reactor-monitor --port=7700
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+student       18  0.9  0.1  44076 40612 ?        SN   10:00   0:00 /usr/bin/reactor-monitor --port=7700
 ```

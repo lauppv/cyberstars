@@ -1,16 +1,14 @@
 ```bash
-cut -d, -f1 manifest.csv
-cut -d, -f1 manifest.csv > lista-articole.txt
 mkdir birou-punte
-mv lista-articole.txt birou-punte/
-wc -l birou-punte/lista-articole.txt
+cut -d, -f1 manifest.csv > birou-punte/lista-articole.txt
+cut -d, -f1,3 manifest.csv > birou-punte/destinatii.txt
+cat birou-punte/destinatii.txt
 ```
 
 ```text
-rezervoare_oxigen
-pachete_ratii
-truse_medicale
-baterii
-filtre_apa
-5 birou-punte/lista-articole.txt
+rezervoare_oxigen,deck1
+pachete_ratii,deck3
+truse_medicale,infirmerie
+baterii,inginerie
+filtre_apa,suport_vital
 ```
