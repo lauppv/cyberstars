@@ -42,15 +42,13 @@ Dacă nu ești proprietarul unui fișier și nu faci parte din grupul lui, ți s
 
 ---
 
-## Misiune: Verificarea identității
+## Misiune: Verificarea Identității
 
-Un document clasificat a fost găsit în directorul tău home. Înainte ca cineva să-l poată accesa, protocolul stației cere să-ți înregistrezi identitatea și să blochezi fișierul.
+În directorul tău personal a apărut un document clasificat. Protocolul stației: notezi cine ești înainte să-l atingi, apoi îl securizezi.
 
-1. Confirmă numele tău de utilizator.
-2. Salvează detaliile complete ale identității tale, inclusiv grupurile, într-un fișier numit `identitate.txt`.
-3. Blochează `clasificat.doc` astfel încât doar proprietarul să îl poată citi și modifica, iar nimeni altcineva să nu aibă acces.
-4. Creează un folder numit `verificare-id` și mută `identitate.txt` în el.
+1. Scrie jurnalul `verificare-id/identitate.txt`: numele tău de utilizator singur pe prima linie, apoi identitatea ta completă cu grupurile.
+2. Fă `clasificat.doc` să poată fi citit și scris doar de proprietar, fără niciun acces pentru altcineva.
 
 **Rezultat așteptat**
 
-`verificare-id/identitate.txt` conține detaliile identității tale, iar `clasificat.doc` este `-rw-------`.
+`verificare-id/identitate.txt` începe cu numele tău de utilizator și continuă cu id-urile tale de utilizator și de grup, iar doar tu poți deschide `clasificat.doc`.

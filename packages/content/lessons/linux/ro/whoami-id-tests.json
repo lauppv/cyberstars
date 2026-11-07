@@ -1,14 +1,29 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "verificare-id" },
-    { "kind": "file_exists", "path": "verificare-id/identitate.txt" },
-    { "kind": "file_mode", "path": "clasificat.doc", "mode": "600" }
+    {
+      "kind": "command_output",
+      "cmd": "head -n 1 verificare-id/identitate.txt",
+      "expected": "student"
+    },
+    {
+      "kind": "file_contains",
+      "path": "verificare-id/identitate.txt",
+      "text": "groups="
+    },
+    {
+      "kind": "file_mode",
+      "path": "clasificat.doc",
+      "mode": "600"
+    }
   ],
   "requires": [
-    { "kind": "command", "name": "whoami" },
-    { "kind": "command", "name": "id" },
-    { "kind": "command", "name": "chmod" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bwhoami\\b)(?=.*>)"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bid\\b)(?=.*>>)"
+    }
   ]
 }

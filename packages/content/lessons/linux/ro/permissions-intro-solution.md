@@ -1,14 +1,13 @@
 ```bash
-ls -l
-ls -l > audit.txt
 mkdir raport-audit
-mv audit.txt raport-audit/
-wc -l raport-audit/audit.txt
+ls -l > raport-audit/audit.txt
+cat raport-audit/audit.txt
 ```
 
 ```text
--rwxr-xr-x 1 student student   48 Jan 10 08:00 diagnostic.sh
--rw-r--r-- 1 student student   20 Jan 10 08:00 manifest.dat
--rw-r--r-- 1 student student   48 Jan 10 08:00 notite.txt
-4 raport-audit/audit.txt
+total 12
+-rw-r--r-- 1 student student 42 May 16 10:00 diagnostic.sh
+-rw-r--r-- 1 student student 20 May 16 10:00 manifest.dat
+-rw-r--r-- 1 student student 30 May 16 10:00 notite.txt
+drwxr-xr-x 2 student student 60 May 16 10:00 raport-audit
 ```

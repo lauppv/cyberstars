@@ -33,15 +33,15 @@ Forma numerică setează **toate** permisiunile deodată: nu există „adaugă"
 
 ---
 
-## Misiune: Securizează scriptul propulsorului
+## Misiune: Securizează Scriptul Propulsorului
 
-Scriptul `control_motor.sh` aprinde propulsorul principal și vine împreună cu un `citeste-ma.txt`. Politica de securitate a stației stabilește niveluri de acces stricte pentru ambele.
+`control_motor.sh` pornește propulsorul principal și vine cu `citeste-ma.txt`. Securitatea stației stabilește accesul fiecărui fișier dintr-un singur pas, pentru toate cele trei grupuri deodată:
 
-1. Setează permisiunile pe `control_motor.sh` astfel încât proprietarul să aibă acces complet, grupul să îl poată citi și rula, iar ceilalți să nu aibă nimic.
-2. Setează permisiunile pe `citeste-ma.txt` astfel încât proprietarul să îl poată citi și modifica, iar grupul și ceilalți doar să îl poată citi.
-3. Creează un folder numit `sala-motoare` și mută ambele fișiere în el.
-4. Afișează listarea detaliată a folderului pentru a confirma permisiunile.
+- `control_motor.sh`: proprietarul poate face orice, grupul îl poate citi și rula, ceilalți nimic.
+- `citeste-ma.txt`: proprietarul îl poate citi și modifica, grupul doar citi, ceilalți nimic.
+
+Apoi mută-le pe amândouă într-un folder nou `sala-motoare`.
 
 **Rezultat așteptat**
 
-În `sala-motoare`, `control_motor.sh` este `-rwxr-x---`, iar `citeste-ma.txt` este `-rw-r--r--`.
+Ambele fișiere stau în `sala-motoare` exact cu accesul de mai sus.

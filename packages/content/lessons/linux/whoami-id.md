@@ -48,13 +48,11 @@ to you. Understanding your identity helps you predict what you can and cannot do
 
 ## Mission: Identity Verification
 
-A classified document was found in your home directory. Before anyone can access it, station protocol requires you to log your identity and lock the file down.
+A classified document turned up in your home directory. Station protocol: log who you are before you touch it, then lock it down.
 
-1. Confirm your username.
-2. Save your full identity details, including your groups, into a file called `identity.txt`.
-3. Lock down `classified.doc` so only the owner can read and write it, and no one else has any access.
-4. Create a folder called `id-check` and move `identity.txt` into it.
+1. Write the log `id-check/identity.txt`: your username alone on the first line, then your full identity with your groups.
+2. Make `classified.doc` readable and writable by its owner only, with no access for anyone else.
 
 **Expected result**
 
-`id-check/identity.txt` holds your identity details, and `classified.doc` is `-rw-------`.
+`id-check/identity.txt` starts with your username and goes on with your user and group ids, and only you can open `classified.doc`.

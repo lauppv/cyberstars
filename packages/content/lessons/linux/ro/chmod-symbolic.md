@@ -40,15 +40,10 @@ După fiecare `chmod`, verifică cu `ls -l` ca să confirmi că schimbarea a avu
 
 ---
 
-## Misiune: Activează deployerul de firmware
+## Misiune: Activează Programul de Lansare
 
-O actualizare critică de firmware este pregătită în `lansare.sh`, dar scriptul nu poate rula încă și conține setări sensibile pe care străinii nu ar trebui să le citească niciodată.
-
-1. Dă proprietarului permisiunea de a rula `lansare.sh` ca program.
-2. Elimină accesul de citire pentru ceilalți pe `lansare.sh`, ca străinii să nu îl poată vedea.
-3. Confirmă schimbările afișând permisiunile detaliate ale fișierului.
-4. Creează un folder numit `gata-lansare` și copiază `lansare.sh` în el.
+O actualizare de firmware așteaptă în `lansare.sh`, dar nu poate rula încă și conține setări pe care străinii nu trebuie să le citească niciodată. Schimbă doar ce trebuie schimbat: proprietarul primește dreptul să-l ruleze, iar toți cei din afara proprietarului și a grupului pierd dreptul să-l citească. Toate celelalte permisiuni rămân cum sunt. Apoi pune o copie într-un folder nou `gata-lansare`.
 
 **Rezultat așteptat**
 
-`lansare.sh` poate fi executat de proprietar și nu poate fi citit de ceilalți, iar o copie se află în `gata-lansare`.
+`lansare.sh` poate fi rulat de proprietar și nu poate fi citit de ceilalți, celelalte permisiuni sunt neatinse, iar o copie stă în `gata-lansare`.

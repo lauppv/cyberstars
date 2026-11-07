@@ -1,13 +1,12 @@
 ```bash
-whoami
-id
-id > identitate.txt
-chmod 600 clasificat.doc
 mkdir verificare-id
-mv identitate.txt verificare-id/
+whoami > verificare-id/identitate.txt
+id >> verificare-id/identitate.txt
+chmod 600 clasificat.doc
+cat verificare-id/identitate.txt
 ```
 
 ```text
 student
-uid=1000(student) gid=1000(echipaj) groups=1000(echipaj),27(sudo)
+uid=1000(student) gid=1000(student) groups=1000(student)
 ```

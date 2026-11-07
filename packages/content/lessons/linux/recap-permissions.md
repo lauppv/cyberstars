@@ -15,14 +15,15 @@ Numeric: r=4, w=2, x=1. Add them up per group.
 
 ## Mission: Lockdown Protocol
 
-A security breach was detected on deck 3. The captain has issued a lockdown order: three files in your directory need their permissions tightened immediately.
+A security breach was detected on deck 3, and the captain has ordered a lockdown of every file in your home directory. The protocol sorts files into four kinds:
 
-1. `launch_codes.txt`: Top secret. Only the owner may read and write it; the group and others get no access at all.
-2. `status_report.sh`: Operational script. The owner gets full access, the group can read and execute it, and others get nothing.
-3. `public_bulletin.txt`: Station-wide bulletin. Everyone can read it, but only the owner can write.
+- **Secret**: only the owner reads and writes it; nobody else gets anything.
+- **Script**: the owner can do everything, the group can read and run it, others get nothing.
+- **Internal**: the owner reads and writes it, the group can read it, others get nothing.
+- **Public**: everyone can read it, only the owner can write it.
 
-Set each file's permissions accordingly, then confirm the result.
+Look at each file, decide which kind it is, and give it that access.
 
 **Expected result**
 
-The three files end up as `-rw-------` for `launch_codes.txt`, `-rwxr-x---` for `status_report.sh`, and `-rw-r--r--` for `public_bulletin.txt`. Lockdown complete.
+Every file in your home directory has exactly the access of its kind.

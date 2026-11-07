@@ -34,13 +34,8 @@ For directories: `r` = list contents, `w` = add/remove files, `x` = enter (`cd`)
 
 ## Mission: Security Audit
 
-The station commander has ordered a permissions audit on your workstation and wants a written record filed away.
-
-1. Display the full permission details for every file in your home directory.
-2. Save that detailed listing into a new file called `audit.txt`.
-3. Create a folder called `audit-report` and move `audit.txt` into it.
-4. Count how many lines the saved audit contains.
+The station commander has ordered a permissions audit of your workstation. File the record as `audit-report/audit.txt`: for every file in your home directory, its type, its permissions, its owner and its size, straight from the system, not typed by hand.
 
 **Expected result**
 
-`audit-report/audit.txt` holds the permission listing for every file in your home directory.
+`audit-report/audit.txt` lists every file in your home directory with its permission string, owner and size.

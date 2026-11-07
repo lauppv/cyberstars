@@ -1,12 +1,24 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "engine-bay" },
-    { "kind": "file_mode", "path": "engine-bay/engine_control.sh", "mode": "750" },
-    { "kind": "file_mode", "path": "engine-bay/readme.txt", "mode": "644" }
+    {
+      "kind": "dir_exists",
+      "path": "engine-bay"
+    },
+    {
+      "kind": "file_mode",
+      "path": "engine-bay/engine_control.sh",
+      "mode": "750"
+    },
+    {
+      "kind": "file_mode",
+      "path": "engine-bay/readme.txt",
+      "mode": "640"
+    }
   ],
   "requires": [
-    { "kind": "command", "name": "chmod" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bchmod\\b)(?=.*\\b[0-7]{3}\\b)"
+    }
   ]
 }

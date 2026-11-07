@@ -42,13 +42,8 @@ After each `chmod`, verify with `ls -l` to confirm the change took effect.
 
 ## Mission: Activate the Firmware Deployer
 
-A critical firmware update is ready in `deploy.sh`, but the script cannot run yet, and it also carries sensitive settings that outsiders should never read.
-
-1. Give the owner permission to run `deploy.sh` as a program.
-2. Remove read access from others on `deploy.sh` so outsiders cannot view it.
-3. Confirm the changes by viewing the file's detailed permissions.
-4. Create a folder called `deploy-ready` and copy `deploy.sh` into it.
+A firmware update is ready in `deploy.sh`, but it can't run yet, and it carries settings outsiders must never read. Change only what has to change: the owner gets to run it, and everyone outside the owner and the group loses the right to read it. Every other permission stays as it is. Then put a copy in a new `deploy-ready` folder.
 
 **Expected result**
 
-`deploy.sh` is executable by the owner and unreadable by others, and a copy sits in `deploy-ready`.
+`deploy.sh` can be run by its owner and can't be read by others, its other permissions are untouched, and a copy sits in `deploy-ready`.

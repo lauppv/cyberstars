@@ -12,6 +12,11 @@
     },
     {
       "kind": "file_mode",
+      "path": "lista_echipaj.txt",
+      "mode": "640"
+    },
+    {
+      "kind": "file_mode",
       "path": "public_buletin.txt",
       "mode": "644"
     }

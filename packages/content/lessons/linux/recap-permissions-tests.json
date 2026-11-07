@@ -12,6 +12,11 @@
     },
     {
       "kind": "file_mode",
+      "path": "crew_roster.txt",
+      "mode": "640"
+    },
+    {
+      "kind": "file_mode",
       "path": "public_bulletin.txt",
       "mode": "644"
     }

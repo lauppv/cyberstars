@@ -32,15 +32,10 @@ Pentru directoare: `r` = listezi conținutul, `w` = adaugi/ștergi fișiere, `x`
 
 ---
 
-## Misiune: Audit de securitate
+## Misiune: Auditul de Securitate
 
-Comandantul stației a ordonat un audit al permisiunilor pe stația ta de lucru și vrea o evidență scrisă arhivată.
-
-1. Afișează detaliile complete ale permisiunilor pentru fiecare fișier din directorul tău home.
-2. Salvează acea listare detaliată într-un fișier nou numit `audit.txt`.
-3. Creează un folder numit `raport-audit` și mută `audit.txt` în el.
-4. Numără câte linii conține auditul salvat.
+Comandantul stației a ordonat un audit al permisiunilor pe stația ta de lucru. Păstrează raportul ca `raport-audit/audit.txt`: pentru fiecare fișier din directorul tău personal, tipul, permisiunile, proprietarul și mărimea lui, direct din sistem, nu scrise de mână.
 
 **Rezultat așteptat**
 
-`raport-audit/audit.txt` conține listarea permisiunilor pentru fiecare fișier din directorul tău home.
+`raport-audit/audit.txt` listează fiecare fișier din directorul tău personal cu șirul lui de permisiuni, proprietarul și mărimea.

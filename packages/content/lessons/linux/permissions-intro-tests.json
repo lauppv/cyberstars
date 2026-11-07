@@ -1,12 +1,20 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "audit-report" },
-    { "kind": "file_exists", "path": "audit-report/audit.txt" }
+    {
+      "kind": "file_contains",
+      "path": "audit-report/audit.txt",
+      "text": "diagnostics.sh"
+    },
+    {
+      "kind": "file_contains",
+      "path": "audit-report/audit.txt",
+      "text": "-rw-r--r--"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "ls\\b.*-l" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "wc\\b.*-l" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bls\\b)(?=.* -\\S*l)(?=.*>)"
+    }
   ]
 }
