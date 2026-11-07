@@ -107,6 +107,8 @@ const RO: Record<string, string> = {
   'Each poll option only once': 'Fiecare variantă o singură dată',
   'Invalid poll ID': 'Sondaj invalid',
   'Poll not found': 'Sondajul nu există',
+  'Project not found': 'Proiectul nu există',
+  'Step not found': 'Pasul nu există',
   'Pick at least one option': 'Alege cel puțin o variantă',
   'Pick options from this poll': 'Alege variante din acest sondaj',
   'You already voted in this poll': 'Ai votat deja la acest sondaj',

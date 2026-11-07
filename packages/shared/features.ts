@@ -6,7 +6,8 @@ export type FeatureKey =
   | 'messaging'
   | 'notifications'
   | 'connections'
-  | 'tutorChat';
+  | 'tutorChat'
+  | 'projects';
 
 // Features that are "preview": live in the code, but on production only ADMINs
 // can reach them; everyone else sees a "Coming Soon" treatment and the routes
@@ -19,6 +20,7 @@ export const PREVIEW_FEATURES: PreviewFlags<FeatureKey> = {
   notifications: false,
   connections: false,
   tutorChat: false,
+  projects: true,
 };
 
 // Shared access rule (the access package's, over CyberStars' features and its

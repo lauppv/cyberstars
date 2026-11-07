@@ -134,6 +134,7 @@ model User {
   usageWindows       UsageWindow[]
   laniakeaPlanets    LaniakeaPlanet[]
   laniakeaPasses     LaniakeaPass[]
+  projectChecks      ProjectStepCheck[]
   laniakeaPlayer     LaniakeaPlayer?
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
@@ -559,6 +560,21 @@ model UserLessonProgress {
   @@index([userId])
   @@index([userId, courseKey])
   @@map("user_lesson_progress")
+}
+
+// A step of a project the student ticked off as done (packages/shared/projects.ts);
+// unticking deletes the row
+model ProjectStepCheck {
+  userId      Int      @map("user_id")
+  language    String   @db.VarChar(10)
+  projectSlug String   @map("project_slug") @db.VarChar(100)
+  stepId      String   @map("step_id") @db.VarChar(50)
+  checkedAt   DateTime @default(now()) @map("checked_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, language, projectSlug, stepId])
+  @@map("project_step_checks")
 }
 
 model UserSavedCode {
