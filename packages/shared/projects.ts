@@ -653,6 +653,94 @@ export const PROJECTS: Project[] = [
       { id: 'report', title: 'Late parcels and the report' },
     ],
   },
+  {
+    slug: 'smart-home',
+    language: 'java',
+    title: 'Smart Home',
+    difficulty: 'medium',
+    summary:
+      "One hub for a flat's lights, radiator and plugs: interfaces for what each device can do, rooms switched at once, and the electricity each one used.",
+    steps: [
+      { id: 'devices', title: 'The devices' },
+      { id: 'status', title: 'Status' },
+      { id: 'switch', title: 'On and off' },
+      { id: 'dim', title: 'Dimming' },
+      { id: 'thermostat', title: 'The thermostat' },
+      { id: 'room', title: 'A whole room' },
+      { id: 'energy', title: 'Time and energy' },
+      { id: 'bill', title: 'The monthly bill' },
+    ],
+  },
+  {
+    slug: 'shop-checkout',
+    language: 'java',
+    title: 'Shop Checkout',
+    difficulty: 'medium',
+    summary:
+      "A grocery till with weekly offers written as one interface and three classes: a cart, discounts applied by themselves, change, loyalty points and the day's sales.",
+    steps: [
+      { id: 'catalog', title: 'The catalog' },
+      { id: 'scan', title: 'Scan' },
+      { id: 'cart', title: 'The cart' },
+      { id: 'offers', title: 'Offers' },
+      { id: 'total', title: 'Offers on the total' },
+      { id: 'pay', title: 'Pay' },
+      { id: 'card', title: 'Loyalty card' },
+      { id: 'report', title: 'End of the day' },
+    ],
+  },
+  {
+    slug: 'school-timetable',
+    language: 'java',
+    title: 'School Timetable',
+    difficulty: 'hard',
+    summary:
+      "Build a school's weekly timetable that refuses every clash: teachers, rooms and classes in one place at a time, rooms that fit, fair days and a grid per class.",
+    steps: [
+      { id: 'school', title: 'The school' },
+      { id: 'add', title: 'A lesson in the timetable' },
+      { id: 'fit', title: 'Teachers and rooms that fit' },
+      { id: 'clashes', title: 'No one in two places' },
+      { id: 'grid', title: 'The week as a grid' },
+      { id: 'free', title: 'A free room, and taking lessons out' },
+      { id: 'fair', title: 'Fair days' },
+      { id: 'load', title: "Teachers' week and the load" },
+    ],
+  },
+  {
+    slug: 'staff-rota',
+    language: 'java',
+    title: 'Staff Rota',
+    difficulty: 'hard',
+    summary:
+      "A café's weekly rota: shifts that respect rest and weekly limits, swaps between staff, the shifts still short of people and the week's wages.",
+    steps: [
+      { id: 'staff', title: 'The staff' },
+      { id: 'assign', title: 'Days and shifts' },
+      { id: 'rules', title: 'The rules' },
+      { id: 'rota', title: "The week's rota" },
+      { id: 'swap', title: 'Swapping shifts' },
+      { id: 'gaps', title: 'Short-handed shifts' },
+      { id: 'pay', title: 'Wages' },
+    ],
+  },
+  {
+    slug: 'delivery-dispatch',
+    language: 'java',
+    title: 'Delivery Dispatch',
+    difficulty: 'hard',
+    summary:
+      'Dispatch food deliveries on a city grid: the nearest free courier gets each order, couriers ride minute by minute, orders wait when everyone is busy.',
+    steps: [
+      { id: 'couriers', title: 'Couriers on the map' },
+      { id: 'order', title: 'Orders' },
+      { id: 'queue', title: 'Nobody free' },
+      { id: 'tick', title: 'Riding' },
+      { id: 'late', title: 'Late deliveries' },
+      { id: 'cancel', title: 'Cancelling' },
+      { id: 'report', title: "The evening's report" },
+    ],
+  },
 ];
 
 export function findProject(language: string, slug: string): Project | undefined {
