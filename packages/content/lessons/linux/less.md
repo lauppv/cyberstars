@@ -37,13 +37,8 @@ everything `more` does _and_ lets you scroll **backwards**, hence the joke name:
 
 ## Mission: Review and Archive the Operations Manual
 
-The station's operations manual has been updated and saved to `manual.txt`. You need to review it and keep a copy on file. (On a real system you would scroll through it page by page; in this sandbox the scrolling viewer is limited, so display the file instead.)
-
-1. Display the whole manual to review its chapters.
-2. Count **how many lines** the manual has.
-3. Create a folder called `manuals` and copy `manual.txt` into it as `manual-archive.txt`.
-4. Confirm the archived copy by displaying its contents.
+The operations manual in `manual.txt` has been updated. On a real system you would page through it; this sandbox's pager is limited, so read it in one go with a command from earlier lessons. Find out how many lines long it is, then archive it as `manuals/manual-archive.txt`.
 
 **Expected result**
 
-The full manual appears, you learn its line count, and the `manuals` folder holds a faithful copy of it.
+You have read the whole manual, you know its number of lines, and the archived copy reads like the original.

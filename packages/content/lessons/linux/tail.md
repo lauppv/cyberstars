@@ -39,12 +39,8 @@ let you sample a big file from both ends without reading the middle.
 
 ## Mission: Sample and Archive the Alert
 
-Something triggered an alert on the station. Before filing the incident report, you want to sample the log from both ends and keep a copy.
-
-1. Look at just the **first 3 lines** of `system.log` to see how it began after boot.
-2. Read the **last 4 lines** of `system.log`: the most recent events that triggered the alert.
-3. Create a folder called `alerts` and copy `system.log` into it as `incident.log` for the report.
+Something triggered an alert. Before filing the incident report, sample `system.log` from both ends: the three lines it began with after boot, and the four most recent lines, which led to the alert. Then keep a copy of the log as `alerts/incident.log`.
 
 **Expected result**
 
-You see the first few boot lines, then the latest 4 alert lines. The `alerts` folder holds a copy of the log for the incident record.
+You see the three first lines, then the four last ones, and the copy in `alerts` reads like the original.

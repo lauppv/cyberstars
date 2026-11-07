@@ -1,11 +1,19 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "manifest" },
-    { "kind": "files_equal", "a": "inventar.txt", "b": "manifest/inventar-verificat.txt" }
+    {
+      "kind": "files_equal",
+      "a": "inventar.txt",
+      "b": "manifest/inventar-verificat.txt"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "wc\\b.*-l\\b.*inventar\\.txt" },
-    { "kind": "command", "name": "cp" },
-    { "kind": "command", "pattern": "wc\\b.*-l\\b.*inventar-verificat\\.txt" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bwc\\b)(?=.* -\\S*l)(?=.*inventar\\.txt)"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bwc\\b)(?=.* -\\S*l)(?=.*inventar-verificat\\.txt)"
+    }
   ]
 }

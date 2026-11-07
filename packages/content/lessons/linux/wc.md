@@ -46,13 +46,8 @@ automatically.
 
 ## Mission: Count and File the Inventory
 
-`inventory.txt` lists every item in the cargo bay, one per line. The quartermaster needs an exact count before the next resupply shuttle arrives, plus a filed copy of the manifest.
-
-1. Count **how many lines** are in `inventory.txt`. That is the number of items.
-2. Run a full measure of `inventory.txt` to see its lines, words and characters together.
-3. Create a folder called `manifest` and copy `inventory.txt` into it as `inventory-checked.txt`.
-4. Confirm the filed copy has the same item count by counting its lines too.
+`inventory.txt` lists every item in the cargo bay, one per line. The quartermaster wants the number of items alone, not the words or characters, and the manifest filed as `manifest/inventory-checked.txt`. Then prove the filed copy holds as many items as the original.
 
 **Expected result**
 
-You see the item count and the full measurement, and the `manifest` folder holds a copy whose line count matches the original.
+You know how many items there are, and counting the filed copy gives the same number.

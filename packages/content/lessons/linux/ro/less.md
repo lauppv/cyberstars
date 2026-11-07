@@ -35,20 +35,10 @@ numele glumeț: „less is more” („mai puțin înseamnă mai mult”).
 
 ---
 
-## Misiune: Revizuiește și arhivează manualul de operațiuni
+## Misiune: Revizuiește și Arhivează Manualul
 
-Manualul de operațiuni al stației a fost actualizat și salvat în `manual.txt`.
-Trebuie să îl revizuiești și să păstrezi o copie la dosar. (Pe un sistem real ai derula
-prin el pagină cu pagină; în acest sandbox vizualizatorul cu derulare este limitat, așa
-că afișează fișierul în schimb.)
-
-1. Afișează întregul manual ca să îi revizuiești capitolele.
-2. Numără **câte linii** are manualul.
-3. Creează un folder numit `manuale` și copiază `manual.txt` în el sub numele
-   `manual-arhiva.txt`.
-4. Confirmă copia arhivată afișându-i conținutul.
+Manualul de operare din `manual.txt` a fost actualizat. Pe un sistem real l-ai parcurge pagină cu pagină; în sandbox-ul acesta paginatorul e limitat, așa că citește-l dintr-odată cu o comandă din lecțiile trecute. Află câte linii are, apoi arhivează-l ca `manuale/manual-arhiva.txt`.
 
 **Rezultat așteptat**
 
-Manualul complet apare, afli numărul lui de linii, iar folderul `manuale` conține o
-copie fidelă a lui.
+Ai citit tot manualul, știi câte linii are, iar copia arhivată spune ce spune originalul.

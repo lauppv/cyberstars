@@ -16,13 +16,12 @@ begins, `tail` to see the newest entries.
 
 ## Mission: Station Log Triage
 
-The previous crew evacuated in a hurry and left three log files behind. Command needs a quick status report before we can re-occupy the station.
+The previous crew evacuated in a hurry and left three logs behind. Before anyone moves back in, command wants answers:
 
-1. Read `summary.log` in full.
-2. View the **first 3 lines** of `events.log`.
-3. View the **last 3 lines** of `events.log`.
-4. Count the lines in `errors.log`.
+- What does the short `summary.log` say? Read all of it.
+- How did the day in `events.log` begin, and how did it end? Three events from each end, nothing from the middle.
+- How many errors were logged in `errors.log`, one per line? The number, not the errors.
 
 **Expected result**
 
-You see the full summary, the first and last three events, and the error count (3 lines).
+You can answer all three questions from what you saw.

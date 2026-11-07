@@ -1,11 +1,19 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "manuals" },
-    { "kind": "files_equal", "a": "manual.txt", "b": "manuals/manual-archive.txt" }
+    {
+      "kind": "files_equal",
+      "a": "manual.txt",
+      "b": "manuals/manual-archive.txt"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "cat\\b.*manual\\.txt" },
-    { "kind": "command", "pattern": "wc\\b.*-l\\b.*manual\\.txt" },
-    { "kind": "command", "name": "cp" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bcat\\b)(?=.*manual\\.txt)"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bwc\\b)(?=.* -\\S*l)(?=.*manual\\.txt)"
+    }
   ]
 }
