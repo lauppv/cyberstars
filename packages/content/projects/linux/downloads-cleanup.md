@@ -2,7 +2,7 @@ Maria's laptop is slow, and her Downloads folder is why: photos, invoices, music
 
 You do it one step at a time, in the terminal on the right. Each step leaves something behind (a file, a folder, a cleaner heap) that the next one builds on. Tick a step off once the files look like it asks; you can always come back and untick it.
 
-The terminal starts fresh every time you open the page or press Reset, with Maria's files back the way they were. If you leave in the middle, run the steps you had done again; each one is a handful of commands.
+When every step is done, press **Run Tests**: it checks the files in this terminal, so do the steps in one go. The terminal starts fresh every time you open the page or press Reset, with the starting files back, so after a reset run the earlier steps again (each is a command or two). Passing the tests finishes the project.
 
 ## Take stock
 

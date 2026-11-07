@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "cat newsletter/list.txt",
+      "expected": "ana.pop@gmail.com\ncristina.m@gmail.com\ndiana.neagu@gmail.com\nelena.stan@outlook.com\ngeorge.tudor@gmail.com\nioana@school.ro\nirina.dobre@gmail.com\nmaria.lupu@yahoo.com\nmihai.ionescu@yahoo.com\npaul.dinu@yahoo.com\nradu.vasile@outlook.com\nsorin.pana@school.ro"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat newsletter/school.txt",
+      "expected": "ioana@school.ro\nsorin.pana@school.ro"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "ls newsletter",
+      "expected": "list.txt\nschool.txt\nsignups.txt\nunsubscribed.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "grep"
+    },
+    {
+      "kind": "command",
+      "name": "awk"
+    },
+    {
+      "kind": "command",
+      "name": "sort"
+    }
+  ]
+}

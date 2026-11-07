@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "wc -l < report/not-found.txt",
+      "expected": "35"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -vc '\" 404 ' report/not-found.txt",
+      "expected": "0"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "awk '{print $1, $2}' report/top-visitors.txt",
+      "expected": "97 81.12.40.7\n75 92.85.3.114\n41 45.9.148.3\n34 5.2.199.20\n33 188.24.66.1"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "awk '{print $1, $2}' report/broken-pages.txt",
+      "expected": "15 /menu/desserts\n10 /opening-hours\n10 /gift-cards"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "awk '{print $1, $2}' report/per-hour.txt",
+      "expected": "41 03\n20 09\n20 10\n20 11\n46 12\n34 13\n20 14\n20 15\n20 16\n20 17\n20 18\n22 19\n20 20\n20 21"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "wc -l < report/intruder.txt",
+      "expected": "41"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -vc '^45.9.148.3 ' report/intruder.txt",
+      "expected": "0"
+    },
+    {
+      "kind": "file_contains",
+      "path": "report/summary.txt",
+      "text": "Requests: 343"
+    },
+    {
+      "kind": "file_contains",
+      "path": "report/summary.txt",
+      "text": "Not found: 35"
+    },
+    {
+      "kind": "file_contains",
+      "path": "report/summary.txt",
+      "text": "Busiest hour: 12"
+    },
+    {
+      "kind": "file_contains",
+      "path": "report/summary.txt",
+      "text": "Intruder: 45.9.148.3 (41 failed logins)"
+    },
+    {
+      "kind": "file_contains",
+      "path": "report/summary.txt",
+      "text": "Bytes sent: 1936770"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "uniq"
+    },
+    {
+      "kind": "command",
+      "name": "awk"
+    },
+    {
+      "kind": "command",
+      "name": "cut"
+    }
+  ]
+}

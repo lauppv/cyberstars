@@ -2,7 +2,7 @@ Grandma Elena got a new phone, and before the old one goes in a drawer she wants
 
 You do it one step at a time, in the terminal on the right. Tick a step off once the files look like it asks; you can always come back and untick it.
 
-The terminal starts fresh every time you open the page or press Reset, with the photos back in one folder. Each step is a few commands, so redo the ones you had done.
+When every step is done, press **Run Tests**: it checks the files in this terminal, so do the steps in one go. The terminal starts fresh every time you open the page or press Reset, with the starting files back, so after a reset run the earlier steps again (each is a command or two). Passing the tests finishes the project.
 
 Every photo's name says when it was taken: `IMG_20230715_183040.jpg` is from 2023, month 07, day 15, at 18:30:40. That is all you need to sort them.
 
