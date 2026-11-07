@@ -6,6 +6,7 @@ import {
   Braces,
   ChartNoAxesColumnIncreasing,
   ChevronsUpDown,
+  FolderKanban,
   Gauge,
   House,
   Library,
@@ -185,10 +186,17 @@ function LockedItem({ icon: Icon, label }: { icon: LucideIcon; label: string }) 
     >
       <Icon size={ICON_SIZE} strokeWidth={1.75} className="flex-shrink-0 opacity-60" />
       <span className="truncate">{label}</span>
-      <span className="ml-auto text-[10px] px-1.5 py-px rounded border border-[var(--border)]">
-        {t('common.comingSoon')}
-      </span>
+      <ComingSoonTag />
     </div>
+  );
+}
+
+function ComingSoonTag() {
+  const { t } = useTranslation();
+  return (
+    <span className="ml-auto text-[10px] px-1.5 py-px rounded border border-[var(--border)]">
+      {t('common.comingSoon')}
+    </span>
   );
 }
 
@@ -337,6 +345,20 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
             label={t('nav.algorithms')}
             onNavigate={onNavigate}
           />
+          {/* Coming soon for everyone until every language has its projects;
+              the admins and the founder already open it */}
+          {user &&
+            (isAdmin(user.role) ? (
+              <NavItem
+                to="/projects"
+                icon={FolderKanban}
+                label={t('nav.projects')}
+                tag={<ComingSoonTag />}
+                onNavigate={onNavigate}
+              />
+            ) : (
+              <LockedItem icon={FolderKanban} label={t('nav.projects')} />
+            ))}
           <NavItem to="/almanac" icon={Library} label={t('nav.almanac')} onNavigate={onNavigate} />
           {user && <LaniakeaItem onNavigate={onNavigate} />}
         </Section>

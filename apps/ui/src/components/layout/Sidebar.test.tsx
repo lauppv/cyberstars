@@ -158,7 +158,24 @@ describe('Sidebar', () => {
     renderSidebar();
     expect(screen.queryByRole('link', { name: /Messages|Leaderboard|Connections/ })).toBeNull();
     expect(screen.queryByRole('button', { name: 'Tutor' })).toBeNull();
-    expect(screen.getAllByText('Coming soon')).toHaveLength(4);
+    expect(screen.getAllByText('Coming soon')).toHaveLength(5);
+  });
+
+  it('lists Projects as coming soon until every language has its projects', () => {
+    h.auth = { user: USER };
+    h.messages = { enabled: true, totalUnread: 0 };
+    renderSidebar();
+    expect(screen.queryByRole('link', { name: /Projects/ })).toBeNull();
+    expect(screen.getByText('Projects').parentElement).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  it.each(['ADMIN', 'FOUNDER'])('opens Projects to the %s already', (role) => {
+    h.auth = { user: { ...USER, role } };
+    h.messages = { enabled: true, totalUnread: 0 };
+    renderSidebar();
+    const link = screen.getByRole('link', { name: /Projects/ });
+    expect(link).toHaveAttribute('href', '/projects');
+    expect(link).toHaveTextContent(/^ProjectsComing soon$/);
   });
 
   it('lists the tutor last in the community group and toggles its panel', () => {
