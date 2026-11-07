@@ -269,6 +269,38 @@ describe('WebWorkspace', () => {
     }
   });
 
+  it("keeps dev mode's splits on the device, with a way back to the first sizes", () => {
+    localStorage.setItem('cyberstars.devMode.webSides', '40');
+    localStorage.setItem('cyberstars.devMode.webSite', '55');
+    const props = {
+      courseKey: 'web-dev',
+      lessonSlug: 'first-page',
+      value: SITE,
+      onChange: vi.fn(),
+      lesson: null,
+      actions: <button type="button">Lesson actions</button>,
+    };
+    const split = () =>
+      ['--split', '--site-split']
+        .map((v) => document.querySelector(`[style*="${v}"]`)!.getAttribute('style'))
+        .join(' ');
+    const { rerender } = render(<WebWorkspace {...props} />);
+    expect(split()).toBe('--split: 50%; --site-split: 70%;');
+    expect(
+      screen.queryByRole('button', { name: 'Put the panels back to their first sizes' }),
+    ).toBeNull();
+
+    rerender(<WebWorkspace {...props} devMode />);
+    expect(split()).toBe('--split: 40%; --site-split: 55%;');
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Put the panels back to their first sizes' }),
+    );
+    expect(split()).toBe('--split: 50%; --site-split: 70%;');
+    expect(localStorage.getItem('cyberstars.devMode.webSides')).toBeNull();
+    // The actions stand once, at the far right over the site
+    expect(screen.getAllByRole('button', { name: 'Lesson actions' })).toHaveLength(1);
+  });
+
   it('says there is no page while the site has none', () => {
     render(<Lesson start={serializeWebFiles([{ path: 'a.css', content: '' }])} />);
     expect(screen.getByText(/Your site has no page yet/)).toBeInTheDocument();

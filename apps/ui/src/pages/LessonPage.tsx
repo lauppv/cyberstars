@@ -997,6 +997,7 @@ export function LessonPage() {
                 onConsole={setWebConsole}
                 lesson={lessonColumn}
                 actions={actions}
+                devMode={devMode}
               />
             </Suspense>
           ) : (

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { X } from 'lucide-react';
+import { RotateCcw, X } from 'lucide-react';
 import {
   WEB_MAX_FILES,
   WEB_MAX_LENGTH,
@@ -37,8 +37,10 @@ interface WebWorkspaceProps {
   onConsole?: (text: string) => void;
   // The lesson's text and its results, which the left side shows by the code
   lesson: ReactNode;
-  // The lesson's actions (save, solution, forum, reset, the tutor)
+  // The lesson's actions (save, solution, forum, reset, the tutor, dev mode)
   actions: ReactNode;
+  // Dev mode is on: the IDE keeps splits of its own, saved on the device
+  devMode?: boolean;
 }
 
 type View = 'lesson' | 'code' | 'site';
@@ -65,6 +67,7 @@ export default function WebWorkspace({
   onConsole,
   lesson,
   actions,
+  devMode = false,
 }: WebWorkspaceProps) {
   const { t } = useTranslation();
   const files = useMemo(() => parseWebFiles(value), [value]);
@@ -87,14 +90,50 @@ export default function WebWorkspace({
   });
   const bandRef = useRef<HTMLDivElement>(null);
   const siteRef = useRef<HTMLDivElement>(null);
-  const sides = useResizeSplit({ axis: 'x', initial: 50, min: 28, max: 68, containerRef: bandRef });
-  const siteSplit = useResizeSplit({
+  // Dev mode keeps its own splits on the device, as on any lesson
+  const plainSides = useResizeSplit({
+    axis: 'x',
+    initial: 50,
+    min: 28,
+    max: 68,
+    containerRef: bandRef,
+  });
+  const plainSite = useResizeSplit({
     axis: 'y',
     initial: 70,
     min: 30,
     max: 90,
     containerRef: siteRef,
   });
+  const devSides = useResizeSplit({
+    axis: 'x',
+    initial: 50,
+    min: 28,
+    max: 68,
+    containerRef: bandRef,
+    storageKey: 'cyberstars.devMode.webSides',
+  });
+  const devSite = useResizeSplit({
+    axis: 'y',
+    initial: 70,
+    min: 30,
+    max: 90,
+    containerRef: siteRef,
+    storageKey: 'cyberstars.devMode.webSite',
+  });
+  const sides = devMode ? devSides : plainSides;
+  const siteSplit = devMode ? devSite : plainSite;
+  // Whether the sides stand next to each other (the band is @2xl wide): the
+  // actions sit at the far right then, over the site, and on a phone over
+  // the lesson and the code, so one of them is always at hand
+  const [wide, setWide] = useState(true);
+  useEffect(() => {
+    const band = bandRef.current;
+    if (!band || typeof ResizeObserver === 'undefined') return;
+    const observer = new ResizeObserver(([entry]) => setWide(entry.contentRect.width >= 672));
+    observer.observe(band);
+    return () => observer.disconnect();
+  }, []);
 
   // Tabs whose file went away (a reset, a rename, a delete) close
   const first = firstToOpen(files);
@@ -258,11 +297,6 @@ export default function WebWorkspace({
 
   const previewPane = (
     <div className="flex flex-col min-h-0 h-full">
-      {page && (
-        <div className="shrink-0 px-3 py-1.5 border-b border-[var(--border)] bg-[var(--glass)] text-[12px] font-mono text-[var(--text2)] truncate">
-          {page}
-        </div>
-      )}
       {paused && (
         <div
           role="status"
@@ -356,7 +390,7 @@ export default function WebWorkspace({
           style={{ '--split': `${sides.size}%` } as CSSProperties}
           className={`${view === 'site' ? 'hidden' : 'flex'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none min-w-0 flex-col bg-[var(--panel-bg)]`}
         >
-          <div className="shrink-0 flex items-center justify-between gap-2 px-3 py-2 border-b border-[var(--border)]">
+          <div className="shrink-0 h-12 flex items-center justify-between gap-2 px-3 border-b border-[var(--border)]">
             <div className="hidden @2xl:block">
               <Segmented
                 value={side}
@@ -366,7 +400,7 @@ export default function WebWorkspace({
                 ariaLabel={t('web.side')}
               />
             </div>
-            <div className="ml-auto">{actions}</div>
+            {!wide && <div className="ml-auto">{actions}</div>}
           </div>
           <div className={`${side === 'lesson' ? 'flex' : 'hidden'} flex-1 min-h-0 flex-col`}>
             {lesson}
@@ -390,6 +424,27 @@ export default function WebWorkspace({
           ref={siteRef}
           className={`${view === 'site' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 min-h-0 flex-col bg-[var(--panel-bg)]`}
         >
+          <div className="shrink-0 h-12 flex items-center gap-2 px-3 border-b border-[var(--border)] bg-[var(--glass)]">
+            <span className="flex-1 min-w-0 truncate text-[12px] font-mono text-[var(--text2)]">
+              {page}
+            </span>
+            {wide && devMode && (
+              <button
+                type="button"
+                data-track="dev-mode-reset"
+                onClick={() => {
+                  devSides.reset();
+                  devSite.reset();
+                }}
+                aria-label={t('lesson.devModeReset')}
+                title={t('lesson.devModeReset')}
+                className="w-8 h-8 shrink-0 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
+              >
+                <RotateCcw size={14} aria-hidden="true" />
+              </button>
+            )}
+            {wide && <div className="shrink-0">{actions}</div>}
+          </div>
           <div
             style={{ '--site-split': `${siteSplit.size}%` } as CSSProperties}
             className="flex-1 @2xl:flex-none @2xl:h-[var(--site-split)] min-h-0 flex flex-col"
