@@ -40,18 +40,10 @@ nevoie.
 
 ---
 
-## Misiune: Termină computerul de navigație blocat
+## Misiune: Oprește Calculatorul de Navigație Blocat
 
-Computerul de navigație (PID **510**) s-a blocat la jumătatea unui calcul și nu
-mai răspunde. Pilotul îl vrea oprit și un raport de incident depus la dosar.
-
-1. Termină forțat computerul de navigație blocat (PID **510**).
-2. Salvează o instantanee proaspătă a tuturor proceselor încă active într-un fișier
-   numit `dupa-oprire.txt`.
-3. Creează un folder numit `jurnal-incident` și mută `dupa-oprire.txt` în el.
-4. Numără de câte ori mai apare `nav-computer` în instantaneea salvată.
+Calculatorul de navigație s-a blocat în mijlocul unui calcul și nu mai răspunde la o cerere politicoasă de oprire. Pilotul vrea să dispară, și doar el: monitorul reactorului și suportul vital rămân pornite. Găsește-i procesul și oprește-l cu forța, apoi păstrează o listă proaspătă a proceselor care încă rulează ca `jurnal-incident/dupa-oprire.txt`.
 
 **Rezultat așteptat**
 
-`jurnal-incident/dupa-oprire.txt` nu mai listează procesul `nav-computer`
-(numărul este `0`).
+Calculatorul de navigație nu mai rulează, celelalte programe ale stației da, iar `jurnal-incident/dupa-oprire.txt` e o listă de procese fără el.

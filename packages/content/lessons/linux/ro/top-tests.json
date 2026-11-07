@@ -1,16 +1,20 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "raport-cpu" },
     {
-      "kind": "file_contains",
-      "path": "raport-cpu/vinovat-principal.txt",
-      "text": "reactor-monitor"
+      "kind": "command_output",
+      "cmd": "wc -l < raport-memorie/vinovat-principal.txt",
+      "expected": "2"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "tail -n 1 raport-memorie/vinovat-principal.txt | awk '{print $11, $12}'",
+      "expected": "/usr/bin/reactor-monitor --port=7700"
     }
   ],
   "requires": [
-    { "kind": "command", "pattern": "ps\\b.*aux.*--sort" },
-    { "kind": "command", "name": "head" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bps\\b)(?=.*sort)(?=.*>)"
+    }
   ]
 }

@@ -1,12 +1,20 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "cpu-report" },
-    { "kind": "file_contains", "path": "cpu-report/top-offender.txt", "text": "reactor-monitor" }
+    {
+      "kind": "command_output",
+      "cmd": "wc -l < memory-report/top-offender.txt",
+      "expected": "2"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "tail -n 1 memory-report/top-offender.txt | awk '{print $11, $12}'",
+      "expected": "/usr/bin/reactor-monitor --port=7700"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "ps\\b.*aux.*--sort" },
-    { "kind": "command", "name": "head" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bps\\b)(?=.*sort)(?=.*>)"
+    }
   ]
 }

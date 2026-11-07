@@ -34,13 +34,8 @@ processes live. Here in the sandbox, `ps aux --sort` is your practical equivalen
 
 ## Mission: Runaway Process Hunt
 
-The station's main computer is running hot and the bridge wants a written report on the culprit before the thermal alarms trigger.
-
-1. List all processes sorted by CPU usage, highest first.
-2. Capture the top of that sorted list (the header line plus the single hungriest process) into a file called `top-offender.txt`.
-3. Create a folder called `cpu-report` and move `top-offender.txt` into it.
-4. Display the saved file to confirm which program is the offender.
+The station's main computer is running out of memory, and the bridge wants a written report on the culprit before the alarms trigger. Save the process list's heading line and the one process holding the most memory, nothing else, as `memory-report/top-offender.txt`.
 
 **Expected result**
 
-`cpu-report/top-offender.txt` names `/usr/bin/reactor-monitor` as the biggest CPU consumer.
+`memory-report/top-offender.txt` has two lines: the heading of the process list, and the process that holds the most memory.

@@ -1,17 +1,20 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "health-check" },
     {
       "kind": "file_contains",
       "path": "health-check/reactor-status.txt",
-      "text": "reactor-monitor"
+      "text": "/usr/bin/reactor-monitor --port=7700"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -c -e life-support -e nav-computer health-check/reactor-status.txt",
+      "expected": "0"
     }
   ],
   "requires": [
-    { "kind": "command", "pattern": "ps\\b.*aux" },
-    { "kind": "command", "name": "grep" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "wc\\b.*-l" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bps\\b)(?=.*>)"
+    }
   ]
 }

@@ -36,13 +36,8 @@ diagnostic tool.
 
 ## Mission: Engineering Health Check
 
-Engineering just radioed in: they need written proof that the reactor monitoring daemon is still running. Without it, temperature readings stop flowing to the bridge.
-
-1. List all processes running on the station's computer.
-2. Filter that listing down to only the lines mentioning the reactor and save them into a file called `reactor-status.txt`.
-3. Create a folder called `health-check` and move `reactor-status.txt` into it.
-4. Count how many reactor processes were found.
+Engineering just radioed in: they need written proof that the reactor monitoring program is still running, or the bridge stops getting temperature readings. Save the reactor's line from the station's full process list, and only the reactor's, as `health-check/reactor-status.txt`, straight from the list, not typed by hand.
 
 **Expected result**
 
-`health-check/reactor-status.txt` contains the line for `/usr/bin/reactor-monitor`, confirming the daemon is alive.
+`health-check/reactor-status.txt` holds the reactor monitor's line from the process list, with its user, its process id and its full command.

@@ -1,7 +1,20 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "jurnal-incident" },
-    { "kind": "file_exists", "path": "jurnal-incident/dupa-oprire.txt" },
+    {
+      "kind": "command_output",
+      "cmd": "ps -eo args= | grep -c '^/usr/bin/nav-computer'",
+      "expected": "0"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "ps -eo args= | grep -c -e '^/usr/bin/reactor-monitor' -e '^/usr/sbin/life-support'",
+      "expected": "2"
+    },
+    {
+      "kind": "file_contains",
+      "path": "jurnal-incident/dupa-oprire.txt",
+      "text": "reactor-monitor"
+    },
     {
       "kind": "command_output",
       "cmd": "grep -c nav-computer jurnal-incident/dupa-oprire.txt",
@@ -9,8 +22,9 @@
     }
   ],
   "requires": [
-    { "kind": "command", "pattern": "kill\\b.*-9\\b.*510" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bkill\\b)(?=.*(-9|-KILL|-SIGKILL|-s\\s*KILL)\\b)"
+    }
   ]
 }
