@@ -14,6 +14,7 @@ import type { Course } from '@cyberstars/shared/lesson';
 import { courseLabel, courseMeta } from '../constants/courses';
 import {
   LISTED_COURSE_KEYS,
+  isClosedCourse,
   progressPct,
   xpForLesson,
   dailyBonusXp,
@@ -102,6 +103,7 @@ export function HomePage() {
     if (!isLoggedIn) return [];
     const items: { courseKey: string; slug: string; title: string; lastAccessedAt: string }[] = [];
     for (const [courseKey, p] of Object.entries(progressMap)) {
+      if (isClosedCourse(courseKey)) continue;
       for (const l of p.lessons) {
         if (l.lastAccessedAt) {
           items.push({ courseKey, slug: l.slug, title: l.title, lastAccessedAt: l.lastAccessedAt });

@@ -57,6 +57,11 @@ vi.mock('../components/notifications/DashboardNotices', () => ({
 vi.mock('../services/dailyService', () => ({
   fetchDaily: vi.fn(() => Promise.resolve(null)),
 }));
+// No web course exists yet, so web-js plays a closed course here
+vi.mock('@cyberstars/shared/constants', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@cyberstars/shared/constants')>()),
+  isClosedCourse: (courseKey: string) => courseKey === 'web-js',
+}));
 vi.mock('../services/profileService', () => ({
   getActivity: vi.fn(() => Promise.resolve({ streak: 0, lastActiveAt: null, activity: [] })),
 }));
@@ -281,6 +286,42 @@ describe('HomePage', () => {
     expect(screen.getByText('Recently accessed')).toBeInTheDocument();
     // At least one of the entries renders with an "ago" timestamp string.
     expect(screen.getAllByText(/ago$/i).length).toBeGreaterThan(0);
+  });
+
+  it('lists no recent lesson of a closed course', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    const lesson = (slug: string, title: string) => ({
+      slug,
+      title,
+      completed: false,
+      completedAt: null,
+      lastAccessedAt: new Date(Date.now() - 60_000).toISOString(),
+    });
+    const course = (courseKey: string, lessons: ReturnType<typeof lesson>[]) => ({
+      courseKey,
+      earnedXp: 0,
+      totalXp: 0,
+      completed: 0,
+      total: lessons.length,
+      lessons,
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: course('python', [lesson('intro', 'Intro')]),
+        'web-js': course('web-js', [lesson('arrays', 'Arrays')]),
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    expect(screen.getAllByText('Intro').length).toBeGreaterThan(0);
+    expect(screen.queryByText('Arrays')).not.toBeInTheDocument();
   });
 
   it('continue section navigates on click', () => {
