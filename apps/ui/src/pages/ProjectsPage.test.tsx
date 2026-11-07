@@ -8,7 +8,10 @@ vi.mock('react-router', async (importOriginal) => {
   return { ...actual, useNavigate: () => mockNavigate };
 });
 vi.mock('../context/AuthContext', () => ({ useAuth: () => ({ user: { role: 'ADMIN' } }) }));
-vi.mock('@cyberstars/shared/features', () => ({ canAccessFeature: vi.fn() }));
+vi.mock('@cyberstars/shared/features', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@cyberstars/shared/features')>()),
+  canAccessFeature: vi.fn(),
+}));
 vi.mock('../components/layout/Topbar', () => ({ Topbar: () => null }));
 vi.mock('./NotFoundPage', () => ({ NotFoundPage: () => <p>Not found</p> }));
 
