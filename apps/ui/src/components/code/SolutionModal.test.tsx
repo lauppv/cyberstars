@@ -27,4 +27,23 @@ describe('SolutionModal', () => {
     fireEvent.click(screen.getByRole('button', { name: /run/i }));
     expect(execute).toHaveBeenCalledWith('def max_depth(root):\n    return 0', 'python', lesson);
   });
+
+  it("shows a web lesson's files, each under its name, and leaves its images out", () => {
+    render(
+      <SolutionModal
+        solution={
+          '```html index.html\n<h1>Hi</h1>\n```\n\n```css css/a.css\nh1 {}\n```\n\n```image img/a.png\n\n```'
+        }
+        language="web-dev"
+        web
+        onClose={() => {}}
+      />,
+    );
+    expect(screen.getAllByRole('heading').map((h) => h.textContent)).toEqual([
+      'index.html',
+      'css/a.css',
+    ]);
+    expect(document.querySelector('.cm-content')!.textContent).toBe('<h1>Hi</h1>');
+    expect(screen.queryByRole('button', { name: /run/i })).toBeNull();
+  });
 });

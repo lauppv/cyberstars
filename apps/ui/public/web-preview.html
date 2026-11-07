@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Preview</title>
+  </head>
+  <body>
+    <!--
+      The frame a web lesson's preview runs in (CYB-109). The lesson loads it
+      in a sandboxed iframe without allow-same-origin, so it has an origin of
+      its own, and the server sends it with a security policy of its own
+      (WEB_PREVIEW_PATH in packages/shared/webFiles.ts, apps/api/src/app.ts).
+      It waits for one page from the lesson, makes each of the site's scripts
+      a blob: URL (a module after the files it imports), puts those URLs where
+      the page names its scripts, and writes the page into itself. The
+      lesson's previewDocument.ts builds the page and its scripts.
+    -->
+    <script>
+      (function () {
+        addEventListener('message', function onMessage(event) {
+          if (event.source !== parent) return;
+          var data = event.data;
+          if (
+            !data ||
+            data.type !== 'cyberstars-render' ||
+            typeof data.html !== 'string' ||
+            !Array.isArray(data.scripts)
+          ) {
+            return;
+          }
+          removeEventListener('message', onMessage);
+          var byToken = {};
+          var urls = {};
+          var making = {};
+          data.scripts.forEach(function (script) {
+            byToken[script.token] = script;
+          });
+          // A module imported in a circle can't name a URL that isn't made
+          // yet: that import stays unresolved and the browser reports it.
+          function make(token) {
+            if (urls[token]) return urls[token];
+            var script = byToken[token];
+            if (!script || making[token]) return token;
+            making[token] = true;
+            var code = String(script.code);
+            script.deps.forEach(function (dep) {
+              code = code.split(dep).join(make(dep));
+            });
+            urls[token] = URL.createObjectURL(new Blob([code], { type: 'text/javascript' }));
+            return urls[token];
+          }
+          var html = data.html;
+          data.scripts.forEach(function (script) {
+            html = html.split(script.token).join(make(script.token));
+          });
+          document.open();
+          document.write(html);
+          document.close();
+        });
+        parent.postMessage({ source: 'cyberstars-preview', type: 'runtime' }, '*');
+      })();
+    </script>
+  </body>
+</html>

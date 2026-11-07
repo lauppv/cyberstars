@@ -1,4 +1,6 @@
 import {
+  lazy,
+  Suspense,
   useState,
   useEffect,
   useLayoutEffect,
@@ -73,6 +75,10 @@ import {
 } from '@cyberstars/shared/constants';
 import { BetaBadge } from '../components/ui/BetaBadge';
 
+// A web lesson's IDE, with its editors for HTML, CSS and JavaScript and the
+// parser behind the preview, loads only on a web lesson
+const WebWorkspace = lazy(() => import('../components/web/WebWorkspace'));
+
 function parseDifficulty(title: string): {
   difficulty: 'Easy' | 'Medium' | 'Hard' | null;
   rest: string;
@@ -97,6 +103,9 @@ export function LessonPage() {
   const tutor = useTutor();
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
+  // A web lesson's code is a site of several files (packages/shared/webFiles.ts),
+  // kept as one text like any lesson's code and edited in its own IDE
+  const isWeb = WEB_COURSE_KEYS.includes(category);
   const isAlgo = (ALGO_COURSE_KEYS as readonly string[]).includes(category);
   const isMainCourse = (MAIN_COURSE_KEYS as readonly string[]).includes(category);
   const inTour =
@@ -156,6 +165,8 @@ export function LessonPage() {
   const { courses } = useCurriculum();
 
   const [userCode, setUserCode] = useState('');
+  // What a web lesson's console holds, for the tutor
+  const [webConsole, setWebConsole] = useState('');
   const [activeTab, setActiveTab] = useState<'lesson' | 'workspace'>('lesson');
   const [leftView, setLeftView] = useState<LeftView>('lesson');
   const [showToast, setShowToast] = useState(false);
@@ -209,8 +220,9 @@ export function LessonPage() {
   // Dev mode has splits of its own, kept on the device: the statement narrow
   // on the left, the output low under the code
   const devModeChoice = useDevMode();
-  // Only a lesson with an editor has the button, so only there can it be left
-  const devMode = devModeChoice.on && !isTerminal;
+  // Only a lesson with an editor has the button, so only there can it be left;
+  // a web lesson's IDE has its own panels
+  const devMode = devModeChoice.on && !isTerminal && !isWeb;
   const devHSplit = useResizeSplit({
     axis: 'x',
     initial: 25,
@@ -338,6 +350,14 @@ export function LessonPage() {
       };
       return;
     }
+    // A web lesson's files go as their text, and its console as the output
+    if (isWeb) {
+      tutorWork.current = {
+        code: userCode,
+        runOutput: webConsole.slice(-TUTOR_RUN_OUTPUT_MAX_LENGTH),
+      };
+      return;
+    }
     tutorWork.current = {
       code: userCode,
       runOutput: output.slice(-TUTOR_RUN_OUTPUT_MAX_LENGTH),
@@ -346,11 +366,13 @@ export function LessonPage() {
     };
   }, [
     isTerminal,
+    isWeb,
     terminal.lines,
     terminalTestResult,
     t,
     userCode,
     output,
+    webConsole,
     testResults,
     shownLanguage,
   ]);
@@ -901,7 +923,7 @@ export function LessonPage() {
                       <RotateCcw size={14} aria-hidden="true" />
                     </button>
                   )}
-                  {devModeChoice.available && (
+                  {devModeChoice.available && !isWeb && (
                     <button
                       type="button"
                       data-track="dev-mode"
@@ -1039,80 +1061,101 @@ export function LessonPage() {
                     </button>
                   </div>
                 )}
-                <div
-                  data-testid="editor"
-                  className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)] max-h-[60%] @2xl:max-h-none @2xl:h-[var(--vsplit)]"
-                  style={{ '--vsplit': `${vSplitShown.size}%` } as CSSProperties}
-                >
-                  <CodeEditor
-                    value={userCode}
-                    onChange={setUserCode}
-                    language={editorLanguage}
-                    fontSize="16px"
-                    onRun={handleRun}
-                  />
-                </div>
-
-                <ResizeHandle
-                  axis="y"
-                  className="hidden @2xl:block"
-                  onPointerDown={vSplitShown.onPointerDown}
-                  dragging={vSplitShown.dragging}
-                />
-
-                {/* In dev mode the output sits low, so Run and Run Tests stand
-                    one above the other beside it rather than above it */}
-                <div
-                  className={`flex-1 min-h-0 p-3 border-t border-[var(--border)] bg-[var(--glass)] flex ${devMode ? 'flex-row gap-3' : 'flex-col'}`}
-                >
-                  <div
-                    className={`flex gap-2 ${devMode ? 'flex-col items-stretch shrink-0 max-w-[160px]' : 'mb-3 items-center flex-wrap'}`}
+                {isWeb ? (
+                  <Suspense
+                    fallback={
+                      <div className="flex-1 flex items-center justify-center">
+                        <LoadingSpinner />
+                      </div>
+                    }
                   >
-                    <RunButton onClick={handleRun} isRunning={isRunning} onStop={stopRun} />
-                    {hasTests ? (
-                      <button
-                        data-track="run-tests"
-                        onClick={handleRunTests}
-                        disabled={isTesting || isRunning}
-                        className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
-                      >
-                        {isTesting ? (
-                          <>
-                            <span className="inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                            {t('tests.running')}
-                          </>
-                        ) : (
-                          <>{t('tests.run')}</>
-                        )}
-                      </button>
-                    ) : (
-                      isMainCourse && (
-                        <span title={t('tests.comingSoon')} className="inline-flex">
-                          <button
-                            disabled
-                            className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 opacity-60 cursor-not-allowed"
-                          >
-                            {t('tests.run')}
-                          </button>
-                        </span>
-                      )
-                    )}
-                    {testsError && (
-                      <span className="text-[var(--error)] text-[12px] font-semibold">
-                        {testsError}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex-1 min-w-0 min-h-0 flex flex-col">
-                    <CodeOutput
-                      output={output}
-                      isRunning={isRunning}
-                      onInput={sendInput}
-                      fillHeight
+                    <WebWorkspace
+                      key={`${category}/${lesson}`}
+                      value={userCode}
+                      onChange={setUserCode}
+                      courseKey={category}
+                      lessonSlug={lesson}
+                      onConsole={setWebConsole}
                     />
-                  </div>
-                </div>
+                  </Suspense>
+                ) : (
+                  <>
+                    <div
+                      data-testid="editor"
+                      className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)] max-h-[60%] @2xl:max-h-none @2xl:h-[var(--vsplit)]"
+                      style={{ '--vsplit': `${vSplitShown.size}%` } as CSSProperties}
+                    >
+                      <CodeEditor
+                        value={userCode}
+                        onChange={setUserCode}
+                        language={editorLanguage}
+                        fontSize="16px"
+                        onRun={handleRun}
+                      />
+                    </div>
+
+                    <ResizeHandle
+                      axis="y"
+                      className="hidden @2xl:block"
+                      onPointerDown={vSplitShown.onPointerDown}
+                      dragging={vSplitShown.dragging}
+                    />
+
+                    {/* In dev mode the output sits low, so Run and Run Tests stand
+                    one above the other beside it rather than above it */}
+                    <div
+                      className={`flex-1 min-h-0 p-3 border-t border-[var(--border)] bg-[var(--glass)] flex ${devMode ? 'flex-row gap-3' : 'flex-col'}`}
+                    >
+                      <div
+                        className={`flex gap-2 ${devMode ? 'flex-col items-stretch shrink-0 max-w-[160px]' : 'mb-3 items-center flex-wrap'}`}
+                      >
+                        <RunButton onClick={handleRun} isRunning={isRunning} onStop={stopRun} />
+                        {hasTests ? (
+                          <button
+                            data-track="run-tests"
+                            onClick={handleRunTests}
+                            disabled={isTesting || isRunning}
+                            className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+                          >
+                            {isTesting ? (
+                              <>
+                                <span className="inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                {t('tests.running')}
+                              </>
+                            ) : (
+                              <>{t('tests.run')}</>
+                            )}
+                          </button>
+                        ) : (
+                          isMainCourse && (
+                            <span title={t('tests.comingSoon')} className="inline-flex">
+                              <button
+                                disabled
+                                className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 opacity-60 cursor-not-allowed"
+                              >
+                                {t('tests.run')}
+                              </button>
+                            </span>
+                          )
+                        )}
+                        {testsError && (
+                          <span className="text-[var(--error)] text-[12px] font-semibold">
+                            {testsError}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex-1 min-w-0 min-h-0 flex flex-col">
+                        <CodeOutput
+                          output={output}
+                          isRunning={isRunning}
+                          onInput={sendInput}
+                          fillHeight
+                        />
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           )}
@@ -1163,7 +1206,8 @@ export function LessonPage() {
       {solution && (
         <SolutionModal
           solution={solution}
-          currentCode={isTerminal ? undefined : userCode}
+          currentCode={isTerminal || isWeb ? undefined : userCode}
+          web={isWeb}
           language={editorLanguage}
           runLesson={runLesson}
           onClose={() => setSolution(null)}

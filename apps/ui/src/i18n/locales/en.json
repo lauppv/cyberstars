@@ -1696,5 +1696,47 @@
     },
     "later": "Maybe later",
     "signUp": "Create free account"
+  },
+  "web": {
+    "files": "Files",
+    "code": "Code",
+    "newFile": "New file",
+    "newFolder": "New folder",
+    "rename": "Rename {{name}}",
+    "delete": "Delete {{name}}",
+    "fileName": "Name of the new file, with its folder",
+    "folderName": "Name of the new folder",
+    "newName": "New name of {{name}}",
+    "fileExample": "e.g. css/style.css",
+    "folderExample": "e.g. css",
+    "confirmDelete": "Delete {{name}}?",
+    "confirmDeleteFolder": "Delete the folder {{name}} and everything in it?",
+    "errors": {
+      "invalidFile": "Use letters, digits, dots, dashes and underscores, and end with .html, .css, .js, .json or .txt.",
+      "invalidFolder": "Use letters, digits, dots, dashes and underscores.",
+      "taken": "Your site already has a file or folder there.",
+      "image": "This image comes with the lesson and stays as it is.",
+      "fileLimit": "A site holds at most {{max}} files.",
+      "sizeLimit": "Your site is as big as a site can be here. Make some room before adding more."
+    },
+    "noFiles": "No files yet. Add one with New file.",
+    "noFileOpen": "Open a file from the list to edit it.",
+    "closeTab": "Close {{name}}",
+    "imageReadOnly": "An image of the lesson: use it in your pages, it can't be edited.",
+    "preview": "Preview",
+    "page": "Page shown",
+    "paused": "Paused: a loop ran too long. Run shows the page again.",
+    "noPage": "Your site has no page yet. Add an .html file to see it here.",
+    "previewTitle": "Preview of {{page}}",
+    "console": {
+      "title": "Console",
+      "clear": "Clear",
+      "empty": "What your page logs and the errors it throws show here.",
+      "loopStopped": "Stopped a loop that ran too long, on line {{line}} of {{file}}.",
+      "missingFile": "{{from}} asks for {{file}}, which isn't in your site.",
+      "noPage": "There is no page {{page}} in your site.",
+      "outsideLink": "Links to other sites don't open in the preview: {{href}}",
+      "formSent": "The form was sent: {{fields}}"
+    }
   }
 }
