@@ -258,6 +258,17 @@ describe('WebWorkspace', () => {
     });
   });
 
+  it('lets the pointer through the site while a divider is dragged over it', async () => {
+    render(<Lesson />);
+    const iframe = await frame();
+    for (const divider of screen.getAllByRole('separator')) {
+      fireEvent.pointerDown(divider);
+      expect(iframe).toHaveClass('pointer-events-none');
+      fireEvent.pointerUp(window);
+      expect(iframe).not.toHaveClass('pointer-events-none');
+    }
+  });
+
   it('says there is no page while the site has none', () => {
     render(<Lesson start={serializeWebFiles([{ path: 'a.css', content: '' }])} />);
     expect(screen.getByText(/Your site has no page yet/)).toBeInTheDocument();

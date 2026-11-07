@@ -288,7 +288,9 @@ export default function WebWorkspace({
             // can't reach the lesson, its cookies or the API
             sandbox="allow-scripts allow-forms allow-modals"
             title={t('web.previewTitle', { page: page })}
-            className="w-full h-full border-none block"
+            // While a divider is dragged the frame lets the pointer through:
+            // over it, the moves would go to the page and the drag would stop
+            className={`w-full h-full border-none block ${sides.dragging || siteSplit.dragging ? 'pointer-events-none' : ''}`}
           />
         ) : (
           !page && <p className="m-0 px-4 py-3 text-[13px] text-[#444]">{t('web.noPage')}</p>
