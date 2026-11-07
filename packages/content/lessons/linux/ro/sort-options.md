@@ -42,15 +42,10 @@ Aici se folosește `:` ca delimitator și se sortează numeric după coloana 3.
 
 ---
 
-## Misiune: Diagnostic la rețeaua de alimentare
+## Misiune: Diagnosticul Rețelei de Putere
 
-Ingineria a detectat fluctuații în rețeaua de alimentare a stației. Fișierul `citiri_putere.txt` listează fiecare sector și nivelul său actual de putere. Ca să intervii primul asupra sectorului cel mai slab, trebuie să ordonezi citirile și să le arhivezi.
-
-1. Sortează `citiri_putere.txt` **numeric, după a doua coloană**, astfel încât valoarea cea mai mică să apară în vârf, și afișează.
-2. Salvează acel diagnostic sortat într-un fișier nou numit `diagnostic.txt`.
-3. Creează un folder numit `inginerie` și mută `diagnostic.txt` în el.
-4. Afișează doar prima linie: sectorul cel mai slab, de care se ocupă echipa prima dată.
+Ingineria a detectat fluctuații în rețeaua de putere. `citiri_putere.txt` listează fiecare sector cu nivelul lui de putere. Ca să se ocupe întâi de sectorul cel mai slab, vor, într-un folder nou `inginerie`, toate citirile ordonate de la puterea cea mai mică la cea mai mare ca `diagnostic.txt`, iar linia sectorului cel mai slab, singură, ca `cel-mai-slab.txt`.
 
 **Rezultat așteptat**
 
-`inginerie/diagnostic.txt` listează sectoarele în ordine crescătoare a puterii, de la `epsilon 5` până la `delta 800`.
+`inginerie/diagnostic.txt` listează sectoarele după puterea crescătoare, iar `inginerie/cel-mai-slab.txt` ține doar pe cel mai slab.

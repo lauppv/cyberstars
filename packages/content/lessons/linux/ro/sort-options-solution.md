@@ -1,9 +1,8 @@
 ```bash
-sort -k2 -n citiri_putere.txt
-sort -k2 -n citiri_putere.txt > diagnostic.txt
 mkdir inginerie
-mv diagnostic.txt inginerie/
-head -n 1 inginerie/diagnostic.txt
+sort -k2 -n citiri_putere.txt > inginerie/diagnostic.txt
+head -n 1 inginerie/diagnostic.txt > inginerie/cel-mai-slab.txt
+cat inginerie/diagnostic.txt
 ```
 
 ```text
@@ -12,5 +11,4 @@ gamma 50
 beta 120
 alpha 300
 delta 800
-epsilon 5
 ```

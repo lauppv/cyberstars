@@ -1,13 +1,15 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "securitate" },
-    { "kind": "file_contains", "path": "securitate/bilant-acces.txt", "text": "Voss" }
+    {
+      "kind": "command_output",
+      "cmd": "awk '{print $2, $1}' securitate/bilant-acces.txt",
+      "expected": "Voss 4\nTanaka 3\nChen 2"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "sort\\b.*acces_usa\\.log" },
-    { "kind": "command", "pattern": "uniq\\b.*-c" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "grep\\b.*Voss" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\buniq\\b)(?=.* -\\S*c)"
+    }
   ]
 }

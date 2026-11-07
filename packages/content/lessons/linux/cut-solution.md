@@ -1,16 +1,14 @@
 ```bash
-cut -d, -f1 manifest.csv
-cut -d, -f1 manifest.csv > item-list.txt
 mkdir deck-office
-mv item-list.txt deck-office/
-wc -l deck-office/item-list.txt
+cut -d, -f1 manifest.csv > deck-office/item-list.txt
+cut -d, -f1,3 manifest.csv > deck-office/destinations.txt
+cat deck-office/destinations.txt
 ```
 
 ```text
-oxygen_tanks
-ration_packs
-medkits
-batteries
-water_filters
-5 deck-office/item-list.txt
+oxygen_tanks,deck1
+ration_packs,deck3
+medkits,medbay
+batteries,engineering
+water_filters,life_support
 ```

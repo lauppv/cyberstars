@@ -5,13 +5,16 @@
       "cmd": "cat birou-punte/lista-articole.txt",
       "expected": "rezervoare_oxigen\npachete_ratii\ntruse_medicale\nbaterii\nfiltre_apa"
     },
-    { "kind": "dir_exists", "path": "birou-punte" }
+    {
+      "kind": "command_output",
+      "cmd": "cat birou-punte/destinatii.txt",
+      "expected": "rezervoare_oxigen,deck1\npachete_ratii,deck3\ntruse_medicale,infirmerie\nbaterii,inginerie\nfiltre_apa,suport_vital"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "cut\\b.*-f\\s*1.*manifest\\.csv" },
-    { "kind": "command", "pattern": "cut\\b.*-d.*manifest\\.csv" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "wc\\b.*-l" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bcut\\b)(?=.*manifest\\.csv)"
+    }
   ]
 }

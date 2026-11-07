@@ -51,13 +51,8 @@ This filters errors first, then sorts them alphabetically.
 
 ## Mission: Cargo Priority List
 
-A supply shuttle just docked and the cargo bay manifest (`supplies.txt`) is a mess. The quartermaster wants a clean unloading order for the crew.
-
-1. Sort `supplies.txt` in **reverse alphabetical order** and display the result on screen.
-2. Save that reverse-sorted list into a new file called `unload-order.txt`.
-3. Create a folder called `cargo-bay` and move `unload-order.txt` into it.
-4. Show just the first item on the list. That is what the crew unloads first.
+A supply shuttle just docked, and the cargo manifest `supplies.txt` is a mess. The quartermaster's rule: unload in reverse alphabetical order. In a new `cargo-bay` folder, save the whole list in that order as `unload-order.txt`, and the item the crew unloads first, alone, as `first.txt`.
 
 **Expected result**
 
-`cargo-bay/unload-order.txt` holds the six items from `water filters` down to `ammo crates`.
+`cargo-bay/unload-order.txt` holds every item from last to first in the alphabet, and `cargo-bay/first.txt` holds only the one at its top.

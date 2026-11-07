@@ -5,13 +5,16 @@
       "cmd": "cat deck-office/item-list.txt",
       "expected": "oxygen_tanks\nration_packs\nmedkits\nbatteries\nwater_filters"
     },
-    { "kind": "dir_exists", "path": "deck-office" }
+    {
+      "kind": "command_output",
+      "cmd": "cat deck-office/destinations.txt",
+      "expected": "oxygen_tanks,deck1\nration_packs,deck3\nmedkits,medbay\nbatteries,engineering\nwater_filters,life_support"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "cut\\b.*-f\\s*1.*manifest\\.csv" },
-    { "kind": "command", "pattern": "cut\\b.*-d.*manifest\\.csv" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "wc\\b.*-l" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bcut\\b)(?=.*manifest\\.csv)"
+    }
   ]
 }
