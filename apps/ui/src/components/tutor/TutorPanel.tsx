@@ -371,21 +371,27 @@ export function TutorPanel() {
             </p>
             <div className="flex flex-col gap-2 w-full mt-2">
               {(tutor.lesson ? lessonStarters(tutor.stage) : tutor.starters).map((starter, i) => (
-                <button
+                // The rise sits on a wrapper: its fill would hold the button at
+                // full opacity and hide that it's disabled
+                <div
                   key={starter.key}
-                  type="button"
-                  onClick={() => ask(t(starter.key, starter.values))}
-                  disabled={limited}
+                  className="rise-in"
                   style={{ animationDelay: `${0.6 + i * 0.07}s` }}
-                  className="rise-in group flex items-center gap-2 px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-left text-[13px] text-[var(--text2)] hover:border-[var(--accent)]/50 hover:bg-[var(--accent)]/5 hover:text-[var(--text)] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span className="flex-1 min-w-0">{t(starter.key, starter.values)}</span>
-                  <ArrowRight
-                    size={14}
-                    aria-hidden="true"
-                    className="flex-shrink-0 text-[var(--text3)] transition-transform group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
-                  />
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => ask(t(starter.key, starter.values))}
+                    disabled={limited}
+                    className="group w-full flex items-center gap-2 px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-left text-[13px] text-[var(--text2)] hover:border-[var(--accent)]/50 hover:bg-[var(--accent)]/5 hover:text-[var(--text)] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <span className="flex-1 min-w-0">{t(starter.key, starter.values)}</span>
+                    <ArrowRight
+                      size={14}
+                      aria-hidden="true"
+                      className="flex-shrink-0 text-[var(--text3)] transition-transform group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
+                    />
+                  </button>
+                </div>
               ))}
             </div>
           </div>
