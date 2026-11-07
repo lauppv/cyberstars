@@ -5,6 +5,10 @@ import { codeLanguageOf, isMultiLanguage } from '@cyberstars/shared/constants';
 const LESSONS_DIR = path.join(import.meta.dirname, 'lessons');
 const ALGO_DIR = path.join(import.meta.dirname, 'algorithms');
 
+// Projects: projects/<language>/<slug>.md, the steps of each project in
+// packages/shared/projects.ts.
+export const PROJECTS_DIR = path.join(import.meta.dirname, 'projects');
+
 // Accepted and rejected solutions per lesson: variants/<course>/<slug>/, and
 // variants/<course>/<language>/<slug>/ on a multi-language course.
 export const VARIANTS_DIR = path.join(import.meta.dirname, 'variants');
